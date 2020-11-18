@@ -20,6 +20,7 @@
 @property (strong, nonatomic) AVAudioDevice *currentOutputDevice;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSArray *devices;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *inputDevices;
 @property (readonly, nonatomic) NSArray *outputDevices;

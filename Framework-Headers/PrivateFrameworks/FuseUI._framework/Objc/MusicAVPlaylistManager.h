@@ -10,7 +10,5 @@
 {
 }
 
-- (void)addPlaybackContext:(id)arg1 toHardQueueWithInsertionType:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
-
 @end
 

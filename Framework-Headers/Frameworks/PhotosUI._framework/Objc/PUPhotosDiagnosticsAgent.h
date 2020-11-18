@@ -17,8 +17,10 @@ __attribute__((visibility("hidden")))
 - (id)_currentAssetIdentifierDescription;
 - (id)_currentAssetViewModelDescription;
 - (id)_descriptionOfUIState:(long long)arg1;
+- (id)_viewControllerHierarchyDescription;
 - (id)_viewModelDescription;
 - (id)_windowRecursiveDescription;
+- (void)captureDescriptionOfCloudPhotoLibraryWithResultHandler:(CDUnknownBlockType)arg1;
 - (void)captureDescriptionOfUIState:(long long)arg1 resultHandler:(CDUnknownBlockType)arg2;
 
 @end

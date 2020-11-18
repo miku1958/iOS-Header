@@ -19,6 +19,7 @@
     BOOL _delayedStartMeasuringAnimation;
     NSObject<OS_dispatch_queue> *_assetLoadingQueue;
     NSCache *_assetCache;
+    BOOL _isBeatingHeart;
     UIImageView *_fullHeartImageView;
     UIImageView *_animatingImageView;
     UIImageView *_reloadOutlineView;
@@ -36,6 +37,7 @@
 - (void)_loadHeartMeasuringImagesWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_queue_heartMeasuringImages;
 - (void)_resumeAnimations;
+- (void)_startBeatingHeart;
 - (void)_startMeasuringAnimationAnimated:(BOOL)arg1;
 - (void)_suspendAnimations;
 - (void)dealloc;

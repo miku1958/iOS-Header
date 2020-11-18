@@ -7,6 +7,7 @@
 #import <PhotosUI/PUEditViewController.h>
 
 #import <PhotosUI/GLKViewDelegate-Protocol.h>
+#import <PhotosUI/PHLivePhotoViewDelegate-Protocol.h>
 #import <PhotosUI/PLDismissableViewController-Protocol.h>
 #import <PhotosUI/PUEditPluginSessionDelegate-Protocol.h>
 #import <PhotosUI/PUImageEditPluginSessionDataSource-Protocol.h>
@@ -19,17 +20,19 @@
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <PhotosUI/UIScrollViewDelegate-Protocol.h>
 
-@class CIImage, GLKView, NSArray, NSString, NSURL, PHAsset, PLPhotoEditAggregateSession, PLPhotoEditModel, PLPhotoEditMutableModel, PLPhotoEditRenderer, PUAdjustmentsToolController, PUAutoAdjustmentController, PUCropToolController, PUEditPluginSession, PUFiltersToolController, PUPhotoEditIrisModel, PUPhotoEditOverlayBadge, PUPhotoEditToolController, PUPhotoEditToolbar, PUPhotoEditValuesCalculator, PUPhotoEditViewControllerSpec, PUProgressIndicatorView, PURedeyeToolController, PUResourceDownloadRequest, UIAlertController, UIButton, UIImage, UIImageView, UILongPressGestureRecognizer, UIScrollView, _PUPhotoEditSnapshot;
+@class CIImage, GLKView, NSArray, NSString, NSURL, PHAsset, PHLivePhoto, PHLivePhotoView, PLPhotoEditAggregateSession, PLPhotoEditModel, PLPhotoEditMutableModel, PLPhotoEditRenderer, PUAdjustmentsToolController, PUAutoAdjustmentController, PUCropToolController, PUEditPluginSession, PUFiltersToolController, PUPhotoEditIrisModel, PUPhotoEditOverlayBadge, PUPhotoEditToolController, PUPhotoEditToolbar, PUPhotoEditValuesCalculator, PUPhotoEditViewControllerSpec, PUProgressIndicatorView, PURedeyeToolController, PUResourceDownloadRequest, UIAlertController, UIButton, UIImage, UIImageView, UILongPressGestureRecognizer, UIScrollView, UIView, _PUPhotoEditSnapshot;
 @protocol PUPhotoEditViewControllerDelegate;
 
-__attribute__((visibility("hidden")))
-@interface PUPhotoEditViewController : PUEditViewController <GLKViewDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, PUPhotoEditToolControllerDelegate, PUImageEditPluginSessionDataSource, PUEditPluginSessionDelegate, PUPhotoLibraryUIChangeObserver, PUOneUpAssetTransitionViewController, PLDismissableViewController, PUPhotoEditIrisModelChangeObserver, PUPhotoEditLayoutSource>
+@interface PUPhotoEditViewController : PUEditViewController <GLKViewDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, PUPhotoEditToolControllerDelegate, PUImageEditPluginSessionDataSource, PUEditPluginSessionDelegate, PUPhotoLibraryUIChangeObserver, PUOneUpAssetTransitionViewController, PLDismissableViewController, PUPhotoEditIrisModelChangeObserver, PHLivePhotoViewDelegate, PUPhotoEditLayoutSource>
 {
     NSArray *__allTools;
     PUPhotoEditToolController *_currentEditingTool;
     BOOL _switchingToolsAnimated;
     UIScrollView *_previewViewScrollingContainer;
-    GLKView *_mainPreviewView;
+    UIView *_previewContainerView;
+    GLKView *_mainRenderView;
+    PHLivePhotoView *_mainLivePhotoView;
+    BOOL _livePhotoIsPlaying;
     NSArray *_mainToolbarConstraints;
     NSArray *_alternateToolbarConstraints;
     NSArray *_secondaryToolbarConstraints;
@@ -81,6 +84,7 @@ __attribute__((visibility("hidden")))
     BOOL __penultimateAvailable;
     BOOL __waitingForBaseImageRequest;
     BOOL __waitingForOriginalImageRequest;
+    BOOL __waitingForLivePhotoRequest;
     BOOL __revertingToOriginal;
     BOOL __shouldBePreviewingOriginal;
     BOOL __canAnimateNextAutoEnhance;
@@ -97,6 +101,7 @@ __attribute__((visibility("hidden")))
     PLPhotoEditAggregateSession *__aggregateSession;
     PUPhotoEditIrisModel *__photoEditIrisModel;
     UIImage *__baseWorkUIImage;
+    PHLivePhoto *__livePhoto;
     CIImage *__baseWorkCIImage;
     UIImage *__originalWorkUIImage;
     CIImage *__originalWorkCIImage;
@@ -122,6 +127,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setCurrentResourceLoadRequest:) PUResourceDownloadRequest *_currentResourceLoadRequest; // @synthesize _currentResourceLoadRequest=__currentResourceLoadRequest;
 @property (weak, nonatomic, setter=_setIrisRevertConfirmationAlert:) UIAlertController *_irisRevertConfirmationAlert; // @synthesize _irisRevertConfirmationAlert=__irisRevertConfirmationAlert;
 @property (nonatomic, setter=_setLayoutReferenceSize:) struct CGSize _layoutReferenceSize; // @synthesize _layoutReferenceSize=__layoutReferenceSize;
+@property (strong, nonatomic, setter=_setLivePhoto:) PHLivePhoto *_livePhoto; // @synthesize _livePhoto=__livePhoto;
 @property (strong, nonatomic, setter=_setMainRenderer:) PLPhotoEditRenderer *_mainRenderer; // @synthesize _mainRenderer=__mainRenderer;
 @property (copy, nonatomic, setter=_setNextRenderCompletionBlock:) CDUnknownBlockType _nextRenderCompletionBlock; // @synthesize _nextRenderCompletionBlock=__nextRenderCompletionBlock;
 @property (strong, nonatomic, setter=_setOriginalWorkCIImage:) CIImage *_originalWorkCIImage; // @synthesize _originalWorkCIImage=__originalWorkCIImage;
@@ -140,6 +146,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic, setter=_setUneditedPhotoEditModel:) PLPhotoEditModel *_uneditedPhotoEditModel; // @synthesize _uneditedPhotoEditModel=__uneditedPhotoEditModel;
 @property (strong, nonatomic, setter=_setValuesCalculator:) PUPhotoEditValuesCalculator *_valuesCalculator; // @synthesize _valuesCalculator=__valuesCalculator;
 @property (nonatomic, setter=_setWaitingForBaseImageRequest:) BOOL _waitingForBaseImageRequest; // @synthesize _waitingForBaseImageRequest=__waitingForBaseImageRequest;
+@property (nonatomic, setter=_setWaitingForLivePhotoRequest:) BOOL _waitingForLivePhotoRequest; // @synthesize _waitingForLivePhotoRequest=__waitingForLivePhotoRequest;
 @property (nonatomic, setter=_setWaitingForOriginalImageRequest:) BOOL _waitingForOriginalImageRequest; // @synthesize _waitingForOriginalImageRequest=__waitingForOriginalImageRequest;
 @property (nonatomic, setter=_setWorkImageVersion:) long long _workImageVersion; // @synthesize _workImageVersion=__workImageVersion;
 @property (readonly, copy) NSString *debugDescription;
@@ -154,6 +161,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (BOOL)_shouldForwardViewWillTransitionToSize;
++ (double)toggleOriginalLongPressDelay;
 - (void).cxx_destruct;
 - (id)_allTools;
 - (void)_captureSnapshotOfBasePhotoWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -162,6 +170,8 @@ __attribute__((visibility("hidden")))
 - (id)_defaultInitialEditingTool;
 - (void)_handleAutoEnhanceButton:(id)arg1;
 - (void)_handleCancelButton:(id)arg1;
+- (void)_handleDidLoadBaseImageWithResult:(id)arg1 info:(id)arg2 startTime:(double)arg3;
+- (void)_handleDidLoadLivePhotoContentWithResult:(id)arg1 info:(id)arg2;
 - (void)_handleDoneButton:(id)arg1;
 - (void)_handleIrisButton:(id)arg1;
 - (void)_handleMainActionButton:(id)arg1;
@@ -176,6 +186,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isWaitingForAssetChange;
 - (BOOL)_isWaitingForSaveCompletion;
 - (void)_loadBaseImageIfNecessary;
+- (void)_loadLivePhotoContentIfNecessary;
 - (void)_loadOriginalImageIfNecessary;
 - (void)_loadPhotoEditModelIfNecessary;
 - (void)_loadRemoteResourcesIfNecessary;
@@ -191,7 +202,7 @@ __attribute__((visibility("hidden")))
 - (void)_reloadMainAndSecondaryToolbarButtonsIfNeeded;
 - (void)_resetModelAndBaseImagesToWorkImageVersion:(long long)arg1;
 - (void)_restoreSnapshot:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)_revertToOriginalWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)_revertToOriginalWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (struct CGSize)_scaleSize:(struct CGSize)arg1 toFitSize:(struct CGSize)arg2;
 - (void)_setLayoutOrientation:(long long)arg1;
 - (void)_setLayoutOrientation:(long long)arg1 withTransitionCoordinator:(id)arg2;
@@ -199,9 +210,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldDisplayRedEyeTool;
 - (void)_showCancelAndRevertOptionsAllowResetTool:(BOOL)arg1;
 - (void)_startWaitingForAssetChange;
-- (void)_startWaitingForSaveCompletion;
+- (void)_startWaitingForSaveRequest:(id)arg1;
 - (void)_stopWaitingForAssetChangeWithSuccess:(BOOL)arg1;
-- (void)_stopWaitingForSaveCompletionWithSuccess:(BOOL)arg1;
+- (void)_stopWaitingForSaveRequestWithSuccess:(BOOL)arg1;
 - (void)_switchToEditingTool:(id)arg1 animated:(BOOL)arg2;
 - (void)_updateAlternateToolbarAnimated:(BOOL)arg1;
 - (void)_updateAutoEnhanceButtonAnimated:(BOOL)arg1;
@@ -209,6 +220,8 @@ __attribute__((visibility("hidden")))
 - (void)_updateIrisButtonAnimated:(BOOL)arg1;
 - (void)_updateLastKnownImageSize;
 - (void)_updateLayoutOrientationWithViewSize:(struct CGSize)arg1 transitionCoordinator:(id)arg2;
+- (void)_updateLivePhotoPlaybackGestureRecognizer;
+- (void)_updateLivePhotoView;
 - (void)_updateMainActionButtonAnimated:(BOOL)arg1;
 - (void)_updateMainRenderer;
 - (void)_updateModelDependentControlsAnimated:(BOOL)arg1;
@@ -248,12 +261,15 @@ __attribute__((visibility("hidden")))
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)glkView:(id)arg1 drawInRect:(struct CGRect)arg2;
 - (id)initWithPhoto:(id)arg1;
+- (void)livePhotoView:(id)arg1 didEndPlaybackWithStyle:(long long)arg2;
+- (void)livePhotoView:(id)arg1 willBeginPlaybackWithStyle:(long long)arg2;
 - (void)oneUpAssetTransition:(id)arg1 animateTransitionWithContext:(id)arg2 duration:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)oneUpAssetTransition:(id)arg1 requestTransitionContextWithCompletion:(CDUnknownBlockType)arg2;
 - (void)oneUpAssetTransitionDidEnd:(id)arg1;
 - (void)oneUpAssetTransitionWillBegin:(id)arg1;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
+- (void)ppt_cancelEdits;
 - (BOOL)prefersStatusBarHidden;
 - (BOOL)prepareForDismissingForced:(BOOL)arg1;
 - (void)prepareForPhotoLibraryChange:(id)arg1;
@@ -275,6 +291,7 @@ __attribute__((visibility("hidden")))
 - (void)toolControllerDidChangeWantsDefaultPreviewView:(id)arg1;
 - (void)toolControllerDidFinish:(id)arg1;
 - (id)toolControllerImageScrollView:(id)arg1;
+- (id)toolControllerLivePhoto:(id)arg1;
 - (id)toolControllerMainContainerView:(id)arg1;
 - (id)toolControllerMainRenderer:(id)arg1;
 - (struct CGSize)toolControllerOriginalImageSize:(id)arg1;

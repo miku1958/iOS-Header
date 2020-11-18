@@ -10,7 +10,7 @@
 #import <NanoPassKit/PKPaymentWebServiceArchiver-Protocol.h>
 #import <NanoPassKit/PKPaymentWebServiceTargetDeviceProtocol-Protocol.h>
 
-@class IDSService, NPKCompanionAgentConnection, NSMutableDictionary, NSString;
+@class IDSService, NPKCompanionAgentConnection, NRActiveDeviceAssertion, NSMutableDictionary, NSString;
 @protocol NPKPaymentWebServiceTargetDeviceDelegate, OS_dispatch_queue;
 
 @interface NPKPaymentWebServiceTargetDevice : NSObject <IDSServiceDelegate, PKPaymentWebServiceTargetDeviceProtocol, PKPaymentWebServiceArchiver>
@@ -22,6 +22,7 @@
     NSMutableDictionary *_outstandingRequests;
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSObject<OS_dispatch_queue> *_responseQueue;
+    NRActiveDeviceAssertion *_provisioningActiveDeviceAssertion;
 }
 
 @property (strong, nonatomic) NPKCompanionAgentConnection *companionAgentConnection; // @synthesize companionAgentConnection=_companionAgentConnection;
@@ -32,6 +33,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property (strong, nonatomic) NSMutableDictionary *outstandingRequests; // @synthesize outstandingRequests=_outstandingRequests;
+@property (strong, nonatomic) NRActiveDeviceAssertion *provisioningActiveDeviceAssertion; // @synthesize provisioningActiveDeviceAssertion=_provisioningActiveDeviceAssertion;
 @property (strong, nonatomic) IDSService *provisioningService; // @synthesize provisioningService=_provisioningService;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *responseQueue; // @synthesize responseQueue=_responseQueue;
 @property (readonly) Class superclass;
@@ -40,6 +42,7 @@
 - (void).cxx_destruct;
 - (id)_sendProtobuf:(id)arg1 responseExpected:(BOOL)arg2;
 - (id)_sendProtobuf:(id)arg1 responseExpected:(BOOL)arg2 extraOptions:(id)arg3;
+- (id)_serialNumbersOfAllPairedDevices;
 - (void)_setOrResetCleanupTimerForRequest:(id)arg1;
 - (id)_supportedRegionsForWebService:(id)arg1;
 - (void)archiveBackgroundContext:(id)arg1;
@@ -58,7 +61,10 @@
 - (void)handleValueAddedServiceTransactions:(id)arg1;
 - (id)init;
 - (id)initWithContext:(unsigned long long)arg1 responseQueue:(id)arg2;
-- (void)noteProvisioningInProgress:(BOOL)arg1;
+- (void)noteProvisioningDidBegin;
+- (void)noteProvisioningDidEnd;
+- (void)noteProvisioningUserInterfaceDidAppear;
+- (void)noteProvisioningUserInterfaceDidDisappear;
 - (int)paymentSupportedInCurrentRegionForWebService:(id)arg1;
 - (void)paymentWebService:(id)arg1 addPaymentPass:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)paymentWebService:(id)arg1 canProvisionPaymentPassWithPrimaryAccountIdentifier:(id)arg2;

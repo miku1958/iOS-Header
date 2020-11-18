@@ -68,12 +68,14 @@
 - (void)dealloc;
 - (id)detailedDescription;
 - (void)devResourcesFolderDidChange;
+- (id)disputedBordersQueryStringForTileKey:(const struct _GEOTileKey *)arg1 country:(id)arg2 region:(id)arg3;
 - (void)forceUpdate;
 - (void)getResourceManifestWithHandler:(CDUnknownBlockType)arg1;
 - (BOOL)hasResourceManifest;
 - (id)init;
 - (id)initWithConfiguration:(id)arg1;
 - (BOOL)isAvailableForTileKey:(const struct _GEOTileKey *)arg1;
+- (BOOL)isDisputedBordersWhitelistedForTileKey:(const struct _GEOTileKey *)arg1 country:(id)arg2 region:(id)arg3;
 - (id)languageForTileKey:(const struct _GEOTileKey *)arg1;
 - (id)languageForTileKey:(const struct _GEOTileKey *)arg1 overrideLocale:(id)arg2;
 - (id)localizationURLStringIfNecessaryForTileKey:(const struct _GEOTileKey *)arg1 overrideLocale:(id)arg2;

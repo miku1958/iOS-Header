@@ -36,6 +36,7 @@
 - (long long)numberOfMenuItems;
 - (void)prepareHeaderViewForExpanding:(BOOL)arg1;
 - (void)reloadData;
+- (void)setExpansionOrientation:(long long)arg1;
 - (BOOL)shouldAllowExpansion;
 - (id)titleForMenuItemAtIndex:(long long)arg1;
 

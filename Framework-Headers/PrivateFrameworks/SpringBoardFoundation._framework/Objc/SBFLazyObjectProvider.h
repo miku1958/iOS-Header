@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface SBFLazyObjectProvider : NSObject
 {
@@ -15,7 +15,7 @@
 @property (copy, nonatomic) CDUnknownBlockType generator; // @synthesize generator=_generator;
 @property (strong, nonatomic) id object; // @synthesize object=_object;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithGenerator:(CDUnknownBlockType)arg1;
 
 @end

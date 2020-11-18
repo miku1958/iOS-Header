@@ -6,13 +6,14 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <FuseUI/MusicClientContextConsuming-Protocol.h>
 #import <FuseUI/MusicMediaDetailHeaderContentViewController-Protocol.h>
 #import <FuseUI/MusicProfileDetailViewDelegate-Protocol.h>
 
-@class MusicEntityValueContext, MusicMediaDetailTintInformation, MusicProfileDetailView, NSOperationQueue, NSString, UIButton, UIImage, UIImageView;
+@class MusicClientContext, MusicEntityValueContext, MusicMediaDetailTintInformation, MusicProfileDetailView, NSOperationQueue, NSString, UIButton, UIImage, UIImageView;
 @protocol MusicEntityProviding, MusicMediaProfileHeaderContentViewControllerDelegate;
 
-@interface MusicMediaProfileHeaderContentViewController : UIViewController <MusicProfileDetailViewDelegate, MusicMediaDetailHeaderContentViewController>
+@interface MusicMediaProfileHeaderContentViewController : UIViewController <MusicProfileDetailViewDelegate, MusicMediaDetailHeaderContentViewController, MusicClientContextConsuming>
 {
     MusicEntityValueContext *_containerEntityValueContext;
     MusicProfileDetailView *_profileDetailView;
@@ -24,6 +25,7 @@
     BOOL _hasProfileImage;
     BOOL _shouldDelayTransitionProgress;
     id<MusicEntityProviding> _containerEntityProvider;
+    MusicClientContext *_clientContext;
     id<MusicMediaProfileHeaderContentViewControllerDelegate> _delegate;
     NSString *_followersCountText;
     NSString *_followersText;
@@ -33,6 +35,7 @@
 }
 
 @property (nonatomic, getter=isAdminEnabled) BOOL adminEnabled; // @synthesize adminEnabled=_adminEnabled;
+@property (strong, nonatomic) MusicClientContext *clientContext; // @synthesize clientContext=_clientContext;
 @property (readonly, nonatomic) id<MusicEntityProviding> containerEntityProvider; // @synthesize containerEntityProvider=_containerEntityProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MusicMediaProfileHeaderContentViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -57,6 +60,7 @@
 - (void)_containerEntityValueProviderDidInvalidateNotification:(id)arg1;
 - (void)_contentSizeCategoryDidChangeNotification:(id)arg1;
 - (struct UIEdgeInsets)_effectiveVerticalInsets;
+- (BOOL)_isFollowActionAvailable;
 - (void)_reloadContainerEntityValueContextProperties;
 - (void)_reloadProfileImageView;
 - (void)_setContentOverlayInsets:(struct UIEdgeInsets)arg1;

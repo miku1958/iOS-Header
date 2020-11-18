@@ -7,7 +7,6 @@
 #import <UIKit/UIViewController.h>
 
 @interface UIViewController (MusicCarDisplayAdditions)
-+ (id)MCD_carDisplayIdentifierForIdentifier:(id)arg1;
 + (id)MCD_queryForIdentifier:(id)arg1;
 + (void)MCD_registerViewControllerIdentifiers;
 @end

@@ -23,6 +23,7 @@
 - (oneway void)prepareToPreviewCompositionAVURL:(NSURL *)arg1 accessRequestHandler:(void (^)(RCSSavedRecordingAccessToken *, NSError *))arg2;
 - (oneway void)prepareToTrimCompositionAVURL:(NSURL *)arg1 accessRequestHandler:(void (^)(RCSSavedRecordingAccessToken *, NSError *))arg2;
 - (oneway void)reloadExistingSearchMetadataWithCompletionBlock:(void (^)(NSError *))arg1;
+- (oneway void)removeAllUserDataWithCompletion:(void (^)(NSError *))arg1;
 - (oneway void)updateSearchMetadataWithRecordingURIsToInsert:(NSArray *)arg1 recordingURIsToUpdate:(NSArray *)arg2 recordingURIsToDelete:(NSArray *)arg3 completionBlock:(void (^)(NSError *))arg4;
 @end
 

@@ -28,6 +28,7 @@
 
 + (struct CGSize)sizeThatFitsWidth:(double)arg1 viewElement:(id)arg2 context:(id)arg3;
 - (void).cxx_destruct;
+- (void)_updateEnabledState;
 - (float)buttonCornerRadius;
 - (struct CGSize)buttonSize;
 - (id)cancelImage;

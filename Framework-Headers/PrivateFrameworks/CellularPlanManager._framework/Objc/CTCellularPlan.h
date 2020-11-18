@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CellularPlanManager/NSCopying-Protocol.h>
 #import <CellularPlanManager/NSSecureCoding-Protocol.h>
@@ -14,7 +14,6 @@
 @interface CTCellularPlan : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _isHomePlan;
-    BOOL _isSelectable;
     NSString *_phoneNumber;
     CTCellularPlanProfile *_profile;
     CTCellularPlanSubscription *_subscription;
@@ -30,7 +29,7 @@
 @property (readonly, nonatomic) NSArray *dataUsage;
 @property (readonly, nonatomic) NSString *iccid;
 @property (nonatomic) BOOL isHomePlan; // @synthesize isHomePlan=_isHomePlan;
-@property (nonatomic) BOOL isSelectable; // @synthesize isSelectable=_isSelectable;
+@property (readonly, nonatomic) BOOL isSelectable;
 @property (readonly, nonatomic) BOOL isSelected;
 @property (strong, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property (readonly, nonatomic) NSString *planDescription;

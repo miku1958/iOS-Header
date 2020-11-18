@@ -18,6 +18,7 @@
     BOOL _loadingStatusChanged;
     BOOL _forceBadgesVisibleChanged;
     BOOL _badgeInfoChanged;
+    BOOL _wantsIrisBadgeVisibleChanged;
     BOOL _isFavoriteChanged;
     BOOL _commentsOffsetChanged;
     BOOL _commentsVisibilityChanged;
@@ -40,6 +41,7 @@
 @property (nonatomic) BOOL loadingStatusChanged; // @synthesize loadingStatusChanged=_loadingStatusChanged;
 @property (nonatomic) BOOL modelTileTransformChanged; // @synthesize modelTileTransformChanged=_modelTileTransformChanged;
 @property (strong, nonatomic) PUBrowsingVideoPlayerChange *videoPlayerChange; // @synthesize videoPlayerChange=_videoPlayerChange;
+@property (nonatomic) BOOL wantsIrisBadgeVisibleChanged; // @synthesize wantsIrisBadgeVisibleChanged=_wantsIrisBadgeVisibleChanged;
 
 - (void).cxx_destruct;
 - (void)_setAssetChanged:(BOOL)arg1;
@@ -56,6 +58,7 @@
 - (void)_setModelTileTransformChanged:(BOOL)arg1;
 - (void)_setUserTransformingTileDidChange:(BOOL)arg1;
 - (void)_setVideoPlayerChange:(id)arg1;
+- (void)_setWantsIrisBadgeVisibleChanged:(BOOL)arg1;
 - (BOOL)hasChanges;
 
 @end

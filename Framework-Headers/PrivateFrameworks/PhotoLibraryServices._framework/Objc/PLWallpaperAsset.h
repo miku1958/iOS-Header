@@ -6,22 +6,22 @@
 
 #import <PhotoLibraryServices/PLManagedAsset.h>
 
-@class NSDictionary, NSString, NSURL;
+@class NSDictionary, NSString, NSURL, UIImage;
 
 @interface PLWallpaperAsset : PLManagedAsset
 {
 }
 
+@property (readonly, nonatomic) UIImage *image;
 @property (readonly, nonatomic) NSString *imageName;
 @property (strong, nonatomic) NSURL *imageURL;
+@property (readonly, nonatomic) UIImage *thumbnailImage;
 @property (strong, nonatomic) NSURL *thumbnailURL;
 @property (strong, nonatomic) NSDictionary *wallpaperOptions;
 
 + (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)insertIntoPhotoLibrary:(id)arg1 withImageURL:(id)arg2 thumbnailURL:(id)arg3;
-- (id)_image;
-- (id)_thumbnailImage;
 - (BOOL)allowsWallpaperEditing;
 - (void)awakeFromInsert;
 - (id)imageWithFormat:(int)arg1;

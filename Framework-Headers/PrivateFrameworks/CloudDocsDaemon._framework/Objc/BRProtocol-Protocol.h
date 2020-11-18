@@ -10,13 +10,15 @@
 @protocol BRItemNotificationReceiving, BRNonLocalVersionReceiving, BROperationClient;
 
 @protocol BRProtocol <CKXPCSharingClient>
+- (void)_t_blockSyncForContainerID:(NSString *)arg1 withPendingUpgradeToOSName:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
+- (void)_t_blockSyncUpOfItemWithID:(NSString *)arg1 containerID:(NSString *)arg2 withPendingUpgradeToOSName:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
+- (void)_t_clearAllBlockedItemsForContainerID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)addExternalDocumentReferenceTo:(NSURL *)arg1 forPid:(int)arg2 inContainer:(NSString *)arg3 underParent:(NSURL *)arg4 reply:(void (^)(NSURL *, NSURL *, NSData *, NSURL *, NSData *, NSError *))arg5;
 - (oneway void)bundleDidAccessExternalDocument:(NSFileHandle *)arg1;
 - (oneway void)checkinAskClientIfUsingUbiquity:(BOOL)arg1;
 - (void)computePurgableSpaceWithUrgency:(int)arg1 reply:(void (^)(long long))arg2;
 - (void)copyBulkShareIDsAtURLs:(NSArray *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)copyCurrentUserIdentifierWithReply:(void (^)(NSString *, NSError *))arg1;
-- (void)copyLoggedInUserFirstAndLastNameWithReply:(void (^)(NSString *, NSString *, NSError *))arg1;
 - (void)createContainerWithID:(NSString *)arg1 ownerName:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)createSharingInfoForURL:(NSURL *)arg1 reply:(void (^)(CKShare *, NSError *))arg2;
 - (void)currentAccountCreateWithID:(NSString *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
@@ -48,6 +50,7 @@
 - (void)getIsContainerWithIDOverQuota:(NSString *)arg1 reply:(void (^)(NSNumber *, NSError *))arg2;
 - (void)getItemUpdateSenderWithReceiver:(id<BRItemNotificationReceiving>)arg1 reply:(void (^)(id<BRItemNotificationSending>, NSDictionary *, NSError *))arg2;
 - (void)getLastSyncDateWithReply:(void (^)(NSDate *, NSError *))arg1;
+- (void)getLoggedInUserPropertyValuesForKeys:(NSArray *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)getMigrationStatusForPrimaryiCloudAccount:(void (^)(BOOL, NSError *))arg1;
 - (void)getNonLocalVersionSenderWithReceiver:(id<BRNonLocalVersionReceiving>)arg1 documentURL:(NSURL *)arg2 includeCachedVersions:(BOOL)arg3 reply:(void (^)(id<BRNonLocalVersionSending>, NSURL *, NSError *))arg4;
 - (void)getNotificationInfoAtURL:(NSURL *)arg1 reply:(void (^)(BRQueryItem *, NSError *))arg2;
@@ -74,6 +77,7 @@
 - (void)setiWorkPublishingInfoAtURL:(NSURL *)arg1 publish:(BOOL)arg2 readonly:(BOOL)arg3 reply:(void (^)(NSError *))arg4;
 - (void)setupInstanceWithDict:(NSDictionary *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 - (void)startDownloadItemsAtURLs:(NSArray *)arg1 options:(unsigned long long)arg2 reply:(void (^)(NSError *))arg3;
+- (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyAvailibleQuoteWithReply:(void (^)(NSNumber *, NSError *))arg2;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyShareURLForShare:(CKShare *)arg2 appName:(NSString *)arg3 reply:(void (^)(NSURL *, NSError *))arg4;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopySharingAccessToken:(NSURL *)arg2 reply:(void (^)(NSData *, NSString *, NSError *))arg3;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopySharingInfoAtURL:(NSURL *)arg2 reply:(void (^)(CKShare *, NSError *))arg3;

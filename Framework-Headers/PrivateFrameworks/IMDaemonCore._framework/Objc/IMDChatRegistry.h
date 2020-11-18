@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSArray, NSMutableDictionary, NSRecursiveLock;
 
@@ -56,12 +56,11 @@
 - (BOOL)saveChats;
 - (void)systemDidLeaveFirstDataProtectionLock;
 - (void)systemDidUnlock;
-- (void)updateLastMessageForChat:(id)arg1;
 - (void)updateLastMessageForChat:(id)arg1 hintMessage:(id)arg2;
 - (BOOL)updateProperties:(id)arg1 chat:(id)arg2 style:(unsigned char)arg3;
-- (void)updateStateForChat:(id)arg1;
 - (void)updateStateForChat:(id)arg1 forcePost:(BOOL)arg2;
-- (void)updateStateForChat:(id)arg1 fromMessage:(id)arg2 toMessage:(id)arg3 forcePost:(BOOL)arg4;
+- (void)updateStateForChat:(id)arg1 fromMessage:(id)arg2 toMessage:(id)arg3 forcePost:(BOOL)arg4 hintMessage:(id)arg5;
+- (void)updateStateForChat:(id)arg1 hintMessage:(id)arg2;
 - (BOOL)updateUnreadCountForChat:(id)arg1;
 
 @end

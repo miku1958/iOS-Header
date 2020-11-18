@@ -25,6 +25,8 @@
     NSArray *_hmAccessoryCategories;
     NSArray *_hmBlacklistedServices;
     NSArray *_hmBlacklistedCharacteristics;
+    NSArray *_hmServicesBlacklistedFromApp;
+    NSArray *_hmCharacteristicsBlacklistedFromApp;
     NSDictionary *_assistantServices;
     NSArray *_assistantCharacteristics;
     NSDictionary *_assistantUnits;
@@ -42,7 +44,9 @@
 @property (strong, nonatomic) NSArray *hmAccessoryCategories; // @synthesize hmAccessoryCategories=_hmAccessoryCategories;
 @property (strong, nonatomic) NSArray *hmBlacklistedCharacteristics; // @synthesize hmBlacklistedCharacteristics=_hmBlacklistedCharacteristics;
 @property (strong, nonatomic) NSArray *hmBlacklistedServices; // @synthesize hmBlacklistedServices=_hmBlacklistedServices;
+@property (strong, nonatomic) NSArray *hmCharacteristicsBlacklistedFromApp; // @synthesize hmCharacteristicsBlacklistedFromApp=_hmCharacteristicsBlacklistedFromApp;
 @property (strong, nonatomic) NSArray *hmRequiresDeviceUnlockTuples; // @synthesize hmRequiresDeviceUnlockTuples=_hmRequiresDeviceUnlockTuples;
+@property (strong, nonatomic) NSArray *hmServicesBlacklistedFromApp; // @synthesize hmServicesBlacklistedFromApp=_hmServicesBlacklistedFromApp;
 @property (nonatomic) BOOL incomplete; // @synthesize incomplete=_incomplete;
 @property (strong, nonatomic) NSNumber *schemaVersion; // @synthesize schemaVersion=_schemaVersion;
 @property (strong, nonatomic) NSNumber *version; // @synthesize version=_version;
@@ -74,14 +78,16 @@
 - (id)parseAssistantCharacteristics:(id)arg1;
 - (BOOL)parseAssistantMetadata:(id)arg1;
 - (id)parseAssistantUnits:(id)arg1;
-- (BOOL)parseBlacklistedServices:(id)arg1;
+- (BOOL)parseBlacklistedServices:(id)arg1 fromApplication:(BOOL)arg2;
 - (BOOL)parseCategories:(id)arg1;
 - (id)parseHAPAssistantServices:(id)arg1;
 - (BOOL)parseHMMetadata:(id)arg1;
 - (BOOL)parseRequiresDeviceUnlockMetadata:(id)arg1;
 - (BOOL)requiresDeviceUnlock:(id)arg1 forService:(id)arg2;
 - (BOOL)shouldFilterCharacteristicOfType:(id)arg1;
+- (BOOL)shouldFilterCharacteristicOfTypeFromApp:(id)arg1;
 - (BOOL)shouldFilterServiceOfType:(id)arg1;
+- (BOOL)shouldFilterServiceOfTypeFromApp:(id)arg1;
 - (BOOL)supportsAuthorizationData:(id)arg1 forService:(id)arg2;
 - (id)validateAssociatedServiceType:(id)arg1 forService:(id)arg2;
 

@@ -12,6 +12,7 @@
 
 @interface GEOPDDepartureSequence : PBCodable <NSCopying>
 {
+    CDStruct_62a50c50 _nextStopIds;
     unsigned long long _lineId;
     CDStruct_43c37391 *_operatingHours;
     unsigned long long _operatingHoursCount;
@@ -36,15 +37,19 @@
 @property (nonatomic) BOOL hasStopId;
 @property (strong, nonatomic) NSString *headsignString; // @synthesize headsignString=_headsignString;
 @property (nonatomic) unsigned long long lineId; // @synthesize lineId=_lineId;
+@property (readonly, nonatomic) unsigned long long *nextStopIds;
+@property (readonly, nonatomic) unsigned long long nextStopIdsCount;
 @property (readonly, nonatomic) CDStruct_43c37391 *operatingHours;
 @property (readonly, nonatomic) unsigned long long operatingHoursCount;
 @property (nonatomic) unsigned long long stopId; // @synthesize stopId=_stopId;
 
 - (void)addDeparture:(id)arg1;
 - (void)addDepartureFrequency:(id)arg1;
+- (void)addNextStopId:(unsigned long long)arg1;
 - (void)addOperatingHours:(CDStruct_43c37391)arg1;
 - (void)clearDepartureFrequencys;
 - (void)clearDepartures;
+- (void)clearNextStopIds;
 - (void)clearOperatingHours;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -58,8 +63,10 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (unsigned long long)nextStopIdAtIndex:(unsigned long long)arg1;
 - (CDStruct_43c37391)operatingHoursAtIndex:(unsigned long long)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (void)setNextStopIds:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (void)setOperatingHours:(CDStruct_43c37391 *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
 

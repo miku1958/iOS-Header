@@ -522,6 +522,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)stopVideoSend:(BOOL)arg1 error:(id *)arg2;
 - (void)timeoutUnfinishedConnection;
 - (BOOL)treatAsCellular;
+- (void)triggerInterfaceChange;
 - (void)unlock;
 - (void)updateAudioTxBitrate;
 - (void)updateDeviceRole:(int)arg1;

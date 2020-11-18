@@ -60,6 +60,7 @@
 - (id)init;
 - (id)initWithAbsoluteDate:(id)arg1;
 - (id)initWithRelativeOffset:(double)arg1;
+- (BOOL)isTopographicallyEqualToAlarm:(id)arg1;
 - (id)lazyLoadRelationForKey:(id)arg1;
 - (id)ownerUUID;
 - (BOOL)rebase;

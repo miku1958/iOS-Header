@@ -40,6 +40,7 @@
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
+- (id)copyWithUpdatedTimestamp:(double)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)decodedTimestamp;
 - (id)decodedValue;

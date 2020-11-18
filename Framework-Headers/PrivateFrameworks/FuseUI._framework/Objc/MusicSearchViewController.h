@@ -25,8 +25,6 @@
     BOOL _allowsRadioContentInStoreSearch;
     BOOL _didInsertStoreSearchResultsDocument;
     BOOL _didMakeSearchBarFirstResponder;
-    BOOL _hasPreviouslyShownLibrarySearchResults;
-    BOOL _hasPreviouslyShownStoreSearchResults;
     MusicLibrarySearchResultsViewController *_librarySearchResultsViewController;
     _UINavigationControllerPalette *_palette;
     MusicSearchBar *_searchBar;
@@ -74,7 +72,6 @@
 - (void)_handleCanShowRadioDidChangeNotification:(id)arg1;
 - (void)_handleCanShowSubscriptionContentDidChangeNotification:(id)arg1;
 - (void)_handleCancelButtonPressed;
-- (void)_handleMetricsWithSearchTerm:(id)arg1 focusedViewControllerIndex:(unsigned long long)arg2;
 - (void)_recordSearchRecent:(id)arg1;
 - (void)_removeConstraints;
 - (id)_storeSearchSegmentTitle;

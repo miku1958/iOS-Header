@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class UIColor, _UIBackdropViewSettings;
 
@@ -24,13 +24,13 @@
 @property (readonly, nonatomic) long long graphicsQuality; // @synthesize graphicsQuality=_quality;
 @property (readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly, nonatomic) double tintAlpha; // @synthesize tintAlpha=_tintAlpha;
-@property (readonly, strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
+@property (readonly, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 
+- (void).cxx_destruct;
 - (void)_configure;
 - (id)_settingsForStyle;
 - (id)_stringForQuality;
 - (id)_stringForStyle;
-- (void)dealloc;
 - (id)description;
 - (id)initWithStyle:(unsigned long long)arg1 quality:(long long)arg2;
 

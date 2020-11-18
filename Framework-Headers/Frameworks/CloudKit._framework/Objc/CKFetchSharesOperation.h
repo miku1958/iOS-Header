@@ -20,17 +20,19 @@
 
 @property (copy, nonatomic) CDUnknownBlockType fetchSharesCompletionBlock; // @synthesize fetchSharesCompletionBlock=_fetchSharesCompletionBlock;
 @property (strong, nonatomic) NSMutableDictionary *shareIDErrors; // @synthesize shareIDErrors=_shareIDErrors;
-@property (readonly, nonatomic) NSArray *shareIDs; // @synthesize shareIDs=_shareIDs;
+@property (strong, nonatomic) NSArray *shareIDs; // @synthesize shareIDs=_shareIDs;
 @property (strong, nonatomic) NSMutableDictionary *sharesByShareID; // @synthesize sharesByShareID=_sharesByShareID;
 @property (strong, nonatomic) NSMutableDictionary *zoneIDErrors; // @synthesize zoneIDErrors=_zoneIDErrors;
-@property (readonly, nonatomic) NSArray *zoneIDs; // @synthesize zoneIDs=_zoneIDs;
+@property (strong, nonatomic) NSArray *zoneIDs; // @synthesize zoneIDs=_zoneIDs;
 
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleProgressCallback:(id)arg1;
 - (unsigned long long)activityStart;
+- (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
 - (id)initWithShareIDs:(id)arg1;
 - (id)initWithZoneIDs:(id)arg1;

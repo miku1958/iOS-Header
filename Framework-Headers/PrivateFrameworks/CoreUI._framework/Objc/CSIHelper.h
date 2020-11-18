@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
     NSString *blockDataCacheKeyBGRX;
     NSString *blockDataCacheKeyRGBX;
     unsigned long long sourceRowbytes;
+    unsigned int shouldCache:1;
+    unsigned int _reserved:31;
 }
 
 @end

@@ -21,6 +21,7 @@
 @property (copy, nonatomic) NSString *statusSubtitle; // @dynamic statusSubtitle;
 @property (copy, nonatomic) NSString *statusTitle; // @dynamic statusTitle;
 
+- (void).cxx_destruct;
 - (double)_distanceFromLastLineBaselineToTextFieldBoundsHeight:(id)arg1;
 - (double)_distanceToFirstLineBaseline:(id)arg1;
 - (double)_expectedDistanceBetweenTitleAndSubtitleBaselines;
@@ -35,7 +36,6 @@
 - (id)_statusSubtitleFont;
 - (double)_subtitleBaselineYOffsetFromTopOfEntryField;
 - (double)_subtitleBaselineYOffsetFromTopOfNumberPad;
-- (void)dealloc;
 - (void)forceShowStatus:(BOOL)arg1;
 - (id)initWithLightStyle:(BOOL)arg1;
 - (void)layoutSubviews;

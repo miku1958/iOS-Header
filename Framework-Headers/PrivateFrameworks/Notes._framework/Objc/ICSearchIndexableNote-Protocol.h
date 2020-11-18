@@ -6,10 +6,12 @@
 
 #import <Notes/ICSearchIndexable-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSDate, NSString;
 
 @protocol ICSearchIndexableNote <ICSearchIndexable>
 - (NSString *)contentInfoText;
+- (NSDate *)dateForCurrentSortType;
+- (BOOL)isPasswordProtected;
 - (NSString *)noteAsPlainTextWithoutTitle;
 - (NSArray *)searchableContentKeyPaths;
 - (NSString *)title;

@@ -8,23 +8,29 @@
 
 #import <Accounts/NSSecureCoding-Protocol.h>
 
+@class NSArray;
+
 @interface ACDataclassAction : NSObject <NSSecureCoding>
 {
     BOOL _isDestructive;
     long long _type;
+    NSArray *_affectedContainers;
 }
 
+@property (readonly, nonatomic) NSArray *affectedContainers; // @synthesize affectedContainers=_affectedContainers;
 @property (readonly, nonatomic) BOOL isDestructive; // @synthesize isDestructive=_isDestructive;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (id)actionWithType:(long long)arg1;
 + (id)destructiveActionWithType:(long long)arg1;
++ (id)destructiveActionWithType:(long long)arg1 affectedContainers:(id)arg2;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithType:(long long)arg1 destructivity:(BOOL)arg2;
+- (id)initWithType:(long long)arg1 destructivity:(BOOL)arg2 affectedContainers:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 
 @end

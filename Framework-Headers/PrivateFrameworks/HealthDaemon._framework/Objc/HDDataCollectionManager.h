@@ -65,12 +65,8 @@
 - (void)startDataCollectionForType:(id)arg1 observer:(id)arg2 collectionInterval:(double)arg3;
 - (void)startFakingDataWithActivityType:(long long)arg1 speed:(id)arg2;
 - (void)startFakingWithHKWorkoutActivityType:(unsigned long long)arg1;
-- (void)startRecordingDataToFile:(id)arg1;
-- (void)startReplayingDataFromFile:(id)arg1 repeat:(BOOL)arg2;
 - (void)stopDataCollectionForType:(id)arg1 observer:(id)arg2;
 - (void)stopFakingData;
-- (void)stopRecordingData;
-- (void)stopReplayingData;
 
 @end
 

@@ -14,6 +14,7 @@
 {
     BOOL _closeRequestSupported;
     BOOL _hasDuplicateName;
+    BOOL _ephemeralDevice;
     NSString *_name;
     NSString *_uuid;
     NSArray *_tabs;
@@ -22,16 +23,18 @@
 
 @property (readonly, nonatomic, getter=isCloseRequestSupported) BOOL closeRequestSupported; // @synthesize closeRequestSupported=_closeRequestSupported;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly, nonatomic, getter=isEphemeralDevice) BOOL ephemeralDevice; // @synthesize ephemeralDevice=_ephemeralDevice;
 @property (readonly, nonatomic) BOOL hasDuplicateName; // @synthesize hasDuplicateName=_hasDuplicateName;
 @property (readonly, nonatomic) NSDate *lastModified; // @synthesize lastModified=_lastModified;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, copy, nonatomic) NSArray *tabs; // @synthesize tabs=_tabs;
 @property (readonly, copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
-+ (id)_dictionaryWithDeviceName:(id)arg1 lastModified:(id)arg2 hasDuplicateName:(BOOL)arg3 tabs:(id)arg4;
++ (id)_dictionaryWithDeviceName:(id)arg1 lastModified:(id)arg2 hasDuplicateName:(BOOL)arg3 tabs:(id)arg4 isEphemeralDevice:(BOOL)arg5;
 + (id)deviceNameInDictionary:(id)arg1;
 + (BOOL)hasDuplicateDeviceNameInDictionary:(id)arg1;
 + (BOOL)isCloudTabDeviceDictionary:(id)arg1;
++ (BOOL)isEphemeralDeviceInDictionary:(id)arg1;
 + (id)lastModifiedDateInDictionary:(id)arg1;
 + (unsigned long long)tabCountInDictionary:(id)arg1;
 - (void).cxx_destruct;
@@ -41,6 +44,7 @@
 - (id)deviceByRemovingTabs:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithDeviceName:(id)arg1 lastModified:(id)arg2 hasDuplicateName:(BOOL)arg3 tabs:(id)arg4 uuid:(id)arg5;
+- (id)initWithDeviceName:(id)arg1 lastModified:(id)arg2 hasDuplicateName:(BOOL)arg3 tabs:(id)arg4 uuid:(id)arg5 isEphemeralDevice:(BOOL)arg6;
 - (id)initWithDictionary:(id)arg1 uuid:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 

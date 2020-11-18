@@ -21,7 +21,8 @@
 @property (copy, nonatomic) NSString *displayAppName;
 @property (copy, nonatomic) NSDictionary *displayAppNameMap;
 @property (strong, nonatomic) SAGlance *glance;
-@property (copy, nonatomic) NSNumber *isNanoApp;
+@property (nonatomic) BOOL hidden;
+@property (nonatomic) BOOL isNanoApp;
 @property (copy, nonatomic) NSNumber *nowPlayingAppWithBrowsableContent;
 @property (copy, nonatomic) NSString *providerName;
 @property (strong, nonatomic) SASiriSupport *siriSupport;

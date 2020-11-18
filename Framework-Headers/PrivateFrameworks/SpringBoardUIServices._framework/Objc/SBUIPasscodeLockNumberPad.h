@@ -29,9 +29,9 @@
     BOOL _useLightStyle;
 }
 
-@property (readonly, nonatomic) NSArray *buttons;
+@property (readonly, weak, nonatomic) NSArray *buttons;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<SBUIPasscodeLockNumberPadDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<SBUIPasscodeLockNumberPadDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIControl<SBUIPasscodeNumberPadButton> *downButton; // @synthesize downButton=_downButton;
 @property (readonly) unsigned long long hash;
@@ -43,6 +43,7 @@
 + (id)_buttonForCharacter:(unsigned int)arg1 withLightStyle:(BOOL)arg2;
 + (struct CGSize)_inputButtonCircleSize;
 + (struct UIEdgeInsets)_inputButtonCircleSpacing;
+- (void).cxx_destruct;
 - (void)_backspaceButtonHit;
 - (void)_cancelButtonHit;
 - (void)_configureAdditionalButtons;
@@ -54,7 +55,6 @@
 - (void)_numberPadTouchDrag:(id)arg1 forEvent:(id)arg2;
 - (void)_numberPadTouchUp:(id)arg1 forEvent:(id)arg2;
 - (void)_setLuminosityBoost:(double)arg1;
-- (void)dealloc;
 - (id)initWithDefaultSizeAndLightStyle:(BOOL)arg1;
 - (void)setBackgroundAlpha:(double)arg1;
 - (void)setCustomBackgroundColor:(id)arg1;

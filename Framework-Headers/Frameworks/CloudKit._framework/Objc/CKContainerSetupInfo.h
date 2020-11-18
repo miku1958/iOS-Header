@@ -12,12 +12,14 @@
 
 @interface CKContainerSetupInfo : NSObject <NSSecureCoding>
 {
+    BOOL _captureResponseHTTPHeaders;
     CKContainerID *_containerID;
     NSString *_sourceApplicationBundleIdentifier;
     CKAccountInfo *_accountInfoOverride;
 }
 
 @property (strong, nonatomic) CKAccountInfo *accountInfoOverride; // @synthesize accountInfoOverride=_accountInfoOverride;
+@property (nonatomic) BOOL captureResponseHTTPHeaders; // @synthesize captureResponseHTTPHeaders=_captureResponseHTTPHeaders;
 @property (strong, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
 @property (strong, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
 

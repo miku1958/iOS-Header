@@ -8,17 +8,23 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSString;
 
 @interface GEOBatchRevGeocodeRequest : PBRequest <NSCopying>
 {
     CDStruct_95bda58d _additionalPlaceTypes;
+    NSString *_deviceCountryCode;
+    NSString *_displayRegion;
     NSMutableArray *_locations;
     NSMutableArray *_serviceTags;
 }
 
 @property (readonly, nonatomic) int *additionalPlaceTypes;
 @property (readonly, nonatomic) unsigned long long additionalPlaceTypesCount;
+@property (strong, nonatomic) NSString *deviceCountryCode; // @synthesize deviceCountryCode=_deviceCountryCode;
+@property (strong, nonatomic) NSString *displayRegion; // @synthesize displayRegion=_displayRegion;
+@property (readonly, nonatomic) BOOL hasDeviceCountryCode;
+@property (readonly, nonatomic) BOOL hasDisplayRegion;
 @property (strong, nonatomic) NSMutableArray *locations; // @synthesize locations=_locations;
 @property (strong, nonatomic) NSMutableArray *serviceTags; // @synthesize serviceTags=_serviceTags;
 

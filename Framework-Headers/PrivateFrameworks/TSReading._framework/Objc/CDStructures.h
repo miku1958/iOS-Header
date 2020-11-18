@@ -446,12 +446,13 @@ struct TSWPLayoutChore {
     struct TSWPTopicNumberHints _field12;
     struct TSWPTopicNumberHints _field13;
     struct TSWPDropCapLayoutState _field14;
-    struct vector<TSWPLayoutState, std::__1::allocator<TSWPLayoutState>> _field15;
-    struct TSWPCoreTextTypesetter *_field16;
-    struct _NSRange _field17;
-    long long _field18;
-    id _field19;
-    struct __CFLocale *_field20;
+    struct TSWPLineStylingLayoutState _field15;
+    struct vector<TSWPLayoutState, std::__1::allocator<TSWPLayoutState>> _field16;
+    struct TSWPCoreTextTypesetter *_field17;
+    struct _NSRange _field18;
+    long long _field19;
+    id _field20;
+    struct __CFLocale *_field21;
 };
 
 struct TSWPLayoutState {
@@ -580,6 +581,25 @@ struct TSWPLineFragment {
 struct TSWPLineFragmentArray;
 
 struct TSWPLineRef;
+
+struct TSWPLineStylingCTState {
+    id _field1;
+    struct {
+        unsigned int :1;
+        struct _NSRange _field1;
+        unsigned long long _field2;
+    } _field2;
+};
+
+struct TSWPLineStylingLayoutState {
+    id _field1;
+    struct TSWPLineStylingCTState _field2;
+    struct {
+        unsigned long long _field1;
+        unsigned long long _field2;
+        unsigned int :1;
+    } _field3;
+};
 
 struct TSWPListLabel;
 

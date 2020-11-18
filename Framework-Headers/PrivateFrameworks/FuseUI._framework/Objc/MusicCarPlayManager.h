@@ -28,6 +28,7 @@
 - (id)_init;
 - (void)_screenDidConnectNotification:(id)arg1;
 - (void)_screenDidDisconnectNotification:(id)arg1;
+- (void)_setupPlaybackForPlayer:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)attachToAvailableScreen;
 - (void)changeRepeatType:(unsigned long long)arg1;
 - (void)changeShuffleType:(unsigned long long)arg1;
@@ -36,6 +37,7 @@
 - (id)init;
 - (void)reloadPlayer:(id)arg1 geniusMixPlaylist:(id)arg2 options:(id)arg3;
 - (void)reloadPlayer:(id)arg1 mediaQuery:(id)arg2 options:(id)arg3;
+- (void)reloadPlayer:(id)arg1 radioMetadata:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)reloadPlayer:(id)arg1 radioStation:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)showNowPlaying:(BOOL)arg1;
 

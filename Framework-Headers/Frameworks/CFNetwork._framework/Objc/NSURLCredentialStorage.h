@@ -13,6 +13,7 @@
     NSURLCredentialStorageInternal *_internal;
 }
 
+@property (nonatomic) BOOL _useSystemKeychain;
 @property (readonly, copy) NSDictionary *allCredentials;
 
 + (id)sharedCredentialStorage;

@@ -72,7 +72,7 @@ struct Context {
     int _field13;
     unsigned long long _field14;
     unsigned long long _field15;
-    struct map<const CI::PromiseImage *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>, std::__1::less<const CI::PromiseImage *>, std::__1::allocator<std::__1::pair<const CI::PromiseImage *const, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>>> _field16;
+    struct map<const CI::Image *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>, std::__1::less<const CI::Image *>, std::__1::allocator<std::__1::pair<const CI::Image *const, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>>> _field16;
     BOOL _field17;
     struct TreeCacheElement _field18[1024];
     unsigned long long _field19;
@@ -208,15 +208,15 @@ struct filterShape {
     struct CGRect _field1;
 };
 
-struct map<const CI::PromiseImage *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>, std::__1::less<const CI::PromiseImage *>, std::__1::allocator<std::__1::pair<const CI::PromiseImage *const, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>>> {
-    struct __tree<std::__1::__value_type<const CI::PromiseImage *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>, std::__1::__map_value_compare<const CI::PromiseImage *, std::__1::__value_type<const CI::PromiseImage *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>, std::__1::less<const CI::PromiseImage *>, true>, std::__1::allocator<std::__1::__value_type<const CI::PromiseImage *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>>> {
-        struct __tree_node<std::__1::__value_type<const CI::PromiseImage *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>, void *> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<const CI::PromiseImage *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>, void *>>> {
+struct map<const CI::Image *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>, std::__1::less<const CI::Image *>, std::__1::allocator<std::__1::pair<const CI::Image *const, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>>> {
+    struct __tree<std::__1::__value_type<const CI::Image *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>, std::__1::__map_value_compare<const CI::Image *, std::__1::__value_type<const CI::Image *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>, std::__1::less<const CI::Image *>, true>, std::__1::allocator<std::__1::__value_type<const CI::Image *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>>> {
+        struct __tree_node<std::__1::__value_type<const CI::Image *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>, void *> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<const CI::Image *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
                 struct __tree_node_base<void *> *_field1;
             } _field1;
         } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<const CI::PromiseImage *, std::__1::__value_type<const CI::PromiseImage *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>, std::__1::less<const CI::PromiseImage *>, true>> {
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<const CI::Image *, std::__1::__value_type<const CI::Image *, std::__1::vector<CGRect, std::__1::allocator<CGRect>>>, std::__1::less<const CI::Image *>, true>> {
             unsigned long long _field1;
         } _field3;
     } _field1;

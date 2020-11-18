@@ -15,7 +15,8 @@ __attribute__((visibility("hidden")))
     unsigned int _maxDepth;
     BRCLocalContainer *_container;
     NSMutableSet *_whitelist;
-    NSMutableSet *_blacklist;
+    NSMutableSet *_itemIDsLostOrThrottled;
+    NSMutableSet *_itemIDsNeedingOSUpgrade;
     NSMutableDictionary *_tombstonesEmbargo;
     NSMutableIndexSet *_returned;
     struct PQLResultSet *_enumerator;
@@ -28,14 +29,18 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long retryAfter; // @synthesize retryAfter=_retryAfter;
 
 - (void).cxx_destruct;
-- (BOOL)_blackListStackIfItemThrottled:(id)arg1 now:(unsigned long long)arg2;
+- (void)_blackListDescendantStack:(id)arg1 parentItem:(id)arg2 andAddToSet:(id)arg3;
+- (void)_blackListDescendantStack:(id)arg1 parentItem:(id)arg2 andAddToSet:(id)arg3 descendantBlock:(CDUnknownBlockType)arg4;
+- (BOOL)_blackListDescendantStackAndItemIfThrottledOrNeedsOSUpgrade:(id)arg1 now:(unsigned long long)arg2;
 - (struct PQLResultSet *)_documentsOrAliasesNeedingSyncUpEnumerator;
 - (struct PQLResultSet *)_liveOrNewDirectoriesNeedingSyncUpEnumerator;
 - (id)_nextLiveItem;
 - (id)_nextTombstone;
 - (struct PQLResultSet *)_tombstoneLeavesNeedingSyncUpEnumerator;
+- (BOOL)handleItemForOSUpgrade:(id)arg1 parentItemID:(id)arg2;
 - (id)initWithLocalContainer:(id)arg1;
 - (void)invalidate;
+- (BOOL)isBlackListed:(id)arg1;
 - (id)nextObject;
 
 @end

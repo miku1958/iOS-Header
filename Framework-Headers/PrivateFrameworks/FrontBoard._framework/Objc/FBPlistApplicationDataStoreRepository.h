@@ -9,7 +9,7 @@
 #import <FrontBoard/FBApplicationDataStoreRepository-Protocol.h>
 
 @class NSMutableDictionary, NSString, NSURL;
-@protocol FBApplicationDataStoreRepositoryDelegate, OS_dispatch_queue;
+@protocol FBApplicationDataStoreRepositoryDelegate, FBApplicationDataStoreRepositoryReadingDelegate, OS_dispatch_queue;
 
 @interface FBPlistApplicationDataStoreRepository : NSObject <FBApplicationDataStoreRepository>
 {
@@ -24,7 +24,7 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<FBApplicationDataStoreRepositoryDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) id<FBApplicationDataStoreRepositoryReadingDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;

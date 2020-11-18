@@ -15,6 +15,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)__reallySetPlayer:(id)arg1;
 - (void)_forceLayout;
 - (id)init;
 - (void)setBounds:(struct CGRect)arg1;

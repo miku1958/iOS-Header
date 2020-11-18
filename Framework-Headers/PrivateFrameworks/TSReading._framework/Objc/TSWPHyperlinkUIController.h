@@ -25,7 +25,6 @@
     NSString *_editedDisplayText;
     NSString *_editedURLString;
     BOOL _removeHyperlink;
-    BOOL _readOnly;
     BOOL _closingDocument;
     BOOL _shouldMaintainKeyboardWhenEndingSession;
 }

@@ -99,6 +99,7 @@
 @property (readonly, nonatomic, getter=_placeDataAsData) NSData *placeDataAsData;
 @property (strong, nonatomic) GEOPlaceResult *placeResult; // @synthesize placeResult=_placeResult;
 @property (readonly, nonatomic, getter=_placeType) int placeType;
+@property (readonly, nonatomic, getter=_poiPinpointURLString) NSString *poiPinpointURLString;
 @property (readonly, nonatomic, getter=_poiSurveyURLString) NSString *poiSurveyURLString;
 @property (readonly, nonatomic, getter=_priceRange) unsigned int priceRange;
 @property (readonly, copy, nonatomic, getter=_providerURL) NSURL *providerURL;

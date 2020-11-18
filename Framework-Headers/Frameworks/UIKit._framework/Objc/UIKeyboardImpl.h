@@ -10,7 +10,7 @@
 #import <UIKit/_UIIVCResponseDelegateImpl-Protocol.h>
 #import <UIKit/_UIKeyboardTextSelectionGestureControllerDelegate-Protocol.h>
 
-@class NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, TIKeyboardCandidateResultSet, TIKeyboardInputManagerState, TIKeyboardInputManagerStub, TIKeyboardLayout, TIKeyboardState, TIKeyboardTouchEvent, UIAlertView, UIAutocorrectInlinePrompt, UIDelayedAction, UIKeyboardAutocorrectionController, UIKeyboardLayout, UIKeyboardScheduledTask, UIKeyboardTaskQueue, UIPhysicalKeyboardEvent, UIResponder, UITextInputArrowKeyHistory, UITextInputTraits, UITextSelectionView, WebEvent, _UIActionWhenIdle, _UIKeyboardTextSelectionController;
+@class NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, TIKeyboardCandidateResultSet, TIKeyboardInputManagerState, TIKeyboardInputManagerStub, TIKeyboardLayout, TIKeyboardState, TIKeyboardTouchEvent, UIAlertView, UIAutocorrectInlinePrompt, UIDelayedAction, UIKeyboardAutocorrectionController, UIKeyboardLayout, UIKeyboardScheduledTask, UIKeyboardTaskQueue, UILexicon, UIPhysicalKeyboardEvent, UIResponder, UITextInputArrowKeyHistory, UITextInputTraits, UITextSelectionView, WebEvent, _UIActionWhenIdle, _UIKeyboardTextSelectionController;
 @protocol UIKeyInput, UIKeyInputPrivate, UIKeyboardCandidateList, UIKeyboardImplGeometryDelegate, UIKeyboardInput, UIKeyboardRecording><UIApplicationEventRecording, UITextInput, UITextInputPrivate, UIWKInteractionViewProtocol;
 
 @interface UIKeyboardImpl : UIView <_UIIVCResponseDelegateImpl, _UIKeyboardTextSelectionGestureControllerDelegate, UIKeyboardCandidateListDelegate>
@@ -52,6 +52,7 @@
     UITextInputTraits *m_traits;
     int m_returnKeyState;
     long long m_currentDirection;
+    UILexicon *m_recentInputs;
     BOOL m_autoDeleteOK;
     BOOL m_autocapitalizationPreference;
     BOOL m_autocorrectionPreference;
@@ -110,6 +111,7 @@
     BOOL m_updateLayoutOnShowKeyboard;
     BOOL m_receivedCandidatesInCurrentInputMode;
     int _currentAlertReason;
+    BOOL m_canUpdateIdleTimer;
     BOOL m_scrolling;
     BOOL m_hasInputOnAcceptCandidate;
     BOOL m_maximizing;
@@ -146,6 +148,7 @@
 @property (readonly, nonatomic) UIResponder<UIWKInteractionViewProtocol> *asynchronousInputDelegate;
 @property (strong, nonatomic) UIKeyboardScheduledTask *autocorrectPromptTask; // @synthesize autocorrectPromptTask=_autocorrectPromptTask;
 @property (readonly, nonatomic) UIKeyboardAutocorrectionController *autocorrectionController; // @synthesize autocorrectionController=m_autocorrectionController;
+@property (nonatomic) BOOL canUpdateIdleTimer; // @synthesize canUpdateIdleTimer=m_canUpdateIdleTimer;
 @property (strong, nonatomic) NSDictionary *candidateRequestInfo; // @synthesize candidateRequestInfo=_candidateRequestInfo;
 @property (readonly) BOOL centerFilled;
 @property (strong, nonatomic) id changedDelegate; // @dynamic changedDelegate;
@@ -443,7 +446,7 @@
 - (void)handleClear;
 - (void)handleClearWithExecutionContext:(id)arg1;
 - (void)handleClearWithInsertBeforeAdvance:(id)arg1;
-- (void)handleDelayedActionLongPress;
+- (void)handleDelayedActionLongPress:(id)arg1;
 - (void)handleDelete;
 - (void)handleDeleteAsRepeat:(BOOL)arg1 executionContext:(id)arg2;
 - (id)handleDeleteAutospaceForInputString:(id)arg1 afterSpace:(BOOL)arg2;
@@ -504,6 +507,7 @@
 - (id)layoutState;
 - (void)logHandwritingData;
 - (void)longPressAction;
+- (void)longPressAction:(id)arg1;
 - (id)markedText;
 - (id)markedTextOverlay;
 - (void)moveCursorByAmount:(long long)arg1;
@@ -668,6 +672,7 @@
 - (void)touchAutocorrectPromptTimer;
 - (void)touchLongPressTimer;
 - (void)touchLongPressTimerWithDelay:(double)arg1;
+- (void)touchLongPressTimerWithDelay:(double)arg1 userInfo:(id)arg2;
 - (void)trackUsageForAcceptedAutocorrection:(id)arg1 promptWasShowing:(BOOL)arg2;
 - (void)trackUsageForCandidateAcceptedAction:(id)arg1;
 - (void)trackUsageForPromptedCorrection:(id)arg1 inputString:(id)arg2 previousPrompt:(id)arg3;

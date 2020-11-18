@@ -8,17 +8,19 @@
 
 #import <CompanionSync/SYChangeSerializer-Protocol.h>
 
-@class NSDictionary, NSError, NSString, SYService;
+@class NSDictionary, NSError, NSMutableSet, NSString, SYService;
 @protocol OS_dispatch_queue, SYChangeSerializer, SYSessionDelegate;
 
 @interface SYSession : NSObject <SYChangeSerializer>
 {
     NSObject<OS_dispatch_queue> *_targetQueue;
     int _inTransaction;
+    NSMutableSet *_pendingMessageIDs;
     BOOL _isSending;
     long long _priority;
     id<SYSessionDelegate> _delegate;
     id<SYChangeSerializer> _serializer;
+    NSString *_identifier;
     SYService *_service;
     double _perMessageTimeout;
     double _fullSessionTimeout;
@@ -28,7 +30,6 @@
     NSDictionary *_userContext;
     NSDictionary *_sessionMetadata;
     NSObject<OS_dispatch_queue> *_queue;
-    NSString *_identifier;
     double _birthDate;
 }
 
@@ -58,10 +59,14 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *targetQueue;
 @property (strong, nonatomic) NSDictionary *userContext; // @synthesize userContext=_userContext;
 @property (readonly) BOOL wasCancelled;
+@property (readonly, nonatomic) NSDictionary *wrappedUserContext;
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 - (void).cxx_destruct;
 - (BOOL)_beginTransaction;
+- (id)_cancelPendingMessagesReturningFailures;
+- (void)_clearOutgoingMessageUUID:(id)arg1;
+- (void)_continue;
 - (BOOL)_endTransaction;
 - (void)_handleEndSession:(id)arg1 response:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_handleEndSessionResponse:(id)arg1 error:(id *)arg2;
@@ -71,16 +76,22 @@
 - (BOOL)_handleStartSessionResponse:(id)arg1 error:(id *)arg2;
 - (void)_handleSyncBatch:(id)arg1 response:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_handleSyncBatchResponse:(id)arg1 error:(id *)arg2;
+- (void)_pause;
 - (void)_peerProcessedMessageWithIdentifier:(id)arg1 userInfo:(id)arg2;
+- (void)_recordOutgoingMessageUUID:(id)arg1;
 - (void)_resolvedIdentifier:(id)arg1 forResponse:(id)arg2;
 - (void)_resolvedIdentifierForRequest:(id)arg1;
 - (void)_sentMessageWithIdentifier:(id)arg1 userInfo:(id)arg2;
+- (void)_setStateQuietly:(long long)arg1;
+- (void)_supercededWithSession:(id)arg1;
 - (void)cancel;
 - (id)changeFromData:(id)arg1 ofType:(long long)arg2;
 - (id)dataFromChange:(id)arg1;
 - (void)dealloc;
+- (id)decodeChangeData:(id)arg1 fromProtocolVersion:(long long)arg2 ofType:(long long)arg3;
 - (void)didCompleteSession;
 - (void)didStartSession;
+- (id)encodeSYChangeForBackwardCompatibility:(id)arg1 protocolVersion:(long long)arg2;
 - (id)initWithService:(id)arg1;
 - (void)start:(CDUnknownBlockType)arg1;
 

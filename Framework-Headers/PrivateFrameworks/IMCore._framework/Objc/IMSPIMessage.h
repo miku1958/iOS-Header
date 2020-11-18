@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class IMSPIHandle, NSArray, NSAttributedString, NSDate, NSString, NSURL;
 
@@ -18,22 +18,30 @@
     NSArray *_recipients;
     NSURL *_url;
     NSDate *_date;
+    NSDate *_dateRead;
+    NSDate *_lastReadDate;
     IMSPIHandle *_sender;
     long long _messageID;
     BOOL _isOutgoing;
     BOOL _isRead;
     BOOL _isAudioMessage;
     NSArray *_chatGuids;
+    NSString *_groupID;
+    NSString *_displayName;
 }
 
 @property (strong) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
 @property (strong) NSArray *chatGUIDs; // @synthesize chatGUIDs=_chatGUIDs;
 @property (readonly, strong) NSArray *chatGuids; // @synthesize chatGuids=_chatGuids;
 @property (strong) NSDate *date; // @synthesize date=_date;
+@property (strong) NSDate *dateRead; // @synthesize dateRead=_dateRead;
+@property (strong) NSString *displayName; // @synthesize displayName=_displayName;
+@property (strong) NSString *groupID; // @synthesize groupID=_groupID;
 @property (strong) NSString *guid; // @synthesize guid=_guid;
 @property BOOL isAudioMessage; // @synthesize isAudioMessage=_isAudioMessage;
 @property BOOL isOutgoing; // @synthesize isOutgoing=_isOutgoing;
 @property BOOL isRead; // @synthesize isRead=_isRead;
+@property (strong) NSDate *lastReadDate; // @synthesize lastReadDate=_lastReadDate;
 @property long long messageID; // @synthesize messageID=_messageID;
 @property (strong) NSArray *recipients; // @synthesize recipients=_recipients;
 @property (strong) IMSPIHandle *sender; // @synthesize sender=_sender;

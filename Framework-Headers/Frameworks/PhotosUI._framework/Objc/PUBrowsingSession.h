@@ -9,11 +9,10 @@
 #import <PhotosUI/PUAssetActionManagerDelegate-Protocol.h>
 #import <PhotosUI/PUAssetsDataSourceManagerDelegate-Protocol.h>
 #import <PhotosUI/PULoadingStatusManagerDelegate-Protocol.h>
-#import <PhotosUI/PUTilingViewLayoutDelegate-Protocol.h>
 
 @class NSString, PUAssetActionManager, PUAssetsDataSourceManager, PUAudioSessionCategoryToken, PUBrowsingViewModel, PUContentTileProvider, PULoadingStatusManager, PUMediaProvider, PUTileAnimator;
 
-@interface PUBrowsingSession : NSObject <PUAssetsDataSourceManagerDelegate, PUAssetActionManagerDelegate, PULoadingStatusManagerDelegate, PUTilingViewLayoutDelegate>
+@interface PUBrowsingSession : NSObject <PUAssetsDataSourceManagerDelegate, PUAssetActionManagerDelegate, PULoadingStatusManagerDelegate>
 {
     BOOL _active;
     PUAssetsDataSourceManager *_dataSourceManager;
@@ -50,7 +49,6 @@
 - (id)init;
 - (id)initWithDataSourceManager:(id)arg1 actionManager:(id)arg2 mediaProvider:(id)arg3;
 - (void)loadingStatusManager:(id)arg1 didUpdateLoadingStatus:(id)arg2 forItem:(id)arg3;
-- (void)tilingViewDidLayoutTileControllers:(id)arg1;
 
 @end
 

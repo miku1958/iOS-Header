@@ -63,6 +63,7 @@
 - (void)disableNetworkObservation;
 - (void)enableNetworkObservation;
 - (void *)getSharedAddressBook;
+- (id)getSharedContactStore;
 - (void)handleImportCompleteAlertResponse:(struct __CFUserNotification *)arg1 flags:(unsigned long long)arg2;
 - (id)mainWindow;
 - (void)photosPreferencesChanged;

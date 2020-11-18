@@ -28,12 +28,14 @@
     NSString *_keyboardLanguage;
     NSString *_geoUserSessionIDString;
     double _geoUserSessionStartTime;
+    NSArray *_geoPlaceData;
 }
 
 @property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (nonatomic) unsigned int domain; // @synthesize domain=_domain;
 @property (strong, nonatomic) NSString *externalIdentifier; // @synthesize externalIdentifier=_externalIdentifier;
 @property (copy, nonatomic) NSString *fbq; // @synthesize fbq=_fbq;
+@property (strong, nonatomic) NSArray *geoPlaceData; // @synthesize geoPlaceData=_geoPlaceData;
 @property (nonatomic) unsigned int geoUserSequenceNumber; // @synthesize geoUserSequenceNumber=_geoUserSequenceNumber;
 @property (strong, nonatomic) NSString *geoUserSessionIDString; // @synthesize geoUserSessionIDString=_geoUserSessionIDString;
 @property (nonatomic) double geoUserSessionStartTime; // @synthesize geoUserSessionStartTime=_geoUserSessionStartTime;

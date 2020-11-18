@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class UIStatusBarForegroundStyleAttributes, UIStatusBarItem, UIStatusBarLayoutManager, _UILegibilityView;
+@class NSString, UIStatusBarForegroundStyleAttributes, UIStatusBarItem, UIStatusBarLayoutManager, _UILegibilityImageSet, _UILegibilityView;
 
 __attribute__((visibility("hidden")))
 @interface UIStatusBarItemView : UIView
@@ -15,6 +15,9 @@ __attribute__((visibility("hidden")))
     struct CGContext *_imageContext;
     double _imageContextScale;
     _UILegibilityView *_legibilityView;
+    _UILegibilityImageSet *_lastGeneratedTextImage;
+    double _lastGeneratedTextImageLetterSpacing;
+    NSString *_lastGeneratedTextImageText;
     BOOL _visible;
     BOOL _allowsUpdates;
     UIStatusBarItem *_item;
@@ -37,6 +40,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)animatesDataChange;
 - (void)beginDisablingRasterization;
 - (void)beginImageContextWithMinimumWidth:(double)arg1;
+- (id)cachedImageWithText:(id)arg1 truncatedWithEllipsesAtMaxWidth:(double)arg2 letterSpacing:(double)arg3;
+- (void)clearCachedTextImage;
 - (id)contentsImage;
 - (double)currentLeftOverlap;
 - (double)currentOverlap;

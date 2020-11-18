@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)createSharedInstanceIfNecessary;
++ (void)setSharedInstance:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)incrementValueBy:(long long)arg1 forKey:(id)arg2;

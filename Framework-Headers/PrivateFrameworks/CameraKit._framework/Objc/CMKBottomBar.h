@@ -8,13 +8,11 @@
 
 #import <CameraKit/CMKExpandableMenuButtonDelegate-Protocol.h>
 
-@class CMKElapsedTimeView, CMKExpandableMenuButton, CMKFilterButton, CMKFlipButton, CMKHDRButton, CMKImageWell, CMKModeDial, CMKShutterButton, CMKSlalomIndicatorView, CMKTimerButton, UIButton;
+@class CMKElapsedTimeView, CMKExpandableMenuButton, CMKFilterButton, CMKFlashButton, CMKFlipButton, CMKHDRButton, CMKImageWell, CMKModeDial, CMKShutterButton, CMKSlalomIndicatorView, CMKTimerButton, UIButton;
 @protocol CMKBottomBarDelegate;
 
 @interface CMKBottomBar : UIView <CMKExpandableMenuButtonDelegate>
 {
-    BOOL __HDRButtonExpanded;
-    BOOL __timerButtonExpanded;
     id<CMKBottomBarDelegate> _delegate;
     long long _orientation;
     long long _backgroundStyle;
@@ -25,6 +23,7 @@
     CMKShutterButton *_shutterButton;
     CMKFilterButton *_filterButton;
     CMKFlipButton *_flipButton;
+    CMKFlashButton *_flashButton;
     CMKElapsedTimeView *_elapsedTimeView;
     CMKHDRButton *_HDRButton;
     CMKTimerButton *_timerButton;
@@ -41,7 +40,6 @@
 }
 
 @property (strong, nonatomic) CMKHDRButton *HDRButton; // @synthesize HDRButton=_HDRButton;
-@property (nonatomic, getter=_isHDRButtonExpanded, setter=_setHDRButtonExpanded:) BOOL _HDRButtonExpanded; // @synthesize _HDRButtonExpanded=__HDRButtonExpanded;
 @property (readonly, nonatomic) UIView *_elapsedTimeViewCenteringLayoutSpacer; // @synthesize _elapsedTimeViewCenteringLayoutSpacer=__elapsedTimeViewCenteringLayoutSpacer;
 @property (strong, nonatomic, setter=_setExpandedMenuButton:) CMKExpandableMenuButton *_expandedMenuButton; // @synthesize _expandedMenuButton=__expandedMenuButton;
 @property (readonly, nonatomic) UIView *_filterButtonBottomLayoutSpacer; // @synthesize _filterButtonBottomLayoutSpacer=__filterButtonBottomLayoutSpacer;
@@ -50,13 +48,13 @@
 @property (readonly, nonatomic) UIView *_shutterButtomBottomLayoutSpacer; // @synthesize _shutterButtomBottomLayoutSpacer=__shutterButtomBottomLayoutSpacer;
 @property (readonly, nonatomic) UIView *_slalomIndicatorBottomLayoutSpacer; // @synthesize _slalomIndicatorBottomLayoutSpacer=__slalomIndicatorBottomLayoutSpacer;
 @property (readonly, nonatomic) UIView *_stillDuringVideoButtonBottomLayoutSpacer; // @synthesize _stillDuringVideoButtonBottomLayoutSpacer=__stillDuringVideoButtonBottomLayoutSpacer;
-@property (nonatomic, getter=_isTimerButtonExpanded, setter=_setTimerButtonExpanded:) BOOL _timerButtonExpanded; // @synthesize _timerButtonExpanded=__timerButtonExpanded;
 @property (nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property (readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (strong, nonatomic) UIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property (weak, nonatomic) id<CMKBottomBarDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) CMKElapsedTimeView *elapsedTimeView; // @synthesize elapsedTimeView=_elapsedTimeView;
 @property (strong, nonatomic) CMKFilterButton *filterButton; // @synthesize filterButton=_filterButton;
+@property (strong, nonatomic) CMKFlashButton *flashButton; // @synthesize flashButton=_flashButton;
 @property (strong, nonatomic) CMKFlipButton *flipButton; // @synthesize flipButton=_flipButton;
 @property (strong, nonatomic) CMKImageWell *imageWell; // @synthesize imageWell=_imageWell;
 @property (strong, nonatomic) CMKModeDial *modeDial; // @synthesize modeDial=_modeDial;
@@ -93,7 +91,7 @@
 - (void)_setupVerticalShutterButtonConstraints;
 - (void)_setupVerticalSlalomIndicatorConstraints;
 - (BOOL)_shouldHideElapsedTimeView;
-- (BOOL)_shouldHideFlipButton;
+- (BOOL)_shouldHideFlashButton;
 - (BOOL)_shouldHideHDRButton;
 - (BOOL)_shouldHideTimerButton;
 - (void)_updateBackgroundStyleAnimated:(BOOL)arg1;

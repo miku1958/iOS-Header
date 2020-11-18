@@ -55,7 +55,9 @@
 - (void)_handleProgressCallback:(id)arg1;
 - (void)_trackAssetsToUpload;
 - (unsigned long long)activityStart;
+- (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
 - (id)initWithRecordsToSave:(id)arg1 recordIDsToDelete:(id)arg2;
 - (void)performCKOperation;

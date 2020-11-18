@@ -15,13 +15,14 @@
     PLManagedObjectContext *_managedObjectContext;
     NSArray *_assetObjectIDs;
     NSArray *_albumObjectIDs;
-    NSArray *_resultStore;
 }
 
 + (id)enumeratorWithAssetObjectIDs:(id)arg1 albumObjectIDs:(id)arg2 managedObjectContext:(id)arg3;
 - (id)assetsFromOffset:(unsigned long long)arg1 count:(unsigned long long)arg2;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
+- (void)enumerateDictionariesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateDictionariesWithCount:(unsigned long long)arg1 fetchOffset:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (unsigned long long)getPTPdInfo:(id *)arg1 count:(unsigned long long)arg2 fetchOffset:(unsigned long long)arg3;
 - (id)init;
 

@@ -6,50 +6,44 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSString, NSURL, PHAssetResourceCreationOptions, PHSandboxExtensionWrapper;
+@class NSString, NSURL;
 
 @interface PHAssetResource : NSObject
 {
+    BOOL _locallyAvailable;
+    BOOL _derivative;
     long long _resourceType;
     NSString *_assetLocalIdentifier;
     NSString *_uniformTypeIdentifier;
     NSString *_originalFilename;
     NSURL *_fileURL;
-    NSData *_data;
-    PHAssetResourceCreationOptions *_creationOptions;
-    unsigned long long _cplResourceType;
     NSURL *_privateFileURL;
-    PHSandboxExtensionWrapper *_sandboxExtensionWrapper;
     CDUnknownBlockType _privateFileLoader;
+    unsigned long long _pixelWidth;
+    unsigned long long _pixelHeight;
 }
 
-@property (copy, nonatomic) NSString *assetLocalIdentifier; // @synthesize assetLocalIdentifier=_assetLocalIdentifier;
-@property (readonly, nonatomic) unsigned long long cplResourceType; // @synthesize cplResourceType=_cplResourceType;
-@property (copy, nonatomic) PHAssetResourceCreationOptions *creationOptions; // @synthesize creationOptions=_creationOptions;
-@property (strong, nonatomic) NSData *data; // @synthesize data=_data;
-@property (strong, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+@property (readonly, copy, nonatomic) NSString *assetLocalIdentifier; // @synthesize assetLocalIdentifier=_assetLocalIdentifier;
+@property (readonly, nonatomic, getter=isDerivative) BOOL derivative; // @synthesize derivative=_derivative;
+@property (strong, nonatomic, setter=_setFileURL:) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+@property (readonly, nonatomic, getter=isLibraryAssetResource) BOOL libraryAssetResource;
+@property (nonatomic, getter=isLocallyAvailable, setter=_setIsLocallyAvailable:) BOOL locallyAvailable; // @synthesize locallyAvailable=_locallyAvailable;
 @property (copy, nonatomic) NSString *originalFilename; // @synthesize originalFilename=_originalFilename;
+@property (nonatomic, setter=_setPixelHeight:) unsigned long long pixelHeight; // @synthesize pixelHeight=_pixelHeight;
+@property (nonatomic, setter=_setPixelWidth:) unsigned long long pixelWidth; // @synthesize pixelWidth=_pixelWidth;
 @property (copy, nonatomic, setter=_setPrivateFileLoader:) CDUnknownBlockType privateFileLoader; // @synthesize privateFileLoader=_privateFileLoader;
 @property (strong, nonatomic, setter=_setPrivateFileURL:) NSURL *privateFileURL; // @synthesize privateFileURL=_privateFileURL;
-@property (strong, nonatomic, setter=_setSandboxExtensionWrapper:) PHSandboxExtensionWrapper *sandboxExtensionWrapper; // @synthesize sandboxExtensionWrapper=_sandboxExtensionWrapper;
 @property (readonly, nonatomic) long long type; // @synthesize type=_resourceType;
 @property (copy, nonatomic) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
 
-+ (id)_newInfosForResourceType:(long long)arg1 asset:(id)arg2 managedAsset:(id *)arg3 library:(id)arg4;
-+ (unsigned long long)_probableCPLResourceTypeFromAssetResourceType:(long long)arg1;
 + (id)assetResourcesForAsset:(id)arg1;
++ (id)assetResourcesForAsset:(id)arg1 includeDerivatives:(BOOL)arg2;
 + (id)assetResourcesForLivePhoto:(id)arg1;
-+ (BOOL)uniformTypeIdentifier:(struct __CFString *)arg1 conformsToResourceType:(long long)arg2;
 - (void).cxx_destruct;
-- (void)_setAssetLocalIdentifier:(id)arg1;
-- (void)_setCPLResourceType:(unsigned long long)arg1;
 - (void)_setOriginalFilename:(id)arg1;
 - (void)_setUniformTypeIdentifier:(id)arg1;
 - (id)description;
-- (id)init;
-- (id)initWithPropertyListRepresentation:(id)arg1;
 - (id)initWithResourceType:(long long)arg1;
-- (id)propertyListRepresentation;
 
 @end
 

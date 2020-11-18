@@ -6,10 +6,10 @@
 
 #import <CloudPhotoLibrary/CPLPlatformImplementation-Protocol.h>
 
-@class CPLResource, NSArray, NSDate, NSString, NSURL;
+@class CPLResource, NSArray, NSString, NSURL;
 
 @protocol CPLLibraryManagerImplementation <CPLPlatformImplementation>
-- (void)beginDownloadForResource:(CPLResource *)arg1 clientBundleID:(NSString *)arg2 highPriority:(BOOL)arg3 completionHandler:(void (^)(CPLResourceTransferTask *))arg4;
+- (void)beginDownloadForResource:(CPLResource *)arg1 clientBundleID:(NSString *)arg2 highPriority:(BOOL)arg3 proposedTaskIdentifier:(NSString *)arg4 completionHandler:(void (^)(CPLResourceTransferTask *))arg5;
 - (void)closeWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)deactivateWithCompletionHandler:(void (^)(NSError *))arg1;
 - (BOOL)diagnosticsEnabled;
@@ -25,7 +25,6 @@
 - (void)resetStatus;
 - (void)setDiagnosticsEnabled:(BOOL)arg1;
 - (void)startSyncSession;
-- (void)takeStatisticsSnapshotSinceDate:(NSDate *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
 
 @optional
 - (void)addInfoToLog:(NSString *)arg1;

@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 - (struct UIEdgeInsets)edgeInsetsForBatteryInsides;
 - (struct UIEdgeInsets)edgeInsetsForBluetoothBatteryInsides;
 - (double)edgePadding;
-- (id)expandedNameForImageName:(id)arg1;
 - (id)makeTextFontForStyle:(long long)arg1;
 - (double)scale;
 - (double)standardPadding;

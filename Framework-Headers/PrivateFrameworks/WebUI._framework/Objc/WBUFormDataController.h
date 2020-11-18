@@ -37,7 +37,7 @@
 - (void)_saveUser:(id)arg1 password:(id)arg2 forURL:(id)arg3 andPromptToUpdateRelatedCredentialsWithWebView:(id)arg4;
 - (BOOL)_saveUser:(id)arg1 password:(id)arg2 forURL:(id)arg3 formType:(unsigned long long)arg4 promptingPolicy:(long long)arg5 webView:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (BOOL)_shouldSaveCreditCardDataInWebView:(id)arg1 frame:(id)arg2;
-- (BOOL)_shouldSaveUsernamesAndPasswordsInWebView:(id)arg1;
+- (BOOL)_shouldSaveUsernamesAndPasswordsForURL:(id)arg1 inWebView:(id)arg2;
 - (void)_showCreditCardPromptForWebView:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_showPasswordPromptForWebView:(id)arg1 formType:(unsigned long long)arg2 username:(id)arg3 host:(id)arg4 hasCredentialForCurrentHost:(BOOL)arg5 existingCredentialMatchesForCurrentHost:(id)arg6 otherSubdomainCredentialMatches:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;
 - (BOOL)_updateCredentialsWithGeneratedPasswordForForm:(id)arg1 inWebView:(id)arg2 frame:(id)arg3;
@@ -64,9 +64,10 @@
 - (void)saveUnsubmittedGeneratedPasswordInFrame:(id)arg1 form:(id)arg2 closingWebView:(BOOL)arg3;
 - (BOOL)shouldAutoFillFromCreditCardDataInFrame:(id)arg1;
 - (BOOL)shouldAutoFillFromPreviousData;
-- (BOOL)shouldAutoGeneratePasswordsInWebView:(id)arg1;
+- (BOOL)shouldAutoGeneratePasswordsForURL:(id)arg1 inWebView:(id)arg2;
 - (void)textDidChangeInForm:(id)arg1 inWebView:(id)arg2 frame:(id)arg3;
 - (BOOL)webView:(id)arg1 frame:(id)arg2 willNavigateFromForm:(id)arg3 bySubmitting:(BOOL)arg4 submissionHandler:(CDUnknownBlockType)arg5;
+- (BOOL)whiteListAllowsURL:(id)arg1;
 
 @end
 

@@ -15,10 +15,13 @@ __attribute__((visibility("hidden")))
     CDUnion_2c5a7b77 _style;
     NSString *_geometrySetName;
     NSString *_keySetName;
+    NSString *_annotations;
 }
 
 + (id)tokenForKeyplane:(id)arg1;
 - (id)_initWithKeyplane:(id)arg1 keylayout:(id)arg2;
+- (void)annotateWithBool:(BOOL)arg1;
+- (void)annotateWithInt:(int)arg1;
 - (void)dealloc;
 - (BOOL)isUsableForCacheToken:(id)arg1 withRenderFlags:(long long)arg2;
 - (void)setSize:(struct CGSize)arg1;

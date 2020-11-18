@@ -21,6 +21,8 @@
     long long _videoConfiguration;
     long long _slomoConfiguration;
     long long _previewViewAspectMode;
+    long long _overriddenBackCaptureInterval;
+    long long _overriddenFrontCaptureInterval;
 }
 
 @property (strong, nonatomic) CAMCaptureConfiguration *captureConfiguration; // @synthesize captureConfiguration=_captureConfiguration;
@@ -28,6 +30,8 @@
 @property (nonatomic) BOOL didResetTorchMode; // @synthesize didResetTorchMode=_didResetTorchMode;
 @property (readonly, nonatomic, getter=isIrisCaptureEnabled) BOOL irisCaptureEnabled; // @synthesize irisCaptureEnabled=_irisCaptureEnabled;
 @property (readonly, nonatomic, getter=isLockAsShutterEnabled) BOOL lockAsShutterEnabled; // @synthesize lockAsShutterEnabled=_lockAsShutterEnabled;
+@property (readonly, nonatomic) long long overriddenBackCaptureInterval; // @synthesize overriddenBackCaptureInterval=_overriddenBackCaptureInterval;
+@property (readonly, nonatomic) long long overriddenFrontCaptureInterval; // @synthesize overriddenFrontCaptureInterval=_overriddenFrontCaptureInterval;
 @property (nonatomic) long long previewViewAspectMode; // @synthesize previewViewAspectMode=_previewViewAspectMode;
 @property (readonly, nonatomic) BOOL shouldCaptureHDREV0; // @synthesize shouldCaptureHDREV0=_shouldCaptureHDREV0;
 @property (readonly, nonatomic) BOOL shouldDelayRemotePersistence; // @synthesize shouldDelayRemotePersistence=_shouldDelayRemotePersistence;

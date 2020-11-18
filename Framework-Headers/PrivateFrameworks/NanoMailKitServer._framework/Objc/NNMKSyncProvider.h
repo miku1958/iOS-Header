@@ -94,8 +94,10 @@
 - (void)_handleDidPairWithNewDevice;
 - (void)_handleDidSendProtobufSuccessfullyWithIDSIdentifier:(id)arg1;
 - (void)_handleDidUnpair;
+- (void)_handleDidUnpairNotification:(id)arg1;
 - (void)_handleInitialSyncCompleted;
 - (void)_handleMessageCompletelySynced:(id)arg1;
+- (void)_handlePairedDeviceChangedNotification:(id)arg1;
 - (void)_incrementInitialSyncProgressBy:(double)arg1;
 - (BOOL)_isDateReceivedOkForCurrentSyncedMailbox:(id)arg1;
 - (BOOL)_isMessageOkForCurrentSyncedMailbox:(id)arg1;
@@ -187,7 +189,8 @@
 - (void)replyWithVerificationResultsMessagesMissing:(id)arg1 messagesWithDifferentStatus:(id)arg2 extraMessageIds:(id)arg3;
 - (void)reportMessageContentDownloadFailureForMessageId:(id)arg1;
 - (void)resendIDSIdentifier:(id)arg1;
-- (void)syncCoordinatorDidReceiveStartSyncCommand:(id)arg1;
+- (void)syncCoordinator:(id)arg1 beginSyncSession:(id)arg2;
+- (void)syncCoordinator:(id)arg1 didInvalidateSyncSession:(id)arg2;
 - (void)updateMessagesStatus:(id)arg1;
 
 @end

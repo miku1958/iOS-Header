@@ -25,6 +25,7 @@
     unsigned long long _fieldPropertiesLookupTechnology;
     unsigned long long _state;
     id<PKContactlessInterfaceSessionDelegate> _delegate;
+    long long _encryptionScheme;
 }
 
 @property (readonly, nonatomic) PKPaymentApplication *activatedPaymentApplication;

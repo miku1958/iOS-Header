@@ -16,8 +16,10 @@
 @interface HMAccessory : NSObject <NSSecureCoding, HMMessageReceiver, HMObjectMerge>
 {
     BOOL _reachable;
+    BOOL _discoveredBridgeableAccessory;
     BOOL _bridgedAccessory;
     BOOL _blocked;
+    BOOL _bridgeSupportsConfiguration;
     BOOL _paired;
     NSUUID *_uniqueIdentifier;
     id<HMAccessoryDelegate> _delegate;
@@ -25,6 +27,7 @@
     HMHome *_home;
     HMRoom *_room;
     NSArray *_uniqueIdentifiersForBridgedAccessories;
+    NSArray *_uniqueIdentifiersForBridgeAccessories;
     HMAccessoryCategory *_category;
     NSUUID *_uuid;
     HMMessageDispatcher *_msgDispatcher;
@@ -32,9 +35,12 @@
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     HMDelegateCaller *_delegateCaller;
+    HMThreadSafeMutableArrayCollection *_accessories;
 }
 
+@property (strong, nonatomic) HMThreadSafeMutableArrayCollection *accessories; // @synthesize accessories=_accessories;
 @property (nonatomic, getter=isBlocked) BOOL blocked; // @synthesize blocked=_blocked;
+@property (nonatomic) BOOL bridgeSupportsConfiguration; // @synthesize bridgeSupportsConfiguration=_bridgeSupportsConfiguration;
 @property (readonly, nonatomic, getter=isBridged) BOOL bridged;
 @property (nonatomic) BOOL bridgedAccessory; // @synthesize bridgedAccessory=_bridgedAccessory;
 @property (strong, nonatomic) HMAccessoryCategory *category; // @synthesize category=_category;
@@ -44,6 +50,7 @@
 @property (weak, nonatomic) id<HMAccessoryDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL discoveredBridgeableAccessory; // @synthesize discoveredBridgeableAccessory=_discoveredBridgeableAccessory;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (readonly, copy, nonatomic) NSUUID *identifier;
@@ -59,6 +66,7 @@
 @property (readonly, copy, nonatomic) NSArray *services;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+@property (copy, nonatomic) NSArray *uniqueIdentifiersForBridgeAccessories; // @synthesize uniqueIdentifiersForBridgeAccessories=_uniqueIdentifiersForBridgeAccessories;
 @property (copy, nonatomic) NSArray *uniqueIdentifiersForBridgedAccessories; // @synthesize uniqueIdentifiersForBridgedAccessories=_uniqueIdentifiersForBridgedAccessories;
 @property (readonly, copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
@@ -73,6 +81,7 @@
 - (id)_findService:(id)arg1;
 - (void)_handleAccessoryCategoryChanged:(id)arg1;
 - (void)_handleAccessoryNotificationsUpdated:(id)arg1;
+- (void)_handleBridgeStatusNotification:(id)arg1;
 - (void)_handleCharacteristicValueUpdated:(id)arg1;
 - (void)_handleCharacteristicsUpdated:(id)arg1;
 - (void)_handleConnectivityChanged:(id)arg1;

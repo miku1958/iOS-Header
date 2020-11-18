@@ -17,6 +17,7 @@
 
 @property (weak, nonatomic) id<RPPreviewViewControllerDelegate> previewControllerDelegate; // @synthesize previewControllerDelegate=_previewControllerDelegate;
 
++ (void)loadPreviewViewControllerWithMovieURL:(id)arg1 attachmentURL:(id)arg2 overrideShareMessage:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)loadPreviewViewControllerWithMovieURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)viewControllerForExtension:(id)arg1 inputItems:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;

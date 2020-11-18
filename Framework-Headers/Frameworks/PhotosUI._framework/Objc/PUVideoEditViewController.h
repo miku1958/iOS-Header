@@ -105,6 +105,8 @@ __attribute__((visibility("hidden")))
 - (void)_handleSecondaryActionButton:(id)arg1;
 - (void)_loadAVAsset;
 - (void)_loadAVAssetValues;
+- (void)_loadFallbackAdjustmentsIfNeeded;
+- (void)_loadInitialVideoBuilderWithAdjustments:(id)arg1;
 - (void)_loadVideo;
 - (void)_pausePlayer;
 - (void)_playPlayer;

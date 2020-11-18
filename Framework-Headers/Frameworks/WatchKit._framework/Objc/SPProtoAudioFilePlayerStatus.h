@@ -29,6 +29,7 @@
 @property (nonatomic) BOOL hasErrorCode;
 @property (readonly, nonatomic) BOOL hasErrorDict;
 @property (readonly, nonatomic) BOOL hasErrorDomain;
+@property (readonly, nonatomic) BOOL hasIdentifier;
 @property (nonatomic) BOOL hasStatus;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) int status; // @synthesize status=_status;

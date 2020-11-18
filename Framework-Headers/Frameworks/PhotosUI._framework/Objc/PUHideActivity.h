@@ -6,12 +6,11 @@
 
 #import <PhotosUI/PUActivity.h>
 
-@class PUAssetHidingHelper, UIViewController;
+@class PUAssetHidingHelper;
 
 __attribute__((visibility("hidden")))
 @interface PUHideActivity : PUActivity
 {
-    UIViewController *_hideAlertViewController;
     PUAssetHidingHelper *_assetHidingHelper;
 }
 

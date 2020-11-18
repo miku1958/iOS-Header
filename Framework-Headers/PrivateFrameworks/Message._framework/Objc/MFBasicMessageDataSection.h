@@ -8,22 +8,23 @@
 
 #import <Message/MFMessageDataSection-Protocol.h>
 
-@class NSData, NSString;
+@class MFDataHolder, NSString;
 
 @interface MFBasicMessageDataSection : NSObject <MFMessageDataSection>
 {
-    NSData *_data;
+    MFDataHolder *_dataHolder;
     BOOL _complete;
     BOOL _partial;
     NSString *_partName;
 }
 
 @property (nonatomic, getter=isComplete) BOOL complete; // @synthesize complete=_complete;
-@property (strong, nonatomic) NSData *data; // @synthesize data=_data;
+@property (strong, nonatomic) MFDataHolder *dataHolder; // @synthesize dataHolder=_dataHolder;
 @property (strong, nonatomic) NSString *partName; // @synthesize partName=_partName;
 @property (nonatomic, getter=isPartial) BOOL partial; // @synthesize partial=_partial;
 
 - (void)dealloc;
+- (void)setData:(id)arg1;
 
 @end
 

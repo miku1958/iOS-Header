@@ -51,8 +51,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
-- (BOOL)editItemViewControllerCommit:(id)arg1;
-- (BOOL)forceRefreshStartAndEndDatesOnCommit;
+- (BOOL)editItemViewControllerSave:(id)arg1;
+- (BOOL)forceRefreshStartAndEndDatesOnSave;
 - (id)init;
 - (id)initWithLocation:(BOOL)arg1;
 - (BOOL)isInline;

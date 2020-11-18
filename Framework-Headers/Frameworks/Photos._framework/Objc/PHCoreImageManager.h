@@ -11,7 +11,6 @@
 
 @interface PHCoreImageManager : NSObject
 {
-    int _CPLDownloadUpdateNotifyToken;
     NSObject<OS_dispatch_queue> *_requestLookupTableIsolationQueue;
     NSMapTable *_requestLookupTable;
     PHConcurrentMapTable *_perDomainPreheatItemMapTables;
@@ -26,7 +25,6 @@
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *CPLDownloadFireAndForgetRequestQueue; // @synthesize CPLDownloadFireAndForgetRequestQueue=_CPLDownloadFireAndForgetRequestQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *CPLDownloadUpdateIsolationQueue; // @synthesize CPLDownloadUpdateIsolationQueue=_CPLDownloadUpdateIsolationQueue;
-@property (nonatomic) int CPLDownloadUpdateNotifyToken; // @synthesize CPLDownloadUpdateNotifyToken=_CPLDownloadUpdateNotifyToken;
 @property (strong, nonatomic) NSMutableSet *cloudDomainsWithPurgeScheduled; // @synthesize cloudDomainsWithPurgeScheduled=_cloudDomainsWithPurgeScheduled;
 @property (strong, nonatomic) NSMutableSet *domainsWithPurgeScheduled; // @synthesize domainsWithPurgeScheduled=_domainsWithPurgeScheduled;
 @property (strong, nonatomic) PHConcurrentMapTable *perDomainCloudPreheatItemMapTables; // @synthesize perDomainCloudPreheatItemMapTables=_perDomainCloudPreheatItemMapTables;
@@ -37,19 +35,15 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *requestLookupTableIsolationQueue; // @synthesize requestLookupTableIsolationQueue=_requestLookupTableIsolationQueue;
 
 + (struct CGSize)_aspectedSizeWithSize:(struct CGSize)arg1 maxDimension:(double)arg2;
-+ (int)_bestFormatWithSize:(struct CGSize)arg1 contentMode:(long long)arg2 options:(id)arg3 aspectRatio:(double)arg4 hasAdjustmentsHandler:(CDUnknownBlockType)arg5 isTableFormat:(BOOL *)arg6 desiredImagePixelSize:(struct CGSize *)arg7;
++ (void)_chooseFormatsForSize:(struct CGSize)arg1 contentMode:(long long)arg2 srcAspectRatio:(double)arg3 options:(id)arg4 hasAdjustmentsHandler:(CDUnknownBlockType)arg5 desiredImagePixelSize:(struct CGSize *)arg6 bestFormat:(id *)arg7 degradedFormat:(id *)arg8;
 + (id)_debugFilenameForAsset:(id)arg1;
++ (id)_degradedFormatWithPolicy:(long long)arg1 request:(id)arg2 hasAdjustmentsHandler:(CDUnknownBlockType)arg3;
 + (id)_descriptionForDomain:(id)arg1;
 + (id)_dictionaryBySettingObject:(id)arg1 forKey:(id)arg2 inDictionary:(id)arg3;
-+ (int)_fallbackLargestFormatForRequestVersion:(long long)arg1;
-+ (int)_fastestDegradedFormatWithSize:(struct CGSize)arg1 contentMode:(long long)arg2 options:(id)arg3 aspectRatio:(double)arg4 hasAdjustmentsHandler:(CDUnknownBlockType)arg5 isTableFormat:(BOOL *)arg6;
-+ (BOOL)_formatIsLessThanFullscreen:(int)arg1;
-+ (BOOL)_isRetina;
++ (id)_fastestDegradedFormatForRequest:(id)arg1 hasAdjustmentsHandler:(CDUnknownBlockType)arg2;
 + (struct CGImage *)_newResizedImageForImage:(struct CGImage *)arg1 withSize:(struct CGSize)arg2 normalizedCropRect:(struct CGRect)arg3 contentMode:(long long)arg4;
-+ (int)_pickDegradedFormatWithSize:(struct CGSize)arg1 contentMode:(long long)arg2 options:(id)arg3 aspectRatio:(double)arg4 hasAdjustmentsHandler:(CDUnknownBlockType)arg5 isTableFormat:(BOOL *)arg6;
-+ (struct CGSize)_sizeWithDimension:(double)arg1 aspectRatio:(double)arg2 preserveAspectRatio:(BOOL)arg3;
-+ (int)_standardDegradedFormatWithSize:(struct CGSize)arg1 contentMode:(long long)arg2 options:(id)arg3 aspectRatio:(double)arg4 hasAdjustmentsHandler:(CDUnknownBlockType)arg5 isTableFormat:(BOOL *)arg6;
-+ (long long)_wantedCloudPlaceholderKindForImageFormat:(int)arg1;
++ (long long)_plImageVersionFromPHImageRequestOptionsVersion:(long long)arg1;
++ (long long)_wantedCloudPlaceholderKindForImageFormat:(id)arg1;
 + (void)runBlockAsPrivilegedAsPhotosApp:(CDUnknownBlockType)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -63,11 +57,11 @@
 - (BOOL)_deleteMissedPreheatItemForAsset:(id)arg1 format:(int)arg2 domain:(id)arg3;
 - (id)_fastFetchAdjustmentDataWithRequest:(id)arg1;
 - (void)_fetchAdjustmentDataThruAssetsdAndCPLHandlerWithRequest:(id)arg1 networkAccessAllowed:(BOOL)arg2 trackCPLDownload:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_fetchAnySizeImageAs5551BytesWithRequest:(id)arg1 format:(int)arg2 bestFormat:(int)arg3 sync:(BOOL)arg4 fireAndForgetCPLDownload:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_fetchAnySizeImageAsNon5551BytesPossiblyThruAssetsdAndCPLWithRequest:(id)arg1 library:(id)arg2 format:(int)arg3 optimalSourcePixelSize:(struct CGSize)arg4 wantsProperties:(BOOL)arg5 networkAccessAllowed:(BOOL)arg6 networkAccessForced:(BOOL)arg7 trackCPLDownload:(BOOL)arg8 sync:(BOOL)arg9 completionHandler:(CDUnknownBlockType)arg10;
 - (void)_fetchAnySizeImageAsNon5551BytesWithRequest:(id)arg1 library:(id)arg2 format:(int)arg3 bestFormat:(int)arg4 optimalSourcePixelSize:(struct CGSize)arg5 sync:(BOOL)arg6 fireAndForgetCPLDownload:(BOOL)arg7 completionHandler:(CDUnknownBlockType)arg8;
 - (void)_fetchPreheatableAnySizeImageAsNon5551BytesWithRequest:(id)arg1 library:(id)arg2 format:(int)arg3 bestFormat:(int)arg4 preheatItem:(id)arg5 optimalSourcePixelSize:(struct CGSize)arg6 sync:(BOOL)arg7 fireAndForgetCPLDownload:(BOOL)arg8 completionHandler:(CDUnknownBlockType)arg9;
 - (void)_fireAndForgetCPLDownloadWithRequest:(id)arg1 format:(int)arg2;
+- (void)_handleSyncImageRequestForBRGA5551:(id)arg1;
 - (id)_highPriorityRequestWaitGroupWithDomain:(id)arg1;
 - (id)_originalPreheatlItemCreateTransientWithAsset:(id)arg1 optimalSourcePixelSize:(struct CGSize)arg2 options:(unsigned int)arg3 domain:(id)arg4;
 - (id)_preheatItemCreateIfNeededWithAsset:(id)arg1 format:(int)arg2 optimalSourcePixelSize:(struct CGSize)arg3 options:(unsigned int)arg4 CPLPrefetching:(BOOL)arg5 outDidExist:(BOOL *)arg6 domain:(id)arg7;
@@ -82,10 +76,13 @@
 - (id)_setupCPLDownloadWaitGroupForRequest:(id)arg1 withTimeout:(unsigned long long)arg2;
 - (void)_unregisterRequest:(id)arg1;
 - (void)_updateCPLDownloadStatesOnConnectionLostNotification:(id)arg1;
-- (void)_updateCPLDownloadStatesOnStatusDidChangeNotification;
+- (void)_updateCPLDownloadStatesOnStatusDidChangeNotification:(id)arg1;
+- (void)asyncEnumeratePendingCPLDownloadRequestsWithBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)asyncEnumeratePendingRequestsWithBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)description;
 - (id)init;
+- (void)updateRequest:(id)arg1 withDownloadContext:(id)arg2;
 
 @end
 

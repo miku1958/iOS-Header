@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double lastResetTime; // @synthesize lastResetTime=_lastResetTime;
 @property (nonatomic) unsigned long long requestCount; // @synthesize requestCount=_requestCount;
 
+- (id)description;
 
 @end
 

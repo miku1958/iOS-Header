@@ -6,36 +6,47 @@
 
 #import <CloudPhotoLibrary/CPLEngineSyncTask.h>
 
-@class CPLChangeBatch, CPLEngineChangePipe, NSArray, NSObject, NSString;
-@protocol CPLEngineTransportUploadBatchTask, CPLPushToTransportTaskDelegate, OS_dispatch_queue;
+@class CPLChangeBatch, CPLEngineChangePipe, NSArray, NSDictionary, NSObject, NSString;
+@protocol CPLEngineTransportCheckRecordsExistenceTask, CPLEngineTransportUploadBatchTask, CPLPushToTransportTaskDelegate, OS_dispatch_queue;
 
 @interface CPLPushToTransportTask : CPLEngineSyncTask
 {
     NSObject<OS_dispatch_queue> *_lock;
     CPLChangeBatch *_uploadBatch;
+    CPLChangeBatch *_batchToCommit;
     NSArray *_uploadResourceTasks;
     NSArray *_staleOrUnavailableResources;
     NSArray *_resourcesForBackgroundUpload;
+    NSDictionary *_recordsWithGeneratedResources;
+    NSDictionary *_recordsToCheckForExistence;
+    id<CPLEngineTransportCheckRecordsExistenceTask> _checkExistenceTask;
     id<CPLEngineTransportUploadBatchTask> _uploadTask;
     unsigned long long _lastReportedProgress;
     unsigned long long _countOfPushedBatches;
     NSString *_clientCacheIdentifier;
     CPLEngineChangePipe *_currentPushQueue;
     double _startOfIteration;
+    double _startOfDerivativesGeneration;
+    BOOL _generatingSomeDerivatives;
     BOOL _deferredCancel;
 }
 
 @property (strong) id<CPLPushToTransportTaskDelegate> delegate; // @dynamic delegate;
 
 - (void).cxx_destruct;
+- (void)_checkForRecordExistence;
+- (void)_deleteGeneratedResourcesAfterError:(id)arg1;
 - (void)_detectUpdatesForFullRecordsWithNoChangeDataInBatch:(id)arg1;
 - (BOOL)_discardResourcesToUploadFromBatch:(id)arg1 error:(id *)arg2;
 - (void)_doOneIteration;
+- (void)_generateDerivativesForNextRecord:(id)arg1;
+- (void)_generateNeededDerivatives;
 - (BOOL)_markUploadedTasksDidFinishWithError:(id)arg1 error:(id *)arg2;
 - (void)_popNextBatchAndContinue;
 - (BOOL)_prepareResourcesToUploadInBatch:(id)arg1 error:(id *)arg2;
 - (void)_prepareUploadBatchWithTransaction:(id)arg1 andStore:(id)arg2;
 - (void)_pushTaskDidFinishWithError:(id)arg1;
+- (void)_uploadBatch;
 - (void)cancel;
 - (void)cancel:(BOOL)arg1;
 - (id)initWithEngineLibrary:(id)arg1;

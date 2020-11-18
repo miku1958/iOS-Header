@@ -6,33 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class HDIDSMessageCenter, HDIDSOutgoingResponse, NSData, NSString;
+#import <HealthDaemon/HDNanoSyncDescription-Protocol.h>
 
-@interface HDIDSIncomingRequest : NSObject
+@class HDIDSMessageCenter, HDIDSOutgoingResponse, IDSDevice, NSData, NSString;
+
+@interface HDIDSIncomingRequest : NSObject <HDNanoSyncDescription>
 {
     BOOL _expectsResponse;
     unsigned short _messageID;
-    HDIDSMessageCenter *_messageCenter;
+    IDSDevice *_fromDevice;
     NSString *_idsIdentifier;
     NSData *_data;
     unsigned long long _priority;
     HDIDSOutgoingResponse *_response;
+    HDIDSMessageCenter *_messageCenter;
     id _pbRequest;
 }
 
 @property (strong, nonatomic) NSData *data; // @synthesize data=_data;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL expectsResponse; // @synthesize expectsResponse=_expectsResponse;
+@property (strong, nonatomic) IDSDevice *fromDevice; // @synthesize fromDevice=_fromDevice;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
 @property (weak, nonatomic) HDIDSMessageCenter *messageCenter; // @synthesize messageCenter=_messageCenter;
 @property (nonatomic) unsigned short messageID; // @synthesize messageID=_messageID;
 @property (strong, nonatomic) id pbRequest; // @synthesize pbRequest=_pbRequest;
 @property (nonatomic) unsigned long long priority; // @synthesize priority=_priority;
 @property (strong, nonatomic) HDIDSOutgoingResponse *response; // @synthesize response=_response;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)configureResponse;
 - (void)dealloc;
-- (id)description;
+- (id)nanoSyncDescription;
 
 @end
 

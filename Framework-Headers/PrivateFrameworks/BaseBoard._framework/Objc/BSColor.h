@@ -18,8 +18,10 @@
     double _green;
     double _blue;
     double _alpha;
+    struct CGColor *_colorRef;
 }
 
+@property (readonly, nonatomic) struct CGColor *CGColor;
 @property (readonly, nonatomic) double alpha; // @synthesize alpha=_alpha;
 @property (readonly, nonatomic) double blue; // @synthesize blue=_blue;
 @property (readonly, copy) NSString *debugDescription;
@@ -29,9 +31,11 @@
 @property (readonly, nonatomic) double red; // @synthesize red=_red;
 @property (readonly) Class superclass;
 
++ (id)blackColor;
 + (id)colorWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithCoder:(id)arg1;

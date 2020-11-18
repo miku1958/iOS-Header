@@ -171,11 +171,15 @@
 @property (nonatomic) unsigned long long timeToDNSStartMsecs; // @synthesize timeToDNSStartMsecs=_timeToDNSStartMsecs;
 @property (nonatomic) unsigned long long trafficClass; // @synthesize trafficClass=_trafficClass;
 
+- (int)StringAsConnectedInterfaceType:(id)arg1;
+- (int)StringAsInterfaceType:(id)arg1;
+- (id)connectedInterfaceTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)interfaceTypeAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

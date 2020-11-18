@@ -11,6 +11,7 @@
 @interface MPPlaybackContext (MPUReportingAdditions)
 
 @property (copy, nonatomic, setter=mpuReporting_setFeatureName:) NSString *mpuReporting_featureName;
+@property (readonly, nonatomic, getter=mpuReporting_isQuickPlay) BOOL mpuReporting_quickPlay;
 @property (copy, nonatomic, setter=mpuReporting_setRecommendationData:) NSData *mpuReporting_recommendationData;
 
 @end

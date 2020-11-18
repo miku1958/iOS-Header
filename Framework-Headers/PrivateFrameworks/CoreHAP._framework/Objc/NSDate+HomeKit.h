@@ -7,6 +7,9 @@
 #import <Foundation/NSDate.h>
 
 @interface NSDate (HomeKit)
++ (id)currentTimeDescriptionInIS08601;
++ (unsigned char)dayOfTheWeek;
++ (id)iso8601dateFromString:(id)arg1;
 + (id)timeIntervalDescription:(double)arg1;
 - (id)localTimeDescription;
 @end

@@ -94,6 +94,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)mapLayerPosition;
 - (double)maxTileHeightAtPoint:(struct VKPoint)arg1;
 - (void)removePersistingExitingTiles:(id)arg1;
+- (void)reserveStencilRangeForScene:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3;
 - (void)reset;
 - (void)resetPools;
 - (void)setActive:(BOOL)arg1;

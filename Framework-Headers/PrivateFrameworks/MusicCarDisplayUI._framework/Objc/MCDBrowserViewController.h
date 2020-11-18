@@ -8,7 +8,7 @@
 
 #import <MusicCarDisplayUI/UITabBarControllerDelegate-Protocol.h>
 
-@class AVExternalDevice, MCDRadioViewController, MPAVController, NSMapTable, NSString, RadioRecentStationsController, UIButton, UITabBarController;
+@class AVExternalDevice, MCDRadioViewController, MPAVController, NSArray, NSString, RadioRecentStationsController, UIButton, UITabBarController;
 @protocol MCDCarDisplayServiceProvider;
 
 @interface MCDBrowserViewController : UINavigationController <UITabBarControllerDelegate>
@@ -17,9 +17,11 @@
     BOOL _libraryHasSongs;
     UITabBarController *_tabBarController;
     UIButton *_nowPlayingButton;
-    NSMapTable *_noContentViews;
     AVExternalDevice *_externalDevice;
     MCDRadioViewController *_radioViewController;
+    NSArray *_tabIdentifiers;
+    long long _fuseSubscriber;
+    BOOL _showRadioTab;
     MPAVController *_player;
     id<MCDCarDisplayServiceProvider> _serviceProvider;
     UITabBarController *_hostTabBarController;
@@ -54,7 +56,7 @@
 - (id)nowPlayingButton;
 - (void)pushNowPlaying:(BOOL)arg1;
 - (void)refreshNavigationPath;
-- (void)reloadWithTabs:(id)arg1 forceReload:(BOOL)arg2;
+- (void)reloadTabsAndForceReload:(BOOL)arg1;
 - (void)tabBarController:(id)arg1 didSelectViewController:(id)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 

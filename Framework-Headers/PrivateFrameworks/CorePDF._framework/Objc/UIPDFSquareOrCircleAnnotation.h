@@ -15,7 +15,9 @@
     double _I;
 }
 
+- (void)drawInContext:(struct CGContext *)arg1;
 - (id)initWithAnnotationDictionary:(struct CGPDFDictionary *)arg1;
+- (void)strokePath:(struct CGContext *)arg1 inRect:(struct CGRect)arg2;
 
 @end
 

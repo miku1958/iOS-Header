@@ -12,6 +12,7 @@
 @interface HDAchievementEngine : NSObject
 {
     id<HDDailyGoalDetectionDelegate> _dailyGoalDetectionDelegate;
+    NSCalendar *_cachedCalendar;
     id<HDAchievementEngineDelegate> _delegate;
     HDAchievementDataStore *_dataStore;
     HDAchievementDefinitions *_achievementDefinitions;
@@ -27,14 +28,13 @@
 
 - (void).cxx_destruct;
 - (id)_achievementsWithBeginningOfDay:(id)arg1 now:(id)arg2 calorieBurnGoal:(double)arg3 consecutiveCompleteDays:(unsigned long long)arg4 lifetimeCompleteDays:(unsigned long long)arg5;
-- (BOOL)_atLeastNFullDaysOfHistory:(unsigned long long)arg1 givenFirstCheckedActivityCacheIndex:(long long)arg2 indexToday:(long long)arg3;
+- (BOOL)_atLeastNFullDaysOfHistory:(unsigned long long)arg1 givenFirstCheckedActivitySummaryIndex:(long long)arg2 indexToday:(long long)arg3;
 - (id)_calendar;
-- (long long)_differenceInDaysBetweenActivityCacheIndex:(long long)arg1 andIndex:(long long)arg2 inCalendar:(id)arg3 dayLimit:(unsigned long long)arg4;
+- (long long)_differenceInDaysBetweenActivitySummaryIndex:(long long)arg1 andIndex:(long long)arg2 inCalendar:(id)arg3 dayLimit:(unsigned long long)arg4;
 - (id)_excessCalorieBurnAchievementsWithGoal:(double)arg1 caloriesBurnedToday:(double)arg2 caloriesBurnedPreviouslyToday:(double)arg3 completionDate:(id)arg4;
 - (BOOL)_isCompleteMonthWithDateToday:(id)arg1 consecutiveCompleteDays:(unsigned long long)arg2;
 - (BOOL)_isCompleteWithNumberOfWeeks:(unsigned long long)arg1 dateToday:(id)arg2 consecutiveCompleteDays:(unsigned long long)arg3;
 - (id)_now;
-- (long long)_numberOfDaysFromDate:(id)arg1 toDate:(id)arg2 dayLimit:(unsigned long long)arg3;
 - (void)_runFor7WorkoutWeekAchievementWithState:(id)arg1;
 - (void)_runForBestSessionAchievementsWithState:(id)arg1;
 - (void)_runForFirstSessionOfTypeAchievementWithState:(id)arg1;
@@ -51,6 +51,7 @@
 - (void)runForSessionAchievements;
 - (void)runForStandingAchievements;
 - (void)runForStepAchievements;
+- (void)systemTimeZoneDidChange;
 
 @end
 

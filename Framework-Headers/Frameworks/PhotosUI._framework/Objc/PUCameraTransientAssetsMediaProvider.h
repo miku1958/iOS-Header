@@ -6,24 +6,41 @@
 
 #import <PhotosUI/PUMediaProvider.h>
 
-@protocol PUTransientImageManager;
+@class NSMutableDictionary, NSObject;
+@protocol OS_dispatch_queue, PUTransientImageManager;
 
 @interface PUCameraTransientAssetsMediaProvider : PUMediaProvider
 {
     int _latestRequestId;
+    CDUnknownBlockType _supplementaryLivePhotoImageSource;
     id<PUTransientImageManager> __transientImageManager;
+    NSMutableDictionary *__livePhotoRequestsByRequestID;
+    NSObject<OS_dispatch_queue> *__livePhotoRequestQueue;
 }
 
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_livePhotoRequestQueue; // @synthesize _livePhotoRequestQueue=__livePhotoRequestQueue;
+@property (readonly, nonatomic) NSMutableDictionary *_livePhotoRequestsByRequestID; // @synthesize _livePhotoRequestsByRequestID=__livePhotoRequestsByRequestID;
 @property (readonly, nonatomic) id<PUTransientImageManager> _transientImageManager; // @synthesize _transientImageManager=__transientImageManager;
+@property (copy, nonatomic) CDUnknownBlockType supplementaryLivePhotoImageSource; // @synthesize supplementaryLivePhotoImageSource=_supplementaryLivePhotoImageSource;
 
 - (void).cxx_destruct;
+- (void)_handleDelegateImageRequestResultWithImage:(id)arg1 info:(id)arg2 requestID:(int)arg3;
+- (void)_handleLivePhotoPairedVideoRequestResultURL:(id)arg1 stillDisplayTime:(CDStruct_1b6d18a9)arg2 error:(id)arg3 requestID:(int)arg4;
+- (id)_imageForTransientAsset:(id)arg1 targetSize:(struct CGSize)arg2;
+- (id)_livePhotoRequestWithID:(int)arg1;
 - (int)_nextRequestId;
 - (id)_playerItemForVideoURL:(id)arg1;
+- (void)_removeLivePhotoRequestWithID:(int)arg1;
+- (int)_requestLivePhotoForTransientAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
+- (BOOL)_requestLivePhotoWithSupplementaryImageSourceIfPossibleWithAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
+- (void)_setLivePhotoRequest:(id)arg1 forRequestID:(int)arg2;
+- (void)_updateResultForLivePhotoRequestID:(int)arg1;
 - (void)cancelImageRequest:(int)arg1;
 - (id)init;
-- (id)initWithTransientImageManager:(id)arg1;
+- (id)initWithTransientImageManager:(id)arg1 supplementaryLivePhotoImageSource:(CDUnknownBlockType)arg2;
 - (int)requestImageDataForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (int)requestImageForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
+- (int)requestLivePhotoForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
 - (int)requestPlayerItemForVideo:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 
 @end

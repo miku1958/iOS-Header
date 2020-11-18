@@ -38,6 +38,7 @@
 - (id)_extendedRemoteObjectProxyWithFailureHandler:(CDUnknownBlockType)arg1;
 - (id)_extendedRemoteObjectProxyWithSemaphore:(id)arg1;
 - (void)_getArchivedObjectWithUniqueID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_getDataForBundleResourceNamed:(id)arg1 withExtension:(id)arg2 objectUniqueIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_getPassWithUniqueID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_getPassesAndCatalogOfPassTypes:(unsigned long long)arg1 limitResults:(BOOL)arg2 withRetries:(unsigned long long)arg3 handler:(CDUnknownBlockType)arg4;
 - (BOOL)_hasRemoteLibrary;
@@ -57,6 +58,7 @@
 - (BOOL)canAddPaymentPassWithPrimaryAccountIdentifier:(id)arg1;
 - (void)catalogChanged:(id)arg1 withNewPasses:(id)arg2;
 - (BOOL)containsPass:(id)arg1;
+- (id)dataForBundleResourceNamed:(id)arg1 withExtension:(id)arg2 objectUniqueIdentifier:(id)arg3;
 - (void)dealloc;
 - (id)diffForPassBulletinWithRecordID:(id)arg1;
 - (void)enabledValueAddedServicePassesWithCompletion:(CDUnknownBlockType)arg1;
@@ -77,10 +79,10 @@
 - (void)inAppPaymentPassesForNetworks:(id)arg1 capabilities:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)inAppPaymentPassesForNetworks:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)inAppPrivateLabelPaymentPassesForApplicationIdentifier:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)ingestPassData:(id)arg1 settings:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithMachServiceName:(id)arg1 resumeNotificationName:(id)arg2 extendedInterface:(BOOL)arg3;
 - (void)introduceDatabaseIntegrityProblem;
+- (BOOL)isPassbookVisible;
 - (BOOL)isPaymentPassActivationAvailable;
 - (BOOL)isRemovingPassesOfType:(unsigned long long)arg1;
 - (void)logDelayExitReasons;
@@ -107,7 +109,8 @@
 - (void)removingPassesOfType:(unsigned long long)arg1 didUpdateWithProgress:(double)arg2;
 - (BOOL)replacePassWithPass:(id)arg1;
 - (void)requestContactlessInterfaceSuppressionFromUserWithCompletion:(CDUnknownBlockType)arg1;
-- (void)requestUpdateOfObjectWithUniqueID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)requestPersonalizationOfPassWithUniqueIdentifier:(id)arg1 contact:(id)arg2 personalizationToken:(id)arg3 requiredPersonalizationFields:(unsigned long long)arg4 personalizationSource:(unsigned long long)arg5 handler:(CDUnknownBlockType)arg6;
+- (void)requestUpdateOfObjectWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sendUserEditedCatalog:(id)arg1;
 - (void)shuffleGroups:(int)arg1;
 - (void)updateSettings:(unsigned long long)arg1 forObjectWithUniqueID:(id)arg2;

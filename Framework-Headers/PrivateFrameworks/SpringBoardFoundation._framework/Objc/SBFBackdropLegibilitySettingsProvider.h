@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SpringBoardFoundation/SBFLegibilitySettingsProvider-Protocol.h>
 #import <SpringBoardFoundation/_UIBackdropViewObserver-Protocol.h>
@@ -15,17 +15,18 @@
 @interface SBFBackdropLegibilitySettingsProvider : NSObject <_UIBackdropViewObserver, SBFLegibilitySettingsProvider>
 {
     _UIBackdropView *_backdropView;
-    id<SBFLegibilitySettingsProviderDelegate> _delegate;
     _UILegibilitySettings *_legibilitySettings;
+    id<SBFLegibilitySettingsProviderDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<SBFLegibilitySettingsProviderDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<SBFLegibilitySettingsProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
+@property (readonly, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)backdropViewDidChange:(id)arg1;
 - (void)dealloc;
 - (id)initWithBackdropView:(id)arg1;

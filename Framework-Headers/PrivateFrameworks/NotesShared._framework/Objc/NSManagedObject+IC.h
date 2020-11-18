@@ -8,6 +8,7 @@
 
 @interface NSManagedObject (IC)
 + (id)objectFromObjectID:(id)arg1 context:(id)arg2;
+- (void)obtainPermanentObjectIDIfNecessary;
 - (void)postNotificationOnMainThreadWithName:(id)arg1;
 @end
 

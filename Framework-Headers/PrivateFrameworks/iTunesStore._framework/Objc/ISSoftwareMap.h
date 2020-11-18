@@ -27,6 +27,7 @@
 + (BOOL)haveApplicationsOfType:(id)arg1;
 + (void)invalidateCurrentMap;
 + (id)loadedMap;
++ (void)removableSystemApplicationsWithCompletionBlock:(CDUnknownBlockType)arg1;
 + (void)setCurrentMap:(id)arg1;
 + (void)startObservingNotifications;
 - (void)_loadFromMobileInstallation;

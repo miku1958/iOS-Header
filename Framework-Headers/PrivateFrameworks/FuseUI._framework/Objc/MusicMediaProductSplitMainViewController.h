@@ -72,6 +72,7 @@
 - (void)_containerEntityProviderDidInvalidateNotification:(id)arg1;
 - (id)_loadProductHeaderLockupContentDescriptor;
 - (id)_loadProductTracklistTableViewConfigurationWithTracklistEntityProvider:(id)arg1;
+- (void)_prepareToCommitEditingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)_productAdditionalMetadataViewController;
 - (void)_reloadContainerEntityValueContextProperties;
 - (void)_reloadVerticalScrollingContainerItems;

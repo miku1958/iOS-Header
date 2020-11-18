@@ -6,11 +6,9 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
-@class NSData, NSString, PLPhotoEditModel;
+@class NSData, PLPhotoEditExportProperties, PLPhotoEditModel;
 
 @protocol PLPhotoEditDataExporter <NSObject>
-+ (NSData *)dataFromPhotoEditModel:(PLPhotoEditModel *)arg1 imageWidth:(unsigned long long)arg2 imageHeight:(unsigned long long)arg3 exifOrientation:(int)arg4;
-+ (NSString *)formatIdentifier;
-+ (NSString *)formatVersion;
++ (NSData *)dataFromPhotoEditModel:(PLPhotoEditModel *)arg1 outFormatIdentifier:(id *)arg2 outFormatVersion:(id *)arg3 exportProperties:(PLPhotoEditExportProperties *)arg4;
 @end
 

@@ -10,15 +10,15 @@
 
 @interface PKTableHeaderView : UIView
 {
+    struct CGSize _originalImageViewSize;
     UIImageView *_imageView;
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
     UIButton *_actionButton;
     UIActivityIndicatorView *_activityIndicator;
     UIImageView *_checkmarkView;
-    struct CGSize _originalImageViewSize;
-    BOOL _buddyPad;
     BOOL _shouldResizeImageToFit;
+    unsigned long long _style;
     double _topPadding;
     double _bottomPadding;
 }
@@ -26,10 +26,10 @@
 @property (readonly, strong, nonatomic) UIButton *actionButton;
 @property (readonly, strong, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property (nonatomic) double bottomPadding; // @synthesize bottomPadding=_bottomPadding;
-@property (nonatomic, getter=isBuddyPad) BOOL buddyPad; // @synthesize buddyPad=_buddyPad;
 @property (readonly, strong, nonatomic) UIImageView *checkmarkView; // @synthesize checkmarkView=_checkmarkView;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic) BOOL shouldResizeImageToFit; // @synthesize shouldResizeImageToFit=_shouldResizeImageToFit;
+@property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly, strong, nonatomic) UILabel *subtitleLabel;
 @property (readonly, strong, nonatomic) UILabel *titleLabel;
 @property (nonatomic) double topPadding; // @synthesize topPadding=_topPadding;

@@ -13,8 +13,10 @@
 @interface HDCodableObjectCollection : PBCodable <NSCopying>
 {
     NSMutableArray *_activityCaches;
+    NSMutableArray *_binarySamples;
     NSMutableArray *_categorySamples;
     NSMutableArray *_correlations;
+    NSMutableArray *_deletedSamples;
     HDCodableProvenance *_provenance;
     NSMutableArray *_quantitySamples;
     HDCodableSource *_source;
@@ -23,8 +25,10 @@
 }
 
 @property (strong, nonatomic) NSMutableArray *activityCaches; // @synthesize activityCaches=_activityCaches;
+@property (strong, nonatomic) NSMutableArray *binarySamples; // @synthesize binarySamples=_binarySamples;
 @property (strong, nonatomic) NSMutableArray *categorySamples; // @synthesize categorySamples=_categorySamples;
 @property (strong, nonatomic) NSMutableArray *correlations; // @synthesize correlations=_correlations;
+@property (strong, nonatomic) NSMutableArray *deletedSamples; // @synthesize deletedSamples=_deletedSamples;
 @property (readonly, nonatomic) BOOL hasProvenance;
 @property (readonly, nonatomic) BOOL hasSource;
 @property (readonly, nonatomic) BOOL hasSourceBundleIdentifier;
@@ -38,15 +42,21 @@
 - (id)activityCachesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)activityCachesCount;
 - (void)addActivityCaches:(id)arg1;
+- (void)addBinarySamples:(id)arg1;
 - (void)addCategorySamples:(id)arg1;
 - (void)addCorrelations:(id)arg1;
+- (void)addDeletedSamples:(id)arg1;
 - (void)addQuantitySamples:(id)arg1;
 - (void)addWorkouts:(id)arg1;
+- (id)binarySamplesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)binarySamplesCount;
 - (id)categorySamplesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)categorySamplesCount;
 - (void)clearActivityCaches;
+- (void)clearBinarySamples;
 - (void)clearCategorySamples;
 - (void)clearCorrelations;
+- (void)clearDeletedSamples;
 - (void)clearQuantitySamples;
 - (void)clearWorkouts;
 - (void)copyTo:(id)arg1;
@@ -55,6 +65,8 @@
 - (unsigned long long)correlationsCount;
 - (unsigned long long)count;
 - (id)decodedObjects;
+- (id)deletedSamplesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)deletedSamplesCount;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

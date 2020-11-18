@@ -8,11 +8,12 @@
 
 #import <FrontBoard/FBSceneDelegate-Protocol.h>
 #import <FrontBoard/FBSceneLayerManagerObserver-Protocol.h>
+#import <FrontBoard/FBUISceneManager-Protocol.h>
 
 @class FBSSceneClientSettingsDiffInspector, FBSceneEventQueue, FBSceneManagerObserver, NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSString;
 @protocol FBSceneManagerDelegate;
 
-@interface FBSceneManager : NSObject <FBSceneDelegate, FBSceneLayerManagerObserver>
+@interface FBSceneManager : NSObject <FBSceneDelegate, FBSceneLayerManagerObserver, FBUISceneManager>
 {
     FBSceneManagerObserver *_delegate;
     NSMutableOrderedSet *_observers;
@@ -20,6 +21,7 @@
     NSMutableDictionary *_displayToOcclusionsStack;
     unsigned long long _synchronizationBlockDepth;
     NSMutableDictionary *_scenesByID;
+    NSMutableDictionary *_workspacesByID;
     NSMapTable *_providerToSceneMap;
     NSHashTable *_providersWithOpenTransactions;
     FBSSceneClientSettingsDiffInspector *_clientSettingsDiffInspector;
@@ -36,8 +38,9 @@
 + (BOOL)_isSynchronizingSceneUpdates;
 + (id)sharedInstance;
 + (void)synchronizeChanges:(CDUnknownBlockType)arg1;
-- (void)_applyMutableSettings:(id)arg1 toScene:(id)arg2 asUpdate:(BOOL)arg3 withTransitionContext:(id)arg4;
+- (void)_applyMutableSettings:(id)arg1 toScene:(id)arg2 asUpdate:(BOOL)arg3 withTransitionContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_beginSynchronizationBlock;
+- (id)_createSceneWithIdentifier:(id)arg1 workspaceIdentifier:(id)arg2 display:(id)arg3 settings:(id)arg4 initialClientSettings:(id)arg5 clientProvider:(id)arg6 transitionContext:(id)arg7;
 - (void)_destroyScene:(id)arg1 withTransitionContext:(id)arg2;
 - (void)_endSynchronizationBlock;
 - (void)_enqueueEventForScene:(id)arg1 withName:(id)arg2 block:(CDUnknownBlockType)arg3;
@@ -57,7 +60,7 @@
 - (void)_sendOutstandingOcclusionChangesForStack:(id)arg1 withTransitionContext:(id)arg2;
 - (void)_startContextHostingForScene:(id)arg1;
 - (void)_stopContextHostingForScene:(id)arg1;
-- (void)_updateScene:(id)arg1 withSettings:(id)arg2 transitionContext:(id)arg3;
+- (void)_updateScene:(id)arg1 withSettings:(id)arg2 transitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)addObserver:(id)arg1;
 - (void)attachDefaultTransform:(id)arg1 forDisplay:(id)arg2;
 - (id)createSceneWithIdentifier:(id)arg1 display:(id)arg2 settings:(id)arg3 initialClientSettings:(id)arg4 clientProvider:(id)arg5 transitionContext:(id)arg6;
@@ -67,17 +70,22 @@
 - (void)destroyScene:(id)arg1 withTransitionContext:(id)arg2;
 - (void)enumerateScenesWithBlock:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)invalidateSceneWorkspace:(id)arg1;
+- (void)registerSceneWorkspace:(id)arg1;
 - (void)removeDefaultTransform:(id)arg1 forDisplay:(id)arg2;
 - (void)removeObserver:(id)arg1;
 - (void)scene:(id)arg1 didReceiveActions:(id)arg2;
 - (void)scene:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 oldClientSettings:(id)arg3 transitionContext:(id)arg4;
-- (void)scene:(id)arg1 handleUpdateToSettings:(id)arg2 withTransitionContext:(id)arg3;
+- (void)scene:(id)arg1 handleUpdateToSettings:(id)arg2 withTransitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)sceneLayerManagerDidStopTrackingLayers:(id)arg1;
 - (void)sceneLayerManagerWillStartTrackingLayers:(id)arg1;
 - (id)sceneWithIdentifier:(id)arg1;
 - (id)scenesMatchingPredicate:(id)arg1;
 - (id)scenesPassingTest:(CDUnknownBlockType)arg1;
 - (void)shutdown:(BOOL)arg1;
+- (void)workspace:(id)arg1 createSceneWithName:(id)arg2 specification:(id)arg3;
+- (void)workspace:(id)arg1 destroySceneWithIdentity:(id)arg2;
+- (id)workspace:(id)arg1 identityForSceneWithName:(id)arg2 specification:(id)arg3;
 
 @end
 

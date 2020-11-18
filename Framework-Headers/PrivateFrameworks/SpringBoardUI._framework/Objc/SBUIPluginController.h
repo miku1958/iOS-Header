@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SpringBoardUI/SBPluginBundleController-Protocol.h>
 
@@ -16,9 +16,10 @@
     BOOL _isVisible;
 }
 
-@property (nonatomic) id<SBUIPluginControllerHost> host; // @synthesize host=_host;
+@property (weak, nonatomic) id<SBUIPluginControllerHost> host; // @synthesize host=_host;
 @property (nonatomic, getter=isVisible) BOOL visible; // @synthesize visible=_isVisible;
 
+- (void).cxx_destruct;
 - (void)cancelPendingActivationEvent:(int)arg1;
 - (BOOL)handleActivationEvent:(int)arg1 eventSource:(int)arg2 context:(void *)arg3;
 - (void)handleBluetoothDismissal;

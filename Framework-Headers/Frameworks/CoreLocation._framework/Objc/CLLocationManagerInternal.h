@@ -30,6 +30,7 @@
     int fHeadingOrientation;
     BOOL fPersistentMonitoringEnabled;
     BOOL fAllowsLocationPrompts;
+    BOOL fAllowsAlteredAccessoryLocations;
     BOOL fDynamicAccuracyReductionEnabled;
     BOOL fPreviousAuthorizationStatusValid;
     int fPreviousAuthorizationStatus;

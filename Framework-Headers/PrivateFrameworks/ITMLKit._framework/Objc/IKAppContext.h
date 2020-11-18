@@ -56,6 +56,7 @@
 @property (strong, nonatomic) IKJSInspectorController *webInspectorController; // @synthesize webInspectorController=_webInspectorController;
 
 + (id)currentAppContext;
++ (void)load;
 + (void)registerPrivateProtocols:(id)arg1 forClass:(Class)arg2;
 - (void).cxx_destruct;
 - (void)_addStopRecordToPendingQueueWithReload:(BOOL)arg1;
@@ -79,7 +80,7 @@
 - (void)evaluateDelegateBlockSync:(CDUnknownBlockType)arg1;
 - (void)evaluateFoundationJS;
 - (void)exitAppWithOptions:(id)arg1;
-- (void)handleReloadWithUrgencyType:(unsigned long long)arg1 data:(id)arg2;
+- (void)handleReloadWithUrgencyType:(unsigned long long)arg1 minInterval:(double)arg2 data:(id)arg3;
 - (id)initWithApplication:(id)arg1 mode:(unsigned long long)arg2 delegate:(id)arg3;
 - (void)launchAppWithOptions:(id)arg1;
 - (void)openURLWithOptions:(id)arg1;

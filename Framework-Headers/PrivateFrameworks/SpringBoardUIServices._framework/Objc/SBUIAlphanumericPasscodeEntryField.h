@@ -16,11 +16,11 @@
     UIView *_springViewParent;
 }
 
-@property (readonly, nonatomic) UITextInputTraits *textInputTraits;
+@property (readonly, weak, nonatomic) UITextInputTraits *textInputTraits;
 
+- (void).cxx_destruct;
 - (void)_autofillForMesaWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_resetForFailedPasscode:(BOOL)arg1 playUnlockFailedSound:(BOOL)arg2;
-- (void)dealloc;
 - (id)initWithDefaultSizeAndLightStyle:(BOOL)arg1;
 - (void)layoutSubviews;
 - (void)notePasscodeFieldTextDidChange;

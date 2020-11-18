@@ -39,6 +39,7 @@
 @property (readonly, nonatomic) BOOL willPresentResultInCard;
 
 - (void).cxx_destruct;
+- (void)didDisplayMapsResultForQuery:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (void)placeViewController:(id)arg1 shouldLogFeedbackOfType:(int)arg2;
 - (void)placeViewControllerShouldLogFeedbackForDismissal:(id)arg1;

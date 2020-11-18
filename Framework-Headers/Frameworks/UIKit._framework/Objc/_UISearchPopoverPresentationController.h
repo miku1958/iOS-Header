@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) UIPresentationController<_UISearchControllerPresenting> *adaptivePresentationController;
-@property (readonly, nonatomic) BOOL animatorShouldSizeResultsContainerView;
+@property (readonly, nonatomic) BOOL animatorShouldLayoutPresentationViews;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long edgeForHidingNavigationBar;

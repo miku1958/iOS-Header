@@ -7,7 +7,7 @@
 #import <GeoServices/NSObject-Protocol.h>
 
 @class NSArray, NSDate, NSSet, NSString;
-@protocol GEOTransitSystem;
+@protocol GEOTransitLine, GEOTransitSystem;
 
 @protocol GEOMapItemTransitSchedule <NSObject>
 
@@ -15,8 +15,11 @@
 @property (readonly, nonatomic) NSDate *lastFullScheduleValidDate;
 @property (readonly, nonatomic) unsigned long long numAdditionalDepartures;
 
-- (NSArray *)departureSequencesForSystem:(id<GEOTransitSystem>)arg1 excludingLines:(NSSet *)arg2 direction:(NSString *)arg3 validForDateFromBlock:(NSDate * (^)(id<GEOTransitDepartureSequence>))arg4;
-- (NSArray *)directionsForSystem:(id<GEOTransitSystem>)arg1 excludingLines:(NSSet *)arg2 validForDateFromBlock:(NSDate * (^)(id<GEOTransitDepartureSequence>))arg3 hasSequencesWithNoDirection:(out BOOL *)arg4;
-- (NSArray *)sequencesForSystem:(id<GEOTransitSystem>)arg1 excludingLines:(NSSet *)arg2 direction:(NSString *)arg3 validForDateFromBlock:(NSDate * (^)(id<GEOTransitDepartureSequence>))arg4;
+- (NSArray *)allSequencesForSystem:(id<GEOTransitSystem>)arg1 direction:(NSString *)arg2;
+- (NSArray *)departureSequencesForSystem:(id<GEOTransitSystem>)arg1 excludingIncidentEntities:(NSSet *)arg2 direction:(NSString *)arg3 validForDateFromBlock:(NSDate * (^)(id<GEOTransitDepartureSequence>))arg4;
+- (NSArray *)directionsForSystem:(id<GEOTransitSystem>)arg1 excludingIncidentEntities:(NSSet *)arg2 validForDateFromBlock:(NSDate * (^)(id<GEOTransitDepartureSequence>))arg3 hasSequencesWithNoDirection:(out BOOL *)arg4;
+- (NSArray *)inactiveLinesForSystem:(id<GEOTransitSystem>)arg1 relativeToDateFromBlock:(NSDate * (^)(id<GEOTransitDepartureSequence>))arg2 excludingIncidentEntities:(NSSet *)arg3;
+- (NSArray *)sequencesForSystem:(id<GEOTransitSystem>)arg1 excludingIncidentEntities:(NSSet *)arg2 direction:(NSString *)arg3 validForDateFromBlock:(NSDate * (^)(id<GEOTransitDepartureSequence>))arg4;
+- (NSDate *)serviceResumesDateForLine:(id<GEOTransitLine>)arg1 excludingIncidentEntities:(NSSet *)arg2 afterDate:(NSDate *)arg3 blocked:(out BOOL *)arg4;
 @end
 

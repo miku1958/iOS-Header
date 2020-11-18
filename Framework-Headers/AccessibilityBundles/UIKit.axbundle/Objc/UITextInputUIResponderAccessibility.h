@@ -18,7 +18,10 @@
 - (id)_accessibilityLineNumberAndColumnForPoint:(struct CGPoint)arg1;
 - (struct _NSRange)_accessibilityLineRangeForPosition:(unsigned long long)arg1;
 - (long long)_accessibilityLineStartPosition;
+- (long long)_accessibilityOffsetFromPosition:(id)arg1 toPosition:(id)arg2;
+- (id)_accessibilityPositionFromPosition:(id)arg1 offset:(long long)arg2;
 - (struct _NSRange)_accessibilityRangeForLineNumberAndColumn:(id)arg1;
+- (struct _NSRange)_accessibilityRawRangeForUITextRange:(id)arg1;
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
 - (id)_accessibilitySpeakThisString;

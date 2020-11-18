@@ -14,7 +14,6 @@
 - (NSString *)deviceName;
 - (NSString *)deviceRegion;
 - (void)downloadAllPaymentPassesForPaymentWebService:(PKPaymentWebService *)arg1;
-- (void)noteProvisioningInProgress:(BOOL)arg1;
 - (int)paymentSupportedInCurrentRegionForWebService:(PKPaymentWebService *)arg1;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 addPaymentPass:(PKPaymentPass *)arg2 withCompletionHandler:(void (^)(void))arg3;
 - (BOOL)paymentWebService:(PKPaymentWebService *)arg1 canProvisionPaymentPassWithPrimaryAccountIdentifier:(NSString *)arg2;
@@ -33,6 +32,10 @@
 - (BOOL)supportsAutomaticPassPresentation;
 
 @optional
+- (void)noteProvisioningDidBegin;
+- (void)noteProvisioningDidEnd;
+- (void)noteProvisioningUserInterfaceDidAppear;
+- (void)noteProvisioningUserInterfaceDidDisappear;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 addPaymentPass:(PKPaymentPass *)arg2 withCompletionHandlerV2:(void (^)(PKPaymentPass *))arg3;
 @end
 

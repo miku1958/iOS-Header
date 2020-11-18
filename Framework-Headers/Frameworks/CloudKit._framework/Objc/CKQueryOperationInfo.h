@@ -13,6 +13,7 @@
 @interface CKQueryOperationInfo : CKDatabaseOperationInfo <NSSecureCoding>
 {
     BOOL _shouldFetchAssetContent;
+    BOOL _fetchAllResults;
     CKQuery *_query;
     CKRecordZoneID *_zoneID;
     CKQueryCursor *_cursor;
@@ -22,6 +23,7 @@
 
 @property (strong, nonatomic) CKQueryCursor *cursor; // @synthesize cursor=_cursor;
 @property (strong, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
+@property (nonatomic) BOOL fetchAllResults; // @synthesize fetchAllResults=_fetchAllResults;
 @property (strong, nonatomic) CKQuery *query; // @synthesize query=_query;
 @property (nonatomic) unsigned long long resultsLimit; // @synthesize resultsLimit=_resultsLimit;
 @property (nonatomic) BOOL shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;

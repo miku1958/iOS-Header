@@ -11,6 +11,7 @@
 
 @protocol HDSyncChange <HDSyncObjectCollection>
 
+@property (readonly, nonatomic, getter=isSpeculative) BOOL speculative;
 @property (readonly, nonatomic) struct HDSyncAnchorRange syncAnchorRange;
 
 - (id<HDSyncAnchorMap>)requiredAnchorMapWithError:(id *)arg1;

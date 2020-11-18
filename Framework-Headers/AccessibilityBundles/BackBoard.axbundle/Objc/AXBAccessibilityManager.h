@@ -23,7 +23,7 @@
 + (void)updateAccessibilitySettings;
 - (int)_accessibilityApplicationForContextId:(unsigned int)arg1;
 - (id)_accessibilityAssistiveTouchApplication;
-- (struct CGPoint)_accessibilityConvertHostedViewPoint:(struct CGPoint)arg1 fromContextId:(unsigned int)arg2;
+- (struct CGPoint)_accessibilityConvertHostedViewPoint:(struct CGPoint)arg1 fromContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
 - (BOOL)_accessibilityDisplayRequiresRotateForPoints:(id)arg1;
 - (BOOL)_accessibilityEventTapCallback:(id)arg1;
 - (BOOL)_accessibilityIsInternalInstall;
@@ -33,7 +33,7 @@
 - (id)_accessibilitySystemAppApplicationBundleId;
 - (id)_accessibilitySystemAppApplicationPid;
 - (id)_accessibilityUIServerApplication;
-- (struct CGPoint)_accessibilityViewPointFromHostedViewContext:(struct CGPoint)arg1;
+- (struct CGPoint)_accessibilityViewPointFromHostedViewContext:(struct CGPoint)arg1 displayId:(unsigned int)arg2;
 - (id)_commonEventRepForTouchEventWithType:(unsigned int)arg1 location:(struct CGPoint)arg2 force:(double)arg3 flags:(unsigned int)arg4 contextId:(unsigned int)arg5;
 - (BOOL)_handleItemChooserVisible:(unsigned int)arg1;
 - (int)_handlePidForSpecialCases:(unsigned int)arg1;
@@ -52,9 +52,9 @@
 - (void)_userEventOccurred;
 - (id)accessibilityAttributeValue:(int)arg1;
 - (id)accessibilityAttributeValue:(int)arg1 forParameter:(id)arg2;
-- (struct CGRect)accessibilityConvertHostedViewFrame:(struct CGRect)arg1 fromContextId:(unsigned int)arg2;
-- (struct CGRect)accessibilityConvertHostedViewFrame:(struct CGRect)arg1 toContextId:(unsigned int)arg2;
-- (struct CGPoint)accessibilityConvertHostedViewPoint:(struct CGPoint)arg1 toContextId:(unsigned int)arg2;
+- (struct CGRect)accessibilityConvertHostedViewFrame:(struct CGRect)arg1 fromContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
+- (struct CGRect)accessibilityConvertHostedViewFrame:(struct CGRect)arg1 toContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
+- (struct CGPoint)accessibilityConvertHostedViewPoint:(struct CGPoint)arg1 toContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
 - (BOOL)accessibilityPerformAction:(int)arg1 withValue:(id)arg2;
 - (void)accessibilitySetValue:(id)arg1 forAttribute:(int)arg2;
 - (id)allJobLabels;

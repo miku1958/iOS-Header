@@ -41,24 +41,25 @@
 - (void)_dequeueTasks:(id *)arg1 taskGroups:(id *)arg2 maxTaskGroupCount:(unsigned long long)arg3 ofHighPriority:(BOOL)arg4;
 - (void)_downloadTaskDidFail:(id)arg1 withError:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_downloadTaskDidSucceed:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)_downloadTaskForLocalResource:(id)arg1 clientBundleID:(id)arg2 highPriority:(BOOL)arg3 background:(BOOL)arg4 backgroundTaskIdentifier:(unsigned long long)arg5 didStartHandler:(CDUnknownBlockType)arg6 progressHandler:(CDUnknownBlockType)arg7 completionHandler:(CDUnknownBlockType)arg8;
+- (id)_downloadTaskForLocalResource:(id)arg1 clientBundleID:(id)arg2 highPriority:(BOOL)arg3 background:(BOOL)arg4 backgroundTaskIdentifier:(unsigned long long)arg5 proposedTaskIdentifier:(id)arg6 didStartHandler:(CDUnknownBlockType)arg7 progressHandler:(CDUnknownBlockType)arg8 completionHandler:(CDUnknownBlockType)arg9;
 - (void)_enqueueDownloadTask:(id)arg1;
 - (void)_enqueueDownloadTasks:(id)arg1;
 - (id)_failedTaskWithCompletionHandler:(CDUnknownBlockType)arg1 error:(id)arg2;
 - (id)_finishDownloadTask:(id)arg1 inError:(id)arg2;
 - (BOOL)_hasActiveForegroundTasks;
 - (void)_processQueuedDownloadTasks;
-- (id)_realDownloadTaskForCloudResource:(id)arg1 clientBundleID:(id)arg2 didStartHandler:(CDUnknownBlockType)arg3 progressHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)_realDownloadTaskForCloudResource:(id)arg1 clientBundleID:(id)arg2 launchHandler:(CDUnknownBlockType)arg3 didStartHandler:(CDUnknownBlockType)arg4 progressHandler:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_reallyDispatchDownloadTask:(id)arg1;
 - (void)_reallyDispatchDownloadTasks:(id)arg1 lowPriorityTaskGroups:(id)arg2 highPriorityTaskGroups:(id)arg3;
 - (id)_resourceStorageCopyTaskForResource:(id)arg1 clientBundleID:(id)arg2 didStartHandler:(CDUnknownBlockType)arg3 progressHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)_taskIdentifierFromProposedIdentifier:(id)arg1;
 - (id)_transport:(id)arg1 setupTransportTaskIfNeededForTask:(id)arg2;
 - (unsigned long long)countOfQueuedDownloadTasks;
 - (id)dequeueBackgroundDownloadTaskForResourceType:(unsigned long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)dequeueBackgroundDownloadTasks:(unsigned long long)arg1 forResourceType:(unsigned long long)arg2 eachWithCompletionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)dequeueNextBackgroundDownloadTask:(id *)arg1 resourceType:(unsigned long long)arg2 taskIdentifier:(unsigned long long *)arg3 error:(id *)arg4;
 - (BOOL)dequeueNextBackgroundDownloadTasks:(unsigned long long)arg1 resourceType:(unsigned long long)arg2 localResources:(id *)arg3 taskIdentifiers:(id *)arg4 error:(id *)arg5;
-- (id)downloadTaskForLocalResource:(id)arg1 clientBundleID:(id)arg2 highPriority:(BOOL)arg3 didStartHandler:(CDUnknownBlockType)arg4 progressHandler:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (id)downloadTaskForLocalResource:(id)arg1 clientBundleID:(id)arg2 highPriority:(BOOL)arg3 proposedTaskIdentifier:(id)arg4 didStartHandler:(CDUnknownBlockType)arg5 progressHandler:(CDUnknownBlockType)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (BOOL)enqueueBackgroundDownloadTaskForResource:(id)arg1 taskIdentifier:(unsigned long long)arg2 error:(id *)arg3;
 - (id)enumeratorForDownloadedResources;
 - (id)initWithEngineStore:(id)arg1 name:(id)arg2;
@@ -69,6 +70,7 @@
 - (BOOL)removeBackgroundDownloadTaskForResource:(id)arg1 taskIdentifier:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)resetDequeuedBackgroundDownloadTasksWithError:(id *)arg1;
 - (BOOL)resetWithError:(id *)arg1;
+- (id)status;
 
 @end
 

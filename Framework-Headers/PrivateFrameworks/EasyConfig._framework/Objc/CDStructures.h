@@ -83,6 +83,9 @@ struct HTTPMessagePrivate {
     CDUnknownFunctionPointerType _field29;
     CDUnknownFunctionPointerType _field30;
     CDUnknownBlockType _field31;
+    int _field32;
+    unsigned char _field33;
+    long long _field34;
 };
 
 struct iovec {

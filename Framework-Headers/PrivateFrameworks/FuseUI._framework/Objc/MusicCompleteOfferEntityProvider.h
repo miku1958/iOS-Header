@@ -33,6 +33,7 @@
 - (void)_updateEntityProviders;
 - (void)_updateStoreCompleteOfferAvailable;
 - (void)dealloc;
+- (BOOL)hasMultipleEntitiesIncludingStoreContent;
 - (id)init;
 
 @end

@@ -212,6 +212,7 @@ __attribute__((visibility("hidden")))
 - (id)_orderedActionsForCollectionView;
 - (void)_performDismissalAnimations:(BOOL)arg1;
 - (void)_performPresentationAnimations:(BOOL)arg1;
+- (id)_preferredActionView;
 - (void)_prepareActionCollectionView;
 - (void)_prepareActionSelectionGestureRecognizer;
 - (void)_prepareBackdropViewConstraints;

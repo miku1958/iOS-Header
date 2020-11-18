@@ -15,11 +15,12 @@
 
 @interface MusicWelcomeNavigationController : MusicNavigationController <MusicJSWelcomeNativeViewControllerDelegate, MusicJSNativeViewControllerFactory, MusicClientContextConsuming>
 {
-    NSMutableArray *_queuedNativeViewEventTypes;
+    NSMutableArray *_queuedNativeViewEvents;
     BOOL _registeredWithModalNavigationStackRegistry;
     MusicWelcomePlaceholderView *_welcomePlaceholderView;
     MusicClientContext *_clientContext;
     id<MusicWelcomeNavigationControllerDisappearanceObserver> _disappearanceObserver;
+    long long _presentationReason;
 }
 
 @property (strong, nonatomic) SKUIClientContext *clientContext;
@@ -27,13 +28,16 @@
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<MusicWelcomeNavigationControllerDisappearanceObserver> disappearanceObserver; // @synthesize disappearanceObserver=_disappearanceObserver;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) long long presentationReason; // @synthesize presentationReason=_presentationReason;
 @property (readonly) Class superclass;
 
 + (BOOL)automaticallyInstallAccountBarButtonItem;
 + (BOOL)automaticallyInstallSearchBarButtonItem;
 - (void).cxx_destruct;
 - (void)_dispatchNativeViewEventOfType:(long long)arg1;
+- (void)_dispatchNativeViewEventOfType:(long long)arg1 withInfo:(id)arg2;
 - (void)_handleClientDidLoadNotification:(id)arg1;
+- (id)_loadEventExtraInfo;
 - (void)_setRegisteredWithModalNavigationStackRegistry:(BOOL)arg1;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <FrontBoard/NSObject-Protocol.h>
+
 @class FBSDisplay, FBSSceneClientSettings, FBSSceneClientSettingsDiff, FBSSceneLayer, FBSSceneTransitionContext, NSSet, NSString;
 @protocol FBSceneClient;
 
-@protocol FBSceneHost
+@protocol FBSceneHost <NSObject>
 
 @property (readonly, strong, nonatomic) FBSDisplay *display;
 @property (readonly, copy, nonatomic) NSString *identifier;

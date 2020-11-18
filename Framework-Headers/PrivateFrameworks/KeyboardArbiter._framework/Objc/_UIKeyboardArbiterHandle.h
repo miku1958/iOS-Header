@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     BOOL _wantedActive;
     double _level;
     NSMutableSet *_hostedPids;
+    BOOL _checkingShowability;
     int _suppressionCount;
     BKSProcessAssertion *_remoteKeepAliveAssertion;
     unsigned long long _remoteKeepAliveAssertionCount;

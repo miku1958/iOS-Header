@@ -13,6 +13,7 @@
     SBUIPasscodeLockViewWithKeyboard *_lockView;
 }
 
+- (void).cxx_destruct;
 - (BOOL)canDismiss;
 - (id)initWithFrame:(struct CGRect)arg1 lockView:(id)arg2;
 - (BOOL)isActive;

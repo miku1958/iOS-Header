@@ -8,7 +8,9 @@
 
 @protocol DMMigratorServiceProtocol <NSObject>
 - (void)changeVisibility:(BOOL)arg1 completion:(void (^)(BOOL))arg2;
-- (void)migrateWithCompletion:(void (^)(BOOL))arg1;
+- (void)forceMigrationOnNextRebootWithCompletion:(void (^)(void))arg1;
+- (void)isMigrationNeeded:(void (^)(BOOL))arg1;
+- (void)migrateCheckingNecessity:(BOOL)arg1 completion:(void (^)(long long))arg2;
 - (void)orderedPluginIdentifiersWithCompletion:(void (^)(NSArray *))arg1;
 - (void)testMigrationUIWithProgress:(BOOL)arg1 forceInvert:(BOOL)arg2 completion:(void (^)(void))arg3;
 @end

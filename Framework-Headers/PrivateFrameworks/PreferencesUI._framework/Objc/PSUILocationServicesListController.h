@@ -37,6 +37,7 @@
 + (void)setCoreRoutineAuthorized:(BOOL)arg1;
 - (void).cxx_destruct;
 - (void)_cancelConfirmDisableForSpecifier:(id)arg1;
+- (BOOL)_isBundleBlacklisted:(id)arg1;
 - (BOOL)_isFindMyDeviceSpecifier:(id)arg1;
 - (void)_locationSharingSpecifierWasTapped:(id)arg1;
 - (void)_setEntityAuthorized:(BOOL)arg1 specifier:(id)arg2;

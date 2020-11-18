@@ -11,7 +11,7 @@
 #import <NetworkExtension/NSCopying-Protocol.h>
 #import <NetworkExtension/NSSecureCoding-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
 @interface NEAOVPN : NSObject <NEConfigurationValidating, NEPrettyDescription, NSSecureCoding, NSCopying>
 {
@@ -20,10 +20,12 @@
     BOOL _allowCaptiveWebSheet;
     BOOL _allowAllCaptiveNetworkPlugins;
     NSDictionary *_interfaceProtocolMapping;
+    NSString *_activeInterfaceProtocolKey;
     NSDictionary *_serviceExceptions;
     NSDictionary *_allowedCaptiveNetworkPlugins;
 }
 
+@property (copy) NSString *activeInterfaceProtocolKey; // @synthesize activeInterfaceProtocolKey=_activeInterfaceProtocolKey;
 @property (getter=isAllowAllCaptiveNetworkPlugins) BOOL allowAllCaptiveNetworkPlugins; // @synthesize allowAllCaptiveNetworkPlugins=_allowAllCaptiveNetworkPlugins;
 @property (getter=isAllowCaptiveWebSheet) BOOL allowCaptiveWebSheet; // @synthesize allowCaptiveWebSheet=_allowCaptiveWebSheet;
 @property (copy) NSDictionary *allowedCaptiveNetworkPlugins; // @synthesize allowedCaptiveNetworkPlugins=_allowedCaptiveNetworkPlugins;

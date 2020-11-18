@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SpringBoardUI/BSDescriptionProviding-Protocol.h>
 #import <SpringBoardUI/FBSceneClientProvider-Protocol.h>
@@ -29,11 +29,11 @@
 @property (readonly, copy, nonatomic) NSSet *scenes;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_performSynchronouslyOnMainThread:(CDUnknownBlockType)arg1;
 - (void)_queue_invalidate;
 - (void)beginTransaction;
 - (id)createSceneWithIdentifier:(id)arg1 initialClientSettings:(id)arg2;
-- (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)destroyScene:(id)arg1;

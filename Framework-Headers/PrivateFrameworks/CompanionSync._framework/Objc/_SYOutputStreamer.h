@@ -30,6 +30,7 @@
 
 - (void).cxx_destruct;
 - (void)_completeAllItemsWithError:(id)arg1;
+- (CDUnknownBlockType)_getCompletionBlock;
 - (void)_tryToSendData;
 - (void)close;
 - (id)initWithCompressedFileURL:(id)arg1 callbackQueue:(id)arg2;

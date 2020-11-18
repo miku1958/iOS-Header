@@ -13,15 +13,18 @@
 
 @interface SBSApplicationShortcutIcon : NSObject <NSCopying, BSXPCCoding>
 {
+    BOOL _flipsForRightToLeftLayoutDirection;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL flipsForRightToLeftLayoutDirection; // @synthesize flipsForRightToLeftLayoutDirection=_flipsForRightToLeftLayoutDirection;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
+- (id)init;
 - (id)initWithXPCDictionary:(id)arg1;
 
 @end

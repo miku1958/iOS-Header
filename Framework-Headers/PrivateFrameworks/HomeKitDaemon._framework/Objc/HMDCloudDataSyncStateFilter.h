@@ -9,16 +9,18 @@
 #import <HomeKitDaemon/HAPTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMMessageReceiver-Protocol.h>
 
-@class HAPTimer, HMMessageDispatcher, NSDate, NSObject, NSString, NSUUID;
+@class HAPTimer, HMDHomeManager, HMMessageDispatcher, NSDate, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface HMDCloudDataSyncStateFilter : HMDMessageFilter <HMMessageReceiver, HAPTimerDelegate>
 {
     BOOL _keychainSyncEnabled;
     BOOL _keychainSyncRequiredPopShown;
+    BOOL _iCloudSwitchRequiredPopShown;
     BOOL _iCloudAccountActive;
     BOOL _cloudDataSyncCompleted;
     BOOL _serverTokenAvailable;
+    BOOL _iCloudSwitchStateEnabled;
     BOOL _decryptionFailed;
     BOOL _networkConnectivityAvailable;
     int _circleNotificationToken;
@@ -26,10 +28,12 @@
     HMMessageDispatcher *_msgDispatcher;
     long long _totalTransientPeerDevices;
     NSObject<OS_dispatch_source> *_popupTimer;
+    NSObject<OS_dispatch_source> *_iCloudSwitchPopupTimer;
     long long _totalHomes;
     HAPTimer *_cloudDataSyncInProgressTimer;
     double _remainingDataSyncPeriod;
     NSDate *_dataSyncTimerStartTimestamp;
+    HMDHomeManager *_homeManager;
 }
 
 @property (nonatomic) int circleNotificationToken; // @synthesize circleNotificationToken=_circleNotificationToken;
@@ -40,7 +44,11 @@
 @property (nonatomic) BOOL decryptionFailed; // @synthesize decryptionFailed=_decryptionFailed;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property (nonatomic) BOOL iCloudAccountActive; // @synthesize iCloudAccountActive=_iCloudAccountActive;
+@property (strong, nonatomic) NSObject<OS_dispatch_source> *iCloudSwitchPopupTimer; // @synthesize iCloudSwitchPopupTimer=_iCloudSwitchPopupTimer;
+@property (nonatomic) BOOL iCloudSwitchRequiredPopShown; // @synthesize iCloudSwitchRequiredPopShown=_iCloudSwitchRequiredPopShown;
+@property (nonatomic) BOOL iCloudSwitchStateEnabled; // @synthesize iCloudSwitchStateEnabled=_iCloudSwitchStateEnabled;
 @property (nonatomic) BOOL keychainSyncEnabled; // @synthesize keychainSyncEnabled=_keychainSyncEnabled;
 @property (nonatomic) BOOL keychainSyncRequiredPopShown; // @synthesize keychainSyncRequiredPopShown=_keychainSyncRequiredPopShown;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
@@ -57,7 +65,7 @@
 
 + (BOOL)isWhitelistedRemoteTransportMessage:(id)arg1;
 - (void).cxx_destruct;
-- (BOOL)_cloudSyncinProgressCheck;
+- (BOOL)_cloudSyncinProgressCheck:(id)arg1 sendCanceledError:(BOOL *)arg2;
 - (void)_handleAccountStatusChanged:(id)arg1;
 - (void)_handleCircleChangedNotification;
 - (void)_handleRemoteAccessPeersFoundNotification:(id)arg1;
@@ -66,12 +74,15 @@
 - (void)_stallCloudDataSyncTimer;
 - (void)_startCloudDataSyncTimer;
 - (void)_startPopupTimer;
+- (void)_startiCloudSwitchPopupTimer;
 - (void)_stopCloudDataSyncTimer;
 - (void)_stopPopupTimer;
+- (void)_stopiCloudSwitchPopupTimer;
 - (void)_updateCloudDataSyncState:(BOOL)arg1;
 - (BOOL)acceptMessage:(id)arg1 target:(id)arg2 errorReason:(id *)arg3;
 - (void)dealloc;
-- (id)initWithName:(id)arg1 messageDispatcher:(id)arg2 totalTransientPeerDevices:(unsigned long long)arg3 serverTokenAvailable:(BOOL)arg4 totalHomes:(long long)arg5;
+- (id)initWithName:(id)arg1 homeManager:(id)arg2 messageDispatcher:(id)arg3 totalTransientPeerDevices:(unsigned long long)arg4 serverTokenAvailable:(BOOL)arg5 totalHomes:(long long)arg6;
+- (BOOL)isiCloudSwitchEnabled;
 - (void)resetConfiguration;
 - (BOOL)shouldCloudSyncData;
 - (void)timerDidFire:(id)arg1;
@@ -80,6 +91,7 @@
 - (void)updateNetworkConnectivity:(BOOL)arg1;
 - (void)updateServerTokenAvailable:(BOOL)arg1;
 - (void)updateTotalHomes:(long long)arg1;
+- (void)updateiCloudSwitchState:(BOOL)arg1;
 
 @end
 

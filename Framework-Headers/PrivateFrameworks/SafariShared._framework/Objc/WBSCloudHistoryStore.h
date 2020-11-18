@@ -20,6 +20,7 @@
 
 - (void).cxx_destruct;
 - (void)_appendRecord:(id)arg1 toResult:(id)arg2;
+- (void)_batchSaveRecords:(id)arg1 useLongLivedOperation:(BOOL)arg2 longLivedOperationPersistenceCompletion:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_configureFetchChangesOperation:(id)arg1;
 - (id)_debugAllRecordsDescription;
 - (id)_debugDescriptionForRecord:(id)arg1;
@@ -28,18 +29,19 @@
 - (void)_prepareRecordZoneWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_recordDataForDictionary:(id)arg1;
 - (id)_recordWithCloudHistoryVisits:(id)arg1;
-- (id)_recordWithHistoryTombstones:(id)arg1;
+- (id)_recordWithHistoryTombstones:(id)arg1 version:(unsigned long long)arg2;
 - (id)_recordWithType:(id)arg1 version:(unsigned long long)arg2 dataDictionary:(id)arg3;
 - (id)_recordsWithCloudHistoryVisits:(id)arg1;
 - (void)_resetRecordZone;
-- (void)_saveCloudHistoryVisits:(id)arg1 tombstones:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_saveCloudHistoryVisits:(id)arg1 tombstones:(id)arg2 longLivedOperationPersistenceCompletion:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_saveRecords:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)_shouldTryToResetRecordZoneForError:(id)arg1;
 - (void)fetchNumberOfDevicesInSyncCircleWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchRecordsWithServerChangeTokenData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithConfiguration:(id)arg1;
 - (void)initializePushNotifications:(CDUnknownBlockType)arg1;
-- (void)saveCloudHistoryVisits:(id)arg1 tombstones:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)replayPersistedLongLivedSaveOperationWithID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)saveCloudHistoryVisits:(id)arg1 tombstones:(id)arg2 longLivedOperationPersistenceCompletion:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

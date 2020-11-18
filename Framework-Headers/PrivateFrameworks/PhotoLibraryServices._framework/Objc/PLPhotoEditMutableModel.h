@@ -53,6 +53,8 @@
 @property (nonatomic) double smartToneLevel; // @dynamic smartToneLevel;
 @property (copy, nonatomic) NSDictionary *smartToneStatistics; // @dynamic smartToneStatistics;
 @property (nonatomic) double straightenAngle; // @dynamic straightenAngle;
+@property (nonatomic) CDStruct_1b6d18a9 trimEndTimeOffset; // @dynamic trimEndTimeOffset;
+@property (nonatomic) CDStruct_1b6d18a9 trimStartTimeOffset; // @dynamic trimStartTimeOffset;
 @property (nonatomic, getter=isWhiteBalanceEnabled) BOOL whiteBalanceEnabled; // @dynamic whiteBalanceEnabled;
 @property (nonatomic) double whiteBalanceFaceI; // @dynamic whiteBalanceFaceI;
 @property (nonatomic) double whiteBalanceFaceQ; // @dynamic whiteBalanceFaceQ;

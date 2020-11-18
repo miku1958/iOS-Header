@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
     int _attempts;
     double _startTime;
     double _timeout;
+    int _checksumMethod;
     long long _eTagType;
 }
 

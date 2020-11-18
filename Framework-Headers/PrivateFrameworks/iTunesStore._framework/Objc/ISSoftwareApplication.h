@@ -35,6 +35,7 @@
     NSArray *_versionOrdering;
     NSDate *_receiptExpirationDate;
     unsigned long long _vppStateFlags;
+    unsigned long long _removableStatus;
 }
 
 @property (strong, nonatomic) NSNumber *accountDSID; // @synthesize accountDSID=_accountDSID;
@@ -57,6 +58,7 @@
 @property (nonatomic, getter=isPlaceholder) BOOL placeholder; // @synthesize placeholder=_placeholder;
 @property (nonatomic, getter=isProfileValidated) BOOL profileValidated; // @synthesize profileValidated=_profileValidated;
 @property (readonly, nonatomic) NSDate *receiptExpirationDate; // @synthesize receiptExpirationDate=_receiptExpirationDate;
+@property (readonly, nonatomic) unsigned long long removableStatus; // @synthesize removableStatus=_removableStatus;
 @property (copy, nonatomic) NSString *softwareType; // @synthesize softwareType=_softwareType;
 @property (strong, nonatomic) NSNumber *storeFrontIdentifier; // @synthesize storeFrontIdentifier=_storeFrontIdentifier;
 @property (readonly) Class superclass;

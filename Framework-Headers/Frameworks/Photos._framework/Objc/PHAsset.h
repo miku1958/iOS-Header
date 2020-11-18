@@ -163,6 +163,7 @@
 - (id)fileURLForVideoComplementFile;
 - (id)fileURLForVideoPreviewFile;
 - (id)fileURLForXMPFile;
+- (void)generateLargeThumbnailFileIfNecessary;
 - (BOOL)hasLegacyAdjustments;
 - (struct CGSize)imageSize;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
@@ -177,6 +178,7 @@
 - (BOOL)isLocatedAtCoordinates:(CDStruct_c3b9c2ee)arg1;
 - (BOOL)isMediaSubtype:(unsigned long long)arg1;
 - (BOOL)isMogul;
+- (BOOL)isOriginalSRGB;
 - (BOOL)isPhoto;
 - (BOOL)isPhotoStreamPhoto;
 - (BOOL)isStreamedVideo;
@@ -193,16 +195,20 @@
 - (id)pathForAdjustmentDataFile;
 - (id)pathForAdjustmentDirectory;
 - (id)pathForAdjustmentFile;
+- (id)pathForFullsizeRenderImageFile;
+- (id)pathForLargeThumbnailFile;
+- (id)pathForMediumThumbnailFile;
 - (id)pathForMutationsDirectory;
+- (id)pathForNonAdjustedFullsizeImageFile;
 - (id)pathForOriginalFile;
 - (id)pathForPenultimateFullsizeRenderImageFile;
+- (id)pathForSRGBLargeThumbnailFile;
 - (id)pathForSubstandardFullsizeRenderImageFile;
+- (id)pathForVideoPreviewFile;
 - (id)photoIrisProperties;
 - (id)pl_managedAsset;
 - (id)pl_photoLibrary;
 - (unsigned long long)requestContentEditingInputWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)reservedFileURLForLargeDisplayableImageFileForceLarge:(BOOL)arg1 forceUpgradeFromSubstandardIfNecessary:(BOOL)arg2 outImageType:(long long *)arg3;
-- (id)reservedPathForLargeDisplayableImageFileForceLarge:(BOOL)arg1 forceUpgradeFromSubstandardIfNecessary:(BOOL)arg2 outImageType:(long long *)arg3;
 - (id)thumbnailIdentifier;
 
 @end

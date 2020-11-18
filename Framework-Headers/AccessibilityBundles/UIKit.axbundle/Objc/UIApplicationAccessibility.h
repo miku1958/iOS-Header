@@ -32,7 +32,7 @@
 - (id)_accessibilityElementFirst:(BOOL)arg1 last:(BOOL)arg2 forFocus:(BOOL)arg3;
 - (id)_accessibilityElementFirst:(BOOL)arg1 last:(BOOL)arg2 forFocus:(BOOL)arg3 allowScrolling:(BOOL)arg4;
 - (id)_accessibilityElementsForSearchParameter:(id)arg1;
-- (id)_accessibilityElementsWithSemanticContext;
+- (id)_accessibilityElementsWithSemanticContext:(id)arg1;
 - (id)_accessibilityExplorerElements;
 - (id)_accessibilityFirstElement;
 - (id)_accessibilityFirstElementForFocus;
@@ -47,7 +47,7 @@
 - (id)_accessibilityMainWindow;
 - (id)_accessibilityNativeFocusElement;
 - (id)_accessibilityNativeFocusPreferredElement;
-- (id)_accessibilityNativeFocusableElements;
+- (id)_accessibilityNativeFocusableElements:(id)arg1;
 - (long long)_accessibilityOrientationForCompareGeometry;
 - (BOOL)_accessibilityOverrideStartStopExtraExtras;
 - (id)_accessibilityPreviewWindow;

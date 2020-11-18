@@ -25,6 +25,8 @@
     NSNumber *_uploadedElements;
     NSNumber *_falseMoreAvailableCount;
     NSString *_protocolVersion;
+    NSDate *_lastSuccessDate;
+    NSDate *_lastFailureDate;
     NSDate *_creationDate;
 }
 
@@ -36,6 +38,8 @@
 @property (strong, nonatomic) NSNumber *failedNetworkRequests; // @synthesize failedNetworkRequests=_failedNetworkRequests;
 @property (strong, nonatomic) NSNumber *failedProtocolRequests; // @synthesize failedProtocolRequests=_failedProtocolRequests;
 @property (strong, nonatomic) NSNumber *falseMoreAvailableCount; // @synthesize falseMoreAvailableCount=_falseMoreAvailableCount;
+@property (strong, nonatomic) NSDate *lastFailureDate; // @synthesize lastFailureDate=_lastFailureDate;
+@property (strong, nonatomic) NSDate *lastSuccessDate; // @synthesize lastSuccessDate=_lastSuccessDate;
 @property (nonatomic) int numHBIDataPoints; // @synthesize numHBIDataPoints=_numHBIDataPoints;
 @property (strong, nonatomic) NSString *persistentUUID; // @synthesize persistentUUID=_persistentUUID;
 @property (strong, nonatomic) NSString *protocolVersion; // @synthesize protocolVersion=_protocolVersion;

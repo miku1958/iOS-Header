@@ -14,6 +14,7 @@
 {
 }
 
+@property (nonatomic) long long appRestriction;
 @property (copy, nonatomic) NSString *countryCode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

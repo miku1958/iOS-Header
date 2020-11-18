@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSNumber *inputHighlights;
     NSNumber *inputBlack;
     NSNumber *inputUseCube;
+    id inputUseCubeColorSpace;
     CIImage *_cubeImage;
     CIContext *_cubeContext;
 }
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 @property (strong, nonatomic) NSNumber *inputShadows; // @synthesize inputShadows;
 @property (strong, nonatomic) NSNumber *inputUseCube; // @synthesize inputUseCube;
+@property (strong, nonatomic) id inputUseCubeColorSpace; // @synthesize inputUseCubeColorSpace;
 
 + (id)customAttributes;
 - (BOOL)_isIdentity;

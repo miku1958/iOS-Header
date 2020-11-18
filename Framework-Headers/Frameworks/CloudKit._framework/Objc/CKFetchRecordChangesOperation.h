@@ -26,8 +26,10 @@
     CDUnknownBlockType _shareChangedBlock;
     CDUnknownBlockType _shareWithIDWasDeletedBlock;
     CDUnknownBlockType _serverChangeTokenFetchedBlock;
+    CDUnknownBlockType _changeTokensUpdatedBlock;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType changeTokensUpdatedBlock; // @synthesize changeTokensUpdatedBlock=_changeTokensUpdatedBlock;
 @property (copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property (nonatomic) BOOL fetchAllChanges; // @synthesize fetchAllChanges=_fetchAllChanges;
 @property (copy, nonatomic) CDUnknownBlockType fetchRecordChangesCompletionBlock; // @synthesize fetchRecordChangesCompletionBlock=_fetchRecordChangesCompletionBlock;
@@ -53,7 +55,9 @@
 - (void)_handleProgressCallback:(id)arg1;
 - (unsigned long long)activityStart;
 - (long long)changeTypesFromSetCallbacks;
+- (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (BOOL)hasCKOperationCallbacksSet;
 - (id)initWithRecordZoneID:(id)arg1 previousServerChangeToken:(id)arg2;
 - (void)performCKOperation;
 

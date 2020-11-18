@@ -12,9 +12,11 @@
     long long fGender;
     double fHeight;
     double fWeight;
+    long long fCondition;
 }
 
 @property (readonly, nonatomic) double age;
+@property (readonly, nonatomic) long long condition;
 @property (readonly, nonatomic) long long gender;
 @property (readonly, nonatomic) double height;
 @property (readonly, nonatomic) double weight;
@@ -26,6 +28,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAge:(double)arg1 gender:(long long)arg2 height:(double)arg3 weight:(double)arg4;
+- (id)initWithAge:(double)arg1 gender:(long long)arg2 height:(double)arg3 weight:(double)arg4 condition:(long long)arg5;
 - (id)initWithCoder:(id)arg1;
 
 @end

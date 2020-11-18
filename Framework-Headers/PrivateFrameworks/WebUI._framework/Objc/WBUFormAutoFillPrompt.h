@@ -11,7 +11,7 @@
 }
 
 + (void)showAutoFillPromptInWebView:(id)arg1 title:(id)arg2 message:(id)arg3 cancelButtonTitle:(id)arg4 otherButtonTitles:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
-+ (void)showAutoFillPromptInWebView:(id)arg1 title:(id)arg2 message:(id)arg3 cancelButtonTitle:(id)arg4 otherButtonTitles:(id)arg5 numberOfRows:(unsigned long long)arg6 completionHandler:(CDUnknownBlockType)arg7;
++ (void)showAutoFillPromptInWebView:(id)arg1 title:(id)arg2 message:(id)arg3 cancelButtonTitle:(id)arg4 otherButtonTitles:(id)arg5 numberOfRows:(unsigned long long)arg6 cancelWhenAppEntersBackground:(BOOL)arg7 completionHandler:(CDUnknownBlockType)arg8;
 
 @end
 

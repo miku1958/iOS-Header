@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     MRNowPlayingArtwork *_nowPlayingArtwork;
     struct _MROrigin *_origin;
     unsigned int _routeDiscoveryMode;
+    CDUnknownBlockType _playbackQueueCallback;
 }
 
 @property (nonatomic) BOOL canBeNowPlayingApp; // @synthesize canBeNowPlayingApp=_canBeNowPlayingApp;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) MRNowPlayingArtwork *nowPlayingArtwork; // @synthesize nowPlayingArtwork=_nowPlayingArtwork;
 @property (copy, nonatomic) NSDictionary *nowPlayingInfo; // @synthesize nowPlayingInfo=_nowPlayingInfo;
 @property (readonly, nonatomic) struct _MROrigin *origin; // @synthesize origin=_origin;
+@property (copy, nonatomic) CDUnknownBlockType playbackQueueCallback; // @synthesize playbackQueueCallback=_playbackQueueCallback;
 @property (nonatomic) unsigned int routeDiscoveryMode; // @synthesize routeDiscoveryMode=_routeDiscoveryMode;
 @property (copy, nonatomic) NSArray *supportedCommands; // @synthesize supportedCommands=_supportedCommands;
 

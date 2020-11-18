@@ -7,19 +7,18 @@
 #import <objc/NSObject.h>
 
 #import <HealthDaemon/HDDataCollectionManagerDelegate-Protocol.h>
-#import <HealthDaemon/HDDatabaseMigrationDelegate-Protocol.h>
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 #import <HealthDaemon/HDHealthDaemon-Protocol.h>
 #import <HealthDaemon/NSXPCListenerDelegate-Protocol.h>
 
-@class HDAchievementDoctorManager, HDAppLauncher, HDAppSubscriptionManager, HDAuthorizationManager, HDBackgroundTaskScheduler, HDCoachingDiagnosticManager, HDContentProtectionManager, HDDaemonSyncEngine, HDDataCollectionManager, HDDataManager, HDDataProvenanceManager, HDDatabase, HDDatabasePruningManager, HDDeviceManager, HDHealthDeviceManager, HDMetadataManager, HDMigrationManager, HDNanoSyncManager, HDPluginManager, HDProcessStateManager, HDSourceManager, HDUnitPreferencesManager, HDUserCharacteristicsManager, HDWorkoutManager, NSMutableArray, NSMutableSet, NSString, NSXPCListener;
-@protocol HDDaemonDeviceManager, HDHealthDataCollectionManager, HDHealthDataManager, HDHealthDatabase, HDHealthMetadataManager, HDPairedWatchBundleIdentifierProvider, HDSyncEngine, HDViewOnWakeService, OS_dispatch_queue;
+@class HDAchievementDoctorManager, HDAppLauncher, HDAppSubscriptionManager, HDAuthorizationManager, HDBackgroundTaskScheduler, HDCoachingDiagnosticManager, HDContentProtectionManager, HDCurrentActivitySummaryHelper, HDDaemonSyncEngine, HDDataCollectionManager, HDDataManager, HDDataProvenanceManager, HDDatabase, HDDatabasePruningManager, HDDeviceManager, HDHealthServiceManager, HDMetadataManager, HDMigrationManager, HDNanoSyncManager, HDPluginManager, HDProcessStateManager, HDRoutineGateway, HDServiceConnectionManager, HDSourceManager, HDUnitPreferencesManager, HDUserCharacteristicsManager, HDWorkoutManager, NSMutableArray, NSMutableSet, NSString, NSURL, NSXPCListener;
+@protocol HDHealthDataCollectionManager, HDHealthDataManager, HDHealthDatabase, HDHealthMetadataManager, HDSyncEngine, HDViewOnWakeService, OS_dispatch_queue;
 
-@interface HDDaemon : NSObject <HDDataCollectionManagerDelegate, HDDiagnosticObject, HDDatabaseMigrationDelegate, NSXPCListenerDelegate, HDHealthDaemon>
+@interface HDDaemon : NSObject <HDDataCollectionManagerDelegate, HDDiagnosticObject, NSXPCListenerDelegate, HDHealthDaemon>
 {
     NSString *_homeDirectoryPath;
     NSMutableSet *_servers;
-    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_mainQueue;
     HDDaemonSyncEngine *_syncEngine;
     HDContentProtectionManager *_contentProtectionManager;
     HDUserCharacteristicsManager *_userCharacteristicsManager;
@@ -29,18 +28,21 @@
     HDDataProvenanceManager *_dataProvenanceManager;
     HDAchievementDoctorManager *_achievementDoctorManager;
     HDDatabasePruningManager *_databasePruningManager;
+    HDRoutineGateway *_routineGateway;
     struct MGNotificationTokenStruct *_deviceNameChangesToken;
     NSXPCListener *_serviceListener;
     NSMutableArray *_daemonLaunchObservers;
     BOOL _daemonReady;
+    int _didStart;
     HDAppLauncher *_appLauncher;
     HDAuthorizationManager *_authorizationManager;
     HDDatabase *_database;
     HDDataCollectionManager *_dataCollectMgr;
     HDDataManager *_dataMgr;
-    HDHealthDeviceManager *_deviceManager;
+    HDHealthServiceManager *_serviceManager;
+    HDServiceConnectionManager *_serviceConnectionManager;
     HDSourceManager *_sourceManager;
-    HDDeviceManager *_sourceDeviceManager;
+    HDDeviceManager *_deviceManager;
     HDMetadataManager *_metadataManager;
     HDAppSubscriptionManager *_subscriptionManager;
     HDMigrationManager *_migrationManager;
@@ -49,7 +51,7 @@
     HDWorkoutManager *_workoutManager;
     id<HDViewOnWakeService> _viewOnWakeService;
     HDCoachingDiagnosticManager *_coachingDiagnosticManager;
-    id<HDPairedWatchBundleIdentifierProvider> _pairedWatchBundleIDProvider;
+    HDCurrentActivitySummaryHelper *_currentActivitySummaryHelper;
 }
 
 @property (strong, nonatomic) HDAppLauncher *appLauncher; // @synthesize appLauncher=_appLauncher;
@@ -57,6 +59,7 @@
 @property (readonly) HDBackgroundTaskScheduler *backgroundTaskScheduler;
 @property (strong, nonatomic) HDCoachingDiagnosticManager *coachingDiagnosticManager; // @synthesize coachingDiagnosticManager=_coachingDiagnosticManager;
 @property (readonly) HDContentProtectionManager *contentProtectionManager;
+@property (strong, nonatomic) HDCurrentActivitySummaryHelper *currentActivitySummaryHelper; // @synthesize currentActivitySummaryHelper=_currentActivitySummaryHelper;
 @property (strong, nonatomic) HDDataCollectionManager *dataCollectMgr; // @synthesize dataCollectMgr=_dataCollectMgr;
 @property (strong, nonatomic) HDDataManager *dataMgr; // @synthesize dataMgr=_dataMgr;
 @property (readonly) HDDataProvenanceManager *dataProvenanceManager;
@@ -64,24 +67,27 @@
 @property (strong, nonatomic) HDDatabasePruningManager *databasePruningManager; // @synthesize databasePruningManager=_databasePruningManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) HDHealthDeviceManager *deviceManager; // @synthesize deviceManager=_deviceManager;
+@property (strong, nonatomic) HDDeviceManager *deviceManager; // @synthesize deviceManager=_deviceManager;
 @property (readonly) unsigned long long hash;
 @property (readonly) id<HDHealthDataCollectionManager> healthDataCollectionManager;
 @property (readonly) id<HDHealthDataManager> healthDataManager;
 @property (readonly) id<HDHealthDatabase> healthDatabase;
-@property (readonly) id<HDDaemonDeviceManager> healthDeviceManager;
+@property (readonly) HDDeviceManager *healthDeviceManager;
 @property (readonly) id<HDHealthMetadataManager> healthMetadataManager;
-@property (readonly) HDDeviceManager *healthSourceDeviceManager;
+@property (readonly) HDHealthServiceManager *healthServiceManager;
 @property (readonly) HDSourceManager *healthSourceManager;
 @property (readonly) NSString *homeDirectoryPath;
+@property (readonly) NSURL *homeDirectoryURL;
 @property (readonly) BOOL isAppleWatch;
+@property (readonly) NSObject<OS_dispatch_queue> *mainQueue;
 @property (strong, nonatomic) HDMetadataManager *metadataManager; // @synthesize metadataManager=_metadataManager;
 @property (strong, nonatomic) HDMigrationManager *migrationManager; // @synthesize migrationManager=_migrationManager;
 @property (strong, nonatomic) HDNanoSyncManager *nanoSyncManager; // @synthesize nanoSyncManager=_nanoSyncManager;
-@property (weak, nonatomic) id<HDPairedWatchBundleIdentifierProvider> pairedWatchBundleIDProvider; // @synthesize pairedWatchBundleIDProvider=_pairedWatchBundleIDProvider;
 @property (readonly) HDPluginManager *pluginManager;
 @property (readonly) HDProcessStateManager *processStateManager;
-@property (strong, nonatomic) HDDeviceManager *sourceDeviceManager; // @synthesize sourceDeviceManager=_sourceDeviceManager;
+@property (strong, nonatomic) HDRoutineGateway *routineGateway; // @synthesize routineGateway=_routineGateway;
+@property (strong, nonatomic) HDServiceConnectionManager *serviceConnectionManager; // @synthesize serviceConnectionManager=_serviceConnectionManager;
+@property (strong, nonatomic) HDHealthServiceManager *serviceManager; // @synthesize serviceManager=_serviceManager;
 @property (strong, nonatomic) HDSourceManager *sourceManager; // @synthesize sourceManager=_sourceManager;
 @property (strong, nonatomic) HDAppSubscriptionManager *subscriptionManager; // @synthesize subscriptionManager=_subscriptionManager;
 @property (readonly) Class superclass;
@@ -93,8 +99,14 @@
 
 + (BOOL)_shouldInitializeDaemon;
 - (void).cxx_destruct;
+- (id)IDSServiceWithIdentifier:(id)arg1;
+- (void)_applyPPTUpdatesWithDatabase:(id)arg1;
 - (void)_localeChanged:(id)arg1;
 - (BOOL)_motionTrackingAvailable;
+- (id)_newContentProtectionMangaer;
+- (id)_newDatabase;
+- (id)_newMainQueue;
+- (id)_newNanoSyncManager;
 - (id)_newProcessStateManager;
 - (id)_newUserCharacteristicsManager;
 - (void)_notifyDaemonLaunchObservers;
@@ -104,10 +116,9 @@
 - (void)_registerLaunchEventDynamicallyForNotification:(const char *)arg1;
 - (void)_resetPrivacySettings;
 - (void)_setUpDistnotedEventHandler;
-- (void)_setUpLaunchEventHandler;
-- (void)_setUpLaunchEventHandlerCompanion;
 - (void)_setUpLaunchEventHandlers;
 - (void)_setUpNotifydEventHandler;
+- (void)_setUpPedometerLaunchEventHandler;
 - (void)_setUpSignalHandlers;
 - (void)_setupMemoryWarningHandler;
 - (id)_setupSignal:(int)arg1 handler:(CDUnknownBlockType)arg2;
@@ -115,22 +126,24 @@
 - (void)_terminationCleanup;
 - (void)_unregisterLaunchEventDynamicallyForNotification:(const char *)arg1;
 - (void)beginTransaction:(id)arg1;
-- (id)currentlyPairedWatchIdentifier;
-- (id)databaseMigratorWithDatabase:(id)arg1;
 - (void)dealloc;
 - (id)diagnosticDescription;
 - (void)didUpdateActiveWorkoutServers;
 - (void)endTransaction:(id)arg1;
+- (id)firstPartyWorkoutSnapshot;
 - (BOOL)hasAnyActiveWorkouts;
 - (BOOL)healthDataReceived:(id)arg1 provenance:(id)arg2 error:(id *)arg3;
+- (id)healthDomainAccessorWithPairedDevice:(id)arg1;
+- (id)healthLiteUserDefaultsDomain;
 - (id)init;
 - (id)initWithHomeDirectoryPath:(id)arg1;
-- (id)initWithHomeDirectoryPath:(id)arg1 contentProtectionManager:(id)arg2 queue:(id)arg3;
 - (void)invalidateActivityAlertSuppressionForIdentifier:(id)arg1;
 - (void)invalidateAndWait;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (id)nanoPairedDeviceRegistry;
 - (id)newClientWithConnection:(id)arg1;
 - (void)nukeAllWorkoutServers;
+- (id)pairedSyncCoordinatorWithServiceName:(id)arg1;
 - (void)pauseAllActiveWorkoutsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)performBlockWithPowerAssertionIdentifier:(id)arg1 transactionName:(id)arg2 powerAssertionInterval:(double)arg3 block:(CDUnknownBlockType)arg4;
 - (BOOL)persistAndNotifyDataObject:(id)arg1 device:(id)arg2 error:(id *)arg3;
@@ -138,14 +151,12 @@
 - (id)pluginDataCollectorsForCollectionManager:(id)arg1;
 - (void)registerForDaemonReady:(id)arg1;
 - (void)registerForLaunchNotification:(const char *)arg1;
-- (void)runDaemon;
+- (void)setCurrentActivityCacheOverrideDate:(id)arg1 timeZone:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setDataCollectionOptions:(id)arg1 forKey:(id)arg2 type:(id)arg3 clientUUID:(id)arg4;
-- (void)setPairedWatchBundleIdentifierProvider:(id)arg1;
+- (void)start;
 - (void)suppressActivityAlertsForIdentifier:(id)arg1 suppressionReason:(long long)arg2 timeoutUntilDate:(id)arg3;
-- (void)syncImmediatelyWithReason:(id)arg1;
 - (void)terminate;
 - (void)unregisterForLaunchNotification:(const char *)arg1;
-- (void)updateActivityCacheForNewWorkoutSamples;
 
 @end
 

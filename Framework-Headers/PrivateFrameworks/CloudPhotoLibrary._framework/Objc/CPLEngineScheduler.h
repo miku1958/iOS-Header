@@ -28,20 +28,22 @@
     unsigned long long _disablingMinglingCount;
     NSDate *_lastSyncSessionDateCausedByForeground;
     BOOL _shouldRetryASyncSessionForResourcesUpload;
-    BOOL _shouldDoSecondNormalPullPhase;
     BOOL _didStartFirstSync;
     unsigned long long _rejectedRecordsRetries;
     NSSet *_rejectedRecordIdentifiers;
+    BOOL _needsPrepull;
     CPLPlatformObject *_platformObject;
     CPLEngineLibrary *_engineLibrary;
+    CDUnknownBlockType _requiredStateObserverBlock;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, weak, nonatomic) CPLEngineLibrary *engineLibrary; // @synthesize engineLibrary=_engineLibrary;
 @property (readonly) unsigned long long hash;
+@property (readonly) BOOL needsPrepull;
 @property (readonly, nonatomic) CPLPlatformObject *platformObject; // @synthesize platformObject=_platformObject;
-@property (readonly, nonatomic) BOOL shouldDoSecondNormalPullPhase; // @synthesize shouldDoSecondNormalPullPhase=_shouldDoSecondNormalPullPhase;
+@property (copy, nonatomic) CDUnknownBlockType requiredStateObserverBlock; // @synthesize requiredStateObserverBlock=_requiredStateObserverBlock;
 @property (readonly) Class superclass;
 
 + (id)platformImplementationProtocol;
@@ -61,6 +63,7 @@
 - (void)_reallyStartSyncSession;
 - (void)_reallyUnscheduleSession;
 - (void)_scheduleNextSyncSession;
+- (void)_setRequiredFirstState:(unsigned long long)arg1;
 - (void)_startRequiredSyncSession;
 - (void)_startSyncSessionWithMinimalPhase:(unsigned long long)arg1;
 - (BOOL)_syncSessionIsPossible;

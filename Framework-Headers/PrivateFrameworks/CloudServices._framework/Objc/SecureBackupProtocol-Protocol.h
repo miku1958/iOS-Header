@@ -22,6 +22,7 @@
 - (void)recoverWithInfo:(NSDictionary *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)setBackOffDateWithInfo:(NSDictionary *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)startSMSChallengeWithInfo:(NSDictionary *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)stashRecoveryDataWithInfo:(NSDictionary *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)uncachePassphraseWithInfo:(NSDictionary *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)uncachePassphraseWithInfoAsync:(NSDictionary *)arg1;
 - (void)updateMetadataWithInfo:(NSDictionary *)arg1 reply:(void (^)(NSError *))arg2;

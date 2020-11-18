@@ -689,11 +689,12 @@ struct LabelExternalObjectsModerator {
     struct unordered_map<unsigned long long, std::__1::shared_ptr<vk::LabelExternalObject>, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, std::__1::shared_ptr<vk::LabelExternalObject>>>> _field7;
     struct vector<unsigned long long, std::__1::allocator<unsigned long long>> _field8;
     unordered_set_6cd805f9 _field9;
-    struct unordered_map<const GEOTransitLink *, std::__1::weak_ptr<vk::LabelExternalTransitLink>, std::__1::hash<const GEOTransitLink *>, std::__1::equal_to<const GEOTransitLink *>, std::__1::allocator<std::__1::pair<const GEOTransitLink *const, std::__1::weak_ptr<vk::LabelExternalTransitLink>>>> _field10;
-    struct unordered_map<unsigned long long, std::__1::vector<GEOFeatureStylePair, std::__1::allocator<GEOFeatureStylePair>>, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, std::__1::vector<GEOFeatureStylePair, std::__1::allocator<GEOFeatureStylePair>>>>> _field11;
-    struct unordered_map<vk::LabelExternalObjectsModerator::LinesOnRouteMapKey, unsigned long long, vk::LabelExternalObjectsModerator::LinesOnRouteMapKeyHash, vk::LabelExternalObjectsModerator::LinesOnRouteMapKeyEq, std::__1::allocator<std::__1::pair<const vk::LabelExternalObjectsModerator::LinesOnRouteMapKey, unsigned long long>>> _field12;
-    struct unordered_map<unsigned long long, unsigned long long, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, unsigned long long>>> _field13;
-    struct unordered_map<unsigned long long, int, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, int>>> _field14;
+    unordered_set_6cd805f9 _field10;
+    struct unordered_map<const GEOTransitLink *, std::__1::weak_ptr<vk::LabelExternalTransitLink>, std::__1::hash<const GEOTransitLink *>, std::__1::equal_to<const GEOTransitLink *>, std::__1::allocator<std::__1::pair<const GEOTransitLink *const, std::__1::weak_ptr<vk::LabelExternalTransitLink>>>> _field11;
+    struct unordered_map<unsigned long long, std::__1::vector<GEOFeatureStylePair, std::__1::allocator<GEOFeatureStylePair>>, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, std::__1::vector<GEOFeatureStylePair, std::__1::allocator<GEOFeatureStylePair>>>>> _field12;
+    struct unordered_map<vk::LabelExternalObjectsModerator::LinesOnRouteMapKey, unsigned long long, vk::LabelExternalObjectsModerator::LinesOnRouteMapKeyHash, vk::LabelExternalObjectsModerator::LinesOnRouteMapKeyEq, std::__1::allocator<std::__1::pair<const vk::LabelExternalObjectsModerator::LinesOnRouteMapKey, unsigned long long>>> _field13;
+    struct unordered_map<unsigned long long, unsigned long long, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, unsigned long long>>> _field14;
+    struct unordered_map<unsigned long long, int, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, int>>> _field15;
 };
 
 struct LabelExternalPointFeature {
@@ -715,10 +716,10 @@ struct LabelExternalPointFeature {
     BOOL _field11;
     struct vector<vk::LabelExternalTextElement, std::__1::allocator<vk::LabelExternalTextElement>> _field12;
     struct vector<vk::LabelExternalIconElement, std::__1::allocator<vk::LabelExternalIconElement>> _field13;
-    struct vector<std::__1::shared_ptr<vk::LabelAnnotationElement>, std::__1::allocator<std::__1::shared_ptr<vk::LabelAnnotationElement>>> _field14;
+    struct vector<std::__1::shared_ptr<vk::LabelAnnotationElementGroup>, std::__1::allocator<std::__1::shared_ptr<vk::LabelAnnotationElementGroup>>> _field14;
     struct vector<vk::LabelFeaturePlacementInfo, std::__1::allocator<vk::LabelFeaturePlacementInfo>> _field15;
     struct vector<std::__1::pair<vk::LabelExternalPointFeature::ElementType, gm::FixedPointVector<uint8_t, 4>>, std::__1::allocator<std::__1::pair<vk::LabelExternalPointFeature::ElementType, gm::FixedPointVector<uint8_t, 4>>>> _field16;
-    struct vector<std::__1::shared_ptr<vk::LabelExternalDataElement>, std::__1::allocator<std::__1::shared_ptr<vk::LabelExternalDataElement>>> _field17;
+    struct vector<std::__1::shared_ptr<vk::LabelExternalDataElementGroup>, std::__1::allocator<std::__1::shared_ptr<vk::LabelExternalDataElementGroup>>> _field17;
 };
 
 struct LabelExternalRoadFeature;
@@ -732,7 +733,9 @@ struct LabelFeatureInfo {
     unsigned char _field2;
     struct _retain_ptr<GEOVectorTile *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> _field3;
     struct vector<unsigned long long, std::__1::allocator<unsigned long long>> _field4;
-    struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> _field5;
+    unsigned int _field5;
+    basic_string_a1f69cfb _field6;
+    basic_string_a1f69cfb _field7;
 };
 
 struct LabelFeaturePlacementInfo;
@@ -788,7 +791,7 @@ struct LabelTransitSupport {
     unordered_set_6cd805f9 _field13;
     struct vector<std::__1::shared_ptr<vk::LabelExternalRoadFeature>, std::__1::allocator<std::__1::shared_ptr<vk::LabelExternalRoadFeature>>> _field14;
     struct vector<std::__1::shared_ptr<vk::LabelFeature>, std::__1::allocator<std::__1::shared_ptr<vk::LabelFeature>>> _field15;
-    struct unordered_map<unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>>>> _field16;
+    struct map<std::__1::shared_ptr<vk::LabelExternalRoadFeature>, std::__1::shared_ptr<vk::RoadLabelFeature>, vk::LabelExternalRoadFeatureLess, std::__1::allocator<std::__1::pair<const std::__1::shared_ptr<vk::LabelExternalRoadFeature>, std::__1::shared_ptr<vk::RoadLabelFeature>>>> _field16;
     struct _retain_ptr<VKRouteLineObserver *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
         CDUnknownFunctionPointerType *_field1;
         id _field2;
@@ -1468,6 +1471,8 @@ struct TransactionBuffer {
     struct deque<std::__1::shared_ptr<ggl::RenderTransaction>, std::__1::allocator<std::__1::shared_ptr<ggl::RenderTransaction>>> _field1;
 };
 
+struct TransitInterTileMediator;
+
 struct TransitJunctionManager;
 
 struct TransitLine;
@@ -1623,50 +1628,54 @@ struct VKLabelStyle {
     float _field34;
     float _field35;
     float _field36;
-    BOOL _field37;
-    char _field38;
-    char _field39;
-    char _field40;
-    unsigned char _field41;
-    int _field42;
-    int _field43;
-    float _field44;
-    float _field45;
-    float _field46;
-    float _field47;
-    FixedPointVector_f041f768 _field48;
-    unsigned char _field49;
-    unsigned char _field50;
-    unsigned char _field51;
-    unsigned char _field52;
+    float _field37;
+    float _field38;
+    float _field39;
+    float _field40;
+    BOOL _field41;
+    char _field42;
+    char _field43;
+    char _field44;
+    unsigned char _field45;
+    int _field46;
+    int _field47;
+    float _field48;
+    float _field49;
+    float _field50;
+    float _field51;
+    FixedPointVector_f041f768 _field52;
     unsigned char _field53;
     unsigned char _field54;
-    unsigned short _field55;
+    unsigned char _field55;
     unsigned char _field56;
     unsigned char _field57;
     unsigned char _field58;
-    unsigned char _field59;
+    unsigned short _field59;
     unsigned char _field60;
-    BOOL _field61;
-    BOOL _field62;
-    BOOL _field63;
-    float _field64;
-    int _field65;
-    char _field66;
-    unsigned char _field67;
-    BOOL _field68;
-    BOOL _field69;
-    float _field70;
-    char _field71;
-    char _field72;
-    Matrix_5173352a _field73;
-    BOOL _field74;
-    basic_string_a1f69cfb _field75;
-    basic_string_a1f69cfb _field76;
-    basic_string_a1f69cfb _field77;
-    basic_string_a1f69cfb _field78;
+    unsigned char _field61;
+    unsigned char _field62;
+    unsigned char _field63;
+    unsigned char _field64;
+    BOOL _field65;
+    BOOL _field66;
+    BOOL _field67;
+    float _field68;
+    int _field69;
+    char _field70;
+    unsigned char _field71;
+    BOOL _field72;
+    BOOL _field73;
+    float _field74;
+    char _field75;
+    char _field76;
+    Matrix_5173352a _field77;
+    BOOL _field78;
     basic_string_a1f69cfb _field79;
-    struct FontOptions _field80;
+    basic_string_a1f69cfb _field80;
+    basic_string_a1f69cfb _field81;
+    basic_string_a1f69cfb _field82;
+    basic_string_a1f69cfb _field83;
+    struct FontOptions _field84;
 };
 
 struct VKNavigationCameraModel {
@@ -1869,8 +1878,6 @@ struct __hash_node<std::__1::__hash_value_type<unsigned long long, VKPolygonGrou
 struct __hash_node<std::__1::__hash_value_type<unsigned long long, int>, void *>;
 
 struct __hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::shared_ptr<vk::LabelExternalObject>>, void *>;
-
-struct __hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>>, void *>;
 
 struct __hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unordered_map<unsigned int, int, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, int>>>>, void *>;
 
@@ -2202,6 +2209,30 @@ struct map<std::__1::basic_string<char>, unsigned long, std::__1::less<std::__1:
     } __tree_;
 };
 
+struct map<std::__1::shared_ptr<vk::LabelExternalRoadFeature>, std::__1::shared_ptr<vk::RoadLabelFeature>, vk::LabelExternalRoadFeatureLess, std::__1::allocator<std::__1::pair<const std::__1::shared_ptr<vk::LabelExternalRoadFeature>, std::__1::shared_ptr<vk::RoadLabelFeature>>>> {
+    struct __tree<std::__1::__value_type<std::__1::shared_ptr<vk::LabelExternalRoadFeature>, std::__1::shared_ptr<vk::RoadLabelFeature>>, std::__1::__map_value_compare<std::__1::shared_ptr<vk::LabelExternalRoadFeature>, std::__1::__value_type<std::__1::shared_ptr<vk::LabelExternalRoadFeature>, std::__1::shared_ptr<vk::RoadLabelFeature>>, vk::LabelExternalRoadFeatureLess, true>, std::__1::allocator<std::__1::__value_type<std::__1::shared_ptr<vk::LabelExternalRoadFeature>, std::__1::shared_ptr<vk::RoadLabelFeature>>>> {
+        struct __tree_node<std::__1::__value_type<std::__1::shared_ptr<vk::LabelExternalRoadFeature>, std::__1::shared_ptr<vk::RoadLabelFeature>>, void *> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::shared_ptr<vk::LabelExternalRoadFeature>, std::__1::shared_ptr<vk::RoadLabelFeature>>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::shared_ptr<vk::LabelExternalRoadFeature>, std::__1::__value_type<std::__1::shared_ptr<vk::LabelExternalRoadFeature>, std::__1::shared_ptr<vk::RoadLabelFeature>>, vk::LabelExternalRoadFeatureLess, true>> {
+            unsigned long long _field1;
+        } _field3;
+    } _field1;
+};
+
+struct map<unsigned int, ggl::RibbonBatch<ggl::TransitRibbonDescriptor>*, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, ggl::RibbonBatch<ggl::TransitRibbonDescriptor>*>>> {
+    struct __tree<std::__1::__value_type<unsigned int, ggl::RibbonBatch<ggl::TransitRibbonDescriptor>*>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, ggl::RibbonBatch<ggl::TransitRibbonDescriptor>*>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, ggl::RibbonBatch<ggl::TransitRibbonDescriptor>*>>> {
+        struct __tree_node<std::__1::__value_type<unsigned int, ggl::RibbonBatch<ggl::TransitRibbonDescriptor>*>, void *> *__begin_node_;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, ggl::RibbonBatch<ggl::TransitRibbonDescriptor>*>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __first_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, ggl::RibbonBatch<ggl::TransitRibbonDescriptor>*>, std::__1::less<unsigned int>, true>> {
+            unsigned long long __first_;
+        } __pair3_;
+    } __tree_;
+};
+
 struct map<vk::Anchor *, float, std::__1::less<vk::Anchor *>, std::__1::allocator<std::__1::pair<vk::Anchor *const, float>>> {
     struct __tree<std::__1::__value_type<vk::Anchor *, float>, std::__1::__map_value_compare<vk::Anchor *, std::__1::__value_type<vk::Anchor *, float>, std::__1::less<vk::Anchor *>, true>, std::__1::allocator<std::__1::__value_type<vk::Anchor *, float>>> {
         struct __tree_node<std::__1::__value_type<vk::Anchor *, float>, void *> *__begin_node_;
@@ -2517,9 +2548,9 @@ struct shared_ptr<vk::InfoLabel> {
     struct __shared_weak_count *__cntrl_;
 };
 
-struct shared_ptr<vk::LabelAnnotationElement>;
+struct shared_ptr<vk::LabelAnnotationElementGroup>;
 
-struct shared_ptr<vk::LabelExternalDataElement>;
+struct shared_ptr<vk::LabelExternalDataElementGroup>;
 
 struct shared_ptr<vk::LabelExternalPointFeature>;
 
@@ -2581,6 +2612,11 @@ struct shared_ptr<vk::NavLabel> {
 struct shared_ptr<vk::TextDataFontVariant>;
 
 struct shared_ptr<vk::TransitConnectedNode>;
+
+struct shared_ptr<vk::TransitInterTileMediator> {
+    struct TransitInterTileMediator *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
 
 struct shared_ptr<vk::TransitNode>;
 
@@ -3247,17 +3283,6 @@ struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<unsigned lon
     } _field1;
 };
 
-struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>>, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>>, void *>*>>> {
-    struct __compressed_pair<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>>, void *>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>>, void *>*>>> {
-        struct __hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>>, void *> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>>, void *>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>>, void *>*>> {
-                unsigned long long _field1;
-            } _field1;
-        } _field2;
-    } _field1;
-};
-
 struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unordered_map<unsigned int, int, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, int>>>>, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unordered_map<unsigned int, int, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, int>>>>, void *>*>>> {
     struct __compressed_pair<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unordered_map<unsigned int, int, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, int>>>>, void *>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unordered_map<unsigned int, int, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, int>>>>, void *>*>>> {
         struct __hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unordered_map<unsigned int, int, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, int>>>>, void *> **_field1;
@@ -3749,23 +3774,6 @@ struct unordered_map<unsigned long long, std::__1::shared_ptr<vk::LabelExternalO
             unsigned long long _field1;
         } _field3;
         struct __compressed_pair<float, std::__1::__unordered_map_equal<unsigned long long, std::__1::__hash_value_type<unsigned long long, std::__1::shared_ptr<vk::LabelExternalObject>>, std::__1::equal_to<unsigned long long>, true>> {
-            float _field1;
-        } _field4;
-    } _field1;
-};
-
-struct unordered_map<unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>>>> {
-    struct __hash_table<std::__1::__hash_value_type<unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>>, std::__1::__unordered_map_hasher<unsigned long long, std::__1::__hash_value_type<unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>>, std::__1::hash<unsigned long long>, true>, std::__1::__unordered_map_equal<unsigned long long, std::__1::__hash_value_type<unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>>, std::__1::equal_to<unsigned long long>, true>, std::__1::allocator<std::__1::__hash_value_type<unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>>>> {
-        struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>>, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>>, void *>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>>, void *>*> {
-                struct __hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>>, void *> *_field1;
-            } _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<unsigned long long, std::__1::__hash_value_type<unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>>, std::__1::hash<unsigned long long>, true>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<unsigned long long, std::__1::__hash_value_type<unsigned long long, std::__1::shared_ptr<vk::RoadLabelFeature>>, std::__1::equal_to<unsigned long long>, true>> {
             float _field1;
         } _field4;
     } _field1;
@@ -4417,14 +4425,6 @@ struct vector<md::CommandBufferId, std::__1::allocator<md::CommandBufferId>> {
     } __end_cap_;
 };
 
-struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> {
-    basic_string_a1f69cfb *_field1;
-    basic_string_a1f69cfb *_field2;
-    struct __compressed_pair<std::__1::basic_string<char>*, std::__1::allocator<std::__1::basic_string<char>>> {
-        basic_string_a1f69cfb *_field1;
-    } _field3;
-};
-
 struct vector<std::__1::pair<TransitLineWithLink, float>, std::__1::allocator<std::__1::pair<TransitLineWithLink, float>>> {
     struct pair<TransitLineWithLink, float> *_field1;
     struct pair<TransitLineWithLink, float> *_field2;
@@ -4513,19 +4513,19 @@ struct vector<std::__1::shared_ptr<md::TexturedDrawable>, std::__1::allocator<st
     } __end_cap_;
 };
 
-struct vector<std::__1::shared_ptr<vk::LabelAnnotationElement>, std::__1::allocator<std::__1::shared_ptr<vk::LabelAnnotationElement>>> {
-    struct shared_ptr<vk::LabelAnnotationElement> *_field1;
-    struct shared_ptr<vk::LabelAnnotationElement> *_field2;
-    struct __compressed_pair<std::__1::shared_ptr<vk::LabelAnnotationElement>*, std::__1::allocator<std::__1::shared_ptr<vk::LabelAnnotationElement>>> {
-        struct shared_ptr<vk::LabelAnnotationElement> *_field1;
+struct vector<std::__1::shared_ptr<vk::LabelAnnotationElementGroup>, std::__1::allocator<std::__1::shared_ptr<vk::LabelAnnotationElementGroup>>> {
+    struct shared_ptr<vk::LabelAnnotationElementGroup> *_field1;
+    struct shared_ptr<vk::LabelAnnotationElementGroup> *_field2;
+    struct __compressed_pair<std::__1::shared_ptr<vk::LabelAnnotationElementGroup>*, std::__1::allocator<std::__1::shared_ptr<vk::LabelAnnotationElementGroup>>> {
+        struct shared_ptr<vk::LabelAnnotationElementGroup> *_field1;
     } _field3;
 };
 
-struct vector<std::__1::shared_ptr<vk::LabelExternalDataElement>, std::__1::allocator<std::__1::shared_ptr<vk::LabelExternalDataElement>>> {
-    struct shared_ptr<vk::LabelExternalDataElement> *_field1;
-    struct shared_ptr<vk::LabelExternalDataElement> *_field2;
-    struct __compressed_pair<std::__1::shared_ptr<vk::LabelExternalDataElement>*, std::__1::allocator<std::__1::shared_ptr<vk::LabelExternalDataElement>>> {
-        struct shared_ptr<vk::LabelExternalDataElement> *_field1;
+struct vector<std::__1::shared_ptr<vk::LabelExternalDataElementGroup>, std::__1::allocator<std::__1::shared_ptr<vk::LabelExternalDataElementGroup>>> {
+    struct shared_ptr<vk::LabelExternalDataElementGroup> *_field1;
+    struct shared_ptr<vk::LabelExternalDataElementGroup> *_field2;
+    struct __compressed_pair<std::__1::shared_ptr<vk::LabelExternalDataElementGroup>*, std::__1::allocator<std::__1::shared_ptr<vk::LabelExternalDataElementGroup>>> {
+        struct shared_ptr<vk::LabelExternalDataElementGroup> *_field1;
     } _field3;
 };
 
@@ -5513,6 +5513,11 @@ typedef struct shared_ptr<vk::NavLabel> {
     struct __shared_weak_count *__cntrl_;
 } shared_ptr_338aa11d;
 
+typedef struct shared_ptr<vk::TransitInterTileMediator> {
+    struct TransitInterTileMediator *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+} shared_ptr_6f1ea1a2;
+
 typedef struct shared_ptr<vk::ViewTransform> {
     struct ViewTransform *__ptr_;
     struct __shared_weak_count *__cntrl_;
@@ -5781,6 +5786,14 @@ typedef struct vector<vk::TileExclusionArea, std::__1::allocator<vk::TileExclusi
         struct TileExclusionArea *__first_;
     } __end_cap_;
 } vector_a2f7343e;
+
+typedef struct vector<vk::TransitLink, std::__1::allocator<vk::TransitLink>> {
+    struct TransitLink *__begin_;
+    struct TransitLink *__end_;
+    struct __compressed_pair<vk::TransitLink *, std::__1::allocator<vk::TransitLink>> {
+        struct TransitLink *__first_;
+    } __end_cap_;
+} vector_ea869f43;
 
 typedef struct weak_ptr<md::GlobeOverlayContainer> {
     struct GlobeOverlayContainer *__ptr_;

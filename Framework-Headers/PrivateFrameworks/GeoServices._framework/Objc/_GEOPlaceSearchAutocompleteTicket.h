@@ -29,9 +29,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) GEOMapServiceTraits *traits; // @synthesize traits=_traits;
 
+- (void)applyToSuggestionEntry:(id)arg1 withAutocompleteSearchResultMuid:(unsigned long long)arg2;
+- (void)applyToSuggestionList:(id)arg1;
 - (void)cancel;
 - (void)dealloc;
 - (id)initWithRequest:(id)arg1 traits:(id)arg2 searchQuery:(id)arg3;
+- (BOOL)isRapEnabled;
 - (BOOL)matchesFragment:(id)arg1;
 - (void)submitWithAutoCompletionHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
 

@@ -9,28 +9,31 @@
 #import <PairedUnlock/PUUnlockClient-Protocol.h>
 
 @class NSString, NSXPCConnection;
-@protocol PUConnectionDelegate;
+@protocol OS_dispatch_queue, PUConnectionDelegate;
 
 @interface PUConnection : NSObject <PUUnlockClient>
 {
+    NSXPCConnection *_connection;
+    NSObject<OS_dispatch_queue> *_connectionQueue;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
+    id<PUConnectionDelegate> _delegate;
     CDUnknownBlockType _getRemoteDevicePasscodeStateHandler;
     CDUnknownBlockType _remoteDeviceRemoveLockoutHandler;
-    BOOL _invalidated;
-    id<PUConnectionDelegate> _delegate;
-    NSXPCConnection *_connection;
 }
 
-@property (readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<PUConnectionDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak) id<PUConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) CDUnknownBlockType getRemoteDevicePasscodeStateHandler; // @synthesize getRemoteDevicePasscodeStateHandler=_getRemoteDevicePasscodeStateHandler;
 @property (readonly) unsigned long long hash;
-@property BOOL invalidated; // @synthesize invalidated=_invalidated;
-@property (readonly, nonatomic) BOOL isInvalid;
+@property (copy, nonatomic) CDUnknownBlockType remoteDeviceRemoveLockoutHandler; // @synthesize remoteDeviceRemoveLockoutHandler=_remoteDeviceRemoveLockoutHandler;
 @property (readonly) Class superclass;
 
++ (void)syncPasscodeState;
 - (void).cxx_destruct;
+- (id)connection;
 - (void)dealloc;
+- (id)delegateIfRespondsToSelector:(SEL)arg1;
 - (void)didDisableOnlyRemoteUnlock:(BOOL)arg1 error:(id)arg2;
 - (void)didEnableOnlyRemoteUnlock:(BOOL)arg1 error:(id)arg2;
 - (void)didGetRemoteDeviceHasPasscode:(BOOL)arg1 isLocked:(BOOL)arg2 isUnlockOnly:(BOOL)arg3 error:(id)arg4;
@@ -40,13 +43,16 @@
 - (void)enableOnlyRemoteUnlockWithPasscode:(id)arg1;
 - (void)getRemoteDeviceState:(CDUnknownBlockType)arg1;
 - (id)init;
+- (id)initWithDelegate:(id)arg1;
 - (void)pairForUnlockWithPasscode:(id)arg1;
+- (const char *)queueNameWithSuffix:(id)arg1;
 - (void)remoteDeviceDidCompletePasscodeAction:(BOOL)arg1 error:(id)arg2;
 - (void)remoteDeviceDidRemoveLockout:(BOOL)arg1 error:(id)arg2;
 - (void)remoteDeviceDidUnlock;
 - (void)requestRemoteDevicePasscodeAction:(long long)arg1 type:(long long)arg2;
 - (void)requestRemoteDeviceRemoveLockout:(CDUnknownBlockType)arg1;
 - (void)requestRemoteDeviceUnlockNotification;
+- (void)setConnection:(id)arg1;
 - (void)unpairForUnlock;
 
 @end

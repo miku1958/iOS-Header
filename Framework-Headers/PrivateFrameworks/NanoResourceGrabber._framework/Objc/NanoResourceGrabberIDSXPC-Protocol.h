@@ -6,11 +6,9 @@
 
 #import <NanoResourceGrabber/NSObject-Protocol.h>
 
-@class NSData, NSString;
+@class NSString;
 
 @protocol NanoResourceGrabberIDSXPC <NSObject>
-- (void)xpcGetCachedIconForBundleID:(NSString *)arg1 iconVariant:(int)arg2 reply:(void (^)(NSData *))arg3;
 - (void)xpcGetIconForBundleID:(NSString *)arg1 iconVariant:(int)arg2 withTimeout:(double)arg3 reply:(void (^)(NSData *))arg4;
-- (void)xpcSetIcon:(NSData *)arg1 forIconVariant:(int)arg2 inBundleID:(NSString *)arg3 completion:(void (^)(void))arg4;
 @end
 

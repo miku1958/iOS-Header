@@ -74,6 +74,7 @@
 @property (readonly, nonatomic) NSArray *unavailablePasses;
 @property (copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
 
+- (id)_contactFromABRecordRef:(void *)arg1;
 - (void)_ensureItemForClass:(Class)arg1;
 - (void)_ensureItems;
 - (void)_ensurePlaceholderItems;

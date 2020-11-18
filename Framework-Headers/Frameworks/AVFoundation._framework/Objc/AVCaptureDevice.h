@@ -33,6 +33,7 @@
 - (id)AVVideoSettingsForSessionPreset:(id)arg1;
 - (float)ISO;
 - (float)ISODigitalThreshold;
+- (void)_checkTCCAccess;
 - (void)_setActiveVideoMaxFrameDuration:(CDStruct_1b6d18a9)arg1;
 - (void)_setActiveVideoMinFrameDuration:(CDStruct_1b6d18a9)arg1;
 - (void)_setStillImageStabilizationAutomaticallyEnabled:(BOOL)arg1;

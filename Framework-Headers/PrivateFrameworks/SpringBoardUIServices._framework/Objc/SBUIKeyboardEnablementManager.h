@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSHashTable;
 
@@ -15,7 +15,7 @@
 }
 
 + (id)sharedInstance;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)disableAutomaticAppearanceForContext:(id)arg1;
 - (void)enableAutomaticAppearanceForContext:(id)arg1;

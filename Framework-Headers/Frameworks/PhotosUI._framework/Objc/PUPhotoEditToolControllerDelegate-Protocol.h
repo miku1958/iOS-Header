@@ -6,7 +6,7 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class CIImage, PLPhotoEditModel, PLPhotoEditRenderer, PUPhotoEditToolController, UIImage, UIScrollView, UIView;
+@class CIImage, PHLivePhoto, PLPhotoEditModel, PLPhotoEditRenderer, PUPhotoEditToolController, UIImage, UIScrollView, UIView;
 
 @protocol PUPhotoEditToolControllerDelegate <NSObject>
 - (void)toolController:(PUPhotoEditToolController *)arg1 didChangePreferredPreviewViewInsetsAnimated:(BOOL)arg2;
@@ -19,6 +19,7 @@
 - (void)toolControllerDidChangeWantsDefaultPreviewView:(PUPhotoEditToolController *)arg1;
 - (void)toolControllerDidFinish:(PUPhotoEditToolController *)arg1;
 - (UIScrollView *)toolControllerImageScrollView:(PUPhotoEditToolController *)arg1;
+- (PHLivePhoto *)toolControllerLivePhoto:(PUPhotoEditToolController *)arg1;
 - (UIView *)toolControllerMainContainerView:(PUPhotoEditToolController *)arg1;
 - (PLPhotoEditRenderer *)toolControllerMainRenderer:(PUPhotoEditToolController *)arg1;
 - (struct CGSize)toolControllerOriginalImageSize:(PUPhotoEditToolController *)arg1;

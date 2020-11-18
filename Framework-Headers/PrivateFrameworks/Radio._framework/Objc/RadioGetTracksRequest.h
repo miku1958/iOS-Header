@@ -27,7 +27,7 @@
     NSData *_heartbeatTokenData;
     SSVPlaybackLease *_playbackLease;
     RadioPlayEventCollection *_playEventCollection;
-    NSArray *_playActivityFeedEvents;
+    NSArray *_playActivityEvents;
     RadioPlaybackContext *_playbackContext;
     long long _reasonType;
     RadioStationMatchContext *_stationMatchContext;
@@ -40,7 +40,7 @@
 @property (nonatomic) BOOL includeCleanTracksOnly; // @synthesize includeCleanTracksOnly=_includeCleanTracksOnly;
 @property (strong, nonatomic) RadioStationMatchContext *nowPlayingMatchContext; // @synthesize nowPlayingMatchContext=_nowPlayingMatchContext;
 @property (nonatomic) unsigned long long numberOfTracks; // @synthesize numberOfTracks=_numberOfTracks;
-@property (copy, nonatomic) NSArray *playActivityFeedEvents; // @synthesize playActivityFeedEvents=_playActivityFeedEvents;
+@property (copy, nonatomic) NSArray *playActivityEvents; // @synthesize playActivityEvents=_playActivityEvents;
 @property (copy, nonatomic) RadioPlayEventCollection *playEventCollection; // @synthesize playEventCollection=_playEventCollection;
 @property (copy, nonatomic) RadioPlaybackContext *playbackContext; // @synthesize playbackContext=_playbackContext;
 @property (strong, nonatomic) SSVPlaybackLease *playbackLease; // @synthesize playbackLease=_playbackLease;

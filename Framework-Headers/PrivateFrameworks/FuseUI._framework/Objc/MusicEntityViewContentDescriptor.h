@@ -17,11 +17,13 @@
     BOOL _hasValidAllPropertiesToLoadAsynchronously;
     NSCountedSet *_textDescriptorsBeingObserved;
     BOOL _wantsDownloadProgress;
+    BOOL _wantsPopularityIndicator;
     BOOL _shouldDisableWhenUnplayable;
     BOOL _allowsDeletionWithoutEditingMode;
     BOOL _leftSeparatorInsetFollowsText;
     BOOL _shouldDisplayProminently;
     BOOL _shouldForceBottomSeparatorVisible;
+    float _popularityIndicatorThreshold;
     MusicEntityViewContentArtworkDescriptor *_artworkDescriptor;
     long long _artworkVerticalAlignment;
     NSArray *_textDescriptors;
@@ -32,6 +34,7 @@
     UIColor *_customSelectionTintColor;
     UIColor *_customSeparatorColor;
     UIColor *_downloadProgressButtonTintColor;
+    UIColor *_popularityIndicatorTintColor;
     NSString *_wantsDisclosureIndicatorProperty;
     NSString *_explicitBadgeProperty;
     NSString *_wantsAddButtonProperty;
@@ -56,6 +59,8 @@
 @property (nonatomic) BOOL leftSeparatorInsetFollowsText; // @synthesize leftSeparatorInsetFollowsText=_leftSeparatorInsetFollowsText;
 @property (strong, nonatomic) Class lockupViewClass; // @synthesize lockupViewClass=_lockupViewClass;
 @property (nonatomic) double minimumHeight; // @synthesize minimumHeight=_minimumHeight;
+@property (nonatomic) float popularityIndicatorThreshold; // @synthesize popularityIndicatorThreshold=_popularityIndicatorThreshold;
+@property (strong, nonatomic) UIColor *popularityIndicatorTintColor; // @synthesize popularityIndicatorTintColor=_popularityIndicatorTintColor;
 @property (nonatomic) long long selectionStyle; // @synthesize selectionStyle=_selectionStyle;
 @property (nonatomic) BOOL shouldDisableWhenUnplayable; // @synthesize shouldDisableWhenUnplayable=_shouldDisableWhenUnplayable;
 @property (nonatomic) BOOL shouldDisplayProminently; // @synthesize shouldDisplayProminently=_shouldDisplayProminently;
@@ -70,6 +75,7 @@
 @property (copy, nonatomic) NSString *wantsDisclosureIndicatorProperty; // @synthesize wantsDisclosureIndicatorProperty=_wantsDisclosureIndicatorProperty;
 @property (nonatomic) BOOL wantsDownloadProgress; // @synthesize wantsDownloadProgress=_wantsDownloadProgress;
 @property (copy, nonatomic) NSString *wantsPlayButtonProperty; // @synthesize wantsPlayButtonProperty=_wantsPlayButtonProperty;
+@property (nonatomic) BOOL wantsPopularityIndicator; // @synthesize wantsPopularityIndicator=_wantsPopularityIndicator;
 
 + (Class)tableViewCellClass;
 + (id)tableViewCellReuseIdentifier;

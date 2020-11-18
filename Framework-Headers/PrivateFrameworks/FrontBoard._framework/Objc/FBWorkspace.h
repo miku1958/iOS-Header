@@ -9,7 +9,7 @@
 #import <FrontBoard/FBSceneClientProvider-Protocol.h>
 #import <FrontBoard/FBWorkspaceServerDelegate-Protocol.h>
 
-@class BSAuditToken, BSZeroingWeakReference, FBProcess, FBSceneClientProviderInvalidationAction, FBWorkspaceServer, NSMapTable, NSString;
+@class BSAuditToken, BSZeroingWeakReference, FBProcess, FBSceneClientProviderInvalidationAction, FBWorkspaceServer, NSMapTable, NSMutableSet, NSString;
 @protocol FBWorkspaceDelegate, OS_dispatch_queue;
 
 @interface FBWorkspace : NSObject <FBWorkspaceServerDelegate, FBSceneClientProvider>
@@ -18,6 +18,7 @@
     BSZeroingWeakReference *_zeroingWeakProcess;
     FBWorkspaceServer *_server;
     NSMapTable *_hostToClientMap;
+    NSMutableSet *_invalidatingScenes;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_callOutQueue;
     FBSceneClientProviderInvalidationAction *_invalidationAction;
@@ -33,13 +34,16 @@
 @property (readonly, nonatomic) FBProcess *process;
 @property (readonly) Class superclass;
 
-- (id)_newSceneWithHost:(id)arg1;
+- (id)_createSceneClientWithIdentity:(id)arg1;
+- (void)_invalidateSceneClientWithIdentity:(id)arg1;
 - (id)_newWorkspaceServer;
 - (id)_queue;
 - (void)_queue_enumerateScenes:(CDUnknownBlockType)arg1;
 - (void)_queue_fireInvalidationAction;
 - (void)_queue_invalidateAllScenes;
+- (void)_queue_sceneDidInvalidate:(id)arg1;
 - (void)_queue_willInvalidateAllScenes;
+- (Class)_sceneClassForIdentity:(id)arg1;
 - (id)_server;
 - (void)beginTransaction;
 - (void)dealloc;

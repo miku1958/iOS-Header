@@ -120,6 +120,8 @@
     AVAudioMix *mostRecentlyAppliedAudioMix;
     id<NSObject><NSCopying> AVKitData;
     BOOL canUseExtraNetworking;
+    NSArray *itemCollectors;
+    NSMutableArray *itemMetadataCollectors;
     AVWeakReference *playerReference;
     BOOL didSetAssetToAssetWithFigPlaybackItem;
     struct OpaqueFigCPEProtector *figCPEProtector;

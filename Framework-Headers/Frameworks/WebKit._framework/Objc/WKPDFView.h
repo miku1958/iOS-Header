@@ -46,11 +46,13 @@ __attribute__((visibility("hidden")))
     unsigned int _nextCachedFindMaximumCount;
     unsigned long long _nextCachedFindOptionsAffectingResults;
     NSObject<OS_dispatch_queue> *_findQueue;
+    struct unique_ptr<WebKit::ApplicationStateTracker, std::__1::default_delete<WebKit::ApplicationStateTracker>> _applicationStateTracker;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isBackground;
 @property (readonly, nonatomic) struct CGPDFDocument *pdfDocument;
 @property (readonly, nonatomic) NSString *suggestedFilename;
 @property (readonly) Class superclass;
@@ -58,6 +60,8 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)_URLForLinkAnnotation:(id)arg1;
+- (void)_applicationDidEnterBackground;
+- (void)_applicationWillEnterForeground;
 - (void)_clearPages;
 - (void)_computeMatchesForString:(id)arg1 options:(unsigned long long)arg2 maxCount:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_computePageAndDocumentFrames;
@@ -85,6 +89,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)didBeginEditingPassword:(id)arg1 inView:(id)arg2;
 - (void)didEndEditingPassword:(id)arg1 inView:(id)arg2;
+- (void)didMoveToWindow;
 - (const struct InteractionInformationAtPosition *)positionInformationForActionSheetAssistant:(id)arg1;
 - (void)resetZoom:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
@@ -99,6 +104,7 @@ __attribute__((visibility("hidden")))
 - (void)web_setFixedOverlayView:(id)arg1;
 - (void)web_setMinimumSize:(struct CGSize)arg1;
 - (void)web_setOverlaidAccessoryViewsInset:(struct CGSize)arg1;
+- (void)willMoveToWindow:(id)arg1;
 - (void)zoom:(id)arg1 to:(struct CGRect)arg2 atPoint:(struct CGPoint)arg3 kind:(int)arg4;
 
 @end

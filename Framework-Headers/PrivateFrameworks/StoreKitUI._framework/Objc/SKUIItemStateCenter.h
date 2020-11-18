@@ -8,7 +8,7 @@
 
 #import <StoreKitUI/SSDownloadManagerObserver-Protocol.h>
 
-@class NSCountedSet, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, SSAppPurchaseHistoryDatabase, SSDownloadManager, SSSoftwareUpdatesStore;
+@class NSCountedSet, NSDate, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, SKUIStoreItemRelationshipCounsellor, SSAppPurchaseHistoryDatabase, SSDownloadManager, SSSoftwareUpdatesStore;
 @protocol OS_dispatch_queue;
 
 @interface SKUIItemStateCenter : NSObject <SSDownloadManagerObserver>
@@ -21,6 +21,7 @@
     SSDownloadManager *_downloadManager;
     NSMutableArray *_finishLoadBlocks;
     long long _gratisState;
+    NSDate *_gratisStateLastUpdate;
     long long _loadCount;
     NSMutableDictionary *_itemStates;
     NSObject<OS_dispatch_queue> *_mediaLibraryQueue;
@@ -30,6 +31,7 @@
     NSHashTable *_observers;
     long long _parentalControlsRank;
     SSAppPurchaseHistoryDatabase *_purchaseHistoryDatabase;
+    SKUIStoreItemRelationshipCounsellor *_relationshipCouncellor;
     BOOL _runningInStoreDemoMode;
 }
 
@@ -47,10 +49,10 @@
 - (void).cxx_destruct;
 - (id)_addState:(unsigned long long)arg1 forItemIdentifier:(id)arg2;
 - (id)_appUpdatesStore;
-- (void)_applicationDidEnterBackgroundNotification:(id)arg1;
 - (id)_copyItemsStatesForLibraryItems:(id)arg1;
 - (void)_enumerateAvailableItemsForLibraryItems:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)_fireFinishLoadBlocksIfNecessary;
+- (BOOL)_gratisStateIsValid;
 - (void)_mediaLibraryDidChangeNotification:(id)arg1;
 - (id)_newPurchaseWithItem:(id)arg1 offer:(id)arg2;
 - (id)_newPurchasesWithBundleItem:(id)arg1 bundleOffer:(id)arg2;
@@ -74,12 +76,14 @@
 - (void)_restrictionsChangedNotification:(id)arg1;
 - (void)_setAvailableUpdatesWithUpdates:(id)arg1 decrementLoadCount:(BOOL)arg2;
 - (void)_setDownloads:(id)arg1;
+- (void)_setFirstPartyRemovableItemsIdentifiers:(id)arg1;
 - (void)_setGratisIdentifiers:(id)arg1 error:(id)arg2;
 - (void)_setInstalledItems:(id)arg1;
 - (void)_setPurchaseHistoryItemsWithIdentifiers:(id)arg1;
 - (void)_setPurchaseHistoryVPPItemsWithIdentifiers:(id)arg1;
 - (id)_setStateFlag:(unsigned long long)arg1 forItemsWithIdentifiers:(id)arg2 sendNotification:(BOOL)arg3;
 - (id)_setStateFlag:(unsigned long long)arg1 forOnlyItemsWithIdentifiers:(id)arg2 sendNotification:(BOOL)arg3;
+- (void)_storefrontDidChangeNotification:(id)arg1;
 - (void)_updatesStoreChangeNotification:(id)arg1;
 - (void)addDownloads:(id)arg1;
 - (void)addManifestDownloadWithURL:(id)arg1 placeholderMetadata:(id)arg2;

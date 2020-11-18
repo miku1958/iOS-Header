@@ -21,6 +21,7 @@
     NSString *_appIdentifier;
     NSString *_appMajorVersion;
     NSString *_appMinorVersion;
+    int _carHeadunitConnectionType;
     int _carHeadunitInteractionModel;
     NSString *_carHeadunitManufacturer;
     NSString *_carHeadunitModel;
@@ -50,6 +51,7 @@
         unsigned int carHeadunitPixelWidth:1;
         unsigned int mapZoomLevel:1;
         unsigned int action:1;
+        unsigned int carHeadunitConnectionType:1;
         unsigned int carHeadunitInteractionModel:1;
         unsigned int deviceBatteryState:1;
         unsigned int deviceInterfaceOrientation:1;
@@ -68,6 +70,7 @@
 @property (strong, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
 @property (strong, nonatomic) NSString *appMajorVersion; // @synthesize appMajorVersion=_appMajorVersion;
 @property (strong, nonatomic) NSString *appMinorVersion; // @synthesize appMinorVersion=_appMinorVersion;
+@property (nonatomic) int carHeadunitConnectionType; // @synthesize carHeadunitConnectionType=_carHeadunitConnectionType;
 @property (nonatomic) int carHeadunitInteractionModel; // @synthesize carHeadunitInteractionModel=_carHeadunitInteractionModel;
 @property (strong, nonatomic) NSString *carHeadunitManufacturer; // @synthesize carHeadunitManufacturer=_carHeadunitManufacturer;
 @property (strong, nonatomic) NSString *carHeadunitModel; // @synthesize carHeadunitModel=_carHeadunitModel;
@@ -84,6 +87,7 @@
 @property (readonly, nonatomic) BOOL hasAppIdentifier;
 @property (readonly, nonatomic) BOOL hasAppMajorVersion;
 @property (readonly, nonatomic) BOOL hasAppMinorVersion;
+@property (nonatomic) BOOL hasCarHeadunitConnectionType;
 @property (nonatomic) BOOL hasCarHeadunitInteractionModel;
 @property (readonly, nonatomic) BOOL hasCarHeadunitManufacturer;
 @property (readonly, nonatomic) BOOL hasCarHeadunitModel;

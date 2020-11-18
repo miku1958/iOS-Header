@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_source> *_fetchSource;
     NSObject<OS_dispatch_group> *_fetchGroup;
     NSObject<OS_dispatch_source> *_timerSource;
-    NSMutableDictionary *_fetchErrorsByRecordID;
     NSMutableDictionary *_fetchInfosByOrder;
     unsigned long long _curFetchOrder;
     unsigned long long _highestReturnedOrder;
@@ -34,7 +33,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSSet *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property (copy, nonatomic) CDUnknownBlockType fetchAggregatorCompletionBlock; // @synthesize fetchAggregatorCompletionBlock=_fetchAggregatorCompletionBlock;
 @property (nonatomic) BOOL fetchAssetContents; // @synthesize fetchAssetContents=_fetchAssetContents;
-@property (strong, nonatomic) NSMutableDictionary *fetchErrorsByRecordID; // @synthesize fetchErrorsByRecordID=_fetchErrorsByRecordID;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *fetchGroup; // @synthesize fetchGroup=_fetchGroup;
 @property (strong, nonatomic) NSMutableDictionary *fetchInfosByOrder; // @synthesize fetchInfosByOrder=_fetchInfosByOrder;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *fetchQueue; // @synthesize fetchQueue=_fetchQueue;
@@ -50,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
 - (void)_addRecordFetchInfo:(id)arg1;
+- (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_finishRecordFetchAggregator;
 - (void)_flushFetchedRecordsToConsumerLocked;
 - (void)_flushFetchedRecordsToConsumerNoOrderingLocked;

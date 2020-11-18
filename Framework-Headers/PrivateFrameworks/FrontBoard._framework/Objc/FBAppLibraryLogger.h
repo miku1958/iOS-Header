@@ -6,13 +6,21 @@
 
 #import <FrontBoard/FBFileLogger.h>
 
+@class NSObject;
+@protocol OS_os_log;
+
 @interface FBAppLibraryLogger : FBFileLogger
 {
+    NSObject<OS_os_log> *_aggregateLog;
 }
 
++ (id)sharedInstance;
 - (void)_setEnabled:(BOOL)arg1;
 - (void)_setLevel:(int)arg1;
+- (void)dealloc;
+- (id)init;
 - (int)level;
+- (void)logToAggregateInstallationLog:(unsigned long long)arg1 step:(unsigned long long)arg2 success:(BOOL)arg3 bundleID:(id)arg4 description:(id)arg5;
 - (int)maxLogSize;
 - (id)name;
 - (BOOL)shouldEnableOnInternalBuilds;

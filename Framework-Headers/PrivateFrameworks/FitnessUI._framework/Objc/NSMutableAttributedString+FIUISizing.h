@@ -7,7 +7,7 @@
 #import <Foundation/NSMutableAttributedString.h>
 
 @interface NSMutableAttributedString (FIUISizing)
-- (struct CGSize)scaleFontAndKerningToFitSize:(struct CGSize)arg1 minimumFontSize:(double)arg2 minimumKerning:(double)arg3;
+- (struct CGSize)scaleFontAndKerningToFitSize:(struct CGSize)arg1 minimumFontSize:(double)arg2 minimumKerning:(double)arg3 stillDidntFit:(BOOL *)arg4;
 - (double)scaleFontSizeByAmount:(double)arg1 minimumFontSize:(double)arg2;
 - (double)scaleNumericAttribute:(id)arg1 byAmount:(double)arg2;
 - (void)scaleToFitWidth:(double)arg1;

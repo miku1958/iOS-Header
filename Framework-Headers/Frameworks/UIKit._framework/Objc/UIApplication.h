@@ -14,8 +14,8 @@
 #import <UIKit/UIAlertViewDelegate-Protocol.h>
 #import <UIKit/UNSRemoteNotificationRegistrarDelegate-Protocol.h>
 
-@class BKSAnimationFenceHandle, BKSProcessAssertion, FBSDisplayLayoutMonitor, NSArray, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSProgress, NSString, NSTimer, SBSApplicationShortcutService, UIAlertView, UIApplicationSceneSettingsDiffInspector, UIColor, UIEvent, UIMoveEvent, UIPhysicalKeyboardEvent, UIPressesEvent, UIRepeatedAction, UIStatusBar, UIStatusBarWindow, UISystemNavigationAction, UIWheelEvent, UIWindow, UNSNotificationScheduler, UNSRemoteNotificationRegistrar, UNSUserNotificationRegistrar, _UIGameControllerEvent, _UIIdleModeController;
-@protocol UIApplicationDelegate;
+@class BKSAnimationFenceHandle, BKSProcessAssertion, FBSDisplayLayoutMonitor, NSArray, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSProgress, NSString, NSTimer, SBSApplicationService, UIAlertView, UIApplicationSceneSettingsDiffInspector, UIColor, UIEvent, UIMoveEvent, UIPhysicalKeyboardEvent, UIPressesEvent, UIRepeatedAction, UIStatusBar, UIStatusBarWindow, UISystemNavigationAction, UIWheelEvent, UIWindow, UNSNotificationScheduler, UNSRemoteNotificationRegistrar, UNSUserNotificationRegistrar, _UIGameControllerEvent, _UIIdleModeController;
+@protocol UIApplicationDelegate, UIApplicationGameControllerMenuButtonDelegate;
 
 @interface UIApplication : UIResponder <FBSUIApplicationWorkspaceDelegate, FBSSceneDelegate, FBSUIApplicationSystemServiceDelegate, FBSDisplayLayoutObserver, NSUserActivityDelegate, UIAlertViewDelegate, UNSRemoteNotificationRegistrarDelegate>
 {
@@ -180,12 +180,13 @@
     double _lastTimestampWhenAllTouchesLifted;
     long long _virtualHorizontalSizeClass;
     long long _virtualVerticalSizeClass;
+    id<UIApplicationGameControllerMenuButtonDelegate> _gameControllerMenuButtonDelegate;
     long long __expectedViewOrientation;
     NSString *_preferredContentSizeCategoryName;
     NSString *_currentActivityContinuationType;
     NSString *_currentActivityContinuationUUIDString;
     NSProgress *_currentActivityContinuationProgress;
-    SBSApplicationShortcutService *_shortcutService;
+    SBSApplicationService *_shortcutService;
     CDUnknownBlockType ___queuedOrientationChange;
     struct CGPoint _lastLocationWhereFirstTouchCameDown;
     struct CGPoint _lastLocationWhereAllTouchesLifted;
@@ -209,6 +210,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<UIApplicationDelegate> delegate;
 @property (readonly, copy) NSString *description;
+@property (weak, nonatomic, getter=_gameControllerMenuButtonDelegate, setter=_setGameControllerMenuButtonDelegate:) id<UIApplicationGameControllerMenuButtonDelegate> gameControllerMenuButtonDelegate; // @synthesize gameControllerMenuButtonDelegate=_gameControllerMenuButtonDelegate;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isIdleTimerDisabled) BOOL idleTimerDisabled;
 @property (readonly, nonatomic) UIWindow *keyWindow;
@@ -221,7 +223,7 @@
 @property (readonly, nonatomic) NSString *preferredContentSizeCategory;
 @property (copy, nonatomic, setter=_setPreferredContentSizeCategoryName:) NSString *preferredContentSizeCategoryName; // @synthesize preferredContentSizeCategoryName=_preferredContentSizeCategoryName;
 @property (readonly, nonatomic, getter=isProtectedDataAvailable) BOOL protectedDataAvailable;
-@property (strong, nonatomic) SBSApplicationShortcutService *shortcutService; // @synthesize shortcutService=_shortcutService;
+@property (strong, nonatomic) SBSApplicationService *shortcutService; // @synthesize shortcutService=_shortcutService;
 @property (readonly, nonatomic) struct CGRect statusBarFrame;
 @property (readonly, nonatomic, getter=isStatusBarHidden) BOOL statusBarHidden;
 @property (readonly, nonatomic) long long statusBarOrientation;
@@ -383,6 +385,7 @@
 - (void)_handleApplicationLifecycleEventWithScene:(id)arg1 transitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_handleApplicationShortcutAction:(id)arg1;
 - (BOOL)_handleDelegateCallbacksWithOptions:(id)arg1 isSuspended:(BOOL)arg2 restoreState:(BOOL)arg3;
+- (void)_handleDeviceOrientationChangedEvent:(struct __GSEvent *)arg1;
 - (void)_handleGameControllerEvent:(id)arg1;
 - (void)_handleHIDEvent:(struct __IOHIDEvent *)arg1;
 - (void)_handleHeadsetButtonClick;
@@ -484,6 +487,7 @@
 - (BOOL)_prepareButtonEvent:(id)arg1 type:(long long)arg2 phase:(long long)arg3 timestamp:(double)arg4;
 - (BOOL)_prepareButtonEvent:(id)arg1 type:(long long)arg2 phase:(long long)arg3 timestamp:(double)arg4 force:(double)arg5;
 - (BOOL)_prepareButtonEvent:(id)arg1 type:(long long)arg2 phase:(long long)arg3 timestamp:(double)arg4 force:(double)arg5 isSynthetic:(BOOL)arg6;
+- (BOOL)_prepareButtonEvent:(id)arg1 withPressInfo:(id)arg2;
 - (id)_pressForType:(long long)arg1;
 - (id)_pressesEvent;
 - (void)_purgeSharedInstances;
@@ -534,6 +538,7 @@
 - (id)_sceneSettingsPreLifecycleEventDiffInspector;
 - (void)_scheduleSceneEventResponseForScene:(id)arg1 withResponseBlock:(CDUnknownBlockType)arg2;
 - (void)_scrollsToTopInitiatorView:(id)arg1 touchesEnded:(id)arg2 withEvent:(id)arg3;
+- (void)_sendButtonEventWithPressInfo:(id)arg1;
 - (void)_sendButtonEventWithType:(long long)arg1 phase:(long long)arg2 timestamp:(double)arg3;
 - (void)_sendButtonEventWithType:(long long)arg1 phase:(long long)arg2 timestamp:(double)arg3 synthetic:(BOOL)arg4;
 - (void)_sendDictionaryToPPT:(id)arg1;
@@ -638,9 +643,9 @@
 - (void)_updateOrientation;
 - (void)_updateSceneGeometryWithSettingObserverContext:(CDStruct_0f015c83)arg1;
 - (void)_updateSerializableKeyCommandsForResponder:(id)arg1;
-- (void)_updateSnapshotAndStateRestorationArchiveForBackgroundEvent:(CDUnknownBlockType)arg1 saveState:(BOOL)arg2 exitIfCouldNotRestoreState:(BOOL)arg3;
 - (void)_updateSnapshotAndStateRestorationWithAction:(id)arg1;
 - (void)_updateSnapshotForBackgroundApplication:(BOOL)arg1;
+- (void)_updateStateRestorationArchiveForBackgroundEvent:(CDUnknownBlockType)arg1 saveState:(BOOL)arg2 exitIfCouldNotRestoreState:(BOOL)arg3 updateSnapshot:(BOOL)arg4;
 - (void)_userActivityWillSave:(id)arg1;
 - (id)_userNotificationRegistrar;
 - (BOOL)_usesEmoji;
@@ -936,6 +941,7 @@
 - (void)workspaceDidEndTransaction:(id)arg1;
 - (void)workspaceNoteAssertionExpirationImminent:(id)arg1;
 - (void)workspaceShouldExit:(id)arg1;
+- (void)workspaceShouldExit:(id)arg1 withTransitionContext:(id)arg2;
 
 @end
 

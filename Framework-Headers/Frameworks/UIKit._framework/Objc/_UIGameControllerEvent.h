@@ -9,17 +9,19 @@
 __attribute__((visibility("hidden")))
 @interface _UIGameControllerEvent : UIEvent
 {
-    CDStruct_a6e7b6a4 _previousState;
-    int _inputType;
+    CDStruct_a7a14e3b _previousState;
+    unsigned long long _activeComponent;
 }
 
-- (BOOL)_determineInputTypeAndProcess:(CDStruct_a6e7b6a4 *)arg1 pressesEvent:(id)arg2 timestamp:(double)arg3;
+- (BOOL)_determineInputTypeAndProcess:(CDStruct_a7a14e3b *)arg1 pressesEvent:(id)arg2 timestamp:(double)arg3;
 - (struct CGPoint)_leftStickPosition;
 - (void)_maybeConvertAndSendAsPressesEvent;
-- (BOOL)_processDPad:(CDStruct_a6e7b6a4 *)arg1 pressesEvent:(id)arg2 timestamp:(double)arg3;
-- (BOOL)_processLeftStick:(CDStruct_a6e7b6a4 *)arg1 pressesEvent:(id)arg2 timestamp:(double)arg3;
-- (BOOL)_processShoulder:(CDStruct_a6e7b6a4 *)arg1 pressesEvent:(id)arg2 timestamp:(double)arg3;
-- (BOOL)_processStandardButtons:(CDStruct_a6e7b6a4 *)arg1 pressesEvent:(id)arg2 timestamp:(double)arg3;
+- (BOOL)_processDPad:(CDStruct_a7a14e3b *)arg1 pressesEvent:(id)arg2 timestamp:(double)arg3;
+- (BOOL)_processLeftStick:(CDStruct_a7a14e3b *)arg1 pressesEvent:(id)arg2 timestamp:(double)arg3;
+- (BOOL)_processRightStick:(CDStruct_a7a14e3b *)arg1 pressesEvent:(id)arg2 timestamp:(double)arg3;
+- (BOOL)_processShoulder:(CDStruct_a7a14e3b *)arg1 pressesEvent:(id)arg2 timestamp:(double)arg3;
+- (BOOL)_processStandardButtons:(CDStruct_a7a14e3b *)arg1 pressesEvent:(id)arg2 timestamp:(double)arg3;
+- (void)_reset;
 - (void)_sendEventToResponder:(id)arg1;
 - (long long)subtype;
 - (long long)type;

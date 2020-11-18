@@ -11,9 +11,9 @@
 }
 
 - (void)_queue_beginStreaming;
-- (void)_queue_handleSensorDatum:(id)arg1;
+- (void)_queue_handleSensorDatum:(id)arg1 context:(id)arg2;
 - (void)beginUpdatesWithHandler:(CDUnknownBlockType)arg1;
-- (id)hkObjectsFromSensorDatum:(id)arg1;
+- (id)hkObjectsFromSensorDatum:(id)arg1 context:(id)arg2;
 
 @end
 

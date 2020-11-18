@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)deleteThrottlesForZone:(id)arg1;
 - (id)descriptionForThrottleID:(long long)arg1 zone:(id)arg2 now:(long long)arg3 context:(id)arg4;
 - (id)descriptionForZone:(id)arg1 now:(long long)arg2 context:(id)arg3;
+- (void)resetBackoffForThrottleID:(long long)arg1 zone:(id)arg2;
 - (void)resume;
 - (void)suspend;
 - (void)updateThrottleID:(long long)arg1 zone:(id)arg2 state:(int)arg3;

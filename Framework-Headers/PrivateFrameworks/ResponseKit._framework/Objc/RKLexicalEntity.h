@@ -15,9 +15,11 @@
     NSString *_partOfSpeech;
     NSString *_lemma;
     NSString *_language;
+    NSString *_internalWord;
     struct _NSRange _tokenRange;
 }
 
+@property (strong) NSString *internalWord; // @synthesize internalWord=_internalWord;
 @property (strong) NSString *language; // @synthesize language=_language;
 @property (strong) NSString *lemma; // @synthesize lemma=_lemma;
 @property (strong) NSString *partOfSpeech; // @synthesize partOfSpeech=_partOfSpeech;

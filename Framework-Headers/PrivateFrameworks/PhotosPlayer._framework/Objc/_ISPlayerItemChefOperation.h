@@ -10,20 +10,22 @@
 
 @interface _ISPlayerItemChefOperation : NSOperation
 {
-    BOOL _includeAudio;
     BOOL _includeVideo;
+    BOOL _includeAudio;
     AVAsset *_asset;
     CDUnknownBlockType _resultHandler;
+    CDStruct_e83c9415 _trimmedTimeRange;
 }
 
 @property (readonly, nonatomic) AVAsset *asset; // @synthesize asset=_asset;
 @property (readonly, nonatomic) BOOL includeAudio; // @synthesize includeAudio=_includeAudio;
 @property (readonly, nonatomic) BOOL includeVideo; // @synthesize includeVideo=_includeVideo;
 @property (readonly, copy, nonatomic) CDUnknownBlockType resultHandler; // @synthesize resultHandler=_resultHandler;
+@property (readonly, nonatomic) CDStruct_e83c9415 trimmedTimeRange; // @synthesize trimmedTimeRange=_trimmedTimeRange;
 
 - (void).cxx_destruct;
 - (void)_handleValuesDidLoad;
-- (id)initWithAsset:(id)arg1 includeAudio:(BOOL)arg2 includeVideo:(BOOL)arg3 resultHandler:(CDUnknownBlockType)arg4;
+- (id)initWithAsset:(id)arg1 trimmedTimeRange:(CDStruct_e83c9415)arg2 includeAudio:(BOOL)arg3 includeVideo:(BOOL)arg4 resultHandler:(CDUnknownBlockType)arg5;
 - (void)main;
 
 @end

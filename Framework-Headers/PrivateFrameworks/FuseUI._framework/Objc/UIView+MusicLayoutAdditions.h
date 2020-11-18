@@ -11,8 +11,8 @@
 @property (readonly, nonatomic) struct UIEdgeInsets music_inheritedLayoutInsets;
 @property (nonatomic, setter=music_setLayoutInsets:) struct UIEdgeInsets music_layoutInsets;
 
+- (void)_music_layoutInsets_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)_music_layoutInsets_didMoveToSuperview;
-- (void)_music_layoutInsets_didMoveToWindow;
 - (void)_music_updateInheritedLayoutInsets;
 - (void)music_inheritedLayoutInsetsDidChange;
 @end

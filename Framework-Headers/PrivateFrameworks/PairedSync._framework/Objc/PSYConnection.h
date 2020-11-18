@@ -23,9 +23,6 @@
 @property (readonly, nonatomic, getter=isValid) BOOL valid; // @synthesize valid=_valid;
 
 - (void).cxx_destruct;
-- (void)_handleConnectionInterruption;
-- (void)_handleConnectionInvalidation;
-- (void)_resumeConnectionIfPossible;
 - (id)init;
 - (id)remoteConnection;
 - (void)startSync;

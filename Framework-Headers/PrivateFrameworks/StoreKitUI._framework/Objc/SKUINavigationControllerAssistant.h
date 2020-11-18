@@ -11,19 +11,22 @@
 
 @interface SKUINavigationControllerAssistant : NSObject
 {
-    SKUIClientContext *_clientContext;
-    UIView *_childPaletteView;
     BOOL _hidesShadow;
     UINavigationController *_navigationController;
-    _UINavigationControllerPalette *_paletteBackgroundView;
+    SKUIClientContext *_clientContext;
     id<SKUIStatusOverlayProvider> _statusOverlayProvider;
+    UIView *_childPaletteView;
+    _UINavigationControllerPalette *_paletteBackgroundView;
     UIViewController *_statusOverlayViewController;
 }
 
+@property (strong, nonatomic) UIView *childPaletteView; // @synthesize childPaletteView=_childPaletteView;
 @property (readonly, nonatomic) SKUIClientContext *clientContext; // @synthesize clientContext=_clientContext;
 @property (nonatomic) BOOL hidesShadow; // @synthesize hidesShadow=_hidesShadow;
-@property (readonly, weak, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
+@property (weak, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
+@property (strong, nonatomic) _UINavigationControllerPalette *paletteBackgroundView; // @synthesize paletteBackgroundView=_paletteBackgroundView;
 @property (strong, nonatomic) id<SKUIStatusOverlayProvider> statusOverlayProvider; // @synthesize statusOverlayProvider=_statusOverlayProvider;
+@property (strong, nonatomic) UIViewController *statusOverlayViewController; // @synthesize statusOverlayViewController=_statusOverlayViewController;
 
 + (id)assistantForNavigationController:(id)arg1 clientContext:(id)arg2;
 + (id)existingAssistantForNavigationController:(id)arg1;

@@ -6,9 +6,13 @@
 
 #import <ManagedConfiguration/NSObject-Protocol.h>
 
+@class NSDictionary;
+
 @protocol MCMDMXPCProtocol <NSObject>
 - (void)notifyNewConfigurationWithCompletion:(void (^)(NSError *))arg1;
+- (void)processUserRequest:(NSDictionary *)arg1 completionBlock:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)retryNotNowWithCompletion:(void (^)(NSError *))arg1;
+- (void)scheduleTokenUpdateIfNecessaryWithCompletion:(void (^)(NSError *))arg1;
 - (void)scheduleTokenUpdateWithCompletion:(void (^)(NSError *))arg1;
 - (void)simulatePushWithCompletion:(void (^)(NSError *))arg1;
 - (void)uprootMDMWithCompletion:(void (^)(NSError *))arg1;

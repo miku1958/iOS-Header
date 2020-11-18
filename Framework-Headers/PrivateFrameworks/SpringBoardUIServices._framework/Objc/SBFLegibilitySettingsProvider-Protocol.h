@@ -11,8 +11,8 @@
 
 @protocol SBFLegibilitySettingsProvider <NSObject>
 
-@property (nonatomic) id<SBFLegibilitySettingsProviderDelegate> delegate;
-@property (readonly, strong, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property (weak, nonatomic) id<SBFLegibilitySettingsProviderDelegate> delegate;
+@property (readonly, nonatomic) _UILegibilitySettings *legibilitySettings;
 
 @end
 

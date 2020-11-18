@@ -10,7 +10,7 @@
 #import <PassKit/UITableViewDelegate-Protocol.h>
 #import <PassKit/UITextViewDelegate-Protocol.h>
 
-@class BluetoothManager, NSArray, NSMutableDictionary, NSString, NSTimer, PKLinkedAppView, PKSettingTableCell, UIButton, UILabel, UIRefreshControl, UITableView, UIView;
+@class BluetoothManager, NSArray, NSMutableDictionary, NSString, NSTimer, PKLinkedAppView, PKSettingTableCell, UIButton, UILabel, UIRefreshControl, UITableView, UITableViewCell, UIView;
 
 @interface PKPassBackFaceView : PKPassFaceView <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 {
@@ -21,13 +21,17 @@
     PKLinkedAppView *_linkedApp;
     UIView *_locationHelpView;
     UITableView *_bodyTable;
-    PKSettingTableCell *_automaticUpdates;
-    PKSettingTableCell *_showInLockScreen;
-    PKSettingTableCell *_automaticSelection;
+    PKSettingTableCell *_automaticUpdatesCell;
+    PKSettingTableCell *_showInLockScreenCell;
+    PKSettingTableCell *_automaticSelectionCell;
+    UITableViewCell *_shareCell;
+    UITableViewCell *_personalizePassCell;
     NSArray *_rowCountBySection;
+    unsigned long long _linkedAppSection;
     unsigned long long _settingsSection;
     unsigned long long _automaticSelectionSection;
-    unsigned long long _linkedAppSection;
+    unsigned long long _shareSection;
+    unsigned long long _personalizePassSection;
     unsigned long long _fieldsSection;
     NSMutableDictionary *_fieldCellsByIndexPath;
     NSTimer *_refreshTimeoutTimer;
@@ -35,10 +39,12 @@
     BOOL _isBluetoothEnabled;
     BOOL _isLocationEnabled;
     BOOL _isWifiEnabled;
-    BOOL _showsDelete;
-    BOOL _showsLinkedApp;
+    BOOL _showsShare;
     BOOL _showsSettings;
+    BOOL _showsDelete;
     BOOL _showsLinks;
+    BOOL _showsLinkedApp;
+    BOOL _showsPersonalize;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -48,7 +54,9 @@
 @property (nonatomic) BOOL showsDelete; // @synthesize showsDelete=_showsDelete;
 @property (nonatomic) BOOL showsLinkedApp; // @synthesize showsLinkedApp=_showsLinkedApp;
 @property (nonatomic) BOOL showsLinks; // @synthesize showsLinks=_showsLinks;
+@property (nonatomic) BOOL showsPersonalize; // @synthesize showsPersonalize=_showsPersonalize;
 @property (nonatomic) BOOL showsSettings; // @synthesize showsSettings=_showsSettings;
+@property (nonatomic) BOOL showsShare; // @synthesize showsShare=_showsShare;
 @property (readonly) Class superclass;
 
 + (id)_linkColor;
@@ -65,10 +73,13 @@
 - (id)_locationHelpViewForTableView:(id)arg1;
 - (id)_locationRelevancyHelpText;
 - (void)_passSettingsChanged:(id)arg1;
+- (BOOL)_personalizeAvailable;
+- (id)_personalizePassCell;
 - (void)_refreshTimeoutFired;
 - (id)_relevantBuckets;
 - (BOOL)_settingsAvailable;
 - (id)_settingsCellForRow:(unsigned long long)arg1;
+- (id)_shareCell;
 - (id)_updateLabelAttributedStringWithDate:(id)arg1;
 - (id)_updateLabelAttributedStringWithString:(id)arg1;
 - (void)_wifiChanged:(id)arg1;
@@ -88,6 +99,7 @@
 - (BOOL)showBackgroundMatte;
 - (BOOL)showUpdateDateLabel;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;

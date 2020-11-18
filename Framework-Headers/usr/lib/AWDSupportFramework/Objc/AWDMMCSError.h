@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) BOOL hasDomain;
 @property (strong, nonatomic) NSMutableArray *underlyingErrors; // @synthesize underlyingErrors=_underlyingErrors;
 
++ (Class)underlyingErrorsType;
 - (void)addUnderlyingErrors:(id)arg1;
 - (void)clearUnderlyingErrors;
 - (void)copyTo:(id)arg1;

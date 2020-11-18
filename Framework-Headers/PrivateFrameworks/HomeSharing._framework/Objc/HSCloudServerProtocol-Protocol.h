@@ -59,7 +59,11 @@
 - (void)removeItemsWithSagaIDs:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)removeJaliscoLibraryWithCompletion:(void (^)(NSError *))arg1;
 - (void)removePlaylistsWithSagaIDs:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)sdk_addStoreItemWithOpaqueID:(NSString *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)sdk_addStoreItemWithOpaqueID:(NSString *)arg1 toPlaylistWithPersistentID:(unsigned long long)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)sdk_createPlaylistWithPersistentID:(unsigned long long)arg1 properties:(NSDictionary *)arg2 trackList:(HSCloudItemIDList *)arg3 completion:(void (^)(unsigned long long, NSError *))arg4;
 - (void)searchJaliscoAppsLibrary:(NSString *)arg1 location:(NSString *)arg2 searchColumns:(NSArray *)arg3 includeHidden:(BOOL)arg4 includeUnsupported:(BOOL)arg5 completion:(void (^)(NSError *, NSArray *))arg6;
+- (void)setCloudAddToPlaylistBehavior:(long long)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setCollectionProperties:(NSDictionary *)arg1 forCollectionWithPersistentID:(unsigned long long)arg2 groupingType:(long long)arg3 completion:(void (^)(NSError *))arg4;
 - (void)setConnectionConfiguration:(HSConnectionConfiguration *)arg1 daemonConfiguration:(unsigned long long)arg2 preferredVideoQuality:(unsigned long long)arg3 completion:(void (^)(NSError *))arg4;
 - (void)setHidden:(BOOL)arg1 purchasedAppWithStoreID:(NSNumber *)arg2 completion:(void (^)(NSError *))arg3;

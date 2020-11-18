@@ -12,7 +12,7 @@
 #import <PhotosUI/PUOneUpAssetTransitionViewController-Protocol.h>
 #import <PhotosUI/PUOneUpPhotosSharingTransitionViewController-Protocol.h>
 #import <PhotosUI/PUPhotoLibraryUIChangeObserver-Protocol.h>
-#import <PhotosUI/PUPhotoViewContentHelperIrisDelegate-Protocol.h>
+#import <PhotosUI/PUPhotoViewContentHelperDelegate-Protocol.h>
 #import <PhotosUI/PUPhotosSharingCollectionViewLayoutDelegate-Protocol.h>
 #import <PhotosUI/PUPhotosSharingTransitionViewController-Protocol.h>
 #import <PhotosUI/PUScrollViewSpeedometerDelegate-Protocol.h>
@@ -25,7 +25,7 @@
 @class NSArray, NSIndexPath, NSMapTable, NSMutableDictionary, NSMutableSet, NSPredicate, NSString, PHAsset, PHCachingImageManager, PHFetchResult, PUActivityViewController, PUOneUpAssetTransitionInfo, PUPhotoPinchGestureRecognizer, PUPhotoSelectionManager, PUPhotosSharingCollectionViewLayout, PUPhotosSharingTransitionContext, PUPhotosSharingViewControllerSpec, PUPhotosZoomingSharingGridCell, PUScrollViewSpeedometer, PUTransitionViewAnimator, UIBarButtonItem, UICollectionView, UICollectionViewLayout, UITapGestureRecognizer, UIView;
 @protocol PUPhotosSharingViewControllerDelegate, PUPresentingPhotoBrowserController;
 
-@interface PUPhotosSharingViewController : UIViewController <PLDismissableViewController, UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, PUPhotosSharingCollectionViewLayoutDelegate, UIActivityViewControllerDelegate, PUTransitionViewAnimatorDelegate, PUScrollViewSpeedometerDelegate, PUActivityViewControllerDelegate, PUPhotoLibraryUIChangeObserver, PUPhotoViewContentHelperIrisDelegate, PUPhotosSharingTransitionViewController, PHAssetCollectionDataSource, PUOneUpPhotosSharingTransitionViewController, PUOneUpAssetTransitionViewController>
+@interface PUPhotosSharingViewController : UIViewController <PLDismissableViewController, UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, PUPhotosSharingCollectionViewLayoutDelegate, UIActivityViewControllerDelegate, PUTransitionViewAnimatorDelegate, PUScrollViewSpeedometerDelegate, PUActivityViewControllerDelegate, PUPhotoLibraryUIChangeObserver, PUPhotoViewContentHelperDelegate, PUPhotosSharingTransitionViewController, PHAssetCollectionDataSource, PUOneUpPhotosSharingTransitionViewController, PUOneUpAssetTransitionViewController>
 {
     PUScrollViewSpeedometer *_speedometer;
     NSMutableDictionary *_resultsForAssetCollection;
@@ -122,6 +122,7 @@
 - (struct CGRect)_frameAtIndexPath:(id)arg1 inView:(id)arg2;
 - (void)_getFirstValidIndexPath:(id *)arg1 lastValidIndexPath:(id *)arg2;
 - (void)_getMainCollectionViewFrame:(struct CGRect *)arg1 collectionViewLayoutInsets:(struct UIEdgeInsets *)arg2 embeddedActivityViewFrame:(struct CGRect *)arg3;
+- (void)_handleLivePhotoRequestResult:(id)arg1 forCell:(id)arg2 tag:(long long)arg3;
 - (void)_handlePhotoPinch:(id)arg1;
 - (void)_handleSelectionOption:(id)arg1;
 - (void)_handleTapAtIndexPath:(id)arg1;
@@ -140,7 +141,7 @@
 - (id)_optionViewAtIndexPath:(id)arg1 forCollectionView:(id)arg2;
 - (void)_pageToIndexPath:(id)arg1 animated:(BOOL)arg2;
 - (id)_photoCollectionAtIndex:(long long)arg1;
-- (void)_playPhotoIrisHintIfNeededAtIndexPath:(id)arg1;
+- (void)_playLivePhotoHintIfNeededAtIndexPath:(id)arg1;
 - (void)_prepareActivityViewControllerForUse;
 - (void)_processCollectionListChangeNotifications:(id)arg1 singleCollectionNotifications:(id)arg2 needsReloadData:(BOOL)arg3;
 - (void)_removeActivityAssetItem:(id)arg1;
@@ -156,8 +157,8 @@
 - (void)_updateCell:(id)arg1 forItemAtIndexPath:(id)arg2;
 - (void)_updateEmbeddedActivityViewAppearance;
 - (void)_updateInterfaceForModelReloadAnimated:(BOOL)arg1;
-- (void)_updateIrisPlayerForAsset:(id)arg1 cell:(id)arg2;
 - (void)_updateLastKnownReferenceIndexPath;
+- (void)_updateLivePhotoForAsset:(id)arg1 cell:(id)arg2;
 - (void)_updateMainViewAnimated:(BOOL)arg1;
 - (void)_updateNavigationBarAnimated:(BOOL)arg1;
 - (void)_updateOptionView:(id)arg1 atIndexPath:(id)arg2;
@@ -192,7 +193,7 @@
 - (void)oneUpAssetTransition:(id)arg1 requestTransitionContextWithCompletion:(CDUnknownBlockType)arg2;
 - (struct CGRect)oneUpAssetTransitionAssetFinalFrame:(id)arg1;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
-- (void)photoViewContentHelper:(id)arg1 irisPlayerPlaybackStateDidChange:(long long)arg2;
+- (void)photoViewContentHelper:(id)arg1 livePhotoWillBeginPlaybackWithStyle:(long long)arg2;
 - (void)ppt_faultInScollViewContentSize;
 - (BOOL)ppt_scrollToAssetAtRelativeIndex:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)ppt_scrollView;

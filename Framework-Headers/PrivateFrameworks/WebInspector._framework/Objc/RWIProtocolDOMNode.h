@@ -26,6 +26,8 @@
 @property (copy, nonatomic) NSString *nodeName;
 @property (nonatomic) int nodeType;
 @property (copy, nonatomic) NSString *nodeValue;
+@property (copy, nonatomic) NSArray *pseudoElements;
+@property (nonatomic) long long pseudoType;
 @property (copy, nonatomic) NSString *publicId;
 @property (copy, nonatomic) NSString *role;
 @property (copy, nonatomic) NSArray *shadowRoots;

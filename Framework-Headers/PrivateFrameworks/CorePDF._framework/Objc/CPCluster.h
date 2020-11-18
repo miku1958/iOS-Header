@@ -32,6 +32,7 @@
 }
 
 + (void)clusterTextLine:(id)arg1;
++ (void)clusterTextLine:(id)arg1 withCluster:(id)arg2 atLevel:(unsigned int)arg3 withMaximumWordGap:(double *)arg4 andMaximumLetterGap:(double *)arg5;
 + (unsigned int *)createOrderIndexFor:(double *)arg1 ofSize:(unsigned int)arg2;
 + (void)reclusterTextLine:(id)arg1 fromWordIndex:(unsigned int)arg2 count:(unsigned int *)arg3;
 - (void)analyzeDensities;
@@ -60,6 +61,7 @@
 - (CDStruct_2a61e2ef)largestClusterStatistics;
 - (unsigned int)levels;
 - (void)makeWords:(CDStruct_2e2afed4 *)arg1 count:(unsigned int)arg2 fromCharacterSequence:(id)arg3 charOffset:(unsigned int)arg4;
+- (void)resetAnalysis;
 - (void)setMaximumClusterSpread:(double)arg1;
 - (void)setMinimumClusterSize:(unsigned int)arg1;
 - (void)setMinimumRecognizedInterClusterDifference:(double)arg1;

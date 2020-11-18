@@ -31,6 +31,7 @@
     UIColor *_foregroundColor;
     long long _keyboardAppearance;
     unsigned long long _numberOfEntryFields;
+    NSString *_submittedPIN;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -45,6 +46,7 @@
 @property (weak, nonatomic) RUIObjectModel *objectModel; // @synthesize objectModel=_objectModel;
 @property (weak, nonatomic) RUIPage *page; // @synthesize page=_page;
 @property (readonly, nonatomic) PSPasscodeField *passcodeField; // @synthesize passcodeField=_passcodeField;
+@property (copy, nonatomic) NSString *submittedPIN; // @synthesize submittedPIN=_submittedPIN;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

@@ -6,12 +6,14 @@
 
 #import <StoreKitUI/JSExport-Protocol.h>
 
-@class IKDOMDocument, JSValue, NSArray, NSDictionary, NSNumber, NSString, SKUIJSAppleAccount;
+@class IKDOMDocument, JSValue, NSArray, NSDictionary, NSNumber, NSString, SKUIJSAppleAccount, SKUIJSRestrictions;
 
 @protocol SKUIJSITunesStore <JSExport>
 
 @property (nonatomic) long long applicationIconBadgeNumber;
+@property (readonly, copy, nonatomic) NSString *hostApp;
 @property (readonly, nonatomic) SKUIJSAppleAccount *primaryAppleAccount;
+@property (readonly, nonatomic) SKUIJSRestrictions *restrictions;
 
 - (void)approveInPerson:(NSNumber *)arg1:(JSValue *)arg2;
 - (void)attemptLocalAskToBuyApproval:(NSNumber *)arg1;
@@ -25,11 +27,13 @@
 - (void)getAdminStatus:(NSDictionary *)arg1:(JSValue *)arg2;
 - (void)getBookSample:(NSDictionary *)arg1;
 - (void)getProfilePermissions:(NSDictionary *)arg1:(JSValue *)arg2;
+- (void)isRemovedSystemApp:(NSString *)arg1:(JSValue *)arg2;
 - (void)launchICloudFamilySettings;
 - (void)loadGratisContent:(JSValue *)arg1;
 - (void)log:(NSString *)arg1;
 - (void)resetStateForActiveDocument;
 - (BOOL)resourceExists:(NSString *)arg1;
+- (void)restoreRemovedSystemApp:(NSString *)arg1:(JSValue *)arg2;
 - (void)setPreviewOverlay:(IKDOMDocument *)arg1:(NSDictionary *)arg2;
 - (void)updateToggleStateForItem:(NSString *)arg1 toggled:(BOOL)arg2:(JSValue *)arg3;
 @end

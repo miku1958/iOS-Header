@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SpringBoardFoundation/SBFCancelable-Protocol.h>
 
@@ -23,10 +23,10 @@
 
 + (id)tokenWithCancelationBlock:(CDUnknownBlockType)arg1;
 + (id)tokenWrappingCancelable:(id)arg1;
+- (void).cxx_destruct;
 - (void)addCancelationBlock:(CDUnknownBlockType)arg1;
 - (void)callCancelationBlocks:(id)arg1;
 - (void)cancel;
-- (void)dealloc;
 - (id)init;
 - (BOOL)isCanceled;
 - (id)nts_cancel;

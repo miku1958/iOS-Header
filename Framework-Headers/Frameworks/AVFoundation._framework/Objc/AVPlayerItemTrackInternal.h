@@ -17,8 +17,11 @@
     int trackID;
     NSString *videoFieldMode;
     NSDictionary *loudnessInfo;
+    NSDictionary *videoEnhancementFilterOptions;
     BOOL enabled;
     BOOL enabledWasSet;
+    BOOL disableColorMatching;
+    BOOL disableColorMatchingWasSet;
 }
 
 @end

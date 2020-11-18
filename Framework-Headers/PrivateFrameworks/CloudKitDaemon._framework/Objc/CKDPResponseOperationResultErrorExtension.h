@@ -8,11 +8,12 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
 @interface CKDPResponseOperationResultErrorExtension : PBCodable <NSCopying>
 {
     NSString *_extensionName;
+    NSData *_extensionPayload;
     unsigned int _typeCode;
     struct {
         unsigned int typeCode:1;
@@ -20,7 +21,9 @@
 }
 
 @property (strong, nonatomic) NSString *extensionName; // @synthesize extensionName=_extensionName;
+@property (strong, nonatomic) NSData *extensionPayload; // @synthesize extensionPayload=_extensionPayload;
 @property (readonly, nonatomic) BOOL hasExtensionName;
+@property (readonly, nonatomic) BOOL hasExtensionPayload;
 @property (nonatomic) BOOL hasTypeCode;
 @property (nonatomic) unsigned int typeCode; // @synthesize typeCode=_typeCode;
 

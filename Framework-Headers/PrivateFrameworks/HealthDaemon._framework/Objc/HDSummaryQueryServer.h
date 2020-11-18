@@ -6,7 +6,7 @@
 
 #import <HealthDaemon/HDQueryServer.h>
 
-@class HDListByTypeStatisticsBuilder, NSDate;
+@class HDListByTypeStatisticsBuilder, NSDate, _HKFilter;
 
 @interface HDSummaryQueryServer : HDQueryServer
 {
@@ -14,16 +14,21 @@
     HDListByTypeStatisticsBuilder *_statisticsBuilder;
     NSDate *_startDate;
     NSDate *_endDate;
+    NSDate *_noonStartDate;
+    NSDate *_noonEndDate;
+    _HKFilter *_noonStartEndFilter;
 }
 
 - (void).cxx_destruct;
 - (void)_queue_fetchAndDeliverAllStatisticsInitial:(BOOL)arg1;
 - (void)_queue_start;
 - (void)_queue_updateStatisticsWithObjects:(id)arg1 anchor:(id)arg2;
+- (BOOL)_shouldAcceptSample:(id)arg1;
 - (BOOL)_shouldListenForUpdates;
+- (BOOL)_shouldObserveAllSampleTypes;
 - (id)initWithQueryUUID:(id)arg1 dataObject:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 healthDaemon:(id)arg6;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
-- (void)samplesOfTypeWereRemoved:(id)arg1 anchor:(id)arg2;
+- (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 
 @end
 

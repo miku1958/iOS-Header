@@ -129,6 +129,7 @@
 - (void)sharedServiceDidRegister;
 - (void)startBackgroundURLSessionWithIdentifier:(id)arg1 context:(id)arg2 backgroundDelegate:(id)arg3;
 - (unsigned long long)submitVerificationCode:(id)arg1 verificationData:(id)arg2 forPass:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (unsigned long long)unregisterDeviceWithCompanionSerialNumber:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)unregisterDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)userPassesWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)verificationChannelsForPass:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class GEOComposedRoute, GEOComposedTransitTripRouteStep, GEOInstructionSet, GEOPBTransitStop, GEOStep, GEOTransitStep, NSArray;
+@class GEOComposedRoute, GEOComposedRouteLeg, GEOComposedTransitTripRouteStep, GEOInstructionSet, GEOPBTransitStop, GEOStep, GEOTransitStep, NSArray;
 @protocol GEOTransitArtworkDataSource;
 
 @interface GEOComposedRouteStep : NSObject
@@ -30,6 +30,7 @@
 @property (readonly, nonatomic) GEOInstructionSet *instructions;
 @property (readonly, nonatomic) BOOL isArrivalStep;
 @property (readonly, nonatomic) BOOL isUncertainArrival;
+@property (readonly, nonatomic) GEOComposedRouteLeg *leg;
 @property (readonly, nonatomic) unsigned int maneuverEndPointIndex;
 @property (readonly, nonatomic) struct _NSRange maneuverPointRange; // @synthesize maneuverPointRange=_maneuverPointRange;
 @property (readonly, nonatomic) unsigned int maneuverStartPointIndex;
@@ -61,7 +62,6 @@
 @property (readonly, nonatomic) GEOTransitStep *transitStep;
 @property (readonly, nonatomic) int transportType;
 
-- (id)_artworkFromDecoderData:(id)arg1 artworkIndices:(unsigned int *)arg2 artworkCount:(unsigned long long)arg3;
 - (BOOL)_belongsToTransferGroup;
 - (void)dealloc;
 - (id)description;

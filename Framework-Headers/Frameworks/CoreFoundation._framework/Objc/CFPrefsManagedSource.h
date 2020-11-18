@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)withSourceForIdentifier:(struct __CFString *)arg1 user:(struct __CFString *)arg2 perform:(CDUnknownBlockType)arg3;
-- (void)alreadylocked_setValue:(void *)arg1 forKey:(struct __CFString *)arg2;
+- (void)alreadylocked_setValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3;
 - (id)initWithDomain:(struct __CFString *)arg1 user:(struct __CFString *)arg2 byHost:(BOOL)arg3;
 - (BOOL)managed;
 - (long long)sendMessageSettingValue:(void *)arg1 forKey:(struct __CFString *)arg2;

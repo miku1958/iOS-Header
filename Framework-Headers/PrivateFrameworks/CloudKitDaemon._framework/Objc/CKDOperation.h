@@ -10,7 +10,7 @@
 #import <CloudKitDaemon/CKDURLRequestAuthRetryDelegate-Protocol.h>
 #import <CloudKitDaemon/CKDURLRequestMetricsDelegate-Protocol.h>
 
-@class CKDClientContext, CKDClientProxy, CKDOperationMetrics, CKDURLRequest, CKOperationResult, CKTimeLogger, NSDate, NSError, NSMutableArray, NSObject, NSString;
+@class CKDClientContext, CKDClientProxy, CKDOperationMetrics, CKDURLRequest, CKOperationResult, CKTimeLogger, NSDate, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol NSObject, OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -20,11 +20,12 @@ __attribute__((visibility("hidden")))
     unsigned long long _activityID;
     BOOL _isFinished;
     BOOL _isExecuting;
+    BOOL _isProxyOperation;
     BOOL _useEncryption;
     BOOL _allowsCellularAccess;
-    BOOL _allowsPowerNapScheduling;
     BOOL _preferAnonymousRequests;
     BOOL _allowsBackgroundNetworking;
+    BOOL _isLongLived;
     CKDURLRequest *_request;
     CKTimeLogger *_timeLogger;
     NSString *_operationID;
@@ -40,7 +41,10 @@ __attribute__((visibility("hidden")))
     NSError *_error;
     CKDOperationMetrics *_cloudKitMetrics;
     CKDOperationMetrics *_MMCSMetrics;
+    NSMutableDictionary *_w3cNavigationTimingByRequestUUID;
+    NSMutableDictionary *_responseHTTPHeadersByRequestUUID;
     NSDate *_metricExecuteStartDate;
+    NSDictionary *_additionalHTTPRequestHeaders;
     NSObject<OS_dispatch_group> *_stateTransitionGroup;
     NSMutableArray *_requestUUIDs;
     NSString *_parentSectionID;
@@ -48,18 +52,21 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_finishedChildOperationIDs;
     id<NSObject> _powerAssertion;
     NSObject<OS_dispatch_group> *_childOperationsGroup;
+    NSString *_clientSuppliedDeviceIdentifier;
 }
 
 @property (strong, nonatomic) CKDOperationMetrics *MMCSMetrics; // @synthesize MMCSMetrics=_MMCSMetrics;
 @property (readonly, nonatomic) unsigned int QOSClass;
 @property unsigned long long activityID; // @synthesize activityID=_activityID;
+@property (strong, nonatomic) NSDictionary *additionalHTTPRequestHeaders; // @synthesize additionalHTTPRequestHeaders=_additionalHTTPRequestHeaders;
 @property (nonatomic) BOOL allowsBackgroundNetworking; // @synthesize allowsBackgroundNetworking=_allowsBackgroundNetworking;
 @property (nonatomic) BOOL allowsCellularAccess; // @synthesize allowsCellularAccess=_allowsCellularAccess;
-@property (nonatomic) BOOL allowsPowerNapScheduling; // @synthesize allowsPowerNapScheduling=_allowsPowerNapScheduling;
+@property (readonly, nonatomic) BOOL allowsPowerNapScheduling;
 @property (strong, nonatomic) NSString *authPromptReason; // @synthesize authPromptReason=_authPromptReason;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property (strong, nonatomic) NSMutableArray *childOperations; // @synthesize childOperations=_childOperations;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *childOperationsGroup; // @synthesize childOperationsGroup=_childOperationsGroup;
+@property (strong, nonatomic) NSString *clientSuppliedDeviceIdentifier; // @synthesize clientSuppliedDeviceIdentifier=_clientSuppliedDeviceIdentifier;
 @property (strong, nonatomic) CKDOperationMetrics *cloudKitMetrics; // @synthesize cloudKitMetrics=_cloudKitMetrics;
 @property (strong, nonatomic) CKDClientContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
@@ -71,6 +78,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isExecuting; // @synthesize isExecuting=_isExecuting;
 @property (nonatomic) BOOL isFinished; // @synthesize isFinished=_isFinished;
+@property (readonly, nonatomic) BOOL isLongLived; // @synthesize isLongLived=_isLongLived;
+@property (readonly, nonatomic) BOOL isProxyOperation; // @synthesize isProxyOperation=_isProxyOperation;
 @property (strong, nonatomic) NSDate *metricExecuteStartDate; // @synthesize metricExecuteStartDate=_metricExecuteStartDate;
 @property (readonly, nonatomic) NSString *operationID; // @synthesize operationID=_operationID;
 @property (readonly, nonatomic) CKOperationResult *operationResult;
@@ -81,6 +90,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) CKDClientProxy *proxy; // @synthesize proxy=_proxy;
 @property (strong, nonatomic) CKDURLRequest *request; // @synthesize request=_request;
 @property (strong, nonatomic) NSMutableArray *requestUUIDs; // @synthesize requestUUIDs=_requestUUIDs;
+@property (strong, nonatomic) NSMutableDictionary *responseHTTPHeadersByRequestUUID; // @synthesize responseHTTPHeadersByRequestUUID=_responseHTTPHeadersByRequestUUID;
 @property (readonly, nonatomic) NSString *sectionID;
 @property (readonly, nonatomic) BOOL shouldCheckAppVersion;
 @property (strong, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
@@ -92,6 +102,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKTimeLogger *timeLogger; // @synthesize timeLogger=_timeLogger;
 @property (nonatomic) BOOL useEncryption; // @synthesize useEncryption=_useEncryption;
 @property (readonly, nonatomic) BOOL usesBackgroundSession;
+@property (strong, nonatomic) NSMutableDictionary *w3cNavigationTimingByRequestUUID; // @synthesize w3cNavigationTimingByRequestUUID=_w3cNavigationTimingByRequestUUID;
 
 + (id)_globalOperationCallbackQueueForQOS:(long long)arg1;
 - (void).cxx_destruct;
@@ -104,6 +115,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_errorShouldImpactFlowControl:(id)arg1;
 - (void)_finishInternalOnCallbackQueueWithError:(id)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
+- (void)_registerAttemptForOperation;
 - (unsigned long long)activityStart;
 - (void)addAndRunChildOperation:(id)arg1;
 - (void)cancel;
@@ -121,9 +133,9 @@ __attribute__((visibility("hidden")))
 - (id)newChildOperationInfoOfClass:(Class)arg1;
 - (Class)operationResultClass;
 - (BOOL)operationShouldBeFlowControlled;
+- (void)request:(id)arg1 didFinishWithMetrics:(id)arg2 w3cNavigationTiming:(id)arg3;
 - (void)requestDidBeginWaitingForUserAuth:(id)arg1;
 - (void)requestDidEndWaitingForUserAuth:(id)arg1;
-- (void)requestDidFinishWithMetrics:(id)arg1;
 - (void)start;
 
 @end

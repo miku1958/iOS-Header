@@ -13,14 +13,14 @@
 {
     NSObject<OS_dispatch_source> *_connectionRequestTimer;
     NSString *_identifier;
-    unsigned long long _protocolVersion;
+    unsigned long long _advertisementFormat;
 }
 
-@property (strong, nonatomic) NSObject<OS_dispatch_source> *connectionRequestTimer; // @synthesize connectionRequestTimer=_connectionRequestTimer;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (nonatomic) unsigned long long protocolVersion; // @synthesize protocolVersion=_protocolVersion;
+@property (readonly, nonatomic) unsigned long long advertisementFormat; // @synthesize advertisementFormat=_advertisementFormat;
+@property (readonly, nonatomic) NSObject<OS_dispatch_source> *connectionRequestTimer; // @synthesize connectionRequestTimer=_connectionRequestTimer;
+@property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 
-+ (id)connectionRequestTupleWithTimer:(id)arg1 identifier:(id)arg2 protocolVersion:(unsigned long long)arg3;
++ (id)connectionRequestTupleWithTimer:(id)arg1 identifier:(id)arg2 advertisementFormat:(unsigned long long)arg3;
 - (void).cxx_destruct;
 
 @end

@@ -15,7 +15,6 @@
     NSArray *_searchStrings;
     BOOL _previewGenerationOperationCancelled;
     BOOL _mergeableDataDirty;
-    BOOL _generatingPreviews;
     BOOL _hasAdditionalSearchIndexStrings;
     ICAttachment *_attachment;
     struct CGSize _intrinsicContentSize;
@@ -26,7 +25,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL generateAsynchronousPreviews;
 @property (readonly, nonatomic) BOOL generatePreviewsDuringCloudActivity;
-@property (getter=isGeneratingPreviews) BOOL generatingPreviews; // @synthesize generatingPreviews=_generatingPreviews;
 @property (readonly, nonatomic) CDUnknownBlockType genericBrickThumbnailCreator;
 @property (readonly, nonatomic) CDUnknownBlockType genericListThumbnailCreator;
 @property BOOL hasAdditionalSearchIndexStrings; // @synthesize hasAdditionalSearchIndexStrings=_hasAdditionalSearchIndexStrings;

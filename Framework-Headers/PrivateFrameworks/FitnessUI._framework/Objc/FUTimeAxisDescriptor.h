@@ -79,6 +79,7 @@
 - (void).cxx_destruct;
 - (BOOL)_assertPropertiesValid;
 - (void)_clearCache;
+- (void)_clearFormatters;
 - (void)_generateAxisLabels;
 - (void)_generateAxisSubLabels;
 - (id)_getLabelsForSpacingInterval:(unsigned long long)arg1 withSpacing:(id)arg2 textStyle:(unsigned long long)arg3;
@@ -95,6 +96,7 @@
 - (Class)expectedDataType;
 - (id)hourFormatter:(unsigned long long)arg1;
 - (id)init;
+- (void)invalidateCaches;
 - (id)monthFormatter:(unsigned long long)arg1;
 - (unsigned long long)numLabels;
 - (unsigned long long)numSubLabels;

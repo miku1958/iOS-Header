@@ -131,6 +131,7 @@ __attribute__((visibility("hidden")))
 - (struct CGVector)_deltaMaskForHandle:(unsigned long long)arg1;
 - (struct CGRect)_denormalizeImageRect:(struct CGRect)arg1;
 - (void)_handleCropHandlePan:(id)arg1;
+- (void)_handleDidCreateEditedImage:(struct CGImage *)arg1;
 - (void)_handleTouchingGesture:(id)arg1;
 - (BOOL)_hasConstraintsForKey:(id)arg1;
 - (BOOL)_hasCropSuggestion;
@@ -151,6 +152,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)_pointForHandle:(unsigned long long)arg1 onCropRect:(struct CGRect)arg2;
 - (void)_recomposeCropRectAnimated:(BOOL)arg1;
 - (void)_recomposeCropRectDelayed;
+- (void)_removeSnapshotView:(id)arg1;
 - (void)_resetAllValuesAnimated:(BOOL)arg1;
 - (void)_rotateButtonTapped:(id)arg1;
 - (void)_setAnimation:(id)arg1 forKeyPath:(id)arg2;
@@ -173,6 +175,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateCropToggleButton;
 - (void)_updateCropToggleConstraintsIfNeeded;
 - (void)_updateCropViewsForInteraction;
+- (void)_updateLivePhoto;
 - (void)_updatePreviewViewInsets;
 - (void)_updateTiltControlColor;
 - (void)_updateTiltWheelConstraintsIfNeeded;
@@ -196,6 +199,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareForPopoverPresentation:(id)arg1;
 - (void)resetToDefaultValueAnimated:(BOOL)arg1;
 - (id)selectedToolbarIcon;
+- (void)setDelegate:(id)arg1;
 - (void)setLayoutOrientation:(long long)arg1 withTransitionCoordinator:(id)arg2;
 - (id)toolbarIcon;
 - (void)updateViewConstraints;

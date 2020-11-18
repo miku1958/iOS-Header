@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)_ensureMinAndMaxSizesConsistentWithBounds;
 - (struct _NSRange)_extendedGlyphRangeForRange:(struct _NSRange)arg1 maxGlyphIndex:(unsigned long long)arg2 drawingToScreen:(BOOL)arg3;
 - (void)_setFrameOrBounds:(struct CGRect)arg1 oldRect:(struct CGRect)arg2 settingAction:(CDUnknownBlockType)arg3;
+- (void)_sizeToConstrainedContainerUsedRect;
 - (void)dealloc;
 - (id)delegate;
 - (void)drawRect:(struct CGRect)arg1;

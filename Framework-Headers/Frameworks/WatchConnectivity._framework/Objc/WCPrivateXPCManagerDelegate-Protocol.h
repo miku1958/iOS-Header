@@ -9,6 +9,7 @@
 @class NSString, WCPrivateXPCManager;
 
 @protocol WCPrivateXPCManagerDelegate <NSObject>
+- (void)xpcManager:(WCPrivateXPCManager *)arg1 handlePairedSyncComplicationsStartedWithCompletionHandler:(void (^)(NSError *))arg2;
 - (void)xpcManager:(WCPrivateXPCManager *)arg1 handlePingForExtensionBundleID:(NSString *)arg2;
 - (void)xpcManager:(WCPrivateXPCManager *)arg1 isExtensionPrivileged:(NSString *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 @end

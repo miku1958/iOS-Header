@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
 
-@class HDDaemon, NSMutableDictionary, NSMutableSet, NSString;
+@class HDAppAssertionManager, HDDaemon, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDAppSubscriptionManager : NSObject <HDDatabaseProtectedDataObserver>
@@ -16,6 +16,7 @@
     BOOL _shouldScheduleLaunches;
     int _backgroundAppRefreshNotifyToken;
     HDDaemon *_healthDaemon;
+    HDAppAssertionManager *_appAssertionManager;
     NSObject<OS_dispatch_queue> *_launchQueue;
     NSMutableSet *_pendingTypeCodes;
     NSMutableDictionary *_launchTimers;
@@ -23,6 +24,7 @@
     NSObject<OS_dispatch_queue> *_launchTimerQueue;
 }
 
+@property (strong, nonatomic) HDAppAssertionManager *appAssertionManager; // @synthesize appAssertionManager=_appAssertionManager;
 @property (nonatomic) int backgroundAppRefreshNotifyToken; // @synthesize backgroundAppRefreshNotifyToken=_backgroundAppRefreshNotifyToken;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -36,7 +38,6 @@
 @property (nonatomic) BOOL shouldScheduleLaunches; // @synthesize shouldScheduleLaunches=_shouldScheduleLaunches;
 @property (readonly) Class superclass;
 
-+ (id)defaultManager;
 - (void).cxx_destruct;
 - (id)_activityNameForSubscription:(id)arg1;
 - (void)_launchTimerFired:(id)arg1 code:(id)arg2;

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CADisplayLink, NSArray, NSMapTable, NSString, UIMoveEvent, UIScrollView, UITapGestureRecognizer, UIView, UIWindow, _UIFocusEnginePanGestureRecognizer, _UIFocusPressGestureRecognizer, _UIFocusSoundPool, _UIFocusTouchDebugView;
+@class CADisplayLink, NSArray, NSMapTable, NSString, NSTimer, UIMoveEvent, UIScrollView, UITapGestureRecognizer, UIView, UIWindow, _UIFocusEngineJoystickGestureRecognizer, _UIFocusEnginePanGestureRecognizer, _UIFocusPressGestureRecognizer, _UIFocusSoundPool, _UIFocusTouchDebugView;
 @protocol OS_dispatch_queue, _UIFocusScrollAnimator;
 
 @interface _UIFocusEngine : NSObject <UIGestureRecognizerDelegate>
@@ -27,9 +27,13 @@
     unsigned long long _focusUpdateCountSinceLastPanBegan;
     CADisplayLink *_momentumDisplayLink;
     NSArray *_remoteGestures;
-    struct CGPoint _gameControllerVirtualTrackpadLocation;
-    struct CGPoint _lastReadGameControllerStickLocation;
-    CADisplayLink *_stickDisplayLink;
+    _UIFocusEngineJoystickGestureRecognizer *_joystickGestureRecognizer;
+    NSTimer *_joystickModeExitTimer;
+    NSTimer *_joystickModeRepeatTimer;
+    double _previousJoystickFocusMovementTime;
+    double _previousJoystickRegionEntryTime;
+    unsigned long long _joystickRepeatingHeading;
+    CADisplayLink *_joystickFocusDirectionDisplayLink;
     struct CGPoint _currentFocusDirection;
     NSMapTable *_focusRollbackAnimations;
     UIScrollView *_peekingScrollView;
@@ -53,6 +57,9 @@
         unsigned int isEligibleToCrossSpeedBump:1;
         unsigned int isContinuingTouchWithMomentum:1;
         unsigned int isAnimatingFocusDirectionRollback:1;
+        unsigned int isPerformingJoystickRollback:1;
+        unsigned int isJoystickInRepeatMode:1;
+        unsigned int isPendingJoystickRepeat:1;
         unsigned int isPeekingScrollView:1;
         unsigned int shouldApplyAcceleration:1;
         unsigned int shouldShowDebugOverlays:1;
@@ -82,7 +89,6 @@
 @property (nonatomic) BOOL wantsScrollPeeking; // @synthesize wantsScrollPeeking=_wantsScrollPeeking;
 
 - (void).cxx_destruct;
-- (void)_activateControllerDisplayLink;
 - (void)_addGestureRecognizers;
 - (void)_addVisibleRect:(struct CGRect)arg1 toScrollViewForAnimation:(id)arg2;
 - (void)_animateOffsetOfScrollView:(id)arg1 toShowFocusedView:(id)arg2;
@@ -100,19 +106,31 @@
 - (void)_continueTouchWithMomentum;
 - (double)_effortRequiredToMoveAlongHeading:(unsigned long long)arg1;
 - (void)_ensureFocusedViewIsOnscreen:(id)arg1;
+- (void)_exitJoystickModeForReal:(id)arg1;
 - (id)_findFocusCandidateByExhaustivelySearchingScrollView:(id)arg1 focusHeading:(unsigned long long)arg2 startingView:(id)arg3;
 - (id)_findFocusCandidateStartingInRegionWithoutLoadingScrollViewContent:(id)arg1 focusHeading:(unsigned long long)arg2 startingView:(id)arg3 minimumSearchArea:(struct CGRect)arg4;
 - (id)_focusedView;
 - (double)_frictionInterpolationForMomentumSpeed:(double)arg1 totalDistance:(double)arg2 slope:(double)arg3 shortDistance:(double)arg4 longDistance:(double)arg5;
 - (void)_gestureRecognizerFailed:(id)arg1;
 - (void)_handleButtonGesture:(id)arg1;
+- (void)_handleJoystickGesture:(id)arg1;
+- (void)_handleJoystickRepeatMode:(id)arg1;
+- (void)_handleJoystickTiltMode:(id)arg1;
 - (void)_handlePanGesture:(id)arg1;
 - (void)_handleSelectGesture:(id)arg1;
 - (void)_handleTapGesture:(id)arg1;
+- (unsigned long long)_headingForJoystickPosition:(struct CGPoint)arg1 usingMinimumRadius:(double)arg2;
 - (double)_horizontalFrictionInterpolationForMomentumSpeed:(double)arg1 totalDistance:(double)arg2;
-- (void)_invalidateControllerDisplayLink;
 - (BOOL)_isContinuingTouchWithMomentum;
 - (BOOL)_isScrollingScrollView:(id)arg1;
+- (BOOL)_joystickAttemptToMoveAlongHeading:(unsigned long long)arg1 withVelocity:(struct CGVector)arg2;
+- (void)_joystickDisplayLinkHeartbeat:(id)arg1;
+- (void)_joystickGestureBegan:(id)arg1;
+- (void)_joystickGestureEnded:(id)arg1;
+- (void)_joystickGestureUpdated:(id)arg1;
+- (void)_joystickPerformRepeat:(id)arg1;
+- (double)_joystickRepeatDurationForTimeInMovementZone:(double)arg1;
+- (struct CGVector)_joystickVelocityForHeading:(unsigned long long)arg1 timeInMovementZone:(double)arg2;
 - (void)_loadScrollViewContentAlongHeading:(unsigned long long)arg1 fromView:(id)arg2;
 - (struct CGRect)_minimumSearchAreaForContainerView:(id)arg1;
 - (void)_momentumHeartbeat:(id)arg1;
@@ -130,6 +148,7 @@
 - (void)_removeVisibleRect:(struct CGRect)arg1 fromScrollViewForAnimation:(id)arg2;
 - (void)_resetFocusDirectionRollbackForAllViews;
 - (void)_resetFocusDirectionRollbackForView:(id)arg1;
+- (void)_resetJoystick;
 - (void)_resetMomentum;
 - (void)_resetScrollViewPeek:(BOOL)arg1;
 - (void)_resetViewSearchCache;
@@ -149,16 +168,15 @@
 - (void)_setupDebugOverlays;
 - (BOOL)_shouldEagerlyValidateFocusCandidates;
 - (BOOL)_shouldPerformFocusUpdateWithCurrentMomentumStatus;
+- (BOOL)_shouldRecordDestinationViewDistanceOffscreen;
+- (id)_soundQueue;
 - (BOOL)_speedBumpsAllowFocusToMoveAlongHeading:(unsigned long long)arg1;
 - (void)_startFocusDirectionRollbackForView:(id)arg1;
-- (void)_stickDrivenGestureEnd:(id)arg1;
-- (void)_stickDrivenGestureStart:(id)arg1;
 - (void)_stopMomentumAndPerformRollback;
 - (struct CGPoint)_targetContentOffsetForScrollView:(id)arg1;
 - (void)_teardownDebugOverlays;
 - (int)_touchRegionForDigitizerLocation:(struct CGPoint)arg1;
 - (struct CGSize)_touchSensitivityForView:(id)arg1;
-- (void)_updateControllerState:(id)arg1;
 - (void)_updateDebugOverlayByRemovingTouchIndicators;
 - (void)_updateDebugOverlayWithTouchAtNormalizedPoint:(struct CGPoint)arg1 navigationBoundary:(struct CGRect)arg2;
 - (BOOL)_updateFocusWithContext:(id)arg1;

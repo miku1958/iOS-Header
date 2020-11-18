@@ -16,9 +16,10 @@
     BOOL _animatingOut;
 }
 
-@property (readonly, strong, nonatomic) UIView *bottomBar; // @synthesize bottomBar=_bottomBar;
-@property (readonly, strong, nonatomic) UIView *topBar; // @synthesize topBar=_topBar;
+@property (readonly, nonatomic) UIView *bottomBar; // @synthesize bottomBar=_bottomBar;
+@property (readonly, nonatomic) UIView *topBar; // @synthesize topBar=_topBar;
 
+- (void).cxx_destruct;
 - (BOOL)_animatingToHomescreenWallpaper;
 - (double)_animationDelayForOthersActivation;
 - (void)_performAnimateDisplayIn;
@@ -29,7 +30,6 @@
 - (void)animateViewIn;
 - (void)animateViewOut;
 - (id)backgroundView;
-- (void)dealloc;
 - (void)finishedAnimatingIn;
 - (BOOL)hasTranslucentBackground;
 - (BOOL)isShowingWallpaper;

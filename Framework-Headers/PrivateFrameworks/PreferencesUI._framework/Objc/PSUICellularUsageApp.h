@@ -22,6 +22,7 @@
 @property (nonatomic) double totalBytesUsed; // @synthesize totalBytesUsed=_totalBytesUsed;
 
 - (void).cxx_destruct;
+- (id)description;
 
 @end
 

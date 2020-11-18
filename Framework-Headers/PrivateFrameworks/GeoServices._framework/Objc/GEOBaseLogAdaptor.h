@@ -29,6 +29,7 @@
 - (void)dealloc;
 - (void)flushLogs;
 - (id)init;
+- (BOOL)isLogFrameworkAdaptor;
 - (void)queueLogMessage:(id)arg1;
 - (void)removeSupportForLogMessageType:(int)arg1 subType:(int)arg2;
 

@@ -6,15 +6,24 @@
 
 #import <IDSSimulatorSupport/NSObject-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSString, NSUUID;
 
 @protocol IDSSimLocalServerProtocol <NSObject>
+- (void)addPairedDeviceWithSimulatorID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
+- (unsigned long long)connectionStateForSimulatorID:(NSUUID *)arg1;
+- (void)deletePairedDeviceWithSimulatorID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)getConnectionState:(void (^)(unsigned long long))arg1;
+- (void)getCurrentConnectedSimulatorUniqueID:(void (^)(NSUUID *))arg1;
 - (void)getNetworkSimulationState:(NSString *)arg1 completion:(void (^)(BOOL, BOOL))arg2;
-- (void)ping;
 - (void)registerDataHandlerForService:(NSString *)arg1;
+- (void)sendData:(NSData *)arg1 toDevice:(NSUUID *)arg2 withServiceName:(NSString *)arg3 messageID:(NSString *)arg4 completion:(void (^)(BOOL, NSError *, NSDictionary *))arg5;
 - (void)sendData:(NSData *)arg1 withServiceName:(NSString *)arg2 messageID:(NSString *)arg3 completion:(void (^)(BOOL, NSError *))arg4;
 - (void)setNetworkSimulation:(NSString *)arg1 enabled:(BOOL)arg2 completion:(void (^)(BOOL))arg3;
+- (void)switchToActivePairedDeviceWithSimulatorID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)transportConnectWithSimulatorID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)transportDisconnectWithSimulatorID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)transportResumeWithCompletion:(void (^)(NSError *))arg1;
+- (void)transportSuspendWithCompletion:(void (^)(NSError *))arg1;
 - (void)unregisterDataHandlerForService:(NSString *)arg1;
 @end
 

@@ -49,6 +49,7 @@
 - (void)addHiddenExtResult:(id)arg1;
 - (void)addResults:(id)arg1;
 - (void)addResults:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)addResultsFromArray:(id)arg1;
 - (void)clearResults;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

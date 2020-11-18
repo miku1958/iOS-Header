@@ -35,7 +35,6 @@
     BOOL _isDocumentLoaded;
     BOOL _isClosingDocument;
     BOOL _isAbandoningDocument;
-    BOOL _isFirstTimeSharing;
     TSAInteractiveCanvasController *_interactiveCanvasController;
     TSADebugViewController *_debugViewController;
     long long _documentMode;
@@ -50,7 +49,6 @@
     double mSavedCanvasViewScale;
     BOOL _waitingToZoomOut;
     BOOL _scheduledBackgroundInit;
-    BOOL _dismissInspectorOnRotation;
     BOOL _isLandscapeOrientation;
     BOOL _documentModeChangeInProgress;
     double _footerHeightPadding;

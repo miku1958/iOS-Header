@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)__accessibilityUpdateSpeakScreenGestureRecognizer;
 - (id)_accessibilityAppSwitcherApps;
 - (int)_accessibilityApplicationOrientation;
 - (BOOL)_accessibilityAssistantIsListening;
@@ -26,6 +27,7 @@
 - (BOOL)_accessibilityIsBatteryLow;
 - (BOOL)_accessibilityIsBuddyRunning;
 - (BOOL)_accessibilityIsQuietModeEnabled;
+- (BOOL)_accessibilityIsSessionLoginSession;
 - (BOOL)_accessibilityIsSystemAppServer;
 - (BOOL)_accessibilityIsSystemLocked;
 - (BOOL)_accessibilityIsSystemSleeping;

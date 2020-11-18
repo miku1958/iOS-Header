@@ -7,9 +7,11 @@
 #import <GeoServices/NSObject-Protocol.h>
 
 @class NSString;
+@protocol GEOServerFormatTokenPriceValue;
 
 @protocol GEOServerFormatToken <NSObject>
 
+@property (readonly, nonatomic) id<GEOServerFormatTokenPriceValue> priceValue;
 @property (readonly, nonatomic) NSString *token;
 @property (readonly, nonatomic) long long type;
 @property (readonly, nonatomic) unsigned int value1;

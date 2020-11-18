@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString;
+@class NSString, NSURL;
 
 @protocol HTMLConverterProtocol
-- (void)attributedStringFromHTMLString:(NSString *)arg1 completionBlock:(void (^)(NSData *, NSError *))arg2;
+- (void)attributedStringFromHTMLString:(NSString *)arg1 baseURL:(NSURL *)arg2 completionBlock:(void (^)(NSData *, NSError *))arg3;
 @end
 

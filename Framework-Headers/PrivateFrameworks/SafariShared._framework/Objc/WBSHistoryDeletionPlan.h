@@ -35,7 +35,7 @@
 - (void)_prepareWithTriggeringItems:(id)arg1 triggeringVisits:(id)arg2;
 - (id)_visitsForItems:(id)arg1;
 - (void)execute;
-- (id)initWithSQLiteStore:(id)arg1 triggeringItems:(id)arg2 excludingItems:(id)arg3 visits:(id)arg4;
+- (id)initWithSQLiteStore:(id)arg1 triggeringItems:(id)arg2 excludingItems:(id)arg3 visits:(id)arg4 reason:(long long)arg5;
 - (id)initWithSQLiteStore:(id)arg1 triggeringVisits:(id)arg2 excludingItems:(id)arg3 visits:(id)arg4;
 - (void)prepare;
 

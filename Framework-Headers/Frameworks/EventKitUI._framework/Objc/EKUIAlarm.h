@@ -21,6 +21,7 @@
 - (id)description;
 - (id)initLeaveNowAlarm;
 - (id)initWithAlarm:(id)arg1;
+- (BOOL)isEqualToUIAlarm:(id)arg1;
 - (id)localizedDescriptionAllDay:(BOOL)arg1;
 
 @end

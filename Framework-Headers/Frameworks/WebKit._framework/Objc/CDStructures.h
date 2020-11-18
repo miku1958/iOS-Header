@@ -1281,6 +1281,11 @@ struct Optional<WTF::Vector<unsigned char, 0, WTF::CrashOnOverflow, 16>> {
     struct type _field2;
 };
 
+struct Optional<WebCore::FloatPoint> {
+    BOOL _field1;
+    struct type _field2;
+};
+
 struct Optional<WebCore::ScrollbarOverlayStyle> {
     BOOL _field1;
     struct type _field2;
@@ -1734,10 +1739,14 @@ struct RemoteLayerTreeTransaction {
     double _field12;
     double _field13;
     double _field14;
-    unsigned long long _field15;
-    unsigned long long _field16;
-    BOOL _field17;
-    BOOL _field18;
+    double _field15;
+    double _field16;
+    unsigned long long _field17;
+    unsigned long long _field18;
+    BOOL _field19;
+    BOOL _field20;
+    BOOL _field21;
+    BOOL _field22;
 };
 
 struct RemoteObjectRegistry {
@@ -1911,6 +1920,10 @@ struct RetainPtr<UIDocumentMenuViewController> {
 };
 
 struct RetainPtr<UIDocumentPasswordView> {
+    void *m_ptr;
+};
+
+struct RetainPtr<UIEvent> {
     void *m_ptr;
 };
 
@@ -2623,6 +2636,7 @@ struct ViewportArguments {
     float _field11;
     float _field12;
     float _field13;
+    BOOL _field14;
 };
 
 struct ViewportConfiguration {
@@ -2640,14 +2654,15 @@ struct VisibleContentRectUpdateInfo {
     struct FloatRect _field2;
     struct FloatRect _field3;
     struct FloatRect _field4;
-    double _field5;
-    BOOL _field6;
-    BOOL _field7;
+    unsigned long long _field5;
+    double _field6;
+    double _field7;
     double _field8;
     double _field9;
     double _field10;
-    double _field11;
-    unsigned long long _field12;
+    BOOL _field11;
+    BOOL _field12;
+    BOOL _field13;
 };
 
 struct VisitedLinkProvider;
@@ -3025,46 +3040,46 @@ struct WebPage {
     BOOL _field27;
     BOOL _field28;
     BOOL _field29;
-    unsigned int _field30;
-    struct String _field31;
+    BOOL _field30;
+    unsigned int _field31;
     struct String _field32;
     struct String _field33;
-    struct Timer<WebKit::WebPage> _field34;
-    int _field35;
-    BOOL _field36;
+    struct String _field34;
+    struct Timer<WebKit::WebPage> _field35;
+    int _field36;
     BOOL _field37;
-    struct FloatRect _field38;
+    BOOL _field38;
     struct FloatRect _field39;
     struct FloatRect _field40;
-    struct FloatPoint _field41;
-    struct RetainPtr<WKAccessibilityWebPageObject> _field42;
-    struct ViewGestureGeometryCollector _field43;
-    struct Timer<WebKit::WebPage> _field44;
-    BOOL _field45;
-    struct HashMap<unsigned long long, WTF::RefPtr<WebKit::WebUndoStep>, WTF::IntHash<unsigned long long>, WTF::HashTraits<unsigned long long>, WTF::HashTraits<WTF::RefPtr<WebKit::WebUndoStep>>> _field46;
-    struct InjectedBundlePageEditorClient _field47;
-    struct unique_ptr<API::InjectedBundle::FormClient, std::__1::default_delete<API::InjectedBundle::FormClient>> _field48;
-    struct InjectedBundlePageLoaderClient _field49;
-    struct InjectedBundlePagePolicyClient _field50;
-    struct InjectedBundlePageResourceLoadClient _field51;
-    struct unique_ptr<API::InjectedBundle::PageUIClient, std::__1::default_delete<API::InjectedBundle::PageUIClient>> _field52;
-    struct InjectedBundlePageDiagnosticLoggingClient _field53;
-    struct FindController _field54;
-    struct RefPtr<WebKit::WebInspector> _field55;
-    struct RefPtr<WebKit::WebInspectorUI> _field56;
-    struct RefPtr<WebKit::WebVideoFullscreenManager> _field57;
-    BOOL _field58;
-    struct RefPtr<WebKit::WebPopupMenu> _field59;
-    struct RefPtr<WebKit::WebOpenPanelResultListener> _field60;
-    struct RefPtr<WebKit::NotificationPermissionRequestManager> _field61;
-    struct RefPtr<WebKit::WebUserContentController> _field62;
-    struct GeolocationPermissionRequestManager _field63;
-    struct unique_ptr<WebCore::PrintContext, std::__1::default_delete<WebCore::PrintContext>> _field64;
-    struct SandboxExtensionTracker _field65;
-    struct RefPtr<WebKit::SandboxExtension> _field66;
-    struct Vector<WTF::RefPtr<WebKit::SandboxExtension>, 0, WTF::CrashOnOverflow, 16> _field67;
-    struct HysteresisActivity _field68;
-    BOOL _field69;
+    struct FloatRect _field41;
+    struct FloatPoint _field42;
+    struct RetainPtr<WKAccessibilityWebPageObject> _field43;
+    struct ViewGestureGeometryCollector _field44;
+    struct Timer<WebKit::WebPage> _field45;
+    BOOL _field46;
+    struct HashMap<unsigned long long, WTF::RefPtr<WebKit::WebUndoStep>, WTF::IntHash<unsigned long long>, WTF::HashTraits<unsigned long long>, WTF::HashTraits<WTF::RefPtr<WebKit::WebUndoStep>>> _field47;
+    struct InjectedBundlePageEditorClient _field48;
+    struct unique_ptr<API::InjectedBundle::FormClient, std::__1::default_delete<API::InjectedBundle::FormClient>> _field49;
+    struct InjectedBundlePageLoaderClient _field50;
+    struct InjectedBundlePagePolicyClient _field51;
+    struct InjectedBundlePageResourceLoadClient _field52;
+    struct unique_ptr<API::InjectedBundle::PageUIClient, std::__1::default_delete<API::InjectedBundle::PageUIClient>> _field53;
+    struct InjectedBundlePageDiagnosticLoggingClient _field54;
+    struct FindController _field55;
+    struct RefPtr<WebKit::WebInspector> _field56;
+    struct RefPtr<WebKit::WebInspectorUI> _field57;
+    struct RefPtr<WebKit::WebVideoFullscreenManager> _field58;
+    BOOL _field59;
+    struct RefPtr<WebKit::WebPopupMenu> _field60;
+    struct RefPtr<WebKit::WebOpenPanelResultListener> _field61;
+    struct RefPtr<WebKit::NotificationPermissionRequestManager> _field62;
+    struct RefPtr<WebKit::WebUserContentController> _field63;
+    struct GeolocationPermissionRequestManager _field64;
+    struct unique_ptr<WebCore::PrintContext, std::__1::default_delete<WebCore::PrintContext>> _field65;
+    struct SandboxExtensionTracker _field66;
+    struct RefPtr<WebKit::SandboxExtension> _field67;
+    struct Vector<WTF::RefPtr<WebKit::SandboxExtension>, 0, WTF::CrashOnOverflow, 16> _field68;
+    struct HysteresisActivity _field69;
     BOOL _field70;
     BOOL _field71;
     BOOL _field72;
@@ -3073,19 +3088,19 @@ struct WebPage {
     BOOL _field75;
     BOOL _field76;
     BOOL _field77;
-    unsigned int _field78;
-    struct HashSet<unsigned long, WTF::IntHash<unsigned long>, WTF::HashTraits<unsigned long>> _field79;
-    struct IntSize _field80;
-    BOOL _field81;
-    struct RefPtr<WebCore::Node> _field82;
-    struct RefPtr<WebCore::Range> _field83;
-    struct RefPtr<WebCore::Node> _field84;
-    struct IntPoint _field85;
-    int _field86;
-    struct RefPtr<WebCore::Node> _field87;
-    struct FloatPoint _field88;
-    struct ViewportConfiguration _field89;
-    BOOL _field90;
+    BOOL _field78;
+    unsigned int _field79;
+    struct HashSet<unsigned long, WTF::IntHash<unsigned long>, WTF::HashTraits<unsigned long>> _field80;
+    struct IntSize _field81;
+    BOOL _field82;
+    struct RefPtr<WebCore::Node> _field83;
+    struct RefPtr<WebCore::Range> _field84;
+    struct RefPtr<WebCore::Node> _field85;
+    struct IntPoint _field86;
+    int _field87;
+    struct RefPtr<WebCore::Node> _field88;
+    struct FloatPoint _field89;
+    struct ViewportConfiguration _field90;
     BOOL _field91;
     BOOL _field92;
     BOOL _field93;
@@ -3094,38 +3109,39 @@ struct WebPage {
     BOOL _field96;
     BOOL _field97;
     BOOL _field98;
-    struct duration<long long, std::__1::ratio<1, 1000>> _field99;
+    BOOL _field99;
     struct duration<long long, std::__1::ratio<1, 1000>> _field100;
-    struct FloatSize _field101;
+    struct duration<long long, std::__1::ratio<1, 1000>> _field101;
     struct FloatSize _field102;
-    struct RefPtr<WebCore::Range> _field103;
+    struct FloatSize _field103;
     struct RefPtr<WebCore::Range> _field104;
-    struct IntSize _field105;
-    struct FloatSize _field106;
-    int _field107;
-    BOOL _field108;
-    struct HashMap<std::__1::pair<WebCore::IntSize, double>, WebCore::IntPoint, WTF::PairHash<WebCore::IntSize, double>, WTF::HashTraits<std::__1::pair<WebCore::IntSize, double>>, WTF::HashTraits<WebCore::IntPoint>> _field109;
-    struct RefPtr<WebCore::Node> _field110;
-    struct FloatPoint _field111;
-    struct FloatRect _field112;
-    struct Timer _field113;
-    struct WebInspectorClient *_field114;
-    struct HashSet<WTF::String, WTF::CaseFoldingHash, WTF::HashTraits<WTF::String>> _field115;
-    struct Color _field116;
-    struct HashSet<unsigned int, WTF::IntHash<unsigned int>, WTF::HashTraits<unsigned int>> _field117;
-    unsigned int _field118;
-    int _field119;
-    struct Optional<WebCore::ScrollbarOverlayStyle> _field120;
-    BOOL _field121;
-    unsigned int _field122;
+    struct RefPtr<WebCore::Range> _field105;
+    struct IntSize _field106;
+    struct FloatSize _field107;
+    int _field108;
+    BOOL _field109;
+    struct HashMap<std::__1::pair<WebCore::IntSize, double>, WebCore::IntPoint, WTF::PairHash<WebCore::IntSize, double>, WTF::HashTraits<std::__1::pair<WebCore::IntSize, double>>, WTF::HashTraits<WebCore::IntPoint>> _field110;
+    struct RefPtr<WebCore::Node> _field111;
+    struct FloatPoint _field112;
+    struct FloatRect _field113;
+    struct Timer _field114;
+    struct WebInspectorClient *_field115;
+    struct HashSet<WTF::String, WTF::CaseFoldingHash, WTF::HashTraits<WTF::String>> _field116;
+    struct Color _field117;
+    struct HashSet<unsigned int, WTF::IntHash<unsigned int>, WTF::HashTraits<unsigned int>> _field118;
+    unsigned int _field119;
+    int _field120;
+    struct Optional<WebCore::ScrollbarOverlayStyle> _field121;
+    BOOL _field122;
     unsigned int _field123;
-    BOOL _field124;
-    struct UserActivity _field125;
-    unsigned long long _field126;
-    int _field127;
-    BOOL _field128;
+    unsigned int _field124;
+    BOOL _field125;
+    struct UserActivity _field126;
+    unsigned long long _field127;
+    int _field128;
     BOOL _field129;
     BOOL _field130;
+    BOOL _field131;
 };
 
 struct WebPageConfiguration {
@@ -3727,6 +3743,11 @@ typedef struct {
 } CDStruct_828c7fe1;
 
 // Template types
+typedef struct Optional<WebCore::FloatPoint> {
+    BOOL _field1;
+    struct type _field2;
+} Optional_dd601f4a;
+
 typedef struct PassRefPtr<WebKit::GeolocationPermissionRequestProxy> {
     struct GeolocationPermissionRequestProxy *_field1;
 } PassRefPtr_da409672;

@@ -38,7 +38,9 @@
 @property (strong, nonatomic) UILabel *statusSubtitleView; // @synthesize statusSubtitleView=_statusSubtitleView;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_acceptOrCancelReturnKeyPress;
+- (id)_alphanumericPasscodeEntryField;
 - (BOOL)_canMinMaxKeyboard;
 - (void)_geometryChanged:(id)arg1;
 - (void)_handleDidRotateNotification:(id)arg1;
@@ -49,6 +51,7 @@
 - (struct CGRect)_keyboardFrameForInterfaceOrientation:(long long)arg1;
 - (double)_keyboardToEntryFieldOffset;
 - (void)_layoutForMinimizationState:(BOOL)arg1;
+- (void)_layoutStatusView;
 - (void)_luminanceBoostDidChange;
 - (void)_maximize;
 - (void)_minimize;
@@ -59,6 +62,8 @@
 - (void)_notifyDelegateThatEmergencyCallButtonWasPressed;
 - (void)_setMinimized:(BOOL)arg1;
 - (double)_statusFieldHeight;
+- (id)_statusSubtitleView;
+- (id)_statusTitleView;
 - (double)_statusTitleWidth;
 - (void)_toggleForEmergencyCall;
 - (void)_toggleForStatusField;

@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class BKSApplicationStateMonitor, HDDaemon, NSMutableDictionary, NSPointerArray;
+@class BKSApplicationStateMonitor, HDDaemon, NSHashTable, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface HDProcessStateManager : NSObject
 {
     NSMutableDictionary *_processObserversByBundleID;
+    NSHashTable *_generalProcessObservers;
     BKSApplicationStateMonitor *_applicationMonitor;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_clientCalloutQueue;
     NSMutableDictionary *_currentProcessStateByBundleID;
-    NSPointerArray *_generalProcessObservers;
     HDDaemon *_daemon;
 }
 

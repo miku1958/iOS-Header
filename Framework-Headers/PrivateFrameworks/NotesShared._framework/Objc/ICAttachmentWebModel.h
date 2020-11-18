@@ -20,9 +20,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) CDUnknownBlockType pendingFetchCompletionHandler; // @synthesize pendingFetchCompletionHandler=_pendingFetchCompletionHandler;
+@property (copy) CDUnknownBlockType pendingFetchCompletionHandler; // @synthesize pendingFetchCompletionHandler=_pendingFetchCompletionHandler;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
+@property (strong) WKWebView *webView; // @synthesize webView=_webView;
 
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
 + (id)sharedWKProcessPool;

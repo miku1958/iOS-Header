@@ -20,8 +20,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_observers;
-- (void)dealloc;
 - (id)init;
 - (void)observerDidComplete;
 - (void)observerDidFailWithError:(id)arg1;

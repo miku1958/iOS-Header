@@ -9,6 +9,7 @@
 @class CKFileOpenInfo, CKOperationResult, NSDictionary, NSString;
 
 @protocol CKBXPCClient <NSObject>
+- (void)handleOperationCheckpoint:(NSDictionary *)arg1 forOperationWithID:(NSString *)arg2;
 - (void)handleOperationCompletion:(CKOperationResult *)arg1 forOperationWithID:(NSString *)arg2;
 - (void)handleOperationProgress:(NSDictionary *)arg1 forOperationWithID:(NSString *)arg2;
 - (void)handleOperationProgress:(NSDictionary *)arg1 forOperationWithID:(NSString *)arg2 reply:(void (^)(void))arg3;

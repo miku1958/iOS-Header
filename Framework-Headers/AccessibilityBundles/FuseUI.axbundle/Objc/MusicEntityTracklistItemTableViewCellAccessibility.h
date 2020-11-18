@@ -14,7 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityPerformContextualAction:(id)arg1;
-- (id)_accessibilitySupplementaryFooterViews;
 - (id)_accessibilityUserTestingChildren;
 - (BOOL)_axHandlePlayAction:(id)arg1;
 - (BOOL)_isTrackListItemViewDimmed;

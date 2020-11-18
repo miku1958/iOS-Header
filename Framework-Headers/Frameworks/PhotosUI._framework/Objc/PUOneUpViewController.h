@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <PhotosUI/PUAirPlayControllerContentProvider-Protocol.h>
+#import <PhotosUI/PHAirPlayControllerContentProvider-Protocol.h>
 #import <PhotosUI/PUAssetDisplayDescriptorNavigator-Protocol.h>
 #import <PhotosUI/PUBarsControllerDelegate-Protocol.h>
 #import <PhotosUI/PUBrowsingViewModelChangeObserver-Protocol.h>
@@ -33,7 +33,7 @@
 
 @class NSArray, NSString, NSTimer, PUAssetDisplayDescriptorNavigationRequest, PUBrowsingBackgroundTileViewController, PUBrowsingSession, PUDoubleTapZoomController, PUInteractivePinchDismissalController, PUInteractiveSwipeDismissalController, PUOneUpBarsController, PUOneUpGestureRecognizerCoordinator, PUOneUpViewControllerSpec, PUOverOneUpPresentationSession, PUParallaxComputer, PUPreviewActionController, PUTilingView, UIScrollView;
 
-@interface PUOneUpViewController : UIViewController <PUViewControllerSpecChangeObserver, PUBrowsingViewModelChangeObserver, PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, PUTilingViewScrollDelegate, UIScrollViewDelegate, PUOneUpTilingLayoutDelegate, PUInteractiveDismissalControllerDelegate, PUBarsControllerDelegate, PUOneUpBarsControllerDelegate, PUUserTransformTileViewControllerDelegate, PUPlayButtonTileViewControllerDelegate, PUDoubleTapZoomControllerDelegate, PUAirPlayControllerContentProvider, PUTilingViewTileUseDelegate, PUCommentsTileViewControllerDelegate, PUOverOneUpPresentationSessionDelegate, PUOverOneUpPresentationSessionViewController, PUOneUpGestureRecognizerCoordinatorDelegate, PUOneUpAssetTransitionViewController, PUAssetDisplayDescriptorNavigator, _UISettingsKeyObserver, PUIrisImageTileViewControllerDelegate, PUTilingViewControllerTransitionEndPoint>
+@interface PUOneUpViewController : UIViewController <PUViewControllerSpecChangeObserver, PUBrowsingViewModelChangeObserver, PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, PUTilingViewScrollDelegate, UIScrollViewDelegate, PUOneUpTilingLayoutDelegate, PUInteractiveDismissalControllerDelegate, PUBarsControllerDelegate, PUOneUpBarsControllerDelegate, PUUserTransformTileViewControllerDelegate, PUPlayButtonTileViewControllerDelegate, PUDoubleTapZoomControllerDelegate, PHAirPlayControllerContentProvider, PUTilingViewTileUseDelegate, PUCommentsTileViewControllerDelegate, PUOverOneUpPresentationSessionDelegate, PUOverOneUpPresentationSessionViewController, PUOneUpGestureRecognizerCoordinatorDelegate, PUOneUpAssetTransitionViewController, PUAssetDisplayDescriptorNavigator, _UISettingsKeyObserver, PUIrisImageTileViewControllerDelegate, PUTilingViewControllerTransitionEndPoint>
 {
     NSString *_scrubbingIdentifier;
     PUPreviewActionController *_previewActionController;
@@ -195,6 +195,7 @@
 - (id)irisImageTileViewController:(id)arg1 delegateForGestureRecognizer:(id)arg2;
 - (void)irisImageTileViewControllerDidBeginPlaying:(id)arg1;
 - (void)irisImageTileViewControllerDidEndPlaying:(id)arg1;
+- (void)irisImageTileViewControllerDidEndVitality:(id)arg1;
 - (id)irisImageTileViewControllerViewHostingGestureRecognizers:(id)arg1;
 - (double)layout:(id)arg1 aspectRatioForItemAtIndexPath:(id)arg2;
 - (struct CGSize)layout:(id)arg1 badgeSizeForItemAtIndexPath:(id)arg2;
@@ -224,6 +225,7 @@
 - (id)overOneUpPresentationSessionCreateIfNeeded:(BOOL)arg1;
 - (id)overOneUpPresentationSessionCurrentTileController:(id)arg1;
 - (void)overOneUpPresentationSessionDidFinish:(id)arg1;
+- (BOOL)overOneUpPresentationSessionPresentingViewControllerIsReady:(id)arg1;
 - (id)overOneUpPresentationSessionTilingView:(id)arg1;
 - (id)overOneUpPresentationSessionViewController:(id)arg1;
 - (double)playButtonTileViewController:(id)arg1 delayForButtonAnimation:(BOOL)arg2;

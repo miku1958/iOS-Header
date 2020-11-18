@@ -6,22 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class HDSQLiteDatabase;
+@class HDSQLiteDatabase, NSString;
 
 @interface HDSQLiteStatement : NSObject
 {
     HDSQLiteDatabase *_database;
-    struct sqlite3_stmt *_stmt;
-    BOOL _didCache;
+    NSString *_sql;
+    BOOL _cache;
 }
 
 @property (readonly, nonatomic) HDSQLiteDatabase *database; // @synthesize database=_database;
 
 - (void).cxx_destruct;
-- (void)dealloc;
+- (id)description;
 - (BOOL)enumerateStatementWithError:(id *)arg1 bindingHandler:(CDUnknownBlockType)arg2 block:(CDUnknownBlockType)arg3;
 - (void)finish;
-- (id)initWithSQL:(id)arg1 database:(id)arg2 cache:(BOOL)arg3;
+- (id)initWithSQL:(id)arg1 database:(id)arg2;
 - (BOOL)performStatementWithError:(id *)arg1 bindingHandler:(CDUnknownBlockType)arg2;
 
 @end

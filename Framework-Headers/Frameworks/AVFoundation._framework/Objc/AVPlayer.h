@@ -87,6 +87,7 @@
 - (void)_didFinishSuspension:(id)arg1;
 - (BOOL)_disallowsAMRAudio;
 - (BOOL)_disallowsHardwareAcceleratedVideoDecoder;
+- (BOOL)_dynamicallyChoosesInitialVariant;
 - (void)_enqueuePlayQueueModification_invokeOnIvarAccessQueue:(id)arg1;
 - (void)_enumerateItemsUsingBlock:(CDUnknownBlockType)arg1;
 - (BOOL)_externalPlaybackActive;
@@ -105,6 +106,7 @@
 - (long long)_itemOkayToPlayWhileTransitioningToBackground:(id)arg1;
 - (id)_items;
 - (id)_items_invokeOnIvarAccessQueue;
+- (BOOL)_limitsBandwidthForCellularAccess;
 - (void)_logPerformanceDataForCurrentItem;
 - (void)_logPerformanceDataForPreviousItem;
 - (struct CGSize)_maximumAVPlayerLayerDisplaySize;
@@ -135,8 +137,10 @@
 - (void)_setClientName:(id)arg1;
 - (void)_setClientPriority:(long long)arg1;
 - (void)_setCurrentItem:(id)arg1;
+- (void)_setDynamicallyChoosesInitialVariant:(BOOL)arg1;
 - (void)_setEQPreset:(int)arg1;
 - (void)_setFigPlaybackItemToMakeCurrent:(struct OpaqueFigPlaybackItem *)arg1;
+- (void)_setLimitsBandwidthForCellularAccess:(BOOL)arg1;
 - (void)_setNeroVideoGravityOnFigPlayer;
 - (void)_setPendingFigPlayerProperty:(id)arg1 forKey:(id)arg2;
 - (void)_setPreferredLanguageList:(id)arg1;

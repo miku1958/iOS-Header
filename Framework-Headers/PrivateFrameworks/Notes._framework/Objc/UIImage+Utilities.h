@@ -9,8 +9,9 @@
 @interface UIImage (Utilities)
 + (id)UIImageFromCIImage:(id)arg1;
 + (struct UIImage *)fileIconForURL:(id)arg1 withPreferredSize:(struct CGSize)arg2;
++ (struct UIImage *)ic_imageWithContentsOfURL:(id)arg1;
 + (struct UIImage *)imageNamed:(id)arg1 withTint:(struct UIColor *)arg2;
-- (void)decodeInBackground;
+- (struct UIImage *)decodeInBackground;
 - (void)decodeWithCompletion:(CDUnknownBlockType)arg1;
 - (id)ic_JPEGData;
 - (id)ic_PNGData;

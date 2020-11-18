@@ -13,13 +13,19 @@ __attribute__((visibility("hidden")))
     BOOL _playerDidChange;
     BOOL _playbackStateDidChange;
     BOOL _playerStatusDidChange;
+    BOOL _hasPendingVitalityHintDidChange;
+    BOOL _canPlayVitalityDidChange;
 }
 
+@property (nonatomic) BOOL canPlayVitalityDidChange; // @synthesize canPlayVitalityDidChange=_canPlayVitalityDidChange;
+@property (nonatomic) BOOL hasPendingVitalityHintDidChange; // @synthesize hasPendingVitalityHintDidChange=_hasPendingVitalityHintDidChange;
 @property (nonatomic) BOOL isPlayerLoadingAllowedDidChange; // @synthesize isPlayerLoadingAllowedDidChange=_isPlayerLoadingAllowedDidChange;
 @property (nonatomic) BOOL playbackStateDidChange; // @synthesize playbackStateDidChange=_playbackStateDidChange;
 @property (nonatomic) BOOL playerDidChange; // @synthesize playerDidChange=_playerDidChange;
 @property (nonatomic) BOOL playerStatusDidChange; // @synthesize playerStatusDidChange=_playerStatusDidChange;
 
+- (void)_setCanPlayVitalityDidChange:(BOOL)arg1;
+- (void)_setHasPendingVitalityHintDidChange:(BOOL)arg1;
 - (void)_setPlaybackStateDidChange:(BOOL)arg1;
 - (void)_setPlayerDidChange:(BOOL)arg1;
 - (void)_setPlayerLoadingAllowedDidChange:(BOOL)arg1;

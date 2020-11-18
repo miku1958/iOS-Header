@@ -27,9 +27,11 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
+- (id)initWithCPLArchiver:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSerializedString:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)plistArchiveWithCPLArchiver:(id)arg1;
 - (id)serializedString;
 
 @end

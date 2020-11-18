@@ -4,15 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, NSDate;
-@protocol HDHealthDaemon, HDSyncStore;
+#import <HealthDaemon/HDSyncEntity-Protocol.h>
 
-@protocol HDNanoSyncEntity
+@class HDNanoSyncRestoreSession, HDNanoSyncSession, HDSQLitePredicate, NSArray;
+@protocol HDHealthDaemon;
+
+@protocol HDNanoSyncEntity <HDSyncEntity>
 + (int)nanoSyncObjectType;
++ (unsigned long long)supportedNanoSyncDirectionsForProtocolVersion:(int)arg1;
 
 @optional
-+ (long long)finalAnchorForNanoSyncRestoreWithStore:(id<HDSyncStore>)arg1 nowDate:(NSDate *)arg2 healthDaemon:(id<HDHealthDaemon>)arg3 error:(id *)arg4;
-+ (NSArray *)objectsForNanoSyncRestoreWithStore:(id<HDSyncStore>)arg1 nowDate:(NSDate *)arg2 syncAnchorRange:(struct HDSyncAnchorRange)arg3 lastSyncAnchor:(long long *)arg4 healthDaemon:(id<HDHealthDaemon>)arg5 error:(id *)arg6;
++ (long long)finalAnchorForNanoSyncRestoreSession:(HDNanoSyncRestoreSession *)arg1 healthDaemon:(id<HDHealthDaemon>)arg2 error:(id *)arg3;
++ (HDSQLitePredicate *)nanoSyncPredicateForSession:(HDNanoSyncSession *)arg1;
++ (NSArray *)objectsForNanoSyncRestoreSession:(HDNanoSyncRestoreSession *)arg1 syncAnchorRange:(struct HDSyncAnchorRange)arg2 lastSyncAnchor:(long long *)arg3 healthDaemon:(id<HDHealthDaemon>)arg4 error:(id *)arg5;
++ (int)outgoingNanoSyncObjectTypeForNanoSyncProtocolVersion:(int)arg1;
++ (Class)receivingSyncEntityClassForNanoSyncProtocolVersion:(int)arg1;
++ (BOOL)supportsSpeculativeNanoSyncChanges;
 + (unsigned long long)syncObjectLimitForNanoSyncMessage;
 @end
 

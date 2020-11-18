@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)computeOutputSettingsUsingModel:(id)arg1;
+- (void)copyAdditionalSettingsFromSettings:(id)arg1;
 - (BOOL)isBackdropVisible;
 - (BOOL)requiresBackdropLayer;
 - (void)setDefaultValues;

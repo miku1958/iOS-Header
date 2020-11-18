@@ -9,7 +9,9 @@
 @class PKCodeAcquisitionViewController, PKPass;
 
 @protocol PKCodeAcquisitionDelegate <NSObject>
-- (void)codeAcquisitionController:(PKCodeAcquisitionViewController *)arg1 didAcquirePass:(PKPass *)arg2;
+- (void)codeAcquisitionController:(PKCodeAcquisitionViewController *)arg1 didAddPass:(PKPass *)arg2;
+- (void)codeAcquisitionController:(PKCodeAcquisitionViewController *)arg1 didFinishWithPass:(PKPass *)arg2;
+- (void)codeAcquisitionController:(PKCodeAcquisitionViewController *)arg1 willAddPass:(PKPass *)arg2;
 - (void)codeAcquisitionControllerDidCancel:(PKCodeAcquisitionViewController *)arg1;
 @end
 

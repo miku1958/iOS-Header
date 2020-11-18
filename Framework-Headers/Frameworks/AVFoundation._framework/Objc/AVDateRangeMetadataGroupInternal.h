@@ -6,13 +6,18 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSDate;
+@class NSArray, NSDate, NSDictionary, NSString;
 
 @interface AVDateRangeMetadataGroupInternal : NSObject
 {
-    NSArray *items;
     NSDate *startDate;
     NSDate *endDate;
+    NSArray *metadataItems;
+    NSString *classifyingLabel;
+    NSString *uniqueID;
+    NSDate *discoveryTimestamp;
+    NSDate *modificationTimestamp;
+    NSDictionary *extraFigProperties;
 }
 
 @end

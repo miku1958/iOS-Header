@@ -13,6 +13,7 @@
 }
 
 @property (copy, nonatomic) NSArray *contentHead;
+@property (copy, nonatomic) NSArray *fetchMoreResultsCommands;
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSURL *url;
 

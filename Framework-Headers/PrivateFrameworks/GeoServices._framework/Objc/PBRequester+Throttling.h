@@ -8,5 +8,6 @@
 
 @interface PBRequester (Throttling)
 - (void)_scheduleThrottlingError;
+- (void)_scheduleThrottlingErrorForKey:(id)arg1;
 @end
 

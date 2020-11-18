@@ -43,6 +43,8 @@
     struct CATransform3D oldSublayerTransform;
     BOOL canDispatchOverrides;
     NSObject<OS_dispatch_queue> *queueForDispatchingOverrides;
+    BOOL lanczosDownscalingEnabled;
+    long long lanczosDownscalingFactor;
 }
 
 @end

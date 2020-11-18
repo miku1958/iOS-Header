@@ -9,6 +9,7 @@
 @class PSYOptions;
 
 @protocol PSYToolInterface <NSObject>
+- (oneway void)cancelSyncSession;
 - (oneway void)clearCurrentResumeContext;
 - (oneway void)getOrderedActivityInfosWithCompletion:(void (^)(NSArray *))arg1;
 - (oneway void)startSyncWithOptions:(PSYOptions *)arg1;

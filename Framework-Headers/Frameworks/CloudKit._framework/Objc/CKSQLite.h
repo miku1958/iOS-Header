@@ -80,6 +80,7 @@
 - (id)selectAllObjectsOfClass:(Class)arg1 where:(id)arg2 bindings:(id)arg3 limit:(id)arg4;
 - (unsigned long long)selectCountFrom:(id)arg1 where:(id)arg2 bindings:(id)arg3;
 - (id)selectFrom:(id)arg1 where:(id)arg2 bindings:(id)arg3 limit:(id)arg4;
+- (void)selectFrom:(id)arg1 where:(id)arg2 bindings:(id)arg3 limit:(id)arg4 block:(CDUnknownBlockType)arg5;
 - (id)selectObjectOfClass:(Class)arg1 where:(id)arg2 bindings:(id)arg3;
 - (void)setDateProperty:(id)arg1 forKey:(id)arg2;
 - (void)setProperty:(id)arg1 forKey:(id)arg2;

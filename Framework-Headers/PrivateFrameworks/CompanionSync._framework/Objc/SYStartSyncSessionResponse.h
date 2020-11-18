@@ -8,12 +8,13 @@
 
 #import <CompanionSync/NSCopying-Protocol.h>
 
-@class NSString, SYErrorInfo, SYMessageHeader;
+@class NSData, NSString, SYErrorInfo, SYMessageHeader;
 
 @interface SYStartSyncSessionResponse : PBCodable <NSCopying>
 {
     SYErrorInfo *_error;
     SYMessageHeader *_header;
+    NSData *_metadata;
     NSString *_sessionID;
     BOOL _accepted;
     BOOL _supportsRestart;
@@ -23,7 +24,9 @@
 @property (nonatomic) BOOL accepted; // @synthesize accepted=_accepted;
 @property (strong, nonatomic) SYErrorInfo *error; // @synthesize error=_error;
 @property (readonly, nonatomic) BOOL hasError;
+@property (readonly, nonatomic) BOOL hasMetadata;
 @property (strong, nonatomic) SYMessageHeader *header; // @synthesize header=_header;
+@property (strong, nonatomic) NSData *metadata; // @synthesize metadata=_metadata;
 @property (strong, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property (nonatomic) BOOL supportsRestart; // @synthesize supportsRestart=_supportsRestart;
 @property (nonatomic) BOOL supportsRollback; // @synthesize supportsRollback=_supportsRollback;

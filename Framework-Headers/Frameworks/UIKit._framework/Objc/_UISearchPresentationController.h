@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) UIPresentationController<_UISearchControllerPresenting> *adaptivePresentationController;
-@property (readonly, nonatomic) BOOL animatorShouldSizeResultsContainerView;
+@property (readonly, nonatomic) BOOL animatorShouldLayoutPresentationViews;
 @property (readonly, nonatomic) UIView *backgroundObscuringView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

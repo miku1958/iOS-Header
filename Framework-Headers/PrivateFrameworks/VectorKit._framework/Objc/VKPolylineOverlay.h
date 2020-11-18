@@ -41,6 +41,7 @@
 - (void)_setNeedsLayout;
 - (void)_updateTraffic;
 - (void)addObserver:(id)arg1;
+- (void)composedRoute:(id)arg1 changedSelectedRideInClusteredLeg:(id)arg2 fromIndex:(unsigned long long)arg3 toIndex:(unsigned long long)arg4;
 - (void)composedRoute:(id)arg1 selectedSections:(id)arg2 deselectedSections:(id)arg3;
 - (void)composedRouteUpdatedSnappedPaths:(id)arg1;
 - (void)composedRouteUpdatedTraffic:(id)arg1;

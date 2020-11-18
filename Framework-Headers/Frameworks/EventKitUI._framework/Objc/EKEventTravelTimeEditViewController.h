@@ -80,7 +80,7 @@
 - (void)_updateTableView;
 - (void)_updateVisibleSections;
 - (void)editItemViewController:(id)arg1 didCompleteWithAction:(int)arg2;
-- (BOOL)editItemViewControllerCommit:(id)arg1;
+- (BOOL)editItemViewControllerSave:(id)arg1;
 - (BOOL)editItemViewControllerShouldShowDetachAlert;
 - (id)initWithFrame:(struct CGRect)arg1 styleProvider:(id)arg2 calendarItem:(id)arg3 eventStore:(id)arg4;
 - (void)loadView;

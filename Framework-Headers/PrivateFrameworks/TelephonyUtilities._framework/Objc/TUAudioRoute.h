@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSDictionary, NSString, TUAudioRoutePreferredRouteOptions;
+@class NSArray, NSDictionary, NSString, TUAudioRoutePreferredRouteOptions;
 
 @interface TUAudioRoute : NSObject
 {
@@ -18,6 +18,7 @@
 @property (readonly, nonatomic, getter=isBluetooth) BOOL bluetooth;
 @property (readonly, nonatomic) long long bluetoothEndpointType;
 @property (readonly, nonatomic, getter=isCarAudio) BOOL carAudio;
+@property (readonly, nonatomic) NSArray *identifiersOfOtherConnectedDevices;
 @property (readonly, nonatomic, getter=isPreferred) BOOL preferred;
 @property (strong, nonatomic) TUAudioRoutePreferredRouteOptions *preferredRouteOptions; // @synthesize preferredRouteOptions=_preferredRouteOptions;
 @property (readonly, nonatomic, getter=isReceiver) BOOL receiver;
@@ -29,6 +30,7 @@
 - (void).cxx_destruct;
 - (BOOL)_routeNameEqualTo:(id)arg1;
 - (void)_updatePreferredRouteOptions;
+- (id)description;
 - (id)initWithDictionary:(id)arg1;
 
 @end

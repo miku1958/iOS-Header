@@ -24,6 +24,7 @@
     unsigned short localPort_;
     long long restartCount_;
     struct sockaddr_in cdxaddr_ipv4;
+    struct addrinfo *cdxMappedIPv4Addr;
     double holePunchInterval_;
     BOOL preblobIsUpToDate_;
     BOOL willReconfigureShortly_;
@@ -44,12 +45,15 @@
 
 + (id)sharedClient;
 - (id)createSessionWithTicket:(id)arg1 sessionKey:(id)arg2;
+- (const struct sockaddr *)currentSockAddr;
+- (unsigned char)currentSockAddrLen;
 - (void)dealloc;
 - (void)handleFDEvent;
 - (BOOL)handleHolePunchEvent;
 - (id)initWithOptions:(id)arg1 delegate:(id)arg2;
 - (void)invalidate;
 - (void)invalidateSession:(id)arg1;
+- (void)mapIPv4AddrToIPv6:(struct sockaddr_in *)arg1;
 - (void)networkDidChange;
 - (void)resetHolepunchTimer;
 - (void)restart;

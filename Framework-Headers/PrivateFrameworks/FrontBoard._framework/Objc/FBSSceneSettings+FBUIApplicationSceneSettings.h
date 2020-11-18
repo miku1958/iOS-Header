@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoardServices/FBSSceneSettings.h>
+#import <FrontBoardUIServices/FBSSceneSettings.h>
 
 @interface FBSSceneSettings (FBUIApplicationSceneSettings)
 

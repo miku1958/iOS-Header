@@ -8,19 +8,22 @@
 
 #import <PhotosPlayer/ISGestureInputDelegate-Protocol.h>
 #import <PhotosPlayer/ISPlayerChangeObserver-Protocol.h>
+#import <PhotosPlayer/ISPlayerChangeObserverPrivate-Protocol.h>
 #import <PhotosPlayer/ISPlayerDelegate-Protocol.h>
 #import <PhotosPlayer/ISPlayerOutput-Protocol.h>
 #import <PhotosPlayer/UIGestureRecognizerDelegate-Protocol.h>
 
-@class AVPlayer, AVPlayerLayer, CALayer, ISCrossfadeLayer, ISGestureInput, ISMutedAudioInput, ISPlaybackSpec, ISPlayer, ISVitalityFilter, ISVitalityInput, NSError, NSHashTable, NSMutableSet, NSObject, NSString, UIGestureRecognizer, UIScrollView, _ISAVPlayerView, _ISCrossfadeView, _ISPlayerDebugView, _ISTargetView;
+@class AVPlayerLayer, CALayer, ISCrossfadeLayer, ISGestureInput, ISMutedAudioInput, ISPlaybackSpec, ISPlayer, ISVitalityFilter, ISVitalityInput, ISWrappedAVPlayer, NSError, NSHashTable, NSMutableSet, NSObject, NSString, UIGestureRecognizer, UIScrollView, _ISAVPlayerView, _ISCrossfadeView, _ISPlayerDebugView, _ISTargetView;
 @protocol ISPlayerViewDelegate, NSObject, OS_dispatch_queue;
 
-@interface ISPlayerView : UIView <ISGestureInputDelegate, ISPlayerOutput, UIGestureRecognizerDelegate, ISPlayerChangeObserver, ISPlayerDelegate>
+@interface ISPlayerView : UIView <ISGestureInputDelegate, ISPlayerOutput, UIGestureRecognizerDelegate, ISPlayerChangeObserver, ISPlayerChangeObserverPrivate, ISPlayerDelegate>
 {
     ISPlayer *_player;
     NSHashTable *_observers;
     NSObject<OS_dispatch_queue> *_observerQueue;
-    AVPlayer *_videoPlayer;
+    ISWrappedAVPlayer *_videoPlayer;
+    CALayer *_overridePhotoLayer;
+    struct CGImage *_photoContents;
     BOOL _photoViewHidden;
     struct {
         unsigned int respondsToStateDidChange:1;
@@ -32,6 +35,7 @@
         unsigned int respondsToViewHostingGestureRecognizer:1;
         unsigned int respondsToIsInteractingDidChange:1;
         unsigned int respondsToGestureRecognizerDidChange:1;
+        unsigned int respondsToPlayerItemDidChange:1;
     } _delegateFlags;
     BOOL _interactivePlaybackAllowed;
     BOOL _isReadyForDisplay;
@@ -62,6 +66,7 @@
     UIView *__videoContainerView;
     _ISTargetView *__photoView;
     _ISAVPlayerView *__videoView;
+    _ISTargetView *__videoMaskView;
     _ISCrossfadeView *__crossfadeView;
     _ISPlayerDebugView *__debugInfoView;
     ISGestureInput *__playbackInput;
@@ -88,6 +93,7 @@
 @property (strong, nonatomic, setter=_setPlayerObservationToken:) id<NSObject> _playerObservationToken; // @synthesize _playerObservationToken=__playerObservationToken;
 @property (nonatomic, getter=_isPlayerTransitioning, setter=_setPlayerTransitioning:) BOOL _playerTransitioning; // @synthesize _playerTransitioning=__playerTransitioning;
 @property (strong, nonatomic, setter=_setVideoContainerView:) UIView *_videoContainerView; // @synthesize _videoContainerView=__videoContainerView;
+@property (readonly, nonatomic) _ISTargetView *_videoMaskView; // @synthesize _videoMaskView=__videoMaskView;
 @property (nonatomic, setter=_setVideoSize:) struct CGSize _videoSize; // @synthesize _videoSize=__videoSize;
 @property (strong, nonatomic, setter=_setVideoView:) _ISAVPlayerView *_videoView; // @synthesize _videoView=__videoView;
 @property (strong, nonatomic, setter=_setVitalityInput:) ISVitalityInput *_vitalityInput; // @synthesize _vitalityInput=__vitalityInput;
@@ -104,6 +110,8 @@
 @property (nonatomic, getter=isInteractivePlaybackAllowed) BOOL interactivePlaybackAllowed; // @synthesize interactivePlaybackAllowed=_interactivePlaybackAllowed;
 @property (nonatomic) BOOL isInteracting; // @synthesize isInteracting=_isInteracting;
 @property (nonatomic) BOOL isReadyForDisplay; // @synthesize isReadyForDisplay=_isReadyForDisplay;
+@property (strong, nonatomic) CALayer *overridePhotoLayer;
+@property (strong, nonatomic) struct CGImage *photoContents;
 @property (readonly, nonatomic) CALayer *photoLayer;
 @property (nonatomic) double photoScale; // @synthesize photoScale=_photoScale;
 @property (nonatomic, getter=isPhotoViewHidden) BOOL photoViewHidden; // @synthesize photoViewHidden=_photoViewHidden;
@@ -112,6 +120,7 @@
 @property (nonatomic) long long playbackState; // @synthesize playbackState=_playbackState;
 @property (nonatomic) unsigned long long playbackStyle; // @synthesize playbackStyle=_playbackStyle;
 @property (strong, nonatomic) ISPlayer *player;
+@property (readonly, nonatomic, getter=isPlayingVitality) BOOL playingVitality;
 @property (readonly, nonatomic, getter=isPlayingVitalityHint) BOOL playingVitalityHint;
 @property (nonatomic) double scrubOffset; // @synthesize scrubOffset=_scrubOffset;
 @property (nonatomic) long long scrubRegion; // @synthesize scrubRegion=_scrubRegion;
@@ -165,7 +174,6 @@
 - (void)_updateVideoLayer;
 - (void)_updateVideoSizeIfNeeded;
 - (void)_updateVitalityInput;
-- (id)avPlayerForPlayer:(id)arg1;
 - (void)awakeFromNib;
 - (void)cancelGestureRecognizers;
 - (id)contentLayer;
@@ -187,6 +195,7 @@
 - (void)player:(id)arg1 didChangePlayerStatus:(long long)arg2;
 - (void)playerDidEndTransitionToPlaybackState:(long long)arg1;
 - (void)playerDidPlayVideoToEnd;
+- (void)playerPlayingVitalityChanged:(id)arg1;
 - (void)playerWillBeginTransitionToPlaybackState:(long long)arg1;
 - (void)playerWillPlayVideoToEnd;
 - (void)prepareWithBundleURL:(id)arg1;
@@ -200,6 +209,7 @@
 - (long long)state;
 - (id)supportedContentModes;
 - (void)unregisterObserver:(id)arg1;
+- (id)videoPlayerForPlayer:(id)arg1;
 
 @end
 

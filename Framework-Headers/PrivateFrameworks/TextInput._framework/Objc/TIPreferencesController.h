@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSTimer;
 
@@ -19,6 +19,7 @@
 @property (nonatomic) BOOL isInternalInstall; // @synthesize isInternalInstall;
 
 + (id)sharedPreferencesController;
+- (int)MCValueForManagedKey:(int)arg1;
 - (BOOL)boolForKey:(int)arg1;
 - (void)clearSynchronizePreferencesTimer;
 - (void)dealloc;

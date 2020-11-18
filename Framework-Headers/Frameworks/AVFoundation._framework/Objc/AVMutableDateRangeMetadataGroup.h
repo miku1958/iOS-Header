@@ -17,8 +17,9 @@
 @property (copy, nonatomic) NSArray *items;
 @property (copy, nonatomic) NSDate *startDate;
 
+- (id)_initWithTaggedRangeMetadataDictionary:(id)arg1 items:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithItems:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end
 

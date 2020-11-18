@@ -25,8 +25,11 @@ __attribute__((visibility("hidden")))
     VKCamera *_previousCamera;
     BOOL _isTransitioningToTransit;
     unsigned char _transitLinesCommandBufferId;
+    shared_ptr_6f1ea1a2 _interTileMediator;
     struct unique_ptr<vk::TransitNodeFeaturePool, std::__1::default_delete<vk::TransitNodeFeaturePool>> _nodeFeaturePool;
     BOOL _shouldSynchronizeWithLabels;
+    unsigned char _lineMergingDisabled;
+    BOOL _disableIntraLinkLineCrossings;
     VKTimedAnimation *_fadeOutAnimation;
     NSMutableSet *_lastTilesInScene;
     NSMutableSet *_tilesEnteringScene;
@@ -45,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_clearLastTilesInScene;
+- (void)_updateDebugSettings;
 - (void)_willStartDrawingTiles:(id)arg1;
 - (void)_willStopDrawingTiles:(id)arg1;
 - (void)appendTransitLineCommandsToBuffer:(struct CommandBuffer *)arg1 inContext:(id)arg2;
@@ -60,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithSharedResources:(id)arg1 contentScale:(double)arg2 labelExternalObjectsModerator:(struct LabelExternalObjectsModerator *)arg3 supportedPassId:(unsigned char)arg4 shouldSynchronizeWithLabels:(BOOL)arg5;
 - (unsigned long long)mapLayerPosition;
 - (unsigned int)minSelectedLineZoomForIDs:(const unordered_set_6cd805f9 *)arg1;
+- (void)populateSelectedLineBounds:(id)arg1;
 - (void)reset;
 - (void)setSelectedLines:(const unordered_set_6cd805f9 *)arg1;
 - (void)setSelectedNodes:(const unordered_set_6cd805f9 *)arg1;

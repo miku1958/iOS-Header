@@ -9,16 +9,16 @@
 @class NSData, NSString, NSURL, WCMessage, WCSessionFileTransfer, WCSessionUserInfoTransfer;
 
 @protocol WCXPCManagerDaemonProtocol <NSObject>
-- (void)acknowledgeFileIndexWithIdentifier:(NSString *)arg1;
-- (void)acknowledgeFileResultIndexWithIdentifier:(NSString *)arg1;
-- (void)acknowledgeUserInfoIndexWithIdentifier:(NSString *)arg1;
-- (void)acknowledgeUserInfoResultIndexWithIdentifier:(NSString *)arg1;
+- (void)acknowledgeFileIndexWithIdentifier:(NSString *)arg1 clientPairingID:(NSString *)arg2;
+- (void)acknowledgeFileResultIndexWithIdentifier:(NSString *)arg1 clientPairingID:(NSString *)arg2;
+- (void)acknowledgeUserInfoIndexWithIdentifier:(NSString *)arg1 clientPairingID:(NSString *)arg2;
+- (void)acknowledgeUserInfoResultIndexWithIdentifier:(NSString *)arg1 clientPairingID:(NSString *)arg2;
 - (void)cancelAllOutstandingMessages;
 - (void)cancelSendWithIdentifier:(NSString *)arg1;
-- (void)retrieveSessionStateWithCompletionHandler:(void (^)(WCSessionState *, NSError *))arg1;
-- (void)sendMessage:(WCMessage *)arg1 acceptanceHandler:(void (^)(BOOL, BOOL))arg2;
-- (void)transferFile:(WCSessionFileTransfer *)arg1 sandboxToken:(NSData *)arg2 completionHandler:(void (^)(NSError *))arg3;
-- (void)transferUserInfo:(WCSessionUserInfoTransfer *)arg1 withURL:(NSURL *)arg2 completionHandler:(void (^)(NSError *))arg3;
-- (void)updateApplicationContext:(NSData *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)sendMessage:(WCMessage *)arg1 clientPairingID:(NSString *)arg2 acceptanceHandler:(void (^)(BOOL, BOOL))arg3;
+- (void)sessionReadyForInitialStateForClientPairingID:(NSString *)arg1 supportsActiveDeviceSwitch:(BOOL)arg2 withErrorHandler:(void (^)(NSError *))arg3;
+- (void)transferFile:(WCSessionFileTransfer *)arg1 sandboxToken:(NSData *)arg2 clientPairingID:(NSString *)arg3 errorHandler:(void (^)(NSError *))arg4;
+- (void)transferUserInfo:(WCSessionUserInfoTransfer *)arg1 withURL:(NSURL *)arg2 clientPairingID:(NSString *)arg3 errorHandler:(void (^)(NSError *))arg4;
+- (void)updateApplicationContext:(NSData *)arg1 clientPairingID:(NSString *)arg2 errorHandler:(void (^)(NSError *))arg3;
 @end
 

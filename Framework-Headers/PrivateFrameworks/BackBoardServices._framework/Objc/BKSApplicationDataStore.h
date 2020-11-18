@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class FBSApplicationDataStore, NSString;
 
@@ -22,8 +22,6 @@
 - (id)_initWithFBSApplicationDataStore:(id)arg1;
 - (id)archivedObjectForKey:(id)arg1;
 - (void)archivedObjectForKey:(id)arg1 withResult:(CDUnknownBlockType)arg2;
-- (id)archivedXPCCodableObjectForKey:(id)arg1 ofType:(Class)arg2;
-- (void)archivedXPCCodableObjectForKey:(id)arg1 ofType:(Class)arg2 withResult:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (id)init;
 - (id)initWithBundleIdentifier:(id)arg1;
@@ -36,7 +34,6 @@
 - (id)safeObjectForKey:(id)arg1 ofType:(Class)arg2;
 - (void)safeObjectForKey:(id)arg1 ofType:(Class)arg2 withResult:(CDUnknownBlockType)arg3;
 - (void)setArchivedObject:(id)arg1 forKey:(id)arg2;
-- (void)setArchivedXPCCodableObject:(id)arg1 forKey:(id)arg2;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 
 @end

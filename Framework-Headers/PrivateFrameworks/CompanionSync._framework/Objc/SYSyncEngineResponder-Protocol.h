@@ -10,12 +10,14 @@
 
 @protocol SYSyncEngineResponder <NSObject>
 - (void)deliveredMessageWithID:(NSString *)arg1 context:(NSDictionary *)arg2;
+- (void)enqueuedMessageWithID:(NSString *)arg1 context:(NSDictionary *)arg2;
 - (void)handleFileTransfer:(NSURL *)arg1 metadata:(NSDictionary *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)handleOutOfBandData:(NSData *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
-- (void)handleSyncError:(NSError *)arg1;
+- (void)handleSyncError:(NSError *)arg1 forMessageWithIdentifier:(NSString *)arg2;
 - (void)handleSyncRequest:(PBCodable *)arg1 ofType:(unsigned short)arg2 response:(void (^)(PBCodable *))arg3;
 - (void)handleSyncResponse:(PBCodable *)arg1 ofType:(unsigned short)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)sentMessageWithID:(NSString *)arg1 context:(NSDictionary *)arg2;
+- (void)serializeForIncomingSession:(void (^)(void))arg1;
 - (BOOL)willAcceptMessageWithHeader:(SYMessageHeader *)arg1 messageID:(NSString *)arg2;
 @end
 

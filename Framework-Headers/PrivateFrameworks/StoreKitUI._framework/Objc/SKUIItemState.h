@@ -8,24 +8,26 @@
 
 #import <StoreKitUI/NSCopying-Protocol.h>
 
-@class NSNumber, NSString, SKUIStoreIdentifier;
+@class NSArray, NSNumber, NSString, SKUIStoreIdentifier;
 
 @interface SKUIItemState : NSObject <NSCopying>
 {
+    float _downloadProgress;
     unsigned long long _downloadContentFlags;
     NSString *_downloadPhase;
-    float _downloadProgress;
     NSNumber *_itemIdentifier;
+    NSArray *_downloadIdentifiers;
+    SKUIStoreIdentifier *_storeIdentifier;
     unsigned long long _libraryContentFlags;
     long long _mediaCategory;
     unsigned long long _state;
-    SKUIStoreIdentifier *_storeIdentifier;
     NSString *_variantIdentifier;
 }
 
 @property (readonly, nonatomic) BOOL activeStateIsPreview;
 @property (readonly, nonatomic) unsigned long long allContentFlags;
 @property (nonatomic) unsigned long long downloadContentFlags; // @synthesize downloadContentFlags=_downloadContentFlags;
+@property (copy, nonatomic) NSArray *downloadIdentifiers; // @synthesize downloadIdentifiers=_downloadIdentifiers;
 @property (copy, nonatomic) NSString *downloadPhase; // @synthesize downloadPhase=_downloadPhase;
 @property (nonatomic) float downloadProgress; // @synthesize downloadProgress=_downloadProgress;
 @property (copy, nonatomic) NSNumber *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;

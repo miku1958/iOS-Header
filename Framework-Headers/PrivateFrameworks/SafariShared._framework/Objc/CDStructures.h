@@ -42,7 +42,7 @@ struct HashTable<OpaqueFormAutoFillFrame *, WTF::KeyValuePair<OpaqueFormAutoFill
 };
 
 struct HistoryURLCompletionItem {
-    unsigned int _field1;
+    struct atomic<int> _field1;
     long long _field2;
     long long _field3;
     long long _field4;
@@ -138,6 +138,10 @@ struct Vector<int, 0, WTF::CrashOnOverflow, 16> {
 struct _NSRange {
     unsigned long long location;
     unsigned long long length;
+};
+
+struct atomic<int> {
+    _Atomic int _field1;
 };
 
 struct duration<long long, std::__1::ratio<1, 1000000000>> {

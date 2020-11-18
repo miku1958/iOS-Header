@@ -15,6 +15,7 @@
 {
     BOOL _entitledForAPIAccess;
     BOOL _entitledForSPIAccess;
+    BOOL _entitledForBridgeSPIAccess;
     BOOL _entitledForBackgroundMode;
     BOOL _ready;
     BOOL _activated;
@@ -46,6 +47,7 @@
 @property (readonly, nonatomic) NSString *effectiveLocationBundleIdentifier;
 @property (readonly, nonatomic, getter=isEntitledForAPIAccess) BOOL entitledForAPIAccess; // @synthesize entitledForAPIAccess=_entitledForAPIAccess;
 @property (readonly, nonatomic, getter=isEntitledForBackgroundMode) BOOL entitledForBackgroundMode; // @synthesize entitledForBackgroundMode=_entitledForBackgroundMode;
+@property (readonly, nonatomic, getter=isEntitledForBridgeSPIAccess) BOOL entitledForBridgeSPIAccess; // @synthesize entitledForBridgeSPIAccess=_entitledForBridgeSPIAccess;
 @property (readonly, nonatomic, getter=isEntitledForSPIAccess) BOOL entitledForSPIAccess; // @synthesize entitledForSPIAccess=_entitledForSPIAccess;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *name;

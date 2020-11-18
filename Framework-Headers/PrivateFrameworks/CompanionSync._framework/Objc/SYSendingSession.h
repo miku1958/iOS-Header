@@ -6,14 +6,16 @@
 
 #import <CompanionSync/SYSession.h>
 
-@class NSMutableIndexSet, NSObject;
-@protocol OS_dispatch_source;
+@class NSMutableIndexSet, NSObject, _SYCountedSemaphore;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SYSendingSession : SYSession
 {
     NSObject<OS_dispatch_source> *_stateUpdateSource;
     NSObject<OS_dispatch_source> *_sessionTimer;
     NSObject<OS_dispatch_source> *_messageTimer;
+    NSObject<OS_dispatch_queue> *_changeFetcherQueue;
+    _SYCountedSemaphore *_changeConcurrencySemaphore;
     unsigned long long _batchIndex;
     NSMutableIndexSet *_ackedBatchIndices;
     unsigned long long _activity;
@@ -40,14 +42,12 @@
 - (void)_fetchNextBatch;
 - (void)_handleEndSession:(id)arg1 response:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_handleEndSessionResponse:(id)arg1 error:(id *)arg2;
-- (void)_handleError:(id)arg1;
 - (void)_handleRestartSession:(id)arg1 response:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_handleRestartSessionResponse:(id)arg1 error:(id *)arg2;
 - (BOOL)_handleStartSessionResponse:(id)arg1 error:(id *)arg2;
 - (void)_handleSyncBatch:(id)arg1 response:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_handleSyncBatchResponse:(id)arg1 error:(id *)arg2;
 - (BOOL)_hasSentEnd;
-- (BOOL)_hasValidSessionID:(id)arg1 response:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_installStateListener;
 - (void)_installTimers;
 - (BOOL)_localErrorOccurred;
@@ -71,7 +71,10 @@
 - (void)_setLocalErrorOccurred;
 - (void)_setMessageTimer;
 - (void)_setStateQuietly:(long long)arg1;
+- (void)_setupChangeConcurrency;
+- (void)_startFailedForStateChangeWithError:(id)arg1;
 - (void)_tweakMessageHeader:(id)arg1;
+- (void)_waitForMessageWindow;
 - (BOOL)canRestart;
 - (BOOL)canRollback;
 - (void)cancel;

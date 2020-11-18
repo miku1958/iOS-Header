@@ -19,8 +19,9 @@
 @property (readonly, nonatomic) MPAVItem *item; // @synthesize item=_item;
 @property (readonly, nonatomic) long long playbackAlertType; // @synthesize playbackAlertType=_playbackAlertType;
 
++ (id)contentRestrictedPlaybackAlertControllerForContentType:(long long)arg1 dismissalBlock:(CDUnknownBlockType)arg2;
 + (id)genericAlertControllerForItem:(id)arg1 error:(id)arg2 dismissalBlock:(CDUnknownBlockType)arg3;
-+ (id)playbackAlertControllerForItem:(id)arg1 error:(id)arg2 dismissalBlock:(CDUnknownBlockType)arg3;
++ (id)playbackAlertControllerForItem:(id)arg1 contentType:(long long)arg2 error:(id)arg3 dismissalBlock:(CDUnknownBlockType)arg4;
 + (long long)playbackAlertTypeForError:(id)arg1;
 + (id)userRemovedAlertControllerForItem:(id)arg1 dismissalBlock:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;

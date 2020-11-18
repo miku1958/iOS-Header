@@ -13,17 +13,21 @@
     BOOL _selected;
     ICAttachment *_attachment;
     ICTextAttachment *_textAttachment;
+    struct CGSize _attachmentContentSize;
 }
 
 @property (weak, nonatomic) ICAttachment *attachment; // @synthesize attachment=_attachment;
+@property (nonatomic) struct CGSize attachmentContentSize; // @synthesize attachmentContentSize=_attachmentContentSize;
 @property (nonatomic) BOOL selected; // @synthesize selected=_selected;
 @property (weak, nonatomic) ICTextAttachment *textAttachment; // @synthesize textAttachment=_textAttachment;
 
 - (void).cxx_destruct;
+- (void)addKVObserversForAttachment:(id)arg1;
 - (void)attachmentDidLoad:(id)arg1;
 - (void)attachmentPreviewImagesDidUpdate:(id)arg1;
 - (void)attachmentWillBeDeleted:(id)arg1;
 - (void)contentSizeCategoryDidChange;
+- (void)dealloc;
 - (void)didChangeAttachment;
 - (void)didChangeMedia;
 - (void)didChangeSize;
@@ -31,6 +35,8 @@
 - (void)didScrollOutOfVisibleRange;
 - (void)didUpdatePreviewImages;
 - (void)mediaDidLoad:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)removeKVOObserversForAttachment:(id)arg1;
 - (void)willChangeAttachment;
 - (void)willDeleteAttachment;
 

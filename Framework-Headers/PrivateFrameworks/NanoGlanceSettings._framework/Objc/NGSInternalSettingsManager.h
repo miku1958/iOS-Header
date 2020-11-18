@@ -16,6 +16,7 @@
     NPSManager *_syncManager;
     NSArray *_storedSettings;
     NSString *_selectedGlanceIdentifier;
+    NSArray *_blacklistedWatchKitIDs;
     BOOL _hasSettings;
     NSObject<OS_dispatch_queue> *_queue;
 }
@@ -28,6 +29,7 @@
 - (void).cxx_destruct;
 - (unsigned long long)_glanceCount;
 - (BOOL)_hasSettings;
+- (void)_loadBlacklistedWatchKitIDs;
 - (void)_mergeAdditionalGlanceDefinitionsIntoArray:(id)arg1;
 - (unsigned long long)_numberOfActiveGlances;
 - (void)_saveSettings;
@@ -50,6 +52,8 @@
 - (id)glanceIdentifierForGlanceDefinitionAtIndex:(unsigned long long)arg1;
 - (BOOL)hasMaximumNumberOfActiveGlances;
 - (id)init;
+- (void)invalidateAndReloadSettings;
+- (BOOL)isWatchKitBundleIDBlacklisted:(id)arg1;
 - (void)loadSettings;
 - (void)moveGlanceDefinitionFromIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 - (void)removeGlanceDefinitionsInArray:(id)arg1;

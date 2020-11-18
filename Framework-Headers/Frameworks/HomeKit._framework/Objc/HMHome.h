@@ -91,6 +91,7 @@
 - (void).cxx_destruct;
 - (void)_acceptInvitation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_addAccessory:(id)arg1 password:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_addAccessory:(id)arg1 toBridge:(id)arg2 password:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_addActionSetWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_addIdentifier:(id)arg1 bridgeUUID:(id)arg2;
 - (void)_addRegularUsersWithIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -177,6 +178,8 @@
 - (id)actionSetWithUUID:(id)arg1;
 - (void)addAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addAccessory:(id)arg1 password:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)addAccessory:(id)arg1 toBridge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)addAccessory:(id)arg1 toBridge:(id)arg2 password:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)addActionSetWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addRoomWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addServiceGroupWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

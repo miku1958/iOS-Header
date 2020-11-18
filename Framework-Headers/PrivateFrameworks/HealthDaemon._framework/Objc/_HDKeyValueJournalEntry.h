@@ -17,6 +17,7 @@
     long long _category;
     long long _provenance;
     NSDate *_modificationDate;
+    long long _updatePolicy;
 }
 
 @property (readonly, nonatomic) long long category; // @synthesize category=_category;
@@ -24,6 +25,7 @@
 @property (readonly, nonatomic) NSString *key; // @synthesize key=_key;
 @property (readonly, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (readonly, nonatomic) long long provenance; // @synthesize provenance=_provenance;
+@property (readonly, nonatomic) long long updatePolicy; // @synthesize updatePolicy=_updatePolicy;
 @property (readonly, nonatomic) id<NSSecureCoding> value; // @synthesize value=_value;
 
 + (void)applyEntries:(id)arg1 withDaemon:(id)arg2;
@@ -32,7 +34,7 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithValue:(id)arg1 key:(id)arg2 domain:(id)arg3 category:(long long)arg4 provenance:(long long)arg5 modificationDate:(id)arg6;
+- (id)initWithValue:(id)arg1 key:(id)arg2 domain:(id)arg3 category:(long long)arg4 provenance:(long long)arg5 updatePolicy:(long long)arg6 modificationDate:(id)arg7;
 
 @end
 

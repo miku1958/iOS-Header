@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable;
+@class NSDate, NSMapTable;
 @protocol PUDisplayAsset;
 
 __attribute__((visibility("hidden")))
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     BOOL __streamedVideoDidStartPlaying;
     NSMapTable *__browsingViewModelTracers;
     id<PUDisplayAsset> __lastViewedAsset;
+    NSDate *__lastPlayStartDate;
     id<PUDisplayAsset> __lastPlayedAsset;
     long long __assetPlayCount;
     id<PUDisplayAsset> __streamedVideo;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic, setter=_setAssetPlayCount:) long long _assetPlayCount; // @synthesize _assetPlayCount=__assetPlayCount;
 @property (readonly, nonatomic) NSMapTable *_browsingViewModelTracers; // @synthesize _browsingViewModelTracers=__browsingViewModelTracers;
+@property (strong, nonatomic, setter=_setLastPlayStartDate:) NSDate *_lastPlayStartDate; // @synthesize _lastPlayStartDate=__lastPlayStartDate;
 @property (weak, nonatomic, setter=_setLastPlayedAsset:) id<PUDisplayAsset> _lastPlayedAsset; // @synthesize _lastPlayedAsset=__lastPlayedAsset;
 @property (weak, nonatomic, setter=_setLastViewedAsset:) id<PUDisplayAsset> _lastViewedAsset; // @synthesize _lastViewedAsset=__lastViewedAsset;
 @property (weak, nonatomic, setter=_setStreamedVideo:) id<PUDisplayAsset> _streamedVideo; // @synthesize _streamedVideo=__streamedVideo;
@@ -42,11 +44,14 @@ __attribute__((visibility("hidden")))
 - (void)streamedVideoPlaybackStalled:(id)arg1;
 - (void)streamedVideoPlaybackStartedActuallyPlaying:(id)arg1;
 - (void)userBrowsedOneUpFor:(double)arg1;
-- (void)userPlayedAssetInOneUp:(id)arg1;
+- (void)userDidPlayAssetInOneUp:(id)arg1;
+- (void)userStartedViewingAssetCollection:(id)arg1;
 - (void)userStartedViewingCurrentAssetOfBrowsingViewModel:(id)arg1 inContext:(id)arg2;
 - (void)userStoppedViewingCurrentAssetOfBrowsingViewModel:(id)arg1 inContext:(id)arg2;
 - (void)userViewedAssetInOneUp:(id)arg1;
 - (void)userViewedPhotoInOneUpFor:(double)arg1;
+- (void)userWillPlayAssetInOneUp:(id)arg1;
+- (void)vitalityPlayedForAssetInOneUp:(id)arg1;
 
 @end
 

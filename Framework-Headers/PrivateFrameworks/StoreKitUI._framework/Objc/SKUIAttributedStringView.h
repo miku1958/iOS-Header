@@ -28,8 +28,10 @@
     BOOL _containsLinks;
     BOOL _textColorFollowsTintColor;
     id<SKUILinkHandler> _linkDelegate;
+    long long _badgePlacement;
 }
 
+@property (nonatomic) long long badgePlacement; // @synthesize badgePlacement=_badgePlacement;
 @property (readonly, nonatomic) double baselineOffset;
 @property (nonatomic) BOOL containsLinks; // @synthesize containsLinks=_containsLinks;
 @property (readonly, nonatomic) double firstBaselineOffset;

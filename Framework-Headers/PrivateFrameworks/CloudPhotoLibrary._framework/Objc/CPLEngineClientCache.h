@@ -8,18 +8,21 @@
 
 #import <CloudPhotoLibrary/CPLAbstractObject-Protocol.h>
 
-@class CPLPlatformObject, NSString;
+@class CPLPlatformObject, NSArray, NSString;
 
 @interface CPLEngineClientCache : CPLEngineStorage <CPLAbstractObject>
 {
+    NSArray *__lastModifiedProperties;
 }
 
+@property (copy, setter=_setLastModifiedProperties:) NSArray *_lastModifiedProperties; // @synthesize _lastModifiedProperties=__lastModifiedProperties;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CPLPlatformObject *platformObject;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_relatedIdentifierForRecordWithIdentifier:(id)arg1;
 - (BOOL)addRecord:(id)arg1 error:(id *)arg2;
 - (BOOL)applyBatch:(id)arg1 withError:(id *)arg2;
@@ -32,6 +35,8 @@
 - (id)relatedIdentifierForRecordWithIdentifier:(id)arg1;
 - (BOOL)resetWithError:(id *)arg1;
 - (id)resourceOfType:(unsigned long long)arg1 forRecordWithIdentifier:(id)arg2 error:(id *)arg3;
+- (id)status;
+- (id)statusDictionary;
 - (BOOL)updateRecord:(id)arg1 error:(id *)arg2;
 
 @end

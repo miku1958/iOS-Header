@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVPlayer;
+@class ISWrappedAVPlayer;
 @protocol ISVideoVolumeControllerDelegate;
 
 @interface ISVideoVolumeController : NSObject
@@ -16,7 +16,7 @@
     } _delegateFlags;
     float __volumeRampStartValue;
     float __targetVolume;
-    AVPlayer *_player;
+    ISWrappedAVPlayer *_player;
     id<ISVideoVolumeControllerDelegate> _delegate;
     long long __volumeRampRequestNumber;
     double __volumeRampStartTime;
@@ -29,7 +29,7 @@
 @property (nonatomic, setter=_setVolumeRampStartTime:) double _volumeRampStartTime; // @synthesize _volumeRampStartTime=__volumeRampStartTime;
 @property (nonatomic, setter=_setVolumeRampStartValue:) float _volumeRampStartValue; // @synthesize _volumeRampStartValue=__volumeRampStartValue;
 @property (weak, nonatomic) id<ISVideoVolumeControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, weak, nonatomic) AVPlayer *player; // @synthesize player=_player;
+@property (readonly, weak, nonatomic) ISWrappedAVPlayer *player; // @synthesize player=_player;
 @property (nonatomic) float volume;
 
 - (void).cxx_destruct;

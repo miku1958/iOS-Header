@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSHashTable, NSMapTable;
 
@@ -15,15 +15,15 @@
     NSHashTable *_observers;
 }
 
-@property (readonly, strong, nonatomic) NSArray *targets;
+@property (readonly, nonatomic) NSArray *targets;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_notifyObservers:(CDUnknownBlockType)arg1;
 - (id)_proxyForTargetImplementation:(id)arg1;
 - (void)_registerTargetImplementation:(id)arg1;
 - (void)_unregisterTargetImplementation:(id)arg1;
 - (void)addObserver:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (void)removeObserver:(id)arg1;
 

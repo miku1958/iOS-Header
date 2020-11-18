@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CBPeripheral, NSMutableDictionary, NSNumber, NSString;
+@class CBPeripheral, NSMapTable, NSMutableDictionary, NSNumber, NSString;
 
 @interface HAPRecentlySeenPairedBTLEPeripheralTuple : NSObject
 {
@@ -19,15 +19,17 @@
     NSNumber *_categoryIdentifier;
     NSString *_identifier;
     NSMutableDictionary *_cachedDescriptors;
+    NSMapTable *_cachedSignatures;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *cachedDescriptors; // @synthesize cachedDescriptors=_cachedDescriptors;
+@property (readonly, nonatomic) NSMutableDictionary *cachedDescriptors; // @synthesize cachedDescriptors=_cachedDescriptors;
+@property (readonly, nonatomic) NSMapTable *cachedSignatures; // @synthesize cachedSignatures=_cachedSignatures;
 @property (strong, nonatomic) NSNumber *categoryIdentifier; // @synthesize categoryIdentifier=_categoryIdentifier;
 @property (strong, nonatomic) NSNumber *configNumber; // @synthesize configNumber=_configNumber;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (nonatomic) double lastSeen; // @synthesize lastSeen=_lastSeen;
-@property BOOL notifyingCharacteristicUpdated; // @synthesize notifyingCharacteristicUpdated=_notifyingCharacteristicUpdated;
-@property (strong, nonatomic) CBPeripheral *peripheral; // @synthesize peripheral=_peripheral;
+@property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) double lastSeen; // @synthesize lastSeen=_lastSeen;
+@property (nonatomic) BOOL notifyingCharacteristicUpdated; // @synthesize notifyingCharacteristicUpdated=_notifyingCharacteristicUpdated;
+@property (readonly, nonatomic) CBPeripheral *peripheral; // @synthesize peripheral=_peripheral;
 @property (strong, nonatomic) NSNumber *stateNumber; // @synthesize stateNumber=_stateNumber;
 @property (strong, nonatomic) NSNumber *statusFlags; // @synthesize statusFlags=_statusFlags;
 

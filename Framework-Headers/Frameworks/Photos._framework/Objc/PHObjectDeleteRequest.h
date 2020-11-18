@@ -14,16 +14,16 @@
 {
     NSString *_uuid;
     NSManagedObjectID *_objectID;
-    BOOL _entitled;
+    BOOL _clientEntitled;
     NSString *_clientName;
     int _clientProcessID;
 }
 
+@property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled; // @synthesize clientEntitled=_clientEntitled;
 @property (readonly, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property (readonly, nonatomic) int clientProcessID; // @synthesize clientProcessID=_clientProcessID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic, getter=isEntitled) BOOL entitled; // @synthesize entitled=_entitled;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *managedEntityName;
 @property (readonly, nonatomic) NSManagedObjectID *objectID; // @synthesize objectID=_objectID;
@@ -37,7 +37,7 @@
 - (id)init;
 - (id)initForNewObject;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
-- (id)initWithXPCDict:(id)arg1 entitled:(BOOL)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
+- (id)initWithXPCDict:(id)arg1 clientEntitled:(BOOL)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
 - (BOOL)validateForDeleteManagedObject:(id)arg1 error:(id *)arg2;
 
 @end

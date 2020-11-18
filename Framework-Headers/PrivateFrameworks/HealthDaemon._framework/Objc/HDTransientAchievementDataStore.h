@@ -33,9 +33,12 @@
 - (double)doubleForKey:(id)arg1;
 - (void)expectCommitWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithHealthDaemon:(id)arg1;
+- (long long)int64ForKey:(id)arg1;
 - (void)markAchievementAlerted:(id)arg1;
+- (id)modifiedKeyValues;
 - (void)setDate:(id)arg1 forKey:(id)arg2;
 - (void)setDouble:(double)arg1 forKey:(id)arg2;
+- (void)setInt64:(long long)arg1 forKey:(id)arg2;
 - (void)setUnsignedInteger:(unsigned long long)arg1 forKey:(id)arg2;
 - (id)uncommittedAchievements;
 - (unsigned long long)unsignedIntegerForKey:(id)arg1;

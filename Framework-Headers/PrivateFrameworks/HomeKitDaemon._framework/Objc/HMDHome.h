@@ -211,7 +211,7 @@
 - (CDUnknownBlockType)_setupCodeProviderForMessage:(id)arg1;
 - (BOOL)_shouldAddAccessory:(id)arg1;
 - (BOOL)_shouldWaitForAccessoriesToBeReachable;
-- (void)_subscribeForNotificationFromRemoteGateway;
+- (void)_subscribeForNotificationFromRemoteGateway:(BOOL)arg1;
 - (void)_updateBulletinBoardOfChangedCharacteristics:(id)arg1;
 - (void)_updateCloudRelaySupport;
 - (void)_updateConfigurationStateForResidentDevice:(id)arg1 desiredConfigState:(unsigned long long)arg2 message:(id)arg3;
@@ -235,6 +235,7 @@
 - (void)addUserToRelayAccessoriesWithConsentTokens:(id)arg1;
 - (BOOL)applyDeviceLockStatus:(id)arg1;
 - (id)assistantUniqueIdentifier;
+- (void)auditUsersForNotifications:(id)arg1;
 - (id)builtInActionSetInfo;
 - (void)checkTimerTriggers;
 - (void)computeBridgedAccessoriesForAllBridges;
@@ -250,6 +251,7 @@
 - (void)fixupReplacementAccessories:(id)arg1 commonAccessories:(id)arg2 idsDataSync:(BOOL)arg3 dataVersion:(long long)arg4 locallyAdded:(id)arg5;
 - (void)handleBackgroundTaskAgentJob:(id)arg1;
 - (void)handleDidReceiveIDSMessageWithNoListener:(id)arg1;
+- (void)handleDisableNotificationForApp:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 uuid:(id)arg2 entireRoomUUID:(id)arg3 administrator:(id)arg4 homeManager:(id)arg5;
 - (void)invalidate;
@@ -258,7 +260,7 @@
 - (BOOL)mergeUsersWithExistingUsers:(id)arg1 remoteAdminUser:(id)arg2 homeManager:(id)arg3 dataVersion:(long long)arg4;
 - (void)modifyNotificationOnResident:(BOOL)arg1 ignoreDeviceUnlockRequirement:(BOOL)arg2 forCharacteristics:(id)arg3;
 - (void)notifyChangedCharacteristics:(id)arg1;
-- (void)notifyNewRemotePeersFound:(BOOL)arg1 remoteUsersRemoved:(id)arg2;
+- (void)notifyNewRemotePeersFound:(BOOL)arg1 remoteUsersRemoved:(id)arg2 forceRemoteNotificationRegistration:(BOOL)arg3;
 - (void)notifyOfChangedCharacterisitic:(id)arg1;
 - (void)reEvaluateTriggers;
 - (void)reachabilityChangedForAccessory:(id)arg1 reachable:(BOOL)arg2;

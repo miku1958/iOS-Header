@@ -26,6 +26,7 @@
 @property (readonly) CDStruct_612aec5b usageCollectionSessionID;
 @property BOOL zeroSessionIDMode; // @synthesize zeroSessionIDMode=_zeroSessionIDMode;
 
++ (BOOL)isGeod;
 + (void)registerGEOLogFacility;
 + (void)setIsGeod;
 + (id)sharedInstance;

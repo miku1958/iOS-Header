@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class BiometricKit, NSCountedSet, NSHashTable, NSString;
 @protocol SBUIBiometricEventMonitorDelegate;
@@ -32,12 +32,13 @@
     int _notifyToken;
 }
 
-@property (nonatomic) id<SBUIBiometricEventMonitorDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<SBUIBiometricEventMonitorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic, getter=isFingerprintUnlockAllowedAndEnabled) BOOL fingerprintUnlockAllowedAndEnabled;
 @property (readonly, nonatomic) unsigned long long lockoutState;
 @property (readonly, nonatomic, getter=isMatchingEnabled) BOOL matchingEnabled; // @synthesize matchingEnabled=_matchingEnabled;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)_descriptionForMatchMode:(unsigned long long)arg1;
 - (id)_matchOptionForMode:(unsigned long long)arg1;
 - (void)_profileSettingsChanged:(id)arg1;

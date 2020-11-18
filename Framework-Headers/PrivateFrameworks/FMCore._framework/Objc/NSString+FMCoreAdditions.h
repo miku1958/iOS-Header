@@ -12,5 +12,6 @@
 - (id)encodeToPercentEscape;
 - (BOOL)isNumeric;
 - (id)legacyAllowedCharacterSet;
+- (id)wifiToWLAN;
 @end
 

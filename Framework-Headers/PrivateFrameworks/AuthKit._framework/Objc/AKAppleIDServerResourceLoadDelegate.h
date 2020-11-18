@@ -43,6 +43,7 @@
 - (id)initWithAltDSID:(id)arg1 identityToken:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isResponseFinal:(id)arg1;
+- (BOOL)isResponseFinalForHSA2ServerFlow:(id)arg1;
 - (void)signRequest:(id)arg1;
 
 @end

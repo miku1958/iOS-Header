@@ -6,11 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-@class DAAccount, NSArray, NSMutableArray, NSMutableSet, NSTimer;
+@class DAAccount, DATransaction, NSArray, NSMutableArray, NSMutableSet, NSTimer;
 @protocol DATask;
 
 @interface DATaskManager : NSObject
 {
+    DATransaction *_transaction;
     DAAccount *_account;
     int _state;
     id<DATask> _activeModalTask;
@@ -25,6 +26,7 @@
     NSMutableArray *_queuedModalTasks;
     NSTimer *_managerIdleTimer;
     NSTimer *_userInitiatedSyncTimer;
+    NSTimer *_xpcTransactionTimer;
 }
 
 @property (weak, nonatomic) DAAccount *account; // @synthesize account=_account;
@@ -43,10 +45,12 @@
 @property (readonly, nonatomic) NSArray *queuedTasks;
 @property (nonatomic) int state; // @synthesize state=_state;
 @property (strong, nonatomic) NSTimer *userInitiatedSyncTimer; // @synthesize userInitiatedSyncTimer=_userInitiatedSyncTimer;
+@property (strong, nonatomic) NSTimer *xpcTransactionTimer; // @synthesize xpcTransactionTimer=_xpcTransactionTimer;
 
 - (void).cxx_destruct;
 - (void)_cancelTasksWithReason:(int)arg1;
 - (void)_clearUserInitiatedSyncTimer;
+- (void)_endXpcTransaction;
 - (BOOL)_hasTasksForcingNetworkConnection;
 - (BOOL)_hasTasksIndicatingARunningSync;
 - (void)_logSyncEnd;

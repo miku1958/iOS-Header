@@ -9,12 +9,12 @@
 #import <Pegasus/NSXPCListenerDelegate-Protocol.h>
 #import <Pegasus/PGPictureInPictureRemoteObjectDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, NSXPCListener, PGPictureInPictureApplication, PGPictureInPictureRemoteObject;
+@class NSMutableSet, NSSet, NSString, NSXPCListener, PGPictureInPictureApplication, PGPictureInPictureRemoteObject;
 @protocol OS_dispatch_queue, PGPictureInPictureControllerDelegate;
 
 @interface PGPictureInPictureController : NSObject <NSXPCListenerDelegate, PGPictureInPictureRemoteObjectDelegate>
 {
-    NSMutableArray *_pictureInPictureRemoteObjects;
+    NSMutableSet *_pictureInPictureRemoteObjects;
     NSXPCListener *_listener;
     NSObject<OS_dispatch_queue> *_listenerQueue;
     PGPictureInPictureRemoteObject *_activePictureInPictureRemoteObject;
@@ -25,7 +25,7 @@
         unsigned int pictureInPictureController_willDestroyPictureInPictureViewController:1;
     } _delegateRespondsTo;
     BOOL _pictureInPictureActive;
-    NSArray *_pictureInPictureApplications;
+    NSSet *_pictureInPictureApplications;
     PGPictureInPictureApplication *_activePictureInPictureApplication;
 }
 
@@ -35,7 +35,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isPictureInPictureActive) BOOL pictureInPictureActive; // @synthesize pictureInPictureActive=_pictureInPictureActive;
-@property (readonly, nonatomic) NSArray *pictureInPictureApplications; // @synthesize pictureInPictureApplications=_pictureInPictureApplications;
+@property (readonly, nonatomic) NSSet *pictureInPictureApplications; // @synthesize pictureInPictureApplications=_pictureInPictureApplications;
 @property (readonly) Class superclass;
 
 + (void)initialize;

@@ -21,6 +21,7 @@
 @property (copy, nonatomic) NSString *fromID;
 @property (copy, nonatomic) NSString *incomingResponseIdentifier;
 @property (nonatomic) NSNumber *originalCommand;
+@property (copy, nonatomic) NSString *originalDestinationDevice;
 @property (copy, nonatomic) NSString *outgoingResponseIdentifier;
 @property (nonatomic) NSNumber *priority;
 @property (copy, nonatomic) NSString *serviceIdentifier;

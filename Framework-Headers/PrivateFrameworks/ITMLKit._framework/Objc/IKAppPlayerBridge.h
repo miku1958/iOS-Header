@@ -25,6 +25,7 @@
 @property (strong, nonatomic) IKDOMDocument *overlayDocument;
 @property (weak, nonatomic) IKAppPlaylistBridge *playlist;
 @property (readonly, nonatomic) IKAppMediaItemBridge *previousMediaItem;
+@property (readonly, nonatomic) double scanRate;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
 
 - (void).cxx_destruct;

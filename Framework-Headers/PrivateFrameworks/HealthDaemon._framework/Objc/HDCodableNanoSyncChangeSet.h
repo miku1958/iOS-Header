@@ -10,11 +10,19 @@
 #import <HealthDaemon/HDNanoSyncPersistentUserInfoCopying-Protocol.h>
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class HDCodableError, NSData, NSMutableArray, NSString;
 
 @interface HDCodableNanoSyncChangeSet : PBCodable <HDNanoSyncDescription, HDNanoSyncPersistentUserInfoCopying, NSCopying>
 {
+    double _sessionStartDate;
     NSMutableArray *_changes;
+    HDCodableError *_sessionError;
+    NSData *_sessionUUID;
+    int _statusCode;
+    struct {
+        unsigned int sessionStartDate:1;
+        unsigned int statusCode:1;
+    } _has;
 }
 
 @property (strong, nonatomic) NSMutableArray *changes; // @synthesize changes=_changes;
@@ -22,15 +30,24 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasSessionError;
+@property (nonatomic) BOOL hasSessionStartDate;
+@property (readonly, nonatomic) BOOL hasSessionUUID;
+@property (nonatomic) BOOL hasStatusCode;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HDCodableError *sessionError; // @synthesize sessionError=_sessionError;
+@property (nonatomic) double sessionStartDate; // @synthesize sessionStartDate=_sessionStartDate;
+@property (strong, nonatomic) NSData *sessionUUID; // @synthesize sessionUUID=_sessionUUID;
+@property (nonatomic) int statusCode; // @synthesize statusCode=_statusCode;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
-+ (id)changeSetWithChanges:(id)arg1;
++ (id)changeSetWithChanges:(id)arg1 sessionUUID:(id)arg2 startDate:(id)arg3 sessionError:(id)arg4 statusCode:(int)arg5;
 + (id)persistentUserInfoKey;
 + (id)retreiveFromPersistentUserInfo:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addChanges:(id)arg1;
 - (void)addChanges:(id)arg1;
 - (void)addToPersistentUserInfo:(id)arg1;
 - (id)changesAtIndex:(unsigned long long)arg1;
@@ -39,6 +56,9 @@
 - (id)copyForPersistentUserInfo;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)decodedSessionError;
+- (id)decodedSessionStartDate;
+- (id)decodedSessionUUID;
 - (id)dictionaryRepresentation;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

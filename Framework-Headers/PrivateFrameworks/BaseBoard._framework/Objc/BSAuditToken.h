@@ -37,6 +37,7 @@
 - (id)initWithXPCMessage:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (int)pid;
+- (id)valueForEntitlement:(id)arg1;
 
 @end
 

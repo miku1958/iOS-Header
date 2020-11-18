@@ -32,7 +32,8 @@
 - (id)_initWithConnection:(id)arg1 entitlements:(id)arg2;
 - (id)description;
 - (void)dropEntitlement:(id)arg1;
-- (BOOL)hasEntitlement:(id)arg1 withError:(id *)arg2;
+- (BOOL)hasEntitlement:(id)arg1;
+- (BOOL)hasRequiredEntitlement:(id)arg1 error:(id *)arg2;
 - (id)initWithConnection:(id)arg1;
 - (id)initWithConnection:(id)arg1 entitlements:(id)arg2;
 - (id)initWithEntitlements:(id)arg1;

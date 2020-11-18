@@ -29,12 +29,17 @@
     struct CGSize _maximumUnobscuredSizeOverride;
     struct CGRect _inputViewBounds;
     double _viewportMetaTagWidth;
+    BOOL _viewportMetaTagWidthWasExplicit;
+    BOOL _viewportMetaTagCameFromImageDocument;
+    double _initialScaleFactor;
+    BOOL _fastClickingIsDisabled;
     BOOL _allowsLinkPreview;
     struct UIEdgeInsets _obscuredInsets;
     BOOL _haveSetObscuredInsets;
     BOOL _isChangingObscuredInsetsInteractively;
     long long _interfaceOrientationOverride;
     BOOL _overridesInterfaceOrientation;
+    BOOL _allowsViewportShrinkToFit;
     BOOL _hasCommittedLoadForMainFrame;
     BOOL _needsResetViewStateAfterCommitLoadForMainFrame;
     unsigned long long _firstPaintAfterCommitLoadTransactionID;
@@ -61,14 +66,17 @@
     BOOL _pageIsPrintingToPDF;
     struct RetainPtr<CGPDFDocument *> _printedDocument;
     struct Vector<std::__1::function<void ()>, 0, WTF::CrashOnOverflow, 16> _snapshotsDeferredDuringResize;
+    BOOL __allowsDoubleTapGestures;
 }
 
 @property (weak, nonatomic) id<WKUIDelegate> UIDelegate;
 @property (readonly, copy, nonatomic) NSURL *URL;
 @property (readonly, nonatomic) NSString *_MIMEType;
 @property (nonatomic, setter=_setAddsVisitedLinks:) BOOL _addsVisitedLinks;
+@property (readonly, nonatomic) BOOL _allowsDoubleTapGestures; // @synthesize _allowsDoubleTapGestures=__allowsDoubleTapGestures;
 @property (nonatomic, getter=_allowsMediaDocumentInlinePlayback, setter=_setAllowsMediaDocumentInlinePlayback:) BOOL _allowsMediaDocumentInlinePlayback;
 @property (nonatomic, setter=_setAllowsRemoteInspection:) BOOL _allowsRemoteInspection;
+@property (nonatomic, setter=_setAllowsViewportShrinkToFit:) BOOL _allowsViewportShrinkToFit;
 @property (copy, setter=_setApplicationNameForUserAgent:) NSString *_applicationNameForUserAgent;
 @property (nonatomic, setter=_setBackgroundExtendsBeyondPage:) BOOL _backgroundExtendsBeyondPage;
 @property (readonly, nonatomic) NSArray *_certificateChain;
@@ -88,6 +96,7 @@
 @property (readonly, nonatomic) WKBrowsingContextHandle *_handle;
 @property (weak, nonatomic, setter=_setHistoryDelegate:) id<WKHistoryDelegatePrivate> _historyDelegate;
 @property (nonatomic, setter=_setInterfaceOrientationOverride:) long long _interfaceOrientationOverride;
+@property (readonly, nonatomic) BOOL _isBackground;
 @property (nonatomic, setter=_setLayoutMode:) unsigned long long _layoutMode;
 @property (readonly, nonatomic) struct CGSize _maximumUnobscuredSizeOverride;
 @property (readonly, nonatomic) struct CGSize _minimumLayoutSizeOverride;
@@ -114,7 +123,6 @@
 @property (readonly, nonatomic) NSString *_userAgent;
 @property (nonatomic, setter=_setUserContentExtensionsEnabled:) BOOL _userContentExtensionsEnabled;
 @property (nonatomic, setter=_setViewScale:) double _viewScale;
-@property (readonly, nonatomic) double _viewportMetaTagWidth;
 @property (readonly, nonatomic) int _webProcessIdentifier;
 @property (readonly, nonatomic) _WKWebViewPrintFormatter *_webViewPrintFormatter;
 @property (nonatomic) BOOL allowsBackForwardNavigationGestures;
@@ -196,7 +204,7 @@
 - (id)_restoreSessionState:(id)arg1 andNavigate:(BOOL)arg2;
 - (CDUnknownBlockType)_retainActiveFocusedState;
 - (void)_saveBackForwardSnapshotForItem:(id)arg1;
-- (void)_scrollByOffset:(struct FloatPoint)arg1;
+- (void)_scrollByContentOffset:(struct FloatPoint)arg1;
 - (void)_scrollToContentOffset:(struct FloatPoint)arg1 scrollOrigin:(struct IntPoint)arg2;
 - (BOOL)_scrollToRect:(struct FloatRect)arg1 origin:(struct FloatPoint)arg2 minimumScrollDistance:(float)arg3;
 - (void)_scrollViewDidInterruptDecelerating:(id)arg1;
@@ -205,11 +213,11 @@
 - (void)_setMaximumUnobscuredSizeOverride:(struct CGSize)arg1;
 - (void)_setMinimumLayoutSizeOverride:(struct CGSize)arg1;
 - (void)_setOverlaidAccessoryViewsInset:(struct CGSize)arg1;
-- (void)_setViewportMetaTagWidth:(float)arg1;
 - (BOOL)_shouldUpdateKeyboardWithInfo:(id)arg1;
 - (id)_snapshotLayerContentsForBackForwardListItem:(id)arg1;
 - (void)_snapshotRect:(struct CGRect)arg1 intoImageOfWidth:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (PassRefPtr_d1f98d0a)_takeViewSnapshot;
+- (double)_targetContentZoomScaleForRect:(const struct FloatRect *)arg1 currentScale:(double)arg2 fitEntireRect:(BOOL)arg3 minimumScale:(double)arg4 maximumScale:(double)arg5;
 - (void)_updateScrollViewBackground;
 - (void)_updateVisibleContentRects;
 - (id)_viewForFindUI;
@@ -217,11 +225,13 @@
 - (void)_windowDidRotate:(id)arg1;
 - (void)_zoomOutWithOrigin:(struct FloatPoint)arg1 animated:(BOOL)arg2;
 - (void)_zoomToFocusRect:(struct FloatRect)arg1 selectionRect:(struct FloatRect)arg2 fontSize:(float)arg3 minimumScale:(double)arg4 maximumScale:(double)arg5 allowScaling:(BOOL)arg6 forceScroll:(BOOL)arg7;
+- (void)_zoomToInitialScaleWithOrigin:(struct FloatPoint)arg1 animated:(BOOL)arg2;
 - (void)_zoomToPoint:(struct FloatPoint)arg1 atScale:(double)arg2 animated:(BOOL)arg3;
 - (void)_zoomToRect:(struct FloatRect)arg1 atScale:(double)arg2 origin:(struct FloatPoint)arg3 animated:(BOOL)arg4;
 - (BOOL)_zoomToRect:(struct FloatRect)arg1 withOrigin:(struct FloatPoint)arg2 fitEntireRect:(BOOL)arg3 minimumScale:(double)arg4 maximumScale:(double)arg5 minimumScrollDistance:(float)arg6;
 - (BOOL)becomeFirstResponder;
 - (id)browsingContextController;
+- (BOOL)canBecomeFirstResponder;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (void)evaluateJavaScript:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

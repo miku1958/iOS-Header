@@ -11,8 +11,10 @@
 @protocol HMDAccessoryManagerDelegate <NSObject>
 
 @optional
+- (void)accessoryManager:(HMDAccessoryManager *)arg1 didAddDiscoveredAccessories:(NSArray *)arg2 toBridgeAccessory:(HMDAccessory *)arg3;
 - (void)accessoryManager:(HMDAccessoryManager *)arg1 didAddPairedAccessories:(NSArray *)arg2 toBridgeAccessory:(HMDAccessory *)arg3;
 - (void)accessoryManager:(HMDAccessoryManager *)arg1 didFindNewAccessory:(HMDAccessory *)arg2;
+- (void)accessoryManager:(HMDAccessoryManager *)arg1 didRemoveDiscoveredAccessories:(NSArray *)arg2 fromBridgeAccessory:(HMDAccessory *)arg3;
 - (void)accessoryManager:(HMDAccessoryManager *)arg1 didRemoveNewAccessory:(HMDAccessory *)arg2;
 - (void)accessoryManager:(HMDAccessoryManager *)arg1 didRemovePairedAccessories:(NSArray *)arg2 fromBridgeAccessory:(HMDAccessory *)arg3;
 @end

@@ -26,23 +26,28 @@
 @property (readonly, nonatomic) NSURL *absintheCertURL;
 @property (readonly, nonatomic) NSURL *absintheSessionURL;
 @property (readonly, nonatomic) NSURL *basicAuthURL;
+@property (readonly, nonatomic) NSURL *changePasswordURL;
 @property (readonly, nonatomic) NSURL *checkInURL;
+@property (readonly, nonatomic) NSURL *configurationInfoURL;
 @property (readonly, nonatomic) NSURL *createAppleIDURL;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSURL *endProvisioningURL;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSURL *iForgotContinuationURL;
 @property (readonly, nonatomic) NSURL *iForgotURL;
 @property (readonly, nonatomic) NSURL *notificationAckURL;
 @property (readonly, nonatomic) NSURL *startProvisioningURL;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSURL *syncAnisetteURL;
+@property (readonly, nonatomic) NSURL *tokenUpgradeURL;
 @property (readonly, nonatomic) NSURL *trustedDevicesURL;
 @property (readonly, nonatomic) NSURL *upgradeEligibilityCheckURL;
 @property (readonly, nonatomic) NSURL *upgradeUIURL;
 @property (readonly, nonatomic) NSURL *validateCodeURL;
 
 + (id)keyForEscapeHatchURL;
++ (BOOL)looksLikeiForgotURLKey:(id)arg1;
 + (id)sharedBag;
 - (void).cxx_destruct;
 - (void)_handleURLBagResponseWithData:(id)arg1 error:(id)arg2;

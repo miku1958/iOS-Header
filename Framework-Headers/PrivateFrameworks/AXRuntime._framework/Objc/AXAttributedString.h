@@ -33,6 +33,7 @@
 - (id)description;
 - (void)enumerateAttributesUsingBlock:(CDUnknownBlockType)arg1;
 - (BOOL)hasAttribute:(id)arg1;
+- (BOOL)hasAttributes;
 - (id)initWithCFAttributedString:(struct __CFAttributedString *)arg1;
 - (id)initWithString:(id)arg1;
 - (BOOL)isAXAttributedString;

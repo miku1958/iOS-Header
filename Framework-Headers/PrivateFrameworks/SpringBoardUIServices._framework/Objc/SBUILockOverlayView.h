@@ -21,14 +21,15 @@
     _UILegibilitySettings *_legibilitySettings;
 }
 
-@property (readonly, strong, nonatomic) UIButton *actionButton; // @synthesize actionButton=_actionButton;
-@property (nonatomic) id<SBUILockOverlayViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
+@property (readonly, nonatomic) UIButton *actionButton; // @synthesize actionButton=_actionButton;
+@property (weak, nonatomic) id<SBUILockOverlayViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
-@property (readonly, strong, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
-@property (readonly, strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property (readonly, strong, nonatomic) SBLockOverlayStylePropertiesFactory *underlayPropertiesFactory; // @synthesize underlayPropertiesFactory=_underlayPropertiesFactory;
+@property (readonly, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
+@property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (readonly, nonatomic) SBLockOverlayStylePropertiesFactory *underlayPropertiesFactory; // @synthesize underlayPropertiesFactory=_underlayPropertiesFactory;
 
+- (void).cxx_destruct;
 - (id)_actionFont;
 - (void)_buttonPressed;
 - (id)_legibilitySettingsForStyle:(unsigned long long)arg1;
@@ -37,7 +38,6 @@
 - (void)_sizeView:(id)arg1 forFixedWith:(BOOL)arg2;
 - (id)_subtitleFont;
 - (id)_titleFont;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 style:(unsigned long long)arg2;
 - (void)layoutSubviews;

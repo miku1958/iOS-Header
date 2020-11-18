@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ICLRUCache;
+@class ICLRUCache, NSMapTable;
 
 @interface ICImageLRUCache : NSObject
 {
@@ -15,6 +15,7 @@
     unsigned long long _imagePixelThreshold;
     ICLRUCache *_bigImageCache;
     ICLRUCache *_smallImageCache;
+    NSMapTable *_weakImageMap;
 }
 
 @property (readonly) ICLRUCache *bigImageCache; // @synthesize bigImageCache=_bigImageCache;
@@ -22,6 +23,7 @@
 @property (readonly, nonatomic) unsigned long long imagePixelThreshold; // @synthesize imagePixelThreshold=_imagePixelThreshold;
 @property (readonly) ICLRUCache *smallImageCache; // @synthesize smallImageCache=_smallImageCache;
 @property (readonly, nonatomic) unsigned long long smallImageCacheCount; // @synthesize smallImageCacheCount=_smallImageCacheCount;
+@property (readonly) NSMapTable *weakImageMap; // @synthesize weakImageMap=_weakImageMap;
 
 - (void).cxx_destruct;
 - (void)dealloc;

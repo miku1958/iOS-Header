@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOTransitDepartureSequence-Protocol.h>
 
-@class GEOPDDepartureSequence, NSArray, NSString;
+@class GEOPDDepartureSequence, NSArray, NSSet, NSString;
 @protocol GEOTransitLine;
 
 __attribute__((visibility("hidden")))
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 {
     GEOPDDepartureSequence *_sequence;
     id<GEOTransitLine> _line;
+    NSSet *_nextStopIDs;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *headsign;
 @property (readonly, nonatomic) BOOL isLowFrequency;
 @property (readonly, nonatomic) id<GEOTransitLine> line;
+@property (readonly, nonatomic) NSSet *nextStopIDs;
 @property (readonly, nonatomic) NSArray *operatingHours;
 @property (readonly) Class superclass;
 
@@ -34,8 +36,10 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)departuresValidForDate:(id)arg1;
 - (id)firstDepartureAfterDate:(id)arg1;
+- (id)firstDepartureFrequencyOnOrAfterDate:(id)arg1;
 - (id)firstDepartureOnOrAfterDate:(id)arg1;
 - (id)firstDepartureValidForDate:(id)arg1;
+- (id)firstOpenOperatingDateOnOrAfterDate:(id)arg1;
 - (double)frequencyForSortingAtDate:(id)arg1;
 - (id)frequencyToDescribeAtDate:(id)arg1;
 - (BOOL)hasFrequencyAtDate:(id)arg1;

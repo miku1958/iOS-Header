@@ -6,10 +6,12 @@
 
 #import <FuseUI/MusicProductTracklistTableViewConfiguration.h>
 
+#import <FuseUI/ISURLBagObserver-Protocol.h>
+
 @class NSString;
 @protocol MusicEntityProviding;
 
-@interface MusicAlbumTracklistViewConfiguration : MusicProductTracklistTableViewConfiguration
+@interface MusicAlbumTracklistViewConfiguration : MusicProductTracklistTableViewConfiguration <ISURLBagObserver>
 {
     id<MusicEntityProviding> _originalEntityProvider;
     id<MusicEntityProviding> _entityProvider;
@@ -18,7 +20,11 @@
     NSString *_wantsGroupingProperty;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *groupingProperty;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *wantsGroupingProperty;
 
 - (void).cxx_destruct;
@@ -27,6 +33,8 @@
 - (void)_entityProviderDidInvalidate;
 - (void)_groupIfNecessary;
 - (id)_loadTracklistTableViewDescriptor;
+- (void)_updateTracklistPopularityIndicatorVisibility;
+- (void)bagDidChange:(id)arg1;
 - (void)dealloc;
 - (id)entityProvider;
 - (id)initWithEntityProvider:(id)arg1;

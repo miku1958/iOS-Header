@@ -16,6 +16,8 @@
     unsigned long long _availableTilesCount;
     unsigned long long _availableTilesSpace;
     NSString *_baseURL;
+    int _checksumType;
+    NSMutableArray *_countryRegionWhitelists;
     NSString *_localizationURL;
     int _scale;
     NSMutableArray *_sentinelTiles;
@@ -26,6 +28,7 @@
     int _updateBehavior;
     unsigned int _version;
     struct {
+        unsigned int checksumType:1;
         unsigned int timeToLiveSeconds:1;
         unsigned int updateBehavior:1;
     } _has;
@@ -34,7 +37,10 @@
 @property (readonly, nonatomic) CDStruct_d66e66b9 *availableTiles;
 @property (readonly, nonatomic) unsigned long long availableTilesCount;
 @property (strong, nonatomic) NSString *baseURL; // @synthesize baseURL=_baseURL;
+@property (nonatomic) int checksumType; // @synthesize checksumType=_checksumType;
+@property (strong, nonatomic) NSMutableArray *countryRegionWhitelists; // @synthesize countryRegionWhitelists=_countryRegionWhitelists;
 @property (readonly, nonatomic) BOOL hasBaseURL;
+@property (nonatomic) BOOL hasChecksumType;
 @property (readonly, nonatomic) BOOL hasLocalizationURL;
 @property (nonatomic) BOOL hasTimeToLiveSeconds;
 @property (nonatomic) BOOL hasUpdateBehavior;
@@ -48,23 +54,31 @@
 @property (nonatomic) int updateBehavior; // @synthesize updateBehavior=_updateBehavior;
 @property (nonatomic) unsigned int version; // @synthesize version=_version;
 
++ (id)buildDisputedBordersQueryStringForCountry:(id)arg1 region:(id)arg2;
+- (id)_bestCountryRegionWhitelistMatchForCountry:(id)arg1 region:(id)arg2;
 - (id)_bestLanguageWithOverrideLocale:(id)arg1;
 - (void)_resetBestLanguage;
 - (void)addAvailableTiles:(CDStruct_d66e66b9)arg1;
+- (void)addCountryRegionWhitelist:(id)arg1;
 - (void)addSentinelTile:(id)arg1;
 - (void)addSupportedLanguage:(id)arg1;
 - (CDStruct_d66e66b9)availableTilesAtIndex:(unsigned long long)arg1;
 - (void)clearAvailableTiles;
+- (void)clearCountryRegionWhitelists;
 - (void)clearSentinelTiles;
 - (void)clearSupportedLanguages;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)countryRegionWhitelistAtIndex:(unsigned long long)arg1;
+- (unsigned long long)countryRegionWhitelistsCount;
 - (id)dataForGenericTileType:(int)arg1 configuration:(id)arg2;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)disputedBordersQueryStringForCountry:(id)arg1 region:(id)arg2;
 - (unsigned long long)hash;
 - (BOOL)isAvailableForTileKey:(const struct _GEOTileKey *)arg1;
+- (BOOL)isDisputedBordersWhitelistedForCountry:(id)arg1 region:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEquivalentTileSet:(id)arg1;
 - (unsigned int)largestZoomLevelLEQ:(unsigned int)arg1 inRect:(CDStruct_90e2a262)arg2;

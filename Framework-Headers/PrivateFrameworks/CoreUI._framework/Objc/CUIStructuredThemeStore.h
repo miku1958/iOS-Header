@@ -19,8 +19,6 @@
     NSLock *_storeLock;
     unsigned long long _themeIndex;
     NSString *_bundleID;
-    NSCache *_assetExistanceCache;
-    NSCache *_assetFPOStatus;
     NSCache *_namedRenditionKeyCache;
 }
 

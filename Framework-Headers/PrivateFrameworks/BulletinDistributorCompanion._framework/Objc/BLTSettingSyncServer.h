@@ -34,6 +34,7 @@
 - (void)handleSetSectionSubtypeParametersIconRequest:(id)arg1;
 - (void)handleSetSectionSubtypeParametersIconResponse:(id)arg1;
 - (id)init;
+- (BOOL)isSectionInfoSentCacheEmpty;
 - (void)registerProtobufHandlers;
 - (void)setSectionInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setSectionInfo:(id)arg1 withQueue:(id)arg2 withSent:(CDUnknownBlockType)arg3 withAcknowledgement:(CDUnknownBlockType)arg4;

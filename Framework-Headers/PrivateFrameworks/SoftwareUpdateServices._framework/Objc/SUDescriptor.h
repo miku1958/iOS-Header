@@ -19,6 +19,7 @@
     NSString *_productSystemName;
     NSString *_productVersion;
     NSString *_productBuildVersion;
+    NSString *_releaseType;
     unsigned long long _downloadSize;
     unsigned long long _unarchiveSize;
     unsigned long long _msuPrepareSize;
@@ -53,6 +54,7 @@
 @property (strong, nonatomic) NSString *productSystemName; // @synthesize productSystemName=_productSystemName;
 @property (strong, nonatomic) NSString *productVersion; // @synthesize productVersion=_productVersion;
 @property (strong, nonatomic) NSString *publisher; // @synthesize publisher=_publisher;
+@property (strong, nonatomic) NSString *releaseType; // @synthesize releaseType=_releaseType;
 @property (nonatomic, getter=_isStreamingZipCapable, setter=_setStreamingZipCapable:) BOOL streamingZipCapable; // @synthesize streamingZipCapable=_streamingZipCapable;
 @property (strong, nonatomic) NSDictionary *systemPartitionPadding; // @synthesize systemPartitionPadding=_systemPartitionPadding;
 @property (nonatomic, getter=_unarchiveSize, setter=_setUnarchiveSize:) unsigned long long unarchiveSize; // @synthesize unarchiveSize=_unarchiveSize;

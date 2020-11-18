@@ -46,6 +46,7 @@
 - (double)duration;
 - (id)initWithAVAsset:(id)arg1;
 - (id)initWithManagedAsset:(id)arg1 applyVideoAdjustments:(BOOL)arg2;
+- (id)initWithPublishingMedia:(id)arg1;
 - (id)messageForRemakingProgress;
 - (int)mode;
 - (id)progressView;

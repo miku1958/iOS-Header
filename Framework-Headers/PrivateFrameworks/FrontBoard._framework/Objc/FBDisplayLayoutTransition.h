@@ -14,12 +14,14 @@
     NSString *_transitionReason;
     unsigned long long _displayType;
     long long _interfaceOrientation;
+    BOOL _transitioning;
 }
 
 @property (readonly, nonatomic) unsigned long long displayType; // @synthesize displayType=_displayType;
 @property (nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSString *transitionReason; // @synthesize transitionReason=_transitionReason;
+@property (readonly, nonatomic, getter=isTransitioning) BOOL transitioning; // @synthesize transitioning=_transitioning;
 
 + (void)flushLayoutForDisplayType:(unsigned long long)arg1;
 + (BOOL)isTransitioningForDisplayType:(unsigned long long)arg1;

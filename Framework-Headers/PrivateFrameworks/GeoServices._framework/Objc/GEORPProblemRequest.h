@@ -18,6 +18,7 @@
     NSData *_devicePushToken;
     NSString *_inputLanguage;
     GEORPProblem *_problem;
+    NSString *_problemUuid;
     GEORPUserCredentials *_userCredentials;
     NSString *_userEmail;
 }
@@ -32,10 +33,12 @@
 @property (readonly, nonatomic) BOOL hasDevicePushToken;
 @property (readonly, nonatomic) BOOL hasInputLanguage;
 @property (readonly, nonatomic) BOOL hasProblem;
+@property (readonly, nonatomic) BOOL hasProblemUuid;
 @property (readonly, nonatomic) BOOL hasUserCredentials;
 @property (readonly, nonatomic) BOOL hasUserEmail;
 @property (strong, nonatomic) NSString *inputLanguage; // @synthesize inputLanguage=_inputLanguage;
 @property (strong, nonatomic) GEORPProblem *problem; // @synthesize problem=_problem;
+@property (strong, nonatomic) NSString *problemUuid; // @synthesize problemUuid=_problemUuid;
 @property (strong, nonatomic) GEORPUserCredentials *userCredentials; // @synthesize userCredentials=_userCredentials;
 @property (strong, nonatomic) NSString *userEmail; // @synthesize userEmail=_userEmail;
 

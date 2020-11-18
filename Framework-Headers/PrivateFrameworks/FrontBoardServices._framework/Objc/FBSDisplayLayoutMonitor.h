@@ -22,6 +22,7 @@
     CDUnknownBlockType _queue_handler;
     FBSDisplayLayoutMonitorClient *_queue_client;
     BOOL _sharedInstance;
+    unsigned long long _qualityOfService;
 }
 
 @property (readonly, strong, nonatomic) FBSDisplayLayout *currentLayout;
@@ -30,6 +31,7 @@
 @property (readonly, nonatomic) unsigned long long displayType; // @synthesize displayType=_displayType;
 @property (copy, nonatomic) CDUnknownBlockType handler;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) unsigned long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
 @property (readonly) Class superclass;
 
 + (id)sharedMonitorForDisplayType:(unsigned long long)arg1;
@@ -40,9 +42,11 @@
 - (void)addObserver:(id)arg1;
 - (void)client:(id)arg1 handleNewDisplayLayout:(id)arg2 withContext:(id)arg3;
 - (unsigned long long)clientDisplayType:(id)arg1;
+- (unsigned long long)clientQualityOfService:(id)arg1;
 - (void)dealloc;
 - (id)initWithDisplayType:(unsigned long long)arg1;
 - (id)initWithDisplayType:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)initWithDisplayType:(unsigned long long)arg1 qualityOfService:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)invalidate;
 - (void)removeObserver:(id)arg1;
 

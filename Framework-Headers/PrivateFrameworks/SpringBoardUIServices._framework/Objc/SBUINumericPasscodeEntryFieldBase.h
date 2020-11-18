@@ -21,11 +21,11 @@
 @property (nonatomic) unsigned long long maxNumbersAllowed; // @synthesize maxNumbersAllowed=_maxNumbersAllowed;
 
 + (BOOL)_shouldResetAutoAcceptWhenMaxNumbersMetInResignFirstResponder;
+- (void).cxx_destruct;
 - (void)_appendString:(id)arg1;
 - (void)_deleteLastCharacter;
 - (BOOL)_hasMaxDigitsSpecified;
 - (void)_reallyAppendString:(id)arg1;
-- (void)dealloc;
 - (id)initWithDefaultSizeAndLightStyle:(BOOL)arg1;
 - (BOOL)resignFirstResponder;
 - (BOOL)shouldInsertPasscodeText:(id)arg1;

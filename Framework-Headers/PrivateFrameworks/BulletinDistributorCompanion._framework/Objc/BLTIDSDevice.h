@@ -18,12 +18,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isCloudReachable;
 @property (readonly, nonatomic) BOOL isConnected;
 @property (readonly, nonatomic) BOOL isDefaultPairedDevice;
 @property (readonly, nonatomic) BOOL isNearby;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)initWithIDSDevice:(id)arg1;
 
 @end

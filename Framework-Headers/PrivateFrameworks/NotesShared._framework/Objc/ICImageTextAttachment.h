@@ -11,6 +11,8 @@
 }
 
 - (BOOL)requiresSpaceAfterAttachmentForPrinting;
+- (BOOL)supportsMultipleThumbnailsOnSameLine;
+- (BOOL)supportsThumbnailView;
 
 @end
 

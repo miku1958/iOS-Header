@@ -10,7 +10,7 @@
 
 @protocol RTClientListenerProtocol <NSObject>
 - (void)handleDisconnectionForDaemonClient:(RTDaemonClient *)arg1;
-- (void)handleRestorationForDaemonClient:(RTDaemonClient *)arg1;
+- (RTDaemonClient *)handleRestorationForDaemonClient:(RTDaemonClient *)arg1;
 - (void)saveDaemonClient:(RTDaemonClient *)arg1;
 @end
 

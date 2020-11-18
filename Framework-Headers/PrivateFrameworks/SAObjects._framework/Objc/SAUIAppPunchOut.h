@@ -20,6 +20,7 @@
 @property (nonatomic) BOOL appInstalled;
 @property (copy, nonatomic) NSURL *appStoreUri;
 @property (copy, nonatomic) NSString *bundleId;
+@property (nonatomic) BOOL launchOverSiri;
 @property (copy, nonatomic) NSString *predefinedButtonType;
 @property (copy, nonatomic) NSString *providerId;
 @property (copy, nonatomic) NSString *punchOutName;

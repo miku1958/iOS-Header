@@ -29,7 +29,9 @@
 + (struct NSObject *)recentEventForAddress:(id)arg1 displayName:(id)arg2 kind:(id)arg3 date:(id)arg4 weight:(id)arg5 metadata:(id)arg6 options:(unsigned long long)arg7;
 - (int)_daemonProcessID;
 - (id)_newConnection;
+- (id)_recentContactsWithQuery:(id)arg1;
 - (id)_remoteLibraryWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)_removeAllRecentContactsWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_removeRecentContactsWithRecentIDs:(id)arg1 syncKeys:(id)arg2 recentsDomain:(id)arg3 error:(out id *)arg4;
 - (id)_searchRecentsUsingQuery:(id)arg1;
 - (void)_searchRecentsUsingQuery:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -39,6 +41,7 @@
 - (void)dealloc;
 - (id)init;
 - (unsigned long long)maxDateEventsPerRecentContact;
+- (void)performRecentsSearch:(id)arg1 operationQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)performRecentsSearch:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)recordContactEvents:(id)arg1 recentsDomain:(id)arg2 sendingAddress:(id)arg3;
 - (void)recordContactEvents:(id)arg1 recentsDomain:(id)arg2 sendingAddress:(id)arg3 source:(id)arg4 userInitiated:(BOOL)arg5;

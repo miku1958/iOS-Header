@@ -24,6 +24,8 @@
 - (id)_fallbackLocaleLanguageFor:(id)arg1;
 - (void)_internalPreferencesDidChangeExternally;
 - (void)_languageCodeDidChangeExternally;
+- (id)_mappedLanguageCodeArrayFor:(id)arg1;
+- (id)_originalOrReplacementLanguageCodeFor:(id)arg1;
 - (void)_ouputVoiceDidChangeExternally;
 - (void)_preferencesDidChangeExternally;
 - (void)_registerForInteralPrefs;
@@ -46,6 +48,8 @@
 - (long long)handsFreeMode;
 - (BOOL)ignoreServerManualEndpointingThreshold;
 - (id)init;
+- (BOOL)isCurrentLocaleNativelySupported;
+- (BOOL)isLocaleIdentifierNativelySupported:(id)arg1;
 - (id)languageCode;
 - (id)manualEndpointingThreshold;
 - (BOOL)offlineDictationOverride;
@@ -68,10 +72,12 @@
 - (void)setRespectsSystemMute:(BOOL)arg1;
 - (void)setShowsHoldToTalkIndicator:(BOOL)arg1;
 - (void)setStreamingDictationEnabled:(BOOL)arg1;
+- (void)setSuppressDictationOptIn:(BOOL)arg1;
 - (void)setUseDeviceSpeakerForTTS:(long long)arg1;
 - (void)setValue:(id)arg1 forSessionContextKey:(id)arg2;
 - (BOOL)showsHoldToTalkIndicator;
 - (BOOL)streamingDictationEnabled;
+- (BOOL)suppressDictationOptIn;
 - (void)synchronize;
 - (void)synchronizeVoiceServicesLanguageCode;
 - (long long)useDeviceSpeakerForTTS;

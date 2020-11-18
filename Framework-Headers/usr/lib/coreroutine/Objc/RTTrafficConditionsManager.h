@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, RTPLOIETA, RTPersistentTimer;
+@class NSDate, NSMutableArray, RTPLOIETA, RTPersistentTimer;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -17,12 +17,14 @@ __attribute__((visibility("hidden")))
     RTPLOIETA *_ploiEta;
     NSDate *_showTrafficConditionsDate;
     RTPersistentTimer *_showTrafficConditionsTimer;
+    NSMutableArray *_trafficConditionsMetrics;
 }
 
 @property (strong, nonatomic) RTPLOIETA *ploiEta; // @synthesize ploiEta=_ploiEta;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) NSDate *showTrafficConditionsDate; // @synthesize showTrafficConditionsDate=_showTrafficConditionsDate;
 @property (strong, nonatomic) RTPersistentTimer *showTrafficConditionsTimer; // @synthesize showTrafficConditionsTimer=_showTrafficConditionsTimer;
+@property (strong, nonatomic) NSMutableArray *trafficConditionsMetrics; // @synthesize trafficConditionsMetrics=_trafficConditionsMetrics;
 @property (nonatomic) unsigned long long vehicleConnectedState; // @synthesize vehicleConnectedState=_vehicleConnectedState;
 
 + (void)fetchPLOIETAFrom:(id)arg1 to:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
@@ -31,14 +33,19 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_clearTrafficConditions;
+- (void)_handleVisit:(id)arg1;
+- (void)_onDeviceLocationPredictorNotification:(id)arg1;
 - (void)_onMotionActivityNotification:(id)arg1;
 - (void)_setup;
 - (void)_showTrafficConditions;
 - (void)_updateTrafficCondtions;
 - (void)dealloc;
 - (id)init;
+- (void)onDeviceLocationPredictorNotification:(id)arg1;
 - (void)onMotionActivityNotification:(id)arg1;
 - (void)setShowTrafficConditionsTimer;
+- (void)submitMetric:(id)arg1;
+- (void)submitMetrics;
 
 @end
 

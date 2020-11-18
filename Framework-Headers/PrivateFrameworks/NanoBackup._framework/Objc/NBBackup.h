@@ -14,10 +14,10 @@
 {
     BOOL _locationOptInEnabled;
     BOOL _diagnosticsOptInEnabled;
-    BOOL _siriOptInEnabled;
     NSUUID *_uuid;
     NSString *_name;
     NSString *_productType;
+    NSString *_productName;
     NSString *_systemVersion;
     NSString *_systemBuildVersion;
     NSString *_marketingVersion;
@@ -31,8 +31,6 @@
     NSString *_watchFaceColor;
     NSDate *_lastModificationDate;
     NSNumber *_sizeInBytes;
-    NSString *_model;
-    NSString *_material;
 }
 
 @property (strong, nonatomic) NSNumber *bcmWindowMaterial; // @synthesize bcmWindowMaterial=_bcmWindowMaterial;
@@ -44,11 +42,9 @@
 @property (strong, nonatomic) NSDate *lastModificationDate; // @synthesize lastModificationDate=_lastModificationDate;
 @property (nonatomic, getter=isLocationOptInEnabled) BOOL locationOptInEnabled; // @synthesize locationOptInEnabled=_locationOptInEnabled;
 @property (strong, nonatomic) NSString *marketingVersion; // @synthesize marketingVersion=_marketingVersion;
-@property (strong, nonatomic) NSString *material; // @synthesize material=_material;
-@property (strong, nonatomic) NSString *model; // @synthesize model=_model;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (strong, nonatomic) NSString *productName; // @synthesize productName=_productName;
 @property (strong, nonatomic) NSString *productType; // @synthesize productType=_productType;
-@property (nonatomic, getter=isSiriOptInEnabled) BOOL siriOptInEnabled; // @synthesize siriOptInEnabled=_siriOptInEnabled;
 @property (strong, nonatomic) NSNumber *sizeInBytes; // @synthesize sizeInBytes=_sizeInBytes;
 @property (strong, nonatomic) NSString *systemBuildVersion; // @synthesize systemBuildVersion=_systemBuildVersion;
 @property (strong, nonatomic) NSString *systemVersion; // @synthesize systemVersion=_systemVersion;

@@ -4,15 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <BaseBoard/BSAction.h>
+#import <SpringBoardServices/SBSRelaunchAction.h>
 
-@class NSURL;
-
-@interface SBSRestartRenderServerAction : BSAction
+@interface SBSRestartRenderServerAction : SBSRelaunchAction
 {
 }
-
-@property (readonly, nonatomic) NSURL *targetURL;
 
 + (id)restartActionWithTargetRelaunchURL:(id)arg1;
 

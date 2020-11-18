@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SpringBoardUI/UIAlertViewDelegate-Protocol.h>
 
-@class NSArray, NSString, UIAlertView;
+@class NSArray, NSString, UIAlertView, UIImage;
 
 @interface SBAlertItem : NSObject <UIAlertViewDelegate>
 {
@@ -25,6 +25,7 @@
     NSArray *_allowedBundleIDs;
     BOOL _allowInCar;
     BOOL _allowMessageInCar;
+    UIImage *_iconImage;
 }
 
 @property (nonatomic) BOOL allowInCar; // @synthesize allowInCar=_allowInCar;
@@ -34,6 +35,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIImage *iconImage; // @synthesize iconImage=_iconImage;
 @property (nonatomic) BOOL ignoreIfAlreadyDisplaying; // @synthesize ignoreIfAlreadyDisplaying=_ignoreIfAlreadyDisplaying;
 @property (nonatomic) BOOL pendInSetupIfNotAllowed; // @synthesize pendInSetupIfNotAllowed=_pendInSetupIfNotAllowed;
 @property (nonatomic) BOOL pendWhileKeyBagLocked; // @synthesize pendWhileKeyBagLocked=_pendWhileKeyBagLocked;
@@ -41,6 +43,7 @@
 
 + (id)_alertItemsController;
 + (void)activateAlertItem:(id)arg1;
+- (void).cxx_destruct;
 - (BOOL)_didEverActivate;
 - (BOOL)_didEverDeactivate;
 - (BOOL)_dismissesOverlaysOnLockScreen;

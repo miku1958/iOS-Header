@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSString *bundle_id;
 @property (strong, nonatomic) NSString *fbr;
 @property (strong, nonatomic) NSString *geoUserSessionIDString;
+@property (nonatomic) unsigned int geoUserSessionSequenceNumber;
 @property (nonatomic) double geoUserSessionStartTime;
 @property BOOL isQuickGlance;
 @property (nonatomic) long long max_age;

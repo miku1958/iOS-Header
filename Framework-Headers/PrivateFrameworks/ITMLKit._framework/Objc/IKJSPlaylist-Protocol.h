@@ -10,6 +10,7 @@
 
 @protocol IKJSPlaylist <JSExport>
 
+@property (nonatomic) long long endAction;
 @property (readonly, nonatomic) unsigned long long length;
 
 - (id)init;

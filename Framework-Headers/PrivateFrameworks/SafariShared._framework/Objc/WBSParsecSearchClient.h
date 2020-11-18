@@ -54,6 +54,7 @@
     BOOL _feedbackEnabled;
     NSArray *_supportedDomainIdentifiers;
     id<WBSParsecSearchClientStorage> _storage;
+    unsigned long long _mode;
     NSNumber *_searchRenderTimeout;
     NSNumber *_otherRenderTimeout;
     CLLocation *_location;
@@ -96,6 +97,7 @@
 @property (readonly, nonatomic) double minimumIntervalBetweenQueriesFromBag; // @synthesize minimumIntervalBetweenQueriesFromBag=_minimumIntervalBetweenQueriesFromBag;
 @property (nonatomic) double minimumIntervalBetweenQueriesFromSearchResponse; // @synthesize minimumIntervalBetweenQueriesFromSearchResponse=_minimumIntervalBetweenQueriesFromSearchResponse;
 @property (readonly, nonatomic) unsigned long long minimumQueryLength; // @synthesize minimumQueryLength=_minimumQueryLength;
+@property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property (readonly, nonatomic) NSArray *optionalQueryItems; // @synthesize optionalQueryItems=_optionalQueryItems;
 @property (readonly, nonatomic) NSNumber *otherRenderTimeout; // @synthesize otherRenderTimeout=_otherRenderTimeout;
 @property (nonatomic) BOOL safeModeEnabled; // @synthesize safeModeEnabled=_safeModeEnabled;

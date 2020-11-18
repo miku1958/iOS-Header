@@ -11,6 +11,7 @@
 @interface HAPKeychainItem : NSObject
 {
     BOOL _syncable;
+    BOOL _invisible;
     NSString *_accessGroup;
     NSNumber *_type;
     NSString *_label;
@@ -19,17 +20,20 @@
     NSData *_valueData;
     void *_platformReference;
     NSData *_genericData;
+    NSString *_viewHint;
 }
 
 @property (strong, nonatomic) NSString *accessGroup; // @synthesize accessGroup=_accessGroup;
 @property (strong, nonatomic) NSString *account; // @synthesize account=_account;
 @property (strong, nonatomic) NSData *genericData; // @synthesize genericData=_genericData;
+@property (readonly, nonatomic, getter=isInvisible) BOOL invisible; // @synthesize invisible=_invisible;
 @property (strong, nonatomic) NSString *itemDescription; // @synthesize itemDescription=_itemDescription;
 @property (strong, nonatomic) NSString *label; // @synthesize label=_label;
 @property (nonatomic) void *platformReference; // @synthesize platformReference=_platformReference;
 @property (nonatomic, getter=isSyncable) BOOL syncable; // @synthesize syncable=_syncable;
 @property (strong, nonatomic) NSNumber *type; // @synthesize type=_type;
 @property (strong, nonatomic) NSData *valueData; // @synthesize valueData=_valueData;
+@property (strong, nonatomic) NSString *viewHint; // @synthesize viewHint=_viewHint;
 
 - (void).cxx_destruct;
 - (void)dealloc;

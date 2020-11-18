@@ -6,15 +6,15 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSSet;
+@class HDSQLitePredicate, NSArray, NSData, NSSet;
 @protocol HDHealthDaemon, HDSyncCodable, HDSyncStore;
 
 @protocol HDSyncEntity <NSObject>
 + (id<HDSyncCodable>)decodeSyncObjectWithData:(NSData *)arg1;
-+ (long long)nextSyncAnchorWithStore:(id<HDSyncStore>)arg1 startSyncAnchor:(long long)arg2 healthDaemon:(id<HDHealthDaemon>)arg3 error:(id *)arg4;
-+ (BOOL)receiveSyncObjects:(NSArray *)arg1 syncStore:(id<HDSyncStore>)arg2 healthDaemon:(id<HDHealthDaemon>)arg3 error:(id *)arg4;
++ (long long)nextSyncAnchorWithStore:(id<HDSyncStore>)arg1 predicate:(HDSQLitePredicate *)arg2 startSyncAnchor:(long long)arg3 healthDaemon:(id<HDHealthDaemon>)arg4 error:(id *)arg5;
++ (long long)receiveSyncObjects:(NSArray *)arg1 syncStore:(id<HDSyncStore>)arg2 healthDaemon:(id<HDHealthDaemon>)arg3 error:(id *)arg4;
 + (NSSet *)syncEntityDependencies;
 + (long long)syncEntityType;
-+ (NSArray *)syncObjectsWithStore:(id<HDSyncStore>)arg1 syncAnchorRange:(struct HDSyncAnchorRange)arg2 lastSyncAnchor:(long long *)arg3 healthDaemon:(id<HDHealthDaemon>)arg4 error:(id *)arg5;
++ (NSArray *)syncObjectsWithStore:(id<HDSyncStore>)arg1 predicate:(HDSQLitePredicate *)arg2 syncAnchorRange:(struct HDSyncAnchorRange)arg3 lastSyncAnchor:(long long *)arg4 limit:(unsigned long long)arg5 healthDaemon:(id<HDHealthDaemon>)arg6 error:(id *)arg7;
 @end
 

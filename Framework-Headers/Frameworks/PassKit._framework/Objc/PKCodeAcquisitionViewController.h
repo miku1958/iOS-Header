@@ -8,12 +8,14 @@
 
 #import <PassKit/NSURLConnectionDataDelegate-Protocol.h>
 #import <PassKit/PKCaptureDelegate-Protocol.h>
+#import <PassKit/PKPassPersonalizationViewControllerDelegate-Protocol.h>
+#import <PassKit/PKPaymentSetupViewControllerDelegate-Protocol.h>
 #import <PassKit/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSMutableData, NSSet, NSString, NSURLConnection, PKCaptureSession, PKReticleView, UILabel, UINavigationBar, UIProgressView;
 @protocol PKCodeAcquisitionDelegate;
 
-@interface PKCodeAcquisitionViewController : UIViewController <PKCaptureDelegate, NSURLConnectionDataDelegate, UIGestureRecognizerDelegate>
+@interface PKCodeAcquisitionViewController : UIViewController <PKCaptureDelegate, NSURLConnectionDataDelegate, UIGestureRecognizerDelegate, PKPassPersonalizationViewControllerDelegate, PKPaymentSetupViewControllerDelegate>
 {
     UINavigationBar *_navBar;
     PKCaptureSession *_captureSession;
@@ -53,8 +55,10 @@
 - (void)dealloc;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)init;
+- (void)passPersonalizationViewController:(id)arg1 didFinishPersonalizingPass:(id)arg2;
 - (BOOL)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)viewControllerDidTerminateSetupFlow:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

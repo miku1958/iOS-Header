@@ -6,43 +6,40 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary, NSString, NSXPCConnection, PSProgressClient;
+#import <PairedSync/PSYSyncSessionObserverDelegate-Protocol.h>
+
+@class NSDictionary, NSMutableSet, NSString, PSYSyncSession, PSYSyncSessionObserver;
 @protocol OS_dispatch_queue, PSYProgressObserverDelegate;
 
-@interface PSYProgressObserver : NSObject
+@interface PSYProgressObserver : NSObject <PSYSyncSessionObserverDelegate>
 {
-    NSMutableDictionary *_failedActivities;
+    PSYSyncSessionObserver *_syncSessionObserver;
+    PSYSyncSession *_currentSyncSession;
+    NSObject<OS_dispatch_queue> *_internalQueue;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
+    NSMutableSet *_completedInitialSyncPairingIDs;
     id<PSYProgressObserverDelegate> _delegate;
-    long long _progressObserverState;
-    NSString *_activityLabel;
-    double _activityProgress;
-    double _totalProgress;
-    NSDictionary *_activityErrors;
-    PSProgressClient *_progressClient;
-    NSXPCConnection *_connection;
-    NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property (readonly, copy, nonatomic) NSDictionary *activityErrors; // @synthesize activityErrors=_activityErrors;
-@property (strong, nonatomic) NSString *activityLabel; // @synthesize activityLabel=_activityLabel;
-@property (nonatomic) double activityProgress; // @synthesize activityProgress=_activityProgress;
-@property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (readonly, copy, nonatomic) NSDictionary *activityErrors;
+@property (readonly, nonatomic) NSString *activityLabel;
+@property (readonly, nonatomic) double activityProgress;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PSYProgressObserverDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) PSProgressClient *progressClient; // @synthesize progressClient=_progressClient;
-@property (readonly, nonatomic) long long progressObserverState; // @synthesize progressObserverState=_progressObserverState;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (nonatomic) double totalProgress; // @synthesize totalProgress=_totalProgress;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) long long progressObserverState;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) double totalProgress;
 
 - (void).cxx_destruct;
-- (void)_connectionInterrupted;
-- (void)_currentActivityChanged:(id)arg1 fromActivity:(id)arg2 error:(id)arg3;
-- (void)_resetProgress;
-- (void)_scheduledJobsDidComplete;
-- (void)_setCurrentActivityProgress:(float)arg1 totalProgress:(float)arg2;
+- (BOOL)_shouldHandleSyncSession:(id)arg1;
 - (void)_updateState;
 - (id)init;
 - (id)initWithQueue:(id)arg1;
-- (void)setProgressObserverState:(long long)arg1;
+- (void)syncSessionObserver:(id)arg1 didInvalidateSyncSession:(id)arg2;
+- (void)syncSessionObserver:(id)arg1 didReceiveUpdate:(id)arg2;
+- (void)syncSessionObserver:(id)arg1 receivedSyncSession:(id)arg2;
 
 @end
 

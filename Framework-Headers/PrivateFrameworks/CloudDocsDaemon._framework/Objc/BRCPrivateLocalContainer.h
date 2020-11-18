@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateContainerMetadataFromRecord:(id)arg1 stripIcons:(BOOL)arg2;
 - (id)aliasByUnsaltedBookmarkData:(id)arg1;
 - (id)asPrivateContainer;
+- (BOOL)checkIfAppSyncShouldBeEnabled;
 - (id)createAliasWithTarget:(id)arg1 parentPath:(id)arg2 error:(id *)arg3;
 - (BOOL)dumpActivityToContext:(id)arg1 error:(id *)arg2;
 - (BOOL)dumpTablesToContext:(id)arg1 error:(id *)arg2;
@@ -43,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)pathRelativeToRoot;
 - (void)performBlock:(CDUnknownBlockType)arg1 whenSyncDownCompletesLookingForAliasWithBookmarkData:(id)arg2;
 - (id)plist;
-- (BOOL)recomputeSyncBlockState;
+- (BOOL)recomputeAppSyncBlockState;
 - (BOOL)removeSyncDownForAliasData:(id)arg1;
 - (id)reservedItemByParentID:(id)arg1 andDisplayName:(id)arg2;
 - (id)resolveClashOfAlias:(id)arg1 atPath:(id)arg2 withAlias:(id)arg3 atPath:(id)arg4;

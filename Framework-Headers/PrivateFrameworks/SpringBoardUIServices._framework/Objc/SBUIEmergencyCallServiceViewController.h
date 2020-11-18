@@ -17,12 +17,12 @@
 }
 
 @property (nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
-@property (readonly, strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
+@property (readonly, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 
 + (id)_exportedInterface;
 + (id)_remoteViewControllerInterface;
+- (void).cxx_destruct;
 - (void)backgroundStyle:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)noteTintColorForBackgroundStyleChanged:(id)arg1;
 - (void)noteViewMovedOffscreenTemporarily;

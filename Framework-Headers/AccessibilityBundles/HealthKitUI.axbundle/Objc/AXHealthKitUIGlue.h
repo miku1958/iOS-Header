@@ -10,6 +10,7 @@
 {
 }
 
++ (id)accessibilityBundles;
 + (void)accessibilityInitializeBundle;
 
 @end

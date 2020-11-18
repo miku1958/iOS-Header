@@ -16,8 +16,10 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _completionHandler;
     CDUnknownBlockType _errorHandler;
     CDUnknownBlockType _mustGoToNetworkCallback;
+    CDUnknownBlockType _functionHandler;
     struct __CFRunLoop *_runLoop;
     NSObject<OS_dispatch_queue> *_queue;
+    BOOL _recordCacheInfo;
 }
 
 @property (readonly, nonatomic) double accuracy; // @synthesize accuracy=_accuracy;
@@ -28,7 +30,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithCoordinate:(CDStruct_c3b9c2ee)arg1 accuracy:(double)arg2 completionHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4 mustGoToNetworkCallback:(CDUnknownBlockType)arg5 callbackQueue:(id)arg6;
 - (id)initWithCoordinate:(CDStruct_c3b9c2ee)arg1 accuracy:(double)arg2 completionHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4 mustGoToNetworkCallback:(CDUnknownBlockType)arg5 callbackRunLoop:(struct __CFRunLoop *)arg6;
-- (void)performCompletionHandlerWithShiftedCoordinate:(CDStruct_c3b9c2ee)arg1 accuracy:(double)arg2;
+- (id)initWithCoordinate:(CDStruct_c3b9c2ee)arg1 functionHandler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3 callbackQueue:(id)arg4;
+- (void)performCompletionHandlerWithShiftedCoordinate:(CDStruct_c3b9c2ee)arg1 accuracy:(double)arg2 function:(id)arg3 wasFunctionCached:(BOOL)arg4;
 - (void)performErrorHandler:(id)arg1;
 - (void)performMustGoToNetwork;
 

@@ -15,6 +15,7 @@
 @property (strong, nonatomic) id<FBSystemServiceFacilityClient> facilityClient;
 @property (readonly, nonatomic) int pid;
 @property (readonly, strong, nonatomic) FBProcess *process;
+@property (readonly, nonatomic, getter=isSuspended) BOOL suspended;
 
 @end
 

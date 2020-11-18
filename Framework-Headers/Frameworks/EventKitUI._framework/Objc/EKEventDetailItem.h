@@ -43,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
 - (void)editItemViewController:(id)arg1 didCompleteWithAction:(int)arg2;
-- (BOOL)editItemViewControllerCommit:(id)arg1;
+- (BOOL)editItemViewControllerSave:(id)arg1;
 - (BOOL)editItemViewControllerShouldShowDetachAlert;
 - (void)eventViewController:(id)arg1 didHighlightSubitem:(unsigned long long)arg2;
 - (void)eventViewController:(id)arg1 didSelectReadOnlySubitem:(unsigned long long)arg2;
@@ -53,7 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutCellsForWidth:(double)arg1 position:(int)arg2;
 - (void)notifyDidEndEditing;
 - (void)notifyDidStartEditing;
-- (void)notifySubitemDidCommit:(unsigned long long)arg1;
+- (void)notifySubitemDidSave:(unsigned long long)arg1;
 - (unsigned long long)numberOfSubitems;
 - (void)reset;
 - (BOOL)saveAndDismissWithForce:(BOOL)arg1;

@@ -6,7 +6,7 @@
 
 #import <Foundation/NSOperation.h>
 
-@class CKContainer, CKOperationInfo, CKOperationMetrics, CKPlaceholderOperation, CKTimeLogger, NSArray, NSError, NSObject, NSString;
+@class CKContainer, CKOperationInfo, CKOperationMetrics, CKPlaceholderOperation, CKTimeLogger, NSArray, NSDictionary, NSError, NSObject, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction;
 
 @interface CKOperation : NSOperation
@@ -14,13 +14,16 @@
     NSObject<OS_os_transaction> *_isExecuting;
     unsigned long long _activityID;
     BOOL _allowsCellularAccess;
+    BOOL _longLived;
     BOOL _isFinished;
     BOOL _isDiscretionary;
     BOOL _preferAnonymousRequests;
     BOOL _allowsBackgroundNetworking;
+    BOOL _isOutstandingOperation;
     CKContainer *_container;
-    CKPlaceholderOperation *_placeholderOperation;
     NSString *_operationID;
+    CDUnknownBlockType _longLivedOperationWasPersistedBlock;
+    CKPlaceholderOperation *_placeholderOperation;
     NSError *_error;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     NSString *_sectionID;
@@ -28,7 +31,10 @@
     id _context;
     CKTimeLogger *_timeLogger;
     NSArray *_requestUUIDs;
+    NSDictionary *_additionalRequestHTTPHeaders;
     CKOperationMetrics *_metrics;
+    NSDictionary *_w3cNavigationTimingByRequestUUID;
+    NSDictionary *_responseHTTPHeadersByRequestUUID;
     NSString *_sourceApplicationBundleIdentifier;
     NSString *_sourceApplicationSecondaryIdentifier;
     NSString *_authPromptReason;
@@ -37,6 +43,7 @@
     long long _usesBackgroundSessionOverride;
 }
 
+@property (strong, nonatomic) NSDictionary *additionalRequestHTTPHeaders; // @synthesize additionalRequestHTTPHeaders=_additionalRequestHTTPHeaders;
 @property (nonatomic) BOOL allowsBackgroundNetworking; // @synthesize allowsBackgroundNetworking=_allowsBackgroundNetworking;
 @property (nonatomic) BOOL allowsCellularAccess; // @synthesize allowsCellularAccess=_allowsCellularAccess;
 @property (strong, nonatomic) NSString *authPromptReason; // @synthesize authPromptReason=_authPromptReason;
@@ -48,13 +55,17 @@
 @property (nonatomic) BOOL isDiscretionary; // @synthesize isDiscretionary=_isDiscretionary;
 @property (nonatomic) BOOL isExecuting;
 @property (nonatomic) BOOL isFinished; // @synthesize isFinished=_isFinished;
+@property (nonatomic) BOOL isOutstandingOperation; // @synthesize isOutstandingOperation=_isOutstandingOperation;
+@property (nonatomic, getter=isLongLived) BOOL longLived; // @synthesize longLived=_longLived;
+@property (copy, nonatomic) CDUnknownBlockType longLivedOperationWasPersistedBlock; // @synthesize longLivedOperationWasPersistedBlock=_longLivedOperationWasPersistedBlock;
 @property (strong, nonatomic) CKOperationMetrics *metrics; // @synthesize metrics=_metrics;
-@property (strong, nonatomic) NSString *operationID; // @synthesize operationID=_operationID;
+@property (copy, nonatomic) NSString *operationID; // @synthesize operationID=_operationID;
 @property (readonly, nonatomic) CKOperationInfo *operationInfo;
 @property (readonly, nonatomic) NSString *parentSectionID; // @synthesize parentSectionID=_parentSectionID;
 @property (strong, nonatomic) CKPlaceholderOperation *placeholderOperation; // @synthesize placeholderOperation=_placeholderOperation;
 @property (nonatomic) BOOL preferAnonymousRequests; // @synthesize preferAnonymousRequests=_preferAnonymousRequests;
 @property (strong, nonatomic) NSArray *requestUUIDs; // @synthesize requestUUIDs=_requestUUIDs;
+@property (strong, nonatomic) NSDictionary *responseHTTPHeadersByRequestUUID; // @synthesize responseHTTPHeadersByRequestUUID=_responseHTTPHeadersByRequestUUID;
 @property (strong, nonatomic) NSString *sectionID; // @synthesize sectionID=_sectionID;
 @property (strong, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
 @property (strong, nonatomic) NSString *sourceApplicationSecondaryIdentifier; // @synthesize sourceApplicationSecondaryIdentifier=_sourceApplicationSecondaryIdentifier;
@@ -62,12 +73,14 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *timeoutSource; // @synthesize timeoutSource=_timeoutSource;
 @property (nonatomic) BOOL usesBackgroundSession;
 @property (nonatomic) long long usesBackgroundSessionOverride; // @synthesize usesBackgroundSessionOverride=_usesBackgroundSessionOverride;
+@property (strong, nonatomic) NSDictionary *w3cNavigationTimingByRequestUUID; // @synthesize w3cNavigationTimingByRequestUUID=_w3cNavigationTimingByRequestUUID;
 
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (id)CKPropertiesDescription;
 - (void)_finishInternalOnCallbackQueueWithError:(id)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
+- (void)_handleCheckpointCallback:(id)arg1;
 - (void)_handleCompletionCallback:(id)arg1;
 - (void)_handleProgressCallback:(id)arg1;
 - (void)_installTimeoutSource;
@@ -78,11 +91,14 @@
 - (id)daemon;
 - (void)dealloc;
 - (id)description;
+- (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
 - (void)finishWithError:(id)arg1;
+- (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
 - (BOOL)isConcurrent;
 - (void)main;
+- (Class)operationClass;
 - (Class)operationInfoClass;
 - (void)performCKOperation;
 - (void)processOperationResult:(id)arg1;

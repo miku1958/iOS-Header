@@ -6,7 +6,7 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class IDSAccount, IDSMessageContext, IDSProtobuf, IDSService, IDSSession, NSArray, NSData, NSDictionary, NSError, NSSet, NSString, NSURL;
+@class IDSAccount, IDSDevice, IDSMessageContext, IDSProtobuf, IDSService, IDSSession, NSArray, NSData, NSDictionary, NSError, NSSet, NSString, NSURL;
 
 @protocol IDSServiceDelegate <NSObject>
 
@@ -23,7 +23,9 @@
 - (void)service:(IDSService *)arg1 account:(IDSAccount *)arg2 inviteReceivedForSession:(IDSSession *)arg3 fromID:(NSString *)arg4 withContext:(NSData *)arg5;
 - (void)service:(IDSService *)arg1 account:(IDSAccount *)arg2 inviteReceivedForSession:(IDSSession *)arg3 fromID:(NSString *)arg4 withOptions:(NSDictionary *)arg5;
 - (void)service:(IDSService *)arg1 activeAccountsChanged:(NSSet *)arg2;
+- (void)service:(IDSService *)arg1 connectedDevicesChanged:(NSArray *)arg2;
 - (void)service:(IDSService *)arg1 devicesChanged:(NSArray *)arg2;
+- (void)service:(IDSService *)arg1 didSwitchActivePairedDevice:(IDSDevice *)arg2 acknowledgementBlock:(void (^)(void))arg3;
 - (void)service:(IDSService *)arg1 nearbyDevicesChanged:(NSArray *)arg2;
 - (void)serviceAllowedTrafficClassifiersDidReset:(IDSService *)arg1;
 - (void)serviceSpaceDidBecomeAvailable:(IDSService *)arg1;

@@ -8,7 +8,6 @@
 
 @class ACDManagedAccountType, NSString;
 
-__attribute__((visibility("hidden")))
 @interface ACDManagedAuthorization : NSManagedObject
 {
 }

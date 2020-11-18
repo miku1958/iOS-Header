@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iAd/ADAdSheetConnectionDelegate-Protocol.h>
 #import <iAd/ADAdSheetProxyDelegate-Protocol.h>
@@ -36,6 +36,8 @@
 - (id)_linkedOnVersion;
 - (void)_remote_heartbeatTokenDidChange:(id)arg1 expirationDate:(double)arg2 error:(id)arg3;
 - (void)_remote_policyEngineDidIdleDisable;
+- (void)_reportAdSpaceStatusEventWithAdOpportunityIdentifier:(id)arg1 adOriginIdentifier:(id)arg2 durationInFeed:(double)arg3 responseTime:(double)arg4 firstMessage:(BOOL)arg5 screenfuls:(long long)arg6 errorCode:(long long)arg7;
+- (void)_reportAdSpaceStatusEventWithAdOpportunityIdentifier:(id)arg1 adOriginIdentifier:(id)arg2 durationInFeed:(double)arg3 responseTime:(double)arg4 screenfuls:(long long)arg5 errorCode:(long long)arg6;
 - (void)adSheetConnectionEstablished;
 - (void)adSheetConnectionLost;
 - (id)adSheetMachServiceName;

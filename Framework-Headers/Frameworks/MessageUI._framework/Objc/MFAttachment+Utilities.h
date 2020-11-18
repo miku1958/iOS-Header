@@ -45,6 +45,7 @@
 - (struct CGSize)markupSizeForImageScale:(unsigned long long)arg1;
 - (id)markupStringForCompositionWithPrependedBlankLine:(BOOL)arg1 imageScale:(unsigned long long)arg2;
 - (id)markupStringForDisplayWithData:(id)arg1 displayStyle:(int)arg2 printableWidth:(double)arg3 useEdgeToEdgeFormattingIfApplicable:(BOOL)arg4;
+- (BOOL)needsColorspaceConversion;
 - (unsigned long long)scaledFileSize;
 - (unsigned long long)scaledFileSizeForScale:(unsigned long long)arg1;
 - (id)scaledImageToFit:(unsigned long long)arg1 saveScaledImage:(BOOL)arg2 attachmentContextID:(id)arg3;

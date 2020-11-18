@@ -6,31 +6,45 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary;
+@class NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface MCDependencyReader : NSObject
 {
     NSObject<OS_dispatch_queue> *_memberQueue;
-    NSMutableDictionary *_memberQueueDomainsDict;
+    NSMutableDictionary *_memberQueueSystemDomainsDict;
+    NSMutableDictionary *_memberQueueUserDomainsDict;
 }
 
-@property (readonly, nonatomic) NSDictionary *domainsDict;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *memberQueue; // @synthesize memberQueue=_memberQueue;
-@property (strong, nonatomic) NSMutableDictionary *memberQueueDomainsDict; // @synthesize memberQueueDomainsDict=_memberQueueDomainsDict;
+@property (strong, nonatomic) NSMutableDictionary *memberQueueSystemDomainsDict; // @synthesize memberQueueSystemDomainsDict=_memberQueueSystemDomainsDict;
+@property (strong, nonatomic) NSMutableDictionary *memberQueueUserDomainsDict; // @synthesize memberQueueUserDomainsDict=_memberQueueUserDomainsDict;
 
-+ (void)setStoragePath:(id)arg1;
++ (void)setSystemStoragePath:(id)arg1 userStoragePath:(id)arg2;
 + (id)sharedReader;
-+ (id)storagePath;
++ (id)systemStoragePath;
++ (id)userStoragePath;
 - (void).cxx_destruct;
 - (id)_init;
 - (id)dependentsOfParent:(id)arg1 inDomain:(id)arg2;
+- (id)dependentsOfParent:(id)arg1 inSystemDomain:(id)arg2;
+- (id)dependentsOfParent:(id)arg1 inUserDomain:(id)arg2;
 - (id)init;
 - (void)invalidateCache;
 - (id)memberQueueDependentsOfParent:(id)arg1 inDomain:(id)arg2;
+- (id)memberQueueDependentsOfParent:(id)arg1 inSystemDomain:(id)arg2;
+- (id)memberQueueDependentsOfParent:(id)arg1 inUserDomain:(id)arg2;
 - (id)memberQueueParentsInDomain:(id)arg1;
+- (id)memberQueueParentsInSystemDomain:(id)arg1;
+- (id)memberQueueParentsInUserDomain:(id)arg1;
 - (void)memberQueueRereadDomainsDict;
+- (void)memberQueueRereadSystemDomainsDict;
+- (void)memberQueueRereadUserDomainsDict;
 - (id)parentsInDomain:(id)arg1;
+- (id)parentsInSystemDomain:(id)arg1;
+- (id)parentsInUserDomain:(id)arg1;
+- (id)systemDomainsDict;
+- (id)userDomainsDict;
 
 @end
 

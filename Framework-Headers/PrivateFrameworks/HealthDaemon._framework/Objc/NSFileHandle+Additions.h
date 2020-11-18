@@ -7,7 +7,7 @@
 #import <Foundation/NSFileHandle.h>
 
 @interface NSFileHandle (Additions)
-- (BOOL)hk_readValue:(void *)arg1 ofSize:(unsigned long long)arg2;
-- (BOOL)hk_writeValue:(const void *)arg1 size:(unsigned long long)arg2;
+- (BOOL)hk_readValue:(void *)arg1 ofSize:(unsigned long long)arg2 error:(id *)arg3;
+- (BOOL)hk_writeValue:(const void *)arg1 size:(unsigned long long)arg2 error:(id *)arg3;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class NSArray, NSDate, NSString, NSTimeZone;
+@class NSArray, NSDate, NSSet, NSString, NSTimeZone;
 @protocol GEOTransitDeparture, GEOTransitDepartureFrequency, GEOTransitLine;
 
 @protocol GEOTransitDepartureSequence <NSObject>
@@ -15,12 +15,15 @@
 @property (readonly, nonatomic) NSString *headsign;
 @property (readonly, nonatomic) BOOL isLowFrequency;
 @property (readonly, nonatomic) id<GEOTransitLine> line;
+@property (readonly, nonatomic) NSSet *nextStopIDs;
 @property (readonly, nonatomic) NSArray *operatingHours;
 
 - (NSArray *)departuresValidForDate:(NSDate *)arg1;
 - (id<GEOTransitDeparture>)firstDepartureAfterDate:(NSDate *)arg1;
+- (id<GEOTransitDepartureFrequency>)firstDepartureFrequencyOnOrAfterDate:(NSDate *)arg1;
 - (id<GEOTransitDeparture>)firstDepartureOnOrAfterDate:(NSDate *)arg1;
 - (id<GEOTransitDeparture>)firstDepartureValidForDate:(NSDate *)arg1;
+- (NSDate *)firstOpenOperatingDateOnOrAfterDate:(NSDate *)arg1;
 - (double)frequencyForSortingAtDate:(NSDate *)arg1;
 - (id<GEOTransitDepartureFrequency>)frequencyToDescribeAtDate:(NSDate *)arg1;
 - (BOOL)hasFrequencyAtDate:(NSDate *)arg1;

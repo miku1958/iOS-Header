@@ -28,6 +28,7 @@
 @property (readonly, nonatomic) unsigned long long proxyCount;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly, nonatomic, getter=isSuspended) BOOL suspended;
+@property (readonly, nonatomic, getter=isTerminated) BOOL terminated;
 @property (readonly, nonatomic, getter=isViewService) BOOL viewService; // @synthesize viewService=_viewService;
 
 - (void).cxx_destruct;

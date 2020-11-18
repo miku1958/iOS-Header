@@ -13,6 +13,7 @@
 {
     id<HAPSecuritySessionDelegate> _delegate;
     unsigned long long _role;
+    unsigned long long _resumeSessionID;
     NSObject<OS_dispatch_queue> *_clientQueue;
     unsigned long long _state;
     struct PairingSessionPrivate *_pairingSession;
@@ -29,13 +30,16 @@
 @property (strong, nonatomic) NSData *outputKey; // @synthesize outputKey=_outputKey;
 @property (strong, nonatomic) NSMutableData *outputNonce; // @synthesize outputNonce=_outputNonce;
 @property (nonatomic) struct PairingSessionPrivate *pairingSession; // @synthesize pairingSession=_pairingSession;
+@property (readonly, nonatomic) unsigned long long resumeSessionID; // @synthesize resumeSessionID=_resumeSessionID;
 @property (readonly, nonatomic) unsigned long long role; // @synthesize role=_role;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 
 - (void).cxx_destruct;
 - (void)_closeWithError:(id)arg1;
+- (id)_handleLocalPairingIdentityRequestWithStatus:(int *)arg1;
+- (id)_handlePeerPairingIdentityRequestWithIdentifier:(id)arg1 status:(int *)arg2;
 - (void)_handleSetupExchangeComplete;
-- (BOOL)_initializeSetupSession;
+- (BOOL)_initializeSetupSession:(unsigned long long)arg1;
 - (void)_initiateClientSessionSetupExchange;
 - (id)_inputInfo;
 - (void)_invalidate;
@@ -44,14 +48,16 @@
 - (id)_outputInfo;
 - (void)_processSetupExchangeData:(id)arg1 error:(id)arg2;
 - (void)close;
+- (void)closeWithError:(id)arg1;
 - (void)dealloc;
 - (id)debugDescription;
 - (id)decryptData:(id)arg1 additionalAuthenticatedData:(id)arg2 error:(id *)arg3;
 - (id)description;
 - (id)encryptData:(id)arg1 additionalAuthenticatedData:(id)arg2 error:(id *)arg3;
-- (id)initWithRole:(unsigned long long)arg1 delegate:(id)arg2;
+- (id)initWithRole:(unsigned long long)arg1 resumeSessionID:(unsigned long long)arg2 delegate:(id)arg3;
 - (void)open;
 - (void)receivedSetupExchangeData:(id)arg1 error:(id)arg2;
+- (void)setResumeSessionID:(unsigned long long)arg1;
 
 @end
 

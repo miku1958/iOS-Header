@@ -8,13 +8,16 @@
 
 #import <BulletinDistributorCompanion/BLTSectionInfoListProviderDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString;
+@class NSMutableArray, NSMutableDictionary, NSString;
 @protocol BLTSectionInfoListDelegate, BLTSectionInfoListProvider;
 
 @interface BLTSectionInfoList : NSObject <BLTSectionInfoListProviderDelegate>
 {
     NSMutableDictionary *_sectionInfoListItemsBySectionID;
     struct _opaque_pthread_mutex_t _lock;
+    NSMutableArray *_loadingCompletionHandlers;
+    BOOL _loading;
+    BOOL _loaded;
     id<BLTSectionInfoListDelegate> _delegate;
     id<BLTSectionInfoListProvider> _overrideProvider;
     id<BLTSectionInfoListProvider> _sectionInfoProvider;
@@ -24,6 +27,7 @@
 @property (weak, nonatomic) id<BLTSectionInfoListDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=hasLoaded) BOOL loaded; // @synthesize loaded=_loaded;
 @property (strong, nonatomic) id<BLTSectionInfoListProvider> overrideProvider; // @synthesize overrideProvider=_overrideProvider;
 @property (strong, nonatomic) id<BLTSectionInfoListProvider> sectionInfoProvider; // @synthesize sectionInfoProvider=_sectionInfoProvider;
 @property (readonly) Class superclass;

@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HealthDaemon/HDEncoder.h>
+#import <HealthDaemon/HDEntityEncoder.h>
 
-@interface _HDWorkoutEntityEncoder : HDEncoder
+@class HDSQLiteStatement;
+
+@interface _HDWorkoutEntityEncoder : HDEntityEncoder
 {
-    HDEncoder *_sampleEncoder;
-    struct sqlite3_stmt *_workoutEntryLookupStatement;
+    HDSQLiteStatement *_workoutEntryLookupStatement;
 }
 
 - (void).cxx_destruct;
-- (id)codableRepresentationOfEntity:(id)arg1 collection:(id)arg2 row:(struct HDSQLiteRow *)arg3;
-- (void)finish;
-- (id)initForHealthDaemon:(id)arg1 database:(id)arg2;
+- (void)applyPropertiesToObject:(id)arg1 persistentID:(long long)arg2 row:(struct HDSQLiteRow *)arg3;
+- (id)codableRepresentationForPersistentID:(long long)arg1 row:(struct HDSQLiteRow *)arg2 collection:(id)arg3;
+- (id)initWithHealthEntityClass:(Class)arg1 healthDaemon:(id)arg2 database:(id)arg3 purpose:(long long)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
+- (id)objectForPersistentID:(long long)arg1 row:(struct HDSQLiteRow *)arg2 error:(id *)arg3;
 - (id)orderedProperties;
 
 @end

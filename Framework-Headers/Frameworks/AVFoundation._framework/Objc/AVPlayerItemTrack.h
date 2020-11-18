@@ -23,18 +23,24 @@
 - (id)_playerItem;
 - (void)_respondToFigPlaybackItemBecomingReadyForInpection;
 - (void)_transferCachedValuesToFig;
+- (void)_transferDisableColorMatchingToFig;
 - (void)_transferEnabledToFig;
 - (void)_transferLoudnessInfoToFig;
+- (void)_transferVideoEnhancementOptionsToFig;
 - (id)_weakReferenceToPlayerItem;
 - (void)dealloc;
 - (id)description;
+- (BOOL)disableColorMatching;
 - (id)fallbackTrack;
 - (void)finalize;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (id)loudnessInfo;
+- (void)setDisableColorMatching:(BOOL)arg1;
 - (void)setLoudnessInfo:(id)arg1;
+- (void)setVideoEnhancementFilterOptions:(id)arg1;
 - (int)trackID;
+- (id)videoEnhancementFilterOptions;
 
 @end
 

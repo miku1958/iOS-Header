@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     int _experimentDispatcherRequestType;
     BOOL _shouldThrottleRequests;
     NSString *_throttleKey;
+    NSString *_requestingAppId;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -36,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)_cleanup;
 - (void)cancel;
 - (void)dealloc;
-- (id)initWithRequest:(id)arg1 auditToken:(id)arg2 urlType:(unsigned long long)arg3 debugRequestName:(id)arg4 serviceType:(id)arg5 experimentType:(long long)arg6 experimentDispatcherRequestType:(int)arg7 timeout:(double)arg8 shouldThrottleRequests:(BOOL)arg9 throttleKey:(id)arg10;
+- (id)initWithRequest:(id)arg1 auditToken:(id)arg2 urlType:(unsigned long long)arg3 debugRequestName:(id)arg4 serviceType:(id)arg5 experimentType:(long long)arg6 experimentDispatcherRequestType:(int)arg7 timeout:(double)arg8 shouldThrottleRequests:(BOOL)arg9 throttleKey:(id)arg10 requestingAppId:(id)arg11;
 - (void)requester:(id)arg1 didFailWithError:(id)arg2;
 - (void)requesterDidCancel:(id)arg1;
 - (void)requesterDidFinish:(id)arg1;

@@ -11,10 +11,6 @@
 }
 
 + (id)diffFromSettings:(id)arg1 toSettings:(id)arg2;
-- (BOOL)inspectBackgrounded:(BOOL *)arg1;
-- (BOOL)inspectFrame:(struct CGRect *)arg1;
-- (BOOL)inspectInterfaceOrientation:(long long *)arg1;
-- (BOOL)inspectLevel:(double *)arg1;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 - (id)settingsByApplyingToMutableCopyOfSettings:(id)arg1;
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;

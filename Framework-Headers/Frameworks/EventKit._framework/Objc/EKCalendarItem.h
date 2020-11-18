@@ -97,6 +97,7 @@
 - (BOOL)canMoveToCalendar:(id)arg1 fromCalendar:(id)arg2 error:(id *)arg3;
 - (id)description;
 - (id)findOriginalAlarmStartingWith:(id)arg1;
+- (long long)indexForAlarm:(id)arg1;
 - (BOOL)isAlarmAcknowledgedPropertyDirty;
 - (id)lazyLoadRelationForKey:(id)arg1;
 - (void)moveToCalendar:(id)arg1;
@@ -113,6 +114,7 @@
 - (void)setSharedItemCreatedByAddress:(id)arg1;
 - (void)snoozeAlarm:(id)arg1 withLocation:(id)arg2 proximity:(long long)arg3;
 - (void)snoozeAlarm:(id)arg1 withTimeIntervalFromNow:(double)arg2;
+- (id)sortedAlarms;
 - (id)startDateForRecurrence;
 - (id)suggestionInfo;
 - (void)updatePersistentObject;

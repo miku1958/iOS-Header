@@ -64,6 +64,7 @@
 - (oneway void)prepareToPreviewCompositionAVURL:(id)arg1 accessRequestHandler:(CDUnknownBlockType)arg2;
 - (oneway void)prepareToTrimCompositionAVURL:(id)arg1 accessRequestHandler:(CDUnknownBlockType)arg2;
 - (oneway void)reloadExistingSearchMetadataWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (oneway void)removeAllUserDataWithCompletion:(CDUnknownBlockType)arg1;
 - (id)serviceProxy;
 - (oneway void)updateSearchMetadataWithRecordingURIsToInsert:(id)arg1 recordingURIsToUpdate:(id)arg2 recordingURIsToDelete:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 

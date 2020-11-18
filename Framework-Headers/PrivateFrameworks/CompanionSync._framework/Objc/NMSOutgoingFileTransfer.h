@@ -6,12 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <CompanionSync/NMSDeviceTargetable-Protocol.h>
 #import <CompanionSync/NMSObfuscatableDescriptionProviding-Protocol.h>
 
-@class NMSMessageCenter, NSDictionary, NSString, NSURL;
+@class NMSMessageCenter, NSDictionary, NSSet, NSString, NSURL;
 
-@interface NMSOutgoingFileTransfer : NSObject <NMSObfuscatableDescriptionProviding>
+@interface NMSOutgoingFileTransfer : NSObject <NMSDeviceTargetable, NMSObfuscatableDescriptionProviding>
 {
+    NSSet *targetDeviceIDs;
     NSURL *_fileURL;
     NSDictionary *_metadata;
     id _pbHeaderInfo;
@@ -36,6 +38,7 @@
 @property (nonatomic) unsigned long long priority; // @synthesize priority=_priority;
 @property (nonatomic) double sendTimeout; // @synthesize sendTimeout=_sendTimeout;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSSet *targetDeviceIDs; // @synthesize targetDeviceIDs;
 
 - (void).cxx_destruct;
 - (id)CPObfuscatedDescriptionObject;

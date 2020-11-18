@@ -11,10 +11,12 @@
 }
 
 + (void)initAddressBook;
++ (void)initCoreLocation;
 + (void)initCoreText;
 + (void)initDAEAS;
 + (void)initDataAccess;
 + (void)initImageIO;
++ (void)initMobileCoreServices;
 + (void)initServerAccounts;
 + (void)initSetupAssistant;
 + (void)initSpringBoardServices;

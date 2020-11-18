@@ -8,13 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOTransitClusterInfo, GEOTransitVehicleTime, NSString;
+@class GEOTransitVehicleTime, NSString;
 
 @interface GEOTransitVehicleInfo : PBCodable <NSCopying>
 {
+    CDStruct_9f2792e4 _clusteredRouteLineArtworkIndexs;
     unsigned long long _tripMuid;
     GEOTransitVehicleTime *_arrivalTime;
-    GEOTransitClusterInfo *_clusterInfo;
     unsigned int _departureFrequencyMax;
     unsigned int _departureFrequencyMin;
     GEOTransitVehicleTime *_departureTime;
@@ -33,12 +33,12 @@
 }
 
 @property (strong, nonatomic) GEOTransitVehicleTime *arrivalTime; // @synthesize arrivalTime=_arrivalTime;
-@property (strong, nonatomic) GEOTransitClusterInfo *clusterInfo; // @synthesize clusterInfo=_clusterInfo;
+@property (readonly, nonatomic) unsigned int *clusteredRouteLineArtworkIndexs;
+@property (readonly, nonatomic) unsigned long long clusteredRouteLineArtworkIndexsCount;
 @property (nonatomic) unsigned int departureFrequencyMax; // @synthesize departureFrequencyMax=_departureFrequencyMax;
 @property (nonatomic) unsigned int departureFrequencyMin; // @synthesize departureFrequencyMin=_departureFrequencyMin;
 @property (strong, nonatomic) GEOTransitVehicleTime *departureTime; // @synthesize departureTime=_departureTime;
 @property (readonly, nonatomic) BOOL hasArrivalTime;
-@property (readonly, nonatomic) BOOL hasClusterInfo;
 @property (nonatomic) BOOL hasDepartureFrequencyMax;
 @property (nonatomic) BOOL hasDepartureFrequencyMin;
 @property (readonly, nonatomic) BOOL hasDepartureTime;
@@ -53,6 +53,9 @@
 @property (nonatomic) unsigned long long tripMuid; // @synthesize tripMuid=_tripMuid;
 @property (strong, nonatomic) NSString *vehicleNumber; // @synthesize vehicleNumber=_vehicleNumber;
 
+- (void)addClusteredRouteLineArtworkIndex:(unsigned int)arg1;
+- (void)clearClusteredRouteLineArtworkIndexs;
+- (unsigned int)clusteredRouteLineArtworkIndexAtIndex:(unsigned long long)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -62,6 +65,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (void)setClusteredRouteLineArtworkIndexs:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
 
 @end

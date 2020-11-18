@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (unsigned long long)_geoMapItemOpeningHoursOptionsForOperatingHours:(id)arg1 withTimeZone:(id)arg2 andCompareDate:(id)arg3 hasOperatingHoursOnAnyDayOfTheWeek:(BOOL)arg4;
++ (unsigned long long)_geoMapItemOpeningHoursOptionsForOperatingHours:(id)arg1 andCompareDate:(id)arg2 hasTimeZone:(BOOL)arg3 andHasOperatingHoursOnAnyDayOfTheWeek:(BOOL)arg4;
 
 @end
 

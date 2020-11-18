@@ -64,10 +64,10 @@
 - (id)initWithPageComponent:(id)arg1;
 - (long long)numberOfCells;
 - (void)prefetchResourcesWithReason:(long long)arg1;
-- (id)previewViewControllerForIndexPath:(id)arg1;
-- (BOOL)previewsSupportedForIndexPath:(id)arg1;
+- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
 - (void)reloadCellWithIndexPath:(id)arg1 reason:(long long)arg2;
 - (void)reloadVisibleCellsWithReason:(long long)arg1;
+- (BOOL)requestLayoutWithReloadReason:(long long)arg1;
 - (struct UIEdgeInsets)sectionContentInset;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (id)targetScrollingIndexPathForElementWithIndexBarEntryID:(id)arg1 relativeSectionIndex:(long long)arg2;

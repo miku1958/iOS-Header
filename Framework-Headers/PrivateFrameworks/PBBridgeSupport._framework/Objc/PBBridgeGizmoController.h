@@ -9,7 +9,7 @@
 #import <PBBridgeSupport/IDSServiceDelegate-Protocol.h>
 #import <PBBridgeSupport/PBBridgeGizmoProtocol-Protocol.h>
 
-@class NSString, NSTimer, UIAlertView;
+@class NSString, NSTimer;
 @protocol PBBridgeConnectionDelegate;
 
 @interface PBBridgeGizmoController : PBBridgeIDSServiceDelegate <IDSServiceDelegate, PBBridgeGizmoProtocol>
@@ -20,11 +20,11 @@
     id<PBBridgeConnectionDelegate> _delegate;
     NSString *_languageIdentifer;
     NSString *_regionIdentifer;
-    UIAlertView *_confirmationAlert;
     NSTimer *_activationTimeout;
     NSString *_internalLastSendMessageID;
     CDUnknownBlockType _updateLanguageCompletion;
     CDUnknownBlockType _updateRegionCompletion;
+    CDUnknownBlockType _sessionCompletion;
     CDUnknownBlockType _activationCompletion;
     CDUnknownBlockType _siriStateCompletion;
     CDUnknownBlockType _enableSiriCompletion;
@@ -34,7 +34,6 @@
 @property (nonatomic) unsigned short activationState; // @synthesize activationState=_activationState;
 @property (strong, nonatomic) NSTimer *activationTimeout; // @synthesize activationTimeout=_activationTimeout;
 @property (readonly, nonatomic) BOOL canBeginActivation; // @synthesize canBeginActivation=_canBeginActivation;
-@property (strong, nonatomic) UIAlertView *confirmationAlert; // @synthesize confirmationAlert=_confirmationAlert;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PBBridgeConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -44,6 +43,7 @@
 @property (readonly, nonatomic) NSString *languageIdentifer; // @synthesize languageIdentifer=_languageIdentifer;
 @property (readonly, nonatomic) BOOL readyToCreatePasscode; // @synthesize readyToCreatePasscode=_readyToCreatePasscode;
 @property (readonly, nonatomic) NSString *regionIdentifer; // @synthesize regionIdentifer=_regionIdentifer;
+@property (copy, nonatomic) CDUnknownBlockType sessionCompletion; // @synthesize sessionCompletion=_sessionCompletion;
 @property (copy, nonatomic) CDUnknownBlockType siriStateCompletion; // @synthesize siriStateCompletion=_siriStateCompletion;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType updateLanguageCompletion; // @synthesize updateLanguageCompletion=_updateLanguageCompletion;
@@ -53,6 +53,7 @@
 + (id)prepareOfflineTermsResponse:(id)arg1;
 + (id)warrantyFilePathForLanguageCode:(id)arg1 countryCode:(id)arg2;
 - (void).cxx_destruct;
+- (BOOL)_getActivationData:(BOOL)arg1 forRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (BOOL)_sendRemoteCommandWithMessageID:(unsigned short)arg1 withArguments:(id)arg2;
 - (BOOL)_sendResponseToMessage:(id)arg1 withResponseMessageID:(unsigned short)arg2 withArguments:(id)arg3;
 - (void)activationTimeout:(id)arg1;
@@ -64,6 +65,7 @@
 - (void)enabledSiri:(id)arg1;
 - (void)endSetupTransaction;
 - (BOOL)getActivationDataForRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (BOOL)getSessionDataForRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getSiriStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)gotSiriState:(id)arg1;
 - (void)handleActivationData:(id)arg1;

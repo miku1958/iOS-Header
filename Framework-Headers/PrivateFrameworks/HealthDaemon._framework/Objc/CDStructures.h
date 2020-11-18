@@ -10,24 +10,48 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct HDSQLiteRow {
-    struct sqlite3_stmt *_field1;
-    int _field2;
-    int _field3;
-    struct unordered_map<const char *, int, HDSQLiteRow::_Hash, HDSQLiteRow::_Comparison, std::__1::allocator<std::__1::pair<const char *const, int>>> _field4;
+struct HDActivityCacheActiveSource {
+    double _field1;
+    long long _field2;
+    vector_d87a6415 _field3;
 };
+
+struct HDActivityCacheStatisticsBuilderSample {
+    double _field1;
+    double _field2;
+    double _field3;
+    long long _field4;
+};
+
+struct HDActivityCacheStatisticsBuilderStandHourSample;
 
 struct HDSyncAnchorRange {
     long long _field1;
     long long _field2;
 };
 
-struct __hash_node<sqlite3_stmt *, void *>;
+struct _HDActivityCacheActiveSourceCalculatorSourceEvent {
+    double _field1;
+    long long _field2;
+    long long _field3;
+};
 
-struct __hash_node<std::__1::__hash_value_type<const char *, int>, void *>;
+struct __hash_node<sqlite3_stmt *, void *>;
 
 struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
     struct __tree_node_base<void *> *__left_;
+};
+
+struct map<_HKDataTypeCode, std::__1::map<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>>, std::__1::less<_HKDataTypeCode>, std::__1::allocator<std::__1::pair<const _HKDataTypeCode, std::__1::map<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>>>>> {
+    struct __tree<std::__1::__value_type<_HKDataTypeCode, std::__1::map<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>>>, std::__1::__map_value_compare<_HKDataTypeCode, std::__1::__value_type<_HKDataTypeCode, std::__1::map<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>>>, std::__1::less<_HKDataTypeCode>, true>, std::__1::allocator<std::__1::__value_type<_HKDataTypeCode, std::__1::map<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>>>>> {
+        struct __tree_node<std::__1::__value_type<_HKDataTypeCode, std::__1::map<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>>>, void *> *__begin_node_;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<_HKDataTypeCode, std::__1::map<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>>>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __first_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<_HKDataTypeCode, std::__1::__value_type<_HKDataTypeCode, std::__1::map<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>>>, std::__1::less<_HKDataTypeCode>, true>> {
+            unsigned long long __first_;
+        } __pair3_;
+    } __tree_;
 };
 
 struct map<long long, _HDDiscreteStats, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, _HDDiscreteStats>>> {
@@ -54,7 +78,17 @@ struct map<long long, double, std::__1::less<long long>, std::__1::allocator<std
     } __tree_;
 };
 
-struct sqlite3_stmt;
+struct map<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>> {
+    struct __tree<std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>, std::__1::less<long long>, true>, std::__1::allocator<std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>> {
+        struct __tree_node<std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>, void *> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>, std::__1::less<long long>, true>> {
+            unsigned long long _field1;
+        } _field3;
+    } _field1;
+};
 
 struct unique_ptr<std::__1::__hash_node<sqlite3_stmt *, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<sqlite3_stmt *, void *>*>>> {
     struct __compressed_pair<std::__1::__hash_node<sqlite3_stmt *, void *>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<sqlite3_stmt *, void *>*>>> {
@@ -65,34 +99,6 @@ struct unique_ptr<std::__1::__hash_node<sqlite3_stmt *, void *>*[], std::__1::__
             } __data_;
         } __second_;
     } __ptr_;
-};
-
-struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<const char *, int>, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<const char *, int>, void *>*>>> {
-    struct __compressed_pair<std::__1::__hash_node<std::__1::__hash_value_type<const char *, int>, void *>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<const char *, int>, void *>*>>> {
-        struct __hash_node<std::__1::__hash_value_type<const char *, int>, void *> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<const char *, int>, void *>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<const char *, int>, void *>*>> {
-                unsigned long long _field1;
-            } _field1;
-        } _field2;
-    } _field1;
-};
-
-struct unordered_map<const char *, int, HDSQLiteRow::_Hash, HDSQLiteRow::_Comparison, std::__1::allocator<std::__1::pair<const char *const, int>>> {
-    struct __hash_table<std::__1::__hash_value_type<const char *, int>, std::__1::__unordered_map_hasher<const char *, std::__1::__hash_value_type<const char *, int>, HDSQLiteRow::_Hash, true>, std::__1::__unordered_map_equal<const char *, std::__1::__hash_value_type<const char *, int>, HDSQLiteRow::_Comparison, true>, std::__1::allocator<std::__1::__hash_value_type<const char *, int>>> {
-        struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<const char *, int>, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<const char *, int>, void *>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const char *, int>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<const char *, int>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const char *, int>, void *>*> {
-                struct __hash_node<std::__1::__hash_value_type<const char *, int>, void *> *_field1;
-            } _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<const char *, std::__1::__hash_value_type<const char *, int>, HDSQLiteRow::_Hash, true>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<const char *, std::__1::__hash_value_type<const char *, int>, HDSQLiteRow::_Comparison, true>> {
-            float _field1;
-        } _field4;
-    } _field1;
 };
 
 struct unordered_set<sqlite3_stmt *, std::__1::hash<sqlite3_stmt *>, std::__1::equal_to<sqlite3_stmt *>, std::__1::allocator<sqlite3_stmt *>> {
@@ -110,6 +116,38 @@ struct unordered_set<sqlite3_stmt *, std::__1::hash<sqlite3_stmt *>, std::__1::e
             float __first_;
         } __p3_;
     } __table_;
+};
+
+struct vector<HDActivityCacheActiveSource, std::__1::allocator<HDActivityCacheActiveSource>> {
+    struct HDActivityCacheActiveSource *__begin_;
+    struct HDActivityCacheActiveSource *__end_;
+    struct __compressed_pair<HDActivityCacheActiveSource *, std::__1::allocator<HDActivityCacheActiveSource>> {
+        struct HDActivityCacheActiveSource *__first_;
+    } __end_cap_;
+};
+
+struct vector<HDActivityCacheStatisticsBuilderSample, std::__1::allocator<HDActivityCacheStatisticsBuilderSample>> {
+    struct HDActivityCacheStatisticsBuilderSample *__begin_;
+    struct HDActivityCacheStatisticsBuilderSample *__end_;
+    struct __compressed_pair<HDActivityCacheStatisticsBuilderSample *, std::__1::allocator<HDActivityCacheStatisticsBuilderSample>> {
+        struct HDActivityCacheStatisticsBuilderSample *__first_;
+    } __end_cap_;
+};
+
+struct vector<HDActivityCacheStatisticsBuilderStandHourSample, std::__1::allocator<HDActivityCacheStatisticsBuilderStandHourSample>> {
+    struct HDActivityCacheStatisticsBuilderStandHourSample *__begin_;
+    struct HDActivityCacheStatisticsBuilderStandHourSample *__end_;
+    struct __compressed_pair<HDActivityCacheStatisticsBuilderStandHourSample *, std::__1::allocator<HDActivityCacheStatisticsBuilderStandHourSample>> {
+        struct HDActivityCacheStatisticsBuilderStandHourSample *__first_;
+    } __end_cap_;
+};
+
+struct vector<long long, std::__1::allocator<long long>> {
+    long long *_field1;
+    long long *_field2;
+    struct __compressed_pair<long long *, std::__1::allocator<long long>> {
+        long long *_field1;
+    } _field3;
 };
 
 #pragma mark Typedef'd Structures
@@ -139,4 +177,52 @@ typedef struct {
 typedef struct {
     unsigned int creationDate:1;
 } CDStruct_dc48a425;
+
+typedef struct {
+    unsigned int requestType:1;
+} CDStruct_7c66fec0;
+
+typedef struct map<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>> {
+    struct __tree<std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>, std::__1::less<long long>, true>, std::__1::allocator<std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>>> {
+        struct __tree_node<std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>, void *> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, std::__1::map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double>>>>, std::__1::less<long long>, true>> {
+            unsigned long long _field1;
+        } _field3;
+    } _field1;
+} map_a99630af;
+
+typedef struct vector<HDActivityCacheActiveSource, std::__1::allocator<HDActivityCacheActiveSource>> {
+    struct HDActivityCacheActiveSource *__begin_;
+    struct HDActivityCacheActiveSource *__end_;
+    struct __compressed_pair<HDActivityCacheActiveSource *, std::__1::allocator<HDActivityCacheActiveSource>> {
+        struct HDActivityCacheActiveSource *__first_;
+    } __end_cap_;
+} vector_6dc0ebed;
+
+typedef struct vector<HDActivityCacheStatisticsBuilderSample, std::__1::allocator<HDActivityCacheStatisticsBuilderSample>> {
+    struct HDActivityCacheStatisticsBuilderSample *__begin_;
+    struct HDActivityCacheStatisticsBuilderSample *__end_;
+    struct __compressed_pair<HDActivityCacheStatisticsBuilderSample *, std::__1::allocator<HDActivityCacheStatisticsBuilderSample>> {
+        struct HDActivityCacheStatisticsBuilderSample *__first_;
+    } __end_cap_;
+} vector_e4bf223f;
+
+typedef struct vector<HDActivityCacheStatisticsBuilderStandHourSample, std::__1::allocator<HDActivityCacheStatisticsBuilderStandHourSample>> {
+    struct HDActivityCacheStatisticsBuilderStandHourSample *__begin_;
+    struct HDActivityCacheStatisticsBuilderStandHourSample *__end_;
+    struct __compressed_pair<HDActivityCacheStatisticsBuilderStandHourSample *, std::__1::allocator<HDActivityCacheStatisticsBuilderStandHourSample>> {
+        struct HDActivityCacheStatisticsBuilderStandHourSample *__first_;
+    } __end_cap_;
+} vector_81c32433;
+
+typedef struct vector<long long, std::__1::allocator<long long>> {
+    long long *_field1;
+    long long *_field2;
+    struct __compressed_pair<long long *, std::__1::allocator<long long>> {
+        long long *_field1;
+    } _field3;
+} vector_d87a6415;
 

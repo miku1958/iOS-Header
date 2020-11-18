@@ -7,6 +7,12 @@
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    unsigned int *list;
+    unsigned long long count;
+    unsigned long long size;
+} CDStruct_9f2792e4;
+
+typedef struct {
     int *list;
     unsigned long long count;
     unsigned long long size;

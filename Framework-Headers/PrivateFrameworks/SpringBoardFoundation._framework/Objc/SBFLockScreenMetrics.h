@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface SBFLockScreenMetrics : NSObject
 {
@@ -16,6 +16,12 @@
 + (double)dateBaselineOffsetFromTime;
 + (double)dateLabelFontSize;
 + (double)dateViewBaselineY;
++ (struct UIEdgeInsets)deviceInformationInsets;
++ (double)deviceInformationLabelFontLeading;
++ (double)deviceInformationLabelFontSize;
++ (double)deviceInformationParagraphSpacing;
++ (struct UIEdgeInsets)logoutInsets;
++ (double)logoutLabelFontSize;
 + (struct UIEdgeInsets)notificationListInsets;
 + (double)pinFixedDigitEntryFieldBottomYDistanceFromNumberPadTopButton:(BOOL)arg1;
 + (double)pinFixedDigitEntryFieldIndicatorDiameter;

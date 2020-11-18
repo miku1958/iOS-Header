@@ -13,6 +13,7 @@
 
 @interface BCBatteryDevice : NSObject <NSCopying, NSCoding>
 {
+    NSString *_identifier;
     NSString *_matchIdentifier;
     long long _percentCharge;
     BOOL _charging;
@@ -22,12 +23,12 @@
     BOOL _internal;
     BOOL _powerSource;
     BOOL _fake;
-    NSString *_identifier;
     long long _vendor;
     long long _powerSourceState;
     long long _productIdentifier;
     NSString *_name;
     unsigned long long _parts;
+    NSString *_groupName;
     NSString *_baseIdentifier;
     long long _transportType;
 }
@@ -37,7 +38,8 @@
 @property (nonatomic, getter=isConnected) BOOL connected; // @synthesize connected=_connected;
 @property (nonatomic, getter=isFake) BOOL fake; // @synthesize fake=_fake;
 @property (readonly, strong, nonatomic) UIImage *glyph;
-@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
+@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic, getter=isInternal) BOOL internal; // @synthesize internal=_internal;
 @property (nonatomic, getter=isLowBattery) BOOL lowBattery; // @synthesize lowBattery=_lowBattery;
 @property (readonly, copy, nonatomic) NSString *matchIdentifier; // @synthesize matchIdentifier=_matchIdentifier;
@@ -50,7 +52,7 @@
 @property (nonatomic) long long transportType; // @synthesize transportType=_transportType;
 @property (readonly, nonatomic) long long vendor; // @synthesize vendor=_vendor;
 
-+ (id)batteryDeviceWithVendor:(long long)arg1 productIdentifier:(long long)arg2 baseIdentifier:(id)arg3 parts:(unsigned long long)arg4 matchIdentifier:(id)arg5;
++ (id)batteryDeviceWithIdentifier:(id)arg1 vendor:(long long)arg2 productIdentifier:(long long)arg3 baseIdentifier:(id)arg4 parts:(unsigned long long)arg5 matchIdentifier:(id)arg6;
 - (id)_lazyGlyphs;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -58,7 +60,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)glyphForPartKey:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithVendor:(long long)arg1 productIdentifier:(long long)arg2 baseIdentifier:(id)arg3 parts:(unsigned long long)arg4 matchIdentifier:(id)arg5;
+- (id)initWithIdentifier:(id)arg1 vendor:(long long)arg2 productIdentifier:(long long)arg3 baseIdentifier:(id)arg4 parts:(unsigned long long)arg5 matchIdentifier:(id)arg6;
 
 @end
 

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     struct Context *_impl;
 }
 
+- (BOOL)colorMatchUntaggedContent;
 - (struct CGColorSpace *)colorSpace;
 - (unsigned int)contextId;
 - (unsigned int)createFencePort;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)orderAbove:(unsigned int)arg1;
 - (void)orderBelow:(unsigned int)arg1;
 - (struct Context *)renderContext;
+- (void)setColorMatchUntaggedContent:(BOOL)arg1;
 - (void)setColorSpace:(struct CGColorSpace *)arg1;
 - (void)setFence:(unsigned int)arg1 count:(unsigned int)arg2;
 - (void)setFencePort:(unsigned int)arg1;

@@ -6,7 +6,7 @@
 
 #import <FuseUI/NSObject-Protocol.h>
 
-@class MPAVController, MPMediaItem, MPMediaPlaylist, MPMediaQuery, MPMusicPlayerControllerServer, MPRadioStation;
+@class MPAVController, MPMediaItem, MPMediaPlaylist, MPMediaQuery, MPMusicPlayerControllerServer, MPRadioStation, NSArray;
 
 @protocol MPMusicPlayerControllerServerDelegate <NSObject>
 - (MPMediaQuery *)currentMediaQueryForMusicPlayerServer:(MPMusicPlayerControllerServer *)arg1;
@@ -16,6 +16,7 @@
 - (void)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 prepareQueueWithGeniusMixPlaylist:(MPMediaPlaylist *)arg2;
 - (void)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 prepareQueueWithQuery:(MPMediaQuery *)arg2;
 - (void)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 prepareQueueWithRadioStation:(MPRadioStation *)arg2;
+- (void)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 prepareQueueWithStoreIDs:(NSArray *)arg2;
 - (void)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 registerForRepeatModeChangesWithChangeHandler:(void (^)(long long))arg2;
 - (void)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 registerForShuffleModeChangesWithChangeHandler:(void (^)(long long))arg2;
 - (void)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 setFirstItem:(MPMediaItem *)arg2;

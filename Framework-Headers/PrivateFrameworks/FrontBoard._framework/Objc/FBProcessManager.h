@@ -8,11 +8,12 @@
 
 #import <FrontBoard/FBApplicationProcessDelegate-Protocol.h>
 #import <FrontBoard/FBApplicationProcessObserver-Protocol.h>
+#import <FrontBoard/FBUIProcessManagerInternal-Protocol.h>
 
-@class BKSProcessAssertion, FBApplicationProcess, FBApplicationProcessWatchdogPolicy, NSHashTable, NSMapTable, NSString;
+@class BKSProcessAssertion, FBApplicationProcess, FBApplicationProcessWatchdogPolicy, NSHashTable, NSMapTable, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
-@interface FBProcessManager : NSObject <FBApplicationProcessDelegate, FBApplicationProcessObserver>
+@interface FBProcessManager : NSObject <FBApplicationProcessDelegate, FBApplicationProcessObserver, FBUIProcessManagerInternal>
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_callOutQueue;
@@ -25,6 +26,7 @@
     FBApplicationProcess *_foregroundAppProcess;
     FBApplicationProcess *_preferredForegroundAppProcess;
     FBApplicationProcessWatchdogPolicy *_defaultWatchdogPolicy;
+    NSMutableDictionary *_workspacesByClientIdentity;
     int _workspaceLocked;
     int _workspaceLockedToken;
 }
@@ -57,8 +59,10 @@
 - (id)applicationProcessesForBundleIdentifier:(id)arg1;
 - (id)createApplicationProcessForBundleID:(id)arg1;
 - (id)createApplicationProcessForBundleID:(id)arg1 withExecutionContext:(id)arg2;
+- (id)currentProcess;
 - (void)dealloc;
 - (id)init;
+- (void)invalidateClientWorkspace:(id)arg1;
 - (void)noteProcess:(id)arg1 didUpdateState:(id)arg2;
 - (void)noteProcessDidExit:(id)arg1;
 - (BOOL)ping;
@@ -66,6 +70,7 @@
 - (id)processesForBundleIdentifier:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (double)watchdogIntervalForProcess:(id)arg1 eventContext:(CDStruct_1b4a36b4)arg2;
+- (id)workspaceForSceneClientWithIdentity:(id)arg1;
 
 @end
 

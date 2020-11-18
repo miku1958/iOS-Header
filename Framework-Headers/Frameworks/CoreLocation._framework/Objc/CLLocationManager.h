@@ -15,6 +15,7 @@
 }
 
 @property (nonatomic) long long activityType;
+@property (nonatomic) BOOL allowsAlteredAccessoryLocations;
 @property (nonatomic) BOOL allowsBackgroundLocationUpdates;
 @property (readonly, nonatomic) double bestAccuracy;
 @property (nonatomic) id<CLLocationManagerDelegate> delegate;

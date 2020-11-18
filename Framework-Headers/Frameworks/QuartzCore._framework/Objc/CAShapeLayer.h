@@ -28,6 +28,7 @@
 + (BOOL)CA_automaticallyNotifiesObservers:(Class)arg1;
 + (BOOL)_hasRenderLayerSubclass;
 + (id)defaultValueForKey:(id)arg1;
+- (void)_colorSpaceDidChange;
 - (struct Layer *)_copyRenderLayer:(struct Transaction *)arg1 layerFlags:(unsigned int)arg2 commitFlags:(unsigned int *)arg3;
 - (void)_renderForegroundInContext:(struct CGContext *)arg1;
 - (BOOL)_renderLayerDefinesProperty:(unsigned int)arg1;

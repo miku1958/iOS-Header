@@ -6,7 +6,7 @@
 
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
-@class CKDRecordFetchAggregator, CKRecordZoneID, CKServerChangeToken, NSArray, NSData, NSObject;
+@class CKDRecordFetchAggregator, CKRecordZoneID, CKServerChangeToken, NSArray, NSData, NSMutableArray, NSObject;
 @protocol OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
@@ -25,11 +25,12 @@ __attribute__((visibility("hidden")))
     CKServerChangeToken *_clientChangeToken;
     NSArray *_desiredKeys;
     unsigned long long _resultsLimit;
+    unsigned long long _numRequestsSent;
     NSData *_resultClientChangeTokenData;
     long long _changeTypes;
     NSObject<OS_dispatch_group> *_fetchRecordsGroup;
-    NSObject<OS_dispatch_group> *_pendingClientHandlingGroup;
     CKDRecordFetchAggregator *_recordFetcher;
+    NSMutableArray *_requestInfos;
 }
 
 @property (nonatomic) long long changeTypes; // @synthesize changeTypes=_changeTypes;
@@ -37,11 +38,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property (nonatomic) BOOL fetchAllChanges; // @synthesize fetchAllChanges=_fetchAllChanges;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *fetchRecordsGroup; // @synthesize fetchRecordsGroup=_fetchRecordsGroup;
-@property (strong, nonatomic) NSObject<OS_dispatch_group> *pendingClientHandlingGroup; // @synthesize pendingClientHandlingGroup=_pendingClientHandlingGroup;
+@property (nonatomic) unsigned long long numRequestsSent; // @synthesize numRequestsSent=_numRequestsSent;
 @property (strong, nonatomic) CKServerChangeToken *previousServerChangeToken; // @synthesize previousServerChangeToken=_previousServerChangeToken;
 @property (copy, nonatomic) CDUnknownBlockType recordChangedBlock; // @synthesize recordChangedBlock=_recordChangedBlock;
 @property (strong, nonatomic) CKDRecordFetchAggregator *recordFetcher; // @synthesize recordFetcher=_recordFetcher;
 @property (strong, nonatomic) CKRecordZoneID *recordZoneID; // @synthesize recordZoneID=_recordZoneID;
+@property (strong, nonatomic) NSMutableArray *requestInfos; // @synthesize requestInfos=_requestInfos;
 @property (readonly, nonatomic) NSData *resultClientChangeToken; // @synthesize resultClientChangeToken=_resultClientChangeToken;
 @property (strong, nonatomic) NSData *resultClientChangeTokenData; // @synthesize resultClientChangeTokenData=_resultClientChangeTokenData;
 @property (strong, nonatomic) CKServerChangeToken *resultServerChangeToken; // @synthesize resultServerChangeToken=_resultServerChangeToken;
@@ -53,9 +55,9 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleFetchChangesRequestFinished:(id)arg1 callbackGroup:(id)arg2;
-- (void)_handleRecordChange:(id)arg1 callbackGroup:(id)arg2;
-- (void)_sendFetchChangesRequestWithChangeToken:(id)arg1;
+- (void)_handleFetchChangesRequestFinishedWithSchedulerInfo:(id)arg1;
+- (void)_handleRecordChange:(id)arg1 perRequestSchedulerInfo:(id)arg2;
+- (void)_sendFetchChangesRequestWithChangeToken:(id)arg1 previousRequestSchedulerInfo:(id)arg2;
 - (unsigned long long)activityStart;
 - (void)fillOutOperationResult:(id)arg1;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;

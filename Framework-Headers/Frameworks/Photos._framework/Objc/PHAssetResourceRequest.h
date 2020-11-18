@@ -6,13 +6,13 @@
 
 #import <Foundation/NSOperation.h>
 
-@class NSError, NSObject, PHAssetResource, PHAssetResourceRequestOptions;
+@class NSError, NSObject, PHAssetResourceRequestOptions, PHInternalAssetResource;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface PHAssetResourceRequest : NSOperation
 {
     int _cloudResourceRequestID;
-    PHAssetResource *_assetResource;
+    PHInternalAssetResource *_assetResource;
     PHAssetResourceRequestOptions *_options;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_semaphore> *_cloudResourceDownloadWaitSemaphore;

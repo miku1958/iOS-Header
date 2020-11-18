@@ -30,6 +30,7 @@
 - (void)_enqueueCompletionHandler:(CDUnknownBlockType)arg1 forMessageWithInternalID:(id)arg2 transportID:(id)arg3;
 - (BOOL)_isValidCommandForOutgoingMessage:(id)arg1;
 - (long long)_priorityForMessageCarryingCommand:(id)arg1;
+- (BOOL)_sendMessageData:(id)arg1 toDestination:(id)arg2 withPriority:(long long)arg3 bypassDuet:(BOOL)arg4 transportID:(id *)arg5 error:(id *)arg6;
 - (void)_sendReplyForMessage:(id)arg1 withSuccess:(BOOL)arg2 result:(id)arg3 error:(id)arg4;
 - (id)init;
 - (void)sendCommand:(id)arg1 withAccount:(id)arg2 completion:(CDUnknownBlockType)arg3;

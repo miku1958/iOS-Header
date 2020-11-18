@@ -10,13 +10,17 @@
 {
     IMDoubleLinkedListNode *_prev;
     IMDoubleLinkedListNode *_next;
-    id _dataValue;
+    id _object;
 }
 
-@property (strong) id dataValue; // @synthesize dataValue=_dataValue;
 @property (strong) IMDoubleLinkedListNode *next; // @synthesize next=_next;
+@property (strong) id object; // @synthesize object=_object;
 @property (strong) IMDoubleLinkedListNode *prev; // @synthesize prev=_prev;
 
+- (void)dealloc;
+- (id)initWithObject:(id)arg1;
+- (void)orphan;
+- (void)removeFromList;
 
 @end
 

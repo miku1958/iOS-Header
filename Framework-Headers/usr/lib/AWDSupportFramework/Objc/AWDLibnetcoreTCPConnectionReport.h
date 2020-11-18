@@ -47,6 +47,8 @@
 @property (strong, nonatomic) NSString *sourceAppIdentifier; // @synthesize sourceAppIdentifier=_sourceAppIdentifier;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 
++ (Class)connectionAttemptStatisticsReportsType;
+- (int)StringAsReportReason:(id)arg1;
 - (void)addConnectionAttemptStatisticsReports:(id)arg1;
 - (void)clearConnectionAttemptStatisticsReports;
 - (id)connectionAttemptStatisticsReportsAtIndex:(unsigned long long)arg1;
@@ -60,6 +62,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)reportReasonAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

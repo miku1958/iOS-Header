@@ -9,6 +9,7 @@
 @class PSYSyncOptions;
 
 @protocol PSYActivity <NSObject>
+- (oneway void)abortSyncWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (oneway void)beginSyncWithOptions:(PSYSyncOptions *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 @end
 

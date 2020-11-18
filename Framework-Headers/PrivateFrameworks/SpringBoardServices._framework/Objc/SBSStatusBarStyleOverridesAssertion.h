@@ -25,6 +25,7 @@
 
 + (id)assertionWithStatusBarStyleOverrides:(int)arg1 forPID:(int)arg2 exclusive:(BOOL)arg3 showsWhenForeground:(BOOL)arg4;
 + (id)backgroundLocationAssertionForPID:(int)arg1;
+- (void).cxx_destruct;
 - (void)acquireWithHandler:(CDUnknownBlockType)arg1 invalidationHandler:(CDUnknownBlockType)arg2;
 - (void)acquireWithHandler:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
 - (void)dealloc;

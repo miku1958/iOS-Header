@@ -18,6 +18,7 @@
     unsigned long long _maxRetryCount;
     NSData *_data;
     CDUnknownBlockType _performBlock;
+    CDUnknownBlockType _completionDataBlock;
     CDUnknownBlockType _completionBlock;
     CSSearchableIndex *_index;
     NSString *_label;
@@ -25,6 +26,7 @@
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
+@property (copy, nonatomic) CDUnknownBlockType completionDataBlock; // @synthesize completionDataBlock=_completionDataBlock;
 @property (strong, nonatomic) NSData *data; // @synthesize data=_data;
 @property (nonatomic) BOOL finished; // @synthesize finished=_finished;
 @property (strong, nonatomic) CSSearchableIndex *index; // @synthesize index=_index;

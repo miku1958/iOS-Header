@@ -4,11 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, NSManagedObjectID;
+@class NSArray, NSManagedObject, NSManagedObjectID;
+@protocol ICLegacyContext;
 
 @protocol ICLegacyContext
++ (id<ICLegacyContext>)newLegacyContext;
+- (NSArray *)allVisibleNoteObjectIDsForAccountWithObjectID:(NSManagedObjectID *)arg1;
 - (NSArray *)allVisibleNotesForAccountWithObjectID:(NSManagedObjectID *)arg1;
 - (unsigned long long)countOfVisibleNotesForAccountWithObjectID:(NSManagedObjectID *)arg1;
+- (NSManagedObject *)existingObjectWithID:(NSManagedObjectID *)arg1 error:(id *)arg2;
 - (BOOL)nonEmptyNoteExistsForLegacyAccountWithObjectID:(NSManagedObjectID *)arg1;
+- (void)performBlock:(void (^)(void))arg1;
+- (void)performBlockAndWait:(void (^)(void))arg1;
+- (void)reset;
 @end
 

@@ -11,7 +11,7 @@
 #import <PassKit/PKPassGroupViewDelegate-Protocol.h>
 #import <PassKit/PKPaymentServiceDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, NSTimer, PKGroup, PKPGSVHeaderContext, PKPass, PKPassFooterView, PKPassGroupView, PKPaymentService, PKReusablePassViewQueue, PKSecureElement, UIColor, UIView;
+@class NSMutableArray, NSMutableDictionary, NSString, NSTimer, PKGroup, PKPGSVHeaderContext, PKPass, PKPassFooterView, PKPassGroupView, PKPassthroughView, PKPaymentService, PKReusablePassViewQueue, PKSecureElement, UIColor;
 @protocol PKPassGroupStackViewDatasource, PKPassGroupStackViewDelegate><UIScrollViewDelegate;
 
 @interface PKPassGroupStackView : UIScrollView <PKPassDeleteDelegate, PKPaymentServiceDelegate, PKPassGroupViewDelegate, PKPassDeleteHandler>
@@ -71,9 +71,9 @@
     PKPaymentService *_paymentService;
     PKPassFooterView *_passFooterView;
     BOOL _showingFooter;
-    UIView *_headerContainerView;
-    UIView *_subheaderContainerView;
-    UIView *_passContainerView;
+    PKPassthroughView *_headerContainerView;
+    PKPassthroughView *_subheaderContainerView;
+    PKPassthroughView *_passContainerView;
     NSMutableArray *_passthroughViews;
     PKSecureElement *_secureElement;
     BOOL _footerSuppressed;

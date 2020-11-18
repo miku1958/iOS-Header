@@ -6,13 +6,14 @@
 
 #import <SAObjects/SADomainCommand.h>
 
-@class NSString, SAMPMediaItem;
+@class NSNumber, NSString, SAMPMediaItem;
 
 @interface SAMPGeniusSummon : SADomainCommand
 {
 }
 
 @property (strong, nonatomic) SAMPMediaItem *mediaItem;
+@property (copy, nonatomic) NSNumber *startPlaying;
 @property (copy, nonatomic) NSString *upNextQueueInsertLocation;
 
 + (id)geniusSummon;

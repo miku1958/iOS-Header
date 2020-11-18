@@ -6,10 +6,10 @@
 
 #import <IDSSimulatorSupport/NSObject-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSString, NSUUID;
 
 @protocol IDSSimClientProtocol <NSObject>
-- (void)connectionStateDidChange:(unsigned long long)arg1;
+- (void)connectionStateDidChange:(unsigned long long)arg1 simulatorID:(NSUUID *)arg2;
 - (void)receiveData:(NSData *)arg1 withServiceName:(NSString *)arg2 messageID:(NSString *)arg3 completion:(void (^)(BOOL))arg4;
 @end
 

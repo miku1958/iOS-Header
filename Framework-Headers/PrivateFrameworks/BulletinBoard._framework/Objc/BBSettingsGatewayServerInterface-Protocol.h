@@ -6,10 +6,11 @@
 
 #import <BulletinBoard/NSObject-Protocol.h>
 
-@class BBSectionInfo, NSArray, NSSet, NSString;
+@class BBSectionInfo, NSArray, NSDate, NSSet, NSString;
 
 @protocol BBSettingsGatewayServerInterface <NSObject>
 - (void)getBehaviorOverridesEffectiveWhileUnlockedWithHandler:(void (^)(NSNumber *, NSError *))arg1;
+- (void)getBehaviorOverridesEnabledAndEffectiveDateWithHandler:(void (^)(long long, NSDate *))arg1;
 - (void)getBehaviorOverridesEnabledWithHandler:(void (^)(NSNumber *, NSError *))arg1;
 - (void)getBehaviorOverridesWithHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)getPrivilegedSenderAddressBookGroupRecordIDAndNameWithHandler:(void (^)(NSArray *, NSError *))arg1;
@@ -20,7 +21,7 @@
 - (void)getSectionInfoWithHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)getSectionOrderRuleWithHandler:(void (^)(NSNumber *, NSError *))arg1;
 - (void)setActiveBehaviorOverrideTypesChangeUpdatesEnabled:(BOOL)arg1;
-- (void)setBehaviorOverrideStatus:(long long)arg1 source:(unsigned long long)arg2;
+- (void)setBehaviorOverrideStatus:(long long)arg1 effectiveDate:(NSDate *)arg2 source:(unsigned long long)arg3;
 - (void)setBehaviorOverrideStatusChangeUpdatesEnabled:(BOOL)arg1;
 - (void)setBehaviorOverrides:(NSArray *)arg1 source:(unsigned long long)arg2;
 - (void)setBehaviorOverridesChangeUpdatesEnabled:(BOOL)arg1;

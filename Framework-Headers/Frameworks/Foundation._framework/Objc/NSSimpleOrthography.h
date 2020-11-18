@@ -13,6 +13,7 @@
 
 + (void)initialize;
 + (id)orthographyWithFlags:(unsigned int)arg1;
++ (BOOL)supportsSecureCoding;
 - (id)allLanguages;
 - (id)allScripts;
 - (Class)classForCoder;

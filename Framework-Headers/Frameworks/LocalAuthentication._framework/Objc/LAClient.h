@@ -39,6 +39,7 @@
 - (void)_recoverConnection;
 - (void)_scheduleRecovery;
 - (BOOL)_setPermanentError:(id)arg1;
+- (id)_updateOptions:(id)arg1;
 - (void)dealloc;
 - (void)enterPassword:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)evaluateACL:(id)arg1 operation:(long long)arg2 options:(id)arg3 reply:(CDUnknownBlockType)arg4;

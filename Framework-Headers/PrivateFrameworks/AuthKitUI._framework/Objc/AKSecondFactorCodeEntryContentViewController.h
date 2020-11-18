@@ -8,16 +8,18 @@
 
 #import <AuthKitUI/AKJiggling-Protocol.h>
 
-@class AKBasicLoginContentViewController, AKCodeEntryView, NSArray, NSString;
+@class AKAppleIDAuthenticationContext, AKBasicLoginContentViewController, AKCodeEntryView, NSArray, NSString;
 
 @interface AKSecondFactorCodeEntryContentViewController : UIViewController <AKJiggling>
 {
     AKCodeEntryView *_codeGeneratorView;
     AKBasicLoginContentViewController *_titleHeaderViewController;
+    AKAppleIDAuthenticationContext *_authenticationContext;
     NSArray *_activeConstraints;
 }
 
 @property (strong, nonatomic) NSArray *activeConstraints; // @synthesize activeConstraints=_activeConstraints;
+@property (strong, nonatomic) AKAppleIDAuthenticationContext *authenticationContext; // @synthesize authenticationContext=_authenticationContext;
 @property (strong, nonatomic) AKCodeEntryView *codeGeneratorView; // @synthesize codeGeneratorView=_codeGeneratorView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

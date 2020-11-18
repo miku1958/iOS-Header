@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     struct sqlite3_stmt *_sqlDeleteAllPhoneNumbers;
     struct sqlite3_stmt *_sqlDeleteKeyStringForMUID;
     struct sqlite3_stmt *_sqlDeletePlaceDataForMUID;
-    BOOL _canCreateDebugTable;
 }
 
 - (void)_createKeyStringTable;

@@ -14,6 +14,8 @@
     BOOL _doesPurge;
     BOOL _userAgent;
     BOOL _doNotQuery;
+    BOOL _multiUserOnly;
+    BOOL _noQuota;
     NSXPCConnection *_xpcConn;
     NSXPCListenerEndpoint *_endpoint;
     NSString *_ID;
@@ -26,6 +28,8 @@
 @property BOOL doesPeriodic; // @synthesize doesPeriodic=_doesPeriodic;
 @property BOOL doesPurge; // @synthesize doesPurge=_doesPurge;
 @property (strong, nonatomic) NSXPCListenerEndpoint *endpoint; // @synthesize endpoint=_endpoint;
+@property BOOL multiUserOnly; // @synthesize multiUserOnly=_multiUserOnly;
+@property BOOL noQuota; // @synthesize noQuota=_noQuota;
 @property BOOL userAgent; // @synthesize userAgent=_userAgent;
 @property (strong, nonatomic) NSXPCConnection *xpcConn; // @synthesize xpcConn=_xpcConn;
 

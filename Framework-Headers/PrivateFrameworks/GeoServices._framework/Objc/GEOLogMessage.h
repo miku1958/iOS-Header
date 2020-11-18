@@ -58,6 +58,7 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)groupIdentifier;
+- (unsigned int)groupSequenceNumber;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

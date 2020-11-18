@@ -42,7 +42,7 @@
 - (void)cancelSetupForStateChange;
 - (void)cancelSetupForTimeout;
 - (id)init;
-- (BOOL)performSetup;
+- (BOOL)performSetupAndReturnError:(id *)arg1;
 
 @end
 

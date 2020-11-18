@@ -6,7 +6,7 @@
 
 #import <HealthKit/NSObject-Protocol.h>
 
-@class HKQueryAnchor, HKSample, HKStatistics, NSArray, NSDictionary, NSError, NSNumber, NSSet, NSUUID, _HKHeartRateReading;
+@class HKQueryAnchor, HKSample, HKStatistics, NSArray, NSDictionary, NSError, NSNumber, NSSet, NSUUID;
 
 @protocol HKQueryClient <NSObject>
 - (void)deliverError:(NSError *)arg1 forQuery:(NSUUID *)arg2;
@@ -14,8 +14,9 @@
 
 @optional
 - (void)dataUpdatedInDatabaseWithAnchor:(NSNumber *)arg1 query:(NSUUID *)arg2;
+- (void)deliverActivityStatisticsObjects:(NSArray *)arg1 forQuery:(NSUUID *)arg2;
+- (void)deliverActivitySummaries:(NSArray *)arg1 queryUUID:(NSUUID *)arg2;
 - (void)deliverDateRangeDictionary:(NSDictionary *)arg1 forQuery:(NSUUID *)arg2;
-- (void)deliverHeartRate:(_HKHeartRateReading *)arg1 forQuery:(NSUUID *)arg2;
 - (void)deliverInitialStatisticsObjects:(NSArray *)arg1 anchor:(NSNumber *)arg2 forQuery:(NSUUID *)arg3;
 - (void)deliverResetStatisticsObjects:(NSArray *)arg1 forQuery:(NSUUID *)arg2;
 - (void)deliverResetValuesByType:(NSDictionary *)arg1 forQuery:(NSUUID *)arg2;

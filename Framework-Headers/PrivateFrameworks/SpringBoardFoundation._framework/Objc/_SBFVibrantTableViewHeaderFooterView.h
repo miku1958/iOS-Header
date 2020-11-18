@@ -22,7 +22,7 @@
 @property (nonatomic) BOOL wantsPlusDLayer; // @synthesize wantsPlusDLayer=_wantsPlusDLayer;
 
 + (id)defaultBackgroundColorForGraphicsQuality:(long long)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithReuseIdentifier:(id)arg1;
 - (long long)initialGraphicsQuality;

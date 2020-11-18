@@ -15,12 +15,12 @@
     CDStruct_95bda58d _routeBadges;
     unsigned int _absEndTime;
     unsigned int _absStartTime;
-    NSMutableArray *_connectionSets;
     GEOTransitRouteDisplayStrings *_displayStrings;
-    NSMutableArray *_legs;
     unsigned int _rank;
     NSData *_routeHandle;
     NSMutableArray *_routePlanningArtworks;
+    NSMutableArray *_sectionOptions;
+    NSMutableArray *_sections;
     NSMutableArray *_steps;
     GEOPBTransitRoutingIncidentMessage *_transitIncidentMessage;
     struct {
@@ -32,7 +32,6 @@
 
 @property (nonatomic) unsigned int absEndTime; // @synthesize absEndTime=_absEndTime;
 @property (nonatomic) unsigned int absStartTime; // @synthesize absStartTime=_absStartTime;
-@property (strong, nonatomic) NSMutableArray *connectionSets; // @synthesize connectionSets=_connectionSets;
 @property (strong, nonatomic) GEOTransitRouteDisplayStrings *displayStrings; // @synthesize displayStrings=_displayStrings;
 @property (nonatomic) BOOL hasAbsEndTime;
 @property (nonatomic) BOOL hasAbsStartTime;
@@ -40,27 +39,26 @@
 @property (nonatomic) BOOL hasRank;
 @property (readonly, nonatomic) BOOL hasRouteHandle;
 @property (readonly, nonatomic) BOOL hasTransitIncidentMessage;
-@property (strong, nonatomic) NSMutableArray *legs; // @synthesize legs=_legs;
 @property (nonatomic) unsigned int rank; // @synthesize rank=_rank;
 @property (readonly, nonatomic) int *routeBadges;
 @property (readonly, nonatomic) unsigned long long routeBadgesCount;
 @property (strong, nonatomic) NSData *routeHandle; // @synthesize routeHandle=_routeHandle;
 @property (strong, nonatomic) NSMutableArray *routePlanningArtworks; // @synthesize routePlanningArtworks=_routePlanningArtworks;
+@property (strong, nonatomic) NSMutableArray *sectionOptions; // @synthesize sectionOptions=_sectionOptions;
+@property (strong, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
 @property (strong, nonatomic) NSMutableArray *steps; // @synthesize steps=_steps;
 @property (strong, nonatomic) GEOPBTransitRoutingIncidentMessage *transitIncidentMessage; // @synthesize transitIncidentMessage=_transitIncidentMessage;
 
-- (void)addConnectionSet:(id)arg1;
-- (void)addLeg:(id)arg1;
 - (void)addRouteBadge:(int)arg1;
 - (void)addRoutePlanningArtwork:(id)arg1;
+- (void)addSection:(id)arg1;
+- (void)addSectionOption:(id)arg1;
 - (void)addSteps:(id)arg1;
-- (void)clearConnectionSets;
-- (void)clearLegs;
 - (void)clearRouteBadges;
 - (void)clearRoutePlanningArtworks;
+- (void)clearSectionOptions;
+- (void)clearSections;
 - (void)clearSteps;
-- (id)connectionSetAtIndex:(unsigned long long)arg1;
-- (unsigned long long)connectionSetsCount;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -68,13 +66,15 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (id)legAtIndex:(unsigned long long)arg1;
-- (unsigned long long)legsCount;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (int)routeBadgeAtIndex:(unsigned long long)arg1;
 - (id)routePlanningArtworkAtIndex:(unsigned long long)arg1;
 - (unsigned long long)routePlanningArtworksCount;
+- (id)sectionAtIndex:(unsigned long long)arg1;
+- (id)sectionOptionAtIndex:(unsigned long long)arg1;
+- (unsigned long long)sectionOptionsCount;
+- (unsigned long long)sectionsCount;
 - (void)setRouteBadges:(int *)arg1 count:(unsigned long long)arg2;
 - (id)stepsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)stepsCount;

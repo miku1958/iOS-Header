@@ -7,7 +7,8 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (Logging)
+- (id)secureDescriptionWithBlacklistKeys:(id)arg1;
+- (id)secureDescriptionWithIndent:(id)arg1 newLine:(BOOL)arg2 blacklistedKeys:(id)arg3;
 - (id)shortDescription;
-- (id)shortDescriptionWithIndent:(id)arg1 newLine:(BOOL)arg2;
 @end
 

@@ -29,7 +29,6 @@
 - (void)requestLegacyAuthenticationWithAccountID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestPermissionForDiagnosticSubmissionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestPermissionToInitiateSetupWithCompletion:(CDUnknownBlockType)arg1;
-- (void)requestPermissionToRememberPasswordForiTunesStoreID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

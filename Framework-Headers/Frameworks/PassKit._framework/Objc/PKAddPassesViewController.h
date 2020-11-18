@@ -6,43 +6,38 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSArray, NSDate, NSURL, PKAssertion, PKRemoteAddPassesViewController, _UIAsyncInvocation;
+@class NSArray, PKAssertion, PKRemoteAddPassesViewController, PKWeakReference, _UIAsyncInvocation;
 @protocol PKAddPassesViewControllerDelegate;
 
 @interface PKAddPassesViewController : UIViewController
 {
     BOOL _viewHasAppeared;
-    BOOL _allowsPassIngestion;
     BOOL _succeeded;
-    NSDate *_perfTestingForIngestion;
-    NSArray *_passes;
-    _UIAsyncInvocation *_cancelViewServiceRequest;
+    unsigned long long _presentationSource;
+    NSArray *_passDataArray;
+    _UIAsyncInvocation *_viewServiceCancelRequest;
     PKRemoteAddPassesViewController *_remoteViewController;
     PKAssertion *_contactlessInterfaceAssertion;
-    id<PKAddPassesViewControllerDelegate> _delegate;
-    NSURL *_URL;
+    PKWeakReference *_delegate;
 }
 
-@property (strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;
-@property (strong, nonatomic) _UIAsyncInvocation *cancelViewServiceRequest; // @synthesize cancelViewServiceRequest=_cancelViewServiceRequest;
-@property (nonatomic) id<PKAddPassesViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) NSArray *passes; // @synthesize passes=_passes;
-@property (strong, nonatomic) PKRemoteAddPassesViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
+@property (nonatomic) id<PKAddPassesViewControllerDelegate> delegate;
 
 + (BOOL)_shouldForwardViewWillTransitionToSize;
 + (BOOL)canAddPasses;
+- (void)_applyRemoteViewController:(id)arg1;
+- (void)_ingestionDidFinishWithResult:(unsigned long long)arg1;
+- (void)_requestRemoteViewController;
 - (id)childViewControllerForStatusBarHidden;
 - (id)childViewControllerForStatusBarStyle;
 - (void)dealloc;
-- (void)ingestionDidFinishWithResult:(int)arg1;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithPass:(id)arg1;
 - (id)initWithPasses:(id)arg1;
+- (id)initWithPasses:(id)arg1 presentationSource:(unsigned long long)arg2;
 - (long long)modalPresentationStyle;
 - (long long)modalTransitionStyle;
 - (long long)preferredStatusBarStyle;
 - (BOOL)prefersStatusBarHidden;
-- (void)setAllowsPassIngestion:(BOOL)arg1;
 - (BOOL)shouldAutorotate;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (BOOL)succeeded;

@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @interface TIAssistantSettings : NSObject
 {
 }
 
++ (void)connectForOperations:(CDUnknownBlockType)arg1 withErrorHandler:(CDUnknownBlockType)arg2;
 + (void)dismissEnableDictationPrompt;
 + (void)promptToEnableDictationWithCompletionHandler:(CDUnknownBlockType)arg1;
++ (void)setTestBlock:(CDUnknownBlockType)arg1;
 
 @end
 

@@ -20,6 +20,7 @@
 @property BOOL acceleratesDrawing;
 @property BOOL acceptsLights;
 @property (copy) NSDictionary *actions;
+@property BOOL allowsContentsRectCornerMasking;
 @property BOOL allowsDisplayCompositing;
 @property BOOL allowsEdgeAntialiasing;
 @property BOOL allowsGroupBlending;
@@ -43,6 +44,7 @@
 @property (strong) id compositingFilter;
 @property (strong) id contents;
 @property struct CGRect contentsCenter;
+@property (copy) NSString *contentsFormat;
 @property (copy) NSString *contentsGravity;
 @property BOOL contentsOpaque;
 @property struct CGRect contentsRect;
@@ -133,6 +135,7 @@
 - (id)CAMLTypeForKey:(id)arg1;
 - (BOOL)_canDisplayConcurrently;
 - (void)_cancelAnimationTimer;
+- (void)_colorSpaceDidChange;
 - (struct Layer *)_copyRenderLayer:(struct Transaction *)arg1 layerFlags:(unsigned int)arg2 commitFlags:(unsigned int *)arg3;
 - (void)_dealloc;
 - (BOOL)_defersDidBecomeVisiblePostCommit;
@@ -148,6 +151,7 @@
 - (BOOL)_renderLayerDefinesProperty:(unsigned int)arg1;
 - (unsigned int)_renderLayerPropertyAnimationFlags:(unsigned int)arg1;
 - (void)_renderSublayersInContext:(struct CGContext *)arg1;
+- (struct CGColorSpace *)_retainColorSpace;
 - (BOOL)_scheduleAnimationTimer;
 - (void)_scrollPoint:(struct CGPoint)arg1 fromLayer:(id)arg2;
 - (void)_scrollRect:(struct CGRect)arg1 fromLayer:(id)arg2;

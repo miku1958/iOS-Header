@@ -42,6 +42,7 @@
 @property (strong, nonatomic) AWDLibnetcoreTCPTFOStatsReport *tcpTFOStatisticsReport; // @synthesize tcpTFOStatisticsReport=_tcpTFOStatisticsReport;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 
++ (Class)tcpECNInterfaceReportType;
 - (void)addTcpECNInterfaceReport:(id)arg1;
 - (void)clearTcpECNInterfaceReports;
 - (void)copyTo:(id)arg1;

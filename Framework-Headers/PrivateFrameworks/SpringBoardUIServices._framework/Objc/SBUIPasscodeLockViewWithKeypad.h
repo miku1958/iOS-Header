@@ -36,6 +36,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, getter=_undoInputOnTouchCancellation, setter=_setUndoInputOnTouchCancellation:) BOOL undoInputOnTouchCancellation; // @synthesize undoInputOnTouchCancellation=_undoInputOnTouchCancellation;
 
+- (void).cxx_destruct;
 - (double)_entryFieldBottomYDistanceFromNumberPadTopButton;
 - (BOOL)_includesStatusView;
 - (void)_layoutStatusView;

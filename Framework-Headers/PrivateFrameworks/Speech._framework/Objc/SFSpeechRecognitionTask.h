@@ -44,7 +44,7 @@
 @property (readonly) Class superclass;
 
 + (id)recognizedUtteranceFromSpeechPhrases:(id)arg1 final:(BOOL)arg2;
-+ (id)transcriptions:(id)arg1;
++ (id)transcriptionsWithTokens:(id)arg1;
 - (void).cxx_destruct;
 - (id)_initWithRequest:(id)arg1 queue:(id)arg2 languageCode:(id)arg3 taskHint:(long long)arg4;
 - (void)_start;

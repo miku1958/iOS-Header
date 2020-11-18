@@ -4,18 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SetupAssistantUI/BFFPaneHeaderView.h>
+#import <UIKit/UIView.h>
 
-@interface CDPPaneHeaderView : BFFPaneHeaderView
+@class BFFPaneHeaderView, UILabel;
+
+@interface CDPPaneHeaderView : UIView
 {
+    BFFPaneHeaderView *_header;
     BOOL _formPresentation;
 }
 
+@property (readonly, nonatomic) UIView *_header;
+@property (readonly, nonatomic) UILabel *detailTextLabel;
 @property (nonatomic) BOOL formPresentation; // @synthesize formPresentation=_formPresentation;
+@property (readonly, nonatomic) BOOL isTextLabelAlignedByLastBaseline;
+@property (readonly, nonatomic) UILabel *textLabel;
 
-- (double)_detailLabelBaselineOffsetFromTop;
+- (void).cxx_destruct;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (double)innerHeaderMaxY;
 - (void)layoutSubviews;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)setLayoutMargins:(struct UIEdgeInsets)arg1;
 
 @end
 

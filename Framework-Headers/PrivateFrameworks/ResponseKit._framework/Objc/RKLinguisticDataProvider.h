@@ -4,20 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ResponseKit/RKDataProvider.h>
+#import <objc/NSObject.h>
+
+#import <ResponseKit/RKPolarityDataProvider-Protocol.h>
 
 @class NSMutableDictionary;
 
-@interface RKLinguisticDataProvider : RKDataProvider
+@interface RKLinguisticDataProvider : NSObject <RKPolarityDataProvider>
 {
     NSMutableDictionary *_polarityMapsByLanguageID;
 }
 
 @property (strong) NSMutableDictionary *polarityMapsByLanguageID; // @synthesize polarityMapsByLanguageID=_polarityMapsByLanguageID;
 
-+ (id)sharedProvider;
 - (void).cxx_destruct;
-- (id)_init;
 - (id)init;
 - (struct __LSMMap *)polarityMapForLanguageID:(id)arg1;
 

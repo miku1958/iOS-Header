@@ -9,7 +9,7 @@
 #import <CloudPhotoLibrary/CPLAbstractObject-Protocol.h>
 #import <CloudPhotoLibrary/CPLEngineComponent-Protocol.h>
 
-@class CPLEngineChangePipe, CPLEngineClientCache, CPLEngineCloudCache, CPLEngineIDMapping, CPLEngineLibrary, CPLEngineQuarantinedRecords, CPLEngineRemappedDeletes, CPLEngineResourceDownloadQueue, CPLEngineResourceStorage, CPLEngineResourceUploadQueue, CPLEngineTransientRepository, CPLPlatformObject, NSArray, NSDate, NSHashTable, NSMutableArray, NSString, NSURL;
+@class CPLEngineChangePipe, CPLEngineClientCache, CPLEngineCloudCache, CPLEngineDerivativesCache, CPLEngineIDMapping, CPLEngineLibrary, CPLEngineQuarantinedRecords, CPLEngineRemappedDeletes, CPLEngineResourceDownloadQueue, CPLEngineResourceStorage, CPLEngineResourceUploadQueue, CPLEngineTransientRepository, CPLPlatformObject, NSArray, NSDate, NSHashTable, NSMutableArray, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface CPLEngineStore : NSObject <CPLAbstractObject, CPLEngineComponent>
@@ -34,6 +34,7 @@
     CPLEngineResourceUploadQueue *_uploadQueue;
     CPLEngineRemappedDeletes *_remappedDeletes;
     CPLEngineQuarantinedRecords *_quarantinedRecords;
+    CPLEngineDerivativesCache *_derivativesCache;
     unsigned long long _state;
 }
 
@@ -42,6 +43,7 @@
 @property (readonly, nonatomic) id corruptionInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) CPLEngineChangePipe *deletePushQueue; // @synthesize deletePushQueue=_deletePushQueue;
+@property (readonly, nonatomic) CPLEngineDerivativesCache *derivativesCache; // @synthesize derivativesCache=_derivativesCache;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) CPLEngineResourceDownloadQueue *downloadQueue; // @synthesize downloadQueue=_downloadQueue;
 @property (readonly, weak, nonatomic) CPLEngineLibrary *engineLibrary; // @synthesize engineLibrary=_engineLibrary;
@@ -55,6 +57,7 @@
 @property (readonly, nonatomic) CPLEngineQuarantinedRecords *quarantinedRecords; // @synthesize quarantinedRecords=_quarantinedRecords;
 @property (readonly, nonatomic) CPLEngineRemappedDeletes *remappedDeletes; // @synthesize remappedDeletes=_remappedDeletes;
 @property (readonly, nonatomic) CPLEngineResourceStorage *resourceStorage; // @synthesize resourceStorage=_resourceStorage;
+@property (readonly, nonatomic) BOOL shouldGenerateDerivatives;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) NSArray *storages;
 @property (readonly) Class superclass;
@@ -86,8 +89,10 @@
 - (void)getStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithEngineLibrary:(id)arg1;
 - (BOOL)isClientInSyncWithClientCache;
+- (id)lastQuarantineCountReportDate;
 - (id)libraryVersion;
 - (id)libraryZoneName;
+- (void)noteResetSyncFinished;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)performBatchedWriteTransactionWithBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)performReadTransactionWithBlock:(CDUnknownBlockType)arg1;
@@ -97,6 +102,7 @@
 - (BOOL)resetLocalSyncStateWithCause:(id)arg1 error:(id *)arg2;
 - (BOOL)resetSyncAnchorWithCause:(id)arg1 error:(id *)arg2;
 - (BOOL)storeClientIsInSyncWithClientCacheWithError:(id *)arg1;
+- (BOOL)storeLastQuarantineCountReportDate:(id)arg1 error:(id *)arg2;
 - (BOOL)storeLibraryVersion:(id)arg1 withError:(id *)arg2;
 - (BOOL)storeLibraryZoneName:(id)arg1 error:(id *)arg2;
 - (BOOL)storeSupportedFeatureVersionInLastSync:(unsigned long long)arg1 error:(id *)arg2;

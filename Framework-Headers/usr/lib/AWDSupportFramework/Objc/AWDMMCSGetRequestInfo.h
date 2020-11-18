@@ -72,6 +72,11 @@
 @property (nonatomic) long long startTime; // @synthesize startTime=_startTime;
 @property (nonatomic) long long timestamp; // @synthesize timestamp=_timestamp;
 
++ (Class)authHttpInfosType;
++ (Class)cancelErrorType;
++ (Class)completeHttpInfosType;
++ (Class)containerHttpInfosType;
++ (Class)errorType;
 - (void)addAuthHttpInfos:(id)arg1;
 - (void)addCancelError:(id)arg1;
 - (void)addCompleteHttpInfos:(id)arg1;

@@ -8,6 +8,7 @@
 
 @interface NSString (CKUtilsAdditions)
 - (id)CKMangledDocumentNameForURLFragment;
+- (id)CKNilIfLengthZero;
 - (id)CKSHA256;
 - (id)CKSafeHashStringForPathComponent;
 - (id)CKSafeStringForPathComponent;

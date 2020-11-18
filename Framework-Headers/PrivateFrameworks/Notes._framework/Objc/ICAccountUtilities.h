@@ -26,6 +26,7 @@
 + (void)startSharedInstance;
 - (void).cxx_destruct;
 - (void)accountStoreDidChange:(id)arg1;
+- (id)allICloudACAccounts;
 - (void)dealloc;
 - (id)init;
 - (id)initForObservingAccountStoreChanges:(BOOL)arg1;

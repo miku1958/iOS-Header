@@ -6,39 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <NanoRegistry/NRDeviceDiscoveryControllerXPCFrameworkDelegate-Protocol.h>
-#import <NanoRegistry/NSXPCConnectionDelegate-Protocol.h>
+@class NSArray;
 
-@class NSArray, NSMutableArray, NSString, NSXPCConnection;
-
-@interface NRDeviceDiscoveryController : NSObject <NRDeviceDiscoveryControllerXPCFrameworkDelegate, NSXPCConnectionDelegate>
+@interface NRDeviceDiscoveryController : NSObject
 {
-    NSArray *_devices;
-    NSMutableArray *_mutableDevices;
-    unsigned long long _counter;
-    NSXPCConnection *_xpcConnection;
 }
 
-@property (nonatomic) unsigned long long counter; // @synthesize counter=_counter;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSArray *devices; // @synthesize devices=_devices;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSMutableArray *mutableDevices; // @synthesize mutableDevices=_mutableDevices;
-@property (readonly) Class superclass;
-@property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
+@property (readonly, nonatomic) NSArray *devices;
 
 + (id)sharedInstance;
-- (void).cxx_destruct;
-- (BOOL)_xpcConnectToService;
 - (void)begin;
-- (void)dealloc;
 - (void)end;
 - (id)init;
-- (void)xpcAssertInClient:(id)arg1;
-- (void)xpcDidDiscoverDevice:(id)arg1 deviceID:(id)arg2 advertisedName:(id)arg3;
-- (void)xpcDidRestartDiscovery;
-- (void)xpcSetValue:(id)arg1 forProperty:(id)arg2 deviceID:(id)arg3 withSequenceNumber:(unsigned long long)arg4;
+- (void)overrideSignalStrengthLimit:(long long)arg1;
 
 @end
 

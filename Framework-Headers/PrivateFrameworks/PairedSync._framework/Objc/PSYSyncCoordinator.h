@@ -8,27 +8,32 @@
 
 #import <PairedSync/NSXPCListenerDelegate-Protocol.h>
 #import <PairedSync/PSYActivity-Protocol.h>
-#import <PairedSync/PSYSyncRestrictionProviderDelegate-Protocol.h>
+#import <PairedSync/PSYServiceSyncSessionDelegate-Protocol.h>
 
-@class NSString, NSXPCConnection, NSXPCListener, PSYSyncRestrictionProvider;
+@class NSString, NSXPCConnection, NSXPCListener, PSYServiceSyncSession;
 @protocol OS_dispatch_queue, PSYSyncCoordinatorDelegate;
 
-@interface PSYSyncCoordinator : NSObject <NSXPCListenerDelegate, PSYActivity, PSYSyncRestrictionProviderDelegate>
+@interface PSYSyncCoordinator : NSObject <NSXPCListenerDelegate, PSYActivity, PSYServiceSyncSessionDelegate>
 {
     NSXPCListener *_listener;
     CDUnknownBlockType _pendingCompletion;
-    BOOL _isFullSyncInProgress;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_delegateQueue;
-    struct _opaque_pthread_mutex_t _delegateLock;
+    struct _opaque_pthread_mutex_t {
+        long long __sig;
+        char __opaque[56];
+    } _delegateLock;
     id<PSYSyncCoordinatorDelegate> _delegate;
-    PSYSyncRestrictionProvider *_syncRestrictionProvider;
+    PSYServiceSyncSession *_activeSyncSession;
+    int _syncSwitchIDToken;
+    unsigned long long _syncRestriction;
+    unsigned long long _syncIDOfStartedSync;
     BOOL _hasStartedListening;
     NSString *_serviceName;
     NSXPCConnection *_connection;
-    unsigned long long _syncRestriction;
 }
 
+@property (readonly, nonatomic) PSYServiceSyncSession *activeSyncSession;
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PSYSyncCoordinatorDelegate> delegate;
@@ -36,37 +41,41 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property (readonly) Class superclass;
-@property unsigned long long syncRestriction; // @synthesize syncRestriction=_syncRestriction;
 
++ (id)filteredErrorWithError:(id)arg1;
 + (void)initialize;
 + (id)syncCoordinatorWithServiceName:(id)arg1;
 - (void).cxx_destruct;
 - (void)_cleanup;
+- (unsigned long long)_syncRestriction;
+- (void)_syncRestrictionDidUpdate:(id)arg1 forServiceName:(id)arg2;
+- (oneway void)abortSyncWithCompletion:(CDUnknownBlockType)arg1;
 - (void)beginDryRunSyncWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)beginSyncWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)clearPersistentState;
-- (id)defaultsCompletionErrorKey;
-- (id)defaultsPersistentStateKey;
-- (id)defaultsTransactionIDKey;
+- (void)deviceChanged:(id)arg1;
 - (void)exitForTestInput:(id)arg1;
 - (id)initWithServiceName:(id)arg1;
 - (id)initWithServiceName:(id)arg1 serviceLookupPath:(id)arg2;
+- (void)invalidateActiveSyncSession;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)performDelegateBlock:(CDUnknownBlockType)arg1;
-- (id)persistedCompletionError;
-- (long long)persistedState;
-- (id)persistedTransactionID;
 - (id)progressHandler;
+- (unsigned long long)readNotifyToken:(int)arg1;
+- (void)registerForDeviceChangeNotifications;
+- (int)registerNotifyTokenWithName:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (int)registerNotifyTokenWithName:(id)arg1 withQueue:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)reportProgress:(double)arg1;
-- (BOOL)savePersistentState;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
-- (void)setPersistedCompletionError:(id)arg1;
-- (void)setPersistedState:(long long)arg1;
-- (void)setPersistedTransactionID:(id)arg1;
 - (void)syncDidComplete;
 - (void)syncDidCompleteSending;
 - (void)syncDidFailWithError:(id)arg1;
-- (void)syncRestrictionProviderDidChangeRestriction:(id)arg1;
+- (unsigned long long)syncRestriction;
+- (void)syncSession:(id)arg1 didFailWithError:(id)arg2;
+- (void)syncSession:(id)arg1 reportProgress:(double)arg2;
+- (void)syncSessionDidComplete:(id)arg1;
+- (void)syncSessionDidCompleteSending:(id)arg1;
+- (id)syncSessionForOptions:(id)arg1;
+- (void)unregisterForDeviceChangeNotifications;
 
 @end
 

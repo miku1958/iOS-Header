@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)actionLabelsMayAdjustFontsToFit;
 - (BOOL)actionLabelsMayUseMarqueeWhenFocused;
 - (double)actionWidthForMinimumActionWidth:(double)arg1;
+- (void)animateAlertControllerView:(id)arg1 ofAlertController:(id)arg2 forPresentation:(BOOL)arg3 inContainerView:(id)arg4 descendantOfContainerView:(id)arg5 duration:(double)arg6 completionBlock:(CDUnknownBlockType)arg7;
 - (double)backgroundCornerRadius;
 - (id)backgroundView;
 - (id)backgroundViewForAction:(id)arg1 withViewRepresentation:(id)arg2 inAlertController:(id)arg3;
@@ -31,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)collectionViewOutsetSize;
 - (struct UIEdgeInsets)contentInsets;
 - (id)dimmingViewForAlertController:(id)arg1;
-- (BOOL)focusedActionAnimatesOnPresentationAndDismissal;
 - (BOOL)hideActionSeparators;
 - (BOOL)hideCancelAction:(id)arg1 inAlertController:(id)arg2;
 - (struct CATransform3D)highlightedActionTransformForActionSize:(struct CGSize)arg1;
@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (double)textFieldHorizontalMargin;
 - (id)titleLabelColor;
 - (id)titleLabelFont;
+- (double)transitionDurationForPresentation:(BOOL)arg1 ofAlertController:(id)arg2;
 
 @end
 

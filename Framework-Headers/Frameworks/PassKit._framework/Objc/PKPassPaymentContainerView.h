@@ -14,7 +14,8 @@
 #import <PassKit/PKPaymentConfirmationAlertControllerDelegate-Protocol.h>
 #import <PassKit/PKPaymentServiceDelegate-Protocol.h>
 
-@class NSData, NSMutableArray, NSNumber, NSString, PKAuthenticator, PKContactlessInterfaceSession, PKPassLibrary, PKPassPaymentApplicationView, PKPassPaymentPayStateView, PKPassPaymentSummaryView, PKPassValueAddedServiceInfoView, PKPaymentConfirmationAlertController, PKPaymentService, PKWeakReference, UIButton, UIView;
+@class NSData, NSMutableArray, NSNumber, NSObject, NSString, PKAuthenticator, PKContactlessInterfaceSession, PKPassLibrary, PKPassPaymentApplicationView, PKPassPaymentPayStateView, PKPassPaymentSummaryView, PKPassValueAddedServiceInfoView, PKPaymentConfirmationAlertController, PKPaymentService, PKWeakReference, UIButton, UIView;
+@protocol OS_dispatch_source;
 
 @interface PKPassPaymentContainerView : PKPassFooterContentView <PKPaymentServiceDelegate, PKAuthenticatorDelegate, PKPassPaymentSummaryViewDelegate, PKPassPaymentPayStateViewDelegate, PKPassPaymentApplicationViewDelegate, PKContactlessInterfaceSessionDelegate, PKPaymentConfirmationAlertControllerDelegate>
 {
@@ -54,6 +55,8 @@
     double _lastFieldExitTime;
     NSNumber *_pendingPresentationContextState;
     double _lastFingerOnTime;
+    double _lastTransactionTime;
+    NSObject<OS_dispatch_source> *_summaryAuthenticationTimer;
     PKPaymentConfirmationAlertController *_confirmationAlertController;
     NSData *_stashedAuthenticationCredential;
     long long _style;
@@ -86,6 +89,7 @@
 - (id)_buttonWithTitle:(id)arg1 alignment:(long long)arg2 action:(SEL)arg3;
 - (BOOL)_canAuthenticateWithPasscode;
 - (BOOL)_canAuthenticateWithTouchID;
+- (void)_cancelSummaryAuthenticationTimer;
 - (void)_configureForPaymentWithPaymentPass:(id)arg1 context:(id)arg2;
 - (void)_configureForStyle:(long long)arg1 context:(id)arg2;
 - (void)_configureForValueAddedServiceWithPass:(id)arg1 context:(id)arg2;

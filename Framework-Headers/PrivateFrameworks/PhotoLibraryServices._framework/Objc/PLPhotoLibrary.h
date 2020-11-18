@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSCalendar, NSMutableArray, NSMutableDictionary, NSSet, NSString, PLFetchingAlbum, PLGenericAlbum, PLInFlightAssetsAlbum, PLManagedAlbum, PLManagedAlbumList, PLManagedFolder, PLManagedObjectContext, PLThumbnailManager;
+@class NSArray, NSCalendar, NSMutableArray, NSMutableDictionary, NSSet, NSString, PLFetchingAlbum, PLGenericAlbum, PLInFlightAssetsAlbum, PLManagedAlbum, PLManagedAlbumList, PLManagedFolder, PLManagedObjectContext;
 @protocol PLAlbumProtocol;
 
 @interface PLPhotoLibrary : NSObject
@@ -17,7 +17,6 @@
     struct __CFDictionary *_allPhotos;
     int _databaseMigrationKind;
     NSMutableArray *_transactionCompletionHandlers;
-    PLThumbnailManager *_thumbnailManager;
     PLGenericAlbum *_allImportedPhotosAlbum;
     PLGenericAlbum *_lastImportedPhotosAlbum;
     NSCalendar *_exifConversionCalendar;
@@ -55,27 +54,29 @@
 @property (readonly, strong, nonatomic) PLManagedAlbumList *rootAlbumList;
 @property (readonly, strong, nonatomic) PLManagedFolder *rootFolder;
 @property (readonly, strong, nonatomic) NSObject<PLAlbumProtocol> *savedPhotosAlbum;
-@property (readonly, strong, nonatomic) PLThumbnailManager *thumbnailManager;
 @property (readonly, copy, nonatomic) NSArray *userAlbums;
 @property (readonly, strong, nonatomic) NSObject<PLAlbumProtocol> *userLibraryAlbum;
 @property (readonly, copy, nonatomic) NSArray *wallpaperAlbums;
 
 + (unsigned long long)CloudPhotoLibrarySize;
++ (void)_activateStatusTimer;
 + (void)_assetsLibrary_disableSharedPhotoStreamsSupport;
 + (BOOL)_assetsLibrary_isSharedPhotoStreamsSupportEnabled;
 + (BOOL)_assetsdQueueingMode;
++ (id)_dataMigratorFinishedFilePath;
 + (id)_dataProtectionIndicatorFilePath;
-+ (void)_doFilesystemImportIfNeededWithMOC:(id)arg1;
++ (void)_doFilesystemImportIfNeededWithMOC:(id)arg1 reason:(id)arg2;
 + (void)_enqeueRecoveryJob:(id)arg1;
 + (void)_enqueueOperationWithName:(id)arg1 priority:(long long)arg2 block:(CDUnknownBlockType)arg3;
 + (void)_inq_createPhotoStreamAlbumStreamID:(id)arg1 inLibrary:(id)arg2;
-+ (id)_operationQueue;
++ (id)_operationQueueForPriority:(long long)arg1;
 + (id)_statusDescriptionForQueue:(id)arg1;
 + (BOOL)areOpportunisticTasksDisabled;
 + (id)assetsDataDirectory;
 + (BOOL)canSaveVideoToCameraRoll:(id)arg1;
-+ (void)clearICloudPhotosMarker;
 + (id)cplAssetsDirectoryURL;
++ (id)cplDownloadFinishedMarkerFilePath;
++ (id)cplEnableMarkerFilePath;
 + (id)crashRecoveryIndicatorFilePaths:(BOOL)arg1;
 + (void)createPhotoStreamAlbumWithStreamID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)createPhotoStreamAlbumWithStreamID:(id)arg1 inLibrary:(id)arg2;
@@ -101,6 +102,7 @@
 + (void)initializeGraphicsServices;
 + (BOOL)isAlbumSynced:(id)arg1;
 + (BOOL)isApplicationWildcat;
++ (BOOL)isDataMigratorFinished;
 + (BOOL)isDataProtectionComplete;
 + (BOOL)isDisableICloudPhotos;
 + (BOOL)isDupeAnalysisNeeded;
@@ -123,6 +125,10 @@
 + (id)pathToAssetsToAlbumsMapping;
 + (id)pauseICloudPhotosFilePath;
 + (id)pauseTime;
++ (void)performAndWaitOnTransientLibraryWithName:(const char *)arg1 block:(CDUnknownBlockType)arg2;
++ (void)performOnTransientLibraryWithPriority:(long long)arg1 name:(const char *)arg2 block:(CDUnknownBlockType)arg3;
++ (void)performOnTransientLibraryWithPriority:(long long)arg1 name:(const char *)arg2 block:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
++ (void)performTransactionAndWaitOnTransientLibraryWithName:(const char *)arg1 block:(CDUnknownBlockType)arg2;
 + (id)persistedAlbumDataDirectoryURL;
 + (id)photoCloudSharingCacheDataDirectory;
 + (id)photoCloudSharingDataDirectory;
@@ -137,6 +143,7 @@
 + (id)photoDataMiscDirectory;
 + (BOOL)photoLibraryIsObtainable;
 + (id)photoMetadataDirectoryURL;
++ (id)photoMetadataDirectoryURLForMediaInMainDirectory:(id)arg1;
 + (id)photoMutationsDirectory;
 + (id)photoOutboundSharingTmpDirectoryURL;
 + (id)photoStreamsDataDirectory;
@@ -154,6 +161,7 @@
 + (void)setApplicationIsWildcat:(BOOL)arg1;
 + (void)setCameraRollCountedInQuota:(BOOL)arg1;
 + (void)setCloudAlbumSharingEnabled:(BOOL)arg1;
++ (void)setDataMigratorFinished:(BOOL)arg1;
 + (void)setDataProtectionComplete:(BOOL)arg1;
 + (void)setDisableICloudPhotos:(BOOL)arg1;
 + (void)setDupeAnalysisNeeded:(BOOL)arg1;
@@ -179,6 +187,7 @@
 + (id)takingPhotoIndicatorFilePath;
 + (id)takingVideoIndicatorFilePath;
 + (void)updateAlbumKeyAssetsInContext:(id)arg1 withPredicate:(id)arg2;
++ (void)updateICloudPhotosMarkerForEnable:(BOOL)arg1;
 + (id)videosPath;
 - (id)_allAssetsForDeletion:(id)arg1;
 - (void)_batchDeleteAssets:(id)arg1 inManagedObjectContext:(id)arg2 withReason:(id)arg3;
@@ -195,7 +204,6 @@
 - (void)_linkAsideAlbumMetadataForOTARestore;
 - (void)_loadFileExtensionInformation;
 - (void)_processPhotoIrisSidecarIfNecessary:(id)arg1 forAsset:(id)arg2;
-- (void)_releaseThumbnailManager;
 - (void)_removeSyncedAlbumsInTransactionWithManagedObjectContext:(id)arg1;
 - (void)_safeSave:(id)arg1;
 - (void)_updateHasAtLeastOnePhotoWithGPSWithInsertedCount:(unsigned long long)arg1 deletedCount:(unsigned long long)arg2 updatedAssets:(id)arg3;
@@ -204,8 +212,7 @@
 - (void)_userApplyTrashedState:(short)arg1 toAssets:(id)arg2;
 - (void)_userDeleteAlbums:(id)arg1;
 - (void)_userDeleteAssets:(id)arg1 withReason:(id)arg2;
-- (void)_withDispatchGroup:(id)arg1 synchronously:(BOOL)arg2 priority:(long long)arg3 name:(id)arg4 performBlock:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
-- (void)_withDispatchGroup:(id)arg1 synchronously:(BOOL)arg2 priority:(long long)arg3 name:(id)arg4 performTransaction:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)_withDispatchGroup:(id)arg1 synchronously:(BOOL)arg2 priority:(long long)arg3 name:(id)arg4 shouldSave:(BOOL)arg5 performTransaction:(CDUnknownBlockType)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)addCompletionHandlerToCurrentTransaction:(CDUnknownBlockType)arg1;
 - (id)addDCIMEntryAtFileURL:(id)arg1 toEvent:(struct NSObject *)arg2 sidecarFileInfo:(id)arg3 progress:(id)arg4 importSessionIdentifier:(id)arg5 isImported:(BOOL)arg6 previewImage:(id)arg7 thumbnailImage:(id)arg8 savedAssetType:(short)arg9 replacementUUID:(id)arg10 publicGlobalUUID:(id)arg11 extendedInfo:(id)arg12 thumbnailsData:(struct __CFDictionary *)arg13 withUUID:(id)arg14 ignoreEmbeddedMetadata:(BOOL)arg15 isPlaceholder:(BOOL)arg16;
 - (void)addInflightAsset:(id)arg1;
@@ -246,7 +253,6 @@
 - (struct NSObject *)eventAlbumContainingPhoto:(id)arg1;
 - (struct NSObject *)eventWithName:(id)arg1 andImportSessionIdentifier:(id)arg2;
 - (id)existingObjectWithID:(id)arg1 error:(id *)arg2;
-- (id)existingThumbnailManager;
 - (struct NSObject *)filesystemImportProgressAlbum;
 - (void)flushAlbums;
 - (void)flushDCIMAlbums;
@@ -292,6 +298,9 @@
 - (BOOL)needsMigration;
 - (id)newImageForPhoto:(id)arg1 format:(int)arg2;
 - (id)newImageForPhoto:(id)arg1 format:(int)arg2 allowPlaceholder:(BOOL)arg3 outImageProperties:(const struct __CFDictionary **)arg4 outDeliveredPlaceholder:(BOOL *)arg5;
+- (unsigned long long)numberOfCPLSupportedAssetsOfKind:(short)arg1 includingTrashedSinceDate:(id)arg2;
+- (unsigned long long)numberOfPushedAssets;
+- (unsigned long long)numberOfUnpushedAssetsOfKind:(short)arg1;
 - (id)objectWithObjectID:(id)arg1;
 - (struct NSObject *)otaRestoreProgressAlbum;
 - (void)performBlock:(CDUnknownBlockType)arg1;
@@ -300,16 +309,12 @@
 - (void)performBlock:(CDUnknownBlockType)arg1 withPriority:(long long)arg2;
 - (void)performBlockAndWait:(CDUnknownBlockType)arg1;
 - (void)performBlockAndWait:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)performBlockAndWait:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2 withPriority:(long long)arg3;
-- (void)performBlockAndWait:(CDUnknownBlockType)arg1 withPriority:(long long)arg2;
 - (void)performTransaction:(CDUnknownBlockType)arg1;
 - (void)performTransaction:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)performTransaction:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2 withPriority:(long long)arg3;
 - (void)performTransaction:(CDUnknownBlockType)arg1 withPriority:(long long)arg2;
 - (void)performTransactionAndWait:(CDUnknownBlockType)arg1;
 - (void)performTransactionAndWait:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)performTransactionAndWait:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2 withPriority:(long long)arg3;
-- (void)performTransactionAndWait:(CDUnknownBlockType)arg1 withPriority:(long long)arg2;
 - (id)photoFromAssetURL:(id)arg1;
 - (void)photoLibraryCorruptNotification;
 - (void)prepareDatabaseForOTAAssetsPhase;

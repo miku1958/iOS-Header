@@ -6,10 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class NSObject, PKPassFooterContentView, PKPassView, PKPaymentSessionHandle;
+#import <PassKit/PKPassFooterContentViewDelegate-Protocol.h>
+
+@class NSObject, NSString, PKPassFooterContentView, PKPassView, PKPaymentSessionHandle;
 @protocol OS_dispatch_source;
 
-@interface PKPassFooterView : UIView
+@interface PKPassFooterView : UIView <PKPassFooterContentViewDelegate>
 {
     PKPassView *_passView;
     PKPassFooterContentView *_contentView;
@@ -22,9 +24,13 @@
     long long _state;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isPassAuthorized;
 @property (strong, nonatomic) PKPassView *passView; // @synthesize passView=_passView;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
+@property (readonly) Class superclass;
 
 - (BOOL)_canApplyContentViewForPersonalizedApplication;
 - (BOOL)_canApplyContentViewForValueAddedService;
@@ -47,6 +53,8 @@
 - (void)didBecomeVisibleAnimated:(BOOL)arg1;
 - (id)initWithPassView:(id)arg1 context:(id)arg2;
 - (void)layoutSubviews;
+- (void)passFooterContentViewDidBeginAuthenticating:(id)arg1;
+- (void)passFooterContentViewDidEndAuthenticating:(id)arg1;
 - (void)willBecomeHiddenAnimated:(BOOL)arg1;
 - (void)willBecomeVisibleAnimated:(BOOL)arg1;
 

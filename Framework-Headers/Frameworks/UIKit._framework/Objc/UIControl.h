@@ -41,16 +41,26 @@
 @property (readonly, nonatomic, getter=isTouchInside) BOOL touchInside; // @dynamic touchInside;
 @property (readonly, nonatomic, getter=isTracking) BOOL tracking; // @dynamic tracking;
 
++ (BOOL)_allowActionsToQueue;
 - (void).cxx_destruct;
+- (id)__distributionStatisticsForUserInteractionDuration;
+- (id)__scalarStatisticsForUserTouchUpInsideEvent;
+- (id)__scalarStatisticsForUserValueChangedEvent;
+- (void)_beginInteractionDurationStatisticMeasurements;
 - (void)_cancelDelayedActions;
 - (struct CGRect)_clippedHighlightBounds;
+- (void)_commitInteractionDurationStatisticMeasurements;
 - (void)_connectInterfaceBuilderEventConnection:(id)arg1;
 - (unsigned long long)_controlEventsForActionTriggered;
 - (void)_delayActions;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
+- (id)_distributionStatisticsForUserInteractionDuration;
 - (long long)_focusedSound;
 - (BOOL)_hasActionForEventMask:(unsigned long long)arg1;
 - (double)_highlightCornerRadius;
+- (void)_incrementStatisticsForUserActionForEvents:(unsigned long long)arg1;
+- (id)_scalarStatisticsForUserTouchUpInsideEvent;
+- (id)_scalarStatisticsForUserValueChangedEvent;
 - (void)_sendActionsForEvents:(unsigned long long)arg1 withEvent:(id)arg2;
 - (void)_sendDelayedActions;
 - (void)_sendDelayedActions:(BOOL)arg1;

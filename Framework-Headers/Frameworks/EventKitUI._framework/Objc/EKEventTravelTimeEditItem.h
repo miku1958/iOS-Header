@@ -14,8 +14,8 @@
 - (void)_updateHiddenState;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
-- (BOOL)editItemViewControllerCommit:(id)arg1;
-- (BOOL)forceRefreshStartAndEndDatesOnCommit;
+- (BOOL)editItemViewControllerSave:(id)arg1;
+- (BOOL)forceRefreshStartAndEndDatesOnSave;
 - (BOOL)isInline;
 - (unsigned long long)numberOfSubitems;
 

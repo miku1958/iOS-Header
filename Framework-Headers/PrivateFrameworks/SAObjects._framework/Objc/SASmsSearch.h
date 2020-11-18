@@ -6,7 +6,7 @@
 
 #import <SAObjects/SADomainCommand.h>
 
-@class NSArray, NSDate, NSNumber, NSString;
+@class NSArray, NSDate, NSNumber, NSString, SASmsGroupName;
 
 @interface SASmsSearch : SADomainCommand
 {
@@ -17,6 +17,7 @@
 @property (copy, nonatomic) NSNumber *outgoing;
 @property (copy, nonatomic) NSArray *recipients;
 @property (copy, nonatomic) NSArray *senders;
+@property (strong, nonatomic) SASmsGroupName *smsGroup;
 @property (copy, nonatomic) NSDate *start;
 @property (copy, nonatomic) NSString *subject;
 @property (copy, nonatomic) NSNumber *unread;

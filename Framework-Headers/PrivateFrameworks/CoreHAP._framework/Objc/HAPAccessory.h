@@ -12,8 +12,10 @@
 @interface HAPAccessory : NSObject
 {
     BOOL _reachable;
+    BOOL _supportsBridgeConfiguration;
     BOOL _primary;
     BOOL _supportsRelay;
+    NSNumber *_category;
     id<HAPAccessoryDelegate> _delegate;
     HAPAccessoryServer *_server;
     NSString *_identifier;
@@ -30,7 +32,7 @@
     NSObject<OS_dispatch_queue> *_workQueue;
 }
 
-@property (readonly, copy, nonatomic) NSNumber *category;
+@property (copy, nonatomic) NSNumber *category; // @synthesize category=_category;
 @property (weak, nonatomic) id<HAPAccessoryDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) NSString *firmwareVersion; // @synthesize firmwareVersion=_firmwareVersion;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
@@ -46,6 +48,7 @@
 @property (weak, nonatomic) HAPAccessoryServer *server; // @synthesize server=_server;
 @property (copy, nonatomic) NSString *serverIdentifier; // @synthesize serverIdentifier=_serverIdentifier;
 @property (strong, nonatomic) NSArray *services; // @synthesize services=_services;
+@property (nonatomic) BOOL supportsBridgeConfiguration; // @synthesize supportsBridgeConfiguration=_supportsBridgeConfiguration;
 @property (nonatomic) BOOL supportsRelay; // @synthesize supportsRelay=_supportsRelay;
 @property (copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (strong) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
@@ -56,7 +59,10 @@
 + (id)serverIdentifierWithUniqueIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_isReachable;
+- (void)_setCategory:(id)arg1;
 - (void)_setReachable:(BOOL)arg1;
+- (void)_setSupportsBridgeConfiguration:(BOOL)arg1;
+- (BOOL)_supportsBridgeConfiguration;
 - (BOOL)_updateAndValidateServices;
 - (BOOL)_updateForAccessoryInformationService;
 - (BOOL)_updateService:(id)arg1;

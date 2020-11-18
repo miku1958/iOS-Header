@@ -27,18 +27,24 @@
     BOOL _inMigrator;
     NSMutableDictionary *_notePropertyObjectsRealized;
     BOOL _isMainContext;
+    BOOL _usePrivateQueue;
 }
 
 @property (strong, nonatomic) AccountUtilities *accountUtilities; // @synthesize accountUtilities=_accountUtilities;
 @property (nonatomic) BOOL isMainContext; // @synthesize isMainContext=_isMainContext;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic) BOOL usePrivateQueue; // @synthesize usePrivateQueue=_usePrivateQueue;
 
++ (id)allVisibleNotesMatchingPredicate:(id)arg1 context:(id)arg2;
++ (id)allVisibleNotesMatchingPredicate:(id)arg1 sorted:(BOOL)arg2 context:(id)arg3;
 + (void)clearTestsNotesRootPath;
 + (BOOL)databaseIsCorrupt:(id)arg1;
 + (id)defaultNotesSortDescriptors;
 + (id)fileProtectionOption;
 + (id)generateGUID;
 + (id)managedObjectModel;
++ (id)newFetchRequestForNotes;
++ (id)newLegacyContext;
 + (id)newManagedObjectContext;
 + (id)pathForIndex;
 + (id)pathForPersistentStore;
@@ -62,6 +68,7 @@
 - (id)allNotesMatchingPredicate:(id)arg1;
 - (id)allNotesWithoutBodiesInCollection:(id)arg1;
 - (id)allStores;
+- (id)allVisibleNoteObjectIDsForAccountWithObjectID:(id)arg1;
 - (id)allVisibleNotes;
 - (id)allVisibleNotesForAccountWithObjectID:(id)arg1;
 - (id)allVisibleNotesInCollection:(id)arg1;
@@ -90,6 +97,7 @@
 - (void)deleteNoteRegardlessOfConstraints:(id)arg1;
 - (BOOL)deleteStore:(id)arg1;
 - (void)enableChangeLogging:(BOOL)arg1;
+- (id)existingObjectWithID:(id)arg1 error:(id *)arg2;
 - (id)faultedInStoresForAccounts:(id)arg1;
 - (BOOL)forceDeleteAccount:(id)arg1;
 - (void)forceSetUpUniqueObjects;
@@ -101,7 +109,8 @@
 - (id)initForMigrator;
 - (id)initWithAccountUtilities:(id)arg1;
 - (id)initWithAccountUtilities:(id)arg1 inMigrator:(BOOL)arg2;
-- (id)initWithAccountUtilities:(id)arg1 inMigrator:(BOOL)arg2 isMainContext:(BOOL)arg3;
+- (id)initWithAccountUtilities:(id)arg1 inMigrator:(BOOL)arg2 isMainContext:(BOOL)arg3 usePrivateQueue:(BOOL)arg4;
+- (id)initWithPrivateQueue;
 - (void)invalidate;
 - (id)liveNotesNeedingBodiesPredicate;
 - (id)localAccount;
@@ -121,8 +130,11 @@
 - (id)noteChangeWithType:(int)arg1 store:(id)arg2;
 - (id)noteForObjectID:(id)arg1;
 - (id)notesForIntegerIds:(id)arg1;
+- (void)performBlock:(CDUnknownBlockType)arg1;
+- (void)performBlockAndWait:(CDUnknownBlockType)arg1;
 - (id)propertyValueForKey:(id)arg1;
 - (void)receiveDarwinNotificationWithChangeLogging:(BOOL)arg1;
+- (void)reset;
 - (void)resetNotificationCount;
 - (BOOL)save:(id *)arg1;
 - (BOOL)saveOutsideApp:(id *)arg1;

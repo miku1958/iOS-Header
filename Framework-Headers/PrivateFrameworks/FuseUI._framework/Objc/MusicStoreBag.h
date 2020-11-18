@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSURL;
+@class NSArray, NSDictionary, NSString, NSURL;
 
 @interface MusicStoreBag : NSObject
 {
@@ -14,19 +14,31 @@
 }
 
 @property (readonly, nonatomic) NSDictionary *bagDictionary; // @synthesize bagDictionary=_bagDictionary;
+@property (readonly, nonatomic) NSURL *browseURL;
+@property (readonly, nonatomic) NSURL *forYouURL;
+@property (readonly, nonatomic) NSArray *iOSVersionsForFormerFreeTrialUpsell;
+@property (readonly, nonatomic) NSArray *iOSVersionsForNoThanksUpsell;
+@property (readonly, nonatomic) NSArray *iOSVersionsForNotNowUpsell;
+@property (readonly, nonatomic) BOOL isIgnoringAddToPlaylistUserSetting;
 @property (readonly, nonatomic) unsigned long long librarySharedPlaylistTrackCountLimit;
 @property (readonly, nonatomic) long long minimumNumberOfDaysBetweenPresentingWelcomeScreen;
+@property (readonly, nonatomic) float popularityStarThreshold;
 @property (readonly, nonatomic) NSURL *prominentRadioStationInfoURL;
+@property (readonly, nonatomic) NSURL *radioGroupingURL;
+@property (readonly, nonatomic) NSString *storeFrontSuffix;
 @property (readonly, nonatomic) BOOL supportsConnect;
 @property (readonly, nonatomic) BOOL supportsSubscription;
 @property (readonly, nonatomic) NSDictionary *tabConfigurations;
-@property (readonly, nonatomic) long long versionForNoThanksOptOut;
-@property (readonly, nonatomic) long long versionForNotNowOptOut;
+@property (readonly, nonatomic) long long versionForFormerFreeTrialUpsell;
+@property (readonly, nonatomic) long long versionForNoThanksUpsell;
+@property (readonly, nonatomic) long long versionForNotNowUpsell;
 
 - (void).cxx_destruct;
-- (long long)_optOutVersionForKey:(id)arg1;
+- (id)_iOSVersionsForUpsellTypeKey:(id)arg1;
 - (id)_subscriptionDictionary;
+- (long long)_upsellVersionForKey:(id)arg1;
 - (id)initWithBagDictionary:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

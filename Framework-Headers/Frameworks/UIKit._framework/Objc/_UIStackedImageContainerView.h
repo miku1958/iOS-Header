@@ -12,18 +12,19 @@
 @interface _UIStackedImageContainerView : UIView
 {
     UIMotionEffectGroup *_stackMotionEffects;
+    BOOL _installsMotionEffectsWhenFocused;
     UIImage *_stackImage;
     NSObject<UINamedLayerStack> *_constructedStackImage;
     _UIStackedImageConfiguration *_config;
-    struct CGPoint _stackOffset;
 }
 
 @property (copy, nonatomic) _UIStackedImageConfiguration *config; // @synthesize config=_config;
 @property (strong, nonatomic) NSObject<UINamedLayerStack> *constructedStackImage; // @synthesize constructedStackImage=_constructedStackImage;
+@property (nonatomic) struct CGPoint focusDirection;
+@property (nonatomic) BOOL installsMotionEffectsWhenFocused; // @synthesize installsMotionEffectsWhenFocused=_installsMotionEffectsWhenFocused;
 @property (nonatomic, getter=isPressed) BOOL pressed;
 @property (nonatomic, getter=isStackFocused) BOOL stackFocused;
 @property (strong, nonatomic) UIImage *stackImage; // @synthesize stackImage=_stackImage;
-@property (nonatomic) struct CGPoint stackOffset; // @synthesize stackOffset=_stackOffset;
 
 + (Class)layerClass;
 - (void).cxx_destruct;

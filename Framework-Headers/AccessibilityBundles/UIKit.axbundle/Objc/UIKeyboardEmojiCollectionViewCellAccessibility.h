@@ -20,7 +20,7 @@
 - (void)_accessibilitySetCachedVariantKeys:(id)arg1;
 - (id)_accessibilityVariantKeys;
 - (id)_axEmoji;
-- (BOOL)accessibilityElementsHidden;
+- (id)accessibilityHeaderElements;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;

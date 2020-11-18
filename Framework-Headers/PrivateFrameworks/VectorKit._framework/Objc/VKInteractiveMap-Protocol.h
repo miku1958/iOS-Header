@@ -6,7 +6,7 @@
 
 #import <VectorKit/NSObject-Protocol.h>
 
-@class GEOMapRegion, GEOResourceManifestConfiguration, NSArray, NSSet, NSString, VKAnchorWrapper, VKAnimation, VKAnnotationMarker, VKFeatureMarker, VKLabelMarker, VKRasterOverlay, VKTransitLineMarker, VKViewportInfo;
+@class GEOMapRegion, GEOResourceManifestConfiguration, NSArray, NSSet, NSString, VKAnchorWrapper, VKAnimation, VKAnnotationMarker, VKFeatureMarker, VKLabelMarker, VKObjectBoundsContext, VKRasterOverlay, VKTransitLineMarker, VKViewportInfo;
 @protocol VKInteractiveMapDelegate, VKOverlay, VKRouteMatchedAnnotationPresentation, VKTrackableAnnotation;
 
 @protocol VKInteractiveMap <NSObject>
@@ -65,6 +65,7 @@
 - (long long (^)(double, double, double, double))annotationRectTest;
 - (NSArray *)attributionsForCurrentRegion;
 - (void)beginStyleAnimationGroup;
+- (VKObjectBoundsContext *)boundsForSelectedTransitLines;
 - (BOOL)canEnter3DMode;
 - (BOOL)canZoomInForTileSize:(long long)arg1;
 - (BOOL)canZoomOutForTileSize:(long long)arg1;
@@ -113,6 +114,7 @@
 - (void)selectTransitLineMarker:(VKTransitLineMarker *)arg1;
 - (VKAnnotationMarker *)selectedAnnotationMarker;
 - (VKLabelMarker *)selectedLabelMarker;
+- (NSArray *)selectedTransitLineIDs;
 - (void)setAnnotationMarkerDeselectionCallback:(void (^)(VKAnnotationMarker *))arg1;
 - (void)setCenterCoordinate3D:(CDStruct_071ac149)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(float (^)(float))arg7 completion:(void (^)(BOOL))arg8;
 - (void)setCenterCoordinate:(CDStruct_c3b9c2ee)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(float (^)(float))arg7 completion:(void (^)(BOOL))arg8;

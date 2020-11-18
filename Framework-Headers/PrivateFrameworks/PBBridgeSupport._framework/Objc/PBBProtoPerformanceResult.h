@@ -35,11 +35,12 @@
 @property (nonatomic) double timeEnded; // @synthesize timeEnded=_timeEnded;
 @property (nonatomic) double timeStarted; // @synthesize timeStarted=_timeStarted;
 
++ (void)initialize;
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (id)description;
+- (id)detailedDescription;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

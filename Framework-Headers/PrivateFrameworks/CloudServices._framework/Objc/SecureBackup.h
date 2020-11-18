@@ -33,6 +33,7 @@
 - (void)_recoverWithInfo:(id)arg1 completionQueue:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_setBackOffDateWithInfo:(id)arg1 completionQueue:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_startSMSChallengeWithInfo:(id)arg1 completionQueue:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)_stashRecoveryDataWithInfo:(id)arg1 completionQueue:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_uncachePassphraseWithInfo:(id)arg1 completionQueue:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_uncachePassphraseWithInfoAsync:(id)arg1 completionQueue:(id)arg2;
 - (void)_updateMetadataWithInfo:(id)arg1 completionQueue:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
@@ -59,6 +60,7 @@
 - (void)startSMSChallengeWithInfo:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)startSMSChallengeWithInfo:(id)arg1 completionBlockWithResults:(CDUnknownBlockType)arg2;
 - (id)startSMSChallengeWithInfo:(id)arg1 results:(id *)arg2;
+- (void)stashRecoveryDataWithInfo:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)uncachePassphraseWithInfo:(id)arg1;
 - (void)uncachePassphraseWithInfo:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)updateMetadataWithInfo:(id)arg1;

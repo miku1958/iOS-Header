@@ -184,6 +184,7 @@
 - (void)actionManager:(id)arg1 presentViewController:(id)arg2 completion:(CDUnknownBlockType)arg3 modally:(BOOL)arg4;
 - (void)actionManager:(id)arg1 sendFeedback:(id)arg2;
 - (void)activate;
+- (void)addKeyCommandForKey:(id)arg1 includeCommand:(BOOL)arg2 action:(SEL)arg3;
 - (void)animateForReachabilityActivatedWithOffsetFactor:(double)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)animateForReachabilityDeactivatedWithHandler:(CDUnknownBlockType)arg1;
 - (void)animateZKWIn;
@@ -191,6 +192,7 @@
 - (void)attributionButtonTapped:(id)arg1;
 - (float)audioLevelForFlamesView;
 - (void)backgroundResetToFullZKWSearchModeIfNeeded;
+- (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)cancelButtonPressed;
 - (void)clearPurgeableMemoryForNonVisibleTableViewCells;
 - (void)clearSearchTimerDidFire;
@@ -208,6 +210,7 @@
 - (void)dismiss;
 - (void)dismissAnimated:(BOOL)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)donePressed;
+- (void)downArrowPressed:(id)arg1;
 - (BOOL)expandableSidewaysRowExistsInSection:(long long)arg1;
 - (void)finishDictation;
 - (void)firstTimeViewControllerDidSelectContinueAction:(id)arg1;
@@ -217,12 +220,17 @@
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)handleCancelReachabilityGesture:(id)arg1;
 - (void)handleDictationCompletion:(id)arg1;
+- (id)headerNextResponder;
+- (void)highlightFirstRowIfAble;
 - (id)init;
 - (id)inputTypeForInputMode:(id)arg1;
 - (BOOL)isDictationAvailable;
 - (BOOL)isZKWSearchMode;
+- (void)leftArrowPressed;
 - (void)loadView;
 - (long long)maxUnexpandedRowsInSection:(long long)arg1;
+- (void)moveCursorToBeginning;
+- (void)moveCursorToEnd;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (long long)numberOfPossibleRowsInSection:(long long)arg1;
@@ -239,6 +247,9 @@
 - (id)resultsForRow:(long long)arg1 inSection:(long long)arg2 expanded:(BOOL)arg3;
 - (id)resultsForRowsInSection:(long long)arg1 expanded:(BOOL)arg2;
 - (id)resultsForRowsInSection:(long long)arg1 stopAfterRow:(long long)arg2 expanded:(BOOL)arg3;
+- (void)returnPressed;
+- (void)rightArrowPressed;
+- (void)scrollIndexPathToVisible:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;
@@ -251,6 +262,7 @@
 - (void)searchTableViewExpansionDidToggleBegin:(id)arg1;
 - (void)searchTableViewExpansionDidToggleEnd:(id)arg1;
 - (BOOL)sectionCanHaveSidewaysRows:(id)arg1;
+- (void)selectHighlightedRow;
 - (void)sendRenderFeedback;
 - (void)sendRenderFeedbackInternal;
 - (void)setSearchMode:(long long)arg1;
@@ -287,6 +299,7 @@
 - (BOOL)textFieldShouldClear:(id)arg1;
 - (void)timeToStartDictation:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)upArrowPressed:(id)arg1;
 - (void)updateHeaderHeights;
 - (void)updatePresentationProgress:(double)arg1;
 - (void)updateZKWBlurProgress:(double)arg1;

@@ -30,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (id)thumbnailImage;
 
 @end
 

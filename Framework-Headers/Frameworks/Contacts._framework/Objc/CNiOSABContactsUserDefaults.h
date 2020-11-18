@@ -15,8 +15,8 @@ __attribute__((visibility("hidden")))
     NSCache *_valueCache;
 }
 
-- (void)_startObservingForDefaultKey:(id)arg1;
-- (void)_stopObservingForDefaultKey:(id)arg1;
+- (void)_registerObserverForKey:(id)arg1;
+- (void)_unregisterObserverForKey:(id)arg1;
 - (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
 - (id)countryCode;
 - (void)dealloc;

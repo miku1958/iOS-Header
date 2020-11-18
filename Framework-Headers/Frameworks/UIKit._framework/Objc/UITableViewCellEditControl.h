@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic, getter=isHiding) BOOL hiding;
 @property (nonatomic, getter=isRotated) BOOL rotated;
+@property (readonly, nonatomic) BOOL wantsImageShadow;
 @property (readonly, nonatomic) BOOL wantsMaskingWhileAnimatingDisabled;
 
 - (void).cxx_destruct;

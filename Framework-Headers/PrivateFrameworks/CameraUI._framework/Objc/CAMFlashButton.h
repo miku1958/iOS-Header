@@ -28,6 +28,7 @@
 - (void)_commonCAMFlashButtonInitialization;
 - (id)_currentGlyphImage;
 - (void)_updateCurrentGlyphImage;
+- (double)collapsedSelectedLabelHorizontalMargin;
 - (id)headerView;
 - (id)hiddenIndexesWhileCollapsed;
 - (long long)indexForMode:(long long)arg1;
@@ -36,6 +37,7 @@
 - (long long)numberOfMenuItems;
 - (void)prepareHeaderViewForExpanding:(BOOL)arg1;
 - (void)reloadData;
+- (void)setExpansionOrientation:(long long)arg1;
 - (BOOL)shouldIgnoreMenuInteraction;
 - (id)titleForMenuItemAtIndex:(long long)arg1;
 - (BOOL)wantsSelectedItemToBeVisible;

@@ -18,6 +18,7 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_queue_noteChanged;
 - (void)dealloc;
 - (id)displayIdentifiers;

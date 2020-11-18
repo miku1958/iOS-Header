@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SpringBoardFoundation/SBFObserver-Protocol.h>
 
@@ -24,7 +24,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (void)observerDidComplete;
 - (void)observerDidFailWithError:(id)arg1;

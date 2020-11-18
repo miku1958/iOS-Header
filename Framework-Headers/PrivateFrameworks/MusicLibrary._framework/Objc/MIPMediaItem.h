@@ -60,6 +60,7 @@
     MIPSong *_song;
     NSString *_sortTitle;
     NSString *_storeAssetFlavor;
+    int _storeProtectionType;
     NSString *_storeXID;
     NSString *_title;
     MIPTVShow *_tvShow;
@@ -105,6 +106,7 @@
         unsigned int purchaseHistoryToken:1;
         unsigned int skipCount:1;
         unsigned int skipCountDelta:1;
+        unsigned int storeProtectionType:1;
         unsigned int year:1;
         unsigned int cloudAssetAvailable:1;
         unsigned int explicitContent:1;
@@ -193,6 +195,7 @@
 @property (readonly, nonatomic) BOOL hasStoreAssetFlavor;
 @property (nonatomic) BOOL hasStoreId;
 @property (nonatomic) BOOL hasStorePlaylistId;
+@property (nonatomic) BOOL hasStoreProtectionType;
 @property (readonly, nonatomic) BOOL hasStoreXID;
 @property (nonatomic) BOOL hasStorefrontId;
 @property (nonatomic) BOOL hasSubscriptionStoreItemId;
@@ -230,6 +233,7 @@
 @property (strong, nonatomic) NSString *storeAssetFlavor; // @synthesize storeAssetFlavor=_storeAssetFlavor;
 @property (nonatomic) long long storeId; // @synthesize storeId=_storeId;
 @property (nonatomic) long long storePlaylistId; // @synthesize storePlaylistId=_storePlaylistId;
+@property (nonatomic) int storeProtectionType; // @synthesize storeProtectionType=_storeProtectionType;
 @property (strong, nonatomic) NSString *storeXID; // @synthesize storeXID=_storeXID;
 @property (nonatomic) long long storefrontId; // @synthesize storefrontId=_storefrontId;
 @property (nonatomic) long long subscriptionStoreItemId; // @synthesize subscriptionStoreItemId=_subscriptionStoreItemId;

@@ -21,7 +21,7 @@
     long long _deletionAction;
 }
 
-@property (nonatomic) NSString *defaultValue; // @synthesize defaultValue=_defaultValue;
+@property (copy, nonatomic) NSString *defaultValue; // @synthesize defaultValue=_defaultValue;
 @property (nonatomic) long long deletionAction; // @synthesize deletionAction=_deletionAction;
 @property (copy, nonatomic) NSString *foreignKeyTargetColumn; // @synthesize foreignKeyTargetColumn=_foreignKeyTargetColumn;
 @property (copy, nonatomic) NSString *foreignKeyTargetTable; // @synthesize foreignKeyTargetTable=_foreignKeyTargetTable;

@@ -67,7 +67,6 @@
 - (unsigned long long)groupCount;
 - (unsigned long long)groupIndexForPassUniqueID:(id)arg1;
 - (void)handleUserPassDelete:(id)arg1;
-- (void)handleUserPassIngestionWithData:(id)arg1 passType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)indexOfGroup:(id)arg1;
 - (unsigned long long)indexOfSeparationGroup;
 - (id)init;

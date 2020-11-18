@@ -6,7 +6,7 @@
 
 #import <StoreKitUI/NSObject-Protocol.h>
 
-@class NSSet, SKUILibraryItem, SKUILibraryItemState;
+@class NSArray, NSSet, SKUILibraryItem, SKUILibraryItemState;
 
 @protocol SKUILibraryInterface <NSObject>
 - (void)enumerateStatesForLibraryItems:(NSSet *)arg1 usingBlock:(void (^)(SKUILibraryItem *, SKUILibraryItemState *, BOOL *))arg2;
@@ -15,5 +15,6 @@
 @optional
 - (NSSet *)exposedPlatformItemKinds;
 - (BOOL)performActionForLibraryItem:(SKUILibraryItem *)arg1;
+- (void)removeMediaItemsForLibraryItems:(NSArray *)arg1;
 @end
 

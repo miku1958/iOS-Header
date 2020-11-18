@@ -10,11 +10,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct CGPoint {
-    double x;
-    double y;
-};
-
 struct _CCCryptor;
 
 #pragma mark Typedef'd Structures

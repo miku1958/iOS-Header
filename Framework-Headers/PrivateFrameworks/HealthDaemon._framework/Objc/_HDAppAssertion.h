@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
+@class HDAppAssertionManager, HDDaemon, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface _HDAppAssertion : NSObject
@@ -16,13 +16,17 @@
     NSMutableArray *_pendingDataTypeCodes;
     double _lastLaunchAttempt;
     long long _launchErrorCount;
+    HDDaemon *_daemon;
+    HDAppAssertionManager *_assertionManager;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_pendingLaunchCompletions;
     NSMutableSet *_processAssertions;
     NSObject<OS_dispatch_source> *_processDeathSource;
 }
 
+@property (weak, nonatomic) HDAppAssertionManager *assertionManager; // @synthesize assertionManager=_assertionManager;
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (weak, nonatomic) HDDaemon *daemon; // @synthesize daemon=_daemon;
 @property (nonatomic) BOOL invalidated; // @synthesize invalidated=_invalidated;
 @property (readonly, nonatomic) double lastLaunchAttempt; // @synthesize lastLaunchAttempt=_lastLaunchAttempt;
 @property (readonly, nonatomic) long long launchErrorCount; // @synthesize launchErrorCount=_launchErrorCount;
@@ -38,7 +42,7 @@
 - (void)_queue_invalidate;
 - (void)extendForDataType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)hash;
-- (id)initWithBundleIdentifier:(id)arg1 queue:(id)arg2;
+- (id)initWithBundleIdentifier:(id)arg1 assertionManager:(id)arg2 daemon:(id)arg3 queue:(id)arg4;
 - (void)invalidateForDataType:(long long)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)launchWithCompletion:(CDUnknownBlockType)arg1;

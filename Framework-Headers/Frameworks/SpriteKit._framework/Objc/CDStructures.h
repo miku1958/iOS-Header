@@ -891,6 +891,7 @@ struct SKCRenderer {
         unsigned int _field32;
         struct SKCRenderBatch _field33;
         struct SKCStats *_field34;
+        struct vector<std::__1::shared_ptr<jet_buffer>, std::__1::allocator<std::__1::shared_ptr<jet_buffer>>> _field35;
     } _field7;
     struct SKCStats *_field8;
     struct SKCStats _field9;
@@ -1173,6 +1174,9 @@ struct SKCShapeNode {
     struct shared_ptr<jet_buffer_pool> _field43;
     struct shared_ptr<jet_buffer_pool> _field44;
     struct shared_ptr<jet_buffer_pool> _field45;
+    struct shared_ptr<jet_buffer_pool> _field46;
+    struct shared_ptr<jet_buffer_pool> _field47;
+    struct shared_ptr<jet_buffer_pool> _field48;
 };
 
 struct SKCSpeed {
@@ -1809,6 +1813,14 @@ struct vector<Token, std::__1::allocator<Token>> {
     struct Token *_field2;
     struct __compressed_pair<Token *, std::__1::allocator<Token>> {
         struct Token *_field1;
+    } _field3;
+};
+
+struct vector<std::__1::shared_ptr<jet_buffer>, std::__1::allocator<std::__1::shared_ptr<jet_buffer>>> {
+    struct shared_ptr<jet_buffer> *_field1;
+    struct shared_ptr<jet_buffer> *_field2;
+    struct __compressed_pair<std::__1::shared_ptr<jet_buffer>*, std::__1::allocator<std::__1::shared_ptr<jet_buffer>>> {
+        struct shared_ptr<jet_buffer> *_field1;
     } _field3;
 };
 

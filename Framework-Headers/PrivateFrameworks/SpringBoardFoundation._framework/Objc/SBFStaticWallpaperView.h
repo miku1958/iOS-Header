@@ -6,14 +6,14 @@
 
 #import <SpringBoardFoundation/SBFWallpaperView.h>
 
-@class NSMutableSet, SBFColorBoxes, UIImage;
+@class SBFColorBoxes, UIImage;
 
 @interface SBFStaticWallpaperView : SBFWallpaperView
 {
-    NSMutableSet *_mappedBackdropKeys;
     UIImage *_image;
     UIImage *_displayedImage;
-    BOOL _sampleAndDiplayedImageAreSame;
+    UIImage *_displayedSurfaceImage;
+    BOOL _sampleAndDisplayedImageAreSame;
     double _overallContrast;
     SBFColorBoxes *_colorBoxes;
 }
@@ -22,36 +22,39 @@
 
 + (BOOL)_allowsParallax;
 + (BOOL)_allowsRasterization;
+- (void).cxx_destruct;
 - (id)_averageColorInContentViewRect:(struct CGRect)arg1 smudgeRadius:(double)arg2;
 - (id)_blurredImage;
-- (void)_cacheImagesIfNeededTreated:(BOOL)arg1;
+- (void)_cacheImagesIfNeeded;
 - (id)_computeAverageColor;
 - (id)_createColorBoxes;
 - (id)_displayedImage;
 - (id)_displayedImageKey;
-- (id)_imageForBackdropParameters:(CDStruct_57d1beb2)arg1 includeTint:(BOOL)arg2;
+- (id)_displayedSurfaceImage;
+- (id)_displayedSurfaceImageKey;
+- (id)_imageForBackdropParameters:(CDStruct_595f0d30)arg1 includeTint:(BOOL)arg2;
 - (struct CGSize)_imageSize;
-- (id)_mappedImageKeyForParameters:(CDStruct_57d1beb2)arg1 includingTint:(BOOL)arg2;
-- (void)_removeMappedBlurs;
+- (id)_mappedImageKeyForParameters:(CDStruct_595f0d30)arg1 includingTint:(BOOL)arg2;
 - (id)_repeatingGradientImageWithSize:(struct CGSize)arg1 scale:(double)arg2;
 - (void)_resetColorBoxes;
 - (id)_sampleImageKey;
+- (void)_setDisplayedImage:(id)arg1;
 - (void)_setImage:(id)arg1;
 - (void)_setSampleImage:(id)arg1;
 - (void)_setupContentView;
 - (void)_setupSampleImage:(id)arg1 treated:(BOOL)arg2;
 - (void)_setupWallpaperImage:(id)arg1 treated:(BOOL)arg2 forceNoTreatment:(BOOL)arg3;
-- (id)_untintedImageForBackdropParameters:(CDStruct_57d1beb2)arg1;
+- (id)_untintedImageForBackdropParameters:(CDStruct_595f0d30)arg1;
+- (id)_variantCacheIdentifier;
 - (id)_wallpaperImageForAnalysis;
 - (float)_zoomScale;
 - (double)contrastInRect:(struct CGRect)arg1;
 - (double)contrastInRect:(struct CGRect)arg1 contrastWithinBoxes:(double *)arg2 contrastBetweenBoxes:(double *)arg3;
 - (BOOL)contrastRequiresTreatments;
 - (double)cropZoomScale;
-- (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 treatWallpaper:(BOOL)arg3 forceNoTreatment:(BOOL)arg4 variant:(long long)arg5;
 - (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 variant:(long long)arg3;
-- (BOOL)isDisplayingWallpaper:(id)arg1 forVariant:(long long)arg2 options:(id)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 variant:(long long)arg3 options:(unsigned long long)arg4;
+- (BOOL)isDisplayingWallpaperWithConfiguration:(id)arg1 forVariant:(long long)arg2;
 - (void)setContentView:(id)arg1;
 - (void)setContentsRect:(struct CGRect)arg1;
 - (void)setCropRect:(struct CGRect)arg1 zoomScale:(double)arg2;

@@ -6,23 +6,24 @@
 
 #import <FrontBoardServices/FBSSystemServiceFacilityClient.h>
 
-@class NSMapTable, NSObject;
+@class NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
 @interface SBSRemoteAlertClient : FBSSystemServiceFacilityClient
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_handleObserverQueue;
-    NSMapTable *_portToHandleMap;
-    NSMapTable *_portToDeathWatcherMap;
+    NSMutableDictionary *_portToHandleMap;
+    NSMutableDictionary *_portToDeathWatcherMap;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *handleObserverQueue; // @synthesize handleObserverQueue=_handleObserverQueue;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)_queue_addHandleForToken:(id)arg1;
-- (void)_queue_removeHandleForTokenStore:(CDUnion_be1a21fc)arg1 withErrorCode:(long long)arg2 underlyingError:(id)arg3;
+- (void)_queue_removeHandleForTokenStore:(id)arg1 withErrorCode:(long long)arg2 underlyingError:(id)arg3;
 - (void)dealloc;
 - (void)handleMessage:(id)arg1 withType:(long long)arg2;
 - (id)initWithIdentifier:(id)arg1 calloutQueue:(id)arg2;

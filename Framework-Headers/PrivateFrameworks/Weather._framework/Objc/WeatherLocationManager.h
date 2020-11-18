@@ -69,9 +69,11 @@
 - (id)location;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
+- (void)monitorLocationAuthorization;
 - (void)scheduleDelayedUpdate:(double)arg1;
 - (void)setLocationTrackingActive:(BOOL)arg1;
 - (void)setLocationTrackingReady:(BOOL)arg1 activelyTracking:(BOOL)arg2 watchKitExtension:(BOOL)arg3;
+- (void)setLocationTrackingReady:(BOOL)arg1 activelyTracking:(BOOL)arg2 watchKitExtension:(BOOL)arg3 shouldRequestAuthorization:(BOOL)arg4;
 - (void)updateLocation:(id)arg1;
 
 @end

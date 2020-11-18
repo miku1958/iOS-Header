@@ -47,7 +47,10 @@
 @property (readonly, strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSDate *installDate; // @synthesize installDate=_installDate;
 @property (strong, nonatomic) NSDictionary *installOptions; // @synthesize installOptions=_installOptions;
+@property (readonly, nonatomic) int installType;
 @property (readonly, strong, nonatomic) NSArray *installationWarnings;
+@property (readonly, nonatomic) BOOL isInstalledForSystem;
+@property (readonly, nonatomic) BOOL isInstalledForUser;
 @property (readonly, nonatomic) BOOL isManagedByProfileService;
 @property (readonly, nonatomic) BOOL isSigned;
 @property (readonly, nonatomic) BOOL isStub; // @synthesize isStub=_isStub;
@@ -78,9 +81,11 @@
 + (BOOL)checkString:(id)arg1 isOneOfStrings:(id)arg2 key:(id)arg3 errorDomain:(id)arg4 errorCode:(long long)arg5 errorString:(id)arg6 outError:(id *)arg7;
 + (id)dataFromCMSEncodedData:(id)arg1 outSignerCertificates:(id *)arg2;
 + (int)evaluateTrust:(struct __SecTrust *)arg1;
-+ (int)evaluateTrustOfCertificateChain:(id)arg1;
-+ (int)evaluateTrustOfCertificateChain:(id)arg1 outIsAllowedToWriteDefaults:(BOOL *)arg2;
++ (int)evaluateTrustOfCertificateChain:(id)arg1 signatureVersion:(id)arg2;
++ (int)evaluateTrustOfCertificateChain:(id)arg1 signatureVersion:(id)arg2 outIsAllowedToInstallUnsupportedPayloads:(BOOL *)arg3 outIsAllowedToWriteDefaults:(BOOL *)arg4;
++ (int)evaluateTrustOfCertificateChain:(id)arg1 signatureVersion:(id)arg2 outIsAllowedToWriteDefaults:(BOOL *)arg3;
 + (id)missingFieldErrorWithField:(id)arg1;
++ (id)newProfileSignatureVersion;
 + (id)profileDictionaryFromProfileData:(id)arg1 outError:(id *)arg2;
 + (id)profileWithData:(id)arg1 fileName:(id)arg2 allowEmptyPayload:(BOOL)arg3 outError:(id *)arg4;
 + (id)profileWithData:(id)arg1 fileName:(id)arg2 outError:(id *)arg3;
@@ -109,6 +114,7 @@
 - (BOOL)mayInstallWithOptions:(id)arg1 hasInteractionClient:(BOOL)arg2 outError:(id *)arg3;
 - (id)payloadWithUUID:(id)arg1;
 - (id)restrictionsWithHeuristicsAppliedOutError:(id *)arg1;
+- (id)signatureVersion;
 - (id)stubDictionary;
 - (id)subjectSummaryFromCertificatePayloadWithUUID:(id)arg1;
 - (id)subjectSummaryFromCertificateWithPersistentID:(id)arg1;

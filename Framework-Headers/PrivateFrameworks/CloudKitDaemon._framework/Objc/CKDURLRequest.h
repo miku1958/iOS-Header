@@ -60,6 +60,7 @@ __attribute__((visibility("hidden")))
     NSString *_sourceApplicationBundleIdentifier;
     NSString *_sourceApplicationSecondaryIdentifier;
     NSString *_authPromptReason;
+    NSDictionary *_clientProvidedAdditionalHeaderValues;
     NSArray *_requestOperations;
     NSString *_flowControlKey;
     NSString *_hardwareIDOverride;
@@ -85,6 +86,7 @@ __attribute__((visibility("hidden")))
     long long _cachedPartitionType;
     NSDate *_dateRequestWentOut;
     CKDOperationMetrics *_metrics;
+    NSDictionary *_timingData;
     NSObject<OS_voucher> *_voucher;
 }
 
@@ -104,6 +106,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long cachedPartitionType; // @synthesize cachedPartitionType=_cachedPartitionType;
 @property (nonatomic) long long cachedServerType; // @synthesize cachedServerType=_cachedServerType;
 @property (getter=isCancelled) BOOL cancelled; // @synthesize cancelled=_cancelled;
+@property (strong, nonatomic) NSDictionary *clientProvidedAdditionalHeaderValues; // @synthesize clientProvidedAdditionalHeaderValues=_clientProvidedAdditionalHeaderValues;
 @property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (strong, nonatomic) CKDClientContext *context; // @synthesize context=_context;
 @property (nonatomic) long long databaseScope; // @synthesize databaseScope=_databaseScope;
@@ -162,6 +165,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (strong, nonatomic) CKTimeLogger *timeLogger; // @synthesize timeLogger=_timeLogger;
 @property (nonatomic) double timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
+@property (strong, nonatomic) NSDictionary *timingData; // @synthesize timingData=_timingData;
 @property (strong, nonatomic) CKBlockingAsyncQueue *trafficQueue; // @synthesize trafficQueue=_trafficQueue;
 @property (strong, nonatomic) CKDProtocolTranslator *translator; // @synthesize translator=_translator;
 @property (readonly, nonatomic) NSURL *url;

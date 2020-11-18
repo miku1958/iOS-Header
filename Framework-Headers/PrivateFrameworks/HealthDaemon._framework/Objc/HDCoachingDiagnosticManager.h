@@ -17,6 +17,7 @@
 {
     id<HDHealthDaemon> _healthDaemon;
     NSObject<OS_dispatch_queue> *_queue;
+    BOOL _isRunning;
     NSNumber *_waitingToRun;
     CMMotionActivityManager *_activityManager;
     NSOperationQueue *_activityQueue;
@@ -35,18 +36,21 @@
 - (void)_performCoachingDiagnosticActivity:(id)arg1;
 - (void)_performCoachingDiagnosticIfWaiting;
 - (BOOL)_queue_acquireMotionActivityStatisticsForAnchorDate:(id)arg1 data:(id)arg2 error:(id *)arg3;
+- (BOOL)_queue_addHealthCharacteristicsToMetrics:(id)arg1 error:(id *)arg2;
 - (id)_queue_computeStatisticsForCoachingEvent:(id)arg1 error:(id *)arg2;
 - (BOOL)_queue_computeWorkoutStatisticsForAnchorDate:(id)arg1 data:(id)arg2 error:(id *)arg3;
 - (BOOL)_queue_isWaitingToRun;
 - (id)_queue_lastRunDate;
 - (id)_queue_lastSubmittedDate;
-- (void)_queue_performCoachingDiagnosticWithRunDate:(id)arg1 ignoreAnchor:(BOOL)arg2 handler:(CDUnknownBlockType)arg3 ringHandler:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_queue_performCoachingDiagnosticWithRunDate:(id)arg1 ignoreAnchor:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_queue_performCoachingDiagnosticWithRunDate:(id)arg1 ignoreAnchor:(BOOL)arg2 submitMetrics:(BOOL)arg3 handler:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_queue_setLastRunDate:(id)arg1;
 - (void)_queue_setLastSubmittedDate:(id)arg1;
 - (void)_queue_setWaitingToRun:(BOOL)arg1;
 - (id)_queue_statisticsCollectionForAnchorDate:(id)arg1 interval:(unsigned long long)arg2 quantityType:(id)arg3 statisticsOptions:(unsigned long long)arg4 error:(id *)arg5;
-- (void)_queue_submitMetricForActivityCache:(id)arg1;
-- (void)_queue_submitMetricForEvent:(id)arg1 data:(id)arg2;
+- (BOOL)_queue_submitMetricForActivitySummary:(id)arg1 dateOfBirth:(id)arg2 biologicalSex:(id)arg3 heightSample:(id)arg4 weightSample:(id)arg5;
+- (BOOL)_queue_submitMetricForData:(id)arg1;
+- (BOOL)_queue_submitMetrics:(id)arg1;
 - (void)_registerActivity;
 - (void)_setNeedsToRunWithCompletion:(CDUnknownBlockType)arg1;
 - (void)daemonReady:(id)arg1;

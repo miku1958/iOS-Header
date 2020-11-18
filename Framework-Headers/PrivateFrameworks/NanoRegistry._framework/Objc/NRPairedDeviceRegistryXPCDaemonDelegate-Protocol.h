@@ -4,43 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoRegistry/NRPropertyXPCDaemonDelegate-Protocol.h>
+@class NSSet, NSUUID;
 
-@class NSData, NSNumber, NSString, NSUUID;
-
-@protocol NRPairedDeviceRegistryXPCDaemonDelegate <NRPropertyXPCDaemonDelegate>
-- (void)xpcAbortPairingReason:(NSString *)arg1 withBlock:(void (^)(unsigned long long))arg2;
-- (void)xpcAddRemoveRecoveryStepBackup:(BOOL)arg1 withPairingDeviceID:(NSUUID *)arg2 block:(void (^)(void))arg3;
-- (void)xpcAddRemoveRecoveryStepDeleteAccounts:(BOOL)arg1 block:(void (^)(void))arg2;
-- (void)xpcAddRemoveRecoveryStepDeletePairingStore:(BOOL)arg1 withPairingDeviceID:(NSUUID *)arg2 block:(void (^)(void))arg3;
-- (void)xpcAddRemoveRecoveryStepDisableDaemons:(BOOL)arg1 block:(void (^)(void))arg2;
-- (void)xpcAddRemoveRecoveryStepICloudDeletePaymentCards:(BOOL)arg1 block:(void (^)(void))arg2;
-- (void)xpcAddRemoveRecoveryStepIDSFinalize:(BOOL)arg1 block:(void (^)(void))arg2;
-- (void)xpcAddRemoveRecoveryStepIDSUnpair:(BOOL)arg1 withPairingDeviceID:(NSUUID *)arg2 block:(void (^)(void))arg3;
-- (void)xpcAddRemoveRecoveryStepIDSUnpairStart:(BOOL)arg1 block:(void (^)(void))arg2;
-- (void)xpcAddRemoveRecoveryStepObliterate:(BOOL)arg1 withStatePath:(NSString *)arg2 block:(void (^)(void))arg3;
-- (void)xpcAddRemoveRecoveryStepRemoteUnpair:(BOOL)arg1 withAdvertisedName:(NSString *)arg2 andPairedDeviceID:(NSUUID *)arg3 block:(void (^)(void))arg4;
-- (void)xpcAddRemoveRecoveryStepResetNVRAM:(BOOL)arg1 block:(void (^)(void))arg2;
-- (void)xpcAddRemoveRecoveryStepStockholmReset:(BOOL)arg1 block:(void (^)(void))arg2;
-- (void)xpcAddRemoveRecoveryStepUnpairBluetooth:(BOOL)arg1 withPairingDeviceID:(NSUUID *)arg2 block:(void (^)(void))arg3;
-- (void)xpcCompanionOOBDiscoverAndPairWithName:(NSString *)arg1 withOutOfBandPairingKey:(NSData *)arg2 operationHasBegun:(void (^)(NSError *, unsigned long long))arg3;
-- (void)xpcCompanionPasscodePairWithDeviceID:(NSUUID *)arg1 operationHasBegun:(void (^)(NSError *, unsigned long long))arg2;
-- (void)xpcEnterCompatibilityState:(unsigned short)arg1 withDeviceID:(NSUUID *)arg2;
-- (void)xpcGizmoOOBAdvertiseAndPairWithName:(NSString *)arg1 operationHasBegun:(void (^)(NSError *, unsigned long long))arg2;
-- (void)xpcGizmoPasscodeAdvertiseAndPairWithName:(NSString *)arg1 operationHasBegun:(void (^)(NSError *, unsigned long long))arg2;
-- (void)xpcNotifyActivationCompleted:(NSUUID *)arg1 withSuccess:(BOOL)arg2;
-- (void)xpcNotifyPasscode:(NSNumber *)arg1 withDeviceID:(NSUUID *)arg2;
-- (void)xpcPairingClientDidEnterPhase:(NSString *)arg1 withBlock:(void (^)(void))arg2;
-- (void)xpcPairingShouldContinue;
-- (void)xpcQueryStatus:(NSUUID *)arg1 statusData:(void (^)(unsigned long long, NSDictionary *, BOOL, unsigned short, long long, long long, long long, unsigned long long, unsigned long long))arg2;
-- (void)xpcRecoveryDescription:(void (^)(NSString *))arg1;
-- (void)xpcResumePairingClientCrashMonitoring:(void (^)(void))arg1;
-- (void)xpcRetriggerUnpairInfoDialogWithBlock:(void (^)(void))arg1;
-- (void)xpcSetObliterationEnabled:(BOOL)arg1 block:(void (^)(void))arg2;
-- (void)xpcSubmitAlbertPairingReport:(void (^)(void))arg1;
-- (void)xpcSuspendPairingClientCrashMonitoring:(void (^)(void))arg1;
-- (void)xpcTriggerRecovery:(void (^)(void))arg1;
-- (void)xpcTriggerVersion4Workaround;
-- (void)xpcUnpairWithDeviceID:(NSUUID *)arg1 shouldObliterate:(BOOL)arg2 operationHasBegun:(void (^)(NSError *, unsigned long long))arg3;
+@protocol NRPairedDeviceRegistryXPCDaemonDelegate
+- (void)xpcClientInfo:(void (^)(NSArray *))arg1;
+- (void)xpcDeviceIDAtSwitchIndex:(unsigned int)arg1 withBlock:(void (^)(NSUUID *, NSDate *))arg2;
+- (void)xpcGetChangeHistoryWithBlock:(void (^)(NRDeviceCollectionHistory *))arg1;
+- (void)xpcGetDeviceCollectionWithBlock:(void (^)(NRMutableDeviceCollection *, unsigned long long, BOOL, NRSecureDevicePropertyStore *))arg1;
+- (void)xpcGetDiffSinceIndex:(unsigned long long)arg1 withBlock:(void (^)(NRDeviceCollectionDiff *, BOOL, unsigned long long, BOOL, BOOL))arg2;
+- (void)xpcPairWithSimulator:(NSUUID *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (void)xpcRetrieveSecureProperties:(NSSet *)arg1 block:(void (^)(NSDictionary *))arg2;
+- (void)xpcSwitchIndex:(void (^)(unsigned int))arg1;
+- (void)xpcSwitchToSimulator:(NSUUID *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (void)xpcUnpairWithSimulator:(NSUUID *)arg1 withCompletion:(void (^)(NSError *))arg2;
 @end
 

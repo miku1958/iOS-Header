@@ -7,6 +7,8 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (BaseBoard)
+- (BOOL)bs_boolForKey:(id)arg1;
+- (id)bs_dictionaryByAddingEntriesFromDictionary:(id)arg1;
 - (void)bs_eachValue:(CDUnknownBlockType)arg1;
 - (id)bs_safeObjectForKey:(id)arg1 ofType:(Class)arg2;
 @end

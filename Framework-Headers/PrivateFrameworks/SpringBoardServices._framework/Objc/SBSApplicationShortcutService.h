@@ -6,17 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class SBSApplicationShortcutClient;
-@protocol OS_dispatch_queue;
+@class SBSApplicationService;
 
 @interface SBSApplicationShortcutService : NSObject
 {
-    SBSApplicationShortcutClient *_client;
-    NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_queue> *_callbackQueue;
-    BOOL _wasInvalidated;
+    SBSApplicationService *_service;
 }
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)fetchDynamicApplicationShortcutItemsForBundleIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchDynamicApplicationShortcutItemsWithCompletionHandler:(CDUnknownBlockType)arg1;

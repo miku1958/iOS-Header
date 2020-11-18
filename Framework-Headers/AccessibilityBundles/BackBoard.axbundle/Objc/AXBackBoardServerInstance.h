@@ -6,10 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-@class AXIPCServer, NSMutableArray;
+#import "AXBackBoardServerInstance-Protocol.h"
+
+@class AXIPCServer, NSMutableArray, NSString;
 @protocol AXBackBoardServerInstanceDelegate;
 
-@interface AXBackBoardServerInstance : NSObject
+@interface AXBackBoardServerInstance : NSObject <AXBackBoardServerInstance>
 {
     AXIPCServer *_server;
     id<AXBackBoardServerInstanceDelegate> _delegate;
@@ -19,17 +21,25 @@
     NSMutableArray *_eventTapClients;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<AXBackBoardServerInstanceDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)backBoardServerInstance;
 + (id)backBoardServerInstanceIfExists;
 - (id)_gaxBackboard;
 - (id)_handleAXUIServerPID:(id)arg1;
+- (id)_handleAdaptationEnabled:(id)arg1;
+- (id)_handleBlueLightStatusEnabled:(id)arg1;
+- (id)_handleBrightnessFiltersEnabled:(id)arg1;
 - (id)_handleContextHostingIdForContextId:(id)arg1;
 - (id)_handleContextIdForPosition:(id)arg1;
 - (id)_handleConvertFrameFromContextId:(id)arg1;
 - (id)_handleConvertFrameFromContextIdToContextId:(id)arg1;
 - (id)_handleConvertFrameToContextId:(id)arg1;
+- (id)_handleDisableBrightnessFilters:(id)arg1;
 - (id)_handleEnableEventTap:(id)arg1;
 - (id)_handleEventListenerRegistration:(id)arg1;
 - (id)_handleGetGuidedAccessAvailability:(id)arg1;
@@ -48,11 +58,16 @@
 - (id)_handleRegisterAssistiveTouchPID:(id)arg1;
 - (id)_handleRegisterSiriViewServicePID:(id)arg1;
 - (id)_handleRegisterZoomConflict:(id)arg1;
+- (id)_handleRestoreCachedBrightnessFilters:(id)arg1;
+- (id)_handleSessionIsLoginSession:(id)arg1;
 - (id)_handleSetCapsLockLightOn:(id)arg1;
 - (void)_handleSetGuidedAccessEnabledByRequestingApp:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_handleSetInPreBoardMode:(id)arg1;
+- (id)_handleSetSessionIsLoginSession:(id)arg1;
 - (id)_handleSetSwitchControlRendersDeviceUnusable:(id)arg1;
 - (id)_handleSetZoomInitialFocusRect:(id)arg1;
+- (id)_handleSupportsAdaptation:(id)arg1;
+- (id)_handleSupportsBlueLightReduction:(id)arg1;
 - (id)_handleUserEventOccurred:(id)arg1;
 - (id)_handleWakeUpIfNecessary:(id)arg1;
 - (id)_handleZoomAdjustment:(id)arg1;
@@ -61,9 +76,17 @@
 - (BOOL)_inPreBoardMode;
 - (id)_initServer;
 - (void)_initializeHandlers;
+- (BOOL)_sessionIsLoginSession;
 - (id)_setAXPreferenceAsMobile:(id)arg1;
+- (BOOL)adaptationEnabled;
+- (BOOL)blueLightStatusEnabled;
+- (BOOL)brightnessFiltersEnabled;
 - (void)dealloc;
+- (void)disableBrightnessFilters;
 - (void)eventListener:(id)arg1;
+- (void)restoreCachedBrightnessFilters;
+- (BOOL)supportsAdaptation;
+- (BOOL)supportsBlueLightReduction;
 - (void)zoomAttributesChanged:(id)arg1;
 
 @end

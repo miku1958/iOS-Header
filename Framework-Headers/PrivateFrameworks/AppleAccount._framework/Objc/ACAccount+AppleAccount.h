@@ -27,6 +27,7 @@
 @property (readonly, nonatomic) NSString *aa_fmipToken;
 @property (readonly, nonatomic) NSString *aa_hsaToken;
 @property (nonatomic, setter=aa_setCloudDocsMigrationComplete:) BOOL aa_isCloudDocsMigrationComplete;
+@property (readonly, nonatomic) BOOL aa_isManagedAppleID;
 @property (nonatomic, setter=aa_setPrimaryAccount:) BOOL aa_isPrimaryAccount;
 @property (nonatomic, setter=aa_setPrimaryEmailVerified:) BOOL aa_isPrimaryEmailVerified;
 @property (nonatomic, setter=aa_setSyncedAccount:) BOOL aa_isSyncedAccount;
@@ -36,7 +37,6 @@
 @property (copy, nonatomic, setter=aa_setLastName:) NSString *aa_lastName;
 @property (readonly, nonatomic) NSString *aa_mapsToken;
 @property (readonly, nonatomic) BOOL aa_needsEmailConfiguration;
-@property (readonly, nonatomic) BOOL aa_needsPCSRepair;
 @property (readonly, nonatomic) BOOL aa_needsRegistration;
 @property (nonatomic, setter=aa_setNeedsToVerifyTerms:) BOOL aa_needsToVerifyTerms;
 @property (copy, nonatomic, setter=aa_setPassword:) NSString *aa_password;
@@ -52,6 +52,8 @@
 + (id)aa_dataclassesBoundToSingleAppleAccount;
 - (id)aa_authTokenWithError:(id *)arg1;
 - (id)aa_hsaTokenWithError:(id *)arg1;
+- (BOOL)aa_needsPCSRepair;
+- (BOOL)aa_needsPCSRepairWithAuthToken:(id)arg1;
 - (void)aa_setHSAToken:(id)arg1;
 - (void)aa_setMapsToken:(id)arg1;
 - (void)aa_setUseCellular:(BOOL)arg1 forDataclass:(id)arg2;

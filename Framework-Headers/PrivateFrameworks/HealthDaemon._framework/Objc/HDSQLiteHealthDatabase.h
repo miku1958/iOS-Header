@@ -10,7 +10,7 @@
 {
 }
 
-+ (void)_removeDatabases:(id)arg1 withHomeDirectoryPath:(id)arg2 reason:(id)arg3;
++ (void)_removeDatabases:(id)arg1 reason:(id)arg2;
 + (id)mainDatabaseURLWithHomeDirectoryPath:(id)arg1;
 + (id)protectedDatabaseURLWithHomeDirectoryPath:(id)arg1;
 + (void)removeAllDatabasesWithHomeDirectoryPath:(id)arg1 reason:(id)arg2;

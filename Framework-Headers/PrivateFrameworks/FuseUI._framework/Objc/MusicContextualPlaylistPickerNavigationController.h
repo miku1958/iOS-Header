@@ -30,6 +30,7 @@
 + (BOOL)automaticallyInstallSearchBarButtonItem;
 - (void).cxx_destruct;
 - (void)_dismissPlaylistPicker;
+- (void)_playlistPickerDidFinishWithBagDictionary:(id)arg1 selectedPlaylist:(id)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithPlaylistSelectionHandler:(CDUnknownBlockType)arg1;
 - (void)playlistPickerDidFinishWithSelectedPlaylist:(id)arg1;

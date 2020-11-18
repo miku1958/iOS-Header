@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     BOOL _needsToRemoveLocationsForItemsMissingAssets;
     BOOL _needsToReloadStoreBookmarkMetadataIdentifiers;
     BOOL _needsToReloadContainerMediaTypes;
+    BOOL _needsToReloadCollectionRepresentativeItems;
     BOOL _needsAnalyze;
     BOOL _needsToAutogenerateArtworkVariants;
     BOOL _needsToUpdateSortMap;
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL needsToAutogenerateArtworkVariants; // @synthesize needsToAutogenerateArtworkVariants=_needsToAutogenerateArtworkVariants;
 @property (nonatomic) BOOL needsToRecreateIndexes; // @synthesize needsToRecreateIndexes=_needsToRecreateIndexes;
 @property (nonatomic) BOOL needsToRecreateTriggers; // @synthesize needsToRecreateTriggers=_needsToRecreateTriggers;
+@property (nonatomic) BOOL needsToReloadCollectionRepresentativeItems; // @synthesize needsToReloadCollectionRepresentativeItems=_needsToReloadCollectionRepresentativeItems;
 @property (nonatomic) BOOL needsToReloadContainerMediaTypes; // @synthesize needsToReloadContainerMediaTypes=_needsToReloadContainerMediaTypes;
 @property (nonatomic) BOOL needsToReloadStoreBookmarkMetadataIdentifiers; // @synthesize needsToReloadStoreBookmarkMetadataIdentifiers=_needsToReloadStoreBookmarkMetadataIdentifiers;
 @property (nonatomic) BOOL needsToRemoveLocationsForItemsMissingAssets; // @synthesize needsToRemoveLocationsForItemsMissingAssets=_needsToRemoveLocationsForItemsMissingAssets;

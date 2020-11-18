@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
+#import <coreroutine/RTDaemonClientRegistrarApplicationPredictionProtocol-Protocol.h>
 #import <coreroutine/RTDaemonProtocol-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, NSXPCConnection;
+@class NSMutableArray, NSMutableDictionary, NSString, NSXPCConnection, RTDaemonClientRegistrarApplicationPrediction;
 @protocol OS_dispatch_queue, RTClientListenerProtocol;
 
 __attribute__((visibility("hidden")))
-@interface RTDaemonClient : NSObject <RTDaemonProtocol>
+@interface RTDaemonClient : NSObject <RTDaemonClientRegistrarApplicationPredictionProtocol, RTDaemonProtocol>
 {
     BOOL _enabled;
     BOOL _supported;
-    BOOL _monitorApplications;
     BOOL _monitorVisits;
     BOOL _monitorNextPredictedLocationsOfInterest;
     int _processIdentifier;
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _monitoredScenarioTriggerTypes;
     NSMutableDictionary *_pendingScenarioInvocations;
     NSMutableArray *_pendingNextPredictedLocationsOfInterestInvocations;
+    RTDaemonClientRegistrarApplicationPrediction *_predictedApplicationRegistrar;
 }
 
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
@@ -40,12 +41,12 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (copy, nonatomic) NSString *executablePath; // @synthesize executablePath=_executablePath;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL monitorApplications; // @synthesize monitorApplications=_monitorApplications;
 @property (nonatomic) BOOL monitorNextPredictedLocationsOfInterest; // @synthesize monitorNextPredictedLocationsOfInterest=_monitorNextPredictedLocationsOfInterest;
 @property (nonatomic) BOOL monitorVisits; // @synthesize monitorVisits=_monitorVisits;
 @property (nonatomic) unsigned long long monitoredScenarioTriggerTypes; // @synthesize monitoredScenarioTriggerTypes=_monitoredScenarioTriggerTypes;
 @property (strong, nonatomic) NSMutableArray *pendingNextPredictedLocationsOfInterestInvocations; // @synthesize pendingNextPredictedLocationsOfInterestInvocations=_pendingNextPredictedLocationsOfInterestInvocations;
 @property (strong, nonatomic) NSMutableDictionary *pendingScenarioInvocations; // @synthesize pendingScenarioInvocations=_pendingScenarioInvocations;
+@property (strong, nonatomic) RTDaemonClientRegistrarApplicationPrediction *predictedApplicationRegistrar; // @synthesize predictedApplicationRegistrar=_predictedApplicationRegistrar;
 @property (nonatomic) int processIdentifier; // @synthesize processIdentifier=_processIdentifier;
 @property (weak, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) NSMutableDictionary *restorationData; // @synthesize restorationData=_restorationData;
@@ -59,10 +60,11 @@ __attribute__((visibility("hidden")))
 - (void)_onNextPredictedLocationsOfInterest:(id)arg1;
 - (void)_onScenarioTrigger:(id)arg1;
 - (id)_preflightClientConnection:(id)arg1 withEntitlements:(id)arg2;
-- (void)_processPredictedApplications:(id)arg1;
+- (void)_startMonitoringForPredictedApplicationsUsingPredicate:(id)arg1;
 - (void)_startMonitoringNextPredictedLocationsOfInterest;
 - (void)_startMonitoringScenarioTriggerOfType:(unsigned long long)arg1;
 - (void)_stopMonitoringScenarioTriggerOfType:(unsigned long long)arg1;
+- (void)applicationPredictionRegistrar:(id)arg1 didReceivePredictedApplications:(id)arg2 error:(id)arg3;
 - (void)clearRoutine;
 - (void)fetchAllLocationsOfInterestWithReply:(CDUnknownBlockType)arg1;
 - (void)fetchBBPluginSupportedWithReply:(CDUnknownBlockType)arg1;
@@ -85,16 +87,14 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasReasonToOutliveClientConnection;
 - (id)initWithQueue:(id)arg1;
 - (id)initWithRestorationData:(id)arg1 queue:(id)arg2;
-- (void)launchApplication;
-- (void)launchDaemon;
+- (void)launchClient;
 - (void)onDeviceLocationPredictorNotification:(id)arg1;
-- (void)onPredictedApplicationNotification:(id)arg1;
 - (void)onRoutineEnabled:(id)arg1;
 - (void)onScenarioTriggerManagerNotification:(id)arg1;
 - (void)restore;
 - (void)setRoutineEnabled:(BOOL)arg1;
 - (void)shutdown;
-- (void)startMonitoringForPredictedApplications;
+- (void)startMonitoringForPredictedApplicationsUsingPredicate:(id)arg1;
 - (void)startMonitoringNextPredictedLocationsOfInterest;
 - (void)startMonitoringScenarioTriggerOfType:(unsigned long long)arg1;
 - (void)startMonitoringVisits;

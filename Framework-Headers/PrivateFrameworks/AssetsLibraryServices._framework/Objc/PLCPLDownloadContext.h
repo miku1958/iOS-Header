@@ -27,6 +27,7 @@
 
 - (void)dealloc;
 - (id)description;
+- (void)updateFromDownloadStatusUserInfo:(id)arg1;
 
 @end
 

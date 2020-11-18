@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface CNEmailAddressContactPredicate : CNPredicate <CNSuggestedContactPredicate>
 {
+    BOOL _returnsMultipleResults;
     NSString *_emailAddress;
 }
 
@@ -20,10 +21,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL returnsMultipleResults; // @synthesize returnsMultipleResults=_returnsMultipleResults;
 @property (readonly) Class superclass;
 
 - (void)dealloc;
-- (id)initWithEmailAddress:(id)arg1;
+- (id)initWithEmailAddress:(id)arg1 returnMultipleResults:(BOOL)arg2;
 - (id)sgContactMatchesWithSortOrder:(long long)arg1 mutableObjects:(BOOL)arg2 service:(id)arg3 error:(id *)arg4;
 
 @end

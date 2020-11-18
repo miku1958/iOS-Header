@@ -9,11 +9,13 @@
 #import <GeoServices/GEOServerFormatToken-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class GEOPrice, NSString;
+@protocol GEOServerFormatTokenPriceValue;
 
 @interface GEOFormatArgument : PBCodable <GEOServerFormatToken, NSCopying>
 {
     int _format;
+    GEOPrice *_price;
     NSString *_token;
     unsigned int _valInt1;
     unsigned int _valInt2;
@@ -28,10 +30,13 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) int format; // @synthesize format=_format;
 @property (nonatomic) BOOL hasFormat;
+@property (readonly, nonatomic) BOOL hasPrice;
 @property (readonly, nonatomic) BOOL hasToken;
 @property (nonatomic) BOOL hasValInt1;
 @property (nonatomic) BOOL hasValInt2;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) GEOPrice *price; // @synthesize price=_price;
+@property (readonly, nonatomic) id<GEOServerFormatTokenPriceValue> priceValue;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *token;
 @property (strong, nonatomic) NSString *token; // @synthesize token=_token;

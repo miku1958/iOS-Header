@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SpringBoardUI/SBUIBannerTarget-Protocol.h>
 
@@ -25,6 +25,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)cacheBannerForContext:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)currentBannerContextForSource:(id)arg1;
 - (void)dismissCurrentBannerContextForSource:(id)arg1;

@@ -17,6 +17,8 @@
     SKUIRoundedRectButton *_giftingButton;
     UIButton *_termsAndConditionsButton;
     SKUIRoundedRectButton *_usernameButton;
+    BOOL _ecommerceVisibilityHidden;
+    BOOL _giftingVisibilityHidden;
     UIButton *_redeemButton;
 }
 
@@ -37,6 +39,8 @@
 - (void)_reloadFonts;
 - (void)dealloc;
 - (id)initWithClientContext:(id)arg1;
+- (BOOL)isEcommerceHidden;
+- (BOOL)isRedeemHidden;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tintColorDidChange;

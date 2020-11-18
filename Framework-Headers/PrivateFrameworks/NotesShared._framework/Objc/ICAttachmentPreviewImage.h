@@ -17,6 +17,9 @@
 }
 
 @property (strong, nonatomic) NSSet *attachments; // @dynamic attachments;
+@property (strong, nonatomic) NSData *cryptoMetadataInitializationVector; // @dynamic cryptoMetadataInitializationVector;
+@property (strong, nonatomic) NSData *cryptoMetadataTag; // @dynamic cryptoMetadataTag;
+@property (strong, nonatomic) NSData *encryptedMetadata; // @dynamic encryptedMetadata;
 @property (nonatomic) double height; // @dynamic height;
 @property (strong, nonatomic) NSData *metadata; // @dynamic metadata;
 @property (strong, nonatomic) NSDate *modifiedDate; // @dynamic modifiedDate;
@@ -27,46 +30,46 @@
 @property (nonatomic) double width; // @dynamic width;
 
 + (id)allAttachmentPreviewImagesInContext:(id)arg1;
-+ (id)allCloudObjects;
 + (id)attachmentPreviewImageWithIdentifier:(id)arg1 inContext:(id)arg2;
 + (id)attachmentPreviewImagesMatchingPredicate:(id)arg1 inContext:(id)arg2;
++ (id)concurrentFileLoadLimitSemaphore;
 + (void)deleteStrandedAttachmentPreviewImagesInContext:(id)arg1;
-+ (id)existingCloudObjectForRecordID:(id)arg1;
++ (id)fileGlobalQueue;
 + (id)fileQueueGroup;
 + (id)identifierForContentIdentifier:(id)arg1 scale:(double)arg2 width:(double)arg3 height:(double)arg4;
 + (id)imageCache;
 + (id)newAttachmentPreviewImageInContext:(id)arg1;
-+ (id)newCloudObjectForRecord:(id)arg1;
 + (struct UIImage *)orientedImage:(struct UIImage *)arg1 withTransform:(struct CGAffineTransform)arg2 background:(int)arg3 backgroundTransform:(struct CGAffineTransform)arg4;
 + (id)previewImageDirectoryURL;
 + (void)purgeAllAttachmentPreviewImagesInContext:(id)arg1;
 + (void)purgeAllPreviewImages;
-+ (id)recordType;
 + (id)visibleAttachmentPreviewImagesInContext:(id)arg1;
 + (void)waitUntilAllFileWritesAreFinished;
 - (void).cxx_destruct;
+- (id)_decryptedImageData;
+- (BOOL)_writeEncryptedImageFromData:(id)arg1;
+- (CDUnknownBlockType)asyncImage:(CDUnknownBlockType)arg1 aboutToLoadHandler:(CDUnknownBlockType)arg2;
 - (struct UIImage *)cachedImage;
 - (struct UIImage *)cachedOrientedImage;
+- (id)decryptedImageData;
 - (void)deleteFromLocalDatabase;
+- (id)encryptedPreviewImageURL;
 - (id)fileQueue;
-- (void)fixBrokenReferences;
 - (struct UIImage *)image;
 - (BOOL)imageIsValid;
 - (struct UIImage *)imageWithBackground:(int)arg1;
 - (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;
 - (void)invalidateImage;
 - (void)invalidateOrientedImage;
-- (BOOL)isInICloudAccount;
 - (BOOL)isSketch;
 - (id)loggingDescriptionValues;
 - (BOOL)makeSurePreviewImageDirectoryExists:(id *)arg1;
-- (void)mergeDataFromRecord:(id)arg1;
-- (void)mergeDataFromRecord:(id)arg1 newPreviewImage:(BOOL)arg2;
 - (BOOL)needsInitialFetchFromCloud;
 - (BOOL)needsToBeDeletedFromCloud;
 - (BOOL)needsToBeFetchedFromCloud;
 - (BOOL)needsToBePushedToCloud;
 - (id)newImageLoaderForUpdatingImageOnCompletion:(BOOL)arg1;
+- (id)newImageLoaderForUpdatingImageOnCompletion:(BOOL)arg1 asyncDataLoading:(BOOL)arg2;
 - (id)oldPreviewImageURL;
 - (struct UIImage *)orientedImage;
 - (id)orientedImageID;
@@ -74,20 +77,18 @@
 - (struct UIImage *)orientedImageWithBackground:(int)arg1;
 - (id)orientedPreviewImageURL;
 - (id)orientedPreviewImageURLCreateIfNeeded:(BOOL)arg1;
+- (id)parentEncryptableObject;
 - (void)prepareForDeletion;
 - (long long)previewImageOrientation;
 - (id)previewImageURL;
-- (id)recordZoneID;
-- (void)resetUniqueIdentifier;
-- (BOOL)resolveReference:(id)arg1 forKey:(id)arg2;
+- (void)removeItemAtURL:(id)arg1;
+- (void)saveAndClearDecryptedData;
 - (void)setCachedImage:(struct UIImage *)arg1;
 - (void)setCachedOrientedImage:(struct UIImage *)arg1;
 - (void)setImage:(struct UIImage *)arg1 withScale:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)shouldSyncToCloud;
 - (struct CGSize)size;
-- (BOOL)supportsDeletionByTTL;
-- (id)temporaryPreviewImageURL;
-- (id)threadUnsafeNewlyCreatedRecord;
+- (BOOL)writeEncryptedImageFromData:(id)arg1;
 
 @end
 

@@ -6,10 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
+#import <GeoServices/GEOComposedRouteObserver-Protocol.h>
+
 @class GEOComposedRoute, GEOLocation, GEONavigationDetails, GEONavigationGuidanceState, GEORouteMatch, NSData, NSDate, NSPointerArray, NSString, NSTimer, NSXPCConnection;
 @protocol GEORoutePreloadSession;
 
-@interface GEONavigation : NSObject
+@interface GEONavigation : NSObject <GEOComposedRouteObserver>
 {
     NSPointerArray *_observers;
     GEONavigationDetails *_details;
@@ -34,6 +36,8 @@
 @property (nonatomic) unsigned long long announcementStage;
 @property (readonly, nonatomic) NSDate *arrivalDate; // @synthesize arrivalDate=_arrivalDate;
 @property (copy, nonatomic) CDUnknownBlockType companionRouteFilterBlock; // @synthesize companionRouteFilterBlock=_companionRouteFilterBlock;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *destinationName;
 @property (nonatomic) long long displayStep;
 @property (readonly, nonatomic) double distanceRemainingOnRoute;
@@ -44,6 +48,7 @@
 @property (readonly, nonatomic) int guidanceLevelIgnoringTimeCriterion;
 @property (nonatomic) BOOL guidancePromptsEnabled;
 @property (readonly, nonatomic) BOOL hasStartedGuidance; // @synthesize hasStartedGuidance=_hasStartedGuidance;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isNavigating;
 @property (readonly, nonatomic) GEOLocation *location;
 @property (readonly, nonatomic) BOOL locationUnreliable;
@@ -54,6 +59,7 @@
 @property (readonly, nonatomic) GEOComposedRoute *route;
 @property (readonly, nonatomic) GEORouteMatch *routeMatch;
 @property (readonly, nonatomic) BOOL shouldSuppressCellularDataAlerts;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) double timeUntilNextAnnouncement;
 
 + (id)displayDateForDate:(id)arg1;
@@ -76,6 +82,10 @@
 - (void)addObserver:(id)arg1;
 - (BOOL)canNavigateWithTransportType:(int)arg1;
 - (BOOL)canRunNavigationForRoute:(id)arg1 withCurrentLocation:(id)arg2;
+- (void)composedRoute:(id)arg1 changedSelectedRideInClusteredLeg:(id)arg2 fromIndex:(unsigned long long)arg3 toIndex:(unsigned long long)arg4;
+- (void)composedRoute:(id)arg1 selectedSections:(id)arg2 deselectedSections:(id)arg3;
+- (void)composedRouteUpdatedSnappedPaths:(id)arg1;
+- (void)composedRouteUpdatedTraffic:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)preloadSessionForRoute:(id)arg1 loggingEnabled:(BOOL)arg2 minimalDebugging:(BOOL)arg3 fullDebugging:(BOOL)arg4 delegate:(id)arg5 traits:(id)arg6 withBatteryHandler:(CDUnknownBlockType)arg7;

@@ -13,6 +13,7 @@
 @property (readonly, nonatomic) IKJSMediaItem *currentMediaItem;
 @property (readonly, nonatomic) IKJSMediaItem *nextMediaItem;
 @property (strong, nonatomic) IKDOMDocument *overlayDocument;
+@property (nonatomic) double playbackRate;
 @property (readonly, nonatomic) NSString *playbackState;
 @property (strong, nonatomic) IKJSPlaylist *playlist;
 @property (readonly, nonatomic) IKJSMediaItem *previousMediaItem;
@@ -22,7 +23,6 @@
 - (void)play;
 - (void)present;
 - (void)seekToTime:(double)arg1;
-- (void)setPlaybackRate:(double)arg1;
 - (void)stop;
 @end
 

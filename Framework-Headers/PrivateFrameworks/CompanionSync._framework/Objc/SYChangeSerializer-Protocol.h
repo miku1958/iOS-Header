@@ -16,5 +16,7 @@
 @optional
 - (id<SYObject>)SYObjectWithData:(NSData *)arg1;
 - (NSData *)dataWithSYObject:(id<SYObject>)arg1;
+- (id<SYChange>)decodeChangeData:(NSData *)arg1 fromProtocolVersion:(long long)arg2 ofType:(long long)arg3;
+- (NSData *)encodeSYChangeForBackwardCompatibility:(id<SYChange>)arg1 protocolVersion:(long long)arg2;
 @end
 

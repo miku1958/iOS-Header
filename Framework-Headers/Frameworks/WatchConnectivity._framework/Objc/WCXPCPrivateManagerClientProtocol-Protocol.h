@@ -9,6 +9,7 @@
 @class NSString;
 
 @protocol WCXPCPrivateManagerClientProtocol <NSObject>
+- (void)handlePairedSyncComplicationsStartedWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)handlePingForExtensionBundleID:(NSString *)arg1;
 - (void)isExtensionPrivileged:(NSString *)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 @end

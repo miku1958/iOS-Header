@@ -6,27 +6,40 @@
 
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
-@class CKDRecordFetchAggregator, CKQuery, CKQueryCursor, CKRecordZoneID, NSSet;
+@class CKDRecordFetchAggregator, CKQuery, CKQueryCursor, CKRecordZoneID, NSMutableArray, NSObject, NSSet;
+@protocol OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
 @interface CKDQueryOperation : CKDDatabaseOperation
 {
     BOOL _shouldFetchAssetContent;
+    BOOL _fetchAllResults;
+    BOOL _hasCalledQueryCursorUpdatedBlock;
     CKQuery *_query;
     CKQueryCursor *_cursor;
     unsigned long long _resultsLimit;
     CKQueryCursor *_resultsCursor;
     CDUnknownBlockType _recordFetchedBlock;
+    CDUnknownBlockType _queryCursorUpdatedBlock;
     NSSet *_desiredKeySet;
     CKRecordZoneID *_zoneID;
     CKDRecordFetchAggregator *_recordFetcher;
+    NSObject<OS_dispatch_group> *_fetchRecordsGroup;
+    unsigned long long _numRequestsSent;
+    NSMutableArray *_requestInfos;
 }
 
 @property (readonly, nonatomic) CKQueryCursor *cursor; // @synthesize cursor=_cursor;
 @property (strong, nonatomic) NSSet *desiredKeySet; // @synthesize desiredKeySet=_desiredKeySet;
+@property (nonatomic) BOOL fetchAllResults; // @synthesize fetchAllResults=_fetchAllResults;
+@property (strong, nonatomic) NSObject<OS_dispatch_group> *fetchRecordsGroup; // @synthesize fetchRecordsGroup=_fetchRecordsGroup;
+@property (nonatomic) BOOL hasCalledQueryCursorUpdatedBlock; // @synthesize hasCalledQueryCursorUpdatedBlock=_hasCalledQueryCursorUpdatedBlock;
+@property (nonatomic) unsigned long long numRequestsSent; // @synthesize numRequestsSent=_numRequestsSent;
 @property (readonly, nonatomic) CKQuery *query; // @synthesize query=_query;
+@property (copy, nonatomic) CDUnknownBlockType queryCursorUpdatedBlock; // @synthesize queryCursorUpdatedBlock=_queryCursorUpdatedBlock;
 @property (copy, nonatomic) CDUnknownBlockType recordFetchedBlock; // @synthesize recordFetchedBlock=_recordFetchedBlock;
 @property (strong, nonatomic) CKDRecordFetchAggregator *recordFetcher; // @synthesize recordFetcher=_recordFetcher;
+@property (strong, nonatomic) NSMutableArray *requestInfos; // @synthesize requestInfos=_requestInfos;
 @property (strong, nonatomic) CKQueryCursor *resultsCursor; // @synthesize resultsCursor=_resultsCursor;
 @property (readonly, nonatomic) unsigned long long resultsLimit; // @synthesize resultsLimit=_resultsLimit;
 @property (nonatomic) BOOL shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
@@ -34,8 +47,9 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleQueryRequestFinished:(id)arg1;
-- (void)_handleRecordResponse:(id)arg1;
+- (void)_handleQueryRequestFinishedWithSchedulerInfo:(id)arg1;
+- (void)_handleRecordResponse:(id)arg1 perRequestSchedulerInfo:(id)arg2;
+- (void)_sendQueryRequestWithCursor:(id)arg1 previousRequestSchedulerInfo:(id)arg2;
 - (unsigned long long)activityStart;
 - (void)fillOutOperationResult:(id)arg1;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;

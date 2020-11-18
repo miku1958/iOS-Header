@@ -14,6 +14,7 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_axIsEndHandle;
 - (BOOL)_axIsStartHandle;
+- (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;

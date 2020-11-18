@@ -6,13 +6,15 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
 @interface AVMetadataGroup : NSObject
 {
 }
 
+@property (readonly, nonatomic) NSString *classifyingLabel;
 @property (readonly, copy, nonatomic) NSArray *items;
+@property (readonly, nonatomic) NSString *uniqueID;
 
 + (void)initialize;
 - (struct opaqueCMFormatDescription *)copyFormatDescription;

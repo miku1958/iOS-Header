@@ -9,13 +9,13 @@
 #import <BulletinBoard/BBObserverClientInterface-Protocol.h>
 #import <BulletinBoard/BBObserverServerInterface-Protocol.h>
 
-@class BBServer, NSMutableDictionary, NSString, NSXPCConnection;
+@class BBZeroingWeakReference, NSMutableDictionary, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface BBObserverClientProxy : NSObject <BBObserverServerInterface, BBObserverClientInterface>
 {
     NSXPCConnection *_connection;
-    BBServer *_serverWeak;
+    BBZeroingWeakReference *_serverZWR;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_bulletinIDsToTransaction;
     NSString *_clientBundleIdentifier;
@@ -25,7 +25,7 @@
 @property (strong, nonatomic) NSString *clientBundleIdentifier; // @synthesize clientBundleIdentifier=_clientBundleIdentifier;
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (nonatomic) BBServer *serverWeak; // @synthesize serverWeak=_serverWeak;
+@property (strong, nonatomic) BBZeroingWeakReference *serverZWR; // @synthesize serverZWR=_serverZWR;
 
 + (id)xpcInterface;
 - (void)clearBulletinIDs:(id)arg1 inSection:(id)arg2;

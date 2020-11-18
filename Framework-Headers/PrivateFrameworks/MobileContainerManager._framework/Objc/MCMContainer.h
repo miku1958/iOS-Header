@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSDictionary, NSString, NSURL, NSUUID;
 
 @interface MCMContainer : NSObject
 {
+    unsigned int _userId;
     NSString *_identifier;
     NSUUID *_uuid;
     long long _containerClass;
@@ -32,12 +33,13 @@
 - (void)dealloc;
 - (id)description;
 - (id)destroyContainerWithCompletion:(CDUnknownBlockType)arg1;
+- (unsigned long long)diskUsageWithError:(id *)arg1;
 - (struct container_object *)getLowLevelContainerObject;
 - (unsigned long long)hash;
 - (id)infoValueForKey:(id)arg1 error:(id *)arg2;
 - (id)init;
 - (id)initWithIdentifier:(id)arg1 createIfNecessary:(BOOL)arg2 existed:(BOOL *)arg3 temp:(BOOL)arg4 error:(id *)arg5;
-- (id)initWithIdentifier:(id)arg1 uuid:(id)arg2 containerClass:(long long)arg3 error:(id *)arg4;
+- (id)initWithIdentifier:(id)arg1 userId:(unsigned int)arg2 uuid:(id)arg3 containerClass:(long long)arg4 error:(id *)arg5;
 - (BOOL)isEqual:(id)arg1;
 - (void)markDeleted;
 - (BOOL)recreateDefaultStructureWithError:(id *)arg1;

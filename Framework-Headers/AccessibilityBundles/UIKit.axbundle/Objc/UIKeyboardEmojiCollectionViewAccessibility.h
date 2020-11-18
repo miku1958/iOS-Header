@@ -18,6 +18,7 @@
 - (double)_accessibilityMaxFuzzyHitTestDistance;
 - (BOOL)_accessibilityOpaqueElementScrollsContentIntoView;
 - (id)_accessibilityScrollStatus;
+- (id)_accessibilitySortedElementsWithin;
 - (void)scrollToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2 animated:(BOOL)arg3;
 
 @end

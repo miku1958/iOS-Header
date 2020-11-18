@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double cloudFeedSeparatorHeight;
 @property (readonly, nonatomic) NSDictionary *cloudFeedWhiteDefaultTextAttributes;
 @property (readonly, nonatomic) NSDictionary *cloudFeedWhiteEmphasizedTextAttributes;
+@property (readonly, nonatomic) UIColor *cloudStatusHighlightColor;
 @property (readonly, nonatomic) struct UIEdgeInsets commentsButtonTextInset;
 @property (readonly, nonatomic) UIImage *compactLoadErrorIcon;
 @property (readonly, nonatomic) struct UIEdgeInsets contentCommentsButtonImageInset;

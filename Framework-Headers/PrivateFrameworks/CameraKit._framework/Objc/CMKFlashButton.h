@@ -34,6 +34,7 @@
 - (long long)numberOfMenuItems;
 - (void)prepareHeaderViewForExpanding:(BOOL)arg1;
 - (void)reloadData;
+- (void)setExpansionOrientation:(long long)arg1;
 - (BOOL)shouldIgnoreMenuInteraction;
 - (id)titleForMenuItemAtIndex:(long long)arg1;
 - (BOOL)wantsSelectedItemToBeVisible;

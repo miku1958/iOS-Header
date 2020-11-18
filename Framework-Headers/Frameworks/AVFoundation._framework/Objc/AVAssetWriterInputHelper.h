@@ -44,6 +44,7 @@
 @property (readonly, nonatomic) NSDictionary *trackReferences;
 @property (nonatomic) struct CGAffineTransform transform;
 @property (strong) AVWeakReference *weakReferenceToAssetWriterInput; // @synthesize weakReferenceToAssetWriterInput=_weakReferenceToAssetWriterInput;
+@property (nonatomic) BOOL writesMediaDataToBeginningOfFile;
 
 - (void)addTrackAssociationWithTrackOfInput:(id)arg1 type:(id)arg2;
 - (BOOL)appendPixelBuffer:(struct __CVBuffer *)arg1 withPresentationTime:(CDStruct_1b6d18a9)arg2;

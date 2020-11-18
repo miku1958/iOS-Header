@@ -14,6 +14,8 @@
     BOOL _sentenceIsAllSymbols;
     BOOL _sentenceHasQuestionTerminator;
     BOOL _sentenceHasAlternativeConjunction;
+    BOOL _lexicalClassAvailable;
+    BOOL _lemmaAvailable;
     NSString *_sentenceStringOriginal;
     NSString *_sentenceString;
     NSArray *_sentenceEntities;
@@ -25,6 +27,7 @@
     NSArray *_appreciations;
     NSArray *_dataDetected;
     NSString *_RKLinguisticTagDataDetected;
+    NSString *_languageIdentifier;
 }
 
 @property (strong) NSString *RKLinguisticTagDataDetected; // @synthesize RKLinguisticTagDataDetected=_RKLinguisticTagDataDetected;
@@ -35,6 +38,9 @@
 @property (strong) NSArray *dataDetected; // @synthesize dataDetected=_dataDetected;
 @property (strong) NSArray *interrogatives; // @synthesize interrogatives=_interrogatives;
 @property (strong) NSArray *inversions; // @synthesize inversions=_inversions;
+@property (readonly) NSString *languageIdentifier; // @synthesize languageIdentifier=_languageIdentifier;
+@property (readonly) BOOL lemmaAvailable; // @synthesize lemmaAvailable=_lemmaAvailable;
+@property (readonly) BOOL lexicalClassAvailable; // @synthesize lexicalClassAvailable=_lexicalClassAvailable;
 @property (strong) NSArray *sentenceEntities; // @synthesize sentenceEntities=_sentenceEntities;
 @property BOOL sentenceHasAlternativeConjunction; // @synthesize sentenceHasAlternativeConjunction=_sentenceHasAlternativeConjunction;
 @property BOOL sentenceHasQuestionTerminator; // @synthesize sentenceHasQuestionTerminator=_sentenceHasQuestionTerminator;
@@ -49,7 +55,6 @@
 + (BOOL)canClassifyLanguageIdentifier:(id)arg1;
 + (id)categoryKeywordMapForLanguage:(id)arg1;
 + (id)languageIdentifierFromClassName;
-+ (id)lexicalEntitiesFromString:(id)arg1;
 + (id)polarTagRegularExpressionForLanguage:(id)arg1;
 + (id)preProcessTextMessageForLinguisticTagger:(id)arg1 withLocale:(id)arg2;
 + (id)sensitiveSubjectRegularExpressionForLanguage:(id)arg1;
@@ -61,8 +66,8 @@
 - (id)addSentenceTerminatorQuestion:(id)arg1;
 - (void)analyzeSentence;
 - (id)classifySentence;
-- (BOOL)isLexicalClassAvailable;
-- (id)languageIdentifier;
+- (id)init;
+- (id)lexicalEntitiesFromString:(id)arg1;
 - (id)sentenceClassification:(id)arg1 options:(unsigned long long)arg2;
 
 @end

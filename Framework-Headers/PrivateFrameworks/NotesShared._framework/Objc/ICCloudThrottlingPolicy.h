@@ -22,9 +22,9 @@
 @property (nonatomic) unsigned long long currentBatchCount; // @synthesize currentBatchCount=_currentBatchCount;
 @property (readonly, nonatomic) ICCloudThrottlingLevel *currentLevel;
 @property (nonatomic) unsigned long long currentLevelIndex; // @synthesize currentLevelIndex=_currentLevelIndex;
-@property (strong, nonatomic) NSTimer *policyResetTimer; // @synthesize policyResetTimer=_policyResetTimer;
-@property (strong, nonatomic) NSDate *policyStartDate; // @synthesize policyStartDate=_policyStartDate;
-@property (nonatomic) double resetInterval; // @synthesize resetInterval=_resetInterval;
+@property (strong) NSTimer *policyResetTimer; // @synthesize policyResetTimer=_policyResetTimer;
+@property (strong) NSDate *policyStartDate; // @synthesize policyStartDate=_policyStartDate;
+@property double resetInterval; // @synthesize resetInterval=_resetInterval;
 @property (strong, nonatomic) NSArray *throttlingLevels; // @synthesize throttlingLevels=_throttlingLevels;
 
 + (void)resetSavedPolicyState;

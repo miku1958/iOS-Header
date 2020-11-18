@@ -12,6 +12,7 @@
 - (void)cam_ensureSubview:(id)arg1;
 - (BOOL)cam_isOnScreen:(id)arg1;
 - (void)cam_rotateWithInterfaceOrientation:(long long)arg1 animated:(BOOL)arg2;
+- (void)cam_setBorder;
 - (void)cam_setBorderColor:(id)arg1;
 - (void)cam_setBorderColor:(id)arg1 width:(double)arg2;
 - (void)cam_setHidden:(BOOL)arg1 animated:(BOOL)arg2;

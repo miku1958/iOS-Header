@@ -23,6 +23,7 @@
     BOOL _shouldSendXTokenHeader;
     BOOL _urlKnownToBeTrusted;
     BOOL _useUserSpecificURLBag;
+    BOOL _needsTermsAndConditionsAcceptance;
 }
 
 @property (strong) SSVFairPlaySAPSession *SAPSession;
@@ -34,6 +35,7 @@
 @property (nonatomic) BOOL ignorePreexistingSecureToken;
 @property long long machineDataStyle; // @synthesize machineDataStyle=_machineDataStyle;
 @property BOOL needsAuthentication; // @synthesize needsAuthentication=_needsAuthentication;
+@property BOOL needsTermsAndConditionsAcceptance; // @synthesize needsTermsAndConditionsAcceptance=_needsTermsAndConditionsAcceptance;
 @property BOOL needsURLBag; // @synthesize needsURLBag=_needsURLBag;
 @property BOOL performsMachineDataActions;
 @property BOOL shouldSendXTokenHeader;

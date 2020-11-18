@@ -44,9 +44,9 @@
 - (int)_isApplePaySupportedInCurrentRegion;
 - (id)_remoteObjectProxyWithFailureHandler:(CDUnknownBlockType)arg1;
 - (void)_removePassWithUniqueIDFromCache:(id)arg1;
-- (void)_savePaymentPass:(id)arg1 atURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_savePaymentPass:(id)arg1 atURL:(id)arg2 forDevice:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_setCachedUniqueIDs:(id)arg1;
-- (void)_sharedPaymentWebServiceContextWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_sharedPaymentWebServiceContextForDevice:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)beginProvisioningFromWatchOfferForPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)consistencyCheckWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
@@ -55,7 +55,6 @@
 - (void)handlePendingUnpairingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handlePendingiCloudSignoutWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
-- (BOOL)isIssuerAppProvisioningSupported;
 - (void)noteProvisioningPreflightCompleteWithSuccess:(BOOL)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)noteWatchOfferShownForPaymentPass:(id)arg1;
 - (void)paymentPassUniqueIDs:(CDUnknownBlockType)arg1;
@@ -63,12 +62,13 @@
 - (void)paymentPassWithUniqueID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)paymentPassesWithPrimaryAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)redownloadAllPaymentPassesWithCompletion:(CDUnknownBlockType)arg1;
-- (void)removePaymentPassWithUniqueID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)savePaymentPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)removePaymentPassWithUniqueID:(id)arg1 forDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)savePaymentPass:(id)arg1 forDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setDefaultCardUniqueID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setDefaultPaymentApplication:(id)arg1 forPassWithUniqueID:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)setSharedPaymentWebServiceContext:(id)arg1;
+- (void)setSharedPaymentWebServiceContext:(id)arg1 forDevice:(id)arg2;
 - (id)sharedPaymentWebServiceContext;
+- (id)sharedPaymentWebServiceContextForDevice:(id)arg1;
 - (void)shouldShowApplePaySettingsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)shouldShowWatchOfferForPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)watchPaymentWebService;

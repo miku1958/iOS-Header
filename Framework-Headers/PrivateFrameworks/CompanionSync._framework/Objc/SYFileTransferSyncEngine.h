@@ -8,7 +8,7 @@
 
 #import <CompanionSync/IDSServiceDelegate-Protocol.h>
 
-@class IDSService, NSDictionary, NSMutableArray, NSMutableIndexSet, NSObject, NSString, NSURL, SYStartSyncSession, _SYInputStreamer, _SYOutputStreamer;
+@class IDSService, NSDictionary, NSMutableArray, NSMutableIndexSet, NSObject, NSString, NSURL, SYDevice, SYStartSyncSession, _SYInputStreamer, _SYOutputStreamer;
 @protocol OS_dispatch_queue;
 
 @interface SYFileTransferSyncEngine : SYSyncEngine <IDSServiceDelegate>
@@ -22,6 +22,8 @@
     _SYInputStreamer *_inputStream;
     IDSService *_idsService;
     NSObject<OS_dispatch_queue> *_idsQueue;
+    SYDevice *_activeDevice;
+    SYDevice *_sessionDevice;
     NSMutableIndexSet *_messageRows;
     NSMutableArray *_deferredIncomingSessions;
     NSDictionary *_customIDSOptions;
@@ -36,13 +38,15 @@
 - (void).cxx_destruct;
 - (id)_assumeOwnershipOfURL:(id)arg1 error:(id *)arg2;
 - (void)_cancelSession;
+- (void)_consumeRemainingStreamDataWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_fileTransferHeader;
 - (void)_handleIncomingSessionFileAtOwnedURL:(id)arg1 metadata:(id)arg2 identifier:(id)arg3;
 - (void)_handleIncomingSessionFileAtURL:(id)arg1 metadata:(id)arg2 identifier:(id)arg3;
-- (void)_handleIncomingStreamDataWithIdentifier:(id)arg1;
+- (void)_handleIncomingStreamDataWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleSessionRestart:(id)arg1 priority:(long long)arg2 options:(id)arg3 userContext:(id)arg4 callback:(CDUnknownBlockType)arg5;
 - (void)_readNextProtobuf:(CDUnknownBlockType)arg1;
 - (void)_reallyHandleSessionRestart:(id)arg1 priority:(long long)arg2 options:(id)arg3 userContext:(id)arg4 callback:(CDUnknownBlockType)arg5;
+- (void)_recordLastSeqNo:(id)arg1;
 - (BOOL)_shouldTreatAsSessionEnd:(id)arg1;
 - (id)_wrapIncomingMessage:(id)arg1 ofType:(unsigned short)arg2 identifier:(id)arg3;
 - (id)_wrapIncomingResponse:(id)arg1 ofType:(unsigned short)arg2 identifier:(id)arg3;
@@ -50,6 +54,7 @@
 - (id)_wrapResponse:(id)arg1 toRequest:(id)arg2 ofType:(unsigned short)arg3;
 - (void)beginSession;
 - (BOOL)buffersSessions;
+- (id)cancelMessagesReturningFailures:(id)arg1;
 - (void)endSession;
 - (void)enqueueSyncRequest:(id)arg1 withMessageID:(unsigned short)arg2 priority:(long long)arg3 options:(id)arg4 userContext:(id)arg5 callback:(CDUnknownBlockType)arg6;
 - (id)idsOptions:(id)arg1;
@@ -58,7 +63,9 @@
 - (id)outputStreamWithMetadata:(id)arg1 priority:(long long)arg2 options:(id)arg3 context:(id)arg4 error:(id *)arg5;
 - (BOOL)resume:(id *)arg1;
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(BOOL)arg4 error:(id)arg5 context:(id)arg6;
+- (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 hasBeenDeliveredWithContext:(id)arg4;
 - (void)service:(id)arg1 account:(id)arg2 incomingResourceAtURL:(id)arg3 metadata:(id)arg4 fromID:(id)arg5 context:(id)arg6;
+- (void)service:(id)arg1 didSwitchActivePairedDevice:(id)arg2 acknowledgementBlock:(CDUnknownBlockType)arg3;
 - (void)suspend;
 
 @end

@@ -6,8 +6,8 @@
 
 #import <GeoServices/GEOComposedTransitRouteStep.h>
 
-@class GEOPBTransitStop, GEOTransitVehicleInfo, NSArray, NSDate, NSTimeZone;
-@protocol GEOTransitArtworkDataSource, GEOTransitLine, GEOTransitSystem;
+@class GEOComposedTransitTripRouteLeg, GEOPBTransitStop, GEOTransitVehicleInfo, NSArray, NSDate, NSTimeZone;
+@protocol GEOTransitLine, GEOTransitSystem;
 
 @interface GEOComposedTransitTripRouteStep : GEOComposedTransitRouteStep
 {
@@ -17,18 +17,10 @@
     double _departureTimeIntervalMax;
     GEOPBTransitStop *_originStop;
     GEOPBTransitStop *_destinationStop;
-    unsigned long long _defaultVehicleIndex;
-    unsigned long long _vehicleIndex;
-    NSArray *_transitVehicles;
-    NSArray *_transitLines;
-    NSArray *_transitSystems;
-    NSArray *_instructions;
-    NSArray *_routeLineArtworks;
-    NSArray *_routeDetailsPrimaryArtworkArrays;
-    NSArray *_routeDetailsSecondaryArtworks;
-    NSArray *_steppingArtworkArrays;
+    GEOTransitVehicleInfo *_transitVehicle;
     id<GEOTransitLine> _transitLine;
     id<GEOTransitSystem> _transitSystem;
+    NSArray *_routeLineArtwork;
     BOOL _isRail;
     BOOL _isBus;
     BOOL _canPreloadTiles;
@@ -38,7 +30,6 @@
 @property (readonly, nonatomic) NSTimeZone *arrivalTimeZone;
 @property (readonly, nonatomic) NSArray *arrivalTimes; // @synthesize arrivalTimes=_arrivalTimes;
 @property (readonly, nonatomic) BOOL canPreloadTilesForThisStep;
-@property (readonly, nonatomic) unsigned long long defaultVehicleIndex; // @synthesize defaultVehicleIndex=_defaultVehicleIndex;
 @property (readonly, nonatomic) NSDate *departureTime;
 @property (readonly, nonatomic) double departureTimeIntervalMax; // @synthesize departureTimeIntervalMax=_departureTimeIntervalMax;
 @property (readonly, nonatomic) double departureTimeIntervalMin; // @synthesize departureTimeIntervalMin=_departureTimeIntervalMin;
@@ -46,12 +37,11 @@
 @property (readonly, nonatomic) NSArray *departureTimes; // @synthesize departureTimes=_departureTimes;
 @property (readonly, nonatomic) BOOL isBus; // @synthesize isBus=_isBus;
 @property (readonly, nonatomic) BOOL isRail; // @synthesize isRail=_isRail;
-@property (readonly, nonatomic) id<GEOTransitArtworkDataSource> routeLineArtwork;
+@property (readonly, nonatomic) NSArray *routeLineArtwork; // @synthesize routeLineArtwork=_routeLineArtwork;
 @property (readonly, nonatomic) id<GEOTransitLine> transitLine; // @synthesize transitLine=_transitLine;
 @property (readonly, nonatomic) id<GEOTransitSystem> transitSystem; // @synthesize transitSystem=_transitSystem;
-@property (readonly, nonatomic) GEOTransitVehicleInfo *transitVehicle;
-@property (readonly, nonatomic) unsigned long long vehicleCount;
-@property (nonatomic) unsigned long long vehicleIndex; // @synthesize vehicleIndex=_vehicleIndex;
+@property (readonly, nonatomic) GEOTransitVehicleInfo *transitVehicle; // @synthesize transitVehicle=_transitVehicle;
+@property (readonly, nonatomic) GEOComposedTransitTripRouteLeg *tripLeg;
 
 - (void)dealloc;
 - (id)description;
@@ -59,15 +49,7 @@
 - (unsigned int)duration;
 - (BOOL)hasDuration;
 - (id)initWithComposedRoute:(id)arg1 decoderData:(id)arg2 step:(id)arg3 stepIndex:(unsigned long long)arg4 duration:(unsigned int)arg5 pointRange:(struct _NSRange)arg6;
-- (id)instructions;
 - (id)originStop;
-- (id)routeDetailsPrimaryArtwork;
-- (id)routeDetailsPrimaryArtworkForVehicle:(unsigned long long)arg1;
-- (id)routeDetailsSecondaryArtwork;
-- (id)routeDetailsSecondaryArtworkForVehicle:(unsigned long long)arg1;
-- (id)steppingArtwork;
-- (id)steppingArtworkForVehicle:(unsigned long long)arg1;
-- (id)transitLineForVehicle:(unsigned long long)arg1;
 
 @end
 

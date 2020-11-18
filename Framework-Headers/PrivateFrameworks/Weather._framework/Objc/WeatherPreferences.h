@@ -21,7 +21,6 @@
     id<WeatherPreferencesPersistence> _persistence;
     BOOL _userGroupPrefsLockedWhenInit;
     id<SynchronizedDefaultsDelegate> _syncDelegate;
-    NSString *_twcURLString;
     WeatherCloudPreferences *_cloudPreferences;
     NSObject<OS_dispatch_queue> *_celsiusQueue;
 }
@@ -33,9 +32,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<SynchronizedDefaultsDelegate> syncDelegate; // @synthesize syncDelegate=_syncDelegate;
-@property (copy, nonatomic) NSString *twcURLString; // @synthesize twcURLString=_twcURLString;
 @property (nonatomic) BOOL userGroupPrefsLockedWhenInit; // @synthesize userGroupPrefsLockedWhenInit=_userGroupPrefsLockedWhenInit;
-@property (copy, nonatomic) NSString *yahooWeatherURLString;
 
 + (id)_getGroupDefaultsFromURLInApp:(id)arg1;
 + (void)clearSharedPreferences;
@@ -90,6 +87,7 @@
 - (void)setDefaultSelectedCity:(unsigned long long)arg1;
 - (void)setDefaultSelectedCityID:(id)arg1;
 - (void)setLocalWeatherEnabled:(BOOL)arg1;
+- (void)setYahooWeatherURLString:(id)arg1;
 - (void)setupUbiquitousStoreIfNeeded;
 - (void)synchronizeStateToDisk;
 - (void)synchronizeStateToDiskDoNotify:(BOOL)arg1;
@@ -97,6 +95,7 @@
 - (id)twcLogoURL:(id)arg1;
 - (void)updateUnitsFromNotification;
 - (void)writeDefaultValue:(id)arg1 forKey:(id)arg2;
+- (id)yahooWeatherURLString;
 
 @end
 

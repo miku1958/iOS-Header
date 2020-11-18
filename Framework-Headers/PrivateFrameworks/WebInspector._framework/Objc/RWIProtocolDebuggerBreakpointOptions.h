@@ -15,6 +15,7 @@
 @property (copy, nonatomic) NSArray *actions;
 @property (nonatomic) BOOL autoContinue;
 @property (copy, nonatomic) NSString *condition;
+@property (nonatomic) int ignoreCount;
 
 
 @end

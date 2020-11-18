@@ -85,6 +85,7 @@
 - (void)blockingTransaction:(CDUnknownBlockType)arg1 handlingError:(CDUnknownBlockType)arg2;
 - (id)changeFromData:(id)arg1 ofType:(long long)arg2;
 - (id)dataFromChange:(id)arg1;
+- (id)decodeChangeData:(id)arg1 fromProtocolVersion:(long long)arg2 ofType:(long long)arg3;
 - (id)decodeSYObject:(id)arg1;
 - (void)deleteObject:(id)arg1;
 - (void)deleteObject:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -93,6 +94,7 @@
 - (BOOL)deleteObject:(id)arg1 context:(id)arg2 idsOptions:(id)arg3 error:(id *)arg4;
 - (BOOL)deleteObject:(id)arg1 error:(id *)arg2;
 - (void)didEndDeltaSync;
+- (id)encodeSYChangeForBackwardCompatibility:(id)arg1 protocolVersion:(long long)arg2;
 - (id)encodeSYObject:(id)arg1;
 - (id)init;
 - (id)initWithBundleIdentifier:(id)arg1;
@@ -105,12 +107,12 @@
 - (id)initWithService:(id)arg1 isGStore:(BOOL)arg2 priority:(long long)arg3 isMasterStore:(BOOL)arg4 tracksChanges:(BOOL)arg5;
 - (id)initWithServiceName:(id)arg1 priority:(long long)arg2 isMasterStore:(BOOL)arg3;
 - (BOOL)resume:(id *)arg1;
+- (void)service:(id)arg1 didSwitchFromPairingID:(id)arg2 toPairingID:(id)arg3;
 - (void)service:(id)arg1 encounteredError:(id)arg2 context:(id)arg3;
 - (void)service:(id)arg1 incomingData:(id)arg2 identifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)service:(id)arg1 incomingStream:(id)arg2 metadata:(id)arg3 identifier:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (BOOL)service:(id)arg1 startSession:(id)arg2 error:(id *)arg3;
-- (void)serviceDidPairDevice:(id)arg1;
-- (void)serviceDidUnpairDevice:(id)arg1;
+- (void)service:(id)arg1 willSwitchFromPairingID:(id)arg2 toPairingID:(id)arg3;
 - (void)setNeedsFullSync;
 - (void)setNeedsFullSyncWithContext:(id)arg1 idsOptions:(id)arg2;
 - (void)transaction:(CDUnknownBlockType)arg1;

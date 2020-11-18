@@ -14,6 +14,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (double)_accessibilityAllowedGeometryOverlap;
+- (id)_axPurifyData:(id)arg1;
+- (void)_updateLabels;
 - (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;
 

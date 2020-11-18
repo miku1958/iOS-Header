@@ -6,13 +6,12 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class CKQuery, CKQueryCursor, CKRecordZoneID, NSArray, NSObject;
-@protocol OS_dispatch_queue;
+@class CKQuery, CKQueryCursor, CKRecordZoneID, NSArray;
 
 @interface CKQueryOperation : CKDatabaseOperation
 {
     BOOL _shouldFetchAssetContent;
-    BOOL _isFinishing;
+    BOOL _fetchAllResults;
     CKQuery *_query;
     CKQueryCursor *_cursor;
     CKRecordZoneID *_zoneID;
@@ -21,15 +20,15 @@
     CDUnknownBlockType _recordFetchedBlock;
     CDUnknownBlockType _queryCompletionBlock;
     CKQueryCursor *_resultsCursor;
-    NSObject<OS_dispatch_queue> *_queryResultQueue;
+    CDUnknownBlockType _queryCursorFetchedBlock;
 }
 
 @property (copy, nonatomic) CKQueryCursor *cursor; // @synthesize cursor=_cursor;
 @property (copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
-@property (nonatomic) BOOL isFinishing; // @synthesize isFinishing=_isFinishing;
+@property (nonatomic) BOOL fetchAllResults; // @synthesize fetchAllResults=_fetchAllResults;
 @property (copy, nonatomic) CKQuery *query; // @synthesize query=_query;
 @property (copy, nonatomic) CDUnknownBlockType queryCompletionBlock; // @synthesize queryCompletionBlock=_queryCompletionBlock;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queryResultQueue; // @synthesize queryResultQueue=_queryResultQueue;
+@property (copy, nonatomic) CDUnknownBlockType queryCursorFetchedBlock; // @synthesize queryCursorFetchedBlock=_queryCursorFetchedBlock;
 @property (copy, nonatomic) CDUnknownBlockType recordFetchedBlock; // @synthesize recordFetchedBlock=_recordFetchedBlock;
 @property (strong, nonatomic) CKQueryCursor *resultsCursor; // @synthesize resultsCursor=_resultsCursor;
 @property (nonatomic) unsigned long long resultsLimit; // @synthesize resultsLimit=_resultsLimit;
@@ -42,7 +41,9 @@
 - (void)_handleCompletionCallback:(id)arg1;
 - (void)_handleProgressCallback:(id)arg1;
 - (unsigned long long)activityStart;
+- (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
 - (id)initWithCursor:(id)arg1;
 - (id)initWithQuery:(id)arg1;

@@ -33,7 +33,7 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<SBUIControlCenterButtonDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<SBUIControlCenterButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *glyphName; // @synthesize glyphName=_glyphName;
 @property (readonly) unsigned long long hash;
@@ -50,10 +50,12 @@
 + (id)_circleBackgroundImage;
 + (id)_circleBackgroundImageForSize:(struct CGSize)arg1;
 + (id)_roundRectBackgroundImage;
++ (id)_roundRectBackgroundImageForSize:(struct CGSize)arg1;
 + (id)_smallCircleBackgroundImage;
++ (id)_smallRoundRectBackgroundImage;
 + (id)circularButton;
-+ (void)controlAppearanceDidChangeForState:(long long)arg1;
 + (id)roundRectButton;
+- (void).cxx_destruct;
 - (id)_backgroundImage;
 - (id)_backgroundImageWithGlyphImage:(id)arg1 state:(long long)arg2;
 - (id)_controlStateStringFromState:(long long)arg1;

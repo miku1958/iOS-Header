@@ -10,14 +10,11 @@
 #import <FrontBoardServices/BSXPCCoding-Protocol.h>
 
 @class BSSettings, BSSettingsDiff, NSString;
-@protocol BSSettingDescriptionProvider;
 
 @interface FBSSettingsDiff : NSObject <BSXPCCoding, BSSettingDescriptionProvider>
 {
-    BSSettingsDiff *_otherSettingsDiff;
-    id<BSSettingDescriptionProvider> _descriptionProvider;
     BSSettings *_changes;
-    BSSettings *_otherSettingsChanges;
+    BSSettingsDiff *_otherSettingsDiff;
     Class _settingsClass;
 }
 
@@ -27,10 +24,6 @@
 @property (readonly) Class superclass;
 
 - (id)_initWithChanges:(id)arg1 otherSettingsDiff:(id)arg2 settingsClass:(Class)arg3;
-- (BOOL)_inspectSetting:(unsigned long long)arg1 ofSettings:(id)arg2 forCGRect:(struct CGRect *)arg3;
-- (BOOL)_inspectSetting:(unsigned long long)arg1 ofSettings:(id)arg2 forFlag:(long long *)arg3;
-- (BOOL)_inspectSetting:(unsigned long long)arg1 ofSettings:(id)arg2 forObject:(id *)arg3 ofClass:(Class)arg4;
-- (id)_otherSettingsDescriptionProvider;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
@@ -40,14 +33,6 @@
 - (id)initWithXPCDictionary:(id)arg1;
 - (void)inspectChangesWithBlock:(CDUnknownBlockType)arg1;
 - (void)inspectOtherChangesWithBlock:(CDUnknownBlockType)arg1;
-- (BOOL)inspectOtherSetting:(unsigned long long)arg1 forCGRect:(struct CGRect *)arg2;
-- (BOOL)inspectOtherSetting:(unsigned long long)arg1 forFlag:(long long *)arg2;
-- (BOOL)inspectOtherSetting:(unsigned long long)arg1 forNumber:(id *)arg2;
-- (BOOL)inspectOtherSetting:(unsigned long long)arg1 forObject:(id *)arg2 ofClass:(Class)arg3;
-- (BOOL)inspectSetting:(unsigned long long)arg1 forCGRect:(struct CGRect *)arg2;
-- (BOOL)inspectSetting:(unsigned long long)arg1 forFlag:(long long *)arg2;
-- (BOOL)inspectSetting:(unsigned long long)arg1 forNumber:(id *)arg2;
-- (BOOL)inspectSetting:(unsigned long long)arg1 forObject:(id *)arg2 ofClass:(Class)arg3;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 - (id)settings:(id)arg1 keyDescriptionForSetting:(unsigned long long)arg2;
 - (id)settings:(id)arg1 valueDescriptionForFlag:(long long)arg2 object:(id)arg3 ofSetting:(unsigned long long)arg4;

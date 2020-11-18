@@ -13,10 +13,8 @@
 {
     NSObject<OS_dispatch_queue> *_callbackQueue;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
-    NSNumber *_lastKnownAdminStatus;
     NSArray *_lastKnownAuthors;
     NSDate *_lastRequestDate;
-    NSDate *_lastAdminStatusRequestDate;
     NSMutableArray *_resultBlocks;
 }
 

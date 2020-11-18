@@ -8,12 +8,12 @@
 
 @interface CPDocumentAndData : NSObject
 {
-    struct CGPDFDocument *document;
-    struct __CFData *sourceData;
+    struct CGPDFDocument *_document;
+    struct __CFData *_sourceData;
 }
 
-@property (strong) struct CGPDFDocument *document; // @synthesize document;
-@property (strong) struct __CFData *sourceData; // @synthesize sourceData;
+@property (strong) struct CGPDFDocument *document; // @synthesize document=_document;
+@property (strong) struct __CFData *sourceData; // @synthesize sourceData=_sourceData;
 
 - (void)dealloc;
 

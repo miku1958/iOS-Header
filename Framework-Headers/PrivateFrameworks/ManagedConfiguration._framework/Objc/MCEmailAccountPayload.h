@@ -62,6 +62,7 @@
 - (void).cxx_destruct;
 - (id)_authenticationTypeLocalizedString:(id)arg1;
 - (id)_emailAccountTypeLocalizedString;
+- (BOOL)containsSensitiveUserInformation;
 - (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (id)payloadDescriptionKeyValueSections;

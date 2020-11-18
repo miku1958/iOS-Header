@@ -21,7 +21,7 @@
 - (void)applyThemeToTitleLabel:(id)arg1;
 - (id)backgroundColor;
 - (double)baselineInsetForHeaderTitle;
-- (struct UIEdgeInsets)edgeInsetsForHeader;
+- (struct UIEdgeInsets)edgeInsetsForHeaderView:(id)arg1;
 - (struct UIEdgeInsets)edgeInsetsForTable:(id)arg1;
 - (double)headerIconBaselineOffset;
 - (double)headerTitleBaselineOffsetHasIcon:(BOOL)arg1;

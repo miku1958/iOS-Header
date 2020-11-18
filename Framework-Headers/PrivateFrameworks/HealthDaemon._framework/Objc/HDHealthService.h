@@ -9,7 +9,7 @@
 #import <HealthDaemon/CBPeripheralDelegate-Protocol.h>
 #import <HealthDaemon/HDHSCharacteristicsDelegate-Protocol.h>
 
-@class CBCharacteristic, HDDeviceEntity, HDHealthDeviceManager, HKDevice, NSMutableArray, NSString, NSUUID;
+@class CBCharacteristic, CBPeripheral, HDDeviceEntity, HDHealthServiceManager, HKDevice, NSMutableArray, NSString, NSUUID;
 @protocol HDHealthDaemon, OS_dispatch_queue;
 
 @interface HDHealthService : NSObject <CBPeripheralDelegate, HDHSCharacteristicsDelegate>
@@ -20,10 +20,11 @@
     BOOL _deliverData;
     BOOL _characteristicsDiscovered;
     int _deviceInformationLoaded;
+    CBPeripheral *_peripheral;
     NSUUID *_peripheralUUID;
     NSString *_serviceId;
     HKDevice *_deviceInformation;
-    HDHealthDeviceManager *_deviceManager;
+    HDHealthServiceManager *_serviceManager;
     CBCharacteristic *_writableCharacteristic;
     NSObject<OS_dispatch_queue> *_writeQueue;
     NSMutableArray *_pendingWrites;
@@ -37,13 +38,14 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) HKDevice *deviceInformation; // @synthesize deviceInformation=_deviceInformation;
 @property (nonatomic) int deviceInformationLoaded; // @synthesize deviceInformationLoaded=_deviceInformationLoaded;
-@property (strong, nonatomic) HDHealthDeviceManager *deviceManager; // @synthesize deviceManager=_deviceManager;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<HDHealthDaemon> healthDaemon; // @synthesize healthDaemon=_healthDaemon;
 @property (strong, nonatomic) NSMutableArray *pendingWrites; // @synthesize pendingWrites=_pendingWrites;
+@property (readonly, weak, nonatomic) CBPeripheral *peripheral; // @synthesize peripheral=_peripheral;
 @property (copy, nonatomic) NSString *peripheralName; // @synthesize peripheralName=_peripheralName;
 @property (readonly, nonatomic) NSUUID *peripheralUUID; // @synthesize peripheralUUID=_peripheralUUID;
 @property (strong, nonatomic) NSString *serviceId; // @synthesize serviceId=_serviceId;
+@property (strong, nonatomic) HDHealthServiceManager *serviceManager; // @synthesize serviceManager=_serviceManager;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) CBCharacteristic *writableCharacteristic; // @synthesize writableCharacteristic=_writableCharacteristic;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *writeQueue; // @synthesize writeQueue=_writeQueue;
@@ -72,7 +74,7 @@
 - (BOOL)_shouldPersistObjects;
 - (void)deviceDisconnecting;
 - (void)executeFirstWrite;
-- (id)initWithDeviceManager:(id)arg1 propertyManager:(id)arg2 healthDaemon:(id)arg3 peripheral:(id)arg4;
+- (id)initWithServiceManager:(id)arg1 propertyManager:(id)arg2 healthDaemon:(id)arg3 peripheral:(id)arg4;
 - (void)markCharacteristicsDiscovered;
 - (void)performOperation:(id)arg1 onPeripheral:(id)arg2 withParameters:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)peripheral:(id)arg1 didDiscoverCharacteristic:(id)arg2;

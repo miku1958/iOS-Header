@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)allocateRenderResourcesAndReturnError:(id *)arg1;
 - (void)dealloc;
 - (void)deallocateRenderResources;
+- (void)didCrash;
 - (void)doOpen:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)inputBusses;
 - (void)internalInitWithExtension:(id)arg1 componentDescription:(struct AudioComponentDescription)arg2 instance:(struct OpaqueAudioComponentInstance *)arg3 completion:(CDUnknownBlockType)arg4;

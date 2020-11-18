@@ -33,6 +33,7 @@
 - (id)initWithServiceName:(id)arg1 endpoint:(id)arg2;
 - (void)queue_clientWasInvalidated;
 - (void)queue_connectionWasCreated;
+- (void)queue_handleError:(id)arg1;
 - (void)queue_handleMessage:(id)arg1;
 - (void)sendMessage:(id)arg1 withType:(long long)arg2;
 - (void)sendMessage:(id)arg1 withType:(long long)arg2 replyHandler:(CDUnknownBlockType)arg3 waitForReply:(BOOL)arg4 timeout:(double)arg5;

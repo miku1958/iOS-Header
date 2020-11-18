@@ -14,6 +14,7 @@
 }
 
 @property (copy, nonatomic) NSArray *commands;
+@property (copy, nonatomic) NSString *imageType;
 @property (strong, nonatomic) id<SAAceSerializable> object;
 @property (copy, nonatomic) NSString *selectionResponse;
 @property (copy, nonatomic) NSString *selectionText;

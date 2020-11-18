@@ -8,39 +8,57 @@
 
 #import <MusicCarDisplayUI/RURadioDataSourceDelegate-Protocol.h>
 
-@class MCDNoContentView, NSArray, NSIndexPath, NSString, RURadioDataSource, RadioRecentStationsController, RadioStation, UIActivityIndicatorView, UINavigationController, UIView;
+@class MusicSimpleRadioStationInfo, NSArray, NSIndexPath, NSString, NSTimer, RURadioDataSource, RadioRecentStationsController, UIActivityIndicatorView, UINavigationController, UIView;
 
 @interface MCDRadioViewController : MCD_OLD_TableViewController <RURadioDataSourceDelegate>
 {
     RURadioDataSource *_dataSource;
     NSArray *_featuredStations;
     NSArray *_myStations;
+    MusicSimpleRadioStationInfo *_prominentRadioStation;
     NSString *_featuredStationNamesBrief;
-    MCDNoContentView *_placeholderView;
+    UIView *_placeholderView;
     UIView *_MCD_tableView;
     BOOL _loadingRadioStation;
+    BOOL _radioStationsLoaded;
     RadioRecentStationsController *_recentStationsController;
     NSIndexPath *_selectedIndexPath;
     UINavigationController *_nowPlayingNavigationController;
     UIActivityIndicatorView *_activityIndicator;
-    RadioStation *_currentlyPlayingRadioStation;
+    id _currentlyPlayingRadioStation;
+    unsigned long long _featuredStationsIndex;
+    unsigned long long _genresStationsIndex;
+    MCD_OLD_TableViewController *_viewController;
+    NSTimer *_loadingTimer;
 }
 
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
-@property (strong, nonatomic) RadioStation *currentlyPlayingRadioStation; // @synthesize currentlyPlayingRadioStation=_currentlyPlayingRadioStation;
+@property (strong, nonatomic) id currentlyPlayingRadioStation; // @synthesize currentlyPlayingRadioStation=_currentlyPlayingRadioStation;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) unsigned long long featuredStationsIndex; // @synthesize featuredStationsIndex=_featuredStationsIndex;
+@property (nonatomic) unsigned long long genresStationsIndex; // @synthesize genresStationsIndex=_genresStationsIndex;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL loadingRadioStation; // @synthesize loadingRadioStation=_loadingRadioStation;
+@property (strong, nonatomic) NSTimer *loadingTimer; // @synthesize loadingTimer=_loadingTimer;
 @property (strong, nonatomic) UINavigationController *nowPlayingNavigationController; // @synthesize nowPlayingNavigationController=_nowPlayingNavigationController;
+@property (nonatomic) BOOL radioStationsLoaded; // @synthesize radioStationsLoaded=_radioStationsLoaded;
 @property (weak, nonatomic) RadioRecentStationsController *recentStationsController; // @synthesize recentStationsController=_recentStationsController;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath; // @synthesize selectedIndexPath=_selectedIndexPath;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) MCD_OLD_TableViewController *viewController; // @synthesize viewController=_viewController;
 
 - (void).cxx_destruct;
 - (void)_categorizeStations;
+- (id)_filteredRadioStations:(id)arg1;
 - (BOOL)_isNetworkTypeAllowed:(long long)arg1;
+- (void)_limitedUIDidChange;
 - (void)_networkTypeDidChangeNotification:(id)arg1;
+- (void)_presentStationUnavailableAlertForError:(id)arg1 stationName:(id)arg2;
+- (void)_reloadRadioStations;
+- (void)_setCurrentTableView;
+- (void)_showLoadingScreen;
+- (void)_startPlayingStation:(id)arg1;
 - (id)_stationFromIndexPath:(id)arg1;
 - (void)_updateViewForNetworkType:(long long)arg1;
 - (void)dealloc;
@@ -51,7 +69,6 @@
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)viewControllerForRowAtIndexPath:(id)arg1;
-- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

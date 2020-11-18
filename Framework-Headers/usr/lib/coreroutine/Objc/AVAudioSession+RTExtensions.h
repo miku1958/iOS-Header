@@ -7,7 +7,6 @@
 #import <AVFoundation/AVAudioSession.h>
 
 @interface AVAudioSession (RTExtensions)
-+ (id)audioSourceToContext:(long long)arg1;
 + (long long)avStringToAudioSource:(id)arg1;
 @end
 

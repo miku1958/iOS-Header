@@ -45,6 +45,7 @@
 - (id)associationsInAlbum:(struct NSObject *)arg1;
 - (void)dealloc;
 - (void)deleteAsset:(struct NSObject *)arg1;
+- (void)enumeratePTPInformationForFilesInDirectory:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)handlePhotoLibraryAvailableNotification;
 - (id)infoForAlbum:(struct NSObject *)arg1;
 - (id)infoForAsset:(struct NSObject *)arg1;

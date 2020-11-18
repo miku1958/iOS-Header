@@ -19,11 +19,13 @@ __attribute__((visibility("hidden")))
     struct CGPoint _lastContentOffset;
     struct CGPoint _targetContentOffset;
     struct CGPoint _peekAdjustment;
+    struct CGPoint _lastVelocity;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property (nonatomic) double convergenceRate; // @synthesize convergenceRate=_convergenceRate;
 @property (nonatomic) struct CGPoint lastContentOffset; // @synthesize lastContentOffset=_lastContentOffset;
+@property (nonatomic) struct CGPoint lastVelocity; // @synthesize lastVelocity=_lastVelocity;
 @property (nonatomic) struct CGPoint peekAdjustment; // @synthesize peekAdjustment=_peekAdjustment;
 @property (strong, nonatomic) id<UIScrollViewDelegate> scrollDelegate; // @synthesize scrollDelegate=_scrollDelegate;
 @property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;

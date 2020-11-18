@@ -44,7 +44,6 @@
 - (void)_queue_updateUserProfile;
 - (BOOL)_setUserCharacteristic:(id)arg1 forType:(id)arg2 shouldInsertSample:(BOOL)arg3 updateProfileAndSync:(BOOL)arg4 error:(id *)arg5;
 - (void)_updateQuantityCharacteristicsAndUserProfile;
-- (void)_updateUserProfileForRestoreCompletion:(id)arg1;
 - (id)_userCharacteristicForType:(id)arg1 entity:(id *)arg2 error:(id *)arg3;
 - (void)_userCharacteristicsDidChangeShouldUpdateUserProfile:(BOOL)arg1 shouldSync:(BOOL)arg2;
 - (void)daemonReady:(id)arg1;
@@ -54,7 +53,7 @@
 - (id)initWithHealthDaemon:(id)arg1;
 - (double)restingCaloriesFromTotalCalories:(double)arg1 timeInterval:(double)arg2 authorizedToRead:(BOOL)arg3;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
-- (void)samplesOfTypeWereRemoved:(id)arg1 anchor:(id)arg2;
+- (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 - (BOOL)setUserCharacteristic:(id)arg1 forType:(id)arg2 error:(id *)arg3;
 - (id)userCharacteristicForType:(id)arg1 error:(id *)arg2;
 

@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)init;
 - (void)loadView;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)readerController:(id)arg1 didClickLinkInReaderWithRequest:(id)arg2;
 - (void)readerController:(id)arg1 didClickLinkRequestingNewWindowInReaderWithRequest:(id)arg2;
 - (void)readerController:(id)arg1 didDetermineReaderAvailability:(BOOL)arg2;

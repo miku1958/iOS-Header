@@ -17,6 +17,7 @@
     UIView *_artworkEditingOverlayView;
     _UIBackdropView *_backdropView;
     UIView *_bottomHairlineView;
+    double _cachedTallestButtonHeight;
     MusicNowPlayingFloatingButton *_cameraButton;
     NSString *_editableText;
     UIView *_editableTextBottomHairlineView;
@@ -28,6 +29,7 @@
     UIActivityIndicatorView *_refreshActivityIndicatorView;
     UIButton *_refreshButton;
     BOOL _shouldIgnoreArtworkImageChanges;
+    BOOL _shouldUpdateTallestButtonHeightCache;
     BOOL _editing;
     BOOL _editableTitleShouldBecomeFirstResponder;
     UIButton *_contextualActionsButton;
@@ -101,6 +103,7 @@
 - (void)textViewDidChange:(id)arg1;
 - (void)tintColorDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)willMoveToSuperview:(id)arg1;
 
 @end
 

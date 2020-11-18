@@ -55,9 +55,12 @@
 - (BOOL)containsAttachments;
 - (id)contentAsPlainTextPreservingNewlines;
 - (id)contentInfoText;
+- (id)dateForCurrentSortType;
+- (id)defaultTitleForEmptyNote;
 - (id)identifier;
 - (BOOL)ignoreInSearchIndexer;
 - (BOOL)isHiddenFromSearch;
+- (BOOL)isPasswordProtected;
 - (void)markForDeletion;
 - (id)noteAsPlainTextWithoutTitle;
 - (id)objectIdentifier;

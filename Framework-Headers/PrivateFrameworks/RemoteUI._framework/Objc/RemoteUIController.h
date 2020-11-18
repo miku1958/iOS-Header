@@ -11,7 +11,7 @@
 #import <RemoteUI/RUIParserDelegate-Protocol.h>
 #import <RemoteUI/UINavigationControllerDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, NSURLSessionConfiguration, RUILoader, RUINavigationController, RUIPage, RUIStyle, UINavigationController, UIViewController;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSString, NSURLSessionConfiguration, RUILoader, RUINavigationController, RUIPage, RUIStyle, UINavigationController, UIViewController;
 @protocol RemoteUIControllerDelegate;
 
 @interface RemoteUIController : NSObject <RUILoaderDelegate, RUIObjectModelDelegate, RUIParserDelegate, UINavigationControllerDelegate>
@@ -35,6 +35,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<RemoteUIControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSArray *displayedPages;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) UIViewController *hostViewController; // @synthesize hostViewController=_hostViewController;
 @property (copy, nonatomic) CDUnknownBlockType loadCompletion; // @synthesize loadCompletion=_loadCompletion;

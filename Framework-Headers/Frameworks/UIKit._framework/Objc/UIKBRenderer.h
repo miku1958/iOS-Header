@@ -68,9 +68,9 @@ __attribute__((visibility("hidden")))
 - (void)renderBackgroundTraits:(id)arg1 allowCaching:(BOOL)arg2;
 - (void)renderEdgeEffect:(id)arg1 withTraits:(id)arg2;
 - (void)renderKeyContents:(id)arg1 withTraits:(id)arg2;
-- (BOOL)renderKeyImageContents:(id)arg1 withTraits:(id)arg2;
+- (unsigned long long)renderKeyImageContents:(id)arg1 withTraits:(id)arg2 status:(unsigned long long)arg3;
 - (BOOL)renderKeyPathContents:(id)arg1 withTraits:(id)arg2;
-- (BOOL)renderKeyStringContents:(id)arg1 withTraits:(id)arg2;
+- (unsigned long long)renderKeyStringContents:(id)arg1 withTraits:(id)arg2 status:(unsigned long long)arg3;
 - (void)renderShadowEffect:(id)arg1 withTraits:(id)arg2;
 
 @end

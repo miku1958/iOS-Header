@@ -8,13 +8,14 @@
 
 #import <AuthKit/NSURLSessionAppleIDContext-Protocol.h>
 
-@class AKAnisetteData, AKAnisetteProvisioningController, NSString;
+@class AKAnisetteData, AKAnisetteProvisioningController, NSLock, NSString;
 
 @interface AKAppleIDSession : NSObject <NSURLSessionAppleIDContext>
 {
     NSString *_serviceID;
     AKAnisetteProvisioningController *_anisetteController;
     AKAnisetteData *_proxiedAnisetteData;
+    NSLock *_anisetteControllerLock;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -33,6 +34,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleResponse:(id)arg1 forRequest:(id)arg2 shouldRetry:(BOOL *)arg3;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
 - (id)relevantHTTPStatusCodes;

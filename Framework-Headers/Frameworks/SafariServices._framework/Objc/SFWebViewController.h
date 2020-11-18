@@ -9,19 +9,20 @@
 #import <SafariServices/WBUFormAutoFillControllerDelegate-Protocol.h>
 #import <SafariServices/WKNavigationDelegatePrivate-Protocol.h>
 #import <SafariServices/WKUIDelegatePrivate-Protocol.h>
+#import <SafariServices/_SFJavaScriptDialogControllerDelegate-Protocol.h>
 #import <SafariServices/_WKFormDelegate-Protocol.h>
 
-@class NSString, WBUFormAutoFillController, WKWebView, _SFJavaScriptDialogManager;
+@class NSString, WBUFormAutoFillController, WKWebView, _SFJavaScriptDialogController;
 @protocol SFWebViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SFWebViewController : UIViewController <WBUFormAutoFillControllerDelegate, WKNavigationDelegatePrivate, WKUIDelegatePrivate, _WKFormDelegate>
+@interface SFWebViewController : UIViewController <WBUFormAutoFillControllerDelegate, WKNavigationDelegatePrivate, WKUIDelegatePrivate, _WKFormDelegate, _SFJavaScriptDialogControllerDelegate>
 {
     WBUFormAutoFillController *_autoFillController;
     BOOL _didFirstLayout;
     BOOL _didFinishDocumentLoad;
-    _SFJavaScriptDialogManager *_javaScriptDialogManager;
-    BOOL _shouldResetJavaScriptDialogManagerOnNextCommit;
+    _SFJavaScriptDialogController *_javaScriptDialogController;
+    BOOL _shouldSuppressJavaScriptDialogs;
     BOOL _loading;
     BOOL _didFirstVisuallyNonEmptyLayout;
     id<SFWebViewControllerDelegate> _delegate;
@@ -48,15 +49,17 @@ __attribute__((visibility("hidden")))
 - (void)_webView:(id)arg1 renderingProgressDidChange:(unsigned long long)arg2;
 - (BOOL)_webView:(id)arg1 shouldIncludeAppLinkActionsForElement:(id)arg2;
 - (void)_webView:(id)arg1 willSubmitFormValues:(id)arg2 userObject:(id)arg3 submissionHandler:(CDUnknownBlockType)arg4;
+- (void)_webViewWebProcessDidBecomeResponsive:(id)arg1;
+- (void)_webViewWebProcessDidBecomeUnresponsive:(id)arg1;
 - (void)_webViewWebProcessDidCrash:(id)arg1;
 - (void)dealloc;
+- (BOOL)dialogControllerShouldSuppressDialogs:(id)arg1;
 - (BOOL)formAutoFillControllerCanPrefillForm:(id)arg1;
 - (BOOL)formAutoFillControllerShouldDisableAutoFill:(id)arg1;
 - (id)formAutoFillControllerURLForFormAutoFill:(id)arg1;
 - (void)loadView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)resetJavaScriptDialogManagerOnNextCommit;
 - (id)webView:(id)arg1 createWebViewWithConfiguration:(id)arg2 forNavigationAction:(id)arg3 windowFeatures:(id)arg4;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
 - (void)webView:(id)arg1 decidePolicyForNavigationResponse:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
@@ -71,6 +74,8 @@ __attribute__((visibility("hidden")))
 - (void)webView:(id)arg1 runJavaScriptConfirmPanelWithMessage:(id)arg2 initiatedByFrame:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)webView:(id)arg1 runJavaScriptTextInputPanelWithPrompt:(id)arg2 defaultText:(id)arg3 initiatedByFrame:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)webViewConfiguration;
+- (void)willActivateWebViewController;
+- (void)willBeginUserInitiatedNavigation;
 
 @end
 

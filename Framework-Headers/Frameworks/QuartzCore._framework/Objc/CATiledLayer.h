@@ -23,6 +23,7 @@
 + (unsigned int)prefetchedTiles;
 + (BOOL)shouldDrawOnMainThread;
 - (BOOL)_canDisplayConcurrently;
+- (void)_colorSpaceDidChange;
 - (void)_dealloc;
 - (void)_display;
 - (BOOL)canDrawRect:(struct CGRect)arg1 levelOfDetail:(int)arg2;

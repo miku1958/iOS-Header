@@ -16,10 +16,10 @@
 {
     NSURL *_databaseURL;
     unsigned long long _itemCountLimit;
-    double _ageLimit;
     Class _historyItemClass;
     NSObject<OS_dispatch_queue> *_databaseQueue;
     NSMutableDictionary *_statements;
+    NSMutableDictionary *_clientVersions;
     NSMutableDictionary *_itemsByDatabaseID;
     NSMapTable *_weakVisitsByDatabaseID;
     NSMutableSet *_pendingAddsOrUpdates;
@@ -33,6 +33,8 @@
     NSData *_fetchThrottlerData;
     NSData *_syncCircleSizeRetrievalThrottlerData;
     long long _cachedNumberOfDevicesInSyncCircle;
+    NSData *_cryptographicKey;
+    NSData *_salt;
     int _databaseLockingPolicy;
     int _databaseCoordinationLockFileDescriptor;
     BOOL _loadInProgress;
@@ -49,6 +51,7 @@
     WBSPeriodicActivityScheduler *_maintenanceScheduler;
     BOOL _pushNotificationsAreInitialized;
     id<WBSHistoryStoreDelegate> _delegate;
+    double _historyAgeLimit;
     WBSSQLiteDatabase *_database;
 }
 
@@ -59,22 +62,28 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSData *fetchThrottlerData;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double historyAgeLimit; // @synthesize historyAgeLimit=_historyAgeLimit;
 @property (nonatomic) BOOL pushNotificationsAreInitialized; // @synthesize pushNotificationsAreInitialized=_pushNotificationsAreInitialized;
 @property (copy, nonatomic) NSData *pushThrottlerData;
+@property (readonly, nonatomic) NSData *salt;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSData *syncCircleSizeRetrievalThrottlerData;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (BOOL)_acquireDatabaseCoordinationLockForDatabaseURL:(id)arg1;
+- (double)_ageLimitSinceReferenceDate;
 - (unsigned long long)_cachedNumberOfDevicesInSyncCircleOnDatabaseQueue;
 - (BOOL)_checkDatabaseIntegrity;
 - (void)_checkpointWriteAheadLog;
 - (void)_clearHistoryVisitsAddedAfterDate:(id)arg1 beforeDate:(id)arg2 addingTombstone:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_clearHistoryVisitsMatchingURLHash:(id)arg1 salt:(id)arg2 afterDate:(id)arg3 beforeDate:(id)arg4 addingTombstone:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_clearHistoryVisitsMatchingURLString:(id)arg1 afterDate:(id)arg2 beforeDate:(id)arg3 addingTombstone:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)_convertTombstoneWithGenerationToSecureFormat:(long long)arg1;
 - (long long)_currentGeneration;
 - (id)_databaseCoordinationLockURLForDatabaseURL:(id)arg1;
 - (id)_deletionPlanForDeletionOfVisits:(id)arg1;
+- (void)_enforceAgeAndItemCountLimits:(CDUnknownBlockType)arg1;
 - (void)_expireOldVisits;
 - (void)_finishLoadingOnMainThread;
 - (void)_finishLoadingOnMainThreadIfNeeded;
@@ -83,7 +92,9 @@
 - (void)_insertTombstone:(id)arg1;
 - (void)_insertVisit:(id)arg1;
 - (id)_itemsOrderedForInsertion:(id)arg1;
+- (id)_lastSeenDateForCloudClientVersionOnDatabaseQueue:(unsigned long long)arg1;
 - (long long)_lastSyncedGeneration;
+- (void)_loadClientVersions;
 - (void)_loadFromDatabase;
 - (void)_loadHistory;
 - (void)_loadRedirectVisitsForLoadedItems:(id)arg1;
@@ -97,8 +108,9 @@
 - (int)_migrateToSchemaVersion_5;
 - (int)_migrateToSchemaVersion_6;
 - (int)_migrateToSchemaVersion_7;
+- (int)_migrateToSchemaVersion_8;
 - (void)_openDatabase:(id)arg1 andCheckIntegrity:(BOOL)arg2;
-- (void)_performMaintenance;
+- (void)_performMaintenance:(CDUnknownBlockType)arg1;
 - (void)_processPendingDeletes;
 - (void)_processPendingVisitDeletes;
 - (void)_processPendingWrites;
@@ -106,6 +118,7 @@
 - (void)_recomputeDerivedVisitCounts;
 - (void)_releaseDatabaseCoordinationLock;
 - (void)_removeVisitsProvidedByBlockInvokedOnDatabaseQueue:(CDUnknownBlockType)arg1 addingTombstone:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)_saltOnDatabaseQueue;
 - (void)_scheduleMaintenance;
 - (void)_scheduleWrite;
 - (int)_setDatabaseSchemaVersion:(int)arg1;
@@ -113,14 +126,17 @@
 - (void)_setMetadataDataValue:(id)arg1 forKey:(id)arg2;
 - (void)_setMetadataInt64Value:(long long)arg1 forKey:(id)arg2;
 - (int)_setOrigin:(long long)arg1 forVisitsFromOrigin:(long long)arg2;
+- (BOOL)_shouldEmitLegacyTombstones;
 - (BOOL)_shouldMigrateFromPropertyListWhenLoadingDatabase:(id)arg1;
 - (id)_statementForQuery:(id)arg1;
 - (id)_tombstonesNeedingSync;
+- (void)_updateDatabaseAfterSuccessfulSyncWithGeneration:(long long)arg1 convertTombstonesToSecureFormat:(BOOL)arg2;
 - (void)_updateGenerationForVisits:(id)arg1;
 - (void)_updateItem:(id)arg1;
 - (void)_updateVisit:(id)arg1;
 - (void)_updateVisitRedirectRelationships:(id)arg1;
 - (id)_visitsCreatedAfterDate:(id)arg1 beforeDate:(id)arg2;
+- (id)_visitsCreatedMatchingURLHash:(id)arg1 salt:(id)arg2 afterDate:(id)arg3 beforeDate:(id)arg4;
 - (id)_visitsCreatedMatchingURLString:(id)arg1 afterDate:(id)arg2 beforeDate:(id)arg3;
 - (id)_visitsFromRows:(id)arg1 predicate:(CDUnknownBlockType)arg2;
 - (id)_visitsNeedingSyncWithVisitSyncWindow:(double)arg1;
@@ -131,8 +147,11 @@
 - (void)clearHistoryVisitsAddedAfterDate:(id)arg1 beforeDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)clearHistoryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)close;
+- (id)createCryptographicKey;
+- (id)createOrLoadCryptographicKey;
 - (void)dealloc;
-- (id)debugDictionaryRepresentation;
+- (id)decryptDictionary:(id)arg1;
+- (id)encryptDictionary:(id)arg1;
 - (id)existingItemFromVisitRow:(id)arg1;
 - (void)getAllTombstonesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getServerChangeTokenDataWithCompletion:(CDUnknownBlockType)arg1;
@@ -140,11 +159,12 @@
 - (void)getVisitsCreatedAfterDate:(id)arg1 beforeDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)historyLoader:(id)arg1 didLoadItems:(id)arg2 discardedItems:(id)arg3 stringsForUserTypeDomainExpansion:(id)arg4;
 - (void)historyLoaderDidFinishLoading:(id)arg1;
-- (id)initWithURL:(id)arg1 itemCountLimit:(unsigned long long)arg2 ageLimit:(double)arg3 historyItemClass:(Class)arg4;
+- (id)initWithURL:(id)arg1 itemCountLimit:(unsigned long long)arg2 historyAgeLimit:(double)arg3 historyItemClass:(Class)arg4;
 - (void)itemWasReplaced:(id)arg1 byItem:(id)arg2;
 - (void)itemsWereAdded:(id)arg1;
 - (void)itemsWereModified:(id)arg1;
-- (void)performMaintenance;
+- (id)lastSeenDateForCloudClientVersion:(unsigned long long)arg1;
+- (void)performMaintenance:(CDUnknownBlockType)arg1;
 - (void)pruneTombstonesWithEndDatePriorToDate:(id)arg1;
 - (void)removeItemsOnDatabaseQueue:(id)arg1;
 - (void)removePastHistoryVisitsForItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -152,8 +172,10 @@
 - (void)replayAndAddTombstone:(id)arg1;
 - (void)resetCloudHistoryDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)savePendingChangesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)setLastSeenDate:(id)arg1 forCloudClientVersion:(unsigned long long)arg2;
 - (void)setServerChangeTokenData:(id)arg1;
 - (void)startLoading;
+- (void)updateHistoryAfterSuccessfulPersistedLongLivedSaveOperationWithGeneration:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)visitForItem:(id)arg1 row:(id)arg2;
 - (id)visitForRow:(id)arg1;
 - (void)visitIdentifiersMatchingExistingVisits:(id)arg1 populateAssociatedVisits:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;

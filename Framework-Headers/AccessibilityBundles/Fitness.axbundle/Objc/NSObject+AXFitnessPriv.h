@@ -9,6 +9,6 @@
 @interface NSObject (AXFitnessPriv)
 - (id)_accessibilityRingsDescription;
 - (void)_accessibilitySetRingsDescription:(id)arg1;
-- (id)_fitnessUIAccessibilityDescriptionForPercentages:(double)arg1 briskMinutesPercentage:(double)arg2 activeHoursPercentage:(double)arg3 arePercentagesCapped:(BOOL)arg4;
+- (id)_fitnessUIAccessibilityDescriptionForPercentages:(double)arg1 exercisingPercentage:(double)arg2 standingPercentage:(double)arg3 arePercentagesCapped:(BOOL)arg4;
 @end
 

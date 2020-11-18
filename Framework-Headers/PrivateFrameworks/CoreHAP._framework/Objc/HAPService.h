@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HAPAccessory, NSArray, NSNumber, NSString;
+@class CBService, HAPAccessory, NSArray, NSNumber, NSString;
 
 @interface HAPService : NSObject
 {
@@ -18,6 +18,7 @@
 }
 
 @property (weak, nonatomic) HAPAccessory *accessory; // @synthesize accessory=_accessory;
+@property (strong, nonatomic, setter=setCBService:) CBService *cbService;
 @property (strong, nonatomic) NSArray *characteristics; // @synthesize characteristics=_characteristics;
 @property (readonly, nonatomic) NSArray *includedServices; // @synthesize includedServices=_includedServices;
 @property (copy, nonatomic) NSNumber *instanceID; // @synthesize instanceID=_instanceID;

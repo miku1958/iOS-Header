@@ -8,7 +8,7 @@
 
 #import <CoreRoutine/RTFrameworkProtocol-Protocol.h>
 
-@class NSMutableDictionary, NSString, NSXPCConnection, RTEventAgentHelper;
+@class NSMutableDictionary, NSString, NSXPCConnection, RTEventAgentHelper, RTRoutineManagerRegistrantApplicationPrediction;
 @protocol OS_dispatch_queue;
 
 @interface RTRoutineManager : NSObject <RTFrameworkProtocol>
@@ -17,13 +17,13 @@
     NSXPCConnection *_xpcConnection;
     CDUnknownBlockType _visitHandler;
     NSMutableDictionary *_scenarioTriggerHandlers;
+    RTRoutineManagerRegistrantApplicationPrediction *_applicationPredictionRegistrant;
     CDUnknownBlockType _nextPredictedLocationsOfInterestHandler;
-    CDUnknownBlockType _RTPredicatedApplicationsHandler;
     NSString *_restorationIdentifier;
     RTEventAgentHelper *_eventAgentHelper;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType RTPredicatedApplicationsHandler; // @synthesize RTPredicatedApplicationsHandler=_RTPredicatedApplicationsHandler;
+@property (strong, nonatomic) RTRoutineManagerRegistrantApplicationPrediction *applicationPredictionRegistrant; // @synthesize applicationPredictionRegistrant=_applicationPredictionRegistrant;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) RTEventAgentHelper *eventAgentHelper; // @synthesize eventAgentHelper=_eventAgentHelper;
@@ -71,6 +71,7 @@
 - (void)onScenarioTrigger:(id)arg1 withError:(id)arg2;
 - (void)onVisit:(id)arg1 withError:(id)arg2;
 - (void)setRoutineEnabled:(BOOL)arg1;
+- (void)startMonitoringForPredictedApplicationsUsingPredicate:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)startMonitoringForPredictedApplicationsWithHandler:(CDUnknownBlockType)arg1;
 - (void)startMonitoringNextPredictedLocationsOfInterestWithHandler:(CDUnknownBlockType)arg1;
 - (void)startMonitoringScenarioTriggerOfType:(unsigned long long)arg1 withHandler:(CDUnknownBlockType)arg2;

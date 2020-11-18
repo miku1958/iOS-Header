@@ -58,6 +58,8 @@
     NSArray *_autoRedEyeCorrections;
     NSArray *_legacyAutoEnhanceFilters;
     BOOL _legacyAutoEnhanceIsOn;
+    CDStruct_1b6d18a9 _trimStartTimeOffset;
+    CDStruct_1b6d18a9 _trimEndTimeOffset;
 }
 
 @property (readonly, nonatomic) long long appliedOrientation; // @synthesize appliedOrientation=_appliedOrientation;
@@ -105,6 +107,8 @@
 @property (readonly, nonatomic) double smartToneLevel; // @synthesize smartToneLevel=_smartToneLevel;
 @property (readonly, copy, nonatomic) NSDictionary *smartToneStatistics; // @synthesize smartToneStatistics=_smartToneStatistics;
 @property (readonly, nonatomic) double straightenAngle; // @synthesize straightenAngle=_straightenAngle;
+@property (readonly, nonatomic) CDStruct_1b6d18a9 trimEndTimeOffset; // @synthesize trimEndTimeOffset=_trimEndTimeOffset;
+@property (readonly, nonatomic) CDStruct_1b6d18a9 trimStartTimeOffset; // @synthesize trimStartTimeOffset=_trimStartTimeOffset;
 @property (readonly, nonatomic, getter=isWhiteBalanceEnabled) BOOL whiteBalanceEnabled; // @synthesize whiteBalanceEnabled=_whiteBalanceEnabled;
 @property (readonly, nonatomic) double whiteBalanceFaceI; // @synthesize whiteBalanceFaceI=_whiteBalanceFaceI;
 @property (readonly, nonatomic) double whiteBalanceFaceQ; // @synthesize whiteBalanceFaceQ=_whiteBalanceFaceQ;
@@ -157,6 +161,7 @@
 - (BOOL)isSmartBWPrecisionEqualToPhotoEditModel:(id)arg1;
 - (BOOL)isSmartColorPrecisionEqualToPhotoEditModel:(id)arg1;
 - (BOOL)isSmartTonePrecisionEqualToPhotoEditModel:(id)arg1;
+- (BOOL)isTrimEqualToPhotoEditModel:(id)arg1;
 - (BOOL)isVisuallyEqualToPhotoEditModel:(id)arg1;
 - (id)mutableCopy;
 - (id)pl_aggregateKeysForPreviousPhotoEditModel:(id)arg1;

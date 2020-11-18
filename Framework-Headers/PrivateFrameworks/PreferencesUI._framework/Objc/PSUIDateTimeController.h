@@ -6,11 +6,12 @@
 
 #import <Preferences/PSListController.h>
 
+#import <PreferencesUI/PSUIDateTimePickerCellDelegate-Protocol.h>
 #import <PreferencesUI/UIPopoverControllerDelegate-Protocol.h>
 
 @class NSIndexPath, NSString, NSTimer, PSSpecifier, PSWallClockMinuteTimer, UIPopoverController;
 
-@interface PSUIDateTimeController : PSListController <UIPopoverControllerDelegate>
+@interface PSUIDateTimeController : PSListController <UIPopoverControllerDelegate, PSUIDateTimePickerCellDelegate>
 {
     UIPopoverController *_setDateAndTimePopoverController;
     NSIndexPath *_setDateAndTimeIndexPath;

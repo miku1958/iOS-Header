@@ -22,6 +22,7 @@
 @property (readonly, copy, nonatomic) NSString *assertionName; // @synthesize assertionName=_assertionName;
 @property (readonly, copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 - (id)initWithAssertionName:(id)arg1 reason:(id)arg2 port:(unsigned int)arg3;

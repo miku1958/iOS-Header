@@ -43,7 +43,6 @@
     NSNumber *_purchaserDSID;
     NSNumber *_downloaderDSID;
     NSNumber *_familyID;
-    BOOL _isContainerized;
     int _modTime;
     int _regTime;
     NSUUID *_deviceIdentifierForVendor;
@@ -86,7 +85,6 @@
 @property (readonly, nonatomic) BOOL isAdHocCodeSigned;
 @property (readonly, nonatomic) BOOL isAppUpdate;
 @property (readonly, nonatomic) BOOL isBetaApp;
-@property (readonly, nonatomic) BOOL isContainerized; // @synthesize isContainerized=_isContainerized;
 @property (readonly, nonatomic) BOOL isInstalled;
 @property (readonly, nonatomic) BOOL isNewsstandApp;
 @property (readonly, nonatomic) BOOL isPlaceholder;
@@ -103,6 +101,8 @@
 @property (readonly, nonatomic) BOOL profileValidated;
 @property (readonly, nonatomic) NSNumber *purchaserDSID; // @synthesize purchaserDSID=_purchaserDSID;
 @property (readonly, nonatomic) NSDate *registeredDate; // @synthesize registeredDate=_registeredDate;
+@property (readonly, nonatomic, getter=isRemoveableSystemApp) BOOL removeableSystemApp;
+@property (readonly, nonatomic, getter=isRemovedSystemApp) BOOL removedSystemApp;
 @property (readonly, nonatomic) NSArray *requiredDeviceCapabilities; // @synthesize requiredDeviceCapabilities=_requiredDeviceCapabilities;
 @property (readonly, nonatomic) NSString *roleIdentifier;
 @property (readonly, nonatomic) NSString *sdkVersion; // @synthesize sdkVersion=_sdkVersion;
@@ -114,11 +114,13 @@
 @property (readonly, nonatomic) BOOL supportsAudiobooks;
 @property (readonly, nonatomic) BOOL supportsExternallyPlayableContent;
 @property (readonly, nonatomic) BOOL supportsOpenInPlace;
+@property (readonly, nonatomic) BOOL supportsPurgeableLocalStorage;
 @property (readonly, nonatomic) NSString *teamID; // @synthesize teamID=_teamID;
 @property (readonly, nonatomic) NSString *vendorName; // @synthesize vendorName=_vendorName;
 @property (readonly, nonatomic, getter=isWhitelisted) BOOL whitelisted;
 
 + (id)applicationProxyForBundleURL:(id)arg1;
++ (id)applicationProxyForCompanionIdentifier:(id)arg1;
 + (id)applicationProxyForIdentifier:(id)arg1;
 + (id)applicationProxyForIdentifier:(id)arg1 placeholder:(BOOL)arg2;
 + (id)applicationProxyForIdentifier:(id)arg1 roleIdentifier:(id)arg2;
@@ -137,6 +139,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)installProgressSync;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isSystemOrInternalApp;
 - (id)localizedName;
 - (id)localizedNameForContext:(id)arg1;
 - (id)localizedShortName;

@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_setup;
 - (id)handleClientConnection:(id)arg1;
 - (void)handleDisconnectionForDaemonClient:(id)arg1;
-- (void)handleRestorationForDaemonClient:(id)arg1;
+- (id)handleRestorationForDaemonClient:(id)arg1;
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)saveDaemonClient:(id)arg1;

@@ -20,13 +20,16 @@
     NSArray *_shields;
     struct vector<unsigned long long, std::__1::allocator<unsigned long long>> _featureIDs;
     NSArray *_relatedTexts;
+    NSArray *_relatedSubTexts;
     NSArray *_iconImageKeys;
     NSArray *_imageKeys;
     int _sortKey;
+    unsigned int _elementCount;
 }
 
 @property (readonly, nonatomic) NSArray *iconImageKeys; // @synthesize iconImageKeys=_iconImageKeys;
 @property (readonly, nonatomic) NSArray *imageKeys; // @synthesize imageKeys=_imageKeys;
+@property (readonly, nonatomic) NSArray *relatedSubTexts; // @synthesize relatedSubTexts=_relatedSubTexts;
 @property (readonly, nonatomic) NSArray *relatedTexts; // @synthesize relatedTexts=_relatedTexts;
 @property (readonly, nonatomic) NSArray *shields; // @synthesize shields=_shields;
 @property (readonly, nonatomic) NSArray *transitSystems;
@@ -41,8 +44,9 @@
 - (void)_populateImageKeysFromTransitLineFeature:(CDStruct_5be08681 *)arg1;
 - (void)_populateImageKeysFromTransitLinkFeature:(const struct TransitLinksLabelFeature *)arg1;
 - (void)_populateImageKeysFromTransitNodeFeature:(struct GEOTransitNodeFeature *)arg1;
+- (void)_populateRelatedSubTextFromTransitLines;
 - (void)_populateRelatedTextForTransitAccessPointFeature:(CDStruct_8b158606 *)arg1;
-- (void)_populateRelatedTextFromTransitlines;
+- (void)_populateRelatedTextFromTransitLines;
 - (unsigned long long)animationID;
 - (unsigned long long)businessID;
 - (struct CGPoint)calloutAnchorPointWithCanvasSize:(struct CGSize)arg1 canvasScale:(double)arg2 snapToPixels:(BOOL)arg3;
@@ -51,6 +55,7 @@
 - (unsigned long long)countFeatureIDs;
 - (void)dealloc;
 - (id)debugAnchorPointString;
+- (unsigned long long)elementCount;
 - (id)featureHandles;
 - (unsigned long long)featureID;
 - (const unsigned long long *)featureIDs;
@@ -62,6 +67,7 @@
 - (id)incident;
 - (shared_ptr_0c41964b)infoLabel;
 - (id)initWithManager:(const shared_ptr_dd1f7020 *)arg1 infoLabel:(const shared_ptr_0c41964b *)arg2 contentScale:(float)arg3 featureInfo:(const struct LabelFeatureInfo *)arg4;
+- (BOOL)isAlongSelectedTransitLine;
 - (BOOL)isFlyoverTour;
 - (BOOL)isLabelHitAtScreenPoint:(struct CGPoint)arg1 selectableLabelsOnly:(BOOL)arg2;
 - (BOOL)isOnRoute;

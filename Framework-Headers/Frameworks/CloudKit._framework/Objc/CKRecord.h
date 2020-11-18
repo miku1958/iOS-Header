@@ -21,6 +21,7 @@
     BOOL _knownToServer;
     BOOL _wasCached;
     BOOL _serializeProtectionData;
+    BOOL _useLightweightPCS;
     NSString *_recordType;
     CKRecordID *_recordID;
     CKRecordID *_creatorUserRecordID;
@@ -75,6 +76,7 @@
 @property (strong, nonatomic) NSString *shareProtectionEtag; // @synthesize shareProtectionEtag=_shareProtectionEtag;
 @property (readonly, nonatomic) unsigned long long size;
 @property (nonatomic) BOOL trackChanges; // @synthesize trackChanges=_trackChanges;
+@property (nonatomic) BOOL useLightweightPCS; // @synthesize useLightweightPCS=_useLightweightPCS;
 @property (strong, nonatomic) NSDictionary *values; // @synthesize values=_values;
 @property (nonatomic) BOOL wasCached; // @synthesize wasCached=_wasCached;
 @property (strong, nonatomic) NSString *zoneProtectionEtag; // @synthesize zoneProtectionEtag=_zoneProtectionEtag;
@@ -112,6 +114,7 @@
 - (void)setNilValueForKey:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
+- (void)setObjectNoValidate:(id)arg1 forKey:(id)arg2;
 - (void)setValue:(id)arg1 forKey:(id)arg2;
 - (id)valueForKey:(id)arg1;
 

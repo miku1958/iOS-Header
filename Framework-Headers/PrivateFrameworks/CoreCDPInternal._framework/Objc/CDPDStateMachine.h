@@ -42,6 +42,7 @@
 - (void)_enableKVSForAccount:(id)arg1 store:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_enableSecureBackupWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_handleCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_performInteractivelyAuthenticatedRepair:(CDUnknownBlockType)arg1;
 - (void)_preflightAccountStateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_recoverSecureBackupWithHasPeersForRemoteApproval:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_resetAccountCDPStateWithCompletion:(CDUnknownBlockType)arg1;

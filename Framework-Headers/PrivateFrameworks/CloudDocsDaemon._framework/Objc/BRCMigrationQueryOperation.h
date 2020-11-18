@@ -21,9 +21,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_performAfterQueryingForShareIDs:(CDUnknownBlockType)arg1;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
-- (BOOL)hasCaughtUp;
 - (id)initWithServerZone:(id)arg1 migrationKey:(id)arg2 continuationCursor:(id)arg3;
-- (BOOL)isConsistent;
 - (void)main;
 - (BOOL)shouldRetryForError:(id)arg1;
 

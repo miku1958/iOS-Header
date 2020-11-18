@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <SplashBoard/BSXPCCoding-Protocol.h>
+#import <SplashBoard/NSCoding-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface XBLaunchInterface : NSObject
+@interface XBLaunchInterface : NSObject <BSXPCCoding, NSCoding>
 {
     BOOL _default;
     unsigned long long _type;
@@ -18,16 +21,21 @@
 }
 
 @property (nonatomic, getter=_isDefault) BOOL _default; // @synthesize _default;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isStoryboard;
 @property (readonly, nonatomic) BOOL isXIB;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly) Class superclass;
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
 @property (strong, nonatomic) NSArray *urlSchemes; // @synthesize urlSchemes=_urlSchemes;
 
 - (void)dealloc;
-- (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithType:(unsigned long long)arg1 name:(id)arg2 identifier:(id)arg3 urlSchemes:(id)arg4 isDefault:(BOOL)arg5;
 - (id)initWithXPCDictionary:(id)arg1;
 

@@ -13,6 +13,8 @@
 
 @interface AFDictationOptions : NSObject <NSSecureCoding, NSCopying>
 {
+    BOOL _secureOfflineOnly;
+    BOOL _releaseAudioSessionOnRecordingCompletion;
     NSString *_applicationName;
     NSString *_applicationVersion;
     STSiriContext *_context;
@@ -45,8 +47,10 @@
 @property (copy, nonatomic) NSString *languageCodeOverride; // @synthesize languageCodeOverride=_languageCodeOverride;
 @property (copy, nonatomic) NSString *postfixText; // @synthesize postfixText=_postfixText;
 @property (copy, nonatomic) NSString *prefixText; // @synthesize prefixText=_prefixText;
+@property (nonatomic) BOOL releaseAudioSessionOnRecordingCompletion; // @synthesize releaseAudioSessionOnRecordingCompletion=_releaseAudioSessionOnRecordingCompletion;
 @property (copy, nonatomic) NSString *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
 @property (nonatomic) long long returnKeyType; // @synthesize returnKeyType=_returnKeyType;
+@property (nonatomic) BOOL secureOfflineOnly; // @synthesize secureOfflineOnly=_secureOfflineOnly;
 @property (copy, nonatomic) NSString *selectedText; // @synthesize selectedText=_selectedText;
 @property (nonatomic) long long transcriptionMode; // @synthesize transcriptionMode=_transcriptionMode;
 @property (copy, nonatomic) NSDictionary *voiceSearchHeaderFields; // @synthesize voiceSearchHeaderFields=_voiceSearchHeaderFields;

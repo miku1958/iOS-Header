@@ -13,7 +13,7 @@
 #import <PhotosUI/PLRootLibraryNavigationController-Protocol.h>
 #import <PhotosUI/UINavigationControllerDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSMutableIndexSet, NSString, PUImportViewController, PUMomentsZoomLevelManager, PUSessionInfo, PUTabbedLibraryViewControllerSpec, UINavigationController;
+@class NSArray, NSMutableDictionary, NSMutableIndexSet, NSString, PUImportViewController, PUMomentsZoomLevelManager, PUSessionInfo, PUTabbedLibraryViewControllerSpec, UINavigationController;
 
 @interface PUTabbedLibraryViewController : UITabBarController <PLAssetContainerListChangeObserver, PLAssetContainerObserver, PLInvitationRecordsObserver, PLDismissableViewController, PLRootLibraryNavigationController, UINavigationControllerDelegate>
 {
@@ -25,10 +25,12 @@
     PUMomentsZoomLevelManager *_zoomLevelManager;
     NSMutableIndexSet *_everDisplayedContentModes;
     PUImportViewController *_importViewController;
+    NSArray *_excludedContentModes;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSArray *excludedContentModes; // @synthesize excludedContentModes=_excludedContentModes;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PUImportViewController *importViewController; // @synthesize importViewController=_importViewController;
 @property (nonatomic) int selectedContentMode;

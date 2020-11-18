@@ -7,11 +7,12 @@
 #import <WebKit/NSObject-Protocol.h>
 #import <WebKit/UITextInputTraits-Protocol.h>
 
-@class NSString, UIColor, UIImage;
+@class NSIndexSet, NSString, UIColor, UIImage;
 @protocol UITextInputTraits;
 
 @protocol UITextInputTraits_Private <NSObject, UITextInputTraits>
 
+@property (copy, nonatomic) NSIndexSet *PINEntrySeparatorIndexes;
 @property (nonatomic) BOOL acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
 @property (nonatomic) BOOL acceptsSplitKeyboard;
@@ -19,6 +20,7 @@
 @property (nonatomic) BOOL contentsIsSingleValue;
 @property (nonatomic) BOOL deferBecomingResponder;
 @property (nonatomic) BOOL disablePrediction;
+@property (nonatomic) BOOL displaySecureEditsUsingPlainText;
 @property (nonatomic) BOOL displaySecureTextUsingPlainText;
 @property (nonatomic) int emptyContentReturnKeyType;
 @property (nonatomic) BOOL enablesReturnKeyOnNonWhiteSpaceContent;
@@ -41,6 +43,7 @@
 @property (nonatomic) id textSuggestionDelegate;
 @property (nonatomic) struct __CFCharacterSet *textTrimmingSet;
 @property (nonatomic) BOOL useInterfaceLanguageForLocalization;
+@property (nonatomic) struct _NSRange validTextRange;
 
 - (void)takeTraitsFrom:(id<UITextInputTraits>)arg1;
 

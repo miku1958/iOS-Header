@@ -20,15 +20,18 @@
     NSObject<OS_dispatch_queue> *_generationQueue;
     BOOL _addDecorations;
     BOOL _wantsJPEGRepresentationInstead;
+    long long _sandboxExtension;
     NSData *_jpegRepresentation;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *generationQueue; // @synthesize generationQueue=_generationQueue;
 @property (readonly) NSData *jpegRepresentation; // @synthesize jpegRepresentation=_jpegRepresentation;
+@property (nonatomic) long long sandboxExtension; // @synthesize sandboxExtension=_sandboxExtension;
 @property (readonly) UIImage *thumbnailImage; // @synthesize thumbnailImage=_thumbnailImage;
 @property BOOL wantsJPEGRepresentationInstead; // @synthesize wantsJPEGRepresentationInstead=_wantsJPEGRepresentationInstead;
 
 + (BOOL)canGenerateThumbnailForPreviewItem:(id)arg1;
++ (BOOL)contentTypeIsPlainText:(id)arg1;
 + (id)generatorForPreviewItem:(id)arg1 maxSize:(struct CGSize)arg2 scale:(double)arg3 decorations:(BOOL)arg4;
 + (id)generatorForPreviewItem:(id)arg1 size:(struct CGSize)arg2;
 - (struct CGContext *)_beginContext;
@@ -41,9 +44,11 @@
 - (id)_thumbnailForIris;
 - (id)_thumbnailForMovie;
 - (id)_thumbnailForPDF;
+- (id)_thumbnailForPlainText;
 - (void)cancel;
 - (void)dealloc;
 - (void)generateWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)releaseSandboxExtension;
 
 @end
 

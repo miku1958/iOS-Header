@@ -7,11 +7,12 @@
 #import <Foundation/NSObject.h>
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
+#import <FrontBoard/FBUIProcess-Protocol.h>
 
 @class BSProcessDeathWatcher, FBProcessState, FBWorkspace, NSHashTable, NSString;
 @protocol FBProcessDelegate, OS_dispatch_queue;
 
-@interface FBProcess : NSObject <BSDescriptionProviding>
+@interface FBProcess : NSObject <BSDescriptionProviding, FBUIProcess>
 {
     NSObject<OS_dispatch_queue> *_queue;
     FBProcessState *_state;

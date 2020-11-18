@@ -11,7 +11,7 @@
 #import <PhotosPlayer/ISPlaybackSpecObserver-Protocol.h>
 #import <PhotosPlayer/ISPlayerItemObserver-Protocol.h>
 
-@class AVPlayer, ISInputController, ISPlaybackController, ISPlaybackSpec, ISPlayerItem, ISVitalityInput, NSError, NSHashTable, NSSet, NSString;
+@class ISInputController, ISPlaybackController, ISPlaybackSpec, ISPlayerItem, ISVitalityInput, ISWrappedAVPlayer, NSError, NSHashTable, NSSet, NSString;
 @protocol ISPlayerDelegate, OS_dispatch_queue;
 
 @interface ISPlayer : NSObject <ISInputControllerDelegate, ISPlaybackSpecObserver, ISPlaybackControllerObserver, ISPlayerItemObserver>
@@ -19,7 +19,7 @@
     BOOL _photoVisible;
     ISPlaybackSpec *_playbackSpec;
     NSObject<OS_dispatch_queue> *_observerQueue;
-    AVPlayer *_videoPlayer;
+    ISWrappedAVPlayer *_videoPlayer;
     BOOL _managesAudioSession;
     BOOL _forcesPhotoHidden;
     BOOL _shouldManagePlayerItemLoading;
@@ -97,10 +97,12 @@
 - (id)initWithVideoPlayer:(id)arg1;
 - (void)inputControllerDidChange:(id)arg1;
 - (BOOL)isPhotoVisible;
+- (BOOL)isPlayingVitality;
 - (BOOL)isPlayingVitalityHint;
 - (void)playVitalityHint;
 - (void)playbackControllerPlaybackStateDidChange:(id)arg1;
 - (void)playbackControllerPlayerStatusDidChange:(id)arg1;
+- (void)playbackControllerPlayingVitalityDidChange:(id)arg1;
 - (id)playbackSpec;
 - (void)playbackSpecDidChange:(id)arg1;
 - (void)playerItemStatusDidChange:(id)arg1;

@@ -15,6 +15,7 @@
     NSMutableArray *_downloadTaskGroups;
     BOOL _shouldStop;
     NSError *_badError;
+    NSError *_stopError;
     BOOL _hasResetQueue;
     unsigned long long _successfullyDownloadedResourcesCount;
     unsigned long long _failedDownloadedResourcesCount;

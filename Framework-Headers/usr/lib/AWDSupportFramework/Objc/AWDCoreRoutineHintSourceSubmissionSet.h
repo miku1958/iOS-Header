@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSMutableArray *instances; // @synthesize instances=_instances;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 
++ (Class)instanceType;
 - (void)addInstance:(id)arg1;
 - (void)clearInstances;
 - (void)copyTo:(id)arg1;

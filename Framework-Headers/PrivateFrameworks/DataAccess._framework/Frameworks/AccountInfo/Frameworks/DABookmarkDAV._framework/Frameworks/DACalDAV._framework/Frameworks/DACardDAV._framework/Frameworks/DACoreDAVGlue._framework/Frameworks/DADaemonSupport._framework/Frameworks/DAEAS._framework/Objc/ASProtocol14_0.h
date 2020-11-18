@@ -11,6 +11,7 @@
 }
 
 - (BOOL)allAttachmentsAreBase64ed;
+- (BOOL)alwaysSendTimezone;
 - (BOOL)fetchAttachmentsWithItemOperations;
 - (BOOL)processFullMeetingInvitationData;
 - (id)protocolVersion;

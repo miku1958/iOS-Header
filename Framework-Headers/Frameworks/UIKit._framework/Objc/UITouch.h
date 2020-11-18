@@ -73,6 +73,7 @@
 @property (nonatomic, setter=_setPathIndex:) unsigned char _pathIndex; // @synthesize _pathIndex;
 @property (strong, nonatomic, setter=_setPhaseChangeDelegate:) id<_UITouchPhaseChangeDelegate> _phaseChangeDelegate; // @synthesize _phaseChangeDelegate=__phaseChangeDelegate;
 @property (readonly, nonatomic) double _pressure; // @synthesize _pressure;
+@property (readonly, nonatomic) BOOL _respectsCharge;
 @property (strong, nonatomic, setter=_setResponder:) UIResponder *_responder;
 @property (nonatomic, setter=_setSenderID:) unsigned long long _senderID; // @synthesize _senderID;
 @property (readonly, nonatomic) double _unclampedForce;

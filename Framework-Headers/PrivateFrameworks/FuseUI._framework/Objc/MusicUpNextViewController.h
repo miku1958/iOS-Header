@@ -23,7 +23,6 @@
     UIView *_hairlineView;
     struct UIEdgeInsets _appliedEdgeInsets;
     BOOL _ignoreUpdates;
-    BOOL _isFirstAppearance;
     BOOL _isReordering;
     BOOL _loadingCells;
     BOOL _didMutateWhileLoading;
@@ -87,7 +86,6 @@
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willBeginReorderingRowAtIndexPath:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

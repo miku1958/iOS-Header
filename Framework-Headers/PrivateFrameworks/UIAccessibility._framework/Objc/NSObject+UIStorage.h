@@ -11,7 +11,7 @@
 - (id)_accessibilityAggregatedHeaderElements;
 - (id)_accessibilityAncestorFocusParcel;
 - (BOOL)_accessibilityCanBecomeNativeFocused;
-- (id)_accessibilityElementsWithSemanticContext;
+- (id)_accessibilityElementsWithSemanticContext:(id)arg1;
 - (id)_accessibilityExplorerElements;
 - (unsigned long long)_accessibilityFocusParcelChildrenCount:(unsigned long long)arg1;
 - (id)_accessibilityFrameDelegate;
@@ -26,7 +26,7 @@
 - (id)_accessibilityNativeFocusElement;
 - (id)_accessibilityNativeFocusPreferredElement;
 - (BOOL)_accessibilityNativeFocusPreferredElementIsValid;
-- (id)_accessibilityNativeFocusableElements;
+- (id)_accessibilityNativeFocusableElements:(id)arg1;
 - (void)_accessibilityRemoveActionBlockForKey:(unsigned int)arg1;
 - (void)_accessibilityRemoveAllActionBlocks;
 - (struct CGPoint)_accessibilityScreenPointForSceneReferencePoint:(struct CGPoint)arg1;
@@ -35,6 +35,8 @@
 - (void)_accessibilitySetIgnoreDelegate:(BOOL)arg1;
 - (BOOL)_accessibilitySetNativeFocus;
 - (BOOL)_accessibilityShouldIgnoreSoundForFailedMoveAttempt;
+- (id)_accessibilitySiriContentElementsWithSemanticContext;
+- (id)_accessibilitySiriContentNativeFocusableElements;
 - (BOOL)_accessibilitySpeakThisCanBeHighlighted;
 - (id)_accessibilitySpeakThisElementsAndStrings;
 - (unsigned long long)_accessibilitySpeakThisMaximumNumberOfElements;

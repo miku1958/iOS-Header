@@ -12,19 +12,24 @@
 {
 }
 
-@property (readonly, nonatomic) BOOL hasGasGauge;
-@property (readonly, nonatomic) BOOL hasOrbCapability;
-@property (readonly, nonatomic, getter=isInternalInstall) BOOL internalInstall;
-@property (readonly, copy, nonatomic) NSString *localizedProductName;
-@property (readonly, nonatomic, getter=isMultiCore) BOOL multiCore;
-@property (readonly, copy, nonatomic) NSString *productBuildVersion;
-@property (readonly, copy, nonatomic) NSString *productClass;
-@property (readonly, copy, nonatomic) NSString *productHardwareModel;
-@property (readonly, copy, nonatomic) NSString *productType;
-@property (readonly, copy, nonatomic) NSString *productVersion;
-@property (readonly, copy, nonatomic) NSString *uniqueDeviceIdentifier;
+@property (readonly, nonatomic) int deviceClass; // @dynamic deviceClass;
+@property (readonly, nonatomic) BOOL hasGasGauge; // @dynamic hasGasGauge;
+@property (readonly, nonatomic) BOOL hasOrbCapability; // @dynamic hasOrbCapability;
+@property (readonly, nonatomic, getter=isInternalInstall) BOOL internalInstall; // @dynamic internalInstall;
+@property (readonly, copy, nonatomic) NSString *localizedProductName; // @dynamic localizedProductName;
+@property (readonly, nonatomic) double mainScreenOrientation; // @dynamic mainScreenOrientation;
+@property (readonly, nonatomic) int mainScreenPitch; // @dynamic mainScreenPitch;
+@property (readonly, nonatomic) double mainScreenScale; // @dynamic mainScreenScale;
+@property (readonly, nonatomic, getter=isMultiCore) BOOL multiCore; // @dynamic multiCore;
+@property (readonly, copy, nonatomic) NSString *productBuildVersion; // @dynamic productBuildVersion;
+@property (readonly, copy, nonatomic) NSString *productClass; // @dynamic productClass;
+@property (readonly, copy, nonatomic) NSString *productHardwareModel; // @dynamic productHardwareModel;
+@property (readonly, copy, nonatomic) NSString *productType; // @dynamic productType;
+@property (readonly, copy, nonatomic) NSString *productVersion; // @dynamic productVersion;
+@property (readonly, copy, nonatomic) NSString *uniqueDeviceIdentifier; // @dynamic uniqueDeviceIdentifier;
 
 + (id)sharedInstance;
+- (id)init;
 
 @end
 

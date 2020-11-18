@@ -27,6 +27,8 @@
     BOOL _canAutoComplete;
     NSMutableDictionary *_matchesByCompletion;
     WBSMultiRoundAutoFillManager *_multiRoundAutoFillManager;
+    BOOL _URLIsAllowedByWhiteList;
+    BOOL _hasDeterminedIfURLIsAllowedByWhiteList;
     WBUFormDataController *_dataController;
 }
 

@@ -48,6 +48,7 @@
 - (id)newPaymentEligibilityRequest;
 - (void)performNextActionForProvisioningState:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)readonlyFieldIdentifiers;
+- (BOOL)shouldAppearWithFirstEmptyFieldAsFirstResponder;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)updateFieldsModelWithCameraCaptureObjects:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

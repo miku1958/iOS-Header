@@ -17,7 +17,8 @@
 @property (readonly, nonatomic) BOOL isKeepLocalAction; // @synthesize isKeepLocalAction=_isKeepLocalAction;
 @property (readonly, nonatomic) BOOL isRemoveAction; // @synthesize isRemoveAction=_isRemoveAction;
 
-+ (void)getContextualLibraryAddAction:(id *)arg1 removeAction:(id *)arg2 keepLocalAction:(id *)arg3 forEntityValueContext:(id)arg4 overrideItemEntityProvider:(id)arg5 shouldDismissHandler:(CDUnknownBlockType)arg6 additionalPresentationHandler:(CDUnknownBlockType)arg7 didDismissHandler:(CDUnknownBlockType)arg8;
++ (void)getContextualLibraryAddAction:(id *)arg1 removeAction:(id *)arg2 keepLocalAction:(id *)arg3 forEntityValueContext:(id)arg4 overrideItemEntityProvider:(id)arg5 allowAssetRemoval:(BOOL)arg6 shouldDismissHandler:(CDUnknownBlockType)arg7 additionalPresentationHandler:(CDUnknownBlockType)arg8 didDismissHandler:(CDUnknownBlockType)arg9;
++ (id)newAddExplicitContentWarningAlertControllerWithContentItemType:(unsigned long long)arg1 didDismissBlock:(CDUnknownBlockType)arg2;
 + (id)notificationTokenForOverrideItemEntityProvider:(id)arg1 queue:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 
 @end

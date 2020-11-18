@@ -4,12 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoard/NSObject-Protocol.h>
+#import <FrontBoard/FBApplicationDataStoreRepositoryReadingDelegate-Protocol.h>
 
-@class NSArray, NSString;
-
-@protocol FBApplicationDataStoreRepositoryDelegate <NSObject>
-- (void)objectChangedForKeys:(NSArray *)arg1 application:(NSString *)arg2;
-- (void)storeInvalidatedForIdentifier:(NSString *)arg1;
+@protocol FBApplicationDataStoreRepositoryDelegate <FBApplicationDataStoreRepositoryReadingDelegate>
 @end
 

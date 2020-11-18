@@ -30,6 +30,7 @@
 + (id)FU_localizedStringWithDistance:(double)arg1 distanceUnit:(long long)arg2 unitStyle:(long long)arg3 decimalPrecision:(long long)arg4;
 + (id)FU_localizedStringWithEnergy:(id)arg1 energyType:(long long)arg2 unitStyle:(long long)arg3;
 + (id)FU_localizedStringWithEnergyInCalories:(double)arg1 energyType:(long long)arg2 unitStyle:(long long)arg3;
++ (id)FU_localizedWorkoutCount:(long long)arg1;
 + (id)FU_percentStringWithNumber:(id)arg1;
 + (double)FU_roundCaloriesForDailyGoal:(double)arg1;
 + (id)FU_stringForHeight:(long long)arg1 withUnitString:(id)arg2;

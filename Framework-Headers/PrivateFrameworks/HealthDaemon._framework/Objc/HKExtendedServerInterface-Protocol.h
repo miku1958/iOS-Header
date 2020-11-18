@@ -6,10 +6,12 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HKAchievement, NSArray, NSDate;
+@class HKAchievement, NSArray, NSDate, NSTimeZone, NSUUID;
 
 @protocol HKExtendedServerInterface <NSObject>
 - (void)addAchievement:(HKAchievement *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)deleteAchievementWithUUID:(NSUUID *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)deleteAllAchievementsWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)fetchAchievementsWithCompletedDateBetweenStart:(NSDate *)arg1 end:(NSDate *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchNumberOfUnviewedAchievementsWithCompletion:(void (^)(long long, NSError *))arg1;
 - (void)fetchUnalertedAchievementsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
@@ -17,5 +19,6 @@
 - (void)markAchievementsAlerted:(NSArray *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)registerForAchievementNotificationsAndFetchUnalertedCountWithCompletion:(void (^)(long long, NSError *))arg1;
 - (void)runAchievementsFixupAsDryRun:(BOOL)arg1 completion:(void (^)(NSArray *, BOOL, NSError *))arg2;
+- (void)setCurrentActivityCacheOverrideDate:(NSDate *)arg1 timeZone:(NSTimeZone *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 @end
 

@@ -35,6 +35,7 @@
 - (void)_updateDisclosureIndicator;
 - (void)_updateHighlightColorsForView:(id)arg1 highlighted:(BOOL)arg2;
 - (void)_updateHighlightStateAnimated:(BOOL)arg1;
+- (void)_updateLockupViewBackgroundColor;
 - (void)dealloc;
 - (void)horizontalLockupView:(id)arg1 didSelectPlayButtonAction:(unsigned long long)arg2;
 - (void)horizontalLockupViewDidLayoutSubviews:(id)arg1;

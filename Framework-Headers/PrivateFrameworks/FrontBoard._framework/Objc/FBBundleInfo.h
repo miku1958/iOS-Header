@@ -22,7 +22,7 @@
     NSUUID *_cacheGUID;
 }
 
-@property (readonly, strong, nonatomic, getter=_bundle) BSCFBundle *bundle; // @synthesize bundle=_bundle;
+@property (readonly, strong, nonatomic, getter=_bundle) BSCFBundle *bundle;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) NSString *bundleType; // @synthesize bundleType=_bundleType;
 @property (strong, nonatomic) NSURL *bundleURL; // @synthesize bundleURL=_bundleURL;

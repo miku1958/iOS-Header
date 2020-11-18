@@ -44,6 +44,7 @@
 - (unsigned long long)getNumOfVisitsOverall;
 - (id)getPredState:(double)arg1 predictionWindow:(double)arg2 numOfWeeks:(int)arg3 uniqueID:(id)arg4;
 - (id)getRecentVisits:(double)arg1;
+- (void)incrementNumOfDataPtsByInteger:(long long)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)lastEntyExit;

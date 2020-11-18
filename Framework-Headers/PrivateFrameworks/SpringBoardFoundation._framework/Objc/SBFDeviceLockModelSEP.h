@@ -4,19 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SpringBoardFoundation/SBFDeviceLockModel-Protocol.h>
 
-@class NSString;
+@class NSString, SBSecurityDefaults;
 @protocol SBFDeviceLockModelDelegate;
 
 @interface SBFDeviceLockModelSEP : NSObject <SBFDeviceLockModel>
 {
-    id<SBFDeviceLockModelDelegate> _delegate;
     double _unblockTime;
     BOOL _permanentlyBlocked;
     BOOL _pendingWipe;
+    SBSecurityDefaults *_securityDefaults;
+    id<SBFDeviceLockModelDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -28,10 +29,10 @@
 @property (readonly, nonatomic, getter=isTemporarilyBlocked) BOOL temporarilyBlocked;
 @property (readonly, nonatomic) double timeUntilUnblockedSinceReferenceDate;
 
+- (void).cxx_destruct;
 - (void)_refreshStateAndNotify:(BOOL)arg1;
 - (void)_refreshStateForMkbState:(id)arg1 notify:(BOOL)arg2;
 - (void)clearBlockedState;
-- (void)dealloc;
 - (id)descriptionBuilder;
 - (id)init;
 - (void)noteNewMkbDeviceLockStateInfo:(id)arg1 options:(id)arg2;
@@ -40,6 +41,7 @@
 - (void)notePasscodeUnlockFailedWithError:(id)arg1;
 - (void)notePasscodeUnlockSucceeded;
 - (void)performPasswordTest:(CDUnknownBlockType)arg1;
+- (void)refreshBlockedState;
 - (void)synchronize;
 
 @end

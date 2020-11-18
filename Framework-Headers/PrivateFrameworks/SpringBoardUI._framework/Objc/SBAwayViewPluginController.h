@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, UIView;
 
@@ -31,16 +31,19 @@
 + (void)disableBundleNamed:(id)arg1 deactivationContext:(id)arg2;
 + (void)enableBundleNamed:(id)arg1;
 + (void)enableBundleNamed:(id)arg1 activationContext:(id)arg2;
+- (void).cxx_destruct;
 - (CDUnknownBlockType)_disableTransitionBlock;
 - (void)_setDisableTransitionBlock:(CDUnknownBlockType)arg1;
 - (BOOL)allowsControlCenter;
 - (BOOL)allowsLockScreenCamera;
 - (BOOL)allowsLockScreenHint;
 - (BOOL)allowsLockScreenMediaControls;
+- (BOOL)allowsLogout;
 - (BOOL)allowsNotificationCenter;
 - (BOOL)allowsPhotoSlideshow;
 - (BOOL)allowsSiri;
 - (BOOL)allowsTimer;
+- (BOOL)allowsUnlocking;
 - (void)alwaysFullscreenValueHasChanged;
 - (BOOL)animateResumingToApplicationWithIdentifier:(id)arg1;
 - (id)backgroundView;
@@ -50,7 +53,6 @@
 - (id)customHeaderView;
 - (id)customSubtitleColor;
 - (id)customSubtitleText;
-- (void)dealloc;
 - (void)deviceLockViewDidHide;
 - (void)deviceLockViewWillShow;
 - (void)didRotateFromInterfaceOrientation:(long long)arg1;

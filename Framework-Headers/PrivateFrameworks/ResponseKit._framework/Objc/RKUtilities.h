@@ -10,7 +10,9 @@
 {
 }
 
++ (BOOL)isLanguageSupportedByNSLinguisticTaggerForLanguageIdentification:(id)arg1;
 + (id)normalizeForPersonalization:(id)arg1;
++ (id)stripDiacritics:(id)arg1;
 + (id)stripEmojiSkinTones:(id)arg1;
 
 @end

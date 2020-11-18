@@ -31,6 +31,7 @@
     CDStruct_1b6d18a9 _chunkDuration;
     long long _chunkAlignment;
     long long _chunkSize;
+    BOOL _writesMediaDataToBeginningOfFile;
     NSURL *_sampleReferenceBaseURL;
 }
 
@@ -56,6 +57,7 @@
 @property (copy, nonatomic) NSDictionary *sourcePixelBufferAttributes; // @synthesize sourcePixelBufferAttributes=_sourcePixelBufferAttributes;
 @property (copy, nonatomic) NSDictionary *trackReferences; // @synthesize trackReferences=_trackReferences;
 @property (nonatomic) struct CGAffineTransform transform; // @synthesize transform=_transform;
+@property (nonatomic) BOOL writesMediaDataToBeginningOfFile; // @synthesize writesMediaDataToBeginningOfFile=_writesMediaDataToBeginningOfFile;
 
 - (void)dealloc;
 

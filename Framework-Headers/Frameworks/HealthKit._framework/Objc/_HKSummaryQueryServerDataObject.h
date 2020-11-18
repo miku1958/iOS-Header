@@ -11,15 +11,20 @@
 __attribute__((visibility("hidden")))
 @interface _HKSummaryQueryServerDataObject : _HKQueryServerDataObject
 {
+    NSDate *_noonStartDate;
+    NSDate *_noonEndDate;
     NSDate *_startDate;
     NSDate *_endDate;
 }
 
 @property (strong, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (readonly, nonatomic) NSDate *noonEndDate;
+@property (readonly, nonatomic) NSDate *noonStartDate;
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_noonStartDateWithStartDate:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

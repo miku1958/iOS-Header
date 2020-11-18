@@ -26,8 +26,8 @@
 - (void).cxx_destruct;
 - (void)cancelPreparationOfIrisAssetWithRequestID:(long long)arg1;
 - (id)init;
-- (long long)prepareIrisPlayerItemWithAsset:(id)arg1 includeVideo:(BOOL)arg2 includeAudio:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
-- (long long)prepareIrisVideoWithAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (long long)prepareIrisPlayerItemWithAsset:(id)arg1 trimmedTimeRange:(CDStruct_e83c9415)arg2 includeVideo:(BOOL)arg3 includeAudio:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (long long)prepareIrisVideoWithAsset:(id)arg1 trimmedTimeRange:(CDStruct_e83c9415)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

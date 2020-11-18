@@ -6,11 +6,14 @@
 
 #import <UIKit/FBSWorkspaceDelegate-Protocol.h>
 
-@class FBSUIApplicationWorkspace;
+@class FBSSceneTransitionContext, FBSUIApplicationWorkspace;
 
 @protocol FBSUIApplicationWorkspaceDelegate <FBSWorkspaceDelegate>
 - (void)workspace:(FBSUIApplicationWorkspace *)arg1 didLaunchWithCompletion:(void (^)(FBSUIApplicationLaunchResponse *))arg2;
 - (void)workspaceNoteAssertionExpirationImminent:(FBSUIApplicationWorkspace *)arg1;
 - (void)workspaceShouldExit:(FBSUIApplicationWorkspace *)arg1;
+
+@optional
+- (void)workspaceShouldExit:(FBSUIApplicationWorkspace *)arg1 withTransitionContext:(FBSSceneTransitionContext *)arg2;
 @end
 

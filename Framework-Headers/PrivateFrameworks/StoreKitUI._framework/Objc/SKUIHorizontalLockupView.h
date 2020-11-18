@@ -37,6 +37,7 @@
     NSMutableArray *_tappableViews;
     BOOL _useClearBackground;
     NSMapTable *_viewElementViews;
+    BOOL _updateLayoutOnButtonConfirmation;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -44,6 +45,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *metadataBackgroundView; // @synthesize metadataBackgroundView=_metadataBackgroundView;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL updateLayoutOnButtonConfirmation; // @synthesize updateLayoutOnButtonConfirmation=_updateLayoutOnButtonConfirmation;
 
 + (id)_attributedStringForButton:(id)arg1 context:(id)arg2;
 + (id)_attributedStringForLabel:(id)arg1 context:(id)arg2;
@@ -72,6 +74,7 @@
 - (void)_previewIndicatorAction:(id)arg1;
 - (id)_previewMediaURL;
 - (id)_previewProgressIndicator;
+- (void)_resizeMetadataRelativeToItemOfferView:(id)arg1;
 - (void)_resolvePreviewStateAfterTransitionForFlipView:(id)arg1;
 - (void)_showConfirmationAction:(id)arg1;
 - (struct CGSize)_sizeViewsForColumn:(id)arg1 toFitWidth:(double)arg2;

@@ -16,6 +16,7 @@
     ACAccount *_account;
     NSMutableDictionary *_queuedDataclassActions;
     NSMutableArray *_dataclassesRequiringMergeDecision;
+    NSMutableDictionary *_queuedDataclassStates;
     BOOL _didUserConsentToMerge;
     BOOL _isVerifyingExistingEmailAccount;
     MFAccountValidator *_validator;

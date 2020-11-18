@@ -7,6 +7,7 @@
 #import <Foundation/NSUserDefaults.h>
 
 @interface NSUserDefaults (SafariServicesExtras)
+- (id)_sf_dateForKey:(id)arg1;
 - (id)_sf_stringForKey:(id)arg1 defaultValue:(id)arg2;
 @end
 

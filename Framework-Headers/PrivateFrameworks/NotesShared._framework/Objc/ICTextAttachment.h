@@ -8,13 +8,11 @@
 
 #import <NotesShared/TTAttachment-Protocol.h>
 
-@class ICAttachment, NSMapTable, NSMutableSet, NSString;
+@class ICAttachment, NSString;
 
 @interface ICTextAttachment : NSTextAttachment <TTAttachment>
 {
     ICAttachment *_attachment;
-    NSMapTable *_viewsMapTable;
-    NSMutableSet *_swappedViewsSet;
 }
 
 @property (strong) ICAttachment *attachment; // @synthesize attachment=_attachment;
@@ -22,31 +20,30 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSMutableSet *swappedViewsSet; // @synthesize swappedViewsSet=_swappedViewsSet;
-@property (strong, nonatomic) NSMapTable *viewsMapTable; // @synthesize viewsMapTable=_viewsMapTable;
+@property (readonly, nonatomic) NSString *viewIdentifier;
 
++ (double)defaultAttachmentThumbnailViewHeight;
 + (BOOL)textAttachmentIsContent:(id)arg1;
 + (id)textAttachmentWithAttachment:(id)arg1;
 + (id)textAttachmentWithIdentifier:(id)arg1;
 - (void).cxx_destruct;
-- (id)allViews;
 - (id)attachmentAsNSTextAttachment;
 - (id)attachmentAttributesForAttributedString;
 - (struct CGRect)attachmentBoundsForTextContainer:(id)arg1 proposedLineFragment:(struct CGRect)arg2 glyphPosition:(struct CGPoint)arg3 characterIndex:(unsigned long long)arg4;
+- (struct CGRect)attachmentBoundsIncludingMarginsFromAttachmentBounds:(struct CGRect)arg1;
+- (CDStruct_d2b197d1)attachmentBoundsMargins;
 - (id)attachmentFileWrapper;
 - (id)attachmentIdentifier;
+- (struct CGSize)attachmentSizeForTextContainer:(id)arg1;
 - (id)attachmentUTI;
-- (void)clearViewForLayoutManager:(id)arg1;
-- (void)dealloc;
+- (Class)attachmentViewClass;
 - (void)fixAttachmentForAttributedString:(id)arg1 range:(struct _NSRange)arg2;
 - (id)initWithAttachment:(id)arg1;
 - (struct UIView *)newlyCreatedView;
 - (struct UIView *)newlyCreatedViewForManualRendering;
 - (BOOL)requiresSpaceAfterAttachmentForPrinting;
-- (void)swapBackOldView:(struct UIView *)arg1 fromLayoutManager:(id)arg2 toLayoutManager:(id)arg3;
-- (struct UIView *)swapOutOldViewByRecreatingViewFromLayoutManager:(id)arg1 toLayoutManager:(id)arg2 forManualRendering:(BOOL)arg3;
-- (struct UIView *)viewForLayoutManager:(id)arg1;
-- (struct UIView *)viewForLayoutManagerNoCreate:(id)arg1;
+- (BOOL)supportsMultipleThumbnailsOnSameLine;
+- (BOOL)supportsThumbnailView;
 
 @end
 

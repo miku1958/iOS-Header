@@ -11,9 +11,7 @@
 @interface GEOTimeToLeaveInitialTravelTimeFeedbackCollection : PBCodable <NSCopying>
 {
     int _travelTime;
-    struct {
-        unsigned int travelTime:1;
-    } _has;
+    CDStruct_36597415 _has;
 }
 
 @property (nonatomic) BOOL hasTravelTime;

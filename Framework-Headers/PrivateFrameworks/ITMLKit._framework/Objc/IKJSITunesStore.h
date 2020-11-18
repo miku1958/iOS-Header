@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) NSDictionary *accountInfo;
 @property (strong, nonatomic) id cookie;
 @property (strong, nonatomic) NSString *cookieURL; // @synthesize cookieURL=_cookieURL;
+@property (readonly, nonatomic, getter=isManagedAppleID) BOOL managedAppleID;
 @property (readonly, nonatomic) NSString *networkConnectionType;
 @property (weak, nonatomic) ISLoadURLBagOperation *pendingBagOperation; // @synthesize pendingBagOperation=_pendingBagOperation;
 @property (strong, nonatomic) NSString *storefront;

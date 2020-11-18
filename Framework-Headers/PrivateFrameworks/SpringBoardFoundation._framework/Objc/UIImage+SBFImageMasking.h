@@ -8,10 +8,5 @@
 
 @interface UIImage (SBFImageMasking)
 - (id)sbf_imageMaskedByColor:(id)arg1;
-- (id)sbf_imageMaskedByColor:(id)arg1 withShadow:(id)arg2;
-- (id)sbf_imageWithEtchedBorderOfColor:(id)arg1 radius:(double)arg2;
-- (id)sbf_imageWithShadow:(id)arg1;
-- (id)sbf_invertedMaskImage;
-- (id)sbf_maskImage;
 @end
 

@@ -6,11 +6,12 @@
 
 #import <CompanionSync/NSObject-Protocol.h>
 
-@class NMSIncomingFileTransfer, NMSIncomingRequest, NMSMessageCenter, NMSOutgoingFileTransfer, NMSOutgoingRequest, NMSOutgoingResponse, NSDictionary, NSString;
+@class IDSDevice, NMSIncomingFileTransfer, NMSIncomingRequest, NMSMessageCenter, NMSOutgoingFileTransfer, NMSOutgoingRequest, NMSOutgoingResponse, NSDictionary, NSError, NSString;
 
 @protocol NMSMessageCenterDelegate <NSObject>
 
 @optional
+- (void)messageCenter:(NMSMessageCenter *)arg1 activeDeviceChanged:(IDSDevice *)arg2 acknowledgement:(void (^)(void))arg3;
 - (void)messageCenter:(NMSMessageCenter *)arg1 didReceiveIncomingFileTransfer:(NMSIncomingFileTransfer *)arg2;
 - (void)messageCenter:(NMSMessageCenter *)arg1 didReceiveUnknownRequest:(NMSIncomingRequest *)arg2;
 - (void)messageCenter:(NMSMessageCenter *)arg1 didResolveIDSIdentifier:(NSString *)arg2 forFileTransfer:(NMSOutgoingFileTransfer *)arg3;
@@ -18,5 +19,6 @@
 - (void)messageCenter:(NMSMessageCenter *)arg1 didResolveIDSIdentifierForRequest:(NMSOutgoingRequest *)arg2;
 - (void)messageCenter:(NMSMessageCenter *)arg1 didSuccessfullyDeliverRequestWithIdentifier:(NSString *)arg2 userInfo:(NSDictionary *)arg3;
 - (void)messageCenter:(NMSMessageCenter *)arg1 didSuccessfullySendRequestWithIdentifier:(NSString *)arg2 userInfo:(NSDictionary *)arg3;
+- (void)messageCenter:(NMSMessageCenter *)arg1 failedToSendMessageWithIdentifier:(NSString *)arg2 error:(NSError *)arg3 userInfo:(NSDictionary *)arg4;
 @end
 

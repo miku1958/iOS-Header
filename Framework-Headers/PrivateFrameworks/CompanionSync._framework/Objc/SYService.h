@@ -8,7 +8,7 @@
 
 #import <CompanionSync/SYSyncEngineResponder-Protocol.h>
 
-@class NSDictionary, NSMutableSet, NSString, SYPersistentStore, SYSession, SYSyncEngine, SYVectorClock, _SYMultiSuspendableQueue;
+@class NSDictionary, NSMutableArray, NSMutableSet, NSString, SYDevice, SYPersistentStore, SYSession, SYSyncEngine, SYVectorClock, _SYMultiSuspendableQueue, _SYQueuedStartSession;
 @protocol OS_dispatch_queue, OS_dispatch_source, SYServiceDelegate;
 
 @interface SYService : NSObject <SYSyncEngineResponder>
@@ -20,12 +20,17 @@
     SYSession *_currentSession;
     id<SYServiceDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
     _SYMultiSuspendableQueue *_sessionQueue;
     NSObject<OS_dispatch_source> *_processSignalSource;
     SYPersistentStore *_persistentStore;
     SYSyncEngine *_syncEngine;
     SYVectorClock *_vectorClock;
     NSMutableSet *_rejectingV1SyncSessions;
+    NSString *_inFlightSyncRequestIdentifier;
+    _SYQueuedStartSession *_queuedStartSession;
+    SYDevice *_targetedDevice;
+    NSMutableArray *_onSessionEnd;
     int _flagLock;
     struct {
         unsigned int isMaster:1;
@@ -37,6 +42,8 @@
         unsigned int remoteProtocolVersion:3;
         unsigned int remoteDeviceIsWatch:1;
         unsigned int isObservingRemoteDeviceProperties:1;
+        unsigned int requestedEngineType:3;
+        unsigned int assignedEngineType:3;
     } _flags;
     double _defaultMessageTimeout;
     double _sessionStalenessInterval;
@@ -62,10 +69,15 @@
 @property (readonly, nonatomic) SYSyncEngine *syncEngine; // @synthesize syncEngine=_syncEngine;
 
 - (void).cxx_destruct;
+- (id)_chooseBetweenCollidingSessions:(id)arg1:(id)arg2;
 - (id)_claimOwnershipOfFileAtURL:(id)arg1 error:(id *)arg2;
 - (void)_copyPeerClockFromMessageHeaderIfNecessary:(id)arg1;
-- (void)_devicePaired:(id)arg1;
-- (void)_deviceUnpaired:(id)arg1;
+- (void)_dealWithPotentiallyStallingCurrentSession;
+- (void)_deviceOSInfoChanged:(id)arg1;
+- (void)_deviceRemoved:(id)arg1;
+- (void)_deviceTargetabilityChanged:(id)arg1;
+- (void)_downgradeEngineForVersion:(int)arg1;
+- (void)_enqueueIncomingStartSessionRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_handleEndSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_handleEndSessionResponse:(id)arg1 error:(id *)arg2;
 - (void)_handleError:(id)arg1;
@@ -77,18 +89,33 @@
 - (BOOL)_handleStartSessionResponse:(id)arg1 error:(id *)arg2;
 - (void)_handleSyncBatch:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_handleSyncBatchResponse:(id)arg1 error:(id *)arg2;
+- (void)_ifDelegateImplements:(SEL)arg1 do:(CDUnknownBlockType)arg2 then:(CDUnknownBlockType)arg3;
 - (BOOL)_initializeMessaging:(id *)arg1;
 - (BOOL)_initializeServiceDB:(id *)arg1;
+- (id)_makeSessionForDeltaSync:(BOOL)arg1;
+- (id)_makeSyncEngineOfType:(long long)arg1;
 - (id)_newMessageHeader;
 - (id)_pathForDataStore;
-- (void)_postVersionRejectionMessage;
+- (void)_peerRejectedVersion:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_postVersionRejectionMessageForMessageWithID:(id)arg1;
 - (void)_processPendingChanges;
+- (BOOL)_protocolVersion:(int)arg1 supportsEngineType:(long long)arg2;
+- (void)_removePairingStoreDevice;
+- (BOOL)_request:(id)arg1 hasValidSessionIDForSession:(id)arg2 response:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_sendResetRequest;
-- (void)_setProtocolVersionForRemoteOSVersion:(id)arg1 remoteIsWatch:(BOOL)arg2;
+- (id)_sessionFromIncomingStartRequest:(id)arg1;
+- (void)_setProtocolVersionForRemoteOSVersion:(id)arg1 build:(id)arg2 remoteIsWatch:(BOOL)arg3 switchingEngines:(BOOL)arg4;
 - (void)_setupPairingNotifications;
-- (BOOL)_shouldSessionWithID:(id)arg1 supercedeSessionWithID:(id)arg2 ofAge:(double)arg3;
+- (void)_setupPairingStoreWithDevice:(id)arg1;
+- (BOOL)_shouldSession:(id)arg1 supercedeSession:(id)arg2 ofAge:(double)arg3;
+- (void)_signalPairingStoreAvailable;
+- (void)_signalPairingStoreUnavailable;
 - (void)_suspend;
+- (void)_swapEngineTo:(long long)arg1;
+- (void)_swapSessionForVersionChange;
+- (void)_switchToNewTargetedDevice:(id)arg1;
 - (void)_updateMetaProtocolInfoForDevice:(id)arg1;
+- (void)_upgradeEngineTo:(long long)arg1;
 - (BOOL)_v1_handleBatchChunkAck:(id)arg1 error:(id *)arg2;
 - (BOOL)_v1_handleBatchEndResponse:(id)arg1 error:(id *)arg2;
 - (void)_v1_handleBatchSyncChunk:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -96,13 +123,18 @@
 - (void)_v1_handleBatchSyncStart:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_v1_handleChangeMessage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_v1_handleFullSyncRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)_v1_handleFullSyncRequestAck:(id)arg1 error:(id *)arg2;
 - (void)_v1_handleSyncAllObjects:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_vectorClockUpdated;
+- (void)_whenSessionEnds:(CDUnknownBlockType)arg1;
+- (void)_wrapUpCurrentSession:(id)arg1;
 - (id)dataStreamWithMetadata:(id)arg1 options:(struct NSDictionary *)arg2 identifier:(id *)arg3 error:(id *)arg4;
+- (void)dealloc;
 - (void)deliveredMessageWithID:(id)arg1 context:(id)arg2;
+- (void)enqueuedMessageWithID:(id)arg1 context:(id)arg2;
 - (void)handleFileTransfer:(id)arg1 metadata:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handleOutOfBandData:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)handleSyncError:(id)arg1;
+- (void)handleSyncError:(id)arg1 forMessageWithIdentifier:(id)arg2;
 - (void)handleSyncRequest:(id)arg1 ofType:(unsigned short)arg2 response:(CDUnknownBlockType)arg3;
 - (void)handleSyncResponse:(id)arg1 ofType:(unsigned short)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
@@ -110,7 +142,9 @@
 - (BOOL)resume:(id *)arg1;
 - (BOOL)sendData:(id)arg1 options:(struct NSDictionary *)arg2 identifier:(id *)arg3 error:(id *)arg4;
 - (void)sentMessageWithID:(id)arg1 context:(id)arg2;
+- (void)serializeForIncomingSession:(CDUnknownBlockType)arg1;
 - (void)sessionDidEnd:(id)arg1 withError:(id)arg2;
+- (void)sessionFailedToCancelMessageUUIDs:(id)arg1;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)setHasChangesAvailable;
 - (void)setNeedsResetSync;

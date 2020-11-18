@@ -105,6 +105,7 @@
 - (id)_popoverSuffix;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (void)_resetSelectionOfTables;
+- (id)_scalarStatisticsForUserValueChangedEvent;
 - (void)_selectRow:(long long)arg1 inComponent:(long long)arg2 animated:(BOOL)arg3 notify:(BOOL)arg4;
 - (struct CGRect)_selectionBarRectForHeight:(double)arg1;
 - (id)_selectionBarSuffix;
@@ -123,6 +124,7 @@
 - (BOOL)_usesCheckSelection;
 - (BOOL)_usesCheckedSelection;
 - (double)_wheelShift;
+- (void)_willPlayClickSound;
 - (BOOL)allowsMultipleSelection;
 - (long long)columnForTableView:(id)arg1;
 - (id)createDividerWithFrame:(struct CGRect)arg1;

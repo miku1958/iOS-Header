@@ -18,6 +18,7 @@
 @property (nonatomic) long long rotationDirection; // @synthesize rotationDirection=_rotationDirection;
 
 - (id)description;
+- (id)init;
 - (id)initWithOrientation:(long long)arg1 duration:(double)arg2 rotationDirection:(long long)arg3;
 
 @end

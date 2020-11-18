@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString;
+@class NSData, NSDictionary, NSString;
 
 @interface MusicQuickPlayResponse : NSObject
 {
     long long _containerType;
     NSString *_containerID;
+    NSData *_recommendationData;
     NSDictionary *_storePlatformDictionary;
 }
 
 @property (strong, nonatomic) NSString *containerID; // @synthesize containerID=_containerID;
 @property (nonatomic) long long containerType; // @synthesize containerType=_containerType;
+@property (strong, nonatomic) NSData *recommendationData; // @synthesize recommendationData=_recommendationData;
 @property (strong, nonatomic) NSDictionary *storePlatformDictionary; // @synthesize storePlatformDictionary=_storePlatformDictionary;
 
 - (void).cxx_destruct;

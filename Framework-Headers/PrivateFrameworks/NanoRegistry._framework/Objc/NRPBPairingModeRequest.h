@@ -11,9 +11,23 @@
 @interface NRPBPairingModeRequest : PBRequest <NSCopying>
 {
     int _pairingMode;
+    int _phonePairingProtocolVersionMax;
+    int _phonePairingProtocolVersionMin;
+    int _watchPairingProtocolVersion;
+    struct {
+        unsigned int phonePairingProtocolVersionMax:1;
+        unsigned int phonePairingProtocolVersionMin:1;
+        unsigned int watchPairingProtocolVersion:1;
+    } _has;
 }
 
+@property (nonatomic) BOOL hasPhonePairingProtocolVersionMax;
+@property (nonatomic) BOOL hasPhonePairingProtocolVersionMin;
+@property (nonatomic) BOOL hasWatchPairingProtocolVersion;
 @property (nonatomic) int pairingMode; // @synthesize pairingMode=_pairingMode;
+@property (nonatomic) int phonePairingProtocolVersionMax; // @synthesize phonePairingProtocolVersionMax=_phonePairingProtocolVersionMax;
+@property (nonatomic) int phonePairingProtocolVersionMin; // @synthesize phonePairingProtocolVersionMin=_phonePairingProtocolVersionMin;
+@property (nonatomic) int watchPairingProtocolVersion; // @synthesize watchPairingProtocolVersion=_watchPairingProtocolVersion;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -18,6 +18,7 @@
 - (void)appContext:(IKAppContext *)arg1 didStopWithOptions:(NSDictionary *)arg2;
 - (void)appContext:(IKAppContext *)arg1 evaluateAppJavaScriptInContext:(JSContext *)arg2;
 - (void)appContext:(IKAppContext *)arg1 needsReloadWithUrgency:(unsigned long long)arg2;
+- (void)appContext:(IKAppContext *)arg1 needsReloadWithUrgency:(unsigned long long)arg2 options:(NSDictionary *)arg3;
 - (BOOL)appContext:(IKAppContext *)arg1 validateDOMDocument:(IKDOMDocument *)arg2 inContext:(JSContext *)arg3 error:(id *)arg4;
 - (id<IKAppNavigationController>)modalControllerForContext:(IKAppContext *)arg1;
 - (id<IKAppNavigationController>)navigationControllerForContext:(IKAppContext *)arg1;

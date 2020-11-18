@@ -56,12 +56,14 @@
 - (void)_dismiss;
 - (int)_getScreenType;
 - (void)_invalidateSEPLockInfo;
+- (void)_preflightPasswordForWeakness:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_rereadBlockedState;
 - (double)_secondsToBlockForFailedAttempts:(long long)arg1;
 - (id)_sepLockInfo;
 - (void)_setNumberOfFailedAttempts:(long long)arg1;
 - (void)_setPINPaneToSimple:(BOOL)arg1 simpleLength:(int)arg2 numeric:(BOOL)arg3 requiresKeyboard:(int)arg4;
 - (void)_setUnblockTime:(double)arg1;
+- (BOOL)_shouldCheckForWeakness;
 - (BOOL)_shouldShowOptionsButton;
 - (void)_showFailedAttempts;
 - (void)_showPINConfirmationError;

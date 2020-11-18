@@ -29,6 +29,7 @@
 
 + (BOOL)_allowsParallax;
 + (BOOL)_allowsRasterization;
+- (void).cxx_destruct;
 - (id)_blurredImage;
 - (id)_computeAverageColor;
 - (BOOL)_deviceMayRotate;
@@ -46,7 +47,7 @@
 - (BOOL)hasBeenInvalidated;
 - (id)initWithFrame:(struct CGRect)arg1 proceduralWallpaper:(id)arg2 options:(id)arg3 variant:(long long)arg4;
 - (void)invalidate;
-- (BOOL)isDisplayingWallpaper:(id)arg1 forVariant:(long long)arg2 options:(id)arg3;
+- (BOOL)isDisplayingWallpaperWithConfiguration:(id)arg1 forVariant:(long long)arg2;
 - (void)layoutSubviews;
 - (BOOL)needsImmediateLayoutBeforeRotation;
 - (id)options;

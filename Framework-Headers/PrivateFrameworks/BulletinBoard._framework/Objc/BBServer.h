@@ -149,6 +149,7 @@
 - (id)_defaultSectionOrderForTopLevelCollection:(id)arg1;
 - (id)_defaultSectionOrders;
 - (BOOL)_deviceSupportsFavorites;
+- (void)_didEffectiveSettingsChange:(id)arg1;
 - (BOOL)_didNotificationCenterSettingsChangeWithSectionInfo:(id)arg1 replacingSectionInfo:(id)arg2;
 - (BOOL)_doesAddressBookContainDestinationID:(id)arg1;
 - (BOOL)_doesFavoritesListContainDestinationID:(id)arg1;
@@ -184,6 +185,7 @@
 - (id)_newValidatedDefaultExpirationComponentsFromComponents:(id)arg1;
 - (id)_nextExpireBulletinsDate;
 - (void)_noteSystemStateChanged;
+- (void)_observeManagedProfileChanges;
 - (id)_observerGatewaysForFeeds:(unsigned long long)arg1;
 - (id)_observersForFeeds:(unsigned long long)arg1;
 - (id)_observersForNoticesFeed;
@@ -235,11 +237,13 @@
 - (void)_setDefaultExpirationComponents:(id)arg1;
 - (void)_setPrivilegedSenderTypes:(unsigned long long)arg1 source:(unsigned long long)arg2;
 - (void)_setSectionInfo:(id)arg1 forSectionID:(id)arg2;
+- (void)_setSectionInfoNoteSettingsChanged:(id)arg1 forSectionID:(id)arg2;
 - (id)_sinceDate;
 - (void)_sortSectionIDs:(id)arg1 usingGuideArray:(id)arg2;
 - (void)_sortSectionIDs:(id)arg1 usingOrder:(id)arg2;
 - (id)_sortedSectionIDs;
 - (void)_storeObserver:(id)arg1 forFeed:(unsigned long long)arg2;
+- (void)_unobserveManagedProfileChanges;
 - (void)_updateAllBulletinsForDataProvider:(id)arg1;
 - (void)_updateAllBulletinsForDataProviderIfSectionIsEnabled:(id)arg1;
 - (void)_updateBehaviorOverridesFromSource:(unsigned long long)arg1;
@@ -247,6 +251,7 @@
 - (void)_updateBulletinsInFeed:(unsigned long long)arg1 forDataProviderIfSectionIsEnabled:(id)arg2;
 - (void)_updateBulletinsInFeed:(unsigned long long)arg1 ifSectionIsEnabled:(id)arg2;
 - (void)_updateClearedInfoForSectionID:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_updateDataProviderForSectionInfo:(id)arg1 sectionID:(id)arg2;
 - (void)_updateSectionInfoForSectionID:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_updateSectionParametersForDataProvider:(id)arg1;
 - (void)_updateShowsMessagePreviewForBulletin:(id)arg1;
@@ -278,6 +283,7 @@
 - (void)getAttachmentAspectRatioForBulletinID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getAttachmentPNGDataForBulletinID:(id)arg1 sizeConstraints:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)getBehaviorOverridesEffectiveWhileUnlockedWithHandler:(CDUnknownBlockType)arg1;
+- (void)getBehaviorOverridesEnabledAndEffectiveDateWithHandler:(CDUnknownBlockType)arg1;
 - (void)getBehaviorOverridesEnabledWithHandler:(CDUnknownBlockType)arg1;
 - (void)getBehaviorOverridesWithHandler:(CDUnknownBlockType)arg1;
 - (void)getBulletinsForPublisherMatchIDs:(id)arg1 sectionID:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
@@ -332,7 +338,7 @@
 - (void)sendMessageToDataProviderSectionID:(id)arg1 name:(id)arg2 userInfo:(id)arg3;
 - (void)setActiveBehaviorOverrideChangeUpdatesEnabled:(BOOL)arg1 forClient:(id)arg2;
 - (void)setActiveBehaviorOverrideTypesChangeUpdatesEnabled:(BOOL)arg1;
-- (void)setBehaviorOverrideStatus:(long long)arg1 source:(unsigned long long)arg2;
+- (void)setBehaviorOverrideStatus:(long long)arg1 effectiveDate:(id)arg2 source:(unsigned long long)arg3;
 - (void)setBehaviorOverrideStatusChangeUpdatesEnabled:(BOOL)arg1;
 - (void)setBehaviorOverrides:(id)arg1 source:(unsigned long long)arg2;
 - (void)setBehaviorOverridesChangeUpdatesEnabled:(BOOL)arg1;

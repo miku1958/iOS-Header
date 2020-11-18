@@ -13,7 +13,10 @@
 {
     NSString *_logMessageCacheFilePath;
     struct sqlite3 *_logMessageCacheDatabase;
+    NSString *_adaptorId;
+    BOOL _fromLogFrameworkAdaptor;
     long long _logMessageCacheIterator;
+    long long _logMessageCacheEndIterator;
     NSMutableArray *_retrivedLogMessageCacheIds;
     int _currentRetrivedLogMessageRetryCount;
     NSObject<OS_dispatch_queue> *_databaseQueue;
@@ -31,15 +34,18 @@
 - (void)_executeSQL:(id)arg1;
 - (long long)_getNumberOfLogMessagesInCache;
 - (id)_groupIDOfNextPendingLogMessage;
+- (BOOL)_logMessageCacheFileExists;
 - (void)_migrateDatabaseIfNeeded;
 - (void)_openCreateLogMessageCacheDBFile;
 - (void)_openLogMessageCacheDBFile;
 - (long long)_queryLogMessageCacheDBUserVersion;
 - (id)_retrieveBatchOfLogMessagesLimitCount:(long long)arg1 limitSize:(long long)arg2;
+- (long long)_retrieveEndLogMessageCacheIterator;
 - (void)_updateLogMessageCacheDBUserVersion;
+- (BOOL)_usingInMemoryLogMessageCacheFile;
 - (void)closeLogMessageCache;
 - (void)dealloc;
-- (id)initWithLogMessageCacheFilePath:(id)arg1;
+- (id)initWithLogMessageCacheFilePath:(id)arg1 adaptorId:(id)arg2 fromLogFrameworkAdaptor:(BOOL)arg3;
 - (void)insertLogMessageIntoCache:(id)arg1;
 - (BOOL)isLogMessageCacheEmpty;
 - (void)openLogMessageCache;

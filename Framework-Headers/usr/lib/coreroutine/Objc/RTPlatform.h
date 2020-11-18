@@ -12,9 +12,11 @@
 
 + (BOOL)internalInstall;
 + (BOOL)lowEndHardware;
-+ (BOOL)magicalMomentsAvailable;
 + (id)productType;
 + (id)serialNumber;
++ (BOOL)supportsCoreRoutineCapability;
++ (BOOL)supportsMagicalMomentsCapability;
++ (BOOL)supportsMultiUser;
 + (id)systemInfoByName:(id)arg1;
 + (id)systemModel;
 + (id)systemVersion;

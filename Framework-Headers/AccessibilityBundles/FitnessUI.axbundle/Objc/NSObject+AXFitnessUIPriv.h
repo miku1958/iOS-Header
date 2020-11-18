@@ -11,6 +11,6 @@
 - (id)_accessibilityQuantityForSliceAtIndex:(unsigned long long)arg1;
 - (BOOL)_accessibilityShouldUseSlices;
 - (double)_accessibilityTimeIntervalPerSlice;
-- (id)accessibilityDescriptionForPercentages:(double)arg1 briskMinutesPercentage:(double)arg2 activeHoursPercentage:(double)arg3 arePercentagesCapped:(BOOL)arg4;
+- (id)accessibilityDescriptionForPercentages:(double)arg1 exercisingPercentage:(double)arg2 standingPercentage:(double)arg3 arePercentagesCapped:(BOOL)arg4;
 @end
 

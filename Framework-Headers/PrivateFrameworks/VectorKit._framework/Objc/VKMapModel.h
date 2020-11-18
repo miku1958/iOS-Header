@@ -210,7 +210,9 @@ __attribute__((visibility("hidden")))
 - (CDUnknownBlockType)annotationRectTest;
 - (id)attributionsForCurrentRegion;
 - (void)beginStyleAnimationGroup;
+- (id)boundsForSelectedTransitLines;
 - (id)buildingMarkerAtScreenPoint:(struct CGPoint)arg1 groundPoint:(struct VKPoint)arg2;
+- (void)buildingsDidBecome3D:(BOOL)arg1;
 - (long long)buildingsMapMode;
 - (void)cancelTileRequests;
 - (void)clearScene;
@@ -282,7 +284,8 @@ __attribute__((visibility("hidden")))
 - (void)removePersistentOverlay:(id)arg1;
 - (void)removeRasterOverlay:(id)arg1;
 - (void)requestStylesheetAnimation:(id)arg1 targetMapDisplayStyle:(struct DisplayStyle)arg2 setupHandler:(CDUnknownBlockType)arg3;
-- (void)reserveStencilRangeBetweenPolygonLayersForScene:(id)arg1 context:(id)arg2 renderQueue:(struct RenderQueue *)arg3;
+- (void)reserveStencilRangeForBuildingsForScene:(id)arg1 context:(id)arg2 renderQueue:(struct RenderQueue *)arg3;
+- (void)reserveStencilRangeForRoadsForScene:(id)arg1 context:(id)arg2 renderQueue:(struct RenderQueue *)arg3;
 - (void)resetTileContainers;
 - (void)resourceManifestManager:(id)arg1 didChangeActiveTileGroup:(id)arg2 fromOldTileGroup:(id)arg3;
 - (void)resourceManifestManagerWillChangeActiveTileGroup:(id)arg1;
@@ -291,6 +294,7 @@ __attribute__((visibility("hidden")))
 - (void)selectAnnotationMarker:(id)arg1;
 - (void)selectLabelMarker:(id)arg1;
 - (void)selectTransitLineMarker:(id)arg1;
+- (id)selectedTransitLineIDs;
 - (void)setAnnotationMarkerDeselectionCallback:(CDUnknownBlockType)arg1;
 - (void)setApplicationState:(unsigned char)arg1;
 - (void)setCurrentLocationText:(id)arg1;

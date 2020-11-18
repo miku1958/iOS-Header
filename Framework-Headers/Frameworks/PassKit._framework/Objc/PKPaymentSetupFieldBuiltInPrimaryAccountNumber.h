@@ -10,6 +10,7 @@
 {
 }
 
+- (id)compactLocalizedDisplayName;
 - (id)displayFormatPaddingCharacters;
 - (BOOL)hasDisplayFormat;
 - (id)initWithIdentifier:(id)arg1 type:(unsigned long long)arg2;

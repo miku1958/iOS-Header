@@ -9,14 +9,21 @@
 #import <PhotosUI/PUActivity-Protocol.h>
 
 @class NSString, PUActivityItemSourceController, UIImage;
+@protocol PUActivityDataSource;
 
 @interface PUActivity : UIActivity <PUActivity>
 {
+    struct {
+        BOOL respondsToActivityViewControllerForActivity;
+        BOOL respondsToActivityItemsForActivity;
+    } _dataSourceFlags;
     UIImage *_cachedCustomImage;
     UIImage *_cachedSmallCustomImage;
     PUActivityItemSourceController *_itemSourceController;
+    id<PUActivityDataSource> _dataSource;
 }
 
+@property (weak, nonatomic) id<PUActivityDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

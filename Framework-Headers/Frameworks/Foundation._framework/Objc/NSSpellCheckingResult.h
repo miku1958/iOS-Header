@@ -11,6 +11,7 @@
     struct _NSRange _range;
 }
 
++ (BOOL)supportsSecureCoding;
 - (BOOL)_adjustRangesWithOffset:(long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

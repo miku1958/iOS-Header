@@ -8,17 +8,14 @@
 
 #import <CloudKitDaemon/CKLoggingProtocol-Protocol.h>
 
-@class CKAccountInfo, CKContainerID, CKDAccount, CKDFlowControlManager, CKDKeyValueDiskCache, CKDMMCS, CKDMescalSession, CKDPCSManager, CKDPublicIdentityLookupService, CKDServerConfiguration, CKDZoneGatekeeper, CKTimeLogger, NSBundle, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, NSURL;
+@class CKAccountInfo, CKContainerID, CKDAccount, CKDAppContainerIntersectionMetadata, CKDAppContainerTuple, CKDApplicationMetadata, CKDFlowControlManager, CKDKeyValueDiskCache, CKDMMCS, CKDMescalSession, CKDPCSManager, CKDPublicIdentityLookupService, CKDServerConfiguration, CKDZoneGatekeeper, CKTimeLogger, NSBundle, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface CKDClientContext : NSObject <CKLoggingProtocol>
 {
     BOOL _isForClouddInternalUse;
     BOOL _hasDataContainer;
-    BOOL _canAccessProtectionData;
-    BOOL _canSetDeviceIdentifier;
-    BOOL _allowsPowerNapScheduling;
-    BOOL _hasAllowAccessDuringBuddyEntitlement;
+    BOOL _captureResponseHTTPHeaders;
     BOOL _sandboxed;
     BOOL _finishedAppProxySetup;
     CKDServerConfiguration *_config;
@@ -46,8 +43,6 @@
     NSString *_applicationRecordCacheDirectory;
     NSString *_containerHardwareIDHash;
     long long _type;
-    long long _usesAPSPublicToken;
-    long long _darkWakeEnabled;
     CKDAccount *_account;
     CKAccountInfo *_accountInfoOverride;
     CKDFlowControlManager *_flowControlManager;
@@ -64,13 +59,18 @@
     NSObject<OS_dispatch_queue> *_setupQueue;
     NSString *_contextID;
     NSMutableArray *_oldApplicationCaches;
+    CKDAppContainerIntersectionMetadata *_appContainerIntersectionMetadata;
+    CKDApplicationMetadata *_applicationMetadata;
+    CKDAppContainerTuple *_appContainerTuple;
 }
 
 @property (strong) CKDMMCS *MMCS; // @synthesize MMCS=_MMCS;
 @property (strong) CKDAccount *account; // @synthesize account=_account;
 @property (readonly, nonatomic) CKAccountInfo *accountInfoOverride; // @synthesize accountInfoOverride=_accountInfoOverride;
 @property (readonly, nonatomic) BOOL allowsCellularAccess;
-@property (nonatomic) BOOL allowsPowerNapScheduling; // @synthesize allowsPowerNapScheduling=_allowsPowerNapScheduling;
+@property (nonatomic) BOOL allowsPowerNapScheduling;
+@property (strong, nonatomic) CKDAppContainerIntersectionMetadata *appContainerIntersectionMetadata; // @synthesize appContainerIntersectionMetadata=_appContainerIntersectionMetadata;
+@property (strong, nonatomic) CKDAppContainerTuple *appContainerTuple; // @synthesize appContainerTuple=_appContainerTuple;
 @property (strong, nonatomic) NSString *applicationAssetDbDirectory; // @synthesize applicationAssetDbDirectory=_applicationAssetDbDirectory;
 @property (readonly, nonatomic) NSBundle *applicationBundle; // @synthesize applicationBundle=_applicationBundle;
 @property (readonly, nonatomic) NSString *applicationBundleID; // @synthesize applicationBundleID=_applicationBundleID;
@@ -80,7 +80,9 @@
 @property (readonly, nonatomic) NSString *applicationDisplayName; // @synthesize applicationDisplayName=_applicationDisplayName;
 @property (strong, nonatomic) NSString *applicationFileDownloadDirectory; // @synthesize applicationFileDownloadDirectory=_applicationFileDownloadDirectory;
 @property (readonly, nonatomic) NSURL *applicationIcon; // @synthesize applicationIcon=_applicationIcon;
+@property (strong, nonatomic) NSString *applicationIdentifier;
 @property (strong, nonatomic) NSString *applicationMMCSDirectory; // @synthesize applicationMMCSDirectory=_applicationMMCSDirectory;
+@property (strong, nonatomic) CKDApplicationMetadata *applicationMetadata; // @synthesize applicationMetadata=_applicationMetadata;
 @property (strong, nonatomic) NSString *applicationPackageDownloadDirectory; // @synthesize applicationPackageDownloadDirectory=_applicationPackageDownloadDirectory;
 @property (strong, nonatomic) NSString *applicationPackageUploadDirectory; // @synthesize applicationPackageUploadDirectory=_applicationPackageUploadDirectory;
 @property (strong, nonatomic) NSString *applicationRecordCacheDirectory; // @synthesize applicationRecordCacheDirectory=_applicationRecordCacheDirectory;
@@ -90,14 +92,16 @@
 @property (strong, nonatomic) CKDZoneGatekeeper *backgroundZoneGatekeeper; // @synthesize backgroundZoneGatekeeper=_backgroundZoneGatekeeper;
 @property long long cachedEnvironment; // @synthesize cachedEnvironment=_cachedEnvironment;
 @property (readonly, nonatomic) BOOL canAccessAccount;
-@property (nonatomic) BOOL canAccessProtectionData; // @synthesize canAccessProtectionData=_canAccessProtectionData;
-@property (nonatomic) BOOL canSetDeviceIdentifier; // @synthesize canSetDeviceIdentifier=_canSetDeviceIdentifier;
+@property (nonatomic) BOOL canAccessProtectionData;
+@property (nonatomic) BOOL canSetDeviceIdentifier;
+@property (nonatomic) BOOL captureResponseHTTPHeaders; // @synthesize captureResponseHTTPHeaders=_captureResponseHTTPHeaders;
+@property (strong, nonatomic) NSString *clientPrefixEntitlement;
 @property (strong, nonatomic) CKDServerConfiguration *config; // @synthesize config=_config;
 @property (readonly, nonatomic) NSString *containerHardwareIDHash; // @synthesize containerHardwareIDHash=_containerHardwareIDHash;
 @property (readonly, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
 @property (strong, nonatomic) NSString *containerScopedUserID; // @synthesize containerScopedUserID=_containerScopedUserID;
 @property (readonly, nonatomic) NSString *contextID; // @synthesize contextID=_contextID;
-@property (nonatomic) long long darkWakeEnabled; // @synthesize darkWakeEnabled=_darkWakeEnabled;
+@property (nonatomic) long long darkWakeEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableDictionary *fakeErrorByClassName; // @synthesize fakeErrorByClassName=_fakeErrorByClassName;
@@ -105,9 +109,14 @@
 @property (strong, nonatomic) CKDFlowControlManager *flowControlManager; // @synthesize flowControlManager=_flowControlManager;
 @property (strong, nonatomic) CKDPublicIdentityLookupService *foregroundPublicIdentityLookupService; // @synthesize foregroundPublicIdentityLookupService=_foregroundPublicIdentityLookupService;
 @property (strong, nonatomic) CKDZoneGatekeeper *foregroundZoneGatekeeper; // @synthesize foregroundZoneGatekeeper=_foregroundZoneGatekeeper;
-@property (nonatomic) BOOL hasAllowAccessDuringBuddyEntitlement; // @synthesize hasAllowAccessDuringBuddyEntitlement=_hasAllowAccessDuringBuddyEntitlement;
+@property (nonatomic) BOOL hasAllowAccessDuringBuddyEntitlement;
+@property (nonatomic) BOOL hasAllowCustomAccountsEntitlement;
+@property (nonatomic) BOOL hasAllowSetEnvironmentEntitlement;
 @property (nonatomic) BOOL hasDataContainer; // @synthesize hasDataContainer=_hasDataContainer;
+@property (nonatomic) BOOL hasLightweightPCSEntitlement;
+@property (nonatomic) BOOL hasMasqueradingEntitlement;
 @property (nonatomic, setter=setHasSystemServiceEntitlement:) BOOL hasSystemServiceEntitlement;
+@property (nonatomic) BOOL hasTCCAuthorization;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isForClouddInternalUse; // @synthesize isForClouddInternalUse=_isForClouddInternalUse;
 @property (strong, nonatomic) CKDMescalSession *mescalSession; // @synthesize mescalSession=_mescalSession;
@@ -124,7 +133,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) CKTimeLogger *timeLogger; // @synthesize timeLogger=_timeLogger;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
-@property (nonatomic) long long usesAPSPublicToken; // @synthesize usesAPSPublicToken=_usesAPSPublicToken;
+@property (nonatomic) long long usesAPSPublicToken;
 
 + (id)_sharedContextWithAppContainerTuple:(id)arg1 accountInfoOverride:(id)arg2 proxy:(id)arg3 forInternalUse:(BOOL)arg4;
 + (id)applicationContainerPathForBundleID:(id)arg1 bundleURL:(id *)arg2 type:(long long *)arg3;
@@ -135,6 +144,7 @@
 + (id)sharedContexts;
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
+- (void)_cancelAllLongLivedOperations;
 - (void)_determineHardwareInfo;
 - (id)_issueSandboxExtensionForPath:(id)arg1 error:(id *)arg2;
 - (void)_loadApplicationContainerPathAndType;

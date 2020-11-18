@@ -11,7 +11,7 @@
 }
 
 - (int)annotationType;
-- (void)drawInContext:(struct CGContext *)arg1;
+- (void)strokePath:(struct CGContext *)arg1 inRect:(struct CGRect)arg2;
 
 @end
 

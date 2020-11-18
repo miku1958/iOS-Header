@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class UIScreen;
 
@@ -17,7 +17,7 @@
 @property (nonatomic) int activationEvent; // @synthesize activationEvent=_activationEvent;
 @property (strong, nonatomic) UIScreen *screen; // @synthesize screen=_screen;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

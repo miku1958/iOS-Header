@@ -6,7 +6,7 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HDJournalEntry, NSArray;
+@class HDExtendedDatabaseTransaction, HDJournalEntry, NSArray, NSUUID;
 @protocol HDDatabaseProtectedDataObserver;
 
 @protocol HDHealthDatabase <NSObject>
@@ -14,12 +14,15 @@
 @property (readonly, nonatomic, getter=isDataProtectedByFirstUnlockAvailable) BOOL dataProtectedByFirstUnlockAvailable;
 @property (readonly, nonatomic, getter=isProtectedDataAvailable) BOOL protectedDataAvailable;
 
-- (void)addJournalEntries:(NSArray *)arg1;
-- (void)addJournalEntry:(HDJournalEntry *)arg1;
+- (BOOL)addJournalEntries:(NSArray *)arg1 error:(id *)arg2;
+- (BOOL)addJournalEntry:(HDJournalEntry *)arg1 error:(id *)arg2;
 - (void)addProtectedDataObserver:(id<HDDatabaseProtectedDataObserver>)arg1;
+- (HDExtendedDatabaseTransaction *)beginExtendedTransactionWithOptions:(unsigned long long)arg1 transactionTimeout:(double)arg2 continuationTimeout:(double)arg3 error:(id *)arg4;
+- (HDExtendedDatabaseTransaction *)extendedDatabaseTransactionForIdentifier:(NSUUID *)arg1;
+- (void)finalizeExtendedTransactionForIdentifier:(NSUUID *)arg1;
 - (void)performAsynchronously:(void (^)(void))arg1;
 - (BOOL)performJournalMergeUsingBlock:(BOOL (^)(HDSQLiteDatabase *, id *))arg1 error:(id *)arg2;
-- (BOOL)performTransactionWithOptions:(unsigned long long)arg1 error:(id *)arg2 usingBlock:(BOOL (^)(HDSQLiteDatabase *, id *))arg3;
+- (BOOL)performTransactionWithOptions:(unsigned long long)arg1 error:(id *)arg2 usingBlock:(BOOL (^)(HDSQLiteDatabase *, id *))arg3 inaccessibilityHandler:(BOOL (^)(NSError *, id *))arg4;
 - (void)performWhenDataProtectedByFirstUnlockIsAvailable:(void (^)(void))arg1;
 - (void)removeProtectedDataObserver:(id<HDDatabaseProtectedDataObserver>)arg1;
 @end

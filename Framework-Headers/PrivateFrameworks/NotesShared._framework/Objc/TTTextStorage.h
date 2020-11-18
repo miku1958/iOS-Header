@@ -129,6 +129,7 @@
 - (BOOL)isEditing;
 - (BOOL)isEditingOrConvertingMarkedText;
 - (unsigned long long)mergeWithDocument:(id)arg1;
+- (BOOL)mergeableStringIsEqualAfterSerialization:(id)arg1;
 - (void)preReplaceCharactersInRange:(struct _NSRange)arg1 withStringLength:(unsigned long long)arg2;
 - (void)removeAttribute:(id)arg1 range:(struct _NSRange)arg2;
 - (void)replaceCharactersInRange:(struct _NSRange)arg1 withAttributedString:(id)arg2;

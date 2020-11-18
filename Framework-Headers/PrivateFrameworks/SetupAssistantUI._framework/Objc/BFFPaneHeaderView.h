@@ -6,13 +6,14 @@
 
 #import <UIKit/UIView.h>
 
-@class UIButton, UIImage, UIImageView, UILabel;
+@class UIButton, UIColor, UIImage, UIImageView, UILabel;
 
 @interface BFFPaneHeaderView : UIView
 {
     UIImageView *_iconView;
     UIButton *_linkButton;
     CDUnknownBlockType _linkHandler;
+    UIView *_bottomLine;
     BOOL _textLabelAlignedByLastBaseline;
     UIImage *_icon;
     UILabel *_textLabel;
@@ -20,6 +21,7 @@
     double _flexibleHeight;
 }
 
+@property (strong, nonatomic) UIColor *bottomLineColor;
 @property (readonly, nonatomic) UILabel *detailTextLabel; // @synthesize detailTextLabel=_detailTextLabel;
 @property (nonatomic) double flexibleHeight; // @synthesize flexibleHeight=_flexibleHeight;
 @property (strong, nonatomic) UIImage *icon; // @synthesize icon=_icon;
@@ -32,6 +34,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setLinkText:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)setTitleText:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

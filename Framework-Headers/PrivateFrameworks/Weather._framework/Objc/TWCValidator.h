@@ -9,7 +9,7 @@
 #import <Weather/MKSearchCompleterDelegate-Protocol.h>
 
 @class CLGeocoder, MKLocalSearchCompleter, NSString;
-@protocol WeatherValidatorDelegate;
+@protocol GEOMapServiceCompletionTicket, WeatherValidatorDelegate;
 
 @interface TWCValidator : NSObject <MKSearchCompleterDelegate>
 {
@@ -22,6 +22,7 @@
 @property (weak, nonatomic) id<WeatherValidatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) id<GEOMapServiceCompletionTicket> lastTicket;
 @property (readonly) Class superclass;
 
 + (id)sharedValidator;

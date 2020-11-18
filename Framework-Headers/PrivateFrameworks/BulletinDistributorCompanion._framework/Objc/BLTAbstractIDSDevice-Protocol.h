@@ -8,6 +8,7 @@
 
 @protocol BLTAbstractIDSDevice <NSObject>
 
+@property (readonly, nonatomic) BOOL isCloudReachable;
 @property (readonly, nonatomic) BOOL isConnected;
 @property (readonly, nonatomic) BOOL isDefaultPairedDevice;
 @property (readonly, nonatomic) BOOL isNearby;

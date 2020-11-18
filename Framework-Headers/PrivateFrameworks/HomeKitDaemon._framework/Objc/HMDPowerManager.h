@@ -11,7 +11,7 @@
 @interface HMDPowerManager : NSObject
 {
     NSObject<OS_dispatch_queue> *_dispatchQueue;
-    BOOL _ethernetActive;
+    BOOL _networkInterfaceActive;
     BOOL _networkAccessRequired;
     unsigned int _powerAssertion;
     struct __SCDynamicStore *_scStore;

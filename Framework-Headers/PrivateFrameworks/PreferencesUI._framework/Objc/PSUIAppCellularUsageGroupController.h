@@ -38,17 +38,19 @@
 @property (strong, nonatomic) NSNumber *totalRoamingBytesUsed; // @synthesize totalRoamingBytesUsed=_totalRoamingBytesUsed;
 
 - (void).cxx_destruct;
-- (void)_createAppSpecifiersForVisibleApps:(id)arg1 hiddenApps:(id)arg2 unknownApps:(id)arg3 internalProcesses:(id)arg4;
+- (void)_createAppSpecifiersForVisibleApps:(id)arg1 hiddenApps:(id)arg2 unknownApps:(id)arg3 internalProcesses:(id)arg4 wifiAssist:(id)arg5;
 - (void)_updateTotalBytesUsed:(double)arg1 roamingBytesUsed:(double)arg2;
 - (id)appCellularDataEnabledForSpecifier:(id)arg1;
 - (void)cancel;
 - (id)dataUsageForApplicationSpecifier:(id)arg1;
 - (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2;
+- (id)isReliableNetworkFallbackEnabled:(id)arg1;
 - (id)managedCellularDataBundleIdentifiers;
 - (id)nameForSpecialCategory:(id)arg1;
 - (void)setAppCellularDataEnabled:(id)arg1 forSpecifier:(id)arg2;
+- (void)setReliableNetworkFallbackIsEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setSwitchesEnabled:(BOOL)arg1;
-- (void)setWorkspaceInformation:(id)arg1;
+- (BOOL)shouldShowWifiAssist;
 - (id)specifierForApp:(id)arg1 enabled:(BOOL)arg2;
 - (id)specifierForSpecialCategory:(id)arg1 bytesUsed:(id)arg2;
 - (id)specifiers;

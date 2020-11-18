@@ -7,6 +7,6 @@
 #import <PassKit/NSObject-Protocol.h>
 
 @protocol PKRemoteAddPassesViewControllerProtocol <NSObject>
-- (void)ingestionDidFinishWithResult:(int)arg1;
+- (void)ingestionDidFinishWithResult:(unsigned long long)arg1;
 @end
 

@@ -104,6 +104,7 @@ __attribute__((visibility("hidden")))
 - (CDUnknownBlockType)annotationRectTest;
 - (id)attributionsForCurrentRegion;
 - (void)beginStyleAnimationGroup;
+- (id)boundsForSelectedTransitLines;
 - (id)buildingMarkerAtScreenPoint:(struct CGPoint)arg1;
 - (void)cameraController:(id)arg1 canEnter3DModeDidChange:(BOOL)arg2;
 - (void)cameraController:(id)arg1 canZoomInDidChange:(BOOL)arg2;
@@ -204,6 +205,7 @@ __attribute__((visibility("hidden")))
 - (void)selectTransitLineMarker:(id)arg1;
 - (id)selectedAnnotationMarker;
 - (id)selectedLabelMarker;
+- (id)selectedTransitLineIDs;
 - (void)setAnnotationMarkerDeselectionCallback:(CDUnknownBlockType)arg1;
 - (void)setApplicationState:(unsigned char)arg1;
 - (void)setCameraHorizontalOffset:(double)arg1 duration:(double)arg2 timingFunction:(id)arg3;

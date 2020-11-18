@@ -7,7 +7,7 @@
 #import <PassKitCore/NSObject-Protocol.h>
 #import <PassKitCore/PDPassLibraryExportedInterface-Protocol.h>
 
-@class CLLocation, NSArray, NSSet, NSString, PKCatalog, PKFieldProperties, PKPass;
+@class CLLocation, NSArray, NSSet, NSString, PKCatalog, PKContact, PKFieldProperties, PKPass;
 
 @protocol PDPassLibraryExtendedExportedInterface <NSObject, PDPassLibraryExportedInterface>
 - (void)addFakeBulletin;
@@ -15,6 +15,7 @@
 - (void)fetchCurrentRelevantPassInfo:(void (^)(NSArray *))arg1;
 - (void)fetchHasCandidatePasses:(void (^)(BOOL))arg1;
 - (void)getArchivedObjectWithUniqueID:(NSString *)arg1 handler:(void (^)(NSData *))arg2;
+- (void)getDataForBundleResourceNamed:(NSString *)arg1 withExtension:(NSString *)arg2 objectUniqueIdentifier:(NSString *)arg3 handler:(void (^)(NSData *))arg4;
 - (void)getDiffForPassBulletinWithRecordID:(NSString *)arg1 handler:(void (^)(PKDiff *))arg2;
 - (void)getPassUniqueIdentifiersForFieldProperties:(PKFieldProperties *)arg1 handler:(void (^)(NSArray *))arg2;
 - (void)getPassesAndCatalogOfPassTypes:(unsigned long long)arg1 limitResults:(BOOL)arg2 withHandler:(void (^)(NSSet *, PKCatalog *))arg3;
@@ -26,8 +27,8 @@
 - (void)inAppPaymentPassesForNetworks:(NSSet *)arg1 capabilities:(unsigned long long)arg2 withHandler:(void (^)(NSSet *))arg3;
 - (void)inAppPaymentPassesForNetworks:(NSSet *)arg1 withHandler:(void (^)(NSSet *))arg2;
 - (void)inAppPrivateLabelPaymentPassesForApplicationIdentifier:(NSString *)arg1 withHandler:(void (^)(NSSet *))arg2;
-- (void)ingestPassDatas:(NSArray *)arg1 settings:(NSArray *)arg2 handler:(void (^)(void))arg3;
 - (void)introduceDatabaseIntegrityProblem;
+- (void)isPassbookVisibleWithHandler:(void (^)(BOOL))arg1;
 - (void)isRemovingPassesOfType:(unsigned long long)arg1 handler:(void (^)(BOOL))arg2;
 - (void)logDelayExitReasons;
 - (void)migrateDataWithHandler:(void (^)(BOOL))arg1;
@@ -37,12 +38,13 @@
 - (void)notifyPassUsed:(PKPass *)arg1 fromSource:(long long)arg2;
 - (void)nukeDatabaseAndExit;
 - (void)openPaymentUI:(void (^)(BOOL))arg1;
+- (void)personalizePassWithUniqueIdentifier:(NSString *)arg1 contact:(PKContact *)arg2 personalizationToken:(NSString *)arg3 requiredPersonalizationFields:(unsigned long long)arg4 personalizationSource:(unsigned long long)arg5 handler:(void (^)(BOOL))arg6;
 - (void)recomputeRelevantPassesWithSearchMode:(long long)arg1;
 - (void)removePassesOfType:(unsigned long long)arg1 handler:(void (^)(void))arg2;
 - (void)requestContactlessInterfaceSuppressionWithHandler:(void (^)(BOOL))arg1;
 - (void)sendUserEditedCatalog:(PKCatalog *)arg1;
 - (void)shuffleGroups:(int)arg1;
-- (void)updateObjectWithUniqueID:(NSString *)arg1 handler:(void (^)(BOOL))arg2;
+- (void)updateObjectWithUniqueIdentifier:(NSString *)arg1 handler:(void (^)(BOOL))arg2;
 - (void)updateSettings:(unsigned long long)arg1 forObjectWithUniqueID:(NSString *)arg2;
 @end
 

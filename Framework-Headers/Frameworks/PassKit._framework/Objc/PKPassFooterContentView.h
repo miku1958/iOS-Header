@@ -6,19 +6,24 @@
 
 #import <UIKit/UIView.h>
 
-@class PKPass, PKPaymentPass, UIButton;
+@class PKLinkedAppIconView, PKPass, PKPaymentPass, UIButton;
+@protocol PKPassFooterContentViewDelegate;
 
 @interface PKPassFooterContentView : UIView
 {
     BOOL _isVisibleAsFooter;
     BOOL _isPassAuthorized;
     long long _style;
+    id<PKPassFooterContentViewDelegate> _delegate;
     PKPass *_pass;
+    PKLinkedAppIconView *_appIconView;
     UIButton *_infoButton;
     UIView *_bottomRule;
 }
 
+@property (readonly, nonatomic) PKLinkedAppIconView *appIconView; // @synthesize appIconView=_appIconView;
 @property (readonly, nonatomic) UIView *bottomRule; // @synthesize bottomRule=_bottomRule;
+@property (nonatomic) id<PKPassFooterContentViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) UIButton *infoButton; // @synthesize infoButton=_infoButton;
 @property (readonly, nonatomic) BOOL isPassAuthorized; // @synthesize isPassAuthorized=_isPassAuthorized;
 @property (readonly, nonatomic) BOOL isVisibleAsFooter; // @synthesize isVisibleAsFooter=_isVisibleAsFooter;
@@ -26,6 +31,7 @@
 @property (readonly, nonatomic) PKPaymentPass *paymentPass;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
 
+- (double)_bottomRulePadding;
 - (void)_infoButtonPressed:(id)arg1;
 - (void)dealloc;
 - (void)didBecomeHiddenAnimated:(BOOL)arg1;

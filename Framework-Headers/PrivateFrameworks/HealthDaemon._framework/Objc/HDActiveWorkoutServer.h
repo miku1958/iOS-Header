@@ -11,8 +11,8 @@
 #import <HealthDaemon/_HKActiveWorkoutServer-Protocol.h>
 #import <HealthDaemon/_HKWorkoutSessionDelegate-Protocol.h>
 
-@class HDServer, HKQuantityType, HKSource, NSMutableArray, NSMutableDictionary, NSSet, NSString, NSUUID, _HKActiveWorkoutServerConfiguration;
-@protocol HDActiveWorkoutServerDelegate, HDHealthDaemon, NSXPCProxyCreating, OS_dispatch_queue, _HKActiveWorkoutClient;
+@class HDServer, HKQuantityType, HKSource, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSSet, NSString, NSUUID, _HKActiveWorkoutServerConfiguration;
+@protocol HDActiveWorkoutServerDelegate, HDHealthDaemon, NSXPCProxyCreating, OS_dispatch_queue;
 
 @interface HDActiveWorkoutServer : NSObject <_HKActiveWorkoutServer, HDDataObserver, _HKWorkoutSessionDelegate, HDDatabaseProtectedDataObserver>
 {
@@ -24,7 +24,6 @@
     id<HDActiveWorkoutServerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     NSObject<OS_dispatch_queue> *_observerQueue;
-    id<_HKActiveWorkoutClient> _client;
     id<NSXPCProxyCreating> _clientServer;
     id<HDHealthDaemon> _daemon;
     HDServer *_server;
@@ -36,15 +35,17 @@
     NSSet *_observedTypes;
 }
 
-@property (readonly, nonatomic) id<_HKActiveWorkoutClient> client; // @synthesize client=_client;
+@property (readonly) long long activeWorkoutState;
 @property (readonly, nonatomic) id<NSXPCProxyCreating> clientServer; // @synthesize clientServer=_clientServer;
 @property (strong, nonatomic) NSMutableDictionary *currentAnchors; // @synthesize currentAnchors=_currentAnchors;
+@property (readonly) NSArray *currentWorkoutEvents;
 @property (readonly, nonatomic) id<HDHealthDaemon> daemon; // @synthesize daemon=_daemon;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak, nonatomic) id<HDActiveWorkoutServerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) HKQuantityType *distanceType; // @synthesize distanceType=_distanceType;
 @property (readonly) unsigned long long hash;
+@property (readonly) BOOL isActivated;
 @property (readonly) HKSource *localDeviceSource;
 @property (strong, nonatomic) NSSet *observedTypes; // @synthesize observedTypes=_observedTypes;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *observerQueue; // @synthesize observerQueue=_observerQueue;
@@ -53,8 +54,10 @@
 @property (strong, nonatomic) NSMutableDictionary *resumeDataByType; // @synthesize resumeDataByType=_resumeDataByType;
 @property (readonly, weak, nonatomic) HDServer *server; // @synthesize server=_server;
 @property (nonatomic) long long serverState; // @synthesize serverState=_serverState;
+@property (readonly) NSDate *startDate;
 @property long long state;
 @property (readonly) Class superclass;
+@property (readonly) unsigned long long workoutActivityType;
 @property (strong, nonatomic) NSMutableArray *workoutEvents; // @synthesize workoutEvents=_workoutEvents;
 @property (readonly, nonatomic) NSUUID *workoutUUID;
 

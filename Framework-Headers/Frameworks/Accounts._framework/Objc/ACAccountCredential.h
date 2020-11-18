@@ -16,6 +16,7 @@
     NSString *_credentialType;
     NSMutableSet *_dirtyProperties;
     ACAccount *_owningAccount;
+    BOOL _requiresTouchID;
     BOOL _dirty;
     BOOL _empty;
 }
@@ -33,6 +34,7 @@
 @property (copy, nonatomic) NSString *oauthTokenNoSync;
 @property (copy, nonatomic) NSString *oauthTokenSecret;
 @property (copy, nonatomic) NSString *password;
+@property (nonatomic) BOOL requiresTouchID; // @synthesize requiresTouchID=_requiresTouchID;
 @property (copy, nonatomic) NSString *token;
 @property (copy, nonatomic) NSDate *tokenExpiryDate;
 

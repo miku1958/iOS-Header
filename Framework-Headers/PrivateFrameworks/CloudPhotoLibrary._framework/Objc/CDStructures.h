@@ -43,13 +43,3 @@ typedef struct {
     unsigned long long _field4[5];
 } CDStruct_70511ce9;
 
-typedef struct {
-    long long batches;
-    long long errors;
-    long long assets;
-    long long masters;
-    long long retries;
-    long long bytesCount;
-    long long resourcesCount;
-} CDStruct_e6f69ac3;
-

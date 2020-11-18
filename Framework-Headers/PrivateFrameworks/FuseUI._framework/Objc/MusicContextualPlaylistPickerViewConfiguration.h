@@ -10,16 +10,20 @@
 
 @interface MusicContextualPlaylistPickerViewConfiguration : MusicPlaylistsWithNewActionViewConfiguration
 {
+    BOOL _includesRecentlyModifiedPlaylistsSection;
     id<MusicContextualPlaylistPickerDelegate> _playlistPickerDelegate;
 }
 
+@property (readonly, nonatomic) BOOL includesRecentlyModifiedPlaylistsSection;
 @property (weak, nonatomic) id<MusicContextualPlaylistPickerDelegate> playlistPickerDelegate; // @synthesize playlistPickerDelegate=_playlistPickerDelegate;
 
 - (void).cxx_destruct;
+- (BOOL)canPreviewEntityValueContext:(id)arg1;
 - (long long)handleSelectionOfEntityValueContext:(id)arg1 fromViewController:(id)arg2;
 - (id)initWithPlaylistsFilter:(id)arg1 playlistsConfigurationOptions:(unsigned long long)arg2;
 - (id)loadEntityViewDescriptor;
 - (id)newViewController;
+- (id)previewViewControllerForEntityValueContext:(id)arg1 fromViewController:(id)arg2;
 
 @end
 

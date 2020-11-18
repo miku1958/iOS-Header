@@ -11,11 +11,12 @@
 #import <UIKit/UITextInputPrivate-Protocol.h>
 #import <UIKit/UITextInputTokenizer-Protocol.h>
 
-@class NSDictionary, NSString, UIColor, UIImage, UITextInteractionAssistant, UITextPosition, UITextRange, UIView;
+@class NSDictionary, NSIndexSet, NSString, UIColor, UIImage, UITextInteractionAssistant, UITextPosition, UITextRange, UIView;
 @protocol UITextInputDelegate, UITextInputTokenizer;
 
 @interface DOMNode (UITextInputAdditions) <UIKeyboardInput, UITextInputPrivate, UIKeyInput, UITextInputTokenizer>
 
+@property (copy, nonatomic) NSIndexSet *PINEntrySeparatorIndexes;
 @property (nonatomic) BOOL acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
 @property (nonatomic) BOOL acceptsSplitKeyboard;
@@ -28,6 +29,7 @@
 @property (nonatomic) BOOL deferBecomingResponder;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disablePrediction;
+@property (nonatomic) BOOL displaySecureEditsUsingPlainText;
 @property (nonatomic) BOOL displaySecureTextUsingPlainText;
 @property (nonatomic) int emptyContentReturnKeyType;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically;
@@ -68,6 +70,7 @@
 @property (nonatomic) struct __CFCharacterSet *textTrimmingSet;
 @property (readonly, nonatomic) id<UITextInputTokenizer> tokenizer;
 @property (nonatomic) BOOL useInterfaceLanguageForLocalization;
+@property (nonatomic) struct _NSRange validTextRange;
 
 - (struct CGRect)_lastRectForRange:(id)arg1;
 - (id)_textSelectingContainer;

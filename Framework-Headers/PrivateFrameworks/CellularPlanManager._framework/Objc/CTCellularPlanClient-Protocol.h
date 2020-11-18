@@ -24,6 +24,7 @@
 - (void)isRoamingPlanSupportAvailable:(void (^)(BOOL))arg1;
 - (void)latitudeLongitudeOverride:(void (^)(double, double))arg1;
 - (void)launchSequoia;
+- (void)manageAccountForPlan:(CTCellularPlanItem *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)mccMncOverride:(void (^)(long long, long long))arg1;
 - (void)openInternalUrlId:(long long)arg1;
 - (void)planItemsWithCompletion:(void (^)(NSArray *, NSError *))arg1;

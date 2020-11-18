@@ -11,7 +11,10 @@
 @interface BFFNavigationController : PSRootController
 {
     NSMutableArray *_observers;
+    BOOL _animating;
 }
+
+@property (readonly, nonatomic, getter=isAnimating) BOOL animating; // @synthesize animating=_animating;
 
 - (void).cxx_destruct;
 - (BOOL)_canShowTextServices;

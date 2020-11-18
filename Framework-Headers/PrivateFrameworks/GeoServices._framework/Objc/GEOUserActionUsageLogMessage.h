@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapLaunchDetails, GEOMapsServerMetadata, GEOPlaceActionDetails, GEORouteDetails, GEOTransitAppLaunchDetails, NSString;
+@class GEOMapLaunchDetails, GEOMapsServerMetadata, GEOPlaceActionDetails, GEORouteDetails, NSString;
 
 @interface GEOUserActionUsageLogMessage : PBCodable <NSCopying>
 {
@@ -18,7 +18,6 @@
     NSString *_providerId;
     GEORouteDetails *_routeDetails;
     GEOMapsServerMetadata *_serverMetadata;
-    GEOTransitAppLaunchDetails *_transitAppLaunchDetails;
     int _uiTarget;
     NSString *_usageEventKey;
     NSString *_usageEventValue;
@@ -34,7 +33,6 @@
 @property (readonly, nonatomic) BOOL hasProviderId;
 @property (readonly, nonatomic) BOOL hasRouteDetails;
 @property (readonly, nonatomic) BOOL hasServerMetadata;
-@property (readonly, nonatomic) BOOL hasTransitAppLaunchDetails;
 @property (nonatomic) BOOL hasUiTarget;
 @property (readonly, nonatomic) BOOL hasUsageEventKey;
 @property (readonly, nonatomic) BOOL hasUsageEventValue;
@@ -44,7 +42,6 @@
 @property (strong, nonatomic) NSString *providerId; // @synthesize providerId=_providerId;
 @property (strong, nonatomic) GEORouteDetails *routeDetails; // @synthesize routeDetails=_routeDetails;
 @property (strong, nonatomic) GEOMapsServerMetadata *serverMetadata; // @synthesize serverMetadata=_serverMetadata;
-@property (strong, nonatomic) GEOTransitAppLaunchDetails *transitAppLaunchDetails; // @synthesize transitAppLaunchDetails=_transitAppLaunchDetails;
 @property (nonatomic) int uiTarget; // @synthesize uiTarget=_uiTarget;
 @property (strong, nonatomic) NSString *usageEventKey; // @synthesize usageEventKey=_usageEventKey;
 @property (strong, nonatomic) NSString *usageEventValue; // @synthesize usageEventValue=_usageEventValue;

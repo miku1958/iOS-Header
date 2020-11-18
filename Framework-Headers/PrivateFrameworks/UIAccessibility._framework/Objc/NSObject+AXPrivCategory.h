@@ -24,7 +24,9 @@
 - (id)_accessibilityActiveKeyboard;
 - (id)_accessibilityActiveURL;
 - (void)_accessibilityAddMispellingsToAttributedString:(id)arg1;
+- (void)_accessibilityAddRecentlyActivatedBundleIdFromSwitcher:(id)arg1;
 - (void)_accessibilityAddTrait:(unsigned long long)arg1;
+- (id)_accessibilityAllContextDescriptors;
 - (id)_accessibilityAllCustomRotorItemsAtIndex:(long long)arg1;
 - (id)_accessibilityAllCustomRotorTitles;
 - (double)_accessibilityAllowedGeometryOverlap;
@@ -71,6 +73,7 @@
 - (id)_accessibilityContainingParentForOrdering;
 - (struct CGRect)_accessibilityContentFrame;
 - (struct CGPoint)_accessibilityContentOffset;
+- (id)_accessibilityContextDescriptors;
 - (unsigned int)_accessibilityContextId;
 - (id)_accessibilityControlDescendantWithAction:(SEL)arg1;
 - (id)_accessibilityControlDescendantWithTarget:(id)arg1;
@@ -96,6 +99,7 @@
 - (BOOL)_accessibilityDidSetOpaqueElementProvider;
 - (BOOL)_accessibilityDismissAlternativeKeyPicker;
 - (BOOL)_accessibilityDispatchKeyboardAction:(id)arg1;
+- (unsigned int)_accessibilityDisplayId;
 - (id)_accessibilityDisplayPathForScreenPath:(id)arg1;
 - (struct CGPoint)_accessibilityDisplayPointForSceneReferencePoint:(struct CGPoint)arg1;
 - (struct CGRect)_accessibilityDisplayRectForSceneReferenceRect:(struct CGRect)arg1;
@@ -166,6 +170,7 @@
 - (id)_accessibilityInputIdentifierForKeyboard;
 - (void)_accessibilityInsertText:(id)arg1 atPosition:(long long)arg2;
 - (BOOL)_accessibilityIsAccessibilityUIServer;
+- (BOOL)_accessibilityIsAlertContainer;
 - (BOOL)_accessibilityIsAwayAlertElement;
 - (BOOL)_accessibilityIsAwayAlertElementNew;
 - (BOOL)_accessibilityIsDescendantOfElement:(id)arg1;
@@ -281,10 +286,13 @@
 - (struct _NSRange)_accessibilityRangeForLineNumberAndColumn:(id)arg1;
 - (struct _NSRange)_accessibilityRangeForTextMarker:(id)arg1;
 - (id)_accessibilityRawIsSpeakThisElement;
+- (struct _NSRange)_accessibilityRawRangeForUITextRange:(id)arg1;
 - (void)_accessibilityRawSetIsSpeakThisElement:(id)arg1;
 - (BOOL)_accessibilityReadAllContinuesWithScroll;
 - (BOOL)_accessibilityReadAllOnFocus;
+- (id)_accessibilityRecentlyActivatedApplicationBundleIdentifiers;
 - (id)_accessibilityRemoteParent;
+- (void)_accessibilityRemoveRecentlyActivatedBundleIdFromSwitcher:(id)arg1;
 - (void)_accessibilityRemoveTrait:(unsigned long long)arg1;
 - (void)_accessibilityReplace;
 - (void)_accessibilityReplaceCharactersAtCursor:(unsigned long long)arg1 withString:(id)arg2;
@@ -338,6 +346,7 @@
 - (void)_accessibilitySetAnimationsInProgress:(BOOL)arg1;
 - (void)_accessibilitySetAuditIssueForType:(unsigned long long)arg1 description:(id)arg2 resolution:(id)arg3;
 - (void)_accessibilitySetCameraIrisOpen:(BOOL)arg1;
+- (void)_accessibilitySetContextDescriptors:(id)arg1;
 - (void)_accessibilitySetCurrentGesture:(id)arg1;
 - (void)_accessibilitySetCurrentWordInPageContext:(id)arg1;
 - (void)_accessibilitySetIsSpeakThisElement:(BOOL)arg1;
@@ -399,6 +408,8 @@
 - (struct CGRect)_accessibilityTextCursorFrame;
 - (id)_accessibilityTextFieldText;
 - (id)_accessibilityTextInputElement;
+- (id)_accessibilityTextInputElementRange;
+- (struct _NSRange)_accessibilityTextInputElementRangeAsNSRange;
 - (id)_accessibilityTextMarkerForPosition:(long long)arg1;
 - (id)_accessibilityTextMarkerRange;
 - (id)_accessibilityTextMarkerRangeForSelection;
@@ -415,6 +426,7 @@
 - (id)_accessibilityUpcomingRoadsForPoint:(struct CGPoint)arg1 forAngle:(float)arg2;
 - (void)_accessibilityUpdateContainerElementReferencesIfNeededForNewElements:(id)arg1;
 - (BOOL)_accessibilityUpdatesOnActivationAfterDelay;
+- (BOOL)_accessibilityUseWindowBoundsForOutOfBoundsChecking;
 - (id)_accessibilityUserTestingActionIdentifiers;
 - (id)_accessibilityUserTestingActions;
 - (id)_accessibilityUserTestingVisibleAncestor;

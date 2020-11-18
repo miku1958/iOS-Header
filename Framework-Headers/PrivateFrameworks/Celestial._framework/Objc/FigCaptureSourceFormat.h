@@ -36,6 +36,7 @@
 @property (readonly, getter=isHighResPhotoFormat) BOOL highResPhotoFormat;
 @property (readonly) CDStruct_1ef3fb1f highResStillImageDimensions;
 @property (readonly, getter=isHighResStillImageSupported) BOOL highResStillImageSupported;
+@property (readonly, getter=isIrisSupported) BOOL irisSupported;
 @property (readonly) BOOL isExternalFormat;
 @property (readonly) BOOL ispChromaNoiseReductionEnabled;
 @property (readonly) CDStruct_1b6d18a9 maxExposureDuration;

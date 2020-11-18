@@ -15,10 +15,8 @@
 @property (readonly, nonatomic) unsigned long long mergeStrategy; // @synthesize mergeStrategy=_mergeStrategy;
 @property (readonly, nonatomic) unsigned long long statisticsOptions; // @synthesize statisticsOptions=_statisticsOptions;
 
-- (id)_quantityType;
-- (void)_queue_fetchAndDeliverStatistics;
+- (id)_queue_fetchStatisticsWithError:(id *)arg1;
 - (void)_queue_start;
-- (id)_statisticsForDataType:(id)arg1 restrictedSourceIdentifier:(id)arg2 filter:(id)arg3 error:(id *)arg4;
 - (id)initWithQueryUUID:(id)arg1 dataObject:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 healthDaemon:(id)arg6;
 
 @end

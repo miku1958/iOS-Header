@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 - (void)createAndSeedLocalDatabase:(BOOL *)arg1;
 - (void)dealloc;
 - (id)initWithIOQueue:(id)arg1 registrationQueue:(id)arg2;
-- (void)setSeedingComplete;
+- (void)setSeedingComplete:(BOOL)arg1;
 
 @end
 

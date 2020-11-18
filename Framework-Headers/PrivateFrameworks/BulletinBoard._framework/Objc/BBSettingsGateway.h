@@ -38,6 +38,7 @@
 - (void)behaviorOverridesEffectiveWhileUnlockedChanged:(BOOL)arg1 source:(unsigned long long)arg2;
 - (void)dealloc;
 - (void)getBehaviorOverridesEffectiveWhileUnlockedWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getBehaviorOverridesEnabledAndEffectiveDateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getBehaviorOverridesEnabledWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getBehaviorOverridesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getPrivilegedSenderAddressBookGroupRecordIDAndNameWithCompletion:(CDUnknownBlockType)arg1;
@@ -56,6 +57,7 @@
 - (void)setActiveBehaviorOverrideTypesWithSourceChangeHandler:(CDUnknownBlockType)arg1;
 - (void)setBehaviorOverrideStateChangeHandler:(CDUnknownBlockType)arg1;
 - (void)setBehaviorOverrideStatus:(long long)arg1;
+- (void)setBehaviorOverrideStatus:(long long)arg1 effectiveDate:(id)arg2 source:(unsigned long long)arg3;
 - (void)setBehaviorOverrideStatus:(long long)arg1 source:(unsigned long long)arg2;
 - (void)setBehaviorOverrideStatusChangeHandler:(CDUnknownBlockType)arg1;
 - (void)setBehaviorOverrideStatusWithSourceChangeHandler:(CDUnknownBlockType)arg1;

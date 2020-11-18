@@ -29,6 +29,7 @@
 @property (copy) NSString *_CTDataConnectionServiceType; // @dynamic _CTDataConnectionServiceType;
 @property unsigned long long _TCPAdaptiveReadTimeout; // @dynamic _TCPAdaptiveReadTimeout;
 @property unsigned long long _TCPAdaptiveWriteTimeout; // @dynamic _TCPAdaptiveWriteTimeout;
+@property BOOL _allowTCPIOConnectionStreamTask; // @dynamic _allowTCPIOConnectionStreamTask;
 @property BOOL _allowsExpensiveAccess; // @dynamic _allowsExpensiveAccess;
 @property BOOL _allowsIndefiniteConnections; // @dynamic _allowsIndefiniteConnections;
 @property BOOL _allowsMultipathTCP; // @dynamic _allowsMultipathTCP;

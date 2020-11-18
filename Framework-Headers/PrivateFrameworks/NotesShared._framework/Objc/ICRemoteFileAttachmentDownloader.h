@@ -17,7 +17,7 @@
 @property (strong, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property (strong, nonatomic) NSMutableDictionary *operationsByAttachmentIdentifier; // @synthesize operationsByAttachmentIdentifier=_operationsByAttachmentIdentifier;
 
-+ (id)allUndownloadedLegacyAttachments;
++ (id)allUndownloadedLegacyAttachmentsInContext:(id)arg1;
 + (void)initializeDownloaderAfterDelayIfNecessary;
 + (BOOL)needsToDownloadRemoteFileAttachments;
 + (void)releaseSharedDownloaderIfPossible;
@@ -25,6 +25,7 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)downloadRemoteFileForAttachment:(id)arg1;
+- (void)downloadRemoteFileForAttachmentObjectID:(id)arg1;
 - (void)downloadUndownloadedLegacyAttachments;
 - (id)init;
 - (void)reachabilityChanged:(id)arg1;

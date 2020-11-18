@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface UIStatusBarForegroundView : UIView
 {
     BOOL _usesVerticalLayout;
-    BOOL _itemIsEnabled[34];
+    BOOL _itemIsEnabled[36];
     UIStatusBarLayoutManager *_layoutManagers[3];
     int _ignoreDataLevel;
     NSMutableArray *_actionAnimationStack;
@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)_setStatusBarData:(id)arg1 actions:(int)arg2 animated:(BOOL)arg3;
 - (BOOL)_tryToPlaceItem:(id)arg1 inItemArray:(id)arg2 layoutManager:(id)arg3 roomRemaining:(double *)arg4 allowSwap:(BOOL)arg5 swappedItem:(id *)arg6;
 - (void)dealloc;
+- (void)didMoveToWindow;
 - (double)edgePadding;
 - (BOOL)ignoringData;
 - (id)initWithFrame:(struct CGRect)arg1 foregroundStyle:(id)arg2 usesVerticalLayout:(BOOL)arg3;

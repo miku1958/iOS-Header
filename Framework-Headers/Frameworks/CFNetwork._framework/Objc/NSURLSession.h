@@ -129,6 +129,7 @@
 - (BOOL)isBackgroundSession;
 - (void)remote_externalAuthenticator_task:(id)arg1 getAuthHeadersForResponse:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)resetWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (BOOL)shouldUseStreamTask;
 - (id)streamTaskWithHostName:(id)arg1 port:(long long)arg2;
 - (id)streamTaskWithNetService:(id)arg1;
 - (id)uploadTaskWithRequest:(id)arg1 fromData:(id)arg2;

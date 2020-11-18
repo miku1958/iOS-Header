@@ -18,6 +18,7 @@
     SKUIBuyButtonDescriptor *_buyButtonDescriptor;
     NSString *_confirmationText;
     long long _dataPlaybackId;
+    BOOL _disabledButSelectable;
     BOOL _enabled;
     long long _itemIdentifier;
     NSString *_nonToggledText;
@@ -49,6 +50,7 @@
 @property (readonly, nonatomic) SKUIBuyButtonDescriptor *buyButtonDescriptor;
 @property (readonly, nonatomic) NSString *confirmationText; // @synthesize confirmationText=_confirmationText;
 @property (readonly, nonatomic) long long dataPlaybackId; // @synthesize dataPlaybackId=_dataPlaybackId;
+@property (readonly, nonatomic, getter=isDisabledButSelectable) BOOL disabledButSelectable; // @synthesize disabledButSelectable=_disabledButSelectable;
 @property (readonly, nonatomic) long long itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 @property (readonly, nonatomic) NSString *nonToggledText; // @synthesize nonToggledText=_nonToggledText;
 @property (readonly, nonatomic) NSString *playItemIdentifier; // @synthesize playItemIdentifier=_playItemIdentifier;

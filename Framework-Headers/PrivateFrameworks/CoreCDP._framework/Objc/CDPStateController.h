@@ -28,6 +28,7 @@
 - (void)handleCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleURLActionWithInfo:(id)arg1;
 - (id)initWithContext:(id)arg1;
+- (void)invalidate;
 - (void)localSecretChangedTo:(id)arg1 secretType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)repairCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
 

@@ -33,7 +33,6 @@
 + (id)resourceString:(id)arg1 material:(int)arg2 size:(unsigned long long)arg3 forAttributes:(unsigned long long)arg4;
 + (id)sharedDeviceController;
 + (id)sizeDescription:(unsigned long long)arg1;
-+ (BOOL)testZeusMaterial;
 - (void).cxx_destruct;
 - (void)_populateMaterialDetailsWithDMinProperities:(id)arg1;
 - (id)attributesDescription;

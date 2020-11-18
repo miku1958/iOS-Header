@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     BOOL _shouldShowLeaveNowOption;
     BOOL _eventHasTravelTime;
     EKUIAlarm *_alarm;
+    EKUIAlarm *_previousAlarm;
     EKCalendar *_calendar;
     unsigned long long _alarmIndex;
 }
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL eventHasTravelTime; // @synthesize eventHasTravelTime=_eventHasTravelTime;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long presetIdentifier;
+@property (strong, nonatomic) EKUIAlarm *previousAlarm; // @synthesize previousAlarm=_previousAlarm;
 @property (nonatomic) BOOL shouldAllowAlarmsTriggeringAfterStartDate; // @synthesize shouldAllowAlarmsTriggeringAfterStartDate=_shouldAllowAlarmsTriggeringAfterStartDate;
 @property (nonatomic) BOOL shouldShowLeaveNowOption; // @synthesize shouldShowLeaveNowOption=_shouldShowLeaveNowOption;
 @property (readonly) Class superclass;

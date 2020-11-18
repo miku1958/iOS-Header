@@ -8,16 +8,20 @@
 
 #import <WatchConnectivity/NSXPCConnectionDelegate-Protocol.h>
 #import <WatchConnectivity/WCXPCManagerClientProtocol-Protocol.h>
+#import <WatchConnectivity/WCXPCManagerDaemonProtocol-Protocol.h>
 
 @class NSString, NSXPCConnection;
 @protocol OS_dispatch_queue, WCXPCManagerDelegate;
 
-@interface WCXPCManager : NSObject <NSXPCConnectionDelegate, WCXPCManagerClientProtocol>
+@interface WCXPCManager : NSObject <NSXPCConnectionDelegate, WCXPCManagerClientProtocol, WCXPCManagerDaemonProtocol>
 {
     BOOL _connectionInvalidated;
+    BOOL _reconnectFailed;
+    int _listenerResumedToken;
     NSXPCConnection *_connection;
     NSObject<WCXPCManagerDelegate> *_delegate;
     NSObject<OS_dispatch_queue> *_workQueue;
+    unsigned long long _reconnectRetryCount;
 }
 
 @property (readonly) NSXPCConnection *connection; // @synthesize connection=_connection;
@@ -26,6 +30,9 @@
 @property (weak) NSObject<WCXPCManagerDelegate> *delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property int listenerResumedToken; // @synthesize listenerResumedToken=_listenerResumedToken;
+@property BOOL reconnectFailed; // @synthesize reconnectFailed=_reconnectFailed;
+@property unsigned long long reconnectRetryCount; // @synthesize reconnectRetryCount=_reconnectRetryCount;
 @property (readonly) Class superclass;
 @property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
@@ -34,34 +41,36 @@
 + (void)initialize;
 + (id)sharedManager;
 - (void).cxx_destruct;
-- (void)acknowledgeFileIndexWithIdentifier:(id)arg1;
-- (void)acknowledgeFileResultIndexWithIdentifier:(id)arg1;
-- (void)acknowledgeUserInfoIndexWithIdentifier:(id)arg1;
-- (void)acknowledgeUserInfoResultIndexWithIdentifier:(id)arg1;
+- (void)acknowledgeFileIndexWithIdentifier:(id)arg1 clientPairingID:(id)arg2;
+- (void)acknowledgeFileResultIndexWithIdentifier:(id)arg1 clientPairingID:(id)arg2;
+- (void)acknowledgeUserInfoIndexWithIdentifier:(id)arg1 clientPairingID:(id)arg2;
+- (void)acknowledgeUserInfoResultIndexWithIdentifier:(id)arg1 clientPairingID:(id)arg2;
 - (void)cancelAllOutstandingMessages;
 - (void)cancelSendWithIdentifier:(id)arg1;
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(BOOL)arg3;
-- (void)handleApplicationContext:(id)arg1;
-- (void)handleFileTransferFinishedWithIdentifier:(id)arg1 error:(id)arg2;
+- (void)handleActiveDeviceSwitchStarted;
+- (void)handleApplicationContextWithPairingID:(id)arg1;
+- (void)handleFileResultWithPairingID:(id)arg1;
+- (void)handleIncomingFileWithPairingID:(id)arg1;
+- (void)handleIncomingUserInfoWithPairingID:(id)arg1;
 - (void)handleInterruptedConnection;
 - (void)handleMessageSendingAllowed;
 - (void)handleRequest:(id)arg1;
 - (void)handleResponse:(id)arg1;
 - (void)handleSentMessageWithIdentifier:(id)arg1 error:(id)arg2;
-- (void)handleSessionFile:(id)arg1;
 - (void)handleSessionStateChanged:(id)arg1;
-- (void)handleSessionStateChanged:(id)arg1 forceReachableChanged:(BOOL)arg2;
-- (void)handleUserInfoTransfer:(id)arg1;
-- (void)handleUserInfoTransferFinishedWithIdentifier:(id)arg1 error:(id)arg2;
+- (void)handleUserInfoResultWithPairingID:(id)arg1;
 - (id)init;
 - (void)invalidateConnection;
 - (void)onqueue_reconnect;
-- (void)retrieveSessionStateWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)sendMessage:(id)arg1 acceptanceHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)onqueue_retryConnectIfNecessary;
+- (void)sendMessage:(id)arg1 clientPairingID:(id)arg2 acceptanceHandler:(CDUnknownBlockType)arg3;
+- (void)sendMessage:(id)arg1 clientPairingID:(id)arg2 acceptanceHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4;
+- (void)sessionReadyForInitialStateForClientPairingID:(id)arg1 supportsActiveDeviceSwitch:(BOOL)arg2 withErrorHandler:(CDUnknownBlockType)arg3;
 - (void)setupConnection;
-- (void)transferFile:(id)arg1 sandboxToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)transferUserInfo:(id)arg1 withURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)updateApplicationContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)transferFile:(id)arg1 sandboxToken:(id)arg2 clientPairingID:(id)arg3 errorHandler:(CDUnknownBlockType)arg4;
+- (void)transferUserInfo:(id)arg1 withURL:(id)arg2 clientPairingID:(id)arg3 errorHandler:(CDUnknownBlockType)arg4;
+- (void)updateApplicationContext:(id)arg1 clientPairingID:(id)arg2 errorHandler:(CDUnknownBlockType)arg3;
 
 @end
 

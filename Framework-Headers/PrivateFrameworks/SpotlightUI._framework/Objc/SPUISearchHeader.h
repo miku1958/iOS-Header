@@ -40,6 +40,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isDictationAvailable;
 - (void)layoutSubviews;
+- (id)nextResponder;
 - (void)setCancelButtonHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setIsCapturing:(BOOL)arg1;
 - (BOOL)shouldHideCancel;

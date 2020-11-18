@@ -30,7 +30,7 @@
 @property (strong, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property (readonly, nonatomic) NSString *viewControllerClassName; // @synthesize viewControllerClassName=_vcClassName;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;

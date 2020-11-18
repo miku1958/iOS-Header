@@ -82,6 +82,8 @@
 @property (readonly, nonatomic) int scannerActivateBehavior;
 @property (nonatomic) struct _NSRange selectedTextRange;
 @property (readonly, nonatomic) NSDictionary *semanticContext;
+@property (readonly, nonatomic) NSArray *siriContentElementsWithSemanticContext;
+@property (readonly, nonatomic) NSArray *siriContentNativeFocusableElements;
 @property (readonly, nonatomic) AXElement *springBoardApplication;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *supportedGestures;
@@ -178,6 +180,8 @@
 - (void)sendUserEventOccurred;
 - (BOOL)setNativeFocus;
 - (BOOL)supportsAction:(int)arg1;
+- (BOOL)systemPressTVPlayPauseButton;
+- (BOOL)systemPressTVSelectButton;
 - (BOOL)zoomIn;
 - (BOOL)zoomOut;
 

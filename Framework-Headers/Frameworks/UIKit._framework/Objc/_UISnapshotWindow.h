@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)_isSystemWindow;
+- (BOOL)_canActAsKeyWindowForScreen:(id)arg1;
 - (BOOL)_canBecomeKeyWindow;
 - (BOOL)_isConstrainedByScreenJail;
 - (BOOL)_isSettingFirstResponder;

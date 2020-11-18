@@ -10,15 +10,16 @@
 
 @interface MCMDMPayload : MCPayload
 {
+    BOOL _useDevelopmentAPNS;
+    BOOL _signMessage;
+    BOOL _checkOutWhenRemoved;
+    int _accessRights;
     NSString *_identityUUID;
     NSData *_identityPersistentID;
-    BOOL _useDevelopmentAPNS;
     NSString *_topic;
     NSString *_serverURLString;
     NSString *_checkInURLString;
-    int _accessRights;
-    BOOL _signMessage;
-    BOOL _checkOutWhenRemoved;
+    NSArray *_serverCapabilities;
     NSNumber *_useDevelopmentAPNSNum;
     NSNumber *_signMessageNum;
     NSNumber *_checkOutWhenRemovedNum;
@@ -31,6 +32,7 @@
 @property (strong, nonatomic) NSData *identityPersistentID; // @synthesize identityPersistentID=_identityPersistentID;
 @property (readonly, strong, nonatomic) NSString *identityUUID; // @synthesize identityUUID=_identityUUID;
 @property (readonly, strong, nonatomic) NSArray *localizedAccessRightDescriptions;
+@property (readonly, nonatomic) NSArray *serverCapabilities; // @synthesize serverCapabilities=_serverCapabilities;
 @property (readonly, strong, nonatomic) NSString *serverURLString; // @synthesize serverURLString=_serverURLString;
 @property (readonly, nonatomic) BOOL signMessage; // @synthesize signMessage=_signMessage;
 @property (readonly, nonatomic) NSNumber *signMessageNum; // @synthesize signMessageNum=_signMessageNum;

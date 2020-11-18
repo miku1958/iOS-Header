@@ -6,11 +6,11 @@
 
 #import <FrontBoardServices/FBSWorkspaceClientDelegate-Protocol.h>
 
-@class FBSUIApplicationLaunchEvent, FBSWorkspaceClient;
+@class FBSUIApplicationExitEvent, FBSUIApplicationLaunchEvent, FBSWorkspaceClient;
 
 @protocol FBSUIApplicationWorkspaceClientDelegate <FBSWorkspaceClientDelegate>
+- (void)client:(FBSWorkspaceClient *)arg1 handleExit:(FBSUIApplicationExitEvent *)arg2;
 - (void)client:(FBSWorkspaceClient *)arg1 handleLaunch:(FBSUIApplicationLaunchEvent *)arg2 withCompletion:(void (^)(FBSUIApplicationLaunchResponseEvent *))arg3;
 - (void)clientHandleAssertionExpirationImminent:(FBSWorkspaceClient *)arg1;
-- (void)clientHandleExit:(FBSWorkspaceClient *)arg1;
 @end
 

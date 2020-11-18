@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+@property (readonly, nonatomic) BOOL allowsDrawingOutsideTabBar;
 @property (readonly, nonatomic) double blinkImagePadding;
 @property (readonly, nonatomic) double blinkLeftBadgePadding;
 @property (readonly, nonatomic) double blinkMaxBadgeWidth;

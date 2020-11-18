@@ -7,17 +7,23 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (HealthKit)
++ (BOOL)hk_assignError:(id *)arg1 code:(long long)arg2 description:(id)arg3;
++ (BOOL)hk_assignError:(id *)arg1 code:(long long)arg2 description:(id)arg3 underlyingError:(id)arg4;
++ (BOOL)hk_assignError:(id *)arg1 code:(long long)arg2 format:(id)arg3;
 + (id)hk_error:(long long)arg1 description:(id)arg2;
 + (id)hk_error:(long long)arg1 description:(id)arg2 underlyingError:(id)arg3;
 + (id)hk_error:(long long)arg1 format:(id)arg2;
++ (id)hk_protectedDataInaccessibilityError;
 - (BOOL)hk_isAuthorizationDeniedError;
 - (BOOL)hk_isAuthorizationNotDeterminedError;
 - (BOOL)hk_isDatabaseAccessibilityError;
-- (BOOL)hk_isDeviceNotFoundError;
 - (BOOL)hk_isHealthKitError;
 - (BOOL)hk_isInternalFailureError;
 - (BOOL)hk_isInvalidArgumentError;
+- (BOOL)hk_isServiceDeviceNotFoundError;
+- (BOOL)hk_isTimeoutError;
 - (void)hk_logWithDatabaseAccessibilityAtLogLevel:(int)arg1 format:(id)arg2;
 - (void)hk_logWithoutDatabaseAccessibiityErrors:(id)arg1;
+- (id)hk_underlyingErrorWithDomain:(id)arg1;
 @end
 

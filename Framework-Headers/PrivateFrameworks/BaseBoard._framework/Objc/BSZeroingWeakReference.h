@@ -6,12 +6,9 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSString;
-
 @interface BSZeroingWeakReference : NSObject
 {
     id _object;
-    NSString *_debug;
     Class _objectClass;
     unsigned long long _objectAddress;
 }

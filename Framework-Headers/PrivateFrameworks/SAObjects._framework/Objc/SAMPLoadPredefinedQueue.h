@@ -6,12 +6,15 @@
 
 #import <SAObjects/SADomainCommand.h>
 
+@class NSNumber;
+
 @interface SAMPLoadPredefinedQueue : SADomainCommand
 {
 }
 
 @property (nonatomic) int mediaItemType;
 @property (nonatomic) BOOL shouldShuffle;
+@property (copy, nonatomic) NSNumber *startPlaying;
 
 + (id)loadPredefinedQueue;
 + (id)loadPredefinedQueueWithDictionary:(id)arg1 context:(id)arg2;

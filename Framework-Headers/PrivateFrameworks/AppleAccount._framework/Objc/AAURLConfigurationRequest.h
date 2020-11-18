@@ -11,6 +11,7 @@
 }
 
 + (Class)responseClass;
+- (id)urlRequest;
 - (id)urlString;
 
 @end

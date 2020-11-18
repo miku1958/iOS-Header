@@ -18,13 +18,13 @@
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
-+ (id)defaultWorkspace;
 - (void).cxx_destruct;
 - (void)_connectionInvalidated;
 - (void)_loadConnectionIfNeeded;
 - (id)_workspaceServiceWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)getWorkspaceInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
+- (id)workspaceInfo:(id *)arg1;
 
 @end
 

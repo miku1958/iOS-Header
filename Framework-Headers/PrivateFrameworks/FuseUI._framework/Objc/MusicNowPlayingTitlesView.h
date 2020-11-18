@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UIControl.h>
 
 @class NSArray, NSMutableArray;
 
-@interface MusicNowPlayingTitlesView : UIView
+@interface MusicNowPlayingTitlesView : UIControl
 {
     NSMutableArray *_labels;
     NSMutableArray *_marqueeViews;
@@ -31,11 +31,14 @@
 - (void)_applyMarqueeFade;
 - (double)_baselineOffsetForAttributedText:(id)arg1 returningFont:(out id *)arg2;
 - (void)_layoutLabel:(id)arg1 withMarqueeView:(id)arg2 previousLabelBaselineOffsetFromBottom:(double)arg3 previousMarqueeViewFrame:(struct CGRect)arg4;
+- (void)_reloadVisualHighlightStateAnimated:(BOOL)arg1;
 - (void)_setupLabel:(inout id *)arg1 marqueeView:(inout id *)arg2 withAttributedText:(id)arg3;
 - (void)_updateViewsIfNeeded;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)resetMarqueePosition;
+- (void)setHighlighted:(BOOL)arg1;
 - (void)setMarqueeEnabled:(BOOL)arg1 withOptions:(long long)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

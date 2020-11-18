@@ -6,10 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSCoding-Protocol.h>
 #import <Foundation/NSCopying-Protocol.h>
+#import <Foundation/NSSecureCoding-Protocol.h>
 
-@interface NSTextCheckingResult : NSObject <NSCopying, NSCoding>
+@interface NSTextCheckingResult : NSObject <NSCopying, NSSecureCoding>
 {
 }
 
@@ -31,6 +31,7 @@
 + (id)regularExpressionCheckingResultWithRanges:(struct _NSRange *)arg1 count:(unsigned long long)arg2 regularExpression:(id)arg3;
 + (id)replacementCheckingResultWithRange:(struct _NSRange)arg1 replacementString:(id)arg2;
 + (id)spellCheckingResultWithRange:(struct _NSRange)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)transitInformationCheckingResultWithRange:(struct _NSRange)arg1 components:(id)arg2;
 - (id)URL;
 - (BOOL)_adjustRangesWithOffset:(long long)arg1;

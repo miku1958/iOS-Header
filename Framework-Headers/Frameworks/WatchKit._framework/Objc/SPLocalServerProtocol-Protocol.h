@@ -20,7 +20,6 @@
 - (void)fetchProvisioningProfilesForApplicationWithBundleID:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)fetchProvisioningProfilesWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)fetchWatchAppBundleIDForCompanionAppBundleID:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
-- (void)fetchWatchAppBundleURLWithinCompanionAppWithIdentifier:(NSString *)arg1 completion:(void (^)(NSURL *, NSError *))arg2;
 - (void)fetchWatchAppBundleURLWithinCompanionAppWithWatchAppIdentifier:(NSString *)arg1 completion:(void (^)(NSURL *, NSError *))arg2;
 - (void)getAlwaysInstallWithCompletion:(void (^)(BOOL))arg1;
 - (void)getCompanionExtensionPIDForCompanionAppWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *, int))arg2;

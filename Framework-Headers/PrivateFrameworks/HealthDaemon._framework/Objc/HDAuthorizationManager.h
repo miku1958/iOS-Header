@@ -36,6 +36,7 @@
 
 - (void).cxx_destruct;
 - (BOOL)_needsAuthorizationForRequestGroup:(id)arg1 overwriteAuthorizationStatus:(BOOL)arg2 error:(id *)arg3;
+- (void)_performNanoSyncImmediatelyWithReason:(id)arg1;
 - (void)_queue_beginAuthorizationDelegateTransactionWithSessionIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_cancelAuthorizationRequestsWithIdentifiers:(id)arg1;
 - (void)_queue_endAuthorizationDelegateTransactionWithSessionIdentifier:(id)arg1 error:(id)arg2;

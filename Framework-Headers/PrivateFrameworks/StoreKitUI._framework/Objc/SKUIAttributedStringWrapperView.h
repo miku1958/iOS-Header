@@ -14,6 +14,7 @@
 @property (readonly, nonatomic) SKUIAttributedStringView *delegateView; // @synthesize delegateView=_delegateView;
 
 - (void).cxx_destruct;
+- (long long)badgePlacement;
 - (double)baselineOffset;
 - (double)firstBaselineOffset;
 - (long long)firstLineTopInset;
@@ -21,6 +22,7 @@
 - (id)layout;
 - (void)layoutSubviews;
 - (id)requiredBadges;
+- (void)setBadgePlacement:(long long)arg1;
 - (void)setFirstLineTopInset:(long long)arg1;
 - (void)setLayout:(id)arg1;
 - (void)setRequiredBadges:(id)arg1;

@@ -73,7 +73,6 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)sensitiveConfigureForMode:(long long)arg1;
 - (void)setBackgroundStyle:(long long)arg1 animated:(BOOL)arg2;
 - (void)setStyle:(long long)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldHideElapsedTimeViewForMode:(long long)arg1 device:(long long)arg2;

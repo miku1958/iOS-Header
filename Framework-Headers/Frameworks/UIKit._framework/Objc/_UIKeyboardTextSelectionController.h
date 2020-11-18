@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _hasInteractionAssistant;
     BOOL _hasSelectionInteractionAssistant;
+    BOOL _hasTextInputView;
     UITextPosition *_cursorPosition;
     long long _selectionGranularity;
     UIResponder<UITextInput> *_inputDelegate;

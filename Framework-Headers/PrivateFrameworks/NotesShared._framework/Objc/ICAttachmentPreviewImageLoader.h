@@ -6,33 +6,36 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSURL, UIImage;
+@class NSArray, NSData, UIImage;
 
 @interface ICAttachmentPreviewImageLoader : NSObject
 {
+    BOOL _delayLoadingURLs;
     CDUnknownBlockType _imageDidLoadBlock;
     struct UIImage *_image;
     struct UIImage *_originalImage;
     struct UIImage *_orientedImage;
     NSData *_data;
     double _scale;
-    NSURL *_previewImageURL;
+    NSArray *_previewImageURLs;
     long long _imageOrientation;
 }
 
 @property (strong, nonatomic) NSData *data; // @synthesize data=_data;
+@property (nonatomic) BOOL delayLoadingURLs; // @synthesize delayLoadingURLs=_delayLoadingURLs;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (copy, nonatomic) CDUnknownBlockType imageDidLoadBlock; // @synthesize imageDidLoadBlock=_imageDidLoadBlock;
 @property (nonatomic) long long imageOrientation; // @synthesize imageOrientation=_imageOrientation;
 @property (strong, nonatomic) UIImage *orientedImage; // @synthesize orientedImage=_orientedImage;
 @property (strong, nonatomic) UIImage *originalImage; // @synthesize originalImage=_originalImage;
-@property (copy, nonatomic) NSURL *previewImageURL; // @synthesize previewImageURL=_previewImageURL;
+@property (copy, nonatomic) NSArray *previewImageURLs; // @synthesize previewImageURLs=_previewImageURLs;
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 
 + (struct UIImage *)orientedImage:(struct UIImage *)arg1 withTransform:(struct CGAffineTransform)arg2 background:(int)arg3 backgroundTransform:(struct CGAffineTransform)arg4;
 - (void).cxx_destruct;
 - (BOOL)canLoadImage;
-- (id)initWithOriginalImage:(struct UIImage *)arg1 orientedImage:(struct UIImage *)arg2 data:(id)arg3 scale:(double)arg4 previewImageURL:(id)arg5;
+- (id)initWithOriginalImage:(struct UIImage *)arg1 orientedImage:(struct UIImage *)arg2 data:(id)arg3 scale:(double)arg4 previewImageURLs:(id)arg5 delayLoadingURLs:(BOOL)arg6;
+- (void)loadData;
 - (struct UIImage *)loadImage;
 - (struct UIImage *)loadOrientedImage;
 

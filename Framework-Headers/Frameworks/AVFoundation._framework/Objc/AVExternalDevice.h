@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) BOOL OEMIconVisible;
 @property (readonly, nonatomic) NSArray *OEMIcons;
 @property (nonatomic) id<AVExternalDeviceDelegate> delegate;
+@property (readonly, nonatomic) long long electronicTollCollection;
 @property (readonly, nonatomic) NSArray *externalDeviceHIDs;
 @property (readonly, nonatomic) BOOL limitedUI;
 @property (readonly, nonatomic) NSArray *limitedUIElements;
@@ -34,6 +35,7 @@
 @property (readonly, nonatomic) NSArray *screenIDs;
 @property (readonly, nonatomic) NSDictionary *screenInputCapabilities;
 @property (readonly, nonatomic) NSDictionary *screenPrimaryInputDevices;
+@property (readonly, nonatomic) NSArray *supportedFeatures;
 @property (readonly, nonatomic) long long transportType;
 
 + (id)currentCarPlayExternalDevice;
@@ -52,8 +54,10 @@
 - (id)initWithCurrentCarPlayExternalDevice;
 - (id)initWithFigEndpoint:(struct OpaqueFigEndpoint *)arg1;
 - (void)requestCarUI;
+- (void)requestCarUIForURL:(id)arg1;
 - (id)requestTurnByTurnNavigationOwnership;
 - (void)takeScreenForClient:(id)arg1 reason:(id)arg2;
+- (void)takeScreenForConnection;
 
 @end
 

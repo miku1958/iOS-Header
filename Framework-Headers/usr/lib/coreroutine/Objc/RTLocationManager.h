@@ -21,6 +21,7 @@
     BOOL _userOptedIntoGEOAddressCorrection;
     BOOL _persistingLocations;
     BOOL _enabled;
+    BOOL _supported;
     CLLocationManager *_locationManager;
     CLLocationManagerRoutine *_locationManagerRoutine;
     CLLocation *_lastLocation;
@@ -47,6 +48,7 @@
 @property (nonatomic) BOOL persistingLocations; // @synthesize persistingLocations=_persistingLocations;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *stopUpdatingLocationTimer; // @synthesize stopUpdatingLocationTimer=_stopUpdatingLocationTimer;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL supported; // @synthesize supported=_supported;
 @property (nonatomic) BOOL updating; // @synthesize updating=_updating;
 @property (nonatomic) BOOL userOptedIntoGEOAddressCorrection; // @synthesize userOptedIntoGEOAddressCorrection=_userOptedIntoGEOAddressCorrection;
 

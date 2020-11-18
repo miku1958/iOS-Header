@@ -12,6 +12,7 @@
 {
 }
 
+@property (readonly, nonatomic, getter=isITunesStream) BOOL ITunesStream;
 @property (readonly, strong, nonatomic) NSURL *certificateURL;
 @property (readonly, strong, nonatomic) NSURL *contentURL;
 @property (readonly, strong, nonatomic) NSURL *keyServerURL;

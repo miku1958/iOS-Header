@@ -6,14 +6,17 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <FuseUI/MPURatingControlDelegate-Protocol.h>
 #import <FuseUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class MPAVItem, NSString, UITextView, _UIBackdropView;
+@class MPAVItem, MusicNowPlayingRatingControl, NSString, UITextView, UIView, _UIBackdropView;
 
-@interface MusicNowPlayingLyricsViewController : UIViewController <UIViewControllerTransitioningDelegate>
+@interface MusicNowPlayingLyricsViewController : UIViewController <MPURatingControlDelegate, UIViewControllerTransitioningDelegate>
 {
     _UIBackdropView *_backdropView;
     UITextView *_textView;
+    MusicNowPlayingRatingControl *_ratingControl;
+    UIView *_hairlineView;
     MPAVItem *_currentItem;
 }
 
@@ -21,7 +24,9 @@
 @property (strong, nonatomic) MPAVItem *currentItem; // @synthesize currentItem=_currentItem;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) UIView *hairlineView; // @synthesize hairlineView=_hairlineView;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) MusicNowPlayingRatingControl *ratingControl; // @synthesize ratingControl=_ratingControl;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UITextView *textView; // @synthesize textView=_textView;
 
@@ -30,6 +35,7 @@
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)ratingDidChangeForRatingControl:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 

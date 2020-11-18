@@ -4,27 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoard/NSObject-Protocol.h>
+#import <FrontBoard/FBApplicationDataStoreRepositoryReading-Protocol.h>
+#import <FrontBoard/FBApplicationDataStoreRepositoryWriting-Protocol.h>
 
-@class NSArray, NSString;
 @protocol FBApplicationDataStoreRepositoryDelegate;
 
-@protocol FBApplicationDataStoreRepository <NSObject>
+@protocol FBApplicationDataStoreRepository <FBApplicationDataStoreRepositoryReading, FBApplicationDataStoreRepositoryWriting>
 
 @property (nonatomic) id<FBApplicationDataStoreRepositoryDelegate> delegate;
 
-- (NSArray *)applicationIdentifiersWithState;
-- (void)beginBatchedUpdate;
-- (BOOL)containsKey:(NSString *)arg1 forApplication:(NSString *)arg2;
-- (void)endBatchedUpdate;
-- (void)flushSynchronously;
-- (NSArray *)keysForApplication:(NSString *)arg1;
-- (id)objectForKey:(NSString *)arg1 forApplication:(NSString *)arg2;
-- (void)objectForKey:(NSString *)arg1 forApplication:(NSString *)arg2 withResult:(void (^)(id))arg3;
-- (void)objectForKeys:(NSArray *)arg1 forAllApplicationsWithResult:(void (^)(id))arg2;
-- (void)removeAllObjectsForApplication:(NSString *)arg1;
-- (void)removeObjectForKey:(NSString *)arg1 forApplication:(NSString *)arg2;
-- (void)removeObjectsForKeys:(NSArray *)arg1 forApplication:(NSString *)arg2;
-- (void)setObject:(id)arg1 forKey:(NSString *)arg2 forApplication:(NSString *)arg3;
 @end
 

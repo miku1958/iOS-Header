@@ -14,6 +14,7 @@
     NSString *_replacementString;
 }
 
++ (BOOL)supportsSecureCoding;
 - (BOOL)_adjustRangesWithOffset:(long long)arg1;
 - (void)dealloc;
 - (id)description;

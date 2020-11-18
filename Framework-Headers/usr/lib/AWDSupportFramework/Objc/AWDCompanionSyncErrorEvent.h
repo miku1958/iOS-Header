@@ -32,11 +32,13 @@
 @property (strong, nonatomic) NSString *service; // @synthesize service=_service;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 
+- (int)StringAsError:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)errorAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

@@ -10,11 +10,13 @@
 
 @interface NEVPNApp : NEVPN
 {
+    BOOL _noRestriction;
     NSArray *_appRules;
     long long _tunnelType;
 }
 
 @property (copy) NSArray *appRules; // @synthesize appRules=_appRules;
+@property BOOL noRestriction; // @synthesize noRestriction=_noRestriction;
 @property long long tunnelType; // @synthesize tunnelType=_tunnelType;
 
 + (BOOL)supportsSecureCoding;

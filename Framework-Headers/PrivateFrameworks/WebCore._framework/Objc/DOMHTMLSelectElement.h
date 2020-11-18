@@ -29,6 +29,7 @@
 - (void)_activateItemAtIndex:(int)arg1 allowMultipleSelection:(BOOL)arg2;
 - (void)add:(id)arg1:(id)arg2;
 - (void)add:(id)arg1 before:(id)arg2;
+- (id)autocomplete;
 - (BOOL)checkValidity;
 - (unsigned int)completeLength;
 - (id)item:(unsigned int)arg1;
@@ -38,6 +39,7 @@
 - (void)remove:(int)arg1;
 - (BOOL)required;
 - (id)selectedOptions;
+- (void)setAutocomplete:(id)arg1;
 - (void)setCustomValidity:(id)arg1;
 - (void)setRequired:(BOOL)arg1;
 - (int)structuralComplexityContribution;

@@ -6,17 +6,17 @@
 
 #import <UIKit/UIView.h>
 
-#import <UIKit/_UIKBHandRestRecognizerDelegate-Protocol.h>
+#import <UIKit/_UIKBRTRecognizerDelegate-Protocol.h>
 #import <UIKit/_UIScreenEdgePanRecognizerDelegate-Protocol.h>
 
-@class NSMapTable, NSMutableArray, NSString, NSUUID, UIKBScreenTraits, UIKBTextEditingTraits, UIKeyboardTaskQueue, UITextInputTraits, _UIKBHandRestRecognizer, _UIScreenEdgePanRecognizer;
+@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSUUID, UIKBCadenceMonitor, UIKBScreenTraits, UIKBTextEditingTraits, UIKeyboardTaskQueue, UITextInputTraits, _UIKBRTRecognizer, _UIScreenEdgePanRecognizer;
 
-@interface UIKeyboardLayout : UIView <_UIScreenEdgePanRecognizerDelegate, _UIKBHandRestRecognizerDelegate>
+@interface UIKeyboardLayout : UIView <_UIScreenEdgePanRecognizerDelegate, _UIKBRTRecognizerDelegate>
 {
     UITextInputTraits *_inputTraits;
     UIKBScreenTraits *_screenTraits;
     UIKBTextEditingTraits *_textEditingTraits;
-    NSMutableArray *_uncommittedTouches;
+    NSMutableArray *_uncommittedTouchUUIDs;
     NSUUID *_activeTouchUUID;
     NSUUID *_shiftKeyTouchUUID;
     unsigned long long _cursorLocation;
@@ -25,27 +25,30 @@
     BOOL hideKeysUnderIndicator;
     BOOL _hasPreferredHeight;
     BOOL _isExecutingDeferredTouchTasks;
+    BOOL _listeningForWillChange;
+    BOOL _listeningForDidChange;
     double _preferredHeight;
     _UIScreenEdgePanRecognizer *_screenEdgePanRecognizer;
     CDUnknownBlockType _deferredTouchDownTask;
     CDUnknownBlockType _deferredTouchMovedTask;
-    _UIKBHandRestRecognizer *_handRestRecognizer;
+    _UIKBRTRecognizer *_handRestRecognizer;
+    UIKBCadenceMonitor *_cadenceMonitor;
     double lastTouchUpTime;
     double _timestampOfLastTouchesEnded;
-    NSMutableArray *_deferredTouches;
-    NSMapTable *_deferredTouchTasks;
+    NSMutableDictionary *_deferredTouchTaskLists;
+    NSMutableSet *_touchIgnoredUUIDSet;
 }
 
 @property (strong, nonatomic) NSUUID *activeTouchUUID; // @synthesize activeTouchUUID=_activeTouchUUID;
+@property (strong, nonatomic) UIKBCadenceMonitor *cadenceMonitor; // @synthesize cadenceMonitor=_cadenceMonitor;
 @property (nonatomic) unsigned long long cursorLocation; // @synthesize cursorLocation=_cursorLocation;
 @property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) CDUnknownBlockType deferredTouchDownTask; // @synthesize deferredTouchDownTask=_deferredTouchDownTask;
 @property (copy, nonatomic) CDUnknownBlockType deferredTouchMovedTask; // @synthesize deferredTouchMovedTask=_deferredTouchMovedTask;
-@property (strong, nonatomic) NSMapTable *deferredTouchTasks; // @synthesize deferredTouchTasks=_deferredTouchTasks;
-@property (strong, nonatomic) NSMutableArray *deferredTouches; // @synthesize deferredTouches=_deferredTouches;
+@property (strong, nonatomic) NSMutableDictionary *deferredTouchTaskLists; // @synthesize deferredTouchTaskLists=_deferredTouchTaskLists;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disableInteraction; // @synthesize disableInteraction=_disableInteraction;
-@property (strong, nonatomic) _UIKBHandRestRecognizer *handRestRecognizer; // @synthesize handRestRecognizer=_handRestRecognizer;
+@property (strong, nonatomic) _UIKBRTRecognizer *handRestRecognizer; // @synthesize handRestRecognizer=_handRestRecognizer;
 @property (readonly, nonatomic) BOOL hasPreferredHeight; // @synthesize hasPreferredHeight=_hasPreferredHeight;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideKeysUnderIndicator; // @synthesize hideKeysUnderIndicator;
@@ -53,6 +56,8 @@
 @property (nonatomic) BOOL isExecutingDeferredTouchTasks; // @synthesize isExecutingDeferredTouchTasks=_isExecutingDeferredTouchTasks;
 @property (nonatomic) double lastTouchUpTime; // @synthesize lastTouchUpTime;
 @property (strong, nonatomic) NSString *layoutTag;
+@property (nonatomic) BOOL listeningForDidChange; // @synthesize listeningForDidChange=_listeningForDidChange;
+@property (nonatomic) BOOL listeningForWillChange; // @synthesize listeningForWillChange=_listeningForWillChange;
 @property (readonly, nonatomic) long long orientation;
 @property (nonatomic) double preferredHeight; // @synthesize preferredHeight=_preferredHeight;
 @property (strong, nonatomic) _UIScreenEdgePanRecognizer *screenEdgePanRecognizer; // @synthesize screenEdgePanRecognizer=_screenEdgePanRecognizer;
@@ -60,34 +65,38 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIKeyboardTaskQueue *taskQueue;
 @property (readonly, nonatomic) double timestampOfLastTouchesEnded; // @synthesize timestampOfLastTouchesEnded=_timestampOfLastTouchesEnded;
+@property (strong, nonatomic) NSMutableSet *touchIgnoredUUIDSet; // @synthesize touchIgnoredUUIDSet=_touchIgnoredUUIDSet;
 
 + (BOOL)_showSmallDisplayKeyplane;
 + (Class)_subclassForScreenTraits:(id)arg1;
 + (struct CGSize)keyboardSizeForInputMode:(id)arg1 screenTraits:(id)arg2 keyboardType:(long long)arg3;
 - (void)_addTouchToScreenEdgePanRecognizer:(id)arg1;
 - (BOOL)_canAddTouchesToScreenGestureRecognizer:(id)arg1;
-- (void)_enumerateDeferredTouches:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)_enumerateDeferredTouchUUIDs:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)_executeDeferredTouchTasks;
+- (void)_markTouchesCancelled:(id)arg1;
 - (void)_notifyLayoutOfGesturePosition:(struct CGPoint)arg1 relativeToEdge:(unsigned long long)arg2;
 - (BOOL)_shouldAllowKeyboardHandlingForTouchesBegan:(id)arg1 withEvent:(id)arg2;
 - (BOOL)_shouldAllowKeyboardHandlingForTouchesEndedOrCancelled:(id)arg1 withEvent:(id)arg2;
 - (BOOL)_shouldAllowKeyboardHandlingForTouchesMoved:(id)arg1 withEvent:(id)arg2;
-- (BOOL)_shouldAllowKeyboardHandlingIfNecessaryForTouch:(id)arg1 withTouchState:(id)arg2 task:(CDUnknownBlockType)arg3;
+- (BOOL)_shouldAllowKeyboardHandlingIfNecessaryForTouch:(id)arg1 phase:(long long)arg2 withTouchState:(id)arg3 task:(CDUnknownBlockType)arg4;
+- (void)_touchEndedProcessingForTouches:(id)arg1;
 - (void)acceptRecentInputIfNecessary;
 - (id)activationIndicatorView;
 - (void)addWipeRecognizer;
 - (void)assertSavedLocation:(struct CGPoint)arg1 onTouch:(id)arg2 inWindow:(id)arg3 resetPrevious:(BOOL)arg4;
 - (id)baseKeyForString:(id)arg1;
-- (BOOL)canForceTouchCommit:(id)arg1;
+- (BOOL)canForceTouchUUIDCommit:(id)arg1 inWindow:(id)arg2;
 - (BOOL)canHandleEvent:(id)arg1;
 - (BOOL)canMultitap;
 - (BOOL)canProduceString:(id)arg1;
+- (void)cancelTouchesForTwoFingerTapGesture:(id)arg1;
 - (id)candidateList;
 - (void)changeToKeyplane:(id)arg1;
-- (void)clearShiftIfNecessaryForEndedTouch:(id)arg1;
+- (void)clearShiftIfNecessaryForEndedTouchState:(id)arg1;
 - (void)clearTransientState;
 - (void)clearUnusedObjects:(BOOL)arg1;
-- (void)commitTouches:(id)arg1;
+- (void)commitTouchUUIDs:(id)arg1;
 - (void)commitTouches:(id)arg1 executionContext:(id)arg2;
 - (id)currentKeyplane;
 - (void)deactivateActiveKeys;
@@ -95,7 +104,7 @@
 - (void)dealloc;
 - (BOOL)diacriticForwardCompose;
 - (void)didClearInput;
-- (void)didCommitTouch:(id)arg1;
+- (void)didCommitTouchState:(id)arg1;
 - (void)didEndIndirectSelectionGesture;
 - (void)didFinishScreenGestureRecognition;
 - (void)didRecognizeGestureOnEdge:(unsigned long long)arg1 withDistance:(double)arg2;
@@ -104,6 +113,9 @@
 - (double)flickDistance;
 - (void)forceUpdatesForCommittedTouch;
 - (struct CGRect)frameForKeylayoutName:(id)arg1;
+- (BOOL)handRestRecognizerShouldNeverIgnoreTouchState:(id)arg1 fromPoint:(struct CGPoint)arg2 toPoint:(struct CGPoint)arg3 whenResting:(BOOL)arg4 otherRestedTouchLocations:(id)arg5;
+- (CDUnknownBlockType)handRestRecognizerSilenceNextTouchDown;
+- (struct CGSize)handRestRecognizerStandardKeyPixelSize;
 - (SEL)handlerForNotification:(id)arg1;
 - (BOOL)hasAccentKey;
 - (BOOL)hasCandidateKeys;
@@ -120,9 +132,15 @@
 - (void)longPressAction;
 - (BOOL)performReturnAction;
 - (BOOL)performSpaceAction;
-- (void)recognizer:(id)arg1 didConsumeRestingTouches:(id)arg2;
-- (void)recognizer:(id)arg1 didReleaseFailedTouches:(id)arg2;
+- (BOOL)queryShouldNeverIgnoreTouchStateWithIdentifier:(id)arg1 touchState:(id)arg2 startPoint:(struct CGPoint)arg3 forResting:(BOOL)arg4;
+- (BOOL)recognizer:(id)arg1 beginTouchDownForTouchWithId:(id)arg2 atPoint:(struct CGPoint)arg3 forBeginState:(unsigned long long)arg4;
+- (void)recognizer:(id)arg1 cancelTouchOnLayoutWithId:(id)arg2 startPoint:(struct CGPoint)arg3 endPoint:(struct CGPoint)arg4;
+- (void)recognizer:(id)arg1 releaseTouchToLayoutWithId:(id)arg2 startPoint:(struct CGPoint)arg3 endPoint:(struct CGPoint)arg4;
+- (BOOL)recognizer:(id)arg1 restartTouchDownForTouchWithId:(id)arg2 startingAt:(double)arg3 atPoint:(struct CGPoint)arg4 currentPoint:(struct CGPoint)arg5;
+- (BOOL)recognizer:(id)arg1 shouldContinueTrackingTouchWithId:(id)arg2 startingAt:(double)arg3 atPoint:(struct CGPoint)arg4 currentPoint:(struct CGPoint)arg5 forResting:(BOOL)arg6;
+- (void)recognizer:(id)arg1 willIgnoreTouchWithId:(id)arg2 startingAt:(double)arg3 atPoint:(struct CGPoint)arg4 currentPoint:(struct CGPoint)arg5;
 - (void)reloadKeyboardGestureRecognition;
+- (void)resetHRRLayoutState;
 - (void)restoreDefaultsForAllKeys;
 - (void)restoreDefaultsForKey:(id)arg1;
 - (void)screenEdgePanRecognizerStateDidChange:(id)arg1;
@@ -152,17 +170,21 @@
 - (unsigned long long)textEditingKeyMask;
 - (void)touchCancelled:(id)arg1;
 - (void)touchCancelled:(id)arg1 executionContext:(id)arg2;
+- (CDUnknownBlockType)touchCancelledTaskForTouchState:(id)arg1;
 - (void)touchDown:(id)arg1;
 - (void)touchDown:(id)arg1 executionContext:(id)arg2;
+- (CDUnknownBlockType)touchDownTaskForTouchState:(id)arg1;
 - (void)touchDragged:(id)arg1;
 - (void)touchDragged:(id)arg1 executionContext:(id)arg2;
+- (CDUnknownBlockType)touchDraggedTaskForTouchState:(id)arg1;
+- (id)touchUUIDsToCommitBeforeTouchUUID:(id)arg1;
 - (void)touchUp:(id)arg1;
 - (void)touchUp:(id)arg1 executionContext:(id)arg2;
+- (CDUnknownBlockType)touchUpTaskForTouchState:(id)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
-- (id)touchesToCommitBeforeTouchUUID:(id)arg1;
 - (void)triggerSpaceKeyplaneSwitchIfNecessary;
 - (void)updateBackgroundCorners;
 - (void)updateLocalizedKeys:(BOOL)arg1;

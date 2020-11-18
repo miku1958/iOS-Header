@@ -6,11 +6,12 @@
 
 #import <HealthDaemon/HDServerInterface-Protocol.h>
 
-@class NSDate, NSError, NSUUID;
+@class NSDate, NSError, NSUUID, _HKFirstPartyWorkoutSnapshot;
 
 @protocol HDServer <HDServerInterface>
 - (void)deliverWorkoutSessionChangedToState:(long long)arg1 fromState:(long long)arg2 date:(NSDate *)arg3 forSessionUUID:(NSUUID *)arg4;
 - (void)deliverWorkoutSessionError:(NSError *)arg1 forSessionUUID:(NSUUID *)arg2;
+- (_HKFirstPartyWorkoutSnapshot *)firstPartyWorkoutSnapshot;
 - (BOOL)hasActiveWorkouts;
 - (void)invalidate;
 - (void)nukeActiveWorkoutServers;

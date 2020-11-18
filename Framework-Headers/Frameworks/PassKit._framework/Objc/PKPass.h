@@ -9,7 +9,7 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL, PKBarcode, PKImage, PKNFCPayload, PKPassDisplayProfile, PKPaymentPass, UIImage;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL, PKBarcode, PKImage, PKNFCPayload, PKPassDisplayProfile, PKPassPersonalization, PKPaymentPass, UIImage;
 
 @interface PKPass : PKObject <NSCopying, NSSecureCoding>
 {
@@ -65,6 +65,7 @@
 @property (readonly, copy, nonatomic) UIImage *icon; // @dynamic icon;
 @property (readonly, nonatomic) PKImage *iconImage;
 @property (strong, nonatomic) NSDate *ingestedDate; // @synthesize ingestedDate=_ingestedDate;
+@property (readonly, nonatomic) BOOL isPersonalizable;
 @property (copy, nonatomic) NSURL *localLocationsURL; // @synthesize localLocationsURL=_localLocationsURL;
 @property (readonly, copy, nonatomic) NSString *localizedDescription;
 @property (readonly, copy, nonatomic) NSString *localizedName;
@@ -82,6 +83,8 @@
 @property (copy, nonatomic) NSString *passTypeIdentifier; // @synthesize passTypeIdentifier=_passTypeIdentifier;
 @property (copy, nonatomic) NSURL *passURL; // @synthesize passURL=_passURL;
 @property (readonly, nonatomic) PKPaymentPass *paymentPass;
+@property (readonly, nonatomic) PKPassPersonalization *personalization;
+@property (readonly, nonatomic) PKImage *personalizationLogoImage;
 @property (readonly, nonatomic) NSString *pluralLocalizedName;
 @property (copy, nonatomic) NSDate *relevantDate; // @synthesize relevantDate=_relevantDate;
 @property (nonatomic, getter=isRemotePass) BOOL remotePass; // @synthesize remotePass=_remotePass;
@@ -108,7 +111,6 @@
 + (BOOL)isValidObjectWithFileURL:(id)arg1 warnings:(id *)arg2 orError:(id *)arg3;
 + (BOOL)supportsSecureCoding;
 - (id)_changeMessageForFieldKey:(id)arg1;
-- (id)_groupingIDFromPassDictionary:(id)arg1;
 - (id)_localizationKeyForMultipleDiff;
 - (BOOL)availableForAutomaticPresentationUsingBeaconContext;
 - (BOOL)availableForAutomaticPresentationUsingVASContext;

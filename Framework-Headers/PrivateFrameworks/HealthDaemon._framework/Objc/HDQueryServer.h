@@ -10,22 +10,22 @@
 #import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
 #import <HealthDaemon/HKQueryServer-Protocol.h>
 
-@class HKSampleType, NSString, NSUUID, _HKFilter;
+@class HKObjectType, HKSampleType, NSString, NSUUID, _HKFilter;
 @protocol HDHealthDaemon, HDQueryServerDelegate, NSXPCProxyCreating, OS_dispatch_queue;
 
 @interface HDQueryServer : NSObject <HDDatabaseProtectedDataObserver, HKQueryServer, HDDataObserver>
 {
     BOOL _didEndActivationTransaction;
-    int _shouldDeactivate;
-    int _pauseRequested;
-    int _observingData;
+    BOOL _observingData;
+    int _shouldFinish;
+    int _shouldPause;
     NSUUID *_queryUUID;
-    HKSampleType *_sampleType;
     _HKFilter *_filter;
     id<NSXPCProxyCreating> _clientProxy;
     id<HDHealthDaemon> _daemon;
     id<HDQueryServerDelegate> _delegate;
     long long _queryState;
+    HKObjectType *_objectType;
     NSObject<OS_dispatch_queue> *_queryQueue;
 }
 
@@ -36,33 +36,38 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) _HKFilter *filter; // @synthesize filter=_filter;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queryQueue; // @synthesize queryQueue=_queryQueue;
+@property (readonly, nonatomic) HKObjectType *objectType; // @synthesize objectType=_objectType;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queryQueue; // @synthesize queryQueue=_queryQueue;
 @property (nonatomic) long long queryState; // @synthesize queryState=_queryState;
 @property (readonly, nonatomic) NSUUID *queryUUID; // @synthesize queryUUID=_queryUUID;
-@property (readonly, nonatomic) HKSampleType *sampleType; // @synthesize sampleType=_sampleType;
+@property (readonly, nonatomic) HKSampleType *sampleType;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_activationTransactionString;
-- (void)_batchSamplesWithLimit:(unsigned long long)arg1 predicate:(id)arg2 anchor:(id)arg3 includeDeletedObjects:(BOOL)arg4 batchHandler:(CDUnknownBlockType)arg5;
-- (void)_batchSamplesWithLimit:(unsigned long long)arg1 sortDescriptors:(id)arg2 predicate:(id)arg3 anchor:(id)arg4 batchHandler:(CDUnknownBlockType)arg5;
+- (void)_batchSamplesWithLimit:(unsigned long long)arg1 anchor:(id)arg2 includeDeletedObjects:(BOOL)arg3 batchHandler:(CDUnknownBlockType)arg4;
+- (void)_batchSamplesWithLimit:(unsigned long long)arg1 sortDescriptors:(id)arg2 anchor:(id)arg3 batchHandler:(CDUnknownBlockType)arg4;
 - (BOOL)_isAuthorizedToReadType:(id)arg1 withRestrictedSourceIdentifier:(id *)arg2;
 - (BOOL)_isAuthorizedToReadType:(id)arg1 withRestrictedSourceIdentifier:(id *)arg2 authorizationAnchor:(id *)arg3;
 - (void)_pauseServerValidate:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)_predicateString;
 - (id)_queryStateString;
+- (void)_queue_beginObservingDataTypes;
 - (void)_queue_closeActivationTransactionIfNecessary;
+- (void)_queue_endObservingDataTypes;
 - (void)_queue_start;
 - (void)_queue_startQueryIfNecessary;
 - (void)_queue_stop;
-- (void)_queue_transitionToDisabledState:(long long)arg1;
+- (void)_queue_transitionToFinished;
 - (void)_queue_transitionToPaused;
-- (void)_queue_transitionToStarted;
-- (void)_queue_transitionToStopped;
+- (void)_queue_transitionToRunning;
+- (void)_queue_transitionToSuspendedState:(long long)arg1;
 - (BOOL)_queue_validateConfiguration:(id *)arg1;
+- (id)_sampleTypeToObserveForUpdates;
 - (void)_scheduleStartQuery;
 - (BOOL)_shouldExecuteWhenProtectedDataIsUnavailable;
 - (BOOL)_shouldListenForUpdates;
+- (BOOL)_shouldObserveAllSampleTypes;
 - (BOOL)_shouldObserveOnPause;
 - (BOOL)_shouldStopProcessingQuery;
 - (BOOL)_shouldSuspendQuery;
@@ -78,7 +83,7 @@
 - (void)resumeServer;
 - (CDUnknownBlockType)sampleAuthorizationFilter;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
-- (void)samplesOfTypeWereRemoved:(id)arg1 anchor:(id)arg2;
+- (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 - (void)scheduleDatabaseAccessOnQueueWithBlock:(CDUnknownBlockType)arg1;
 
 @end

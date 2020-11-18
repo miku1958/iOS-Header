@@ -6,15 +6,18 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HMDNetworkMonitorDelegate-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegateHomeKit-Protocol.h>
+#import <HomeKitDaemon/NSURLSessionDelegate-Protocol.h>
 
-@class HMDHome, IDSService, NSHashTable, NSMutableArray, NSString;
+@class HMDHome, HMDNetworkMonitor, IDSService, NSHashTable, NSMutableArray, NSString, NSURLSession;
 @protocol OS_dispatch_queue;
 
-@interface HMDRelayManager : NSObject <IDSServiceDelegateHomeKit>
+@interface HMDRelayManager : NSObject <HMDNetworkMonitorDelegate, IDSServiceDelegateHomeKit, NSURLSessionDelegate>
 {
     BOOL _supported;
     BOOL _enabled;
+    BOOL _networkReachable;
     unsigned long long _currentState;
     NSString *_controllerIdentifier;
     HMDHome *_home;
@@ -24,6 +27,8 @@
     NSHashTable *_delegates;
     NSHashTable *_relayAccessories;
     NSMutableArray *_relayStreams;
+    NSURLSession *_urlSession;
+    HMDNetworkMonitor *_networkMonitor;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
@@ -36,14 +41,19 @@
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) IDSService *idsService; // @synthesize idsService=_idsService;
+@property (readonly, nonatomic) HMDNetworkMonitor *networkMonitor; // @synthesize networkMonitor=_networkMonitor;
+@property (nonatomic, getter=isNetworkReachable) BOOL networkReachable; // @synthesize networkReachable=_networkReachable;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic) NSHashTable *relayAccessories; // @synthesize relayAccessories=_relayAccessories;
 @property (readonly, nonatomic) NSMutableArray *relayStreams; // @synthesize relayStreams=_relayStreams;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isSupported) BOOL supported; // @synthesize supported=_supported;
+@property (readonly, nonatomic) NSURLSession *urlSession; // @synthesize urlSession=_urlSession;
 
-+ (id)sharedURLSession;
 - (void).cxx_destruct;
+- (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)__resumeAllStreams;
+- (void)__suspendAllStreams;
 - (id)_accessTokenForAccessTokenAttributes:(id)arg1 consentTokens:(id)arg2 matchedConsentToken:(id *)arg3 error:(id *)arg4;
 - (void)_accessTokensForConsentTokens:(id)arg1 user:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_activateAccessory:(id)arg1;
@@ -74,6 +84,8 @@
 - (void)addUserToRelayAccessories:(id)arg1 consentTokens:(id)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)init;
 - (id)initWithHome:(id)arg1;
+- (void)networkMonitorIsReachable:(id)arg1;
+- (void)networkMonitorIsUnreachable:(id)arg1;
 - (void)removeDelegate:(id)arg1;
 - (void)removeRelayAccessory:(id)arg1;
 - (void)requestPairingWithRelayAccessories:(id)arg1;

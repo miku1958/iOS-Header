@@ -6,25 +6,33 @@
 
 #import <Foundation/NSObject.h>
 
+#import <SharedWebCredentials/NSURLSessionDelegate-Protocol.h>
 #import <SharedWebCredentials/NSXPCListenerDelegate-Protocol.h>
 #import <SharedWebCredentials/SWCXPCServer-Protocol.h>
 
-@class NSMutableArray, NSString, NSXPCListener;
-@protocol OS_dispatch_source;
+@class NSMutableArray, NSString, NSURLSession, NSXPCListener;
 
-@interface SWCManager : NSObject <NSXPCListenerDelegate, SWCXPCServer>
+@interface SWCManager : NSObject <NSURLSessionDelegate, NSXPCListenerDelegate, SWCXPCServer>
 {
     NSMutableArray *_database;
     NSXPCListener *_xpcListener;
+    NSURLSession *_urlSession;
     NSMutableArray *_netRequests;
-    NSObject<OS_dispatch_source> *_retryTimer;
-    NSObject<OS_dispatch_source> *_recheckTimer;
+    NSMutableArray *_deferredRequests;
     NSMutableArray *_xpcRequests;
     BOOL _started;
     BOOL _addedAllApps;
+    double _recheckForceTime;
     BOOL _allowUnsigned;
+    unsigned int _maxNetRequests;
+    long long _recheckFailureMaxCount;
+    long long _recheckFailureSecs;
+    long long _recheckSuccessSecs;
+    BOOL _recheckVersionChange;
     BOOL _redirects;
     BOOL _verifyEV;
+    BOOL _wellKnown;
+    BOOL _wildcardDomains;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -32,23 +40,32 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
+- (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (int)_addService:(id)arg1 app:(id)arg2 domain:(id)arg3;
 - (id)_appEntitlementsByID:(id)arg1;
-- (void)_completeAppsRequestForURLConnection:(id)arg1 status:(int)arg2 services:(id)arg3;
+- (void)_completeAppsRequestForTask:(id)arg1 status:(int)arg2 services:(id)arg3;
 - (void)_connectionInvalidated:(id)arg1;
 - (int)_ensureDatabaseLoaded;
-- (id)_findAppRequestForURLConnection:(id)arg1;
+- (BOOL)_equivalentDomain:(id)arg1 toDomain:(id)arg2 wildcards:(BOOL)arg3;
+- (id)_findAppRequestForTask:(id)arg1;
 - (id)_findService:(id)arg1 app:(id)arg2 domain:(id)arg3;
+- (id)_findService:(id)arg1 app:(id)arg2 domain:(id)arg3 wildcards:(BOOL)arg4;
 - (void)_parseServiceDomainString:(id)arg1 legacy:(BOOL)arg2 service:(id *)arg3 domain:(id *)arg4;
-- (void)_performPeriodicRechecks;
+- (void)_processDeferredNetRequests;
+- (void)_recheckPerform;
+- (void)_recheckSchedule;
+- (void)_recheckStartTimer:(double)arg1;
 - (void)_reorderAppLinks:(id)arg1 domain:(id)arg2;
-- (void)_retryDownloads;
 - (void)_sanitizeDatabase;
 - (int)_saveDatabase;
-- (void)_schedulePeriodicRechecks;
-- (void)_scheduleRetries;
 - (int)_startAppsRequestForDomain:(id)arg1;
-- (int)_verifyTrust:(struct __SecTrust *)arg1;
+- (int)_startAppsRequestForDomain:(id)arg1 wellKnown:(BOOL)arg2 immediate:(BOOL)arg3;
+- (int)_verifyTrust:(struct __SecTrust *)arg1 isFile:(BOOL)arg2;
 - (void)addAllAppleApps;
 - (void)addAllApps;
 - (void)addAllAppsWithReply:(CDUnknownBlockType)arg1;
@@ -56,15 +73,7 @@
 - (void)addBundleID:(id)arg1 preApproved:(BOOL)arg2;
 - (void)addService:(id)arg1 app:(id)arg2 domain:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)checkService:(id)arg1 app:(id)arg2 domain:(id)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)connection:(id)arg1 didFailWithError:(id)arg2;
-- (void)connection:(id)arg1 didReceiveData:(id)arg2;
-- (void)connection:(id)arg1 didReceiveResponse:(id)arg2;
-- (id)connection:(id)arg1 willSendRequest:(id)arg2 redirectResponse:(id)arg3;
-- (void)connection:(id)arg1 willSendRequestForAuthenticationChallenge:(id)arg2;
-- (void)connectionDidFinishLoading:(id)arg1;
-- (void)dealloc;
 - (void)getInfoForService:(id)arg1 app:(id)arg2 domain:(id)arg3 reply:(CDUnknownBlockType)arg4;
-- (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)logControl:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)removeBundleID:(id)arg1;

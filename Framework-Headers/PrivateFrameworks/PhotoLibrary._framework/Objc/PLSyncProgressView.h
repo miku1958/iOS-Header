@@ -27,6 +27,7 @@
 - (id)_progressDescription;
 - (void)dealloc;
 - (id)initWithStyle:(int)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)setCurrentCount:(unsigned long long)arg1 totalCount:(unsigned long long)arg2 progressType:(int)arg3;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

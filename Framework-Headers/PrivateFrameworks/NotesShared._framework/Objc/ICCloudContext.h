@@ -17,7 +17,6 @@
     BOOL _fetchingEnabled;
     BOOL _syncDisabledByServer;
     BOOL _fetchOperationsInQueue;
-    NSDictionary *_cloudObjectClassesByRecordType;
     CKContainer *_container;
     id<ICCloudContextDelegate> _cloudContextDelegate;
     NSDate *_lastSyncDate;
@@ -38,7 +37,7 @@
 
 @property (nonatomic) long long accountStatus;
 @property (weak, nonatomic) id<ICCloudContextDelegate> cloudContextDelegate; // @synthesize cloudContextDelegate=_cloudContextDelegate;
-@property (readonly, nonatomic) NSDictionary *cloudObjectClassesByRecordType; // @synthesize cloudObjectClassesByRecordType=_cloudObjectClassesByRecordType;
+@property (readonly, nonatomic) NSDictionary *cloudObjectClassesByRecordType;
 @property (strong, nonatomic) NSMutableSet *cloudObjectsToProcess; // @synthesize cloudObjectsToProcess=_cloudObjectsToProcess;
 @property (strong, nonatomic) NSMutableSet *cloudObjectsToRetry; // @synthesize cloudObjectsToRetry=_cloudObjectsToRetry;
 @property (strong, nonatomic) CKContainer *container; // @synthesize container=_container;
@@ -73,12 +72,15 @@
 + (id)notesZoneID;
 + (id)sharedContext;
 - (void).cxx_destruct;
+- (void)addCallbackBlocksToDeleteRecordsOperation:(id)arg1 recordIDsToDelete:(id)arg2 cloudObjects:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)addCallbackBlocksToPushRecordsOperation:(id)arg1 recordsToSave:(id)arg2 cloudObjectsByRecordID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)addDependenciesForModifyRecordsOperation:(id)arg1;
 - (void)addProcessObjectsOperationWithName:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)allCloudObjects;
 - (id)allZoneIDs;
 - (BOOL)canRetryImmediatelyAfterError:(id)arg1;
 - (void)cancelEverythingWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)checkForLongLivedOperations;
 - (void)clearPendingActivity;
 - (void)dealloc;
 - (void)deleteCloudObjects:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

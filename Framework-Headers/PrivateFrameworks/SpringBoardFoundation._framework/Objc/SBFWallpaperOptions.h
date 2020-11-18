@@ -4,14 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSString;
+#import <SpringBoardFoundation/BSDescriptionProviding-Protocol.h>
+#import <SpringBoardFoundation/NSCopying-Protocol.h>
 
-@interface SBFWallpaperOptions : NSObject
+@class NSData, NSString;
+
+@interface SBFWallpaperOptions : NSObject <NSCopying, BSDescriptionProviding>
 {
+    BOOL _magnifyEnabled;
     BOOL _supportsCropping;
-    BOOL _isPortrait;
+    BOOL _portrait;
     BOOL _hasVideo;
     NSString *_name;
     double _parallaxFactor;
@@ -20,20 +24,39 @@
     struct CGRect _cropRect;
 }
 
-@property (readonly, nonatomic) struct CGRect cropRect; // @synthesize cropRect=_cropRect;
-@property (readonly, nonatomic) BOOL hasVideo; // @synthesize hasVideo=_hasVideo;
-@property (readonly, nonatomic) BOOL isPortrait; // @synthesize isPortrait=_isPortrait;
-@property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) struct CGSize bestWallpaperSize;
+@property (nonatomic) struct CGRect cropRect; // @synthesize cropRect=_cropRect;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasVideo; // @synthesize hasVideo=_hasVideo;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isMagnifyEnabled) BOOL magnifyEnabled; // @synthesize magnifyEnabled=_magnifyEnabled;
+@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) BOOL parallaxEnabled;
-@property (readonly, nonatomic) double parallaxFactor; // @synthesize parallaxFactor=_parallaxFactor;
-@property (readonly, nonatomic) double stillTimeInVideo; // @synthesize stillTimeInVideo=_stillTimeInVideo;
-@property (readonly, nonatomic) BOOL supportsCropping; // @synthesize supportsCropping=_supportsCropping;
-@property (readonly, nonatomic) double zoomScale; // @synthesize zoomScale=_zoomScale;
+@property (nonatomic) double parallaxFactor; // @synthesize parallaxFactor=_parallaxFactor;
+@property (readonly, copy, nonatomic) NSData *persistentDataRepresentation;
+@property (nonatomic, getter=isPortrait) BOOL portrait; // @synthesize portrait=_portrait;
+@property (nonatomic) double stillTimeInVideo; // @synthesize stillTimeInVideo=_stillTimeInVideo;
+@property (readonly) Class superclass;
+@property (nonatomic) BOOL supportsCropping; // @synthesize supportsCropping=_supportsCropping;
+@property (nonatomic) double zoomScale; // @synthesize zoomScale=_zoomScale;
 
 + (id)optionsWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(BOOL)arg4 cropRect:(struct CGRect)arg5 portrait:(BOOL)arg6;
 + (id)optionsWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(BOOL)arg4 cropRect:(struct CGRect)arg5 portrait:(BOOL)arg6 hasVideo:(BOOL)arg7 stillTimeInVideo:(double)arg8;
-- (void)dealloc;
+- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)init;
+- (id)initWithContentsOfURL:(id)arg1;
 - (id)initWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(BOOL)arg4 cropRect:(struct CGRect)arg5 portrait:(BOOL)arg6 hasVideo:(BOOL)arg7 stillTimeInVideo:(double)arg8;
+- (id)initWithPersistentDataRepresentation:(id)arg1;
+- (id)initWithStream:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (id)persistentPropertyList;
+- (id)succinctDescription;
+- (id)succinctDescriptionBuilder;
+- (BOOL)writeToURL:(id)arg1 error:(id *)arg2;
 
 @end
 

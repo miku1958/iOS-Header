@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSDate, NSLocale, NSMutableDictionary, NSString, NSURL;
+@protocol RKDisplayStringsProvider;
 
 @interface RKPersistentPersonalizer : NSObject
 {
@@ -14,11 +15,13 @@
     NSString *_languageID;
     NSLocale *_languageLocale;
     NSURL *_dynamicDataURL;
+    id<RKDisplayStringsProvider> _displayStringsProvider;
     NSDate *_lastObservedDynamicDataCreationDate;
     NSDate *_lastDynamicDataCreationCheckDate;
     NSMutableDictionary *_synonyms;
 }
 
+@property (readonly) id<RKDisplayStringsProvider> displayStringsProvider; // @synthesize displayStringsProvider=_displayStringsProvider;
 @property (strong) NSURL *dynamicDataURL; // @synthesize dynamicDataURL=_dynamicDataURL;
 @property (strong) NSString *languageID; // @synthesize languageID=_languageID;
 @property (strong) NSLocale *languageLocale; // @synthesize languageLocale=_languageLocale;
@@ -36,7 +39,8 @@
 - (void)flushDynamicData;
 - (id)headwordsForSynonym:(id)arg1;
 - (id)headwordsForSynonymPrefix:(id)arg1;
-- (id)initWithLanguageIdentifier:(id)arg1 andDynamicDataURL:(id)arg2;
+- (id)init;
+- (id)initWithLanguageIdentifier:(id)arg1 andDynamicDataURL:(id)arg2 displayStringsProvider:(id)arg3;
 - (void)initializeDynamicLanguageModel;
 - (id)topSynonymsForSpeechAct:(id)arg1 headword:(id)arg2 recipientContext:(id)arg3 maxCount:(unsigned long long)arg4;
 - (void)trainSynonymForSpeechAct:(id)arg1 headword:(id)arg2 userResponse:(id)arg3 recipientContext:(id)arg4 weight:(unsigned long long)arg5 effectiveDate:(id)arg6;

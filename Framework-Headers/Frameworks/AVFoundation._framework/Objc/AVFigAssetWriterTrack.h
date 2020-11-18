@@ -61,6 +61,7 @@
 - (void)setPreferredChunkSize:(long long)arg1;
 - (void)setSampleReferenceBaseURL:(id)arg1;
 - (void)setTrackVolume:(float)arg1;
+- (void)setWritesMediaDataToBeginningOfFile:(BOOL)arg1;
 
 @end
 

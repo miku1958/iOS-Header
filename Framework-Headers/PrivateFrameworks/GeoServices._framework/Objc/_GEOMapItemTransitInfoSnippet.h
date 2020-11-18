@@ -36,11 +36,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *systems;
 @property (readonly, nonatomic) unsigned long long systemsCount;
 
+- (id)allSequencesForSystem:(id)arg1 direction:(id)arg2;
 - (void)dealloc;
-- (id)departureSequencesForSystem:(id)arg1 excludingLines:(id)arg2 direction:(id)arg3 validForDateFromBlock:(CDUnknownBlockType)arg4;
-- (id)directionsForSystem:(id)arg1 excludingLines:(id)arg2 validForDateFromBlock:(CDUnknownBlockType)arg3 hasSequencesWithNoDirection:(out BOOL *)arg4;
+- (id)departureSequencesForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 direction:(id)arg3 validForDateFromBlock:(CDUnknownBlockType)arg4;
+- (id)directionsForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 validForDateFromBlock:(CDUnknownBlockType)arg3 hasSequencesWithNoDirection:(out BOOL *)arg4;
+- (id)inactiveLinesForSystem:(id)arg1 relativeToDateFromBlock:(CDUnknownBlockType)arg2 excludingIncidentEntities:(id)arg3;
 - (id)initWithTransitInfoSnippet:(id)arg1;
-- (id)sequencesForSystem:(id)arg1 excludingLines:(id)arg2 direction:(id)arg3 validForDateFromBlock:(CDUnknownBlockType)arg4;
+- (id)linesForSystem:(id)arg1;
+- (id)sequencesForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 direction:(id)arg3 validForDateFromBlock:(CDUnknownBlockType)arg4;
+- (id)serviceResumesDateForLine:(id)arg1 excludingIncidentEntities:(id)arg2 afterDate:(id)arg3 blocked:(out BOOL *)arg4;
 
 @end
 

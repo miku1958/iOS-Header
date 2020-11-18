@@ -11,17 +11,14 @@
 @interface UIPressesEvent : UIEvent
 {
     NSMutableSet *_allPresses;
-    BOOL __isFromGameControllerStickControl;
     UIPress *_triggeringPhysicalButton;
 }
 
-@property (nonatomic, setter=_setIsFromGameControllerStickControl:) BOOL _isFromGameControllerStickControl; // @synthesize _isFromGameControllerStickControl=__isFromGameControllerStickControl;
 @property (strong, nonatomic) UIPress *_triggeringPhysicalButton; // @synthesize _triggeringPhysicalButton;
 
 - (void).cxx_destruct;
 - (void)_addGesturesForPress:(id)arg1;
 - (void)_addPress:(id)arg1 forDelayedDelivery:(BOOL)arg2;
-- (id)_allPhysicalButtons;
 - (id)_allPresses;
 - (id)_cloneEvent;
 - (id)_directionalPressWithStrongestForce;

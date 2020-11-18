@@ -6,22 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate;
 @protocol HAPTimerDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface HAPTimer : NSObject
 {
+    double _timeInterval;
     BOOL _running;
     id<HAPTimerDelegate> _delegate;
-    double _timeInterval;
-    NSDate *_fireDate;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_source> *_timer;
     unsigned long long _options;
 }
 
 @property (weak) id<HAPTimerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) NSDate *fireDate; // @synthesize fireDate=_fireDate;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
 @property (readonly, nonatomic) double timeInterval; // @synthesize timeInterval=_timeInterval;
@@ -29,6 +26,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 - (void).cxx_destruct;
+- (void)_fire;
 - (void)_handleExpiration;
 - (void)_kick;
 - (void)_resume;

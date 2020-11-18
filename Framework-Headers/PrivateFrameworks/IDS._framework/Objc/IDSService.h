@@ -22,12 +22,14 @@
 - (BOOL)cancelIdentifier:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)deviceForFromID:(id)arg1;
+- (id)deviceForUniqueID:(id)arg1;
 - (id)devicesForBTUUID:(id)arg1;
 - (id)iCloudAccount;
 - (id)initWithService:(id)arg1;
 - (id)initWithService:(id)arg1 commands:(id)arg2;
 - (id)initWithService:(id)arg1 manuallyAckMessages:(BOOL)arg2;
 - (id)initWithService:(id)arg1 serviceDomain:(id)arg2;
+- (id)internal;
 - (BOOL)isPretendingToBeFull;
 - (long long)maxHomeKitPayloadSize;
 - (SEL)protobufActionForIncomingRequestsOfType:(unsigned short)arg1;
@@ -53,6 +55,7 @@
 - (void)setProtobufAction:(SEL)arg1 forIncomingResponsesOfType:(unsigned short)arg2;
 - (void)startOTRTest:(long long)arg1;
 - (void)updateSubServices:(id)arg1;
+- (BOOL)updateSubServices:(id)arg1 forDevice:(id)arg2;
 - (id)uriForFromID:(id)arg1;
 
 @end

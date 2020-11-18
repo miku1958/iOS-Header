@@ -36,11 +36,12 @@
 - (id)_decodedObjectTypeOfClass:(Class)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)decodedBinarySampleType;
 - (id)decodedCategoryType;
 - (id)decodedCorrelationType;
-- (id)decodedEndDate;
+- (double)decodedEndDate;
 - (id)decodedQuantityType;
-- (id)decodedStartDate;
+- (double)decodedStartDate;
 - (id)decodedWorkoutType;
 - (id)description;
 - (id)dictionaryRepresentation;

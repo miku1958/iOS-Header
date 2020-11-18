@@ -26,6 +26,7 @@
 @property (nonatomic, getter=isUpdated) BOOL updated; // @synthesize updated=_updated;
 
 + (id)jsNodeDataForNode:(struct _xmlNode *)arg1 create:(BOOL)arg2;
++ (void)load;
 - (void).cxx_destruct;
 - (id)featureForName:(id)arg1;
 - (void)setFeature:(id)arg1 forName:(id)arg2;

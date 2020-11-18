@@ -6,7 +6,7 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NSError, NSString, NSURL, PKPaymentApplication, PKPaymentPass, PKPaymentWebServiceContext;
+@class NSError, NSString, NSURL, NSUUID, PKPaymentApplication, PKPaymentPass, PKPaymentWebServiceContext;
 
 @protocol NPKCompanionServerProtocol <NSObject>
 - (void)beginProvisioningFromWatchOfferForPaymentPass:(PKPaymentPass *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
@@ -22,11 +22,11 @@
 - (void)paymentPassWithUniqueID:(NSString *)arg1 reply:(void (^)(PKPaymentPass *))arg2;
 - (void)paymentPassesWithPrimaryAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)redownloadAllPaymentPassesWithCompletion:(void (^)(void))arg1;
-- (void)removePaymentPassWithUniqueID:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
-- (void)savePaymentPassAtURL:(NSURL *)arg1 withUniqueID:(NSString *)arg2 completion:(void (^)(BOOL))arg3;
+- (void)removePaymentPassWithUniqueID:(NSString *)arg1 forPairingID:(NSUUID *)arg2 completion:(void (^)(BOOL))arg3;
+- (void)savePaymentPassAtURL:(NSURL *)arg1 withUniqueID:(NSString *)arg2 forPairingID:(NSUUID *)arg3 completion:(void (^)(BOOL))arg4;
 - (void)setDefaultCard:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
 - (void)setDefaultPaymentApplication:(PKPaymentApplication *)arg1 forPassWithUniqueID:(NSString *)arg2 completion:(void (^)(PKPaymentPass *))arg3;
-- (void)setSharedPaymentWebServiceContext:(PKPaymentWebServiceContext *)arg1 completion:(void (^)(void))arg2;
-- (void)sharedPaymentWebServiceContextWithCompletion:(void (^)(PKPaymentWebServiceContext *))arg1;
+- (void)setSharedPaymentWebServiceContext:(PKPaymentWebServiceContext *)arg1 forPairingID:(NSUUID *)arg2 completion:(void (^)(void))arg3;
+- (void)sharedPaymentWebServiceContextForPairingID:(NSUUID *)arg1 withCompletion:(void (^)(PKPaymentWebServiceContext *))arg2;
 @end
 

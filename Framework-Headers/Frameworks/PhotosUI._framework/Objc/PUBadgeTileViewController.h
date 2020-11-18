@@ -7,12 +7,11 @@
 #import <PhotosUI/PUTileViewController.h>
 
 #import <PhotosUI/PUAssetViewModelChangeObserver-Protocol.h>
-#import <PhotosUI/PUIrisBadgeVisibilityControllerDelegate-Protocol.h>
 
-@class NSString, PLPhotoTileBadgeView, PUAssetViewModel, PUBadgeInfo, PUIrisBadgeVisibilityController;
+@class NSString, PLPhotoTileBadgeView, PUAssetViewModel, PUBadgeInfo;
 
 __attribute__((visibility("hidden")))
-@interface PUBadgeTileViewController : PUTileViewController <PUAssetViewModelChangeObserver, PUIrisBadgeVisibilityControllerDelegate>
+@interface PUBadgeTileViewController : PUTileViewController <PUAssetViewModelChangeObserver>
 {
     BOOL __needsUpdateBadgeInfo;
     BOOL __needsUpdateBadgeView;
@@ -21,12 +20,10 @@ __attribute__((visibility("hidden")))
     PUAssetViewModel *_assetViewModel;
     PUBadgeInfo *__badgeInfo;
     PLPhotoTileBadgeView *__badgeView;
-    PUIrisBadgeVisibilityController *__irisBadgeVisibilityController;
 }
 
 @property (copy, nonatomic, setter=_setBadgeInfo:) PUBadgeInfo *_badgeInfo; // @synthesize _badgeInfo=__badgeInfo;
 @property (readonly, nonatomic) PLPhotoTileBadgeView *_badgeView; // @synthesize _badgeView=__badgeView;
-@property (strong, nonatomic, setter=_setIrisBadgeVisibilityController:) PUIrisBadgeVisibilityController *_irisBadgeVisibilityController; // @synthesize _irisBadgeVisibilityController=__irisBadgeVisibilityController;
 @property (nonatomic, setter=_setOverContent:) BOOL _isOverContent; // @synthesize _isOverContent=__isOverContent;
 @property (nonatomic, setter=_setNeedsUpdateBadgeInfo:) BOOL _needsUpdateBadgeInfo; // @synthesize _needsUpdateBadgeInfo=__needsUpdateBadgeInfo;
 @property (nonatomic, setter=_setNeedsUpdateBadgeView:) BOOL _needsUpdateBadgeView; // @synthesize _needsUpdateBadgeView=__needsUpdateBadgeView;
@@ -52,7 +49,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateIrisBadgeIfNeeded;
 - (void)applyLayoutInfo:(id)arg1;
 - (void)becomeReusable;
-- (void)irisBadgeTileInfo:(id)arg1 didTransitionToAppearanceState:(unsigned long long)arg2;
 - (id)loadView;
 - (void)prepareForReuse;
 - (void)viewDidLoad;

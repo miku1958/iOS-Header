@@ -84,13 +84,16 @@
 - (void)_queryHomeKitUsageStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_queryMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_queryVersionWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_queryiCloudSwitchStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_registerNotificationHandlers;
 - (void)_removeHome:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_shouldDisplayiCloudSwitchWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_start;
 - (void)_updateHomes:(id)arg1;
 - (void)_updateInvitation:(id)arg1 invitationState:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_updatePrimaryHome:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_updateiCloudSwitchState:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addHomeWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)dumpState:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -105,10 +108,13 @@
 - (void)queryHomeKitUsageStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)queryMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)queryVersionWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)queryiCloudSwitchStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeHome:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resetConfiguration:(BOOL)arg1 withoutPopup:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)shouldDisplayiCloudSwitchWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)updatePrimaryHome:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateiCloudSwitchState:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

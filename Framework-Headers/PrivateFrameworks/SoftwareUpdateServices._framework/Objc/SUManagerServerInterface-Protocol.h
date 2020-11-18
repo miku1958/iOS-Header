@@ -22,6 +22,7 @@
 - (void)resumeDownload:(void (^)(BOOL, NSError *))arg1;
 - (void)scanForUpdates:(SUScanOptions *)arg1 withResult:(void (^)(SUDescriptor *, NSError *))arg2;
 - (void)setClientType:(int)arg1 withResult:(void (^)(BOOL, NSError *))arg2;
+- (void)slaVersion:(void (^)(NSNumber *, NSError *))arg1;
 - (void)startDownload:(void (^)(BOOL, NSError *))arg1;
 - (void)startDownloadWithMetadata:(SUDownloadMetadata *)arg1 withResult:(void (^)(BOOL, NSError *))arg2;
 - (void)updateDownloadMetadata:(SUDownloadMetadata *)arg1 withResult:(void (^)(BOOL, NSError *))arg2;

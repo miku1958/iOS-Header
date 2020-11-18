@@ -43,7 +43,9 @@
 - (void)_handleRequestSearchForNewAccessories:(id)arg1;
 - (void)_registerForMessages;
 - (void)_startDiscoveringAccessories;
+- (void)_startSearchingForBridgedAccessories:(id)arg1;
 - (void)_stopDiscoveringAccessories;
+- (void)_stopSearchingForBridgedAccessories:(id)arg1;
 - (void)_stopSearchingWithXPCConnection:(id)arg1;
 - (void)accessoryManager:(id)arg1 didFindNewAccessory:(id)arg2;
 - (void)accessoryManager:(id)arg1 didRemoveNewAccessory:(id)arg2;

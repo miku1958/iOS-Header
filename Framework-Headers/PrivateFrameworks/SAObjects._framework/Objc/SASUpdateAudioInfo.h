@@ -31,6 +31,7 @@
 @property (strong, nonatomic) SASRecordingInfo *recordingInfo;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL triggeredTwoShotBorealis;
 
 + (id)updateAudioInfo;
 + (id)updateAudioInfoWithDictionary:(id)arg1 context:(id)arg2;

@@ -6,7 +6,7 @@
 
 #import <EventKitUI/EKEventDetailItem.h>
 
-@class NSArray;
+@class EKAlarmsViewModel, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface EKEventAlarmDetailItem : EKEventDetailItem
@@ -15,7 +15,10 @@ __attribute__((visibility("hidden")))
     NSArray *_alarms;
     BOOL _hasLeaveNowAlarm;
     BOOL _canHaveLeaveNowAlarm;
+    EKAlarmsViewModel *_alarmsViewModel;
 }
+
+@property (strong, nonatomic) EKAlarmsViewModel *alarmsViewModel; // @synthesize alarmsViewModel=_alarmsViewModel;
 
 + (id)_textLabelForIndex:(unsigned long long)arg1;
 - (void).cxx_destruct;
@@ -26,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)configureWithCalendar:(id)arg1 preview:(BOOL)arg2;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
-- (BOOL)editItemViewControllerCommit:(id)arg1;
+- (BOOL)editItemViewControllerSave:(id)arg1;
 - (BOOL)editItemViewControllerShouldShowDetachAlert;
 - (unsigned long long)numberOfSubitems;
 - (void)reset;

@@ -36,6 +36,7 @@
 - (long long)compareAnchorY:(id)arg1;
 - (long long)compareAnchorYDescending:(id)arg1;
 - (long long)compareChunkPosition:(id)arg1;
+- (long long)compareCommonAnchorX:(id)arg1;
 - (long long)compareInsertionOrder:(id)arg1;
 - (long long)compareLinearBounds:(id)arg1;
 - (long long)compareTopDescending:(id)arg1;

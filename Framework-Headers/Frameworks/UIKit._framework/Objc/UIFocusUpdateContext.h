@@ -27,11 +27,13 @@
     id<UIFocusEnvironment> _initialDestinationEnvironment;
     UIScrollView *_commonScrollView;
     NSArray *_regionMapSnapshots;
+    double _destinationViewDistanceOffscreen;
     struct CGVector _focusVelocity;
 }
 
 @property (strong, nonatomic, getter=_commonScrollView, setter=_setCommonScrollView:) UIScrollView *commonScrollView; // @synthesize commonScrollView=_commonScrollView;
 @property (readonly, weak, nonatomic, getter=_destinationView) UIView *destinationView; // @synthesize destinationView=_destinationView;
+@property (nonatomic, getter=_destinationViewDistanceOffscreen, setter=_setDestinationViewDistanceOffscreen:) double destinationViewDistanceOffscreen; // @synthesize destinationViewDistanceOffscreen=_destinationViewDistanceOffscreen;
 @property (nonatomic) unsigned long long focusHeading; // @synthesize focusHeading=_focusHeading;
 @property (nonatomic, getter=_focusUpdateType, setter=_setFocusUpdateType:) long long focusUpdateType; // @synthesize focusUpdateType=_focusUpdateType;
 @property (readonly, nonatomic, getter=_focusVelocity) struct CGVector focusVelocity; // @synthesize focusVelocity=_focusVelocity;

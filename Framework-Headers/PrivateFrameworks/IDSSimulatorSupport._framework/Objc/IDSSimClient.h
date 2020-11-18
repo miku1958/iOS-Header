@@ -20,7 +20,9 @@
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
-- (void)connectionStateDidChange:(unsigned long long)arg1;
+- (void)_informClientOfSwitchToActivePairedDeviceWithSimulatorID:(id)arg1;
+- (void)connectionStateDidChange:(unsigned long long)arg1 simulatorID:(id)arg2;
+- (void)didSwitchToActivePairedDeviceWithSimulatorID:(id)arg1;
 - (void)receiveData:(id)arg1 withServiceName:(id)arg2 messageID:(id)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end

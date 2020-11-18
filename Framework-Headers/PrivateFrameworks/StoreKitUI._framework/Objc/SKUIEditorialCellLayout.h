@@ -27,7 +27,7 @@
 @property (readonly, nonatomic) SKUITextBoxView *textBoxView;
 
 - (void).cxx_destruct;
-- (void)_initSKUIEditorialCellLayout;
+- (void)_initContentInset;
 - (id)_linkView;
 - (id)_textBoxView;
 - (void)applyEditorialLayout:(id)arg1 withOrientation:(long long)arg2 expanded:(BOOL)arg3;
@@ -36,6 +36,7 @@
 - (id)initWithCollectionViewCell:(id)arg1;
 - (id)initWithParentView:(id)arg1;
 - (void)layoutSubviews;
+- (void)resetContentInset;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setColoringWithColorScheme:(id)arg1;
 

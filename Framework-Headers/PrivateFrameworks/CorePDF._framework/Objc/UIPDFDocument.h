@@ -14,6 +14,7 @@
     struct CGPDFDocument *_cgDocument;
     unsigned long long _numberOfPages;
     double _cachedWidth;
+    double _cachedHeight;
     NSString *_documentID;
     NSString *_documentName;
     UIPDFPageImageCache *_pageImageCache;
@@ -50,6 +51,7 @@
 - (void)setImageCacheCount:(unsigned long long)arg1 lookAhead:(unsigned long long)arg2 withResolution:(double)arg3;
 - (double)sumHeight;
 - (double)sumWidth;
+- (void)updateWidthHeightCache;
 
 @end
 

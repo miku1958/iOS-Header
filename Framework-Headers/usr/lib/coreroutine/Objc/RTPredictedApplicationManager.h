@@ -8,7 +8,6 @@
 
 @class RTDataController;
 
-__attribute__((visibility("hidden")))
 @interface RTPredictedApplicationManager : RTNotifier
 {
     RTDataController *_appPredictionDataController;

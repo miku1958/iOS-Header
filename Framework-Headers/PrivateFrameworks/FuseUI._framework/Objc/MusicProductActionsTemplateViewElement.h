@@ -6,14 +6,18 @@
 
 #import <StoreKitUI/SKUIViewElement.h>
 
-@class NSArray;
+@class NSArray, NSData, NSString;
 
 @interface MusicProductActionsTemplateViewElement : SKUIViewElement
 {
     NSArray *_customJSActionTitles;
+    NSString *_reportingFeatureName;
+    NSData *_reportingRecommendationData;
 }
 
 @property (readonly, nonatomic) NSArray *customJSActionTitles; // @synthesize customJSActionTitles=_customJSActionTitles;
+@property (readonly, nonatomic) NSString *reportingFeatureName; // @synthesize reportingFeatureName=_reportingFeatureName;
+@property (readonly, nonatomic) NSData *reportingRecommendationData; // @synthesize reportingRecommendationData=_reportingRecommendationData;
 
 - (void).cxx_destruct;
 - (id)initWithDOMElement:(id)arg1 parent:(id)arg2 elementFactory:(id)arg3;

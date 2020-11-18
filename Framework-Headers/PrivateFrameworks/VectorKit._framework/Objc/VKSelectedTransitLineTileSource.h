@@ -31,7 +31,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithTileSet:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3 labelExternalObjectsModerator:(struct LabelExternalObjectsModerator *)arg4;
 - (unsigned long long)mapLayerForZoomLevelRange;
 - (void)performDownload:(const struct _GEOTileKey *)arg1;
-- (id)tileForData:(id)arg1 downloadKey:(const struct _GEOTileKey *)arg2 sourceKey:(const struct VKTileKey *)arg3;
 - (void)tileRequester:(id)arg1 receivedData:(id)arg2 tileEdition:(unsigned int)arg3 tileSet:(unsigned int)arg4 etag:(id)arg5 forKey:(struct _GEOTileKey)arg6 userInfo:(id)arg7;
 - (void)tileRequester:(id)arg1 receivedError:(id)arg2;
 - (void)tileRequesterFinished:(id)arg1;

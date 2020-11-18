@@ -21,7 +21,6 @@
 + (id)insertMetadataValueWithKeyID:(id)arg1 objectID:(id)arg2 value:(id)arg3 healthDatabase:(id)arg4 error:(id *)arg5;
 + (id)metadataValueStatementWithDatabase:(id)arg1;
 + (long long)protectionClass;
-- (id)_clientValueForProperty:(id)arg1 value:(id)arg2;
 - (id)valueWithDatabase:(id)arg1;
 
 @end

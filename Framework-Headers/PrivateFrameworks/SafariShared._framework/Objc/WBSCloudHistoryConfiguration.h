@@ -16,16 +16,18 @@
     NSString *_multipleDeviceFetchChangesThrottlingPolicyString;
     NSString *_syncCircleSizeRetrievalThrottlingPolicyString;
     unsigned long long _maximumRequestCharacterCount;
-    unsigned long long _syncWindow;
+    double _syncWindow;
 }
 
 @property unsigned long long maximumRequestCharacterCount; // @synthesize maximumRequestCharacterCount=_maximumRequestCharacterCount;
 @property (strong) NSString *multipleDeviceFetchChangesThrottlingPolicyString; // @synthesize multipleDeviceFetchChangesThrottlingPolicyString=_multipleDeviceFetchChangesThrottlingPolicyString;
 @property (strong) NSString *multipleDeviceSaveChangesThrottlingPolicyString; // @synthesize multipleDeviceSaveChangesThrottlingPolicyString=_multipleDeviceSaveChangesThrottlingPolicyString;
+@property (readonly) BOOL shouldBatchSaveRecords;
+@property (readonly) BOOL shouldUseLongLivedOperationsToSaveRecords;
 @property (strong) NSString *singleDeviceFetchChangesThrottlingPolicyString; // @synthesize singleDeviceFetchChangesThrottlingPolicyString=_singleDeviceFetchChangesThrottlingPolicyString;
 @property (strong) NSString *singleDeviceSaveChangesThrottlingPolicyString; // @synthesize singleDeviceSaveChangesThrottlingPolicyString=_singleDeviceSaveChangesThrottlingPolicyString;
 @property (strong) NSString *syncCircleSizeRetrievalThrottlingPolicyString; // @synthesize syncCircleSizeRetrievalThrottlingPolicyString=_syncCircleSizeRetrievalThrottlingPolicyString;
-@property unsigned long long syncWindow; // @synthesize syncWindow=_syncWindow;
+@property double syncWindow; // @synthesize syncWindow=_syncWindow;
 
 - (void).cxx_destruct;
 - (void)_applyBuiltInConfiguration:(id)arg1;

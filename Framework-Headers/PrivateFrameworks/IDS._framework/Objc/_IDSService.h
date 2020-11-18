@@ -10,7 +10,7 @@
 #import <IDS/IDSConnectionDelegatePrivate-Protocol.h>
 #import <IDS/IDSDaemonListenerProtocol-Protocol.h>
 
-@class IDSAccount, IDSAccountController, NSArray, NSMapTable, NSMutableDictionary, NSMutableSet, NSSet, NSString;
+@class IDSAccount, IDSAccountController, IDSQuickSwitchAcknowledgementTracker, NSArray, NSMapTable, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 @protocol OS_xpc_object;
 
 @interface _IDSService : NSObject <IDSAccountControllerDelegate, IDSConnectionDelegatePrivate, IDSDaemonListenerProtocol>
@@ -23,13 +23,14 @@
     id _delegateContext;
     NSMutableDictionary *_protobufSelectors;
     NSMutableSet *_lastIsActiveSet;
-    NSArray *_subServices;
+    NSMutableDictionary *_subServices;
     BOOL _pretendingToBeFull;
     BOOL _everHadDelegate;
     BOOL _manuallyAckMessages;
     unsigned int _listenerCaps;
     NSObject<OS_xpc_object> *_connection;
     id _idsSimulatorSupportDataHandlerToken;
+    IDSQuickSwitchAcknowledgementTracker *_acknowledgementTracker;
 }
 
 @property (readonly, copy, nonatomic) NSSet *accounts;
@@ -44,10 +45,14 @@
 @property (readonly) Class superclass;
 
 - (void)OTRTestCallback:(id)arg1 time:(double)arg2 error:(id)arg3;
+- (CDUnknownBlockType)_acknowledgementBlockWithDelegateIdentifier:(id)arg1;
+- (void)_callDelegatesRespondingToSelector:(SEL)arg1 withPreCallbacksBlock:(CDUnknownBlockType)arg2 callbackBlock:(CDUnknownBlockType)arg3 postCallbacksBlock:(CDUnknownBlockType)arg4;
+- (void)_callDelegatesRespondingToSelector:(SEL)arg1 withPreCallbacksBlock:(CDUnknownBlockType)arg2 callbackBlock:(CDUnknownBlockType)arg3 postCallbacksBlock:(CDUnknownBlockType)arg4 group:(id)arg5;
 - (void)_callDelegatesWithBlock:(CDUnknownBlockType)arg1;
 - (void)_callDelegatesWithBlock:(CDUnknownBlockType)arg1 group:(id)arg2;
 - (void)_callIsActiveChanged;
 - (void)_handlePretendingToBeFullWithIdentifier:(id *)arg1;
+- (BOOL)_isDroppingMessages;
 - (void)_logConnectionMap;
 - (void)_processAccountSet:(id)arg1;
 - (BOOL)_sendSimulatorData:(id)arg1 fromAccount:(id)arg2 toDestinations:(id)arg3 priority:(long long)arg4 options:(id)arg5 identifier:(id *)arg6 error:(id *)arg7;
@@ -56,14 +61,17 @@
 - (id)_sendingAccountForAccount:(id)arg1;
 - (void)_setupIDSWakeListenerForService:(id)arg1;
 - (void)_setupNewConnectionForAccount:(id)arg1;
+- (void)_stopAwaitingQuickSwitchAcknowledgementFromDelegateWithIdentifier:(id)arg1;
 - (void)_tearDownConnectionForUniqueID:(id)arg1;
 - (void)accountController:(id)arg1 accountAdded:(id)arg2;
 - (void)accountController:(id)arg1 accountDisabled:(id)arg2;
 - (void)accountController:(id)arg1 accountEnabled:(id)arg2;
 - (void)accountController:(id)arg1 accountRemoved:(id)arg2;
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
+- (BOOL)canSendMessageWithAccount:(id)arg1 toDestinations:(id)arg2;
 - (BOOL)cancelIdentifier:(id)arg1 error:(id *)arg2;
 - (void)connection:(id)arg1 account:(id)arg2 sessionInviteReceived:(id)arg3 fromID:(id)arg4 transportType:(id)arg5 options:(id)arg6 context:(id)arg7 messageContext:(id)arg8;
+- (void)connection:(id)arg1 connectedDevicesChanged:(id)arg2;
 - (void)connection:(id)arg1 devicesChanged:(id)arg2;
 - (void)connection:(id)arg1 identifier:(id)arg2 alternateCallbackID:(id)arg3 willSendToDestinations:(id)arg4 skippedDestinations:(id)arg5 registrationPropertyToDestinations:(id)arg6;
 - (void)connection:(id)arg1 identifier:(id)arg2 didSendWithSuccess:(BOOL)arg3 error:(id)arg4 context:(id)arg5;
@@ -80,7 +88,9 @@
 - (void)daemonConnected;
 - (void)dealloc;
 - (id)deviceForFromID:(id)arg1;
+- (id)deviceForUniqueID:(id)arg1;
 - (id)devicesForBTUUID:(id)arg1;
+- (void)didSwitchActivePairedDevice:(id)arg1 forService:(id)arg2 wasHandled:(BOOL *)arg3;
 - (id)initWithService:(id)arg1 commands:(id)arg2 delegateContext:(id)arg3;
 - (id)initWithService:(id)arg1 serviceDomain:(id)arg2 delegateContext:(id)arg3;
 - (SEL)protobufActionForType:(unsigned short)arg1 isResponse:(BOOL)arg2;
@@ -98,7 +108,7 @@
 - (void)setPreferInfraWiFi:(BOOL)arg1;
 - (void)setProtobufAction:(SEL)arg1 forProtobufType:(unsigned short)arg2 isResponse:(BOOL)arg3;
 - (void)startOTRTest:(long long)arg1;
-- (void)updateSubServices:(id)arg1;
+- (BOOL)updateSubServices:(id)arg1 forDevice:(id)arg2;
 - (id)uriForFromID:(id)arg1;
 
 @end

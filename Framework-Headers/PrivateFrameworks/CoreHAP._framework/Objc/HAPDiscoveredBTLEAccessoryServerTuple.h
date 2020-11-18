@@ -14,7 +14,7 @@
     double _lastSeen;
 }
 
-@property (strong, nonatomic) HAPAccessoryServerBTLE *accessoryServer; // @synthesize accessoryServer=_accessoryServer;
+@property (readonly, nonatomic) HAPAccessoryServerBTLE *accessoryServer; // @synthesize accessoryServer=_accessoryServer;
 @property (nonatomic) double lastSeen; // @synthesize lastSeen=_lastSeen;
 
 + (id)discoveredAccessoryServerTupleWithAccessoryServer:(id)arg1;

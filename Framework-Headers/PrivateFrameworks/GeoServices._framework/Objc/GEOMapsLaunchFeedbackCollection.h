@@ -15,7 +15,9 @@
     CDStruct_612aec5b _sessionId;
     NSString *_sourceAppBundleId;
     NSString *_uriScheme;
-    CDStruct_a90a2ceb _has;
+    struct {
+        unsigned int sessionId:1;
+    } _has;
 }
 
 @property (nonatomic) BOOL hasSessionId;

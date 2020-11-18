@@ -39,6 +39,7 @@
 
 + (id)_environmentFromAuditToken:(CDStruct_6ad76789 *)arg1;
 + (id)environmentFromAuditToken:(CDStruct_6ad76789 *)arg1;
+- (id)_portNameForEnvironmentName:(id)arg1;
 - (id)_queue_allTopicsForApplication:(id)arg1;
 - (void)_queue_appDebugStateDidChange:(id)arg1;
 - (void)_queue_appDidBecomeBackground:(id)arg1;

@@ -18,6 +18,7 @@
 
 @property (readonly, weak, nonatomic) IKAppContext *appContext; // @synthesize appContext=_appContext;
 @property (readonly, nonatomic) id<IKAppPlaylist> appPlaylist; // @synthesize appPlaylist=_appPlaylist;
+@property (nonatomic) long long endAction;
 @property (readonly, weak, nonatomic) IKJSPlaylist *jsPlaylist; // @synthesize jsPlaylist=_jsPlaylist;
 @property (readonly) unsigned long long length;
 

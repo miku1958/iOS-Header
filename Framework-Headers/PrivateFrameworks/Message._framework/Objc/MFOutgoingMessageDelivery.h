@@ -44,7 +44,7 @@
 - (id)_deliveryAccountForInitializers;
 - (id)account;
 - (void)dealloc;
-- (id)deliverSynchronously;
+- (id)deliverSynchronouslyWithCompletion:(CDUnknownBlockType)arg1;
 - (long long)deliveryStatus;
 - (id)init;
 - (id)initWithHeaders:(id)arg1 HTML:(id)arg2 plainTextAlternative:(id)arg3 other:(id)arg4 charsets:(id)arg5;

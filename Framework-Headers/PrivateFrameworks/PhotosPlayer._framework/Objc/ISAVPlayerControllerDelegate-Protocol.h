@@ -6,11 +6,12 @@
 
 #import <PhotosPlayer/NSObject-Protocol.h>
 
-@class ISAVPlayerController;
+@class ISAVPlayerController, ISWrappedAVPlayer;
 
 @protocol ISAVPlayerControllerDelegate <NSObject>
 
 @optional
+- (void)avPlayerController:(ISAVPlayerController *)arg1 avPlayer:(ISWrappedAVPlayer *)arg2 didChangeToStatus:(long long)arg3;
 - (void)avPlayerControllerDidBeginPlaying:(ISAVPlayerController *)arg1;
 - (void)avPlayerControllerDidEndPlaying:(ISAVPlayerController *)arg1;
 - (void)avPlayerControllerDidEndSeeking:(ISAVPlayerController *)arg1 seekTime:(CDStruct_1b6d18a9)arg2 didFinish:(BOOL)arg3;

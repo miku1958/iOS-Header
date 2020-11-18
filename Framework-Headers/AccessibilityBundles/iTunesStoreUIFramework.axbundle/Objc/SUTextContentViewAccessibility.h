@@ -10,9 +10,14 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)accessibilityLabel;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (id)_accessibilityPlaceholderValue:(BOOL)arg1;
+- (id)accessibilityPlaceholderValue;
+- (id)accessibilityValue;
+- (void)layoutSubviews;
 
 @end
 

@@ -8,6 +8,7 @@
 
 @interface NSString (BRCPathAdditions)
 + (id)brc_emptyFilenameAlternativeName;
++ (id)brc_pathForDirectory:(unsigned long long)arg1;
 + (id)brc_pathWithDeviceID:(int)arg1 fileID:(unsigned long long)arg2;
 + (id)brc_pathWithFileSystemRepresentation:(const char *)arg1;
 + (id)brc_representableHFSFileNameWithBase:(id)arg1 suffix:(id)arg2 extension:(id)arg3 makeDotFile:(BOOL)arg4;
@@ -23,6 +24,7 @@
 - (BOOL)brc_nameIsRepresentableOnHFS;
 - (id)brc_pathExtension;
 - (id)brc_pathOfPackageRoot;
+- (id)brc_pathRelativeToDirectory:(unsigned long long)arg1;
 - (id)brc_pathRelativeToPackageRoot;
 - (id)brc_pathRelativeToPath:(id)arg1;
 - (id)brc_realpath;

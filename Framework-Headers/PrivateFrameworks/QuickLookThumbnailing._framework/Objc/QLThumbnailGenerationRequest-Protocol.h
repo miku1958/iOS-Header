@@ -5,9 +5,8 @@
 //
 
 #import <QuickLookThumbnailing/NSObject-Protocol.h>
-#import <QuickLookThumbnailing/NSXPCProxyCreating-Protocol.h>
 
-@protocol QLThumbnailGenerationRequest <NSXPCProxyCreating, NSObject>
+@protocol QLThumbnailGenerationRequest <NSObject>
 - (void)cancel;
 - (void)waitForCompletionWithHandler:(void (^)(NSError *))arg1;
 @end

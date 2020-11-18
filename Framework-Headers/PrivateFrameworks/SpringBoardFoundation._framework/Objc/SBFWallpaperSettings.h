@@ -11,10 +11,18 @@
     BOOL _replaceBlurs;
     unsigned long long _colorBoxSize;
     long long _blurReplacementMode;
+    double _mediumBlurRadius;
+    double _mediumGrayscaleTintLevel;
+    double _mediumGrayscaleTintAlpha;
+    double _mediumSaturationDeltaFactor;
 }
 
 @property (nonatomic) long long blurReplacementMode; // @synthesize blurReplacementMode=_blurReplacementMode;
 @property (nonatomic) unsigned long long colorBoxSize; // @synthesize colorBoxSize=_colorBoxSize;
+@property (nonatomic) double mediumBlurRadius; // @synthesize mediumBlurRadius=_mediumBlurRadius;
+@property (nonatomic) double mediumGrayscaleTintAlpha; // @synthesize mediumGrayscaleTintAlpha=_mediumGrayscaleTintAlpha;
+@property (nonatomic) double mediumGrayscaleTintLevel; // @synthesize mediumGrayscaleTintLevel=_mediumGrayscaleTintLevel;
+@property (nonatomic) double mediumSaturationDeltaFactor; // @synthesize mediumSaturationDeltaFactor=_mediumSaturationDeltaFactor;
 @property (nonatomic) BOOL replaceBlurs; // @synthesize replaceBlurs=_replaceBlurs;
 
 + (id)settingsControllerModule;

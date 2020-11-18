@@ -14,35 +14,46 @@
 {
     NSString *_appMajorVersion;
     NSString *_appMinorVersion;
+    NSString *_deviceCountryCode;
     NSMutableArray *_displayLanguages;
     NSString *_displayRegion;
     NSString *_hardwareModel;
+    int _maxFormatterSupported;
     int _maxManeuverTypeSupported;
     int _maxRouteIncidentSupported;
     unsigned int _maxTrafficSpeedSupported;
+    BOOL _clusteredTransitRoutesSupported;
     BOOL _internalInstall;
     struct {
+        unsigned int maxFormatterSupported:1;
         unsigned int maxManeuverTypeSupported:1;
         unsigned int maxRouteIncidentSupported:1;
         unsigned int maxTrafficSpeedSupported:1;
+        unsigned int clusteredTransitRoutesSupported:1;
         unsigned int internalInstall:1;
     } _has;
 }
 
 @property (strong, nonatomic) NSString *appMajorVersion; // @synthesize appMajorVersion=_appMajorVersion;
 @property (strong, nonatomic) NSString *appMinorVersion; // @synthesize appMinorVersion=_appMinorVersion;
+@property (nonatomic) BOOL clusteredTransitRoutesSupported; // @synthesize clusteredTransitRoutesSupported=_clusteredTransitRoutesSupported;
+@property (strong, nonatomic) NSString *deviceCountryCode; // @synthesize deviceCountryCode=_deviceCountryCode;
 @property (strong, nonatomic) NSMutableArray *displayLanguages; // @synthesize displayLanguages=_displayLanguages;
 @property (strong, nonatomic) NSString *displayRegion; // @synthesize displayRegion=_displayRegion;
 @property (strong, nonatomic) NSString *hardwareModel; // @synthesize hardwareModel=_hardwareModel;
 @property (readonly, nonatomic) BOOL hasAppMajorVersion;
 @property (readonly, nonatomic) BOOL hasAppMinorVersion;
+@property (nonatomic) BOOL hasClusteredTransitRoutesSupported;
+@property (readonly, nonatomic) BOOL hasDeviceCountryCode;
 @property (readonly, nonatomic) BOOL hasDisplayRegion;
 @property (readonly, nonatomic) BOOL hasHardwareModel;
 @property (nonatomic) BOOL hasInternalInstall;
+@property (nonatomic) BOOL hasMaxFormatterSupported;
 @property (nonatomic) BOOL hasMaxManeuverTypeSupported;
 @property (nonatomic) BOOL hasMaxRouteIncidentSupported;
 @property (nonatomic) BOOL hasMaxTrafficSpeedSupported;
 @property (nonatomic) BOOL internalInstall; // @synthesize internalInstall=_internalInstall;
+@property (nonatomic) int maxFormatterSupported; // @synthesize maxFormatterSupported=_maxFormatterSupported;
 @property (nonatomic) int maxManeuverTypeSupported; // @synthesize maxManeuverTypeSupported=_maxManeuverTypeSupported;
 @property (nonatomic) int maxRouteIncidentSupported; // @synthesize maxRouteIncidentSupported=_maxRouteIncidentSupported;
 @property (nonatomic) unsigned int maxTrafficSpeedSupported; // @synthesize maxTrafficSpeedSupported=_maxTrafficSpeedSupported;

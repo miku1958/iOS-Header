@@ -9,7 +9,7 @@
 #import <PhotosPlayer/ISAVPlayerControllerDelegate-Protocol.h>
 #import <PhotosPlayer/ISPlaybackStateTransitionManagerDelegate-Protocol.h>
 
-@class AVPlayer, AVPlayerItem, ISAVPlayerController, ISPlaybackSpec, ISPlaybackStateTransitionManager, ISReuseQueue, NSError, NSHashTable, NSSet, NSString;
+@class AVPlayerItem, ISAVPlayerController, ISPlaybackSpec, ISPlaybackStateTransitionManager, ISReuseQueue, ISWrappedAVPlayer, NSError, NSHashTable, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface ISPlaybackController : NSObject <ISPlaybackStateTransitionManagerDelegate, ISAVPlayerControllerDelegate>
@@ -18,6 +18,8 @@
     NSHashTable *_observers;
     NSObject<OS_dispatch_queue> *_observerQueue;
     BOOL _shouldReusePlayer;
+    BOOL _applyScaleToVideo;
+    BOOL _playingVitality;
     float _volume;
     float _timeOffset;
     float _vitalityPlayRate;
@@ -27,6 +29,7 @@
     ISPlaybackSpec *_playbackSpec;
     double _prePhotoGapTime;
     AVPlayerItem *_videoPlayerItem;
+    double _crossfadeDuration;
     double _maximumVideoTransitionDelay;
     long long _playbackState;
     CDUnknownBlockType _playbackEndHandler;
@@ -38,18 +41,19 @@
     ISAVPlayerController *__avPlayerController;
     ISPlaybackStateTransitionManager *__transitionManager;
     long long __previousPlaybackState;
-    id __videoTimeObserver;
-    AVPlayer *__videoPlayer;
+    ISWrappedAVPlayer *__videoPlayer;
     id __videoPlayerPerformanceDiagnosticsTimeObserver;
     long long __currentPlaybackID;
     long long __hasStartedVideoForCurrentPlayback;
     double __videoPlaybackRequestTime;
+    double __crossfadePlaybackStartTime;
     double __lastHintProgress;
     CDStruct_1b6d18a9 _idleTime;
     CDStruct_1b6d18a9 __videoDuration;
 }
 
 @property (readonly, nonatomic) ISAVPlayerController *_avPlayerController; // @synthesize _avPlayerController=__avPlayerController;
+@property (nonatomic, setter=_setCrossfadePlaybackStartTime:) double _crossfadePlaybackStartTime; // @synthesize _crossfadePlaybackStartTime=__crossfadePlaybackStartTime;
 @property (nonatomic, setter=_setCurrentPlaybackID:) long long _currentPlaybackID; // @synthesize _currentPlaybackID=__currentPlaybackID;
 @property (nonatomic, setter=_setCurrentTransitionRequestID:) long long _currentTransitionRequestID; // @synthesize _currentTransitionRequestID=__currentTransitionRequestID;
 @property (nonatomic, setter=_setHasStartedVideoForCurrentPlayback:) long long _hasStartedVideoForCurrentPlayback; // @synthesize _hasStartedVideoForCurrentPlayback=__hasStartedVideoForCurrentPlayback;
@@ -60,9 +64,10 @@
 @property (readonly, nonatomic) ISPlaybackStateTransitionManager *_transitionManager; // @synthesize _transitionManager=__transitionManager;
 @property (setter=_setVideoDuration:) CDStruct_1b6d18a9 _videoDuration; // @synthesize _videoDuration=__videoDuration;
 @property (nonatomic, setter=_setVideoPlaybackRequestTime:) double _videoPlaybackRequestTime; // @synthesize _videoPlaybackRequestTime=__videoPlaybackRequestTime;
-@property (readonly, nonatomic) AVPlayer *_videoPlayer; // @synthesize _videoPlayer=__videoPlayer;
+@property (readonly, nonatomic) ISWrappedAVPlayer *_videoPlayer; // @synthesize _videoPlayer=__videoPlayer;
 @property (readonly, nonatomic) id _videoPlayerPerformanceDiagnosticsTimeObserver; // @synthesize _videoPlayerPerformanceDiagnosticsTimeObserver=__videoPlayerPerformanceDiagnosticsTimeObserver;
-@property (strong, nonatomic, setter=_setVideoTimeObserver:) id _videoTimeObserver; // @synthesize _videoTimeObserver=__videoTimeObserver;
+@property (nonatomic) BOOL applyScaleToVideo; // @synthesize applyScaleToVideo=_applyScaleToVideo;
+@property (nonatomic) double crossfadeDuration; // @synthesize crossfadeDuration=_crossfadeDuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -74,6 +79,7 @@
 @property (copy, nonatomic) CDUnknownBlockType playbackEndHandler; // @synthesize playbackEndHandler=_playbackEndHandler;
 @property (strong, nonatomic) ISPlaybackSpec *playbackSpec; // @synthesize playbackSpec=_playbackSpec;
 @property (nonatomic) long long playbackState; // @synthesize playbackState=_playbackState;
+@property (nonatomic, getter=isPlayingVitality) BOOL playingVitality; // @synthesize playingVitality=_playingVitality;
 @property (nonatomic) double prePhotoGapTime; // @synthesize prePhotoGapTime=_prePhotoGapTime;
 @property (readonly) Class superclass;
 @property (nonatomic) float timeOffset; // @synthesize timeOffset=_timeOffset;
@@ -99,6 +105,7 @@
 - (void)_setHintProgress:(float)arg1;
 - (void)_setPlayRate:(float)arg1;
 - (void)_setPlaybackState:(long long)arg1;
+- (void)_setPlayingVitality:(BOOL)arg1;
 - (void)_setTimeOffset:(float)arg1;
 - (void)_setVideoPlayerError:(id)arg1;
 - (void)_setVideoPlayerStatus:(long long)arg1;
@@ -106,10 +113,12 @@
 - (void)_startVideoPlaybackWithPlaybackID:(long long)arg1;
 - (void)_updatePlayerController;
 - (void)_updatePlayerControllerVolume;
+- (void)_updatePlayingVitality;
 - (void)_updateStatus;
 - (void)_videoDidPlayToEndTime;
 - (void)_videoWillPlayToEndTime;
 - (void)addOutput:(id)arg1;
+- (void)avPlayerController:(id)arg1 avPlayer:(id)arg2 didChangeToStatus:(long long)arg3;
 - (void)avPlayerControllerDidBeginPlaying:(id)arg1;
 - (void)avPlayerControllerDidEndPlaying:(id)arg1;
 - (void)avPlayerControllerDidEndSeeking:(id)arg1 seekTime:(CDStruct_1b6d18a9)arg2 didFinish:(BOOL)arg3;

@@ -15,6 +15,7 @@
 @interface HMDRelayStream : HAPRelayStream <HMDRelayManagerDelegate, IDSServiceDelegateHomeKit>
 {
     BOOL _opened;
+    BOOL _suspended;
     HMDRelayManager *_relayManger;
     NSString *_accessoryIdentifier;
     NSData *_accessToken;
@@ -27,7 +28,7 @@
 @property (readonly, copy, nonatomic) NSData *accessToken; // @synthesize accessToken=_accessToken;
 @property (readonly, copy, nonatomic) NSString *accessoryIdentifier; // @synthesize accessoryIdentifier=_accessoryIdentifier;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-@property (readonly, nonatomic) NSString *controllerIdentifier; // @synthesize controllerIdentifier=_controllerIdentifier;
+@property (readonly, copy, nonatomic) NSString *controllerIdentifier; // @synthesize controllerIdentifier=_controllerIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -36,6 +37,7 @@
 @property (readonly, nonatomic) NSMutableArray *pendingSentMessageIdentifiers; // @synthesize pendingSentMessageIdentifiers=_pendingSentMessageIdentifiers;
 @property (readonly, weak, nonatomic) HMDRelayManager *relayManger; // @synthesize relayManger=_relayManger;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=isSuspended) BOOL suspended; // @synthesize suspended=_suspended;
 
 - (void).cxx_destruct;
 - (void)_closeWithError:(id)arg1;
@@ -44,8 +46,10 @@
 - (unsigned long long)mtu;
 - (void)open;
 - (void)relayManager:(id)arg1 didUpdateControllerIdentifier:(id)arg2;
+- (void)resume;
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(BOOL)arg4 error:(id)arg5;
 - (void)service:(id)arg1 account:(id)arg2 incomingAccessoryData:(id)arg3 fromAccessoryID:(id)arg4 context:(id)arg5;
+- (void)suspend;
 - (id)writeData:(id)arg1 error:(id *)arg2;
 
 @end

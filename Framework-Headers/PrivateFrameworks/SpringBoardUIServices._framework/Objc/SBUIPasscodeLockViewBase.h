@@ -11,12 +11,11 @@
 #import <SpringBoardUIServices/SBUIPasscodeLockView-Protocol.h>
 #import <SpringBoardUIServices/SBUIPasscodeLockView_Internal-Protocol.h>
 
-@class NSString, SBUIPasscodeEntryField, UIColor, _UILegibilitySettings;
-@protocol SBFLegibilitySettingsProvider, SBUIPasscodeLockViewDelegate, SBUIPasscodeLockViewDelegate_Internal;
+@class NSString, NSTimer, SBUIPasscodeEntryField, UIColor, _UILegibilitySettings;
+@protocol SBFLegibilitySettingsProvider, SBUIPasscodeLockViewDelegate;
 
 @interface SBUIPasscodeLockViewBase : UIView <SBUIBiometricEventObserver, SBFLegibilitySettingsProviderDelegate, SBUIPasscodeLockView_Internal, SBUIPasscodeLockView>
 {
-    id<SBUIPasscodeLockViewDelegate_Internal> _delegate;
     int _style;
     BOOL _playsKeypadSounds;
     BOOL _showsEmergencyCallButton;
@@ -37,9 +36,11 @@
     BOOL _enabledMatching;
     BOOL _screenOn;
     BOOL _shouldResetForFailedPasscodeAttempt;
+    id<SBUIPasscodeLockViewDelegate> _delegate;
     NSString *_statusText;
     NSString *_statusSubtitleText;
     unsigned long long _statusState;
+    NSTimer *_screenBrightnessChangedTimer;
 }
 
 @property (strong, nonatomic, getter=_entryField, setter=_setEntryField:) SBUIPasscodeEntryField *_entryField; // @synthesize _entryField;
@@ -54,6 +55,7 @@
 @property (nonatomic, getter=_luminosityBoost, setter=_setLuminosityBoost:) double luminosityBoost; // @synthesize luminosityBoost=_luminanceBoost;
 @property (readonly, nonatomic) NSString *passcode; // @dynamic passcode;
 @property (nonatomic) BOOL playsKeypadSounds; // @dynamic playsKeypadSounds;
+@property (strong) NSTimer *screenBrightnessChangedTimer; // @synthesize screenBrightnessChangedTimer=_screenBrightnessChangedTimer;
 @property (nonatomic, getter=isScreenOn) BOOL screenOn; // @synthesize screenOn=_screenOn;
 @property (nonatomic) BOOL shouldResetForFailedPasscodeAttempt; // @synthesize shouldResetForFailedPasscodeAttempt=_shouldResetForFailedPasscodeAttempt;
 @property (nonatomic) BOOL showsEmergencyCallButton; // @synthesize showsEmergencyCallButton=_showsEmergencyCallButton;
@@ -64,6 +66,7 @@
 @property (nonatomic) int style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_clearBrightnessChangeTimer;
 - (id)_defaultStatusText;
 - (void)_evaluateLuminance;

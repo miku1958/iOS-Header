@@ -9,10 +9,11 @@
 @interface GEOFeatureSpecificSimpleTileRequester : GEOVoltaireSimpleTileRequester
 {
     unsigned long long _featureID;
+    BOOL _shouldLocalize;
 }
 
 - (id)_localizationURLForTileKey:(struct _GEOTileKey *)arg1;
-- (id)initWithKeyList:(id)arg1 manifestConfiguration:(id)arg2 locale:(id)arg3 featureID:(unsigned long long)arg4;
+- (id)initWithKeyList:(id)arg1 manifestConfiguration:(id)arg2 locale:(id)arg3 shouldLocalize:(BOOL)arg4 featureID:(unsigned long long)arg5;
 - (id)urlForTileKey:(struct _GEOTileKey *)arg1;
 
 @end

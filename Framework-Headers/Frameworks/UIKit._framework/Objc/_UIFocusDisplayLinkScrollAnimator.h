@@ -28,9 +28,11 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (struct CGPoint)_applyAccelerationLimitToAcceleration:(struct CGPoint)arg1 currentOffset:(struct CGPoint)arg2 targetOffset:(struct CGPoint)arg3;
 - (id)_entryForScrollView:(id)arg1 createIfNeeded:(BOOL)arg2;
 - (void)_heartbeat:(id)arg1;
 - (void)_processEntry:(id)arg1 timeDelta:(long long)arg2 completed:(id)arg3;
+- (BOOL)_shouldPushAndPopRunLoopModes;
 - (void)_updateDisplayLinkConfiguration;
 - (void)cancelPeekAdjustmentForScrollView:(id)arg1 performRollback:(BOOL)arg2;
 - (void)cancelScrollingForScrollView:(id)arg1;

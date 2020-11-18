@@ -8,7 +8,6 @@
 
 @class NSDate, NSNumber, NSString;
 
-__attribute__((visibility("hidden")))
 @interface ACDManagedCredentialItem : NSManagedObject
 {
 }

@@ -84,6 +84,8 @@
 @property (nonatomic) BOOL timedOut; // @synthesize timedOut=_timedOut;
 @property (nonatomic) BOOL transactionComplete; // @synthesize transactionComplete=_transactionComplete;
 
++ (Class)httpErrorType;
++ (Class)tcpInfoType;
 - (void)addHttpError:(id)arg1;
 - (void)addTcpInfo:(id)arg1;
 - (void)clearHttpErrors;

@@ -120,6 +120,7 @@
 - (id)keysByKeyName:(id)arg1;
 - (id)keysForMergeConditions;
 - (id)keysOrderedByPosition;
+- (id)keysOrderedByPositionRTL;
 - (id)keysOrderedByPositionWithoutZip;
 - (id)keysWithString:(id)arg1;
 - (id)layoutName;
@@ -131,6 +132,7 @@
 - (void)mergeReturnKey:(id)arg1 withReturnKey:(id)arg2;
 - (BOOL)modifiesKeyplane;
 - (id)nameFromAttributes;
+- (struct CGPoint)navigationPointOfKey;
 - (BOOL)noLanguageIndicator;
 - (BOOL)notUseCandidateSelection;
 - (id)numberForProperty:(id)arg1;

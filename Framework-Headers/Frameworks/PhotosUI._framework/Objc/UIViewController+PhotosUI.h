@@ -15,6 +15,7 @@
 
 + (void)_pu_ensureLocalAssets:(id)arg1 forReason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)pu_copyAssets:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)pu_currentViewControllerStack;
 + (BOOL)pu_isSkiingBlackSlope;
 - (void)_pu_animateBottomBarTransition:(id)arg1 withContext:(id)arg2;
 - (void)_pu_performBarsVisibilityUpdatesWithAnimationSettings:(struct PUBarAnimationSettings)arg1 isStatusBarHidden:(BOOL)arg2;

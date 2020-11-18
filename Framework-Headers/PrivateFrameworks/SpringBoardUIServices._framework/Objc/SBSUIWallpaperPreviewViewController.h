@@ -9,13 +9,13 @@
 #import <SpringBoardUIServices/SBFLegibilitySettingsProvider-Protocol.h>
 #import <SpringBoardUIServices/SBFLegibilitySettingsProviderDelegate-Protocol.h>
 
-@class AVURLAsset, NSDictionary, NSString, NSTimer, UIImage, _UILegibilitySettings;
+@class AVURLAsset, NSDictionary, NSString, NSTimer, SBFWallpaperConfigurationManager, UIImage, _UILegibilitySettings;
 @protocol SBFLegibilitySettingsProviderDelegate;
 
 @interface SBSUIWallpaperPreviewViewController : UIViewController <SBFLegibilitySettingsProviderDelegate, SBFLegibilitySettingsProvider>
 {
     NSTimer *_dateTimer;
-    id<SBFLegibilitySettingsProviderDelegate> _delegate;
+    SBFWallpaperConfigurationManager *_wallpaperConfigurationManager;
     UIImage *_wallpaperImage;
     NSDictionary *_proceduralWallpaper;
     NSDictionary *_proceduralWallpaperOptions;
@@ -26,17 +26,19 @@
     AVURLAsset *_video;
     double _stillTimeInVideo;
     BOOL _motionEnabled;
+    id<SBFLegibilitySettingsProviderDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<SBFLegibilitySettingsProviderDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<SBFLegibilitySettingsProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property (readonly, nonatomic) _UILegibilitySettings *legibilitySettings;
 @property (nonatomic) BOOL motionEnabled; // @synthesize motionEnabled=_motionEnabled;
 @property (readonly) Class superclass;
 @property (readonly) UIImage *wallpaperImage;
 
+- (void).cxx_destruct;
 - (id)_dateView;
 - (double)_parallaxFactor;
 - (id)_previewView;
@@ -66,6 +68,7 @@
 - (void)setWallpaperForLocations:(long long)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (id)wallpaperConfigurationManager;
 
 @end
 

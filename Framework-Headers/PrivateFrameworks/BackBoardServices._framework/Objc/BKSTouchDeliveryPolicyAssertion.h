@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_xpc_object;
 
@@ -16,6 +16,7 @@
 - (void)dealloc;
 - (id)endpoint;
 - (id)init;
+- (void)invalidate;
 
 @end
 

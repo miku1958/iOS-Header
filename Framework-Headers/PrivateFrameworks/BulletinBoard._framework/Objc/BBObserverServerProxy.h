@@ -9,20 +9,20 @@
 #import <BulletinBoard/BBObserverClientInterface-Protocol.h>
 #import <BulletinBoard/BBObserverServerInterface-Protocol.h>
 
-@class BBObserver, NSXPCConnection;
+@class BBZeroingWeakReference, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface BBObserverServerProxy : NSObject <BBObserverClientInterface, BBObserverServerInterface>
 {
     BOOL _isValid;
     BOOL _isEstablished;
-    BBObserver *_observerWeak;
+    BBZeroingWeakReference *_observerZWR;
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
-@property (nonatomic) BBObserver *observerWeak; // @synthesize observerWeak=_observerWeak;
+@property (strong, nonatomic) BBZeroingWeakReference *observerZWR; // @synthesize observerZWR=_observerZWR;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 + (id)xpcInterface;

@@ -8,10 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, GEOLocation, NSData;
+@class GEOLatLng, GEOLocation, NSArray, NSData;
 
 @interface GEOCompanionRouteStatus : PBCodable <NSCopying>
 {
+    CDStruct_9f2792e4 _selectedRideIndexs;
     double _timestamp;
     unsigned int _distanceRemainingOnRoute;
     unsigned int _distanceToManeuver;
@@ -69,9 +70,15 @@
 @property (nonatomic) unsigned int routeLocationIndex; // @synthesize routeLocationIndex=_routeLocationIndex;
 @property (nonatomic) float routeLocationOffset; // @synthesize routeLocationOffset=_routeLocationOffset;
 @property (strong, nonatomic) GEOLatLng *routeMatchCoordinate; // @synthesize routeMatchCoordinate=_routeMatchCoordinate;
+@property (readonly, nonatomic) unsigned int *selectedRideIndexs;
+@property (readonly, nonatomic) unsigned long long selectedRideIndexsCount;
+@property (readonly, nonatomic) NSArray *selectedRideIndices;
 @property (nonatomic) unsigned int stepID; // @synthesize stepID=_stepID;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
+- (void)_updateClusteredSectionSelectedRideIndicesFromRoute:(id)arg1;
+- (void)addSelectedRideIndex:(unsigned int)arg1;
+- (void)clearSelectedRideIndexs;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -83,6 +90,9 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (unsigned int)selectedRideIndexAtIndex:(unsigned long long)arg1;
+- (void)setSelectedRideIndexs:(unsigned int *)arg1 count:(unsigned long long)arg2;
+- (void)updateClusteredSectionSelectedRideIndicesFromRoute:(id)arg1 routeID:(id)arg2;
 - (void)updateFeedbackWithNavigationState:(int)arg1 locationUnreliable:(BOOL)arg2 announcementStage:(unsigned long long)arg3 nextAnnouncementStage:(unsigned long long)arg4 nextAnnouncementTime:(double)arg5;
 - (void)updateWithRoute:(id)arg1 routeID:(id)arg2;
 - (void)writeTo:(id)arg1;

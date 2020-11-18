@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/APSConnectionDelegate-Protocol.h>
 #import <HomeKitDaemon/HMMessageReceiver-Protocol.h>
 
-@class APSConnection, CKContainer, CKDatabase, CKRecord, CKRecordID, CKRecordZone, CKSubscription, HAPOSTransaction, HMDCloudDataSyncStateFilter, HMDHomeManager, HMMessageDispatcher, NSData, NSMutableArray, NSString, NSUUID;
+@class APSConnection, CKContainer, CKDatabase, CKRecord, CKRecordID, CKRecordZone, CKSubscription, HAPOSTransaction, HMDCloudDataSyncStateFilter, HMDCloudReadOnlyModeFilter, HMDHomeManager, HMMessageDispatcher, NSData, NSMutableArray, NSString, NSUUID;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface HMDCloudDataSyncManager : NSObject <APSConnectionDelegate, HMMessageReceiver>
@@ -43,6 +43,7 @@
     CDUnknownBlockType _cloudMetadataDeletedNotificationHandler;
     CDUnknownBlockType _controllerKeyAvailableNotificationHandler;
     HMDCloudDataSyncStateFilter *_cloudDataSyncStateFilter;
+    HMDCloudReadOnlyModeFilter *_cloudReadonlyModeFilter;
     NSUUID *_uuid;
     HMMessageDispatcher *_msgDispatcher;
     HMDHomeManager *_homeManager;
@@ -60,6 +61,7 @@
 @property (nonatomic) BOOL cloudHomeDataRecordExists; // @synthesize cloudHomeDataRecordExists=_cloudHomeDataRecordExists;
 @property (copy, nonatomic) CDUnknownBlockType cloudMetadataDeletedNotificationHandler; // @synthesize cloudMetadataDeletedNotificationHandler=_cloudMetadataDeletedNotificationHandler;
 @property (nonatomic) BOOL cloudMetadataRecordExists; // @synthesize cloudMetadataRecordExists=_cloudMetadataRecordExists;
+@property (strong, nonatomic) HMDCloudReadOnlyModeFilter *cloudReadonlyModeFilter; // @synthesize cloudReadonlyModeFilter=_cloudReadonlyModeFilter;
 @property (strong, nonatomic) NSData *cloudServerTokenData; // @synthesize cloudServerTokenData=_cloudServerTokenData;
 @property (strong, nonatomic) HMMessageDispatcher *configSyncDispatcher; // @synthesize configSyncDispatcher=_configSyncDispatcher;
 @property (strong, nonatomic) CKContainer *container; // @synthesize container=_container;
@@ -106,7 +108,7 @@
 - (void)_handleChangedMetadataRecordWithEncodedData:(id)arg1 transaction:(id)arg2;
 - (void)_handleChangedRecordWithEncodedData:(id)arg1 encodeDataVersion2:(id)arg2;
 - (void)_handleControllerKeyAvailable;
-- (void)_handleFetchCompletedWithError:(id)arg1 serverToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3 moreRecordsComing:(BOOL)arg4;
+- (void)_handleFetchCompletedWithError:(id)arg1 serverToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3 moreRecordsComing:(BOOL)arg4 emptyRecord:(BOOL)arg5;
 - (void)_handleFetchedHomeDataRecord;
 - (void)_handleKeychainSyncChanged:(id)arg1;
 - (void)_handleKeychainSyncStateChanged:(BOOL)arg1;
@@ -134,8 +136,9 @@
 - (void)connection:(id)arg1 didReceiveToken:(id)arg2 forTopic:(id)arg3 identifier:(id)arg4;
 - (void)dealloc;
 - (void)fetchCurrentAccountStateWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)initWithCloudServerTokenData:(id)arg1 messageDispatcher:(id)arg2 cloudDataSyncStateFilter:(id)arg3 homeManager:(id)arg4 callbackQueue:(id)arg5;
+- (id)initWithCloudServerTokenData:(id)arg1 messageDispatcher:(id)arg2 cloudDataSyncStateFilter:(id)arg3 cloudReadonlyModeFilter:(id)arg4 homeManager:(id)arg5 callbackQueue:(id)arg6;
 - (void)resetCloudDataAndDeleteMetadataForCurrentAccount:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)resetCloudServerTokenData:(id)arg1;
 - (void)setCloudDataDeletedNotificationBlock:(CDUnknownBlockType)arg1;
 - (void)setCloudMetadataDeletedNotificationBlock:(CDUnknownBlockType)arg1;
 - (void)setControllerKeyAvailableNotificationBlock:(CDUnknownBlockType)arg1;

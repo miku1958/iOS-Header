@@ -7,15 +7,15 @@
 #import <MobileCoreServices/LSApplicationProxy.h>
 
 @interface LSApplicationProxy (UserNotification)
-+ (id)un_applicationProxyForBundleIdentifier:(id)arg1;
 + (id)un_bundleForBundleIdentifier:(id)arg1;
+- (id)_un_bundle;
+- (BOOL)_un_isReallyInstalled;
 - (BOOL)_un_isResourceValidForPath:(id)arg1 withContainerPath:(id)arg2;
-- (id)un_bundle;
+- (BOOL)_un_usesLocalNotification;
 - (id)un_infoDictionary;
 - (BOOL)un_isSystemApplication;
 - (id)un_pathForSoundName:(id)arg1;
 - (BOOL)un_requiresLocalNotification;
 - (BOOL)un_shouldUseDefaultDataProvider;
-- (BOOL)un_usesLocalNotification;
 @end
 

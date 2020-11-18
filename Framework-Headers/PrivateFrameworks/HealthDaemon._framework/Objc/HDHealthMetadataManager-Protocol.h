@@ -6,12 +6,12 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HDDataEntity, HDMetadataValueStatement, NSDictionary, NSNumber;
+@class HDMetadataValueStatement, NSDictionary, NSNumber;
 @protocol HDHealthDaemon, HDHealthDatabase;
 
 @protocol HDHealthMetadataManager <NSObject>
 - (BOOL)insertMetadata:(NSDictionary *)arg1 forDataEntityWithID:(NSNumber *)arg2 healthDaemon:(id<HDHealthDaemon>)arg3 error:(id *)arg4;
-- (NSDictionary *)metadataForDataEntity:(HDDataEntity *)arg1 healthDatabase:(id<HDHealthDatabase>)arg2 error:(id *)arg3;
-- (NSDictionary *)metadataForDataEntity:(HDDataEntity *)arg1 withStatement:(HDMetadataValueStatement *)arg2 error:(id *)arg3;
+- (NSDictionary *)metadataForDataEntityWithPersistentID:(long long)arg1 healthDatabase:(id<HDHealthDatabase>)arg2 error:(id *)arg3;
+- (NSDictionary *)metadataForDataEntityWithPersistentID:(long long)arg1 statement:(HDMetadataValueStatement *)arg2 error:(id *)arg3;
 @end
 

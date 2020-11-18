@@ -272,6 +272,7 @@
 - (BOOL)stopVideoReceive:(id *)arg1;
 - (BOOL)stopVideoSend:(BOOL)arg1 error:(id *)arg2;
 - (void)threadSafeCleanupSession:(id)arg1;
+- (void)triggerInterfaceChange;
 - (int)tryrdlock;
 - (void)unlock;
 - (void)updateCapabilities:(id)arg1 forCallID:(unsigned int)arg2;

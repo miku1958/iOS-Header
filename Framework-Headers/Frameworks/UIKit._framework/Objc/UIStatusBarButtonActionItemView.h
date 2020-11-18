@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
     UIButton *_externalButton;
 }
 
+@property (readonly, nonatomic) double buttonCharge;
+
 - (void).cxx_destruct;
 - (id)_createButton;
 - (void)_doubleTapButton:(id)arg1;

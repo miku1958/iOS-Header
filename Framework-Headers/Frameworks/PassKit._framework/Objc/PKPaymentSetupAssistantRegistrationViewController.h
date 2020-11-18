@@ -6,12 +6,21 @@
 
 #import <PassKit/PKPaymentSetupViewController.h>
 
-@class UIButton;
+#import <PassKit/PKPaymentSetupViewControllerDelegate-Protocol.h>
 
-@interface PKPaymentSetupAssistantRegistrationViewController : PKPaymentSetupViewController
+@class NSString, UIButton;
+@protocol PKPaymentSetupViewControllerDelegate;
+
+@interface PKPaymentSetupAssistantRegistrationViewController : PKPaymentSetupViewController <PKPaymentSetupViewControllerDelegate>
 {
     UIButton *_skipButton;
+    id<PKPaymentSetupViewControllerDelegate> _externalDelegate;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (BOOL)bridgeSetupAssistantNeedsToRunReturningRequirements:(unsigned long long *)arg1;
 + (id)defaultWebServiceForContext:(long long)arg1;
@@ -19,10 +28,17 @@
 + (BOOL)setupAssistantNeedsToRunReturningRequirements:(unsigned long long *)arg1;
 - (id)_bridgeContextDefaultLocalCredential;
 - (id)_deviceSpecificLocalizedStringKeyForKey:(id)arg1;
+- (void)_setExternalDelegate:(id)arg1;
 - (void)dealloc;
+- (id)delegate;
 - (id)initWithPaymentWebService:(id)arg1 context:(long long)arg2 delegate:(id)arg3;
 - (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
 - (void)privacyButtonTouched:(id)arg1;
+- (void)setDelegate:(id)arg1;
+- (void)viewController:(id)arg1 didShowProvisioningError:(id)arg2;
+- (void)viewControllerDidShowEligibilityIssue:(id)arg1;
+- (void)viewControllerDidTerminateSetupFlow:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 
 @end

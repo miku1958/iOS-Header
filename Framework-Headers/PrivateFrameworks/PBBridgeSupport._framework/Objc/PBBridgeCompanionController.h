@@ -11,7 +11,7 @@
 #import <PBBridgeSupport/PBBridgeCompanionProtocol-Protocol.h>
 #import <PBBridgeSupport/RUILoaderDelegate-Protocol.h>
 
-@class NSMutableData, NSMutableURLRequest, NSString, NSTimer, NSURLConnection, RUILoader, RUIStyle;
+@class NSMutableData, NSMutableDictionary, NSMutableURLRequest, NSString, NSTimer, NSURLConnection, RUILoader, RUIStyle;
 @protocol PBBridgeConnectionDelegate, RUILoaderDelegate;
 
 @interface PBBridgeCompanionController : PBBridgeIDSServiceDelegate <IDSServiceDelegate, NSURLConnectionDelegate, RUILoaderDelegate, PBBridgeCompanionProtocol>
@@ -23,6 +23,8 @@
     BOOL _awaitingCustomResponse;
     BOOL _isEstablishingPairing;
     BOOL _allowAnyHTTPSCertificate;
+    BOOL _sentSessionRequest;
+    BOOL _sentActivationRequest;
     unsigned short _granularActivationState;
     int _activationState;
     RUIStyle *_remoteUIStyle;
@@ -38,6 +40,7 @@
     NSString *_remoteActivationUserAgent;
     CDUnknownBlockType _lockedOnAnimationCompletion;
     CDUnknownBlockType _initialSyncPrepCompletion;
+    NSMutableDictionary *_reportMapping;
 }
 
 @property (strong, nonatomic) NSURLConnection *activationConnection; // @synthesize activationConnection=_activationConnection;
@@ -62,9 +65,12 @@
 @property (nonatomic) BOOL passcodeSet; // @synthesize passcodeSet=_passcodeSet;
 @property (copy, nonatomic) NSString *remoteActivationUserAgent; // @synthesize remoteActivationUserAgent=_remoteActivationUserAgent;
 @property (strong, nonatomic) RUIStyle *remoteUIStyle; // @synthesize remoteUIStyle=_remoteUIStyle;
+@property (strong, nonatomic) NSMutableDictionary *reportMapping; // @synthesize reportMapping=_reportMapping;
 @property (weak, nonatomic) id<RUILoaderDelegate> ruiDelegate; // @synthesize ruiDelegate=_ruiDelegate;
 @property (strong, nonatomic) RUILoader *ruiLoader; // @synthesize ruiLoader=_ruiLoader;
 @property (nonatomic) BOOL selectedPairedUnlock; // @synthesize selectedPairedUnlock=_selectedPairedUnlock;
+@property (nonatomic) BOOL sentActivationRequest; // @synthesize sentActivationRequest=_sentActivationRequest;
+@property (nonatomic) BOOL sentSessionRequest; // @synthesize sentSessionRequest=_sentSessionRequest;
 @property (readonly) Class superclass;
 
 + (id)displayNameWithFirstName:(id)arg1 lastName:(id)arg2;
@@ -113,10 +119,12 @@
 - (void)queryGizmoForOfflineTerms;
 - (void)queryGizmoForShowWarrantySentinelAndRestoreDeviceName:(id)arg1;
 - (void)refreshTimeoutTimer;
+- (id)reporterForConnection:(id)arg1;
 - (void)sendGizmoPasscodeRestrictions;
 - (void)sendProxyActivationRequest:(id)arg1;
 - (void)sendProxyActivationWithCustomRequest:(id)arg1;
 - (id)serviceIdentifier;
+- (void)setReporter:(id)arg1 forConnection:(id)arg2;
 - (void)setupServiceMessageSelectorMappings;
 - (void)startEstablishingPairing;
 - (void)tellGizmoToBeginActivation;

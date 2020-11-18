@@ -19,9 +19,12 @@
     NSMutableDictionary *_topicToAccountDictionaries;
     NSMutableDictionary *_topicToEnabledAccounts;
     NSMutableDictionary *_accountToDevices;
+    NSMutableDictionary *_accountToActiveDeviceUniqueID;
     NSString *_deviceIdentifier;
     BOOL _setupComplete;
     BOOL _postedSetupComplete;
+    BOOL _setupInfoComplete;
+    BOOL _connectionComplete;
     BOOL _hidingDisconnect;
 }
 
@@ -34,13 +37,16 @@
 @property (readonly, nonatomic) BOOL isSetupComplete;
 @property (readonly) Class superclass;
 
+- (void)__postSetupComplete;
 - (void)_callHandlersAsyncWithBlock:(CDUnknownBlockType)arg1;
 - (void)_callHandlersWithBlock:(CDUnknownBlockType)arg1;
 - (void)_callHandlersWithBlockOnIvarQueue:(CDUnknownBlockType)arg1;
 - (void)_callHandlersWithBlockOnIvarQueue:(CDUnknownBlockType)arg1 cleanup:(CDUnknownBlockType)arg2;
-- (void)_deferredSetupOnIvarQueue:(id)arg1;
+- (void)_internalDidSwitchActivePairedDevice:(id)arg1 forService:(id)arg2;
+- (void)_internalSwitchActivePairedDevice:(id)arg1 forAccount:(id)arg2;
 - (void)_noteDisconnected;
 - (void)_removeAccountOnIvarQueue:(id)arg1;
+- (id)_uniqueIDForDevice:(id)arg1;
 - (void)account:(id)arg1 accountInfoChanged:(id)arg2;
 - (void)account:(id)arg1 aliasesChanged:(id)arg2;
 - (void)account:(id)arg1 dependentDevicesUpdated:(id)arg2;
@@ -57,6 +63,7 @@
 - (void)accountEnabled:(id)arg1 onService:(id)arg2;
 - (void)accountRemoved:(id)arg1;
 - (void)addHandler:(id)arg1;
+- (void)connectionComplete:(BOOL)arg1;
 - (void)continuityDidConnectToPeer:(id)arg1 withError:(id)arg2;
 - (void)continuityDidDisconnectFromPeer:(id)arg1 withError:(id)arg2;
 - (void)continuityDidDiscoverPeerWithData:(id)arg1 fromPeer:(id)arg2;
@@ -69,10 +76,12 @@
 - (void)continuityDidStopAdvertisingOfType:(long long)arg1;
 - (void)continuityDidStopScanningForType:(long long)arg1;
 - (void)continuityDidUpdateState:(long long)arg1;
+- (void)deactivatePairedDevices;
 - (void)dealloc;
 - (id)dependentDevicesForAccount:(id)arg1;
 - (void)device:(id)arg1 nsuuidChanged:(id)arg2;
 - (void)deviceIdentifierDidChange:(id)arg1;
+- (void)didSwitchActivePairedDevice:(id)arg1;
 - (id)enabledAccountsForService:(id)arg1;
 - (void)forwardInvocation:(id)arg1;
 - (id)init;
@@ -80,7 +89,8 @@
 - (void)refreshRegistrationForAccount:(id)arg1;
 - (void)registrationFailedForAccount:(id)arg1 needsDeletion:(id)arg2;
 - (void)removeHandler:(id)arg1;
-- (void)setupComplete:(BOOL)arg1 info:(id)arg2;
+- (void)setupCompleteWithInfo:(id)arg1;
+- (void)switchActivePairedDevice:(id)arg1 forAccount:(id)arg2;
 - (void)xpcObject:(id)arg1 objectContext:(id)arg2;
 
 @end

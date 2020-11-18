@@ -15,15 +15,13 @@
     NSMutableDictionary *_requestsById;
     NSObject<OS_dispatch_queue> *_serialQueue;
     int _currentRequestID;
-    int _notifyToken;
 }
 
 + (id)defaultManager;
 - (void).cxx_destruct;
 - (void)_synchronized:(CDUnknownBlockType)arg1;
-- (void)_updateCloudResourceDownloadStatesForConnectionLost:(BOOL)arg1;
 - (void)_updateCloudResourceDownloadStatesOnConnectionLostNotification:(id)arg1;
-- (void)_updateCloudResourceDownloadStatesOnStatusDidChangeNotification;
+- (void)_updateCloudResourceDownloadStatesOnStatusDidChangeNotification:(id)arg1;
 - (void)cancelRequest:(int)arg1;
 - (void)dealloc;
 - (id)init;

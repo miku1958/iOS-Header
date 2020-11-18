@@ -6,8 +6,8 @@
 
 #import <CompanionSync/SYSession.h>
 
-@class NSMutableIndexSet, NSObject, _SYMessageTimerTable;
-@protocol OS_dispatch_source;
+@class NSMutableIndexSet, NSObject, _SYCountedSemaphore, _SYMessageTimerTable;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SYOutgoingBatchSyncSession : SYSession
 {
@@ -15,6 +15,8 @@
     NSObject<OS_dispatch_source> *_sessionTimer;
     unsigned long long _batchIndex;
     NSMutableIndexSet *_ackedBatchIndices;
+    NSObject<OS_dispatch_queue> *_changeFetcherQueue;
+    _SYCountedSemaphore *_changeConcurrencySemaphore;
     unsigned long long _activity;
     long long _state;
     BOOL _errorIsLocal;
@@ -29,7 +31,6 @@
 - (void)_fetchNextBatch;
 - (BOOL)_handleBatchAck:(id)arg1 error:(id *)arg2;
 - (BOOL)_handleBatchSyncEndResponse:(id)arg1 error:(id *)arg2;
-- (void)_handleError:(id)arg1;
 - (void)_installStateListener;
 - (void)_installTimers;
 - (void)_messageExpiredWithSeqno:(unsigned long long)arg1 identifier:(id)arg2;
@@ -44,6 +45,8 @@
 - (void)_sessionComplete;
 - (void)_setMessageTimerForSeqno:(unsigned long long)arg1;
 - (void)_setStateQuietly:(long long)arg1;
+- (void)_setupChangeConcurrency;
+- (void)_waitForMessageWindow;
 - (BOOL)canRestart;
 - (BOOL)canRollback;
 - (void)cancel;

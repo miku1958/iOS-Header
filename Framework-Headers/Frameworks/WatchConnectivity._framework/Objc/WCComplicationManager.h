@@ -26,6 +26,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)xpcManager:(id)arg1 handlePairedSyncComplicationsStartedWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)xpcManager:(id)arg1 handlePingForExtensionBundleID:(id)arg2;
 - (void)xpcManager:(id)arg1 isExtensionPrivileged:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 

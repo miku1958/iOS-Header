@@ -114,6 +114,7 @@
 - (id)AVVideoSettingsForSessionPreset:(id)arg1;
 - (float)ISO;
 - (float)ISODigitalThreshold;
+- (void)_checkTCCAccess;
 - (CDStruct_b2fbf00d)_chromaticityValuesForDeviceWhiteBalanceGains:(CDStruct_d6531dd4)arg1 atMix:(double)arg2;
 - (id)_copyFigCaptureSourceProperty:(struct __CFString *)arg1;
 - (id)_copyFormatsArray;

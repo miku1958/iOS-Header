@@ -31,6 +31,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)pushToAttributedText:(id)arg1 direction:(unsigned long long)arg2 perCharacter:(BOOL)arg3;
 - (void)setAttributedTextUnanimated:(id)arg1;
+- (void)setFrame:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)sizeToFitAttributedText:(id)arg1;
 

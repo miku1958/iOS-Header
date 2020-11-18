@@ -103,6 +103,7 @@
 - (void)resetAllFieldsAndProvisioningState;
 - (void)resetProvisioningState;
 - (void)setupLater:(id)arg1;
+- (BOOL)shouldAppearWithFirstEmptyFieldAsFirstResponder;
 - (void)showActivitySpinnerWithTitle:(id)arg1 subtitle:(id)arg2;
 - (void)showEligibilityIssueWithReason:(long long)arg1 learnMoreURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)showPrivacy:(id)arg1;

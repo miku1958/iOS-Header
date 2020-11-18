@@ -6,7 +6,7 @@
 
 #import <HomeKitDaemon/HMMessageDispatcher.h>
 
-@class HMDAdminEnforcementMessageFilter, HMDHomeManager, HMDIDSMessageTransport, HMDIdentityRegistry, HMDMessageFilterChain, HMDNotificationRelay, HMDSecureSessionNotifications, NSArray, NSMutableDictionary;
+@class HMDAdminEnforcementMessageFilter, HMDHomeManager, HMDIDSMessageTransport, HMDIdentityRegistry, HMDMessageFilterChain, HMDNotificationRelay, HMDSecureSessionNotifications, NSArray, NSMutableDictionary, NSSet;
 
 @interface HMDIDSMessageDispatcher : HMMessageDispatcher
 {
@@ -36,7 +36,7 @@
 @property (strong, nonatomic) HMDMessageFilterChain *msgFilterChain; // @synthesize msgFilterChain=_msgFilterChain;
 @property (strong, nonatomic) HMMessageDispatcher *notificationDispatcher; // @synthesize notificationDispatcher=_notificationDispatcher;
 @property (strong, nonatomic) HMDNotificationRelay *notificationRelay; // @synthesize notificationRelay=_notificationRelay;
-@property (readonly, nonatomic) NSArray *pairedWatchDevices;
+@property (readonly, nonatomic) NSSet *pairedWatchAddresses;
 @property (readonly, nonatomic) NSArray *reachableCompanionDevices;
 @property (readonly, nonatomic) NSArray *reachableWatchDevices;
 @property (strong, nonatomic) HMMessageDispatcher *recvDispatcher; // @synthesize recvDispatcher=_recvDispatcher;
@@ -56,13 +56,13 @@
 - (void)_handleSecureServerMessage:(id)arg1 fromID:(id)arg2;
 - (BOOL)_haveAllCapabilities:(id)arg1;
 - (id)_pairedCompanionDevices;
-- (id)_pairedWatchDevices;
+- (id)_pairedWatchAddresses;
 - (id)_reachableCompanionDevices;
 - (id)_reachableWatchDevices;
 - (void)_sendMessage:(id)arg1 target:(id)arg2 destination:(id)arg3 responseTimeout:(double)arg4 responseQueue:(id)arg5 responseHandler:(CDUnknownBlockType)arg6;
 - (void)_sendSecureMessage:(id)arg1 target:(id)arg2 destination:(id)arg3 responseQueue:(id)arg4 responseHandler:(CDUnknownBlockType)arg5;
 - (void)_setRemoteAccessPeer:(id)arg1 forHome:(id)arg2 sendNotification:(BOOL)arg3;
-- (BOOL)_watchCompanionCommunication:(id)arg1;
+- (BOOL)_watchCompanionCommunication:(id)arg1 isConnected:(BOOL *)arg2;
 - (void)configureHomeManager:(id)arg1;
 - (void)configureNotificationDispatcher:(id)arg1;
 - (void)deregisterForMessage:(id)arg1 receiver:(id)arg2;

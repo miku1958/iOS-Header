@@ -46,7 +46,8 @@
 - (void)localizeForRightToLeft;
 - (SEL)mapThemePropertyMapSelector;
 - (BOOL)p_coreTextWritingDirectionFromWPWritingDirection:(int)arg1;
-- (struct __CTParagraphStyle *)p_createCoreTextParagraphStyleWithCharacterStyle:(id)arg1 writingDirection:(int)arg2;
+- (struct __CTParagraphStyle *)p_createCoreTextParagraphStyleWithCharacterStyle:(id)arg1 writingDirection:(int)arg2 lineBoundsOptions:(unsigned long long)arg3;
+- (unsigned long long)p_lineBoundsOptions;
 - (struct __CFDictionary *)p_newCoreTextCharacterStyle:(id)arg1 allowLigatures:(BOOL)arg2 scalePercent:(unsigned long long)arg3;
 - (void)setInitialListStyle:(id)arg1;
 - (void)setOverridePropertyMap:(id)arg1;

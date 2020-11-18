@@ -71,7 +71,7 @@
 - (void)_addUnpairedAccessoryForServer:(id)arg1;
 - (id)_allAccessories;
 - (void)_btleAccessoryReachabilityProbeTimer:(BOOL)arg1;
-- (void)_configurePairedAccessoriesForServer:(id)arg1;
+- (void)_configurePairedAccessoriesForServer:(id)arg1 reAddServices:(BOOL)arg2;
 - (id)_createNewlyPairedSecondaryAccessoriesWithIdentifier:(id)arg1;
 - (void)_createPairedAccessoriesForUnpairedAccessory:(id)arg1 server:(id)arg2;
 - (id)_dequeueAllRetrievalCompletionTuplesForLinkType:(long long)arg1 accessory:(id)arg2;
@@ -83,12 +83,15 @@
 - (BOOL)_isAccessoryServerTombstoned:(id)arg1;
 - (BOOL)_isBrowsingAllowed;
 - (BOOL)_isRetrievalInProgressForLinkType:(long long)arg1 accessory:(id)arg2;
+- (void)_notifyDelegatesOfDiscoveredAccessories:(id)arg1 addedToBridgeAccessory:(id)arg2;
+- (void)_notifyDelegatesOfDiscoveredAccessories:(id)arg1 removedFromBridgeAccessory:(id)arg2;
 - (void)_notifyDelegatesOfNewAccessory:(id)arg1;
 - (void)_notifyDelegatesOfPairedAccessories:(id)arg1 addedToBridgeAccessory:(id)arg2;
 - (void)_notifyDelegatesOfPairedAccessories:(id)arg1 removedFromBridgeAccessory:(id)arg2;
 - (void)_notifyDelegatesOfRemovedNewAccessory:(id)arg1;
 - (void)_pairAccessory:(id)arg1 home:(id)arg2 password:(id)arg3 setupCodeProvider:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_pairedAccessoriesForServer:(id)arg1;
+- (id)_pairedAndDiscoveredAccessoriesforServer:(id)arg1;
 - (id)_primaryAccessoryForServer:(id)arg1;
 - (void)_promptForPairingPasswordForServer:(id)arg1 reason:(id)arg2;
 - (void)_registerPairedAccessory:(id)arg1 btleTransport:(BOOL)arg2;
@@ -113,9 +116,9 @@
 - (id)_tombstonedAccessoryServerWithServerIdentifier:(id)arg1;
 - (void)_unconfigurePairedAccessoriesForServer:(id)arg1;
 - (id)_unpairedAccessoryForServer:(id)arg1;
-- (void)_updatePairedAccessoriesForServer:(id)arg1;
+- (void)_updatePairedAccessoriesForServer:(id)arg1 reAddServices:(BOOL)arg2;
 - (void)_updatePairingRetryTimerForServer:(id)arg1 delay:(long long)arg2;
-- (void)accessoryServer:(id)arg1 didDiscoverAccessoriesWithError:(id)arg2 transaction:(id)arg3;
+- (void)accessoryServer:(id)arg1 didDiscoverAccessories:(id)arg2 transaction:(id)arg3 error:(id)arg4;
 - (void)accessoryServer:(id)arg1 didReceiveBadPasswordThrottleAttemptsWithDelay:(long long)arg2;
 - (void)accessoryServer:(id)arg1 didStopPairingWithError:(id)arg2;
 - (void)accessoryServer:(id)arg1 didUpdateCategory:(id)arg2;
@@ -140,9 +143,10 @@
 - (id)allPairedAccessoriesForHome:(id)arg1;
 - (id)allPairedAccessoryServers;
 - (id)allUnpairedAccessories;
-- (void)appBackgroundHandler;
-- (void)appForegroundHandler;
+- (void)appBackgroundHandler:(id)arg1;
+- (void)appForegroundHandler:(id)arg1;
 - (void)btleAccessoryReachabilityProbeTimer:(BOOL)arg1;
+- (void)dealloc;
 - (void)deregisterPairedAccessory:(id)arg1 btleTransport:(BOOL)arg2;
 - (id)dumpPairedAccyDescription;
 - (id)dumpUnpairedAccyDescription;
@@ -152,6 +156,7 @@
 - (void)registerPairedAccessory:(id)arg1 btleTransport:(BOOL)arg2;
 - (void)removeAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeDelegate:(id)arg1;
+- (void)removeDiscoveredAccessories:(id)arg1 removedFromBridgeAccessory:(id)arg2;
 - (void)removePairingOnPrimaryAccessory:(id)arg1 forController:(id)arg2 publicKey:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)removeWithMergeSecondaryAccessory:(id)arg1 removedFromBridgeAccessory:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)replacePairedAccessoriesWithAccessories:(id)arg1;

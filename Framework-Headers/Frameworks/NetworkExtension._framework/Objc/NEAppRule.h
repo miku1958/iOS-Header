@@ -16,6 +16,8 @@
 
 @interface NEAppRule : NSObject <NEConfigurationValidating, NEPrettyDescription, NEConfigurationLegacySupport, NSSecureCoding, NSCopying>
 {
+    BOOL _noRestriction;
+    BOOL _noDivertDNS;
     NSString *_matchSigningIdentifier;
     NSString *_matchDesignatedRequirement;
     NSString *_matchPath;
@@ -30,6 +32,8 @@
 @property (copy) NSArray *matchDomains; // @synthesize matchDomains=_matchDomains;
 @property (copy) NSString *matchPath; // @synthesize matchPath=_matchPath;
 @property (readonly) NSString *matchSigningIdentifier; // @synthesize matchSigningIdentifier=_matchSigningIdentifier;
+@property BOOL noDivertDNS; // @synthesize noDivertDNS=_noDivertDNS;
+@property BOOL noRestriction; // @synthesize noRestriction=_noRestriction;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

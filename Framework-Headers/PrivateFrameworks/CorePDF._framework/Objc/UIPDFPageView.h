@@ -30,6 +30,7 @@
     BOOL _backgroundIsFullResolution;
     BOOL _boundsChanged;
     BOOL _useTiledContent;
+    BOOL _enableLightMemoryFootprint;
     CALayer *_contentLayer;
     CALayer *_effectsLayer;
     UIPDFPageContentDelegate *_contentDelegate;
@@ -86,6 +87,7 @@
 - (struct CGPoint)convertPointToPDFPageSpace:(struct CGPoint)arg1;
 - (struct CGRect)convertRectFromPDFPageSpace:(struct CGRect)arg1;
 - (struct CGRect)convertRectToPDFPageSpace:(struct CGRect)arg1;
+- (id)createBackingLayer;
 - (void)dealloc;
 - (void)didReceiveMemoryWarning:(id)arg1;
 - (void)didScroll:(id)arg1;

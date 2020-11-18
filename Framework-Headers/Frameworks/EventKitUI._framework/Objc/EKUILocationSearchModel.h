@@ -11,7 +11,7 @@
 #import <EventKitUI/MKSearchCompleterDelegate-Protocol.h>
 
 @class ABSearchOperation, CLGeocoder, CLInUseAssertion, CLLocationManager, EKEventStore, EKOccurrenceCacheLocationSearch, EKStructuredLocation, MKLocalSearch, MKLocalSearchCompleter, NSArray, NSCharacterSet, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString;
-@protocol EKUILocationSearchModelDelegate, OS_dispatch_queue;
+@protocol EKUILocationSearchModelDelegate, GEOMapServiceCompletionTicket, OS_dispatch_queue;
 
 @interface EKUILocationSearchModel : NSObject <CLLocationManagerDelegate, MKSearchCompleterDelegate, ABSearchOperationDelegate>
 {
@@ -49,6 +49,7 @@
 @property (readonly, nonatomic) NSArray *eventsSearchResults; // @synthesize eventsSearchResults=_eventsSearchResults;
 @property (readonly, nonatomic) NSArray *frequentsSearchResults; // @synthesize frequentsSearchResults=_frequentsSearchResults;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) id<GEOMapServiceCompletionTicket> lastTicket;
 @property (readonly, nonatomic) NSArray *mapCompletionSearchResults; // @synthesize mapCompletionSearchResults=_mapCompletionSearchResults;
 @property (readonly, nonatomic) NSArray *recentsSearchResults; // @synthesize recentsSearchResults=_recentsSearchResults;
 @property (readonly) Class superclass;

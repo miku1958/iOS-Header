@@ -67,6 +67,7 @@ __attribute__((visibility("hidden")))
     BOOL _allowsTCPFastOpen;
     BOOL _allowsTLSSessionTickets;
     BOOL _preventsDirectWiFiAccess;
+    BOOL _allowTCPIOConnectionStreamTask;
     BOOL _backgroundSession;
     NSString *_disposition;
     NSURLCredentialStorage *_phskip_credStorage;
@@ -118,6 +119,7 @@ __attribute__((visibility("hidden")))
 - (id)_CTDataConnectionServiceType;
 - (unsigned long long)_TCPAdaptiveReadTimeout;
 - (unsigned long long)_TCPAdaptiveWriteTimeout;
+- (BOOL)_allowTCPIOConnectionStreamTask;
 - (BOOL)_allowsExpensiveAccess;
 - (BOOL)_allowsIndefiniteConnections;
 - (BOOL)_allowsMultipathTCP;
@@ -235,6 +237,7 @@ __attribute__((visibility("hidden")))
 - (void)set_CTDataConnectionServiceType:(id)arg1;
 - (void)set_TCPAdaptiveReadTimeout:(unsigned long long)arg1;
 - (void)set_TCPAdaptiveWriteTimeout:(unsigned long long)arg1;
+- (void)set_allowTCPIOConnectionStreamTask:(BOOL)arg1;
 - (void)set_allowsExpensiveAccess:(BOOL)arg1;
 - (void)set_allowsIndefiniteConnections:(BOOL)arg1;
 - (void)set_allowsMultipathTCP:(BOOL)arg1;

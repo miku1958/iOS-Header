@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PLCPLDownloadContext, PLPreheatItem;
+@class NSString, PLCPLDownloadContext, PLImageFormat, PLPreheatItem;
 @protocol OS_dispatch_group, _PLImageLoadingAsset;
 
 @interface PHImageManagerRequest : NSObject
@@ -16,6 +16,7 @@
     BOOL _CPLDownloadDegraded;
     BOOL _isCloudSharedAsset;
     BOOL _isPartOfBurst;
+    BOOL _finalResultSubmitted;
     int _requestID;
     int _registrationRefCount;
     NSString *_pathForAdjustmentFile;
@@ -29,6 +30,8 @@
     NSString *_assetUUID;
     long long _cloudSharedAssetPlaceholderKind;
     NSString *_debugFilename;
+    double _creationTimeInterval;
+    PLImageFormat *_bestFormatIssuedSoFar;
 }
 
 @property (strong) PLCPLDownloadContext *CPLDownloadContext; // @synthesize CPLDownloadContext=_CPLDownloadContext;
@@ -36,10 +39,13 @@
 @property (strong) NSObject<OS_dispatch_group> *CPLDownloadWaitGroup; // @synthesize CPLDownloadWaitGroup=_CPLDownloadWaitGroup;
 @property (readonly, nonatomic) id<_PLImageLoadingAsset> asset; // @synthesize asset=_asset;
 @property (readonly, nonatomic) NSString *assetUUID; // @synthesize assetUUID=_assetUUID;
+@property (strong, nonatomic) PLImageFormat *bestFormatIssuedSoFar; // @synthesize bestFormatIssuedSoFar=_bestFormatIssuedSoFar;
 @property (copy) CDUnknownBlockType cancellationHandler; // @synthesize cancellationHandler=_cancellationHandler;
 @property (readonly, nonatomic) long long cloudSharedAssetPlaceholderKind; // @synthesize cloudSharedAssetPlaceholderKind=_cloudSharedAssetPlaceholderKind;
+@property (readonly, nonatomic) double creationTimeInterval; // @synthesize creationTimeInterval=_creationTimeInterval;
 @property (readonly, nonatomic) NSString *debugFilename; // @synthesize debugFilename=_debugFilename;
 @property (readonly, nonatomic) id domain; // @synthesize domain=_domain;
+@property (nonatomic) BOOL finalResultSubmitted; // @synthesize finalResultSubmitted=_finalResultSubmitted;
 @property (readonly, nonatomic) BOOL isCloudSharedAsset; // @synthesize isCloudSharedAsset=_isCloudSharedAsset;
 @property (readonly, nonatomic) BOOL isPartOfBurst; // @synthesize isPartOfBurst=_isPartOfBurst;
 @property (readonly, nonatomic) BOOL isVideo;
@@ -49,6 +55,7 @@
 @property (readonly, nonatomic) int requestID; // @synthesize requestID=_requestID;
 @property (strong) PLPreheatItem *transientPreheatlItem; // @synthesize transientPreheatlItem=_transientPreheatlItem;
 
++ (int)nextRequestID;
 - (void).cxx_destruct;
 - (BOOL)atomicDecrementRegistrationRefCountIfOne;
 - (BOOL)atomicIncrementRegistrationRefCountIfZero;
@@ -58,6 +65,8 @@
 - (int)incrementRegistrationRefCount;
 - (id)init;
 - (id)initRequestWithAsset:(id)arg1 domain:(id)arg2;
+- (id)initRequestWithID:(int)arg1 asset:(id)arg2 domain:(id)arg3;
+- (id)initWithRequestID:(int)arg1;
 - (BOOL)isCancelled;
 - (long long)originalImageOrientation;
 - (void)setCancelled:(BOOL)arg1;

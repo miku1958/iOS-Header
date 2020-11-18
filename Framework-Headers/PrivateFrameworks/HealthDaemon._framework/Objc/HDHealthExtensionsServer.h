@@ -15,9 +15,9 @@
 @interface HDHealthExtensionsServer : NSObject <HDDiagnosticObject, HKExtendedServerInterface>
 {
     BOOL _registeredForAchievementNotifications;
+    NSObject<OS_dispatch_queue> *_queue;
     HDClient *_client;
     id<HDHealthDaemon> _healthDaemon;
-    NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (strong, nonatomic) HDClient *client; // @synthesize client=_client;
@@ -25,7 +25,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<HDHealthDaemon> healthDaemon; // @synthesize healthDaemon=_healthDaemon;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (nonatomic) BOOL registeredForAchievementNotifications; // @synthesize registeredForAchievementNotifications=_registeredForAchievementNotifications;
 @property (readonly) Class superclass;
 
@@ -36,6 +36,8 @@
 - (void)addAchievement:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)clientInterface;
 - (void)dealloc;
+- (void)deleteAchievementWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)deleteAllAchievementsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)diagnosticDescription;
 - (void)fetchAchievementsWithCompletedDateBetweenStart:(id)arg1 end:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchNumberOfUnviewedAchievementsWithCompletion:(CDUnknownBlockType)arg1;
@@ -48,6 +50,7 @@
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)runAchievementsFixupAsDryRun:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)serverInterface;
+- (void)setCurrentActivityCacheOverrideDate:(id)arg1 timeZone:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

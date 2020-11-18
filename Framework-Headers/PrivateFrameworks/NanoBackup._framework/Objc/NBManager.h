@@ -20,17 +20,19 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
++ (id)deviceForPairingID:(id)arg1;
 - (void).cxx_destruct;
 - (id)connection;
+- (void)createBackupForDevice:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)createBackupForPairingID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)deleteBackup:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithQueue:(id)arg1;
 - (void)listBackupsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)restoreFromBackup:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)restoreFromBackup:(id)arg1 forDevice:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)restoreFromBackup:(id)arg1 forPairingID:(id)arg2 pairingDataStore:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)restoreFromPairingID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)restoreFromDevice:(id)arg1 forDevice:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)unsafe_invalidate;
 
 @end

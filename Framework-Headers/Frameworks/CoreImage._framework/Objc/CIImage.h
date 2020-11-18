@@ -71,6 +71,7 @@
 - (id)_initWithBitmapData:(id)arg1 bytesPerRow:(unsigned long long)arg2 size:(struct CGSize)arg3 format:(int)arg4 options:(id)arg5;
 - (id)_initWithCVImageBuffer:(struct __CVBuffer *)arg1 options:(id)arg2;
 - (id)_initWithIOSurface:(struct __IOSurface *)arg1 options:(id)arg2 owner:(void *)arg3;
+- (id)_initWithImageProvider:(CDUnknownBlockType)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3 format:(int)arg4 colorSpace:(struct CGColorSpace *)arg5 surfaceCache:(BOOL)arg6 options:(id)arg7;
 - (id)_initWithInternalRepresentation:(void *)arg1;
 - (void *)_internalRepresentation;
 - (id)_scaleImageToMaxDimension:(unsigned int)arg1;
@@ -88,6 +89,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)filteredImage:(id)arg1 keysAndValues:(id)arg2;
+- (void)finalize;
 - (id)getAutoRotateFilter:(id)arg1 ciImage:(id)arg2 rgbRows:(id)arg3 inputRect:(struct CGRect)arg4 rotateCropRect:(struct CGRect *)arg5;
 - (void)getAutocropRect:(id)arg1 rotateXfrm:(struct CGAffineTransform)arg2 inputImageRect:(struct CGRect)arg3 clipRect:(struct CGRect *)arg4;
 - (id)imageByApplyingFilter:(id)arg1 withInputParameters:(id)arg2;
@@ -122,6 +124,7 @@
 - (id)initWithData:(id)arg1 options:(id)arg2;
 - (id)initWithImageProvider:(id)arg1 size:(unsigned long long)arg2:(unsigned long long)arg3 format:(int)arg4 colorSpace:(struct CGColorSpace *)arg5 options:(id)arg6;
 - (id)initWithImageProvider:(id)arg1 userInfo:(id)arg2 size:(struct CGSize)arg3 format:(int)arg4 flipped:(BOOL)arg5 colorSpace:(struct CGColorSpace *)arg6;
+- (id)initWithImageProvider:(CDUnknownBlockType)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3 format:(int)arg4 colorSpace:(struct CGColorSpace *)arg5 options:(id)arg6;
 - (id)initWithMTLTexture:(id)arg1 options:(id)arg2;
 - (id)initWithTexture:(unsigned int)arg1 size:(struct CGSize)arg2 flipped:(BOOL)arg3 colorSpace:(struct CGColorSpace *)arg4;
 - (id)initWithTexture:(unsigned int)arg1 size:(struct CGSize)arg2 flipped:(BOOL)arg3 options:(id)arg4;

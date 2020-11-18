@@ -46,6 +46,7 @@
 - (id)entityValueProviderAtIndexPath:(id)arg1;
 - (BOOL)hasEntities;
 - (BOOL)hasEntitiesNotInLibrary;
+- (BOOL)hasExplicitContent;
 - (id)indexBarEntryAtIndex:(unsigned long long)arg1;
 - (id)indexPathForEntityValueContext:(id)arg1;
 - (unsigned long long)numberOfEntitiesInSection:(unsigned long long)arg1;

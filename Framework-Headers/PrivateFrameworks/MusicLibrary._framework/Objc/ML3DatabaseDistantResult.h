@@ -6,12 +6,13 @@
 
 #import <MusicLibrary/ML3DatabaseResult.h>
 
-@class ML3DatabaseDistantConnection, NSArray, NSString;
+@class ML3DatabaseDistantConnection, NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface ML3DatabaseDistantResult : ML3DatabaseResult
 {
     NSArray *_cachedRows;
+    NSDictionary *_cachedColumnNameIndexMap;
     ML3DatabaseDistantConnection *_distantConnection;
     NSString *_sql;
     NSArray *_parameters;

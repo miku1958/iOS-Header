@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)_provideItemAtURL:(id)arg1 toReaderWithID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_registerPresenterForItemAtURL:(id)arg1 key:(id)arg2 session:(id)arg3;
 - (unsigned long long)_spaceRequiredForReaders;
+- (void)_triggerImmediateReadOfDocumentAtPath:(id)arg1;
 - (void)_unregisterPresenterForKey:(id)arg1;
 - (void)_waitForDownloadOfDirectory:(id)arg1 key:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_waitForDownloadOfDocument:(id)arg1 key:(id)arg2 requireCurrent:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;

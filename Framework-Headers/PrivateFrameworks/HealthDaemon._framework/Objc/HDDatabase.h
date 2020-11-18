@@ -11,70 +11,76 @@
 #import <HealthDaemon/HDHealthDatabase-Protocol.h>
 #import <HealthDaemon/HDSQLiteDatabasePoolDelegate-Protocol.h>
 
-@class HDContentProtectionManager, HDDatabaseJournal, HDSQLiteDatabasePool, NSLock, NSMutableArray, NSMutableSet, NSOperationQueue, NSPointerArray, NSString;
-@protocol HDDatabaseMigrationDelegate, HDHealthDaemon, OS_dispatch_group, OS_dispatch_queue;
+@class HDContentProtectionManager, HDDaemon, HDDatabaseJournal, HDSQLiteDatabasePool, NSHashTable, NSLock, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString;
+@protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface HDDatabase : NSObject <HDSQLiteDatabasePoolDelegate, HDContentProtectionObserver, HDDiagnosticObject, HDHealthDatabase>
 {
+    BOOL _didRunPostMigrationUpdates;
     BOOL _shouldNotifyFirstUnlockObservers;
     BOOL _isObservingContentProtection;
     BOOL _checkpointRequired;
     BOOL _hasScheduledCheckpoint;
+    BOOL _integrityCheckInProgress;
     int _invalidated;
     HDDatabaseJournal *_journal;
-    id<HDHealthDaemon> _daemon;
-    id<HDDatabaseMigrationDelegate> _databaseMigrationDelegate;
+    HDDaemon *_daemon;
+    double _offsetTimeInterval;
     NSString *_homeDirectoryPath;
     HDSQLiteDatabasePool *_databasePool;
     HDContentProtectionManager *_contentProtectionManager;
     NSString *_threadLocalActiveConnectionKey;
     NSLock *_schemaMigrationLock;
-    NSMutableSet *_migratedDatabases;
+    NSHashTable *_migratedDatabases;
     NSOperationQueue *_asynchronousOperationQueue;
     NSObject<OS_dispatch_queue> *_protectedDataQueue;
     NSMutableArray *_firstUnlockBlocks;
     long long _protectedDataState;
+    long long _observedContentProtectionState;
     NSObject<OS_dispatch_queue> *_protectedDataObserverQueue;
     NSObject<OS_dispatch_queue> *_protectedDataObserverNotificationQueue;
-    NSPointerArray *_protectedDataObservers;
+    NSHashTable *_protectedDataObservers;
     NSObject<OS_dispatch_queue> *_journalQueue;
     NSObject<OS_dispatch_group> *_journalGroup;
     unsigned long long _pendingJournalMerges;
-    NSObject<OS_dispatch_group> *_transactionGroup;
     NSObject<OS_dispatch_queue> *_transactionQueue;
+    NSMutableDictionary *_extendedTransactions;
 }
 
 @property (strong, nonatomic) NSOperationQueue *asynchronousOperationQueue; // @synthesize asynchronousOperationQueue=_asynchronousOperationQueue;
 @property (nonatomic) BOOL checkpointRequired; // @synthesize checkpointRequired=_checkpointRequired;
 @property (strong, nonatomic) HDContentProtectionManager *contentProtectionManager; // @synthesize contentProtectionManager=_contentProtectionManager;
-@property (weak, nonatomic) id<HDHealthDaemon> daemon; // @synthesize daemon=_daemon;
+@property (weak, nonatomic) HDDaemon *daemon; // @synthesize daemon=_daemon;
 @property (readonly, nonatomic, getter=isDataProtectedByFirstUnlockAvailable) BOOL dataProtectedByFirstUnlockAvailable;
-@property (weak, nonatomic) id<HDDatabaseMigrationDelegate> databaseMigrationDelegate; // @synthesize databaseMigrationDelegate=_databaseMigrationDelegate;
 @property (strong, nonatomic) HDSQLiteDatabasePool *databasePool; // @synthesize databasePool=_databasePool;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL didRunPostMigrationUpdates; // @synthesize didRunPostMigrationUpdates=_didRunPostMigrationUpdates;
+@property (strong, nonatomic) NSMutableDictionary *extendedTransactions; // @synthesize extendedTransactions=_extendedTransactions;
 @property (strong, nonatomic) NSMutableArray *firstUnlockBlocks; // @synthesize firstUnlockBlocks=_firstUnlockBlocks;
 @property (nonatomic) BOOL hasScheduledCheckpoint; // @synthesize hasScheduledCheckpoint=_hasScheduledCheckpoint;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *homeDirectoryPath; // @synthesize homeDirectoryPath=_homeDirectoryPath;
+@property (nonatomic) BOOL integrityCheckInProgress; // @synthesize integrityCheckInProgress=_integrityCheckInProgress;
 @property (nonatomic) int invalidated; // @synthesize invalidated=_invalidated;
 @property (nonatomic) BOOL isObservingContentProtection; // @synthesize isObservingContentProtection=_isObservingContentProtection;
 @property (readonly, nonatomic) HDDatabaseJournal *journal; // @synthesize journal=_journal;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *journalGroup; // @synthesize journalGroup=_journalGroup;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *journalQueue; // @synthesize journalQueue=_journalQueue;
-@property (strong, nonatomic) NSMutableSet *migratedDatabases; // @synthesize migratedDatabases=_migratedDatabases;
+@property (strong, nonatomic) NSHashTable *migratedDatabases; // @synthesize migratedDatabases=_migratedDatabases;
+@property (nonatomic) long long observedContentProtectionState; // @synthesize observedContentProtectionState=_observedContentProtectionState;
+@property (nonatomic) double offsetTimeInterval; // @synthesize offsetTimeInterval=_offsetTimeInterval;
 @property (nonatomic) unsigned long long pendingJournalMerges; // @synthesize pendingJournalMerges=_pendingJournalMerges;
 @property (readonly, nonatomic, getter=isProtectedDataAvailable) BOOL protectedDataAvailable;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *protectedDataObserverNotificationQueue; // @synthesize protectedDataObserverNotificationQueue=_protectedDataObserverNotificationQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *protectedDataObserverQueue; // @synthesize protectedDataObserverQueue=_protectedDataObserverQueue;
-@property (strong, nonatomic) NSPointerArray *protectedDataObservers; // @synthesize protectedDataObservers=_protectedDataObservers;
+@property (strong, nonatomic) NSHashTable *protectedDataObservers; // @synthesize protectedDataObservers=_protectedDataObservers;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *protectedDataQueue; // @synthesize protectedDataQueue=_protectedDataQueue;
 @property (nonatomic) long long protectedDataState; // @synthesize protectedDataState=_protectedDataState;
 @property (strong, nonatomic) NSLock *schemaMigrationLock; // @synthesize schemaMigrationLock=_schemaMigrationLock;
 @property (nonatomic) BOOL shouldNotifyFirstUnlockObservers; // @synthesize shouldNotifyFirstUnlockObservers=_shouldNotifyFirstUnlockObservers;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *threadLocalActiveConnectionKey; // @synthesize threadLocalActiveConnectionKey=_threadLocalActiveConnectionKey;
-@property (strong, nonatomic) NSObject<OS_dispatch_group> *transactionGroup; // @synthesize transactionGroup=_transactionGroup;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *transactionQueue; // @synthesize transactionQueue=_transactionQueue;
 
 + (id)_databaseCorruptionDefaultKeyForDatabaseWithName:(id)arg1;
@@ -84,6 +90,7 @@
 + (void)reportDatabaseCorruptionForDatabaseWithName:(id)arg1;
 - (void).cxx_destruct;
 - (id)_activeDatabase;
+- (BOOL)_applyOffsetTimeInterval:(double)arg1 database:(id)arg2 error:(id *)arg3;
 - (void)_clearJournalDirectory;
 - (id)_copyProtectedDataObservers;
 - (BOOL)_createDataTablesInDatabase:(id)arg1 entityClasses:(id)arg2 error:(id *)arg3;
@@ -101,7 +108,7 @@
 - (BOOL)_migrateOrCreateProtectedSchemaInDatabase:(id)arg1 error:(id *)arg2;
 - (long long)_migrateOrCreateSchemaWithDatabase:(id)arg1 protectedDatabase:(BOOL)arg2 error:(id *)arg3;
 - (id)_newDatabaseConnectionWithError:(id *)arg1;
-- (BOOL)_performTransactionWithOptions:(unsigned long long)arg1 shouldWaitForJournalMerge:(BOOL)arg2 error:(id *)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (void)_performIntegrityCheck;
 - (void)_protectedDataObserverQueue_addObserver:(id)arg1;
 - (void)_protectedDataObserverQueue_removeObserver:(id)arg1;
 - (void)_protectedDataQueue_beginObservingContentProtection;
@@ -109,18 +116,21 @@
 - (long long)_protectedDataState;
 - (void)_protectedDatabaseDidBecomeAvailable;
 - (id)_readerDatabaseWithError:(id *)arg1;
+- (BOOL)_runPostMigrationUpdatesWithDatabase:(id)arg1 error:(id *)arg2;
 - (void)_setActiveDatabase:(id)arg1;
-- (void)_updateDataForPPTWithDatabase:(id)arg1;
 - (BOOL)_waitForJournalMerge;
 - (id)_writerDatabaseWithError:(id *)arg1;
-- (void)addJournalEntries:(id)arg1;
-- (void)addJournalEntry:(id)arg1;
+- (BOOL)addJournalEntries:(id)arg1 error:(id *)arg2;
+- (BOOL)addJournalEntry:(id)arg1 error:(id *)arg2;
 - (void)addProtectedDataObserver:(id)arg1;
+- (id)beginExtendedTransactionWithOptions:(unsigned long long)arg1 transactionTimeout:(double)arg2 continuationTimeout:(double)arg3 error:(id *)arg4;
 - (void)contentProtectionStateChanged:(long long)arg1 previousState:(long long)arg2;
 - (void)daemonDidFinishLaunching;
 - (id)databaseSizeInBytes;
 - (id)diagnosticDescription;
-- (id)initWithHomeDirectoryPath:(id)arg1 healthDaemon:(id)arg2 migrationDelegate:(id)arg3;
+- (id)extendedDatabaseTransactionForIdentifier:(id)arg1;
+- (void)finalizeExtendedTransactionForIdentifier:(id)arg1;
+- (id)initWithHomeDirectoryPath:(id)arg1 daemon:(id)arg2;
 - (void)invalidate;
 - (void)invalidateAndWait;
 - (id)mainDatabaseURL;
@@ -129,7 +139,7 @@
 - (void)performAsynchronously:(CDUnknownBlockType)arg1;
 - (BOOL)performJournalMergeUsingBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (BOOL)performMigrationForProtectedData:(BOOL)arg1 error:(id *)arg2;
-- (BOOL)performTransactionWithOptions:(unsigned long long)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (BOOL)performTransactionWithOptions:(unsigned long long)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3 inaccessibilityHandler:(CDUnknownBlockType)arg4;
 - (void)performWhenDataProtectedByFirstUnlockIsAvailable:(CDUnknownBlockType)arg1;
 - (id)protectedDatabaseURL;
 - (void)removeProtectedDataObserver:(id)arg1;

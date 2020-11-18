@@ -6,7 +6,7 @@
 
 #import <PhotosUI/PUActivity.h>
 
-@class PLPublishingAgent, UIViewController;
+@class PLPublishingAgent, PLPublishingMedia, UIViewController;
 
 __attribute__((visibility("hidden")))
 @interface PUPublishingActivity : PUActivity
@@ -15,7 +15,10 @@ __attribute__((visibility("hidden")))
     PLPublishingAgent *_currentAgent;
     double _startTime;
     double _endTime;
+    PLPublishingMedia *__publishingMedia;
 }
+
+@property (strong, nonatomic, setter=_setPublishingMedia:) PLPublishingMedia *_publishingMedia; // @synthesize _publishingMedia=__publishingMedia;
 
 + (long long)activityCategory;
 - (void).cxx_destruct;
@@ -26,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)_publishOverReferenceViewController;
 - (void)_publishingAgentDidCancel:(id)arg1;
 - (void)_publishingAgentDidStartPublishing:(id)arg1;
+- (void)_setPublishMediaWithAsset:(id)arg1;
 - (void)_showPublishingSheetInViewController:(id)arg1 remakeAfterPublish:(BOOL)arg2;
 - (void)_showTrimViewController;
 - (void)_showVideoTooLongAlert;

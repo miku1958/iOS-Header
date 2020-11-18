@@ -10,7 +10,6 @@
 {
 }
 
-+ (id)defaultPlayer;
 - (id)initWithDispatchQueue:(id)arg1;
 
 @end

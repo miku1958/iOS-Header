@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class PLCloudLegacyOperationResource, PLCloudLegacyScenario, PLCloudPhotoLibraryManager;
+@class PLCloudLegacyOperationResource, PLCloudPhotoLibraryManager;
 
 @interface PLCloudLegacyOperation : NSObject
 {
@@ -14,7 +14,6 @@
     BOOL _running;
     unsigned long long _cost;
     long long _createdAt;
-    PLCloudLegacyScenario *_scenario;
     PLCloudLegacyOperationResource *_operationResource;
 }
 
@@ -23,11 +22,10 @@
 @property (readonly, nonatomic) long long createdAt; // @synthesize createdAt=_createdAt;
 @property (strong, nonatomic) PLCloudLegacyOperationResource *operationResource; // @synthesize operationResource=_operationResource;
 @property BOOL running; // @synthesize running=_running;
-@property (readonly, nonatomic) PLCloudLegacyScenario *scenario; // @synthesize scenario=_scenario;
 
 - (void)dealloc;
 - (unsigned long long)hash;
-- (id)initWithScenario:(id)arg1 cloudConnection:(id)arg2;
+- (id)initWithCloudConnection:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)requestCancel;
 - (id)resource;

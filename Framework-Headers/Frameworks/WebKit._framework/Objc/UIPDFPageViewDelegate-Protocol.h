@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class UIPDFPageView;
+@class NSArray, UIPDFPageView;
 
 @protocol UIPDFPageViewDelegate
 
@@ -12,6 +12,7 @@
 - (Class)classForAnnotationType:(const char *)arg1;
 - (void)didTap:(UIPDFPageView *)arg1 atPoint:(struct CGPoint)arg2;
 - (void)doubleTapIn:(UIPDFPageView *)arg1 atPoint:(struct CGPoint)arg2;
+- (NSArray *)menuItems:(NSArray *)arg1 forPage:(UIPDFPageView *)arg2;
 - (void)pageWasRendered:(UIPDFPageView *)arg1;
 - (void)resetZoom:(UIPDFPageView *)arg1;
 - (void)selectionDidEndTracking:(UIPDFPageView *)arg1;

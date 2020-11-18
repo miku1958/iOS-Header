@@ -9,7 +9,7 @@
 #import <CloudDocsDaemon/BRCItem-Protocol.h>
 #import <CloudDocsDaemon/BRCSyncThrottleItemProtocol-Protocol.h>
 
-@class BRCAccountSession, BRCAliasItem, BRCDirectoryItem, BRCDocumentItem, BRCItemID, BRCLocalContainer, BRCLocalStatInfo, BRCServerZone, CKRecord, CKRecordID, NSMutableSet, NSNumber, NSString;
+@class BRCAccountSession, BRCAliasItem, BRCDirectoryItem, BRCDocumentItem, BRCItemID, BRCLocalContainer, BRCLocalStatInfo, BRCServerZone, CKRecord, CKRecordID, NSError, NSMutableSet, NSNumber, NSString;
 
 @interface BRCLocalItem : NSObject <BRCSyncThrottleItemProtocol, BRCItem>
 {
@@ -24,6 +24,7 @@
     unsigned long long _localDiffs;
     unsigned char _itemScope;
     NSNumber *_inFlightDiffs;
+    NSNumber *_minimumSupportedOSRowID;
     unsigned long long _dbRowID;
     unsigned long long _notifsRank;
     unsigned long long _sharingOptions;
@@ -72,6 +73,7 @@
 @property (readonly, nonatomic) unsigned long long localDiffs; // @synthesize localDiffs=_localDiffs;
 @property (readonly, nonatomic) NSString *logicalName;
 @property (readonly, nonatomic) BOOL needsInsert;
+@property (readonly, nonatomic) BOOL needsOSUpgradeToSyncUp;
 @property (readonly, nonatomic) BOOL needsReading;
 @property (readonly, nonatomic) BOOL needsSyncUp;
 @property (readonly, nonatomic) BOOL needsUpload;
@@ -88,7 +90,9 @@
 @property (nonatomic) unsigned long long sharingOptions; // @synthesize sharingOptions=_sharingOptions;
 @property (readonly, nonatomic) BRCLocalStatInfo *st; // @synthesize st=_st;
 @property (readonly, nonatomic) CKRecordID *structureRecordID;
+@property (readonly, nonatomic) NSError *syncUpError;
 @property (readonly, nonatomic) unsigned int syncUpState; // @synthesize syncUpState=_syncUpState;
+@property (readonly, nonatomic) unsigned int uploadStatus;
 
 + (id)newItemWithPath:(id)arg1 parentID:(id)arg2;
 + (BOOL)supportsSecureCoding;
@@ -124,6 +128,7 @@
 - (float)fakeSync;
 - (void)fixupStagedItemAtStartup;
 - (void)handleUnknownItemError;
+- (void)inheritOSUpgradeNeededFromItem:(id)arg1;
 - (id)initFromPQLResultSet:(id)arg1 container:(id)arg2 error:(id *)arg3;
 - (id)initFromPQLResultSet:(id)arg1 error:(id *)arg2;
 - (id)initWithCoder:(id)arg1;
@@ -143,6 +148,7 @@
 - (void)markLostWhenReplacedByItem:(id)arg1;
 - (void)markLostWithoutBackoff;
 - (void)markNeedsDeleteForRescheduleOfItem:(id)arg1;
+- (void)markNeedsOSUpgradeToSyncUpWithName:(id)arg1;
 - (void)markNeedsReading;
 - (void)markNeedsUploadOrSyncingUpWithAliasTarget:(id)arg1;
 - (void)markRemovedFromFilesystemForServerEdit:(BOOL)arg1;
@@ -151,6 +157,7 @@
 - (void)markStagedWithFileID:(unsigned long long)arg1 generationID:(unsigned int)arg2;
 - (void)markStagedWithFileID:(unsigned long long)arg1 generationID:(unsigned int)arg2 documentID:(unsigned int)arg3;
 - (void)moveAsideLocally;
+- (id)osNameNeededToSyncUp;
 - (id)parentItem;
 - (float)prepareDeletionSyncUpWithOperation:(id)arg1 defaults:(id)arg2;
 - (float)prepareEditSyncUpWithOperation:(id)arg1 defaults:(id)arg2;
@@ -159,7 +166,7 @@
 - (BOOL)saveToDBForServerEdit:(BOOL)arg1 keepAliases:(BOOL)arg2;
 - (void)startDownloadWithOptions:(unsigned long long)arg1 group:(id)arg2;
 - (id)structureRecordBeingDeadInServerTruth:(BOOL)arg1 stageID:(id)arg2;
-- (void)triggerTransferNotificationIfNeeded;
+- (void)triggerNotificationIfNeeded;
 - (void)updateFromFSAtPath:(id)arg1;
 - (BOOL)updateFromFSAtPath:(id)arg1 parentID:(id)arg2;
 - (void)updateItemMetadataFromServerItem:(id)arg1;

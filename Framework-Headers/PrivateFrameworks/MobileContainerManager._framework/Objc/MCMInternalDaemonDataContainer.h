@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MobileContainerManager/MCMContainer.h>
+#import <MobileContainerManager/MCMDataContainer.h>
 
-@interface MCMInternalDaemonDataContainer : MCMContainer
+@interface MCMInternalDaemonDataContainer : MCMDataContainer
 {
 }
 

@@ -6,10 +6,11 @@
 
 #import <CloudPhotoLibrary/CPLEngineSyncTaskDelegate-Protocol.h>
 
-@class CPLChangeBatch, CPLPushToTransportTask;
-@protocol CPLEngineTransportUploadBatchTask;
+@class CPLChangeBatch, CPLPushToTransportTask, NSArray;
+@protocol CPLEngineTransportCheckRecordsExistenceTask, CPLEngineTransportUploadBatchTask;
 
 @protocol CPLPushToTransportTaskDelegate <CPLEngineSyncTaskDelegate>
+- (id<CPLEngineTransportCheckRecordsExistenceTask>)task:(CPLPushToTransportTask *)arg1 wantsToCheckRecordsExistence:(NSArray *)arg2 withCompletionHandler:(void (^)(NSArray *, NSError *))arg3;
 - (id<CPLEngineTransportUploadBatchTask>)task:(CPLPushToTransportTask *)arg1 wantsToPushBatch:(CPLChangeBatch *)arg2 progressBlock:(void (^)(NSString *, float))arg3 continuationBlock:(void (^)(NSError *))arg4;
 @end
 

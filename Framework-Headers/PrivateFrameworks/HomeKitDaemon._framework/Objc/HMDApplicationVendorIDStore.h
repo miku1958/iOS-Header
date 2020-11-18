@@ -8,21 +8,18 @@
 
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDHomeManager, NSMutableDictionary;
+@class NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface HMDApplicationVendorIDStore : NSObject <NSSecureCoding>
 {
     NSMutableDictionary *_applicationVendorIdMapping;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    HMDHomeManager *_homeManager;
 }
 
 @property (readonly, nonatomic) NSMutableDictionary *applicationVendorIdMapping; // @synthesize applicationVendorIdMapping=_applicationVendorIdMapping;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-@property (weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 
-+ (id)setSharedStore:(id)arg1 withManager:(id)arg2;
 + (id)sharedStore;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

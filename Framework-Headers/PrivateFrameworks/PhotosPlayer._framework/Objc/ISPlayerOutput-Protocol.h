@@ -11,6 +11,7 @@
 @protocol ISPlayerOutput <NSObject>
 
 @property (readonly, nonatomic) ISCrossfadeLayer *crossfadeLayer;
+@property (strong, nonatomic) struct CGImage *photoContents;
 @property (readonly, nonatomic) CALayer *photoLayer;
 @property (nonatomic) double photoScale;
 @property (readonly, nonatomic) AVPlayerLayer *videoLayer;

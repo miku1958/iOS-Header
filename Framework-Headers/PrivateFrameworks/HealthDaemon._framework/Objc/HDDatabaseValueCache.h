@@ -6,19 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDDatabaseValueCache : NSObject
 {
     NSMutableDictionary *_cache;
     NSObject<OS_dispatch_queue> *_resourceQueue;
+    NSString *_threadLocalKey;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *cache; // @synthesize cache=_cache;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *resourceQueue; // @synthesize resourceQueue=_resourceQueue;
+@property (copy, nonatomic) NSString *threadLocalKey; // @synthesize threadLocalKey=_threadLocalKey;
 
 - (void).cxx_destruct;
+- (id)_resourceQueue_objectForKey:(id)arg1;
+- (void)_resourceQueue_removeThreadLocalObjectForKey:(id)arg1;
+- (void)_resourceQueue_storeThreadLocalObject:(id)arg1 forKey:(id)arg2;
 - (id)fetchObjectForKey:(id)arg1 database:(id)arg2 faultHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)objectForKey:(id)arg1;

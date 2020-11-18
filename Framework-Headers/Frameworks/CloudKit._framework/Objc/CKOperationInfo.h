@@ -8,28 +8,38 @@
 
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class CKContainerSetupInfo, NSString;
+@class CKContainerSetupInfo, NSDictionary, NSString;
 
 @interface CKOperationInfo : NSObject <NSSecureCoding>
 {
     BOOL _allowsCellularAccess;
     BOOL _preferAnonymousRequests;
     BOOL _allowsBackgroundNetworking;
+    BOOL _isLongLived;
+    BOOL _isOutstandingOperation;
     NSString *_operationID;
+    NSString *_name;
     NSString *_parentSectionID;
     long long _qualityOfService;
     NSString *_sourceApplicationBundleIdentifier;
     NSString *_sourceApplicationSecondaryIdentifier;
     NSString *_authPromptReason;
     CKContainerSetupInfo *_setupInfo;
+    NSString *_operationClass;
+    NSDictionary *_additionalRequestHTTPHeaders;
     NSString *_deviceIdentifier;
     id _parentOperation;
 }
 
+@property (strong, nonatomic) NSDictionary *additionalRequestHTTPHeaders; // @synthesize additionalRequestHTTPHeaders=_additionalRequestHTTPHeaders;
 @property (nonatomic) BOOL allowsBackgroundNetworking; // @synthesize allowsBackgroundNetworking=_allowsBackgroundNetworking;
 @property (nonatomic) BOOL allowsCellularAccess; // @synthesize allowsCellularAccess=_allowsCellularAccess;
 @property (strong, nonatomic) NSString *authPromptReason; // @synthesize authPromptReason=_authPromptReason;
 @property (strong, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
+@property (nonatomic) BOOL isLongLived; // @synthesize isLongLived=_isLongLived;
+@property (nonatomic) BOOL isOutstandingOperation; // @synthesize isOutstandingOperation=_isOutstandingOperation;
+@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (strong, nonatomic) NSString *operationClass; // @synthesize operationClass=_operationClass;
 @property (strong, nonatomic) NSString *operationID; // @synthesize operationID=_operationID;
 @property (weak, nonatomic) id parentOperation; // @synthesize parentOperation=_parentOperation;
 @property (strong, nonatomic) NSString *parentSectionID; // @synthesize parentSectionID=_parentSectionID;

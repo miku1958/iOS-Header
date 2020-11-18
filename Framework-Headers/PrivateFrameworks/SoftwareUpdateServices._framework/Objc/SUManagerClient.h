@@ -78,6 +78,7 @@
 - (void)scanForUpdates:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)scanRequestDidFinishForOptions:(id)arg1 update:(id)arg2 error:(id)arg3;
 - (void)scanRequestDidStartForOptions:(id)arg1;
+- (void)slaVersion:(CDUnknownBlockType)arg1;
 - (void)startDownload:(CDUnknownBlockType)arg1;
 - (void)startDownloadWithMetadata:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (unsigned long long)totalPurgeableSpace;

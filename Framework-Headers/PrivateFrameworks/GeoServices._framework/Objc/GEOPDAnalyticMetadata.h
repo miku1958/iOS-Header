@@ -18,6 +18,7 @@
     NSString *_appMinorVersion;
     NSString *_hardwareModel;
     NSString *_osVersion;
+    NSString *_productName;
     int _requestSource;
     unsigned int _sequenceNumber;
     NSMutableArray *_serviceTags;
@@ -46,6 +47,7 @@
 @property (nonatomic) BOOL hasIsInternalInstall;
 @property (nonatomic) BOOL hasIsInternalTool;
 @property (readonly, nonatomic) BOOL hasOsVersion;
+@property (readonly, nonatomic) BOOL hasProductName;
 @property (nonatomic) BOOL hasRequestSource;
 @property (nonatomic) BOOL hasSequenceNumber;
 @property (nonatomic) BOOL hasSessionId;
@@ -53,6 +55,7 @@
 @property (nonatomic) BOOL isInternalInstall; // @synthesize isInternalInstall=_isInternalInstall;
 @property (nonatomic) BOOL isInternalTool; // @synthesize isInternalTool=_isInternalTool;
 @property (strong, nonatomic) NSString *osVersion; // @synthesize osVersion=_osVersion;
+@property (strong, nonatomic) NSString *productName; // @synthesize productName=_productName;
 @property (nonatomic) int requestSource; // @synthesize requestSource=_requestSource;
 @property (nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property (strong, nonatomic) NSMutableArray *serviceTags; // @synthesize serviceTags=_serviceTags;

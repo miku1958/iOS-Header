@@ -27,8 +27,8 @@
 + (id)exportedInterface;
 + (void)requestEmergencyCallControllerWithCompletion:(CDUnknownBlockType)arg1;
 + (id)serviceViewControllerInterface;
+- (void).cxx_destruct;
 - (void)_createAndAddBlurViewIfNecessary;
-- (void)dealloc;
 - (void)dismiss;
 - (id)tintColorForBackgroundStyle:(long long)arg1 outBlurRadius:(double *)arg2;
 - (void)viewWillAppear:(BOOL)arg1;

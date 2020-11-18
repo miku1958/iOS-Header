@@ -11,7 +11,7 @@
 
 @protocol SBFIrisWallpaperView <NSObject>
 
-@property (nonatomic) id<SBFIrisWallpaperViewDelegate> irisDelegate;
+@property (weak, nonatomic) id<SBFIrisWallpaperViewDelegate> irisDelegate;
 @property (readonly, nonatomic) long long irisPlaybackState;
 @property (readonly, nonatomic) BOOL isIrisInteracting;
 

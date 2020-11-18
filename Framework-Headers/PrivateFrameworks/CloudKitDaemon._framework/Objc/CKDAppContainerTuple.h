@@ -15,9 +15,11 @@
     NSString *_applicationBundleID;
     NSString *_sourceApplicationBundleID;
     CKContainerID *_containerID;
+    NSString *_applicationContainerPath;
 }
 
 @property (strong, nonatomic) NSString *applicationBundleID; // @synthesize applicationBundleID=_applicationBundleID;
+@property (strong, nonatomic) NSString *applicationContainerPath; // @synthesize applicationContainerPath=_applicationContainerPath;
 @property (strong, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
 @property (strong, nonatomic) NSString *sourceApplicationBundleID; // @synthesize sourceApplicationBundleID=_sourceApplicationBundleID;
 
@@ -27,6 +29,7 @@
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithApplicationBundleID:(id)arg1 containerID:(id)arg2;
+- (id)initWithApplicationBundleID:(id)arg1 sourceApplicationBundleID:(id)arg2 applicationContainerPath:(id)arg3 containerID:(id)arg4;
 - (id)initWithApplicationBundleID:(id)arg1 sourceApplicationBundleID:(id)arg2 containerID:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (id)pushTokenBundleID;

@@ -314,14 +314,15 @@ struct FontCascade {
     float _field4;
     float _field5;
     BOOL _field6;
-    unsigned int :2;
+    unsigned int :1;
+    unsigned int :1;
 };
 
 struct FontCascadeFonts;
 
 struct FontDescription {
     struct RefCountedArray<WTF::AtomicString> _field1;
-    struct RefPtr<WebCore::FontFeatureSettings> _field2;
+    struct FontFeatureSettings _field2;
     float _field3;
     float _field4;
     unsigned int :1;
@@ -329,12 +330,8 @@ struct FontDescription {
     unsigned int :2;
     unsigned int :1;
     unsigned int :1;
-    unsigned int :1;
     unsigned int :8;
     unsigned int :1;
-    unsigned int :2;
-    unsigned int :2;
-    unsigned int :2;
     unsigned int :2;
     unsigned int :4;
     unsigned int :2;
@@ -342,9 +339,28 @@ struct FontDescription {
     unsigned int :1;
     unsigned int :7;
     unsigned int :2;
+    unsigned int :2;
+    unsigned int :2;
+    unsigned int :2;
+    unsigned int :2;
+    unsigned int :2;
+    unsigned int :3;
+    unsigned int :2;
+    unsigned int :2;
+    unsigned int :2;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :3;
+    unsigned int :2;
+    unsigned int :1;
 };
 
-struct FontFeatureSettings;
+struct FontFeature;
+
+struct FontFeatureSettings {
+    struct Vector<WebCore::FontFeature, 0, WTF::CrashOnOverflow, 16> _field1;
+};
 
 struct Frame {
     CDUnknownFunctionPointerType *_field1;
@@ -1386,10 +1402,6 @@ struct RefPtr<WebCore::FontCascadeFonts> {
     struct FontCascadeFonts *_field1;
 };
 
-struct RefPtr<WebCore::FontFeatureSettings> {
-    struct FontFeatureSettings *_field1;
-};
-
 struct RefPtr<WebCore::Frame> {
     struct Frame *_field1;
 };
@@ -1863,6 +1875,12 @@ struct Vector<WTF::Vector<float, 0, WTF::CrashOnOverflow, 16>, 0, WTF::CrashOnOv
     unsigned int _field3;
 };
 
+struct Vector<WebCore::FontFeature, 0, WTF::CrashOnOverflow, 16> {
+    struct FontFeature *_field1;
+    unsigned int _field2;
+    unsigned int _field3;
+};
+
 struct Vector<WebCore::IntRect, 0, WTF::CrashOnOverflow, 16> {
     struct IntRect *_field1;
     unsigned int _field2;
@@ -1938,6 +1956,7 @@ struct ViewportArguments {
     float _field11;
     float _field12;
     float _field13;
+    BOOL _field14;
 };
 
 struct VisiblePosition {

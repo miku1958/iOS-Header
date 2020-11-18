@@ -10,6 +10,7 @@
 
 @interface PHAssetOriginalMetadataProperties : NSObject
 {
+    BOOL _isOriginalSRGB;
     short _originalHeight;
     short _originalWidth;
     short _originalExifOrientation;
@@ -21,6 +22,7 @@
 }
 
 @property (readonly, weak, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
+@property (readonly, nonatomic) BOOL isOriginalSRGB; // @synthesize isOriginalSRGB=_isOriginalSRGB;
 @property (readonly, nonatomic) NSString *originalAssetsUUID; // @synthesize originalAssetsUUID=_originalAssetsUUID;
 @property (readonly, nonatomic) short originalExifOrientation; // @synthesize originalExifOrientation=_originalExifOrientation;
 @property (readonly, nonatomic) NSString *originalFilename; // @synthesize originalFilename=_originalFilename;

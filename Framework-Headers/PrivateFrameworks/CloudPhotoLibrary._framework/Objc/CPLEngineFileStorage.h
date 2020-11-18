@@ -56,7 +56,6 @@
 - (BOOL)hasCrashMarker;
 - (BOOL)hasFileWithIdentity:(id)arg1;
 - (id)initWithBaseURL:(id)arg1;
-- (BOOL)linkOrCopyFileWithIdentity:(id)arg1 destinationURL:(id)arg2 error:(id *)arg3;
 - (BOOL)openWithRecoveryHandler:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (BOOL)releaseFileURL:(id)arg1 error:(id *)arg2;
 - (id)retainFileURLForIdentity:(id)arg1 resourceType:(unsigned long long)arg2 error:(id *)arg3;

@@ -24,6 +24,7 @@
     CDStruct_1b6d18a9 time;
     CDStruct_1b6d18a9 duration;
     NSDate *startDate;
+    NSDate *discoveryTimestamp;
     NSString *dataType;
     NSDictionary *extras;
 }

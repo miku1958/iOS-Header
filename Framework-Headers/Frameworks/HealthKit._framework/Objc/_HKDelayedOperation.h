@@ -15,11 +15,14 @@
     int _blockEnqueued;
     double _lastExecution;
     NSObject<OS_dispatch_source> *_timerSource;
+    double _delay;
 }
 
 - (void).cxx_destruct;
-- (void)executeWithDelay:(double)arg1;
-- (id)initWithQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)_queue_executeBlock;
+- (void)_queue_updateLastExecution;
+- (void)execute;
+- (id)initWithQueue:(id)arg1 delay:(double)arg2 block:(CDUnknownBlockType)arg3;
 - (void)invalidate;
 
 @end

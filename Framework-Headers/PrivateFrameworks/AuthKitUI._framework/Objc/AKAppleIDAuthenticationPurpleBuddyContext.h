@@ -20,7 +20,9 @@
 @property (readonly, nonatomic) NSString *usernameForCreating;
 
 - (void).cxx_destruct;
+- (void)dismissBasicLoginUIWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)presentBasicLoginUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)presentLoginAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentServerProvidedUIWithURLRequest:(id)arg1 delegate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(int *)arg3;

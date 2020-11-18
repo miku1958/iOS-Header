@@ -19,10 +19,13 @@
 }
 
 - (void).cxx_destruct;
+- (void)_sendCancelled;
 - (void)_sendChanges;
 - (void)_sendComplete;
 - (BOOL)canRestart;
 - (BOOL)canRollback;
+- (void)cancel;
+- (void)didCompleteSession;
 - (id)initWithService:(id)arg1 transaction:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)isResetSync;
 - (BOOL)isSending;

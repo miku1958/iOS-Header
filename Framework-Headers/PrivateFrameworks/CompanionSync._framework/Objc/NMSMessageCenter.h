@@ -28,6 +28,8 @@
     NMSWindowData *_windowData;
     NSObject<OS_dispatch_source> *_windowTimeout;
     _NMSDispatchQueue *_windowQueue;
+    BOOL _checkedForQWS;
+    NSObject<OS_dispatch_queue> *_idsIncomingQueue;
     BOOL _enableTransmissionWindow;
     BOOL _delegateRequiresACKs;
     id<NMSMessageCenterDelegate> _delegate;
@@ -60,6 +62,7 @@
 - (void).cxx_destruct;
 - (id)_buildDataForRequest:(id)arg1 options:(id *)arg2;
 - (id)_buildDataForResponse:(id)arg1 options:(id *)arg2;
+- (void)_checkForSwitch;
 - (id)_decodeIncomingRequestData:(id)arg1 context:(id)arg2;
 - (void)_expireMessages;
 - (void)_handleError:(id)arg1 context:(id)arg2;
@@ -72,7 +75,9 @@
 - (void)addErrorHandlerForMessageID:(unsigned short)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)addRequestHandlerForMessageID:(unsigned short)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)addResponseHandler:(unsigned short)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (BOOL)cancelMessageWithID:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
+- (id)deviceIDFromDevice:(id)arg1;
 - (void)dropExtantMessages;
 - (id)errorHandlers;
 - (id)init;
@@ -82,13 +87,16 @@
 - (id)requestHandlers;
 - (id)responseHandlers;
 - (void)resume;
+- (void)resumeIncomingMessages;
 - (void)sendFile:(id)arg1;
 - (void)sendRequest:(id)arg1;
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(BOOL)arg4 error:(id)arg5;
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 hasBeenDeliveredWithContext:(id)arg4;
 - (void)service:(id)arg1 account:(id)arg2 incomingData:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)service:(id)arg1 account:(id)arg2 incomingResourceAtURL:(id)arg3 metadata:(id)arg4 fromID:(id)arg5 context:(id)arg6;
+- (void)service:(id)arg1 didSwitchActivePairedDevice:(id)arg2 acknowledgementBlock:(CDUnknownBlockType)arg3;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
+- (void)suspendIncomingMessages;
 
 @end
 

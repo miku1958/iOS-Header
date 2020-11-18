@@ -14,14 +14,18 @@
 {
     BOOL _dryRun;
     BOOL _terminateDuringDryRun;
-    NSUUID *_transactionID;
     PSYTestInput *_testInput;
+    NSUUID *_pairingIdentifier;
+    NSUUID *_sessionIdentifier;
+    unsigned long long _syncSessionType;
 }
 
 @property (nonatomic) BOOL dryRun; // @synthesize dryRun=_dryRun;
+@property (strong, nonatomic) NSUUID *pairingIdentifier; // @synthesize pairingIdentifier=_pairingIdentifier;
+@property (strong, nonatomic) NSUUID *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
+@property (nonatomic) unsigned long long syncSessionType; // @synthesize syncSessionType=_syncSessionType;
 @property (nonatomic) BOOL terminateDuringDryRun; // @synthesize terminateDuringDryRun=_terminateDuringDryRun;
 @property (strong, nonatomic) PSYTestInput *testInput; // @synthesize testInput=_testInput;
-@property (copy, nonatomic) NSUUID *transactionID; // @synthesize transactionID=_transactionID;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

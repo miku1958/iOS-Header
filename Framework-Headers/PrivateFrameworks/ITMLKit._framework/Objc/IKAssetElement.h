@@ -17,6 +17,7 @@
 @property (readonly, strong, nonatomic) NSString *adamID;
 @property (readonly, strong, nonatomic) NSString *bookmarkID;
 @property (readonly, strong, nonatomic) NSString *contentID;
+@property (readonly, strong, nonatomic) NSString *externalID;
 @property (readonly, nonatomic, getter=isInfiniteDuration) BOOL infiniteDuration; // @synthesize infiniteDuration=_infiniteDuration;
 @property (readonly, nonatomic) long long keyDelivery;
 @property (readonly, strong, nonatomic) NSString *serviceID;

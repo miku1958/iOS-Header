@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) NSDate *accessibilityLastGesturedTextInputStatusChange;
 
+- (BOOL)_accessibilityIsAppReadyToBeProbed;
 @end
 

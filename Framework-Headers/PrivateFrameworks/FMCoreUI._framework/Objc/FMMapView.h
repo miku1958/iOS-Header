@@ -11,7 +11,7 @@
 #import <FMCoreUI/MKMapViewDelegate-Protocol.h>
 #import <FMCoreUI/MKUserTrackingView-Protocol.h>
 
-@class CADisplayLink, FMAnnotationView, FMMapGestureRecognizer, MKMapCamera, MKMapView, MKUserLocation, MKUserLocationView, NSMutableArray, NSString, NSTimer, _MKUserTrackingButton;
+@class CADisplayLink, FMAnnotationView, FMMapGestureRecognizer, MKMapCamera, MKMapView, MKUserLocation, MKUserLocationView, NSMutableArray, NSString, NSTimer, UIColor, _MKUserTrackingButton;
 @protocol FMAnnotation><MKAnnotation, FMMapViewDelegate, MKAnnotation;
 
 @interface FMMapView : UIView <FMMapGestureRecognizerDelegate, FMMapAnnotationGestureRecognizerDelegate, MKMapViewDelegate, MKUserTrackingView>
@@ -37,6 +37,7 @@
     id<FMMapViewDelegate> _delegate;
     MKMapView *_mapView;
     _MKUserTrackingButton *_userTrackingButton;
+    UIColor *_userLocationTintColor;
     long long _currentTrackingMode;
     long long _doubleSelectionMode;
     long long _renderingMode;
@@ -103,6 +104,7 @@
 @property (nonatomic) BOOL showUserLocationCallout; // @synthesize showUserLocationCallout=_showUserLocationCallout;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) MKUserLocation *userLocation; // @synthesize userLocation=_userLocation;
+@property (strong, nonatomic) UIColor *userLocationTintColor; // @synthesize userLocationTintColor=_userLocationTintColor;
 @property (weak, nonatomic) MKUserLocationView *userLocationView; // @synthesize userLocationView=_userLocationView;
 @property (strong, nonatomic) NSTimer *userSelectionTimer; // @synthesize userSelectionTimer=_userSelectionTimer;
 @property (strong, nonatomic) _MKUserTrackingButton *userTrackingButton; // @synthesize userTrackingButton=_userTrackingButton;

@@ -11,6 +11,8 @@
 }
 
 + (id)SPURLQueryAllowedCharacterSet;
++ (BOOL)appConduitIsInChargeOfInstallations;
++ (BOOL)appConduitIsInChargeOfInstallationsForDevice:(id)arg1;
 + (BOOL)appExtensionFirstUnlock;
 + (id)companionConnectionClientIdentifier:(BOOL)arg1;
 + (id)deserializeObject:(id)arg1;

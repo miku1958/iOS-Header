@@ -15,11 +15,13 @@
     BOOL _fromRequest;
     unsigned short _messageID;
     NSString *_idsIdentifier;
+    NSString *_deviceIdentifier;
     NSDictionary *_userInfo;
     NSDate *_date;
 }
 
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (copy, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 @property (nonatomic, getter=isFromRequest) BOOL fromRequest; // @synthesize fromRequest=_fromRequest;
 @property (copy, nonatomic) NSString *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
 @property (nonatomic) unsigned short messageID; // @synthesize messageID=_messageID;

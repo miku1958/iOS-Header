@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -16,8 +16,8 @@
 }
 
 + (id)eventForBulletin:(id)arg1 feed:(unsigned long long)arg2 block:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
 - (id)bulletinID;
-- (void)dealloc;
 - (void)execute;
 - (unsigned long long)feed;
 - (id)initWithBulletin:(id)arg1 feed:(unsigned long long)arg2 block:(CDUnknownBlockType)arg3;

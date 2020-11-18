@@ -12,15 +12,19 @@
 
 @interface GEOMapsServerMetadata : PBCodable <NSCopying>
 {
+    NSMutableArray *_mapsSearchResults;
     NSMutableArray *_suggestionEntryMetadataDisplayeds;
     NSData *_suggestionEntryMetadataTappedOn;
 }
 
 @property (readonly, nonatomic) BOOL hasSuggestionEntryMetadataTappedOn;
+@property (strong, nonatomic) NSMutableArray *mapsSearchResults; // @synthesize mapsSearchResults=_mapsSearchResults;
 @property (strong, nonatomic) NSMutableArray *suggestionEntryMetadataDisplayeds; // @synthesize suggestionEntryMetadataDisplayeds=_suggestionEntryMetadataDisplayeds;
 @property (strong, nonatomic) NSData *suggestionEntryMetadataTappedOn; // @synthesize suggestionEntryMetadataTappedOn=_suggestionEntryMetadataTappedOn;
 
+- (void)addMapsSearchResult:(id)arg1;
 - (void)addSuggestionEntryMetadataDisplayed:(id)arg1;
+- (void)clearMapsSearchResults;
 - (void)clearSuggestionEntryMetadataDisplayeds;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -29,6 +33,8 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)mapsSearchResultAtIndex:(unsigned long long)arg1;
+- (unsigned long long)mapsSearchResultsCount;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)suggestionEntryMetadataDisplayedAtIndex:(unsigned long long)arg1;

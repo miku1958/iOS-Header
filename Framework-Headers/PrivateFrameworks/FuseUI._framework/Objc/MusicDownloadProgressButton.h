@@ -21,13 +21,11 @@
     double _progressAnimationEndTime;
     double _progressAnimationStartTime;
     CAMediaTimingFunction *_progressAnimationTimingFunction;
-    long long _contentsHorizontalAlignment;
     long long _progressType;
     double _progress;
     long long _style;
 }
 
-@property (readonly, nonatomic) long long contentsHorizontalAlignment; // @synthesize contentsHorizontalAlignment=_contentsHorizontalAlignment;
 @property (nonatomic) double progress; // @synthesize progress=_progress;
 @property (nonatomic) long long progressType; // @synthesize progressType=_progressType;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
@@ -48,7 +46,7 @@
 - (void)drawRect:(struct CGRect)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithStyle:(long long)arg1 contentsHorizontalAlignment:(long long)arg2;
+- (id)initWithStyle:(long long)arg1;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setHighlighted:(BOOL)arg1;

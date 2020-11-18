@@ -136,8 +136,7 @@
     unsigned char *_transitLineDirections;
     unsigned long long *_originalTransitNodeIDs;
     unsigned long long **_originalTransitNodeIDPointers;
-    float *_transitLinkSectionStartOffsets;
-    float *_transitLinkSectionEndOffsets;
+    CDStruct_b2fbf00d *_transitLinkSections;
     BOOL _transitCoverage;
     id *_transitNodeStyleAttributes;
     unsigned long long *_hallOrderIDs;
@@ -202,8 +201,7 @@
 @property (readonly, nonatomic) CDStruct_361566eb *transitLinkLabelAnnotations; // @synthesize transitLinkLabelAnnotations=_transitLinkLabelAnnotations;
 @property (readonly, nonatomic) unsigned long long *transitLinkLineIndices; // @synthesize transitLinkLineIndices=_transitLinkLineIndices;
 @property (readonly, nonatomic) unsigned long long transitLinkLineIndicesCount; // @synthesize transitLinkLineIndicesCount=_transitLinkLineIndicesCount;
-@property (readonly, nonatomic) const float *transitLinkSectionEndOffsets; // @synthesize transitLinkSectionEndOffsets=_transitLinkSectionEndOffsets;
-@property (readonly, nonatomic) const float *transitLinkSectionStartOffsets; // @synthesize transitLinkSectionStartOffsets=_transitLinkSectionStartOffsets;
+@property (readonly, nonatomic) const CDStruct_b2fbf00d *transitLinkSections; // @synthesize transitLinkSections=_transitLinkSections;
 @property (readonly, nonatomic) CDStruct_32d7d945 *transitLinks; // @synthesize transitLinks=_transitLinks;
 @property (readonly, nonatomic) unsigned long long transitNodeCollapseIDCount; // @synthesize transitNodeCollapseIDCount=_transitNodeCollapseIDCount;
 @property (readonly, nonatomic) unsigned long long *transitNodeCollapseIDs; // @synthesize transitNodeCollapseIDs=_transitNodeCollapseIDs;

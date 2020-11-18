@@ -16,11 +16,10 @@
 {
     NSObject<OS_dispatch_queue> *_queue;
     id<HKWorkoutSessionDelegate> _delegate;
-    unsigned long long _activityType;
     _HKWorkoutSession *_privateSession;
 }
 
-@property (readonly) unsigned long long activityType; // @synthesize activityType=_activityType;
+@property (readonly) unsigned long long activityType;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HKWorkoutSessionDelegate> delegate;
 @property (readonly, copy) NSString *description;

@@ -13,12 +13,14 @@
 
 @interface CKDCloudDatabaseServer : NSObject <NSXPCListenerDelegate>
 {
+    NSXPCListener *_anonymousListener;
     NSXPCListener *_xpcListener;
     NSMutableArray *_connectedClients;
     NSObject<OS_dispatch_source> *_sighandlerSource;
     NSOperationQueue *_clientTeardownQueue;
 }
 
+@property (strong, nonatomic) NSXPCListener *anonymousListener; // @synthesize anonymousListener=_anonymousListener;
 @property (strong, nonatomic) NSOperationQueue *clientTeardownQueue; // @synthesize clientTeardownQueue=_clientTeardownQueue;
 @property (strong, nonatomic) NSMutableArray *connectedClients; // @synthesize connectedClients=_connectedClients;
 @property (readonly, copy) NSString *debugDescription;
@@ -30,9 +32,9 @@
 
 + (id)sharedServer;
 - (void).cxx_destruct;
-- (id)allClients;
 - (void)dealloc;
 - (id)init;
+- (void)kickOffPendingLongLivedOperations;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)resume;
 - (void)statusReport;

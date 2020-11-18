@@ -58,8 +58,10 @@ __attribute__((visibility("hidden")))
     int _networkServiceType;
     NSDictionary *_legacySocketStreamProperties;
     BOOL _betterRouteDiscovered;
+    NSData *_TCPConnectionMetadata;
 }
 
+@property (copy) NSData *_TCPConnectionMetadata; // @synthesize _TCPConnectionMetadata;
 @property (readonly) BOOL _goneSecure; // @synthesize _goneSecure;
 @property long long countOfBytesExpectedToReceive; // @synthesize countOfBytesExpectedToReceive=_countOfBytesExpectedToReceive;
 @property long long countOfBytesExpectedToSend; // @synthesize countOfBytesExpectedToSend=_countOfBytesExpectedToSend;
@@ -126,6 +128,7 @@ __attribute__((visibility("hidden")))
 - (void)closeRead;
 - (void)closeWrite;
 - (long long)computeAdjustedPoolPriority;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)describePending:(id)arg1;
 - (id)description;

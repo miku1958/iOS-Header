@@ -39,3 +39,8 @@ typedef struct {
     long long epoch;
 } CDStruct_1b6d18a9;
 
+typedef struct {
+    CDStruct_1b6d18a9 start;
+    CDStruct_1b6d18a9 duration;
+} CDStruct_e83c9415;
+

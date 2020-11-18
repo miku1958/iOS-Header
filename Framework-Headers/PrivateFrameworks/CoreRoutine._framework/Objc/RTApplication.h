@@ -15,20 +15,20 @@
 {
     NSString *_bundleId;
     NSString *_localizedDisplayName;
-    unsigned long long _capabilities;
+    long long _capabilities;
 }
 
 @property (readonly, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
-@property (nonatomic) unsigned long long capabilities; // @synthesize capabilities=_capabilities;
+@property (nonatomic) long long capabilities; // @synthesize capabilities=_capabilities;
 @property (readonly, nonatomic) NSString *localizedDisplayName; // @synthesize localizedDisplayName=_localizedDisplayName;
 
-+ (id)capabilitiesToString:(unsigned long long)arg1;
++ (id)capabilitiesToString:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithBundleId:(id)arg1 localizedDisplayName:(id)arg2 capabilities:(unsigned long long)arg3;
+- (id)initWithBundleId:(id)arg1 localizedDisplayName:(id)arg2 capabilities:(long long)arg3;
 - (id)initWithCoder:(id)arg1;
 
 @end

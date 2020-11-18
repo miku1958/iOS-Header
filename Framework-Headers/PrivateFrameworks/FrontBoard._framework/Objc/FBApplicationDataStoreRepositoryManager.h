@@ -8,13 +8,13 @@
 
 #import <FrontBoard/FBApplicationDataStoreRepositoryDelegate-Protocol.h>
 
-@class FBPlistApplicationDataStoreRepository, FBSSerialQueue, LSApplicationWorkspace, NSString, NSURL;
+@class FBSSerialQueue, FBSqliteApplicationDataStoreRepository, LSApplicationWorkspace, NSString, NSURL;
 @protocol FBApplicationDataStoreRepository;
 
 @interface FBApplicationDataStoreRepositoryManager : NSObject <FBApplicationDataStoreRepositoryDelegate>
 {
     NSURL *_dataStoreURL;
-    FBPlistApplicationDataStoreRepository *_dataStore;
+    FBSqliteApplicationDataStoreRepository *_dataStore;
     LSApplicationWorkspace *_lsApplicationWorkspace;
     FBSSerialQueue *_queue;
 }
@@ -36,8 +36,12 @@
 - (id)init;
 - (id)initWithQueue:(id)arg1;
 - (void)migrateApplicationStorePathIfNecessary;
+- (BOOL)migrateFromApplicationStore:(id)arg1 toApplicationStore:(id)arg2 error:(id *)arg3;
+- (BOOL)migrateFromPlistStoreAtURL:(id)arg1 toSqliteStoreAtURL:(id)arg2 error:(id *)arg3;
 - (void)objectChangedForKeys:(id)arg1 application:(id)arg2;
+- (BOOL)removeStoreAtURL:(id)arg1 error:(out id *)arg2;
 - (void)storeInvalidatedForIdentifier:(id)arg1;
+- (id)urlByAppendingString:(id)arg1 toURL:(id)arg2;
 
 @end
 

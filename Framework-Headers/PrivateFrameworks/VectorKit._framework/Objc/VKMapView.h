@@ -152,6 +152,7 @@
 - (id)annotationMarkerForSelectionAtPoint:(struct CGPoint)arg1 avoidCurrent:(BOOL)arg2;
 - (CDUnknownBlockType)annotationRectTest;
 - (id)attributionsForCurrentRegion;
+- (id)boundsContextForSelectedTransitLines;
 - (BOOL)buildingFootprintsDisabled;
 - (id)buildingMarkerAtPoint:(struct CGPoint)arg1;
 - (BOOL)canShowAnimationForSearchResultWithMapRegion:(id)arg1;
@@ -273,6 +274,7 @@
 - (void)selectAnnotationMarker:(id)arg1;
 - (void)selectLabelMarker:(id)arg1;
 - (void)selectTransitLineMarker:(id)arg1;
+- (id)selectedTransitLineIDs;
 - (void)setAnnotationMarkerDeselectionCallback:(CDUnknownBlockType)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setCameraHorizontalOffset:(double)arg1 duration:(double)arg2 timingFunction:(id)arg3;

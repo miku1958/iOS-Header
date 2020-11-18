@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, SYDClient;
 @protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction;
@@ -61,6 +61,7 @@
 - (id)initWithApplicationID:(struct __CFString *)arg1 shared:(BOOL)arg2;
 - (id)initWithApplicationID:(struct __CFString *)arg1 storeID:(struct __CFString *)arg2 shared:(BOOL)arg3;
 - (id)initWithApplicationID:(struct __CFString *)arg1 storeID:(struct __CFString *)arg2 shared:(BOOL)arg3 additionalSource:(BOOL)arg4;
+- (id)initWithApplicationID:(struct __CFString *)arg1 storeID:(struct __CFString *)arg2 shared:(BOOL)arg3 additionalSource:(BOOL)arg4 containerPath:(struct __CFString *)arg5;
 - (unsigned char)isInitialSync;
 - (long long)maximumDataLengthPerKey;
 - (long long)maximumKeyCount;
@@ -70,6 +71,7 @@
 - (void)registerForSynchronizedDefaults;
 - (void)scheduleRemoteSynchronization;
 - (id)serverSideDebugDescription;
+- (void)setDefaultsConfiguration:(id)arg1;
 - (void)setValue:(void *)arg1 forKey:(struct __CFString *)arg2;
 - (void)synchronizationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (unsigned char)synchronize;

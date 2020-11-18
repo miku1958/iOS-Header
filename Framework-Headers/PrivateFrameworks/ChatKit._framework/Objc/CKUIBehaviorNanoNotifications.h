@@ -16,6 +16,8 @@
 - (BOOL)modifiesSingleLineBalloonLayout;
 - (double)nanoNoteSenderContentSpace;
 - (double)previewBalloonMaxWidthForBalloonMaxWidth:(double)arg1;
+- (BOOL)shouldLoadInitialViewingMessageCount;
+- (BOOL)shouldSizeInitialViewingMessageCount;
 - (BOOL)shouldUseRotisserieScrolling;
 - (BOOL)showsBalloonBadges;
 - (BOOL)showsBalloonChevron;

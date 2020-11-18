@@ -9,28 +9,22 @@
 #import <BulletinDistributorCompanion/BLTSettingSyncing-Protocol.h>
 #import <BulletinDistributorCompanion/MCProfileConnectionObserver-Protocol.h>
 
-@class BBObserver, BBSettingsGateway, BLTSectionConfiguration, BLTSettingSyncServer, NPSManager, NSString;
+@class BBObserver, BBSettingsGateway, BLTSectionConfiguration, BLTSettingSyncServer, NSString;
 
 @interface BLTSettingSyncInternal : NSObject <MCProfileConnectionObserver, BLTSettingSyncing>
 {
-    BOOL _dndEnabled;
-    BOOL _dndStateUpdatedAtLeastOnce;
     BLTSectionConfiguration *_sectionConfiguration;
-    BOOL _isDNDMirrorEnabled;
     BOOL _isWristDetectDisabled;
     BBObserver *_observer;
     BBSettingsGateway *_settingsGateway;
     BLTSettingSyncServer *_connection;
-    NPSManager *_npsManager;
 }
 
 @property (strong, nonatomic) BLTSettingSyncServer *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL isDNDMirrorEnabled; // @synthesize isDNDMirrorEnabled=_isDNDMirrorEnabled;
 @property (readonly, nonatomic) BOOL isWristDetectDisabled; // @synthesize isWristDetectDisabled=_isWristDetectDisabled;
-@property (strong, nonatomic) NPSManager *npsManager; // @synthesize npsManager=_npsManager;
 @property (strong, nonatomic) BBObserver *observer; // @synthesize observer=_observer;
 @property (strong, nonatomic) BBSettingsGateway *settingsGateway; // @synthesize settingsGateway=_settingsGateway;
 @property (readonly) Class superclass;
@@ -46,17 +40,8 @@
 - (void)enableStandaloneTestModeWithMinimumSendDelay:(unsigned long long)arg1 maximumSendDelay:(unsigned long long)arg2 minimumResponseDelay:(unsigned long long)arg3 maximumResponseDelay:(unsigned long long)arg4;
 - (id)init;
 - (void)profileConnectionDidReceiveRestrictionChangedNotification:(id)arg1 userInfo:(id)arg2;
-- (void)removeDNDHandlers;
-- (void)setBehaviorOverrideStatus:(long long)arg1;
-- (void)setBehaviorOverrideTypes:(unsigned long long)arg1;
-- (void)setBehaviorOverrides:(id)arg1;
-- (void)setDNDHandlers;
-- (void)setDoNotDisturb:(BOOL)arg1 updateSettings:(BOOL)arg2;
-- (void)setPrivilegedSenderTypes:(unsigned long long)arg1;
 - (void)setSectionInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setSectionSubtypeParametersIcon:(id)arg1 forSectionID:(id)arg2 forSubtypeID:(long long)arg3;
-- (void)updateDNDMirrorState;
-- (void)updateDNDState;
 - (unsigned long long)willNanoPresentNotificationForSectionID:(id)arg1 subsectionIDs:(id)arg2;
 - (unsigned long long)willNanoPresentNotificationForSectionID:(id)arg1 subsectionIDs:(id)arg2 subtype:(long long)arg3 considerSubtype:(BOOL)arg4;
 

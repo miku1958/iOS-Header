@@ -7,7 +7,7 @@
 #import <Foundation/NSObject.h>
 
 @class NSLock, NSMutableArray;
-@protocol OS_dispatch_queue;
+@protocol GEOLogAdaptor, OS_dispatch_queue;
 
 @interface GEOLogManager : NSObject
 {
@@ -15,37 +15,40 @@
     NSMutableArray *_logAdaptors;
     NSMutableArray *_remoteAdaptorOptions;
     NSLock *_remoteAdaptorOptionsLock;
+    id<GEOLogAdaptor> _serverLogAdaptorManager;
     void *_loggingQueueIdentityKey;
     void *_loggingQueueIdentityValue;
 }
+
+@property (strong, nonatomic) id<GEOLogAdaptor> serverLogAdaptorManager; // @synthesize serverLogAdaptorManager=_serverLogAdaptorManager;
 
 + (id)sharedInstance;
 - (void)_addLogAdaptor:(id)arg1;
 - (void)_applicationDeactivating:(id)arg1;
 - (void)_applicationWillTerminate:(id)arg1;
+- (void)_disableLogMsgInstrumentation;
 - (BOOL)_disableUsageLoggingForCountry;
+- (void)_enableLogMsgInstrumentation;
 - (void)_flushLogs;
 - (id)_logMessageUsageURL;
 - (void)_queueLogMessage:(id)arg1;
 - (void)_removeAllLogAdaptors;
 - (void)_removeLogAdaptor:(id)arg1;
 - (void)_setupDefaultAdaptors;
-- (void)_setupLogAdaptorsBackgroundTaskStartBlock:(CDUnknownBlockType)arg1 endBlock:(CDUnknownBlockType)arg2;
 - (void)_setupXPCRemoteAdators;
-- (BOOL)_shouldSendLogMessageUsageUsingGeoServices;
-- (BOOL)_shouldSendLogMessageUsageWithPersistence;
 - (void)_updateAndSetupRemoteAdaptors;
 - (BOOL)_updateRemoteAdaptorOptions;
 - (void)addLogAdaptor:(id)arg1;
 - (void)dealloc;
+- (void)disableLogMsgInstrumentation;
+- (void)enableLogMsgInstrumentation;
 - (void)flushLogs;
 - (id)init;
 - (void)queueLogMessage:(id)arg1;
 - (void)removeAllLogAdators;
 - (void)removeLogAdaptor:(id)arg1;
-- (void)setupLogAdaptorsBackgroundTaskStartBlock:(CDUnknownBlockType)arg1 endBlock:(CDUnknownBlockType)arg2;
 - (BOOL)shouldSendUsageUsingNewLogManager;
-- (BOOL)shouldSendUsageUsingOldUsageManager;
+- (void)waitForEmptyLoggingQueue:(CDUnknownBlockType)arg1;
 
 @end
 

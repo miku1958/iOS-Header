@@ -19,6 +19,7 @@
 - (BOOL)_accessibilityOnlyComparesByXAxis;
 - (BOOL)accessibilityElementsHidden;
 - (BOOL)accessibilityViewIsModal;
+- (void)audioMenuItemAction:(id)arg1;
 - (void)audioReplyButtonCancel:(id)arg1;
 - (void)audioReplyButtonStart:(id)arg1;
 - (void)audioReplyButtonStop:(id)arg1;

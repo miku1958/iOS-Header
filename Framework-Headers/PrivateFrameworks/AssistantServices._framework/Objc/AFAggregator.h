@@ -20,11 +20,18 @@
 
 + (id)_fullAggDKeyWithPrefix:(id)arg1 error:(id)arg2;
 + (id)_stringForGatekeeperType:(unsigned long long)arg1;
++ (void)logCreateAssistant;
 + (void)logDictationCancelled;
++ (void)logDictationDeleteCommand;
 + (void)logDictationFailedWithError:(id)arg1;
++ (void)logDictationKeyboardRevisited;
++ (void)logDictationSessionOccurred;
 + (void)logDictationStarted;
 + (void)logDictationSucceeded;
 + (void)logHomeButtonPressToActivationDuration:(double)arg1;
++ (void)logKeyboardDeleteKeyPress;
++ (void)logKeyboardSessionOccurred;
++ (void)logLoadAssistant;
 + (void)logLocalFinalSpeechRecognitionWithDuration:(double)arg1;
 + (void)logLocalRecognitionAssetEvictedForLanguage:(id)arg1;
 + (void)logLocalRecognitionLoadedForLanguage:(id)arg1 duration:(double)arg2;
@@ -43,6 +50,7 @@
 + (void)logStarkGatekeeperAppearedForType:(unsigned long long)arg1;
 + (void)logStarkGatekeeperDismissedManuallyForType:(unsigned long long)arg1;
 + (void)logTimeToBeepWithDuration:(double)arg1;
++ (void)logUILockCanceledVTActivation;
 + (void)missedAlertContextForRequest;
 + (void)missedAppContextForRequest;
 - (void)beginSessionRetryPreferringWWAN:(BOOL)arg1;

@@ -6,11 +6,12 @@
 
 #import <UIKit/UITableViewCell.h>
 
+#import <ChatKit/CKConversationListCell-Protocol.h>
 #import <ChatKit/CNAvatarViewDelegate-Protocol.h>
 
 @class CKAvatarView, CKConversation, NSDate, NSString, UIDateLabel, UIImageView, UILabel, UIViewController;
 
-@interface CKConversationListCell : UITableViewCell <CNAvatarViewDelegate>
+@interface CKConversationListCell : UITableViewCell <CNAvatarViewDelegate, CKConversationListCell>
 {
     UIDateLabel *_dateLabel;
     UILabel *_summaryLabel;

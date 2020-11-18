@@ -15,15 +15,19 @@
     double _requestLocalTimestamp;
     int _minimumNumberOfCategories;
     GEOPDViewportInfo *_viewportInfo;
+    BOOL _isCarplayRequest;
     struct {
         unsigned int requestLocalTimestamp:1;
         unsigned int minimumNumberOfCategories:1;
+        unsigned int isCarplayRequest:1;
     } _has;
 }
 
+@property (nonatomic) BOOL hasIsCarplayRequest;
 @property (nonatomic) BOOL hasMinimumNumberOfCategories;
 @property (nonatomic) BOOL hasRequestLocalTimestamp;
 @property (readonly, nonatomic) BOOL hasViewportInfo;
+@property (nonatomic) BOOL isCarplayRequest; // @synthesize isCarplayRequest=_isCarplayRequest;
 @property (nonatomic) int minimumNumberOfCategories; // @synthesize minimumNumberOfCategories=_minimumNumberOfCategories;
 @property (nonatomic) double requestLocalTimestamp; // @synthesize requestLocalTimestamp=_requestLocalTimestamp;
 @property (strong, nonatomic) GEOPDViewportInfo *viewportInfo; // @synthesize viewportInfo=_viewportInfo;

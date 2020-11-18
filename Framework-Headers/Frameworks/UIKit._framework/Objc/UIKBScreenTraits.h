@@ -12,6 +12,7 @@
 {
     BOOL _knobInput;
     BOOL _touchInput;
+    BOOL _touchpadInput;
     BOOL _isKeyboardMinorEdgeWidth;
     UIScreen *_screen;
     long long _orientation;
@@ -25,6 +26,7 @@
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (readonly, nonatomic) UIScreen *screen; // @synthesize screen=_screen;
 @property (readonly, nonatomic) BOOL touchInput; // @synthesize touchInput=_touchInput;
+@property (readonly, nonatomic) BOOL touchpadInput; // @synthesize touchpadInput=_touchpadInput;
 
 + (id)traitsWithScreen:(id)arg1 orientation:(long long)arg2;
 - (id)description;

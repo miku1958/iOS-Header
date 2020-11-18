@@ -7,16 +7,18 @@
 #import <CoreHAP/HAPAccessoryServerBrowser.h>
 
 #import <CoreHAP/CBCentralManagerDelegate-Protocol.h>
+#import <CoreHAP/HAPAccessoryServerBrowserWiProxBTLEDelegate-Protocol.h>
 
-@class CBCentralManager, NSMapTable, NSMutableArray, NSObject, NSString;
+@class CBCentralManager, HAPAccessoryServerBrowserWiProxBTLE, NSMapTable, NSMutableArray, NSObject, NSString;
 @protocol HAPAccessoryServerBrowserBTLEDelegate, OS_dispatch_queue, OS_dispatch_source;
 
-@interface HAPAccessoryServerBrowserBTLE : HAPAccessoryServerBrowser <CBCentralManagerDelegate>
+@interface HAPAccessoryServerBrowserBTLE : HAPAccessoryServerBrowser <CBCentralManagerDelegate, HAPAccessoryServerBrowserWiProxBTLEDelegate>
 {
     BOOL _performingGeneralScan;
     id<HAPAccessoryServerBrowserBTLEDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     CBCentralManager *_centralManager;
+    HAPAccessoryServerBrowserWiProxBTLE *_hapWiProxBLEBrowser;
     NSMapTable *_discoveredPeripheralsWithAccessories;
     NSMapTable *_recentlySeenPairedPeripherals;
     NSObject<OS_dispatch_source> *_lostAccessoryServerTimer;
@@ -34,6 +36,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMapTable *discoveredPeripheralsWithAccessories; // @synthesize discoveredPeripheralsWithAccessories=_discoveredPeripheralsWithAccessories;
+@property (strong, nonatomic) HAPAccessoryServerBrowserWiProxBTLE *hapWiProxBLEBrowser; // @synthesize hapWiProxBLEBrowser=_hapWiProxBLEBrowser;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMapTable *identifersWithReachabilityScanTuples; // @synthesize identifersWithReachabilityScanTuples=_identifersWithReachabilityScanTuples;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *lostAccessoryServerTimer; // @synthesize lostAccessoryServerTimer=_lostAccessoryServerTimer;
@@ -50,15 +53,15 @@
 - (void)_callPowerOnCompletionsWithError:(id)arg1;
 - (void)_cancelLostAccessoryServerTimer;
 - (void)_clearCachedDescriptorsForIdentifier:(id)arg1;
-- (void)_createHAPAccessoryAndNotifyDelegateWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 category:(id)arg6 version:(unsigned long long)arg7;
+- (void)_createHAPAccessoryAndNotifyDelegateWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 category:(id)arg6 format:(unsigned long long)arg7;
 - (BOOL)_delegateRespondsToSelector:(SEL)arg1;
+- (void)_didDiscoverPeripheral:(id)arg1 accessoryName:(id)arg2 pairingIdentifier:(id)arg3 format:(unsigned long long)arg4 statusFlags:(id)arg5 stateNumber:(id)arg6 category:(id)arg7 configNumber:(id)arg8;
 - (void)_discoverAccessoryServerWithIdentifier:(id)arg1;
 - (void)_forgetPairedAccesoryWithIdentifier:(id)arg1;
 - (void)_handleConnectionRequestCompletionForPeripheral:(id)arg1;
 - (void)_handleTargetedScanTimeout;
 - (void)_notifyDelegatesOfRemovedAccessoryServer:(id)arg1;
 - (unsigned long long)_parseAdvertisementData:(id)arg1 forPeripheral:(id)arg2 name:(id *)arg3 pairingUsername:(id *)arg4 statusFlags:(id *)arg5 stateNumber:(id *)arg6 category:(id *)arg7 configNumber:(id *)arg8;
-- (unsigned long long)_parseManufacturerSpecificData:(id)arg1 reservedByte:(id *)arg2 configNumber:(id *)arg3 pairingStatusFlag:(id *)arg4 stateNumber:(id *)arg5 uniqueIdentifier:(id *)arg6 category:(id *)arg7;
 - (void)_performTargetedScanForAccessoryWithIdentifier:(id)arg1;
 - (void)_performTimedConnectionRequestForIdentifier:(id)arg1;
 - (void)_performTimedScanForIdentifiers:(id)arg1 workQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
@@ -67,30 +70,37 @@
 - (void)_removeIdentifiersForReachabilityScan;
 - (void)_removeLostAccessoryServers;
 - (void)_setupLostAccessoryServerTimer;
-- (BOOL)_shouldCreateHAPAccessoryServerWithIdentifier:(id)arg1 statusFlags:(id)arg2 stateNumber:(id)arg3 category:(id)arg4 configNumber:(id)arg5 forPeripheral:(id)arg6;
+- (BOOL)_shouldCreateHAPAccessoryServerWithIdentifier:(id)arg1 statusFlags:(id)arg2 stateNumber:(id)arg3 category:(id)arg4 configNumber:(id)arg5 forPeripheral:(id)arg6 stateChanged:(BOOL *)arg7;
 - (void)_startDiscoveringAccessoryServers;
 - (void)_startScanningForPairingPeers;
 - (void)_stopActiveScan;
 - (void)_updateTargetedScanTimer;
-- (id)cachedDescriptorsForCharacteristic:(id)arg1;
+- (void)accessoryServerBrowserBTLE:(id)arg1 didDiscoverHAPPeripheral:(id)arg2 accessoryName:(id)arg3 pairingIdentifier:(id)arg4 advertisementFormat:(unsigned long long)arg5 statusFlags:(id)arg6 stateNumber:(id)arg7 category:(id)arg8 configurationNumber:(id)arg9;
+- (void)cacheCharacteristicSignature:(id)arg1 characteristicInstanceID:(id)arg2 forCharacteristic:(id)arg3;
+- (id)cachedDescriptorsForCharacteristic:(id)arg1 forServiceInstance:(id)arg2;
 - (void)centralManager:(id)arg1 didConnectPeripheral:(id)arg2;
 - (void)centralManager:(id)arg1 didDisconnectPeripheral:(id)arg2 error:(id)arg3;
 - (void)centralManager:(id)arg1 didDiscoverPeripheral:(id)arg2 advertisementData:(id)arg3 RSSI:(id)arg4;
 - (void)centralManager:(id)arg1 didFailToConnectPeripheral:(id)arg2 error:(id)arg3;
 - (void)centralManagerDidUpdateState:(id)arg1;
 - (void)connectToBTLEAccessoryServer:(id)arg1;
+- (void)connectedHAPPeripheral:(id)arg1;
 - (void)disconnectFromBTLEAccessoryServer:(id)arg1;
+- (void)disconnectedHAPPeripheral:(id)arg1 error:(id)arg2;
 - (void)discoverAccessoryServerWithIdentifier:(id)arg1;
+- (void)failedToConnectHAPPeripheral:(id)arg1 error:(id)arg2;
 - (void)forgetPairedAccesoryWithIdentifier:(id)arg1;
+- (id)getCachedCharacteristicSignatureForCharacteristicInstanceID:(id)arg1 characteristic:(id)arg2;
 - (id)initWithQueue:(id)arg1;
 - (long long)linkType;
 - (void)markNotifyingCharacteristicUpdatedOnPeripheral:(id)arg1;
 - (void)probeReachabilityForAccessoryServersWithIdentifiers:(id)arg1 onQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)setConnectionLatency:(long long)arg1 forPeripheral:(id)arg2;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)setReachabilityCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)startDiscoveringAccessoryServers;
 - (void)stopDiscoveringAccessoryServers;
-- (void)updateCacheWithDescriptor:(id)arg1;
+- (void)updateCacheWithDescriptor:(id)arg1 forServiceInstance:(id)arg2;
 
 @end
 

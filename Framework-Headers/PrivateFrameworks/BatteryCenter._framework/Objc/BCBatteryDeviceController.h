@@ -25,10 +25,9 @@
 @property (readonly, nonatomic) NSString *connectedDevicesDidChangeNotificationName;
 @property (readonly, nonatomic) NSArray *connectedDevicesIncludingMissingParts;
 
-+ (id)_glyphForFirstPartyBatteryDeviceWithBaseIdentifier:(id)arg1;
++ (id)_glyphForFirstPartyBatteryDeviceWithBaseIdentifier:(id)arg1 parts:(unsigned long long)arg2;
 + (id)_glyphsForBatteryDevice:(id)arg1;
 + (id)_glyphsForFirstPartyBatteryDevice:(id)arg1;
-+ (id)_identifierForBatteryDevice:(id)arg1;
 + (id)_internalBatteryDeviceGlyph;
 + (id)sharedInstance;
 - (id)_baseIdentifierFromPowerSourceDescription:(id)arg1;
@@ -39,12 +38,17 @@
 - (id)_fakeDeviceA111PowerSourceDescription;
 - (id)_fakeDeviceB222PowerSourceDescription;
 - (id)_fakeDeviceB244PowerSourceDescription;
+- (id)_fakeDeviceBeatsHeadphones1PowerSourceDescription;
+- (id)_fakeDeviceBeatsHeadphones2PowerSourceDescription;
 - (id)_fakeDeviceInternalBatteryDescription;
+- (id)_fakeDeviceLeftHearingAidPowerSourceDescription;
 - (id)_fakeDevicePowerSourceDescriptions;
+- (id)_fakeDeviceRightHearingAidPowerSourceDescription;
+- (id)_groupNameForBaseIdentifier:(id)arg1 fromPowerSourceDescription:(id)arg2;
 - (void)_handlePSChange;
+- (id)_identifierFromPowerSourceDescription:(id)arg1;
 - (void)_incrementPercentChargeForConnectedDevices:(BOOL)arg1;
-- (BOOL)_isCompositeIdentifierValidForDeviceWithBaseIdentifier:(id)arg1;
-- (BOOL)_isDevicePartOfPairWithBaseIdentifier:(id)arg1 matchIdentifier:(id)arg2 andParts:(unsigned long long)arg3;
+- (BOOL)_isDevicePartOfPairWithBaseIdentifier:(id)arg1 matchIdentifier:(id)arg2 andPart:(unsigned long long)arg3;
 - (struct CGSize)_largestBatteryDeviceGlyphSize;
 - (long long)_lowBatteryLevelForBaseIdentifier:(id)arg1 fromPowerSourceDescription:(id)arg2;
 - (id)_matchIdentifierFromPowerSourceDescription:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 
@@ -17,8 +17,8 @@
 @property (readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
 
 + (id)overlayPropertiesFactoryWithStyle:(unsigned long long)arg1;
+- (void).cxx_destruct;
 - (id)_fetchAndCachePropsForDeviceQuality:(long long)arg1;
-- (void)dealloc;
 - (id)initWithStyle:(unsigned long long)arg1;
 - (id)propertiesWithDeviceDefaultGraphicsQuality;
 - (id)propertiesWithGraphicsQuality:(long long)arg1;

@@ -6,18 +6,22 @@
 
 #import <Foundation/NSOperation.h>
 
-@class ICAttachment;
+@class ICAttachmentModel, NSManagedObjectContext, NSManagedObjectID;
 
 @interface ICAttachmentPreviewGeneratorOperation : NSOperation
 {
-    ICAttachment *_attachment;
+    NSManagedObjectID *_attachmentID;
+    NSManagedObjectContext *_managedObjectContext;
+    ICAttachmentModel *_attachmentModel;
 }
 
-@property (strong, nonatomic) ICAttachment *attachment; // @synthesize attachment=_attachment;
+@property (strong) NSManagedObjectID *attachmentID; // @synthesize attachmentID=_attachmentID;
+@property (strong) ICAttachmentModel *attachmentModel; // @synthesize attachmentModel=_attachmentModel;
+@property (strong) NSManagedObjectContext *managedObjectContext; // @synthesize managedObjectContext=_managedObjectContext;
 
 - (void).cxx_destruct;
 - (void)cancel;
-- (id)initWithAttachment:(id)arg1;
+- (id)initWithAttachmentManagedObjectID:(id)arg1;
 - (void)main;
 
 @end

@@ -9,7 +9,7 @@
 #import <SoftwareUpdateServices/NSCopying-Protocol.h>
 #import <SoftwareUpdateServices/NSSecureCoding-Protocol.h>
 
-@class NSMutableDictionary, NSString, NSURL;
+@class NSMutableDictionary, NSNumber, NSString, NSURL;
 
 @interface SUDocumentation : NSObject <NSSecureCoding, NSCopying>
 {
@@ -18,6 +18,7 @@
     NSString *_releaseNotesFileName;
     NSString *_licenseAgreementFileName;
     NSString *_primaryLanguage;
+    NSNumber *_slaVersion;
     NSString *_humanReadableUpdateName;
     NSURL *_releaseNotesSummaryURL;
     NSURL *_releaseNotesURL;
@@ -34,6 +35,7 @@
 @property (strong, nonatomic) NSString *releaseNotesSummaryFileName; // @synthesize releaseNotesSummaryFileName=_releaseNotesSummaryFileName;
 @property (strong, nonatomic) NSURL *releaseNotesSummaryURL; // @synthesize releaseNotesSummaryURL=_releaseNotesSummaryURL;
 @property (strong, nonatomic) NSURL *releaseNotesURL; // @synthesize releaseNotesURL=_releaseNotesURL;
+@property (strong, nonatomic) NSNumber *slaVersion; // @synthesize slaVersion=_slaVersion;
 
 + (BOOL)supportsSecureCoding;
 - (id)_cachedDocumentationDataForURL:(id)arg1;

@@ -10,15 +10,17 @@
 #import <PhotosUI/PUSessionInfoObserver-Protocol.h>
 #import <PhotosUI/UITabBarControllerDelegate-Protocol.h>
 
-@class NSString, PUPhotosPickerSessionInfo, PUPhotosPickerViewControllerSpec, PUTabbedLibraryViewController;
+@class NSString, PHPhotosPickerOptions, PUPhotosPickerSessionInfo, PUPhotosPickerViewControllerSpec, PUTabbedLibraryViewController;
 
 @interface PUPhotosPickerViewController : UIViewController <UITabBarControllerDelegate, PLAssetContainerListChangeObserver, PUSessionInfoObserver>
 {
     PUPhotosPickerViewControllerSpec *_spec;
     PUPhotosPickerSessionInfo *_photosPickerSessionInfo;
+    BOOL _needsToSetupOptions;
     int _currentContentMode;
     CDUnknownBlockType _completionHandler;
     PUTabbedLibraryViewController *__tabbedLibraryViewController;
+    PHPhotosPickerOptions *_photosPickerOptions;
 }
 
 @property (strong, nonatomic, setter=_setTabbedLibraryViewController:) PUTabbedLibraryViewController *_tabbedLibraryViewController; // @synthesize _tabbedLibraryViewController=__tabbedLibraryViewController;
@@ -27,20 +29,23 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) PHPhotosPickerOptions *photosPickerOptions; // @synthesize photosPickerOptions=_photosPickerOptions;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_initWithSpec:(id)arg1 targetAlbum:(struct NSObject *)arg2 orTargetAlbumName:(id)arg3 isLocal:(BOOL)arg4;
+- (id)_initWithSpec:(id)arg1 targetAlbum:(struct NSObject *)arg2 orTargetAlbumName:(id)arg3 isLocal:(BOOL)arg4 options:(id)arg5;
 - (void)assetContainerListDidChange:(id)arg1;
 - (void)dealloc;
 - (void)didReceiveMemoryWarning;
 - (id)initWithSpec:(id)arg1 targetAlbum:(struct NSObject *)arg2;
 - (id)initWithSpec:(id)arg1 targetAlbumName:(id)arg2 isLocal:(BOOL)arg3;
+- (id)initWithSpec:(id)arg1 targetAlbumName:(id)arg2 options:(id)arg3;
 - (void)loadView;
 - (void)sessionInfoStatusDidChange:(id)arg1;
 - (BOOL)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)tabBarController:(id)arg1 didSelectViewController:(id)arg2;
+- (void)viewWillLayoutSubviews;
 
 @end
 

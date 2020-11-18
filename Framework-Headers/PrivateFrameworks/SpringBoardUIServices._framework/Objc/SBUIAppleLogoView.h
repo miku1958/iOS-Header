@@ -14,7 +14,7 @@
     PUIProgressWindow *_progressWindow;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 appearance:(long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 inverted:(BOOL)arg2;

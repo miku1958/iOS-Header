@@ -13,7 +13,6 @@
 + (void)setIsRunningInGeod:(BOOL)arg1;
 + (id)sharedPlatform;
 - (BOOL)_deviceSupportsNavigation;
-- (id)_systemInfoDictionary;
 - (id)buildVersion;
 - (id)clientCapabilities;
 - (long long)deviceScreenHeightInPixels;
@@ -23,10 +22,12 @@
 - (BOOL)isInternalInstall;
 - (BOOL)mapsFeatureFreedomEnabled;
 - (id)osVersion;
+- (id)productName;
 - (BOOL)supportsForceTouch;
 - (BOOL)supportsNavigation;
 - (BOOL)supportsNewiOS9Features;
 - (BOOL)supportsRealisticTiles;
+- (BOOL)supportsWatchPairing;
 
 @end
 

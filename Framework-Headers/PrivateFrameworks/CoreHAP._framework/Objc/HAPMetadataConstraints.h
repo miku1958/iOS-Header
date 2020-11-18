@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreHAP/NSCopying-Protocol.h>
+
 @class NSNumber;
 
-@interface HAPMetadataConstraints : NSObject
+@interface HAPMetadataConstraints : NSObject <NSCopying>
 {
     NSNumber *_minimumValue;
     NSNumber *_maximumValue;
@@ -24,6 +26,7 @@
 @property (strong, nonatomic) NSNumber *stepValue; // @synthesize stepValue=_stepValue;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (BOOL)isEqualToMetadataConstraints:(id)arg1;
 

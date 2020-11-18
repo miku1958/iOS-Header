@@ -83,6 +83,8 @@
 @property (strong, nonatomic) NSMutableArray *subflowSwitchingReports; // @synthesize subflowSwitchingReports=_subflowSwitchingReports;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 
++ (Class)interfaceReportsType;
++ (Class)subflowSwitchingReportsType;
 - (void)addInterfaceReports:(id)arg1;
 - (void)addSubflowSwitchingReports:(id)arg1;
 - (void)clearInterfaceReports;

@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableDictionary, UIColor;
+@class NSMutableDictionary, NSString, UIColor;
 
 __attribute__((visibility("hidden")))
 @interface UIStatusBarForegroundStyleAttributes : NSObject
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_cachedFonts;
     BOOL _isTintColorBlack;
     BOOL _hasBusyBackground;
+    NSString *_cachedUniqueIdentifier;
     BOOL _canShowBreadcrumbs;
     UIColor *_tintColor;
 }

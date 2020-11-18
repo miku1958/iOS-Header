@@ -15,9 +15,7 @@
     unsigned long long _muid;
     NSString *_entityNameString;
     NSMutableArray *_transitLabels;
-    struct {
-        unsigned int muid:1;
-    } _has;
+    CDStruct_e99c65f7 _has;
 }
 
 @property (strong, nonatomic) NSString *entityNameString; // @synthesize entityNameString=_entityNameString;

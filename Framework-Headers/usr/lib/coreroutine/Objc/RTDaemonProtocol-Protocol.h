@@ -6,7 +6,7 @@
 
 #import <coreroutine/NSObject-Protocol.h>
 
-@class CLLocation, NSDate, NSString, RTAction;
+@class CLLocation, NSDate, NSPredicate, NSString, RTAction;
 
 @protocol RTDaemonProtocol <NSObject>
 - (void)clearRoutine;
@@ -29,7 +29,7 @@
 - (void)fetchRoutineModeFromLocation:(CLLocation *)arg1 withReply:(void (^)(long long, NSError *))arg2;
 - (void)setRestorationIdentifier:(NSString *)arg1;
 - (void)setRoutineEnabled:(BOOL)arg1;
-- (void)startMonitoringForPredictedApplications;
+- (void)startMonitoringForPredictedApplicationsUsingPredicate:(NSPredicate *)arg1;
 - (void)startMonitoringNextPredictedLocationsOfInterest;
 - (void)startMonitoringScenarioTriggerOfType:(unsigned long long)arg1;
 - (void)startMonitoringVisits;

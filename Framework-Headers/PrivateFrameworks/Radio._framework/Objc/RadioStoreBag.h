@@ -32,6 +32,7 @@
 @property (readonly, nonatomic) NSString *platformLookupURLString;
 @property (readonly, nonatomic) NSDictionary *radioConfigurationDictionary; // @synthesize radioConfigurationDictionary=_tiltDictionary;
 @property (readonly, nonatomic) BOOL shouldSendKBSyncData;
+@property (readonly, nonatomic) NSString *storeFrontSuffix; // @synthesize storeFrontSuffix=_storeFrontSuffix;
 @property (readonly, nonatomic) NSString *streamingDownloadURLString; // @synthesize streamingDownloadURLString=_srdnldURLString;
 
 - (void).cxx_destruct;

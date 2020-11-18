@@ -34,7 +34,7 @@
 - (id)init;
 - (shared_ptr_ef0c1bec)readerForCountryCode:(unsigned short)arg1;
 - (void)resolvePhoneNumbers:(id)arg1 handler:(CDUnknownBlockType)arg2 queue:(id)arg3;
-- (id)stringForLocationNameStrings:(const CDStruct_65785133 *)arg1 countryName:(id)arg2;
+- (id)stringForLocationNameStrings:(const struct LocationNameStrings *)arg1 countryName:(id)arg2;
 
 @end
 

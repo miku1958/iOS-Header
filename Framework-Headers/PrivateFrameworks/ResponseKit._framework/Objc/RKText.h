@@ -29,6 +29,7 @@
 + (unsigned long long)annotationTypeFromName:(id)arg1;
 + (BOOL)canClassifyPolarityForLanguageIdentifier:(id)arg1 withOptions:(unsigned long long)arg2;
 + (BOOL)canClassifyPolarityForLanguageIdentifier:(id)arg1 withOptions:(unsigned long long)arg2 dataProvider:(id)arg3;
++ (id)defaultDataProvider;
 + (void)initialize;
 + (id)polarityNameFromType:(unsigned long long)arg1;
 + (unsigned long long)polarityTypeFromName:(id)arg1;

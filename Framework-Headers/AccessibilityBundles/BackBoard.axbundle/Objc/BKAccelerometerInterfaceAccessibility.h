@@ -13,8 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)accelerometerDataReceived:(double)arg1 x:(float)arg2 y:(float)arg3 z:(float)arg4 type:(unsigned int)arg5;
-- (void)orientationChanged:(int)arg1 orientationLocked:(BOOL)arg2;
+- (void)handleEvent:(struct __IOHIDEvent *)arg1;
+- (void)orientationManager:(id)arg1 deviceOrientationMayHaveChanged:(long long)arg2 isDeviceOrientationLocked:(BOOL)arg3;
 
 @end
 

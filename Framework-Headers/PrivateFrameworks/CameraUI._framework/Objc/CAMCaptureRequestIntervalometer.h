@@ -14,12 +14,14 @@
     CAMCaptureRequest *_prototypeRequest;
     id<CAMCaptureRequestIntervalometerDelegate> _delegate;
     double _interval;
+    double _delay;
     long long _maximumCount;
     long long _remaining;
     CAMPreciseTimer *__timer;
 }
 
 @property (readonly, nonatomic) CAMPreciseTimer *_timer; // @synthesize _timer=__timer;
+@property (readonly, nonatomic) double delay; // @synthesize delay=_delay;
 @property (readonly, weak, nonatomic) id<CAMCaptureRequestIntervalometerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) double interval; // @synthesize interval=_interval;
 @property (readonly, nonatomic) long long maximumCount; // @synthesize maximumCount=_maximumCount;
@@ -29,7 +31,8 @@
 - (void).cxx_destruct;
 - (void)_generateRequestForDelegate;
 - (id)init;
-- (id)initWithDelegate:(id)arg1 interval:(double)arg2 maximumCount:(long long)arg3;
+- (id)initWithDelegate:(id)arg1 interval:(double)arg2 delay:(double)arg3 maximumCount:(long long)arg4;
+- (void)manuallyGenerateRequest;
 - (void)startGeneratingRequests;
 - (void)stopGeneratingRequests;
 

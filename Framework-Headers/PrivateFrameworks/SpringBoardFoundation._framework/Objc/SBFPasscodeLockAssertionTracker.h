@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableSet;
 
@@ -14,6 +14,7 @@
     NSMutableSet *_assertions;
 }
 
+- (void).cxx_destruct;
 - (void)addAssertion:(id)arg1;
 - (void)dealloc;
 - (id)description;

@@ -6,17 +6,12 @@
 
 #import <PassKit/PKTableViewCell.h>
 
-#import <PassKit/SKStoreProductViewControllerDelegate-Protocol.h>
+#import <PassKit/PKLinkedApplicationDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSURL, PKLinkedAppUserRatingView, SKStoreProductViewController, SSSoftwareLibraryItem, UIActivityIndicatorView, UIButton, UIColor, UIImageView, UILabel;
+@class NSArray, NSString, NSURL, PKLinkedAppUserRatingView, PKLinkedApplication, UIActivityIndicatorView, UIButton, UIColor, UIImageView, UILabel;
 
-@interface PKLinkedAppView : PKTableViewCell <SKStoreProductViewControllerDelegate>
+@interface PKLinkedAppView : PKTableViewCell <PKLinkedApplicationDelegate>
 {
-    BOOL _loaded;
-    BOOL _loading;
-    unsigned long long _loadingCounter;
-    SSSoftwareLibraryItem *_foundLibraryItem;
-    NSDictionary *_foundStoreItem;
     UIImageView *_iconView;
     UILabel *_appName;
     UIButton *_viewButton;
@@ -25,51 +20,38 @@
     UILabel *_price;
     UIActivityIndicatorView *_activityIndicator;
     UILabel *_loadingLabel;
-    SKStoreProductViewController *_productViewController;
-    NSArray *_storeIDs;
-    NSURL *_appLaunchURL;
+    PKLinkedApplication *_linkedApplication;
     UIColor *_mainLabelColor;
     UIColor *_subTextLabelColor;
 }
 
-@property (copy, nonatomic) NSURL *appLaunchURL; // @synthesize appLaunchURL=_appLaunchURL;
+@property (copy, nonatomic) NSURL *appLaunchURL;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) PKLinkedApplication *linkedApplication; // @synthesize linkedApplication=_linkedApplication;
 @property (nonatomic) UIColor *mainLabelColor; // @synthesize mainLabelColor=_mainLabelColor;
-@property (copy, nonatomic) NSArray *storeIDs; // @synthesize storeIDs=_storeIDs;
+@property (copy, nonatomic) NSArray *storeIDs;
 @property (nonatomic) UIColor *subTextLabelColor; // @synthesize subTextLabelColor=_subTextLabelColor;
 @property (readonly) Class superclass;
 
 - (void)_buttonPressed:(id)arg1;
 - (void)_cleanupViews;
-- (int)_iconOptionsForItem:(id)arg1;
-- (id)_iconURLFromArtwork:(id)arg1 withDesiredSize:(struct CGSize)arg2;
-- (id)_iconURLFromArtwork:(id)arg1 withDesiredSize:(struct CGSize)arg2 requireStrictMatch:(BOOL)arg3;
-- (int)_iconVariantForScale:(double)arg1 item:(id)arg2;
-- (id)_imageForSize:(struct CGSize)arg1 fromArtwork:(id)arg2 requireStrictMatch:(BOOL)arg3;
-- (BOOL)_itemArtNeedsShine:(id)arg1;
 - (void)_layoutLoadingView;
 - (void)_layoutLockupView;
 - (void)_layoutNotAvailableView;
-- (void)_performStoreLookupWithCompletion:(CDUnknownBlockType)arg1;
-- (id)_priceForItem:(id)arg1;
-- (struct CGSize)_sizeFromImage:(id)arg1;
-- (void)_updateApplicationStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStoreIDs:(id)arg1 appLaunchURL:(id)arg2 reuseIdentifier:(id)arg3;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (void)installedApplicationsDidChangeNotification:(id)arg1;
 - (void)layoutSubviews;
-- (void)productViewControllerDidFinish:(id)arg1;
-- (void)reloadApplicationState;
+- (void)linkedApplicationDidChangeState:(id)arg1;
 - (void)reloadApplicationStateIfNecessary;
+- (void)setApplicationIcon:(id)arg1;
 - (void)setApplicationName:(id)arg1;
 - (void)setLoadingText:(id)arg1;
 - (void)setPrice:(id)arg1;
-- (void)unloadApplicationState;
 
 @end
 

@@ -18,19 +18,23 @@
     long long _intValue;
     NSData *_extraData;
     NSData *_uuid;
+    BOOL _alerted;
     struct {
         unsigned int achievementType:1;
         unsigned int completedDate:1;
         unsigned int doubleValue:1;
         unsigned int intValue:1;
+        unsigned int alerted:1;
     } _has;
 }
 
 @property (nonatomic) long long achievementType; // @synthesize achievementType=_achievementType;
+@property (nonatomic) BOOL alerted; // @synthesize alerted=_alerted;
 @property (nonatomic) double completedDate; // @synthesize completedDate=_completedDate;
 @property (nonatomic) double doubleValue; // @synthesize doubleValue=_doubleValue;
 @property (strong, nonatomic) NSData *extraData; // @synthesize extraData=_extraData;
 @property (nonatomic) BOOL hasAchievementType;
+@property (nonatomic) BOOL hasAlerted;
 @property (nonatomic) BOOL hasCompletedDate;
 @property (nonatomic) BOOL hasDoubleValue;
 @property (readonly, nonatomic) BOOL hasExtraData;

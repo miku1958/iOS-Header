@@ -6,9 +6,12 @@
 
 #import <SpotlightUI/NSObject-Protocol.h>
 
+@class UIResponder;
+
 @protocol SPUISearchHeaderDelegate <NSObject>
 - (void)cancelButtonPressed;
 - (void)dictationButtonPressed;
+- (UIResponder *)headerNextResponder;
 - (BOOL)isDictationAvailable;
 @end
 

@@ -31,7 +31,6 @@ __attribute__((visibility("hidden")))
 - (void)configureSectionHeaderView:(id)arg1 forVisualSection:(long long)arg2;
 - (id)diagnosticsProviderForVisualSection:(long long)arg1;
 - (id)displayTitle;
-- (id)imageDataForAsset:(id)arg1 itemContentScale:(double)arg2 imageWidth:(int *)arg3 imageHeight:(int *)arg4 bytesPerRow:(int *)arg5 dataWidth:(int *)arg6 dataHeight:(int *)arg7 imageDataOffset:(int *)arg8;
 - (long long)imageDeliveryMode;
 - (id)initWithZoomLevel:(unsigned long long)arg1 zoomLevelManager:(id)arg2 baseZoomLevelInfo:(id)arg3;
 - (long long)maxRowsPerSection;

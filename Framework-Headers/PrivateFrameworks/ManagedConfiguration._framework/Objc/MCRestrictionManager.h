@@ -12,11 +12,14 @@
 @interface MCRestrictionManager : NSObject
 {
     NSMutableDictionary *_memberQueueRestrictions;
-    NSMutableDictionary *_memberQueueClientRestrictions;
-    NSMutableDictionary *_memberQueueUserSettings;
+    NSMutableDictionary *_memberQueueSystemClientRestrictions;
+    NSMutableDictionary *_memberQueueSystemUserSettings;
+    NSMutableDictionary *_memberQueueUserClientRestrictions;
+    NSMutableDictionary *_memberQueueUserUserSettings;
     NSMutableDictionary *_memberQueueEffectiveUserSettings;
     NSObject<OS_dispatch_queue> *_memberQueue;
-    NSMutableDictionary *_memberQueueProfileRestrictions;
+    NSMutableDictionary *_memberQueueSystemProfileRestrictions;
+    NSMutableDictionary *_memberQueueUserProfileRestrictions;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *combinedProfileRestrictions;
@@ -25,19 +28,26 @@
 @property (readonly, nonatomic) NSDictionary *defaultSettings;
 @property (readonly, copy, nonatomic) NSDictionary *effectiveUserSettings;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *memberQueue; // @synthesize memberQueue=_memberQueue;
-@property (strong, nonatomic) NSMutableDictionary *memberQueueClientRestrictions; // @synthesize memberQueueClientRestrictions=_memberQueueClientRestrictions;
 @property (readonly, nonatomic) NSMutableDictionary *memberQueueCombinedProfileRestrictions;
 @property (strong, nonatomic) NSMutableDictionary *memberQueueEffectiveUserSettings; // @synthesize memberQueueEffectiveUserSettings=_memberQueueEffectiveUserSettings;
-@property (strong, nonatomic) NSMutableDictionary *memberQueueProfileRestrictions; // @synthesize memberQueueProfileRestrictions=_memberQueueProfileRestrictions;
 @property (strong, nonatomic) NSMutableDictionary *memberQueueRestrictions; // @synthesize memberQueueRestrictions=_memberQueueRestrictions;
-@property (strong, nonatomic) NSMutableDictionary *memberQueueUserSettings; // @synthesize memberQueueUserSettings=_memberQueueUserSettings;
-@property (readonly, copy, nonatomic) NSDictionary *profileRestrictions;
+@property (strong, nonatomic) NSMutableDictionary *memberQueueSystemClientRestrictions; // @synthesize memberQueueSystemClientRestrictions=_memberQueueSystemClientRestrictions;
+@property (strong, nonatomic) NSMutableDictionary *memberQueueSystemProfileRestrictions; // @synthesize memberQueueSystemProfileRestrictions=_memberQueueSystemProfileRestrictions;
+@property (strong, nonatomic) NSMutableDictionary *memberQueueSystemUserSettings; // @synthesize memberQueueSystemUserSettings=_memberQueueSystemUserSettings;
+@property (strong, nonatomic) NSMutableDictionary *memberQueueUserClientRestrictions; // @synthesize memberQueueUserClientRestrictions=_memberQueueUserClientRestrictions;
+@property (strong, nonatomic) NSMutableDictionary *memberQueueUserProfileRestrictions; // @synthesize memberQueueUserProfileRestrictions=_memberQueueUserProfileRestrictions;
+@property (strong, nonatomic) NSMutableDictionary *memberQueueUserUserSettings; // @synthesize memberQueueUserUserSettings=_memberQueueUserUserSettings;
+@property (readonly, copy, nonatomic) NSDictionary *systemProfileRestrictions;
+@property (readonly, copy, nonatomic) NSDictionary *systemUserSettings;
+@property (readonly, copy, nonatomic) NSDictionary *userProfileRestrictions;
 @property (readonly, copy, nonatomic) NSDictionary *userSettings;
+@property (readonly, copy, nonatomic) NSDictionary *userUserSettings;
 
 + (id)allowedImportFromAppBundleIDsWithOriginalAppBundleIDs:(id)arg1 managedAppBundleIDs:(id)arg2 localAppBundleID:(id)arg3 localAccountIsManaged:(BOOL)arg4 mayOpenFromUnmanagedToManaged:(BOOL)arg5 mayOpenFromManagedToUnmanaged:(BOOL)arg6 isAppBundleIDExemptBlock:(CDUnknownBlockType)arg7 isAppBundleIDAccountBasedBlock:(CDUnknownBlockType)arg8;
 + (id)allowedKeyboardBundleIDsAfterApplyingFilterToBundleIDs:(id)arg1 managedAppBundleIDs:(id)arg2 hostAppIsManaged:(BOOL)arg3 mayOpenFromUnmanagedToManaged:(BOOL)arg4 mayOpenFromManagedToUnmanaged:(BOOL)arg5;
 + (id)allowedOpenInAppBundleIDsWithOriginalAppBundleIDs:(id)arg1 managedAppBundleIDs:(id)arg2 localAppBundleID:(id)arg3 localAccountIsManaged:(BOOL)arg4 mayOpenFromUnmanagedToManaged:(BOOL)arg5 mayOpenFromManagedToUnmanaged:(BOOL)arg6 isAppBundleIDExemptBlock:(CDUnknownBlockType)arg7 isAppBundleIDAccountBasedBlock:(CDUnknownBlockType)arg8;
 + (int)appWhitelistStateWithSettingsDictionary:(id)arg1;
++ (int)appWhitelistStateWithSettingsDictionary:(id)arg1 restrictionsDictionary:(id)arg2;
 + (BOOL)boolSetting:(id)arg1 valueChangedBetweenOldSettings:(id)arg2 andNewSettings:(id)arg3;
 + (int)boolSettingForFeature:(id)arg1 outAsk:(BOOL *)arg2 withUserSettingDictionary:(id)arg3;
 + (int)boolSettingForFeature:(id)arg1 withUserSettingDictionary:(id)arg2;
@@ -63,6 +73,7 @@
 + (BOOL)isInSingleAppModeWithSettingsDictionary:(id)arg1;
 + (BOOL)isPasscodeRequiredToAccessWhitelistedAppsWithSettingsDictionary:(id)arg1;
 + (BOOL)isWebContentFilterUIActiveWithRestrictionDictionary:(id)arg1;
++ (BOOL)isWhitelistedAppsRestrictionEnforcedWithRestrictionsDictionary:(id)arg1;
 + (BOOL)mayEnterPasscodeToAccessNonWhitelistedAppsWithSettingsDictionary:(id)arg1;
 + (id)newEffectiveSettingsByApplyingRestrictions:(id)arg1 toSettings:(id)arg2;
 + (id)objectForFeature:(id)arg1 withRestrictionsDictionary:(id)arg2;
@@ -71,6 +82,7 @@
 + (BOOL)restrictedValue:(id)arg1 changedBetweenOldRestrictions:(id)arg2 andNewRestrictions:(id)arg3;
 + (id)restrictionsAfterApplyingRestrictionsDictionary:(id)arg1 toRestrictionsDictionary:(id)arg2 outChangeDetected:(BOOL *)arg3 outError:(id *)arg4;
 + (id)restrictionsWithCurrentRestrictions:(id)arg1 defaultRestrictions:(id)arg2 profileRestrictions:(id)arg3 clientRestrictions:(id)arg4 outRestrictionsChanged:(BOOL *)arg5 outError:(id *)arg6;
++ (id)restrictionsWithCurrentRestrictions:(id)arg1 defaultRestrictions:(id)arg2 systemProfileRestrictions:(id)arg3 userProfileRestrictions:(id)arg4 systemClientRestrictions:(id)arg5 userClientRestrictions:(id)arg6 outRestrictionsChanged:(BOOL *)arg7 outError:(id *)arg8;
 + (id)sharedManager;
 + (BOOL)unionValuesForFeature:(id)arg1 changedBetweenOldRestrictions:(id)arg2 andNewRestrictions:(id)arg3;
 + (id)unionValuesForFeature:(id)arg1 withRestrictionsDictionary:(id)arg2;
@@ -87,7 +99,6 @@
 - (id)allClientUUIDsForClientType:(id)arg1;
 - (int)appWhitelistState;
 - (int)boolSettingForFeature:(id)arg1;
-- (id)clientRestrictions;
 - (id)clientRestrictionsForClientUUID:(id)arg1;
 - (id)description;
 - (id)effectiveIntersectedValuesForSetting:(id)arg1;
@@ -109,6 +120,7 @@
 - (BOOL)isSettingLockedDownByRestrictions:(id)arg1;
 - (BOOL)isUnionSettingLockedDownByRestrictions:(id)arg1;
 - (BOOL)isValueSettingLockedDownByRestrictions:(id)arg1;
+- (id)memberQueueClientRestrictionsDictionaryForClientUUID:(id)arg1;
 - (id)memberQueueClientRestrictionsForClientUUID:(id)arg1;
 - (id)memberQueueClientTypeForClientUUID:(id)arg1;
 - (void)memberQueueCommitUserSettingsToDisk;
@@ -117,8 +129,10 @@
 - (id)potentialRestrictionsAfterApplyingRestrictionsDictionary:(id)arg1 outChangeDetected:(BOOL *)arg2 outError:(id *)arg3;
 - (id)profileIdentifiersRestrictingSettings:(id)arg1;
 - (int)restrictedBoolForFeature:(id)arg1;
+- (id)systemClientRestrictions;
 - (id)unionValuesForFeature:(id)arg1;
 - (id)unionValuesSettingForFeature:(id)arg1;
+- (id)userClientRestrictions;
 - (id)userInfoForClientUUID:(id)arg1;
 - (id)valueForFeature:(id)arg1;
 - (id)valueSettingForFeature:(id)arg1;

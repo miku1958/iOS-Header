@@ -21,6 +21,7 @@
 - (id)newPaymentEligibilityRequest;
 - (void)performNextActionForProvisioningState:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)readonlyFieldIdentifiers;
+- (BOOL)shouldAppearWithFirstEmptyFieldAsFirstResponder;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;

@@ -16,6 +16,7 @@
     MusicActionableHeaderView *_actionableHeaderView;
     _UIBackdropView *_floatingBackdropView;
     UIView *_hairlineView;
+    BOOL _shouldSkipLayout;
     NSString *_backdropGroupName;
     UIColor *_backgroundColorForNonFloatingState;
     long long _hairlineStyleForNonFloatingState;
@@ -44,9 +45,11 @@
 - (void)actionableHeaderViewDidSelectButton:(id)arg1;
 - (void)dealloc;
 - (id)initWithReuseIdentifier:(id)arg1;
+- (void)layoutBelowIfNeeded;
 - (void)layoutSubviews;
 - (void)music_inheritedLayoutInsetsDidChange;
 - (void)setFloating:(BOOL)arg1;
+- (void)setFrame:(struct CGRect)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

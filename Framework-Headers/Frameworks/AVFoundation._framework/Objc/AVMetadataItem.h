@@ -45,6 +45,7 @@
 + (id)metadataItemWithPropertiesOfMetadataItem:(id)arg1 valueLoadingHandler:(CDUnknownBlockType)arg2;
 + (id)metadataItemsFromArray:(id)arg1 filteredAndSortedAccordingToPreferredLanguages:(id)arg2;
 + (id)metadataItemsFromArray:(id)arg1 filteredByIdentifier:(id)arg2;
++ (id)metadataItemsFromArray:(id)arg1 filteredByIdentifiers:(id)arg2;
 + (id)metadataItemsFromArray:(id)arg1 filteredByMetadataItemFilter:(id)arg2;
 + (id)metadataItemsFromArray:(id)arg1 withKey:(id)arg2 keySpace:(id)arg3;
 + (id)metadataItemsFromArray:(id)arg1 withLocale:(id)arg2;
@@ -54,6 +55,7 @@
 - (void *)_copyValueAsCFTypeWithFormatDescription:(struct opaqueCMFormatDescription *)arg1 error:(id *)arg2;
 - (id)_createJSONEncodedDataFromValue:(id)arg1 error:(id *)arg2;
 - (void)_extractPropertiesFromDictionary:(id)arg1;
+- (id)_figMetadataDictionary;
 - (id)_figMetadataDictionaryWithValue:(BOOL)arg1 diviningValueDataType:(BOOL)arg2;
 - (id)_figMetadataFormat;
 - (id)_figMetadataSpecificationReturningError:(id *)arg1;
@@ -72,6 +74,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
+- (id)discoveryTimestamp;
 - (void)finalize;
 - (unsigned long long)hash;
 - (struct CGImage *)imageValue;

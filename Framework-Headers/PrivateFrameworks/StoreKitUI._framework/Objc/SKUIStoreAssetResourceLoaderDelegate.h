@@ -8,11 +8,15 @@
 
 #import <StoreKitUI/AVAssetResourceLoaderDelegate-Protocol.h>
 
-@class NSOperationQueue, NSString, SKUIClientContext;
+@class NSOperationQueue, NSString, NSURL, SKUIClientContext;
 
 @interface SKUIStoreAssetResourceLoaderDelegate : NSObject <AVAssetResourceLoaderDelegate>
 {
+    BOOL _isITunesStream;
+    NSURL *_keyCertificateURL;
+    NSURL *_keyServerURL;
     NSOperationQueue *_operationQueue;
+    BOOL _shouldUseITunesStoreSecureKeyDelivery;
     SKUIClientContext *_clientContext;
 }
 
@@ -22,8 +26,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)storeAssetResourceLoaderDelegateForPlayableAsset:(id)arg1 clientContext:(id)arg2;
 - (void).cxx_destruct;
-- (id)initWithClientContext:(id)arg1;
 - (BOOL)resourceLoader:(id)arg1 shouldWaitForLoadingOfRequestedResource:(id)arg2;
 
 @end

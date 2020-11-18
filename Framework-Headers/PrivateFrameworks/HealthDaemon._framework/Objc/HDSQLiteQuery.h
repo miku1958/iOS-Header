@@ -15,25 +15,17 @@
     HDSQLiteQueryDescriptor *_queryDescriptor;
 }
 
-@property (readonly) long long countOfEntities;
 @property (readonly) HDSQLiteDatabase *database; // @synthesize database=_database;
 @property (readonly) HDSQLiteQueryDescriptor *queryDescriptor; // @synthesize queryDescriptor=_queryDescriptor;
 
 - (void).cxx_destruct;
 - (void)bindToSelectStatement:(struct sqlite3_stmt *)arg1 bindingIndex:(inout int *)arg2;
-- (id)copyEntityIdentifiers;
 - (id)copySelectSQLWithProperties:(id)arg1;
-- (BOOL)createTemporaryTableWithName:(id)arg1 properties:(id)arg2;
 - (BOOL)deleteAllEntities;
 - (void)enumerateEntitiesUsingBlock:(CDUnknownBlockType)arg1;
-- (BOOL)enumeratePersistentIDsAndProperties:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (BOOL)enumeratePersistentIDsAndProperties:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (BOOL)enumeratePersistentIDsAndPropertiesAsDoubles:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (void)enumeratePersistentIDsUsingBlock:(CDUnknownBlockType)arg1;
-- (BOOL)enumeratePersistentIDsUsingBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
-- (BOOL)enumerateProperties:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (BOOL)enumeratePersistentIDsAndProperties:(id)arg1 error:(id *)arg2 enumerationHandler:(CDUnknownBlockType)arg3;
+- (BOOL)enumerateProperties:(id)arg1 error:(id *)arg2 enumerationHandler:(CDUnknownBlockType)arg3;
 - (id)initWithDatabase:(id)arg1 descriptor:(id)arg2;
-- (BOOL)setValuesForAllEntitiesWithDictionary:(id)arg1;
 
 @end
 

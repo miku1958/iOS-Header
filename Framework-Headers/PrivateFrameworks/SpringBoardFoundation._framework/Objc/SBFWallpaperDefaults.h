@@ -4,16 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+@class SBWallpaperDefaults;
 
 @interface SBFWallpaperDefaults : NSObject
 {
+    SBWallpaperDefaults *_defaultsStore;
 }
 
+@property (readonly, nonatomic) SBWallpaperDefaults *defaultsStore; // @synthesize defaultsStore=_defaultsStore;
+
 + (id)defaults;
+- (void).cxx_destruct;
 - (struct CGRect)cropRectForVariant:(long long)arg1;
 - (id)description;
 - (BOOL)hasVideo;
+- (BOOL)hasVideoForVariant:(long long)arg1;
+- (id)init;
+- (id)initWithDefaultsStore:(id)arg1;
 - (BOOL)isPortraitForVariant:(long long)arg1;
 - (BOOL)magnifyEnabledForVariant:(long long)arg1;
 - (id)nameForVariant:(long long)arg1;
@@ -38,7 +47,9 @@
 - (void)setWallpaperOptions:(id)arg1 forLocations:(long long)arg2;
 - (void)setZoomScale:(double)arg1 forLocations:(long long)arg2;
 - (double)stillTimeInVideo;
+- (double)stillTimeInVideoForVariant:(long long)arg1;
 - (BOOL)supportsCroppingForVariant:(long long)arg1;
+- (id)wallpaperOptionsForVariant:(long long)arg1;
 - (double)zoomScaleForVariant:(long long)arg1;
 
 @end

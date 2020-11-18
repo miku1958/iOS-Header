@@ -18,6 +18,7 @@
 @property (nonatomic) BOOL needsSync; // @synthesize needsSync=_needsSync;
 
 + (id)_lexiconPathForLocalIdentifier:(id)arg1;
++ (id)_sanitizeRecentInputString:(id)arg1;
 + (void)clearRecentInputForIdentifier:(id)arg1;
 + (BOOL)identifierIsSystemIdentifier:(id)arg1;
 + (id)recentInputAtPath:(id)arg1;

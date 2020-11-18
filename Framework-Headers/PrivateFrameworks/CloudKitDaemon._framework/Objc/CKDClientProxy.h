@@ -7,13 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <CloudKitDaemon/CKDSystemAvailabilityWatcher-Protocol.h>
-#import <CloudKitDaemon/CKXPCDaemon-Protocol.h>
 
 @class CKDClientContext, CKWatchdog, NSArray, NSMutableArray, NSMutableSet, NSOperationQueue, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface CKDClientProxy : NSObject <CKDSystemAvailabilityWatcher, CKXPCDaemon>
+@interface CKDClientProxy : NSObject <CKDSystemAvailabilityWatcher>
 {
     CKDClientContext *_context;
     BOOL _sandboxed;
@@ -37,7 +36,6 @@ __attribute__((visibility("hidden")))
     CKWatchdog *_watchdog;
 }
 
-@property (readonly, nonatomic) CDStruct_6ad76789 auditToken;
 @property (strong, nonatomic) NSOperationQueue *backgroundOperationThrottleQueue; // @synthesize backgroundOperationThrottleQueue=_backgroundOperationThrottleQueue;
 @property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (strong, nonatomic) NSArray *cachedSandboxExtensions; // @synthesize cachedSandboxExtensions=_cachedSandboxExtensions;
@@ -48,7 +46,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *cancellationQueue; // @synthesize cancellationQueue=_cancellationQueue;
 @property (strong, nonatomic) NSOperationQueue *cleanupOperationQueue; // @synthesize cleanupOperationQueue=_cleanupOperationQueue;
 @property (weak, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
-@property (readonly, nonatomic) CKDClientContext *context;
+@property (strong, nonatomic) CKDClientContext *context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -72,9 +70,12 @@ __attribute__((visibility("hidden")))
 - (id)_clientPrefixEntitlement;
 - (void)_finishClientSetupWithClientContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_globalStatusForApplicationPermission:(unsigned long long)arg1 setupInfo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_handleCheckpointForOperationWithID:(id)arg1 withArguments:(id)arg2;
 - (void)_handleCompletionForOperation:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)_handleCompletionForOperationWithID:(id)arg1 isLongLived:(BOOL)arg2 withResult:(id)arg3 block:(CDUnknownBlockType)arg4;
 - (void)_handleProgressForOperation:(id)arg1 withArguments:(id)arg2;
 - (void)_handleProgressForOperation:(id)arg1 withArguments:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_handleProgressForOperationWithID:(id)arg1 withArguments:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_hasCustomAccountsEntitlement;
 - (BOOL)_hasEntitlementForKey:(id)arg1;
 - (BOOL)_hasEnvironmentEntitlement;
@@ -97,9 +98,12 @@ __attribute__((visibility("hidden")))
 - (void)clearAssetCacheWithSetupInfo:(id)arg1 databaseScope:(long long)arg2;
 - (void)clearAuthTokensWithSetupInfo:(id)arg1 recordID:(id)arg2 databaseScope:(long long)arg3;
 - (void)clearRecordCacheWithSetupInfo:(id)arg1 databaseScope:(long long)arg2;
+- (void)currentDeviceIDWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)currentUserIDWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)darkWakeEnabledEntitlement;
 - (void)dealloc;
+- (void)fetchAllLongLivedOperationIDsWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchLongLivedOperationsWithIDs:(id)arg1 setupInfo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)forceFinishClientSetupWithClientContext:(id)arg1;
 - (void)getBehaviorOptionForKey:(id)arg1 isContainerOption:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getNewWebSharingIdentityWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -110,9 +114,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasCloudKitSystemServiceEntitlement;
 - (BOOL)hasDarkWakeNetworkReachabilityEnabledEntitlement;
 - (BOOL)hasDeviceIdentifierEntitlement;
+- (BOOL)hasLightweightPCSEntitlement;
 - (BOOL)hasMasqueradingEntitlement;
 - (BOOL)hasProtectionDataEntitlement;
+- (BOOL)hasTCCAuthorization;
 - (id)initWithConnection:(id)arg1;
+- (BOOL)isLongLived;
 - (id)openFileWithOpenInfo:(id)arg1 error:(id *)arg2;
 - (void)performAcceptSharesOperation:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)performDiscoverAllContactsOperation:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
@@ -147,7 +154,6 @@ __attribute__((visibility("hidden")))
 - (void)serverPreferredPushEnvironmentWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setApplicationPermission:(unsigned long long)arg1 enabled:(BOOL)arg2 setupInfo:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setClientProxyAvailable:(BOOL)arg1;
-- (void)setContext:(id)arg1;
 - (void)setFakeError:(id)arg1 forNextRequestOfClassName:(id)arg2 setupInfo:(id)arg3;
 - (void)statusForApplicationPermission:(unsigned long long)arg1 setupInfo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)statusGroupsForApplicationPermission:(unsigned long long)arg1 setupInfo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

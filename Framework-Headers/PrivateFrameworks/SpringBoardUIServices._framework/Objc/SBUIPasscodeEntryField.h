@@ -23,14 +23,15 @@
 
 @property (strong, nonatomic) UIColor *customBackgroundColor; // @synthesize customBackgroundColor=_customBackgroundColor;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<SBUIPasscodeEntryFieldDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<SBUIPasscodeEntryFieldDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *stringValue; // @dynamic stringValue;
 @property (readonly) Class superclass;
-@property (readonly, strong, nonatomic, getter=_textField) UITextField *textField; // @synthesize textField=_textField;
+@property (readonly, nonatomic, getter=_textField) UITextField *textField; // @synthesize textField=_textField;
 
 + (BOOL)_usesTextFieldForFirstResponder;
+- (void).cxx_destruct;
 - (void)_appendString:(id)arg1;
 - (void)_autofillForMesaWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_deleteLastCharacter;
@@ -42,7 +43,6 @@
 - (void)appendString:(id)arg1;
 - (BOOL)becomeFirstResponder;
 - (BOOL)canBecomeFirstResponder;
-- (void)dealloc;
 - (void)deleteLastCharacter;
 - (id)initWithDefaultSizeAndLightStyle:(BOOL)arg1;
 - (BOOL)isFirstResponder;

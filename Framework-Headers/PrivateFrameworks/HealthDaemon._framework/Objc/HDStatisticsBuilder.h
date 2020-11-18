@@ -19,8 +19,10 @@
     NSNumber *_restrictedSourceIdentifier;
     id<HDHealthDaemon> _healthDaemon;
     NSArray *_orderedSources;
+    long long _anchor;
 }
 
+@property (nonatomic) long long anchor; // @synthesize anchor=_anchor;
 @property (readonly, nonatomic) _HKFilter *filter; // @synthesize filter=_filter;
 @property (readonly, nonatomic) id<HDHealthDaemon> healthDaemon; // @synthesize healthDaemon=_healthDaemon;
 @property (readonly, nonatomic) unsigned long long mergeStrategy; // @synthesize mergeStrategy=_mergeStrategy;
@@ -34,16 +36,18 @@
 + (id)statisticsBuilderWithQuantityType:(id)arg1 filter:(id)arg2 statisticsOptions:(unsigned long long)arg3 mergeStrategy:(unsigned long long)arg4 restrictedSourceIdentifier:(id)arg5 healthDaemon:(id)arg6;
 - (void).cxx_destruct;
 - (void)_enumerateSamplesWithType:(id)arg1 predicate:(id)arg2 database:(id)arg3 handler:(CDUnknownBlockType)arg4;
-- (id)_initialStatisticsForCollection:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 sampleCount:(long long)arg4 shouldStopProcessing:(CDUnknownBlockType)arg5 error:(id *)arg6;
+- (id)_initialStatisticsForCollection:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 shouldStopProcessing:(CDUnknownBlockType)arg4 error:(id *)arg5;
 - (id)_initialStatisticsForStartDate:(id)arg1 endDate:(id)arg2 shouldStopProcessing:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (void)_setupOrderedSources;
+- (BOOL)_setupStatistics:(id)arg1 withCalculator:(id)arg2;
+- (id)_updateStatisticsCollection:(id)arg1 withSamples:(id)arg2 error:(id *)arg3;
+- (id)buildStatisticsObjectFromCalculator:(id)arg1;
+- (id)collectionCalculatorWithBucketBoundaries:(id)arg1;
 - (id)initWithQuantityType:(id)arg1 filter:(id)arg2 statisticsOptions:(unsigned long long)arg3 mergeStrategy:(unsigned long long)arg4 restrictedSourceIdentifier:(id)arg5 healthDaemon:(id)arg6;
 - (id)initialStatisticsForCollection:(id)arg1 shouldStopProcessing:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (id)initialStatisticsShouldStopProcessing:(CDUnknownBlockType)arg1 error:(id *)arg2;
-- (BOOL)isTimeIntervalTooLong:(long long)arg1 sampleStartTime:(double)arg2 sampleEndTime:(double)arg3 seconds:(double)arg4;
 - (id)orderedSourceIDsFromSources:(id)arg1 sourceManager:(id)arg2;
-- (id)updateStatistics:(id)arg1 withSamples:(id)arg2 error:(id *)arg3;
-- (id)updateStatisticsCollection:(id)arg1 withSamples:(id)arg2 anchor:(id)arg3 error:(id *)arg4;
+- (id)updateStatisticsCollection:(id)arg1 withSamples:(id)arg2 anchor:(id)arg3 restrictedSourceIdentifier:(id)arg4 error:(id *)arg5;
 
 @end
 

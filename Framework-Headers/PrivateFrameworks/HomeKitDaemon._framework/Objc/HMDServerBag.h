@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSURL, NSURLSession;
+#import <HomeKitDaemon/NSURLSessionDelegate-Protocol.h>
+
+@class NSDictionary, NSString, NSURL, NSURLSession;
 @protocol OS_dispatch_queue;
 
-@interface HMDServerBag : NSObject
+@interface HMDServerBag : NSObject <NSURLSessionDelegate>
 {
     BOOL _refreshing;
     NSDictionary *_dictionaryRepresentation;
@@ -24,10 +26,14 @@
 @property (readonly, copy, nonatomic) NSURL *accessoryReportURL;
 @property (readonly, copy, nonatomic) NSURL *activationCertificateHostnameURL;
 @property (readonly, copy, nonatomic) NSURL *activationHostnameURL;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSDictionary *dictionaryRepresentation; // @synthesize dictionaryRepresentation=_dictionaryRepresentation;
 @property (readonly, nonatomic) unsigned long long environment; // @synthesize environment=_environment;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (nonatomic) BOOL refreshing; // @synthesize refreshing=_refreshing;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 @property (readonly, nonatomic) NSURLSession *urlSession; // @synthesize urlSession=_urlSession;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
@@ -38,11 +44,10 @@
 + (void)initialize;
 + (id)serverBagURLForEnvironment:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_handleServerBagResponseData:(id)arg1 response:(id)arg2 error:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_loadDefaultBag;
 - (void)_synchronizeWithCompletion:(CDUnknownBlockType)arg1;
-- (id)debugDescription;
-- (id)description;
 - (id)init;
 - (id)initWithEnvironment:(unsigned long long)arg1;
 

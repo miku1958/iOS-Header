@@ -9,6 +9,7 @@
 @interface NSError (BRCAdditions)
 + (id)brc_daemonAccessDisabledError;
 + (void)load;
+- (id)_brc_cloudKitInternalWithErrorCode:(long long)arg1;
 - (id)br_cloudKitErrorForIdentifier:(id)arg1;
 - (double)br_suggestedRetryTimeInterval;
 - (BOOL)brc_checkErrorsFromCloudKit:(CDUnknownBlockType)arg1;
@@ -23,6 +24,7 @@
 - (BOOL)brc_isCloudKitErrorRequiringAssetReupload;
 - (BOOL)brc_isCloudKitErrorRequiringSkipThrottling;
 - (BOOL)brc_isCloudKitErrorRequiringSyncDownFirst;
+- (BOOL)brc_isCloudKitErrorUnsupportedOSAndGetMinimumSupported:(id *)arg1;
 - (BOOL)brc_isCloudKitInternalErrorCode:(long long)arg1;
 - (BOOL)brc_isCloudKitOutOfQuota;
 - (BOOL)brc_isCloudKitUnknownItemError;

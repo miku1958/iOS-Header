@@ -9,7 +9,7 @@
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUI/UIScrollViewDelegate-Protocol.h>
 
-@class NSString, PLImageGeometry, UIImage, UIImageView, UIScrollView;
+@class NSString, PHLivePhoto, PHLivePhotoView, PLImageGeometry, UIImage, UIImageView, UIScrollView;
 @protocol PUCropAndStraightenViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -21,12 +21,15 @@ __attribute__((visibility("hidden")))
     BOOL __updatingForStraighten;
     BOOL __scrollViewTracking;
     UIImage *_image;
+    PHLivePhoto *_livePhoto;
     id<PUCropAndStraightenViewDelegate> _delegate;
     double _straightenAngle;
     long long _orientation;
     UIScrollView *__scrollView;
     UIView *__scrollViewReference;
+    UIView *__contentView;
     UIImageView *__imageView;
+    PHLivePhotoView *__livePhotoView;
     double __preferredZoomScale;
     PLImageGeometry *__imageGeometry;
     struct CGRect _cropRect;
@@ -34,9 +37,11 @@ __attribute__((visibility("hidden")))
     struct CGRect __fittingRegion;
 }
 
+@property (strong, nonatomic, setter=_setContentView:) UIView *_contentView; // @synthesize _contentView=__contentView;
 @property (nonatomic, setter=_setFittingRegion:) struct CGRect _fittingRegion; // @synthesize _fittingRegion=__fittingRegion;
 @property (strong, nonatomic, setter=_setImageGeometry:) PLImageGeometry *_imageGeometry; // @synthesize _imageGeometry=__imageGeometry;
 @property (strong, nonatomic, setter=_setImageView:) UIImageView *_imageView; // @synthesize _imageView=__imageView;
+@property (strong, nonatomic, setter=_setLivePhotoView:) PHLivePhotoView *_livePhotoView; // @synthesize _livePhotoView=__livePhotoView;
 @property (nonatomic, setter=_setPreferredZoomScale:) double _preferredZoomScale; // @synthesize _preferredZoomScale=__preferredZoomScale;
 @property (readonly, nonatomic, getter=_isRotationSideways) BOOL _rotationSideways;
 @property (readonly, nonatomic) struct CGAffineTransform _rotationTransform;
@@ -55,6 +60,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (readonly, nonatomic) struct CGRect imageCropRect;
+@property (strong, nonatomic) PHLivePhoto *livePhoto; // @synthesize livePhoto=_livePhoto;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (nonatomic) double straightenAngle; // @synthesize straightenAngle=_straightenAngle;
 @property (readonly) Class superclass;

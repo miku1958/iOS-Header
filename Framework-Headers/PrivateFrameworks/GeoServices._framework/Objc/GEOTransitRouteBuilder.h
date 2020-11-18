@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     NSMutableArray *_stepInfos;
     BOOL _usesZilch;
+    unsigned long long _tripCount;
     NSMutableArray *_steps;
     NSMutableArray *_legs;
     NSMutableData *_pointsData;
@@ -27,7 +28,11 @@ __attribute__((visibility("hidden")))
 - (void)_buildExpandedWalkingStepInfos:(id)arg1;
 - (void)_buildPointSectionsForRoute:(id)arg1;
 - (void)_buildPointSectionsForRoute:(id)arg1 pointRange:(struct _NSRange)arg2 stepIndex:(unsigned long long)arg3 currentTransitLineColor:(id)arg4;
+- (void)_buildRouteFromSections:(id)arg1;
+- (void)_buildRouteFromSteps:(id)arg1;
 - (void)_buildTransitStepInfo:(id)arg1;
+- (BOOL)_index:(unsigned long long)arg1 matchesArray:(unsigned int *)arg2 ofLength:(unsigned long long)arg3;
+- (BOOL)_isWalkingOnlyRoute:(id)arg1;
 - (id)_legForSteps:(struct _NSRange)arg1 route:(id)arg2;
 - (long long)_legTypeForTransitManeuver:(int)arg1;
 - (void)_reset;
@@ -40,7 +45,6 @@ __attribute__((visibility("hidden")))
 - (void)buildRoute:(id)arg1;
 - (void)dealloc;
 - (id)initWithSuggestedRoute:(id)arg1 data:(id)arg2;
-- (void)updateSectionsForRoute:(id)arg1;
 
 @end
 

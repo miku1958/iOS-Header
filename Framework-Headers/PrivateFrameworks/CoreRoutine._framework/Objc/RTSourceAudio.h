@@ -9,20 +9,25 @@
 #import <CoreRoutine/NSCopying-Protocol.h>
 #import <CoreRoutine/NSSecureCoding-Protocol.h>
 
+@class NSString;
+
 @interface RTSourceAudio : RTSource <NSSecureCoding, NSCopying>
 {
+    NSString *_deviceName;
     long long _audioSource;
 }
 
 @property (readonly, nonatomic) long long audioSource; // @synthesize audioSource=_audioSource;
+@property (readonly, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
 
 + (id)stringFromAudioSource:(long long)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithAudioSource:(long long)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDeviceName:(id)arg1 audioSource:(long long)arg2;
 
 @end
 

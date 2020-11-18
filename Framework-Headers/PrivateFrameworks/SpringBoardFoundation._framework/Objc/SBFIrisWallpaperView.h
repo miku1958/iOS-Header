@@ -33,19 +33,21 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) id<SBFIrisWallpaperViewDelegate> irisDelegate;
+@property (weak, nonatomic) id<SBFIrisWallpaperViewDelegate> irisDelegate; // @synthesize irisDelegate=_irisDelegate;
 @property (readonly, nonatomic) long long irisPlaybackState;
 @property (readonly, nonatomic) BOOL isIrisInteracting;
+@property (readonly, nonatomic) double stillTimeInVideo;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSURL *videoFileURL;
 
 + (void)initialize;
+- (void).cxx_destruct;
 - (void)_populateContentView;
 - (void)_resetPrewiredAVPlayer;
 - (void)_setImage:(id)arg1;
 - (void)_setPlayerGestureRecognizer:(id)arg1;
 - (void)_setupContentView;
 - (BOOL)_setupContentViewForMode:(long long)arg1;
-- (id)avPlayerForPlayerView:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 variant:(long long)arg3;
 - (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 wallpaperVideoURL:(id)arg3 stillTimeInVideo:(double)arg4 treatWallpaper:(BOOL)arg5 variant:(long long)arg6 prewireMemory:(BOOL)arg7 useRewindPlaybackStyle:(BOOL)arg8;
@@ -54,6 +56,7 @@
 - (void)playerViewIsInteractingDidChange:(id)arg1;
 - (void)playerViewPlaybackStateDidChange:(id)arg1;
 - (void)switchToIrisMode:(long long)arg1;
+- (id)videoPlayerForPlayerView:(id)arg1;
 
 @end
 

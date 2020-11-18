@@ -168,8 +168,8 @@
 - (void)editEvent;
 - (void)eventDetailItemWantsRefeshForHeightChange;
 - (void)eventEditViewController:(id)arg1 didCompleteWithAction:(long long)arg2;
-- (void)eventItemDidCommit:(id)arg1;
 - (void)eventItemDidEndEditing:(id)arg1;
+- (void)eventItemDidSave:(id)arg1;
 - (void)eventItemDidStartEditing:(id)arg1;
 - (void)eventStatusButtonsView:(id)arg1 calculatedFontSizeToFit:(double)arg2;
 - (void)eventStatusButtonsView:(id)arg1 didSelectAction:(long long)arg2;

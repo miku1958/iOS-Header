@@ -41,8 +41,10 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isManagedAppleID) BOOL managedAppleID;
 @property (copy, nonatomic) NSString *metricsConfigurationIdentifier; // @synthesize metricsConfigurationIdentifier=_metricsConfigurationIdentifier;
 @property (readonly, nonatomic) Class moviePlayerViewControllerClass;
+@property (readonly, nonatomic, getter=isMultiUser) BOOL multiUser;
 @property (readonly, nonatomic) NSArray *navigationHistory;
 @property (copy, nonatomic) NSString *navigationHistoryPersistenceKey; // @synthesize navigationHistoryPersistenceKey=_navigationHistoryPersistenceKey;
 @property (readonly, nonatomic) SSVPlatformContext *platformContext;

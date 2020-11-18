@@ -36,9 +36,11 @@
 @property (nonatomic) unsigned long long version; // @synthesize version=_version;
 
 + (id)changeWithChangeObject:(id)arg1 serializer:(id)arg2;
++ (id)changeWithChangeObject:(id)arg1 serializer:(id)arg2 encodeUsingVersion:(long long)arg3;
 + (id)changeWithObject:(id)arg1 updateType:(int)arg2 store:(id)arg3;
 - (void).cxx_destruct;
 - (id)changeObjectWithSerializer:(id)arg1;
+- (id)changeObjectWithSerializer:(id)arg1 encodedByVersion:(long long)arg2;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;

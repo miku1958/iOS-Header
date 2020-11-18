@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVItem, NSDictionary, NSString;
 
@@ -45,11 +45,11 @@
 @property (copy, nonatomic) NSString *vibrationIdentifier; // @synthesize vibrationIdentifier=_vibrationIdentifier;
 @property (strong, nonatomic) NSDictionary *vibrationPattern; // @synthesize vibrationPattern=_vibrationPattern;
 
+- (void).cxx_destruct;
 - (CDUnknownBlockType)_completionBlock;
 - (id)_resolvedToneIdentifier;
 - (void)_setCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)_setResolvedToneIdentifier:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)initWithAVItem:(id)arg1 vibrationPattern:(id)arg2 repeats:(BOOL)arg3 maxDuration:(double)arg4 controllerAttributes:(id)arg5;
 - (id)initWithRingtone:(id)arg1 vibrationPattern:(id)arg2 repeats:(BOOL)arg3 maxDuration:(double)arg4 controllerAttributes:(id)arg5;

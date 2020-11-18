@@ -14,8 +14,11 @@
 
 @property (copy, nonatomic) NSURL *attachment;
 @property (copy, nonatomic) NSString *chatIdentifier;
+@property (copy, nonatomic) NSDate *dateLastMessageReadInThread;
 @property (copy, nonatomic) NSDate *dateSent;
+@property (copy, nonatomic) NSString *groupName;
 @property (copy, nonatomic) NSString *groupNameId;
+@property (nonatomic) BOOL hasGroupName;
 @property (copy, nonatomic) NSNumber *isAudioMessage;
 @property (copy, nonatomic) NSString *message;
 @property (copy, nonatomic) NSArray *msgRecipients;

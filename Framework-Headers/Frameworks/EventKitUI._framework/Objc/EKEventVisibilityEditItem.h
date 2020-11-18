@@ -23,15 +23,15 @@
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
-- (BOOL)editItemViewControllerCommit:(id)arg1;
+- (BOOL)editItemViewControllerSave:(id)arg1;
 - (BOOL)editor:(id)arg1 canSelectSubitem:(unsigned long long)arg2;
 - (double)footerHeightForWidth:(double)arg1;
 - (id)footerTitle;
 - (id)footerView;
-- (BOOL)forceTableReloadOnCommit;
+- (BOOL)forceTableReloadOnSave;
 - (id)init;
 - (unsigned long long)numberOfSubitems;
-- (BOOL)requiresReconfigurationOnCommit;
+- (BOOL)requiresReconfigurationOnSave;
 - (void)reset;
 - (BOOL)saveAndDismissWithForce:(BOOL)arg1;
 - (void)setCalendarItem:(id)arg1 store:(id)arg2;

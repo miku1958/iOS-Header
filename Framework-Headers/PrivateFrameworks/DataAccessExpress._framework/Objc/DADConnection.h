@@ -24,11 +24,13 @@
     NSMutableDictionary *_inFlightCalendarDirectorySearches;
     NSMutableDictionary *_inFlightShareRequests;
     NSMutableDictionary *_inFlightOofSettingsRequests;
+    BOOL _registered;
 }
+
+@property (nonatomic) BOOL registered; // @synthesize registered=_registered;
 
 + (void)setShouldIgnoreAccountChanges;
 + (id)sharedConnection;
-+ (id)sharedConnectionIfServerIsRunning;
 - (void).cxx_destruct;
 - (void)_calendarAvailabilityRequestFinished:(id)arg1;
 - (void)_calendarAvailabilityRequestReturnedResults:(id)arg1;
@@ -48,7 +50,6 @@
 - (void)_oofSettingsRequestsFinished:(id)arg1;
 - (BOOL)_performOofSettingsRequest:(id)arg1 forAccountWithID:(id)arg2 forUpdate:(BOOL)arg3;
 - (void)_policyKeyChanged:(id)arg1;
-- (void)_reallyRegisterForInterrogation;
 - (void)_registerForAppResumedNotification;
 - (void)_requestDaemonChangeAgentMonitoringStatus:(BOOL)arg1 waitForReply:(BOOL)arg2;
 - (void)_requestDaemonStopMonitoringAgents_Sync;
@@ -77,6 +78,7 @@
 - (BOOL)performServerContactsSearch:(id)arg1 forAccountWithID:(id)arg2;
 - (BOOL)processFolderChange:(id)arg1 forAccountWithID:(id)arg2;
 - (BOOL)processMeetingRequests:(id)arg1 deliveryIdsToClear:(id)arg2 deliveryIdsToSoftClear:(id)arg3 inFolderWithId:(id)arg4 forAccountWithId:(id)arg5;
+- (void)reallyRegisterForInterrogation;
 - (BOOL)registerForInterrogationWithBlock:(CDUnknownBlockType)arg1;
 - (void)removeStoresForAccountWithID:(id)arg1;
 - (void)reportFolderItemsSyncSuccess:(BOOL)arg1 forFolderWithID:(id)arg2 withItemsCount:(unsigned long long)arg3 andAccountWithID:(id)arg4;

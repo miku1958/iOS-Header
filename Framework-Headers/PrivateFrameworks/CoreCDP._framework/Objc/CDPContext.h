@@ -15,6 +15,7 @@
     BOOL _isHSA2Account;
     BOOL _didUseSMSVerification;
     BOOL __useSecureBackupCachedPassphrase;
+    BOOL __alwaysCreateEscrowRecord;
     NSDictionary *_authenticationResults;
     NSString *_appleID;
     NSString *_password;
@@ -24,6 +25,7 @@
     unsigned long long _cachedLocalSecretType;
 }
 
+@property (nonatomic) BOOL _alwaysCreateEscrowRecord; // @synthesize _alwaysCreateEscrowRecord=__alwaysCreateEscrowRecord;
 @property (nonatomic) BOOL _useSecureBackupCachedPassphrase; // @synthesize _useSecureBackupCachedPassphrase=__useSecureBackupCachedPassphrase;
 @property (copy, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
 @property (copy, nonatomic) NSDictionary *authenticationResults; // @synthesize authenticationResults=_authenticationResults;

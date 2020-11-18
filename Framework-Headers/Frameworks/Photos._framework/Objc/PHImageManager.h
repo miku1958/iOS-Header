@@ -28,7 +28,6 @@
 + (id)defaultManager;
 + (struct CGSize)fullScreenSizeForScreen:(id)arg1 contentMode:(long long *)arg2;
 + (void)initialize;
-+ (struct CGSize)sizeForPLFormat:(int)arg1 fallBackSize:(struct CGSize)arg2 contentMode:(long long *)arg3;
 + (struct CGSize)sizeOfBestNonFullscreenThumbnailAndContentMode:(long long *)arg1;
 + (BOOL)useNewImageManager;
 - (void).cxx_destruct;
@@ -41,6 +40,7 @@
 - (void)dealloc;
 - (id)imageForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 outInfo:(id *)arg5;
 - (id)init;
+- (id)localOptionsFromOptions:(id)arg1;
 - (struct CGImage *)newResizedImageForImage:(struct CGImage *)arg1 withSize:(struct CGSize)arg2 normalizedCropRect:(struct CGRect)arg3 contentMode:(long long)arg4;
 - (void)photoLibraryDidChange:(id)arg1;
 - (void)registerRequest:(id)arg1;
@@ -58,7 +58,6 @@
 - (int)requestPlayerItemForVideo:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (void)requestSynchronousImageForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)requestSynchronousImageForImageLoadingAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id)thumbnailDataForAsset:(id)arg1 targetSize:(struct CGSize)arg2;
 - (void)unloadImageFilesForAsset:(id)arg1 minimumFormat:(int)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)unregisterRequest:(id)arg1;
 

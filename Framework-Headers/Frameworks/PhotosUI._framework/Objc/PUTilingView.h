@@ -7,7 +7,7 @@
 #import <UIKit/UIScrollView.h>
 
 @class NSMutableArray, NSMutableDictionary, NSMutableSet, PUReuseQueue, PUTileAnimator, PUTileTransitionCoordinator, PUTileTree, PUTilingLayout;
-@protocol PUTilingCoordinateSystem, PUTilingViewLayoutDelegate, PUTilingViewScrollDelegate, PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, PUTilingViewTileUseDelegate;
+@protocol PUTilingCoordinateSystem, PUTilingViewScrollDelegate, PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, PUTilingViewTileUseDelegate;
 
 @interface PUTilingView : UIScrollView
 {
@@ -24,9 +24,6 @@
         BOOL respondsToInitialVisibleOriginWithLayout;
         BOOL respondsToTargetVisibleOriginForProposedVisibleOrigin;
     } _scrollDelegateFlags;
-    struct {
-        BOOL respondsToDidLayoutTileControllers;
-    } _layoutDelegateFlags;
     struct {
         BOOL respondsToWillStartUsingTileController;
         BOOL respondsToDidStopUsingTileController;
@@ -47,7 +44,6 @@
     PUTileAnimator *_tileAnimator;
     id<PUTilingViewTileTransitionDelegate> _tileTransitionDelegate;
     id<PUTilingViewScrollDelegate> _scrollDelegate;
-    id<PUTilingViewLayoutDelegate> _layoutDelegate;
     id<PUTilingViewTileUseDelegate> _tileUseDelegate;
     id<PUTilingCoordinateSystem> _contentCoordinateSystem;
     id<PUTilingCoordinateSystem> _fixedCoordinateSystem;
@@ -64,6 +60,7 @@
     NSMutableArray *__pendingUpdateItems;
     double __pagingSpringPullAdjustment;
     double __pagingFrictionAdjustment;
+    NSMutableDictionary *__postLayoutBlocks;
     struct UIEdgeInsets _loadingInsets;
 }
 
@@ -83,6 +80,7 @@
 @property (strong, nonatomic, setter=_setPendingLayout:) PUTilingLayout *_pendingLayout; // @synthesize _pendingLayout=__pendingLayout;
 @property (readonly, nonatomic) NSMutableArray *_pendingUpdateItems; // @synthesize _pendingUpdateItems=__pendingUpdateItems;
 @property (nonatomic, getter=_isPerformingBatchUpdates, setter=_setPerformingBatchUpdates:) BOOL _performingBatchUpdates; // @synthesize _performingBatchUpdates=__performingBatchUpdates;
+@property (readonly, nonatomic) NSMutableDictionary *_postLayoutBlocks; // @synthesize _postLayoutBlocks=__postLayoutBlocks;
 @property (nonatomic, setter=_setReasonForNextLayoutCoordinateSystemUpdate:) long long _reasonForNextLayoutCoordinateSystemUpdate; // @synthesize _reasonForNextLayoutCoordinateSystemUpdate=__reasonForNextLayoutCoordinateSystemUpdate;
 @property (readonly, nonatomic) NSMutableSet *_referencedCoordinateSystems; // @synthesize _referencedCoordinateSystems=__referencedCoordinateSystems;
 @property (readonly, nonatomic) NSMutableDictionary *_referencedDataSourcesByIdentifiers; // @synthesize _referencedDataSourcesByIdentifiers=__referencedDataSourcesByIdentifiers;
@@ -92,7 +90,6 @@
 @property (readonly, nonatomic) id<PUTilingCoordinateSystem> fixedCoordinateSystem; // @synthesize fixedCoordinateSystem=_fixedCoordinateSystem;
 @property (readonly, nonatomic) BOOL isAnyTileControllerAnimating;
 @property (strong, nonatomic) PUTilingLayout *layout; // @synthesize layout=_layout;
-@property (weak, nonatomic) id<PUTilingViewLayoutDelegate> layoutDelegate; // @synthesize layoutDelegate=_layoutDelegate;
 @property (nonatomic) struct UIEdgeInsets loadingInsets; // @synthesize loadingInsets=_loadingInsets;
 @property (copy, nonatomic) CDUnknownBlockType onNextTileControllersUpdateBlock; // @synthesize onNextTileControllersUpdateBlock=_onNextTileControllersUpdateBlock;
 @property (weak, nonatomic) id<PUTilingViewScrollDelegate> scrollDelegate; // @synthesize scrollDelegate=_scrollDelegate;
@@ -119,6 +116,7 @@
 - (void)_invalidateTileControllersVisibleRect;
 - (void)_invalidateTileControllersWithTileTransitionCoordinator:(id)arg1;
 - (void)_registerDataSource:(id)arg1;
+- (void)_runPostLayoutBlocks;
 - (void)_setLayout:(id)arg1;
 - (void)_setNeedsUpdate;
 - (void)_transferTileControllersToDataSource:(id)arg1 usingDataSourceConverter:(id)arg2;
@@ -152,6 +150,7 @@
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1;
 - (id)presentedTileControllerWithIndexPath:(id)arg1 kind:(id)arg2 dataSourceIdentifier:(id)arg3;
 - (void)reattachTileControllers:(id)arg1 withContext:(id)arg2;
+- (void)registerPostLayoutBlock:(CDUnknownBlockType)arg1 forIdentifier:(id)arg2;
 - (void)registerTileControllerClass:(Class)arg1 forReuseIdentifier:(id)arg2;
 - (void)reloadItemAtIndexPath:(id)arg1 dataSource:(id)arg2;
 - (void)setBounds:(struct CGRect)arg1;

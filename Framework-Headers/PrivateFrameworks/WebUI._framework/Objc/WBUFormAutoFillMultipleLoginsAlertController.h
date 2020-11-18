@@ -6,11 +6,20 @@
 
 #import <UIKit/UIAlertController.h>
 
+@class UIAlertAction;
+
 @interface WBUFormAutoFillMultipleLoginsAlertController : UIAlertController
 {
+    UIAlertAction *_cancelAction;
+    id _appDidEnterBackgroundObserver;
+    BOOL _cancelsWhenAppEntersBackground;
 }
 
+@property (nonatomic) BOOL cancelsWhenAppEntersBackground; // @synthesize cancelsWhenAppEntersBackground=_cancelsWhenAppEntersBackground;
+
 + (id)alertControllerWithMatches:(id)arg1 currentUser:(id)arg2 currentPassword:(id)arg3 lastGeneratedPassword:(id)arg4 formURL:(id)arg5 preferredStyle:(long long)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void).cxx_destruct;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

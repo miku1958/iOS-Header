@@ -8,12 +8,12 @@
 
 #import <CameraUI/CAMExpandableMenuButtonDelegate-Protocol.h>
 
-@class CAMElapsedTimeView, CAMExpandableMenuButton, CAMFilterButton, CAMFlashButton, CAMFlipButton, CAMFramerateIndicatorView, CAMHDRButton, CAMImageWell, CAMModeDial, CAMTimerButton, CUShutterButton;
-@protocol CAMControlVisibilityDelegate;
+@class CAMElapsedTimeView, CAMExpandableMenuButton, CAMFilterButton, CAMFlashButton, CAMFlipButton, CAMFramerateIndicatorView, CAMHDRButton, CAMImageWell, CAMIrisButton, CAMModeDial, CAMTimerButton, CUShutterButton;
+@protocol CAMControlVisibilityUpdateDelegate;
 
 @interface CAMBottomBar : UIView <CAMExpandableMenuButtonDelegate>
 {
-    id<CAMControlVisibilityDelegate> _visibilityDelegate;
+    id<CAMControlVisibilityUpdateDelegate> _visibilityUpdateDelegate;
     long long _backgroundStyle;
     UIView *_backgroundView;
     CUShutterButton *_shutterButton;
@@ -27,6 +27,7 @@
     CAMElapsedTimeView *_elapsedTimeView;
     CAMHDRButton *_HDRButton;
     CAMTimerButton *_timerButton;
+    CAMIrisButton *_irisButton;
     CAMExpandableMenuButton *__expandedMenuButton;
 }
 
@@ -40,11 +41,12 @@
 @property (strong, nonatomic) CAMFlipButton *flipButton; // @synthesize flipButton=_flipButton;
 @property (strong, nonatomic) CAMFramerateIndicatorView *framerateIndicatorView; // @synthesize framerateIndicatorView=_framerateIndicatorView;
 @property (strong, nonatomic) CAMImageWell *imageWell; // @synthesize imageWell=_imageWell;
+@property (strong, nonatomic) CAMIrisButton *irisButton; // @synthesize irisButton=_irisButton;
 @property (strong, nonatomic) CAMModeDial *modeDial; // @synthesize modeDial=_modeDial;
 @property (strong, nonatomic) CUShutterButton *shutterButton; // @synthesize shutterButton=_shutterButton;
 @property (strong, nonatomic) CUShutterButton *stillDuringVideoButton; // @synthesize stillDuringVideoButton=_stillDuringVideoButton;
 @property (strong, nonatomic) CAMTimerButton *timerButton; // @synthesize timerButton=_timerButton;
-@property (weak, nonatomic) id<CAMControlVisibilityDelegate> visibilityDelegate; // @synthesize visibilityDelegate=_visibilityDelegate;
+@property (weak, nonatomic) id<CAMControlVisibilityUpdateDelegate> visibilityUpdateDelegate; // @synthesize visibilityUpdateDelegate=_visibilityUpdateDelegate;
 
 + (BOOL)wantsVerticalBarForTraitCollection:(id)arg1;
 - (void).cxx_destruct;
@@ -55,6 +57,7 @@
 - (void)_layoutFlipButtonForTraitCollection:(id)arg1;
 - (void)_layoutFramerateIndicatorForTraitCollection:(id)arg1;
 - (void)_layoutImageWellForTraitCollection:(id)arg1;
+- (void)_layoutIrisButtonForTraitCollection:(id)arg1;
 - (void)_layoutMenuButtons:(id)arg1 apply:(BOOL)arg2 withExpandedMenuButton:(id)arg3 collapsingMenuButton:(id)arg4 collapsingFrame:(struct CGRect *)arg5;
 - (void)_layoutModeDialForTraitCollection:(id)arg1;
 - (void)_layoutShutterButtonForTraitCollection:(id)arg1;
@@ -70,6 +73,10 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setBackgroundStyle:(long long)arg1 animated:(BOOL)arg2;
+- (BOOL)shouldHideElapsedTimeViewForMode:(long long)arg1 device:(long long)arg2;
+- (BOOL)shouldHideFlashButtonForMode:(long long)arg1 device:(long long)arg2;
+- (BOOL)shouldHideHDRButtonForMode:(long long)arg1 device:(long long)arg2;
+- (BOOL)shouldHideTimerButtonForMode:(long long)arg1 device:(long long)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

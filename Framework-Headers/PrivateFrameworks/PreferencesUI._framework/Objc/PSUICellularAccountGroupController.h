@@ -7,11 +7,10 @@
 #import <Foundation/NSObject.h>
 
 #import <PreferencesUI/PSSpecifierGroupController-Protocol.h>
-#import <PreferencesUI/PSUICellularAccountDetailDelegate-Protocol.h>
 
 @class NSString, PSListController, PSSpecifier;
 
-@interface PSUICellularAccountGroupController : NSObject <PSSpecifierGroupController, PSUICellularAccountDetailDelegate>
+@interface PSUICellularAccountGroupController : NSObject <PSSpecifierGroupController>
 {
     PSListController *_listController;
     PSSpecifier *_groupSpecifier;
@@ -24,12 +23,14 @@
 @property (weak, nonatomic) PSListController *listController; // @synthesize listController=_listController;
 @property (readonly) Class superclass;
 
++ (id)accountManageButtonForPlanItem:(id)arg1 target:(id)arg2;
++ (void)configurePlanSpecifiers:(id)arg1 planItem:(id)arg2 target:(id)arg3;
 + (BOOL)shouldShowAccountSpecificUsage;
++ (id)specifiersFromCellularPlanItem:(id)arg1 target:(id)arg2;
++ (id)usageSpecifiersFromCellularPlanItem:(id)arg1 target:(id)arg2;
 - (void).cxx_destruct;
 - (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2;
 - (id)lastUpdatedText;
-- (void)openDataActivationURLForSelectedAccount;
-- (void)openDataRoamingOptions;
 - (void)otherButtonPressed:(id)arg1;
 - (void)setupAccountPressed:(id)arg1;
 - (id)specifiers;

@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, PKImage;
+@class NSArray, NSString, PKImage, PKPassPersonalization;
 
 @interface PKPassContent : PKContent <NSSecureCoding>
 {
@@ -17,12 +17,14 @@
     NSString *_logoText;
     NSArray *_frontFieldBuckets;
     NSArray *_backFieldBuckets;
+    PKPassPersonalization *_personalization;
 }
 
 @property (copy, nonatomic) NSArray *backFieldBuckets; // @synthesize backFieldBuckets=_backFieldBuckets;
 @property (strong, nonatomic) PKImage *footerImage; // @synthesize footerImage=_footerImage;
 @property (copy, nonatomic) NSArray *frontFieldBuckets; // @synthesize frontFieldBuckets=_frontFieldBuckets;
 @property (copy, nonatomic) NSString *logoText; // @synthesize logoText=_logoText;
+@property (copy, nonatomic) PKPassPersonalization *personalization; // @synthesize personalization=_personalization;
 @property (nonatomic) long long transitType; // @synthesize transitType=_transitType;
 
 + (BOOL)supportsSecureCoding;

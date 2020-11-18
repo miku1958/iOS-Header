@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreHAP/NSCopying-Protocol.h>
+
 @class HAPMetadataConstraints, NSString;
 
-@interface HAPCharacteristicMetadata : NSObject
+@interface HAPCharacteristicMetadata : NSObject <NSCopying>
 {
     HAPMetadataConstraints *_constraints;
     NSString *_manufacturerDescription;
@@ -23,6 +25,7 @@
 
 - (void).cxx_destruct;
 - (id)_generateValidConstraints:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)initWithConstraints:(id)arg1 description:(id)arg2 format:(id)arg3 units:(id)arg4;
 - (BOOL)isEqualToCharacteristicMetadata:(id)arg1;

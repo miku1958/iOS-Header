@@ -32,6 +32,7 @@
 @property (nonatomic, getter=isPremiumPlacement) BOOL premiumPlacement;
 @property (readonly, nonatomic, getter=isPreview) BOOL preview;
 @property (nonatomic, getter=isPreviewOnly) BOOL previewOnly;
+@property (nonatomic) BOOL requiresSubscription;
 @property (strong, nonatomic) NSArray *seedTracks;
 @property (copy, nonatomic) NSString *shareToken;
 @property (nonatomic, getter=isShared) BOOL shared;

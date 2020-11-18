@@ -28,6 +28,7 @@
 - (void)_handleExternalApplicationChange;
 - (void)_handleFaceTimeConferenceStateChanged;
 - (BOOL)_isInConference;
+- (BOOL)_isPodcastsInstalled;
 - (BOOL)_isSignedInToStore;
 - (BOOL)_isiBooksInstalled;
 - (BOOL)_isiTunesUInstalled;

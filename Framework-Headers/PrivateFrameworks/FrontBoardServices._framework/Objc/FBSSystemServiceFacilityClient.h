@@ -17,7 +17,6 @@
     NSString *_identifier;
     NSObject<OS_dispatch_queue> *_queue;
     FBSSystemServiceClient *_client;
-    BOOL _connectionDenied;
 }
 
 @property (readonly, strong, nonatomic) NSObject<OS_dispatch_queue> *calloutQueue; // @synthesize calloutQueue=_queue;
@@ -28,11 +27,13 @@
 @property (readonly) Class superclass;
 
 - (void)client:(id)arg1 configureConnectMessage:(id)arg2;
-- (void)client:(id)arg1 didConnectWithSuccess:(BOOL)arg2;
+- (void)client:(id)arg1 handleError:(id)arg2;
 - (void)client:(id)arg1 handleMessage:(id)arg2 withType:(long long)arg3;
 - (void)configureConnectMessage:(id)arg1;
 - (void)dealloc;
+- (void)handleError:(id)arg1;
 - (void)handleMessage:(id)arg1 withType:(long long)arg2;
+- (id)init;
 - (id)initWithIdentifier:(id)arg1 calloutQueue:(id)arg2;
 - (void)invalidate;
 - (void)sendMessage:(id)arg1 withType:(long long)arg2;

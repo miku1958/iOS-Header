@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_updateCameraFromGlobe;
 - (void)_updateViewTransform;
 - (void)_updateViewport;
 - (void)cancelTileRequests;

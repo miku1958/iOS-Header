@@ -13,6 +13,7 @@
 + (long long)category;
 + (void)didReceiveKeysAndValuesWithHealthDaemon:(id)arg1;
 + (int)nanoSyncObjectType;
++ (unsigned long long)supportedNanoSyncDirectionsForProtocolVersion:(int)arg1;
 + (id)syncEntityDependencies;
 + (long long)syncEntityType;
 

@@ -4,3 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#pragma mark Blocks
+
+typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
+

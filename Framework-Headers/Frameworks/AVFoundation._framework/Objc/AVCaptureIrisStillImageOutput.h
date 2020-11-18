@@ -12,6 +12,7 @@
 {
     AVWeakReference *_weakReference;
     long long _lastSettingsUniqueID;
+    BOOL _irisSupported;
     CDStruct_1b6d18a9 _movieDuration;
     CDStruct_1b6d18a9 _movieVideoFrameDuration;
     BOOL _irisMovieCaptureEnabled;
@@ -55,6 +56,7 @@
 - (id)_irisRequestForUniqueID:(long long)arg1;
 - (id)_sanitizedSettingsForSettings:(id)arg1;
 - (void)_updateIrisMovieDimensionsForSourceDevice:(id)arg1;
+- (void)_updateIrisSupportedForSourceDevice:(id)arg1;
 - (void)_updateOfflineVISSupportedForSourceDevice:(id)arg1;
 - (void)_updateSISSupportedForSourceDevice:(id)arg1;
 - (id)addConnection:(id)arg1 error:(id *)arg2;

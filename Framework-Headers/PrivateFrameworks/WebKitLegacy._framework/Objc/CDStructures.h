@@ -2165,6 +2165,7 @@ struct ViewportArguments {
     float _field11;
     float _field12;
     float _field13;
+    BOOL _field14;
 };
 
 struct VisiblePosition {

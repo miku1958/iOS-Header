@@ -19,7 +19,7 @@
 
 @property (nonatomic) BOOL accelerometerEventsEnabled;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<SBSAccelerometerDelegate> delegate;
+@property (weak, nonatomic) id<SBSAccelerometerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL orientationEventsEnabled;
@@ -29,6 +29,7 @@
 @property (nonatomic) float yThreshold;
 @property (nonatomic) float zThreshold;
 
+- (void).cxx_destruct;
 - (void)accelerometer:(id)arg1 didAccelerateWithTimeStamp:(double)arg2 x:(float)arg3 y:(float)arg4 z:(float)arg5 eventType:(int)arg6;
 - (void)accelerometer:(id)arg1 didChangeDeviceOrientation:(int)arg2;
 - (int)currentDeviceOrientation;

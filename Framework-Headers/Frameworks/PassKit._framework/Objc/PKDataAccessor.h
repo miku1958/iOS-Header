@@ -23,6 +23,7 @@
 
 - (id)content;
 - (void)contentWithCompletion:(CDUnknownBlockType)arg1;
+- (id)dataForBundleResourceNamed:(id)arg1 withExtension:(id)arg2;
 - (id)dictionary;
 - (void)dictionaryWithCompletion:(CDUnknownBlockType)arg1;
 - (id)displayProfileOfType:(long long)arg1;

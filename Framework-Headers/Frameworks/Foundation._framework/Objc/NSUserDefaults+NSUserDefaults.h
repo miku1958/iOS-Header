@@ -7,6 +7,7 @@
 #import <Foundation/NSUserDefaults.h>
 
 @interface NSUserDefaults (NSUserDefaults)
++ (id)_copyStandardUserDefaultsIfPresent;
 + (void)resetStandardUserDefaults;
 + (void)setStandardUserDefaults:(id)arg1;
 + (id)standardUserDefaults;
@@ -20,6 +21,7 @@
 - (id)dictionaryForKey:(id)arg1;
 - (id)dictionaryRepresentation;
 - (double)doubleForKey:(id)arg1;
+- (void)finalize;
 - (float)floatForKey:(id)arg1;
 - (id)init;
 - (id)initWithSuiteName:(id)arg1;
@@ -47,6 +49,7 @@
 - (void)setLong:(long long)arg1 forKey:(id)arg2;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (void)setObject:(id)arg1 forKey:(id)arg2 inDomain:(id)arg3;
+- (void)setObservationInfo:(void *)arg1;
 - (void)setPersistentDomain:(id)arg1 forName:(id)arg2;
 - (void)setSearchList:(id)arg1;
 - (void)setURL:(id)arg1 forKey:(id)arg2;

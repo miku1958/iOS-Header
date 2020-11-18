@@ -15,6 +15,7 @@
 
 @property (copy) NSString *TVMode;
 @property (copy) NSString *TVSignalType;
+@property BOOL allowsDisplayCompositing;
 @property BOOL allowsVirtualModes;
 @property (getter=isBlanked) BOOL blanked;
 @property (readonly) struct CGRect bounds;
@@ -23,6 +24,7 @@
 @property (copy, nonatomic) NSString *colorMode;
 @property float contrast;
 @property (readonly) NSString *deviceName;
+@property BOOL disablesUpdates;
 @property (readonly) unsigned int displayId;
 @property (getter=isGrayscale) BOOL grayscale;
 @property float idealRefreshRate;
@@ -53,9 +55,11 @@
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toContextId:(unsigned int)arg2;
 - (void)dealloc;
 - (id)description;
+- (void)freeze;
 - (void)invalidate;
 - (void)removeAllClones;
 - (void)removeClone:(id)arg1;
+- (void)setColorMatrix:(float *)arg1 scale:(float)arg2 rampDuration:(double)arg3;
 - (unsigned int)taskPortOfContextId:(unsigned int)arg1;
 - (void)update;
 - (void)willUnblank;

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)callCompletion;
+- (void)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (int)drain:(struct __CFWriteStream *)arg1;
 - (id)initWithData:(id)arg1 completion:(CDUnknownBlockType)arg2;

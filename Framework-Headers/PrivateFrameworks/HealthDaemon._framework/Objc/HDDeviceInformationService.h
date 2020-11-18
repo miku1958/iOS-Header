@@ -6,13 +6,13 @@
 
 #import <HealthDaemon/HDHealthService.h>
 
-@class HDHealthDevicePropertyManager, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString;
+@class HDHealthServicePropertyManager, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDDeviceInformationService : HDHealthService
 {
     BOOL _deviceInformationHasBeenLoaded;
-    HDHealthDevicePropertyManager *_propertyManager;
+    HDHealthServicePropertyManager *_propertyManager;
     NSMutableDictionary *_characteristics;
     NSMutableDictionary *_propertyValues;
     NSMutableSet *_propertiesLeftToFetch;
@@ -28,7 +28,7 @@
 @property (readonly) NSString *modelNumber;
 @property (strong, nonatomic) NSMutableArray *pendingDeviceInformationLoadedBlocks; // @synthesize pendingDeviceInformationLoadedBlocks=_pendingDeviceInformationLoadedBlocks;
 @property (strong, nonatomic) NSMutableSet *propertiesLeftToFetch; // @synthesize propertiesLeftToFetch=_propertiesLeftToFetch;
-@property (weak, nonatomic) HDHealthDevicePropertyManager *propertyManager; // @synthesize propertyManager=_propertyManager;
+@property (weak, nonatomic) HDHealthServicePropertyManager *propertyManager; // @synthesize propertyManager=_propertyManager;
 @property (strong, nonatomic) NSMutableDictionary *propertyValues; // @synthesize propertyValues=_propertyValues;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) NSString *serialNumber;

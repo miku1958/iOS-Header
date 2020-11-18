@@ -9,7 +9,7 @@
 #import <CameraUI/CAMCaptureRequestIntervalometerDelegate-Protocol.h>
 #import <CameraUI/CAMCaptureService-Protocol.h>
 
-@class AVCaptureVideoPreviewLayer, CAMBurstController, CAMCaptureEngine, CAMCaptureRequest, CAMCaptureRequestIntervalometer, CAMKeyValueCoalescer, CAMLocationController, CAMMotionController, CAMPanoramaCaptureRequest, CAMPanoramaPreviewView, CAMPowerController, CAMProtectionController, CAMRemoteShutterController, CAMThumbnailGenerator, CAMVideoCaptureRequest, NSCountedSet, NSMutableSet, NSString;
+@class AVCaptureVideoPreviewLayer, CAMBurstController, CAMCaptureEngine, CAMCaptureRequestIntervalometer, CAMKeyValueCoalescer, CAMLocationController, CAMMotionController, CAMPanoramaCaptureRequest, CAMPanoramaPreviewView, CAMPowerController, CAMProtectionController, CAMRemoteShutterController, CAMThumbnailGenerator, CAMVideoCaptureRequest, NSCountedSet, NSMutableSet, NSString;
 @protocol CAMAvailabilityDelegate, CAMBurstDelegate, CAMCaptureInterruptionDelegate, CAMCaptureRecoveryDelegate, CAMCaptureRunningDelegate, CAMConfigurationDelegate, CAMExposureDelegate, CAMFacesDelegate, CAMFocusDelegate, CAMPanoramaConfigurationDelegate, CAMStillImageCapturingVideoDelegate, CAMSuggestionDelegate, CAMZoomDelegate, OS_dispatch_queue;
 
 @interface CUCaptureController : NSObject <CAMCaptureService, CAMCaptureRequestIntervalometerDelegate>
@@ -49,7 +49,6 @@
     CAMVideoCaptureRequest *__pendingVideoCaptureRequest;
     CAMPanoramaCaptureRequest *__capturingPanoramaRequest;
     CAMCaptureRequestIntervalometer *_currentBurstIntervalometer;
-    CAMCaptureRequest *__pendingBurstCaptureRequest;
     CAMKeyValueCoalescer *__focusCoalescer;
     CAMKeyValueCoalescer *__exposureCoalescer;
     NSCountedSet *__numberOfInflightRequestsByType;
@@ -80,7 +79,6 @@
 @property (readonly, nonatomic) CAMMotionController *_motionController; // @synthesize _motionController=__motionController;
 @property (nonatomic, setter=_setNeedsInitialPairedVideoUpdate:) BOOL _needsInitialPairedVideoUpdate; // @synthesize _needsInitialPairedVideoUpdate=__needsInitialPairedVideoUpdate;
 @property (readonly, nonatomic) NSCountedSet *_numberOfInflightRequestsByType; // @synthesize _numberOfInflightRequestsByType=__numberOfInflightRequestsByType;
-@property (strong, nonatomic, setter=_setPendingBurstCaptureRequest:) CAMCaptureRequest *_pendingBurstCaptureRequest; // @synthesize _pendingBurstCaptureRequest=__pendingBurstCaptureRequest;
 @property (strong, nonatomic, setter=_setPendingVideoCaptureRequest:) CAMVideoCaptureRequest *_pendingVideoCaptureRequest; // @synthesize _pendingVideoCaptureRequest=__pendingVideoCaptureRequest;
 @property (readonly, nonatomic) CAMPowerController *_powerController; // @synthesize _powerController=__powerController;
 @property (readonly, nonatomic) CAMProtectionController *_protectionController; // @synthesize _protectionController=__protectionController;
@@ -147,6 +145,7 @@
 - (id)_identifierForPendingVideoForStillImageRequest:(id)arg1;
 - (BOOL)_kvoDidEndForChange:(id)arg1;
 - (BOOL)_kvoDidStartForChange:(id)arg1;
+- (unsigned long long)_maximumNumberOfStillImageRequestsDuringBurst;
 - (void)_notifyDelegateOfCaptureAvailabilityChanged:(BOOL)arg1;
 - (void)_notifyDelegateOfConfigurationAvailabilityChanged:(BOOL)arg1;
 - (void)_playBongIfNecessary;
@@ -155,7 +154,6 @@
 - (id)_resetFocus:(BOOL)arg1 resetExposure:(BOOL)arg2 resetExposureTargetBias:(BOOL)arg3;
 - (void)_resetFocusAndExposureAfterCapture;
 - (void)_resetFocusAndExposureIfAppropriateForReason:(long long)arg1;
-- (void)_resetMaximumNumberOfStillImageRequests;
 - (id)_sanitizeLegacyStillImageRequest:(id)arg1;
 - (id)_sanitizePanoramaRequest:(id)arg1;
 - (id)_sanitizeStillImageRequest:(id)arg1;
@@ -191,7 +189,9 @@
 - (void)_updateAvailabilityWhenPreparingToStopCapturingForRequest:(id)arg1;
 - (id)_updateFocusAndExposureForStartBurstCapture;
 - (id)_updateFocusAndExposureForStartPanorama;
-- (void)_updateMaximumNumberOfStillImageRequestsAfterRequestWithFlashMode:(long long)arg1 HDRMode:(long long)arg2;
+- (void)_updateMaximumNumberOfStillImageRequestsAfterBurst;
+- (void)_updateMaximumNumberOfStillImageRequestsAfterCapturedRequestIfNecessary:(id)arg1;
+- (void)_updateMaximumNumberOfStillImageRequestsAfterEnqueuingRequestWithFlashMode:(long long)arg1 HDRMode:(long long)arg2 burstIdentifier:(id)arg3;
 - (BOOL)_useSmoothFocus;
 - (id)_zoomKeyPaths;
 - (void)_zoomResultChangedForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3;

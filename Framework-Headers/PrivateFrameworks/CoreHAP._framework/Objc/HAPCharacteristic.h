@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HAPCharacteristicMetadata, HAPService, NSNumber, NSString;
+@class CBCharacteristic, HAPCharacteristicMetadata, HAPService, NSNumber, NSString;
 
 @interface HAPCharacteristic : NSObject
 {
@@ -19,11 +19,14 @@
     HAPCharacteristicMetadata *_metadata;
     id _value;
     unsigned long long _valueUpdateTime;
+    HAPCharacteristicMetadata *_accessoryMetadata;
 }
 
+@property (readonly, nonatomic) HAPCharacteristicMetadata *accessoryMetadata; // @synthesize accessoryMetadata=_accessoryMetadata;
+@property (strong, nonatomic, setter=setCBCharacteristic:) CBCharacteristic *cbCharacteristic;
 @property (nonatomic) BOOL eventNotificationsEnabled; // @synthesize eventNotificationsEnabled=_eventNotificationsEnabled;
 @property (copy, nonatomic) NSNumber *instanceID; // @synthesize instanceID=_instanceID;
-@property (strong, nonatomic) HAPCharacteristicMetadata *metadata; // @synthesize metadata=_metadata;
+@property (copy, nonatomic) HAPCharacteristicMetadata *metadata; // @synthesize metadata=_metadata;
 @property (nonatomic) unsigned long long properties; // @synthesize properties=_properties;
 @property (weak, nonatomic) HAPService *service; // @synthesize service=_service;
 @property (nonatomic) BOOL shouldValidateValueAfterReading; // @synthesize shouldValidateValueAfterReading=_shouldValidateValueAfterReading;

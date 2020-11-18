@@ -9,6 +9,7 @@
 #import <FitnessUI/UIGestureRecognizerDelegate-Protocol.h>
 
 @class EAGLContext, FIUIBadge, GLKTextureInfo, NSAttributedString, NSDictionary, NSString, UIImage, UIPanGestureRecognizer, UITapGestureRecognizer;
+@protocol FIUIBadgeViewControllerDelegate;
 
 @interface FIUIBadgeViewController : FIUIGLViewController <UIGestureRecognizerDelegate>
 {
@@ -45,18 +46,22 @@
     union _GLKVector3 _modelEnamelColor;
     BOOL _modelUsesFullColorEnamel;
     BOOL _verticalPanningDisabled;
+    CDUnknownBlockType _shortenedBadgeBacksideStringProvider;
+    id<FIUIBadgeViewControllerDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<FIUIBadgeViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) CDUnknownBlockType shortenedBadgeBacksideStringProvider; // @synthesize shortenedBadgeBacksideStringProvider=_shortenedBadgeBacksideStringProvider;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL verticalPanningDisabled; // @synthesize verticalPanningDisabled=_verticalPanningDisabled;
 
 + (double)badgeAspectRatio;
 - (void).cxx_destruct;
 - (void)_applyImpulse:(double)arg1;
-- (id)_attributedStringForUserName:(id)arg1 achievement:(id)arg2 usingSmallVariant:(BOOL)arg3;
+- (id)_attributedStringForUserName:(id)arg1 achievement:(id)arg2 usingSmallVariant:(BOOL)arg3 smallDateVariant:(BOOL)arg4;
 - (union _GLKVector3)_colorVectorFromString:(id)arg1;
 - (void)_context_createBuffers;
 - (void)_context_destroyBuffers;

@@ -18,6 +18,7 @@
     NSObject<OS_dispatch_queue> *_saveQueue;
     NSMutableArray *_bookmarks;
     NSMutableDictionary *_bookmarksMap;
+    NSMutableArray *_bookmarksForDisplay;
     NSMutableArray *_pins;
     NSMutableDictionary *_pinsMap;
     NSMutableArray *_history;
@@ -29,10 +30,12 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)_bookmarkIsDisplayable:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addBookmark:(id)arg1;
 - (void)_addHistoryItem:(id)arg1;
 - (void)_addPin:(id)arg1;
+- (void)_findDisplayableBookmarks;
 - (void)_notifyObservers;
 - (void)_removeBookmark:(id)arg1;
 - (void)_removeHistoryItem:(id)arg1;
@@ -50,6 +53,7 @@
 - (id)bookmarks;
 - (void)completedPreparingSync;
 - (void)completedSync;
+- (id)displayableBookmarks;
 - (id)history;
 - (id)init;
 - (void)notifyObservers;

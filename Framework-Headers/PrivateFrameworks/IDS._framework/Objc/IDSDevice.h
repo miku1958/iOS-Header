@@ -17,8 +17,10 @@
 @property (readonly, strong, nonatomic) NSString *deviceColor;
 @property (readonly, strong, nonatomic) NSString *enclosureColor;
 @property (readonly, strong, nonatomic) NSArray *identities;
+@property (readonly, nonatomic) BOOL isActive;
 @property (readonly, nonatomic) BOOL isDefaultPairedDevice;
 @property (readonly, nonatomic) BOOL isHSATrusted;
+@property (readonly, nonatomic) BOOL isLocallyPaired;
 @property (readonly, strong, nonatomic) NSDate *lastActivityDate;
 @property (readonly, strong, nonatomic) NSArray *linkedUserURIs;
 @property (readonly, nonatomic) BOOL locallyPresent;
@@ -56,7 +58,6 @@
 - (id)description;
 - (void)establishStreamPairWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 onQueue:(id)arg3;
 - (id)initWithDictionary:(id)arg1;
-- (BOOL)isDefaultLocalDevice;
 - (int)openSocketForDomain:(id)arg1;
 - (int)openSocketForDomain:(id)arg1 transportType:(long long)arg2;
 - (void)openSocketWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 onQueue:(id)arg3;

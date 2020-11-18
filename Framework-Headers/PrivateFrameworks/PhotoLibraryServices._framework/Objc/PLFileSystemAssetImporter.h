@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSMutableDictionary *existingUUIDsByPath; // @synthesize existingUUIDsByPath=_existingUUIDsByPath;
 @property (nonatomic) unsigned long long thumbnailBatchFetchSize; // @synthesize thumbnailBatchFetchSize=_thumbnailBatchFetchSize;
 
++ (id)_mediaDirectoryPath;
 - (id)_addAssetWithURL:(id)arg1 existingOID:(id)arg2;
 - (BOOL)_setupPhotoAsset:(id)arg1 withURL:(id)arg2;
 - (BOOL)_setupPhotoAssetAsPhotoIrisIfNeeded:(id)arg1;

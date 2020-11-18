@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/HDNanoSyncDescription-Protocol.h>
 
-@class HDIDSMessageCenter, NSData, NSDictionary, NSString;
+@class HDIDSMessageCenter, IDSDevice, NSData, NSDictionary, NSString;
 
 @interface HDIDSOutgoingRequest : NSObject <HDNanoSyncDescription>
 {
@@ -16,6 +16,7 @@
     BOOL _queueOnly1;
     BOOL _forceLocalDelivery;
     unsigned short _messageID;
+    IDSDevice *_toDevice;
     NSData *_data;
     NSString *_idsIdentifier;
     unsigned long long _priority;
@@ -34,7 +35,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
 @property (weak, nonatomic) HDIDSMessageCenter *messageCenter; // @synthesize messageCenter=_messageCenter;
-@property (nonatomic) unsigned short messageID; // @synthesize messageID=_messageID;
+@property (readonly, nonatomic) unsigned short messageID; // @synthesize messageID=_messageID;
 @property (strong, nonatomic) id pbRequest; // @synthesize pbRequest=_pbRequest;
 @property (strong, nonatomic) NSDictionary *persistentUserInfo; // @synthesize persistentUserInfo=_persistentUserInfo;
 @property (nonatomic) unsigned long long priority; // @synthesize priority=_priority;
@@ -42,10 +43,13 @@
 @property (nonatomic) double responseTimeout; // @synthesize responseTimeout=_responseTimeout;
 @property (nonatomic) double sendTimeout; // @synthesize sendTimeout=_sendTimeout;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) IDSDevice *toDevice; // @synthesize toDevice=_toDevice;
 
-+ (id)activationRequestWithRestore:(id)arg1 forStore:(id)arg2;
-+ (id)changeRequestWithChanges:(id)arg1 status:(id)arg2 forStore:(id)arg3;
-+ (id)requestWithMessageID:(unsigned short)arg1;
++ (id)_requestWithMessageID:(unsigned short)arg1 message:(id)arg2 syncStore:(id)arg3;
++ (id)activationRequestWithRestore:(id)arg1 syncStore:(id)arg2;
++ (id)changeRequestWithChangeSet:(id)arg1 status:(id)arg2 syncStore:(id)arg3;
++ (id)requestWithMessageID:(unsigned short)arg1 device:(id)arg2;
++ (id)speculativeChangeRequestWithChangeSet:(id)arg1 syncStore:(id)arg2;
 - (void).cxx_destruct;
 - (id)init;
 - (id)nanoSyncDescription;

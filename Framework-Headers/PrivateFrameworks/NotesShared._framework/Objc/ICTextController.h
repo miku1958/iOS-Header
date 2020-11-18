@@ -30,6 +30,7 @@
 + (double)indentForStyle:(id)arg1 range:(struct _NSRange)arg2 attributedString:(id)arg3 textView:(struct UITextView *)arg4;
 - (void).cxx_destruct;
 - (void)addExtraLinesIfNeededToTextStorage:(id)arg1 editedRange:(struct _NSRange)arg2;
+- (BOOL)anyAttachmentInRange:(struct _NSRange)arg1 textStorage:(id)arg2;
 - (BOOL)canChangeStyleForSelectedRanges:(id)arg1 inTextStorage:(id)arg2;
 - (BOOL)canIndentTextView:(struct UITextView *)arg1 byDelta:(long long)arg2;
 - (void)cleanupTextStorage:(id)arg1 afterProcessingEditing:(unsigned long long)arg2 range:(struct _NSRange)arg3 changeInLength:(long long)arg4;
@@ -42,6 +43,7 @@
 - (id)indentParagraphStyle:(id)arg1 byAmount:(long long)arg2;
 - (void)indentRange:(struct _NSRange)arg1 byAmount:(long long)arg2 inTextStorage:(id)arg3 textView:(struct UITextView *)arg4;
 - (id)init;
+- (void)insertNewlineAtCharacterIndex:(unsigned long long)arg1 textStorage:(id)arg2;
 - (BOOL)insertNewlineInTextView:(struct UITextView *)arg1;
 - (BOOL)insertedSpaceInTextView:(struct UITextView *)arg1 replacementRange:(struct _NSRange)arg2;
 - (void)insertedText:(id)arg1 replacementRange:(struct _NSRange)arg2 inTextView:(struct UITextView *)arg3;

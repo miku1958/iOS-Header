@@ -6,16 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class AVPlayer, AVPlayerItem;
+#import <PhotosPlayer/ISWrappedAVPlayerDelegate-Protocol.h>
+
+@class AVPlayerItem, ISWrappedAVPlayer, NSString;
 @protocol ISAVPlayerControllerDelegate;
 
-@interface ISAVPlayerController : NSObject
+@interface ISAVPlayerController : NSObject <ISWrappedAVPlayerDelegate>
 {
     struct {
         BOOL respondsToDidBeginPlaying;
         BOOL respondsToWillEndPlaying;
         BOOL respondsToDidEndPlaying;
         BOOL respondsToDidEndSeeking;
+        BOOL respondsToPlayerDidChangeToStatus;
     } _delegateFlags;
     CDStruct_1b6d18a9 _cachedDuration;
     AVPlayerItem *_cachedDurationPlayerItem;
@@ -29,7 +32,7 @@
     float _playVolume;
     float _playRate;
     float __hintPlayRate;
-    AVPlayer *_videoPlayer;
+    ISWrappedAVPlayer *_videoPlayer;
     long long _state;
     id<ISAVPlayerControllerDelegate> _delegate;
     double _prePhotoGapTime;
@@ -58,13 +61,17 @@
 @property (nonatomic, getter=_isSeekingVideo, setter=_setSeekingVideo:) BOOL _seekingVideo; // @synthesize _seekingVideo=__seekingVideo;
 @property (nonatomic, setter=_setShouldPlayAudio:) BOOL _shouldPlayAudio; // @synthesize _shouldPlayAudio=__shouldPlayAudio;
 @property (nonatomic, setter=_setShouldPreroll:) BOOL _shouldPreroll; // @synthesize _shouldPreroll=__shouldPreroll;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<ISAVPlayerControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isSeeking;
 @property (nonatomic) float playRate; // @synthesize playRate=_playRate;
 @property (nonatomic) float playVolume; // @synthesize playVolume=_playVolume;
 @property (nonatomic) double prePhotoGapTime; // @synthesize prePhotoGapTime=_prePhotoGapTime;
 @property (nonatomic) long long state; // @synthesize state=_state;
-@property (strong, nonatomic) AVPlayer *videoPlayer; // @synthesize videoPlayer=_videoPlayer;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) ISWrappedAVPlayer *videoPlayer; // @synthesize videoPlayer=_videoPlayer;
 
 - (void).cxx_destruct;
 - (CDStruct_1b6d18a9)_duration;
@@ -77,14 +84,15 @@
 - (void)_safelyUpdateRateForPlayers;
 - (void)_seekToDesiredTimeIfReady;
 - (void)_setState:(long long)arg1;
-- (void)_setVideoPlayer:(id)arg1;
 - (void)_startPlayingFromTime:(CDStruct_1b6d18a9)arg1 toTime:(CDStruct_1b6d18a9)arg2 withRate:(float)arg3 shouldPlayAudio:(BOOL)arg4;
 - (void)_updatePlayersIfNeeded;
 - (void)_videoPlayerDidBeginPlaybackWithObserver:(id)arg1;
+- (void)avPlayer:(id)arg1 didChangeToItem:(id)arg2;
+- (void)avPlayer:(id)arg1 didChangeToStatus:(long long)arg2;
+- (void)avPlayer:(id)arg1 item:(id)arg2 didChangeToStatus:(long long)arg3;
 - (void)dealloc;
 - (id)init;
 - (id)initWithVideoPlayer:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pause;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)playFromTime:(CDStruct_1b6d18a9)arg1 toTime:(CDStruct_1b6d18a9)arg2 withRate:(float)arg3 shouldPlayAudio:(BOOL)arg4;

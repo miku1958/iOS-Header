@@ -6,32 +6,32 @@
 
 #import <PassKit/PKPassFaceView.h>
 
-@class PKBarcodeStickerView, UILabel, WLEasyToHitCustomButton;
+@class PKBarcodeStickerView, PKLinkedAppIconView, UILabel, WLEasyToHitCustomButton;
 
 @interface PKPassFrontFaceView : PKPassFaceView
 {
     PKBarcodeStickerView *_barcodeView;
     WLEasyToHitCustomButton *_flipButton;
-    WLEasyToHitCustomButton *_shareButton;
     WLEasyToHitCustomButton *_barcodeButton;
     UILabel *_logoLabel;
-    BOOL _showsShare;
+    BOOL _showsLinkedApp;
     BOOL _showsInfo;
     BOOL _showsBarcodeButton;
     BOOL _showsBarcodeView;
+    PKLinkedAppIconView *_linkedApp;
 }
 
 @property (readonly, nonatomic) PKBarcodeStickerView *barcodeView;
+@property (readonly, nonatomic) PKLinkedAppIconView *linkedApp; // @synthesize linkedApp=_linkedApp;
 @property (nonatomic) BOOL showsBarcodeButton; // @synthesize showsBarcodeButton=_showsBarcodeButton;
 @property (nonatomic) BOOL showsBarcodeView; // @synthesize showsBarcodeView=_showsBarcodeView;
 @property (nonatomic) BOOL showsInfo; // @synthesize showsInfo=_showsInfo;
-@property (nonatomic) BOOL showsShare; // @synthesize showsShare=_showsShare;
+@property (nonatomic) BOOL showsLinkedApp; // @synthesize showsLinkedApp=_showsLinkedApp;
 
 - (void)_barcodeButtonPressed;
 - (void)_flipButtonPressed;
 - (void)_positionBarcodeView;
 - (id)_relevantBuckets;
-- (void)_shareButtonPressed;
 - (struct CGRect)barcodeFrame;
 - (struct CGSize)contentSize;
 - (void)createBodyContentViews;
@@ -42,7 +42,6 @@
 - (BOOL)isFrontFace;
 - (void)layoutSubviews;
 - (id)passFaceTemplate;
-- (void)prepareForFlip;
 - (void)setClipsContent:(BOOL)arg1;
 - (void)setShowsBarcodeButton:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setShowsBarcodeView:(BOOL)arg1 animated:(BOOL)arg2;

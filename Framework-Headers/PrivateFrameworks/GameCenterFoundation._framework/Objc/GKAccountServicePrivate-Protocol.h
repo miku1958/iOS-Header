@@ -14,6 +14,7 @@
 - (oneway void)authenticatePlayerWithUsername:(NSString *)arg1 password:(NSString *)arg2 altDSID:(NSString *)arg3 usingFastPath:(BOOL)arg4 handler:(void (^)(GKAuthenticateResponse *, NSError *))arg5;
 - (oneway void)authenticatePlayerWithUsername:(NSString *)arg1 password:(NSString *)arg2 handler:(void (^)(GKAuthenticateResponse *, NSError *))arg3;
 - (oneway void)authenticationCancelled;
+- (oneway void)getAccountAuthTokenWithHandler:(void (^)(NSString *, NSError *))arg1;
 - (oneway void)setLoginStatus:(unsigned long long)arg1 handler:(void (^)(NSError *))arg2;
 - (oneway void)setupAccountForParameters:(NSDictionary *)arg1 handler:(void (^)(NSError *))arg2;
 - (oneway void)signOutPlayerWithHandler:(void (^)(NSError *))arg1;

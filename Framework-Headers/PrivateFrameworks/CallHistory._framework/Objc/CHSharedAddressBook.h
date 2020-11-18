@@ -19,6 +19,7 @@
 
 + (id)get;
 - (void).cxx_destruct;
+- (void)cleanUpAddressBookCache_sync;
 - (void)createAddressBook;
 - (void)dealloc;
 - (id)description;

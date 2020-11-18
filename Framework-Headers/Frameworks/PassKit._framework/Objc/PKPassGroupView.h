@@ -11,7 +11,7 @@
 #import <PassKit/UIScrollViewDelegate-Protocol.h>
 #import <PassKit/WLCardViewDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, PKGroup, PKPassView, PKReusablePassViewQueue, UIInterpolatingMotionEffect, UILongPressGestureRecognizer, UIPageControl, UIPanGestureRecognizer, UIScrollView;
+@class NSMutableDictionary, NSString, PKGroup, PKPassView, PKReusablePassViewQueue, UILongPressGestureRecognizer, UIMotionEffectGroup, UIPageControl, UIPanGestureRecognizer, UIScrollView;
 @protocol PKPassGroupViewDelegate;
 
 @interface PKPassGroupView : UIView <WLCardViewDelegate, PKGroupDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate>
@@ -24,12 +24,12 @@
     unsigned long long _displayIndex;
     UIView *_dimmerView;
     double _dimmerValue;
-    BOOL _showPageControl;
     UIPanGestureRecognizer *_panGestureRecognizer;
     UILongPressGestureRecognizer *_longPressGestureRecognizer;
     BOOL _canPan;
-    UIInterpolatingMotionEffect *_horizontalMotionEffect;
-    UIInterpolatingMotionEffect *_verticalMotionEffect;
+    UIMotionEffectGroup *_motionEffectGroup;
+    BOOL _isAuthenticating;
+    BOOL _pageControlHidden;
     PKGroup *_group;
     PKPassView *_frontmostPassView;
     double _verticalMotionRelativeValue;
@@ -47,6 +47,7 @@
 @property (nonatomic) double horizontalMotionRelativeValue; // @synthesize horizontalMotionRelativeValue=_horizontalMotionRelativeValue;
 @property (readonly, nonatomic) struct UIOffset offsetForFrontmostPassWhileStacked;
 @property (readonly, nonatomic) UIPageControl *pageControl;
+@property (readonly, nonatomic) BOOL pageControlHidden; // @synthesize pageControlHidden=_pageControlHidden;
 @property (nonatomic) PKReusablePassViewQueue *passViewQueue; // @synthesize passViewQueue=_passViewQueue;
 @property (nonatomic) long long presentationState; // @synthesize presentationState=_presentationState;
 @property (readonly) Class superclass;
@@ -95,6 +96,8 @@
 - (void)passView:(id)arg1 flipButtonPressedForPass:(id)arg2;
 - (void)passView:(id)arg1 resizeButtonPressedForPass:(id)arg2;
 - (BOOL)passViewBackGrowsCentered:(id)arg1;
+- (void)passViewDidBeginAuthenticating:(id)arg1;
+- (void)passViewDidEndAuthenticating:(id)arg1;
 - (void)passViewDidFlip:(id)arg1 animated:(BOOL)arg2;
 - (void)passViewDidResize:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)passViewShouldFlip:(id)arg1;
@@ -111,11 +114,13 @@
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)setDimmer:(double)arg1 animated:(BOOL)arg2;
 - (void)setFrontmostPassViewFromPassIndex:(long long)arg1;
-- (void)setHorizontalMotionEnabled:(BOOL)arg1;
+- (void)setPageControlHidden:(BOOL)arg1;
+- (void)setPageControlHidden:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setPageControlHidden:(BOOL)arg1 duration:(double)arg2 delay:(double)arg3;
+- (void)setPageControlHidden:(BOOL)arg1 scrollEnabled:(BOOL)arg2 duration:(double)arg3 delay:(double)arg4;
+- (void)setPileMotionEffectsEnabled:(BOOL)arg1;
 - (void)setPresentationState:(long long)arg1 animated:(BOOL)arg2;
 - (void)setPresentationState:(long long)arg1 animated:(BOOL)arg2 resizePasses:(BOOL)arg3;
-- (void)setShowPageControlWithAnimation:(BOOL)arg1 duration:(double)arg2 delay:(double)arg3;
-- (void)setVerticalMotionEnabled:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)sizeToFit;
 

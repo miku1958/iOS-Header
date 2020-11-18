@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface SBUIPasscodeLockViewFactory : NSObject
 {
 }
 
++ (void)_commonInitPasscodeView:(id)arg1 forStyle:(int)arg2;
 + (id)_passcodeLockViewForStyle:(int)arg1 withLightStyle:(BOOL)arg2;
 + (void)_warmupKBDIfNecessary;
++ (id)installTonightPasscodeLockViewForUsersCurrentStyle;
 + (id)lightPasscodeLockViewForStyle:(int)arg1;
 + (id)lightPasscodeLockViewForUsersCurrentStyle;
 + (id)passcodeLockViewForStyle:(int)arg1;

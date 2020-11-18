@@ -25,6 +25,7 @@
 + (id)brc_errorOperationCancelled;
 + (id)brc_errorPathOutsideAnyCloudDocsContainerAtURL:(id)arg1;
 + (id)brc_errorPermissionErrorAtURL:(id)arg1;
++ (id)brc_errorUnknownKey:(id)arg1;
 + (id)errorFromErrno;
 + (id)errorWithDomain:(id)arg1 code:(long long)arg2 description:(id)arg3;
 + (id)errorWithPOSIXCode:(int)arg1;

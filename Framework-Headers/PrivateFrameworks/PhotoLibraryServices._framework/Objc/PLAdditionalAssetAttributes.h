@@ -6,7 +6,7 @@
 
 #import <PhotoLibraryServices/PLManagedObject.h>
 
-@class CLLocation, NSData, NSDate, NSNumber, NSSet, NSString, PLAssetDescription, PLCloudMaster, PLManagedAsset, PLUnmanagedAdjustment;
+@class CLLocation, NSData, NSDate, NSNumber, NSSet, NSString, PLAssetDescription, PLManagedAsset, PLUnmanagedAdjustment;
 
 @interface PLAdditionalAssetAttributes : PLManagedObject
 {
@@ -20,8 +20,6 @@
 @property (nonatomic) short cameraCaptureDevice; // @dynamic cameraCaptureDevice;
 @property (nonatomic) int cloudAvalanchePickType; // @dynamic cloudAvalanchePickType;
 @property (nonatomic) short cloudKindSubtype; // @dynamic cloudKindSubtype;
-@property (strong, nonatomic) PLCloudMaster *cloudMaster; // @dynamic cloudMaster;
-@property (strong, nonatomic) NSSet *cloudResources; // @dynamic cloudResources;
 @property (strong, nonatomic) NSString *creatorBundleID; // @dynamic creatorBundleID;
 @property (strong, nonatomic) NSString *customCollectionName; // @dynamic customCollectionName;
 @property (strong, nonatomic) NSString *customCollectionUUID; // @dynamic customCollectionUUID;
@@ -42,6 +40,7 @@
 @property (strong, nonatomic) NSString *longDescription;
 @property (copy, nonatomic) NSString *masterFingerPrint; // @dynamic masterFingerPrint;
 @property (strong, nonatomic) id originalAssetsUUID; // @dynamic originalAssetsUUID;
+@property (strong, nonatomic) NSString *originalColorSpace; // @dynamic originalColorSpace;
 @property (strong, nonatomic) NSString *originalFilename; // @dynamic originalFilename;
 @property (strong, nonatomic) NSNumber *originalFilesize; // @dynamic originalFilesize;
 @property (strong, nonatomic) NSData *originalHash; // @dynamic originalHash;
@@ -67,9 +66,9 @@
 @property (nonatomic) long long videoCpDisplayValue; // @dynamic videoCpDisplayValue;
 @property (nonatomic) int videoCpDurationTimescale; // @dynamic videoCpDurationTimescale;
 
-+ (void)fromExtraDurationData:(id)arg1 getStillDisplayTime:(CDStruct_198678f7 *)arg2 videoDuration:(CDStruct_198678f7 *)arg3;
++ (void)fromExtraDurationData:(id)arg1 getStillDisplayTime:(CDStruct_1b6d18a9 *)arg2 videoDuration:(CDStruct_1b6d18a9 *)arg3;
 + (id)listOfSyncedProperties;
-+ (id)newExtraDurationDataFromStillDisplayTime:(CDStruct_198678f7)arg1 videoDuration:(CDStruct_198678f7)arg2;
++ (id)newExtraDurationDataFromStillDisplayTime:(CDStruct_1b6d18a9)arg1 videoDuration:(CDStruct_1b6d18a9)arg2;
 - (BOOL)_needToSetModificationDateOnAsset:(id)arg1;
 - (void)dealloc;
 - (BOOL)migrateReverseLocationDataFromKeyedArchiverFormat;

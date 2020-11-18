@@ -13,9 +13,9 @@
     NSString *_templateImageName;
 }
 
-@property (readonly, strong, nonatomic) NSString *templateImageName; // @synthesize templateImageName=_templateImageName;
+@property (readonly, nonatomic) NSString *templateImageName; // @synthesize templateImageName=_templateImageName;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithTemplateImageName:(id)arg1;

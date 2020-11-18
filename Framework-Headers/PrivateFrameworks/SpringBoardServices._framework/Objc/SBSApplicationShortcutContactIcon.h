@@ -16,12 +16,12 @@
     NSData *_imageData;
 }
 
-@property (readonly, strong, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
-@property (readonly, strong, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
-@property (readonly, strong, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
-@property (readonly, strong, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
+@property (readonly, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
+@property (readonly, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
+@property (readonly, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
+@property (readonly, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithContactIdentifier:(id)arg1;

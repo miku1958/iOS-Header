@@ -38,6 +38,7 @@
 @property (nonatomic) BOOL enforceRemoteTimeouts;
 @property (nonatomic) BOOL expectsPeerResponse;
 @property (readonly, strong, nonatomic) NSDate *expirationDate;
+@property (nonatomic) BOOL fakeMessage;
 @property (nonatomic) BOOL fireAndForget;
 @property (nonatomic) BOOL forceEncryptionOff;
 @property (strong, nonatomic) NSString *fromID;
@@ -46,10 +47,12 @@
 @property (strong, nonatomic) NSArray *interestingRegistrationProperties;
 @property (nonatomic) BOOL isProxiedOutgoingMessage;
 @property (nonatomic) BOOL localDelivery;
+@property (strong, nonatomic) NSString *localDestinationDeviceUUID;
 @property (strong, nonatomic) NSString *mainAccountUUID;
 @property (strong, nonatomic) NSDictionary *message;
 @property (strong, nonatomic) NSData *messageUUID;
 @property (nonatomic) BOOL nonWaking;
+@property (strong, nonatomic) NSString *originalfromID;
 @property (strong, nonatomic) NSString *peerResponseIdentifier;
 @property (nonatomic) long long priority;
 @property (strong, nonatomic) NSDictionary *protobuf;

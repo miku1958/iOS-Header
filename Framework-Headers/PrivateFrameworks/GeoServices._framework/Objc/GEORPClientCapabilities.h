@@ -12,10 +12,12 @@
 {
     BOOL _hasFeatureHandle;
     BOOL _hasNoOptInRequest;
+    BOOL _hasSupportForIdsBasedNotifications;
     BOOL _hasUnconstrainedProblemStatusSize;
     struct {
         unsigned int hasFeatureHandle:1;
         unsigned int hasNoOptInRequest:1;
+        unsigned int hasSupportForIdsBasedNotifications:1;
         unsigned int hasUnconstrainedProblemStatusSize:1;
     } _has;
 }
@@ -23,8 +25,10 @@
 @property (nonatomic) BOOL hasFeatureHandle; // @synthesize hasFeatureHandle=_hasFeatureHandle;
 @property (nonatomic) BOOL hasHasFeatureHandle;
 @property (nonatomic) BOOL hasHasNoOptInRequest;
+@property (nonatomic) BOOL hasHasSupportForIdsBasedNotifications;
 @property (nonatomic) BOOL hasHasUnconstrainedProblemStatusSize;
 @property (nonatomic) BOOL hasNoOptInRequest; // @synthesize hasNoOptInRequest=_hasNoOptInRequest;
+@property (nonatomic) BOOL hasSupportForIdsBasedNotifications; // @synthesize hasSupportForIdsBasedNotifications=_hasSupportForIdsBasedNotifications;
 @property (nonatomic) BOOL hasUnconstrainedProblemStatusSize; // @synthesize hasUnconstrainedProblemStatusSize=_hasUnconstrainedProblemStatusSize;
 
 - (void)copyTo:(id)arg1;

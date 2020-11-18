@@ -25,6 +25,7 @@
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) UIViewController *formPresentationViewController; // @synthesize formPresentationViewController=_formPresentationViewController;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isManagedAppleID) BOOL managedAppleID;
 @property (readonly, nonatomic) NSString *networkConnectionType;
 @property (strong, nonatomic) NSString *storefront;
 @property (readonly) Class superclass;

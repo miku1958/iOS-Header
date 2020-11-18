@@ -6,21 +6,28 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray;
+#import <AssetsLibraryServices/PLAssetsdClientService-Protocol.h>
+
+@class NSArray, NSString, PLAssetsdClientServiceReceiver;
 @protocol OS_dispatch_queue, OS_xpc_object;
 
-@interface PLGatekeeperClient : NSObject
+@interface PLGatekeeperClient : NSObject <PLAssetsdClientService>
 {
     NSObject<OS_dispatch_queue> *_serialReplyQueue;
     NSArray *_previewRenderedContentURLs;
+    PLAssetsdClientServiceReceiver *_clientServiceReceiver;
     NSObject<OS_xpc_object> *connection;
     NSArray *_previewAssetLocalIdentifiers;
 }
 
 @property (nonatomic) NSObject<OS_xpc_object> *connection; // @synthesize connection;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *previewAssetLocalIdentifiers; // @synthesize previewAssetLocalIdentifiers=_previewAssetLocalIdentifiers;
 @property (readonly, nonatomic) unsigned long long previewRenderedContentURLCount;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *replyQueue;
+@property (readonly) Class superclass;
 
 + (id)securityPolicyErrorForMissingEntitlement:(id)arg1;
 + (id)sharedInstance;
@@ -35,7 +42,6 @@
 - (unsigned long long)attemptToPurgeSharedAssetsSpace:(unsigned long long)arg1;
 - (void)automaticallyDeleteEmptyAlbum:(id)arg1;
 - (void)batchSaveAssetsWithJobDictionaries:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (id)cacheDeleteDebug:(id)arg1;
 - (void)cancelCPLDownloadImageDataWithVirtualTaskIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cancelCPLDownloadWithContext:(id)arg1;
 - (void)cleanupForStoreDemoMode;
@@ -52,8 +58,8 @@
 - (id)deviceSpecificReplyQueue;
 - (id)dictionaryWithContentsOfMediaFilePath:(id)arg1;
 - (void)downloadAsset:(id)arg1 withCloudPlaceholderKind:(unsigned long long)arg2 shouldPrioritize:(BOOL)arg3 shouldExtendTimer:(BOOL)arg4;
-- (void)downloadCloudPhotoLibraryAsset:(id)arg1 resourceType:(unsigned long long)arg2 highPriority:(BOOL)arg3;
-- (void)downloadCloudPhotoLibraryAsset:(id)arg1 resourceType:(unsigned long long)arg2 highPriority:(BOOL)arg3 trackCPLDownload:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)downloadCloudPhotoLibraryAsset:(id)arg1 resourceType:(unsigned long long)arg2 highPriority:(BOOL)arg3 trackCPLDownload:(BOOL)arg4 proposedTaskIdentifier:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)downloadStatusForIdentifier:(id)arg1 progress:(double)arg2 completed:(BOOL)arg3 error:(id)arg4;
 - (void)dropSearchIndexWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dumpCloudPhotosStatusIncludingDaemon:(BOOL)arg1;
 - (id)dumpMetadataForMomentsWithOutputPath:(id)arg1;
@@ -66,7 +72,7 @@
 - (id)fileURLForAssetURL:(id)arg1 withAdjustments:(BOOL)arg2;
 - (id)fileURLForNewAssetWithType:(unsigned int)arg1 extension:(id)arg2;
 - (void)finalizeOTARestoreRecreatingAlbums:(BOOL)arg1;
-- (void)getCPLRemainingUploadCountsWithHandler:(CDUnknownBlockType)arg1;
+- (void)generateOnDemandResourcesForAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)getCPLState;
 - (long long)getCurrentApplicationBadgeCount;
 - (id)getCurrentBulletins;
@@ -100,6 +106,7 @@
 - (void)prepareRevertToOriginalForAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)previewRenderedContentURLAtIndex:(unsigned long long)arg1;
 - (void)privateDownloadCloudPhotoLibraryAsset:(id)arg1 resourceType:(unsigned long long)arg2 highPriority:(BOOL)arg3;
+- (void)pruneAssets:(id)arg1;
 - (void)purgeExpiredOutboundSharingAssets;
 - (unsigned long long)purgeableSharedAssetsSpace;
 - (void)rebuildAllThumbnails;
@@ -139,7 +146,6 @@
 - (void)updateModelAfterOTARestore;
 - (void)updateRestoredAssetWithUUID:(id)arg1 paths:(id)arg2;
 - (void)updateSharedAlbumsCachedServerConfigurationLimits;
-- (void)updateStatusOfCPLDownloadWithContext:(id)arg1;
 - (void)updateThumbnailsForPhotos:(id)arg1 waitForReply:(BOOL)arg2 assignNewIndex:(BOOL)arg3 forceRefresh:(BOOL)arg4;
 - (void)waitForSearchIndexExistence;
 - (void)waitUntilConnectionSendsAllMessages;

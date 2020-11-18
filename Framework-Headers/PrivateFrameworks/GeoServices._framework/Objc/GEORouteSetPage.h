@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     GEORouteSet *_routeSet;
     NSArray *_routes;
     NSArray *_routesAndGaps;
+    NSArray *_routesAndContingencies;
     NSMutableDictionary *_composedRoutesDict;
     NSMutableDictionary *_routesDict;
     NSMutableDictionary *_constructedRouteDict;

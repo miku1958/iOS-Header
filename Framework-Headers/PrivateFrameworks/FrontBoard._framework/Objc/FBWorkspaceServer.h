@@ -55,7 +55,7 @@
 - (void)sendDestroySceneEvent:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)sendSceneActionsEvent:(id)arg1;
 - (void)sendSceneUpdateEvent:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)unregisterSceneEventHandlerForSceneID:(id)arg1;
+- (void)unregisterSceneEventHandler:(id)arg1 forSceneID:(id)arg2;
 
 @end
 

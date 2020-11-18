@@ -13,11 +13,17 @@
 @interface FMDLostModeInfo : NSObject <NSSecureCoding>
 {
     BOOL _lostModeEnabled;
+    BOOL _disableSlideToUnlock;
     NSString *_message;
     NSString *_phoneNumber;
+    unsigned long long _lostModeType;
+    NSString *_footnoteText;
 }
 
+@property (nonatomic) BOOL disableSlideToUnlock; // @synthesize disableSlideToUnlock=_disableSlideToUnlock;
+@property (strong, nonatomic) NSString *footnoteText; // @synthesize footnoteText=_footnoteText;
 @property (nonatomic) BOOL lostModeEnabled; // @synthesize lostModeEnabled=_lostModeEnabled;
+@property (nonatomic) unsigned long long lostModeType; // @synthesize lostModeType=_lostModeType;
 @property (strong, nonatomic) NSString *message; // @synthesize message=_message;
 @property (strong, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 

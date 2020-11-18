@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
+#import <CompanionSync/NMSDeviceSourced-Protocol.h>
 #import <CompanionSync/NMSObfuscatableDescriptionProviding-Protocol.h>
 
 @class NMSMessageCenter, NMSOutgoingResponse, NSData, NSString;
 
-@interface NMSIncomingRequest : NSObject <NMSObfuscatableDescriptionProviding>
+@interface NMSIncomingRequest : NSObject <NMSDeviceSourced, NMSObfuscatableDescriptionProviding>
 {
     BOOL _expectsResponse;
     unsigned short _messageID;
+    NSString *sourceDeviceID;
     NMSMessageCenter *_messageCenter;
     NSString *_idsIdentifier;
     NSData *_data;
@@ -33,6 +35,7 @@
 @property (strong, nonatomic) id pbRequest; // @synthesize pbRequest=_pbRequest;
 @property (nonatomic) unsigned long long priority; // @synthesize priority=_priority;
 @property (strong, nonatomic) NMSOutgoingResponse *response; // @synthesize response=_response;
+@property (strong, nonatomic) NSString *sourceDeviceID; // @synthesize sourceDeviceID;
 @property (readonly) Class superclass;
 
 + (BOOL)allowsUnrepliedRequestsForUnitTesting;

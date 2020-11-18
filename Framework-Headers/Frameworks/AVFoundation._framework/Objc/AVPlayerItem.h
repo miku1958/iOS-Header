@@ -28,6 +28,7 @@
 @property (readonly, nonatomic, getter=isAuthorizationRequiredForPlayback) BOOL authorizationRequiredForPlayback;
 @property (readonly, nonatomic, getter=isContentAuthorizedForPlayback) BOOL contentAuthorizedForPlayback;
 @property (readonly, nonatomic) NSError *error;
+@property (readonly, nonatomic) NSArray *mediaDataCollectors;
 @property (copy, nonatomic) NSString *mediaKind;
 @property (readonly, nonatomic) NSArray *outputs;
 @property (nonatomic) unsigned long long restrictions;
@@ -67,6 +68,7 @@
 - (void)_addFAListeners;
 - (void)_addFPListeners;
 - (void)_addLegibleOutput:(id)arg1;
+- (void)_addMetadataCollector:(id)arg1;
 - (void)_addMetadataOutput:(id)arg1;
 - (void)_addSyncLayer:(id)arg1;
 - (BOOL)_addToPlayQueueOfFigPlayerOfPlayer:(id)arg1 afterFigPlaybackItemOfItem:(id)arg2;
@@ -144,6 +146,7 @@
 - (void)_markAssetWithFigPlaybackItemAsNeedingNewTracks;
 - (CDStruct_1b6d18a9)_maximumForwardBufferDuration;
 - (id)_mediaKind;
+- (id)_metadataCollectors;
 - (id)_metadataOutputForKey:(id)arg1;
 - (id)_metadataOutputsForKeys;
 - (id)_nextItem;
@@ -194,6 +197,7 @@
 - (void)_removeFromItems;
 - (void)_removeFromPlayQueueOfFigPlayerOfAttachedPlayer;
 - (void)_removeLegibleOutput:(id)arg1;
+- (void)_removeMetadataCollector:(id)arg1;
 - (void)_removeMetadataOutput:(id)arg1;
 - (void)_removeSyncLayer:(id)arg1;
 - (void)_removeVideoOutput:(id)arg1;
@@ -233,6 +237,7 @@
 - (id)_tracksWithFPTrackIDArray:(id)arg1 fromFigPlaybackItem:(struct OpaqueFigPlaybackItem *)arg2;
 - (void)_unregisterInvokeAndReleasePendingSeekCompletionHandlerForSeekID:(int)arg1 finished:(BOOL)arg2;
 - (void)_updateLegibleSuppressionOnFigPlaybackItem:(struct OpaqueFigPlaybackItem *)arg1 basedOnOutputs:(id)arg2;
+- (void)_updateTaggedMetadataArray:(id)arg1;
 - (void)_updateTimebase;
 - (void)_updateVideoSuppressionOnFigPlaybackItem:(struct OpaqueFigPlaybackItem *)arg1 basedOnOutputs:(id)arg2;
 - (BOOL)_usesMinimalLatencyForVideoCompositionRendering;
@@ -241,6 +246,7 @@
 - (void)_willAccessKVOForKey:(id)arg1;
 - (BOOL)_willNeverSeekBackwardsHint;
 - (id)accessLog;
+- (void)addMediaDataCollector:(id)arg1;
 - (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
 - (void)addOutput:(id)arg1;
 - (BOOL)aggressivelyCachesVideoFrames;
@@ -304,6 +310,7 @@
 - (double)preferredPeakBitRate;
 - (struct CGSize)presentationSize;
 - (float)progressTowardsPlaybackLikelyToKeepUp;
+- (void)removeMediaDataCollector:(id)arg1;
 - (void)removeOutput:(id)arg1;
 - (BOOL)requiresAccessLog;
 - (CDStruct_1b6d18a9)reversePlaybackEndTime;

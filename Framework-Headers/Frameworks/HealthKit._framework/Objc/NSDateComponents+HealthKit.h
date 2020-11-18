@@ -7,9 +7,13 @@
 #import <Foundation/NSDateComponents.h>
 
 @interface NSDateComponents (HealthKit)
++ (id)hk_componentsWithDays:(long long)arg1;
++ (id)hk_oneDay;
 - (id)_hk_dateByAddingFilteredInterval:(long long)arg1 toDate:(id)arg2;
 - (double)hk_approximateDuration;
 - (id)hk_dateByAddingInterval:(long long)arg1 toDate:(id)arg2;
 - (long long)hk_maxComponentValue;
+- (id)hk_populatedCalendarGregorianCalendarDefault;
+- (id)hk_translateDateComponentsToCalendar:(id)arg1 calendarUnits:(unsigned long long)arg2;
 @end
 

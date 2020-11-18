@@ -12,8 +12,8 @@
 - (NSString *)defaultAlertTitleForEditItem:(EKCalendarItemEditItem *)arg1;
 
 @optional
-- (void)editItem:(EKCalendarItemEditItem *)arg1 didCommitFromDetailViewController:(BOOL)arg2;
 - (void)editItem:(EKCalendarItemEditItem *)arg1 didEndDatePickingAnimated:(BOOL)arg2;
+- (void)editItem:(EKCalendarItemEditItem *)arg1 didSaveFromDetailViewController:(BOOL)arg2;
 - (void)editItem:(EKCalendarItemEditItem *)arg1 performActionsOnCellAtSubitem:(unsigned long long)arg2 actions:(void (^)(UITableViewCell *))arg3;
 - (void)editItem:(EKCalendarItemEditItem *)arg1 textViewShouldReturn:(UIView *)arg2;
 - (void)editItem:(EKCalendarItemEditItem *)arg1 wantsDoneButtonDisabled:(BOOL)arg2;

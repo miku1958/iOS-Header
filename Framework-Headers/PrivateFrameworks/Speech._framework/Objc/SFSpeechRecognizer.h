@@ -9,12 +9,13 @@
 #import <Speech/AFDictationDelegate-Protocol.h>
 
 @class AFDictationConnection, NSLocale, NSOperationQueue, NSString;
-@protocol SFSpeechRecognizerDelegate;
+@protocol NSObject, SFSpeechRecognizerDelegate;
 
 @interface SFSpeechRecognizer : NSObject <AFDictationDelegate>
 {
     AFDictationConnection *_dictationConnection;
     NSString *_languageCode;
+    id<NSObject> _facetimeObserver;
     NSLocale *_locale;
     id<SFSpeechRecognizerDelegate> _delegate;
     long long _defaultTaskHint;
@@ -22,6 +23,7 @@
 }
 
 @property (readonly, nonatomic, getter=isAvailable) BOOL available;
+@property (readonly, nonatomic, getter=isAvailableForRecordingRecognition) BOOL availableForRecordingRecognition;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) long long defaultTaskHint; // @synthesize defaultTaskHint=_defaultTaskHint;
 @property (weak, nonatomic) id<SFSpeechRecognizerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -34,6 +36,7 @@
 + (void)initialize;
 + (id)supportedLocales;
 - (void).cxx_destruct;
+- (void)_informDelegateOfAvailabilityChange;
 - (void)_sendEngagementFeedback:(long long)arg1 requestIdentifier:(id)arg2;
 - (void)dealloc;
 - (void)dictationConnnectionDidChangeAvailability:(id)arg1;

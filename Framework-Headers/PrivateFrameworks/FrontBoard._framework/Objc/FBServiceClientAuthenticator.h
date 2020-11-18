@@ -6,33 +6,46 @@
 
 #import <Foundation/NSObject.h>
 
+#import <FrontBoard/BSDescriptionProviding-Protocol.h>
+
 @class NSString;
 
-@interface FBServiceClientAuthenticator : NSObject
+@interface FBServiceClientAuthenticator : NSObject <BSDescriptionProviding>
 {
     NSString *_entitlement;
     unsigned long long _credentials;
 }
 
 @property (readonly, nonatomic) unsigned long long credentials; // @synthesize credentials=_credentials;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *entitlement; // @synthesize entitlement=_entitlement;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)sharedForegroundUIAppClientAuthenticator;
 + (id)sharedSystemClientAuthenticator;
 + (id)sharedUIAppClientAuthenticator;
-- (int)_authenticateAuditToken:(CDStruct_6ad76789 *)arg1 connection:(id)arg2 entitlement:(id)arg3 withResult:(CDUnknownBlockType)arg4;
+- (int)_authenticateAuditToken:(CDStruct_6ad76789 *)arg1 connection:(id)arg2 entitlement:(id)arg3 error:(out id *)arg4 withResult:(CDUnknownBlockType)arg5;
+- (int)_authenticateConnection:(id)arg1 forEntitlement:(id)arg2 error:(out id *)arg3 withResult:(CDUnknownBlockType)arg4;
 - (int)authenticateAuditToken:(CDStruct_6ad76789 *)arg1 forEntitlement:(id)arg2 withResult:(CDUnknownBlockType)arg3;
 - (int)authenticateAuditToken:(CDStruct_6ad76789 *)arg1 withResult:(CDUnknownBlockType)arg2;
 - (int)authenticateClient:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (int)authenticateConnection:(id)arg1 forEntitlement:(id)arg2 withResult:(CDUnknownBlockType)arg3;
 - (int)authenticateConnection:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)dealloc;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)init;
 - (id)initWithCredentials:(unsigned long long)arg1;
 - (id)initWithEntitlement:(id)arg1;
 - (id)initWithEntitlement:(id)arg1 additionalCredentials:(unsigned long long)arg2;
 - (BOOL)isClientAuthenticated:(id)arg1;
+- (BOOL)isClientAuthenticated:(id)arg1 error:(out id *)arg2;
 - (BOOL)isConnectionAuthenticated:(id)arg1;
+- (BOOL)isConnectionAuthenticated:(id)arg1 error:(out id *)arg2;
+- (id)succinctDescription;
+- (id)succinctDescriptionBuilder;
 
 @end
 

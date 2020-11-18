@@ -29,8 +29,8 @@
 - (unsigned int)clientPortForContextId:(unsigned int)arg1;
 - (unsigned int)contextIdForPosition:(struct CGPoint)arg1 displayId:(unsigned int)arg2;
 - (unsigned int)contextIdHosterForContextId:(unsigned int)arg1;
-- (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromContextId:(unsigned int)arg2;
-- (struct CGPoint)convertPoint:(struct CGPoint)arg1 toContextId:(unsigned int)arg2;
+- (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
+- (struct CGPoint)convertPoint:(struct CGPoint)arg1 toContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
 - (void)dispatchEventRepresentationToClient:(id)arg1;
 - (void)enableEventTap:(BOOL)arg1 forApplication:(int)arg2;
 - (id)init;

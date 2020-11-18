@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)canBeConfiguredForCalendarConstraints:(id)arg1;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
-- (BOOL)editItemViewControllerCommit:(id)arg1;
+- (BOOL)editItemViewControllerSave:(id)arg1;
 - (void)refreshFromCalendarItemAndStore;
 - (BOOL)saveAndDismissWithForce:(BOOL)arg1;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iAd/ADAdSpaceRemoteViewControllerDelegate-Protocol.h>
 #import <iAd/ADAdSpace_RPC-Protocol.h>
@@ -104,6 +104,7 @@
 - (void)interstitialWasRemovedFromSuperview;
 - (void)loadAd:(id)arg1;
 - (void)refuseBannerViewAction;
+- (BOOL)remoteViewControllerShouldAnimate:(id)arg1;
 - (void)setAdSpaceType:(int)arg1;
 - (void)updateVisibility;
 - (void)viewServiceDidTerminateWithError:(id)arg1;

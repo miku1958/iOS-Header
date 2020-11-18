@@ -8,7 +8,6 @@
 
 @class ACDManagedAccountType, NSDate, NSNumber, NSSet, NSString;
 
-__attribute__((visibility("hidden")))
 @interface ACDManagedAccount : NSManagedObject
 {
 }

@@ -28,14 +28,14 @@
     NSMutableArray *_bodyBucketViews;
     unsigned long long _contentViewCreatedRegions;
     unsigned long long _invariantViewCreatedRegions;
-    BOOL _allowBackgroundPlaceHolders;
     BOOL _clipsContent;
-    NSArray *_buckets;
-    long long _style;
+    BOOL _allowBackgroundPlaceHolders;
     id<PKPassFaceDelegate> _delegate;
     long long _backgroundMode;
     unsigned long long _visibleRegions;
     double _clippedContentHeight;
+    NSArray *_buckets;
+    long long _style;
     PKPassFaceTemplate *_faceTemplate;
 }
 
@@ -45,7 +45,7 @@
 @property (readonly, strong, nonatomic) NSArray *buckets; // @synthesize buckets=_buckets;
 @property (nonatomic) double clippedContentHeight; // @synthesize clippedContentHeight=_clippedContentHeight;
 @property (nonatomic) BOOL clipsContent; // @synthesize clipsContent=_clipsContent;
-@property (readonly, nonatomic) PKPassColorProfile *colorProfile; // @synthesize colorProfile=_colorProfile;
+@property (readonly, nonatomic) PKPassColorProfile *colorProfile;
 @property (readonly, nonatomic) struct CGRect contentBounds;
 @property (readonly, nonatomic) struct CGSize contentSize;
 @property (readonly, nonatomic) UIView *contentView;
@@ -53,7 +53,7 @@
 @property (readonly, nonatomic) PKPassFaceTemplate *faceTemplate; // @synthesize faceTemplate=_faceTemplate;
 @property (strong, nonatomic) NSMutableArray *headerBucketViews; // @synthesize headerBucketViews=_headerBucketViews;
 @property (readonly, nonatomic) BOOL isFrontFace;
-@property (readonly, nonatomic) PKPass *pass; // @synthesize pass=_pass;
+@property (readonly, nonatomic) PKPass *pass;
 @property (readonly, nonatomic) struct UIEdgeInsets shadowInsets;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (nonatomic) unsigned long long visibleRegions; // @synthesize visibleRegions=_visibleRegions;

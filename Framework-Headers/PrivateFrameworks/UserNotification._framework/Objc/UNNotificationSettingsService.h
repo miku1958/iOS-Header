@@ -17,6 +17,7 @@
 
 + (id)sharedInstance;
 - (void)_queue_bundleIdentifiersWithEnabledNotifications:(id)arg1 withResult:(CDUnknownBlockType)arg2;
+- (BOOL)_queue_isNotificationsModificationAllowedForBundleIdentifier:(id)arg1;
 - (void)_queue_notificationSettingsForBundleIdentifier:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)_queue_notificationTypesForBundleIdentifier:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)_queue_registerNotificationSettings:(id)arg1 forBundleIdentifier:(id)arg2 withResult:(CDUnknownBlockType)arg3;

@@ -20,7 +20,7 @@
     long long _stationID;
     NSString *_stationHash;
     RadioPlayEventCollection *_playEventCollection;
-    NSArray *_playActivityFeedEvents;
+    NSArray *_playActivityEvents;
 }
 
 @property (readonly, copy, nonatomic) NSNumber *accountUniqueIdentifier; // @synthesize accountUniqueIdentifier=_accountUniqueIdentifier;
@@ -28,7 +28,7 @@
 @property (nonatomic) BOOL fetchForAccount; // @synthesize fetchForAccount=_fetchForAccount;
 @property (nonatomic) BOOL includesAds; // @synthesize includesAds=_includesAds;
 @property (nonatomic) unsigned long long maxNumberOfTracks; // @synthesize maxNumberOfTracks=_maxNumberOfTracks;
-@property (copy, nonatomic) NSArray *playActivityFeedEvents; // @synthesize playActivityFeedEvents=_playActivityFeedEvents;
+@property (copy, nonatomic) NSArray *playActivityEvents; // @synthesize playActivityEvents=_playActivityEvents;
 @property (copy, nonatomic) RadioPlayEventCollection *playEventCollection; // @synthesize playEventCollection=_playEventCollection;
 @property (nonatomic) BOOL shouldProcessCategories; // @synthesize shouldProcessCategories=_shouldProcessCategories;
 @property (copy, nonatomic) NSString *stationHash; // @synthesize stationHash=_stationHash;

@@ -23,14 +23,7 @@ __attribute__((visibility("hidden")))
     struct unique_ptr<ggl::FragmentedPool<ggl::PolygonShadowedStroke::Shader::Setup>, std::__1::default_delete<ggl::FragmentedPool<ggl::PolygonShadowedStroke::Shader::Setup>>> _coastlineShaderSetupPool;
     struct unique_ptr<ggl::FragmentedPool<ggl::GlowAlpha::Shader::Setup>, std::__1::default_delete<ggl::FragmentedPool<ggl::GlowAlpha::Shader::Setup>>> _glowAlphaShaderSetupPool;
     struct unique_ptr<ggl::FragmentedPool<ggl::Glow::Shader::Setup>, std::__1::default_delete<ggl::FragmentedPool<ggl::Glow::Shader::Setup>>> _glowShaderSetupPool;
-    struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState>> _strokeRenderStateNoStencil;
-    struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState>> _strokeRenderStateGreater;
-    struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState>> _strokeRenderStateBlendGreater;
-    struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState>> _strokeRenderStateNotEqual;
-    struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState>> _fillRenderStateNoStencil;
-    struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState>> _fillRenderState;
-    struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState>> _fillRenderStateBlendNoStencil;
-    struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState>> _fillRenderStateBlend;
+    struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState>> _polygonRenderStates[32];
     struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState>> _coastlineStencilRenderState;
     struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState>> _stencilInvertRenderState;
     struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState>> _stencilWaterEraseRenderState;
@@ -46,6 +39,7 @@ __attribute__((visibility("hidden")))
     struct unique_ptr<ggl::FragmentedPool<ggl::RenderItem>, std::__1::default_delete<ggl::FragmentedPool<ggl::RenderItem>>> _coastlineRenderItemPool;
     int _belowRoadsSourceTileZtoStencilOffset;
     int _aboveRoadsSourceTileZToStencilOffset;
+    int _aboveBuildingsSourceTileZToStencilOffset;
     int _coastlineSourceTileZtoStencilOffset;
     vector_7afb2ddd _coastlineStencilItems;
     struct shared_ptr<ggl::ConstantDataTyped<ggl::AnimatableTexture::Variant>> _variantData;
@@ -59,6 +53,7 @@ __attribute__((visibility("hidden")))
     struct RenderItemBatcher _batcher;
     VKRouteContext *_routeContext;
     unordered_map_717402f9 _transitNodesRouteAttributesMap;
+    BOOL _buildingsAre3D;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -72,10 +67,11 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)buildingsDidBecome3D:(BOOL)arg1;
 - (void)dealloc;
 - (void)didReceiveMemoryWarning:(BOOL)arg1;
 - (id)featureMarkerInTile:(id)arg1 atPoint:(struct VKPoint *)arg2;
-- (BOOL)featureWithQueryIsAboveRoads:(const shared_ptr_b80d91ee *)arg1;
+- (unsigned char)featureWithQueryPlacement:(const shared_ptr_b80d91ee *)arg1;
 - (void)flushPools;
 - (void)generateCoastlineRenderItemsWithContext:(id)arg1 commandBuffer:(struct CommandBuffer *)arg2;
 - (void)generateGroundCoverRenderItemsForScene:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3;
@@ -85,6 +81,7 @@ __attribute__((visibility("hidden")))
 - (void)gglLayoutScene:(id)arg1 withContext:(id)arg2 renderQueue:(struct RenderQueue *)arg3;
 - (id)init;
 - (unsigned long long)mapLayerPosition;
+- (struct RenderState *)renderStateForFilling:(BOOL)arg1 usingStencilType:(unsigned char)arg2 blendingEnabled:(BOOL)arg3 depthTestingEnabled:(BOOL)arg4;
 - (void)reset;
 - (void)resetPools;
 - (void)stylesheetDidChange;

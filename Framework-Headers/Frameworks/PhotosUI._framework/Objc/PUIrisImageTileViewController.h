@@ -6,34 +6,34 @@
 
 #import <PhotosUI/PUImageTileViewController.h>
 
-#import <PhotosUI/ISPlayerViewDelegate-Protocol.h>
+#import <PhotosUI/PHLivePhotoViewDelegate-Protocol.h>
+#import <PhotosUI/PHLivePhotoViewDelegatePrivate-Protocol.h>
 #import <PhotosUI/_UISettingsKeyObserver-Protocol.h>
 
-@class ISPlayerView, NSString;
+@class ISPlayerView, NSString, PHLivePhotoView;
 @protocol PUIrisImageTileViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PUIrisImageTileViewController : PUImageTileViewController <ISPlayerViewDelegate, _UISettingsKeyObserver>
+@interface PUIrisImageTileViewController : PUImageTileViewController <PHLivePhotoViewDelegate, PHLivePhotoViewDelegatePrivate, _UISettingsKeyObserver>
 {
     struct {
         BOOL respondsToDidBeginPlaying;
         BOOL respondsToWillEndPlaying;
         BOOL respondsToDidEndPlaying;
+        BOOL respondsToDidEndVitality;
         BOOL respondsToViewHostingGestureRecognizers;
         BOOL respondsToDelegateForGestureRecognizer;
     } _delegateFlags;
     BOOL _canLoadIrisContent;
     BOOL __needUpdateIrisContent;
-    BOOL __needsUpdateIrisPlayerView;
     id<PUIrisImageTileViewControllerDelegate> _delegate;
-    ISPlayerView *__irisPlayerView;
+    PHLivePhotoView *__livePhotoView;
     ISPlayerView *__irisPlayerViewWithVitalityEnabled;
 }
 
-@property (strong, nonatomic, setter=_setIrisPlayerView:) ISPlayerView *_irisPlayerView; // @synthesize _irisPlayerView=__irisPlayerView;
 @property (strong, nonatomic, setter=_setIrisPlayerViewWithVitalityEnabled:) ISPlayerView *_irisPlayerViewWithVitalityEnabled; // @synthesize _irisPlayerViewWithVitalityEnabled=__irisPlayerViewWithVitalityEnabled;
+@property (strong, nonatomic, setter=_setLivePhotoView:) PHLivePhotoView *_livePhotoView; // @synthesize _livePhotoView=__livePhotoView;
 @property (nonatomic, setter=_setNeedsUpdateIrisContent:) BOOL _needUpdateIrisContent; // @synthesize _needUpdateIrisContent=__needUpdateIrisContent;
-@property (nonatomic, setter=_setNeedsUpdateIrisPlayerView:) BOOL _needsUpdateIrisPlayerView; // @synthesize _needsUpdateIrisPlayerView=__needsUpdateIrisPlayerView;
 @property (nonatomic) BOOL canLoadIrisContent; // @synthesize canLoadIrisContent=_canLoadIrisContent;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUIrisImageTileViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -43,25 +43,21 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_assetFocusValueDidChange;
-- (void)_assetIsInFocusChanged;
 - (void)_handleBrowsingIrisPlayer:(id)arg1 didChange:(id)arg2;
 - (void)_invalidateIrisContent;
-- (void)_invalidateIrisPlayerView;
 - (BOOL)_needsIrisUpdate;
+- (void)_playVitalityHintIfNeeded;
 - (void)_playerViewReadinessDidChange;
 - (void)_updateIrisContentIfNeeded;
 - (void)_updateIrisIfNeeded;
-- (void)_updateIrisPlayerViewIfNeeded;
 - (void)_updateIrisPlayerViewWithVitalityEnabled;
+- (void)_updatePlaybackGestureRecognizer;
 - (void)_updatePlayerViewInteractivePlaybackAllowed;
-- (void)_updatePlayerViewScrubOffset;
 - (void)assetViewModelDidChange;
 - (void)becomeReusable;
-- (void)dealloc;
-- (id)irisPlayerView:(id)arg1 delegateForGestureRecognizer:(id)arg2;
-- (id)irisPlayerViewViewHostingGestureRecognizers:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)playerViewPlaybackStateDidChange:(id)arg1;
+- (void)livePhotoView:(id)arg1 didEndPlaybackWithStyle:(long long)arg2;
+- (void)livePhotoView:(id)arg1 willBeginPlaybackWithStyle:(long long)arg2;
+- (void)livePhotoViewDidEndPlayingVitality:(id)arg1;
 - (void)setAssetViewModel:(id)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)viewDidLoad;

@@ -26,16 +26,18 @@
     UIColor *_averageColor;
 }
 
-@property (readonly) UIColor *averageColor; // @synthesize averageColor=_averageColor;
+@property (readonly, weak) UIColor *averageColor; // @synthesize averageColor=_averageColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 + (BOOL)_shouldScaleForParallax;
+- (void).cxx_destruct;
 - (struct CGPoint)_boundedContentOffsetForOverhang;
-- (void)_cacheImagesIfNeededTreated:(BOOL)arg1;
+- (void)_cacheImagesIfNeeded;
 - (struct CGRect)_cropRect;
+- (id)_displayedSurfaceImage;
 - (struct CGSize)_imageSize;
 - (struct CGPoint)_maximumContentOffsetForOverhang;
 - (struct CGPoint)_minimumContentOffsetForOverhang;

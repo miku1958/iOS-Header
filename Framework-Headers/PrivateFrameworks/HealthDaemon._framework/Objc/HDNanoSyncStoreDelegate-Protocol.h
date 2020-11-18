@@ -6,14 +6,14 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HDNanoSyncStore, NSError;
-@protocol HDSyncChange;
+@class HDNanoSyncStore, NSString;
 
 @protocol HDNanoSyncStoreDelegate <NSObject>
 
 @property (readonly, nonatomic) BOOL isMaster;
 
-- (void)sendWithNanoSyncStore:(HDNanoSyncStore *)arg1 change:(id<HDSyncChange>)arg2 context:(id)arg3 completion:(void (^)(BOOL, NSError *))arg4;
-- (void)syncDidFinishWithNanoSyncStore:(HDNanoSyncStore *)arg1 success:(BOOL)arg2 error:(NSError *)arg3 context:(id)arg4;
+- (void)nanoSyncStore:(HDNanoSyncStore *)arg1 deviceNameDidChange:(NSString *)arg2;
+- (void)nanoSyncStore:(HDNanoSyncStore *)arg1 remoteSystemBuildVersionDidChange:(NSString *)arg2;
+- (void)nanoSyncStore:(HDNanoSyncStore *)arg1 restoreStateDidChange:(long long)arg2;
 @end
 

@@ -13,8 +13,14 @@
 @interface GEOPDAutocompleteResult : PBCodable <NSCopying>
 {
     NSMutableArray *_sections;
+    BOOL _enableRap;
+    struct {
+        unsigned int enableRap:1;
+    } _has;
 }
 
+@property (nonatomic) BOOL enableRap; // @synthesize enableRap=_enableRap;
+@property (nonatomic) BOOL hasEnableRap;
 @property (strong, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
 
 - (void)addSections:(id)arg1;

@@ -34,6 +34,7 @@
 }
 
 @property (weak, nonatomic) id<AFAssistantUIService> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) BOOL hasActiveRequest;
 @property (readonly, nonatomic) BOOL isRecording;
 @property (weak, nonatomic) id<AFSpeechDelegate> speechDelegate; // @synthesize speechDelegate=_speechDelegate;
 

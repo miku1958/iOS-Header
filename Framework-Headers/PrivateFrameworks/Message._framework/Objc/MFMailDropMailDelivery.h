@@ -25,7 +25,7 @@
 - (void)_recordZoneIDInDatabase:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_uploadAttachmentsViaCloudKit:(id)arg1 zone:(id)arg2 records:(id)arg3 zippedPhotos:(id)arg4 attachmentRecords:(id)arg5 images:(id)arg6;
 - (void)dealloc;
-- (id)deliverSynchronously;
+- (id)deliverSynchronouslyWithCompletion:(CDUnknownBlockType)arg1;
 - (id)scaledImages:(id)arg1;
 - (BOOL)updateMessageWithAttachmentsSynchronously;
 

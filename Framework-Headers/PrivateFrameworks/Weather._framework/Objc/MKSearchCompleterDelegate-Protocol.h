@@ -4,17 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Weather/NSObject-Protocol.h>
+#import <Weather/MKLocalSearchCompleterDelegatePrivate-Protocol.h>
 
-@class MKSearchCompleter, NSError;
-
-@protocol MKSearchCompleterDelegate <NSObject>
-
-@optional
-- (void)completerDidAccessNetwork:(MKSearchCompleter *)arg1;
-- (void)completerDidFail:(MKSearchCompleter *)arg1 error:(NSError *)arg2;
-- (void)completerDidUpdateResults:(MKSearchCompleter *)arg1 finished:(BOOL)arg2;
-- (void)completerWillAccessNetwork:(MKSearchCompleter *)arg1;
-- (void)completerWillUpdateResults:(MKSearchCompleter *)arg1;
+@protocol MKSearchCompleterDelegate <MKLocalSearchCompleterDelegatePrivate>
 @end
 

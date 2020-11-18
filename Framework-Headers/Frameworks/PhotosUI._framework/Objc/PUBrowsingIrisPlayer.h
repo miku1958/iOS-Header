@@ -9,46 +9,38 @@
 #import <PhotosUI/ISPlayerChangeObserver-Protocol.h>
 #import <PhotosUI/PULazyLoaderDelegate-Protocol.h>
 
-@class AVPlayerItem, NSMutableSet, NSString, PUAudioSessionCategoryToken, PULazyLoader, PUMediaProvider, UIImage;
+@class NSMutableSet, NSString, PHLivePhoto, PUAudioSessionCategoryToken, PULazyLoader, PUMediaProvider;
 @protocol PUDisplayAsset;
 
 __attribute__((visibility("hidden")))
 @interface PUBrowsingIrisPlayer : PUViewModel <PULazyLoaderDelegate, ISPlayerChangeObserver>
 {
     BOOL _isPlayerLoadingAllowed;
-    BOOL __hasLoadingContentRequestTimedOut;
-    int __imageRequestID;
-    int __videoRequestID;
+    BOOL _canPlayVitality;
+    BOOL _hasPendingVitalityHint;
+    int __livePhotoRequestID;
     id<PUDisplayAsset> _asset;
     PUMediaProvider *_mediaProvider;
     PULazyLoader *__playerLoader;
     NSMutableSet *__playerLoadingDisablingReasons;
     long long __currentUnloadRequestId;
     PUAudioSessionCategoryToken *__audioToken;
-    UIImage *__image;
-    long long __imageRequestState;
-    AVPlayerItem *__playerItem;
-    long long __videoRequestState;
-    long long __loadingContentRequestID;
-    CDStruct_1b6d18a9 __lastReceivedStillDisplayTime;
+    PHLivePhoto *__livePhoto;
+    long long __livePhotoRequestState;
 }
 
 @property (strong, nonatomic, setter=_setAudioToken:) PUAudioSessionCategoryToken *_audioToken; // @synthesize _audioToken=__audioToken;
 @property (nonatomic, setter=_setCurrentUnloadRequestId:) long long _currentUnloadRequestId; // @synthesize _currentUnloadRequestId=__currentUnloadRequestId;
-@property (nonatomic, setter=_setLoadingContentRequestTimedOut:) BOOL _hasLoadingContentRequestTimedOut; // @synthesize _hasLoadingContentRequestTimedOut=__hasLoadingContentRequestTimedOut;
-@property (strong, nonatomic, setter=_setImage:) UIImage *_image; // @synthesize _image=__image;
-@property (nonatomic, setter=_setImageRequestID:) int _imageRequestID; // @synthesize _imageRequestID=__imageRequestID;
-@property (nonatomic, setter=_setImageRequestState:) long long _imageRequestState; // @synthesize _imageRequestState=__imageRequestState;
-@property (nonatomic, setter=_setLastReceivedStillDisplayTime:) CDStruct_1b6d18a9 _lastReceivedStillDisplayTime; // @synthesize _lastReceivedStillDisplayTime=__lastReceivedStillDisplayTime;
-@property (nonatomic, setter=_setLoadingContentRequestID:) long long _loadingContentRequestID; // @synthesize _loadingContentRequestID=__loadingContentRequestID;
-@property (strong, nonatomic, setter=_setPlayerItem:) AVPlayerItem *_playerItem; // @synthesize _playerItem=__playerItem;
+@property (strong, nonatomic, setter=_setLivePhoto:) PHLivePhoto *_livePhoto; // @synthesize _livePhoto=__livePhoto;
+@property (nonatomic, setter=_setLivePhotoRequestID:) int _livePhotoRequestID; // @synthesize _livePhotoRequestID=__livePhotoRequestID;
+@property (nonatomic, setter=_setLivePhotoRequestState:) long long _livePhotoRequestState; // @synthesize _livePhotoRequestState=__livePhotoRequestState;
 @property (strong, nonatomic, setter=_setPlayerLoader:) PULazyLoader *_playerLoader; // @synthesize _playerLoader=__playerLoader;
 @property (strong, nonatomic, setter=_setPlayerLoadingDisablingReasons:) NSMutableSet *_playerLoadingDisablingReasons; // @synthesize _playerLoadingDisablingReasons=__playerLoadingDisablingReasons;
-@property (nonatomic, setter=_setVideoRequestID:) int _videoRequestID; // @synthesize _videoRequestID=__videoRequestID;
-@property (nonatomic, setter=_setVideoRequestState:) long long _videoRequestState; // @synthesize _videoRequestState=__videoRequestState;
 @property (strong, nonatomic) id<PUDisplayAsset> asset; // @synthesize asset=_asset;
+@property (nonatomic) BOOL canPlayVitality; // @synthesize canPlayVitality=_canPlayVitality;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasPendingVitalityHint; // @synthesize hasPendingVitalityHint=_hasPendingVitalityHint;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isPlayerLoadingAllowed; // @synthesize isPlayerLoadingAllowed=_isPlayerLoadingAllowed;
 @property (readonly, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
@@ -58,28 +50,26 @@ __attribute__((visibility("hidden")))
 - (void)_cancelAllRequests;
 - (void)_configureAudioSession:(id)arg1;
 - (long long)_contentMode;
+- (void)_handleLivePhotoResult:(id)arg1 info:(id)arg2 requestID:(int)arg3;
 - (void)_handlePlayerUnloadWithRequestId:(long long)arg1;
-- (void)_handleResultWithImage:(id)arg1 info:(id)arg2;
-- (void)_handleResultWithPlayerItem:(id)arg1 info:(id)arg2;
-- (BOOL)_hasLoadingContentRequestCompleted;
-- (BOOL)_hasLoadingContentRequestFailed;
-- (BOOL)_isContentLoadingRequestCancelled;
+- (void)_installContentInPlayer;
 - (BOOL)_isContentLoadingRequestInProgress;
-- (void)_loadContent;
+- (void)_loadLivePhoto;
 - (void)_playerDidChange;
+- (void)_setCanPlayVitality:(BOOL)arg1;
 - (void)_setPlayerLoadingAllowed:(BOOL)arg1;
-- (void)_startImageRequest;
-- (void)_startVideoRequest;
 - (struct CGSize)_targetSize;
 - (void)_updateAudioCategory;
-- (void)_updateContentLoadingResult;
+- (void)_updateCanPlayVitality;
 - (id)currentChange;
 - (void)dealloc;
+- (void)didPlayVitalityHint;
 - (id)init;
 - (id)initWithAsset:(id)arg1 mediaProvider:(id)arg2;
 - (void)invalidateExistingPlayer;
 - (void)lazyLoadedDidLoadItem:(id)arg1;
 - (id)newViewModelChange;
+- (void)playVitalityHint;
 - (void)player:(id)arg1 didChangePlaybackState:(long long)arg2;
 - (void)player:(id)arg1 didChangePlayerStatus:(long long)arg2;
 - (id)playerCreateIfNeeded:(BOOL)arg1;

@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class GEOComposedRouteLeg;
+@class GEOComposedRouteLeg, GEOComposedRouteStep;
 
 @interface GEOComposedRouteSection : NSObject
 {
@@ -15,6 +15,7 @@
     CDStruct_b2fbf00d *_points;
     int _transportType;
     GEOComposedRouteLeg *_composedRouteLeg;
+    GEOComposedRouteStep *_composedRouteStep;
     unsigned long long _composedRouteLegIndex;
     CDStruct_02837cd9 _bounds;
     CDStruct_02837cd9 _overlayBounds;
@@ -24,6 +25,7 @@
 @property (readonly, nonatomic) CDStruct_90e2a262 bounds; // @synthesize bounds=_bounds;
 @property (readonly, nonatomic) GEOComposedRouteLeg *composedRouteLeg; // @synthesize composedRouteLeg=_composedRouteLeg;
 @property (readonly, nonatomic) unsigned long long composedRouteLegIndex; // @synthesize composedRouteLegIndex=_composedRouteLegIndex;
+@property (readonly, nonatomic) GEOComposedRouteStep *composedRouteStep; // @synthesize composedRouteStep=_composedRouteStep;
 @property (readonly, nonatomic) unsigned int endPointIndex;
 @property (readonly, nonatomic) unsigned long long finalStepIndex; // @synthesize finalStepIndex=_finalStepIndex;
 @property (readonly, nonatomic) unsigned int pointCount; // @synthesize pointCount=_pointCount;
@@ -31,6 +33,7 @@
 @property (readonly, nonatomic) unsigned int startPointIndex; // @synthesize startPointIndex=_startPointIndex;
 @property (readonly, nonatomic) int transportType; // @synthesize transportType=_transportType;
 
+- (void)_initStepForRoute:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)initWithRoute:(id)arg1 startPoint:(unsigned int)arg2 pointCount:(unsigned int)arg3 bounds:(CDStruct_90e2a262)arg4 transportType:(int)arg5 finalStepIndex:(unsigned long long)arg6;

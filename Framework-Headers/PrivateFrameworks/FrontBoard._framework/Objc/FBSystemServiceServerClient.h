@@ -16,6 +16,7 @@
     BOOL _uiApp;
     NSString *_bundleID;
     BOOL _extension;
+    BOOL _suspended;
     NSString *_facilityID;
     id<FBSystemServiceFacilityClient> _facilityclient;
     NSString *_bundlePath;
@@ -34,9 +35,12 @@
 @property (readonly, nonatomic) int pid;
 @property (readonly, strong, nonatomic) FBProcess *process;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic, getter=isSuspended) BOOL suspended; // @synthesize suspended=_suspended;
 
 - (void)dealloc;
 - (id)initWithConnection:(id)arg1;
+- (void)resume;
+- (void)suspend;
 
 @end
 

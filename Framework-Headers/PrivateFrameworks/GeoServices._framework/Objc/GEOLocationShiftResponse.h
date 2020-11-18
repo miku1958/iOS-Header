@@ -13,7 +13,6 @@
     CDStruct_bddcf505 _shiftedPixel;
 }
 
-@property (readonly) CDStruct_c3b9c2ee shiftedCoordinate;
 @property (nonatomic) CDStruct_bddcf505 shiftedPixel; // @synthesize shiftedPixel=_shiftedPixel;
 
 - (void)copyTo:(id)arg1;

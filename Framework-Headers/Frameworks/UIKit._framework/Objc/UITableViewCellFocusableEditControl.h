@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setSelected:(BOOL)arg1;
+- (BOOL)wantsImageShadow;
 - (BOOL)wantsMaskingWhileAnimatingDisabled;
 
 @end

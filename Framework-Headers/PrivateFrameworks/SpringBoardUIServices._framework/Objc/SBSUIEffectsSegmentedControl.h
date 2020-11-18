@@ -18,8 +18,7 @@
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (nonatomic) unsigned long long selectedEffect;
 
-- (void)dealloc;
-- (id)initWithParallaxPossible:(BOOL)arg1;
+- (void).cxx_destruct;
 - (id)initWithParallaxPossible:(BOOL)arg1 irisPossible:(BOOL)arg2;
 
 @end

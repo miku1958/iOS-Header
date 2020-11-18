@@ -28,5 +28,6 @@
 - (void)_remote_setClientLinkedOnVersion:(NSString *)arg1;
 - (void)_remote_setVisuallyEngaged:(BOOL)arg1;
 - (void)_remote_willBeginAdPlaybackForSlot:(NSString *)arg1 visuallyEngaged:(BOOL)arg2 adSpaceType:(int)arg3;
+- (void)_reportAdSpaceStatusEventWithAdOpportunityIdentifier:(NSString *)arg1 adOriginIdentifier:(NSString *)arg2 durationInFeed:(double)arg3 responseTime:(double)arg4 firstMessage:(BOOL)arg5 screenfuls:(long long)arg6 errorCode:(long long)arg7;
 @end
 

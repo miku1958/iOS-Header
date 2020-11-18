@@ -6,62 +6,38 @@
 
 #import <objc/NSObject.h>
 
-#import <AppConduit/ACXIDSSocketManagerDelegateProtocol-Protocol.h>
+#import <AppConduit/ACXInstallOperationDelegateProtocol-Protocol.h>
 
-@class ACXStreamingZipSocketSender, NSDictionary, NSString, NSURL;
-@protocol OS_dispatch_queue;
+@class NSDictionary, NSString, NSXPCConnection;
 
-@interface ACXInstallOperation : NSObject <ACXIDSSocketManagerDelegateProtocol>
+@interface ACXInstallOperation : NSObject <ACXInstallOperationDelegateProtocol>
 {
     BOOL _installPlaceholder;
-    BOOL _acquiredSocket;
-    unsigned char _nextMessageType;
-    BOOL _cancelled;
     CDUnknownBlockType _progressBlock;
     NSDictionary *_appSettingsDict;
-    NSObject<OS_dispatch_queue> *_queue;
     NSString *_bundleID;
-    CDUnknownBlockType _completion;
-    unsigned long long _lastPhase;
-    double _lastPercentComplete;
-    NSURL *_tempDir;
-    ACXStreamingZipSocketSender *_streamingZipSender;
-    NSURL *_snapshotURL;
+    NSXPCConnection *_xpcConnection;
+    CDUnknownBlockType _completionBlock;
 }
 
-@property BOOL acquiredSocket; // @synthesize acquiredSocket=_acquiredSocket;
 @property (strong) NSDictionary *appSettingsDict; // @synthesize appSettingsDict=_appSettingsDict;
 @property (readonly) NSString *bundleID; // @synthesize bundleID=_bundleID;
-@property BOOL cancelled; // @synthesize cancelled=_cancelled;
-@property (copy) CDUnknownBlockType completion; // @synthesize completion=_completion;
+@property (copy) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property BOOL installPlaceholder; // @synthesize installPlaceholder=_installPlaceholder;
-@property double lastPercentComplete; // @synthesize lastPercentComplete=_lastPercentComplete;
-@property unsigned long long lastPhase; // @synthesize lastPhase=_lastPhase;
-@property unsigned char nextMessageType; // @synthesize nextMessageType=_nextMessageType;
 @property (copy) CDUnknownBlockType progressBlock; // @synthesize progressBlock=_progressBlock;
-@property (readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (strong) NSURL *snapshotURL; // @synthesize snapshotURL=_snapshotURL;
-@property (strong) ACXStreamingZipSocketSender *streamingZipSender; // @synthesize streamingZipSender=_streamingZipSender;
 @property (readonly) Class superclass;
-@property (strong) NSURL *tempDir; // @synthesize tempDir=_tempDir;
+@property (readonly) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
 + (id)installOperationForBundleIdentifier:(id)arg1;
 - (void).cxx_destruct;
-- (void)_callCompletion:(id)arg1;
-- (void)_callProgressBlockWithPhase:(unsigned long long)arg1 percent:(double)arg2;
-- (void)_doTransferAndInstallForWatchKitAppWithBundleID:(id)arg1 size:(id)arg2;
-- (id)_makeTempDirectoryWithError:(id *)arg1;
-- (void)_prepForTransferAndInstall;
-- (id)_sendCancelMessage;
 - (void)beginWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)callCompletionBlockWithError:(id)arg1;
+- (void)callProgressBlockWithPhase:(unsigned long long)arg1 percentComplete:(double)arg2;
 - (void)cancel;
-- (void)dealloc;
 - (id)initWithBundleID:(id)arg1;
-- (void)receivedDictionaryOrData:(id)arg1;
-- (void)socketDidCloseWithError:(id)arg1;
 
 @end
 

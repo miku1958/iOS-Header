@@ -14,13 +14,13 @@
 {
     NSString *_originalCommandId;
     long long _category;
-    NSDictionary *_context;
+    NSDictionary *_eventInfo;
     NSNumber *_duration;
 }
 
 @property (nonatomic) long long category; // @synthesize category=_category;
-@property (copy, nonatomic) NSDictionary *context; // @synthesize context=_context;
 @property (strong, nonatomic) NSNumber *duration; // @synthesize duration=_duration;
+@property (copy, nonatomic) NSDictionary *eventInfo; // @synthesize eventInfo=_eventInfo;
 @property (copy, nonatomic) NSString *originalCommandId; // @synthesize originalCommandId=_originalCommandId;
 
 + (BOOL)supportsSecureCoding;
@@ -31,8 +31,8 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithOriginalCommandId:(id)arg1 category:(long long)arg2 context:(id)arg3 duration:(id)arg4;
 - (id)initWithOriginalCommandId:(id)arg1 category:(long long)arg2 duration:(id)arg3;
+- (id)initWithOriginalCommandId:(id)arg1 category:(long long)arg2 eventInfo:(id)arg3 duration:(id)arg4;
 
 @end
 

@@ -4,24 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SpringBoardFoundation/SBFDeviceLockModel-Protocol.h>
 
-@class NSDictionary, NSString, NSUserDefaults;
+@class NSDictionary, NSString, SBSecurityDefaults;
 @protocol OS_dispatch_queue, SBFDeviceLockModelDelegate;
 
 @interface SBFDeviceLockModelJournaledDefaults : NSObject <SBFDeviceLockModel>
 {
-    NSUserDefaults *_lockStateDefaults;
+    SBSecurityDefaults *_securityDefaults;
     NSString *_journalPath;
-    id<SBFDeviceLockModelDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_persistentStateQueue;
     BOOL _speculativePasscodeFailureChargeOutstanding;
     NSDictionary *_originalDefaultsForRollback;
     BOOL _pendingWipe;
     BOOL _permanentlyBlocked;
     double _unblockTime;
+    id<SBFDeviceLockModelDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -34,8 +34,10 @@
 @property (readonly, nonatomic) double timeUntilUnblockedSinceReferenceDate;
 
 + (id)_journaledDefaultsAndTypes;
+- (void).cxx_destruct;
 - (id)_copyLockControllerDefaults;
 - (void)_evaluatePendingWipe;
+- (BOOL)_isDeviceWipePreferenceEnabled;
 - (void)_loadLockControllerDefaults:(id)arg1;
 - (void)_loadLockControllerDefaultsJournalIfNecessary;
 - (void)_persistentStateQueue_beginSpeculativeFailureCharge;
@@ -47,9 +49,8 @@
 - (void)_persistentStateQueue_unlockSucceeded;
 - (void)_updateLockControllerDefaultsJournal;
 - (void)clearBlockedState;
-- (void)dealloc;
 - (id)init;
-- (id)initWithDefaultsDomain:(id)arg1 journalPath:(id)arg2;
+- (id)initWithJournalPath:(id)arg1;
 - (void)notePasscodeEntryBegan;
 - (void)notePasscodeEntryCancelled;
 - (void)notePasscodeUnlockFailedWithError:(id)arg1;

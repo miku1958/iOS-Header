@@ -22,6 +22,7 @@
 + (id)predicateWithProperty:(id)arg1 greaterThanValue:(id)arg2;
 + (id)predicateWithProperty:(id)arg1 lessThanOrEqualToValue:(id)arg2;
 + (id)predicateWithProperty:(id)arg1 lessThanValue:(id)arg2;
++ (id)predicateWithProperty:(id)arg1 likeValue:(id)arg2;
 + (id)predicateWithProperty:(id)arg1 notEqualToValue:(id)arg2;
 + (id)predicateWithProperty:(id)arg1 value:(id)arg2 comparisonType:(long long)arg3;
 - (void).cxx_destruct;

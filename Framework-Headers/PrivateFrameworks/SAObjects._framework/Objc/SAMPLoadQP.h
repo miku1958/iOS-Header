@@ -6,9 +6,13 @@
 
 #import <SAObjects/SADomainCommand.h>
 
+@class NSNumber;
+
 @interface SAMPLoadQP : SADomainCommand
 {
 }
+
+@property (copy, nonatomic) NSNumber *startPlaying;
 
 + (id)loadQP;
 + (id)loadQPWithDictionary:(id)arg1 context:(id)arg2;

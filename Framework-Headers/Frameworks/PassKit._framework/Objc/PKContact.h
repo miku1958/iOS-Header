@@ -26,6 +26,7 @@
 @property (strong, nonatomic) NSString *supplementarySubLocality; // @synthesize supplementarySubLocality=_supplementarySubLocality;
 
 + (BOOL)supportsSecureCoding;
+- (id)cnMutableContact;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

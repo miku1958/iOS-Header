@@ -30,6 +30,7 @@
 - (int)_autocapitalizeType;
 - (BOOL)_isEdited;
 - (id)autocapitalize;
+- (id)autocomplete;
 - (BOOL)autocorrect;
 - (BOOL)checkValidity;
 - (id)dirName;
@@ -40,6 +41,7 @@
 - (void)select;
 - (id)selectionDirection;
 - (void)setAutocapitalize:(id)arg1;
+- (void)setAutocomplete:(id)arg1;
 - (void)setAutocorrect:(BOOL)arg1;
 - (void)setCustomValidity:(id)arg1;
 - (void)setDirName:(id)arg1;

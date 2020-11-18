@@ -12,7 +12,7 @@
 {
 }
 
-@property (strong, nonatomic) NSSet *assetAttributes; // @dynamic assetAttributes;
+@property (strong, nonatomic) NSSet *assets; // @dynamic assets;
 @property (nonatomic) short cloudLocalState; // @dynamic cloudLocalState;
 @property (strong, nonatomic) NSString *cloudMasterGUID; // @dynamic cloudMasterGUID;
 @property (strong, nonatomic) NSDate *creationDate; // @dynamic creationDate;
@@ -26,10 +26,10 @@
 @property (strong, nonatomic) NSSet *resources; // @dynamic resources;
 @property (strong, nonatomic) NSString *uniformTypeIdentifier; // @dynamic uniformTypeIdentifier;
 
-+ (id)allCloudMastersInManagedObjectContext:(id)arg1;
 + (id)cloudMasterWithGUID:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)cloudMastersByGUID:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)cloudMastersWithGUIDs:(id)arg1 inManagedObjectContext:(id)arg2;
++ (void)deleteAllCloudMastersInManagedObjectContext:(id)arg1;
 + (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)insertIntoPhotoLibrary:(id)arg1 withCloudMasterGUID:(id)arg2;

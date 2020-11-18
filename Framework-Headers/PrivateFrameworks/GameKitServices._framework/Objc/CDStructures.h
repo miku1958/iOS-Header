@@ -33,6 +33,17 @@ struct _opaque_pthread_mutex_t {
     char __opaque[56];
 };
 
+struct addrinfo {
+    int _field1;
+    int _field2;
+    int _field3;
+    int _field4;
+    unsigned int _field5;
+    char *_field6;
+    struct sockaddr *_field7;
+    struct addrinfo *_field8;
+};
+
 struct in_addr {
     unsigned int s_addr;
 };

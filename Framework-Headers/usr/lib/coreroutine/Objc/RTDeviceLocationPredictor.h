@@ -47,7 +47,6 @@
 @property (strong, nonatomic) RTStateModel *stateModel; // @synthesize stateModel=_stateModel;
 @property (readonly) Class superclass;
 
-+ (id)sequentialClusterIdentificationIdentifier;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_clear;

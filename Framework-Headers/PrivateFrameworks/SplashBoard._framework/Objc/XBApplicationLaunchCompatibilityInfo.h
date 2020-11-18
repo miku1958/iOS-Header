@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SplashBoard/BSXPCCoding-Protocol.h>
+#import <SplashBoard/NSCoding-Protocol.h>
 
 @class NSArray, NSString, XBLaunchInterface;
 
-@interface XBApplicationLaunchCompatibilityInfo : NSObject <BSXPCCoding>
+@interface XBApplicationLaunchCompatibilityInfo : NSObject <BSXPCCoding, NSCoding>
 {
     XBLaunchInterface *_defaultInterface;
     BOOL _launchesOpaque;
@@ -43,9 +44,11 @@
 - (void)configureSnapshot:(id)arg1 forLaunchRequest:(id)arg2;
 - (void)configureSnapshot:(id)arg1 withLaunchImageForRequest:(id)arg2 remoteContextID:(unsigned int)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)existingLaunchImageForRequest:(id)arg1;
 - (id)initWithBundle:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (id)launchInterfaceIdentifierForRequest:(id)arg1;
 - (id)launchInterfaceWithIdentifier:(id)arg1;

@@ -28,10 +28,10 @@
     BOOL _endpointOnCurrentDevice;
     BOOL _shouldSuppressRingtone;
     BOOL _wantsHoldMusic;
+    BOOL _hasSentInvitation;
+    BOOL _connecting;
     BOOL _connected;
     BOOL _wasDialAssisted;
-    BOOL _connecting;
-    BOOL _hasSentInvitation;
     BOOL _hasBegunAudioInterruption;
     BOOL _requiresAudioReinterruption;
     BOOL _hasUpdatedAudio;
@@ -61,6 +61,7 @@
 }
 
 @property (nonatomic) int abUID; // @synthesize abUID=_abUID;
+@property (readonly, nonatomic, getter=isAlerting) BOOL alerting;
 @property (nonatomic) BOOL allowsTTYSettingChanges; // @synthesize allowsTTYSettingChanges=_allowsTTYSettingChanges;
 @property (readonly, copy, nonatomic) NSString *audioCategory;
 @property (readonly, copy, nonatomic) NSString *audioMode;
@@ -184,7 +185,6 @@
 - (id)initWithCall:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUniqueProxyIdentifier:(id)arg1;
-- (BOOL)isAlerting;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToCall:(id)arg1;
 - (BOOL)isMuted;

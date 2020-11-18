@@ -26,6 +26,7 @@
 - (BOOL)isSupervised;
 - (BOOL)isTeslaEnrolled;
 - (void)refreshDetailsFromDisk;
+- (int)userMode;
 
 @end
 

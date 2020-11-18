@@ -8,9 +8,16 @@
 
 @interface NSUserDefaults : NSObject
 {
-    id _private;
-    void *_reserved[4];
+    id _kvo_;
+    struct __CFString *_identifier_;
+    struct __CFString *_container_;
+    void *_reserved[2];
 }
+
+- (struct __CFString *)_container;
+- (struct __CFString *)_identifier;
+- (void)_setContainer:(struct __CFURL *)arg1;
+- (void)_setIdentifier:(struct __CFString *)arg1;
 
 @end
 

@@ -8,5 +8,6 @@
 
 @interface ACAccount (IC)
 - (BOOL)ic_hasICloudEmailAddress;
+- (BOOL)ic_isManagedAppleID;
 @end
 

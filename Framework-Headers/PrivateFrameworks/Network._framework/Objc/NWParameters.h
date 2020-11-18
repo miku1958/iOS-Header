@@ -96,6 +96,7 @@
 - (void)prohibitNetworkAgentsWithDomain:(id)arg1 type:(id)arg2;
 - (void)requireNetworkAgentWithDomain:(id)arg1 type:(id)arg2;
 - (void)requireNetworkAgentWithUUID:(id)arg1;
+- (void)setInitialDataPayload:(id)arg1;
 - (void)setSourceApplicationWithBundleID:(id)arg1;
 - (void)setSourceApplicationWithToken:(CDStruct_6ad76789)arg1;
 - (int)sslProtocolWithTLSVersion:(unsigned short)arg1;

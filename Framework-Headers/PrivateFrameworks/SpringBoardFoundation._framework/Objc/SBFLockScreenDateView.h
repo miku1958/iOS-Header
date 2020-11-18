@@ -36,6 +36,7 @@
 @property (nonatomic) double timeStrength; // @synthesize timeStrength=_timeStrength;
 
 + (double)defaultHeight;
+- (void).cxx_destruct;
 - (void)_addLabels;
 - (id)_dateColor;
 - (id)_dateFont;
@@ -50,7 +51,6 @@
 - (void)_updateLegibilityLabelsWithUpdatedDateString:(BOOL)arg1;
 - (void)_useLegibilityLabels:(BOOL)arg1;
 - (double)dateBaselineOffsetFromOrigin;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setContentAlpha:(double)arg1 withDateVisible:(BOOL)arg2;

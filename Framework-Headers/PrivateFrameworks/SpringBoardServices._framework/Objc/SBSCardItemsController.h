@@ -21,6 +21,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)addCardItems:(id)arg1;
 - (void)clearAllCardItems;
 - (void)dealloc;

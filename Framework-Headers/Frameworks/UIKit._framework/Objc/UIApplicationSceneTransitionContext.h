@@ -19,6 +19,7 @@
 @property (nonatomic) BOOL safeMode;
 @property (nonatomic) BOOL shouldTakeKeyboardFocus;
 @property (nonatomic) double userLaunchEventTime;
+@property (nonatomic) BOOL waitForBackgroundTaskCompletion;
 
 - (BOOL)isUISubclass;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;

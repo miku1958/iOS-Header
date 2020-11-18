@@ -10,7 +10,7 @@
 #import <PhotosUI/PUPhotosSectionHeaderViewDelegate-Protocol.h>
 #import <PhotosUI/PUSectionedGridLayoutDelegate-Protocol.h>
 
-@class NSString, PHCachingImageManager, PUGridRenderedStrip, PUMomentsZoomLevelManager, PUSectionedGridLayout, PUZoomableGridViewController;
+@class NSString, PHAssetResourceQualityClass, PHCachingImageManager, PUGridRenderedStrip, PUMomentsZoomLevelManager, PUSectionedGridLayout, PUZoomableGridViewController;
 
 __attribute__((visibility("hidden")))
 @interface PUGridZoomLevelInfo : NSObject <PUGridRenderedStripDataSource, PUPhotosSectionHeaderViewDelegate, PUSectionedGridLayoutDelegate>
@@ -25,9 +25,11 @@ __attribute__((visibility("hidden")))
     PUGridZoomLevelInfo *_baseZoomLevelInfo;
     PUZoomableGridViewController *_zoomableGridViewController;
     double _pendingContentWidth;
+    PHAssetResourceQualityClass *_qualityClass;
     NSString *_displayTitle;
     long long _maxRowsPerSection;
     struct CGSize _thumbnailImageSize;
+    struct CGSize _lastItemPixelSize;
 }
 
 @property (readonly, nonatomic) struct __CFString *aggregateLevelKey;
@@ -38,8 +40,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *displayTitle; // @synthesize displayTitle=_displayTitle;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) struct CGSize lastItemPixelSize; // @synthesize lastItemPixelSize=_lastItemPixelSize;
 @property (readonly, nonatomic) long long maxRowsPerSection; // @synthesize maxRowsPerSection=_maxRowsPerSection;
 @property (nonatomic) double pendingContentWidth; // @synthesize pendingContentWidth=_pendingContentWidth;
+@property (strong, nonatomic) PHAssetResourceQualityClass *qualityClass; // @synthesize qualityClass=_qualityClass;
 @property (readonly, nonatomic) NSString *renderedStripsElementKind;
 @property (readonly, nonatomic) NSString *sectionHeaderElementKind;
 @property (nonatomic) BOOL summarizeSections; // @synthesize summarizeSections=_summarizeSections;

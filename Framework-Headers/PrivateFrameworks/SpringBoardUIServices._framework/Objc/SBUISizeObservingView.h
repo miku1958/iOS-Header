@@ -14,8 +14,9 @@
     id<SBUISizeObservingViewDelegate> _delegate;
 }
 
-@property (nonatomic) id<SBUISizeObservingViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<SBUISizeObservingViewDelegate> delegate; // @synthesize delegate=_delegate;
 
+- (void).cxx_destruct;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 

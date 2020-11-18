@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface GEOSearchAttributionServerLocalProxy : NSObject <GEOSearchAttributionServerProxy>
 {
     NSMapTable *_listeners;
+    NSLock *_listenersLock;
     BOOL _updatingManifest;
     NSMutableArray *_updateManifestCompletionHandlers;
     NSMutableArray *_updateManifestErrorHandlers;

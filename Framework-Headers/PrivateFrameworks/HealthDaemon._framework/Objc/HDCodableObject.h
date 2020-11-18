@@ -31,7 +31,7 @@
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)decodedCreationDate;
+- (double)decodedCreationDate;
 - (id)decodedMetadata;
 - (id)decodedUUID;
 - (id)description;

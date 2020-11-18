@@ -7,7 +7,7 @@
 #import <Foundation/NSOperation.h>
 
 @class GSAddition, NSData, NSDictionary, NSError, NSURL, QLThumbnailAddition;
-@protocol QLThumbnailGenerationRequest;
+@protocol QLThumbnailGenerationRequest><NSXPCProxyCreating;
 
 @interface QLThumbnailStoreRetrievalOperation : NSOperation
 {
@@ -17,9 +17,12 @@
     BOOL _executing;
     BOOL _allowsThumbnailGeneration;
     BOOL _generateThumbnailsAtBackgroundPriority;
+    unsigned long long _activity;
+    unsigned long long _generationActivity;
     QLThumbnailAddition *_addition;
-    id<QLThumbnailGenerationRequest> _thumbnailRequest;
+    id<QLThumbnailGenerationRequest><NSXPCProxyCreating> _thumbnailRequest;
     NSURL *_destinationURL;
+    BOOL _thumbnailWasJustAutomaticallyGenerated;
 }
 
 @property BOOL allowsThumbnailGeneration; // @synthesize allowsThumbnailGeneration=_allowsThumbnailGeneration;
@@ -31,6 +34,7 @@
 @property (readonly) NSData *serializedQuickLookMetadataDictionary;
 @property (readonly) NSDictionary *thumbnailImagesDictionary;
 @property (readonly) BOOL thumbnailWasAutomaticallyGenerated;
+@property (readonly) BOOL thumbnailWasJustAutomaticallyGenerated; // @synthesize thumbnailWasJustAutomaticallyGenerated=_thumbnailWasJustAutomaticallyGenerated;
 
 + (BOOL)canMostRecentClientsGenerateThumbnailsForUTI:(id)arg1;
 - (void)_afterThumbnailIsGenerated;
@@ -45,6 +49,7 @@
 - (id)init;
 - (id)initWithDocumentAtURL:(id)arg1;
 - (BOOL)isConcurrent;
+- (id)issueSandboxExtension;
 - (void)main;
 - (void)start;
 

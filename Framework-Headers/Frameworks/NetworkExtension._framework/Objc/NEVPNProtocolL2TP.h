@@ -38,7 +38,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)migratePasswordsFromPreferences:(struct __SCPreferences *)arg1;
-- (void)removeKeychainItemsInDomain:(long long)arg1;
+- (void)removeKeychainItemsInDomain:(long long)arg1 keepIdentity:(BOOL)arg2;
 - (void)setIPSecSettingsFromLegacyDictionary:(id)arg1;
 - (BOOL)setServiceProtocolsInService:(struct __SCNetworkService *)arg1;
 - (void)syncWithKeychainInDomain:(long long)arg1 configuration:(id)arg2 suffix:(id)arg3;

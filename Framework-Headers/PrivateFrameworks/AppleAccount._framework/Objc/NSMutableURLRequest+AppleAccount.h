@@ -19,6 +19,7 @@
 - (BOOL)aa_addGrandSlamAuthorizationHeaderWithAccount:(id)arg1 grandslamToken:(id)arg2;
 - (void)aa_addLocationSharingAllowedHeader;
 - (void)aa_addLoggedInAppleIDHeaderWithAccount:(id)arg1;
+- (void)aa_addMultiUserDeviceHeaderIfEnabled;
 - (void)aa_addTokenAuthHeaderWithAccount:(id)arg1;
 - (void)aa_addiTunesHeadersWithAccount:(id)arg1;
 - (void)aa_setBodyWithParameters:(id)arg1;

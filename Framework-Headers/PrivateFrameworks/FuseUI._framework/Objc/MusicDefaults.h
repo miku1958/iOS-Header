@@ -20,7 +20,6 @@
 @property (readonly, nonatomic, getter=isGroupByAlbumArtistEnabled) BOOL groupByAlbumArtistEnabled;
 @property (readonly, nonatomic) BOOL hasSetVersionOfNoThanksOption;
 @property (readonly, nonatomic) BOOL hasSetVersionOfNotNowOption;
-@property (nonatomic) BOOL hasUserBeenNotifiedThatAudioBooksHaveMoved;
 @property (nonatomic) BOOL hasUserRequestedSubscriptionHidden;
 @property (nonatomic, getter=isInternalInstall) BOOL internalInstall; // @synthesize internalInstall=_internalInstall;
 @property (nonatomic) BOOL lastEffectiveRadioExplicitTracksEnabled;
@@ -33,6 +32,7 @@
 @property (readonly, nonatomic, getter=isPinningEnabled) BOOL pinningEnabled;
 @property (nonatomic) unsigned long long playbackSpeed;
 @property (nonatomic) BOOL playlistsOverviewShowsOnlyOfflinePlaylists;
+@property (nonatomic) float popularityIndicatorThreshold;
 @property (nonatomic) unsigned long long repeatType;
 @property (nonatomic) BOOL searchShouldDefaultToMyMusic;
 @property (copy, nonatomic) NSString *selectedLibraryViewIdentifier;
@@ -43,8 +43,12 @@
 @property (readonly, nonatomic, getter=isSortByArtistEnabled) BOOL sortByArtistEnabled;
 @property (readonly, nonatomic, getter=isSoundCheckEnabled) BOOL soundCheckEnabled;
 @property (copy, nonatomic) NSArray *tabBarOrdering;
-@property (nonatomic) long long versionOfNoThanksOptionWhenUserLastSawWelcomeScreen;
-@property (nonatomic) long long versionOfNotNowOptionWhenUserLastSawWelcomeScreen;
+@property (nonatomic) long long versionOfFormerFreeTrialWhenUserLastSawWelcomeScreen;
+@property (nonatomic) long long versionOfNoThanksWhenUserLastSawWelcomeScreen;
+@property (nonatomic) long long versionOfNotNowWhenUserLastSawWelcomeScreen;
+@property (strong, nonatomic) NSString *versionOfOSWhenFormerFreeTrialWelcomeScreenWasShown;
+@property (strong, nonatomic) NSString *versionOfOSWhenNoThanksWelcomeScreenWasShown;
+@property (strong, nonatomic) NSString *versionOfOSWhenNotNowWelcomeScreenWasShown;
 
 + (id)sharedDefaults;
 - (void)beginObservingDefaultsChanges;

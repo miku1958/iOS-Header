@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     BOOL m_readyForScroll;
     BOOL m_hasExplicitTextAlignment;
     BOOL m_hasExplicitLineHeight;
+    BOOL m_shouldAutoscrollAboveBottom;
     UITextInteractionAssistant *m_interactionAssistant;
     UIWebDocumentView *m_webView;
     UIFont *m_font;

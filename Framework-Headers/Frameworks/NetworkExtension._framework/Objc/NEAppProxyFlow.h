@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NEFlowMetaData;
+@class NEFlowMetaData, NSData;
 @protocol OS_dispatch_queue;
 
 @interface NEAppProxyFlow : NSObject
@@ -16,6 +16,7 @@
     NSObject<OS_dispatch_queue> *_queue;
 }
 
+@property (strong) NSData *applicationData;
 @property struct _NEFlow *flow; // @synthesize flow=_flow;
 @property (readonly) NEFlowMetaData *metaData; // @synthesize metaData=_metaData;
 @property (strong) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;

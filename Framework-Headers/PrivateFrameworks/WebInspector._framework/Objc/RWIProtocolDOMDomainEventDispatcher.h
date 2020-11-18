@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @interface RWIProtocolDOMDomainEventDispatcher : NSObject
 {
@@ -20,6 +20,8 @@
 - (void)documentUpdated;
 - (id)initWithController:(struct AugmentableInspectorController *)arg1;
 - (void)inlineStyleInvalidatedWithNodeIds:(id)arg1;
+- (void)pseudoElementAddedWithParentId:(int)arg1 pseudoElement:(id)arg2;
+- (void)pseudoElementRemovedWithParentId:(int)arg1 pseudoElementId:(int)arg2;
 - (void)setChildNodesWithParentId:(int)arg1 nodes:(id)arg2;
 - (void)shadowRootPoppedWithHostId:(int)arg1 rootId:(int)arg2;
 - (void)shadowRootPushedWithHostId:(int)arg1 root:(id)arg2;

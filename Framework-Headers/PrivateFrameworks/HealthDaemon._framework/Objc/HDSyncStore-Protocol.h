@@ -6,26 +6,15 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class NSArray, NSError, NSString, NSUUID;
-@protocol HDSyncChange;
+@class NSArray, NSString;
 
 @protocol HDSyncStore <NSObject>
-
-@property (readonly, copy, nonatomic) NSString *remoteProductType;
-@property (readonly, copy, nonatomic) NSString *remoteSystemBuildVersion;
-@property (readonly, nonatomic) BOOL shouldSynthesizeProvenance;
-@property (readonly, nonatomic) long long syncProvenance;
-@property (readonly, nonatomic) NSString *syncStoreDefaultSourceBundleIdentifier;
-@property (readonly, nonatomic) NSUUID *syncStoreDefaultSourceUUID;
-@property (readonly, nonatomic) NSString *syncStoreIdentifier;
-
-- (id<HDSyncChange>)newChangeWithSyncEntityClass:(Class)arg1;
-- (void)sendChange:(id<HDSyncChange>)arg1 withContext:(id)arg2 completion:(void (^)(BOOL, NSError *))arg3;
-- (NSArray *)syncEntities;
-- (unsigned long long)syncObjectLimitForEntityClass:(Class)arg1;
-
-@optional
-- (void)syncDidFinishWithSuccess:(BOOL)arg1 error:(NSError *)arg2 context:(id)arg3;
-- (void)syncWillBeginWithContext:(id)arg1;
+- (BOOL)enforceSyncEntityOrdering;
+- (NSArray *)orderedSyncEntities;
+- (Class)receivingSyncEntityClassForIncomingClass:(Class)arg1;
+- (BOOL)supportsSpeculativeChangesForSyncEntityClass:(Class)arg1;
+- (long long)syncProvenance;
+- (NSString *)syncStoreDefaultSourceBundleIdentifier;
+- (NSString *)syncStoreIdentifier;
 @end
 

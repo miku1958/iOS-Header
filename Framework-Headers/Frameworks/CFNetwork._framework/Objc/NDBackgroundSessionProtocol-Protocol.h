@@ -23,6 +23,6 @@
 - (void)setLoadingPoolPriority:(double)arg1 forTaskWithIdentifier:(unsigned long long)arg2;
 - (void)setPriority:(long long)arg1 forTaskWithIdentifier:(unsigned long long)arg2;
 - (void)suspendTaskWithIdentifier:(unsigned long long)arg1;
-- (void)uploadTaskWithRequest:(NSURLRequest *)arg1 originalRequest:(NSURLRequest *)arg2 fromFile:(NSURL *)arg3 sandboxExtensionData:(NSData *)arg4 identifier:(unsigned long long)arg5 reply:(void (^)(BOOL))arg6;
+- (void)uploadTaskWithRequest:(NSURLRequest *)arg1 originalRequest:(NSURLRequest *)arg2 fromFile:(NSURL *)arg3 sandboxExtensionData:(NSData *)arg4 identifier:(unsigned long long)arg5 potentialCredentials:(NSDictionary *)arg6 reply:(void (^)(BOOL))arg7;
 @end
 

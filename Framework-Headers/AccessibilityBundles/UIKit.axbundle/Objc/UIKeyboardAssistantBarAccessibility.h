@@ -13,12 +13,15 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityBarButtonItemLabelFromActionSelector:(SEL)arg1;
 - (BOOL)_accessibilityIsScannerGroup;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilityScannerGroupElements;
 - (int)_accessibilityScannerGroupTraits;
 - (void)_axAddCurrentGroup:(id)arg1 toElements:(id)arg2;
 - (id)accessibilityLabel;
 - (id)barButtonItem:(unsigned long long)arg1;
+- (void)didMoveToWindow;
 
 @end
 

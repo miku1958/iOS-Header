@@ -14,23 +14,19 @@ __attribute__((visibility("hidden")))
 @interface BRCSyncDownOperation : _BRCOperation <BRCOperationSubclass>
 {
     BRCServerZone *_serverZone;
-    BOOL _hasCaughtUp;
-    BOOL _isConsistent;
+    unsigned long long _editedAndDeletedRecordsCount;
+    BOOL _wantsCrossZoneMove;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasCaughtUp; // @synthesize hasCaughtUp=_hasCaughtUp;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isConsistent; // @synthesize isConsistent=_isConsistent;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_learnOwnerIdentity:(id)arg1;
-- (void)_performAfterFetchingOwnerIdentityForShareID:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_performAfterFetchingRecordChanges:(CDUnknownBlockType)arg1;
-- (void)_performAfterFetchingXattrsForRecordsByID:(id)arg1 block:(CDUnknownBlockType)arg2;
-- (void)_processXattrFetchWithRecord:(id)arg1 recordIDsToETags:(id)arg2 askedXattrs:(id)arg3;
+- (void)_startCreateZoneAndSubscriptionAndSyncDown;
+- (void)_startSyncDown;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)initWithServerZone:(id)arg1;
 - (void)main;

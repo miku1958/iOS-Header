@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) PLManagedAsset *asset;
 
 - (void).cxx_destruct;
-- (id)thumbnailImage;
 
 @end
 

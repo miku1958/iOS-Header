@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface VKGGLTransitTile : VKVectorTile
 {
     struct vector<vk::TransitLine, std::__1::allocator<vk::TransitLine>> _lines;
-    struct vector<vk::TransitLink, std::__1::allocator<vk::TransitLink>> _links;
+    vector_ea869f43 _links;
     list_59ba9859 _displayConnections;
     struct unique_ptr<vk::TransitJunctionManager, std::__1::default_delete<vk::TransitJunctionManager>> _junctionManager;
     vector_9021ffe9 _nodes;
@@ -21,19 +21,25 @@ __attribute__((visibility("hidden")))
     struct vector<std::__1::shared_ptr<vk::TransitParentNode>, std::__1::allocator<std::__1::shared_ptr<vk::TransitParentNode>>> _parentNodes;
     struct vector<std::__1::shared_ptr<vk::TransitOrphanNode>, std::__1::allocator<std::__1::shared_ptr<vk::TransitOrphanNode>>> _orphanNodes;
     struct unique_ptr<ggl::RibbonLayer<ggl::TransitRibbonDescriptor>, std::__1::default_delete<ggl::RibbonLayer<ggl::TransitRibbonDescriptor>>> _lineLayer;
+    struct map<unsigned int, ggl::RibbonBatch<ggl::TransitRibbonDescriptor>*, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, ggl::RibbonBatch<ggl::TransitRibbonDescriptor>*>>> _lineBatches;
     struct unique_ptr<ggl::TransitLineRibbon::Shader::Setup, std::__1::default_delete<ggl::TransitLineRibbon::Shader::Setup>> _lineStrokeShaderSetup;
     struct unique_ptr<ggl::TransitLineRibbon::Shader::Setup, std::__1::default_delete<ggl::TransitLineRibbon::Shader::Setup>> _lineFillShaderSetup;
     struct unique_ptr<md::StyleTexture<vk::TransitLineSegment::StylePixel>, std::__1::default_delete<md::StyleTexture<vk::TransitLineSegment::StylePixel>>> _lineFillStyleTexture;
     struct unique_ptr<md::StyleTexture<vk::TransitLineSegment::StylePixel>, std::__1::default_delete<md::StyleTexture<vk::TransitLineSegment::StylePixel>>> _lineStrokeStyleTexture;
     struct unique_ptr<ggl::RibbonLayer<ggl::RoadRibbonDescriptor>, std::__1::default_delete<ggl::RibbonLayer<ggl::RoadRibbonDescriptor>>> _displayConnectionLayer;
     struct LabelExternalObjectsModerator *_labelExternalObjectsModerator;
+    shared_ptr_887a193f _dataOverrideManager;
+    shared_ptr_6f1ea1a2 _interTileMediator;
+    BOOL _areNormalsSynchedForTileEdge[4];
+    BOOL _isNeighboringTilePresent[4];
     struct unordered_map<unsigned long long, std::__1::unordered_set<vk::TransitNode *, std::__1::hash<vk::TransitNode *>, std::__1::equal_to<vk::TransitNode *>, std::__1::allocator<vk::TransitNode *>>, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, std::__1::unordered_set<vk::TransitNode *, std::__1::hash<vk::TransitNode *>, std::__1::equal_to<vk::TransitNode *>, std::__1::allocator<vk::TransitNode *>>>>> _lineIDToAssociatedNodesMap;
+    double _worldUnitsPerMeter;
     float _lineInflation;
     float _displayConnectionInflation;
     float _alphaScale;
     BOOL _didLineDataChange;
+    BOOL _didNeighboringTilesChange;
     BOOL _shouldUpdateMergedLinesForNodes;
-    shared_ptr_887a193f _dataOverrideManager;
     VKAnimation *_animation;
 }
 
@@ -43,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct Setup *lineFillShaderSetup;
 @property (readonly, nonatomic) RibbonLayer_d95b4043 *lineLayer;
 @property (readonly, nonatomic) struct Setup *lineStrokeShaderSetup;
+@property (readonly, nonatomic) vector_ea869f43 *links; // @synthesize links=_links;
 @property (readonly, nonatomic) vector_9021ffe9 *nodes; // @synthesize nodes=_nodes;
 
 - (id).cxx_construct;
@@ -62,11 +69,14 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithKey:(const struct VKTileKey *)arg1 modelTile:(id)arg2 styleManager:(shared_ptr_f06afc6c)arg3 dataOverrideManager:(shared_ptr_887a193f)arg4 sharedResources:(id)arg5 contentScale:(double)arg6 device:(struct Device *)arg7 labelExternalObjectsModerator:(struct LabelExternalObjectsModerator *)arg8;
 - (float)minLineZoomForIDs:(const unordered_set_6cd805f9 *)arg1;
+- (void)neighborTileDidChange;
+- (void)populateSelectedLineBounds:(id)arg1;
 - (void)setAlphaScale:(float)arg1;
+- (void)setInterTileMediator:(const shared_ptr_6f1ea1a2 *)arg1;
 - (void)setSelectedLines:(const unordered_set_6cd805f9 *)arg1;
 - (void)setSelectedNodes:(const unordered_set_6cd805f9 *)arg1;
 - (void)updateDisplayConnectionStylesInContext:(id)arg1;
-- (void)updateLineStylesInContext:(id)arg1;
+- (void)updateLineStylesInContext:(id)arg1 lineMergingDisabled:(unsigned char)arg2;
 - (BOOL)updateLinesAtZoom:(float)arg1;
 - (void)updateNodeStylesInContext:(id)arg1;
 - (void)willAppear;

@@ -13,11 +13,15 @@ __attribute__((visibility("hidden")))
 
 - (BOOL)_boolDeviceInfoForKey:(struct __CFString *)arg1;
 - (id)_deviceInfoForKey:(struct __CFString *)arg1;
+- (id)_deviceInfoNumberForKey:(struct __CFString *)arg1;
 - (void)authTokenOfType:(long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (id)btMacAddress;
 - (id)deviceClass;
 - (id)deviceModelName;
 - (id)deviceName;
 - (id)deviceUDID;
+- (id)ecid;
+- (BOOL)hasSEP;
 - (id)imei;
 - (BOOL)isDeviceSecured;
 - (BOOL)isInternalBuild;
@@ -28,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)productName;
 - (id)productType;
 - (id)serialNumber;
+- (id)wifiMacAddress;
 
 @end
 

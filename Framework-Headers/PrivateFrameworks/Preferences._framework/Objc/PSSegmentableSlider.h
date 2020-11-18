@@ -12,11 +12,15 @@
 {
     UIColor *_trackMarkersColor;
     BOOL _segmented;
+    BOOL _locksToSegment;
+    BOOL _snapsToSegment;
     unsigned long long _segmentCount;
 }
 
+@property (nonatomic) BOOL locksToSegment; // @synthesize locksToSegment=_locksToSegment;
 @property (nonatomic) unsigned long long segmentCount; // @synthesize segmentCount=_segmentCount;
 @property (nonatomic, getter=isSegmented) BOOL segmented; // @synthesize segmented=_segmented;
+@property (nonatomic) BOOL snapsToSegment; // @synthesize snapsToSegment=_snapsToSegment;
 
 - (void).cxx_destruct;
 - (void)drawRect:(struct CGRect)arg1;

@@ -8,6 +8,7 @@
 
 @interface NSCalendar (HKCalendar)
 + (id)hk_gregorianCalendarWithUTCTimeZone;
+- (id)hk_dateBySubtractingDays:(unsigned long long)arg1 fromDate:(id)arg2;
 - (id)hk_startOfDateByAddingDays:(long long)arg1 toDate:(id)arg2;
 - (id)hk_startOfDateBySubtractingDays:(long long)arg1 fromDate:(id)arg2;
 - (id)hk_startOfFitnessWeekBeforeDate:(id)arg1;

@@ -7,7 +7,7 @@
 #import <GeoServices/GEOComposedTransitBaseRouteLeg.h>
 
 @class GEOComposedTransitTripRouteStep, NSArray, NSDate, NSTimeZone;
-@protocol GEOTransitArtworkDataSource, GEOTransitLine, GEOTransitSystem;
+@protocol GEOTransitLine, GEOTransitSystem;
 
 @interface GEOComposedTransitTripRouteLeg : GEOComposedTransitBaseRouteLeg
 {
@@ -15,7 +15,11 @@
     GEOComposedTransitTripRouteStep *_alightStep;
     GEOComposedTransitTripRouteStep *_blockTransferStep;
     unsigned long long _numberOfTransitStops;
-    unsigned long long _vehicleIndex;
+    unsigned long long _selectedRideOptionIndex;
+    NSArray *_actionSheetDescriptions;
+    NSArray *_routeDetailsOptionsArtwork;
+    NSArray *_actionSheetOptionsArtwork;
+    NSArray *_transitLineOptions;
 }
 
 @property (readonly, nonatomic) GEOComposedTransitTripRouteStep *alightStep; // @synthesize alightStep=_alightStep;
@@ -26,21 +30,23 @@
 @property (readonly, nonatomic) NSTimeZone *departureTimeZone;
 @property (readonly, nonatomic) NSArray *departureTimes;
 @property (readonly, nonatomic) NSDate *lastStepArrivalDate;
-@property (readonly, nonatomic) id<GEOTransitArtworkDataSource> routeLineArtwork;
+@property (readonly, nonatomic) unsigned long long rideOptionsCount;
+@property (readonly, nonatomic) NSArray *routeLineArtwork;
+@property (nonatomic) unsigned long long selectedRideOptionIndex; // @synthesize selectedRideOptionIndex=_selectedRideOptionIndex;
 @property (readonly, nonatomic) id<GEOTransitLine> transitLine;
+@property (readonly, nonatomic) NSArray *transitLineOptions; // @synthesize transitLineOptions=_transitLineOptions;
 @property (readonly, nonatomic) id<GEOTransitSystem> transitSystem;
-@property (readonly, nonatomic) unsigned long long vehicleCount;
-@property (nonatomic) unsigned long long vehicleIndex; // @synthesize vehicleIndex=_vehicleIndex;
 
 - (void)_cacheStepData;
 - (BOOL)_needsStepData;
+- (id)actionSheetArtworkForRideOption:(unsigned long long)arg1;
+- (id)actionSheetDescriptionForRideOption:(unsigned long long)arg1;
 - (id)blockTransferStep;
 - (void)dealloc;
-- (id)initWithComposedRoute:(id)arg1 stepRange:(struct _NSRange)arg2 transitStepRange:(struct _NSRange)arg3 pointRange:(struct _NSRange)arg4;
+- (id)initWithComposedRoute:(id)arg1 tripIndex:(unsigned long long)arg2 stepRange:(struct _NSRange)arg3 transitStepRange:(struct _NSRange)arg4 pointRange:(struct _NSRange)arg5;
 - (unsigned long long)numberOfTransitStops;
-- (id)routeDetailsPrimaryArtworkForVehicle:(unsigned long long)arg1;
-- (id)routeDetailsSecondaryArtworkForVehicle:(unsigned long long)arg1;
-- (id)steppingArtworkForVehicle:(unsigned long long)arg1;
+- (id)routeDetailsPrimaryArtworkForRideOption:(unsigned long long)arg1;
+- (id)transitLineForRideOption:(unsigned long long)arg1;
 
 @end
 

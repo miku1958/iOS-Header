@@ -28,6 +28,7 @@
 @property (readonly, copy, nonatomic) NSString *effectiveLocationBundleIdentifier;
 @property (readonly, nonatomic, getter=isEntitledForAPIAccess) BOOL entitledForAPIAccess;
 @property (readonly, nonatomic, getter=isEntitledForBackgroundMode) BOOL entitledForBackgroundMode;
+@property (readonly, nonatomic, getter=isEntitledForBridgeSPIAccess) BOOL entitledForBridgeSPIAccess;
 @property (readonly, nonatomic, getter=isEntitledForSPIAccess) BOOL entitledForSPIAccess;
 @property (readonly, nonatomic, getter=isEntitledMessage) BOOL entitledMessage; // @synthesize entitledMessage=_entitledMessage;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;

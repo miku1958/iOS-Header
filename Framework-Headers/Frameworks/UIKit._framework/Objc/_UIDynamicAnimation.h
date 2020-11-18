@@ -12,6 +12,7 @@
     int _state;
     unsigned int _began:1;
     unsigned int _running:1;
+    unsigned int _completing:1;
     unsigned int _yield:1;
     unsigned int _grouped:1;
     unsigned int _usesNSTimer:1;
@@ -28,6 +29,7 @@
 - (void)_appendSubclassDescription:(id)arg1 atLevel:(int)arg2;
 - (void)_callAppliers:(CDUnknownBlockType)arg1 additionalEndAppliers:(CDUnknownBlockType)arg2 done:(BOOL)arg3;
 - (void)_cancelWithAppliers:(CDUnknownBlockType)arg1;
+- (void)_completeWithFinished:(BOOL)arg1;
 - (BOOL)_isGrouped;
 - (BOOL)_isRunning;
 - (void)_setGrouped:(BOOL)arg1;

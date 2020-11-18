@@ -27,6 +27,7 @@
     BOOL _labelTileDecodeEnabled;
     BOOL _labelAllowDefaultStyle;
     BOOL _labelUpdateMapTilesContinuously;
+    BOOL _labelAutoOffsetRoadText;
     BOOL _paintRouteDebugMarkers;
     BOOL _dontMatchRouteLine;
     BOOL _dontMapMatchToSnappedRouteLine;
@@ -60,9 +61,11 @@
     BOOL _altitudePrintRenderedTilesStat;
     BOOL _altitudeDisableC3mTextureLoading;
     BOOL _altitudeShowTriggerbounds;
+    BOOL _disableTransitLineMerging;
+    BOOL _disableTransitLineGroupMerging;
     BOOL _dumpTransitTileContents;
     BOOL _dumpRouteAndPath;
-    BOOL _strictLineOffsetMatching;
+    BOOL _disableIntraLinkTransitLineCrossings;
     float _altitudeLodScale;
     float _altitudeTileQualityThreshold;
     float _altitudeHideMeshTime;
@@ -130,8 +133,11 @@
 @property (nonatomic) float altitudeTourSpeedupFactor; // @synthesize altitudeTourSpeedupFactor=_altitudeTourSpeedupFactor;
 @property (nonatomic) BOOL debugStyleAnimations; // @synthesize debugStyleAnimations=_debugStyleAnimations;
 @property (nonatomic) shared_ptr_f06afc6c debugStyleManager; // @synthesize debugStyleManager=_debugStyleManager;
+@property (nonatomic) BOOL disableIntraLinkTransitLineCrossings; // @synthesize disableIntraLinkTransitLineCrossings=_disableIntraLinkTransitLineCrossings;
 @property (nonatomic) BOOL disableRoute; // @synthesize disableRoute=_disableRoute;
 @property (nonatomic) BOOL disableStylesheetAnimations; // @synthesize disableStylesheetAnimations=_disableStylesheetAnimations;
+@property (nonatomic) BOOL disableTransitLineGroupMerging; // @synthesize disableTransitLineGroupMerging=_disableTransitLineGroupMerging;
+@property (nonatomic) BOOL disableTransitLineMerging; // @synthesize disableTransitLineMerging=_disableTransitLineMerging;
 @property (nonatomic) BOOL dontMapMatchToSnappedRouteLine; // @synthesize dontMapMatchToSnappedRouteLine=_dontMapMatchToSnappedRouteLine;
 @property (nonatomic) BOOL dontMatchRouteLine; // @synthesize dontMatchRouteLine=_dontMatchRouteLine;
 @property (nonatomic) BOOL dontVerifyRouteToTransitSnapping; // @synthesize dontVerifyRouteToTransitSnapping=_dontVerifyRouteToTransitSnapping;
@@ -156,6 +162,7 @@
 @property (nonatomic) BOOL isInstalledInLockScreen; // @synthesize isInstalledInLockScreen=_isInstalledInLockScreen;
 @property (nonatomic) BOOL keepTooCloseServerPositionedTransitFeatures; // @synthesize keepTooCloseServerPositionedTransitFeatures=_keepTooCloseServerPositionedTransitFeatures;
 @property (nonatomic) BOOL labelAllowDefaultStyle; // @synthesize labelAllowDefaultStyle=_labelAllowDefaultStyle;
+@property (nonatomic) BOOL labelAutoOffsetRoadText; // @synthesize labelAutoOffsetRoadText=_labelAutoOffsetRoadText;
 @property (nonatomic) BOOL labelCollideContinuously; // @synthesize labelCollideContinuously=_labelCollideContinuously;
 @property (nonatomic) BOOL labelCollisionEnabled; // @synthesize labelCollisionEnabled=_labelCollisionEnabled;
 @property (nonatomic) BOOL labelFlipAlternatePositionsEnable; // @synthesize labelFlipAlternatePositionsEnable=_labelFlipAlternatePositionsEnable;
@@ -191,7 +198,6 @@
 @property (nonatomic) BOOL readLandmarksFromDisk; // @synthesize readLandmarksFromDisk=_readLandmarksFromDisk;
 @property (nonatomic) BOOL realisticWireframeEnabled; // @synthesize realisticWireframeEnabled=_realisticWireframeEnabled;
 @property (nonatomic) BOOL renderInSeparateThread; // @synthesize renderInSeparateThread=_renderInSeparateThread;
-@property (nonatomic) BOOL strictLineOffsetMatching; // @synthesize strictLineOffsetMatching=_strictLineOffsetMatching;
 @property (nonatomic) BOOL trackingCameraAutoPitch; // @synthesize trackingCameraAutoPitch=_trackingCameraAutoPitch;
 @property (nonatomic) BOOL trackingCameraRoutePanning; // @synthesize trackingCameraRoutePanning=_trackingCameraRoutePanning;
 @property (nonatomic) BOOL trackingCameraZoomFurther; // @synthesize trackingCameraZoomFurther=_trackingCameraZoomFurther;

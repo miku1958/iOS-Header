@@ -6,7 +6,7 @@
 
 #import <CloudDocsDaemon/BRCLocalItem.h>
 
-@class BRCAliasItem, BRCDesiredVersion, BRCDirectoryItem, BRCItemID, BRCLocalVersion, NSDictionary, NSMutableSet, NSSet, NSString;
+@class BRCAliasItem, BRCDesiredVersion, BRCDirectoryItem, BRCItemID, BRCLocalVersion, NSDictionary, NSError, NSMutableSet, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface BRCDocumentItem : BRCLocalItem
@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL shouldHaveThumbnail;
 @property (readonly, nonatomic) BOOL shouldTransferThumbnail;
 @property (readonly, nonatomic) NSString *unsaltedBookmarkData;
-@property (readonly, nonatomic) unsigned int uploadStatus;
+@property (readonly, nonatomic) NSError *uploadError;
 
 + (id)bookmarkDataWithItemResolutionString:(id)arg1 serverZone:(id)arg2;
 + (id)bookmarkDataWithRelativePath:(id)arg1;

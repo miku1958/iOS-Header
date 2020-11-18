@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CADisplayLink, EAGLContext, FlameGroup, MISSING_TYPE, NSMutableArray, SUICAudioLevelSmoother, UIImage, UIImageView, UIScreen;
+@class CADisplayLink, EAGLContext, FlameGroup, MISSING_TYPE, NSMutableArray, SUICAudioLevelSmoother, UIColor, UIImage, UIImageView, UIScreen;
 @protocol SUICFlamesViewDelegate;
 
 @interface SUICFlamesView : UIView
@@ -39,6 +39,9 @@
     UIScreen *_screen;
     UIImageView *_overlayImageView;
     double _startTime;
+    double _dictationRedColor;
+    double _dictationGreenColor;
+    double _dictationBlueColor;
     SUICAudioLevelSmoother *_levelSmoother;
     int _fidelity;
     BOOL _isInitialized;
@@ -47,24 +50,29 @@
     BOOL _reduceMotionEnabled;
     BOOL _showAura;
     BOOL _reduceFrameRate;
+    BOOL _renderInBackground;
     int _mode;
     int _state;
     id<SUICFlamesViewDelegate> _delegate;
     UIImage *_overlayImage;
+    UIColor *_dictationColor;
     struct CGRect _activeFrame;
 }
 
 @property (nonatomic) struct CGRect activeFrame; // @synthesize activeFrame=_activeFrame;
 @property (weak, nonatomic) id<SUICFlamesViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) UIColor *dictationColor; // @synthesize dictationColor=_dictationColor;
 @property (nonatomic) int mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) UIImage *overlayImage; // @synthesize overlayImage=_overlayImage;
 @property (nonatomic) BOOL reduceFrameRate; // @synthesize reduceFrameRate=_reduceFrameRate;
+@property (nonatomic) BOOL renderInBackground; // @synthesize renderInBackground=_renderInBackground;
 @property (nonatomic) BOOL showAura; // @synthesize showAura=_showAura;
 @property (nonatomic) int state; // @synthesize state=_state;
 
 + (Class)layerClass;
 + (void)prewarmShadersForScreen:(id)arg1 size:(struct CGSize)arg2;
 + (void)prewarmShadersForScreen:(id)arg1 size:(struct CGSize)arg2 fidelity:(int)arg3;
++ (void)prewarmShadersForScreen:(id)arg1 size:(struct CGSize)arg2 fidelity:(int)arg3 prewarmInBackground:(BOOL)arg4;
 - (void).cxx_destruct;
 - (void)_cleanupGL;
 - (float)_currentMicPowerLevel;
@@ -94,6 +102,7 @@
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setHidden:(BOOL)arg1;
+- (void)stopRenderingAndCleanupGL;
 
 @end
 

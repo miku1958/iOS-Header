@@ -60,6 +60,7 @@
 - (void)getSubstrings:(vector_6c07be0f *)arg1 forCharacterRange:(struct _NSRange)arg2;
 - (void)getSubstrings:(vector_6c07be0f *)arg1 forTopoIDRange:(struct TopoIDRange)arg2;
 - (void)getSubstrings:(vector_6c07be0f *)arg1 inOrderedSubstrings:(vector_6c07be0f *)arg2 forCharacterRange:(struct _NSRange)arg3;
+- (BOOL)graphIsEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)i_saveDeltasSinceTimestamp:(id)arg1 toArchive:(struct String *)arg2;
 - (id)init;

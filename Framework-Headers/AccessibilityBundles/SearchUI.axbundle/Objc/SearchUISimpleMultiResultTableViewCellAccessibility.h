@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)updateExpanded:(BOOL)arg1;
+- (BOOL)_accessibilityIgnoreInternalLabels;
 
 @end
 

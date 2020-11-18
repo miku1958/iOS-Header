@@ -14,11 +14,13 @@
 
 @interface NEExtensionAppProxyProviderContext : NEExtensionTunnelProviderContext <NEExtensionAppProxyProviderProtocol, NEExtensionAppProxyProviderHostProtocol>
 {
+    unsigned int _delegateInterfaceIndex;
     NSObject<OS_dispatch_queue> *_flowQueue;
     struct _NEFlowDirector *_director;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property unsigned int delegateInterfaceIndex; // @synthesize delegateInterfaceIndex=_delegateInterfaceIndex;
 @property (readonly, copy) NSString *description;
 @property struct _NEFlowDirector *director; // @synthesize director=_director;
 @property (strong) NSObject<OS_dispatch_queue> *flowQueue; // @synthesize flowQueue=_flowQueue;
@@ -28,7 +30,7 @@
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
 - (void).cxx_destruct;
-- (void)completeSession;
+- (void)cancelWithError:(id)arg1;
 - (void)flowDivertMatchAppRulesWithFlow:(unsigned int)arg1 pid:(int)arg2 uuid:(unsigned char [16])arg3 signingIdentifier:(struct __CFString *)arg4;
 - (void)flowDivertNewFlow:(struct _NEFlow *)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)flowDivertOpenControlSocket;

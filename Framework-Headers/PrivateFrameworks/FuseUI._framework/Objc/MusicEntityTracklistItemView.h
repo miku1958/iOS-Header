@@ -10,7 +10,7 @@
 #import <FuseUI/MusicEntityContentDescriptorViewConfiguring-Protocol.h>
 #import <FuseUI/MusicEntityViewDownloadInformationObserving-Protocol.h>
 
-@class MPUNowPlayingIndicatorView, MusicDownloadProgressButton, MusicEntityViewContentDescriptor, NSMapTable, NSMutableArray, NSString, UIButton, UIImageView;
+@class MPUNowPlayingIndicatorView, MusicDownloadProgressButton, MusicEntityViewContentDescriptor, MusicPopularityIndicatorView, NSMapTable, NSMutableArray, NSString, UIButton, UIImageView;
 @protocol MusicEntityTracklistItemViewDelegate, MusicEntityValueProviding;
 
 @interface MusicEntityTracklistItemView : MusicEntityAbstractLockupView <MPUTextDrawingCacheInvalidationObserver, MusicEntityContentDescriptorViewConfiguring, MusicEntityViewDownloadInformationObserving>
@@ -20,6 +20,7 @@
     MPUNowPlayingIndicatorView *_indicatorView;
     UIImageView *_mediaTypeImageView;
     UIImageView *_explicitBadgeImageView;
+    MusicPopularityIndicatorView *_popularityIndicatorView;
     NSMapTable *_textDescriptorToTextDrawingView;
     NSMutableArray *_textDrawingViewReusePool;
     UIImageView *_trailingAccessoryImageView;

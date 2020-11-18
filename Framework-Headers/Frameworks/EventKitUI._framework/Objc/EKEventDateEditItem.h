@@ -89,13 +89,13 @@ __attribute__((visibility("hidden")))
 - (void)editor:(id)arg1 didSelectSubitem:(unsigned long long)arg2;
 - (void)editor:(id)arg1 didStartEditingItem:(id)arg2;
 - (void)endInlineEditing;
-- (BOOL)forceRefreshInviteesItemOnCommit;
-- (BOOL)forceRefreshLocationItemOnCommit;
+- (BOOL)forceRefreshInviteesItemOnSave;
+- (BOOL)forceRefreshLocationItemOnSave;
 - (id)init;
 - (BOOL)isInline;
 - (unsigned long long)numberOfSubitems;
 - (void)refreshFromCalendarItemAndStore;
-- (BOOL)requiresReconfigurationOnCommit;
+- (BOOL)requiresReconfigurationOnSave;
 - (BOOL)saveAndDismissWithForce:(BOOL)arg1;
 - (void)shortenCell:(id)arg1;
 - (void)timeZoneViewController:(id)arg1 didSelectTimeZone:(id)arg2;

@@ -20,6 +20,7 @@
     id *_jobsByPage;
     NSOperationQueue *_renderQueue;
     int _lock;
+    int jobsComplete;
 }
 
 @property (readonly) UIPDFDocument *document; // @synthesize document=_document;
@@ -36,6 +37,7 @@
 - (void)deliverImageOfPage:(unsigned long long)arg1 maxSize:(struct CGSize)arg2 quality:(BOOL *)arg3 receiver:(id)arg4 selector:(SEL)arg5 info:(id)arg6;
 - (void)didReceiveMemoryWarning:(id)arg1;
 - (id)getImageIfAvailableForPage:(unsigned long long)arg1;
+- (int)getRenderQueueJobsCount;
 - (id)initWithDocument:(id)arg1;
 - (id)initWithDocument:(id)arg1 cacheCount:(unsigned long long)arg2 lookAhead:(unsigned long long)arg3 withLookAheadResolution:(double)arg4;
 

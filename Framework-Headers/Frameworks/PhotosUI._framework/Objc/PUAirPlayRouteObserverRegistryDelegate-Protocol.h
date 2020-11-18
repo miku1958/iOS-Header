@@ -7,9 +7,9 @@
 #import <PhotosUI/NSObject-Protocol.h>
 
 @class PUAirPlayRouteObserverRegistry;
-@protocol PUAirPlayControllerRouteObserver;
+@protocol PHAirPlayControllerRouteObserver;
 
 @protocol PUAirPlayRouteObserverRegistryDelegate <NSObject>
-- (void)airPlayRouteObserverRegistryRouteAvailabilityChanged:(PUAirPlayRouteObserverRegistry *)arg1 forRouteObserver:(id<PUAirPlayControllerRouteObserver>)arg2;
+- (void)airPlayRouteObserverRegistryRouteAvailabilityChanged:(PUAirPlayRouteObserverRegistry *)arg1 forRouteObserver:(id<PHAirPlayControllerRouteObserver>)arg2;
 @end
 

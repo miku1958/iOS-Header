@@ -23,16 +23,18 @@
 @property (copy, nonatomic) CDUnknownBlockType modifySharesCompletionBlock; // @synthesize modifySharesCompletionBlock=_modifySharesCompletionBlock;
 @property (strong, nonatomic) NSMutableDictionary *savedSharesByShareID; // @synthesize savedSharesByShareID=_savedSharesByShareID;
 @property (strong, nonatomic) NSMutableDictionary *shareErrorsByShareID; // @synthesize shareErrorsByShareID=_shareErrorsByShareID;
-@property (readonly, nonatomic) NSArray *shareIDsToDelete; // @synthesize shareIDsToDelete=_shareIDsToDelete;
+@property (strong, nonatomic) NSArray *shareIDsToDelete; // @synthesize shareIDsToDelete=_shareIDsToDelete;
 @property (strong, nonatomic) NSMutableDictionary *sharesByShareID; // @synthesize sharesByShareID=_sharesByShareID;
-@property (readonly, nonatomic) NSArray *sharesToSave; // @synthesize sharesToSave=_sharesToSave;
+@property (strong, nonatomic) NSArray *sharesToSave; // @synthesize sharesToSave=_sharesToSave;
 
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleProgressCallback:(id)arg1;
 - (unsigned long long)activityStart;
+- (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
 - (id)initWithSharesToSave:(id)arg1 shareIDsToDelete:(id)arg2;
 - (void)performCKOperation;

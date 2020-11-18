@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CellularPlanManager/CTCellularPlanClientDelegate-Protocol.h>
 
@@ -47,6 +47,7 @@
 - (void)isRoamingPlanSupportAvailable:(CDUnknownBlockType)arg1;
 - (void)latitudeLongitudeOverride:(CDUnknownBlockType)arg1;
 - (void)launchSequoia;
+- (void)manageAccountForPlan:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)mccMncOverride:(CDUnknownBlockType)arg1;
 - (void)openInternalUrlId:(long long)arg1;
 - (void)planInfoDidUpdate;

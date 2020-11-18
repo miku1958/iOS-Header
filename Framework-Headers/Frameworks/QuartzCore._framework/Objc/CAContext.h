@@ -12,6 +12,7 @@
 {
 }
 
+@property BOOL colorMatchUntaggedContent; // @dynamic colorMatchUntaggedContent;
 @property struct CGColorSpace *colorSpace; // @dynamic colorSpace;
 @property (readonly) unsigned int contextId; // @dynamic contextId;
 @property (strong) CALayer *layer; // @dynamic layer;

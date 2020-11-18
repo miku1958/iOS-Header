@@ -16,10 +16,12 @@
     BLTPBBulletin *_bulletin;
     unsigned int _updateType;
     BOOL _shouldPlayLightsAndSirens;
+    BOOL _trafficRestricted;
     struct {
         unsigned int date:1;
         unsigned int updateType:1;
         unsigned int shouldPlayLightsAndSirens:1;
+        unsigned int trafficRestricted:1;
     } _has;
 }
 
@@ -28,8 +30,10 @@
 @property (readonly, nonatomic) BOOL hasBulletin;
 @property (nonatomic) BOOL hasDate;
 @property (nonatomic) BOOL hasShouldPlayLightsAndSirens;
+@property (nonatomic) BOOL hasTrafficRestricted;
 @property (nonatomic) BOOL hasUpdateType;
 @property (nonatomic) BOOL shouldPlayLightsAndSirens; // @synthesize shouldPlayLightsAndSirens=_shouldPlayLightsAndSirens;
+@property (nonatomic) BOOL trafficRestricted; // @synthesize trafficRestricted=_trafficRestricted;
 @property (nonatomic) unsigned int updateType; // @synthesize updateType=_updateType;
 
 - (void).cxx_destruct;

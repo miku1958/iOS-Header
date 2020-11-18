@@ -6,16 +6,16 @@
 
 #import <HealthDaemon/HDHealthService.h>
 
-@class CBCharacteristic, HDHealthDevicePropertyManager;
+@class CBCharacteristic, HDHealthServicePropertyManager;
 
 @interface HDBatteryService : HDHealthService
 {
-    HDHealthDevicePropertyManager *_propertyManager;
+    HDHealthServicePropertyManager *_propertyManager;
     CBCharacteristic *_batteryCharacteristic;
 }
 
 @property (strong, nonatomic) CBCharacteristic *batteryCharacteristic; // @synthesize batteryCharacteristic=_batteryCharacteristic;
-@property (weak, nonatomic) HDHealthDevicePropertyManager *propertyManager; // @synthesize propertyManager=_propertyManager;
+@property (weak, nonatomic) HDHealthServicePropertyManager *propertyManager; // @synthesize propertyManager=_propertyManager;
 
 + (id)implementedProperties;
 + (long long)serviceType;

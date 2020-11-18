@@ -6,12 +6,12 @@
 
 #import <PhotosUI/PUActivity.h>
 
-#import <PhotosUI/PUAirPlayControllerRouteObserver-Protocol.h>
+#import <PhotosUI/PHAirPlayControllerRouteObserver-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface PUAirPlayActivity : PUActivity <PUAirPlayControllerRouteObserver>
+@interface PUAirPlayActivity : PUActivity <PHAirPlayControllerRouteObserver>
 {
     BOOL __routeAvailable;
     BOOL __needsUpdateRouteAvailable;

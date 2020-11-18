@@ -60,6 +60,7 @@
 - (id)serializeWithPathData:(BOOL)arg1;
 - (id)serializeWithPathData:(BOOL)arg1 toVersion:(unsigned int *)arg2;
 - (void)setCommandIDForInsertion:(id)arg1;
+- (void)setTransientOrientation:(long long)arg1;
 - (void)sortCommands;
 - (struct CGSize)unrotatedFullSize;
 

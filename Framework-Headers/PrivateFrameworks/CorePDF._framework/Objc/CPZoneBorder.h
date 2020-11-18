@@ -46,6 +46,7 @@
 - (void)dealloc;
 - (BOOL)extractCycleTo:(id)arg1 goingForward:(BOOL)arg2 startingAtIndex:(unsigned int)arg3;
 - (BOOL)extractCycleTo:(id)arg1 goingForward:(BOOL)arg2 throughIntersectionIndex:(unsigned int)arg3 returningTo:(id)arg4 atRect:(struct CGRect *)arg5;
+- (id)getNextBorder:(unsigned int)arg1;
 - (id)graphicObjectAtIndex:(unsigned int)arg1;
 - (unsigned int)graphicObjectCount;
 - (id)graphicObjects;

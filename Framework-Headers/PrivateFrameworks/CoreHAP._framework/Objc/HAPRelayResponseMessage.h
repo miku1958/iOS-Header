@@ -12,17 +12,22 @@
 {
     HAPRelayRequestMessage *_request;
     unsigned long long _type;
+    long long _statusCode;
     NSData *_body;
 }
 
 @property (strong, nonatomic) NSData *body; // @synthesize body=_body;
 @property (readonly, nonatomic, getter=isEncrypted) BOOL encrypted;
 @property (readonly, nonatomic) HAPRelayRequestMessage *request; // @synthesize request=_request;
+@property (readonly, nonatomic) long long statusCode; // @synthesize statusCode=_statusCode;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
 - (BOOL)_deserializeResponseMessage:(id)arg1;
+- (id)debugDescription;
+- (id)description;
 - (id)initWithRequest:(id)arg1 serializedMessage:(id)arg2;
+- (id)shortDescription;
 
 @end
 

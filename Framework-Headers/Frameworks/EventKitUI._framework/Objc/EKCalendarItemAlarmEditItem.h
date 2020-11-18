@@ -6,7 +6,7 @@
 
 #import <EventKitUI/EKCalendarItemEditItem.h>
 
-@class CalendarEventAlarmTable, NSArray;
+@class CalendarEventAlarmTable, EKAlarmsViewModel, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface EKCalendarItemAlarmEditItem : EKCalendarItemEditItem
@@ -18,7 +18,10 @@ __attribute__((visibility("hidden")))
     BOOL _userChangedAlarm;
     BOOL _hasLeaveNowAlarm;
     BOOL _canHaveLeaveNowAlarm;
+    EKAlarmsViewModel *_alarmsViewModel;
 }
+
+@property (strong, nonatomic) EKAlarmsViewModel *alarmsViewModel; // @synthesize alarmsViewModel=_alarmsViewModel;
 
 + (id)_labelTextForIndex:(unsigned long long)arg1;
 - (void).cxx_destruct;
@@ -29,7 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (BOOL)configureForCalendarConstraints:(id)arg1;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
-- (BOOL)editItemViewControllerCommit:(id)arg1;
+- (BOOL)editItemViewControllerSave:(id)arg1;
 - (id)init;
 - (unsigned long long)numberOfSubitems;
 - (void)refreshFromCalendarItemAndStore;

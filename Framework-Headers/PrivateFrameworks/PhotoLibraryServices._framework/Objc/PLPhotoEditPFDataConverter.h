@@ -21,17 +21,17 @@
 @property (readonly) Class superclass;
 
 + (id)_filtersForLegacyAutoEnhanceSettingsDictionary:(id)arg1;
++ (id)_formatVersion;
++ (id)_knownFormatIdentifiers;
 + (id)_knownFormatVersions;
 + (id)_settingsDictionaryForLegacyAutoEnhanceFilters:(id)arg1;
 + (long long)_supportLevelForSettings:(id)arg1 typesForKnownKeys:(id)arg2 requiredKeys:(id)arg3;
 + (id)_supportedAdjustments;
 + (BOOL)_validateValueTypesForKeys:(id)arg1 requiredKeys:(id)arg2 inDictionary:(id)arg3 error:(id *)arg4;
 + (BOOL)canInterpretDataWithFormatIdentifier:(id)arg1 formatVersion:(id)arg2;
-+ (id)dataFromPhotoEditModel:(id)arg1 imageWidth:(unsigned long long)arg2 imageHeight:(unsigned long long)arg3 exifOrientation:(int)arg4;
++ (id)dataFromPhotoEditModel:(id)arg1 outFormatIdentifier:(id *)arg2 outFormatVersion:(id *)arg3 exportProperties:(id)arg4;
 + (id)debugDescriptionForPhotoEditData:(id)arg1 formatIdentifier:(id)arg2 formatVersion:(id)arg3;
-+ (id)formatIdentifier;
-+ (id)formatVersion;
-+ (BOOL)loadPhotoEditData:(id)arg1 formatIdentifier:(id)arg2 formatVersion:(id)arg3 intoModel:(id)arg4 baseOrientation:(long long)arg5;
++ (BOOL)loadPhotoEditData:(id)arg1 formatIdentifier:(id)arg2 formatVersion:(id)arg3 intoModel:(id)arg4 importProperties:(id)arg5;
 + (BOOL)validateAdjustmentsEnvelope:(id)arg1;
 
 @end

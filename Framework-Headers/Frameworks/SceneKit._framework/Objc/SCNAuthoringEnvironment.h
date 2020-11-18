@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE, NSArray, NSIndexSet, NSMutableArray, NSMutableOrderedSet, NSOrderedSet, NSSet, SCNManipulator;
 @protocol SCNAuthoringEnvironmentDelegate, SCNSceneRenderer;

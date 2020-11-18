@@ -7,6 +7,8 @@
 #import <Foundation/NSData.h>
 
 @interface NSData (CPLSyncAnchorDescription)
+- (id)cplQueryCursorDescription;
+- (id)cplQueryCursorSimpleDescription;
 - (id)cplSyncAnchorDescription;
 - (id)cplSyncAnchorSimpleDescription;
 @end

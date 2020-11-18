@@ -16,10 +16,11 @@
     CLLocation *_updatedLocation;
     NSString *_assetDescription;
     PHChangeRequestHelper *_helper;
-    BOOL _entitled;
+    BOOL _clientEntitled;
     BOOL _didSetVisibilityState;
     NSString *_clientName;
     BOOL _didChangeAdjustments;
+    BOOL _duplicateAllowsPrivateMetadata;
     unsigned short _photoIrisVisibilityState;
     int _clientProcessID;
     PHContentEditingOutput *_contentEditingOutput;
@@ -32,6 +33,7 @@
 }
 
 @property (strong, nonatomic) NSString *assetDescription;
+@property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled; // @synthesize clientEntitled=_clientEntitled;
 @property (readonly, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property (readonly, nonatomic) int clientProcessID; // @synthesize clientProcessID=_clientProcessID;
 @property (strong, nonatomic) PHContentEditingOutput *contentEditingOutput; // @synthesize contentEditingOutput=_contentEditingOutput;
@@ -39,8 +41,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL didChangeAdjustments; // @synthesize didChangeAdjustments=_didChangeAdjustments;
+@property (readonly, nonatomic) BOOL duplicateAllowsPrivateMetadata; // @synthesize duplicateAllowsPrivateMetadata=_duplicateAllowsPrivateMetadata;
 @property (readonly, copy, nonatomic) NSString *editorBundleID; // @synthesize editorBundleID=_editorBundleID;
-@property (readonly, nonatomic, getter=isEntitled) BOOL entitled; // @synthesize entitled=_entitled;
 @property (nonatomic, getter=isFavorite) BOOL favorite;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PHChangeRequestHelper *helper; // @synthesize helper=_helper;
@@ -77,7 +79,7 @@
 - (id)init;
 - (id)initWithHelper:(id)arg1;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
-- (id)initWithXPCDict:(id)arg1 entitled:(BOOL)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
+- (id)initWithXPCDict:(id)arg1 clientEntitled:(BOOL)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
 - (BOOL)isHiding;
 - (BOOL)isRevertingContentToOriginal;
 - (void)markDidChangeAdjustments;
@@ -87,9 +89,10 @@
 - (BOOL)validateAdjustmentDataForAssetMutation:(id)arg1 error:(id *)arg2;
 - (BOOL)validateAssetDescription:(id)arg1 error:(id *)arg2;
 - (BOOL)validateContentEditingOutput:(id)arg1 error:(id *)arg2;
-- (BOOL)validateContentURL:(id)arg1 error:(id *)arg2 writeAccessRequired:(BOOL)arg3;
 - (BOOL)validateMutationsToManagedObject:(id)arg1 error:(id *)arg2;
+- (BOOL)validateReadAccessForContentURL:(id)arg1 assetResource:(id)arg2 error:(id *)arg3;
 - (BOOL)validateVideoURLForAssetMutation:(id)arg1 error:(id *)arg2;
+- (BOOL)validateWriteAccessForContentURL:(id)arg1 error:(id *)arg2;
 
 @end
 

@@ -17,17 +17,19 @@
 {
     AVAsset *_video;
     ISPlayerView *_playerView;
+    long long _playbackState;
     id<SBFIrisWallpaperViewDelegate> _irisDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) id<SBFIrisWallpaperViewDelegate> irisDelegate;
+@property (weak, nonatomic) id<SBFIrisWallpaperViewDelegate> irisDelegate; // @synthesize irisDelegate=_irisDelegate;
 @property (readonly, nonatomic) long long irisPlaybackState;
 @property (readonly, nonatomic) BOOL isIrisInteracting;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_newImageView;
 - (void)dealloc;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;

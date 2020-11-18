@@ -15,6 +15,7 @@
     BOOL _returningFromPINSheetWithSuccess;
     BOOL _shouldEraseWithFMiP;
     BOOL _shouldTryEraseAgainWithFMiP;
+    BOOL _shouldEraseDataPlans;
     int _codesNeeded;
     int _codesEntered;
     PSSpecifier *_currentSpecifier;
@@ -46,7 +47,6 @@
 - (void)resetKeyboardDictionary:(id)arg1;
 - (void)resetNetworkSettings:(id)arg1;
 - (void)resetPrivacyWarnings:(id)arg1;
-- (BOOL)shouldShowRoamingErasePrompt;
 - (id)specifiers;
 - (void)subscriberOptions:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

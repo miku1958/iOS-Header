@@ -13,6 +13,7 @@
 - (BOOL)br_isCloudDocsMigrationComplete;
 - (BOOL)br_isEnabledForCloudDocs;
 - (BOOL)br_isEnabledForUbiquity;
+- (BOOL)br_isManagedAppleID;
 - (BOOL)br_isPrimaryAccount;
 - (BOOL)br_isPrimaryiCloudAccount;
 - (BOOL)br_isiCloudAccount;

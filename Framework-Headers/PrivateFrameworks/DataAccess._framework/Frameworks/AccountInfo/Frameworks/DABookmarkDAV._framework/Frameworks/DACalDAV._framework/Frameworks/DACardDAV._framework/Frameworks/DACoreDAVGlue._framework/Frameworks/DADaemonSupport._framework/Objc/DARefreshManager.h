@@ -11,6 +11,7 @@
 
 @interface DARefreshManager : NSObject
 {
+    BOOL _persistAPSAfterShutdown;
     NSMutableDictionary *_enabledTopicWrappersByEnv;
     NSMutableDictionary *_suspendedTopicWrappersByEnv;
     NSMutableSet *_wrappers;
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) APSConnection *connection; // @synthesize connection=_connection;
 @property (strong, nonatomic) NSMutableDictionary *enabledTopicWrappersByEnv; // @synthesize enabledTopicWrappersByEnv=_enabledTopicWrappersByEnv;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *pcQueue; // @synthesize pcQueue=_pcQueue;
+@property (nonatomic) BOOL persistAPSAfterShutdown; // @synthesize persistAPSAfterShutdown=_persistAPSAfterShutdown;
 @property (strong, nonatomic) NSMutableDictionary *suspendedTopicWrappersByEnv; // @synthesize suspendedTopicWrappersByEnv=_suspendedTopicWrappersByEnv;
 @property (strong, nonatomic) NSTimer *tokenRegistrationTimer; // @synthesize tokenRegistrationTimer=_tokenRegistrationTimer;
 @property (strong, nonatomic) NSMutableSet *wrappers; // @synthesize wrappers=_wrappers;
@@ -35,30 +37,28 @@
 - (int)_currentTruePCStyleForDelegate:(id)arg1;
 - (id)_enabledTopicsForWrapper:(id)arg1;
 - (void)_fakeTokenReceive;
-- (void)_forcePushDisabledForWrapper:(id)arg1;
-- (void)_listenForPushSettingsChange;
 - (int)_overriddenPCStyleForWrapper:(id)arg1;
 - (void)_performBlockOnRefreshManagerThread:(CDUnknownBlockType)arg1;
-- (void)_pushPreferenceDidChange;
+- (id)_portNameForEnvironmentName:(id)arg1;
 - (void)_pushRegistrationForDelegateFailed:(id)arg1;
 - (id)_refreshWrapperForDelegate:(id)arg1;
 - (void)_registerAPSTopics;
 - (void)_registerAPSTopicsForDelegates:(id)arg1 withConnection:(id)arg2;
 - (void)_resumeTopicsForSuspendedDelegate:(id)arg1;
-- (void)_stopListeningForPushSettingsChange;
 - (void)_suspendTopicsForDelegate:(id)arg1;
 - (id)_suspendedTopicsForWrapper:(id)arg1;
 - (void)_tearDownAPS;
+- (void)_tearDownAllApsConnections;
 - (void)_unregisterTopicLocked:(id)arg1 forDelegate:(id)arg2 inEnvironment:(id)arg3;
 - (void)_unregisterWrapper:(id)arg1 forTopic:(id)arg2 inTopicDictionary:(id)arg3;
-- (id)_wrapperForManager:(id)arg1;
 - (BOOL)_wrapperIsSuspended:(id)arg1;
 - (void)connection:(id)arg1 didReceiveMessageForTopic:(id)arg2 userInfo:(id)arg3;
 - (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;
-- (void)connectionManager:(id)arg1 handleEvent:(int)arg2;
 - (void)dealloc;
 - (void)delegateDidCompleteRefresh:(id)arg1;
+- (void)establishAllApsConnections;
 - (id)init;
+- (void)pushPreferenceDidChange;
 - (id)pushTokenForEnvironment:(id)arg1;
 - (void)registerDelegate:(id)arg1;
 - (void)registerTopic:(id)arg1 forDelegate:(id)arg2 inEnvironment:(id)arg3;

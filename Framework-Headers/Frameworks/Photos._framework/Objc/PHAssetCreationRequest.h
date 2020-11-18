@@ -15,16 +15,22 @@
     NSMutableArray *_assetResources;
     PHAssetResourceBag *_assetResourceBag;
     NSMutableDictionary *_movedFiles;
+    BOOL _duplicateAllowsPrivateMetadata;
+    BOOL _duplicateLivePhotoAsStill;
+    NSString *_duplicateAssetIdentifier;
     PHAssetCreationPhotoStreamPublishingRequest *__photoStreamPublishingRequest;
 }
 
 @property (readonly, nonatomic) NSDictionary *_movedFiles;
 @property (strong, nonatomic, setter=_setPhotoStreamPublishingRequest:) PHAssetCreationPhotoStreamPublishingRequest *_photoStreamPublishingRequest; // @synthesize _photoStreamPublishingRequest=__photoStreamPublishingRequest;
+@property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
 @property (readonly, nonatomic) NSString *clientName;
 @property (readonly, nonatomic) int clientProcessID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic, getter=isEntitled) BOOL entitled;
+@property (nonatomic, setter=_setDuplicateAllowsPrivateMetadata:) BOOL duplicateAllowsPrivateMetadata;
+@property (strong, nonatomic, setter=_setDuplicateAssetIdentifier:) NSString *duplicateAssetIdentifier; // @synthesize duplicateAssetIdentifier=_duplicateAssetIdentifier;
+@property (nonatomic, setter=_setDuplicateLivePhotoAsStill:) BOOL duplicateLivePhotoAsStill; // @synthesize duplicateLivePhotoAsStill=_duplicateLivePhotoAsStill;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *managedEntityName;
 @property (readonly, getter=isNew) BOOL new;
@@ -35,6 +41,8 @@
 + (BOOL)_createAssetFromImageData:(id)arg1 imageType:(id)arg2 uuid:(id)arg3 error:(id *)arg4;
 + (id)_creationRequestForAssetUsingUUID:(id)arg1;
 + (id)creationRequestForAsset;
++ (id)creationRequestForAssetCopyFromAsset:(id)arg1;
++ (id)creationRequestForAssetCopyStillPhotoFromLivePhotoAsset:(id)arg1;
 + (id)creationRequestForAssetFromImage:(id)arg1;
 + (id)creationRequestForAssetFromImageAtFileURL:(id)arg1;
 + (id)creationRequestForAssetFromImageData:(id)arg1;
@@ -44,16 +52,21 @@
 + (BOOL)supportsAssetResourceTypes:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addResourceWithType:(long long)arg1 data:(id)arg2 orFileURL:(id)arg3 options:(id)arg4;
+- (void)_copyMetadataFromAsset:(id)arg1;
 - (BOOL)_createAssetAsAdjusted:(id)arg1 fromValidatedResources:(id)arg2 error:(id *)arg3;
 - (BOOL)_createAssetAsPhotoIris:(id)arg1 fromValidatedResources:(id)arg2 error:(id *)arg3;
 - (BOOL)_createAssetFromValidatedResources:(id)arg1 uuid:(id)arg2 photoLibrary:(id)arg3 error:(id *)arg4;
 - (void)_didMoveFileFromURL:(id)arg1 toURL:(id)arg2;
+- (id)_duplicatedAssetResourcesFromAsset:(id)arg1 flattenLivePhotoIntoStillPhoto:(BOOL)arg2 error:(id *)arg3;
+- (id)_exifPropertiesFromSourceImageDataExifProperties:(id)arg1;
 - (id)_managedAssetFromData:(id)arg1 photoLibrary:(id)arg2 getImageSource:(struct CGImageSource **)arg3 imageData:(id *)arg4;
 - (long long)_mediaTypeForCreatedAsset;
+- (BOOL)_populateDuplicatingAssetCreationRequest:(id)arg1 error:(id *)arg2;
 - (void)_resetMovedFiles;
 - (BOOL)_restoreMovedFilesOnFailure;
 - (id)_secureMove:(BOOL)arg1 assetResource:(id)arg2 error:(id *)arg3;
 - (id)_secureMove:(BOOL)arg1 fileAtURL:(id)arg2 toURL:(id)arg3 error:(id *)arg4;
+- (void)_updateMutationsForDuplicatingPrivateMetadataFromAsset:(id)arg1;
 - (void)addResourceWithType:(long long)arg1 data:(id)arg2 options:(id)arg3;
 - (void)addResourceWithType:(long long)arg1 fileURL:(id)arg2 options:(id)arg3;
 - (BOOL)canGenerateUUIDLocally;
@@ -62,7 +75,7 @@
 - (id)initForNewObject;
 - (id)initForNewObjectWithUUID:(id)arg1;
 - (id)initWithHelper:(id)arg1;
-- (id)initWithXPCDict:(id)arg1 entitled:(BOOL)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
+- (id)initWithXPCDict:(id)arg1 clientEntitled:(BOOL)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
 - (void)performTransactionCompletionHandlingInPhotoLibrary:(id)arg1;
 - (id)placeholderForCreatedAsset;
 - (BOOL)validateInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;

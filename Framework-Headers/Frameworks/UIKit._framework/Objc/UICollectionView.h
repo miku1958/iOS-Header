@@ -123,6 +123,7 @@
         unsigned int dataSourceCanMoveItemAtIndexPath:1;
         unsigned int dataSourceMoveItemAtIndexPath:1;
         unsigned int dataSourceWasNonNil:1;
+        unsigned int dataSourceWillRequestCellForItemAtIndexPath:1;
         unsigned int reloadSkippedDuringSuspension:1;
         unsigned int scheduledUpdateVisibleCells:1;
         unsigned int scheduledUpdateVisibleCellLayoutAttributes:1;
@@ -147,6 +148,11 @@
         unsigned int inCreateTemplateCell:1;
     } _collectionViewFlags;
     struct CGPoint _lastLayoutOffset;
+    long long _prefetchMode;
+    NSMutableDictionary *_prefetchCacheItems;
+    NSMutableArray *_prefetchCandidateItems;
+    struct CGRect _previousVisibleBounds;
+    struct CGVector _previousPrefetchUnitVector;
     CDUnknownBlockType _navigationCompletion;
     UIFocusContainerGuide *_endOfContentFocusContainerGuide;
     UICollectionViewCell *_currentPromiseFulfillmentCell;
@@ -201,6 +207,7 @@
 - (void)_cellDidBecomeFocused:(id)arg1;
 - (void)_cellDidBecomeUnfocused:(id)arg1;
 - (void)_cellMenuDismissed;
+- (long long)_cellPrefetchMode;
 - (void)_checkForPreferredAttributesInView:(id)arg1 originalAttributes:(id)arg2;
 - (id)_childFocusRegionsInRect:(struct CGRect)arg1;
 - (void)_cleanUpAfterInteractiveTransitionDidFinish:(BOOL)arg1;
@@ -211,6 +218,7 @@
 - (id)_createPreparedSupplementaryViewForElementOfKind:(id)arg1 atIndexPath:(id)arg2 withLayoutAttributes:(id)arg3 applyAttributes:(BOOL)arg4;
 - (id)_createTemplateLayoutCellForCellsWithIdentifier:(id)arg1;
 - (BOOL)_dataSourceImplementsNumberOfSections;
+- (id)_delegatePreferredIndexPath;
 - (struct CGPoint)_delegateTargetOffsetForProposedContentOffset:(struct CGPoint)arg1;
 - (id)_dequeueReusableViewOfKind:(id)arg1 withIdentifier:(id)arg2 forIndexPath:(id)arg3 viewCategory:(unsigned long long)arg4;
 - (void)_deselectAllAnimated:(BOOL)arg1 notifyDelegate:(BOOL)arg2;
@@ -249,12 +257,14 @@
 - (void)_performBatchUpdates:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2 invalidationContext:(id)arg3 tentativelyForReordering:(BOOL)arg4;
 - (id)_pivotForTransitionFromLayout:(id)arg1 toLayout:(id)arg2;
 - (id)_preReorderingIndexPathForLayoutIndexPath:(id)arg1;
+- (unsigned long long)_prefetchItemsForVelocity:(struct CGVector)arg1 maxItemsToPrefetch:(unsigned long long)arg2;
 - (void)_prepareLayoutForUpdates;
 - (void)_prepareViewForUse:(id)arg1 withElementCategory:(unsigned long long)arg2 elementKind:(id)arg3 reuseIdentifier:(id)arg4 indexPath:(id)arg5;
 - (void)_prepareViewForUse:(id)arg1 withElementCategory:(unsigned long long)arg2 elementKind:(id)arg3 reuseIdentifier:(id)arg4 indexPath:(id)arg5 applyDefaultAttributes:(BOOL)arg6;
 - (void)_reloadDataIfNeeded;
 - (BOOL)_remembersPreviouslyFocusedItem;
 - (id)_reorderedItemForView:(id)arg1;
+- (void)_resetPrefetchState;
 - (void)_resumeReloads;
 - (void)_reuseCell:(id)arg1;
 - (void)_reusePreviouslyFocusedManagedSubviewIfNeeded:(id)arg1;
@@ -266,6 +276,7 @@
 - (void)_selectAllSelectedItems;
 - (void)_selectItemAtIndexPath:(id)arg1 animated:(BOOL)arg2 scrollPosition:(unsigned long long)arg3 notifyDelegate:(BOOL)arg4;
 - (id)_selectableIndexPathForItemContainingHitView:(id)arg1;
+- (void)_setCellPrefetchMode:(long long)arg1;
 - (void)_setCollectionViewLayout:(id)arg1 animated:(BOOL)arg2 isInteractive:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_setExternalObjectTable:(id)arg1 forNibLoadingOfCellWithReuseIdentifier:(id)arg2;
 - (void)_setExternalObjectTable:(id)arg1 forNibLoadingOfSupplementaryViewOfKind:(id)arg2 withReuseIdentifier:(id)arg3;
@@ -298,7 +309,7 @@
 - (void)_updateSections:(id)arg1 updateAction:(int)arg2;
 - (void)_updateTrackedLayoutValuesWith:(id)arg1;
 - (void)_updateTransitionWithProgress:(double)arg1;
-- (void)_updateVisibleCellsNow:(BOOL)arg1;
+- (unsigned long long)_updateVisibleCellsNow:(BOOL)arg1;
 - (void)_updateWithItems:(id)arg1 tentativelyForReordering:(BOOL)arg2;
 - (void)_userSelectItemAtIndexPath:(id)arg1;
 - (id)_viewAnimationsForCurrentUpdate;

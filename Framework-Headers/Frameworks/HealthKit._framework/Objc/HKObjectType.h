@@ -33,6 +33,7 @@
 + (BOOL)_allowAuthorizationForSharingWithTypes:(id)arg1 entitlements:(id)arg2 disallowedTypes:(id)arg3;
 + (void)_insertCode:(long long)arg1 forIdentifier:(id)arg2;
 + (id)activityCacheType;
++ (id)activitySummaryType;
 + (id)briskMinuteDataType;
 + (id)calorieGoal;
 + (id)categoryTypeForIdentifier:(id)arg1;
@@ -42,6 +43,7 @@
 + (id)dataTypeWithCode:(long long)arg1;
 + (id)quantityTypeForIdentifier:(id)arg1;
 + (BOOL)supportsSecureCoding;
++ (id)watchActivationType;
 + (id)workoutType;
 - (void).cxx_destruct;
 - (BOOL)_allowAuthorizationForReadingWithEntitlements:(id)arg1;

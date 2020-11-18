@@ -7,8 +7,8 @@
 #import <UIKit/UIViewController.h>
 
 #import <PhotosUI/OKPresentationViewControllerDelegate-Protocol.h>
-#import <PhotosUI/PUAirPlayControllerContentProvider-Protocol.h>
-#import <PhotosUI/PUAirPlayControllerRouteObserver-Protocol.h>
+#import <PhotosUI/PHAirPlayControllerContentProvider-Protocol.h>
+#import <PhotosUI/PHAirPlayControllerRouteObserver-Protocol.h>
 #import <PhotosUI/PUSlideshowDisplayContext-Protocol.h>
 #import <PhotosUI/PUSlideshowSettingsViewControllerDelegate-Protocol.h>
 #import <PhotosUI/PUSlideshowViewModelChangeObserver-Protocol.h>
@@ -19,7 +19,7 @@
 @protocol PUSlideshowViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PUSlideshowViewController : UIViewController <UIGestureRecognizerDelegate, PUSlideshowViewModelChangeObserver, PUSlideshowSettingsViewControllerDelegate, OKPresentationViewControllerDelegate, PUAirPlayControllerContentProvider, PUAirPlayControllerRouteObserver, PUViewControllerSpecChangeObserver, PUSlideshowDisplayContext>
+@interface PUSlideshowViewController : UIViewController <UIGestureRecognizerDelegate, PUSlideshowViewModelChangeObserver, PUSlideshowSettingsViewControllerDelegate, OKPresentationViewControllerDelegate, PHAirPlayControllerContentProvider, PHAirPlayControllerRouteObserver, PUViewControllerSpecChangeObserver, PUSlideshowDisplayContext>
 {
     OKPresentationViewController *_currentPresentationController;
     PUSlideshowViewControllerSpec *_spec;

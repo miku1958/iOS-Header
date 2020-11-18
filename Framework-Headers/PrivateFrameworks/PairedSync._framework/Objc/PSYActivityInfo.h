@@ -17,6 +17,7 @@
     NSArray *_dependencies;
     NSString *_priority;
     NSNumber *_timeoutSeconds;
+    NSArray *_sessionTypes;
     NSString *_backboardPrelaunchBundleIdentifier;
 }
 
@@ -25,6 +26,7 @@
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (copy, nonatomic) NSString *machServiceName; // @synthesize machServiceName=_machServiceName;
 @property (copy, nonatomic) NSString *priority; // @synthesize priority=_priority;
+@property (copy, nonatomic) NSArray *sessionTypes; // @synthesize sessionTypes=_sessionTypes;
 @property (copy, nonatomic) NSNumber *timeoutSeconds; // @synthesize timeoutSeconds=_timeoutSeconds;
 
 + (id)activityWithPlist:(id)arg1;

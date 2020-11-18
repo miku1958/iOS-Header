@@ -8,7 +8,7 @@
 
 #import <IDS/IDSDaemonListenerProtocol-Protocol.h>
 
-@class IDSDevice, NSArray, NSData, NSDate, NSDictionary, NSMapTable, NSMutableArray, NSString;
+@class NSArray, NSData, NSDate, NSDictionary, NSMapTable, NSMutableArray, NSString;
 
 @interface _IDSAccount : NSObject <IDSDaemonListenerProtocol>
 {
@@ -18,7 +18,6 @@
     NSString *_service;
     NSMutableArray *_devices;
     NSMutableArray *_suppressedDevices;
-    IDSDevice *_localDevice;
     id _delegateContext;
     NSMapTable *_delegateToInfo;
     NSMapTable *_registrationDelegateToInfo;
@@ -59,6 +58,9 @@
 @property (readonly, strong, nonatomic) NSString *uniqueID;
 @property (readonly, strong, nonatomic) NSArray *vettedAliases;
 
+- (void)_callConnectedDevicesChanged;
+- (void)_callDelegatesRespondingToSelector:(SEL)arg1 withPreCallbacksBlock:(CDUnknownBlockType)arg2 callbackBlock:(CDUnknownBlockType)arg3 postCallbacksBlock:(CDUnknownBlockType)arg4;
+- (void)_callDelegatesRespondingToSelector:(SEL)arg1 withPreCallbacksBlock:(CDUnknownBlockType)arg2 callbackBlock:(CDUnknownBlockType)arg3 postCallbacksBlock:(CDUnknownBlockType)arg4 group:(id)arg5;
 - (void)_callDelegatesWithBlock:(CDUnknownBlockType)arg1;
 - (void)_callDelegatesWithBlock:(CDUnknownBlockType)arg1 group:(id)arg2;
 - (void)_callDevicesChanged;
@@ -70,6 +72,7 @@
 - (void)_loadCachedDevices;
 - (id)_objectForKey:(id)arg1;
 - (id)_registeredURIs;
+- (void)_reloadCachedDevices;
 - (void)_reregisterAndReidentify:(BOOL)arg1;
 - (void)_setObject:(id)arg1 forKey:(id)arg2;
 - (void)_updateDependentDevicesWithDevicesInfo:(id)arg1;
@@ -87,10 +90,10 @@
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
 - (void)addRegistrationDelegate:(id)arg1 queue:(id)arg2;
 - (void)authenticateAccount;
+- (id)connectedDevices;
 - (void)deactivateAndPurgeIdentify;
 - (void)dealloc;
 - (void)device:(id)arg1 nsuuidChanged:(id)arg2;
-- (id)init;
 - (id)initWithDictionary:(id)arg1 uniqueID:(id)arg2 serviceName:(id)arg3 delegateContext:(id)arg4;
 - (id)initWithLoginID:(id)arg1 uniqueID:(id)arg2 serviceName:(id)arg3 delegateContext:(id)arg4;
 - (void)passwordUpdated;

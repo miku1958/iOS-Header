@@ -11,14 +11,14 @@
 @interface _HDSQLiteEntityColumn : NSObject
 {
     NSString *_name;
-    NSString *_databaseType;
+    NSString *_columnType;
     unsigned long long _keyPathType;
     Class _targetEntityClass;
     NSString *_targetProperty;
     long long _deletionAction;
 }
 
-@property (readonly, copy, nonatomic) NSString *databaseType; // @synthesize databaseType=_databaseType;
+@property (readonly, copy, nonatomic) NSString *columnType; // @synthesize columnType=_columnType;
 @property (readonly, nonatomic) long long deletionAction; // @synthesize deletionAction=_deletionAction;
 @property (readonly, nonatomic) unsigned long long keyPathType; // @synthesize keyPathType=_keyPathType;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
@@ -26,9 +26,10 @@
 @property (readonly, copy, nonatomic) NSString *targetProperty; // @synthesize targetProperty=_targetProperty;
 
 - (void).cxx_destruct;
+- (id)_columnNameAndTypeString;
 - (id)creationSQL;
 - (id)description;
-- (id)initWithName:(id)arg1 databaseType:(id)arg2 keyPathType:(unsigned long long)arg3 targetEntityClass:(Class)arg4 targetProperty:(id)arg5 deletionAction:(long long)arg6;
+- (id)initWithName:(id)arg1 columnType:(id)arg2 keyPathType:(unsigned long long)arg3 targetEntityClass:(Class)arg4 targetProperty:(id)arg5 deletionAction:(long long)arg6;
 
 @end
 

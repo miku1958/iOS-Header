@@ -6,11 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <SpringBoardUI/SBLegibility-Protocol.h>
+#import <SpringBoardUI/SBUILegibility-Protocol.h>
 
 @class NSString, _UILegibilityView;
 
-@interface SBLockScreenTimerDialView : UIView <SBLegibility>
+@interface SBLockScreenTimerDialView : UIView <SBUILegibility>
 {
     _UILegibilityView *_dialView;
     double _strength;
@@ -22,9 +22,9 @@
 @property (nonatomic) double strength; // @synthesize strength=_strength;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_imageNameForCurrentContentSize:(id)arg1;
 - (id)_newDialViewForSettings:(id)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)updateForChangedSettings:(id)arg1;

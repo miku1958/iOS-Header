@@ -47,5 +47,7 @@ typedef struct {
     long long _field3;
     double _field4;
     double _field5;
-} CDStruct_57d1beb2;
+    double _field6;
+    double _field7;
+} CDStruct_595f0d30;
 

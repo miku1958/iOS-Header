@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CPLResource, NSArray, NSDate, NSString, NSURL;
+@class CPLResource, NSArray, NSString, NSURL;
 
 @protocol CPLDaemonLibraryManagerMinimalProtocol
 - (void)addInfoToLog:(NSString *)arg1;
-- (void)beginDownloadForResource:(CPLResource *)arg1 clientBundleID:(NSString *)arg2 highPriority:(BOOL)arg3 reply:(void (^)(NSString *))arg4;
+- (void)beginDownloadForResource:(CPLResource *)arg1 clientBundleID:(NSString *)arg2 highPriority:(BOOL)arg3 proposedTaskIdentifier:(NSString *)arg4 reply:(void (^)(NSString *))arg5;
 - (void)cancelTaskWithIdentifier:(NSString *)arg1;
 - (void)closeLibraryWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)cloudCacheGetDescriptionForRecordWithIdentifier:(NSString *)arg1 related:(BOOL)arg2 completionHandler:(void (^)(id, id, NSError *))arg3;
@@ -32,6 +32,5 @@
 - (void)resetStatus;
 - (void)setDiagnosticsEnabled:(BOOL)arg1;
 - (void)startSyncSession;
-- (void)takeStatisticsSnapshotSinceDate:(NSDate *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
 @end
 

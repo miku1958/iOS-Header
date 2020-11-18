@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, PHAsset;
+#import <PhotosUI/NSProgressReporting-Protocol.h>
+
+@class NSArray, NSMutableArray, NSMutableDictionary, NSProgress, NSString, PHAsset;
 
 __attribute__((visibility("hidden")))
-@interface PUResourceDownloadRequest : NSObject
+@interface PUResourceDownloadRequest : NSObject <NSProgressReporting>
 {
     NSMutableDictionary *_progressByRequestIdentifier;
     CDUnknownBlockType _downloadCompletionHandler;
@@ -17,23 +19,36 @@ __attribute__((visibility("hidden")))
     BOOL __downloadCanceled;
     PHAsset *_asset;
     long long _requestType;
-    double _progress;
+    double _progressFraction;
+    NSProgress *_progress;
     CDUnknownBlockType _progressChangeHandler;
+    NSArray *__assetResources;
+    NSMutableArray *__activeAssetResourcesRequest;
 }
 
+@property (readonly, nonatomic) NSMutableArray *_activeAssetResourcesRequest; // @synthesize _activeAssetResourcesRequest=__activeAssetResourcesRequest;
+@property (strong, nonatomic, setter=_setAssetResources:) NSArray *_assetResources; // @synthesize _assetResources=__assetResources;
 @property (nonatomic, getter=_isDownloadCanceled, setter=_setDownloadCanceled:) BOOL _downloadCanceled; // @synthesize _downloadCanceled=__downloadCanceled;
 @property (readonly) PHAsset *asset; // @synthesize asset=_asset;
-@property (nonatomic) double progress; // @synthesize progress=_progress;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) NSProgress *progress; // @synthesize progress=_progress;
 @property (copy, nonatomic) CDUnknownBlockType progressChangeHandler; // @synthesize progressChangeHandler=_progressChangeHandler;
+@property (nonatomic) double progressFraction; // @synthesize progressFraction=_progressFraction;
 @property (readonly) long long requestType; // @synthesize requestType=_requestType;
 @property (nonatomic) BOOL shouldTreatLivePhotosAsStills; // @synthesize shouldTreatLivePhotosAsStills=_shouldTreatLivePhotosAsStills;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_cancelActiveAssetResourceRequests;
 - (void)_didFinishDownloadWithSuccess:(BOOL)arg1 error:(id)arg2;
+- (void)_fetchResourcesForDuplicatingAsset:(id)arg1 networkAccessAllowed:(BOOL)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_fetchResourcesForEditingAsset:(id)arg1 networkAccessAllowed:(BOOL)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_fetchResourcesForSharingAsset:(id)arg1 networkAccessAllowed:(BOOL)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_fetchResourcesWithNetworkAccessAllowed:(BOOL)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)_setProgress:(double)arg1;
+- (void)_handleCompletionOfAssetResourceDataRequestWithId:(int)arg1 error:(id)arg2;
+- (void)_setProgressFraction:(double)arg1;
 - (void)_simulateFetchResourcesWithDuration:(double)arg1 success:(BOOL)arg2 networkAccessAllowed:(BOOL)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)_updateCombinedProgressWithValue:(double)arg1 forRequestIdentifier:(id)arg2 networkAccessAllowed:(BOOL)arg3;
 - (void)cancelDownloadRequest;

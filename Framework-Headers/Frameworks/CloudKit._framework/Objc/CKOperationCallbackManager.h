@@ -12,15 +12,19 @@
 {
     NSMutableDictionary *_progressCallbacks;
     NSMutableDictionary *_completionCallbacks;
+    NSMutableDictionary *_checkpointCallbacks;
 }
 
+@property (strong) NSMutableDictionary *checkpointCallbacks; // @synthesize checkpointCallbacks=_checkpointCallbacks;
 @property (strong) NSMutableDictionary *completionCallbacks; // @synthesize completionCallbacks=_completionCallbacks;
 @property (strong) NSMutableDictionary *progressCallbacks; // @synthesize progressCallbacks=_progressCallbacks;
 
 - (void).cxx_destruct;
+- (void)handleOperationCheckpoint:(id)arg1 forOperationWithID:(id)arg2;
 - (void)handleOperationCompletion:(id)arg1 forOperationWithID:(id)arg2;
 - (void)handleOperationProgress:(id)arg1 forOperationWithID:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)init;
+- (void)registerCheckpointCallback:(CDUnknownBlockType)arg1 forOperation:(id)arg2;
 - (void)registerCompletionCallback:(CDUnknownBlockType)arg1 forOperation:(id)arg2;
 - (void)registerProgressCallback:(CDUnknownBlockType)arg1 forOperation:(id)arg2;
 - (void)removeAllCallbacks;

@@ -44,18 +44,20 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (long long)_assetOwnerCommentSection;
-- (BOOL)_checkAndAlertMaxCommentsReachedWhenFinalizing:(BOOL)arg1;
+- (BOOL)_canPostCommentWithText:(id)arg1 localizedFailureDescription:(id *)arg2;
+- (id)_commentText;
 - (id)_currentEntryView;
 - (void)_fontCacheDidChange:(id)arg1;
 - (double)_heightForComment:(id)arg1 forWidth:(double)arg2 forInterfaceOrientation:(long long)arg3;
 - (BOOL)_isAssetOwnerSectionVisible;
 - (BOOL)_isEditingAllowed;
 - (long long)_postCommentSection;
-- (void)_postCommentValidated:(id)arg1;
+- (void)_postCommentWithText:(id)arg1;
 - (void)_scrollToComment:(id)arg1 animated:(BOOL)arg2;
 - (long long)_smileCommentSection;
 - (long long)_textCommentSection;
 - (void)_updateFirstResponder;
+- (void)_validateAndPostComment:(id)arg1;
 - (void)cloudCommentsDidChange:(id)arg1;
 - (void)dealloc;
 - (id)init;
@@ -64,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (void)photoCommentEntryViewDidBeginEditing:(id)arg1;
 - (void)photoCommentEntryViewDidEndEditing:(id)arg1;
 - (void)photoCommentEntryViewHeightDidChange:(id)arg1;
+- (BOOL)photoCommentEntryViewShouldEndEditing:(id)arg1;
 - (void)photoCommentEntryViewWillBeginEditing:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;

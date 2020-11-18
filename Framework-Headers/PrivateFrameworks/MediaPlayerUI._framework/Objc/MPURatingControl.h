@@ -28,6 +28,7 @@
 - (void).cxx_destruct;
 - (void)_handlePanGesture:(id)arg1;
 - (void)_handleTapGesture:(id)arg1;
+- (void)_updateImageView:(id)arg1 proposedImage:(id)arg2 filled:(BOOL)arg3;
 - (void)_updateImageViewsForRatingAnimated:(BOOL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
@@ -35,6 +36,7 @@
 - (double)ratingValueForLocationInView:(struct CGPoint)arg1;
 - (void)setRating:(double)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)viewDidMoveToSuperview;
 
 @end
 

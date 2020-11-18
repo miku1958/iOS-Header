@@ -21,13 +21,14 @@
     UIView *_springViewParent;
 }
 
-@property (readonly, strong, nonatomic) UIButton *okButton; // @synthesize okButton=_okButton;
-@property (readonly, strong, nonatomic) UILabel *promptLabel; // @synthesize promptLabel=_promptLabel;
+@property (readonly, nonatomic) UIButton *okButton; // @synthesize okButton=_okButton;
+@property (readonly, nonatomic) UILabel *promptLabel; // @synthesize promptLabel=_promptLabel;
 @property (nonatomic) BOOL showsOkButton; // @synthesize showsOkButton=_showsOkButton;
 @property (nonatomic) BOOL showsPromptLabel; // @synthesize showsPromptLabel=_showsPromptLabel;
 
 + (BOOL)_shouldResetAutoAcceptWhenMaxNumbersMetInResignFirstResponder;
 + (BOOL)_usesTextFieldForFirstResponder;
+- (void).cxx_destruct;
 - (void)_autofillForMesaWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_getPasscodeFieldSize:(struct CGSize *)arg1 okButtonSize:(struct CGSize *)arg2;
 - (void)_handleKeyUIEvent:(id)arg1;
@@ -37,7 +38,6 @@
 - (BOOL)becomeFirstResponder;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canResignFirstResponder;
-- (void)dealloc;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithDefaultSizeAndLightStyle:(BOOL)arg1;
 - (BOOL)isFirstResponder;

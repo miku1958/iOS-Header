@@ -6,7 +6,7 @@
 
 #import <SAObjects/SADomainCommand.h>
 
-@class NSArray, SAMPCollection;
+@class NSArray, NSNumber, SAMPCollection;
 
 @interface SAMPSetQueue : SADomainCommand
 {
@@ -17,6 +17,7 @@
 @property (nonatomic) BOOL shouldOverrideManuallyCuratedUpNext;
 @property (nonatomic) BOOL shouldShuffle;
 @property (copy, nonatomic) NSArray *sort;
+@property (copy, nonatomic) NSNumber *startPlaying;
 
 + (id)setQueue;
 + (id)setQueueWithDictionary:(id)arg1 context:(id)arg2;

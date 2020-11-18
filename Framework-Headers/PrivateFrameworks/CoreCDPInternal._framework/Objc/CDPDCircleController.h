@@ -6,22 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class CDPContext, CDPDCircleStateObserver;
-@protocol CDPDCircleDelegate, CDPStateUIProviderInternal;
+@class CDPDCircleStateObserver;
+@protocol CDPDCircleDelegate, CDPDCircleProxy, CDPStateUIProviderInternal;
 
 @interface CDPDCircleController : NSObject
 {
     CDPDCircleStateObserver *_circleJoinObserver;
-    CDPContext *_context;
     id<CDPStateUIProviderInternal> _uiProvider;
     id<CDPDCircleDelegate> _delegate;
+    id<CDPDCircleProxy> _circleProxy;
 }
 
-@property (readonly, nonatomic) CDPContext *context; // @synthesize context=_context;
-@property (readonly, weak, nonatomic) id<CDPDCircleDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) id<CDPStateUIProviderInternal> uiProvider; // @synthesize uiProvider=_uiProvider;
+@property (strong, nonatomic) id<CDPDCircleProxy> circleProxy; // @synthesize circleProxy=_circleProxy;
+@property (weak, nonatomic) id<CDPDCircleDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) id<CDPStateUIProviderInternal> uiProvider; // @synthesize uiProvider=_uiProvider;
 
-+ (void)registerCredentialsFromContext:(id)arg1;
 - (void).cxx_destruct;
 - (void)_joinCDPCircleIgnoringBackups:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)_peerCount;
@@ -29,10 +28,9 @@
 - (void)_resetCicleToResolvePendingAfterRecoveryWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)applyToJoinCircleWithJoinHandler:(CDUnknownBlockType)arg1;
 - (void)cancelApplicationToJoinCircle;
-- (void)cancelPendingCircleJoinWithCompletion:(CDUnknownBlockType)arg1;
 - (int)circleStatus;
 - (void)dealloc;
-- (id)initWithContext:(id)arg1 uiProvider:(id)arg2 delegate:(id)arg3;
+- (id)initWithUiProvider:(id)arg1 delegate:(id)arg2 circleProxy:(id)arg3;
 - (void)joinCDPCircleIgnoringBackups:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)joinCDPCircleWithCompletion:(CDUnknownBlockType)arg1;
 - (void)joinCircleAfterRecoveryWithCompletion:(CDUnknownBlockType)arg1;

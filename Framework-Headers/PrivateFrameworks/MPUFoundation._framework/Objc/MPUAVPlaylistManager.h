@@ -8,7 +8,7 @@
 
 #import <MPUFoundation/MPUQueueBehaviorManaging-Protocol.h>
 
-@class MPAVItem, MPMutableBidirectionalDictionary, MPQueueFeeder, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSString;
+@class MPAVItem, MPMutableBidirectionalDictionary, MPQueueFeeder, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSString, _MPUAVItemSourceContext;
 
 @interface MPUAVPlaylistManager : MPAVPlaylistManager <MPUQueueBehaviorManaging>
 {
@@ -26,6 +26,7 @@
     long long _nextCurrentIndex;
     long long _hardQueueInsertionIndex;
     long long _repeatStartIndex;
+    _MPUAVItemSourceContext *_repeatPlaylistIdentifer;
     NSMutableDictionary *_iterationIndexToQueueModifications;
 }
 
@@ -43,6 +44,7 @@
 @property (strong, nonatomic) MPAVItem *lastPlayedSoftQueueItem; // @synthesize lastPlayedSoftQueueItem=_lastPlayedSoftQueueItem;
 @property (nonatomic) long long nextCurrentIndex; // @synthesize nextCurrentIndex=_nextCurrentIndex;
 @property (readonly, nonatomic) long long playbackMode;
+@property (copy, nonatomic) _MPUAVItemSourceContext *repeatPlaylistIdentifer; // @synthesize repeatPlaylistIdentifer=_repeatPlaylistIdentifer;
 @property (nonatomic) long long repeatStartIndex; // @synthesize repeatStartIndex=_repeatStartIndex;
 @property (strong, nonatomic) MPQueueFeeder *softQueueFeeder; // @synthesize softQueueFeeder=_softQueueFeeder;
 @property (readonly, nonatomic) struct _NSRange softQueuePlaylistIndexRange;

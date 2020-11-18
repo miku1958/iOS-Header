@@ -6,15 +6,20 @@
 
 #import <objc/NSObject.h>
 
+@protocol CDPDCircleProxy;
+
 @interface CDPDKeychainSync : NSObject
 {
+    id<CDPDCircleProxy> _circleProxy;
 }
 
 + (id)_defaultUserVisibleViewSet;
-+ (BOOL)_hasNonViewAwarePeers;
-+ (BOOL)isUserVisibleKeychainSyncEnabled;
-+ (void)removeNonViewAwarePeersFromCircleWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-+ (void)setUserVisibleKeychainSyncEnabled:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
++ (id)keyChainSync;
++ (id)keyChainSyncWithProxy:(id)arg1;
+- (void).cxx_destruct;
+- (BOOL)isUserVisibleKeychainSyncEnabled;
+- (void)removeNonViewAwarePeersFromCircleWithCompletion:(CDUnknownBlockType)arg1;
+- (void)setUserVisibleKeychainSyncEnabled:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -33,6 +33,7 @@
 - (id)attributeKeys;
 - (void)dealloc;
 - (id)init;
+- (BOOL)isManagedAppleID;
 - (BOOL)isPrimaryAccount;
 - (BOOL)isSecureTokenValid;
 - (id)scriptAttributeKeys;

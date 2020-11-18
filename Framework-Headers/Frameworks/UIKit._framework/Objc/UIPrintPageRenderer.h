@@ -28,6 +28,7 @@
 - (void).cxx_destruct;
 - (void)_drawPage:(long long)arg1;
 - (void)_endPrintContext:(id)arg1 success:(BOOL)arg2;
+- (void)_endSaveContext;
 - (long long)_maxFormatterPage;
 - (long long)_numberOfPages;
 - (BOOL)_numberOfPagesIsCached;

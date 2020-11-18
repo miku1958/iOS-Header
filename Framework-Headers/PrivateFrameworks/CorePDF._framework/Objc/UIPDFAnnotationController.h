@@ -83,6 +83,7 @@
 - (struct CGSize)marginNoteImageSize;
 - (void)mergeSelectionOfAnnotation:(id)arg1;
 - (struct CGImage *)newHighlightMaskImageFor:(struct CGRect)arg1;
+- (void)resetBeingPressedForRecognizer:(id)arg1 withDelegate:(id)arg2 withAnnotation:(id)arg3;
 - (void)setNeedsDisplay;
 - (void)setSurfacePosition:(id)arg1;
 - (void)setView:(id)arg1;

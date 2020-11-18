@@ -23,6 +23,7 @@
 }
 
 @property (readonly, strong, nonatomic) NSString *UUID; // @synthesize UUID=_UUID;
+@property (readonly, nonatomic) BOOL containsSensitiveUserInformation;
 @property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, strong, nonatomic) NSString *friendlyName;
 @property (readonly, strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
@@ -47,6 +48,9 @@
 + (id)payloadFromDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 + (id)payloadsFromArray:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 + (id)typeStrings;
++ (id)unavailablePayloadsInEphemeralMultiUser;
++ (id)unavailableSystemPayloadsInEphemeralMultiUser;
++ (id)unavailableUserPayloadsInEphemeralMultiUser;
 + (id)wrapperPayloadDictionary;
 - (void).cxx_destruct;
 - (id)description;

@@ -32,7 +32,7 @@
 @property (readonly, strong, nonatomic) NSData *optionsData;
 @property (readonly, nonatomic) struct CGSize size;
 
-+ (BOOL)saveBakedThumbnailsOfImages:(id)arg1 toFile:(id)arg2 format:(int)arg3 orientation:(int *)arg4 options:(id)arg5 delegate:(id)arg6;
++ (BOOL)_transformForImage:(struct CGImage *)arg1 isCropped:(BOOL)arg2 captureOrientation:(int)arg3 sizeInOut:(struct CGSize *)arg4 contextSizeOut:(struct CGSize *)arg5 transformOut:(struct CGAffineTransform *)arg6;
 + (id)thumbnailsWithContentsOfFile:(id)arg1 format:(int)arg2;
 - (id)_thumbnailData;
 - (unsigned long long)count;
@@ -48,7 +48,6 @@
 - (char *)thumbnailBytesAtIndex:(long long)arg1;
 - (id)thumbnailDataAtIndex:(long long)arg1;
 - (struct CGImage *)thumbnailImageAtIndex:(long long)arg1;
-- (unsigned long long)thumbnailLength;
 - (BOOL)writeBorderedThumbnailOfImage:(struct CGImage *)arg1 toBuffer:(void *)arg2 orientation:(int *)arg3 format:(int)arg4 formatInfo:(const CDStruct_0d559a47 *)arg5 delegate:(id)arg6;
 
 @end

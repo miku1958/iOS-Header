@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SpringBoardUI/BSDescriptionProviding-Protocol.h>
 #import <SpringBoardUI/FBSceneClient-Protocol.h>
@@ -34,8 +34,8 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isValid) BOOL valid; // @synthesize valid=_valid;
 
+- (void).cxx_destruct;
 - (void)attachLayer:(id)arg1;
-- (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)detachLayer:(id)arg1;

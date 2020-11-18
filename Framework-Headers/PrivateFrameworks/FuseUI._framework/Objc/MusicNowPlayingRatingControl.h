@@ -12,6 +12,7 @@
 
 + (id)ratingDotImage;
 + (id)ratingStarImage;
+- (void)_updateImageView:(id)arg1 proposedImage:(id)arg2 filled:(BOOL)arg3;
 
 @end
 

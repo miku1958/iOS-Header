@@ -206,6 +206,7 @@
 - (BOOL)isAvailableForTileKey:(const struct _GEOTileKey *)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isHybridModeAvailableForTileKey:(const struct _GEOTileKey *)arg1;
+- (void)iterateActiveTileSetsWithAltitudeManifest:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)languageForTileKey:(const struct _GEOTileKey *)arg1;
 - (id)languageForTileKey:(const struct _GEOTileKey *)arg1 overrideLocale:(id)arg2;
 - (unsigned int)largestRegionalResourceZoomLevelContainingTileKey:(const struct _GEOTileKey *)arg1;

@@ -124,15 +124,16 @@ struct mmcs_http_context {
     CDUnknownFunctionPointerType _field36;
     void *_field37;
     void *_field38;
-    void *_field39;
-    struct mmcs_read_stream_pool *_field40;
-    struct __CFRunLoop *_field41;
-    struct __CFArray *_field42;
+    unsigned long long _field39;
+    struct voucher_s *_field40;
+    struct mmcs_read_stream_pool *_field41;
+    struct __CFRunLoop *_field42;
+    struct __CFArray *_field43;
     union {
         struct mmcs_cfnetwork_http_context *_field1;
         struct mmcs_nsurlsession_http_context *_field2;
         struct mmcs_curl_http_context *_field3;
-    } _field43;
+    } _field44;
 };
 
 struct mmcs_http_context_options {
@@ -160,4 +161,6 @@ struct mmcs_metrics_http_info;
 struct mmcs_nsurlsession_http_context;
 
 struct mmcs_read_stream_pool;
+
+struct voucher_s;
 

@@ -49,6 +49,7 @@
 + (id)mainBundleID;
 + (id)mainBundleLocalizedString;
 + (void)notifyIndexDelegates;
++ (id)requestBundleID;
 - (void).cxx_destruct;
 - (void)_cancelAwakeNotifyToken;
 - (void)_changeStateOfSearchableItemsWithUIDs:(id)arg1 toState:(long long)arg2 forUser:(unsigned int)arg3 forBundleID:(id)arg4 forUTIType:(id)arg5;

@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)localizedMessage;
 - (id)localizedTitle;
 - (id)mapsURL;
+- (unsigned long long)trafficDensity;
 
 @end
 

@@ -13,6 +13,7 @@
 @optional
 - (void)devicePINController:(DevicePINController *)arg1 didAcceptChangedPIN:(NSString *)arg2;
 - (void)devicePINController:(DevicePINController *)arg1 didAcceptSetPIN:(NSString *)arg2;
+- (void)devicePINController:(DevicePINController *)arg1 shouldAcceptPIN:(NSString *)arg2 withCompletion:(void (^)(BOOL))arg3;
 - (void)devicePINControllerDidDismissPINPane:(DevicePINController *)arg1;
 - (void)didAcceptChangedPIN;
 - (void)didAcceptEnteredPIN;

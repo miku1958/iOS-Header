@@ -25,10 +25,3 @@ struct CGSize {
     double _field2;
 };
 
-#pragma mark Typedef'd Unions
-
-typedef union {
-    id _field1;
-    unsigned int _field2;
-} CDUnion_be1a21fc;
-

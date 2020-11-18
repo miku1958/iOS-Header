@@ -32,9 +32,11 @@
 - (void)_operationFailed:(id)arg1 error:(id)arg2;
 - (void)_operationFinished:(id)arg1;
 - (void)_startNextPendingOperation:(id)arg1;
+- (BOOL)_verifyDataIntegrity:(id)arg1 checksumMethod:(int)arg2;
 - (BOOL)allowsCookies;
 - (void)cancel;
 - (void)cancelKey:(const struct _GEOTileKey *)arg1;
+- (int)checksumMethodForIncomingTileDataWithKey:(struct _GEOTileKey *)arg1;
 - (void)dealloc;
 - (id)editionHeader;
 - (id)initWithKeyList:(id)arg1 manifestConfiguration:(id)arg2 locale:(id)arg3 cachedEtags:(id)arg4 cachedData:(id)arg5 priorities:(id)arg6;

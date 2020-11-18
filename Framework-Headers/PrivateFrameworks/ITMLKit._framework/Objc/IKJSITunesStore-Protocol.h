@@ -14,6 +14,7 @@
 @property (readonly, nonatomic) NSDictionary *accountInfo;
 @property (strong, nonatomic) id cookie;
 @property (strong, nonatomic) NSString *cookieURL;
+@property (readonly, nonatomic, getter=isManagedAppleID) BOOL managedAppleID;
 @property (readonly, nonatomic) NSString *networkConnectionType;
 @property (strong, nonatomic) NSString *storefront;
 @property (readonly, nonatomic) NSString *userAgent;

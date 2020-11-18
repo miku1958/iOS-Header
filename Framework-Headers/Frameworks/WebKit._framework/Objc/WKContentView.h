@@ -15,7 +15,7 @@
 #import <WebKit/WKActionSheetAssistantDelegate-Protocol.h>
 #import <WebKit/WKFileUploadPanelDelegate-Protocol.h>
 
-@class NSDictionary, NSString, UIColor, UIImage, UITextInteractionAssistant, UITextPosition, UITextRange, UIWebFormAccessory, WKBrowsingContextController, WKWebView;
+@class NSDictionary, NSIndexSet, NSString, UIColor, UIImage, UITextInteractionAssistant, UITextPosition, UITextRange, UIWebFormAccessory, WKBrowsingContextController, WKWebView;
 @protocol UITextInputDelegate, UITextInputTokenizer;
 
 __attribute__((visibility("hidden")))
@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<_UIWebHighlightLongPressGestureRecognizer> _highlightLongPressGestureRecognizer;
     struct RetainPtr<UILongPressGestureRecognizer> _longPressGestureRecognizer;
     struct RetainPtr<UITapGestureRecognizer> _doubleTapGestureRecognizer;
+    struct RetainPtr<UITapGestureRecognizer> _fastDoubleTapGestureRecognizer;
     struct RetainPtr<UITapGestureRecognizer> _twoFingerDoubleTapGestureRecognizer;
     struct RetainPtr<WKInspectorNodeSearchGestureRecognizer> _inspectorNodeSearchGestureRecognizer;
     struct RetainPtr<UIWKTextInteractionAssistant> _textSelectionAssistant;
@@ -47,12 +48,13 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<UIPreviewItemController> _previewItemController;
     struct unique_ptr<WebKit::SmartMagnificationController, std::__1::default_delete<WebKit::SmartMagnificationController>> _smartMagnificationController;
     id<UITextInputDelegate> _inputDelegate;
-    unsigned long long _latestTapHighlightID;
+    unsigned long long _latestTapID;
     struct TapHighlightInformation _tapHighlightInformation;
     struct WKAutoCorrectionData _autocorrectionData;
     struct InteractionInformationAtPosition _positionInformation;
     struct AssistedNodeInformation _assistedNodeInformation;
     struct RetainPtr<NSObject<WKFormPeripheral>> _inputPeripheral;
+    struct RetainPtr<UIEvent> _uiEventBeingResent;
     struct CGPoint _lastInteractionLocation;
     struct WKSelectionDrawingInfo _lastSelectionDrawingInfo;
     BOOL _isEditable;
@@ -60,6 +62,7 @@ __attribute__((visibility("hidden")))
     BOOL _hasValidPositionInformation;
     BOOL _isTapHighlightIDValid;
     BOOL _potentialTapInProgress;
+    BOOL _isDoubleTapPending;
     BOOL _highlightLongPressCanClick;
     BOOL _hasTapHighlightForPotentialTap;
     BOOL _selectionNeedsUpdate;
@@ -67,6 +70,9 @@ __attribute__((visibility("hidden")))
     BOOL _usingGestureForSelection;
     BOOL _inspectorNodeSearchEnabled;
     BOOL _didAccessoryTabInitiateFocus;
+    BOOL _isExpectingFastSingleTapCommit;
+    BOOL _showDebugTapHighlightsForFastClicking;
+    BOOL _resigningFirstResponder;
     struct unique_ptr<WebKit::PageClientImpl, std::__1::default_delete<WebKit::PageClientImpl>> _pageClient;
     struct RetainPtr<WKBrowsingContextController> _browsingContextController;
     struct RetainPtr<UIView> _rootContentView;
@@ -78,6 +84,7 @@ __attribute__((visibility("hidden")))
     struct unique_ptr<WebKit::ApplicationStateTracker, std::__1::default_delete<WebKit::ApplicationStateTracker>> _applicationStateTracker;
 }
 
+@property (copy, nonatomic) NSIndexSet *PINEntrySeparatorIndexes;
 @property (nonatomic) BOOL acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
 @property (nonatomic) BOOL acceptsSplitKeyboard;
@@ -95,6 +102,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disablePrediction;
+@property (nonatomic) BOOL displaySecureEditsUsingPlainText;
 @property (nonatomic) BOOL displaySecureTextUsingPlainText;
 @property (nonatomic) int emptyContentReturnKeyType;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically;
@@ -122,6 +130,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct WebPageProxy *page;
 @property (readonly, nonatomic) const struct InteractionInformationAtPosition *positionInformation;
 @property (copy, nonatomic) NSString *recentInputIdentifier;
+@property (readonly, nonatomic, getter=isResigningFirstResponder) BOOL resigningFirstResponder; // @synthesize resigningFirstResponder=_resigningFirstResponder;
 @property (copy, nonatomic) NSString *responseContext;
 @property (nonatomic) BOOL returnKeyGoesToNextResponder;
 @property (nonatomic) long long returnKeyType;
@@ -145,6 +154,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct __CFCharacterSet *textTrimmingSet;
 @property (readonly, nonatomic) id<UITextInputTokenizer> tokenizer;
 @property (nonatomic) BOOL useInterfaceLanguageForLocalization;
+@property (nonatomic) struct _NSRange validTextRange;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -165,6 +175,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)_characterInRelationToCaretSelection:(int)arg1;
 - (void)_commitPotentialTapFailed;
 - (id)_commonInitializationWithProcessPool:(struct WebProcessPool *)arg1 configuration:(struct WebPageConfiguration)arg2;
+- (void)_createAndConfigureDoubleTapGestureRecognizer;
 - (unique_ptr_54a90528)_createDrawingAreaProxy;
 - (id)_dataForPreviewItemController:(id)arg1 atPosition:(struct CGPoint)arg2 type:(long long *)arg3;
 - (void)_define:(id)arg1;
@@ -172,14 +183,18 @@ __attribute__((visibility("hidden")))
 - (void)_didCommitLoadForMainFrame;
 - (void)_didEndScrollingOrZooming;
 - (void)_didGetTapHighlightForRequest:(unsigned long long)arg1 color:(const struct Color *)arg2 quads:(const Vector_c1077595 *)arg3 topLeftRadius:(const struct IntSize *)arg4 topRightRadius:(const struct IntSize *)arg5 bottomLeftRadius:(const struct IntSize *)arg6 bottomRightRadius:(const struct IntSize *)arg7;
-- (void)_didHandleKeyEvent:(id)arg1;
+- (void)_didHandleKeyEvent:(id)arg1 eventWasHandled:(BOOL)arg2;
+- (void)_didNotHandleTapAsClick;
 - (void)_didRelaunchProcess;
 - (void)_didScroll;
 - (void)_didUpdateBlockSelectionWithTouch:(int)arg1 withFlags:(int)arg2 growThreshold:(double)arg3 shrinkThreshold:(double)arg4;
+- (void)_disableDoubleTapGesturesDuringTapIfNecessary:(unsigned long long)arg1;
 - (void)_disableInspectorNodeSearch;
 - (void)_displayFormNodeInputView;
 - (void)_doubleTapRecognized:(id)arg1;
 - (void)_enableInspectorNodeSearch;
+- (void)_endPotentialTapAndEnableDoubleTapGesturesIfNecessary;
+- (void)_fastDoubleTapRecognized:(id)arg1;
 - (void)_finishInteraction;
 - (void)_handleKeyUIEvent:(id)arg1;
 - (void)_hideInspectorHighlight;
@@ -193,6 +208,7 @@ __attribute__((visibility("hidden")))
 - (void)_longPressRecognized:(id)arg1;
 - (void)_lookup:(struct CGPoint)arg1;
 - (struct _NSRange)_markedTextNSRange;
+- (BOOL)_mayDisableDoubleTapGesturesDuringSingleTap;
 - (id)_moveDown:(BOOL)arg1 withHistory:(id)arg2;
 - (id)_moveLeft:(BOOL)arg1 withHistory:(id)arg2;
 - (id)_moveRight:(BOOL)arg1 withHistory:(id)arg2;
@@ -225,7 +241,9 @@ __attribute__((visibility("hidden")))
 - (void)_removeDefaultGestureRecognizers;
 - (BOOL)_requiresKeyboardResetOnReload;
 - (BOOL)_requiresKeyboardWhenFirstResponder;
+- (void)_resetIsDoubleTapPending;
 - (void)_resetShowingTextStyle:(id)arg1;
+- (Optional_dd601f4a)_scrollOffsetForEvent:(id)arg1;
 - (BOOL)_scrollToRect:(struct CGRect)arg1 withOrigin:(struct CGPoint)arg2 minimumScrollDistance:(double)arg3;
 - (id)_scroller;
 - (BOOL)_selectionAtDocumentStart;
@@ -233,6 +251,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_selectionClipRect;
 - (void)_setAcceleratedCompositingRootView:(id)arg1;
 - (void)_setAccessibilityWebProcessToken:(id)arg1;
+- (void)_setDoubleTapGesturesEnabled:(BOOL)arg1;
 - (void)_share:(id)arg1;
 - (void)_showDataDetectorsSheet;
 - (void)_showDictionary:(id)arg1;
@@ -250,6 +269,7 @@ __attribute__((visibility("hidden")))
 - (void)_startAssistingNode:(const struct AssistedNodeInformation *)arg1 userIsInteracting:(BOOL)arg2 blurPreviousNode:(BOOL)arg3 userObject:(id)arg4;
 - (void)_stopAssistingKeyboard;
 - (void)_stopAssistingNode;
+- (struct Color)_tapHighlightColorForFastClick:(BOOL)arg1;
 - (void)_transliterateChinese:(id)arg1;
 - (void)_twoFingerDoubleTapRecognized:(id)arg1;
 - (void)_unregisterPreview;
@@ -260,10 +280,12 @@ __attribute__((visibility("hidden")))
 - (void)_updateTapHighlight;
 - (void)_webTouchEvent:(const struct NativeWebTouchEvent *)arg1 preventsNativeGestures:(BOOL)arg2;
 - (void)_webTouchEventsRecognized:(id)arg1;
+- (void)_webViewDestroyed;
 - (void)_willStartScrollingOrZooming;
 - (void)_windowDidMoveToScreenNotification:(id)arg1;
 - (void)_zoomOutWithOrigin:(struct CGPoint)arg1;
 - (void)_zoomToFocusRect:(struct CGRect)arg1 selectionRect:(struct CGRect)arg2 fontSize:(float)arg3 minimumScale:(double)arg4 maximumScale:(double)arg5 allowScaling:(BOOL)arg6 forceScroll:(BOOL)arg7;
+- (void)_zoomToInitialScaleWithOrigin:(struct CGPoint)arg1;
 - (BOOL)_zoomToRect:(struct CGRect)arg1 withOrigin:(struct CGPoint)arg2 fitEntireRect:(BOOL)arg3 minimumScale:(double)arg4 maximumScale:(double)arg5 minimumScrollDistance:(double)arg6;
 - (void)accessibilityRetrieveSpeakSelectionContent;
 - (void)accessoryAutoFill;

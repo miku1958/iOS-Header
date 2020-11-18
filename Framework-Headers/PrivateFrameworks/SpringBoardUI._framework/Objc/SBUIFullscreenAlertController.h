@@ -22,12 +22,12 @@
 @property (strong, nonatomic) NSNumber *animationStartTime; // @synthesize animationStartTime=_animationStartTime;
 @property (nonatomic) BOOL shouldAnimateIn; // @synthesize shouldAnimateIn=_shouldAnimateIn;
 
+- (void).cxx_destruct;
 - (BOOL)allowStackingOfAlert:(id)arg1;
 - (BOOL)allowSuspension;
 - (void)animateViewIn;
 - (void)animateViewOut;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (BOOL)definesPresentationContext;
 - (void)didFinishLaunchingFrontmost;
 - (void)didReceiveMemoryWarning;

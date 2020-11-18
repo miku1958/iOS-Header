@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface DCIMAssetFormats : NSObject
 {
@@ -14,7 +14,6 @@
 + (long long)masterThumbnailFormat;
 + (struct CGSize)scaledSizeForSize:(struct CGSize)arg1 format:(long long)arg2 capLength:(BOOL)arg3;
 + (struct CGSize)sizeForFormat:(long long)arg1;
-+ (long long)thumbnailFormat;
 + (long long)wildcatStackFormat;
 
 @end

@@ -8,18 +8,18 @@
 
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKSampleType, _HKFilter;
+@class HKObjectType, _HKFilter;
 
 __attribute__((visibility("hidden")))
 @interface _HKQueryServerDataObject : NSObject <NSSecureCoding>
 {
     BOOL _shouldStayAliveAfterInitialResults;
-    HKSampleType *_sampleType;
+    HKObjectType *_objectType;
     _HKFilter *_filter;
 }
 
 @property (strong, nonatomic) _HKFilter *filter; // @synthesize filter=_filter;
-@property (strong, nonatomic) HKSampleType *sampleType; // @synthesize sampleType=_sampleType;
+@property (strong, nonatomic) HKObjectType *objectType; // @synthesize objectType=_objectType;
 @property (nonatomic) BOOL shouldStayAliveAfterInitialResults; // @synthesize shouldStayAliveAfterInitialResults=_shouldStayAliveAfterInitialResults;
 
 + (BOOL)supportsSecureCoding;

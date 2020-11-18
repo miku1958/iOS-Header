@@ -36,12 +36,14 @@
 - (void)_loadConcernsForConcernType:(long long)arg1 withReportAConcernBagDictionary:(id)arg2;
 - (void)_loadViewWithConcernStrings;
 - (void)_sendCancelEventAndDismiss;
-- (void)_sendDoneEventAndDismissWithSelectedIndex:(long long)arg1;
+- (void)_sendDoneEventAndDismissWithSelectedIndex:(long long)arg1 andComment:(id)arg2;
 - (void)dealloc;
-- (void)didSelectConcernInReportAConcernTemplateView:(id)arg1;
 - (void)documentDidUpdate:(id)arg1;
 - (id)initWithTemplateElement:(id)arg1;
 - (void)loadView;
+- (double)navigationBarHeightForReportAConcernTemplateView:(id)arg1;
+- (void)reportAConcernTemplateViewDidSelectConcern:(id)arg1;
+- (double)tabBarHeightForReportAConcernTemplateView:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 

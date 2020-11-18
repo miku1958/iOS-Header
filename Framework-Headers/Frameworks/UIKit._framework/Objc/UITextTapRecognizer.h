@@ -6,11 +6,18 @@
 
 #import <UIKit/UITapGestureRecognizer.h>
 
+@class NSArray;
+
 @interface UITextTapRecognizer : UITapGestureRecognizer
 {
+    NSArray *_touchesForTap;
 }
 
+@property (strong, nonatomic) NSArray *touchesForTap; // @synthesize touchesForTap=_touchesForTap;
+
+- (void).cxx_destruct;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
+- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 
 @end
 

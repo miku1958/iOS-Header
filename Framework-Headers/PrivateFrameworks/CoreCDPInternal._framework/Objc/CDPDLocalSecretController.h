@@ -26,9 +26,14 @@
 @property (strong, nonatomic) id<CDPStateUIProviderInternal> uiProvider; // @synthesize uiProvider=_uiProvider;
 
 - (void).cxx_destruct;
+- (id)_cdpStateMachine;
+- (void)_deleteFollowUpItemForOfflineLocalSecretChange;
+- (void)_finishOfflineLocalSecretChange:(CDUnknownBlockType)arg1;
 - (void)_localSecretChangedTo:(id)arg1 secretType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_postFollowUpItemForOfflineLocalSecretChange;
 - (void)circleController:(id)arg1 secureBackupRecordsArePresentWithCompletion:(CDUnknownBlockType)arg2;
 - (id)circlePeerIDForSecureBackupController:(id)arg1;
+- (void)dealloc;
 - (void)finishOfflineLocalSecretChangeWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithContext:(id)arg1;
 - (void)joinCircleAfterRecoveryWithCompletion:(CDUnknownBlockType)arg1;

@@ -43,9 +43,9 @@ __attribute__((visibility("hidden")))
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
-- (BOOL)editItemViewControllerCommit:(id)arg1;
-- (BOOL)editItemViewControllerCommit:(id)arg1 notify:(BOOL)arg2;
-- (BOOL)forceRefreshStartAndEndDatesOnCommit;
+- (BOOL)editItemViewControllerSave:(id)arg1;
+- (BOOL)editItemViewControllerSave:(id)arg1 notify:(BOOL)arg2;
+- (BOOL)forceRefreshStartAndEndDatesOnSave;
 - (id)init;
 - (id)minRecurrenceEndDate;
 - (unsigned long long)numberOfSubitems;

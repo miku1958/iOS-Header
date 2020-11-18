@@ -6,11 +6,12 @@
 
 #import <WatchConnectivity/NSObject-Protocol.h>
 
-@class NSString;
+@class NSData, NSString, NSURL;
 
 @protocol WCXPCPrivateManagerDaemonProtocol <NSObject>
 - (void)addActiveGlanceIdentifier:(NSString *)arg1;
 - (void)addActiveNotificationIdentifier:(NSString *)arg1;
+- (void)fakeIncomingPayloadOnSubService:(NSString *)arg1 ofType:(NSString *)arg2 clientData:(NSData *)arg3 resource:(NSURL *)arg4 resourceSandboxToken:(NSData *)arg5 completionHandler:(void (^)(NSError *))arg6;
 - (void)reconnect;
 - (void)removeActiveGlanceIdentifier:(NSString *)arg1;
 - (void)removeActiveNotificationIdentifier:(NSString *)arg1;

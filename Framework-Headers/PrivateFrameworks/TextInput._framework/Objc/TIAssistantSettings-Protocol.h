@@ -5,7 +5,7 @@
 //
 
 @protocol TIAssistantSettings
-- (void)dismissEnableDictationPrompt;
+- (void)dismissEnableDictationPromptWithCompletionHandler:(void (^)(void))arg1;
 - (void)promptToEnableDictationWithCompletionHandler:(void (^)(long long))arg1;
 @end
 

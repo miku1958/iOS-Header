@@ -12,6 +12,7 @@
 
 @interface HMDService : NSObject <NSSecureCoding>
 {
+    BOOL _hidden;
     HMDAccessory *_accessory;
     NSString *_name;
     NSNumber *_instanceID;
@@ -25,6 +26,7 @@
 @property (readonly, nonatomic) NSString *associatedServiceType; // @synthesize associatedServiceType=_associatedServiceType;
 @property (readonly, copy, nonatomic) NSArray *characteristics; // @synthesize characteristics=_characteristics;
 @property (readonly, copy, nonatomic) NSString *contextID;
+@property (nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
 @property (copy, nonatomic) NSNumber *instanceID; // @synthesize instanceID=_instanceID;
 @property (copy, nonatomic, getter=getName) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSString *providedName; // @synthesize providedName=_providedName;
@@ -34,6 +36,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_readNameCharacterisiticIfNeeded:(id)arg1;
+- (void)_shouldServiceBeHidden;
 - (void)_updateName:(id)arg1;
 - (void)_updateProvidedName:(id)arg1;
 - (id)assistantUniqueIdentifier;

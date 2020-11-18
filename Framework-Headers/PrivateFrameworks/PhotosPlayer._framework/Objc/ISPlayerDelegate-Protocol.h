@@ -6,9 +6,9 @@
 
 #import <PhotosPlayer/NSObject-Protocol.h>
 
-@class AVPlayer, ISPlayer;
+@class ISPlayer, ISWrappedAVPlayer;
 
 @protocol ISPlayerDelegate <NSObject>
-- (AVPlayer *)avPlayerForPlayer:(ISPlayer *)arg1;
+- (ISWrappedAVPlayer *)videoPlayerForPlayer:(ISPlayer *)arg1;
 @end
 

@@ -19,6 +19,7 @@
 - (id)init;
 - (id)initWithHealthStore:(id)arg1;
 - (void)saveNewWeeklyGoal:(id)arg1 forDate:(id)arg2;
+- (void)saveNewWeeklyGoal:(id)arg1 forDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

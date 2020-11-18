@@ -46,6 +46,7 @@
 @property (nonatomic) BOOL hasStartTime;
 @property (nonatomic) long long startTime; // @synthesize startTime=_startTime;
 
++ (Class)chunkingErrorType;
 - (void)addChunkingError:(id)arg1;
 - (id)chunkingErrorAtIndex:(unsigned long long)arg1;
 - (unsigned long long)chunkingErrorsCount;

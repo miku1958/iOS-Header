@@ -18,8 +18,8 @@
     CUTWeakReference *_account;
     int _socket;
     int _nearbyToken;
-    BOOL _nearby;
     int _lastActivityToken;
+    BOOL _nearby;
     BOOL _connected;
     CDUnknownBlockType _openSocketCompletionHandler;
     NSObject<OS_dispatch_queue> *_openSocketCompletionHandlerQueue;
@@ -35,9 +35,10 @@
 @property (readonly, strong, nonatomic) NSString *enclosureColor;
 @property (readonly) unsigned long long hash;
 @property (readonly, strong, nonatomic) NSArray *identities;
-@property (readonly, nonatomic) BOOL isDefaultLocalDevice;
+@property (readonly, nonatomic) BOOL isActive;
 @property (readonly, nonatomic) BOOL isDefaultPairedDevice;
 @property (readonly, nonatomic) BOOL isHSATrusted;
+@property (readonly, nonatomic) BOOL isLocallyPaired;
 @property (readonly, strong, nonatomic) NSDate *lastActivityDate;
 @property (readonly, strong, nonatomic) NSArray *linkedUserURIs;
 @property (readonly, nonatomic) BOOL locallyPresent;
@@ -65,6 +66,7 @@
 
 - (void)_addIdentity:(id)arg1;
 - (void)_connect;
+- (void)_connectedStateChanged;
 - (void)_nearbyStateChanged;
 - (void)_setAccount:(id)arg1;
 - (void)_updateNSUUID:(id)arg1;

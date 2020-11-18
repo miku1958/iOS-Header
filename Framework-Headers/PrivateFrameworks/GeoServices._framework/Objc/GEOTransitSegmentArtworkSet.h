@@ -8,17 +8,25 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class NSMutableArray;
+
 @interface GEOTransitSegmentArtworkSet : PBCodable <NSCopying>
 {
     CDStruct_9f2792e4 _artworkIndexs;
+    NSMutableArray *_clusters;
 }
 
 @property (readonly, nonatomic) unsigned int *artworkIndexs;
 @property (readonly, nonatomic) unsigned long long artworkIndexsCount;
+@property (strong, nonatomic) NSMutableArray *clusters; // @synthesize clusters=_clusters;
 
 - (void)addArtworkIndex:(unsigned int)arg1;
+- (void)addCluster:(id)arg1;
 - (unsigned int)artworkIndexAtIndex:(unsigned long long)arg1;
 - (void)clearArtworkIndexs;
+- (void)clearClusters;
+- (id)clusterAtIndex:(unsigned long long)arg1;
+- (unsigned long long)clustersCount;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

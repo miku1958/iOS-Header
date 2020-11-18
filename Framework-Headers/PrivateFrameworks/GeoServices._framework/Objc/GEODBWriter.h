@@ -44,15 +44,21 @@
     unsigned long long _tileCacheMinimumWriteBytes;
     unsigned long long _tileCacheMaximumWriteCount;
     unsigned long long _tileCacheMaximumWriteBytes;
+    NSString *_devicePostureCountry;
+    NSString *_devicePostureRegion;
+    BOOL _canCreateDebugTable;
 }
 
 @property BOOL closed;
 @property (readonly, nonatomic) unsigned long long databaseSize; // @synthesize databaseSize=_databaseSize;
+@property (readonly, nonatomic) NSString *devicePostureCountry; // @synthesize devicePostureCountry=_devicePostureCountry;
+@property (readonly, nonatomic) NSString *devicePostureRegion; // @synthesize devicePostureRegion=_devicePostureRegion;
 @property (nonatomic) unsigned long long maxDatabaseSize; // @synthesize maxDatabaseSize=_maxDatabaseSize;
 @property (readonly, nonatomic) NSString *path; // @synthesize path=_path;
 
 - (void)_assertDatabaseSize;
 - (void)_closeDB;
+- (void)_countryChanged:(id)arg1;
 - (void)_createTables;
 - (unsigned long long)_dbFileSize;
 - (void)_deleteKey:(struct _GEOTileKey)arg1;
@@ -68,18 +74,20 @@
 - (void)_prepareStatements;
 - (void)_printDBStatus:(const char *)arg1;
 - (BOOL)_readEditions;
+- (void)_setCurrentDevicePostureToCountry:(id)arg1 region:(id)arg2;
 - (void)_shrinkToUnderSize:(unsigned long long)arg1 vacuum:(BOOL)arg2;
 - (BOOL)_tileSetExpires:(unsigned int)arg1;
 - (void)_updateEdition:(unsigned int)arg1 forTileset:(unsigned int)arg2 provider:(unsigned int)arg3 invalidateOnly:(BOOL)arg4;
 - (void)_updateSize;
 - (void)_writeEntry:(id)arg1;
-- (void)_writeVersion;
+- (void)_writeVersionForCountry:(id)arg1 region:(id)arg2;
 - (void)addData:(id)arg1 forKey:(struct _GEOTileKey *)arg2 edition:(unsigned int)arg3 set:(unsigned int)arg4 provider:(unsigned int)arg5 etag:(id)arg6;
 - (void)beginPreloadSessionOfSize:(unsigned long long)arg1;
 - (void)calculateFreeableSizeWithHandler:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
 - (void)dealloc;
 - (void)deleteData:(const struct _GEOTileKey *)arg1;
 - (void)endPreloadSession;
+- (void)evaluateDevicePostureAgainstCurrentManifest;
 - (void)flushPendingWrites;
 - (id)initWithPath:(id)arg1;
 - (id)pendingWriteForKey:(struct _GEOTileKey *)arg1;

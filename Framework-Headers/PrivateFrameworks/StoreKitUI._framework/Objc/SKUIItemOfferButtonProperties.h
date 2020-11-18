@@ -16,6 +16,7 @@
     BOOL _universal;
     BOOL _progressIndeterminate;
     BOOL _cancelRecognizer;
+    BOOL _restores;
     UIColor *_borderBackgroundColor;
     UIColor *_borderColor;
     CAFilter *_borderCompositingFilter;
@@ -47,6 +48,7 @@
 @property (nonatomic) double progress; // @synthesize progress=_progress;
 @property (nonatomic) BOOL progressIndeterminate; // @synthesize progressIndeterminate=_progressIndeterminate;
 @property (nonatomic) long long progressType; // @synthesize progressType=_progressType;
+@property (nonatomic) BOOL restores; // @synthesize restores=_restores;
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property (nonatomic) long long titleStyle; // @synthesize titleStyle=_titleStyle;
 @property (nonatomic) BOOL universal; // @synthesize universal=_universal;

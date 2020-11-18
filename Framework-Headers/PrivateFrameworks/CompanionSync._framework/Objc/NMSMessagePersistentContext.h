@@ -8,7 +8,7 @@
 
 #import <CompanionSync/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSString;
+@class NSDate, NSDictionary, NSSet, NSString;
 
 @interface NMSMessagePersistentContext : NSObject <NSSecureCoding>
 {
@@ -18,17 +18,19 @@
     unsigned short _messageID;
     NSString *_idsIdentifier;
     NSDictionary *_userInfo;
-    NSDictionary *_customIDSFlags;
+    NSDictionary *_idsOptions;
     NSDate *_date;
+    NSSet *_targetDeviceIDs;
 }
 
-@property (strong, nonatomic) NSDictionary *customIDSFlags; // @synthesize customIDSFlags=_customIDSFlags;
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (nonatomic, getter=isFromRequest) BOOL fromRequest; // @synthesize fromRequest=_fromRequest;
 @property (copy, nonatomic) NSString *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
+@property (strong, nonatomic) NSDictionary *idsOptions; // @synthesize idsOptions=_idsOptions;
 @property (nonatomic) unsigned short messageID; // @synthesize messageID=_messageID;
 @property (nonatomic) BOOL processAcked; // @synthesize processAcked=_processAcked;
 @property (nonatomic) BOOL sendAcked; // @synthesize sendAcked=_sendAcked;
+@property (copy, nonatomic) NSSet *targetDeviceIDs; // @synthesize targetDeviceIDs=_targetDeviceIDs;
 @property (strong, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
 + (BOOL)supportsSecureCoding;

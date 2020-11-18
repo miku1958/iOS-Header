@@ -21,5 +21,9 @@
 + (id)fu_sausageFontOfSize:(double)arg1;
 + (id)fu_sausageFontOfSize:(double)arg1 centeredColons:(BOOL)arg2;
 + (id)fu_systemFontOfSize:(double)arg1 centeredColons:(BOOL)arg2;
+- (id)fu_fontWithCenteredColons;
+- (id)fu_fontWithSize:(double)arg1;
+- (id)fu_fontWithSizeFittingString:(id)arg1 withinWidth:(double)arg2;
+- (id)fu_fontWithSizeFittingString:(id)arg1 withinWidth:(double)arg2 accountForGlyphOffset:(BOOL)arg3;
 @end
 

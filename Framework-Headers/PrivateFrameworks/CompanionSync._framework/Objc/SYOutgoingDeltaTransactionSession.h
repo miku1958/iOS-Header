@@ -6,14 +6,16 @@
 
 #import <CompanionSync/SYSession.h>
 
-@class NSObject, _SYMessageTimerTable;
-@protocol OS_dispatch_source;
+@class NSObject, _SYCountedSemaphore, _SYMessageTimerTable;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SYOutgoingDeltaTransactionSession : SYSession
 {
     NSObject<OS_dispatch_source> *_stateUpdateSource;
     unsigned long long _activity;
     long long _state;
+    NSObject<OS_dispatch_queue> *_changeFetcherQueue;
+    _SYCountedSemaphore *_changeConcurrencySemaphore;
     _SYMessageTimerTable *_timers;
     BOOL _canRestart;
     BOOL _canRollback;
@@ -22,15 +24,17 @@
 
 - (void).cxx_destruct;
 - (void)_fetchNextBatch;
-- (void)_handleError:(id)arg1;
 - (void)_installStateListener;
 - (void)_messageExpiredWithSeqno:(unsigned long long)arg1 identifier:(id)arg2;
 - (void)_notifySessionComplete;
+- (void)_peerProcessedMessageWithIdentifier:(id)arg1 userInfo:(id)arg2;
 - (void)_processNextState;
 - (void)_sendSyncBatch:(id)arg1 nextState:(long long)arg2;
 - (void)_sentMessageWithIdentifier:(id)arg1 userInfo:(id)arg2;
 - (void)_setMessageTimerForSeqno:(unsigned long long)arg1;
 - (void)_setStateQuietly:(long long)arg1;
+- (void)_setupChangeConcurrency;
+- (void)_waitForMessageWindow;
 - (BOOL)canRestart;
 - (BOOL)canRollback;
 - (void)cancel;

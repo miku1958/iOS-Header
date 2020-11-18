@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSString *reason;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_initWithSettings:(id)arg1;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

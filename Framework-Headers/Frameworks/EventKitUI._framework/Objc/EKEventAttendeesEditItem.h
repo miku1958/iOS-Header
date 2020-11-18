@@ -24,14 +24,14 @@ __attribute__((visibility("hidden")))
 - (BOOL)configureForCalendarConstraints:(id)arg1;
 - (void)dealloc;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
-- (BOOL)editItemViewControllerCommit:(id)arg1;
-- (BOOL)forceRefreshInviteesItemOnCommit;
-- (BOOL)forceRefreshStartAndEndDatesOnCommit;
-- (BOOL)forceTableReloadOnCommit;
+- (BOOL)editItemViewControllerSave:(id)arg1;
+- (BOOL)forceRefreshInviteesItemOnSave;
+- (BOOL)forceRefreshStartAndEndDatesOnSave;
+- (BOOL)forceTableReloadOnSave;
 - (id)init;
 - (id)injectableViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
 - (void)refreshFromCalendarItemAndStore;
-- (BOOL)requiresReconfigurationOnCommit;
+- (BOOL)requiresReconfigurationOnSave;
 - (BOOL)shouldAppearWithVisibility:(int)arg1;
 
 @end

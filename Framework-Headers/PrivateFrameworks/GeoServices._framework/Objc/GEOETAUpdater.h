@@ -21,6 +21,7 @@
     long long _etaState;
     BOOL _allowRequests;
     BOOL _shouldUseConditionalRequest;
+    BOOL _shouldUpdateTrafficOnRoute;
     double _requestInterval;
     NSTimer *_etaIdleTimer;
     double _lastETARequestTime;
@@ -38,6 +39,7 @@
 @property (strong, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
 @property (strong, nonatomic) GEORouteAttributes *routeAttributes; // @synthesize routeAttributes=_routeAttributes;
 @property (strong, nonatomic) GEORouteMatch *routeMatch; // @synthesize routeMatch=_routeMatch;
+@property (nonatomic) BOOL shouldUpdateTrafficOnRoute; // @synthesize shouldUpdateTrafficOnRoute=_shouldUpdateTrafficOnRoute;
 @property (nonatomic) BOOL shouldUseConditionalRequest; // @synthesize shouldUseConditionalRequest=_shouldUseConditionalRequest;
 @property (strong, nonatomic) GEOLocation *userLocation; // @synthesize userLocation=_userLocation;
 

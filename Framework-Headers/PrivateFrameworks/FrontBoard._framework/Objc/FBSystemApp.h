@@ -28,6 +28,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (Class)_applicationInfoClass;
 + (void)initializeSystemServices;
 + (void)postFrontBoardInitializationHook;
 + (void)preFrontBoardInitializationHook;

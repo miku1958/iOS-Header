@@ -22,10 +22,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct CGSize preferredViewSize;
 @property (readonly) Class superclass;
-@property (nonatomic) id<_SBUIWidgetHost> widgetHost; // @synthesize widgetHost=_widgetHost;
+@property (weak, nonatomic) id<_SBUIWidgetHost> widgetHost; // @synthesize widgetHost=_widgetHost;
 @property (copy, nonatomic) NSString *widgetIdentifier; // @synthesize widgetIdentifier=_widgetIdentifier;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)hostDidDismiss;
 - (void)hostDidPresent;
 - (void)hostWillDismiss;

@@ -43,6 +43,10 @@
 @property (readonly, nonatomic) unsigned long long *timeToNetworkEventsMsecs;
 @property (readonly, nonatomic) unsigned long long timeToNetworkEventsMsecsCount;
 
++ (Class)dataUsageSnapshotsAtNetworkEventsType;
++ (Class)primaryInterfaceAttemptStatisticsReportsType;
+- (int)StringAsDenyReason:(id)arg1;
+- (int)StringAsNetworkEvents:(id)arg1;
 - (void)addDataUsageSnapshotsAtNetworkEvents:(id)arg1;
 - (void)addNetworkEvents:(int)arg1;
 - (void)addPrimaryInterfaceAttemptStatisticsReports:(id)arg1;
@@ -56,11 +60,13 @@
 - (id)dataUsageSnapshotsAtNetworkEventsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)dataUsageSnapshotsAtNetworkEventsCount;
 - (void)dealloc;
+- (id)denyReasonAsString:(int)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)networkEventsAsString:(int)arg1;
 - (int)networkEventsAtIndex:(unsigned long long)arg1;
 - (id)primaryInterfaceAttemptStatisticsReportsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)primaryInterfaceAttemptStatisticsReportsCount;

@@ -61,6 +61,7 @@
 - (struct CGRect)alignmentRectForFrame:(struct CGRect)arg1 expanded:(BOOL)arg2;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (void)collapseMenuAnimated:(BOOL)arg1;
+- (double)collapsedSelectedLabelHorizontalMargin;
 - (void)completeExpansionToProposedFrame:(struct CGRect)arg1;
 - (void)expandMenuAnimated:(BOOL)arg1;
 - (void)finishCollapsingAnimated:(BOOL)arg1;

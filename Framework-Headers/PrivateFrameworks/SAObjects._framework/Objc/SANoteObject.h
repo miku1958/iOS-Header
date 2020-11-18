@@ -15,6 +15,7 @@
 @property (copy, nonatomic) NSString *contents;
 @property (copy, nonatomic) NSDate *createdDate;
 @property (copy, nonatomic) NSDate *lastModifiedDate;
+@property (nonatomic) BOOL restricted;
 @property (copy, nonatomic) NSString *title;
 
 + (id)object;

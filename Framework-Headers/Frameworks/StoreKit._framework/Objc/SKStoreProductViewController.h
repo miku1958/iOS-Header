@@ -71,6 +71,7 @@
 - (void)loadProductWithRequest:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)loadProductWithURL:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)loadView;
+- (long long)preferredStatusBarStyle;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;

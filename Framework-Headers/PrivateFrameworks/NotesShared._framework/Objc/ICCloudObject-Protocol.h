@@ -12,7 +12,6 @@
 + (NSArray *)allCloudObjects;
 + (id)existingCloudObjectForRecordID:(CKRecordID *)arg1;
 + (id)newCloudObjectForRecord:(CKRecord *)arg1;
-+ (NSString *)recordType;
 - (NSString *)className;
 - (void)deleteFromLocalDatabase;
 - (void)fixBrokenReferences;
@@ -32,6 +31,7 @@
 - (void)objectWillBePushedToCloudWithOperation:(CKModifyRecordsOperation *)arg1;
 - (NSArray *)objectsToBeDeletedBeforeThisObject;
 - (CKRecordID *)recordID;
+- (NSString *)recordType;
 - (CKRecordZoneID *)recordZoneID;
 @end
 

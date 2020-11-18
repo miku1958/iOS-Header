@@ -6,10 +6,11 @@
 
 #import <CoreHAP/NSObject-Protocol.h>
 
-@class HAPSecuritySession, NSData, NSError, NSString;
+@class HAPPairingIdentity, HAPSecuritySession, NSData, NSError, NSString;
 
 @protocol HAPSecuritySessionDelegate <NSObject>
-- (NSData *)securitySession:(HAPSecuritySession *)arg1 didReceiveRequestForPeerPublicKeyWithIdentifier:(NSString *)arg2;
+- (HAPPairingIdentity *)securitySession:(HAPSecuritySession *)arg1 didReceiveLocalPairingIdentityRequestWithError:(id *)arg2;
+- (HAPPairingIdentity *)securitySession:(HAPSecuritySession *)arg1 didReceiveRequestForPeerPairingIdentityWithIdentifier:(NSString *)arg2 error:(id *)arg3;
 - (void)securitySession:(HAPSecuritySession *)arg1 didReceiveSetupExchangeData:(NSData *)arg2;
 
 @optional

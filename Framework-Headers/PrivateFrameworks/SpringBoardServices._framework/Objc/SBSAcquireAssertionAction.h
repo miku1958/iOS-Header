@@ -12,9 +12,9 @@
 {
 }
 
-@property (readonly, nonatomic) NSString *assertionName;
+@property (readonly, weak, nonatomic) NSString *assertionName;
 @property (readonly, nonatomic) unsigned int port;
-@property (readonly, nonatomic) NSString *reason;
+@property (readonly, weak, nonatomic) NSString *reason;
 
 + (id)assertionWithAssertionName:(id)arg1 reason:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;

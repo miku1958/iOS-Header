@@ -10,6 +10,7 @@
 {
 }
 
++ (id)_mobileOwnerAttributes;
 + (BOOL)_moveItemAtURL:(id)arg1 toURL:(id)arg2 securely:(BOOL)arg3 error:(id *)arg4;
 + (BOOL)changeFileOwnerToMobileAtPath:(id)arg1 error:(id *)arg2;
 + (BOOL)changeFileOwnerToMobileAtPath:(id)arg1 error:(id *)arg2 usingFileManager:(id)arg3;

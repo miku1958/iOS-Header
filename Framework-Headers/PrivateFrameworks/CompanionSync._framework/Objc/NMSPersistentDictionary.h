@@ -25,9 +25,11 @@
     struct sqlite3_stmt *_remove;
     struct sqlite3_stmt *_removeAll;
     struct sqlite3_stmt *_byDate;
+    struct sqlite3_stmt *_byEnqueueDate;
 }
 
 - (void).cxx_destruct;
+- (unsigned long long)_checkSchemaVersion;
 - (id)_dataFromObject:(id)arg1;
 - (void)_ensureDBSchema;
 - (id)_objectFromData:(id)arg1;
@@ -35,6 +37,7 @@
 - (void)_prepareStatements;
 - (void)_withDB:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (void)enumerateObjectsSortedByEnqueueDate:(CDUnknownBlockType)arg1;
 - (void)enumerateObjectsSortedByExpirationDate:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithPath:(id)arg1 objectClass:(Class)arg2 loggingFacility:(struct __CFString *)arg3;

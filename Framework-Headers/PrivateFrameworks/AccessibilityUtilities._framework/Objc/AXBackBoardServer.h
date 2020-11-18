@@ -17,6 +17,7 @@
 
 @property (nonatomic) BOOL inPreboardMode;
 @property (nonatomic) BOOL invertColorsEnabled; // @dynamic invertColorsEnabled;
+@property (nonatomic) BOOL sessionIsLoginSession;
 
 + (id)server;
 - (void)_didConnectToServer;
@@ -27,14 +28,18 @@
 - (id)_springboardParametersForGuidedAccessAvailability;
 - (void)_willClearServer;
 - (int)accessibilityUIServicePID;
+- (BOOL)adaptationEnabled;
 - (void)adjustSystemZoom:(int)arg1;
 - (id)backboardServiceInstance;
+- (BOOL)blueLightStatusEnabled;
+- (BOOL)brightnessFiltersEnabled;
 - (unsigned int)contextIdForPosition:(struct CGPoint)arg1;
 - (unsigned int)contextIdHostingContextId:(unsigned int)arg1;
 - (struct CGRect)convertFrame:(struct CGRect)arg1 fromContextId:(unsigned int)arg2;
 - (struct CGRect)convertFrame:(struct CGRect)arg1 fromContextId:(unsigned int)arg2 toContextId:(unsigned int)arg3;
 - (struct CGRect)convertFrame:(struct CGRect)arg1 toContextId:(unsigned int)arg2;
 - (void)dealloc;
+- (void)disableBrightnessFilters;
 - (unsigned long long)guidedAccessAvailability;
 - (id)guidedAccessIgnoredRegions;
 - (id)init;
@@ -51,6 +56,7 @@
 - (void)registerSiriViewServicePID:(int)arg1;
 - (void)registerZoomAttributesChangeHandler:(CDUnknownBlockType)arg1;
 - (BOOL)requestGuidedAccessSession:(BOOL)arg1 appID:(id)arg2;
+- (void)restoreCachedBrightnessFilters;
 - (void)setAccessibilityPreferenceAsMobile:(id)arg1 value:(id)arg2 notification:(id)arg3;
 - (void)setCapsLockLightOn:(BOOL)arg1;
 - (void)setHearingAidControlIsVisible:(BOOL)arg1;
@@ -58,6 +64,8 @@
 - (void)setSwitchControlRendersDeviceUnusable:(BOOL)arg1;
 - (void)setVoiceOverItemChooserVisible:(BOOL)arg1;
 - (void)setZoomInitialFocusRect:(struct CGRect)arg1 fromContext:(unsigned int)arg2;
+- (BOOL)supportsAdaptation;
+- (BOOL)supportsBlueLightReduction;
 - (void)toggleGuidedAccess;
 - (void)userEventOccurred;
 - (void)wakeUpDeviceIfNecessary;

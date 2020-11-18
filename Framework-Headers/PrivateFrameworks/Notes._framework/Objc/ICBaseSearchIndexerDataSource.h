@@ -8,7 +8,7 @@
 
 #import <Notes/ICSearchIndexerDataSource-Protocol.h>
 
-@class NSMutableDictionary, NSMutableSet, NSString;
+@class NSHashTable, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface ICBaseSearchIndexerDataSource : NSObject <ICSearchIndexerDataSource>
@@ -21,10 +21,10 @@
     NSMutableSet *_objectIDsBeingProcessed;
     NSMutableDictionary *_objectIDsByIdentifier;
     NSMutableDictionary *_identifiersByObjectID;
-    NSMutableSet *_contextsToObserve;
+    NSHashTable *_contextsToObserve;
 }
 
-@property (strong, nonatomic) NSMutableSet *contextsToObserve; // @synthesize contextsToObserve=_contextsToObserve;
+@property (strong, nonatomic) NSHashTable *contextsToObserve; // @synthesize contextsToObserve=_contextsToObserve;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

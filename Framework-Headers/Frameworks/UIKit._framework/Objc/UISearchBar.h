@@ -12,7 +12,7 @@
 #import <UIKit/UITextInputTraits_Private-Protocol.h>
 #import <UIKit/_UIBarPositioningInternal-Protocol.h>
 
-@class NSArray, NSString, UIBarButtonItem, UIButton, UIColor, UIImage, UIImageView, UILabel, UISearchBarTextField, UISearchController, UITapGestureRecognizer, UITextInputAssistantItem, UITextInputTraits, _UIBackdropView, _UISearchBarNavigationItem, _UISearchBarScopeBarBackground;
+@class NSArray, NSIndexSet, NSString, UIBarButtonItem, UIButton, UIColor, UIImage, UIImageView, UILabel, UISearchBarTextField, UISearchController, UITapGestureRecognizer, UITextInputAssistantItem, UITextInputTraits, _UIBackdropView, _UISearchBarNavigationItem, _UISearchBarScopeBarBackground;
 @protocol UISearchBarDelegate, UISearchBarDelegate><UISearchBarDelegate_Private;
 
 @interface UISearchBar : UIView <UITextInputTraits_Private, UIStatusBarTinting, _UIBarPositioningInternal, UIBarPositioning, UITextInputTraits>
@@ -76,6 +76,7 @@
     unsigned long long __scopeBarPosition;
 }
 
+@property (copy, nonatomic) NSIndexSet *PINEntrySeparatorIndexes;
 @property (nonatomic) BOOL _forceCenteredPlaceholderLayout; // @synthesize _forceCenteredPlaceholderLayout=__forceCenteredPlaceholderLayout;
 @property (readonly, strong, nonatomic) UIButton *_leftButton; // @synthesize _leftButton;
 @property (nonatomic, setter=_setScopeBarPosition:) unsigned long long _scopeBarPosition; // @synthesize _scopeBarPosition=__scopeBarPosition;
@@ -98,6 +99,7 @@
 @property (weak, nonatomic) id<UISearchBarDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disablePrediction;
+@property (nonatomic) BOOL displaySecureEditsUsingPlainText;
 @property (nonatomic) BOOL displaySecureTextUsingPlainText;
 @property (nonatomic) int emptyContentReturnKeyType;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically; // @dynamic enablesReturnKeyAutomatically;
@@ -147,6 +149,7 @@
 @property (strong, nonatomic) UIColor *tintColor; // @dynamic tintColor;
 @property (nonatomic, getter=isTranslucent) BOOL translucent;
 @property (nonatomic) BOOL useInterfaceLanguageForLocalization;
+@property (nonatomic) struct _NSRange validTextRange;
 
 - (void).cxx_destruct;
 - (void)_addSubview:(id)arg1 positioned:(long long)arg2 relativeTo:(id)arg3;
@@ -181,6 +184,7 @@
 - (void)_displayNavBarCancelButton:(BOOL)arg1 animated:(BOOL)arg2;
 - (id)_effectiveBarTintColor;
 - (void)_effectiveBarTintColorDidChange:(BOOL)arg1;
+- (BOOL)_enableAutomaticKeyboardPressDone;
 - (id)_glyphAndTextColor:(BOOL)arg1;
 - (BOOL)_hasCustomAutolayoutNeighborSpacing;
 - (BOOL)_hasDarkUIAppearance;

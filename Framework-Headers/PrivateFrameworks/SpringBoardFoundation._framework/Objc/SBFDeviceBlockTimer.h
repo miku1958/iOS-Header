@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, NSTimer, SBFDeviceLockController;
 
@@ -27,6 +27,7 @@
 @property (strong, nonatomic) NSTimer *timer; // @synthesize timer=_timer;
 @property (copy, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
 
+- (void).cxx_destruct;
 - (void)_clearTimer;
 - (id)_localizedPlatformName;
 - (void)_scheduleTimerIfNecessaryAndUpdateState;

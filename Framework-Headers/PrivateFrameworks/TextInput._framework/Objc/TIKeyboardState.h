@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <TextInput/NSCopying-Protocol.h>
 #import <TextInput/NSSecureCoding-Protocol.h>
 
-@class NSString, TIDocumentState, TIKeyboardCandidate, TIKeyboardLayout, TIKeyboardLayoutState, TITextInputTraits;
+@class NSString, NSUUID, TIDocumentState, TIKeyboardCandidate, TIKeyboardLayout, TIKeyboardLayoutState, TITextInputTraits;
 
 @interface TIKeyboardState : NSObject <NSCopying, NSSecureCoding>
 {
@@ -38,6 +38,7 @@
         } fields;
     } _autocorrectionListUIState;
     int _shiftState;
+    NSUUID *_documentIdentifier;
     NSString *_clientIdentifier;
     NSString *_inputMode;
     NSString *_recipientIdentifier;
@@ -59,6 +60,7 @@
 @property (nonatomic) BOOL candidateSelectionPredictionEnabled;
 @property (copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (strong, nonatomic) TIKeyboardCandidate *currentCandidate; // @synthesize currentCandidate=_currentCandidate;
+@property (strong, nonatomic) NSUUID *documentIdentifier; // @synthesize documentIdentifier=_documentIdentifier;
 @property (strong, nonatomic) TIDocumentState *documentState; // @synthesize documentState=_documentState;
 @property (nonatomic) BOOL hardwareKeyboardMode;
 @property (copy, nonatomic) NSString *inputForMarkedText; // @synthesize inputForMarkedText=_inputForMarkedText;

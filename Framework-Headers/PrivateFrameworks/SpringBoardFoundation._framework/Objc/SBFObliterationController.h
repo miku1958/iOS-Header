@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface SBFObliterationController : NSObject
 {
@@ -12,7 +12,7 @@
 
 + (id)sharedInstance;
 - (void)markObliterationStart;
-- (void)obliterateDataPartitionShowingProgress:(BOOL)arg1 skipDataObliteration:(BOOL)arg2;
+- (void)obliterateDataPartitionShowingProgress:(BOOL)arg1 skipDataObliteration:(BOOL)arg2 eraseDataPlan:(BOOL)arg3;
 - (void)wipeAndBrickShowingProgress:(BOOL)arg1;
 
 @end

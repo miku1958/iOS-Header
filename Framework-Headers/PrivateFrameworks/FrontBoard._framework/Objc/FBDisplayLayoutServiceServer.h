@@ -12,13 +12,17 @@
 @interface FBDisplayLayoutServiceServer : FBSystemServiceFacility
 {
     id<FBDisplayLayoutServiceServerDelegate> _delegate;
-    NSMutableDictionary *_clientsByDisplayType;
+    NSMutableDictionary *_calloutQueuesByQOS;
+    NSMutableDictionary *_defaultQOSClientsByDisplayType;
+    NSMutableDictionary *_utilityQOSClientsByDisplayType;
 }
 
 @property (nonatomic) id<FBDisplayLayoutServiceServerDelegate> delegate; // @synthesize delegate=_delegate;
 
-- (id)_clientsForDisplayType:(unsigned long long)arg1;
-- (void)_sendDisplayLayout:(id)arg1 toClients:(id)arg2;
+- (id)_calloutQueueForQOS:(unsigned long long)arg1;
+- (id)_defaultQOSClientsForDisplayType:(unsigned long long)arg1;
+- (void)_sendDisplayLayout:(id)arg1 toClients:(id)arg2 withQualityOfService:(unsigned long long)arg3;
+- (id)_utilityQOSClientsForDisplayType:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)initWithIdentifier:(id)arg1 queue:(id)arg2 clientAuthenticator:(id)arg3;
 - (void)noteClientDidConnect:(id)arg1 withMessage:(id)arg2;

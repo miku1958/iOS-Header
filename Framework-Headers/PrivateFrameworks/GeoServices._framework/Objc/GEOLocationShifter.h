@@ -8,28 +8,31 @@
 
 #import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
 
-@class GEOLocationShiftFunctionRequest, NSCache, NSLock, NSMutableArray, NSString;
+@class NSCache, NSLock, NSMutableArray, NSString;
+@protocol _GEOLocationShifterProxy;
 
 @interface GEOLocationShifter : NSObject <GEOResourceManifestTileGroupObserver>
 {
+    id<_GEOLocationShifterProxy> _proxy;
     BOOL _isRequestingShiftFunction;
-    GEOLocationShiftFunctionRequest *_shiftRequest;
     NSLock *_lock;
     NSMutableArray *_locationsToShift;
     NSCache *_shiftFunctionCache;
+    int _resetPrivacyToken;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL locationShiftEnabled;
-@property (strong, nonatomic) GEOLocationShiftFunctionRequest *shiftRequest; // @synthesize shiftRequest=_shiftRequest;
 @property (readonly) Class superclass;
 
 + (BOOL)isLocationShiftEnabled;
 + (BOOL)isLocationShiftRequiredForCoordinate:(CDStruct_c3b9c2ee)arg1;
 + (unsigned int)locationShiftFunctionVersion;
++ (void)useLocalProxy;
 - (void)_countryProvidersDidChange:(id)arg1;
+- (void)_fetchShiftFunctionForCoordinate:(CDStruct_c3b9c2ee)arg1 withCompletionHandler:(CDUnknownBlockType)arg2 callbackQueue:(id)arg3;
 - (void)_requestNextShiftFunctionIfNecessary;
 - (void)_reset;
 - (BOOL)_shiftLocation:(id)arg1;

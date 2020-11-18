@@ -23,6 +23,7 @@
     BOOL _wantsCrossfadeLayer;
     BOOL _aggressivelyCachesVideoFrames;
     BOOL _reversesMoreVideoFramesInMemory;
+    double _timeMultiplier;
     double _preCrossfadeDuration;
     double _playbackTransitionBlurRadius;
     double _playbackTransitionScale;
@@ -58,6 +59,7 @@
 @property (nonatomic) double settleTransitionDuration; // @synthesize settleTransitionDuration=_settleTransitionDuration;
 @property (nonatomic) BOOL shouldScaleAndBlurForPlayback; // @synthesize shouldScaleAndBlurForPlayback=_shouldScaleAndBlurForPlayback;
 @property (nonatomic) BOOL shouldSettleAutomatically; // @synthesize shouldSettleAutomatically=_shouldSettleAutomatically;
+@property (nonatomic) double timeMultiplier; // @synthesize timeMultiplier=_timeMultiplier;
 @property (nonatomic) struct CGPoint transitionBlurTimingFunctionControlPoint1; // @synthesize transitionBlurTimingFunctionControlPoint1=_transitionBlurTimingFunctionControlPoint1;
 @property (nonatomic) struct CGPoint transitionBlurTimingFunctionControlPoint2; // @synthesize transitionBlurTimingFunctionControlPoint2=_transitionBlurTimingFunctionControlPoint2;
 @property (nonatomic) struct CGPoint transitionFadeTimingFunctionControlPoint1; // @synthesize transitionFadeTimingFunctionControlPoint1=_transitionFadeTimingFunctionControlPoint1;
@@ -79,6 +81,7 @@
 - (id)init;
 - (void)registerObserver:(id)arg1;
 - (void)setDefaultValues;
+- (void)setHintPlaybackValuesWithAssetOptions:(unsigned long long)arg1;
 - (void)setHintPlaybackValuesWithPhotoHasColorAdjustments:(BOOL)arg1;
 - (void)unregisterObserver:(id)arg1;
 

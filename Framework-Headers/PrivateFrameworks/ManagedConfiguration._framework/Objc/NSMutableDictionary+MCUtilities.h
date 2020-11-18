@@ -12,8 +12,10 @@
 - (void)MCDeleteBoolRestriction:(id)arg1;
 - (void)MCSetBoolRestriction:(id)arg1 value:(BOOL)arg2;
 - (void)MCSetIntersectionRestriction:(id)arg1 values:(id)arg2;
+- (void)MCSetIntersectionSetting:(id)arg1 values:(id)arg2;
 - (void)MCSetObjectIfNotNil:(id)arg1 forKey:(id)arg2;
 - (void)MCSetUnionRestriction:(id)arg1 values:(id)arg2;
+- (void)MCSetUnionSetting:(id)arg1 values:(id)arg2;
 - (void)MCSetValueRestriction:(id)arg1 value:(id)arg2;
 @end
 

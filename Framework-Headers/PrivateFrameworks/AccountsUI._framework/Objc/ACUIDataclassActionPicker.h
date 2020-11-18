@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) long long priorityIndex;
 
 - (void).cxx_destruct;
+- (id)actionOfType:(long long)arg1;
 - (void)addAffectedDataclass:(id)arg1;
 - (id)descriptionForDataclassAction:(id)arg1;
 - (BOOL)hasActionOfType:(long long)arg1;

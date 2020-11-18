@@ -10,7 +10,7 @@
 #import <FrontBoard/FBSceneClient-Protocol.h>
 #import <FrontBoard/FBWorkspaceServerSceneEventHandler-Protocol.h>
 
-@class FBSDisplay, FBSSceneClientSettings, FBSSceneSettings, FBWorkspace, NSString;
+@class FBSSceneClientSettings, FBSSceneSettings, FBUISceneIdentity, FBWorkspace, NSString;
 @protocol FBSceneHost, OS_dispatch_queue;
 
 @interface FBWorkspaceScene : NSObject <FBWorkspaceServerSceneEventHandler, BSDescriptionProviding, FBSceneClient>
@@ -19,7 +19,7 @@
     FBWorkspace *_workspace;
     NSObject<OS_dispatch_queue> *_workspaceQueue;
     NSString *_identifier;
-    FBSDisplay *_display;
+    FBUISceneIdentity *_identity;
     FBSSceneSettings *_settings;
     FBSSceneClientSettings *_clientSettings;
     BOOL _sentCreationEvent;
@@ -31,12 +31,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<FBSceneHost> host;
 @property (readonly, copy, nonatomic) NSString *identifier;
+@property (readonly, copy, nonatomic) FBUISceneIdentity *identity; // @synthesize identity=_identity;
 @property (readonly, nonatomic) FBWorkspace *parentWorkspace;
 @property (copy, nonatomic, getter=_workspaceQueue_sceneSettings, setter=_workspaceQueue_setSceneSettings:) FBSSceneSettings *sceneSettings; // @synthesize sceneSettings=_settings;
 @property (nonatomic, getter=_workspaceQueue_hasSentCreationEvent, setter=_workspaceQueue_setSentCreationEvent:) BOOL sentCreationEvent; // @synthesize sentCreationEvent=_sentCreationEvent;
 @property (readonly, copy, nonatomic) FBSSceneSettings *settings;
 @property (readonly) Class superclass;
 
+- (void)_handleDidUpdateSettings:(id)arg1 withDiff:(id)arg2 transitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_handleInvalidationWithTransitionContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_workspaceQueue;
 - (void)_workspaceQueue_dispatchClientBlockIfNecessary:(CDUnknownBlockType)arg1 success:(BOOL)arg2;
 - (void)_workspaceQueue_invalidate;
@@ -50,7 +53,7 @@
 - (void)host:(id)arg1 didInvalidateWithTransitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)host:(id)arg1 didReceiveActions:(id)arg2;
 - (void)host:(id)arg1 didUpdateSettings:(id)arg2 withDiff:(id)arg3 transitionContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (id)initWithParentWorkspace:(id)arg1 host:(id)arg2;
+- (id)initWithParentWorkspace:(id)arg1 identity:(id)arg2;
 - (void)invalidate;
 - (void)sceneAttachLayer:(id)arg1;
 - (void)sceneDetachLayer:(id)arg1;

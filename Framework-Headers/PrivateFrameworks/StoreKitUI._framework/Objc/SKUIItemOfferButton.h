@@ -8,7 +8,7 @@
 
 #import <StoreKitUI/SKUIViewElementOfferButton-Protocol.h>
 
-@class NSMutableAttributedString, NSString, SKUICircleProgressIndicator, SKUIFocusedTouchGestureRecognizer, SKUIItemOfferButtonState, UIColor, UIImage, UIImageView, UILabel, UIView;
+@class NSMutableAttributedString, NSString, SKUIButtonViewElement, SKUICircleProgressIndicator, SKUIFocusedTouchGestureRecognizer, SKUIItemOfferButtonState, UIColor, UIImage, UIImageView, UILabel, UIView;
 @protocol SKUIItemOfferButtonDelegate;
 
 @interface SKUIItemOfferButton : UIControl <SKUIViewElementOfferButton>
@@ -38,8 +38,11 @@
     BOOL _usesDrawRectPath;
     SKUIItemOfferButtonState *_state;
     UIImageView *_universalImageView;
+    BOOL _downloadRestores;
+    BOOL _disabledButSelectable;
     CDUnknownBlockType _centerImageProvider;
     double _borderColorAlphaMultiplier;
+    SKUIButtonViewElement *_element;
 }
 
 @property (nonatomic) double borderColorAlphaMultiplier; // @synthesize borderColorAlphaMultiplier=_borderColorAlphaMultiplier;
@@ -50,12 +53,15 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SKUIItemOfferButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isDisabledButSelectable) BOOL disabledButSelectable; // @synthesize disabledButSelectable=_disabledButSelectable;
+@property (strong, nonatomic) SKUIButtonViewElement *element; // @synthesize element=_element;
 @property (nonatomic) long long fillStyle; // @synthesize fillStyle=_fillStyle;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImage *image;
 @property (weak, nonatomic) id<SKUIItemOfferButtonDelegate> itemOfferDelegate;
 @property (nonatomic) double progress; // @synthesize progress=_progress;
 @property (nonatomic) long long progressType;
+@property (readonly, nonatomic) BOOL restores;
 @property (readonly, nonatomic, getter=isShowingConfirmation) BOOL showingConfirmation;
 @property (nonatomic) BOOL showsConfirmationState; // @synthesize showsConfirmationState=_showsConfirmationState;
 @property (readonly) Class superclass;

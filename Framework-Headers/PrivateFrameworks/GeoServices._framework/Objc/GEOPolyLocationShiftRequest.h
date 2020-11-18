@@ -17,7 +17,6 @@
 
 @property (strong, nonatomic) GEOLatLng *location; // @synthesize location=_location;
 
-- (CDStruct_c3b9c2ee)coordinate;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

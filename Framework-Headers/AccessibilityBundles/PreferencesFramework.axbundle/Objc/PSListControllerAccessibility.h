@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_accessibilityHandleNavigationControllerDidStartTransition;
+- (BOOL)_accessibilityHandleNavigationControllerDidEndTransition;
 - (void)highlightSpecifierWithID:(id)arg1;
 - (id)loadSpecifiersFromPlistName:(id)arg1 target:(id)arg2;
 - (void)reloadSpecifierAtIndex:(int)arg1 animated:(BOOL)arg2;

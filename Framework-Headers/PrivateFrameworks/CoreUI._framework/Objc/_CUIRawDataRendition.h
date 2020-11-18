@@ -6,10 +6,12 @@
 
 #import <CoreUI/CUIThemeRendition.h>
 
+@class NSData;
+
 __attribute__((visibility("hidden")))
 @interface _CUIRawDataRendition : CUIThemeRendition
 {
-    struct __CFData *_dataBytes;
+    NSData *_dataBytes;
 }
 
 - (id)_initWithCSIHeader:(const struct _csiheader *)arg1;

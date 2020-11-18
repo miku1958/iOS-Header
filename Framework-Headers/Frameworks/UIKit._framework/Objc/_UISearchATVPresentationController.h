@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)_presentedViewControllerForSizeClassPair:(CDStruct_d58201db)arg1;
 - (id)adaptivePresentationController;
 - (long long)adaptivePresentationStyle;
-- (BOOL)animatorShouldSizeResultsContainerView;
+- (BOOL)animatorShouldLayoutPresentationViews;
 - (id)backgroundObscuringView;
 - (unsigned long long)edgeForHidingNavigationBar;
 - (struct CGRect)finalFrameForContainerView;

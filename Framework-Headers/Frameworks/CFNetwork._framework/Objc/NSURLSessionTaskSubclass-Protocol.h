@@ -7,6 +7,7 @@
 #import <CFNetwork/NSObject-Protocol.h>
 
 @protocol NSURLSessionTaskSubclass <NSObject>
+- (void)_onSessionQueue_cleanupAndBreakCycles;
 - (void)_onSessionQueue_disavow;
 - (void)_onqueue_adjustLoadingPoolPriority;
 - (void)_onqueue_adjustPoolPriority;

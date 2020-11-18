@@ -9,13 +9,16 @@
 #import <CoreHAP/HAPFragmentationStreamDelegate-Protocol.h>
 #import <CoreHAP/HAPSecuritySessionDelegate-Protocol.h>
 #import <CoreHAP/HAPStreamDelegate-Protocol.h>
+#import <CoreHAP/HAPTimerDelegate-Protocol.h>
 
-@class HAPFragmentationStream, HAPRelayStream, HAPSecuritySession, NSMapTable, NSMutableArray, NSOperationQueue, NSString;
+@class HAPExponentialBackoffTimer, HAPFragmentationStream, HAPRelayStream, HAPSecuritySession, NSMapTable, NSMutableArray, NSOperationQueue, NSString;
 
-@interface HAPAccessoryServerRelay : HAPAccessoryServer <HAPSecuritySessionDelegate, HAPFragmentationStreamDelegate, HAPStreamDelegate>
+@interface HAPAccessoryServerRelay : HAPAccessoryServer <HAPSecuritySessionDelegate, HAPFragmentationStreamDelegate, HAPTimerDelegate, HAPStreamDelegate>
 {
     BOOL _securitySessionOpen;
     BOOL _securitySessionOpening;
+    BOOL _discovered;
+    BOOL _shouldDiscover;
     unsigned short _nextRequestTransactionIdentifier;
     HAPRelayStream *_stream;
     NSMutableArray *_pendingRequests;
@@ -24,20 +27,26 @@
     HAPFragmentationStream *_fragmentationStream;
     HAPSecuritySession *_securitySession;
     NSOperationQueue *_pairVerifyOperationQueue;
+    HAPExponentialBackoffTimer *_reachabilityProbeTimer;
+    unsigned long long _configurationNumber;
 }
 
+@property (nonatomic) unsigned long long configurationNumber; // @synthesize configurationNumber=_configurationNumber;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=hasDiscovered) BOOL discovered; // @synthesize discovered=_discovered;
 @property (readonly, nonatomic) HAPFragmentationStream *fragmentationStream; // @synthesize fragmentationStream=_fragmentationStream;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned short nextRequestTransactionIdentifier; // @synthesize nextRequestTransactionIdentifier=_nextRequestTransactionIdentifier;
 @property (readonly, nonatomic) NSOperationQueue *pairVerifyOperationQueue; // @synthesize pairVerifyOperationQueue=_pairVerifyOperationQueue;
 @property (readonly, nonatomic) NSMutableArray *pendingRequests; // @synthesize pendingRequests=_pendingRequests;
 @property (readonly, nonatomic) NSMapTable *pendingResponses; // @synthesize pendingResponses=_pendingResponses;
+@property (strong, nonatomic) HAPExponentialBackoffTimer *reachabilityProbeTimer; // @synthesize reachabilityProbeTimer=_reachabilityProbeTimer;
 @property (readonly, nonatomic) NSOperationQueue *requestOperationQueue; // @synthesize requestOperationQueue=_requestOperationQueue;
 @property (strong, nonatomic) HAPSecuritySession *securitySession; // @synthesize securitySession=_securitySession;
 @property (nonatomic, getter=isSecuritySessionOpen) BOOL securitySessionOpen; // @synthesize securitySessionOpen=_securitySessionOpen;
 @property (nonatomic, getter=isSecuritySessionOpening) BOOL securitySessionOpening; // @synthesize securitySessionOpening=_securitySessionOpening;
+@property (nonatomic) BOOL shouldDiscover; // @synthesize shouldDiscover=_shouldDiscover;
 @property (readonly, nonatomic) HAPRelayStream *stream; // @synthesize stream=_stream;
 @property (readonly) Class superclass;
 
@@ -45,19 +54,21 @@
 - (void)_cancelAllQueuedOperationsWithError:(id)arg1;
 - (id)_decryptData:(id)arg1 error:(id *)arg2;
 - (id)_encryptData:(id)arg1 error:(id *)arg2;
+- (void)_endReachabilityProbe;
 - (void)_enqueueRequest:(id)arg1;
+- (void)_establishSecuritySession;
 - (void)_handleCharacteristicReadResponse:(id)arg1 characteristics:(id)arg2 error:(id)arg3 completionQueue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_handleCharacteristicWriteResponse:(id)arg1 characteristicWriteRequestTuples:(id)arg2 error:(id)arg3 completionQueue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_handleFragmentedResponse:(id)arg1 transactionIdentifier:(unsigned short)arg2 error:(id)arg3;
 - (void)_handleNotificationResponse:(id)arg1;
+- (void)_handleReachabilityProbeFire;
 - (void)_handleReceivedMessageData:(id)arg1 withIdentifier:(id)arg2 error:(id)arg3;
 - (void)_handleSecuritySessionSetupExchangeData:(id)arg1;
 - (unsigned short)_nextTransactionIdentifier;
-- (void)_parseAttributeDatabase:(id)arg1;
+- (void)_parseAttributeDatabase:(id)arg1 configurationNumber:(id)arg2;
 - (void)_resumeAllOperations;
 - (void)_sendRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)_serverIdentifier;
-- (id)_serverName;
+- (void)_startReachabilityProbe;
 - (void)_suspendAllOperations;
 - (BOOL)addPairingWithIdentifier:(id)arg1 publicKey:(id)arg2 admin:(BOOL)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)continuePairingAfterAuthPrompt;
@@ -66,17 +77,20 @@
 - (void)enableEvents:(BOOL)arg1 forCharacteristics:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3 queue:(id)arg4;
 - (void)fragmentationStream:(id)arg1 didCloseWithError:(id)arg2;
 - (void)fragmentationStream:(id)arg1 didReceiveData:(id)arg2 transactionIdentifier:(unsigned short)arg3 error:(id)arg4;
+- (id)getLocalPairingIdentityAndAllowCreation:(BOOL)arg1 error:(id *)arg2;
 - (BOOL)hasPairings;
 - (void)identifyWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithStream:(id)arg1 name:(id)arg2 identifier:(id)arg3 keyStore:(id)arg4;
 - (BOOL)isPaired;
 - (long long)linkType;
+- (void)listPairingsWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)readCharacteristicValues:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)readValueForCharacteristic:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)removePairingForCurrentControllerOnQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)removePairingWithIdentifier:(id)arg1 publicKey:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)securitySession:(id)arg1 didCloseWithError:(id)arg2;
-- (id)securitySession:(id)arg1 didReceiveRequestForPeerPublicKeyWithIdentifier:(id)arg2;
+- (id)securitySession:(id)arg1 didReceiveLocalPairingIdentityRequestWithError:(id *)arg2;
+- (id)securitySession:(id)arg1 didReceiveRequestForPeerPairingIdentityWithIdentifier:(id)arg2 error:(id *)arg3;
 - (void)securitySession:(id)arg1 didReceiveSetupExchangeData:(id)arg2;
 - (void)securitySessionDidOpen:(id)arg1;
 - (void)securitySessionIsOpening:(id)arg1;
@@ -85,6 +99,9 @@
 - (void)stream:(id)arg1 didCloseWithError:(id)arg2;
 - (void)stream:(id)arg1 didFailToWriteDataWithIdentifier:(id)arg2 error:(id)arg3;
 - (void)stream:(id)arg1 didReceiveData:(id)arg2 withIdentifier:(id)arg3;
+- (void)streamDidResume:(id)arg1;
+- (void)streamDidSuspend:(id)arg1;
+- (void)timerDidFire:(id)arg1;
 - (BOOL)tryPairingPassword:(id)arg1 error:(id *)arg2;
 - (void)writeCharacteristicValues:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)writeValue:(id)arg1 forCharacteristic:(id)arg2 authorizationData:(id)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;

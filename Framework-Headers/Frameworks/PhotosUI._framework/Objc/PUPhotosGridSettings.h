@@ -14,6 +14,7 @@
     BOOL _flashDegradedImages;
     BOOL _useFloatingHeaders;
     BOOL _swipeSelectionEnabled;
+    BOOL _shouldExitEditingModeAfterDuplication;
     double _defaultItemSideSize;
     double _minimumSpacing;
     double _maximumSpacing;
@@ -37,6 +38,7 @@
 @property (nonatomic) long long numberColumnsInDefaultGrid; // @synthesize numberColumnsInDefaultGrid=_numberColumnsInDefaultGrid;
 @property (nonatomic) long long numberOfColumnsInWideGrid; // @synthesize numberOfColumnsInWideGrid=_numberOfColumnsInWideGrid;
 @property (nonatomic) double previewRevealProgressToFreezeMagnifier; // @synthesize previewRevealProgressToFreezeMagnifier=_previewRevealProgressToFreezeMagnifier;
+@property (nonatomic) BOOL shouldExitEditingModeAfterDuplication; // @synthesize shouldExitEditingModeAfterDuplication=_shouldExitEditingModeAfterDuplication;
 @property (nonatomic) double sideMargins; // @synthesize sideMargins=_sideMargins;
 @property (nonatomic, getter=isSwipeSelectionEnabled) BOOL swipeSelectionEnabled; // @synthesize swipeSelectionEnabled=_swipeSelectionEnabled;
 @property (nonatomic) BOOL useFloatingHeaders; // @synthesize useFloatingHeaders=_useFloatingHeaders;

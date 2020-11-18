@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (id)createTemporaryDirectoryInDirectoryURL:(id)arg1 error:(id *)arg2;
 - (BOOL)dataProtectionClassOfItemAtURL:(id)arg1 class:(int *)arg2 error:(id *)arg3;
 - (id)destinationOfSymbolicLinkAtURL:(id)arg1 error:(id *)arg2;
-- (unsigned long long)diskUsageForURL:(id)arg1;
 - (id)installTypeForBundle:(id)arg1 error:(id *)arg2;
 - (BOOL)itemDoesNotExistAtURL:(id)arg1;
 - (BOOL)itemExistsAtURL:(id)arg1;
@@ -39,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)removeItemAtURL:(id)arg1 error:(id *)arg2;
 - (BOOL)setDataProtectionClassOfItemAtURL:(id)arg1 toClass:(int)arg2 ifPredicate:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (BOOL)setInstallType:(id)arg1 onBundle:(id)arg2 error:(id *)arg3;
-- (BOOL)standardizeOwnershipAndValidateSymlinksAtURL:(id)arg1 toUID:(unsigned int)arg2 GID:(unsigned int)arg3 error:(id *)arg4;
+- (BOOL)standardizeOwnershipAtURL:(id)arg1 toUID:(unsigned int)arg2 GID:(unsigned int)arg3 validateSymlinks:(BOOL)arg4 error:(id *)arg5;
 - (id)urlsForItemsInDirectoryAtURL:(id)arg1 ignoringSymlinks:(BOOL)arg2 error:(id *)arg3;
 
 @end

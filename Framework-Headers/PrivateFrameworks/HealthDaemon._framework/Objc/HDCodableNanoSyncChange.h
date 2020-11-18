@@ -19,10 +19,12 @@
     NSMutableArray *_objectDatas;
     int _objectType;
     NSMutableArray *_requiredAnchors;
+    BOOL _speculative;
     struct {
         unsigned int endAnchor:1;
         unsigned int startAnchor:1;
         unsigned int objectType:1;
+        unsigned int speculative:1;
     } _has;
 }
 
@@ -31,17 +33,21 @@
 @property (nonatomic) long long endAnchor; // @synthesize endAnchor=_endAnchor;
 @property (nonatomic) BOOL hasEndAnchor;
 @property (nonatomic) BOOL hasObjectType;
+@property (nonatomic) BOOL hasSpeculative;
 @property (nonatomic) BOOL hasStartAnchor;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableArray *objectDatas; // @synthesize objectDatas=_objectDatas;
 @property (nonatomic) int objectType; // @synthesize objectType=_objectType;
 @property (strong, nonatomic) NSMutableArray *requiredAnchors; // @synthesize requiredAnchors=_requiredAnchors;
+@property (readonly, nonatomic, getter=isSpeculative) BOOL speculative;
+@property (nonatomic) BOOL speculative; // @synthesize speculative=_speculative;
 @property (nonatomic) long long startAnchor; // @synthesize startAnchor=_startAnchor;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) struct HDSyncAnchorRange syncAnchorRange;
 
 + (id)changeWithNanoSyncEntityClass:(Class)arg1;
 - (void).cxx_destruct;
+- (Class)_syncEntityClass;
 - (void)addObjectData:(id)arg1;
 - (void)addRequiredAnchors:(id)arg1;
 - (void)clearObjectDatas;
@@ -53,6 +59,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)nanoSyncDescription;
+- (Class)nanoSyncEntityClass;
 - (id)objectDataAtIndex:(unsigned long long)arg1;
 - (unsigned long long)objectDatasCount;
 - (BOOL)readFrom:(id)arg1;
@@ -60,6 +67,7 @@
 - (id)requiredAnchorsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)requiredAnchorsCount;
 - (void)setObjects:(id)arg1 syncAnchorRange:(struct HDSyncAnchorRange)arg2 requiredAnchorMap:(id)arg3;
+- (id)speculativeCopy;
 - (Class)syncEntityClass;
 - (void)writeTo:(id)arg1;
 

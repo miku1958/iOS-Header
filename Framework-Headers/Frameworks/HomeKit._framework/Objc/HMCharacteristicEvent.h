@@ -28,6 +28,7 @@
 - (void)_updateTriggerValue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCharacteristic:(id)arg1 triggerValue:(id)arg2;
+- (id)initWithCharacteristic:(id)arg1 triggerValue:(id)arg2 allowWithoutNotification:(BOOL)arg3;
 - (id)initWithCoder:(id)arg1;
 - (void)updateTriggerValue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 

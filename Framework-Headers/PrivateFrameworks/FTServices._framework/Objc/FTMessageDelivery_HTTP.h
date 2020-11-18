@@ -8,15 +8,13 @@
 
 #import <FTServices/FTMessageQueueDelegate-Protocol.h>
 
-@class IMRemoteURLConnection, NSObject;
-@protocol OS_dispatch_queue;
+@class IMRemoteURLConnection;
 
 @interface FTMessageDelivery_HTTP : FTMessageDelivery <FTMessageQueueDelegate>
 {
     IMRemoteURLConnection *_remoteConnection;
     BOOL _pendingRetryAfterAirplaneMode;
     double _retryTimeAfterAirplaneMode;
-    NSObject<OS_dispatch_queue> *_anisetteHeadersQueue;
 }
 
 - (void)_cleanupURLConnection;

@@ -8,12 +8,11 @@
 
 #import <HealthKit/HKQueryClient-Protocol.h>
 
-@class HKSampleType, NSMutableArray, NSPredicate, NSString, NSUUID, _HKFilter;
+@class HKObjectType, HKSampleType, NSMutableArray, NSPredicate, NSString, NSUUID, _HKFilter;
 @protocol HKQueryDelegate, NSXPCProxyCreating, OS_dispatch_queue;
 
 @interface HKQuery : NSObject <HKQueryClient>
 {
-    HKSampleType *_sampleType;
     NSPredicate *_predicate;
     NSObject<OS_dispatch_queue> *_activationQueue;
     id<HKQueryDelegate> _delegate;
@@ -21,6 +20,7 @@
     NSMutableArray *_deletedObjects;
     BOOL _receivedInitialResults;
     BOOL _hasBeenExecuted;
+    HKObjectType *_objectType;
     NSUUID *_activationUUID;
     _HKFilter *_filter;
     NSObject<OS_dispatch_queue> *_clientQueue;
@@ -35,6 +35,7 @@
 @property (strong, nonatomic, getter=_filter) _HKFilter *filter; // @synthesize filter=_filter;
 @property (readonly, nonatomic) BOOL hasBeenExecuted; // @synthesize hasBeenExecuted=_hasBeenExecuted;
 @property (readonly) unsigned long long hash;
+@property (readonly) HKObjectType *objectType; // @synthesize objectType=_objectType;
 @property (readonly) NSPredicate *predicate;
 @property (readonly, nonatomic, getter=_hasReceivedInitialResults) BOOL receivedInitialResults; // @synthesize receivedInitialResults=_receivedInitialResults;
 @property (readonly) HKSampleType *sampleType;
@@ -43,10 +44,14 @@
 
 + (id)_clientInterfaceProtocol;
 + (void)_configureClientInterface:(id)arg1;
++ (id)_predicateForObjectsFromAppleWatches;
 + (id)_predicateForSamplesSyncedFromOtherDevice;
 + (Class)_queryServerDataObjectClass;
 + (id)_serverInterfaceProtocol;
 + (id)clientInterface;
++ (id)predicateForActivityCachesBetweenStartDateComponents:(id)arg1 endDateComponents:(id)arg2;
++ (id)predicateForActivitySummariesBetweenStartDateComponents:(id)arg1 endDateComponents:(id)arg2;
++ (id)predicateForActivitySummaryWithDateComponents:(id)arg1;
 + (id)predicateForCategorySamplesWithOperatorType:(unsigned long long)arg1 value:(long long)arg2;
 + (id)predicateForObjectWithUUID:(id)arg1;
 + (id)predicateForObjectsFromDevices:(id)arg1;
@@ -89,6 +94,7 @@
 - (void)activateWithClientQueue:(id)arg1 connection:(id)arg2 delegate:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)dataUpdatedInDatabaseWithAnchor:(id)arg1 query:(id)arg2;
 - (void)deactivate;
+- (void)deliverActivityStatisticsObjects:(id)arg1 forQuery:(id)arg2;
 - (void)deliverError:(id)arg1 forQuery:(id)arg2;
 - (void)deliverInitialStatisticsObjects:(id)arg1 anchor:(id)arg2 forQuery:(id)arg3;
 - (void)deliverResetStatisticsObjects:(id)arg1 forQuery:(id)arg2;

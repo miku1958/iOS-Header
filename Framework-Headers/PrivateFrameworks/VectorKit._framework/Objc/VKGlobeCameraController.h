@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)_rotateAroundTargetWithDuration:(double)arg1 rotations:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (struct CGPoint)_scaledScreenPointForPoint:(struct CGPoint)arg1;
 - (void)_updateCanEnter3DMode;
+- (void)_updateGlobeFromCamera;
 - (void)_updateIsPitched;
 - (void)adjustLoadingForAnimation:(float)arg1 progressFactor:(float)arg2;
 - (double)altitude;
@@ -102,7 +103,6 @@ __attribute__((visibility("hidden")))
 - (void)transitionToFlyoverMode:(int)arg1 animated:(BOOL)arg2;
 - (void)updateCameraManager;
 - (void)updateFlyoverMode;
-- (void)updateGlobeFromCamera;
 - (void)updatePanWithTranslation:(struct CGPoint)arg1;
 - (void)updatePinchWithFocusPoint:(struct CGPoint)arg1 oldFactor:(double)arg2 newFactor:(double)arg3;
 - (void)updatePitchWithFocusPoint:(struct CGPoint)arg1 translation:(double)arg2;

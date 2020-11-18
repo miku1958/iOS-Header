@@ -15,7 +15,6 @@
 
 @property (nonatomic) CDStruct_bddcf505 pixel; // @synthesize pixel=_pixel;
 
-- (CDStruct_c3b9c2ee)coordinate;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

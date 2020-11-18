@@ -9,17 +9,20 @@
 #import <PhotosUI/PUAssetSharedViewModelChangeObserver-Protocol.h>
 #import <PhotosUI/PUBrowsingIrisPlayerChangeObserver-Protocol.h>
 #import <PhotosUI/PUBrowsingVideoPlayerChangeObserver-Protocol.h>
+#import <PhotosUI/PUIrisBadgeVisibilityControllerDelegate-Protocol.h>
 
-@class NSNumber, NSString, PUAssetReference, PUAssetSharedViewModel, PUAssetViewModelChange, PUBadgeInfo, PUBrowsingIrisPlayer, PUBrowsingVideoPlayer, PUMediaProvider, PUModelTileTransform, PUOperationStatus;
+@class NSNumber, NSString, PUAssetReference, PUAssetSharedViewModel, PUAssetViewModelChange, PUBadgeInfo, PUBrowsingIrisPlayer, PUBrowsingVideoPlayer, PUIrisBadgeVisibilityController, PUMediaProvider, PUModelTileTransform, PUOperationStatus;
 @protocol PUDisplayAsset;
 
-@interface PUAssetViewModel : PUViewModel <PUBrowsingIrisPlayerChangeObserver, PUAssetSharedViewModelChangeObserver, PUBrowsingVideoPlayerChangeObserver>
+@interface PUAssetViewModel : PUViewModel <PUBrowsingIrisPlayerChangeObserver, PUIrisBadgeVisibilityControllerDelegate, PUAssetSharedViewModelChangeObserver, PUBrowsingVideoPlayerChangeObserver>
 {
     PUBrowsingVideoPlayer *_videoPlayer;
     PUBrowsingIrisPlayer *_irisPlayer;
+    PUIrisBadgeVisibilityController *_irisBadgeVisibilityController;
     BOOL _isUserTransformingTile;
     BOOL _isInFocus;
     BOOL _forceBadgesVisible;
+    BOOL _wantsIrisBadgeVisible;
     BOOL _isFavorite;
     BOOL _areCommentsVisible;
     BOOL _isInEditMode;
@@ -64,6 +67,7 @@
 @property (copy, nonatomic) PUModelTileTransform *modelTileTransform; // @synthesize modelTileTransform=_modelTileTransform;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PUBrowsingVideoPlayer *videoPlayer;
+@property (nonatomic) BOOL wantsIrisBadgeVisible; // @synthesize wantsIrisBadgeVisible=_wantsIrisBadgeVisible;
 
 - (void).cxx_destruct;
 - (void)_handleAssetSharedViewModel:(id)arg1 didChange:(id)arg2;
@@ -74,13 +78,16 @@
 - (void)_setFavorite:(BOOL)arg1;
 - (void)_setLastCommentsVisibilityChangeReason:(long long)arg1;
 - (void)_setLoadingStatus:(id)arg1;
+- (void)_setWantsIrisBadgeVisible:(BOOL)arg1;
 - (BOOL)_shouldPauseAndRewindVideo;
 - (void)_updateFavoriteState;
 - (void)_updateVideoPlayersIfNeeded;
 - (void)_updateVideoPlayersLoadingAllowed;
+- (void)_updateWantsIrisBadgeVisible;
 - (void)dealloc;
 - (id)debugDetailedDescription;
 - (id)init;
+- (void)irisBadgeTileInfo:(id)arg1 didTransitionToAppearanceState:(unsigned long long)arg2;
 - (id)newViewModelChange;
 - (void)registerChangeObserver:(id)arg1;
 - (void)setCommentsVisible:(BOOL)arg1;

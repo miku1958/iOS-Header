@@ -35,7 +35,9 @@
 @property (strong, nonatomic) NSData *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property (nonatomic) unsigned int sessionState; // @synthesize sessionState=_sessionState;
 
++ (id)transportDataWithSequenceNumberManager:(id)arg1;
 - (void).cxx_destruct;
+- (unsigned long long)backwardsCompatibleSessionState;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -44,6 +46,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)sessionUUID;
+- (long long)setSequenceNumberOnManager:(id)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -79,6 +79,7 @@
 - (unsigned int)wordCount;
 - (id)zoneBorders;
 - (struct CGRect)zoneBounds;
+- (struct CGRect)zoneBoundsFromVertices:(struct CGPoint *)arg1 ofCount:(unsigned int)arg2;
 - (id)zoneProfile;
 
 @end

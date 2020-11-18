@@ -27,6 +27,7 @@
 - (void)enumerateStatesForLibraryItems:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)exposedPlatformItemKinds;
 - (BOOL)performActionForLibraryItem:(id)arg1;
+- (void)removeMediaItemsForLibraryItems:(id)arg1;
 - (id)stateForLibraryItem:(id)arg1;
 
 @end

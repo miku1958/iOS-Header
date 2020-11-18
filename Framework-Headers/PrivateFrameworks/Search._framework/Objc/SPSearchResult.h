@@ -48,6 +48,7 @@
     unsigned int _searchResultDomain;
     double _geoUserSessionStartTime;
     NSString *_geoUserSessionIDString;
+    unsigned int _geoUserSessionSequenceNumber;
     BOOL _userActivityEligibleForPublicIndexing;
     BOOL _hasAssociatedUserActivity;
     BOOL _topHit;
@@ -161,6 +162,12 @@
 @property (strong, nonatomic) NSString *geoUserSessionIDString;
 @property (strong, nonatomic) NSString *geoUserSessionIDString;
 @property (strong, nonatomic) NSString *geoUserSessionIDString; // @synthesize geoUserSessionIDString=_geoUserSessionIDString;
+@property (nonatomic) unsigned int geoUserSessionSequenceNumber;
+@property (nonatomic) unsigned int geoUserSessionSequenceNumber;
+@property (nonatomic) unsigned int geoUserSessionSequenceNumber;
+@property (nonatomic) unsigned int geoUserSessionSequenceNumber;
+@property (nonatomic) unsigned int geoUserSessionSequenceNumber;
+@property (nonatomic) unsigned int geoUserSessionSequenceNumber; // @synthesize geoUserSessionSequenceNumber=_geoUserSessionSequenceNumber;
 @property (nonatomic) double geoUserSessionStartTime;
 @property (nonatomic) double geoUserSessionStartTime;
 @property (nonatomic) double geoUserSessionStartTime;

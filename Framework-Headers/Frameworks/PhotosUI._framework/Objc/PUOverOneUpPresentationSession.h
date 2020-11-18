@@ -27,6 +27,7 @@
         BOOL respondsToBrowsingViewModel;
         BOOL respondsToDidPresent;
         BOOL respondsToDidFinish;
+        BOOL respondsToIsReady;
     } _delegateFlags;
     struct {
         BOOL respondsToActivities;
@@ -111,6 +112,7 @@
 - (void)photosSharingViewControllerWillCancel:(id)arg1 withAsset:(id)arg2;
 - (void)ppt_cancelActivity;
 - (void)ppt_dismissShareSheetWithCompletion:(CDUnknownBlockType)arg1;
+- (void)ppt_presentPhotoEditor;
 - (void)ppt_presentShareSheetWithCompletion:(CDUnknownBlockType)arg1;
 - (void)ppt_shareUsing:(id)arg1;
 - (void)ppt_tapNextButton:(CDUnknownBlockType)arg1;

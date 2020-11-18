@@ -6,16 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSURL, PHAssetResource;
+@class NSData, NSURL, PHExternalAssetResource;
 
 @interface PHAssetResourceValidatedContext : NSObject
 {
-    PHAssetResource *_resource;
+    PHExternalAssetResource *_resource;
     NSURL *_validatedURL;
     NSData *_validatedData;
 }
 
-@property (readonly, nonatomic) PHAssetResource *resource; // @synthesize resource=_resource;
+@property (readonly, nonatomic) PHExternalAssetResource *resource; // @synthesize resource=_resource;
 @property (readonly, nonatomic) NSData *validatedData; // @synthesize validatedData=_validatedData;
 @property (readonly, nonatomic) NSURL *validatedURL; // @synthesize validatedURL=_validatedURL;
 

@@ -56,6 +56,7 @@
 @property (readonly, nonatomic) BRCCloudFileProvider *fileProvider; // @synthesize fileProvider=_fileProvider;
 @property (nonatomic) unsigned long long forceIsGreedyState; // @synthesize forceIsGreedyState=_forceIsGreedyState;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isInSyncBubble;
 @property (strong, nonatomic) NSError *loggedOutError; // @synthesize loggedOutError=_loggedOutError;
 @property (strong, nonatomic) NSString *logsDirPath; // @synthesize logsDirPath=_logsDirPath;
 @property (strong, nonatomic) NSString *rootDirPath; // @synthesize rootDirPath=_rootDirPath;

@@ -6,7 +6,7 @@
 
 #import <AuthKit/NSObject-Protocol.h>
 
-@class AKAppleIDAuthenticationContext, NSHTTPURLResponse, NSNumber, NSString;
+@class AKAppleIDAuthenticationContext, NSDictionary, NSHTTPURLResponse, NSNumber, NSString;
 
 @protocol AKAppleIDAuthenticationDaemonProtocol <NSObject>
 - (void)authenticateWithContext:(AKAppleIDAuthenticationContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
@@ -18,6 +18,7 @@
 - (void)reportSignOutForAppleID:(NSString *)arg1 service:(long long)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)setAppleIDWithAltDSID:(NSString *)arg1 inUse:(BOOL)arg2 forService:(long long)arg3 completion:(void (^)(BOOL, NSError *))arg4;
 - (void)setAppleIDWithDSID:(NSNumber *)arg1 inUse:(BOOL)arg2 forService:(long long)arg3 completion:(void (^)(BOOL, NSError *))arg4;
+- (void)setConfigurationInfo:(NSDictionary *)arg1 forIdentifier:(NSString *)arg2 forAltDSID:(NSString *)arg3 completion:(void (^)(BOOL, NSError *))arg4;
 - (void)updateStateWithExternalAuthenticationResponse:(NSHTTPURLResponse *)arg1 forAppleID:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)validateLoginCode:(unsigned long long)arg1 forAppleID:(NSString *)arg2 withCompletion:(void (^)(BOOL, NSError *))arg3;
 @end

@@ -19,8 +19,11 @@
 @property (copy, nonatomic) NSString *refId;
 @property (readonly) Class superclass;
 
+- (void)af_addSendCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)af_bufferingAllowedDuringActiveSession;
+- (void)af_dispatchSendCompletionsWithResult:(long long)arg1 error:(id)arg2;
 - (void)af_logDiagnostics;
+- (BOOL)af_supportsSendCompletions;
 - (id)serializedAceDataError:(id *)arg1;
 @end
 

@@ -75,6 +75,15 @@ struct Latitude {
     unsigned int _field1;
 };
 
+struct LocationNameStrings {
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field1;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field2;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field3;
+    BOOL _field4;
+    BOOL _field5;
+    BOOL _field6;
+};
+
 struct Longitude {
     unsigned int _field1;
 };
@@ -877,16 +886,13 @@ typedef struct {
     unsigned int _field2;
     unsigned int _field3;
     unsigned int _field4;
-    CDStruct_d8808cea _field5;
+    struct {
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+    } _field5;
 } CDStruct_3f74b7eb;
-
-typedef struct {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    int _field4;
-    CDStruct_d8808cea _field5;
-} CDStruct_ff5c68d7;
 
 typedef struct {
     unsigned int _field1;
@@ -1264,15 +1270,6 @@ typedef struct {
     CDStruct_b2fbf00d _field8;
 } CDStruct_ccb8b08f;
 
-typedef struct {
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field1;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field2;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field3;
-    BOOL _field4;
-    BOOL _field5;
-    BOOL _field6;
-} CDStruct_65785133;
-
 // Ambiguous groups
 typedef struct {
     unsigned int muid:1;
@@ -1280,13 +1277,6 @@ typedef struct {
     unsigned int placeTypeHint:1;
     unsigned int resultProviderId:1;
 } CDStruct_f8e30bfb;
-
-typedef struct {
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-} CDStruct_d8808cea;
 
 typedef struct {
     unsigned int navigationAudioFeedback:1;
@@ -1348,6 +1338,10 @@ typedef struct {
 } CDStruct_4f8569d5;
 
 typedef struct {
+    unsigned int muid:1;
+} CDStruct_e99c65f7;
+
+typedef struct {
     unsigned int operatingHoursRange:1;
 } CDStruct_65124bb5;
 
@@ -1364,10 +1358,6 @@ typedef struct {
 } CDStruct_08086d5c;
 
 typedef struct {
-    unsigned int sessionId:1;
-} CDStruct_a90a2ceb;
-
-typedef struct {
     unsigned int status:1;
 } CDStruct_47fe53f2;
 
@@ -1378,6 +1368,10 @@ typedef struct {
 typedef struct {
     unsigned int timestamp:1;
 } CDStruct_b5306035;
+
+typedef struct {
+    unsigned int travelTime:1;
+} CDStruct_36597415;
 
 typedef struct {
     unsigned int type:1;

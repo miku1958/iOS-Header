@@ -28,6 +28,7 @@
 - (void)dealloc;
 - (id)initWithMessageStorePath:(id)arg1;
 - (void)invalidate;
+- (BOOL)isEmpty;
 - (id)messageDigestForUnsentMessage:(id)arg1 messageKey:(id)arg2;
 - (void)recordMessageDigestAsPreviouslySent:(id)arg1 messageKey:(id)arg2;
 

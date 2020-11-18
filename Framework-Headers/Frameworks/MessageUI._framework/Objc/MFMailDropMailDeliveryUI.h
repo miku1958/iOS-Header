@@ -29,7 +29,7 @@
 - (id)contentForPlaceholder:(id)arg1;
 - (id)contentForURL:(id)arg1;
 - (void)dealloc;
-- (id)deliverSynchronously;
+- (id)deliverSynchronouslyWithCompletion:(CDUnknownBlockType)arg1;
 - (id)scaledImages:(id)arg1;
 - (BOOL)updateMessageWithAttachmentsSynchronously;
 

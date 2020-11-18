@@ -11,15 +11,15 @@
 
 @protocol PHChangeRequest <NSObject>
 
+@property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
 @property (readonly, nonatomic) NSString *clientName;
 @property (readonly, nonatomic) int clientProcessID;
-@property (readonly, nonatomic, getter=isEntitled) BOOL entitled;
 @property (readonly, nonatomic) NSString *managedEntityName;
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (readonly, nonatomic) NSString *uuid;
 
 - (void)encodeToXPCDict:(NSObject<OS_xpc_object> *)arg1;
 - (id)initWithUUID:(NSString *)arg1 objectID:(NSManagedObjectID *)arg2;
-- (id)initWithXPCDict:(NSObject<OS_xpc_object> *)arg1 entitled:(BOOL)arg2 clientName:(NSString *)arg3 clientBundleID:(NSString *)arg4 clientProcessID:(int)arg5;
+- (id)initWithXPCDict:(NSObject<OS_xpc_object> *)arg1 clientEntitled:(BOOL)arg2 clientName:(NSString *)arg3 clientBundleID:(NSString *)arg4 clientProcessID:(int)arg5;
 @end
 

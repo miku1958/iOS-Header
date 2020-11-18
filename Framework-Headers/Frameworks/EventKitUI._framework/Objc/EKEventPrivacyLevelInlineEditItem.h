@@ -17,10 +17,10 @@
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (double)footerHeightForWidth:(double)arg1;
 - (id)footerTitle;
-- (BOOL)forceTableReloadOnCommit;
+- (BOOL)forceTableReloadOnSave;
 - (BOOL)isInline;
 - (void)refreshFromCalendarItemAndStore;
-- (BOOL)requiresReconfigurationOnCommit;
+- (BOOL)requiresReconfigurationOnSave;
 - (BOOL)saveAndDismissWithForce:(BOOL)arg1;
 - (BOOL)shouldAppearWithVisibility:(int)arg1;
 

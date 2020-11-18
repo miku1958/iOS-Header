@@ -6,14 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class NSObject, NSString, UILabel, UIProgressView;
-@protocol OS_dispatch_source;
+@class NSString, UILabel, UIProgressView;
 
 @interface MusicMatchLoadingView : UIView
 {
     UILabel *_titleLabel;
     UIProgressView *_progressView;
-    NSObject<OS_dispatch_source> *_updateTimerSource;
 }
 
 @property (readonly, nonatomic) UIProgressView *progressView; // @synthesize progressView=_progressView;

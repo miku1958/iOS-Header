@@ -7,10 +7,11 @@
 #import <Foundation/NSObject.h>
 
 @class NSMutableString, NSString;
+@protocol NSObject;
 
 @interface BSDescriptionBuilder : NSObject
 {
-    NSObject *_object;
+    id<NSObject> _object;
     NSMutableString *_proem;
     NSMutableString *_description;
     int _activeComponent;
@@ -36,6 +37,7 @@
 - (id)appendBodySectionWithName:(id)arg1 multilinePrefix:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (id)appendBool:(BOOL)arg1 withName:(id)arg2;
 - (id)appendCString:(const char *)arg1 withName:(id)arg2;
+- (id)appendClass:(Class)arg1 withName:(id)arg2;
 - (id)appendDictionarySection:(id)arg1 withName:(id)arg2 multilinePrefix:(id)arg3 skipIfEmpty:(BOOL)arg4;
 - (id)appendDictionarySection:(id)arg1 withName:(id)arg2 skipIfEmpty:(BOOL)arg3;
 - (id)appendFlag:(long long)arg1 withName:(id)arg2;

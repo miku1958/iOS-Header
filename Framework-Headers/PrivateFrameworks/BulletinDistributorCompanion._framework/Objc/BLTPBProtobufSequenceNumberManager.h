@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BLTCircularBitBuffer, NSLock, NSString, NSUUID;
+@class BLTCircularBitBuffer, NSLock, NSString, NSURL, NSUUID;
 
 @interface BLTPBProtobufSequenceNumberManager : NSObject
 {
@@ -14,6 +14,7 @@
     unsigned long long _recvSequenceNumber;
     NSLock *_sequenceNumberAccess;
     BLTCircularBitBuffer *_duplicateEntries;
+    NSURL *_sequenceNumbersURL;
     unsigned long long _sessionState;
     NSString *_serviceName;
     NSUUID *_currentSessionIdentifier;

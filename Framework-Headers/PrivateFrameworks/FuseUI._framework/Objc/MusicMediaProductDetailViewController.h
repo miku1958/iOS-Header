@@ -26,9 +26,11 @@
     struct MusicEntityDownloadInformation _downloadInformation;
     MusicEntityProviderDownloadInformationController *_entityProviderDownloadInformationController;
     BOOL _hasDetailTintInformation;
+    BOOL _hasPresentedExplicitByDefaultAlert;
     BOOL _editingWasCancelled;
     BOOL _hasReceivedViewWillAppearAtLeastOnce;
     BOOL _isObservingClientContextTransferAggregatorDidChangeNotification;
+    BOOL _isViewFullyVisible;
     MusicMediaProductHeaderContentViewController *_mediaProductHeaderContentViewController;
     MusicMediaDetailHeaderViewController *_mediaDetailHeaderViewController;
     BOOL _needsEffectiveNavigationItemUpdateForEditingStateChangeUponViewWillAppear;
@@ -73,6 +75,7 @@
 - (void)_commitEditing;
 - (id)_containerMetadataContextWithContainerJSDictionary:(id)arg1 tracklistItemJSDictionaries:(id)arg2;
 - (void)_dispatchNativeViewEventOfType:(long long)arg1 withExtraInfo:(id)arg2 forViewController:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)_editingWasCancelled;
 - (id)_effectiveNavigationItem;
 - (void)_handleCancelButtonTapped:(id)arg1;
 - (void)_handleClientContextTransferAggregatorDidChangeNotification:(id)arg1;
@@ -83,6 +86,7 @@
 - (id)_loadProductSplitMainViewController;
 - (id)_mediaDetailHeaderViewController;
 - (id)_mediaProductHeaderContentViewController;
+- (void)_presentExplicitByDefaultAlertIfNeeded;
 - (long long)_productDescriptionTextStyle;
 - (void)_registerForClientContextTransferAggregatorDidChangeNotification;
 - (void)_reloadContainerEntityValueContextProperties;
@@ -123,10 +127,12 @@
 - (void)transferAggregator:(id)arg1 downloadStatusChangedAtIndexes:(id)arg2;
 - (void)transferAggregatorDownloadsDidChange:(id)arg1;
 - (void)updateWithHeaderHeight:(double)arg1 maximumHeaderHeight:(double)arg2 headerVerticalOffset:(double)arg3 transitionProgress:(double)arg4;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

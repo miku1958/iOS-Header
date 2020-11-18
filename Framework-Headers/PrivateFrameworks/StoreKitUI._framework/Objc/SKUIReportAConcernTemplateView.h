@@ -7,18 +7,27 @@
 #import <StoreKitUI/SKUIViewReuseView.h>
 
 #import <StoreKitUI/SKUIViewElementView-Protocol.h>
+#import <StoreKitUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <StoreKitUI/UITableViewDataSource-Protocol.h>
 #import <StoreKitUI/UITableViewDelegate-Protocol.h>
+#import <StoreKitUI/UITextViewDelegate-Protocol.h>
 
-@class NSArray, NSString, UIFont, UITableView, UITextView, UIView;
+@class NSArray, NSString, UIColor, UIFont, UIScrollView, UITableView, UITextView, UIView;
 @protocol SKUIReportAConcernTemplateViewDelegate;
 
-@interface SKUIReportAConcernTemplateView : SKUIViewReuseView <UITableViewDelegate, UITableViewDataSource, SKUIViewElementView>
+@interface SKUIReportAConcernTemplateView : SKUIViewReuseView <UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, SKUIViewElementView>
 {
+    NSString *_commentViewPlaceholder;
+    UIColor *_commentViewTextColor;
+    UITextView *_commentView;
+    BOOL _commentViewElementPresent;
     NSArray *_concerns;
     UITableView *_concernsTable;
-    UIView *_dividerTop;
-    UIView *_dividerBottom;
+    UIScrollView *_containerView;
+    UIView *_dividerCommentBottom;
+    UIView *_dividerCommentTop;
+    UIView *_dividerConcernsBottom;
+    UIView *_dividerConcernsTop;
     UIFont *_elementFont;
     UITextView *_headerView;
     long long _selectedIndex;
@@ -26,6 +35,7 @@
     id<SKUIReportAConcernTemplateViewDelegate> _delegate;
 }
 
+@property (readonly, nonatomic) NSString *comment;
 @property (strong, nonatomic) NSArray *concerns; // @synthesize concerns=_concerns;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SKUIReportAConcernTemplateViewDelegate> delegate; // @synthesize delegate=_delegate;
@@ -39,9 +49,16 @@
 + (void)requestLayoutForViewElement:(id)arg1 width:(double)arg2 context:(id)arg3;
 + (struct CGSize)sizeThatFitsWidth:(double)arg1 viewElement:(id)arg2 context:(id)arg3;
 - (void).cxx_destruct;
+- (void)_dismissKeyboard;
+- (void)_displayKeyboard;
+- (void)_keyboardWillHide:(id)arg1;
+- (void)_keyboardWillShow:(id)arg1;
 - (void)_reloadSubviews;
 - (void)_reloadTextView:(id)arg1 withViewElement:(id)arg2 andInsets:(struct UIEdgeInsets)arg3;
 - (id)_textForViewElement:(id)arg1;
+- (void)cleanup:(id)arg1;
+- (void)dealloc;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)init;
 - (void)layoutSubviews;
 - (void)reloadWithViewElement:(id)arg1 width:(double)arg2 context:(id)arg3;
@@ -53,6 +70,8 @@
 - (id)tableView:(id)arg1 editActionsForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (void)textViewDidBeginEditing:(id)arg1;
+- (void)textViewDidEndEditing:(id)arg1;
 - (BOOL)updateWithItemState:(id)arg1 context:(id)arg2 animated:(BOOL)arg3;
 - (id)viewForElementIdentifier:(id)arg1;
 

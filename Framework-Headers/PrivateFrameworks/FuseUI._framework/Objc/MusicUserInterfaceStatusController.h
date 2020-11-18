@@ -6,18 +6,19 @@
 
 #import <objc/NSObject.h>
 
+#import <FuseUI/ISURLBagObserver-Protocol.h>
 #import <FuseUI/MCProfileConnectionObserver-Protocol.h>
 
-@class ISSSURLBag, MusicSimpleRadioStationInfo, MusicStoreBag, NSArray, NSDictionary, NSString, RadioAvailabilityController;
+@class MusicSimpleRadioStationInfo, MusicStoreBag, NSArray, NSDictionary, NSString, RadioAvailabilityController;
 @protocol OS_dispatch_queue;
 
-@interface MusicUserInterfaceStatusController : NSObject <MCProfileConnectionObserver>
+@interface MusicUserInterfaceStatusController : NSObject <ISURLBagObserver, MCProfileConnectionObserver>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     BOOL _canShowConnect;
     BOOL _canShowRadio;
     BOOL _canShowSubscriptionContent;
-    BOOL _hasSuccessfullyLoadedBag;
+    BOOL _hasSuccessfullyLoadedBagOnce;
     BOOL _hasSuccessfullyLoadedProminentRadioStation;
     unsigned long long _observersCount;
     MusicSimpleRadioStationInfo *_prominentRadioStationInfo;
@@ -25,9 +26,9 @@
     NSArray *_supportedTabIdentifiers;
     NSDictionary *_tabConfigurations;
     long long _tabState;
-    ISSSURLBag *_URLBag;
     BOOL _displayingLocalLibrary;
     RadioAvailabilityController *_radioAvailabilityController;
+    NSString *_storeFrontID;
 }
 
 @property (readonly, nonatomic) BOOL canShowConnect;
@@ -36,38 +37,41 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isDisplayingLocalLibrary) BOOL displayingLocalLibrary; // @synthesize displayingLocalLibrary=_displayingLocalLibrary;
-@property (readonly, nonatomic) BOOL hasLoadedStoreBag;
+@property (readonly, nonatomic) BOOL hasLoadedStoreBagOnce;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) MusicSimpleRadioStationInfo *prominentRadioStationInfo;
 @property (readonly, nonatomic) RadioAvailabilityController *radioAvailabilityController; // @synthesize radioAvailabilityController=_radioAvailabilityController;
+@property (readonly, nonatomic) NSString *storeFrontID; // @synthesize storeFrontID=_storeFrontID;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long tabState;
 
 + (id)sharedUserInterfaceStatusController;
 - (void).cxx_destruct;
+- (id)_calculateCurrentStoreFrontID;
 - (id)_defaultTabConfigurations;
-- (void)_didCompleteLoadingBagDictionary:(id)arg1 withError:(id)arg2;
 - (void)_handleAccountStoreDidChangeNotification:(id)arg1;
 - (void)_handleDefaultLibraryDidDhangeNotification:(id)arg1;
 - (void)_handleDefaultsDidChangeNotification:(id)arg1;
-- (void)_handleNetworkReachabilityFlagsDidChangeNotification:(id)arg1;
 - (void)_handleRadioAvailabilityDidChangeNotification:(id)arg1;
 - (void)_handleStoreFrontDidChangeNotification:(id)arg1;
 - (void)_handleSubscriptionAvailabilityDidChangeNotification:(id)arg1;
 - (void)_handleSubscriptionStatusDidChangeNotification:(id)arg1;
+- (BOOL)_iOSVersions:(id)arg1 traverseCurrentVersionSinceVersion:(id)arg2;
 - (BOOL)_isConnectRestricted;
-- (void)_reloadStoreURLBagAllowingUpdateUsingExistingBagDictionary:(BOOL)arg1;
+- (BOOL)_isMusicSubscriptionServiceRestricted;
 - (void)_setProminentRadioStationInfo:(id)arg1;
 - (void)_updateAllowedUserInterfaceComponents;
-- (void)_updateAllowedUserInterfaceComponentsWithBagDictionary:(id)arg1;
+- (void)_updateAllowedUserInterfaceComponentsWithStoreBag:(id)arg1;
+- (void)_updateAllowedUserInterfaceComponentsWithStoreBagDictionary:(id)arg1;
 - (void)_updateProminentRadioStationInfo;
+- (void)bagDidChange:(id)arg1;
 - (void)beginObservingAllowedUserInterfaceComponents;
 - (void)dealloc;
 - (void)endObservingAllowedUserInterfaceComponents;
 - (id)init;
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;
 - (void)profileConnectionDidReceiveRestrictionChangedNotification:(id)arg1 userInfo:(id)arg2;
-- (BOOL)shouldShowWelcomeScreen;
+- (long long)reasonForWelcomScreenPresentation;
 - (id)supportedTabIdentifiersForTraitCollection:(id)arg1;
 - (void)updateWelcomeScreenAcknowledgmentDefaults:(BOOL)arg1;
 

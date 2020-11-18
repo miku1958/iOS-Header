@@ -8,13 +8,14 @@
 
 #import <FuseUI/MPVideoOverlayDelegate-Protocol.h>
 
-@class MPVideoPlaybackOverlayView, NSObject, NSString;
+@class MPVideoPlaybackOverlayView, NSObject, NSString, UITapGestureRecognizer;
 @protocol MusicNowPlayingVideoViewControllerDelegate, OS_dispatch_source;
 
 @interface MusicNowPlayingVideoViewController : MPUNowPlayingVideoViewController <MPVideoOverlayDelegate>
 {
     MPVideoPlaybackOverlayView *_videoOverlayView;
     NSObject<OS_dispatch_source> *_videoOverlayViewIdleTimer;
+    UITapGestureRecognizer *_tap;
     id<MusicNowPlayingVideoViewControllerDelegate> _videoViewControllerDelegate;
 }
 
@@ -24,14 +25,18 @@
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<MusicNowPlayingVideoViewControllerDelegate> videoViewControllerDelegate; // @synthesize videoViewControllerDelegate=_videoViewControllerDelegate;
 
++ (long long)_activityIndicatorViewStyle;
 - (void).cxx_destruct;
 - (void)_cancelIdleTimer;
 - (void)_handleTap:(id)arg1;
 - (void)_startIdleTimer:(double)arg1;
+- (void)displayVideoViewOnScreen;
+- (void)handleExternalPlaybackDidChange;
 - (void)overlay:(id)arg1 didBeginUserEvent:(long long)arg2;
 - (void)overlay:(id)arg1 didCancelUserEvent:(long long)arg2;
 - (void)overlay:(id)arg1 didEndUserEvent:(long long)arg2;
 - (void)overlayTappedBackButton:(id)arg1;
+- (void)setCanShowControlsOverlay:(BOOL)arg1;
 - (void)setControlsOverlayVisible:(BOOL)arg1 animate:(BOOL)arg2 force:(BOOL)arg3;
 - (void)setItem:(id)arg1;
 - (void)setPlayer:(id)arg1;

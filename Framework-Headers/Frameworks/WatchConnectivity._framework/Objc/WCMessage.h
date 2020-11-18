@@ -13,6 +13,7 @@
 @interface WCMessage : NSObject <NSSecureCoding>
 {
     BOOL _dictionaryMessage;
+    NSString *_pairingID;
     NSString *_identifier;
     NSData *_data;
 }
@@ -20,6 +21,7 @@
 @property (readonly, copy) NSData *data; // @synthesize data=_data;
 @property (readonly, getter=isDictionaryMessage) BOOL dictionaryMessage; // @synthesize dictionaryMessage=_dictionaryMessage;
 @property (readonly, copy) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy) NSString *pairingID; // @synthesize pairingID=_pairingID;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -27,7 +29,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 data:(id)arg2 dictionaryMessage:(BOOL)arg3;
+- (id)initWithPairingID:(id)arg1 identifier:(id)arg2 data:(id)arg3 dictionaryMessage:(BOOL)arg4;
 - (BOOL)isEqual:(id)arg1;
 
 @end

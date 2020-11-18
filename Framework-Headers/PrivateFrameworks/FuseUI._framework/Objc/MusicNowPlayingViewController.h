@@ -6,7 +6,6 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <FuseUI/MPURatingControlDelegate-Protocol.h>
 #import <FuseUI/MPUTransportControlMediaRemoteControllerDelegate-Protocol.h>
 #import <FuseUI/MPUTransportControlsViewDataSource-Protocol.h>
 #import <FuseUI/MPUTransportControlsViewDelegate-Protocol.h>
@@ -22,16 +21,19 @@
 #import <FuseUI/UIPopoverControllerDelegate-Protocol.h>
 #import <FuseUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class CAGradientLayer, MPAVController, MPAVItem, MPAudioVideoRoutingPopoverController, MPUBlurEffectView, MPUSkipLimitView, MPUTransportControlMediaRemoteController, MPUTransportControlsView, MPUVibrantContentEffectView, MusicClientContext, MusicNowPlayingFloatingButton, MusicNowPlayingItemViewController, MusicNowPlayingPresentationController, MusicNowPlayingRatingControl, MusicNowPlayingTitlesView, MusicNowPlayingVolumeSlider, MusicPlaybackProgressScrubberController, MusicPlaybackProgressSliderView, NSArray, NSString, NSTimer, RUTrackDownloadView, SKUIClientContext, UIPanGestureRecognizer, UITapGestureRecognizer, UIView;
+@class MPAVController, MPAVItem, MPAVRoutingSheet, MPAudioVideoRoutingPopoverController, MPUBlurEffectView, MPUGradientView, MPUSkipLimitView, MPUTransportControlMediaRemoteController, MPUTransportControlsView, MPUVibrantContentEffectView, MusicClientContext, MusicNowPlayingFloatingButton, MusicNowPlayingItemViewController, MusicNowPlayingPresentationController, MusicNowPlayingTitlesView, MusicNowPlayingVolumeSlider, MusicPlaybackProgressScrubberController, MusicPlaybackProgressSliderView, NSArray, NSString, NSTimer, RUTrackDownloadView, SKUIClientContext, UIPanGestureRecognizer, UIPinchGestureRecognizer, UITapGestureRecognizer, UIView;
 
-@interface MusicNowPlayingViewController : UIViewController <MPURatingControlDelegate, MPUTransportControlMediaRemoteControllerDelegate, MPUTransportControlsViewDataSource, MPUTransportControlsViewDelegate, MPUTransportControlsViewLayoutDelegate, MusicJSNativeViewControllerFactory, MusicJSNowPlayingNativeViewControllerDelegate, MusicNowPlayingItemViewControllerDelegate, MusicNowPlayingVolumeSliderDelegate, MusicPlaybackProgressScrubberDelegate, RUTrackDownloadViewDelegate, UIGestureRecognizerDelegate, UIPopoverControllerDelegate, MusicClientContextConsuming, UIViewControllerTransitioningDelegate>
+@interface MusicNowPlayingViewController : UIViewController <MPUTransportControlMediaRemoteControllerDelegate, MPUTransportControlsViewDataSource, MPUTransportControlsViewDelegate, MPUTransportControlsViewLayoutDelegate, MusicJSNativeViewControllerFactory, MusicJSNowPlayingNativeViewControllerDelegate, MusicNowPlayingItemViewControllerDelegate, MusicNowPlayingVolumeSliderDelegate, MusicPlaybackProgressScrubberDelegate, RUTrackDownloadViewDelegate, UIGestureRecognizerDelegate, UIPopoverControllerDelegate, MusicClientContextConsuming, UIViewControllerTransitioningDelegate>
 {
     MPAVItem *_currentItem;
     BOOL _detailedScrubbing;
+    BOOL _iPadFullScreenVideoPlayback;
     MPAudioVideoRoutingPopoverController *_routingPopoverController;
+    MPAVRoutingSheet *_routingSheet;
     NSTimer *_skipInformationRevealTimer;
     UITapGestureRecognizer *_tapGestureRecognizer;
     UIPanGestureRecognizer *_transitionPanGestureRecognizer;
+    UIPinchGestureRecognizer *_pinchGestureRecognizer;
     MusicNowPlayingPresentationController *_transitionPresentationController;
     NSArray *_allowedSecondaryControls;
     MusicClientContext *_clientContext;
@@ -44,6 +46,7 @@
     MPUTransportControlsView *_transportControls;
     MusicNowPlayingVolumeSlider *_volumeSlider;
     MPUTransportControlsView *_secondaryTransportControls;
+    MusicNowPlayingFloatingButton *_iPadFullScreenVideoButton;
     long long _accessoryStyle;
     UIView *_currentItemViewControllerContainerView;
     UIView *_currentItemViewControllerBackgroundView;
@@ -52,9 +55,8 @@
     MPUBlurEffectView *_backgroundView;
     MPUVibrantContentEffectView *_vibrantEffectView;
     UIView *_detailContainerView;
-    MusicNowPlayingRatingControl *_ratingControl;
     MPUSkipLimitView *_skipLimitView;
-    CAGradientLayer *_statusBarLegibilityGradient;
+    MPUGradientView *_statusBarLegibilityGradient;
     MusicPlaybackProgressScrubberController *_playbackProgressSliderController;
     MPUTransportControlMediaRemoteController *_transportControlMediaRemoteController;
     MPUTransportControlMediaRemoteController *_secondaryTransportControlMediaRemoteController;
@@ -74,16 +76,16 @@
 @property (readonly, nonatomic) UIView *detailContainerView; // @synthesize detailContainerView=_detailContainerView;
 @property (readonly, nonatomic) MusicNowPlayingFloatingButton *dismissButton; // @synthesize dismissButton=_dismissButton;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) MusicNowPlayingFloatingButton *iPadFullScreenVideoButton; // @synthesize iPadFullScreenVideoButton=_iPadFullScreenVideoButton;
 @property (readonly, nonatomic) NSArray *persistentAnimationLayers;
 @property (readonly, nonatomic) MusicPlaybackProgressScrubberController *playbackProgressSliderController; // @synthesize playbackProgressSliderController=_playbackProgressSliderController;
 @property (readonly, nonatomic) MusicPlaybackProgressSliderView *playbackProgressSliderView; // @synthesize playbackProgressSliderView=_playbackProgressSliderView;
 @property (readonly, nonatomic) MPAVController *player; // @synthesize player=_player;
 @property (readonly, nonatomic) UIViewController *presentedDetailViewController; // @synthesize presentedDetailViewController=_presentedDetailViewController;
-@property (readonly, nonatomic) MusicNowPlayingRatingControl *ratingControl; // @synthesize ratingControl=_ratingControl;
 @property (readonly, nonatomic) MPUTransportControlMediaRemoteController *secondaryTransportControlMediaRemoteController; // @synthesize secondaryTransportControlMediaRemoteController=_secondaryTransportControlMediaRemoteController;
 @property (readonly, nonatomic) MPUTransportControlsView *secondaryTransportControls; // @synthesize secondaryTransportControls=_secondaryTransportControls;
 @property (readonly, nonatomic) MPUSkipLimitView *skipLimitView; // @synthesize skipLimitView=_skipLimitView;
-@property (readonly, nonatomic) CAGradientLayer *statusBarLegibilityGradient; // @synthesize statusBarLegibilityGradient=_statusBarLegibilityGradient;
+@property (readonly, nonatomic) MPUGradientView *statusBarLegibilityGradient; // @synthesize statusBarLegibilityGradient=_statusBarLegibilityGradient;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) MusicNowPlayingTitlesView *titlesView; // @synthesize titlesView=_titlesView;
 @property (readonly, nonatomic) RUTrackDownloadView *trackDownloadButton; // @synthesize trackDownloadButton=_trackDownloadButton;
@@ -95,10 +97,13 @@
 - (void).cxx_destruct;
 - (void)_adInfoButtonTapped:(id)arg1;
 - (void)_beginVisualEngagement;
+- (id)_contextualActionsConfiguationWithTransportButton:(id)arg1;
 - (void)_currentItemTitlesDidChangeNotification:(id)arg1;
 - (void)_didSkipTrackNotification:(id)arg1;
 - (void)_didUpdateSupportedCommandsNotification:(id)arg1;
 - (void)_dismissDetailViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_fullScreenButtonTapped:(id)arg1;
+- (void)_handlePinchGestureRecognizer:(id)arg1;
 - (void)_handleTapGestureRecognizerAction:(id)arg1;
 - (void)_handleTransitionPanGestureRecognizerAction:(id)arg1;
 - (BOOL)_hasShareButton;
@@ -115,14 +120,13 @@
 - (void)_scheduleSkipInformationRevealTimer;
 - (void)_setCurrentItem:(id)arg1 skipUpdatingView:(BOOL)arg2 forceUpdatingView:(BOOL)arg3;
 - (void)_setLyricsVisible:(BOOL)arg1;
-- (void)_setRatingsVisible:(BOOL)arg1;
 - (id)_shareButton;
 - (BOOL)_shouldDismissAutomaticallyForCurrentPlaybackState;
-- (void)_showContextualActionsWithTransportButton:(id)arg1 forSharing:(BOOL)arg2;
 - (void)_showUpNext;
 - (void)_showUpNext:(id)arg1;
 - (void)_skipLimitDidChangeNotification:(id)arg1;
 - (void)_statusBarFrameChangeNotification:(id)arg1;
+- (void)_titlesViewButtonTapped:(id)arg1;
 - (void)_triggerAutomaticDismissalWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_updateBackgroundEffects;
 - (void)_updateNowPlayingInfo;
@@ -153,7 +157,6 @@
 - (void)presentSharingOptions;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
 - (id)presentingViewControllerForLikeBanActionSheetForTransportControlMediaRemoteController:(id)arg1;
-- (void)ratingDidChangeForRatingControl:(id)arg1;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (BOOL)shouldAutorotate;
 - (void)showDetailViewController:(id)arg1 sender:(id)arg2;

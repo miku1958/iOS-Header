@@ -6,13 +6,14 @@
 
 #import <Foundation/NSObject.h>
 
-@class CPSearchMatcher;
+@class CPSearchMatcher, NSRecursiveLock;
 
 @interface ALCityManager : NSObject
 {
     struct sqlite3 *_db;
     struct sqlite3 *_localizedDb;
     CPSearchMatcher *_citySearchMatcher;
+    NSRecursiveLock *_databaseAccessRecursiveLock;
 }
 
 @property (readonly) CPSearchMatcher *citySearchMatcher; // @synthesize citySearchMatcher=_citySearchMatcher;

@@ -8,7 +8,7 @@
 
 #import <FitnessUI/FIUIAchievementsModelDelegate-Protocol.h>
 
-@class FIUIAchievementsModel, FIUIWeeklyGoalModel, HKActivityCache, HKCurrentActivityCacheQuery, HKHealthStore, NSHashTable, NSMutableDictionary, NSPredicate, NSString;
+@class FIUIAchievementsModel, FIUIWeeklyGoalModel, HKActivitySummary, HKHealthStore, NSHashTable, NSMutableDictionary, NSPredicate, NSString, _HKCurrentActivitySummaryQuery;
 @protocol OS_dispatch_queue;
 
 @interface FIUIModel : NSObject <FIUIAchievementsModelDelegate>
@@ -17,11 +17,11 @@
     FIUIWeeklyGoalModel *_weeklyGoalModel;
     FIUIAchievementsModel *_achievementsModel;
     NSHashTable *_observers;
-    NSMutableDictionary *_currentActivityQueryClients;
-    HKCurrentActivityCacheQuery *_queue_currentActivityCacheQuery;
-    long long _queue_activityCacheQueryRetries;
-    HKActivityCache *_queue_currentActivityCacheForClients;
-    NSObject<OS_dispatch_queue> *_activityCacheQueryClientQueue;
+    NSMutableDictionary *_currentActivitySummaryQueryClients;
+    _HKCurrentActivitySummaryQuery *_queue_currentActivitySummaryQuery;
+    long long _queue_activitySummaryQueryRetries;
+    HKActivitySummary *_queue_currentActivitySummaryForClients;
+    NSObject<OS_dispatch_queue> *_activitySummaryQueryClientQueue;
     NSPredicate *_sourcesPredicate;
     NSObject<OS_dispatch_queue> *_sourcesQueue;
 }
@@ -46,6 +46,7 @@
 + (id)activeAndIdleHoursObserverQueryFromDate:(id)arg1 toDate:(id)arg2 predicate:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 + (id)activeEnergyQuantityType;
 + (id)activeHourCategoryType;
++ (id)activityChartQueryForStartDate:(id)arg1 endDate:(id)arg2 intervalSize:(id)arg3 quantityType:(id)arg4 handler:(CDUnknownBlockType)arg5;
 + (id)briskActivityQuantityType;
 + (id)briskActivityUnit;
 + (id)calorieUnit;
@@ -58,10 +59,10 @@
 + (id)stepQuantityType;
 + (id)stepUnit;
 - (void).cxx_destruct;
-- (id)_createCurrentActivityCacheQuery;
+- (id)_createCurrentActivitySummaryQuery;
 - (void)_printStatisticsCollection:(id)arg1;
 - (void)_printUpdatedStatistics:(id)arg1;
-- (void)_queue_restartCurrentActivityCacheQueryAfterError;
+- (void)_queue_restartCurrentActivitySummaryQueryAfterError;
 - (void)_sendMessageToObservers:(SEL)arg1 withObject:(id)arg2;
 - (void)_sendMessageToObservers:(SEL)arg1 withObject:(id)arg2 withObject:(id)arg3;
 - (void)_setKnownSources:(id)arg1;
@@ -71,8 +72,8 @@
 - (id)init;
 - (id)initWithHealthStore:(id)arg1;
 - (void)removeObserver:(id)arg1;
-- (id)startCurrentActivityCacheQueryWithHandler:(CDUnknownBlockType)arg1;
-- (void)stopCurrentActivityCacheQueryForClientToken:(id)arg1;
+- (id)startCurrentActivitySummaryQueryWithHandler:(CDUnknownBlockType)arg1;
+- (void)stopCurrentActivitySummaryQueryForClientToken:(id)arg1;
 - (void)stopQuery:(id)arg1;
 - (void)weeklySummaryInfoForDate:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 

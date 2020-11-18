@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <CompanionSync/NMSDeviceSourced-Protocol.h>
 #import <CompanionSync/NMSObfuscatableDescriptionProviding-Protocol.h>
 
 @class NSData, NSDate, NSDictionary, NSString;
 
-@interface NMSIncomingResponse : NSObject <NMSObfuscatableDescriptionProviding>
+@interface NMSIncomingResponse : NSObject <NMSDeviceSourced, NMSObfuscatableDescriptionProviding>
 {
     unsigned short _messageID;
+    NSString *sourceDeviceID;
     NSData *_data;
     NSString *_idsIdentifier;
     NSString *_requestIDSIdentifier;
@@ -31,6 +33,7 @@
 @property (copy, nonatomic) NSString *requestIDSIdentifier; // @synthesize requestIDSIdentifier=_requestIDSIdentifier;
 @property (strong, nonatomic) NSDictionary *requestPersistentUserInfo; // @synthesize requestPersistentUserInfo=_requestPersistentUserInfo;
 @property (strong, nonatomic) NSDate *requestSent; // @synthesize requestSent=_requestSent;
+@property (strong, nonatomic) NSString *sourceDeviceID; // @synthesize sourceDeviceID;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

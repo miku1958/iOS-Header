@@ -14,6 +14,7 @@
     CAContext *_context;
     struct CGSize _displaySize;
     struct CGSize _framebufferSize;
+    struct CGSize _layerPositioningSize;
     float _displayScale;
     float _displayOrientation;
     BOOL _sideways;

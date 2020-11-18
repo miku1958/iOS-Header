@@ -14,14 +14,14 @@
     BOOL _didLogAggd;
     CDUnknownBlockType _reply;
     unsigned long long _didPlayLightsAndSirens;
-    NSDate *_expiration;
     NSDate *_bulletinPublicationDate;
+    NSDate *_creation;
 }
 
 @property (strong, nonatomic) NSDate *bulletinPublicationDate; // @synthesize bulletinPublicationDate=_bulletinPublicationDate;
+@property (readonly, nonatomic) NSDate *creation; // @synthesize creation=_creation;
 @property (nonatomic) BOOL didLogAggd; // @synthesize didLogAggd=_didLogAggd;
 @property (nonatomic) unsigned long long didPlayLightsAndSirens; // @synthesize didPlayLightsAndSirens=_didPlayLightsAndSirens;
-@property (strong, nonatomic) NSDate *expiration; // @synthesize expiration=_expiration;
 @property (copy, nonatomic) CDUnknownBlockType reply; // @synthesize reply=_reply;
 @property (readonly, nonatomic) BOOL replySent; // @synthesize replySent=_replySent;
 

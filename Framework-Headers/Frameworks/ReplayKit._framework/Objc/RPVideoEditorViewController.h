@@ -23,6 +23,8 @@
     BOOL _uiHidden;
     BOOL _hasEdit;
     id _delegate;
+    NSURL *_fileAttachmentURL;
+    NSString *_overrideShareMessage;
     NSURL *_videoURL;
     AVPlayer *_avPlayer;
     AVPlayerLayer *_avPlayerLayer;
@@ -81,12 +83,14 @@
 @property (nonatomic) double editStartTime; // @synthesize editStartTime=_editStartTime;
 @property (strong, nonatomic) AVAssetExportSession *exportSession; // @synthesize exportSession=_exportSession;
 @property (nonatomic, getter=isExporting) BOOL exporting; // @synthesize exporting=_exporting;
+@property (strong, nonatomic) NSURL *fileAttachmentURL; // @synthesize fileAttachmentURL=_fileAttachmentURL;
 @property (strong, nonatomic) UIBarButtonItem *fixSpace; // @synthesize fixSpace=_fixSpace;
 @property (strong, nonatomic) UIBarButtonItem *flexSpace; // @synthesize flexSpace=_flexSpace;
 @property BOOL hasEdit; // @synthesize hasEdit=_hasEdit;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isIntroMode) BOOL introMode; // @synthesize introMode=_introMode;
 @property (strong, nonatomic) NSURL *originalVideoURL; // @synthesize originalVideoURL=_originalVideoURL;
+@property (strong, nonatomic) NSString *overrideShareMessage; // @synthesize overrideShareMessage=_overrideShareMessage;
 @property (nonatomic, getter=isPadMode) BOOL padMode; // @synthesize padMode=_padMode;
 @property (strong, nonatomic) UIBarButtonItem *pauseButton; // @synthesize pauseButton=_pauseButton;
 @property (strong, nonatomic) UIBarButtonItem *playButton; // @synthesize playButton=_playButton;

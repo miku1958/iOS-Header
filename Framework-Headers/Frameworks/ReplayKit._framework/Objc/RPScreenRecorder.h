@@ -49,8 +49,10 @@
 - (void)restoreAudioSession;
 - (void)setWindowRotationLocked:(BOOL)arg1;
 - (void)startRecordingWithMicrophoneEnabled:(BOOL)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)stopRecordingWithAdditionalShareFileAttachment:(id)arg1 overrideShareMessage:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)stopRecordingWithError:(id)arg1 movieURL:(id)arg2;
 - (void)stopRecordingWithHandler:(CDUnknownBlockType)arg1;
+- (void)stopRecordingWithVideoURLHandler:(CDUnknownBlockType)arg1;
 - (void)updateRecordingAvailability;
 
 @end

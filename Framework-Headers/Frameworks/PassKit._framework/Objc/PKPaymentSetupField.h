@@ -25,6 +25,7 @@
 }
 
 @property (readonly, nonatomic, getter=isBuiltIn) BOOL builtIn;
+@property (readonly, copy, nonatomic) NSString *compactLocalizedDisplayName;
 @property (copy, nonatomic) id<NSObject><NSCopying> currentValue; // @synthesize currentValue=_currentValue;
 @property (nonatomic, getter=isCurrentValueFromCameraCapture) BOOL currentValueFromCameraCapture; // @synthesize currentValueFromCameraCapture=_currentValueFromCameraCapture;
 @property (copy, nonatomic) NSString *defaultValue; // @synthesize defaultValue=_defaultValue;

@@ -95,7 +95,9 @@
 - (void)setPreferredVolume:(float)arg1;
 - (void)setSampleReferenceBaseURL:(id)arg1;
 - (void)setTransform:(struct CGAffineTransform)arg1;
+- (void)setWritesMediaDataToBeginningOfFile:(BOOL)arg1;
 - (struct CGAffineTransform)transform;
+- (BOOL)writesMediaDataToBeginningOfFile;
 
 @end
 

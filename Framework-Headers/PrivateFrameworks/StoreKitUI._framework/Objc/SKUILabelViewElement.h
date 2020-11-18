@@ -25,8 +25,10 @@
     SKUIViewElementText *_text;
     NSArray *_trailingBadges;
     IKDOMElement *_xml;
+    long long _badgePlacement;
 }
 
+@property (readonly, nonatomic) long long badgePlacement; // @synthesize badgePlacement=_badgePlacement;
 @property (readonly, nonatomic) NSArray *badges; // @synthesize badges=_badges;
 @property (nonatomic) BOOL containsLinks; // @synthesize containsLinks=_containsLinks;
 @property (readonly, copy) NSString *debugDescription;

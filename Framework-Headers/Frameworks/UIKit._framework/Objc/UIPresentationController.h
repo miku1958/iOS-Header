@@ -119,6 +119,7 @@
 - (struct CGRect)_frameForTransitionViewInPresentationSuperview:(id)arg1;
 - (struct CGRect)_frameOfPresentedViewControllerViewInSuperview;
 - (id)_fullscreenPresentationSuperview;
+- (BOOL)_gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)_gestureRecognizerShouldBegin:(id)arg1;
 - (void)_initViewHierarchyForPresentationSuperview:(id)arg1;
 - (id)_initialPresentationViewControllerForViewController:(id)arg1;

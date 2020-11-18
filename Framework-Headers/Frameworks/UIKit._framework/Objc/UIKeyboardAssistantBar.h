@@ -6,13 +6,14 @@
 
 #import <UIKit/_UIGroupedBar.h>
 
-@class NSLayoutConstraint, UIBarButtonItemGroup, UIKeyboardBIUImageGenerator, UITextInputAssistantItem;
+@class NSLayoutConstraint, UIBarButtonItem, UIBarButtonItemGroup, UIKeyboardBIUImageGenerator, UITextInputAssistantItem;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardAssistantBar : _UIGroupedBar
 {
     UIKeyboardBIUImageGenerator *m_BIUImageGenerator;
     UIBarButtonItemGroup *m_dismissGroup;
+    UIBarButtonItem *m_dismissButton;
     UIBarButtonItemGroup *m_predictionGroup;
     NSLayoutConstraint *m_predictionWidthConstraint;
     UITextInputAssistantItem *m_defaultAssistantItem;
@@ -61,8 +62,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasItems;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)newAssistantItemWithDefaultItems;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setInputAssistantButtonItems;
 - (void)setInputAssistantButtonItemsForResponder:(id)arg1;
+- (void)showKeyboard:(id)arg1;
 - (BOOL)showSwitch;
 - (double)sideBarWidthForOrientation:(long long)arg1;
 - (BOOL)statisticForCalloutBarButtonSelection:(id)arg1;

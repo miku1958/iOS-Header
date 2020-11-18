@@ -21,8 +21,11 @@
     GEORequester *_logMessageCollectionRequester;
     NSLock *_logMessageCollectionRequesterLock;
     NSObject<OS_dispatch_queue> *_logMessageSendQueue;
+    NSString *_adaptorIdentifier;
+    NSString *_xpcActivityName;
 }
 
+@property (readonly) NSString *adaptorIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NSString *debugRequestName; // @synthesize debugRequestName=_debugRequestName;
 @property (readonly, copy) NSString *description;
@@ -45,13 +48,17 @@
 - (void)_requesterStartSend;
 - (void)_sendLogMessageRequest:(id)arg1;
 - (void)_sendNextLogMessageChunk;
+- (void)_setupLogMessageCache;
+- (void)_setupQueueAndNotifications;
+- (void)_setupXPCActivity;
 - (long long)_sizeOfLogMessageRequest:(id)arg1;
 - (void)_unregisterXPCActivityTimer;
+- (BOOL)_useInMemoryLogMessageCache;
 - (void)dealloc;
 - (void)flushLogs;
 - (void)incrementXpcActivityTriggerCount;
-- (id)init;
 - (id)initWithRemoteURL:(id)arg1 debugRequestName:(id)arg2 supportedTypes:(id)arg3 supportedSubTypes:(id)arg4;
+- (BOOL)isLogFrameworkAdaptor;
 - (void)queueLogMessage:(id)arg1;
 - (void)requester:(id)arg1 didFailWithError:(id)arg2;
 - (void)requesterDidCancel:(id)arg1;

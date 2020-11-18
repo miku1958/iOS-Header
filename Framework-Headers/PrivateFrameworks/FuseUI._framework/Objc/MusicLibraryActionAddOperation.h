@@ -14,9 +14,11 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSArray *_resultingItems;
     BOOL _success;
+    BOOL _addToCloudLibrary;
     MPUContentItemIdentifierCollection *_contentItemIdentifierCollection;
 }
 
+@property (nonatomic) BOOL addToCloudLibrary; // @synthesize addToCloudLibrary=_addToCloudLibrary;
 @property (readonly, copy) MPUContentItemIdentifierCollection *contentItemIdentifierCollection; // @synthesize contentItemIdentifierCollection=_contentItemIdentifierCollection;
 @property (readonly, copy, nonatomic) NSArray *resultingItems;
 @property (readonly) BOOL success;

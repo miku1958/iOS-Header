@@ -39,6 +39,7 @@
 @property (nonatomic) BOOL mediaPlayerExplicitContentDisallowed;
 @property (copy, nonatomic) NSString *osVersion;
 @property (copy, nonatomic) NSArray *parentalRestrictions;
+@property (copy, nonatomic) NSString *preferredLanguage;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
 @property (copy, nonatomic) NSString *region;
 @property (copy, nonatomic) NSNumber *storefront;

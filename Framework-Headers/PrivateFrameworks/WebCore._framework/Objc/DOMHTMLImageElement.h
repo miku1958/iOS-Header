@@ -34,10 +34,13 @@
 @property (readonly) int y;
 
 - (id)crossOrigin;
+- (id)currentSrc;
 - (id)dataRepresentation:(BOOL)arg1;
 - (id)mimeType;
 - (void)setCrossOrigin:(id)arg1;
+- (void)setSizes:(id)arg1;
 - (void)setSrcset:(id)arg1;
+- (id)sizes;
 - (id)srcset;
 
 @end

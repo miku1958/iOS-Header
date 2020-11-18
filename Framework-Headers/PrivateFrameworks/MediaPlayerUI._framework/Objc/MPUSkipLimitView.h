@@ -33,7 +33,7 @@
 - (struct CGSize)intrinsicContentSize;
 - (void)revealSkipInformationMomentarily;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (id)viewForBaselineLayout;
+- (id)viewForLastBaselineLayout;
 
 @end
 

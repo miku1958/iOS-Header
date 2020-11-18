@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSData, NSString;
+@class MFDataHolder, NSString;
 
 @protocol MFMessageDataSection
-- (NSData *)data;
+- (MFDataHolder *)dataHolder;
 - (BOOL)isComplete;
 - (BOOL)isPartial;
 - (NSString *)partName;

@@ -17,10 +17,18 @@
 }
 
 @property (readonly, nonatomic, getter=_dateRangeMetadataGroupInternal) AVDateRangeMetadataGroupInternal *dateRangeMetadataGroupInternal;
+@property (readonly, nonatomic) NSDate *discoveryTimestamp;
 @property (readonly, copy, nonatomic) NSDate *endDate;
 @property (readonly, copy, nonatomic) NSArray *items;
+@property (readonly, nonatomic) NSDate *modificationTimestamp;
 @property (readonly, copy, nonatomic) NSDate *startDate;
 
++ (id)_figMetadataArrayForMetadataItems:(id)arg1;
++ (id)_metadataItemsForFigMetadataArray:(id)arg1;
+- (void)_extractPropertiesFromTaggedRangeMetadataDictionary:(id)arg1;
+- (id)_initWithTaggedRangeMetadataDictionary:(id)arg1 items:(id)arg2;
+- (id)_taggedRangeMetadataDictionary;
+- (id)classifyingLabel;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
@@ -28,8 +36,11 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithItems:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
+- (id)initWithPropertyList:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+- (id)propertyList;
+- (id)uniqueID;
 
 @end
 

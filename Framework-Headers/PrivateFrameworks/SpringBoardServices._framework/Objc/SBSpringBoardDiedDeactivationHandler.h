@@ -16,6 +16,7 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)addDeactivationBlock:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)init;

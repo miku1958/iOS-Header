@@ -24,6 +24,7 @@
     BOOL _subscribed;
     BOOL _hasSkipRules;
     BOOL _likesEnabled;
+    BOOL _requiresSubscription;
     BOOL _previewOnly;
     BOOL _skipEnabled;
     BOOL _virtualPlayEnabled;
@@ -86,6 +87,7 @@
 @property (nonatomic, getter=isPremiumPlacement) BOOL premiumPlacement; // @synthesize premiumPlacement=_premiumPlacement;
 @property (readonly, nonatomic, getter=isPreview) BOOL preview;
 @property (nonatomic, getter=isPreviewOnly) BOOL previewOnly; // @synthesize previewOnly=_previewOnly;
+@property (nonatomic) BOOL requiresSubscription; // @synthesize requiresSubscription=_requiresSubscription;
 @property (strong, nonatomic) id seedTracks; // @synthesize seedTracks=_seedTracks;
 @property (copy, nonatomic) NSString *shareToken; // @synthesize shareToken=_shareToken;
 @property (nonatomic, getter=isShared) BOOL shared; // @synthesize shared=_shared;

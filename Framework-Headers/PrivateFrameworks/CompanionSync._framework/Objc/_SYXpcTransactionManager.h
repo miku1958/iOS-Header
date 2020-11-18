@@ -7,10 +7,12 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary;
+@protocol OS_dispatch_queue;
 
 @interface _SYXpcTransactionManager : NSObject
 {
     NSMutableDictionary *_table;
+    NSObject<OS_dispatch_queue> *_syncQ;
 }
 
 + (id)sharedInstance;

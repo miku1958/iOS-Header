@@ -27,6 +27,7 @@
     struct _tls_private_key *_coreTLSPrivateKey;
 }
 
+@property (readonly) BOOL TFOSucceeded;
 @property (strong) NSArray *certificateChain; // @synthesize certificateChain=_certificateChain;
 @property (readonly) NWPath *connectedPath;
 @property struct SSLCertificate *coreTLSCertificateChain; // @synthesize coreTLSCertificateChain=_coreTLSCertificateChain;

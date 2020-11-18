@@ -11,6 +11,7 @@
 }
 
 + (void)initializeMonitor;
+- (void)_updateBrightnessFilters:(BOOL)arg1;
 - (void)_updateGrayScaleSettings;
 - (void)_updateInvertColorSettings;
 - (void)_updateReduceWhitePointSettings;

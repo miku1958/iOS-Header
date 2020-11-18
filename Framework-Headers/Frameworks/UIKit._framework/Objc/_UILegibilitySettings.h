@@ -6,9 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
+#import <UIKit/NSSecureCoding-Protocol.h>
+
 @class NSString, UIColor;
 
-@interface _UILegibilitySettings : NSObject
+@interface _UILegibilitySettings : NSObject <NSSecureCoding>
 {
     long long _style;
     UIColor *_contentColor;
@@ -34,7 +36,10 @@
 @property (nonatomic) long long style; // @synthesize style=_style;
 
 + (id)sharedInstanceForStyle:(long long)arg1;
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithContentColor:(id)arg1;
 - (id)initWithContentColor:(id)arg1 contrast:(double)arg2;
 - (id)initWithStyle:(long long)arg1;

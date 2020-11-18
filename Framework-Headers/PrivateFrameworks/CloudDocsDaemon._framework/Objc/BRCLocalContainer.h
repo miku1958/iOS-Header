@@ -45,6 +45,7 @@
     NSMutableIndexSet *_appliedTombstoneRanks;
     long long _lastInsertedRank;
     NSDate *_lastSyncDownDate;
+    NSString *_osNameRequiredToSync;
     NSMutableIndexSet *_pendingCoordinatedIOs;
     NSMutableSet *_pendingFileCoordinators;
     BOOL _shouldForceContainerForeground;
@@ -64,8 +65,12 @@
     NSNumber *_generationID;
     unsigned long long _requestID;
     NSArray *_syncThrottles;
+    NSMutableDictionary *_t_osNamesByItemIDBlockedForSyncUp;
+    NSString *_t_syncBlockedUntilOSName;
 }
 
+@property (readonly, nonatomic) NSMutableDictionary *_t_osNamesByItemIDBlockedForSyncUp; // @synthesize _t_osNamesByItemIDBlockedForSyncUp;
+@property (readonly, nonatomic) NSString *_t_syncBlockedUntilOSName; // @synthesize _t_syncBlockedUntilOSName;
 @property (readonly, nonatomic) NSString *absolutePath;
 @property (readonly, nonatomic) BOOL activated; // @synthesize activated=_activated;
 @property (strong, nonatomic) NSString *containerID; // @synthesize containerID=_containerID;
@@ -88,6 +93,7 @@
 @property (readonly, nonatomic) unsigned long long lostHeapKey;
 @property (readonly, nonatomic) NSString *mangledID; // @synthesize mangledID=_mangledID;
 @property (nonatomic) BOOL needsSave; // @synthesize needsSave=_needsSave;
+@property (readonly, nonatomic) NSString *osNameRequiredToSync; // @synthesize osNameRequiredToSync=_osNameRequiredToSync;
 @property (readonly, nonatomic) NSString *ownerName;
 @property (readonly, nonatomic) NSString *pathRelativeToRoot;
 @property (readonly, nonatomic) NSMutableIndexSet *pendingCoordinatedIOs; // @synthesize pendingCoordinatedIOs=_pendingCoordinatedIOs;
@@ -126,6 +132,9 @@
 - (void)_showiCloudDriveAppUpSellDialogIfNeeded;
 - (void)_startSync;
 - (void)_syncUpOfRecords:(id)arg1 didFinishWithError:(id)arg2;
+- (void)_t_addItemID:(id)arg1 blockedForSyncUpUntilOSName:(id)arg2;
+- (void)_t_markBlockedUntilOSName:(id)arg1;
+- (void)_t_removeAllItemIDsSyncUpBlocking;
 - (void)addClientUsingUbiquity:(id)arg1;
 - (void)addForegroundClient:(id)arg1;
 - (unsigned long long)allocateLostStampAddingBackoff:(BOOL)arg1;
@@ -151,6 +160,7 @@
 - (void)didReceiveHandoffRequest;
 - (void)didSyncDownRequestID:(unsigned long long)arg1 maxApplyRank:(long long)arg2 caughtUpWithServer:(BOOL)arg3 syncDownDate:(id)arg4;
 - (id)directoryItemIDByFileID:(unsigned long long)arg1;
+- (void)disconnectNSMDQListenerAsync;
 - (unsigned long long)documentCount;
 - (unsigned long long)documentEvictableSizeUsage;
 - (unsigned long long)documentEvictableSizeUsageWithAccessTimeDelta:(double)arg1;
@@ -166,6 +176,7 @@
 - (id)fileIDForDirectoryItemID:(id)arg1 db:(id)arg2;
 - (BOOL)handleResetErrorIfNeeded:(id)arg1;
 - (void)handleRootRecordDeletion;
+- (void)handleZoneBlockedErrorIfNeeded:(id)arg1;
 - (BOOL)hasCompletedInitialSyncDownOnce;
 - (BOOL)hasDocumentsOrDirectory;
 - (BOOL)hasLocalChanges;
@@ -177,6 +188,9 @@
 - (id)initWithContainerID:(id)arg1 dbRowID:(id)arg2 db:(id)arg3 session:(id)arg4 initialCreation:(BOOL)arg5;
 - (id)initWithPlist:(id)arg1 containerID:(id)arg2 dbRowID:(id)arg3 db:(id)arg4 session:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isSyncBlocked;
+- (BOOL)isSyncBlockedBecauseAppNotInstalled;
+- (BOOL)isSyncBlockedBecauseOSNeedsUpgrade;
 - (id)itemByDocumentID:(unsigned int)arg1;
 - (id)itemByFileID:(unsigned long long)arg1;
 - (id)itemByItemID:(id)arg1;
@@ -213,13 +227,13 @@
 - (id)serverItemByItemID:(id)arg1;
 - (long long)serverRankByItemID:(id)arg1;
 - (BOOL)setStateBits:(unsigned int)arg1;
-- (void)setSyncDisabled:(BOOL)arg1;
 - (void)setSyncStateBits:(unsigned int)arg1;
+- (void)setupOperationForTestsIfNeeded:(id)arg1 recordsToSave:(id)arg2;
 - (void)signalFaultingWatchers:(id)arg1;
 - (void)startDownloadItem:(id)arg1 options:(unsigned long long)arg2 group:(id)arg3;
 - (void)startDownloadingItemsUsingGroup:(id)arg1;
 - (id)syncDownImmediately;
-- (void)syncDownOperation:(id)arg1 didFinishWithError:(id)arg2;
+- (void)syncDownOperation:(id)arg1 didFinishWithError:(id)arg2 status:(long long)arg3;
 - (long long)throttleHashWithItemID:(id)arg1;
 - (void)unregisterQueryWithAliases:(BOOL)arg1 isRecursive:(BOOL)arg2;
 - (void)updateFromFSAtPath:(id)arg1;

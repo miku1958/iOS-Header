@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSDictionary, NSError, NSMutableDictionary, NSSet, NSString, _SYSharedServiceDB;
-@protocol OS_dispatch_queue;
+@class NSDate, NSDictionary, NSError, NSMutableDictionary, NSMutableSet, NSSet, NSString, _SYSharedServiceDB;
+@protocol OS_dispatch_queue, OS_os_transaction;
 
 @interface SYPersistentStore : NSObject
 {
     NSString *_path;
     struct __CFString *_loggingFacility;
     double _timeToLiveCache;
-    void *_inXpcTransaction;
+    NSObject<OS_os_transaction> *_transaction;
     BOOL _changeTrackingEnabled;
     NSMutableDictionary *_peerSeqnoSets;
+    NSMutableSet *_ignoringMessageIDs;
     NSObject<OS_dispatch_queue> *_syncQ;
     struct sqlite3 *_db;
     struct sqlite3_stmt *_getInFullSync;
@@ -87,7 +88,7 @@
 
 + (id)sharedPersistentStoreForService:(id)arg1;
 - (void).cxx_destruct;
-- (void)_LOCKED_storeSequenceNumberSet:(id)arg1 forPeerID:(id)arg2 db:(struct sqlite3 *)arg3;
+- (BOOL)_LOCKED_storeSequenceNumberSet:(id)arg1 forPeerID:(id)arg2 db:(struct sqlite3 *)arg3 error:(id *)arg4;
 - (void)_cacheTTL;
 - (void)_convertTimestamps;
 - (struct sqlite3 *)_dbRef;
@@ -96,17 +97,22 @@
 - (void)_fixPeerInfo;
 - (int)_getSchemaVersion;
 - (BOOL)_inTransaction:(BOOL)arg1 do:(CDUnknownBlockType)arg2;
-- (unsigned long long)_lastSequenceNumberForPeerID_LOCKED:(id)arg1;
+- (unsigned long long)_lastSequenceNumberForPeerID_LOCKED:(id)arg1 db:(struct sqlite3 *)arg2;
+- (void)_loadIgnoreList_LOCKED:(struct sqlite3 *)arg1;
 - (unsigned long long)_oldestVersion;
 - (BOOL)_openDBAtPath:(id)arg1;
 - (void)_prepareStatements;
+- (void)_saveIgnoreList_LOCKED:(struct sqlite3 *)arg1;
 - (id)_sequenceNumberSetForPeerID:(id)arg1 inDB:(struct sqlite3 *)arg2;
 - (void)_setupSharedDB;
 - (void)_storeSequenceNumberSet:(id)arg1 forPeerID:(id)arg2;
 - (BOOL)_tableEmpty:(id)arg1 db:(struct sqlite3 *)arg2;
+- (void)_verifyInTransactionForFullSync;
 - (void)_withDB:(CDUnknownBlockType)arg1;
+- (void)addMessageIDsToIgnore:(id)arg1;
 - (void)changeTrackingToggled:(BOOL)arg1;
 - (void)clearAllChanges;
+- (id)dbPath;
 - (void)dealloc;
 - (void)enterFullSyncWithID:(id)arg1 ignoring:(BOOL)arg2;
 - (void)exitFullSyncWithID:(id)arg1 error:(id)arg2;
@@ -114,17 +120,21 @@
 - (id)init;
 - (id)initWithPath:(id)arg1 loggingFacility:(const struct __CFString *)arg2 changeTrackingEnabled:(BOOL)arg3;
 - (id)initWithSharedDatabase:(id)arg1;
+- (id)lastDBErrorInfo;
 - (unsigned long long)lastSequenceNumberForPeerID:(id)arg1;
 - (BOOL)logChanges:(id)arg1 error:(id *)arg2;
 - (BOOL)logSyncCompletionToRemoteVersion:(unsigned long long)arg1;
 - (unsigned long long)nextSequenceNumber;
 - (BOOL)objectChanged:(id)arg1 sinceVersion:(unsigned long long)arg2;
 - (BOOL)reassignCurrentSyncID:(id)arg1;
+- (void)removeMessageIDFromIgnoreList:(id)arg1;
 - (void)resetSequenceNumber:(unsigned long long)arg1;
 - (void)resetSequenceNumbersForPeer:(id)arg1;
 - (void)sendCompletedForSyncWithID:(id)arg1;
 - (BOOL)sequenceNumberIsDuplicate:(unsigned long long)arg1 forPeer:(id)arg2;
 - (void)setLastSequenceNumber:(unsigned long long)arg1 fromPeer:(id)arg2;
+- (BOOL)setLastSequenceNumber:(unsigned long long)arg1 fromPeer:(id)arg2 error:(id *)arg3;
+- (BOOL)shouldIgnoreMessageID:(id)arg1;
 
 @end
 

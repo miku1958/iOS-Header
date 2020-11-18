@@ -32,7 +32,7 @@
 @property (readonly, copy, nonatomic) NSString *featureName; // @synthesize featureName=_featureName;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) IKViewElement *menuBarElement; // @synthesize menuBarElement=_menuBarElement;
-@property (readonly, nonatomic) IKViewElement *selectedMenuItem;
+@property (strong, nonatomic) IKViewElement *selectedMenuItem;
 @property (readonly) Class superclass;
 
 + (id)makeFeatureJSObjectForFeature:(id)arg1;
@@ -47,6 +47,7 @@
 - (void)jsMenuBarDocument:(id)arg1 setDocument:(id)arg2 forEntityUniqueIdentifier:(id)arg3 withOptions:(id)arg4;
 - (void)jsMenuBarDocument:(id)arg1 setSelectedEntityUniqueIdentifier:(id)arg2 withOptions:(id)arg3;
 - (void)migrateToViewElement:(id)arg1;
+- (id)selectedItemForJsMenuBarDocument:(id)arg1;
 
 @end
 

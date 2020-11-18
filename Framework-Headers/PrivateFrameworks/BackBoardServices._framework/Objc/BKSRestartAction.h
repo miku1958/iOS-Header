@@ -10,9 +10,9 @@
 {
 }
 
-@property (readonly, nonatomic) BOOL shouldShowAppleLogo;
+@property (readonly, nonatomic) unsigned long long options;
 
-+ (id)restartActionWithAppleLogoDesired:(BOOL)arg1;
++ (id)actionWithOptions:(unsigned long long)arg1;
 
 @end
 

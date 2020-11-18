@@ -11,6 +11,7 @@
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
++ (id)_mapkit_imageNamed:(id)arg1;
 + (id)_mapkit_transitArtworkImageWithDataSource:(id)arg1 size:(long long)arg2 forView:(id)arg3 withWidthPaddingMultiple:(double)arg4;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;

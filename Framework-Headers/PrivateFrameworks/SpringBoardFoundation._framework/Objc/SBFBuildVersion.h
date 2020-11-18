@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -23,9 +23,9 @@
 @property (readonly, nonatomic) long long minorBuildNumber; // @synthesize minorBuildNumber=_minorBuildNumber;
 @property (readonly, copy, nonatomic) NSString *stringRepresentation; // @synthesize stringRepresentation=_stringRepresentation;
 
+- (void).cxx_destruct;
 - (long long)compareBuildVersion:(id)arg1 withPrecision:(long long)arg2;
 - (long long)compareBuildVersionString:(id)arg1 withPrecision:(long long)arg2;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithString:(id)arg1;

@@ -6,94 +6,34 @@
 
 #import <PassKit/PKNavigationController.h>
 
-#import <PassKit/PKGroupsControllerDelegate-Protocol.h>
-#import <PassKit/PKPassGroupStackViewDatasource-Protocol.h>
-#import <PassKit/PKPassGroupStackViewDelegate-Protocol.h>
-#import <PassKit/PKPaymentSetupViewControllerDelegate-Protocol.h>
+#import <PassKit/PKAddPassesCardStackViewControllerDelegate-Protocol.h>
 #import <PassKit/PKServiceAddPassesViewControllerProtocol-Protocol.h>
-#import <PassKit/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableData, NSString, NSURLConnection, PKGroupsController, PKPassGroupStackView, UIProgressView;
+@class NSString;
 
-@interface PKServiceAddPassesViewController : PKNavigationController <PKPassGroupStackViewDelegate, PKPassGroupStackViewDatasource, PKGroupsControllerDelegate, UIScrollViewDelegate, PKServiceAddPassesViewControllerProtocol, PKPaymentSetupViewControllerDelegate>
+@interface PKServiceAddPassesViewController : PKNavigationController <PKAddPassesCardStackViewControllerDelegate, PKServiceAddPassesViewControllerProtocol>
 {
-    NSURLConnection *_downloadPassURLConnection;
-    long long _downloadPassExpectedBytes;
-    NSMutableData *_downloadPassData;
-    BOOL _allowsPassIngestion;
-    BOOL _showAutomaticSelection;
-    BOOL _alreadyAdding;
-    long long _groupLoadState;
-    CDUnknownBlockType _loadedGroupsCallback;
-    NSMutableArray *_localPasses;
-    NSArray *_localPassDatas;
-    PKPassGroupStackView *_cardStackView;
-    PKGroupsController *_groupsController;
-    NSMutableArray *_minimumCardHeightFromHereToTop;
-    UIProgressView *_progressView;
+    struct CGSize _screenSize;
+    double _screenScale;
+    BOOL _placeholderViewControllerDidCancel;
 }
 
-@property (strong, nonatomic) PKPassGroupStackView *cardStackView; // @synthesize cardStackView=_cardStackView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) PKGroupsController *groupsController; // @synthesize groupsController=_groupsController;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSArray *localPassDatas; // @synthesize localPassDatas=_localPassDatas;
-@property (strong, nonatomic) NSMutableArray *localPasses; // @synthesize localPasses=_localPasses;
-@property (strong, nonatomic) NSMutableArray *minimumCardHeightFromHereToTop; // @synthesize minimumCardHeightFromHereToTop=_minimumCardHeightFromHereToTop;
-@property (strong, nonatomic) UIProgressView *progressView; // @synthesize progressView=_progressView;
 @property (readonly) Class superclass;
 
 + (id)_exportedInterface;
 + (BOOL)_preventsAppearanceProxyCustomization;
 + (id)_remoteViewControllerInterface;
-- (void)_acceptCard:(id)arg1;
-- (void)_addPassesToLibraryWithCompletion:(CDUnknownBlockType)arg1;
-- (void)acceptCard:(id)arg1;
-- (id)addPassViewController;
-- (void)cancelCard:(id)arg1;
-- (void)connection:(id)arg1 didFailWithError:(id)arg2;
-- (void)connection:(id)arg1 didReceiveData:(id)arg2;
-- (void)connection:(id)arg1 didReceiveResponse:(id)arg2;
-- (void)connectionDidFinishLoading:(id)arg1;
-- (void)dealloc;
-- (id)genericTitleWithCount:(unsigned long long)arg1;
-- (id)groupAtIndex:(unsigned long long)arg1;
-- (void)groupStackView:(id)arg1 deleteConfirmedForPass:(id)arg2;
-- (void)groupStackView:(id)arg1 didTransitionToState:(long long)arg2 animated:(BOOL)arg3;
-- (void)groupStackViewDidBeginReordering:(id)arg1;
-- (void)groupStackViewDidEndReordering:(id)arg1;
-- (void)groupsController:(id)arg1 didInsertGroup:(id)arg2 atIndex:(unsigned long long)arg3;
-- (void)groupsController:(id)arg1 didMoveGroup:(id)arg2 fromIndex:(unsigned long long)arg3 toIndex:(unsigned long long)arg4;
-- (void)groupsController:(id)arg1 didRemoveGroup:(id)arg2 atIndex:(unsigned long long)arg3;
-- (unsigned long long)indexOfGroup:(id)arg1;
-- (unsigned long long)indexOfSeparationGroup;
-- (void)ingestCardAtURL:(id)arg1;
-- (void)ingestPasses:(id)arg1;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)loadView;
-- (unsigned long long)numberOfGroups;
-- (BOOL)passesGrowWhenFlipped;
+- (void)addPassesCardStackViewController:(id)arg1 didCancelAddingPasses:(id)arg2;
+- (void)addPassesCardStackViewController:(id)arg1 didFinishAddingPasses:(id)arg2;
+- (void)ingestPassesWithData:(id)arg1 fromPresentationSource:(unsigned long long)arg2;
 - (long long)preferredStatusBarStyle;
 - (BOOL)prefersStatusBarHidden;
-- (void)setAllowsPassIngestion:(BOOL)arg1;
 - (void)setDisplayPropertiesWithScreenSize:(struct CGSize)arg1 scale:(double)arg2;
 - (BOOL)shouldAutorotate;
-- (void)showAutomaticSelectionController:(id)arg1;
-- (void)showDownloadingPassUI;
-- (id)styleTitleUsingPass:(id)arg1 count:(unsigned long long)arg2;
 - (unsigned long long)supportedInterfaceOrientations;
-- (unsigned long long)suppressedContent;
-- (void)tearDown;
-- (void)tearDownDownloadConnection;
-- (void)updateAddButton;
-- (void)updateAddButtonAndSettings;
-- (void)updateCancelButton;
-- (void)updateNavTitle;
-- (void)viewControllerDidTerminateSetupFlow:(id)arg1;
-- (void)viewDidAppear:(BOOL)arg1;
-- (void)viewDidDisappear:(BOOL)arg1;
-- (void)viewWillLayoutSubviews;
 
 @end
 

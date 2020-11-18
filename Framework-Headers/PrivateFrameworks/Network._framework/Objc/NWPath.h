@@ -53,6 +53,7 @@
 @property (readonly) NSString *ssid;
 @property (readonly) long long status;
 @property (readonly) NSString *statusAsString;
+@property (readonly) BOOL supportsDNS;
 @property (readonly) BOOL supportsIPv4;
 @property (readonly) BOOL supportsIPv6;
 

@@ -15,6 +15,7 @@
     BOOL _allowCrossfadeContent;
     BOOL _shouldPauseOnSettle;
     BOOL _variableIntro;
+    BOOL _assumeCroppedVideo;
     double _forceTouchTimeoutInterval;
     double _forceTouchTimeoutMinimumProgress;
     double _forceScrubMinimumPressure;
@@ -35,6 +36,7 @@
 @property (nonatomic) BOOL allowFrameBlending; // @synthesize allowFrameBlending=_allowFrameBlending;
 @property (nonatomic) BOOL allowPlayerReuse; // @synthesize allowPlayerReuse=_allowPlayerReuse;
 @property (nonatomic) BOOL allowVideoPreRoll; // @synthesize allowVideoPreRoll=_allowVideoPreRoll;
+@property (nonatomic) BOOL assumeCroppedVideo; // @synthesize assumeCroppedVideo=_assumeCroppedVideo;
 @property (nonatomic) double audioRampDuration; // @synthesize audioRampDuration=_audioRampDuration;
 @property (nonatomic) double crossfadeDuration; // @synthesize crossfadeDuration=_crossfadeDuration;
 @property (nonatomic) double crossfadeTargetBlur; // @synthesize crossfadeTargetBlur=_crossfadeTargetBlur;

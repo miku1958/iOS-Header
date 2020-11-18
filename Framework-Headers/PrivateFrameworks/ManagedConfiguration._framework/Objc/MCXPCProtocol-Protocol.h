@@ -31,6 +31,7 @@
 - (void)markStoredProfileForPurposeAsInstalled:(int)arg1 completion:(void (^)(NSError *))arg2;
 - (void)mayShareToAirDropAndOriginatingAccountIsManaged:(BOOL)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)mayShareToMessagesAndOriginatingAccountIsManaged:(BOOL)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)migrateMDMWithContext:(int)arg1 completion:(void (^)(NSError *))arg2;
 - (void)migrateWithContext:(int)arg1 passcodeWasSetInBackup:(BOOL)arg2 forceAllowHostPairing:(BOOL)arg3 completion:(void (^)(NSError *))arg4;
 - (void)notifyDeviceUnlockedWithCompletion:(void (^)(NSError *))arg1;
 - (void)notifyHaveSeenComplianceMessageWithLastLockDate:(NSDate *)arg1 completion:(void (^)(NSError *))arg2;
@@ -54,7 +55,7 @@
 - (void)setAllowedURLStrings:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setAutoCorrectionAllowed:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setKeyboardShortcutsAllowed:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
-- (void)setParametersForSettingsByType:(NSDictionary *)arg1 passcode:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)setParametersForSettingsByType:(NSDictionary *)arg1 toSystem:(BOOL)arg2 user:(BOOL)arg3 passcode:(NSString *)arg4 completion:(void (^)(NSError *))arg5;
 - (void)setPredictiveKeyboardAllowed:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setSpellCheckAllowed:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setUserBookmarks:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;

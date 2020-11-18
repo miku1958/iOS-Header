@@ -22,6 +22,7 @@
 - (id)archiveData;
 - (id)bundle;
 - (void)contentWithCompletion:(CDUnknownBlockType)arg1;
+- (id)dataForBundleResourceNamed:(id)arg1 withExtension:(id)arg2;
 - (void)dealloc;
 - (void)dictionaryWithCompletion:(CDUnknownBlockType)arg1;
 - (id)displayProfileOfType:(long long)arg1;

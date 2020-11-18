@@ -30,8 +30,9 @@
 - (void)_handleABChangeNotificationWithInfo:(id)arg1;
 - (void)_handleBookmarkChangeNotification;
 - (void)_handleCalChangeNotification;
-- (void)_notesChangedExternally:(id)arg1;
+- (void)_notesChangedExternally;
 - (void)dealloc;
+- (void)didReceiveDarwinNotification:(id)arg1;
 - (id)init;
 - (void)noteABDBDirChanged;
 - (void)noteCalDBDirChanged;

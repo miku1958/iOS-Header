@@ -21,6 +21,7 @@
     id _mcNotificationToken;
     PKDiscoveryLSWatcher *_lsWatcher;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_sync;
 }
 
 @property int annotationNotifyToken; // @synthesize annotationNotifyToken=_annotationNotifyToken;
@@ -35,6 +36,7 @@
 @property (strong) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (copy) CDUnknownBlockType report; // @synthesize report=_report;
 @property (readonly) Class superclass;
+@property (strong) NSObject<OS_dispatch_queue> *sync; // @synthesize sync=_sync;
 
 - (void).cxx_destruct;
 - (void)cancel;

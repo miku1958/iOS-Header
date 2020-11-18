@@ -14,10 +14,10 @@
     UILabel *_label;
 }
 
-@property (readonly, strong, nonatomic) TPRevealingRingView *backgroundRing; // @synthesize backgroundRing=_ringView;
-@property (readonly, strong, nonatomic) UILabel *label; // @synthesize label=_label;
+@property (readonly, nonatomic) TPRevealingRingView *backgroundRing; // @synthesize backgroundRing=_ringView;
+@property (readonly, nonatomic) UILabel *label; // @synthesize label=_label;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setHighlighted:(BOOL)arg1;

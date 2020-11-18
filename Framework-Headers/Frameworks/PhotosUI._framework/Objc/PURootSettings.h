@@ -12,6 +12,7 @@
 {
     NSMutableSet *_archivedSettings;
     BOOL _enforceDisableIrisUI;
+    BOOL _allowIrisEditing;
     BOOL _allowIrisUI;
     PUPhotosGridSettings *_photosGridSettings;
     PUPhotosDataSourceSettings *_photosDataSourceSettings;
@@ -31,6 +32,7 @@
 }
 
 @property (strong, nonatomic) PUAirPlaySettings *airPlaySettings; // @synthesize airPlaySettings=_airPlaySettings;
+@property (nonatomic) BOOL allowIrisEditing; // @synthesize allowIrisEditing=_allowIrisEditing;
 @property (nonatomic) BOOL allowIrisUI; // @synthesize allowIrisUI=_allowIrisUI;
 @property (strong, nonatomic) PUFeedSettings *feedSettings; // @synthesize feedSettings=_feedSettings;
 @property (nonatomic) Class interfaceThemeClass; // @synthesize interfaceThemeClass=_interfaceThemeClass;
@@ -47,10 +49,12 @@
 @property (strong, nonatomic) PUSlideshowSettings *slideshowSettings; // @synthesize slideshowSettings=_slideshowSettings;
 @property (strong, nonatomic) PUTilingViewSettings *tilingViewSettings; // @synthesize tilingViewSettings=_tilingViewSettings;
 
-+ (id)_currentViewControllerStack;
 + (id)_debugRowsForViewControllerStack:(id)arg1;
 + (void)_deleteAllDiagnosticFiles;
++ (void)_setCurrentAsset:(id)arg1;
 + (void)_setDebugRows:(id)arg1;
++ (id)currentAsset;
++ (void)dismissSettingsController:(id)arg1;
 + (id)photosUITesterRootViewController;
 + (void)presentSettingsController;
 + (id)settingsControllerModule;

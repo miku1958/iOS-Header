@@ -20,6 +20,7 @@
 }
 
 @property (readonly, nonatomic) BOOL hasSubscriptions;
+@property (readonly, nonatomic) BOOL isAnyPlanActivating;
 @property (readonly, nonatomic) BOOL isMultipleDataPlanSupportAvailable;
 @property (readonly, nonatomic) BOOL isRoamingPlanSupportAvailable;
 @property (readonly, nonatomic) BOOL isSelectedPlanActivating;
@@ -37,7 +38,6 @@
 - (void)_fetchPlanItemsIfNeeded;
 - (void)_invalidatePlanItemsCache;
 - (void)_planInfoDidChange;
-- (void)_subscriptionDidUpdate;
 - (void)dealloc;
 - (id)init;
 

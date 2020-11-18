@@ -22,7 +22,6 @@
     unsigned int _resultCount;
     int _options;
     SPSearchResultSection *_topHitResultSection;
-    SPSearchResultSection *_searchThroughSection;
     SPSearchResult *_webSearchThroughResult;
     SPSearchResult *_appStoreSearchThroughResult;
     SPSearchResult *_mapsSearchThroughResult;
@@ -41,13 +40,12 @@
     NSObject<SPSearchAgentDelegate> *_delegate;
     NSObject<OS_dispatch_queue> *_queryProcessor;
     int _currentZKWLevel;
-    NSMutableArray *_cachedSections;
-    NSMutableArray *_savedSections;
     long long _updatesDisabled;
     struct WaitingResults_s *_deferredUpdate;
     NSString *_lastQueryString;
     int _seqNo;
     int _storedSeqNo;
+    int _lastUpdateSeqNo;
     NSDate *_parsecNewsExpireTime;
     int _prefsToken;
     BOOL _newQuery;
@@ -61,6 +59,7 @@
     NSString *_web_fbq;
 }
 
+@property (readonly) int currentZKWLevel; // @synthesize currentZKWLevel=_currentZKWLevel;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) NSObject<SPSearchAgentDelegate> *delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -93,6 +92,7 @@
 - (void)clearInternal:(int)arg1;
 - (void)clearParsecResultsIfStale;
 - (long long)contentFilters;
+- (int)currentQuerySeqNo;
 - (void)deactivate;
 - (void)dealloc;
 - (void)disableUpdates;
@@ -100,6 +100,7 @@
 - (void)handleHiddenResult:(id)arg1 shownResult:(id)arg2 inSection:(id)arg3;
 - (void)handleOptionsForNewSections:(id)arg1;
 - (BOOL)hasParsecNews;
+- (BOOL)hasParsecNewsHigh;
 - (BOOL)hasResults;
 - (id)init;
 - (id)initWithZKWLevel:(int)arg1 andOptions:(int)arg2;
@@ -134,8 +135,6 @@
 - (void)testPermuteSection:(id)arg1 domain:(unsigned int)arg2 count:(int)arg3;
 - (void)testRestoreCacheZKW;
 - (void)testSaveCachedZKWPermUsers:(int)arg1 appLinks:(int)arg2 apps:(int)arg3;
-- (void)updateEpilog:(id)arg1;
-- (void)updateProlog:(id)arg1;
 - (void)updateResultsThroughDelegate;
 - (void)updateResultsThroughDelegate:(BOOL)arg1;
 - (void)updateSearchThroughSectionWithQuery:(id)arg1;

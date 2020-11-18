@@ -47,7 +47,6 @@ __attribute__((visibility("hidden")))
 - (id)defaultActionFont;
 - (id)descriptiveFontForAction:(id)arg1 inAlertController:(id)arg2;
 - (id)dimmingViewForAlertController:(id)arg1;
-- (BOOL)focusedActionAnimatesOnPresentationAndDismissal;
 - (BOOL)hideActionSeparators;
 - (BOOL)hideCancelAction:(id)arg1 inAlertController:(id)arg2;
 - (struct CATransform3D)highlightedActionTransformForActionSize:(struct CGSize)arg1;

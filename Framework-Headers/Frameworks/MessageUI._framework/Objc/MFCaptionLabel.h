@@ -33,15 +33,14 @@
 + (id)defaultFont;
 - (void)_setNeedsLabelUpdate;
 - (id)_stringAtIndexForCombinedRecipientLists:(unsigned long long)arg1;
-- (void)_updateLabel;
 - (void)clear;
 - (void)dealloc;
 - (id)initWithAddressBook:(void *)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)setFrame:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)updateLabelNow;
 - (id)viewForBaselineLayout;
 
 @end

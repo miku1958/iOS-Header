@@ -26,6 +26,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_needsHeaderForSection:(long long)arg1;
 - (void)_performBlockAfterDerivingPrepopulatedItems:(CDUnknownBlockType)arg1;
 - (void)_showNewPlaylistCreationFlow;
 - (void)_updateNoContentViewVisibility;

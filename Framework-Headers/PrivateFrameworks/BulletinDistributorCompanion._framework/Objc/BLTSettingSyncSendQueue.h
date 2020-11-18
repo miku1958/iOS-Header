@@ -31,10 +31,10 @@
 - (void).cxx_destruct;
 - (void)_sendEffectiveSectionInfo:(id)arg1 waitForAcknowledgement:(BOOL)arg2 withQueue:(id)arg3 andCompletion:(CDUnknownBlockType)arg4;
 - (void)_sendSectionIcon:(id)arg1 forSectionID:(id)arg2 forSubtypeID:(long long)arg3 waitForAcknowledgement:(BOOL)arg4 withQueue:(id)arg5 andCompletion:(CDUnknownBlockType)arg6;
-- (void)_sendSectionInfoWithSectionID:(id)arg1 usingProvider:(CDUnknownBlockType)arg2 updateProgress:(CDUnknownBlockType)arg3 sendCompleted:(CDUnknownBlockType)arg4 sendAttempt:(unsigned long long)arg5 waitForAcknowledgement:(BOOL)arg6 group:(id)arg7;
+- (void)_sendSectionInfoWithSectionID:(unsigned long long)arg1 usingProvider:(CDUnknownBlockType)arg2 updateProgress:(CDUnknownBlockType)arg3 sendCompleted:(CDUnknownBlockType)arg4 sendAttempt:(unsigned long long)arg5 waitForAcknowledgement:(BOOL)arg6 group:(id)arg7;
 - (id)init;
 - (id)initWithMaxConcurrentSendCount:(unsigned long long)arg1;
-- (void)sendEffectiveSectionInfos:(id)arg1 usingProvider:(CDUnknownBlockType)arg2 count:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4 progress:(CDUnknownBlockType)arg5;
+- (void)sendEffectiveSectionInfosUsingProvider:(CDUnknownBlockType)arg1 count:(unsigned long long)arg2 sectionInfoSendCompleted:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4 progress:(CDUnknownBlockType)arg5;
 - (void)sendSectionSubtypeParameterIcons:(id)arg1 sectionID:(id)arg2 waitForAcknowledgement:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end

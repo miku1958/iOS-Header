@@ -6,27 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, PKPaymentWebServiceContext;
+@class NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface NPKCompanionAgentConnectionDeferredActionHandler : NSObject
 {
-    PKPaymentWebServiceContext *_deferredSharedPaymentWebServiceContext;
-    NSMutableArray *_deferredActions;
+    NSMutableDictionary *_deferredActions;
     NSObject<OS_dispatch_queue> *_internalQueue;
+    NSMutableDictionary *_deferredSharedPaymentWebServiceContexts;
 }
 
-@property (strong, nonatomic) NSMutableArray *deferredActions; // @synthesize deferredActions=_deferredActions;
-@property (strong, nonatomic) PKPaymentWebServiceContext *deferredSharedPaymentWebServiceContext; // @synthesize deferredSharedPaymentWebServiceContext=_deferredSharedPaymentWebServiceContext;
+@property (strong, nonatomic) NSMutableDictionary *deferredActions; // @synthesize deferredActions=_deferredActions;
+@property (strong, nonatomic) NSMutableDictionary *deferredSharedPaymentWebServiceContexts; // @synthesize deferredSharedPaymentWebServiceContexts=_deferredSharedPaymentWebServiceContexts;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 
 + (id)sharedDeferredActionHandler;
 - (void).cxx_destruct;
-- (void)_handleDevicePaired;
-- (void)_handleDevicePairingFailure;
-- (void)_handleDeviceUnpaired;
+- (void)_cleanUpDeferredDataForPairingID:(id)arg1;
+- (void)_handleCompanionAgentStarted;
+- (void)_handleDeviceBecameActive:(id)arg1;
+- (void)_handleDevicePaired:(id)arg1;
+- (void)_handleDevicePairingFailure:(id)arg1;
+- (void)_handleDeviceUnpaired:(id)arg1;
+- (void)_performDeferredActions;
+- (void)dealloc;
+- (id)deferredSharedPaymentWebServiceContextForDevice:(id)arg1;
 - (id)init;
-- (void)performActionWhenCompanionAgentIsAvailable:(CDUnknownBlockType)arg1;
+- (void)performActionWhenCompanionAgentIsAvailable:(CDUnknownBlockType)arg1 forDevice:(id)arg2;
+- (void)setDeferredSharedPaymentWebServiceContext:(id)arg1 forDevice:(id)arg2;
 
 @end
 

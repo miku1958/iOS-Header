@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class UIColor, _UILegibilitySettings;
 
@@ -24,17 +24,17 @@
 @property (strong, nonatomic) UIColor *chevronShimmerColor; // @synthesize chevronShimmerColor=_chevronShimmerColor;
 @property (strong, nonatomic) UIColor *highlightColor; // @synthesize highlightColor=_highlightColor;
 @property (strong, nonatomic) UIColor *highlightLimitingColor; // @synthesize highlightLimitingColor=_highlightLimitingColor;
-@property (readonly, strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
-@property (readonly, strong, nonatomic) UIColor *referenceColor; // @synthesize referenceColor=_referenceColor;
+@property (readonly, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
+@property (readonly, nonatomic) UIColor *referenceColor; // @synthesize referenceColor=_referenceColor;
 @property (readonly, nonatomic) double referenceContrast; // @synthesize referenceContrast=_referenceContrast;
 @property (strong, nonatomic) UIColor *shimmerColor; // @synthesize shimmerColor=_shimmerColor;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
 @property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 
 + (id)vibrantSettingsWithReferenceColor:(id)arg1 referenceContrast:(double)arg2 legibilitySettings:(id)arg3;
+- (void).cxx_destruct;
 - (id)_computeSourceColorDodgeColorForDestinationColor:(id)arg1 producingLuminanceChange:(double)arg2;
 - (long long)_style;
-- (void)dealloc;
 - (unsigned long long)hash;
 - (id)highlightLimitingViewWithFrame:(struct CGRect)arg1;
 - (id)initWithReferenceColor:(id)arg1 referenceContrast:(double)arg2 legibilitySettings:(id)arg3;

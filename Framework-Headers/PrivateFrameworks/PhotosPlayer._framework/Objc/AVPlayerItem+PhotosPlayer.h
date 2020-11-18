@@ -10,5 +10,7 @@
 
 @property (readonly, nonatomic, getter=is_isHighFramerate) BOOL is_highFramerate;
 
+- (void)is_enableColorMatching;
+- (BOOL)is_setEnabled:(BOOL)arg1 forTracksWithMediaType:(id)arg2 force:(BOOL)arg3;
 @end
 

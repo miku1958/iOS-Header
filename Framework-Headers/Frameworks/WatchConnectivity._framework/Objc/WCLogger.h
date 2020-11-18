@@ -11,8 +11,8 @@
 }
 
 + (id)daemonLog;
-+ (id)frameworkComplicationLog;
 + (id)frameworkLog;
++ (id)frameworkPrivateLog;
 
 @end
 

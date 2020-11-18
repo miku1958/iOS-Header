@@ -67,6 +67,8 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
+struct pair<unsigned long, unsigned long>;
+
 struct vector<MPU::LayoutInterpolator::EntriesContainer, std::__1::allocator<MPU::LayoutInterpolator::EntriesContainer>> {
     struct EntriesContainer *__begin_;
     struct EntriesContainer *__end_;
@@ -89,6 +91,14 @@ struct vector<MPU::Point3D, std::__1::allocator<MPU::Point3D>> {
     struct __compressed_pair<MPU::Point3D *, std::__1::allocator<MPU::Point3D>> {
         struct Point3D *_field1;
     } _field3;
+};
+
+struct vector<std::__1::pair<unsigned long, unsigned long>, std::__1::allocator<std::__1::pair<unsigned long, unsigned long>>> {
+    struct pair<unsigned long, unsigned long> *__begin_;
+    struct pair<unsigned long, unsigned long> *__end_;
+    struct __compressed_pair<std::__1::pair<unsigned long, unsigned long>*, std::__1::allocator<std::__1::pair<unsigned long, unsigned long>>> {
+        struct pair<unsigned long, unsigned long> *__first_;
+    } __end_cap_;
 };
 
 #pragma mark Typedef'd Structures

@@ -11,11 +11,13 @@
 @interface PHAssetResourceRequestOptions : NSObject <NSCopying>
 {
     BOOL _networkAccessAllowed;
+    BOOL _resistentToPrune;
     CDUnknownBlockType _progressHandler;
 }
 
 @property (nonatomic, getter=isNetworkAccessAllowed) BOOL networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
+@property (nonatomic) BOOL resistentToPrune; // @synthesize resistentToPrune=_resistentToPrune;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

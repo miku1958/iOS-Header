@@ -55,6 +55,7 @@
     BOOL _isSuppressingPreviewProgressAnimation;
     _SFSafariSharingExtensionController *_sharingExtensionController;
     _SFReloadOptionsController *_reloadOptionsController;
+    BOOL _didReceivePolicyForInitialLoad;
     BOOL _entersReaderIfAvailable;
     BOOL _remoteSwipeGestureEnabled;
     long long _displayMode;
@@ -80,6 +81,7 @@
 - (id)_EVOrganizationName;
 - (id)_activeToolbar;
 - (void)_addAuthenticationChallenge:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (double)_buttonBarHeight;
 - (BOOL)_canScrollToTopInView:(id)arg1;
 - (void)_commitPreviewViewController:(id)arg1;
 - (double)_crashBannerDraggingOffsetForContentOffset:(struct CGPoint)arg1;
@@ -91,6 +93,7 @@
 - (void)_initialLoadFinishedWithSuccess:(BOOL)arg1;
 - (void)_invalidateEVOrganizationName;
 - (BOOL)_isSecure;
+- (BOOL)_isSplitScreen;
 - (id)_linkPreviewActionsWithDefaultActions:(id)arg1;
 - (void)_notifyInitialLoadDidFinish:(BOOL)arg1;
 - (void)_performSafeBrowsingCheckForURL:(id)arg1;
@@ -126,6 +129,7 @@
 - (void)_updateUI;
 - (void)_updateUsesNarrowLayout;
 - (void)_updateWebViewLayoutSize;
+- (void)_updateWebViewShrinkToFit;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)addBookmarkNavController:(id)arg1 didFinishWithResult:(BOOL)arg2;
 - (BOOL)addBookmarkNavControllerCanSaveBookmarkChanges:(id)arg1;
@@ -226,6 +230,8 @@
 - (void)webViewControllerDidChangeURL:(id)arg1;
 - (void)webViewControllerDidDetermineReaderAvailability:(id)arg1;
 - (void)webViewControllerDidFirstVisuallyNonEmptyLayout:(id)arg1;
+- (void)webViewControllerWebProcessDidBecomeResponsive:(id)arg1;
+- (void)webViewControllerWebProcessDidBecomeUnresponsive:(id)arg1;
 - (void)webViewControllerWebProcessDidCrash:(id)arg1;
 
 @end

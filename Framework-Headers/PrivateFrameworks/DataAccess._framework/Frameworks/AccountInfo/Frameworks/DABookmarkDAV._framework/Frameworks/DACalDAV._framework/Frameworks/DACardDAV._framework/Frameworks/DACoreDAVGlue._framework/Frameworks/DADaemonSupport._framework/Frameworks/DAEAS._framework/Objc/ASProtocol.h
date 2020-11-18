@@ -24,6 +24,7 @@
 - (BOOL)allAttachmentsAreBase64ed;
 - (BOOL)allowsReminderOnCompletedTasks;
 - (BOOL)alwaysSendAttendeeRole;
+- (BOOL)alwaysSendTimezone;
 - (id)calendarConstraintsPath;
 - (BOOL)commandStringNeedsSaveInSent;
 - (BOOL)fetchAttachmentsWithItemOperations;

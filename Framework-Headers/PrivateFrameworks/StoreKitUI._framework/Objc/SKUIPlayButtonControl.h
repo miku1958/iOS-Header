@@ -6,7 +6,7 @@
 
 #import <UIKit/UIControl.h>
 
-@class NSArray, NSString, SKUIPlayButtonGradientView, SKUIPlayButtonShapeView, UIColor, UIImage, UIImageView, UIView, _UIBackdropView;
+@class NSArray, NSString, SKUIButtonViewElement, SKUIPlayButtonGradientView, SKUIPlayButtonShapeView, UIColor, UIImage, UIImageView, UIView, _UIBackdropView;
 
 @interface SKUIPlayButtonControl : UIControl
 {
@@ -37,7 +37,9 @@
     BOOL _showingPlayIndicator;
     BOOL _showBorder;
     BOOL _showOuterBorder;
+    BOOL _disabledButSelectable;
     NSString *_backdropGroupName;
+    SKUIButtonViewElement *_element;
     UIImage *_backgroundImageForBlurring;
     struct UIEdgeInsets _bigHitInsets;
 }
@@ -49,6 +51,8 @@
 @property (readonly, nonatomic) UIColor *controlForeGroundColor; // @synthesize controlForeGroundColor=_controlForeGroundColor;
 @property (strong, nonatomic) UIImage *customPlayImage; // @synthesize customPlayImage=_customPlayImage;
 @property (strong, nonatomic) UIImage *customToggleImage; // @synthesize customToggleImage=_customToggleImage;
+@property (nonatomic, getter=isDisabledButSelectable) BOOL disabledButSelectable; // @synthesize disabledButSelectable=_disabledButSelectable;
+@property (strong, nonatomic) SKUIButtonViewElement *element; // @synthesize element=_element;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (readonly, nonatomic, getter=isIndeterminate) BOOL indeterminate; // @synthesize indeterminate=_indeterminate;
 @property (nonatomic) float progress; // @synthesize progress=_progress;
@@ -75,12 +79,14 @@
 - (id)_outerProgressLayer;
 - (id)_playImage;
 - (void)_prepareForReuse;
+- (BOOL)_renderAsEnabled;
 - (id)_selectedLayer;
 - (void)_showPlayIndicator:(BOOL)arg1;
 - (id)_simpleBackdrop;
 - (void)_toggleToPlayState;
 - (void)_updateBackdropView;
 - (void)_updateBackgroundBlur:(id)arg1 withOffsetRight:(float)arg2 withOffsetBottom:(float)arg3;
+- (void)_updateEnabledState;
 - (void)_updateInnerProgressLayerStroke;
 - (void)_useBlurredBackground:(BOOL)arg1;
 - (void)beginIndeterminateAnimation;
@@ -117,6 +123,7 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tintColorDidChange;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)updateOuterProgressLayerStroke;
 
 @end

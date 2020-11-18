@@ -8,7 +8,9 @@
 
 @interface PHAsset (PhotosUI)
 + (long long)_pu_mediaTypeForAssets:(id)arg1;
++ (long long)pu_commonMediaTypeForPhotoCount:(long long)arg1 videoCount:(long long)arg2 otherCount:(long long)arg3;
 + (id)pu_typeStringForAssets:(id)arg1;
 + (id)pu_typeStringForAssetsWithIdentifiers:(id)arg1;
++ (id)pu_typeStringForMediaType:(long long)arg1;
 @end
 

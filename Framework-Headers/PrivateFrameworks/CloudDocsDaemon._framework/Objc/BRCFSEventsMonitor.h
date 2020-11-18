@@ -50,6 +50,7 @@
 - (void)close;
 - (void)dealloc;
 - (void)didProcessEventID:(unsigned long long)arg1;
+- (void)flushStream;
 - (void)fseventAtPath:(id)arg1 withFlags:(unsigned int)arg2 andID:(unsigned long long)arg3 eventIndex:(unsigned int)arg4 eventCount:(unsigned int)arg5 initialScan:(BOOL)arg6;
 - (id)initWithAccountSession:(id)arg1;
 - (void)lowDiskStatusChangedForDevice:(int)arg1 hasEnoughSpace:(BOOL)arg2;

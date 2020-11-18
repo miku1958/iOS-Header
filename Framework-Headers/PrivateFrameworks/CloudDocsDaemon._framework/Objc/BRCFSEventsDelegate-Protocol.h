@@ -10,6 +10,7 @@
 
 @protocol BRCFSEventsDelegate <NSObject>
 - (void)fseventAtPath:(BRCRelativePath *)arg1 flags:(unsigned int)arg2;
+- (void)fseventAtPath:(BRCRelativePath *)arg1 flags:(unsigned int)arg2 options:(unsigned long long)arg3 unresolvedLastPathComponent:(NSString *)arg4;
 - (void)fseventAtPath:(BRCRelativePath *)arg1 flags:(unsigned int)arg2 unresolvedLastPathComponent:(NSString *)arg3;
 @end
 

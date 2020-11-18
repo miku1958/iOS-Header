@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class HKCategorySample, NSArray;
 
 @interface HDCoachingDiagnosticData : NSObject
 {
     NSArray *_items;
+    HKCategorySample *_coachingEventSample;
 }
 
+@property (strong, nonatomic) HKCategorySample *coachingEventSample; // @synthesize coachingEventSample=_coachingEventSample;
 @property (readonly, nonatomic) NSArray *items; // @synthesize items=_items;
 
 - (void).cxx_destruct;

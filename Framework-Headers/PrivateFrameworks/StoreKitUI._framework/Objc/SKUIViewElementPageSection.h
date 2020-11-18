@@ -56,8 +56,7 @@
 - (struct UIEdgeInsets)pinningContentInsetForItemAtIndexPath:(id)arg1;
 - (struct CGSize)preferredContentSize;
 - (void)prefetchResourcesWithReason:(long long)arg1;
-- (id)previewViewControllerForIndexPath:(id)arg1;
-- (BOOL)previewsSupportedForIndexPath:(id)arg1;
+- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
 - (void)reloadCellWithIndexPath:(id)arg1 reason:(long long)arg2;
 - (struct UIEdgeInsets)sectionContentInset;
 - (BOOL)updateCellWithIndexPath:(id)arg1 itemState:(id)arg2 animated:(BOOL)arg3;

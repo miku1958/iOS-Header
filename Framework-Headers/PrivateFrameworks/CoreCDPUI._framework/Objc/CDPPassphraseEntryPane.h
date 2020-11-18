@@ -11,12 +11,18 @@
 @interface CDPPassphraseEntryPane : DevicePINPane
 {
     CDPPaneHeaderView *_headerView;
+    double _keyboardOffset;
     BOOL _formPresentation;
 }
 
 @property (nonatomic) BOOL formPresentation; // @synthesize formPresentation=_formPresentation;
 
 - (void).cxx_destruct;
+- (void)_keyboardLayoutChanged;
+- (void)_layoutHeaderRect;
+- (void)_layoutPinViewWithHeight:(double)arg1;
+- (void)_layoutSubviews;
+- (void)dealloc;
 - (id)headerView;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isSmallScreen;

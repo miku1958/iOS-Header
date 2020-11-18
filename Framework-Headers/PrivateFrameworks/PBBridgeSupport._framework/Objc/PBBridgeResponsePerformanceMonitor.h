@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary;
+@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableString;
 
 @interface PBBridgeResponsePerformanceMonitor : NSObject
 {
@@ -16,8 +16,10 @@
     NSArray *_remoteMeasurements;
     NSDictionary *_remoteMilestones;
     NSDictionary *_remoteMacroActivities;
+    NSMutableString *_logBuffer;
 }
 
+@property (strong, nonatomic) NSMutableString *logBuffer; // @synthesize logBuffer=_logBuffer;
 @property (readonly, nonatomic) NSMutableDictionary *macroActivities; // @synthesize macroActivities=_macroActivities;
 @property (readonly, nonatomic) NSMutableArray *measurements; // @synthesize measurements=_measurements;
 @property (readonly, nonatomic) NSMutableDictionary *milestones; // @synthesize milestones=_milestones;

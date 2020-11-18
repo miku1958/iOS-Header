@@ -47,7 +47,6 @@
 - (void)cancelPrefetchingAndStartNewBatch;
 - (void)clearImageCache;
 - (long long)contentFilters;
-- (id)currentToken;
 - (void)deactivate;
 - (void)dealloc;
 - (void)fetchCardDataForResult:(id)arg1 completion:(CDUnknownBlockType)arg2;

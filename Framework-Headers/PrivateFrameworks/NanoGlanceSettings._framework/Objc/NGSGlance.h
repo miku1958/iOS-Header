@@ -15,6 +15,7 @@
     BOOL _cannotBeDisabled;
     BOOL _active;
     BOOL _defaultGlance;
+    BOOL _systemGlance;
     BOOL _prelaunch;
     NSString *_name;
     NSString *_appBundleIdentifier;
@@ -22,6 +23,7 @@
     NSString *_sockPuppetIdentifier;
     unsigned long long _installState;
     NSString *_glanceBundlePath;
+    unsigned long long _watchKitVersion;
 }
 
 @property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
@@ -36,6 +38,8 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) BOOL prelaunch; // @synthesize prelaunch=_prelaunch;
 @property (copy, nonatomic) NSString *sockPuppetIdentifier; // @synthesize sockPuppetIdentifier=_sockPuppetIdentifier;
+@property (nonatomic, getter=isSystemGlance) BOOL systemGlance; // @synthesize systemGlance=_systemGlance;
+@property (nonatomic) unsigned long long watchKitVersion; // @synthesize watchKitVersion=_watchKitVersion;
 
 - (void).cxx_destruct;
 - (id)_localizedName;

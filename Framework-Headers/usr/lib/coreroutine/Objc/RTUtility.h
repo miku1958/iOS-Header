@@ -10,7 +10,6 @@
 {
 }
 
-+ (float)_randomFloatBetweenLower:(float)arg1 andUpper:(float)arg2;
 + (double)betaDistributionCdfAtX:(double)arg1 pamamA:(double)arg2 paramB:(double)arg3;
 + (unsigned long long)crcFromData:(id)arg1;
 + (id)executablePathFromPid:(int)arg1;
@@ -29,11 +28,13 @@
 + (void)mobileOwnFileAtPath:(id)arg1;
 + (int)pidFromAuditToken:(CDStruct_6ad76789)arg1;
 + (id)preferencesPath;
++ (float)randomFloatBetweenLower:(float)arg1 andUpper:(float)arg2;
 + (id)routinedLaunchdPlist;
 + (id)signingIdentifierFromAuditToken:(CDStruct_6ad76789)arg1;
 + (id)sqlite3FullPath;
 + (void)toggleRoutined;
 + (void)unloadRoutined;
++ (id)userHomePath;
 
 @end
 

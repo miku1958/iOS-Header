@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#pragma mark Blocks
+#pragma mark Function Pointers and Blocks
+
+typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
@@ -291,6 +293,22 @@ struct SessionConnectionLoadable {
     id _field8;
 };
 
+struct TCPIOConnectionObjCPP;
+
+struct TCPIO_BlockCallbacks_Listener {
+    CDUnknownFunctionPointerType *_field1;
+    CDUnknownBlockType _field2;
+    CDUnknownBlockType _field3;
+    CDUnknownBlockType _field4;
+    CDUnknownBlockType _field5;
+    CDUnknownBlockType _field6;
+    CDUnknownBlockType _field7;
+    id _field8;
+    int _field9;
+};
+
+struct TCPIO_EstablishBase;
+
 struct Throttler;
 
 struct URLConnectionLoader {
@@ -422,6 +440,16 @@ struct __shared_weak_count;
 
 struct internal_state;
 
+struct shared_ptr<TCPIOConnectionObjCPP> {
+    struct TCPIOConnectionObjCPP *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
+struct shared_ptr<TCPIO_EstablishBase> {
+    struct TCPIO_EstablishBase *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
 struct shared_ptr<__CFURLCache> {
     struct __CFURLCache *_field1;
     struct __shared_weak_count *_field2;
@@ -507,6 +535,11 @@ typedef struct {
 } CDStruct_3c1748cc;
 
 // Template types
+typedef struct shared_ptr<TCPIOConnectionObjCPP> {
+    struct TCPIOConnectionObjCPP *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+} shared_ptr_54ecd472;
+
 typedef struct shared_ptr<__CFURLCache> {
     struct __CFURLCache *_field1;
     struct __shared_weak_count *_field2;

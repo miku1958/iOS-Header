@@ -41,13 +41,13 @@ __attribute__((visibility("hidden")))
     BOOL _hasNATCheckEnded;
 }
 
-- (void)HTTPCheckWithIPPort:(struct tagIPPORT *)arg1 useCache:(BOOL)arg2;
-- (void)HTTPSCheckWithIPPort:(struct tagIPPORT *)arg1 useCache:(BOOL)arg2;
-- (void)NATCheckWithIPPort:(struct tagIPPORT *)arg1 useCache:(BOOL)arg2;
+- (void)HTTPCheckWithIPPort:(struct tagIPPORT *)arg1 ipv6Prefix:(CDStruct_c3d3b44c *)arg2 useCache:(BOOL)arg3;
+- (void)HTTPSCheckWithIPPort:(struct tagIPPORT *)arg1 ipv6Prefix:(CDStruct_c3d3b44c *)arg2 useCache:(BOOL)arg3;
+- (void)NATCheckWithIPPort:(struct tagIPPORT *)arg1 ipv6Prefix:(CDStruct_c3d3b44c *)arg2 useCache:(BOOL)arg3;
 - (void)cacheNATFlags:(id)arg1 forNetwork:(id)arg2;
 - (void)calculateSummmaryNATType:(int *)arg1 andCarrierNATType:(int *)arg2 andNonCarrierNATType:(int *)arg3 copyInterfaceInfoDictionary:(id *)arg4;
-- (struct tagCommNATInfo *)callCommNATTestFromIPPort:(struct tagIPPORT *)arg1;
-- (int)callHTTPTestFromIPPort:(struct tagIPPORT *)arg1 ToServer:(id)arg2 isSSL:(BOOL)arg3;
+- (struct tagCommNATInfo *)callCommNATTestFromIPPort:(struct tagIPPORT *)arg1 ipv6Prefix:(CDStruct_c3d3b44c *)arg2;
+- (int)callHTTPTestFromIPPort:(struct tagIPPORT *)arg1 ipv6Prefix:(CDStruct_c3d3b44c *)arg2 ToServer:(id)arg3 isSSL:(BOOL)arg4;
 - (void)clearRetries;
 - (int)currentNATType;
 - (void)dealloc;

@@ -16,6 +16,7 @@
     struct {
         BOOL respondsToDidEndTransition;
     } _delegateFlags;
+    BOOL _applyScaleToVideo;
     BOOL __needsUpdateAnimations;
     BOOL __didHideCrossfadeContentForCurrentPlayback;
     float _progress;
@@ -50,6 +51,7 @@
 @property (strong, nonatomic, setter=_setVideoAnimationsForEndingPlayback:) NSArray *_videoAnimationsForEndingPlayback; // @synthesize _videoAnimationsForEndingPlayback=__videoAnimationsForEndingPlayback;
 @property (strong, nonatomic, setter=_setVideoAnimationsForEndingVitality:) NSArray *_videoAnimationsForEndingVitality; // @synthesize _videoAnimationsForEndingVitality=__videoAnimationsForEndingVitality;
 @property (strong, nonatomic, setter=_setVideoFilters:) NSArray *_videoFilters; // @synthesize _videoFilters=__videoFilters;
+@property (nonatomic) BOOL applyScaleToVideo; // @synthesize applyScaleToVideo=_applyScaleToVideo;
 @property (readonly, nonatomic) long long currentPlaybackState; // @synthesize currentPlaybackState=_currentPlaybackState;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<ISPlaybackStateTransitionManagerDelegate> delegate; // @synthesize delegate=_delegate;

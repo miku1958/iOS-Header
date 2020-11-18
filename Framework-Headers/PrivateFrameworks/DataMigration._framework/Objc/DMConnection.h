@@ -23,8 +23,10 @@
 
 - (void).cxx_destruct;
 - (void)changeVisibility:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)forceMigrationOnNextRebootWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleMessage:(id)arg1;
-- (void)migrateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)isMigrationNeeded:(CDUnknownBlockType)arg1;
+- (void)migrateCheckingNecessity:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)orderedPluginIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)testMigrationUIWithProgress:(BOOL)arg1 forceInvert:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 

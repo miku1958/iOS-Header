@@ -93,6 +93,7 @@
 - (BOOL)accountHasSignificantPropertyChangesFromOldAccountInfo:(id)arg1;
 - (int)accountIntPropertyForKey:(id)arg1;
 - (id)accountPropertyForKey:(id)arg1;
+- (id)accountTypeIdentifier;
 - (id)addUsernameToURL:(id)arg1;
 - (id)additionalHeaderValues;
 - (BOOL)autodiscoverAccountConfigurationWithConsumer:(id)arg1;

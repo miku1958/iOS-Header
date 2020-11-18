@@ -7,61 +7,96 @@
 #import <objc/NSObject.h>
 
 #import <HealthDaemon/HDSyncStore-Protocol.h>
+#import <HealthDaemon/NRDevicePropertyObserver-Protocol.h>
 
-@class HDNanoPairingEntity, NRDevice, NSString, NSUUID;
-@protocol HDHealthDaemon, HDNanoSyncStoreDelegate;
+@class HDDaemon, HDNanoPairingEntity, HDNanoSyncRestoreSession, IDSDevice, NRDevice, NSDate, NSError, NSMutableArray, NSMutableDictionary, NSString, NSUUID;
+@protocol HDNanoSyncStoreDelegate;
 
-@interface HDNanoSyncStore : NSObject <HDSyncStore>
+@interface HDNanoSyncStore : NSObject <NRDevicePropertyObserver, HDSyncStore>
 {
-    BOOL _isMaster;
-    int _protocolVersion;
-    id<HDNanoSyncStoreDelegate> _delegate;
-    NRDevice *_nanoRegistryDevice;
     NSString *_remoteSystemBuildVersion;
     NSString *_remoteProductType;
-    NSString *_sourceBundleIdentifier;
-    NSString *_storagePath;
-    id<HDHealthDaemon> _healthDaemon;
     HDNanoPairingEntity *_pairingEntity;
+    NSMutableDictionary *_pendingRequestContexts;
+    int _protocolVersion;
+    BOOL _active;
+    BOOL _invalidated;
+    NSMutableArray *_incomingSyncObserverTimers;
+    NSUUID *_lastIncompleteIncomingSyncUUID;
+    NSDate *_lastIncompleteIncomingSyncDate;
+    NSDate *_lastCompleteIncomingSyncDate;
+    NSError *_lastCompleteIncomingSyncError;
+    BOOL _master;
+    BOOL _needsSyncOnUnlock;
+    id<HDNanoSyncStoreDelegate> _delegate;
+    long long _restoreState;
+    HDNanoSyncRestoreSession *_restoreSession;
+    HDDaemon *_daemon;
+    IDSDevice *_identityServicesDevice;
+    NRDevice *_nanoRegistryDevice;
 }
 
-@property (nonatomic, getter=isActivated) BOOL activated;
+@property (readonly, getter=isActive) BOOL active;
+@property (weak, nonatomic) HDDaemon *daemon; // @synthesize daemon=_daemon;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, weak, nonatomic) id<HDNanoSyncStoreDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<HDNanoSyncStoreDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly) IDSDevice *device;
+@property (readonly, copy) NSString *deviceName;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) id<HDHealthDaemon> healthDaemon; // @synthesize healthDaemon=_healthDaemon;
 @property (strong, nonatomic) NSUUID *healthUUID;
-@property (nonatomic) BOOL isMaster; // @synthesize isMaster=_isMaster;
-@property (readonly, nonatomic) NRDevice *nanoRegistryDevice; // @synthesize nanoRegistryDevice=_nanoRegistryDevice;
-@property (readonly, nonatomic) NSUUID *nanoRegistryUUID;
-@property (strong, nonatomic) HDNanoPairingEntity *pairingEntity; // @synthesize pairingEntity=_pairingEntity;
+@property (strong, nonatomic) IDSDevice *identityServicesDevice; // @synthesize identityServicesDevice=_identityServicesDevice;
+@property (readonly, getter=isInvalidated) BOOL invalidated;
+@property (readonly) NSDate *lastInactiveDate;
+@property (readonly, getter=isMaster) BOOL master; // @synthesize master=_master;
+@property (strong, nonatomic) NRDevice *nanoRegistryDevice; // @synthesize nanoRegistryDevice=_nanoRegistryDevice;
+@property (readonly) NSUUID *nanoRegistryUUID;
+@property (nonatomic) BOOL needsSyncOnUnlock; // @synthesize needsSyncOnUnlock=_needsSyncOnUnlock;
 @property (strong, nonatomic) NSUUID *persistentUUID;
-@property (readonly, nonatomic) int protocolVersion; // @synthesize protocolVersion=_protocolVersion;
-@property (readonly, copy, nonatomic) NSString *remoteProductType; // @synthesize remoteProductType=_remoteProductType;
-@property (readonly, copy, nonatomic) NSString *remoteSystemBuildVersion; // @synthesize remoteSystemBuildVersion=_remoteSystemBuildVersion;
-@property (readonly, nonatomic) BOOL shouldSynthesizeProvenance;
-@property (readonly, copy, nonatomic) NSString *sourceBundleIdentifier; // @synthesize sourceBundleIdentifier=_sourceBundleIdentifier;
-@property (readonly, copy, nonatomic) NSString *storagePath; // @synthesize storagePath=_storagePath;
+@property (readonly) int protocolVersion;
+@property (readonly, copy) NSString *remoteSystemBuildVersion;
+@property (readonly, nonatomic, getter=isRestoreComplete) BOOL restoreComplete;
+@property (readonly, nonatomic) HDNanoSyncRestoreSession *restoreSession; // @synthesize restoreSession=_restoreSession;
+@property (readonly, nonatomic) long long restoreState; // @synthesize restoreState=_restoreState;
+@property (readonly, copy) NSString *sourceBundleIdentifier;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) long long syncProvenance;
-@property (readonly, nonatomic) NSString *syncStoreDefaultSourceBundleIdentifier;
-@property (readonly, nonatomic) NSUUID *syncStoreDefaultSourceUUID;
-@property (readonly, nonatomic) NSString *syncStoreIdentifier;
 
-+ (id)_version2SyncEntityClassesForCompanion:(BOOL)arg1;
-+ (id)_version3SyncEntityClassesForCompanion:(BOOL)arg1;
-+ (id)nanoSyncStoreWithRegistryDevice:(id)arg1 delegate:(id)arg2 healthDaemon:(id)arg3 error:(id *)arg4;
++ (id)_bondiVersionSyncEntityClassesForCompanion:(BOOL)arg1;
++ (id)_coralVersionSyncEntityClassesForCompanion:(BOOL)arg1;
++ (id)_observedDeviceProperties;
++ (id)_orderedNanoSyncEntitiesForProtocolVersion:(int)arg1 direction:(unsigned long long)arg2;
++ (id)nanoSyncStoreWithDevice:(id)arg1 delegate:(id)arg2 daemon:(id)arg3 error:(id *)arg4;
++ (id)orderedSyncEntitiesForProtocolVersion:(int)arg1 companion:(BOOL)arg2;
++ (id)restoreSyncEntitiesForProtocolVersion:(int)arg1;
 - (void).cxx_destruct;
-- (id)_initWithNanoRegistryDevice:(id)arg1 pairingEntity:(id)arg2 sourceIdentifier:(id)arg3 delegate:(id)arg4 healthDaemon:(id)arg5;
+- (id)_initWithIdentityServicesDevice:(id)arg1 nanoRegistryDevice:(id)arg2 pairingEntity:(id)arg3 protocolVersion:(int)arg4 delegate:(id)arg5 daemon:(id)arg6;
+- (void)_notifyIncomingSyncObservers;
 - (BOOL)_savePairingEntity;
-- (id)_syncEntitiesForCompanion:(BOOL)arg1;
-- (id)newChangeWithSyncEntityClass:(Class)arg1;
+- (void)_setRestoreState:(long long)arg1;
+- (void)addIncomingSyncObserverWithTimeout:(double)arg1 timeoutHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)addPendingRequestContext:(id)arg1 forUUID:(id)arg2;
+- (id)beginRestoreSessionWithUUID:(id)arg1 timeout:(double)arg2 timeoutHandler:(CDUnknownBlockType)arg3;
+- (void)configureOutgoingResponse:(id)arg1;
+- (id)createRequestWithMessageID:(unsigned short)arg1;
+- (void)dealloc;
+- (void)device:(id)arg1 propertyDidChange:(id)arg2 fromValue:(id)arg3;
+- (id)diagnosticDescription;
+- (void)didReceiveRequestWithChangeSet:(id)arg1;
+- (BOOL)enforceSyncEntityOrdering;
+- (void)finishRestoreSessionWithError:(id)arg1;
+- (void)invalidate;
+- (id)orderedSyncEntities;
+- (id)pendingRequestContextForUUID:(id)arg1;
+- (Class)receivingSyncEntityClassForIncomingClass:(Class)arg1;
+- (id)remoteProductType;
+- (void)removeExpiredIncomingSyncObservers;
+- (void)removePendingRequestContextForUUID:(id)arg1;
 - (id)restoreSyncEntities;
-- (void)sendChange:(id)arg1 withContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)syncDidFinishWithSuccess:(BOOL)arg1 error:(id)arg2 context:(id)arg3;
-- (id)syncEntities;
-- (unsigned long long)syncObjectLimitForEntityClass:(Class)arg1;
+- (BOOL)supportsSpeculativeChangesForSyncEntityClass:(Class)arg1;
+- (long long)syncProvenance;
+- (id)syncStoreDefaultSourceBundleIdentifier;
+- (id)syncStoreDefaultSourceUUID;
+- (id)syncStoreIdentifier;
 - (BOOL)validatePairingUUIDsWithIncomingMessage:(id)arg1;
 - (BOOL)validateVersionWithIncomingMessage:(id)arg1;
 

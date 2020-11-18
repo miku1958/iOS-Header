@@ -15,6 +15,7 @@
 @property struct CGRect backdropRect;
 @property BOOL disablesOccludedBackdropBlurs;
 @property (getter=isEnabled) BOOL enabled;
+@property double extendedRangeClamp;
 @property (copy) NSString *groupName;
 @property double marginWidth;
 @property double scale;

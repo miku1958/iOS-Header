@@ -17,8 +17,8 @@
     NSDate *_endDate;
 }
 
-@property (strong, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
-@property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 
 + (BOOL)supportsSecureCoding;
 + (id)timePeriodWithStartDate:(id)arg1 endDate:(id)arg2;

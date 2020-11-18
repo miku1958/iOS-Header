@@ -36,7 +36,7 @@
 - (void)_finishLoadingOnMainThreadIfNeeded;
 - (void)_loadHistory;
 - (BOOL)_loadHistoryFromDictionary:(id)arg1;
-- (id)initWithURL:(id)arg1 itemCountLimit:(unsigned long long)arg2 ageLimit:(double)arg3 historyItemClass:(Class)arg4;
+- (id)initWithURL:(id)arg1 itemCountLimit:(unsigned long long)arg2 historyAgeLimit:(double)arg3 historyItemClass:(Class)arg4;
 - (void)startLoading;
 - (void)waitForLoadingToComplete;
 

@@ -14,9 +14,11 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSString *_applicationIdentifier;
     NSDictionary *_defaultValues;
+    unsigned long long _referenceCountForDefferringUpdates;
 }
 
 - (void).cxx_destruct;
+- (void)_applyUpdates;
 - (void)_defaultsDidChange;
 - (id)_defaultsDidChangeNotificationName;
 - (struct __CFString *)_defaultsDomain;
@@ -30,6 +32,7 @@
 - (id)initWithApplicationIdentifier:(id)arg1;
 - (long long)integerForKey:(id)arg1;
 - (id)numberForKey:(id)arg1;
+- (void)performBatchUpdates:(CDUnknownBlockType)arg1;
 - (void)registerDefaults:(id)arg1;
 - (void)removeValueForKey:(id)arg1;
 - (void)setArray:(id)arg1 forKey:(id)arg2;

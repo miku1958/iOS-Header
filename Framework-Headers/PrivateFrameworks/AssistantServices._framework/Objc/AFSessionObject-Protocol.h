@@ -6,15 +6,18 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSError, NSString;
 
 @protocol AFSessionObject <NSObject>
 
 @property (copy, nonatomic) NSString *aceId;
 @property (copy, nonatomic) NSString *refId;
 
+- (void)af_addSendCompletion:(void (^)(long long, NSError *))arg1;
 - (BOOL)af_bufferingAllowedDuringActiveSession;
+- (void)af_dispatchSendCompletionsWithResult:(long long)arg1 error:(NSError *)arg2;
 - (void)af_logDiagnostics;
+- (BOOL)af_supportsSendCompletions;
 - (NSData *)serializedAceDataError:(id *)arg1;
 @end
 

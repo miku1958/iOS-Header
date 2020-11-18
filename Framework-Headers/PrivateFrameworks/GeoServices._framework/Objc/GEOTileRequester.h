@@ -24,6 +24,8 @@
     NSString *_bundleVersion;
     NSData *_auditToken;
     BOOL _requireWiFi;
+    NSString *_deviceCountry;
+    NSString *_deviceRegion;
 }
 
 @property (strong, nonatomic) NSData *auditToken; // @synthesize auditToken=_auditToken;
@@ -33,6 +35,8 @@
 @property (readonly, nonatomic) GEOTileKeyMap *cachedEtags; // @synthesize cachedEtags=_cachedEtags;
 @property (strong, nonatomic) id context; // @synthesize context=_context;
 @property (strong, nonatomic) id<GEOTileRequesterDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) NSString *deviceCountry; // @synthesize deviceCountry=_deviceCountry;
+@property (strong, nonatomic) NSString *deviceRegion; // @synthesize deviceRegion=_deviceRegion;
 @property (readonly, nonatomic) GEOTileKeyList *keyList; // @synthesize keyList=_keyList;
 @property (readonly, nonatomic) GEOTileKeyMap *priorities; // @synthesize priorities=_priorities;
 @property (nonatomic) BOOL requireWiFi; // @synthesize requireWiFi=_requireWiFi;

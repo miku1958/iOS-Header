@@ -25,6 +25,7 @@
     MPAVController *_player;
     MPUReportingController *_reportingController;
     unsigned long long _storeAccountID;
+    NSString *_storeFrontID;
 }
 
 @property (nonatomic, getter=isSBEnabled) BOOL SBEnabled; // @synthesize SBEnabled=_SBEnabled;
@@ -32,6 +33,7 @@
 @property (readonly, nonatomic) MPAVController *player; // @synthesize player=_player;
 @property (readonly, nonatomic) MPUReportingController *reportingController; // @synthesize reportingController=_reportingController;
 @property (nonatomic) unsigned long long storeAccountID; // @synthesize storeAccountID=_storeAccountID;
+@property (copy, nonatomic) NSString *storeFrontID; // @synthesize storeFrontID=_storeFrontID;
 
 - (void).cxx_destruct;
 - (double)_itemEndTimeForItem:(id)arg1 withProposedEndTime:(double)arg2;

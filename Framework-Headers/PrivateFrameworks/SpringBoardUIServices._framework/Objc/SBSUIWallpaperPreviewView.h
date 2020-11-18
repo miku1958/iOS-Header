@@ -28,10 +28,11 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _UILegibilityLabel *irisInstructionsLabel1; // @synthesize irisInstructionsLabel1=_irisInstructionsLabel1;
 @property (strong, nonatomic) _UILegibilityLabel *irisInstructionsLabel2; // @synthesize irisInstructionsLabel2=_irisInstructionsLabel2;
-@property (nonatomic) SBSUIEffectsSegmentedControl *segmentedControl; // @synthesize segmentedControl=_segmentedControl;
+@property (strong, nonatomic) SBSUIEffectsSegmentedControl *segmentedControl; // @synthesize segmentedControl=_segmentedControl;
 @property (readonly) Class superclass;
-@property (readonly, strong, nonatomic) SBFWallpaperView *wallpaperView; // @synthesize wallpaperView=_wallpaperView;
+@property (readonly, nonatomic) SBFWallpaperView *wallpaperView; // @synthesize wallpaperView=_wallpaperView;
 
+- (void).cxx_destruct;
 - (void)_effectChanged:(id)arg1;
 - (void)_layoutDateView;
 - (void)_layoutIrisInstructionLabels;

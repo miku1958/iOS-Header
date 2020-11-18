@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
+#import <CompanionSync/NMSDeviceTargetable-Protocol.h>
 #import <CompanionSync/NMSObfuscatableDescriptionProviding-Protocol.h>
 
-@class NMSMessageCenter, NSData, NSDictionary, NSString;
+@class NMSMessageCenter, NSData, NSDictionary, NSSet, NSString;
 
-@interface NMSOutgoingRequest : NSObject <NMSObfuscatableDescriptionProviding>
+@interface NMSOutgoingRequest : NSObject <NMSDeviceTargetable, NMSObfuscatableDescriptionProviding>
 {
     BOOL _shouldEncrypt;
     unsigned short _messageID;
+    NSSet *targetDeviceIDs;
     NSData *_data;
     NSString *_idsIdentifier;
     unsigned long long _priority;
@@ -40,6 +42,7 @@
 @property (nonatomic) double sendTimeout; // @synthesize sendTimeout=_sendTimeout;
 @property (nonatomic) BOOL shouldEncrypt; // @synthesize shouldEncrypt=_shouldEncrypt;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSSet *targetDeviceIDs; // @synthesize targetDeviceIDs;
 
 + (id)requestWithMessageID:(unsigned short)arg1;
 - (void).cxx_destruct;

@@ -23,6 +23,7 @@
     UIView *_redeemerView;
     UIButton *_termsButton;
     SKUIRedeemTextField *_textField;
+    BOOL _displayRedeem;
 }
 
 @property (strong, nonatomic) SKUIITunesPassConfiguration *ITunesPassConfiguration; // @synthesize ITunesPassConfiguration=_iTunesPassConfiguration;
@@ -55,6 +56,8 @@
 - (void)layoutSubviews;
 - (void)showKeyboard;
 - (void)start;
+- (BOOL)textFieldShouldBeginEditing:(id)arg1;
+- (BOOL)textFieldShouldEndEditing:(id)arg1;
 - (BOOL)textFieldShouldReturn:(id)arg1;
 - (void)textFieldTextDidChange:(id)arg1;
 

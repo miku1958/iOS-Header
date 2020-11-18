@@ -16,7 +16,7 @@
     NSObject<OS_dispatch_queue> *_entriesByURLStringAccessQueue;
     NSMutableDictionary *_entriesByURLString;
     NSCountedSet *_stringsForUserTypedDomainExpansion;
-    unsigned long long _historyAgeLimitInDays;
+    double _historyAgeLimit;
     BOOL _hasStartedLoadingHistory;
     NSObject<OS_dispatch_queue> *_waitUntilHistoryHasLoadedQueue;
     WBSHistorySQLiteStore *_historyStore;
@@ -29,7 +29,7 @@
 @property (copy, nonatomic) NSData *fetchThrottlerData;
 @property (readonly, nonatomic) BOOL hasAnyHistoryItems;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) unsigned long long historyAgeLimitInDays; // @synthesize historyAgeLimitInDays=_historyAgeLimitInDays;
+@property (nonatomic) double historyAgeLimit; // @synthesize historyAgeLimit=_historyAgeLimit;
 @property (readonly, nonatomic) unsigned long long numberOfHistoryItems;
 @property (readonly, nonatomic) unsigned long long numberOfHistoryItemsOnHistoryQueue;
 @property (nonatomic) BOOL pushNotificationsAreInitialized;
@@ -46,7 +46,6 @@
 - (void)_addItem:(id)arg1 addToStringsForUserTypedDomainExpansions:(BOOL)arg2;
 - (void)_addItemToStringsForUserTypedDomainExpansion:(id)arg1;
 - (void)_addVisitedLinksForItemsIfNeeded:(id)arg1;
-- (double)_ageLimitDay;
 - (void)_clearHistoryVisitsAddedAfterDate:(id)arg1 beforeDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_createHistoryStore;
 - (void)_dispatchHistoryCleared:(id)arg1;
@@ -94,14 +93,18 @@
 - (id)itemRedirectedFrom:(id)arg1 to:(id)arg2 origin:(long long)arg3 date:(id)arg4;
 - (id)itemVisitedAtURLString:(id)arg1 title:(id)arg2 timeOfVisit:(double)arg3 wasHTTPNonGet:(BOOL)arg4 wasFailure:(BOOL)arg5 increaseVisitCount:(BOOL)arg6 origin:(long long)arg7;
 - (id)itemVisitedAtURLString:(id)arg1 title:(id)arg2 wasHTTPNonGet:(BOOL)arg3 wasFailure:(BOOL)arg4 increaseVisitCount:(BOOL)arg5;
+- (id)lastSeenDateForCloudClientVersion:(unsigned long long)arg1;
 - (void)performBlockAfterHistoryHasLoaded:(CDUnknownBlockType)arg1;
 - (void)performMaintenance;
+- (void)performMaintenance:(CDUnknownBlockType)arg1;
 - (void)pruneTombstonesWithEndDatePriorToDate:(id)arg1;
 - (void)removeItemsInResponseToUserAction:(id)arg1;
 - (void)replayAndAddTombstone:(id)arg1;
 - (void)resetCloudHistoryDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)savePendingChangesBeforeTerminationWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)setLastSeenDate:(id)arg1 forCloudClientVersion:(unsigned long long)arg2;
 - (void)setServerChangeTokenData:(id)arg1;
+- (void)updateHistoryAfterSuccessfulPersistedLongLivedSaveOperationWithGeneration:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateTitle:(id)arg1 forVisit:(id)arg2;
 - (void)visitIdentifiersMatchingExistingVisits:(id)arg1 populateAssociatedVisits:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)waitUntilHistoryHasLoaded;

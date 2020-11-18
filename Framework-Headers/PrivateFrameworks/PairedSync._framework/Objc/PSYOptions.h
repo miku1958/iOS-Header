@@ -19,6 +19,7 @@
     unsigned long long _terminationJobCount;
     NSArray *_testInputs;
     NSArray *_jobs;
+    unsigned long long _syncSessionType;
 }
 
 @property (copy, nonatomic) NSURL *activityInfoDirectory; // @synthesize activityInfoDirectory=_activityInfoDirectory;
@@ -26,6 +27,7 @@
 @property (copy, nonatomic) NSArray *jobs; // @synthesize jobs=_jobs;
 @property (nonatomic, getter=shouldResetDeviceSyncState) BOOL resetDeviceSyncState; // @synthesize resetDeviceSyncState=_resetDeviceSyncState;
 @property (nonatomic, getter=shouldResumePendingJobs) BOOL resumePendingJobs; // @synthesize resumePendingJobs=_resumePendingJobs;
+@property (nonatomic) unsigned long long syncSessionType; // @synthesize syncSessionType=_syncSessionType;
 @property (nonatomic) unsigned long long terminationJobCount; // @synthesize terminationJobCount=_terminationJobCount;
 @property (copy, nonatomic) NSArray *testInputs; // @synthesize testInputs=_testInputs;
 

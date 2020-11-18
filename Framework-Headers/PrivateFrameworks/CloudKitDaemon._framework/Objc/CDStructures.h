@@ -37,10 +37,6 @@ struct z_stream_s {
 
 #pragma mark Typedef'd Structures
 
-typedef struct {
-    unsigned int _field1[8];
-} CDStruct_6ad76789;
-
 // Ambiguous groups
 typedef struct {
     unsigned int changeType:1;

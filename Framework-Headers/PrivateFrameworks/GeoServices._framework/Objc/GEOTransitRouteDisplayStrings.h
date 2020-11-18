@@ -15,6 +15,8 @@
     NSString *_detailTimeFormatted;
     GEOFormattedString *_duration;
     GEOFormattedString *_durationList;
+    GEOFormattedString *_fareErrorMessage;
+    GEOFormattedString *_overviewSubtitle;
     GEOFormattedString *_planningDescription;
     GEOFormattedString *_serviceGap;
 }
@@ -22,11 +24,15 @@
 @property (strong, nonatomic) NSString *detailTimeFormatted; // @synthesize detailTimeFormatted=_detailTimeFormatted;
 @property (strong, nonatomic) GEOFormattedString *duration; // @synthesize duration=_duration;
 @property (strong, nonatomic) GEOFormattedString *durationList; // @synthesize durationList=_durationList;
+@property (strong, nonatomic) GEOFormattedString *fareErrorMessage; // @synthesize fareErrorMessage=_fareErrorMessage;
 @property (readonly, nonatomic) BOOL hasDetailTimeFormatted;
 @property (readonly, nonatomic) BOOL hasDuration;
 @property (readonly, nonatomic) BOOL hasDurationList;
+@property (readonly, nonatomic) BOOL hasFareErrorMessage;
+@property (readonly, nonatomic) BOOL hasOverviewSubtitle;
 @property (readonly, nonatomic) BOOL hasPlanningDescription;
 @property (readonly, nonatomic) BOOL hasServiceGap;
+@property (strong, nonatomic) GEOFormattedString *overviewSubtitle; // @synthesize overviewSubtitle=_overviewSubtitle;
 @property (strong, nonatomic) GEOFormattedString *planningDescription; // @synthesize planningDescription=_planningDescription;
 @property (strong, nonatomic) GEOFormattedString *serviceGap; // @synthesize serviceGap=_serviceGap;
 

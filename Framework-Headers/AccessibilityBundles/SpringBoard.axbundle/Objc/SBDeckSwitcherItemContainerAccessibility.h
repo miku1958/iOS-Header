@@ -24,6 +24,7 @@
 - (id)_accessibilityScrollStatus;
 - (BOOL)_accessibilityScrollToVisible;
 - (id)_axRetrieveDelegate;
+- (void)_handlePageViewTap:(id)arg1;
 - (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityCustomActions;
 - (id)accessibilityHint;

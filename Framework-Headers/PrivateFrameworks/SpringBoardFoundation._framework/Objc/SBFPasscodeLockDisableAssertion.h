@@ -4,20 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSString, SBFWeakReference;
+@class NSString, SBFDeviceLockController;
 
 @interface SBFPasscodeLockDisableAssertion : NSObject
 {
     NSString *_identifier;
     int _type;
-    SBFWeakReference *_weakController;
+    SBFDeviceLockController *_controller;
+    BOOL _invalidated;
 }
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 - (id)initWithIdentifier:(id)arg1 type:(int)arg2 withController:(id)arg3;
+- (void)invalidate;
 - (BOOL)isValid;
 - (int)type;
 

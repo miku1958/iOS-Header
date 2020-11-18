@@ -30,7 +30,7 @@
 @property (readonly, nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 
 - (void).cxx_destruct;
-- (id)_maxRowIDInDatabase;
+- (id)_maxRowIDInDatabaseWithError:(id *)arg1;
 - (void)_queue_samplesWereRemovedWithAnchor:(id)arg1;
 - (BOOL)_queue_shouldAcceptUpdates;
 - (BOOL)_queue_shouldAccumulateUpdates;
@@ -39,7 +39,7 @@
 - (BOOL)_shouldObserveOnPause;
 - (id)initWithQueryUUID:(id)arg1 dataObject:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 healthDaemon:(id)arg6;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
-- (void)samplesOfTypeWereRemoved:(id)arg1 anchor:(id)arg2;
+- (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 
 @end
 

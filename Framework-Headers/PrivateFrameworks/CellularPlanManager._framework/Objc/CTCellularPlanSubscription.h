@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CellularPlanManager/NSCopying-Protocol.h>
 #import <CellularPlanManager/NSSecureCoding-Protocol.h>
@@ -34,7 +34,7 @@
 @property (readonly, nonatomic) BOOL autoRenew; // @synthesize autoRenew=_autoRenew;
 @property (readonly, nonatomic) double billingEndDate; // @synthesize billingEndDate=_billingEndDate;
 @property (readonly, nonatomic) double billingStartDate; // @synthesize billingStartDate=_billingStartDate;
-@property (readonly, nonatomic) NSString *carrierName; // @synthesize carrierName=_carrierName;
+@property (nonatomic) NSString *carrierName; // @synthesize carrierName=_carrierName;
 @property (readonly, nonatomic) NSArray *dataUsage; // @synthesize dataUsage=_dataUsage;
 @property (readonly, nonatomic) NSArray *homeCountryList; // @synthesize homeCountryList=_homeCountryList;
 @property (readonly, nonatomic) NSString *iccid; // @synthesize iccid=_iccid;

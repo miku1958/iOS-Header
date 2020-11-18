@@ -10,11 +10,12 @@
 #import <DACalDAV/CalDAVCalendarPropertyRefreshDelegate-Protocol.h>
 #import <DACalDAV/CalDAVCalendarSyncDelegate-Protocol.h>
 
-@class CalDAVRefreshContext, CalDiagAccountSync, MobileCalDAVAccount, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
+@class CalDAVRefreshContext, CalDiagAccountSync, DATransaction, MobileCalDAVAccount, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_group;
 
 @interface MobileCalDAVAccountRefreshActor : NSObject <CalDAVAccountPropertyRefreshDelegate, CalDAVCalendarPropertyRefreshDelegate, CalDAVCalendarSyncDelegate>
 {
+    DATransaction *_transaction;
     BOOL _shouldCancel;
     BOOL _didFinish;
     BOOL _refreshing;

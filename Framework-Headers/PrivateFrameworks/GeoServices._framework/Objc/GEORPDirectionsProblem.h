@@ -12,14 +12,12 @@
 
 @interface GEORPDirectionsProblem : PBCodable <NSCopying>
 {
-    CDStruct_ff5c68d7 *_problematicRouteIndexs;
-    unsigned long long _problematicRouteIndexsCount;
-    unsigned long long _problematicRouteIndexsSpace;
     NSMutableArray *_clientSuggestedRoutes;
     NSData *_directionsResponseId;
     GEORPUserSearchInput *_endWaypoint;
     NSData *_overviewScreenshotImageData;
     unsigned int _problematicLineIndex;
+    NSMutableArray *_problematicRouteIndexs;
     unsigned int _problematicStepIndex;
     GEORPUserSearchInput *_startWaypoint;
     struct {
@@ -39,13 +37,12 @@
 @property (readonly, nonatomic) BOOL hasStartWaypoint;
 @property (strong, nonatomic) NSData *overviewScreenshotImageData; // @synthesize overviewScreenshotImageData=_overviewScreenshotImageData;
 @property (nonatomic) unsigned int problematicLineIndex; // @synthesize problematicLineIndex=_problematicLineIndex;
-@property (readonly, nonatomic) CDStruct_ff5c68d7 *problematicRouteIndexs;
-@property (readonly, nonatomic) unsigned long long problematicRouteIndexsCount;
+@property (strong, nonatomic) NSMutableArray *problematicRouteIndexs; // @synthesize problematicRouteIndexs=_problematicRouteIndexs;
 @property (nonatomic) unsigned int problematicStepIndex; // @synthesize problematicStepIndex=_problematicStepIndex;
 @property (strong, nonatomic) GEORPUserSearchInput *startWaypoint; // @synthesize startWaypoint=_startWaypoint;
 
 - (void)addClientSuggestedRoute:(id)arg1;
-- (void)addProblematicRouteIndex:(CDStruct_ff5c68d7)arg1;
+- (void)addProblematicRouteIndex:(id)arg1;
 - (void)clearClientSuggestedRoutes;
 - (void)clearProblematicRouteIndexs;
 - (id)clientSuggestedRouteAtIndex:(unsigned long long)arg1;
@@ -58,9 +55,9 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
-- (CDStruct_ff5c68d7)problematicRouteIndexAtIndex:(unsigned long long)arg1;
+- (id)problematicRouteIndexAtIndex:(unsigned long long)arg1;
+- (unsigned long long)problematicRouteIndexsCount;
 - (BOOL)readFrom:(id)arg1;
-- (void)setProblematicRouteIndexs:(CDStruct_ff5c68d7 *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <PBBridgeSupport/PBBridgeReportScannerDelegate-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSNumber, NSString;
 @protocol PBBridgeReportControllerDelegate;
 
 @interface PBBridgeReportController : UINavigationController <PBBridgeReportScannerDelegate>
@@ -18,6 +18,7 @@
     NSString *_radarTitle;
     NSString *_componentName;
     NSString *_componentVersion;
+    NSNumber *_componentID;
     NSString *_companionDescriptionString;
     NSArray *_attachmentFilepaths;
     NSString *_scannedWatchDescriptionString;
@@ -28,6 +29,7 @@
 @property (strong, nonatomic) NSArray *attachmentFilepaths; // @synthesize attachmentFilepaths=_attachmentFilepaths;
 @property (copy, nonatomic) NSString *companionBuildVersion; // @synthesize companionBuildVersion=_companionBuildVersion;
 @property (copy, nonatomic) NSString *companionDescriptionString; // @synthesize companionDescriptionString=_companionDescriptionString;
+@property (copy, nonatomic) NSNumber *componentID; // @synthesize componentID=_componentID;
 @property (copy, nonatomic) NSString *componentName; // @synthesize componentName=_componentName;
 @property (copy, nonatomic) NSString *componentVersion; // @synthesize componentVersion=_componentVersion;
 @property (readonly, copy) NSString *debugDescription;

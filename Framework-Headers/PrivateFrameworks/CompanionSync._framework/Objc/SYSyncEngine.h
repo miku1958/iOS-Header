@@ -19,11 +19,12 @@
 @property (readonly, nonatomic) BOOL buffersSessions;
 @property (readonly, nonatomic) BOOL isInSession;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (weak, nonatomic) id<SYSyncEngineResponder> responder; // @synthesize responder=_responder;
+@property (weak, nonatomic) id<SYSyncEngineResponder> responder;
 @property (readonly, weak, nonatomic) SYService *service; // @synthesize service=_service;
 
 - (void).cxx_destruct;
 - (void)beginSession;
+- (id)cancelMessagesReturningFailures:(id)arg1;
 - (void)endSession;
 - (void)enqueueSyncRequest:(id)arg1 withMessageID:(unsigned short)arg2 priority:(long long)arg3 options:(id)arg4 userContext:(id)arg5 callback:(CDUnknownBlockType)arg6;
 - (id)initWithService:(id)arg1 queue:(id)arg2;

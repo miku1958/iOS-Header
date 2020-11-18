@@ -10,10 +10,14 @@
 
 @interface NEFlowMetaData : NSObject
 {
+    BOOL _fastOpenRequested;
+    BOOL _multipathRequested;
     NSData *_sourceAppUniqueIdentifier;
     NSString *_sourceAppSigningIdentifier;
 }
 
+@property (readonly) BOOL fastOpenRequested; // @synthesize fastOpenRequested=_fastOpenRequested;
+@property (readonly) BOOL multipathRequested; // @synthesize multipathRequested=_multipathRequested;
 @property (readonly) NSString *sourceAppSigningIdentifier; // @synthesize sourceAppSigningIdentifier=_sourceAppSigningIdentifier;
 @property (readonly) NSData *sourceAppUniqueIdentifier; // @synthesize sourceAppUniqueIdentifier=_sourceAppUniqueIdentifier;
 

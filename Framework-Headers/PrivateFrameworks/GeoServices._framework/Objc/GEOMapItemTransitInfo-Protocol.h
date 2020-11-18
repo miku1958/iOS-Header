@@ -7,6 +7,7 @@
 #import <GeoServices/GEOMapItemTransitSchedule-Protocol.h>
 
 @class NSArray, NSString;
+@protocol GEOTransitSystem;
 
 @protocol GEOMapItemTransitInfo <GEOMapItemTransitSchedule>
 
@@ -21,5 +22,6 @@
 @property (readonly, nonatomic) NSArray *systems;
 @property (readonly, nonatomic) unsigned long long systemsCount;
 
+- (NSArray *)linesForSystem:(id<GEOTransitSystem>)arg1;
 @end
 

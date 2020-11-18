@@ -44,7 +44,7 @@
 - (id)_accessibilitySortedElementsWithin;
 - (id)_accessibilityTextOperations;
 - (id)_accessibilityTextViewTextOperationResponder;
-- (id)_remoteElementWithAttribute:(int)arg1;
+- (id)_remoteElementWithAttribute:(int)arg1 limitToRemoteSubviews:(BOOL)arg2;
 - (id)accessibilityContainerElements;
 - (struct CGRect)accessibilityFrame;
 - (void)dealloc;

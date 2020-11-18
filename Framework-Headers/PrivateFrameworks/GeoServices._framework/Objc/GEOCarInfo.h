@@ -13,15 +13,19 @@
 @interface GEOCarInfo : PBCodable <NSCopying>
 {
     CDStruct_af817366 _screenResolution;
+    int _deviceConnection;
     int _interactionModel;
     NSString *_manufacturer;
     NSString *_model;
     struct {
         unsigned int screenResolution:1;
+        unsigned int deviceConnection:1;
         unsigned int interactionModel:1;
     } _has;
 }
 
+@property (nonatomic) int deviceConnection; // @synthesize deviceConnection=_deviceConnection;
+@property (nonatomic) BOOL hasDeviceConnection;
 @property (nonatomic) BOOL hasInteractionModel;
 @property (readonly, nonatomic) BOOL hasManufacturer;
 @property (readonly, nonatomic) BOOL hasModel;

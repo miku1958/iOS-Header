@@ -15,6 +15,8 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)accessibilityElementsHidden;
 - (id)accessibilityLabel;
+- (unsigned long long)accessibilityTraits;
+- (id)initWithStyle:(long long)arg1 cell:(id)arg2;
 - (BOOL)isAccessibilityElement;
 - (void)updateWithResult:(id)arg1;
 

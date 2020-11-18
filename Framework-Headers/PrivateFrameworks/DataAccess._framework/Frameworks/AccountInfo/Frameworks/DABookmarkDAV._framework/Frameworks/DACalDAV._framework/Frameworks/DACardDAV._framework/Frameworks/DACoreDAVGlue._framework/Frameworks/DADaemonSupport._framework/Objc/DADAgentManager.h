@@ -42,6 +42,7 @@
 - (BOOL)_systemMayNowBeReady;
 - (id)accountWithAccountID:(id)arg1;
 - (id)accountWithAccountID:(id)arg1 andClassName:(id)arg2;
+- (id)activeAccountBundleIDs;
 - (void)addPendingAccountSetup;
 - (void)agentHasStoppedMonitoring:(id)arg1;
 - (id)agentWithAccountID:(id)arg1;
@@ -50,13 +51,16 @@
 - (id)currentPolicyKeyForAccount:(id)arg1;
 - (BOOL)dadRemoveStoresForAccountWithID:(id)arg1;
 - (void)dealloc;
+- (void)disableActiveSync;
 - (void)disableDaemon;
 - (void)disableMonitoringAgents;
+- (void)enableActiveSync;
 - (void)enableDaemon;
 - (void)enableMonitoringAgents;
 - (void)getStatusReportDictsWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)handleURLString:(id)arg1;
 - (BOOL)hasActiveAccounts;
+- (BOOL)hasEASAccountConfigured;
 - (BOOL)hasPendingAccountSetup;
 - (id)init;
 - (void)loadAgents;
@@ -74,6 +78,7 @@
 - (id)stateString;
 - (BOOL)stopMonitoringAccountID:(id)arg1 folderIDs:(id)arg2;
 - (BOOL)suspendMonitoringAccountID:(id)arg1 folderIDs:(id)arg2;
+- (void)syncAllFoldersForAllAccounts;
 - (BOOL)updateContentsOfAllFoldersForAccountID:(id)arg1 andDataclasses:(long long)arg2 isUserRequested:(BOOL)arg3;
 - (BOOL)updateContentsOfFolders:(id)arg1 forAccountID:(id)arg2 andDataclasses:(long long)arg3 isUserRequested:(BOOL)arg4;
 - (BOOL)updateFolderListForAccountID:(id)arg1 andDataclasses:(long long)arg2 requireChangedFolders:(BOOL)arg3 isUserRequested:(BOOL)arg4;

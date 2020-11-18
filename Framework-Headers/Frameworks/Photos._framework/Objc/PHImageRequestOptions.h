@@ -14,8 +14,9 @@
     BOOL _synchronous;
     BOOL _memoryCachingAllowed;
     BOOL _deliveryFirstResultAsynchronously;
-    BOOL _degradedFormatPreferJPEG;
     BOOL _allowPlaceholder;
+    BOOL _allowSecondaryOpportunisticImage;
+    int _requestID;
     long long _version;
     long long _deliveryMode;
     long long _resizeMode;
@@ -30,9 +31,9 @@
 }
 
 @property (nonatomic) BOOL allowPlaceholder; // @synthesize allowPlaceholder=_allowPlaceholder;
+@property (nonatomic) BOOL allowSecondaryOpportunisticImage; // @synthesize allowSecondaryOpportunisticImage=_allowSecondaryOpportunisticImage;
 @property (nonatomic) double aspectRatioHint; // @synthesize aspectRatioHint=_aspectRatioHint;
 @property (copy, nonatomic) CDUnknownBlockType cachingCompletedHandler; // @synthesize cachingCompletedHandler=_cachingCompletedHandler;
-@property (nonatomic) BOOL degradedFormatPreferJPEG; // @synthesize degradedFormatPreferJPEG=_degradedFormatPreferJPEG;
 @property (nonatomic) BOOL deliveryFirstResultAsynchronously; // @synthesize deliveryFirstResultAsynchronously=_deliveryFirstResultAsynchronously;
 @property (nonatomic) long long deliveryMode; // @synthesize deliveryMode=_deliveryMode;
 @property (nonatomic) double demoteFactor; // @synthesize demoteFactor=_demoteFactor;
@@ -43,6 +44,7 @@
 @property (nonatomic) struct CGRect normalizedCropRect; // @synthesize normalizedCropRect=_normalizedCropRect;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property (nonatomic) long long rank; // @synthesize rank=_rank;
+@property (nonatomic) int requestID; // @synthesize requestID=_requestID;
 @property (nonatomic) long long resizeMode; // @synthesize resizeMode=_resizeMode;
 @property (nonatomic, getter=isSynchronous) BOOL synchronous; // @synthesize synchronous=_synchronous;
 @property (nonatomic) long long version; // @synthesize version=_version;
@@ -52,6 +54,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)init;
+- (int)requestIDOrNextIfInvalid;
 
 @end
 

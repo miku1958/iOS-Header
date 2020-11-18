@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/HDAchievementEngineDelegate-Protocol.h>
 
-@class HKActivityCache, NSArray, NSCalendar, NSString;
+@class HKActivitySummary, NSArray, NSCalendar, NSString;
 @protocol HDHealthDaemon, OS_dispatch_queue;
 
 @interface HDAchievementDoctor : NSObject <HDAchievementEngineDelegate>
@@ -16,8 +16,8 @@
     id<HDHealthDaemon> _healthDaemon;
     NSObject<OS_dispatch_queue> *_queue;
     NSCalendar *_calendar;
-    HKActivityCache *_currentActivityCache;
-    HKActivityCache *_yesterdayActivityCache;
+    HKActivitySummary *_currentActivitySummary;
+    HKActivitySummary *_yesterdayActivitySummary;
     NSArray *_workouts;
     NSArray *_workoutEndDates;
 }
@@ -31,16 +31,15 @@
 - (void).cxx_destruct;
 - (id)_achievementsGroupedByActivityCacheIndex:(id)arg1;
 - (id)_fetchAchievementsWithError:(id *)arg1;
-- (id)_fetchActivityCachesOrderedByCacheIndexWithError:(id *)arg1;
-- (id)_fetchAppleWatchSourcePersistentIDs;
+- (id)_fetchActivitySummariesOrderedByCacheIndexWithError:(id *)arg1;
 - (id)_fetchWorkoutsSortedByEndDateWithError:(id *)arg1;
-- (BOOL)_isActivityCache:(id)arg1 oneDayAfterActivityCache:(id)arg2;
-- (id)_newEmptyActivityCacheWithStartDate:(id)arg1 startDateComponents:(id)arg2 calorieGoal:(id)arg3;
-- (id)_queue_detectAchievementsForActivityCaches:(id)arg1 workouts:(id)arg2;
-- (id)_queue_detectMissingAchievementsWithError:(id *)arg1;
+- (BOOL)_isActivitySummary:(id)arg1 oneDayAfterActivitySummary:(id)arg2;
+- (id)_newEmptyActivitySummaryWithStartDate:(id)arg1 startDateComponents:(id)arg2 calorieGoal:(id)arg3;
+- (id)_queue_detectAchievementsForActivitySummaries:(id)arg1 workouts:(id)arg2 getResultingKeyValues:(id *)arg3;
+- (BOOL)_queue_detectMissingAchievements:(id *)arg1 resultingKeyValues:(id *)arg2 error:(id *)arg3;
 - (id)_queue_findExpectedAchievements:(id)arg1 missingFromAchievements:(id)arg2;
-- (BOOL)_queue_saveMissingAchievements:(id)arg1 error:(id *)arg2;
-- (long long)activityCacheIndexToday;
+- (BOOL)_queue_saveMissingAchievements:(id)arg1 keyValues:(id)arg2 error:(id *)arg3;
+- (long long)activitySummaryIndexToday;
 - (double)briskMinutesToday;
 - (double)briskMinutesYesterday;
 - (double)caloriesBurnedToday;
@@ -51,8 +50,8 @@
 - (id)init;
 - (id)initWithHealthDaemon:(id)arg1 targetQueue:(id)arg2;
 - (unsigned long long)numberOfSessionsCompletedAfterDate:(id)arg1 beforeDate:(id)arg2 minimumSessionDuration:(double)arg3;
-- (void)runAchievementsFixupAsDryRun:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)sessionsEndingAfterDate:(id)arg1;
+- (void)runAchievementsFixupAsDryRun:(BOOL)arg1 persistingResultingKeyValues:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)sessionsEndingAfterAnchor:(long long)arg1 newAnchor:(long long *)arg2;
 - (unsigned long long)standingHoursToday;
 - (unsigned long long)standingHoursYesterday;
 - (unsigned long long)stepsTakenToday;

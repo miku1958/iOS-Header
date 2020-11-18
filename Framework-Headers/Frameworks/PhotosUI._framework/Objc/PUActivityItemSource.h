@@ -10,7 +10,7 @@
 #import <PhotosUI/UIActivityItemDeferredSource-Protocol.h>
 #import <PhotosUI/UIActivityItemSource-Protocol.h>
 
-@class NSDictionary, NSString, NSURL, PHAsset, PLVideoRemaker, _PUActivityItemSourceOperation;
+@class NSArray, NSDictionary, NSString, NSURL, PFColorConverter, PFSharingRemaker, PHAsset, PLVideoRemaker, _PUActivityItemSourceOperation;
 
 @interface PUActivityItemSource : NSObject <UIActivityItemDeferredSource, UIActivityItemApplicationExtensionSource, UIActivityItemSource>
 {
@@ -20,6 +20,9 @@
     PLVideoRemaker *_remaker;
     CDUnknownBlockType _remakerCompletionHandler;
     id _strongSelf;
+    PFSharingRemaker *_photoRemaker;
+    PFColorConverter *_irisRemaker;
+    NSArray *_nonLocalAssetsActivities;
     BOOL _useStillImage;
     int __imageManagerImageRequestID;
     int __imageManagerVideoRequestID;
@@ -33,13 +36,17 @@
     NSURL *__assetsLibraryURL;
     NSURL *__assetURL;
     NSURL *__videoComplementAssetURL;
+    NSURL *__photoRemakerURL;
+    NSURL *__irisRemakerURL;
 }
 
 @property (strong, setter=_setAssetURL:) NSURL *_assetURL; // @synthesize _assetURL=__assetURL;
 @property (strong, setter=_setAssetsLibraryURL:) NSURL *_assetsLibraryURL; // @synthesize _assetsLibraryURL=__assetsLibraryURL;
 @property (setter=_setImageManagerImageRequestID:) int _imageManagerImageRequestID; // @synthesize _imageManagerImageRequestID=__imageManagerImageRequestID;
 @property (setter=_setImageManagerVideoRequestID:) int _imageManagerVideoRequestID; // @synthesize _imageManagerVideoRequestID=__imageManagerVideoRequestID;
+@property (strong, setter=_setIrisRemakerURL:) NSURL *_irisRemakerURL; // @synthesize _irisRemakerURL=__irisRemakerURL;
 @property (strong, setter=_setPasteboardRepresentation:) NSDictionary *_pasteboardRepresentation; // @synthesize _pasteboardRepresentation=__pasteboardRepresentation;
+@property (strong, setter=_setPhotoRemakerURL:) NSURL *_photoRemakerURL; // @synthesize _photoRemakerURL=__photoRemakerURL;
 @property (setter=_setRemakerWasCancelled:) long long _remakerWasCancelled; // @synthesize _remakerWasCancelled=__remakerWasCancelled;
 @property (strong, setter=_setVideoComplementAssetURL:) NSURL *_videoComplementAssetURL; // @synthesize _videoComplementAssetURL=__videoComplementAssetURL;
 @property (strong, setter=_setVideoRemakerURL:) NSURL *_videoRemakerURL; // @synthesize _videoRemakerURL=__videoRemakerURL;
@@ -54,9 +61,13 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL useStillImage; // @synthesize useStillImage=_useStillImage;
 
++ (BOOL)_wantsIrisRemakerURLForActivityType:(id)arg1;
++ (BOOL)_wantsPhotoRemakerURLForActivityType:(id)arg1;
 + (BOOL)supportsPhotoIrisBundleForActivityType:(id)arg1;
 - (void).cxx_destruct;
 - (void)_cancelVideoRemaking:(id)arg1;
+- (void)_cleanupIrisRemaker;
+- (void)_cleanupPhotoRemaker;
 - (void)_cleanupRemaker;
 - (id)_createTempPhotoIrisBundle;
 - (void)_fetchImageWithProgressHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -66,7 +77,10 @@
 - (id)_newOperationForActivityType:(id)arg1;
 - (id)_newPasteboardRepresentationForURL:(id)arg1;
 - (void)_operation:(id)arg1 prepareItemForActivityType:(id)arg2;
-- (void)_removeTempFile;
+- (void)_removeTempFiles;
+- (void)_removeTempIrisVideoFile;
+- (void)_removeTempPhotoFile;
+- (void)_removeTempVideoFile;
 - (BOOL)_wantsAssetsLibraryURLForActivityType:(id)arg1;
 - (BOOL)_wantsLocalAssetsForActivityType:(id)arg1;
 - (BOOL)_wantsPhotoIrisBundleForActivityType:(id)arg1;
@@ -81,6 +95,8 @@
 - (void)cancelRemaking;
 - (void)dealloc;
 - (id)initWithAsset:(id)arg1 useStillImage:(BOOL)arg2;
+- (void)remakeIrisWithURL:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)remakePhotoWithURL:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)remakeVideoWithTrimStartTime:(double)arg1 endTime:(double)arg2 forMail:(BOOL)arg3 progressHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)runWithActivityType:(id)arg1;
 - (void)videoRemakerDidBeginRemaking:(id)arg1;

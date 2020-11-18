@@ -27,11 +27,11 @@
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_internalQueue_removeStatusBarStyleOverridesAssertionWithIdentifier:(id)arg1 invalidate:(BOOL)arg2;
 - (void)_reactivateAssertions;
 - (void)_tearDownXPCConnection;
 - (void)addStatusBarStyleOverridesAssertion:(id)arg1 withHandler:(CDUnknownBlockType)arg2 onQueue:(id)arg3;
-- (void)dealloc;
 - (id)init;
 - (void)invalidateStatusBarStyleOverridesAssertionsWithIdentifiers:(id)arg1;
 - (void)removeStatusBarStyleOverridesAssertion:(id)arg1;

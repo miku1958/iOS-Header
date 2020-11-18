@@ -22,7 +22,9 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (weak, nonatomic) id<BSSettingDescriptionProvider> descriptionProvider; // @synthesize descriptionProvider=_descriptionProvider;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isEmpty;
 @property (readonly) Class superclass;
 
 + (id)_newHashTableWithInitialCapacity:(unsigned long long)arg1;

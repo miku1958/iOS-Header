@@ -38,8 +38,8 @@
 + (unsigned long long)_activationModeForString:(id)arg1;
 + (long long)_iconTypeForString:(id)arg1;
 + (id)staticShortcutItemWithDictionary:(id)arg1 localizationHandler:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

@@ -14,19 +14,19 @@
 @interface PHCollectionListChangeRequest : NSObject <PHInsertChangeRequest, PHUpdateChangeRequest>
 {
     PHCollectionList *_originalCollectionList;
-    BOOL _entitled;
+    BOOL _clientEntitled;
     NSString *_clientName;
     int _clientProcessID;
     PHChangeRequestHelper *_helper;
     PHCollectionChangeRequestHelper *_collectionsHelper;
 }
 
+@property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled; // @synthesize clientEntitled=_clientEntitled;
 @property (readonly, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property (readonly, nonatomic) int clientProcessID; // @synthesize clientProcessID=_clientProcessID;
 @property (readonly, nonatomic) PHCollectionChangeRequestHelper *collectionsHelper; // @synthesize collectionsHelper=_collectionsHelper;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic, getter=isEntitled) BOOL entitled; // @synthesize entitled=_entitled;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PHChangeRequestHelper *helper; // @synthesize helper=_helper;
 @property (readonly, nonatomic) NSString *managedEntityName;
@@ -58,7 +58,7 @@
 - (void)encodeToXPCDict:(id)arg1;
 - (id)initForNewObject;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
-- (id)initWithXPCDict:(id)arg1 entitled:(BOOL)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
+- (id)initWithXPCDict:(id)arg1 clientEntitled:(BOOL)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
 - (void)insertChildCollection:(id)arg1 inChildCollectionsAtIndex:(unsigned long long)arg2;
 - (void)insertChildCollections:(id)arg1 atIndexes:(id)arg2;
 - (void)moveChildCollectionsAtIndexes:(id)arg1 toIndex:(unsigned long long)arg2;

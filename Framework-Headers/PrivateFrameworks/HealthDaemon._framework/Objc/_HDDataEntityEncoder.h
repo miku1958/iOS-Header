@@ -4,21 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HealthDaemon/HDEncoder.h>
+#import <HealthDaemon/HDEntityEncoder.h>
 
-@class HDMetadataValueStatement;
+@class HDDataProvenanceCache, HDMetadataValueStatement;
 
-@interface _HDDataEntityEncoder : HDEncoder
+@interface _HDDataEntityEncoder : HDEntityEncoder
 {
     HDMetadataValueStatement *_metadataValueStatement;
+    HDDataProvenanceCache *_dataProvenanceCache;
 }
 
+@property (strong, nonatomic) HDDataProvenanceCache *dataProvenanceCache; // @synthesize dataProvenanceCache=_dataProvenanceCache;
 @property (strong, nonatomic) HDMetadataValueStatement *metadataValueStatement; // @synthesize metadataValueStatement=_metadataValueStatement;
 
 - (void).cxx_destruct;
-- (id)codableRepresentationOfEntity:(id)arg1 collection:(id)arg2 row:(struct HDSQLiteRow *)arg3;
+- (void)applyPropertiesToObject:(id)arg1 persistentID:(long long)arg2 row:(struct HDSQLiteRow *)arg3;
+- (id)codableRepresentationForPersistentID:(long long)arg1 row:(struct HDSQLiteRow *)arg2 collection:(id)arg3;
 - (void)finish;
-- (id)initForHealthDaemon:(id)arg1 database:(id)arg2;
+- (id)initWithHealthEntityClass:(Class)arg1 healthDaemon:(id)arg2 database:(id)arg3 purpose:(long long)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
+- (id)objectForPersistentID:(long long)arg1 row:(struct HDSQLiteRow *)arg2 error:(id *)arg3;
 - (id)orderedProperties;
 
 @end

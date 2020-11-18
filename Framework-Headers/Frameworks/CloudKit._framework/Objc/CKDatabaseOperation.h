@@ -16,6 +16,7 @@
 @property (strong, nonatomic) CKDatabase *database; // @synthesize database=_database;
 
 - (void).cxx_destruct;
+- (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
 
 @end

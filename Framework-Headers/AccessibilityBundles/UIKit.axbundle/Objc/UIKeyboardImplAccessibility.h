@@ -19,9 +19,10 @@
 - (void)acceptCandidate:(id)arg1;
 - (BOOL)acceptWord:(id)arg1 firstDelete:(unsigned long long)arg2 forInput:(id)arg3;
 - (BOOL)autocorrectSpellingEnabled;
-- (BOOL)callShouldDeleteWithWordCountForRapidDelete:(int)arg1 characterCountForRapidDelete:(int)arg2;
+- (void)completeDeleteFromInput;
 - (void)completeHandleKeyEvent:(id)arg1;
 - (void)dismissKeyboard;
+- (void)handleKeyboardInput:(id)arg1 executionContext:(id)arg2;
 - (void)hideKeyboard;
 - (void)insertText:(id)arg1;
 - (void)setInputMode:(id)arg1 userInitiated:(BOOL)arg2;

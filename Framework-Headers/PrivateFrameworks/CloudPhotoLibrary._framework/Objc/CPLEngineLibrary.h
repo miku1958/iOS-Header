@@ -8,7 +8,7 @@
 
 #import <CloudPhotoLibrary/CPLAbstractObject-Protocol.h>
 
-@class CPLConfiguration, CPLEngineScheduler, CPLEngineStore, CPLEngineSyncManager, CPLEngineSystemMonitor, CPLEngineTransport, CPLPlatformObject, CPLStatistics, CPLStatus, NSArray, NSDate, NSError, NSHashTable, NSString, NSURL;
+@class CPLConfiguration, CPLEngineScheduler, CPLEngineStore, CPLEngineSyncManager, CPLEngineSystemMonitor, CPLEngineTransport, CPLPlatformObject, CPLStatus, NSArray, NSDate, NSError, NSHashTable, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface CPLEngineLibrary : NSObject <CPLAbstractObject>
@@ -20,6 +20,7 @@
     CPLStatus *_status;
     BOOL _closed;
     BOOL _totalAssetCountHasBeenCalculated;
+    NSDate *_cachedLastQuarantineCountReportDate;
     unsigned long long _totalAssetCount;
     BOOL _libraryIsCorrupted;
     CPLPlatformObject *_platformObject;
@@ -31,7 +32,6 @@
     CPLEngineScheduler *_scheduler;
     CPLEngineSyncManager *_syncManager;
     CPLEngineTransport *_transport;
-    CPLStatistics *_statistics;
     CPLEngineSystemMonitor *_systemMonitor;
     CPLConfiguration *_configuration;
 }
@@ -52,7 +52,6 @@
 @property (readonly, nonatomic) BOOL libraryIsCorrupted; // @synthesize libraryIsCorrupted=_libraryIsCorrupted;
 @property (readonly, nonatomic) CPLPlatformObject *platformObject; // @synthesize platformObject=_platformObject;
 @property (readonly, nonatomic) CPLEngineScheduler *scheduler; // @synthesize scheduler=_scheduler;
-@property (readonly, nonatomic) CPLStatistics *statistics; // @synthesize statistics=_statistics;
 @property (readonly, nonatomic) CPLEngineStore *store; // @synthesize store=_store;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) CPLEngineSyncManager *syncManager; // @synthesize syncManager=_syncManager;
@@ -64,6 +63,7 @@
 - (void)_closeNextComponent:(id)arg1 deactivate:(BOOL)arg2 lastError:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_openNextComponent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_performBlockWithLibrary:(BOOL)arg1 enumerateAttachedObjects:(CDUnknownBlockType)arg2;
+- (void)_reportQuarantineCountIfNecessaryWithLastReportDate:(id)arg1;
 - (void)_updateTotalAssetCountWithAssetCounts:(id)arg1;
 - (void)attachObject:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)closeAndDeactivate:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -83,6 +83,7 @@
 - (void)notifyAttachedObjectsUploadTaskDidStart:(id)arg1;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)reportLibraryCorrupted;
+- (void)reportQuarantineCountIfNecessary;
 - (void)reportRadar:(unsigned long long)arg1;
 - (void)reportUnsuccessfulSync;
 - (void)requestAttachedLibrary;

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (id)_localizationURLForTileKey:(struct _GEOTileKey *)arg1;
+- (int)checksumMethodForIncomingTileDataWithKey:(struct _GEOTileKey *)arg1;
 - (id)localizationURLForTileKey:(struct _GEOTileKey *)arg1;
 - (unsigned int)tileEditionForKey:(struct _GEOTileKey *)arg1;
 - (unsigned int)tileSetForKey:(const struct _GEOTileKey *)arg1;

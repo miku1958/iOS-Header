@@ -636,6 +636,13 @@ struct vector<std::__1::pair<long, double>, std::__1::allocator<std::__1::pair<l
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+} CDStruct_d2b197d1;
+
+typedef struct {
     double baseAlpha;
     double blendAlpha;
     double targetMultiple;

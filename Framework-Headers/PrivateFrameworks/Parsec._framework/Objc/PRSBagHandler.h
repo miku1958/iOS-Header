@@ -35,6 +35,7 @@
     BOOL _useGUID;
     BOOL _limitedFeedback;
     BOOL _cep_sort_of_tophits;
+    BOOL _allowStoreResults;
     BOOL _reloadSAP;
     int _version;
     id<PRSBagFetchSuccessDelegate><PRSInstalledAppsDataSourceDelegate> delegate;
@@ -113,6 +114,7 @@
 
 @property (strong, nonatomic) PRSFairPlaySAPSession *SAPSession; // @synthesize SAPSession=_SAPSession;
 @property (nonatomic) BOOL active; // @synthesize active=_active;
+@property (readonly) BOOL allowStoreResults; // @synthesize allowStoreResults=_allowStoreResults;
 @property (readonly, nonatomic) NSSet *appBlacklist; // @synthesize appBlacklist=_appBlacklist;
 @property (strong) NSMutableData *appBlacklistCollectedData; // @synthesize appBlacklistCollectedData=_appBlacklistCollectedData;
 @property (readonly) NSURL *appBlacklistURL; // @synthesize appBlacklistURL=_appBlacklistURL;
@@ -260,6 +262,7 @@
 - (void)triggerTaskWhenReady:(id)arg1;
 - (void)triggerTaskWhenReadyInternal:(id)arg1;
 - (void)updateRecentlyUsedAppIdentifiers;
+- (void)updateStoreRestrictions;
 - (void)updateWithDictionary:(id)arg1;
 
 @end

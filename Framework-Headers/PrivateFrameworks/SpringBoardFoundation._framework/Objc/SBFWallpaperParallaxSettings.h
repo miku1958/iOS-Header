@@ -17,11 +17,16 @@
 @property double overhangY; // @synthesize overhangY=_overhangY;
 @property double perspectiveTransform; // @synthesize perspectiveTransform=_perspectiveTransform;
 
++ (long long)_currentDeviceType;
 + (struct CGSize)_requiredOverhangSizeForCurrentDevice;
++ (struct CGSize)_requiredOverhangSizeForDeviceType:(long long)arg1;
 + (struct CGSize)bestWallpaperSizeForParallaxFactor:(double)arg1;
 + (struct CGSize)bestWallpaperSizeForParallaxFactor:(double)arg1 portrait:(BOOL)arg2;
++ (struct CGSize)bestWallpaperSizeForWallpaperSize:(struct CGSize)arg1 deviceType:(long long)arg2 parallaxFactor:(double)arg3 portrait:(BOOL)arg4;
 + (struct CGSize)minimumWallpaperSizeForCurrentDevice;
++ (struct CGSize)minimumWallpaperSizeForWallpaperSize:(struct CGSize)arg1 deviceType:(long long)arg2;
 + (struct CGSize)overhangSizeForCurrentDevice;
++ (struct CGSize)overhangSizeForDeviceType:(long long)arg1;
 + (id)settingsControllerModule;
 - (void)setDefaultValues;
 

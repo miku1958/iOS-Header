@@ -13,9 +13,9 @@
     NSData *_imagePNGData;
 }
 
-@property (readonly, strong, nonatomic) NSData *imagePNGData; // @synthesize imagePNGData=_imagePNGData;
+@property (readonly, nonatomic) NSData *imagePNGData; // @synthesize imagePNGData=_imagePNGData;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithImagePNGData:(id)arg1;

@@ -11,7 +11,7 @@
 #import <HomeKitDaemon/HMMessageTransport-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 
-@class HAPTimer, HMMessageDispatcher, IDSService, NSArray, NSMutableDictionary, NSMutableSet, NSString;
+@class HAPTimer, HMMessageDispatcher, IDSService, NSArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HMDIDSMessageTransport : NSObject <IDSServiceDelegate, HAPTimerDelegate, HMMessageTransport, HMIDSMessageTransport>
@@ -45,9 +45,9 @@
 @property (strong, nonatomic) IDSService *idsService; // @synthesize idsService=_idsService;
 @property (weak, nonatomic) HMMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property (strong, nonatomic) NSString *pairedCompanionDestination; // @synthesize pairedCompanionDestination=_pairedCompanionDestination;
+@property (readonly, nonatomic) NSSet *pairedWatchAddresses;
 @property (strong, nonatomic) NSString *pairedWatchDestination; // @synthesize pairedWatchDestination=_pairedWatchDestination;
 @property (strong, nonatomic) NSMutableSet *pairedWatchDeviceAddresses; // @synthesize pairedWatchDeviceAddresses=_pairedWatchDeviceAddresses;
-@property (readonly, nonatomic) NSArray *pairedWatchDevices;
 @property (strong, nonatomic) NSMutableSet *peerResidentDeviceAddresses; // @synthesize peerResidentDeviceAddresses=_peerResidentDeviceAddresses;
 @property (strong, nonatomic) NSMutableSet *peerTransientDeviceAddresses; // @synthesize peerTransientDeviceAddresses=_peerTransientDeviceAddresses;
 @property (strong, nonatomic) NSMutableDictionary *pendingResponseTimers; // @synthesize pendingResponseTimers=_pendingResponseTimers;
@@ -74,8 +74,8 @@
 - (void)_pendingResponseTimeoutFor:(id)arg1;
 - (void)_removePendingResponseTimerForTransaction:(id)arg1;
 - (void)_removePendingResponseTransaction:(id)arg1;
-- (BOOL)_rerouteDestinationIfCompanion:(id)arg1 newDestination:(id *)arg2;
-- (BOOL)_rerouteDestinationIfWatch:(id)arg1 newDestination:(id *)arg2;
+- (BOOL)_rerouteDestinationIfCompanion:(id)arg1 newDestination:(id *)arg2 isConnected:(BOOL *)arg3;
+- (BOOL)_rerouteDestinationIfWatch:(id)arg1 isConnected:(BOOL *)arg2;
 - (void)_restartPendingResponseTimerFor:(id)arg1 withReducedFactor:(unsigned long long)arg2;
 - (void)_setDestinationAddress;
 - (void)_startPendingResponseTimer:(id)arg1 responseTimeout:(double)arg2 identifier:(id)arg3;
@@ -86,8 +86,8 @@
 - (void)handleMessageWithName:(id)arg1 messageIdentifier:(id)arg2 messagePayload:(id)arg3 target:(id)arg4 destination:(id)arg5 responseTimeout:(double)arg6 responseHandler:(CDUnknownBlockType)arg7;
 - (void)handleMessageWithName:(id)arg1 messageIdentifier:(id)arg2 messagePayload:(id)arg3 target:(id)arg4 responseHandler:(CDUnknownBlockType)arg5;
 - (id)initWithIDSService:(id)arg1 proxy:(BOOL)arg2;
-- (BOOL)rerouteDestinationIfCompanion:(id)arg1 newDestination:(id *)arg2;
-- (BOOL)rerouteDestinationIfWatch:(id)arg1 newDestination:(id *)arg2;
+- (BOOL)rerouteDestinationIfCompanion:(id)arg1 newDestination:(id *)arg2 isConnected:(BOOL *)arg3;
+- (BOOL)rerouteDestinationIfWatch:(id)arg1 isConnected:(BOOL *)arg2;
 - (id)residentDevices;
 - (id)sendMessage:(id)arg1 destinations:(id)arg2 msgType:(unsigned long long)arg3 error:(id *)arg4;
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(BOOL)arg4 error:(id)arg5;
