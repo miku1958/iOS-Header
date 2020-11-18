@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIKeyboardTextSelectionGestureController : NSObject
 {
+    NSMutableArray *_deallocHandlers;
     BOOL _wasScrollingEnabled;
     BOOL _wasNestedPinchingDisabled;
     BOOL _suppressTwoFingerPan;
@@ -61,6 +62,7 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedInstance;
 - (void)_cleanupDeadGesturesIfNecessary;
+- (id)addDeallocationHandler:(CDUnknownBlockType)arg1;
 - (id)addOneFingerTextSelectionGesturesToView:(id)arg1;
 - (id)addTwoFingerTextSelectionGesturesToView:(id)arg1;
 - (BOOL)allowOneFingerDeepPress;
@@ -77,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)oneFingerForcePressShouldCancelTouchesInView;
 - (BOOL)oneFingerForcePressShouldFailWithoutForce;
 - (void)redisableEnclosingScrollViewNestedPinching;
+- (void)removeDeallocationHandler:(id)arg1;
 - (id)selectionController;
 - (void)willRemoveSelectionController;
 

@@ -26,7 +26,10 @@ __attribute__((visibility("hidden")))
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (id)_initWithNavigationController:(id)arg1 forEdge:(unsigned long long)arg2;
 - (void)_popDisableLayoutFlushingForTransition;
+- (void)_propagateBackgroundToContents;
 - (void)_pushDisableLayoutFlushingForTransition;
+- (BOOL)_shouldHideWhenScrolling;
+- (BOOL)_shouldUpdateBackground;
 - (BOOL)_supportsSpecialSearchBarTransitions;
 - (void)_updateLayoutForCurrentConfiguration;
 - (void)setBounds:(struct CGRect)arg1;

@@ -24,12 +24,14 @@ __attribute__((visibility("hidden")))
     _UINavigationControllerRefreshControlHost *_refreshControlHost;
     double _restingHeightOfRefreshControl;
     UIView *_refreshHostContainerView;
+    struct NSDirectionalEdgeInsets _layoutMargins;
 }
 
 @property (strong, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
 @property (nonatomic) unsigned long long accessoryViewHorizontalAlignment; // @synthesize accessoryViewHorizontalAlignment=_accessoryViewHorizontalAlignment;
 @property (nonatomic) BOOL alignAccessoryViewToTitleBaseline; // @synthesize alignAccessoryViewToTitleBaseline=_alignAccessoryViewToTitleBaseline;
 @property (readonly, nonatomic) _UINavigationBarLargeTitleView *contentView; // @synthesize contentView=_contentView;
+@property (nonatomic) struct NSDirectionalEdgeInsets layoutMargins; // @synthesize layoutMargins=_layoutMargins;
 @property (readonly, nonatomic) _UINavigationControllerRefreshControlHost *refreshControlHost; // @synthesize refreshControlHost=_refreshControlHost;
 @property (strong, nonatomic) UIView *refreshHostContainerView; // @synthesize refreshHostContainerView=_refreshHostContainerView;
 @property (nonatomic) double restingHeightOfRefreshControl; // @synthesize restingHeightOfRefreshControl=_restingHeightOfRefreshControl;
@@ -42,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)_cachedTitleHeightSizeAndUpdateRestingSizeForWidth:(double)arg1;
 - (struct CGRect)_contentLayoutBounds;
 - (struct CGRect)_contentLayoutBoundsUsingRestingTitleHeight:(BOOL)arg1;
-- (void)_enforceRefreshHostContainerViewOrdering;
+- (void)_enforceLayoutOrdering;
 - (void)_invalidateTitleHeightCache;
 - (double)_textHeightForSize:(struct CGSize)arg1 titleType:(long long)arg2;
 - (double)_unobstructedHeightOfRefreshControlWithFrame:(struct CGRect)arg1;

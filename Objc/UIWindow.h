@@ -310,6 +310,7 @@
 - (BOOL)_isInAWindow;
 - (BOOL)_isKeyWindowForDeferral;
 - (BOOL)_isLoweringAnchoringConstraints;
+- (BOOL)_isMainSceneSized;
 - (BOOL)_isScrollingEnabledForView:(id)arg1;
 - (BOOL)_isSecure;
 - (BOOL)_isSettingFirstResponder;

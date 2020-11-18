@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) double _navigationBarBackButtonMaximumWidth;
 @property (readonly, nonatomic) double _navigationBarContentHeight;
 @property (readonly, nonatomic) BOOL _underlayNavigationBarContent;
+@property (readonly, nonatomic) int preferredAlignment;
 
 - (void)_contentDidChange;
 - (void)_performTransition:(long long)arg1 willBeDisplayed:(BOOL)arg2;
@@ -25,5 +26,6 @@
 - (void)_setDataSource:(id<_UINavigationBarTitleViewDataSource>)arg1 navigationItem:(UINavigationItem *)arg2 titleLocation:(long long)arg3;
 - (void)_transitionCompleted:(long long)arg1 willBeDisplayed:(BOOL)arg2;
 - (void)_transitionWillBegin:(long long)arg1 willBeDisplayed:(BOOL)arg2;
+- (BOOL)_wantsTwoPartTransition;
 @end
 

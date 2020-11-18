@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)_layoutViews;
 - (struct CGSize)_minimumSizeForDismissButton;
 - (double)_resizeAnimationDuration;
+- (BOOL)_shouldDisableAvoidsKeyboard;
 - (BOOL)_shouldOccludeDuringPresentation;
 - (BOOL)_shouldPresentedViewControllerControlStatusBarAppearance;
 - (void)_subscribeToKeyboardNotifications;

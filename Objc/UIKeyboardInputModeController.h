@@ -137,7 +137,7 @@
 - (void)startConnectionForFileAtURL:(id)arg1 forInputModeIdentifier:(id)arg2;
 - (void)startDictationConnectionForFileAtURL:(id)arg1 forInputModeIdentifier:(id)arg2;
 - (void)stopDictation;
-- (id)suggestedDictationLanguageForDeviceLanguage;
+- (id)suggestedDictationLanguagesForDeviceLanguage;
 - (id)suggestedInputModesForCurrentLocale;
 - (id)suggestedInputModesForCurrentLocale:(BOOL)arg1 fallbackToDefaultInputModes:(BOOL)arg2;
 - (id)suggestedInputModesForPreferredLanguages;
@@ -148,6 +148,7 @@
 - (void)updateCurrentAndNextInputModes;
 - (void)updateCurrentInputMode:(id)arg1;
 - (void)updateDefaultInputModesIfNecessaryForIdiom;
+- (id)updateEnabledDictationLanguages:(BOOL)arg1;
 - (void)updateLastUsedInputMode:(id)arg1;
 - (BOOL)verifyKeyboardExtensionsWithApp;
 - (void)willEnterForeground:(id)arg1;

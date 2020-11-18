@@ -21,21 +21,21 @@
 
 @interface UIFieldEditor : UIScrollView <UITextInputControllerDelegate, NSLayoutManagerDelegate, NSUITextViewCommonMethods, UIKeyInputPrivate, _UITextFieldContentViewContext, UIAutoscrollContainer, UITextInput, UITextAutoscrolling, UIKeyboardInput>
 {
-    UITextInputController *_inputController;
     UITextField *_textField;
     BOOL _active;
     UIAutoscroll *_autoscroll;
-    NSTextContainer *_textContainer;
-    _UIFieldEditorLayoutManager *_layoutManager;
-    _UICascadingTextStorage *_textStorage;
     NSAttributedString *_originalAttributedString;
-    NSDictionary *_originalDefaultAttributes;
+    UITextInputController *__textInputController;
+    NSTextContainer *__textContainer;
+    _UIFieldEditorLayoutManager *__layoutManager;
+    _UICascadingTextStorage *__textStorage;
     struct {
         unsigned int delegateRespondsToFieldEditorDidChange:1;
         unsigned int delegateRespondsToShouldInsertText:1;
         unsigned int delegateRespondsToShouldReplaceWithText:1;
         unsigned int suppressScrollToSelection:1;
         unsigned int clearOnNextEdit:1;
+        unsigned int needsInvalidationAfterObscuredRangeChange:1;
     } _feFlags;
     struct UIEdgeInsets _padding;
     struct UIEdgeInsets _contentViewFontInsets;
@@ -96,6 +96,7 @@
 - (void).cxx_destruct;
 - (void)_adaptToPasscodeStyleIfNeeded;
 - (void)_applyCorrectTextContainerSize;
+- (void)_applyCorrectTextContainerSize:(id)arg1;
 - (void)_cancelObscureAllTextTimer;
 - (BOOL)_clearOnEditIfNeeded;
 - (struct UIEdgeInsets)_contentInsetsFromFonts;
@@ -104,7 +105,7 @@
 - (void)_handleObscuredTextAfterActivationChange;
 - (BOOL)_hasDictationPlaceholder;
 - (id)_inputController;
-- (void)_invalidateAfterObscuredRangeChange;
+- (void)_invalidateAfterObscuredRangeChangeIfNeeded;
 - (BOOL)_isPasscodeStyle;
 - (id)_layoutManager;
 - (void)_obscureAllText;
@@ -117,9 +118,11 @@
 - (id)_responderForBecomeFirstResponder;
 - (void)_scrollRangeToVisible:(struct _NSRange)arg1 animated:(BOOL)arg2;
 - (struct CGRect)_selectionClipRect;
+- (void)_setNeedsInvalidateAfterObscuredRangeChange;
 - (void)_setValue:(id)arg1 forTextAttribute:(id)arg2;
 - (BOOL)_shouldObscureInput;
 - (id)_textContainer;
+- (id)_textInputController;
 - (id)_textInputTraits;
 - (id)_textSelectingContainer;
 - (id)_textStorage;
@@ -155,7 +158,7 @@
 - (struct CGRect)frameForDictationResultPlaceholder:(id)arg1;
 - (BOOL)hasMarkedText;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithTextField:(id)arg1 textStorage:(id)arg2;
+- (id)initWithTextField:(id)arg1;
 - (void)insertDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2;
 - (struct _NSRange)insertFilteredText:(id)arg1;
 - (void)insertText:(id)arg1;

@@ -7,7 +7,7 @@
 #import <UIKit/UIKeyboardCandidateView_iPhone.h>
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardCandidateView_iPhone_Bar_Experimental : UIKeyboardCandidateView_iPhone
+@interface UIKeyboardCandidateView_iPhone_Bar_ExtendDown : UIKeyboardCandidateView_iPhone
 {
 }
 

@@ -38,6 +38,7 @@
     BOOL __alignLargeTitleAccessoryViewToBaseline;
     BOOL __supportsTwoLineLargeTitles;
     BOOL __backgroundHidden;
+    BOOL _useRelativeLargeTitleInsets;
     double _fontScaleAdjustment;
     NSString *_pendingTitle;
     NSArray *_leftItemSpaceList;
@@ -53,10 +54,13 @@
     UIView *__largeTitleAccessoryView;
     NSString *__weeTitle;
     UIView *__canvasView;
+    NSArray *__alternateLargeTitles;
+    struct NSDirectionalEdgeInsets _largeTitleInsets;
 }
 
 @property (copy, nonatomic, setter=_setAbbreviatedBackButtonTitles:) NSArray *_abbreviatedBackButtonTitles;
 @property (readonly, nonatomic) BOOL _alignLargeTitleAccessoryViewToBaseline; // @synthesize _alignLargeTitleAccessoryViewToBaseline=__alignLargeTitleAccessoryViewToBaseline;
+@property (strong, nonatomic) NSArray *_alternateLargeTitles; // @synthesize _alternateLargeTitles=__alternateLargeTitles;
 @property (nonatomic, setter=_setBackgroundHidden:) BOOL _backgroundHidden; // @synthesize _backgroundHidden=__backgroundHidden;
 @property (strong, nonatomic, setter=_setCanvasView:) UIView *_canvasView; // @synthesize _canvasView=__canvasView;
 @property (weak, nonatomic, setter=_setChangeObserver:) id<_UINavigationItemChangeObserver> _changeObserver; // @synthesize _changeObserver=__changeObserver;
@@ -85,6 +89,7 @@
 @property (nonatomic) BOOL hidesBackButton;
 @property (nonatomic) BOOL hidesSearchBarWhenScrolling;
 @property (nonatomic) long long largeTitleDisplayMode; // @synthesize largeTitleDisplayMode=_largeTitleDisplayMode;
+@property (nonatomic) struct NSDirectionalEdgeInsets largeTitleInsets; // @synthesize largeTitleInsets=_largeTitleInsets;
 @property (strong, nonatomic) UIBarButtonItem *leftBarButtonItem;
 @property (copy, nonatomic) NSArray *leftBarButtonItems;
 @property (nonatomic) BOOL leftItemsSupplementBackButton;
@@ -96,6 +101,7 @@
 @property (nonatomic) long long tag; // @synthesize tag=_tag;
 @property (copy, nonatomic) NSString *title;
 @property (strong, nonatomic) UIView *titleView; // @synthesize titleView=_titleView;
+@property (nonatomic) BOOL useRelativeLargeTitleInsets; // @synthesize useRelativeLargeTitleInsets=_useRelativeLargeTitleInsets;
 
 + (id)defaultFont;
 - (void).cxx_destruct;

@@ -68,8 +68,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (int)__automatic_invalidation_logic;
 - (void)__cancelAlertActionWithToken:(long long)arg1;
-- (void)__createViewController:(id)arg1 withAppearanceSerializedRepresentations:(id)arg2 legacyAppearance:(BOOL)arg3 hostAccessibilityServerPort:(id)arg4 canShowTextServices:(BOOL)arg5 replyHandler:(CDUnknownBlockType)arg6;
-- (void)__createViewController:(id)arg1 withContextToken:(id)arg2 fbsDisplays:(id)arg3 appearanceSerializedRepresentations:(id)arg4 legacyAppearance:(BOOL)arg5 traitCollection:(id)arg6 initialInterfaceOrientation:(long long)arg7 hostAccessibilityServerPort:(id)arg8 canShowTextServices:(BOOL)arg9 replyHandler:(CDUnknownBlockType)arg10;
+- (void)__createViewController:(id)arg1 withAppearanceSerializedRepresentations:(id)arg2 legacyAppearance:(BOOL)arg3 hostAccessibilityServerPort:(id)arg4 replyHandler:(CDUnknownBlockType)arg5;
+- (void)__createViewController:(id)arg1 withContextToken:(id)arg2 fbsDisplays:(id)arg3 appearanceSerializedRepresentations:(id)arg4 legacyAppearance:(BOOL)arg5 traitCollection:(id)arg6 initialInterfaceOrientation:(long long)arg7 hostAccessibilityServerPort:(id)arg8 replyHandler:(CDUnknownBlockType)arg9;
 - (void)__dimmingViewWasTapped;
 - (void)__exchangeAccessibilityPortInformation:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
 - (void)__hostDidAttachDisplay:(id)arg1;
@@ -81,7 +81,7 @@ __attribute__((visibility("hidden")))
 - (void)__hostDidPromoteFirstResponder;
 - (void)__hostDidRotateFromInterfaceOrientation:(long long)arg1 skipSelf:(BOOL)arg2;
 - (void)__hostDidSetContentOverlayInsets:(struct UIEdgeInsets)arg1 andLeftMargin:(double)arg2 rightMargin:(double)arg3;
-- (void)__hostDidSetPresentationControllerClassName:(id)arg1;
+- (void)__hostDidSetPresentationControllerClassName:(id)arg1 canShowTextServices:(BOOL)arg2;
 - (void)__hostDidUpdateAppearanceWithSerializedRepresentations:(id)arg1 originalSource:(id)arg2 legacyAppearance:(BOOL)arg3;
 - (void)__hostDidUpdateDisplay:(id)arg1;
 - (void)__hostDisablesAutomaticKeyboardBehavior:(BOOL)arg1;

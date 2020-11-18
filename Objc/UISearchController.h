@@ -26,6 +26,7 @@
     BOOL _shouldFocusResults;
     UITapGestureRecognizer *_backButtonDismissGestureRecognizer;
     UITapGestureRecognizer *_doneButtonGestureRecognizer;
+    long long _lastKnownInterfaceOrientation;
     struct {
         unsigned int searchBarWasTableHeaderView:1;
         unsigned int searchBarWasFirstResponder:1;
@@ -136,6 +137,7 @@
 - (double)transitionDuration:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 

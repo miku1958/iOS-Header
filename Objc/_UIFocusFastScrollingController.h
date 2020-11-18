@@ -56,7 +56,7 @@ __attribute__((visibility("hidden")))
 
 + (id)controllerWithRequest:(id)arg1;
 + (id)indexBarViewForScrollView:(id)arg1;
-+ (long long)indexOfEntryNearestToContentOffset:(struct CGPoint)arg1 inDisplayedEntries:(id)arg2;
++ (long long)indexOfEntryNearestToScrollViewBounds:(struct CGRect)arg1 inDisplayedEntries:(id)arg2;
 - (void).cxx_destruct;
 - (void)_attemptToStop;
 - (void)_attemptToStopDueToExternalEvent:(BOOL)arg1;

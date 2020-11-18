@@ -51,8 +51,10 @@ __attribute__((visibility("hidden")))
 - (void)_layoutInBounds:(struct CGRect)arg1 wantsExtendedContentView:(BOOL)arg2;
 - (void)_performAnimationWithTransitionCompletion:(CDUnknownBlockType)arg1 transition:(int)arg2;
 - (id)_resolveLargeTitleAttributes;
+- (void)_setupTopNavigationItemAnimated:(BOOL)arg1;
 - (void)_setupTransitionContextForTransition:(int)arg1;
 - (id)_shim_backdropGroupName;
+- (double)_shim_backgroundAlpha;
 - (id)_shim_compatibilityBackgroundView;
 - (BOOL)_shim_disableBlurTinting;
 - (void)_shim_setBackdropGroupName:(id)arg1;

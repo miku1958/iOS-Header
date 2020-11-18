@@ -268,6 +268,7 @@
 - (BOOL)_canEditItemAtIndexPath:(id)arg1;
 - (BOOL)_canPerformAction:(SEL)arg1 forCell:(id)arg2 sender:(id)arg3;
 - (BOOL)_canReorderItemAtIndexPath:(id)arg1;
+- (void)_cancelInteractiveMovementWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_cancelInteractiveTransitionWithFinalAnimation:(BOOL)arg1;
 - (void)_cancelReordering;
 - (void)_cancelTouches;
@@ -282,7 +283,7 @@
 - (void)_checkForPreferredAttributesInView:(id)arg1 originalAttributes:(id)arg2;
 - (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
 - (void)_cleanUpAfterInteractiveTransitionDidFinish:(BOOL)arg1;
-- (void)_completeInteractiveMovementWithDisposition:(long long)arg1;
+- (void)_completeInteractiveMovementWithDisposition:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (struct CGRect)_computeFutureVisibleBoundsForPrefetchVelocity:(struct CGVector)arg1 visibleBounds:(struct CGRect)arg2;
 - (struct CGRect)_computePrefetchCacheValidationBoundsForPrefetchVelocity:(struct CGVector)arg1 visibleBounds:(struct CGRect)arg2;
 - (void)_computePrefetchCandidatesForVelocity:(struct CGVector)arg1 notifyDelegateIfNeeded:(BOOL)arg2;
@@ -328,6 +329,7 @@
 - (id)_dropDelegateActual;
 - (id)_dropDelegateProxy;
 - (id)_dynamicAnimationsForTrackValues;
+- (void)_endInteractiveMovementWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_endItemAnimationsWithInvalidationContext:(id)arg1;
 - (void)_endItemAnimationsWithInvalidationContext:(id)arg1 tentativelyForReordering:(BOOL)arg2;
 - (void)_endItemAnimationsWithInvalidationContext:(id)arg1 tentativelyForReordering:(BOOL)arg2 animator:(id)arg3;
@@ -389,8 +391,8 @@
 - (id)_managedViews;
 - (void)_moveItemAtIndexPath:(id)arg1 toIndexPath:(id)arg2;
 - (void)_moveSection:(long long)arg1 toSection:(long long)arg2;
-- (void)_notifyDidEndDisplayingCell:(id)arg1 forIndexPath:(id)arg2;
-- (void)_notifyWillDisplayCell:(id)arg1 forIndexPath:(id)arg2;
+- (void)_notifyDidEndDisplayingCellIfNeeded:(id)arg1 forIndexPath:(id)arg2;
+- (void)_notifyWillDisplayCellIfNeeded:(id)arg1 forIndexPath:(id)arg2;
 - (long long)_numberOfItemsInSection:(long long)arg1;
 - (long long)_numberOfSections;
 - (id)_objectInDictionary:(id)arg1 forKind:(id)arg2 indexPath:(id)arg3;

@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     double _inputViewLeftMostPadding;
     double _inputViewRightMostPadding;
     double _rightBiasPercentage;
+    double _scrollSnapOffset;
     double _alertTextWidth;
     struct CGSize _fakeEmojiKeySize;
 }
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double minimumLineSpacing; // @synthesize minimumLineSpacing=_minimumLineSpacing;
 @property (readonly, nonatomic) long long prepolulatedRecentCount; // @synthesize prepolulatedRecentCount=_prepolulatedRecentCount;
 @property (readonly, nonatomic) double rightBiasPercentage; // @synthesize rightBiasPercentage=_rightBiasPercentage;
+@property (readonly, nonatomic) double scrollSnapOffset; // @synthesize scrollSnapOffset=_scrollSnapOffset;
 @property (readonly, nonatomic) double scrubViewTopPadding; // @synthesize scrubViewTopPadding=_scrubViewTopPadding;
 @property (readonly, nonatomic) double sectionOffset; // @synthesize sectionOffset=_sectionOffset;
 

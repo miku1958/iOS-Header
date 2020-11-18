@@ -11,8 +11,8 @@
 
 @protocol _UIViewServiceViewControllerOperator_RemoteViewControllerInterface <_UIViewServiceDeputy_UIViewServiceInterface, _UIViewServiceUIBehaviorInterface>
 - (void)__cancelAlertActionWithToken:(long long)arg1;
-- (void)__createViewController:(NSString *)arg1 withAppearanceSerializedRepresentations:(NSArray *)arg2 legacyAppearance:(BOOL)arg3 hostAccessibilityServerPort:(BSMachPortSendRight *)arg4 canShowTextServices:(BOOL)arg5 replyHandler:(void (^)(_UIHostedWindowHostingHandle *, NSArray *, long long, int, BSMachPortSendRight *, NSError *))arg6;
-- (void)__createViewController:(NSString *)arg1 withContextToken:(NSUUID *)arg2 fbsDisplays:(NSArray *)arg3 appearanceSerializedRepresentations:(NSArray *)arg4 legacyAppearance:(BOOL)arg5 traitCollection:(UITraitCollection *)arg6 initialInterfaceOrientation:(long long)arg7 hostAccessibilityServerPort:(BSMachPortSendRight *)arg8 canShowTextServices:(BOOL)arg9 replyHandler:(void (^)(_UIHostedWindowHostingHandle *, NSArray *, long long, int, BSMachPortSendRight *, NSError *))arg10;
+- (void)__createViewController:(NSString *)arg1 withAppearanceSerializedRepresentations:(NSArray *)arg2 legacyAppearance:(BOOL)arg3 hostAccessibilityServerPort:(BSMachPortSendRight *)arg4 replyHandler:(void (^)(_UIHostedWindowHostingHandle *, NSArray *, long long, int, BSMachPortSendRight *, NSError *))arg5;
+- (void)__createViewController:(NSString *)arg1 withContextToken:(NSUUID *)arg2 fbsDisplays:(NSArray *)arg3 appearanceSerializedRepresentations:(NSArray *)arg4 legacyAppearance:(BOOL)arg5 traitCollection:(UITraitCollection *)arg6 initialInterfaceOrientation:(long long)arg7 hostAccessibilityServerPort:(BSMachPortSendRight *)arg8 replyHandler:(void (^)(_UIHostedWindowHostingHandle *, NSArray *, long long, int, BSMachPortSendRight *, NSError *))arg9;
 - (void)__dimmingViewWasTapped;
 - (void)__exchangeAccessibilityPortInformation:(BSMachPortSendRight *)arg1 replyHandler:(void (^)(BSMachPortSendRight *, NSError *))arg2;
 - (void)__hostDidAttachDisplay:(FBSDisplayConfiguration *)arg1;
@@ -24,7 +24,7 @@
 - (void)__hostDidPromoteFirstResponder;
 - (void)__hostDidRotateFromInterfaceOrientation:(long long)arg1 skipSelf:(BOOL)arg2;
 - (void)__hostDidSetContentOverlayInsets:(struct UIEdgeInsets)arg1 andLeftMargin:(double)arg2 rightMargin:(double)arg3;
-- (void)__hostDidSetPresentationControllerClassName:(NSString *)arg1;
+- (void)__hostDidSetPresentationControllerClassName:(NSString *)arg1 canShowTextServices:(BOOL)arg2;
 - (void)__hostDidUpdateAppearanceWithSerializedRepresentations:(NSArray *)arg1 originalSource:(id)arg2 legacyAppearance:(BOOL)arg3;
 - (void)__hostDidUpdateDisplay:(FBSDisplayConfiguration *)arg1;
 - (void)__hostDisablesAutomaticKeyboardBehavior:(BOOL)arg1;

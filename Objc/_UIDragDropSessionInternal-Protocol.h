@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <UIKit/_UIDragDropSessionPrivate-Protocol.h>
+
 @class _UIDraggingSession;
 
-@protocol _UIDragDropSessionInternal
+@protocol _UIDragDropSessionInternal <_UIDragDropSessionPrivate>
 
 @property (readonly, nonatomic, getter=_allowsItemsToUpdate) BOOL _allowsItemsToUpdate;
-@property (readonly, nonatomic) long long _dataOwner;
 
 - (_UIDraggingSession *)_draggingSession;
 @end

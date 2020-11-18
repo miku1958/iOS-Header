@@ -189,7 +189,9 @@
 - (void)_getBackgroundImage:(id *)arg1 shouldRespectOversizedBackgroundImage:(BOOL *)arg2 actualBarMetrics:(long long *)arg3 actualBarPosition:(long long *)arg4;
 - (BOOL)_hasBackButton;
 - (BOOL)_hasCustomAutolayoutNeighborSpacingForAttribute:(long long *)arg1;
+- (BOOL)_hasLegacyProvider;
 - (CDStruct_c3b9c2ee)_heightRangeForNavigationItem:(id)arg1 fittingWidth:(double)arg2;
+- (BOOL)_hostsLayoutEngineAllowsTAMIC_NO;
 - (struct CGRect)_incomingNavigationBarFrame;
 - (double)_internalShadowAlpha;
 - (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;

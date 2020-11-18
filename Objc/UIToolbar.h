@@ -82,9 +82,9 @@
 - (void)_frameOrBoundsChangedWithVisibleSizeChange:(BOOL)arg1 wasMinibar:(BOOL)arg2;
 - (void)_frameOrCenterChanged;
 - (BOOL)_hasCustomAutolayoutNeighborSpacingForAttribute:(long long *)arg1;
+- (BOOL)_hostsLayoutEngineAllowsTAMIC_NO;
 - (id)_itemAtPoint:(struct CGPoint)arg1;
 - (BOOL)_linkedBeforeWhitetailAndInitializedFromCoder;
-- (void)_performBlockAllowingConstraintManipulation:(CDUnknownBlockType)arg1;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (void)_positionToolbarButtonsAndResetFontScaleAdjustment:(BOOL)arg1;
 - (void)_sendAction:(id)arg1 withEvent:(id)arg2;

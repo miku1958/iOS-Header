@@ -9,7 +9,7 @@
 #import <UIKit/NSCopying-Protocol.h>
 #import <UIKit/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSIndexSet, NSMutableArray, NSString, Protocol, _UIFeedbackParameters, _UIFeedbackPattern;
+@class NSDictionary, NSIndexSet, NSMutableArray, NSSet, NSString, Protocol, _UIFeedbackParameters, _UIFeedbackPattern;
 @protocol UICoordinateSpace, _UIFeedbackPlayer;
 
 @interface _UIFeedback : NSObject <NSCopying, NSSecureCoding>
@@ -32,6 +32,7 @@
 }
 
 @property (readonly, nonatomic, getter=_allEventTypes) NSIndexSet *allEventTypes;
+@property (readonly, nonatomic, getter=_allFeedbacks) NSSet *allFeedbacks;
 @property (readonly, nonatomic, getter=_allSystemSoundIDs) NSIndexSet *allSystemSoundIDs;
 @property (nonatomic) long long audioOutputMode; // @synthesize audioOutputMode=_audioOutputMode;
 @property (readonly, nonatomic) _UIFeedbackParameters *audioParameters; // @synthesize audioParameters=_audioParameters;

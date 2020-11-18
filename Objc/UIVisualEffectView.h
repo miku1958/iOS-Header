@@ -8,7 +8,7 @@
 
 #import <UIKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, UIImage, UIVisualEffect, _UIVisualEffectBackdropView, _UIVisualEffectHost, _UIVisualEffectViewBackdropCaptureGroup;
+@class NSArray, NSString, UIImage, UIVisualEffect, _UIVisualEffectBackdropView, _UIVisualEffectHost, _UIVisualEffectViewBackdropCaptureGroup, _UIVisualEffectViewCapturedState;
 
 @interface UIVisualEffectView : UIView <NSSecureCoding>
 {
@@ -30,12 +30,14 @@
     BOOL _useLiveMasking;
     double _cornerRadius;
     UIVisualEffect *_effect;
+    _UIVisualEffectViewCapturedState *__capturedStateDuringAnimation;
     NSArray *_backgroundEffects;
     NSArray *_contentEffects;
 }
 
 @property (nonatomic, getter=_backdropViewBackgroundColorAlpha, setter=_setBackdropViewBackgroundColorAlpha:) double _backdropViewBackgroundColorAlpha;
 @property (weak, nonatomic, setter=_setCaptureView:) _UIVisualEffectBackdropView *_captureView;
+@property (strong, nonatomic, getter=_capturedStateDuringAnimation, setter=_setCapturedStateDuringAnimation:) _UIVisualEffectViewCapturedState *_capturedStateDuringAnimation; // @synthesize _capturedStateDuringAnimation=__capturedStateDuringAnimation;
 @property (nonatomic, setter=_setCornerRadius:) double _cornerRadius; // @synthesize _cornerRadius;
 @property (copy, nonatomic, setter=_setGroupName:) NSString *_groupName;
 @property (strong, nonatomic, setter=_setMaskImage:) UIImage *_maskImage;
@@ -53,6 +55,7 @@
 - (void)_applyCornerRadiusToSubviews;
 - (id)_backdropSubview;
 - (id)_backgroundHost;
+- (id)_captureStateForCurrentAnimationBlockCreatingIfNecessary:(BOOL)arg1 clearingCache:(BOOL)arg2;
 - (void)_commonInit;
 - (void)_configureAllEffects;
 - (void)_configureEffects;
@@ -70,6 +73,7 @@
 - (id)_maskImageForMaskView:(id)arg1;
 - (id)_maskView;
 - (void)_populateArchivedSubviews:(id)arg1;
+- (void)_registerNotifications;
 - (void)_resetEffect;
 - (void)_setContinuousCornerRadius:(double)arg1;
 - (void)_setEffect:(id)arg1;
@@ -77,6 +81,7 @@
 - (void)_setNoiseEnabled:(BOOL)arg1;
 - (void)_setTintOpacity:(double)arg1;
 - (BOOL)_shouldManageCornerRadiusForEffectSubview:(id)arg1;
+- (void)_unregisterNotifications;
 - (void)_updateEffectBackgroundColor;
 - (void)_updateEffectForAccessibilityChanges:(id)arg1;
 - (void)_updateEffectForAlphaTransitionDidEnd:(id)arg1;

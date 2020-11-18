@@ -9,11 +9,11 @@
 @protocol DOCServiceBrowserViewControllerProxy
 - (void)clearCurrentInteraction;
 - (void)clearCurrentOpenInteraction;
-- (void)createFolderNamed:(NSString *)arg1;
 - (void)deleteAllTrashedFiles;
 - (void)deselectAllItems;
 - (void)fetchItemForURL:(NSURL *)arg1 bumpLastOpenDate:(BOOL)arg2 completionHandler:(void (^)(DOCItem *, NSError *))arg3;
 - (void)fetchParentLocationForLocation:(DOCConcreteLocation *)arg1 completionHandler:(void (^)(DOCConcreteLocation *, NSError *))arg2;
+- (FPItem *)getCurrentCollectionItem;
 - (void)getPopoverTrackerForURL:(NSURL *)arg1 completionBlock:(void (^)(id<DOCServicePopoverTrackerProtocol>))arg2;
 - (void)getSaveLocationForCurrentBrowserOrDefaultSaveLocationWithCompletionBlock:(void (^)(DOCConcreteLocation *))arg1;
 - (void)getTransitionControllerForItem:(FPItem *)arg1 completionBlock:(void (^)(id<DOCServiceTransitionProtocol>))arg2;

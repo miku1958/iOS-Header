@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
     BOOL _allowsHitTesting;
     BOOL _belongsToTrackingAnimator;
     BOOL _disallowInheritance;
+    long long _finishedPosition;
     UIViewAnimationState *_retainedSelf;
     NSMutableArray *_viewsPendingConstraintBasedAnimation;
     UIViewPropertyAnimator *_propertyAnimator;
@@ -78,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (void)_acceptEarlyAnimationCutoff:(id)arg1;
 - (void)_addAnimationStateForTracking:(id)arg1;
 - (BOOL)_addCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)_addCompletionWithPosition:(CDUnknownBlockType)arg1;
 - (BOOL)_addPendingKeyframeValue:(id)arg1 forKey:(id)arg2 view:(id)arg3;
 - (BOOL)_allowsHitTesting;
 - (BOOL)_allowsUserInteractionToCutOffEndOfAnimation;
@@ -101,6 +103,7 @@ __attribute__((visibility("hidden")))
 - (void)_runConstraintBasedLayoutAnimations;
 - (void)_setAlongsideAnimations:(CDUnknownBlockType)arg1;
 - (void)_setCustomCurve:(id)arg1;
+- (void)_setFinishedPosition:(long long)arg1;
 - (BOOL)_shouldAnimateAdditivelyForKey:(id)arg1 onLayer:(id)arg2 forView:(id)arg3;
 - (BOOL)_shouldStartFromCurrentStateForLayer:(id)arg1 key:(id)arg2 forView:(id)arg3;
 - (void)_trackAnimation:(id)arg1 nonAdditiveAnimation:(id)arg2 withAnimationKey:(id)arg3 forKeyPath:(id)arg4 inLayer:(id)arg5;

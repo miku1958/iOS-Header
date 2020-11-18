@@ -20,6 +20,7 @@
     double _compactHorizontalTableStackSpacing;
     double _regularHorizontalTableStackSpacing;
     double _fullHorizontalTableStackSpacing;
+    UIColor *_largeTitleColor;
     unsigned long long _browserUserInterfaceStyle;
     double _createButtonAspectRatio;
     NSString *_collectionCreateButtonTitle;
@@ -37,12 +38,14 @@
 @property BOOL forceClearBackground; // @synthesize forceClearBackground=_forceClearBackground;
 @property double fullHorizontalTableStackSpacing; // @synthesize fullHorizontalTableStackSpacing=_fullHorizontalTableStackSpacing;
 @property BOOL isInfoInPopoverMode; // @synthesize isInfoInPopoverMode=_isInfoInPopoverMode;
+@property (strong, nonatomic) UIColor *largeTitleColor; // @synthesize largeTitleColor=_largeTitleColor;
 @property (readonly) long long preferredBarStyle;
 @property (readonly) long long preferredStatusBarStyle;
 @property (readonly) UIColor *primaryTextColor;
 @property (readonly) UIColor *progressViewInactiveStrokeColor;
 @property double regularHorizontalTableStackSpacing; // @synthesize regularHorizontalTableStackSpacing=_regularHorizontalTableStackSpacing;
 @property (readonly) UIColor *searchBarTextColor;
+@property (readonly) BOOL searchBarWantsDarkBackdropStyleOnly;
 @property (readonly) UIColor *secondaryTextColor;
 @property (readonly) UIColor *selectedBackgroundColor;
 @property (readonly) UIColor *separatorColor;

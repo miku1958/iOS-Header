@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     NSMutableArray *m_inputModes;
     NSArray *m_inputSwitcherItems;
     BOOL m_isForDictation;
-    BOOL m_didTypeWithinDisplayTimer;
     UIInputSwitcherGestureState *m_gestureState;
     BOOL _messagesWriteboardFromSwitcher;
     BOOL _fileReportFromSwitcher;
@@ -33,12 +32,11 @@ __attribute__((visibility("hidden")))
 - (id)_itemWithIdentifier:(id)arg1;
 - (void)_reloadInputSwitcherItems;
 - (void)_segmentControlValueDidChange:(id)arg1;
-- (void)buttonPressed:(id)arg1 withEvent:(id)arg2 location:(struct CGPoint)arg3 isForDictation:(BOOL)arg4 tapAction:(CDUnknownBlockType)arg5;
+- (id)buttonPressed:(id)arg1 withEvent:(id)arg2 location:(struct CGPoint)arg3 isForDictation:(BOOL)arg4 tapAction:(CDUnknownBlockType)arg5;
 - (void)customizeCell:(id)arg1 forItemAtIndex:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)defaultInputMode;
 - (unsigned long long)defaultSelectedIndex;
-- (BOOL)didHitDockItemWithinTypingWindow;
 - (void)didSelectItemAtIndex:(unsigned long long)arg1;
 - (id)fontForItemAtIndex:(unsigned long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

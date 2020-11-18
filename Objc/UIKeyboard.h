@@ -60,6 +60,7 @@
 + (BOOL)respondsToProxGesture;
 + (BOOL)shouldMinimizeForHardwareKeyboard;
 + (struct CGSize)sizeForInterfaceOrientation:(long long)arg1;
++ (struct CGSize)sizeForInterfaceOrientation:(long long)arg1 ignoreInputView:(BOOL)arg2;
 + (BOOL)splitKeyboardEnabled;
 - (void)_acceptCurrentCandidate;
 - (id)_baseKeyForRepresentedString:(id)arg1;

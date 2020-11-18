@@ -129,6 +129,8 @@
 - (id)keyForString:(id)arg1;
 - (id)keySet;
 - (struct CGRect)keyUnionFrame;
+- (struct CGRect)keyUnionFramePadded:(BOOL)arg1;
+- (struct CGRect)keyUnionPaddedFrame;
 - (id)keyplaneForKey:(id)arg1;
 - (id)keys;
 - (id)keysByKeyName:(id)arg1;

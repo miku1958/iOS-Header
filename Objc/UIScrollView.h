@@ -27,6 +27,7 @@
     struct UIEdgeInsets _scrollIndicatorInset;
     struct UIEdgeInsets _verticalScrollIndicatorInsets;
     struct UIEdgeInsets _horizontalScrollIndicatorInsets;
+    unsigned long long _edgesAllowingScrollAccessoriesExtendedToBoundingPath;
     double _startOffsetX;
     double _startOffsetY;
     double _lastUpdateOffsetX;
@@ -382,6 +383,7 @@
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)_didRemoveDependentConstraint:(id)arg1;
 - (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (unsigned long long)_edgesAllowingScrollAccessoriesExtendedToBoundingPath;
 - (unsigned long long)_edgesApplyingBaseInsetsToScrollIndicatorInsets;
 - (unsigned long long)_edgesApplyingSafeAreaInsetsToContentInset;
 - (unsigned long long)_edgesApplyingSafeAreaInsetsToScrollAccessoryInsets;
@@ -434,6 +436,7 @@
 - (void)_handleDirectionalPress:(id)arg1;
 - (void)_handleDirectionalScrollToOffset:(struct CGPoint)arg1 clampingToBounds:(BOOL)arg2;
 - (void)_handleLowFidelitySwipe:(id)arg1;
+- (void)_handlePanFailure;
 - (void)_handleSwipe:(id)arg1;
 - (BOOL)_hasScrollViewWillEndDraggingInvocationsToPerform;
 - (double)_heightForFocusFastScrollingUI:(double)arg1;
@@ -555,6 +558,7 @@
 - (void)_setContentOffsetRoundingEnabled:(BOOL)arg1;
 - (void)_setContentOffsetWithDecelerationAnimation:(struct CGPoint)arg1;
 - (void)_setContentScrollInset:(struct UIEdgeInsets)arg1;
+- (void)_setEdgesAllowingScrollAccessoriesExtendedToBoundingPath:(unsigned long long)arg1;
 - (void)_setEdgesScrollingContentIntoSafeArea:(unsigned long long)arg1;
 - (void)_setFirstPageOffset:(struct UIOffset)arg1;
 - (void)_setGradientMaskEdgeInsets:(struct UIEdgeInsets)arg1;

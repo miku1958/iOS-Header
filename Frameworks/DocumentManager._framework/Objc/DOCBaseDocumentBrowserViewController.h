@@ -38,7 +38,7 @@
 - (void)browser:(id)arg1 wantsToShowLocation:(id)arg2 forceReplaceLocation:(BOOL)arg3;
 - (void)browserDidFinishGatheringItemsAndThumbnails:(id)arg1;
 - (void)browserWantsToCreateNewFile:(id)arg1;
-- (void)browserWantsToCreateNewFolder:(id)arg1;
+- (void)browserWantsToCreateNewFolder:(id)arg1 maxThumbnailSize:(struct CGSize)arg2;
 - (void)clearCurrentOpenInteraction;
 - (void)createDocumentAtCurrentLocation;
 - (void)createDocumentAtLocation:(id)arg1;

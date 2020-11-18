@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
     BOOL _cancelActionIsDiscrete;
     BOOL _shouldHaveBackdropView;
     BOOL _alignsToKeyboard;
+    long long _layoutRequiresPositionUpdateCount;
     NSArray *_dimmingViewConstraints;
     NSArray *_dimmingViewForegroundViewTopConstraints;
     NSArray *_dimmingViewForegroundViewBottomConstraints;
@@ -162,6 +163,7 @@ __attribute__((visibility("hidden")))
 - (void)_addContentViewControllerToViewHierarchy;
 - (void)_applyContentViewControllerContainerViewConstraints;
 - (void)_applyDetailMessageConstraints;
+- (void)_applyISEngineLayoutValuesToBoundsOnly:(BOOL)arg1;
 - (void)_applyKeyboardAlignmentViewsConstraints;
 - (void)_applyMessageConstraints;
 - (void)_applyTextFieldViewControllerContainerViewConstraints;
@@ -198,6 +200,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)_itemSizeForHorizontalLayout:(BOOL)arg1;
 - (struct CGSize)_itemSizeForHorizontalLayout:(BOOL)arg1 visualStyleRequiresActionRepresentationToFitItemSize:(BOOL *)arg2;
 - (double)_labelHorizontalInsets;
+- (void)_layoutAndPositionInParentIfNeeded;
 - (id)_layoutWidthDeterminationViewToSizeAgainst;
 - (double)_layoutWidthForHorizontalLayout:(BOOL)arg1;
 - (struct CGSize)_mainActionButtonSequenceViewSizeForHorizontalLayout:(BOOL)arg1 itemSize:(struct CGSize)arg2;

@@ -51,9 +51,11 @@ __attribute__((visibility("hidden")))
 - (void)dimKeys:(id)arg1;
 - (id)emojiBaseFirstCharacterString:(id)arg1;
 - (id)emojiBaseString:(id)arg1;
+- (id)firstFullyVisibleHeader;
 - (BOOL)genderEmojiBaseStringNeedVariantSelector:(id)arg1;
 - (long long)indexForPrettyCategoryDisplay:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
+- (id)itemInRect:(struct CGRect)arg1;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;

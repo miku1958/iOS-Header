@@ -68,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)_setUpContentFocusContainerGuide;
 - (void)_setViewsAnimated:(BOOL)arg1 forTopNavigationItem:(id)arg2 backNavigationItem:(id)arg3 previousTopItem:(id)arg4;
 - (void)_shim_30244716;
+- (BOOL)_shim_34415965;
 - (id)_shim_backIndicatorView;
 - (id)_shim_backdropGroupName;
 - (long long)_shim_backdropStyle;

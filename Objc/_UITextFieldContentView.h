@@ -9,17 +9,16 @@
 #import <UIKit/_UITextTiledLayerDelegate-Protocol.h>
 
 @class NSArray, NSMutableSet, NSString;
-@protocol _UITextFieldContentViewContext;
+@protocol _UITextFieldContentViewContextProvider;
 
 __attribute__((visibility("hidden")))
 @interface _UITextFieldContentView : UIView <_UITextTiledLayerDelegate>
 {
+    id<_UITextFieldContentViewContextProvider> _provider;
     NSMutableSet *_ghostedRanges;
     NSArray *_maskedRects;
-    id<_UITextFieldContentViewContext> _context;
 }
 
-@property (readonly, weak, nonatomic) id<_UITextFieldContentViewContext> context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -31,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)addGhostedRange:(struct _NSRange)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)drawTextInRect:(struct CGRect)arg1;
-- (id)initWithContentContext:(id)arg1;
+- (id)initWithContentContextProvider:(id)arg1;
 - (id)layer;
 - (void)removeAllGhostedRanges;
 - (void)setNeedsLayout;

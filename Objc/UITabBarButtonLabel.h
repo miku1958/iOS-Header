@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     _UITabBarItemAppearanceStorage *_appearanceStorage;
     BOOL _isSelected;
     BOOL _isHighlighted;
+    BOOL _hasSeenIdiom;
     Class _appearanceGuideClass;
     UIColor *_unselectedTintColor;
     UITabBarButton *_tabBarButton;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)_applyTabBarButtonAppearanceStorage:(id)arg1 withTaggedSelectors:(id)arg2;
 - (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(BOOL)arg3;
 - (id)_fontForIdiom:(long long)arg1;
+- (long long)_idiomForFontGivenIdiom:(long long)arg1;
 - (void)_setBadgeColor:(id)arg1;
 - (void)_setBadgeTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_setTitlePositionAdjustment:(struct UIOffset)arg1;
@@ -46,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)setSelected:(BOOL)arg1;
 - (void)sizeToFitBounds:(struct CGRect)arg1;
 - (void)tintColorDidChange;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateTextColorsForState;
 
 @end

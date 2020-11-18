@@ -168,6 +168,7 @@ __attribute__((visibility("hidden")))
 - (void)_didChangeKeyplaneWithContext:(id)arg1;
 - (void)_didTapBiasEscapeButton:(id)arg1;
 - (BOOL)_handRestRecognizerCancelShouldBeEnd;
+- (BOOL)_handleTouchForEmojiInputView;
 - (id)_keyplaneVariantsKeyForString:(id)arg1;
 - (struct CGRect)_paddedKeyUnionFrame;
 - (void)_recordKeystrokeStatisticForKeyPress;
@@ -219,6 +220,7 @@ __attribute__((visibility("hidden")))
 - (long long)currentHandBiasWithCoordinator:(id)arg1;
 - (id)currentKeyplane;
 - (id)currentKeyplaneView;
+- (id)currentRepresentedStringForDualDisplayKey:(id)arg1;
 - (void)deactivateActiveKey;
 - (void)deactivateActiveKeys;
 - (void)deactivateActiveKeysClearingTouchInfo:(BOOL)arg1 clearingDimming:(BOOL)arg2;
@@ -305,6 +307,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isDeadkeyInput:(id)arg1;
 - (BOOL)isEmojiKeyplane;
 - (BOOL)isLongPressedKey:(id)arg1;
+- (BOOL)isMultitapKey:(id)arg1;
 - (BOOL)isShiftKeyBeingHeld;
 - (BOOL)isShiftKeyPlaneChooser;
 - (BOOL)isTrackpadMode;
@@ -324,6 +327,7 @@ __attribute__((visibility("hidden")))
 - (id)keyplaneNameForRevertAfterTouch;
 - (id)keyplaneNamed:(id)arg1;
 - (unsigned long long)keyplaneShiftState;
+- (double)lastTouchDownTimestamp;
 - (double)lastTouchUpTimestamp;
 - (void)logHandwritingData;
 - (void)longPressAction;

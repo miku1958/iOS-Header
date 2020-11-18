@@ -21,6 +21,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (BOOL)_preventsAppearanceProxyCustomization;
+- (BOOL)_shouldUseContentOverlayInsetsAsStatusBarUnderlapHeight;
+- (double)_statusBarHeightAdjustmentForCurrentOrientation;
+- (BOOL)_viewControllerUnderlapsStatusBar;
 - (struct CGSize)preferredContentSize;
 - (void)setPreferredContentSize:(struct CGSize)arg1;
 

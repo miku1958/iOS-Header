@@ -63,6 +63,7 @@
 - (BOOL)_canDrawContent;
 - (id)_checkHighlightedImageForAdaptation:(id)arg1 hadAdapted:(BOOL *)arg2;
 - (id)_checkImageForAdaptation:(id)arg1 hasAdapted:(BOOL *)arg2;
+- (void)_cleanUpForStopAnimating;
 - (void)_clearPretiledImageCacheForImage:(id)arg1;
 - (void)_configureForLayeredImage:(id)arg1;
 - (id)_contentsMultiplyColorForEffectiveTintColor:(id)arg1;

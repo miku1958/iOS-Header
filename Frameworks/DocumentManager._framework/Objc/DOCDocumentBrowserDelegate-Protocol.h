@@ -22,7 +22,7 @@
 - (void)browser:(DOCBrowserViewController *)arg1 wantsToShowLocation:(DOCConcreteLocation *)arg2 forceReplaceLocation:(BOOL)arg3;
 - (void)browserDidFinishGatheringItemsAndThumbnails:(DOCBrowserViewController *)arg1;
 - (void)browserWantsToCreateNewFile:(DOCBrowserViewController *)arg1;
-- (void)browserWantsToCreateNewFolder:(DOCBrowserViewController *)arg1;
+- (void)browserWantsToCreateNewFolder:(DOCBrowserViewController *)arg1 maxThumbnailSize:(struct CGSize)arg2;
 - (void)dismissButtonWasTappedInBrowser:(DOCBrowserViewController *)arg1;
 - (void)locationsButtonWasTappedInBrowser:(DOCBrowserViewController *)arg1 sourceRect:(struct CGRect)arg2;
 @end

@@ -65,6 +65,7 @@
 - (void)_disableConstraints;
 - (void)_enableConstraints;
 - (id)_initWithNavigationController:(id)arg1 forEdge:(unsigned long long)arg2;
+- (void)_propagateBackgroundToContents;
 - (void)_resetConstraintConstants:(double)arg1;
 - (void)_resetHeightConstraintConstant;
 - (void)_resetVisibilityStateIfNecessary;
@@ -75,6 +76,7 @@
 - (void)_setVisualAltitude:(double)arg1;
 - (void)_setVisualAltitudeBias:(struct CGSize)arg1;
 - (void)_setupBackgroundViewIfNecessary;
+- (BOOL)_shouldUpdateBackground;
 - (BOOL)_supportsSpecialSearchBarTransitions;
 - (void)_updateBackgroundConstraintsIfNecessary;
 - (void)_updateBackgroundView;

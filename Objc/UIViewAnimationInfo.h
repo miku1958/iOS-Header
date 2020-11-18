@@ -6,12 +6,13 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, UIView;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface UIViewAnimationInfo : NSObject
 {
+    UIView *_owningView;
     NSMutableDictionary *_animatablePropertyStates;
     NSMutableDictionary *_presentationModifiers;
     NSMutableDictionary *_modifierGroupRequestHandlers;
@@ -23,13 +24,14 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableDictionary *isPartOfHigherOrderProperty; // @synthesize isPartOfHigherOrderProperty=_isPartOfHigherOrderProperty;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *lockingQueue; // @synthesize lockingQueue=_lockingQueue;
 @property (strong, nonatomic) NSMutableDictionary *modifierGroupRequestHandlers; // @synthesize modifierGroupRequestHandlers=_modifierGroupRequestHandlers;
+@property (weak) UIView *owningView; // @synthesize owningView=_owningView;
 @property (strong, nonatomic) NSMutableDictionary *presentationModifiers; // @synthesize presentationModifiers=_presentationModifiers;
 
 - (void).cxx_destruct;
 - (id)animatablePropertyStateForKey:(id)arg1;
 - (id)animatablePropertyStateKeys;
 - (id)existingAnimatablePropertyStateForKey:(id)arg1;
-- (id)init;
+- (id)initWithView:(id)arg1;
 - (id)modifierGroupRequestHandlerForKey:(id)arg1;
 - (void)performWithLock:(CDUnknownBlockType)arg1;
 - (id)presentationModifierForKey:(id)arg1;

@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) long long userInterfaceStyle;
 @property (readonly, nonatomic) long long verticalSizeClass;
 
++ (id)_defaultTraitCollection;
 + (id)_emptyTraitCollection;
 + (id)_traitCollectionWithValue:(id)arg1 forTraitNamed:(id)arg2;
 + (BOOL)supportsSecureCoding;
