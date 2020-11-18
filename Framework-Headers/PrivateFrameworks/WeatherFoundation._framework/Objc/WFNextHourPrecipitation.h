@@ -20,6 +20,7 @@
     NSArray *_conditions;
 }
 
+@property (readonly, nonatomic) NSArray *activeMinutes;
 @property (readonly, copy, nonatomic) NSArray *conditions; // @synthesize conditions=_conditions;
 @property (readonly, nonatomic) WFNextHourPrecipitationDescription *currentDescription;
 @property (readonly, copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
@@ -35,6 +36,7 @@
 - (unsigned long long)hash;
 - (id)initWithReadDate:(id)arg1 startDate:(id)arg2 expirationDate:(id)arg3 minutes:(id)arg4 conditions:(id)arg5 descriptions:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)shouldUseActiveMinutesInNextHourPrecipitation;
 
 @end
 

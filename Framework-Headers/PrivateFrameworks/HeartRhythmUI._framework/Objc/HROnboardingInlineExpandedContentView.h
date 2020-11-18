@@ -13,6 +13,10 @@
 
 @property (nonatomic) long long currentUserInterfaceStyle; // @synthesize currentUserInterfaceStyle=_currentUserInterfaceStyle;
 
++ (id)_badgeFont;
++ (double)_badgeFontDistance;
++ (id)_badgeFontTextStyle;
++ (id)_badgeLabelWithLocalizedText:(id)arg1;
 + (id)_bodyFont;
 + (double)_bodyFontDistance;
 + (id)_bodyFontTextStyle;
@@ -23,12 +27,11 @@
 + (double)_headingBodyFontDistance;
 + (id)_headingLabelWithAtrialFibrillationLocalizationKey:(id)arg1;
 + (id)_headingLabelWithLocalizedText:(id)arg1;
-+ (double)_headingLastBaselineToBodyFirstBaseline;
++ (double)_headingToBadgeFontDistance;
 + (id)_learnMoreListLabelWithLocalizedText:(id)arg1 URLIdentifier:(long long)arg2 delegate:(id)arg3;
 + (double)_listFontDistance;
 + (id)_listLabelWithAtrialFibrillationLocalizationKey:(id)arg1;
 + (id)_listLabelWithLocalizedText:(id)arg1;
-+ (double)_listLastBaselineToBodyFirstBaseline;
 + (id)_makeViewWithContentItem:(id)arg1;
 + (id)_spacingBetweenItems:(id)arg1;
 + (id)learnMoreAboutAtrialFibrillationExpandedView;

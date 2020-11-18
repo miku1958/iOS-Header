@@ -25,6 +25,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)initialize;
 - (void).cxx_destruct;
 - (void)_setupMemoryWarningListener;
 - (void)clientConnectionClosed:(id)arg1;

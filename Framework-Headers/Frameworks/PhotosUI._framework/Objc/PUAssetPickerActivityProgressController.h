@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     PUAssetPickerActivityProgressViewController *_progressViewController;
     UIAlertController *_alertController;
     UIView *_containerView;
-    UIView *_dimmingView;
     UIView *_progressContainerView;
     BOOL _isShowing;
     NSString *_title;
@@ -30,10 +29,10 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
-- (id)_setupProgressContainerView;
+- (void)_setupAlertController;
 - (void)hideAnimated:(BOOL)arg1;
 - (id)init;
-- (void)showAnimated:(BOOL)arg1 sourceView:(id)arg2;
+- (void)showAnimated:(BOOL)arg1 sourceViewController:(id)arg2;
 
 @end
 

@@ -22,9 +22,9 @@ __attribute__((visibility("hidden")))
         unsigned long long dataLen;
         unsigned long long dataSize;
         char *data;
-        struct __CFDictionary *objectReferences;
-        struct __CFDictionary *stringReferences;
-        struct __CFDictionary *asciiReferences;
+        struct __CFDictionary *_objectReferences;
+        struct __CFDictionary *_stringReferences;
+        struct __CFDictionary *_asciiReferences;
         BOOL isVM;
         BOOL isStack;
     } _encoder;

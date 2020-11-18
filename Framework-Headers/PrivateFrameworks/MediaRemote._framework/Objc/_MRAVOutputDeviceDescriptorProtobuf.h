@@ -15,6 +15,8 @@
     float _batteryLevel;
     NSString *_bluetoothID;
     NSMutableArray *_clusterCompositions;
+    unsigned int _clusterType;
+    unsigned int _configuredClusterSize;
     int _deviceSubType;
     int _deviceType;
     NSString *_firmwareVersion;
@@ -25,6 +27,7 @@
     NSData *_modelSpecificInfoData;
     NSString *_name;
     NSString *_parentGroupIdentifier;
+    NSString *_primaryUID;
     _MRAVOutputDeviceSourceInfoProtobuf *_sourceInfo;
     NSString *_uniqueIdentifier;
     float _volume;
@@ -55,6 +58,8 @@
     BOOL _usingJSONProtocol;
     struct {
         unsigned int batteryLevel:1;
+        unsigned int clusterType:1;
+        unsigned int configuredClusterSize:1;
         unsigned int deviceSubType:1;
         unsigned int deviceType:1;
         unsigned int volume:1;
@@ -95,6 +100,8 @@
 @property (nonatomic) BOOL canPlayEncryptedProgressiveDownloadAssets; // @synthesize canPlayEncryptedProgressiveDownloadAssets=_canPlayEncryptedProgressiveDownloadAssets;
 @property (nonatomic) BOOL canRelayCommunicationChannel; // @synthesize canRelayCommunicationChannel=_canRelayCommunicationChannel;
 @property (strong, nonatomic) NSMutableArray *clusterCompositions; // @synthesize clusterCompositions=_clusterCompositions;
+@property (nonatomic) unsigned int clusterType; // @synthesize clusterType=_clusterType;
+@property (nonatomic) unsigned int configuredClusterSize; // @synthesize configuredClusterSize=_configuredClusterSize;
 @property (nonatomic) int deviceSubType; // @synthesize deviceSubType=_deviceSubType;
 @property (nonatomic) int deviceType; // @synthesize deviceType=_deviceType;
 @property (strong, nonatomic) NSString *firmwareVersion; // @synthesize firmwareVersion=_firmwareVersion;
@@ -108,6 +115,8 @@
 @property (nonatomic) BOOL hasCanFetchMediaDataFromSender;
 @property (nonatomic) BOOL hasCanPlayEncryptedProgressiveDownloadAssets;
 @property (nonatomic) BOOL hasCanRelayCommunicationChannel;
+@property (nonatomic) BOOL hasClusterType;
+@property (nonatomic) BOOL hasConfiguredClusterSize;
 @property (nonatomic) BOOL hasDeviceSubType;
 @property (nonatomic) BOOL hasDeviceType;
 @property (readonly, nonatomic) BOOL hasFirmwareVersion;
@@ -130,6 +139,7 @@
 @property (nonatomic) BOOL hasParentGroupContainsDiscoverableLeader;
 @property (readonly, nonatomic) BOOL hasParentGroupIdentifier;
 @property (nonatomic) BOOL hasPresentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
+@property (readonly, nonatomic) BOOL hasPrimaryUID;
 @property (nonatomic) BOOL hasRequiresAuthorization;
 @property (nonatomic) BOOL hasShouldForceRemoteControlabillity;
 @property (readonly, nonatomic) BOOL hasSourceInfo;
@@ -157,6 +167,7 @@
 @property (nonatomic) BOOL parentGroupContainsDiscoverableLeader; // @synthesize parentGroupContainsDiscoverableLeader=_parentGroupContainsDiscoverableLeader;
 @property (strong, nonatomic) NSString *parentGroupIdentifier; // @synthesize parentGroupIdentifier=_parentGroupIdentifier;
 @property (nonatomic) BOOL presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets; // @synthesize presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets=_presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
+@property (strong, nonatomic) NSString *primaryUID; // @synthesize primaryUID=_primaryUID;
 @property (nonatomic) BOOL requiresAuthorization; // @synthesize requiresAuthorization=_requiresAuthorization;
 @property (nonatomic) BOOL shouldForceRemoteControlabillity; // @synthesize shouldForceRemoteControlabillity=_shouldForceRemoteControlabillity;
 @property (strong, nonatomic) _MRAVOutputDeviceSourceInfoProtobuf *sourceInfo; // @synthesize sourceInfo=_sourceInfo;

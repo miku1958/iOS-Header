@@ -17,8 +17,9 @@
     NSObject<OS_dispatch_queue> *_internalQueue;
     BOOL _areSettingsLoaded;
     WBSSiteMetadataImageCache *_imageCache;
-    NSMutableDictionary *_hostsToRequestSets;
+    struct os_unfair_lock_s _templateIconsDataForHostsAccessLock;
     NSMutableDictionary *_templateIconsDataForHosts;
+    NSMutableDictionary *_hostsToRequestSets;
     NSMutableSet *_pendingTemplateIconRequestHosts;
     NSMutableSet *_pendingTemplateIconFallbackRequestHosts;
     NSMutableSet *_pendingSVGImageRenderingRequests;
@@ -35,7 +36,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSURL *imageDirectoryURL;
-@property (weak, nonatomic) id<WBSSiteMetadataProviderDelegate> providerDelegate; // @synthesize providerDelegate=_providerDelegate;
+@property (weak) id<WBSSiteMetadataProviderDelegate> providerDelegate; // @synthesize providerDelegate=_providerDelegate;
 @property (readonly, nonatomic) BOOL providesFavicons;
 @property (readonly) Class superclass;
 
@@ -43,7 +44,7 @@
 - (void)_didAddHistoryItems:(id)arg1;
 - (void)_didLoadHistory:(id)arg1;
 - (void)_didRemoveHistoryItems:(id)arg1;
-- (void)_generateResponseForRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_generateResponseForRequest:(id)arg1;
 - (id)_imageForRequest:(id)arg1 getThemeColor:(id *)arg2;
 - (BOOL)_isLocalIconRequest:(id)arg1;
 - (id)_monogramForRequest:(id)arg1 themeColor:(id)arg2;
@@ -51,12 +52,11 @@
 - (void)_notifyImageWasLoaded:(id)arg1 forHost:(id)arg2;
 - (void)_purgeUnneededTemplateIconsIfReady;
 - (void)_registerRequest:(id)arg1;
-- (void)_removeTemplateIconsDataForHost:(id)arg1;
+- (void)_removeTemplateIconsDataForHost:(id)arg1 ifIconIsInCache:(BOOL)arg2;
 - (void)_requestTemplateIconForRequest:(id)arg1;
 - (void)_saveTemplateIcon:(id)arg1 withThemeColor:(id)arg2 forHost:(id)arg3 toDisk:(BOOL)arg4;
 - (void)_setUpAndReturnDelayedResponseForRequest:(id)arg1;
 - (void)_setUpAndReturnPreparedResponseForRequest:(id)arg1;
-- (BOOL)_shouldRequestTemplateIconForURL:(id)arg1 allowRefresh:(BOOL)arg2;
 - (id)_templateIconForURL:(id)arg1 getThemeColor:(id *)arg2;
 - (BOOL)_templateIconRetainerIsReadyForCleanUp;
 - (void)_updateTemplateIconsDataForHost:(id)arg1 image:(id)arg2 themeColor:(id)arg3 isSavedToDisk:(BOOL)arg4;
@@ -84,7 +84,6 @@
 - (void)siteMetadataImageCacheDidEmptyCache:(id)arg1;
 - (void)siteMetadataImageCacheDidFinishLoadingSettings:(id)arg1;
 - (void)stopWatchingUpdatesForRequest:(id)arg1;
-- (id)templateIconForURL:(id)arg1 getThemeColor:(id *)arg2;
 
 @end
 

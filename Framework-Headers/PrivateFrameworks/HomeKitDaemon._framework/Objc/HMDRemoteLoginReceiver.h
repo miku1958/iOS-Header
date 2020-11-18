@@ -35,6 +35,7 @@
 - (void)configureWithWorkQueue:(id)arg1 messageDispatcher:(id)arg2;
 - (void)didCompleteAuthentication:(id)arg1 response:(id)arg2;
 - (void)registerForMessages;
+- (void)registerForNotifications;
 
 @end
 

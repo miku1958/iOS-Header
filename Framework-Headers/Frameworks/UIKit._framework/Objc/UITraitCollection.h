@@ -64,6 +64,7 @@
 + (id)_currentTraitCollection;
 + (id)_descriptionForChangeFromTraitCollection:(id)arg1 toTraitCollection:(id)arg2;
 + (void)_setCurrentTraitCollection:(id)arg1;
++ (id)_traitCollectionForSidebarAppearance;
 + (id)_traitCollectionWithBackgroundLevel:(long long)arg1;
 + (id)_traitCollectionWithContrast:(long long)arg1;
 + (id)_traitCollectionWithEnvironmentWrapper:(id)arg1;

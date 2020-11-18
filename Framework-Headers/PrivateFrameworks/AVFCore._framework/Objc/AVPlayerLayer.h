@@ -59,6 +59,7 @@
 - (id)_maskLayer;
 - (void)_mergeClientLayersIntoMaskLayer:(id)arg1;
 - (void)_notifyPlayerOfDisplaySize;
+- (void)_notifyPlayerOfLayerForegroundStateChange;
 - (struct CGSize)_playerCurrentItemPresentationSize;
 - (BOOL)_preventsChangesToSublayerHierarchy;
 - (void)_restoreClientLayers:(id)arg1 intoMaskLayer:(id)arg2;

@@ -18,10 +18,10 @@
 
 - (void).cxx_destruct;
 - (Class)balloonViewClass;
-- (id)composition;
+- (id)compositionWithContext:(id)arg1;
 - (id)initWithIMChatItem:(id)arg1 maxWidth:(double)arg2;
 - (id)loadTranscriptText;
-- (id)pasteboardItems;
+- (id)pasteboardItemProviders;
 - (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
 
 @end

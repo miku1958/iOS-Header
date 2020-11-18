@@ -57,6 +57,7 @@
     unsigned int _numHAPIPAccessoriesSupportJet;
     unsigned int _numHAPNoeAccessoriesSupportJet;
     unsigned int _numHAPSpeakerServiceAccessories;
+    unsigned int _numHomePods;
     unsigned int _numLightProfilesWithNaturalLightingEnabled;
     unsigned int _numLightProfilesWithNaturalLightingSupported;
     unsigned int _numLightProfilesWithNaturalLightingUsed;
@@ -136,6 +137,7 @@
         unsigned int numHAPIPAccessoriesSupportJet:1;
         unsigned int numHAPNoeAccessoriesSupportJet:1;
         unsigned int numHAPSpeakerServiceAccessories:1;
+        unsigned int numHomePods:1;
         unsigned int numLightProfilesWithNaturalLightingEnabled:1;
         unsigned int numLightProfilesWithNaturalLightingSupported:1;
         unsigned int numLightProfilesWithNaturalLightingUsed:1;
@@ -226,6 +228,7 @@
 @property (nonatomic) BOOL hasNumHAPIPAccessoriesSupportJet;
 @property (nonatomic) BOOL hasNumHAPNoeAccessoriesSupportJet;
 @property (nonatomic) BOOL hasNumHAPSpeakerServiceAccessories;
+@property (nonatomic) BOOL hasNumHomePods;
 @property (nonatomic) BOOL hasNumLightProfilesWithNaturalLightingEnabled;
 @property (nonatomic) BOOL hasNumLightProfilesWithNaturalLightingSupported;
 @property (nonatomic) BOOL hasNumLightProfilesWithNaturalLightingUsed;
@@ -299,6 +302,7 @@
 @property (nonatomic) unsigned int numHAPIPAccessoriesSupportJet; // @synthesize numHAPIPAccessoriesSupportJet=_numHAPIPAccessoriesSupportJet;
 @property (nonatomic) unsigned int numHAPNoeAccessoriesSupportJet; // @synthesize numHAPNoeAccessoriesSupportJet=_numHAPNoeAccessoriesSupportJet;
 @property (nonatomic) unsigned int numHAPSpeakerServiceAccessories; // @synthesize numHAPSpeakerServiceAccessories=_numHAPSpeakerServiceAccessories;
+@property (nonatomic) unsigned int numHomePods; // @synthesize numHomePods=_numHomePods;
 @property (nonatomic) unsigned int numLightProfilesWithNaturalLightingEnabled; // @synthesize numLightProfilesWithNaturalLightingEnabled=_numLightProfilesWithNaturalLightingEnabled;
 @property (nonatomic) unsigned int numLightProfilesWithNaturalLightingSupported; // @synthesize numLightProfilesWithNaturalLightingSupported=_numLightProfilesWithNaturalLightingSupported;
 @property (nonatomic) unsigned int numLightProfilesWithNaturalLightingUsed; // @synthesize numLightProfilesWithNaturalLightingUsed=_numLightProfilesWithNaturalLightingUsed;

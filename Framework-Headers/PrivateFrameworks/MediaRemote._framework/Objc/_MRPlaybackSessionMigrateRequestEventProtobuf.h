@@ -10,6 +10,7 @@
 
 @class NSError, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MRPlaybackSessionMigrateRequestEventProtobuf : PBCodable <NSCopying>
 {
     double _duration;
@@ -26,29 +27,15 @@
     } _has;
 }
 
-@property (nonatomic) double duration; // @synthesize duration=_duration;
-@property (nonatomic) double endTimestamp; // @synthesize endTimestamp=_endTimestamp;
 @property (readonly, nonatomic) NSError *error;
-@property (nonatomic) long long errorCode; // @synthesize errorCode=_errorCode;
-@property (strong, nonatomic) NSString *errorDescription; // @synthesize errorDescription=_errorDescription;
-@property (nonatomic) BOOL hasDuration;
-@property (nonatomic) BOOL hasEndTimestamp;
-@property (nonatomic) BOOL hasErrorCode;
-@property (readonly, nonatomic) BOOL hasErrorDescription;
-@property (readonly, nonatomic) BOOL hasName;
-@property (nonatomic) BOOL hasStartTimestamp;
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (nonatomic) double startTimestamp; // @synthesize startTimestamp=_startTimestamp;
 
 - (void).cxx_destruct;
 - (double)calculatedDuration;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

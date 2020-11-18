@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthMenstrualCycles/HKRedactedDescription-Protocol.h>
 #import <HealthMenstrualCycles/NSCopying-Protocol.h>
 #import <HealthMenstrualCycles/NSSecureCoding-Protocol.h>
 
-@class NSNumber;
+@class NSNumber, NSString;
 
-@interface HKMCStatistics : NSObject <NSSecureCoding, NSCopying>
+@interface HKMCStatistics : NSObject <HKRedactedDescription, NSSecureCoding, NSCopying>
 {
     long long _numberOfCycles;
     NSNumber *_firstMenstruationStartDayIndex;
@@ -28,6 +29,7 @@
 @property (copy, nonatomic) NSNumber *cycleLengthMedian; // @synthesize cycleLengthMedian=_cycleLengthMedian;
 @property (readonly, copy, nonatomic) NSNumber *cycleLengthUpperPercentile; // @synthesize cycleLengthUpperPercentile=_cycleLengthUpperPercentile;
 @property (readonly, copy, nonatomic) NSNumber *firstMenstruationStartDayIndex; // @synthesize firstMenstruationStartDayIndex=_firstMenstruationStartDayIndex;
+@property (readonly, copy) NSString *hk_redactedDescription;
 @property (readonly, copy, nonatomic) NSNumber *lastMenstruationStartDayIndex; // @synthesize lastMenstruationStartDayIndex=_lastMenstruationStartDayIndex;
 @property (readonly, copy, nonatomic) NSNumber *menstruationLengthLowerPercentile; // @synthesize menstruationLengthLowerPercentile=_menstruationLengthLowerPercentile;
 @property (copy, nonatomic) NSNumber *menstruationLengthMedian; // @synthesize menstruationLengthMedian=_menstruationLengthMedian;
@@ -43,7 +45,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNumberOfCycles:(long long)arg1 firstMenstruationStartDayIndex:(id)arg2 lastMenstruationStartDayIndex:(id)arg3 cycleLengthMedian:(id)arg4 cycleLengthLowerPercentile:(id)arg5 cycleLengthUpperPercentile:(id)arg6 menstruationLengthMedian:(id)arg7 menstruationLengthLowerPercentile:(id)arg8 menstruationLengthUpperPercentile:(id)arg9;
 - (BOOL)isEqual:(id)arg1;
-- (id)redactedDescription;
 
 @end
 

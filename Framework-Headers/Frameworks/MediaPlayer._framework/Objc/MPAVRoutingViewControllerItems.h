@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface MPAVRoutingViewControllerItems : NSObject
 {
+    NSDictionary *_routeGrouping;
     NSArray *_localDevices;
     NSArray *_headphones;
     NSArray *_speakersAndTVs;
@@ -18,6 +19,7 @@ __attribute__((visibility("hidden")))
 
 @property (copy, nonatomic) NSArray *headphones; // @synthesize headphones=_headphones;
 @property (copy, nonatomic) NSArray *localDevices; // @synthesize localDevices=_localDevices;
+@property (copy, nonatomic) NSDictionary *routeGrouping; // @synthesize routeGrouping=_routeGrouping;
 @property (copy, nonatomic) NSArray *speakersAndTVs; // @synthesize speakersAndTVs=_speakersAndTVs;
 
 - (void).cxx_destruct;

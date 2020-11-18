@@ -27,7 +27,7 @@
 + (id)_specForDiving;
 + (id)_specForEarlyMomentsWithPersonNodes:(id)arg1;
 + (id)_specForEntertainment;
-+ (id)_specForFoodieWithPersonNodes:(id)arg1 locationName:(id)arg2 allowInspiredTastesTitle:(BOOL)arg3 genericOnly:(BOOL)arg4;
++ (id)_specForFoodieWithPersonNodes:(id)arg1 locationName:(id)arg2 tripTitleLocationType:(unsigned long long)arg3 allowInspiredTastesTitle:(BOOL)arg4 genericOnly:(BOOL)arg5;
 + (id)_specForGathering;
 + (id)_specForHiking;
 + (id)_specForLunch;
@@ -39,7 +39,7 @@
 + (id)_specForThrowbackThursday;
 + (id)_specForWedding;
 + (id)_specForWinterSport;
-+ (id)specCollectionForFoodieMemoryWithPersonNodes:(id)arg1 locationName:(id)arg2 allowInspiredTastesTitle:(BOOL)arg3 genericOnly:(BOOL)arg4;
++ (id)specCollectionForFoodieMemoryWithPersonNodes:(id)arg1 locationName:(id)arg2 tripTitleLocationType:(unsigned long long)arg3 allowInspiredTastesTitle:(BOOL)arg4 genericOnly:(BOOL)arg5;
 + (id)specCollectionForMeaningLabel:(id)arg1;
 + (id)specCollectionForMemoryCategory:(unsigned long long)arg1 subcategory:(unsigned long long)arg2;
 + (id)specCollectionForMemoryCategory:(unsigned long long)arg1 subcategory:(unsigned long long)arg2 personNodes:(id)arg3;

@@ -17,11 +17,11 @@
 @property (readonly, nonatomic) HMDCompanionManager *companionManager; // @synthesize companionManager=_companionManager;
 @property (readonly, nonatomic) HMDWatchManager *watchManager; // @synthesize watchManager=_watchManager;
 
++ (id)logCategory;
 + (long long)priorityForMessage:(id)arg1;
 + (unsigned long long)restriction;
 + (BOOL)transportSupportsDevice:(id)arg1;
 - (void).cxx_destruct;
-- (int)awdTransportType;
 - (BOOL)canSendMessage:(id)arg1;
 - (id)deviceForHandle:(id)arg1;
 - (id)deviceForSenderContext:(id)arg1;
@@ -32,6 +32,7 @@
 - (id)remoteMessageFromMessage:(id)arg1;
 - (id)sendMessage:(id)arg1 fromHandle:(id)arg2 destination:(id)arg3 priority:(long long)arg4 timeout:(double)arg5 options:(unsigned long long)arg6 error:(id *)arg7;
 - (void)service:(id)arg1 account:(id)arg2 incomingMessage:(id)arg3 fromID:(id)arg4 context:(id)arg5;
+- (int)transportType;
 - (id)watchDeviceForDevice:(id)arg1;
 
 @end

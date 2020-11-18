@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString;
+@class NSData, NSString;
 
 @protocol AMSUIWebViewClientInterface
 - (void)frameFinishedLoading;
-- (void)receiveJSObject:(NSString *)arg1 logKey:(NSString *)arg2 completion:(void (^)(id, NSError *))arg3;
+- (void)receiveJSObject:(NSData *)arg1 logKey:(NSString *)arg2 completion:(void (^)(NSData *, NSError *))arg3;
 - (void)webPlugInDidCreateContext;
 - (void)webPlugInWillDestroyContext;
 @end

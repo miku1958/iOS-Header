@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <HealthMenstrualCycles/HKMCAdjacentFlowDay-Protocol.h>
+#import <HealthMenstrualCycles/HKRedactedDescription-Protocol.h>
 #import <HealthMenstrualCycles/NSCopying-Protocol.h>
 #import <HealthMenstrualCycles/NSSecureCoding-Protocol.h>
 
-@class HKQuantity, NSDictionary, NSNumber, NSSet;
+@class HKQuantity, NSDictionary, NSNumber, NSSet, NSString;
 
-@interface HKMCDaySummary : NSObject <HKMCAdjacentFlowDay, NSSecureCoding, NSCopying>
+@interface HKMCDaySummary : NSObject <HKMCAdjacentFlowDay, HKRedactedDescription, NSSecureCoding, NSCopying>
 {
     BOOL _intermenstrualBleeding;
     long long _dayIndex;
@@ -31,6 +32,7 @@
 @property (nonatomic) long long cervicalMucusQuality; // @synthesize cervicalMucusQuality=_cervicalMucusQuality;
 @property (readonly, nonatomic) long long cervicalMucusQualitySampleCount;
 @property (readonly, nonatomic) long long dayIndex; // @synthesize dayIndex=_dayIndex;
+@property (readonly, copy) NSString *hk_redactedDescription;
 @property (nonatomic) BOOL intermenstrualBleeding; // @synthesize intermenstrualBleeding=_intermenstrualBleeding;
 @property (readonly, nonatomic) BOOL isDataLogged;
 @property (readonly, nonatomic) BOOL isSupplementaryDataLogged;
@@ -67,7 +69,6 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isFetched;
 - (BOOL)isUserEnteredDataEqual:(id)arg1;
-- (id)redactedDescription;
 
 @end
 

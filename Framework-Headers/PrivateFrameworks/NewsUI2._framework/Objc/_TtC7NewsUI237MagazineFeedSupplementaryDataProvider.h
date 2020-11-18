@@ -10,6 +10,7 @@
 
 @interface _TtC7NewsUI237MagazineFeedSupplementaryDataProvider : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *positionProvider;
     MISSING_TYPE *blueprintProvider;
     MISSING_TYPE *layoutProvider;
 }

@@ -8,22 +8,18 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface _MRGetVolumeResultMessageProtobuf : PBCodable <NSCopying>
 {
     float _volume;
     CDStruct_731552e5 _has;
 }
 
-@property (nonatomic) BOOL hasVolume;
-@property (nonatomic) float volume; // @synthesize volume=_volume;
-
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

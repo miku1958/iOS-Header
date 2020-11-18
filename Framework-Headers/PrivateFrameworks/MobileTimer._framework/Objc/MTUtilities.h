@@ -12,6 +12,7 @@
 
 + (id)dayAndTimeZoneOffsetStringFromDate:(id)arg1 withTimeZoneOffset:(long long)arg2 timeZoneAbbreviation:(id)arg3 spaceBeforeTimeDesignator:(BOOL)arg4 hoursOnly:(BOOL)arg5 numericOnly:(BOOL)arg6;
 + (void)logMessage:(id)arg1;
++ (id)widgetURL;
 
 @end
 

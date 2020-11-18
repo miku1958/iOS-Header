@@ -39,6 +39,7 @@
 - (struct UIEdgeInsets)layoutMarginsWithUnitConverter:(id)arg1;
 - (long long)minimumColumnLength;
 - (struct _NSRange)overrideColumnLayoutForColumnRange:(struct _NSRange)arg1 inColumnLayout:(id)arg2;
+- (BOOL)requiresSizeChangeForStateChange:(id)arg1 fromState:(id)arg2;
 - (void)saveInfo:(id)arg1 forRenderingPhaseWithIdentifier:(id)arg2;
 - (unsigned long long)shouldIgnoreMarginsForColumnLayout:(id)arg1;
 - (unsigned long long)shouldIgnoreViewportPaddingForColumnLayout:(id)arg1;

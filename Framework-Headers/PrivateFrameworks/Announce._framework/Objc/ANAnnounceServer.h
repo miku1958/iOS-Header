@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class ANAnnounceServiceListener, ANPlaybackSessionServiceListener, ANRapportEventStreamHandler;
+@class ANAnnounceReachabilityServiceListener, ANAnnounceServiceListener, ANPlaybackSessionServiceListener, ANRapportEventStreamHandler;
 
 @interface ANAnnounceServer : NSObject
 {
     ANAnnounceServiceListener *_announceServiceListener;
     ANPlaybackSessionServiceListener *_playbackSessionServiceListener;
+    ANAnnounceReachabilityServiceListener *_announceReachabilityServiceListener;
     ANRapportEventStreamHandler *_rapportEventStreamHandler;
 }
 
+@property (readonly, nonatomic) ANAnnounceReachabilityServiceListener *announceReachabilityServiceListener; // @synthesize announceReachabilityServiceListener=_announceReachabilityServiceListener;
 @property (readonly, nonatomic) ANAnnounceServiceListener *announceServiceListener; // @synthesize announceServiceListener=_announceServiceListener;
 @property (readonly, nonatomic) ANPlaybackSessionServiceListener *playbackSessionServiceListener; // @synthesize playbackSessionServiceListener=_playbackSessionServiceListener;
 @property (readonly, nonatomic) ANRapportEventStreamHandler *rapportEventStreamHandler; // @synthesize rapportEventStreamHandler=_rapportEventStreamHandler;

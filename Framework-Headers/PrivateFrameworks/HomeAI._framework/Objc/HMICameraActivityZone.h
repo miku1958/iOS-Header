@@ -30,14 +30,15 @@
 + (void)submitCoreAnalyticsEvent:(id)arg1 filteringLevel:(id)arg2 numberOfDetectedObjects:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (BOOL)checkIfObjectIsStaticWithBoundingBox:(struct CGRect)arg1 motionDetection:(id)arg2 eventType:(Class)arg3;
-- (BOOL)containsCornersOfRect:(struct CGRect)arg1 withInsetPercentage:(float)arg2;
+- (unsigned long long)activityZoneType;
+- (BOOL)checkIfObjectIsStaticWithBoundingBox:(struct CGRect)arg1 motionDetection:(id)arg2 eventClass:(Class)arg3;
+- (BOOL)containsEvent:(id)arg1 withInsetPercentage:(float)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPoints:(id)arg1;
 - (id)initWithPoints:(id)arg1 isInclusion:(BOOL)arg2;
 - (BOOL)isEqual:(id)arg1;
-- (id)jsonReperesentaionOfDetectedObject:(id)arg1 motionDetection:(id)arg2 eventType:(id)arg3;
+- (id)jsonReperesentaionOfDetectedObject:(id)arg1 motionDetection:(id)arg2 eventClass:(id)arg3;
 - (BOOL)overlapsWithElipseInsideRect:(struct CGRect)arg1;
 - (BOOL)overlapsWithElipseInsideRect:(struct CGRect)arg1 withInsetPercentage:(float)arg2;
 - (BOOL)saveToJsonActivityZones:(id)arg1 motionDetection:(id)arg2 videoFragmentUrl:(id)arg3 frameId:(id)arg4 UUID:(id)arg5 detectionID:(id)arg6 zoneID:(id)arg7;

@@ -6,7 +6,10 @@
 
 #import <PromotedContentUI/_TtC17PromotedContentUI22PromotedContentWebView.h>
 
-@interface _TtC17PromotedContentUI22PromotedContentWebView (PromotedContentUI)
+#import <PromotedContentUI/WKScriptMessageHandler-Protocol.h>
+
+@interface _TtC17PromotedContentUI22PromotedContentWebView (PromotedContentUI) <WKScriptMessageHandler>
+- (void)userContentController:(id)arg1 didReceiveScriptMessage:(id)arg2;
 - (void)webProcessDiagnosticJSOStatusReported:(id)arg1 status:(id)arg2;
 - (void)webProcessMRAIDJSODidCallClose;
 - (void)webProcessMRAIDJSODidCallCreateCalendarEvent:(id)arg1;

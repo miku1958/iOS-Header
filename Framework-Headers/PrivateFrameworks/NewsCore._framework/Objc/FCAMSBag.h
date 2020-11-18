@@ -11,6 +11,7 @@
 }
 
 + (id)bag;
++ (void)registerBagKeySet;
 
 @end
 

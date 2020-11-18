@@ -23,9 +23,9 @@
 	// ObjC -> Swift bridged methods
 WARNING: couldn't find offset 0x502 in binary!
 WARNING: couldn't find offset 0x502 in binary!
-WARNING: couldn't find address 0x68800001ec8 (0x68800001ec8) in binary!
+WARNING: couldn't find address 0x68800001e88 (0x68800001e88) in binary!
 	0x0  @objc SpriteKitViewDelegate.(null) <stripped>
-WARNING: couldn't find address 0x68600001eb8 (0x68600001eb8) in binary!
+WARNING: couldn't find address 0x68600001e78 (0x68600001e78) in binary!
 	0x25029232840  @objc SpriteKitViewDelegate.(null) <stripped>
 WARNING: couldn't find address 0x7270535f3a4d4152 (0x35f3a4d4152) in binary!
 	0x15574666977  @objc SpriteKitViewDelegate.(null) <stripped>

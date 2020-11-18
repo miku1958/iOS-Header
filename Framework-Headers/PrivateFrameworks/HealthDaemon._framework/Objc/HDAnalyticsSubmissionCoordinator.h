@@ -45,7 +45,7 @@
 - (void)cloudSync_reportRebaseTriggeredByDeletionByUser:(BOOL)arg1;
 - (void)cloudSync_reportRestoreForProfile:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 duration:(double)arg4 finishedJournalMerge:(BOOL)arg5;
 - (void)database_reportDatabaseMigrationStatus:(long long)arg1 database:(id)arg2 schemaVersion:(long long)arg3 error:(id)arg4 profileType:(long long)arg5;
-- (void)database_reportHFDCorruptionWithFailureType:(long long)arg1 code:(int)arg2 description:(id)arg3 profile:(id)arg4;
+- (void)database_reportHFDCorruptionWithFailureType:(long long)arg1 code:(int)arg2 description:(id)arg3 profile:(id)arg4 initialRebuildStage:(int)arg5 newRebuildStage:(int)arg6;
 - (void)database_reportJournalEntryInsertedForJournal:(long long)arg1 entryClass:(id)arg2 entrySize:(id)arg3;
 - (void)database_reportSQLiteCorruptionWithResultCode:(int)arg1 type:(long long)arg2 profile:(id)arg3;
 - (void)database_reportUnprotectedDatabaseIdentifier:(id)arg1 doesNotMatchProtectedDatabaseIdentifier:(id)arg2;
@@ -66,6 +66,7 @@
 - (void)nanoSync_reportSyncSuccessWithReason:(id)arg1 options:(unsigned long long)arg2 duration:(double)arg3 profileType:(long long)arg4;
 - (void)performPeriodicActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)periodicActivity:(id)arg1 configureXPCActivityCriteria:(id)arg2;
+- (BOOL)periodicActivityRequiresProtectedData:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)sendEvent:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)submitEvent:(id)arg1;

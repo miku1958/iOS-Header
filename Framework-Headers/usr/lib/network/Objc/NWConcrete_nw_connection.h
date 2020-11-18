@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     unsigned int hit_max_timestamps:1;
     unsigned int should_report_activities:1;
     unsigned int initial_writes_are_non_idempotent:1;
+    unsigned int should_report_probe_parent_stats:1;
     unsigned int should_report_probe_stats:1;
     unsigned int attempted_probe:1;
     NSObject<OS_nw_write_request> *batched_sends;
@@ -85,6 +86,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_array> *errors;
     unsigned int top_id;
     unsigned char top_uuid[16];
+    unsigned char parent_uuid[16];
     unsigned char logging_sequence_number;
 }
 

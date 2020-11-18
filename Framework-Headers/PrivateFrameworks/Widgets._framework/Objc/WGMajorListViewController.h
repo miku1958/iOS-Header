@@ -30,6 +30,7 @@
 @property (readonly, copy, nonatomic) NSArray *extraViews;
 @property (readonly, copy, nonatomic) NSArray *extraViewsContainers;
 @property (readonly, nonatomic) WGWidgetListFooterView *footerView; // @synthesize footerView=_footerView;
+@property (readonly, nonatomic) BOOL hasWidget;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIViewController *headerContentViewController; // @synthesize headerContentViewController=_headerContentViewController;
 @property (readonly, nonatomic) WGWidgetListHeaderView *headerView; // @synthesize headerView=_headerView;

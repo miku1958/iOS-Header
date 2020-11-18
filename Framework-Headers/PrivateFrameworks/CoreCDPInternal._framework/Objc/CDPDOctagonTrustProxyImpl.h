@@ -22,6 +22,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)fetchAllEscrowRecords:(id)arg1 forceFetch:(BOOL)arg2 error:(id *)arg3;
 - (id)fetchEscrowRecords:(id)arg1 forceFetch:(BOOL)arg2 error:(id *)arg3;
 - (id)initWithContext:(id)arg1;
 

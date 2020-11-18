@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     id<AMSUIWebActionRunnable> _action;
     AMSUIWebActivityIndicatorModel *_activityIndicator;
     NSString *_title;
+    long long _style;
     NSDictionary *_underlyingJSObject;
 }
 
@@ -29,11 +30,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) NSDictionary *underlyingJSObject; // @synthesize underlyingJSObject=_underlyingJSObject;
 
 - (void).cxx_destruct;
+- (id)createButtonImageWithNavModel:(id)arg1;
 - (id)createDialogAction;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 

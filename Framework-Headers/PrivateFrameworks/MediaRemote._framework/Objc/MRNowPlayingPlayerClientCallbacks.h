@@ -70,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (void)registerNowPlayingInfoBackedPlaybackQueueDataSourceCallbacks;
 - (void)registerNowPlayingInfoCallbacks:(id)arg1;
 - (void)removeCommandHandlerBlockForKey:(id)arg1;
+- (BOOL)removePlaybackQueueDataSourceCallback:(id)arg1;
 
 @end
 

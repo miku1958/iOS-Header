@@ -18,10 +18,12 @@ __attribute__((visibility("hidden")))
     BOOL _hasAlternateAppearance;
     BOOL _hasFullScreenAppearance;
     AVLayoutItemAttributes *_layoutAttributes;
+    NSString *_currentMicaPackageName;
 }
 
 @property (nonatomic, getter=isCollapsed) BOOL collapsed;
 @property (readonly, nonatomic, getter=isCollapsedOrExcluded) BOOL collapsedOrExcluded;
+@property (strong, nonatomic) NSString *currentMicaPackageName; // @synthesize currentMicaPackageName=_currentMicaPackageName;
 @property (readonly, nonatomic) AVButton *customButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -35,10 +37,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_updateCustomButtonMicaPackage;
 - (void)_updateLayoutItem;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutAttributesDidChange;
+- (void)setPrioritizesVideoDevices:(BOOL)arg1;
 - (void)updateButtonAppearance;
 
 @end

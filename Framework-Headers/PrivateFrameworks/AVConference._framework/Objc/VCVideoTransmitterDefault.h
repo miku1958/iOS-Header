@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 + (double)minKeyFrameGenerationIntervalForMode:(int)arg1;
 + (void)setupBandwidthEstimationOptions:(struct tagBWEOPTION *)arg1 featureString:(id)arg2;
-- (void)collectChannelMetrics:(CDStruct_3ab08b48 *)arg1 interval:(float)arg2;
+- (void)collectChannelMetrics:(CDStruct_1dd2c43e *)arg1 interval:(float)arg2;
 - (void)computeTimestamp:(unsigned int *)arg1 hostTime:(double *)arg2 forFrame:(struct opaqueCMSampleBuffer *)arg3;
 - (void)dealloc;
 - (BOOL)enqueueVideoFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 cameraStatusBits:(unsigned char)arg3;

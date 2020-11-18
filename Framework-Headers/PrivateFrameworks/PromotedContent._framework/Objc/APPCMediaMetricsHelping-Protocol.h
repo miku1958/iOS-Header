@@ -5,7 +5,6 @@
 //
 
 @protocol APPCMediaMetricsHelping
-- (void)mediaChosenWithVideoWidth:(float)arg1 videoHeight:(float)arg2;
 - (void)mediaContractedAtPosition:(double)arg1 fullScreen:(BOOL)arg2;
 - (void)mediaExpandedAtPosition:(double)arg1 fullScreen:(BOOL)arg2;
 - (void)mediaFinished;
@@ -18,5 +17,6 @@
 - (void)mediaStarted;
 - (void)mediaVolumeChangedAtPosition:(double)arg1 volume:(float)arg2;
 - (void)updateVisiblePercentage:(long long)arg1;
+- (void)videoChosenWithVideoWidth:(float)arg1 videoHeight:(float)arg2;
 @end
 

@@ -31,6 +31,7 @@
 @property (strong) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 
 + (BOOL)_dataCollectionAllowedForBundle:(id)arg1;
++ (id)allowedBundles;
 + (id)candidateLogsBasePath;
 + (id)candidateLogsURLForBundle:(id)arg1;
 + (id)dateFormatter;
@@ -42,7 +43,6 @@
 + (id)submittedLogsURL;
 + (id)submittedLogsURLForUser:(id)arg1;
 + (id)submitttedSpotlightReportsError:(id *)arg1;
-+ (id)whitelistedBundles;
 - (void).cxx_destruct;
 - (id)_abandonedItemsFromItems:(id)arg1 withIndexOfEngagedItem:(unsigned long long)arg2;
 - (void)_addQueryInfoToJSONWriter:(struct json_writer *)arg1 withQuery:(id)arg2 cepData:(id)arg3 forClient:(id)arg4 debugInfoAllowed:(BOOL)arg5 keyboardPrimaryLanguage:(id)arg6;

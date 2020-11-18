@@ -43,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (const CDStruct_5b583d96 *)logicalFirstCaret;
 - (const CDStruct_5b583d96 *)logicalLastCaret;
 - (double)offsetForLocation:(id)arg1;
-- (id)rangesBetweenStartingOffset:(double)arg1 endOffset:(double)arg2;
+- (id)rangesBetweenStartingOffset:(double)arg1 endOffset:(double)arg2 continuous:(BOOL)arg3;
 - (id)textRangeOfCharacterAtOffset:(double)arg1 fractionOfDistanceThroughGlyph:(double *)arg2;
 
 @end

@@ -19,6 +19,7 @@
 + (id)capabilitiesForCurrentDeviceWithOptions:(id)arg1;
 + (id)capabilitiesInformationForCurrentDeviceWithOptions:(id)arg1;
 + (unsigned int)currentDeviceHEVCCapabilities;
++ (BOOL)currentDeviceIsEligibleForHDRPlayback;
 + (id)legacyCapabilities;
 + (long long)newFormatsConfiguration;
 + (id)recordSlomoConfigurationWithValidValues:(id)arg1;

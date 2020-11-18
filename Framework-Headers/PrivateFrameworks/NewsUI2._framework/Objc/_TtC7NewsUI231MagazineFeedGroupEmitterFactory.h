@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *tagService;
     MISSING_TYPE *headlineService;
-    MISSING_TYPE *topicClusteringService;
+    MISSING_TYPE *feedTopicClusteringService;
     MISSING_TYPE *personalizationService;
     MISSING_TYPE *magazineCategoryService;
     MISSING_TYPE *context;

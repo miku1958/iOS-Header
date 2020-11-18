@@ -27,6 +27,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
+- (id)initWithContainerSize:(struct CGSize)arg1 traitCollection:(id)arg2;
 - (id)initWithSize:(struct CGSize)arg1 traitCollection:(id)arg2;
 - (id)initWithWidth:(double)arg1 columnSizeCategory:(long long)arg2 maxColumns:(id)arg3;
 

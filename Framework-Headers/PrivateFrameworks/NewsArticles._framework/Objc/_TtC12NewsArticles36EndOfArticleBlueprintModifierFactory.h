@@ -14,8 +14,6 @@
     MISSING_TYPE *featureAvailability;
     MISSING_TYPE *sectionFactory;
     MISSING_TYPE *feedContextFactory;
-    MISSING_TYPE *policyValidator;
-    MISSING_TYPE *layoutCollectionProvider;
 }
 
 @end

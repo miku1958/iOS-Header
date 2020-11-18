@@ -12,6 +12,8 @@
 {
     NSArray *_videoResources;
     NSArray *_playableVideos;
+    BOOL _masterVideoIsPresent;
+    BOOL _masterVideoIsPlayable;
 }
 
 @property (readonly, nonatomic) NSArray *preferredVideoResources;

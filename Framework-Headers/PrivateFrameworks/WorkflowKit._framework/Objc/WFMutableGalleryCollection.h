@@ -14,6 +14,7 @@
     NSString *name;
     NSString *collectionDescription;
     NSArray *workflows;
+    long long minVersion;
     NSDate *modifiedAt;
     NSString *language;
     CKRecordID *base;
@@ -24,6 +25,7 @@
 @property (copy, nonatomic) NSString *collectionDescription; // @synthesize collectionDescription;
 @property (copy, nonatomic) CKRecordID *identifier; // @synthesize identifier;
 @property (copy, nonatomic) NSString *language; // @synthesize language;
+@property (nonatomic) long long minVersion; // @synthesize minVersion;
 @property (strong, nonatomic) NSDate *modifiedAt; // @synthesize modifiedAt;
 @property (copy, nonatomic) NSString *name; // @synthesize name;
 @property (copy, nonatomic) NSString *persistentIdentifier; // @synthesize persistentIdentifier;

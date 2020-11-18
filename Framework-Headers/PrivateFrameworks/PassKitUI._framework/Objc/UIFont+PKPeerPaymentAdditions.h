@@ -9,7 +9,6 @@
 @interface UIFont (PKPeerPaymentAdditions)
 + (BOOL)pk_loadFontWithFileName:(id)arg1;
 + (BOOL)pk_loadPeerPaymentCashFont;
-+ (BOOL)pk_loadPeerPaymentChiseledCashFont;
 + (BOOL)pk_loadTextCondensedSemiboldCashFont;
 + (id)pk_peerPaymentCashFontOfSize:(double)arg1;
 + (id)pk_peerPaymentChiseledCashFontOfSize:(double)arg1;

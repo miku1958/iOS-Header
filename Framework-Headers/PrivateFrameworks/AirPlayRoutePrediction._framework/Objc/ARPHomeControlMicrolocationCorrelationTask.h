@@ -6,26 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class ARPHomeControlCorrelationUtilities, NSString;
 @protocol _DKKnowledgeQuerying;
 
 @interface ARPHomeControlMicrolocationCorrelationTask : NSObject
 {
     NSString *_file;
     id<_DKKnowledgeQuerying> _knowledgeStore;
+    ARPHomeControlCorrelationUtilities *_utilities;
 }
 
 @property (readonly, copy, nonatomic) NSString *file; // @synthesize file=_file;
 @property (readonly, nonatomic) id<_DKKnowledgeQuerying> knowledgeStore; // @synthesize knowledgeStore=_knowledgeStore;
+@property (strong, nonatomic) ARPHomeControlCorrelationUtilities *utilities; // @synthesize utilities=_utilities;
 
 - (void).cxx_destruct;
 - (void)execute;
-- (id)homeKitAccessoriesWithPredicate:(id)arg1 sortStartDateAscending:(BOOL)arg2;
-- (id)homeKitEventsWithPredicate:(id)arg1 sortStartDateAscending:(BOOL)arg2;
-- (id)homeKitScenesWithPredicate:(id)arg1 sortStartDateAscending:(BOOL)arg2;
 - (id)initWithCorrelationsFile:(id)arg1 knowledgeStore:(id)arg2;
 - (void)registerARPHomeControlNotificationTask;
-- (void)writeArchive:(id)arg1 toFilePath:(id)arg2;
 
 @end
 

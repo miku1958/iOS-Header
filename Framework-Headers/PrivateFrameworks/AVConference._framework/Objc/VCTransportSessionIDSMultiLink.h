@@ -33,13 +33,13 @@ __attribute__((visibility("hidden")))
 - (void)handleLinkConnectedWithInfo:(id)arg1;
 - (void)handleLinkDisconnectedWithInfo:(id)arg1;
 - (void)handleProbingResponse:(id)arg1;
-- (void)handleUpdateRemoteSessionInfo:(id)arg1;
+- (void)handleSessionInfoResponse:(id)arg1;
 - (id)initWithCallID:(unsigned int)arg1 reportingAgent:(id)arg2;
 - (id)initWithCallID:(unsigned int)arg1 requireEncryptionInfo:(BOOL)arg2 reportingAgent:(id)arg3 notificationQueue:(id)arg4 isMultiwaySession:(BOOL)arg5;
 - (int)onStart;
 - (void)onStop;
 - (void)optOutAllStreamsForConnection:(id)arg1;
-- (void)primaryConnectionChanged:(id)arg1 oldPrimaryConnection:(id)arg2;
+- (void)primaryConnectionChanged:(id)arg1 oldPrimaryConnection:(id)arg2 activeConnection:(id)arg3;
 - (void)queryProbingResultsWithOptions:(id)arg1;
 - (void)resetParticipantGenerationCounter;
 - (void)setDefaultLink:(id)arg1;

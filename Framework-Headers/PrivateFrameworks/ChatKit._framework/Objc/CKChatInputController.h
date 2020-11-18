@@ -204,6 +204,7 @@
 - (long long)messageEntryViewHighLightInputButton:(id)arg1;
 - (void)messageEntryViewPhotoButtonHit:(id)arg1;
 - (void)messageEntryViewPhotoButtonTouchDown:(id)arg1;
+- (void)messageEntryViewPhotoButtonTouchUpOutside:(id)arg1;
 - (void)messageEntryViewSelectedAppMenuItem:(id)arg1;
 - (void)notifyBrowserViewControllerOfMatchingNewMessages:(id)arg1;
 - (void)openAppExtensionWithAdamID:(id)arg1;

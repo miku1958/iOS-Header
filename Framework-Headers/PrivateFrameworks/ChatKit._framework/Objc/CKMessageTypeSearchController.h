@@ -38,6 +38,7 @@
 - (void)deleteAttachmentForResult:(id)arg1;
 - (Class)footerClass;
 - (void)fractionalWidth:(double *)arg1 count:(unsigned long long *)arg2 forLayoutWidth:(unsigned long long)arg3;
+- (id)itemProviderForSearchResult:(id)arg1;
 - (unsigned long long)maxResultsForMode:(unsigned long long)arg1;
 - (id)menuElementsForResult:(id)arg1 atRect:(struct CGRect)arg2;
 - (void)postProcessAndUpdateResults:(id)arg1;

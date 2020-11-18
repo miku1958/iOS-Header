@@ -8,7 +8,7 @@
 
 #import <HomeUI/HFHomeObserver-Protocol.h>
 
-@class HFItem, HMHome, HUSoftwareUpdateFetchItem, HUSoftwareUpdateItemModule, NAFuture, NSString;
+@class HFItem, HMHome, HUFirmwareUpdateItemModule, HUSoftwareUpdateFetchItem, HUSoftwareUpdateItemModule, NAFuture, NSString;
 
 @interface HUSoftwareUpdateStandaloneItemManager : HFItemManager <HFHomeObserver>
 {
@@ -17,12 +17,14 @@
     HUSoftwareUpdateItemModule *_softwareUpdateModule;
     NAFuture *_softwareUpdateFetchFuture;
     HMHome *_overrideHome;
+    HUFirmwareUpdateItemModule *_firmwareUpdateModule;
 }
 
 @property (strong, nonatomic) HFItem *autoUpdateItem; // @synthesize autoUpdateItem=_autoUpdateItem;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) HUSoftwareUpdateFetchItem *fetchItem; // @synthesize fetchItem=_fetchItem;
+@property (strong, nonatomic) HUFirmwareUpdateItemModule *firmwareUpdateModule; // @synthesize firmwareUpdateModule=_firmwareUpdateModule;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMHome *overrideHome; // @synthesize overrideHome=_overrideHome;
 @property (strong, nonatomic) NAFuture *softwareUpdateFetchFuture; // @synthesize softwareUpdateFetchFuture=_softwareUpdateFetchFuture;

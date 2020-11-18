@@ -78,6 +78,7 @@
 - (BOOL)requiresRemoteExecution;
 - (BOOL)requiresShowsWhenRun;
 - (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)rootCauseErrorFromError:(id)arg1;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (BOOL)runInProcess;
 - (BOOL)shouldDonateIntent:(id)arg1;

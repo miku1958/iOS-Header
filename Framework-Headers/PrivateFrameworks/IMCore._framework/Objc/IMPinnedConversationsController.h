@@ -30,17 +30,18 @@
 + (id)requiredKeys;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)_dictionaryWithPinnedConversationIdentifiers:(id)arg1 timestamp:(id)arg2;
+- (id)_dictionaryWithPinnedConversationIdentifiers:(id)arg1 updateReason:(id)arg2 timestamp:(id)arg3;
 - (void)_fetchUbiquitousPinConfiguration:(CDUnknownBlockType)arg1;
 - (id)_locallyStoredPinConfiguration;
 - (void)_postDeferredPinnedConversationsDidChangeNotificationIfNecessary;
 - (void)_postPinnedConversationsDidChangeNotification;
 - (id)_ubiquitousPinConfigurationInStore:(id)arg1;
 - (void)_updateLocalStoreWithPinConfiguration:(id)arg1;
+- (void)_updatePinningIdentifiersUsingOldToNewPinningIdentifierMapIfNecessary:(id)arg1;
 - (void)_updateUbiquitousStoreWithPinConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)conversationWasDeletedWithIdentifier:(id)arg1;
 - (void)conversationsWereDeletedWithIdentifiers:(id)arg1;
-- (id)dictionaryWithPinnedConversationIdentifiers:(id)arg1;
+- (id)dictionaryWithPinnedConversationIdentifiers:(id)arg1 updateReason:(id)arg2;
 - (void)fetchMostUpToDatePinConfiguration:(CDUnknownBlockType)arg1;
 - (void)fetchPinnedConversationIdentifiersFromLocalStore;
 - (void)forceSynchronizeUbiquitousStore;
@@ -57,12 +58,12 @@
 - (id)pinnedConversationIdentifiersFromPinConfiguration:(id)arg1;
 - (BOOL)pinnedConversationsContainsChat:(id)arg1;
 - (BOOL)pinnedConversationsContainsPinningIdentifier:(id)arg1;
-- (void)setPinnedConversationIdentifiers:(id)arg1;
-- (void)setPinnedConversationIdentifiers:(id)arg1 shouldUpdateStores:(BOOL)arg2;
+- (void)setPinnedConversationIdentifiers:(id)arg1 withUpdateReason:(id)arg2;
+- (void)setPinnedConversationIdentifiers:(id)arg1 withUpdateReason:(id)arg2 shouldUpdateStores:(BOOL)arg3;
 - (BOOL)shouldSync;
 - (BOOL)shouldUpdateExistingPinConfig:(id)arg1 withProposedPinConfig:(id)arg2;
 - (BOOL)shouldWriteProposedPinConfiguration:(id)arg1 toUbiquitousStoreWithExistingPinConfiguration:(id)arg2;
-- (void)synchronizeDataStores;
+- (void)synchronizeLocalDataStore;
 - (void)updateStoresWithPinConfiguration:(id)arg1;
 
 @end

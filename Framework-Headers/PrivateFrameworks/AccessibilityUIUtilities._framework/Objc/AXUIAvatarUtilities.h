@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)avatarFrameworksArePresent;
 + (id)descriptionForAnimoji:(id)arg1;
 + (id)descriptionForAvatarWithRecord:(id)arg1 includeVideoPrefix:(BOOL)arg2;
 + (id)descriptionForMemoji:(id)arg1;

@@ -31,9 +31,11 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *powerlogUpdateService;
     MISSING_TYPE *locationService;
     MISSING_TYPE *subscriptions;
+    MISSING_TYPE *servicesBootstrapExtension;
     MISSING_TYPE *finishLaunchingToken;
     MISSING_TYPE *enableGarbageCollection;
     MISSING_TYPE *appAuthorizationMonitor;
+    MISSING_TYPE *reaperNotificationQueue;
 }
 
 - (void).cxx_destruct;

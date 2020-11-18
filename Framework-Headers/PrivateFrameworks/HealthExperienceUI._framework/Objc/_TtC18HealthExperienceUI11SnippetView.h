@@ -13,7 +13,8 @@
     MISSING_TYPE *valueLabel;
     MISSING_TYPE *supplementaryValueLabel;
     MISSING_TYPE *trailingView;
-    MISSING_TYPE *valueLabelTopConstraint;
+    MISSING_TYPE *topInsetConstraints;
+    MISSING_TYPE *trailingViewConstraints;
     MISSING_TYPE *supplementaryLabelBottomConstraint;
 }
 

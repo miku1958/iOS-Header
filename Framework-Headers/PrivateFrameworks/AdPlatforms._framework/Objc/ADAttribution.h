@@ -19,6 +19,7 @@
 - (id)init;
 - (void)initiateRequestOnConnection:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)requestAttributionDetailsWithBlock:(CDUnknownBlockType)arg1;
+- (void)setServerToTest:(long long)arg1;
 - (void)setStocksAdEnabled:(BOOL)arg1;
 
 @end

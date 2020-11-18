@@ -6,15 +6,14 @@
 
 #import <MetricsKit/NSObject-Protocol.h>
 
-@class MTPromise, NSDate, NSDictionary, NSString;
-@protocol NSObject;
+@class MTPromise, NSArray, NSDictionary, NSString;
 
 @protocol MTIDService <NSObject>
-- (MTPromise *)IDFieldsForTopic:(NSString *)arg1 date:(NSDate *)arg2;
 - (MTPromise *)IDFieldsForTopic:(NSString *)arg1 options:(NSDictionary *)arg2;
-- (id<NSObject>)observeIDForTopic:(NSString *)arg1 type:(long long)arg2 usingBlock:(void (^)(id, long long, id<MTID>, NSError *))arg3;
-- (void)queryIDForTopic:(NSString *)arg1 type:(long long)arg2 date:(NSDate *)arg3 completion:(void (^)(id<MTID>, NSError *))arg4;
+- (void)IDFieldsForTopic:(NSString *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)performMaintenanceWithCompletion:(void (^)(NSError *))arg1;
 - (void)queryIDForTopic:(NSString *)arg1 type:(long long)arg2 options:(NSDictionary *)arg3 completion:(void (^)(id<MTID>, NSError *))arg4;
-- (void)removeIDObserver:(id<NSObject>)arg1;
+- (MTPromise *)resetIDForTopics:(NSArray *)arg1 options:(NSDictionary *)arg2;
+- (void)resetIDForTopics:(NSArray *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
 @end
 

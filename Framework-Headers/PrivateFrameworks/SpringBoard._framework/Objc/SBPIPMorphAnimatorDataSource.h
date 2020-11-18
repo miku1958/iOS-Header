@@ -28,9 +28,9 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithTargetProcessIdentifier:(int)arg1 scenePersistenceIdentifier:(id)arg2 gestureInitiated:(BOOL)arg3;
-- (BOOL)isContentFromFillGravityForAnimator:(id)arg1;
 - (struct CGRect)sourceAppLayoutFrameForAnimator:(id)arg1;
 - (struct CGRect)sourceContentFrameForAnimator:(id)arg1;
+- (double)sourceCornerRadiusForAnimator:(id)arg1;
 - (double)targetFinalCornerRadiusForAnimator:(id)arg1;
 - (struct CGRect)targetFinalFrameForAnimator:(id)arg1;
 

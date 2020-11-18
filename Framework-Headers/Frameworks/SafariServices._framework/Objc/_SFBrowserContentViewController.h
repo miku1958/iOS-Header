@@ -43,6 +43,8 @@
     WBSDigitalHealthManager *_cachedDigitalHealthManager;
     _SFDigitalHealthViewController *_digitalHealthViewController;
     NSURL *_currentUsageTrackingURL;
+    WKWebView *_previewWebView;
+    NSTimer *_previewCloseTimer;
     _SFBrowserView *_browserView;
     SFReaderViewController *_readerViewController;
     BOOL _showingReader;
@@ -211,6 +213,7 @@
 - (BOOL)_canTranslateWebpages;
 - (void)_cancelPendingUpdateUserActivityTimer;
 - (void)_cleanUpAfterRedirectToExternalApp;
+- (void)_closePreviewDocumentTimerFired:(id)arg1;
 - (id)_committedDomainForPreferences;
 - (void)_completeRedirectToExternalNavigationResult:(id)arg1 fromOriginalRequest:(id)arg2 dialogResult:(long long)arg3;
 - (id)_contextMenuConfigurationForWebView:(id)arg1 element:(id)arg2;
@@ -245,6 +248,7 @@
 - (void)_initialLoadFinishedWithSuccess:(BOOL)arg1;
 - (void)_internalWebViewController:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
 - (void)_invalidateEVOrganizationName;
+- (void)_invalidatePreviewCloseTimer;
 - (void)_invalidateUserActivity;
 - (BOOL)_isPreviewing;
 - (BOOL)_isSecure;
@@ -263,6 +267,7 @@
 - (BOOL)_personaShouldUseScreenTime;
 - (void)_presentActivityViewController;
 - (void)_presentSaveWebpageViewController;
+- (void)_presentTranslationConsentAlertWithType:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_queueAlertForRedirectToExternalNavigationResult:(id)arg1 fromOriginalRequest:(id)arg2 isMainFrame:(BOOL)arg3 promptPolicy:(long long)arg4 userAction:(id)arg5;
 - (id)_quickLookDocumentForDownload:(id)arg1;
 - (BOOL)_readerViewControllerNeedsSetUp;

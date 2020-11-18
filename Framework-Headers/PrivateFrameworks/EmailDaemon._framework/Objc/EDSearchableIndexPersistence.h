@@ -61,6 +61,7 @@
 - (id)_searchableIndexMessageIndexingTypes;
 - (void)attachmentItemMetadataForAttachmentID:(id)arg1 messagePersistentID:(id)arg2 name:(id)arg3 mailboxID:(long long)arg4 result:(CDUnknownBlockType)arg5;
 - (id)childIdentifiersToRemoveFromSearchableIndex:(id)arg1 whenRemovingParentIdentifiers:(id)arg2;
+- (void)clearOrphanedSearchableMessagesFromDatabase;
 - (long long)indexingTypeForSearchableIndex:(id)arg1 item:(id)arg2;
 - (id)initWithDatabase:(id)arg1 hookResponder:(id)arg2;
 - (id)messagesWhere:(id)arg1 sortedBy:(id)arg2 limit:(long long)arg3;

@@ -12,11 +12,13 @@
 {
     NSMutableDictionary *_fields;
     BOOL _isUpdated;
+    BOOL _isLogged;
     NSString *_name;
     NSDictionary *_desc;
 }
 
 @property (strong) NSDictionary *desc; // @synthesize desc=_desc;
+@property BOOL isLogged; // @synthesize isLogged=_isLogged;
 @property (strong) NSString *name; // @synthesize name=_name;
 
 - (void).cxx_destruct;

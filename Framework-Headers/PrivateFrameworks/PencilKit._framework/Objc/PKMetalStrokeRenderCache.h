@@ -8,24 +8,26 @@
 
 #import <PencilKit/PKStrokeRenderCache-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString;
+@class NSArray, NSMutableArray, NSString, PKInk;
 
 @interface PKMetalStrokeRenderCache : NSObject <PKStrokeRenderCache>
 {
     NSMutableArray *_buffers;
     unsigned long long _totalCost;
+    PKInk *_ink;
 }
 
 @property (readonly, nonatomic) NSArray *buffers; // @dynamic buffers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) PKInk *ink; // @synthesize ink=_ink;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)addBuffer:(id)arg1;
 - (unsigned long long)cacheCost;
-- (id)init;
+- (id)initWithInk:(id)arg1;
 - (BOOL)isCompatibleWithInk:(id)arg1;
 - (BOOL)lockPurgeableResourcesAddToSet:(id)arg1;
 - (BOOL)needsCompute;

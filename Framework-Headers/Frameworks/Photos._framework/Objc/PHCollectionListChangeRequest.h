@@ -14,6 +14,7 @@
 @interface PHCollectionListChangeRequest : PHChangeRequest <PHInsertChangeRequest, PHUpdateChangeRequest>
 {
     PHCollectionList *_originalCollectionList;
+    BOOL _isTopLevelUserCollection;
     PHRelationshipChangeRequestHelper *_collectionsHelper;
 }
 
@@ -27,6 +28,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL isNewRequest;
+@property (nonatomic) BOOL isTopLevelUserCollection; // @synthesize isTopLevelUserCollection=_isTopLevelUserCollection;
 @property (readonly, nonatomic) NSString *managedEntityName;
 @property (readonly, getter=isMutated) BOOL mutated;
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
@@ -39,6 +41,7 @@
 + (void)_deleteCollectionLists:(id)arg1 withOperation:(long long)arg2 topLevelSelector:(SEL)arg3;
 + (id)changeRequestForCollectionList:(id)arg1;
 + (id)changeRequestForCollectionList:(id)arg1 childCollections:(id)arg2;
++ (id)changeRequestForTopLevelCollectionListUserCollections:(id)arg1;
 + (id)creationRequestForCollectionListWithTitle:(id)arg1;
 + (void)deleteCollectionLists:(id)arg1;
 + (void)expungeCollectionLists:(id)arg1;

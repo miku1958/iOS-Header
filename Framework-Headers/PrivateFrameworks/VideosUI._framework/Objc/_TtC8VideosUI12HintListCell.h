@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VideosUI/_TtC8VideosUI12BaseListCell.h>
+#import <VideosUI/VUIBaseListViewCell.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI12HintListCell : _TtC8VideosUI12BaseListCell
+@interface _TtC8VideosUI12HintListCell : VUIBaseListViewCell
 {
-    MISSING_TYPE *titleLabel;
     MISSING_TYPE *layout;
+    MISSING_TYPE *shouldShowBottomSeparator;
+    MISSING_TYPE *titleLabel;
     MISSING_TYPE *$__lazy_storage_$_accessoryImageView;
-    MISSING_TYPE *bottomSeparatorView;
+    MISSING_TYPE *$__lazy_storage_$_bottomSeparatorView;
 }
 
 - (void).cxx_destruct;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)setHighlighted:(BOOL)arg1;
+- (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

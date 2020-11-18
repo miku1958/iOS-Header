@@ -14,7 +14,7 @@
 #import <AvatarUI/AVTStickerPagingControllerDelegate-Protocol.h>
 #import <AvatarUI/AVTUIViewSnapshotProvider-Protocol.h>
 
-@class AVTAvatarPickerDataSource, AVTAvatarRecordDataSource, AVTPaddleView, AVTSimpleAvatarPicker, AVTStickerPagingController, AVTUIEnvironment, NSString, UIView;
+@class AVTAvatarPickerDataSource, AVTAvatarRecordDataSource, AVTPaddleView, AVTSimpleAvatarPicker, AVTStickerPagingController, AVTStickerTaskScheduler, AVTUIEnvironment, NSString, UIView;
 @protocol AVTAvatarStore, AVTPresenterDelegate, AVTStickerDisclosureValidationDelegate, AVTUILogger;
 
 @interface AVTStickerViewController : UIViewController <AVTStickerPagingControllerDelegate, AVTAvatarPickerDelegate, AVTAvatarRecordDataSourceObserver, AVTPresenterDelegate, AVTPaddleViewDelegate, AVTObjectViewController, AVTUIViewSnapshotProvider>
@@ -32,6 +32,7 @@
     AVTStickerPagingController *_pagingController;
     NSString *_selectedRecordIdentifier;
     AVTPaddleView *_paddleView;
+    AVTStickerTaskScheduler *_taskScheduler;
 }
 
 @property (nonatomic) BOOL allowEditing; // @synthesize allowEditing=_allowEditing;
@@ -51,6 +52,7 @@
 @property (strong, nonatomic) NSString *selectedRecordIdentifier; // @synthesize selectedRecordIdentifier=_selectedRecordIdentifier;
 @property (readonly, nonatomic) id<AVTAvatarStore> store; // @synthesize store=_store;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) AVTStickerTaskScheduler *taskScheduler; // @synthesize taskScheduler=_taskScheduler;
 @property (readonly, nonatomic) UIView *view;
 
 + (double)headerEdgeMarginForEnvironment:(id)arg1;

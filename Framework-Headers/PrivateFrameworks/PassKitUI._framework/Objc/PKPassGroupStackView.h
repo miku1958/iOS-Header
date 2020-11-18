@@ -95,7 +95,10 @@
     NSMutableDictionary *_animatorsByGroupID;
     PKPaymentService *_paymentService;
     PKPassFooterView *_passFooterView;
-    BOOL _showingFooter;
+    BOOL _passFooterViewVisible;
+    double _passFooterViewAlpha;
+    unsigned int _passFooterViewOutstandingAnimations;
+    unsigned int _passFooterViewVisibilityToken;
     BOOL _invalidated;
     PKPassthroughView *_headerContainerView;
     PKPassthroughView *_subheaderContainerView;
@@ -171,11 +174,11 @@
 - (void)_autoscrollForReordering:(id)arg1;
 - (void)_autoscrollIfNecessary;
 - (void)_beginGroupPanWithGestureRecognizer:(id)arg1;
-- (BOOL)_canShowPassFooter;
 - (void)_cancelSuspendedTransition;
 - (void)_cancelTransition;
 - (void)_cleanUpAnimatorForGroupView:(id)arg1;
 - (struct CGSize)_contentSize;
+- (id)_createPassFooterConfigurationForPassView:(id)arg1 withContext:(id)arg2;
 - (id)_createSortedGroupViewIndexes;
 - (id)_createStackedIndices;
 - (void)_disableScrollingAndNormalizeContentOffset;
@@ -187,7 +190,6 @@
 - (void)_executeCompletionHandlers:(id)arg1 cancelled:(BOOL)arg2;
 - (id)_factoryForExternalPresentation;
 - (id)_firstHeaderContext;
-- (long long)_footerStateForPassView:(id)arg1 withContext:(id)arg2;
 - (struct CGRect)_frameForFooterViewForPassView:(id)arg1;
 - (id)_frontmostPastViewForGroupIndex:(unsigned long long)arg1;
 - (void)_generateModalGroupPileWithVisibleIndexes:(struct _NSRange)arg1 reservePlaceForModalGroup:(BOOL)arg2;
@@ -221,8 +223,7 @@
 - (double)_nativeYForGroupInTableAtIndex:(unsigned long long)arg1;
 - (void)_notifyDelegateOfStateChange:(BOOL)arg1;
 - (double)_opacityForGroupAtIndex:(unsigned long long)arg1 forState:(long long)arg2;
-- (double)_passFooterAlphaWhenVisible;
-- (void)_pauseDynamicPassIfNecessaryWithGroupView:(id)arg1;
+- (BOOL)_pauseStateForGroupView:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)_paymentDidReceiveSuccessfulTransactionNotification:(id)arg1;
 - (double)_pileAscenderHeight;
 - (double)_pileAscenderHeightForGroupViewInPile:(id)arg1;
@@ -263,8 +264,6 @@
 - (BOOL)_shouldRampForPass:(id)arg1;
 - (BOOL)_shouldSwitchToTableStateFromExternalDismissal;
 - (BOOL)_shouldTablePresentationScroll;
-- (void)_showPassFooterView:(BOOL)arg1 forPassView:(id)arg2 animated:(BOOL)arg3 delay:(double)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)_showPassFooterView:(BOOL)arg1 forPassView:(id)arg2 context:(id)arg3 delay:(double)arg4 completion:(CDUnknownBlockType)arg5;
 - (unsigned long long)_startVisibleIndex;
 - (void)_stopAutoscrollTimer;
 - (void)_suspendTransition;
@@ -289,11 +288,9 @@
 - (BOOL)_updateHeaderContext:(id *)arg1 toContext:(id)arg2 animated:(BOOL)arg3;
 - (void)_updateHeaderFooterState:(BOOL)arg1 layout:(BOOL)arg2;
 - (void)_updateModalGroupViewFromTableToExternalPresentationWithFactory:(id)arg1;
-- (void)_updatePassFooterViewAnimated:(BOOL)arg1;
-- (void)_updatePassFooterViewIfNecessaryAnimated:(BOOL)arg1 withBecomeVisibleDelay:(double)arg2;
 - (void)_updatePassFooterViewIfNecessaryWithContext:(id)arg1 becomeVisibleDelay:(double)arg2;
+- (void)_updatePassFooterViewWithConfiguration:(id)arg1 context:(id)arg2 animated:(BOOL)arg3 reload:(BOOL)arg4 delay:(double)arg5;
 - (void)_updatePassFooterViewWithContext:(id)arg1;
-- (void)_updatePassViewMotionState;
 - (void)_updatePausedState;
 - (void)_updatePositionForGroupView:(id)arg1 toPosition:(struct CGPoint)arg2 withSpringFactory:(id)arg3;
 - (void)_updatePositionForGroupView:(id)arg1 toPresentationState:(long long)arg2 withSpringFactory:(id)arg3;
@@ -371,7 +368,7 @@
 - (void)paymentDeviceDidBecomeUnavailable;
 - (void)presentDiff:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentPassWithUniqueID:(id)arg1;
-- (void)presentPassWithUniqueID:(id)arg1 withContext:(id)arg2;
+- (void)presentPassWithUniqueID:(id)arg1 withContext:(id)arg2 animated:(BOOL)arg3;
 - (BOOL)presentedPassCanPerformPayment;
 - (void)reloadData;
 - (void)resetBrightness;
@@ -381,8 +378,7 @@
 - (void)scrollUpTest;
 - (void)setFooterSuppressed:(BOOL)arg1 withContext:(id)arg2;
 - (void)setPresentationState:(long long)arg1 animated:(BOOL)arg2;
-- (void)setPresentationState:(long long)arg1 animated:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (void)setPresentationState:(long long)arg1 context:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)setPresentationState:(long long)arg1 withContext:(id)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setTableModalPresentationEnabled:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)stageGroupInPresentationState:(long long)arg1 atIndex:(unsigned long long)arg2;
 - (id)subheaderForPassType:(unsigned long long)arg1;

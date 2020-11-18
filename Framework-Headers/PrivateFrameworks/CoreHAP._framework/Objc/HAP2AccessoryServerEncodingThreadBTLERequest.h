@@ -9,12 +9,14 @@
 @interface HAP2AccessoryServerEncodingThreadBTLERequest : HAPBTLERequest
 {
     unsigned char _threadRequestType;
+    long long _writeOptions;
     id _requestedValue;
 }
 
 @property (readonly, nonatomic) BOOL expectsResponseBody;
 @property (readonly, nonatomic) id requestedValue; // @synthesize requestedValue=_requestedValue;
 @property (readonly, nonatomic) unsigned char threadRequestType; // @synthesize threadRequestType=_threadRequestType;
+@property (readonly, nonatomic) long long writeOptions; // @synthesize writeOptions=_writeOptions;
 
 + (id)attributeDatabaseRequest;
 + (id)executeWriteRequestForCharacteristic:(id)arg1 value:(id)arg2 options:(long long)arg3 error:(id *)arg4;

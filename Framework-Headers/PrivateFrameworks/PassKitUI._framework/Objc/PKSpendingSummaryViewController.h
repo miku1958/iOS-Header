@@ -10,7 +10,7 @@
 #import <PassKitUI/PKSpendingSummaryFetcherObserver-Protocol.h>
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSCalendar, NSIndexSet, NSMutableDictionary, NSMutableSet, NSObject, NSString, PKAccount, PKPaymentPass, PKSpendingSummaryFetcher, PKSpendingSummaryFooterContainer, PKTransactionSource, UIBarButtonItem, UIScrollView;
+@class NSArray, NSCalendar, NSIndexSet, NSMutableDictionary, NSMutableSet, NSObject, NSString, PKAccount, PKPaymentPass, PKSpendingSummaryFetcher, PKSpendingSummaryFooterContainer, PKTransactionSource, UIScrollView;
 @protocol OS_dispatch_source, PKSpendingSummaryViewControllerDelegate;
 
 @interface PKSpendingSummaryViewController : UIViewController <PKSpendingSummaryFetcherObserver, UIScrollViewDelegate, PKSpendingSingleSummaryViewControllerDelegate>
@@ -22,6 +22,7 @@
     NSCalendar *_currentCalendar;
     NSArray *_weeks;
     NSArray *_months;
+    NSArray *_years;
     NSString *_navTitle;
     NSArray *_currentDataSet;
     unsigned long long _currentSummaryType;
@@ -33,7 +34,6 @@
     BOOL _isDragging;
     BOOL _hasPrefetchedLeft;
     BOOL _hasPrefetchedRight;
-    UIBarButtonItem *_changeModeButton;
     UIScrollView *_scrollView;
     double _collectionViewVerticalOffset;
     struct CGRect _previousBounds;
@@ -62,14 +62,14 @@
 
 - (void).cxx_destruct;
 - (BOOL)_canReloadVCs;
-- (void)_changeMode;
+- (void)_changeModeTo:(unsigned long long)arg1;
 - (id)_dequeueNonVisibleVCForIndex:(unsigned long long)arg1;
 - (id)_dequeueVCForIndex:(unsigned long long)arg1;
 - (double)_endOfItemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)_indexAtContentOffset:(struct CGPoint)arg1;
 - (void)_layoutCollectionViews;
 - (void)_loadSummariesForContentOffset:(struct CGPoint)arg1;
-- (void)_performModeChange;
+- (unsigned long long)_newDataSetIndexAfterTransitionFromMode:(unsigned long long)arg1 toMode:(unsigned long long)arg2;
 - (unsigned long long)_primaryIndexAtOffset:(struct CGPoint)arg1;
 - (id)_recoverUnusedVC;
 - (void)_reloadDataForVCAtIndex:(unsigned long long)arg1 swap:(BOOL)arg2;
@@ -81,13 +81,12 @@
 - (void)_switchPrimaryIndexToIndex:(unsigned long long)arg1;
 - (double)_transitionProgress;
 - (void)_updateAlphaAndFooterDuringTransition;
-- (void)_updateNavBarContent;
 - (void)_updatePrimaryViewScrolling;
 - (void)_updateScrollViewContentSize;
 - (id)_visibileIndicesAtContentOffset:(struct CGPoint)arg1;
 - (double)_yPositionForNonPrimaryVCs;
 - (void)dealloc;
-- (id)initWithTransactionSource:(id)arg1 account:(id)arg2 fetcher:(id)arg3 weeks:(id)arg4 months:(id)arg5 type:(unsigned long long)arg6 unit:(unsigned long long)arg7 currentMonthTransactions:(id)arg8 upcomingScheduledPayments:(id)arg9;
+- (id)initWithTransactionSource:(id)arg1 account:(id)arg2 fetcher:(id)arg3 weeks:(id)arg4 months:(id)arg5 years:(id)arg6 type:(unsigned long long)arg7 unit:(unsigned long long)arg8 currentMonthTransactions:(id)arg9 upcomingScheduledPayments:(id)arg10;
 - (void)invalidatedSpendingSummaryOfType:(unsigned long long)arg1 startingWithDate:(id)arg2;
 - (void)invalidatedSummariesAvailable;
 - (void)scrollViewDidEndDecelerating:(id)arg1;

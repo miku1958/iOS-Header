@@ -417,6 +417,12 @@ struct Deque<WTF::Ref<WebCore::MediaSample, WTF::DumbPtrTraits<WebCore::MediaSam
     struct VectorBuffer<WTF::Ref<WebCore::MediaSample, WTF::DumbPtrTraits<WebCore::MediaSample>>, 0, WTF::FastMalloc> _field3;
 };
 
+struct Deque<WTF::RetainPtr<opaqueCMSampleBuffer *>, 0> {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    struct VectorBuffer<WTF::RetainPtr<opaqueCMSampleBuffer *>, 0, WTF::FastMalloc> _field3;
+};
+
 struct Deque<double, 0> {
     unsigned long long _field1;
     unsigned long long _field2;
@@ -1638,6 +1644,10 @@ struct MediaRecorderPrivateWriter {
     CDStruct_198678f7 _field18;
     BOOL _field19;
     struct RetainPtr<WebAVAssetWriterDelegate> _field20;
+    struct Deque<WTF::RetainPtr<opaqueCMSampleBuffer *>, 0> _field21;
+    struct Deque<WTF::RetainPtr<opaqueCMSampleBuffer *>, 0> _field22;
+    BOOL _field23;
+    BOOL _field24;
 };
 
 struct MediaSample;
@@ -1780,11 +1790,6 @@ struct Optional<int> {
     union constexpr_storage_t<int> _field2;
 };
 
-struct Optional<unsigned int> {
-    BOOL _field1;
-    union constexpr_storage_t<unsigned int> _field2;
-};
-
 struct Optional<unsigned short> {
     BOOL _field1;
     union constexpr_storage_t<unsigned short> _field2;
@@ -1876,19 +1881,6 @@ struct PreviewPlatformDelegate {
     struct WeakPtrFactory<WebCore::PreviewPlatformDelegate, WTF::EmptyCounter> _field2;
 };
 
-struct Range {
-    unsigned int _field1;
-    struct Ref<WebCore::Document, WTF::DumbPtrTraits<WebCore::Document>> _field2;
-    struct RangeBoundaryPoint _field3;
-    struct RangeBoundaryPoint _field4;
-};
-
-struct RangeBoundaryPoint {
-    struct RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>> _field1;
-    struct Optional<unsigned int> _field2;
-    struct RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>> _field3;
-};
-
 struct RealtimeMediaSource;
 
 struct RealtimeMediaSourceCapabilities {
@@ -1959,10 +1951,6 @@ struct Ref<WTF::Thread, WTF::DumbPtrTraits<WTF::Thread>> {
 };
 
 struct Ref<WTF::WeakPtrImpl<WTF::EmptyCounter>, WTF::DumbPtrTraits<WTF::WeakPtrImpl<WTF::EmptyCounter>>>;
-
-struct Ref<WebCore::Document, WTF::DumbPtrTraits<WebCore::Document>> {
-    struct Document *_field1;
-};
 
 struct Ref<WebCore::MediaSample, WTF::DumbPtrTraits<WebCore::MediaSample>>;
 
@@ -2427,6 +2415,8 @@ struct RetainPtr<id<NSItemProviderWriting>> {
     void *m_ptr;
 };
 
+struct RetainPtr<opaqueCMSampleBuffer *>;
+
 struct RootObject {
     CDUnknownFunctionPointerType *_field1;
     unsigned int _field2;
@@ -2777,6 +2767,12 @@ struct Vector<std::__1::pair<WebCore::Node *, WebCore::Node *>, 0, WTF::CrashOnO
 
 struct VectorBuffer<WTF::Ref<WebCore::MediaSample, WTF::DumbPtrTraits<WebCore::MediaSample>>, 0, WTF::FastMalloc> {
     struct Ref<WebCore::MediaSample, WTF::DumbPtrTraits<WebCore::MediaSample>> *_field1;
+    unsigned int _field2;
+    unsigned int _field3;
+};
+
+struct VectorBuffer<WTF::RetainPtr<opaqueCMSampleBuffer *>, 0, WTF::FastMalloc> {
+    struct RetainPtr<opaqueCMSampleBuffer *> *_field1;
     unsigned int _field2;
     unsigned int _field3;
 };
@@ -3351,11 +3347,6 @@ union constexpr_storage_t<WebCore::SystemPreviewInfo> {
 union constexpr_storage_t<int> {
     unsigned char _field1;
     int _field2;
-};
-
-union constexpr_storage_t<unsigned int> {
-    unsigned char _field1;
-    unsigned int _field2;
 };
 
 union constexpr_storage_t<unsigned short> {

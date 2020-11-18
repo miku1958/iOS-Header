@@ -11,6 +11,7 @@
 }
 
 + (id)actionButtonFont;
++ (id)mapAnnotationDropShadow;
 + (id)mapButtonBackgroundColor;
 + (id)mapButtonDropShadow;
 + (id)mapButtonFont;

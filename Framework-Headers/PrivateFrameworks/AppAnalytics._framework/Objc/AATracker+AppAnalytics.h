@@ -15,6 +15,8 @@
 
 - (id)chainWithName:(id)arg1;
 - (id)chainWithName:(id)arg1 identifier:(id)arg2;
+- (void)clearStack:(Class)arg1;
+- (void)clearStackEventType:(Class)arg1 includeParentTrackers:(BOOL)arg2;
 - (id)delayedSubmitEventType:(Class)arg1;
 - (id)delayedSubmitEventType:(Class)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)delayedSubmitEventType:(Class)arg1 onlyIfTimed:(BOOL)arg2;

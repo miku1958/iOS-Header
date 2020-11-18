@@ -6,14 +6,16 @@
 
 #import <UIKit/UIViewController.h>
 
-@class IMCloudKitSyncProgress, UIButton, UIColor, UILabel, UIProgressView;
+@class IMCloudKitSyncProgress, UIButton, UIColor, UILabel, UIProgressView, UIToolbar;
 @protocol CKCloudKitSyncProgressViewControllerDelegate;
 
 @interface CKCloudKitSyncProgressViewController : UIViewController
 {
     BOOL _hidden;
+    BOOL _progressLabelIsWrapping;
     id<CKCloudKitSyncProgressViewControllerDelegate> _delegate;
     IMCloudKitSyncProgress *_lastProgress;
+    UIToolbar *_toolbar;
     UIColor *_originalProgressTintColor;
     UILabel *_progressLabel;
     UILabel *_userMessageLabel;
@@ -29,6 +31,8 @@
 @property (copy, nonatomic) UIColor *originalProgressTintColor; // @synthesize originalProgressTintColor=_originalProgressTintColor;
 @property (readonly, nonatomic) UIProgressView *progressBar; // @synthesize progressBar=_progressBar;
 @property (readonly, nonatomic) UILabel *progressLabel; // @synthesize progressLabel=_progressLabel;
+@property (nonatomic) BOOL progressLabelIsWrapping; // @synthesize progressLabelIsWrapping=_progressLabelIsWrapping;
+@property (weak, nonatomic) UIToolbar *toolbar; // @synthesize toolbar=_toolbar;
 @property (readonly, nonatomic) UILabel *userMessageLabel; // @synthesize userMessageLabel=_userMessageLabel;
 
 - (void).cxx_destruct;
@@ -38,6 +42,7 @@
 - (void)_addProgressView;
 - (void)_addUserMessageLabel;
 - (id)_createLabel;
+- (BOOL)_isProgressLabelWrapping;
 - (void)addToToolbar:(id)arg1;
 - (id)init;
 - (void)loadView;

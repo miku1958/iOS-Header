@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)initNewListInStore:(id)arg1;
 - (BOOL)isColorDisplayOnly;
 - (BOOL)isPublished;
-- (id)publishedURL;
+- (id)publishURL;
 - (id)remObjectID;
 - (id)sharedOwnerName;
 - (id)sharees;

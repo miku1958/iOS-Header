@@ -17,7 +17,7 @@
     MISSING_TYPE *manager;
     MISSING_TYPE *lock;
     MISSING_TYPE *assertionCount;
-    MISSING_TYPE *authorizedForWidgetUpdates;
+    MISSING_TYPE *status;
 }
 
 - (void).cxx_destruct;

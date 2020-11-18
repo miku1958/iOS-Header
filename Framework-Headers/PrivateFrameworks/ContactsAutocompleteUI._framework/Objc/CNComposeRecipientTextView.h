@@ -33,6 +33,7 @@
     BOOL _collapsedStateInitialized;
     BOOL _indicatesUnsafeRecipientsWhenCollapsed;
     BOOL _notifyDelegateOfSizeChange;
+    BOOL _addButtonWasTapped;
     NSTimer *_collapsableUpdateTimer;
     NSArray *_properties;
     NSMutableArray *_recipientsBeingRemoved;
@@ -145,6 +146,7 @@
 - (id)atomViewForRecipient:(id)arg1;
 - (id)atomViewsInRange:(struct _NSRange)arg1;
 - (BOOL)becomeFirstResponder;
+- (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)clearText;
 - (void)composeRecipientAtomDisambiguate:(id)arg1;
 - (void)composeRecipientAtomSelectNext:(id)arg1;
@@ -176,6 +178,8 @@
 - (void)reflow;
 - (void)refreshPreferredContentSize;
 - (void)removeRecipient:(id)arg1;
+- (void)selectAll:(id)arg1;
+- (void)selectAllAtoms;
 - (void)selectAtom:(id)arg1;
 - (void)selectAtomForRecipient:(id)arg1;
 - (void)selectComposeRecipientAtom:(id)arg1;
@@ -185,6 +189,8 @@
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setLabel:(id)arg1;
 - (void)setUsingActiveAppearance:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)shiftSelectAtom:(id)arg1;
+- (void)shiftSelectComposeRecipientAtom:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (double)textFieldOffsetForNumberOfRowsToScroll:(unsigned long long)arg1 numberOfRowsAboveField:(long long)arg2;
 - (BOOL)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;

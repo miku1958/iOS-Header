@@ -37,5 +37,6 @@
 @property (nonatomic, readonly) long long serverUnfilledReason;
 @property (nonatomic, readonly) NSDictionary *transparencyDetailsDictionary;
 
+- (void)replaceMetricsHelperWithNewMetricsHelper:(id<APPCJourneyMetricsHelping>)arg1;
 @end
 

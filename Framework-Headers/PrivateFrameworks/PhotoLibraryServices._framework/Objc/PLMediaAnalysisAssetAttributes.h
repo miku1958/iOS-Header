@@ -16,8 +16,6 @@
 @property (strong, nonatomic) PLManagedAsset *asset; // @dynamic asset;
 @property (nonatomic) short audioClassification; // @dynamic audioClassification;
 @property (nonatomic) float autoplaySuggestionScore; // @dynamic autoplaySuggestionScore;
-@property (nonatomic) int bestKeyFrameTimeScale; // @dynamic bestKeyFrameTimeScale;
-@property (nonatomic) long long bestKeyFrameValue; // @dynamic bestKeyFrameValue;
 @property (nonatomic) int bestVideoRangeDurationTimeScale; // @dynamic bestVideoRangeDurationTimeScale;
 @property (nonatomic) long long bestVideoRangeDurationValue; // @dynamic bestVideoRangeDurationValue;
 @property (nonatomic) int bestVideoRangeStartTimeScale; // @dynamic bestVideoRangeStartTimeScale;
@@ -32,11 +30,8 @@
 
 + (id)entityName;
 + (id)fetchRequest;
-- (CDStruct_198678f7)bestKeyFrameTime;
 - (CDStruct_3c1748cc)bestVideoTimeRange;
-- (void)setBestKeyFrameTime:(CDStruct_198678f7)arg1;
 - (void)setBestVideoTimeRange:(CDStruct_3c1748cc)arg1;
-- (void)willSave;
 
 @end
 

@@ -42,6 +42,7 @@
 - (id)_defaultHeaderViewSubTitleForLocalCredential;
 - (id)_defaultHeaderViewSubTitleForLocalCredentialTransfer;
 - (void)_fetchAddRequestWithCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)_isPaymentAccount;
 - (void)_performEligibilityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performFinishWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performProvisionWithCompletion:(CDUnknownBlockType)arg1;
@@ -57,8 +58,10 @@
 - (id)defaultFields;
 - (id)defaultHeaderViewSubTitle;
 - (id)defaultHeaderViewTitle;
+- (void)handleNextButtonTapped:(id)arg1;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3 paymentCredential:(id)arg4 setupProduct:(id)arg5 allowsManualEntry:(BOOL)arg6 previouslyAcceptedTerms:(BOOL)arg7;
 - (BOOL)isComplete;
+- (BOOL)isProvisioningPaymentAccount;
 - (void)loadView;
 - (id)newPaymentEligibilityRequest;
 - (id)newPaymentProvisioningRequest;
@@ -70,6 +73,7 @@
 - (id)readonlyFieldIdentifiers;
 - (void)setPassSnapshot:(id)arg1 needsCorners:(BOOL)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (id)visibleFieldIdentifiers;
 

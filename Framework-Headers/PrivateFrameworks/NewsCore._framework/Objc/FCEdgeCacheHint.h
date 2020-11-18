@@ -21,6 +21,7 @@
 
 + (id)edgeCacheHintForAudioContent;
 + (id)edgeCacheHintForEditorial;
++ (id)edgeCacheHintForEvergreenArticles;
 + (id)edgeCacheHintForFeaturedArticles;
 + (id)edgeCacheHintForForYouConfig;
 + (id)edgeCacheHintForLocalNews;

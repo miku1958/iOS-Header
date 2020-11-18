@@ -8,16 +8,17 @@
 
 @class MISSING_TYPE, NSArray;
 
-__attribute__((visibility("hidden")))
 @interface _TtC8VideosUI22DocumentViewController : UIViewController
 {
     MISSING_TYPE *templateViewController;
+    MISSING_TYPE *documentDelegate;
     MISSING_TYPE *document;
     MISSING_TYPE *isTransitioning;
     MISSING_TYPE *loadingView;
     MISSING_TYPE *navBarOpacity;
     MISSING_TYPE *navBarTitleOpacity;
     MISSING_TYPE *navBarTintColor;
+    MISSING_TYPE *navBarPrefersLargeTitles;
     MISSING_TYPE *pagePerformanceReporter;
 }
 
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, readonly) unsigned long long supportedInterfaceOrientations;
 
 - (void).cxx_destruct;
+- (void)didMoveToParentViewController:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)overrideTraitCollectionForChildViewController:(id)arg1;
@@ -38,7 +40,6 @@ __attribute__((visibility("hidden")))
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
-- (void)willMoveToParentViewController:(id)arg1;
 
 @end
 

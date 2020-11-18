@@ -43,11 +43,12 @@
 - (void)_updateIndicatorLayerWithBounds:(struct CGRect)arg1 andCenter:(struct CGPoint)arg2;
 - (void)_updateIndicatorViewSize:(double)arg1 alpha:(double)arg2;
 - (void)_updateToOrientation:(long long)arg1;
-- (void)animateIndicatorVisible:(BOOL)arg1;
-- (void)animateIndicatorVisibleFastFade:(BOOL)arg1;
 - (void)calculateInitialIndicatorPositionAndSize;
 - (id)initForPortalView:(BOOL)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)updateIndicatorVisibility:(BOOL)arg1;
+- (void)updateIndicatorVisibility:(BOOL)arg1 skipFadeOutAnimation:(BOOL)arg2;
+- (void)updateIndicatorVisibilityWithFastFadeAnimation:(BOOL)arg1;
 
 @end
 

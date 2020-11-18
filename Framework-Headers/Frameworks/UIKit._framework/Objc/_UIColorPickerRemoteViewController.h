@@ -22,6 +22,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)__shouldHostedWindowMoveBetweenSecureAndInsecureMainScreen;
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;

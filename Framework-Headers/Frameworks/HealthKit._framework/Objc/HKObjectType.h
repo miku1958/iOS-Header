@@ -47,7 +47,6 @@
 + (id)activitySummaryType;
 + (id)allergyRecordTypeForIdentifier:(id)arg1;
 + (id)atrialFibrillationEventType;
-+ (id)audioExposureEventType;
 + (id)audiogramSampleType;
 + (id)bradycardiaType;
 + (id)briskMinuteDataType;
@@ -66,11 +65,13 @@
 + (id)diagnosticTestResultTypeForIdentifier:(id)arg1;
 + (id)documentTypeForIdentifier:(id)arg1;
 + (id)electrocardiogramType;
++ (id)environmentalAudioExposureEventType;
 + (id)exerciseGoal;
 + (id)fitnessFriendAchievementType;
 + (id)fitnessFriendActivitySnapshotType;
 + (id)fitnessFriendWorkoutType;
 + (id)handwashingEventType;
++ (id)headphoneAudioExposureEventType;
 + (id)heartRateType;
 + (id)heartStudyEventType;
 + (id)irregularlyIrregularPulseType;

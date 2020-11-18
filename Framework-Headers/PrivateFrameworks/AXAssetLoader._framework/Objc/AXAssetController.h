@@ -43,6 +43,7 @@
 - (void)_updateCatalogWithOverrideTimeout:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addInProgressAsset:(id)arg1;
 - (void)addObserver:(id)arg1;
+- (void)dealloc;
 - (void)deregisterForNotifications;
 - (id)description;
 - (void)downloadAssets:(id)arg1 successStartBlock:(CDUnknownBlockType)arg2;

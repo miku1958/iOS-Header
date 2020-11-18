@@ -43,6 +43,7 @@
     CKInboxViewController *_inboxViewController;
     CKAlertController *_currentSMSRelayPinAlert;
     NSMutableArray *_pendingSMSRelayPINPrompts;
+    CDStruct_644752d7 _columnResizeParams;
 }
 
 @property (readonly, nonatomic) NSSet *alertSuppressionContexts;
@@ -50,6 +51,7 @@
 @property (strong, nonatomic) CKBlankViewController *blankViewController; // @synthesize blankViewController=_blankViewController;
 @property (strong, nonatomic) CKCoreChatController *chatController; // @synthesize chatController=_chatController;
 @property (strong, nonatomic) CKNavigationController *chatNavigationController; // @synthesize chatNavigationController=_chatNavigationController;
+@property (nonatomic) CDStruct_644752d7 columnResizeParams; // @synthesize columnResizeParams=_columnResizeParams;
 @property (strong, nonatomic) CKCoreChatController *composeChatController; // @synthesize composeChatController=_composeChatController;
 @property (strong, nonatomic) CKNavigationController *composeChatNavigationController; // @synthesize composeChatNavigationController=_composeChatNavigationController;
 @property (strong, nonatomic) UIViewController<CKConversationListControllerProtocol> *conversationListController; // @synthesize conversationListController=_conversationListController;
@@ -78,13 +80,14 @@
 - (void)_chatRegistryDidLoad:(id)arg1;
 - (void)_conversationFilteringStateChangedNotification:(id)arg1;
 - (void)_conversationLeft:(id)arg1;
+- (id)_fetchMeContactWithError:(id *)arg1;
 - (BOOL)_hasCurrentConversations;
 - (void)_hideConversationListForIPadPPTTest;
 - (BOOL)_isShowingFullScreenAppViewController;
 - (BOOL)_isShowingFullscreenController;
 - (BOOL)_isShowingModalChatController;
 - (void)_keyCommandChangeConversation:(BOOL)arg1;
-- (id)_meContact;
+- (double)_macConvertLegacySidebarWidthToModernWidth:(double)arg1;
 - (id)_newCameraBrowser;
 - (void)_pinVerificationShouldDismiss:(id)arg1;
 - (void)_popToConversationListAndPerformBlockAnimated:(BOOL)arg1 block:(CDUnknownBlockType)arg2;
@@ -114,7 +117,6 @@
 - (void)chatController:(id)arg1 didSendCompositionInConversation:(id)arg2;
 - (void)chatController:(id)arg1 forwardComposition:(id)arg2;
 - (void)chatController:(id)arg1 willSendComposition:(id)arg2 inConversation:(id)arg3;
-- (void)chatControllerWillDisplayDetailsPopover:(id)arg1;
 - (id)childViewControllerForStatusBarHidden;
 - (void)cleanUpBizNavBarForConversation:(id)arg1;
 - (void)commitPayload:(id)arg1;
@@ -171,6 +173,7 @@
 - (void)loadView;
 - (id)navigationBarBackdropLayerGroupNameForChatController:(id)arg1;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(BOOL)arg3;
+- (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)notifyThatKeepMessagesSettingWasResetIfNeeded;
 - (void)onboardingControllerDidFinish:(id)arg1;
 - (void)openURL:(id)arg1 applicationIdentifier:(id)arg2 pluginID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -190,6 +193,7 @@
 - (void)presentMacToolbarController;
 - (void)presentOnboardingViewController:(id)arg1;
 - (void)presentOnboardingViewControllerIfNeeded;
+- (void)presentPrivacyView:(id)arg1;
 - (id)presentingViewControllerForOnboardingController:(id)arg1;
 - (void)prewarmCameraIfNecessary;
 - (void)prewarmCameraIfNecessaryForChatController:(id)arg1;

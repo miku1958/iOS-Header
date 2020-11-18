@@ -14,6 +14,7 @@
     CKContainer *_container;
     CKDatabase *_database;
     NSArray *_preferredLocalizations;
+    NSString *_currentRegion;
     NSCache *_workflowSearchCache;
     NSCache *_collectionSearchCache;
     NSCache *_pageCache;
@@ -25,6 +26,7 @@
 @property (readonly, nonatomic) NSCache *collectionSearchCache; // @synthesize collectionSearchCache=_collectionSearchCache;
 @property (readonly, nonatomic) CKContainer *container; // @synthesize container=_container;
 @property (readonly, nonatomic) NSString *containerDescription;
+@property (readonly, nonatomic) NSString *currentRegion; // @synthesize currentRegion=_currentRegion;
 @property (readonly, nonatomic) CKDatabase *database; // @synthesize database=_database;
 @property (readonly, nonatomic) NSCache *pageCache; // @synthesize pageCache=_pageCache;
 @property (readonly, nonatomic) BOOL performExpensiveFetchOperations; // @synthesize performExpensiveFetchOperations=_performExpensiveFetchOperations;
@@ -35,6 +37,7 @@
 + (id)defaultPreferredLocalizations;
 + (id)sharedManager;
 - (void).cxx_destruct;
+- (id)collectionWithoutRestrictedContent:(id)arg1;
 - (void)createBannerWithName:(id)arg1 detailPage:(id)arg2 iphone2xImage:(id)arg3 iphone3xImage:(id)arg4 ipadImage:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)createCollection:(id)arg1 small2xImage:(id)arg2 large2xImage:(id)arg3 small3xImage:(id)arg4 large3xImage:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (id)createItemRequest;
@@ -48,8 +51,9 @@
 - (void)getPageWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)getWorkflowForIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
-- (id)initWithContainer:(id)arg1 preferredLocalizations:(id)arg2 performExpensiveFetchOperations:(BOOL)arg3;
+- (id)initWithContainer:(id)arg1 preferredLocalizations:(id)arg2 currentRegion:(id)arg3 performExpensiveFetchOperations:(BOOL)arg4;
 - (id)loadWorkflowInGalleryWorkflow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)pageWithoutRestrictedContent:(id)arg1;
 - (id)preferredPageInPages:(id)arg1 preferredLanguages:(id)arg2;
 - (id)queryFilterForTokenizedKey:(id)arg1 query:(id)arg2;
 - (id)searchCollections:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -65,6 +69,7 @@
 - (void)updatePage:(id)arg1 withName:(id)arg2 banners:(id)arg3 collections:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)updateWorkflow:(id)arg1 withName:(id)arg2 shortDescription:(id)arg3 longDescription:(id)arg4 workflow:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)uploadWorkflow:(id)arg1 withName:(id)arg2 shortDescription:(id)arg3 longDescription:(id)arg4 private:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (BOOL)workflowIsRestricted:(id)arg1;
 
 @end
 

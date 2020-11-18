@@ -15,12 +15,16 @@
 
 @property (readonly) unsigned long long deviceNotificationMode; // @synthesize deviceNotificationMode=_deviceNotificationMode;
 
++ (id)shortDescription;
 + (BOOL)supportsSecureCoding;
+- (id)attributeDescriptions;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDeviceNotificationMode:(unsigned long long)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)privateDescription;
+- (id)shortDescription;
 
 @end
 

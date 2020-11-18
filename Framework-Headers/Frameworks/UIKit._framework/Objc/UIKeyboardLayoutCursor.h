@@ -30,6 +30,8 @@ __attribute__((visibility("hidden")))
     int _overridenSelectedKeyType;
     BOOL _shouldConfigureFloatingContentView;
     BOOL _shouldToggleLetterCaseNext;
+    struct CGPoint _keyplaneSwitchSelectedKeyFrameCenter;
+    BOOL _selectInitialKey;
     UIAlertController *_recentInputsAlert;
     NSString *_keyplaneBeforeDictation;
     long long _selectedKeyBeforeDictation;
@@ -136,6 +138,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)targetEdgesForScreenGestureRecognition;
 - (long long)targetKeyIndexAtOffset:(struct CGPoint)arg1 fromKey:(id)arg2;
 - (long long)targetKeyIndexFromPoint:(struct CGPoint)arg1;
+- (long long)targetKeyIndexFromPoint:(struct CGPoint)arg1 inKeys:(id)arg2;
 - (void)updateDictationHelpString;
 - (void)updateKeyplaneSwitchEdgeBiases;
 - (void)updateRecentInputsKeyIfNecessary;

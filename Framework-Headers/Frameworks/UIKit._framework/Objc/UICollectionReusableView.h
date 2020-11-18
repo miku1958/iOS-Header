@@ -51,6 +51,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_addBackdropViewForMaskingIfNeeded;
 - (void)_addUpdateAnimation;
 - (BOOL)_appliesLayoutAttributesMaskingToReusableView;
 - (void)_clearUpdateAnimation;
@@ -63,7 +64,9 @@
 - (void)_performBlockWhenReused:(CDUnknownBlockType)arg1;
 - (void)_performBlocksForReuse;
 - (id)_preferredLayoutAttributesFittingAttributes:(id)arg1;
+- (void)_removeExistingBackdropViewForMasking;
 - (void)_setBaseLayoutAttributes:(id)arg1;
+- (void)_setMaskView:(id)arg1;
 - (void)_updateDefaultLayoutMarginsUsingAttributes:(id)arg1;
 - (void)_updateMaskViewUsingAttributes:(id)arg1 previousRemoveMaskAfterAnimation:(BOOL)arg2;
 - (void)_updateMaskingUsingAttributes:(id)arg1;

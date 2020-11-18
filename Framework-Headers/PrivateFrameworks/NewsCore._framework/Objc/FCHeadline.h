@@ -29,6 +29,7 @@
     BOOL _hiddenFromAutoFavorites;
     BOOL _paid;
     BOOL _showSubscriptionRequiredText;
+    BOOL _isEvergreen;
     BOOL _canBePurchased;
     BOOL _webEmbedsEnabled;
     BOOL _displayAsNativeAd;
@@ -75,6 +76,7 @@
     NSString *_surfacedByTopicID;
     NSString *_surfacedByBinID;
     NSSet *_surfacedByTagIDs;
+    NSString *_surfacedByArticleListID;
     NSString *_accessoryText;
     NSString *_callToActionText;
     NSString *_localDraftPath;
@@ -102,6 +104,7 @@
     NSString *_language;
     NSString *_sponsoredBy;
     id<FCNativeAdProviding> _associatedAd;
+    NSString *_nativeAdCampaignData;
     unsigned long long _role;
     id<FCHeadlineStocksFields> _stocksFields;
     NSData *_backingArticleRecordData;
@@ -112,6 +115,10 @@
     NSString *_narrativeTrackTextRanges;
     COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *_personalizationVector;
     COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *_personalizationVectorAlt;
+    NSArray *_linkedArticleIDs;
+    NSArray *_linkedIssueIDs;
+    NSString *_layeredThumbnailJSON;
+    double _layeredThumbnailAspectRatio;
     NSString *_identifier;
     NSURL *_headlineURL;
     NSString *_titleCompact;
@@ -169,6 +176,7 @@
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isBlockedExplicitContent;
 @property (readonly, nonatomic) BOOL isDraft; // @synthesize isDraft=_isDraft;
+@property (nonatomic) BOOL isEvergreen; // @synthesize isEvergreen=_isEvergreen;
 @property (readonly, nonatomic) BOOL isFeatured;
 @property (readonly, nonatomic) BOOL isFullTrackAvailableToAll;
 @property (readonly, nonatomic) BOOL isLocalDraft; // @synthesize isLocalDraft=_isLocalDraft;
@@ -178,8 +186,10 @@
 @property (readonly, copy, nonatomic) NSString *language; // @synthesize language=_language;
 @property (readonly, copy, nonatomic) NSDate *lastFetchedDate; // @synthesize lastFetchedDate=_lastFetchedDate;
 @property (readonly, copy, nonatomic) NSDate *lastModifiedDate; // @synthesize lastModifiedDate=_lastModifiedDate;
-@property (readonly, copy, nonatomic) NSArray *linkedArticleIDs;
-@property (readonly, copy, nonatomic) NSArray *linkedIssueIDs;
+@property (readonly, nonatomic) double layeredThumbnailAspectRatio; // @synthesize layeredThumbnailAspectRatio=_layeredThumbnailAspectRatio;
+@property (readonly, nonatomic) NSString *layeredThumbnailJSON; // @synthesize layeredThumbnailJSON=_layeredThumbnailJSON;
+@property (readonly, copy, nonatomic) NSArray *linkedArticleIDs; // @synthesize linkedArticleIDs=_linkedArticleIDs;
+@property (readonly, copy, nonatomic) NSArray *linkedIssueIDs; // @synthesize linkedIssueIDs=_linkedIssueIDs;
 @property (readonly, copy, nonatomic) NSString *localDraftPath; // @synthesize localDraftPath=_localDraftPath;
 @property (readonly, copy, nonatomic) FCIssue *masterIssue; // @synthesize masterIssue=_masterIssue;
 @property (readonly, nonatomic) long long minimumNewsVersion; // @synthesize minimumNewsVersion=_minimumNewsVersion;
@@ -187,6 +197,7 @@
 @property (readonly, nonatomic) FCArticleAudioTrack *narrativeTrack; // @synthesize narrativeTrack=_narrativeTrack;
 @property (readonly, nonatomic) FCArticleAudioTrack *narrativeTrackSample; // @synthesize narrativeTrackSample=_narrativeTrackSample;
 @property (readonly, nonatomic) NSString *narrativeTrackTextRanges; // @synthesize narrativeTrackTextRanges=_narrativeTrackTextRanges;
+@property (copy, nonatomic) NSString *nativeAdCampaignData; // @synthesize nativeAdCampaignData=_nativeAdCampaignData;
 @property (readonly, nonatomic) BOOL needsRapidUpdates; // @synthesize needsRapidUpdates=_needsRapidUpdates;
 @property (readonly, nonatomic) unsigned long long order;
 @property (nonatomic, getter=isPaid) BOOL paid; // @synthesize paid=_paid;
@@ -220,6 +231,7 @@
 @property (strong, nonatomic) FCTopStoriesStyleConfiguration *storyStyle; // @synthesize storyStyle=_storyStyle;
 @property (nonatomic) unsigned long long storyType; // @synthesize storyType=_storyType;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *surfacedByArticleListID; // @synthesize surfacedByArticleListID=_surfacedByArticleListID;
 @property (copy, nonatomic) NSString *surfacedByBinID; // @synthesize surfacedByBinID=_surfacedByBinID;
 @property (copy, nonatomic) NSString *surfacedByChannelID; // @synthesize surfacedByChannelID=_surfacedByChannelID;
 @property (copy, nonatomic) NSString *surfacedBySectionID; // @synthesize surfacedBySectionID=_surfacedBySectionID;

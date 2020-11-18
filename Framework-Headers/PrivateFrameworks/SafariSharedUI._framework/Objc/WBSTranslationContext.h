@@ -49,6 +49,8 @@
     BOOL _hasFinishedInitialExtraction;
     WBSFluidProgressState *_fluidProgressState;
     WBSFluidProgressController *_fluidProgressController;
+    NSArray *_cachedAllowedTargetLocaleIdentifiers;
+    NSArray *_cachedAvailablePreferredTargetLocalesFilteredBySupportedLocales;
 }
 
 @property (readonly, nonatomic) NSArray *allowedTargetLocaleIdentifiers;
@@ -73,7 +75,7 @@
 - (id)_currentSession;
 - (id)_currentSnapshot;
 - (void)_dominantLocaleForTextSample:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_generateJSONVersionOfContent:(id)arg1 prettyPrinted:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_generateJSONVersionOfContent:(id)arg1 forPurpose:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_genericErrorMessage;
 - (BOOL)_nextURLIsEligibleForContinuedTranslation:(id)arg1;
 - (void)_notifyDelegateToReportProgressInUnifiedField:(BOOL)arg1;

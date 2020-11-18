@@ -66,6 +66,7 @@
 @property (readonly, nonatomic) SFQueueingServiceViewControllerProxy<SFServiceViewControllerProtocol> *serviceProxy; // @synthesize serviceProxy=_serviceProxy;
 @property (readonly) Class superclass;
 
++ (BOOL)_preventsAppearanceProxyCustomization;
 - (void).cxx_destruct;
 - (void)_addLaunchPlaceholderView;
 - (void)_addRemoteView;

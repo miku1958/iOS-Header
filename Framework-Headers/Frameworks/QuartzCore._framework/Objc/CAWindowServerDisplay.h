@@ -117,6 +117,7 @@
 - (unsigned int)contextIdAtPosition:(struct CGPoint)arg1 excludingContextIds:(id)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromContextId:(unsigned int)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toContextId:(unsigned int)arg2;
+- (void)copyDisplayTimingsFromDisplay:(id)arg1;
 - (void)dealloc;
 - (void)emitBrightnessError:(id *)arg1;
 - (void)emitWhitePointError:(id *)arg1;

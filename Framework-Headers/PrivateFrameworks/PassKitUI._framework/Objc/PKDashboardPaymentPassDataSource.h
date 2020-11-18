@@ -96,6 +96,7 @@
     PKLinkedApplication *_linkedApplication;
     NSArray *_weeks;
     NSArray *_months;
+    NSArray *_years;
 }
 
 @property (readonly, nonatomic) PKAccount *account; // @synthesize account=_account;
@@ -109,6 +110,7 @@
 @property (readonly, nonatomic) PKDashboardTransactionFetcher *transactionFetcher; // @synthesize transactionFetcher=_transactionFetcher;
 @property (readonly, nonatomic) NSArray *upcomingScheduledPayments;
 @property (strong, nonatomic) NSArray *weeks; // @synthesize weeks=_weeks;
+@property (readonly, nonatomic) NSArray *years; // @synthesize years=_years;
 
 - (void).cxx_destruct;
 - (void)_addToAMPButtonTappedForPass:(id)arg1;

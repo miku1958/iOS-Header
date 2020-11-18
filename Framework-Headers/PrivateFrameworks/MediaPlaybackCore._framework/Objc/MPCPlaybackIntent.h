@@ -49,11 +49,14 @@
 + (id)radioPlaybackIntentWithStationURL:(id)arg1;
 + (id)tracklistDataSourceForSource:(long long)arg1;
 - (void).cxx_destruct;
+- (id)artworkCatalogForMetadataModelObject:(id)arg1;
 - (id)description;
+- (id)generateNowPlayingContentItemWithMetadataObject:(id)arg1;
 - (void)getArchiveWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getNowPlayingInfoWithArtworkCatalogConfiguration:(CDUnknownBlockType)arg1 artworkHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getPlaybackContextWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getRemotePlaybackQueueDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getRemotePlaybackQueueRepresentationWithPlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)getRepresentativeMetadataWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 
 @end

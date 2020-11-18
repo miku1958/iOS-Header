@@ -6,7 +6,7 @@
 
 #import <CameraUI/NSObject-Protocol.h>
 
-@class NSDictionary, NSSet, PUAssetExplorerReviewScreenViewController;
+@class NSDictionary, NSSet, PUAssetExplorerReviewScreenViewController, UIMenu;
 @protocol PUDisplayAsset, PUDisplayAssetCollection, UIViewControllerTransitionCoordinator;
 
 @protocol PUAssetExplorerReviewScreenViewControllerDelegate <NSObject>
@@ -15,7 +15,7 @@
 
 @optional
 - (BOOL)assetExplorerReviewScreenViewController:(PUAssetExplorerReviewScreenViewController *)arg1 canPerformActionType:(unsigned long long)arg2 onAsset:(id<PUDisplayAsset>)arg3 inAssetCollection:(id<PUDisplayAssetCollection>)arg4;
-- (void)assetExplorerReviewScreenViewController:(PUAssetExplorerReviewScreenViewController *)arg1 didPressFileSizeButtonWithSelectedUUIDs:(NSSet *)arg2;
+- (UIMenu *)assetExplorerReviewScreenViewController:(PUAssetExplorerReviewScreenViewController *)arg1 fileSizeMenuForSelectedUUIDs:(NSSet *)arg2;
 - (BOOL)assetExplorerReviewScreenViewController:(PUAssetExplorerReviewScreenViewController *)arg1 shouldEnableActionType:(unsigned long long)arg2 onAsset:(id<PUDisplayAsset>)arg3 inAssetCollection:(id<PUDisplayAssetCollection>)arg4;
 - (void)assetExplorerReviewScreenViewController:(PUAssetExplorerReviewScreenViewController *)arg1 willTransitionToSize:(struct CGSize)arg2 withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)arg3;
 - (void)assetExplorerReviewScreenViewControllerDidPressRetake:(PUAssetExplorerReviewScreenViewController *)arg1;

@@ -22,6 +22,7 @@
     NSMutableDictionary *_pendingChange;
     NSMutableDictionary *_visualStyleCategoriesToProviders;
     NSHashTable *_prunePromises;
+    long long _allowsInPlaceFiltering;
     struct {
         unsigned int delegateManagesWeighting:1;
         unsigned int delegateImplementsManagingOpacity:1;
@@ -75,11 +76,13 @@
 - (void)_updateForChangeInWeighting;
 - (void)_updateVisualStylingProviders;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
+- (BOOL)allowsInPlaceFiltering;
 - (id)description;
 - (void)didChangeValueForKey:(id)arg1;
 - (id)init;
 - (void)layoutSublayers;
 - (void)prune;
+- (void)setAllowsInPlaceFiltering:(BOOL)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setRecipeName:(id)arg1 fromBundle:(id)arg2;
 - (void)setUnsafeUnretainedDelegate:(id)arg1;

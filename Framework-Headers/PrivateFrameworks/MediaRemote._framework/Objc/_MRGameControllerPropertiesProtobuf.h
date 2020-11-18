@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MRGameControllerPropertiesProtobuf : PBCodable <NSCopying>
 {
     int _buttonAUpDelay;
@@ -25,27 +26,12 @@
     } _has;
 }
 
-@property (nonatomic) int buttonAUpDelay; // @synthesize buttonAUpDelay=_buttonAUpDelay;
-@property (nonatomic) BOOL hasButtonAUpDelay;
-@property (nonatomic) BOOL hasPlayerIndex;
-@property (nonatomic) BOOL hasProfile;
-@property (nonatomic) BOOL hasSupportsExtendedMotion;
-@property (readonly, nonatomic) BOOL hasVendorName;
-@property (nonatomic) unsigned int playerIndex; // @synthesize playerIndex=_playerIndex;
-@property (nonatomic) int profile; // @synthesize profile=_profile;
-@property (nonatomic) BOOL supportsExtendedMotion; // @synthesize supportsExtendedMotion=_supportsExtendedMotion;
-@property (strong, nonatomic) NSString *vendorName; // @synthesize vendorName=_vendorName;
-
 - (void).cxx_destruct;
-- (int)StringAsProfile:(id)arg1;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
-- (id)profileAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -26,6 +26,7 @@
     MISSING_TYPE *loadingIndicatorProvider;
     MISSING_TYPE *articleLoadingStateMachine;
     MISSING_TYPE *errorMessageFactory;
+    MISSING_TYPE *loggingIdentifier;
 }
 
 @end

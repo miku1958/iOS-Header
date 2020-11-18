@@ -14,17 +14,21 @@
     AVPlayerLayer *_playerLayer;
     AVSampleBufferDisplayLayer *_sampleBufferDisplayLayer;
     id<AVPictureInPictureSampleBufferPlaybackDelegate> _sampleBufferPlaybackDelegate;
+    struct CGSize _initialRenderSize;
 }
 
+@property (readonly, nonatomic) struct CGSize initialRenderSize; // @synthesize initialRenderSize=_initialRenderSize;
 @property (readonly, nonatomic) AVPlayerLayer *playerLayer; // @synthesize playerLayer=_playerLayer;
 @property (readonly, nonatomic) AVSampleBufferDisplayLayer *sampleBufferDisplayLayer; // @synthesize sampleBufferDisplayLayer=_sampleBufferDisplayLayer;
 @property (readonly, weak, nonatomic) id<AVPictureInPictureSampleBufferPlaybackDelegate> sampleBufferPlaybackDelegate; // @synthesize sampleBufferPlaybackDelegate=_sampleBufferPlaybackDelegate;
 @property (readonly, nonatomic) id<AVPictureInPictureContentSource> source;
 
 - (void).cxx_destruct;
+- (void)_commonInitWithSampleBufferDisplayLayer:(id)arg1 initialRenderSize:(struct CGSize)arg2 playbackDelegate:(id)arg3;
 - (void)dealloc;
 - (id)init;
 - (id)initWithPlayerLayer:(id)arg1;
+- (id)initWithSampleBufferDisplayLayer:(id)arg1 initialRenderSize:(struct CGSize)arg2 playbackDelegate:(id)arg3;
 - (id)initWithSampleBufferDisplayLayer:(id)arg1 playbackDelegate:(id)arg2;
 
 @end

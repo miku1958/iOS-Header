@@ -25,6 +25,8 @@
     NSMutableDictionary *_changeRequestsByUUID;
 }
 
+@property (readonly, nonatomic) long long accessLevel;
+@property (readonly, nonatomic) long long accessScopeOptionsRequiredForRequestedChanges;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) NSOrderedSet *deletes; // @synthesize deletes=_deletes;
 @property (readonly, copy) NSString *description;
@@ -39,7 +41,6 @@
 + (struct _xpc_type_s *)type;
 - (void).cxx_destruct;
 - (BOOL)_isSupportedLimitedLibraryChangeRequest:(id)arg1;
-- (long long)accessScopeOptionsRequiredForRequestedChanges;
 - (id)changeRequestForUUID:(id)arg1;
 - (id)clientDescription;
 - (void)decodeWithService:(id)arg1 clientAuthorization:(id)arg2;

@@ -16,9 +16,17 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilitySetTotalMetaLabel;
 - (void)_addPassphraseViewControllerToHierarchy:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (BOOL)_axPaymentViewIsVisible;
+- (BOOL)_axPhysicalButtonIsVisible;
+- (id)_axPrevPaymentLabel;
+- (void)_axSetPrevPaymentLabel:(id)arg1;
+- (void)_axUpdatePassViewLayout;
 - (void)_handleModelUpdate;
 - (void)_removePassphraseViewFromHierarchyWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_updatePhysicalButtonState;
 - (void)biometricAttemptFailed;
+- (void)setFooterState:(long long)arg1 string:(id)arg2 animated:(BOOL)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (void)viewDidAppear:(BOOL)arg1;
 
 @end
 

@@ -26,6 +26,7 @@
 
 - (void).cxx_destruct;
 - (void)determineNetworkFingerprint;
+- (id)getInterfaceFingerprintForDynamicInterface:(const char *)arg1;
 - (id)getInterfaceSignature:(id)arg1;
 - (id)getVPNServerSignature:(id)arg1;
 - (id)initForRealm:(id)arg1 bundleIdentifier:(id)arg2 auditToken:(id)arg3;

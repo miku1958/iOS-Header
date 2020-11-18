@@ -15,6 +15,7 @@
 @property (nonatomic, readonly) struct CGRect ts_frameUsingCenterAndBounds;
 
 + (void)ts_executeWithAnimated:(BOOL)arg1 duration:(double)arg2 setupBlock:(CDUnknownBlockType)arg3 animationBlock:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
+- (BOOL)_accessibilityIsSpeakThisElement;
 - (void)expandWidthToGutterViewBounds;
 - (BOOL)ts_safeAreaWidthExceedsReadableWidth;
 - (void)ts_setFrameUsingCenterAndBounds:(struct CGRect)arg1;

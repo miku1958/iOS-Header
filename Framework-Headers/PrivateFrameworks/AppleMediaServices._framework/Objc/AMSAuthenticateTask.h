@@ -43,6 +43,7 @@
 @property (strong, nonatomic) NSString *username; // @synthesize username=_username;
 
 + (id)_createFallbackBag;
++ (BOOL)_loadCreateAppleIDwithClientInfo:(id)arg1 bag:(id)arg2 error:(id *)arg3;
 + (void)_updateAccountPasswordUsingSecondaryAccounts:(id)arg1;
 + (id)bagKeySet;
 + (id)bagSubProfile;

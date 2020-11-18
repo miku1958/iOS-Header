@@ -17,6 +17,7 @@
 @interface HUNCCameraPlayerViewController : AVPlayerViewController <AVPlayerViewControllerDelegate, AVPlayerViewControllerDelegatePrivate, HFCameraPlaybackEngineObserver, HFItemManagerDelegate, HUCameraPlayerAVBehaviorDelegate>
 {
     BOOL _hu_playbackControlsAreVisible;
+    unsigned long long _numberOfAssociatedAccessoriesDisplayed;
     HFItemManager *_itemManager;
     HFCameraItem *_cameraItem;
     HFCameraPlaybackEngine *_playbackEngine;
@@ -50,6 +51,7 @@
 @property (strong, nonatomic) HUCameraPlayerLiveContentViewController *liveContentViewController; // @synthesize liveContentViewController=_liveContentViewController;
 @property (strong, nonatomic) HUNCCameraScrubberViewController *miniScrubberViewController; // @synthesize miniScrubberViewController=_miniScrubberViewController;
 @property (strong, nonatomic) NSUUID *notificationUUID; // @synthesize notificationUUID=_notificationUUID;
+@property (nonatomic) unsigned long long numberOfAssociatedAccessoriesDisplayed; // @synthesize numberOfAssociatedAccessoriesDisplayed=_numberOfAssociatedAccessoriesDisplayed;
 @property (strong, nonatomic) HUNCCameraPlayerPlaceholderContentViewController *placeholderContentViewController; // @synthesize placeholderContentViewController=_placeholderContentViewController;
 @property (strong, nonatomic) HFCameraPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property (strong, nonatomic) NSDate *playbackStartDateFromSignificantEvent; // @synthesize playbackStartDateFromSignificantEvent=_playbackStartDateFromSignificantEvent;

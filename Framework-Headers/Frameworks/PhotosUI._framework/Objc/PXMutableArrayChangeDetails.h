@@ -23,6 +23,7 @@
 - (void)_removeInsertForRemovedIndexAfterChanges:(unsigned long long)arg1;
 - (void)_updateChangedIndexesWithChangeDetails:(id)arg1;
 - (void)_updateMovesWithChangesDetails:(id)arg1;
+- (void)_updatePropertyChangesWithChangeDetails:(id)arg1;
 - (void)addChangeDetails:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)hasIncrementalChanges;

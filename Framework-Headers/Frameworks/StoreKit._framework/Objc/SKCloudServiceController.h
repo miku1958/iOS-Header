@@ -10,12 +10,12 @@
 
 @interface SKCloudServiceController : NSObject
 {
+    BOOL _allowsPromptingForPrivacyAcknowledgement;
     ICCloudServiceStatusMonitor *_cloudServiceStatusMonitor;
     struct os_unfair_lock_s _lock;
-    BOOL _allowsPromptingForPrivacyAcknowledgement;
 }
 
-@property (nonatomic, setter=_setAllowsPromptingForPrivacyAcknowledgement:) BOOL _allowsPromptingForPrivacyAcknowledgement; // @synthesize _allowsPromptingForPrivacyAcknowledgement;
+@property (nonatomic, setter=_setAllowsPromptingForPrivacyAcknowledgement:) BOOL _allowsPromptingForPrivacyAcknowledgement;
 
 + (id)_publicErrorForPrivateError:(id)arg1;
 + (long long)authorizationStatus;

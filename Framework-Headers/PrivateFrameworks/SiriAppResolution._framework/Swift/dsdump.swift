@@ -8,6 +8,10 @@
 	// class associated type access function
 	// method
  }
+ protocol SiriAppResolution.AppPolicyHandling // 1 requirements
+ {
+	// method
+ }
  protocol SiriAppResolution.AppResolutionStateProviding // 4 requirements
  {
 	// method
@@ -24,14 +28,16 @@
 	// method
  }
 
+ enum __C.DMFPolicy { }
+
  enum __C.INSiriAuthorizationStatus { }
 
  enum SiriAppResolution.AppFinder { }
 
  class SiriAppResolution.SiriRememberedAppResolver : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x69f0  class func SiriRememberedAppResolver.__allocating_init() // init 
-	0x6a20  func SiriRememberedAppResolver.selectAppFor(intent:fromEligibleApps:completion:) // method 
+	0x6e00  class func SiriRememberedAppResolver.__allocating_init() // init 
+	0x6e30  func SiriRememberedAppResolver.selectAppFor(intent:fromEligibleApps:completion:) // method 
  }
 
  class SiriAppResolution.AppSelectionService {
@@ -45,7 +51,7 @@
 
  enum SiriAppResolution.Category { }
 
- enum SiriAppResolution.Signpost { }
+ enum SiriAppResolution.SiriAppResolutionSignpost { }
 
  class SiriAppResolution.DefaultAppSelector : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
@@ -53,9 +59,9 @@
 	let defaultApps : App
 
 	// Swift methods
-	0xa540  class func DefaultAppSelector.__allocating_init(defaultAppBundles:) // init 
-	0xa5c0  class func DefaultAppSelector.__allocating_init(defaultApps:) // init 
-	0xa7e0  func DefaultAppSelector.selectAppFor(intent:fromEligibleApps:completion:) // method 
+	0xab70  class func DefaultAppSelector.__allocating_init(defaultAppBundles:) // init 
+	0xabf0  class func DefaultAppSelector.__allocating_init(defaultApps:) // init 
+	0xae10  func DefaultAppSelector.selectAppFor(intent:fromEligibleApps:completion:) // method 
  }
 
  enum SiriAppResolution.AppResolutionResult {
@@ -71,6 +77,7 @@
 
 	// Properties
 	case appNotSupported : App
+	case screenTimeEnabled : App
 	case noAppFound  
  }
 
@@ -91,10 +98,11 @@
 	let systemUIExtensionBundleId : String?
 
 	// Swift methods
-	0xdcd0  func App.debugDescription.getter // getter 
-	0xded0  func App.hash(into:) // method 
-	0xe000  class func App.__allocating_init(appIdentifier:systemExtensionBundleId:systemUIExtensionBundleId:pluginIdentifier:) // init 
-	0xe130  func App.hashValue.getter // getter 
+	0xea50  func App.description.getter // getter 
+	0xec40  func App.debugDescription.getter // getter 
+	0xec60  func App.hash(into:) // method 
+	0xed90  class func App.__allocating_init(appIdentifier:systemExtensionBundleId:systemUIExtensionBundleId:pluginIdentifier:) // init 
+	0xeec0  func App.hashValue.getter // getter 
  }
 
  enum SiriAppResolution.InstrumentedResult {
@@ -138,6 +146,28 @@
 
 	// Properties
 	case noAppSelected  
+ }
+
+ struct SiriAppResolution.AppDisplayInfo {
+
+	// Properties
+	let displayName : String // +0x0
+	let isFirstParty : Bool // +0x10
+ }
+
+ class SiriAppResolution.AppPolicyHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var appPolicyMonitor : DMFApplicationPolicyMonitor?
+	let appQueue : OS_dispatch_queue
+	var unsafeApps : DMFPolicy
+
+	// Swift methods
+	0x132e0  func AppPolicyHandler.isAllowedByScreenTime(bundleIdentifier:) // method 
+	0x13930  func AppPolicyHandler.register(bundleIdentifier:) // method 
+	0x13f30  func AppPolicyHandler.getDMFPolicy(bundleIdentifier:) // method 
+	0x14650  func AppPolicyHandler.refreshAllAppsAsync() // method 
+	0x14860  func AppPolicyHandler.refreshAppsAsync(bundleIdentifiers:) // method 
  }
 
  class SiriAppResolution.AppResolutionEventSending : _SwiftObject /usr/lib/swift/libswiftCore.dylib {

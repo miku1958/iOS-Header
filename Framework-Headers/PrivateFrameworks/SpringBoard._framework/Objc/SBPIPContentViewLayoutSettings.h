@@ -33,6 +33,7 @@
 @property (nonatomic) double minimumSizeSpanBetweenPreferredSizes; // @synthesize minimumSizeSpanBetweenPreferredSizes=_minimumSizeSpanBetweenPreferredSizes;
 @property (readonly, nonatomic, getter=hasSizeChanged) BOOL sizeChanged; // @synthesize sizeChanged=_sizeChanged;
 
++ (double)_contentViewPaddingWhileStashed:(BOOL)arg1;
 + (struct CGSize)_contentViewSizeForAspectRatio:(struct CGSize)arg1 currentSize:(double)arg2;
 + (double)_defaultSize;
 + (struct CGSize)_maximumContentViewSizeForAspectRatio:(struct CGSize)arg1 maximumReferenceSize:(double)arg2;
@@ -41,6 +42,7 @@
 + (double)_minimumSize;
 + (id)_sharedInstance;
 + (double)contentViewPadding;
++ (double)contentViewPaddingWhileStashed;
 + (unsigned long long)currentContentViewPosition;
 + (struct CGSize)currentContentViewSizeForAspectRatio:(struct CGSize)arg1;
 + (struct CGSize)defaultContentViewSizeForAspectRatio:(struct CGSize)arg1;

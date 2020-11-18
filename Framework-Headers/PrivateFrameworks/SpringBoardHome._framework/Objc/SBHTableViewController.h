@@ -11,24 +11,25 @@
 @interface SBHTableViewController : UITableViewController
 {
     long long _styleBeforeShowingNoResults;
-    struct CGRect _keyboardFrame;
-    NSArray *_centerNoResultsFoundLabelConstraints;
+    NSArray *_centerNoResultsViewConstraints;
     BOOL _showNoResultsView;
     UIView *_noResultsView;
+    struct CGRect _keyboardFrame;
 }
 
+@property (readonly, nonatomic) struct CGRect keyboardFrame; // @synthesize keyboardFrame=_keyboardFrame;
 @property (strong, nonatomic) UIView *noResultsView; // @synthesize noResultsView=_noResultsView;
 @property (nonatomic) BOOL showNoResultsView; // @synthesize showNoResultsView=_showNoResultsView;
 
 + (Class)tableViewClass;
 - (void).cxx_destruct;
-- (void)_addAutolayoutConstraintsForNoResultsFoundLabel;
+- (void)_addAutoLayoutConstraintsForNoResultsView;
 - (double)_calculateVerticalMultiplierForKeyboard;
 - (void)_keyboardWillDismiss:(id)arg1;
 - (void)_keyboardWillResize:(id)arg1;
 - (void)_keyboardWillShow:(id)arg1;
-- (void)_reloadNoResultsFoundLabelForKeyboardNotification:(id)arg1;
-- (void)_removeAutolayoutConstraintsForNoResultsFoundLabel;
+- (void)_reloadNoResultsViewForKeyboardNotification:(id)arg1;
+- (void)_removeAutoLayoutConstraintsForNoResultsView;
 - (void)_resetNoResultsView;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

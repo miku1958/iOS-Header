@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityContainsSportsGrid;
 - (BOOL)_accessibilityHasAccessibleSubviews;
+- (BOOL)_accessibilityHitTestReverseOrder;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (id)_accessibilityRetrieveTableViewCellText;
 - (BOOL)_accessibilityShouldSortTableViewCellChildren;

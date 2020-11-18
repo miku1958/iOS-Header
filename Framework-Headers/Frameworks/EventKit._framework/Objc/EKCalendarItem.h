@@ -43,7 +43,9 @@
 + (id)knownDerivedRelationshipKeys;
 + (id)knownIdentityKeysForComparison;
 + (id)knownRelationshipMultiValueKeys;
++ (id)knownRelationshipMultiValueKeysForValidation;
 + (id)knownRelationshipSingleValueKeys;
++ (id)knownRelationshipSingleValueKeysForValidation;
 + (id)knownRelationshipWeakKeys;
 + (id)knownSingleValueKeysForComparison;
 + (id)timeZoneFromTimeZoneName:(id)arg1 withFloatingTimeZone:(id)arg2;

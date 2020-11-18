@@ -6,26 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthHearingDaemon/HDAudioAnalyticsDataProvider-Protocol.h>
 #import <HealthHearingDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 #import <HealthHearingDaemon/HDPeriodicActivityDelegate-Protocol.h>
 
-@class HDAudioAnalyticsCalculator, HDPeriodicActivity, HDProfile, NSString;
+@class HDPeriodicActivity, HDProfile, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface HDAudioAnalyticsManager : NSObject <HDHealthDaemonReadyObserver, HDPeriodicActivityDelegate, HDAudioAnalyticsDataProvider>
+@interface HDAudioAnalyticsManager : NSObject <HDHealthDaemonReadyObserver, HDPeriodicActivityDelegate>
 {
     HDProfile *_profile;
     double _calculationPeriod;
     double _retryPeriod;
     HDPeriodicActivity *_periodicActivity;
     NSObject<OS_dispatch_queue> *_queue;
-    HDAudioAnalyticsCalculator *_calculator;
 }
 
 @property (readonly, nonatomic) double calculationPeriod; // @synthesize calculationPeriod=_calculationPeriod;
-@property (readonly, nonatomic) HDAudioAnalyticsCalculator *calculator; // @synthesize calculator=_calculator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -36,12 +33,10 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)_booleanPreferenceForAudioKey:(id)arg1 defaultIfNoValue:(BOOL)arg2;
-- (BOOL)_hasEligibleWatchPaired;
-- (id)_numberForValue:(double)arg1;
-- (id)audioAverageAndDurationForExposureType:(long long)arg1 startDate:(id)arg2 endDate:(id)arg3 error:(id *)arg4;
-- (id)audioExposureEventsBetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
-- (void)captureHeadphoneAudioExposure:(double)arg1 headphoneDuration:(double)arg2 headphoneDose:(double)arg3 environmentExposure:(double)arg4 environmentDuration:(double)arg5 environmentAlerts:(long long)arg6;
+- (BOOL)_dayComponents:(id)arg1 lessThan:(id)arg2;
+- (id)_dayForDate:(id)arg1;
+- (BOOL)_recordedDataForToday;
+- (id)capturePhoneAnalytics;
 - (void)daemonReady:(id)arg1;
 - (id)initWithProfile:(id)arg1;
 - (id)lastSuccessfulCalculation;

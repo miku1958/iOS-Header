@@ -11,9 +11,10 @@
 @interface _TtC12NewsArticles33ShareArticleViewerFeatureProvider : _TtCs12_SwiftObject
 {
     MISSING_TYPE *visibilityProvider;
-    MISSING_TYPE *windowScene;
+    MISSING_TYPE *sceneProvider;
     MISSING_TYPE *toolbarManager;
     MISSING_TYPE *sharingIntentFactory;
+    MISSING_TYPE *sharingActivityProviderFactory;
 }
 
 @end

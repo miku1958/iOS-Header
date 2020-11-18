@@ -27,6 +27,7 @@
 - (void)layoutSubviews;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (void)setTitle:(id)arg1;
+- (void)updateSegmentedControlToFitWidth:(double)arg1;
 
 @end
 

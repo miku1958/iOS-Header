@@ -17,7 +17,9 @@
     NSMutableSet *_registeredTopics;
     NSString *_pushToken;
     NSHashTable *_consumers;
+    long long _enableCriticalReliabilityCount;
     struct os_unfair_lock_s _consumersLock;
+    struct os_unfair_lock_s _criticalReliabilityLock;
     NSObject<OS_dispatch_queue> *_replyQueue;
 }
 
@@ -34,6 +36,8 @@
 - (void)connection:(id)arg1 didReceiveMessageForTopic:(id)arg2 userInfo:(id)arg3;
 - (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;
 - (void)dealloc;
+- (void)disableCriticalReliability;
+- (void)enableCriticalReliability;
 - (id)init;
 - (void)recalculatePushTopics;
 - (void)registerConsumer:(id)arg1;

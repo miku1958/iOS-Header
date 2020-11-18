@@ -14,6 +14,8 @@
     MISSING_TYPE *actionDelegate;
 }
 
+@property (nonatomic, readonly) long long preferredStatusBarStyle;
+
 - (void).cxx_destruct;
 - (id)initWithURL:(id)arg1 configuration:(id)arg2;
 - (id)initWithURL:(id)arg1 entersReaderIfAvailable:(BOOL)arg2;

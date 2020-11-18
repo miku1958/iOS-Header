@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _color;
     BOOL _isFirstLayout;
+    BOOL _showingInStandAloneWindow;
     id<CKEffectPickerViewControllerDelegate> _delegate;
     CKBalloonView *_balloonView;
     CKEffectPreviewCollectionViewController *_effectCollectionViewController;
@@ -51,6 +52,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isFirstLayout; // @synthesize isFirstLayout=_isFirstLayout;
 @property (strong, nonatomic) CKEffectSelectionViewController *selectionViewController; // @synthesize selectionViewController=_selectionViewController;
 @property (strong, nonatomic) UIButton *sendButton; // @synthesize sendButton=_sendButton;
+@property (nonatomic) BOOL showingInStandAloneWindow; // @synthesize showingInStandAloneWindow=_showingInStandAloneWindow;
 @property (strong, nonatomic) UIVisualEffectView *titleContainerView; // @synthesize titleContainerView=_titleContainerView;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) UIVibrancyEffect *titleVibrancyEffect; // @synthesize titleVibrancyEffect=_titleVibrancyEffect;

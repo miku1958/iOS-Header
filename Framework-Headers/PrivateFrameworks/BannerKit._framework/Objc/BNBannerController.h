@@ -46,8 +46,8 @@
 - (BOOL)_presentNextPendingPresentableIfPossible:(out id *)arg1;
 - (BOOL)_presentPresentableWithContext:(id)arg1;
 - (void)_resumeForResponsiblePresentableIfNecessary:(id)arg1;
-- (void)_resumeForResponsiblePresentableIfNecessaryWithRequestIdentifier:(id)arg1 requesterIdentifier:(id)arg2;
-- (BOOL)_revokePresentableWithRequestIdentifier:(id)arg1 requesterIdentifier:(id)arg2 reason:(id)arg3 options:(unsigned long long)arg4 animated:(id)arg5 userInfo:(id)arg6 error:(out id *)arg7;
+- (void)_resumeForResponsiblePresentableIfNecessaryWithIdentification:(id)arg1;
+- (id)_revokePresentablesWithIdentification:(id)arg1 reason:(id)arg2 options:(unsigned long long)arg3 animated:(id)arg4 userInfo:(id)arg5 error:(out id *)arg6;
 - (BOOL)_shouldPresentPresentable:(id)arg1 withPresentedPresentables:(id)arg2 responsiblePresentable:(out id *)arg3;
 - (void)_startAutoDequeueTimerIfNecessary;
 - (void)_suspendPenderForRequesterIdentifier:(id)arg1 withResponsiblePresentable:(id)arg2;
@@ -58,6 +58,8 @@
 - (BOOL)revokeAllPresentablesWithRequesterIdentifier:(id)arg1 reason:(id)arg2 options:(unsigned long long)arg3 userInfo:(id)arg4 error:(out id *)arg5;
 - (BOOL)revokePresentableWithRequestIdentifier:(id)arg1 requesterIdentifier:(id)arg2 reason:(id)arg3 options:(unsigned long long)arg4 animated:(BOOL)arg5 userInfo:(id)arg6 error:(out id *)arg7;
 - (BOOL)revokePresentableWithRequestIdentifier:(id)arg1 requesterIdentifier:(id)arg2 reason:(id)arg3 options:(unsigned long long)arg4 userInfo:(id)arg5 error:(out id *)arg6;
+- (id)revokePresentablesWithIdentification:(id)arg1 reason:(id)arg2 options:(unsigned long long)arg3 animated:(BOOL)arg4 userInfo:(id)arg5 error:(id *)arg6;
+- (id)revokePresentablesWithIdentification:(id)arg1 reason:(id)arg2 options:(unsigned long long)arg3 userInfo:(id)arg4 error:(out id *)arg5;
 - (BOOL)setSuspended:(BOOL)arg1 forReason:(id)arg2 revokingCurrent:(BOOL)arg3 error:(out id *)arg4;
 
 @end

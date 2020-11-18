@@ -62,6 +62,7 @@
 - (void)disableSecureBackupWithCompletion:(CDUnknownBlockType)arg1;
 - (void)enableSecureBackupWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)enableSecureBackupWithRecoveryKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchAllEscrowRecordsWithOptionForceFetch:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchEscrowRecordsWithOptionForceFetch:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getBackupRecordDevicesWithOptionForceFetch:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)handleCDPDevices:(id)arg1;

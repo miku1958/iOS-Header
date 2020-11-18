@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeKitDaemon/NSObject-Protocol.h>
-
 @class HMDUserDataController, HMDUserSettingsBackingStoreController, NSUUID;
 
-@protocol HMDUserDataControllerDelegate <NSObject>
+@protocol HMDUserDataControllerDelegate
 
 @property (readonly) BOOL isUserSettingsPrefEnabled;
 

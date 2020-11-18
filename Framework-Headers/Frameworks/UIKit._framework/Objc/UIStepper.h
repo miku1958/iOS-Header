@@ -36,7 +36,9 @@
 @property (strong, nonatomic) UIView<UIStepperVisualElement> *visualElement; // @synthesize visualElement=_visualElement;
 @property (nonatomic) BOOL wraps; // @synthesize wraps=_wraps;
 
++ (BOOL)_allowsUnsupportedMacIdiomBehavior;
 + (Class)_fallbackVisualElementClass;
++ (void)_setAllowsUnsupportedMacIdiomBehavior:(BOOL)arg1;
 + (Class)visualElementClassForTraitCollection:(id)arg1;
 + (id)visualElementForTraitCollection:(id)arg1;
 - (void).cxx_destruct;

@@ -18,7 +18,6 @@
 - (CDUnknownBlockType)bu_sortDescriptorComparator;
 - (BOOL)containsLocalizedStringCaseInsensitive:(id)arg1;
 - (BOOL)containsStringCaseInsensitive:(id)arg1;
-- (id)firstObject;
 - (id)imReversedArray;
 - (long long)indexOfObjectWithValue:(id)arg1 forKeyPath:(id)arg2;
 - (id)objectsMatching:(CDUnknownBlockType)arg1;

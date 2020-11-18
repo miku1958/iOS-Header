@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <Photos/NSCopying-Protocol.h>
 #import <Photos/NSSecureCoding-Protocol.h>
 #import <Photos/PLVideoChoosingOptions-Protocol.h>
 
 @class NSString;
 
-@interface PHVideoRequestBehaviorSpec : NSObject <PLVideoChoosingOptions, NSSecureCoding>
+@interface PHVideoRequestBehaviorSpec : NSObject <PLVideoChoosingOptions, NSSecureCoding, NSCopying>
 {
     BOOL _networkAccessAllowed;
     BOOL _streamingAllowed;
@@ -37,6 +38,7 @@
 @property (nonatomic, getter=isVideoComplementAllowed) BOOL videoComplementAllowed; // @synthesize videoComplementAllowed=_videoComplementAllowed;
 
 + (BOOL)supportsSecureCoding;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)shortDescription;

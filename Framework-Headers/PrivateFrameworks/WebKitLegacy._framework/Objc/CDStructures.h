@@ -819,6 +819,11 @@ struct Optional<WebCore::Path> {
     union storage_t<WebCore::Path> _field2;
 };
 
+struct Optional<WebCore::SimpleRange> {
+    BOOL _field1;
+    union storage_t<WebCore::SimpleRange> _field2;
+};
+
 struct Optional<WebCore::TextIndicatorData> {
     BOOL _field1;
     union storage_t<WebCore::TextIndicatorData> _field2;
@@ -1004,6 +1009,8 @@ struct Page {
     BOOL _field150;
     BOOL _field151;
     BOOL _field152;
+    BOOL _field153;
+    struct MonotonicTime _field154;
 };
 
 struct PageConsoleClient;
@@ -1102,8 +1109,6 @@ struct RTCController {
     struct Vector<std::__1::reference_wrapper<WebCore::RTCPeerConnection>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _field2;
     BOOL _field3;
 };
-
-struct Range;
 
 struct RectEdges<float> {
     struct array<float, 4> _field1;
@@ -1295,10 +1300,6 @@ struct RefPtr<WebCore::PluginData, WTF::DumbPtrTraits<WebCore::PluginData>> {
 
 struct RefPtr<WebCore::QualifiedName::QualifiedNameImpl, WTF::DumbPtrTraits<WebCore::QualifiedName::QualifiedNameImpl>> {
     struct QualifiedNameImpl *_field1;
-};
-
-struct RefPtr<WebCore::Range, WTF::DumbPtrTraits<WebCore::Range>> {
-    struct Range *_field1;
 };
 
 struct RefPtr<WebCore::Scrollbar, WTF::DumbPtrTraits<WebCore::Scrollbar>> {
@@ -2366,6 +2367,11 @@ typedef struct OptionSet<WebCore::PaintBehavior> {
     unsigned short _field1;
 } OptionSet_8e32cbf3;
 
+typedef struct Optional<WebCore::SimpleRange> {
+    BOOL _field1;
+    union storage_t<WebCore::SimpleRange> _field2;
+} Optional_b9c62d53;
+
 typedef struct Ref<BackForwardList, WTF::DumbPtrTraits<BackForwardList>> {
     struct BackForwardList *_field1;
 } Ref_8012be98;
@@ -2409,10 +2415,6 @@ typedef struct RefPtr<WebCore::DeviceOrientationData, WTF::DumbPtrTraits<WebCore
 typedef struct RefPtr<WebCore::LegacyWebArchive, WTF::DumbPtrTraits<WebCore::LegacyWebArchive>> {
     struct LegacyWebArchive *m_ptr;
 } RefPtr_a4a1529f;
-
-typedef struct RefPtr<WebCore::Range, WTF::DumbPtrTraits<WebCore::Range>> {
-    struct Range *_field1;
-} RefPtr_033e7b31;
 
 typedef struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
     struct String *_field1;
@@ -2516,6 +2518,11 @@ union storage_t<WebCore::PasteboardWriterData::WebContent> {
 union storage_t<WebCore::Path> {
     unsigned char _field1;
     struct Path _field2;
+};
+
+union storage_t<WebCore::SimpleRange> {
+    unsigned char _field1;
+    struct SimpleRange _field2;
 };
 
 union storage_t<WebCore::TextIndicatorData> {

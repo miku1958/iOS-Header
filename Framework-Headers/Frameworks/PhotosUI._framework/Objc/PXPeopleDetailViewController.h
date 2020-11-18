@@ -32,7 +32,6 @@
 - (void).cxx_destruct;
 - (void)_applicationBecameActive:(id)arg1;
 - (void)_createNewDetailView:(id)arg1;
-- (id)_fetchRefreshedPeople:(id)arg1;
 - (void)_launchNaming:(id)arg1;
 - (void)_loadComposition;
 - (void)_setupHeader;

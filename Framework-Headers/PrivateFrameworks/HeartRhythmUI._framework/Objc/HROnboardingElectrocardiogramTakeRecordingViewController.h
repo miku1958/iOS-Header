@@ -49,7 +49,7 @@
 - (id)_titleFontTextStyle;
 - (id)_titleForOnboarding:(BOOL)arg1;
 - (void)heartRhythmAvailabilityDidUpdate;
-- (id)initForOnboarding:(BOOL)arg1;
+- (id)initForOnboarding:(BOOL)arg1 upgradingFromAlgorithmVersion:(long long)arg2;
 - (void)setUpConstraints;
 - (void)setUpUI;
 - (void)skipButtonTapped:(id)arg1;

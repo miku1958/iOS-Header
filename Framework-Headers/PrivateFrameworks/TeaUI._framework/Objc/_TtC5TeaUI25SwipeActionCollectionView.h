@@ -15,7 +15,11 @@
     MISSING_TYPE *coordinatingResetBlocks;
     MISSING_TYPE *coordinatingCancelBlocks;
     MISSING_TYPE *updateGroup;
+    MISSING_TYPE *isBottomRubberBanding;
 }
+
+@property (nonatomic) BOOL allowsSelection;
+@property (nonatomic) struct CGPoint contentOffset;
 
 - (void).cxx_destruct;
 - (void)dealloc;

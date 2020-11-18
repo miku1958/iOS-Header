@@ -85,6 +85,8 @@
 - (BOOL)currentProcessHandlesCloudRelay;
 - (void)dealloc;
 - (void)didChangeOutgoingRelayCallerID;
+- (void)didChangeRelayCallingAvailability;
+- (void)didChangeRelayCallingCapabilities;
 - (void)didChangeTelephonyCallingSupport;
 - (id)getCarrierValueForKey:(id)arg1 andContext:(id)arg2;
 - (id)getCarrierValueForKeyHierarchy:(id)arg1 andContext:(id)arg2;

@@ -117,6 +117,11 @@ typedef struct {
 } CDStruct_8bc48212;
 
 typedef struct {
+    unsigned int :1;
+    unsigned int :1;
+} CDStruct_d7010776;
+
+typedef struct {
     double target;
     double position;
     double velocity;
@@ -149,6 +154,14 @@ typedef struct {
     double scratch;
     BOOL dirty;
 } CDStruct_5c14e0b2;
+
+typedef struct {
+    double barcodeTopPadding;
+    double disclaimerToBarcodePadding;
+    double disclaimerSidePadding;
+    double bankToDisclaimerPadding;
+    double altTextInset;
+} CDStruct_33fad236;
 
 typedef struct {
     double _field1;

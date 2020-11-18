@@ -7,13 +7,14 @@
 #import <UIKit/UIView.h>
 
 #import <ContactsUI/UIDropInteractionDelegate-Protocol.h>
+#import <ContactsUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <ContactsUI/UITextFieldDelegate-Protocol.h>
 
-@class CAShapeLayer, CNPhotoPickerHeaderViewTextField, CNPhotoPickerProviderItem, CNVisualIdentity, CNVisualIdentityAvatarViewController, NSArray, NSString, UIButton;
+@class CAShapeLayer, CNPhotoPickerHeaderViewTextField, CNPhotoPickerProviderItem, CNVisualIdentity, CNVisualIdentityAvatarViewController, NSArray, NSString, UIButton, UIGestureRecognizer;
 @protocol CNPhotoPickerHeaderViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNPhotoPickerHeaderView : UIView <UITextFieldDelegate, UIDropInteractionDelegate>
+@interface CNPhotoPickerHeaderView : UIView <UITextFieldDelegate, UIDropInteractionDelegate, UIGestureRecognizerDelegate>
 {
     id<CNPhotoPickerHeaderViewDelegate> _delegate;
     CNPhotoPickerProviderItem *_placeholderProviderItem;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
     CAShapeLayer *_clearAvatarImageButtonClippingLayer;
     CNPhotoPickerHeaderViewTextField *_identityNameTextField;
     UIButton *_clearIdentityNameButton;
+    UIGestureRecognizer *_tapGestureRecognizer;
 }
 
 @property (strong, nonatomic) CNVisualIdentityAvatarViewController *avatarViewController; // @synthesize avatarViewController=_avatarViewController;
@@ -40,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CNPhotoPickerProviderItem *placeholderProviderItem; // @synthesize placeholderProviderItem=_placeholderProviderItem;
 @property (strong, nonatomic) NSArray *subviewsConstraints; // @synthesize subviewsConstraints=_subviewsConstraints;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) UIGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 @property (strong, nonatomic) CNVisualIdentity *visualIdentity; // @synthesize visualIdentity=_visualIdentity;
 
 - (void).cxx_destruct;
@@ -50,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)dropInteraction:(id)arg1 canHandleSession:(id)arg2;
 - (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
 - (id)dropInteraction:(id)arg1 sessionDidUpdate:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (id)initWithContact:(id)arg1;
 - (id)initWithVisualIdentity:(id)arg1;
 - (id)initWithVisualIdentity:(id)arg1 avatarViewController:(id)arg2;

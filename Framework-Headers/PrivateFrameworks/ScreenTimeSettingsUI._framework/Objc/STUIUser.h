@@ -8,7 +8,7 @@
 
 #import <ScreenTimeSettingsUI/NSCopying-Protocol.h>
 
-@class NSManagedObjectID, NSNumber, NSString;
+@class NSArray, NSManagedObjectID, NSNumber, NSString;
 
 @interface STUIUser : NSObject <NSCopying>
 {
@@ -17,6 +17,7 @@
     BOOL _webUsageEnabled;
     BOOL _remoteUser;
     BOOL _hasAllowances;
+    BOOL _hasDeviceWithoutUsageReported;
     unsigned long long _source;
     NSString *_name;
     NSNumber *_dsid;
@@ -25,13 +26,16 @@
     NSString *_passcode;
     NSString *_recoveryAltDSID;
     NSManagedObjectID *_userObjectID;
+    NSArray *_devices;
 }
 
 @property (copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property (readonly, nonatomic) BOOL canRecoveryAuthenticate;
+@property (copy, nonatomic) NSArray *devices; // @synthesize devices=_devices;
 @property (copy, nonatomic) NSNumber *dsid; // @synthesize dsid=_dsid;
 @property (readonly, copy, nonatomic) NSString *givenName;
 @property (nonatomic) BOOL hasAllowances; // @synthesize hasAllowances=_hasAllowances;
+@property BOOL hasDeviceWithoutUsageReported; // @synthesize hasDeviceWithoutUsageReported=_hasDeviceWithoutUsageReported;
 @property (readonly, nonatomic) BOOL hasPasscode;
 @property (readonly, nonatomic) BOOL isChild;
 @property (readonly, nonatomic) BOOL isParent;

@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_queue;
+@class CNUnfairLock;
 
 @interface CNStringTokenizer : NSObject
 {
     struct __CFStringTokenizer *_tokenizer;
-    NSObject<OS_dispatch_queue> *_syncQueue;
+    CNUnfairLock *_lock;
 }
 
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *syncQueue; // @synthesize syncQueue=_syncQueue;
+@property (readonly, nonatomic) CNUnfairLock *lock; // @synthesize lock=_lock;
 @property (readonly, nonatomic) struct __CFStringTokenizer *tokenizer; // @synthesize tokenizer=_tokenizer;
 
 + (id)adjustRanges:(id)arg1 toIncludeNonBreakingCharactersInString:(id)arg2;

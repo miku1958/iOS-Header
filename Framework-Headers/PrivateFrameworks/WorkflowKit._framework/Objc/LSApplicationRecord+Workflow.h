@@ -7,8 +7,6 @@
 #import <CoreServices/LSApplicationRecord.h>
 
 @interface LSApplicationRecord (Workflow)
-
-@property (readonly, nonatomic) long long wf_appState;
-
+- (BOOL)wf_isAvailableInContext:(long long)arg1;
 @end
 

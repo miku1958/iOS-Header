@@ -130,6 +130,8 @@ __attribute__((visibility("hidden")))
     BOOL _variableFrameRateVideoCaptureEnabled;
     long long _timeOfFlightProjectorMode;
     NSData *_cameraPoseMatrix;
+    unsigned long long _degradedCaptureQualityFactors;
+    BOOL _degradedCaptureQualityFactorsNeedInitialization;
 }
 
 + (BOOL)_cameraAccessIsEnabled;
@@ -158,6 +160,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleNotification:(struct __CFString *)arg1 payload:(id)arg2;
 - (BOOL)_hasKeyValueObserversForHighFrequencyProperty:(id)arg1;
 - (void)_incrementObserverCountForHighFrequencyProperty:(id)arg1;
+- (void)_initDegradedCaptureQualityFactors;
 - (id)_initWithFigCaptureSource:(struct OpaqueFigCaptureSource *)arg1;
 - (BOOL)_isAppleManufacturer;
 - (BOOL)_isBravoVariant;
@@ -239,6 +242,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_b2fbf00d)chromaticityValuesForDeviceWhiteBalanceGains:(CDStruct_d6531dd4)arg1;
 - (id)constituentDeviceWithDeviceType:(id)arg1;
 - (void)dealloc;
+- (unsigned long long)degradedCaptureQualityFactors;
 - (struct OpaqueCMClock *)deviceClock;
 - (id)deviceFormatForSessionPreset:(id)arg1 videoFormat:(unsigned int)arg2;
 - (id)deviceType;

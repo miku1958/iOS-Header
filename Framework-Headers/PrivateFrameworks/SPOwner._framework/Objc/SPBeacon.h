@@ -25,6 +25,7 @@
     NSString *_systemVersion;
     long long _vendorId;
     long long _productId;
+    unsigned long long _type;
     NSString *_stableIdentifier;
     NSDate *_pairingDate;
     NSString *_correlationIdentifier;
@@ -44,6 +45,7 @@
 @property (copy, nonatomic) NSString *stableIdentifier; // @synthesize stableIdentifier=_stableIdentifier;
 @property (copy, nonatomic) NSString *systemVersion; // @synthesize systemVersion=_systemVersion;
 @property (copy, nonatomic) NSDictionary *taskInformation; // @synthesize taskInformation=_taskInformation;
+@property (nonatomic) unsigned long long type; // @synthesize type=_type;
 @property (nonatomic) long long vendorId; // @synthesize vendorId=_vendorId;
 
 + (id)SPOwner;

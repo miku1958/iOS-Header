@@ -56,6 +56,7 @@
 - (void)getSTConversation:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)initializeContext:(id)arg1 participantIDsHash:(id)arg2;
+- (BOOL)isDowntimeLimited;
 - (BOOL)isEmergencyHandle:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)providersChangedForProviderManager:(id)arg1;

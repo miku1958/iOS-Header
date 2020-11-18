@@ -39,6 +39,7 @@
 - (unsigned long long)_intentForPrefetchPhase:(unsigned long long)arg1;
 - (BOOL)_isInflightResourceIdentifier:(id)arg1;
 - (id)_lastCompletePrefetchDate;
+- (BOOL)_prefetchIsEnabledForPhase:(unsigned long long)arg1;
 - (void)_prefetchResources:(id)arg1 prefetchPhase:(unsigned long long)arg2 shouldAutoPefetchNextBatch:(BOOL)arg3;
 - (void)_reloadDefaultDownload;
 - (void)_reloadDownloadOriginalsSetting;

@@ -10,7 +10,7 @@
 @protocol ANConnectionProvider;
 
 @protocol ANConnectionDelegate <NSObject>
-- (void)connection:(id<ANConnectionProvider>)arg1 didReceiveMessage:(NSDictionary *)arg2 fromSender:(ANSender *)arg3 senderContext:(ANSenderContext *)arg4;
+- (void)connection:(id<ANConnectionProvider>)arg1 didReceiveMessage:(NSDictionary *)arg2 fromSender:(ANSender *)arg3 senderContext:(ANSenderContext *)arg4 handler:(void (^)(NSError *))arg5;
 - (void)connection:(id<ANConnectionProvider>)arg1 failedDeliveryForMessage:(NSDictionary *)arg2 withError:(NSError *)arg3;
 @end
 

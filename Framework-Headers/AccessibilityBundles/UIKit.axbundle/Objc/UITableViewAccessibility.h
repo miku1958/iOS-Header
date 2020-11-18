@@ -49,8 +49,6 @@
 - (BOOL)_accessibilitySearchControllerDimmingViewVisible;
 - (id)_accessibilitySearchResultsTableView;
 - (BOOL)_accessibilitySearchTableViewVisible;
-- (id)_accessibilitySelectedChildren;
-- (void)_accessibilitySetSelectedChildren:(id)arg1;
 - (void)_accessibilitySetUseOpaqueElements:(id)arg1;
 - (BOOL)_accessibilityShouldDisableCellReuse;
 - (BOOL)_accessibilityShouldIncludeArrowKeyCommandsForDirectionalFocusMovement;

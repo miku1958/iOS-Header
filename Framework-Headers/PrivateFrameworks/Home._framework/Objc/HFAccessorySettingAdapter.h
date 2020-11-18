@@ -43,6 +43,7 @@
 @property (strong, nonatomic) NSMutableDictionary *watchedSettings; // @synthesize watchedSettings=_watchedSettings;
 
 + (id)createDefaultHomeSettingAdapterCollectionForProfile:(id)arg1;
++ (id)createDefaultHomeSettingAdapterCollectionWithoutMobileTimerAdapterForProfile:(id)arg1;
 - (void).cxx_destruct;
 - (id)_beginMonitoringSettingsKeyPath:(id)arg1;
 - (id)_endMonitoringSettingsKeyPath:(id)arg1;

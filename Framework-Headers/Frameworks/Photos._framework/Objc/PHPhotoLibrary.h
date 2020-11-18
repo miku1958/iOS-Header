@@ -164,6 +164,7 @@
 - (id)_getPhotoKitClient;
 - (void)_handleLibraryBecameUnavailable:(id)arg1 reason:(id)arg2;
 - (void)_handleServiceConnectionClosed:(id)arg1;
+- (long long)_initialRetryCountForChangesRequest:(id)arg1;
 - (id)_initializeAppPrivateData;
 - (void)_invalidateEverythingWithReason:(id)arg1;
 - (id)_lazyPhotoLibrary;
@@ -178,6 +179,7 @@
 - (void)_removeObserver:(id)arg1;
 - (void)_requestAnalysisProgressWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_sendChangesRequest:(id)arg1 onExecutionContext:(id)arg2 withInstrumentation:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)_sendChangesRequest:(id)arg1 onExecutionContext:(id)arg2 withInstrumentation:(id)arg3 retryCount:(long long)arg4 reply:(CDUnknownBlockType)arg5;
 - (BOOL)_setUnavailabilityReason:(id)arg1;
 - (void)_startObservingServiceConnectionInvalidated;
 - (void)_startWatchingFileSystemVolumeForLibraryAvailability;
@@ -310,6 +312,7 @@
 - (void)runPFLWithAttachments:(id)arg1 recipeUserInfo:(id)arg2 resultBlock:(CDUnknownBlockType)arg3;
 - (double)sceneAnalysisProgressForHighlight:(id)arg1 usingSceneVersion:(unsigned long long)arg2;
 - (id)sceneInformationFromStartDate:(id)arg1 toEndDate:(id)arg2;
+- (id)sceneTaxonomyDetectorNodeSceneIDsFromSceneID:(unsigned int)arg1;
 - (void)setChangeRequest:(id)arg1 forUUID:(id)arg2;
 - (void)setWidgetTimelineGeneratedForDisplaySize:(struct CGSize)arg1;
 - (id)sharingMessageSuggestionDebugInformationForAssetCollectionLocalIdentifier:(id)arg1 error:(id *)arg2;

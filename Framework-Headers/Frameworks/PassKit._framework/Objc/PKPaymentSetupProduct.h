@@ -87,7 +87,7 @@
 + (id)productForIssuerProvisioningExtension:(id)arg1 withStatus:(id)arg2;
 + (id)productsFromBrowseableBankApps:(id)arg1;
 - (void).cxx_destruct;
-- (id)_initWithDisplayName:(id)arg1 partnerDictionary:(id)arg2 productIdentifier:(id)arg3 paymentOptions:(id)arg4 termsURL:(id)arg5 provisioningMethods:(id)arg6 readerModeMetadata:(id)arg7 requiredFields:(id)arg8 imageAssets:(id)arg9 minimumOSVersion:(id)arg10 region:(id)arg11 hsa2Requirement:(id)arg12 suppressPendingPurchases:(id)arg13 supportedTransitNetworkIdentifiers:(id)arg14 onboardingItems:(id)arg15 actionBaseURL:(id)arg16 productState:(id)arg17 minimumProductAge:(id)arg18 maximumProductAge:(id)arg19 associatedStoreIdentifiers:(id)arg20 appLaunchURL:(id)arg21 regionIdentifier:(id)arg22;
+- (id)_initWithDisplayName:(id)arg1 partnerDictionary:(id)arg2 productIdentifier:(id)arg3 paymentOptions:(id)arg4 termsURL:(id)arg5 provisioningMethods:(id)arg6 readerModeMetadata:(id)arg7 requiredFields:(id)arg8 imageAssets:(id)arg9 minimumOSVersion:(id)arg10 region:(id)arg11 hsa2Requirement:(id)arg12 suppressPendingPurchases:(id)arg13 supportedTransitNetworkIdentifiers:(id)arg14 onboardingItems:(id)arg15 actionBaseURL:(id)arg16 productState:(id)arg17 minimumProductAge:(id)arg18 maximumProductAge:(id)arg19 associatedStoreIdentifiers:(id)arg20 appLaunchURL:(id)arg21 regionIdentifier:(id)arg22 type:(id)arg23 localizedNotificationTitle:(id)arg24 localizedNotificationMessage:(id)arg25;
 - (long long)allSupportedProtocols;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)didAuthorizeProvisioningExtension;

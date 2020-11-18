@@ -19,6 +19,7 @@
     MISSING_TYPE *customNodeRenderer;
     MISSING_TYPE *webEmbedNodeRenderer;
     MISSING_TYPE *adMetricsNodeRenderer;
+    MISSING_TYPE *micaNodeRenderer;
     MISSING_TYPE *webEmbedViewControllerReuseManager;
     MISSING_TYPE *rendererTool;
     MISSING_TYPE *behaviorRenderer;

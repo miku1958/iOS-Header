@@ -31,11 +31,11 @@
     BOOL _isNotExecutable;
     BOOL _isKeywordMatch;
     BOOL _isPrepared;
-    short _topHitReason;
     float _rawScore;
     float _feedbackScore;
     float _score;
     float _withinBundleScore;
+    int _topHitReason;
     unsigned int _bundleIDType;
     NSString *_identifier;
     double _suggestionScore;
@@ -97,7 +97,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) MISSING_TYPE *test_indexScore;
 @property (nonatomic) MISSING_TYPE *test_inputToModelScore;
-@property (nonatomic) short topHitReason; // @synthesize topHitReason=_topHitReason;
+@property (nonatomic) int topHitReason; // @synthesize topHitReason=_topHitReason;
 @property (nonatomic) BOOL vendorNameIsDisplayNamePrefix; // @synthesize vendorNameIsDisplayNamePrefix=_vendorNameIsDisplayNamePrefix;
 @property (nonatomic) float withinBundleScore; // @synthesize withinBundleScore=_withinBundleScore;
 
@@ -111,7 +111,7 @@
 - (BOOL)didMatchRankingDescriptor:(id)arg1;
 - (id)displayName;
 - (id)dueDate;
-- (id)getBundleSpecificValue:(id)arg1 forPropertyName:(id)arg2 withQueryString:(id)arg3 isCJK:(BOOL)arg4 isBullseyeSearch:(BOOL)arg5;
+- (id)getBundleSpecificValue:(id)arg1 forPropertyName:(id)arg2 withQueryString:(id)arg3 isCJK:(BOOL)arg4 isBullseyeSearch:(BOOL)arg5 withEvaluator:(id)arg6;
 - (void)inferDateBinsFromDates:(id)arg1 intoBins:(int *)arg2;
 - (id)initForParsecResultWithBundleID:(id)arg1;
 -     // Error parsing type: @24@0:8^{?=q[2Q]TT[0^v]}16, name: initWithAttrs:

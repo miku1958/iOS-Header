@@ -6,9 +6,13 @@
 
 #import <BannerKit/BNPosting-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString;
+@protocol BNPresentableUniquelyIdentifying;
 
 @protocol BNPostingPrivate <BNPosting>
+- (NSArray *)revokePresentablesWithIdentification:(id<BNPresentableUniquelyIdentifying>)arg1 reason:(NSString *)arg2 options:(unsigned long long)arg3 animated:(BOOL)arg4 userInfo:(NSDictionary *)arg5 error:(out id *)arg6;
+
+@optional
 - (BOOL)revokePresentableWithRequestIdentifier:(NSString *)arg1 requesterIdentifier:(NSString *)arg2 reason:(NSString *)arg3 options:(unsigned long long)arg4 animated:(BOOL)arg5 userInfo:(NSDictionary *)arg6 error:(out id *)arg7;
 @end
 

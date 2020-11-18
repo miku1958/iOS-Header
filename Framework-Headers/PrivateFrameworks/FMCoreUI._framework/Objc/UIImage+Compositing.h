@@ -10,7 +10,6 @@
 + (id)blankImageOfSize:(struct CGSize)arg1;
 - (id)compositeImage:(id)arg1;
 - (id)compositeImage:(id)arg1 blendMode:(int)arg2 alpha:(double)arg3;
-- (id)fmfTintedImageWithColor:(id)arg1;
 - (id)imagesWithSpriteSize:(struct CGSize)arg1;
 - (id)tintedImageWithColor:(id)arg1;
 @end

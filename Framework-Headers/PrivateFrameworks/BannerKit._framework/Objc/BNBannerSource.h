@@ -44,6 +44,7 @@
 - (id)_activeConnectionWithError:(out id *)arg1;
 - (void)_invalidateConnection;
 - (id)_presentableForUniqueIdentifier:(id)arg1;
+- (id)_revokePresentableWithIdentification:(id)arg1 reason:(id)arg2 animated:(id)arg3 userInfo:(id)arg4 error:(out id *)arg5;
 - (BOOL)bannerClientContainerViewControllerShouldDeferFocus:(id)arg1;
 - (void)bannerClientContainerViewControllerStoppedDeferringFocus:(id)arg1;
 - (id)containerViewControllerForBannerSceneComponentProvider:(id)arg1;
@@ -54,8 +55,10 @@
 - (id)keyWindowForScreen:(id)arg1;
 - (id)layoutDescriptionWithError:(out id *)arg1;
 - (BOOL)postPresentable:(id)arg1 options:(unsigned long long)arg2 userInfo:(id)arg3 error:(out id *)arg4;
-- (BOOL)revokeAllPresentablesWithReason:(id)arg1 userInfo:(id)arg2 error:(out id *)arg3;
+- (id)revokeAllPresentablesWithReason:(id)arg1 userInfo:(id)arg2 error:(out id *)arg3;
+- (id)revokePresentableWithIdentification:(id)arg1 reason:(id)arg2 animated:(BOOL)arg3 userInfo:(id)arg4 error:(out id *)arg5;
 - (BOOL)revokePresentableWithRequestIdentifier:(id)arg1 animated:(BOOL)arg2 reason:(id)arg3 userInfo:(id)arg4 error:(out id *)arg5;
+- (id)revokePresentableWithRequestIdentifier:(id)arg1 reason:(id)arg2 animated:(BOOL)arg3 userInfo:(id)arg4 error:(out id *)arg5;
 - (void)sceneWillInvalidateForBannerSceneComponentProvider:(id)arg1;
 - (BOOL)setSuspended:(BOOL)arg1 forReason:(id)arg2 revokingCurrent:(BOOL)arg3 error:(out id *)arg4;
 

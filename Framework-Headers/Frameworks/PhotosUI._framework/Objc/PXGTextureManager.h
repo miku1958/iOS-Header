@@ -64,7 +64,6 @@
 - (void).cxx_destruct;
 - (void)_addTextureToTexturesInUse:(id)arg1;
 - (void)_blockOnThumbnailsIfNeededWithGeometries:(CDStruct_3ab912e1 *)arg1 visibleRect:(struct CGRect)arg2 interactionState:(CDStruct_a02a4563)arg3 fences:(id)arg4;
-- (void)_clearTexturesForPresentationType:(int)arg1;
 - (void)_configureAllTextureConverters;
 - (void)_configureAllTextureProviders;
 - (void)_configureTextureConverter:(id)arg1;
@@ -84,6 +83,7 @@
 - (void)_processPixelBuffer:(struct __CVBuffer *)arg1 orientationTransform:(struct CGAffineTransform)arg2 fromTextureProvider:(id)arg3 withTextureConverter:(id)arg4 forRequestID:(int)arg5 deliveryOrder:(unsigned int)arg6;
 - (long long)_processTextureProviderResults;
 - (void)_pruneTextures:(id)arg1;
+- (void)_removeAllTexturesForPresentationType:(int)arg1;
 - (void)_requestQueue_scheduleUpdateIfAllowed;
 - (void)_requestQueue_setNeedsUpdate;
 - (void)_resizeStorageIfNeededForSpriteCount:(long long)arg1;

@@ -23,6 +23,7 @@
     MISSING_TYPE *$__lazy_storage_$_verificationSpinner;
     MISSING_TYPE *purchasePresenter;
     MISSING_TYPE *sceneStateManager;
+    MISSING_TYPE *webOptinFlowManager;
 }
 
 @property (nonatomic) BOOL isBeingUsedAsPlugin; // @synthesize isBeingUsedAsPlugin;

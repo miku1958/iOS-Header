@@ -37,7 +37,7 @@
 - (void)_terminateSetupFlow;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
-- (id)initWithProvisoningController:(id)arg1 setupDelegate:(id)arg2 context:(long long)arg3 credential:(id)arg4;
+- (id)initWithProvisoningController:(id)arg1 setupDelegate:(id)arg2 passLibraryDataProvider:(id)arg3 context:(long long)arg4 credential:(id)arg5;
 - (BOOL)shouldPushTerms;
 - (void)viewDidLoad;
 

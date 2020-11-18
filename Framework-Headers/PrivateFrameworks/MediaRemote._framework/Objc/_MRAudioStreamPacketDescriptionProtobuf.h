@@ -8,6 +8,7 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface _MRAudioStreamPacketDescriptionProtobuf : PBCodable <NSCopying>
 {
     long long _startOffset;
@@ -20,20 +21,11 @@
     } _has;
 }
 
-@property (nonatomic) unsigned int dataByteSize; // @synthesize dataByteSize=_dataByteSize;
-@property (nonatomic) BOOL hasDataByteSize;
-@property (nonatomic) BOOL hasStartOffset;
-@property (nonatomic) BOOL hasVariableFramesInPacket;
-@property (nonatomic) long long startOffset; // @synthesize startOffset=_startOffset;
-@property (nonatomic) unsigned int variableFramesInPacket; // @synthesize variableFramesInPacket=_variableFramesInPacket;
-
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

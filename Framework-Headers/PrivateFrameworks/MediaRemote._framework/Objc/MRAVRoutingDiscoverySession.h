@@ -11,26 +11,44 @@
 
 @interface MRAVRoutingDiscoverySession : NSObject
 {
-    NSObject<OS_dispatch_queue> *_serialQueue;
-    NSObject<OS_dispatch_queue> *_calloutQueue;
-    NSMutableDictionary *_endpointsChangedCallbacks;
-    NSMutableDictionary *_outputDevicesChangedCallbacks;
+    NSArray *_endpoints;
+    NSArray *_outputDevices;
     BOOL _alwaysAllowUpdates;
     BOOL _populatesExternalDevice;
+    NSMutableDictionary *_endpointsChangedCallbacks;
+    NSMutableDictionary *_endpointsAddedCallbacks;
+    NSMutableDictionary *_endpointsRemovedCallbacks;
+    NSMutableDictionary *_endpointsModifiedCallbacks;
+    NSMutableDictionary *_outputDevicesChangedCallbacks;
+    NSMutableDictionary *_outputDevicesAddedCallbacks;
+    NSMutableDictionary *_outputDevicesRemovedCallbacks;
+    NSMutableDictionary *_outputDevicesModifiedCallbacks;
+    NSObject<OS_dispatch_queue> *_serialQueue;
+    NSObject<OS_dispatch_queue> *_calloutQueue;
     NSMapTable *_clientDiscoveryStates;
 }
 
 @property (nonatomic) BOOL alwaysAllowUpdates; // @synthesize alwaysAllowUpdates=_alwaysAllowUpdates;
 @property (readonly, nonatomic) NSArray *availableEndpoints; // @dynamic availableEndpoints;
 @property (readonly, nonatomic) NSArray *availableOutputDevices; // @dynamic availableOutputDevices;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *calloutQueue; // @synthesize calloutQueue=_calloutQueue;
 @property (strong, nonatomic) NSMapTable *clientDiscoveryStates; // @synthesize clientDiscoveryStates=_clientDiscoveryStates;
 @property (readonly, nonatomic) BOOL devicePresenceDetected; // @dynamic devicePresenceDetected;
 @property (nonatomic) unsigned int discoveryMode; // @dynamic discoveryMode;
 @property (nonatomic) unsigned int endpointFeatures; // @dynamic endpointFeatures;
-@property (readonly, nonatomic) NSArray *endpointsChangedCallbacks;
-@property (readonly, nonatomic) NSArray *outputDevicesChangedCallbacks;
+@property (copy, nonatomic) NSArray *endpoints;
+@property (strong, nonatomic) NSMutableDictionary *endpointsAddedCallbacks; // @synthesize endpointsAddedCallbacks=_endpointsAddedCallbacks;
+@property (strong, nonatomic) NSMutableDictionary *endpointsChangedCallbacks; // @synthesize endpointsChangedCallbacks=_endpointsChangedCallbacks;
+@property (strong, nonatomic) NSMutableDictionary *endpointsModifiedCallbacks; // @synthesize endpointsModifiedCallbacks=_endpointsModifiedCallbacks;
+@property (strong, nonatomic) NSMutableDictionary *endpointsRemovedCallbacks; // @synthesize endpointsRemovedCallbacks=_endpointsRemovedCallbacks;
+@property (copy, nonatomic) NSArray *outputDevices;
+@property (strong, nonatomic) NSMutableDictionary *outputDevicesAddedCallbacks; // @synthesize outputDevicesAddedCallbacks=_outputDevicesAddedCallbacks;
+@property (strong, nonatomic) NSMutableDictionary *outputDevicesChangedCallbacks; // @synthesize outputDevicesChangedCallbacks=_outputDevicesChangedCallbacks;
+@property (strong, nonatomic) NSMutableDictionary *outputDevicesModifiedCallbacks; // @synthesize outputDevicesModifiedCallbacks=_outputDevicesModifiedCallbacks;
+@property (strong, nonatomic) NSMutableDictionary *outputDevicesRemovedCallbacks; // @synthesize outputDevicesRemovedCallbacks=_outputDevicesRemovedCallbacks;
 @property (nonatomic) BOOL populatesExternalDevice; // @synthesize populatesExternalDevice=_populatesExternalDevice;
 @property (copy, nonatomic) NSString *routingContextUID; // @dynamic routingContextUID;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property (nonatomic) unsigned int targetAudioSessionID; // @dynamic targetAudioSessionID;
 
 + (id)discoverySessionWithConfiguration:(id)arg1;
@@ -38,16 +56,28 @@
 + (id)discoverySessionWithEndpointFeatures:(unsigned int)arg1 enableThrottling:(BOOL)arg2;
 + (id)sharedDiscoverySessionForClass:(Class)arg1 configuration:(id)arg2;
 - (void).cxx_destruct;
+- (id)addEndpointsAddedCallback:(CDUnknownBlockType)arg1;
 - (id)addEndpointsChangedCallback:(CDUnknownBlockType)arg1;
+- (id)addEndpointsModifiedCallback:(CDUnknownBlockType)arg1;
+- (id)addEndpointsRemovedCallback:(CDUnknownBlockType)arg1;
+- (id)addOutputDevicesAddedCallback:(CDUnknownBlockType)arg1;
 - (id)addOutputDevicesChangedCallback:(CDUnknownBlockType)arg1;
+- (id)addOutputDevicesModifiedCallback:(CDUnknownBlockType)arg1;
+- (id)addOutputDevicesRemovedCallback:(CDUnknownBlockType)arg1;
 - (id)initWithConfiguration:(id)arg1;
 - (id)initWithFeatures:(unsigned int)arg1;
 - (void)logEndpointsChanged:(id)arg1 oldEndpoints:(id)arg2;
 - (void)logOutputDevicesChanged:(id)arg1 oldOutputDevices:(id)arg2;
 - (void)notifyEndpointsChanged:(id)arg1;
 - (void)notifyOutputDevicesChanged:(id)arg1 forFeature:(unsigned int)arg2;
+- (void)removeEndpointsAddedCallback:(id)arg1;
 - (void)removeEndpointsChangedCallback:(id)arg1;
+- (void)removeEndpointsModifiedCallback:(id)arg1;
+- (void)removeEndpointsRemovedCallback:(id)arg1;
+- (void)removeOutputDevicesAddedCallback:(id)arg1;
 - (void)removeOutputDevicesChangedCallback:(id)arg1;
+- (void)removeOutputDevicesModifiedCallback:(id)arg1;
+- (void)removeOutputDevicesRemovedCallback:(id)arg1;
 
 @end
 

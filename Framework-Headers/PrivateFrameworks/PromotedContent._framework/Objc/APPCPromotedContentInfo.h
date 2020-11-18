@@ -18,6 +18,7 @@
     MISSING_TYPE *placeholder;
 }
 
+@property (nonatomic, readonly) long long desiredPosition;
 @property (nonatomic, readonly) long long errorReason;
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) id<APPCLifecycleMetricsHelping> metricsHelper; // @synthesize metricsHelper;

@@ -6,11 +6,12 @@
 
 #import <Preferences/PSTableCell.h>
 
-@class UIDatePicker;
+@class UIDatePicker, UILabel;
 
 @interface PSDateTimePickerCell : PSTableCell
 {
     UIDatePicker *_datePicker;
+    UILabel *_titleLabel;
 }
 
 + (double)preferredHeight;
@@ -18,6 +19,7 @@
 - (id)datePicker;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
+- (void)setTitle:(id)arg1;
 - (void)timeZoneChanged:(id)arg1;
 
 @end

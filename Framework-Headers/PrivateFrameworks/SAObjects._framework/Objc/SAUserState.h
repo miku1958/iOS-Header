@@ -16,6 +16,7 @@
 
 @property (nonatomic) BOOL ageVerificationRequired;
 @property (readonly, copy) NSString *debugDescription;
+@property (copy, nonatomic) NSString *defaultMediaPlaybackAppBundleIdentifier;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *iTunesMatchSubscriptionStatus;

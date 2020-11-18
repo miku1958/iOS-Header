@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class CLLocation;
+
 @protocol TSLocationDetectionManagerType
 
 @property (nonatomic, readonly) BOOL authorized;
 @property (nonatomic, readonly) BOOL locationServicesEnabled;
+@property (nonatomic, readonly) CLLocation *mostFrequentLocation;
+@property (nonatomic, readonly) id observableMostFrequentLocation;
 
-- (void)fetchLocationWithCompletion:(void (^)(CLLocation *))arg1;
 @end
 

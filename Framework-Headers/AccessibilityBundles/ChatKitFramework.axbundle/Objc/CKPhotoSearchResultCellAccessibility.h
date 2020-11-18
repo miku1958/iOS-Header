@@ -14,12 +14,16 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_axContact;
-- (id)_axImageDescription;
+- (id)_axDescription;
+- (id)_axImageURL;
 - (void)_axSetContact:(id)arg1;
-- (void)_axSetImageDescription:(id)arg1;
+- (void)_axSetDescription:(id)arg1;
+- (void)_axSetImageURL:(id)arg1;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
+- (void)configureWithQueryResult:(id)arg1 searchText:(id)arg2 mode:(unsigned long long)arg3;
 - (BOOL)isAccessibilityElement;
+- (void)prepareForReuse;
 
 @end
 

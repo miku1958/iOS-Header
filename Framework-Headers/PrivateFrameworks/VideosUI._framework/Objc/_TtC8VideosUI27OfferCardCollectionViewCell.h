@@ -4,19 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VideosUI/VUIOfferCell.h>
+#import <VideosUI/VUIFocusableCollectionViewCell.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI27OfferCardCollectionViewCell : VUIOfferCell
+@interface _TtC8VideosUI27OfferCardCollectionViewCell : VUIFocusableCollectionViewCell
 {
     MISSING_TYPE *viewLayout;
+    MISSING_TYPE *offerView;
+    MISSING_TYPE *belowCardTextLabel;
 }
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
+- (void)prepareForReuse;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

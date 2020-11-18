@@ -37,8 +37,7 @@
 - (void)__layoutDescriptionWithReply:(CDUnknownBlockType)arg1;
 - (void)__postPresentableWithSpecification:(id)arg1 options:(id)arg2 userInfo:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)__recommendSuspension:(id)arg1 forReason:(id)arg2 revokingCurrent:(id)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)__revokeAllPresentablesWithRequesterIdentifier:(id)arg1 reason:(id)arg2 userInfo:(id)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)__revokePresentableWithRequestIdentifier:(id)arg1 requesterIdentifier:(id)arg2 withAnimation:(id)arg3 reason:(id)arg4 userInfo:(id)arg5 reply:(CDUnknownBlockType)arg6;
+- (void)__revokePresentablesWithIdentification:(id)arg1 withAnimation:(id)arg2 reason:(id)arg3 userInfo:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)_addConnection:(id)arg1;
 - (void)_addPresentable:(id)arg1;
 - (void)_addUnpreparedPresentable:(id)arg1;
@@ -46,12 +45,12 @@
 - (BOOL)_isConnectingProcessAuthorized:(id)arg1 error:(out id *)arg2;
 - (BOOL)_isPresentableWaitingToBeMadeReady:(id)arg1;
 - (BOOL)_isPrototypeFeaturesEnabled;
-- (void)_removeAllPresentablesFromRequesterWithIdentifier:(id)arg1;
-- (void)_removeAllPresentablesWithRequestIdentifier:(id)arg1 fromRequesterWithIdentifier:(id)arg2;
 - (void)_removeConnection:(id)arg1;
 - (void)_removePresentable:(id)arg1;
+- (void)_removePresentableWithIdentification:(id)arg1;
+- (void)_removePresentablesFromRequesterWithIdentifier:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (void)_removeUnpreparedPresentable:(id)arg1;
-- (BOOL)_removeUnpreparedPresentableWithRequestIdentifier:(id)arg1 requesterIdentifier:(id)arg2;
+- (id)_removeUnpreparedPresentablesWithIdentification:(id)arg1;
 - (void)dealloc;
 - (id)initWithAuthorizedBundleIDs:(id)arg1;
 - (id)initWithServiceDomain:(id)arg1 displayConfiguration:(id)arg2 authorizedBundleIDs:(id)arg3;

@@ -22,6 +22,8 @@
 }
 
 - (void)dealloc;
+- (unsigned long long)hash;
+- (BOOL)isEqualToExtraData:(id)arg1;
 
 @end
 

@@ -8,7 +8,8 @@
 
 #import <VoiceShortcuts/VCVoiceShortcutManagerXPCInterface-Protocol.h>
 
-@class NSSet, NSString, VCAccessSpecifier, VCCKShortcutSyncCoordinator, VCCoreDuetListener, VCVoiceShortcutManager, WFShareSheetWorkflowProvider, WFWorkflowRunCoordinator;
+@class NSString, VCAccessSpecifier, VCCKShortcutSyncCoordinator, VCCoreDuetListener, VCVoiceShortcutManager, WFShareSheetWorkflowProvider, WFWorkflowRunCoordinator;
+@protocol VCSyncDataEndpoint;
 
 @interface VCVoiceShortcutManagerAccessWrapper : NSObject <VCVoiceShortcutManagerXPCInterface>
 {
@@ -16,7 +17,7 @@
     VCVoiceShortcutManager *_voiceShortcutManager;
     VCCoreDuetListener *_coreDuetListener;
     WFShareSheetWorkflowProvider *_shareSheetProvider;
-    NSSet *_syncDataHandlers;
+    id<VCSyncDataEndpoint> _syncDataEndpoint;
     VCCKShortcutSyncCoordinator *_syncCoordinator;
     WFWorkflowRunCoordinator *_runCoordinator;
 }
@@ -30,7 +31,7 @@
 @property (readonly, nonatomic) WFShareSheetWorkflowProvider *shareSheetProvider; // @synthesize shareSheetProvider=_shareSheetProvider;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) VCCKShortcutSyncCoordinator *syncCoordinator; // @synthesize syncCoordinator=_syncCoordinator;
-@property (readonly, copy, nonatomic) NSSet *syncDataHandlers; // @synthesize syncDataHandlers=_syncDataHandlers;
+@property (readonly, nonatomic) id<VCSyncDataEndpoint> syncDataEndpoint; // @synthesize syncDataEndpoint=_syncDataEndpoint;
 @property (readonly, nonatomic) VCVoiceShortcutManager *voiceShortcutManager; // @synthesize voiceShortcutManager=_voiceShortcutManager;
 
 - (void).cxx_destruct;
@@ -69,11 +70,10 @@
 - (void)getVoiceShortcutsForAppWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getVoiceShortcutsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)hasRunEventsInTheLast5DaysWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithVoiceShortcutManager:(id)arg1 coreDuetListener:(id)arg2 accessSpecifier:(id)arg3 syncCoordinator:(id)arg4 syncDataHandlers:(id)arg5 runCoordinator:(id)arg6;
+- (id)initWithVoiceShortcutManager:(id)arg1 coreDuetListener:(id)arg2 accessSpecifier:(id)arg3 syncCoordinator:(id)arg4 syncDataEndpoint:(id)arg5 runCoordinator:(id)arg6;
 - (void)obliterateShortcuts:(CDUnknownBlockType)arg1;
 - (void)refreshTriggerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestDataMigration:(CDUnknownBlockType)arg1;
-- (void)requestSyncToWatchWithForceReset:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resetDefaultShortcutFlagsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resumeWorkflowFromContext:(id)arg1 presentationMode:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)runWorkflowWithRequest:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;

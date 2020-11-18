@@ -7,7 +7,8 @@
 #import <NewsUI2/_TtC7NewsUI245AlternateUniversalLinksDefaultSettingsManager.h>
 
 @interface _TtC7NewsUI245AlternateUniversalLinksDefaultSettingsManager (NewsUI2)
-- (void)bundleSubscriptionDidChange:(id)arg1 previousBundleSubscription:(id)arg2 changeSet:(id)arg3;
+- (void)bundleSubscriptionDidExpire:(id)arg1;
+- (void)bundleSubscriptionDidSubscribe:(id)arg1;
 - (void)configurationManager:(id)arg1 appConfigurationDidChange:(id)arg2;
 @end
 

@@ -11,7 +11,7 @@
 #import <SpringBoard/SBSensorActivityObserver-Protocol.h>
 #import <SpringBoard/SBUIActiveOrientationObserver-Protocol.h>
 
-@class NSDate, NSString, NSTimer, SBRecordingIndicatorViewController, UIColor, UIWindow;
+@class NSDate, NSString, NSTimer, SBRecordingIndicatorViewController, UIWindow;
 
 @interface SBRecordingIndicatorManager : NSObject <SBAppStatusBarAssertionManagerObserver, SBSensorActivityObserver, SBUIActiveOrientationObserver, PTSettingsKeyObserver>
 {
@@ -19,7 +19,8 @@
     UIWindow *_recordingIndicatorWindowUIKitStatusBarPortal;
     SBRecordingIndicatorViewController *_recordingIndicatorViewController;
     SBRecordingIndicatorViewController *_recordingIndicatorViewControllerUIKitStatusBarPortal;
-    BOOL _isFrontmostStatusBarHidden;
+    BOOL _frontmostStatusBarOrIndicatorPartIsHidden;
+    BOOL _indicatorIsHiddenForControlCenter;
     BOOL _visibilityIsForcedByPrototypeSettings;
     NSDate *_indicatorDisplayTime;
     NSTimer *_minimumTimeOnScreenTimer;
@@ -29,15 +30,18 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) UIColor *indicatorColor;
 @property (readonly, nonatomic) BOOL isIndicatorVisible; // @synthesize isIndicatorVisible=_isIndicatorVisible;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (BOOL)_allowStatusBarDelayForCameraApp:(id)arg1;
+- (void)_updateIndicatorColorForSensorType:(long long)arg1;
+- (void)_updateIndicatorStyleForSensorActivityAttributions:(id)arg1;
 - (void)activeInterfaceOrientationDidChangeToOrientation:(long long)arg1 willAnimateWithDuration:(double)arg2 fromOrientation:(long long)arg3;
 - (void)activeInterfaceOrientationWillChangeToOrientation:(long long)arg1;
 - (void)activityDidChangeForSensorActivityDataProvider:(id)arg1;
+- (void)controlCenterDidDismiss:(id)arg1;
+- (void)controlCenterWillPresent:(id)arg1;
 - (void)dataProviderDidUpdate:(id)arg1;
 - (id)indicatorColorForSensorType:(long long)arg1;
 - (id)initWithSensorActivityDataProvider:(id)arg1;
@@ -46,8 +50,6 @@
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)statusBarAssertionManager:(id)arg1 addStatusBarSettingsAssertion:(id)arg2;
 - (void)statusBarAssertionManager:(id)arg1 removeStatusBarSettingsAssertion:(id)arg2;
-- (void)updateIndicatorColorForSensorActivityAttributions:(id)arg1;
-- (void)updateIndicatorColorForSensorType:(long long)arg1;
 - (void)updateRecordingIndicatorForStatusBarChanges;
 
 @end

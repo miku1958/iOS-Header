@@ -49,6 +49,7 @@
 - (void)_contentSizeCategoryChanged;
 - (id)_conversationList;
 - (unsigned long long)_filterModeForIndexPath:(id)arg1;
+- (void)_forceLargeInboxTitle;
 - (id)_getSpamExtensionName;
 - (BOOL)_spamFilteringEnabled;
 - (void)_spamFilteringStateChanged;

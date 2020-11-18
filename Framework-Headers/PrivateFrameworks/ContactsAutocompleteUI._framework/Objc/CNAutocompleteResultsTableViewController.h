@@ -76,6 +76,7 @@
 - (void)selectPreviousSearchResult;
 - (void)selectRowAtIndexPath:(id)arg1;
 - (BOOL)shouldShowCheckmarkForRecipient:(id)arg1 preferredRecipient:(id)arg2;
+- (BOOL)tableView:(id)arg1 canFocusRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;

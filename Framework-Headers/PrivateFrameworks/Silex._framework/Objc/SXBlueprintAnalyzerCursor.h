@@ -15,14 +15,8 @@
     NSMutableArray *_mutablePath;
 }
 
-@property (nonatomic) double highestMaxY; // @synthesize highestMaxY=_highestMaxY;
-@property (readonly, nonatomic) NSMutableArray *mutablePath; // @synthesize mutablePath=_mutablePath;
-@property (strong, nonatomic) NSArray *path; // @synthesize path=_path;
-
 - (void).cxx_destruct;
-- (void)addPathComponent:(id)arg1;
 - (id)init;
-- (void)removePathComponent:(id)arg1;
 
 @end
 

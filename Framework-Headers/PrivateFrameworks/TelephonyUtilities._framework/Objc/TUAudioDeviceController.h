@@ -35,7 +35,6 @@
 
 - (void).cxx_destruct;
 - (void)addDelegate:(id)arg1;
-- (void)choosePreferredDeviceIfNecessary;
 - (id)init;
 - (id)initWithActionsDelegate:(id)arg1 serialQueue:(id)arg2;
 - (void)removeDelegate:(id)arg1;

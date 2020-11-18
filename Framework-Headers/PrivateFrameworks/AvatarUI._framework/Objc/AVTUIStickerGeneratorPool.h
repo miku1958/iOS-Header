@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) id<AVTUILogger> logger; // @synthesize logger=_logger;
 @property (readonly, nonatomic) long long maxCount; // @synthesize maxCount=_maxCount;
 
++ (id)cacheKeyForAvatarRecord:(id)arg1;
 - (void).cxx_destruct;
 - (id)avatarForRecord:(id)arg1;
 - (id)dequeueStickerGeneratorForAvatarRecord:(id)arg1;

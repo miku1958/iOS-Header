@@ -6,14 +6,18 @@
 
 #import <HomeKit/HMFaceCrop.h>
 
+#import <HomeKit/NSMutableCopying-Protocol.h>
+
 @class NSUUID;
 
-@interface HMPersonFaceCrop : HMFaceCrop
+@interface HMPersonFaceCrop : HMFaceCrop <NSMutableCopying>
 {
     NSUUID *_personUUID;
+    NSUUID *_unassociatedFaceCropUUID;
 }
 
 @property (readonly, copy) NSUUID *personUUID; // @synthesize personUUID=_personUUID;
+@property (copy) NSUUID *unassociatedFaceCropUUID; // @synthesize unassociatedFaceCropUUID=_unassociatedFaceCropUUID;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -23,6 +27,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUUID:(id)arg1 dataRepresentation:(id)arg2 dateCreated:(id)arg3 faceBoundingBox:(struct CGRect)arg4 personUUID:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end
 

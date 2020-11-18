@@ -6,7 +6,7 @@
 
 #import <CoreHAP/HAP2AccessoryServer-Protocol.h>
 
-@class HAP2SerializedOperationQueue;
+@class HAP2SerializedOperationQueue, NSString;
 @protocol HAP2AccessoryServerBrowserPrivate, HAP2AccessoryServerControllerPrivate;
 
 @protocol HAP2AccessoryServerPrivate <HAP2AccessoryServer>
@@ -14,6 +14,7 @@
 @property (readonly, weak, nonatomic) id<HAP2AccessoryServerBrowserPrivate> browser;
 @property (readonly, nonatomic) id<HAP2AccessoryServerControllerPrivate> controller;
 @property (readonly, nonatomic) HAP2SerializedOperationQueue *operationQueue;
+@property (strong, nonatomic) NSString *productData;
 
 @end
 

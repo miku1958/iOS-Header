@@ -115,7 +115,9 @@
 - (void)_enumerateObservers:(CDUnknownBlockType)arg1;
 - (void)_handleStatusBarPullDownGesture:(id)arg1;
 - (double)_homeAffordanceAnimationDelay;
+- (BOOL)_isLocationXWithinExtendedTrailingStatusBarRegion:(double)arg1;
 - (BOOL)_isLocationXWithinTrailingStatusBarRegion:(double)arg1;
+- (BOOL)_isLocationXWithinTrailingStatusBarRegion:(double)arg1 regionPadding:(double)arg2;
 - (BOOL)_isStatusBarHiddenIgnoringControlCenter;
 - (struct CGPoint)_locationOfTouchInActiveInterfaceOrientation:(id)arg1 gestureRecognizer:(id)arg2;
 - (struct CGPoint)_presentGestureLocationInView;

@@ -49,28 +49,28 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let alarmConfigurationDidChange : ÁØ // +0x10 (0x8)
+	let alarmConfigurationDidChange : Á´ // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let modelWasEdited : øØ // +0x18 (0x8)
+	let modelWasEdited : ø´ // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let validScheduleRangePublisher : ≈Ø // +0x20 (0x8)
+	let validScheduleRangePublisher : ≈´ // +0x20 (0x8)
 	var originalOccurrence : HKSPSleepScheduleOccurrence // +0x28 (0x8)
 	let isAdding : Bool // +0x30 (0x1)
 	let isSingleDayOverride : Bool // +0x31 (0x1)
 	var otherOccurrenceDays : HKSPWeekdays // +0x38 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sleepDurationGoalPublisher : uØ // +0x40 (0x8)
+	let sleepDurationGoalPublisher : u´ // +0x40 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sleepSchedulePublisher : cØ // +0x48 (0x8)
+	let sleepSchedulePublisher : c´ // +0x48 (0x8)
 	let pairedWatchSupportsSleep : Bool // +0x50 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let gregorianCalendar : }≠ // +0x6100085 (0x0)
+	let gregorianCalendar : }© // +0x6100085 (0x0)
 	var mutableOccurrence : HKSPMutableSleepScheduleOccurrence // +0x0 (0x8)
 
 	// Swift methods
-	0x8d80  func ScheduleOccurrenceEditModel.originalOccurrence.getter // getter 
-	0x8e50  func ScheduleOccurrenceEditModel.otherOccurrenceDays.getter // getter 
-	0x9060  class func ScheduleOccurrenceEditModel.__allocating_init(occurrence:isAdding:isSingleDayOverride:weekdaysWithExistingOccurrences:sleepDurationGoalPublisher:sleepSchedulePublisher:pairedWatchSupportsSleep:gregorianCalendar:) // init 
+	0x91e0  func ScheduleOccurrenceEditModel.originalOccurrence.getter // getter 
+	0x92b0  func ScheduleOccurrenceEditModel.otherOccurrenceDays.getter // getter 
+	0x94c0  class func ScheduleOccurrenceEditModel.__allocating_init(occurrence:isAdding:isSingleDayOverride:weekdaysWithExistingOccurrences:sleepDurationGoalPublisher:sleepSchedulePublisher:pairedWatchSupportsSleep:gregorianCalendar:) // init 
  }
 
  class SleepHealthUI.SleepScheduleComponentsEditView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -86,44 +86,44 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_formatter : NSDateComponentsFormatter? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5fe40001f5b0 (0x7e40001f5b0) in binary!
-	0x63fe  @objc SleepScheduleComponentsEditView.(null) <stripped>
-WARNING: couldn't find address 0x63f20001f218 (0x3f20001f218) in binary!
-	0x7e60  @objc SleepScheduleComponentsEditView.(null) <stripped>
-WARNING: couldn't find address 0x63da0001f2c8 (0x3da0001f2c8) in binary!
-	0x7cb0  @objc SleepScheduleComponentsEditView.(null) <stripped>
-WARNING: couldn't find address 0x7ca40001ebf8 (0x4a40001ebf8) in binary!
-	0x7c98  @objc SleepScheduleComponentsEditView.(null) <stripped>
-WARNING: couldn't find address 0x7c8c0001ebd0 (0x48c0001ebd0) in binary!
-	0x5da8  @objc SleepScheduleComponentsEditView.(null) <stripped>
-WARNING: couldn't find address 0x7e0c0001ec60 (0x60c0001ec60) in binary!
+WARNING: couldn't find address 0x60240001d360 (0x240001d360) in binary!
+	0x643e  @objc SleepScheduleComponentsEditView.(null) <stripped>
+WARNING: couldn't find address 0x64320001cfc8 (0x4320001cfc8) in binary!
+	0x7eb0  @objc SleepScheduleComponentsEditView.(null) <stripped>
+WARNING: couldn't find address 0x641a0001d078 (0x41a0001d078) in binary!
+	0x7d00  @objc SleepScheduleComponentsEditView.(null) <stripped>
+WARNING: couldn't find address 0x7cf40001c9a8 (0x4f40001c9a8) in binary!
+	0x7ce8  @objc SleepScheduleComponentsEditView.(null) <stripped>
+WARNING: couldn't find address 0x7cdc0001c980 (0x4dc0001c980) in binary!
+	0x5de8  @objc SleepScheduleComponentsEditView.(null) <stripped>
+WARNING: couldn't find address 0x7e5c0001ca10 (0x65c0001ca10) in binary!
 	0x28000000c  @objc SleepScheduleComponentsEditView.(null) <stripped>
-WARNING: couldn't find address 0x86840001f2c0 (0x6840001f2c0) in binary!
-	0x5f48  @objc SleepScheduleComponentsEditView.(null) <stripped>
+WARNING: couldn't find address 0x86d40001d070 (0x6d40001d070) in binary!
+	0x5f88  @objc SleepScheduleComponentsEditView.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x4f4fffb55c0  @objc SleepScheduleComponentsEditView.(null) <stripped>
-	0xfffb5848  @objc SleepScheduleComponentsEditView.åE <stripped>
+	0x2a4fffb47d0  @objc SleepScheduleComponentsEditView.(null) <stripped>
+	0xfffb4a58  @objc SleepScheduleComponentsEditView.Hâ⁄ˇá∑ <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x144fffb6e30  @objc SleepScheduleComponentsEditView.(null) <stripped>
-	0x184fffb7818  @objc SleepScheduleComponentsEditView.Hç[  <stripped>
+	0x6f4fffb6040  @objc SleepScheduleComponentsEditView.(null) <stripped>
+	0x734fffb6a28  @objc SleepScheduleComponentsEditView. <stripped>
 
 	// Swift methods
-	0xc170  func SleepScheduleComponentsEditView.includeDayLabelsInHeader.getter // getter 
-	0xc230  func SleepScheduleComponentsEditView.includeDayLabelsInHeader.setter // setter 
-	0xc2a0  func SleepScheduleComponentsEditView.includeDayLabelsInHeader.modify // modifyCoroutine 
-	0xc410  func <stripped> // getter 
-	0xea40  func <stripped> // method 
-	0xf260  func <stripped> // method 
-	0xf6c0  func <stripped> // method 
-	0xf8c0  func <stripped> // method 
+	0xc5d0  func SleepScheduleComponentsEditView.includeDayLabelsInHeader.getter // getter 
+	0xc6a0  func SleepScheduleComponentsEditView.includeDayLabelsInHeader.setter // setter 
+	0xc710  func SleepScheduleComponentsEditView.includeDayLabelsInHeader.modify // modifyCoroutine 
+	0xc880  func <stripped> // getter 
+	0xeeb0  func <stripped> // method 
+	0xf6d0  func <stripped> // method 
+	0xfb30  func <stripped> // method 
+	0xfd30  func <stripped> // method 
  }
 
  class SleepHealthUI.EditScheduleLinkTableViewCell : HKSHTextTableViewCell {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x86840001f2c0 (0x6840001f2c0) in binary!
-	0x5f48  @objc EditScheduleLinkTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x86d40001d070 (0x6d40001d070) in binary!
+	0x5f88  @objc EditScheduleLinkTableViewCell.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x4f4fffb55c0  @objc EditScheduleLinkTableViewCell.(null) <stripped>
+	0x2a4fffb47d0  @objc EditScheduleLinkTableViewCell.(null) <stripped>
 
 	// Swift methods
  }
@@ -137,15 +137,15 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 
  class SleepHealthUI.ScheduleOccurrenceAlarmSnoozeTableViewCell : HKSwitchTableViewCell /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x86640001f2a0 (0x6640001f2a0) in binary!
-	0x5f28  @objc ScheduleOccurrenceAlarmSnoozeTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0x7dbc0001ec10 (0x5bc0001ec10) in binary!
+WARNING: couldn't find address 0x86b40001d050 (0x6b40001d050) in binary!
+	0x5f68  @objc ScheduleOccurrenceAlarmSnoozeTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x7e0c0001c9c0 (0x60c0001c9c0) in binary!
 	0x58000000c  @objc ScheduleOccurrenceAlarmSnoozeTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0x5f040001f4d0 (0x7040001f4d0) in binary!
-	0x631e  @objc ScheduleOccurrenceAlarmSnoozeTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x5f440001d280 (0x7440001d280) in binary!
+	0x635e  @objc ScheduleOccurrenceAlarmSnoozeTableViewCell.(null) <stripped>
 
 	// Swift methods
-	0x10d90  func <stripped> // method 
+	0x11200  func <stripped> // method 
  }
 
  class SleepHealthUI.SleepScheduleClockCaption : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -155,21 +155,21 @@ WARNING: couldn't find address 0x5f040001f4d0 (0x7040001f4d0) in binary!
 	var message : Message
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5f040001f4d0 (0x7040001f4d0) in binary!
-	0x631e  @objc SleepScheduleClockCaption.(null) <stripped>
-WARNING: couldn't find address 0x7bf40001eb30 (0x3f40001eb30) in binary!
-	0x5d10  @objc SleepScheduleClockCaption.(null) <stripped>
-WARNING: couldn't find address 0x7d740001ebc8 (0x5740001ebc8) in binary!
+WARNING: couldn't find address 0x5f440001d280 (0x7440001d280) in binary!
+	0x635e  @objc SleepScheduleClockCaption.(null) <stripped>
+WARNING: couldn't find address 0x7c440001c8e0 (0x4440001c8e0) in binary!
+	0x5d50  @objc SleepScheduleClockCaption.(null) <stripped>
+WARNING: couldn't find address 0x7dc40001c978 (0x5c40001c978) in binary!
 	0x118000000c  @objc SleepScheduleClockCaption.(null) <stripped>
-WARNING: couldn't find address 0x5ebc0001f488 (0x6bc0001f488) in binary!
-	0x7d50  @objc SleepScheduleClockCaption.(null) <stripped>
-WARNING: couldn't find address 0x7f4a0001f388 (0x74a0001f388) in binary!
-	0x62be  @objc SleepScheduleClockCaption.(null) <stripped>
+WARNING: couldn't find address 0x5efc0001d238 (0x6fc0001d238) in binary!
+	0x7da0  @objc SleepScheduleClockCaption.(null) <stripped>
+WARNING: couldn't find address 0x7f9a0001d138 (0x79a0001d138) in binary!
+	0x62fe  @objc SleepScheduleClockCaption.(null) <stripped>
 
 	// Swift methods
-	0x127b0  func <stripped> // getter 
-	0x129b0  func <stripped> // method 
-	0x12bc0  func <stripped> // method 
+	0x12c20  func <stripped> // getter 
+	0x12e20  func <stripped> // method 
+	0x13030  func <stripped> // method 
  }
 
  enum SleepHealthUI.Message {
@@ -187,19 +187,19 @@ WARNING: couldn't find address 0x7f4a0001f388 (0x74a0001f388) in binary!
 	let model : ScheduleOccurrenceEditModel
 	let alarmPreviewPlayer : AlarmPreviewPlayer
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var alarmConfigurationObserver : Y¨
+	var alarmConfigurationObserver : Y®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var modelEditObserver : Y¨
+	var modelEditObserver : Y®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var significantTimeChangeObserver : Y¨
+	var significantTimeChangeObserver : Y®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var eventRecordChangeObserver : Y¨
+	var eventRecordChangeObserver : Y®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scheduleChangeObserver : Y¨
+	var scheduleChangeObserver : Y®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sleepDurationGoalObserver : Y¨
+	var sleepDurationGoalObserver : Y®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var validScheduleRangeObserver : Y¨
+	var validScheduleRangeObserver : Y®
 	var sleepScheduleProvider : SleepScheduleProviding
 	var modelHasChanged : Bool
 	var tonePickerStyleProvider : TKTonePickerStyleProvider?
@@ -208,40 +208,40 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dataSource : DataSource
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5ebc0001f488 (0x6bc0001f488) in binary!
-	0x7d50  @objc QuickScheduleOverrideViewController.(null) <stripped>
-WARNING: couldn't find address 0x7f4a0001f388 (0x74a0001f388) in binary!
-	0x62be  @objc QuickScheduleOverrideViewController.(null) <stripped>
-WARNING: couldn't find address 0x7df00001eac8 (0x5f00001eac8) in binary!
-	0x7d20  @objc QuickScheduleOverrideViewController.(null) <stripped>
-WARNING: couldn't find address 0x62b40001eaa8 (0x2b40001eaa8) in binary!
-	0x56ca  @objc QuickScheduleOverrideViewController.(null) <stripped>
-WARNING: couldn't find address 0x62bb0001ea80 (0x2bb0001ea80) in binary!
-	0x62bd  @objc QuickScheduleOverrideViewController.(null) <stripped>
-WARNING: couldn't find address 0x62b10001ea58 (0x2b10001ea58) in binary!
-	0x62b3  @objc QuickScheduleOverrideViewController.(null) <stripped>
-WARNING: couldn't find address 0x62a70001ea30 (0x2a70001ea30) in binary!
-	0x629b  @objc QuickScheduleOverrideViewController.(null) <stripped>
-WARNING: couldn't find address 0x629d0001f328 (0x29d0001f328) in binary!
-	0x629c  @objc QuickScheduleOverrideViewController.(null) <stripped>
-WARNING: couldn't find address 0x7c9c0001eaf0 (0x49c0001eaf0) in binary!
+WARNING: couldn't find address 0x5efc0001d238 (0x6fc0001d238) in binary!
+	0x7da0  @objc QuickScheduleOverrideViewController.(null) <stripped>
+WARNING: couldn't find address 0x7f9a0001d138 (0x79a0001d138) in binary!
+	0x62fe  @objc QuickScheduleOverrideViewController.(null) <stripped>
+WARNING: couldn't find address 0x7e400001c878 (0x6400001c878) in binary!
+	0x7d70  @objc QuickScheduleOverrideViewController.(null) <stripped>
+WARNING: couldn't find address 0x62f40001c858 (0x2f40001c858) in binary!
+	0x570a  @objc QuickScheduleOverrideViewController.(null) <stripped>
+WARNING: couldn't find address 0x62fb0001c830 (0x2fb0001c830) in binary!
+	0x62fd  @objc QuickScheduleOverrideViewController.(null) <stripped>
+WARNING: couldn't find address 0x62f10001c808 (0x2f10001c808) in binary!
+	0x62f3  @objc QuickScheduleOverrideViewController.(null) <stripped>
+WARNING: couldn't find address 0x62e70001c7e0 (0x2e70001c7e0) in binary!
+	0x62db  @objc QuickScheduleOverrideViewController.(null) <stripped>
+WARNING: couldn't find address 0x62dd0001d0d8 (0x2dd0001d0d8) in binary!
+	0x62dc  @objc QuickScheduleOverrideViewController.(null) <stripped>
+WARNING: couldn't find address 0x7cec0001c8a0 (0x4ec0001c8a0) in binary!
 	0xc8000000c  @objc QuickScheduleOverrideViewController.(null) <stripped>
-WARNING: couldn't find address 0x56460001e940 (0x6460001e940) in binary!
-	0x563a  @objc QuickScheduleOverrideViewController.(null) <stripped>
-WARNING: couldn't find address 0x562e0001e918 (0x62e0001e918) in binary!
-	0x5622  @objc QuickScheduleOverrideViewController.(null) <stripped>
-WARNING: couldn't find address 0x64210001e8f0 (0x4210001e8f0) in binary!
-	0x61ce  @objc QuickScheduleOverrideViewController.(null) <stripped>
-WARNING: couldn't find address 0x61c20001f648 (0x1c20001f648) in binary!
-	0x61b6  @objc QuickScheduleOverrideViewController.(null) <stripped>
-WARNING: couldn't find address 0x61aa0001f0b0 (0x1aa0001f0b0) in binary!
-	0x7c18  @objc QuickScheduleOverrideViewController.(null) <stripped>
-WARNING: couldn't find address 0x7c0c0001f210 (0x40c0001f210) in binary!
-	0x7c00  @objc QuickScheduleOverrideViewController.(null) <stripped>
+WARNING: couldn't find address 0x56860001c6f0 (0x6860001c6f0) in binary!
+	0x567a  @objc QuickScheduleOverrideViewController.(null) <stripped>
+WARNING: couldn't find address 0x566e0001c6c8 (0x66e0001c6c8) in binary!
+	0x5662  @objc QuickScheduleOverrideViewController.(null) <stripped>
+WARNING: couldn't find address 0x64610001c6a0 (0x4610001c6a0) in binary!
+	0x620e  @objc QuickScheduleOverrideViewController.(null) <stripped>
+WARNING: couldn't find address 0x62020001d3f8 (0x2020001d3f8) in binary!
+	0x61f6  @objc QuickScheduleOverrideViewController.(null) <stripped>
+WARNING: couldn't find address 0x61ea0001ce60 (0x1ea0001ce60) in binary!
+	0x7c68  @objc QuickScheduleOverrideViewController.(null) <stripped>
+WARNING: couldn't find address 0x7c5c0001cfc0 (0x45c0001cfc0) in binary!
+	0x7c50  @objc QuickScheduleOverrideViewController.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffc2678  @objc QuickScheduleOverrideViewController.(null) <stripped>
+	0xfffc18a8  @objc QuickScheduleOverrideViewController.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x2f4fffc1960  @objc QuickScheduleOverrideViewController.(null) <stripped>
+	0xa4fffc0b90  @objc QuickScheduleOverrideViewController.(null) <stripped>
 
 	// Swift methods
  }
@@ -262,26 +262,26 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 
  class SleepHealthUI.ForceDoubleZerosDateComponentsFormatter : NSDateComponentsFormatter /System/Library/Frameworks/Foundation.framework/Foundation {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6be80001f058 (0x3e80001f058) in binary!
-	0x5cf0  @objc ForceDoubleZerosDateComponentsFormatter.(null) <stripped>
-WARNING: couldn't find address 0x79ec0001ea00 (0x1ec0001ea00) in binary!
-	0x5cd8  @objc ForceDoubleZerosDateComponentsFormatter.(null) <stripped>
+WARNING: couldn't find address 0x6c380001ce08 (0x4380001ce08) in binary!
+	0x5d30  @objc ForceDoubleZerosDateComponentsFormatter.(null) <stripped>
+WARNING: couldn't find address 0x7a3c0001c7b0 (0x23c0001c7b0) in binary!
+	0x5d18  @objc ForceDoubleZerosDateComponentsFormatter.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x14fffc2050  @objc ForceDoubleZerosDateComponentsFormatter.(null) <stripped>
-	0x1bcfffc2208  @objc ForceDoubleZerosDateComponentsFormatter.â„HÉ¿HÉ‡H)√Hâ‹Hãùî <stripped>
+	0x5c4fffc1280  @objc ForceDoubleZerosDateComponentsFormatter.(null) <stripped>
+	0x76cfffc1438  @objc ForceDoubleZerosDateComponentsFormatter.êu <stripped>
 
 	// Swift methods
  }
 
  class SleepHealthUI.BriefOneHourIsSixtyMinDateComponentsFormatter : HKSHForceDoubleZerosDateComponentsFormatter {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7a3c0001ea50 (0x23c0001ea50) in binary!
-	0x5d28  @objc BriefOneHourIsSixtyMinDateComponentsFormatter.(null) <stripped>
-WARNING: couldn't find address 0x6c080001f078 (0x4080001f078) in binary!
-	0x5d10  @objc BriefOneHourIsSixtyMinDateComponentsFormatter.(null) <stripped>
+WARNING: couldn't find address 0x7a8c0001c800 (0x28c0001c800) in binary!
+	0x5d68  @objc BriefOneHourIsSixtyMinDateComponentsFormatter.(null) <stripped>
+WARNING: couldn't find address 0x6c580001ce28 (0x4580001ce28) in binary!
+	0x5d50  @objc BriefOneHourIsSixtyMinDateComponentsFormatter.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x2b4fffc1478  @objc BriefOneHourIsSixtyMinDateComponentsFormatter.(null) <stripped>
-	0x2a4fffc1770  @objc BriefOneHourIsSixtyMinDateComponentsFormatter.√UHâÂH=lX <stripped>
+	0x64fffc06a8  @objc BriefOneHourIsSixtyMinDateComponentsFormatter.(null) <stripped>
+	0x54fffc09a0  @objc BriefOneHourIsSixtyMinDateComponentsFormatter.â«ËU[ <stripped>
  }
 
  class SleepHealthUI.ShorterDateComponentsFormatter : NSDateComponentsFormatter /System/Library/Frameworks/Foundation.framework/Foundation {
@@ -290,13 +290,13 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	var options : HKTimePeriodStringFormatOptions
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5c540001f220 (0x4540001f220) in binary!
-	0x6b34  @objc ShorterDateComponentsFormatter.(null) <stripped>
-WARNING: couldn't find address 0x5c3c0001f200 (0x43c0001f200) in binary!
-	0x7938  @objc ShorterDateComponentsFormatter.(null) <stripped>
+WARNING: couldn't find address 0x5c940001cfd0 (0x4940001cfd0) in binary!
+	0x6b84  @objc ShorterDateComponentsFormatter.(null) <stripped>
+WARNING: couldn't find address 0x5c7c0001cfb0 (0x47c0001cfb0) in binary!
+	0x7988  @objc ShorterDateComponentsFormatter.(null) <stripped>
 WARNING: couldn't find address 0xb8000000c (0xb8000000c) in binary!
-	0x67cfffc5408  @objc ShorterDateComponentsFormatter.(null) <stripped>
-	0x644fffc5da0  @objc ShorterDateComponentsFormatter.UHâÂAWAVATSHÉÏHâ}ÿIâ«Hç=] <stripped>
+	0x42cfffc4638  @objc ShorterDateComponentsFormatter.(null) <stripped>
+	0x3f4fffc4fd0  @objc ShorterDateComponentsFormatter.UHâÂHãI	E <stripped>
 
 	// Swift methods
  }
@@ -307,13 +307,13 @@ WARNING: couldn't find address 0xb8000000c (0xb8000000c) in binary!
 	var options : HKTimePeriodStringFormatOptions
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5cc40001f290 (0x4c40001f290) in binary!
-	0x6ba4  @objc ShortHourDateComponentsFormatter.(null) <stripped>
-WARNING: couldn't find address 0x5cac0001f270 (0x4ac0001f270) in binary!
-	0x79a8  @objc ShortHourDateComponentsFormatter.(null) <stripped>
+WARNING: couldn't find address 0x5d040001d040 (0x5040001d040) in binary!
+	0x6bf4  @objc ShortHourDateComponentsFormatter.(null) <stripped>
+WARNING: couldn't find address 0x5cec0001d020 (0x4ec0001d020) in binary!
+	0x79f8  @objc ShortHourDateComponentsFormatter.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x7dcfffc22c8  @objc ShortHourDateComponentsFormatter.(null) <stripped>
-	0x184fffc2e30  @objc ShortHourDateComponentsFormatter.SPIâ∆1ˇËÏ5 <stripped>
+	0x58cfffc14f8  @objc ShortHourDateComponentsFormatter.(null) <stripped>
+	0x734fffc2060  @objc ShortHourDateComponentsFormatter. <stripped>
 
 	// Swift methods
  }
@@ -324,20 +324,20 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	var options : HKTimePeriodStringFormatOptions // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5c8c0001f258 (0x48c0001f258) in binary!
-	0x6b6c  @objc ShortMinuteDateComponentsFormatter.(null) <stripped>
-WARNING: couldn't find address 0x5c740001f238 (0x4740001f238) in binary!
-	0x7970  @objc ShortMinuteDateComponentsFormatter.(null) <stripped>
+WARNING: couldn't find address 0x5ccc0001d008 (0x4cc0001d008) in binary!
+	0x6bbc  @objc ShortMinuteDateComponentsFormatter.(null) <stripped>
+WARNING: couldn't find address 0x5cb40001cfe8 (0x4b40001cfe8) in binary!
+	0x79c0  @objc ShortMinuteDateComponentsFormatter.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x7a4fffc1bf0  @objc ShortMinuteDateComponentsFormatter.(null) <stripped>
-	0x14cfffc1e38  @objc ShortMinuteDateComponentsFormatter.Éƒ[A]A^]ÈÆ: <stripped>
+	0x554fffc0e20  @objc ShortMinuteDateComponentsFormatter.(null) <stripped>
+	0x6fcfffc1068  @objc ShortMinuteDateComponentsFormatter. <stripped>
 
 	// Swift methods
  }
 
  class SleepHealthUI.AbbreviatedOneHourIsSixtyMinDateComponentsFormatter : HKSHBriefOneHourIsSixtyMinDateComponentsFormatter {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7a540001ea68 (0x2540001ea68) in binary!
+WARNING: couldn't find address 0x7aa40001c818 (0x2a40001c818) in binary!
 	0x48000000c  @objc AbbreviatedOneHourIsSixtyMinDateComponentsFormatter.(null) <stripped>
  }
 
@@ -347,12 +347,12 @@ WARNING: couldn't find address 0x7a540001ea68 (0x2540001ea68) in binary!
 	let movement : Movement // +0x0
 	var gestureState : GestureState // +0x1
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lastTouchAngle : ’Ø // +0x8
+	var lastTouchAngle : ’´ // +0x8
 	var lastTouchTime : Double // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var editingAngle : ’Ø // +0x18
+	var editingAngle : ’´ // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var angularVelocity : ’Ø // +0x20
+	var angularVelocity : ’´ // +0x20
 	let dampeningZoneTimingFunction : CAMediaTimingFunction // +0x28
  }
 
@@ -394,71 +394,70 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dragState : DragState // +0x248 (0x30)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5c1c0001f1e8 (0x41c0001f1e8) in binary!
-	0x7ab0  @objc SleepScheduleClock.(null) <stripped>
-WARNING: couldn't find address 0x602a0001f200 (0x2a0001f200) in binary!
-	0x601e  @objc SleepScheduleClock.(null) <stripped>
-WARNING: couldn't find address 0x78f40001e7e0 (0xf40001e7e0) in binary!
-	0x78e8  @objc SleepScheduleClock.(null) <stripped>
-WARNING: couldn't find address 0x7b380001e7b8 (0x3380001e7b8) in binary!
-	0x6cfd  @objc SleepScheduleClock.(null) <stripped>
-WARNING: couldn't find address 0x6cf10001e790 (0x4f10001e790) in binary!
-	0x59e0  @objc SleepScheduleClock.(null) <stripped>
-WARNING: couldn't find address 0x7a440001e898 (0x2440001e898) in binary!
+WARNING: couldn't find address 0x5c5c0001cf98 (0x45c0001cf98) in binary!
+	0x7b00  @objc SleepScheduleClock.(null) <stripped>
+WARNING: couldn't find address 0x606a0001cfb0 (0x6a0001cfb0) in binary!
+	0x605e  @objc SleepScheduleClock.(null) <stripped>
+WARNING: couldn't find address 0x79440001c590 (0x1440001c590) in binary!
+	0x7938  @objc SleepScheduleClock.(null) <stripped>
+WARNING: couldn't find address 0x7b880001c568 (0x3880001c568) in binary!
+	0x6d4d  @objc SleepScheduleClock.(null) <stripped>
+WARNING: couldn't find address 0x6d410001c540 (0x5410001c540) in binary!
+	0x5a20  @objc SleepScheduleClock.(null) <stripped>
+WARNING: couldn't find address 0x7a940001c648 (0x2940001c648) in binary!
 	0xd8000000c  @objc SleepScheduleClock.(null) <stripped>
-WARNING: couldn't find address 0x5fb20001f2d0 (0x7b20001f2d0) in binary!
-	0x5fdf  @objc SleepScheduleClock.(null) <stripped>
-WARNING: couldn't find address 0x5fd30001e6a0 (0x7d30001e6a0) in binary!
-	0x5f8e  @objc SleepScheduleClock.(null) <stripped>
-WARNING: couldn't find address 0x5f820001f1e0 (0x7820001f1e0) in binary!
-	0x5f76  @objc SleepScheduleClock.(null) <stripped>
-WARNING: couldn't find address 0x6c790001e668 (0x4790001e668) in binary!
-	0x6c6d  @objc SleepScheduleClock.(null) <stripped>
-WARNING: couldn't find address 0x6d3c0001e640 (0x53c0001e640) in binary!
-	0x6d30  @objc SleepScheduleClock.(null) <stripped>
+WARNING: couldn't find address 0x5ff20001d080 (0x7f20001d080) in binary!
+	0x601f  @objc SleepScheduleClock.(null) <stripped>
+WARNING: couldn't find address 0x60130001c450 (0x130001c450) in binary!
+	0x5fce  @objc SleepScheduleClock.(null) <stripped>
+WARNING: couldn't find address 0x5fc20001cf90 (0x7c20001cf90) in binary!
+	0x5fb6  @objc SleepScheduleClock.(null) <stripped>
+WARNING: couldn't find address 0x6cc90001c418 (0x4c90001c418) in binary!
+	0x6cbd  @objc SleepScheduleClock.(null) <stripped>
+	0x6d80  variable initialization expression of QuickScheduleOverrideViewController.dataSource
 
 	// Swift methods
-	0x20c50  func <stripped> // modifyCoroutine 
+	0x210e0  func <stripped> // modifyCoroutine 
  }
 
  class SleepHealthUI.RingGrabber : CAReplicatorLayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
 
 	// Properties
 	let texture : CAShapeLayer
-	var isFrozen : Bool
+	var isHalted : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var activeAngleOffset : ’Ø
+	var activeAngleOffset : ’´
 	var configuration : Configuration
 	let tickInterval : Double
 	var $__lazy_storage_$_totalInstances : Int?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_transformAngle : {®
+	var $__lazy_storage_$_transformAngle : {§
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5ae40001f140 (0x2e40001f140) in binary!
-	0x5ad8  @objc RingGrabber.(null) <stripped>
-WARNING: couldn't find address 0x796c0001e698 (0x16c0001e698) in binary!
-	0x77c8  @objc RingGrabber.(null) <stripped>
-WARNING: couldn't find address 0x79540001e7a8 (0x1540001e7a8) in binary!
+WARNING: couldn't find address 0x5b240001cef0 (0x3240001cef0) in binary!
+	0x5b18  @objc RingGrabber.(null) <stripped>
+WARNING: couldn't find address 0x79bc0001c448 (0x1bc0001c448) in binary!
+	0x7818  @objc RingGrabber.(null) <stripped>
+WARNING: couldn't find address 0x79a40001c558 (0x1a40001c558) in binary!
 	0x68000000c  @objc RingGrabber.(null) <stripped>
-WARNING: couldn't find address 0x5a9c0001f068 (0x29c0001f068) in binary!
-	0x7930  @objc RingGrabber.(null) <stripped>
-WARNING: couldn't find address 0x5eaa0001ecd0 (0x6aa0001ecd0) in binary!
-	0x7118  @objc RingGrabber.(null) <stripped>
+WARNING: couldn't find address 0x5adc0001ce18 (0x2dc0001ce18) in binary!
+	0x7980  @objc RingGrabber.(null) <stripped>
+WARNING: couldn't find address 0x5eea0001ca80 (0x6ea0001ca80) in binary!
+	0x7168  @objc RingGrabber.(null) <stripped>
 
 	// Swift methods
-	0x26360  func <stripped> // getter 
-	0x263e0  func <stripped> // getter 
-	0x26b50  func <stripped> // method 
+	0x267f0  func <stripped> // getter 
+	0x26870  func <stripped> // getter 
+	0x26fe0  func <stripped> // method 
  }
 
  struct SleepHealthUI.Configuration {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lineLength : ’Ø // +0x0
+	var lineLength : ’´ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lineWidth : ’Ø // +0x8
+	var lineWidth : ’´ // +0x8
  }
 
  class SleepHealthUI.SleepScheduleClockDial : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -467,16 +466,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var configuration : Configuration // +0x8 (0xc0)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5a9c0001f068 (0x29c0001f068) in binary!
-	0x7930  @objc SleepScheduleClockDial.(null) <stripped>
-WARNING: couldn't find address 0x5eaa0001ecd0 (0x6aa0001ecd0) in binary!
-	0x7118  @objc SleepScheduleClockDial.(null) <stripped>
-WARNING: couldn't find address 0x589c0001ed10 (0x9c0001ed10) in binary!
-	0x7900  @objc SleepScheduleClockDial.(null) <stripped>
+WARNING: couldn't find address 0x5adc0001ce18 (0x2dc0001ce18) in binary!
+	0x7980  @objc SleepScheduleClockDial.(null) <stripped>
+WARNING: couldn't find address 0x5eea0001ca80 (0x6ea0001ca80) in binary!
+	0x7168  @objc SleepScheduleClockDial.(null) <stripped>
+WARNING: couldn't find address 0x58dc0001cac0 (0xdc0001cac0) in binary!
+	0x7950  @objc SleepScheduleClockDial.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x1f4fffd12b8  @objc SleepScheduleClockDial.(null) <stripped>
-	0x71cfffd1690  @objc SleepScheduleClockDial.]√f.Ñ <stripped>
-	0x1440001ed80  @objc SleepScheduleClockDial.√Ä <stripped>
+	0x7a4fffd04f8  @objc SleepScheduleClockDial.(null) <stripped>
+	0x4ccfffd08d0  @objc SleepScheduleClockDial.UHâÂ1¿]√Ñ <stripped>
+	0x1940001cb30  @objc SleepScheduleClockDial.ã= <stripped>
 
 	// Swift methods
  }
@@ -487,15 +486,15 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	var backgroundColor : UIColor // +0x0
 	var tickColor : UIColor // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var tickOuterRadius : ’Ø // +0x10
+	var tickOuterRadius : ’´ // +0x10
 	var tickLineCap : CGLineCap // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var tickWidth : ’Ø // +0x20
+	var tickWidth : ’´ // +0x20
 	var minorTickMinuteIncrement : Int // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var majorTickLength : ’Ø // +0x30
+	var majorTickLength : ’´ // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minorTickLength : ’Ø // +0x38
+	var minorTickLength : ’´ // +0x38
 	var labelMinorIncrement : Int // +0x40
 	var labelMajorIncrement : Int // +0x48
 	var labelMinorTextStyle : TextStyle // +0x50
@@ -505,9 +504,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var labelMajorColor : UIColor // +0x70
 	var labelMinorColor : UIColor // +0x78
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var labelCenterRadius : ’Ø // +0x80
+	var labelCenterRadius : ’´ // +0x80
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var labelToIconSpacing : ’Ø // +0x88
+	var labelToIconSpacing : ’´ // +0x88
 	var midnightIconSymbol : String // +0x90
 	var midnightIconColor : UIColor // +0xa0
 	var noonIconSymbol : String // +0xa8
@@ -521,17 +520,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let fillColor : UIColor
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5a4c0001f018 (0x24c0001f018) in binary!
-	0x70e0  @objc FilledBackgroundSystemImageView.(null) <stripped>
-WARNING: couldn't find address 0x58640001ecd8 (0x640001ecd8) in binary!
-	0x78c8  @objc FilledBackgroundSystemImageView.(null) <stripped>
+	0x7130  variable initialization expression of SleepScheduleComponentsHeader.$__lazy_storage_$_wakeUpDayLabel
+WARNING: couldn't find address 0x58a40001ca88 (0xa40001ca88) in binary!
+	0x7918  @objc FilledBackgroundSystemImageView.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x2c4fffd2b90  @objc FilledBackgroundSystemImageView.(null) <stripped>
-	0x6e4fffd3538  @objc FilledBackgroundSystemImageView.ƒ[]√ <stripped>
+	0x74fffd1dd0  @objc FilledBackgroundSystemImageView.(null) <stripped>
+	0x494fffd2778  @objc FilledBackgroundSystemImageView.AUATSPHã[ù <stripped>
 
 	// Swift methods
-	0x2cd10  class func FilledBackgroundSystemImageView.__allocating_init(systemImageName:configuration:fillColor:tintColor:) // init 
-	0x2d130  func FilledBackgroundSystemImageView.setImageTintColor(_:) // method 
+	0x2d1b0  class func FilledBackgroundSystemImageView.__allocating_init(systemImageName:configuration:fillColor:tintColor:) // init 
+	0x2d5d0  func FilledBackgroundSystemImageView.setImageTintColor(_:) // method 
  }
 
  struct SleepHealthUI.DateDescription {
@@ -558,36 +556,35 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	var model : SleepScheduleComponentsViewModel // +0x0 (0x0)
 	var $__lazy_storage_$_alertImageView : UIImageView? // +0x0 (0x8)
 	let titleLabel : UILabel // +0x5 (0x8)
-	let datePicker : UIDatePicker // +0x70000 (0x8)
+	let datePicker : UIDatePicker // +0x71000 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x81440001ed80 (0x1440001ed80) in binary!
-	0x78a8  @objc ScheduleOccurrenceComponentsAccessibilityTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0x59fc0001efc8 (0x1fc0001efc8) in binary!
-	0x7890  @objc ScheduleOccurrenceComponentsAccessibilityTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x81940001cb30 (0x1940001cb30) in binary!
+	0x78f8  @objc ScheduleOccurrenceComponentsAccessibilityTableViewCell.(null) <stripped>
+	0x78e0  variable initialization expression of ScheduleOccurrenceView.isUsingVerticalLayout
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x79cfffd58f8  @objc ScheduleOccurrenceComponentsAccessibilityTableViewCell.(null) <stripped>
-	0xfffd59a0  @objc ScheduleOccurrenceComponentsAccessibilityTableViewCell.ˇ‘Hâﬂˇ%≠ <stripped>
+	0x54cfffd4b48  @objc ScheduleOccurrenceComponentsAccessibilityTableViewCell.(null) <stripped>
+	0xfffd4bf0  @objc ScheduleOccurrenceComponentsAccessibilityTableViewCell.ÉI <stripped>
 
 	// Swift methods
-	0x2e010  func ScheduleOccurrenceComponentsAccessibilityTableViewCell.delegate.getter // getter 
-	0x2e050  func ScheduleOccurrenceComponentsAccessibilityTableViewCell.delegate.setter // setter 
-	0x2e0a0  func ScheduleOccurrenceComponentsAccessibilityTableViewCell.delegate.modify // modifyCoroutine 
-	0x2e190  func ScheduleOccurrenceComponentsAccessibilityTableViewCell.model.getter // getter 
-	0x2e1d0  func ScheduleOccurrenceComponentsAccessibilityTableViewCell.model.setter // setter 
-	0x2e220  func ScheduleOccurrenceComponentsAccessibilityTableViewCell.model.modify // modifyCoroutine 
-	0x2e270  func ScheduleOccurrenceComponentsAccessibilityTableViewCell.timeComponents.getter // getter 
-	0x2e540  func <stripped> // getter 
-	0x2e7e0  func <stripped> // method 
-	0x2e870  func <stripped> // method 
-	0x2e9f0  func <stripped> // method 
-	0x2eb40  func <stripped> // method 
-	0x2eff0  func <stripped> // method 
-	0x2f170  func ScheduleOccurrenceComponentsAccessibilityTableViewCell.apply(_:) // method 
-	0x2f550  func ScheduleOccurrenceComponentsAccessibilityTableViewCell.clockDidChange(_:) // method 
-	0x2f9e0  func <stripped> // method 
-	0x2fc80  func <stripped> // method 
+	0x2e4b0  func ScheduleOccurrenceComponentsAccessibilityTableViewCell.delegate.getter // getter 
+	0x2e4f0  func ScheduleOccurrenceComponentsAccessibilityTableViewCell.delegate.setter // setter 
+	0x2e540  func ScheduleOccurrenceComponentsAccessibilityTableViewCell.delegate.modify // modifyCoroutine 
+	0x2e630  func ScheduleOccurrenceComponentsAccessibilityTableViewCell.model.getter // getter 
+	0x2e670  func ScheduleOccurrenceComponentsAccessibilityTableViewCell.model.setter // setter 
+	0x2e6c0  func ScheduleOccurrenceComponentsAccessibilityTableViewCell.model.modify // modifyCoroutine 
+	0x2e710  func ScheduleOccurrenceComponentsAccessibilityTableViewCell.timeComponents.getter // getter 
+	0x2e9e0  func <stripped> // getter 
+	0x2ec80  func <stripped> // method 
+	0x2ed10  func <stripped> // method 
+	0x2ee90  func <stripped> // method 
+	0x2efe0  func <stripped> // method 
+	0x2f490  func <stripped> // method 
+	0x2f610  func ScheduleOccurrenceComponentsAccessibilityTableViewCell.apply(_:) // method 
+	0x2f9f0  func ScheduleOccurrenceComponentsAccessibilityTableViewCell.clockDidChange(_:) // method 
+	0x2fe80  func <stripped> // method 
 	0x30120  func <stripped> // method 
+	0x305c0  func <stripped> // method 
  }
 
  enum SleepHealthUI.Component {
@@ -604,17 +601,17 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var occurrenceView : ScheduleOccurrenceView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x810c0001ed48 (0x10c0001ed48) in binary!
-	0x59d0  @objc ScheduleOccurrenceTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0x78640001e6b8 (0x640001e6b8) in binary!
+WARNING: couldn't find address 0x815c0001caf8 (0x15c0001caf8) in binary!
+	0x5a10  @objc ScheduleOccurrenceTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x78b40001c468 (0xb40001c468) in binary!
 	0x38000000c  @objc ScheduleOccurrenceTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0x59ac0001eea8 (0x1ac0001eea8) in binary!
-	0x59a0  @objc ScheduleOccurrenceTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x59ec0001cc58 (0x1ec0001cc58) in binary!
+	0x59e0  @objc ScheduleOccurrenceTableViewCell.(null) <stripped>
 
 	// Swift methods
-	0x31380  func ScheduleOccurrenceTableViewCell.viewModelProviding.getter // getter 
-	0x31450  func ScheduleOccurrenceTableViewCell.viewModelProviding.setter // setter 
-	0x314c0  func ScheduleOccurrenceTableViewCell.viewModelProviding.modify // modifyCoroutine 
+	0x31830  func ScheduleOccurrenceTableViewCell.viewModelProviding.getter // getter 
+	0x31900  func ScheduleOccurrenceTableViewCell.viewModelProviding.setter // setter 
+	0x31970  func ScheduleOccurrenceTableViewCell.viewModelProviding.modify // modifyCoroutine 
  }
 
  class SleepHealthUI.ScheduleOccurrenceTitleTableViewHeaderView : UITableViewHeaderFooterView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -623,15 +620,15 @@ WARNING: couldn't find address 0x59ac0001eea8 (0x1ac0001eea8) in binary!
 	let titleView : ScheduleOccurrenceTitleView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x59ac0001eea8 (0x1ac0001eea8) in binary!
-	0x59a0  @objc ScheduleOccurrenceTitleTableViewHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x78340001e688 (0x340001e688) in binary!
+WARNING: couldn't find address 0x59ec0001cc58 (0x1ec0001cc58) in binary!
+	0x59e0  @objc ScheduleOccurrenceTitleTableViewHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x78840001c438 (0x840001c438) in binary!
 	0xa8000000c  @objc ScheduleOccurrenceTitleTableViewHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x597c0001ef48 (0x17c0001ef48) in binary!
-	0x7810  @objc ScheduleOccurrenceTitleTableViewHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x59bc0001ccf8 (0x1bc0001ccf8) in binary!
+	0x7860  @objc ScheduleOccurrenceTitleTableViewHeaderView.(null) <stripped>
 
 	// Swift methods
-	0x32120  class func ScheduleOccurrenceTitleTableViewHeaderView.__allocating_init(titleText:subtitleText:screenSize:reuseIdentifier:) // init 
+	0x325e0  class func ScheduleOccurrenceTitleTableViewHeaderView.__allocating_init(titleText:subtitleText:screenSize:reuseIdentifier:) // init 
  }
 
  class SleepHealthUI.SleepScheduleComponentsHeader : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -648,23 +645,23 @@ WARNING: couldn't find address 0x597c0001ef48 (0x17c0001ef48) in binary!
 	var isIn24HourTime : Bool // +0x0 (0x1)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x597c0001ef48 (0x17c0001ef48) in binary!
-	0x7810  @objc SleepScheduleComponentsHeader.(null) <stripped>
-WARNING: couldn't find address 0x74740001f298 (0x4740001f298) in binary!
-	0x7488  @objc SleepScheduleComponentsHeader.(null) <stripped>
-WARNING: couldn't find address 0x77ec0001f260 (0x7ec0001f260) in binary!
-	0x5d66  @objc SleepScheduleComponentsHeader.(null) <stripped>
-WARNING: couldn't find address 0x763c0001e4f0 (0x63c0001e4f0) in binary!
-	0x7630  @objc SleepScheduleComponentsHeader.(null) <stripped>
-WARNING: couldn't find address 0x574c0001ebc0 (0x74c0001ebc0) in binary!
-	0x77b0  @objc SleepScheduleComponentsHeader.(null) <stripped>
+WARNING: couldn't find address 0x59bc0001ccf8 (0x1bc0001ccf8) in binary!
+	0x7860  @objc SleepScheduleComponentsHeader.(null) <stripped>
+WARNING: couldn't find address 0x74c40001d048 (0x4c40001d048) in binary!
+	0x74d8  @objc SleepScheduleComponentsHeader.(null) <stripped>
+WARNING: couldn't find address 0x783c0001d010 (0x3c0001d010) in binary!
+	0x5da6  @objc SleepScheduleComponentsHeader.(null) <stripped>
+WARNING: couldn't find address 0x768c0001c2a0 (0x68c0001c2a0) in binary!
+	0x7680  @objc SleepScheduleComponentsHeader.(null) <stripped>
+WARNING: couldn't find address 0x578c0001c970 (0x78c0001c970) in binary!
+	0x7800  @objc SleepScheduleComponentsHeader.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x5ecfffda928  @objc SleepScheduleComponentsHeader.(null) <stripped>
-	0x5ccfffdac50  @objc SleepScheduleComponentsHeader.Æ <stripped>
-	0x7f40001ec30  @objc SleepScheduleComponentsHeader.˜–I!E <stripped>
-WARNING: couldn't find address 0x1ee84fffdb6d0 (0x684fffdb6d0) in binary!
-	0x5b40001e458  @objc SleepScheduleComponentsHeader.(null) <stripped>
-WARNING: couldn't find address 0x1e594fffdb758 (0x594fffdb758) in binary!
+	0x39cfffd9b88  @objc SleepScheduleComponentsHeader.(null) <stripped>
+	0x37cfffd9eb0  @objc SleepScheduleComponentsHeader. <stripped>
+	0x440001c9e0  @objc SleepScheduleComponentsHeader.u»Ë1± <stripped>
+WARNING: couldn't find address 0x1cc34fffda930 (0x434fffda930) in binary!
+	0x6040001c208  @objc SleepScheduleComponentsHeader.(null) <stripped>
+WARNING: couldn't find address 0x1c344fffda9b8 (0x344fffda9b8) in binary!
 	0x48000000c  @objc SleepScheduleComponentsHeader.(null) <stripped>
 
 	// Swift methods
@@ -676,18 +673,18 @@ WARNING: couldn't find address 0x1e594fffdb758 (0x594fffdb758) in binary!
 	let headerView : ScheduleOccurrenceHeaderView // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x76040001f250 (0x6040001f250) in binary!
-	0x58f0  @objc ScheduleOccurrenceSectionTableViewHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x58e40001eeb0 (0xe40001eeb0) in binary!
-	0x7778  @objc ScheduleOccurrenceSectionTableViewHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x76540001d000 (0x6540001d000) in binary!
+	0x5930  @objc ScheduleOccurrenceSectionTableViewHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x59240001cc60 (0x1240001cc60) in binary!
+	0x77c8  @objc ScheduleOccurrenceSectionTableViewHeaderView.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x684fffdb6d0  @objc ScheduleOccurrenceSectionTableViewHeaderView.(null) <stripped>
-	0x594fffdb758  @objc ScheduleOccurrenceSectionTableViewHeaderView.Iâ≈HãΩ@˛ˇˇHãµÄ˝ˇˇˇ)Æ <stripped>
+	0x434fffda930  @objc ScheduleOccurrenceSectionTableViewHeaderView.(null) <stripped>
+	0x344fffda9b8  @objc ScheduleOccurrenceSectionTableViewHeaderView.â¬Aˇ‘Hâ«Ëá_ <stripped>
 
 	// Swift methods
-	0x36660  func ScheduleOccurrenceSectionTableViewHeaderView.title.getter // getter 
-	0x366f0  func ScheduleOccurrenceSectionTableViewHeaderView.title.setter // setter 
-	0x36770  func ScheduleOccurrenceSectionTableViewHeaderView.title.modify // modifyCoroutine 
+	0x36b20  func ScheduleOccurrenceSectionTableViewHeaderView.title.getter // getter 
+	0x36bb0  func ScheduleOccurrenceSectionTableViewHeaderView.title.setter // setter 
+	0x36c30  func ScheduleOccurrenceSectionTableViewHeaderView.title.modify // modifyCoroutine 
  }
 
  class SleepHealthUI.ScheduleOccurrenceComponentsEditTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -696,19 +693,19 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	var editView : SleepScheduleComponentsEditView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7ff40001ec30 (0x7f40001ec30) in binary!
-	0x58b8  @objc ScheduleOccurrenceComponentsEditTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0x75b40001e458 (0x5b40001e458) in binary!
-	0x7740  @objc ScheduleOccurrenceComponentsEditTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x80440001c9e0 (0x440001c9e0) in binary!
+	0x58f8  @objc ScheduleOccurrenceComponentsEditTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x76040001c208 (0x6040001c208) in binary!
+	0x7790  @objc ScheduleOccurrenceComponentsEditTableViewCell.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x59cfffe12a8  @objc ScheduleOccurrenceComponentsEditTableViewCell.(null) <stripped>
-	0x55cfffe14a0  @objc ScheduleOccurrenceComponentsEditTableViewCell.“Ën0 <stripped>
+	0x34cfffe0398  @objc ScheduleOccurrenceComponentsEditTableViewCell.(null) <stripped>
+	0x30cfffe0590  @objc ScheduleOccurrenceComponentsEditTableViewCell.Ñ <stripped>
 
 	// Swift methods
-	0x36f30  func ScheduleOccurrenceComponentsEditTableViewCell.editView.getter // getter 
-	0x36fd0  func ScheduleOccurrenceComponentsEditTableViewCell.showsComponentsHeader.getter // getter 
-	0x37010  func ScheduleOccurrenceComponentsEditTableViewCell.showsComponentsHeader.setter // setter 
-	0x37170  func ScheduleOccurrenceComponentsEditTableViewCell.showsComponentsHeader.modify // modifyCoroutine 
+	0x373f0  func ScheduleOccurrenceComponentsEditTableViewCell.editView.getter // getter 
+	0x37490  func ScheduleOccurrenceComponentsEditTableViewCell.showsComponentsHeader.getter // getter 
+	0x374d0  func ScheduleOccurrenceComponentsEditTableViewCell.showsComponentsHeader.setter // setter 
+	0x37630  func ScheduleOccurrenceComponentsEditTableViewCell.showsComponentsHeader.modify // modifyCoroutine 
  }
 
  class SleepHealthUI.TextTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -717,23 +714,23 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	var model : TextTableViewCellProviding
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find offset 0xffff8378 in binary!
-WARNING: couldn't find offset 0xffff8378 in binary!
-	0x0  @objc TextTableViewCell.ã}–Ëê <stripped>
-WARNING: couldn't find offset 0xffffa200 in binary!
-WARNING: couldn't find offset 0xffffa200 in binary!
-	0x0  @objc TextTableViewCell.ˇˇæ <stripped>
+WARNING: couldn't find offset 0xffff8218 in binary!
+WARNING: couldn't find offset 0xffff8218 in binary!
+	0x0  @objc TextTableViewCell.Ï¡ <stripped>
+WARNING: couldn't find offset 0xffffa0b0 in binary!
+WARNING: couldn't find offset 0xffffa0b0 in binary!
+	0x0  @objc TextTableViewCell.j <stripped>
 WARNING: couldn't find address 0x1c00000001 (0x1c00000001) in binary!
-	0x6400000000  @objc TextTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0x100000000000004 (0x4) in binary!
-	0x301010001  @objc TextTableViewCell.(null) <stripped>
+	0x6000000000  @objc TextTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x100000000000003 (0x3) in binary!
+	0x1010001  @objc TextTableViewCell.(null) <stripped>
 
 	// Swift methods
-	0x399b0  func TextTableViewCell.model.getter // getter 
-	0x39a20  func TextTableViewCell.model.setter // setter 
-	0x39a80  func TextTableViewCell.model.modify // modifyCoroutine 
-	0x39af0  func <stripped> // method 
-	0x39c20  func <stripped> // method 
+	0x39cd0  func TextTableViewCell.model.getter // getter 
+	0x39d40  func TextTableViewCell.model.setter // setter 
+	0x39da0  func TextTableViewCell.model.modify // modifyCoroutine 
+	0x39e10  func <stripped> // method 
+	0x39f40  func <stripped> // method 
  }
 
  struct SleepHealthUI.Conflict {
@@ -747,16 +744,16 @@ WARNING: couldn't find address 0x100000000000004 (0x4) in binary!
 	// Properties
 	var alarmEnabled : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var gregorianCalendar : }≠
+	var gregorianCalendar : }©
 	var timeFormatter : NSDateFormatter
 	var validScheduleRange : HKSPSleepScheduleRange?
 	var includeDayLabelsInHeader : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var roundedBedtimeComponents : •
+	var roundedBedtimeComponents : °
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var roundedWakeUpComponents : •
+	var roundedWakeUpComponents : °
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var wakeUpComponents : •
+	var wakeUpComponents : °
 	var crossesDayBoundary : Bool
 	var dayLabelFormatter : NSDateFormatter
 	var bedtimeShowsAlert : Bool
@@ -776,24 +773,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_weekdayFormatter : NSDateFormatter?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x588c0001e748 (0x8c0001e748) in binary!
-	0x7588  @objc RelativeWeekdayFormatter.(null) <stripped>
-WARNING: couldn't find address 0x58740001ee40 (0x740001ee40) in binary!
-	0x7708  @objc RelativeWeekdayFormatter.(null) <stripped>
+WARNING: couldn't find address 0x58cc0001c4f8 (0xcc0001c4f8) in binary!
+	0x75d8  @objc RelativeWeekdayFormatter.(null) <stripped>
+WARNING: couldn't find address 0x58b40001cbf0 (0xb40001cbf0) in binary!
+	0x7758  @objc RelativeWeekdayFormatter.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffe1650  @objc RelativeWeekdayFormatter.(null) <stripped>
+	0xfffe0740  @objc RelativeWeekdayFormatter.(null) <stripped>
 WARNING: couldn't find address 0x1c8000000c (0x1c8000000c) in binary!
-	0x314fffe1838  @objc RelativeWeekdayFormatter.(null) <stripped>
+	0xc4fffe0928  @objc RelativeWeekdayFormatter.(null) <stripped>
 
 	// Swift methods
-	0x3cc00  func <stripped> // getter 
-	0x3cca0  func <stripped> // getter 
-	0x3cd80  func <stripped> // getter 
+	0x3cf50  func <stripped> // getter 
+	0x3cff0  func <stripped> // getter 
+	0x3d0d0  func <stripped> // getter 
  }
 
  class SleepHealthUI.TonePickerStyleProvider : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x755c0001e570 (0x55c0001e570) in binary!
+WARNING: couldn't find address 0x75ac0001c320 (0x5ac0001c320) in binary!
 	0x1c8000000c  @objc TonePickerStyleProvider.(null) <stripped>
  }
 
@@ -804,16 +801,16 @@ WARNING: couldn't find address 0x755c0001e570 (0x55c0001e570) in binary!
 	let slider : UISlider
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7e140001ea50 (0x6140001ea50) in binary!
-	0x56d8  @objc ScheduleOccurrenceAlarmVolumeTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0x756c0001e3c0 (0x56c0001e3c0) in binary!
+WARNING: couldn't find address 0x7e640001c800 (0x6640001c800) in binary!
+	0x5718  @objc ScheduleOccurrenceAlarmVolumeTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x75bc0001c170 (0x5bc0001c170) in binary!
 	0x88000000c  @objc ScheduleOccurrenceAlarmVolumeTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0x56b40001ec80 (0x6b40001ec80) in binary!
-	0x7548  @objc ScheduleOccurrenceAlarmVolumeTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x56f40001ca30 (0x6f40001ca30) in binary!
+	0x7598  @objc ScheduleOccurrenceAlarmVolumeTableViewCell.(null) <stripped>
 
 	// Swift methods
-	0x3d8e0  func ScheduleOccurrenceAlarmVolumeTableViewCell.alarmVolume.getter // getter 
-	0x3d980  func <stripped> // method 
+	0x3dc30  func ScheduleOccurrenceAlarmVolumeTableViewCell.alarmVolume.getter // getter 
+	0x3dcd0  func <stripped> // method 
  }
 
  struct SleepHealthUI.Configuration {
@@ -822,7 +819,7 @@ WARNING: couldn't find address 0x56b40001ec80 (0x6b40001ec80) in binary!
 	var backgroundColor : UIColor // +0x0
 	var sliderValueImageColor : UIColor // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var horizontalMargin : ’Ø // +0x10
+	var horizontalMargin : ’´ // +0x10
  }
 
  struct SleepHealthUI.Model {
@@ -850,20 +847,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var configuration : Configuration
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x56b40001ec80 (0x6b40001ec80) in binary!
-	0x7548  @objc SleepScheduleClockHand.(null) <stripped>
-WARNING: couldn't find address 0x76000001f048 (0x6000001f048) in binary!
-	0x7736  @objc SleepScheduleClockHand.(null) <stripped>
-WARNING: couldn't find address 0x5ae30001e228 (0x2e30001e228) in binary!
-	0x75dc  @objc SleepScheduleClockHand.(null) <stripped>
-WARNING: couldn't find address 0x549c0001e910 (0x49c0001e910) in binary!
-	0x7500  @objc SleepScheduleClockHand.(null) <stripped>
+WARNING: couldn't find address 0x56f40001ca30 (0x6f40001ca30) in binary!
+	0x7598  @objc SleepScheduleClockHand.(null) <stripped>
+WARNING: couldn't find address 0x76500001cdf8 (0x6500001cdf8) in binary!
+	0x7786  @objc SleepScheduleClockHand.(null) <stripped>
+WARNING: couldn't find address 0x5b230001bfd8 (0x3230001bfd8) in binary!
+	0x762c  @objc SleepScheduleClockHand.(null) <stripped>
+	0x7550  variable initialization expression of ScheduleOccurrenceAlarmVolumeTableViewCell.slider
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x334fffeff18  @objc SleepScheduleClockHand.(null) <stripped>
-	0x45c0001e8d0  @objc SleepScheduleClockHand.a <stripped>
-WARNING: couldn't find address 0x1ebecffff05c8 (0x3ecffff05c8) in binary!
-	0x23a0001e860  @objc SleepScheduleClockHand.(null) <stripped>
-WARNING: couldn't find address 0x1e2fcffff06e0 (0x2fcffff06e0) in binary!
+	0xe4fffef088  @objc SleepScheduleClockHand.(null) <stripped>
+	0x49c0001c680  @objc SleepScheduleClockHand.Í` <stripped>
+WARNING: couldn't find address 0x1c99cfffef748 (0x19cfffef748) in binary!
+	0x27a0001c610  @objc SleepScheduleClockHand.(null) <stripped>
+WARNING: couldn't find address 0x1c0acfffef860 (0xacfffef860) in binary!
 	0x38000000c  @objc SleepScheduleClockHand.(null) <stripped>
 
 	// Swift methods
@@ -878,7 +874,7 @@ WARNING: couldn't find address 0x1e2fcffff06e0 (0x2fcffff06e0) in binary!
 	var highlightedIconColor : UIColor // +0x18
 	var filter : CAFilter? // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var iconPointSize : ’Ø // +0x28
+	var iconPointSize : ’´ // +0x28
  }
 
  enum SleepHealthUI.Symbol {
@@ -901,26 +897,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var ringShadowOffset : CGSize // +0x30
 	var ringShadowOpacity : Float // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : ’Ø // +0x48
+	var width : ’´ // +0x48
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ringInset : ’Ø // +0x50
+	var ringInset : ’´ // +0x50
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ringWidth : ’Ø // +0x58
+	var ringWidth : ’´ // +0x58
 	var handSize : CGSize // +0x60
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var handIconPointSize : ’Ø // +0x70
+	var handIconPointSize : ’´ // +0x70
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var grabberLineWidth : ’Ø // +0x78
+	var grabberLineWidth : ’´ // +0x78
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var grabberLineLength : ’Ø // +0x80
+	var grabberLineLength : ’´ // +0x80
 	var gestureStartDelay : Double // +0x88
 	var increment : Double // +0x90
 	var minimumTimeInBed : Double // +0x98
 	var maximumTimeInBed : Double // +0xa0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var majorFeedbackAngularVelocityMinimum : ’Ø // +0xa8
+	var majorFeedbackAngularVelocityMinimum : ’´ // +0xa8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minorFeedbackAngularVelocityMaximum : ’Ø // +0xb0
+	var minorFeedbackAngularVelocityMaximum : ’´ // +0xb0
 	var majorFeedbackHourInterval : Int // +0xb8
 	var minorFeedbackMinuteInterval : Int // +0xc0
 	var dialConfiguration : Configuration // +0xc8
@@ -930,17 +926,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bedtimeComponents : ·£
+	let bedtimeComponents : ·ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let wakeUpComponents : ·£
+	let wakeUpComponents : ·ü
 	let weekdays : HKSPWeekdays
 	let alarmState : AlarmState
 	let showWeekdaysText : Bool
 	let weekdaysTextColor : UIColor?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var relativeWakeUpDate : §
+	var relativeWakeUpDate : †
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var relativeBedtimeDate : §
+	var relativeBedtimeDate : †
 	let relativeWeekdayFormatter : RelativeWeekdayFormatter
  }
 
@@ -958,12 +954,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var configuration : TLAlertConfiguration
 	var alert : TLAlert?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var alarmConfigurationDidChangeObserver : Y¨
+	var alarmConfigurationDidChangeObserver : Y®
 
 	// Swift methods
-	0x49f70  class func AlarmPreviewPlayer.__allocating_init(model:) // init 
-	0x4a960  func AlarmPreviewPlayer.play() // method 
-	0x4ad80  func AlarmPreviewPlayer.stop() // method 
+	0x4a340  class func AlarmPreviewPlayer.__allocating_init(model:) // init 
+	0x4ad30  func AlarmPreviewPlayer.play() // method 
+	0x4b150  func AlarmPreviewPlayer.stop() // method 
  }
 
  class SleepHealthUI.ScheduleOccurrenceComponentsAndDayAccessibilityTableViewCell : HKSHScheduleOccurrenceComponentsAccessibilityTableViewCell {
@@ -972,13 +968,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let dayLabel : UILabel // +0x6569665f (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7d7c0001e9b8 (0x57c0001e9b8) in binary!
-	0x74e0  @objc ScheduleOccurrenceComponentsAndDayAccessibilityTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x7dcc0001c768 (0x5cc0001c768) in binary!
+	0x7530  @objc ScheduleOccurrenceComponentsAndDayAccessibilityTableViewCell.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x3ecffff05c8  @objc ScheduleOccurrenceComponentsAndDayAccessibilityTableViewCell.(null) <stripped>
+	0x19cfffef748  @objc ScheduleOccurrenceComponentsAndDayAccessibilityTableViewCell.(null) <stripped>
 
 	// Swift methods
-	0x4bbd0  func <stripped> // method 
+	0x4bfa0  func <stripped> // method 
  }
 
  class SleepHealthUI.ScheduleOccurrenceHeaderView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -987,17 +983,17 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	var $__lazy_storage_$_titleLabel : UILabel?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x545c0001e8d0 (0x45c0001e8d0) in binary!
-	0x5620  @objc ScheduleOccurrenceHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x5a3a0001e860 (0x23a0001e860) in binary!
-	0x74a8  @objc ScheduleOccurrenceHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x549c0001c680 (0x49c0001c680) in binary!
+	0x5660  @objc ScheduleOccurrenceHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x5a7a0001c610 (0x27a0001c610) in binary!
+	0x74f8  @objc ScheduleOccurrenceHeaderView.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x3b4ffff0b10  @objc ScheduleOccurrenceHeaderView.(null) <stripped>
-	0xffff0d48  @objc ScheduleOccurrenceHeaderView.± <stripped>
+	0x164fffefc90  @objc ScheduleOccurrenceHeaderView.(null) <stripped>
+	0xfffefec8  @objc ScheduleOccurrenceHeaderView.ˇˇf)Öp¸ˇˇHãµ¸ˇˇLã5∏¿ <stripped>
 
 	// Swift methods
-	0x4c320  func <stripped> // getter 
-	0x4c7c0  func <stripped> // method 
+	0x4c700  func <stripped> // getter 
+	0x4cba0  func <stripped> // method 
  }
 
  class SleepHealthUI.ScheduleOccurrenceDeleteTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1006,15 +1002,15 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var model : Model
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7d240001e960 (0x5240001e960) in binary!
-	0x55e8  @objc ScheduleOccurrenceDeleteTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0x747c0001e2d0 (0x47c0001e2d0) in binary!
+WARNING: couldn't find address 0x7d740001c710 (0x5740001c710) in binary!
+	0x5628  @objc ScheduleOccurrenceDeleteTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x74cc0001c080 (0x4cc0001c080) in binary!
 	0x38000000c  @objc ScheduleOccurrenceDeleteTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0x7cf40001e930 (0x4f40001e930) in binary!
-	0x55b8  @objc ScheduleOccurrenceDeleteTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x7d440001c6e0 (0x5440001c6e0) in binary!
+	0x55f8  @objc ScheduleOccurrenceDeleteTableViewCell.(null) <stripped>
 
 	// Swift methods
-	0x4cbd0  func <stripped> // method 
+	0x4cfb0  func <stripped> // method 
  }
 
  struct SleepHealthUI.Model {
@@ -1025,28 +1021,28 @@ WARNING: couldn't find address 0x7cf40001e930 (0x4f40001e930) in binary!
 
  class SleepHealthUI.ScheduleOccurrenceAlarmSoundTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7cf40001e930 (0x4f40001e930) in binary!
-	0x55b8  @objc ScheduleOccurrenceAlarmSoundTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0x744c0001e2a0 (0x44c0001e2a0) in binary!
+WARNING: couldn't find address 0x7d440001c6e0 (0x5440001c6e0) in binary!
+	0x55f8  @objc ScheduleOccurrenceAlarmSoundTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x749c0001c050 (0x49c0001c050) in binary!
 	0x38000000c  @objc ScheduleOccurrenceAlarmSoundTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0x7cc40001e900 (0x4c40001e900) in binary!
-	0x5588  @objc ScheduleOccurrenceAlarmSoundTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x7d140001c6b0 (0x5140001c6b0) in binary!
+	0x55c8  @objc ScheduleOccurrenceAlarmSoundTableViewCell.(null) <stripped>
 
 	// Swift methods
-	0x4d3a0  func <stripped> // method 
+	0x4d780  func <stripped> // method 
  }
 
  class SleepHealthUI.ScheduleOccurrenceAlarmEnabledTableViewCell : HKSwitchTableViewCell /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7cc40001e900 (0x4c40001e900) in binary!
-	0x5588  @objc ScheduleOccurrenceAlarmEnabledTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0x741c0001e270 (0x41c0001e270) in binary!
-	0xb8000000c  @objc ScheduleOccurrenceAlarmEnabledTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0x726c0001e0f8 (0x26c0001e0f8) in binary!
-	0x7260  @objc ScheduleOccurrenceAlarmEnabledTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x7d140001c6b0 (0x5140001c6b0) in binary!
+	0x55c8  @objc ScheduleOccurrenceAlarmEnabledTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x746c0001c020 (0x46c0001c020) in binary!
+	0xd8000000c  @objc ScheduleOccurrenceAlarmEnabledTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x72bc0001bea8 (0x2bc0001bea8) in binary!
+	0x72b0  @objc ScheduleOccurrenceAlarmEnabledTableViewCell.(null) <stripped>
 
 	// Swift methods
-	0x4da30  func <stripped> // method 
+	0x4de20  func <stripped> // method 
  }
 
  class SleepHealthUI.QuickScheduleManagementViewController : UINavigationController /System/Library/Frameworks/UIKit.framework/UIKit, OnboardPromptViewControllerDelegate,  EnableSchedulePromptViewControllerDelegate {
@@ -1056,63 +1052,69 @@ WARNING: couldn't find address 0x726c0001e0f8 (0x26c0001e0f8) in binary!
 	var sleepDelegate : weak HKSHQuickScheduleManagementViewControllerDelegate? // +0x10 (0x8)
 	let sleepScheduleProvider : SleepScheduleProvider // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let gregorianCalendar : }≠ // +0x0 (0x0)
+	let gregorianCalendar : }© // +0x0 (0x0)
 	let featureAvailability : HKFeatureAvailabilityProviding // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var appStateObserver : Y¨ // +0x0 (0x8)
+	var appStateObserver : Y® // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x726c0001e0f8 (0x26c0001e0f8) in binary!
-	0x7260  @objc QuickScheduleManagementViewController.(null) <stripped>
-WARNING: couldn't find address 0x59720001e0d0 (0x1720001e0d0) in binary!
-	0x59d4  @objc QuickScheduleManagementViewController.(null) <stripped>
-WARNING: couldn't find address 0x55340001f018 (0x5340001f018) in binary!
-	0x7494  @objc QuickScheduleManagementViewController.(null) <stripped>
-WARNING: couldn't find address 0x74800001e158 (0x4800001e158) in binary!
-	0x7d96  @objc QuickScheduleManagementViewController.(null) <stripped>
-WARNING: couldn't find address 0x55040001eff8 (0x5040001eff8) in binary!
-	0x598c  @objc QuickScheduleManagementViewController.(null) <stripped>
-WARNING: couldn't find address 0x738c0001e1e0 (0x38c0001e1e0) in binary!
-	0x18000000c  @objc QuickScheduleManagementViewController.(null) <stripped>
-WARNING: couldn't find address 0x73740001ea38 (0x3740001ea38) in binary!
-	0x58000000c  @objc QuickScheduleManagementViewController.(null) <stripped>
-WARNING: couldn't find address 0x735c0001e758 (0x35c0001e758) in binary!
-	0x4d12  @objc QuickScheduleManagementViewController.(null) <stripped>
-	0x71a0  variable initialization expression of ScheduleOccurrenceDeleteTableViewCell.model
-WARNING: couldn't find address 0x732c0001e180 (0x32c0001e180) in binary!
+WARNING: couldn't find address 0x72bc0001bea8 (0x2bc0001bea8) in binary!
+	0x72b0  @objc QuickScheduleManagementViewController.(null) <stripped>
+WARNING: couldn't find address 0x59b20001be80 (0x1b20001be80) in binary!
+	0x5a14  @objc QuickScheduleManagementViewController.(null) <stripped>
+WARNING: couldn't find address 0x55740001cdd0 (0x5740001cdd0) in binary!
+	0x7418  @objc QuickScheduleManagementViewController.(null) <stripped>
+WARNING: couldn't find address 0x74d80001be40 (0x4d80001be40) in binary!
+	0x7606  @objc QuickScheduleManagementViewController.(null) <stripped>
+WARNING: couldn't find address 0x74b80001bef0 (0x4b80001bef0) in binary!
+	0x7ec1  @objc QuickScheduleManagementViewController.(null) <stripped>
+WARNING: couldn't find address 0x552c0001cda8 (0x52c0001cda8) in binary!
+	0x59b4  @objc QuickScheduleManagementViewController.(null) <stripped>
+WARNING: couldn't find address 0x73c40001bf78 (0x3c40001bf78) in binary!
 	0x38000000c  @objc QuickScheduleManagementViewController.(null) <stripped>
-WARNING: couldn't find address 0x73140001ed88 (0x3140001ed88) in binary!
-	0x5298  @objc QuickScheduleManagementViewController.(null) <stripped>
+WARNING: couldn't find address 0x59220001bc78 (0x1220001bc78) in binary!
+	0x5916  @objc QuickScheduleManagementViewController.(null) <stripped>
+WARNING: couldn't find address 0x73940001c7b8 (0x3940001c7b8) in binary!
+	0x58000000c  @objc QuickScheduleManagementViewController.(null) <stripped>
+WARNING: couldn't find address 0x737c0001c4d8 (0x37c0001c4d8) in binary!
+	0x4d22  @objc QuickScheduleManagementViewController.(null) <stripped>
+WARNING: couldn't find address 0x4d160001bd88 (0x5160001bd88) in binary!
+	0x71c0  @objc QuickScheduleManagementViewController.(null) <stripped>
+WARNING: couldn't find address 0x734c0001bf00 (0x34c0001bf00) in binary!
+	0x38000000c  @objc QuickScheduleManagementViewController.(null) <stripped>
+WARNING: couldn't find address 0x73340001cb08 (0x3340001cb08) in binary!
+	0x52a8  @objc QuickScheduleManagementViewController.(null) <stripped>
 
 	// Swift methods
-	0x4f160  func QuickScheduleManagementViewController.sleepDelegate.getter // getter 
-	0x4f1e0  func QuickScheduleManagementViewController.sleepDelegate.setter // setter 
-	0x4f230  func QuickScheduleManagementViewController.sleepDelegate.modify // modifyCoroutine 
-	0x4f3c0  class func QuickScheduleManagementViewController.__allocating_init(sleepStore:) // init 
-	0x4f550  class func <stripped> // init 
+	0x4f280  func QuickScheduleManagementViewController.sleepDelegate.getter // getter 
+	0x4f300  func QuickScheduleManagementViewController.sleepDelegate.setter // setter 
+	0x4f350  func QuickScheduleManagementViewController.sleepDelegate.modify // modifyCoroutine 
+	0x4f4e0  class func QuickScheduleManagementViewController.__allocating_init(sleepStore:) // init 
+	0x4fc20  class func <stripped> // init 
  }
 
  class SleepHealthUI.SleepScheduleProvider : NSObject /usr/lib/libobjc.A.dylib, SleepScheduleProviding {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let currentSchedulePublisher : cØ
+	let currentSchedulePublisher : c´
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let currentGoalPublisher : uØ
+	let currentGoalPublisher : u´
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventRecordPublisher : m§
+	let eventRecordPublisher : c†
 	let sleepStore : HKSPSleepStore
 	var query : HKQuery?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x735c0001e758 (0x35c0001e758) in binary!
-	0x4d12  @objc SleepScheduleProvider.(null) <stripped>
-	0x71a0  variable initialization expression of ScheduleOccurrenceDeleteTableViewCell.model
-WARNING: couldn't find address 0x732c0001e180 (0x32c0001e180) in binary!
+WARNING: couldn't find address 0x737c0001c4d8 (0x37c0001c4d8) in binary!
+	0x4d22  @objc SleepScheduleProvider.(null) <stripped>
+WARNING: couldn't find address 0x4d160001bd88 (0x5160001bd88) in binary!
+	0x71c0  @objc SleepScheduleProvider.(null) <stripped>
+WARNING: couldn't find address 0x734c0001bf00 (0x34c0001bf00) in binary!
 	0x38000000c  @objc SleepScheduleProvider.(null) <stripped>
-WARNING: couldn't find address 0x73140001ed88 (0x3140001ed88) in binary!
-	0x5298  @objc SleepScheduleProvider.(null) <stripped>
-WARNING: couldn't find address 0x545c0001ea28 (0x45c0001ea28) in binary!
+WARNING: couldn't find address 0x73340001cb08 (0x3340001cb08) in binary!
+	0x52a8  @objc SleepScheduleProvider.(null) <stripped>
+WARNING: couldn't find address 0x546c0001c7a8 (0x46c0001c7a8) in binary!
 	0x58000000c  @objc SleepScheduleProvider.(null) <stripped>
 
 	// Swift methods
@@ -1120,12 +1122,12 @@ WARNING: couldn't find address 0x545c0001ea28 (0x45c0001ea28) in binary!
 
  class SleepHealthUI.TintedTitleTrayButton : OBTrayButton /System/Library/PrivateFrameworks/OnBoardingKit.framework/OnBoardingKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x73140001ed88 (0x3140001ed88) in binary!
-	0x5298  @objc TintedTitleTrayButton.(null) <stripped>
-WARNING: couldn't find address 0x545c0001ea28 (0x45c0001ea28) in binary!
+WARNING: couldn't find address 0x73340001cb08 (0x3340001cb08) in binary!
+	0x52a8  @objc TintedTitleTrayButton.(null) <stripped>
+WARNING: couldn't find address 0x546c0001c7a8 (0x46c0001c7a8) in binary!
 	0x58000000c  @objc TintedTitleTrayButton.(null) <stripped>
-WARNING: couldn't find address 0x73a80001e080 (0x3a80001e080) in binary!
-	0x72d8  @objc TintedTitleTrayButton.(null) <stripped>
+WARNING: couldn't find address 0x73c80001be00 (0x3c80001be00) in binary!
+	0x72f8  @objc TintedTitleTrayButton.(null) <stripped>
 
 	// Swift methods
  }
@@ -1133,15 +1135,15 @@ WARNING: couldn't find address 0x73a80001e080 (0x3a80001e080) in binary!
  class SleepHealthUI.EnableSchedulePromptViewController : OBWelcomeController /System/Library/PrivateFrameworks/OnBoardingKit.framework/OnBoardingKit {
 
 	// Properties
-	var delegate : EnableSchedulePromptViewControllerDelegate
+	var delegate : EnableSchedulePromptViewControllerDelegate // +0x8 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x7290  variable initialization expression of ScheduleOccurrenceView.weekdaysLabel
-WARNING: couldn't find address 0x7ef40001ef58 (0x6f40001ef58) in binary!
-	0x7278  @objc EnableSchedulePromptViewController.(null) <stripped>
+WARNING: couldn't find address 0x73800001bdb8 (0x3800001bdb8) in binary!
+	0x72b0  @objc EnableSchedulePromptViewController.(null) <stripped>
+	0x7298  @objc EnableSchedulePromptViewController.HâﬁË∞ÓˇˇE1ˇ1€Lâ¯Hâ⁄Hçeÿ[A\A]A^A_]√Hç=ﬂ <stripped>
 WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
-	0x184ffff9cc0  @objc EnableSchedulePromptViewController.(null) <stripped>
-	0x77cffff9ce8  @objc EnableSchedulePromptViewController.˛ˇˇHãù(˛ˇˇHâﬁAˇ‘Hâ«Ë\R <stripped>
+	0x704ffff9c10  @objc EnableSchedulePromptViewController.(null) <stripped>
+	0x52cffff9c38  @objc EnableSchedulePromptViewController.#B <stripped>
 
 	// Swift methods
  }
@@ -1152,18 +1154,18 @@ WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
 	var delegate : OnboardPromptViewControllerDelegate
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x73a80001e080 (0x3a80001e080) in binary!
-	0x72d8  @objc OnboardPromptViewController.(null) <stripped>
-WARNING: couldn't find address 0x72cc0001efe0 (0x2cc0001efe0) in binary!
-	0x7f30  @objc OnboardPromptViewController.(null) <stripped>
-WARNING: couldn't find address 0x72b40001e108 (0x2b40001e108) in binary!
+WARNING: couldn't find address 0x73c80001be00 (0x3c80001be00) in binary!
+	0x72f8  @objc OnboardPromptViewController.(null) <stripped>
+WARNING: couldn't find address 0x72ec0001cd70 (0x2ec0001cd70) in binary!
+	0x8040  @objc OnboardPromptViewController.(null) <stripped>
+WARNING: couldn't find address 0x72d40001be88 (0x2d40001be88) in binary!
 	0x48000000c  @objc OnboardPromptViewController.(null) <stripped>
-	0x7290  variable initialization expression of ScheduleOccurrenceView.weekdaysLabel
-WARNING: couldn't find address 0x7ef40001ef58 (0x6f40001ef58) in binary!
-	0x7278  @objc OnboardPromptViewController.(null) <stripped>
+WARNING: couldn't find address 0x73800001bdb8 (0x3800001bdb8) in binary!
+	0x72b0  @objc OnboardPromptViewController.(null) <stripped>
+	0x7298  @objc OnboardPromptViewController.HâﬁË∞ÓˇˇE1ˇ1€Lâ¯Hâ⁄Hçeÿ[A\A]A^A_]√Hç=ﬂ <stripped>
 
 	// Swift methods
-	0x51e80  func <stripped> // method 
+	0x53270  func <stripped> // method 
  }
 
  class SleepHealthUI.ScheduleOccurrenceView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1177,34 +1179,34 @@ WARNING: couldn't find address 0x7ef40001ef58 (0x6f40001ef58) in binary!
 	var isUsingVerticalLayout : Bool? // +0x0 (0x1)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x70cc0001e0e0 (0xcc0001e0e0) in binary!
-	0x53b8  @objc ScheduleOccurrenceView.(null) <stripped>
-WARNING: couldn't find address 0x8a8c0001e5e0 (0x28c0001e5e0) in binary!
-	0x6a40  @objc ScheduleOccurrenceView.(null) <stripped>
-WARNING: couldn't find address 0x57ba0001e5e0 (0x7ba0001e5e0) in binary!
-	0x7228  @objc ScheduleOccurrenceView.(null) <stripped>
-WARNING: couldn't find address 0x51ac0001e620 (0x1ac0001e620) in binary!
-	0x7210  @objc ScheduleOccurrenceView.(null) <stripped>
+WARNING: couldn't find address 0x70ec0001be60 (0xec0001be60) in binary!
+	0x53c8  @objc ScheduleOccurrenceView.(null) <stripped>
+WARNING: couldn't find address 0x8bfc0001c360 (0x3fc0001c360) in binary!
+	0x6a60  @objc ScheduleOccurrenceView.(null) <stripped>
+WARNING: couldn't find address 0x57ca0001c360 (0x7ca0001c360) in binary!
+	0x7248  @objc ScheduleOccurrenceView.(null) <stripped>
+WARNING: couldn't find address 0x51bc0001c3a0 (0x1bc0001c3a0) in binary!
+	0x7230  @objc ScheduleOccurrenceView.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x11cffffbfc8  @objc ScheduleOccurrenceView.(null) <stripped>
-	0x2cffffc3e0  @objc ScheduleOccurrenceView.ÿR <stripped>
-	0x3240001e8f0  @objc ScheduleOccurrenceView.Lã`¯IãD$@Hâ„HÉ¿HÉ‡H)√Hâ‹Hã_é <stripped>
-WARNING: couldn't find address 0x1e544ffffd060 (0x544ffffd060) in binary!
-	0x13c0001e5b0  @objc ScheduleOccurrenceView.(null) <stripped>
+	0x69cffffbf18  @objc ScheduleOccurrenceView.(null) <stripped>
+	0x5acffffc3a0  @objc ScheduleOccurrenceView.5€? <stripped>
+	0x3340001c670  @objc ScheduleOccurrenceView.^A_]√Hâ÷Ë}G <stripped>
+WARNING: couldn't find address 0x1c2c4ffffd030 (0x2c4ffffd030) in binary!
+	0x14c0001c330  @objc ScheduleOccurrenceView.(null) <stripped>
 
 	// Swift methods
-	0x555a0  func ScheduleOccurrenceView.viewModel.getter // getter 
-	0x55610  func ScheduleOccurrenceView.viewModel.setter // setter 
-	0x55670  func ScheduleOccurrenceView.viewModel.modify // modifyCoroutine 
-	0x556e0  func ScheduleOccurrenceView.bedtimeTimeText.getter // getter 
-	0x55700  func ScheduleOccurrenceView.wakeUpTimeText.getter // getter 
-	0x557c0  func ScheduleOccurrenceView.wakeUpTitleText.getter // getter 
-	0x55820  func <stripped> // getter 
-	0x56280  func <stripped> // method 
-	0x56370  func <stripped> // method 
-	0x566f0  func <stripped> // method 
-	0x56a60  func <stripped> // method 
-	0x57590  func <stripped> // method 
+	0x56770  func ScheduleOccurrenceView.viewModel.getter // getter 
+	0x567e0  func ScheduleOccurrenceView.viewModel.setter // setter 
+	0x56840  func ScheduleOccurrenceView.viewModel.modify // modifyCoroutine 
+	0x568b0  func ScheduleOccurrenceView.bedtimeTimeText.getter // getter 
+	0x568d0  func ScheduleOccurrenceView.wakeUpTimeText.getter // getter 
+	0x56990  func ScheduleOccurrenceView.wakeUpTitleText.getter // getter 
+	0x569f0  func <stripped> // getter 
+	0x57460  func <stripped> // method 
+	0x57550  func <stripped> // method 
+	0x578d0  func <stripped> // method 
+	0x57c40  func <stripped> // method 
+	0x58770  func <stripped> // method 
  }
 
  class SleepHealthUI.ScheduleComponentView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1217,19 +1219,19 @@ WARNING: couldn't find address 0x1e544ffffd060 (0x544ffffd060) in binary!
 	var $__lazy_storage_$_notSetTimeFont : UIFont? // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x70640001e078 (0x640001e078) in binary!
-	0x5350  @objc ScheduleComponentView.(null) <stripped>
-WARNING: couldn't find address 0x51740001e5e8 (0x1740001e5e8) in binary!
-	0x71d8  @objc ScheduleComponentView.(null) <stripped>
+WARNING: couldn't find address 0x70840001bdf8 (0x840001bdf8) in binary!
+	0x5360  @objc ScheduleComponentView.(null) <stripped>
+WARNING: couldn't find address 0x51840001c368 (0x1840001c368) in binary!
+	0x71f8  @objc ScheduleComponentView.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x544ffffd060  @objc ScheduleComponentView.(null) <stripped>
-	0x7f4ffffd1d8  @objc ScheduleComponentView.ãï¯˝ˇˇHã≠Ø <stripped>
+	0x2c4ffffd030  @objc ScheduleComponentView.(null) <stripped>
+	0x574ffffd1a8  @objc ScheduleComponentView.ˇH9tHãΩ˝ˇˇËˆ` <stripped>
 
 	// Swift methods
-	0x57cf0  func <stripped> // getter 
-	0x57d20  func <stripped> // getter 
-	0x582c0  func <stripped> // method 
-	0x58460  func <stripped> // method 
+	0x58ed0  func <stripped> // getter 
+	0x58f00  func <stripped> // getter 
+	0x594a0  func <stripped> // method 
+	0x596b0  func <stripped> // method 
  }
 
  class SleepHealthUI.ScheduleOccurrenceTitleView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1240,16 +1242,17 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	var topConstraint : NSLayoutConstraint? // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x53240001e8f0 (0x3240001e8f0) in binary!
-	0x573e  @objc ScheduleOccurrenceTitleView.(null) <stripped>
-	0x71a0  variable initialization expression of ScheduleOccurrenceDeleteTableViewCell.model
+WARNING: couldn't find address 0x53340001c670 (0x3340001c670) in binary!
+	0x574e  @objc ScheduleOccurrenceTitleView.(null) <stripped>
+WARNING: couldn't find address 0x514c0001c330 (0x14c0001c330) in binary!
+	0x71c0  @objc ScheduleOccurrenceTitleView.(null) <stripped>
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	0x4533a4d4152  @objc ScheduleOccurrenceTitleView.(null) <stripped>
 WARNING: couldn't find address 0x5568746c61654870 (0x46c61654870) in binary!
 	0x56c533a5443  @objc ScheduleOccurrenceTitleView.(null) <stripped>
 
 	// Swift methods
-	0x590e0  class func ScheduleOccurrenceTitleView.__allocating_init(titleText:subtitleText:screenSize:) // init 
+	0x5a340  class func ScheduleOccurrenceTitleView.__allocating_init(titleText:subtitleText:screenSize:) // init 
  }
 
  enum __C.HKSPDayPeriod { }
@@ -1279,7 +1282,7 @@ WARNING: couldn't find address 0x5568746c61654870 (0x46c61654870) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : ’Ø
+	let rawValue : ’´
  }
 
  struct __C.TraitKey {
@@ -1324,16 +1327,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : ’Ø
+	var width : ’´
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : ’Ø
+	var height : ’´
  }
 
  struct __C.CGPoint {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : ’Ø
+	var x : ’´
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : ’Ø
+	var y : ’´
  }

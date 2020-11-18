@@ -71,6 +71,7 @@
 - (BOOL)smartSiriVolumeContextAwareLoggingEnabled;
 - (BOOL)smartSiriVolumeSoftVolumeEnabled;
 - (unsigned long long)speakerIdScoreReportingType;
+- (BOOL)speakerRecognitionAudioLoggingEnabled;
 - (id)ssvLogDirectory;
 - (BOOL)startOfSpeechAudioLoggingEnabled;
 - (id)trialBaseAssetDirectory;

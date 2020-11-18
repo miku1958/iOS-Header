@@ -19,8 +19,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (BOOL)refreshSandboxExtensionForPath:(id)arg1 assetID:(id)arg2 error:(id *)arg3;
-+ (BOOL)refreshSandboxExtensionForPath:(id)arg1 libraryID:(id)arg2 assetUUID:(id)arg3 error:(id *)arg4;
++ (BOOL)refreshSandboxExtensionForURL:(id)arg1 assetID:(id)arg2 error:(id *)arg3;
++ (BOOL)refreshSandboxExtensionForURL:(id)arg1 libraryID:(id)arg2 assetUUID:(id)arg3 error:(id *)arg4;
 - (id)descriptionForAssetID:(id)arg1;
 - (id)fileURLForAssetID:(id)arg1;
 - (id)initWithKeyStruct:(const void *)arg1;

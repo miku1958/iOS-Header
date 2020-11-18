@@ -13,15 +13,15 @@
     NSString *_title;
     BOOL _selected;
     BOOL _isEnabled;
-    int _customGroupType;
     EKCalendar *_calendar;
     UIColor *_color;
     EKGroupInfo *_group;
+    unsigned long long _customGroupType;
 }
 
 @property (strong, nonatomic) EKCalendar *calendar; // @synthesize calendar=_calendar;
 @property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
-@property (nonatomic) int customGroupType; // @synthesize customGroupType=_customGroupType;
+@property (nonatomic) unsigned long long customGroupType; // @synthesize customGroupType=_customGroupType;
 @property (readonly, nonatomic) int displayOrder;
 @property (readonly, nonatomic) BOOL excludeFromSelectAll;
 @property (weak, nonatomic) EKGroupInfo *group; // @synthesize group=_group;

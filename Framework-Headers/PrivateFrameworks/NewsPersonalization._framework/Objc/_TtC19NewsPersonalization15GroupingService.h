@@ -10,8 +10,11 @@
 
 @interface _TtC19NewsPersonalization15GroupingService : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *cloudContext;
+    MISSING_TYPE *personalizationTreatment;
     MISSING_TYPE *feedPersonalizer;
     MISSING_TYPE *xavierEnabled;
+    MISSING_TYPE *todayFeedEnabled;
 }
 
 @end

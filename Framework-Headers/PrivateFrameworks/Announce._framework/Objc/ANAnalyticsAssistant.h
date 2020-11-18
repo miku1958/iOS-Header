@@ -12,9 +12,13 @@
 {
 }
 
+- (int)_linearBucketAtInterval:(double)arg1 value:(double)arg2 max:(double)arg3;
 - (id)_playerForAnnouncement:(id)arg1;
 - (struct ANAnalyticsAssistantAudioData)audioDataForAnnouncement:(id)arg1;
 - (long long)boundGroupCount:(long long)arg1;
+- (long long)bucketFromDuration:(double)arg1;
+- (long long)bucketFromReceiveTime:(double)arg1;
+- (long long)bucketFromSize:(long long)arg1;
 - (struct ANAnalyticsAssistantSenderData)senderDataForAnnouncement:(id)arg1;
 
 @end

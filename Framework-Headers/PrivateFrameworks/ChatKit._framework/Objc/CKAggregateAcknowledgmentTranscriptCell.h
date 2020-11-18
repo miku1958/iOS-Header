@@ -16,7 +16,7 @@
 @property (strong, nonatomic) CKAcknowledgmentBalloonView *balloonView;
 @property (nonatomic) BOOL parentMessageIsFromMe; // @synthesize parentMessageIsFromMe=_parentMessageIsFromMe;
 
-- (void)configureForChatItem:(id)arg1;
+- (void)configureForChatItem:(id)arg1 context:(id)arg2;
 - (void)layoutSubviewsForAlignmentContents;
 - (void)performInsertion:(CDUnknownBlockType)arg1;
 - (void)prepareForReuse;

@@ -84,7 +84,7 @@
 - (id)_delegate_previewForHighlightingForConfiguration:(id)arg1;
 - (void)_delegate_tappedPreviewForConfiguration:(id)arg1 withAnimator:(id)arg2;
 - (void)_dragMorphDidCompleteForConfiguration:(id)arg1;
-- (id)_fulfilledConfigurationForConfiguration:(id)arg1 activationMode:(unsigned long long)arg2;
+- (id)_fulfilledConfigurationForConfiguration:(id)arg1 activationMode:(unsigned long long)arg2 atLocation:(struct CGPoint)arg3 inCoordinateSpace:(id)arg4;
 - (id)_interactionDrivers;
 - (void)_interactionShouldBeginAtLocation:(struct CGPoint)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_liveDragPreviewForConfiguration:(id)arg1 dragItem:(id)arg2;
@@ -102,7 +102,7 @@
 - (void)_previewPlatterPresentationControllerWantsToBeDismissed:(id)arg1 withReason:(unsigned long long)arg2 alongsideActions:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_proxySender;
 - (BOOL)_shouldKeepInputViewVisibleForLayout:(unsigned long long)arg1;
-- (id)_suggestedMenuForConfiguration:(id)arg1;
+- (id)_suggestedMenuForConfiguration:(id)arg1 atLocation:(struct CGPoint)arg2 inCoordinateSpace:(id)arg3;
 - (void)_updateInteractionDrivers;
 - (void)_updateVisibleMenuWithBlock:(CDUnknownBlockType)arg1;
 - (void)_willBeginWithConfiguration:(id)arg1;

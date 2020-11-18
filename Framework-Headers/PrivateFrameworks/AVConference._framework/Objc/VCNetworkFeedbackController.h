@@ -23,10 +23,17 @@ __attribute__((visibility("hidden")))
     unsigned int _clientTargetBitrate;
     unsigned int _clientTargetBitrateCap;
     double _wrmReportingInterval;
+    unsigned int _downlinkTargetBitrate;
+    unsigned int _downlinkTargetCellBitrateCap;
+    int _wrmPendingBitrateCapDelta;
+    BOOL _isWRMNotificationPending;
+    CDStruct_cd8cfafa _savedWRMNotification;
 }
 
 @property unsigned int clientTargetBitrate; // @synthesize clientTargetBitrate=_clientTargetBitrate;
 @property unsigned int clientTargetBitrateCap; // @synthesize clientTargetBitrateCap=_clientTargetBitrateCap;
+@property (nonatomic) unsigned int downlinkTargetBitrate; // @synthesize downlinkTargetBitrate=_downlinkTargetBitrate;
+@property (nonatomic) unsigned int downlinkTargetCellBitrateCap; // @synthesize downlinkTargetCellBitrateCap=_downlinkTargetCellBitrateCap;
 @property (readonly) unsigned int recommendedTargetBitrateCap;
 
 - (void)cleanupWCMClient;

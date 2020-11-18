@@ -38,7 +38,7 @@
 - (id)_constraintsForNowPlayingLayout:(id)arg1;
 - (id)_verticalSpacerLayoutGuidesForNowPlayingLayout:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)recalculateLayout:(BOOL)arg1 allowsAlbumArt:(BOOL)arg2 hasDataSource:(BOOL)arg3;
+- (void)recalculateLayout:(BOOL)arg1 allowsAlbumArt:(BOOL)arg2 hasDataSource:(BOOL)arg3 viewArea:(struct CGRect)arg4 safeArea:(struct CGRect)arg5;
 
 @end
 

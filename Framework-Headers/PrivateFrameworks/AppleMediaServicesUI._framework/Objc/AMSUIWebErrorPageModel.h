@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @interface AMSUIWebErrorPageModel : NSObject <AMSUIWebPageProvider>
 {
     BOOL _errorMessageInternalOnly;
+    NSString *_backgroundColor;
     NSString *_errorMessage;
     AMSUIWebNavigationBarModel *_navigationBar;
     id<AMSUIWebActionRunnable> _action;
@@ -22,11 +23,13 @@ __attribute__((visibility("hidden")))
     NSString *_actionButtonTitle;
     NSString *_errorTitle;
     AMSUIWebClientContext *_context;
+    struct CGSize _windowSize;
 }
 
 @property (strong, nonatomic) id<AMSUIWebActionRunnable> action; // @synthesize action=_action;
 @property (copy, nonatomic) CDUnknownBlockType actionBlock; // @synthesize actionBlock=_actionBlock;
 @property (strong, nonatomic) NSString *actionButtonTitle; // @synthesize actionButtonTitle=_actionButtonTitle;
+@property (readonly, nonatomic) NSString *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (strong, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -37,7 +40,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) AMSUIWebNavigationBarModel *navigationBar; // @synthesize navigationBar=_navigationBar;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) struct CGSize windowSize; // @synthesize windowSize=_windowSize;
 
++ (id)_messageFromError:(id)arg1;
 - (void).cxx_destruct;
 - (id)createViewController;
 - (id)initWithError:(id)arg1 context:(id)arg2 actionBlock:(CDUnknownBlockType)arg3;

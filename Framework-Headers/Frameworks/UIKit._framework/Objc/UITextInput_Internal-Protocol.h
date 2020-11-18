@@ -97,6 +97,7 @@
 - (struct CGRect)_lastRectForRange:(UITextRange *)arg1;
 - (id<UIPointerInteractionDelegate>)_pointerInteractionDelegate;
 - (void)_setInternalGestureRecognizers;
+- (BOOL)_shouldShowEditMenu;
 - (BOOL)_shouldSuppressSelectionHandles;
 @end
 

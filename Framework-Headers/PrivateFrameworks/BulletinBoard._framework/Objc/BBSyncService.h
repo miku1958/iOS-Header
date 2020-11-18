@@ -38,7 +38,7 @@
 - (id)_syncAccount;
 - (BOOL)_syncHasDefaultPairedDevice;
 - (id)_syncLocalDevices;
-- (id)dismissalSectionIdentifierForIncomingMessage:(id)arg1;
+- (id)dismissalSectionIdentifiersForIncomingMessage:(id)arg1;
 - (void)enqueueSyncedRemovalForBulletin:(id)arg1 feeds:(unsigned long long)arg2;
 - (id)initWithQueue:(id)arg1;
 - (void)sendPendingSyncedRemovals;

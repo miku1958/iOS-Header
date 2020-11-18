@@ -17,6 +17,7 @@
     unsigned long long _type;
     NSArray *_weeks;
     NSArray *_months;
+    NSArray *_years;
     PKSpendingSummary *_summary;
     PKSpendingSummaryFetcher *_summaryFetcher;
     NSArray *_mostRecentTransactions;
@@ -36,6 +37,7 @@
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property (strong, nonatomic) NSArray *upcomingScheduledPayments; // @synthesize upcomingScheduledPayments=_upcomingScheduledPayments;
 @property (strong, nonatomic) NSArray *weeks; // @synthesize weeks=_weeks;
+@property (strong, nonatomic) NSArray *years; // @synthesize years=_years;
 
 + (id)identifier;
 - (void).cxx_destruct;

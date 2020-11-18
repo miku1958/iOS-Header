@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <ContactsUICore/CNAvatarCacheChangeListenerDelegate-Protocol.h>
 #import <ContactsUICore/CNUILikenessRendering-Protocol.h>
 
-@class CNCache, CNQueue, NSString, _CNUILikenessRenderer;
+@class CNAvatarCacheChangeListener, CNCache, CNQueue, NSString, _CNUILikenessRenderer;
 @protocol CNSchedulerProvider, OS_dispatch_source;
 
-@interface _CNUICachingLikenessRenderer : NSObject <CNUILikenessRendering>
+@interface _CNUICachingLikenessRenderer : NSObject <CNAvatarCacheChangeListenerDelegate, CNUILikenessRendering>
 {
     struct os_unfair_lock_s _lock;
     BOOL _shouldRequireMainThread;
@@ -21,8 +22,10 @@
     CNQueue *_evictionQueue;
     NSObject<OS_dispatch_source> *_memoryMonitoringSource;
     id<CNSchedulerProvider> _mainThreadSchedulerProvider;
+    CNAvatarCacheChangeListener *_changeHistoryListener;
 }
 
+@property (readonly, nonatomic) CNAvatarCacheChangeListener *changeHistoryListener; // @synthesize changeHistoryListener=_changeHistoryListener;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) CNQueue *evictionQueue; // @synthesize evictionQueue=_evictionQueue;
@@ -43,7 +46,9 @@
 - (void)emptyCache:(id)arg1;
 - (id)initWithLikenessRenderer:(id)arg1 schedulerProvider:(id)arg2;
 - (id)initWithLikenessRenderer:(id)arg1 schedulerProvider:(id)arg2 capacity:(unsigned long long)arg3 shouldRequireMainThread:(BOOL)arg4;
+- (id)initWithLikenessRenderer:(id)arg1 schedulerProvider:(id)arg2 capacity:(unsigned long long)arg3 shouldRequireMainThread:(BOOL)arg4 contactStore:(id)arg5;
 - (id)initialRenderedLikenessesForContacts:(id)arg1 scope:(id)arg2 workScheduler:(id)arg3;
+- (void)invalidateCacheEntriesContainingIdentifiers:(id)arg1;
 - (id)loadingPlaceholderForContactCount:(unsigned long long)arg1 scope:(id)arg2;
 - (void)refreshCacheKey:(id)arg1;
 - (id)renderedBasicMonogramForString:(id)arg1 color:(id)arg2 scope:(id)arg3 prohibitedSources:(long long)arg4;
@@ -51,6 +56,7 @@
 - (id)renderedLikenessesForContacts:(id)arg1 scope:(id)arg2 workScheduler:(id)arg3;
 - (id)resizeCacheEntry:(id)arg1 withScope:(id)arg2 workScheduler:(id)arg3;
 - (id)startCacheEntryWithObservable:(id)arg1 contacts:(id)arg2 scope:(id)arg3;
+- (void)updateContactsWithIdentifiers:(id)arg1;
 
 @end
 

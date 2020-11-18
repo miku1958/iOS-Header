@@ -159,6 +159,8 @@
 - (BOOL)extraListContainsNodeIdentifier:(id)arg1;
 - (id)firstFolderWithDefaultDisplayName:(id)arg1;
 - (id)firstFolderWithDisplayName:(id)arg1;
+- (id)firstFolderWithUniqueIdentifier:(id)arg1;
+- (id)firstFolderWithUniqueIdentifier:(id)arg1 displayName:(id)arg2 defaultDisplayName:(id)arg3;
 - (void)folder:(id)arg1 didAddIcons:(id)arg2 removedIcons:(id)arg3;
 - (void)folder:(id)arg1 didReplaceIcon:(id)arg2 withIcon:(id)arg3;
 - (void)folder:(id)arg1 willAddIcon:(id)arg2;

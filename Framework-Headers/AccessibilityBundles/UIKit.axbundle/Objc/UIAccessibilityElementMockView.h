@@ -49,10 +49,12 @@
 - (void)_accessibilitySetValue:(id)arg1;
 - (BOOL)_accessibilitySupportsActivateAction;
 - (id)_accessibilityTextViewTextOperationResponder;
+- (BOOL)_accessibilityUpdatesSwitchMenu;
 - (id)_accessibilityUserTestingChildren;
 - (id)_accessibilityUserTestingElementType;
 - (id)_accessibilityUserTestingParent;
 - (id)_accessibilityUserTestingProxyView;
+- (struct _NSRange)_accessibilityVisibleTextRange;
 - (BOOL)accessibilityActivate;
 - (struct CGPoint)accessibilityActivationPoint;
 - (long long)accessibilityCompareGeometry:(id)arg1;

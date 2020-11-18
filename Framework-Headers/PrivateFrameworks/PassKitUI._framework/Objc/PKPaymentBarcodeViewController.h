@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSArray, NSData, PKPaymentPass, PKRightAngleRotatingView, UIButton, UIImageView, UILabel, UILayoutGuide;
+@class NSData, PKPaymentPass, PKRightAngleRotatingView, UIButton, UIImageView, UILabel, UILayoutGuide;
 
 @interface PKPaymentBarcodeViewController : UIViewController
 {
@@ -14,21 +14,23 @@
     UILabel *_disclaimerText;
     UIButton *_closeButton;
     UILayoutGuide *_barcodeGuide;
-    NSArray *_constraints;
     UIImageView *_compactBankLogoView;
     PKPaymentPass *_pass;
+    CDStruct_33fad236 _viewSizeInfo;
     NSData *_barcodeData;
 }
 
 @property (strong, nonatomic) NSData *barcodeData; // @synthesize barcodeData=_barcodeData;
 
 - (void).cxx_destruct;
+- (CDStruct_33fad236)_barcodePadding;
+- (struct CGSize)_barcodeSize;
 - (BOOL)_canShowWhileLocked;
 - (void)_closeButtonPressed:(id)arg1;
 - (id)initWithPass:(id)arg1;
 - (void)invalidate;
-- (void)updateViewConstraints;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
 
 @end
 

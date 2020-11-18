@@ -6,13 +6,13 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeKitBackingStore/APSConnectionDelegate-Protocol.h>
+#import <HomeKitBackingStore/HMBCloudPushObserver-Protocol.h>
 #import <HomeKitBackingStore/HMFLogging-Protocol.h>
 
-@class APSConnection, CKContainer, CKContainerID, CKDatabase, HMBCloudDatabaseConfiguration, HMBCloudDatabaseStateModel, HMBLocalDatabase, HMBLocalZone, HMFUnfairLock, NAFuture, NSMutableDictionary, NSSet, NSString;
+@class CKContainer, CKContainerID, CKDatabase, HMBCloudDatabaseConfiguration, HMBCloudDatabaseStateModel, HMBLocalDatabase, HMBLocalZone, HMFUnfairLock, NAFuture, NSMutableDictionary, NSSet, NSString;
 @protocol HMBCloudDatabaseDelegate;
 
-@interface HMBCloudDatabase : HMFObject <APSConnectionDelegate, HMFLogging>
+@interface HMBCloudDatabase : HMFObject <HMBCloudPushObserver, HMFLogging>
 {
     id<HMBCloudDatabaseDelegate> _delegate;
     HMBCloudDatabaseConfiguration *_configuration;
@@ -27,12 +27,10 @@
     CKDatabase *_sharedDatabase;
     CKDatabase *_privateDatabase;
     CKDatabase *_publicDatabase;
-    APSConnection *_apsConnection;
     NAFuture *_initialCloudSyncFuture;
     NAFuture *_manateeAvailabilityFuture;
 }
 
-@property (strong, nonatomic) APSConnection *apsConnection; // @synthesize apsConnection=_apsConnection;
 @property (readonly, copy, nonatomic) HMBCloudDatabaseConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, nonatomic) CKContainer *container; // @synthesize container=_container;
 @property (readonly, nonatomic) CKContainerID *containerID;
@@ -68,9 +66,6 @@
 - (void)addContainerOperation:(id)arg1;
 - (void)addDatabaseOperation:(id)arg1 forScope:(long long)arg2;
 - (id)attributeDescriptions;
-- (void)connection:(id)arg1 didReceiveIncomingMessage:(id)arg2;
-- (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;
-- (void)connection:(id)arg1 didReceiveToken:(id)arg2 forTopic:(id)arg3 identifier:(id)arg4;
 - (id)createPrivateZoneWithID:(id)arg1;
 - (id)databaseStateForDatabaseScope:(long long)arg1;
 - (void)deallocForZoneWithID:(id)arg1;
@@ -85,6 +80,8 @@
 - (void)handleCreatedZoneIDs:(id)arg1;
 - (void)handleRemovedZoneIDs:(id)arg1 userInitiated:(BOOL)arg2;
 - (void)handleUpdatedZonesIDs:(id)arg1;
+- (void)handler:(id)arg1 didReceiveCKNotification:(id)arg2;
+- (void)handler:(id)arg1 didReceiveMessageWithUserInfo:(id)arg2;
 - (id)initWithLocalDatabase:(id)arg1 configuration:(id)arg2;
 - (id)initWithLocalDatabase:(id)arg1 stateZone:(id)arg2 container:(id)arg3 configuration:(id)arg4 databaseStateModelsByScope:(id)arg5 zoneStateModels:(id)arg6;
 - (id)logIdentifier;

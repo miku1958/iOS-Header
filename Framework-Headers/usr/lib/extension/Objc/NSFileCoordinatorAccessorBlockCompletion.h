@@ -6,12 +6,21 @@
 
 #import <objc/NSObject.h>
 
+#import <Foundation/NSFileCoordinationRetainedAccess-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface NSFileCoordinatorAccessorBlockCompletion : NSObject
+@interface NSFileCoordinatorAccessorBlockCompletion : NSObject <NSFileCoordinationRetainedAccess>
 {
     CDUnknownBlockType block;
     _Atomic int count;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)completionWithBlock:(CDUnknownBlockType)arg1;
 - (void)dealloc;

@@ -27,6 +27,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_prepareForReuse;
 - (void)handleLongPress:(id)arg1;
 - (void)handleTap:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

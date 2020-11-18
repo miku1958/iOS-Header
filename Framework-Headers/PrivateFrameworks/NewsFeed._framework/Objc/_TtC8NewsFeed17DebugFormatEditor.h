@@ -16,6 +16,7 @@
     MISSING_TYPE *featureAvailablity;
     MISSING_TYPE *_statusMessage;
     MISSING_TYPE *_canvasDevice;
+    MISSING_TYPE *_layoutOrder;
     MISSING_TYPE *_showMissingOptionBindings;
     MISSING_TYPE *_wildcardSlotFallback;
     MISSING_TYPE *_layoutIdentifier;

@@ -53,7 +53,7 @@
 - (id)openCommunicationChannelWithOptions:(id)arg1 error:(id *)arg2;
 - (id)outgoingCommunicationChannel;
 - (void)outputContextImpl:(id)arg1 didChangeOutputDeviceWithInitiator:(id)arg2;
-- (void)outputContextImpl:(id)arg1 didChangeOutputDevicesWithInitiator:(id)arg2;
+- (void)outputContextImpl:(id)arg1 didChangeOutputDevicesWithInitiator:(id)arg2 reason:(id)arg3 deviceID:(id)arg4 previousDeviceIDs:(id)arg5;
 - (void)outputContextImpl:(id)arg1 didCloseCommunicationChannel:(id)arg2;
 - (void)outputContextImpl:(id)arg1 didExpireWithReplacement:(id)arg2;
 - (void)outputContextImpl:(id)arg1 didInitiateDestinationChange:(id)arg2;

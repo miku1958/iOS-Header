@@ -30,7 +30,7 @@
 - (void).cxx_destruct;
 - (void)_bundleSubscriptionMayHaveChanged;
 - (void)addObserver:(id)arg1;
-- (void)bundleSubscriptionDidChange:(id)arg1 previousBundleSubscription:(id)arg2 changeSet:(id)arg3;
+- (void)bundleSubscriptionDidChange:(id)arg1 previousBundleSubscription:(id)arg2;
 - (void)bundleSubscriptionDidExpire:(id)arg1;
 - (void)bundleSubscriptionDidSubscribe:(id)arg1;
 - (void)fetchValueWithCachePolicy:(unsigned long long)arg1 qualityOfService:(long long)arg2 completion:(CDUnknownBlockType)arg3;

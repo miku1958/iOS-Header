@@ -12,6 +12,7 @@
 
 @interface AXTapticChimesScheduler : NSObject <AVAudioPlayerDelegate>
 {
+    NSString *_pcServiceIdentifier;
     PCSimpleTimer *_chimeTimer;
     AVAudioPlayer *_audioPlayer;
     NSString *_previousAudioSessionCategory;
@@ -32,6 +33,7 @@
 + (void)initializeIfNeeded;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_chimeDidFinishPlaying;
 - (void)_chimeWakeTimerFired:(id)arg1;
 - (void)_clearChimeTimer;
 - (unsigned int)_createPowerAssertionWithName:(id)arg1 timeout:(double)arg2;

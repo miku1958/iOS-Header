@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *dataManager;
+    MISSING_TYPE *offlineManager;
     MISSING_TYPE *feedViewContext;
 }
 

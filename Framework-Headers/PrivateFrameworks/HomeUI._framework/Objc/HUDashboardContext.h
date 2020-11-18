@@ -45,15 +45,16 @@
 + (id)roomDashboardForRoom:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_hasOnlySensorServices:(id)arg1;
-- (BOOL)_shouldHideAccessory:(id)arg1;
+- (BOOL)_shouldHideAccessory:(id)arg1 limitedByServiceTypes:(id)arg2;
 - (BOOL)_shouldHideMediaProfileContainer:(id)arg1;
-- (BOOL)_shouldHideService:(id)arg1;
-- (BOOL)_shouldHideServiceGroup:(id)arg1;
+- (BOOL)_shouldHideService:(id)arg1 limitedByServiceTypes:(id)arg2;
+- (BOOL)_shouldHideServiceGroup:(id)arg1 limitedByServiceTypes:(id)arg2;
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithType:(unsigned long long)arg1 home:(id)arg2 room:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)shouldHideHomeKitObject:(id)arg1;
+- (BOOL)shouldHideHomeKitObject:(id)arg1 limitedByServiceTypes:(id)arg2;
 
 @end
 

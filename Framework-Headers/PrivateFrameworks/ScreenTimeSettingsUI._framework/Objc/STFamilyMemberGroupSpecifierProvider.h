@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)createSpecifierForUser:(id)arg1 devices:(id)arg2;
+- (id)createSpecifierForUser:(id)arg1 shouldWarn:(BOOL)arg2;
 - (void)dealloc;
 - (id)familySpecifiers;
 - (void)imageDidUpdate:(id)arg1;

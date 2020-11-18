@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *identifier;
     MISSING_TYPE *adType;
+    MISSING_TYPE *desiredPosition;
     MISSING_TYPE *privacyMarkerPosition;
     MISSING_TYPE *adSize;
     MISSING_TYPE *tapAction;
@@ -19,6 +20,7 @@
 
 @property (nonatomic, readonly) struct CGSize adSize; // @synthesize adSize;
 @property (nonatomic, readonly) long long adType; // @synthesize adType;
+@property (nonatomic, readonly) long long desiredPosition; // @synthesize desiredPosition;
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) long long privacyMarkerPosition; // @synthesize privacyMarkerPosition;
 @property (nonatomic, readonly) APPCTapAction *tapAction; // @synthesize tapAction;

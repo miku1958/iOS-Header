@@ -46,7 +46,7 @@
 - (id)_collectionViewLayoutWithProviders:(id)arg1;
 - (void)_configureCollectionViewWithSectionProviders:(id)arg1;
 - (void)_configureDataSourceForCollectionView:(id)arg1 sectionProviders:(id)arg2;
-- (void)_configureQueryControllerWithResultsSectionProvider:(id)arg1 suggestionsSectionProvider:(id)arg2 queryStatusSectionProvider:(id)arg3;
+- (void)_configureQueryControllerWithResultsSectionProvider:(id)arg1 suggestionsSectionProvider:(id)arg2 queryStatusSectionProvider:(id)arg3 tapToRadarSectionProvider:(id)arg4;
 - (long long)_contentInsetsReferenceForTraitCollection:(id)arg1;
 - (void)_didSelectAlbumSearchResult:(id)arg1;
 - (void)_didSelectAssetsSeeAllButtonForSection:(id)arg1 allAssetResultUUIDs:(id)arg2 title:(id)arg3;
@@ -54,11 +54,17 @@
 - (void)_didSelectDetailCollectionSearchResult:(id)arg1;
 - (void)_didSelectItemIdentifier:(id)arg1 inResultsSectionProvider:(id)arg2;
 - (void)_didSelectItemIdentifier:(id)arg1 inSuggestionsSectionProvider:(id)arg2;
-- (void)_didSelectTapToRadar;
+- (void)_didSelectTapToRadar:(id)arg1;
 - (id)_emptyPhotosViewControllerForSearchResult:(id)arg1;
+- (id)_keywordForRadarRoute:(id)arg1;
 - (id)_ppt_resultsSectionProvider;
+- (id)_radarInfoForRadarRoute:(id)arg1 searchQuery:(id)arg2;
+- (id)_radarRoutes;
+- (id)_radarRoutesDescription;
 - (id)_searchResultsSectionProvider;
 - (unsigned long long)_searchSuggestionLimit;
+- (id)_templateForRadarRoute:(id)arg1;
+- (id)_titleForRadarRoute:(id)arg1 searchQuery:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)didSelectAssetAggregationSearchResult:(id)arg1;
 - (void)didSelectAssetSearchResult:(id)arg1;

@@ -30,6 +30,7 @@
 - (BOOL)_removeWebClipWithIdentifier:(id)arg1 error:(id *)arg2;
 - (BOOL)_removeWebClipsWithApplicationBundleIdentifier:(id)arg1 errors:(id *)arg2;
 - (BOOL)_saveWebClip:(id)arg1 error:(id *)arg2;
+- (id)_webClipsBackedbyAppClipIdentifier:(id)arg1;
 - (void)createOrUpdateExistingWebClipWithMetadata:(id)arg1 comletionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchAppClipsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchBookmarkWebClipsWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -37,6 +38,7 @@
 - (void)getAppClipWithURLHash:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getWebClipWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getWebClipsBackedbyAppClipIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)purgeDuplicateWebClipsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)redirectPoweredByWebClipsWithApplicationBundleIdentifier:(id)arg1 toParentApplicationBundleIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)reloadSpringBoardIconForWebClipWithIdentifier:(id)arg1;
 - (void)removeAppClipIconForWebClipWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -46,6 +48,7 @@
 - (void)saveWebClip:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)synchronouslyGetAppClipWithIdentifier:(id)arg1;
 - (void)updateAppClipIcon:(id)arg1 forWebClipWithIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)updateWebClipTitle:(id)arg1 forAppClipBundleIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

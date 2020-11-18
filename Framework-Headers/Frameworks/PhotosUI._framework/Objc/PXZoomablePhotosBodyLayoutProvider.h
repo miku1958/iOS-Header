@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) PXZoomablePhotosViewModel *zoomablePhotosViewModel; // @synthesize zoomablePhotosViewModel=_zoomablePhotosViewModel;
 
 - (void).cxx_destruct;
+- (void)_configureZoomableLayoutDecorations:(id)arg1 fromAssetSectionLayout:(id)arg2;
 - (void)_updatePhotosViewModelWithChanges:(unsigned long long)arg1;
 - (void)_updateZoomableViewModelWithChanges:(unsigned long long)arg1;
 - (void)configureSectionBodyLayout:(id)arg1 inAssetSectionLayout:(id)arg2 forSectionedLayout:(id)arg3;

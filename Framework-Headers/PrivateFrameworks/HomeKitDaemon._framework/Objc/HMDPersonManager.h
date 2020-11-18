@@ -10,15 +10,19 @@
 #import <HomeKitDaemon/HMDDatabaseZoneManagerDataSource-Protocol.h>
 #import <HomeKitDaemon/HMDDatabaseZoneManagerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDPersonDataSource-Protocol.h>
+#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMBCloudZone, HMBLocalZone, HMDDatabaseZoneManager, NSObject, NSSet, NSString, NSUUID;
+@class HMBCloudZone, HMBLocalZone, HMDDatabaseZoneManager, HMFTimer, NSObject, NSSet, NSString, NSUUID;
 @protocol HMDPersonManagerSettings, OS_dispatch_queue;
 
-@interface HMDPersonManager : HMFObject <HMBLocalZoneModelObserver, HMDDatabaseZoneManagerDataSource, HMDDatabaseZoneManagerDelegate, HMDPersonDataSource>
+@interface HMDPersonManager : HMFObject <HMBLocalZoneModelObserver, HMDDatabaseZoneManagerDataSource, HMDDatabaseZoneManagerDelegate, HMFTimerDelegate, HMDPersonDataSource>
 {
     BOOL _syncsPersonData;
     NSUUID *_UUID;
     HMBCloudZone *_cloudZone;
+    HMFTimer *_unassociatedFaceCropsCleanupTimer;
+    unsigned long long _fetchBatchLimit;
+    CDUnknownBlockType _unassociatedFaceCropsCleanupTimerFactory;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDDatabaseZoneManager *_zoneManager;
     NSSet *_dataReceivers;
@@ -32,16 +36,20 @@
 @property (readonly) NSSet *dataReceivers; // @synthesize dataReceivers=_dataReceivers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property unsigned long long fetchBatchLimit; // @synthesize fetchBatchLimit=_fetchBatchLimit;
 @property (readonly) unsigned long long hash;
 @property (strong) HMBLocalZone *localZone; // @synthesize localZone=_localZone;
 @property (readonly, copy) id<HMDPersonManagerSettings> settings;
 @property (readonly) BOOL sharesFaceClassifications;
 @property (readonly) Class superclass;
 @property (readonly) BOOL syncsPersonData; // @synthesize syncsPersonData=_syncsPersonData;
+@property (strong) HMFTimer *unassociatedFaceCropsCleanupTimer; // @synthesize unassociatedFaceCropsCleanupTimer=_unassociatedFaceCropsCleanupTimer;
+@property (copy) CDUnknownBlockType unassociatedFaceCropsCleanupTimerFactory; // @synthesize unassociatedFaceCropsCleanupTimerFactory=_unassociatedFaceCropsCleanupTimerFactory;
 @property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property (readonly) HMDDatabaseZoneManager *zoneManager; // @synthesize zoneManager=_zoneManager;
 
 - (void).cxx_destruct;
+- (void)_cleanUpExpiredUnassociatedFaceCrops;
 - (void)_createOrRemoveZonesForSettings:(id)arg1;
 - (void)_createZones;
 - (id)_faceCropsModelsWithUUIDs:(id)arg1;
@@ -51,6 +59,7 @@
 - (void)_notifyDataReceiversOfCurrentIsDataSyncInProgress;
 - (id)_removeFaceprintsForFaceCropsWithUUIDs:(id)arg1;
 - (id)_removeZones;
+- (id)_unassociatedFaceCropsModelsWithUUIDs:(id)arg1;
 - (id)addOrUpdateFaceCrops:(id)arg1;
 - (id)addOrUpdateFaceprints:(id)arg1;
 - (id)addOrUpdatePersons:(id)arg1;
@@ -83,6 +92,7 @@
 - (id)localZone:(id)arg1 didProcessModelUpdate:(id)arg2;
 - (BOOL)manager:(id)arg1 shouldShareWithUser:(id)arg2;
 - (id)performCloudPull;
+- (id)personFaceCropWithUnassociatedFaceCropUUID:(id)arg1;
 - (id)personWithUUID:(id)arg1;
 - (id)personsWithUUIDs:(id)arg1;
 - (void)remove;
@@ -90,6 +100,7 @@
 - (id)removeFaceprintsWithUUIDs:(id)arg1;
 - (id)removePersonsWithUUIDs:(id)arg1;
 - (BOOL)syncsDataToAllUsers;
+- (void)timerDidFire:(id)arg1;
 - (id)updateSettingsUsingMessagePayload:(id)arg1;
 - (void)zoneManagerDidStart:(id)arg1;
 - (void)zoneManagerDidStop:(id)arg1;

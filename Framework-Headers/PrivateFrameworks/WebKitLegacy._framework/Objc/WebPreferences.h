@@ -402,6 +402,7 @@
 - (void)setTextDirectionSubmenuInclusionBehavior:(int)arg1;
 - (void)setUseLegacyTextAlignPositionedElementBehavior:(BOOL)arg1;
 - (void)setUsePreHTML5ParserQuirks:(BOOL)arg1;
+- (void)setUserGesturePromisePropagationEnabled:(BOOL)arg1;
 - (void)setUsesEncodingDetector:(BOOL)arg1;
 - (void)setVideoPlaybackRequiresUserGesture:(BOOL)arg1;
 - (void)setVideoPluginProxyEnabled:(BOOL)arg1;
@@ -439,6 +440,7 @@
 - (int)textDirectionSubmenuInclusionBehavior;
 - (BOOL)useLegacyTextAlignPositionedElementBehavior;
 - (BOOL)usePreHTML5ParserQuirks;
+- (BOOL)userGesturePromisePropagationEnabled;
 - (BOOL)usesEncodingDetector;
 - (BOOL)videoPlaybackRequiresUserGesture;
 - (BOOL)wantsBalancedSetDefersLoadingBehavior;

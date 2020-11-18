@@ -20,7 +20,7 @@
 @property unsigned long long lastFileSize; // @synthesize lastFileSize=_lastFileSize;
 @property (strong) NSFileHandle *observedFileHandle; // @synthesize observedFileHandle=_observedFileHandle;
 @property (strong) NSURL *observedFileURL; // @synthesize observedFileURL=_observedFileURL;
-@property (strong) NSProgress *progress; // @synthesize progress=_progress;
+@property (weak) NSProgress *progress; // @synthesize progress=_progress;
 @property (weak) PHMediaFormatConversionRequest *request; // @synthesize request=_request;
 
 - (void).cxx_destruct;

@@ -6,6 +6,7 @@
 
 @protocol _UIViewConfigurationStateReadonly
 
+@property (readonly, nonatomic) BOOL _showingCompactContextMenu;
 @property (readonly, nonatomic) unsigned long long _viewConfigurationState;
 @property (readonly, nonatomic, getter=isDisabled) BOOL disabled;
 @property (readonly, nonatomic, getter=isFocused) BOOL focused;

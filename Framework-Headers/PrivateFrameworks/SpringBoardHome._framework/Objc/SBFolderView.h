@@ -224,6 +224,7 @@
 - (void)cleanUpAfterTransition;
 - (void)clearVisibleColumnRange;
 - (long long)closestIconPageIndexForPageIndex:(long long)arg1;
+- (double)currentScrollOffset;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

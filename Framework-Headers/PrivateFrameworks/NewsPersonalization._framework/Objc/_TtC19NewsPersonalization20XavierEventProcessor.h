@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC19NewsPersonalization20XavierEventProcessor : _TtCs12_SwiftObject
+@interface _TtC19NewsPersonalization20XavierEventProcessor : NSObject
 {
     MISSING_TYPE *personalizer;
     MISSING_TYPE *actionTranslators;
     MISSING_TYPE *jsonDecoder;
-    MISSING_TYPE *configuration;
+    MISSING_TYPE *_configuration;
 }
+
+- (void).cxx_destruct;
+- (id)init;
 
 @end
 

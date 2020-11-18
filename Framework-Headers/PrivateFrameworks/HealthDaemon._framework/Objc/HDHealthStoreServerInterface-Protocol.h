@@ -28,6 +28,7 @@
 - (void)remote_endAuthorizationDelegateTransactionWithSessionIdentifier:(NSUUID *)arg1 error:(NSError *)arg2;
 - (void)remote_fetchCharacteristicWithDataType:(HKObjectType *)arg1 handler:(void (^)(id, NSError *))arg2;
 - (void)remote_fetchDaemonPreferenceForKey:(NSString *)arg1 completion:(void (^)(id, NSError *))arg2;
+- (void)remote_fetchModificationDateForCharacteristicWithDataType:(HKCharacteristicType *)arg1 handler:(void (^)(NSDate *, NSError *))arg2;
 - (void)remote_fetchPluginServiceEndpointWithIdentifier:(NSString *)arg1 completion:(void (^)(NSXPCListenerEndpoint *, NSError *))arg2;
 - (void)remote_fetchServerURLForAssetType:(NSString *)arg1 completion:(void (^)(NSURL *, NSError *))arg2;
 - (void)remote_fetchUnitPreferencesForTypes:(NSSet *)arg1 version:(long long)arg2 withCompletion:(void (^)(NSDictionary *, NSError *))arg3;

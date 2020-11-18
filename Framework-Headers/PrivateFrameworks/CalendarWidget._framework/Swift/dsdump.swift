@@ -13,9 +13,9 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : }
+	var width : Ì˝
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : }
+	var height : Ì˝
  }
 
  struct CalendarWidget.CalendarWidget { }
@@ -31,7 +31,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var entry : CalendarTimelineEntry
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _family : ◊
+	var _family : G
  }
 
  struct CalendarWidget.NarrowAllDayView {
@@ -39,15 +39,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var allDayEvents : Event
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var headerDate : S
+	var headerDate : √¸
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let font : 
+	let font : Ö
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _family : ◊
+	var _family : G
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _redactionReasons : 
+	var _redactionReasons : {
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _fullLabelWidth : œ
+	var _fullLabelWidth : ?
  }
 
  struct CalendarWidget.Location {
@@ -61,16 +61,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var event : Event
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var font : 
+	var font : Ö
  }
 
  struct CalendarWidget.ColorBarView {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var color : C˜
+	var color : ≥
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _redactionReasons : 
+	var _redactionReasons : {
  }
 
  struct CalendarWidget.StripedBackgroundView {
@@ -78,20 +78,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var event : Event
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _displayScale : _Ó
+	var _displayScale : œÁ
  }
 
  struct CalendarWidget.MonthView {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var currentDate : S
+	var currentDate : √¸
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _calendar : øÌ
+	var _calendar : /Á
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _redactionReasons : 
+	var _redactionReasons : {
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _dateLabelHeight : œ
+	var _dateLabelHeight : ?
 	let monthNameFormat : String
 	let monthDayLabelFormat : String
  }
@@ -100,23 +100,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var currentDate : S
+	var currentDate : √¸
 	var weekIndex : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _calendar : øÌ
+	var _calendar : /Á
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _redactionReasons : 
+	var _redactionReasons : {
  }
 
  struct CalendarWidget.WeekLabelRow {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var currentDate : S
+	var currentDate : √¸
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _calendar : øÌ
+	var _calendar : /Á
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _redactionReasons : 
+	var _redactionReasons : {
  }
 
  enum CalendarWidget.WeekDayViewModel {
@@ -131,7 +131,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let title : String // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let color : C˜ // +0x10
+	let color : ≥ // +0x10
  }
 
  class CalendarWidget.EventTimeline : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -149,12 +149,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var allDayEvents : Event
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var headerDate : S
+	var headerDate : √¸
 	var showDivider : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _redactionReasons : 
+	var _redactionReasons : {
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleFont : 
+	let titleFont : Ö
  }
 
  class CalendarWidget.NarrowMultidayLayout : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -167,34 +167,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let id : String
 	var dayViewModels : SingleDayViewModel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var topFlexibleSpaceHeight : }
+	var topFlexibleSpaceHeight : Ì˝
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var topFlexibleSpaceMaxHeight : }
+	var topFlexibleSpaceMaxHeight : Ì˝
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var spacingBetweenDays : }
+	var spacingBetweenDays : Ì˝
 
 	// Swift methods
-	0x1eeb0  func <stripped> // getter 
-	0x1f000  func <stripped> // getter 
-	0x1f250  func <stripped> // method 
+	0x1f270  func <stripped> // getter 
+	0x1f3c0  func <stripped> // getter 
+	0x1f610  func <stripped> // method 
  }
 
  class CalendarWidget.SingleDayViewModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ViewModel {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let date : S
+	let date : √¸
 	let viewHeights : ViewHeights
 	var id : String
 	var viewModels : ViewModel
 
 	// Swift methods
-	0x208a0  func <stripped> // getter 
-	0x208d0  func <stripped> // getter 
-	0x20ac0  func <stripped> // getter 
-	0x20c20  func <stripped> // getter 
-	0x21060  func <stripped> // getter 
-	0x21240  func <stripped> // getter 
+	0x20c60  func <stripped> // getter 
+	0x20c90  func <stripped> // getter 
+	0x20e80  func <stripped> // getter 
+	0x20fe0  func <stripped> // getter 
+	0x21420  func <stripped> // getter 
+	0x21600  func <stripped> // getter 
  }
 
  class CalendarWidget.EventViewModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ViewModel {
@@ -205,15 +205,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var overrideShowingLocation : Bool
 	var overrideShowingTravelTime : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var heightWithTwoLines : }
+	var heightWithTwoLines : Ì˝
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var heightWithThreeLines : }
+	var heightWithThreeLines : Ì˝
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var heightWithFourLines : }
+	var heightWithFourLines : Ì˝
 
 	// Swift methods
-	0x1f8a0  func <stripped> // getter 
-	0x1f950  func <stripped> // getter 
+	0x1fc60  func <stripped> // getter 
+	0x1fd10  func <stripped> // getter 
  }
 
  class CalendarWidget.ConflictingEventsViewModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ViewModel {
@@ -223,17 +223,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var events : Event
 	var maxEventsToShow : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var conflictCountHeight : }
+	var conflictCountHeight : Ì˝
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var conflictEventTitleHeight : }
+	var conflictEventTitleHeight : Ì˝
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var spacingBetweenEachSubview : }
+	var spacingBetweenEachSubview : Ì˝
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var conflictTimeHeight : }
+	var conflictTimeHeight : Ì˝
 
 	// Swift methods
-	0x1fc10  func <stripped> // getter 
-	0x1fde0  func <stripped> // getter 
+	0x1ffd0  func <stripped> // getter 
+	0x201a0  func <stripped> // getter 
  }
 
  class CalendarWidget.AllDayViewModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ViewModel {
@@ -243,13 +243,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var events : Event
 	var collapsed : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var individualHeight : }
+	var individualHeight : Ì˝
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var spacingBetweenItems : }
+	var spacingBetweenItems : Ì˝
 
 	// Swift methods
-	0x20040  func <stripped> // getter 
-	0x20090  func <stripped> // getter 
+	0x20400  func <stripped> // getter 
+	0x20450  func <stripped> // getter 
  }
 
  class CalendarWidget.XMoreViewModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ViewModel {
@@ -258,12 +258,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var id : String
 	var events : Event
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var xMoreHeight : }
+	var xMoreHeight : Ì˝
 	var visible : Bool
 
 	// Swift methods
-	0x202d0  func <stripped> // getter 
-	0x20310  func <stripped> // getter 
+	0x20690  func <stripped> // getter 
+	0x206d0  func <stripped> // getter 
  }
 
  class CalendarWidget.EmptyStateViewModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ViewModel {
@@ -271,7 +271,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var id : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : }
+	var height : Ì˝
 
 	// Swift methods
  }
@@ -281,45 +281,45 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var id : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var date : S
+	var date : √¸
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : }
+	var height : Ì˝
 
 	// Swift methods
-	0x20670  func <stripped> // getter 
+	0x20a30  func <stripped> // getter 
  }
 
  struct CalendarWidget.ViewHeights {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headerHeight : } // +0x0
+	let headerHeight : Ì˝ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let allDayHeight : } // +0x8
+	let allDayHeight : Ì˝ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let conflictCountHeight : } // +0x10
+	let conflictCountHeight : Ì˝ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventWithTwoLinesHeight : } // +0x18
+	let eventWithTwoLinesHeight : Ì˝ // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventWithThreeLinesHeight : } // +0x20
+	let eventWithThreeLinesHeight : Ì˝ // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventWithFourLinesHeight : } // +0x28
+	let eventWithFourLinesHeight : Ì˝ // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let conflictTimeHeight : } // +0x30
+	let conflictTimeHeight : Ì˝ // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let xMoreHeight : } // +0x38
+	let xMoreHeight : Ì˝ // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let emptyStateLabelHeight : } // +0x40
+	let emptyStateLabelHeight : Ì˝ // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacingBetweenEachConflictSubview : } // +0x48
+	let spacingBetweenEachConflictSubview : Ì˝ // +0x48
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let conflictEventTitleHeight : } // +0x50
+	let conflictEventTitleHeight : Ì˝ // +0x50
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacingBetweenItemsOnSameDay : } // +0x58
+	let spacingBetweenItemsOnSameDay : Ì˝ // +0x58
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacingBetweenDays : } // +0x60
+	let spacingBetweenDays : Ì˝ // +0x60
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let topFlexibleSpaceHeight : } // +0x68
+	let topFlexibleSpaceHeight : Ì˝ // +0x68
  }
 
  struct CalendarWidget.WideXMoreView {
@@ -333,12 +333,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var event : Event
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var headerDate : S
+	var headerDate : √¸
 	var showDivider : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _calendar : øÌ
+	var _calendar : /Á
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _redactionReasons : 
+	var _redactionReasons : {
  }
 
  struct CalendarWidget.WideEventTravelTimeText {
@@ -351,32 +351,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var currentDate : S
+	var currentDate : √¸
 	var dayEvents : DayEvents
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var topFlexibleSpaceHeight : }
+	var topFlexibleSpaceHeight : Ì˝
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacingBetweenDays : }
+	let spacingBetweenDays : Ì˝
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _headerHeight : œ
+	var _headerHeight : ?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _allDayHeight : œ
+	var _allDayHeight : ?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _conflictCountHeight : œ
+	var _conflictCountHeight : ?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _eventWithTwoLinesHeight : œ
+	var _eventWithTwoLinesHeight : ?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _eventWithThreeLinesHeight : œ
+	var _eventWithThreeLinesHeight : ?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _eventWithFourLinesHeight : œ
+	var _eventWithFourLinesHeight : ?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _conflictTimeHeight : œ
+	var _conflictTimeHeight : ?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _xMoreHeight : œ
+	var _xMoreHeight : ?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _emptyStateLabelHeight : œ
+	var _emptyStateLabelHeight : ?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _conflictEventTitleHeight : œ
+	var _conflictEventTitleHeight : ?
  }
 
  struct CalendarWidget.Event {
@@ -384,12 +384,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var title : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var startDate : S
+	var startDate : √¸
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var endDate : S
+	var endDate : √¸
 	var travelTime : Double
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var calendarColor : C˜
+	var calendarColor : ≥
 	var identifier : String
 	var allDay : Bool
 	var appearanceState : AppearanceState
@@ -409,10 +409,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class CalendarWidget.EKUICalendarsIntent : INIntent /System/Library/Frameworks/Intents.framework/Intents {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xe77c00018870 (0x77c00018870) in binary!
-	0xe778  @objc EKUICalendarsIntent.(null) <stripped>
+WARNING: couldn't find address 0xe79c000181f0 (0x79c000181f0) in binary!
+	0xe798  @objc EKUICalendarsIntent.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x34fffd9458  @objc EKUICalendarsIntent.(null) <stripped>
+	0x1b4fffd9288  @objc EKUICalendarsIntent.(null) <stripped>
  }
 
  enum CalendarWidget.EKUICalendarsIntentResponseCode { }
@@ -423,19 +423,19 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	var code : EKUICalendarsIntentResponseCode
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xe7ce00018848 (0x7ce00018848) in binary!
-	0xe7ca  @objc EKUICalendarsIntentResponse.(null) <stripped>
-WARNING: couldn't find address 0xe7c900018820 (0x7c900018820) in binary!
-	0xe738  @objc EKUICalendarsIntentResponse.(null) <stripped>
-WARNING: couldn't find address 0xe734000188d8 (0x734000188d8) in binary!
+WARNING: couldn't find address 0xe7ee000181c8 (0x7ee000181c8) in binary!
+	0xe7ea  @objc EKUICalendarsIntentResponse.(null) <stripped>
+WARNING: couldn't find address 0xe7e9000181a0 (0x7e9000181a0) in binary!
+	0xe758  @objc EKUICalendarsIntentResponse.(null) <stripped>
+WARNING: couldn't find address 0xe75400018258 (0x75400018258) in binary!
 	0x68000000c  @objc EKUICalendarsIntentResponse.(null) <stripped>
-WARNING: couldn't find address 0xe71c000187e8 (0x71c000187e8) in binary!
-	0xe710  @objc EKUICalendarsIntentResponse.(null) <stripped>
-WARNING: couldn't find address 0xe704000187c0 (0x704000187c0) in binary!
-	0xe6f8  @objc EKUICalendarsIntentResponse.(null) <stripped>
+WARNING: couldn't find address 0xe73c00018168 (0x73c00018168) in binary!
+	0xe730  @objc EKUICalendarsIntentResponse.(null) <stripped>
+WARNING: couldn't find address 0xe72400018140 (0x72400018140) in binary!
+	0xe718  @objc EKUICalendarsIntentResponse.(null) <stripped>
 
 	// Swift methods
-	0x30c80  func EKUICalendarsIntentResponse.code.getter // getter 
+	0x31130  func EKUICalendarsIntentResponse.code.getter // getter 
  }
 
  struct CalendarWidget.NarrowXMoreView {
@@ -449,13 +449,13 @@ WARNING: couldn't find address 0xe704000187c0 (0x704000187c0) in binary!
 	// Properties
 	var event : Event
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var headerDate : S
+	var headerDate : √¸
 	var hideTravelTime : Bool
 	var hideLocation : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _family : ◊
+	var _family : G
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _redactionReasons : 
+	var _redactionReasons : {
  }
 
  struct CalendarWidget.NarrowEventTimeText {
@@ -463,9 +463,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var event : Event
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var headerDate : S
+	var headerDate : √¸
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _calendar : øÌ
+	var _calendar : /Á
  }
 
  struct CalendarWidget.NarrowEventTravelTimeText {
@@ -478,29 +478,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var currentDate : S
+	var currentDate : √¸
 	var dayEvents : DayEvents
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacingBetweenDays : }
+	let spacingBetweenDays : Ì˝
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _headerHeight : œ
+	var _headerHeight : ?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _allDayHeight : œ
+	var _allDayHeight : ?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _eventWithTwoLinesHeight : œ
+	var _eventWithTwoLinesHeight : ?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _eventWithThreeLinesHeight : œ
+	var _eventWithThreeLinesHeight : ?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _xMoreHeight : œ
+	var _xMoreHeight : ?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _emptyStateLabelHeight : œ
+	var _emptyStateLabelHeight : ?
  }
 
  struct CalendarWidget.DayEvents {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let day : S
+	let day : √¸
 	let events : Event
 	let allDayEvents : Event
  }
@@ -509,12 +509,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var currentDate : S
+	var currentDate : √¸
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var headerDate : S
+	var headerDate : √¸
 	var showDivider : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _calendar : øÌ
+	var _calendar : /Á
 	let headerDateShortMonthFormat : String
 	let headerDateFullMonthFormat : String
  }
@@ -523,9 +523,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var date : S
+	var date : √¸
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var simulatedDate : S
+	var simulatedDate : √¸
 	var dayEvents : DayEvents
  }
 
@@ -537,41 +537,41 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class CalendarWidget.EKUICalendar : INObject /System/Library/Frameworks/Intents.framework/Intents {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xec9400018880 (0x49400018880) in binary!
-	0xe6c0  @objc EKUICalendar.(null) <stripped>
+WARNING: couldn't find address 0xecb400018200 (0x4b400018200) in binary!
+	0xe6e0  @objc EKUICalendar.(null) <stripped>
 WARNING: couldn't find address 0x474f525029232840 (0x25029232840) in binary!
 	0x1577261646e  @objc EKUICalendar.(null) <stripped>
  }
 
  class CalendarWidget.EKUICalendarResolutionResult : INObjectResolutionResult /System/Library/Frameworks/Intents.framework/Intents {
 	// Swift methods
-	0x3ec90  class func static EKUICalendarResolutionResult.success(with:) // method 
-	0x3ed40  class func static EKUICalendarResolutionResult.disambiguation(with:) // method 
-	0x3eeb0  class func static EKUICalendarResolutionResult.confirmationRequired(with:) // method 
+	0x3f230  class func static EKUICalendarResolutionResult.success(with:) // method 
+	0x3f2e0  class func static EKUICalendarResolutionResult.disambiguation(with:) // method 
+	0x3f450  class func static EKUICalendarResolutionResult.confirmationRequired(with:) // method 
  }
 
  struct CalendarWidget.LargeWidgetContentView {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var currentDate : S
+	var currentDate : √¸
 	var dayEvents : DayEvents
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _sizeCategory : 
+	var _sizeCategory : â
  }
 
  struct CalendarWidget.SmallWidgetContentView {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var currentDate : S
+	var currentDate : √¸
 	var dayEvents : DayEvents
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _redactionReasons : 
+	var _redactionReasons : {
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _sizeCategory : 
+	var _sizeCategory : â
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _calendar : øÌ
+	var _calendar : /Á
 	let weekdayLabelFormat : String
 	let monthDayLabelFormat : String
  }
@@ -580,10 +580,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var currentDate : S
+	var currentDate : √¸
 	var dayEvents : DayEvents
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _sizeCategory : 
+	var _sizeCategory : â
  }
 
  struct CalendarWidget.NarrowConflictsView {
@@ -591,12 +591,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var events : Event
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var headerDate : S
+	var headerDate : √¸
 	var numEventsToShow : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _family : ◊
+	var _family : G
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _redactionReasons : 
+	var _redactionReasons : {
  }
 
  struct CalendarWidget.ConflictTimeText {
@@ -604,9 +604,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var events : Event
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var headerDate : S
+	var headerDate : √¸
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _calendar : øÌ
+	var _calendar : /Á
  }
 
  struct CalendarWidget.ConflictEventTitleText {
@@ -614,7 +614,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var event : Event
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let font : 
+	let font : Ö
  }
 
  struct CalendarWidget.ConflictCountText {
@@ -628,9 +628,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var visible : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var leadingInset : u
+	var leadingInset : _n
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _redactionReasons : 
+	var _redactionReasons : {
  }
 
  struct CalendarWidget.WideEmptyStateView {
@@ -638,7 +638,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var centeredInSpace : Bool // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minDistanceToContentAbove : } // +0x8
+	let minDistanceToContentAbove : Ì˝ // +0x8
  }
 
  struct CalendarWidget.WideEmptyStateTextView { }
@@ -647,7 +647,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var date : S
+	var date : √¸
  }
 
  class CalendarWidget.EventKitDataSource : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -656,8 +656,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let store : EKEventStore
 
 	// Swift methods
-	0x4ac50  func <stripped> // method 
-	0x4b540  func <stripped> // method 
+	0x4b340  func <stripped> // method 
+	0x4bc30  func <stripped> // method 
  }
 
  class CalendarWidget.WideMultidayLayout : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -676,32 +676,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var emptyStateViewCenteredInSpace : Bool // +0x2b (0x1)
 	let viewHeights : ViewHeights // +0x30 (0x40)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let date : S // +0x0 (0x0)
+	let date : √¸ // +0x0 (0x0)
 	let id : String // +0x74735f5f (0x10)
 
 	// Swift methods
-	0x4e730  func <stripped> // method 
+	0x4ee30  func <stripped> // method 
  }
 
  struct CalendarWidget.ViewHeights {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headerHeight : } // +0x0
+	let headerHeight : Ì˝ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let allDayHeight : } // +0x8
+	let allDayHeight : Ì˝ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventWithTwoLinesHeight : } // +0x10
+	let eventWithTwoLinesHeight : Ì˝ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventWithThreeLinesHeight : } // +0x18
+	let eventWithThreeLinesHeight : Ì˝ // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let xMoreHeight : } // +0x20
+	let xMoreHeight : Ì˝ // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let emptyStateLabelHeight : } // +0x28
+	let emptyStateLabelHeight : Ì˝ // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacingBetweenDays : } // +0x30
+	let spacingBetweenDays : Ì˝ // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacingBetweenEventViews : } // +0x38
+	let spacingBetweenEventViews : Ì˝ // +0x38
  }
 
  class CalendarWidget.Utils : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -712,10 +712,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maxSizeCategory : +à
+	let maxSizeCategory : ÖÅ
 	let content : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _actualSizeCategory : 
+	var _actualSizeCategory : â
  }
 
  struct CalendarWidget.ViewSizingKey { }

@@ -89,6 +89,7 @@
 - (void)notifyStatusChange:(unsigned char)arg1;
 - (void)periodicActionWithCompletion:(CDUnknownBlockType)arg1;
 - (id)remoteInterface;
+- (void)repairDataStore:(CDUnknownBlockType)arg1;
 - (void)setPeriodicActionDispatchTimerWithInterval:(double)arg1;
 - (void)setPeriodicActionXpcTimerWithDateInterval:(id)arg1;
 - (void)start;

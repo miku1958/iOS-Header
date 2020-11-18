@@ -91,6 +91,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isReference:(id)arg1 allowedToRunOnDomain:(id)arg2;
 - (id)latestRunEvent;
+- (id)localConflictingReferenceForReference:(id)arg1;
 - (id)logRunOfWorkflow:(id)arg1 atDate:(id)arg2 withIdentifier:(id)arg3 source:(id)arg4 triggerID:(id)arg5;
 - (id)logRunOfWorkflow:(id)arg1 withSource:(id)arg2 triggerID:(id)arg3;
 - (BOOL)mergeAutomationsAndShortcuts;
@@ -121,6 +122,7 @@
 - (id)recordWithDescriptor:(id)arg1 properties:(id)arg2 error:(id *)arg3;
 - (id)referenceForWorkflowID:(id)arg1;
 - (BOOL)reloadRecord:(id)arg1 withDescriptor:(id)arg2 error:(id *)arg3;
+- (id)remoteConflictingReferenceForReference:(id)arg1;
 - (void)remoteContextDidSave:(id)arg1;
 - (void)removeObjectObserver:(id)arg1;
 - (BOOL)removeReferences:(id)arg1 fromCollectionWithIdentifier:(id)arg2 error:(id *)arg3;
@@ -139,6 +141,7 @@
 - (id)shortcutSuggestionsForAppWithBundleIdentifier:(id)arg1 shortcutAvailability:(unsigned long long)arg2 error:(id *)arg3;
 - (id)sortedRunEventsForTriggerID:(id)arg1;
 - (id)sortedRunEventsWithSource:(id)arg1;
+- (id)sortedRunEventsWithSource:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 - (id)sortedTriggerEventsWithConfirmationOnly:(BOOL)arg1;
 - (id)sortedVisibleFolders;
 - (id)sortedVisibleWorkflowsByName;

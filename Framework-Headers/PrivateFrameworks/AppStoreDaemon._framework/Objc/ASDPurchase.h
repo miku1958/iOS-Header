@@ -23,6 +23,7 @@
     BOOL _isBackgroundUpdate;
     BOOL _isRedownload;
     BOOL _shouldCancelForInstalledBundleItems;
+    BOOL _expectsIOSAppOnMac;
     BOOL _installUniversalVariant;
     BOOL _isCompatibilityUpdate;
     BOOL _isRefresh;
@@ -57,6 +58,7 @@
 @property (copy, nonatomic) NSString *clientID; // @synthesize clientID=_clientID;
 @property (nonatomic) BOOL createsJobs; // @synthesize createsJobs=_createsJobs;
 @property (nonatomic) BOOL displaysOnLockScreen; // @synthesize displaysOnLockScreen=_displaysOnLockScreen;
+@property (nonatomic) BOOL expectsIOSAppOnMac; // @synthesize expectsIOSAppOnMac=_expectsIOSAppOnMac;
 @property long long extensionsToEnable; // @synthesize extensionsToEnable=_extensionsToEnable;
 @property (nonatomic) BOOL forceWatchInstall; // @synthesize forceWatchInstall=_forceWatchInstall;
 @property (copy, nonatomic) NSArray *gratisIdentifiers; // @synthesize gratisIdentifiers=_gratisIdentifiers;

@@ -32,6 +32,7 @@
 - (id)entryFieldButtonColor;
 - (id)gray_balloonOverlayColor;
 - (id)iosMacDetailsCellColor;
+- (id)paddleSeparatorColor;
 - (id)readSelectedIndicatorColor;
 - (id)spotlightSearchBackgroundColor;
 - (id)spotlightSearchBarBackgroundColor;

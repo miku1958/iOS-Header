@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *subscriber;
     MISSING_TYPE *subscriberQueue;
+    MISSING_TYPE *cancelDispatchGroup;
 }
 
 @end

@@ -15,6 +15,7 @@
     BOOL _complete;
     unsigned long long _requestedAuthenticationMechanisms;
     unsigned long long _processedAuthenticationMechanisms;
+    unsigned long long _dataCollectedAuthenticationMechanisms;
     long long _paymentPINFormat;
     NSData *_nonce;
     NSData *_signingKeyMaterial;
@@ -24,6 +25,7 @@
 
 @property (nonatomic) long long authenticationFailure; // @synthesize authenticationFailure=_authenticationFailure;
 @property (nonatomic) BOOL complete; // @synthesize complete=_complete;
+@property (nonatomic) unsigned long long dataCollectedAuthenticationMechanisms; // @synthesize dataCollectedAuthenticationMechanisms=_dataCollectedAuthenticationMechanisms;
 @property (copy, nonatomic) NSData *nonce; // @synthesize nonce=_nonce;
 @property (copy, nonatomic) NSData *partialSignature; // @synthesize partialSignature=_partialSignature;
 @property (nonatomic) long long paymentPINFormat; // @synthesize paymentPINFormat=_paymentPINFormat;

@@ -23,6 +23,7 @@
     MISSING_TYPE *previousSelectedIndexPath;
     MISSING_TYPE *featureAvailability;
     MISSING_TYPE *commands;
+    MISSING_TYPE *newsActivityManager;
 }
 
 - (void).cxx_destruct;

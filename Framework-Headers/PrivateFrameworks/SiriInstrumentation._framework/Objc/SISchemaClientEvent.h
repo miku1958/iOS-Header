@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSData, SISchemaAudioFirstBufferRecorded, SISchemaAudioStopRecording, SISchemaCarPlayHeadUnitContext, SISchemaCasinoRelationship, SISchemaClientEventMetadata, SISchemaClientFlow, SISchemaClientTransportEventMetadata, SISchemaConversationTrace, SISchemaDeviceDynamicContext, SISchemaDeviceFixedContext, SISchemaDialogOutput, SISchemaDictationAlternativeSelected, SISchemaDictationAlternativesViewed, SISchemaDictationContext, SISchemaDictationEndPointCancel, SISchemaDictationEndPointStop, SISchemaDictationTranscriptionMetadata, SISchemaIntercomMessageRecorded, SISchemaInvocation, SISchemaLocation, SISchemaPunchOut, SISchemaSiriCue, SISchemaSpeechTranscription, SISchemaTextToSpeechBegin, SISchemaTextToSpeechEnd, SISchemaUIStateTransition, SISchemaUUFRCompletion, SISchemaUUFRFatalError, SISchemaUUFRPresented, SISchemaUUFRSaid, SISchemaUUFRShown;
+@class NSData, SISchemaAudioFirstBufferRecorded, SISchemaAudioStopRecording, SISchemaCarPlayHeadUnitContext, SISchemaCasinoRelationship, SISchemaClientEventMetadata, SISchemaClientFlow, SISchemaClientTransportEventMetadata, SISchemaConversationTrace, SISchemaDeviceDynamicContext, SISchemaDeviceFixedContext, SISchemaDialogOutput, SISchemaDictationAlternativeSelected, SISchemaDictationAlternativesViewed, SISchemaDictationContext, SISchemaDictationEndPointCancel, SISchemaDictationEndPointStop, SISchemaDictationTranscriptionMetadata, SISchemaIntercomMessageRecorded, SISchemaInvocation, SISchemaLocation, SISchemaPunchOut, SISchemaSiriCue, SISchemaSpeechTranscription, SISchemaTextToSpeechBegin, SISchemaTextToSpeechEnd, SISchemaUIStateTransition, SISchemaUUFRCompletion, SISchemaUUFRFatalError, SISchemaUUFRPresented, SISchemaUUFRSaid, SISchemaUUFRShown, SISchemaUserViewRegionInteraction;
 
 @interface SISchemaClientEvent : PBCodable
 {
@@ -41,6 +41,7 @@
     SISchemaDictationAlternativesViewed *_dictationAlternativesViewed;
     SISchemaIntercomMessageRecorded *_intercomMessageRecorded;
     SISchemaCasinoRelationship *_casinoRelationship;
+    SISchemaUserViewRegionInteraction *_userViewRegionInteraction;
     BOOL _hasEventMetadata;
     BOOL _hasTransportMetadata;
     BOOL _hasAudioFirstBufferRecorded;
@@ -72,6 +73,7 @@
     BOOL _hasDictationAlternativesViewed;
     BOOL _hasIntercomMessageRecorded;
     BOOL _hasCasinoRelationship;
+    BOOL _hasUserViewRegionInteraction;
     unsigned long long _whichEvent_Type;
 }
 
@@ -117,6 +119,7 @@
 @property (nonatomic) BOOL hasTextToSpeechEnd; // @synthesize hasTextToSpeechEnd=_hasTextToSpeechEnd;
 @property (nonatomic) BOOL hasTransportMetadata; // @synthesize hasTransportMetadata=_hasTransportMetadata;
 @property (nonatomic) BOOL hasUiStateTransition; // @synthesize hasUiStateTransition=_hasUiStateTransition;
+@property (nonatomic) BOOL hasUserViewRegionInteraction; // @synthesize hasUserViewRegionInteraction=_hasUserViewRegionInteraction;
 @property (nonatomic) BOOL hasUufrCompletion; // @synthesize hasUufrCompletion=_hasUufrCompletion;
 @property (nonatomic) BOOL hasUufrFatalError; // @synthesize hasUufrFatalError=_hasUufrFatalError;
 @property (nonatomic) BOOL hasUufrPresented; // @synthesize hasUufrPresented=_hasUufrPresented;
@@ -133,6 +136,7 @@
 @property (strong, nonatomic) SISchemaTextToSpeechEnd *textToSpeechEnd; // @synthesize textToSpeechEnd=_textToSpeechEnd;
 @property (strong, nonatomic) SISchemaClientTransportEventMetadata *transportMetadata; // @synthesize transportMetadata=_transportMetadata;
 @property (strong, nonatomic) SISchemaUIStateTransition *uiStateTransition; // @synthesize uiStateTransition=_uiStateTransition;
+@property (strong, nonatomic) SISchemaUserViewRegionInteraction *userViewRegionInteraction; // @synthesize userViewRegionInteraction=_userViewRegionInteraction;
 @property (strong, nonatomic) SISchemaUUFRCompletion *uufrCompletion; // @synthesize uufrCompletion=_uufrCompletion;
 @property (strong, nonatomic) SISchemaUUFRFatalError *uufrFatalError; // @synthesize uufrFatalError=_uufrFatalError;
 @property (strong, nonatomic) SISchemaUUFRPresented *uufrPresented; // @synthesize uufrPresented=_uufrPresented;

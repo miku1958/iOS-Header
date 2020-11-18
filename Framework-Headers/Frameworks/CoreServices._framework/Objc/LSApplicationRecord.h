@@ -45,6 +45,7 @@
 @property (readonly) NSURL *bundleContainerURL;
 @property (readonly) BOOL canHandleWebAuthentication;
 @property (readonly) NSArray *carPlayInstrumentClusterURLSchemes;
+@property (readonly) unsigned int codeSignatureVersion;
 @property (readonly) NSString *companionBundleIdentifier;
 @property (readonly, nonatomic) LSApplicationProxy *compatibilityObject; // @dynamic compatibilityObject;
 @property (readonly) NSString *complicationPrincipalClassName;
@@ -143,6 +144,7 @@
 - (void)_LSRecord_resolve_backgroundTaskSchedulerPermittedIdentifiers;
 - (void)_LSRecord_resolve_bundleContainerURL;
 - (void)_LSRecord_resolve_carPlayInstrumentClusterURLSchemes;
+- (void)_LSRecord_resolve_codeSignatureVersion;
 - (void)_LSRecord_resolve_companionBundleIdentifier;
 - (void)_LSRecord_resolve_counterpartIdentifiers;
 - (void)_LSRecord_resolve_deviceFamilies;
@@ -206,6 +208,7 @@
 - (id)bundleVersionWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleData *)arg4;
 - (id)carPlayInstrumentClusterURLSchemesWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleData *)arg4;
 - (void)clearAdvertisingIdentifier;
+- (unsigned int)codeSignatureVersionWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleData *)arg4;
 - (id)companionBundleIdentifierWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleData *)arg4;
 - (id)counterpartIdentifiersWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleData *)arg4;
 - (id)deviceFamiliesWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleData *)arg4;

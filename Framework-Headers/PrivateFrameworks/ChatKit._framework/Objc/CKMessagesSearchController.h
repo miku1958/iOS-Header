@@ -6,9 +6,18 @@
 
 #import <ChatKit/CKMessageTypeSearchController.h>
 
-@interface CKMessagesSearchController : CKMessageTypeSearchController
+#import <ChatKit/CKMessageSearchResultCellDelegate-Protocol.h>
+
+@class NSString;
+
+@interface CKMessagesSearchController : CKMessageTypeSearchController <CKMessageSearchResultCellDelegate>
 {
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (Class)cellClass;
 + (id)reuseIdentifier;
@@ -24,6 +33,7 @@
 - (unsigned long long)maxResultsForMode:(unsigned long long)arg1;
 - (id)queryAttributesForText:(id)arg1;
 - (void)searchWithText:(id)arg1 mode:(unsigned long long)arg2;
+- (double)widthForDeterminingAvatarVisibility;
 
 @end
 

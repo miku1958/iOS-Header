@@ -6,10 +6,10 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class PUUIImageViewController;
+@class NSArray, PUUIImageViewController;
 
 @protocol PUUIImageViewControllerFileResizingDelegate <NSObject>
 - (void)imageViewControllerDidConfirmSelection:(PUUIImageViewController *)arg1;
-- (void)imageViewControllerDidSelectFileResizing:(PUUIImageViewController *)arg1;
+- (NSArray *)imageViewControllerFileSizeMenuActions:(PUUIImageViewController *)arg1;
 @end
 

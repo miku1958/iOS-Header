@@ -4,6 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class NSArray;
 @protocol TUPluggableDelegate;
 
 @protocol TUPluggable
@@ -11,6 +12,7 @@
 @property (nonatomic) BOOL isBeingUsedAsPlugin;
 @property (nonatomic, strong) id<TUPluggableDelegate> pluggableDelegate;
 @property (nonatomic, readonly) long long pluginItemCount;
+@property (nonatomic, readonly) NSArray *pluginItemIdentifiers;
 @property (nonatomic, readonly) long long pluginVisibleItemCount;
 
 - (void)initializeWithCompletion:(void (^)(struct CGSize))arg1;

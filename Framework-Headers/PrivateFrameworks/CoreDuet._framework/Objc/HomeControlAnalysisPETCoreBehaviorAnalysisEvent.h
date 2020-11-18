@@ -15,6 +15,7 @@
     double _timestamp;
     NSString *_accessoryUUID;
     NSString *_associatedAccessoryUUIDs;
+    NSString *_characteristicType;
     NSString *_eventStreamTitle;
     unsigned int _homeOccupancy;
     NSString *_homeUUID;

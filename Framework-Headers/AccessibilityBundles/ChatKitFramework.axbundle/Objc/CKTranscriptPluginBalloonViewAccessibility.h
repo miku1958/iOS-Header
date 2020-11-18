@@ -16,6 +16,7 @@
 - (struct CGRect)_accessibilityMediaAnalysisFrame;
 - (unsigned int)_accessibilityMediaAnalysisOptions;
 - (id)_axAppClipDescriptionForMetadata:(id)arg1;
+- (void)_axAppClipOpenInSafari;
 - (id)_axBalloonViewCustomActions;
 - (void)_axClear;
 - (id)_axHandwritingDescriptionForDataSource:(id)arg1;

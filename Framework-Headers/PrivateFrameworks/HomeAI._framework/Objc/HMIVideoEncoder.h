@@ -21,15 +21,21 @@
     long long _maxKeyFrameIntervalDuration;
     long long _averageBitRate;
     id<HMIVideoEncoderDelegate> _delegate;
+    long long _expectedFrameRate;
+    double _expectedDuration;
     unsigned long long _numberOfDroppedFrames;
+    struct HMIVideoEncoderDataRate _dataRateLimit;
 }
 
-@property long long averageBitRate;
+@property (nonatomic) long long averageBitRate; // @synthesize averageBitRate=_averageBitRate;
+@property (nonatomic) struct HMIVideoEncoderDataRate dataRateLimit; // @synthesize dataRateLimit=_dataRateLimit;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMIVideoEncoderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) double expectedDuration; // @synthesize expectedDuration=_expectedDuration;
+@property (nonatomic) long long expectedFrameRate; // @synthesize expectedFrameRate=_expectedFrameRate;
 @property (readonly) unsigned long long hash;
-@property long long maxKeyFrameIntervalDuration;
+@property (nonatomic) long long maxKeyFrameIntervalDuration; // @synthesize maxKeyFrameIntervalDuration=_maxKeyFrameIntervalDuration;
 @property (readonly) unsigned long long numberOfDroppedFrames; // @synthesize numberOfDroppedFrames=_numberOfDroppedFrames;
 @property (readonly) Class superclass;
 

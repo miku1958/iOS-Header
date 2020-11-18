@@ -28,6 +28,7 @@
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (id)accessibilityUserInputLabels;
+- (id)accessibilityVisibleText;
 - (void)invisibleInkEffectViewWasUncovered;
 
 @end

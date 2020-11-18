@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VideosUI/_TtC8VideosUI12BaseListCell.h>
+#import <VideosUI/VUIBaseListViewCell.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI19OfferListLockupCell : _TtC8VideosUI12BaseListCell
+@interface _TtC8VideosUI19OfferListLockupCell : VUIBaseListViewCell
 {
     MISSING_TYPE *containerView;
 }

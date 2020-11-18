@@ -13,6 +13,12 @@
     MISSING_TYPE *subscribed;
     MISSING_TYPE *autofavorited;
     MISSING_TYPE *muted;
+    MISSING_TYPE *groupable;
+    MISSING_TYPE *subscriptionState;
+    MISSING_TYPE *bundled;
+    MISSING_TYPE *purchased;
+    MISSING_TYPE *read;
+    MISSING_TYPE *seen;
 }
 
 @end

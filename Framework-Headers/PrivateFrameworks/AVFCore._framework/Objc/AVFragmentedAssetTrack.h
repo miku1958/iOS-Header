@@ -13,5 +13,7 @@
     AVFragmentedAssetTrackInternal *_fragmentedAssetTrack;
 }
 
++ (BOOL)expectsPropertyRevisedNotifications;
+
 @end
 

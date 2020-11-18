@@ -398,6 +398,7 @@
 - (void)initializeBTLEScan;
 - (void)initializeTap;
 - (BOOL)initiateScan:(CDUnknownBlockType)arg1;
+- (BOOL)isCameraMotionDetectedCharacteristic:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isNonClientNotificationEnabled;
 - (BOOL)isNotificationEnabled;
@@ -490,7 +491,6 @@
 - (BOOL)supportsNetworkProtection;
 - (BOOL)supportsTargetController;
 - (BOOL)supportsWiFiReconfiguration;
-- (void)takeOwnershipOfAppData:(id)arg1;
 - (id)targetControllerButtonConfiguration;
 - (unsigned long long)targetControllerTicksPerSecond;
 - (void)timeInformationMonitorDidChangeTime;

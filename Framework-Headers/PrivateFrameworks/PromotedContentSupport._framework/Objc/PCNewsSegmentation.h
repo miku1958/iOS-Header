@@ -10,7 +10,12 @@
 {
 }
 
++ (id)_classProperties;
++ (void)_updateValues;
 + (void)addClientToSegments:(id)arg1 replaceExisting:(BOOL)arg2 privateSegment:(BOOL)arg3;
++ (id)ageGroup;
++ (id)gender;
++ (id)lastUpdate;
 + (id)segmentData;
 
 @end

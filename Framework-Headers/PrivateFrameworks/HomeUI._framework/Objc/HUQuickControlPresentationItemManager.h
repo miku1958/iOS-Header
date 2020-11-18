@@ -6,7 +6,7 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFAccessoryItemProvider, HFCameraItemProvider, HFGenericAccessoryItemProvider, HFProgrammableSwitchItemProvider, HFServiceItemProvider, HFTargetControlItemProvider, NSUUID;
+@class HFAccessoryItemProvider, HFCameraItemProvider, HFGenericAccessoryItemProvider, HFMediaAccessoryItemProvider, HFProgrammableSwitchItemProvider, HFServiceItemProvider, HFTargetControlItemProvider, NSUUID;
 
 @interface HUQuickControlPresentationItemManager : HFItemManager
 {
@@ -16,6 +16,7 @@
     HFGenericAccessoryItemProvider *_genericItemProvider;
     HFProgrammableSwitchItemProvider *_programmableSwitchItemProvider;
     HFTargetControlItemProvider *_targetControlItemProvider;
+    HFMediaAccessoryItemProvider *_mediaAccessoryItemProvider;
     HFServiceItemProvider *_serviceItemProvider;
     HFCameraItemProvider *_cameraItemProvider;
 }
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) HFCameraItemProvider *cameraItemProvider; // @synthesize cameraItemProvider=_cameraItemProvider;
 @property (strong, nonatomic) HFGenericAccessoryItemProvider *genericItemProvider; // @synthesize genericItemProvider=_genericItemProvider;
 @property (readonly, nonatomic) NSUUID *homeKitObjectUUID; // @synthesize homeKitObjectUUID=_homeKitObjectUUID;
+@property (strong, nonatomic) HFMediaAccessoryItemProvider *mediaAccessoryItemProvider; // @synthesize mediaAccessoryItemProvider=_mediaAccessoryItemProvider;
 @property (readonly, nonatomic) unsigned long long presentationItemType; // @synthesize presentationItemType=_presentationItemType;
 @property (strong, nonatomic) HFProgrammableSwitchItemProvider *programmableSwitchItemProvider; // @synthesize programmableSwitchItemProvider=_programmableSwitchItemProvider;
 @property (strong, nonatomic) HFServiceItemProvider *serviceItemProvider; // @synthesize serviceItemProvider=_serviceItemProvider;

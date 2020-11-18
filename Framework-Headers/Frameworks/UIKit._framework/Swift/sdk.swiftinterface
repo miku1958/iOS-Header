@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.2.26.4 clang-1200.0.29.4)
-// swift-module-flags: -target arm64-apple-ios14.1 -enable-objc-interop -autolink-force-load -enable-library-evolution -module-link-name swiftUIKit -swift-version 5 -enforce-exclusivity=checked -O -module-name UIKit
+// swift-compiler-version: Apple Swift version 5.3.1 (swiftlang-1200.2.40 clang-1200.0.32.7)
+// swift-module-flags: -target arm64-apple-ios14.2 -enable-objc-interop -autolink-force-load -enable-library-evolution -module-link-name swiftUIKit -swift-version 5 -enforce-exclusivity=checked -O -module-name UIKit
 import Foundation
 import Swift
 @_exported import UIKit
@@ -459,7 +459,7 @@ extension UIBackgroundConfiguration : Swift.CustomStringConvertible, Swift.Custo
 }
 @available(iOS 14.0, *)
 open class UIIndirectScribbleInteraction<Delegate> : ObjectiveC.NSObject, UIKit.UIInteraction where Delegate : UIKit.UIIndirectScribbleInteractionDelegate {
-  @objc public var view: UIKit.UIView? {
+  @objc weak public var view: UIKit.UIView? {
     get
   }
   weak public var delegate: Delegate? {

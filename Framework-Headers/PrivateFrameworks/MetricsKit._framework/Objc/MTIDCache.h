@@ -23,6 +23,7 @@
 - (void)removeAllNamespaces;
 - (void)removeNamespace:(id)arg1;
 - (void)removeNamespaces:(id)arg1;
+- (void)removeUnsyncedNamespaces;
 
 @end
 

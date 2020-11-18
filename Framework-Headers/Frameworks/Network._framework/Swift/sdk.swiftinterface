@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.2.26.4 clang-1200.0.29.4)
-// swift-module-flags: -target arm64-apple-ios14.1 -enable-objc-interop -autolink-force-load -enable-library-evolution -module-link-name swiftNetwork -swift-version 5 -enforce-exclusivity=checked -O -module-name Network
+// swift-compiler-version: Apple Swift version 5.3.1 (swiftlang-1200.2.40 clang-1200.0.32.7)
+// swift-module-flags: -target arm64-apple-ios14.2 -enable-objc-interop -autolink-force-load -enable-library-evolution -module-link-name swiftNetwork -swift-version 5 -enforce-exclusivity=checked -O -module-name Network
 import Darwin
 import Dispatch
 import Foundation
@@ -875,6 +875,22 @@ public struct NWPath : Swift.Equatable, Swift.CustomDebugStringConvertible {
     public func hash(into hasher: inout Swift.Hasher)
   }
   public let status: Network.NWPath.Status
+  @available(OSX 11.0, iOS 14.2, watchOS 7.1, tvOS 14.2, *)
+  public enum UnsatisfiedReason {
+    case notAvailable
+    case cellularDenied
+    case wifiDenied
+    case localNetworkDenied
+    public static func == (a: Network.NWPath.UnsatisfiedReason, b: Network.NWPath.UnsatisfiedReason) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  @available(OSX 11.0, iOS 14.2, watchOS 7.1, tvOS 14.2, *)
+  public var unsatisfiedReason: Network.NWPath.UnsatisfiedReason {
+    get
+  }
   public let availableInterfaces: [Network.NWInterface]
   public let isExpensive: Swift.Bool
   @available(OSX 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
@@ -1349,6 +1365,10 @@ extension Network.NWInterface.InterfaceType : Swift.Hashable {}
 extension Network.NWPath.Status : Swift.Equatable {}
 @available(OSX 10.14, iOS 12.0, watchOS 5.0, tvOS 12.0, *)
 extension Network.NWPath.Status : Swift.Hashable {}
+@available(OSX 11.0, iOS 14.2, watchOS 7.1, tvOS 14.2, *)
+extension Network.NWPath.UnsatisfiedReason : Swift.Equatable {}
+@available(OSX 11.0, iOS 14.2, watchOS 7.1, tvOS 14.2, *)
+extension Network.NWPath.UnsatisfiedReason : Swift.Hashable {}
 @available(OSX 10.14, iOS 12.0, watchOS 5.0, tvOS 12.0, *)
 extension Network.NWParameters.ServiceClass : Swift.Equatable {}
 @available(OSX 10.14, iOS 12.0, watchOS 5.0, tvOS 12.0, *)

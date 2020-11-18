@@ -6,11 +6,15 @@
 
 #import <objc/NSObject.h>
 
+@class PLAssetsdClient;
+
 @interface PLLimitedLibraryPickerDelegate : NSObject
 {
     CDUnknownBlockType _dismissalBlock;
+    PLAssetsdClient *_assetsdClient;
 }
 
+@property (strong, nonatomic) PLAssetsdClient *assetsdClient; // @synthesize assetsdClient=_assetsdClient;
 @property (copy, nonatomic) CDUnknownBlockType dismissalBlock; // @synthesize dismissalBlock=_dismissalBlock;
 
 - (void).cxx_destruct;

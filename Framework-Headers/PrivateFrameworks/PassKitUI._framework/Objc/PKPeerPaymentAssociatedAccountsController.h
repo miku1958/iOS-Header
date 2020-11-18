@@ -9,6 +9,7 @@
 #import <PassKitUI/PKPeerPaymentAssociatedAccountSetupDelegate-Protocol.h>
 
 @class NSArray, NSDictionary, NSMutableArray, NSString, PKFamilyMember, PKPaymentService, PKPeerPaymentAccount, PKPeerPaymentAssociatedAccountControllerDoneTapHelper, PKPeerPaymentAssociatedAccountPresentationContext, PKPeerPaymentService, UINavigationController;
+@protocol PKPassLibraryDataProvider;
 
 @interface PKPeerPaymentAssociatedAccountsController : NSObject <PKPeerPaymentAssociatedAccountSetupDelegate>
 {
@@ -23,6 +24,7 @@
     PKPeerPaymentAssociatedAccountPresentationContext *_presentationContext;
     PKPeerPaymentAssociatedAccountControllerDoneTapHelper *_doneTapHelper;
     NSString *_viewerFamilyMemberTypeAnalyticsKey;
+    id<PKPassLibraryDataProvider> _passLibraryDataProvider;
     BOOL _didBeginReporter;
     BOOL _fetchingFamilyMembers;
     NSMutableArray *_familyCircleCompletionHandlers;
@@ -42,10 +44,8 @@
 - (void)_updateFamilyMembersWithMembers:(id)arg1;
 - (void)addPeerPaymentAssociatedAccountDidSkipSetupForFamilyMember:(id)arg1;
 - (void)addPeerPaymentAssociatedAccountSetupCompletedWithSucess:(BOOL)arg1 updatedAccount:(id)arg2 forFamilyMember:(id)arg3;
-- (id)init;
-- (id)initWithPKFamilyMembers:(id)arg1;
-- (id)initWithPKFamilyMembers:(id)arg1 altDSIDToImageData:(id)arg2;
-- (id)initWithPKFamilyMembers:(id)arg1 altDSIDToImageData:(id)arg2 context:(long long)arg3;
+- (id)initWithPKFamilyMembers:(id)arg1 altDSIDToImageData:(id)arg2 passLibraryDataProvider:(id)arg3;
+- (id)initWithPKFamilyMembers:(id)arg1 altDSIDToImageData:(id)arg2 passLibraryDataProvider:(id)arg3 context:(long long)arg4;
 - (void)presentAssociatedAccountsFlowWithPresentationContext:(id)arg1 fromNavigationController:(id)arg2;
 
 @end

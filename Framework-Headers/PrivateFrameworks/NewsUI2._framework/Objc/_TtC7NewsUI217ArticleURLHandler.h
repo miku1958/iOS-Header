@@ -17,6 +17,8 @@
     MISSING_TYPE *featureAvailability;
     MISSING_TYPE *sceneProvider;
     MISSING_TYPE *contextBuilder;
+    MISSING_TYPE *prefetchedArticlesService;
+    MISSING_TYPE *tracker;
 }
 
 @end

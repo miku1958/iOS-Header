@@ -65,6 +65,8 @@ __attribute__((visibility("hidden")))
     unsigned long long _totalCellRxDataBytes;
     unsigned long long _totalCellDupTxDataBytes;
     unsigned long long _totalCellDupRxDataBytes;
+    unsigned long long _localWRMDuplicationSwitchCount;
+    unsigned long long _remoteWRMDuplicationSwitchCount;
 }
 
 @property (readonly, copy) NSString *debugDescription;

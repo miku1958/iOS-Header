@@ -108,6 +108,7 @@ __attribute__((visibility("hidden")))
     NSArray *_managedPersonas;
     NSNumber *_directoryClass;
     NSDictionary *_mobileInstallIDs;
+    NSNumber *_signatureVersion;
 }
 
 @property (readonly, nonatomic) NSArray *URLClaims; // @synthesize URLClaims=_URLClaims;
@@ -179,6 +180,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property (readonly, nonatomic) NSString *shortDisplayName; // @synthesize shortDisplayName=_shortDisplayName;
 @property (readonly, nonatomic) NSString *shortVersionString; // @synthesize shortVersionString=_shortVersionString;
+@property (readonly) NSNumber *signatureVersion; // @synthesize signatureVersion=_signatureVersion;
 @property (readonly, nonatomic) NSString *signerIdentity; // @synthesize signerIdentity=_signerIdentity;
 @property (readonly, nonatomic) NSString *signerOrganization; // @synthesize signerOrganization=_signerOrganization;
 @property (readonly, nonatomic) NSString *sourceAppBundleID; // @synthesize sourceAppBundleID=_sourceAppBundleID;

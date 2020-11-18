@@ -19,6 +19,7 @@
     BOOL _disconnectOnSleep;
     BOOL _includeAllNetworks;
     BOOL _excludeLocalNetworks;
+    BOOL _enforceRoutes;
     BOOL _disconnectOnWake;
     BOOL _identityDataImported;
     BOOL _disconnectOnIdle;
@@ -52,6 +53,7 @@
 @property BOOL disconnectOnUserSwitch; // @synthesize disconnectOnUserSwitch=_disconnectOnUserSwitch;
 @property BOOL disconnectOnWake; // @synthesize disconnectOnWake=_disconnectOnWake;
 @property int disconnectOnWakeTimeout; // @synthesize disconnectOnWakeTimeout=_disconnectOnWakeTimeout;
+@property BOOL enforceRoutes; // @synthesize enforceRoutes=_enforceRoutes;
 @property BOOL excludeLocalNetworks; // @synthesize excludeLocalNetworks=_excludeLocalNetworks;
 @property (copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (strong) NEIdentityKeychainItem *identity; // @synthesize identity=_identity;

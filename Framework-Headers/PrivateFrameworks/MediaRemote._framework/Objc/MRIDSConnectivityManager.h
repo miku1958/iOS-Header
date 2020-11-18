@@ -8,7 +8,7 @@
 
 #import <MediaRemote/IDSServiceDelegate-Protocol.h>
 
-@class IDSDevice, IDSService, MRDeviceInfo, NSString;
+@class IDSDevice, IDSService, MRDeviceInfo, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MRIDSConnectivityManager : NSObject <IDSServiceDelegate>
@@ -16,6 +16,8 @@
     IDSService *_service;
     IDSDevice *_device;
     MRDeviceInfo *_deviceInfo;
+    NSMutableDictionary *_messageHandlers;
+    NSMutableDictionary *_destinationMessageHandlers;
     BOOL _initialStateLoaded;
     NSObject<OS_dispatch_queue> *_idsQueue;
     NSObject<OS_dispatch_queue> *_calloutQueue;
@@ -31,15 +33,20 @@
 
 + (id)sharedManager;
 - (void).cxx_destruct;
-- (void)_handleDeviceDidBecomeActive:(id)arg1;
 - (void)_maybeDeviceConnectionStatusChanged;
 - (id)deviceDebugName;
 - (void)handleResetConnectionRequest:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (id)init;
 - (id)name;
+- (void)removeMessageHandlerForType:(long long)arg1;
+- (void)removeMessageHandlerForType:(long long)arg1 destination:(id)arg2;
 - (void)resetConnection;
+- (BOOL)sendMessasge:(id)arg1 type:(long long)arg2 destination:(id)arg3 session:(id)arg4 options:(id)arg5;
+- (void)service:(id)arg1 account:(id)arg2 incomingMessage:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)service:(id)arg1 connectedDevicesChanged:(id)arg2;
 - (void)service:(id)arg1 devicesChanged:(id)arg2;
+- (void)setMessageHandler:(CDUnknownBlockType)arg1 forType:(long long)arg2;
+- (void)setMessageHandler:(CDUnknownBlockType)arg1 forType:(long long)arg2 destination:(id)arg3;
 
 @end
 

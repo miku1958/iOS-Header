@@ -46,7 +46,6 @@
 @property (nonatomic, getter=isModallyPresented) BOOL modallyPresented; // @synthesize modallyPresented=_modallyPresented;
 @property (readonly, strong, nonatomic) PKPass *pass; // @synthesize pass=_pass;
 @property (nonatomic, getter=isPaused) BOOL paused;
-@property (nonatomic, getter=isReduceMotionEnabled) BOOL reduceMotionEnabled;
 @property (readonly, nonatomic) PKPassFaceViewRendererState *rendererState;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long suppressedContent; // @synthesize suppressedContent=_suppressedContent;

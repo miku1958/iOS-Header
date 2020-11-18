@@ -99,6 +99,7 @@
 @property (readonly, copy, nonatomic) NSString *type;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
++ (BOOL)_parseOperatingStateResponseValue:(id)arg1 intoState:(id *)arg2 abnormalReasons:(id *)arg3;
 + (id)generateUUIDWithAccessoryUUID:(id)arg1 serviceID:(id)arg2;
 + (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
@@ -126,11 +127,8 @@
 - (BOOL)_supportsBulletinNotification;
 - (void)_transactionServiceUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (void)_updateAndCacheDiscoveryModeState;
-- (void)_updateAndCacheOperatingStateAndResponse;
 - (void)_updateDefaultName;
 - (BOOL)_updateLastKnownDiscoveryMode:(id)arg1;
-- (BOOL)_updateLastKnownOperatingStateResponse:(id)arg1;
-- (BOOL)_updateLastKnownOperatingStateWithValue:(id)arg1;
 - (id)_updateProvidedName:(id)arg1;
 - (BOOL)_validateAndUpdateLastKnownDiscoveryMode:(id)arg1;
 - (BOOL)_validateLastKnownDiscoveryMode:(id)arg1;
@@ -159,13 +157,11 @@
 - (id)initWithTransaction:(id)arg1 accessory:(id)arg2 owner:(id)arg3;
 - (BOOL)isEmptyConfiguredNameAllowed;
 - (BOOL)isReadingRequiredForBTLEServiceCharacteristic:(id)arg1;
-- (BOOL)listsEqual:(id)arg1 to:(id)arg2;
 - (id)logIdentifier;
 - (id)messagesForUpdatedRoom:(id)arg1;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (id)nameChangedMessage;
 - (void)persistLastKnownDiscoveryMode;
-- (void)persistLastKnownOperatingStateResponse;
 - (void)persistMediaSourceDisplayOrder:(id)arg1 requestMessage:(id)arg2;
 - (void)populateModelObjectWithChangeType:(id)arg1 version:(long long)arg2;
 - (BOOL)shouldEnableDaemonRelaunch;

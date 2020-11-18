@@ -28,6 +28,7 @@
     BOOL _hidesBackButton;
     BOOL _showingActivitySpinner;
     BOOL _performingNextActionLoop;
+    BOOL _provisioningPaymentAccount;
     id<PKPaymentSetupViewControllerDelegate> _setupDelegate;
     PKPaymentWebService *_webService;
 }
@@ -38,6 +39,7 @@
 @property (strong, nonatomic) PKPaymentSetupFieldsModel *fieldsModel; // @synthesize fieldsModel=_fieldsModel;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isPerformingNextActionLoop) BOOL performingNextActionLoop; // @synthesize performingNextActionLoop=_performingNextActionLoop;
+@property (readonly, nonatomic, getter=isProvisioningPaymentAccount) BOOL provisioningPaymentAccount; // @synthesize provisioningPaymentAccount=_provisioningPaymentAccount;
 @property (weak, nonatomic) id<PKPaymentSetupViewControllerDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
 @property (readonly, nonatomic, getter=isShowingActivitySpinner) BOOL showingActivitySpinner; // @synthesize showingActivitySpinner=_showingActivitySpinner;
 @property (readonly) Class superclass;

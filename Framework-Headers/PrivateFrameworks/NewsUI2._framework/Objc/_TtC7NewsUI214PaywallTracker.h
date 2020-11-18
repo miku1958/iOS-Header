@@ -16,6 +16,7 @@
     MISSING_TYPE *groupData;
     MISSING_TYPE *sectionData;
     MISSING_TYPE *articleData;
+    MISSING_TYPE *articleExposureContextData;
     MISSING_TYPE *campaignData;
     MISSING_TYPE *adReferralData;
 }

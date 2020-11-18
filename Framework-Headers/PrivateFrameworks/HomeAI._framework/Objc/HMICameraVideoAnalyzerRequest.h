@@ -88,7 +88,7 @@
 - (void)selector:(id)arg1 maySelectFrame:(id)arg2;
 - (void)startAnalysis;
 - (BOOL)startAssetReaderWithWorkQueue:(id)arg1 logIdentifier:(id)arg2;
-- (BOOL)startEncodingSessionForAsset:(id)arg1 error:(id *)arg2;
+- (BOOL)startEncodingSessionForAsset:(id)arg1 expectedFrameRate:(long long)arg2 error:(id *)arg3;
 - (BOOL)startFrameSelector;
 - (BOOL)startPosterFrameGeneratorWithInterval:(unsigned long long)arg1 frameHeight:(unsigned long long)arg2;
 

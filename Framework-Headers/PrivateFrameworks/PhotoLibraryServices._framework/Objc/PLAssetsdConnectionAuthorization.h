@@ -8,7 +8,7 @@
 
 #import <PhotoLibraryServices/PLClientAuthorization-Protocol.h>
 
-@class BKSApplicationStateMonitor, NSDate, NSNumber, NSSet, NSString;
+@class BKSApplicationStateMonitor, NSDate, NSNumber, NSSet, NSString, PLSandboxedURL;
 @protocol OS_dispatch_queue;
 
 @interface PLAssetsdConnectionAuthorization : NSObject <PLClientAuthorization>
@@ -21,11 +21,14 @@
     BOOL _directDatabaseAccessAuthorized;
     BOOL _directDatabaseWriteAuthorized;
     NSString *_fetchFilterIdentifier;
+    PLSandboxedURL *_clientMainBundleSandboxedURL;
     NSDate *_connectionStartDate;
     BKSApplicationStateMonitor *_applicationStateMonitor;
     NSObject<OS_dispatch_queue> *_duetUpdateQueue;
     BOOL _photoKitEntitled;
     BOOL _cloudInternalEntitled;
+    BOOL _analyticsCacheReadEntitled;
+    BOOL _analyticsCacheWriteEntitled;
     BOOL _clientLimitedLibraryCapable;
     int _clientProcessIdentifier;
     NSString *_trustedCallerBundleID;
@@ -33,6 +36,8 @@
     NSString *_trustedCallerPhotoLibraryUsageDescription;
 }
 
+@property (readonly, nonatomic) BOOL analyticsCacheReadEntitled; // @synthesize analyticsCacheReadEntitled=_analyticsCacheReadEntitled;
+@property (readonly, nonatomic) BOOL analyticsCacheWriteEntitled; // @synthesize analyticsCacheWriteEntitled=_analyticsCacheWriteEntitled;
 @property (readonly, nonatomic) CDStruct_4c969caf clientAuditToken;
 @property (readonly, nonatomic, getter=isClientLimitedLibraryCapable) BOOL clientLimitedLibraryCapable; // @synthesize clientLimitedLibraryCapable=_clientLimitedLibraryCapable;
 @property (readonly, nonatomic) int clientProcessIdentifier; // @synthesize clientProcessIdentifier=_clientProcessIdentifier;
@@ -66,6 +71,7 @@
 - (BOOL)isPhotosClient;
 - (BOOL)photoKitEntitledFor:(id)arg1;
 - (void)setClientLimitedLibraryCapable:(BOOL)arg1;
+- (void)setClientMainBundleSandboxedURL:(id)arg1;
 - (void)setupFromConnection:(id)arg1;
 
 @end

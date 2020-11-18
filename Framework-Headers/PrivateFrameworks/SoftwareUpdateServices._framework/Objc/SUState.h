@@ -8,7 +8,7 @@
 
 #import <SoftwareUpdateServices/NSKeyedUnarchiverDelegate-Protocol.h>
 
-@class NSDate, NSDictionary, NSString, SUDescriptor, SUDownload, SUInstallPolicy, SUManagedDeviceUpdateDelay, _SUAutoInstallOperationModel;
+@class NSDate, NSDictionary, NSString, SUDescriptor, SUDownload, SUInstallPolicy, SUManagedDeviceUpdateDelay, SUScanOptions, _SUAutoInstallOperationModel;
 @protocol OS_dispatch_queue;
 
 @interface SUState : NSObject <NSKeyedUnarchiverDelegate>
@@ -18,6 +18,7 @@
     SUDescriptor *_currentDescriptor;
     SUDescriptor *_failedPatchDescriptor;
     NSDate *_lastScannedDescriptorTime;
+    SUScanOptions *_lastScannedDescriptorScanOptions;
     NSDate *_scheduledManualDownloadWifiPeriodEndTime;
     NSDate *_scheduledAutodownloadWifiPeriodEndTime;
     NSDate *_scheduledAutodownloadPolicyChangeTime;
@@ -57,6 +58,7 @@
 @property (strong, nonatomic) NSString *lastProductVersion; // @synthesize lastProductVersion=_lastProductVersion;
 @property (strong, nonatomic) NSString *lastReleaseType; // @synthesize lastReleaseType=_lastReleaseType;
 @property (copy, nonatomic) SUDescriptor *lastScannedDescriptor; // @synthesize lastScannedDescriptor=_lastScannedDescriptor;
+@property (strong, nonatomic) SUScanOptions *lastScannedDescriptorScanOptions; // @synthesize lastScannedDescriptorScanOptions=_lastScannedDescriptorScanOptions;
 @property (strong, nonatomic) NSDate *lastScannedDescriptorTime; // @synthesize lastScannedDescriptorTime=_lastScannedDescriptorTime;
 @property (strong, nonatomic) NSDictionary *mandatoryUpdateDict; // @synthesize mandatoryUpdateDict=_mandatoryUpdateDict;
 @property (nonatomic) BOOL manifestSubmitted; // @synthesize manifestSubmitted=_manifestSubmitted;

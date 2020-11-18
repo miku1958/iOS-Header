@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilitySupplementaryFooterViews;
 - (id)accessibilityCustomActions;
 - (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;

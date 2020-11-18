@@ -33,6 +33,7 @@
 - (void)navigateToOneYearAgoSearch;
 - (void)navigateToPeopleAlbumAnimated:(BOOL)arg1 revealPersonWithLocalIdentifier:(NSString *)arg2 completion:(void (^)(UIViewController *))arg3;
 - (void)navigateToPhotosContentBottomAnimated:(BOOL)arg1;
+- (void)navigateToPlacesAlbumAnimated:(BOOL)arg1;
 - (void)navigateToRevealAlbum:(NSObject<PLAlbumProtocol> *)arg1 initiallyHidden:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)navigateToRevealAsset:(PLManagedAsset *)arg1 inAlbum:(NSObject<PLAlbumProtocol> *)arg2 animated:(BOOL)arg3;
 - (void)navigateToRevealCloudFeedAsset:(PLManagedAsset *)arg1 completion:(void (^)(UIViewController *))arg2;

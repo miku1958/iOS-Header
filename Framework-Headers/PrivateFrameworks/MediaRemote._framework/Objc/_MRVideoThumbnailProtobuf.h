@@ -10,6 +10,7 @@
 
 @class NSData;
 
+__attribute__((visibility("hidden")))
 @interface _MRVideoThumbnailProtobuf : PBCodable <NSCopying>
 {
     double _time;
@@ -19,19 +20,12 @@
     } _has;
 }
 
-@property (readonly, nonatomic) BOOL hasImageData;
-@property (nonatomic) BOOL hasTime;
-@property (strong, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
-@property (nonatomic) double time; // @synthesize time=_time;
-
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

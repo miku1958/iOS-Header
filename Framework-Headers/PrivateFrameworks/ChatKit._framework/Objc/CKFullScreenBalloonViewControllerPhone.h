@@ -72,6 +72,8 @@
 - (void)performClosingAnimationsAnimated:(BOOL)arg1 withSendAnimation:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)performInitialAnimations;
 - (void)presentStickerDetailControllerWithStickers:(id)arg1;
+- (double)replyButtonHeightFromBalloon;
+- (double)replyButtonVerticalOffset;
 - (void)setupReplyButton;
 - (void)stickerDetailViewController:(id)arg1 deletedStickerWithTransferGUID:(id)arg2;
 - (void)stickerDetailViewController:(id)arg1 selectedStickerPackWithAdamID:(id)arg2;

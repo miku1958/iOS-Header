@@ -9,7 +9,7 @@
 #import <PhotosUI/PXInfoProvider-Protocol.h>
 #import <PhotosUI/PXInfoUpdaterObserver-Protocol.h>
 
-@class NSObject, NSString, PUPhotoPickerResizeTaskDescriptor, PXInfoUpdater;
+@class NSObject, NSString, PUPhotoPickerResizeTaskDescriptor, PXInfoUpdater, UIMenu;
 @protocol OS_dispatch_queue, PUPhotoPickerResizeTaskDescriptorViewModelDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     PUPhotoPickerResizeTaskDescriptor *_resizeTaskDescriptor;
     NSString *_localizedTitle;
     NSString *_localizedFileSizeDescription;
+    UIMenu *_fileSizeMenu;
     id<PUPhotoPickerResizeTaskDescriptorViewModelDelegate> _delegate;
     PXInfoUpdater *_localizedFileSizeDescriptionUpdater;
     NSObject<OS_dispatch_queue> *_localizedFileSizeDescriptionUpdaterQueue;
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<PUPhotoPickerResizeTaskDescriptorViewModelDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isDownloading) BOOL downloading; // @synthesize downloading=_downloading;
+@property (readonly, nonatomic) UIMenu *fileSizeMenu; // @synthesize fileSizeMenu=_fileSizeMenu;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *localizedFileSizeDescription; // @synthesize localizedFileSizeDescription=_localizedFileSizeDescription;
 @property (strong, nonatomic) PXInfoUpdater *localizedFileSizeDescriptionUpdater; // @synthesize localizedFileSizeDescriptionUpdater=_localizedFileSizeDescriptionUpdater;
@@ -44,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (id)requestInfoOfKind:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
 - (void)setDownloading:(BOOL)arg1;
+- (void)setFileSizeMenu:(id)arg1;
 - (void)setResizeTaskDescriptor:(id)arg1;
 
 @end

@@ -17,7 +17,7 @@
 #import <MapKit/UIViewControllerTransitioningDelegate-Protocol.h>
 #import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
 
-@class MKMapItem, MKMuninContainerView, MKMuninView, MKPhotoBigAttributionView, MKPlaceAttributionCell, NSArray, NSLayoutConstraint, NSString, UIButton, UIImageView, UIScrollView, UIView, _MKPlaceViewController;
+@class MKMapItem, MKMuninContainerView, MKMuninView, MKPassthroughView, MKPhotoBigAttributionView, MKPlaceAttributionCell, NSArray, NSLayoutConstraint, NSString, UIButton, UIImageView, UIScrollView, UIView, _MKPlaceViewController;
 @protocol MKPlaceCardPhotosControllerDelegate><MKPlaceCardActionControllerDelegate, _MKInfoCardAnalyticsDelegate;
 
 @interface MKPlacePhotosViewController : UIViewController <MKPlaceAttributionCellDelegate, UIScrollViewDelegate, MKPlacePhotoGalleryViewControllerDelegate, UIViewControllerTransitioningDelegate, MKPhotoGalleryTransitionAnimator, MKAddPhotoBadgeViewDelegate, MKMuninContainerViewDelegate, _MKInfoCardChildViewControllerAnalyticsDelegate, MKModuleViewControllerProtocol, MKMuninViewProvider>
@@ -30,7 +30,7 @@
     UIScrollView *_photosContainerScrollView;
     UIView *_photosContainer;
     UIView *_photosSmallAttributionsView;
-    UIView *_attributionClippingview;
+    MKPassthroughView *_attributionClippingview;
     double _lastPhotoScrollOffset;
     BOOL _photoScrollViewScrollingLeft;
     BOOL _photoScrollViewScrollingRight;

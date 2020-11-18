@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UINavigationBarDelegate-Protocol.h>
 
-@class UINavigationBar, UINavigationItem, UISearchController, UIWindow;
+@class NSArray, UINavigationBar, UINavigationItem, UISearchController, UIWindow;
 @protocol UIViewControllerTransitionCoordinator;
 
 @protocol _UINavigationBarDelegatePrivate <UINavigationBarDelegate>
@@ -22,6 +22,7 @@
 - (double)_navigationBar:(UINavigationBar *)arg1 preferredHeightForTransitionToHeightRange:(CDStruct_39925896)arg2;
 - (void)_navigationBar:(UINavigationBar *)arg1 requestPopToItem:(UINavigationItem *)arg2;
 - (void)_navigationBar:(UINavigationBar *)arg1 topItemUpdatedContentLayout:(UINavigationItem *)arg2;
+- (NSArray *)_navigationBarAdditionalActionsForBackButtonMenu:(UINavigationBar *)arg1;
 - (void)_navigationBarChangedSize:(UINavigationBar *)arg1;
 - (void)_navigationBarDidChangeStyle:(UINavigationBar *)arg1;
 - (void)_navigationBarDidEndAnimation:(UINavigationBar *)arg1;

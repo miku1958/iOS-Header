@@ -15,6 +15,7 @@
     MISSING_TYPE *blueprintViewController;
     MISSING_TYPE *sharingActivityProviderFactory;
     MISSING_TYPE *toolbarManager;
+    MISSING_TYPE *newsActivityManager;
     MISSING_TYPE *clearButton;
 }
 

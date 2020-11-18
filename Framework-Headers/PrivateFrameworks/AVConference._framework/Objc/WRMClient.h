@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
         BOOL reportRtpErasureMetricsEnabled;
         BOOL allowPreWarmCellEnabled;
     } _metricsConfig;
+    int _rssiThreshold;
 }
 
 @property id<WRMClientDelegate> delegate;
@@ -46,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)sendUnsubscriptionInfoFaceTimeCalling;
 - (void)setConfiguration:(CDStruct_69d7cc99 *)arg1;
 - (void)setPreWarmState:(BOOL)arg1;
+- (void)setRSSIThresholdEnabled:(BOOL)arg1;
 - (BOOL)setupServiceConnection;
 - (void)startWRMClientWithMode:(int)arg1 metricsConfig:(CDStruct_2a4d9400)arg2;
 - (void)stopWRMClient;

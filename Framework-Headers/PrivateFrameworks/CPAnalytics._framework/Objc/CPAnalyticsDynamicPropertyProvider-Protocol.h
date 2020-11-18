@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CPAnalytics/NSObject-Protocol.h>
+#import <CPAnalytics/CPAnalyticsPropertyProvider-Protocol.h>
 
-@class CPAnalyticsSystemProperties, NSDictionary, NSObject, NSString;
+@class NSDictionary, NSObject, NSString;
 
-@protocol CPAnalyticsDynamicPropertyProvider <NSObject>
+@protocol CPAnalyticsDynamicPropertyProvider <CPAnalyticsPropertyProvider>
 - (NSObject *)getDynamicProperty:(NSString *)arg1 forEventName:(NSString *)arg2 payloadForSystemPropertyExtraction:(NSDictionary *)arg3;
-- (void)registerSystemProperties:(CPAnalyticsSystemProperties *)arg1;
 @end
 

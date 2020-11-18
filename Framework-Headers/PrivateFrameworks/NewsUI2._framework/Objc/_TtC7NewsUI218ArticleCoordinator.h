@@ -19,6 +19,8 @@
     MISSING_TYPE *externalEventSubmitter;
     MISSING_TYPE *newsActivityManager;
     MISSING_TYPE *issue;
+    MISSING_TYPE *activeIssueViewingSession;
+    MISSING_TYPE *urlReferralData;
 }
 
 @end

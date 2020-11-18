@@ -10,6 +10,6 @@
 - (void)endActiveViewingSession;
 - (void)endViewingSessionForContentIdentifier:(NSString *)arg1;
 - (void)removeObject:(id)arg1 forContentIdentifier:(NSString *)arg2;
-- (AAViewingSession *)viewingSessionForContentIdentifier:(NSString *)arg1 object:(id)arg2;
+- (AAViewingSession *)viewingSessionForContentIdentifier:(NSString *)arg1 object:(id)arg2 onEnd:(void (^)(AAViewingSession *))arg3;
 @end
 

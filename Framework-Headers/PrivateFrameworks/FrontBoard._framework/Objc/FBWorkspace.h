@@ -27,6 +27,7 @@
     FBSSerialQueue *_workspaceQueue;
     FBSceneClientProviderInvalidationAction *_lock_invalidationAction;
     RBSAssertion *_lock_lifeAssertion;
+    RBSAssertion *_lock_connectAssertion;
     RBSAssertion *_lock_afterlifeAssertion;
     long long _lock_activeInterruptionPolicy;
     unsigned char _lock_activeAssertionState;
@@ -47,6 +48,7 @@
 
 + (long long)_resolveInterruptionPolicy:(long long)arg1;
 - (void).cxx_destruct;
+- (id)_acquireAssertionForReason:(id)arg1 withState:(unsigned char)arg2;
 - (void)_lock_enqueueConnectBlock:(CDUnknownBlockType)arg1;
 - (void)_lock_fireInvalidationAction;
 - (void)_resolveSceneLifecycleStateAndInterruptionPolicy;

@@ -12,6 +12,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)initWithCoder:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 
 @end
 

@@ -56,6 +56,7 @@
 - (void)_queue_considerStartingBackstopSyncForThreshold:(double)arg1;
 - (void)_queue_updateAccessibilityAssertion;
 - (id)_removeParticipants:(id)arg1 fromSharesWithCompletion:(CDUnknownBlockType)arg2;
+- (void)_scheduleOwnershipRollForLocalDataLoss;
 - (void)_subscribeToSubscriptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_syncCircleIdentifierForProfile:(id)arg1 error:(id *)arg2;
 - (void)_tinkerContainerIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
@@ -69,6 +70,7 @@
 - (void)daemonReady:(id)arg1;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)dealloc;
+- (void)didCompleteSuccessfulPullOfUpdateWithDate:(id)arg1;
 - (void)didCompleteSuccessfulPullWithDate:(id)arg1;
 - (void)didCompleteSuccessfulPushWithDate:(id)arg1;
 - (id)disableAndDeleteAllSyncDataWithCompletion:(CDUnknownBlockType)arg1;
@@ -80,6 +82,7 @@
 - (id)initWithProfile:(id)arg1;
 - (id)lastPushForwardProgressDate;
 - (id)leaveSharesWithCompletion:(CDUnknownBlockType)arg1;
+- (id)lookupParticipantWithIdentityLookUpInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)persistRestoreCompletionDate:(id)arg1 withError:(id *)arg2;
 - (id)prepareForSharingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)prepareForSync;

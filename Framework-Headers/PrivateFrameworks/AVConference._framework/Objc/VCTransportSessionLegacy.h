@@ -116,7 +116,7 @@ __attribute__((visibility("hidden")))
 - (void)loopbackSocketTunnel:(id)arg1 receivedData:(id)arg2 from:(struct tagIPPORT *)arg3;
 - (void)networkStateDidChange;
 - (void)notifyDelegateToCancelRelay;
-- (void)primaryConnectionChanged:(id)arg1 oldPrimaryConnection:(id)arg2;
+- (void)primaryConnectionChanged:(id)arg1 oldPrimaryConnection:(id)arg2 activeConnection:(id)arg3;
 - (void)processRelayRequestResponse:(id)arg1 didOriginateRequest:(BOOL)arg2;
 - (void)processRelayUpdate:(id)arg1 didOriginateRequest:(BOOL)arg2;
 - (void)processRemoteIPChange:(id)arg1;

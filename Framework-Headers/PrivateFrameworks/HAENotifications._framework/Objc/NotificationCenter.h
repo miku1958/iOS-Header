@@ -17,6 +17,7 @@
     NSString *_subtitle;
     NSString *_body;
     BOOL _hasHealthApp;
+    BOOL _hasHaptics;
 }
 
 @property (readonly, copy) NSString *debugDescription;

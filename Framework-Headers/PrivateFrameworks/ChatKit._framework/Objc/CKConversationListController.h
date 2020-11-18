@@ -102,6 +102,8 @@
 @property (nonatomic) unsigned long long filterMode; // @synthesize filterMode=_filterMode;
 @property (copy, nonatomic) NSArray *frozenConversations; // @synthesize frozenConversations=_frozenConversations;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isSearchActive;
+@property (readonly, nonatomic) BOOL isSearchActiveAndDisplayingResultsForSearchText;
 @property (nonatomic) BOOL isSelectingConversationProgrammatically; // @synthesize isSelectingConversationProgrammatically=_isSelectingConversationProgrammatically;
 @property (nonatomic) BOOL isShowingSwipeDeleteConfirmation; // @synthesize isShowingSwipeDeleteConfirmation=_isShowingSwipeDeleteConfirmation;
 @property (readonly, nonatomic) BOOL isVisible;
@@ -199,7 +201,6 @@
 - (void)_updateConversationListsAndSortIfEnabled;
 - (void)_updateInsets;
 - (void)_updateNavbarLayoutIfNeeded;
-- (void)_updateSyncProgressIfNeeded;
 - (void)_updateSyncProgressIfNeededWithProgressController:(id)arg1 forceShow:(BOOL)arg2;
 - (void)_updateToolbarItems;
 - (id)actionsForTranscriptPreviewController:(id)arg1;
@@ -334,6 +335,7 @@
 - (void)updateNavigationItems;
 - (void)updateNoMessagesDialog;
 - (void)updateSMSSpamConversationsDisplayName;
+- (void)updateSyncProgressIfNeeded;
 - (void)updateTitleViews:(BOOL)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidAppearDeferredSetup;
@@ -344,6 +346,7 @@
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (double)widthForDeterminingAvatarVisibility;
 - (void)willDismissSearchController:(id)arg1;
 - (void)willPresentSearchController:(id)arg1;
 

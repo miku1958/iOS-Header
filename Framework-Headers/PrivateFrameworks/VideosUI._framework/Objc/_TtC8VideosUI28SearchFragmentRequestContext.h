@@ -13,7 +13,10 @@
     MISSING_TYPE *requestID;
     MISSING_TYPE *query;
     MISSING_TYPE *requestType;
+    MISSING_TYPE *searchTextInputSource;
+    MISSING_TYPE *hintIndex;
     MISSING_TYPE *appContext;
+    MISSING_TYPE *document;
 }
 
 @end

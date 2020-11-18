@@ -25,6 +25,9 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)_containsWidgetWithExtensionBundleId:(id)arg1;
+- (BOOL)containsAppPredictionPanel;
+- (BOOL)containsSuggestionsWidget;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;

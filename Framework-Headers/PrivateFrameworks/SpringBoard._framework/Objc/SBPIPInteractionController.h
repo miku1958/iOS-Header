@@ -27,7 +27,8 @@
     struct CGSize _preferredContentSize;
     struct CGSize _toBeAppliedPreferredContentSize;
     struct UIEdgeInsets _edgeInsets;
-    struct UIEdgeInsets _minimumInsets;
+    struct UIEdgeInsets _minimumPadding;
+    struct UIEdgeInsets _stashedMinimumPadding;
     UIViewFloatAnimatableProperty *_layoutProgressProperty;
     unsigned long long _allLayoutSessionUpdateReasons;
     unsigned long long _gesturesEndedLayoutReason;
@@ -68,14 +69,14 @@
 - (void).cxx_destruct;
 - (id)__cornersForEdgeInsets:(struct UIEdgeInsets)arg1;
 - (void)__handleGesturesEndedState:(id)arg1;
+- (struct CGRect)__insetRectForEdgeInsets:(struct UIEdgeInsets)arg1 pipSize:(struct CGSize)arg2;
 - (id)__interactivePositionHyperregionForEdgeInsets:(struct UIEdgeInsets)arg1;
-- (struct CGRect)__minimumOnScreenInsetRect;
 - (void)__moveToAnchorPoint:(struct CGPoint)arg1 reason:(id)arg2;
-- (BOOL)__shouldIgnoreInsetRect:(struct CGRect)arg1;
 - (id)__stashedRegionsForEdgeInsets:(struct UIEdgeInsets)arg1;
 - (id)__steadyPositionHyperregionWithCorners:(id)arg1 stashedRegions:(id)arg2;
 - (unsigned long long)__traitsForGesturesReasons:(unsigned long long)arg1;
-- (struct CGRect)__validatedOnScreenInsetRectForEdgeInsets:(struct UIEdgeInsets)arg1;
+- (struct CGRect)__validatedInteractiveOrStashedInsetRectForEdgeInsets:(struct UIEdgeInsets)arg1;
+- (struct CGRect)__validatedSteadyOnScreenInsetRectForEdgeInsets:(struct UIEdgeInsets)arg1;
 - (void)_adjustContentViewAnchorPointForGestureRecognizer:(id)arg1;
 - (void)_applyPreferredScale;
 - (void)_cancelAllGestures;
@@ -109,7 +110,9 @@
 - (struct CGPoint)_roundPosition:(struct CGPoint)arg1 forSize:(struct CGSize)arg2;
 - (id)_scaleHyperregion;
 - (void)_setDefaults;
+- (void)_setNeedsLayoutForTraits:(unsigned long long)arg1 withReason:(unsigned long long)arg2 behavior:(int)arg3;
 - (void)_setNeedsLayoutForTraits:(unsigned long long)arg1 withReason:(unsigned long long)arg2 behavior:(int)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_setNeedsLayoutForTraits:(unsigned long long)arg1 withReason:(unsigned long long)arg2 behavior:(int)arg3 layoutCompletion:(CDUnknownBlockType)arg4 interactionCompletion:(CDUnknownBlockType)arg5;
 - (void)_setPreferredNormalizedScale:(double)arg1 animationBehavior:(int)arg2;
 - (void)_setPreferredScale:(double)arg1 animationBehavior:(int)arg2;
 - (void)_setupDefaultInteractorsAndHyperRegions;

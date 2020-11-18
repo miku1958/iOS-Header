@@ -17,6 +17,7 @@
     PGGraphPersonNode *_personNode;
     PGGraphAddressNode *_addressNode;
     PGGraphNode<PGGraphLocationOrArea> *_tripLocationNode;
+    unsigned long long _tripTitleLocationType;
 }
 
 - (void).cxx_destruct;
@@ -27,7 +28,7 @@
 - (id)initWithMomentNodes:(id)arg1 businessNode:(id)arg2;
 - (id)initWithMomentNodes:(id)arg1 cityNode:(id)arg2;
 - (id)initWithMomentNodes:(id)arg1 personNode:(id)arg2;
-- (id)initWithMomentNodes:(id)arg1 tripLocationNode:(id)arg2;
+- (id)initWithMomentNodes:(id)arg1 tripLocationNode:(id)arg2 tripTitleLocationType:(unsigned long long)arg3;
 
 @end
 

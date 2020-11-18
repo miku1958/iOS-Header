@@ -107,17 +107,17 @@
 	var loadSucceeded : Bool? // +0x18 (0x1)
 	let readyGroup : OS_dispatch_group // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var initializationSignpost : ±/ // +0x0 (0x0)
+	var initializationSignpost : 1. // +0x0 (0x0)
 	var loadQueue : OS_dispatch_queue // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1c82000093c0 (0x482000093c0) in binary!
+WARNING: couldn't find address 0x1c8200009240 (0x48200009240) in binary!
 	0x1c7e  @objc HomeManager.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x38cfffee5e0  @objc HomeManager.(null) <stripped>
+	0x20cfffee550  @objc HomeManager.(null) <stripped>
 
 	// Swift methods
-	0x27a0  func <stripped> // method 
+	0x28c0  func <stripped> // method 
  }
 
  struct SiriPlaybackControlSupport.HomeData {
@@ -133,34 +133,34 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let mediaRemoteCommandToStringMap : [Int : String] // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1c62000093a0 (0x462000093a0) in binary!
+WARNING: couldn't find address 0x1c6200009220 (0x46200009220) in binary!
 	0x1c5e  @objc PlaybackController.(null) <stripped>
 WARNING: couldn't find address 0x474f525029232840 (0x25029232840) in binary!
 	0x16279616c50  @objc PlaybackController.(null) <stripped>
 
 	// Swift methods
-	0x3a80  func <stripped> // method 
-	0x3ae0  func <stripped> // method 
-	0x41f0  func <stripped> // method 
-	0x43c0  func <stripped> // method 
-	0x4b80  func <stripped> // method 
-	0x4d40  func <stripped> // method 
-	0x6230  func <stripped> // method 
-	0x6270  func <stripped> // method 
-	0x64d0  func <stripped> // method 
-	0x6a60  func <stripped> // method 
-	0x6c90  func <stripped> // method 
-	0x7450  func <stripped> // method 
-	0x8740  func <stripped> // method 
-	0x8b90  func <stripped> // method 
-	0x8fe0  func <stripped> // method 
-	0x95c0  func <stripped> // method 
-	0x9b40  func <stripped> // method 
-	0xa090  func <stripped> // method 
-	0xa480  func <stripped> // method 
-	0xb050  func <stripped> // method 
-	0xbbf0  func <stripped> // method 
-	0xc0a0  func <stripped> // method 
+	0x3bb0  func <stripped> // method 
+	0x3c10  func <stripped> // method 
+	0x42f0  func <stripped> // method 
+	0x44c0  func <stripped> // method 
+	0x4c80  func <stripped> // method 
+	0x4e40  func <stripped> // method 
+	0x6330  func <stripped> // method 
+	0x6370  func <stripped> // method 
+	0x65d0  func <stripped> // method 
+	0x6b60  func <stripped> // method 
+	0x6d90  func <stripped> // method 
+	0x7550  func <stripped> // method 
+	0x8840  func <stripped> // method 
+	0x8c90  func <stripped> // method 
+	0x90d0  func <stripped> // method 
+	0x96b0  func <stripped> // method 
+	0x9c30  func <stripped> // method 
+	0xa180  func <stripped> // method 
+	0xa570  func <stripped> // method 
+	0xb140  func <stripped> // method 
+	0xbce0  func <stripped> // method 
+	0xc190  func <stripped> // method 
  }
 
  struct SiriPlaybackControlSupport.FilteringPredicate {
@@ -193,7 +193,7 @@ WARNING: couldn't find address 0x474f525029232840 (0x25029232840) in binary!
 	let homeProvider : HomeProvider
 
 	// Swift methods
-	0x15270  func <stripped> // method 
+	0x153b0  func <stripped> // method 
  }
 
  enum SiriPlaybackControlSupport.LanguageGroup {
@@ -207,7 +207,7 @@ WARNING: couldn't find address 0x474f525029232840 (0x25029232840) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case unknown : .
+	case unknown : ™,
 	case missingResponse  
 	case languageEmpty  
 	case optionTypeNotMatched  

@@ -29,7 +29,7 @@
     double _searchRenderTimeout;
     double _suggestionsRenderTimeout;
     SSPlistDataReader *_cep_server_values;
-    NSSet *_appBlacklist;
+    NSSet *_appBlocklist;
     NSArray *_enabledDomains;
     NSArray *_anonymousMetadataUndesiredBundleIDs;
     NSString *_fteLocString;
@@ -47,7 +47,7 @@
 
 @property (nonatomic) BOOL active; // @synthesize active=_active;
 @property (strong, nonatomic) NSArray *anonymousMetadataUndesiredBundleIDs; // @synthesize anonymousMetadataUndesiredBundleIDs=_anonymousMetadataUndesiredBundleIDs;
-@property (strong, nonatomic) NSSet *appBlacklist; // @synthesize appBlacklist=_appBlacklist;
+@property (strong, nonatomic) NSSet *appBlocklist; // @synthesize appBlocklist=_appBlocklist;
 @property (readonly, nonatomic, getter=isBagEnabled) BOOL bagEnabled; // @synthesize bagEnabled=_bagEnabled;
 @property (strong) SSPlistDataReader *cep_server_values; // @synthesize cep_server_values=_cep_server_values;
 @property (weak) id<PRSSessionController> client; // @synthesize client=_client;

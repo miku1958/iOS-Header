@@ -10,6 +10,7 @@
 
 @protocol _PXFeedbackTapToRadarViewControllerDelegate <NSObject>
 - (NSArray *)availableRoutes;
+- (NSString *)availableRoutesDescription;
 - (void)didSelectFileRadarButtonWithScreenshotAllowed:(BOOL)arg1 attachDiagnose:(BOOL)arg2 selectedRoute:(NSString *)arg3;
 - (BOOL)shouldRequestScreenshotPermission;
 @end

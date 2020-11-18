@@ -13,10 +13,12 @@
     BOOL _hoverAnimationEnabled;
     BOOL _titleAndSubtitleVisible;
     SBIconView *_contentView;
+    double _extraSpacingBetweenWidgetAndTitle;
     SBHShadowedWidgetView *_shadowedWidgetView;
     UIView *_shadowView;
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
+    NSLayoutConstraint *_widgetToTitleSpacingConstraint;
     NSLayoutConstraint *_contentHeightConstraint;
     NSLayoutConstraint *_contentWidthConstraint;
     struct CGSize _contentSize;
@@ -28,6 +30,7 @@
 @property (strong, nonatomic) SBIconView *contentView; // @synthesize contentView=_contentView;
 @property (strong, nonatomic) NSLayoutConstraint *contentWidthConstraint; // @synthesize contentWidthConstraint=_contentWidthConstraint;
 @property (nonatomic) double cornerRadius;
+@property (nonatomic) double extraSpacingBetweenWidgetAndTitle; // @synthesize extraSpacingBetweenWidgetAndTitle=_extraSpacingBetweenWidgetAndTitle;
 @property (nonatomic, getter=isHoverAnimationEnabled) BOOL hoverAnimationEnabled; // @synthesize hoverAnimationEnabled=_hoverAnimationEnabled;
 @property (readonly, nonatomic) struct CATransform3D hoverTransform;
 @property (readonly, nonatomic) UIView *shadowView; // @synthesize shadowView=_shadowView;
@@ -37,6 +40,7 @@
 @property (copy, nonatomic) NSString *title;
 @property (readonly, nonatomic) BOOL titleAndSubtitleVisible; // @synthesize titleAndSubtitleVisible=_titleAndSubtitleVisible;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (strong, nonatomic) NSLayoutConstraint *widgetToTitleSpacingConstraint; // @synthesize widgetToTitleSpacingConstraint=_widgetToTitleSpacingConstraint;
 
 - (void).cxx_destruct;
 - (void)_updateContentSizeConstraints;

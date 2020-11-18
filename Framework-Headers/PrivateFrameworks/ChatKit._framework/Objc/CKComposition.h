@@ -25,7 +25,7 @@
 @property (readonly, nonatomic) BOOL hasNonwhiteSpaceContent;
 @property (nonatomic) BOOL isFromExternalSource; // @synthesize isFromExternalSource=_isFromExternalSource;
 @property (readonly, nonatomic) NSArray *mediaObjects;
-@property (readonly, nonatomic) NSArray *pasteboardItems;
+@property (readonly, nonatomic) NSArray *pasteboardItemProviders;
 @property (readonly, nonatomic) NSArray *pluginDisplayContainers;
 @property (readonly, copy, nonatomic) NSString *previewText;
 @property (readonly, nonatomic, getter=isSaveable) BOOL saveable;
@@ -43,7 +43,7 @@
 + (id)_transcoderUserInfoFor:(id)arg1 filename:(id)arg2 type:(id)arg3;
 + (id)audioCompositionWithMediaObject:(id)arg1;
 + (id)composition;
-+ (id)compositionForMessageParts:(id)arg1 preserveSubject:(BOOL)arg2;
++ (id)compositionForMessageParts:(id)arg1 preserveSubject:(BOOL)arg2 contextIdentifier:(id)arg3;
 + (void)compositionFromItemProviders:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)compositionWithMSMessage:(id)arg1 appExtensionIdentifier:(id)arg2;
 + (id)compositionWithMediaObject:(id)arg1 subject:(id)arg2;

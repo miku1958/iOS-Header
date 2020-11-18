@@ -20,9 +20,11 @@
 - (BOOL)_isToAppLayout:(unsigned long long)arg1;
 - (id)_layoutSettings;
 - (id)animationAttributesForLayoutElement:(id)arg1;
+- (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (BOOL)completesWhenChildrenComplete;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)initWithTransitionID:(id)arg1 zoomModifier:(id)arg2 fromAppLayout:(id)arg3 toAppLayout:(id)arg4;
+- (BOOL)isHomeGrabberVisibleForIndex:(unsigned long long)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (id)transitionWillBegin;

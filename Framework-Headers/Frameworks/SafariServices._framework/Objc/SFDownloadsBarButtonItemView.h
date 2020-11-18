@@ -12,7 +12,7 @@
 @class CAStateController, UIBarButtonItem, UIProgressView;
 
 __attribute__((visibility("hidden")))
-@interface SFDownloadsBarButtonItemView : UIButton <SFDeferrableUpdateView, CAStateControllerDelegate>
+@interface SFDownloadsBarButtonItemView : UIButton <CAStateControllerDelegate, SFDeferrableUpdateView>
 {
     UIProgressView *_progressView;
     double _progress;

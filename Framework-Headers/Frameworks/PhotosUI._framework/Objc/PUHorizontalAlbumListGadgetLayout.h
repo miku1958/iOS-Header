@@ -10,17 +10,20 @@
 
 @interface PUHorizontalAlbumListGadgetLayout : PXGadgetCollectionViewLayout
 {
+    BOOL _showsHorizontalScrollIndicator;
     id<PUHorizontalAlbumListGadgetLayoutDelegate> _horizontalLayoutDelegate;
 }
 
 @property (readonly, nonatomic) struct CGSize albumCellSize;
 @property (weak, nonatomic) id<PUHorizontalAlbumListGadgetLayoutDelegate> horizontalLayoutDelegate; // @synthesize horizontalLayoutDelegate=_horizontalLayoutDelegate;
+@property (readonly, nonatomic) BOOL showsHorizontalScrollIndicator; // @synthesize showsHorizontalScrollIndicator=_showsHorizontalScrollIndicator;
 
 - (void).cxx_destruct;
+- (double)_horizontalScrollIndicatorSpacing;
 - (unsigned long long)_numberOfAlbums;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (id)init;
-- (id)initWithHorizontalLayoutDelegate:(id)arg1;
+- (id)initWithHorizontalLayoutDelegate:(id)arg1 showsHorizontalScrollIndicator:(BOOL)arg2;
 
 @end
 

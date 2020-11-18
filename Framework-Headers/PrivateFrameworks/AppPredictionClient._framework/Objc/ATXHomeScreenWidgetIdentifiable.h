@@ -51,6 +51,7 @@
 - (id)initWithProto:(id)arg1;
 - (id)initWithProtoData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isSameWidgetAsWidgetBundleId:(id)arg1 widgetKind:(id)arg2;
 - (id)proto;
 
 @end

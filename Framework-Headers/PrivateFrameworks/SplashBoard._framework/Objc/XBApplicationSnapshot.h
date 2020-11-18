@@ -9,7 +9,7 @@
 #import <SplashBoard/BSDescriptionProviding-Protocol.h>
 #import <SplashBoard/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSMutableDictionary, NSString, UIImage, XBApplicationSnapshotGenerationContext, XBDisplayEdgeInsetsWrapper, XBSnapshotContainerIdentity, XBStatusBarSettings;
+@class BSAtomicFlag, NSDate, NSDictionary, NSMutableDictionary, NSString, UIImage, XBApplicationSnapshotGenerationContext, XBDisplayEdgeInsetsWrapper, XBSnapshotContainerIdentity, XBStatusBarSettings;
 @protocol OS_os_transaction, XBSnapshotManifestStore;
 
 @interface XBApplicationSnapshot : NSObject <NSSecureCoding, BSDescriptionProviding>
@@ -52,7 +52,7 @@
     BOOL _imageOpaque;
     BOOL _keepImageAccessUntilExpiration;
     BOOL _keepImageAccessForPreHeat;
-    BOOL _hasProtectedContent;
+    BSAtomicFlag *_hasProtectedContent;
     struct os_unfair_lock_s _loadImageLock;
     NSString *_baseLogIdentifier;
     NSString *_logIdentifier;

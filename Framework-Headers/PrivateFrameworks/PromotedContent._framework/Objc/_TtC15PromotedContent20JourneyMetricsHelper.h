@@ -24,6 +24,7 @@
     MISSING_TYPE *viewReady;
     MISSING_TYPE *wasCreated;
     MISSING_TYPE *hasBeenPlaced;
+    MISSING_TYPE *stop;
 }
 
 @property (nonatomic) BOOL hasBeenOnScreen; // @synthesize hasBeenOnScreen;
@@ -38,14 +39,15 @@
 - (void)createdWithAdType:(long long)arg1;
 - (void)delivered;
 - (void)discardedWithCode:(long long)arg1;
+- (void)exceededContainer;
 - (void)getAppWithButtonState:(long long)arg1 timeToPreviousInstall:(double)arg2;
 - (id)init;
 - (void)interactedAtXPos:(float)arg1 yPos:(float)arg2;
 - (void)loaded;
-- (void)notConsumedWithCode:(long long)arg1;
+- (void)notConsumedWithCode:(long long)arg1 placeholder:(BOOL)arg2;
 - (void)offScreenWithCollapsed:(BOOL)arg1;
 - (void)onScreenWithCollapsed:(BOOL)arg1;
-- (void)placedWithPlacement:(long long)arg1 wasNative:(BOOL)arg2;
+- (void)placedWithPlacementType:(long long)arg1 wasNativeSlot:(BOOL)arg2;
 - (void)ready;
 - (void)registerHandlerForAllMetricsWithClosure:(CDUnknownBlockType)arg1;
 - (void)removeHandler;

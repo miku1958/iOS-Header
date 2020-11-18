@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Photos/CPAnalyticsDynamicPropertyProvider-Protocol.h>
+#import <Photos/CPAnalyticsPropertyProvider-Protocol.h>
 
 @class PHPhotoLibrary;
 
-@protocol CPAnalyticsPhotoKitPropertyProvider <CPAnalyticsDynamicPropertyProvider>
+@protocol CPAnalyticsPhotoKitPropertyProvider <CPAnalyticsPropertyProvider>
 - (id)initWithPhotoLibrary:(PHPhotoLibrary *)arg1;
 @end
 

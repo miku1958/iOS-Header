@@ -14,6 +14,7 @@
 {
     BOOL _successfulSync;
     BOOL _marked;
+    BOOL _notInSyncedData;
     NSData *_deviceID;
     NSData *_clientData;
     NSData *_deviceVRFOutput;
@@ -25,6 +26,7 @@
 @property (copy) NSData *deviceID; // @synthesize deviceID=_deviceID;
 @property (strong) NSData *deviceVRFOutput; // @synthesize deviceVRFOutput=_deviceVRFOutput;
 @property BOOL marked; // @synthesize marked=_marked;
+@property BOOL notInSyncedData; // @synthesize notInSyncedData=_notInSyncedData;
 @property BOOL successfulSync; // @synthesize successfulSync=_successfulSync;
 
 + (BOOL)supportsSecureCoding;

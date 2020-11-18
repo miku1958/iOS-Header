@@ -12,7 +12,6 @@
 
 + (void)_amsBagURLForKey:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 + (void)_dismissPresentedViewControllerWithCompletion:(CDUnknownBlockType)arg1;
-+ (id)_eventDataSourceForEvent:(id)arg1 routerDataSource:(id)arg2;
 + (void)_handleAccountSettingsPresentationWithViewController:(id)arg1 shouldEmbedInNavController:(BOOL)arg2;
 + (BOOL)_handleDocumentDataSource:(id)arg1 targetResponder:(id)arg2 appContext:(id)arg3 viewElement:(id)arg4 documentOptions:(id)arg5 completion:(CDUnknownBlockType)arg6;
 + (BOOL)_handleEvent:(id)arg1 targetResponder:(id)arg2 appContext:(id)arg3 viewElement:(id)arg4 eventDataSource:(id)arg5 documentOptions:(id)arg6 extraInfo:(id *)arg7;
@@ -22,6 +21,7 @@
 + (void)dismissOrPopLastViewControllerWithCompletion:(CDUnknownBlockType)arg1;
 + (void)dismissOrPopViewControllerWithId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)dismissPresentedViewController;
++ (id)eventDataSourceForEvent:(id)arg1 routerDataSource:(id)arg2;
 + (id)eventDataSourceForEvent:(id)arg1 viewElement:(id)arg2;
 + (BOOL)handleAccountSettingsEvent:(id)arg1 url:(id)arg2 amsBagKey:(id)arg3 useAMSWebView:(BOOL)arg4;
 + (BOOL)handleEvent:(id)arg1 targetResponder:(id)arg2 appContext:(id)arg3 routerDataSource:(id)arg4 supplementaryData:(id)arg5 extraInfo:(id *)arg6;

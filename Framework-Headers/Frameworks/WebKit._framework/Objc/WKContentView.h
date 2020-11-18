@@ -645,6 +645,7 @@ __attribute__((visibility("hidden")))
 - (void)alignJustifiedForWebView:(id)arg1;
 - (void)alignLeftForWebView:(id)arg1;
 - (void)alignRightForWebView:(id)arg1;
+- (id)alternativesForSelectedText;
 - (void)applyAutocorrection:(id)arg1 toString:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)assignLegacyDataForContextMenuInteraction;
 - (id)automaticallySelectedOverlay;

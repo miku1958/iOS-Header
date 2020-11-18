@@ -4,17 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VideosUI/_TtC8VideosUI19StackViewController.h>
+#import <VideosUI/_TtC8VideosUI23StackTemplateController.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI33SportsFavoritesTemplateController : _TtC8VideosUI19StackViewController
+@interface _TtC8VideosUI33SportsFavoritesTemplateController : _TtC8VideosUI23StackTemplateController
 {
-    MISSING_TYPE *templateType;
+    MISSING_TYPE *syncTeamFavorites;
 }
 
+- (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
+- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
+- (void)viewDidLoad;
 
 @end
 

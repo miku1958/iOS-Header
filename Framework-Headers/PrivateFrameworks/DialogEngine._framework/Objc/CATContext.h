@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface CATContext : NSObject
 {
@@ -16,6 +16,7 @@
     NSString *_siriLocale;
     NSString *_siriVoiceGender;
     long long _currentTime;
+    NSDictionary *_userSettings;
 }
 
 @property long long currentTime; // @synthesize currentTime=_currentTime;
@@ -24,6 +25,7 @@
 @property BOOL requiresUserGrounding; // @synthesize requiresUserGrounding=_requiresUserGrounding;
 @property (strong, nonatomic) NSString *siriLocale; // @synthesize siriLocale=_siriLocale;
 @property (strong, nonatomic) NSString *siriVoiceGender; // @synthesize siriVoiceGender=_siriVoiceGender;
+@property (strong, nonatomic) NSDictionary *userSettings; // @synthesize userSettings=_userSettings;
 
 - (void).cxx_destruct;
 - (id)init;

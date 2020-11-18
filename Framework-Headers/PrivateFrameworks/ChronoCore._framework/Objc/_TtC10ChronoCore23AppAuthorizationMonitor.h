@@ -10,8 +10,10 @@
 
 @interface _TtC10ChronoCore23AppAuthorizationMonitor : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *networkAuthorizationMonitor;
     MISSING_TYPE *extensionManager;
     MISSING_TYPE *processMonitor;
+    MISSING_TYPE *subscriptions;
     MISSING_TYPE *changedExtensionIdentifiersPublisher;
     MISSING_TYPE *changedExtensionIdentifiers;
 }

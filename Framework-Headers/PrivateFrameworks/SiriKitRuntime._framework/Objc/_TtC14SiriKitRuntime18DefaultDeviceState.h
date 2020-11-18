@@ -23,6 +23,7 @@
     MISSING_TYPE *isDirectAction;
     MISSING_TYPE *renderDeviceIdiom;
     MISSING_TYPE *sessionHandOffContinuityID;
+    MISSING_TYPE *preferencesLanguageCode;
     MISSING_TYPE *personalDomainsAuthenticationMode;
     MISSING_TYPE *isLockedWithPasscodeClosure;
     MISSING_TYPE *isHomePodGestalt;

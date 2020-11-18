@@ -11,7 +11,7 @@
 #import <UIFoundation/NSTextViewportElement-Protocol.h>
 #import <UIFoundation/__NSTextRunStorageDataSource-Protocol.h>
 
-@class NSArray, NSLayoutManager, NSMapTable, NSOperationQueue, NSString, NSTextElement, NSTextLayoutManager, NSTextParagraph, NSTextRange, NSTextStorage, _NSTextRunStorage;
+@class NSArray, NSLayoutManager, NSMapTable, NSOperationQueue, NSString, NSTextElement, NSTextLayoutManager, NSTextParagraph, NSTextRange, NSTextStorage, _NSTextAttributeStorage;
 @protocol NSTextLocation;
 
 @interface NSTextLayoutFragment : NSObject <NSCoreTypesetterDelegateInternal, __NSTextRunStorageDataSource, NSSecureCoding, NSTextViewportElement>
@@ -19,7 +19,7 @@
     NSTextLayoutManager *_textLayoutManager;
     NSTextElement *_textElement;
     NSTextRange *_rangeInElement;
-    _NSTextRunStorage *_renderingAttributesTable;
+    _NSTextAttributeStorage *_renderingAttributesTable;
     struct CGRect _layoutFragmentFrame;
     NSMapTable *_textAttachmentContextTable;
     BOOL _isTextParagraph;
@@ -95,6 +95,7 @@
 - (void)invalidateRenderingAttributesForTextRange:(id)arg1;
 - (void)layout;
 - (struct CGPoint)layoutFragmentFrameOrigin;
+- (void)layoutManagerDidSetTemporaryAttributes:(id)arg1 forTextRange:(id)arg2;
 - (id)locationFromLocation:(id)arg1 offset:(long long)arg2;
 - (long long)offsetFromLocation:(id)arg1 toLocation:(id)arg2;
 - (void)removeRenderingAttribute:(id)arg1 forTextRange:(id)arg2;

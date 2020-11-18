@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     unsigned int _maxMediaBitrate;
     unsigned int _qualityIndex;
     BOOL _isLowestQualityAudio;
+    BOOL _isLowestQualityVideo;
     unsigned char _type;
     unsigned int _streamID;
     unsigned int _actualNetworkBitrate;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) id<VCSessionDownlinkBandwidthAllocatorClient> client; // @synthesize client=_client;
 @property (readonly) BOOL hasRepairStreamID; // @synthesize hasRepairStreamID=_hasRepairStreamID;
 @property BOOL isLowestQualityAudio; // @synthesize isLowestQualityAudio=_isLowestQualityAudio;
+@property BOOL isLowestQualityVideo; // @synthesize isLowestQualityVideo=_isLowestQualityVideo;
 @property (readonly) unsigned int maxMediaBitrate; // @synthesize maxMediaBitrate=_maxMediaBitrate;
 @property (readonly) unsigned int maxNetworkBitrate; // @synthesize maxNetworkBitrate=_maxNetworkBitrate;
 @property (readonly) unsigned int qualityIndex; // @synthesize qualityIndex=_qualityIndex;

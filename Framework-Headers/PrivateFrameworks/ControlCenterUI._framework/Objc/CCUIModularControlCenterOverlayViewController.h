@@ -145,6 +145,7 @@
 - (void)moduleCollectionViewController:(id)arg1 willPresentViewController:(id)arg2;
 - (void)moduleCollectionViewControllerDidUpdateModules:(id)arg1;
 - (void)moduleInstancesChangedForModuleInstanceManager:(id)arg1;
+- (void)moduleInstancesLayoutChangedForModuleInstanceManager:(id)arg1;
 - (struct UIEdgeInsets)overlayAdditionalEdgeInsets;
 - (unsigned long long)preferredScreenEdgesDeferringSystemGestures;
 - (void)presentAnimated:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

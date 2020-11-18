@@ -7,9 +7,11 @@
 #import <CoverSheet/CSCoverSheetViewControllerBase.h>
 
 @class CSAccessory, CSAccessoryView;
+@protocol CSAccessoryViewControllerDelegate;
 
 @interface CSAccessoryViewController : CSCoverSheetViewControllerBase
 {
+    id<CSAccessoryViewControllerDelegate> _delegate;
     CSAccessory *_accessory;
 }
 
@@ -17,6 +19,7 @@
 @property (readonly, nonatomic) CSAccessoryView *accessoryView;
 @property (readonly, nonatomic) double animationDurationBeforeDismissal;
 @property (readonly, nonatomic) double chargingAnimationDuration;
+@property (weak, nonatomic) id<CSAccessoryViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL hasChargingAnimation;
 @property (readonly, nonatomic) BOOL isStatic;
 @property (readonly, nonatomic) BOOL showingChargingAnimation;

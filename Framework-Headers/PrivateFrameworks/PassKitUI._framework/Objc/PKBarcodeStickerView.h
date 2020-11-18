@@ -6,7 +6,7 @@
 
 #import <UIKit/UIButton.h>
 
-@class NSMutableArray, PKBarcode, UIImage, UIImageView, UILabel;
+@class NSMutableArray, PKBarcode, UIFont, UIImage, UIImageView, UILabel;
 
 @interface PKBarcodeStickerView : UIButton
 {
@@ -17,6 +17,7 @@
     NSMutableArray *_stickerConstraints;
     NSMutableArray *_matteConstraints;
     UILabel *_altTextLabel;
+    double _altTextInset;
     BOOL _barcodeViewInvalidated;
     BOOL _drawBarcode;
     BOOL _shouldMatteCode;
@@ -24,6 +25,8 @@
     struct CGSize _desiredBarcodeSize;
 }
 
+@property (nonatomic) UIFont *altTextFont;
+@property (nonatomic) double altTextInset; // @synthesize altTextInset=_altTextInset;
 @property (nonatomic) struct CGSize desiredBarcodeSize; // @synthesize desiredBarcodeSize=_desiredBarcodeSize;
 @property (nonatomic) BOOL shouldMatteCode; // @synthesize shouldMatteCode=_shouldMatteCode;
 @property (nonatomic) long long validity; // @synthesize validity=_validity;

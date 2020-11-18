@@ -11,6 +11,7 @@
 #import <SiriVOX/AFHomeAnnouncementListening-Protocol.h>
 #import <SiriVOX/AFMyriadDelegate-Protocol.h>
 #import <SiriVOX/AFNotifyObserverDelegate-Protocol.h>
+#import <SiriVOX/AFQueueDelegate-Protocol.h>
 #import <SiriVOX/SVXModuleInstance-Protocol.h>
 #import <SiriVOX/SVXNowPlayingPlaybackStateListening-Protocol.h>
 #import <SiriVOX/SVXSessionDelegate-Protocol.h>
@@ -21,7 +22,7 @@
 @protocol OS_dispatch_queue, SVXTaskTracking;
 
 __attribute__((visibility("hidden")))
-@interface SVXSessionManager : NSObject <AFHomeAnnouncementListening, AFMyriadDelegate, SVXModuleInstance, AFNotifyObserverDelegate, SVXSessionDelegate, SVXSpeechSynthesisListening, SVXNowPlayingPlaybackStateListening, AFClockAlarmListening, AFClockTimerListening, SVXSystemVolumeListening>
+@interface SVXSessionManager : NSObject <AFHomeAnnouncementListening, AFMyriadDelegate, SVXModuleInstance, AFNotifyObserverDelegate, AFQueueDelegate, SVXSessionDelegate, SVXSpeechSynthesisListening, SVXNowPlayingPlaybackStateListening, AFClockAlarmListening, AFClockTimerListening, SVXSystemVolumeListening>
 {
     SVXModule *_module;
     AFNotifyObserver *_borealisTriggerNotifyObserver;
@@ -144,6 +145,7 @@ __attribute__((visibility("hidden")))
 - (void)nowPlayingObserver:(id)arg1 playbackStateDidChangeFrom:(long long)arg2 to:(long long)arg3;
 - (void)preheatWithActivationSource:(long long)arg1;
 - (void)prewarmWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)queue:(id)arg1 didEnqueueObjects:(id)arg2;
 - (void)removeActivationListener:(id)arg1;
 - (void)removeActivityListener:(id)arg1;
 - (void)removeAudioPowerUpdateListener:(id)arg1;

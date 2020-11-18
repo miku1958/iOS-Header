@@ -15,6 +15,8 @@
     MISSING_TYPE *scienceDataFactory;
     MISSING_TYPE *channelDataFactory;
     MISSING_TYPE *contentPrefetchManager;
+    MISSING_TYPE *trackerConfiguration;
+    MISSING_TYPE *urlReferralData;
 }
 
 @end

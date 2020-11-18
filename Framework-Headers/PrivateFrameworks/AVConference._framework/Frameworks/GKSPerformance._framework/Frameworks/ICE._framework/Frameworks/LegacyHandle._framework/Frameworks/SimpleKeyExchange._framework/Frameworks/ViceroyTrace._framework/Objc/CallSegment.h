@@ -165,12 +165,14 @@
     NSNumber *_wrmLinkTypeSuggestion;
     NSNumber *_wrmLinkTypeChangeReasonCode;
     NSNumber *_wrmLinkTypeWifiRSSI;
+    NSNumber *_wrmLinkTypeWifiRSSIThreshold;
     NSNumber *_wrmLinkTypeWifiSNR;
     NSNumber *_wrmLinkTypeWifiCCA;
     NSNumber *_wrmLinkTypeWifiPacketLoss;
     NSNumber *_wrmLinkTypeCellSignalStrength;
     NSNumber *_wrmLinkTypeCellSignalBar;
     NSNumber *_wrmLinkTypeCellServingCellType;
+    NSNumber *_wrmLinkTypeWifiRemoteRSSIThreshold;
     id<VCAdaptiveLearningDelegate> _delegate;
     unsigned int _videoFrameNonFECTotalCounter;
     unsigned int _videoFrameNonFECCompleteCounter;
@@ -327,6 +329,8 @@
 @property NSNumber *wrmLinkTypeWifiCCA; // @synthesize wrmLinkTypeWifiCCA=_wrmLinkTypeWifiCCA;
 @property NSNumber *wrmLinkTypeWifiPacketLoss; // @synthesize wrmLinkTypeWifiPacketLoss=_wrmLinkTypeWifiPacketLoss;
 @property NSNumber *wrmLinkTypeWifiRSSI; // @synthesize wrmLinkTypeWifiRSSI=_wrmLinkTypeWifiRSSI;
+@property NSNumber *wrmLinkTypeWifiRSSIThreshold; // @synthesize wrmLinkTypeWifiRSSIThreshold=_wrmLinkTypeWifiRSSIThreshold;
+@property NSNumber *wrmLinkTypeWifiRemoteRSSIThreshold; // @synthesize wrmLinkTypeWifiRemoteRSSIThreshold=_wrmLinkTypeWifiRemoteRSSIThreshold;
 @property NSNumber *wrmLinkTypeWifiSNR; // @synthesize wrmLinkTypeWifiSNR=_wrmLinkTypeWifiSNR;
 
 + (id)connectionCategoryForType:(id)arg1;

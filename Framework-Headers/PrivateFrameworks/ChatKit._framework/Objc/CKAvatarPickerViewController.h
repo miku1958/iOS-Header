@@ -46,9 +46,9 @@
 - (void)_animateOutTitleView;
 - (void)_chatItemsDidChange:(id)arg1;
 - (void)_chatPropertiesChanged:(id)arg1;
-- (id)_configureCollectionView:(id)arg1 avatarViewCellForItemAtIndexPath:(id)arg2 entity:(id)arg3;
-- (id)_configureCollectionView:(id)arg1 bannerViewCellForItemAtIndexPath:(id)arg2 entity:(id)arg3;
-- (id)_configureCollectionView:(id)arg1 groupIdentityCellForItemAtIndexPath:(id)arg2 entity:(id)arg3;
+- (id)_configureCollectionView:(id)arg1 avatarViewCellForItemAtIndexPath:(id)arg2;
+- (id)_configureCollectionView:(id)arg1 bannerViewCellForItemAtIndexPath:(id)arg2;
+- (id)_configureCollectionView:(id)arg1 groupIdentityCellForItemAtIndexPath:(id)arg2;
 - (id)_contactNameSupplementaryViewAtIndexPath:(id)arg1;
 - (id)_cutoutSupplementaryViewAtIndexPath:(id)arg1;
 - (id)_groupAvatarViewControllerRequiredContactKeys;
@@ -58,7 +58,6 @@
 - (void)_handleGroupNameChange:(id)arg1;
 - (unsigned long long)_preferredAvatarLayoutMode;
 - (void)_setTitle:(id)arg1 animated:(BOOL)arg2;
-- (BOOL)_shouldUseBanner;
 - (id)_titleSupplementaryViewAtIndexPath:(id)arg1;
 - (id)avatarDisplayName;
 - (BOOL)avatarPickerLayoutShouldShowTitle:(id)arg1;

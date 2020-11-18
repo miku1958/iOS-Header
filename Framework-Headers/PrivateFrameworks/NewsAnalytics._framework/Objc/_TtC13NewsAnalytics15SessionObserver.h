@@ -10,7 +10,7 @@
 #import <NewsAnalytics/FCSubscriptionObserving-Protocol.h>
 #import <NewsAnalytics/FCUserInfoObserving-Protocol.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSString;
 
 @interface _TtC13NewsAnalytics15SessionObserver : NSObject <FCBundleSubscriptionChangeObserver, FCUserInfoObserving, FCSubscriptionObserving>
 {
@@ -19,10 +19,13 @@
     MISSING_TYPE *cloudContext;
     MISSING_TYPE *client;
     MISSING_TYPE *window;
+    MISSING_TYPE *sceneSessionIdentifier;
 }
 
+@property (nonatomic, copy) NSString *sceneSessionIdentifier;
+
 - (void).cxx_destruct;
-- (void)bundleSubscriptionDidChange:(id)arg1 previousBundleSubscription:(id)arg2 changeSet:(id)arg3;
+- (void)bundleSubscriptionDidChange:(id)arg1 previousBundleSubscription:(id)arg2;
 - (void)bundleSubscriptionDidExpire:(id)arg1;
 - (void)bundleSubscriptionDidSubscribe:(id)arg1;
 - (void)dealloc;

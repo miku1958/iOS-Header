@@ -18,6 +18,7 @@
     long long _contentMode;
     unsigned long long _iconSize;
     unsigned long long _displayContext;
+    double _vibrancyEffectAnimationDuration;
     unsigned long long _displayStyle;
     UIVisualEffectView *_effectView;
     HUIconContentView *_currentIconContentView;
@@ -36,6 +37,7 @@
 @property (nonatomic) unsigned long long iconSize; // @synthesize iconSize=_iconSize;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIVisualEffect *vibrancyEffect; // @synthesize vibrancyEffect=_vibrancyEffect;
+@property (nonatomic) double vibrancyEffectAnimationDuration; // @synthesize vibrancyEffectAnimationDuration=_vibrancyEffectAnimationDuration;
 
 - (void).cxx_destruct;
 - (id)_defaultVibrancyEffect;

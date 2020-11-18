@@ -6,15 +6,21 @@
 
 #import <NewsUI2/_TtC7NewsUI219TodayViewController.h>
 
-@interface _TtC7NewsUI219TodayViewController (NewsUI2)
+#import <NewsUI2/TUScrollable-Protocol.h>
+
+@class NSArray;
+
+@interface _TtC7NewsUI219TodayViewController (NewsUI2) <TUScrollable>
 
 @property (nonatomic, readonly) long long pluginItemCount;
+@property (nonatomic, readonly) NSArray *pluginItemIdentifiers;
 @property (nonatomic, readonly) long long pluginVisibleItemCount;
 
 - (void)deselect;
 - (void)didPullToRefreshWithSender:(id)arg1;
 - (void)initializeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)relayoutWithCompletion:(CDUnknownBlockType)arg1;
+- (void)scrollToTopAnimated:(BOOL)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
@@ -22,6 +28,7 @@
 - (void)startTraversingWithDirection:(long long)arg1;
 - (void)tabBarSplitViewDidChangeFocusToFocus:(long long)arg1 action:(long long)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

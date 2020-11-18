@@ -113,7 +113,7 @@
 - (id)_paymentSetupNavigationControllerForProvisioningController:(id)arg1;
 - (id)_peerPaymentAccountResolutionController;
 - (void)_presentAddPassesControllerWithPasses:(id)arg1;
-- (void)_presentGroupWithIndex:(unsigned long long)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_presentGroupWithIndex:(unsigned long long)arg1 context:(id)arg2 animated:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_presentTransactionDetailsForTransaction:(id)arg1 forPaymentPass:(id)arg2;
 - (void)_presentTransactionDetailsForTransaction:(id)arg1 transactionSourceType:(unsigned long long)arg2;
 - (void)_presentWithUpdatedPasses:(CDUnknownBlockType)arg1;
@@ -209,7 +209,7 @@
 - (void)presentPassWithFieldProperties:(id)arg1 fieldMetadata:(id)arg2 animated:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)presentPassWithFieldProperties:(id)arg1 fieldPassUniqueIdentifiers:(id)arg2 animated:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)presentPassWithUniqueID:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)presentPassWithUniqueID:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)presentPassWithUniqueID:(id)arg1 context:(id)arg2 animated:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)presentPassWithUpdateUserNotificationIdentifier:(id)arg1;
 - (void)presentPaymentSetupController;
 - (void)presentPaymentSetupInMode:(long long)arg1 referrerIdentifier:(id)arg2 paymentNetwork:(id)arg3 transitNetworkIdentifier:(id)arg4 allowedFeatureIdentifiers:(id)arg5 productIdentifiers:(id)arg6;

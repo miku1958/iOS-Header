@@ -28,6 +28,7 @@
     FCIAdConfiguration *_iAdConfig;
     FCPrefetchConfiguration *_prefetchConfig;
     NTPBDiscoverMoreVideosInfo *_shareDiscoverMoreVideosInfo;
+    NSDictionary *_channelUpsellConfigsByChannelID;
     FCPaidBundleConfiguration *_paidBundleConfig;
     NSDictionary *_configDictionary;
     NSString *_storefrontID;
@@ -37,10 +38,11 @@
     NSArray *_externalAnalyticsConfigurations;
     NSDictionary *_analyticsContentTypeConfigsByContentTypeByEnvironment;
     FCWidgetConfig *_widgetConfig;
+    NSDictionary *_cachedPaidALaCartePaywallConfigs;
 }
 
 @property (readonly, nonatomic) NSArray *aLaCartePaidSubscriptionGroupWhitelistedChannelIDs;
-@property (readonly, nonatomic) double adRequestThrottle;
+@property (readonly, nonatomic) BOOL adInstrumentationEnabled;
 @property (readonly, nonatomic) long long alternateUniversalLinksBannerPresentationCount;
 @property (readonly, nonatomic) BOOL alternateUniversalLinksEnabledDefaultForFamilyMember;
 @property (readonly, nonatomic) BOOL alternateUniversalLinksEnabledDefaultForPurchaser;
@@ -50,6 +52,7 @@
 @property (readonly, nonatomic) long long analyticsEndpointMaxPayloadSize;
 @property (readonly, nonatomic) NSString *anfRenderingConfiguration;
 @property (readonly, nonatomic) long long appConfigRefreshRate;
+@property (readonly, nonatomic) double articleBannerAdRequestThrottle;
 @property (readonly, nonatomic) double articleDiversificationSimilarityExpectationEnd;
 @property (readonly, nonatomic) double articleDiversificationSimilarityExpectationStart;
 @property (readonly, nonatomic) double articleDiversificationUniquePublisherExpectationSlope;
@@ -66,7 +69,9 @@
 @property (readonly, nonatomic) unsigned long long bestOfBundleFeedGroupKind;
 @property (readonly, nonatomic) NSString *breakingNewsChannelID;
 @property (readonly, nonatomic) NSString *briefingsTagID;
+@property (readonly, nonatomic) NSDictionary *cachedPaidALaCartePaywallConfigs; // @synthesize cachedPaidALaCartePaywallConfigs=_cachedPaidALaCartePaywallConfigs;
 @property (readonly, nonatomic) FCPersonalizationTreatment *cachedPersonalizationTreatment; // @synthesize cachedPersonalizationTreatment=_cachedPersonalizationTreatment;
+@property (readonly, nonatomic) NSDictionary *channelUpsellConfigsByChannelID; // @synthesize channelUpsellConfigsByChannelID=_channelUpsellConfigsByChannelID;
 @property (readonly, nonatomic) BOOL checkForPaywallConfigChangesEnabled;
 @property (readonly, nonatomic) NSDictionary *configDictionary; // @synthesize configDictionary=_configDictionary;
 @property (readonly, nonatomic) NSString *conversionCohortsExpField;
@@ -98,17 +103,23 @@
 @property (readonly, nonatomic) NSString *exploreArticleID;
 @property (strong, nonatomic) NSArray *externalAnalyticsConfigurations; // @synthesize externalAnalyticsConfigurations=_externalAnalyticsConfigurations;
 @property (readonly, nonatomic) NSString *featuredStoriesTagID;
+@property (readonly, nonatomic) long long feedAdScreenfulsToPrefetch;
+@property (readonly, nonatomic) double feedBannerAdRequestThrottle;
 @property (readonly, nonatomic) long long feedContentExposureTestMaximumInterval;
 @property (readonly, nonatomic) double feedLineHeightMultiplier;
 @property (readonly, nonatomic) NSString *feedNavigationConfigJSON;
 @property (readonly, nonatomic) BOOL forYouGroupShouldPromoteAccessibleHeadline;
 @property (readonly, nonatomic) FCForYouGroupsConfiguration *forYouGroupsConfiguration; // @synthesize forYouGroupsConfiguration=_forYouGroupsConfiguration;
+@property (readonly, nonatomic) long long forYouMaxDailyEvergreenArticlesForFreeUsers;
+@property (readonly, nonatomic) long long forYouMaxDailyEvergreenArticlesForPaidUsers;
 @property (readonly, nonatomic) NSString *forYouRecordConfigID;
 @property (readonly, copy, nonatomic) FCVideoGroupsConfig *forYouVideoGroupsConfig; // @synthesize forYouVideoGroupsConfig=_forYouVideoGroupsConfig;
+@property (readonly, nonatomic) NSString *freeEvergreenArticleListID;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *hiddenFeedIDs;
 @property (readonly, nonatomic) FCIAdConfiguration *iAdConfig; // @synthesize iAdConfig=_iAdConfig;
 @property (readonly, nonatomic) double interstitialAdLoadDelay;
+@property (readonly, nonatomic) double interstitialAdRequestThrottle;
 @property (readonly, nonatomic) BOOL isDefaultConfiguration;
 @property (readonly, nonatomic) BOOL isExpired;
 @property (readonly, nonatomic) NSString *issueArticleRecirculationConfigJSON;
@@ -133,6 +144,8 @@
 @property (readonly, nonatomic) long long minimumDurationBetweenTrendingGroupsWeekday;
 @property (readonly, nonatomic) long long minimumDurationBetweenTrendingGroupsWeekend;
 @property (readonly, nonatomic) double minimumTrendingUnseenRatio;
+@property (readonly, nonatomic) double nativeInArticleAdRequestThrottle;
+@property (readonly, nonatomic) double nativeInFeedAdRequestThrottle;
 @property (readonly, nonatomic) BOOL newAdsEnabled;
 @property (readonly, nonatomic) long long newFavoriteNotificationAlertsFrequency;
 @property (readonly, nonatomic) BOOL newNotificationHandlingEnabled;
@@ -149,6 +162,7 @@
 @property (readonly, nonatomic) long long optionalTopStoriesRefreshRate;
 @property (readonly, nonatomic, getter=isOrderFeedEndpointEnabled) BOOL orderFeedEndpointEnabled;
 @property (readonly, nonatomic) FCPaidBundleConfiguration *paidBundleConfig; // @synthesize paidBundleConfig=_paidBundleConfig;
+@property (readonly, nonatomic) NSString *paidEvergreenArticleListID;
 @property (readonly, nonatomic) double parsecPopulationCeiling;
 @property (readonly, nonatomic) double parsecPopulationFloor;
 @property (readonly, nonatomic) NSString *personalizationBundleIdMappingResourceId;
@@ -156,6 +170,7 @@
 @property (readonly, nonatomic) NSString *personalizationUrlMappingResourceId;
 @property (readonly, nonatomic) NSString *personalizationWhitelistResourceId;
 @property (readonly, nonatomic) FCPrefetchConfiguration *prefetchConfig; // @synthesize prefetchConfig=_prefetchConfig;
+@property (readonly, nonatomic) double prerollAdRequestThrottle;
 @property (readonly, nonatomic) double prerollLoadingTimeout;
 @property (readonly, nonatomic) NSArray *presubscribedFeedIDs;
 @property (readonly, nonatomic, getter=isPrivateDataEncryptionAllowed) BOOL privateDataEncryptionAllowed; // @synthesize privateDataEncryptionAllowed=_privateDataEncryptionAllowed;
@@ -170,6 +185,7 @@
 @property (readonly, nonatomic) long long savedArticlesMaximumCountWiFi;
 @property (readonly, nonatomic) long long savedArticlesOpenedCutoffTime;
 @property (readonly, nonatomic) NSString *savedStoriesTagID;
+@property (readonly, nonatomic) NSArray *searchConfigurationProfiles;
 @property (readonly, nonatomic) BOOL searchFeedEnabled;
 @property (readonly, nonatomic) NTPBDiscoverMoreVideosInfo *shareDiscoverMoreVideosInfo; // @synthesize shareDiscoverMoreVideosInfo=_shareDiscoverMoreVideosInfo;
 @property (readonly, nonatomic) BOOL shouldShowAlternateHeadlines;
@@ -177,6 +193,7 @@
 @property (readonly, nonatomic) long long singleTopicFeedMinFeedItemsPerRequest;
 @property (readonly, nonatomic) NSString *spotlightChannelID;
 @property (readonly, nonatomic) long long stateRestorationAllowedTimeWindow;
+@property (readonly, nonatomic) BOOL stateRestorationOniPhoneEnabled;
 @property (readonly, copy, nonatomic) NSString *storefrontID; // @synthesize storefrontID=_storefrontID;
 @property (readonly, nonatomic) long long subscriptionsGlobalMeteredCount;
 @property (readonly, nonatomic) long long subscriptionsGracePeriodForTokenVerificationSeconds;
@@ -196,6 +213,7 @@
 @property (readonly, nonatomic) NSString *trendingTagID;
 @property (readonly, nonatomic) long long trendingTopicsRefreshRate;
 @property (readonly, nonatomic) BOOL universalLinksEnabled;
+@property (readonly, nonatomic) BOOL useNewSearchEndpoint;
 @property (readonly, nonatomic) BOOL usePersonalizationVectorAlt;
 @property (readonly, nonatomic) BOOL useSecureConnectionForAssets;
 @property (readonly, nonatomic) BOOL userSegmentationInWidgetAllowed;
@@ -220,12 +238,15 @@
 + (id)defaultAudioConfigRecordIDByLocalizedStorefrontID;
 + (id)defaultConfigurationForStoreFrontID:(id)arg1;
 + (id)defaultForYouRecordConfigIDByLocalizedStorefrontID;
++ (id)defaultFreeEvergreenArticleListIDByLocalizedStorefrontID;
 + (id)defaultMagazinesConfigRecordIDByLocalizedStorefrontID;
++ (id)defaultPaidEvergreenArticleListIDByLocalizedStorefrontID;
 + (id)defaultWidgetRecordConfigIDByLocalizedStorefrontID;
 + (id)languageConfigDictionaryForConfig:(id)arg1 preferredLanguageTags:(id)arg2;
 + (id)overrideForYouConfigID;
 + (id)overrideWidgetSectionConfigID;
 - (void).cxx_destruct;
+- (void)_loadChannelUpsellConfigurations;
 - (void)_loadDiscoverMoreVideosConfiguration;
 - (void)_loadEndpointConfiguration;
 - (void)_loadForYouGroupsConfiguration;
@@ -244,6 +265,7 @@
 - (id)initWithConfigDictionary:(id)arg1 storefrontID:(id)arg2 languageConfigDictionary:(id)arg3 lastModificationDate:(id)arg4;
 - (id)jsonEncodableObject;
 - (id)localizedStorefrontID;
+- (id)paidALaCartePaywallConfigForChannelID:(id)arg1;
 - (id)personalizationTreatment;
 - (id)todayConfigWithIdentifier:(id)arg1 queueConfigs:(id)arg2 backgroundColorLight:(id)arg3 backgroundColorDark:(id)arg4 audioIndicatorColor:(id)arg5;
 

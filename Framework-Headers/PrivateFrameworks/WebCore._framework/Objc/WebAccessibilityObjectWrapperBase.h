@@ -36,8 +36,8 @@ __attribute__((visibility("hidden")))
 - (struct CGPath *)convertPathToScreenSpace:(const struct Path *)arg1;
 - (struct CGRect)convertRectToSpace:(const struct FloatRect *)arg1 space:(int)arg2;
 - (void)detach;
-- (void)detachAXObject;
 - (id)initWithAccessibilityObject:(struct AXCoreObject *)arg1;
+- (BOOL)isIsolatedObject;
 - (struct AXCoreObject *)updateObjectBackingStore;
 
 @end

@@ -70,6 +70,7 @@
 - (struct CGRect)_shiftedBoundsForText:(struct CGRect)arg1;
 - (BOOL)_shouldSendContentChangedNotificationsIfOnlyMarkedTextChanged;
 - (void)applyMetrics;
+- (BOOL)becomeFirstResponder;
 - (void)beginFloatingCursorAtPoint:(struct CGPoint)arg1;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)clearAllTokens;
@@ -85,6 +86,7 @@
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (BOOL)hasContent;
 - (id)init;
+- (struct _NSRange)insertFilteredText:(id)arg1;
 - (void)insertText:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (id)keyCommands;
@@ -102,6 +104,7 @@
 - (void)removeCaretAssertion;
 - (void)removeCompletionAndHighlight;
 - (void)resetClearButtonWithScale:(long long)arg1;
+- (void)resetDeletion;
 - (void)resetMicrophoneButtonWithScale:(long long)arg1;
 - (void)resetPhoneClearButton;
 - (BOOL)resignFirstResponder;

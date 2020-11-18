@@ -334,6 +334,7 @@
 - (BOOL)isMusicArtistActivityAllowed;
 - (BOOL)isMusicServiceAllowed;
 - (BOOL)isMusicVideoViewingAllowed;
+- (BOOL)isNFCAllowed;
 - (BOOL)isNearbyMultiplayerGamingAllowed;
 - (BOOL)isNetworkDriveAccessInFilesAllowed;
 - (BOOL)isNewsAllowed;

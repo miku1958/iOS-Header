@@ -22,6 +22,7 @@
 - (void).cxx_destruct;
 - (id)bindingOf:(id)arg1 named:(id)arg2;
 - (void)dealloc;
+- (id)firstBindingWithName:(id)arg1;
 - (id)init;
 - (id)initWithContentsOf:(id)arg1 error:(id *)arg2;
 - (id)initWithIdentifier:(id)arg1 error:(id *)arg2;

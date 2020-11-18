@@ -38,6 +38,7 @@
     MISSING_TYPE *scrollDebounce;
     MISSING_TYPE *commands;
     MISSING_TYPE *coverViewManager;
+    MISSING_TYPE *keyboardInputMonitor;
 }
 
 - (void).cxx_destruct;

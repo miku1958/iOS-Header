@@ -154,7 +154,7 @@
 - (void)_setSuppressedMessage:(id)arg1 inChatWithGUID:(id)arg2;
 - (id)_sharedAccountController;
 - (id)_sharedMessageStore;
-- (BOOL)_shouldBlackholeGroupChatWithParticipants:(id)arg1 fromIdentifier:(id)arg2 toIdentifier:(id)arg3 account:(id)arg4;
+- (BOOL)_shouldBlackholeGroupChatFromSender:(id)arg1 toRecipient:(id)arg2 withOtherParticipants:(id)arg3 forAccount:(id)arg4;
 - (BOOL)_shouldDropSendingMessage;
 - (void)_storageTimerFired;
 - (BOOL)_storeMessage:(id)arg1 chatIdentifier:(id)arg2 localChat:(id)arg3 style:(unsigned char)arg4 account:(id)arg5 messagesToPostArray:(id)arg6;

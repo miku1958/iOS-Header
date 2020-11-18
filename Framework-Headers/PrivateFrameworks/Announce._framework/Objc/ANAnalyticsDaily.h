@@ -29,6 +29,7 @@
 - (id)_collectPayload;
 - (id)_dailyResponse;
 - (void)_executeBackgroundActivity;
+- (BOOL)_isCoordinationDevice;
 - (void)_recordExecutionTime;
 - (void)_registerRapportDailyRequest;
 - (void)_resetDailyAnnouncements;

@@ -16,6 +16,7 @@
     NSURL *_url;
 }
 
+@property (readonly, nonatomic, getter=isAppleNewsLink) BOOL isAppleNewsLink;
 @property (readonly, nonatomic) LSApplicationProxy *synchronousTargetApplicationProxy;
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 
@@ -23,6 +24,7 @@
 - (void).cxx_destruct;
 - (void)_appLink:(id)arg1 getAppLinkLabel:(id *)arg2 name:(id *)arg3 icon:(id *)arg4;
 - (void)_getAppLinkWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (BOOL)_isApplicationProxyAppleNews:(id)arg1;
 - (long long)_openStrategyForAppLink:(id)arg1;
 - (id)_synchronouslyFetchAppLinkWithError:(id *)arg1;
 - (void)decideOpenStrategyWithCompletionHandler:(CDUnknownBlockType)arg1;

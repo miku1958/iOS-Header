@@ -23,6 +23,7 @@
     double _loupeInnerCornerRadius;
     double _playheadWidth;
     double _filmstripCornerRadius;
+    UIColor *_filmstripBorderColor;
     UIColor *_disabledOverlayColor;
     struct UIEdgeInsets _filmstripViewInsets;
 }
@@ -30,6 +31,7 @@
 @property (strong, nonatomic) UIColor *disabledOverlayColor; // @synthesize disabledOverlayColor=_disabledOverlayColor;
 @property (nonatomic) BOOL fallbackToKeyTimeTracking; // @synthesize fallbackToKeyTimeTracking=_fallbackToKeyTimeTracking;
 @property (nonatomic) BOOL fallbackToPlayheadTracking; // @synthesize fallbackToPlayheadTracking=_fallbackToPlayheadTracking;
+@property (strong, nonatomic) UIColor *filmstripBorderColor; // @synthesize filmstripBorderColor=_filmstripBorderColor;
 @property (nonatomic) double filmstripCornerRadius; // @synthesize filmstripCornerRadius=_filmstripCornerRadius;
 @property (nonatomic) struct UIEdgeInsets filmstripViewInsets; // @synthesize filmstripViewInsets=_filmstripViewInsets;
 @property (nonatomic) double handleAnchorX; // @synthesize handleAnchorX=_handleAnchorX;

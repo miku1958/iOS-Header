@@ -8,6 +8,8 @@
 
 @interface VCPCNNHandKeypointsDetector : NSObject
 {
+    float _std;
+    float _mean;
 }
 
 + (id)detector:(BOOL)arg1 sharedModel:(BOOL)arg2 modelName:(id)arg3;
@@ -16,7 +18,7 @@
 - (int)cvtHeatmaps2Keypoints:(float *)arg1 outHeight:(int)arg2 outWidth:(int)arg3 inHeight:(int)arg4 inWidth:(int)arg5 outChannel:(int)arg6 keypoints:(struct CGPoint *)arg7 keypointConfidence:(float *)arg8 offset:(float)arg9;
 - (int)generateHandKeypoints:(struct CGPoint *)arg1 keypointConfidence:(float *)arg2 offset:(float)arg3;
 - (float *)getInputBuffer:(int)arg1 srcWidth:(int)arg2 cnnInputHeight:(int *)arg3 cnnInputWidth:(int *)arg4 offset:(float *)arg5;
-- (int)handKeypointsDetection:(struct __CVBuffer *)arg1 box:(id)arg2 keypoints:(struct CGPoint [21])arg3 keypointConfidence:(float [21])arg4;
+- (int)handKeypointsDetection:(struct __CVBuffer *)arg1 box:(id)arg2 keypoints:(struct CGPoint [21])arg3 keypointConfidence:(float [21])arg4 forGFT:(BOOL)arg5;
 
 @end
 

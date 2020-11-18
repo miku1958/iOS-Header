@@ -4,10 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class SHMatcherRequest;
+#import <ShazamKit/SHXPCRecognitionProxy-Protocol.h>
+#import <ShazamKit/SHXPCSystemServiceProxy-Protocol.h>
 
-@protocol SHXPCServiceProxy
-- (void)startRecognitionForRequest:(SHMatcherRequest *)arg1;
-- (oneway void)stopRecognition;
+@protocol SHXPCServiceProxy <SHXPCRecognitionProxy, SHXPCSystemServiceProxy>
 @end
 

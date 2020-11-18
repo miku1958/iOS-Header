@@ -6,11 +6,18 @@
 
 #import <UIKit/UIView.h>
 
+@class NSString;
+
 @interface AMSUICommonView : UIView
 {
+    NSString *_accessibilityElementLabel;
 }
 
+@property (readonly, nonatomic) NSString *accessibilityElementLabel; // @synthesize accessibilityElementLabel=_accessibilityElementLabel;
+
+- (void).cxx_destruct;
 - (void)_setup;
+- (id)accessibilityLabel;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

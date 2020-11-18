@@ -37,7 +37,7 @@
     double _retryAfter;
 }
 
-@property (readonly, nonatomic) NSSet *appBlacklist;
+@property (readonly, nonatomic) NSSet *appBlocklist;
 @property (readonly, nonatomic) SSPlistDataReader *cannedCEPValues;
 @property (readonly, nonatomic) SSPlistDataReader *cepDictionary;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;

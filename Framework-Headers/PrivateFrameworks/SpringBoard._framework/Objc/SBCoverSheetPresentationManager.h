@@ -28,6 +28,7 @@
 {
     BOOL _isCoverSheetHostingUnlockedEnvironmentWindows;
     BOOL _hasBeenDismissedSinceKeybagLock;
+    BOOL _hasBeenDismissedSinceKeybagLockAndAuthenticated;
     BOOL _hasBeenDismissedSinceBoot;
     BOOL _activeInterfaceOrientationLocked;
     BOOL _shouldDisplayFakeStatusBar;
@@ -105,6 +106,7 @@
 @property (strong, nonatomic) CSCoverSheetFlyInSettings *flyInSettings; // @synthesize flyInSettings=_flyInSettings;
 @property (nonatomic) BOOL hasBeenDismissedSinceBoot; // @synthesize hasBeenDismissedSinceBoot=_hasBeenDismissedSinceBoot;
 @property (nonatomic) BOOL hasBeenDismissedSinceKeybagLock; // @synthesize hasBeenDismissedSinceKeybagLock=_hasBeenDismissedSinceKeybagLock;
+@property (readonly, nonatomic) BOOL hasBeenDismissedSinceKeybagLockAndAuthenticated; // @synthesize hasBeenDismissedSinceKeybagLockAndAuthenticated=_hasBeenDismissedSinceKeybagLockAndAuthenticated;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SBHomeGestureParticipant *homeGestureParticipant; // @synthesize homeGestureParticipant=_homeGestureParticipant;
 @property (strong, nonatomic) SBCoverSheetIconFlyInAnimator *iconAnimator; // @synthesize iconAnimator=_iconAnimator;

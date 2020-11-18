@@ -71,6 +71,7 @@
     CDStruct_95bda58d _payloadTimerStates;
     CDStruct_95bda58d _payloadTimerTypes;
     CDStruct_95bda58d _payloadUpdateAlarmOperations;
+    CDStruct_95bda58d _payloadUserNotificationTypes;
     CDStruct_95bda58d _payloadVisualCodeTypes;
     CDStruct_95bda58d _payloadWellnessObjectTypes;
     CDStruct_95bda58d _payloadWellnessQueryResultTypes;
@@ -481,6 +482,8 @@
 @property (readonly, nonatomic) unsigned long long payloadURLValuesCount;
 @property (readonly, nonatomic) int *payloadUpdateAlarmOperations;
 @property (readonly, nonatomic) unsigned long long payloadUpdateAlarmOperationsCount;
+@property (readonly, nonatomic) int *payloadUserNotificationTypes;
+@property (readonly, nonatomic) unsigned long long payloadUserNotificationTypesCount;
 @property (readonly, nonatomic) int *payloadVisualCodeTypes;
 @property (readonly, nonatomic) unsigned long long payloadVisualCodeTypesCount;
 @property (copy, nonatomic) NSArray *payloadVoiceCommandDeviceInformations; // @synthesize payloadVoiceCommandDeviceInformations=_payloadVoiceCommandDeviceInformations;
@@ -658,6 +661,7 @@
 - (int)StringAsPayloadTimerStates:(id)arg1;
 - (int)StringAsPayloadTimerTypes:(id)arg1;
 - (int)StringAsPayloadUpdateAlarmOperations:(id)arg1;
+- (int)StringAsPayloadUserNotificationTypes:(id)arg1;
 - (int)StringAsPayloadVisualCodeTypes:(id)arg1;
 - (int)StringAsPayloadWellnessObjectTypes:(id)arg1;
 - (int)StringAsPayloadWellnessQueryResultTypes:(id)arg1;
@@ -814,6 +818,7 @@
 - (void)addPayloadTimerType:(int)arg1;
 - (void)addPayloadURLValue:(id)arg1;
 - (void)addPayloadUpdateAlarmOperation:(int)arg1;
+- (void)addPayloadUserNotificationType:(int)arg1;
 - (void)addPayloadVisualCodeType:(int)arg1;
 - (void)addPayloadVoiceCommandDeviceInformation:(id)arg1;
 - (void)addPayloadVolumeValue:(id)arg1;
@@ -975,6 +980,7 @@
 - (void)clearPayloadTimers;
 - (void)clearPayloadURLValues;
 - (void)clearPayloadUpdateAlarmOperations;
+- (void)clearPayloadUserNotificationTypes;
 - (void)clearPayloadVisualCodeTypes;
 - (void)clearPayloadVoiceCommandDeviceInformations;
 - (void)clearPayloadVolumeValues;
@@ -1199,6 +1205,8 @@
 - (id)payloadURLValueAtIndex:(unsigned long long)arg1;
 - (int)payloadUpdateAlarmOperationAtIndex:(unsigned long long)arg1;
 - (id)payloadUpdateAlarmOperationsAsString:(int)arg1;
+- (int)payloadUserNotificationTypeAtIndex:(unsigned long long)arg1;
+- (id)payloadUserNotificationTypesAsString:(int)arg1;
 - (int)payloadVisualCodeTypeAtIndex:(unsigned long long)arg1;
 - (id)payloadVisualCodeTypesAsString:(int)arg1;
 - (id)payloadVoiceCommandDeviceInformationAtIndex:(unsigned long long)arg1;
@@ -1275,6 +1283,7 @@
 - (void)setPayloadTimerStates:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadTimerTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadUpdateAlarmOperations:(int *)arg1 count:(unsigned long long)arg2;
+- (void)setPayloadUserNotificationTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadVisualCodeTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadWellnessObjectTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadWellnessQueryResultTypes:(int *)arg1 count:(unsigned long long)arg2;

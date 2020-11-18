@@ -9,23 +9,23 @@
 #import <ShazamKit/NSCopying-Protocol.h>
 #import <ShazamKit/NSSecureCoding-Protocol.h>
 
-@class AVAudioTime, NSData, NSDate, NSUUID;
+@class AVAudioTime, NSData, NSDate, NSUUID, SHSignatureMetrics;
 
 @interface SHSignature : NSObject <NSSecureCoding, NSCopying>
 {
     NSData *_dataRepresentation;
+    SHSignatureMetrics *_metrics;
     AVAudioTime *_time;
     NSUUID *_ID;
-    NSDate *_sessionStartDate;
-    NSDate *_signatureStartDate;
+    NSDate *_startDate;
 }
 
 @property (readonly, nonatomic) NSUUID *ID; // @synthesize ID=_ID;
 @property (readonly, nonatomic) NSData *data;
 @property (readonly, nonatomic) NSData *dataRepresentation; // @synthesize dataRepresentation=_dataRepresentation;
 @property (readonly, nonatomic) double length;
-@property (strong, nonatomic) NSDate *sessionStartDate; // @synthesize sessionStartDate=_sessionStartDate;
-@property (strong, nonatomic) NSDate *signatureStartDate; // @synthesize signatureStartDate=_signatureStartDate;
+@property (copy, nonatomic) SHSignatureMetrics *metrics; // @synthesize metrics=_metrics;
+@property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (strong, nonatomic) AVAudioTime *time; // @synthesize time=_time;
 
 + (id)signatureFromData:(id)arg1 atTime:(id)arg2 error:(id *)arg3;
@@ -36,7 +36,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithID:(id)arg1 data:(id)arg2 startTime:(id)arg3 sessionStartDate:(id)arg4 signatureStartDate:(id)arg5;
+- (id)initWithID:(id)arg1 dataRepresentation:(id)arg2 startTime:(id)arg3;
 
 @end
 

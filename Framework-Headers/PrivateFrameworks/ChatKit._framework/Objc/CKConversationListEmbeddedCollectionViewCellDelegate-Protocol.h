@@ -10,5 +10,6 @@
 
 @protocol CKConversationListEmbeddedCollectionViewCellDelegate <NSObject>
 - (void)pinButtonTappedForCell:(CKConversationListEmbeddedCollectionViewCell *)arg1;
+- (double)widthForDeterminingAvatarVisibility;
 @end
 

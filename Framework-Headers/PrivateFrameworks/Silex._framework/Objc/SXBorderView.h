@@ -13,8 +13,6 @@
     UIImage *_image;
 }
 
-@property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
-
 + (Class)layerClass;
 - (void).cxx_destruct;
 - (void)drawRect:(struct CGRect)arg1;

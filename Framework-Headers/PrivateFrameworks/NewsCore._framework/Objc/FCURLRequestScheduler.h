@@ -6,18 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NFUnfairLock, NSMapTable, NSMutableOrderedSet;
+@class NFUnfairLock, NSDate, NSMapTable, NSMutableOrderedSet, NSURLSession;
 
 @interface FCURLRequestScheduler : NSObject
 {
+    NSURLSession *_URLSession;
     NSMutableOrderedSet *_requests;
     NSMapTable *_inFlightURLTasks;
+    unsigned long long _maxInFlightURLTasks;
+    unsigned long long _maxInFlightLowPriorityURLTasks;
     NFUnfairLock *_lock;
+    NSDate *_dateOfLastProgress;
 }
 
-@property (strong, nonatomic) NSMapTable *inFlightURLTasks; // @synthesize inFlightURLTasks=_inFlightURLTasks;
-@property (strong, nonatomic) NFUnfairLock *lock; // @synthesize lock=_lock;
-@property (strong, nonatomic) NSMutableOrderedSet *requests; // @synthesize requests=_requests;
+@property (readonly, nonatomic) NSURLSession *URLSession; // @synthesize URLSession=_URLSession;
+@property (copy, nonatomic) NSDate *dateOfLastProgress; // @synthesize dateOfLastProgress=_dateOfLastProgress;
+@property (readonly, nonatomic) NSMapTable *inFlightURLTasks; // @synthesize inFlightURLTasks=_inFlightURLTasks;
+@property (readonly, nonatomic) NFUnfairLock *lock; // @synthesize lock=_lock;
+@property (readonly, nonatomic) unsigned long long maxInFlightLowPriorityURLTasks; // @synthesize maxInFlightLowPriorityURLTasks=_maxInFlightLowPriorityURLTasks;
+@property (readonly, nonatomic) unsigned long long maxInFlightURLTasks; // @synthesize maxInFlightURLTasks=_maxInFlightURLTasks;
+@property (readonly, nonatomic) NSMutableOrderedSet *requests; // @synthesize requests=_requests;
 
 - (void).cxx_destruct;
 - (void)_applyPriority:(long long)arg1 toRequest:(id)arg2;
@@ -25,9 +33,11 @@
 - (BOOL)_isLowPriority:(long long)arg1;
 - (void)_resumeURLTaskForRequest:(id)arg1;
 - (void)_serviceRequests;
+- (BOOL)_shouldRetryRequest:(id)arg1 withError:(id)arg2;
 - (void)_suspendURLTaskForRequest:(id)arg1;
-- (id)init;
-- (id)scheduleURLRequest:(id)arg1 URLSession:(id)arg2 destination:(long long)arg3 priority:(long long)arg4 loggingKey:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (id)initWithURLSession:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (id)scheduleURLRequest:(id)arg1 destination:(long long)arg2 priority:(long long)arg3 loggingKey:(id)arg4 completion:(CDUnknownBlockType)arg5;
 
 @end
 

@@ -7,33 +7,25 @@
 #import <objc/NSObject.h>
 
 #import <PhotosUICore/PXMovieProviderDelegate-Protocol.h>
-#import <PhotosUICore/UIViewControllerTransitioningDelegate-Protocol.h>
 
 @class NSString, PXMiroMovieProvider, UIViewController;
 
-@interface PXMiroMoviePresenter : NSObject <UIViewControllerTransitioningDelegate, PXMovieProviderDelegate>
+@interface PXMiroMoviePresenter : NSObject <PXMovieProviderDelegate>
 {
     UIViewController *_presentingViewController;
     PXMiroMovieProvider *_miroProvider;
-    UIViewController *_presentedViewController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PXMiroMovieProvider *miroProvider; // @synthesize miroProvider=_miroProvider;
-@property (weak, nonatomic) UIViewController *presentedViewController; // @synthesize presentedViewController=_presentedViewController;
 @property (readonly, weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_backButtonItemTapped:(id)arg1;
 - (void)_enableViewControllerChromeForViewController:(id)arg1;
-- (BOOL)_isCustomTransitionSupportedForMiroMovieViewController:(id)arg1;
 - (long long)_presentationTypeWithPreferredTransitionType:(long long)arg1;
-- (id)_transitionForPresentedOrDismissedViewController:(id)arg1;
-- (id)animationControllerForDismissedController:(id)arg1;
-- (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (id)initWithPresentingViewController:(id)arg1;
 - (BOOL)presentMiroMovieControllerForAssetCollection:(id)arg1 keyAsset:(id)arg2 preferredTransitionType:(long long)arg3;
 - (BOOL)presentMiroMovieViewController:(id)arg1 withPreferredTransitionType:(long long)arg2;

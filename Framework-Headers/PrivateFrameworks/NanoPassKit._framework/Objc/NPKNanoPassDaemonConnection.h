@@ -24,6 +24,7 @@
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_errorHandlerWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectProxySynchronous:(BOOL)arg1 withFailureHandler:(CDUnknownBlockType)arg2;
+- (void)handleApplicationRedirectRequestOnPairedDeviceForPaymentPass:(id)arg1 transaction:(id)arg2;
 - (void)handleMetadataRequestOnPairedDevice:(id)arg1 withAssociatedApplicationIdentifiers:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)noteWillDeleteAccountsSynchronous:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;

@@ -8,7 +8,7 @@
 
 #import <MediaPlayer/MPRemoteCommandDelegate_Internal-Protocol.h>
 
-@class MPAdvanceRepeatModeCommand, MPAdvanceShuffleModeCommand, MPChangePlaybackPositionCommand, MPChangePlaybackRateCommand, MPChangeQueueEndActionCommand, MPChangeRepeatModeCommand, MPChangeShuffleModeCommand, MPFeedbackCommand, MPInsertIntoPlaybackQueueCommand, MPRatingCommand, MPRemoteCommand, MPReorderQueueCommand, MPSetPlaybackQueueCommand, MPSetPlaybackSessionCommand, MPSkipIntervalCommand, MRPlayerPath, NSMutableArray, NSString;
+@class MPAdvanceRepeatModeCommand, MPAdvanceShuffleModeCommand, MPChangePlaybackPositionCommand, MPChangePlaybackRateCommand, MPChangeQueueEndActionCommand, MPChangeRepeatModeCommand, MPChangeShuffleModeCommand, MPFeedbackCommand, MPInsertIntoPlaybackQueueCommand, MPPreloadPlaybackSessionCommand, MPRatingCommand, MPRemoteCommand, MPReorderQueueCommand, MPSetPlaybackQueueCommand, MPSetPlaybackSessionCommand, MPSetPriorityForPlaybackSessionCommand, MPSkipIntervalCommand, MRPlayerPath, NSMutableArray, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MPRemoteCommandCenter : NSObject <MPRemoteCommandDelegate_Internal>
@@ -58,6 +58,9 @@
     MPFeedbackCommand *_addNowPlayingItemToLibraryCommand;
     MPFeedbackCommand *_addItemToLibraryCommand;
     MPSetPlaybackSessionCommand *_setPlaybackSessionCommand;
+    MPPreloadPlaybackSessionCommand *_preloadPlaybackSessionCommand;
+    MPSetPriorityForPlaybackSessionCommand *_setPriorityForPlaybackSessionCommand;
+    MPRemoteCommand *_discardPlaybackSessionCommand;
     MPRemoteCommand *_reshuffleCommand;
     MPChangeQueueEndActionCommand *_changeQueueEndActionCommand;
     NSString *_playerID;
@@ -78,6 +81,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disableAutomaticCanBeNowPlaying; // @synthesize disableAutomaticCanBeNowPlaying=_disableAutomaticCanBeNowPlaying;
 @property (readonly, nonatomic) MPRemoteCommand *disableLanguageOptionCommand; // @synthesize disableLanguageOptionCommand=_disableLanguageOptionCommand;
+@property (readonly, nonatomic) MPRemoteCommand *discardPlaybackSessionCommand; // @synthesize discardPlaybackSessionCommand=_discardPlaybackSessionCommand;
 @property (readonly, nonatomic) MPFeedbackCommand *dislikeCommand; // @synthesize dislikeCommand=_dislikeCommand;
 @property (readonly, nonatomic) MPRemoteCommand *enableLanguageOptionCommand; // @synthesize enableLanguageOptionCommand=_enableLanguageOptionCommand;
 @property (readonly) unsigned long long hash;
@@ -88,6 +92,7 @@
 @property (readonly, nonatomic) MPRemoteCommand *playCommand; // @synthesize playCommand=_playCommand;
 @property (readonly, nonatomic) MPRemoteCommand *playItemInQueueCommand; // @synthesize playItemInQueueCommand=_playItemInQueueCommand;
 @property (readonly, copy, nonatomic) NSString *playerID; // @synthesize playerID=_playerID;
+@property (readonly, nonatomic) MPPreloadPlaybackSessionCommand *preloadPlaybackSessionCommand; // @synthesize preloadPlaybackSessionCommand=_preloadPlaybackSessionCommand;
 @property (readonly, nonatomic) MPRemoteCommand *prepareForSetPlaybackQueueCommand; // @synthesize prepareForSetPlaybackQueueCommand=_prepareForSetPlaybackQueueCommand;
 @property (readonly, nonatomic) MPRemoteCommand *previousTrackCommand; // @synthesize previousTrackCommand=_previousTrackCommand;
 @property (readonly, nonatomic) MPRatingCommand *ratingCommand; // @synthesize ratingCommand=_ratingCommand;
@@ -98,6 +103,7 @@
 @property (readonly, nonatomic) MPRemoteCommand *seekForwardCommand; // @synthesize seekForwardCommand=_seekForwardCommand;
 @property (readonly, nonatomic) MPSetPlaybackQueueCommand *setPlaybackQueueCommand; // @synthesize setPlaybackQueueCommand=_setPlaybackQueueCommand;
 @property (readonly, nonatomic) MPSetPlaybackSessionCommand *setPlaybackSessionCommand; // @synthesize setPlaybackSessionCommand=_setPlaybackSessionCommand;
+@property (readonly, nonatomic) MPSetPriorityForPlaybackSessionCommand *setPriorityForPlaybackSessionCommand; // @synthesize setPriorityForPlaybackSessionCommand=_setPriorityForPlaybackSessionCommand;
 @property (readonly, nonatomic) MPSkipIntervalCommand *skipBackwardCommand; // @synthesize skipBackwardCommand=_skipBackwardCommand;
 @property (readonly, nonatomic) MPSkipIntervalCommand *skipForwardCommand; // @synthesize skipForwardCommand=_skipForwardCommand;
 @property (readonly, nonatomic) MPRemoteCommand *specialSeekBackwardCommand; // @synthesize specialSeekBackwardCommand=_specialSeekBackwardCommand;

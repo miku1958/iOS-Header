@@ -46,8 +46,10 @@
 - (BOOL)hk_isDatabaseSchemaRolledBackError;
 - (BOOL)hk_isDatabaseTransactionError;
 - (BOOL)hk_isErrorInDomain:(id)arg1 code:(long long)arg2;
+- (BOOL)hk_isFeatureDisabledError;
 - (BOOL)hk_isHealthKitError;
 - (BOOL)hk_isHealthKitErrorWithCode:(long long)arg1;
+- (BOOL)hk_isHealthStoreUnavailableError;
 - (BOOL)hk_isInternalFailureError;
 - (BOOL)hk_isInvalidArgumentError;
 - (BOOL)hk_isRequiredAuthorizationError;

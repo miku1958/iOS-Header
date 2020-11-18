@@ -8,7 +8,6 @@
 
 @class NSArray, NSDictionary, NSIndexSet;
 
-__attribute__((visibility("hidden")))
 @interface IKDiffEvaluator : NSObject
 {
     NSArray *_objects;

@@ -10,17 +10,17 @@
 #import <Silex/SXVideoAdProviding-Protocol.h>
 
 @class NSString, SXAdController, SXPrerollAdResponse, SXVideoAdStateManager, SXVideoComponent, UIButton, UIView;
-@protocol SVVideoMetadata, SVVisibilityMonitoring, SXAnalyticsReporting, SXVASTAnalyticsEventInfoFactory, SXVideoAdViewControllerProviding;
+@protocol SXAnalyticsReporting, SXVASTAnalyticsEventInfoFactory, SXVideoAdViewControllerProviding, SXVideoMetadata, SXVisibilityMonitoring;
 
 @interface SXVideoAdProvider : NSObject <ADBannerViewInternalDelegate, SXVideoAdProviding>
 {
     id<SXAnalyticsReporting> _analyticsReporter;
     SXPrerollAdResponse *_response;
-    id<SVVideoMetadata> _metadata;
+    id<SXVideoMetadata> _metadata;
     id<SXVideoAdViewControllerProviding> _fullscreenViewControllerProvider;
     SXVideoAdStateManager *_stateManager;
-    id<SVVisibilityMonitoring> _videoVisibilityMonitor;
-    id<SVVisibilityMonitoring> _videoPlayerVisibilityMonitor;
+    id<SXVisibilityMonitoring> _videoVisibilityMonitor;
+    id<SXVisibilityMonitoring> _videoPlayerVisibilityMonitor;
     id<SXVASTAnalyticsEventInfoFactory> _analyticsEventInfoFactory;
     SXAdController *_adController;
     SXVideoComponent *_component;
@@ -36,15 +36,15 @@
 @property (readonly, nonatomic) BOOL hasAction;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double impressionThreshold;
-@property (weak, nonatomic) id<SVVideoMetadata> metadata; // @synthesize metadata=_metadata;
+@property (weak, nonatomic) id<SXVideoMetadata> metadata; // @synthesize metadata=_metadata;
 @property (readonly, nonatomic) UIView *metricsView;
 @property (readonly, nonatomic) UIButton *privacyMarker;
 @property (strong, nonatomic) SXPrerollAdResponse *response; // @synthesize response=_response;
 @property (readonly, nonatomic) unsigned long long skipThreshold;
 @property (readonly, nonatomic) SXVideoAdStateManager *stateManager; // @synthesize stateManager=_stateManager;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) id<SVVisibilityMonitoring> videoPlayerVisibilityMonitor; // @synthesize videoPlayerVisibilityMonitor=_videoPlayerVisibilityMonitor;
-@property (readonly, nonatomic) id<SVVisibilityMonitoring> videoVisibilityMonitor; // @synthesize videoVisibilityMonitor=_videoVisibilityMonitor;
+@property (readonly, nonatomic) id<SXVisibilityMonitoring> videoPlayerVisibilityMonitor; // @synthesize videoPlayerVisibilityMonitor=_videoPlayerVisibilityMonitor;
+@property (readonly, nonatomic) id<SXVisibilityMonitoring> videoVisibilityMonitor; // @synthesize videoVisibilityMonitor=_videoVisibilityMonitor;
 
 - (void).cxx_destruct;
 - (void)adVisibilityStateChanged;

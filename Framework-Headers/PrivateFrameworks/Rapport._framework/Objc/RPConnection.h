@@ -87,6 +87,7 @@
     RPIdentity *_forcedPeerIdentity;
     RPIdentity *_forcedSelfIdentity;
     CUHomeKitManager *_homeKitManager;
+    CDUnknownBlockType _homeKitUserIdentifierHandler;
     NSString *_identifierOverride;
     RPIdentityDaemon *_identityDaemon;
     RPIdentity *_identityResolved;
@@ -130,6 +131,7 @@
 @property (strong, nonatomic) RPIdentity *forcedSelfIdentity; // @synthesize forcedSelfIdentity=_forcedSelfIdentity;
 @property (copy, nonatomic) CDUnknownBlockType hidePasswordHandler; // @synthesize hidePasswordHandler=_hidePasswordHandler;
 @property (strong, nonatomic) CUHomeKitManager *homeKitManager; // @synthesize homeKitManager=_homeKitManager;
+@property (copy, nonatomic) CDUnknownBlockType homeKitUserIdentifierHandler; // @synthesize homeKitUserIdentifierHandler=_homeKitUserIdentifierHandler;
 @property (copy, nonatomic) NSString *identifierOverride; // @synthesize identifierOverride=_identifierOverride;
 @property (strong, nonatomic) RPIdentityDaemon *identityDaemon; // @synthesize identityDaemon=_identityDaemon;
 @property (strong, nonatomic) RPIdentity *identityResolved; // @synthesize identityResolved=_identityResolved;

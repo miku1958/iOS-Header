@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSSet;
+@class NSMutableDictionary, NSSet, UIViewController;
 
 __attribute__((visibility("hidden")))
 @interface _VUIAppDocumentUpdateEventObserverContext : NSObject
@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
     NSSet *_eventDescriptors;
     NSMutableDictionary *_refreshTimerByEventDescriptor;
     CDUnknownBlockType _refreshTimerFiredBlock;
+    UIViewController *_viewController;
 }
 
 @property (copy, nonatomic) NSSet *eventDescriptors; // @synthesize eventDescriptors=_eventDescriptors;
 @property (strong, nonatomic) NSMutableDictionary *refreshTimerByEventDescriptor; // @synthesize refreshTimerByEventDescriptor=_refreshTimerByEventDescriptor;
 @property (copy, nonatomic) CDUnknownBlockType refreshTimerFiredBlock; // @synthesize refreshTimerFiredBlock=_refreshTimerFiredBlock;
+@property (strong, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 
 - (void).cxx_destruct;
 - (void)_cancelAllRefreshTimers;

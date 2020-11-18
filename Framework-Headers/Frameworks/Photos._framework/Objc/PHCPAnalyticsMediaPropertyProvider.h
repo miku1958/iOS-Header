@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <Photos/CPAnalyticsDynamicPropertyProvider-Protocol.h>
 #import <Photos/CPAnalyticsPhotoKitPropertyProvider-Protocol.h>
 
 @class NSString, PHPhotoLibrary;
 
-@interface PHCPAnalyticsMediaPropertyProvider : NSObject <CPAnalyticsPhotoKitPropertyProvider>
+@interface PHCPAnalyticsMediaPropertyProvider : NSObject <CPAnalyticsPhotoKitPropertyProvider, CPAnalyticsDynamicPropertyProvider>
 {
     PHPhotoLibrary *_photoLibrary;
 }

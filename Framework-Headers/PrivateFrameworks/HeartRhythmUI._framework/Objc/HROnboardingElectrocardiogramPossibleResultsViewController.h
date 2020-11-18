@@ -9,12 +9,11 @@
 #import <HeartRhythmUI/HRLinkTextViewDelegate-Protocol.h>
 #import <HeartRhythmUI/HRStackedButtonViewDelegate-Protocol.h>
 
-@class HKElectrocardiogram, HKHealthStore, HROnboardingElectrocardiogramResultView, HRStackedButtonView, NSLayoutAnchor, NSLayoutConstraint, UILabel;
+@class HKElectrocardiogram, HROnboardingElectrocardiogramResultView, HRStackedButtonView, NSLayoutAnchor, NSLayoutConstraint, UILabel;
 
 @interface HROnboardingElectrocardiogramPossibleResultsViewController : HROnboardingBaseViewController <HRLinkTextViewDelegate, HRStackedButtonViewDelegate>
 {
     HKElectrocardiogram *_electrocardiogram;
-    HKHealthStore *_healthStore;
     UILabel *_titleLabel;
     HROnboardingElectrocardiogramResultView *_sinusRhythmResultReview;
     HROnboardingElectrocardiogramResultView *_atrialFibrillationResultView;
@@ -35,7 +34,6 @@
 @property (strong, nonatomic) UILabel *disclaimerLabel; // @synthesize disclaimerLabel=_disclaimerLabel;
 @property (strong, nonatomic) NSLayoutConstraint *disclaimerLabelTopConstraint; // @synthesize disclaimerLabelTopConstraint=_disclaimerLabelTopConstraint;
 @property (strong, nonatomic) HKElectrocardiogram *electrocardiogram; // @synthesize electrocardiogram=_electrocardiogram;
-@property (strong, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property (strong, nonatomic) HROnboardingElectrocardiogramResultView *highOrLowHeartRateResultView; // @synthesize highOrLowHeartRateResultView=_highOrLowHeartRateResultView;
 @property (strong, nonatomic) HROnboardingElectrocardiogramResultView *inconclusiveResultView; // @synthesize inconclusiveResultView=_inconclusiveResultView;
 @property (strong, nonatomic) HROnboardingElectrocardiogramResultView *onlyResultView; // @synthesize onlyResultView=_onlyResultView;
@@ -61,9 +59,7 @@
 - (void)_setUpTitle;
 - (void)_setUpTitleConstraints;
 - (void)_updateForCurrentSizeCategory;
-- (id)algorithmVersion;
-- (id)initForOnboarding:(BOOL)arg1;
-- (id)initWithHealthStore:(id)arg1 onboarding:(BOOL)arg2;
+- (id)initForOnboarding:(BOOL)arg1 upgradingFromAlgorithmVersion:(long long)arg2;
 - (id)initWithSample:(id)arg1;
 - (void)linkTextView:(id)arg1 didTapOnLinkInRange:(struct _NSRange)arg2;
 - (void)setUpConstraints;

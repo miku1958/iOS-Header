@@ -8,6 +8,7 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface _MRGameControllerDigitizerProtobuf : PBCodable <NSCopying>
 {
     unsigned long long _timestamp;
@@ -22,22 +23,11 @@
     } _has;
 }
 
-@property (nonatomic) BOOL hasTimestamp;
-@property (nonatomic) BOOL hasTouchDown;
-@property (nonatomic) BOOL hasX;
-@property (nonatomic) BOOL hasY;
-@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
-@property (nonatomic) BOOL touchDown; // @synthesize touchDown=_touchDown;
-@property (nonatomic) double x; // @synthesize x=_x;
-@property (nonatomic) double y; // @synthesize y=_y;
-
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -32,8 +32,7 @@
 - (void)enqueuePresentable:(id)arg1 withOptions:(unsigned long long)arg2 userInfo:(id)arg3;
 - (id)peekPresentable;
 - (void)presentableQueue:(id)arg1 didDequeuePresentableWithPendingIdentifier:(id)arg2;
-- (id)pullAllPresentablesWithRequesterIdentifier:(id)arg1;
-- (id)pullPresentablesWithRequestIdentifier:(id)arg1 andRequesterIdentifier:(id)arg2;
+- (id)pullPresentablesWithIdentification:(id)arg1;
 - (BOOL)setPenderSuspended:(BOOL)arg1 forRequesterWithIdentifier:(id)arg2 reason:(id)arg3;
 - (BOOL)setSuspended:(BOOL)arg1 forReason:(id)arg2;
 

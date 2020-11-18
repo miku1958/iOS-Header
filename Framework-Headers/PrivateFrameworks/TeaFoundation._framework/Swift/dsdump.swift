@@ -7,18 +7,9 @@
 	// method
 	// method
  }
- protocol TeaFoundation.SceneStateMonitor // 7 requirements
+ protocol TeaFoundation.SceneStateMonitor // 9 requirements
  {
 	// method
-	// method
-	// method
-	// method
-	// method
-	// method
-	// method
- }
- protocol TeaFoundation.ApplicationStateMonitor // 8 requirements
- {
 	// method
 	// method
 	// method
@@ -28,10 +19,14 @@
 	// method
 	// method
  }
- protocol TeaFoundation.ApplicationStateManagerType // 7 requirements
+ protocol TeaFoundation.ApplicationStateMonitor // 3 requirements
  {
 	// method
 	// method
+	// method
+ }
+ protocol TeaFoundation.ApplicationStateManagerType // 5 requirements
+ {
 	// method
 	// method
 	// method
@@ -119,8 +114,10 @@
  {
 	// method
  }
- protocol TeaFoundation.SceneStateManagerType // 10 requirements
+ protocol TeaFoundation.SceneStateManagerType // 12 requirements
  {
+	// method
+	// method
 	// method
 	// method
 	// method
@@ -159,16 +156,6 @@
 	// method
 	// method
 	// method
-	// method
-	// method
-	// method
- }
- protocol TeaFoundation.HandleNotificationDiscerner // 1 requirements
- {
-	// method
- }
- protocol TeaFoundation.NotificationHandlerType // 3 requirements
- {
 	// method
 	// method
 	// method
@@ -220,29 +207,23 @@
 	// Properties
 	var __sig : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var __opaque : cE
+	var __opaque : •+
  }
 
  struct __C.os_unfair_lock_options_t {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : 'F
+	let rawValue : ,
  }
 
  enum __C.objc_AssociationPolicy { }
-
- struct __C.UNNotificationPresentationOptions {
-
-	// Properties
-	let rawValue : UInt
- }
 
  struct __C.os_unfair_lock_s {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _os_unfair_lock_opaque : 'F
+	var _os_unfair_lock_opaque : ,
  }
 
  struct __C.FileAttributeKey {
@@ -259,7 +240,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var cacheUserDefaultsEntries : UserDefaultsEntry
 
 	// Swift methods
-	0x23f0  class func DebugCacheRegistry.__allocating_init() // init 
+	0x1f10  class func DebugCacheRegistry.__allocating_init() // init 
  }
 
  struct TeaFoundation.UserDefaultsEntry {
@@ -275,7 +256,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case object : JSON
 	case array : JSON
 	case string : String
-	case number : Double
+	case number : String
 	case true  
 	case false  
 	case null  
@@ -312,7 +293,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let createdDate : 3
+	let createdDate : M
 	let comment : String
 	let timeInterval : Double
  }
@@ -342,7 +323,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var objects : [Swift.AnyObject]
 
 	// Swift methods
-	0xb940  class func DisposableBag.__allocating_init(disposeOn:) // init 
+	0xd670  class func DisposableBag.__allocating_init(disposeOn:) // init 
  }
 
  class TeaFoundation.SingletonPool : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -351,7 +332,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var pool : Key
 
 	// Swift methods
-	0xbfe0  class func SingletonPool.__allocating_init() // init 
+	0xdd20  class func SingletonPool.__allocating_init() // init 
  }
 
  class TeaFoundation.Localized : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -373,6 +354,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case cancelled  
 	case abandoned  
+	case timedOut  
  }
 
  class TeaFoundation.Promise {
@@ -384,7 +366,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var state : State
 
 	// Swift methods
-	0x19fc0  class func StartupTaskManager.__allocating_init() // init 
+	0x19a90  class func StartupTaskManager.__allocating_init() // init 
  }
 
  enum TeaFoundation.State {
@@ -411,7 +393,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var closures : [()]
 
 	// Swift methods
-	0x21440  class func Gate.__allocating_init(name:queue:) // init 
+	0x225b0  class func Gate.__allocating_init(name:queue:) // init 
  }
 
  enum TeaFoundation.ReferenceServiceError {
@@ -427,7 +409,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var typeServices : ReferenceType
 
 	// Swift methods
-	0x22b30  class func ReferenceService.__allocating_init() // init 
+	0x23ca0  class func ReferenceService.__allocating_init() // init 
  }
 
  enum TeaFoundation.ReferenceCodingKeys {
@@ -464,7 +446,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var container : e+
+	var container : ×
 	let pool : ReferenceDecodingPool
  }
 
@@ -474,8 +456,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var references : ReferenceType
 
 	// Swift methods
-	0x2a7e0  class func ReferenceDecodingPool.__allocating_init() // init 
-	0x29d00  class func ReferenceDecodingPool.__allocating_init(references:) // init 
+	0x2bbd0  class func ReferenceDecodingPool.__allocating_init() // init 
+	0x2b0f0  class func ReferenceDecodingPool.__allocating_init(references:) // init 
  }
 
  class TeaFoundation.SyncObservable {
@@ -504,24 +486,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var monitors : DisposableMonitor
 
 	// Swift methods
-	0x31870  class func ApplicationStateManagerIOS.__allocating_init() // init 
+	0x32770  class func ApplicationStateManagerIOS.__allocating_init() // init 
  }
 
  class TeaFoundation.ApplicationStateManagerMacOS : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ApplicationStateManagerType {
 
 	// Properties
 	var monitors : DisposableMonitor
-	var isWindowForeground : Bool
-	var isBecomingActive : Bool
-
-	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb6fc00032340 (0x6fc00032340) in binary!
-	0xb6f0  @objc ApplicationStateManagerMacOS.(null) <stripped>
-WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff8e998  @objc ApplicationStateManagerMacOS.(null) <stripped>
 
 	// Swift methods
-	0x33760  class func ApplicationStateManagerMacOS.__allocating_init() // init 
+	0x34200  class func ApplicationStateManagerMacOS.__allocating_init() // init 
  }
 
  class TeaFoundation.DisposableMonitor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -540,6 +514,14 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	case any  
  }
 
+ enum TeaFoundation.RemoteNotificationFetchResult {
+
+	// Properties
+	case noData  
+	case newData  
+	case failed  
+ }
+
  class TeaFoundation.RemoteNotificationManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
@@ -547,7 +529,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	var whenActiveBlocks : [()]
 
 	// Swift methods
-	0x35980  class func RemoteNotificationManager.__allocating_init() // init 
+	0x34380  class func RemoteNotificationManager.__allocating_init() // init 
  }
 
  class TeaFoundation.DisposableHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -572,7 +554,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var currentLocale : ¿ // +0x0 (0x0)
+	var currentLocale : / // +0x0 (0x0)
 	var changeObserver : NSObject? // +0x0 (0x8)
 
 	// Swift methods
@@ -635,7 +617,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let lock : UnfairLock
 
 	// Swift methods
-	0x426e0  class func DeviceStorageManager.__allocating_init() // init 
+	0x3ff20  class func DeviceStorageManager.__allocating_init() // init 
  }
 
  class TeaFoundation.DisposablePurgeable : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -669,14 +651,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class TeaFoundation.ReferenceDecoder : _TeaJSONDecoder {
 	// Swift methods
-	0x46f70  func <stripped> // method 
+	0x44a00  func <stripped> // method 
  }
 
  struct TeaFoundation.ReferenceEncodingContainer {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var container : ‘+
+	var container : 
 	let pool : ReferenceEncodingPool
  }
 
@@ -692,9 +674,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let object : A?
 	let signposts : Signpost
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startDate : 3
+	let startDate : M
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let endDate : 3
+	let endDate : M
 	let comment : String
  }
 
@@ -718,7 +700,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case success : (value: A)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case failed : )
+	case failed : »
  }
 
  enum TeaFoundation.Errors {
@@ -729,7 +711,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class TeaFoundation.BaseCallbackDefinition : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x4cb20  func <stripped> // getter 
+	0x4a6c0  func <stripped> // getter 
  }
 
  class TeaFoundation.CallbackDefinition {
@@ -743,7 +725,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case invalidTestData : )
+	case invalidTestData : »
 	case missingTestData  
  }
 
@@ -756,7 +738,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class TeaFoundation.ManagerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa56c000323d0 (0x56c000323d0) in binary!
+WARNING: couldn't find address 0xa15c0002e538 (0x15c0002e538) in binary!
 	0x18000000c  @objc ManagerAssembly.(null) <stripped>
  }
 
@@ -764,7 +746,7 @@ WARNING: couldn't find address 0xa56c000323d0 (0x56c000323d0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let createdDate : 3
+	let createdDate : M
 	var signposts : Signpost
  }
 
@@ -783,7 +765,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let callback : CallbackRegistrationType
 
 	// Swift methods
-	0x540f0  class func ProxyContainer.__allocating_init(containerRegistry:) // init 
+	0x53150  class func ProxyContainer.__allocating_init(containerRegistry:) // init 
  }
 
  class TeaFoundation.AsyncBlockOperation {
@@ -798,7 +780,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case error : ßE
+	case error : ,
 	case data : A
 	case uninitialized  
  }
@@ -818,7 +800,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case resolved : A1
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case rejected : ßE
+	case rejected : ,
 	case cancelled  
  }
 
@@ -835,7 +817,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let group : OS_dispatch_group
 
 	// Swift methods
-	0x5e0f0  class func Synchronizer.__allocating_init() // init 
+	0x5cd90  class func Synchronizer.__allocating_init() // init 
  }
 
  enum TeaFoundation.ReferenceCodingError {
@@ -863,7 +845,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let value : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let enteredAt : 3
+	let enteredAt : M
  }
 
  class TeaFoundation.URLSessionPool : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -874,14 +856,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let lock : UnfairLock
 
 	// Swift methods
-	0x61f60  class func URLSessionPool.__allocating_init(size:configuration:delegate:delegateQueue:) // init 
+	0x60ec0  class func URLSessionPool.__allocating_init(size:configuration:delegate:delegateQueue:) // init 
  }
 
  struct TeaFoundation.SignpostReporter {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let createdDate : 3
+	let createdDate : M
 	var entries : SignpostEntry
  }
 
@@ -891,12 +873,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let container : Container
 
 	// ObjC -> Swift bridged methods
-	0xb6a0  dispatch thunk of static ProcessInfoValueType.from<A>(string:)
+WARNING: couldn't find address 0xa12c0002e508 (0x12c0002e508) in binary!
+	0xb1e0  @objc BridgedContainer.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffcfe08  @objc BridgedContainer.(null) <stripped>
+	0xfffd7948  @objc BridgedContainer.(null) <stripped>
 
 	// Swift methods
-	0x629f0  class func BridgedContainer.__allocating_init(_:) // init 
+	0x61960  class func BridgedContainer.__allocating_init(_:) // init 
  }
 
  class TeaFoundation.AsyncObservable {
@@ -914,7 +897,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	var workers : DisposableWorker
 
 	// Swift methods
-	0x63d20  class func BackgroundFetchManager.__allocating_init() // init 
+	0x62d50  class func BackgroundFetchManager.__allocating_init() // init 
  }
 
  class TeaFoundation.DisposableWorker : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -941,7 +924,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	var context : Context
 
 	// Swift methods
-	0x658d0  class func ProxyResolver.__allocating_init(objcResolver:publicResolver:privateResolver:) // init 
+	0x64a50  class func ProxyResolver.__allocating_init(objcResolver:publicResolver:privateResolver:) // init 
  }
 
  class TeaFoundation.Accessor {
@@ -1064,7 +1047,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	// Properties
 	let safe : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let container : 
+	let container : Ãÿ
  }
 
  struct TeaFoundation.SafeishSingleValueDecodingContainer {
@@ -1072,7 +1055,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let safe : Bool // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let container : ; // +0x8
+	let container : å // +0x8
  }
 
  struct TeaFoundation.SafeishUnkeyedDecodingContainer {
@@ -1080,7 +1063,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let safe : Bool // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var container : k // +0x8
+	var container :  // +0x8
  }
 
  struct TeaFoundation.Anything { }
@@ -1142,7 +1125,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class TeaFoundation.ProviderAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa51c00032380 (0x51c00032380) in binary!
+WARNING: couldn't find address 0xa10c0002e4e8 (0x10c0002e4e8) in binary!
 	0x18000000c  @objc ProviderAssembly.(null) <stripped>
  }
 
@@ -1156,7 +1139,7 @@ WARNING: couldn't find address 0xa51c00032380 (0x51c00032380) in binary!
 	let callbackStore : CallbackStore
 
 	// Swift methods
-	0x948f0  class func Container.__allocating_init(singletonPool:) // init 
+	0x942b0  class func Container.__allocating_init(singletonPool:) // init 
  }
 
  enum TeaFoundation.TestSuite {
@@ -1209,17 +1192,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var keyDecodingStrategy : KeyDecodingStrategy
 
 	// Swift methods
-	0x985f0  func <stripped> // getter 
-	0x98620  func <stripped> // setter 
-	0x98660  func <stripped> // modifyCoroutine 
-	0x98690  func <stripped> // getter 
-	0x986d0  func <stripped> // setter 
-	0x98720  func <stripped> // modifyCoroutine 
-	0x98750  func <stripped> // getter 
-	0x98790  func <stripped> // setter 
-	0x987d0  func <stripped> // modifyCoroutine 
-	0x991c0  class func _TeaJSONDecoder.__allocating_init() // init 
-	0x98810  func <stripped> // method 
+	0x97fb0  func <stripped> // getter 
+	0x97fe0  func <stripped> // setter 
+	0x98020  func <stripped> // modifyCoroutine 
+	0x98050  func <stripped> // getter 
+	0x98090  func <stripped> // setter 
+	0x980e0  func <stripped> // modifyCoroutine 
+	0x98110  func <stripped> // getter 
+	0x98150  func <stripped> // setter 
+	0x98190  func <stripped> // modifyCoroutine 
+	0x98b80  class func _TeaJSONDecoder.__allocating_init() // init 
+	0x981d0  func <stripped> // method 
  }
 
  enum TeaFoundation.DateDecodingStrategy {
@@ -1227,8 +1210,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case formatted : NSDateFormatter
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case custom : ‹
-
+	case custom : ó
 	case deferredToDate  
 	case secondsSince1970  
 	case millisecondsSince1970  
@@ -1300,11 +1282,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let assemblies : [NFAssembly]
 
 	// ObjC -> Swift bridged methods
-	0xa4e0  method lookup function for LRUCache
-WARNING: couldn't find address 0xb644000321d0 (0x644000321d0) in binary!
+WARNING: couldn't find address 0xa0dc0002e360 (0xdc0002e360) in binary!
+	0xa0d0  @objc Assembly.(null) <stripped>
+WARNING: couldn't find address 0xb1840002e350 (0x1840002e350) in binary!
 	0x28000000c  @objc Assembly.(null) <stripped>
-WARNING: couldn't find address 0xa4bc00032320 (0x4bc00032320) in binary!
-	0xb620  @objc Assembly.(null) <stripped>
+WARNING: couldn't find address 0xa0ac0002e488 (0xac0002e488) in binary!
+	0xb160  @objc Assembly.(null) <stripped>
  }
 
  class TeaFoundation.Node {
@@ -1319,7 +1302,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	case expectedArray :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case keyNotFound : }
+	case keyNotFound : ?
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	case integerOutOfRange :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
@@ -1338,13 +1321,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case wrongTypeForKey :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	case wrongTypeForIndex :  empty-list 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case cannotDecodeNumeric :  empty-list 
  }
 
  class TeaFoundation.JSONParser : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let data : a-
+	let data : Ñ
 	let endIndex : Int
 	var index : Int
 	var line : Int
@@ -1385,42 +1370,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class TeaFoundation.ObjectAssociation {
- enum TeaFoundation.RemoteNotificationFetchResult {
-
-	// Properties
-	case noData  
-	case newData  
-	case failed  
- }
-
- enum TeaFoundation.NotificationHandlerPattern {
-
-	// Properties
-	case category : String
-	case custom : HandleNotificationDiscerner
-	case any  
- }
-
- enum TeaFoundation.NotificationResponseError {
-
-	// Properties
-	case responseHandlerMismatch  
- }
-
- class TeaFoundation.NotificationHandlerManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	var handlers : NotificationHandlerType
-
-	// Swift methods
-	0xb23e0  class func NotificationHandlerManager.__allocating_init() // init 
- }
-
  struct TeaFoundation.ReferenceData {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let data : a- // +0x0
+	let data : Ñ // +0x0
 	let pool : ReferenceEncodingPool // +0x10
  }
 
@@ -1439,17 +1393,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let context : Context
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa4bc00032320 (0x4bc00032320) in binary!
-	0xb620  @objc ProxyContext.(null) <stripped>
+WARNING: couldn't find address 0xa0ac0002e488 (0xac0002e488) in binary!
+	0xb160  @objc ProxyContext.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffff5638  @objc ProxyContext.(null) <stripped>
+	0xffff54f8  @objc ProxyContext.(null) <stripped>
 
 	// Swift methods
  }
 
  class TeaFoundation.ServiceAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa49c00032300 (0x49c00032300) in binary!
+WARNING: couldn't find address 0xa08c0002e468 (0x8c0002e468) in binary!
 	0x18000000c  @objc ServiceAssembly.(null) <stripped>
  }
 
@@ -1493,7 +1447,7 @@ WARNING: couldn't find address 0xa49c00032300 (0x49c00032300) in binary!
 	let options : os_unfair_lock_options_t
 
 	// Swift methods
-	0xbc770  class func UnfairLock.__allocating_init(options:) // init 
+	0xb44b0  class func UnfairLock.__allocating_init(options:) // init 
  }
 
  struct TeaFoundation.Options {
@@ -1508,7 +1462,7 @@ WARNING: couldn't find address 0xa49c00032300 (0x49c00032300) in binary!
 	var mutex : _opaque_pthread_mutex_t
 
 	// Swift methods
-	0xbc880  class func MutexLock.__allocating_init() // init 
+	0xb45c0  class func MutexLock.__allocating_init() // init 
  }
 
  struct TeaFoundation.AddressCache {
@@ -1531,9 +1485,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startDate : 3
+	let startDate : M
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let endDate : 3
+	let endDate : M
 	let entries : SignpostEntry
  }
 
@@ -1543,7 +1497,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var references : ReferenceType
 
 	// Swift methods
-	0xbecb0  class func ReferenceEncodingPool.__allocating_init(from:) // init 
+	0xb6a10  class func ReferenceEncodingPool.__allocating_init(from:) // init 
  }
 
  enum TeaFoundation.CodingKeys {

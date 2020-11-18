@@ -23,11 +23,13 @@
 @property (readonly, copy, nonatomic) NSString *templateName; // @synthesize templateName=_templateName;
 @property (readonly, copy, nonatomic) NSDictionary *templateTree; // @synthesize templateTree=_templateTree;
 
++ (id)_coalesceNode:(struct _xmlNode *)arg1 overridingNode:(struct _xmlNode *)arg2 forcedTemplateName:(id)arg3;
 + (void)_coalesceTrees:(struct _xmlNode *)arg1 overridingTree:(struct _xmlNode *)arg2 forcedTemplateName:(id)arg3;
 + (void)_findNodesInXmlTree:(struct _xmlDoc *)arg1 styleNode:(struct _xmlNode **)arg2 templateNode:(struct _xmlNode **)arg3;
 + (void)_resolveEmbeddedTemplatesInXmlTree:(struct _xmlNode *)arg1;
 + (id)_styleSheetForTemplateName:(id)arg1;
-+ (id)_templateTreeNodeWithXMLNode:(struct _xmlNode *)arg1 parentNode:(id)arg2;
++ (id)_templateNodeWithXMLNode:(struct _xmlNode *)arg1 parentNode:(id)arg2;
++ (id)_templateTreeWithXMLTree:(struct _xmlNode *)arg1 parentNode:(id)arg2;
 + (struct _xmlDoc *)_xmlTreeForTemplateName:(id)arg1;
 + (struct _xmlDoc *)_xmlTreeWithData:(id)arg1 error:(id *)arg2;
 + (void)loadStyleSheets;

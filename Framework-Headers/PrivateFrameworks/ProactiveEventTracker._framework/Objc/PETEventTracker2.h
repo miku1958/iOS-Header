@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary, NSString, PETAggregateState, PETConfig, RBSAssertion, RBSTarget;
+@class NSMutableDictionary, NSString, PETAggregateState, PETConfig, RBSAssertion, RBSTarget;
 @protocol OS_dispatch_queue;
 
 @interface PETEventTracker2 : NSObject
@@ -26,18 +26,15 @@
     NSString *_logStoresDir;
     PETConfig *_config;
     NSMutableDictionary *_storeCache;
-    NSDictionary *_pet1HistogramBuckets;
 }
 
 @property (readonly, nonatomic) PETAggregateState *aggregateState; // @synthesize aggregateState=_aggregateState;
 @property (strong) PETConfig *config; // @synthesize config=_config;
 @property BOOL isAsyncEnabled; // @synthesize isAsyncEnabled=_isAsyncEnabled;
 @property (strong) NSString *logStoresDir; // @synthesize logStoresDir=_logStoresDir;
-@property (strong) NSDictionary *pet1HistogramBuckets; // @synthesize pet1HistogramBuckets=_pet1HistogramBuckets;
 @property (strong) NSString *rootDir; // @synthesize rootDir=_rootDir;
 @property (strong) NSMutableDictionary *storeCache; // @synthesize storeCache=_storeCache;
 
-+ (BOOL)_isPET1Key:(id)arg1;
 + (id)defaultRootDir;
 + (id)formattedTextForAggregatedMessage:(id)arg1;
 + (id)formattedTextForUnaggregatedMessage:(id)arg1 messageGroup:(id)arg2 config:(id)arg3;
@@ -46,7 +43,6 @@
 + (unsigned int)typeIdForMessageName:(id)arg1;
 - (void).cxx_destruct;
 - (void)_dispatchAsyncForLogging:(CDUnknownBlockType)arg1 txnName:(const char *)arg2;
-- (id)_findBucketsForPET1Key:(id)arg1;
 - (id)_getLogStore:(id)arg1;
 - (void)_init;
 - (void)_initWithRootDir:(id)arg1 config:(id)arg2;

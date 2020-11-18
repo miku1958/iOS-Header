@@ -15,7 +15,6 @@
     BOOL _isLivePhoto;
     BOOL _isVideo;
     UIImage *_image;
-    UIImageView *_imageView;
     UIImageView *_livePhotoImage;
     NSString *_identifier;
     UILabel *_durationLabel;
@@ -31,7 +30,6 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
-@property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic) BOOL isLivePhoto; // @synthesize isLivePhoto=_isLivePhoto;
 @property (nonatomic) BOOL isVideo; // @synthesize isVideo=_isVideo;
 @property (strong, nonatomic) UIImageView *livePhotoImage; // @synthesize livePhotoImage=_livePhotoImage;
@@ -50,6 +48,7 @@
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)refreshForSearchTextIfNeeded:(id)arg1;
+- (void)setSelected:(BOOL)arg1;
 
 @end
 

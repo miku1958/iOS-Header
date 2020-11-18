@@ -31,7 +31,6 @@
     BOOL _freezeSummaryText;
     BOOL __editingPins;
     NSObject<CKConversationListCellDelegate> *_delegate;
-    double _widthForDeterminingAvatarVisibility;
     CKConversation *_conversation;
     struct CGRect _containerBounds;
 }
@@ -53,7 +52,6 @@
 @property (nonatomic) BOOL shouldLabelsBeHighlighted; // @synthesize shouldLabelsBeHighlighted=_shouldLabelsBeHighlighted;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL verified; // @synthesize verified=_verified;
-@property (nonatomic) double widthForDeterminingAvatarVisibility; // @synthesize widthForDeterminingAvatarVisibility=_widthForDeterminingAvatarVisibility;
 
 + (double)cellHeightForDisplayScale:(double)arg1;
 + (id)identifierForConversation:(id)arg1;
@@ -91,6 +89,7 @@
 - (void)updateSummaryTextForConversation:(id)arg1 fastPreview:(BOOL)arg2;
 - (void)updateUnreadIndicatorForCurrentConversation;
 - (void)updateUnreadIndicatorWithImage:(id)arg1 tintColor:(id)arg2;
+- (void)updateVerifiedCheckmarkForBusiness;
 - (void)updateWithForwardedConfigurationState:(unsigned long long)arg1;
 - (void)updateWithSearchResult:(id)arg1;
 

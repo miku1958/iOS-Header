@@ -61,6 +61,7 @@
 - (long long)_audioRouteTypeForActiveAudioRoute:(id)arg1 withAttributes:(id)arg2;
 - (long long)_audioRouteTypeForOutputDevice:(id)arg1;
 - (long long)_audioRouteTypeForTelephonyDeviceType:(long long)arg1;
+- (id)_audioRouteTypesForClusteredOutputDevices:(id)arg1;
 - (float)_calcButtonRepeatDelay;
 - (id)_configureVolumeHUDViewControllerWithVolume:(float)arg1;
 - (void)_controlCenterDidDismiss:(id)arg1;

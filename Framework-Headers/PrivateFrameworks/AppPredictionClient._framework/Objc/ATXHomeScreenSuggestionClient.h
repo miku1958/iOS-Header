@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <AppPredictionClient/ATXHomeScreenSuggestionXPCInterface-Protocol.h>
+#import <AppPredictionClient/ATXHomeScreenSuggestionServerXPCInterface-Protocol.h>
 #import <AppPredictionClient/ATXWidgetDwellTrackerDelegate-Protocol.h>
 #import <AppPredictionClient/NSXPCListenerDelegate-Protocol.h>
 
-@class ATXActionPredictionClient, ATXBiomeUIStream, ATXEngagementRecordManager, ATXHomeScreenConfigCache, ATXUICacheManager, ATXWidgetDwellTracker, NSArray, NSMutableDictionary, NSString, NSUserDefaults, NSXPCListener, _PASQueueLock;
+@class ATXActionPredictionClient, ATXBiomeUIStream, ATXEngagementRecordManager, ATXHomeScreenConfigCache, ATXUICacheManager, ATXWidgetDwellTracker, NSArray, NSMutableDictionary, NSSet, NSString, NSUserDefaults, NSXPCConnection, NSXPCListener, _PASQueueLock;
 @protocol ATXPETEventTracker2Protocol, OS_dispatch_queue;
 
-@interface ATXHomeScreenSuggestionClient : NSObject <NSXPCListenerDelegate, ATXHomeScreenSuggestionXPCInterface, ATXWidgetDwellTrackerDelegate>
+@interface ATXHomeScreenSuggestionClient : NSObject <NSXPCListenerDelegate, ATXHomeScreenSuggestionServerXPCInterface, ATXWidgetDwellTrackerDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSXPCListener *_xpcListener;
+    NSXPCConnection *_xpcConnection;
     _PASQueueLock *_lock;
     double _postInteractionRotationSuppressionInterval;
     double _postInteractionRotationSuppressionLeeway;
@@ -31,6 +32,11 @@
     NSArray *_currentConfigurations;
     NSMutableDictionary *_widgetUniqueIdToCachedWidgetData;
     BOOL _hasAppPanelOnHomeScreen;
+    BOOL _hasAppPanelOnLoH;
+    BOOL _hasSuggestionWidgetOnHomeScreen;
+    BOOL _hasSuggestionWidgetOnLoH;
+    NSMutableDictionary *_bundleIdToSBPageNumber;
+    NSSet *_dockAppSet;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -48,13 +54,18 @@
 - (id)_homeScreenPredictionWithBlendingCacheId:(id)arg1;
 - (BOOL)_isWidgetEngaged:(id)arg1 kind:(id)arg2 afterMostRecentProactiveRotationToSuggestionWithIdentifier:(id)arg3 guardedData:(id)arg4;
 - (long long)_layoutTypeOfSuggestion:(id)arg1 inLayout:(id)arg2;
+- (void)_logAppLaunchOverallCaptureRateFromAppPredictionPanelWithTappedWidget:(id)arg1 suggestion:(id)arg2;
+- (void)_logAppPanelLaunchRatioWithTappedWidget:(id)arg1;
 - (void)_logCaptureRateDiversionIfAppPredictionPanelExistsWithTappedWidgetUniqueId:(id)arg1 guardedData:(id)arg2;
 - (void)_logCaptureRateForAppPredictionPanelWithEngagedSuggestion:(id)arg1 isSuggestionsWidget:(BOOL)arg2 widgetIdentifier:(id)arg3;
 - (void)_logProactiveWidgetEvent:(int)arg1 suggestionIdentifiers:(id)arg2 engagedSuggestion:(id)arg3 widget:(id)arg4 blendingCacheId:(id)arg5 date:(id)arg6;
 - (id)_newSuggestionLayoutForOldLayout:(id)arg1 replacedSuggestionId:(id)arg2 shouldSuggestionsBeDisjoint:(BOOL)arg3 usedFallbackIndexSet:(id)arg4 guardedData:(id)arg5;
 - (void)_notifyObserversAboutSuggestionRefreshToSuggestionsWidgetOnlyWithGuardedData:(id)arg1;
 - (void)_notifyObserversAboutSuggestionRefreshWithGuardedData:(id)arg1;
+- (id)_pageIndexGivenWidgetUniqueId:(id)arg1;
+- (id)_pageIndexGivenWidgetUniqueId:(id)arg1 widgetIdToWidgetDataDictionary:(id)arg2;
 - (void)_performCoalescedHomeScreenAndTodayConfigurationDiff;
+- (void)_populateCachedIconState:(id)arg1 dockAppSet:(id)arg2;
 - (void)_populateStackKindAndLocation:(id)arg1;
 - (id)_proactiveSuggestionWithId:(id)arg1 fromLayoutOfWidgetWithId:(id)arg2 guardedData:(id)arg3;
 - (void)_readCachedSuggestionsFromDiskAndUpdateGuardedData:(id)arg1;
@@ -66,9 +77,12 @@
 - (void)_rotationSuppressionTimerFired;
 - (void)_runAsyncOnQueueWhenUnlocked:(CDUnknownBlockType)arg1;
 - (void)_setBiomeUIStream:(id)arg1;
+- (void)_setBundleIdToSBPageNumber:(id)arg1;
 - (void)_setCurrentAppPredictionPanelLayouts:(id)arg1;
 - (void)_setCurrentSuggestionWidgetLayouts:(id)arg1;
+- (void)_setDockAppSet:(id)arg1;
 - (void)_setHasAppPanelOnHomeScreen:(BOOL)arg1;
+- (void)_setHasAppPanelOnLoH:(BOOL)arg1;
 - (void)_setStore:(id)arg1;
 - (void)_setUpInformationStoreIfNecessaryWithGuardedData:(id)arg1;
 - (id)_stackIdentifierGivenWidgetUniqueId:(id)arg1;
@@ -117,7 +131,7 @@
 - (void)logSuggestionsDidAppear:(id)arg1 widget:(id)arg2 blendingCacheId:(id)arg3;
 - (void)logSuggestionsDidDisappear:(id)arg1 widget:(id)arg2 blendingCacheId:(id)arg3;
 - (void)logSupplementaryActionInContextMenu:(unsigned long long)arg1 stackId:(id)arg2 widgetOnTop:(id)arg3 prediction:(id)arg4;
-- (void)logUserDidAddPinnedWidget:(id)arg1 isSuggestion:(BOOL)arg2;
+- (void)logUserDidAddPinnedWidget:(id)arg1 defaultsComparator:(id)arg2;
 - (void)logUserDidAddWidgetToStack:(id)arg1 stackIdentifier:(id)arg2 isSuggestion:(BOOL)arg3;
 - (void)logUserDidChangeStackConfiguration:(id)arg1;
 - (void)logUserDidCreateStack:(id)arg1 isSuggestion:(BOOL)arg2;

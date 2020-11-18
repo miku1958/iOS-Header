@@ -100,6 +100,7 @@
 - (void)remote_endAuthorizationDelegateTransactionWithSessionIdentifier:(id)arg1 error:(id)arg2;
 - (void)remote_fetchCharacteristicWithDataType:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)remote_fetchDaemonPreferenceForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)remote_fetchModificationDateForCharacteristicWithDataType:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)remote_fetchPluginServiceEndpointWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_fetchServerURLForAssetType:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_fetchUnitPreferencesForTypes:(id)arg1 version:(long long)arg2 withCompletion:(CDUnknownBlockType)arg3;

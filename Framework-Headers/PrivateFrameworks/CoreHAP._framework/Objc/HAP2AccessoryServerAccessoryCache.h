@@ -15,9 +15,11 @@
     HAPBLEPeripheralInfo *_peripheralInfo;
     NSDictionary *_accessoryCache;
     NSNumber *_sleepInterval;
+    NSNumber *_metadataVersion;
 }
 
 @property (strong, nonatomic) NSDictionary *accessoryCache; // @synthesize accessoryCache=_accessoryCache;
+@property (readonly, nonatomic) NSNumber *metadataVersion; // @synthesize metadataVersion=_metadataVersion;
 @property (strong, nonatomic) HAPBLEPeripheralInfo *peripheralInfo; // @synthesize peripheralInfo=_peripheralInfo;
 @property (strong, nonatomic) NSNumber *sleepInterval; // @synthesize sleepInterval=_sleepInterval;
 
@@ -26,7 +28,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithBLEPeripheralInfo:(id)arg1 cachedAccessories:(id)arg2 sleepInterval:(id)arg3;
+- (id)initWithBLEPeripheralInfo:(id)arg1 cachedAccessories:(id)arg2 sleepInterval:(id)arg3 metadataVersion:(id)arg4;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMetadata:(id)arg1 discoveredAccessories:(id)arg2 sleepInterval:(id)arg3;
 - (void)invalidateAccessoryCache;

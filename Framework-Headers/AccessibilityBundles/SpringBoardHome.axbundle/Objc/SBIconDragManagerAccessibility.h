@@ -13,6 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityGetLastAnnouncedIcon;
+- (void)_accessibilitySetLastAnnouncedIcon:(id)arg1;
+- (id)_axIconForIconView:(id)arg1;
 - (id)_axRowColAnnouncementTimer;
 - (unsigned long long)_axRowColScheduledCol;
 - (unsigned long long)_axRowColScheduledRow;
@@ -20,6 +23,7 @@
 - (void)_axSetRowColAnnouncementTimer:(id)arg1;
 - (void)_axSetRowColScheduledCol:(unsigned long long)arg1;
 - (void)_axSetRowColScheduledRow:(unsigned long long)arg1;
+- (void)iconDropSession:(id)arg1 didPauseAtLocation:(struct CGPoint)arg2 inIconListView:(id)arg3;
 - (void)iconDropSessionDidEnd:(id)arg1 identifier:(id)arg2 draggedIconIdentifiers:(id)arg3;
 - (id)iconDropSessionDidUpdate:(id)arg1 inIconListView:(id)arg2;
 - (void)iconViewWillBeginDrag:(id)arg1 session:(id)arg2;

@@ -40,8 +40,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)becomeFirstResponder;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (id)effectImageForIndexPath:(id)arg1;
 - (id)effectTitleForIndexPath:(id)arg1;
+- (double)maxCellHeight;
 - (void)viewDidLoad;
 
 @end

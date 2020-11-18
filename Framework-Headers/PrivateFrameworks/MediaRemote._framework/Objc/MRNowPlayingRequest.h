@@ -19,7 +19,7 @@
 - (id)initWithOrigin:(id)arg1;
 - (id)initWithPlayerPath:(id)arg1;
 - (id)lastPlayingDateWithError:(id *)arg1;
-- (void)requestLastPlayingDate:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)requestLastPlayingDateOnQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

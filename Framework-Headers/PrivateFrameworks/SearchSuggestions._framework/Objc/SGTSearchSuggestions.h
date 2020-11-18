@@ -10,8 +10,9 @@
 {
 }
 
++ (id)dedupeWebURLSuggestionsFromSections:(id)arg1;
 + (id)defaultSearchSuggestions;
-+ (id)filteredSuggestions:(id)arg1 seen:(id)arg2 ignore:(id)arg3 numFiltered:(unsigned long long *)arg4 maxCount:(long long)arg5 threshold:(double)arg6;
++ (id)filteredSuggestions:(id)arg1 seen:(id)arg2 ignore:(id)arg3 maxCount:(long long)arg4 threshold:(double)arg5;
 + (id)orderedSuggestionsWithUserSuggestion:(id)arg1 userWebSuggestion:(id)arg2 contactSuggestions:(id)arg3 localSuggestions:(id)arg4 serverSuggestions:(id)arg5 options:(id)arg6;
 + (id)searchThroughSuggestionForQuery:(id)arg1 withInfo:(id)arg2;
 + (BOOL)sectionSupportsShowMoreInApp:(id)arg1;

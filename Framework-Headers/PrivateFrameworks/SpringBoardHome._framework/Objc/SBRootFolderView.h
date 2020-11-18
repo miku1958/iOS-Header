@@ -37,6 +37,8 @@
     long long _activeSidebarAnimationCount;
     NSHashTable *_dockOffscreenProgressSettingClients;
     id<BSInvalidatable> _dockStateDumpHandle;
+    BOOL _lastEventWasAttemptingToOverscrollFirstPage;
+    BOOL _lastEventWasAttemptingToOverscrollLastPage;
     BOOL _occludedByOverlay;
     BOOL _dockExternal;
     BOOL _dockPinnedForRotation;
@@ -74,7 +76,8 @@
     UILabel *_idleTextView;
     SBHMinusPageStepper *_customPageAnimationStepper;
     id<SBRootFolderViewLayoutManager> _specialLayoutManager;
-    id<SBRootFolderViewLayoutManager> _transitioningSpecialLayoutManager;
+    id<SBRootFolderViewLayoutManager> _transitioningNewSpecialLayoutManager;
+    id<SBRootFolderViewLayoutManager> _transitioningOldSpecialLayoutManager;
     unsigned long long _folderPageManagementAllowedOrientations;
     long long _favoriteTodayViewPageIndex;
 }
@@ -156,7 +159,8 @@
 @property (readonly, nonatomic) long long trailingCustomViewPageIndex;
 @property (readonly, nonatomic) double trailingCustomViewPageScrollOffset;
 @property (nonatomic) double trailingCustomViewVisibilityProgress; // @synthesize trailingCustomViewVisibilityProgress=_trailingCustomViewVisibilityProgress;
-@property (strong, nonatomic) id<SBRootFolderViewLayoutManager> transitioningSpecialLayoutManager; // @synthesize transitioningSpecialLayoutManager=_transitioningSpecialLayoutManager;
+@property (strong, nonatomic) id<SBRootFolderViewLayoutManager> transitioningNewSpecialLayoutManager; // @synthesize transitioningNewSpecialLayoutManager=_transitioningNewSpecialLayoutManager;
+@property (strong, nonatomic) id<SBRootFolderViewLayoutManager> transitioningOldSpecialLayoutManager; // @synthesize transitioningOldSpecialLayoutManager=_transitioningOldSpecialLayoutManager;
 @property (nonatomic) BOOL userAttemptedToOverscrollFirstPageDuringCurrentGesture; // @synthesize userAttemptedToOverscrollFirstPageDuringCurrentGesture=_userAttemptedToOverscrollFirstPageDuringCurrentGesture;
 @property (nonatomic) BOOL userAttemptedToOverscrollLastPageDuringCurrentGesture; // @synthesize userAttemptedToOverscrollLastPageDuringCurrentGesture=_userAttemptedToOverscrollLastPageDuringCurrentGesture;
 @property (strong, nonatomic) SBTitledHomeScreenButton *widgetButton; // @synthesize widgetButton=_widgetButton;
@@ -319,7 +323,6 @@
 - (struct UIEdgeInsets)statusBarInsetsForDockEdge:(unsigned long long)arg1;
 - (void)tearDownListViews;
 - (double)todayViewPageScrollOffsetUsingPageWidth:(double)arg1;
-- (void)togglePageManagementUIWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (double)trailingCustomViewPageScrollOffsetUsingPageWidth:(double)arg1;
 - (void)transitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)updateAccessibilityTintColors;

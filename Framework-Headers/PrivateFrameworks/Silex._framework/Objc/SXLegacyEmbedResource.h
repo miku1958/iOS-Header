@@ -13,8 +13,6 @@
     NSURL *_URL;
 }
 
-@property (strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;
-
 - (void).cxx_destruct;
 
 @end

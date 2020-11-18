@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI237CacheMagazineFeedServiceConfigFetcher : _TtCs12_SwiftObject
 {
     MISSING_TYPE *logName;
+    MISSING_TYPE *appConfigManager;
     MISSING_TYPE *magazineConfigurationService;
 }
 

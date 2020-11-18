@@ -34,7 +34,7 @@
 - (id)_utiStringForAsset:(id)arg1 type:(unsigned int)arg2;
 - (BOOL)canStoreExternalResource:(id)arg1;
 - (BOOL)canStreamResource:(id)arg1;
-- (BOOL)dataStoreSubtypeIsDownloadable:(unsigned long long)arg1;
+- (BOOL)dataStoreSubtypeIsDownloadable:(long long)arg1;
 - (id)descriptionForSubtype:(long long)arg1;
 - (id)keyFromKeyStruct:(const void *)arg1;
 - (id)name;

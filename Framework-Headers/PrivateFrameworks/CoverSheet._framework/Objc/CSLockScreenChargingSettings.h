@@ -9,19 +9,21 @@
 @interface CSLockScreenChargingSettings : PTSettings
 {
     BOOL _showWirelessAndAccessoryAnimations;
-    double _ironmanAnimationDelayInMilliseconds;
-    double _ironmanAnimationBlockingDurationAfterBootInSeconds;
+    double _accessoryAnimationDelayInMilliseconds;
+    double _accessoryAnimationBlockingDurationAfterBootInSeconds;
     double _wirelessChargingDebounceDurationInSeconds;
+    double _wirelessChargingFirmwareUpdateDebounceDurationInSeconds;
     long long _wirelessChargingAnimationType;
     long long _wiredChargingAnimationType;
 }
 
-@property (nonatomic) double ironmanAnimationBlockingDurationAfterBootInSeconds; // @synthesize ironmanAnimationBlockingDurationAfterBootInSeconds=_ironmanAnimationBlockingDurationAfterBootInSeconds;
-@property (nonatomic) double ironmanAnimationDelayInMilliseconds; // @synthesize ironmanAnimationDelayInMilliseconds=_ironmanAnimationDelayInMilliseconds;
+@property (nonatomic) double accessoryAnimationBlockingDurationAfterBootInSeconds; // @synthesize accessoryAnimationBlockingDurationAfterBootInSeconds=_accessoryAnimationBlockingDurationAfterBootInSeconds;
+@property (nonatomic) double accessoryAnimationDelayInMilliseconds; // @synthesize accessoryAnimationDelayInMilliseconds=_accessoryAnimationDelayInMilliseconds;
 @property (nonatomic) BOOL showWirelessAndAccessoryAnimations; // @synthesize showWirelessAndAccessoryAnimations=_showWirelessAndAccessoryAnimations;
 @property (nonatomic) long long wiredChargingAnimationType; // @synthesize wiredChargingAnimationType=_wiredChargingAnimationType;
 @property (nonatomic) long long wirelessChargingAnimationType; // @synthesize wirelessChargingAnimationType=_wirelessChargingAnimationType;
 @property (nonatomic) double wirelessChargingDebounceDurationInSeconds; // @synthesize wirelessChargingDebounceDurationInSeconds=_wirelessChargingDebounceDurationInSeconds;
+@property (nonatomic) double wirelessChargingFirmwareUpdateDebounceDurationInSeconds; // @synthesize wirelessChargingFirmwareUpdateDebounceDurationInSeconds=_wirelessChargingFirmwareUpdateDebounceDurationInSeconds;
 
 + (id)settingsControllerModule;
 - (long long)accessoryTypeForAnimationType:(long long)arg1;

@@ -10,8 +10,9 @@
 
 @interface _TtC11SiriKitFlow24FlowDelegatePluginLoader : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *bundleCache;
-    MISSING_TYPE *flowFrameProviderCache;
+    MISSING_TYPE *systemPluginBundleCache;
+    MISSING_TYPE *overridePluginBundleCache;
+    MISSING_TYPE *flowPluginCache;
 }
 
 @end

@@ -84,6 +84,7 @@
 - (unsigned long long)alertStartTime;
 - (id)audioChunkFrom:(unsigned long long)arg1 to:(unsigned long long)arg2;
 - (id)audioChunkToEndFrom:(unsigned long long)arg1;
+- (id)audioChunkToEndFrom:(unsigned long long)arg1 channelIdx:(unsigned long long)arg2;
 - (id)audioMetric;
 - (unsigned int)audioSessionID;
 - (void)audioStreamWithRequest:(id)arg1 streamName:(id)arg2 completion:(CDUnknownBlockType)arg3;

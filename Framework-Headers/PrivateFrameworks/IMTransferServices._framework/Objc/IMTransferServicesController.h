@@ -11,13 +11,14 @@
 }
 
 + (id)sharedInstance;
-- (void)_receiveFileTransfer:(id)arg1 topic:(id)arg2 path:(id)arg3 requestURLString:(id)arg4 ownerID:(id)arg5 signature:(id)arg6 decryptionKey:(id)arg7 retries:(int)arg8 fileSize:(unsigned long long)arg9 progressBlock:(CDUnknownBlockType)arg10 completionBlock:(CDUnknownBlockType)arg11;
+- (void)_receiveFileTransfer:(id)arg1 topic:(id)arg2 path:(id)arg3 requestURLString:(id)arg4 ownerID:(id)arg5 sourceAppID:(id)arg6 signature:(id)arg7 decryptionKey:(id)arg8 retries:(int)arg9 fileSize:(unsigned long long)arg10 progressBlock:(CDUnknownBlockType)arg11 completionBlock:(CDUnknownBlockType)arg12;
 - (void)_sendFilePath:(id)arg1 topic:(id)arg2 userInfo:(id)arg3 transferID:(id)arg4 sourceAppID:(id)arg5 encryptFile:(BOOL)arg6 retries:(int)arg7 progressBlock:(CDUnknownBlockType)arg8 completionBlock:(CDUnknownBlockType)arg9;
 - (void)cancelSendTransferID:(id)arg1;
 - (void)deleteAllPersonalNicknamesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getNicknameWithRecordID:(id)arg1 decryptionKey:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)preWarmMMCSForOwnerID:(id)arg1;
 - (void)receiveFileTransfer:(id)arg1 topic:(id)arg2 path:(id)arg3 requestURLString:(id)arg4 ownerID:(id)arg5 signature:(id)arg6 decryptionKey:(id)arg7 fileSize:(unsigned long long)arg8 progressBlock:(CDUnknownBlockType)arg9 completionBlock:(CDUnknownBlockType)arg10;
+- (void)receiveFileTransfer:(id)arg1 topic:(id)arg2 path:(id)arg3 requestURLString:(id)arg4 ownerID:(id)arg5 sourceAppID:(id)arg6 signature:(id)arg7 decryptionKey:(id)arg8 fileSize:(unsigned long long)arg9 progressBlock:(CDUnknownBlockType)arg10 completionBlock:(CDUnknownBlockType)arg11;
 - (void)sendFilePath:(id)arg1 topic:(id)arg2 transferID:(id)arg3 encryptFile:(BOOL)arg4 progressBlock:(CDUnknownBlockType)arg5 completionBlock:(CDUnknownBlockType)arg6;
 - (void)sendFilePath:(id)arg1 topic:(id)arg2 userInfo:(id)arg3 transferID:(id)arg4 encryptFile:(BOOL)arg5 progressBlock:(CDUnknownBlockType)arg6 completionBlock:(CDUnknownBlockType)arg7;
 - (void)sendFilePath:(id)arg1 topic:(id)arg2 userInfo:(id)arg3 transferID:(id)arg4 sourceAppID:(id)arg5 encryptFile:(BOOL)arg6 progressBlock:(CDUnknownBlockType)arg7 completionBlock:(CDUnknownBlockType)arg8;

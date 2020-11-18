@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKRemoteTransactionAuthenticationPasscodeViewControllerDelegate-Protocol.h>
 
-@class NSString, PKRemoteTransactionAuthenticationPasscodeViewController, _UIAsyncInvocation;
+@class NSData, NSString, PKRemoteTransactionAuthenticationPasscodeViewController, _UIAsyncInvocation;
 @protocol PKTransactionAuthenticationPasscodeViewControllerDelegate;
 
 @interface PKTransactionAuthenticationPasscodeViewController : UIViewController <PKRemoteTransactionAuthenticationPasscodeViewControllerDelegate>
@@ -19,6 +19,7 @@
     struct os_unfair_lock_s _delegateLock;
     NSString *_passUniqueIdentifier;
     NSString *_transactionIdentifier;
+    NSData *_archivedAnalyticsSessionToken;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -37,7 +38,7 @@
 - (id)childViewControllerForStatusBarStyle;
 - (void)dealloc;
 - (id)init;
-- (id)initWithPassUniqueIdentifier:(id)arg1 transactionIdentifier:(id)arg2;
+- (id)initWithPassUniqueIdentifier:(id)arg1 transactionIdentifier:(id)arg2 archivedAnalyticsSessionToken:(id)arg3;
 - (void)loadView;
 - (void)passcodeViewControllerDidCancel;
 - (void)passcodeViewControllerDidGenerateEncryptedPasscode:(id)arg1;

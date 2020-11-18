@@ -7,7 +7,9 @@
 #import <CoreHAP/HAPCharacteristicValueTransition.h>
 
 @interface HAPCharacteristicValueTransition (NaturalLighting)
++ (BOOL)canCoalesceTransitionPoint1:(id)arg1 transitionPoint2:(id)arg2 ofCurve:(id)arg3;
 + (id)naturalLightingValueTransitionWithLightProfile:(id)arg1 naturalLightingEnabled:(BOOL)arg2 startDate:(id)arg3 dataSource:(id)arg4;
++ (id)transitionPointsByCoalescingTransitionPoints:(id)arg1 ofCurve:(id)arg2;
 + (BOOL)updateTransition:(id)arg1 withCurve:(id)arg2 brightnessCharacteristic:(id)arg3 millisecondsElapsedSinceStartOfDay:(unsigned long long)arg4 transitionStartTimeInMilliseconds:(unsigned long long)arg5;
 - (id)naturalLightingActiveTransitionContextForCharacteristic:(id)arg1;
 - (id)naturalLightingActiveTransitionContextLightProfile:(id)arg1;

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     struct CGSize _nativeSize;
     BOOL _isRawSource;
     BOOL _calledDealloc;
+    NSString *_matteOption;
     NSDictionary *_baseImageProperties;
     NSDictionary *_rawDictionary;
     NSDictionary *_rawReconstructionDefaultsDictionary;
@@ -80,6 +81,7 @@ __attribute__((visibility("hidden")))
 + (id)filterWithImageData:(id)arg1 options:(id)arg2;
 + (id)filterWithImageURL:(id)arg1 options:(id)arg2;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
++ (id)matteOptionNameFromOptions:(id)arg1;
 + (id)optionKeys;
 + (id)supportedRawCameraModels;
 - (id)RAWFiltersValueForKeyPath:(id)arg1;

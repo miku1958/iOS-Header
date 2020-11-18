@@ -12,6 +12,7 @@
 @interface GKMultiplayerP2PViewController : GKMultiplayerViewController
 {
     BOOL _hosted;
+    BOOL _userCancelledMatching;
     id<GKMultiplayerP2PViewControllerDelegate> _delegate;
     long long _mode;
     GKInvite *_acceptedInvite;
@@ -23,6 +24,7 @@
 @property (nonatomic, getter=isHosted) BOOL hosted; // @synthesize hosted=_hosted;
 @property (nonatomic) double inviteeConnectionTimeStamp; // @synthesize inviteeConnectionTimeStamp=_inviteeConnectionTimeStamp;
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
+@property BOOL userCancelledMatching; // @synthesize userCancelledMatching=_userCancelledMatching;
 
 - (void).cxx_destruct;
 - (void)applicationWillEnterForeground;

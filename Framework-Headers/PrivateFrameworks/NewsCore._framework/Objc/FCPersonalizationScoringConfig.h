@@ -50,7 +50,11 @@
     double _featuredMultiplierForFreeUsers;
     double _featuredMultiplierForTrialUsers;
     double _featuredMultiplierForPaidUsers;
+    double _evergreenMultiplierForFreeUsers;
+    double _evergreenMultiplierForTrialUsers;
+    double _evergreenMultiplierForPaidUsers;
     double _firstPassHalfLifeCoefficient;
+    double _firstPassEvergreenHalfLifeCoefficient;
     double _firstPassDiversificationPenalty;
     double _firstPassArticleFilter;
     double _globalScoreCoefficientFree;
@@ -59,9 +63,11 @@
     double _globalScoreCoefficientInitialMultiplier;
     double _headlineSeenPenalty;
     double _halfLifeCoefficient;
+    double _evergreenHalfLifeCoefficient;
     double _mutedVoteCoefficient;
     double _personalizationCoefficient;
     double _publisherAggregateWeight;
+    double _sparseTagsPenalty;
     double _subscribedChannelScoreCoefficient;
     double _subscribedTopicsScoreCoefficient;
     FCPersonalizationCohortConfig *_userCohort;
@@ -101,11 +107,16 @@
 @property (nonatomic) double diversificationInitialPenalty; // @synthesize diversificationInitialPenalty=_diversificationInitialPenalty;
 @property (nonatomic) double diversificationPenalty; // @synthesize diversificationPenalty=_diversificationPenalty;
 @property (nonatomic) double diversificationPenaltyHalfLife; // @synthesize diversificationPenaltyHalfLife=_diversificationPenaltyHalfLife;
+@property (nonatomic) double evergreenHalfLifeCoefficient; // @synthesize evergreenHalfLifeCoefficient=_evergreenHalfLifeCoefficient;
+@property (nonatomic) double evergreenMultiplierForFreeUsers; // @synthesize evergreenMultiplierForFreeUsers=_evergreenMultiplierForFreeUsers;
+@property (nonatomic) double evergreenMultiplierForPaidUsers; // @synthesize evergreenMultiplierForPaidUsers=_evergreenMultiplierForPaidUsers;
+@property (nonatomic) double evergreenMultiplierForTrialUsers; // @synthesize evergreenMultiplierForTrialUsers=_evergreenMultiplierForTrialUsers;
 @property (nonatomic) double featuredMultiplierForFreeUsers; // @synthesize featuredMultiplierForFreeUsers=_featuredMultiplierForFreeUsers;
 @property (nonatomic) double featuredMultiplierForPaidUsers; // @synthesize featuredMultiplierForPaidUsers=_featuredMultiplierForPaidUsers;
 @property (nonatomic) double featuredMultiplierForTrialUsers; // @synthesize featuredMultiplierForTrialUsers=_featuredMultiplierForTrialUsers;
 @property (nonatomic) double firstPassArticleFilter; // @synthesize firstPassArticleFilter=_firstPassArticleFilter;
 @property (nonatomic) double firstPassDiversificationPenalty; // @synthesize firstPassDiversificationPenalty=_firstPassDiversificationPenalty;
+@property (nonatomic) double firstPassEvergreenHalfLifeCoefficient; // @synthesize firstPassEvergreenHalfLifeCoefficient=_firstPassEvergreenHalfLifeCoefficient;
 @property (nonatomic) double firstPassHalfLifeCoefficient; // @synthesize firstPassHalfLifeCoefficient=_firstPassHalfLifeCoefficient;
 @property (nonatomic) double globalScoreCoefficientFree; // @synthesize globalScoreCoefficientFree=_globalScoreCoefficientFree;
 @property (nonatomic) double globalScoreCoefficientHalfLife; // @synthesize globalScoreCoefficientHalfLife=_globalScoreCoefficientHalfLife;
@@ -116,6 +127,7 @@
 @property (nonatomic) double mutedVoteCoefficient; // @synthesize mutedVoteCoefficient=_mutedVoteCoefficient;
 @property (nonatomic) double personalizationCoefficient; // @synthesize personalizationCoefficient=_personalizationCoefficient;
 @property (nonatomic) double publisherAggregateWeight; // @synthesize publisherAggregateWeight=_publisherAggregateWeight;
+@property (nonatomic) double sparseTagsPenalty; // @synthesize sparseTagsPenalty=_sparseTagsPenalty;
 @property (nonatomic) double subscribedChannelScoreCoefficient; // @synthesize subscribedChannelScoreCoefficient=_subscribedChannelScoreCoefficient;
 @property (nonatomic) double subscribedTopicsScoreCoefficient; // @synthesize subscribedTopicsScoreCoefficient=_subscribedTopicsScoreCoefficient;
 @property (strong, nonatomic) FCPersonalizationCohortConfig *userCohort; // @synthesize userCohort=_userCohort;
@@ -125,7 +137,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
-- (id)initWithArticleLengthAggregateWeight:(double)arg1 articleReadPenalty:(double)arg2 audioMultiplierForFreeUsers:(double)arg3 audioMultiplierForTrialUsers:(double)arg4 audioMultiplierForPaidUsers:(double)arg5 autofavoritedVoteCoefficient:(double)arg6 baselineRatePrior:(double)arg7 bundleFreeMultiplierForFreeUsers:(double)arg8 bundleFreeMultiplierForTrialUsers:(double)arg9 bundleFreeMultiplierForPaidUsers:(double)arg10 bundlePaidMultiplierForFreeUsers:(double)arg11 bundlePaidMultiplierForTrialUsers:(double)arg12 bundlePaidMultiplierForPaidUsers:(double)arg13 channelTopicDiversificationInitialPenalty:(double)arg14 channelTopicDiversificationPenalty:(double)arg15 channelTopicDiversificationPenaltyHalfLife:(double)arg16 conversionCoefficientForFreeUsers:(double)arg17 conversionCoefficientForTrialUsers:(double)arg18 conversionCoefficientForPaidUsers:(double)arg19 conversionCohort:(id)arg20 ctrWithOneAutofavorited:(double)arg21 ctrWithOneSubscribed:(double)arg22 ctrWithSubscribedChannel:(double)arg23 ctrWithThreeAutofavorited:(double)arg24 ctrWithThreeSubscribed:(double)arg25 ctrWithTwoAutofavorited:(double)arg26 ctrWithTwoSubscribed:(double)arg27 ctrWithZeroAutofavorited:(double)arg28 ctrWithZeroSubscribed:(double)arg29 decayFactor:(double)arg30 democratizationFactor:(double)arg31 diversificationInitialPenalty:(double)arg32 diversificationPenalty:(double)arg33 diversificationPenaltyHalfLife:(double)arg34 featuredMultiplierForFreeUsers:(double)arg35 featuredMultiplierForTrialUsers:(double)arg36 featuredMultiplierForPaidUsers:(double)arg37 firstPassHalfLifeCoefficient:(double)arg38 firstPassDiversificationPenalty:(double)arg39 firstPassArticleFilter:(double)arg40 globalScoreCoefficientFree:(double)arg41 globalScoreCoefficientPaid:(double)arg42 globalScoreCoefficientHalfLife:(double)arg43 globalScoreCoefficientInitialMultiplier:(double)arg44 headlineSeenPenalty:(double)arg45 halfLifeCoefficient:(double)arg46 mutedVoteCoefficient:(double)arg47 personalizationCoefficient:(double)arg48 publisherAggregateWeight:(double)arg49 subscribedChannelScoreCoefficient:(double)arg50 subscribedTopicsScoreCoefficient:(double)arg51 userCohort:(id)arg52;
+- (id)initWithArticleLengthAggregateWeight:(double)arg1 articleReadPenalty:(double)arg2 audioMultiplierForFreeUsers:(double)arg3 audioMultiplierForTrialUsers:(double)arg4 audioMultiplierForPaidUsers:(double)arg5 autofavoritedVoteCoefficient:(double)arg6 baselineRatePrior:(double)arg7 bundleFreeMultiplierForFreeUsers:(double)arg8 bundleFreeMultiplierForTrialUsers:(double)arg9 bundleFreeMultiplierForPaidUsers:(double)arg10 bundlePaidMultiplierForFreeUsers:(double)arg11 bundlePaidMultiplierForTrialUsers:(double)arg12 bundlePaidMultiplierForPaidUsers:(double)arg13 channelTopicDiversificationInitialPenalty:(double)arg14 channelTopicDiversificationPenalty:(double)arg15 channelTopicDiversificationPenaltyHalfLife:(double)arg16 conversionCoefficientForFreeUsers:(double)arg17 conversionCoefficientForTrialUsers:(double)arg18 conversionCoefficientForPaidUsers:(double)arg19 conversionCohort:(id)arg20 ctrWithOneAutofavorited:(double)arg21 ctrWithOneSubscribed:(double)arg22 ctrWithSubscribedChannel:(double)arg23 ctrWithThreeAutofavorited:(double)arg24 ctrWithThreeSubscribed:(double)arg25 ctrWithTwoAutofavorited:(double)arg26 ctrWithTwoSubscribed:(double)arg27 ctrWithZeroAutofavorited:(double)arg28 ctrWithZeroSubscribed:(double)arg29 decayFactor:(double)arg30 democratizationFactor:(double)arg31 diversificationInitialPenalty:(double)arg32 diversificationPenalty:(double)arg33 diversificationPenaltyHalfLife:(double)arg34 featuredMultiplierForFreeUsers:(double)arg35 featuredMultiplierForTrialUsers:(double)arg36 featuredMultiplierForPaidUsers:(double)arg37 evergreenMultiplierForFreeUsers:(double)arg38 evergreenMultiplierForTrialUsers:(double)arg39 evergreenMultiplierForPaidUsers:(double)arg40 firstPassHalfLifeCoefficient:(double)arg41 firstPassEvergreenHalfLifeCoefficient:(double)arg42 firstPassDiversificationPenalty:(double)arg43 firstPassArticleFilter:(double)arg44 globalScoreCoefficientFree:(double)arg45 globalScoreCoefficientPaid:(double)arg46 globalScoreCoefficientHalfLife:(double)arg47 globalScoreCoefficientInitialMultiplier:(double)arg48 headlineSeenPenalty:(double)arg49 halfLifeCoefficient:(double)arg50 evergreenHalfLifeCoefficient:(double)arg51 mutedVoteCoefficient:(double)arg52 personalizationCoefficient:(double)arg53 publisherAggregateWeight:(double)arg54 sparseTagsPenalty:(double)arg55 subscribedChannelScoreCoefficient:(double)arg56 subscribedTopicsScoreCoefficient:(double)arg57 userCohort:(id)arg58;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithConfigDictionary:(id)arg1;
 - (id)initWithConfigDictionary:(id)arg1 defaultConfig:(id)arg2;

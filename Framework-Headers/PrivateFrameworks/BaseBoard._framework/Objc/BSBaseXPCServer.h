@@ -22,6 +22,7 @@
 
 @property (nonatomic, getter=usesAnonymousConnection) BOOL usesAnonymousConnection; // @synthesize usesAnonymousConnection=_usesAnonymousConnection;
 
++ (BOOL)_registersWithNotifyd;
 - (id)_clients;
 - (id)_connection;
 - (id)_copyEndpoint;

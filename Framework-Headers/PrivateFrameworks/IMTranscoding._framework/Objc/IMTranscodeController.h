@@ -9,13 +9,15 @@
 #import <IMTranscoding/IMGifFileWriter-Protocol.h>
 
 @class NSString;
-@protocol OS_xpc_object;
+@protocol OS_dispatch_queue, OS_xpc_object;
 
 @interface IMTranscodeController : NSObject <IMGifFileWriter>
 {
     NSObject<OS_xpc_object> *_connection;
+    NSObject<OS_dispatch_queue> *_connectionQueue;
 }
 
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *connectionQueue; // @synthesize connectionQueue=_connectionQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

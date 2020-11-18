@@ -42,6 +42,7 @@
 @property (readonly, nonatomic, getter=isCompilation) BOOL compilation;
 @property (readonly, copy, nonatomic) NSString *composerName;
 @property (readonly, copy, nonatomic) NSString *copyrightText;
+@property (readonly, copy, nonatomic) NSString *curatorHandle;
 @property (readonly, copy, nonatomic) id curatorID;
 @property (readonly, copy, nonatomic) NSString *curatorName;
 @property (readonly, copy, nonatomic) NSString *descriptionText;

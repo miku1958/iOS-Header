@@ -165,7 +165,7 @@
 - (CDStruct_79c71658)sensorCropDimensions;
 - (int)sensorHDRCompanionIndex;
 - (CDStruct_79c71658)sourceCropAspectRatio;
-- (struct CGSize)stabilizationOverscanFromSensorForFESCropDimensions:(CDStruct_79c71658)arg1;
+- (struct CGSize)stabilizationOverscanFromSensorForFESCropDimensions:(CDStruct_79c71658)arg1 preferSIFRFormat:(BOOL)arg2;
 - (int)stillImageNoiseReductionAndStabilizationScheme;
 - (BOOL)sushiRawBlackBorderingEnabled;
 - (BOOL)temporalNoiseReductionBand0Disabled;

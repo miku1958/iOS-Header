@@ -11,7 +11,7 @@
 }
 
 + (id)makeSpeedBumpItem;
-- (id)initForOnboarding:(BOOL)arg1;
+- (id)initForOnboarding:(BOOL)arg1 upgradingFromAlgorithmVersion:(long long)arg2;
 
 @end
 

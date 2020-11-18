@@ -16,6 +16,7 @@
     MISSING_TYPE *subscriptionExpiryManager;
     MISSING_TYPE *subscriptionRouter;
     MISSING_TYPE *entitlementsManager;
+    MISSING_TYPE *sceneProvider;
 }
 
 @end

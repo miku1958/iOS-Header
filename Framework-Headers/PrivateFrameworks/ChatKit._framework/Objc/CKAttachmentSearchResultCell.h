@@ -8,12 +8,11 @@
 
 #import <ChatKit/CKSearchResultCell-Protocol.h>
 
-@class CKSearchAvatarSupplementryView, NSString, UIDateLabel, UIImageView, UILabel;
+@class CKSearchAvatarSupplementryView, NSString, UIDateLabel, UILabel;
 
 @interface CKAttachmentSearchResultCell : CKEditableSearchResultCell <CKSearchResultCell>
 {
     BOOL _suppressAvatars;
-    UIImageView *_imageView;
     UILabel *_titleLabel;
     UIDateLabel *_dateLabel;
     NSString *_identifier;
@@ -31,7 +30,6 @@
 @property (readonly, nonatomic) double editModeHorizontalOffset;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL suppressAvatars; // @synthesize suppressAvatars=_suppressAvatars;
@@ -46,6 +44,7 @@
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (void)prepareForReuse;
 - (void)refreshForSearchTextIfNeeded:(id)arg1;
+- (void)setSelected:(BOOL)arg1;
 
 @end
 

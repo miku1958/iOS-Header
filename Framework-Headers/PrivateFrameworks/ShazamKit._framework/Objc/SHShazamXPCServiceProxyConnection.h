@@ -32,7 +32,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)attachDefaultConnectionHandlers;
 - (void)dealloc;
-- (void)setErrorHandlers;
+- (void)enableShazamModuleWithReply:(CDUnknownBlockType)arg1;
+- (void)fetchShazamModuleEnabledStateWithReply:(CDUnknownBlockType)arg1;
 - (void)startRecognitionForRequest:(id)arg1;
 - (oneway void)stopRecognition;
 

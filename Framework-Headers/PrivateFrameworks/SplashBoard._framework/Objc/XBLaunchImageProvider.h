@@ -19,7 +19,7 @@
 - (void)_addBadLaunchInterfaceToDenyList:(id)arg1 forError:(id)arg2;
 - (void)_generateImageForSnapshot:(id)arg1 inManifest:(id)arg2 withContext:(id)arg3 asyncImageData:(BOOL)arg4 dataProvider:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)captureLaunchImageForManifest:(id)arg1 withCompatibilityInfo:(id)arg2 launchRequests:(id)arg3 createCaptureInfo:(BOOL)arg4 firstImageIsReady:(CDUnknownBlockType)arg5 withCompletionHandler:(CDUnknownBlockType)arg6;
-- (CDUnknownBlockType)createLaunchImageGeneratorWithContext:(id)arg1 asyncImageData:(BOOL)arg2;
+- (CDUnknownBlockType)createLaunchImageGeneratorWithContext:(id)arg1 asyncImageData:(BOOL)arg2 error:(id *)arg3;
 - (void)dealloc;
 - (id)init;
 - (void)preheatServiceWithTimeout:(double)arg1;

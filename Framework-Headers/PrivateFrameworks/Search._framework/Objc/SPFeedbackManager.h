@@ -60,6 +60,7 @@
 - (void)sectionHeaderDidBecomeVisible:(id)arg1;
 - (void)sendCustomFeedback:(id)arg1;
 - (void)suggestionsDidBecomeVisible:(id)arg1;
+- (void)updateNeedsToDisplayFirstTimeView;
 - (void)updateParsecEnabled;
 
 @end

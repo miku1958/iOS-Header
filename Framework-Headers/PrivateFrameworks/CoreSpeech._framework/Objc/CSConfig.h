@@ -14,9 +14,9 @@
 + (unsigned int)audioConverterBitrate;
 + (unsigned long long)channelForOutputReference;
 + (unsigned long long)channelForProcessedInput;
-+ (double)continousFingerprintBufferDuration;
 + (int)csAudioProcessingQueuePriority;
 + (float)daysBeforeRemovingLogFiles;
++ (double)defaultContinousFingerprintBufferDuration;
 + (unsigned int)hearstNumberOfBytesPerChunk;
 + (unsigned int)hearstNumberOfSamplesPerChunk;
 + (double)inputRecordingBufferDuration;

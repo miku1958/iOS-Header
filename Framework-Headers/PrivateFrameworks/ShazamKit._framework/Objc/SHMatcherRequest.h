@@ -21,6 +21,7 @@
 }
 
 @property (readonly, nonatomic) NSDate *deadline; // @synthesize deadline=_deadline;
+@property (readonly, nonatomic) BOOL hasHitDeadline;
 @property (readonly, nonatomic) NSString *installationID; // @synthesize installationID=_installationID;
 @property (readonly, nonatomic) NSString *partnerName; // @synthesize partnerName=_partnerName;
 @property (readonly, nonatomic) BOOL sendNotifications; // @synthesize sendNotifications=_sendNotifications;

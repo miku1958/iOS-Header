@@ -11,8 +11,8 @@
 @interface KTLogClient : TransparencyLogClient
 {
     BOOL _configured;
-    NSURL *_queryURI;
     NSURL *_consistencyProofURI;
+    NSURL *_queryURI;
     NSURL *_publicKeysURI;
     NSURL *_revisionLogProofURI;
     double _expirationTime;
@@ -41,9 +41,11 @@
 - (void)downloadPublicKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)downloadQuery:(id)arg1 uuid:(id)arg2 retry:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)downloadRevisionLogInclusionProof:(id)arg1 uuid:(id)arg2 retry:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)fetchConsistencyProof:(id)arg1 uuid:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)fetchMessage:(id)arg1 uri:(id)arg2 uuid:(id)arg3 application:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)fetchPublicKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchQuery:(id)arg1 uuid:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)handleQueryResponse:(id)arg1 fetchError:(id)arg2 application:(id)arg3 error:(id *)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)fetchRevisionLogInclusionProof:(id)arg1 uuid:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)processConfigBagData:(id)arg1 error:(id *)arg2;
 - (id)readConfigFromDisk:(id *)arg1;
 - (BOOL)validateConfigBagCertificates:(id)arg1 error:(id *)arg2;

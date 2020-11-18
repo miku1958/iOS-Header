@@ -8,7 +8,7 @@
 
 #import <FrontBoard/FBProcessDelegate-Protocol.h>
 
-@class BKSHIDEventDeferringToken, FBApplicationProcess, FBProcess, NSHashTable, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString, RBSProcessMonitor;
+@class BKSHIDEventDeferringToken, FBApplicationProcess, FBProcess, NSHashTable, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString, RBSAssertion, RBSProcessMonitor;
 @protocol FBProcessManagerKeyboardFocusDelegate, FBProcessWatchdogProviding, OS_dispatch_queue;
 
 @interface FBProcessManager : NSObject <FBProcessDelegate>
@@ -31,6 +31,7 @@
     id<FBProcessManagerKeyboardFocusDelegate> _lock_keyboardFocusDelegate;
     RBSProcessMonitor *_lock_monitor;
     NSMutableSet *_lock_monitorPredicates;
+    RBSAssertion *_lock_assertion;
     BOOL _lock_initializationComplete;
 }
 
@@ -68,6 +69,7 @@
 - (id)keyboardFocusDelegate;
 - (oneway void)launchProcessWithContext:(id)arg1;
 - (void)noteProcess:(id)arg1 didUpdateState:(id)arg2;
+- (void)noteProcessAssertionStateDidChange:(id)arg1;
 - (void)noteProcessDidExit:(id)arg1;
 - (id)processForIdentity:(id)arg1;
 - (id)processForPID:(int)arg1;

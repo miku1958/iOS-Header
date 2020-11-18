@@ -63,6 +63,7 @@
 @property (strong) NSArray *propertiesToFetchWhenGrouping; // @synthesize propertiesToFetchWhenGrouping=_propertiesToFetchWhenGrouping;
 @property (strong) NSArray *propertiesToGroupBy; // @synthesize propertiesToGroupBy=_propertiesToGroupBy;
 @property (readonly) NSArray *seedOIDs; // @synthesize seedOIDs=_seedOIDs;
+@property (readonly, nonatomic) NSString *shortDescription;
 
 + (id)_containerIdentifierForFetchType:(id)arg1 predicate:(id)arg2 outRelationship:(id *)arg3;
 + (id)_defaultFetchOptionsForIdentifiedAssetsQuery;
@@ -200,6 +201,7 @@
 + (id)queryForSuggestionsWithOptions:(id)arg1;
 + (id)queryForSuggestionsWithState:(unsigned short)arg1 options:(id)arg2;
 + (id)queryForSuggestionsWithState:(unsigned short)arg1 type:(unsigned short)arg2 options:(id)arg3;
++ (id)queryForTopLevelCollectionsMatchingPredicate:(id)arg1 options:(id)arg2;
 + (id)queryForTopLevelUserCollectionsWithOptions:(id)arg1;
 + (id)queryForType:(id)arg1 withBasePredicate:(id)arg2 inLibrary:(id)arg3;
 + (id)queryForType:(id)arg1 withBasePredicate:(id)arg2 seedOIDs:(id)arg3 inLibrary:(id)arg4;

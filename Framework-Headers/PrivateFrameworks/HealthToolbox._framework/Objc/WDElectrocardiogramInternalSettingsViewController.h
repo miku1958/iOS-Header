@@ -6,13 +6,14 @@
 
 #import <HealthUI/HKTableViewController.h>
 
+#import <HealthToolbox/HRElectrocardiogramOnboardingManagerDelegate-Protocol.h>
 #import <HealthToolbox/UIPickerViewDataSource-Protocol.h>
 #import <HealthToolbox/UIPickerViewDelegate-Protocol.h>
 
-@class HKHealthStore, HKHeartRhythmAvailability, HKHostingAreaLayoutView, NPSManager, NSArray, NSString, UIPickerView;
+@class HKDateCache, HKHealthStore, HKHeartRhythmAvailability, HKHostingAreaLayoutView, HRElectrocardiogramOnboardingManager, NPSManager, NSArray, NSString, UIPickerView;
 
 __attribute__((visibility("hidden")))
-@interface WDElectrocardiogramInternalSettingsViewController : HKTableViewController <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface WDElectrocardiogramInternalSettingsViewController : HKTableViewController <UIPickerViewDelegate, UIPickerViewDataSource, HRElectrocardiogramOnboardingManagerDelegate>
 {
     BOOL _deletingSamples;
     NSArray *_allDemoResults;
@@ -24,13 +25,16 @@ __attribute__((visibility("hidden")))
     NPSManager *_syncManager;
     NSArray *_demoResultKeys;
     HKHealthStore *_healthStore;
+    HKDateCache *_dateCache;
     HKHeartRhythmAvailability *_heartRhythmAvailability;
+    HRElectrocardiogramOnboardingManager *_onboardingManager;
 }
 
 @property (strong, nonatomic) UIPickerView *algorithmVersionPicker; // @synthesize algorithmVersionPicker=_algorithmVersionPicker;
 @property (strong, nonatomic) HKHostingAreaLayoutView *algorithmVersionPickerInputView; // @synthesize algorithmVersionPickerInputView=_algorithmVersionPickerInputView;
 @property (readonly, nonatomic) NSArray *allAlgorithmVersions; // @synthesize allAlgorithmVersions=_allAlgorithmVersions;
 @property (readonly, nonatomic) NSArray *allDemoResults; // @synthesize allDemoResults=_allDemoResults;
+@property (readonly, nonatomic) HKDateCache *dateCache; // @synthesize dateCache=_dateCache;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, getter=isDeletingSamples) BOOL deletingSamples; // @synthesize deletingSamples=_deletingSamples;
 @property (strong, nonatomic) NSArray *demoResultKeys; // @synthesize demoResultKeys=_demoResultKeys;
@@ -38,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property (readonly, nonatomic) HKHeartRhythmAvailability *heartRhythmAvailability; // @synthesize heartRhythmAvailability=_heartRhythmAvailability;
+@property (strong, nonatomic) HRElectrocardiogramOnboardingManager *onboardingManager; // @synthesize onboardingManager=_onboardingManager;
 @property (readonly, nonatomic) HKHostingAreaLayoutView *pickerInputView; // @synthesize pickerInputView=_pickerInputView;
 @property (readonly, nonatomic) UIPickerView *resultPicker; // @synthesize resultPicker=_resultPicker;
 @property (readonly) Class superclass;
@@ -50,7 +55,10 @@ __attribute__((visibility("hidden")))
 - (id)_styleValue1CellForTableView:(id)arg1 inputView:(id)arg2;
 - (id)_versionForAlgorithmVersionText:(id)arg1;
 - (void)clearCellIndexNumberLabels;
-- (id)initWithHealthStore:(id)arg1;
+- (void)didCompleteOnboarding;
+- (void)didDismissOnboarding;
+- (void)didTapOnElectrocardiogram:(id)arg1;
+- (id)initWithHealthStore:(id)arg1 dateCache:(id)arg2;
 - (void)keyboardDidDismiss:(id)arg1;
 - (long long)numberOfComponentsInPickerView:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;

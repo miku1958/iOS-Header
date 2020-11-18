@@ -10,6 +10,7 @@
 
 @class _MRAudioBufferProtobuf, _MRAudioTimeProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRAudioDataBlockProtobuf : PBCodable <NSCopying>
 {
     double _gain;
@@ -20,21 +21,12 @@
     } _has;
 }
 
-@property (strong, nonatomic) _MRAudioBufferProtobuf *buffer; // @synthesize buffer=_buffer;
-@property (nonatomic) double gain; // @synthesize gain=_gain;
-@property (readonly, nonatomic) BOOL hasBuffer;
-@property (nonatomic) BOOL hasGain;
-@property (readonly, nonatomic) BOOL hasTime;
-@property (strong, nonatomic) _MRAudioTimeProtobuf *time; // @synthesize time=_time;
-
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

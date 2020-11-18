@@ -11,19 +11,20 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI31EpisodeCollectionViewController : UIViewController
 {
-    MISSING_TYPE *collectionView;
-    MISSING_TYPE *headerView;
+    MISSING_TYPE *viewImpressioner;
     MISSING_TYPE *viewModel;
     MISSING_TYPE *dataSource;
     MISSING_TYPE *currentSnapshot;
     MISSING_TYPE *prototypeCell;
+    MISSING_TYPE *prototypeCellMetrics;
+    MISSING_TYPE *contextMenuInteractor;
 }
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
-- (void)viewDidLoad;
+- (void)viewDidLayoutSubviews;
 
 @end
 

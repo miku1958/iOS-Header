@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <UserNotificationsUIKit/BNPresentableIdentifying-Protocol.h>
 #import <UserNotificationsUIKit/BNPresentableObserving-Protocol.h>
 
 @class NSString, UIViewController;
 @protocol BNPanGestureProxy;
 
-@protocol BNPresentable <BNPresentableObserving>
+@protocol BNPresentable <BNPresentableIdentifying, BNPresentableObserving>
 
 @property (readonly, nonatomic, getter=isDraggingDismissalEnabled) BOOL draggingDismissalEnabled;
 @property (readonly, nonatomic, getter=isDraggingInteractionEnabled) BOOL draggingInteractionEnabled;
 @property (readonly, nonatomic) long long presentableType;
-@property (readonly, copy, nonatomic) NSString *requestIdentifier;
-@property (readonly, copy, nonatomic) NSString *requesterIdentifier;
 @property (readonly, nonatomic, getter=isTouchOutsideDismissalEnabled) BOOL touchOutsideDismissalEnabled;
 @property (readonly, nonatomic) UIViewController *viewController;
 

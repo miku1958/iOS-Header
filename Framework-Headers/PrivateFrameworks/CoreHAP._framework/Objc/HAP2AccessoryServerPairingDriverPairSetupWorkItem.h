@@ -43,6 +43,7 @@
 - (BOOL)pairSetupSession:(id)arg1 didPairWithPeer:(id)arg2 error:(id *)arg3;
 - (BOOL)pairSetupSession:(id)arg1 didReceiveBackoffRequestWithTimeInterval:(double)arg2;
 - (id)pairSetupSession:(id)arg1 didReceiveLocalPairingIdentityRequestWithError:(id *)arg2;
+- (void)pairSetupSession:(id)arg1 didReceiveProductData:(id)arg2;
 - (void)pairSetupSession:(id)arg1 didReceiveSetupCodeRequestWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)pairSetupSession:(id)arg1 didReceiveSetupExchangeData:(id)arg2;
 - (void)pairSetupSession:(id)arg1 didStopWithError:(id)arg2;

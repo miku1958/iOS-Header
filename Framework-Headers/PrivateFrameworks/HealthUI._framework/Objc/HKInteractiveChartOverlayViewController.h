@@ -38,6 +38,7 @@
 @property (strong, nonatomic) _HKInteractiveChartOverlayWaitForCacheData *waitForCacheData; // @synthesize waitForCacheData=_waitForCacheData;
 
 - (void).cxx_destruct;
+- (void)_clearOverlayDisplayTypeWithAutomaticAutoscale:(BOOL)arg1;
 - (void)_commonInitializationWithDisplayType:(id)arg1;
 - (id)_dataSourceForDistributionStyle:(long long)arg1 timeScope:(long long)arg2 namedPredicate:(id)arg3;
 - (id)_dataSourceForQuantityType:(id)arg1 timeScope:(long long)arg2 customDataSource:(id)arg3;

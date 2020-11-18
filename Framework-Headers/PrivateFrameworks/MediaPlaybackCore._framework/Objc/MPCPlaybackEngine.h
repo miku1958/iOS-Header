@@ -75,6 +75,10 @@
 
 + (void)preheatPlayback;
 + (BOOL)requiresMainThread;
++ (BOOL)usesEventStreamPAF;
++ (BOOL)usesEventStreamRTC;
++ (BOOL)usesEventStreamSiri;
++ (BOOL)usesNewPlaybackImplementation;
 - (void).cxx_destruct;
 - (void)_detectCrashLoopForSessionIdentifier:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_initializePlaybackStack;

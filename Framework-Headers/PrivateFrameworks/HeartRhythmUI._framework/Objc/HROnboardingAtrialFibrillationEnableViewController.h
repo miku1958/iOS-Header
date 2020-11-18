@@ -37,7 +37,7 @@
 - (id)_titleFontTextStyle;
 - (double)_titleLastBaselineToBodyFirstBaseline;
 - (id)createHeroView;
-- (id)initForOnboarding:(BOOL)arg1;
+- (id)initForOnboarding:(BOOL)arg1 upgradingFromAlgorithmVersion:(long long)arg2;
 - (void)setUpConstraints;
 - (void)setUpUI;
 - (void)stackedButtonView:(id)arg1 didTapButtonAtIndex:(long long)arg2;

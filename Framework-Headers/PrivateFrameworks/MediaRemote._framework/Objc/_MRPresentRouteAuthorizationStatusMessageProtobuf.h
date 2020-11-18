@@ -10,6 +10,7 @@
 
 @class _MRAVOutputDeviceDescriptorProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRPresentRouteAuthorizationStatusMessageProtobuf : PBCodable <NSCopying>
 {
     _MRAVOutputDeviceDescriptorProtobuf *_route;
@@ -19,22 +20,13 @@
     } _has;
 }
 
-@property (readonly, nonatomic) BOOL hasRoute;
-@property (nonatomic) BOOL hasStatus;
-@property (strong, nonatomic) _MRAVOutputDeviceDescriptorProtobuf *route; // @synthesize route=_route;
-@property (nonatomic) int status; // @synthesize status=_status;
-
 - (void).cxx_destruct;
-- (int)StringAsStatus:(id)arg1;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)statusAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

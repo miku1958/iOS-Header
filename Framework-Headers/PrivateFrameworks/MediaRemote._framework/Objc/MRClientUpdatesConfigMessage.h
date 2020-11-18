@@ -6,19 +6,25 @@
 
 #import <MediaRemote/MRProtocolMessage.h>
 
+@class NSArray;
+
 __attribute__((visibility("hidden")))
 @interface MRClientUpdatesConfigMessage : MRProtocolMessage
 {
+    NSArray *_subscribedPlayerPaths;
 }
 
 @property (readonly, nonatomic) BOOL artworkUpdates;
 @property (readonly, nonatomic) BOOL keyboardUpdates;
 @property (readonly, nonatomic) BOOL nowPlayingUpdates;
 @property (readonly, nonatomic) BOOL outputDeviceUpdates;
+@property (copy, nonatomic) NSArray *subscribedPlayerPaths; // @synthesize subscribedPlayerPaths=_subscribedPlayerPaths;
 @property (readonly, nonatomic) BOOL systemEndpointUpdates;
 @property (readonly, nonatomic) BOOL volumeUpdates;
 
-- (id)initWithNowPlayingUpdates:(BOOL)arg1 artworkUpdates:(BOOL)arg2 volumeUpdates:(BOOL)arg3 keyboardUpdates:(BOOL)arg4 outputDeviceUpdates:(BOOL)arg5 systemEndpointUpdates:(BOOL)arg6;
+- (void).cxx_destruct;
+- (id)initWithNowPlayingUpdates:(BOOL)arg1 artworkUpdates:(BOOL)arg2 volumeUpdates:(BOOL)arg3 keyboardUpdates:(BOOL)arg4 outputDeviceUpdates:(BOOL)arg5 systemEndpointUpdates:(BOOL)arg6 subscribedPlayerPaths:(id)arg7;
+- (id)initWithUnderlyingCodableMessage:(id)arg1 error:(id)arg2;
 - (unsigned long long)type;
 
 @end

@@ -22,6 +22,9 @@
     BOOL _isPreorder;
     BOOL _isIOSBinaryMacOSAvailable;
     BOOL _isIOSBinaryMacOSCompatible;
+    BOOL _requiresRosetta;
+    BOOL _runsOnIntel;
+    BOOL _runsOnAppleSilicon;
     BOOL _supportsIPad;
     BOOL _supportsIPhone;
     BOOL _supportsLayeredImage;
@@ -40,6 +43,7 @@
     NSString *_genreName;
     NSString *_iconURLString;
     NSString *_longTitle;
+    NSArray *_macAppRequiredCapabilities;
     NSString *_ovalIconURLString;
     NSURL *_preflightPackageURL;
     NSURL *_productURL;
@@ -72,6 +76,7 @@
 @property BOOL isPreorder; // @synthesize isPreorder=_isPreorder;
 @property unsigned long long lockerItemID; // @synthesize lockerItemID=_lockerItemID;
 @property (copy) NSString *longTitle; // @synthesize longTitle=_longTitle;
+@property (copy) NSArray *macAppRequiredCapabilities; // @synthesize macAppRequiredCapabilities=_macAppRequiredCapabilities;
 @property unsigned int mediaKind; // @synthesize mediaKind=_mediaKind;
 @property (copy) NSString *ovalIconURLString; // @synthesize ovalIconURLString=_ovalIconURLString;
 @property (copy) NSURL *preflightPackageURL; // @synthesize preflightPackageURL=_preflightPackageURL;
@@ -80,6 +85,9 @@
 @property long long purchaserDSID; // @synthesize purchaserDSID=_purchaserDSID;
 @property (copy) NSString *redownloadParams; // @synthesize redownloadParams=_redownloadParams;
 @property (copy) NSArray *requiredCapabilities; // @synthesize requiredCapabilities=_requiredCapabilities;
+@property BOOL requiresRosetta; // @synthesize requiresRosetta=_requiresRosetta;
+@property BOOL runsOnAppleSilicon; // @synthesize runsOnAppleSilicon=_runsOnAppleSilicon;
+@property BOOL runsOnIntel; // @synthesize runsOnIntel=_runsOnIntel;
 @property long long storeItemID; // @synthesize storeItemID=_storeItemID;
 @property BOOL supportsIPad; // @synthesize supportsIPad=_supportsIPad;
 @property BOOL supportsIPhone; // @synthesize supportsIPhone=_supportsIPhone;

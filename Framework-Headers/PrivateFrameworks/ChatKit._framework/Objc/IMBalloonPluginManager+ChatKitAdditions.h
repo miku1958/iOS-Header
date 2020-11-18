@@ -7,6 +7,6 @@
 #import <IMCore/IMBalloonPluginManager.h>
 
 @interface IMBalloonPluginManager (ChatKitAdditions)
-- (id)balloonControllerForIMChatItem:(id)arg1 wantsOverlayLayout:(BOOL)arg2;
+- (id)balloonControllerForIMChatItem:(id)arg1 contextIdentifier:(id)arg2;
 @end
 

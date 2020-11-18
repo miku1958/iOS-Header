@@ -18,6 +18,7 @@
     PGIncompleteLocationResolver *_incompleteLocationResolver;
     NSArray *_usedTitleComponents;
     unsigned long long _tripTitleType;
+    unsigned long long _tripTitleLocationType;
 }
 
 @property (nonatomic) BOOL allowLongAOI; // @synthesize allowLongAOI=_allowLongAOI;
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) PGIncompleteLocationResolver *incompleteLocationResolver; // @synthesize incompleteLocationResolver=_incompleteLocationResolver;
 @property (strong, nonatomic) NSSet *momentNodes; // @synthesize momentNodes=_momentNodes;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
+@property (readonly, nonatomic) unsigned long long tripTitleLocationType; // @synthesize tripTitleLocationType=_tripTitleLocationType;
 @property (readonly, nonatomic) unsigned long long tripTitleType; // @synthesize tripTitleType=_tripTitleType;
 @property (strong, nonatomic) NSSet *usedLocationNodes; // @synthesize usedLocationNodes=_usedLocationNodes;
 @property (strong, nonatomic) NSArray *usedTitleComponents; // @synthesize usedTitleComponents=_usedTitleComponents;

@@ -183,6 +183,7 @@
 - (void)stopNearbyBrowsing;
 - (id)unreleasedHash;
 - (void)updateNearbyAdvertising;
+- (void)userCancelledMatching;
 
 @end
 

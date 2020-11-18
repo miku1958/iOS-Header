@@ -14,6 +14,8 @@
     MISSING_TYPE *prototypeItemViewModel;
     MISSING_TYPE *headerTitles;
     MISSING_TYPE *headerTitleIndexes;
+    MISSING_TYPE *highlightIndex;
+    MISSING_TYPE *episodes;
     MISSING_TYPE *delegate;
     MISSING_TYPE *fragmentServiceRequests;
     MISSING_TYPE *eventMonitorDescriptors;

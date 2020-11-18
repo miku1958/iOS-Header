@@ -22,9 +22,11 @@
 
 - (void).cxx_destruct;
 - (void)_executeCorrelationTask;
-- (void)_executeHomeControlCorrelationTask;
+- (void)_executeHomeControlMicrolocationCorrelationTask;
+- (void)_executeHomeControlNextActionCorrelationTask;
 - (void)dealloc;
 - (void)executeCorrelationTask;
+- (void)homeKitEventInserted:(id)arg1;
 - (id)initWithKnowledgeStore:(id)arg1;
 - (void)microLocationEventInserted:(id)arg1;
 - (void)nowPlayingEventInserted:(id)arg1;

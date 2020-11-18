@@ -14,23 +14,30 @@
     struct __CFUserNotification *_notification;
     NSString *_deviceName;
     struct os_unfair_lock_s _lock;
-    int _sessionCnt;
+    int _connectionCnt;
+    BOOL _alertPending;
+    unsigned long long _adamSessionID;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (BOOL)_isAlertSupported;
+- (BOOL)_isUnknownWiredHeadset:(id)arg1;
 - (void)_processPrompt:(id)arg1;
 - (void)_processWiredDevice:(id)arg1;
 - (void)_resetWiredStatus;
 - (BOOL)_shouldSurfaceAlert:(id)arg1;
 - (void)_updateMXVolumeLimitStatus:(id)arg1;
+- (void)_wiredDeviceSessionCreated:(id)arg1 SessionID:(unsigned long long)arg2;
+- (void)_wiredDeviceSessionDestroyed:(id)arg1;
 - (void)_wiredDeviceSessionInit:(id)arg1;
+- (void)deviceSessionCreated:(id)arg1 SessionID:(unsigned long long)arg2;
+- (void)deviceSessionDestroyed:(id)arg1;
 - (id)init;
 - (void)surfaceAlertBox;
+- (void)unknownWiredConnectionDidChange:(BOOL)arg1;
+- (BOOL)unknownWiredHeadsetConnected;
 - (void)updateWiredDeviceStatus;
-- (void)wiredDeviceSessionCreated:(id)arg1;
-- (void)wiredDeviceSessionDestroyed:(id)arg1;
 
 @end
 

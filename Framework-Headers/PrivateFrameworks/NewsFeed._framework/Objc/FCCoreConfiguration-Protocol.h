@@ -7,11 +7,12 @@
 #import <NewsFeed/NFCopying-Protocol.h>
 #import <NewsFeed/NSObject-Protocol.h>
 
-@class FCForYouGroupsConfiguration, FCNotificationsConfiguration, FCPaidBundleConfiguration, FCPersonalizationTreatment, FCTopStoriesConfiguration, FCVideoGroupsConfig, NSArray, NSDictionary, NSNumber, NSString, NSURL, NTPBTodayConfig;
+@class FCForYouGroupsConfiguration, FCNotificationsConfiguration, FCPaidALaCartePaywallConfig, FCPaidBundleConfiguration, FCPersonalizationTreatment, FCTopStoriesConfiguration, FCVideoGroupsConfig, NSArray, NSDictionary, NSNumber, NSString, NSURL, NTPBTodayConfig;
 
 @protocol FCCoreConfiguration <NSObject, NFCopying>
 
 @property (nonatomic, readonly) NSArray *aLaCartePaidSubscriptionGroupWhitelistedChannelIDs;
+@property (nonatomic, readonly) BOOL adInstrumentationEnabled;
 @property (nonatomic, readonly) long long alternateUniversalLinksBannerPresentationCount;
 @property (nonatomic, readonly) BOOL alternateUniversalLinksEnabledDefaultForFamilyMember;
 @property (nonatomic, readonly) BOOL alternateUniversalLinksEnabledDefaultForPurchaser;
@@ -22,6 +23,7 @@
 @property (nonatomic, readonly) NSString *audioConfigRecordID;
 @property (nonatomic, readonly) NSString *breakingNewsChannelID;
 @property (nonatomic, readonly) NSString *briefingsTagID;
+@property (nonatomic, readonly) NSDictionary *channelUpsellConfigsByChannelID;
 @property (nonatomic, readonly) BOOL checkForPaywallConfigChangesEnabled;
 @property (nonatomic, readonly) NSString *conversionCohortsExpField;
 @property (nonatomic, readonly) NSNumber *currentTreatment;
@@ -41,8 +43,11 @@
 @property (nonatomic, readonly) NSString *featuredStoriesTagID;
 @property (nonatomic, readonly) double feedLineHeightMultiplier;
 @property (nonatomic, readonly) FCForYouGroupsConfiguration *forYouGroupsConfiguration;
+@property (nonatomic, readonly) long long forYouMaxDailyEvergreenArticlesForFreeUsers;
+@property (nonatomic, readonly) long long forYouMaxDailyEvergreenArticlesForPaidUsers;
 @property (nonatomic, readonly) NSString *forYouRecordConfigID;
 @property (nonatomic, readonly) FCVideoGroupsConfig *forYouVideoGroupsConfig;
+@property (nonatomic, readonly) NSString *freeEvergreenArticleListID;
 @property (nonatomic, readonly) NSArray *hiddenFeedIDs;
 @property (nonatomic, readonly) NSString *magazinesConfigRecordID;
 @property (nonatomic, readonly) long long maxRetriesForDroppedFeeds;
@@ -65,6 +70,7 @@
 @property (nonatomic, readonly) long long optionalTopStoriesRefreshRate;
 @property (nonatomic, readonly) BOOL orderFeedEndpointEnabled;
 @property (nonatomic, readonly) FCPaidBundleConfiguration *paidBundleConfig;
+@property (nonatomic, readonly) NSString *paidEvergreenArticleListID;
 @property (nonatomic, readonly) NSArray *presubscribedFeedIDs;
 @property (nonatomic, readonly) BOOL privateDataEncryptionAllowed;
 @property (nonatomic, readonly) BOOL privateDataEncryptionMigrationDesired;
@@ -110,6 +116,7 @@
 @optional
 - (NSURL *)appAnalyticsEndpointUrlForEnvironment:(unsigned long long)arg1;
 - (BOOL)isPrivateDataEncryptionRequired;
+- (FCPaidALaCartePaywallConfig *)paidALaCartePaywallConfigForChannelID:(NSString *)arg1;
 - (NTPBTodayConfig *)todayConfigWithIdentifier:(NSString *)arg1 queueConfigs:(NSArray *)arg2 backgroundColorLight:(NSString *)arg3 backgroundColorDark:(NSString *)arg4 audioIndicatorColor:(NSString *)arg5;
 @end
 

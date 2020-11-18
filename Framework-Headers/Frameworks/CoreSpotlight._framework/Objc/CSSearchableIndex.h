@@ -13,6 +13,7 @@
 {
     CSIndexingQueue *_activityQueue;
     BOOL _batchOpen;
+    BOOL _noBatching;
     id<CSSearchableIndexDelegate> _indexDelegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSString *_name;
@@ -34,6 +35,7 @@
 @property (weak) id<CSSearchableIndexDelegate> indexDelegate; // @synthesize indexDelegate=_indexDelegate;
 @property (readonly, nonatomic) NSNumber *indexID; // @synthesize indexID=_indexID;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (nonatomic) BOOL noBatching; // @synthesize noBatching=_noBatching;
 @property (nonatomic) long long options; // @synthesize options=_options;
 @property (copy, nonatomic) NSString *protectionClass; // @synthesize protectionClass=_protectionClass;
 
@@ -64,6 +66,7 @@
 - (void)_fetchAttributes:(id)arg1 protectionClass:(id)arg2 bundleID:(id)arg3 items:(id)arg4 includeParents:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_indexActivities:(id)arg1 flush:(BOOL)arg2;
 - (id)_initWithName:(id)arg1 protectionClass:(id)arg2 bundleIdentifier:(id)arg3 options:(long long)arg4;
+- (id)_initWithName:(id)arg1 protectionClass:(id)arg2 bundleIdentifier:(id)arg3 options:(long long)arg4 disableBatching:(BOOL)arg5;
 - (void)_issueCommand:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_issueNonLaunchingCommand:(id)arg1;
 - (id)_itemsBySanitizingItemsForSpotlight:(id)arg1;
@@ -71,7 +74,6 @@
 - (void)_setFPAttributes:(id)arg1;
 - (void)_setMailMessageAttributes:(id)arg1;
 - (long long)_standardizeItems:(id)arg1;
-- (BOOL)_supportsBatching;
 - (id)_validateClientState:(id)arg1;
 - (id)_validateOperation;
 - (id)_validateOperationWithIdentifiers:(id)arg1;

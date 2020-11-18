@@ -7,25 +7,23 @@
 #import <objc/NSObject.h>
 
 @class NFPendingPromise, SXLayoutOptions;
-@protocol SXComponent, SXComponentState;
+@protocol SXComponent;
 
 @interface SXPendingLayoutInvalidation : NSObject
 {
     id<SXComponent> _component;
-    id<SXComponentState> _componentState;
     NFPendingPromise *_pendingPromise;
     SXLayoutOptions *_layoutOptions;
-    struct CGSize _suggestedSize;
+    CDUnknownBlockType _invalidation;
 }
 
 @property (readonly, nonatomic) id<SXComponent> component; // @synthesize component=_component;
-@property (readonly, nonatomic) id<SXComponentState> componentState; // @synthesize componentState=_componentState;
+@property (readonly, nonatomic) CDUnknownBlockType invalidation; // @synthesize invalidation=_invalidation;
 @property (readonly, nonatomic) SXLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
 @property (readonly, nonatomic) NFPendingPromise *pendingPromise; // @synthesize pendingPromise=_pendingPromise;
-@property (readonly, nonatomic) struct CGSize suggestedSize; // @synthesize suggestedSize=_suggestedSize;
 
 - (void).cxx_destruct;
-- (id)initWithComponent:(id)arg1 suggestedSize:(struct CGSize)arg2 componentState:(id)arg3 pendingPromise:(id)arg4 layoutOptions:(id)arg5;
+- (id)initWithComponent:(id)arg1 pendingPromise:(id)arg2 layoutOptions:(id)arg3 invalidation:(CDUnknownBlockType)arg4;
 
 @end
 

@@ -10,7 +10,6 @@
 
 @interface _TtC7NewsUI221TagFeedViewController : UIViewController
 {
-    MISSING_TYPE *adPresentationDelegateProvider;
     MISSING_TYPE *feedDescriptor;
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;

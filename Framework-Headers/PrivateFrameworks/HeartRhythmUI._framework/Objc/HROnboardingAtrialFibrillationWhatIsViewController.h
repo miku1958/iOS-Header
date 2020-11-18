@@ -19,7 +19,7 @@
 - (id)bodyString;
 - (id)buttonTitleString;
 - (id)createHeroView;
-- (id)initForOnboarding:(BOOL)arg1;
+- (id)initForOnboarding:(BOOL)arg1 upgradingFromAlgorithmVersion:(long long)arg2;
 - (void)setUpUI;
 - (long long)stackedButtonViewLastButtonMode;
 - (id)titleString;

@@ -7,12 +7,14 @@
 #import <objc/NSObject.h>
 
 @class NSProgress, NSString, PLProgressFollower;
+@protocol PLResourceDataStore;
 
 @interface PHServerResourceRequestRunner : NSObject
 {
     NSProgress *_progress;
     struct os_unfair_lock_s _lock;
     PLProgressFollower *_dataStoreFollower;
+    id<PLResourceDataStore> _dataStore;
     long long _state;
     NSString *_taskIdentifier;
 }

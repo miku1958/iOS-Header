@@ -14,6 +14,7 @@
 
 @interface PXSearchTapToRadarSectionProvider : NSObject <PXSettingsKeyObserver, PXSearchDataSourceSectionProvider>
 {
+    BOOL _shouldDisplayRadarDescriptionLabel;
     id<PXSearchDataSourceSectionProviderChangeObserver> changeObserver;
     id<PXSearchTapToRadarSectionProviderDelegate> _delegate;
 }
@@ -24,6 +25,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSArray *sectionIdentifiers;
+@property (nonatomic) BOOL shouldDisplayRadarDescriptionLabel; // @synthesize shouldDisplayRadarDescriptionLabel=_shouldDisplayRadarDescriptionLabel;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long type;
 

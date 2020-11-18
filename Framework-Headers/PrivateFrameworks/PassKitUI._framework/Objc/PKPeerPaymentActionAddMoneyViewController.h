@@ -42,7 +42,7 @@
 - (void)enterCurrencyAmountPassViewDidLoadPassSnapshot:(id)arg1;
 - (BOOL)enterCurrencyAmountView:(id)arg1 shouldChangeAmountFrom:(id)arg2 to:(id)arg3;
 - (void)enterCurrencyAmountViewDidChangeAmount:(id)arg1;
-- (id)initWithPaymentPass:(id)arg1 webService:(id)arg2 context:(long long)arg3;
+- (id)initWithPaymentPass:(id)arg1 webService:(id)arg2 passLibraryDataProvider:(id)arg3 context:(long long)arg4;
 - (void)keyboardWillChange:(id)arg1;
 - (void)keyboardWillHide:(id)arg1;
 - (void)keyboardWillShow:(id)arg1;

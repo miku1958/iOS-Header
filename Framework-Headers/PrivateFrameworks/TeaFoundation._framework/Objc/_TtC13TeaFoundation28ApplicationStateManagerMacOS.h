@@ -11,12 +11,7 @@
 @interface _TtC13TeaFoundation28ApplicationStateManagerMacOS : _TtCs12_SwiftObject
 {
     MISSING_TYPE *monitors;
-    MISSING_TYPE *isWindowForeground;
-    MISSING_TYPE *isBecomingActive;
 }
-
-- (void)windowDidBecomeFrontmostNotification;
-- (void)windowDidLoseFrontmostNotification;
 
 @end
 

@@ -12,6 +12,7 @@
 
 @interface CBDevice : NSObject <CUXPCCodable>
 {
+    unsigned char _nearbyActionType;
     unsigned char _nearbyActivityLevel;
     unsigned char _objectDiscoveryBatteryState;
     unsigned char _objectDiscoveryMode;
@@ -20,7 +21,6 @@
     unsigned char _objectSetupColorCode;
     unsigned char _proximityPairingSubType;
     unsigned char _spatialInteractionFlags;
-    unsigned char _nearbyActionType;
     int _audioStreamState;
     int _bleChannel;
     int _bleRSSI;
@@ -29,20 +29,26 @@
     int _secondaryPlacement;
     unsigned int _productID;
     unsigned int _lgFlags;
+    unsigned int _nearbyActionFlags;
+    unsigned int _nearbyInfoFlags;
     unsigned int _objectDiscoveryProductID;
     unsigned int _objectSetupFlags;
     unsigned int _proximityPairingProductID;
+    unsigned int _spatialInteractionUWBTokenFlags;
     unsigned int _internalFlags;
-    unsigned int _nearbyFlags;
     unsigned int _spatialInteractionPeerID;
+    NSString *_accountID;
     NSData *_bleAddressData;
     NSData *_bleAdvertisementData;
     NSData *_bleAppleManufacturerData;
     NSData *_btAddressData;
     unsigned long long _changeFlags;
+    NSString *_contactID;
     unsigned long long _deviceFlags;
     unsigned long long _discoveryFlags;
     NSString *_identifier;
+    NSString *_idsDeviceID;
+    NSString *_model;
     NSString *_name;
     NSData *_nearbyAuthTag;
     NSData *_objectDiscoveryNearOwnerID;
@@ -54,9 +60,12 @@
     NSDictionary *_spatialInteractionUserInfo;
     NSData *_spatialInteractionUWBConfigData;
     unsigned long long _lastSeenTicks;
+    NSData *_nearbyActionAuthTag;
+    NSData *_nearbyInfoAuthTag;
     unsigned long long _oldDiscoveryFlags;
 }
 
+@property (copy, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
 @property (nonatomic) int audioStreamState; // @synthesize audioStreamState=_audioStreamState;
 @property (copy, nonatomic) NSData *bleAddressData; // @synthesize bleAddressData=_bleAddressData;
 @property (copy, nonatomic) NSData *bleAdvertisementData; // @synthesize bleAdvertisementData=_bleAdvertisementData;
@@ -66,17 +75,23 @@
 @property (copy, nonatomic) NSData *btAddressData; // @synthesize btAddressData=_btAddressData;
 @property (nonatomic) unsigned long long changeFlags; // @synthesize changeFlags=_changeFlags;
 @property (nonatomic) unsigned int connectedServices; // @synthesize connectedServices=_connectedServices;
+@property (copy, nonatomic) NSString *contactID; // @synthesize contactID=_contactID;
 @property (nonatomic) unsigned long long deviceFlags; // @synthesize deviceFlags=_deviceFlags;
 @property (nonatomic) unsigned long long discoveryFlags; // @synthesize discoveryFlags=_discoveryFlags;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSString *idsDeviceID; // @synthesize idsDeviceID=_idsDeviceID;
 @property (nonatomic) unsigned int internalFlags; // @synthesize internalFlags=_internalFlags;
 @property (nonatomic) unsigned long long lastSeenTicks; // @synthesize lastSeenTicks=_lastSeenTicks;
 @property (readonly, nonatomic) unsigned int lgFlags; // @synthesize lgFlags=_lgFlags;
+@property (copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (nonatomic) unsigned char nearbyActionType; // @synthesize nearbyActionType=_nearbyActionType;
+@property (copy, nonatomic) NSData *nearbyActionAuthTag; // @synthesize nearbyActionAuthTag=_nearbyActionAuthTag;
+@property (readonly, nonatomic) unsigned int nearbyActionFlags; // @synthesize nearbyActionFlags=_nearbyActionFlags;
+@property (readonly, nonatomic) unsigned char nearbyActionType; // @synthesize nearbyActionType=_nearbyActionType;
 @property (readonly, nonatomic) unsigned char nearbyActivityLevel; // @synthesize nearbyActivityLevel=_nearbyActivityLevel;
 @property (readonly, copy, nonatomic) NSData *nearbyAuthTag; // @synthesize nearbyAuthTag=_nearbyAuthTag;
-@property (nonatomic) unsigned int nearbyFlags; // @synthesize nearbyFlags=_nearbyFlags;
+@property (copy, nonatomic) NSData *nearbyInfoAuthTag; // @synthesize nearbyInfoAuthTag=_nearbyInfoAuthTag;
+@property (readonly, nonatomic) unsigned int nearbyInfoFlags; // @synthesize nearbyInfoFlags=_nearbyInfoFlags;
 @property (readonly, nonatomic) unsigned char objectDiscoveryBatteryState; // @synthesize objectDiscoveryBatteryState=_objectDiscoveryBatteryState;
 @property (readonly, nonatomic) unsigned char objectDiscoveryMode; // @synthesize objectDiscoveryMode=_objectDiscoveryMode;
 @property (readonly, copy, nonatomic) NSData *objectDiscoveryNearOwnerID; // @synthesize objectDiscoveryNearOwnerID=_objectDiscoveryNearOwnerID;
@@ -99,9 +114,11 @@
 @property (nonatomic) unsigned int spatialInteractionPeerID; // @synthesize spatialInteractionPeerID=_spatialInteractionPeerID;
 @property (copy, nonatomic) NSData *spatialInteractionTokenData; // @synthesize spatialInteractionTokenData=_spatialInteractionTokenData;
 @property (copy, nonatomic) NSData *spatialInteractionUWBConfigData; // @synthesize spatialInteractionUWBConfigData=_spatialInteractionUWBConfigData;
+@property (nonatomic) unsigned int spatialInteractionUWBTokenFlags; // @synthesize spatialInteractionUWBTokenFlags=_spatialInteractionUWBTokenFlags;
 @property (copy, nonatomic) NSDictionary *spatialInteractionUserInfo; // @synthesize spatialInteractionUserInfo=_spatialInteractionUserInfo;
 
 - (void).cxx_destruct;
+- (void)_clearUnparsedProperties;
 - (void)_parseAppleManufacturerPtr:(const char *)arg1 end:(const char *)arg2;
 - (void)_parseLGManufacturerPtr:(const char *)arg1 end:(const char *)arg2;
 - (void)_parseManufacturerPtr:(const char *)arg1 end:(const char *)arg2;
@@ -117,7 +134,10 @@
 - (id)descriptionWithLevel:(int)arg1;
 - (void)encodeWithXPCObject:(id)arg1;
 - (id)initWithXPCObject:(id)arg1 error:(id *)arg2;
+- (unsigned long long)removeInternalFlags:(unsigned int)arg1;
 - (unsigned long long)updateWithCBDevice:(id)arg1;
+- (void)updateWithCBIdentity:(id)arg1;
+- (void)updateWithRPIdentity:(id)arg1;
 
 @end
 

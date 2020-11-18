@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI23UIKitMainMenuController : UIResponder
 {
     MISSING_TYPE *commandResolver;
+    MISSING_TYPE *environment;
     MISSING_TYPE *topLevelItemCoordinators;
     MISSING_TYPE *keyCommandMap;
 }

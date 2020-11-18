@@ -41,7 +41,7 @@
     NSSet *_pendingRecipients;
     NSAttributedString *_groupName;
     NSString *_groupIdentityUpdateHandleID;
-    NSString *_previewText;
+    NSAttributedString *_previewText;
     NSNumber *_businessConversation;
     NSDate *_dateLastViewed;
     CNGroupIdentity *__conversationVisualIdentity;
@@ -98,7 +98,7 @@
 @property (copy, nonatomic) NSArray *pendingHandles; // @synthesize pendingHandles=_pendingHandles;
 @property (strong, nonatomic) NSSet *pendingRecipients; // @synthesize pendingRecipients=_pendingRecipients;
 @property (readonly, nonatomic) NSString *pinningIdentifier;
-@property (copy, nonatomic) NSString *previewText; // @synthesize previewText=_previewText;
+@property (copy, nonatomic) NSAttributedString *previewText; // @synthesize previewText=_previewText;
 @property (readonly, nonatomic) NSString *rawAddressedName;
 @property (readonly, nonatomic) CKEntity *recipient; // @dynamic recipient;
 @property (readonly, nonatomic) unsigned long long recipientCount;

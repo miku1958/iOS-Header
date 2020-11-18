@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (BOOL)_supportsMacIdiom;
+- (BOOL)canBecomeFocused;
 
 @end
 

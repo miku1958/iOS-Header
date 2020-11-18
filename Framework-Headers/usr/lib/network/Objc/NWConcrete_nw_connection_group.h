@@ -9,7 +9,7 @@
 #import <network/OS_nw_connection_group-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_queue, OS_nw_array, OS_nw_group_descriptor, OS_nw_listener, OS_nw_parameters;
+@protocol OS_dispatch_queue, OS_nw_array, OS_nw_error, OS_nw_group_descriptor, OS_nw_listener, OS_nw_parameters;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_connection_group : NSObject <OS_nw_connection_group>
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NWConcrete_nw_connection_group *internally_retained_object;
     CDUnknownBlockType state_changed_handler;
     int state;
+    NSObject<OS_nw_error> *last_error;
     NSObject<OS_nw_parameters> *parameters;
     NSObject<OS_nw_group_descriptor> *group_descriptor;
     NSObject<OS_nw_listener> *listener;

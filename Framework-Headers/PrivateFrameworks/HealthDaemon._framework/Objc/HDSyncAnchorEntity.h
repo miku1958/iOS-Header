@@ -25,6 +25,7 @@
 + (BOOL)getSyncAnchorsOfType:(long long)arg1 anchorMap:(id)arg2 store:(id)arg3 profile:(id)arg4 error:(id *)arg5;
 + (BOOL)prepareSyncAnchorsForEntityIdentifiers:(id)arg1 store:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (long long)protectionClass;
++ (BOOL)resetAllSyncAnchorsOfType:(long long)arg1 syncProvenances:(id)arg2 transaction:(id)arg3 error:(id *)arg4;
 + (BOOL)resetSyncAnchorsOfType:(long long)arg1 store:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (BOOL)resetSyncStore:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (BOOL)setAcknowledgedAnchorsWithMap:(id)arg1 store:(id)arg2 resetNext:(BOOL)arg3 resetInvalid:(BOOL)arg4 profile:(id)arg5 error:(id *)arg6;

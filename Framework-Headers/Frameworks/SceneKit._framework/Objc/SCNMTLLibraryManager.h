@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)frameworkLibrary;
 - (id)initWithDevice:(id)arg1;
 - (id)libraryForFile:(id)arg1;
-- (void)libraryForProgramDesc:(CDStruct_1c56e179)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)libraryForProgramDesc:(CDStruct_315dd483)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)libraryForSourceCode:(id)arg1 options:(id)arg2;
 - (id)shaderCompilationGroup;
 - (void)waitForShadersCompilation;

@@ -7,7 +7,7 @@
 #import <UserNotificationsUIKit/BNSuspendable-Protocol.h>
 #import <UserNotificationsUIKit/BSInvalidatable-Protocol.h>
 
-@class BNBannerSourceLayoutDescription, NSDictionary, NSString;
+@class BNBannerSourceLayoutDescription, NSArray, NSDictionary, NSString;
 @protocol BNBannerSourceDelegate, BNPresentable;
 
 @protocol BNBannerSourceProviding <BSInvalidatable, BNSuspendable>
@@ -19,7 +19,10 @@
 
 - (BNBannerSourceLayoutDescription *)layoutDescriptionWithError:(out id *)arg1;
 - (BOOL)postPresentable:(id<BNPresentable>)arg1 options:(unsigned long long)arg2 userInfo:(NSDictionary *)arg3 error:(out id *)arg4;
-- (BOOL)revokeAllPresentablesWithReason:(NSString *)arg1 userInfo:(NSDictionary *)arg2 error:(out id *)arg3;
+- (NSArray *)revokeAllPresentablesWithReason:(NSString *)arg1 userInfo:(NSDictionary *)arg2 error:(out id *)arg3;
+- (NSArray *)revokePresentableWithRequestIdentifier:(NSString *)arg1 reason:(NSString *)arg2 animated:(BOOL)arg3 userInfo:(NSDictionary *)arg4 error:(out id *)arg5;
+
+@optional
 - (BOOL)revokePresentableWithRequestIdentifier:(NSString *)arg1 animated:(BOOL)arg2 reason:(NSString *)arg3 userInfo:(NSDictionary *)arg4 error:(out id *)arg5;
 @end
 

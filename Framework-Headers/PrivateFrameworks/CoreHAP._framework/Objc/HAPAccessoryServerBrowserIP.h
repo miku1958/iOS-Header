@@ -7,12 +7,13 @@
 #import <CoreHAP/HAPAccessoryServerBrowser.h>
 
 #import <CoreHAP/HAPAccessoryServerNotification-Protocol.h>
+#import <CoreHAP/HAPPowerManagerProtocol-Protocol.h>
 #import <CoreHAP/HMFTimerDelegate-Protocol.h>
 
-@class HAPWACAccessoryBrowser, HMFTimer, NSArray, NSMutableSet, NSObject, NSString;
+@class HAPPowerManager, HAPWACAccessoryBrowser, HMFTimer, NSArray, NSMutableSet, NSObject, NSString;
 @protocol HAPAccessoryServerBrowserDelegate, OS_dispatch_queue;
 
-@interface HAPAccessoryServerBrowserIP : HAPAccessoryServerBrowser <HMFTimerDelegate, HAPAccessoryServerNotification>
+@interface HAPAccessoryServerBrowserIP : HAPAccessoryServerBrowser <HMFTimerDelegate, HAPPowerManagerProtocol, HAPAccessoryServerNotification>
 {
     struct BonjourBrowser *_bonjourBrowser;
     NSMutableSet *_discoveredAccessoryServers;
@@ -21,6 +22,7 @@
     NSMutableSet *_pendingBonjourEvents;
     HMFTimer *_bonjourEventTimer;
     HAPWACAccessoryBrowser *_hapWACBrowser;
+    HAPPowerManager *_powerManager;
 }
 
 @property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
@@ -33,6 +35,7 @@
 @property (strong, nonatomic) HAPWACAccessoryBrowser *hapWACBrowser; // @synthesize hapWACBrowser=_hapWACBrowser;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableSet *pendingBonjourEvents; // @synthesize pendingBonjourEvents=_pendingBonjourEvents;
+@property (strong, nonatomic) HAPPowerManager *powerManager; // @synthesize powerManager=_powerManager;
 @property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
 @property (readonly, copy) NSString *shortDescription;
@@ -55,6 +58,7 @@
 - (int)_server:(id *)arg1 forBonjourDevice:(id)arg2;
 - (void)_setReachability:(BOOL)arg1 forServer:(id)arg2;
 - (void)_timerDidExpire:(id)arg1;
+- (void)devicePowerStateChanged:(unsigned long long)arg1;
 - (void)discoverAccessoryServerWithIdentifier:(id)arg1;
 - (void)indicateNotificationFromServer:(id)arg1 notifyType:(unsigned long long)arg2 withDictionary:(id)arg3;
 - (id)initWithQueue:(id)arg1;

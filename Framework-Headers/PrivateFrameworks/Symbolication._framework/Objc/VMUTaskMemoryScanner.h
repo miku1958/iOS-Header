@@ -51,6 +51,7 @@
     unsigned int _objcClassStructureClassInfoIndex;
     unsigned int _swiftClassStructureClassInfoIndex;
     unsigned int _swiftMetadataClassInfoIndex;
+    unsigned int _swiftHeapGenericLocalVariableClassInfoIndex;
     BOOL _exactScanningEnabled;
     unsigned long long _maxInteriorOffset;
     unsigned int _scanningMask;
@@ -118,7 +119,8 @@
 - (void)_destroyLinearClassInfos;
 - (void)_findMarkedAbandonedBlocks;
 - (void)_fixupBlockIsas;
-- (void)_identifyNonObjectsPointedToByTypedIvars;
+- (void)_identifyNonObjectsPointedToByTypedIvars:(unsigned int)arg1;
+- (void)_identifyNonObjectsPointingToSwiftMetadata:(unsigned int)arg1;
 - (void)_identifyObjCClassStructureBlocks;
 - (unsigned int)_indexForClassInfo:(id)arg1;
 - (id)_initWithTask:(unsigned int)arg1 options:(unsigned long long)arg2;

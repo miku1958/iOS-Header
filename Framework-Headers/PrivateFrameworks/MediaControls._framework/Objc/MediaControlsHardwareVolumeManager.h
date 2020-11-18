@@ -12,7 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface MediaControlsHardwareVolumeManager : NSObject
 {
-    NSObject<OS_dispatch_queue> *_avSystemControllerQueue;
+    NSObject<OS_dispatch_queue> *_serialQueue;
     NSMapTable *_assertions;
     NSArray *_volumeButtonConsumerInvalidators;
 }

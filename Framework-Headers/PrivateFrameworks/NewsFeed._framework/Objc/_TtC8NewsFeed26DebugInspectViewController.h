@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *commandCenter;
     MISSING_TYPE *featureAvailability;
     MISSING_TYPE *tableView;
+    MISSING_TYPE *headineService;
 }
 
 - (void).cxx_destruct;

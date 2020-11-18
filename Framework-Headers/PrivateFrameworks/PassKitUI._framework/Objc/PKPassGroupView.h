@@ -55,7 +55,6 @@
     BOOL _modallyPresented;
     BOOL _loaned;
     BOOL _paused;
-    BOOL _reduceMotionEnabled;
     PKPassView *_frontmostPassView;
     PKGroup *_group;
     PKReusablePassViewQueue *_passViewQueue;
@@ -77,7 +76,6 @@
 @property (nonatomic, getter=isPaused) BOOL paused; // @synthesize paused=_paused;
 @property (nonatomic) long long presentationState; // @synthesize presentationState=_presentationState;
 @property (readonly, nonatomic) UILongPressGestureRecognizer *pressGestureRecognizer; // @synthesize pressGestureRecognizer=_pressGestureRecognizer;
-@property (nonatomic, getter=isReducedMotionEnabled) BOOL reduceMotionEnabled; // @synthesize reduceMotionEnabled=_reduceMotionEnabled;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -146,16 +144,16 @@
 - (void)passViewTapped:(id)arg1;
 - (void)presentDiff:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentPassWithUniqueID:(id)arg1;
-- (void)presentPassWithUniqueID:(id)arg1 withContext:(id)arg2;
+- (void)presentPassWithUniqueID:(id)arg1 withContext:(id)arg2 animated:(BOOL)arg3;
 - (void)removeFromSuperview;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)setDimmer:(double)arg1 animated:(BOOL)arg2;
-- (void)setFrontmostPassView:(id)arg1 withContext:(id)arg2;
+- (void)setFrontmostPassView:(id)arg1 withContext:(id)arg2 animated:(BOOL)arg3;
 - (void)setFrontmostPassViewFromPassIndex:(long long)arg1;
-- (void)setFrontmostPassViewFromPassIndex:(long long)arg1 withContext:(id)arg2;
+- (void)setFrontmostPassViewFromPassIndex:(long long)arg1 withContext:(id)arg2 animated:(BOOL)arg3;
 - (void)setPassViewExpanded:(BOOL)arg1 forPass:(id)arg2 animated:(BOOL)arg3;
 - (void)setPresentationState:(long long)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

@@ -21,6 +21,7 @@
     int _state;
     NSObject<OS_dispatch_source> *_timeoutTimer;
     TROperationQueue *_trOperationQueue;
+    BOOL _configuredTVAudio;
     HMHomeManager *_homeKitHomeManager;
     BOOL _homeKitHomeManagerReady;
     HMAccessoryBrowser *_homeKitBrowser;
@@ -42,6 +43,7 @@
     BOOL _personalRequestsEnabled;
     int _stereoRole;
     NSDictionary *_appDataSelf;
+    HMAccessory *_tvAudioInput;
     CDUnknownBlockType _completionHandler;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     HMHome *_homeKitSelectedHome;
@@ -85,6 +87,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) double timeoutInSeconds; // @synthesize timeoutInSeconds=_timeoutInSeconds;
 @property (strong, nonatomic) TRSession *trSession; // @synthesize trSession=_trSession;
+@property (strong, nonatomic) HMAccessory *tvAudioInput; // @synthesize tvAudioInput=_tvAudioInput;
 @property (nonatomic) BOOL userInteractive; // @synthesize userInteractive=_userInteractive;
 
 - (void).cxx_destruct;
@@ -105,6 +108,7 @@
 - (void)_runHomeKitDeviceSetup;
 - (void)_runHomeKitSelectRoom;
 - (void)_runHomeKitSetupRoom;
+- (void)_runHomeKitUpdateAppleTVAudioDestination;
 - (void)_runInit;
 - (void)_runPersonalRequestsStart;
 - (void)_startTimeout:(double)arg1;
@@ -114,6 +118,7 @@
 - (void)accessoryBrowser:(id)arg1 didRemoveNewAccessory:(id)arg2;
 - (void)activate;
 - (id)findStereoCounterpartsWithSupportedVersions:(unsigned long long)arg1;
+- (id)findTVs;
 - (void)homeAppInstallChoice:(BOOL)arg1;
 - (void)homeManager:(id)arg1 didUpdateStatus:(unsigned long long)arg2;
 - (void)homeManagerDidUpdateDataSyncState:(id)arg1;

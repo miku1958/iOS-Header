@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (id)init;
 - (void)sendEventRepresentation:(id)arg1;
+- (void)sendIOHIDEventRef:(struct __IOHIDEvent *)arg1;
 
 @end
 

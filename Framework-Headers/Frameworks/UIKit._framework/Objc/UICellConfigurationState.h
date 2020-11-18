@@ -20,6 +20,7 @@
     } _cellStateFlags;
 }
 
+@property (readonly, nonatomic) BOOL _showingCompactContextMenu;
 @property (readonly, nonatomic) unsigned long long _viewConfigurationState;
 @property (nonatomic) long long cellDragState;
 @property (nonatomic) long long cellDropState;
@@ -34,6 +35,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void)_appendPropertiesForDescription:(id)arg1;
+- (void)_configureWithViewConfigurationState:(unsigned long long)arg1;
 - (id)_initWithState:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

@@ -6,10 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@interface CSAccessoryConfiguration : NSObject
+#import <CoverSheet/CSDateTimeLayoutAggregating-Protocol.h>
+#import <CoverSheet/CSPersistentContentLayoutProviding-Protocol.h>
+
+@class CSLayoutStrategy;
+
+@interface CSAccessoryConfiguration : NSObject <CSPersistentContentLayoutProviding, CSDateTimeLayoutAggregating>
 {
     BOOL _showBolt;
     BOOL _staticViewNeeded;
+    double _boltPointSize;
     double _ringDiameter;
     double _splashRingDiameter;
     double _lineWidth;
@@ -20,12 +26,15 @@
     double _walletBottomOffset;
     double _walletCornerRadius;
     double _staticViewRingDiameter;
+    CSLayoutStrategy *_layoutStrategy;
     struct CGSize _boltSize;
     struct CGSize _walletSize;
 }
 
+@property (readonly, nonatomic) double boltPointSize; // @synthesize boltPointSize=_boltPointSize;
 @property (nonatomic) struct CGSize boltSize; // @synthesize boltSize=_boltSize;
 @property (nonatomic) double chargePercentFont; // @synthesize chargePercentFont=_chargePercentFont;
+@property (strong, nonatomic) CSLayoutStrategy *layoutStrategy; // @synthesize layoutStrategy=_layoutStrategy;
 @property (nonatomic) double lineWidth; // @synthesize lineWidth=_lineWidth;
 @property (nonatomic) double ringDiameter; // @synthesize ringDiameter=_ringDiameter;
 @property (readonly, nonatomic) BOOL showBolt; // @synthesize showBolt=_showBolt;
@@ -35,14 +44,27 @@
 @property (nonatomic) double splashRingDiameterSizeXXXFactor; // @synthesize splashRingDiameterSizeXXXFactor=_splashRingDiameterSizeXXXFactor;
 @property (nonatomic) BOOL staticViewNeeded; // @synthesize staticViewNeeded=_staticViewNeeded;
 @property (nonatomic) double staticViewRingDiameter; // @synthesize staticViewRingDiameter=_staticViewRingDiameter;
+@property (readonly, nonatomic) struct CGRect visibleScreenCoordinatesForSleeve;
 @property (readonly, nonatomic) double walletBottomOffset; // @synthesize walletBottomOffset=_walletBottomOffset;
 @property (readonly, nonatomic) double walletCornerRadius; // @synthesize walletCornerRadius=_walletCornerRadius;
 @property (readonly, nonatomic) struct CGSize walletSize; // @synthesize walletSize=_walletSize;
 
 + (id)defaultConfiguration;
 + (id)staticViewConfiguration;
+- (void).cxx_destruct;
+- (double)bottomContentInset;
+- (BOOL)containsCenteredDateTimeLayout;
+- (double)dateBaselineToListY;
+- (double)dateTimeMostExtremeLeadingX;
+- (double)dateTimeMostExtremeTrailingX;
+- (double)dateTimeSubtitleMaximumWidth;
 - (id)initWithStaticViewNeeded:(BOOL)arg1;
+- (double)listMinY;
 - (void)setValuesWithStaticViewNeeded:(BOOL)arg1;
+- (double)timeLabelBaselineY;
+- (double)timeLabelOffsetForScrollPercent:(double)arg1;
+- (double)timeToSubtitleLabelBaselineDifferenceY;
+- (double)windowedAccessoryInset;
 
 @end
 

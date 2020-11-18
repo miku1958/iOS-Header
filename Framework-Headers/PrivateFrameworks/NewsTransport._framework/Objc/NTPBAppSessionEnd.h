@@ -88,6 +88,7 @@
 + (Class)paidSubscriptionChannelIdsType;
 + (Class)subscribedFeedIdsType;
 - (void).cxx_destruct;
+- (int)StringAsSessionEndReason:(id)arg1;
 - (void)addAutoSubscribedFeedIds:(id)arg1;
 - (void)addGroupableFeedIds:(id)arg1;
 - (void)addLastVisibleViews:(id)arg1;
@@ -117,6 +118,7 @@
 - (id)paidSubscriptionChannelIdsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)paidSubscriptionChannelIdsCount;
 - (BOOL)readFrom:(id)arg1;
+- (id)sessionEndReasonAsString:(int)arg1;
 - (id)subscribedFeedIdsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)subscribedFeedIdsCount;
 - (void)writeTo:(id)arg1;

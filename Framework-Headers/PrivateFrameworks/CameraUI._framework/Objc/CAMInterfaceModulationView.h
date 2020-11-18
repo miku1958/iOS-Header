@@ -13,17 +13,21 @@
     UIView *_hostingView;
     unsigned long long _interfaceModulation;
     CALayer *__modulationFilterLayer;
+    unsigned long long __inFlightAnimationCount;
 }
 
+@property (nonatomic, setter=_setInFlightAnimationCount:) unsigned long long _inFlightAnimationCount; // @synthesize _inFlightAnimationCount=__inFlightAnimationCount;
 @property (strong, nonatomic, setter=_setModulationFilterLayer:) CALayer *_modulationFilterLayer; // @synthesize _modulationFilterLayer=__modulationFilterLayer;
 @property (readonly, weak, nonatomic) UIView *hostingView; // @synthesize hostingView=_hostingView;
 @property (nonatomic) unsigned long long interfaceModulation; // @synthesize interfaceModulation=_interfaceModulation;
 
 - (void).cxx_destruct;
+- (void)_addOrRemoveModulationLayer;
 - (void)didAddSubview:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithHostingView:(id)arg1;
 - (void)layoutSubviews;
+- (void)modulationAnimationDidStop:(BOOL)arg1;
 - (void)setInterfaceModulation:(unsigned long long)arg1 animated:(BOOL)arg2;
 
 @end

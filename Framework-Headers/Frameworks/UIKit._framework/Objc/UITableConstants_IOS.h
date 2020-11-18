@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (double)defaultAlphaForReorderingCell;
 - (id)defaultBackgroundColorForTableViewStyle:(long long)arg1;
 - (id)defaultBackgroundEffectsForTableViewStyle:(long long)arg1;
-- (double)defaultBackgroundPaddingForTableViewStyle:(long long)arg1;
 - (struct _UITableConstantsBackgroundProperties)defaultCellBackgroundPropertiesForTableViewStyle:(long long)arg1 state:(id)arg2;
 - (double)defaultCellContentLeadingPaddingForOutline:(BOOL)arg1;
 - (double)defaultCellContentTrailingPadding;
@@ -62,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (id)defaultHeaderFontForTableViewStyle:(long long)arg1;
 - (id)defaultHeaderFontForView:(id)arg1 inTableView:(id)arg2;
 - (id)defaultHeaderFooterBackgroundColorForTableViewStyle:(long long)arg1 tableBackgroundColor:(id)arg2 floatingHeaderFooter:(BOOL)arg3;
+- (struct UIEdgeInsets)defaultHeaderFooterLayoutMarginsForTableViewStyle:(long long)arg1;
 - (id)defaultHeaderTextColorForTableViewStyle:(long long)arg1 focused:(BOOL)arg2;
 - (id)defaultImageSymbolConfigurationForTraitCollection:(id)arg1;
 - (id)defaultImageTintColorForState:(unsigned long long)arg1;

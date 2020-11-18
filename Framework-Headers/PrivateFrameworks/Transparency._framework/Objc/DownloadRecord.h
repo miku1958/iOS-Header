@@ -8,7 +8,6 @@
 
 @class KTRequest, NSData, NSString, NSUUID;
 
-__attribute__((visibility("hidden")))
 @interface DownloadRecord : NSManagedObject
 {
 }
@@ -26,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long startSLHRevision; // @dynamic startSLHRevision;
 
 + (id)fetchRequest;
+- (BOOL)expired;
 
 @end
 

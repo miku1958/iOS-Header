@@ -14,6 +14,7 @@
     MISSING_TYPE *bindingContext;
     MISSING_TYPE *slotOptions;
     MISSING_TYPE *wildcardSlotFallback;
+    MISSING_TYPE *sortBy;
 }
 
 @end

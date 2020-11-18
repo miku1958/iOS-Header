@@ -36,9 +36,12 @@
 - (void)accessoryDidSetHasOnboardedForNaturalLighting:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateAdditionalSetupRequired:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateApplicationData:(HMAccessory *)arg1;
+- (void)accessoryDidUpdateAudioDestination:(HMAccessory *)arg1;
+- (void)accessoryDidUpdateAudioDestinationController:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateControllable:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateDiagnosticsTransferSupport:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateMultiUserSupport:(HMAccessory *)arg1;
+- (void)accessoryDidUpdatePairingIdentity:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateReachableTransports:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateSupportsAnnounce:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateSupportsCompanionInitiatedRestart:(HMAccessory *)arg1;

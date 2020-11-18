@@ -57,6 +57,7 @@
     NSMutableDictionary *_statusBarAssertions;
     NSUUID *_gestureID;
     SBFluidSwitcherGesture *_dragAndDropGesture;
+    id<BSInvalidatable> _stateCaptureInvalidatable;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -151,6 +152,7 @@
 - (void)_willInterruptWithReason:(id)arg1;
 - (struct CGRect)applicationTransitionContext:(id)arg1 frameForApplicationSceneEntity:(id)arg2;
 - (BOOL)canInterruptForTransitionRequest:(id)arg1;
+- (void)dealloc;
 - (void)dragInteraction:(id)arg1 item:(id)arg2 willAnimateCancelWithAnimator:(id)arg3;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
 - (id)dragInteraction:(id)arg1 previewForCancellingItem:(id)arg2 withDefault:(id)arg3;

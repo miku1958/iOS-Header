@@ -8,17 +8,18 @@
 
 #import <HomeUI/HUBannerCellProtocol-Protocol.h>
 #import <HomeUI/HUGridCellProtocol-Protocol.h>
+#import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 
 @class HFItem, HUGridStatusBannerCellLayoutOptions, NSArray, NSString, UIButton, UIImageView, UILabel, UIView;
 @protocol HUBannerCellDelegate, HUResizableCellDelegate;
 
-@interface HUBannerCell : UICollectionViewCell <HUGridCellProtocol, HUBannerCellProtocol>
+@interface HUBannerCell : UICollectionViewCell <UIGestureRecognizerDelegate, HUGridCellProtocol, HUBannerCellProtocol>
 {
     BOOL _cellContentsHidden;
     UIButton *_dismissButton;
     HUGridStatusBannerCellLayoutOptions *_layoutOptions;
     HFItem *_item;
-    id<HUBannerCellDelegate> _dismissButtonDelegate;
+    id<HUBannerCellDelegate> _delegate;
     UIButton *_continueButton;
     UIImageView *_iconImageView;
     UILabel *_titleLabel;
@@ -32,10 +33,10 @@
 @property (nonatomic, getter=areCellContentsHidden) BOOL cellContentsHidden; // @synthesize cellContentsHidden=_cellContentsHidden;
 @property (strong, nonatomic) UIButton *continueButton; // @synthesize continueButton=_continueButton;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<HUBannerCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UILabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
 @property (strong, nonatomic) UIButton *dismissButton; // @synthesize dismissButton=_dismissButton;
-@property (weak, nonatomic) id<HUBannerCellDelegate> dismissButtonDelegate; // @synthesize dismissButtonDelegate=_dismissButtonDelegate;
 @property (strong, nonatomic) UIView *footerView; // @synthesize footerView=_footerView;
 @property (strong, nonatomic) UILabel *footerViewLabel; // @synthesize footerViewLabel=_footerViewLabel;
 @property (readonly) unsigned long long hash;
@@ -54,9 +55,11 @@
 + (Class)layoutOptionsClass;
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
-- (void)_dismissButtonPressed:(id)arg1;
+- (void)_dismissButtonTapped:(id)arg1;
+- (void)_footerViewTapped:(id)arg1;
 - (void)_setupCommonCellAppearance;
 - (void)applyLayoutAttributes:(id)arg1;
+- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isCellSizeSubclassSmallPhone;

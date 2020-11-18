@@ -121,8 +121,3 @@ typedef struct {
     } _field2;
 } CDStruct_2b0c6e0b;
 
-typedef struct {
-    struct CGRect _field1;
-    struct CGRect _field2;
-} CDStruct_b7523c42;
-

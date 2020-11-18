@@ -25,9 +25,11 @@
 @property (strong) TransparencyTranscript *transcript; // @synthesize transcript=_transcript;
 @property (strong) KTContextVerifier *verifier; // @synthesize verifier=_verifier;
 
++ (id)failedServerLoggableDatas:(id)arg1;
++ (BOOL)hasAccountMismatch:(id)arg1;
 + (id)validateEventName:(unsigned long long)arg1 application:(id)arg2;
 - (void).cxx_destruct;
-- (id)analyticsForRequestValidation:(id)arg1 initialResult:(unsigned long long)arg2 result:(unsigned long long)arg3;
+- (id)analyticsForRequestValidation:(id)arg1 initialResult:(unsigned long long)arg2 result:(unsigned long long)arg3 failure:(id)arg4 transparentData:(id)arg5;
 - (BOOL)checkDeferActivity:(id)arg1;
 - (void)checkInclusionProofEpoch:(id)arg1;
 - (void)clearState:(CDUnknownBlockType)arg1;
@@ -51,12 +53,14 @@
 - (void)failRequestDownloadRecord:(id)arg1 failure:(id)arg2 retry:(BOOL)arg3;
 - (void)failSMTDownload:(id)arg1 failure:(id)arg2 retry:(BOOL)arg3;
 - (void)failSMTDownloadRecord:(id)arg1 failure:(id)arg2 retry:(BOOL)arg3 error:(id *)arg4;
+- (void)failSMTRequest:(id)arg1 failure:(id)arg2 retry:(BOOL)arg3 error:(id *)arg4;
 - (void)fetchQueryForKTRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)garbageCollectHeads:(id *)arg1;
 - (void)handleDownloadOfType:(unsigned long long)arg1 error:(id *)arg2;
 - (void)handleDownloadOfType:(unsigned long long)arg1 retry:(BOOL)arg2 error:(id *)arg3;
 - (void)handleGarbageCollection:(id)arg1 error:(id *)arg2;
 - (void)handleHeadsWithUnverifiedSignature:(id *)arg1;
+- (void)handleKTRequest:(id)arg1 queryRequest:(id)arg2 queryResponse:(id)arg3 error:(id *)arg4;
 - (void)handleKTRequestDownload:(id)arg1;
 - (void)handleKTRequestDownload:(id)arg1 retry:(BOOL)arg2;
 - (void)handlePendingConsistencyProofs:(id *)arg1;
@@ -96,6 +100,7 @@
 - (void)verifyRequestDownloadRecord:(id)arg1 error:(id *)arg2;
 - (BOOL)verifySMTDownload:(id)arg1 error:(id *)arg2;
 - (void)verifySMTDownloadRecord:(id)arg1 error:(id *)arg2;
+- (void)verifySMTQueryResponse:(id)arg1 request:(id)arg2 error:(id *)arg3;
 - (unsigned long long)writeResult:(unsigned long long)arg1 request:(id)arg2 proof:(id)arg3 error:(id *)arg4;
 
 @end

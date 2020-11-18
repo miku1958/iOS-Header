@@ -10,6 +10,7 @@
 
 @interface IKChangeSet : NSObject
 {
+    BOOL _reducing;
     NSIndexSet *_addedIndexes;
     NSIndexSet *_removedIndexes;
     NSDictionary *_movedIndexesByNewIndex;
@@ -18,6 +19,7 @@
 
 @property (readonly, copy, nonatomic) NSIndexSet *addedIndexes; // @synthesize addedIndexes=_addedIndexes;
 @property (readonly, copy, nonatomic) NSDictionary *movedIndexesByNewIndex; // @synthesize movedIndexesByNewIndex=_movedIndexesByNewIndex;
+@property (readonly, nonatomic, getter=isReducing) BOOL reducing; // @synthesize reducing=_reducing;
 @property (readonly, copy, nonatomic) NSIndexSet *removedIndexes; // @synthesize removedIndexes=_removedIndexes;
 @property (readonly, copy, nonatomic) NSDictionary *updatedIndexesByNewIndex; // @synthesize updatedIndexesByNewIndex=_updatedIndexesByNewIndex;
 

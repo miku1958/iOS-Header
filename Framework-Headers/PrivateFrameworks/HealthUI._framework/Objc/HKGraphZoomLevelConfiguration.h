@@ -50,6 +50,7 @@
 + (id)chartVisibleRangeForTimeScope:(long long)arg1 anchorDate:(id)arg2 alignment:(long long)arg3 dataRange:(id)arg4 calendar:(id)arg5 firstWeekday:(long long)arg6 cadence:(long long)arg7 level:(long long)arg8;
 + (id)configurationForZoomLevel:(long long)arg1;
 + (id)defaultCalendar;
++ (id)seriesPointIntervalUnitForTimeScope:(long long)arg1 pointCount:(long long)arg2;
 + (id)snappingRangeForRange:(id)arg1 axisRange:(id)arg2 timeScope:(long long)arg3 velocity:(struct CGPoint)arg4 calendar:(id)arg5 options:(long long)arg6;
 + (long long)timeScopeForDateRange:(id)arg1;
 - (void).cxx_destruct;

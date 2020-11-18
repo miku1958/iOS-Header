@@ -16,6 +16,7 @@
     long long _behaviorFlags;
     long long _bodyTextLength;
     unsigned long long _halfLifeMilliseconds;
+    double _layeredCoverAspectRatio;
     long long _minimumNewsVersion;
     long long _publisherArticleVersion;
     long long _thumbnailFocalFrame;
@@ -47,6 +48,7 @@
     NSMutableArray *_iAdKeywords;
     NSMutableArray *_iAdSectionIDs;
     NSString *_language;
+    NSString *_layeredCover;
     NSMutableArray *_linkedArticleIDs;
     NSMutableArray *_linkedIssueIDs;
     NSMutableArray *_moreFromPublisherArticleIDs;
@@ -101,6 +103,7 @@
         unsigned int behaviorFlags:1;
         unsigned int bodyTextLength:1;
         unsigned int halfLifeMilliseconds:1;
+        unsigned int layeredCoverAspectRatio:1;
         unsigned int minimumNewsVersion:1;
         unsigned int publisherArticleVersion:1;
         unsigned int thumbnailFocalFrame:1;
@@ -167,6 +170,8 @@
 @property (nonatomic) BOOL hasIsPaid;
 @property (nonatomic) BOOL hasIsSponsored;
 @property (readonly, nonatomic) BOOL hasLanguage;
+@property (readonly, nonatomic) BOOL hasLayeredCover;
+@property (nonatomic) BOOL hasLayeredCoverAspectRatio;
 @property (nonatomic) BOOL hasMinimumNewsVersion;
 @property (readonly, nonatomic) BOOL hasNarrativeTrackFullURL;
 @property (readonly, nonatomic) BOOL hasNarrativeTrackMetadata;
@@ -225,6 +230,8 @@
 @property (nonatomic) BOOL isPaid; // @synthesize isPaid=_isPaid;
 @property (nonatomic) BOOL isSponsored; // @synthesize isSponsored=_isSponsored;
 @property (strong, nonatomic) NSString *language; // @synthesize language=_language;
+@property (strong, nonatomic) NSString *layeredCover; // @synthesize layeredCover=_layeredCover;
+@property (nonatomic) double layeredCoverAspectRatio; // @synthesize layeredCoverAspectRatio=_layeredCoverAspectRatio;
 @property (strong, nonatomic) NSMutableArray *linkedArticleIDs; // @synthesize linkedArticleIDs=_linkedArticleIDs;
 @property (strong, nonatomic) NSMutableArray *linkedIssueIDs; // @synthesize linkedIssueIDs=_linkedIssueIDs;
 @property (nonatomic) long long minimumNewsVersion; // @synthesize minimumNewsVersion=_minimumNewsVersion;

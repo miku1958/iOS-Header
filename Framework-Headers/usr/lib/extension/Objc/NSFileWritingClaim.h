@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isBlockedByReadingItemAtLocation:(id)arg1 options:(unsigned long long)arg2;
 - (BOOL)isBlockedByWritingItemAtLocation:(id)arg1 options:(unsigned long long)arg2;
 - (void)itemAtLocation:(id)arg1 wasReplacedByItemAtLocation:(id)arg2;
+- (void)protectFilesAgainstEviction;
 - (void)resolveURLsThenContinueInvokingClaimer:(CDUnknownBlockType)arg1;
 
 @end

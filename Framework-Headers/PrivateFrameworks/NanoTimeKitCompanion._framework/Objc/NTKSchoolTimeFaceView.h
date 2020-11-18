@@ -23,7 +23,6 @@
 
 + (id)schoolTimeColor;
 + (id)secondHandColor;
-+ (long long)uiSensitivity;
 - (void).cxx_destruct;
 - (void)_applyDataMode;
 - (void)_applyFrozen;

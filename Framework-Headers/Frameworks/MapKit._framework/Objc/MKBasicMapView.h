@@ -39,10 +39,14 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_animateCanvasForBounds:(struct CGRect)arg1;
+- (void)_didEnterBackground;
 - (void)_finishedSnapshot:(id)arg1;
 - (void)_registerSceneNotifications;
+- (void)_sceneDidEnterBackground:(id)arg1;
+- (void)_sceneWillEnterForeground:(id)arg1;
 - (void)_unregisterSceneNotifications;
 - (void)_updateBackgroundState;
+- (void)_updateBackgroundState:(long long)arg1;
 - (void)_updateForCurrentScreen;
 - (void)_updateMapViewHidden;
 - (void)_updateStatsForTimeSpentInCurrentMapTypeIsShowingFlyover:(BOOL)arg1 ignoreIfViewInWindow:(BOOL)arg2;

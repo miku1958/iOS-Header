@@ -51,7 +51,7 @@
 + (id)GesturedTextInputPreviousSuggestion;
 + (id)Invalid;
 + (id)LabelElement;
-+ (id)LaunchSocialDistancing;
++ (id)LaunchPeopleDetection;
 + (id)MagicTap;
 + (id)MonitorElement;
 + (id)MoveToBottomOfCurrentContainer;
@@ -195,6 +195,8 @@
 - (id)_initBuiltInCommandWithRawValue:(id)arg1 votEventCommandName:(id)arg2;
 - (id)_initWithSiriShortcut:(id)arg1;
 - (id)description;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -9,12 +9,15 @@
 @interface CLReductiveFilterOptions : NSObject
 {
     unsigned long long _beaconType;
+    double _transmitPower;
 }
 
 @property (readonly, nonatomic) unsigned long long beaconType; // @synthesize beaconType=_beaconType;
+@property (readonly, nonatomic) double transmitPower; // @synthesize transmitPower=_transmitPower;
 
 - (id)init;
 - (id)initWithBeaconType:(unsigned long long)arg1;
+- (id)initWithBeaconType:(unsigned long long)arg1 transmitPower:(double)arg2;
 
 @end
 

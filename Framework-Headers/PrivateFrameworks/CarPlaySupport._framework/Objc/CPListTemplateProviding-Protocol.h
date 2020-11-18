@@ -6,10 +6,10 @@
 
 #import <CarPlaySupport/CPBaseTemplateProviding-Protocol.h>
 
-@class NSArray;
+@class CPListTemplate, NSArray;
 
 @protocol CPListTemplateProviding <CPBaseTemplateProviding>
 - (void)reloadItems:(NSArray *)arg1;
-- (void)updateSections:(NSArray *)arg1;
+- (void)reloadTemplate:(CPListTemplate *)arg1;
 @end
 

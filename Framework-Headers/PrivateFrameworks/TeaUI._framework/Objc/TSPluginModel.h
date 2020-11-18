@@ -7,20 +7,21 @@
 #import <objc/NSObject.h>
 
 @class MISSING_TYPE, NSString, UIViewController;
+@protocol TUPluggable;
 
 @interface TSPluginModel : NSObject
 {
     MISSING_TYPE *identifier;
     MISSING_TYPE *revision;
     MISSING_TYPE *size;
-    MISSING_TYPE *pluggableViewController;
+    MISSING_TYPE *viewController;
 }
 
 @property (nonatomic, readonly) long long hash;
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) long long revision; // @synthesize revision;
 @property (nonatomic, readonly) struct CGSize size; // @synthesize size;
-@property (nonatomic, readonly) UIViewController *viewController;
+@property (nonatomic, readonly) UIViewController<TUPluggable> *viewController; // @synthesize viewController;
 
 - (void).cxx_destruct;
 - (id)init;

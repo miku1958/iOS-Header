@@ -10,6 +10,7 @@
 - (void)cancelAllRunningOperations;
 - (id)fetchImageForRequest:(id)arg1;
 - (void)fetchImageForRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchImageForRequest:(id)arg1 expires:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setImage:(id)arg1 forRequest:(id)arg2;
 @end
 

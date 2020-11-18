@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class MISSING_TYPE;
+
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -82,6 +84,14 @@ typedef struct {
     unsigned long long _field1;
     unsigned long long _field2;
 } CDStruct_4bcfbbae;
+
+typedef struct {
+    MISSING_TYPE *_field1[3];
+} CDStruct_d80e62f2;
+
+typedef struct {
+    MISSING_TYPE *_field1[4];
+} CDStruct_f1db2b5e;
 
 typedef struct {
     double _field1;

@@ -51,7 +51,7 @@
 - (BOOL)canUseOpaqueMask;
 - (void)clearFilters;
 - (void)configureForComposition:(id)arg1;
-- (void)configureForTranscriptPlugin:(id)arg1;
+- (void)configureForTranscriptPlugin:(id)arg1 context:(id)arg2;
 - (void)detachInvisibleInkEffectView;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -71,6 +71,7 @@
 - (void)updateBalloonMasks;
 - (long long)userInterfaceLevel;
 - (long long)userInterfaceStyle;
+- (void)willRemoveSubview:(id)arg1;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CAReportingPerformanceObject, NSDate, NSDictionary;
+@class CAReportingPerformanceObject, NSDate, NSDictionary, NSMutableDictionary;
 
 @interface CAReporter : NSObject
 {
@@ -15,6 +15,7 @@
     BOOL _connected;
     unsigned short _serviceType;
     NSDictionary *_configuration;
+    NSMutableDictionary *_internalConfiguration;
     long long _reporterID;
     NSDate *_startDate;
     CAReportingPerformanceObject *_perfObject;
@@ -23,6 +24,7 @@
 
 @property (strong, nonatomic) NSDictionary *configuration; // @synthesize configuration=_configuration;
 @property BOOL connected; // @synthesize connected=_connected;
+@property (strong) NSMutableDictionary *internalConfiguration; // @synthesize internalConfiguration=_internalConfiguration;
 @property (strong) CAReportingPerformanceObject *perfObject; // @synthesize perfObject=_perfObject;
 @property BOOL removedByClient; // @synthesize removedByClient=_removedByClient;
 @property (readonly) long long reporterID; // @synthesize reporterID=_reporterID;

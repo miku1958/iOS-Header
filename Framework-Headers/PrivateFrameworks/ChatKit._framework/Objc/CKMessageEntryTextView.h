@@ -18,6 +18,7 @@
     BOOL _sendCurrentLocationFromKeyboardEnabled;
     BOOL _updatesFontOnTextChange;
     BOOL _hideCaret;
+    BOOL _hideCaretUntilUserTypes;
     BOOL _preventShowingCalloutMenu;
     UIColor *_placeholderColor;
     double _placeHolderWidth;
@@ -37,6 +38,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideCaret; // @synthesize hideCaret=_hideCaret;
+@property (nonatomic) BOOL hideCaretUntilUserTypes; // @synthesize hideCaretUntilUserTypes=_hideCaretUntilUserTypes;
 @property (nonatomic, getter=isInPencilMode) BOOL inPencilMode; // @synthesize inPencilMode=_inPencilMode;
 @property (nonatomic, getter=isPencilWriting) BOOL pencilWriting; // @synthesize pencilWriting=_pencilWriting;
 @property (nonatomic) double placeHolderWidth; // @synthesize placeHolderWidth=_placeHolderWidth;

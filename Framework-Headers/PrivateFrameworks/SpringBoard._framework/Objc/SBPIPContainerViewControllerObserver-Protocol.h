@@ -12,7 +12,7 @@
 
 @optional
 - (void)containerViewController:(SBPIPContainerViewController *)arg1 didFinishStartAnimationWithInitialInterfaceOrientation:(long long)arg2;
-- (void)containerViewController:(SBPIPContainerViewController *)arg1 userDidUpdateStashState:(long long)arg2;
+- (void)containerViewController:(SBPIPContainerViewController *)arg1 userDidUpdateStashState:(BOOL)arg2;
 - (void)containerViewControllerAcquireInterfaceOrientationLock:(SBPIPContainerViewController *)arg1;
 - (void)containerViewControllerRelinquishInterfaceOrientationLock:(SBPIPContainerViewController *)arg1;
 - (void)containerViewControllerRequiredInterfaceOrientationDidChange:(SBPIPContainerViewController *)arg1;

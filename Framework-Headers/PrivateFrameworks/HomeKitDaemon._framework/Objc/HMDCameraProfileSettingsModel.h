@@ -28,6 +28,7 @@
 @property (copy) NSNumber *activityZonesIncludedForSignificantEventDetectionField; // @dynamic activityZonesIncludedForSignificantEventDetectionField;
 @property BOOL cameraManuallyDisabled; // @synthesize cameraManuallyDisabled=_cameraManuallyDisabled;
 @property unsigned long long currentAccessMode; // @synthesize currentAccessMode=_currentAccessMode;
+@property (readonly) BOOL hasAnyNotificationFieldsSet;
 @property BOOL nightVisionModeEnabled;
 @property (copy) NSNumber *nightVisionModeEnabledField; // @dynamic nightVisionModeEnabledField;
 @property BOOL periodicSnapshotsAllowed;

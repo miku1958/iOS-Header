@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     unsigned int _appComplicationSlotsUsed;
     unsigned int _appSessionCount;
+    NSString *_automationSuggestionsTrialIdentifier;
     unsigned int _averageShortcutCountPerFolder;
     unsigned int _folderCount;
     NSString *_key;
@@ -23,6 +24,8 @@ __attribute__((visibility("hidden")))
     unsigned int _numberOfPersonalAutomationsEnabled;
     unsigned int _numberOfPersonalAutomationsFromSuggestionsEnabled;
     unsigned int _numberOfSmallWidgets;
+    unsigned int _numberOfSuggestedAutomationsGenerated;
+    unsigned int _numberOfSuggestedAutomationsGeneratedUserAlreadyHas;
     unsigned int _numberOfWidgetsOnHomeScreen;
     unsigned int _numberOfWidgetsOnLoL;
     unsigned int _shortcutComplicationSlotsUsed;
@@ -46,6 +49,8 @@ __attribute__((visibility("hidden")))
         unsigned int numberOfPersonalAutomationsEnabled:1;
         unsigned int numberOfPersonalAutomationsFromSuggestionsEnabled:1;
         unsigned int numberOfSmallWidgets:1;
+        unsigned int numberOfSuggestedAutomationsGenerated:1;
+        unsigned int numberOfSuggestedAutomationsGeneratedUserAlreadyHas:1;
         unsigned int numberOfWidgetsOnHomeScreen:1;
         unsigned int numberOfWidgetsOnLoL:1;
         unsigned int shortcutComplicationSlotsUsed:1;
@@ -64,10 +69,12 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) unsigned int appComplicationSlotsUsed; // @synthesize appComplicationSlotsUsed=_appComplicationSlotsUsed;
 @property (nonatomic) unsigned int appSessionCount; // @synthesize appSessionCount=_appSessionCount;
+@property (strong, nonatomic) NSString *automationSuggestionsTrialIdentifier; // @synthesize automationSuggestionsTrialIdentifier=_automationSuggestionsTrialIdentifier;
 @property (nonatomic) unsigned int averageShortcutCountPerFolder; // @synthesize averageShortcutCountPerFolder=_averageShortcutCountPerFolder;
 @property (nonatomic) unsigned int folderCount; // @synthesize folderCount=_folderCount;
 @property (nonatomic) BOOL hasAppComplicationSlotsUsed;
 @property (nonatomic) BOOL hasAppSessionCount;
+@property (readonly, nonatomic) BOOL hasAutomationSuggestionsTrialIdentifier;
 @property (nonatomic) BOOL hasAverageShortcutCountPerFolder;
 @property (nonatomic) BOOL hasFolderCount;
 @property (nonatomic) BOOL hasHomeAutomationsEnabled;
@@ -78,6 +85,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasNumberOfPersonalAutomationsEnabled;
 @property (nonatomic) BOOL hasNumberOfPersonalAutomationsFromSuggestionsEnabled;
 @property (nonatomic) BOOL hasNumberOfSmallWidgets;
+@property (nonatomic) BOOL hasNumberOfSuggestedAutomationsGenerated;
+@property (nonatomic) BOOL hasNumberOfSuggestedAutomationsGeneratedUserAlreadyHas;
 @property (nonatomic) BOOL hasNumberOfWidgetsOnHomeScreen;
 @property (nonatomic) BOOL hasNumberOfWidgetsOnLoL;
 @property (nonatomic) BOOL hasPersonalAutomationsEnabled;
@@ -97,6 +106,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int numberOfPersonalAutomationsEnabled; // @synthesize numberOfPersonalAutomationsEnabled=_numberOfPersonalAutomationsEnabled;
 @property (nonatomic) unsigned int numberOfPersonalAutomationsFromSuggestionsEnabled; // @synthesize numberOfPersonalAutomationsFromSuggestionsEnabled=_numberOfPersonalAutomationsFromSuggestionsEnabled;
 @property (nonatomic) unsigned int numberOfSmallWidgets; // @synthesize numberOfSmallWidgets=_numberOfSmallWidgets;
+@property (nonatomic) unsigned int numberOfSuggestedAutomationsGenerated; // @synthesize numberOfSuggestedAutomationsGenerated=_numberOfSuggestedAutomationsGenerated;
+@property (nonatomic) unsigned int numberOfSuggestedAutomationsGeneratedUserAlreadyHas; // @synthesize numberOfSuggestedAutomationsGeneratedUserAlreadyHas=_numberOfSuggestedAutomationsGeneratedUserAlreadyHas;
 @property (nonatomic) unsigned int numberOfWidgetsOnHomeScreen; // @synthesize numberOfWidgetsOnHomeScreen=_numberOfWidgetsOnHomeScreen;
 @property (nonatomic) unsigned int numberOfWidgetsOnLoL; // @synthesize numberOfWidgetsOnLoL=_numberOfWidgetsOnLoL;
 @property (nonatomic) BOOL personalAutomationsEnabled; // @synthesize personalAutomationsEnabled=_personalAutomationsEnabled;

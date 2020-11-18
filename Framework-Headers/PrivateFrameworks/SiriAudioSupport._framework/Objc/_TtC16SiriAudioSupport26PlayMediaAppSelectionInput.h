@@ -11,13 +11,13 @@
 @interface _TtC16SiriAudioSupport26PlayMediaAppSelectionInput : _TtCs12_SwiftObject
 {
     MISSING_TYPE *n_candidates;
-    MISSING_TYPE *result_appUsageScore1Day;
-    MISSING_TYPE *result_appUsageScore7Days;
     MISSING_TYPE *result_asrConfidenceLevel;
     MISSING_TYPE *result_asrConfidenceScore;
+    MISSING_TYPE *result_audioRoutes;
     MISSING_TYPE *result_clientCarConnected;
     MISSING_TYPE *result_clientCarplay;
     MISSING_TYPE *result_clientDaylight;
+    MISSING_TYPE *result_clientDayOfWeek;
     MISSING_TYPE *result_clientDevice;
     MISSING_TYPE *result_clientHourOfDay;
     MISSING_TYPE *result_clientIsActiveForegroundApp;
@@ -31,6 +31,7 @@
     MISSING_TYPE *result_entitySearchSecondsSinceLastInteraction;
     MISSING_TYPE *result_foregroundAppDuetElapsedSeconds;
     MISSING_TYPE *result_foregroundAppIsLastUsed;
+    MISSING_TYPE *result_interactionType;
     MISSING_TYPE *result_isNowPlayingApp;
     MISSING_TYPE *result_isNowPlayingDuetApp;
     MISSING_TYPE *result_libraryItems;

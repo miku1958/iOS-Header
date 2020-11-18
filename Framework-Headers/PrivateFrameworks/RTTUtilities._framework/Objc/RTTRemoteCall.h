@@ -27,8 +27,9 @@
 - (BOOL)isLocallyHosted;
 - (void)removeDevice:(id)arg1;
 - (void)resetRapportClientAndInvalidate:(BOOL)arg1;
-- (id)responseForRequest:(id)arg1;
+- (id)responseForRequest:(id)arg1 options:(id)arg2;
 - (void)sendCallIDChallengeToDevice:(id)arg1;
+- (void)sendCallIDChallengeToDeviceId:(id)arg1;
 - (void)sendString:(id)arg1;
 - (void)setupRapportClient;
 - (void)start;

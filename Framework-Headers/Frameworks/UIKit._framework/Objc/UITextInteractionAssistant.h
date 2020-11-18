@@ -124,6 +124,7 @@
 - (void)detach:(BOOL)arg1;
 - (void)didEndScrollingOrZooming;
 - (void)didEndSelectionInteraction;
+- (BOOL)didPerformLoupeSelectionHandoff;
 - (BOOL)didUseStashedSelection;
 - (void)endFloatingCursor;
 - (void)extendSelectionToLoupeOrSetToPoint:(struct CGPoint)arg1;
@@ -159,7 +160,7 @@
 - (void)scheduleDictationReplacementsForAlternatives:(id)arg1 range:(id)arg2;
 - (void)scheduleDictationReplacementsForMultilingualAlternatives:(id)arg1 range:(id)arg2;
 - (void)scheduleReplacements;
-- (void)scheduleReplacementsForRange:(id)arg1 withOptions:(unsigned long long)arg2;
+- (BOOL)scheduleReplacementsForRange:(id)arg1 withOptions:(unsigned long long)arg2;
 - (void)scheduleReplacementsWithOptions:(unsigned long long)arg1;
 - (void)scrollSelectionToVisible;
 - (void)scrollSelectionToVisible:(BOOL)arg1;

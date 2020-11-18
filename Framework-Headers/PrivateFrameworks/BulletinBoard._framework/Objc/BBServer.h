@@ -276,14 +276,14 @@
 - (void)removeBulletinID:(id)arg1 fromSection:(id)arg2 inFeed:(unsigned long long)arg3;
 - (void)requestCanBeHandledChanged:(BOOL)arg1;
 - (void)requestNoticesBulletinsForAllSections:(id)arg1;
-- (id)sectionIDForUniversalSectionID:(id)arg1;
+- (id)sectionIDsForUniversalSectionID:(id)arg1;
 - (void)sendMessageToDataProviderSectionID:(id)arg1 name:(id)arg2 userInfo:(id)arg3;
 - (void)setEffectiveGlobalContentPreviewsSetting:(long long)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)setEffectiveGlobalSpokenNotificationSetting:(long long)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)setSectionInfo:(id)arg1 forSectionID:(id)arg2;
 - (void)setSectionInfo:(id)arg1 forSectionID:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)syncService:(id)arg1 receivedDismissalDictionaries:(id)arg2 dismissalIDs:(id)arg3 inSection:(id)arg4 forFeeds:(unsigned long long)arg5;
-- (id)syncService:(id)arg1 sectionIdentifierForUniversalSectionIdentifier:(id)arg2;
+- (id)syncService:(id)arg1 sectionIdentifiersForUniversalSectionIdentifier:(id)arg2;
 - (BOOL)syncService:(id)arg1 shouldAbortDelayedDismissalForBulletin:(id)arg2;
 - (id)syncService:(id)arg1 universalSectionIdentifierForSectionIdentifier:(id)arg2;
 - (id)universalSectionIDForSectionID:(id)arg1;

@@ -22,6 +22,7 @@
 - (id)autocompleteResultsForProperties:(id)arg1 contactPredicate:(id)arg2 contactStore:(id)arg3 resultFactory:(id)arg4 error:(id *)arg5;
 - (id)autocompleteResultsForProperties:(id)arg1 fetchResults:(id)arg2 resultFactory:(id)arg3 contactStore:(id)arg4;
 - (id)contactsForPredicate:(id)arg1 properties:(id)arg2 contactStore:(id)arg3 error:(id *)arg4;
+- (BOOL)doesMatchInfo:(id)arg1 matchProperties:(id)arg2;
 - (id)keysToFetchForProperties:(id)arg1;
 - (id)resultsForSearchString:(id)arg1 terms:(id)arg2 properties:(id)arg3 contactStore:(id)arg4 error:(id *)arg5;
 - (CDUnknownBlockType)transformWithProperties:(id)arg1 factory:(id)arg2;

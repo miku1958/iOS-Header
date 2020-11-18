@@ -16,6 +16,7 @@
 + (void)getDeviceManagementPolicyForBundle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (BOOL)isAppClipForBundleId:(id)arg1;
 + (BOOL)isAppClipGivenAppRecord:(id)arg1;
++ (BOOL)isAppClipWebClipBundleId:(id)arg1;
 + (BOOL)isArcadeAppForBundle:(id)arg1;
 + (BOOL)isBetaAppForBundle:(id)arg1;
 + (BOOL)isEnterpriseAppForBundle:(id)arg1;

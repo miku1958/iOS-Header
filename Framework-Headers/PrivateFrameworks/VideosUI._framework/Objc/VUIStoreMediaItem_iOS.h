@@ -15,7 +15,9 @@
 __attribute__((visibility("hidden")))
 @interface VUIStoreMediaItem_iOS : VUILibraryMediaItem_iOS <TVPMediaItemReportingDelegate, TVPContentKeyLoading, VUIStoreFPSKeyLoaderDelegate>
 {
+    BOOL _isBingeWatched;
     BOOL _needsRentalCheckin;
+    BOOL _needsRentalCheckoutPriorToPlayback;
     NSNumber *_startTime;
     NSURL *_fpsCertificateURL;
     NSURL *_fpsKeyServerURL;
@@ -44,8 +46,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSError *fpsKeyError; // @synthesize fpsKeyError=_fpsKeyError;
 @property (copy, nonatomic) NSURL *fpsKeyServerURL; // @synthesize fpsKeyServerURL=_fpsKeyServerURL;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isBingeWatched; // @synthesize isBingeWatched=_isBingeWatched;
 @property (nonatomic) unsigned long long loadingContext; // @synthesize loadingContext=_loadingContext;
 @property (nonatomic) BOOL needsRentalCheckin; // @synthesize needsRentalCheckin=_needsRentalCheckin;
+@property (nonatomic) BOOL needsRentalCheckoutPriorToPlayback; // @synthesize needsRentalCheckoutPriorToPlayback=_needsRentalCheckoutPriorToPlayback;
 @property (strong, nonatomic) NSObject *parentReportingToken; // @synthesize parentReportingToken=_parentReportingToken;
 @property (nonatomic) long long playbackType; // @synthesize playbackType=_playbackType;
 @property (strong, nonatomic) NSURL *playbackURL; // @synthesize playbackURL=_playbackURL;
@@ -91,6 +95,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareForPlaybackInitiationWithCompletion:(CDUnknownBlockType)arg1;
 - (id)replacementErrorForPlaybackError:(id)arg1;
 - (id)reportingDelegate;
+- (BOOL)shouldRetryPlaybackForError:(id)arg1;
 - (void)storeFPSKeyLoader:(id)arg1 didLoadOfflineKeyData:(id)arg2 forKeyRequest:(id)arg3;
 - (void)storeFPSKeyLoader:(id)arg1 didReceiveUpdatedRentalExpirationDate:(id)arg2 playbackStartDate:(id)arg3;
 - (void)storeFPSKeyLoader:(id)arg1 willFailWithError:(id)arg2 forKeyRequest:(id)arg3;

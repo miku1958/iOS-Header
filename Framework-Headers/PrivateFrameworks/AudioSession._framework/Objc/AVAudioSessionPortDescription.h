@@ -35,6 +35,7 @@
 - (BOOL)isEqualToPort:(id)arg1 compareStrict:(BOOL)arg2;
 - (BOOL)isHeadphones;
 - (BOOL)isLiveListenSupported;
+- (BOOL)isLowLatencyAirPlay;
 - (id)privateGetID;
 - (struct PortDescriptionImpl *)privateGetImplementation;
 - (BOOL)setPreferredDataSource:(id)arg1 error:(id *)arg2;

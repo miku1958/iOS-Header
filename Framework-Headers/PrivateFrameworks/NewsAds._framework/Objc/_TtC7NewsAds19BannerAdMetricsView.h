@@ -11,10 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface _TtC7NewsAds19BannerAdMetricsView : UIView
 {
-    MISSING_TYPE *contentIdentifier;
+    MISSING_TYPE *placementIdentifier;
+    MISSING_TYPE *contentInfo;
     MISSING_TYPE *state;
     MISSING_TYPE *onLongPress;
+    MISSING_TYPE *metricsView;
     MISSING_TYPE *promotedContentInfoObserver;
+    MISSING_TYPE *unfilledReasonObserver;
 }
 
 - (void).cxx_destruct;

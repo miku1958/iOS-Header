@@ -13,22 +13,22 @@
 
 @interface ENRegionServerExposureClassificationCriteria : NSObject <NSSecureCoding, NSCopying>
 {
+    unsigned char _index;
     unsigned int _perDaySumERVThreshold;
     unsigned int _perDayMaxERVThreshold;
     unsigned int _weightedDurationAtAttenuationThreshold;
     NSString *_classificationName;
-    unsigned long long _index;
     NSDictionary *_perDaySumERVThresholdsByDiagnosisReportType;
 }
 
 @property (readonly, copy, nonatomic) NSString *classificationName; // @synthesize classificationName=_classificationName;
-@property (readonly, nonatomic) unsigned long long index; // @synthesize index=_index;
+@property (readonly, nonatomic) unsigned char index; // @synthesize index=_index;
 @property (readonly, nonatomic) unsigned int perDayMaxERVThreshold; // @synthesize perDayMaxERVThreshold=_perDayMaxERVThreshold;
 @property (readonly, nonatomic) unsigned int perDaySumERVThreshold; // @synthesize perDaySumERVThreshold=_perDaySumERVThreshold;
 @property (readonly, copy, nonatomic) NSDictionary *perDaySumERVThresholdsByDiagnosisReportType; // @synthesize perDaySumERVThresholdsByDiagnosisReportType=_perDaySumERVThresholdsByDiagnosisReportType;
 @property (readonly, nonatomic) unsigned int weightedDurationAtAttenuationThreshold; // @synthesize weightedDurationAtAttenuationThreshold=_weightedDurationAtAttenuationThreshold;
 
-+ (BOOL)getCriteria:(id *)arg1 fromDictionary:(id)arg2 index:(unsigned long long)arg3;
++ (BOOL)getCriteria:(id *)arg1 fromDictionary:(id)arg2 index:(unsigned char)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

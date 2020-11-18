@@ -13,6 +13,7 @@
     MISSING_TYPE *identifier;
     MISSING_TYPE *contentIdentifier;
     MISSING_TYPE *objects;
+    MISSING_TYPE *onEndClosures;
     MISSING_TYPE *viewingSession;
 }
 

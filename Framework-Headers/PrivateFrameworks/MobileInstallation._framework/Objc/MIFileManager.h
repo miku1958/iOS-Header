@@ -46,7 +46,7 @@
 - (id)extendedAttributesFromURL:(id)arg1 error:(id *)arg2;
 - (id)insecureCachedAppIdentifierIfAppClipForBundle:(id)arg1 error:(id *)arg2;
 - (id)insecureCachedAppIdentifierIfValidatedByFreeProfileForBundle:(id)arg1 error:(id *)arg2;
-- (id)installTypeForBundle:(id)arg1 error:(id *)arg2;
+- (id)installTypeFromExtendedAttributeOnBundle:(id)arg1 error:(id *)arg2;
 - (BOOL)itemDoesNotExistAtURL:(id)arg1;
 - (BOOL)itemExistsAtURL:(id)arg1;
 - (BOOL)itemExistsAtURL:(id)arg1 error:(id *)arg2;
@@ -62,7 +62,7 @@
 - (BOOL)setData:(id)arg1 forExtendedAttributeNamed:(id)arg2 onFD:(int)arg3 fdLocation:(id)arg4 error:(id *)arg5;
 - (BOOL)setData:(id)arg1 forExtendedAttributeNamed:(id)arg2 onURL:(id)arg3 error:(id *)arg4;
 - (BOOL)setDataProtectionClassOfItemAtURL:(id)arg1 toClass:(int)arg2 ifPredicate:(CDUnknownBlockType)arg3 error:(id *)arg4;
-- (BOOL)setInstallType:(id)arg1 onBundle:(id)arg2 error:(id *)arg3;
+- (BOOL)setInstallType:(id)arg1 inExtendedAttributeOnBundle:(id)arg2 error:(id *)arg3;
 - (BOOL)setModificationDateToNowForURL:(id)arg1 error:(id *)arg2;
 - (BOOL)setOwnerOfURL:(id)arg1 toUID:(unsigned int)arg2 gid:(unsigned int)arg3 error:(id *)arg4;
 - (BOOL)setPermissionsForURL:(id)arg1 toMode:(unsigned short)arg2 error:(id *)arg3;

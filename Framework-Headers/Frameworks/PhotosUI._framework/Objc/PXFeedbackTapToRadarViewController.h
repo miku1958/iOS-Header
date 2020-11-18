@@ -15,6 +15,7 @@
     BOOL _requestScreenshotPermission;
     CDUnknownBlockType _fileRadarHandler;
     NSArray *_routes;
+    NSString *_routesDescription;
     _PXFeedbackTapToRadarViewController *_feedbackViewController;
 }
 
@@ -25,10 +26,12 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL requestScreenshotPermission; // @synthesize requestScreenshotPermission=_requestScreenshotPermission;
 @property (copy, nonatomic) NSArray *routes; // @synthesize routes=_routes;
+@property (copy, nonatomic) NSString *routesDescription; // @synthesize routesDescription=_routesDescription;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)availableRoutes;
+- (id)availableRoutesDescription;
 - (void)didSelectFileRadarButtonWithScreenshotAllowed:(BOOL)arg1 attachDiagnose:(BOOL)arg2 selectedRoute:(id)arg3;
 - (id)init;
 - (BOOL)shouldRequestScreenshotPermission;

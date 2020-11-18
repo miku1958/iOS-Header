@@ -15,6 +15,7 @@
     BOOL _batteryFullyCharged;
     BOOL _batteryAtWarnLevel;
     BOOL _batteryAtCriticalLevel;
+    BOOL _rnfEnabled;
     BOOL _devicePluggedIn;
     BOOL _deviceScreenOn;
     unsigned int _batteryPercentage;
@@ -46,10 +47,10 @@
 @property (nonatomic) BOOL devicePluggedIn; // @synthesize devicePluggedIn=_devicePluggedIn;
 @property (nonatomic) BOOL deviceScreenOn; // @synthesize deviceScreenOn=_deviceScreenOn;
 @property (nonatomic) unsigned int motionState; // @synthesize motionState=_motionState;
+@property (nonatomic) BOOL rnfEnabled; // @synthesize rnfEnabled=_rnfEnabled;
 @property (strong, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 @property (nonatomic) unsigned int thermalPressure; // @synthesize thermalPressure=_thermalPressure;
 
-+ (id)createAccumulator:(id)arg1;
 - (void).cxx_destruct;
 - (id)createAWDReport;
 - (id)description;

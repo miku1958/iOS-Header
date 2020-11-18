@@ -34,13 +34,15 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_addOrReplaceChildUnavailableUIViewControllerForError:(id)arg1;
-- (void)_handleRemoteViewControllerConnection:(id)arg1 extension:(id)arg2 extensionRequestIdentifier:(id)arg3 error:(id)arg4;
+- (void)_addOrReplaceChildUnavailableUIViewController:(unsigned long long)arg1 error:(id)arg2;
+- (void)_cancelExistingExtensionRequestIfPossible;
+- (void)_handleRemoteViewControllerConnection:(id)arg1 extension:(id)arg2 extensionRequestIdentifier:(id)arg3 error:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_pickerDidFinishPicking:(id)arg1;
-- (void)_pickerUnavailableUIViewController:(id)arg1 cancelButtonTapped:(id)arg2;
-- (void)_setup;
-- (void)_setupExtension:(id)arg1 error:(id)arg2;
-- (void)_setupRemoteViewControllerForExtension:(id)arg1 withExtensionItem:(id)arg2;
+- (void)_pickerUnavailableUIViewControllerCancelButtonTapped:(id)arg1;
+- (void)_pickerUnavailableUIViewControllerRetryButtonTapped:(id)arg1;
+- (void)_setup:(CDUnknownBlockType)arg1;
+- (void)_setupExtension:(id)arg1 error:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_setupRemoteViewControllerForExtension:(id)arg1 withExtensionItem:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

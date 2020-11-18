@@ -15,7 +15,6 @@
 @property (readonly, getter=isCurrentDevicePrimaryResident) BOOL currentDevicePrimaryResident;
 @property (readonly) Class doorbellBulletinUtilitiesClass;
 @property (readonly) double doorbellChimeMaximumAnnounceDelay;
-@property (readonly, getter=isDoorbellEnabledForHome) BOOL doorbellEnabledForHome;
 @property (readonly, getter=isFeatureEnabled) BOOL featureEnabled;
 @property (readonly) HMDCharacteristicsAvailabilityListener *listener;
 @property (readonly) NSNotificationCenter *notificationCenter;

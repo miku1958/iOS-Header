@@ -9,16 +9,23 @@
 #import <HomeKitDaemon/HMDAccessorySettingsControllerDataSource-Protocol.h>
 #import <HomeKitDaemon/HMDAccessorySettingsControllerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDAccessoryUserManagement-Protocol.h>
+#import <HomeKitDaemon/HMDAppleMediaAccessoryMetricsDispatcherDataSource-Protocol.h>
 #import <HomeKitDaemon/HMDDeviceControllerDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDMediaDestinationControllerDataSource-Protocol.h>
+#import <HomeKitDaemon/HMDMediaDestinationControllerDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDMediaDestinationManagerDataSource-Protocol.h>
+#import <HomeKitDaemon/HMDMediaDestinationManagerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDAccessorySettingsController, HMDAccessorySymptomHandler, HMDBackingStore, HMDDevice, HMDDeviceController, HMDRemoteLoginHandler, HMDTargetControlManager, HMFActivity, HMFPairingIdentity, HMFSoftwareVersion, HMFWiFiManager, HMFWiFiNetworkInfo, NSArray, NSNotificationCenter, NSString;
+@class HMDAccessorySettingsController, HMDAccessorySymptomHandler, HMDAppleMediaAccessoryMetricsDispatcher, HMDBackingStore, HMDDevice, HMDDeviceController, HMDMediaDestinationController, HMDMediaDestinationManager, HMDRemoteLoginHandler, HMDTargetControlManager, HMFActivity, HMFPairingIdentity, HMFSoftwareVersion, HMFWiFiManager, HMFWiFiNetworkInfo, HMMediaDestination, HMMediaDestinationControllerData, NSArray, NSNotificationCenter, NSString;
 @protocol HMDAppleMediaAccessoryModelDataSource;
 
-@interface HMDAppleMediaAccessory : HMDMediaAccessory <HMDAccessorySettingsControllerDataSource, HMDAccessorySettingsControllerDelegate, HMDDeviceControllerDelegate, HMDAccessoryUserManagement, HMFLogging>
+@interface HMDAppleMediaAccessory : HMDMediaAccessory <HMDAccessorySettingsControllerDataSource, HMDAccessorySettingsControllerDelegate, HMDMediaDestinationControllerDataSource, HMDMediaDestinationControllerDelegate, HMDMediaDestinationManagerDataSource, HMDMediaDestinationManagerDelegate, HMDDeviceControllerDelegate, HMDAppleMediaAccessoryMetricsDispatcherDataSource, HMDAccessoryUserManagement, HMFLogging>
 {
     HMDDevice *_device;
     HMDDeviceController *_deviceController;
+    HMMediaDestination *_committedAudioDestination;
+    HMMediaDestinationControllerData *_committedAudioDestinationControllerData;
     BOOL _deviceReachable;
     BOOL _fixedPairingIdentityInCloud;
     HMFPairingIdentity *_pairingIdentity;
@@ -31,14 +38,21 @@
     unsigned long long _supportedStereoPairVersions;
     HMDAccessorySettingsController *_settingsController;
     NSArray *_supportedMultiUserLanguageCodes;
+    HMDMediaDestinationManager *_audioDestinationManager;
+    HMDMediaDestinationController *_audioDestinationController;
     HMFPairingIdentity *_lastCreatedPairingIdentity;
     id<HMDAppleMediaAccessoryModelDataSource> _modelDataSource;
     CDUnknownBlockType _deviceMediaRouteIdentifierFactory;
+    HMDAppleMediaAccessoryMetricsDispatcher *_metricsDispatcher;
     HMFWiFiManager *_wifiManager;
     NSNotificationCenter *_notificationCenter;
     CDUnknownBlockType _settingsConnectionFactory;
 }
 
+@property (readonly) HMMediaDestination *audioDestination;
+@property (strong) HMDMediaDestinationController *audioDestinationController; // @synthesize audioDestinationController=_audioDestinationController;
+@property (readonly) HMMediaDestinationControllerData *audioDestinationControllerData;
+@property (strong) HMDMediaDestinationManager *audioDestinationManager; // @synthesize audioDestinationManager=_audioDestinationManager;
 @property (readonly) HMDBackingStore *backingStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -51,6 +65,7 @@
 @property double homepodSetupLatency;
 @property (strong, nonatomic) HMFPairingIdentity *lastCreatedPairingIdentity; // @synthesize lastCreatedPairingIdentity=_lastCreatedPairingIdentity;
 @property (strong) HMFWiFiNetworkInfo *lastStagedWifiNetworkInfo; // @synthesize lastStagedWifiNetworkInfo=_lastStagedWifiNetworkInfo;
+@property (strong) HMDAppleMediaAccessoryMetricsDispatcher *metricsDispatcher; // @synthesize metricsDispatcher=_metricsDispatcher;
 @property (readonly) id<HMDAppleMediaAccessoryModelDataSource> modelDataSource; // @synthesize modelDataSource=_modelDataSource;
 @property (strong) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property (readonly, copy) HMFPairingIdentity *pairingIdentity; // @synthesize pairingIdentity=_pairingIdentity;
@@ -80,6 +95,7 @@
 - (void)_fetchAvailableUpdate:(id)arg1;
 - (void)_fetchMultiUserLanguages;
 - (void)_fixCloudKeyIfNeeded;
+- (void)_handleTriggerPairingIdentityUpdateNotification:(id)arg1;
 - (void)_handleUpdatedName:(id)arg1;
 - (void)_registerForMessages;
 - (void)_relayRequestMessage:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
@@ -94,9 +110,19 @@
 - (id)assistantAccessControlModelWithRemovedAccessoriesForAccessorySettingsController:(id)arg1;
 - (id)assistantObject;
 - (void)autoConfigureTargetControllers;
+- (id)availableDestinationIdentifiersForMediaDestinationController:(id)arg1;
 - (id)backingStoreObjects:(long long)arg1;
+- (id)committedAudioDestination;
+- (id)committedAudioDestinationControllerData;
+- (void)configureAudioDestinationController;
+- (void)configureAudioDestinationManager;
 - (void)configureWithHome:(id)arg1 msgDispatcher:(id)arg2 configurationTracker:(id)arg3 initialConfiguration:(BOOL)arg4;
+- (void)createAudioDestination;
+- (void)createAudioDestinationController;
 - (void)createPairingIdentity;
+- (id)currentDestinationTypeForMediaDestinationControllerMetricsEventDispatcher:(id)arg1;
+- (id)currentRoomForAppleMediaAccessoryMetricsDispatcher:(id)arg1;
+- (id)currentUserForMediaDestinationControllerMetricsEventDispatcher:(id)arg1;
 - (void)dealloc;
 - (void)deviceController:(id)arg1 didUpdateDevice:(id)arg2;
 - (id)deviceMonitor;
@@ -109,6 +135,12 @@
 - (void)handleDeviceIsNotReachable:(id)arg1;
 - (void)handleDeviceIsPublishingChangedNotification:(id)arg1;
 - (void)handleDeviceIsReachable:(id)arg1;
+- (void)handleRemovedMediaDestinationControllerModel:(id)arg1 message:(id)arg2;
+- (void)handleRemovedMediaDestinationModel:(id)arg1 message:(id)arg2;
+- (void)handleRoomChanged:(id)arg1;
+- (void)handleRoomNameChanged:(id)arg1;
+- (void)handleUpdatedMediaDestinationControllerModel:(id)arg1 message:(id)arg2;
+- (void)handleUpdatedMediaDestinationModel:(id)arg1 message:(id)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDeviceController:(id)arg1 deviceIdentifierFactory:(CDUnknownBlockType)arg2;
@@ -116,13 +148,22 @@
 - (BOOL)isCurrentAccessory;
 - (BOOL)isMultiUserEnabledForAccessorySettingsController:(id)arg1;
 - (BOOL)isRemotelyReachable;
+- (BOOL)isTriggeredOnControllerDeviceForMediaDestinationControllerMetricsEventDispatcher:(id)arg1;
 - (id)logIdentifier;
+- (id)mediaDestinationController:(id)arg1 destinationManagerWithIdentifier:(id)arg2;
+- (id)mediaDestinationController:(id)arg1 destinationWithParentIdentifier:(id)arg2;
+- (id)mediaDestinationController:(id)arg1 rootDestinationWithDecendantIdentifier:(id)arg2;
+- (void)mediaDestinationControllerDidExpireStagedValues:(id)arg1;
+- (long long)mediaDestinationControllerMetricsEventDispatcher:(id)arg1 destinationTypeForDestinationWithIdentifier:(id)arg2;
+- (id)mediaDestinationManager:(id)arg1 destinationControllerWithIdentifier:(id)arg2;
+- (void)mediaDestinationManagerDidExpireStagedValues:(id)arg1;
 - (id)messageReceiverChildren;
 - (id)messageSendPolicy;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (id)modelsToMakeSettingsForController:(id)arg1 parentUUID:(id)arg2;
 - (id)modelsToMigrateSettingsForController:(id)arg1;
 - (void)notifyClientsOfUpdatedAccessoryControllableValue:(BOOL)arg1;
+- (void)notifyFrameworkOfUpdatedPairingIdentity;
 - (void)pairingsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)populateModelObject:(id)arg1 version:(long long)arg2;
 - (long long)reachableTransports;
@@ -130,8 +171,11 @@
 - (id)remoteMessageDestination;
 - (id)remoteMessageDestinationForAccessorySettingsController:(id)arg1 target:(id)arg2;
 - (void)removeAdvertisement:(id)arg1;
+- (void)removeAudioDestination;
+- (void)removeAudioDestinationController;
 - (void)removeUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)requiresHomeAppForManagement;
+- (id)rootDestinationManagerForMediaDestinationManager:(id)arg1;
 - (void)runTransactionWithModel:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)runTransactionWithModels:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)runtimeState;
@@ -153,9 +197,13 @@
 - (BOOL)supportsSoftwareUpdate;
 - (BOOL)supportsTargetControl;
 - (BOOL)supportsThirdPartyMusic;
+- (id)targetAccessoryForMediaDestinationController:(id)arg1;
+- (id)targetAccessoryForMediaDestinationManager:(id)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)transactionWithObjectChangeType:(unsigned long long)arg1;
+- (void)unsetAudioDestination;
+- (void)unsetAudioDestinationControllerData;
 - (void)updateRechabilityFromDevicePublishingState;
 - (void)updateWiFiNetworkInfo;
 - (void)updateWithDevice:(id)arg1;

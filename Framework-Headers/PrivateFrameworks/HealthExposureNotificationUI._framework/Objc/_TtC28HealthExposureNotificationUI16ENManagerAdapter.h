@@ -32,13 +32,13 @@
 - (void).cxx_destruct;
 - (void)allRegionConfigurations:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (void)fetchAgencyModelForRegionCode:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchAgencyModelForRegionCode:(id)arg1 reason:(unsigned int)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchAllEntities:(CDUnknownBlockType)arg1;
+- (void)fetchSubdivisionsForRegion:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getAgencyModelForBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getAgencyModelForRegionCode:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)isPreReleaseAuthorizedForRegion:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)isShareStatisticsEnabledForRegion:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)isTravelStatusEnabledForRegion:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)latestExposureNotification:(CDUnknownBlockType)arg1;
 - (void)onboardingDidStartForRegion:(id)arg1 source:(long long)arg2;
@@ -49,7 +49,7 @@
 - (void)setAvailabilityAlertsEnabled:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setExposureNotificationEnabled:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setPreReleaseAuthorized:(BOOL)arg1 region:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)setShareStatisticsEnabled:(BOOL)arg1 region:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setShareAnalyticsEnabled:(BOOL)arg1 region:(id)arg2 version:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setTravelStatusEnabled:(BOOL)arg1 region:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setUserConsent:(long long)arg1 region:(id)arg2 text:(id)arg3 version:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)setWeeklySummaryEnabled:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;

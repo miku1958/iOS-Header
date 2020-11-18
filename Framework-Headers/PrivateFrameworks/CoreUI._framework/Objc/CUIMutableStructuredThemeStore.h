@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (const struct _renditionkeyfmt *)keyFormat;
 - (long long)maximumRenditionKeyTokenCount;
 - (id)nameForAppearanceIdentifier:(unsigned short)arg1;
+- (id)path;
 - (void)removeImageNamed:(id)arg1 withDescription:(id)arg2;
 - (id)renditionInfoForIdentifier:(unsigned short)arg1;
 - (struct _renditionkeytoken *)renditionKeyForAssetWithName:(id)arg1 withDescription:(id)arg2;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (const struct _renditionkeytoken *)renditionKeyForName:(id)arg1 cursorHotSpot:(struct CGPoint *)arg2;
 - (id)renditionWithKey:(const struct _renditionkeytoken *)arg1;
 - (id)renditionWithKey:(const struct _renditionkeytoken *)arg1 usingKeySignature:(id)arg2;
+- (id)themeStore;
 - (BOOL)usesCUISystemThemeRenditionKey;
 
 @end

@@ -16,6 +16,7 @@
 {
     id<NSObject><NSCopying><NSSecureCoding> _identifier;
     NSString *_productCategory;
+    NSString *_detailedProductCategory;
     NSString *_vendorName;
     NSNumber *_attachedToDevice;
 }
@@ -23,6 +24,7 @@
 @property (copy, nonatomic, getter=isAttachedToDevice) NSNumber *attachedToDevice; // @synthesize attachedToDevice=_attachedToDevice;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *detailedProductCategory; // @synthesize detailedProductCategory=_detailedProductCategory;
 @property (readonly) unsigned long long hash;
 @property (readonly) id<NSObject><NSCopying><NSSecureCoding> identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *productCategory; // @synthesize productCategory=_productCategory;

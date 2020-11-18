@@ -6,11 +6,10 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSString, UIView;
+@class UIView;
 @protocol PKSpendingSummaryFooter;
 
 @protocol PKSpendingSummaryResponder <NSObject>
 - (UIView<PKSpendingSummaryFooter> *)footer;
-- (NSString *)navigationTitle;
 @end
 

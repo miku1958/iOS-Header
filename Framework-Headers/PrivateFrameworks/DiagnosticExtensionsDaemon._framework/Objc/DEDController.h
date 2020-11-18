@@ -11,7 +11,7 @@
 #import <DiagnosticExtensionsDaemon/DEDXPCConnectorDaemonDelegate-Protocol.h>
 #import <DiagnosticExtensionsDaemon/DEDXPCProtocol-Protocol.h>
 
-@class DEDIDSConnection, DEDSharingConnection, DEDXPCConnector, DEDXPCInbound, NSMutableDictionary, NSMutableSet, NSString, NSXPCConnection;
+@class DEDXPCConnector, DEDXPCInbound, NSMutableDictionary, NSMutableSet, NSString, NSXPCConnection;
 @protocol DEDClientProtocol, DEDPairingProtocol, DEDWorkerProtocol, OS_dispatch_queue, OS_os_log;
 
 @interface DEDController : NSObject <DEDXPCConnectorDaemonDelegate, DEDXPCProtocol, DEDPairingProtocol, DEDSecureArchiving>
@@ -33,8 +33,6 @@
     CDUnknownBlockType _sessionExistsCompletion;
     NSMutableDictionary *_sessionStartBlocks;
     NSMutableDictionary *_sessionDidStartBlocks;
-    DEDIDSConnection *__idsConnection;
-    DEDSharingConnection *__sharingConnection;
     NSMutableSet *_recentlyFinishedSessions;
     NSObject<OS_dispatch_queue> *_replyQueue;
     NSObject<OS_dispatch_queue> *_workQueue;
@@ -44,8 +42,6 @@
     NSMutableDictionary *_sessions;
 }
 
-@property (strong) DEDIDSConnection *_idsConnection; // @synthesize _idsConnection=__idsConnection;
-@property (strong) DEDSharingConnection *_sharingConnection; // @synthesize _sharingConnection=__sharingConnection;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *bugSessionCallbackQueue; // @synthesize bugSessionCallbackQueue=_bugSessionCallbackQueue;
 @property (weak) id<DEDClientProtocol> clientDelegate; // @synthesize clientDelegate=_clientDelegate;
 @property (readonly, copy) NSString *debugDescription;

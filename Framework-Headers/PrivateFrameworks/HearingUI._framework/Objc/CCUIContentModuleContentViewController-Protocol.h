@@ -26,6 +26,7 @@
 - (void)didTransitionToExpandedContentMode:(BOOL)arg1;
 - (void)dismissPresentedContentAnimated:(BOOL)arg1 completion:(void (^)(void))arg2;
 - (void)displayWillTurnOff;
+- (struct CCUIModuleLayoutSize)moduleLayoutSizeForOrientation:(long long)arg1;
 - (BOOL)shouldBeginTransitionToExpandedContentModule;
 - (BOOL)shouldExpandModuleOnTouch:(UITouch *)arg1;
 - (BOOL)shouldFinishTransitionToExpandedContentModule;

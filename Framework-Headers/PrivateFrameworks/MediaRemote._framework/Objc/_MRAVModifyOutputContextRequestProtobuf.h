@@ -10,9 +10,13 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface _MRAVModifyOutputContextRequestProtobuf : PBCodable <NSCopying>
 {
     NSMutableArray *_addingOutputDeviceUIDs;
+    NSMutableArray *_clusterAwareAddingOutputDeviceUIDs;
+    NSMutableArray *_clusterAwareRemovingOutputDeviceUIDs;
+    NSMutableArray *_clusterAwareSettingOutputDeviceUIDs;
     int _outputContextType;
     NSMutableArray *_removingOutputDeviceUIDs;
     NSMutableArray *_settingOutputDeviceUIDs;
@@ -21,38 +25,13 @@
     } _has;
 }
 
-@property (strong, nonatomic) NSMutableArray *addingOutputDeviceUIDs; // @synthesize addingOutputDeviceUIDs=_addingOutputDeviceUIDs;
-@property (nonatomic) BOOL hasOutputContextType;
-@property (nonatomic) int outputContextType; // @synthesize outputContextType=_outputContextType;
-@property (strong, nonatomic) NSMutableArray *removingOutputDeviceUIDs; // @synthesize removingOutputDeviceUIDs=_removingOutputDeviceUIDs;
-@property (strong, nonatomic) NSMutableArray *settingOutputDeviceUIDs; // @synthesize settingOutputDeviceUIDs=_settingOutputDeviceUIDs;
-
-+ (Class)addingOutputDeviceUIDType;
-+ (Class)removingOutputDeviceUIDType;
-+ (Class)settingOutputDeviceUIDType;
 - (void).cxx_destruct;
-- (int)StringAsOutputContextType:(id)arg1;
-- (void)addAddingOutputDeviceUID:(id)arg1;
-- (void)addRemovingOutputDeviceUID:(id)arg1;
-- (void)addSettingOutputDeviceUID:(id)arg1;
-- (id)addingOutputDeviceUIDAtIndex:(unsigned long long)arg1;
-- (unsigned long long)addingOutputDeviceUIDsCount;
-- (void)clearAddingOutputDeviceUIDs;
-- (void)clearRemovingOutputDeviceUIDs;
-- (void)clearSettingOutputDeviceUIDs;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
-- (id)outputContextTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)removingOutputDeviceUIDAtIndex:(unsigned long long)arg1;
-- (unsigned long long)removingOutputDeviceUIDsCount;
-- (id)settingOutputDeviceUIDAtIndex:(unsigned long long)arg1;
-- (unsigned long long)settingOutputDeviceUIDsCount;
 - (void)writeTo:(id)arg1;
 
 @end

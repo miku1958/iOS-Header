@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (BOOL)_preventsAppearanceProxyCustomization;
 - (void).cxx_destruct;
 - (void)_appDidEnterBackground:(id)arg1;
 - (void)_dismiss;

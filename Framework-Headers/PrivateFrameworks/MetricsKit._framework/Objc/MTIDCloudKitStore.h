@@ -37,7 +37,6 @@
 @property (strong, nonatomic) MTPromise *syncEnginePromise; // @synthesize syncEnginePromise=_syncEnginePromise;
 @property (strong, nonatomic) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;
 
-+ (id)apsMachServiceName;
 + (void)populateRecord:(id)arg1 withNewSecretForScheme:(id)arg2 date:(id)arg3;
 + (id)recordIDForScheme:(id)arg1 date:(id)arg2;
 + (id)recordZoneID;
@@ -51,12 +50,12 @@
 - (void)accountDidChange:(id)arg1;
 - (void)clearLocalData;
 - (void)cloudKitLocalDB:(id)arg1 didChangeRecord:(id)arg2;
+- (id)container;
 - (id)debugInfo;
 - (void)generateFutureSecretsForScheme:(id)arg1;
 - (id)initWithContainerIdentifer:(id)arg1;
 - (id)promiseForRecordWithID:(id)arg1 timeout:(double)arg2 updateRecordMaybe:(CDUnknownBlockType)arg3;
 - (id)recordWithID:(id)arg1 updateRecordMaybe:(CDUnknownBlockType)arg2 error:(id *)arg3;
-- (id)resetSecretForScheme:(id)arg1 options:(id)arg2;
 - (id)secretForScheme:(id)arg1 options:(id)arg2;
 - (id)startSyncEngine;
 - (void)updateUserRecordID:(id)arg1;

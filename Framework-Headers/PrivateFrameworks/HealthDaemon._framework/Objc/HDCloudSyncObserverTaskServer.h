@@ -37,6 +37,7 @@
 - (void)_queue_didUpdateSyncStatus;
 - (void)_queue_didUpdateSyncStatusWithErrorRequiringUserAction:(id)arg1;
 - (void)_queue_didUpdateSyncStatusWithLastPullDate:(id)arg1;
+- (void)_queue_didUpdateSyncStatusWithLastPulledUpdateDate:(id)arg1;
 - (void)_queue_didUpdateSyncStatusWithLastPushDate:(id)arg1;
 - (void)_queue_didUpdateSyncStatusWithRestoreCompleteDate:(id)arg1;
 - (void)_queue_didUpdateSyncStatusWithSyncEnabled:(BOOL)arg1;
@@ -51,6 +52,7 @@
 - (void)cloudSyncManager:(id)arg1 didUpdateDataUploadRequestStatus:(long long)arg2 startDate:(id)arg3 endDate:(id)arg4;
 - (void)cloudSyncManager:(id)arg1 didUpdateErrorRequiringUserAction:(id)arg2;
 - (void)cloudSyncManager:(id)arg1 didUpdateLastPullDate:(id)arg2;
+- (void)cloudSyncManager:(id)arg1 didUpdateLastPulledUpdateDate:(id)arg2;
 - (void)cloudSyncManager:(id)arg1 didUpdateLastPushDate:(id)arg2;
 - (void)cloudSyncManager:(id)arg1 didUpdateRestoreCompletionDate:(id)arg2;
 - (void)cloudSyncManager:(id)arg1 didUpdateSyncEnabled:(BOOL)arg2;

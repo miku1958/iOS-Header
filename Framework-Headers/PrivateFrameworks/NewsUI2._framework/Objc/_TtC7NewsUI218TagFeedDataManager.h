@@ -13,6 +13,7 @@
     MISSING_TYPE *delegate;
     MISSING_TYPE *feedServiceConfigFetcher;
     MISSING_TYPE *feedService;
+    MISSING_TYPE *headlineService;
     MISSING_TYPE *pluginManager;
     MISSING_TYPE *pluginFactory;
     MISSING_TYPE *accessQueue;

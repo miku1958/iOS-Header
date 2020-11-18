@@ -35,15 +35,12 @@
 {
     BOOL _isVisible;
     BOOL _hidePinsForAnimation;
-    BOOL _isCollapsed;
+    BOOL _isBelowMacSnapToMinWidth;
     BOOL _holdPinningUpdatesForConversationDeletion;
     BOOL _compositionWasSent;
     BOOL _isInitialAppearance;
     BOOL _willRotate;
-    BOOL _isSelectingConversationProgrammatically;
-    BOOL _hasFetchedInitalPinnedConversations;
     BOOL _macShouldShowZKWSearch;
-    BOOL _isBelowMacSnapToMinWidth;
     BOOL _holdPinningUpdatesForOnboardingAnimation;
     BOOL _hasActivePinnedConversationDropSession;
     BOOL _nextPinnedConversationListUpdateShouldTriggerUnanimatedSnapshotUpdate;
@@ -122,7 +119,6 @@
 @property (copy, nonatomic) NSArray *frozenConversations; // @synthesize frozenConversations=_frozenConversations;
 @property (copy, nonatomic) NSArray *frozenPinnedConversations; // @synthesize frozenPinnedConversations=_frozenPinnedConversations;
 @property (nonatomic) BOOL hasActivePinnedConversationDropSession; // @synthesize hasActivePinnedConversationDropSession=_hasActivePinnedConversationDropSession;
-@property (nonatomic) BOOL hasFetchedInitalPinnedConversations; // @synthesize hasFetchedInitalPinnedConversations=_hasFetchedInitalPinnedConversations;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
@@ -133,11 +129,11 @@
 @property (nonatomic) BOOL isApplyingSnapshot; // @synthesize isApplyingSnapshot=_isApplyingSnapshot;
 @property (nonatomic) BOOL isBelowMacSnapToMinWidth; // @synthesize isBelowMacSnapToMinWidth=_isBelowMacSnapToMinWidth;
 @property (nonatomic) BOOL isCheckingIfPinningOnboardingNeeded; // @synthesize isCheckingIfPinningOnboardingNeeded=_isCheckingIfPinningOnboardingNeeded;
-@property (nonatomic) BOOL isCollapsed; // @synthesize isCollapsed=_isCollapsed;
 @property (nonatomic) BOOL isCommitingDiffableDataSourceTransaction; // @synthesize isCommitingDiffableDataSourceTransaction=_isCommitingDiffableDataSourceTransaction;
 @property (nonatomic) BOOL isCurrentlyAnimatingPinningOnboardingSuggestions; // @synthesize isCurrentlyAnimatingPinningOnboardingSuggestions=_isCurrentlyAnimatingPinningOnboardingSuggestions;
 @property (nonatomic) BOOL isInitialAppearance; // @synthesize isInitialAppearance=_isInitialAppearance;
-@property (nonatomic) BOOL isSelectingConversationProgrammatically; // @synthesize isSelectingConversationProgrammatically=_isSelectingConversationProgrammatically;
+@property (readonly, nonatomic) BOOL isSearchActive;
+@property (readonly, nonatomic) BOOL isSearchActiveAndDisplayingResultsForSearchText;
 @property (nonatomic) BOOL isShowingPinnedChatDropTarget; // @synthesize isShowingPinnedChatDropTarget=_isShowingPinnedChatDropTarget;
 @property (nonatomic) BOOL isShowingPinningOnboarding; // @synthesize isShowingPinningOnboarding=_isShowingPinningOnboarding;
 @property (nonatomic) BOOL isShowingSwipeDeleteConfirmation; // @synthesize isShowingSwipeDeleteConfirmation=_isShowingSwipeDeleteConfirmation;
@@ -182,7 +178,6 @@
 - (id)_avatarProviderFromNickname:(id)arg1;
 - (void)_beginAccountRepairIfNeeded;
 - (void)_cancelDeletion:(CDUnknownBlockType)arg1;
-- (double)_cellDoubleClickInterval;
 - (void)_chatAllowedByScreenTimeChanged:(id)arg1;
 - (void)_chatItemsDidChange:(id)arg1;
 - (void)_chatParticipantsChangedNotification:(id)arg1;
@@ -205,7 +200,6 @@
 - (void)_conversationIsFilteredChangedNotification:(id)arg1;
 - (void)_conversationListDidChange:(id)arg1;
 - (void)_conversationListDidFinishLoadingConversations:(id)arg1;
-- (void)_conversationListInitalPinLoadCompletedNotification:(id)arg1;
 - (void)_conversationListPinnedConversationsDidChange:(id)arg1;
 - (void)_conversationMessageWasSent:(id)arg1;
 - (void)_conversationMuteDidChangeNotification:(id)arg1;
@@ -227,12 +221,14 @@
 - (void)_filterControlSelectionChanged:(id)arg1;
 - (void)_freezeConversations;
 - (id)_getTitleForCurrentFilterMode;
+- (void)_handingPendingConversationDidChange:(id)arg1;
 - (void)_handleAccountRegistrationChange:(id)arg1;
 - (BOOL)_imageForkedFromMeCard;
 - (void)_increaseContrastDidChange:(id)arg1;
 - (id)_indexPathOfDefaultConversation;
 - (id)_indexPaths:(id)arg1 containingHandleWithUID:(id)arg2;
 - (void)_iosUpdateNavbarLayoutIfNeeded;
+- (BOOL)_isDropForSession:(id)arg1 toLeadingEdgeOfView:(id)arg2;
 - (BOOL)_isOnlyActivityItemInRowForConversation:(id)arg1 itemIdentifier:(id)arg2;
 - (BOOL)_isRunningPPT;
 - (id)_itemIdentifierOfDefaultConversation;
@@ -257,6 +253,7 @@
 - (id)_openConversationInNewWindowActionForItemIdentifier:(id)arg1;
 - (void)_performConversationDropWithCollectionView:(id)arg1 dropCoordinator:(id)arg2;
 - (void)_performItemDropWithCollectionView:(id)arg1 dropCoordinator:(id)arg2;
+- (void)_performTranscriptPushForItemAtIndexPath:(id)arg1 userInitiated:(BOOL)arg2;
 - (id)_pinActionForItemIdentifier:(id)arg1;
 - (id)_pinnedConversationShortNames;
 - (long long)_pinnedConversationViewLayoutStyleForCollectionViewSize:(struct CGSize)arg1;
@@ -290,7 +287,6 @@
 - (void)_updateInsets;
 - (void)_updateLargeTitleDisplayModeWithAnimation:(BOOL)arg1;
 - (void)_updateNavbarLayoutIfNeeded;
-- (void)_updateSyncProgressIfNeeded;
 - (void)_updateSyncProgressIfNeededWithProgressController:(id)arg1 forceShow:(BOOL)arg2;
 - (void)_updateToolbarItems;
 - (id)_userDefaults;
@@ -395,6 +391,7 @@
 - (id)init;
 - (void)invalidateCellLayout;
 - (BOOL)isDetailsNavigationControllerDetached;
+- (BOOL)isShowingConversationFromCatalystOpenURL;
 - (id)itemIdentifierForConversation:(id)arg1 inSection:(unsigned long long)arg2;
 - (BOOL)itemIdentifierIsFromPinnedSection:(id)arg1;
 - (id)itemIdentifiersForConversations:(id)arg1 inSection:(unsigned long long)arg2;
@@ -418,7 +415,7 @@
 - (void)performResumeDeferredSetup;
 - (void)performSearch:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)pinButtonTappedForCell:(id)arg1;
-- (void)pinConversation:(id)arg1;
+- (void)pinConversation:(id)arg1 withReason:(id)arg2;
 - (void)pinConversationsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)pinGridLayoutGroupForCollectionViewSize:(struct CGSize)arg1 numberOfItems:(long long)arg2;
 - (id)pinGridLayoutSectionForEnvironment:(id)arg1 withNumberOfItems:(long long)arg2;
@@ -498,13 +495,13 @@
 - (id)tipKitCollectionView:(id)arg1 atIndexPath:(id)arg2;
 - (id)tipKitLayoutSectionForEnvironment:(id)arg1;
 - (id)tipKitOnboardingCollectionView:(id)arg1 atIndexPath:(id)arg2;
-- (void)togglePinStateForConversation:(id)arg1;
+- (void)togglePinStateForConversation:(id)arg1 withReason:(id)arg2;
 - (id)toolbarItemForIdentifier:(id)arg1;
 - (id)trailingSwipeActionsConfigurationForIndexPath:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)transparentNavBarAppearance;
 - (void)unpinButtonTappedForCell:(id)arg1 withConversation:(id)arg2;
-- (void)unpinConversation:(id)arg1;
+- (void)unpinConversation:(id)arg1 withReason:(id)arg2;
 - (void)unregisterForCloudKitEvents;
 - (void)updateBackButton;
 - (void)updateConfigurationStateForSelectedCell;
@@ -528,6 +525,7 @@
 - (void)updateSMSSpamConversationsDisplayName;
 - (void)updateSnapshotAnimatingDifferences:(BOOL)arg1;
 - (void)updateSnapshotAnimatingDifferences:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)updateSyncProgressIfNeeded;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidAppearDeferredSetup;
 - (void)viewDidLayoutSubviews;
@@ -538,6 +536,7 @@
 - (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (double)virtualToolbarPreferredHeight;
+- (double)widthForDeterminingAvatarVisibility;
 - (double)widthForPinnedConversationCellInCollectionViewOfSize:(struct CGSize)arg1 numberOfItems:(long long)arg2;
 - (void)willDismissSearchController:(id)arg1;
 - (void)willPresentSearchController:(id)arg1;

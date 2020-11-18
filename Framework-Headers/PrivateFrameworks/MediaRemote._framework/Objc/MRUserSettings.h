@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, NSUserDefaults;
+@class NSArray, NSDictionary, NSString, NSUserDefaults;
 
 @interface MRUserSettings : NSObject
 {
@@ -42,9 +42,12 @@
 @property (readonly, nonatomic) double lastPlayingDeviceThresholdInterval;
 @property (readonly, nonatomic) double launchApplicationTimeoutInterval;
 @property (readonly, nonatomic) long long maxTransactionMemorySize;
+@property (readonly, nonatomic) unsigned long long maximumNumberOfMediaSuggestions;
 @property (readonly, nonatomic) double mediaRecentlyPlayedInterval;
 @property (readonly, nonatomic) BOOL needNowPlayingForegroundState;
 @property (readonly, nonatomic) double nowPlayingApplicationTimeout;
+@property (readonly, nonatomic) double personalDeviceLockScreenTimeout;
+@property (strong, nonatomic) NSDictionary *personalDeviceState;
 @property (readonly, nonatomic) double queuedCommandsTimeoutInterval;
 @property (readonly, nonatomic) NSArray *remoteControlDiscoveryBlacklist;
 @property (readonly, nonatomic) NSArray *remoteControlDiscoveryWhitelist;
@@ -57,8 +60,13 @@
 @property (readonly, nonatomic) BOOL shouldLogPairingSetupCode;
 @property (readonly, nonatomic) BOOL shouldWakeDeviceForRemoteControlCommands;
 @property (readonly, nonatomic) BOOL supportLastPlayingDevice;
+@property (readonly, nonatomic) BOOL supportLockscreenPlatterDisplayForPersonalDevice;
 @property (readonly, nonatomic) BOOL supportMigration;
+@property (readonly, nonatomic) BOOL supportMigrationBackToPersonalDevice;
 @property (readonly, nonatomic) BOOL supportNanoLinkAgent;
+@property (readonly, nonatomic) BOOL supportNewMigrationArchitecture;
+@property (readonly, nonatomic) BOOL supportNewMigrationBehaviorForProximity;
+@property (readonly, nonatomic) BOOL supportProactiveSuggestion;
 @property (readonly, nonatomic) BOOL supportProximityMigration;
 @property (readonly, nonatomic) BOOL takelockScreenAssertion;
 @property (readonly, nonatomic) double transactionWaitDurationOnNetworkSend;
@@ -75,6 +83,7 @@
 @property (readonly, nonatomic) BOOL useProactiveEndpoint;
 @property (readonly, nonatomic) BOOL useSystemAudioContextForAirPlayTransport;
 @property (readonly, nonatomic) BOOL verboseProtocolMessageLogging;
+@property (readonly, nonatomic) BOOL visuallyIdentifyProactiveSuggestion;
 
 + (id)currentSettings;
 - (void).cxx_destruct;

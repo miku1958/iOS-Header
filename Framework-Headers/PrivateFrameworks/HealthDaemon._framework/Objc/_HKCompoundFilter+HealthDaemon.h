@@ -6,8 +6,11 @@
 
 #import <HealthKit/_HKCompoundFilter.h>
 
-@interface _HKCompoundFilter (HealthDaemon)
+#import <HealthDaemon/_HKFilterBuilding-Protocol.h>
+
+@interface _HKCompoundFilter (HealthDaemon) <_HKFilterBuilding>
 - (id)_filterByApplyingTransformationToSubfilters:(CDUnknownBlockType)arg1;
+- (id)builder_filterWithDataTypes:(id)arg1;
 - (id)filterIgnoringActivityCacheIndexFilter;
 - (id)filterIgnoringPrivateMetadata;
 - (id)predicateWithProfile:(id)arg1;

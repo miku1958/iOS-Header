@@ -55,6 +55,7 @@
 - (id)_processCommonFileBackedWallpaperMetadataWithDictionary:(id)arg1 wallpaperAppearance:(id)arg2;
 - (void)_raiseInvalidMetadataExceptionForMetadataKeypath:(id)arg1;
 - (id)_stillWallpaperWithMetadataDictionary:(id)arg1 wallpaperAppearance:(id)arg2;
+- (id)_stripeWallpaperWithMetadataDictionary:(id)arg1 wallpaperAppearance:(id)arg2;
 - (id)fileBasedWallpaperForLocation:(id)arg1;
 - (id)fileBasedWallpaperForLocation:(id)arg1 andAppearance:(id)arg2;
 - (id)initWithDynamicDictionary:(id)arg1 identifier:(long long)arg2;

@@ -118,7 +118,7 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : !—
+	let rawValue : —
  }
 
  struct __C.NLLanguage {
@@ -131,7 +131,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var opaque : —
+	var opaque : a—
  }
 
  enum __C.CLAccuracyAuthorization { }
@@ -158,14 +158,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var __sig : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var __opaque : 9–
+	var __opaque : ™–
  }
 
  struct __C.os_unfair_lock_s {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _os_unfair_lock_opaque : !—
+	var _os_unfair_lock_opaque : —
  }
 
  struct __C.NLTagScheme {
@@ -249,7 +249,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class ReminderKitInternal.PromiseDisposableToken : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xc340  class func PromiseDisposableToken.__allocating_init() // init 
+	0xc090  class func PromiseDisposableToken.__allocating_init() // init 
  }
 
  class ReminderKitInternal.Promise {
@@ -323,7 +323,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : !— // +0x0
+	let rawValue : — // +0x0
  }
 
  struct ReminderKitInternal.Scope {
@@ -368,10 +368,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class ReminderKitInternal.RemindersByCriteriaInvocation : REMStoreSwiftInvocation /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12e3000041428 (0x63000041428) in binary!
+WARNING: couldn't find address 0x12e3000040488 (0x63000040488) in binary!
 	0x12e24  @objc RemindersByCriteriaInvocation.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff3b5f0  @objc RemindersByCriteriaInvocation.(null) <stripped>
+	0xfff3b400  @objc RemindersByCriteriaInvocation.(null) <stripped>
  }
 
  struct ReminderKitInternal.Parameters {
@@ -384,10 +384,10 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 
  class ReminderKitInternal.ListsByCriteriaInvocation : REMStoreSwiftInvocation /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12e5000041448 (0x65000041448) in binary!
+WARNING: couldn't find address 0x12e50000404a8 (0x650000404a8) in binary!
 	0x12e44  @objc ListsByCriteriaInvocation.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x424fff2c280  @objc ListsByCriteriaInvocation.(null) <stripped>
+	0x484fff2c090  @objc ListsByCriteriaInvocation.(null) <stripped>
  }
 
  struct ReminderKitInternal.Parameters {
@@ -477,7 +477,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let embedding : NLEmbedding
 
 	// Swift methods
-	0x413a0  class func REMSentence2VecTitleEmbedding.__allocating_init(lang:) // init 
+	0x41150  class func REMSentence2VecTitleEmbedding.__allocating_init(lang:) // init 
  }
 
  class ReminderKitInternal.REMUniversalGrammarTitleEmbedding : _SwiftObject /usr/lib/swift/libswiftCore.dylib, REMTitleEmbedding {
@@ -503,7 +503,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let tokenizer : NLTokenizer
 
 	// Swift methods
-	0x42be0  class func REMFilteredTitleEmbedding.__allocating_init(from:stopWordThresholdByPercent:) // init 
+	0x42990  class func REMFilteredTitleEmbedding.__allocating_init(from:stopWordThresholdByPercent:) // init 
  }
 
  enum ReminderKitInternal.CodingKeys {
@@ -521,7 +521,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let store : REMStore // +0x0
 
 	// Swift methods
-	0x4a460  class func REMComplicationDataView.__allocating_init(store:) // init 
+	0x4a210  class func REMComplicationDataView.__allocating_init(store:) // init 
  }
 
  struct ReminderKitInternal.Model {
@@ -532,11 +532,11 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
  class ReminderKitInternal.FetchModelInvocation : REMStoreInvocation /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1345000041250 (0x45000041250) in binary!
+WARNING: couldn't find address 0x13450000402b0 (0x450000402b0) in binary!
 	0x12dd4  @objc FetchModelInvocation.(null) <stripped>
-WARNING: couldn't find address 0x13e4c000410f0 (0x64c000410f0) in binary!
+WARNING: couldn't find address 0x13e4c00040150 (0x64c00040150) in binary!
 	0x48000000c  @objc FetchModelInvocation.(null) <stripped>
-WARNING: couldn't find address 0x12db0000413b0 (0x5b0000413b0) in binary!
+WARNING: couldn't find address 0x12db000040410 (0x5b000040410) in binary!
 	0x13414  @objc FetchModelInvocation.(null) <stripped>
  }
 
@@ -548,17 +548,17 @@ WARNING: couldn't find address 0x12db0000413b0 (0x5b0000413b0) in binary!
 	let reminderStorages : [REMReminderStorage] // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12db0000413b0 (0x5b0000413b0) in binary!
+WARNING: couldn't find address 0x12db000040410 (0x5b000040410) in binary!
 	0x13414  @objc Result.(null) <stripped>
-WARNING: couldn't find address 0x13e1c000410c0 (0x61c000410c0) in binary!
+WARNING: couldn't find address 0x13e1c00040120 (0x61c00040120) in binary!
 	0x13e60  @objc Result.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff3d788  @objc Result.(null) <stripped>
+	0xfff3d5a8  @objc Result.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x354fff3d850  @objc Result.(null) <stripped>
+	0x3b4fff3d670  @objc Result.(null) <stripped>
 
 	// Swift methods
-	0x4a7a0  class func REMComplicationDataView.FetchModelInvocation.Result.__allocating_init(accountStorages:listStorages:reminderStorages:) // init 
+	0x4a550  class func REMComplicationDataView.FetchModelInvocation.Result.__allocating_init(accountStorages:listStorages:reminderStorages:) // init 
  }
 
  class ReminderKitInternal.REMListStableSortingDataView : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -567,10 +567,10 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
  class ReminderKitInternal.Invocation : REMStoreSwiftInvocation /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12d6000041358 (0x56000041358) in binary!
+WARNING: couldn't find address 0x12d60000403b8 (0x560000403b8) in binary!
 	0x12d54  @objc Invocation.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff79f60  @objc Invocation.(null) <stripped>
+	0xfff79d90  @objc Invocation.(null) <stripped>
  }
 
  struct ReminderKitInternal.DeferredPromise {
@@ -595,7 +595,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case resolved : A1
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case rejected : y“
+	case rejected : Ù“
 	case cancelled  
  }
 
@@ -615,7 +615,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let options : os_unfair_lock_options_t // +0x0
 
 	// Swift methods
-	0x540c0  class func UnfairLock.__allocating_init(options:) // init 
+	0x53e80  class func UnfairLock.__allocating_init(options:) // init 
  }
 
  struct ReminderKitInternal.Options {
@@ -630,7 +630,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let mutex : _opaque_pthread_mutex_t
 
 	// Swift methods
-	0x544d0  class func MutexLock.__allocating_init() // init 
+	0x54290  class func MutexLock.__allocating_init() // init 
  }
 
  enum ReminderKitInternal.RDVectorDistanceCalculator {
@@ -657,7 +657,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class ReminderKitInternal.REMSuggestedWeekDay : ClassificationLabel {
 	// Swift methods
-	0x56850  class func REMSuggestedWeekDay.__allocating_init(_:) // init 
+	0x56610  class func REMSuggestedWeekDay.__allocating_init(_:) // init 
  }
 
  enum ReminderKitInternal.CodingKeys {
@@ -672,8 +672,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let listName : String
 
 	// Swift methods
-	0x57360  class func REMSuggestedList.__allocating_init(listId:listName:) // init 
-	0x57550  class func REMSuggestedList.__allocating_init(from:) // init 
+	0x57120  class func REMSuggestedList.__allocating_init(listId:listName:) // init 
+	0x57310  class func REMSuggestedList.__allocating_init(from:) // init 
  }
 
  enum ReminderKitInternal.CodingKeys {
@@ -696,17 +696,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let title : String // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let reminderID : +} // +0x0 (0x0)
+	let reminderID : ‹} // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let creationDate : mr // +0x45545f5f (0x0)
+	let creationDate : Ír // +0x45545f5f (0x0)
 	let list : REMSuggestedList // +0x19 (0x8)
 	let dueDayOfWeek : REMSuggestedWeekDay // +0x6118085 (0x8)
 	let location : REMSuggestedLocation // +0x38 (0x8)
 
 	// Swift methods
-	0x58a90  class func REMSuggestedAttributeInput.__allocating_init(reminder:) // init 
-	0x58c50  class func REMSuggestedAttributeInput.__allocating_init(reminderTitle:reminderID:list:creationDate:dueDayOfWeek:location:) // init 
-	0x58d30  class func REMSuggestedAttributeInput.__allocating_init(from:) // init 
+	0x58850  class func REMSuggestedAttributeInput.__allocating_init(reminder:) // init 
+	0x58a10  class func REMSuggestedAttributeInput.__allocating_init(reminderTitle:reminderID:list:creationDate:dueDayOfWeek:location:) // init 
+	0x58af0  class func REMSuggestedAttributeInput.__allocating_init(from:) // init 
  }
 
  enum ReminderKitInternal.CodingKeys {
@@ -781,7 +781,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let fileURL : Sn
+	let fileURL : ³n
 
 	// Swift methods
  }
@@ -790,7 +790,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : Sn
+	let url : ³n
  }
 
  class ReminderKitInternal.AsyncBlockOperation {
@@ -965,7 +965,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var contactFetchOperationManager : REMAsyncOperationManager
 
 	// Swift methods
-	0x72400  class func REMContactsProvider.__allocating_init(contactStore:queue:backgroundQueue:) // init 
+	0x721e0  class func REMContactsProvider.__allocating_init(contactStore:queue:backgroundQueue:) // init 
  }
 
  enum ReminderKitInternal.REMMeCardAddressType {
@@ -1000,14 +1000,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var passthroughSubject : Õ // +0x10 (0x8)
+	var passthroughSubject : 5Ž // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var debouncer : i // +0x18 (0x8)
+	var debouncer : ai // +0x18 (0x8)
 	let queue : OS_dispatch_queue // +0x20 (0x8)
 
 	// Swift methods
-	0x7e400  class func REMWidgetRefresh.__allocating_init(interval:queue:) // init 
-	0x7e490  func REMWidgetRefresh.refresh() // method 
+	0x7e1d0  class func REMWidgetRefresh.__allocating_init(interval:queue:) // init 
+	0x7e260  func REMWidgetRefresh.refresh() // method 
  }
 
  enum ReminderKitInternal.REMFeatureFlags {
@@ -1065,10 +1065,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class ReminderKitInternal.Invocation : REMStoreSwiftInvocation /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12d2800041320 (0x52800041320) in binary!
+WARNING: couldn't find address 0x12d2800040380 (0x52800040380) in binary!
 	0x12d1c  @objc Invocation.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff7e158  @objc Invocation.(null) <stripped>
+	0xfff7df88  @objc Invocation.(null) <stripped>
  }
 
  struct ReminderKitInternal.Parameters {
@@ -1121,26 +1121,26 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	let suggestedAttributesPerformer : REMSuggestedAttributesPerformer
 
 	// Swift methods
-	0x8cac0  class func REMSuggestedAttributesHarvester.__allocating_init(suggestedAttributesPerformer:) // init 
+	0x8c890  class func REMSuggestedAttributesHarvester.__allocating_init(suggestedAttributesPerformer:) // init 
  }
 
  class ReminderKitInternal.Invocation : REMStoreSwiftInvocation /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1334800041148 (0x34800041148) in binary!
+WARNING: couldn't find address 0x13348000401a8 (0x348000401a8) in binary!
 	0x12ccc  @objc Invocation.(null) <stripped>
-WARNING: couldn't find address 0x12cc0000412b8 (0x4c0000412b8) in binary!
+WARNING: couldn't find address 0x12cc000040318 (0x4c000040318) in binary!
 	0x38000000c  @objc Invocation.(null) <stripped>
-WARNING: couldn't find address 0x1331800041118 (0x31800041118) in binary!
+WARNING: couldn't find address 0x1331800040178 (0x31800040178) in binary!
 	0x12c9c  @objc Invocation.(null) <stripped>
  }
 
  class ReminderKitInternal.MentionsExtractionInvocation : REMStoreSwiftInvocation /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1331800041118 (0x31800041118) in binary!
+WARNING: couldn't find address 0x1331800040178 (0x31800040178) in binary!
 	0x12c9c  @objc MentionsExtractionInvocation.(null) <stripped>
-WARNING: couldn't find address 0x12c9000041288 (0x49000041288) in binary!
+WARNING: couldn't find address 0x12c90000402e8 (0x490000402e8) in binary!
 	0x18000000c  @objc MentionsExtractionInvocation.(null) <stripped>
-WARNING: couldn't find address 0x14bdc00040ed8 (0x3dc00040ed8) in binary!
+WARNING: couldn't find address 0x14bdc0003ff38 (0x3dc0003ff38) in binary!
 	0x18000000c  @objc MentionsExtractionInvocation.(null) <stripped>
  }
 
@@ -1200,25 +1200,25 @@ WARNING: couldn't find address 0x14bdc00040ed8 (0x3dc00040ed8) in binary!
 	let reminderTitle : String
 	let listID : REMObjectID_Codable
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let editingSessionID : +}
+	let editingSessionID : ‹}
  }
 
  struct ReminderKitInternal.Response {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let heuristicResult : µm // +0x0
+	let heuristicResult : n // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let embeddingResult : µm // +0x40
+	let embeddingResult : n // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let coreBehaviorResult : µm // +0x80
+	let coreBehaviorResult : n // +0x80
  }
 
  struct ReminderKitInternal.MentionsExtractionResponse {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let result : µm // +0x0
+	let result : n // +0x0
  }
 
  enum ReminderKitInternal.CodingKeys {
@@ -1249,9 +1249,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let generator : RMDMersenneTwisterRandomSource
 
 	// Swift methods
-	0x93ca0  class func MersenneTwister.__allocating_init() // init 
-	0x93d80  class func MersenneTwister.__allocating_init(seed:) // init 
-	0x93e30  func MersenneTwister.next() // method 
+	0x93af0  class func MersenneTwister.__allocating_init() // init 
+	0x93bd0  class func MersenneTwister.__allocating_init(seed:) // init 
+	0x93c80  func MersenneTwister.next() // method 
  }
 
  enum ReminderKitInternal.REMSearchableItemAttributeName {
@@ -1290,12 +1290,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case hasLocation : Bool
 	case location : REMStringMatchingStyle
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case dueDate : Áx
+	case dueDate : !y
 	case hasDueDate : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case modifiedDate : Áx
+	case modifiedDate : !y
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case creationDate : Áx
+	case creationDate : !y
 	case isRecurrent : Bool
 	case isFlagged : Bool
 	case spotlightItemIdentifier : String
@@ -1312,14 +1312,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let metric : RDVectorDistanceCalculator
 
 	// Swift methods
-	0x98950  func PointCloud.points.getter // getter 
-	0x98a10  func PointCloud.center.getter // getter 
-	0x98ac0  func PointCloud.variance.getter // getter 
-	0x98b70  func PointCloud.numOfPoints.getter // getter 
-	0x98c20  func PointCloud.dimension.getter // getter 
-	0x98c60  class func PointCloud.__allocating_init(points:distanceCalculator:) // init 
-	0x98ce0  func PointCloud.addPoint(point:) // method 
-	0x98ec0  func <stripped> // method 
+	0x987c0  func PointCloud.points.getter // getter 
+	0x98880  func PointCloud.center.getter // getter 
+	0x98930  func PointCloud.variance.getter // getter 
+	0x989e0  func PointCloud.numOfPoints.getter // getter 
+	0x98a90  func PointCloud.dimension.getter // getter 
+	0x98ad0  class func PointCloud.__allocating_init(points:distanceCalculator:) // init 
+	0x98b50  func PointCloud.addPoint(point:) // method 
+	0x98d30  func <stripped> // method 
  }
 
  struct ReminderKitInternal.VoidParameters { }
@@ -1335,17 +1335,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class ReminderKitInternal.Analytics : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x13ce400040f88 (0x4e400040f88) in binary!
+WARNING: couldn't find address 0x13ce40003ffe8 (0x4e40003ffe8) in binary!
 	0x18000000c  @objc Analytics.(null) <stripped>
  }
 
  class ReminderKitInternal.REMSuggestedAttributesTrainer : REMStoreSwiftInvocation /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x132a0000410a0 (0x2a0000410a0) in binary!
+WARNING: couldn't find address 0x132a000040100 (0x2a000040100) in binary!
 	0x12c24  @objc REMSuggestedAttributesTrainer.(null) <stripped>
-WARNING: couldn't find address 0x12c1800041210 (0x41800041210) in binary!
+WARNING: couldn't find address 0x12c1800040270 (0x41800040270) in binary!
 	0x18000000c  @objc REMSuggestedAttributesTrainer.(null) <stripped>
-WARNING: couldn't find address 0x134dc00040e70 (0x4dc00040e70) in binary!
+WARNING: couldn't find address 0x134dc0003fed0 (0x4dc0003fed0) in binary!
 	0x18000000c  @objc REMSuggestedAttributesTrainer.(null) <stripped>
  }
 
@@ -1353,11 +1353,11 @@ WARNING: couldn't find address 0x134dc00040e70 (0x4dc00040e70) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let embedding : ;h // +0x0
+	let embedding : ›h // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let corebehavior : )h // +0xa0
+	let corebehavior : ‰h // +0xa0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let intentionalWord : h // +0x248
+	let intentionalWord : wh // +0x248
 	let trainingDuration : Double // +0x290
  }
 
@@ -1603,7 +1603,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let store : REMStore
 
 	// Swift methods
-	0xbfb70  class func REMWidgetDataView.__allocating_init(store:) // init 
+	0xbfa10  class func REMWidgetDataView.__allocating_init(store:) // init 
  }
 
  struct ReminderKitInternal.Model {
@@ -1619,15 +1619,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let reminderFetchLimit : Int
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1324000041040 (0x24000041040) in binary!
+WARNING: couldn't find address 0x13240000400a0 (0x240000400a0) in binary!
 	0x12bc4  @objc FetchModelInvocation.(null) <stripped>
-WARNING: couldn't find address 0x13c3c00040ee0 (0x43c00040ee0) in binary!
+WARNING: couldn't find address 0x13c3c0003ff40 (0x43c0003ff40) in binary!
 	0x48000000c  @objc FetchModelInvocation.(null) <stripped>
-WARNING: couldn't find address 0x12ba0000411a0 (0x3a0000411a0) in binary!
+WARNING: couldn't find address 0x12ba000040200 (0x3a000040200) in binary!
 	0x13204  @objc FetchModelInvocation.(null) <stripped>
 
 	// Swift methods
-	0xbfc40  class func REMWidgetDataView.FetchModelInvocation.__allocating_init(reminderFetchLimit:) // init 
+	0xbfae0  class func REMWidgetDataView.FetchModelInvocation.__allocating_init(reminderFetchLimit:) // init 
  }
 
  class ReminderKitInternal.Result : REMStoreInvocationResult /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
@@ -1639,17 +1639,17 @@ WARNING: couldn't find address 0x12ba0000411a0 (0x3a0000411a0) in binary!
 	let additionalReminderCount : Int
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12ba0000411a0 (0x3a0000411a0) in binary!
+WARNING: couldn't find address 0x12ba000040200 (0x3a000040200) in binary!
 	0x13204  @objc Result.(null) <stripped>
-WARNING: couldn't find address 0x13c0c00040eb0 (0x40c00040eb0) in binary!
+WARNING: couldn't find address 0x13c0c0003ff10 (0x40c0003ff10) in binary!
 	0x13c50  @objc Result.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffbe428  @objc Result.(null) <stripped>
+	0xfffbe328  @objc Result.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffbf610  @objc Result.(null) <stripped>
+	0xfffbf510  @objc Result.(null) <stripped>
 
 	// Swift methods
-	0xc1050  class func REMWidgetDataView.FetchModelInvocation.Result.__allocating_init(accountStorages:listStorages:reminderStorages:additionalReminderCount:) // init 
+	0xc0ef0  class func REMWidgetDataView.FetchModelInvocation.Result.__allocating_init(accountStorages:listStorages:reminderStorages:additionalReminderCount:) // init 
  }
 
  struct ReminderKitInternal.CodableError {
@@ -1724,7 +1724,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case after : mr
+	case after : Ír
 	case whitelist : REMObjectID_Codable
 	case off  
 	case on  
@@ -1793,7 +1793,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let date : mr
+	let date : Ír
 	let reminders : ReminderLite
 	let isToday : Bool
  }
@@ -1845,10 +1845,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class ReminderKitInternal.ListInvocation : REMStoreSwiftInvocation /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x129c000040fb8 (0x1c000040fb8) in binary!
+WARNING: couldn't find address 0x129c000040018 (0x1c000040018) in binary!
 	0x129b4  @objc ListInvocation.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x794fffd16f0  @objc ListInvocation.(null) <stripped>
+	0x7f4fffd1650  @objc ListInvocation.(null) <stripped>
  }
 
  struct ReminderKitInternal.Parameters {
@@ -1872,10 +1872,10 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
  class ReminderKitInternal.FlaggedInvocation : REMStoreSwiftInvocation /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x129e000040fd8 (0x1e000040fd8) in binary!
+WARNING: couldn't find address 0x129e000040038 (0x1e000040038) in binary!
 	0x129d4  @objc FlaggedInvocation.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x7b4fffbdce0  @objc FlaggedInvocation.(null) <stripped>
+	0x14fffbdbe0  @objc FlaggedInvocation.(null) <stripped>
  }
 
  struct ReminderKitInternal.Parameters {
@@ -1889,10 +1889,10 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
  class ReminderKitInternal.AllInvocation : REMStoreSwiftInvocation /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12a6000041058 (0x26000041058) in binary!
+WARNING: couldn't find address 0x12a60000400b8 (0x260000400b8) in binary!
 	0x12a54  @objc AllInvocation.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x34fffd17a0  @objc AllInvocation.(null) <stripped>
+	0x94fffd1700  @objc AllInvocation.(null) <stripped>
  }
 
  struct ReminderKitInternal.Parameters {
@@ -1906,10 +1906,10 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
  class ReminderKitInternal.TodayInvocation : REMStoreSwiftInvocation /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1294000040f38 (0x14000040f38) in binary!
+WARNING: couldn't find address 0x129400003ff98 (0x1400003ff98) in binary!
 	0x12934  @objc TodayInvocation.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x714fffd16c0  @objc TodayInvocation.(null) <stripped>
+	0x774fffd1620  @objc TodayInvocation.(null) <stripped>
  }
 
  struct ReminderKitInternal.Parameters {
@@ -1925,10 +1925,10 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
  class ReminderKitInternal.ScheduledInvocation : REMStoreSwiftInvocation /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x129a000040f98 (0x1a000040f98) in binary!
+WARNING: couldn't find address 0x129a00003fff8 (0x1a00003fff8) in binary!
 	0x12994  @objc ScheduledInvocation.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x774fffd1700  @objc ScheduledInvocation.(null) <stripped>
+	0x7d4fffd1660  @objc ScheduledInvocation.(null) <stripped>
  }
 
  struct ReminderKitInternal.Parameters {
@@ -1942,10 +1942,10 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
  class ReminderKitInternal.AssignedInvocation : REMStoreSwiftInvocation /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12a4000041038 (0x24000041038) in binary!
+WARNING: couldn't find address 0x12a4000040098 (0x24000040098) in binary!
 	0x12a34  @objc AssignedInvocation.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x14fffd1790  @objc AssignedInvocation.(null) <stripped>
+	0x74fffd16f0  @objc AssignedInvocation.(null) <stripped>
  }
 
  struct ReminderKitInternal.Parameters {
@@ -1960,10 +1960,10 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
  class ReminderKitInternal.DEBUG_AssignedCountInvocation : REMStoreSwiftInvocation /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12a2000041018 (0x22000041018) in binary!
+WARNING: couldn't find address 0x12a2000040078 (0x22000040078) in binary!
 	0x12a14  @objc DEBUG_AssignedCountInvocation.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x7f4fffd17b0  @objc DEBUG_AssignedCountInvocation.(null) <stripped>
+	0x54fffd1710  @objc DEBUG_AssignedCountInvocation.(null) <stripped>
  }
 
  struct ReminderKitInternal.Parameters {
@@ -1974,10 +1974,10 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
  class ReminderKitInternal.SearchInvocation : REMStoreSwiftInvocation /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1298000040f78 (0x18000040f78) in binary!
+WARNING: couldn't find address 0x129800003ffd8 (0x1800003ffd8) in binary!
 	0x12974  @objc SearchInvocation.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x754fffd16f0  @objc SearchInvocation.(null) <stripped>
+	0x7b4fffd1650  @objc SearchInvocation.(null) <stripped>
  }
 
  struct ReminderKitInternal.Parameters {
@@ -1991,10 +1991,10 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
  class ReminderKitInternal.SiriFoundInAppsInvocation : REMStoreSwiftInvocation /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1296000040f58 (0x16000040f58) in binary!
+WARNING: couldn't find address 0x129600003ffb8 (0x1600003ffb8) in binary!
 	0x12954  @objc SiriFoundInAppsInvocation.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x734fffd1680  @objc SiriFoundInAppsInvocation.(null) <stripped>
+	0x794fffd15e0  @objc SiriFoundInAppsInvocation.(null) <stripped>
  }
 
  struct ReminderKitInternal.Parameters {
@@ -2008,7 +2008,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
  class ReminderKitInternal.TodayNotificationInvocation : REMStoreSwiftInvocation /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1292000040f18 (0x12000040f18) in binary!
+WARNING: couldn't find address 0x129200003ff78 (0x1200003ff78) in binary!
 	0x12914  @objc TodayNotificationInvocation.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfffe6270  @objc TodayNotificationInvocation.(null) <stripped>
@@ -2018,10 +2018,10 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 
  class ReminderKitInternal.DEBUG_PhantomRemindersInvocation : REMStoreSwiftInvocation /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12a0000040ff8 (0x20000040ff8) in binary!
+WARNING: couldn't find address 0x12a0000040058 (0x20000040058) in binary!
 	0x129f4  @objc DEBUG_PhantomRemindersInvocation.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x7d4fffd1700  @objc DEBUG_PhantomRemindersInvocation.(null) <stripped>
+	0x34fffd1660  @objc DEBUG_PhantomRemindersInvocation.(null) <stripped>
  }
 
  struct ReminderKitInternal.Parameters { }
@@ -2282,18 +2282,18 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var dimension : Int
 
 	// Swift methods
-	0xe2f80  func RDVector.data.getter // getter 
-	0xe3030  func RDVector.dimension.getter // getter 
-	0xe2d10  class func RDVector.__allocating_init(_:) // init 
-	0xe30b0  class func RDVector.__allocating_init(dimension:) // init 
-	0xe31f0  func RDVector.subscript.getter // getter 
-	0xe3230  func RDVector.isZero() // method 
-	0xe32a0  func RDVector.hash(into:) // method 
-	0xe32c0  func RDVector.description.getter // getter 
-	0xe33a0  func RDVector.truncatedLoggingDescription.getter // getter 
-	0xe3b80  func RDVector.hashValue.getter // getter 
-	0xe37a0  class func RDVector.__allocating_init(from:) // init 
-	0xe3a00  func RDVector.encode(to:) // method 
+	0xe2ee0  func RDVector.data.getter // getter 
+	0xe2f90  func RDVector.dimension.getter // getter 
+	0xe2c70  class func RDVector.__allocating_init(_:) // init 
+	0xe3010  class func RDVector.__allocating_init(dimension:) // init 
+	0xe3150  func RDVector.subscript.getter // getter 
+	0xe3190  func RDVector.isZero() // method 
+	0xe3200  func RDVector.hash(into:) // method 
+	0xe3220  func RDVector.description.getter // getter 
+	0xe3300  func RDVector.truncatedLoggingDescription.getter // getter 
+	0xe3ae0  func RDVector.hashValue.getter // getter 
+	0xe3700  class func RDVector.__allocating_init(from:) // init 
+	0xe3960  func RDVector.encode(to:) // method 
  }
 
  enum ReminderKitInternal.CodingKeys {
@@ -2329,13 +2329,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let classId : String
 
 	// Swift methods
-	0xe7cb0  func ClassificationLabel.hash(into:) // method 
-	0xe7e20  func ClassificationLabel.description.getter // getter 
-	0xe7ed0  class func ClassificationLabel.__allocating_init(stringLiteral:) // init 
-	0xec000  class func ClassificationLabel.__allocating_init(_:) // init 
-	0xe7cf0  func ClassificationLabel.hashValue.getter // getter 
-	0xe8050  class func ClassificationLabel.__allocating_init(from:) // init 
-	0xe7d50  func ClassificationLabel.encode(to:) // method 
+	0xe7c30  func ClassificationLabel.hash(into:) // method 
+	0xe7da0  func ClassificationLabel.description.getter // getter 
+	0xe7e50  class func ClassificationLabel.__allocating_init(stringLiteral:) // init 
+	0xebf90  class func ClassificationLabel.__allocating_init(_:) // init 
+	0xe7c70  func ClassificationLabel.hashValue.getter // getter 
+	0xe7fd0  class func ClassificationLabel.__allocating_init(from:) // init 
+	0xe7cd0  func ClassificationLabel.encode(to:) // method 
  }
 
  struct ReminderKitInternal.MultiClassificationMetric {
@@ -2387,7 +2387,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let excludedAttributes : ExcludedAttributes // +0x0
 
 	// Swift methods
-	0xefb20  class func REMSuggestedAttributesElector.__allocating_init(store:excludedAttributes:) // init 
+	0xefab0  class func REMSuggestedAttributesElector.__allocating_init(store:excludedAttributes:) // init 
  }
 
  struct ReminderKitInternal.ExcludedAttributes {
@@ -2398,14 +2398,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class ReminderKitInternal.REMObjectID_Codable : REMObjectID /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x15a2000040e60 (0x22000040e60) in binary!
+WARNING: couldn't find address 0x15a200003fec0 (0x2200003fec0) in binary!
 	0x12844  @objc REMObjectID_Codable.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x6c4fffe77e0  @objc REMObjectID_Codable.(null) <stripped>
+	0x724fffe77e0  @objc REMObjectID_Codable.(null) <stripped>
 
 	// Swift methods
-	0xf4dd0  class func REMObjectID_Codable.__allocating_init(_:) // init 
-	0xf5af0  class func REMObjectID_Codable.__allocating_init(from:) // init 
+	0xf4d70  class func REMObjectID_Codable.__allocating_init(_:) // init 
+	0xf5a90  class func REMObjectID_Codable.__allocating_init(from:) // init 
  }
 
  enum ReminderKitInternal.CodingKeys {
@@ -2417,80 +2417,80 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
  class ReminderKitInternal.REMAccount_Codable : REMAccount /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x15ab800040f88 (0x2b800040f88) in binary!
+WARNING: couldn't find address 0x15ab80003ffe8 (0x2b80003ffe8) in binary!
 	0x88000000c  @objc REMAccount_Codable.(null) <stripped>
 
 	// Swift methods
-	0xf5fd0  class func REMAccount_Codable.__allocating_init(_:) // init 
-	0xf6220  class func REMAccount_Codable.__allocating_init(from:) // init 
+	0xf5f70  class func REMAccount_Codable.__allocating_init(_:) // init 
+	0xf61c0  class func REMAccount_Codable.__allocating_init(from:) // init 
  }
 
  class ReminderKitInternal.REMList_Codable : REMList /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x15a4c00040f18 (0x24c00040f18) in binary!
+WARNING: couldn't find address 0x15a4c0003ff78 (0x24c0003ff78) in binary!
 	0x28000000c  @objc REMList_Codable.(null) <stripped>
 
 	// Swift methods
-	0xf6290  class func REMList_Codable.__allocating_init(_:) // init 
-	0xf6540  class func REMList_Codable.__allocating_init(from:) // init 
+	0xf6230  class func REMList_Codable.__allocating_init(_:) // init 
+	0xf64e0  class func REMList_Codable.__allocating_init(from:) // init 
  }
 
  class ReminderKitInternal.REMSmartList_Codable : REMSmartList /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x159e000040eb0 (0x1e000040eb0) in binary!
+WARNING: couldn't find address 0x159e00003ff10 (0x1e00003ff10) in binary!
 	0x58000000c  @objc REMSmartList_Codable.(null) <stripped>
 
 	// Swift methods
-	0xfee70  class func REMSmartList_Codable.__allocating_init(_:) // init 
-	0xf66d0  class func REMSmartList_Codable.__allocating_init(from:) // init 
+	0xfee20  class func REMSmartList_Codable.__allocating_init(_:) // init 
+	0xf6670  class func REMSmartList_Codable.__allocating_init(from:) // init 
  }
 
  class ReminderKitInternal.REMReminder_Codable : REMReminder /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x15a1400040ef0 (0x21400040ef0) in binary!
+WARNING: couldn't find address 0x15a140003ff50 (0x2140003ff50) in binary!
 	0x159f4  @objc REMReminder_Codable.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffef8b0  @objc REMReminder_Codable.(null) <stripped>
+	0xfffef8c0  @objc REMReminder_Codable.(null) <stripped>
 
 	// Swift methods
-	0xf69f0  class func REMReminder_Codable.__allocating_init(_:) // init 
-	0xf6de0  class func REMReminder_Codable.__allocating_init(from:) // init 
+	0xf6990  class func REMReminder_Codable.__allocating_init(_:) // init 
+	0xf6d80  class func REMReminder_Codable.__allocating_init(from:) // init 
  }
 
  class ReminderKitInternal.REMColor_Codable : REMColor /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x15ad4000413e0 (0x2d4000413e0) in binary!
+WARNING: couldn't find address 0x15ad400040440 (0x2d400040440) in binary!
 	0x128c4  @objc REMColor_Codable.(null) <stripped>
-WARNING: couldn't find address 0x15adc00041410 (0x2dc00041410) in binary!
+WARNING: couldn't find address 0x15adc00040470 (0x2dc00040470) in binary!
 	0x15af0  @objc REMColor_Codable.(null) <stripped>
-WARNING: couldn't find address 0x128a000041408 (0xa000041408) in binary!
+WARNING: couldn't find address 0x128a000040468 (0xa000040468) in binary!
 	0x13918  @objc REMColor_Codable.(null) <stripped>
-WARNING: couldn't find address 0x15a58000413f8 (0x258000413f8) in binary!
+WARNING: couldn't find address 0x15a5800040458 (0x25800040458) in binary!
 	0x15a4c  @objc REMColor_Codable.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfffe6fc8  @objc REMColor_Codable.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x644fffe6330  @objc REMColor_Codable.(null) <stripped>
-	0x21400040ef0  @objc REMColor_Codable.]A^A_]éÑÂ <stripped>
-WARNING: couldn't find address 0x40ec4fffe77e0 (0x6c4fffe77e0) in binary!
+	0x6a4fffe6330  @objc REMColor_Codable.(null) <stripped>
+	0x2140003ff50  @objc REMColor_Codable.H‰UÈˆMÐH‹è<¨ <stripped>
+WARNING: couldn't find address 0x3ff24fffe77e0 (0x724fffe77e0) in binary!
 	0x18000000c  @objc REMColor_Codable.(null) <stripped>
 
 	// Swift methods
-	0xf7250  class func REMColor_Codable.__allocating_init(_:) // init 
-	0xf74f0  class func REMColor_Codable.__allocating_init(from:) // init 
+	0xf71f0  class func REMColor_Codable.__allocating_init(_:) // init 
+	0xf7490  class func REMColor_Codable.__allocating_init(from:) // init 
  }
 
  class ReminderKitInternal.REMSmartListOrder_Codable : REMSmartListOrder /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x127b000040db0 (0x7b000040db0) in binary!
+WARNING: couldn't find address 0x127b00003fe10 (0x7b00003fe10) in binary!
 	0x15a28  @objc REMSmartListOrder_Codable.(null) <stripped>
-WARNING: couldn't find address 0x15a3c00041340 (0x23c00041340) in binary!
+WARNING: couldn't find address 0x15a3c000403a0 (0x23c000403a0) in binary!
 	0x28000000c  @objc REMSmartListOrder_Codable.(null) <stripped>
-	0x13848  @objc REMSmartListOrder_Codable.èc¢ÿÿëJèæÇ <stripped>
+	0x13848  @objc REMSmartListOrder_Codable.½ÉƒñéÃ <stripped>
 
 	// Swift methods
-	0xf83b0  class func REMSmartListOrder_Codable.__allocating_init(_:) // init 
-	0xf8660  class func REMSmartListOrder_Codable.__allocating_init(from:) // init 
+	0xf8350  class func REMSmartListOrder_Codable.__allocating_init(_:) // init 
+	0xf8600  class func REMSmartListOrder_Codable.__allocating_init(from:) // init 
  }
 
  enum ReminderKitInternal.CodingKeys {
@@ -2505,20 +2505,20 @@ WARNING: couldn't find address 0x15a3c00041340 (0x23c00041340) in binary!
 
  class ReminderKitInternal.REMStructuredLocation_Codable : REMStructuredLocation /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x127f800040df8 (0x7f800040df8) in binary!
+WARNING: couldn't find address 0x127f80003fe58 (0x7f80003fe58) in binary!
 	0x15ab0  @objc REMStructuredLocation_Codable.(null) <stripped>
-WARNING: couldn't find address 0x127e000041110 (0x7e000041110) in binary!
+WARNING: couldn't find address 0x127e000040170 (0x7e000040170) in binary!
 	0x13858  @objc REMStructuredLocation_Codable.(null) <stripped>
-WARNING: couldn't find address 0x15998000413a0 (0x198000413a0) in binary!
+WARNING: couldn't find address 0x1599800040400 (0x19800040400) in binary!
 	0x38000000c  @objc REMStructuredLocation_Codable.(null) <stripped>
-WARNING: couldn't find address 0x127b000040db0 (0x7b000040db0) in binary!
+WARNING: couldn't find address 0x127b00003fe10 (0x7b00003fe10) in binary!
 	0x15a28  @objc REMStructuredLocation_Codable.(null) <stripped>
-WARNING: couldn't find address 0x15a3c00041340 (0x23c00041340) in binary!
+WARNING: couldn't find address 0x15a3c000403a0 (0x23c000403a0) in binary!
 	0x28000000c  @objc REMStructuredLocation_Codable.(null) <stripped>
 
 	// Swift methods
-	0xf9680  class func REMStructuredLocation_Codable.__allocating_init(_:) // init 
-	0xf9c10  class func REMStructuredLocation_Codable.__allocating_init(from:) // init 
+	0xf9620  class func REMStructuredLocation_Codable.__allocating_init(_:) // init 
+	0xf9bb0  class func REMStructuredLocation_Codable.__allocating_init(from:) // init 
  }
 
  enum ReminderKitInternal.CodingKeys {
@@ -2544,21 +2544,21 @@ WARNING: couldn't find address 0x15a3c00041340 (0x23c00041340) in binary!
 	var decodedObjectsCache : [REMObjectID : Any] // +0x20 (0x8)
 
 	// Swift methods
-	0xfade0  func REMStoreObjectsContainer.storages.getter // getter 
-	0xfae10  func REMStoreObjectsContainer.storages.setter // setter 
-	0xfae50  func REMStoreObjectsContainer.storages.modify // modifyCoroutine 
-	0xf5040  class func REMStoreObjectsContainer.__allocating_init(store:storages:) // init 
-	0xfaee0  func REMStoreObjectsContainer.decodedObjectsCache.getter // getter 
-	0xfaf10  func REMStoreObjectsContainer.decodedObjectsCache.setter // setter 
-	0xfaf50  func REMStoreObjectsContainer.decodedObjectsCache.modify // modifyCoroutine 
-	0xfaf90  func REMStoreObjectsContainer.store(_:) // method 
-	0xfafc0  func REMStoreObjectsContainer.store(_:) // method 
-	0xfb1f0  func REMStoreObjectsContainer.store(_:) // method 
-	0xfb3c0  func REMStoreObjectsContainer.store(_:) // method 
-	0xfb640  func REMStoreObjectsContainer.storedAccount(with:) // method 
-	0xfb6d0  func REMStoreObjectsContainer.storedList(with:) // method 
-	0xfb8b0  func REMStoreObjectsContainer.storedSmartList(with:) // method 
-	0xfb940  func REMStoreObjectsContainer.storedReminder(with:) // method 
+	0xfad80  func REMStoreObjectsContainer.storages.getter // getter 
+	0xfadb0  func REMStoreObjectsContainer.storages.setter // setter 
+	0xfadf0  func REMStoreObjectsContainer.storages.modify // modifyCoroutine 
+	0xf4fe0  class func REMStoreObjectsContainer.__allocating_init(store:storages:) // init 
+	0xfae80  func REMStoreObjectsContainer.decodedObjectsCache.getter // getter 
+	0xfaeb0  func REMStoreObjectsContainer.decodedObjectsCache.setter // setter 
+	0xfaef0  func REMStoreObjectsContainer.decodedObjectsCache.modify // modifyCoroutine 
+	0xfaf30  func REMStoreObjectsContainer.store(_:) // method 
+	0xfaf60  func REMStoreObjectsContainer.store(_:) // method 
+	0xfb190  func REMStoreObjectsContainer.store(_:) // method 
+	0xfb360  func REMStoreObjectsContainer.store(_:) // method 
+	0xfb5e0  func REMStoreObjectsContainer.storedAccount(with:) // method 
+	0xfb670  func REMStoreObjectsContainer.storedList(with:) // method 
+	0xfb850  func REMStoreObjectsContainer.storedSmartList(with:) // method 
+	0xfb8e0  func REMStoreObjectsContainer.storedReminder(with:) // method 
  }
 
  enum ReminderKitInternal.CodingKeys {
@@ -2582,7 +2582,7 @@ WARNING: couldn't find address 0x15a3c00041340 (0x23c00041340) in binary!
 
  class ReminderKitInternal.RDIDispatchQueue : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x13848  @objc RDIDispatchQueue.èc¢ÿÿëJèæÇ <stripped>
+	0x13848  @objc RDIDispatchQueue.½ÉƒñéÃ <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xffff7dc0  @objc RDIDispatchQueue.(null) <stripped>
  }
@@ -2593,7 +2593,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	case running : Promise
 	case succeeded : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case failed : y“
+	case failed : Ù“
  }
 
  class ReminderKitInternal.REMAsyncOperationManager {
@@ -2601,9 +2601,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case running : WS
+	case running : ·S
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case finished : ïS
+	case finished : OT
  }
 
  class ReminderKitInternal.REMAccountsListDataView : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2687,7 +2687,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class ReminderKitInternal.Invocation : REMStoreSwiftInvocation /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1274800040d40 (0x74800040d40) in binary!
+WARNING: couldn't find address 0x127480003fda0 (0x7480003fda0) in binary!
 	0x1273c  @objc Invocation.(null) <stripped>
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	0x5523a4d4152  @objc Invocation.(null) <stripped>

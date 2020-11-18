@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC8VideosUI29DocumentRequestViewController : _TtC8VideosUI22DocumentViewController
 {
     MISSING_TYPE *viewWillAppearAfterTabSwitch;
@@ -21,6 +20,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *activeServiceRequest;
     MISSING_TYPE *activeFragmentServiceRequest;
     MISSING_TYPE *eventMonitorController;
+    MISSING_TYPE *shouldHideLoadingView;
 }
 
 - (void).cxx_destruct;

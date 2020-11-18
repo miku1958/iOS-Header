@@ -64,6 +64,7 @@
 - (void).cxx_destruct;
 - (void)addAdaptedModelUsageInfoToSuggestions:(id)arg1;
 - (void)addSupportedBundleIDs:(id)arg1;
+- (void)addUTIInfo:(id)arg1 predictionContext:(id)arg2;
 - (id)appExtensionSuggestionsFromContext:(id)arg1;
 - (id)familyPredictionsWithMaxSuggestions:(unsigned long long)arg1;
 - (id)fetchShareSheetSupportedBundleIDs;

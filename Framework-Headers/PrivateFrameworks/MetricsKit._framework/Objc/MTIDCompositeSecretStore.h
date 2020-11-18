@@ -21,12 +21,10 @@
 @property (strong, nonatomic) NSMutableDictionary *stores; // @synthesize stores=_stores;
 @property (readonly) Class superclass;
 
-+ (id)defaultSecretStore;
 - (void).cxx_destruct;
 - (void)clearLocalData;
 - (id)debugInfo;
 - (id)init;
-- (id)resetSecretForScheme:(id)arg1 options:(id)arg2;
 - (id)secretForScheme:(id)arg1 options:(id)arg2;
 - (id)secretStoreForScheme:(id)arg1;
 

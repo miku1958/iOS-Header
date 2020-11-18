@@ -9,6 +9,7 @@
 #import <ChatKit/CKConversationSearchCellProtocol-Protocol.h>
 
 @class NSString;
+@protocol CKConversationSearchCellDelegate;
 
 @interface CKConversationLargeTextSearchCell : CKConversationListLargeTextCell <CKConversationSearchCellProtocol>
 {
@@ -16,11 +17,11 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<CKConversationSearchCellDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;
 @property (readonly) Class superclass;
-@property (nonatomic) double widthForDeterminingAvatarVisibility;
 
 + (id)annotatedResultStringWithSearchText:(id)arg1 resultText:(id)arg2 primaryTextColor:(id)arg3 primaryFont:(id)arg4 annotatedTextColor:(id)arg5 annotatedFont:(id)arg6;
 - (id)avatarView;

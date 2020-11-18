@@ -39,7 +39,6 @@
 + (BOOL)wantsStatusPillHidden;
 + (BOOL)wantsTTRButton;
 + (BOOL)wantsTrackedRaycastStatus;
-+ (BOOL)wantsUsageOfSingleMTLEventSPI;
 
 @end
 

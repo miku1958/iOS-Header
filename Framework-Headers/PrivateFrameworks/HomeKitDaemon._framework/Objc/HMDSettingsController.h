@@ -16,6 +16,8 @@
 
 @interface HMDSettingsController : HMFObject <HMFLogging, HMDSettingsControllerProtocol, HMDSettingsMessageController, HMDSettingTransactionReceiverProtocol>
 {
+    struct os_unfair_lock_s _lock;
+    BOOL _isInitialized;
     id<HMDSettingsMessageHandlerProtocol> _messageHandler;
     id<HMDSettingsControllerDependency> _dependency;
     id<HMDSettingsControllerDelegate> _delegate;
@@ -32,6 +34,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong) NSMapTable *groupsMap; // @synthesize groupsMap=_groupsMap;
 @property (readonly) unsigned long long hash;
+@property BOOL isInitialized; // @synthesize isInitialized=_isInitialized;
 @property (readonly) id<HMDSettingsMessageHandlerProtocol> messageHandler; // @synthesize messageHandler=_messageHandler;
 @property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
@@ -43,7 +46,10 @@
 + (id)logCategory;
 - (void).cxx_destruct;
 - (id)_flattenedSettingControllerRoot:(id)arg1 withCurrentPath:(id)arg2 andReturnDictionary:(id)arg3;
+- (void)_handleAddedConstraintModel:(id)arg1 shouldNotify:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_handleAddedGroupModel:(id)arg1 shouldNotify:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_handleAddedRootGroup:(id)arg1;
+- (void)_handleAddedSettingModel:(id)arg1 shouldNotify:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_keyPathsFromGroup:(id)arg1 currentPath:(id)arg2;
 - (id)_keyPathsToModelInModelIDToModelLookup:(id)arg1 parentIDToModelIDsLookup:(id)arg2 currentID:(id)arg3 currentPath:(id)arg4;
 - (void)_updateRootGroup:(id)arg1;

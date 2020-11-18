@@ -17,13 +17,15 @@
 + (unsigned short)keyLengthWithDataPreview:(unsigned char)arg1;
 + (unsigned int)storeClassID;
 + (NSArray *)supportedRecipes;
+- (BOOL)canMarkAsynchronousLocalRenderAsOptionalForProgress:(NSProgress *)arg1;
 - (BOOL)canStoreExternalResource:(PLValidatedExternalResource *)arg1;
 - (BOOL)canStreamResource:(id<PLResource>)arg1;
-- (BOOL)dataStoreSubtypeIsDownloadable:(unsigned long long)arg1;
+- (BOOL)dataStoreSubtypeIsDownloadable:(long long)arg1;
 - (NSString *)descriptionForSubtype:(long long)arg1;
 - (id<PLUniformTypeIdentifierIdentity>)guessUTIForExternalResource:(PLValidatedExternalResource *)arg1 forAssetKind:(short)arg2 managedObjectContext:(NSManagedObjectContext *)arg3;
 - (id)initWithPathManager:(PLPhotoLibraryPathManager *)arg1;
 - (id<PLResourceDataStoreKey>)keyFromKeyStruct:(const void *)arg1;
+- (void)markAsynchronousLocalRenderAsOptionalForProgress:(NSProgress *)arg1;
 - (NSString *)name;
 - (NSProgress *)requestLocalAvailabilityChange:(short)arg1 forResource:(PLInternalResource *)arg2 options:(PLResourceLocalAvailabilityRequestOptions *)arg3 completion:(void (^)(NSError *, long long, NSURL *))arg4;
 - (void)requestStreamingURLForResource:(id<PLResource>)arg1 asset:(PLManagedAsset *)arg2 intent:(unsigned long long)arg3 inContext:(NSManagedObjectContext *)arg4 clientBundleID:(NSString *)arg5 completion:(void (^)(NSError *, NSURL *, NSDate *))arg6;

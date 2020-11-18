@@ -10,7 +10,7 @@
 
 @interface _TtC14SiriKitRuntime27MetricsLoggingEventBusAware : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *service;
+    MISSING_TYPE *metricsLoggingService;
 }
 
 @end

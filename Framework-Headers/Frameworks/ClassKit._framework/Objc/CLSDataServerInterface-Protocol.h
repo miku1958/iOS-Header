@@ -39,6 +39,7 @@
 - (oneway void)remote_publishCollaborationStateChanges:(NSArray *)arg1 completion:(void (^)(NSArray *, NSArray *, NSError *))arg2;
 - (oneway void)remote_publishHandoutGraph:(NSArray *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)remote_registerDataObserver:(NSObject<CLSChangeNotifiable> *)arg1 withID:(NSString *)arg2 forClassNamed:(NSString *)arg3 predicate:(NSPredicate *)arg4 sortDescriptors:(NSArray *)arg5 oldChangeTag:(unsigned long long)arg6 completion:(void (^)(NSError *))arg7;
+- (oneway void)remote_repairHandoutAttachments:(NSArray *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)remote_saveObjects:(NSArray *)arg1 saveResponse:(NSObject<CLSSaveResponse> *)arg2 completion:(void (^)(void))arg3;
 - (oneway void)remote_setSettingsForUserNotificationType:(long long)arg1 settings:(NSDictionary *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (oneway void)remote_setShouldSyncTeacherBrowsedContexts:(BOOL)arg1 completion:(void (^)(NSError *))arg2;

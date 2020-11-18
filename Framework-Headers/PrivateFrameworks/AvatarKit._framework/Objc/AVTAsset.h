@@ -17,7 +17,7 @@
     NSDictionary *_morphVariantDependencies;
     NSDictionary *_imageVariantDependencies;
     NSDictionary *_materialVariantDependencies;
-    NSString *_ao;
+    NSString *_ambientOcclusion;
     NSDictionary *_highlights;
     unsigned long long _refCount;
     id _cachedResource;
@@ -28,7 +28,7 @@
     CDStruct_10883d13 _uvRemappingInfo;
 }
 
-@property (readonly) NSString *ao; // @synthesize ao=_ao;
+@property (readonly) NSString *ambientOcclusion; // @synthesize ambientOcclusion=_ambientOcclusion;
 @property (readonly) long long componentType; // @synthesize componentType=_componentType;
 @property (readonly) BOOL is2DAsset;
 @property (readonly) BOOL is3DAsset;

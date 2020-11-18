@@ -112,6 +112,7 @@
 - (void)_updateUsers;
 - (void)accessory:(id)arg1 didUpdateDevice:(id)arg2;
 - (void)accessoryDidUpdateApplicationData:(id)arg1;
+- (void)accessoryDidUpdatePairingIdentity:(id)arg1;
 - (void)activate;
 - (void)dealloc;
 - (void)findPairedPeer:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
@@ -128,6 +129,7 @@
 - (void)home:(id)arg1 didUpdateRoom:(id)arg2 forAccessory:(id)arg3;
 - (void)homeManager:(id)arg1 didAddHome:(id)arg2;
 - (void)homeManager:(id)arg1 didRemoveHome:(id)arg2;
+- (void)homeManager:(id)arg1 didUpdateStatus:(unsigned long long)arg2;
 - (void)homeManagerDidUpdateDataSyncState:(id)arg1;
 - (void)homeManagerDidUpdateHomes:(id)arg1;
 - (id)init;

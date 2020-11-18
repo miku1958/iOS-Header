@@ -10,6 +10,7 @@
 {
 }
 
++ (void)setEmojiReplacement:(long long)arg1;
 + (void)setSmartDashes:(long long)arg1;
 + (void)setSmartInsertDelete:(long long)arg1;
 + (void)setSmartQuotes:(long long)arg1;
@@ -18,6 +19,7 @@
 + (void)setTextSpellingSpellChecking:(long long)arg1;
 + (long long)textAutocapitalization;
 + (long long)textAutocorrection;
++ (long long)textEmojiReplacement;
 + (long long)textSmartDashes;
 + (long long)textSmartInsertDelete;
 + (long long)textSmartQuotes;

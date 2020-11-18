@@ -6,13 +6,13 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeKitDaemon/APSConnectionDelegate-Protocol.h>
+#import <HomeKitDaemon/HMBCloudPushObserver-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class APSConnection, CKContainer, CKDatabase, HMDCloudCache, HMDCloudDataSyncStateFilter, HMDCloudHomeManagerZone, HMDCloudLegacyZone, HMDCloudMetadataZone, HMDSyncOperationManager, HMFMessageDispatcher, NSData, NSMutableArray, NSObject, NSString;
+@class CKContainer, CKDatabase, HMDCloudCache, HMDCloudDataSyncStateFilter, HMDCloudHomeManagerZone, HMDCloudLegacyZone, HMDCloudMetadataZone, HMDSyncOperationManager, HMFMessageDispatcher, NSData, NSMutableArray, NSObject, NSString;
 @protocol HMDCloudManagerDataSource, HMDCloudManagerDelegate, OS_dispatch_queue, OS_dispatch_source;
 
-@interface HMDCloudManager : HMFObject <HMFLogging, APSConnectionDelegate>
+@interface HMDCloudManager : HMFObject <HMBCloudPushObserver, HMFLogging>
 {
     BOOL _accountActive;
     BOOL _cloudHomeDataRecordExists;
@@ -33,7 +33,6 @@
     NSObject<OS_dispatch_source> *_pollTimer;
     NSObject<OS_dispatch_source> *_controllerKeyPollTimer;
     NSObject<OS_dispatch_source> *_watchdogControllerKeyPollTimer;
-    APSConnection *_pushConnection;
     CDUnknownBlockType _cloudDataDeletedNotificationHandler;
     CDUnknownBlockType _cloudMetadataDeletedNotificationHandler;
     CDUnknownBlockType _controllerKeyAvailableNotificationHandler;
@@ -55,7 +54,7 @@
 @property (nonatomic) BOOL cloudHomeDataRecordExists; // @synthesize cloudHomeDataRecordExists=_cloudHomeDataRecordExists;
 @property (copy, nonatomic) CDUnknownBlockType cloudMetadataDeletedNotificationHandler; // @synthesize cloudMetadataDeletedNotificationHandler=_cloudMetadataDeletedNotificationHandler;
 @property (strong, nonatomic) HMFMessageDispatcher *configSyncDispatcher; // @synthesize configSyncDispatcher=_configSyncDispatcher;
-@property (strong, nonatomic) CKContainer *container; // @synthesize container=_container;
+@property (readonly, nonatomic) CKContainer *container; // @synthesize container=_container;
 @property (copy, nonatomic) CDUnknownBlockType controllerKeyAvailableNotificationHandler; // @synthesize controllerKeyAvailableNotificationHandler=_controllerKeyAvailableNotificationHandler;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *controllerKeyPollTimer; // @synthesize controllerKeyPollTimer=_controllerKeyPollTimer;
 @property (strong, nonatomic) NSMutableArray *currentBackoffTimerValuesInMinutes; // @synthesize currentBackoffTimerValuesInMinutes=_currentBackoffTimerValuesInMinutes;
@@ -76,7 +75,6 @@
 @property (readonly, nonatomic) HMDCloudMetadataZone *metadataZone;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *pollTimer; // @synthesize pollTimer=_pollTimer;
-@property (strong, nonatomic) APSConnection *pushConnection; // @synthesize pushConnection=_pushConnection;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *retryTimer; // @synthesize retryTimer=_retryTimer;
 @property (readonly, nonatomic) NSData *serverTokenData;
 @property (readonly) Class superclass;
@@ -145,15 +143,14 @@
 - (void)_verifyZonesExist:(id)arg1 zoneIndex:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addHomeZoneName:(id)arg1 owner:(id)arg2;
 - (void)cacheDatabaseServerToken;
-- (void)connection:(id)arg1 didReceiveIncomingMessage:(id)arg2;
-- (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;
-- (void)connection:(id)arg1 didReceiveToken:(id)arg2 forTopic:(id)arg3 identifier:(id)arg4;
 - (void)dealloc;
 - (void)fetchCurrentAccountStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchDatabaseZoneChanges;
 - (void)fetchLegacyTransaction:(id)arg1 forceFetch:(BOOL)arg2 accountCompletionHandler:(CDUnknownBlockType)arg3 dataCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)fetchTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleKeychainStateChangedNotification:(id)arg1;
+- (void)handler:(id)arg1 didReceiveCKNotification:(id)arg2;
+- (void)handler:(id)arg1 didReceivePushForTopic:(id)arg2;
 - (id)initWithMessageDispatcher:(id)arg1 cloudDataSyncStateFilter:(id)arg2 cloudCache:(id)arg3 delegate:(id)arg4 dataSource:(id)arg5 syncManager:(id)arg6 callbackQueue:(id)arg7;
 - (id)initWithMessageDispatcher:(id)arg1 cloudDataSyncStateFilter:(id)arg2 cloudCache:(id)arg3 delegate:(id)arg4 dataSource:(id)arg5 syncManager:(id)arg6 callbackQueue:(id)arg7 container:(id)arg8 workQueue:(id)arg9;
 - (void)initializeServerTokenStatusOnCloudFilter;

@@ -57,12 +57,11 @@
     BOOL _clipsContent;
     BOOL _allowBackgroundPlaceholders;
     BOOL _liveMotionEnabled;
-    BOOL _reduceMotionEnabled;
     BOOL _viewExpanded;
     long long _backgroundMode;
     unsigned long long _visibleRegions;
     double _clippedContentHeight;
-    NSData *_additionalBarcodeData;
+    NSData *_dynamicBarcodeData;
     id<PKPassFaceViewDelegate> _delegate;
     long long _style;
     PKPassFaceTemplate *_faceTemplate;
@@ -70,7 +69,6 @@
     NSArray *_buckets;
 }
 
-@property (copy, nonatomic) NSData *additionalBarcodeData; // @synthesize additionalBarcodeData=_additionalBarcodeData;
 @property (nonatomic) BOOL allowBackgroundPlaceholders; // @synthesize allowBackgroundPlaceholders=_allowBackgroundPlaceholders;
 @property (nonatomic) long long backgroundMode; // @synthesize backgroundMode=_backgroundMode;
 @property (readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
@@ -85,6 +83,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKPassFaceViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSData *dynamicBarcodeData; // @synthesize dynamicBarcodeData=_dynamicBarcodeData;
 @property (readonly, nonatomic) PKPassFaceTemplate *faceTemplate; // @synthesize faceTemplate=_faceTemplate;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PKPassBucketTemplate *headerBucketTemplate; // @synthesize headerBucketTemplate=_headerBucketTemplate;
@@ -92,7 +91,6 @@
 @property (nonatomic) BOOL liveMotionEnabled; // @synthesize liveMotionEnabled=_liveMotionEnabled;
 @property (readonly, nonatomic) PKPass *pass;
 @property (nonatomic, getter=isPaused) BOOL paused;
-@property (nonatomic, getter=isReduceMotionEnabled) BOOL reduceMotionEnabled; // @synthesize reduceMotionEnabled=_reduceMotionEnabled;
 @property (readonly, nonatomic) PKPassFaceViewRendererState *rendererState;
 @property (readonly, nonatomic) struct UIEdgeInsets shadowInsets;
 @property (nonatomic) BOOL showsLiveRendering;

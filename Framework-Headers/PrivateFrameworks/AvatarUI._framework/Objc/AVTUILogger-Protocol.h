@@ -180,6 +180,11 @@
 - (void)logStartingPreLoadingTask:(NSString *)arg1;
 - (void)logStartingServer;
 - (void)logStickerGeneratorPoolDidntHaveAvailableGenerator:(long long)arg1 maxCount:(long long)arg2;
+- (void)logStickerSchedulerAddedTask:(NSString *)arg1 taskCount:(long long)arg2;
+- (void)logStickerSchedulerCancelledAllTasks;
+- (void)logStickerSchedulerCancelledStickerSheetTasksForIdentifier:(NSString *)arg1;
+- (void)logStickerSchedulerCancelledTask:(NSString *)arg1;
+- (void)logStickerSchedulerStartedTask:(NSString *)arg1 forSchedulerRule:(NSString *)arg2;
 - (void)logStickerViewSnapshotForBounds:(struct CGRect)arg1 offset:(struct CGPoint)arg2;
 - (void)logSyncEnabled;
 - (void)logTearingDownCoreDataStack:(NSString *)arg1;

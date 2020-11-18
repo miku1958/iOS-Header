@@ -21,10 +21,9 @@
 
 + (id)morpherOverrideFromDictionary:(id)arg1;
 - (void).cxx_destruct;
-- (void)applyToAvatar:(id)arg1;
+- (void)applyToAvatar:(id)arg1 reversionContext:(id)arg2;
 - (id)description;
 - (id)initWithGeometry:(id)arg1 morpher:(id)arg2 value:(float)arg3;
-- (id)overridenMorpherForAvatar:(id)arg1;
 
 @end
 

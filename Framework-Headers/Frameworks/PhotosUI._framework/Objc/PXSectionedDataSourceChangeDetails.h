@@ -40,14 +40,18 @@
 + (BOOL)changesHaveAnyInsertionsRemovalsOrMoves:(id)arg1;
 + (void)debug_assertValidChangeDetails:(id)arg1 fromDataSource:(id)arg2 toDataSource:(id)arg3;
 + (struct PXSimpleIndexPath)indexPathAfterApplyingChanges:(id)arg1 toIndexPath:(struct PXSimpleIndexPath)arg2 hasIncrementalChanges:(out BOOL *)arg3 objectChanged:(out BOOL *)arg4;
++ (struct PXSimpleIndexPath)indexPathAfterApplyingChanges:(id)arg1 toIndexPath:(struct PXSimpleIndexPath)arg2 hasIncrementalChanges:(out BOOL *)arg3 objectChanged:(out BOOL *)arg4 changedProperties:(id)arg5;
 + (struct PXSimpleIndexPath)indexPathAfterRevertingChanges:(id)arg1 fromIndexPath:(struct PXSimpleIndexPath)arg2 hasIncrementalChanges:(out BOOL *)arg3 objectChanged:(out BOOL *)arg4;
++ (struct PXSimpleIndexPath)indexPathAfterRevertingChanges:(id)arg1 fromIndexPath:(struct PXSimpleIndexPath)arg2 hasIncrementalChanges:(out BOOL *)arg3 objectChanged:(out BOOL *)arg4 changedProperties:(id)arg5;
 + (id)indexPathSetAfterApplyingChanges:(id)arg1 toIndexPathSet:(id)arg2 hasIncrementalChanges:(out BOOL *)arg3;
 + (id)indexPathSetAfterRevertingChanges:(id)arg1 fromIndexPathSet:(id)arg2 hasIncrementalChanges:(out BOOL *)arg3;
 - (void).cxx_destruct;
 - (id)changedItemsInSection:(long long)arg1;
 - (id)deletedItemsInSection:(long long)arg1;
 - (struct PXSimpleIndexPath)indexPathAfterApplyingChangesToIndexPath:(struct PXSimpleIndexPath)arg1 hasIncrementalChanges:(out BOOL *)arg2 objectChanged:(out BOOL *)arg3;
+- (struct PXSimpleIndexPath)indexPathAfterApplyingChangesToIndexPath:(struct PXSimpleIndexPath)arg1 hasIncrementalChanges:(out BOOL *)arg2 objectChanged:(out BOOL *)arg3 changedProperties:(id)arg4;
 - (struct PXSimpleIndexPath)indexPathAfterRevertingChangesFromIndexPath:(struct PXSimpleIndexPath)arg1 hasIncrementalChanges:(out BOOL *)arg2 objectChanged:(out BOOL *)arg3;
+- (struct PXSimpleIndexPath)indexPathAfterRevertingChangesFromIndexPath:(struct PXSimpleIndexPath)arg1 hasIncrementalChanges:(out BOOL *)arg2 objectChanged:(out BOOL *)arg3 changedProperties:(id)arg4;
 - (id)indexPathSetAfterApplyingChangesToIndexPathSet:(id)arg1 hasIncrementalChanges:(out BOOL *)arg2;
 - (id)indexPathSetAfterRevertingChangesFromIndexPathSet:(id)arg1 hasIncrementalChanges:(out BOOL *)arg2;
 - (id)init;

@@ -74,6 +74,7 @@
 - (void)gatherTelephonyData;
 - (id)init;
 - (BOOL)isAccountRestricted;
+- (BOOL)isRestrictedByScreenTime;
 - (BOOL)purpleBuddyWillRun;
 - (void)reloadStorefront:(CDUnknownBlockType)arg1;
 - (void)setIdentifierForAdvertisingAllowed:(BOOL)arg1;

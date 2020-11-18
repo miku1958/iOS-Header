@@ -28,7 +28,7 @@
     NSString *_sourceVersion;
     BOOL _present;
     int _proximity;
-    NSString *_homeKitUserIdentifier;
+    NSArray *_homeKitUserIdentifiers;
     NSDictionary *_serviceInfo;
     NSString *_serviceType;
     IDSDevice *_idsDevice;
@@ -37,7 +37,7 @@
 @property (copy, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
 @property (strong, nonatomic) SFDevice *bleDevice; // @synthesize bleDevice=_bleDevice;
 @property (strong, nonatomic) CUBonjourDevice *bonjourDevice; // @synthesize bonjourDevice=_bonjourDevice;
-@property (readonly, copy, nonatomic) NSString *homeKitUserIdentifier; // @synthesize homeKitUserIdentifier=_homeKitUserIdentifier;
+@property (copy, nonatomic) NSArray *homeKitUserIdentifiers; // @synthesize homeKitUserIdentifiers=_homeKitUserIdentifiers;
 @property (readonly, nonatomic) unsigned int hotspotInfo; // @synthesize hotspotInfo=_hotspotInfo;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) IDSDevice *idsDevice; // @synthesize idsDevice=_idsDevice;

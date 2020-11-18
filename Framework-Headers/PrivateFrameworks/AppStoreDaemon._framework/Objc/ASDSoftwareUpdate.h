@@ -24,13 +24,16 @@
     long long _updateState;
     BOOL _iOSBinaryMacOSCompatible;
     BOOL _downloaded;
+    BOOL _requiresRosetta;
+    BOOL _runsOnIntel;
+    BOOL _runsOnAppleSilicon;
     long long _deviceFamilies;
 }
 
 @property (copy, nonatomic) NSArray *blockedBy; // @synthesize blockedBy=_blockedBy;
 @property (readonly, nonatomic) NSString *bundleIdentifier;
 @property (readonly, nonatomic) NSString *buyParams;
-@property (readonly, nonatomic) long long deviceFamilies; // @synthesize deviceFamilies=_deviceFamilies;
+@property (nonatomic) long long deviceFamilies; // @synthesize deviceFamilies=_deviceFamilies;
 @property (nonatomic, getter=isDownloaded) BOOL downloaded; // @synthesize downloaded=_downloaded;
 @property (readonly, nonatomic) NSNumber *externalVersionIdentifier;
 @property (nonatomic, getter=isIOSBinaryMacOSCompatible) BOOL iOSBinaryMacOSCompatible; // @synthesize iOSBinaryMacOSCompatible=_iOSBinaryMacOSCompatible;
@@ -41,6 +44,9 @@
 @property (nonatomic, getter=isProfileValidated) BOOL profileValidated; // @synthesize profileValidated=_profileValidated;
 @property (readonly, nonatomic) NSDictionary *rawUpdateDictionary; // @synthesize rawUpdateDictionary=_rawUpdateDictionary;
 @property (nonatomic) long long rawUpdateState; // @synthesize rawUpdateState=_rawUpdateState;
+@property (readonly, nonatomic) BOOL requiresRosetta; // @synthesize requiresRosetta=_requiresRosetta;
+@property (readonly, nonatomic) BOOL runsOnAppleSilicon; // @synthesize runsOnAppleSilicon=_runsOnAppleSilicon;
+@property (readonly, nonatomic) BOOL runsOnIntel; // @synthesize runsOnIntel=_runsOnIntel;
 @property (readonly, nonatomic) long long storeItemIdentifier;
 @property (copy, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 @property (readonly, nonatomic) NSDictionary *updateDictionary;
@@ -48,6 +54,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)_boolValueForProperty:(id)arg1 withDefaultValue:(BOOL)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

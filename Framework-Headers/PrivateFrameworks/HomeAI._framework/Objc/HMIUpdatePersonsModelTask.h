@@ -25,6 +25,7 @@
 + (id)logCategory;
 - (void).cxx_destruct;
 - (id)initWithTaskID:(int)arg1 homeUUID:(id)arg2 sourceUUID:(id)arg3 dataSource:(id)arg4 externalLibrary:(BOOL)arg5 removeExcessFaceCrops:(BOOL)arg6;
+- (id)limitEnforcedSubsetFromPersons:(id)arg1;
 - (id)logIdentifier;
 - (void)main;
 - (void)subsampleFacesForPersons:(id)arg1 withFaceObservationsMap:(id)arg2 dataSource:(id)arg3 vnUUIDToFaceCropUUIDMap:(id)arg4;

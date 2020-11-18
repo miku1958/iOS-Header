@@ -33,8 +33,6 @@
 - (id)_accessibilityScannerGroupElements;
 - (id)_accessibilityScannerGroupElementsGroupedByRow;
 - (unsigned long long)_accessibilityScanningBehaviorTraits;
-- (id)_accessibilitySelectedChildren;
-- (void)_accessibilitySetSelectedChildren:(id)arg1;
 - (BOOL)_accessibilityShouldAvoidScrollingCollectionViewCells;
 - (BOOL)_accessibilityShouldDisableCellReuse;
 - (BOOL)_accessibilityShouldIncludeArrowKeyCommandsForDirectionalFocusMovement;

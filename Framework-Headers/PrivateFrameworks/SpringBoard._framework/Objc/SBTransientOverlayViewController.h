@@ -42,8 +42,10 @@
     BOOL _shouldDisableSiri;
     BOOL _shouldPendAlertItems;
     BOOL _shouldUseSceneBasedKeyboardFocus;
+    BOOL _shouldPreventDragAndDrop;
     BOOL _shouldDisableOrientationUpdates;
     BOOL _prefersWindowHitTestingDisabled;
+    BOOL _attachedToWindowedAccessory;
     BOOL _presentationAllowsHomeGrabberAutoHide;
     BOOL _presentationDimmingViewHidden;
     BOOL _presentationPrefersStatusBarHidden;
@@ -64,11 +66,13 @@
     double _presentationContentCornerRadius;
     double _presentationHomeGrabberAlpha;
     double _presentationHomeGrabberAdditionalEdgeSpacing;
+    struct CGRect _windowedAccessoryCutoutFrameInScreen;
     struct CGAffineTransform _presentationContentTransform;
     struct CGAffineTransform _presentationHomeGrabberTransform;
 }
 
 @property (readonly, nonatomic) BOOL allowsStackingOverlayContentAbove; // @synthesize allowsStackingOverlayContentAbove=_allowsStackingOverlayContentAbove;
+@property (readonly, nonatomic, getter=isAttachedToWindowedAccessory) BOOL attachedToWindowedAccessory; // @synthesize attachedToWindowedAccessory=_attachedToWindowedAccessory;
 @property (readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (nonatomic) long long containerOrientation; // @synthesize containerOrientation=_containerOrientation;
 @property (readonly, nonatomic, getter=isContentOpaque) BOOL contentOpaque; // @synthesize contentOpaque=_contentOpaque;
@@ -112,6 +116,7 @@
 @property (nonatomic) struct CGAffineTransform presentationHomeGrabberTransform; // @synthesize presentationHomeGrabberTransform=_presentationHomeGrabberTransform;
 @property (readonly, nonatomic) BOOL presentationPrefersStatusBarHidden; // @synthesize presentationPrefersStatusBarHidden=_presentationPrefersStatusBarHidden;
 @property (readonly, nonatomic) BOOL preservesAppSwitcherDuringPresentationAndDismissal;
+@property (readonly, nonatomic) BOOL preventsClippingToBounds;
 @property (readonly, copy, nonatomic) SBDisplayItem *representedDisplayItem; // @synthesize representedDisplayItem=_representedDisplayItem;
 @property (readonly, copy, nonatomic) CDUnknownBlockType sceneDeactivationPredicate;
 @property (readonly, nonatomic) BOOL shouldDisableBanners; // @synthesize shouldDisableBanners=_shouldDisableBanners;
@@ -121,9 +126,11 @@
 @property (readonly, nonatomic) BOOL shouldDisableReachability; // @synthesize shouldDisableReachability=_shouldDisableReachability;
 @property (readonly, nonatomic) BOOL shouldDisableSiri; // @synthesize shouldDisableSiri=_shouldDisableSiri;
 @property (readonly, nonatomic) BOOL shouldPendAlertItems; // @synthesize shouldPendAlertItems=_shouldPendAlertItems;
+@property (readonly, nonatomic) BOOL shouldPreventDragAndDrop; // @synthesize shouldPreventDragAndDrop=_shouldPreventDragAndDrop;
 @property (readonly, nonatomic) BOOL shouldUseSceneBasedKeyboardFocus; // @synthesize shouldUseSceneBasedKeyboardFocus=_shouldUseSceneBasedKeyboardFocus;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<SBTransientOverlayViewControllerDelegate> transientOverlayDelegate; // @synthesize transientOverlayDelegate=_transientOverlayDelegate;
+@property (readonly, nonatomic) struct CGRect windowedAccessoryCutoutFrameInScreen; // @synthesize windowedAccessoryCutoutFrameInScreen=_windowedAccessoryCutoutFrameInScreen;
 
 - (void).cxx_destruct;
 - (void)_applyStatusBarStyleRequestWithInitialStatusBarSettings:(id)arg1;
@@ -145,6 +152,7 @@
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (void)didTransitionToAttachedToWindowedAccessory:(BOOL)arg1 windowedAccessoryCutoutFrameInScreen:(struct CGRect)arg2;
 - (void)endIgnoringAppearanceUpdates;
 - (void)endIgnoringContentOverlayInsetUpdates;
 - (BOOL)handleDoubleHeightStatusBarTap;
@@ -157,6 +165,7 @@
 - (void)handlePictureInPictureDidBegin;
 - (BOOL)handleVolumeDownButtonPress;
 - (BOOL)handleVolumeUpButtonPress;
+- (void)handleWillShowKeyboard:(BOOL)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)newTransientOverlayDismissalTransitionCoordinator;
 - (id)newTransientOverlayPresentationTransitionCoordinator;

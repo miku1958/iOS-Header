@@ -9,52 +9,39 @@
 #import <AvatarKit/SCNSceneRendererDelegate-Protocol.h>
 #import <AvatarKit/_SCNSceneRendererDelegateSPI-Protocol.h>
 
-@class AVTAvatar, AVTAvatarEnvironment, AVTStickerConfiguration, NSArray, NSString, SCNRenderer, SCNScene;
-@protocol OS_dispatch_queue;
+@class AVTAvatar, AVTAvatarEnvironment, AVTStickerConfigurationReversionContext, NSString, SCNRenderer, SCNScene;
 
 @interface AVTStickerGenerator : NSObject <SCNSceneRendererDelegate, _SCNSceneRendererDelegateSPI>
 {
+    AVTStickerConfigurationReversionContext *_context;
     BOOL _async;
     AVTAvatar *_avatar;
-    NSObject<OS_dispatch_queue> *_callbackQueue;
     SCNScene *_scene;
     SCNRenderer *_renderer;
     AVTAvatarEnvironment *_environment;
-    AVTStickerConfiguration *_previousConfiguration;
-    NSArray *_overridenMorphers;
-    NSArray *_overridenPresets;
-    NSArray *_appliedShaderModifiers;
 }
 
-@property (strong, nonatomic) NSArray *appliedShaderModifiers; // @synthesize appliedShaderModifiers=_appliedShaderModifiers;
 @property (nonatomic) BOOL async; // @synthesize async=_async;
 @property (strong, nonatomic) AVTAvatar *avatar; // @synthesize avatar=_avatar;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) AVTAvatarEnvironment *environment; // @synthesize environment=_environment;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSArray *overridenMorphers; // @synthesize overridenMorphers=_overridenMorphers;
-@property (strong, nonatomic) NSArray *overridenPresets; // @synthesize overridenPresets=_overridenPresets;
-@property (strong, nonatomic) AVTStickerConfiguration *previousConfiguration; // @synthesize previousConfiguration=_previousConfiguration;
 @property (strong, nonatomic) SCNRenderer *renderer; // @synthesize renderer=_renderer;
 @property (strong, nonatomic) SCNScene *scene; // @synthesize scene=_scene;
 @property (readonly) Class superclass;
 
 + (id)addCamera:(id)arg1 inScene:(id)arg2;
-+ (void)addProps:(id)arg1 toScene:(id)arg2 forAvatar:(id)arg3 withCamera:(id)arg4 forExport:(BOOL)arg5 async:(BOOL)arg6 callbackQueue:(id)arg7 completion:(CDUnknownBlockType)arg8;
-+ (void)applyConfiguration:(id)arg1 toScene:(id)arg2 withAvatar:(id)arg3 defaultCamera:(id)arg4 forExport:(BOOL)arg5 async:(BOOL)arg6 callbackQueue:(id)arg7 completion:(CDUnknownBlockType)arg8;
-+ (void)applyConfiguration:(id)arg1 toScene:(id)arg2 withAvatar:(id)arg3 defaultCamera:(id)arg4 forExport:(BOOL)arg5 completion:(CDUnknownBlockType)arg6 async:(BOOL)arg7;
++ (void)addProps:(id)arg1 toScene:(id)arg2 forAvatar:(id)arg3 withCamera:(id)arg4 forExport:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
++ (void)applyConfiguration:(id)arg1 toScene:(id)arg2 withAvatar:(id)arg3 context:(id)arg4 defaultCamera:(id)arg5 forExport:(BOOL)arg6 completion:(CDUnknownBlockType)arg7;
 + (struct CGRect)clippingRectForBaseSize:(struct CGSize)arg1;
 + (id)createPropsParentNodeIfNeededInScene:(id)arg1;
 + (id)findNodesNamed:(id)arg1 inAvatar:(id)arg2;
-+ (void)removeConfiguration:(id)arg1 fromScene:(id)arg2 withAvatar:(id)arg3;
-+ (void)removeConfiguration:(id)arg1 fromScene:(id)arg2 withAvatar:(id)arg3 appliedShaderModifier:(id)arg4;
 + (id)workQueue;
 - (void).cxx_destruct;
 - (void)_renderer:(id)arg1 didBuildSubdivDataForHash:(id)arg2 dataProvider:(CDUnknownBlockType)arg3;
 - (id)_renderer:(id)arg1 subdivDataForHash:(id)arg2;
-- (void)clearPreviousConfigurationBeforeNewConfiguration:(id)arg1;
+- (void)_stickerImageWithConfiguration:(id)arg1 options:(id)arg2 startTime:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)initWithAvatar:(id)arg1;
 - (void)renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
 - (void)rendererWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;

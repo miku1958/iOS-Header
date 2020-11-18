@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVConferenceXPCClient;
+@class AVConferenceXPCClient, NSSet;
 @protocol AVCAudioPowerSpectrumMeterDelegate, OS_dispatch_queue;
 
 @interface AVCAudioPowerSpectrumMeter : NSObject
@@ -17,6 +17,7 @@
     double _audioSpectrumRefreshRate;
     unsigned short _audioSpectrumBinCount;
     unsigned int _sessionToken;
+    NSSet *_whiteListedXPCObjects;
 }
 
 @property (readonly, nonatomic) id<AVCAudioPowerSpectrumMeterDelegate> delegate; // @synthesize delegate=_delegate;

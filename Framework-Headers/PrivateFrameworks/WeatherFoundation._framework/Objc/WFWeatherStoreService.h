@@ -14,6 +14,7 @@
 @interface WFWeatherStoreService : NSObject <WFWeatherStore>
 {
     struct os_unfair_lock_s _retryLock;
+    struct os_unfair_lock_s _dataSynchronizationLock;
     WFWeatherStoreServiceConfiguration *_configuration;
     CDUnknownBlockType _forecastRequestStartingCallback;
     CDUnknownBlockType _locationGeocodeForCoordinateRequestStartingCallback;
@@ -24,6 +25,7 @@
     NSMutableDictionary *_UUIDToURLMap;
     NSMutableDictionary *_URLToTaskMap;
     NSMutableDictionary *_URLToCallbackMap;
+    NSMutableDictionary *_aqiScaleCache;
     WFWeatherStoreCache *_cache;
     WFNetworkRetryManager *_retryManager;
 }
@@ -32,8 +34,10 @@
 @property (strong) NSMutableDictionary *URLToTaskMap; // @synthesize URLToTaskMap=_URLToTaskMap;
 @property (strong) NSMutableDictionary *UUIDToCallbackMap; // @synthesize UUIDToCallbackMap=_UUIDToCallbackMap;
 @property (strong) NSMutableDictionary *UUIDToURLMap; // @synthesize UUIDToURLMap=_UUIDToURLMap;
+@property (strong) NSMutableDictionary *aqiScaleCache; // @synthesize aqiScaleCache=_aqiScaleCache;
 @property (strong) WFWeatherStoreCache *cache; // @synthesize cache=_cache;
 @property (copy, nonatomic) WFWeatherStoreServiceConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (nonatomic) struct os_unfair_lock_s dataSynchronizationLock; // @synthesize dataSynchronizationLock=_dataSynchronizationLock;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType forecastRequestStartingCallback; // @synthesize forecastRequestStartingCallback=_forecastRequestStartingCallback;
@@ -47,7 +51,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_addCallback:(CDUnknownBlockType)arg1 requestIdentifier:(id)arg2 forURL:(id)arg3;
+- (void)_addCallback:(id)arg1 requestIdentifier:(id)arg2 forURL:(id)arg3;
 - (void)_cacheObject:(id)arg1 type:(unsigned long long)arg2 date:(id)arg3 forLocation:(id)arg4;
 - (BOOL)_cacheParsedForecastData:(id)arg1 types:(unsigned long long)arg2 location:(id)arg3 date:(id)arg4 requestIdentifier:(id)arg5;
 - (id)_cachedAirQualityConditionsForLocation:(id)arg1 date:(id)arg2;
@@ -63,13 +67,15 @@
 - (void)_cancelWithRequestIdentifier:(id)arg1;
 - (void)_cleanupCallbacksAndTasksForURL:(id)arg1;
 - (void)_enumerateForecastTypesIn:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)_executeCallbacksForURL:(id)arg1 parsedForecastData:(id)arg2 error:(id)arg3;
+- (void)_executeCallbacksForURL:(id)arg1 responseData:(id)arg2 error:(id)arg3;
 - (void)_forecastConditionsForTWCAQIAndTypes:(unsigned long long)arg1 location:(id)arg2 locale:(id)arg3 date:(id)arg4 requestIdentifier:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_forecastConditionsForTypes:(unsigned long long)arg1 location:(id)arg2 locale:(id)arg3 date:(id)arg4 requestIdentifier:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_forecastConditionsForTypes:(unsigned long long)arg1 location:(id)arg2 units:(int)arg3 locale:(id)arg4 date:(id)arg5 requestIdentifier:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (BOOL)_handleDataTaskCompletionWithData:(id)arg1 httpResponse:(id)arg2 apiVersion:(id)arg3 identifier:(id)arg4 requestURL:(id)arg5 dataTask:(id)arg6 dataTaskError:(id)arg7 startDate:(id)arg8;
 - (BOOL)_isConnectivityAvailableForWeatherHost:(id *)arg1;
-- (void)_setTask:(id)arg1 requestIdentifier:(id)arg2 callback:(CDUnknownBlockType)arg3 forURL:(id)arg4;
+- (void)_setTask:(id)arg1 requestIdentifier:(id)arg2 callback:(id)arg3 forURL:(id)arg4;
 - (void)_submitRequest:(id)arg1 withIdentifier:(id)arg2 forLocation:(id)arg3 forecastTypes:(unsigned long long)arg4 configuration:(id)arg5 units:(int)arg6 locale:(id)arg7 date:(id)arg8 apiVersion:(id)arg9 completionHandler:(CDUnknownBlockType)arg10;
+- (void)_submitRequest:(id)arg1 withIdentifier:(id)arg2 forScaleNamed:(id)arg3 language:(id)arg4 configuration:(id)arg5 apiVersion:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (id)_taskForURL:(id)arg1;
 - (void)airQualityForLocation:(id)arg1 locale:(id)arg2 requestIdentifier:(id)arg3 options:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)apiVersionForSettings:(id)arg1;
@@ -85,6 +91,9 @@
 - (id)initWithConfiguration:(id)arg1;
 - (id)initWithConfiguration:(id)arg1 error:(id *)arg2;
 - (void)invalidateCacheWithIdentifier:(id)arg1;
+- (id)p_archivedDataForAQIScale:(id)arg1;
+- (id)p_cachedScaleFromName:(id)arg1;
+- (void)p_updateCacheWithScale:(id)arg1 name:(id)arg2;
 - (void)requestFailureForAPIVersion:(id)arg1 error:(id)arg2;
 - (void)requestSuccessForAPIVersion:(id)arg1;
 

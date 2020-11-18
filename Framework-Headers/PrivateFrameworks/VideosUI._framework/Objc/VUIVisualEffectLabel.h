@@ -16,8 +16,10 @@ __attribute__((visibility("hidden")))
     VUILabel *_label;
     UIVisualEffectView *_visualEffectView;
     unsigned long long _visualEffectLabelType;
+    long long _blurEffectStyle;
 }
 
+@property (nonatomic) long long blurEffectStyle; // @synthesize blurEffectStyle=_blurEffectStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -29,6 +31,7 @@ __attribute__((visibility("hidden")))
 + (long long)_backdropStyleForVisualEffectType:(unsigned long long)arg1 traitCollection:(id)arg2;
 + (id)labelWithType:(unsigned long long)arg1 label:(id)arg2 traitCollection:(id)arg3 existingVisualEffectLabel:(id)arg4;
 - (void).cxx_destruct;
+- (void)_configureVisualEffectForTraitCollection;
 - (void)_updateContentWithNewLabel:(id)arg1 oldLabel:(id)arg2;
 - (double)baselineOffsetFromBottom;
 - (void)layoutSubviews;

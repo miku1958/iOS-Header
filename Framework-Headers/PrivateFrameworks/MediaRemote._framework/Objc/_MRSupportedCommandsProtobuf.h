@@ -10,27 +10,19 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface _MRSupportedCommandsProtobuf : PBCodable <NSCopying>
 {
     NSMutableArray *_supportedCommands;
 }
 
-@property (strong, nonatomic) NSMutableArray *supportedCommands; // @synthesize supportedCommands=_supportedCommands;
-
-+ (Class)supportedCommandType;
 - (void).cxx_destruct;
-- (void)addSupportedCommand:(id)arg1;
-- (void)clearSupportedCommands;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)supportedCommandAtIndex:(unsigned long long)arg1;
-- (unsigned long long)supportedCommandsCount;
 - (void)writeTo:(id)arg1;
 
 @end

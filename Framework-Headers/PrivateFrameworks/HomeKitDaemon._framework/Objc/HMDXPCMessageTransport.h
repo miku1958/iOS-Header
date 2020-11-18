@@ -42,7 +42,6 @@
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)messageTransport:(id)arg1 didReceiveMessage:(id)arg2;
-- (void)resetCounters;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)start;
 - (BOOL)stop;

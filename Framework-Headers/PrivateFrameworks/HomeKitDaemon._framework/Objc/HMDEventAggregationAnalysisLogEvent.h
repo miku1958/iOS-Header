@@ -31,6 +31,14 @@
     unsigned long long _sampledPeakProcessMemoryUsage;
     unsigned long long _remoteMessagesSentCount;
     unsigned long long _remoteMessagesReceivedCount;
+    unsigned long long _txIDSMessagesCount;
+    unsigned long long _rxIDSMessagesCount;
+    unsigned long long _txIDSProxyMessagesCount;
+    unsigned long long _rxIDSProxyMessagesCount;
+    unsigned long long _txLoxyMessagesCount;
+    unsigned long long _rxLoxyMessagesCount;
+    unsigned long long _txSecureMessagesCount;
+    unsigned long long _rxSecureMessagesCount;
     unsigned long long _cloudSyncPushCount;
     unsigned long long _cloudSyncFetchCount;
     unsigned long long _cloudSyncUploadCount;
@@ -155,14 +163,23 @@
 @property (readonly) unsigned long long processMemoryPressureStateWarningCount; // @synthesize processMemoryPressureStateWarningCount=_processMemoryPressureStateWarningCount;
 @property (readonly) unsigned long long remoteMessagesReceivedCount; // @synthesize remoteMessagesReceivedCount=_remoteMessagesReceivedCount;
 @property (readonly) unsigned long long remoteMessagesSentCount; // @synthesize remoteMessagesSentCount=_remoteMessagesSentCount;
+@property (readonly) unsigned long long rxIDSMessagesCount; // @synthesize rxIDSMessagesCount=_rxIDSMessagesCount;
+@property (readonly) unsigned long long rxIDSProxyMessagesCount; // @synthesize rxIDSProxyMessagesCount=_rxIDSProxyMessagesCount;
+@property (readonly) unsigned long long rxLoxyMessagesCount; // @synthesize rxLoxyMessagesCount=_rxLoxyMessagesCount;
+@property (readonly) unsigned long long rxSecureMessagesCount; // @synthesize rxSecureMessagesCount=_rxSecureMessagesCount;
 @property (readonly) unsigned long long sampledAverageProcessMemoryUsage; // @synthesize sampledAverageProcessMemoryUsage=_sampledAverageProcessMemoryUsage;
 @property (readonly) unsigned long long sampledPeakProcessMemoryUsage; // @synthesize sampledPeakProcessMemoryUsage=_sampledPeakProcessMemoryUsage;
 @property (readonly) unsigned long long sentXPCNotificationsCount; // @synthesize sentXPCNotificationsCount=_sentXPCNotificationsCount;
 @property (readonly) Class superclass;
+@property (readonly) unsigned long long txIDSMessagesCount; // @synthesize txIDSMessagesCount=_txIDSMessagesCount;
+@property (readonly) unsigned long long txIDSProxyMessagesCount; // @synthesize txIDSProxyMessagesCount=_txIDSProxyMessagesCount;
+@property (readonly) unsigned long long txLoxyMessagesCount; // @synthesize txLoxyMessagesCount=_txLoxyMessagesCount;
+@property (readonly) unsigned long long txSecureMessagesCount; // @synthesize txSecureMessagesCount=_txSecureMessagesCount;
 
 + (id)uuid;
 - (void).cxx_destruct;
 - (unsigned int)AWDMessageType;
+- (void)_populateMessageCounters;
 - (id)eventName;
 - (id)initWithDataSyncStateDescription:(id)arg1;
 - (id)initWithDataSyncStateDescription:(id)arg1 eventCountersManager:(id)arg2 eventFlagsManager:(id)arg3;

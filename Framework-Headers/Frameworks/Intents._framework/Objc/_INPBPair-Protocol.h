@@ -6,7 +6,7 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBContactValue, _INPBCurrencyAmountValue, _INPBCustomObject, _INPBDataString, _INPBDistanceValue, _INPBDoubleValue, _INPBImageValue, _INPBIntegerValue, _INPBLocationValue, _INPBPaymentMethodValue, _INPBStringValue, _INPBTemperatureValue, _INPBURLValue;
+@class NSArray, NSString, _INPBContactValue, _INPBCurrencyAmountValue, _INPBCustomObject, _INPBDataString, _INPBDataValue, _INPBDistanceValue, _INPBDoubleValue, _INPBImageValue, _INPBIntegerValue, _INPBLocationValue, _INPBPaymentMethodValue, _INPBStringValue, _INPBTemperatureValue, _INPBURLValue;
 
 @protocol _INPBPair <NSObject>
 
@@ -19,6 +19,8 @@
 @property (readonly, nonatomic) unsigned long long pairCustomObjectsCount;
 @property (copy, nonatomic) NSArray *pairDataStrings;
 @property (readonly, nonatomic) unsigned long long pairDataStringsCount;
+@property (copy, nonatomic) NSArray *pairDataValues;
+@property (readonly, nonatomic) unsigned long long pairDataValuesCount;
 @property (copy, nonatomic) NSArray *pairDistanceValues;
 @property (readonly, nonatomic) unsigned long long pairDistanceValuesCount;
 @property (copy, nonatomic) NSArray *pairDoubleValues;
@@ -44,6 +46,7 @@
 + (Class)pairCurrencyAmountValueType;
 + (Class)pairCustomObjectType;
 + (Class)pairDataStringType;
++ (Class)pairDataValueType;
 + (Class)pairDistanceValueType;
 + (Class)pairDoubleValueType;
 + (Class)pairImageValueType;
@@ -57,6 +60,7 @@
 - (void)addPairCurrencyAmountValue:(_INPBCurrencyAmountValue *)arg1;
 - (void)addPairCustomObject:(_INPBCustomObject *)arg1;
 - (void)addPairDataString:(_INPBDataString *)arg1;
+- (void)addPairDataValue:(_INPBDataValue *)arg1;
 - (void)addPairDistanceValue:(_INPBDistanceValue *)arg1;
 - (void)addPairDoubleValue:(_INPBDoubleValue *)arg1;
 - (void)addPairImageValue:(_INPBImageValue *)arg1;
@@ -70,6 +74,7 @@
 - (void)clearPairCurrencyAmountValues;
 - (void)clearPairCustomObjects;
 - (void)clearPairDataStrings;
+- (void)clearPairDataValues;
 - (void)clearPairDistanceValues;
 - (void)clearPairDoubleValues;
 - (void)clearPairImageValues;
@@ -83,6 +88,7 @@
 - (_INPBCurrencyAmountValue *)pairCurrencyAmountValueAtIndex:(unsigned long long)arg1;
 - (_INPBCustomObject *)pairCustomObjectAtIndex:(unsigned long long)arg1;
 - (_INPBDataString *)pairDataStringAtIndex:(unsigned long long)arg1;
+- (_INPBDataValue *)pairDataValueAtIndex:(unsigned long long)arg1;
 - (_INPBDistanceValue *)pairDistanceValueAtIndex:(unsigned long long)arg1;
 - (_INPBDoubleValue *)pairDoubleValueAtIndex:(unsigned long long)arg1;
 - (_INPBImageValue *)pairImageValueAtIndex:(unsigned long long)arg1;

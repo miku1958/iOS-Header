@@ -15,6 +15,7 @@
 - (void)remote_fetchDisplayNameWithCompletion:(void (^)(NSString *, NSString *, NSError *))arg1;
 - (void)remote_getAllProfilesWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)remote_profileIdentifierForNRDeviceUUID:(NSUUID *)arg1 completion:(void (^)(HKProfileIdentifier *, NSError *))arg2;
+- (void)remote_profileIdentifierForNRDeviceUUID:(NSUUID *)arg1 ownerAppleID:(NSString *)arg2 completion:(void (^)(HKProfileIdentifier *, NSError *))arg3;
 - (void)remote_setDisplayFirstName:(NSString *)arg1 lastName:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)remote_setDisplayImageData:(NSData *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_startObservingWithCompletion:(void (^)(void))arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, _MRAVOutputDeviceDescriptorProtobuf;
 
 @interface MRAVOutputDeviceDescription : NSObject
 {
@@ -15,6 +15,7 @@
     NSString *_uid;
 }
 
+@property (readonly, nonatomic) _MRAVOutputDeviceDescriptorProtobuf *descriptor;
 @property (readonly, nonatomic) unsigned int deviceSubtype; // @synthesize deviceSubtype=_deviceSubtype;
 @property (readonly, nonatomic) unsigned int deviceType; // @synthesize deviceType=_deviceType;
 @property (readonly, nonatomic) NSString *uid; // @synthesize uid=_uid;

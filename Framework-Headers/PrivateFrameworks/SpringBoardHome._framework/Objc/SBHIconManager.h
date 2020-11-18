@@ -62,6 +62,8 @@
     NSMutableDictionary *_widgetIntents;
     unsigned long long _descriptorsChangedSequenceNumber;
     NSMutableSet *_pendingWidgetIntentConfigurationInitializations;
+    NSMutableSet *_activeWidgetIntentConfigurationInitializations;
+    NSMutableArray *_performAfterPendingWidgetIntentConfigurationBlocks;
     NSCountedSet *_reasonsToIgnoreUserPreferenceForAddingNewIconsToHomeScreen;
     NSObject<OS_os_activity> *_editingActivity;
     struct os_activity_scope_state_s _editingActivityScope;
@@ -258,7 +260,7 @@
 - (BOOL)_isShowingSearchableTodayView;
 - (BOOL)_isShowingTodayViewSearch;
 - (BOOL)_isShowingTodayViewSearchOrTransitioning;
-- (void)_loadAndSaveDefaultIntentAsyncForViewController:(id)arg1 icon:(id)arg2 widget:(id)arg3;
+- (void)_loadAndSaveDefaultIntentIfNecessaryForWidget:(id)arg1 ofIcon:(id)arg2 viewController:(id)arg3;
 - (id)_makeCustomViewControllerForWidgetIcon:(id)arg1 dataSource:(id)arg2 location:(id)arg3;
 - (id)_multiplexingViewControllerForIcon:(id)arg1 dataSource:(id)arg2 location:(id)arg3 withPriority:(unsigned long long)arg4;
 - (id)_newIntentForDataSource:(id)arg1 inIcon:(id)arg2;
@@ -541,6 +543,7 @@
 - (void)organizeAllIconsIntoFoldersWithPageCount:(unsigned long long)arg1;
 - (id)parallaxSettingsForComponentsOfIconView:(id)arg1;
 - (void)performAfterAllIconTouchesFinishedUsingBlock:(CDUnknownBlockType)arg1;
+- (void)performAfterCachingWidgetIntentsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)performAfterIconContextMenuDismissesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)popExpandedIconAnimated:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)popExpandedIconFromLocation:(id)arg1 interactionContext:(id)arg2 animated:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -575,6 +578,7 @@
 - (void)rootFolder:(id)arg1 wantsToDoPageHidingEducationWithCompletion:(CDUnknownBlockType)arg2;
 - (void)rootFolderController:(id)arg1 didChangeEffectiveSidebarVisibilityProgress:(double)arg2;
 - (void)rootFolderController:(id)arg1 didChangeSidebarVisibilityProgress:(double)arg2;
+- (void)rootFolderController:(id)arg1 didDismissPageManagementWithContext:(id)arg2;
 - (void)rootFolderController:(id)arg1 didEndOverscrollOnFirstPageWithVelocity:(double)arg2 translation:(double)arg3;
 - (void)rootFolderController:(id)arg1 didEndOverscrollOnLastPageWithVelocity:(double)arg2 translation:(double)arg3;
 - (void)rootFolderController:(id)arg1 didOverscrollOnFirstPageByAmount:(double)arg2;
@@ -584,12 +588,11 @@
 - (void)rootFolderController:(id)arg1 statusBarInsetsDidChange:(struct UIEdgeInsets)arg2;
 - (id)rootFolderController:(id)arg1 vendorNameForAppWithBundleIdentifiers:(id)arg2;
 - (void)rootFolderController:(id)arg1 wantsToAdjustTodayContentForEdgeBounceForScrollOffset:(struct CGPoint)arg2;
-- (void)rootFolderController:(id)arg1 willDismissPageManagementUsingAnimator:(id)arg2;
-- (void)rootFolderController:(id)arg1 willPresentPageManagementUsingAnimator:(id)arg2;
+- (void)rootFolderController:(id)arg1 willDismissPageManagementUsingAnimator:(id)arg2 context:(id)arg3;
+- (void)rootFolderController:(id)arg1 willPresentPageManagementUsingAnimator:(id)arg2 context:(id)arg3;
 - (void)rootFolderController:(id)arg1 willUsePropertyAnimator:(id)arg2 toTransitionToState:(long long)arg3;
 - (void)rootFolderController:(id)arg1 willUseTransitionContext:(id)arg2 toTransitionToState:(long long)arg3;
 - (BOOL)rootFolderControllerCanUseSeparateWindowForRotation:(id)arg1;
-- (void)rootFolderControllerDidDismissPageManagement:(id)arg1;
 - (void)rootFolderControllerDidDismissWidgetEditing:(id)arg1;
 - (void)rootFolderControllerViewDidDisappear:(id)arg1;
 - (void)rootFolderControllerViewWillAppear:(id)arg1;

@@ -27,10 +27,11 @@
     NSString *_contentRating;
     double _contentProposalPresentationTime;
     double _contentProposalAutomaticAcceptanceInterval;
-    double _playbackProgress;
     NSString *_externalIdentifier;
+    NSString *_externalContentIdentifier;
     NSString *_externalProfileIdentifier;
     NSString *_externalServiceIdentifier;
+    NSNumber *_playbackProgress;
 }
 
 @property (strong, nonatomic) NSURL *artworkImageURL; // @synthesize artworkImageURL=_artworkImageURL;
@@ -40,13 +41,14 @@
 @property (copy, nonatomic) NSString *contentRating; // @synthesize contentRating=_contentRating;
 @property (strong, nonatomic) NSString *contentRatingDomain; // @synthesize contentRatingDomain=_contentRatingDomain;
 @property (strong, nonatomic) NSNumber *contentRatingRanking; // @synthesize contentRatingRanking=_contentRatingRanking;
+@property (copy, nonatomic) NSString *externalContentIdentifier; // @synthesize externalContentIdentifier=_externalContentIdentifier;
 @property (copy, nonatomic) NSString *externalIdentifier; // @synthesize externalIdentifier=_externalIdentifier;
 @property (copy, nonatomic) NSString *externalProfileIdentifier; // @synthesize externalProfileIdentifier=_externalProfileIdentifier;
 @property (copy, nonatomic) NSString *externalServiceIdentifier; // @synthesize externalServiceIdentifier=_externalServiceIdentifier;
 @property (strong, nonatomic) NSArray *highlightGroups; // @synthesize highlightGroups=_highlightGroups;
 @property (strong, nonatomic) NSArray *interstitials; // @synthesize interstitials=_interstitials;
 @property (strong, nonatomic) NSString *itemDescription; // @synthesize itemDescription=_itemDescription;
-@property (nonatomic) double playbackProgress; // @synthesize playbackProgress=_playbackProgress;
+@property (copy, nonatomic) NSNumber *playbackProgress; // @synthesize playbackProgress=_playbackProgress;
 @property (nonatomic) double resumeTime; // @synthesize resumeTime=_resumeTime;
 @property (strong, nonatomic) _TVSecureKeyLoader *secureKeyLoader; // @synthesize secureKeyLoader;
 @property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;

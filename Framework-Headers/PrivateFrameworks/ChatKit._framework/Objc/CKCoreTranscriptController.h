@@ -40,6 +40,7 @@
     long long _contentAnimationPauseReasons;
     id<UIDragInteractionDelegate> _dragInteractionDelegate;
     UITapGestureRecognizer *_loggingTapGestureRecognizer;
+    NSString *_transcriptIdentifier;
     CKTranscriptModel *_model;
     UICollectionViewDiffableDataSource *_collectionViewDatasource;
     UICollectionViewCompositionalLayout *_collectionViewLayout;
@@ -76,6 +77,7 @@
 @property (nonatomic) BOOL shouldLoadDefaultConversationViewingMessageCountOnAppear; // @synthesize shouldLoadDefaultConversationViewingMessageCountOnAppear=_shouldLoadDefaultConversationViewingMessageCountOnAppear;
 @property (nonatomic) BOOL shouldUseOpaqueMask; // @synthesize shouldUseOpaqueMask=_shouldUseOpaqueMask;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSString *transcriptIdentifier; // @synthesize transcriptIdentifier=_transcriptIdentifier;
 @property (nonatomic, getter=isTranscriptUpdateAnimated) BOOL transcriptUpdateAnimated; // @synthesize transcriptUpdateAnimated=_transcriptUpdateAnimated;
 @property (nonatomic) BOOL transitionedFromComposing; // @synthesize transitionedFromComposing=_transitionedFromComposing;
 @property (nonatomic) BOOL transitioningFromComposing; // @synthesize transitioningFromComposing=_transitioningFromComposing;

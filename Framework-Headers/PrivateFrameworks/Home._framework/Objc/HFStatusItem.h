@@ -30,6 +30,7 @@
 @property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 
 + (id)_associatedServiceTypeToServiceTypeMap;
++ (id)_criticalServiceTypes;
 + (id)_serviceTypeToAssociatedServiceTypesMap;
 + (id)characteristicTypesForServiceType:(id)arg1 includingAssociatedTypes:(BOOL)arg2;
 - (void).cxx_destruct;

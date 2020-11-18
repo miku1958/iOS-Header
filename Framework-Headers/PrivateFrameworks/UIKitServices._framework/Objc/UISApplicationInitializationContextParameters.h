@@ -15,6 +15,7 @@
     unsigned long long _supportedInterfaceOrientations;
     NSArray *_deviceFamilies;
     BOOL _requiresFullScreen;
+    BOOL _supportsMultiwindow;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,6 +25,7 @@
 @property (nonatomic) BOOL requiresFullScreen; // @synthesize requiresFullScreen=_requiresFullScreen;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long supportedInterfaceOrientations; // @synthesize supportedInterfaceOrientations=_supportedInterfaceOrientations;
+@property (nonatomic) BOOL supportsMultiwindow; // @synthesize supportsMultiwindow=_supportsMultiwindow;
 
 - (void).cxx_destruct;
 - (void)encodeWithXPCDictionary:(id)arg1;

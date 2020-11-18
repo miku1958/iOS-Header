@@ -6,11 +6,11 @@
 
 #import <ChatKit/CKMessagePartChatItem.h>
 
-@class CKMediaObject, NSString, UIItemProvider, UITraitCollection;
+@class CKMediaObject, NSItemProvider, NSString, UITraitCollection;
 
 @interface CKAttachmentMessagePartChatItem : CKMessagePartChatItem
 {
-    UIItemProvider *_dragItemProvider;
+    NSItemProvider *_dragItemProvider;
     UITraitCollection *_transcriptTraitCollection;
     CKMediaObject *_mediaObject;
 }
@@ -25,13 +25,12 @@
 - (BOOL)canCopy;
 - (BOOL)canExport;
 - (BOOL)canForward;
-- (id)composition;
+- (id)compositionWithContext:(id)arg1;
 - (id)description;
 - (id)dragItemProvider;
 - (id)fileURLForAttachment;
 - (id)initWithIMChatItem:(id)arg1 maxWidth:(double)arg2;
 - (struct CGSize)loadSizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(out struct UIEdgeInsets *)arg2;
-- (id)pasteboardItems;
 - (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
 - (void)setTranscriptTraitCollection:(id)arg1;
 - (BOOL)shouldCacheSize;

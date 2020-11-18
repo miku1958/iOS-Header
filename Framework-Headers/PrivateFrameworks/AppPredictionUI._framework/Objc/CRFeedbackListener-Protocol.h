@@ -11,6 +11,7 @@
 @protocol CRFeedbackListener <NSObject>
 
 @optional
+- (void)cardSectionView:(id<CRCardSection>)arg1 willProcessEngagementFeedback:(id<CRCardSectionEngagementFeedback>)arg2;
 - (void)cardSectionViewDidAppearForCardSection:(id<CRCardSection>)arg1 withAppearanceFeedback:(id<CRCardSectionViewAppearanceFeedback>)arg2;
 - (void)cardSectionViewDidDisappearForCardSection:(id<CRCardSection>)arg1 withDisappearanceFeedback:(id<CRCardSectionViewDisappearanceFeedback>)arg2;
 - (void)cardSectionViewDidInvalidateSizeForCardSection:(id<CRCardSection>)arg1;

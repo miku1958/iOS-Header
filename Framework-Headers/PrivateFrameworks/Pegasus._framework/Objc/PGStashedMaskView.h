@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGRect tabViewBounds;
 
 - (void).cxx_destruct;
+- (double)_continuousCornerRadius;
 - (struct CGRect)_mainBodyBounds;
 - (void)_setContinuousCornerRadius:(double)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

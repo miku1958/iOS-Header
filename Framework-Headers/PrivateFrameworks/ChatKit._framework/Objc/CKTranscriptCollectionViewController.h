@@ -123,6 +123,7 @@
 @property (readonly, nonatomic) CKTranscriptBalloonSelectionManager *selectionManager; // @synthesize selectionManager=_selectionManager;
 @property (nonatomic) BOOL shouldLoadDefaultConversationViewingMessageCountOnAppear; // @synthesize shouldLoadDefaultConversationViewingMessageCountOnAppear=_shouldLoadDefaultConversationViewingMessageCountOnAppear;
 @property (nonatomic) BOOL shouldUseOpaqueMask; // @synthesize shouldUseOpaqueMask=_shouldUseOpaqueMask;
+@property (readonly, nonatomic, getter=isShowingTranscriptTimestamps) BOOL showingTranscriptTimestamps;
 @property (nonatomic) BOOL sizedFullTranscript; // @synthesize sizedFullTranscript=_sizedFullTranscript;
 @property (strong, nonatomic) UIView *snapshotOfPluginBeingReplacedByBreadcrumb; // @synthesize snapshotOfPluginBeingReplacedByBreadcrumb=_snapshotOfPluginBeingReplacedByBreadcrumb;
 @property (copy, nonatomic) NSString *speakerTransferGUID; // @synthesize speakerTransferGUID=_speakerTransferGUID;
@@ -282,6 +283,7 @@
 - (void)endHoldingUpdatesAfterQuicklookCancelsDismiss;
 - (BOOL)hasRecentTouchForSendingPlugin:(id)arg1;
 - (id)hawkingFailurePromptMessageForHandle:(id)arg1;
+- (void)hideTranscriptTimestampsIfNeeded;
 - (void)highlightItemAtIndexPathWhenDisplayed:(id)arg1 autoDismiss:(BOOL)arg2;
 - (id)indexPathForBalloonView:(id)arg1;
 - (id)initWithConversation:(id)arg1 delegate:(id)arg2 balloonMaxWidth:(double)arg3 marginInsets:(struct UIEdgeInsets)arg4;
@@ -356,6 +358,7 @@
 - (void)setSelectedItems:(id)arg1;
 - (id)sharingMenu;
 - (BOOL)shouldPresentHawkingPromptForMessage:(id)arg1;
+- (void)showTrascriptTimestamps;
 - (void)sizeFullTranscriptIfNecessary;
 - (void)snapshotDidChange:(id)arg1;
 - (void)snapshotTaken:(id)arg1;

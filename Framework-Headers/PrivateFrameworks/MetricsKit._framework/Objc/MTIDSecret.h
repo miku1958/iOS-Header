@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <MetricsKit/NSSecureCoding-Protocol.h>
+
 @class NSDate, NSString;
 
-@interface MTIDSecret : NSObject
+@interface MTIDSecret : NSObject <NSSecureCoding>
 {
     BOOL _isSynchronized;
     NSString *_value;
@@ -21,10 +23,13 @@
 @property (copy, nonatomic) NSString *key; // @synthesize key=_key;
 @property (copy, nonatomic) NSString *value; // @synthesize value=_value;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)debugInfo;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithKey:(id)arg1 value:(id)arg2 expirationDate:(id)arg3;
 - (id)initWithRawValue:(id)arg1;
 - (id)initWithScheme:(id)arg1 date:(id)arg2;

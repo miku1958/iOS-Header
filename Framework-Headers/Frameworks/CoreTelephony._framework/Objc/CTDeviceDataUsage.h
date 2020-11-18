@@ -33,6 +33,7 @@
 - (id)appDataUsageForPeriod:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dataUsage:(id)arg1 forPeriod:(unsigned long long)arg2;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)proxiedOnlyAppDataUsageForPeriod:(unsigned long long)arg1;

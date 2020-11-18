@@ -7,14 +7,12 @@
 #import <OnBoardingKit/OBWelcomeFullCenterContentController.h>
 
 #import <ContactsUI/CNSharingProfileOnboardingAudienceController-Protocol.h>
-#import <ContactsUI/UIPickerViewDataSource-Protocol.h>
-#import <ContactsUI/UIPickerViewDelegate-Protocol.h>
 #import <ContactsUI/UITextFieldDelegate-Protocol.h>
 
 @class CNMutableContact, CNSharingProfileAudienceDataSource, NSString, OBBoldTrayButton, OBLinkTrayButton, UIButton, UIImageView, UILabel, UITextField, UIView;
 @protocol CNSharingProfileOnboardingAudienceControllerDelegate;
 
-@interface CNSharingProfileOnboardingAudienceCatalystViewController : OBWelcomeFullCenterContentController <UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate, CNSharingProfileOnboardingAudienceController>
+@interface CNSharingProfileOnboardingAudienceCatalystViewController : OBWelcomeFullCenterContentController <UITextFieldDelegate, CNSharingProfileOnboardingAudienceController>
 {
     id<CNSharingProfileOnboardingAudienceControllerDelegate> _delegate;
     UIView *_customContentView;

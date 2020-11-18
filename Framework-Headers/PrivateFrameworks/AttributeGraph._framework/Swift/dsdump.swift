@@ -40,7 +40,7 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : õ4
+	let rawValue : E(
  }
 
  struct __C.AnyWeakAttribute {
@@ -67,7 +67,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var identifier : AnyAttribute
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seed : õ4
+	var seed : E(
  }
 
  struct __C._AttributeType {
@@ -79,7 +79,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var vtable : _AttributeVTable
 	var flags : _AttributeTypeFlags
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var internal_offset : õ4
+	var internal_offset : E(
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var value_layout :  empty-list 
  }
@@ -88,7 +88,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : õ4
+	let rawValue : E(
  }
 
  struct __C._AGClosureStorage {
@@ -142,7 +142,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var root : Attribute
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var keyPath : e2
+	var keyPath : µ%
  }
 
  struct AttributeGraph.Map {

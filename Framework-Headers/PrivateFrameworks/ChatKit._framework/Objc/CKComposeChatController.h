@@ -108,7 +108,6 @@
 - (BOOL)isComposingRecipient;
 - (BOOL)isSafeToMarkAsRead;
 - (BOOL)itemProviderDisablesTouches;
-- (void)keyCommandCancel:(id)arg1;
 - (void)keyboardWillShowOrHide:(id)arg1;
 - (void)layoutBusinessInfoViewIfNecessary;
 - (struct UIEdgeInsets)macToolbarInsets;
@@ -134,9 +133,11 @@
 - (void)recipientSelectionControllerRequestDismissKeyboard:(id)arg1;
 - (void)recipientSelectionControllerReturnPressed:(id)arg1;
 - (void)recipientSelectionControllerSearchListDidShowOrHide:(id)arg1;
+- (void)recipientSelectionControllerShouldResignFirstResponder:(id)arg1;
 - (void)recipientSelectionControllerTabPressed:(id)arg1;
 - (void)reloadEntryViewIfNeeded;
 - (BOOL)reparentToolbarItem:(id)arg1;
+- (void)restoreInputAfterSearchPresentation;
 - (void)sendAnimationManagerWillStartAnimation:(id)arg1 context:(id)arg2;
 - (void)sendComposition:(id)arg1;
 - (void)setBusinessInfoViewInfoIfNecessary;

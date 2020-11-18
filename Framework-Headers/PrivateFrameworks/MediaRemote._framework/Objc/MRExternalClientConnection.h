@@ -18,6 +18,7 @@
     BOOL _registeredToSystemEndpointUpdates;
     BOOL _cryptoEnabled;
     unsigned int _voiceRecordingState;
+    NSArray *_subscribedPlayerPaths;
     MRCryptoPairingSession *_cryptoSession;
 }
 
@@ -28,15 +29,13 @@
 @property (nonatomic) BOOL registeredToOutputDeviceUpdates; // @synthesize registeredToOutputDeviceUpdates=_registeredToOutputDeviceUpdates;
 @property (nonatomic) BOOL registeredToSystemEndpointUpdates; // @synthesize registeredToSystemEndpointUpdates=_registeredToSystemEndpointUpdates;
 @property (nonatomic) BOOL registeredToVolumeUpdates; // @synthesize registeredToVolumeUpdates=_registeredToVolumeUpdates;
-@property (readonly, copy, nonatomic) NSArray *subscribedOrigins;
+@property (copy, nonatomic) NSArray *subscribedPlayerPaths; // @synthesize subscribedPlayerPaths=_subscribedPlayerPaths;
 @property (nonatomic) unsigned int voiceRecordingState; // @synthesize voiceRecordingState=_voiceRecordingState;
 
 - (void).cxx_destruct;
 - (id)decryptData:(id)arg1 error:(id *)arg2;
 - (id)encryptDataForMessage:(id)arg1;
 - (id)initWithInputStream:(id)arg1 outputStream:(id)arg2 runLoop:(id)arg3;
-- (void)subscribeOrigin:(id)arg1;
-- (void)unsubscribeOrigin:(id)arg1;
 
 @end
 

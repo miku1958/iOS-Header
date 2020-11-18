@@ -33,6 +33,7 @@
     int _rankInToc;
     NSString *_referringSourceApplication;
     NSString *_referringUrl;
+    int _sessionEndReason;
     NSString *_sourceChannelId;
     NSString *_userActivityType;
     NSString *_viewFrameInScreen;
@@ -53,6 +54,7 @@
         unsigned int groupType:1;
         unsigned int presentationReason:1;
         unsigned int rankInToc:1;
+        unsigned int sessionEndReason:1;
         unsigned int adSupportedChannel:1;
         unsigned int cameFromGroup:1;
         unsigned int isNewUserToFeed:1;
@@ -104,6 +106,7 @@
 @property (nonatomic) BOOL hasRankInToc;
 @property (readonly, nonatomic) BOOL hasReferringSourceApplication;
 @property (readonly, nonatomic) BOOL hasReferringUrl;
+@property (nonatomic) BOOL hasSessionEndReason;
 @property (readonly, nonatomic) BOOL hasSourceChannelId;
 @property (readonly, nonatomic) BOOL hasUserActivityType;
 @property (readonly, nonatomic) BOOL hasViewFrameInScreen;
@@ -119,6 +122,7 @@
 @property (nonatomic) int rankInToc; // @synthesize rankInToc=_rankInToc;
 @property (strong, nonatomic) NSString *referringSourceApplication; // @synthesize referringSourceApplication=_referringSourceApplication;
 @property (strong, nonatomic) NSString *referringUrl; // @synthesize referringUrl=_referringUrl;
+@property (nonatomic) int sessionEndReason; // @synthesize sessionEndReason=_sessionEndReason;
 @property (strong, nonatomic) NSString *sourceChannelId; // @synthesize sourceChannelId=_sourceChannelId;
 @property (strong, nonatomic) NSString *userActivityType; // @synthesize userActivityType=_userActivityType;
 @property (strong, nonatomic) NSString *viewFrameInScreen; // @synthesize viewFrameInScreen=_viewFrameInScreen;
@@ -130,6 +134,7 @@
 - (int)StringAsFeedType:(id)arg1;
 - (int)StringAsGroupType:(id)arg1;
 - (int)StringAsPresentationReason:(id)arg1;
+- (int)StringAsSessionEndReason:(id)arg1;
 - (id)areaPresentationReasonAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -143,6 +148,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)presentationReasonAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)sessionEndReasonAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

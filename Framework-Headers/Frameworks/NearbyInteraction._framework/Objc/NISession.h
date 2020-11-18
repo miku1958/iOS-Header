@@ -9,7 +9,7 @@
 #import <NearbyInteraction/UWBSessionDelegateProxyProtocol-Protocol.h>
 
 @class NIConfiguration, NIDiscoveryToken, NIServerConnection, NSDictionary, NSError, NSString, NSUUID;
-@protocol NISessionDelegate, OS_dispatch_queue, OS_os_log;
+@protocol NIInternalSessionDelegate, NISessionDelegate, OS_dispatch_queue, OS_os_log;
 
 @interface NISession : NSObject <UWBSessionDelegateProxyProtocol>
 {
@@ -29,6 +29,7 @@
     id<NISessionDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSError *_invalidationError;
+    id<NIInternalSessionDelegate> _internalDelegate;
 }
 
 @property (readonly, copy, nonatomic) NIConfiguration *configuration;
@@ -38,6 +39,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NIDiscoveryToken *discoveryToken;
 @property (readonly) unsigned long long hash;
+@property (weak) id<NIInternalSessionDelegate> internalDelegate; // @synthesize internalDelegate=_internalDelegate;
 @property int internalState; // @synthesize internalState=_internalState;
 @property (strong) NSError *invalidationError; // @synthesize invalidationError=_invalidationError;
 @property (readonly) Class superclass;
@@ -53,6 +55,8 @@
 - (void)_activate:(BOOL)arg1;
 - (void)_activateAsync;
 - (void)_activateSyncOnConnectionQueue;
+- (void)_addObject:(id)arg1;
+- (void)_addRegionPredicate:(id)arg1;
 - (id)_getSessionFailureError;
 - (void)_handleActivationError:(id)arg1;
 - (void)_handleActivationSuccess:(id)arg1;
@@ -73,17 +77,22 @@
 - (void)_performBlockOnDelegateQueue:(CDUnknownBlockType)arg1 ifRespondsToSelector:(SEL)arg2 evenIfNotRunning:(BOOL)arg3;
 - (void)_reinterruptSessionWithCachedInterruption;
 - (id)_remoteObject;
+- (void)_removeObject:(id)arg1;
+- (void)_removeRegionPredicate:(id)arg1;
 - (void)_serverConnectionInterrupted;
 - (void)_serverConnectionInvalidated;
 - (void)_shareSandboxExtensionForCurrentBundle;
 - (void)_submitErrorMetric:(id)arg1;
 - (id)_synchronousRemoteObject;
 - (id)_verifyError:(id)arg1;
+- (void)didDiscoverNearbyObject:(id)arg1;
 - (void)didRemoveNearbyObjects:(id)arg1 withReason:(unsigned long long)arg2;
 - (void)didUpdateNearbyObjects:(id)arg1;
 - (id)init;
 - (void)invalidate;
 - (BOOL)isEqual:(id)arg1;
+- (void)objectDidEnter:(id)arg1 region:(id)arg2;
+- (void)objectDidExit:(id)arg1 region:(id)arg2;
 - (void)pause;
 - (void)runWithConfiguration:(id)arg1;
 - (void)setConfigurationForTesting:(id)arg1;

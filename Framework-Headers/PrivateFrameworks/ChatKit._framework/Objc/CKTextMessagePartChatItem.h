@@ -6,11 +6,11 @@
 
 #import <ChatKit/CKMessagePartChatItem.h>
 
-@class NSAttributedString, UIItemProvider;
+@class NSAttributedString, NSItemProvider;
 
 @interface CKTextMessagePartChatItem : CKMessagePartChatItem
 {
-    UIItemProvider *_dragItemProvider;
+    NSItemProvider *_dragItemProvider;
     BOOL _shouldUseBigEmoji;
     BOOL _hasCachedBigEmoji;
 }
@@ -29,13 +29,12 @@
 - (BOOL)allowsMentions;
 - (Class)balloonViewClass;
 - (id)bodyTextFont;
-- (id)composition;
+- (id)compositionWithContext:(id)arg1;
 - (id)dragItemProvider;
 - (Class)impactBalloonViewClass;
 - (id)loadTranscriptText;
 - (id)meMentionsTextColor;
 - (BOOL)mentionsMe:(id)arg1;
-- (id)pasteboardItems;
 - (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
 - (id)sendAnimationTextWithColor:(id)arg1;
 - (BOOL)showMoneyResults;

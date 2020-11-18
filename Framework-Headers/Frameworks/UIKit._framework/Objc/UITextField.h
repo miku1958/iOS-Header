@@ -120,6 +120,7 @@
     } _textFieldFlags;
     double _firstBaselineOffsetFromTop;
     double _lastBaselineOffsetFromBottom;
+    BOOL _didInvalidateBaselineConstraintsOnHeightChange;
     BOOL _deferringBecomeFirstResponder;
     long long _preferredBorderStyle;
     double _preferredBackgroundCornerRadius;

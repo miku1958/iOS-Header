@@ -13,6 +13,7 @@
 
 @interface NUANFContextLoader : NSObject <SXResourceDataSource>
 {
+    BOOL _hasLoaded;
     SXContext *_context;
     NUANFAssetLoader *_assetLoader;
     FCFlintManifest *_flintManifest;
@@ -31,6 +32,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) FCFlintManifest *flintManifest; // @synthesize flintManifest=_flintManifest;
 @property (readonly, nonatomic) FCFlintResourceManager *flintResourceManager; // @synthesize flintResourceManager=_flintResourceManager;
+@property (readonly, nonatomic) BOOL hasLoaded; // @synthesize hasLoaded=_hasLoaded;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<FCHeadlineProviding> headline; // @synthesize headline=_headline;
 @property (readonly, nonatomic) id<SXHost> host; // @synthesize host=_host;

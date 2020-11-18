@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateVitalityTransform;
 - (void)addToTilingView:(id)arg1;
 - (void)applyLayoutInfo:(id)arg1;
+- (void)assetDidChange;
 - (void)assetViewModelDidChange;
 - (id)generateAssetTransitionInfo;
 - (void)livePhotoView:(id)arg1 didEndPlaybackWithStyle:(long long)arg2;

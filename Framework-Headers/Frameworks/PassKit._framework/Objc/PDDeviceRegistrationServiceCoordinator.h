@@ -22,7 +22,7 @@
 
 - (void).cxx_destruct;
 - (void)_canAutomaticallyRegisterWithWebService:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_handleDeviceRegistrationCompletedWithResult:(unsigned long long)arg1;
+- (void)_handleDeviceRegistrationCompletedWithResult:(unsigned long long)arg1 error:(id)arg2;
 - (void)_handlePaymentWebServiceContextChanged:(id)arg1;
 - (void)_peerPaymentRegisterWithURL:(id)arg1 paymentWebService:(id)arg2 forceRegister:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_performDeviceRegistrationWithReason:(id)arg1 forceApplePayRegister:(BOOL)arg2 forcePeerPaymentRegister:(BOOL)arg3;

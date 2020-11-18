@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface TUFeatureFlags : NSObject
 {
 }
+
++ (BOOL)nonInterruptingCalls;
 
 @end
 

@@ -88,7 +88,9 @@
 - (id)_dateWithiTunesTimeInterval:(double)arg1;
 - (BOOL)_deleteAllMemoriesInStore:(id)arg1;
 - (BOOL)_deleteCloudSharedAndSynced:(BOOL)arg1 assetReferencesInStore:(id)arg2;
+- (BOOL)_deleteEmptyFolderWithProjectRootCloudGUIDOfWrongKindInStore:(id)arg1;
 - (BOOL)_deleteExtraneousAdjustedFullSizeResourcesForSloMoAssetsWithStore:(id)arg1;
+- (BOOL)_deleteLocalVideoKeyFrameResourcesForNonVideosInStore:(id)arg1;
 - (BOOL)_deleteOrphanedExtendedAttributes:(id)arg1;
 - (BOOL)_deleteOrphanedUnverifiedPeople:(id)arg1;
 - (BOOL)_deletePersistentHistoryInStore:(id)arg1;
@@ -241,6 +243,7 @@
 - (BOOL)_migrateRejectedFacesGroupInStagedStore:(id)arg1;
 - (BOOL)_migrateTransformableUUIDsToStringsInStore:(id)arg1;
 - (BOOL)_migrateVersionSpecific1kResourcesInStore:(id)arg1;
+- (BOOL)_migrateVideoKeyFrameTimeValuesInStagedStore:(id)arg1;
 - (BOOL)_move1kResourcesOutOfMastersDir:(id)arg1;
 - (BOOL)_moveCloudSharedDerivativesInStore:(id)arg1;
 - (BOOL)_moveGpsHorizontalAccuracyToNewAttribute:(id)arg1;
@@ -317,6 +320,7 @@
 - (BOOL)_renumberLocalAvailabilityAndLocalAvailabilityTargetsInStore:(id)arg1;
 - (BOOL)_repairCTMOriginalVideosWithSOCAvailableBitInStore:(id)arg1;
 - (BOOL)_repairCTMOriginalVideosWithoutAdjustmentsInStore:(id)arg1;
+- (BOOL)_repairDuplicateSingletonFetchingAlbumsInStore:(id)arg1;
 - (BOOL)_repairLegacyMigrationDuplicateVersionCloudResources:(id)arg1;
 - (void)_repairMetadataAndSingletonsForMigrationType:(long long)arg1 forceRebuildReason:(id)arg2 journalRebuildRequired:(BOOL)arg3;
 - (BOOL)_repairOrphanedProjectAlbumsInStore:(id)arg1;

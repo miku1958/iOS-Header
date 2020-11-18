@@ -9,13 +9,13 @@
 #import <Silex/SXVideoAdProviderFactory-Protocol.h>
 
 @class NSString, SXAdController, SXViewport;
-@protocol SVVolumeProviding, SXScrollObserverManager;
+@protocol SXScrollObserverManager, SXVolumeProviding;
 
 @interface SXLegacyPrerollAdFactory : NSObject <SXVideoAdProviderFactory>
 {
     SXViewport *_viewport;
     id<SXScrollObserverManager> _scrollObserverManager;
-    id<SVVolumeProviding> _volumeProvider;
+    id<SXVolumeProviding> _volumeProvider;
     SXAdController *_adController;
 }
 
@@ -26,7 +26,7 @@
 @property (readonly, nonatomic) id<SXScrollObserverManager> scrollObserverManager; // @synthesize scrollObserverManager=_scrollObserverManager;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) SXViewport *viewport; // @synthesize viewport=_viewport;
-@property (readonly, nonatomic) id<SVVolumeProviding> volumeProvider; // @synthesize volumeProvider=_volumeProvider;
+@property (readonly, nonatomic) id<SXVolumeProviding> volumeProvider; // @synthesize volumeProvider=_volumeProvider;
 
 - (void).cxx_destruct;
 - (id)createVideoAdProviderForComponentView:(id)arg1 videoPlayerViewController:(id)arg2 analyticsReporter:(id)arg3;

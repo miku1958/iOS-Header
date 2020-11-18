@@ -30,17 +30,15 @@
 + (id)shaderModifierCache;
 + (id)shaderModifierFromDictionary:(id)arg1 assetsPath:(id)arg2;
 - (void).cxx_destruct;
-- (BOOL)applyToAvatar:(id)arg1;
-- (BOOL)applyToMaterial:(id)arg1;
-- (BOOL)applyToNode:(id)arg1;
-- (BOOL)applyToNodeHierarchy:(id)arg1;
+- (void)applyToAvatar:(id)arg1 reversionContext:(id)arg2;
+- (void)applyToMaterial:(id)arg1 reversionContext:(id)arg2;
+- (void)applyToNode:(id)arg1 reversionContext:(id)arg2;
+- (void)applyToNodeHierarchy:(id)arg1 reversionContext:(id)arg2;
 - (id)cloneWithProperties:(id)arg1;
 - (id)description;
 - (id)dictionaryWithTargetPath:(id)arg1;
 - (id)findMaterialsForGeometryName:(id)arg1 inAvatar:(id)arg2;
 - (id)initWithEntryPoint:(id)arg1 geometryName:(id)arg2 data:(id)arg3 properties:(id)arg4 forceDoubleSided:(BOOL)arg5;
-- (void)removeFromAvatar:(id)arg1 error:(id *)arg2;
-- (BOOL)removeFromMaterial:(id)arg1;
 
 @end
 

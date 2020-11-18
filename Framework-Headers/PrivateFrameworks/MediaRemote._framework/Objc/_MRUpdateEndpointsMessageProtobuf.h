@@ -10,6 +10,7 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface _MRUpdateEndpointsMessageProtobuf : PBCodable <NSCopying>
 {
     int _endpointFeatures;
@@ -19,25 +20,12 @@
     } _has;
 }
 
-@property (nonatomic) int endpointFeatures; // @synthesize endpointFeatures=_endpointFeatures;
-@property (strong, nonatomic) NSMutableArray *endpoints; // @synthesize endpoints=_endpoints;
-@property (nonatomic) BOOL hasEndpointFeatures;
-
-+ (Class)endpointsType;
 - (void).cxx_destruct;
-- (int)StringAsEndpointFeatures:(id)arg1;
-- (void)addEndpoints:(id)arg1;
-- (void)clearEndpoints;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (id)endpointFeaturesAsString:(int)arg1;
-- (id)endpointsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)endpointsCount;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

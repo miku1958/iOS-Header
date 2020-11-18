@@ -15,7 +15,7 @@
 
 - (void)asyncUnregisterLifetimeExtensionForObject:(id<FPDLifetimeExtender>)arg1;
 - (void)dumpStateTo:(FPCTLTermDumper *)arg1;
-- (id<FPXPCAutomaticErrorProxy><FPXVendor>)existingFileProviderProxyWithTimeout:(BOOL)arg1 pid:(int)arg2;
+- (id<FPXPCAutomaticErrorProxy><FPXVendor>)existingFileProviderProxyWithTimeout:(BOOL)arg1 onlyAlreadyLifetimeExtended:(BOOL)arg2 pid:(int)arg3;
 - (void)invalidate;
 - (id<FPXPCAutomaticErrorProxy><FPXVendor>)newFileProviderProxyWithPID:(int)arg1;
 - (id<FPXPCAutomaticErrorProxy><FPXVendor>)newFileProviderProxyWithTimeout:(BOOL)arg1 pid:(int)arg2;

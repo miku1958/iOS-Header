@@ -85,6 +85,7 @@
 }
 
 @property (readonly, nonatomic) unsigned long long axis; // @synthesize axis=_axis;
+@property (readonly, nonatomic) struct CGPoint centerForVolumeHUDWhenInInteractingState;
 @property (weak, nonatomic) id<SBElasticAudioDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SBElasticAudioVolumeViewControllerDelegate> delegate; // @synthesize delegate=_delegate;

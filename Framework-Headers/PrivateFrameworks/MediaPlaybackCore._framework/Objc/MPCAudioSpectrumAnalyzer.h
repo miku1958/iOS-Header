@@ -43,6 +43,7 @@
 - (void)_itemAssetLoadedNotification:(id)arg1;
 - (void)_itemInsertedNotification:(id)arg1;
 - (void)_resizeBuffers:(unsigned long long)arg1;
+- (BOOL)_shouldAttachToPlayerItem:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)configurePlayerItem:(id)arg1;
 - (void)dealloc;

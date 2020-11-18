@@ -10,10 +10,5 @@
 {
 }
 
-+ (id)audioVideoRotor;
-+ (id)headingsRotor;
-+ (id)imagesRotor;
-+ (id)linksRotor;
-
 @end
 

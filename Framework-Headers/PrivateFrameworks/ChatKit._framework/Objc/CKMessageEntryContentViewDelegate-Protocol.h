@@ -10,6 +10,7 @@
 
 @protocol CKMessageEntryContentViewDelegate <UIScrollViewDelegate>
 - (void)messageEntryContentView:(CKMessageEntryContentView *)arg1 didPasteURL:(NSString *)arg2;
+- (void)messageEntryContentView:(CKMessageEntryContentView *)arg1 didStagePluginPayload:(IMPluginPayload *)arg2;
 - (void)messageEntryContentView:(CKMessageEntryContentView *)arg1 didTapMediaObject:(CKMediaObject *)arg2;
 - (BOOL)messageEntryContentView:(CKMessageEntryContentView *)arg1 shouldInsertMediaObjects:(NSArray *)arg2;
 - (void)messageEntryContentViewCancelWasTapped:(CKMessageEntryContentView *)arg1 shelfPluginPayload:(IMPluginPayload *)arg2;

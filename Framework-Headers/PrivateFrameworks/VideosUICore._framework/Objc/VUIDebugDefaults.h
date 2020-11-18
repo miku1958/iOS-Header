@@ -11,6 +11,7 @@
     BOOL _debugUIEnabled;
     BOOL _metricsLoggingEnabled;
     BOOL _metricsExpandedLoggingEnabled;
+    BOOL _metricsLogLocationAndImpressions;
     BOOL _metricsPageRenderLoggingEnabled;
     BOOL _enableDemoMode;
     BOOL _gdprFirstTimeFlowEnabled;
@@ -24,6 +25,7 @@
 @property (nonatomic) BOOL gdprFirstTimeFlowEnabled; // @synthesize gdprFirstTimeFlowEnabled=_gdprFirstTimeFlowEnabled;
 @property (nonatomic) BOOL gdprWhatsNewFlowEnabled; // @synthesize gdprWhatsNewFlowEnabled=_gdprWhatsNewFlowEnabled;
 @property (nonatomic) BOOL metricsExpandedLoggingEnabled; // @synthesize metricsExpandedLoggingEnabled=_metricsExpandedLoggingEnabled;
+@property (nonatomic) BOOL metricsLogLocationAndImpressions; // @synthesize metricsLogLocationAndImpressions=_metricsLogLocationAndImpressions;
 @property (nonatomic) BOOL metricsLoggingEnabled; // @synthesize metricsLoggingEnabled=_metricsLoggingEnabled;
 @property (nonatomic) BOOL metricsPageRenderLoggingEnabled; // @synthesize metricsPageRenderLoggingEnabled=_metricsPageRenderLoggingEnabled;
 

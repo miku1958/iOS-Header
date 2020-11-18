@@ -42,7 +42,6 @@
 - (void)_applicationConnected:(id)arg1;
 - (void)_applicationDisconnected:(id)arg1;
 - (void)_applicationUpdated:(id)arg1;
-- (void)_developerPreferencesChanged;
 - (void)_disconnectApplicationConnect:(id)arg1;
 - (void)_driverConnected:(id)arg1;
 - (void)_driverDisconnected:(id)arg1;

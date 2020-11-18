@@ -11,6 +11,7 @@
 @interface _TtC12NewsArticles42MacTitleViewArticleViewerFeatureTransition : _TtCs12_SwiftObject
 {
     MISSING_TYPE *toolbarManager;
+    MISSING_TYPE *toolbarItemProvider;
     MISSING_TYPE *renderer;
     MISSING_TYPE *nextHeadline;
 }

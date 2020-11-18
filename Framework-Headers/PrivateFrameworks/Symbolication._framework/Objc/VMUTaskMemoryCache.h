@@ -11,6 +11,7 @@
     struct mapped_memory_t *_memoryRegions;
     unsigned int _task;
     BOOL _taskIs64Bit;
+    BOOL _taskIsTranslated;
     BOOL _stopped;
 }
 
@@ -27,6 +28,7 @@
 - (int)readPointerAt:(unsigned long long)arg1 value:(unsigned long long *)arg2;
 - (int)startPeeking;
 - (int)stopPeeking;
+- (BOOL)taskIsTranslated;
 
 @end
 

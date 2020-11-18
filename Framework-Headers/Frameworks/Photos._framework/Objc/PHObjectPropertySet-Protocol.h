@@ -14,5 +14,8 @@
 + (NSString *)keyPathFromPrimaryObject;
 + (NSString *)keyPathToPrimaryObject;
 + (NSArray *)propertiesToFetch;
+
+@optional
++ (NSArray *)additionalPropertiesToFetchOnPrimaryObject;
 @end
 

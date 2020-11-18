@@ -17,7 +17,6 @@
 + (id)sectionTitle;
 - (id)_activityItemProviderForResult:(id)arg1;
 - (id)_additionalMenuElementsForResult:(id)arg1;
-- (id)_pasteboardItemsForResult:(id)arg1;
 - (Class)_richLinkDatasourceClass;
 - (BOOL)applyLayoutMarginsToLayoutGroup;
 - (id)cellForSupplementryItemInCollectionView:(id)arg1 atIndexPath:(id)arg2 supplementryViewKind:(id)arg3;
@@ -27,6 +26,7 @@
 - (id)filterQueries;
 - (BOOL)handleSelectionForResult:(id)arg1;
 - (double)interGroupSpacing;
+- (id)itemProviderForSearchResult:(id)arg1;
 - (id)layoutGroupWithEnvironment:(id)arg1;
 - (void)postProcessAndUpdateResults:(id)arg1;
 - (id)previewViewControllerForResult:(id)arg1;

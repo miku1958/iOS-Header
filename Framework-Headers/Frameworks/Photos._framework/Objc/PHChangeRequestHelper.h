@@ -23,6 +23,7 @@
 }
 
 @property (weak, nonatomic) id<PHChangeRequest> changeRequest; // @synthesize changeRequest=_changeRequest;
+@property (readonly, nonatomic) id<PLClientAuthorization> clientAuthorization; // @synthesize clientAuthorization=_clientAuthorization;
 @property (readonly, nonatomic) NSString *clientBundleIdentifier;
 @property (readonly, nonatomic) NSString *clientDisplayName;
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;

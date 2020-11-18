@@ -23,7 +23,6 @@
     CLKDevice *_device;
     UIView *_richComplicationImageView;
     NTKStackedImagesComplicationImageView *_monochromeImageView;
-    long long _imageViewContentMode;
     long long _monochromeFilterType;
 }
 
@@ -33,7 +32,6 @@
 @property (weak, nonatomic) id<CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHostingOverrideView) BOOL hostingOverrideView; // @synthesize hostingOverrideView=_hostingOverrideView;
-@property (readonly, nonatomic) long long imageViewContentMode; // @synthesize imageViewContentMode=_imageViewContentMode;
 @property (nonatomic) BOOL inMonochromeMode; // @synthesize inMonochromeMode=_inMonochromeMode;
 @property (nonatomic) long long monochromeFilterType; // @synthesize monochromeFilterType=_monochromeFilterType;
 @property (weak, nonatomic) NTKStackedImagesComplicationImageView *monochromeImageView; // @synthesize monochromeImageView=_monochromeImageView;
@@ -54,7 +52,6 @@
 - (void)layoutSubviews;
 - (void)renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1 inGroup:(id)arg2;
 - (void)setImageProvider:(id)arg1 reason:(long long)arg2;
-- (void)setImageViewContentMode:(long long)arg1;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
 - (void)updateMonochromeColor;
 - (BOOL)viewShouldIgnoreTwoPieceImage:(id)arg1;

@@ -39,6 +39,7 @@
 - (id)disableICloudPhotosFilePath;
 - (id)enableICloudPhotosFilePath;
 - (id)forceSoftResetSyncPath;
+- (BOOL)isSystemPhotoLibraryPathManager;
 - (long long)lastRebuildReason;
 - (id)pathToiPhotoLibraryMediaDir;
 - (id)pauseICloudPhotosFilePath;

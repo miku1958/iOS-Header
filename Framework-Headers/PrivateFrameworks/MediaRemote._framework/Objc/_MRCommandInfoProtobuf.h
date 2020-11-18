@@ -10,6 +10,7 @@
 
 @class NSMutableArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MRCommandInfoProtobuf : PBCodable <NSCopying>
 {
     CDStruct_82f37d05 _preferredIntervals;
@@ -39,6 +40,7 @@
     int _skipFrequency;
     int _skipInterval;
     NSMutableArray *_supportedCustomQueueIdentifiers;
+    NSMutableArray *_supportedPlaybackSessionIdentifiers;
     NSMutableArray *_supportedPlaybackSessionTypes;
     int _upNextItemCount;
     BOOL _active;
@@ -65,117 +67,14 @@
     } _has;
 }
 
-@property (nonatomic) BOOL active; // @synthesize active=_active;
-@property (nonatomic) int canScrub; // @synthesize canScrub=_canScrub;
-@property (nonatomic) int command; // @synthesize command=_command;
-@property (strong, nonatomic) NSMutableArray *currentPlaybackSessionTypes; // @synthesize currentPlaybackSessionTypes=_currentPlaybackSessionTypes;
-@property (nonatomic) int currentQueueEndAction; // @synthesize currentQueueEndAction=_currentQueueEndAction;
-@property (nonatomic) int disabledReason; // @synthesize disabledReason=_disabledReason;
-@property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
-@property (nonatomic) BOOL hasActive;
-@property (nonatomic) BOOL hasCanScrub;
-@property (nonatomic) BOOL hasCommand;
-@property (nonatomic) BOOL hasCurrentQueueEndAction;
-@property (nonatomic) BOOL hasDisabledReason;
-@property (nonatomic) BOOL hasEnabled;
-@property (readonly, nonatomic) BOOL hasLocalizedShortTitle;
-@property (readonly, nonatomic) BOOL hasLocalizedTitle;
-@property (nonatomic) BOOL hasMaximumRating;
-@property (nonatomic) BOOL hasMinimumRating;
-@property (nonatomic) BOOL hasNumAvailableSkips;
-@property (readonly, nonatomic) BOOL hasPlaybackSessionIdentifier;
-@property (nonatomic) BOOL hasPreferredPlaybackRate;
-@property (nonatomic) BOOL hasPresentationStyle;
-@property (nonatomic) BOOL hasRepeatMode;
-@property (nonatomic) BOOL hasShuffleMode;
-@property (nonatomic) BOOL hasSkipFrequency;
-@property (nonatomic) BOOL hasSkipInterval;
-@property (nonatomic) BOOL hasSupportsSharedQueue;
-@property (nonatomic) BOOL hasUpNextItemCount;
-@property (strong, nonatomic) NSString *localizedShortTitle; // @synthesize localizedShortTitle=_localizedShortTitle;
-@property (strong, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
-@property (nonatomic) float maximumRating; // @synthesize maximumRating=_maximumRating;
-@property (nonatomic) float minimumRating; // @synthesize minimumRating=_minimumRating;
-@property (nonatomic) int numAvailableSkips; // @synthesize numAvailableSkips=_numAvailableSkips;
-@property (strong, nonatomic) NSString *playbackSessionIdentifier; // @synthesize playbackSessionIdentifier=_playbackSessionIdentifier;
-@property (readonly, nonatomic) double *preferredIntervals;
-@property (readonly, nonatomic) unsigned long long preferredIntervalsCount;
-@property (nonatomic) float preferredPlaybackRate; // @synthesize preferredPlaybackRate=_preferredPlaybackRate;
-@property (nonatomic) int presentationStyle; // @synthesize presentationStyle=_presentationStyle;
-@property (nonatomic) int repeatMode; // @synthesize repeatMode=_repeatMode;
-@property (nonatomic) int shuffleMode; // @synthesize shuffleMode=_shuffleMode;
-@property (nonatomic) int skipFrequency; // @synthesize skipFrequency=_skipFrequency;
-@property (nonatomic) int skipInterval; // @synthesize skipInterval=_skipInterval;
-@property (strong, nonatomic) NSMutableArray *supportedCustomQueueIdentifiers; // @synthesize supportedCustomQueueIdentifiers=_supportedCustomQueueIdentifiers;
-@property (readonly, nonatomic) int *supportedInsertionPositions;
-@property (readonly, nonatomic) unsigned long long supportedInsertionPositionsCount;
-@property (readonly, nonatomic) int *supportedPlaybackQueueTypes;
-@property (readonly, nonatomic) unsigned long long supportedPlaybackQueueTypesCount;
-@property (strong, nonatomic) NSMutableArray *supportedPlaybackSessionTypes; // @synthesize supportedPlaybackSessionTypes=_supportedPlaybackSessionTypes;
-@property (readonly, nonatomic) int *supportedQueueEndActions;
-@property (readonly, nonatomic) unsigned long long supportedQueueEndActionsCount;
-@property (readonly, nonatomic) float *supportedRates;
-@property (readonly, nonatomic) unsigned long long supportedRatesCount;
-@property (nonatomic) BOOL supportsSharedQueue; // @synthesize supportsSharedQueue=_supportsSharedQueue;
-@property (nonatomic) int upNextItemCount; // @synthesize upNextItemCount=_upNextItemCount;
-
-+ (Class)currentPlaybackSessionTypesType;
-+ (Class)supportedCustomQueueIdentifierType;
-+ (Class)supportedPlaybackSessionTypesType;
 - (void).cxx_destruct;
-- (int)StringAsCommand:(id)arg1;
-- (int)StringAsCurrentQueueEndAction:(id)arg1;
-- (int)StringAsDisabledReason:(id)arg1;
-- (int)StringAsRepeatMode:(id)arg1;
-- (int)StringAsShuffleMode:(id)arg1;
-- (int)StringAsSupportedQueueEndActions:(id)arg1;
-- (void)addCurrentPlaybackSessionTypes:(id)arg1;
-- (void)addPreferredInterval:(double)arg1;
-- (void)addSupportedCustomQueueIdentifier:(id)arg1;
-- (void)addSupportedInsertionPositions:(int)arg1;
-- (void)addSupportedPlaybackQueueTypes:(int)arg1;
-- (void)addSupportedPlaybackSessionTypes:(id)arg1;
-- (void)addSupportedQueueEndActions:(int)arg1;
-- (void)addSupportedRate:(float)arg1;
-- (void)clearCurrentPlaybackSessionTypes;
-- (void)clearPreferredIntervals;
-- (void)clearSupportedCustomQueueIdentifiers;
-- (void)clearSupportedInsertionPositions;
-- (void)clearSupportedPlaybackQueueTypes;
-- (void)clearSupportedPlaybackSessionTypes;
-- (void)clearSupportedQueueEndActions;
-- (void)clearSupportedRates;
-- (id)commandAsString:(int)arg1;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)currentPlaybackSessionTypesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)currentPlaybackSessionTypesCount;
-- (id)currentQueueEndActionAsString:(int)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (id)disabledReasonAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
-- (double)preferredIntervalAtIndex:(unsigned long long)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)repeatModeAsString:(int)arg1;
-- (void)setPreferredIntervals:(double *)arg1 count:(unsigned long long)arg2;
-- (void)setSupportedInsertionPositions:(int *)arg1 count:(unsigned long long)arg2;
-- (void)setSupportedPlaybackQueueTypes:(int *)arg1 count:(unsigned long long)arg2;
-- (void)setSupportedQueueEndActions:(int *)arg1 count:(unsigned long long)arg2;
-- (void)setSupportedRates:(float *)arg1 count:(unsigned long long)arg2;
-- (id)shuffleModeAsString:(int)arg1;
-- (id)supportedCustomQueueIdentifierAtIndex:(unsigned long long)arg1;
-- (unsigned long long)supportedCustomQueueIdentifiersCount;
-- (int)supportedInsertionPositionsAtIndex:(unsigned long long)arg1;
-- (int)supportedPlaybackQueueTypesAtIndex:(unsigned long long)arg1;
-- (id)supportedPlaybackSessionTypesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)supportedPlaybackSessionTypesCount;
-- (id)supportedQueueEndActionsAsString:(int)arg1;
-- (int)supportedQueueEndActionsAtIndex:(unsigned long long)arg1;
-- (float)supportedRateAtIndex:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

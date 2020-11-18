@@ -39,7 +39,7 @@
 - (void)addParentSectionFactory:(id)arg1;
 - (void)clientIsReady:(CDUnknownBlockType)arg1;
 - (id)dataProviderForSectionID:(id)arg1;
-- (id)dataProviderForUniversalSectionID:(id)arg1;
+- (id)dataProvidersForUniversalSectionID:(id)arg1;
 - (id)debugDescriptionWithChildren:(unsigned long long)arg1;
 - (id)initWithServiceName:(id)arg1 bundleID:(id)arg2 delegate:(id)arg3;
 - (void)loadAllDataProviders;

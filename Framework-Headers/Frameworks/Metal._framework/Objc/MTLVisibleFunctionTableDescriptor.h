@@ -6,7 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@interface MTLVisibleFunctionTableDescriptor : NSObject
+#import <Metal/NSCopying-Protocol.h>
+
+@interface MTLVisibleFunctionTableDescriptor : NSObject <NSCopying>
 {
 }
 

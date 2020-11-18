@@ -9,7 +9,7 @@
 #import <PhotosUICore/NSCopying-Protocol.h>
 #import <PhotosUICore/NSMutableCopying-Protocol.h>
 
-@class NSIndexSet;
+@class NSDictionary, NSIndexSet;
 
 @interface PXArrayChangeDetails : NSObject <NSMutableCopying, NSCopying>
 {
@@ -18,6 +18,7 @@
     NSIndexSet *_movesToIndexes;
     const struct __CFArray *_movesFromIndexes;
     NSIndexSet *_changedIndexes;
+    NSDictionary *_indexesWithChangesByProperty;
 }
 
 @property (readonly, nonatomic) NSIndexSet *changedIndexes; // @synthesize changedIndexes=_changedIndexes;
@@ -25,6 +26,7 @@
 @property (readonly, nonatomic) BOOL hasAnyInsertionsRemovalsOrMoves;
 @property (readonly, nonatomic) BOOL hasIncrementalChanges;
 @property (readonly, nonatomic) BOOL hasMoves;
+@property (strong, nonatomic) NSDictionary *indexesWithChangesByProperty; // @synthesize indexesWithChangesByProperty=_indexesWithChangesByProperty;
 @property (readonly, nonatomic) NSIndexSet *insertedIndexes; // @synthesize insertedIndexes=_insertedIndexes;
 @property (readonly, nonatomic) const struct __CFArray *movesFromIndexes; // @synthesize movesFromIndexes=_movesFromIndexes;
 @property (readonly, nonatomic) NSIndexSet *movesToIndexes; // @synthesize movesToIndexes=_movesToIndexes;
@@ -34,6 +36,7 @@
 + (id)changeDetailsFromArray:(id)arg1 toArray:(id)arg2 changedObjects:(id)arg3;
 + (id)changeDetailsFromArray:(id)arg1 toArray:(id)arg2 changedObjects:(id)arg3 objectComparator:(CDUnknownBlockType)arg4;
 + (id)changeDetailsFromFetchResultChangeDetails:(id)arg1;
++ (id)changeDetailsFromFetchResultChangeDetails:(id)arg1 originatingChange:(id)arg2;
 + (id)changeDetailsWithChangedIndexRange:(struct _NSRange)arg1;
 + (id)changeDetailsWithChangedIndexes:(id)arg1;
 + (id)changeDetailsWithInsertedIndexRange:(struct _NSRange)arg1;
@@ -52,6 +55,7 @@
 - (id)changeDetailsByAddingChangedIndexes:(id)arg1;
 - (id)changeDetailsShiftedBy:(long long)arg1;
 - (id)changeDetailsShiftedBy:(long long)arg1 scaledBy:(long long)arg2;
+- (id)changedPropertiesForIndex:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
@@ -61,8 +65,10 @@
 - (unsigned long long)indexAfterRevertingChangesFromIndex:(unsigned long long)arg1;
 - (id)indexSetAfterApplyingChangesToIndexSet:(id)arg1;
 - (id)indexSetAfterRevertingChangesToIndexSet:(id)arg1;
+- (id)indexesWithChangesToProperty:(id)arg1;
 - (id)init;
 - (id)initWithIncrementalChangeDetailsRemovedIndexes:(id)arg1 insertedIndexes:(id)arg2 movesToIndexes:(id)arg3 movesFromIndexes:(const struct __CFArray *)arg4 changedIndexes:(id)arg5;
+- (id)initWithIncrementalChangeDetailsRemovedIndexes:(id)arg1 insertedIndexes:(id)arg2 movesToIndexes:(id)arg3 movesFromIndexes:(const struct __CFArray *)arg4 changedIndexes:(id)arg5 indexesWithChangesByProperty:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isOnlyInsertionAtEnd:(BOOL *)arg1 orRemovalAtEnd:(BOOL *)arg2 countBeforeChange:(long long)arg3 countAfterChange:(long long)arg4;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

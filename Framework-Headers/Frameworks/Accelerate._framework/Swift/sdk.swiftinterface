@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.2.26.4 clang-1200.0.29.4)
-// swift-module-flags: -target arm64-apple-ios14.1 -enable-objc-interop -autolink-force-load -enable-library-evolution -module-link-name swiftAccelerate -swift-version 5 -enforce-exclusivity=checked -O -module-name Accelerate
+// swift-compiler-version: Apple Swift version 5.3.1 (swiftlang-1200.2.40 clang-1200.0.32.7)
+// swift-module-flags: -target arm64-apple-ios14.2 -enable-objc-interop -autolink-force-load -enable-library-evolution -module-link-name swiftAccelerate -swift-version 5 -enforce-exclusivity=checked -O -module-name Accelerate
 @_exported import Accelerate
 @_exported import Accelerate.vecLib.BNNS
 import Swift
@@ -7599,6 +7599,183 @@ extension vDSP {
                 }
             }
             
+    }
+}
+@available(OSX 11.0, iOS 14.0, tvOS 14.0, watchOS 7.0, *)
+extension vForce {
+  @inlinable public static func log<U>(_ vector: U) -> [Swift.Float] where U : Accelerate.AccelerateBuffer, U.Element == Swift.Float {
+        
+        let result = Array<Float>(unsafeUninitializedCapacity: vector.count) {
+            buffer, initializedCount in
+            
+            log(vector,
+                result: &buffer)
+            
+            initializedCount = vector.count
+        }
+        
+        return result
+    }
+  @inlinable public static func log<U, V>(_ vector: U, result: inout V) where U : Accelerate.AccelerateBuffer, V : Accelerate.AccelerateMutableBuffer, U.Element == Swift.Float, V.Element == Swift.Float {
+        
+        precondition(vector.count == result.count)
+        
+        var n = Int32(vector.count)
+        
+        result.withUnsafeMutableBufferPointer { dest in
+            vector.withUnsafeBufferPointer { src in
+                vvlogf(dest.baseAddress!,
+                       src.baseAddress!,
+                       &n)
+            }
+        }
+    }
+  @inlinable public static func log<U>(_ vector: U) -> [Swift.Double] where U : Accelerate.AccelerateBuffer, U.Element == Swift.Double {
+        
+        let result = Array<Double>(unsafeUninitializedCapacity: vector.count) {
+            buffer, initializedCount in
+            
+            log(vector,
+                result: &buffer)
+            
+            initializedCount = vector.count
+        }
+        
+        return result
+    }
+  @inlinable public static func log<U, V>(_ vector: U, result: inout V) where U : Accelerate.AccelerateBuffer, V : Accelerate.AccelerateMutableBuffer, U.Element == Swift.Double, V.Element == Swift.Double {
+        
+        precondition(vector.count == result.count)
+        
+        var n = Int32(vector.count)
+        
+        result.withUnsafeMutableBufferPointer { dest in
+            vector.withUnsafeBufferPointer { src in
+                vvlog(dest.baseAddress!,
+                      src.baseAddress!,
+                      &n)
+            }
+        }
+    }
+  @inlinable public static func log1p<U>(_ vector: U) -> [Swift.Float] where U : Accelerate.AccelerateBuffer, U.Element == Swift.Float {
+        
+        let result = Array<Float>(unsafeUninitializedCapacity: vector.count) {
+            buffer, initializedCount in
+            
+            log1p(vector,
+                  result: &buffer)
+            
+            initializedCount = vector.count
+        }
+        
+        return result
+    }
+  @inlinable public static func log1p<U, V>(_ vector: U, result: inout V) where U : Accelerate.AccelerateBuffer, V : Accelerate.AccelerateMutableBuffer, U.Element == Swift.Float, V.Element == Swift.Float {
+        
+        precondition(vector.count == result.count)
+        
+        var n = Int32(vector.count)
+        
+        result.withUnsafeMutableBufferPointer { dest in
+            vector.withUnsafeBufferPointer { src in
+                vvlog1pf(dest.baseAddress!,
+                         src.baseAddress!,
+                         &n)
+            }
+        }
+    }
+  @inlinable public static func log1p<U>(_ vector: U) -> [Swift.Double] where U : Accelerate.AccelerateBuffer, U.Element == Swift.Double {
+        
+        let result = Array<Double>(unsafeUninitializedCapacity: vector.count) {
+            buffer, initializedCount in
+            
+            log1p(vector,
+                  result: &buffer)
+            
+            initializedCount = vector.count
+        }
+        
+        return result
+    }
+  @inlinable public static func log1p<U, V>(_ vector: U, result: inout V) where U : Accelerate.AccelerateBuffer, V : Accelerate.AccelerateMutableBuffer, U.Element == Swift.Double, V.Element == Swift.Double {
+        
+        precondition(vector.count == result.count)
+        
+        var n = Int32(vector.count)
+        
+        result.withUnsafeMutableBufferPointer { dest in
+            vector.withUnsafeBufferPointer { src in
+                vvlog1p(dest.baseAddress!,
+                        src.baseAddress!,
+                        &n)
+            }
+        }
+    }
+  @inlinable public static func atan2<T, U, V>(x: T, y: U, result: inout V) where T : Accelerate.AccelerateBuffer, U : Accelerate.AccelerateBuffer, V : Accelerate.AccelerateMutableBuffer, T.Element == Swift.Float, U.Element == Swift.Float, V.Element == Swift.Float {
+        
+        precondition(x.count == result.count && y.count == result.count)
+        
+        var n = Int32(result.count)
+        
+        result.withUnsafeMutableBufferPointer { dest in
+            x.withUnsafeBufferPointer { xPtr in
+                y.withUnsafeBufferPointer { yPtr in
+                    vvatan2f(dest.baseAddress!,
+                             yPtr.baseAddress!,
+                             xPtr.baseAddress!,
+                             &n)
+                }
+            }
+        }
+    }
+  @inlinable public static func atan2<U, V>(x: U, y: V) -> [Swift.Float] where U : Accelerate.AccelerateBuffer, V : Accelerate.AccelerateMutableBuffer, U.Element == Swift.Float, V.Element == Swift.Float {
+        
+        precondition(x.count == y.count)
+        
+        let result = Array<Float>(unsafeUninitializedCapacity: x.count) {
+            buffer, initializedCount in
+            
+            atan2(x: x,
+                  y: y,
+                  result: &buffer)
+            
+            initializedCount = x.count
+        }
+        
+        return result
+    }
+  @inlinable public static func atan2<T, U, V>(x: T, y: U, result: inout V) where T : Accelerate.AccelerateBuffer, U : Accelerate.AccelerateBuffer, V : Accelerate.AccelerateMutableBuffer, T.Element == Swift.Double, U.Element == Swift.Double, V.Element == Swift.Double {
+        
+        precondition(x.count == result.count && y.count == result.count)
+        
+        var n = Int32(result.count)
+        
+        result.withUnsafeMutableBufferPointer { dest in
+            x.withUnsafeBufferPointer { xPtr in
+                y.withUnsafeBufferPointer { yPtr in
+                    vvatan2(dest.baseAddress!,
+                            yPtr.baseAddress!,
+                            xPtr.baseAddress!,
+                            &n)
+                }
+            }
+        }
+    }
+  @inlinable public static func atan2<U, V>(x: U, y: V) -> [Swift.Double] where U : Accelerate.AccelerateBuffer, V : Accelerate.AccelerateMutableBuffer, U.Element == Swift.Double, V.Element == Swift.Double {
+        
+        precondition(x.count == y.count)
+        
+        let result = Array<Double>(unsafeUninitializedCapacity: x.count) {
+            buffer, initializedCount in
+            
+            atan2(x: x,
+                  y: y,
+                  result: &buffer)
+            
+            initializedCount = x.count
+        }
+        
+        return result
     }
 }
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)

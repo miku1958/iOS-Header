@@ -16,6 +16,7 @@
 @property (readonly, weak, nonatomic) SBHLibraryCategory *category; // @synthesize category=_category;
 
 - (void).cxx_destruct;
+- (Class)iconImageViewClassForLocation:(id)arg1;
 - (id)initWithCategory:(id)arg1;
 - (BOOL)isAdditionalItemsIndicatorIcon;
 

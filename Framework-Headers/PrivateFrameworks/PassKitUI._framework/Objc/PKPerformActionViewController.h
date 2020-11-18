@@ -62,7 +62,10 @@
 - (BOOL)pkui_disablesAutomaticDismissalUponEnteringBackground;
 - (void)setRightBarButtonEnabled:(BOOL)arg1;
 - (void)shakeCard;
+- (BOOL)shouldHidePassView;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateFirstResponder;
+- (void)updatePassViewVisibility;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

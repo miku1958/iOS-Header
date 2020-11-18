@@ -37,7 +37,6 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 
-+ (void)initialize;
 + (id)resolvedURLForRelativeURL:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addLoadingSpinner;

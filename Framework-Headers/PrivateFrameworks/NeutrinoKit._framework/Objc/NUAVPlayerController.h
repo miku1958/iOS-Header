@@ -70,6 +70,7 @@
 - (BOOL)prepareWithAVAsset:(id)arg1 videoComposition:(id)arg2 audioMix:(id)arg3 loopsVideo:(BOOL)arg4;
 - (void)removeObserver:(id)arg1;
 - (void)seek:(CDStruct_198678f7)arg1 toleranceBefore:(CDStruct_198678f7)arg2 toleranceAfter:(CDStruct_198678f7)arg3;
+- (void)seek:(CDStruct_198678f7)arg1 toleranceBefore:(CDStruct_198678f7)arg2 toleranceAfter:(CDStruct_198678f7)arg3 forceSeek:(BOOL)arg4;
 - (void)seekBack;
 - (void)seekForward;
 - (void)step:(long long)arg1;

@@ -6,15 +6,16 @@
 
 #import <PhotosUICore/PXObservable.h>
 
-@class NSArray, NSCountedSet, NSMutableDictionary, NSObject;
+@class NSArray, NSCountedSet, NSMutableDictionary, NSObject, PXReusableObjectPool;
 @protocol OS_dispatch_queue;
 
 @interface PXVideoSessionManager : PXObservable
 {
-    NSMutableDictionary *_ivarQueue_sessionsByIdentifier;
-    NSCountedSet *_ivarQueue_sessionCounts;
     NSObject<OS_dispatch_queue> *_ivarQueue;
     NSObject<OS_dispatch_queue> *_workQueue;
+    PXReusableObjectPool *_ivarQueue_playerPool;
+    NSMutableDictionary *_ivarQueue_sessionsByIdentifier;
+    NSCountedSet *_ivarQueue_sessionCounts;
 }
 
 @property (readonly, nonatomic) NSArray *activeSessions;

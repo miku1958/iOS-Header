@@ -25,8 +25,6 @@
     NSObject<OS_dispatch_queue> *_clientQueue;
     id<HMDUserDataControllerDelegate> _delegate;
     id<HMDUserDataControllerTimerCreator> _timerCreator;
-    id<HMDSettingsControllerProtocol> _sharedSettingsController;
-    id<HMDSettingsControllerProtocol> _privateSettingsController;
     NSUUID *_sharedSettingsRootUUID;
     NSUUID *_assistantAccessControlModelUUID;
     NSMutableSet *_assistantAccessControlAccessoryUUIDs;
@@ -35,6 +33,8 @@
     NSUUID *_privateSettingsRootUUID;
     HMFTimer *_sharedZoneFirstLoadTimer;
     HMFTimer *_privateZoneFirstLoadTimer;
+    id<HMDSettingsControllerProtocol> _sharedSettingsController;
+    id<HMDSettingsControllerProtocol> _privateSettingsController;
 }
 
 @property (readonly, copy) NSArray *assistantAccessControlAccessoriesToEncode;

@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLogMsgEventBatchTrafficProbe, GEOLogMsgEventClientACSuggestions, GEOLogMsgEventCommuteWindow, GEOLogMsgEventCuratedCollectionStats, GEOLogMsgEventCuratedCollectionUsage, GEOLogMsgEventDailyUseSummary, GEOLogMsgEventDirections, GEOLogMsgEventDirectionsRequestDetails, GEOLogMsgEventDisplayAnalytic, GEOLogMsgEventEVRoutingVehicleDetails, GEOLogMsgEventEVTrip, GEOLogMsgEventFullNavTrace, GEOLogMsgEventGenericAppError, GEOLogMsgEventGridDuration, GEOLogMsgEventHardStop, GEOLogMsgEventId, GEOLogMsgEventListInteractionSession, GEOLogMsgEventLogDiscard, GEOLogMsgEventLogFramework, GEOLogMsgEventMapKitCounts, GEOLogMsgEventMapLaunch, GEOLogMsgEventMapsDeviceSettings, GEOLogMsgEventMapsWidgetsInteractionSession, GEOLogMsgEventMarcoLiteUsage, GEOLogMsgEventNetwork, GEOLogMsgEventParkedCar, GEOLogMsgEventPlaceDataCache, GEOLogMsgEventPredExTrainingData, GEOLogMsgEventProactiveSuggestionInteractionSession, GEOLogMsgEventRealtimeTrafficProbe, GEOLogMsgEventRefineSearchSession, GEOLogMsgEventStateTiming, GEOLogMsgEventTelemetric, GEOLogMsgEventThrottle, GEOLogMsgEventTileCacheAnalytic, GEOLogMsgEventTileSetState, GEOLogMsgEventTimeToLeaveHypothesis, GEOLogMsgEventTimeToLeaveInitialTravelTime, GEOLogMsgEventTransitAppLaunch, GEOLogMsgEventTripDepartureFeedback, GEOLogMsgEventUserAction, GEOLogMsgEventVLFUsage, GEOLogMsgEventWifiConnectionQualityProbe, LOGMSGEVENTLogMsgEventRideBookedSession, LOGMSGEVENTLogMsgEventRideBookingSession, LOGMSGEVENTLogMsgEventTableBookedSession, LOGMSGEVENTLogMsgEventTableBookingSession, NSMutableArray, PBDataReader;
+@class GEOLogMsgEventBatchTrafficProbe, GEOLogMsgEventClientACSuggestions, GEOLogMsgEventCommuteWindow, GEOLogMsgEventCuratedCollectionStats, GEOLogMsgEventCuratedCollectionUsage, GEOLogMsgEventDailyUseSummary, GEOLogMsgEventDirections, GEOLogMsgEventDirectionsRequestDetails, GEOLogMsgEventDisplayAnalytic, GEOLogMsgEventEVRoutingVehicleDetails, GEOLogMsgEventEVTrip, GEOLogMsgEventFullNavTrace, GEOLogMsgEventGenericAppError, GEOLogMsgEventGridDuration, GEOLogMsgEventHardStop, GEOLogMsgEventId, GEOLogMsgEventListInteractionSession, GEOLogMsgEventLogDiscard, GEOLogMsgEventLogFramework, GEOLogMsgEventMapKitCounts, GEOLogMsgEventMapLaunch, GEOLogMsgEventMapsDeviceSettings, GEOLogMsgEventMapsWidgetsInteractionSession, GEOLogMsgEventMarcoLiteUsage, GEOLogMsgEventNetwork, GEOLogMsgEventParkedCar, GEOLogMsgEventPlaceDataCache, GEOLogMsgEventPredExTrainingData, GEOLogMsgEventPressureData, GEOLogMsgEventProactiveSuggestionInteractionSession, GEOLogMsgEventRealtimeTrafficProbe, GEOLogMsgEventRefineSearchSession, GEOLogMsgEventStateTiming, GEOLogMsgEventTelemetric, GEOLogMsgEventThrottle, GEOLogMsgEventTileCacheAnalytic, GEOLogMsgEventTileSetState, GEOLogMsgEventTimeToLeaveHypothesis, GEOLogMsgEventTimeToLeaveInitialTravelTime, GEOLogMsgEventTransitAppLaunch, GEOLogMsgEventTripDepartureFeedback, GEOLogMsgEventUserAction, GEOLogMsgEventVLFUsage, GEOLogMsgEventWifiConnectionQualityProbe, LOGMSGEVENTLogMsgEventRideBookedSession, LOGMSGEVENTLogMsgEventRideBookingSession, LOGMSGEVENTLogMsgEventTableBookedSession, LOGMSGEVENTLogMsgEventTableBookingSession, NSMutableArray, PBDataReader;
 
 @interface GEOLogMsgEvent : PBCodable <NSCopying>
 {
@@ -42,6 +42,7 @@
     GEOLogMsgEventParkedCar *_parkedCar;
     GEOLogMsgEventPlaceDataCache *_placeDataCacheEvent;
     GEOLogMsgEventPredExTrainingData *_predExTrainingData;
+    GEOLogMsgEventPressureData *_pressureData;
     GEOLogMsgEventProactiveSuggestionInteractionSession *_proactiveSuggestionInteractionSessionEvent;
     GEOLogMsgEventRealtimeTrafficProbe *_realtimeTrafficProbeCollection;
     GEOLogMsgEventRefineSearchSession *_refineSearchSession;
@@ -98,6 +99,7 @@
         unsigned int read_parkedCar:1;
         unsigned int read_placeDataCacheEvent:1;
         unsigned int read_predExTrainingData:1;
+        unsigned int read_pressureData:1;
         unsigned int read_proactiveSuggestionInteractionSessionEvent:1;
         unsigned int read_realtimeTrafficProbeCollection:1;
         unsigned int read_refineSearchSession:1;
@@ -167,6 +169,7 @@
 @property (readonly, nonatomic) BOOL hasParkedCar;
 @property (readonly, nonatomic) BOOL hasPlaceDataCacheEvent;
 @property (readonly, nonatomic) BOOL hasPredExTrainingData;
+@property (readonly, nonatomic) BOOL hasPressureData;
 @property (readonly, nonatomic) BOOL hasProactiveSuggestionInteractionSessionEvent;
 @property (readonly, nonatomic) BOOL hasRealtimeTrafficProbeCollection;
 @property (readonly, nonatomic) BOOL hasRefineSearchSession;
@@ -200,6 +203,7 @@
 @property (strong, nonatomic) GEOLogMsgEventParkedCar *parkedCar;
 @property (strong, nonatomic) GEOLogMsgEventPlaceDataCache *placeDataCacheEvent;
 @property (strong, nonatomic) GEOLogMsgEventPredExTrainingData *predExTrainingData;
+@property (strong, nonatomic) GEOLogMsgEventPressureData *pressureData;
 @property (strong, nonatomic) GEOLogMsgEventProactiveSuggestionInteractionSession *proactiveSuggestionInteractionSessionEvent;
 @property (strong, nonatomic) GEOLogMsgEventRealtimeTrafficProbe *realtimeTrafficProbeCollection;
 @property (strong, nonatomic) GEOLogMsgEventRefineSearchSession *refineSearchSession;

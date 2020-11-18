@@ -13,6 +13,8 @@
     NSUserDefaults *_userDefaults;
     NSMutableDictionary *_domainSettings;
     struct os_unfair_lock_s _lock;
+    BOOL _EUVolumeLimitFlag;
+    BOOL _SKVolumeLimitFlag;
 }
 
 + (BOOL)isCurrentProcessMediaserverd;
@@ -29,8 +31,12 @@
 - (int)getReduceLoudSoundThreshold;
 - (id)init;
 - (BOOL)isConnectedUnknownWiredDeviceHeadphone;
+- (BOOL)isEUVolumeLimitOn;
 - (BOOL)isHAENFeatureEnabled;
+- (BOOL)isHAENFeatureMandatory;
+- (BOOL)isHAENFeatureOptedIn;
 - (BOOL)isReduceLoudSoundEnabled;
+- (BOOL)isSKVolumeLimitOn;
 - (void)removeAllAdapters;
 - (void)setAudioAccessoryIsConnectedToHeadphones:(long long)arg1;
 - (void)setUserVolumeWithValue:(float)arg1 mininum:(float)arg2;

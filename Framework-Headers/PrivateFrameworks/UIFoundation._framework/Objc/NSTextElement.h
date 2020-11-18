@@ -18,6 +18,7 @@
 @property (weak) NSTextContentManager *textContentManager; // @dynamic textContentManager;
 
 - (void)dealloc;
+- (struct CGSize)estimatedIntrinsicContentSizeForTextLayoutManager:(id)arg1;
 - (id)init;
 - (id)initWithTextContentManager:(id)arg1;
 

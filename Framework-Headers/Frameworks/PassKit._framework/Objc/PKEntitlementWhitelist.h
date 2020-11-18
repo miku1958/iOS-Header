@@ -11,6 +11,7 @@
 @interface PKEntitlementWhitelist : NSObject
 {
     int _processIdentifier;
+    BOOL _isiOSOnMac;
     BOOL _shareableCredentialProvisioning;
     BOOL _passesAllAccess;
     BOOL _passesOverviewAccess;

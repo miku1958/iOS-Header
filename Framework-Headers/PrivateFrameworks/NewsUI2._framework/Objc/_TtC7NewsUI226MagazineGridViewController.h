@@ -16,6 +16,8 @@
     MISSING_TYPE *offlineAlertControllerFactory;
     MISSING_TYPE *alertPresenter;
     MISSING_TYPE *toolbarManager;
+    MISSING_TYPE *newsActivityManager;
+    MISSING_TYPE *newsActivity;
 }
 
 - (void).cxx_destruct;

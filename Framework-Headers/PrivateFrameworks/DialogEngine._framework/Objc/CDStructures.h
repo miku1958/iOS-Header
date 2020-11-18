@@ -194,24 +194,28 @@ struct RequestInfo {
     basic_string_a1f69cfb _field6;
     unsigned int _field7;
     long long _field8;
-    basic_string_a1f69cfb _field9;
+    struct map<std::__1::basic_string<char>, std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>>> _field9;
     basic_string_a1f69cfb _field10;
-    struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> _field11;
-    basic_string_a1f69cfb _field12;
-    int _field13;
-    BOOL _field14;
+    basic_string_a1f69cfb _field11;
+    struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> _field12;
+    basic_string_a1f69cfb _field13;
+    int _field14;
     BOOL _field15;
-    int _field16;
+    BOOL _field16;
     int _field17;
-    basic_string_a1f69cfb _field18;
+    int _field18;
     basic_string_a1f69cfb _field19;
-    struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> _field20;
-    basic_string_a1f69cfb _field21;
+    basic_string_a1f69cfb _field20;
+    struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> _field21;
+    basic_string_a1f69cfb _field22;
 };
 
 struct SpeakableString {
     basic_string_a1f69cfb _field1;
     basic_string_a1f69cfb _field2;
+    basic_string_a1f69cfb _field3;
+    basic_string_a1f69cfb _field4;
+    basic_string_a1f69cfb _field5;
 };
 
 struct State {

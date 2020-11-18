@@ -8,17 +8,19 @@
 
 #import <UserNotificationsUIKit/BNPresentable-Protocol.h>
 #import <UserNotificationsUIKit/BNPresentableObservable-Protocol.h>
+#import <UserNotificationsUIKit/BNPresentableUniquelyIdentifying-Protocol.h>
 #import <UserNotificationsUIKit/NCCarPlayBannerContentViewDelegate-Protocol.h>
 
-@class NCCarPlayBannerContentView, NCNotificationRequest, NSHashTable, NSString, UITapGestureRecognizer;
+@class NCCarPlayBannerContentView, NCNotificationRequest, NSHashTable, NSString, NSUUID, UITapGestureRecognizer;
 @protocol NCCarPlayBannerPresentableViewControllerDelegate;
 
-@interface NCCarPlayBannerPresentableViewController : UIViewController <NCCarPlayBannerContentViewDelegate, BNPresentable, BNPresentableObservable>
+@interface NCCarPlayBannerPresentableViewController : UIViewController <NCCarPlayBannerContentViewDelegate, BNPresentable, BNPresentableObservable, BNPresentableUniquelyIdentifying>
 {
     NCCarPlayBannerContentView *_bannerContentView;
     NSHashTable *_observers;
     UITapGestureRecognizer *_contentSelectPressGesture;
     BOOL _fillsContainer;
+    NSUUID *_uniqueIdentifier;
     NCNotificationRequest *_notificationRequest;
     id<NCCarPlayBannerPresentableViewControllerDelegate> _delegate;
 }
@@ -36,6 +38,7 @@
 @property (readonly, copy, nonatomic) NSString *requesterIdentifier;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isTouchOutsideDismissalEnabled) BOOL touchOutsideDismissalEnabled;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, nonatomic) UIViewController *viewController;
 
 + (id)requesterIdentifier;

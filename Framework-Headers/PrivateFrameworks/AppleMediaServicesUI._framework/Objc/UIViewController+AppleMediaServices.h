@@ -13,8 +13,8 @@
 @property (strong, nonatomic, setter=ams_setBackgroundColor:) UIColor *ams_backgroundColor;
 @property (readonly, nonatomic) UIViewController *ams_frontmostController;
 @property (readonly, nonatomic) UINavigationController *ams_navigationController;
+@property (readonly, nonatomic) UIViewController *ams_navigationItemViewController;
 @property (readonly, nonatomic) AMSUIWebContainerViewController *ams_parentContainer;
-@property (readonly, nonatomic) UIViewController *ams_topmostParent;
 
 - (void)ams_didMoveToParentViewController:(id)arg1;
 - (void)ams_dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;

@@ -8,22 +8,18 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface _MROriginClientPropertiesMessageProtobuf : PBCodable <NSCopying>
 {
     double _lastPlayingTimestamp;
     CDStruct_d7e5e336 _has;
 }
 
-@property (nonatomic) BOOL hasLastPlayingTimestamp;
-@property (nonatomic) double lastPlayingTimestamp; // @synthesize lastPlayingTimestamp=_lastPlayingTimestamp;
-
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

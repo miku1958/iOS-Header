@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) HMSoftwareUpdate *softwareUpdate; // @synthesize softwareUpdate=_softwareUpdate;
 @property (readonly) Class superclass;
 
++ (id)_dateFormatter;
 - (void).cxx_destruct;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)init;

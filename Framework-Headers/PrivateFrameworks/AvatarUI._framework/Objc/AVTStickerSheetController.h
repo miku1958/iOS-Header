@@ -14,12 +14,13 @@
 #import <AvatarUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 
 @class AVTStickerSheetModel, NSString, UICollectionView, UIImage, UIView;
-@protocol AVTAvatarRecord, AVTPresenterDelegate, AVTStickerDisclosureValidationDelegate, AVTStickerSheetControllerDelegate;
+@protocol AVTAvatarRecord, AVTPresenterDelegate, AVTStickerDisclosureValidationDelegate, AVTStickerSheetControllerDelegate, AVTStickerTaskScheduler;
 
 @interface AVTStickerSheetController : NSObject <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, AVTNotifyingContainerViewDelegate, AVTStickerCollectionViewCellDelegate, AVTObjectViewController>
 {
     BOOL _allowsPeel;
     BOOL _isPageVisible;
+    BOOL _areAllStickersRendered;
     BOOL _showPrereleaseSticker;
     id<AVTPresenterDelegate> presenterDelegate;
     id<AVTStickerSheetControllerDelegate> _delegate;
@@ -28,10 +29,12 @@
     UICollectionView *_collectionView;
     AVTStickerSheetModel *_model;
     UIImage *_placeholderImage;
+    id<AVTStickerTaskScheduler> _taskScheduler;
     struct UIEdgeInsets _sectionInsets;
 }
 
 @property (readonly, nonatomic) BOOL allowsPeel; // @synthesize allowsPeel=_allowsPeel;
+@property (nonatomic) BOOL areAllStickersRendered; // @synthesize areAllStickersRendered=_areAllStickersRendered;
 @property (readonly, nonatomic) id<AVTAvatarRecord> avatarRecord;
 @property (strong, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property (readonly, copy) NSString *debugDescription;
@@ -46,19 +49,22 @@
 @property (nonatomic) struct UIEdgeInsets sectionInsets; // @synthesize sectionInsets=_sectionInsets;
 @property (nonatomic) BOOL showPrereleaseSticker; // @synthesize showPrereleaseSticker=_showPrereleaseSticker;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) id<AVTStickerTaskScheduler> taskScheduler; // @synthesize taskScheduler=_taskScheduler;
 @property (strong, nonatomic) UIView *view; // @synthesize view=_view;
 
 - (void).cxx_destruct;
 - (void)clearStickerRendererIfNeeded;
+- (BOOL)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
+- (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
+- (void)dealloc;
 - (void)discardStickerItems;
 - (id)firstStickerView;
-- (id)initWithStickerSheetModel:(id)arg1 allowsPeel:(BOOL)arg2;
+- (id)initWithStickerSheetModel:(id)arg1 taskScheduler:(id)arg2 allowsPeel:(BOOL)arg3;
 - (void)loadView;
-- (void)lowerTaskPriority:(CDUnknownBlockType)arg1;
 - (struct CGPoint)maxedContentOffset:(struct CGPoint)arg1;
 - (struct CGSize)minimumContentSizeForSize:(struct CGSize)arg1;
 - (void)notifyingContainerViewDidChangeSize:(struct CGSize)arg1;
@@ -67,12 +73,15 @@
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (CDUnknownBlockType)placeholderProvider;
 - (void)reloadCollectionViewItemForStickerItem:(id)arg1;
+- (void)scheduleSheetPlaceholderTask:(CDUnknownBlockType)arg1;
+- (void)scheduleSheetStickerTask:(CDUnknownBlockType)arg1 withIndexPath:(id)arg2;
 - (void)scrollToContentOffset:(struct CGPoint)arg1 animated:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
+- (void)sheetDidDisappear;
 - (void)sheetWillAppear;
-- (void)sheetWillDisappear;
-- (void)startedTask:(CDUnknownBlockType)arg1 forItem:(id)arg2;
+- (void)startAllSchedulerTasks;
+- (void)startAllSchedulerTasksExcludingVisibleIndexPaths:(id)arg1;
 - (void)stickerCellDidPeelSticker:(id)arg1;
 - (void)stickerCellDidTapSticker:(id)arg1;
 - (double)topPadding;

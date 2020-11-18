@@ -21,9 +21,8 @@
 
 + (id)presetOverrideFromDictionary:(id)arg1 forCategoryName:(id)arg2;
 - (void).cxx_destruct;
-- (void)applyToAvatar:(id)arg1;
+- (void)applyToAvatar:(id)arg1 reversionContext:(id)arg2;
 - (id)initWithCategory:(long long)arg1 presetIdentifier:(id)arg2 unless:(id)arg3;
-- (id)overridenPresetForAvatar:(id)arg1;
 
 @end
 

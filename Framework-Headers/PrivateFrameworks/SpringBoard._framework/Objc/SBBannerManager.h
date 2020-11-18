@@ -68,8 +68,7 @@
 - (void)bannerSourceListener:(id)arg1 presentationSize:(out struct CGSize *)arg2 containerSize:(out struct CGSize *)arg3 error:(id *)arg4;
 - (BOOL)bannerSourceListener:(id)arg1 recommendsSuspending:(BOOL)arg2 forReason:(id)arg3 revokingCurrent:(BOOL)arg4 error:(id *)arg5;
 - (BOOL)bannerSourceListener:(id)arg1 requestsPostingPresentable:(id)arg2 options:(unsigned long long)arg3 userInfo:(id)arg4 error:(id *)arg5;
-- (BOOL)bannerSourceListener:(id)arg1 requestsRevokingAllPresentablesForRequesterWithIdentifier:(id)arg2 reason:(id)arg3 userInfo:(id)arg4 error:(id *)arg5;
-- (BOOL)bannerSourceListener:(id)arg1 requestsRevokingPresentableWithRequestIdentifier:(id)arg2 requesterIdentifier:(id)arg3 animated:(BOOL)arg4 reason:(id)arg5 userInfo:(id)arg6 error:(id *)arg7;
+- (id)bannerSourceListener:(id)arg1 requestsRevokingPresentablesWithIdentification:(id)arg2 reason:(id)arg3 animated:(BOOL)arg4 userInfo:(id)arg5 error:(id *)arg6;
 - (void)dismissAllBannersAnimated:(BOOL)arg1 reason:(id)arg2;
 - (BOOL)handleHeadsetButtonPress:(BOOL)arg1;
 - (BOOL)handleHomeButtonDoublePress;
@@ -91,9 +90,8 @@
 - (void)presenterRelinquishesVisibility:(id)arg1;
 - (void)presenterRequestsVisibility:(id)arg1;
 - (void)registerAuthority:(id)arg1 forRequesterIdentifier:(id)arg2;
-- (BOOL)revokeAllPresentablesWithRequesterIdentifier:(id)arg1 reason:(id)arg2 options:(unsigned long long)arg3 userInfo:(id)arg4 error:(out id *)arg5;
-- (BOOL)revokePresentableWithRequestIdentifier:(id)arg1 requesterIdentifier:(id)arg2 reason:(id)arg3 options:(unsigned long long)arg4 animated:(BOOL)arg5 userInfo:(id)arg6 error:(out id *)arg7;
-- (BOOL)revokePresentableWithRequestIdentifier:(id)arg1 requesterIdentifier:(id)arg2 reason:(id)arg3 options:(unsigned long long)arg4 userInfo:(id)arg5 error:(out id *)arg6;
+- (id)revokePresentablesWithIdentification:(id)arg1 reason:(id)arg2 options:(unsigned long long)arg3 animated:(BOOL)arg4 userInfo:(id)arg5 error:(out id *)arg6;
+- (id)revokePresentablesWithIdentification:(id)arg1 reason:(id)arg2 options:(unsigned long long)arg3 userInfo:(id)arg4 error:(out id *)arg5;
 - (void)setSuspended:(BOOL)arg1 forReason:(id)arg2;
 - (id)userInterfaceStyleTransitionAnimationSettingsForPresentable:(id)arg1 forTransitionToStyle:(long long)arg2;
 

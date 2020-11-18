@@ -14,6 +14,8 @@
     MISSING_TYPE *styler;
 }
 
+@property (nonatomic, readonly) BOOL canBecomeFocused;
+
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

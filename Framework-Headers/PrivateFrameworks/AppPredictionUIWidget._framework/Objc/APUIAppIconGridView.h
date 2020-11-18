@@ -42,6 +42,7 @@
 + (id)createDismissSuggestionApplicationShortcutItemWithType:(id)arg1 localizedName:(id)arg2;
 - (void).cxx_destruct;
 - (void)_addGridView;
+- (void)_configureAliasingForIconView:(id)arg1;
 - (double)_iconLabelAlphaForMode:(unsigned long long)arg1;
 - (void)_significantTimeChange:(id)arg1;
 - (BOOL)appIconDataSource:(id)arg1 launchAppFromIcon:(id)arg2;

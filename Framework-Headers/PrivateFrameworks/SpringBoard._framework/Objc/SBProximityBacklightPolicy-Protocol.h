@@ -6,6 +6,11 @@
 
 #import <SpringBoard/SBProximitySensorManagerObserver-Protocol.h>
 
+@class SBIdleTimerGlobalCoordinator;
+
 @protocol SBProximityBacklightPolicy <SBProximitySensorManagerObserver>
+
+@property (strong, nonatomic) SBIdleTimerGlobalCoordinator *idleTimerGlobalCoordinator;
+
 @end
 

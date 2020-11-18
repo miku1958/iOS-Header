@@ -133,10 +133,12 @@
 @property (copy, nonatomic) NSURL *webLocationsURL; // @synthesize webLocationsURL=_webLocationsURL;
 @property (copy, nonatomic) NSURL *webServiceURL; // @dynamic webServiceURL;
 
++ (Class)classForDictionary:(id)arg1 bundle:(id)arg2;
 + (Class)classForPassType:(unsigned long long)arg1;
 + (unsigned long long)defaultSettings;
-+ (BOOL)isValidObjectWithFileURL:(id)arg1 warnings:(id *)arg2 orError:(id *)arg3;
++ (BOOL)isValidObjectWithFileDataAccessor:(id)arg1 warnings:(id *)arg2 error:(id *)arg3;
 + (id)recordNamePrefix;
++ (Class)resolvingClass;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_changeMessageForFieldKey:(id)arg1;

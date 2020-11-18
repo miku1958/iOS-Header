@@ -37,6 +37,7 @@
 - (void)_toggleZoom;
 - (void)activateHomeButton;
 - (void)activateLockButton;
+- (void)activatePeopleDetection;
 - (void)activateSOSMode;
 - (void)activateSiri;
 - (void)activateSiriFromClient:(id)arg1;

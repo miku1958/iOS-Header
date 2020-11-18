@@ -8,7 +8,7 @@
 
 #import <Rapport/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSString;
+@class NSArray, NSData, NSDate, NSString, NSUUID;
 
 @interface RPIdentity : NSObject <NSSecureCoding>
 {
@@ -26,6 +26,7 @@
     NSData *_edPKData;
     NSData *_edSKData;
     unsigned long long _featureFlags;
+    NSUUID *_homeKitUserIdentifier;
     NSString *_identifier;
     NSString *_idsDeviceID;
     NSString *_mediaRemoteID;
@@ -49,6 +50,7 @@
 @property (copy, nonatomic) NSData *edPKData; // @synthesize edPKData=_edPKData;
 @property (copy, nonatomic) NSData *edSKData; // @synthesize edSKData=_edSKData;
 @property (nonatomic) unsigned long long featureFlags; // @synthesize featureFlags=_featureFlags;
+@property (copy, nonatomic) NSUUID *homeKitUserIdentifier; // @synthesize homeKitUserIdentifier=_homeKitUserIdentifier;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *idsDeviceID; // @synthesize idsDeviceID=_idsDeviceID;
 @property (copy, nonatomic) NSString *mediaRemoteID; // @synthesize mediaRemoteID=_mediaRemoteID;

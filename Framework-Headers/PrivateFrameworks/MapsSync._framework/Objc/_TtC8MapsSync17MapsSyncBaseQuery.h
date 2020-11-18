@@ -35,6 +35,8 @@
 - (void)deleteAllObjectsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchBaseContents:(CDUnknownBlockType)arg1;
 - (void)fetchBaseContentsWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchQueryBaseContents:(CDUnknownBlockType)arg1;
+- (void)fetchQueryBaseContentsWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchedResultsDidChangeObjectWithControllerDelegate:(id)arg1 object:(id)arg2 indexPath:(id)arg3 changeType:(unsigned long long)arg4 newIndexPath:(id)arg5;
 - (void)fetchedResultsDidChangeWithControllerDelegate:(id)arg1;
 - (void)fetchedResultsWillChangeWithControllerDelegate:(id)arg1;
@@ -42,6 +44,7 @@
 - (id)init;
 - (id)initWithQueryDelegate:(id)arg1 predicate:(id)arg2;
 - (BOOL)isInitComplete;
+- (BOOL)isReady;
 - (id)mergeDuplicateObjectsWithDuplicates:(id)arg1;
 - (void)preFetchHook:(CDUnknownBlockType)arg1;
 - (void)queryContentsDidChangeObjectWithNotification:(id)arg1 object:(id)arg2 indexPath:(id)arg3 changeType:(unsigned long long)arg4 newIndexPath:(id)arg5;
@@ -49,6 +52,7 @@
 - (void)queryContentsDidLoadWithNotification:(id)arg1;
 - (void)queryContentsWillChangeWithNotification:(id)arg1;
 - (void)queryContextDidChangeWithNotification:(id)arg1;
+- (void)queryIsReady;
 - (void)queryStoreDidChangeWithNotification:(id)arg1;
 - (void)reloadContentsWithCompletion:(CDUnknownBlockType)arg1 queue:(id)arg2;
 - (void)watchItemsMatchingPredicate:(id)arg1;

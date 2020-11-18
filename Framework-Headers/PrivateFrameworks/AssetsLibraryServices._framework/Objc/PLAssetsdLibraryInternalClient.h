@@ -26,7 +26,7 @@
 - (void)reloadMomentGenerationOptions;
 - (BOOL)repairMemoriesWithUUIDs:(id)arg1 error:(id *)arg2;
 - (void)resetLimitedLibraryAccessForApplication:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)setFetchFilterWithAssets:(id)arg1 forApplication:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)setFetchFilterWithAssets:(id)arg1 forApplication:(id)arg2 withAuditToken:(CDStruct_6ad76789)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)setKeywords:(id)arg1 forAssetWithUUID:(id)arg2;
 - (void)setWidgetTimelineGeneratedForDisplaySize:(struct CGSize)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)synchronouslyGetLibrarySizesFromDB:(BOOL)arg1 sizes:(id *)arg2 error:(id *)arg3;

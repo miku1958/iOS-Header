@@ -27,6 +27,7 @@
     MISSING_TYPE *audioTrackViewRenderer;
     MISSING_TYPE *audioDailyBriefingViewRenderer;
     MISSING_TYPE *bannerAdViewManager;
+    MISSING_TYPE *hiddenContentPlacardViewRenderer;
     MISSING_TYPE *webEmbedViewControllerReuseManager;
     MISSING_TYPE *formatRegistrationIdentifiers;
 }

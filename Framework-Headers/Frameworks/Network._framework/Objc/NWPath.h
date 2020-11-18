@@ -39,6 +39,7 @@
 @property (readonly, nonatomic) unsigned int filterControlUnit;
 @property (readonly, nonatomic, getter=isFiltered) BOOL filtered;
 @property (readonly, nonatomic, getter=isFlowDivert) BOOL flowDivert;
+@property (readonly, nonatomic) unsigned int flowDivertAggregateUnit;
 @property (readonly, nonatomic) unsigned int flowDivertControlUnit;
 @property (readonly, nonatomic) NSArray *flows;
 @property (readonly, nonatomic) NSArray *gateways;

@@ -10,22 +10,18 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MRAVRouteQueryProtobuf : PBCodable <NSCopying>
 {
     NSString *_routeUID;
 }
 
-@property (readonly, nonatomic) BOOL hasRouteUID;
-@property (strong, nonatomic) NSString *routeUID; // @synthesize routeUID=_routeUID;
-
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

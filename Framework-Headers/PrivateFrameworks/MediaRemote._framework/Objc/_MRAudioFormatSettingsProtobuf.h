@@ -10,22 +10,18 @@
 
 @class NSData;
 
+__attribute__((visibility("hidden")))
 @interface _MRAudioFormatSettingsProtobuf : PBCodable <NSCopying>
 {
     NSData *_formatSettingsPlistData;
 }
 
-@property (strong, nonatomic) NSData *formatSettingsPlistData; // @synthesize formatSettingsPlistData=_formatSettingsPlistData;
-@property (readonly, nonatomic) BOOL hasFormatSettingsPlistData;
-
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

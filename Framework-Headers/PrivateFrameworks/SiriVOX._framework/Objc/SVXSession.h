@@ -131,7 +131,6 @@ __attribute__((visibility("hidden")))
 - (void)_performBlockAfterContinueBlock:(CDUnknownBlockType)arg1;
 - (void)_performBlockAfterResignActive:(CDUnknownBlockType)arg1;
 - (void)_performNextPendingRequestBarrier;
-- (void)_performThinkingStage:(unsigned long long)arg1 requestUUID:(id)arg2;
 - (void)_preheatWithStyle:(long long)arg1;
 - (void)_presentError:(id)arg1 taskTracker:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_requestDidEndWithOptions:(unsigned long long)arg1 error:(id)arg2;

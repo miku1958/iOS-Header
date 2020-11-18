@@ -141,6 +141,7 @@
 - (void)removeObject:(id)arg1;
 - (void)removeObjectWithObjectID:(id)arg1 class:(Class)arg2;
 - (void)removeRunningActivitiesObject:(id)arg1;
+- (void)repairHandoutAttachments:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)reset;
 - (id)runningActivities;
 - (void)saveClass:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -8,7 +8,7 @@
 
 #import <ClipServices/NSSecureCoding-Protocol.h>
 
-@class CPSClipInvocationPolicy, NSArray, NSDictionary, NSNumber, NSString, NSURL;
+@class CPSClipInvocationPolicy, NSArray, NSDate, NSDictionary, NSNumber, NSString, NSURL;
 
 @interface CPSClipMetadata : NSObject <NSSecureCoding>
 {
@@ -50,11 +50,13 @@
     NSNumber *_itemID;
     NSString *_webClipID;
     NSString *_buyParams;
+    NSDate *_expirationDate;
     NSDictionary *_amsDictionary;
     unsigned long long _clipVersionIdentifier;
 }
 
 @property (copy, nonatomic) NSDictionary *amsDictionary; // @synthesize amsDictionary=_amsDictionary;
+@property (readonly, nonatomic) NSString *bundleDisplayName;
 @property (copy, nonatomic) NSString *buyParams; // @synthesize buyParams=_buyParams;
 @property (readonly, nonatomic) long long clipAction; // @synthesize clipAction=_clipAction;
 @property (copy, nonatomic) NSString *clipBundleID; // @synthesize clipBundleID=_clipBundleID;
@@ -78,6 +80,8 @@
 @property (readonly, nonatomic) NSArray *clipVerifiedAssociatedDomains; // @synthesize clipVerifiedAssociatedDomains=_clipVerifiedAssociatedDomains;
 @property (nonatomic) unsigned long long clipVersionIdentifier; // @synthesize clipVersionIdentifier=_clipVersionIdentifier;
 @property (nonatomic) BOOL deviceCapabilitiesDontMatch; // @synthesize deviceCapabilitiesDontMatch=_deviceCapabilitiesDontMatch;
+@property (copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
+@property (readonly, nonatomic, getter=isExpired) BOOL expired;
 @property (copy, nonatomic) NSString *fullAppBundleID; // @synthesize fullAppBundleID=_fullAppBundleID;
 @property (copy, nonatomic) NSString *fullAppCachedIconFilePath; // @synthesize fullAppCachedIconFilePath=_fullAppCachedIconFilePath;
 @property (copy, nonatomic) NSString *fullAppCaption; // @synthesize fullAppCaption=_fullAppCaption;

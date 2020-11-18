@@ -19,8 +19,8 @@
 
 - (void).cxx_destruct;
 - (BOOL)isStackDefaultStack:(id)arg1;
-- (BOOL)isWidgetSuggestedInGallery:(id)arg1;
 - (void)loadDefaultItemsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (unsigned long long)rankOfWidgetSuggestedInGallery:(id)arg1;
 
 @end
 

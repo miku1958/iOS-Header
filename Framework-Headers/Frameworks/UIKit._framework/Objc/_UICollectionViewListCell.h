@@ -27,6 +27,7 @@
 - (id)_customViewForAccessoryConfiguration:(id)arg1;
 - (unsigned long long)_maskedCornersForSystemBackgroundView;
 - (void)_setAccessoryConfigurations:(id)arg1 forAxis:(long long)arg2;
+- (void)_setShowingCompactContextMenu:(BOOL)arg1;
 - (long long)accessoryTypeForAxis:(long long)arg1;
 - (id)accessoryViewForAxis:(long long)arg1;
 - (void)setAccessoryType:(long long)arg1 forAxis:(long long)arg2;

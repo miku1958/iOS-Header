@@ -25,10 +25,11 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_descriptionComponentsForEvent:(id)arg1 forProperties:(id)arg2;
+- (void)_logEvent:(id)arg1 withLabel:(id)arg2 shouldLogEventName:(BOOL)arg3 propertiesToLog:(id)arg4 publicPropertiesToLog:(id)arg5;
 - (id)_logEventMatchersInConfiguration:(id)arg1;
 - (id)init;
 - (id)initWithConfig:(id)arg1 cpAnalyticsInstance:(id)arg2;
-- (void)logEvent:(id)arg1 withLabel:(id)arg2 shouldLogEventName:(BOOL)arg3 propertiesToLog:(id)arg4;
 - (void)processEvent:(id)arg1;
 
 @end

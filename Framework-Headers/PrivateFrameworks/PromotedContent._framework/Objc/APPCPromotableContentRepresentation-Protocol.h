@@ -10,6 +10,7 @@
 
 @property (nonatomic, readonly) struct CGSize adSize;
 @property (nonatomic, readonly) long long adType;
+@property (nonatomic, readonly) long long desiredPosition;
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) long long privacyMarkerPosition;
 @property (nonatomic, readonly) APPCTapAction *tapAction;

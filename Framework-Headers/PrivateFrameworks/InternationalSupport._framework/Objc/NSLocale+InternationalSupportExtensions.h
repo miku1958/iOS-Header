@@ -37,6 +37,7 @@
 + (id)baseLanguageFromLanguage:(id)arg1;
 + (id)baseSystemLanguages;
 + (id)containingContinentOfRegion:(id)arg1;
++ (id)containingRegionOfRegion:(id)arg1;
 + (id)deviceLanguage;
 + (id)deviceLanguages;
 + (id)displayNameForLanguage:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3;

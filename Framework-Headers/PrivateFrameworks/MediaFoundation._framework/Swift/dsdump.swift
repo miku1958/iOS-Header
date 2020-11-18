@@ -278,12 +278,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let errorController : MFErrorController
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x77f8000235c8 (0x7f8000235c8) in binary!
+WARNING: couldn't find address 0x77f8000228b8 (0x7f8000228b8) in binary!
 	0x18000000c  @objc QueueAssetLoader.(null) <stripped>
 
 	// Swift methods
-	0x33e0  func <stripped> // method 
-	0x3900  func <stripped> // method 
+	0x2f30  func <stripped> // method 
+	0x3450  func <stripped> // method 
  }
 
  class MediaFoundation.ItemLoader : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ItemBufferConsumer {
@@ -299,16 +299,16 @@ WARNING: couldn't find address 0x77f8000235c8 (0x7f8000235c8) in binary!
 	var delegate : ItemLoaderDelegate
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7810000235e0 (0x10000235e0) in binary!
+WARNING: couldn't find address 0x7810000228d0 (0x10000228d0) in binary!
 	0x18000000c  @objc ItemLoader.(null) <stripped>
 
 	// Swift methods
-	0x5590  func <stripped> // method 
-	0x5830  func <stripped> // method 
-	0x5be0  func <stripped> // method 
-	0x6120  func <stripped> // method 
-	0x7fe0  func <stripped> // method 
-	0x8080  func <stripped> // method 
+	0x50e0  func <stripped> // method 
+	0x5380  func <stripped> // method 
+	0x5730  func <stripped> // method 
+	0x5c70  func <stripped> // method 
+	0x7b30  func <stripped> // method 
+	0x7bd0  func <stripped> // method 
  }
 
  class MediaFoundation.ItemBufferProducer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -323,12 +323,12 @@ WARNING: couldn't find address 0x7810000235e0 (0x10000235e0) in binary!
 	var cursor : MFQueuePlayerItem?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x77e0000235b0 (0x7e0000235b0) in binary!
+WARNING: couldn't find address 0x77e0000228a0 (0x7e0000228a0) in binary!
 	0x68000000c  @objc ItemBufferProducer.(null) <stripped>
 
 	// Swift methods
-	0x9470  func <stripped> // method 
-	0x96c0  func <stripped> // method 
+	0x8fc0  func <stripped> // method 
+	0x9210  func <stripped> // method 
  }
 
  enum MediaFoundation.Failure {
@@ -373,10 +373,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var fsm : EventHandling
 	var playerObserver : PlayerObserver
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var playerSubscription : {ü
+	var playerSubscription : k¢
 	var systemObserver : SystemObserver
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var systemSubscription : {ü
+	var systemSubscription : k¢
 	var videoPlayerBehavior : PlayerViewControllerBehavior
 	var userEventsMonitor : UserEventsMonitor
 	let reporter : EventReporting
@@ -388,13 +388,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var timeAtDeath : Double?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xbcd200023758 (0x4d200023758) in binary!
+WARNING: couldn't find address 0xbcd200022a48 (0x4d200022a48) in binary!
 	0x83d8  @objc PlayerController.(null) <stripped>
-WARNING: couldn't find address 0xaaf400023538 (0x2f400023538) in binary!
+WARNING: couldn't find address 0xaaf400022828 (0x2f400022828) in binary!
 	0x76bc  @objc PlayerController.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x46cfffab3b8  @objc PlayerController.(null) <stripped>
-	0x6e2000233b0  @objc PlayerController.m†HâﬂËD{ <stripped>
+	0x75cfffab2b8  @objc PlayerController.(null) <stripped>
+	0x6e2000226a0  @objc PlayerController.ËÔu <stripped>
 
 	// Swift methods
  }
@@ -410,28 +410,28 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var sourceID : String
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x777800023528 (0x77800023528) in binary!
+WARNING: couldn't find address 0x777800022818 (0x77800022818) in binary!
 	0xbd5e  @objc VideoUserAction.(null) <stripped>
-WARNING: couldn't find address 0x6c0400023500 (0x40400023500) in binary!
+WARNING: couldn't find address 0x6c04000227f0 (0x404000227f0) in binary!
 	0x6c00  @objc VideoUserAction.(null) <stripped>
-WARNING: couldn't find address 0x7748000234d8 (0x748000234d8) in binary!
+WARNING: couldn't find address 0x7748000227c8 (0x748000227c8) in binary!
 	0xbd2e  @objc VideoUserAction.(null) <stripped>
-WARNING: couldn't find address 0x7730000234b0 (0x730000234b0) in binary!
+WARNING: couldn't find address 0x7730000227a0 (0x730000227a0) in binary!
 	0xbd16  @objc VideoUserAction.(null) <stripped>
-WARNING: couldn't find address 0x6bbc00023488 (0x3bc00023488) in binary!
+WARNING: couldn't find address 0x6bbc00022778 (0x3bc00022778) in binary!
 	0x6bb8  @objc VideoUserAction.(null) <stripped>
-WARNING: couldn't find address 0x770000023460 (0x70000023460) in binary!
+WARNING: couldn't find address 0x770000022750 (0x70000022750) in binary!
 	0xbce6  @objc VideoUserAction.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x754fffa2520  @objc VideoUserAction.(null) <stripped>
-	0x48cfffa1e28  @objc VideoUserAction.ˇˇAˆƒÑã <stripped>
-	0x2d400023518  @objc VideoUserAction.ˆLâÍLâ˘MâËw <stripped>
-WARNING: couldn't find address 0x2346cfffab3b8 (0x46cfffab3b8) in binary!
+	0x244fffa23c0  @objc VideoUserAction.(null) <stripped>
+	0x77cfffa1cc8  @objc VideoUserAction.ã(HçΩ ˇˇˇË A <stripped>
+	0x2d400022808  @objc VideoUserAction. <stripped>
+WARNING: couldn't find address 0x2275cfffab2b8 (0x75cfffab2b8) in binary!
 	0x28000000c  @objc VideoUserAction.(null) <stripped>
-WARNING: couldn't find address 0xbee2000233b0 (0x6e2000233b0) in binary!
+WARNING: couldn't find address 0xbee2000226a0 (0x6e2000226a0) in binary!
 	0x767c  @objc VideoUserAction.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffc7cd8  @objc VideoUserAction.(null) <stripped>
+	0xfffc7c58  @objc VideoUserAction.(null) <stripped>
 
 	// Swift methods
  }
@@ -443,19 +443,19 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	var onGoingJumpToTimeIdentifier : String?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xabf400023518 (0x3f400023518) in binary!
+WARNING: couldn't find address 0xabf400022808 (0x3f400022808) in binary!
 	0xabe8  @objc PlayerViewControllerBehavior.(null) <stripped>
-WARNING: couldn't find address 0x6c5c000234f0 (0x45c000234f0) in binary!
+WARNING: couldn't find address 0x6c5c000227e0 (0x45c000227e0) in binary!
 	0xbd96  @objc PlayerViewControllerBehavior.(null) <stripped>
-WARNING: couldn't find address 0x779800023650 (0x79800023650) in binary!
+WARNING: couldn't find address 0x779800022940 (0x79800022940) in binary!
 	0xabb8  @objc PlayerViewControllerBehavior.(null) <stripped>
 WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
-	0x514fffa2878  @objc PlayerViewControllerBehavior.(null) <stripped>
-	0x4ecfffa2900  @objc PlayerViewControllerBehavior.HãXLâˇËè3 <stripped>
-	0x4c4fffa2908  @objc PlayerViewControllerBehavior.¬Lâ˘MâËËÄÉ <stripped>
+	0x4fffa2718  @objc PlayerViewControllerBehavior.(null) <stripped>
+	0x7dcfffa27a0  @objc PlayerViewControllerBehavior.ˇˇˇ <stripped>
+	0x7b4fffa27a8  @objc PlayerViewControllerBehavior.ﬁËöA <stripped>
 
 	// Swift methods
-	0x13690  func <stripped> // method 
+	0x13240  func <stripped> // method 
  }
 
  enum MediaFoundation.SetQueueBehavior {
@@ -482,7 +482,7 @@ WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case userActionFailed : ?°
+	case userActionFailed : /§
 	case mediaServicesUnavailable  
  }
 
@@ -494,10 +494,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let controller : FSMController
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xaad400023518 (0x2d400023518) in binary!
+WARNING: couldn't find address 0xaad400022808 (0x2d400022808) in binary!
 	0x769c  @objc PlayerFSM.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x39cfffb6008  @objc PlayerFSM.(null) <stripped>
+	0x68cfffb5f88  @objc PlayerFSM.(null) <stripped>
 
 	// Swift methods
  }
@@ -540,7 +540,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_eventStream : ]õ // +0x0
+	var $__lazy_storage_$_eventStream : Mû // +0x0
 	let player : AVQueuePlayer // +0x8
 	let queue : OS_dispatch_queue // +0x10
 	let configuration : PlayerPeriodicObservationConfiguration // +0x18
@@ -605,10 +605,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let routeDescription : String?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xbee2000233b0 (0x6e2000233b0) in binary!
+WARNING: couldn't find address 0xbee2000226a0 (0x6e2000226a0) in binary!
 	0x767c  @objc RouteMetadata.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffc7cd8  @objc RouteMetadata.(null) <stripped>
+	0xfffc7c58  @objc RouteMetadata.(null) <stripped>
 
 	// Swift methods
  }
@@ -716,7 +716,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case didSetState : State
 	case didStartQueueAssetLoading : LoadingAction
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case didEndQueueAssetLoading : î
+	case didEndQueueAssetLoading : ˚ñ
 	case queueAssetLoadingInfo : (description: String)
 	case itemLoading : (description: String)
 	case itemBuffering : (description: String)
@@ -747,17 +747,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let backgroundTaskController : BackgroundTaskController
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x766800023438 (0x66800023438) in binary!
+WARNING: couldn't find address 0x766800022728 (0x66800022728) in binary!
 	0x28000000c  @objc InternalPlaybackStackController.(null) <stripped>
 
 	// Swift methods
-	0x2f920  func <stripped> // method 
-	0x2f990  func <stripped> // method 
-	0x30730  func <stripped> // method 
-	0x30af0  func <stripped> // method 
-	0x32650  func <stripped> // method 
-	0x32db0  func <stripped> // method 
-	0x35a10  func <stripped> // method 
+	0x2f5b0  func <stripped> // method 
+	0x2f620  func <stripped> // method 
+	0x303c0  func <stripped> // method 
+	0x30780  func <stripped> // method 
+	0x322e0  func <stripped> // method 
+	0x32a40  func <stripped> // method 
+	0x356a0  func <stripped> // method 
  }
 
  class MediaFoundation.BackgroundTask : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -778,14 +778,14 @@ WARNING: couldn't find address 0x766800023438 (0x66800023438) in binary!
 	var tasks : BackgroundTask
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x765000023420 (0x65000023420) in binary!
+WARNING: couldn't find address 0x765000022710 (0x65000022710) in binary!
 	0xaa70  @objc BackgroundTaskController.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x3f4fffdc760  @objc BackgroundTaskController.(null) <stripped>
+	0x6e4fffdc710  @objc BackgroundTaskController.(null) <stripped>
 
 	// Swift methods
-	0x39850  func <stripped> // method 
-	0x3aa50  func <stripped> // method 
+	0x39500  func <stripped> // method 
+	0x3a700  func <stripped> // method 
  }
 
  enum MediaFoundation.Category {
@@ -895,10 +895,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var lastFullyDownloadedPlayerItem : MFPlayerItem?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xaa5c000234a0 (0x25c000234a0) in binary!
+WARNING: couldn't find address 0xaa5c00022790 (0x25c00022790) in binary!
 	0x7624  @objc InternalPlayerController.(null) <stripped>
 WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
-	0x314fffe1670  @objc InternalPlayerController.(null) <stripped>
+	0x604fffe1630  @objc InternalPlayerController.(null) <stripped>
 
 	// Swift methods
  }
@@ -944,18 +944,18 @@ WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
 
  class MediaFoundation.Description : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x757800023430 (0x57800023430) in binary!
+WARNING: couldn't find address 0x757800022720 (0x57800022720) in binary!
 	0x268000000c  @objc Description.(null) <stripped>
 
 	// Swift methods
-	0x51490  class func <stripped> // method 
+	0x51160  class func <stripped> // method 
+	0x51190  class func <stripped> // method 
+	0x51270  class func <stripped> // method 
+	0x51380  class func <stripped> // method 
 	0x514c0  class func <stripped> // method 
-	0x515a0  class func <stripped> // method 
-	0x516b0  class func <stripped> // method 
-	0x517f0  class func <stripped> // method 
-	0x519d0  class func <stripped> // method 
-	0x51a40  class func <stripped> // method 
-	0x51b10  class func <stripped> // method 
+	0x516a0  class func <stripped> // method 
+	0x51710  class func <stripped> // method 
+	0x517e0  class func <stripped> // method 
  }
 
  class MediaFoundation.AudioSessionConfiguration : NSObject /usr/lib/libobjc.A.dylib {
@@ -967,15 +967,15 @@ WARNING: couldn't find address 0x757800023430 (0x57800023430) in binary!
 	var options : CategoryOptions
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xbb4c00023280 (0x34c00023280) in binary!
+WARNING: couldn't find address 0xbb4c00022570 (0x34c00022570) in binary!
 	0x759c  @objc AudioSessionConfiguration.(null) <stripped>
-WARNING: couldn't find address 0xa9bc000232c0 (0x1bc000232c0) in binary!
+WARNING: couldn't find address 0xa9bc000225b0 (0x1bc000225b0) in binary!
 	0x18000000c  @objc AudioSessionConfiguration.(null) <stripped>
-WARNING: couldn't find address 0x757800023430 (0x57800023430) in binary!
+WARNING: couldn't find address 0x757800022720 (0x57800022720) in binary!
 	0x268000000c  @objc AudioSessionConfiguration.(null) <stripped>
 
 	// Swift methods
-	0x51c50  class func AudioSessionConfiguration.__allocating_init(category:mode:routeSharingPolicy:options:) // init 
+	0x51920  class func AudioSessionConfiguration.__allocating_init(category:mode:routeSharingPolicy:options:) // init 
  }
 
  enum MediaFoundation.ExternalPlaybackType { }
@@ -987,70 +987,70 @@ WARNING: couldn't find address 0x757800023430 (0x57800023430) in binary!
 	let internalStack : PlaybackStackController // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6a0400023230 (0x20400023230) in binary!
+WARNING: couldn't find address 0x6a0400022520 (0x20400022520) in binary!
 	0x6a00  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x754800023208 (0x54800023208) in binary!
+WARNING: couldn't find address 0x7548000224f8 (0x548000224f8) in binary!
 	0xbb2e  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xbb34000231e0 (0x334000231e0) in binary!
+WARNING: couldn't find address 0xbb34000224d0 (0x334000224d0) in binary!
 	0x69c8  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x69bc000231c0 (0x1bc000231c0) in binary!
+WARNING: couldn't find address 0x69bc000224b0 (0x1bc000224b0) in binary!
 	0x69b0  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x6dd4000234a8 (0x5d4000234a8) in binary!
+WARNING: couldn't find address 0x6dd400022798 (0x5d400022798) in binary!
 	0xbb1a  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xbb0e00023180 (0x30e00023180) in binary!
+WARNING: couldn't find address 0xbb0e00022470 (0x30e00022470) in binary!
 	0x74dc  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x74d000023418 (0x4d000023418) in binary!
+WARNING: couldn't find address 0x74d000022708 (0x4d000022708) in binary!
 	0x74c4  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x74b800023138 (0x4b800023138) in binary!
+WARNING: couldn't find address 0x74b800022428 (0x4b800022428) in binary!
 	0xbada  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xbada00023110 (0x2da00023110) in binary!
+WARNING: couldn't find address 0xbada00022400 (0x2da00022400) in binary!
 	0xa8c0  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xa8b4000232f8 (0xb4000232f8) in binary!
+WARNING: couldn't find address 0xa8b4000225e8 (0xb4000225e8) in binary!
 	0xbad0  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xbae4000230c8 (0x2e4000230c8) in binary!
+WARNING: couldn't find address 0xbae4000223b8 (0x2e4000223b8) in binary!
 	0xbaea  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xbafc000230a0 (0x2fc000230a0) in binary!
+WARNING: couldn't find address 0xbafc00022390 (0x2fc00022390) in binary!
 	0xbac0  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xbb0400023078 (0x30400023078) in binary!
+WARNING: couldn't find address 0xbb0400022368 (0x30400022368) in binary!
 	0xbaba  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xbaae00023050 (0x2ae00023050) in binary!
+WARNING: couldn't find address 0xbaae00022340 (0x2ae00022340) in binary!
 	0xbac0  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xba9600023028 (0x29600023028) in binary!
+WARNING: couldn't find address 0xba9600022318 (0x29600022318) in binary!
 	0xbaa8  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xbabc00023000 (0x2bc00023000) in binary!
+WARNING: couldn't find address 0xbabc000222f0 (0x2bc000222f0) in binary!
 	0xbac2  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x73e000022fd8 (0x3e000022fd8) in binary!
+WARNING: couldn't find address 0x73e0000222c8 (0x3e0000222c8) in binary!
 	0x73d4  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xb9ba00023440 (0x1ba00023440) in binary!
+WARNING: couldn't find address 0xb9ba00022730 (0x1ba00022730) in binary!
 	0x80c0  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x73b000023268 (0x3b000023268) in binary!
+WARNING: couldn't find address 0x73b000022558 (0x3b000022558) in binary!
 	0xa7d0  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x76cfffe8d90  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-	0xfffe8d98  @objc MFPlaybackStackControllerImplementation.ˇ)Ö‡˝ˇˇLâuêIæ <stripped>
+	0x25cfffe8d60  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+	0xfffe8d68  @objc MFPlaybackStackControllerImplementation. <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x3d4fffef740  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-	0x10cfffee168  @objc MFPlaybackStackControllerImplementation.t1…MÖˇIIœHâH[A]A^A_]√f.Ñ <stripped>
-	0x7cc00022ef0  @objc MFPlaybackStackControllerImplementation.HÉΩÿ˛ˇˇ <stripped>
-WARNING: couldn't find address 0x230ecffffb648 (0xecffffb648) in binary!
+	0x6c4fffef710  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+	0x3fcfffee138  @objc MFPlaybackStackControllerImplementation.ˇHâù(ˇˇˇH«Ö0ˇˇˇ <stripped>
+	0x7cc000221e0  @objc MFPlaybackStackControllerImplementation.≠‡˛ˇˇHãµ∞˛ˇˇË—x <stripped>
+WARNING: couldn't find address 0x223dcffffb648 (0x3dcffffb648) in binary!
 	0x118000000c  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xcbac000234e0 (0x3ac000234e0) in binary!
+WARNING: couldn't find address 0xcbac000227d0 (0x3ac000227d0) in binary!
 	0x72fc  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x72f000022ec8 (0x2f000022ec8) in binary!
+WARNING: couldn't find address 0x72f0000221b8 (0x2f0000221b8) in binary!
 	0x72e4  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xb8ca00023310 (0xca00023310) in binary!
+WARNING: couldn't find address 0xb8ca00022600 (0xca00022600) in binary!
 	0x6770  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x676c00023300 (0x76c00023300) in binary!
+WARNING: couldn't find address 0x676c000225f0 (0x76c000225f0) in binary!
 	0x72b4  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xb89a000234a8 (0x9a000234a8) in binary!
+WARNING: couldn't find address 0xb89a00022798 (0x9a00022798) in binary!
 	0xbaf6  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xb8ca000232d8 (0xca000232d8) in binary!
+WARNING: couldn't find address 0xb8ca000225c8 (0xca000225c8) in binary!
 	0xbade  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xbad200022e48 (0x2d200022e48) in binary!
+WARNING: couldn't find address 0xbad200022138 (0x2d200022138) in binary!
 	0xbac6  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xbaba000230d8 (0x2ba000230d8) in binary!
+WARNING: couldn't find address 0xbaba000223c8 (0x2ba000223c8) in binary!
 	0xb88e  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x724800023010 (0x24800023010) in binary!
+WARNING: couldn't find address 0x724800022300 (0x24800022300) in binary!
 	0x25029232840  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
 WARNING: couldn't find address 0x6964654d3a4d4152 (0x54d3a4d4152) in binary!
 	0x20206e6f69  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
@@ -1062,48 +1062,48 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	0x17463416d65  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
 
 	// Swift methods
-	0x51f80  func <stripped> // getter 
-	0x51fe0  func <stripped> // setter 
-	0x52050  func <stripped> // modifyCoroutine 
-	0x52110  func <stripped> // getter 
-	0x52190  func <stripped> // setter 
-	0x52260  func <stripped> // modifyCoroutine 
-	0x52330  class func MFPlaybackStackControllerImplementation.__allocating_init(queueController:assetLoader:errorController:externalPlaybackController:leaseController:queue:) // init 
-	0x52d30  func <stripped> // getter 
-	0x52d70  func <stripped> // method 
-	0x52f70  func <stripped> // method 
-	0x52fd0  func <stripped> // method 
-	0x53020  func <stripped> // method 
-	0x53060  func <stripped> // method 
-	0x53220  func <stripped> // method 
-	0x533c0  func <stripped> // method 
-	0x53620  func <stripped> // method 
-	0x538a0  func <stripped> // method 
-	0x53b20  func <stripped> // method 
-	0x53d90  func <stripped> // method 
-	0x53ff0  func <stripped> // method 
-	0x54250  func <stripped> // method 
-	0x544d0  func <stripped> // method 
-	0x54730  func <stripped> // method 
-	0x549b0  func <stripped> // method 
-	0x54c20  func <stripped> // method 
-	0x54d30  func <stripped> // getter 
-	0x54dd0  func <stripped> // getter 
-	0x55290  func <stripped> // method 
-	0x552d0  func <stripped> // method 
-	0x55430  func <stripped> // method 
+	0x51c50  func <stripped> // getter 
+	0x51cb0  func <stripped> // setter 
+	0x51d20  func <stripped> // modifyCoroutine 
+	0x51de0  func <stripped> // getter 
+	0x51e60  func <stripped> // setter 
+	0x51f30  func <stripped> // modifyCoroutine 
+	0x52000  class func MFPlaybackStackControllerImplementation.__allocating_init(queueController:assetLoader:errorController:externalPlaybackController:leaseController:queue:) // init 
+	0x52a00  func <stripped> // getter 
+	0x52a40  func <stripped> // method 
+	0x52c40  func <stripped> // method 
+	0x52ca0  func <stripped> // method 
+	0x52cf0  func <stripped> // method 
+	0x52d30  func <stripped> // method 
+	0x52ef0  func <stripped> // method 
+	0x53090  func <stripped> // method 
+	0x532f0  func <stripped> // method 
+	0x53570  func <stripped> // method 
+	0x537f0  func <stripped> // method 
+	0x53a60  func <stripped> // method 
+	0x53cc0  func <stripped> // method 
+	0x53f20  func <stripped> // method 
+	0x541a0  func <stripped> // method 
+	0x54400  func <stripped> // method 
+	0x54680  func <stripped> // method 
+	0x548f0  func <stripped> // method 
+	0x54a00  func <stripped> // getter 
+	0x54aa0  func <stripped> // getter 
+	0x54f60  func <stripped> // method 
+	0x54fa0  func <stripped> // method 
+	0x55100  func <stripped> // method 
  }
 
  class MediaFoundation.State : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x58aa0  func <stripped> // method 
-	0x58810  func <stripped> // method 
-	0x58ad0  func <stripped> // method 
-	0x58c10  func <stripped> // method 
-	0x58d20  func <stripped> // method 
-	0x58830  func <stripped> // method 
-	0x588e0  func <stripped> // method 
-	0x58da0  func <stripped> // getter 
+	0x58780  func <stripped> // method 
+	0x584e0  func <stripped> // method 
+	0x587b0  func <stripped> // method 
+	0x588f0  func <stripped> // method 
+	0x58a00  func <stripped> // method 
+	0x58500  func <stripped> // method 
+	0x585b0  func <stripped> // method 
+	0x58a80  func <stripped> // getter 
  }
 
  class MediaFoundation.EventTime : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1115,11 +1115,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let type : TimeType
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6c6400022f80 (0x46400022f80) in binary!
+WARNING: couldn't find address 0x6c6400022270 (0x46400022270) in binary!
 	0x6c58  @objc EventTime.(null) <stripped>
-WARNING: couldn't find address 0x6c5400022f58 (0x45400022f58) in binary!
+WARNING: couldn't find address 0x6c5400022248 (0x45400022248) in binary!
 	0x48000000c  @objc EventTime.(null) <stripped>
-WARNING: couldn't find address 0xb952000233d8 (0x152000233d8) in binary!
+WARNING: couldn't find address 0xb952000226c8 (0x152000226c8) in binary!
 	0x8058  @objc EventTime.(null) <stripped>
 
 	// Swift methods
@@ -1158,7 +1158,7 @@ WARNING: couldn't find address 0xb952000233d8 (0x152000233d8) in binary!
 	var queue : OS_dispatch_queue
 
 	// Swift methods
-	0x5c8d0  func <stripped> // method 
+	0x5c5b0  func <stripped> // method 
  }
 
  struct MediaFoundation.Subsystem {
@@ -1182,13 +1182,13 @@ WARNING: couldn't find address 0xb952000233d8 (0x152000233d8) in binary!
 	var currentSetQueueIdentifier : String?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb952000233d8 (0x152000233d8) in binary!
+WARNING: couldn't find address 0xb952000226c8 (0x152000226c8) in binary!
 	0x8058  @objc PlaybackStackController.(null) <stripped>
-WARNING: couldn't find address 0xa774000231b8 (0x774000231b8) in binary!
+WARNING: couldn't find address 0xa774000224a8 (0x774000224a8) in binary!
 	0x733c  @objc PlaybackStackController.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0xecffffb648  @objc PlaybackStackController.(null) <stripped>
-	0x3ac000234e0  @objc PlaybackStackController. tokenHçˇœ <stripped>
+	0x3dcffffb648  @objc PlaybackStackController.(null) <stripped>
+	0x3ac000227d0  @objc PlaybackStackController.˜Lâ˘Mâ‡Ë∏w <stripped>
 
 	// Swift methods
  }
@@ -1219,7 +1219,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_eventStream : ©Ñ // +0x0
+	var $__lazy_storage_$_eventStream : ôá // +0x0
 	let audioSession : AVAudioSession // +0x8
 	let queue : OS_dispatch_queue // +0x10
  }
@@ -1317,12 +1317,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : W™
+	var value : G≠
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var timescale : I™
+	var timescale : 9≠
 	var flags : CMTimeFlags
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var epoch : W™
+	var epoch : G≠
  }
 
  enum __C.AVPlayerExternalPlaybackType { }
@@ -1347,7 +1347,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : •©
+	let rawValue : ï¨
  }
 
  enum __C.Code { }

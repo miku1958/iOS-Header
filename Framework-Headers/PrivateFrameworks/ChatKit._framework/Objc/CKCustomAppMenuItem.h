@@ -8,21 +8,20 @@
 
 #import <ChatKit/CKAppMenuItem-Protocol.h>
 
-@class NSString, UIImage;
+@class NSString;
 
 @interface CKCustomAppMenuItem : NSObject <CKAppMenuItem>
 {
     NSString *___ck_displayName;
     id ___ck_identifier;
-    UIImage *___ck_image;
 }
 
 @property (readonly, nonatomic) NSString *__ck_displayName; // @synthesize __ck_displayName=___ck_displayName;
 @property (readonly, nonatomic) id __ck_identifier; // @synthesize __ck_identifier=___ck_identifier;
-@property (readonly, nonatomic) UIImage *__ck_image; // @synthesize __ck_image=___ck_image;
 
 - (void).cxx_destruct;
-- (id)initWithIdentifier:(id)arg1 displayName:(id)arg2 image:(id)arg3;
+- (id)__ck_imageForTraitCollection:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 displayName:(id)arg2;
 
 @end
 

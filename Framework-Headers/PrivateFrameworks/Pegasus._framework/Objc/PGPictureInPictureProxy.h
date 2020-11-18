@@ -52,9 +52,12 @@
         unsigned int pictureInPictureProxy_didStopPictureInPictureWithAnimationType_reason:1;
         unsigned int pictureInPictureProxyPictureInPictureInterruptionBegan:1;
         unsigned int pictureInPictureProxyPictureInPictureInterruptionEnded:1;
+        unsigned int pictureInPictureProxy_didUpdateStashedOrUnderLockState:1;
         unsigned int pictureInPictureProxy_didUpdateResourcesUsageReductionReasons_oldReasons:1;
         unsigned int pictureInPictureProxyWillSetupPictureInPictureStop:1;
     } _delegateRespondsTo;
+    BOOL _pictureInPictureStashedOrUnderLock;
+    BOOL _stashed;
     long long _controlsStyle;
     UIViewController<PGPictureInPictureViewController> *_viewController;
     CDUnknownBlockType __pipStopUserInterfaceRestoreContinuationBlock;
@@ -72,10 +75,12 @@
 @property (readonly, nonatomic, getter=isPictureInPictureInterrupted) BOOL pictureInPictureInterrupted;
 @property (readonly, nonatomic, getter=isPictureInPicturePossible) BOOL pictureInPicturePossible;
 @property (nonatomic) BOOL pictureInPictureShouldStartWhenEnteringBackground;
+@property (readonly, nonatomic, getter=isPictureInPictureStashedOrUnderLock) BOOL pictureInPictureStashedOrUnderLock; // @synthesize pictureInPictureStashedOrUnderLock=_pictureInPictureStashedOrUnderLock;
 @property (readonly, nonatomic, getter=isPictureInPictureSuspended) BOOL pictureInPictureSuspended;
 @property (readonly, nonatomic) BOOL pictureInPictureWasStartedWhenEnteringBackground;
 @property (readonly, nonatomic) PGPlaybackState *playbackState;
 @property (readonly, nonatomic) unsigned long long resourcesUsageReductionReasons; // @synthesize resourcesUsageReductionReasons=_resourcesUsageReductionReasons;
+@property (nonatomic, getter=isPictureInPictureStashed) BOOL stashed; // @synthesize stashed=_stashed;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIViewController<PGPictureInPictureViewController> *viewController; // @synthesize viewController=_viewController;
 
@@ -113,6 +118,7 @@
 - (id)_sceneSessionPersistentIdentifierForTransitionAnimationAssumeApplicationActive:(BOOL)arg1;
 - (void)_setMaybeNeedsUpdatePlaybackState;
 - (void)_setResourcesUsageReductionReasons:(unsigned long long)arg1;
+- (BOOL)_setStashedOrUnderLockIfNeeded:(BOOL)arg1;
 - (id)_sourceScene;
 - (void)_startPictureInPictureAnimated:(BOOL)arg1 enteringBackground:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)_stopObservingWindowSceneActivationState;
@@ -153,6 +159,7 @@
 - (void)setMicrophoneMuted:(BOOL)arg1;
 - (void)setPlaybackProgress:(double)arg1 playbackRate:(double)arg2;
 - (oneway void)setResourcesUsageReductionReasons:(unsigned long long)arg1;
+- (oneway void)setStashedOrUnderLock:(BOOL)arg1;
 - (void)skipForwardButtonTappedWithTimeInterval:(double)arg1;
 - (void)startPictureInPicture;
 - (void)stopPictureInPictureAndRestoreUserInterface:(BOOL)arg1;

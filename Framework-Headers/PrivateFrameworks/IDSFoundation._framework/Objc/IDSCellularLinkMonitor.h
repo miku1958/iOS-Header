@@ -46,7 +46,7 @@
 - (void)removeCellularLinkDelegate:(id)arg1;
 - (void)removePacketNotificationFilter;
 - (void)reset;
-- (BOOL)setPacketNotificationFilter:(struct sockaddr *)arg1 remote:(struct sockaddr *)arg2 uniqueTag:(unsigned int)arg3 callType:(unsigned char)arg4;
+- (BOOL)setPacketNotificationFilter:(const struct sockaddr *)arg1 remote:(const struct sockaddr *)arg2 uniqueTag:(unsigned int)arg3 callType:(unsigned char)arg4;
 - (void)setRemoteDeviceVersion:(unsigned int)arg1;
 - (void)updateProtocolQualityOfService:(BOOL)arg1 localAddress:(struct sockaddr *)arg2;
 

@@ -32,12 +32,12 @@
 - (id)__init;
 - (id)_countersOfType:(long long)arg1;
 - (void)_incrementCounterOfType:(long long)arg1 identifier:(id)arg2;
+- (void)_resetCounters;
 - (id)countersOfType:(long long)arg1;
 - (id)dumpState;
 - (void)incrementCounterOfType:(long long)arg1 identifier:(id)arg2;
 - (id)init;
-- (void)log;
-- (void)resetCounters;
+- (id)sampleCountersAndReset:(BOOL)arg1;
 - (void)submitCounters;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <ClipServices/CPSSessionProxyDelegate-Protocol.h>
 
-@class CPSPromise, CPSSessionProxy, NSString, NSURL;
+@class CPSPromise, CPSSessionConfiguration, CPSSessionProxy, NSString, NSURL;
 
 @interface CPSClipMetadataRequest : NSObject <CPSSessionProxyDelegate>
 {
@@ -24,6 +24,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isLikelyAvailable) BOOL likelyAvailable;
+@property (readonly, nonatomic) CPSSessionConfiguration *sessionConfiguration;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

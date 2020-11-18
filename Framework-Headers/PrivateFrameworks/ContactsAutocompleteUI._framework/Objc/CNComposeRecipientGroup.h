@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 - (void)_populateSortedChildren;
+- (void)addRecipientToPasteboard:(id)arg1;
 - (id)address;
 - (id)children;
 - (id)childrenWithCompleteMatches;

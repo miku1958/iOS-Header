@@ -746,6 +746,7 @@
 - (void)_stopScrollingAndZoomingAnimationsPinningToContentViewport:(BOOL)arg1 tramplingDragFlags:(BOOL)arg2;
 - (void)_stopScrollingNotify:(BOOL)arg1 pin:(BOOL)arg2;
 - (void)_stopScrollingNotify:(BOOL)arg1 pin:(BOOL)arg2 tramplingDragFlags:(BOOL)arg3;
+- (BOOL)_subviewPreventsSkipLayout:(id)arg1;
 - (BOOL)_supportsContentDimensionVariables;
 - (BOOL)_supportsPointerDragScrolling;
 - (void)_suppressImplicitAnimationsForScrollTest;

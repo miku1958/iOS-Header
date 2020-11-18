@@ -11,7 +11,7 @@
 #import <ChatKit/CKDetailsSearchResultsTitleHeaderCellDelegate-Protocol.h>
 #import <ChatKit/QLPreviewControllerDelegate-Protocol.h>
 
-@class CKConversation, CKDetailsSearchResultsFooterCell, CKDetailsSearchResultsTitleHeaderCell, CKQLPreviewController, CKQLPreviewControllerDataSource, CKSearchIndexingFooterCell, NSArray, NSString, UIBarButtonItem;
+@class CKConversation, CKDetailsSearchResultsFooterCell, CKDetailsSearchResultsTitleHeaderCell, CKQLPreviewController, CKQLPreviewControllerDataSource, CKSearchIndexingFooterCell, NSArray, NSDate, NSString, UIBarButtonItem, UICollectionViewCell;
 @protocol CKDetailsSearchControllerDelegate;
 
 @interface CKDetailsSearchViewController : CKSearchViewController <CKContainerSearchControllerDelegate, QLPreviewControllerDelegate, CKDetailsSearchResultsFooterCellDelegate, CKDetailsSearchResultsTitleHeaderCellDelegate>
@@ -30,6 +30,8 @@
     UIBarButtonItem *_flexibleItem;
     UIBarButtonItem *_saveButton;
     UIBarButtonItem *_deleteButton;
+    NSDate *_lastUserSelectedCellTime;
+    UICollectionViewCell *_lastUserSelectedCell;
 }
 
 @property (strong, nonatomic) UIBarButtonItem *cancelButton; // @synthesize cancelButton=_cancelButton;
@@ -42,6 +44,8 @@
 @property (strong, nonatomic) UIBarButtonItem *flexibleItem; // @synthesize flexibleItem=_flexibleItem;
 @property (strong, nonatomic) CKDetailsSearchResultsFooterCell *footerSizingCell; // @synthesize footerSizingCell=_footerSizingCell;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UICollectionViewCell *lastUserSelectedCell; // @synthesize lastUserSelectedCell=_lastUserSelectedCell;
+@property (strong, nonatomic) NSDate *lastUserSelectedCellTime; // @synthesize lastUserSelectedCellTime=_lastUserSelectedCellTime;
 @property (strong, nonatomic) CKQLPreviewController *previewController; // @synthesize previewController=_previewController;
 @property (strong, nonatomic) CKQLPreviewControllerDataSource *qlPreviewDataSource; // @synthesize qlPreviewDataSource=_qlPreviewDataSource;
 @property (strong, nonatomic) UIBarButtonItem *saveButton; // @synthesize saveButton=_saveButton;
@@ -73,10 +77,13 @@
 - (void)deleteTransferGUID:(id)arg1;
 - (id)footerBoundryItemsForController:(id)arg1 withEnvironment:(id)arg2;
 - (id)globalLayoutConfiguration;
+- (void)handleSpacePressed;
 - (id)headerBoundryItemsForController:(id)arg1 withEnvironment:(id)arg2;
 - (id)initWithSearchControllerClasses:(id)arg1;
 - (id)layoutSectionForController:(id)arg1 withEnvironment:(id)arg2;
 - (void)loadView;
+- (void)presentQuickLookView:(id)arg1;
+- (void)previewControllerDidDismiss:(id)arg1;
 - (void)rekickZKWSearchForAttachmentBatchUpdate;
 - (void)reloadData;
 - (id)searchController:(id)arg1 conversationForChatGUID:(id)arg2;
@@ -98,6 +105,7 @@
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (BOOL)wantsSpaceKeyCommandActive;
 
 @end
 

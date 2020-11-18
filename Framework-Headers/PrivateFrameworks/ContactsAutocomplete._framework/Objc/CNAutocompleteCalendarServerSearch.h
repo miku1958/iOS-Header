@@ -25,6 +25,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) CNStringTokenizer *tokenizer; // @synthesize tokenizer=_tokenizer;
 
++ (BOOL)isSupported;
 - (void).cxx_destruct;
 - (id)executeRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)executeRequest:(id)arg1 source:(id)arg2 resultsFactory:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;

@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIView *snapshot; // @synthesize snapshot=_snapshot;
 
 + (id)_imageViewForImage:(id)arg1;
-+ (void)screenCapFromView:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)_screenCapFromView:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (void)_updateSnapshot:(id)arg1;
 - (id)initWithView:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -20,6 +20,7 @@
 - (oneway void)pictureInPictureStartRequestedAnimated:(BOOL)arg1 withCompletionHandler:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)pictureInPictureStopRequestedAnimated:(BOOL)arg1 withCompletionHandler:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)setResourcesUsageReductionReasons:(unsigned long long)arg1;
+- (oneway void)setStashedOrUnderLock:(BOOL)arg1;
 - (oneway void)updateHostedWindowSize:(struct CGSize)arg1 animationType:(long long)arg2 initialSpringVelocity:(double)arg3 synchronizationFence:(BKSAnimationFenceHandle *)arg4;
 - (oneway void)updatePictureInPicturePossible:(BOOL)arg1;
 @end

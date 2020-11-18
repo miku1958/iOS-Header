@@ -5,10 +5,11 @@
 //
 
 #import <NewsUI/NSObject-Protocol.h>
+#import <NewsUI/NULinkedArticleContentProvider-Protocol.h>
 
 @class FCArticle, NSString;
 
-@protocol NUArticleDataProvider <NSObject>
+@protocol NUArticleDataProvider <NSObject, NULinkedArticleContentProvider>
 
 @property (readonly, nonatomic) FCArticle *article;
 @property (readonly, copy, nonatomic) NSString *articleID;

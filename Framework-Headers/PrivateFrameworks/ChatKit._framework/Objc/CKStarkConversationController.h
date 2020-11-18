@@ -6,10 +6,33 @@
 
 #import <objc/NSObject.h>
 
+#import <ChatKit/CPInterfaceControllerDelegate-Protocol.h>
+
+@class CPInterfaceController, CPListTemplate, NSDateFormatter, NSString;
+
 __attribute__((visibility("hidden")))
-@interface CKStarkConversationController : NSObject
+@interface CKStarkConversationController : NSObject <CPInterfaceControllerDelegate>
 {
+    CPInterfaceController *_interfaceController;
+    CPListTemplate *_conversationListTemplate;
+    NSDateFormatter *_dateFormatter;
+    NSDateFormatter *_timeFormatter;
 }
+
+@property (strong, nonatomic) CPListTemplate *conversationListTemplate; // @synthesize conversationListTemplate=_conversationListTemplate;
+@property (strong, nonatomic) NSDateFormatter *dateFormatter; // @synthesize dateFormatter=_dateFormatter;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) CPInterfaceController *interfaceController; // @synthesize interfaceController=_interfaceController;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) NSDateFormatter *timeFormatter; // @synthesize timeFormatter=_timeFormatter;
+
+- (void).cxx_destruct;
+- (void)_resortAndReloadData;
+- (void)conversationListDidChange:(id)arg1;
+- (id)initWithInterfaceController:(id)arg1;
+- (void)templateWillAppear:(id)arg1 animated:(BOOL)arg2;
 
 @end
 

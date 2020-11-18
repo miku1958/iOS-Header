@@ -57,10 +57,14 @@
 - (float *)getAllScores:(float [1542])arg1;
 - (id)init;
 - (id)initWithCache:(struct PRSL2FeatureScoreSmallCache)arg1 featureData:(void *)arg2 featureDataSize:(unsigned short)arg3 flags:(unsigned char)arg4 values:(unsigned char)arg5;
-- (void)restoreFromJazzkonHacks:(float *)arg1;
+- (void)restoreFromJazzkonPlusHacks:(float *)arg1;
 - (float)scoreForFeature:(unsigned short)arg1;
 - (BOOL)serializeToJSON:(void *)arg1 options:(long long)arg2;
 - (void)setScores:(float *)arg1 forFeatures:(unsigned short *)arg2 count:(unsigned long long)arg3;
+- (void)swapAllContentCreationDateFeatures:(float *)arg1;
+- (void)swapAllLastUsedDateFeatures:(float *)arg1;
+- (void)swapAllRecenyFeatures:(float *)arg1;
+- (void)swapFeature:(unsigned short)arg1 withSubstitute:(unsigned short)arg2 scores:(float *)arg3;
 
 @end
 

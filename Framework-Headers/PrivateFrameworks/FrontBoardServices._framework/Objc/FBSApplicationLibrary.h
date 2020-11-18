@@ -37,7 +37,6 @@
 @property (readonly, nonatomic, getter=isUsingNetwork) BOOL usingNetwork;
 
 - (void).cxx_destruct;
-- (void)_addCurrentProcess;
 - (void)_executeOrPendInstallSynchronizationBlock:(CDUnknownBlockType)arg1;
 - (void)_handleApplicationStateDidChange:(id)arg1 notifyForUpdateInsteadOfReplacement:(BOOL)arg2;
 - (id)_initWithApplicationWorkspace:(id)arg1 configuration:(id)arg2;

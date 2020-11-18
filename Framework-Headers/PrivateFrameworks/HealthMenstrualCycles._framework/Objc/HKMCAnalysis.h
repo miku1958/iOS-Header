@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthMenstrualCycles/HKRedactedDescription-Protocol.h>
 #import <HealthMenstrualCycles/NSCopying-Protocol.h>
 #import <HealthMenstrualCycles/NSSecureCoding-Protocol.h>
 
-@class HKMCStatistics, HKQuantity, NSArray, NSNumber;
+@class HKMCStatistics, HKQuantity, NSArray, NSNumber, NSString;
 
-@interface HKMCAnalysis : NSObject <NSSecureCoding, NSCopying>
+@interface HKMCAnalysis : NSObject <HKRedactedDescription, NSSecureCoding, NSCopying>
 {
     HKMCStatistics *_statistics;
     NSArray *_menstruationProjections;
@@ -27,6 +28,7 @@
 @property (copy, nonatomic) NSNumber *anchor; // @synthesize anchor=_anchor;
 @property (readonly, nonatomic) NSArray *cycles; // @synthesize cycles=_cycles;
 @property (readonly, nonatomic) NSArray *fertileWindowProjections; // @synthesize fertileWindowProjections=_fertileWindowProjections;
+@property (readonly, copy) NSString *hk_redactedDescription;
 @property (readonly, copy, nonatomic) NSNumber *lastLoggedDayIndex; // @synthesize lastLoggedDayIndex=_lastLoggedDayIndex;
 @property (readonly, copy, nonatomic) NSNumber *lastMenstrualFlowDayIndex; // @synthesize lastMenstrualFlowDayIndex=_lastMenstrualFlowDayIndex;
 @property (readonly, nonatomic) NSArray *menstruationProjections; // @synthesize menstruationProjections=_menstruationProjections;
@@ -43,7 +45,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStatistics:(id)arg1 menstruationProjections:(id)arg2 fertileWindowProjections:(id)arg3 cycles:(id)arg4 recentSymptoms:(unsigned long long)arg5 recentBasalBodyTemperature:(id)arg6 lastLoggedDayIndex:(id)arg7 lastMenstrualFlowDayIndex:(id)arg8;
 - (BOOL)isEqual:(id)arg1;
-- (id)redactedDescription;
 
 @end
 

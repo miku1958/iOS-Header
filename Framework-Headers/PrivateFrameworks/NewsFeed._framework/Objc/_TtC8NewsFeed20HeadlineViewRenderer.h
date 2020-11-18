@@ -10,6 +10,8 @@
 
 @interface _TtC8NewsFeed20HeadlineViewRenderer : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *presentingViewController;
+    MISSING_TYPE *presentationDelegateProvider;
     MISSING_TYPE *thumbnailImageCache;
     MISSING_TYPE *publisherLogoImageCache;
     MISSING_TYPE *rendererTool;

@@ -11,8 +11,9 @@
 @interface _TtC8NewsFeed26FeedTopicClusteringService : _TtCs12_SwiftObject
 {
     MISSING_TYPE *cloudContext;
-    MISSING_TYPE *headlineClusterer;
+    MISSING_TYPE *personalizationService;
     MISSING_TYPE *headlineClusterOrderer;
+    MISSING_TYPE *xavierEnabled;
 }
 
 @end

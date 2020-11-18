@@ -12,6 +12,7 @@
 @protocol CKChatInputControllerDelegate <NSObject>
 - (void)chatInputController:(CKChatInputController *)arg1 presentShelfModal:(UIViewController *)arg2 animated:(BOOL)arg3 completion:(void (^)(void))arg4;
 - (BOOL)chatInputControllerCanSend:(CKChatInputController *)arg1;
+- (void)chatInputControllerCancelSelectFunCamera:(CKChatInputController *)arg1;
 - (void)chatInputControllerDidDismissCompactBrowserViewController:(CKChatInputController *)arg1;
 - (void)chatInputControllerDidDismissModalBrowserViewController:(CKChatInputController *)arg1;
 - (void)chatInputControllerDidPresentModalBrowserViewController:(CKChatInputController *)arg1;
@@ -34,6 +35,7 @@
 - (void)chatInputDidUpdateInputViewShowingBrowser:(BOOL)arg1 entryFieldCollapsed:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)chatInputDidUpdateWithNewInputViewController:(UIInputViewController *)arg1;
 - (void)chatInputSentComposition:(CKComposition *)arg1;
+- (NSString *)chatInputTranscriptIdentifier;
 - (void)chatInputWillChangeHeightForCompactPresentation:(double)arg1;
 - (void)chatInputWillUpdateInputViewShowingBrowser;
 - (id<CKBrowserDragControllerTranscriptDelegate>)dragControllerTranscriptDelegate;

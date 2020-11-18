@@ -18,22 +18,8 @@
     NSMutableDictionary *_columnViews;
 }
 
-@property (strong, nonatomic) SXDataTableBlueprint *blueprint; // @synthesize blueprint=_blueprint;
-@property (strong, nonatomic) NSMutableDictionary *columnViews; // @synthesize columnViews=_columnViews;
-@property (weak, nonatomic) id<SXDataTableDataSource> dataSource; // @synthesize dataSource=_dataSource;
-@property (strong, nonatomic) NSMutableDictionary *rowViews; // @synthesize rowViews=_rowViews;
-@property (readonly, weak, nonatomic) id<SXDataTableViewDataSource> viewDataSource; // @synthesize viewDataSource=_viewDataSource;
-
 - (void).cxx_destruct;
-- (void)draw:(CDUnknownBlockType)arg1 forIndexPath:(CDStruct_2fea82da)arg2;
-- (CDStruct_2fea82da)indexPathForPoint:(struct CGPoint)arg1;
-- (id)initWithDataSource:(id)arg1;
-- (void)layoutCellsForBlueprint:(id)arg1;
 - (struct CGPoint)originOffset;
-- (void)prepareDrawingForBlueprint:(id)arg1;
-- (void)reset;
-- (id)viewForColumnAtIndex:(unsigned long long)arg1;
-- (id)viewForRowAtIndex:(unsigned long long)arg1;
 
 @end
 

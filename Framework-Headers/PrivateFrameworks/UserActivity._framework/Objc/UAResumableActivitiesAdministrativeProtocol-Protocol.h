@@ -24,7 +24,7 @@
 - (void)doGetCurrentAdvertisedItemUUID:(void (^)(NSUUID *))arg1;
 - (void)doGetPairedDevices:(NSDictionary *)arg1 completionHandler:(void (^)(NSArray *, NSArray *, NSError *))arg2;
 - (void)doGetSFActivityAdvertisement:(NSDictionary *)arg1 completionHandler:(void (^)(NSData *, NSDate *, NSUUID *, NSError *))arg2;
-- (void)doInjectBTLE:(NSUUID *)arg1 type:(unsigned long long)arg2 identifier:(NSString *)arg3 title:(NSString *)arg4 activityPayload:(NSData *)arg5 frameworkPayload:(NSData *)arg6 payloadDelay:(double)arg7;
+- (void)doInjectBTLEItem:(NSUUID *)arg1 type:(unsigned long long)arg2 identifier:(NSString *)arg3 title:(NSString *)arg4 activityPayload:(NSData *)arg5 webPageURL:(NSString *)arg6 remoteModel:(NSString *)arg7 duration:(double)arg8 payloadDelay:(double)arg9;
 - (void)doNOP:(NSString *)arg1 withCompletionHandler:(void (^)(NSString *, NSError *))arg2;
 - (void)doReplayCommands:(NSArray *)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 - (void)doSetDebugOption:(NSString *)arg1 value:(id)arg2;

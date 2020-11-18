@@ -59,6 +59,7 @@
 - (id)initWithCameraProfile:(id)arg1;
 - (void)invertZones;
 - (void)streamControllerStateDidUpdate:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 

@@ -102,6 +102,7 @@ __attribute__((visibility("hidden")))
 - (void)_broadcastReadyToSwitchToUser:(id)arg1;
 - (void)_broadcastWillSwitchToUser:(id)arg1;
 - (void)_broadcastpersonaListDidUpdate;
+- (id)_createUMServerSyncConnection;
 - (int)_pid;
 - (id)_registerPersonaListObserver:(id)arg1 withMachService:(id)arg2;
 - (void)_registerStakeholder:(id)arg1;
@@ -134,8 +135,8 @@ __attribute__((visibility("hidden")))
 - (void)loginUICheckInWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)logoutToLoginSessionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)personaListDidUpdateCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)personaLoginWithUserODuuid:(id)arg1 withUid:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)personaLogoutWithUserODuuid:(id)arg1 withUid:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (int)personaSynchronousLoginWithODuuid:(id)arg1 withUid:(unsigned int)arg2;
+- (int)personaSynchronousLogoutWithODuuid:(id)arg1 withUid:(unsigned int)arg2;
 - (void)personaUpdateCallbackForMachServiceCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)readyToSwitchToLoginSession:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)readyToSwitchToUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

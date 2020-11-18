@@ -33,7 +33,7 @@
 - (void)addFilter:(id)arg1;
 - (id)animationWithKeyPath:(id)arg1 beginTime:(double)arg2 duration:(double)arg3 fromValue:(id)arg4 toValue:(id)arg5;
 - (void)clearFilters;
-- (void)configureForChatItem:(id)arg1;
+- (void)configureForChatItem:(id)arg1 context:(id)arg2;
 - (struct CGRect)contentAlignmentRect;
 - (BOOL)hidesCheckmark;
 - (id)initWithFrame:(struct CGRect)arg1;

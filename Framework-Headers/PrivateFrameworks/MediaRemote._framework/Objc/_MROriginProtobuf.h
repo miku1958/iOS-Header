@@ -10,6 +10,7 @@
 
 @class NSString, _MRDeviceInfoMessageProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MROriginProtobuf : PBCodable <NSCopying>
 {
     _MRDeviceInfoMessageProtobuf *_deviceInfoDeprecated;
@@ -22,26 +23,13 @@
     } _has;
 }
 
-@property (strong, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfoDeprecated; // @synthesize deviceInfoDeprecated=_deviceInfoDeprecated;
-@property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property (readonly, nonatomic) BOOL hasDeviceInfoDeprecated;
-@property (readonly, nonatomic) BOOL hasDisplayName;
-@property (nonatomic) BOOL hasIdentifier;
-@property (nonatomic) BOOL hasType;
-@property (nonatomic) int identifier; // @synthesize identifier=_identifier;
-@property (nonatomic) int type; // @synthesize type=_type;
-
 - (void).cxx_destruct;
-- (int)StringAsType:(id)arg1;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

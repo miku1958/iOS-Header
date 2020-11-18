@@ -22,6 +22,7 @@
     BOOL _handleOutputDeviceChangedScheduled;
     BOOL _handleOutputDevicesChangedScheduled;
     BOOL _handleDiscoverySessionOutputDevicesChangedScheduled;
+    BOOL _handlingAirPlayDevicesTimeOut;
     unsigned int _type;
     NSString *_uniqueIdentifier;
     AVOutputContext *_avOutputContext;

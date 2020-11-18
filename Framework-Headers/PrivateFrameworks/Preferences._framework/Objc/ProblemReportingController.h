@@ -19,6 +19,7 @@
     NSArray *_healthDataSpecifiers;
     NSArray *_healthRecordsDataSpecifiers;
     NSArray *_wheelchairDataSpecifiers;
+    NSArray *_handwashingDataSpecifiers;
     NSArray *_automatedFeedbackSpecifiers;
     NSArray *_improveSiriSpecifiers;
 }
@@ -26,6 +27,7 @@
 @property (readonly) NSArray *appActivitySpecifiers;
 @property (strong, nonatomic) NSArray *automatedFeedbackSpecifiers; // @synthesize automatedFeedbackSpecifiers=_automatedFeedbackSpecifiers;
 @property (readonly) PSSpecifier *filesystemMetadataSnapshotSpecifier;
+@property (readonly) NSArray *handwashingDataSpecifiers; // @synthesize handwashingDataSpecifiers=_handwashingDataSpecifiers;
 @property (readonly) NSArray *healthDataSpecifiers; // @synthesize healthDataSpecifiers=_healthDataSpecifiers;
 @property (readonly) NSArray *healthRecordsDataSpecifiers; // @synthesize healthRecordsDataSpecifiers=_healthRecordsDataSpecifiers;
 @property (strong, nonatomic) NSArray *improveSiriSpecifiers; // @synthesize improveSiriSpecifiers=_improveSiriSpecifiers;
@@ -48,11 +50,13 @@
 - (void)setProblemReportingEnabled:(BOOL)arg1;
 - (void)setProblemReportingEnabled:(id)arg1 forSpecifier:(id)arg2;
 - (void)setShouldShareAppActivityWithAppDevelopers:(id)arg1 specifier:(id)arg2;
+- (void)setShouldShareHandwashingData:(id)arg1 specifier:(id)arg2;
 - (void)setShouldShareHealthData:(id)arg1 specifier:(id)arg2;
 - (void)setShouldShareHealthRecordsData:(id)arg1 specifier:(id)arg2;
 - (void)setShouldShareWheelchairData:(id)arg1 specifier:(id)arg2;
 - (void)setShouldShareiCloudAnalytics:(id)arg1 specifier:(id)arg2;
 - (id)shouldShareAppActivityWithAppDevelopers;
+- (id)shouldShareHandwashingDataForSpecifier:(id)arg1;
 - (id)shouldShareHealthDataForSpecifier:(id)arg1;
 - (id)shouldShareHealthRecordsDataForSpecifier:(id)arg1;
 - (id)shouldShareWheelchairDataForSpecifier:(id)arg1;
@@ -60,6 +64,7 @@
 - (BOOL)shouldShowiCloudSpecifiersForAccount:(id)arg1;
 - (void)showAboutAnalyticsSheet;
 - (void)showAboutAppAnalyticsSheet;
+- (void)showAboutHandwashingDataSheet;
 - (void)showAboutHealthDataSheet;
 - (void)showAboutHealthRecordsDataSheet;
 - (void)showAboutImproveSiriAnalyticsSheet;

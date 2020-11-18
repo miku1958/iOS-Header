@@ -24,6 +24,7 @@
     NSNumber *_score;
     NSString *_adaptedModelRecipeID;
     NSString *_supportedBundleIDs;
+    NSString *_utiList;
     NSDictionary *_modelSuggestionProxies;
     NSString *_reason;
     NSString *_reasonType;
@@ -46,6 +47,7 @@
 @property (readonly, copy, nonatomic) NSNumber *score; // @synthesize score=_score;
 @property (strong, nonatomic) NSString *supportedBundleIDs; // @synthesize supportedBundleIDs=_supportedBundleIDs;
 @property (copy, nonatomic) NSString *trialID; // @synthesize trialID=_trialID;
+@property (strong, nonatomic) NSString *utiList; // @synthesize utiList=_utiList;
 
 + (id)suggestionForBundleID:(id)arg1 derivedIntentIdentifier:(id)arg2 knowledgeStore:(id)arg3 contactResolver:(id)arg4 reason:(id)arg5 reasonType:(id)arg6;
 + (BOOL)supportsSecureCoding;

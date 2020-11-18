@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 @interface SCNMTLRenderPipeline : NSObject
 {
     CDStruct_21854d8c _sceneBuffer;
-    struct __C3DFXProgram *_program;
+    struct __C3DFXMetalProgram *_program;
     struct __C3DFXPass *_pass;
     CDStruct_8f3d16ac _renderPassDesc;
     unsigned int _buffersUsageMask[2];

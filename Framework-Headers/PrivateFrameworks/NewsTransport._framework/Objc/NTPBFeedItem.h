@@ -26,12 +26,14 @@
     NSString *_feedID;
     NSString *_parentIssueID;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores *_scores;
+    NSString *_sourceArticleListID;
     NSString *_sourceChannelID;
     NSMutableArray *_topicIDs;
     BOOL _hasAudioTrack;
     BOOL _hasThumbnail;
     BOOL _hasVideo;
     BOOL _isBundlePaid;
+    BOOL _isEvergreen;
     BOOL _isExplicitContent;
     BOOL _isFeatured;
     BOOL _isFromBlockedStorefront;
@@ -50,6 +52,7 @@
         unsigned int hasThumbnail:1;
         unsigned int hasVideo:1;
         unsigned int isBundlePaid:1;
+        unsigned int isEvergreen:1;
         unsigned int isExplicitContent:1;
         unsigned int isFeatured:1;
         unsigned int isFromBlockedStorefront:1;
@@ -79,6 +82,7 @@
 @property (nonatomic) BOOL hasHasThumbnail;
 @property (nonatomic) BOOL hasHasVideo;
 @property (nonatomic) BOOL hasIsBundlePaid;
+@property (nonatomic) BOOL hasIsEvergreen;
 @property (nonatomic) BOOL hasIsExplicitContent;
 @property (nonatomic) BOOL hasIsFeatured;
 @property (nonatomic) BOOL hasIsFromBlockedStorefront;
@@ -90,10 +94,12 @@
 @property (nonatomic) BOOL hasPublishDateMilliseconds;
 @property (nonatomic) BOOL hasPublisherArticleVersion;
 @property (readonly, nonatomic) BOOL hasScores;
+@property (readonly, nonatomic) BOOL hasSourceArticleListID;
 @property (readonly, nonatomic) BOOL hasSourceChannelID;
 @property (nonatomic) BOOL hasThumbnail; // @synthesize hasThumbnail=_hasThumbnail;
 @property (nonatomic) BOOL hasVideo; // @synthesize hasVideo=_hasVideo;
 @property (nonatomic) BOOL isBundlePaid; // @synthesize isBundlePaid=_isBundlePaid;
+@property (nonatomic) BOOL isEvergreen; // @synthesize isEvergreen=_isEvergreen;
 @property (nonatomic) BOOL isExplicitContent; // @synthesize isExplicitContent=_isExplicitContent;
 @property (nonatomic) BOOL isFeatured; // @synthesize isFeatured=_isFeatured;
 @property (nonatomic) BOOL isFromBlockedStorefront; // @synthesize isFromBlockedStorefront=_isFromBlockedStorefront;
@@ -105,6 +111,7 @@
 @property (nonatomic) unsigned long long publishDateMilliseconds; // @synthesize publishDateMilliseconds=_publishDateMilliseconds;
 @property (nonatomic) long long publisherArticleVersion; // @synthesize publisherArticleVersion=_publisherArticleVersion;
 @property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores *scores; // @synthesize scores=_scores;
+@property (strong, nonatomic) NSString *sourceArticleListID; // @synthesize sourceArticleListID=_sourceArticleListID;
 @property (strong, nonatomic) NSString *sourceChannelID; // @synthesize sourceChannelID=_sourceChannelID;
 @property (strong, nonatomic) NSMutableArray *topicIDs; // @synthesize topicIDs=_topicIDs;
 

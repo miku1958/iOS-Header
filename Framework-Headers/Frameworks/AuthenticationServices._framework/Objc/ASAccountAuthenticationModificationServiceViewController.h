@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)_deleteExistingKeychainCredentialIfPossible;
 - (BOOL)_ensureHostHasAccountModificationEntitlement;
 - (void)_findExtensionSupportingUpgrade:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)_isKeychainSyncEnabled;
 - (void)_updateCredential:(id)arg1 forServiceIdentifier:(id)arg2 userInfo:(id)arg3 extension:(id)arg4;
 - (void)_updateKeychainWithNewCredential:(id)arg1;
 - (void)_upgradeCredentialToSignInWithApple:(id)arg1 forServiceIdentifier:(id)arg2 userInfo:(id)arg3 extension:(id)arg4;

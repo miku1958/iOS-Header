@@ -30,7 +30,6 @@
 + (id)proposedTemporaryFileURLForFilename:(id)arg1;
 + (id)proposedTemporaryFileURLForFilename:(id)arg1 inDirectory:(id)arg2 isDirectory:(BOOL)arg3;
 + (id)proposedTemporaryFileURLForFilename:(id)arg1 isDirectory:(BOOL)arg2;
-+ (void)removeItemsInDirectory:(id)arg1;
 + (id)sharedAppGroupDirectoryURL;
 + (id)sharedTemporaryDirectoryURL;
 + (id)temporaryDirectoryURL;

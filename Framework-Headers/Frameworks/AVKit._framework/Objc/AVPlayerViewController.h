@@ -11,6 +11,7 @@
 #import <AVKit/AVPictureInPictureContentSource-Protocol.h>
 #import <AVKit/AVPictureInPictureControllerDelegate-Protocol.h>
 #import <AVKit/AVPlaybackControlsViewVisibilityDelegate-Protocol.h>
+#import <AVKit/AVPlayerControllerDelegate-Protocol.h>
 #import <AVKit/AVTransitionControllerDelegate-Protocol.h>
 #import <AVKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <AVKit/UIPopoverPresentationControllerDelegate-Protocol.h>
@@ -18,7 +19,7 @@
 @class AVBehaviorStorage, AVContentOverlayView, AVFullScreenViewController, AVObservationController, AVPictureInPictureController, AVPlaybackControlsController, AVPlayer, AVPlayerController, AVPlayerControllerVolumeAnimator, AVPlayerView, AVPlayerViewControllerContentView, AVPlayerViewControllerCustomControlsView, AVPresentationContext, AVSecondScreenConnection, AVTransitionController, NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSString, NSValue, UIHoverGestureRecognizer, UIPopoverPresentationController, UIView, UIWindow, __AVPlayerLayerView;
 @protocol AVPlayerViewControllerContentTransitioning_NewsOnly, AVPlayerViewControllerDelegate;
 
-@interface AVPlayerViewController : UIViewController <AVPictureInPictureControllerDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, AVFullScreenViewControllerDelegate, AVTransitionControllerDelegate, AVPictureInPictureContentSource, AVContentOverlayViewDelegate, AVPlaybackControlsViewVisibilityDelegate>
+@interface AVPlayerViewController : UIViewController <AVPictureInPictureControllerDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, AVFullScreenViewControllerDelegate, AVTransitionControllerDelegate, AVPictureInPictureContentSource, AVContentOverlayViewDelegate, AVPlayerControllerDelegate, AVPlaybackControlsViewVisibilityDelegate>
 {
     BOOL _playerShouldAutoplay;
     BOOL _showsPlaybackControls;
@@ -41,6 +42,7 @@
     BOOL _updatesNowPlayingInfoCenter;
     BOOL _showsTimecodes;
     BOOL _readyForDisplay;
+    BOOL _canStartPictureInPictureAutomaticallyFromInline;
     BOOL _entersFullScreenWhenPlaybackBegins;
     BOOL _exitsFullScreenWhenPlaybackEnds;
     BOOL _shouldUseNetworkingResourcesForLiveStreamingWhilePaused;
@@ -99,6 +101,7 @@
 @property (nonatomic) BOOL canIncludePlaybackControlsWhenInline; // @synthesize canIncludePlaybackControlsWhenInline=_canIncludePlaybackControlsWhenInline;
 @property (nonatomic) BOOL canPausePlaybackWhenExitingFullScreen; // @synthesize canPausePlaybackWhenExitingFullScreen=_canPausePlaybackWhenExitingFullScreen;
 @property (nonatomic) BOOL canShowPictureInPictureButton;
+@property (nonatomic) BOOL canStartPictureInPictureAutomaticallyFromInline; // @synthesize canStartPictureInPictureAutomaticallyFromInline=_canStartPictureInPictureAutomaticallyFromInline;
 @property (nonatomic) BOOL canToggleVideoGravityWhenEmbeddedInline;
 @property (readonly, nonatomic) UIView *contentOverlayView;
 @property (readonly, nonatomic, getter=isContentTransitionInteractive) BOOL contentTransitionInteractive;
@@ -288,6 +291,7 @@
 - (BOOL)playbackControlsIncludeVolumeControlsControls;
 - (void)playbackControlsView:(id)arg1 animateAlongsideVisibilityAnimationsWithAnimationCoordinator:(id)arg2 appearingViews:(id)arg3 disappearingViews:(id)arg4;
 - (void)playbackControlsViewNeedsUpdateStatusBarAppearance:(id)arg1;
+- (BOOL)playerControllerCanRestorePlaybackRateAfterAudioSessionDeactivation:(id)arg1;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (long long)preferredInterfaceOrientationForPresentation;
 - (long long)preferredStatusBarStyle;

@@ -112,6 +112,7 @@
 - (void)_postProcessPreferredAttributes:(id)arg1 forView:(id)arg2;
 - (void)_prepareForCollectionViewUpdates:(id)arg1 withDataSourceTranslator:(id)arg2;
 - (void)_prepareForPreferredAttributesQueryForView:(id)arg1 withLayoutAttributes:(id)arg2;
+- (void)_prepareForTransitionToLayout:(id)arg1;
 - (BOOL)_preparedForBoundsChanges;
 - (id)_propertyAnimatorForCollectionViewUpdates:(id)arg1 withCustomAnimator:(id)arg2;
 - (struct CGVector)_scrollingUnitVectorForOrthogonalScrollingSection:(long long)arg1;

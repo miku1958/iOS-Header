@@ -52,6 +52,12 @@
     HMAccessory *_stereoCounterpartAccessory;
     int _stereoPairUserInputState;
     int _stereoPairRole;
+    BOOL _tvAudioEnabled;
+    BOOL _tvAudioInputAvailable;
+    int _tvAudioUserInputState;
+    BOOL _prefTVAudioEnabled;
+    NSArray *_potentialTVs;
+    HMAccessory *_tvAudioInput;
     SFSession *_sfSession;
     BOOL _sfSessionSecured;
     int _sfSessionState;
@@ -155,6 +161,7 @@
     CDUnknownBlockType _promptForRoomHandler;
     CDUnknownBlockType _promptForSiriEnableHandler;
     CDUnknownBlockType _promptForTermsHandler;
+    CDUnknownBlockType _promptForTVAudioHandler;
     CDUnknownBlockType _promptToInstallHomeAppHandler;
     CDUnknownBlockType _promptToShareSettingsHandler;
     CDUnknownBlockType _promptForSiriLanguageHandler;
@@ -188,6 +195,7 @@
 @property (copy, nonatomic) CDUnknownBlockType promptForSiriLanguageHandler; // @synthesize promptForSiriLanguageHandler=_promptForSiriLanguageHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptForStereoMultipleHandler; // @synthesize promptForStereoMultipleHandler=_promptForStereoMultipleHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptForStereoRoleHandler; // @synthesize promptForStereoRoleHandler=_promptForStereoRoleHandler;
+@property (copy, nonatomic) CDUnknownBlockType promptForTVAudioHandler; // @synthesize promptForTVAudioHandler=_promptForTVAudioHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptForTermsHandler; // @synthesize promptForTermsHandler=_promptForTermsHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptForiTunesSignInHandler; // @synthesize promptForiTunesSignInHandler=_promptForiTunesSignInHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptToInstallHomeAppHandler; // @synthesize promptToInstallHomeAppHandler=_promptToInstallHomeAppHandler;
@@ -262,6 +270,7 @@
 - (int)_runTRAuthentication;
 - (int)_runTRSessionStart;
 - (int)_runTRSetupConfiguration;
+- (int)_runTVAudioUserInput;
 - (int)_runTerms;
 - (int)_runWiFiSetup;
 - (void)_setupAudio;
@@ -300,6 +309,7 @@
 - (void)stereoMultiplePicked:(id)arg1;
 - (void)stereoRolePicked:(int)arg1;
 - (void)termsAgreed;
+- (void)tvAudioEnabled:(BOOL)arg1;
 
 @end
 

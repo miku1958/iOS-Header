@@ -8,6 +8,7 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface _MRGameControllerButtonsProtobuf : PBCodable <NSCopying>
 {
     float _a;
@@ -44,44 +45,11 @@
     } _has;
 }
 
-@property (nonatomic) float a; // @synthesize a=_a;
-@property (nonatomic) float b; // @synthesize b=_b;
-@property (nonatomic) float dPadX; // @synthesize dPadX=_dPadX;
-@property (nonatomic) float dPadY; // @synthesize dPadY=_dPadY;
-@property (nonatomic) BOOL hasA;
-@property (nonatomic) BOOL hasB;
-@property (nonatomic) BOOL hasDPadX;
-@property (nonatomic) BOOL hasDPadY;
-@property (nonatomic) BOOL hasLeftShoulder;
-@property (nonatomic) BOOL hasLeftThumbstickX;
-@property (nonatomic) BOOL hasLeftThumbstickY;
-@property (nonatomic) BOOL hasLeftTrigger;
-@property (nonatomic) BOOL hasPause;
-@property (nonatomic) BOOL hasRightShoulder;
-@property (nonatomic) BOOL hasRightThumbstickX;
-@property (nonatomic) BOOL hasRightThumbstickY;
-@property (nonatomic) BOOL hasRightTrigger;
-@property (nonatomic) BOOL hasX;
-@property (nonatomic) BOOL hasY;
-@property (nonatomic) float leftShoulder; // @synthesize leftShoulder=_leftShoulder;
-@property (nonatomic) float leftThumbstickX; // @synthesize leftThumbstickX=_leftThumbstickX;
-@property (nonatomic) float leftThumbstickY; // @synthesize leftThumbstickY=_leftThumbstickY;
-@property (nonatomic) float leftTrigger; // @synthesize leftTrigger=_leftTrigger;
-@property (nonatomic) float pause; // @synthesize pause=_pause;
-@property (nonatomic) float rightShoulder; // @synthesize rightShoulder=_rightShoulder;
-@property (nonatomic) float rightThumbstickX; // @synthesize rightThumbstickX=_rightThumbstickX;
-@property (nonatomic) float rightThumbstickY; // @synthesize rightThumbstickY=_rightThumbstickY;
-@property (nonatomic) float rightTrigger; // @synthesize rightTrigger=_rightTrigger;
-@property (nonatomic) float x; // @synthesize x=_x;
-@property (nonatomic) float y; // @synthesize y=_y;
-
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

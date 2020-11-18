@@ -15,6 +15,7 @@
     MISSING_TYPE *playbackService;
     MISSING_TYPE *localSearch;
     MISSING_TYPE *deviceProvider;
+    MISSING_TYPE *nowPlaying;
 }
 
 - (void).cxx_destruct;

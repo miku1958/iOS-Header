@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MRAVAirPlaySecuritySettingsProtobuf : PBCodable <NSCopying>
 {
     NSString *_password;
@@ -19,22 +20,13 @@
     } _has;
 }
 
-@property (readonly, nonatomic) BOOL hasPassword;
-@property (nonatomic) BOOL hasSecurityType;
-@property (strong, nonatomic) NSString *password; // @synthesize password=_password;
-@property (nonatomic) int securityType; // @synthesize securityType=_securityType;
-
 - (void).cxx_destruct;
-- (int)StringAsSecurityType:(id)arg1;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)securityTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

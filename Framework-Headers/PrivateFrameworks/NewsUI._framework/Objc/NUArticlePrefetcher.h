@@ -41,6 +41,7 @@
 
 - (void).cxx_destruct;
 - (void)_didChangeInterestedArticleIDs;
+- (void)_flushDataProviderIfNeededForHeadline:(id)arg1;
 - (void)_flushUnusedDataProvidersIfNeeded;
 - (void)_reprocessInterestedArticleIDs;
 - (void)_revisitSuspendedState;

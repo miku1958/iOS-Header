@@ -13,7 +13,6 @@
 }
 
 - (id)copyMRAVEndpointOutputDevices:(id)arg1;
-- (id)copyMRAVOutputDeviceUniqueIdentifier:(void *)arg1;
 - (id)createMPCAssistantConnection;
 - (id)createMPCAssistantDiscovery;
 - (id)getMRAVEndpointOutputDeviceUIDVolumeControlCapabilitiesForEndpoint:(id)arg1 outputDeviceUID:(id)arg2 queue:(id)arg3;

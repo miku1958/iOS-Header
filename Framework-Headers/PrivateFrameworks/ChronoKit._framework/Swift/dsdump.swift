@@ -53,10 +53,11 @@
 	// method
 	// method
  }
- protocol ChronoKit.ExtensionManaging // 6 requirements
+ protocol ChronoKit.ExtensionManaging // 7 requirements
  {
 	// getter
 	// getter
+	// method
 	// method
 	// getter
 	// getter
@@ -276,7 +277,7 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _os_unfair_lock_opaque : ó*
+	var _os_unfair_lock_opaque : õ!
  }
 
  class __C.CGImage {
@@ -316,7 +317,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case astc : ASTCOptions
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case jpeg : Á
+	case jpeg : ˜
 	case png  
  }
 
@@ -348,24 +349,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let setLock : UnfairLock // +0x60 (0x8)
 	var osLog : OS_os_log // +0x68 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var logger : ’ // +0x37 (0x0)
+	var logger : Â // +0x37 (0x0)
 
 	// Swift methods
-	0x4910  func <stripped> // getter 
-	0x49c0  func <stripped> // setter 
-	0x4ab0  func <stripped> // modifyCoroutine 
-	0x4b70  func <stripped> // getter 
-	0x4ba0  func <stripped> // setter 
-	0x4be0  func <stripped> // modifyCoroutine 
-	0x4ca0  func <stripped> // getter 
-	0x4cd0  func <stripped> // setter 
-	0x4d10  func <stripped> // modifyCoroutine 
-	0x4e20  func <stripped> // getter 
-	0x4e70  func <stripped> // setter 
-	0x4ed0  func <stripped> // modifyCoroutine 
-	0x4f10  class func LayerSnapshotter.__allocating_init(options:logger:screenshotManager:) // init 
-	0x51b0  func <stripped> // method 
-	0x5450  func <stripped> // method 
+	0x4b40  func <stripped> // getter 
+	0x4bf0  func <stripped> // setter 
+	0x4ce0  func <stripped> // modifyCoroutine 
+	0x4da0  func <stripped> // getter 
+	0x4dd0  func <stripped> // setter 
+	0x4e10  func <stripped> // modifyCoroutine 
+	0x4ed0  func <stripped> // getter 
+	0x4f00  func <stripped> // setter 
+	0x4f40  func <stripped> // modifyCoroutine 
+	0x5050  func <stripped> // getter 
+	0x50a0  func <stripped> // setter 
+	0x5100  func <stripped> // modifyCoroutine 
+	0x5140  class func LayerSnapshotter.__allocating_init(options:logger:screenshotManager:) // init 
+	0x53e0  func <stripped> // method 
+	0x5680  func <stripped> // method 
  }
 
  enum ChronoKit.SnapshotterError {
@@ -393,7 +394,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case file : i
+	case file : y
+
 	case memory  
  }
 
@@ -412,30 +414,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let fileManager : ExtendedFileManaging
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let destination : ©
+	let destination : π
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let protectionLevel : k
+	let protectionLevel : É
 	var intermediates : Intermediates
 
 	// Swift methods
-	0x110b0  func <stripped> // method 
-	0x11300  func <stripped> // method 
-	0x11ed0  func <stripped> // method 
-	0x12780  func <stripped> // method 
-	0x12c10  func <stripped> // method 
+	0x11340  func <stripped> // method 
+	0x11590  func <stripped> // method 
+	0x12160  func <stripped> // method 
+	0x12a10  func <stripped> // method 
+	0x12ea0  func <stripped> // method 
  }
 
  struct ChronoKit.Intermediates {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let temporaryDirectory : ©
+	let temporaryDirectory : π
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let temporaryURL : ©
+	let temporaryURL : π
 	let writeHandle : NSFileHandle
 	let readHandle : NSFileHandle
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let signpost : ª
+	let signpost : À
  }
 
  struct ChronoKit.ReloadConfiguration {
@@ -458,24 +460,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case scheduled : ì
+	case scheduled : £	
 	case immediate  
  }
 
  enum ChronoKit.ReloadReason {
 
 	// Properties
+	case systemRequest : String
 	case scheduledRetry : ReloadReason
 	case environmentMismatch  
 	case environmentChanged  
 	case extensionChanged  
 	case stale  
 	case externalRequest  
-	case systemRequest  
 	case timelineExhausted  
 	case initial  
 	case badTimelineData  
 	case appAuthChanged  
+	case significantLocationChange  
  }
 
  enum ChronoKit.PowerlogOwner {
@@ -493,27 +496,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var descriptorProvider : CacheKeyProviding // +0x40 (0x28)
 	var protectionLevelProvider : DataProtectionLevelProviding // +0x68 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var archiveValidationOptions : Î // +0x19 (0x0)
+	var archiveValidationOptions :  // +0x19 (0x0)
 
 	// Swift methods
-	0x16c70  func <stripped> // getter 
-	0x16ca0  func <stripped> // setter 
-	0x16ce0  func <stripped> // modifyCoroutine 
-	0x16dd0  func <stripped> // getter 
-	0x16e10  func <stripped> // setter 
-	0x16e70  func <stripped> // modifyCoroutine 
-	0x16f80  func <stripped> // getter 
-	0x16fd0  func <stripped> // setter 
-	0x17030  func <stripped> // modifyCoroutine 
-	0x17070  class func WidgetCacheManager.__allocating_init(descriptorProvider:urlProvider:protectionLevelProvider:fileManager:) // init 
-	0x17360  func <stripped> // method 
-	0x17430  func <stripped> // method 
-	0x174c0  func <stripped> // method 
-	0x17760  func <stripped> // method 
-	0x17ca0  func <stripped> // method 
-	0x17e00  func <stripped> // method 
-	0x18140  func <stripped> // method 
-	0x185e0  func <stripped> // method 
+	0x17050  func <stripped> // getter 
+	0x17080  func <stripped> // setter 
+	0x170c0  func <stripped> // modifyCoroutine 
+	0x171b0  func <stripped> // getter 
+	0x171f0  func <stripped> // setter 
+	0x17250  func <stripped> // modifyCoroutine 
+	0x17360  func <stripped> // getter 
+	0x173b0  func <stripped> // setter 
+	0x17410  func <stripped> // modifyCoroutine 
+	0x17450  class func WidgetCacheManager.__allocating_init(descriptorProvider:urlProvider:protectionLevelProvider:fileManager:) // init 
+	0x17740  func <stripped> // method 
+	0x17810  func <stripped> // method 
+	0x178a0  func <stripped> // method 
+	0x17b40  func <stripped> // method 
+	0x18080  func <stripped> // method 
+	0x181e0  func <stripped> // method 
+	0x18520  func <stripped> // method 
+	0x189c0  func <stripped> // method 
  }
 
  enum ChronoKit.CacheManagementError {
@@ -530,17 +533,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let defaultView : )
+	let defaultView : 9
 	var placeholderUI : PlaceholderUI
 	var widgetEntryKey : WidgetEntryKey
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _entry : Ø
+	var _entry : ø	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _backgroundColor : È
+	var _backgroundColor : ˘
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environmentValues : ø
+	var _environmentValues : œ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let environmentDidChange : É
+	let environmentDidChange : ì
  }
 
  struct ChronoKit.HostingControllerRenderStatistics {
@@ -557,23 +560,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var currentActionURL : È
+	var currentActionURL : ˘
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _handleLaunchRequest : 3
+	var _handleLaunchRequest : C
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _isHidden : ˝
+	var _isHidden : 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _isSnapshotting : ˝
+	var _isSnapshotting : 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _allowsHitTesting : ˝
+	var _allowsHitTesting : 
 	var disableAnimations : Bool
 
 	// Swift methods
-	0x20440  func <stripped> // getter 
-	0x20480  func <stripped> // getter 
-	0x20530  func <stripped> // getter 
-	0x20550  func <stripped> // getter 
-	0x20570  func <stripped> // getter 
+	0x1fcc0  func <stripped> // getter 
+	0x1fd00  func <stripped> // getter 
+	0x1fdb0  func <stripped> // getter 
+	0x1fdd0  func <stripped> // getter 
+	0x1fdf0  func <stripped> // getter 
  }
 
  class ChronoKit.AvocadoLiveViewHostingController {
@@ -581,7 +584,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _viewModel : ˘
+	var _viewModel : 
 	var content : A
  }
 
@@ -589,7 +592,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _currentURL : 
+	var _currentURL : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var handleLaunchRequest :  empty-list 
  }
@@ -598,17 +601,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cacheURL : © // +0x5 (0x0)
+	var cacheURL : π // +0x5 (0x0)
 
 	// Swift methods
-	0x27080  func <stripped> // getter 
-	0x270d0  func <stripped> // setter 
-	0x27130  func <stripped> // modifyCoroutine 
-	0x27180  class func DirectoryCacheKeyProvider.__allocating_init(subsystem:in:fileManager:) // init 
-	0x27250  class func DirectoryCacheKeyProvider.__allocating_init(cacheURL:) // init 
-	0x27310  func <stripped> // method 
-	0x27320  func <stripped> // method 
-	0x27410  func <stripped> // method 
+	0x26880  func <stripped> // getter 
+	0x268d0  func <stripped> // setter 
+	0x26930  func <stripped> // modifyCoroutine 
+	0x26980  class func DirectoryCacheKeyProvider.__allocating_init(subsystem:in:fileManager:) // init 
+	0x26a30  class func DirectoryCacheKeyProvider.__allocating_init(cacheURL:) // init 
+	0x26af0  func <stripped> // method 
+	0x26b00  func <stripped> // method 
+	0x26bf0  func <stripped> // method 
  }
 
  class ChronoKit.UnfairLock : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LockProtocol {
@@ -628,10 +631,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var startDatesForWidgetIDs : String
 
 	// Swift methods
-	0x27b90  class func ConfiguredWidgetMetadataCache.__allocating_init(backingStore:) // init 
-	0x28510  func <stripped> // method 
-	0x29960  func <stripped> // method 
-	0x29f60  func <stripped> // method 
+	0x27380  class func ConfiguredWidgetMetadataCache.__allocating_init(backingStore:) // init 
+	0x27d00  func <stripped> // method 
+	0x29150  func <stripped> // method 
+	0x29750  func <stripped> // method 
  }
 
  enum ChronoKit.PowerlogWidgetLocation {
@@ -659,13 +662,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var entries : PowerlogWidgetViewIdentity
 
 	// Swift methods
-	0x2cfe0  func <stripped> // method 
-	0x2d040  func <stripped> // method 
-	0x2d0a0  func <stripped> // method 
-	0x2d100  func <stripped> // method 
-	0x2d160  func <stripped> // method 
-	0x2d1c0  func <stripped> // method 
-	0x2d380  func <stripped> // method 
+	0x2c800  func <stripped> // method 
+	0x2c860  func <stripped> // method 
+	0x2c8c0  func <stripped> // method 
+	0x2c920  func <stripped> // method 
+	0x2c980  func <stripped> // method 
+	0x2c9e0  func <stripped> // method 
+	0x2cba0  func <stripped> // method 
  }
 
  class ChronoKit.PowerlogViewEntry : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -677,14 +680,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isBeingViewed : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xda7800025c08 (0x27800025c08) in binary!
+WARNING: couldn't find address 0xdad800024368 (0x2d800024368) in binary!
 	0x48000000c  @objc PowerlogViewEntry.(null) <stripped>
 
 	// Swift methods
-	0x2e510  func <stripped> // setter 
-	0x2e5d0  func <stripped> // getter 
-	0x2e780  func <stripped> // method 
-	0x2e8c0  func <stripped> // method 
+	0x2dd50  func <stripped> // setter 
+	0x2de10  func <stripped> // getter 
+	0x2dfc0  func <stripped> // method 
+	0x2e100  func <stripped> // method 
  }
 
  struct ChronoKit.PowerlogViewMetrics {
@@ -711,7 +714,7 @@ WARNING: couldn't find address 0xda7800025c08 (0x27800025c08) in binary!
 	// Properties
 	let assertion : Assertion
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let date : ì
+	let date : £	
  }
 
  enum ChronoKit.ReloadState {
@@ -739,11 +742,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case int : π
+	case int : ’
 	case real : Double
 	case text : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case blob : 
+	case blob : 7ˇ
 	case null  
  }
 
@@ -758,34 +761,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var urlsToProtect :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var objectWillChange : õ
+	var objectWillChange : ´
 	var fileManager : NSFileManager
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xd26000025be8 (0x26000025be8) in binary!
-	0x104c4  @objc WidgetReaper.(null) <stripped>
-WARNING: couldn't find address 0xd24800025c30 (0x24800025c30) in binary!
-	0xcea8  @objc WidgetReaper.(null) <stripped>
+WARNING: couldn't find address 0xd2c000024348 (0x2c000024348) in binary!
+	0x10554  @objc WidgetReaper.(null) <stripped>
+WARNING: couldn't find address 0xd2a800024390 (0x2a800024390) in binary!
+	0xcf08  @objc WidgetReaper.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x38cfff940f0  @objc WidgetReaper.(null) <stripped>
-	0x37cfff996e8  @objc WidgetReaper. <stripped>
+	0x2ecfff93660  @objc WidgetReaper.(null) <stripped>
+	0x2dcfff98c18  @objc WidgetReaper. <stripped>
 
 	// Swift methods
-	0x39980  func <stripped> // getter 
-	0x39a20  func <stripped> // setter 
-	0x39b20  func <stripped> // modifyCoroutine 
-	0x39ba0  func <stripped> // getter 
-	0x39bc0  func <stripped> // setter 
-	0x39be0  func <stripped> // modifyCoroutine 
-	0x39d00  func <stripped> // getter 
-	0x39d60  func <stripped> // setter 
-	0x39dc0  func <stripped> // modifyCoroutine 
-	0x39ec0  func <stripped> // getter 
-	0x39f00  func <stripped> // setter 
-	0x39f50  func <stripped> // modifyCoroutine 
-	0x39610  class func WidgetReaper.__allocating_init<A, B>(candidateURLsToRemove:urlsToProtect:fileManager:) // init 
-	0x3a970  func <stripped> // method 
-	0x3ab70  func <stripped> // method 
+	0x39800  func <stripped> // getter 
+	0x398a0  func <stripped> // setter 
+	0x399a0  func <stripped> // modifyCoroutine 
+	0x39a20  func <stripped> // getter 
+	0x39a40  func <stripped> // setter 
+	0x39a60  func <stripped> // modifyCoroutine 
+	0x39b80  func <stripped> // getter 
+	0x39be0  func <stripped> // setter 
+	0x39c40  func <stripped> // modifyCoroutine 
+	0x39d40  func <stripped> // getter 
+	0x39d80  func <stripped> // setter 
+	0x39dd0  func <stripped> // modifyCoroutine 
+	0x39490  class func WidgetReaper.__allocating_init<A, B>(candidateURLsToRemove:urlsToProtect:fileManager:) // init 
+	0x3a7f0  func <stripped> // method 
+	0x3a9f0  func <stripped> // method 
  }
 
  class ChronoKit._WidgetExtensionFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ExtensionFactory {
@@ -796,7 +799,7 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _publisher : G
+	var _publisher : k˛
 	var extensionMatchingToken : Any?
 
 	// Swift methods
@@ -806,13 +809,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let _extensionsPublisher : W
+	let _extensionsPublisher : {˛
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let _addedPublisher : G
+	let _addedPublisher : k˛
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let _updatedPublisher : G
+	let _updatedPublisher : k˛
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let _removedPublisher : G
+	let _removedPublisher : k˛
 	var extensionsByIdentifier : Extension
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var removedPluginUUIDsByIdentifier : String
@@ -820,19 +823,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let lookupLock : UnfairLock
 	let lock : UnfairLock
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var nsExtensionDiscovererSubscription : ◊
+	var nsExtensionDiscovererSubscription : Á
 	var nsExtensionDiscoverer : SystemNSExtensionDiscoverer
 	var applicationWorkspace : SystemApplicationWorkspace
 	var extensionFactory : ExtensionFactory
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xce9400025c98 (0x69400025c98) in binary!
-	0x1048c  @objc ExtensionManager.(null) <stripped>
-WARNING: couldn't find address 0xd21000025bf8 (0x21000025bf8) in binary!
-	0xce70  @objc ExtensionManager.(null) <stripped>
+WARNING: couldn't find address 0xcef4000243f8 (0x6f4000243f8) in binary!
+	0x1051c  @objc ExtensionManager.(null) <stripped>
+WARNING: couldn't find address 0xd27000024358 (0x27000024358) in binary!
+	0xced0  @objc ExtensionManager.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x344fff9c268  @objc ExtensionManager.(null) <stripped>
-	0xfff9c380  @objc ExtensionManager. <stripped>
+	0x2a4fff9bc78  @objc ExtensionManager.(null) <stripped>
+	0xfff9bd90  @objc ExtensionManager.ÿ <stripped>
 
 	// Swift methods
  }
@@ -840,11 +843,11 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
  class ChronoKit.WidgetPreviewHostingViewController {
  class ChronoKit.TimelineDelegate : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xd7bc00025b58 (0x7bc00025b58) in binary!
-	0x10454  @objc TimelineDelegate.(null) <stripped>
-WARNING: couldn't find address 0xd1d800025bc0 (0x1d800025bc0) in binary!
+WARNING: couldn't find address 0xd81c000242b8 (0x1c000242b8) in binary!
+	0x104e4  @objc TimelineDelegate.(null) <stripped>
+WARNING: couldn't find address 0xd23800024320 (0x23800024320) in binary!
 	0x18000000c  @objc TimelineDelegate.(null) <stripped>
-WARNING: couldn't find address 0xd9c000025b50 (0x1c000025b50) in binary!
+WARNING: couldn't find address 0xda20000242b0 (0x220000242b0) in binary!
 	0x18000000c  @objc TimelineDelegate.(null) <stripped>
 
 	// Swift methods
@@ -856,7 +859,7 @@ WARNING: couldn't find address 0xd9c000025b50 (0x1c000025b50) in binary!
 	var timeline : TLTimeline // +0x0
 	var proxy : TimelineDelegate // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _currentEntry : =	 // +0x10
+	var _currentEntry : K // +0x10
  }
 
  class ChronoKit.PowerlogUpdateEntry : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -869,13 +872,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let remainingBudget : Int
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xd9c000025b50 (0x1c000025b50) in binary!
+WARNING: couldn't find address 0xda20000242b0 (0x220000242b0) in binary!
 	0x18000000c  @objc PowerlogUpdateEntry.(null) <stripped>
 
 	// Swift methods
-	0x498f0  func <stripped> // getter 
-	0x49b70  func <stripped> // method 
-	0x49c90  func <stripped> // method 
+	0x49c00  func <stripped> // getter 
+	0x49e80  func <stripped> // method 
+	0x49fa0  func <stripped> // method 
  }
 
  class ChronoKit.WidgetPreviewInfo : NSObject /usr/lib/libobjc.A.dylib {
@@ -883,25 +886,25 @@ WARNING: couldn't find address 0xd9c000025b50 (0x1c000025b50) in binary!
 	// Properties
 	var metricsSpecification : CHSWidgetMetricsSpecification // +0x8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var environment : c // +0x1950 (0x0)
+	var environment : y // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1042400025de0 (0x42400025de0) in binary!
-	0xcf48  @objc WidgetPreviewInfo.(null) <stripped>
-WARNING: couldn't find address 0xc41c00025be0 (0x41c00025be0) in binary!
-	0x103dc  @objc WidgetPreviewInfo.(null) <stripped>
-WARNING: couldn't find address 0xd16000025b48 (0x16000025b48) in binary!
-	0xcdc0  @objc WidgetPreviewInfo.(null) <stripped>
+WARNING: couldn't find address 0x104b400024540 (0x4b400024540) in binary!
+	0xcfa8  @objc WidgetPreviewInfo.(null) <stripped>
+WARNING: couldn't find address 0xc4cc00024340 (0x4cc00024340) in binary!
+	0x1046c  @objc WidgetPreviewInfo.(null) <stripped>
+WARNING: couldn't find address 0xd1c0000242a8 (0x1c0000242a8) in binary!
+	0xce20  @objc WidgetPreviewInfo.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffe6618  @objc WidgetPreviewInfo.(null) <stripped>
+	0xfffe62a8  @objc WidgetPreviewInfo.(null) <stripped>
 WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
-	0x25cfffe6060  @objc WidgetPreviewInfo.(null) <stripped>
-	0x234fffe6148  @objc WidgetPreviewInfo.ãH¯HâﬂHâ∆ˇQHâÿ[√ <stripped>
+	0x1bcfffe5cf0  @objc WidgetPreviewInfo.(null) <stripped>
+	0x194fffe5dd8  @objc WidgetPreviewInfo.Aˇ’É¯uvHã=ı <stripped>
 
 	// Swift methods
-	0x4a900  class func <stripped> // getter 
-	0x4a910  class func WidgetPreviewInfo.__allocating_init(coder:) // init 
-	0x4ab90  func <stripped> // method 
+	0x4ac20  class func <stripped> // getter 
+	0x4ac30  class func WidgetPreviewInfo.__allocating_init(coder:) // init 
+	0x4aeb0  func <stripped> // method 
  }
 
  class ChronoKit.IOSEnvironmentProvidingFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -915,11 +918,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var system : EnvironmentProviding
 
 	// Swift methods
-	0x4afb0  class func IOSEnvironmentProvidingFactory.__allocating_init(extensionManager:) // init 
-	0x4b590  func <stripped> // getter 
-	0x4b5d0  func <stripped> // setter 
-	0x4b630  func <stripped> // modifyCoroutine 
-	0x4b670  func <stripped> // method 
+	0x4b2e0  class func IOSEnvironmentProvidingFactory.__allocating_init(extensionManager:) // init 
+	0x4b8c0  func <stripped> // getter 
+	0x4b900  func <stripped> // setter 
+	0x4b960  func <stripped> // modifyCoroutine 
+	0x4b9a0  func <stripped> // method 
  }
 
  struct ChronoKit.DebugOverlay {
@@ -938,7 +941,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let reason : ReloadReason
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let created : ”
+	let created : Ÿ
  }
 
  struct ChronoKit.ExtensionMetadata {
@@ -953,8 +956,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var notificationSubscriptions :  empty-list  // +0x80000400 (0x8)
-	var colorSchemeObserver : Swift.AnyObject? // +0x0 (0x8)
+	var notificationSubscriptions :  empty-list  // +0x0 (0x8)
+	var colorSchemeObserver : Swift.AnyObject? // +0x80000400 (0x8)
 
 	// Swift methods
  }
@@ -963,29 +966,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var widgetEnvironment : ¡ // +0x10 (0x10)
+	var widgetEnvironment : ◊˝ // +0x10 (0x10)
 	var statefulStore : StatefulStore // +0x20 (0x8)
 	let cacheManager : TimelineCacheManaging // +0x28 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var logger : ’ // +0x74735f5f (0x0)
+	var logger : Â // +0x0 (0x0)
 
 	// Swift methods
-	0x616d0  func <stripped> // getter 
-	0x61730  func <stripped> // setter 
-	0x617a0  func <stripped> // modifyCoroutine 
-	0x61860  func <stripped> // getter 
-	0x61890  func <stripped> // setter 
-	0x618e0  func <stripped> // modifyCoroutine 
-	0x61a80  func <stripped> // getter 
-	0x61ad0  func <stripped> // setter 
-	0x61b30  func <stripped> // modifyCoroutine 
-	0x61b70  class func PlaceholderReloadStrategy.__allocating_init(cacheManager:logger:) // init 
-	0x61cf0  func <stripped> // method 
-	0x623a0  func <stripped> // method 
-	0x623f0  func <stripped> // method 
-	0x649d0  func <stripped> // method 
-	0x649e0  func <stripped> // method 
-	0x65450  func <stripped> // method 
+	0x61b60  func <stripped> // getter 
+	0x61bc0  func <stripped> // setter 
+	0x61c30  func <stripped> // modifyCoroutine 
+	0x61cf0  func <stripped> // getter 
+	0x61d20  func <stripped> // setter 
+	0x61d70  func <stripped> // modifyCoroutine 
+	0x61f10  func <stripped> // getter 
+	0x61f60  func <stripped> // setter 
+	0x61fc0  func <stripped> // modifyCoroutine 
+	0x62000  class func PlaceholderReloadStrategy.__allocating_init(cacheManager:logger:) // init 
+	0x62180  func <stripped> // method 
+	0x62830  func <stripped> // method 
+	0x62880  func <stripped> // method 
+	0x64e60  func <stripped> // method 
+	0x64e70  func <stripped> // method 
+	0x658e0  func <stripped> // method 
  }
 
  class ChronoKit.PowerlogUpdateService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -996,8 +999,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var lock : UnfairLock
 
 	// Swift methods
-	0x6cc90  func <stripped> // method 
-	0x6d240  func <stripped> // method 
+	0x6d130  func <stripped> // method 
+	0x6d6f0  func <stripped> // method 
  }
 
  enum ChronoKit.ExtendedAttributeError {
@@ -1046,14 +1049,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let extensionManager : ExtensionManaging // +0x0 (0x28)
-	let identifier : String // +0x0 (0x10)
-	let systemProvider : EnvironmentProviding // +0x45545f5f (0x28)
+	let identifier : String // +0x74735f5f (0x10)
+	let systemProvider : EnvironmentProviding // +0x0 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var subscriptions :  empty-list  // +0x0 (0x8)
+	var subscriptions :  empty-list  // +0x45545f5f (0x8)
 
 	// Swift methods
-	0x71ff0  func <stripped> // method 
-	0x721b0  func <stripped> // method 
+	0x724b0  func <stripped> // method 
+	0x72670  func <stripped> // method 
  }
 
  struct ChronoKit.SQLResultError {
@@ -1082,25 +1085,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var fileExtension : String
 
 	// Swift methods
-	0x75000  func <stripped> // getter 
-	0x75040  func <stripped> // setter 
-	0x75080  func <stripped> // modifyCoroutine 
-	0x75160  func <stripped> // getter 
-	0x751a0  func <stripped> // setter 
-	0x751e0  func <stripped> // modifyCoroutine 
-	0x74ed0  class func WidgetCacheURLProvider.__allocating_init(subdirectory:fileExtension:) // init 
-	0x75280  func <stripped> // method 
+	0x754d0  func <stripped> // getter 
+	0x75510  func <stripped> // setter 
+	0x75550  func <stripped> // modifyCoroutine 
+	0x75630  func <stripped> // getter 
+	0x75670  func <stripped> // setter 
+	0x756b0  func <stripped> // modifyCoroutine 
+	0x753a0  class func WidgetCacheURLProvider.__allocating_init(subdirectory:fileExtension:) // init 
+	0x75750  func <stripped> // method 
  }
 
  class ChronoKit.ReloadTaskCancellable : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cancellable : K˙
+	let cancellable : YÒ
 	let _description : String?
 
 	// Swift methods
-	0x76260  class func ReloadTaskCancellable.__allocating_init(_:description:) // init 
+	0x76730  class func ReloadTaskCancellable.__allocating_init(_:description:) // init 
  }
 
  class ChronoKit.AnyReloadingStrategy {
@@ -1114,7 +1117,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let configuredWidgetStore : ConfiguredWidgetStore
 
 	// Swift methods
-	0x78ad0  class func ChronoMetadataStore.__allocating_init(storage:) // init 
+	0x78fb0  class func ChronoMetadataStore.__allocating_init(storage:) // init 
  }
 
  class ChronoKit.MutableStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1124,7 +1127,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let configuredWidgetStore : MutableConfiguredWidgetStore
 
 	// Swift methods
-	0x79f90  func <stripped> // method 
+	0x7a470  func <stripped> // method 
  }
 
  class ChronoKit.DatabaseAccessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1137,28 +1140,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class ChronoKit.ExtensionStore : ChronoMetadataStore.DatabaseAccessor {
 	// Swift methods
-	0x7a140  func <stripped> // method 
-	0x7add0  func <stripped> // method 
-	0x7b220  func <stripped> // method 
+	0x7a620  func <stripped> // method 
+	0x7b2b0  func <stripped> // method 
+	0x7b700  func <stripped> // method 
  }
 
  class ChronoKit.MutableExtensionStore : ChronoMetadataStore.ExtensionStore {
 	// Swift methods
-	0x7c170  func <stripped> // method 
-	0x7c210  func <stripped> // method 
-	0x7d760  func <stripped> // method 
+	0x7c650  func <stripped> // method 
+	0x7c6f0  func <stripped> // method 
+	0x7dc40  func <stripped> // method 
  }
 
  class ChronoKit.ConfiguredWidgetStore : ChronoMetadataStore.DatabaseAccessor {
 	// Swift methods
-	0x7d8c0  func <stripped> // method 
+	0x7dda0  func <stripped> // method 
  }
 
  class ChronoKit.MutableConfiguredWidgetStore : ChronoMetadataStore.ConfiguredWidgetStore {
 	// Swift methods
-	0x7e270  func <stripped> // method 
-	0x7e870  func <stripped> // method 
-	0x7eb30  func <stripped> // method 
+	0x7e750  func <stripped> // method 
+	0x7ed50  func <stripped> // method 
+	0x7f010  func <stripped> // method 
  }
 
  class ChronoKit.BlockAssertion : _SwiftObject /usr/lib/swift/libswiftCore.dylib, Assertion {
@@ -1168,55 +1171,54 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var block : ()?
 
 	// Swift methods
-	0x88cd0  class func BlockAssertion.__allocating_init(_:) // init 
+	0x891b0  class func BlockAssertion.__allocating_init(_:) // init 
  }
 
  class ChronoKit.WidgetEntry : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var protectionType : ã
-
+	var protectionType : °
 	let lock : UnfairLock
 	let key : WidgetEntryKey
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _cachedViewableEntry : {
+	var _cachedViewableEntry : ì
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _configuredDate : ì
+	var _configuredDate : £	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _currentEntry : Õˇ
+	var _currentEntry : „ˆ
 	let environmentProvider : EnvironmentProviding
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _content : $
+	var _content : ó
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var publisher : «˜
+	var publisher : ’Ó
 
 	// Swift methods
-	0x89c20  func <stripped> // getter 
-	0x89c70  func <stripped> // setter 
-	0x89cd0  func <stripped> // modifyCoroutine 
-	0x89d60  func <stripped> // getter 
-	0x89f90  func <stripped> // getter 
-	0x8a030  func <stripped> // setter 
-	0x8a230  func <stripped> // getter 
-	0x8a280  func <stripped> // setter 
-	0x8a4d0  func <stripped> // modifyCoroutine 
-	0x8a740  func <stripped> // method 
-	0x8a7a0  func <stripped> // method 
-	0x8ac50  func <stripped> // getter 
-	0x8ae00  class func WidgetEntry.__allocating_init(key:protectionType:environmentProvider:) // init 
-	0x8b120  func <stripped> // method 
+	0x8a100  func <stripped> // getter 
+	0x8a150  func <stripped> // setter 
+	0x8a1b0  func <stripped> // modifyCoroutine 
+	0x8a240  func <stripped> // getter 
+	0x8a470  func <stripped> // getter 
+	0x8a510  func <stripped> // setter 
+	0x8a710  func <stripped> // getter 
+	0x8a760  func <stripped> // setter 
+	0x8a9b0  func <stripped> // modifyCoroutine 
+	0x8ac20  func <stripped> // method 
+	0x8ac80  func <stripped> // method 
+	0x8b130  func <stripped> // getter 
+	0x8b2e0  class func WidgetEntry.__allocating_init(key:protectionType:environmentProvider:) // init 
+	0x8b600  func <stripped> // method 
  }
 
  enum ChronoKit.WidgetEntryError {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case viewDecodingFailed : Oˇ
+	case viewDecodingFailed : eˆ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case entryNotFound : Ìı
+	case entryNotFound : ˚Ï
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case environmentNotFound : ˇ
+	case environmentNotFound : -ˆ
 	case missingContent  
  }
 
@@ -1224,16 +1226,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subject : ›
- // +0x10 (0x8)
+	let subject :  // +0x10 (0x8)
 	let quantum : Double // +0x18 (0x8)
 	let queue : OS_dispatch_queue // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scheduledDate : ì // +0x0 (0x0)
+	var scheduledDate : £	 // +0x0 (0x0)
 	var _timer : OS_dispatch_source_timer? // +0x0 (0x8)
 
 	// Swift methods
-	0x8c4d0  class func WidgetUpdateTimer.__allocating_init(quantum:queue:) // init 
+	0x8c9d0  class func WidgetUpdateTimer.__allocating_init(quantum:queue:) // init 
  }
 
  class ChronoKit.WidgetExtension : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1243,33 +1244,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let version : String // +0x20 (0x10)
 	let isInternal : Bool // +0x30 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pluginUUID : çı // +0x0 (0x0)
+	let pluginUUID : õÏ // +0x45545f5f (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cacheGUID : çı // +0xac620 (0x0)
-	let sequenceNumber : Int // +0x7fb8 (0x8)
+	let cacheGUID : õÏ // +0x0 (0x0)
+	let sequenceNumber : Int // +0xacec0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lastModifiedDate : ì // +0xac620 (0x0)
+	let lastModifiedDate : £	 // +0x8008 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bundleURL : © // +0x0 (0x0)
+	let bundleURL : π // +0xacec0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let containerBundleURL : © // +0x0 (0x0)
+	let containerBundleURL : π // +0x0 (0x0)
 	let containerBundleVersion : String // +0x0 (0x10)
-	let containerBundleIdentifier : String // +0x77735f5f (0x10)
+	let containerBundleIdentifier : String // +0x0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dataContainerURL : © // +0x7079745f (0x0)
+	let dataContainerURL : π // +0x77735f5f (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let systemDataContainerURL : © // +0x45545f5f (0x0)
-	let descriptorDiscoveryIsRestricted : Bool // +0x0 (0x1)
-	let wantsLocation : Bool // +0xb45d8 (0x1)
-	let availableLocalizations : [String] // +0x2a70 (0x8)
-	let allowsMixedLocalizations : Bool // +0xb45d8 (0x1)
+	let systemDataContainerURL : π // +0x7079745f (0x0)
+	let descriptorDiscoveryIsRestricted : Bool // +0x45545f5f (0x1)
+	let wantsLocation : Bool // +0x0 (0x1)
+	let availableLocalizations : [String] // +0xb4ec8 (0x8)
+	let allowsMixedLocalizations : Bool // +0x2a72 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let requestedDataProtection : k // +0x0 (0x0)
+	let requestedDataProtection : É // +0xb4ec8 (0x0)
 	let nsExtension : NSExtension // +0x0 (0x8)
 
 	// Swift methods
-	0x8e9d0  func <stripped> // method 
-	0x8ead0  func <stripped> // method 
+	0x8eed0  func <stripped> // method 
+	0x8efd0  func <stripped> // method 
  }
 
  enum ChronoKit.WidgetExtensionError {
@@ -1297,6 +1298,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case appForeground  
 	case appSession  
 	case environmentChange  
+	case sigLocationChange  
 	case externalRequest  
 	case systemRequest  
 	case snapshot  
@@ -1315,7 +1317,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var baseURL : ©
+	var baseURL : π
 	var widget : CHSWidget?
 	var metrics : CHSWidgetMetrics?
  }
@@ -1328,81 +1330,82 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var backgroundColor : UIColor?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xd12800025a70 (0x12800025a70) in binary!
-	0x1038c  @objc WidgetPreviewTimelineEntry.(null) <stripped>
-WARNING: couldn't find address 0xd11000025a48 (0x11000025a48) in binary!
-	0x10374  @objc WidgetPreviewTimelineEntry.(null) <stripped>
-WARNING: couldn't find address 0x1036800025ea8 (0x36800025ea8) in binary!
-	0xc390  @objc WidgetPreviewTimelineEntry.(null) <stripped>
-WARNING: couldn't find address 0x1036600025e98 (0x36600025e98) in binary!
-	0x10368  @objc WidgetPreviewTimelineEntry.(null) <stripped>
-WARNING: couldn't find address 0xce8c00025a20 (0x68c00025a20) in binary!
-	0xcd28  @objc WidgetPreviewTimelineEntry.(null) <stripped>
+WARNING: couldn't find address 0xd188000241d0 (0x188000241d0) in binary!
+	0x1041c  @objc WidgetPreviewTimelineEntry.(null) <stripped>
+WARNING: couldn't find address 0xd170000241a8 (0x170000241a8) in binary!
+	0x10404  @objc WidgetPreviewTimelineEntry.(null) <stripped>
+WARNING: couldn't find address 0x103f800024608 (0x3f800024608) in binary!
+	0xc440  @objc WidgetPreviewTimelineEntry.(null) <stripped>
+WARNING: couldn't find address 0x103f6000245f8 (0x3f6000245f8) in binary!
+	0x103f8  @objc WidgetPreviewTimelineEntry.(null) <stripped>
+WARNING: couldn't find address 0xceec00024180 (0x6ec00024180) in binary!
+	0xcd88  @objc WidgetPreviewTimelineEntry.(null) <stripped>
 WARNING: couldn't find address 0x474f525029232840 (0x25029232840) in binary!
 	0x74694b6f6e  @objc WidgetPreviewTimelineEntry.(null) <stripped>
 WARNING: couldn't find address 0x433a5443454a4f52 (0x443454a4f52) in binary!
-	0xa322e382e  @objc WidgetPreviewTimelineEntry.(null) <stripped>
-WARNING: couldn't find address 0x4058f33333333333 (0x33333333333) in binary!
+	0x2332e342e34  @objc WidgetPreviewTimelineEntry.(null) <stripped>
+WARNING: couldn't find address 0x405a19999999999a (0x1999999999a) in binary!
 	0x0  @objc WidgetPreviewTimelineEntry.(null) <stripped>
 WARNING: couldn't find address 0x656e696c656d6954 (0x16c656d6954) in binary!
 	0x5a440010050  @objc WidgetPreviewTimelineEntry.(null) <stripped>
 WARNING: couldn't find offset 0xffffffe8 in binary!
 WARNING: couldn't find offset 0xffffffe8 in binary!
-WARNING: couldn't find address 0xfff5678cffffffe8 (0x0) in binary!
+WARNING: couldn't find address 0xfff5611cffffffe8 (0x0) in binary!
 	0x7e00000002  @objc WidgetPreviewTimelineEntry.(null) <stripped>
 
 	// Swift methods
-	0x92630  func <stripped> // getter 
-	0x92670  func <stripped> // setter 
-	0x926d0  func <stripped> // modifyCoroutine 
-	0x927b0  func <stripped> // getter 
-	0x928a0  func <stripped> // setter 
-	0x929e0  func <stripped> // modifyCoroutine 
-	0x92ad0  func <stripped> // getter 
-	0x92b10  func <stripped> // setter 
-	0x92b60  func <stripped> // modifyCoroutine 
-	0x93ad0  func <stripped> // getter 
+	0x92b60  func <stripped> // getter 
+	0x92ba0  func <stripped> // setter 
+	0x92c00  func <stripped> // modifyCoroutine 
+	0x92ce0  func <stripped> // getter 
+	0x92dd0  func <stripped> // setter 
+	0x92f10  func <stripped> // modifyCoroutine 
+	0x93000  func <stripped> // getter 
+	0x93040  func <stripped> // setter 
+	0x93090  func <stripped> // modifyCoroutine 
+	0x94000  func <stripped> // getter 
+	0x94510  func <stripped> // getter 
+	0x945b0  func <stripped> // getter 
  }
 
  class ChronoKit.PlaceholderEntry : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var protectionType : ã
- // +0x0 (0x0)
+	var protectionType : ° // +0x0 (0x0)
 	var states : WidgetEntryKey // +0x0 (0x8)
 	var reloadHistory : WidgetEntryKey // +0x0 (0x8)
 	let lock : UnfairLock // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let logger : ’ // +0x0 (0x0)
+	let logger : Â // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var publisher : W // +0x0 (0x8)
+	var publisher : {˛ // +0x0 (0x8)
 	var _viewCollections : WidgetEntryKey // +0x0 (0x8)
 	let key : String // +0x0 (0x10)
-	let environmentProvider : EnvironmentProviding // +0x77735f5f (0x28)
+	let environmentProvider : EnvironmentProviding // +0x0 (0x28)
 
 	// Swift methods
-	0x95260  func <stripped> // getter 
-	0x952b0  func <stripped> // setter 
-	0x95310  func <stripped> // modifyCoroutine 
-	0x95460  func <stripped> // getter 
-	0x954e0  func <stripped> // setter 
-	0x95520  func <stripped> // modifyCoroutine 
-	0x95700  func <stripped> // getter 
-	0x957a0  func <stripped> // getter 
-	0x95870  func <stripped> // method 
-	0x959c0  func <stripped> // method 
-	0x95a50  func <stripped> // method 
-	0x95ee0  func <stripped> // method 
+	0x95940  func <stripped> // getter 
+	0x95990  func <stripped> // setter 
+	0x959f0  func <stripped> // modifyCoroutine 
+	0x95b40  func <stripped> // getter 
+	0x95bc0  func <stripped> // setter 
+	0x95c00  func <stripped> // modifyCoroutine 
+	0x95de0  func <stripped> // getter 
+	0x95e80  func <stripped> // getter 
 	0x95f50  func <stripped> // method 
-	0x961c0  func <stripped> // method 
-	0x967e0  func <stripped> // method 
-	0x96c10  func <stripped> // method 
-	0x96f80  func <stripped> // method 
-	0x970b0  func <stripped> // method 
-	0x97280  func <stripped> // method 
-	0x974b0  func <stripped> // getter 
-	0x95110  class func PlaceholderEntry.__allocating_init(key:protectionType:environmentProvider:logger:) // init 
+	0x960a0  func <stripped> // method 
+	0x96130  func <stripped> // method 
+	0x965c0  func <stripped> // method 
+	0x96630  func <stripped> // method 
+	0x968a0  func <stripped> // method 
+	0x96ed0  func <stripped> // method 
+	0x97300  func <stripped> // method 
+	0x97670  func <stripped> // method 
+	0x977a0  func <stripped> // method 
+	0x97970  func <stripped> // method 
+	0x97ba0  func <stripped> // getter 
+	0x957f0  class func PlaceholderEntry.__allocating_init(key:protectionType:environmentProvider:logger:) // init 
  }
 
  struct ChronoKit.HistoricReload {
@@ -1410,7 +1413,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let reason : ReloadReason // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let created : ” // +0x8
+	let created : Ÿ // +0x8
  }
 
  enum ChronoKit.SingleWidgetReloadState {
@@ -1426,13 +1429,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var __environmentValues : o // +0x0 (0x0)
+	var __environmentValues : }˜ // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var environmentDidChangePublisher : W // +0x0 (0x8)
-	let lock : UnfairLock // +0x7061635f (0x8)
+	var environmentDidChangePublisher : {˛ // +0x0 (0x8)
+	let lock : UnfairLock // +0x77735f5f (0x8)
 
 	// Swift methods
-	0x9be90  func <stripped> // getter 
+	0x9c540  func <stripped> // getter 
  }
 
  class ChronoKit.WidgetDescriptorCache : _SwiftObject /usr/lib/swift/libswiftCore.dylib, WidgetDescriptorCaching {
@@ -1442,12 +1445,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var provider : WidgetDescriptorProvider
 	let backingStore : ChronoMetadataStore
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let _descriptorUpdatePublisher : W
+	let _descriptorUpdatePublisher : {˛
 	var extensionCache : ExtensionMetadata
 	var outstandingFetches : Set<String>
 
 	// Swift methods
-	0x9ca80  class func WidgetDescriptorCache.__allocating_init(backingStore:) // init 
+	0x9d130  class func WidgetDescriptorCache.__allocating_init(backingStore:) // init 
  }
 
  class ChronoKit.ExtensionSystemDataCacheKeyProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1458,26 +1461,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var fileManager : NSFileManager
 
 	// Swift methods
-	0xa2a90  class func ExtensionSystemDataCacheKeyProvider.__allocating_init(subsystemIdentifier:extensionManager:fileManager:) // init 
-	0xa2b40  func <stripped> // method 
-	0xa2d40  func <stripped> // method 
-	0xa2e10  func <stripped> // method 
+	0xa3150  class func ExtensionSystemDataCacheKeyProvider.__allocating_init(subsystemIdentifier:extensionManager:fileManager:) // init 
+	0xa3200  func <stripped> // method 
+	0xa3400  func <stripped> // method 
+	0xa34d0  func <stripped> // method 
  }
 
  struct ChronoKit.WidgetLiveView {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let defaultView : )
+	let defaultView : 9
 	var timelineUI : WidgetLiveViewTimelineUI
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _entry : GÛ
+	var _entry : UÍ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _backgroundColor : È
+	var _backgroundColor : ˘
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environmentValues : ø
+	var _environmentValues : œ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let environmentDidChange : É
+	let environmentDidChange : ì
  }
 
  class ChronoKit.TimelineUI {
@@ -1486,8 +1489,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var protectionType : ã
-
+	var protectionType : °
  }
 
  struct ChronoKit.ExtensionDataProtectionLevelProvider: DataProtectionLevelProviding {
@@ -1495,6 +1497,5 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var extensionManager : ExtensionManaging
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var default : ã
-
+	var default : °
  }

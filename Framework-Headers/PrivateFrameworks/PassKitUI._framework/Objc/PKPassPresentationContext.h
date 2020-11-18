@@ -11,7 +11,6 @@
 
 @interface PKPassPresentationContext : NSObject
 {
-    BOOL _animated;
     BOOL _fieldDetect;
     BOOL _postPayment;
     BOOL _forcePayment;
@@ -24,7 +23,6 @@
 }
 
 @property (copy, nonatomic) NSArray *additionalPassUniqueIdentifiers; // @synthesize additionalPassUniqueIdentifiers=_additionalPassUniqueIdentifiers;
-@property (nonatomic) BOOL animated; // @synthesize animated=_animated;
 @property (nonatomic, getter=isFieldDetect) BOOL fieldDetect; // @synthesize fieldDetect=_fieldDetect;
 @property (nonatomic, getter=wantsForcedPayment) BOOL forcePayment; // @synthesize forcePayment=_forcePayment;
 @property (nonatomic, getter=wasForcedFromButton) BOOL forcedFromButton; // @synthesize forcedFromButton=_forcedFromButton;
@@ -34,10 +32,9 @@
 @property (copy, nonatomic) id<NSCopying> userInfo; // @synthesize userInfo=_userInfo;
 @property (nonatomic) BOOL wasAutomaticallySelected; // @synthesize wasAutomaticallySelected=_wasAutomaticallySelected;
 
-+ (id)contextWithAnimation:(BOOL)arg1;
-+ (id)contextWithAnimation:(BOOL)arg1 additionalPassUniqueIdentifiers:(id)arg2;
-+ (id)contextWithAnimation:(BOOL)arg1 wasAutomaticallySelected:(BOOL)arg2 additionalPassUniqueIdentifiers:(id)arg3;
-+ (id)contextWithAnimation:(BOOL)arg1 wasAutomaticallySelected:(BOOL)arg2 additionalPassUniqueIdentifiers:(id)arg3 userInfo:(id)arg4;
++ (id)contextWithAdditionalPassUniqueIdentifiers:(id)arg1;
++ (id)contextWithWasAutomaticallySelected:(BOOL)arg1 additionalPassUniqueIdentifiers:(id)arg2;
++ (id)contextWithWasAutomaticallySelected:(BOOL)arg1 additionalPassUniqueIdentifiers:(id)arg2 userInfo:(id)arg3;
 - (void).cxx_destruct;
 - (id)description;
 

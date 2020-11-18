@@ -16,8 +16,8 @@ __attribute__((visibility("hidden")))
     BOOL _hasSelectionInteractionAssistant;
     BOOL _hasTextInputView;
     UITextPosition *_cursorPosition;
-    long long _selectionGranularity;
     UITextRange *_initialSelection;
+    long long _selectionGranularity;
     UITextRange *_selectionBase;
     UIResponder<UITextInput> *_inputDelegate;
     struct CGRect _caretRectForCursorPosition;
@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)endSelection;
 - (void)endSelectionChange;
 - (id)initWithInputDelegate:(id)arg1;
+- (void)modifySelectionWithExtentPoint:(struct CGPoint)arg1 executionContext:(id)arg2;
 - (void)resetCursorPosition;
 - (void)restartSelection;
 - (void)scrollSelectionToVisible;

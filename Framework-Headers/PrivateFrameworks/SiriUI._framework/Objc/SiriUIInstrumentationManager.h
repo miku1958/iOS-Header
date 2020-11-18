@@ -33,8 +33,11 @@
 - (void).cxx_destruct;
 - (void)_emitInstrumentation:(id)arg1;
 - (BOOL)_hasDismissedForTurnContext:(id)arg1;
+- (void)_populateDefaultRouteInformationWithRouteInfo:(id)arg1 forTTSEvent:(id)arg2;
+- (void)_populateWirelessRouteInformationWithRouteInfo:(id)arg1 forTTSEvent:(id)arg2;
 - (void)_prepareForTesting;
 - (id)_responseContextWithPresentationType:(int)arg1 dialogPhase:(id)arg2 mode:(int)arg3;
+- (id)_routeInfoForOutputRoute;
 - (id)associatedDialogIdentifiersForAceObjectIdentifier:(id)arg1;
 - (id)cardIDforSnippetAceID:(id)arg1;
 - (void)emitCasinoRelationshipEventWithViewIDFrom:(id)arg1 ViewIDTo:(id)arg2 casinoFromType:(int)arg3;
@@ -52,6 +55,7 @@
 - (void)emitUUFRShownForAceObject:(id)arg1 presentationType:(int)arg2 dialogPhase:(id)arg3;
 - (void)emitUUFRShownForAceObject:(id)arg1 presentationType:(int)arg2 dialogPhase:(id)arg3 mode:(int)arg4 viewRegion:(int)arg5;
 - (void)emitUUFRSpokenForAceObject:(id)arg1 presentationType:(int)arg2 dialogPhase:(id)arg3 mode:(int)arg4;
+- (void)emitUserViewRegionInteractionEventWithViewRegion:(int)arg1 userViewInteraction:(int)arg2;
 - (id)init;
 - (id)latestStoredTurn;
 - (void)setDialogIdentifiers:(id)arg1 forAceViewSpeakableTextWithIdentifier:(id)arg2;

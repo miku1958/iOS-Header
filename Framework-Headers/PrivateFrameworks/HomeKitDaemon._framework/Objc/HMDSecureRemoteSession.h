@@ -53,8 +53,8 @@
 - (void)_closeServerStream:(id)arg1 error:(id)arg2;
 - (void)_closeWithError:(id)arg1;
 - (id)_dequeMessage;
-- (void)_handleSecureClientMessage:(id)arg1 transport:(id)arg2;
-- (void)_handleSecureServerMessage:(id)arg1 transport:(id)arg2;
+- (void)_handleSecureClientMessage:(id)arg1 fromDevice:(id)arg2 transport:(id)arg3;
+- (void)_handleSecureServerMessage:(id)arg1 fromDevice:(id)arg2 transport:(id)arg3;
 - (void)_handleStreamInvalidationMessage:(id)arg1;
 - (void)_openClientStreamWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_openServerStreamWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -70,7 +70,7 @@
 - (id)logIdentifier;
 - (void)messageTransport:(id)arg1 didReceiveMessage:(id)arg2;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)receivedSecureMessage:(id)arg1 fromTransport:(id)arg2;
+- (void)receivedSecureMessage:(id)arg1 fromDevice:(id)arg2 fromTransport:(id)arg3;
 - (void)secureRemoteStream:(id)arg1 didCloseWithError:(id)arg2;
 - (void)secureRemoteStream:(id)arg1 receivedRequestToSendMessage:(id)arg2;
 - (void)secureRemoteStreamIsIdle:(id)arg1;

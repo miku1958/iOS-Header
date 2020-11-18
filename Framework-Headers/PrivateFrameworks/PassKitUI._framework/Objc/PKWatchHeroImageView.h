@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) struct CGRect cardFrame;
 @property (nonatomic) BOOL hideDoneLabel; // @synthesize hideDoneLabel=_hideDoneLabel;
 @property (readonly, nonatomic) BOOL isCompactWatch;
+@property (readonly, nonatomic) double watchDeviceImageScaleFactor;
 @property (readonly, nonatomic) struct CGPoint watchScreenCenter;
 @property (readonly, nonatomic) struct CGRect watchScreenFrame;
 
@@ -33,7 +34,6 @@
 - (id)init;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (double)scale;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGRect)spaceBelowCardFrame;
 

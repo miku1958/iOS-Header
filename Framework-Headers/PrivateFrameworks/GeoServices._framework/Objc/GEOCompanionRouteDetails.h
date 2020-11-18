@@ -169,6 +169,7 @@
 - (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)needsStepsRewrite;
+- (BOOL)needsWaypointRemoval:(unsigned long long)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)routeDescriptionsAtIndex:(unsigned long long)arg1;

@@ -369,6 +369,8 @@
 @property (readonly, nonatomic) struct CGSize videoComplementSpatialOverCaptureSize;
 @property (nonatomic) long long videoCpDurationValue; // @dynamic videoCpDurationValue;
 @property (nonatomic) unsigned short videoCpVisibilityState; // @dynamic videoCpVisibilityState;
+@property (nonatomic) int videoKeyFrameTimeScale; // @dynamic videoKeyFrameTimeScale;
+@property (nonatomic) long long videoKeyFrameValue; // @dynamic videoKeyFrameValue;
 @property (nonatomic) short visibilityState; // @dynamic visibilityState;
 @property (readonly, nonatomic) long long width;
 @property (readonly, nonatomic) long long width;
@@ -508,6 +510,7 @@
 + (id)predicateFilteringForNonDerivativeRecipeIDs;
 + (id)predicateForCompleteResources;
 + (id)predicateForDepthEffectPhotos;
++ (id)predicateForLocallyAvailablePrimaryStoreResourcesWithCPLResourceTypes:(id)arg1 version:(unsigned int)arg2;
 + (id)predicateForRAWAndRPlusJAssets;
 + (id)predicateForReframedAssets;
 + (id)predicateForSpatialOverCaptureAssets;
@@ -522,6 +525,7 @@
 + (id)predicateToExcludeNonvisibleBurstAssetsWithAvalanchePickTypeKeyPath:(id)arg1;
 + (id)predicateToExcludeTrashedAssets;
 + (id)predicateToExcludeTrashedAssetsWithTrashedStateKeyPath:(id)arg1;
++ (id)predicateToExcludeVideosWithVideoKeyFrameSetWithKeyPathToAsset:(id)arg1;
 + (id)predicateToIncludeOnlyAllowedForAnalysisAssets;
 + (id)predicateToIncludeOnlyContentContributedByCurrentUser;
 + (id)preferredFileExtensionForType:(id)arg1;
@@ -821,6 +825,7 @@
 - (BOOL)isTimelapsePlaceholder;
 - (BOOL)isValidForPersistence;
 - (BOOL)isValidTypeForPersistence;
+- (BOOL)isVideoKeyFrameSet;
 - (id)largestAvailableDataRepresentationAndType:(id *)arg1;
 - (id)lastUploadAttemptDate;
 - (id)legacyFaceWithIdentifier:(short)arg1;
@@ -934,7 +939,8 @@
 - (void)removeSidecar:(id)arg1;
 - (BOOL)renderableAdjustmentDictionary:(id *)arg1 error:(id *)arg2;
 - (BOOL)repairAssetScopeValidationErrors:(id)arg1;
-- (BOOL)resetBestKeyFrameTimeAndDeleteKeyFrameResource;
+- (BOOL)resetVideoKeyFrameTime;
+- (BOOL)resetVideoKeyFrameTimeAndDeleteKeyFrameResource;
 - (id)resourceForCPLType:(unsigned long long)arg1 version:(unsigned int)arg2;
 - (unsigned long long)resourceTypeForUnadjustedFlattenedLivePhotoAssetResourceType:(unsigned long long)arg1 sourceAsset:(id)arg2;
 - (id)resourcesSortedByQuality;
@@ -991,6 +997,7 @@
 - (void)setUploadAttempts:(short)arg1;
 - (BOOL)setVideoInfoFromFileAtURL:(id)arg1 mainFileMetadata:(id)arg2 fullSizeRenderURL:(id)arg3 overwriteOriginalProperties:(BOOL)arg4;
 - (void)setVideoInfoOnMasterFromAVAsset:(id)arg1;
+- (void)setVideoKeyFrameTime:(CDStruct_198678f7)arg1;
 - (BOOL)setupPlaceholderAssetWithRequiredPropertiesFromSourceAsset:(id)arg1 placeholderAssetUUID:(id)arg2 momentShare:(id)arg3 importSessionID:(id)arg4 bakeInAdjustmentsFromSourceAsset:(BOOL)arg5 flattenLivePhoto:(BOOL)arg6 copyTitleDescriptionAndKeywords:(BOOL)arg7 copyCameraProcessingAdjustmentResources:(BOOL)arg8 library:(id)arg9;
 - (id)shortenedFilePath;
 - (id)shotType;
@@ -1043,6 +1050,7 @@
 - (BOOL)validateForInsert:(id *)arg1;
 - (BOOL)validateForUpdate:(id *)arg1;
 - (id)videoComplementData;
+- (CDStruct_198678f7)videoKeyFrameTime;
 - (BOOL)visibilityStateIsEqualToState:(short)arg1;
 - (void)willSave;
 - (void)willTurnIntoFault;

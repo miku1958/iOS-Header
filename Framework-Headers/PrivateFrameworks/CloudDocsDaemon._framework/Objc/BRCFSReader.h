@@ -90,6 +90,7 @@
 - (BOOL)needsLookupReloadAfterHandlingCrossZoneMoveWithItem:(id)arg1 relpath:(id)arg2;
 - (void)readUnderCoordinationAtURL:(id)arg1;
 - (BOOL)readUnderCoordinationWithLookup:(id)arg1;
+- (unsigned int)recoverAndReportMissingJobs;
 - (void)reset;
 - (void)resume;
 - (void)scanContainerDocumentsIfNeeded:(id)arg1;

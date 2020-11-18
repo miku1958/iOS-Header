@@ -8,16 +8,18 @@
 
 #import <CoreHAP/NSSecureCoding-Protocol.h>
 
-@class HAPBLEPeripheralInfo, NSMutableArray, NSString;
+@class HAPBLEPeripheralInfo, NSMutableArray, NSNumber, NSString;
 
 @interface HAPBLEAccessoryCache : HMFObject <NSSecureCoding>
 {
+    NSNumber *_metadataVersion;
     NSString *_pairingIdentifier;
     HAPBLEPeripheralInfo *_peripheralInfo;
     NSMutableArray *_cachedServices;
 }
 
 @property (readonly, nonatomic) NSMutableArray *cachedServices; // @synthesize cachedServices=_cachedServices;
+@property (readonly, nonatomic) NSNumber *metadataVersion; // @synthesize metadataVersion=_metadataVersion;
 @property (readonly, nonatomic) NSString *pairingIdentifier; // @synthesize pairingIdentifier=_pairingIdentifier;
 @property (strong, nonatomic) HAPBLEPeripheralInfo *peripheralInfo; // @synthesize peripheralInfo=_peripheralInfo;
 

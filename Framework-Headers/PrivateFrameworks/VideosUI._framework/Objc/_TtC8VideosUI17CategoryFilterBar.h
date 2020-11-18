@@ -16,8 +16,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *selectedCategory;
     MISSING_TYPE *lastKnownBounds;
     MISSING_TYPE *buttons;
-    MISSING_TYPE *selectionButton;
-    MISSING_TYPE *$__lazy_storage_$_selectionBackgroundView;
+    MISSING_TYPE *selectedButton;
+    MISSING_TYPE *$__lazy_storage_$_selectedButtonBackgroundView;
     MISSING_TYPE *needsButtonsLayout;
 }
 
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)tintColorDidChange;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

@@ -9,7 +9,7 @@
 #import <NearbyInteraction/NSCopying-Protocol.h>
 #import <NearbyInteraction/NSSecureCoding-Protocol.h>
 
-@class MISSING_TYPE, NIDiscoveryToken;
+@class MISSING_TYPE, NIDiscoveryToken, NSString;
 
 @interface NINearbyObject : NSObject <NSCopying, NSSecureCoding>
 {
@@ -17,6 +17,8 @@
     float _azimuth;
     float _elevation;
     NIDiscoveryToken *_discoveryToken;
+    unsigned long long _relationship;
+    NSString *_deviceIdentifer;
     MISSING_TYPE *_direction;
     struct {
         MISSING_TYPE *vector;
@@ -24,11 +26,13 @@
 }
 
 @property (nonatomic) float azimuth; // @synthesize azimuth=_azimuth;
+@property (copy) NSString *deviceIdentifer; // @synthesize deviceIdentifer=_deviceIdentifer;
 @property (nonatomic) MISSING_TYPE *direction; // @synthesize direction=_direction;
 @property (copy, nonatomic) NIDiscoveryToken *discoveryToken; // @synthesize discoveryToken=_discoveryToken;
 @property (nonatomic) float distance; // @synthesize distance=_distance;
 @property (nonatomic) float elevation; // @synthesize elevation=_elevation;
 @property (nonatomic) struct quaternion; // @synthesize quaternion=_quaternion;
+@property (nonatomic) unsigned long long relationship; // @synthesize relationship=_relationship;
 
 + (id)new;
 + (BOOL)supportsSecureCoding;
@@ -39,8 +43,8 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithNearbyObject:(id)arg1;
 - (id)initWithToken:(id)arg1;
-- (id)initWithTrackedObject:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

@@ -9,13 +9,14 @@
 #import <Announce/ANRemotePlaybackSessionServiceClientInterface-Protocol.h>
 
 @class NSString, NSXPCConnection;
-@protocol ANRemotePlaybackSessionDelegate;
+@protocol ANRemotePlaybackSessionDelegate, OS_dispatch_queue;
 
 @interface ANRemotePlaybackSession : NSObject <ANRemotePlaybackSessionServiceClientInterface>
 {
     id<ANRemotePlaybackSessionDelegate> _delegate;
     NSXPCConnection *_connection;
     CDUnknownBlockType _handler;
+    NSObject<OS_dispatch_queue> *_handlerQueue;
 }
 
 @property (readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
@@ -23,10 +24,12 @@
 @property (weak, nonatomic) id<ANRemotePlaybackSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
+@property (weak, nonatomic) NSObject<OS_dispatch_queue> *handlerQueue; // @synthesize handlerQueue=_handlerQueue;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_callHandler:(id)arg1;
 - (void)dealloc;
 - (void)didUpdateAnnouncements:(id)arg1 forGroupID:(id)arg2;
 - (BOOL)endSession;

@@ -7,14 +7,16 @@
 #import <VideosUI/_TtC8VideosUI24SearchTemplateController.h>
 
 #import <VideosUI/UISearchBarDelegate-Protocol.h>
+#import <VideosUI/UISearchBarDelegate_Private-Protocol.h>
 #import <VideosUI/UISearchControllerDelegate-Protocol.h>
-#import <VideosUI/UISearchResultsUpdating-Protocol.h>
 
-@interface _TtC8VideosUI24SearchTemplateController (VideosUI) <UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating>
+@interface _TtC8VideosUI24SearchTemplateController (VideosUI) <UISearchControllerDelegate, UISearchBarDelegate, UISearchBarDelegate_Private>
+- (struct CGRect)_searchBar:(id)arg1 proposedSearchFieldFrame:(struct CGRect)arg2;
+- (void)handleWithKeyboardShowNotification:(id)arg1;
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;
 - (void)searchBarCancelButtonClicked:(id)arg1;
 - (void)searchBarSearchButtonClicked:(id)arg1;
-- (void)updateSearchResultsForSearchController:(id)arg1;
 - (void)willDismissSearchController:(id)arg1;
+- (void)willPresentSearchController:(id)arg1;
 @end
 

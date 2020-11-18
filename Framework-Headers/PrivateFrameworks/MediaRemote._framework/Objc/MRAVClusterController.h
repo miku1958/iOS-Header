@@ -17,14 +17,19 @@
     NSString *_localPairingIdentity;
     NSString *_clusterUID;
     NSString *_clusterLeaderUID;
+    unsigned int _clusterType;
     unsigned long long _previousClusterStatus;
     int _airplayClusterStatusNotificationToken;
 }
 
+@property (readonly, nonatomic) NSString *clusterLeaderUID;
 @property (readonly, nonatomic) unsigned long long clusterStatus;
+@property (readonly, nonatomic) unsigned int clusterType;
+@property (readonly, nonatomic) BOOL needsCommandRedirection;
 
 + (BOOL)canBeClusterMember;
 + (id)getClusterLeaderUID;
++ (unsigned int)getClusterType;
 + (id)getClusterUID;
 + (id)sharedController;
 - (void).cxx_destruct;

@@ -20,6 +20,7 @@
     MISSING_TYPE *audioTabVisibilitySignal;
     MISSING_TYPE *readingHistory;
     MISSING_TYPE *commandCenter;
+    MISSING_TYPE *newsActivityManager;
 }
 
 - (void).cxx_destruct;

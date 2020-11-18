@@ -112,6 +112,7 @@
 - (void)cancelSpeech;
 - (void)dealloc;
 - (BOOL)dictationIsAvailableForLanguage:(id)arg1;
+- (BOOL)dictationIsAvailableForLanguage:(id)arg1 synchronous:(BOOL)arg2;
 - (void)endSession;
 - (BOOL)forcedOfflineDictationIsAvailableForLanguage:(id)arg1;
 - (BOOL)forcedOfflineDictationIsAvailableForLanguage:(id)arg1 synchronous:(BOOL)arg2;

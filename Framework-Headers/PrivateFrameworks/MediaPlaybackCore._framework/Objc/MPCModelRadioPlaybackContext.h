@@ -49,7 +49,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionComponents;
 - (void)encodeWithCoder:(id)arg1;
-- (void)getRemotePlaybackQueueRepresentationWithPlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getRemotePlaybackQueueRepresentationWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (long long)queueEndAction;

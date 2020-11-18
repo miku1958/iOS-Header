@@ -23,10 +23,11 @@
 
 + (void)saveValuesForPlugins:(id)arg1;
 - (void).cxx_destruct;
+- (void)_determineSiteCodeUsingDispatchGroup:(id)arg1 bundleIdentifier:(id)arg2 auditTokenData:(id)arg3 networkFingerprint:(id)arg4 requireTLSForLDAP:(BOOL)arg5;
 - (unsigned long long)attemptKerberosWithContext:(id)arg1 returningToken:(id *)arg2 orError:(id *)arg3;
 - (BOOL)changePasswordWithContext:(id)arg1 withError:(id *)arg2;
 - (unsigned long long)createNewCredentialUsingContext:(id)arg1 returningCredential:(struct gss_cred_id_t_desc_struct **)arg2 orError:(id *)arg3;
-- (void)determineSiteCodeUsingDispatchGroup:(id)arg1 andBundleIdentifier:(id)arg2 networkFingerprint:(id)arg3;
+- (void)determineSiteCodeUsingContext:(id)arg1;
 - (unsigned long long)findExistingCredentialUsingContext:(id)arg1 returningCredential:(struct gss_cred_id_t_desc_struct **)arg2 orError:(id *)arg3;
 - (id)initWithRealm:(id)arg1 andSettingsManager:(id)arg2;
 - (unsigned long long)mapErrorToKnownError:(id)arg1;

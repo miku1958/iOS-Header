@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class STSetupConfiguration, STUserID;
+@class NSXPCListenerEndpoint, STSetupConfiguration, STUserID;
 
 @protocol STSetupServiceInterface
 - (void)applyUpdatedConfiguration:(STSetupConfiguration *)arg1 completionHandler:(void (^)(NSError *))arg2;
-- (void)collectPasscodeFromUserWithCompletionHandler:(void (^)(STOpaquePasscode *, NSError *))arg1;
 - (void)currentConfigurationForUser:(STUserID *)arg1 completionHandler:(void (^)(STSetupConfiguration *, NSError *))arg2;
+- (void)promptForPasscodeFromUserWithEndpoint:(NSXPCListenerEndpoint *)arg1 completionHandler:(void (^)(void))arg2;
 @end
 

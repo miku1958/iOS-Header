@@ -10,6 +10,7 @@
 
 @interface PKSerializedDataAccessor : PKFileDataAccessor
 {
+    struct os_unfair_lock_s _lock;
     NSData *_archiveData;
 }
 
@@ -18,6 +19,9 @@
 - (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 cloudStoreCoordinatorDelegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithData:(id)arg1 error:(id *)arg2;
+- (id)initWithData:(id)arg1 error:(id *)arg2 outputURL:(id)arg3;
+- (id)initWithFileURL:(id)arg1 error:(id *)arg2;
+- (id)initWithFileURL:(id)arg1 error:(id *)arg2 coordinator:(id)arg3;
 
 @end
 

@@ -110,6 +110,7 @@
 - (BOOL)preferredForName;
 - (void)removeKeys:(id)arg1;
 - (void)resetToNewContact;
+- (id)selfOrMutableCopy;
 - (void)setFrozenSelfAsSnapshot;
 - (void)setNilValueForKey:(id)arg1;
 - (void)updateImageDataAvailableFromCurrentState;

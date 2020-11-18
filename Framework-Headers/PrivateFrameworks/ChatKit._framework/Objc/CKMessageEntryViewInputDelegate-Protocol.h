@@ -22,6 +22,7 @@
 - (void)messageEntryViewDidCollapse:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewDidExpand:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewPhotoButtonTouchDown:(CKMessageEntryView *)arg1;
+- (void)messageEntryViewPhotoButtonTouchUpOutside:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewSelectedAppMenuItem:(id<CKAppMenuItem>)arg1;
 @end
 

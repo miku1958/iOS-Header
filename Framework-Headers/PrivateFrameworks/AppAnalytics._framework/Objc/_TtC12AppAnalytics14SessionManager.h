@@ -14,6 +14,7 @@
     MISSING_TYPE *processorManager;
     MISSING_TYPE *appSessionProvider;
     MISSING_TYPE *accessQueue;
+    MISSING_TYPE *sessionGroupManager;
     MISSING_TYPE *suspendCount;
     MISSING_TYPE *state;
     MISSING_TYPE *dataStacks;

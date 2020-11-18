@@ -12,6 +12,7 @@
 
 @protocol HAP2PairedAccessoryServerPrivate <HAP2AccessoryServerPrivate, HAP2PairedAccessoryServer>
 - (void)becomeUnpairedWithAccessoryServer:(id<HAP2UnpairedAccessoryServerPrivate>)arg1;
+- (void)clearAccessories;
 - (id<HAP2Cancelable>)disableNotificationsForCharacteristics:(NSArray *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (id<HAP2Cancelable>)enableNotificationsForCharacteristics:(NSArray *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)handleEvents:(NSArray *)arg1;

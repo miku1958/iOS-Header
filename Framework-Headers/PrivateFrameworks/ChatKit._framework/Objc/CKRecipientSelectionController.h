@@ -13,7 +13,7 @@
 #import <ChatKit/CNComposeRecipientTextViewDelegate-Protocol.h>
 #import <ChatKit/CNContactPickerDelegate-Protocol.h>
 
-@class CKComposeRecipientView, CKDetailsContactsManager, CKManualUpdater, CKPendingConversation, CKRecipientSearchListController, CNComposeRecipient, CNContactPickerViewController, CNContactStore, NSMutableDictionary, NSString, STConversationContext, UILabel, UIScrollView, UIView;
+@class CKAlertController, CKComposeRecipientView, CKDetailsContactsManager, CKManualUpdater, CKPendingConversation, CKRecipientSearchListController, CNComposeRecipient, CNContactPickerViewController, CNContactStore, NSMutableDictionary, NSString, STConversationContext, UILabel, UIScrollView, UIView;
 @protocol CKRecipientSelectionControllerDelegate;
 
 @interface CKRecipientSelectionController : CKViewController <CNComposeRecipientTextViewDelegate, CKComposeRecipientViewDelegate, CKRecipientSearchListControllerDelegate, CNAutocompleteGroupDetailViewControllerDelegate, CNContactPickerDelegate, CKDetailsContactsManagerDelegate>
@@ -45,10 +45,12 @@
     NSMutableDictionary *_recipientAvailabilities;
     unsigned long long _numberOfRowsInToField;
     CKDetailsContactsManager *_contactsManager;
+    CKAlertController *_alternateAddressesAlertController;
 }
 
 @property (strong, nonatomic) CKManualUpdater *addressBookNotificationUpdater; // @synthesize addressBookNotificationUpdater=_addressBookNotificationUpdater;
 @property (nonatomic) BOOL allowedByScreenTime; // @synthesize allowedByScreenTime=_allowedByScreenTime;
+@property (strong, nonatomic) CKAlertController *alternateAddressesAlertController; // @synthesize alternateAddressesAlertController=_alternateAddressesAlertController;
 @property (readonly, nonatomic) double collapsedHeight;
 @property (strong, nonatomic) CNContactPickerViewController *contactPickerViewController; // @synthesize contactPickerViewController=_contactPickerViewController;
 @property (readonly, nonatomic) CNContactStore *contactStore;
@@ -88,7 +90,7 @@
 - (unsigned long long)_atomPresentationOptionsForRecipient:(id)arg1;
 - (BOOL)_availibilityForRecipient:(id)arg1 onService:(id)arg2;
 - (id)_canonicalRecipientAddresses;
-- (void)_configureSearchListControllerAsAPopover;
+- (BOOL)_configureSearchListControllerAsAPopover;
 - (void)_dismissPeoplePicker;
 - (void)_handleAddressBookChangedNotification:(id)arg1;
 - (void)_handleAddressBookPartialChangedNotification:(id)arg1;
@@ -139,7 +141,7 @@
 - (BOOL)autocompleteResultsController:(id)arg1 willOverrideImageDataForRecipient:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)bringComposeRecipientViewToFront;
 - (id)chatForIMHandle:(id)arg1;
-- (BOOL)chooseSelectedSearchResultForComposeRecipientView:(id)arg1;
+- (BOOL)chooseSelectedSearchResultForComposeRecipientView:(id)arg1 context:(unsigned long long)arg2;
 - (BOOL)collapseSelectedSearchResultForComposeRecipientView:(id)arg1;
 - (void)colorTypeForRecipient:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)composeRecipientView:(id)arg1 composeRecipientForAddress:(id)arg2;

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SilexVideo/SVMaterialButton.h>
+#import <Silex/SXMaterialButton.h>
 
-@interface SXVideoAdSkipButton : SVMaterialButton
+@interface SXVideoAdSkipButton : SXMaterialButton
 {
     unsigned long long _skipDuration;
 }

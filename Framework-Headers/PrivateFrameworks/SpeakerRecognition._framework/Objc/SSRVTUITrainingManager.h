@@ -10,7 +10,7 @@
 #import <SpeakerRecognition/CSVTUIAudioSessionDelegate-Protocol.h>
 #import <SpeakerRecognition/CSVTUITrainingSessionDelegate-Protocol.h>
 
-@class CSAsset, CSNNVADEndpointAnalyzer, CSPlainAudioFileWriter, CSVTUIKeywordDetector, CSVTUITrainingSession, NSMutableArray, NSString, SFSpeechRecognizer, SSRVoiceProfile;
+@class CSAsset, CSDispatchGroup, CSNNVADEndpointAnalyzer, CSPlainAudioFileWriter, CSVTUIKeywordDetector, CSVTUITrainingSession, NSMutableArray, NSString, SFSpeechRecognizer, SSRVoiceProfile;
 @protocol CSVTUIAudioSession, OS_dispatch_queue, SSRVTUITrainingManagerDelegate;
 
 @interface SSRVTUITrainingManager : NSObject <CSVTUITrainingSessionDelegate, CSVTUIAudioSessionDelegate, CSEndpointAnalyzerDelegate>
@@ -29,6 +29,7 @@
     SFSpeechRecognizer *_speechRecognizer;
     CSAsset *_currentAsset;
     SSRVoiceProfile *_profile;
+    CSDispatchGroup *_didStopWaitingGroup;
     BOOL _speechRecognizerAvailable;
     float _rms;
     id<SSRVTUITrainingManagerDelegate> _delegate;
@@ -61,7 +62,7 @@
 - (BOOL)_setupAudioSession;
 - (BOOL)_shouldShowHeadsetDisconnectionMessage;
 - (BOOL)_startAudioSession;
-- (void)_stopAudioSession;
+- (BOOL)_stopAudioSession;
 - (void)audioSessionDidStartRecording:(BOOL)arg1 error:(id)arg2;
 - (void)audioSessionDidStopRecording:(long long)arg1;
 - (void)audioSessionErrorDidOccur:(id)arg1;

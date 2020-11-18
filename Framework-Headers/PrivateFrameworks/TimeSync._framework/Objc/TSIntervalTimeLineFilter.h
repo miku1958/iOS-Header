@@ -29,6 +29,7 @@
 - (unsigned long long)domainATimeFromDomainBTime:(unsigned long long)arg1;
 - (unsigned long long)domainBIntervalFromDomainAInterval:(unsigned long long)arg1;
 - (unsigned long long)domainBTimeFromDomainATime:(unsigned long long)arg1;
+- (void)getAnchors:(CDStruct_4bcfbbae *)arg1 andRateRatio:(CDStruct_4bcfbbae *)arg2;
 - (id)initWithExpectedDomainAInterval:(unsigned long long)arg1 expectedDomainBInterval:(unsigned long long)arg2 filterSize:(unsigned char)arg3;
 - (CDStruct_4bcfbbae)rateRatio;
 - (void)resetFilter;

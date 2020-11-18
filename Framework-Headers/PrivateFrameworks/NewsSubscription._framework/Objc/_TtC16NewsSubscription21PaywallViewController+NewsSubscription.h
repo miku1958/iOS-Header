@@ -8,9 +8,12 @@
 
 #import <NewsSubscription/TUPluggable-Protocol.h>
 
+@class NSArray;
+
 @interface _TtC16NewsSubscription21PaywallViewController (NewsSubscription) <TUPluggable>
 
 @property (nonatomic, readonly) long long pluginItemCount;
+@property (nonatomic, readonly) NSArray *pluginItemIdentifiers;
 @property (nonatomic, readonly) long long pluginVisibleItemCount;
 
 - (void)initializeWithCompletion:(CDUnknownBlockType)arg1;

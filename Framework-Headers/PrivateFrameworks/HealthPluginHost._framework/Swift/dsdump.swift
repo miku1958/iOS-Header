@@ -26,8 +26,8 @@
 	var connection : NSXPCConnection
 
 	// Swift methods
-	0x91b0  class func HealthPluginHostConnection.__allocating_init() // init 
-	0x97e0  func <stripped> // method 
+	0x8270  class func HealthPluginHostConnection.__allocating_init() // init 
+	0x88a0  func <stripped> // method 
  }
 
  class HealthPluginHost.PopulateDiscoverFeedOperation {

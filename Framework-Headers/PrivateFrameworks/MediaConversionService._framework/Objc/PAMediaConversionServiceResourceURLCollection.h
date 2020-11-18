@@ -26,11 +26,16 @@
 - (BOOL)containsAllRoles:(id)arg1;
 - (BOOL)containsAnyRole:(id)arg1;
 - (BOOL)copyURL:(id)arg1 forRole:(id)arg2 toDirectory:(id)arg3 error:(id *)arg4;
+- (id)description;
 - (BOOL)ensureFilesExistWithError:(id *)arg1;
+- (void)enumerateResourceURLReferences:(CDUnknownBlockType)arg1;
 - (void)enumerateResourceURLs:(CDUnknownBlockType)arg1;
 - (id)fileSizeSummary;
+- (unsigned long long)hash;
 - (id)init;
+- (BOOL)isEqual:(id)arg1;
 - (id)logMessageSummary;
+- (id)logMessageSummaryWithFullPath:(BOOL)arg1;
 - (BOOL)removeExistingEmptyFilesWithError:(id *)arg1;
 - (id)resourceURLForRole:(id)arg1;
 - (void)setResourceURL:(id)arg1 forRole:(id)arg2;

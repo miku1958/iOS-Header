@@ -9,23 +9,27 @@
 #import <ChronoServices/NSCopying-Protocol.h>
 #import <ChronoServices/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
 @interface CHSLocalizableString : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _isVerbatim;
     NSString *_key;
     NSString *_tableName;
-    NSString *_bundlePath;
+    NSData *_bundleBookmark;
 }
 
-@property (readonly, copy, nonatomic) NSString *bundlePath; // @synthesize bundlePath=_bundlePath;
+@property (readonly, copy, nonatomic) NSData *bundleBookmark; // @synthesize bundleBookmark=_bundleBookmark;
+@property (readonly, copy, nonatomic) NSString *bundlePath;
 @property (readonly, nonatomic) BOOL isVerbatim; // @synthesize isVerbatim=_isVerbatim;
 @property (readonly, copy, nonatomic) NSString *key; // @synthesize key=_key;
 @property (readonly, copy, nonatomic) NSString *tableName; // @synthesize tableName=_tableName;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_URLForBookmark:(id)arg1 isStale:(BOOL *)arg2;
+- (id)_bookmarkForPath:(id)arg1;
+- (id)_initWithKey:(id)arg1 tableName:(id)arg2 bundleBookmark:(id)arg3 isVerbatim:(BOOL)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

@@ -10,7 +10,7 @@
 #import <WorkflowKit/WFCloudKitItem-Protocol.h>
 #import <WorkflowKit/WFSortableGalleryObject-Protocol.h>
 
-@class CKRecordID, NSData, NSDate, NSNumber, NSString, WFFileRepresentation, WFWorkflowIcon, WFWorkflowRecord;
+@class CKRecordID, NSArray, NSData, NSDate, NSNumber, NSString, WFFileRepresentation, WFWorkflowIcon, WFWorkflowRecord;
 
 @interface WFGalleryWorkflow : NSObject <WFCloudKitItem, WFSortableGalleryObject, NSMutableCopying>
 {
@@ -20,6 +20,8 @@
     NSString *_shortDescription;
     NSString *_longDescription;
     NSNumber *_searchable;
+    long long _minVersion;
+    NSArray *_hiddenRegions;
     NSDate *_createdAt;
     NSDate *_modifiedAt;
     NSString *_language;
@@ -36,6 +38,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSArray *hiddenRegions; // @synthesize hiddenRegions=_hiddenRegions;
 @property (readonly, nonatomic) WFWorkflowIcon *icon;
 @property (strong, nonatomic) NSNumber *iconColor; // @synthesize iconColor=_iconColor;
 @property (readonly, nonatomic) WFFileRepresentation *iconFile; // @synthesize iconFile=_iconFile;
@@ -43,6 +46,7 @@
 @property (readonly, nonatomic) CKRecordID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSString *language; // @synthesize language=_language;
 @property (readonly, nonatomic) NSString *longDescription; // @synthesize longDescription=_longDescription;
+@property (readonly, nonatomic) long long minVersion; // @synthesize minVersion=_minVersion;
 @property (readonly, nonatomic) NSDate *modifiedAt; // @synthesize modifiedAt=_modifiedAt;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSString *persistentIdentifier; // @synthesize persistentIdentifier=_persistentIdentifier;

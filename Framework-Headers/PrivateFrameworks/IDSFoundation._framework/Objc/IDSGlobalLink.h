@@ -88,6 +88,7 @@
     NSMutableArray *_targetedAllocations;
     BOOL _useSecureControlMessage;
     NSData *_controlMessageKey;
+    BOOL _basebandPacketLinkID;
     unsigned short _basebandPacketChannelNumber;
     IDSGlobalLinkBlocks *_qraBlocks;
     NSMutableArray *_allocateTimeReportBlocks;

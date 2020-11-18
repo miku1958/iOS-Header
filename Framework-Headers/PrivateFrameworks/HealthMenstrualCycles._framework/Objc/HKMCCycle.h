@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthMenstrualCycles/HKRedactedDescription-Protocol.h>
 #import <HealthMenstrualCycles/NSSecureCoding-Protocol.h>
 
-@class HKMCCycleSegment, NSNumber;
+@class HKMCCycleSegment, NSNumber, NSString;
 
-@interface HKMCCycle : NSObject <NSSecureCoding>
+@interface HKMCCycle : NSObject <HKRedactedDescription, NSSecureCoding>
 {
     HKMCCycleSegment *_menstruationSegment;
     HKMCCycleSegment *_fertileWindowSegment;
@@ -18,6 +19,7 @@
 }
 
 @property (readonly, nonatomic) HKMCCycleSegment *fertileWindowSegment; // @synthesize fertileWindowSegment=_fertileWindowSegment;
+@property (readonly, copy) NSString *hk_redactedDescription;
 @property (readonly, nonatomic) NSNumber *lastDayIndex; // @synthesize lastDayIndex=_lastDayIndex;
 @property (readonly, nonatomic) HKMCCycleSegment *menstruationSegment; // @synthesize menstruationSegment=_menstruationSegment;
 
@@ -30,7 +32,6 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)redactedDescription;
 
 @end
 

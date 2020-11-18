@@ -12,6 +12,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)accessibilityHint;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 

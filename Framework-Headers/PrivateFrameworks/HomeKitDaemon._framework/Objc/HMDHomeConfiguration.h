@@ -100,6 +100,7 @@
     NSArray *_hapServicesLists;
     NSArray *_primaryHAPServicesListCertifieds;
     NSArray *_primaryHAPServicesLists;
+    unsigned long long _numHomePods;
 }
 
 - (void).cxx_destruct;

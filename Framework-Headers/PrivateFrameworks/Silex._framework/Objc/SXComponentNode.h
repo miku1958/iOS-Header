@@ -17,14 +17,9 @@
     NSMutableSet *_toSizeDependencies;
 }
 
-@property (strong, nonatomic) NSMutableSet *mutableDependencies; // @synthesize mutableDependencies=_mutableDependencies;
-@property (readonly, nonatomic) NSMutableSet *toPositionDependencies; // @synthesize toPositionDependencies=_toPositionDependencies;
-@property (readonly, nonatomic) NSMutableSet *toSizeDependencies; // @synthesize toSizeDependencies=_toSizeDependencies;
-
 - (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithComponentIdentifier:(id)arg1 andAttribute:(long long)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

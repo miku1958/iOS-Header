@@ -18,6 +18,9 @@
     NSMutableDictionary *_completionHandlersForCity;
     WFServiceConnection *_connection;
     struct ct_green_tea_logger_s *_greenTeaLogger;
+    NSOperationQueue *_priorityForecastOperationQueue;
+    NSMutableSet *_priorityUpdatingCities;
+    NSMutableDictionary *_priorityCompletionHandlersForCity;
     NSString *_trackingParameter;
     WFWeatherStoreService *_store;
 }
@@ -28,15 +31,21 @@
 @property (strong) NSOperationQueue *forecastOperationQueue; // @synthesize forecastOperationQueue=_forecastOperationQueue;
 @property (nonatomic) struct ct_green_tea_logger_s *greenTeaLogger; // @synthesize greenTeaLogger=_greenTeaLogger;
 @property (strong) NSObject<OS_dispatch_queue> *incomingRequestQueue; // @synthesize incomingRequestQueue=_incomingRequestQueue;
+@property (strong) NSMutableDictionary *priorityCompletionHandlersForCity; // @synthesize priorityCompletionHandlersForCity=_priorityCompletionHandlersForCity;
+@property (strong) NSOperationQueue *priorityForecastOperationQueue; // @synthesize priorityForecastOperationQueue=_priorityForecastOperationQueue;
+@property (strong) NSMutableSet *priorityUpdatingCities; // @synthesize priorityUpdatingCities=_priorityUpdatingCities;
 @property (readonly) WFWeatherStoreService *store; // @synthesize store=_store;
 @property (copy) NSString *trackingParameter; // @synthesize trackingParameter=_trackingParameter;
 @property (strong) NSMutableSet *updatingCities; // @synthesize updatingCities=_updatingCities;
 
 - (void).cxx_destruct;
+- (id)_commaSeparatedNamesForUpdatingCities:(id)arg1;
+- (id)_commaSeparatedPriorityUpdatingCitiesNames;
 - (id)_commaSeparatedUpdatingCitiesNames;
 - (void)_handleForecastOperationCompletion:(id)arg1;
 - (id)_queue_executeFetchForCity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_queue_executeFetchForCity:(id)arg1 withUnits:(int)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_queue_executeFetchForCity:(id)arg1 withUnits:(int)arg2 completion:(CDUnknownBlockType)arg3 completionHandlersForCity:(id)arg4 updatingCities:(id)arg5;
 - (void)cancelAllFetchRequests;
 - (void)dealloc;
 - (BOOL)fetchForecastForCities:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -44,6 +53,9 @@
 - (BOOL)fetchForecastForCity:(id)arg1 withUnits:(int)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 - (BOOL)isCityBeingUpdated:(id)arg1;
+- (BOOL)isPriorityCity:(id)arg1;
+- (BOOL)isPriorityCityBeingUpdated:(id)arg1;
+- (BOOL)isPriorityForecastOperationsEnabled;
 
 @end
 

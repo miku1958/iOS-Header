@@ -11,5 +11,6 @@
 - (double)timeLabelBaselineY;
 - (double)timeLabelOffsetForScrollPercent:(double)arg1;
 - (double)timeToSubtitleLabelBaselineDifferenceY;
+- (double)windowedAccessoryInset;
 @end
 

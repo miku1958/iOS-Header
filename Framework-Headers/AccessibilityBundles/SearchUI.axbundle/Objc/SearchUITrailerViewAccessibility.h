@@ -16,6 +16,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
+- (BOOL)accessibilityRespondsToUserInteraction;
 - (unsigned long long)accessibilityTraits;
 - (id)initWithMediaItem:(id)arg1 cardSectionView:(id)arg2;
 - (BOOL)isAccessibilityElement;

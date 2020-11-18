@@ -8,13 +8,14 @@
 
 #import <WorkflowUI/UIPointerInteractionDelegate-Protocol.h>
 
-@class MTVisualStylingProvider, NSString, TLKSimpleRowView, WFDialogListItem;
+@class MTVisualStylingProvider, NSCache, NSString, TLKSimpleRowView, WFDialogListItem;
 
 @interface WFChooseFromListDialogCell : UITableViewCell <UIPointerInteractionDelegate>
 {
     BOOL _checked;
     WFDialogListItem *_listItem;
     MTVisualStylingProvider *_fillVisualStylingProvider;
+    NSCache *_imageCache;
     TLKSimpleRowView *_rowView;
 }
 
@@ -23,6 +24,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) MTVisualStylingProvider *fillVisualStylingProvider; // @synthesize fillVisualStylingProvider=_fillVisualStylingProvider;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSCache *imageCache; // @synthesize imageCache=_imageCache;
 @property (strong, nonatomic) WFDialogListItem *listItem; // @synthesize listItem=_listItem;
 @property (weak, nonatomic) TLKSimpleRowView *rowView; // @synthesize rowView=_rowView;
 @property (readonly) Class superclass;

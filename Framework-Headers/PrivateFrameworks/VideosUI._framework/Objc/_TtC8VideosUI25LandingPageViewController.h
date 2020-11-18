@@ -11,9 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI25LandingPageViewController : UIViewController
 {
-    MISSING_TYPE *isFetching;
-    MISSING_TYPE *recentlySearchedManagerDelegate;
-    MISSING_TYPE *appContext;
+    MISSING_TYPE *delegate;
+    MISSING_TYPE *document;
     MISSING_TYPE *activeServiceRequest;
     MISSING_TYPE *stackViewController;
 }
@@ -21,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)willMoveToParentViewController:(id)arg1;
 
 @end
 

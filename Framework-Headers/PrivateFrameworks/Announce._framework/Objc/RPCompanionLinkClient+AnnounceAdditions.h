@@ -6,12 +6,13 @@
 
 #import <Rapport/RPCompanionLinkClient.h>
 
-@class NSArray, NSDictionary;
+@class NSArray, NSDictionary, RPCompanionLinkDevice;
 
 @interface RPCompanionLinkClient (AnnounceAdditions)
 
 @property (readonly, nonatomic) NSDictionary *activeAccessoryDevicesSupportingAnnounce;
 @property (readonly, nonatomic) NSArray *activeDevicesSupportingAnnounce;
+@property (readonly, nonatomic) RPCompanionLinkDevice *pairedCompanion;
 
 @end
 

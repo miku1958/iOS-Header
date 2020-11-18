@@ -9,6 +9,9 @@
 #import <NewsArticles/PDFViewDelegate-Protocol.h>
 
 @interface _TtC12NewsArticles24PDFReplicaViewController (NewsArticles) <PDFViewDelegate>
+
+@property (nonatomic, readonly) BOOL canBecomeFirstResponder;
+
 - (void)PDFViewWillClickOnLink:(id)arg1 withURL:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)handlePinchGesture;

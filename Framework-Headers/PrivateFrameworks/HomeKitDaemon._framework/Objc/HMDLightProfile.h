@@ -8,13 +8,12 @@
 
 #import <HomeKitDaemon/HMDCharacteristicsAvailabilityListenerDelegate-Protocol.h>
 
-@class HMDCharacteristic, HMDCharacteristicsAvailabilityListener, HMDHAPAccessory, HMDNaturalLightingActiveTransitionContext, HMDNaturalLightingCurve, HMDNaturalLightingCurveWriter, HMDNaturalLightingEnabledRetryContext, HMDService, HMLightProfileSettings, NSDate, NSSet, NSString;
+@class HMDCharacteristic, HMDCharacteristicsAvailabilityListener, HMDHAPAccessory, HMDNaturalLightingActiveTransitionContext, HMDNaturalLightingCurve, HMDNaturalLightingCurveWriter, HMDNaturalLightingEnabledRetryContext, HMDService, HMLightProfileSettings, NSDate, NSHashTable, NSSet, NSString;
 @protocol HMDLightProfileDataSource;
 
 @interface HMDLightProfile : HMDAccessoryProfile <HMDCharacteristicsAvailabilityListenerDelegate>
 {
     BOOL _didCharacteristicReadSucceed;
-    BOOL _shouldEnableCharacteristicNotifications;
     unsigned char _activeTransitionsCount;
     BOOL _naturalLightingEnabled;
     HMDNaturalLightingCurve *_naturalLightingCurve;
@@ -33,10 +32,13 @@
     NSDate *_lastNaturalLightingCurveUpdateDate;
     HMDNaturalLightingActiveTransitionContext *_naturalLightingActiveTransitionContext;
     HMDNaturalLightingEnabledRetryContext *_naturalLightingEnabledRetryContext;
+    NSHashTable *_characteristicValueObservers;
 }
 
 @property unsigned char activeTransitionsCount; // @synthesize activeTransitionsCount=_activeTransitionsCount;
+@property (readonly, copy) NSSet *availableCharacteristics;
 @property (strong) HMDCharacteristic *brightnessCharacteristic; // @synthesize brightnessCharacteristic=_brightnessCharacteristic;
+@property (strong) NSHashTable *characteristicValueObservers; // @synthesize characteristicValueObservers=_characteristicValueObservers;
 @property (readonly) HMDCharacteristicsAvailabilityListener *characteristicsAvailabilityListener; // @synthesize characteristicsAvailabilityListener=_characteristicsAvailabilityListener;
 @property (readonly) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (strong) HMDCharacteristic *colorTemperatureCharacteristic; // @synthesize colorTemperatureCharacteristic=_colorTemperatureCharacteristic;
@@ -56,7 +58,6 @@
 @property (copy) NSSet *notificationEnabledCharacteristics; // @synthesize notificationEnabledCharacteristics=_notificationEnabledCharacteristics;
 @property (readonly) HMDService *service; // @synthesize service=_service;
 @property (readonly) HMLightProfileSettings *settings;
-@property BOOL shouldEnableCharacteristicNotifications; // @synthesize shouldEnableCharacteristicNotifications=_shouldEnableCharacteristicNotifications;
 @property unsigned long long supportedFeatures; // @synthesize supportedFeatures=_supportedFeatures;
 @property (readonly, getter=isUsingNaturalLighting) BOOL usingNaturalLighting;
 
@@ -66,11 +67,13 @@
 - (id)availableCharacteristicWithType:(id)arg1 fromChangedObjects:(id)arg2;
 - (void)callSetNaturalLightingEnabledCompletion:(CDUnknownBlockType)arg1 error:(id)arg2;
 - (void)dealloc;
-- (void)disableNaturalLightingCharacteristicNotifications;
-- (void)enableNaturalLightingCharacteristicNotifications;
+- (void)disableNaturalLightingCharacteristicNotificationsForObserver:(id)arg1;
+- (void)enableNaturalLightingCharacteristicNotificationsForObserver:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)fetchNaturalLightingEnabledWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleAccessoryCharacteristicsChanged:(id)arg1;
 - (void)handleAccessoryConnected:(id)arg1;
+- (void)handleAccessoryDisconnected:(id)arg1;
 - (void)handleFetchNaturalLightColorTemperatureForBrightnessMessage:(id)arg1;
 - (void)handleFetchSettingsMessage:(id)arg1;
 - (void)handleHomeDataLoadedNotification:(id)arg1;
@@ -84,10 +87,11 @@
 - (void)listener:(id)arg1 didUpdateAvailableCharacteristics:(id)arg2;
 - (void)notifyClientsOfUpdatedSettingsWithPreviousSettings:(id)arg1;
 - (void)readNaturalLightingCharacteristicsWithReason:(id)arg1;
+- (void)readNaturalLightingCharacteristicsWithReason:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)registerForMessages;
 - (void)resetNaturalLightingEnabledRetryContext;
 - (void)retrySetNaturalLightingEnabledWithContext:(id)arg1 error:(id)arg2;
-- (void)setNaturalLightingCharacteristicsNotificationEnabled:(BOOL)arg1;
+- (void)setNaturalLightingCharacteristicsNotificationEnabled:(BOOL)arg1 forObserver:(id)arg2;
 - (void)setNaturalLightingEnabled:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setNaturalLightingEnabled:(BOOL)arg1 completion:(CDUnknownBlockType)arg2 retryContext:(id)arg3;
 - (void)setNaturalLightingEnabled:(BOOL)arg1 shouldRetryOnFailure:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;

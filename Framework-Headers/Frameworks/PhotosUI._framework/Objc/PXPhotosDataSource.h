@@ -49,6 +49,7 @@
     PHFetchResult *_emptyAssetsFetchResult;
     NSNumber *_cachedIsEmpty;
     long long _nestedChanges;
+    PXPhotosDataSource *_parentDataSource;
     BOOL _reverseSortOrder;
     BOOL _wantsCurationByDefault;
     BOOL _isBackgroundFetching;
@@ -115,8 +116,10 @@
 - (unsigned long long)_assetCollectionFetchStatus:(id)arg1;
 - (id)_assetOidsByAssetCollectionForAssetsAtIndexPathsInSet:(id)arg1;
 - (id)_assetsForAssetCollection:(id)arg1;
+- (void)_bringFetchResultsUpToDateWithFetcherCacheForAssetCollection:(id)arg1;
 - (unsigned long long)_cachedSectionForAssetCollection:(id)arg1;
 - (void)_cancelBackgroundFetchIfNeeded;
+- (void)_childDataSourceDidUpdateFetchesForAssetCollection:(id)arg1;
 - (id)_closestIndexPathToIndexPath:(id)arg1;
 - (void)_commonInit;
 - (id)_createResultRecordForAssetCollection:(id)arg1;

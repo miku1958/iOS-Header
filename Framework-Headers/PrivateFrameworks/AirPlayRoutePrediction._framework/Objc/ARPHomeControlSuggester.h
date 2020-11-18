@@ -44,6 +44,7 @@
 - (id)initWithKnowledgeStore:(id)arg1;
 - (id)initWithKnowledgeStore:(id)arg1 scoreThresholdForMicrolocationSuggestionsConsidered:(double)arg2 highScoreThresholdForMicroLocationSuggestionMerge:(double)arg3 lowScoreThresholdForMicroLocationSuggestionMerge:(double)arg4 highScoreThresholdForTimeBasedSuggestionMerge:(double)arg5 lowScoreThresholdForTimeBasedSuggestionMerge:(double)arg6;
 - (id)microlocationBasedsuggestionsWithMaxSuggestions:(unsigned long long)arg1 referenceDate:(id)arg2 correlationsFile:(id)arg3;
+- (id)nextActionBasedsuggestionsWithMaxSuggestions:(unsigned long long)arg1 referenceDate:(id)arg2 correlationsFile:(id)arg3;
 - (id)suggestionsWithMaxSuggestions:(unsigned long long)arg1;
 - (id)suggestionsWithMaxSuggestions:(unsigned long long)arg1 referenceDate:(id)arg2 correlationsFile:(id)arg3;
 - (id)timeBasedSuggestionsWithMaxSuggestions:(unsigned long long)arg1 referenceDate:(id)arg2;

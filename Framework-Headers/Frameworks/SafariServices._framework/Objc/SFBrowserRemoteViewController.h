@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 + (id)exportedInterface;
 + (id)requestViewControllerWithConnectionHandler:(CDUnknownBlockType)arg1;
 + (id)serviceViewControllerInterface;
++ (BOOL)shouldPropagateAppearanceCustomizations;
 - (void).cxx_destruct;
 - (void)_sf_sceneDidEnterBackground:(id)arg1;
 - (void)_sf_sceneWillEnterForeground:(id)arg1;

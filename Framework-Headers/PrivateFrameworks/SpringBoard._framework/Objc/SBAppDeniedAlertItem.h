@@ -6,17 +6,18 @@
 
 #import <SpringBoardUI/SBAlertItem.h>
 
-@class SBApplicationIcon;
+@class SBApplication;
 
 @interface SBAppDeniedAlertItem : SBAlertItem
 {
-    SBApplicationIcon *_icon;
+    SBApplication *_application;
 }
 
 - (void).cxx_destruct;
 - (void)configure:(BOOL)arg1 requirePasscodeForActions:(BOOL)arg2;
 - (BOOL)dismissOnLock;
-- (id)initWithIcon:(id)arg1;
+- (BOOL)forcesModalAlertAppearance;
+- (id)initWithApp:(id)arg1;
 - (BOOL)shouldShowInLockScreen;
 
 @end

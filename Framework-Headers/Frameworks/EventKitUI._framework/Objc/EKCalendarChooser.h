@@ -113,7 +113,7 @@
 - (void)_eventStoreChanged:(id)arg1;
 - (id)_filterCalendars:(id)arg1;
 - (void)_finishRefreshing;
-- (id)_groupForCustomGroupType:(int)arg1;
+- (id)_groupForCustomGroupType:(unsigned long long)arg1;
 - (id)_groupForSection:(long long)arg1;
 - (id)_groupForSource:(id)arg1;
 - (long long)_groupsOffset;

@@ -82,10 +82,12 @@
 + (id)writableTypeIdentifiersForItemProvider;
 - (void).cxx_destruct;
 - (id)_unformattedAddress;
+- (void)addRecipientToPasteboard:(id)arg1;
 - (id)children;
 - (id)childrenWithCompleteMatches;
 - (id)completelyMatchedAttributedStrings;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)displayStringPreferringNickname:(BOOL)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

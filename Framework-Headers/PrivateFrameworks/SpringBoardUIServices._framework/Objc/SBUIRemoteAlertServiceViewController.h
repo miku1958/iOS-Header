@@ -21,6 +21,7 @@
 - (void)configureWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)didInvalidateForRemoteAlert;
+- (void)didTransitionToAttachedToWindowedAccessory:(BOOL)arg1 windowedAccessoryCutoutFrameInScreen:(struct CGRect)arg2;
 - (void)handleButtonActions:(id)arg1;
 - (void)handleDoubleHeightStatusBarTap;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

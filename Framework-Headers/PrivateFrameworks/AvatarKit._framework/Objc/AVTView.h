@@ -82,6 +82,7 @@
 - (void)unlockAvatar;
 - (void)updateAtTime:(double)arg1;
 - (void)updateInterfaceOrientation;
+- (void)updatePointOfViewFromFramingMode;
 - (void)warmupMemoji;
 - (void)willUpdateAvatarWithNewFaceTrackingData:(double)arg1;
 

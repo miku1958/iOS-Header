@@ -6,30 +6,24 @@
 
 #import <Announce/NSObject-Protocol.h>
 
-@class ANAnnouncement, ANHomeContext, NSArray, NSDate, NSString, NSURL, NSUUID;
+@class ANAnnouncement, ANAnnouncementRequest, ANHomeContext, NSDate, NSString, NSURL;
 
 @protocol ANAnnounceServiceInterface <NSObject>
 - (void)announcementForID:(NSString *)arg1 reply:(void (^)(ANAnnouncement *))arg2;
-- (void)broadcastReply:(NSURL *)arg1 completion:(void (^)(ANAnnouncement *, NSError *))arg2;
-- (void)broadcastReply:(NSURL *)arg1 forAnnouncement:(ANAnnouncement *)arg2 completion:(void (^)(ANAnnouncement *, NSError *))arg3;
-- (void)broadcastReply:(NSURL *)arg1 forAnnouncementID:(NSString *)arg2 completion:(void (^)(ANAnnouncement *, NSError *))arg3;
 - (void)contextFromAnnouncement:(ANAnnouncement *)arg1 reply:(void (^)(ANAnnouncementContext *))arg2;
 - (void)getReceivedAnnouncementsWithCompletionHandler:(void (^)(NSArray *))arg1;
 - (void)getScanningDeviceCandidates:(void (^)(NSSet *))arg1;
 - (void)getUnplayedAnnouncementsWithCompletionHandler:(void (^)(NSArray *))arg1;
 - (void)homeNamesForContext:(ANHomeContext *)arg1 reply:(void (^)(NSArray *))arg2;
+- (void)isAnnounceEnabledForAnyAccessoryInHome:(NSString *)arg1 reply:(void (^)(BOOL))arg2;
+- (void)isAnnounceEnabledForAnyAccessoryOrUserInHome:(NSString *)arg1 reply:(void (^)(BOOL))arg2;
 - (void)isLocalDeviceInRoom:(NSString *)arg1 reply:(void (^)(BOOL))arg2;
 - (void)lastPlayedAnnouncementInfo:(void (^)(NSDictionary *))arg1;
 - (void)localParticipant:(void (^)(ANParticipant *))arg1;
 - (void)mockAnnouncement:(NSURL *)arg1 forHomeWithName:(NSString *)arg2 playbackDeadline:(NSDate *)arg3 completion:(void (^)(ANAnnouncement *, NSError *))arg4;
 - (void)prewarm:(void (^)(NSError *))arg1;
 - (void)receivedAnnouncementIDs:(void (^)(NSArray *))arg1;
-- (void)sendAnnouncement:(NSURL *)arg1 completion:(void (^)(ANAnnouncement *, NSError *))arg2;
-- (void)sendAnnouncement:(NSURL *)arg1 toHomeWithID:(NSUUID *)arg2 completion:(void (^)(ANAnnouncement *, NSError *))arg3;
-- (void)sendAnnouncement:(NSURL *)arg1 toHomeWithName:(NSString *)arg2 completion:(void (^)(ANAnnouncement *, NSError *))arg3;
-- (void)sendAnnouncement:(NSURL *)arg1 toRoomsWithIDs:(NSArray *)arg2 andZonesWithIDs:(NSArray *)arg3 inHomeWithID:(NSUUID *)arg4 completion:(void (^)(ANAnnouncement *, NSError *))arg5;
-- (void)sendAnnouncement:(NSURL *)arg1 toRoomsWithNames:(NSArray *)arg2 andZonesWithNames:(NSArray *)arg3 completion:(void (^)(ANAnnouncement *, NSError *))arg4;
-- (void)sendAnnouncement:(NSURL *)arg1 toRoomsWithNames:(NSArray *)arg2 andZonesWithNames:(NSArray *)arg3 inHomeWithName:(NSString *)arg4 completion:(void (^)(ANAnnouncement *, NSError *))arg5;
-- (void)sendReply:(NSURL *)arg1 forAnnouncement:(ANAnnouncement *)arg2 completion:(void (^)(ANAnnouncement *, NSError *))arg3;
+- (void)sendRequest:(ANAnnouncementRequest *)arg1 completion:(void (^)(ANAnnouncementDestination *, NSError *))arg2;
+- (void)sendRequestLegacy:(ANAnnouncementRequest *)arg1 completion:(void (^)(ANAnnouncement *, NSError *))arg2;
 @end
 

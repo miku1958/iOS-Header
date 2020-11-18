@@ -6,15 +6,15 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class FCCloudContext, FCDateRange, FCFeedDescriptor, FCSingleTagHeadlinesFetchRanges, NSArray, NSSet;
+@class FCCloudContext, FCFeedDescriptor, FCFeedRange, NSArray, NSDate, NSSet;
 @protocol FCCoreConfiguration, FCFeedPersonalizing;
 
 @interface FCTagFeedHeadlinesFetchOperation : FCOperation
 {
     CDUnknownBlockType _fetchCompletionHandler;
-    FCDateRange *_fetchDateRange;
-    FCSingleTagHeadlinesFetchRanges *_fromRanges;
-    FCSingleTagHeadlinesFetchRanges *_toRanges;
+    NSDate *_topOfFeedDate;
+    FCFeedRange *_freeFeedRange;
+    FCFeedRange *_paidFeedRange;
     long long _maxFetchCount;
     NSArray *_precedingAdjacentHeadlines;
     NSArray *_followingAdjacentHeadlines;
@@ -30,15 +30,15 @@
 @property (readonly, copy, nonatomic) id<FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
 @property (readonly, nonatomic) FCFeedDescriptor *feedDescriptor; // @synthesize feedDescriptor=_feedDescriptor;
 @property (copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler=_fetchCompletionHandler;
-@property (copy, nonatomic) FCDateRange *fetchDateRange; // @synthesize fetchDateRange=_fetchDateRange;
 @property (copy, nonatomic) NSArray *followingAdjacentHeadlines; // @synthesize followingAdjacentHeadlines=_followingAdjacentHeadlines;
-@property (copy, nonatomic) FCSingleTagHeadlinesFetchRanges *fromRanges; // @synthesize fromRanges=_fromRanges;
+@property (copy, nonatomic) FCFeedRange *freeFeedRange; // @synthesize freeFeedRange=_freeFeedRange;
 @property (nonatomic) long long maxFetchCount; // @synthesize maxFetchCount=_maxFetchCount;
+@property (copy, nonatomic) FCFeedRange *paidFeedRange; // @synthesize paidFeedRange=_paidFeedRange;
 @property (readonly, nonatomic) id<FCFeedPersonalizing> personalizer; // @synthesize personalizer=_personalizer;
 @property (copy, nonatomic) NSArray *precedingAdjacentHeadlines; // @synthesize precedingAdjacentHeadlines=_precedingAdjacentHeadlines;
 @property (copy, nonatomic) NSSet *shownArticleIDs; // @synthesize shownArticleIDs=_shownArticleIDs;
 @property (copy, nonatomic) NSSet *shownClusterIDs; // @synthesize shownClusterIDs=_shownClusterIDs;
-@property (copy, nonatomic) FCSingleTagHeadlinesFetchRanges *toRanges; // @synthesize toRanges=_toRanges;
+@property (copy, nonatomic) NSDate *topOfFeedDate; // @synthesize topOfFeedDate=_topOfFeedDate;
 
 - (void).cxx_destruct;
 - (void)_fetchOrdinaryHeadlinesWithCompletionHandler:(CDUnknownBlockType)arg1;

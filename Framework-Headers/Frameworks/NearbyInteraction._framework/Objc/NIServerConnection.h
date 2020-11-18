@@ -36,10 +36,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSUUID *sessionID; // @synthesize sessionID=_sessionID;
 
 - (void).cxx_destruct;
+- (void)_addObject:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)_addRegionPredicate:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)_createAndActivateXPCConnectionToSimulatorIfNeededWithReply:(CDUnknownBlockType)arg1;
 - (id)_findRequestedPeerDevicesInUpdates:(id)arg1;
 - (id)_findSelfDeviceInUpdates:(id)arg1;
 - (BOOL)_internalIsSupported;
+- (void)_removeObject:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)_removeRegionPredicate:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)_sendDistanceUpdateForRequestedPeer:(id)arg1 forPeer:(id)arg2;
 - (void)_simXPCActivateIfAllowed;
 - (void)_simXPCCancelAndInvalidateSessionOnError:(BOOL)arg1;

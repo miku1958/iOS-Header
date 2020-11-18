@@ -80,6 +80,7 @@
 @property (nonatomic, setter=_setImageHasEffects:) BOOL _imageHasEffects;
 @property (copy, nonatomic, setter=_setInteractions:) NSArray *_interactions; // @synthesize _interactions;
 @property (strong, nonatomic, setter=_setItemVariation:) UIBarButtonItem *_itemVariation; // @synthesize _itemVariation=__itemVariation;
+@property (copy, nonatomic, setter=_setLargeContentSizeTitle:) NSString *_largeContentSizeTitle;
 @property (nonatomic, setter=_setMaximumWidth:) double _maximumWidth; // @synthesize _maximumWidth;
 @property (readonly, nonatomic) BOOL _menuIsPrimary;
 @property (nonatomic, setter=_setMinimumWidth:) double _minimumWidth; // @synthesize _minimumWidth;
@@ -90,6 +91,7 @@
 @property (copy, nonatomic, setter=_setPossibleItemVariations:) NSSet *_possibleItemVariations;
 @property (readonly, nonatomic) struct CGRect _rectForPresenting;
 @property (readonly, nonatomic) UIView *_referenceView; // @dynamic _referenceView;
+@property (readonly, copy, nonatomic) NSString *_resolvedLargeContentSizeTitle;
 @property (copy, nonatomic, setter=_setSecondaryActionsProvider:) CDUnknownBlockType _secondaryActionsProvider; // @synthesize _secondaryActionsProvider;
 @property (nonatomic, setter=_setShowsBackButtonIndicator:) BOOL _showsBackButtonIndicator; // @synthesize _showsBackButtonIndicator=__showsBackButtonIndicator;
 @property (nonatomic, getter=_showsChevron, setter=_setShowsChevron:) BOOL _showsChevron;

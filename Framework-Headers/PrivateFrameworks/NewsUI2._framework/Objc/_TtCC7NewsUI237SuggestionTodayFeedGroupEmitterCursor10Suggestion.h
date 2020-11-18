@@ -10,6 +10,7 @@
 
 @interface _TtCC7NewsUI237SuggestionTodayFeedGroupEmitterCursor10Suggestion : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *cluster;
     MISSING_TYPE *tag;
     MISSING_TYPE *headlines;
 }

@@ -11,6 +11,7 @@
 
 @optional
 - (void)didInvalidateForRemoteAlert;
+- (void)didTransitionToAttachedToWindowedAccessory:(BOOL)arg1 windowedAccessoryCutoutFrameInScreen:(struct CGRect)arg2;
 - (void)handleButtonActions:(NSSet *)arg1;
 - (void)handleDoubleHeightStatusBarTap;
 - (void)handleHeadsetButtonPressed:(BOOL)arg1;

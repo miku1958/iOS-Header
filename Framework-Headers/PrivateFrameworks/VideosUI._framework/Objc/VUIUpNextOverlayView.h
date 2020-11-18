@@ -79,6 +79,7 @@ __attribute__((visibility("hidden")))
 + (id)overlayViewFromElement:(id)arg1 overlayLayout:(id)arg2 existingView:(id)arg3;
 - (void).cxx_destruct;
 - (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)reset;
 - (void)textBadgeViewContentsUpdated:(id)arg1;

@@ -10,14 +10,16 @@
 #import <HomeKitDaemon/HMDAccessorySettingsControllerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
+#import <HomeKitDaemon/HMDMediaDestinationsManagerDataSource-Protocol.h>
+#import <HomeKitDaemon/HMDMediaDestinationsManagerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccessorySettingsController, HMDAppleMediaAccessory, HMDApplicationData, HMDBackingStore, HMDHome, HMDMediaSession, HMDMediaSystemSymptomHandler, HMDRoom, HMFActivity, HMFMessageDispatcher, NSArray, NSNotificationCenter, NSObject, NSSet, NSString, NSUUID;
-@protocol HMFLocking, OS_dispatch_queue;
+@class HMDAccessorySettingsController, HMDAppleMediaAccessory, HMDApplicationData, HMDBackingStore, HMDHome, HMDMediaDestinationsManager, HMDMediaSession, HMDMediaSystemSymptomHandler, HMDRoom, HMFActivity, HMFMessageDispatcher, HMMediaDestination, NSArray, NSNotificationCenter, NSObject, NSSet, NSString, NSUUID;
+@protocol HMDMediaDestinationManager, HMFLocking, OS_dispatch_queue;
 
-@interface HMDMediaSystem : HMFObject <HMDAccessorySettingsControllerDataSource, HMDAccessorySettingsControllerDelegate, NSSecureCoding, HMFDumpState, HMFLogging, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver>
+@interface HMDMediaSystem : HMFObject <HMDMediaDestinationsManagerDataSource, HMDMediaDestinationsManagerDelegate, HMDAccessorySettingsControllerDataSource, HMDAccessorySettingsControllerDelegate, NSSecureCoding, HMFDumpState, HMFLogging, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver>
 {
     id<HMFLocking> _lock;
     NSString *_name;
@@ -25,17 +27,23 @@
     HMDApplicationData *_appData;
     HMDMediaSession *_mediaSession;
     NSString *_configuredName;
+    HMMediaDestination *_audioDestination;
     NSUUID *_uuid;
     HMDHome *_home;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMFMessageDispatcher *_msgDispatcher;
     HMDMediaSystemSymptomHandler *_symptomsHandler;
     HMDAccessorySettingsController *_settingsController;
+    HMDMediaDestinationsManager *_audioDestinationsManager;
     NSNotificationCenter *_notificationCenter;
 }
 
 @property (readonly, nonatomic) NSArray *accessories;
 @property (strong, nonatomic) HMDApplicationData *appData; // @synthesize appData=_appData;
+@property (readonly, copy) NSArray *associatedAudioDestinationManagers;
+@property (readonly) HMMediaDestination *audioDestination; // @synthesize audioDestination=_audioDestination;
+@property (readonly) id<HMDMediaDestinationManager> audioDestinationManager;
+@property (strong) HMDMediaDestinationsManager *audioDestinationsManager; // @synthesize audioDestinationsManager=_audioDestinationsManager;
 @property (readonly) HMDBackingStore *backingStore;
 @property (copy, nonatomic) NSArray *components; // @synthesize components=_components;
 @property (strong, nonatomic) NSString *configuredName; // @synthesize configuredName=_configuredName;
@@ -80,9 +88,12 @@
 - (void)accessorySettingsController:(id)arg1 saveWithReason:(id)arg2 model:(id)arg3;
 - (id)assistantAccessControlModelWithRemovedAccessoriesForAccessorySettingsController:(id)arg1;
 - (id)assistantObject;
+- (id)associatedDestinationManagersForMediaDestinationsManager:(id)arg1;
 - (id)attributeDescriptions;
+- (id)audioDestinationIdentifier;
 - (void)auditMediaComponents;
 - (id)backingStoreObjectsForVersion:(long long)arg1;
+- (void)configureAudioDestinationsManager;
 - (void)configureMediaSystemComponents:(id)arg1;
 - (void)configureWithMessageDispatcher:(id)arg1;
 - (void)dealloc;
@@ -98,6 +109,8 @@
 - (BOOL)isMultiUserEnabledForAccessorySettingsController:(id)arg1;
 - (BOOL)isValid;
 - (id)logIdentifier;
+- (id)mediaDestinationsManager:(id)arg1 destinationControllerWithIdentifier:(id)arg2;
+- (void)mediaDestinationsManager:(id)arg1 didUpdateDestination:(id)arg2;
 - (id)messageDestination;
 - (id)modelForMediaSystem;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
@@ -109,6 +122,7 @@
 - (id)serialize;
 - (id)supportedMultiUserLanguageCodesForAccessorySettingsController:(id)arg1;
 - (id)targetAccessoryBySerial;
+- (id)targetAccessoryForMediaDestinationManager:(id)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (void)unconfigureMediaSystemComponents;

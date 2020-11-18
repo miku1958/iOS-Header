@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSAttributedString, NSString, UIImage, UIMenu;
+@class NSAttributedString, NSImageSymbolConfiguration, NSString, UIImage, UIMenu;
 
 @protocol UIButtonRepresentable
 - (BOOL)isOn;
@@ -14,6 +14,7 @@
 - (void)setEnabled:(BOOL)arg1;
 - (void)setImage:(UIImage *)arg1 forState:(unsigned long long)arg2;
 - (void)setOn:(BOOL)arg1;
+- (void)setSymbolConfiguration:(NSImageSymbolConfiguration *)arg1;
 - (void)setTitle:(NSString *)arg1 forState:(unsigned long long)arg2;
 - (void)setUIMenu:(UIMenu *)arg1;
 @end

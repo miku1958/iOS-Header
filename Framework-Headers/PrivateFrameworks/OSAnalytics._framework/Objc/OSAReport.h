@@ -18,6 +18,7 @@
     NSString *_logfile;
 }
 
+@property (readonly, nonatomic) double capture_time; // @synthesize capture_time=_capture_time;
 @property (readonly, nonatomic) NSString *logfile; // @synthesize logfile=_logfile;
 @property (readonly, nonatomic) NSArray *notes; // @synthesize notes=_notes;
 

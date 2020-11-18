@@ -35,6 +35,7 @@
     _MKAnnotationViewCustomFeatureAnnotation *_customFeatureAnnotation;
     BOOL _subclassImplementsAlignmentRectInsets;
     unsigned long long _allowedCalloutEdges;
+    BOOL _wantsViewBasedPositioning;
     BOOL _shouldKeepCalloutVisible;
     id<MKAnnotation> _annotation;
     float _displayPriority;
@@ -153,6 +154,7 @@
 + (BOOL)_isInitiallyHiddenWhenAdded;
 + (Class)_mapkitLeafClass;
 + (unsigned long long)_selectedZIndex;
++ (BOOL)_wantsViewBasedPositioning;
 + (unsigned long long)_zIndex;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (Class)calloutViewClass;

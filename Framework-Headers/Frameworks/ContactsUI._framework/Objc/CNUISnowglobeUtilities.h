@@ -10,9 +10,12 @@
 {
 }
 
++ (struct CGColor *)backgroundColorForBackgroundStyle:(unsigned long long)arg1;
 + (id)circularContainerLayerForRect:(struct CGRect)arg1 backgroundStyle:(unsigned long long)arg2;
 + (struct CGImage *)circularPlaceholderImageForSize:(struct CGSize)arg1 backgroundStyle:(unsigned long long)arg2 scale:(double)arg3;
 + (id)containerLayerForRect:(struct CGRect)arg1 backgroundStyle:(unsigned long long)arg2;
++ (struct CGColor *)defaultBackgroundColor;
++ (struct CGColor *)defaultDarkBackgroundColor;
 + (BOOL)enableGroupPhoto;
 + (struct CGImage *)imageForCGImages:(struct CGImage **)arg1 rect:(struct CGRect)arg2 itemCount:(long long)arg3 scope:(id)arg4;
 + (struct CGImage *)imageForLayer:(id)arg1 inRect:(struct CGRect)arg2;

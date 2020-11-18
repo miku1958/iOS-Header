@@ -32,6 +32,7 @@
     NSArray *_portraitDoubleMarginIndices;
     NSArray *_landscapeDoubleMarginIndices;
     BOOL _pendingModulePopulation;
+    BOOL _pendingModulePositionProviderRefresh;
     BOOL _homeGestureDismissalAllowed;
     id<CCUIModuleCollectionViewControllerDelegate> _delegate;
 }
@@ -58,12 +59,14 @@
 - (void)_populateModulesIfNecessary;
 - (id)_positionProviderForInterfaceOrientation:(long long)arg1;
 - (void)_refreshPositionProviders;
+- (void)_refreshPositionProvidersIfNecessary;
 - (void)_removeAndTearDownModuleViewControllerFromHierarchy:(id)arg1;
 - (id)_setupAndAddModuleViewControllerToHierarchy:(id)arg1;
 - (id)_sizesForModuleIdentifiers:(id)arg1 moduleInstanceByIdentifier:(id)arg2 interfaceOrientation:(long long)arg3;
 - (void)_updateEnabledModuleIdentifiers;
 - (void)_updateHomeGestureDismissalAllowed;
 - (void)_updateModuleControllers;
+- (void)_updatePositionProviders;
 - (BOOL)ccui_shouldPropagateAppearanceCalls;
 - (struct CGRect)compactModeFrameForContentModuleContainerViewController:(id)arg1;
 - (BOOL)contentModuleContainerViewController:(id)arg1 canBeginInteractionWithModule:(id)arg2;
@@ -89,6 +92,7 @@
 - (struct CCUILayoutRect)layoutView:(id)arg1 layoutRectForSubview:(id)arg2;
 - (void)loadView;
 - (void)moduleInstancesChangedForModuleInstanceManager:(id)arg1;
+- (void)moduleInstancesLayoutChangedForModuleInstanceManager:(id)arg1;
 - (void)orderedEnabledModuleIdentifiersChangedForSettingsManager:(id)arg1;
 - (struct CGSize)preferredContentSize;
 - (id)queryAllTopLevelBlockingGestureRecognizers;

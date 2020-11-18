@@ -12,9 +12,12 @@
 @interface FCMyArticlesOperation : FCOperation
 {
     BOOL _streamFeedItems;
+    BOOL _includeEvergreenFeedItems;
+    BOOL _isStreamingFinished;
     id<FCCoreConfiguration> _configuration;
     FCCloudContext *_context;
     FCDateRange *_dateRange;
+    long long _streamFeedItemsCount;
     CDUnknownBlockType _feedItemsChangedHandler;
     NSArray *_feedItems;
     NSArray *_sortedNonEditorialFeedItems;
@@ -36,15 +39,17 @@
 @property (copy, nonatomic) CDUnknownBlockType feedItemCompletionBlock; // @synthesize feedItemCompletionBlock=_feedItemCompletionBlock;
 @property (copy) NSArray *feedItems; // @synthesize feedItems=_feedItems;
 @property (copy, nonatomic) CDUnknownBlockType feedItemsChangedHandler; // @synthesize feedItemsChangedHandler=_feedItemsChangedHandler;
+@property (nonatomic) BOOL includeEvergreenFeedItems; // @synthesize includeEvergreenFeedItems=_includeEvergreenFeedItems;
+@property (nonatomic) BOOL isStreamingFinished; // @synthesize isStreamingFinished=_isStreamingFinished;
 @property (nonatomic) unsigned long long maxNumberOfFeedsToQuery; // @synthesize maxNumberOfFeedsToQuery=_maxNumberOfFeedsToQuery;
-@property (readonly, copy) NSArray *nonEditorialFeedItems;
 @property (strong) NSMapTable *nonEditorialScoreProfiles; // @synthesize nonEditorialScoreProfiles=_nonEditorialScoreProfiles;
 @property (nonatomic) unsigned long long perFeedLimit; // @synthesize perFeedLimit=_perFeedLimit;
 @property (copy) NSArray *sortedNonEditorialFeedItems; // @synthesize sortedNonEditorialFeedItems=_sortedNonEditorialFeedItems;
 @property (nonatomic) BOOL streamFeedItems; // @synthesize streamFeedItems=_streamFeedItems;
+@property (nonatomic) long long streamFeedItemsCount; // @synthesize streamFeedItemsCount=_streamFeedItemsCount;
 
 - (void).cxx_destruct;
-- (void)_appendFeedItems:(id)arg1;
+- (void)_appendFeedItems:(id)arg1 forceChangeNotification:(BOOL)arg2;
 - (void)_fetchTagsForQueryingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)operationWillFinishWithError:(id)arg1;

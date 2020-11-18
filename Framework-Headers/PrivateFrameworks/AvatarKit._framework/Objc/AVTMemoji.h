@@ -71,7 +71,7 @@
 - (void)addComponent:(id)arg1;
 - (void)addComponentAssetNode:(id)arg1 toNode:(id)arg2;
 - (id)allBuiltinAssetNodes;
-- (unsigned long long)applyPresetDependenciesForPreset:(id)arg1;
+- (unsigned long long)applyPresetDependenciesForPreset:(id)arg1 presetsBeingReplacedCategories:(unsigned long long)arg2 recursionDepth:(unsigned char)arg3;
 - (void)applyVariantDependenciesForPreset:(id)arg1 dirtyComponents:(unsigned long long)arg2;
 - (MISSING_TYPE *)arOffset;
 - (float)arScale;
@@ -94,6 +94,7 @@
 - (id)eyebrowsColor;
 - (id)facialhairColor;
 - (id)hairColor;
+- (BOOL)hasPresetDepencencyForCategory:(long long)arg1;
 - (id)headNode;
 - (id)init;
 - (id)initWithDictionaryRepresentation:(id)arg1 usageIntent:(unsigned long long)arg2 error:(id *)arg3;
@@ -119,7 +120,7 @@
 - (double)skinTextureSize;
 - (id)specializationSettings;
 - (id)stickerPhysicsStateIdentifier;
-- (unsigned long long)unapplyPresetDependenciesForPreset:(id)arg1;
+- (unsigned long long)unapplyPresetDependenciesForPreset:(id)arg1 presetsBeingReplacedCategories:(unsigned long long)arg2 recursionDepth:(unsigned char)arg3;
 - (void)unapplyVariantDependenciesForPreset:(id)arg1 dirtyComponents:(unsigned long long)arg2;
 - (void)update;
 - (void)updateEyeLashes;

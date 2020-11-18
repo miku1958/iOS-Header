@@ -6,9 +6,7 @@
 
 #import <NewsFeed/_TtC8NewsFeed14IssueCoverView.h>
 
-#import <NewsFeed/TUMotionManagerObserver-Protocol.h>
-
-@interface _TtC8NewsFeed14IssueCoverView (NewsFeed) <TUMotionManagerObserver>
+@interface _TtC8NewsFeed14IssueCoverView (NewsFeed)
 - (void)motionManager:(id)arg1 didUpdateMotionData:(id)arg2;
 - (void)motionManager:(id)arg1 motionEnabled:(BOOL)arg2;
 @end

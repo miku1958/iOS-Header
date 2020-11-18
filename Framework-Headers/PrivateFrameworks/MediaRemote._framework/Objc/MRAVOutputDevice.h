@@ -49,8 +49,10 @@
     NSDictionary *_modelSpecificInfo;
     NSString *_playingPairedDeviceName;
     NSArray *_clusterComposition;
+    unsigned long long _configuredClusterSize;
     NSString *_parentGroupIdentifier;
     NSString *_bluetoothID;
+    NSString *_primaryID;
     MRAVEndpoint *_endpoint;
     MRAVOutputDeviceSourceInfo *_sourceInfo;
     NSString *_logicalDeviceID;
@@ -71,7 +73,9 @@
 @property (readonly, nonatomic) BOOL canRelayCommunicationChannel; // @synthesize canRelayCommunicationChannel=_canRelayCommunicationChannel;
 @property (readonly, nonatomic) NSString *capabilitiesDescription;
 @property (readonly, nonatomic) NSArray *clusterComposition; // @synthesize clusterComposition=_clusterComposition;
+@property (readonly, nonatomic) unsigned int clusterType;
 @property (readonly, nonatomic) NSString *composedTypeDescription;
+@property (readonly, nonatomic) unsigned long long configuredClusterSize; // @synthesize configuredClusterSize=_configuredClusterSize;
 @property (readonly, nonatomic) NSString *currentBluetoothListeningMode; // @synthesize currentBluetoothListeningMode=_currentBluetoothListeningMode;
 @property (readonly, nonatomic) NSString *debugName;
 @property (readonly, nonatomic) _MRAVOutputDeviceDescriptorProtobuf *descriptor;
@@ -98,6 +102,7 @@
 @property (readonly, nonatomic, getter=isPickedOnPairedDevice) BOOL pickedOnPairedDevice; // @synthesize pickedOnPairedDevice=_pickedOnPairedDevice;
 @property (readonly, nonatomic) NSString *playingPairedDeviceName; // @synthesize playingPairedDeviceName=_playingPairedDeviceName;
 @property (readonly, nonatomic) BOOL presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets; // @synthesize presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets=_presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
+@property (copy, nonatomic) NSString *primaryID; // @synthesize primaryID=_primaryID;
 @property (readonly, nonatomic, getter=isProxyGroupPlayer) BOOL proxyGroupPlayer; // @synthesize proxyGroupPlayer=_proxyGroupPlayer;
 @property (readonly, nonatomic, getter=isRemoteControllable) BOOL remoteControllable; // @synthesize remoteControllable=_remoteControllable;
 @property (readonly, nonatomic) BOOL requiresAuthorization; // @synthesize requiresAuthorization=_requiresAuthorization;
@@ -114,6 +119,7 @@
 @property (readonly, nonatomic) unsigned int volumeCapabilities;
 @property (readonly, nonatomic, getter=isVolumeControlAvailable) BOOL volumeControlAvailable; // @synthesize volumeControlAvailable=_volumeControlAvailable;
 
++ (id)companionDeviceUID;
 + (id)localDeviceLocalizedName;
 + (id)localDeviceUID;
 - (void).cxx_destruct;
@@ -121,6 +127,7 @@
 - (id)description;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToOutputDevice:(id)arg1;
 
 @end
 

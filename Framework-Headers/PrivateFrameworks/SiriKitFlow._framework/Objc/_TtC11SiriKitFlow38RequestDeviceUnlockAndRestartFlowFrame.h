@@ -15,8 +15,7 @@
     MISSING_TYPE *deviceUnlockDialog;
     MISSING_TYPE *viewFactory;
     MISSING_TYPE *aceServiceInvoker;
-    MISSING_TYPE *addViewsCommand;
-    MISSING_TYPE *unlockDeviceCommand;
+    MISSING_TYPE *commandsToSend;
 }
 
 @end

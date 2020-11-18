@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) EFObservable<EFObserver> *observable; // @synthesize observable=_observable;
 @property (readonly) Class superclass;
 
++ (id)log;
 - (void).cxx_destruct;
 - (void)cancel;
 - (void)debounceResult:(id)arg1;

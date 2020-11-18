@@ -87,8 +87,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isHiddenFromAutoFavorites) BOOL hiddenFromAutoFavorites;
 @property (nonatomic, getter=isHiddenFromAutoFavorites) BOOL hiddenFromAutoFavorites; // @synthesize hiddenFromAutoFavorites=_hiddenFromAutoFavorites;
+@property (readonly, copy, nonatomic) NSArray *iAdCategories;
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) BOOL isEvergreen;
 @property (readonly, nonatomic) BOOL isFeatured;
 @property (readonly, copy, nonatomic) NSString *itemID;
 @property (readonly, nonatomic) unsigned long long itemType;

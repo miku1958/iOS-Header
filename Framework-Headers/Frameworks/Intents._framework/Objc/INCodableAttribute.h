@@ -10,12 +10,12 @@
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INCodableAttributeMetadata, INCodableAttributeRelationship, INCodableDescription, NSArray, NSMutableDictionary, NSNumber, NSString;
+@class INCodableAttributeMetadata, INCodableAttributeRelationship, INCodableDescription, NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSString;
 
 @interface INCodableAttribute : NSObject <NSSecureCoding, NSCopying, INCodableCoding>
 {
     NSMutableDictionary *_promptDialogsByType;
-    NSMutableDictionary *_arraySizesBySizeClass;
+    NSDictionary *_arraySizesBySizeClass;
     BOOL _fixedSizeArray;
     BOOL _defaultAttribute;
     BOOL _configurable;

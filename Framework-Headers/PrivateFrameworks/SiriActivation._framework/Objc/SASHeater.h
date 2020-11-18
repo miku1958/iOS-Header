@@ -25,9 +25,9 @@
 - (void).cxx_destruct;
 - (void)_cancelPreparation;
 - (void)_suggestPreheat;
-- (void)_updatePredictedRouteIsZLL;
 - (void)cancelPreparation;
 - (void)prepareForUseAfterTimeInterval:(double)arg1;
+- (void)updatePredictedRouteIsZLL;
 
 @end
 

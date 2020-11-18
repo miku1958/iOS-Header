@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)contentKeySession:(id)arg1 didProvidePersistableContentKeyRequest:(id)arg2;
 - (void)contentKeySession:(id)arg1 didProvideRenewingContentKeyRequest:(id)arg2;
 - (void)contentKeySession:(id)arg1 didUpdatePersistableContentKey:(id)arg2 forContentKeyIdentifier:(id)arg3;
+- (void)contentKeySession:(id)arg1 externalProtectionStatusDidChangeForContentKeyRequest:(id)arg2;
 - (BOOL)contentKeySession:(id)arg1 shouldRetryContentKeyRequest:(id)arg2 reason:(id)arg3;
 - (void)contentKeySessionContentProtectionSessionIdentifierDidChange:(id)arg1;
 - (id)initWithParent:(struct AVContentKeySessionDelegateClient *)arg1;

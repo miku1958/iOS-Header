@@ -66,11 +66,13 @@
 @property (readonly, nonatomic) BOOL hasVideo;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isHiddenFromAutoFavorites) BOOL hiddenFromAutoFavorites;
+@property (readonly, copy, nonatomic) NSArray *iAdCategories;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) FCInterestToken *interestToken; // @synthesize interestToken=_interestToken;
 @property (readonly, nonatomic) BOOL isBlockedExplicitContent;
 @property (readonly, nonatomic) BOOL isCurrent; // @synthesize isCurrent=_isCurrent;
 @property (readonly, nonatomic) BOOL isDraft; // @synthesize isDraft=_isDraft;
+@property (readonly, nonatomic) BOOL isEvergreen;
 @property (readonly, nonatomic) BOOL isFeatured;
 @property (readonly, nonatomic) BOOL isLocalDraft;
 @property (readonly, copy, nonatomic) NSString *issueDescription; // @synthesize issueDescription=_issueDescription;

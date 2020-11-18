@@ -39,8 +39,8 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isEditingExistingTrigger; // @synthesize isEditingExistingTrigger=_isEditingExistingTrigger;
 @property (readonly, nonatomic) HUTriggerSummaryItemManager *itemManager; // @dynamic itemManager;
+@property (copy, nonatomic) NSSet *prioritizedHomeObjects;
 @property (readonly, nonatomic) HUTriggerSummaryActionGridViewController *prioritizedServiceActionsGridViewController; // @synthesize prioritizedServiceActionsGridViewController=_prioritizedServiceActionsGridViewController;
-@property (copy, nonatomic) NSSet *prioritizedServices;
 @property (readonly, nonatomic) HUTriggerSummaryActionGridViewController *serviceActionsGridViewController; // @synthesize serviceActionsGridViewController=_serviceActionsGridViewController;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) HFTriggerBuilder *triggerBuilder; // @synthesize triggerBuilder=_triggerBuilder;

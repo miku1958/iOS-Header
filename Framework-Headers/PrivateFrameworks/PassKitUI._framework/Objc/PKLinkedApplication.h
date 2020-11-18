@@ -59,7 +59,8 @@
 - (id)initWithStoreIDs:(id)arg1 defaultLaunchURL:(id)arg2;
 - (void)installedApplicationsDidChangeNotification:(id)arg1;
 - (void)openApplication:(id)arg1;
-- (void)openApplication:(id)arg1 launchAppStoreIfNotInstalled:(BOOL)arg2;
+- (void)openApplication:(id)arg1 withLaunchOptions:(unsigned long long)arg2;
+- (void)openApplication:(id)arg1 withLaunchOptions:(unsigned long long)arg2 launchURL:(id)arg3;
 - (void)productViewControllerDidFinish:(id)arg1;
 - (void)reloadApplicationStateIfNecessary;
 - (void)removeObserver:(id)arg1;

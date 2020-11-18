@@ -11,7 +11,6 @@
 
 @interface _TtC7NewsUI219TodayViewController : UIViewController
 {
-    MISSING_TYPE *adPresentationDelegateProvider;
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintViewController;
@@ -22,6 +21,7 @@
     MISSING_TYPE *refreshStateMachine;
     MISSING_TYPE *refreshControl;
     MISSING_TYPE *commands;
+    MISSING_TYPE *loadingGate;
     MISSING_TYPE *isBeingUsedAsPlugin;
     MISSING_TYPE *pluggableDelegate;
 }

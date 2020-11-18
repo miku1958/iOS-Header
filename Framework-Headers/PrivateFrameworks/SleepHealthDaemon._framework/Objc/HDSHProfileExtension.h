@@ -9,7 +9,7 @@
 #import <SleepHealthDaemon/HDFeatureAvailabilityExtensionProvider-Protocol.h>
 #import <SleepHealthDaemon/HDProfileExtension-Protocol.h>
 
-@class HDProfile, HDSHFeatureAvailabilityManager, NSString;
+@class HDProfile, HDSHAccessibilityAssertionManager, HDSHFeatureAvailabilityManager, NSString;
 
 @interface HDSHProfileExtension : NSObject <HDProfileExtension, HDFeatureAvailabilityExtensionProvider>
 {
@@ -17,9 +17,11 @@
     HDSHFeatureAvailabilityManager *_coachingAvailabilityManager;
     HDSHFeatureAvailabilityManager *_trackingAvailabilityManager;
     HDSHFeatureAvailabilityManager *_windDownShortcutsAvailabilityManager;
+    HDSHAccessibilityAssertionManager *_accessibilityAssertionManager;
     HDProfile *_profile;
 }
 
+@property (readonly, nonatomic) HDSHAccessibilityAssertionManager *accessibilityAssertionManager; // @synthesize accessibilityAssertionManager=_accessibilityAssertionManager;
 @property (readonly, nonatomic) HDSHFeatureAvailabilityManager *coachingAvailabilityManager; // @synthesize coachingAvailabilityManager=_coachingAvailabilityManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

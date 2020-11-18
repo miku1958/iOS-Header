@@ -23,7 +23,9 @@
 @property (readonly, copy) NSData *data; // @synthesize data=_data;
 @property (readonly, copy) NSUUID *faceCropUUID; // @synthesize faceCropUUID=_faceCropUUID;
 @property (readonly, copy) NSUUID *modelUUID; // @synthesize modelUUID=_modelUUID;
+@property (readonly, getter=isSentinelFaceprint) BOOL sentinelFaceprint;
 
++ (id)sentinelFaceprintWithUUID:(id)arg1 modelUUID:(id)arg2 faceCropUUID:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)attributeDescriptions;

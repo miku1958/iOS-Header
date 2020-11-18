@@ -71,6 +71,7 @@
 - (const struct XCookieStorage *)_createXCookieStorage;
 - (const struct XCredentialStorage *)_createXCredentialStorage;
 - (struct __CFDictionary *)_dependencyInfo;
+- (id)_description;
 - (id)_disallowCellular;
 - (long long)_discretionaryOverrride;
 - (id)_effectiveConfiguration;

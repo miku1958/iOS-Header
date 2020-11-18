@@ -18,17 +18,17 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : 5Z
+	var unknownFields : K
 	var _typeURL : String?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _value : ÁY
+	var _value : ¡J
  }
 
  struct CloudKitCode.Ckcode_Proto2ProtectedEnvelope {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : 5Z
+	var unknownFields : K
 	var _storage : _StorageClass
  }
 
@@ -36,7 +36,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case encrypted : §Y
+	case encrypted : ‡J
 	case value : Ckcode_Proto2Any
  }
 
@@ -58,14 +58,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let data : §Y // +0x0
+	let data : ‡J // +0x0
  }
 
  struct CloudKitCode.Ckcode_ProtectedEnvelope {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : 5Z
+	var unknownFields : K
 	var _storage : _StorageClass
  }
 
@@ -73,9 +73,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case encrypted : §Y
+	case encrypted : ‡J
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case value : ËW
+	case value : «H
  }
 
  class CloudKitCode._StorageClass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -95,7 +95,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let local : Bool
 
 	// Swift methods
-	0xc6e0  func <stripped> // method 
+	0xd3f0  func <stripped> // method 
  }
 
  class CloudKitCode.CodeOperation {
@@ -103,7 +103,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case url : %V
+	case url : G
 	case default  
 	case local  
  }
@@ -120,18 +120,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var contents : OneOf_Contents
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : 5Z
+	var unknownFields : K
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _encryptedMasterKey : ÁY
+	var _encryptedMasterKey : ¡J
  }
 
  enum CloudKitCode.OneOf_Contents {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case localSerialization : §Y
+	case localSerialization : ‡J
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case wireSerialization : §Y
+	case wireSerialization : ‡J
  }
 
  class CloudKitCode.CKCodeOperation {

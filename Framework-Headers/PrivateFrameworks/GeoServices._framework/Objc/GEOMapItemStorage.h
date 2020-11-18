@@ -9,13 +9,14 @@
 #import <GeoServices/GEOMapItemPrivate-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAddress, GEOAppleRating, GEOAssociatedApp, GEOFeatureStyleAttributes, GEOLatLng, GEOMapItemClientAttributes, GEOMapItemContainedPlace, GEOMapItemDetourInfo, GEOMapItemIdentifier, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapItemStorageUserValues, GEOMapRegion, GEOMessageLink, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPDPlace, GEOPDResultDetourInfo, GEOPlace, GEOPlaceQuestionnaire, GEOPlaceResult, GEOPlacecardLayoutConfiguration, GEOPriceDescription, GEORelatedPlaceList, GEORestaurantFeaturesLink, GEOStorefrontInfo, GEOStorefrontPresentationInfo, GEOStyleAttributes, NSArray, NSData, NSDate, NSDictionary, NSString, NSTimeZone, NSURL, PBDataReader, PBUnknownFields, _GEOMapItemStorageNotificationTrampoline, geo_isolater;
+@class GEOAddress, GEOAppleRating, GEOAssociatedApp, GEOFeatureStyleAttributes, GEOLatLng, GEOMapItemClientAttributes, GEOMapItemContainedPlace, GEOMapItemDetourInfo, GEOMapItemIdentifier, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapItemStorageUserValues, GEOMapRegion, GEOMessageLink, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPDPlace, GEOPDResultDetourInfo, GEOPlace, GEOPlaceQuestionnaire, GEOPlaceResult, GEOPlacecardLayoutConfiguration, GEOPriceDescription, GEORelatedPlaceList, GEORestaurantFeaturesLink, GEOStorefrontInfo, GEOStorefrontPresentationInfo, GEOStyleAttributes, NSArray, NSData, NSDate, NSDictionary, NSMutableArray, NSString, NSTimeZone, NSURL, PBDataReader, PBUnknownFields, _GEOMapItemStorageNotificationTrampoline, geo_isolater;
 @protocol GEOAnnotatedItemList, GEOEncyclopedicInfo, GEOMapItem, GEOMapItemTransitInfo, GEOMapItemVenueInfo, GEOTransitAttribution, GEOTransitVehiclePosition;
 
 @interface GEOMapItemStorage : PBCodable <GEOMapItemPrivate, NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    NSMutableArray *_additionalPlaceDatas;
     GEOMapItemClientAttributes *_clientAttributes;
     GEOPDResultDetourInfo *_internalDetourInfo;
     NSString *_mapsURL;
@@ -29,6 +30,7 @@
     struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
+        unsigned int read_additionalPlaceDatas:1;
         unsigned int read_clientAttributes:1;
         unsigned int read_internalDetourInfo:1;
         unsigned int read_mapsURL:1;
@@ -44,6 +46,7 @@
     geo_isolater *_geoMapItemIsolater;
 }
 
+@property (strong, nonatomic) NSMutableArray *additionalPlaceDatas;
 @property (readonly, nonatomic, getter=_additionalPlaceInfos) NSArray *additionalPlaceInfos;
 @property (readonly, nonatomic) NSDictionary *addressDictionary;
 @property (readonly, nonatomic, getter=_addressGeocodeAccuracy) int addressGeocodeAccuracy;
@@ -226,6 +229,7 @@
 @property (readonly, nonatomic, getter=_wifiFingerprintLabelStatusCode) int wifiFingerprintLabelStatusCode;
 @property (readonly, nonatomic, getter=_wifiFingerprintLabelType) int wifiFingerprintLabelType;
 
++ (Class)additionalPlaceDatasType;
 + (BOOL)isValid:(id)arg1;
 + (id)mapItemStorageForCoordinate:(CDStruct_c3b9c2ee)arg1;
 + (id)mapItemStorageForGEOMapItem:(id)arg1;
@@ -253,7 +257,11 @@
 - (id)_localizedCategoryNamesForType:(unsigned int)arg1;
 - (id)_mapItemByStrippingOptionalData;
 - (id)_spokenAddressForLocale:(id)arg1;
+- (void)addAdditionalPlaceDatas:(id)arg1;
+- (id)additionalPlaceDatasAtIndex:(unsigned long long)arg1;
+- (unsigned long long)additionalPlaceDatasCount;
 - (id)addressObject;
+- (void)clearAdditionalPlaceDatas;
 - (void)clearSensitiveFields;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
@@ -266,7 +274,7 @@
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (id)initWithPlace:(id)arg1 clientAttributes:(id)arg2 userValues:(id)arg3;
-- (id)initWithPlaceData:(id)arg1 detourInfo:(id)arg2 clientAttributes:(id)arg3 userValues:(id)arg4;
+- (id)initWithPlaceData:(id)arg1 detourInfo:(id)arg2 clientAttributes:(id)arg3 userValues:(id)arg4 additionalPlaceDatas:(id)arg5;
 - (id)initWithPlaceResult:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToMapItem:(id)arg1;

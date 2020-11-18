@@ -15,7 +15,7 @@
 {
     BOOL _showDoneButtonInNavBar;
     BOOL _allowRefresh;
-    HUSoftwareUpdateItemModuleController *_softwareUpdateModule;
+    HUSoftwareUpdateItemModuleController *_softwareUpdateItemModuleController;
     NAFuture *_softwareUpdateFetchFuture;
 }
 
@@ -26,7 +26,7 @@
 @property (readonly, nonatomic) HUSoftwareUpdateStandaloneItemManager *itemManager; // @dynamic itemManager;
 @property (nonatomic) BOOL showDoneButtonInNavBar; // @synthesize showDoneButtonInNavBar=_showDoneButtonInNavBar;
 @property (strong, nonatomic) NAFuture *softwareUpdateFetchFuture; // @synthesize softwareUpdateFetchFuture=_softwareUpdateFetchFuture;
-@property (strong, nonatomic) HUSoftwareUpdateItemModuleController *softwareUpdateModule; // @synthesize softwareUpdateModule=_softwareUpdateModule;
+@property (strong, nonatomic) HUSoftwareUpdateItemModuleController *softwareUpdateItemModuleController; // @synthesize softwareUpdateItemModuleController=_softwareUpdateItemModuleController;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

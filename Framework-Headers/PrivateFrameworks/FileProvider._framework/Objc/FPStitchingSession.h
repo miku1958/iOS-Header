@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)associateItem:(id)arg1 withPlaceholderID:(id)arg2;
+- (BOOL)cleanStitchedItemForItemID:(id)arg1;
 - (id)createArchivePlaceholderForItem:(id)arg1 underParent:(id)arg2 inProviderDomainID:(id)arg3;
 - (id)createGenericArchivePlaceholderUnderParent:(id)arg1 inProviderDomainID:(id)arg2;
 - (id)createPlaceholderWithCopyOfExistingItem:(id)arg1 lastUsageUpdatePolicy:(unsigned long long)arg2 underParent:(id)arg3 inProviderDomainID:(id)arg4;

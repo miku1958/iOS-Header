@@ -6,13 +6,14 @@
 
 #import <HealthToolbox/WDSampleListDataProvider.h>
 
-@class NSDateFormatter;
+@class NSCalendar, NSDateFormatter;
 
 __attribute__((visibility("hidden")))
 @interface WDSleepScheduleListDataProvider : WDSampleListDataProvider
 {
     NSDateFormatter *_standaloneFormatter;
     NSDateFormatter *_listItemFormatter;
+    NSCalendar *_gregorianCalender;
 }
 
 - (void).cxx_destruct;

@@ -51,6 +51,7 @@
 - (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 arguments:(id)arg3;
 - (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 arguments:(id)arg3 options:(id)arg4;
 - (void)dealloc;
+- (id)debugDescription;
 - (id)description;
 - (void)finalize;
 - (id)init;

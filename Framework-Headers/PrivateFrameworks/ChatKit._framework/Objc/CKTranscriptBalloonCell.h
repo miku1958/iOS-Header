@@ -61,7 +61,7 @@
 - (id)animationWithKeyPath:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3 beginTime:(double)arg4 duration:(double)arg5 timingFunctionName:(id)arg6;
 - (void)applyLayoutAttributes:(id)arg1;
 - (void)clearFilters;
-- (void)configureForChatItem:(id)arg1;
+- (void)configureForChatItem:(id)arg1 context:(id)arg2;
 - (void)dealloc;
 - (id)description;
 - (BOOL)hidesCheckmark;

@@ -108,6 +108,7 @@
 - (void)setCurrentController:(id)arg1;
 - (void)setCurrentExtendedGamepad:(id)arg1;
 - (void)setCurrentMicroGamepad:(id)arg1;
+- (void)setProperty:(id)arg1 forKey:(id)arg2 forHIDServiceClientWithRegistryID:(id)arg3;
 - (void)unpublishControllersWithIdentifiers:(id)arg1;
 - (void)updateCurrentControllerAndProfileForUnpublishedController:(id)arg1;
 

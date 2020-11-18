@@ -10,25 +10,19 @@
 
 @class NSData, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MRLyricsTokenProtobuf : PBCodable <NSCopying>
 {
     NSString *_identifier;
     NSData *_userData;
 }
 
-@property (readonly, nonatomic) BOOL hasIdentifier;
-@property (readonly, nonatomic) BOOL hasUserData;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) NSData *userData; // @synthesize userData=_userData;
-
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

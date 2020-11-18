@@ -23,6 +23,7 @@
 @property (nonatomic) BOOL shouldPrepareStackForDefaultTodayList; // @dynamic shouldPrepareStackForDefaultTodayList;
 @property (nonatomic) BOOL shouldShowAppLibraryOnBoardingAlert; // @dynamic shouldShowAppLibraryOnBoardingAlert;
 @property (nonatomic) BOOL shouldShowAvocadoWidgetsOnBoardingAlert; // @dynamic shouldShowAvocadoWidgetsOnBoardingAlert;
+@property (nonatomic) BOOL shouldShowInternalWidgets; // @dynamic shouldShowInternalWidgets;
 @property (nonatomic) BOOL shouldShowLibraryEducationView; // @dynamic shouldShowLibraryEducationView;
 @property (nonatomic) BOOL shouldShowPageHidingOnBoardingAlert; // @dynamic shouldShowPageHidingOnBoardingAlert;
 @property (nonatomic) BOOL showsBadgesInAppLibrary; // @dynamic showsBadgesInAppLibrary;

@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *issueCoverViewLayoutAttributesFactory;
     MISSING_TYPE *bannerAdLayoutAttributesFactory;
+    MISSING_TYPE *articleThumbnailViewLayoutAttributesFactory;
 }
 
 @end

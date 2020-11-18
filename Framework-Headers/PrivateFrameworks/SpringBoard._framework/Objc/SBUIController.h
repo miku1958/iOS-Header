@@ -18,7 +18,7 @@
 #import <SpringBoard/UIInteractionProgressObserver-Protocol.h>
 #import <SpringBoard/UIWindowDelegate-Protocol.h>
 
-@class ATXAppDirectoryClient, BCBatteryDeviceController, BSPersistentTimer, CSAccessory, NSMutableDictionary, NSMutableSet, NSString, SBAppStatusBarSettingsAssertion, SBAppSwitcherSettings, SBDismissOnlyAlertItem, SBFMotionAlarmController, SBHUDController, SBHomeScreenBackdropViewBase, SBHomeScreenWindow, SBIconContentView, SBIconController, SBMainScreenActiveInterfaceOrientationWindow, SBVolumeControl, SBWallpaperEffectView, SBWindow, UIForceStageInteractionProgress, UIStatusBar, UIView;
+@class ATXAppDirectoryClient, BCBatteryDeviceController, BSPersistentTimer, CSAccessory, NSMutableDictionary, NSMutableSet, NSString, SBAppStatusBarSettingsAssertion, SBAppSwitcherSettings, SBDismissOnlyAlertItem, SBFMotionAlarmController, SBHIDUILockAssertion, SBHUDController, SBHomeGestureParticipant, SBHomeScreenBackdropViewBase, SBHomeScreenWindow, SBIconContentView, SBIconController, SBMainScreenActiveInterfaceOrientationWindow, SBVolumeControl, SBWallpaperEffectView, SBWindow, UIForceStageInteractionProgress, UIStatusBar, UIView;
 
 @interface SBUIController : NSObject <SBWallpaperObserver, PTSettingsKeyObserver, UIInteractionProgressObserver, SBWallpaperOrientationProvider, SBReachabilityObserver, SBHomeScreenBackdropViewBaseDelegate, BCBatteryDeviceObserving, SBFMotionAlarmDelegate, UIWindowDelegate, CSPowerStatusProviding, CSAccessoryStatusProviding>
 {
@@ -44,6 +44,10 @@
     unsigned int _wasConnectedToWirelessChargingAccessory:1;
     unsigned int _isConnectedToWirelessInternalChargingAccessory:1;
     unsigned int _isConnectedToWirelessInternalAccessory:1;
+    unsigned int _isConnectedToWindowedAccessory:1;
+    struct CGRect _visibleScreenCoordinatesForWindowedAccessory;
+    SBHIDUILockAssertion *_suspendProximityForAttachedWindowedAccessoryAssertion;
+    SBHomeGestureParticipant *_homeGestureParticipant;
     unsigned int _isConnectedToQiPower:1;
     SBHUDController *_HUDController;
     SBVolumeControl *_volumeControl;
@@ -105,6 +109,7 @@
 - (id)_currentHomeScreenLegibilitySettings;
 - (void)_debounceWirelessChargingTimerFired;
 - (void)_deviceUILocked;
+- (void)_disableWirelessChargingChimeAndScreenWakeForDuration:(double)arg1;
 - (void)_enumeratePowerSourcesWithBlock:(CDUnknownBlockType)arg1;
 - (id)_fakeSpringBoardStatusBar;
 - (void)_hideKeyboard;
@@ -122,7 +127,6 @@
 - (void)_updateLegibility;
 - (void)_willRevealOrHideContentView;
 - (void)activateApplication:(id)arg1 fromIcon:(id)arg2 location:(id)arg3 activationSettings:(id)arg4 actions:(id)arg5;
-- (id)alertItemForPreventingLaunchOfApp:(id)arg1 outTrustState:(unsigned long long *)arg2;
 - (void)animateFakeStatusBarWithParameters:(id)arg1 transition:(id)arg2;
 - (float)batteryCapacity;
 - (int)batteryCapacityAsPercentage;
@@ -165,6 +169,7 @@
 - (BOOL)isBatteryCharging;
 - (BOOL)isConnectedToChargeIncapablePowerSource;
 - (BOOL)isConnectedToUnsupportedChargingAccessory;
+- (BOOL)isConnectedToWindowedAccessory;
 - (BOOL)isConnectedToWirelessInternalAccessory;
 - (BOOL)isFakeStatusBarStyleEffectivelyDoubleHeight:(long long)arg1;
 - (BOOL)isFullyCharged;
@@ -202,9 +207,10 @@
 - (BOOL)supportsDetailedBatteryCapacity;
 - (void)suppressChimeForConnectedPowerSources;
 - (void)tearDownIconListAndBar;
-- (long long)transitionSourceForIconLocation:(id)arg1;
+- (long long)transitionSourceForIcon:(id)arg1 iconLocation:(id)arg2;
 - (void)updateBatteryState:(id)arg1;
 - (void)updateStatusBarLegibility;
+- (struct CGRect)visibleScreenCoordinatesForWindowedAccessory;
 - (void)wallpaperDidChangeForVariant:(long long)arg1;
 - (void)wallpaperLegibilitySettingsDidChange:(id)arg1 forVariant:(long long)arg2;
 - (id)window;

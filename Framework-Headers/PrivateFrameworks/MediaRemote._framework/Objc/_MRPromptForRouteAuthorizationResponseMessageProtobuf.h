@@ -10,22 +10,18 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MRPromptForRouteAuthorizationResponseMessageProtobuf : PBCodable <NSCopying>
 {
     NSString *_response;
 }
 
-@property (readonly, nonatomic) BOOL hasResponse;
-@property (strong, nonatomic) NSString *response; // @synthesize response=_response;
-
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

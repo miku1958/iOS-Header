@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     id<AMSUIWebPageProvider> _replacementPage;
     long long _replacementType;
     AMSUIWebClientContext *_context;
+    struct CGSize _modalWindowSize;
 }
 
 @property (strong, nonatomic) id actionData; // @synthesize actionData=_actionData;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) AMSUIWebLoadingPageModel *loadingPage; // @synthesize loadingPage=_loadingPage;
 @property (strong, nonatomic) NSDictionary *metrics; // @synthesize metrics=_metrics;
+@property (nonatomic) struct CGSize modalWindowSize; // @synthesize modalWindowSize=_modalWindowSize;
 @property (strong, nonatomic) AMSUIWebNavigationBarModel *navigationBar; // @synthesize navigationBar=_navigationBar;
 @property (nonatomic) long long presentationType; // @synthesize presentationType=_presentationType;
 @property (strong, nonatomic) id<AMSUIWebPageProvider> replacementPage; // @synthesize replacementPage=_replacementPage;
@@ -44,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_runWithType:(long long)arg1 options:(id)arg2;
 - (id)initWithContext:(id)arg1;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 - (id)runAction;

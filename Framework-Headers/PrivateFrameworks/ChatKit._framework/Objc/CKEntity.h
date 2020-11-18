@@ -43,6 +43,7 @@
 + (id)_copyEntityForAddressString:(id)arg1 onAccount:(id)arg2;
 + (id)copyEntityForAddressString:(id)arg1;
 + (id)entityForAddress:(id)arg1;
++ (BOOL)string:(id)arg1 hasPrefix:(id)arg2;
 - (void).cxx_destruct;
 - (BOOL)_allowedByScreenTime;
 - (id)_croppedImageFromImageData:(id)arg1;

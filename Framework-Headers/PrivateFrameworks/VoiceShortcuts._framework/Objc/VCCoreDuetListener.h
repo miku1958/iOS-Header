@@ -36,7 +36,6 @@
 - (void)deleteTriggerWithIdentifier:(id)arg1 allowedDeletionClasses:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)deleteTriggerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deviceDidUnlockForFirstTime;
-- (void)fetchCurrentSunriseSunsetTimes;
 - (void)fireTriggerWithIdentifier:(id)arg1 force:(BOOL)arg2 eventInfo:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)getConfiguredTriggerDescriptionsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleCallbackForTriggerWithIdentifier:(id)arg1 info:(id)arg2;
@@ -51,6 +50,8 @@
 - (BOOL)registerTrigger:(id)arg1 error:(id *)arg2;
 - (void)registerTriggerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeStalePendingNotifications;
+- (void)timeChangeDidOccur;
+- (void)timezoneChangeDidOccur;
 - (void)unregisterAllTriggers;
 - (void)unregisterCallbackForIdentifier:(id)arg1;
 - (void)unregisterTriggerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;

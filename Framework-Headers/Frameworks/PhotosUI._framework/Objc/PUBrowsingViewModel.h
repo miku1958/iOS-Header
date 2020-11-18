@@ -95,7 +95,7 @@
 @property (readonly, copy, nonatomic) NSString *transitionDriverIdentifier; // @synthesize transitionDriverIdentifier=_transitionDriverIdentifier;
 @property (nonatomic) long long videoOverlayPlayState; // @synthesize videoOverlayPlayState=_videoOverlayPlayState;
 
-+ (void)_handleWillResignActiveNotification:(id)arg1;
++ (void)_handleSceneWillDeactivateNotification:(id)arg1;
 + (BOOL)autoplayVideoMuted;
 + (void)initialize;
 + (void)setAutoplayVideoMuted:(BOOL)arg1;

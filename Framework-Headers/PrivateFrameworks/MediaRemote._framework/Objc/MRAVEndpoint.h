@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MRAVOutputDevice, MRExternalDevice, MROrigin, NSArray, NSDictionary, NSMutableArray, NSOperationQueue, NSString, NSTimer, _MRAVEndpointDescriptorProtobuf;
+@class MRAVOutputDevice, MRExternalDevice, MROrigin, NSArray, NSDictionary, NSHashTable, NSMutableArray, NSOperationQueue, NSString, NSTimer, _MRAVEndpointDescriptorProtobuf;
 
 @interface MRAVEndpoint : NSObject
 {
@@ -15,6 +15,7 @@
     BOOL _registeredForConnectionStateDidChangeNotifications;
     NSTimer *_connectionTimeoutTimer;
     BOOL _outputDevicesDidChangeNotificationScheduled;
+    NSHashTable *_weakObservers;
     long long _connectionType;
     NSString *_localizedName;
     NSString *_uniqueIdentifier;
@@ -39,9 +40,17 @@
 @property (readonly, nonatomic) NSString *shortDescription;
 @property (strong, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
++ (id)_notificationSerialQueue;
++ (void)createEndpointWithOutputDeviceUIDs:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)directEndpointForOutputDeviceUIDs:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
+- (void)_callAllCompletionHandlersWithError:(id)arg1;
 - (void)_externalDeviceConnectionStateDidChangeNotification:(id)arg1;
 - (id)_init;
+- (id)_initiatorStringWithInitiator:(id)arg1 uid:(id)arg2;
+- (void)_prepareToMigrateToEndpoint:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_requestSharedAudioPresentationOutputContextModificationWithAddingDevices:(id)arg1 removingDevices:(id)arg2 settingDevices:(id)arg3 replyQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)addObserver:(id)arg1;
 - (void)addOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)canMigrateToEndpoint:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connectToExternalDeviceWithUserInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -50,19 +59,23 @@
 - (id)description;
 - (BOOL)effectivelyEqual:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToEndpoint:(id)arg1;
+- (BOOL)isVolumeControlAvailable;
 - (void)migrateToEndpoint:(id)arg1 request:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)migrateToLogicalOutputDevice:(id)arg1 request:(id)arg2 initiator:(id)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)migrateToOrAddOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)migrateToOrSetOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)migrateToOutputDevice:(id)arg1 request:(id)arg2 initiator:(id)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)migrateToOutputDevices:(id)arg1 request:(id)arg2 initiator:(id)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)outputDeviceUIDsMatchingPredicate:(CDUnknownBlockType)arg1;
 - (void)outputDeviceVolume:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)outputDevicesMatchingPredicate:(CDUnknownBlockType)arg1;
+- (void)removeObserver:(id)arg1;
 - (void)removeOutputDeviceFromParentGroup:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)scheduleEndpointOutputDevicesDidChangeNotification;
 - (void)setOutputDeviceVolume:(float)arg1 outputDevice:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)translateClusterUIDIfNeeded:(id)arg1;
 - (void)volumeControlCapabilitiesForOutputDevice:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

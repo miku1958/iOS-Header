@@ -6,17 +6,24 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 @interface MTFrameworkEnvironment : NSObject
 {
+    NSString *_localDataPath;
 }
+
+@property (copy, nonatomic) NSString *localDataPath;
 
 + (void)initialize;
 + (void)setSharedEnvironment:(id)arg1;
 + (id)sharedEnvironment;
 + (void)withEnvironment:(id)arg1 execute:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
 - (id)date;
 - (BOOL)isInternalBuild;
-- (BOOL)isStandardEnvironment;
+- (id)secretStore;
+- (BOOL)useCloudKitSandbox;
 - (id)valueForEntitlement:(id)arg1;
 
 @end

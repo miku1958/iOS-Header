@@ -14,6 +14,7 @@
 #import <Home/HFHomeObserver-Protocol.h>
 #import <Home/HFItemUpdating-Protocol.h>
 #import <Home/HFLightObserver-Protocol.h>
+#import <Home/HFMediaDestinationControllerObserver-Protocol.h>
 #import <Home/HFMediaObjectObserver-Protocol.h>
 #import <Home/HFMediaSessionObserver-Protocol.h>
 #import <Home/HFNetworkConfigurationObserver-Protocol.h>
@@ -32,7 +33,7 @@
 @class HFItem, HFItemManagerBatchedDelegateAdapter, HMHome, NAFuture, NSArray, NSMapTable, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 @protocol HFCharacteristicReadPolicy, HFItemManagerDelegate;
 
-@interface HFItemManager : NSObject <HFStateDumpBuildable, HFHomeManagerObserver, HFHomeObserver, HFAccessoryObserver, HFResidentDeviceObserver, HFCameraObserver, HFMediaSessionObserver, HFMediaObjectObserver, HFAudioControlObserver, HFNetworkConfigurationObserver, HFNetworkRouterObserver, HFSoftwareUpdateControllerObserver, HFSoftwareUpdateObserver, HFSymptomsHandlerObserver, HFUserObserver, HFTelevisionObserver, HFHomeKitSettingsObserver, HFPersonManagerObserver, HFSymptomFixSessionObserver, HFLightObserver, HFTemperatureUnitObserver, HFItemUpdating>
+@interface HFItemManager : NSObject <HFStateDumpBuildable, HFHomeManagerObserver, HFHomeObserver, HFAccessoryObserver, HFResidentDeviceObserver, HFCameraObserver, HFMediaSessionObserver, HFMediaObjectObserver, HFAudioControlObserver, HFNetworkConfigurationObserver, HFNetworkRouterObserver, HFSoftwareUpdateControllerObserver, HFSoftwareUpdateObserver, HFSymptomsHandlerObserver, HFUserObserver, HFTelevisionObserver, HFHomeKitSettingsObserver, HFPersonManagerObserver, HFSymptomFixSessionObserver, HFMediaDestinationControllerObserver, HFLightObserver, HFTemperatureUnitObserver, HFItemUpdating>
 {
     BOOL _hasRequestedFirstUpdate;
     id<HFItemManagerDelegate> _delegate;
@@ -146,6 +147,7 @@
 - (id)_itemsToUpdateForModifiedEvents:(id)arg1;
 - (id)_itemsToUpdateForModifiedHomePersonManagerSettings:(id)arg1;
 - (id)_itemsToUpdateForModifiedMetadataForHomes:(id)arg1;
+- (id)_itemsToUpdateForModifiedMetadataForMediaDestinationController:(id)arg1;
 - (id)_itemsToUpdateForModifiedNetworkConfigurationProfiles:(id)arg1;
 - (id)_itemsToUpdateForModifiedNetworkProtectionGroups:(id)arg1;
 - (id)_itemsToUpdateForModifiedNetworkRouterProfiles:(id)arg1;
@@ -219,6 +221,7 @@
 - (void)accessory:(id)arg1 didUpdateFirmwareUpdateAvailable:(BOOL)arg2;
 - (void)accessory:(id)arg1 didUpdateFirmwareVersion:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateHasAuthorizationDataForCharacteristic:(id)arg2;
+- (void)accessory:(id)arg1 didUpdateLastKnownOperatingStateResponseForService:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateLastKnownSleepDiscoveryModeForService:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateLoggedInAccount:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateNameForService:(id)arg2;
@@ -229,6 +232,8 @@
 - (void)accessoryDidRemoveSymptomsHandler:(id)arg1;
 - (void)accessoryDidUpdateAdditionalSetupRequired:(id)arg1;
 - (void)accessoryDidUpdateApplicationData:(id)arg1;
+- (void)accessoryDidUpdateAudioDestination:(id)arg1;
+- (void)accessoryDidUpdateAudioDestinationController:(id)arg1;
 - (void)accessoryDidUpdateControllable:(id)arg1;
 - (void)accessoryDidUpdateName:(id)arg1;
 - (void)accessoryDidUpdateReachability:(id)arg1;
@@ -338,6 +343,8 @@
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
 - (void)lightProfile:(id)arg1 didUpdateSettings:(id)arg2;
 - (id)matchingItemForHomeKitObject:(id)arg1;
+- (void)mediaDestinationController:(id)arg1 didUpdateDestination:(id)arg2;
+- (void)mediaDestinationControllerDidUpdateAvailableDestinations:(id)arg1;
 - (void)mediaObject:(id)arg1 didUpdateMediaSession:(id)arg2;
 - (void)mediaObject:(id)arg1 didUpdateSettings:(id)arg2;
 - (void)mediaSession:(id)arg1 didUpdatePlaybackState:(long long)arg2;

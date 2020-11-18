@@ -169,6 +169,8 @@
 - (void)addToPageView;
 - (id)akAnnotationAdaptor;
 - (struct CGPDFForm *)appearance:(int)arg1;
+- (void)cacheAppearances;
+- (struct CGDisplayList *)cachedAppearance:(int)arg1;
 - (struct CGPath **)cgPathArray;
 - (id)colorFromAppearanceTokens:(id)arg1;
 - (struct __CFDictionary *)commonCreateDictionaryRef;
@@ -189,6 +191,7 @@
 - (void)drawAppearance:(struct CGPDFForm *)arg1 withBox:(long long)arg2 inContext:(struct CGContext *)arg3;
 - (void)drawAppearance:(struct CGPDFForm *)arg1 withBox:(long long)arg2 inContext:(struct CGContext *)arg3 inRect:(struct CGRect)arg4 scaleProportional:(BOOL)arg5;
 - (void)drawAppearance:(struct CGPDFForm *)arg1 withBox:(long long)arg2 inContext:(struct CGContext *)arg3 scaleProportional:(BOOL)arg4;
+- (void)drawCachedAppearance:(struct CGDisplayList *)arg1 withBox:(long long)arg2 inContext:(struct CGContext *)arg3 inRect:(struct CGRect)arg4 scaleProportional:(BOOL)arg5;
 - (void)drawWithBox:(long long)arg1 inContext:(struct CGContext *)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (struct CGRect)extendedBoundsForAction:(int)arg1;

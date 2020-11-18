@@ -17,7 +17,7 @@
 #import <HomeUI/HMMediaObject-Protocol.h>
 
 @class ACAccount, HMAccessory, HMMediaSession, NAFuture, NSSet, NSString;
-@protocol HFMediaValueSource;
+@protocol HFMediaValueSource, HMMediaDestination;
 
 @protocol HFMediaProfileContainer <HMMediaObject, HFHomeKitSettingsVendor, HFAccessoryVendor, HFStateDumpBuildable, HFReorderableHomeKitObject, HFFavoritable, HFRoomContextProviding, HFSymptomsVendor, HFSymptomsHandlerVendor, HFSymptomFixableObject, HFServiceNameComponentsProviding>
 
@@ -35,6 +35,7 @@
 @property (readonly, nonatomic) id<HFMediaValueSource> hf_mediaValueSource;
 @property (readonly, nonatomic) NSString *hf_prettyDescription;
 @property (readonly, nonatomic) BOOL hf_showsAudioSettings;
+@property (readonly, nonatomic) BOOL hf_supportsHomeTheater;
 @property (readonly, nonatomic) BOOL hf_supportsMusicAlarm;
 @property (readonly, nonatomic) BOOL hf_supportsSoftwareUpdate;
 @property (readonly, nonatomic) BOOL hf_supportsStereoPairing;
@@ -43,6 +44,7 @@
 
 - (ACAccount *)hf_appleMusicCurrentLoggedInAccount;
 - (NSString *)hf_appleMusicCurrentLoggedInAccountDSID;
+- (id<HMMediaDestination>)hf_destination;
 - (NAFuture *)hf_fetchLog:(NSString *)arg1 timeout:(double)arg2;
 - (NAFuture *)hf_fetchLogListWithTimeout:(double)arg1;
 - (NAFuture *)hf_homePodMediaAccountIsMismatchedWithHomeMediaAccount;

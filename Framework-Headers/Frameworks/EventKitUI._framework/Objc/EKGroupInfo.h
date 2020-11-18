@@ -11,7 +11,7 @@
 @interface EKGroupInfo : NSObject
 {
     NSMutableArray *_calendars;
-    int _customGroupType;
+    unsigned long long _customGroupType;
     NSString *_customTitle;
     NSString *_customTitleAtBeginningOfSentence;
     NSString *_typeTitle;
@@ -49,7 +49,7 @@
 - (id)copyCalendars;
 - (id)description;
 - (id)init;
-- (id)initWithCustomGroupType:(int)arg1;
+- (id)initWithCustomGroupType:(unsigned long long)arg1;
 - (id)initWithSource:(id)arg1;
 - (void)insertCalendarInfo:(id)arg1;
 - (void)removeCalendar:(id)arg1;

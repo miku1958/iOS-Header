@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (void)addPreFlushTask:(CDUnknownBlockType)arg1;
+- (id)createPreFlushTask;
 - (void)enableFlushing;
 - (id)init;
 

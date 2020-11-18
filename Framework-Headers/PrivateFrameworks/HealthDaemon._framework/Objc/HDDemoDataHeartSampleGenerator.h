@@ -6,8 +6,11 @@
 
 #import <HealthDaemon/HDDemoDataBaseSampleGenerator.h>
 
+@class HDProfile;
+
 @interface HDDemoDataHeartSampleGenerator : HDDemoDataBaseSampleGenerator
 {
+    HDProfile *_profile;
     double _nextElectrocardiogramSampleTime;
     unsigned long long _nextElectrocardiogramClassification;
     double _nextRestingHeartRateSampleTime;
@@ -22,18 +25,22 @@
 @property (nonatomic) double nextElectrocardiogramSampleTime; // @synthesize nextElectrocardiogramSampleTime=_nextElectrocardiogramSampleTime;
 @property (nonatomic) double nextRestingHeartRateSampleTime; // @synthesize nextRestingHeartRateSampleTime=_nextRestingHeartRateSampleTime;
 @property (nonatomic) double nextWalkingHeartRateAverageSampleTime; // @synthesize nextWalkingHeartRateAverageSampleTime=_nextWalkingHeartRateAverageSampleTime;
+@property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (double)_computeRestingHeartRateForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (double)_computeWalkingHeartRateAverageForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (id)_generateElectrocardiogramForDemoPerson:(id)arg1 atTime:(double)arg2 classification:(unsigned long long)arg3 sampleDate:(id)arg4;
 - (id)_generateSymptomSamplesForElectrocardiogram:(id)arg1;
 - (id)electrocardiogramForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;
+- (void)generateFirstRunSampleForDemoPerson:(id)arg1 firstDate:(id)arg2 objectCollection:(id)arg3;
 - (void)generateSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)restingHeartRateForDemoPerson:(id)arg1 atTime:(double)arg2;
+- (void)setProfile:(id)arg1 provenance:(id)arg2;
 - (void)setupWithDemoDataGenerator:(id)arg1;
 - (id)walkingHeartRateAverageForDemoPerson:(id)arg1 atTime:(double)arg2;
 

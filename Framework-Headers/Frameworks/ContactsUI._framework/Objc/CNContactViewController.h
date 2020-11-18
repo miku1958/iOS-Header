@@ -40,7 +40,8 @@
     _UIAccessDeniedView *_accessDeniedView;
     NSString *_highlightedPropertyKey;
     NSString *_highlightedPropertyIdentifier;
-    NSArray *_extraBarButtonItems;
+    NSArray *_extraRightBarButtonItems;
+    NSArray *_extraLeftBarButtonItems;
     NSArray *_preEditLeftBarButtonItems;
     UINavigationItem *_observedNavigationItem;
     UIViewController<CNContactContentViewController> *_viewController;
@@ -85,7 +86,8 @@
 @property (copy, nonatomic) NSArray *displayedPropertyKeys; // @synthesize displayedPropertyKeys=_displayedPropertyKeys;
 @property (nonatomic) long long editMode; // @synthesize editMode=_editMode;
 @property (nonatomic) BOOL editingProposedInformation; // @synthesize editingProposedInformation=_editingProposedInformation;
-@property (strong, nonatomic) NSArray *extraBarButtonItems; // @synthesize extraBarButtonItems=_extraBarButtonItems;
+@property (strong, nonatomic) NSArray *extraLeftBarButtonItems; // @synthesize extraLeftBarButtonItems=_extraLeftBarButtonItems;
+@property (strong, nonatomic) NSArray *extraRightBarButtonItems; // @synthesize extraRightBarButtonItems=_extraRightBarButtonItems;
 @property (nonatomic) BOOL hasCompletedSetup; // @synthesize hasCompletedSetup=_hasCompletedSetup;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *highlightedPropertyIdentifier; // @synthesize highlightedPropertyIdentifier=_highlightedPropertyIdentifier;

@@ -8,13 +8,19 @@
 
 #import <PassKitCore/PKPaymentInformationEventExtensionHostContextProtocol-Protocol.h>
 
+@class NSObject;
+@protocol OS_dispatch_queue;
+
 @interface PKPaymentInformationEventExtensionHostContext : PKPaymentInformationEventExtensionBaseContext <PKPaymentInformationEventExtensionHostContextProtocol>
 {
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
+- (void).cxx_destruct;
 - (void)handleConfigurationRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleInformationRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleSignatureRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)replyQueue;
 - (id)vendorContext;
 - (id)vendorContextWithErrorHandler:(CDUnknownBlockType)arg1;
 

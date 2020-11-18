@@ -20,6 +20,7 @@
 - (void)_clientUpdateAvailableSpeechAssets;
 - (void)_monitorForNetworkChanges;
 - (void)_monitorSpeechAssetChanges;
+- (BOOL)_platformSupportsMobileAssetVoices;
 - (void)_registerForReachabilityNotifications;
 - (void)_unregisterForReachabilityNotifications;
 - (void)clearCurrentVoicesAndRefreshTTSVoiceListOnNextBoot;

@@ -278,6 +278,7 @@
 - (id)existingChatsWithChatGUIDs:(id)arg1;
 - (id)existingConversationForTUConversationUUID:(id)arg1;
 - (void)finishedDownloadingPurgedAssetsForChatIDs:(id)arg1;
+- (void)fixedUpSMSChatsWithGroupIDMap:(id)arg1;
 - (void)frequentRepliesQuery:(id)arg1 chatID:(id)arg2 services:(id)arg3 finishedWithResult:(id)arg4 limit:(unsigned long long)arg5;
 - (void)frequentRepliesQuery:(id)arg1 finishedWithResult:(id)arg2 limit:(unsigned long long)arg3;
 - (void)groupPhotoUpdatedForChatIdentifier:(id)arg1 style:(unsigned char)arg2 account:(id)arg3 userInfo:(id)arg4;

@@ -12,14 +12,16 @@
 __attribute__((visibility("hidden")))
 @interface CBXpcConnection : NSObject
 {
-    id<CBXpcConnectionDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_eventQueue;
     NSMutableDictionary *_options;
     int _sessionType;
     NSObject<OS_dispatch_queue> *_xpcQueue;
     NSObject<OS_xpc_object> *_xpcConnection;
     BOOL _uiAppIsBackgrounded;
+    id<CBXpcConnectionDelegate> _delegate;
 }
+
+@property (weak, nonatomic) id<CBXpcConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
 - (id)_allocXpcMsg:(unsigned short)arg1 args:(id)arg2;

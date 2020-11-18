@@ -13,11 +13,13 @@
 #import <Home/HFRoomContextProviding-Protocol.h>
 #import <Home/HFServiceNameComponentsProviding-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
+#import <Home/HFUIRepresentableHomeObject-Protocol.h>
 #import <Home/HFUserNotificationServiceSettingsProviding-Protocol.h>
 
-@class HFServiceNameComponents, HFUserNotificationServiceSettings, HMCharacteristic, HMHome, HMRoom, NSDate, NSString, NSUUID;
+@class HFServiceNameComponents, HFUserNotificationServiceSettings, HMCharacteristic, HMHome, HMRoom, NSDate, NSSet, NSString, NSUUID;
+@protocol HFUIRepresentableHomeObject;
 
-@interface HMService (HFDebugging) <HFStateDumpBuildable, HFFavoritable, HFHomeStatusVisible, HFHomeContainedObject, HFRoomContextProviding, HFUserNotificationServiceSettingsProviding, HFReorderableHomeKitObject, HFServiceNameComponentsProviding>
+@interface HMService (HFDebugging) <HFStateDumpBuildable, HFFavoritable, HFUIRepresentableHomeObject, HFHomeStatusVisible, HFHomeContainedObject, HFRoomContextProviding, HFUserNotificationServiceSettingsProviding, HFReorderableHomeKitObject, HFServiceNameComponentsProviding>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
@@ -25,6 +27,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
@@ -37,6 +41,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSSet *hf_accessories;
 @property (readonly, copy, nonatomic) NSDate *hf_dateAdded;
 @property (readonly, copy, nonatomic) NSString *hf_displayName;
 @property (readonly, nonatomic) unsigned long long hf_fallbackProgrammableSwitchIndex;
@@ -49,9 +55,13 @@
 @property (readonly, nonatomic) HMCharacteristic *hf_labelIndexCharacteristic;
 @property (readonly, nonatomic) HMCharacteristic *hf_labelNamespaceCharacteristic;
 @property (readonly, weak, nonatomic) HMRoom *hf_parentRoom;
+@property (readonly, nonatomic) NSSet *hf_profiles;
 @property (readonly, nonatomic) HFServiceNameComponents *hf_serviceNameComponents;
+@property (readonly, nonatomic) HFServiceNameComponents *hf_serviceNameComponents;
+@property (readonly, nonatomic) NSSet *hf_services;
 @property (readonly, nonatomic) BOOL hf_shouldShowInFavorites;
 @property (readonly, nonatomic) BOOL hf_supportsHomeStatus;
+@property (readonly, nonatomic) id<HFUIRepresentableHomeObject> hf_topLevelUIRepresentableHomeObject;
 @property (readonly, copy, nonatomic) HFUserNotificationServiceSettings *hf_userNotificationSettings;
 @property (readonly, weak, nonatomic) HMHome *home;
 @property (readonly) Class superclass;
@@ -60,6 +70,8 @@
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
@@ -83,7 +95,6 @@
 + (id)hf_userFriendlyLocalizedLowercaseDescription:(id)arg1;
 - (id)_hf_firstLinkedServiceOfType:(id)arg1;
 - (BOOL)_hf_isDirectlyOrIndirectlyLinkedToService:(id)arg1;
-- (id)hf_accessories;
 - (BOOL)hf_canGroupWithService:(id)arg1;
 - (id)hf_characteristicEqualToType:(id)arg1 forServiceType:(id)arg2;
 - (id)hf_characteristicOfType:(id)arg1;
@@ -104,17 +115,14 @@
 - (BOOL)hf_isVisible;
 - (id)hf_lightProfiles;
 - (id)hf_parentService;
-- (id)hf_profiles;
 - (id)hf_requiredCharacteristicTypesForDisplayMetadata;
 - (BOOL)hf_requiresDeviceUnlock;
 - (id)hf_serviceDescriptor;
 - (id)hf_serviceGroup;
-- (id)hf_services;
 - (BOOL)hf_showsAsServiceInControlCentre;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (BOOL)hf_supportsGroups;
 - (BOOL)hf_supportsNaturalLighting;
-- (id)hf_topLevelAccessoryLikeHomeObject;
 - (id)hf_updateDateAdded:(id)arg1;
 - (id)hf_updateIconDescriptor:(id)arg1;
 - (id)hf_updateIsFavorite:(BOOL)arg1;

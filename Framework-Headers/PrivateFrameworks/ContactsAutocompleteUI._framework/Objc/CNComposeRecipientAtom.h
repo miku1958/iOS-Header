@@ -15,6 +15,7 @@
     UITextInputTraits *_traits;
     unsigned int _wasSelectedWhenTouchesBegan:1;
     unsigned int _touchesWereCancelled:1;
+    unsigned int _touchBeganWithShiftDown:1;
     id<CNComposeRecipientAtomDelegate> _delegate;
 }
 

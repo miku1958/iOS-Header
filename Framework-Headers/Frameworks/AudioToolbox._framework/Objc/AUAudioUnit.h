@@ -30,6 +30,7 @@
     BOOL _canProcessInPlace;
     BOOL _renderingOffline;
     BOOL _supportsMPE;
+    BOOL _requestViewControllerSynchronously;
     NSString *_audioUnitShortName;
     long long _virtualMIDICableCount;
     CDUnknownBlockType _MIDIOutputEventBlock;
@@ -81,6 +82,7 @@
 @property (nonatomic) long long renderQuality; // @synthesize renderQuality=_renderQuality;
 @property (readonly, nonatomic) BOOL renderResourcesAllocated; // @synthesize renderResourcesAllocated=_renderResourcesAllocated;
 @property (nonatomic, getter=isRenderingOffline) BOOL renderingOffline; // @synthesize renderingOffline=_renderingOffline;
+@property (nonatomic) BOOL requestViewControllerSynchronously; // @synthesize requestViewControllerSynchronously=_requestViewControllerSynchronously;
 @property (readonly, nonatomic) CDUnknownBlockType scheduleMIDIEventBlock;
 @property (readonly, nonatomic) CDUnknownBlockType scheduleParameterBlock;
 @property (nonatomic) BOOL shouldBypassEffect; // @synthesize shouldBypassEffect=_shouldBypassEffect;
@@ -112,13 +114,17 @@
 - (void)addRenderObserver:(CDUnknownFunctionPointerType)arg1 userData:(void *)arg2;
 - (BOOL)allocateRenderResourcesAndReturnError:(id *)arg1;
 - (struct OpaqueAudioComponentInstance *)audioUnit;
+- (struct AUv2GetParameterSynchronizer *)auv2GetParameterSynchronizer;
 - (id)cachedViewController;
 - (void)dealloc;
 - (void)deallocateRenderResources;
 - (BOOL)deleteUserPreset:(id)arg1 error:(id *)arg2;
+- (void)deliverV2Parameters:(const union AURenderEvent *)arg1;
 - (BOOL)disableProfile:(id)arg1 cable:(unsigned char)arg2 onChannel:(unsigned char)arg3 error:(id *)arg4;
 - (BOOL)enableProfile:(id)arg1 cable:(unsigned char)arg2 onChannel:(unsigned char)arg3 error:(id *)arg4;
 - (struct AUEventSchedule *)eventSchedule;
+- (void)flushEventSchedule;
+- (float)getV2Parameter:(unsigned long long)arg1 sequenceNumber:(unsigned int)arg2;
 - (id)init;
 - (id)initWithComponentDescription:(struct AudioComponentDescription)arg1 error:(id *)arg2;
 - (id)initWithComponentDescription:(struct AudioComponentDescription)arg1 options:(unsigned int)arg2 error:(id *)arg3;
@@ -135,10 +141,12 @@
 - (void)requestViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)reset;
 - (BOOL)saveUserPreset:(id)arg1 error:(id *)arg2;
+- (struct AUScheduledParameterRefresher2 *)scheduledParameterRefresher;
 - (void)selectViewConfiguration:(id)arg1;
 - (void)setCachedViewController:(id)arg1;
 - (void)setLoadedOutOfProcess;
 - (void)setRenderResourcesAllocated:(BOOL)arg1;
+- (void)setV2Parameter:(unsigned long long)arg1 value:(float)arg2 bufferOffset:(unsigned int)arg3 sequenceNumber:(unsigned int)arg4;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (BOOL)shouldChangeToFormat:(id)arg1 forBus:(id)arg2;
 - (void)startUserPresetFolderMonitoring;

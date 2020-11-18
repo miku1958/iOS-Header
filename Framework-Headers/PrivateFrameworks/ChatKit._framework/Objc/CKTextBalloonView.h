@@ -58,6 +58,7 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(struct UIEdgeInsets *)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(struct UIEdgeInsets *)arg2 isSingleLine:(BOOL *)arg3;
 - (void)tapGestureRecognized:(id)arg1;
+- (struct UIEdgeInsets)targetTextContainerInsets;
 - (void)textViewDidChangeSelection:(id)arg1;
 - (double)textViewWidthForWidth:(double)arg1;
 - (void)truncateForLargeText;

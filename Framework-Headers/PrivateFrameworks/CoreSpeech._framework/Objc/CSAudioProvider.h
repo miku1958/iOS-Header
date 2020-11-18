@@ -97,6 +97,7 @@
 - (void)CSAudioServerCrashMonitorDidReceiveServerRestart:(id)arg1;
 - (BOOL)_activateAudioSessionWithReason:(unsigned long long)arg1 error:(id *)arg2;
 - (id)_audioChunkFrom:(unsigned long long)arg1 to:(unsigned long long)arg2;
+- (id)_audioChunkFrom:(unsigned long long)arg1 to:(unsigned long long)arg2 channelIdx:(unsigned long long)arg3;
 - (id)_audioStreamWithRequest:(id)arg1 streamName:(id)arg2 error:(id *)arg3;
 - (void)_clearDidStartRecordingDelegateWatchDog;
 - (void)_clearDidStopRecordingDelegateWatchDog;
@@ -136,6 +137,7 @@
 - (unsigned long long)alertStartTime;
 - (id)audioChunkFrom:(unsigned long long)arg1 to:(unsigned long long)arg2;
 - (id)audioChunkToEndFrom:(unsigned long long)arg1;
+- (id)audioChunkToEndFrom:(unsigned long long)arg1 channelIdx:(unsigned long long)arg2;
 - (id)audioMetric;
 - (void)audioPreprocessor:(id)arg1 hasAvailableBuffer:(id)arg2 atTime:(unsigned long long)arg3;
 - (void)audioRecorder:(id)arg1 didSetAudioSessionActive:(BOOL)arg2;

@@ -22,7 +22,10 @@
     struct __CTRun *_activeRun;
     long long _activeRunIndex;
     struct CGRect _imageBounds;
-    BOOL _rendersTextCorrectionMarkers;
+    struct {
+        unsigned int rendersTextCorrectionMarkers:1;
+        unsigned int hasRTLRun:1;
+    } _flags;
     NSTextLayoutFragment *_textLayoutFragment;
     CDUnknownBlockType __renderingAttributesProvider;
     NSAttributedString *_attributedString;
@@ -37,7 +40,7 @@
 @property (readonly) struct _NSRange characterRange; // @synthesize characterRange=_characterRange;
 @property struct CGPoint glyphOrigin; // @synthesize glyphOrigin=_glyphOrigin;
 @property double padding; // @synthesize padding=_padding;
-@property BOOL rendersTextCorrectionMarkers; // @synthesize rendersTextCorrectionMarkers=_rendersTextCorrectionMarkers;
+@property BOOL rendersTextCorrectionMarkers;
 @property (weak) NSTextLayoutFragment *textLayoutFragment; // @synthesize textLayoutFragment=_textLayoutFragment;
 @property struct CGRect typographicBounds; // @synthesize typographicBounds=_typographicBounds;
 

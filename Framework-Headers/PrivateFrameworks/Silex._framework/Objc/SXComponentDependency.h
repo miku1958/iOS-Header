@@ -17,17 +17,9 @@
     SXComponentDependencyDescriptor *_descriptor;
 }
 
-@property (strong, nonatomic) SXComponentDependencyDescriptor *descriptor; // @synthesize descriptor=_descriptor;
-@property (strong, nonatomic) NSString *fromComponentIdentifier; // @synthesize fromComponentIdentifier=_fromComponentIdentifier;
-@property (nonatomic) long long fromDependencyAttribute; // @synthesize fromDependencyAttribute=_fromDependencyAttribute;
-@property (strong, nonatomic) NSString *toComponentIdentifier; // @synthesize toComponentIdentifier=_toComponentIdentifier;
-@property (nonatomic) long long toDependencyAttribute; // @synthesize toDependencyAttribute=_toDependencyAttribute;
-
-+ (id)componentDependencyFromComponentIdentifier:(id)arg1 toComponentIdentifier:(id)arg2 fromLayoutAttribute:(long long)arg3 toAttribute:(long long)arg4 withDescriptor:(id)arg5;
 - (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithComponentDependencyFromComponentIdentifier:(id)arg1 toComponentIdentifier:(id)arg2 fromLayoutAttribute:(long long)arg3 toAttribute:(long long)arg4 withDescriptor:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
 
 @end

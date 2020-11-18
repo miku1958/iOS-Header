@@ -7,10 +7,12 @@
 #import <objc/NSObject.h>
 
 @class NSCache;
+@protocol OS_dispatch_queue;
 
 @interface PSGWordBoundaryFSTGrammar : NSObject
 {
     NSCache *_lmWrapperCache;
+    NSObject<OS_dispatch_queue> *_lmWrapperQueue;
 }
 
 + (id)sharedInstance;

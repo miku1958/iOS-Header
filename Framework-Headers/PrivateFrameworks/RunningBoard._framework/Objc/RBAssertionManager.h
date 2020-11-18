@@ -60,7 +60,7 @@
 - (BOOL)_decreaseInFlightOperationsForOriginator:(id)arg1;
 - (void)_decreaseInFlightOperationsForTargetIdentities:(id)arg1;
 - (void)_dumpAssertions;
-- (BOOL)_increaseInFlightOperationsForOriginator:(id)arg1;
+- (BOOL)_increaseInFlightOperationsForOriginator:(id)arg1 andSuspendIfNeeded:(id)arg2;
 - (void)_increaseInFlightOperationsForTargetIdentities:(id)arg1;
 - (void)_invalidateAssertionsWithContext:(id)arg1;
 - (id)_lock_activateDelayedAssertionsForTargets:(id)arg1;

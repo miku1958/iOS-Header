@@ -29,9 +29,11 @@
 - (void).cxx_destruct;
 - (id)accountForAccountId:(id)arg1;
 - (void)addAccountsObject:(id)arg1;
+- (id)clientDatasMissingVRFs:(id)arg1 maximum:(long long)arg2;
 - (id)copy;
 - (id)debugDescription;
 - (id)description;
+- (id)devicesMissingVRFs:(id)arg1 maximum:(long long)arg2;
 - (id)earliestAddedDate:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

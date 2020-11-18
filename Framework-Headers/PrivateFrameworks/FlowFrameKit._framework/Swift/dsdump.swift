@@ -38,12 +38,6 @@
 
  class FlowFrameKit.OrderedForest {
  class FlowFrameKit.AnyFlowFrameFactory {
- struct FlowFrameKit.TimedOutError {
-
-	// Properties
-	let message : String // +0x0
- }
-
  enum FlowFrameKit.FrameOperationType {
 
 	// Properties
@@ -67,8 +61,8 @@
 	let completion : (_:_:)
 
 	// Swift methods
-	0x3e90  class func AnyChildCompletion.__allocating_init<A, B>(_:) // init 
-	0x47b0  func AnyChildCompletion.completion<A>(controller:exitValue:) // method 
+	0x3f80  class func AnyChildCompletion.__allocating_init<A, B>(_:) // init 
+	0x4780  func AnyChildCompletion.completion<A>(controller:exitValue:) // method 
  }
 
  class FlowFrameKit.MegaFrame {
@@ -78,7 +72,7 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let perFrameOperationTimeout : §&
+	let perFrameOperationTimeout : '
  }
 
  class FlowFrameKit.FlowFrameRuntime {
@@ -91,9 +85,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let typeName : String
 	let depth : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let signpostName : S'
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let signpostId : õ%
+	let signpostId : Q&
+ }
+
+ struct FlowFrameKit.IllegalStateError {
+
+	// Properties
+	let message : String // +0x0
  }
 
  struct FlowFrameKit.NonUnderstanding {
@@ -103,11 +101,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let input : A
  }
 
- enum FlowFrameKit.Log { }
+ struct FlowFrameKit.TimedOutError {
+
+	// Properties
+	let message : String // +0x0
+ }
+
+ struct FlowFrameKit.CancelledError {
+
+	// Properties
+	let message : String // +0x0
+ }
+
+ enum FlowFrameKit.Logger { }
 
  enum FlowFrameKit.LogConst { }
 
- enum FlowFrameKit.Signpost { }
+ enum FlowFrameKit.FlowFrameKitSignpost { }
+
+ enum FlowFrameKit.Log { }
 
  enum FlowFrameKit.Understandable {
 

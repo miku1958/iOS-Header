@@ -22,6 +22,7 @@
     MISSING_TYPE *feedItemImages;
     MISSING_TYPE *layoutImages;
     MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *headlineService;
 }
 
 @end

@@ -31,8 +31,8 @@
     NSString *_productData;
     unsigned long long _pendingRemovePairing;
     NSHashTable *_notificationClients;
-    HAPAccessory *_primaryAccessory;
     NSArray *_accessories;
+    HAPAccessory *_primaryAccessory;
     long long _linkType;
     HMFVersion *_version;
     NSHashTable *_internalDelegates;

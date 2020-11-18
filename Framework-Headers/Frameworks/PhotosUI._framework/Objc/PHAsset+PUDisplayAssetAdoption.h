@@ -69,6 +69,7 @@
 + (long long)pu_commonMediaTypeForPhotoCount:(long long)arg1 videoCount:(long long)arg2 otherCount:(long long)arg3;
 + (id)pu_typeStringForAssets:(id)arg1;
 + (id)pu_typeStringForMediaType:(long long)arg1;
+- (unsigned long long)contentChangeFromDisplayAsset:(id)arg1;
 - (unsigned long long)isContentEqualTo:(id)arg1;
 - (CDStruct_8e0628e6)pu_vitalityPerspectiveTransform;
 @end

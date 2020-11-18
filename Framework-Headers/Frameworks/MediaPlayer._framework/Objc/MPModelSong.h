@@ -21,6 +21,7 @@
 @property (nonatomic) long long classicalMovementCount; // @dynamic classicalMovementCount;
 @property (nonatomic) long long classicalMovementNumber; // @dynamic classicalMovementNumber;
 @property (copy, nonatomic) NSString *classicalWork; // @dynamic classicalWork;
+@property (nonatomic) long long cloudStatus; // @dynamic cloudStatus;
 @property (strong, nonatomic) MPModelComposer *composer; // @dynamic composer;
 @property (copy, nonatomic) NSString *copyrightText; // @dynamic copyrightText;
 @property (nonatomic) long long discNumber; // @dynamic discNumber;
@@ -63,6 +64,7 @@
 + (id)__classicalMovementNumber_KEY;
 + (id)__classicalMovement_KEY;
 + (id)__classicalWork_KEY;
++ (id)__cloudStatus_KEY;
 + (id)__composer_KEY;
 + (id)__copyrightText_KEY;
 + (id)__discNumber_KEY;

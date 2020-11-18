@@ -16,7 +16,7 @@
 @property (strong, nonatomic) _UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
 
 + (long long)_defaultStyleForRequestedStyle:(long long)arg1 styleOverrides:(int)arg2 activeStyleOverride:(int *)arg3;
-+ (double)_heightForStyle:(long long)arg1 orientation:(long long)arg2 forStatusBarFrame:(BOOL)arg3 inWindow:(id)arg4;
++ (double)_heightForStyle:(long long)arg1 orientation:(long long)arg2 forStatusBarFrame:(BOOL)arg3 inWindow:(id)arg4 isAzulBLinked:(BOOL)arg5;
 + (Class)_implementationClass;
 + (id)sensorActivityIndicator;
 + (void)setSensorActivityIndicator:(id)arg1;

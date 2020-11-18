@@ -30,6 +30,7 @@
 - (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)initWithXPCValue:(id)arg1;
+- (id)initWithXPCValue:(id)arg1 allowWritableSharedMemory:(BOOL)arg2;
 
 @end
 

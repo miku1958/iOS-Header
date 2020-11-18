@@ -12,8 +12,9 @@
 @protocol SBRootFolderViewLayoutManager <NSObject>
 
 @property (weak, nonatomic) SBRootFolderView *rootFolderView;
+@property (strong, nonatomic) id userInfo;
 
-- (void)layoutSubviews;
-- (void)transitionToActive:(BOOL)arg1 usingAnimator:(id<UIViewImplicitlyAnimating>)arg2;
+- (void)layoutSubviewsInFolderView:(SBRootFolderView *)arg1;
+- (void)transitionToActive:(BOOL)arg1 inFolderView:(SBRootFolderView *)arg2 usingAnimator:(id<UIViewImplicitlyAnimating>)arg3;
 @end
 

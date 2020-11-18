@@ -21,6 +21,7 @@
 + (id)groupDialCellSelectedTextColor;
 + (id)groupDialCellShimmeringTextColor;
 + (id)groupDialCellTextColor;
++ (id)groupListBackgroundColor;
 + (id)groupSidePickerCellSelectedBackgroundColor;
 + (id)modalBackgroundColor;
 + (id)paddleViewBackgroundColor;

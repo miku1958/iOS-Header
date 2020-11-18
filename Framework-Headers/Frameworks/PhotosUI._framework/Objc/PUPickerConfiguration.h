@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     NSURL *_photoLibraryURL;
     unsigned long long _resultOptions;
     NSString *_limitedLibraryClientIdentifier;
+    CDStruct_4c969caf _limitedLibraryClientAuditToken;
 }
 
 @property (readonly, nonatomic) BOOL allowsAssetData;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) id<PUPickerFilter> filter; // @synthesize filter=_filter;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isValidConfiguration;
+@property (nonatomic) CDStruct_4c969caf limitedLibraryClientAuditToken; // @synthesize limitedLibraryClientAuditToken=_limitedLibraryClientAuditToken;
 @property (copy, nonatomic) NSString *limitedLibraryClientIdentifier; // @synthesize limitedLibraryClientIdentifier=_limitedLibraryClientIdentifier;
 @property (readonly, copy, nonatomic) NSURL *photoLibraryURL; // @synthesize photoLibraryURL=_photoLibraryURL;
 @property (readonly, nonatomic) long long preferredAssetRepresentationMode; // @synthesize preferredAssetRepresentationMode=_preferredAssetRepresentationMode;

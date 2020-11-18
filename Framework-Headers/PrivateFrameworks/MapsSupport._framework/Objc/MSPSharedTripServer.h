@@ -12,7 +12,7 @@
 #import <MapsSupport/MSPSharedTripXPCServer-Protocol.h>
 #import <MapsSupport/NSXPCListenerDelegate-Protocol.h>
 
-@class MSPReceiverETAController, MSPSenderETAController, MSPSharedTripRelay, NSMapTable, NSMutableSet, NSString, NSXPCListener;
+@class MSPReceiverETAController, MSPSenderETAController, MSPSharedTripRelay, NSMapTable, NSMutableDictionary, NSMutableSet, NSString, NSXPCListener;
 @protocol OS_dispatch_queue;
 
 @interface MSPSharedTripServer : NSObject <NSXPCListenerDelegate, MSPReceiverETAControllerDelegate, MSPSenderETAControllerDelegate, MSPSharedTripAvailabiltyDelegate, MSPSharedTripXPCServer>
@@ -22,6 +22,7 @@
     MSPSharedTripRelay *_idsRelay;
     NSXPCListener *_listener;
     NSMutableSet *_connections;
+    NSMutableDictionary *_connectionSubscriptionsByTripID;
     NSMapTable *_peersByConnection;
     NSObject<OS_dispatch_queue> *_isolationQueue;
 }
@@ -35,7 +36,9 @@
 - (BOOL)_connectionCanControlReceiving:(id)arg1;
 - (BOOL)_connectionCanControlSharing:(id)arg1;
 - (void)_createXPCListener;
+- (void)_purgeSubscriptionsForConnection:(id)arg1;
 - (void)_setNotificationCenter:(id)arg1;
+- (id)_subscribedConnectionsForTripID:(id)arg1 createIfNeeded:(BOOL)arg2;
 - (void)blockSharedTrip:(id)arg1;
 - (void)checkinWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cleanConnections;

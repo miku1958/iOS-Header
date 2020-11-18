@@ -10,26 +10,18 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface _MRRemoveEndpointsMessageProtobuf : PBCodable <NSCopying>
 {
     NSMutableArray *_endpointUIDs;
 }
 
-@property (strong, nonatomic) NSMutableArray *endpointUIDs; // @synthesize endpointUIDs=_endpointUIDs;
-
-+ (Class)endpointUIDsType;
 - (void).cxx_destruct;
-- (void)addEndpointUIDs:(id)arg1;
-- (void)clearEndpointUIDs;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (id)endpointUIDsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)endpointUIDsCount;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

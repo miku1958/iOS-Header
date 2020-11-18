@@ -9,7 +9,7 @@
 #import <GeoServices/GEOETAUpdaterDelegate-Protocol.h>
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class GEOCommonOptions, GEOComposedETARoute, GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsRequestFeedback, GEOETAUpdater, GEOLocation, GEOMapRegion, GEOMapServiceTraits, GEORouteAttributes, GEORouteHypothesis, GEORouteHypothesizerAnalyticsStore, GEORouteMatch, NSData, NSDate, NSMutableArray, NSString, geo_isolater;
+@class GEOCommonOptions, GEOComposedETARoute, GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsRequestFeedback, GEOETAUpdater, GEOLocation, GEOMapRegion, GEOMapServiceTraits, GEONavdClientInfo, GEORouteAttributes, GEORouteHypothesis, GEORouteHypothesizerAnalyticsStore, GEORouteMatch, NSData, NSDate, NSMutableArray, NSString, geo_isolater;
 @protocol OS_dispatch_group;
 
 @interface GEORouteHypothesisMonitor : NSObject <GEOETAUpdaterDelegate, NSSecureCoding>
@@ -32,6 +32,7 @@
     GEOCommonOptions *_commonOptions;
     GEOMapServiceTraits *_traits;
     GEORouteHypothesizerAnalyticsStore *_analyticsStore;
+    GEONavdClientInfo *_clientInfo;
     GEOComposedRoute *_route;
     geo_isolater *_requestIsolater;
     GEODirectionsRequest *_currentRequest;
@@ -62,7 +63,7 @@
 @property (readonly, nonatomic) BOOL supportsLiveTraffic;
 @property (readonly, nonatomic) int transportType;
 
-+ (id)monitorWithSource:(id)arg1 toDestination:(id)arg2 traceName:(id)arg3 traits:(id)arg4 routeAttributes:(id)arg5;
++ (id)monitorWithSource:(id)arg1 toDestination:(id)arg2 traceName:(id)arg3 traits:(id)arg4 routeAttributes:(id)arg5 clientInfo:(id)arg6;
 + (id)routeAttributesForTransportType:(int)arg1 withArrivalDate:(id)arg2;
 + (id)serverFormattedStringFormatter;
 + (void)setServerFormattedStringFormatter:(id)arg1;
@@ -99,7 +100,7 @@
 - (void)etaUpdaterRequestCompleted:(id)arg1;
 - (void)etaUpdaterUpdatedETA:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSource:(id)arg1 toDestination:(id)arg2 traceName:(id)arg3 traits:(id)arg4 routeAttributes:(id)arg5;
+- (id)initWithSource:(id)arg1 toDestination:(id)arg2 traceName:(id)arg3 traits:(id)arg4 routeAttributes:(id)arg5 clientInfo:(id)arg6;
 - (id)navDestination;
 - (void)recordETAUpdatesAfterEventStart;
 - (id)routeMatchForLocation:(id)arg1;

@@ -16,6 +16,7 @@
     NSDictionary *_regionBehavior;
     BOOL _EUVolumeLimitFlagOn;
     NSNumber *_productTypeOverride;
+    CDStruct_a62c2e44 _stats;
 }
 
 + (id)sharedInstance;
@@ -25,19 +26,22 @@
 - (BOOL)_isHAENFeatureMandatory:(id)arg1 dataDisposition:(id)arg2;
 - (BOOL)_isIPod;
 - (void)_loadRegionPlistFile;
+- (void)_logLocationGatingFlags;
 - (id)_readDeviceDisposition;
 - (BOOL)_regionAndDeviceMandatesFeature:(id)arg1;
+- (void)_setFeatureMandatoryFlag:(id)arg1;
 - (BOOL)_shouldUpdateLocation:(id)arg1;
-- (void)_updateHAENFeatureMandatoryFlag:(id)arg1;
-- (void)_updateHAENLocationGatingDeviceFlags;
+- (void)_updateImpl;
+- (void)_updateLocationGatingFlags;
 - (void)_updateSampleTransient:(id)arg1;
 - (BOOL)_validCountryCodeSource:(unsigned int)arg1;
 - (BOOL)_validDataDisposition:(id)arg1;
 - (void)dealloc;
+- (void)deviceDataDispositionDidChange;
+- (CDStruct_a62c2e44)getStats;
 - (id)init;
 - (void)reloadProductTypeOverride;
 - (void)update;
-- (void)updateDeviceDataDisposition;
 
 @end
 

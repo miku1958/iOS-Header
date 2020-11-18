@@ -63,6 +63,8 @@
 + (BOOL)requiresHomePodPairing;
 + (unsigned long long)supportedPairingCapabilities;
 + (BOOL)supportsAddingAccessory;
++ (BOOL)supportsAudioDestinationControllerCreation;
++ (BOOL)supportsAudioDestinationCreation;
 + (BOOL)supportsBackboard;
 + (BOOL)supportsBulletinBoard;
 + (BOOL)supportsCameraSnapshotRequestViaRelay;

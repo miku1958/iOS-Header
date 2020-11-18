@@ -96,7 +96,6 @@
 - (id)init;
 - (id)initWithXPCObject:(id)arg1 error:(id *)arg2;
 - (void)invalidate;
-- (unsigned long long)updateWithCBDiscovery:(id)arg1 updateFlags:(unsigned long long)arg2;
 - (unsigned long long)updateWithXPCSubscriberInfo:(id)arg1;
 
 @end

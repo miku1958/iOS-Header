@@ -14,6 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface AMSUIWebPlaceholderViewController : AMSUICommonViewController <AMSUIWebPagePresenter>
 {
+    BOOL _animateFadeIn;
     BOOL _hasAppeared;
     BOOL _isVisible;
     BOOL _shouldSnapshot;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
     UIView *_visibleView;
 }
 
+@property (nonatomic) BOOL animateFadeIn; // @synthesize animateFadeIn=_animateFadeIn;
 @property (strong, nonatomic) AMSUIWebAppearance *appearance; // @synthesize appearance=_appearance;
 @property (strong, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
@@ -45,9 +47,9 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_applyAppearance;
-- (void)_replacePrimaryViewWithView:(id)arg1;
-- (void)_startReappearTransitionTimer;
-- (void)_transitionToLoading;
+- (void)_replacePrimaryViewWithView:(id)arg1 animated:(BOOL)arg2;
+- (void)_startReappearTransitionTimerAnimated:(BOOL)arg1;
+- (void)_transitionToLoadingAnimated:(BOOL)arg1;
 - (void)_transitionToSnapshot;
 - (void)awaitSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;

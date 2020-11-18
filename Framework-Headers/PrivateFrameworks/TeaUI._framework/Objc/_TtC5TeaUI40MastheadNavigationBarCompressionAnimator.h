@@ -23,6 +23,7 @@
 - (id)init;
 - (double)maximumBarHeightForTraitCollection:(id)arg1;
 - (double)minimumBarHeightForTraitCollection:(id)arg1;
+- (void)prepareForUpdates;
 - (void)reloadWithTraitCollection:(id)arg1;
 - (void)scrollViewIsAtTop:(BOOL)arg1;
 - (void)updateWithPercentage:(double)arg1;

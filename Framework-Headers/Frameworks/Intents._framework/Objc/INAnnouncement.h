@@ -16,6 +16,7 @@
 {
     NSURL *_speechDataURL;
     NSString *_identifier;
+    NSString *_speechDataTranscription;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,6 +24,7 @@
 @property (readonly, copy, nonatomic) NSNumber *endTime;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSString *speechDataTranscription; // @synthesize speechDataTranscription=_speechDataTranscription;
 @property (readonly, copy, nonatomic) NSURL *speechDataURL; // @synthesize speechDataURL=_speechDataURL;
 @property (readonly, copy, nonatomic) NSNumber *startTime;
 @property (readonly) Class superclass;
@@ -37,6 +39,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSpeechDataURL:(id)arg1 identifier:(id)arg2;
+- (id)initWithSpeechDataURL:(id)arg1 identifier:(id)arg2 speechDataTranscription:(id)arg3;
 - (id)initWithSpeechDataURL:(id)arg1 startTime:(id)arg2 endTime:(id)arg3 identifier:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 

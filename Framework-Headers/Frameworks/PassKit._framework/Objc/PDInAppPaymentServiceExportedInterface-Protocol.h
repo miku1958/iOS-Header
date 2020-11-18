@@ -13,7 +13,7 @@
 - (void)cardsAvailableForAMPWithCountryCode:(NSString *)arg1 completion:(void (^)(long long))arg2;
 - (void)enrollPaymentPassWithUniqueIdentifier:(NSString *)arg1 merchantSession:(PKPaymentMerchantSession *)arg2 completion:(void (^)(BOOL, PKPayment *))arg3;
 - (void)merchantStatusCheck:(NSString *)arg1 merchantDomain:(NSString *)arg2 sourceApplicationSecondaryIdentifier:(NSString *)arg3 handler:(void (^)(BOOL, NSError *))arg4;
-- (void)paymentHardwareStatusWithCompletion:(void (^)(PKPaymentHardwareStatus *))arg1;
+- (void)paymentHardwareStatusWithType:(unsigned long long)arg1 completion:(void (^)(PKPaymentHardwareStatus *))arg2;
 - (void)paymentServicesMerchantURLForAPIType:(unsigned long long)arg1 handler:(void (^)(BOOL, NSURL *))arg2;
 - (void)presentInAppPaymentInterfaceWithPaymentRequest:(PKPaymentRequest *)arg1 forHostIdentifier:(NSString *)arg2 orientation:(NSNumber *)arg3 handler:(void (^)(BOOL, NSError *))arg4;
 - (void)registerPaymentListenerEndpoint:(NSXPCListenerEndpoint *)arg1 forHostIdentifier:(NSString *)arg2 handler:(void (^)(BOOL))arg3;

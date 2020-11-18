@@ -47,6 +47,7 @@
 - (id)mediaObjectURLsAtIndexes:(id)arg1;
 - (id)mediaObjectsAtIndexes:(id)arg1;
 - (unsigned long long)numberOfMediaObjects;
+- (id)photoLibrary;
 - (void)photoLibraryDidChange:(id)arg1;
 - (id)reloadMediaObjectsWithCompletionHandler:(CDUnknownBlockType)arg1;
 

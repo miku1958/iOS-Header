@@ -12,6 +12,7 @@
 - (NSString *)UUID;
 - (CSAudioChunk *)audioChunkFrom:(unsigned long long)arg1 to:(unsigned long long)arg2;
 - (CSAudioChunk *)audioChunkToEndFrom:(unsigned long long)arg1;
+- (CSAudioChunk *)audioChunkToEndFrom:(unsigned long long)arg1 channelIdx:(unsigned long long)arg2;
 - (void)audioStreamWithRequest:(CSAudioStreamRequest *)arg1 streamName:(NSString *)arg2 completion:(void (^)(CSAudioStream *, NSError *))arg3;
 - (CSAudioStream *)audioStreamWithRequest:(CSAudioStreamRequest *)arg1 streamName:(NSString *)arg2 error:(id *)arg3;
 - (void)cancelAudioStreamHold:(CSAudioStreamHolding *)arg1;

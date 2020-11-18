@@ -12,9 +12,11 @@
 {
 }
 
+@property (nonatomic) BOOL hasLastFetchWasSuccess; // @dynamic hasLastFetchWasSuccess;
 @property (nonatomic) BOOL hasLatestNotificationQueryLocalTime; // @dynamic hasLatestNotificationQueryLocalTime;
 @property (nonatomic) BOOL hasNamespaceCompatibilityVersion; // @dynamic hasNamespaceCompatibilityVersion;
 @property (nonatomic) BOOL hasNamespaceName; // @dynamic hasNamespaceName;
+@property (nonatomic) BOOL lastFetchWasSuccess; // @dynamic lastFetchWasSuccess;
 @property (strong, nonatomic) TRIPBTimestamp *latestNotificationQueryLocalTime; // @dynamic latestNotificationQueryLocalTime;
 @property (nonatomic) unsigned int namespaceCompatibilityVersion; // @dynamic namespaceCompatibilityVersion;
 @property (copy, nonatomic) NSString *namespaceName; // @dynamic namespaceName;

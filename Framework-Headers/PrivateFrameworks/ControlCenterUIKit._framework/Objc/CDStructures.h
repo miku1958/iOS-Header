@@ -10,6 +10,11 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CCUIModuleLayoutSize {
+    unsigned long long _field1;
+    unsigned long long _field2;
+};
+
 struct CGPoint {
     double x;
     double y;

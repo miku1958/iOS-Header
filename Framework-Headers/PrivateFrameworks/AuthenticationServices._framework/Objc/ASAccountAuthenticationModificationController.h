@@ -30,7 +30,6 @@
 
 - (void).cxx_destruct;
 - (void)_failRequestWithError:(id)arg1;
-- (void)_failStrongPasswordUpgradeRequestWithKeychainSyncErrorMessage;
 - (void)_invalidate;
 - (void)_performReplacePasswordWithSignInWithAppleRequest:(id)arg1;
 - (void)_performUpgradePasswordToStrongPasswordRequest:(id)arg1;

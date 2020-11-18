@@ -6,17 +6,19 @@
 
 #import <TemplateKit/TLKView.h>
 
+#import <TemplateKit/NUIContainerViewDelegate-Protocol.h>
 #import <TemplateKit/TLKTextAreaViewTesting-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString, NUIContainerStackView, TLKEmbossedLabel, TLKImage, TLKLabel, TLKRichText, TLKRichTextField, TLKStackView, TLKTextButton, TLKTitleContainerView;
 @protocol TLKTextAreaViewDelegate;
 
-@interface TLKTextAreaView : TLKView <TLKTextAreaViewTesting>
+@interface TLKTextAreaView : TLKView <NUIContainerViewDelegate, TLKTextAreaViewTesting>
 {
     BOOL _truncateTitleMiddle;
     BOOL _secondaryTitleIsDetached;
     BOOL _useCompactMode;
     BOOL _disableAllObservers;
+    BOOL _isHorizontallyCompressed;
     id<TLKTextAreaViewDelegate> _buttonDelegate;
     TLKRichText *_bannerText;
     TLKRichText *_title;
@@ -54,6 +56,7 @@
 @property (strong, nonatomic) TLKRichTextField *footnoteLabel; // @synthesize footnoteLabel=_footnoteLabel;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) TLKLabel *hyphenField; // @synthesize hyphenField=_hyphenField;
+@property (nonatomic) BOOL isHorizontallyCompressed; // @synthesize isHorizontallyCompressed=_isHorizontallyCompressed;
 @property (strong, nonatomic) TLKRichText *secondaryTitle; // @synthesize secondaryTitle=_secondaryTitle;
 @property (strong, nonatomic) TLKImage *secondaryTitleImage; // @synthesize secondaryTitleImage=_secondaryTitleImage;
 @property (nonatomic) BOOL secondaryTitleIsDetached; // @synthesize secondaryTitleIsDetached=_secondaryTitleIsDetached;
@@ -78,6 +81,7 @@
 - (id)titleLabelString;
 - (id)titleView;
 - (void)updateBannerBadge;
+- (void)updateDetailFieldStackViewVisibility;
 - (void)updateDetails;
 - (void)updateFootnote;
 - (id)viewForFirstBaselineLayout;

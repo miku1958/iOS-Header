@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property unsigned char isPendingFlush; // @synthesize isPendingFlush=_isPendingFlush;
 @property (readonly) int itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 @property (readonly) const struct __CFUUID *promiseUUID; // @synthesize promiseUUID=_uuid;
+@property (readonly) unsigned char promisorExistsInCurrentProcess;
 
 - (id)_createShmemIfNecessaryLength:(unsigned long long *)arg1;
 - (void)_setLocalPromiseState:(int)arg1;
@@ -49,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFlavorName:(const struct __CFString *)arg1 itemIdentifier:(int)arg2;
 - (void)promiseDataWithBlock:(CDUnknownBlockType)arg1 forPasteboard:(struct __CFPasteboard *)arg2 generation:(long long)arg3;
 - (void)promiseDataWithFetchOperation:(id)arg1;
+- (CDUnknownBlockType)requestDataForPasteboard:(struct __CFPasteboard *)arg1 generation:(long long)arg2 immediatelyAvailableResult:(CDStruct_55991ab6 *)arg3;
 - (void)resolveClientPromisedDataWithQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (unsigned char)resolveLocalPromisedData;
 - (void)setData:(struct __CFData *)arg1;

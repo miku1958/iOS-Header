@@ -117,6 +117,7 @@
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (double)widthForDeterminingAvatarVisibility;
 
 @end
 

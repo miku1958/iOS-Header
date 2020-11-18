@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI221InterstitialAdTracker : _TtCs12_SwiftObject
 {
     MISSING_TYPE *tracker;
+    MISSING_TYPE *trackerConfiguration;
 }
 
 @end

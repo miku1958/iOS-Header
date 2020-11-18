@@ -100,7 +100,6 @@
 - (void)dataSource:(id)arg1 didMoveItemAtIndexPath:(id)arg2 toIndexPath:(id)arg3;
 - (void)dataSource:(id)arg1 didMoveSection:(long long)arg2 toSection:(long long)arg3;
 - (void)dataSource:(id)arg1 didRefreshItemsAtIndexPaths:(id)arg2;
-- (void)dataSource:(id)arg1 didRefreshItemsAtIndexPaths:(id)arg2 animated:(BOOL)arg3;
 - (void)dataSource:(id)arg1 didRefreshSections:(id)arg2;
 - (void)dataSource:(id)arg1 didRemoveItemsAtIndexPaths:(id)arg2;
 - (void)dataSource:(id)arg1 didRemoveSections:(id)arg2;

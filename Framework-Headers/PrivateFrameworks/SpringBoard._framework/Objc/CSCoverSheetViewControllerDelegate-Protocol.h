@@ -13,5 +13,6 @@
 - (void)coverSheetViewController:(CSCoverSheetViewController *)arg1 unlockWithRequest:(SBLockScreenUnlockRequest *)arg2 completion:(void (^)(BOOL))arg3;
 - (void)coverSheetViewControllerIrisPlayingDidFinish:(CSCoverSheetViewController *)arg1;
 - (void)coverSheetViewControllerShouldDismissContextMenu:(CSCoverSheetViewController *)arg1;
+- (void)coverSheetWindowedAccessoryViewControllerDidDismiss:(CSCoverSheetViewController *)arg1;
 @end
 

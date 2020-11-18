@@ -10,7 +10,7 @@
 
 @interface _TtC14SiriKitRuntime15SAMetricsLogger : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *aceServiceInvoker;
+    MISSING_TYPE *aceServiceInvokerSupplier;
 }
 
 @end

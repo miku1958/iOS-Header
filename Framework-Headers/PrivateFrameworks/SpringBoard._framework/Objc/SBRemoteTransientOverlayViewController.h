@@ -60,6 +60,7 @@
 - (void)dealloc;
 - (long long)defaultPreferredInterfaceOrientationForPresentationForRemoteTransientOverlayHostViewController:(id)arg1;
 - (void)didInvalidate;
+- (void)didTransitionToAttachedToWindowedAccessory:(BOOL)arg1 windowedAccessoryCutoutFrameInScreen:(struct CGRect)arg2;
 - (void)endIgnoringAppearanceUpdates;
 - (void)endIgnoringContentOverlayInsetUpdates;
 - (BOOL)handleDoubleHeightStatusBarTap;

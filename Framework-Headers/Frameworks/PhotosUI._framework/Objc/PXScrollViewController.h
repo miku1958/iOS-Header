@@ -71,6 +71,7 @@
 @property (readonly, nonatomic) struct CGRect visibleRect;
 
 - (void).cxx_destruct;
+- (void)addFloatingSublayer:(id)arg1 forAxis:(long long)arg2;
 - (void)addSubview:(id)arg1;
 - (void)addSubviewToScrollView:(id)arg1;
 - (void)applyScrollInfo:(id)arg1;

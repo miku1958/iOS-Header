@@ -11,14 +11,24 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI27SearchResultsViewController : UIViewController
 {
-    MISSING_TYPE *resultsServiceRequest;
-    MISSING_TYPE *appContext;
+    MISSING_TYPE *delegate;
+    MISSING_TYPE *document;
     MISSING_TYPE *stackViewController;
+    MISSING_TYPE *recentlySearchedTemplateViewModel;
+    MISSING_TYPE *hintsTemplateViewModel;
+    MISSING_TYPE *hintsCollectionViewModel;
+    MISSING_TYPE *topResultsCollectionViewModel;
+    MISSING_TYPE *resultCategoryIds;
+    MISSING_TYPE *loadingView;
+    MISSING_TYPE *isShowingLoader;
+    MISSING_TYPE *$__lazy_storage_$_noContentView;
 }
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)viewDidLayoutSubviews;
+- (void)willMoveToParentViewController:(id)arg1;
 
 @end
 

@@ -65,6 +65,7 @@
 
 + (struct CGRect)borderMaskRectForContentRect:(struct CGRect)arg1;
 - (void).cxx_destruct;
+- (BOOL)canBecomeFirstResponder;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
@@ -78,6 +79,8 @@
 - (void)didTapDone:(id)arg1;
 - (id)initWithSelectedRecord:(id)arg1;
 - (id)initWithSelectedRecord:(id)arg1 poseTypes:(unsigned long long)arg2;
+- (id)keyCommands;
+- (void)returnPressed:(id)arg1;
 - (void)updateFlowLayoutItemSize;
 - (void)updateForPoseSelectionAtIndex:(long long)arg1 animated:(BOOL)arg2;
 - (void)updateHeaderHeightConstraint;

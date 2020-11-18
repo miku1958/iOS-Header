@@ -22,7 +22,7 @@
 @property (nonatomic, readonly) NSString *campaignData;
 
 - (void).cxx_destruct;
-- (id)initWithIdentifier:(id)arg1 adType:(long long)arg2 privacyMarkerPosition:(long long)arg3 articleID:(id)arg4 articleTitle:(id)arg5 adSponsor:(id)arg6 campaignData:(id)arg7 adSize:(struct CGSize)arg8;
+- (id)initWithIdentifier:(id)arg1 adType:(long long)arg2 desiredPosition:(long long)arg3 privacyMarkerPosition:(long long)arg4 articleID:(id)arg5 articleTitle:(id)arg6 adSponsor:(id)arg7 campaignData:(id)arg8 adSize:(struct CGSize)arg9;
 
 @end
 

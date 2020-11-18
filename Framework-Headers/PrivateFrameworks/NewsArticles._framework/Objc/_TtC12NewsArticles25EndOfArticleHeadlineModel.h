@@ -13,6 +13,8 @@
     MISSING_TYPE *headline;
     MISSING_TYPE *origin;
     MISSING_TYPE *headlineState;
+    MISSING_TYPE *nativeAdInfo;
+    MISSING_TYPE *isAccessible;
 }
 
 @end

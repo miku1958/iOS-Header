@@ -12,9 +12,7 @@
 {
     MISSING_TYPE *subject;
     MISSING_TYPE *previousTimes;
-    MISSING_TYPE *brightnessClient;
     MISSING_TYPE *screenOn;
-    MISSING_TYPE *notifyWhenScreenOn;
     MISSING_TYPE *lock;
     MISSING_TYPE *significantTimeChangeSubscription;
 }

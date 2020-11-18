@@ -10,29 +10,20 @@
 
 @class NSMutableArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MRUpdateOutputDevicesMessageProtobuf : PBCodable <NSCopying>
 {
+    NSMutableArray *_clusterAwareOutputDevices;
     NSString *_endpointUID;
     NSMutableArray *_outputDevices;
 }
 
-@property (strong, nonatomic) NSString *endpointUID; // @synthesize endpointUID=_endpointUID;
-@property (readonly, nonatomic) BOOL hasEndpointUID;
-@property (strong, nonatomic) NSMutableArray *outputDevices; // @synthesize outputDevices=_outputDevices;
-
-+ (Class)outputDevicesType;
 - (void).cxx_destruct;
-- (void)addOutputDevices:(id)arg1;
-- (void)clearOutputDevices;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
-- (id)outputDevicesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)outputDevicesCount;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

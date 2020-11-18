@@ -15,6 +15,9 @@
 @property (nonatomic, getter=isMovingFromParentViewController, setter=setIsMovingFromParentViewController:) BOOL movingFromParentViewController;
 @property (strong, nonatomic) AMSUICommonView *view;
 
+- (void)_registerNotifications;
+- (void)_unregisterNotifications;
+- (void)dealloc;
 - (id)init;
 - (void)loadView;
 - (void)setChildViewController:(id)arg1;

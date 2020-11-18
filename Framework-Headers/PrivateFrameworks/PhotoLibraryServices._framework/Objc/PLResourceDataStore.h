@@ -27,13 +27,15 @@
 + (unsigned int)storeClassID;
 + (id)supportedRecipes;
 - (void).cxx_destruct;
+- (BOOL)canMarkAsynchronousLocalRenderAsOptionalForProgress:(id)arg1;
 - (BOOL)canStoreExternalResource:(id)arg1;
 - (BOOL)canStreamResource:(id)arg1;
-- (BOOL)dataStoreSubtypeIsDownloadable:(unsigned long long)arg1;
+- (BOOL)dataStoreSubtypeIsDownloadable:(long long)arg1;
 - (id)descriptionForSubtype:(long long)arg1;
 - (id)guessUTIForExternalResource:(id)arg1 forAssetKind:(short)arg2 managedObjectContext:(id)arg3;
 - (id)initWithPathManager:(id)arg1;
 - (id)keyFromKeyStruct:(const void *)arg1;
+- (void)markAsynchronousLocalRenderAsOptionalForProgress:(id)arg1;
 - (id)name;
 - (id)requestLocalAvailabilityChange:(short)arg1 forResource:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)requestStreamingURLForResource:(id)arg1 asset:(id)arg2 intent:(unsigned long long)arg3 inContext:(id)arg4 clientBundleID:(id)arg5 completion:(CDUnknownBlockType)arg6;

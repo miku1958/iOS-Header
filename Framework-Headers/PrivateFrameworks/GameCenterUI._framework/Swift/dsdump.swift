@@ -219,13 +219,13 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : Er
+	var top : Öb
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var leading : Er
+	var leading : Öb
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : Er
+	var bottom : Öb
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var trailing : Er
+	var trailing : Öb
  }
 
  struct __C.SystemDesign {
@@ -238,7 +238,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var rawValue : ˘Ö
+	var rawValue : 1v
  }
 
  enum __C.UIUserInterfaceSizeClass { }
@@ -247,13 +247,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : Er
+	var top : Öb
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : Er
+	var left : Öb
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : Er
+	var bottom : Öb
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : Er
+	var right : Öb
  }
 
  struct __C.UIRectCorner {
@@ -270,18 +270,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : Er
+	var width : Öb
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : Er
+	var height : Öb
  }
 
  struct __C.CGPoint {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : Er
+	var x : Öb
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : Er
+	var y : Öb
  }
 
  class __C.CGColor {
@@ -356,29 +356,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var layoutMode : GKMultiplayerCellLayoutMode
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x20b24000fe2d0 (0x324000fe2d0) in binary!
-	0x2a5b8  @objc GKMultiplayerCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x215f4000fdb50 (0x5f4000fdb50) in binary!
-	0x20b2e  @objc GKMultiplayerCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x20b3400103388 (0x33400103388) in binary!
-	0x21d38  @objc GKMultiplayerCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x21d2c000feca8 (0x52c000feca8) in binary!
-	0x26390  @objc GKMultiplayerCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x2638400106618 (0x38400106618) in binary!
-	0x23748  @objc GKMultiplayerCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x2373c000fdb00 (0x73c000fdb00) in binary!
-	0x23730  @objc GKMultiplayerCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x23724000fdaf8 (0x724000fdaf8) in binary!
-	0x21cd8  @objc GKMultiplayerCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x20d7c000f9a20 (0x57c000f9a20) in binary!
+	0x2b860  @objc GKMultiplayerCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x2182c000f9298 (0x2c000f9298) in binary!
+	0x20d86  @objc GKMultiplayerCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x20d8c000feb00 (0x58c000feb00) in binary!
+	0x21f70  @objc GKMultiplayerCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x21f64000fa3f0 (0x764000fa3f0) in binary!
+	0x265d8  @objc GKMultiplayerCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x265cc00101d58 (0x5cc00101d58) in binary!
+	0x23990  @objc GKMultiplayerCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x23984000f9248 (0x184000f9248) in binary!
+	0x23978  @objc GKMultiplayerCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x2396c000f9240 (0x16c000f9240) in binary!
+	0x21f10  @objc GKMultiplayerCollectionViewCell.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x7cffe611c0  @objc GKMultiplayerCollectionViewCell.(null) <stripped>
-	0x304ffe614a8  @objc GKMultiplayerCollectionViewCell.HâH]√UHâÂHã1; <stripped>
-	0xffe61970  @objc GKMultiplayerCollectionViewCell.]È®‡) <stripped>
+	0x7dcffe5cb38  @objc GKMultiplayerCollectionViewCell.(null) <stripped>
+	0x244ffe5ce20  @objc GKMultiplayerCollectionViewCell. <stripped>
+	0xffe5d2e8  @objc GKMultiplayerCollectionViewCell.ã5R&; <stripped>
 WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
-	0x564ffe67278  @objc GKMultiplayerCollectionViewCell.(null) <stripped>
-	0x274ffe67ae0  @objc GKMultiplayerCollectionViewCell.Hâ÷]È•ﬂ) <stripped>
-	0x394ffe67c38  @objc GKMultiplayerCollectionViewCell.=ªø; <stripped>
-	0x594ffe68360  @objc GKMultiplayerCollectionViewCell. <stripped>
+	0x4c4ffe62cb0  @objc GKMultiplayerCollectionViewCell.(null) <stripped>
+	0x1bcffe63518  @objc GKMultiplayerCollectionViewCell.4 <stripped>
+	0x2dcffe63670  @objc GKMultiplayerCollectionViewCell.Iâ˛Hã¶Ω; <stripped>
+	0x4ccffe63d98  @objc GKMultiplayerCollectionViewCell.ã5Í; <stripped>
  }
 
  struct GameCenterUI.GKLog { }
@@ -388,35 +388,35 @@ WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let text : Uy // +0xa8
+	let text : ïi // +0xa8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let accessory : Ey // +0xd0
+	let accessory : Öi // +0xd0
  }
 
  struct GameCenterUI.Metrics {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var topSpace : Àw // +0x0
+	var topSpace : h // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottomSpace : Àw // +0x28
+	var bottomSpace : h // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var accessoryHeight : Er // +0x50
+	var accessoryHeight : Öb // +0x50
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var accessoryPadding : Àw // +0x58
+	var accessoryPadding : h // +0x58
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var accessoryBaselineOffset : Àw // +0x80
+	var accessoryBaselineOffset : h // +0x80
  }
 
  struct GameCenterUI.AchievementCardLayout {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let achievementView : Uy // +0x0
+	let achievementView : ïi // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleText : ≠y // +0x28
+	let titleText : Ìi // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subtitleText : ≠y // +0x50
+	let subtitleText : Ìi // +0x50
 	let metrics : Metrics // +0x78
  }
 
@@ -426,19 +426,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let size : CGSize // +0x0
 	let increasedSize : CGSize // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let borderWidth : Er // +0x20
+	let borderWidth : Öb // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cornerRadius : Er // +0x28
+	let cornerRadius : Öb // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let horizontalMargin : Àw // +0x30
+	let horizontalMargin : h // +0x30
 	let badgeSize : CGSize // +0x58
 	let badgeMetrics : Metrics // +0x68
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let badgeTopSpace : Àw // +0x80
+	let badgeTopSpace : h // +0x80
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleTopSpace : Àw // +0xa8
+	let titleTopSpace : h // +0xa8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subtitleTopSpace : Àw // +0xd0
+	let subtitleTopSpace : h // +0xd0
  }
 
  struct GameCenterUI.FriendsListAction {
@@ -469,19 +469,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let appStoreLockup : ASCLockupView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x20a74000fe220 (0x274000fe220) in binary!
-	0x2a508  @objc AppStoreLockupView.(null) <stripped>
-WARNING: couldn't find address 0x21cac000fec00 (0x4ac000fec00) in binary!
-	0x213d0  @objc AppStoreLockupView.(null) <stripped>
-WARNING: couldn't find address 0x21c94000fb790 (0x494000fb790) in binary!
+WARNING: couldn't find address 0x20ccc000f9970 (0x4cc000f9970) in binary!
+	0x2b7b0  @objc AppStoreLockupView.(null) <stripped>
+WARNING: couldn't find address 0x21ee4000fa348 (0x6e4000fa348) in binary!
+	0x21628  @objc AppStoreLockupView.(null) <stripped>
+WARNING: couldn't find address 0x21ecc000f6ed8 (0x6cc000f6ed8) in binary!
 	0x98000000c  @objc AppStoreLockupView.(null) <stripped>
-WARNING: couldn't find address 0x20a2c000fe1d8 (0x22c000fe1d8) in binary!
-	0x214d0  @objc AppStoreLockupView.(null) <stripped>
-WARNING: couldn't find address 0x2a4b400101828 (0x4b400101828) in binary!
-	0x214f0  @objc AppStoreLockupView.(null) <stripped>
+WARNING: couldn't find address 0x20c84000f9928 (0x484000f9928) in binary!
+	0x21708  @objc AppStoreLockupView.(null) <stripped>
+WARNING: couldn't find address 0x2b75c000fcf88 (0x75c000fcf88) in binary!
+	0x21728  @objc AppStoreLockupView.(null) <stripped>
 
 	// Swift methods
-	0x136020  func <stripped> // method 
+	0x136250  func <stripped> // method 
  }
 
  struct GameCenterUI.ProgressBarLayout {
@@ -489,11 +489,11 @@ WARNING: couldn't find address 0x2a4b400101828 (0x4b400101828) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let textView : st // +0xd0
+	let textView : ìd // +0xd0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let progressBarTrack : Uy // +0xf8
+	let progressBarTrack : ïi // +0xf8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let progressBarFill : Uy // +0x120
+	let progressBarFill : ïi // +0x120
  }
 
  enum GameCenterUI.TextPosition {
@@ -509,15 +509,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var textPosition : TextPosition // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var progressBarHeight : Àw // +0x8
+	var progressBarHeight : h // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var progressBarTrackHeight : Àw // +0x30
+	var progressBarTrackHeight : h // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var textTrailingMargin : Àw // +0x58
+	var textTrailingMargin : h // +0x58
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var textSpace : Àw // +0x80
+	var textSpace : h // +0x80
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var percentComplete : Er // +0xa8
+	var percentComplete : Öb // +0xa8
 	var layoutMargins : UIEdgeInsets // +0xb0
  }
 
@@ -527,14 +527,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : ˜
+	var id : p
 	let avatarArtworkLoaderConfig : AvatarArtworkLoaderConfig
 	let title : String
 	let isSeeAll : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var segue : kn
+	var segue : É^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var impressionMetrics : %|
+	var impressionMetrics : =l
  }
 
  class GameCenterUI.Interior {
@@ -548,11 +548,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : ˜
+	var id : p
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var segue : kn
+	var segue : É^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var impressionMetrics : %|
+	var impressionMetrics : =l
 	let title : String
 	let subtitle : String
 	let style : Style
@@ -575,27 +575,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var addFriendsHandler : ()?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x20a2c000fe1d8 (0x22c000fe1d8) in binary!
-	0x214d0  @objc GKAddFriendsLockupView.(null) <stripped>
-WARNING: couldn't find address 0x2a4b400101828 (0x4b400101828) in binary!
-	0x214f0  @objc GKAddFriendsLockupView.(null) <stripped>
-WARNING: couldn't find address 0x20a2a00101d48 (0x22a00101d48) in binary!
-	0x21c40  @objc GKAddFriendsLockupView.(null) <stripped>
-WARNING: couldn't find address 0x214e400101d10 (0x4e400101d10) in binary!
-	0x26298  @objc GKAddFriendsLockupView.(null) <stripped>
-WARNING: couldn't find address 0x21c1c000fb718 (0x41c000fb718) in binary!
+WARNING: couldn't find address 0x20c84000f9928 (0x484000f9928) in binary!
+	0x21708  @objc GKAddFriendsLockupView.(null) <stripped>
+WARNING: couldn't find address 0x2b75c000fcf88 (0x75c000fcf88) in binary!
+	0x21728  @objc GKAddFriendsLockupView.(null) <stripped>
+WARNING: couldn't find address 0x20c82000fd4a8 (0x482000fd4a8) in binary!
+	0x21e78  @objc GKAddFriendsLockupView.(null) <stripped>
+WARNING: couldn't find address 0x2171c000fd470 (0x71c000fd470) in binary!
+	0x264e0  @objc GKAddFriendsLockupView.(null) <stripped>
+WARNING: couldn't find address 0x21e54000f6e60 (0x654000f6e60) in binary!
 	0x68000000c  @objc GKAddFriendsLockupView.(null) <stripped>
-WARNING: couldn't find address 0x209b4000fe160 (0x1b4000fe160) in binary!
-	0x2a448  @objc GKAddFriendsLockupView.(null) <stripped>
-WARNING: couldn't find address 0x216ac000ff2f0 (0x6ac000ff2f0) in binary!
-	0x21490  @objc GKAddFriendsLockupView.(null) <stripped>
-WARNING: couldn't find address 0x21bd4000feb28 (0x3d4000feb28) in binary!
-	0x21bc8  @objc GKAddFriendsLockupView.(null) <stripped>
+WARNING: couldn't find address 0x20c0c000f98b0 (0x40c000f98b0) in binary!
+	0x2b6f0  @objc GKAddFriendsLockupView.(null) <stripped>
+WARNING: couldn't find address 0x218e4000faa50 (0xe4000faa50) in binary!
+	0x216c8  @objc GKAddFriendsLockupView.(null) <stripped>
+WARNING: couldn't find address 0x21e0c000fa270 (0x60c000fa270) in binary!
+	0x21e00  @objc GKAddFriendsLockupView.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x7d4ffe72990  @objc GKAddFriendsLockupView.(null) <stripped>
+	0x724ffe6e468  @objc GKAddFriendsLockupView.(null) <stripped>
 
 	// Swift methods
-	0x13bbb0  class func GKAddFriendsLockupView.__allocating_init(frame:friendState:) // init 
+	0x13bea0  class func GKAddFriendsLockupView.__allocating_init(frame:friendState:) // init 
  }
 
  enum GameCenterUI.FriendState { }
@@ -605,15 +605,15 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let artworkView : Ey // +0xf0
+	let artworkView : Öi // +0xf0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headingLabel : st // +0x118
+	let headingLabel : ìd // +0x118
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleLabel : ≠y // +0x140
+	let titleLabel : Ìi // +0x140
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subtitleLabel : ≠y // +0x168
+	let subtitleLabel : Ìi // +0x168
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let chevronView : Ey // +0x190
+	let chevronView : Öi // +0x190
  }
 
  struct GameCenterUI.Metrics {
@@ -621,17 +621,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var artworkSize : CGSize // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var headingSpace : Àw // +0x10
+	var headingSpace : h // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var titleTextSpace : Àw // +0x38
+	var titleTextSpace : h // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var titleWithHeadingTextSpace : Àw // +0x60
+	var titleWithHeadingTextSpace : h // +0x60
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var subtitleTextSpace : Àw // +0x88
+	var subtitleTextSpace : h // +0x88
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottomSpace : Àw // +0xb0
+	var bottomSpace : h // +0xb0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var horizontalComponentSpacing : Er // +0xd8
+	var horizontalComponentSpacing : Öb // +0xd8
 	var chevronSize : CGSize // +0xe0
  }
 
@@ -673,20 +673,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let separatorView : UIView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x209b4000fe160 (0x1b4000fe160) in binary!
-	0x2a448  @objc LeaderboardPlayerLockupView.(null) <stripped>
-WARNING: couldn't find address 0x216ac000ff2f0 (0x6ac000ff2f0) in binary!
-	0x21490  @objc LeaderboardPlayerLockupView.(null) <stripped>
-WARNING: couldn't find address 0x21bd4000feb28 (0x3d4000feb28) in binary!
-	0x21bc8  @objc LeaderboardPlayerLockupView.(null) <stripped>
+WARNING: couldn't find address 0x20c0c000f98b0 (0x40c000f98b0) in binary!
+	0x2b6f0  @objc LeaderboardPlayerLockupView.(null) <stripped>
+WARNING: couldn't find address 0x218e4000faa50 (0xe4000faa50) in binary!
+	0x216c8  @objc LeaderboardPlayerLockupView.(null) <stripped>
+WARNING: couldn't find address 0x21e0c000fa270 (0x60c000fa270) in binary!
+	0x21e00  @objc LeaderboardPlayerLockupView.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x7d4ffe72990  @objc LeaderboardPlayerLockupView.(null) <stripped>
-	0x754ffe72a28  @objc LeaderboardPlayerLockupView.ˆAˇ’ÚE¿Hã5; <stripped>
-	0x12c000fe0d8  @objc LeaderboardPlayerLockupView.\¡ÚZ¿ËyO) <stripped>
+	0x724ffe6e468  @objc LeaderboardPlayerLockupView.(null) <stripped>
+	0x6b4ffe6e500  @objc LeaderboardPlayerLockupView.* <stripped>
+	0x384000f9828  @objc LeaderboardPlayerLockupView.lU4 <stripped>
 
 	// Swift methods
-	0x143ad0  func <stripped> // getter 
-	0x144260  func <stripped> // method 
+	0x143e20  func <stripped> // getter 
+	0x1445b0  func <stripped> // method 
  }
 
  class GameCenterUI.FriendSuggestionsProfileSection : PlayerProfileSection { }
@@ -695,7 +695,7 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : ˜
+	var id : p
 	var imageType : ImageType
 	let title : String
 	let description : String?
@@ -703,22 +703,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let buttonActionBlock : ()?
 	var isEnabled : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var segue : kn
+	var segue : É^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var impressionMetrics : %|
+	var impressionMetrics : =l
  }
 
  enum GameCenterUI.ImageType { }
 
  class GameCenterUI.AchievementBadgeInnerShadowLayer : CALayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x218a4000fd9d8 (0xa4000fd9d8) in binary!
-	0x235e8  @objc AchievementBadgeInnerShadowLayer.(null) <stripped>
-WARNING: couldn't find address 0x2a3ec00106518 (0x3ec00106518) in binary!
-	0x2a3e0  @objc AchievementBadgeInnerShadowLayer.(null) <stripped>
+WARNING: couldn't find address 0x21adc000f9120 (0x2dc000f9120) in binary!
+	0x23830  @objc AchievementBadgeInnerShadowLayer.(null) <stripped>
+WARNING: couldn't find address 0x2b69400101c50 (0x69400101c50) in binary!
+	0x2b688  @objc AchievementBadgeInnerShadowLayer.(null) <stripped>
 WARNING: couldn't find address 0xf8000000c (0xf8000000c) in binary!
-	0x734ffe79b38  @objc AchievementBadgeInnerShadowLayer.(null) <stripped>
-	0x2b4ffe79b70  @objc AchievementBadgeInnerShadowLayer.Lâ˜ˇˇ(4 <stripped>
+	0x694ffe75640  @objc AchievementBadgeInnerShadowLayer.(null) <stripped>
+	0x1fcffe75678  @objc AchievementBadgeInnerShadowLayer.Hâ«ËÜ) <stripped>
  }
 
  class GameCenterUI.RemoveFriendProfileSection : PlayerProfileSection { }
@@ -730,19 +730,19 @@ WARNING: couldn't find address 0xf8000000c (0xf8000000c) in binary!
 	// Properties
 	var imageSize : CGSize // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var imageTrailingMargin : Àw // +0x10
+	var imageTrailingMargin : h // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var titleTextSpace : Àw // +0x38
+	var titleTextSpace : h // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var titleBottomSpace : Àw // +0x60
+	var titleBottomSpace : h // +0x60
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var textTrailingMargin : Àw // +0x88
+	var textTrailingMargin : h // +0x88
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var subtitleTextSpace : Àw // +0xb0
+	var subtitleTextSpace : h // +0xb0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var subtitleBottomSpace : Àw // +0xd8
+	var subtitleBottomSpace : h // +0xd8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var accessoryBottomSpace : Àw // +0x100
+	var accessoryBottomSpace : h // +0x100
 	var chevronSize : CGSize // +0x128
  }
 
@@ -751,15 +751,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let imageView : Ey // +0x138
+	let imageView : Öi // +0x138
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleLabel : ≠y // +0x160
+	let titleLabel : Ìi // +0x160
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subtitleLabel : st // +0x188
+	let subtitleLabel : ìd // +0x188
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let accessoryView : Ey // +0x1b0
+	let accessoryView : Öi // +0x1b0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let chevronView : Ey // +0x1d8
+	let chevronView : Öi // +0x1d8
  }
 
  class GameCenterUI.SmallPlayerCardView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -777,61 +777,61 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var shouldAnimateOnCloseButtonPress : Bool
 	var disabled : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var currentImageFetch : _~
+	var currentImageFetch : wn
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2092c000fe0d8 (0x12c000fe0d8) in binary!
-	0x2a3c0  @objc SmallPlayerCardView.(null) <stripped>
-WARNING: couldn't find address 0x218f4000fea30 (0xf4000fea30) in binary!
-	0x21918  @objc SmallPlayerCardView.(null) <stripped>
-WARNING: couldn't find address 0x2160c000ff250 (0x60c000ff250) in binary!
-	0x213f0  @objc SmallPlayerCardView.(null) <stripped>
-WARNING: couldn't find address 0x21b34000fea88 (0x334000fea88) in binary!
-	0x21b28  @objc SmallPlayerCardView.(null) <stripped>
-WARNING: couldn't find address 0x21b1c00106540 (0x31c00106540) in binary!
-	0x26180  @objc SmallPlayerCardView.(null) <stripped>
-WARNING: couldn't find address 0x23544000fd930 (0x544000fd930) in binary!
-	0x23538  @objc SmallPlayerCardView.(null) <stripped>
-WARNING: couldn't find address 0x2352c000fd920 (0x52c000fd920) in binary!
-	0x23520  @objc SmallPlayerCardView.(null) <stripped>
-WARNING: couldn't find address 0x21ad4000fb5d0 (0x2d4000fb5d0) in binary!
+WARNING: couldn't find address 0x20b84000f9828 (0x384000f9828) in binary!
+	0x2b668  @objc SmallPlayerCardView.(null) <stripped>
+WARNING: couldn't find address 0x21b2c000fa178 (0x32c000fa178) in binary!
+	0x21b50  @objc SmallPlayerCardView.(null) <stripped>
+WARNING: couldn't find address 0x21844000fa9b0 (0x44000fa9b0) in binary!
+	0x21628  @objc SmallPlayerCardView.(null) <stripped>
+WARNING: couldn't find address 0x21d6c000fa1d0 (0x56c000fa1d0) in binary!
+	0x21d60  @objc SmallPlayerCardView.(null) <stripped>
+WARNING: couldn't find address 0x21d5400101c78 (0x55400101c78) in binary!
+	0x263c8  @objc SmallPlayerCardView.(null) <stripped>
+WARNING: couldn't find address 0x2378c000f9078 (0x78c000f9078) in binary!
+	0x23780  @objc SmallPlayerCardView.(null) <stripped>
+WARNING: couldn't find address 0x23774000f9068 (0x774000f9068) in binary!
+	0x23768  @objc SmallPlayerCardView.(null) <stripped>
+WARNING: couldn't find address 0x21d0c000f6d18 (0x50c000f6d18) in binary!
 	0x98000000c  @objc SmallPlayerCardView.(null) <stripped>
-WARNING: couldn't find address 0x2a30c00101680 (0x30c00101680) in binary!
-	0x21ab0  @objc SmallPlayerCardView.(null) <stripped>
-WARNING: couldn't find address 0x20bd400102450 (0x3d400102450) in binary!
-	0x20bc8  @objc SmallPlayerCardView.(null) <stripped>
-WARNING: couldn't find address 0x21a9d000fcc90 (0x29d000fcc90) in binary!
-	0x28914  @objc SmallPlayerCardView.(null) <stripped>
-WARNING: couldn't find address 0x21a94000fcd80 (0x294000fcd80) in binary!
-	0x21a9c  @objc SmallPlayerCardView.(null) <stripped>
-WARNING: couldn't find address 0x21a5c000fb558 (0x25c000fb558) in binary!
+WARNING: couldn't find address 0x2b5b4000fcde0 (0x5b4000fcde0) in binary!
+	0x21ce8  @objc SmallPlayerCardView.(null) <stripped>
+WARNING: couldn't find address 0x20e2c000fdbb8 (0x62c000fdbb8) in binary!
+	0x20e20  @objc SmallPlayerCardView.(null) <stripped>
+WARNING: couldn't find address 0x21cd5000f83d8 (0x4d5000f83d8) in binary!
+	0x28b7c  @objc SmallPlayerCardView.(null) <stripped>
+WARNING: couldn't find address 0x21ccc000f84b8 (0x4cc000f84b8) in binary!
+	0x21cd4  @objc SmallPlayerCardView.(null) <stripped>
+WARNING: couldn't find address 0x21c94000f6ca0 (0x494000f6ca0) in binary!
 	0x78000000c  @objc SmallPlayerCardView.(null) <stripped>
-WARNING: couldn't find address 0x207f4000fdfa0 (0x7f4000fdfa0) in binary!
-	0x2a288  @objc SmallPlayerCardView.(null) <stripped>
-WARNING: couldn't find address 0x214ec000ff130 (0x4ec000ff130) in binary!
-	0x212d0  @objc SmallPlayerCardView.(null) <stripped>
+WARNING: couldn't find address 0x20a4c000f96f0 (0x24c000f96f0) in binary!
+	0x2b530  @objc SmallPlayerCardView.(null) <stripped>
+WARNING: couldn't find address 0x21724000fa890 (0x724000fa890) in binary!
+	0x21508  @objc SmallPlayerCardView.(null) <stripped>
 
 	// Swift methods
-	0x14e920  func <stripped> // getter 
-	0x14e940  func <stripped> // setter 
-	0x14e960  func <stripped> // modifyCoroutine 
-	0x14eaf0  func <stripped> // getter 
-	0x14eb60  func <stripped> // setter 
-	0x14ebd0  func <stripped> // modifyCoroutine 
-	0x14eca0  func <stripped> // getter 
-	0x14ecd0  func <stripped> // setter 
-	0x14ed10  func <stripped> // modifyCoroutine 
-	0x14ed50  func <stripped> // setter 
-	0x14ef70  func <stripped> // method 
-	0x14f300  func <stripped> // method 
-	0x14f850  func <stripped> // method 
-	0x14f860  func <stripped> // method 
-	0x14f9b0  func <stripped> // method 
-	0x14ff10  func <stripped> // method 
-	0x1500d0  func <stripped> // getter 
-	0x1500b0  func <stripped> // setter 
-	0x150110  func <stripped> // modifyCoroutine 
-	0x150230  func <stripped> // method 
+	0x14ece0  func <stripped> // getter 
+	0x14ed00  func <stripped> // setter 
+	0x14ed20  func <stripped> // modifyCoroutine 
+	0x14eeb0  func <stripped> // getter 
+	0x14ef20  func <stripped> // setter 
+	0x14ef90  func <stripped> // modifyCoroutine 
+	0x14f060  func <stripped> // getter 
+	0x14f090  func <stripped> // setter 
+	0x14f0d0  func <stripped> // modifyCoroutine 
+	0x14f110  func <stripped> // setter 
+	0x14f330  func <stripped> // method 
+	0x14f6c0  func <stripped> // method 
+	0x14fc10  func <stripped> // method 
+	0x14fc20  func <stripped> // method 
+	0x14fd70  func <stripped> // method 
+	0x1502d0  func <stripped> // method 
+	0x150490  func <stripped> // getter 
+	0x150470  func <stripped> // setter 
+	0x1504d0  func <stripped> // modifyCoroutine 
+	0x1505f0  func <stripped> // method 
  }
 
  class GameCenterUI.AchievementsByGameViewController : BaseCollectionViewController {
@@ -839,39 +839,39 @@ WARNING: couldn't find address 0x214ec000ff130 (0x4ec000ff130) in binary!
 	// Properties
 	var bootstrapPresenter : BootstrapPresenter
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let statePresenter : ◊s
+	let statePresenter : Ôc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var collectionContent : ±r
+	var collectionContent : —b
 	let components : Components
 	var sortGamesBarButtonItem : UIBarButtonItem?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2a30c00101680 (0x30c00101680) in binary!
-	0x21ab0  @objc AchievementsByGameViewController.(null) <stripped>
-WARNING: couldn't find address 0x20bd400102450 (0x3d400102450) in binary!
-	0x20bc8  @objc AchievementsByGameViewController.(null) <stripped>
-WARNING: couldn't find address 0x21a9d000fcc90 (0x29d000fcc90) in binary!
-	0x28914  @objc AchievementsByGameViewController.(null) <stripped>
-WARNING: couldn't find address 0x21a94000fcd80 (0x294000fcd80) in binary!
-	0x21a9c  @objc AchievementsByGameViewController.(null) <stripped>
-WARNING: couldn't find address 0x21a5c000fb558 (0x25c000fb558) in binary!
+WARNING: couldn't find address 0x2b5b4000fcde0 (0x5b4000fcde0) in binary!
+	0x21ce8  @objc AchievementsByGameViewController.(null) <stripped>
+WARNING: couldn't find address 0x20e2c000fdbb8 (0x62c000fdbb8) in binary!
+	0x20e20  @objc AchievementsByGameViewController.(null) <stripped>
+WARNING: couldn't find address 0x21cd5000f83d8 (0x4d5000f83d8) in binary!
+	0x28b7c  @objc AchievementsByGameViewController.(null) <stripped>
+WARNING: couldn't find address 0x21ccc000f84b8 (0x4cc000f84b8) in binary!
+	0x21cd4  @objc AchievementsByGameViewController.(null) <stripped>
+WARNING: couldn't find address 0x21c94000f6ca0 (0x494000f6ca0) in binary!
 	0x78000000c  @objc AchievementsByGameViewController.(null) <stripped>
-WARNING: couldn't find address 0x207f4000fdfa0 (0x7f4000fdfa0) in binary!
-	0x2a288  @objc AchievementsByGameViewController.(null) <stripped>
-WARNING: couldn't find address 0x214ec000ff130 (0x4ec000ff130) in binary!
-	0x212d0  @objc AchievementsByGameViewController.(null) <stripped>
-WARNING: couldn't find address 0x21a14000fe968 (0x214000fe968) in binary!
-	0x23448  @objc AchievementsByGameViewController.(null) <stripped>
-WARNING: couldn't find address 0x219fc000fb4f8 (0x1fc000fb4f8) in binary!
+WARNING: couldn't find address 0x20a4c000f96f0 (0x24c000f96f0) in binary!
+	0x2b530  @objc AchievementsByGameViewController.(null) <stripped>
+WARNING: couldn't find address 0x21724000fa890 (0x724000fa890) in binary!
+	0x21508  @objc AchievementsByGameViewController.(null) <stripped>
+WARNING: couldn't find address 0x21c4c000fa0b0 (0x44c000fa0b0) in binary!
+	0x23690  @objc AchievementsByGameViewController.(null) <stripped>
+WARNING: couldn't find address 0x21c34000f6c40 (0x434000f6c40) in binary!
 	0x28000000c  @objc AchievementsByGameViewController.(null) <stripped>
 
 	// Swift methods
-	0x1511c0  func <stripped> // method 
-	0x151830  func <stripped> // method 
-	0x1523a0  func <stripped> // method 
-	0x153c10  func <stripped> // method 
-	0x153e80  func <stripped> // method 
-	0x154090  func <stripped> // method 
+	0x1515e0  func <stripped> // method 
+	0x151c50  func <stripped> // method 
+	0x1527c0  func <stripped> // method 
+	0x154030  func <stripped> // method 
+	0x1542a0  func <stripped> // method 
+	0x1544b0  func <stripped> // method 
  }
 
  class GameCenterUI.AchievementsLinkView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -882,19 +882,19 @@ WARNING: couldn't find address 0x219fc000fb4f8 (0x1fc000fb4f8) in binary!
 	let chevronGlyph : UIView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x207f4000fdfa0 (0x7f4000fdfa0) in binary!
-	0x2a288  @objc AchievementsLinkView.(null) <stripped>
-WARNING: couldn't find address 0x214ec000ff130 (0x4ec000ff130) in binary!
-	0x212d0  @objc AchievementsLinkView.(null) <stripped>
-WARNING: couldn't find address 0x21a14000fe968 (0x214000fe968) in binary!
-	0x23448  @objc AchievementsLinkView.(null) <stripped>
-WARNING: couldn't find address 0x219fc000fb4f8 (0x1fc000fb4f8) in binary!
+WARNING: couldn't find address 0x20a4c000f96f0 (0x24c000f96f0) in binary!
+	0x2b530  @objc AchievementsLinkView.(null) <stripped>
+WARNING: couldn't find address 0x21724000fa890 (0x724000fa890) in binary!
+	0x21508  @objc AchievementsLinkView.(null) <stripped>
+WARNING: couldn't find address 0x21c4c000fa0b0 (0x44c000fa0b0) in binary!
+	0x23690  @objc AchievementsLinkView.(null) <stripped>
+WARNING: couldn't find address 0x21c34000f6c40 (0x434000f6c40) in binary!
 	0x28000000c  @objc AchievementsLinkView.(null) <stripped>
-WARNING: couldn't find address 0x2342400101610 (0x42400101610) in binary!
-	0x22438  @objc AchievementsLinkView.(null) <stripped>
+WARNING: couldn't find address 0x2366c000fcd70 (0x66c000fcd70) in binary!
+	0x22680  @objc AchievementsLinkView.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x57cffe8ab60  @objc AchievementsLinkView.(null) <stripped>
-	0x29cffe8abc8  @objc AchievementsLinkView.Ú@HÉƒ[A\A]A^A_]√UHâÂHÉ« Hãv ∫ <stripped>
+	0x4dcffe867c8  @objc AchievementsLinkView.(null) <stripped>
+	0x1fcffe86830  @objc AchievementsLinkView.HçU®Hã=W4 <stripped>
 
 	// Swift methods
  }
@@ -920,22 +920,22 @@ WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
 	var appStoreLockupBatchPresenter : ASCLockupBatchPresenter
 	let gameCenterDataUpdatePresenter : GameCenterDataUpdatePresenter
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onRequiredDataFetched : Øu
+	let onRequiredDataFetched : «e
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onRequiredDataError : °u
+	let onRequiredDataError : πe
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onRequiredDataUpdated : ìu
+	let onRequiredDataUpdated : ´e
 	let logTimer : GKLogTimer
 
 	// Swift methods
-	0x15a220  func <stripped> // method 
-	0x15aa80  func <stripped> // method 
-	0x15ad30  func <stripped> // method 
-	0x15afb0  func <stripped> // method 
-	0x15b230  func <stripped> // method 
-	0x15b6f0  func <stripped> // method 
-	0x15cdc0  func <stripped> // method 
-	0x15cfa0  func <stripped> // method 
+	0x15a710  func <stripped> // method 
+	0x15af70  func <stripped> // method 
+	0x15b220  func <stripped> // method 
+	0x15b4a0  func <stripped> // method 
+	0x15b720  func <stripped> // method 
+	0x15bbe0  func <stripped> // method 
+	0x15d2a0  func <stripped> // method 
+	0x15d480  func <stripped> // method 
  }
 
  struct GameCenterUI.Update {
@@ -974,23 +974,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let lockupView : GKAddFriendsLockupView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x20774000fdf20 (0x774000fdf20) in binary!
-	0x2a208  @objc GKMultiplayerPickerAddFriendsSupplementary.(null) <stripped>
-WARNING: couldn't find address 0x21244000fd7c8 (0x244000fd7c8) in binary!
-	0x2077e  @objc GKMultiplayerPickerAddFriendsSupplementary.(null) <stripped>
-WARNING: couldn't find address 0x21994000fe8e8 (0x194000fe8e8) in binary!
-	0x21988  @objc GKMultiplayerPickerAddFriendsSupplementary.(null) <stripped>
+WARNING: couldn't find address 0x209cc000f9670 (0x1cc000f9670) in binary!
+	0x2b4b0  @objc GKMultiplayerPickerAddFriendsSupplementary.(null) <stripped>
+WARNING: couldn't find address 0x2147c000f8f10 (0x47c000f8f10) in binary!
+	0x209d6  @objc GKMultiplayerPickerAddFriendsSupplementary.(null) <stripped>
+WARNING: couldn't find address 0x21bcc000fa030 (0x3cc000fa030) in binary!
+	0x21bc0  @objc GKMultiplayerPickerAddFriendsSupplementary.(null) <stripped>
 WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
-	0x49cffe8b7c0  @objc GKMultiplayerPickerAddFriendsSupplementary.(null) <stripped>
-	0x794ffe8ca18  @objc GKMultiplayerPickerAddFriendsSupplementary.M–Lã5,; <stripped>
-	0x24ffe8cf90  @objc GKMultiplayerPickerAddFriendsSupplementary.S¬4 <stripped>
+	0x3e4ffe87428  @objc GKMultiplayerPickerAddFriendsSupplementary.(null) <stripped>
+	0x6dcffe88680  @objc GKMultiplayerPickerAddFriendsSupplementary. <stripped>
+	0x784ffe88bf8  @objc GKMultiplayerPickerAddFriendsSupplementary.Aˇ◊Lâ˜LâÓAˇ◊Hâ«Ë*0* <stripped>
  }
 
  struct GameCenterUI.ExternalUrlAction {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : Se
+	let url : sU
 	let isSensitive : Bool
  }
 
@@ -999,38 +999,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var bootstrapPresenter : BootstrapPresenter
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let statePresenter : n
+	let statePresenter : '^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var collectionContent : ±r
+	var collectionContent : —b
 	let components : Components
 	let infiniteScrollObserver : InfiniteScrollObserver
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2a1c400101538 (0x1c400101538) in binary!
-	0x21968  @objc AppStoreGamesListViewController.(null) <stripped>
-WARNING: couldn't find address 0x20a8c00102308 (0x28c00102308) in binary!
-	0x20a80  @objc AppStoreGamesListViewController.(null) <stripped>
-WARNING: couldn't find address 0x21955000fcb48 (0x155000fcb48) in binary!
-	0x287cc  @objc AppStoreGamesListViewController.(null) <stripped>
-WARNING: couldn't find address 0x2194c000fcc38 (0x14c000fcc38) in binary!
-	0x21954  @objc AppStoreGamesListViewController.(null) <stripped>
-WARNING: couldn't find address 0x21914000fb410 (0x114000fb410) in binary!
+WARNING: couldn't find address 0x2b46c000fcc98 (0x46c000fcc98) in binary!
+	0x21ba0  @objc AppStoreGamesListViewController.(null) <stripped>
+WARNING: couldn't find address 0x20ce4000fda70 (0x4e4000fda70) in binary!
+	0x20cd8  @objc AppStoreGamesListViewController.(null) <stripped>
+WARNING: couldn't find address 0x21b8d000f8290 (0x38d000f8290) in binary!
+	0x28a34  @objc AppStoreGamesListViewController.(null) <stripped>
+WARNING: couldn't find address 0x21b84000f8370 (0x384000f8370) in binary!
+	0x21b8c  @objc AppStoreGamesListViewController.(null) <stripped>
+WARNING: couldn't find address 0x21b4c000f6b58 (0x34c000f6b58) in binary!
 	0x58000000c  @objc AppStoreGamesListViewController.(null) <stripped>
-WARNING: couldn't find address 0x206ac000fde58 (0x6ac000fde58) in binary!
-	0x2a140  @objc AppStoreGamesListViewController.(null) <stripped>
-WARNING: couldn't find address 0x218e4000fe838 (0xe4000fe838) in binary!
-	0x218d8  @objc AppStoreGamesListViewController.(null) <stripped>
-WARNING: couldn't find address 0x218cc000fb3c8 (0xcc000fb3c8) in binary!
+WARNING: couldn't find address 0x20904000f95a8 (0x104000f95a8) in binary!
+	0x2b3e8  @objc AppStoreGamesListViewController.(null) <stripped>
+WARNING: couldn't find address 0x21b1c000f9f80 (0x31c000f9f80) in binary!
+	0x21b10  @objc AppStoreGamesListViewController.(null) <stripped>
+WARNING: couldn't find address 0x21b04000f6b10 (0x304000f6b10) in binary!
 	0x88000000c  @objc AppStoreGamesListViewController.(null) <stripped>
-WARNING: couldn't find address 0x218b4000fdcd8 (0xb4000fdcd8) in binary!
-	0x2a0f8  @objc AppStoreGamesListViewController.(null) <stripped>
+WARNING: couldn't find address 0x21aec000f9428 (0x2ec000f9428) in binary!
+	0x2b3a0  @objc AppStoreGamesListViewController.(null) <stripped>
 
 	// Swift methods
-	0x160450  func <stripped> // method 
-	0x160c60  func <stripped> // method 
-	0x162440  func <stripped> // method 
-	0x162640  func <stripped> // method 
-	0x162b40  func <stripped> // method 
+	0x160970  func <stripped> // method 
+	0x161180  func <stripped> // method 
+	0x162960  func <stripped> // method 
+	0x162b60  func <stripped> // method 
+	0x163060  func <stripped> // method 
  }
 
  struct GameCenterUI.ProfilePrivacyAction {
@@ -1058,31 +1058,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var backgroundGradientLayer : CAGradientLayer // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x206ac000fde58 (0x6ac000fde58) in binary!
-	0x2a140  @objc BackgroundView.(null) <stripped>
-WARNING: couldn't find address 0x218e4000fe838 (0xe4000fe838) in binary!
-	0x218d8  @objc BackgroundView.(null) <stripped>
-WARNING: couldn't find address 0x218cc000fb3c8 (0xcc000fb3c8) in binary!
+WARNING: couldn't find address 0x20904000f95a8 (0x104000f95a8) in binary!
+	0x2b3e8  @objc BackgroundView.(null) <stripped>
+WARNING: couldn't find address 0x21b1c000f9f80 (0x31c000f9f80) in binary!
+	0x21b10  @objc BackgroundView.(null) <stripped>
+WARNING: couldn't find address 0x21b04000f6b10 (0x304000f6b10) in binary!
 	0x88000000c  @objc BackgroundView.(null) <stripped>
-WARNING: couldn't find address 0x218b4000fdcd8 (0xb4000fdcd8) in binary!
-	0x2a0f8  @objc BackgroundView.(null) <stripped>
-WARNING: couldn't find address 0x20fcc00105f00 (0x7cc00105f00) in binary!
-	0x22e58  @objc BackgroundView.(null) <stripped>
+WARNING: couldn't find address 0x21aec000f9428 (0x2ec000f9428) in binary!
+	0x2b3a0  @objc BackgroundView.(null) <stripped>
+WARNING: couldn't find address 0x2122400101640 (0x22400101640) in binary!
+	0x230a0  @objc BackgroundView.(null) <stripped>
 
 	// Swift methods
-	0x164280  func <stripped> // setter 
-	0x1646c0  func <stripped> // method 
+	0x1647b0  func <stripped> // setter 
+	0x164bf0  func <stripped> // method 
  }
 
  class GameCenterUI.AccessPointHostingViewController {
  class GameCenterUI.AccessPointRootViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x25c5c00102270 (0x45c00102270) in binary!
-	0x21874  @objc AccessPointRootViewController.(null) <stripped>
-WARNING: couldn't find address 0x2a084001013f8 (0x84001013f8) in binary!
+WARNING: couldn't find address 0x25ea4000fd9d8 (0x6a4000fd9d8) in binary!
+	0x21aac  @objc AccessPointRootViewController.(null) <stripped>
+WARNING: couldn't find address 0x2b32c000fcb58 (0x32c000fcb58) in binary!
 	0x28000000c  @objc AccessPointRootViewController.(null) <stripped>
-WARNING: couldn't find address 0x205cc000fdd78 (0x5cc000fdd78) in binary!
-	0x2a060  @objc AccessPointRootViewController.(null) <stripped>
+WARNING: couldn't find address 0x20824000f94c8 (0x24000f94c8) in binary!
+	0x2b308  @objc AccessPointRootViewController.(null) <stripped>
  }
 
  class GameCenterUI.AccessPointWindow : UIWindow /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1102,37 +1102,37 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var topConstraint : NSLayoutConstraint?
 	var bottomConstraint : NSLayoutConstraint?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let verticalOffset : Er
+	let verticalOffset : Öb
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let horizontalOffset : Er
+	let horizontalOffset : Öb
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x218b4000fdcd8 (0xb4000fdcd8) in binary!
-	0x2a0f8  @objc AccessPointWindow.(null) <stripped>
-WARNING: couldn't find address 0x20fcc00105f00 (0x7cc00105f00) in binary!
-	0x22e58  @objc AccessPointWindow.(null) <stripped>
-WARNING: couldn't find address 0x2a0d4001063b0 (0xd4001063b0) in binary!
-	0x20628  @objc AccessPointWindow.(null) <stripped>
-WARNING: couldn't find address 0x2061c000fd6b8 (0x61c000fd6b8) in binary!
-	0x21860  @objc AccessPointWindow.(null) <stripped>
+WARNING: couldn't find address 0x21aec000f9428 (0x2ec000f9428) in binary!
+	0x2b3a0  @objc AccessPointWindow.(null) <stripped>
+WARNING: couldn't find address 0x2122400101640 (0x22400101640) in binary!
+	0x230a0  @objc AccessPointWindow.(null) <stripped>
+WARNING: couldn't find address 0x2b37c00101ae8 (0x37c00101ae8) in binary!
+	0x20880  @objc AccessPointWindow.(null) <stripped>
+WARNING: couldn't find address 0x20874000f8e00 (0x74000f8e00) in binary!
+	0x21a98  @objc AccessPointWindow.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x214ffe904f8  @objc AccessPointWindow.(null) <stripped>
-	0xffe905d0  @objc AccessPointWindow.5"; <stripped>
+	0x174ffe8c170  @objc AccessPointWindow.(null) <stripped>
+	0xffe8c248  @objc AccessPointWindow.Äˇ”Hã}†ˇ”HãΩxˇˇˇˇ”HãsÒ4 <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x3d4ffe90648  @objc AccessPointWindow.(null) <stripped>
-	0x4c001013c0  @objc AccessPointWindow.˜ˇy,4 <stripped>
+	0x334ffe8c2c0  @objc AccessPointWindow.(null) <stripped>
+	0x2f4000fcb20  @objc AccessPointWindow.ˆHâ˚HÉ« Hãv ∫ <stripped>
 
 	// Swift methods
-	0x1656f0  func <stripped> // method 
-	0x1659f0  func <stripped> // method 
+	0x165c20  func <stripped> // method 
+	0x165f20  func <stripped> // method 
  }
 
  class GameCenterUI.LayoutView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x205cc000fdd78 (0x5cc000fdd78) in binary!
-	0x2a060  @objc LayoutView.(null) <stripped>
+WARNING: couldn't find address 0x20824000f94c8 (0x24000f94c8) in binary!
+	0x2b308  @objc LayoutView.(null) <stripped>
 WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
-	0xccffe92b38  @objc LayoutView.(null) <stripped>
+	0x2cffe8e7b0  @objc LayoutView.(null) <stripped>
  }
 
  class GameCenterUI.GKMultiplayerStepperView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1146,23 +1146,24 @@ WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
 	var isStepperHidden : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2a04c001013c0 (0x4c001013c0) in binary!
-	0x210a0  @objc GKMultiplayerStepperView.(null) <stripped>
-WARNING: couldn't find address 0x217e4000fe738 (0x7e4000fe738) in binary!
-	0x25e48  @objc GKMultiplayerStepperView.(null) <stripped>
-WARNING: couldn't find address 0x25e3c00106318 (0x63c00106318) in binary!
-	0x23200  @objc GKMultiplayerStepperView.(null) <stripped>
-WARNING: couldn't find address 0x231f4000fd610 (0x1f4000fd610) in binary!
-	0x23858  @objc GKMultiplayerStepperView.(null) <stripped>
-WARNING: couldn't find address 0x2054c000fdcf8 (0x54c000fdcf8) in binary!
-	0x21790  @objc GKMultiplayerStepperView.(null) <stripped>
+WARNING: couldn't find address 0x2b2f4000fcb20 (0x2f4000fcb20) in binary!
+	0x212d8  @objc GKMultiplayerStepperView.(null) <stripped>
+WARNING: couldn't find address 0x21a1c000f9e80 (0x21c000f9e80) in binary!
+	0x26090  @objc GKMultiplayerStepperView.(null) <stripped>
+WARNING: couldn't find address 0x2608400101a50 (0x8400101a50) in binary!
+	0x23448  @objc GKMultiplayerStepperView.(null) <stripped>
+WARNING: couldn't find address 0x2343c000f8d58 (0x43c000f8d58) in binary!
+	0x23aa0  @objc GKMultiplayerStepperView.(null) <stripped>
+WARNING: couldn't find address 0x207a4000f9448 (0x7a4000f9448) in binary!
+	0x219c8  @objc GKMultiplayerStepperView.(null) <stripped>
 WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
-	0x334ffe95978  @objc GKMultiplayerStepperView.(null) <stripped>
-	0x65cffe96440  @objc GKMultiplayerStepperView.: <stripped>
-	0x5a4ffe96e48  @objc GKMultiplayerStepperView.5√0; <stripped>
-	0xffe97200  @objc GKMultiplayerStepperView.ﬂ1ˆHÉƒ[]È¬) <stripped>
+	0x294ffe91630  @objc GKMultiplayerStepperView.(null) <stripped>
+	0x5bcffe920f8  @objc GKMultiplayerStepperView.5ª|: <stripped>
+	0x4ecffe92b00  @objc GKMultiplayerStepperView.ã5
+/; <stripped>
+	0xffe92eb8  @objc GKMultiplayerStepperView.˛ˇˇHãç <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x534ffe97658  @objc GKMultiplayerStepperView.(null) <stripped>
+	0x47cffe93310  @objc GKMultiplayerStepperView.(null) <stripped>
 
 	// Swift methods
  }
@@ -1187,7 +1188,7 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sublayout : Ôk // +0x0
+	var sublayout : \ // +0x0
 	var layoutMargins : UIEdgeInsets // +0x30
  }
 
@@ -1199,30 +1200,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let loadingIndicator : UIActivityIndicatorView // +0x18 (0x8)
 	var nicknamePresenter : NicknamePresenter // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var suggestionsChangedSubscription : 9q // +0x0 (0x0)
+	var suggestionsChangedSubscription : Qa // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var nicknameUpdatedSubscription : )q // +0x0 (0x0)
+	var nicknameUpdatedSubscription : Aa // +0x0 (0x0)
 	var accessoryAction : (_:)? // +0x0 (0x10)
-	var disabled : Bool // +0x36b000 (0x1)
+	var disabled : Bool // +0x36f000 (0x1)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2052c000fdcd8 (0x52c000fdcd8) in binary!
-	0x29fc0  @objc NicknameFieldCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x21764000fe6b8 (0x764000fe6b8) in binary!
-	0x21218  @objc NicknameFieldCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x2174c000fe6c8 (0x74c000fe6c8) in binary!
-	0x23180  @objc NicknameFieldCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x21734000fb230 (0x734000fb230) in binary!
+WARNING: couldn't find address 0x20784000f9428 (0x784000f9428) in binary!
+	0x2b268  @objc NicknameFieldCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x2199c000f9e00 (0x19c000f9e00) in binary!
+	0x21450  @objc NicknameFieldCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x21984000f9e10 (0x184000f9e10) in binary!
+	0x233c8  @objc NicknameFieldCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x2196c000f6978 (0x16c000f6978) in binary!
 	0x58000000c  @objc NicknameFieldCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x2440c000fbc10 (0x40c000fbc10) in binary!
-	0x25d80  @objc NicknameFieldCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x229a4000fbd10 (0x1a4000fbd10) in binary!
-	0x25d68  @objc NicknameFieldCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x229a9000fd820 (0x1a9000fd820) in binary!
+WARNING: couldn't find address 0x24654000f7358 (0x654000f7358) in binary!
+	0x25fc8  @objc NicknameFieldCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x22bec000f7458 (0x3ec000f7458) in binary!
+	0x25fb0  @objc NicknameFieldCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x22bf1000f8f70 (0x3f1000f8f70) in binary!
 	0x58000000c  @objc NicknameFieldCollectionViewCell.(null) <stripped>
 
 	// Swift methods
-	0x16b480  func <stripped> // method 
+	0x16b9f0  func <stripped> // method 
  }
 
  struct GameCenterUI.AppStoreGamesListAction {
@@ -1236,7 +1237,7 @@ WARNING: couldn't find address 0x229a9000fd820 (0x1a9000fd820) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let error : _u // +0x0
+	let error : we // +0x0
 	let title : String // +0x8
 	let description : String // +0x18
 	let retryHandler : ()? // +0x28
@@ -1248,16 +1249,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isEnabledBlock : ()
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x29f2400101298 (0x72400101298) in binary!
-	0x22c90  @objc BlockBasedFocusGuide.(null) <stripped>
-WARNING: couldn't find address 0x22c8c000fec10 (0x48c000fec10) in binary!
-	0x230f0  @objc BlockBasedFocusGuide.(null) <stripped>
-WARNING: couldn't find address 0x216a4000fb1a0 (0x6a4000fb1a0) in binary!
+WARNING: couldn't find address 0x2b1cc000fc9f8 (0x1cc000fc9f8) in binary!
+	0x22ed8  @objc BlockBasedFocusGuide.(null) <stripped>
+WARNING: couldn't find address 0x22ed4000fa370 (0x6d4000fa370) in binary!
+	0x23338  @objc BlockBasedFocusGuide.(null) <stripped>
+WARNING: couldn't find address 0x218dc000f68e8 (0xdc000f68e8) in binary!
 	0x138000000c  @objc BlockBasedFocusGuide.(null) <stripped>
-WARNING: couldn't find address 0x22c1e00102ae8 (0x41e00102ae8) in binary!
-	0x22c20  @objc BlockBasedFocusGuide.(null) <stripped>
-WARNING: couldn't find address 0x29ec400101238 (0x6c400101238) in binary!
-	0x22c30  @objc BlockBasedFocusGuide.(null) <stripped>
+WARNING: couldn't find address 0x22e66000fe260 (0x666000fe260) in binary!
+	0x22e68  @objc BlockBasedFocusGuide.(null) <stripped>
+WARNING: couldn't find address 0x2b16c000fc998 (0x16c000fc998) in binary!
+	0x22e78  @objc BlockBasedFocusGuide.(null) <stripped>
 
 	// Swift methods
  }
@@ -1274,41 +1275,41 @@ WARNING: couldn't find address 0x29ec400101238 (0x6c400101238) in binary!
 	var backgroundView : UIView?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x22c1e00102ae8 (0x41e00102ae8) in binary!
-	0x22c20  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x29ec400101238 (0x6c400101238) in binary!
-	0x22c30  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x22c2c00102a90 (0x42c00102a90) in binary!
-	0x22c18  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x22c1400102890 (0x41400102890) in binary!
-	0x236e0  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x236dc00102a70 (0x6dc00102a70) in binary!
-	0x236c8  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x236c4000fd4a0 (0x6c4000fd4a0) in binary!
-	0x236b8  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x20eac001016d8 (0x6ac001016d8) in binary!
-	0x210b0  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x215e4000fe538 (0x5e4000fe538) in binary!
-	0x25c48  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x25c3c00102240 (0x43c00102240) in binary!
-	0x20370  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x215b4000fb0b0 (0x5b4000fb0b0) in binary!
+WARNING: couldn't find address 0x22e66000fe260 (0x666000fe260) in binary!
+	0x22e68  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x2b16c000fc998 (0x16c000fc998) in binary!
+	0x22e78  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x22e74000fe208 (0x674000fe208) in binary!
+	0x22e60  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x22e5c000fe008 (0x65c000fe008) in binary!
+	0x23928  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x23924000fe1e8 (0x124000fe1e8) in binary!
+	0x23910  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x2390c000f8be8 (0x10c000f8be8) in binary!
+	0x23900  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x210e4000fce38 (0xe4000fce38) in binary!
+	0x212e8  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x2181c000f9c80 (0x1c000f9c80) in binary!
+	0x25e90  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x25e84000fd9a8 (0x684000fd9a8) in binary!
+	0x205c8  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x217ec000f67f8 (0x7ec000f67f8) in binary!
 	0x28000000c  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x22fdc000fd9c8 (0x7dc000fd9c8) in binary!
-	0x21590  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x23224000f9118 (0x224000f9118) in binary!
+	0x217c8  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x11cffea21b8  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
-	0x54ffea2380  @objc GKMultiplayerButtonHeaderView.ﬂ) <stripped>
-	0x2f4000fdaa0  @objc GKMultiplayerButtonHeaderView.Hﬂ1ˆËﬂ) <stripped>
-WARNING: couldn't find address 0x1010fcffea3f70 (0xfcffea3f70) in binary!
-	0x52c000fe480  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
-WARNING: couldn't find address 0xfeb0cffea4c58 (0x30cffea4c58) in binary!
-	0x51400106100  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
-WARNING: couldn't find address 0xfd39cffea4d00 (0x39cffea4d00) in binary!
-	0x73c000fd398  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
-WARNING: couldn't find address 0xfd394ffea50c8 (0x394ffea50c8) in binary!
-	0x724000fd390  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
-WARNING: couldn't find address 0xfafd4ffea50f0 (0x7d4ffea50f0) in binary!
+	0x54ffe9df30  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
+	0x79cffe9e0f8  @objc GKMultiplayerButtonHeaderView.ÂHã(Ω; <stripped>
+	0x54c000f91f0  @objc GKMultiplayerButtonHeaderView.4 <stripped>
+WARNING: couldn't find address 0xfc85cffe9fd08 (0x5cffe9fd08) in binary!
+	0x764000f9bc8  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
+WARNING: couldn't find address 0xfa26cffea09f0 (0x26cffea09f0) in binary!
+	0x74c00101838  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
+WARNING: couldn't find address 0xf8ae4ffea0a98 (0x2e4ffea0a98) in binary!
+	0x184000f8ae0  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
+WARNING: couldn't find address 0xf8adcffea0e60 (0x2dcffea0e60) in binary!
+	0x16c000f8ad8  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
+WARNING: couldn't find address 0xf671cffea0e88 (0x71cffea0e88) in binary!
 	0x68000000c  @objc GKMultiplayerButtonHeaderView.(null) <stripped>
 
 	// Swift methods
@@ -1320,12 +1321,12 @@ WARNING: couldn't find address 0xfafd4ffea50f0 (0x7d4ffea50f0) in binary!
 	var children : ScrollObserver
 
 	// Swift methods
-	0x175950  func <stripped> // method 
-	0x175a00  func <stripped> // method 
-	0x175ab0  func <stripped> // method 
-	0x175b60  func <stripped> // method 
-	0x175c20  func <stripped> // method 
-	0x175cd0  func <stripped> // method 
+	0x175f80  func <stripped> // method 
+	0x176030  func <stripped> // method 
+	0x1760e0  func <stripped> // method 
+	0x176190  func <stripped> // method 
+	0x176250  func <stripped> // method 
+	0x176300  func <stripped> // method 
  }
 
  class GameCenterUI.ReportFriendActionImplementation : NSObject /usr/lib/libobjc.A.dylib {
@@ -1334,13 +1335,13 @@ WARNING: couldn't find address 0xfafd4ffea50f0 (0x7d4ffea50f0) in binary!
 	var viewController : weak UIViewController? // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x22fdc000fd9c8 (0x7dc000fd9c8) in binary!
-	0x21590  @objc ReportFriendActionImplementation.(null) <stripped>
+WARNING: couldn't find address 0x23224000f9118 (0x224000f9118) in binary!
+	0x217c8  @objc ReportFriendActionImplementation.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x11cffea21b8  @objc ReportFriendActionImplementation.(null) <stripped>
+	0x54ffe9df30  @objc ReportFriendActionImplementation.(null) <stripped>
 
 	// Swift methods
-	0x176390  func <stripped> // method 
+	0x1769c0  func <stripped> // method 
  }
 
  enum GameCenterUI.ReportFriendActionImplementationError {
@@ -1357,16 +1358,16 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	var toggleAction : AccessoryToggleAction
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x29dcc00101140 (0x5cc00101140) in binary!
-	0x21570  @objc Switch.(null) <stripped>
-WARNING: couldn't find address 0x20314000fdac0 (0x314000fdac0) in binary!
-	0x21558  @objc Switch.(null) <stripped>
+WARNING: couldn't find address 0x2b074000fc8a0 (0x74000fc8a0) in binary!
+	0x217a8  @objc Switch.(null) <stripped>
+WARNING: couldn't find address 0x2056c000f9210 (0x56c000f9210) in binary!
+	0x21790  @objc Switch.(null) <stripped>
 WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
-	0xfcffea3f70  @objc Switch.(null) <stripped>
-	0x30cffea4c58  @objc Switch.Lâ·Iâ¡1¿Aˇ’Hã=Ó; <stripped>
+	0x5cffe9fd08  @objc Switch.(null) <stripped>
+	0x26cffea09f0  @objc Switch.†HãËö: <stripped>
 
 	// Swift methods
-	0x177240  func <stripped> // method 
+	0x177870  func <stripped> // method 
  }
 
  class GameCenterUI.NicknameUpdateActionImplementation : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1391,32 +1392,33 @@ WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
 	var tapHandler : ()? // +0x40 (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x202f4000fdaa0 (0x2f4000fdaa0) in binary!
-	0x29d88  @objc ProfileAvatarView.(null) <stripped>
-WARNING: couldn't find address 0x2152c000fe480 (0x52c000fe480) in binary!
-	0x25b90  @objc ProfileAvatarView.(null) <stripped>
-WARNING: couldn't find address 0x2151400106100 (0x51400106100) in binary!
-	0x22ad0  @objc ProfileAvatarView.(null) <stripped>
-WARNING: couldn't find address 0x22f3c000fd398 (0x73c000fd398) in binary!
-	0x22f30  @objc ProfileAvatarView.(null) <stripped>
-WARNING: couldn't find address 0x22f24000fd390 (0x724000fd390) in binary!
-	0x214d8  @objc ProfileAvatarView.(null) <stripped>
+WARNING: couldn't find address 0x2054c000f91f0 (0x54c000f91f0) in binary!
+	0x2b030  @objc ProfileAvatarView.(null) <stripped>
+WARNING: couldn't find address 0x21764000f9bc8 (0x764000f9bc8) in binary!
+	0x25dd8  @objc ProfileAvatarView.(null) <stripped>
+WARNING: couldn't find address 0x2174c00101838 (0x74c00101838) in binary!
+	0x22d18  @objc ProfileAvatarView.(null) <stripped>
+WARNING: couldn't find address 0x23184000f8ae0 (0x184000f8ae0) in binary!
+	0x23178  @objc ProfileAvatarView.(null) <stripped>
+WARNING: couldn't find address 0x2316c000f8ad8 (0x16c000f8ad8) in binary!
+	0x21710  @objc ProfileAvatarView.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x7cffea5570  @objc ProfileAvatarView.(null) <stripped>
-	0x3f4ffea5758  @objc ProfileAvatarView.HÖ¿Ö¶ <stripped>
-	0x784ffea5d20  @objc ProfileAvatarView.UHâÂH=ıø; <stripped>
-	0x224000fd9d0  @objc ProfileAvatarView.÷]ÈÔﬂ) <stripped>
-WARNING: couldn't find address 0x10102cffea71f0 (0x2cffea71f0) in binary!
-	0x6c000fd310  @objc ProfileAvatarView.(null) <stripped>
+	0x7dcffea1308  @objc ProfileAvatarView.(null) <stripped>
+	0x33cffea14f0  @objc ProfileAvatarView.âˆAˇ‘HâE∏Hã=H
+; <stripped>
+	0x6ccffea1ab8  @objc ProfileAvatarView. <stripped>
+	0x47c000f9120  @objc ProfileAvatarView.ATSIâ˛Hâ◊ˇ1ˆ4 <stripped>
+WARNING: couldn't find address 0xfc78cffea2f88 (0x78cffea2f88) in binary!
+	0x2b4000f8a58  @objc ProfileAvatarView.(null) <stripped>
 
 	// Swift methods
-	0x179070  func <stripped> // getter 
-	0x1790a0  func <stripped> // setter 
-	0x1790f0  func <stripped> // modifyCoroutine 
-	0x179450  func <stripped> // getter 
-	0x1794a0  func <stripped> // setter 
-	0x179520  func <stripped> // modifyCoroutine 
-	0x179dd0  func <stripped> // method 
+	0x1796c0  func <stripped> // getter 
+	0x1796f0  func <stripped> // setter 
+	0x179740  func <stripped> // modifyCoroutine 
+	0x179aa0  func <stripped> // getter 
+	0x179af0  func <stripped> // setter 
+	0x179b70  func <stripped> // modifyCoroutine 
+	0x17a420  func <stripped> // method 
  }
 
  class GameCenterUI.RoundEditProfileButton : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1426,19 +1428,20 @@ WARNING: couldn't find address 0x10102cffea71f0 (0x2cffea71f0) in binary!
 	let pencilImageView : UIImageView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x20274000fda20 (0x274000fda20) in binary!
-	0x29d08  @objc RoundEditProfileButton.(null) <stripped>
-	0x214a0  -[GKChallengeDetailViewController setArtworkViewHeightConstraint:]
-WARNING: couldn't find address 0x25b04000fea80 (0x304000fea80) in binary!
-	0x21488  @objc RoundEditProfileButton.(null) <stripped>
+WARNING: couldn't find address 0x204cc000f9170 (0x4cc000f9170) in binary!
+	0x2afb0  @objc RoundEditProfileButton.(null) <stripped>
+WARNING: couldn't find address 0x211a4000fa310 (0x1a4000fa310) in binary!
+	0x216d8  @objc RoundEditProfileButton.(null) <stripped>
+WARNING: couldn't find address 0x25d4c000fa1e0 (0x54c000fa1e0) in binary!
+	0x216c0  @objc RoundEditProfileButton.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x2cffea71f0  @objc RoundEditProfileButton.(null) <stripped>
-	0xffea72a8  @objc RoundEditProfileButton.5 <stripped>
+	0x78cffea2f88  @objc RoundEditProfileButton.(null) <stripped>
+	0xffea3040  @objc RoundEditProfileButton.ˇLão Hã(MÖÌÑ• <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x64ffea7aa0  @objc RoundEditProfileButton.(null) <stripped>
+	0x7b4ffea3848  @objc RoundEditProfileButton.(null) <stripped>
 
 	// Swift methods
-	0x17a720  func <stripped> // getter 
+	0x17ad70  func <stripped> // getter 
  }
 
  enum GameCenterUI.AchievementsListScrollDirection {
@@ -1453,19 +1456,19 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let constant : Er // +0x0
+	let constant : Öb // +0x0
 	let sourceStorage : Indirect // +0x8
 	let maxSizeCategory : UIContentSizeCategory // +0x10
  }
 
  class GameCenterUI.BaseCollectionReusableView : UICollectionReusableView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x20224000fd9d0 (0x224000fd9d0) in binary!
-	0x29cb8  @objc BaseCollectionReusableView.(null) <stripped>
-WARNING: couldn't find address 0x2586c000fd310 (0x6c000fd310) in binary!
+WARNING: couldn't find address 0x2047c000f9120 (0x47c000f9120) in binary!
+	0x2af60  @objc BaseCollectionReusableView.(null) <stripped>
+WARNING: couldn't find address 0x25ab4000f8a58 (0x2b4000f8a58) in binary!
 	0x38000000c  @objc BaseCollectionReusableView.(null) <stripped>
-WARNING: couldn't find address 0x231c4000fd300 (0x1c4000fd300) in binary!
-	0x22e78  @objc BaseCollectionReusableView.(null) <stripped>
+WARNING: couldn't find address 0x2340c000f8a48 (0x40c000f8a48) in binary!
+	0x230c0  @objc BaseCollectionReusableView.(null) <stripped>
 
 	// Swift methods
  }
@@ -1492,12 +1495,12 @@ WARNING: couldn't find address 0x231c4000fd300 (0x1c4000fd300) in binary!
 	var maximumValue : Int
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x231c4000fd300 (0x1c4000fd300) in binary!
-	0x22e78  @objc GKMultiplayerStepperController.(null) <stripped>
-WARNING: couldn't find address 0x2142c000faf28 (0x42c000faf28) in binary!
+WARNING: couldn't find address 0x2340c000f8a48 (0x40c000f8a48) in binary!
+	0x230c0  @objc GKMultiplayerStepperController.(null) <stripped>
+WARNING: couldn't find address 0x21664000f6670 (0x664000f6670) in binary!
 	0xb8000000c  @objc GKMultiplayerStepperController.(null) <stripped>
-WARNING: couldn't find address 0x201c4000fd970 (0x1c4000fd970) in binary!
-	0x29c58  @objc GKMultiplayerStepperController.(null) <stripped>
+WARNING: couldn't find address 0x2041c000f90c0 (0x41c000f90c0) in binary!
+	0x2af00  @objc GKMultiplayerStepperController.(null) <stripped>
 
 	// Swift methods
  }
@@ -1515,21 +1518,21 @@ WARNING: couldn't find address 0x201c4000fd970 (0x1c4000fd970) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : ˜
+	var id : p
 	let title : String
 	let subtitle : String?
 	let buttonText : String
 	let avatarArtworkLoaderConfig : AvatarArtworkLoaderConfig
 	let avatarImage : UIImage?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let buttonAction : kn
+	let buttonAction : É^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let removeButtonAction : kn
+	let removeButtonAction : É^
 	let isEnabled : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var segue : kn
+	var segue : É^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var impressionMetrics : %|
+	var impressionMetrics : =l
  }
 
  class GameCenterUI.Animation : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1541,13 +1544,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let downView : Uy // +0x30
+	let downView : ïi // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let upView : Uy // +0x58
+	let upView : ïi // +0x58
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let backgroundView : Ey // +0x80
+	let backgroundView : Öi // +0x80
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let text : ≠y // +0xa8
+	let text : Ìi // +0xa8
  }
 
  struct GameCenterUI.Metrics {
@@ -1555,15 +1558,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var isStepperHidden : Bool // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var textMargin : Er // +0x8
+	var textMargin : Öb // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var buttonWidth : Er // +0x10
+	var buttonWidth : Öb // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var buttonMargin : Er // +0x18
+	var buttonMargin : Öb // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minWidth : Er // +0x20
+	var minWidth : Öb // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : Er // +0x28
+	var height : Öb // +0x28
  }
 
  class GameCenterUI.SmallLockupView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1577,43 +1580,43 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var hasChevron : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x201c4000fd970 (0x1c4000fd970) in binary!
-	0x29c58  @objc SmallLockupView.(null) <stripped>
-WARNING: couldn't find address 0x231dc00102660 (0x1dc00102660) in binary!
-	0x23320  @objc SmallLockupView.(null) <stripped>
-WARNING: couldn't find address 0x20ea4000feae8 (0x6a4000feae8) in binary!
-	0x20c88  @objc SmallLockupView.(null) <stripped>
-WARNING: couldn't find address 0x213cc000fe320 (0x3cc000fe320) in binary!
-	0x22e00  @objc SmallLockupView.(null) <stripped>
-WARNING: couldn't find address 0x22df4000fd1e0 (0x5f4000fd1e0) in binary!
-	0x22de8  @objc SmallLockupView.(null) <stripped>
-WARNING: couldn't find address 0x2139c000fae98 (0x39c000fae98) in binary!
+WARNING: couldn't find address 0x2041c000f90c0 (0x41c000f90c0) in binary!
+	0x2af00  @objc SmallLockupView.(null) <stripped>
+WARNING: couldn't find address 0x23424000fddd8 (0x424000fddd8) in binary!
+	0x23568  @objc SmallLockupView.(null) <stripped>
+WARNING: couldn't find address 0x210dc000fa248 (0xdc000fa248) in binary!
+	0x20ec0  @objc SmallLockupView.(null) <stripped>
+WARNING: couldn't find address 0x21604000f9a68 (0x604000f9a68) in binary!
+	0x23048  @objc SmallLockupView.(null) <stripped>
+WARNING: couldn't find address 0x2303c000f8928 (0x3c000f8928) in binary!
+	0x23030  @objc SmallLockupView.(null) <stripped>
+WARNING: couldn't find address 0x215d4000f65e0 (0x5d4000f65e0) in binary!
 	0x178000000c  @objc SmallLockupView.(null) <stripped>
-WARNING: couldn't find address 0x20134000fd8e0 (0x134000fd8e0) in binary!
-	0x29bc8  @objc SmallLockupView.(null) <stripped>
-WARNING: couldn't find address 0x22934000fd1e0 (0x134000fd1e0) in binary!
-	0x22930  @objc SmallLockupView.(null) <stripped>
-WARNING: couldn't find address 0x2291c000fd220 (0x11c000fd220) in binary!
-	0x22918  @objc SmallLockupView.(null) <stripped>
-WARNING: couldn't find address 0x233e4000fd210 (0x3e4000fd210) in binary!
-	0x233e0  @objc SmallLockupView.(null) <stripped>
-WARNING: couldn't find address 0x22d64000fd200 (0x564000fd200) in binary!
-	0x25988  @objc SmallLockupView.(null) <stripped>
+WARNING: couldn't find address 0x2038c000f9030 (0x38c000f9030) in binary!
+	0x2ae70  @objc SmallLockupView.(null) <stripped>
+WARNING: couldn't find address 0x22b7c000f8928 (0x37c000f8928) in binary!
+	0x22b78  @objc SmallLockupView.(null) <stripped>
+WARNING: couldn't find address 0x22b64000f8968 (0x364000f8968) in binary!
+	0x22b60  @objc SmallLockupView.(null) <stripped>
+WARNING: couldn't find address 0x2362c000f8958 (0x62c000f8958) in binary!
+	0x23628  @objc SmallLockupView.(null) <stripped>
+WARNING: couldn't find address 0x22fac000f8948 (0x7ac000f8948) in binary!
+	0x25bd0  @objc SmallLockupView.(null) <stripped>
 
 	// Swift methods
-	0x181c20  func <stripped> // method 
-	0x181e10  func <stripped> // method 
+	0x1822b0  func <stripped> // method 
+	0x1824a0  func <stripped> // method 
  }
 
  struct GameCenterUI.Metrics {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let fontSize : Er // +0x0
+	let fontSize : Öb // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let ringThickness : Er // +0x8
+	let ringThickness : Öb // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let innerRingSpacing : Er // +0x10
+	let innerRingSpacing : Öb // +0x10
  }
 
  class GameCenterUI.GKMultiplayerFooterView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1630,77 +1633,77 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var addMessageHandler : ()?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x20134000fd8e0 (0x134000fd8e0) in binary!
-	0x29bc8  @objc GKMultiplayerFooterView.(null) <stripped>
-WARNING: couldn't find address 0x22934000fd1e0 (0x134000fd1e0) in binary!
-	0x22930  @objc GKMultiplayerFooterView.(null) <stripped>
-WARNING: couldn't find address 0x2291c000fd220 (0x11c000fd220) in binary!
-	0x22918  @objc GKMultiplayerFooterView.(null) <stripped>
-WARNING: couldn't find address 0x233e4000fd210 (0x3e4000fd210) in binary!
-	0x233e0  @objc GKMultiplayerFooterView.(null) <stripped>
-WARNING: couldn't find address 0x22d64000fd200 (0x564000fd200) in binary!
-	0x25988  @objc GKMultiplayerFooterView.(null) <stripped>
-WARNING: couldn't find address 0x22d4c000fd1f0 (0x54c000fd1f0) in binary!
-	0x25970  @objc GKMultiplayerFooterView.(null) <stripped>
-WARNING: couldn't find address 0x20b8c000fd1e0 (0x38c000fd1e0) in binary!
-	0x200c6  @objc GKMultiplayerFooterView.(null) <stripped>
-WARNING: couldn't find address 0x20b74000fd1d0 (0x374000fd1d0) in binary!
-	0x200ae  @objc GKMultiplayerFooterView.(null) <stripped>
-WARNING: couldn't find address 0x25934001024d8 (0x134001024d8) in binary!
-	0x212b8  @objc GKMultiplayerFooterView.(null) <stripped>
-WARNING: couldn't find address 0x20b5c00101388 (0x35c00101388) in binary!
-	0x20d60  @objc GKMultiplayerFooterView.(null) <stripped>
-WARNING: couldn't find address 0x2590400105c00 (0x10400105c00) in binary!
-	0x258f8  @objc GKMultiplayerFooterView.(null) <stripped>
-WARNING: couldn't find address 0x2127c000fad78 (0x27c000fad78) in binary!
+WARNING: couldn't find address 0x2038c000f9030 (0x38c000f9030) in binary!
+	0x2ae70  @objc GKMultiplayerFooterView.(null) <stripped>
+WARNING: couldn't find address 0x22b7c000f8928 (0x37c000f8928) in binary!
+	0x22b78  @objc GKMultiplayerFooterView.(null) <stripped>
+WARNING: couldn't find address 0x22b64000f8968 (0x364000f8968) in binary!
+	0x22b60  @objc GKMultiplayerFooterView.(null) <stripped>
+WARNING: couldn't find address 0x2362c000f8958 (0x62c000f8958) in binary!
+	0x23628  @objc GKMultiplayerFooterView.(null) <stripped>
+WARNING: couldn't find address 0x22fac000f8948 (0x7ac000f8948) in binary!
+	0x25bd0  @objc GKMultiplayerFooterView.(null) <stripped>
+WARNING: couldn't find address 0x22f94000f8938 (0x794000f8938) in binary!
+	0x25bb8  @objc GKMultiplayerFooterView.(null) <stripped>
+WARNING: couldn't find address 0x20dc4000f8928 (0x5c4000f8928) in binary!
+	0x2031e  @objc GKMultiplayerFooterView.(null) <stripped>
+WARNING: couldn't find address 0x20dac000f8918 (0x5ac000f8918) in binary!
+	0x20306  @objc GKMultiplayerFooterView.(null) <stripped>
+WARNING: couldn't find address 0x25b7c000fdc50 (0x37c000fdc50) in binary!
+	0x214f0  @objc GKMultiplayerFooterView.(null) <stripped>
+WARNING: couldn't find address 0x20d94000fcae8 (0x594000fcae8) in binary!
+	0x20f98  @objc GKMultiplayerFooterView.(null) <stripped>
+WARNING: couldn't find address 0x25b4c00101338 (0x34c00101338) in binary!
+	0x25b40  @objc GKMultiplayerFooterView.(null) <stripped>
+WARNING: couldn't find address 0x214b4000f64c0 (0x4b4000f64c0) in binary!
 	0x68000000c  @objc GKMultiplayerFooterView.(null) <stripped>
-WARNING: couldn't find address 0x20014000fd7c0 (0x14000fd7c0) in binary!
-	0x29aa8  @objc GKMultiplayerFooterView.(null) <stripped>
-WARNING: couldn't find address 0x20d0c000fe950 (0x50c000fe950) in binary!
-	0x20af0  @objc GKMultiplayerFooterView.(null) <stripped>
-WARNING: couldn't find address 0x21234000fe188 (0x234000fe188) in binary!
-	0x21228  @objc GKMultiplayerFooterView.(null) <stripped>
+WARNING: couldn't find address 0x2026c000f8f10 (0x26c000f8f10) in binary!
+	0x2ad50  @objc GKMultiplayerFooterView.(null) <stripped>
+WARNING: couldn't find address 0x20f44000fa0b0 (0x744000fa0b0) in binary!
+	0x20d28  @objc GKMultiplayerFooterView.(null) <stripped>
+WARNING: couldn't find address 0x2146c000f98d0 (0x46c000f98d0) in binary!
+	0x21460  @objc GKMultiplayerFooterView.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x50cffeb5370  @objc GKMultiplayerFooterView.(null) <stripped>
-	0x7a4000fd750  @objc GKMultiplayerFooterView.Hâ«Ë‰◊) <stripped>
-WARNING: couldn't find address 0x100dacffeb5610 (0x5acffeb5610) in binary!
-	0x274000fcff8  @objc GKMultiplayerFooterView.(null) <stripped>
-WARNING: couldn't find address 0x1012ccffeb5678 (0x2ccffeb5678) in binary!
-	0x274001012a0  @objc GKMultiplayerFooterView.(null) <stripped>
-WARNING: couldn't find address 0xfe10cffeb5b70 (0x10cffeb5b70) in binary!
-	0x1ac000faca8  @objc GKMultiplayerFooterView.(null) <stripped>
-WARNING: couldn't find address 0xffeb5f98 (0xffeb5f98) in binary!
-	0x744000fd6f0  @objc GKMultiplayerFooterView.(null) <stripped>
-WARNING: couldn't find address 0x100d4cffebd050 (0x54cffebd050) in binary!
-	0x17c000fe0d0  @objc GKMultiplayerFooterView.(null) <stripped>
-WARNING: couldn't find address 0x105de4ffebd2c8 (0x5e4ffebd2c8) in binary!
-	0x72c00105390  @objc GKMultiplayerFooterView.(null) <stripped>
+	0x444ffeb11d8  @objc GKMultiplayerFooterView.(null) <stripped>
+	0x1fc000f8ea0  @objc GKMultiplayerFooterView.1¿HâEàE1ˇLâ˜ˇ6Ó4 <stripped>
+WARNING: couldn't find address 0xfc50cffeb1478 (0x50cffeb1478) in binary!
+	0x4ac000f8740  @objc GKMultiplayerFooterView.(null) <stripped>
+WARNING: couldn't find address 0xfca2cffeb14e0 (0x22cffeb14e0) in binary!
+	0x4ac000fca00  @objc GKMultiplayerFooterView.(null) <stripped>
+WARNING: couldn't find address 0xf9854ffeb19d8 (0x54ffeb19d8) in binary!
+	0x3e4000f63f0  @objc GKMultiplayerFooterView.(null) <stripped>
+WARNING: couldn't find address 0xffeb1e00 (0xffeb1e00) in binary!
+	0x19c000f8e40  @objc GKMultiplayerFooterView.(null) <stripped>
+WARNING: couldn't find address 0xfc4acffeb8ee8 (0x4acffeb8ee8) in binary!
+	0x3b4000f9818  @objc GKMultiplayerFooterView.(null) <stripped>
+WARNING: couldn't find address 0x10151cffeb9160 (0x51cffeb9160) in binary!
+	0x17400100ad0  @objc GKMultiplayerFooterView.(null) <stripped>
 
 	// Swift methods
-	0x183de0  func <stripped> // getter 
-	0x183e80  func <stripped> // setter 
-	0x184200  func <stripped> // modifyCoroutine 
-	0x1842a0  func <stripped> // getter 
-	0x184300  func <stripped> // setter 
-	0x1843f0  func <stripped> // modifyCoroutine 
-	0x184510  func <stripped> // getter 
-	0x1845a0  func <stripped> // setter 
-	0x184670  func <stripped> // modifyCoroutine 
-	0x184710  func <stripped> // method 
-	0x184ba0  func <stripped> // getter 
-	0x184c80  func <stripped> // setter 
-	0x184d90  func <stripped> // modifyCoroutine 
-	0x184f50  func <stripped> // getter 
-	0x185090  func <stripped> // setter 
-	0x185200  func <stripped> // modifyCoroutine 
-	0x185320  func <stripped> // getter 
-	0x1853d0  func <stripped> // setter 
-	0x185540  func <stripped> // modifyCoroutine 
-	0x185650  func <stripped> // getter 
+	0x1844a0  func <stripped> // getter 
+	0x184540  func <stripped> // setter 
+	0x1848c0  func <stripped> // modifyCoroutine 
+	0x184960  func <stripped> // getter 
+	0x1849c0  func <stripped> // setter 
+	0x184ab0  func <stripped> // modifyCoroutine 
+	0x184bd0  func <stripped> // getter 
+	0x184c60  func <stripped> // setter 
+	0x184d30  func <stripped> // modifyCoroutine 
+	0x184dd0  func <stripped> // method 
+	0x185260  func <stripped> // getter 
+	0x185340  func <stripped> // setter 
+	0x185450  func <stripped> // modifyCoroutine 
+	0x185610  func <stripped> // getter 
 	0x185750  func <stripped> // setter 
-	0x185910  func <stripped> // modifyCoroutine 
-	0x185950  func <stripped> // method 
-	0x185c10  func <stripped> // getter 
+	0x1858c0  func <stripped> // modifyCoroutine 
+	0x1859e0  func <stripped> // getter 
+	0x185a90  func <stripped> // setter 
+	0x185c00  func <stripped> // modifyCoroutine 
+	0x185d10  func <stripped> // getter 
+	0x185e10  func <stripped> // setter 
+	0x185fd0  func <stripped> // modifyCoroutine 
+	0x186010  func <stripped> // method 
+	0x1862d0  func <stripped> // getter 
  }
 
  struct GameCenterUI.AchievementCardStyle {
@@ -1721,7 +1724,7 @@ WARNING: couldn't find address 0x105de4ffebd2c8 (0x5e4ffebd2c8) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let text : ≠y // +0x20
+	let text : Ìi // +0x20
  }
 
  struct GameCenterUI.Metrics {
@@ -1740,32 +1743,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let avatarView : AvatarView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x20014000fd7c0 (0x14000fd7c0) in binary!
-	0x29aa8  @objc LeaderboardHeroLockupView.(null) <stripped>
-WARNING: couldn't find address 0x20d0c000fe950 (0x50c000fe950) in binary!
-	0x20af0  @objc LeaderboardHeroLockupView.(null) <stripped>
-WARNING: couldn't find address 0x21234000fe188 (0x234000fe188) in binary!
-	0x21228  @objc LeaderboardHeroLockupView.(null) <stripped>
+WARNING: couldn't find address 0x2026c000f8f10 (0x26c000f8f10) in binary!
+	0x2ad50  @objc LeaderboardHeroLockupView.(null) <stripped>
+WARNING: couldn't find address 0x20f44000fa0b0 (0x744000fa0b0) in binary!
+	0x20d28  @objc LeaderboardHeroLockupView.(null) <stripped>
+WARNING: couldn't find address 0x2146c000f98d0 (0x46c000f98d0) in binary!
+	0x21460  @objc LeaderboardHeroLockupView.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x50cffeb5370  @objc LeaderboardHeroLockupView.(null) <stripped>
-	0x7a4000fd750  @objc LeaderboardHeroLockupView.Hâ«Ë‰◊) <stripped>
-WARNING: couldn't find address 0x100dacffeb5610 (0x5acffeb5610) in binary!
-	0x274000fcff8  @objc LeaderboardHeroLockupView.(null) <stripped>
+	0x444ffeb11d8  @objc LeaderboardHeroLockupView.(null) <stripped>
+	0x1fc000f8ea0  @objc LeaderboardHeroLockupView.1¿HâEàE1ˇLâ˜ˇ6Ó4 <stripped>
+WARNING: couldn't find address 0xfc50cffeb1478 (0x50cffeb1478) in binary!
+	0x4ac000f8740  @objc LeaderboardHeroLockupView.(null) <stripped>
 
 	// Swift methods
-	0x188eb0  func <stripped> // method 
+	0x1895b0  func <stripped> // method 
  }
 
  struct GameCenterUI.PlayerProfileInfoBarData {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : ˜
+	var id : p
 	let infoItems : [(value: String, title: String)]
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var segue : kn
+	var segue : É^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var impressionMetrics : %|
+	var impressionMetrics : =l
  }
 
  struct GameCenterUI.GameCenterSignOutAction {
@@ -1780,20 +1783,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let noFriendsView : EmptyStateView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1ffa4000fd750 (0x7a4000fd750) in binary!
-	0x29a38  @objc GKMultiplayerPickerNoFriendsCell.(null) <stripped>
-WARNING: couldn't find address 0x20a74000fcff8 (0x274000fcff8) in binary!
-	0x1ffae  @objc GKMultiplayerPickerNoFriendsCell.(null) <stripped>
-WARNING: couldn't find address 0x20a74001012a0 (0x274001012a0) in binary!
-	0x211b8  @objc GKMultiplayerPickerNoFriendsCell.(null) <stripped>
-WARNING: couldn't find address 0x211ac000faca8 (0x1ac000faca8) in binary!
+WARNING: couldn't find address 0x201fc000f8ea0 (0x1fc000f8ea0) in binary!
+	0x2ace0  @objc GKMultiplayerPickerNoFriendsCell.(null) <stripped>
+WARNING: couldn't find address 0x20cac000f8740 (0x4ac000f8740) in binary!
+	0x20206  @objc GKMultiplayerPickerNoFriendsCell.(null) <stripped>
+WARNING: couldn't find address 0x20cac000fca00 (0x4ac000fca00) in binary!
+	0x213f0  @objc GKMultiplayerPickerNoFriendsCell.(null) <stripped>
+WARNING: couldn't find address 0x213e4000f63f0 (0x3e4000f63f0) in binary!
 	0x68000000c  @objc GKMultiplayerPickerNoFriendsCell.(null) <stripped>
-WARNING: couldn't find address 0x1ff44000fd6f0 (0x744000fd6f0) in binary!
-	0x299d8  @objc GKMultiplayerPickerNoFriendsCell.(null) <stripped>
-WARNING: couldn't find address 0x2117c000fe0d0 (0x17c000fe0d0) in binary!
-	0x28004  @objc GKMultiplayerPickerNoFriendsCell.(null) <stripped>
-WARNING: couldn't find address 0x2272c00105390 (0x72c00105390) in binary!
-	0x21158  @objc GKMultiplayerPickerNoFriendsCell.(null) <stripped>
+WARNING: couldn't find address 0x2019c000f8e40 (0x19c000f8e40) in binary!
+	0x2ac80  @objc GKMultiplayerPickerNoFriendsCell.(null) <stripped>
+WARNING: couldn't find address 0x213b4000f9818 (0x3b4000f9818) in binary!
+	0x2826c  @objc GKMultiplayerPickerNoFriendsCell.(null) <stripped>
+WARNING: couldn't find address 0x2297400100ad0 (0x17400100ad0) in binary!
+	0x21390  @objc GKMultiplayerPickerNoFriendsCell.(null) <stripped>
  }
 
  class GameCenterUI.NearbyPlayersProfileSection : PlayerProfileSection { }
@@ -1803,15 +1806,15 @@ WARNING: couldn't find address 0x2272c00105390 (0x72c00105390) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let movementArrowView : Ey // +0xa8
+	let movementArrowView : Öi // +0xa8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let ordinalLabel : st // +0xd0
+	let ordinalLabel : ìd // +0xd0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let avatarView : Ey // +0xf8
+	let avatarView : Öi // +0xf8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let playerHandleLabel : ≠y // +0x120
+	let playerHandleLabel : Ìi // +0x120
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let detailLabel : st // +0x148
+	let detailLabel : ìd // +0x148
  }
 
  struct GameCenterUI.Metrics {
@@ -1820,13 +1823,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var movementArrowSize : CGSize // +0x0
 	var avatarSize : CGSize // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var oridinalTextSpace : Øv // +0x28
+	var oridinalTextSpace : œf // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var playerHandleTextSpace : Àw // +0x50
+	var playerHandleTextSpace : h // +0x50
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var detailTextSpace : Øv // +0x78
+	var detailTextSpace : œf // +0x78
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var horizontalComponentSpacing : Er // +0xa0
+	var horizontalComponentSpacing : Öb // +0xa0
  }
 
  struct GameCenterUI.Metrics {
@@ -1835,18 +1838,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var avatarSize : CGSize // +0x0
 	var playerHandleNumberOfLines : Int // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var playerHandleTextSpace : Àw // +0x18
+	var playerHandleTextSpace : h // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var playerHandleSecondarySpace : Àw // +0x40
+	var playerHandleSecondarySpace : h // +0x40
 	var subtitleNumberOfLines : Int // +0x68
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var subtitleTextSpace : Àw // +0x70
+	var subtitleTextSpace : h // +0x70
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var subtitleSecondarySpace : Àw // +0x98
+	var subtitleSecondarySpace : h // +0x98
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottomSpace : Àw // +0xc0
+	var bottomSpace : h // +0xc0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var horizontalComponentSpacing : Er // +0xe8
+	var horizontalComponentSpacing : Öb // +0xe8
 	var chevronSize : CGSize // +0xf0
  }
 
@@ -1855,13 +1858,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let avatarView : Ey // +0x100
+	let avatarView : Öi // +0x100
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let playerHandleLabel : ≠y // +0x128
+	let playerHandleLabel : Ìi // +0x128
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subtitleLabel : st // +0x150
+	let subtitleLabel : ìd // +0x150
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let chevronView : Ey // +0x178
+	let chevronView : Öi // +0x178
  }
 
  class GameCenterUI.AchievementCardCollectionViewCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1871,17 +1874,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var wantsCompactLayoutMetrics : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1ff44000fd6f0 (0x744000fd6f0) in binary!
-	0x299d8  @objc AchievementCardCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x2117c000fe0d0 (0x17c000fe0d0) in binary!
-	0x28004  @objc AchievementCardCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x2272c00105390 (0x72c00105390) in binary!
-	0x21158  @objc AchievementCardCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x2019c000f8e40 (0x19c000f8e40) in binary!
+	0x2ac80  @objc AchievementCardCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x213b4000f9818 (0x3b4000f9818) in binary!
+	0x2826c  @objc AchievementCardCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x2297400100ad0 (0x17400100ad0) in binary!
+	0x21390  @objc AchievementCardCollectionViewCell.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffebfed0  @objc AchievementCardCollectionViewCell.(null) <stripped>
+	0xffebbda8  @objc AchievementCardCollectionViewCell.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x4e4ffebf5b8  @objc AchievementCardCollectionViewCell.(null) <stripped>
-	0x34cffebfa00  @objc AchievementCardCollectionViewCell.=; <stripped>
+	0x444ffebb490  @objc AchievementCardCollectionViewCell.(null) <stripped>
+	0x2c4ffebb8d8  @objc AchievementCardCollectionViewCell.HâÂHâW@]√UHâÂAWAVSHÉÏIâ˛Hç}ÿLâ7HãY; <stripped>
  }
 
  class GameCenterUI.GKMultiplayerViewControllerLayout : UICollectionViewFlowLayout /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1890,19 +1893,21 @@ WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
 	var type : GKMultiplayerLayout
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x22b6c000fd558 (0x36c000fd558) in binary!
-	0x29970  @objc GKMultiplayerViewControllerLayout.(null) <stripped>
-WARNING: couldn't find address 0x21114000ff250 (0x114000ff250) in binary!
-	0x202a8  @objc GKMultiplayerViewControllerLayout.(null) <stripped>
-WARNING: couldn't find address 0x231a400102508 (0x1a400102508) in binary!
-	0x23730  @objc GKMultiplayerViewControllerLayout.(null) <stripped>
+WARNING: couldn't find address 0x22db4000f8ca8 (0x5b4000f8ca8) in binary!
+	0x2ac18  @objc GKMultiplayerViewControllerLayout.(null) <stripped>
+WARNING: couldn't find address 0x2134c000fa9b0 (0x34c000fa9b0) in binary!
+	0x20500  @objc GKMultiplayerViewControllerLayout.(null) <stripped>
+WARNING: couldn't find address 0x233ec000fdc80 (0x3ec000fdc80) in binary!
+	0x23978  @objc GKMultiplayerViewControllerLayout.(null) <stripped>
 WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
-	0x204ffec1ec8  @objc GKMultiplayerViewControllerLayout.(null) <stripped>
-	0x47cffec2260  @objc GKMultiplayerViewControllerLayout.¿ueHãòj; <stripped>
-	0x17cffec2518  @objc GKMultiplayerViewControllerLayout.ä¥ <stripped>
+	0x13cffebddb0  @objc GKMultiplayerViewControllerLayout.(null) <stripped>
+	0x3dcffebe148  @objc GKMultiplayerViewControllerLayout.éü4 <stripped>
+	0xdcffebe400  @objc GKMultiplayerViewControllerLayout.√UHâÂHâW8]√UHâÂäG	]√UHâÂàW	]√UHâÂäG
+]√UHâÂàW
+]√UHâÂäG]√UHâÂàW]√UHâÂHãGHHãWP]√UHâÂHâWHHâOP]√UHâÂHãG@]√UHâÂHâW@]√UHâÂAWAVSHÉÏIâ˛Hç}ÿLâ7HãY; <stripped>
 
 	// Swift methods
-	0x1950a0  func <stripped> // getter 
+	0x195830  func <stripped> // getter 
  }
 
  struct GameCenterUI.PlayerProfileUtil { }
@@ -1911,35 +1916,35 @@ WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var overlapPercentage : Er
+	var overlapPercentage : Öb
 	var playerViews : AvatarView
 	var playerSize : CGSize
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x294bc000fcfd8 (0x4bc000fcfd8) in binary!
-	0x26aee  @objc OverlappingPlayersView.(null) <stripped>
-WARNING: couldn't find address 0x1fe74000fd620 (0x674000fd620) in binary!
-	0x29908  @objc OverlappingPlayersView.(null) <stripped>
-WARNING: couldn't find address 0x20b6c000fe7b0 (0x36c000fe7b0) in binary!
-	0x20950  @objc OverlappingPlayersView.(null) <stripped>
-WARNING: couldn't find address 0x21094000fdfe8 (0x94000fdfe8) in binary!
-	0x237c8  @objc OverlappingPlayersView.(null) <stripped>
-WARNING: couldn't find address 0x2107c000fdff8 (0x7c000fdff8) in binary!
-	0x21070  @objc OverlappingPlayersView.(null) <stripped>
+WARNING: couldn't find address 0x29744000f8720 (0x744000f8720) in binary!
+	0x26d56  @objc OverlappingPlayersView.(null) <stripped>
+WARNING: couldn't find address 0x200cc000f8d70 (0xcc000f8d70) in binary!
+	0x2abb0  @objc OverlappingPlayersView.(null) <stripped>
+WARNING: couldn't find address 0x20da4000f9f10 (0x5a4000f9f10) in binary!
+	0x20b88  @objc OverlappingPlayersView.(null) <stripped>
+WARNING: couldn't find address 0x212cc000f9730 (0x2cc000f9730) in binary!
+	0x23a10  @objc OverlappingPlayersView.(null) <stripped>
+WARNING: couldn't find address 0x212b4000f9740 (0x2b4000f9740) in binary!
+	0x212a8  @objc OverlappingPlayersView.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x414ffec9248  @objc OverlappingPlayersView.(null) <stripped>
-	0x4f4ffec9540  @objc OverlappingPlayersView.%#44 <stripped>
-	0xffec9978  @objc OverlappingPlayersView.; <stripped>
+	0x374ffec5180  @objc OverlappingPlayersView.(null) <stripped>
+	0x42cffec5478  @objc OverlappingPlayersView.√UHâÂÚG]√UHâÂäG]√UHâÂàW]√UHâÂHãG ]√UHâÂπ  <stripped>
+	0xffec58b0  @objc OverlappingPlayersView.Lâ˙Ëb** <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x3ccffec9f00  @objc OverlappingPlayersView.(null) <stripped>
-	0x6f4ffec9f38  @objc OverlappingPlayersView. <stripped>
+	0x32cffec5e38  @objc OverlappingPlayersView.(null) <stripped>
+	0x654ffec5e70  @objc OverlappingPlayersView.¬¡ <stripped>
 
 	// Swift methods
-	0x197390  func <stripped> // getter 
-	0x197410  func <stripped> // setter 
-	0x1974d0  func <stripped> // modifyCoroutine 
-	0x197cb0  func <stripped> // method 
-	0x1981f0  func <stripped> // method 
+	0x197b30  func <stripped> // getter 
+	0x197bb0  func <stripped> // setter 
+	0x197c70  func <stripped> // modifyCoroutine 
+	0x198450  func <stripped> // method 
+	0x198990  func <stripped> // method 
  }
 
  class GameCenterUI.AchievementsByGamePresenter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1951,22 +1956,22 @@ WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
 	var selectedSort : Sort // +0x39 (0x1)
 	let sortOptions : Sort // +0x40 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var snapshot : ßb // +0x2d6d3c (0x0)
+	var snapshot : øR // +0x2db664 (0x0)
 	let dataUpdatePresenter : GameCenterDataUpdatePresenter // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var onApplySnapshot : /g // +0x1170 (0x8)
+	var onApplySnapshot : GW // +0x115c (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var onUpdatePhaseChange : çw // +0x2d6d3c (0x8)
+	var onUpdatePhaseChange : •g // +0x2db664 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onShowPageOverlay : w // +0x0 (0x8)
+	let onShowPageOverlay : óg // +0x0 (0x8)
 
 	// Swift methods
-	0x19a060  func <stripped> // modifyCoroutine 
-	0x19a120  func <stripped> // setter 
-	0x19a210  func <stripped> // method 
-	0x19a4a0  func <stripped> // method 
-	0x19a9a0  func <stripped> // method 
-	0x19af70  func <stripped> // method 
+	0x19a830  func <stripped> // modifyCoroutine 
+	0x19a8f0  func <stripped> // setter 
+	0x19a9e0  func <stripped> // method 
+	0x19ac70  func <stripped> // method 
+	0x19b170  func <stripped> // method 
+	0x19b740  func <stripped> // method 
  }
 
  enum GameCenterUI.Sort {
@@ -1998,16 +2003,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var animationDelay : Double
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1fe0c000fd5b8 (0x60c000fd5b8) in binary!
-	0x298a0  @objc LoadingView.(null) <stripped>
-WARNING: couldn't find address 0x21044000fdf98 (0x44000fdf98) in binary!
-	0x21038  @objc LoadingView.(null) <stripped>
-WARNING: couldn't find address 0x2102c000fab28 (0x2c000fab28) in binary!
+WARNING: couldn't find address 0x20064000f8d08 (0x64000f8d08) in binary!
+	0x2ab48  @objc LoadingView.(null) <stripped>
+WARNING: couldn't find address 0x2127c000f96e0 (0x27c000f96e0) in binary!
+	0x21270  @objc LoadingView.(null) <stripped>
+WARNING: couldn't find address 0x21264000f6270 (0x264000f6270) in binary!
 	0x68000000c  @objc LoadingView.(null) <stripped>
-WARNING: couldn't find address 0x1fdc4000fd570 (0x5c4000fd570) in binary!
-	0x29858  @objc LoadingView.(null) <stripped>
-WARNING: couldn't find address 0x208ac001010d8 (0xac001010d8) in binary!
-	0x20ab0  @objc LoadingView.(null) <stripped>
+WARNING: couldn't find address 0x2001c000f8cc0 (0x1c000f8cc0) in binary!
+	0x2ab00  @objc LoadingView.(null) <stripped>
+WARNING: couldn't find address 0x20ae4000fc838 (0x2e4000fc838) in binary!
+	0x20ce8  @objc LoadingView.(null) <stripped>
 
 	// Swift methods
  }
@@ -2020,20 +2025,20 @@ WARNING: couldn't find address 0x208ac001010d8 (0xac001010d8) in binary!
 	var state : InteractionState
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1fdc4000fd570 (0x5c4000fd570) in binary!
-	0x29858  @objc TitledParagraphView.(null) <stripped>
-WARNING: couldn't find address 0x208ac001010d8 (0xac001010d8) in binary!
-	0x20ab0  @objc TitledParagraphView.(null) <stripped>
-WARNING: couldn't find address 0x20fe4000fdf38 (0x7e4000fdf38) in binary!
-	0x20fd8  @objc TitledParagraphView.(null) <stripped>
+WARNING: couldn't find address 0x2001c000f8cc0 (0x1c000f8cc0) in binary!
+	0x2ab00  @objc TitledParagraphView.(null) <stripped>
+WARNING: couldn't find address 0x20ae4000fc838 (0x2e4000fc838) in binary!
+	0x20ce8  @objc TitledParagraphView.(null) <stripped>
+WARNING: couldn't find address 0x2121c000f9680 (0x21c000f9680) in binary!
+	0x21210  @objc TitledParagraphView.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x2b4ffecb5c0  @objc TitledParagraphView.(null) <stripped>
-	0x554000fd500  @objc TitledParagraphView. <stripped>
-WARNING: couldn't find address 0x100b5cffecbf30 (0x35cffecbf30) in binary!
-	0x24000fce90  @objc TitledParagraphView.(null) <stripped>
+	0x1fcffec74f8  @objc TitledParagraphView.(null) <stripped>
+	0x7ac000f8c50  @objc TitledParagraphView.Lã%¡¬; <stripped>
+WARNING: couldn't find address 0xfc2bcffec7e68 (0x2bcffec7e68) in binary!
+	0x25c000f85d8  @objc TitledParagraphView.(null) <stripped>
 
 	// Swift methods
-	0x19f7e0  func <stripped> // method 
+	0x19ffd0  func <stripped> // method 
  }
 
  struct GameCenterUI.GameCenterSignInAction { }
@@ -2044,10 +2049,10 @@ WARNING: couldn't find address 0x100b5cffecbf30 (0x35cffecbf30) in binary!
 	var viewController : weak UIViewController?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x22a04000fd3f0 (0x204000fd3f0) in binary!
-	0x20fb8  @objc PrivacyPolicyActionImplementation.(null) <stripped>
+WARNING: couldn't find address 0x22c4c000f8b40 (0x44c000f8b40) in binary!
+	0x211f0  @objc PrivacyPolicyActionImplementation.(null) <stripped>
 WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
-	0x35cffecbf30  @objc PrivacyPolicyActionImplementation.(null) <stripped>
+	0x2bcffec7e68  @objc PrivacyPolicyActionImplementation.(null) <stripped>
 
 	// Swift methods
  }
@@ -2065,20 +2070,20 @@ WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
 	var actionHandler : ()?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1fd54000fd500 (0x554000fd500) in binary!
-	0x297e8  @objc GKDashboardShowMoreFooterView.(null) <stripped>
-WARNING: couldn't find address 0x20824000fce90 (0x24000fce90) in binary!
-	0x1fd5e  @objc GKDashboardShowMoreFooterView.(null) <stripped>
-WARNING: couldn't find address 0x20f74000fdec8 (0x774000fdec8) in binary!
-	0x255d8  @objc GKDashboardShowMoreFooterView.(null) <stripped>
-WARNING: couldn't find address 0x20f5c000faa58 (0x75c000faa58) in binary!
+WARNING: couldn't find address 0x1ffac000f8c50 (0x7ac000f8c50) in binary!
+	0x2aa90  @objc GKDashboardShowMoreFooterView.(null) <stripped>
+WARNING: couldn't find address 0x20a5c000f85d8 (0x25c000f85d8) in binary!
+	0x1ffb6  @objc GKDashboardShowMoreFooterView.(null) <stripped>
+WARNING: couldn't find address 0x211ac000f9610 (0x1ac000f9610) in binary!
+	0x25820  @objc GKDashboardShowMoreFooterView.(null) <stripped>
+WARNING: couldn't find address 0x21194000f61a0 (0x194000f61a0) in binary!
 	0x58000000c  @objc GKDashboardShowMoreFooterView.(null) <stripped>
-WARNING: couldn't find address 0x1fcf4000fd4a0 (0x4f4000fd4a0) in binary!
-	0x29788  @objc GKDashboardShowMoreFooterView.(null) <stripped>
-WARNING: couldn't find address 0x20f2c000fde80 (0x72c000fde80) in binary!
-	0x25590  @objc GKDashboardShowMoreFooterView.(null) <stripped>
-WARNING: couldn't find address 0x20f14000faa10 (0x714000faa10) in binary!
-	0x68000000c  @objc GKDashboardShowMoreFooterView.(null) <stripped>
+WARNING: couldn't find address 0x1ff4c000f8bf0 (0x74c000f8bf0) in binary!
+	0x2aa30  @objc GKDashboardShowMoreFooterView.(null) <stripped>
+WARNING: couldn't find address 0x21164000f95c8 (0x164000f95c8) in binary!
+	0x257d8  @objc GKDashboardShowMoreFooterView.(null) <stripped>
+WARNING: couldn't find address 0x2114c000f6158 (0x14c000f6158) in binary!
+	0x78000000c  @objc GKDashboardShowMoreFooterView.(null) <stripped>
  }
 
  struct GameCenterUI.AchievementsByGameActionImplementation {
@@ -2103,29 +2108,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cornerRadius : Er
+	var cornerRadius : Öb
 	var cornerStyle : CornerStyle
 	var roundedCorners : UIRectCorner
 	var borderView : BorderView
 	var borderColor : UIColor
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var borderWidth : Er
+	var borderWidth : Öb
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1fcf4000fd4a0 (0x4f4000fd4a0) in binary!
-	0x29788  @objc RoundedCornerView.(null) <stripped>
-WARNING: couldn't find address 0x20f2c000fde80 (0x72c000fde80) in binary!
-	0x25590  @objc RoundedCornerView.(null) <stripped>
-WARNING: couldn't find address 0x20f14000faa10 (0x714000faa10) in binary!
-	0x68000000c  @objc RoundedCornerView.(null) <stripped>
-WARNING: couldn't find address 0x22fa4000fce08 (0x7a4000fce08) in binary!
-	0x22cd0  @objc RoundedCornerView.(null) <stripped>
-WARNING: couldn't find address 0x23ea400101240 (0x6a400101240) in binary!
-	0x23eb8  @objc RoundedCornerView.(null) <stripped>
+WARNING: couldn't find address 0x1ff4c000f8bf0 (0x74c000f8bf0) in binary!
+	0x2aa30  @objc RoundedCornerView.(null) <stripped>
+WARNING: couldn't find address 0x21164000f95c8 (0x164000f95c8) in binary!
+	0x257d8  @objc RoundedCornerView.(null) <stripped>
+WARNING: couldn't find address 0x2114c000f6158 (0x14c000f6158) in binary!
+	0x78000000c  @objc RoundedCornerView.(null) <stripped>
+WARNING: couldn't find address 0x231ec000f8550 (0x1ec000f8550) in binary!
+	0x22f18  @objc RoundedCornerView.(null) <stripped>
+WARNING: couldn't find address 0x240ec000f8540 (0xec000f8540) in binary!
+	0x240e0  @objc RoundedCornerView.(null) <stripped>
 
 	// Swift methods
-	0x1a5430  func <stripped> // getter 
-	0x1a5450  func <stripped> // method 
+	0x1a5fb0  func <stripped> // getter 
+	0x1a5fd0  func <stripped> // method 
  }
 
  enum GameCenterUI.CornerStyle {
@@ -2145,26 +2150,26 @@ WARNING: couldn't find address 0x23ea400101240 (0x6a400101240) in binary!
 	var isUpdating : Bool // +0x48 (0x1)
 	var searchTerm : String? // +0x50 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var snapshot : ßb // +0x0 (0x0)
+	var snapshot : øR // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var onApplySnapshot : /g // +0x0 (0x8)
+	var onApplySnapshot : GW // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onShowPageOverlay : w // +0x73635f5f (0x8)
+	let onShowPageOverlay : óg // +0x73635f5f (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var onUpdatePhaseChange : çw // +0x67 (0x8)
+	var onUpdatePhaseChange : •g // +0x67 (0x8)
 
 	// Swift methods
-	0x1a64a0  func <stripped> // getter 
-	0x1a64f0  func <stripped> // getter 
-	0x1a6880  func <stripped> // getter 
-	0x1a6ba0  func <stripped> // getter 
-	0x1a6cd0  func <stripped> // method 
-	0x1a6e50  func <stripped> // method 
-	0x1a7340  func <stripped> // method 
-	0x1a74a0  func <stripped> // method 
-	0x1a7740  func <stripped> // method 
-	0x1a7a00  func <stripped> // method 
-	0x1a7f80  func <stripped> // method 
+	0x1a7020  func <stripped> // getter 
+	0x1a7070  func <stripped> // getter 
+	0x1a7400  func <stripped> // getter 
+	0x1a7720  func <stripped> // getter 
+	0x1a7850  func <stripped> // method 
+	0x1a79d0  func <stripped> // method 
+	0x1a7ec0  func <stripped> // method 
+	0x1a8020  func <stripped> // method 
+	0x1a82c0  func <stripped> // method 
+	0x1a8580  func <stripped> // method 
+	0x1a8b00  func <stripped> // method 
  }
 
  struct GameCenterUI.RequiredProfileData {
@@ -2193,35 +2198,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let columnWidth : Er // +0x8 (0x8)
+	let columnWidth : Öb // +0x8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rowHeight : Er // +0x10 (0x8)
+	let rowHeight : Öb // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let interColumnSpacing : Er // +0x18 (0x8)
+	let interColumnSpacing : Öb // +0x18 (0x8)
 	let columnCount : Int // +0x20 (0x8)
 	let minimumInsets : UIEdgeInsets // +0x28 (0x20)
 	let centeringInsets : UIEdgeInsets // +0x48 (0x20)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let representingWidth : Er // +0x68 (0x8)
+	let representingWidth : Öb // +0x68 (0x8)
 	let columnSizeCategory : ColumnSizeCategory // +0x70 (0x8)
 	var contentSizeCategory : UIContentSizeCategory // +0x78 (0x8)
 	var horizontalSizeClass : UIUserInterfaceSizeClass // +0x80 (0x9)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x22fa4000fce08 (0x7a4000fce08) in binary!
-	0x22cd0  @objc PageGrid.(null) <stripped>
-WARNING: couldn't find address 0x23ea400101240 (0x6a400101240) in binary!
-	0x23eb8  @objc PageGrid.(null) <stripped>
-WARNING: couldn't find address 0x2290c000fd2f8 (0x10c000fd2f8) in binary!
-	0x20ec0  @objc PageGrid.(null) <stripped>
-WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffed92c8  @objc PageGrid.(null) <stripped>
-WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x474ffed9e30  @objc PageGrid.(null) <stripped>
-	0x3ccffed9e58  @objc PageGrid.Aˇ’Hâ«Ë!Ù) <stripped>
+WARNING: couldn't find address 0x231ec000f8550 (0x1ec000f8550) in binary!
+	0x22f18  @objc PageGrid.(null) <stripped>
+WARNING: couldn't find address 0x240ec000f8540 (0xec000f8540) in binary!
+	0x240e0  @objc PageGrid.(null) <stripped>
+WARNING: couldn't find address 0x240f4000f8530 (0xf4000f8530) in binary!
+	0x22b48  @objc PageGrid.(null) <stripped>
+WARNING: couldn't find address 0x210ec000f60f8 (0xec000f60f8) in binary!
+	0x18000000c  @objc PageGrid.(null) <stripped>
+WARNING: couldn't find address 0x2950400101330 (0x50400101330) in binary!
+	0x58000000c  @objc PageGrid.(null) <stripped>
+WARNING: couldn't find address 0x22b0c000f8a00 (0x30c000f8a00) in binary!
+	0x20270  @objc PageGrid.(null) <stripped>
+WARNING: couldn't find address 0x20b64000f9cd0 (0x364000f9cd0) in binary!
+	0x1fe68  @objc PageGrid.(null) <stripped>
 
 	// Swift methods
-	0x1ab8f0  class func PageGrid.__allocating_init(width:columnSizeCategory:maxColumns:) // init 
+	0x1ac540  class func PageGrid.__allocating_init(width:columnSizeCategory:maxColumns:) // init 
  }
 
  enum GameCenterUI.ColumnSizeCategory { }
@@ -2242,13 +2250,13 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	// Properties
 	var glyphSize : CGSize // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var glyphTrailingMargin : Àw // +0x10
+	var glyphTrailingMargin : h // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var titleTextSpace : Àw // +0x38
+	var titleTextSpace : h // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var titleBottomSpace : Àw // +0x60
+	var titleBottomSpace : h // +0x60
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var titleTrailingMargin : Àw // +0x88
+	var titleTrailingMargin : h // +0x88
 	var chevronSize : CGSize // +0xb0
  }
 
@@ -2257,45 +2265,47 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let glyphView : Uy // +0xc0
+	let glyphView : ïi // +0xc0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleLabel : ≠y // +0xe8
+	let titleLabel : Ìi // +0xe8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let chevronView : Uy // +0x110
+	let chevronView : ïi // +0x110
  }
 
  class GameCenterUI.CloseButton : HeaderButton {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x228d4000fd2c0 (0xd4000fd2c0) in binary!
-	0x20028  @objc CloseButton.(null) <stripped>
-WARNING: couldn't find address 0x2093c000fe580 (0x13c000fe580) in binary!
-	0x1fc20  @objc CloseButton.(null) <stripped>
-WARNING: couldn't find address 0x20e64000fa960 (0x664000fa960) in binary!
+WARNING: couldn't find address 0x22b0c000f8a00 (0x30c000f8a00) in binary!
+	0x20270  @objc CloseButton.(null) <stripped>
+WARNING: couldn't find address 0x20b64000f9cd0 (0x364000f9cd0) in binary!
+	0x1fe68  @objc CloseButton.(null) <stripped>
+WARNING: couldn't find address 0x2108c000f6098 (0x8c000f6098) in binary!
 	0x68000000c  @objc CloseButton.(null) <stripped>
-WARNING: couldn't find address 0x2288c000fd278 (0x8c000fd278) in binary!
-	0x20e40  @objc CloseButton.(null) <stripped>
-	0x240c8  ___39-[GKCollectionGridLayout prepareLayout]_block_invoke
+WARNING: couldn't find address 0x22ac4000f89b8 (0x2c4000f89b8) in binary!
+	0x21068  @objc CloseButton.(null) <stripped>
+WARNING: couldn't find address 0x242fe000f7aa8 (0x2fe000f7aa8) in binary!
+	0x24300  @objc CloseButton.(null) <stripped>
  }
 
  class GameCenterUI.GameCenterDataUpdatePresenter : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onGameCenterDataUpdate : Õt // +0x8 (0x8)
+	let onGameCenterDataUpdate : Âd // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2288c000fd278 (0x8c000fd278) in binary!
-	0x20e40  @objc GameCenterDataUpdatePresenter.(null) <stripped>
-	0x240c8  ___39-[GKCollectionGridLayout prepareLayout]_block_invoke
-WARNING: couldn't find address 0x2548c000fcd40 (0x48c000fcd40) in binary!
-	0x20e10  @objc GameCenterDataUpdatePresenter.(null) <stripped>
+WARNING: couldn't find address 0x22ac4000f89b8 (0x2c4000f89b8) in binary!
+	0x21068  @objc GameCenterDataUpdatePresenter.(null) <stripped>
+WARNING: couldn't find address 0x242fe000f7aa8 (0x2fe000f7aa8) in binary!
+	0x24300  @objc GameCenterDataUpdatePresenter.(null) <stripped>
+WARNING: couldn't find address 0x256c4000f8480 (0x6c4000f8480) in binary!
+	0x21038  @objc GameCenterDataUpdatePresenter.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x1b4ffedb628  @objc GameCenterDataUpdatePresenter.(null) <stripped>
-	0x52cffedb790  @objc GameCenterDataUpdatePresenter.‹ñ: <stripped>
-	0xbcffedbaf8  @objc GameCenterDataUpdatePresenter.AVAUATSHÉÏXHã>∆; <stripped>
+	0x104ffed79e0  @objc GameCenterDataUpdatePresenter.(null) <stripped>
+	0x464ffed7b48  @objc GameCenterDataUpdatePresenter.5 <stripped>
+	0x7f4ffed7eb0  @objc GameCenterDataUpdatePresenter.§ƒ; <stripped>
 
 	// Swift methods
-	0x1af830  func <stripped> // method 
+	0x1b0490  func <stripped> // method 
  }
 
  struct GameCenterUI.AppStoreLockupData {
@@ -2310,9 +2320,9 @@ WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
 	let subtitle : String?
 	var isSeeAll : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var segue : kn
+	var segue : É^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var impressionMetrics : %|
+	var impressionMetrics : =l
  }
 
  class GameCenterUI.SectionHeaderView : UICollectionReusableView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2322,16 +2332,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let sectionHeaderLabel : DynamicTypeLabel
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1fbac000fd358 (0x3ac000fd358) in binary!
-	0x29640  @objc SectionHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x208a4000fe4e8 (0xa4000fe4e8) in binary!
-	0x20dd8  @objc SectionHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x2280c000fccf8 (0xc000fccf8) in binary!
-	0x20dc0  @objc SectionHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x1fdf4000f8a98 (0x5f4000f8a98) in binary!
+	0x2a8d8  @objc SectionHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x20acc000f9c38 (0x2cc000f9c38) in binary!
+	0x21000  @objc SectionHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x22a44000f8438 (0x244000f8438) in binary!
+	0x20fe8  @objc SectionHeaderView.(null) <stripped>
 WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
-	0x164ffedc018  @objc SectionHeaderView.(null) <stripped>
-	0x13cffedc520  @objc SectionHeaderView.; <stripped>
-	0x30cffedc598  @objc SectionHeaderView.; <stripped>
+	0xb4ffed83d0  @objc SectionHeaderView.(null) <stripped>
+	0x74ffed88d8  @objc SectionHeaderView.Hâ˚Hã ˇcd4 <stripped>
+	0x25cffed8950  @objc SectionHeaderView.HâÖ@ˇˇˇW¿Hçï˛ˇˇ))B)B )B0Hã5Ÿ: <stripped>
  }
 
  class GameCenterUI.DynamicTypeLabel : UILabel /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2340,36 +2350,35 @@ WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
 	var fontUseCaseContentSizeCategory : UIContentSizeCategory // +0x8 (0x8)
 	var systemDesign : SystemDesign // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var fontUseCase : ›w // +0x736f5f5f (0x0)
+	var fontUseCase : h // +0x736f5f5f (0x0)
 	var wantsFastBaselineMeasurement : Bool // +0x6e697274 (0x1)
 	var directionalTextAlignment : DirectionalTextAlignment // +0x0 (0x1)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1fb5c000fd308 (0x35c000fd308) in binary!
-	0x295f0  @objc DynamicTypeLabel.(null) <stripped>
-WARNING: couldn't find address 0x227d4000fe1f0 (0x7d4000fe1f0) in binary!
-	0x253f8  @objc DynamicTypeLabel.(null) <stripped>
-WARNING: couldn't find address 0x22e24000fed90 (0x624000fed90) in binary!
-	0x22e20  @objc DynamicTypeLabel.(null) <stripped>
-WARNING: couldn't find address 0x227a4000fe450 (0x7a4000fe450) in binary!
-	0x253c8  @objc DynamicTypeLabel.(null) <stripped>
-WARNING: couldn't find address 0x253bc000fe338 (0x3bc000fe338) in binary!
-	0x20d40  @objc DynamicTypeLabel.(null) <stripped>
+WARNING: couldn't find address 0x1fda4000f8a48 (0x5a4000f8a48) in binary!
+	0x2a888  @objc DynamicTypeLabel.(null) <stripped>
+WARNING: couldn't find address 0x22a0c000f9940 (0x20c000f9940) in binary!
+	0x25630  @objc DynamicTypeLabel.(null) <stripped>
+WARNING: couldn't find address 0x2305c000fa4e0 (0x5c000fa4e0) in binary!
+	0x23058  @objc DynamicTypeLabel.(null) <stripped>
+WARNING: couldn't find address 0x229dc000f9ba0 (0x1dc000f9ba0) in binary!
+	0x25600  @objc DynamicTypeLabel.(null) <stripped>
+WARNING: couldn't find address 0x255f4000f9a88 (0x5f4000f9a88) in binary!
+	0x20f68  @objc DynamicTypeLabel.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0xe4ffede7c8  @objc DynamicTypeLabel.(null) <stripped>
-	0x74c00100938  @objc DynamicTypeLabel.ˇˇˇˇÔIâL <stripped>
-WARNING: couldn't find address 0x104814ffede8c8 (0x14ffede8c8) in binary!
+	0x34ffedab80  @objc DynamicTypeLabel.(null) <stripped>
+	0x184000fc088  @objc DynamicTypeLabel.0Hã5∏¢: <stripped>
+WARNING: couldn't find address 0xfff3cffedac80 (0x73cffedac80) in binary!
 	0x68000000c  @objc DynamicTypeLabel.(null) <stripped>
-WARNING: couldn't find address 0x1fa9c000fd248 (0x29c000fd248) in binary!
-	0x29530  @objc DynamicTypeLabel.(null) <stripped>
-WARNING: couldn't find address 0x20cd4000fdc28 (0x4d4000fdc28) in binary!
-	0x26690  @objc DynamicTypeLabel.(null) <stripped>
+WARNING: couldn't find address 0x1fce4000f8988 (0x4e4000f8988) in binary!
+	0x2a7c8  @objc DynamicTypeLabel.(null) <stripped>
+	0x268e8  -[GKCollectionViewLayoutAttributes init]
 
 	// Swift methods
-	0x1b16b0  class func <stripped> // init 
-	0x1b18a0  func <stripped> // getter 
-	0x1b19a0  func <stripped> // method 
-	0x1b1f30  func <stripped> // setter 
+	0x1b2330  class func <stripped> // init 
+	0x1b2520  func <stripped> // getter 
+	0x1b2620  func <stripped> // method 
+	0x1b2bb0  func <stripped> // setter 
  }
 
  enum GameCenterUI.DirectionalTextAlignment {
@@ -2382,10 +2391,10 @@ WARNING: couldn't find address 0x20cd4000fdc28 (0x4d4000fdc28) in binary!
 
  class GameCenterUI.SectionHeaderPlaceholderView : BaseCollectionReusableView {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1fadc000fd288 (0x2dc000fd288) in binary!
-	0x29570  @objc SectionHeaderPlaceholderView.(null) <stripped>
+WARNING: couldn't find address 0x1fd24000f89c8 (0x524000f89c8) in binary!
+	0x2a808  @objc SectionHeaderPlaceholderView.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x14ffede8c8  @objc SectionHeaderPlaceholderView.(null) <stripped>
+	0x73cffedac80  @objc SectionHeaderPlaceholderView.(null) <stripped>
  }
 
  class GameCenterUI.GKMultiplayerPickerPlayerCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2394,16 +2403,15 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let lockupView : SmallFriendLockupView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1fa9c000fd248 (0x29c000fd248) in binary!
-	0x29530  @objc GKMultiplayerPickerPlayerCell.(null) <stripped>
-WARNING: couldn't find address 0x20cd4000fdc28 (0x4d4000fdc28) in binary!
-	0x26690  @objc GKMultiplayerPickerPlayerCell.(null) <stripped>
-WARNING: couldn't find address 0x2532c000fe2a8 (0x32c000fe2a8) in binary!
-	0x20cb0  @objc GKMultiplayerPickerPlayerCell.(null) <stripped>
+WARNING: couldn't find address 0x1fce4000f8988 (0x4e4000f8988) in binary!
+	0x2a7c8  @objc GKMultiplayerPickerPlayerCell.(null) <stripped>
+	0x268e8  -[GKCollectionViewLayoutAttributes init]
+WARNING: couldn't find address 0x25564000f99f8 (0x564000f99f8) in binary!
+	0x20ed8  @objc GKMultiplayerPickerPlayerCell.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x56cffee14d8  @objc GKMultiplayerPickerPlayerCell.(null) <stripped>
-	0x3acffee1990  @objc GKMultiplayerPickerPlayerCell.ËÔ) <stripped>
-	0x75cffee1a78  @objc GKMultiplayerPickerPlayerCell.EêÚM®ÚM®f.»uãﬂ <stripped>
+	0x4bcffedd8a0  @objc GKMultiplayerPickerPlayerCell.(null) <stripped>
+	0x2ecffeddd78  @objc GKMultiplayerPickerPlayerCell.™5* <stripped>
+	0x694ffedde60  @objc GKMultiplayerPickerPlayerCell.ÚM–Lã5î; <stripped>
  }
 
  class GameCenterUI.DataManagementProfileSection : PlayerProfileSection { }
@@ -2415,16 +2423,16 @@ WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
 	let accessoryView : UIView?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x294ec00100860 (0x4ec00100860) in binary!
-	0x20540  @objc GKMultiplayerStatusView.(null) <stripped>
-WARNING: couldn't find address 0x20c84000fdbd8 (0x484000fdbd8) in binary!
-	0x226b8  @objc GKMultiplayerStatusView.(null) <stripped>
-WARNING: couldn't find address 0x1fa1c000fd1c8 (0x21c000fd1c8) in binary!
-	0x20c60  @objc GKMultiplayerStatusView.(null) <stripped>
+WARNING: couldn't find address 0x2a784000fbfb0 (0x784000fbfb0) in binary!
+	0x20768  @objc GKMultiplayerStatusView.(null) <stripped>
+WARNING: couldn't find address 0x20eac000f9310 (0x6ac000f9310) in binary!
+	0x228f0  @objc GKMultiplayerStatusView.(null) <stripped>
+WARNING: couldn't find address 0x1fc64000f8908 (0x464000f8908) in binary!
+	0x20e88  @objc GKMultiplayerStatusView.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x384ffee5d88  @objc GKMultiplayerStatusView.(null) <stripped>
-	0x724ffee5f30  @objc GKMultiplayerStatusView.ËHâﬂˇz4 <stripped>
-	0x1c4000fd170  @objc GKMultiplayerStatusView.â«Aˇ◊Lâ˜ˇ¢¿4 <stripped>
+	0x2c4ffee2190  @objc GKMultiplayerStatusView.(null) <stripped>
+	0x65cffee2338  @objc GKMultiplayerStatusView.HãH∑4 <stripped>
+	0x40c000f88b0  @objc GKMultiplayerStatusView.âÂH=Ô≈; <stripped>
 
 	// Swift methods
  }
@@ -2456,9 +2464,9 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ordinalLabel : st // +0x0
+	var ordinalLabel : ìd // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var playerAvatarView : Uy // +0x28
+	var playerAvatarView : ïi // +0x28
  }
 
  struct GameCenterUI.Metrics {
@@ -2466,16 +2474,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var avatarSize : CGSize // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ordinalTrailingMargin : Àw // +0x10
+	var ordinalTrailingMargin : h // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var interChildSpacing : Àw // +0x38
+	var interChildSpacing : h // +0x38
  }
 
  struct GameCenterUI.VisualEffectView {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _effects : b // +0x0
+	var _effects : R // +0x0
 	let content : _PlatformVisualEffectView // +0x0
  }
 
@@ -2489,29 +2497,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var viewController : weak UIViewController?
 	var signInViewController : AAUISignInController?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var currentActionOutcome : çc
+	var currentActionOutcome : ôS
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2444c000fcb88 (0x44c000fcb88) in binary!
-	0x252b0  @objc GameCenterSignInActionImplementation.(null) <stripped>
-WARNING: couldn't find address 0x22674000fd060 (0x674000fd060) in binary!
-	0x20c28  @objc GameCenterSignInActionImplementation.(null) <stripped>
+WARNING: couldn't find address 0x24684000f82c8 (0x684000f82c8) in binary!
+	0x254e8  @objc GameCenterSignInActionImplementation.(null) <stripped>
+WARNING: couldn't find address 0x228ac000f87a0 (0xac000f87a0) in binary!
+	0x20e50  @objc GameCenterSignInActionImplementation.(null) <stripped>
 WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
-	0x7ccffee7800  @objc GameCenterSignInActionImplementation.(null) <stripped>
-	0x294ffee80a8  @objc GameCenterSignInActionImplementation.Hã5¡µ: <stripped>
+	0x71cffee3c28  @objc GameCenterSignInActionImplementation.(null) <stripped>
+	0x1d4ffee44c0  @objc GameCenterSignInActionImplementation.ã]√UHâÂHã®/; <stripped>
 
 	// Swift methods
-	0x1bb500  func <stripped> // method 
-	0x1bb720  func <stripped> // method 
+	0x1bc1d0  func <stripped> // method 
+	0x1bc3f0  func <stripped> // method 
  }
 
  enum GameCenterUI.EnableGameCenterActionImplementationError {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case unableToPrepareSignInController : ßg
+	case unableToPrepareSignInController : ≥W
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case unableToSignIn : ßg
+	case unableToSignIn : ≥W
 	case signInInProgress  
 	case signInCancelled  
 	case unknownError  
@@ -2521,13 +2529,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : ˜
+	var id : p
 	let title : String
 	let subtitle : String?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var segue : kn
+	var segue : É^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var impressionMetrics : %|
+	var impressionMetrics : =l
  }
 
  class GameCenterUI.ArtworkView : RoundedCornerView {
@@ -2544,23 +2552,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var artworkTintColor : UIColor?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1f9c4000fd170 (0x1c4000fd170) in binary!
-	0x29458  @objc ArtworkView.(null) <stripped>
-WARNING: couldn't find address 0x2263c00105628 (0x63c00105628) in binary!
-	0x25260  @objc ArtworkView.(null) <stripped>
-WARNING: couldn't find address 0x20be4000fdb38 (0x3e4000fdb38) in binary!
-	0x20968  @objc ArtworkView.(null) <stripped>
-WARNING: couldn't find address 0x2098c000fdb28 (0x18c000fdb28) in binary!
-	0x22188  @objc ArtworkView.(null) <stripped>
-WARNING: couldn't find address 0x22184000fdf18 (0x184000fdf18) in binary!
-	0x20ba8  @objc ArtworkView.(null) <stripped>
+WARNING: couldn't find address 0x1fc0c000f88b0 (0x40c000f88b0) in binary!
+	0x2a6f0  @objc ArtworkView.(null) <stripped>
+WARNING: couldn't find address 0x2287400100d50 (0x7400100d50) in binary!
+	0x25498  @objc ArtworkView.(null) <stripped>
+WARNING: couldn't find address 0x20e0c000f9270 (0x60c000f9270) in binary!
+	0x20b90  @objc ArtworkView.(null) <stripped>
+WARNING: couldn't find address 0x20bb4000f9260 (0x3b4000f9260) in binary!
+	0x223c0  @objc ArtworkView.(null) <stripped>
+WARNING: couldn't find address 0x223bc000f9650 (0x3bc000f9650) in binary!
+	0x20dd0  @objc ArtworkView.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffeeb150  @objc ArtworkView.(null) <stripped>
+	0xffee7578  @objc ArtworkView.(null) <stripped>
 WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
-	0x6a4ffeeb718  @objc ArtworkView.(null) <stripped>
-	0x504ffeec070  @objc ArtworkView.¡4 <stripped>
-	0x544ffeece88  @objc ArtworkView.5√G; <stripped>
-	0x634ffeed530  @objc ArtworkView.ˇHã5*; <stripped>
+	0x5dcffee7b50  @objc ArtworkView.(null) <stripped>
+	0x45cffee84a8  @objc ArtworkView.√UHâÂHãÑ∆; <stripped>
+	0x47cffee92c0  @objc ArtworkView.$5 <stripped>
+	0x55cffee9968  @objc ArtworkView.H=†∆; <stripped>
  }
 
  struct GameCenterUI.GKMultiplayerFooterViewLayout {
@@ -2568,26 +2576,26 @@ WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let messageButton : Uy // +0xc8
+	let messageButton : ïi // +0xc8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let statusText : ≠y // +0xf0
+	let statusText : Ìi // +0xf0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let button : Uy // +0x118
+	let button : ïi // +0x118
  }
 
  struct GameCenterUI.Metrics {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var textSpace : Àw // +0x0
+	var textSpace : h // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var buttonTopSpace : Àw // +0x28
+	var buttonTopSpace : h // +0x28
 	var margins : NSDirectionalEdgeInsets // +0x50
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var buttonMinWidth : Àw // +0x70
+	var buttonMinWidth : h // +0x70
 	var messageButtonPlacement : MessageButtonPlacement // +0x98
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var messageButtonTrailingSpace : Àw // +0xa0
+	var messageButtonTrailingSpace : h // +0xa0
  }
 
  enum GameCenterUI.MessageButtonPlacement {
@@ -2599,7 +2607,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class GameCenterUI.ExternalUrlActionImplementation : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x225d4000fcfc0 (0x5d4000fcfc0) in binary!
+WARNING: couldn't find address 0x2280c000f8700 (0xc000f8700) in binary!
 	0xc8000000c  @objc ExternalUrlActionImplementation.(null) <stripped>
 
 	// Swift methods
@@ -2610,45 +2618,45 @@ WARNING: couldn't find address 0x225d4000fcfc0 (0x5d4000fcfc0) in binary!
 	// Properties
 	var bootstrapPresenter : BootstrapPresenter
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let statePresenter : \
+	let statePresenter : L
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var collectionContent : ±r
+	var collectionContent : —b
 	let components : Components
 	var searchController : UISearchController?
 	var addFriendsBarButtonItem : UIBarButtonItem?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x293cc00100740 (0x3cc00100740) in binary!
-	0x20b70  @objc FriendsListViewController.(null) <stripped>
-WARNING: couldn't find address 0x20b6400105938 (0x36400105938) in binary!
-	0x1fc88  @objc FriendsListViewController.(null) <stripped>
-WARNING: couldn't find address 0x1fc7c000fc990 (0x47c000fc990) in binary!
-	0x20b51  @objc FriendsListViewController.(null) <stripped>
-WARNING: couldn't find address 0x279c8000ffa20 (0x1c8000ffa20) in binary!
-	0x20b48  @objc FriendsListViewController.(null) <stripped>
-WARNING: couldn't find address 0x2518c000faa28 (0x18c000faa28) in binary!
-	0x25180  @objc FriendsListViewController.(null) <stripped>
-WARNING: couldn't find address 0x20b38000fe4d8 (0x338000fe4d8) in binary!
-	0x20af8  @objc FriendsListViewController.(null) <stripped>
+WARNING: couldn't find address 0x2a664000fbe90 (0x664000fbe90) in binary!
+	0x20d98  @objc FriendsListViewController.(null) <stripped>
+WARNING: couldn't find address 0x20d8c00101060 (0x58c00101060) in binary!
+	0x1fed0  @objc FriendsListViewController.(null) <stripped>
+WARNING: couldn't find address 0x1fec4000f80c8 (0x6c4000f80c8) in binary!
+	0x20d79  @objc FriendsListViewController.(null) <stripped>
+WARNING: couldn't find address 0x27c20000fb170 (0x420000fb170) in binary!
+	0x20d70  @objc FriendsListViewController.(null) <stripped>
+WARNING: couldn't find address 0x253c4000f6160 (0x3c4000f6160) in binary!
+	0x253b8  @objc FriendsListViewController.(null) <stripped>
+WARNING: couldn't find address 0x20d60000f9c28 (0x560000f9c28) in binary!
+	0x20d20  @objc FriendsListViewController.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x69cffeef3d0  @objc FriendsListViewController.(null) <stripped>
-	0x214ffeef498  @objc FriendsListViewController.HãC; <stripped>
-	0x5a4ffeef790  @objc FriendsListViewController.ç=Í6 <stripped>
-	0x2e400101490  @objc FriendsListViewController.®È) <stripped>
-WARNING: couldn't find address 0x10064cffeef8a0 (0x64cffeef8a0) in binary!
-	0x41c000fc420  @objc FriendsListViewController.(null) <stripped>
-WARNING: couldn't find address 0x100fecffeef958 (0x7ecffeef958) in binary!
-	0x264000fdd98  @objc FriendsListViewController.(null) <stripped>
+	0x5ecffeeb818  @objc FriendsListViewController.(null) <stripped>
+	0x14cffeeb8e0  @objc FriendsListViewController.ã="g4 <stripped>
+	0x4dcffeebbd8  @objc FriendsListViewController.*0* <stripped>
+	0x57c000fcbe8  @objc FriendsListViewController.'; <stripped>
+WARNING: couldn't find address 0xfbd9cffeebce8 (0x59cffeebce8) in binary!
+	0x664000f7b48  @objc FriendsListViewController.(null) <stripped>
+WARNING: couldn't find address 0xfc744ffeebda0 (0x744ffeebda0) in binary!
+	0x48c000f94d0  @objc FriendsListViewController.(null) <stripped>
 
 	// Swift methods
-	0x1c11a0  func <stripped> // method 
-	0x1c1810  func <stripped> // method 
-	0x1c1aa0  func <stripped> // method 
-	0x1c1bb0  func <stripped> // method 
-	0x1c1da0  func <stripped> // method 
-	0x1c3490  func <stripped> // method 
-	0x1c3650  func <stripped> // method 
-	0x1c3860  func <stripped> // method 
+	0x1c1ea0  func <stripped> // method 
+	0x1c2510  func <stripped> // method 
+	0x1c27a0  func <stripped> // method 
+	0x1c28b0  func <stripped> // method 
+	0x1c2aa0  func <stripped> // method 
+	0x1c4190  func <stripped> // method 
+	0x1c4350  func <stripped> // method 
+	0x1c4560  func <stripped> // method 
  }
 
  class GameCenterUI.ReportUserProfileSection : PlayerProfileSection { }
@@ -2666,16 +2674,16 @@ WARNING: couldn't find address 0x100fecffeef958 (0x7ecffeef958) in binary!
 	let loadingIndicator : UIActivityIndicatorView // +0x0
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1f894000fd040 (0x94000fd040) in binary!
-	0x29328  @objc LoadingIndicatorAccessoryView.(null) <stripped>
-WARNING: couldn't find address 0x2058c000fe1d0 (0x58c000fe1d0) in binary!
-	0x20ac0  @objc LoadingIndicatorAccessoryView.(null) <stripped>
-WARNING: couldn't find address 0x20ab4000fe8c0 (0x2b4000fe8c0) in binary!
-	0x20aa8  @objc LoadingIndicatorAccessoryView.(null) <stripped>
+WARNING: couldn't find address 0x1fadc000f8780 (0x2dc000f8780) in binary!
+	0x2a5c0  @objc LoadingIndicatorAccessoryView.(null) <stripped>
+WARNING: couldn't find address 0x207b4000f9920 (0x7b4000f9920) in binary!
+	0x20ce8  @objc LoadingIndicatorAccessoryView.(null) <stripped>
+WARNING: couldn't find address 0x20cdc000fa010 (0x4dc000fa010) in binary!
+	0x20cd0  @objc LoadingIndicatorAccessoryView.(null) <stripped>
 WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
-	0x64cffeef8a0  @objc LoadingIndicatorAccessoryView.(null) <stripped>
-	0x7ecffeef958  @objc LoadingIndicatorAccessoryView.HãHãTHâM»HâU–HãLHâMÿHãDHâE‡Hã5æ∂: <stripped>
-	0x1acffeefe00  @objc LoadingIndicatorAccessoryView.É4 <stripped>
+	0x59cffeebce8  @objc LoadingIndicatorAccessoryView.(null) <stripped>
+	0x744ffeebda0  @objc LoadingIndicatorAccessoryView.HÉƒ[A^A_]√UHâÂAWAVSHÉÏXHâ”Iâ˛Hç}∞Lâ7HãÏ"; <stripped>
+	0xecffeec248  @objc LoadingIndicatorAccessoryView.=Bâ; <stripped>
  }
 
  struct GameCenterUI.BlackListCoreRecencyContactAction {
@@ -2690,29 +2698,29 @@ WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
 	let doneButton : UIBarButtonItem
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x292e400101490 (0x2e400101490) in binary!
-	0x292d8  @objc GameLayerNavigationController.(null) <stripped>
-WARNING: couldn't find address 0x1fc1c000fc420 (0x41c000fc420) in binary!
-	0x249c0  @objc GameLayerNavigationController.(null) <stripped>
-WARNING: couldn't find address 0x20a64000fdd98 (0x264000fdd98) in binary!
-	0x243b8  @objc GameLayerNavigationController.(null) <stripped>
-WARNING: couldn't find address 0x249bc000fc9a8 (0x1bc000fc9a8) in binary!
-	0x22008  @objc GameLayerNavigationController.(null) <stripped>
-WARNING: couldn't find address 0x20a3400105838 (0x23400105838) in binary!
-	0x249b1  @objc GameLayerNavigationController.(null) <stripped>
-WARNING: couldn't find address 0x20a50000fe3f0 (0x250000fe3f0) in binary!
-	0x20a10  @objc GameLayerNavigationController.(null) <stripped>
+WARNING: couldn't find address 0x2a57c000fcbe8 (0x57c000fcbe8) in binary!
+	0x2a570  @objc GameLayerNavigationController.(null) <stripped>
+WARNING: couldn't find address 0x1fe64000f7b48 (0x664000f7b48) in binary!
+	0x24bf8  @objc GameLayerNavigationController.(null) <stripped>
+WARNING: couldn't find address 0x20c8c000f94d0 (0x48c000f94d0) in binary!
+	0x245f0  @objc GameLayerNavigationController.(null) <stripped>
+WARNING: couldn't find address 0x24bf4000f80e8 (0x3f4000f80e8) in binary!
+	0x22240  @objc GameLayerNavigationController.(null) <stripped>
+WARNING: couldn't find address 0x20c5c00100f60 (0x45c00100f60) in binary!
+	0x24be9  @objc GameLayerNavigationController.(null) <stripped>
+WARNING: couldn't find address 0x20c78000f9b40 (0x478000f9b40) in binary!
+	0x20c38  @objc GameLayerNavigationController.(null) <stripped>
 WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
-	0x7f4ffef3688  @objc GameLayerNavigationController.(null) <stripped>
-	0x38cffef36b0  @objc GameLayerNavigationController.ã5ÇÂ: <stripped>
-	0x44ffef36f8  @objc GameLayerNavigationController.«Ë∂¯) <stripped>
-	0x5d4ffef3740  @objc GameLayerNavigationController.«ËŒ¯) <stripped>
-	0x3d4000fe240  @objc GameLayerNavigationController.ˇ”ÚEêHã5‚!; <stripped>
-WARNING: couldn't find address 0xfa7dcffef34d0 (0x7dcffef34d0) in binary!
-	0x3bc000fdef0  @objc GameLayerNavigationController.(null) <stripped>
+	0x744ffeefb00  @objc GameLayerNavigationController.(null) <stripped>
+	0x2bcffeefb28  @objc GameLayerNavigationController.UHâÂHã’â; <stripped>
+	0x76cffeefb70  @objc GameLayerNavigationController.T$HâﬂLâˆPQRAPAˇ’HÉƒ Hâﬂˇ˙5 <stripped>
+	0x514ffeefbb8  @objc GameLayerNavigationController. <stripped>
+	0x60c000f9990  @objc GameLayerNavigationController. <stripped>
+WARNING: couldn't find address 0xf5f14ffeef948 (0x714ffeef948) in binary!
+	0x5f4000f9640  @objc GameLayerNavigationController.(null) <stripped>
 
 	// Swift methods
-	0x1c5b50  func <stripped> // method 
+	0x1c6860  func <stripped> // method 
  }
 
  class GameCenterUI.ArtworkLoaderConfig : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2722,19 +2730,19 @@ WARNING: couldn't find address 0xfa7dcffef34d0 (0x7dcffef34d0) in binary!
 	let size : CGSize
 	let crop : Crop
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scale : Er
+	let scale : Öb
 	let format : Format
 	let quality : Int?
 	let useWideGamut : Bool
 
 	// Swift methods
-	0x1c6db0  func <stripped> // getter 
-	0x1c7030  func <stripped> // getter 
-	0x1c7180  func <stripped> // getter 
-	0x1c7370  func <stripped> // getter 
-	0x1c74d0  func <stripped> // getter 
-	0x1c7570  func <stripped> // getter 
-	0x1c7700  func <stripped> // getter 
+	0x1c7ae0  func <stripped> // getter 
+	0x1c7d60  func <stripped> // getter 
+	0x1c7eb0  func <stripped> // getter 
+	0x1c80a0  func <stripped> // getter 
+	0x1c8200  func <stripped> // getter 
+	0x1c82a0  func <stripped> // getter 
+	0x1c8430  func <stripped> // getter 
  }
 
  class GameCenterUI.EmbeddableViewCollectionViewCell {
@@ -2745,16 +2753,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var traitCollection : UITraitCollection
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x223d4000fe240 (0x3d4000fe240) in binary!
-	0x24ff8  @objc CollectionViewLayoutEnvironment.(null) <stripped>
-WARNING: couldn't find address 0x223bc000fdef0 (0x3bc000fdef0) in binary!
-	0x24fe0  @objc CollectionViewLayoutEnvironment.(null) <stripped>
-WARNING: couldn't find address 0x223a4000fcd90 (0x3a4000fcd90) in binary!
-	0x20958  @objc CollectionViewLayoutEnvironment.(null) <stripped>
+WARNING: couldn't find address 0x2260c000f9990 (0x60c000f9990) in binary!
+	0x25230  @objc CollectionViewLayoutEnvironment.(null) <stripped>
+WARNING: couldn't find address 0x225f4000f9640 (0x5f4000f9640) in binary!
+	0x25218  @objc CollectionViewLayoutEnvironment.(null) <stripped>
+WARNING: couldn't find address 0x225dc000f84d0 (0x5dc000f84d0) in binary!
+	0x20b80  @objc CollectionViewLayoutEnvironment.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x4fcffef3960  @objc CollectionViewLayoutEnvironment.(null) <stripped>
-	0x7c4ffef3a18  @objc CollectionViewLayoutEnvironment.â˛Lã=ˇ∑: <stripped>
-	0x72cffef3aa0  @objc CollectionViewLayoutEnvironment.IâƒHã5˜: <stripped>
+	0x44cffeefdd8  @objc CollectionViewLayoutEnvironment.(null) <stripped>
+	0x704ffeefe90  @objc CollectionViewLayoutEnvironment.È[ò) <stripped>
+	0x66cffeeff18  @objc CollectionViewLayoutEnvironment.ˇª4 <stripped>
 
 	// Swift methods
  }
@@ -2767,35 +2775,34 @@ WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
 	var effectiveContentInsets : NSDirectionalEdgeInsets
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1fb9c000fe7f8 (0x39c000fe7f8) in binary!
-	0x24940  @objc CollectionViewLayoutContainer.(null) <stripped>
-WARNING: couldn't find address 0x1fb8400105898 (0x38400105898) in binary!
-	0x1fb98  @objc CollectionViewLayoutContainer.(null) <stripped>
-WARNING: couldn't find address 0x2512c00105370 (0x12c00105370) in binary!
-	0x1fb80  @objc CollectionViewLayoutContainer.(null) <stripped>
-WARNING: couldn't find address 0x25114000fc930 (0x114000fc930) in binary!
-	0x223e8  @objc CollectionViewLayoutContainer.(null) <stripped>
+	0x24b78  -[GKCollectionGridLayout shouldPerformInitialScrollToContentInsetTop]
+WARNING: couldn't find address 0x1fdcc00100fc0 (0x5cc00100fc0) in binary!
+	0x1fde0  @objc CollectionViewLayoutContainer.(null) <stripped>
+WARNING: couldn't find address 0x2536400100a98 (0x36400100a98) in binary!
+	0x1fdc8  @objc CollectionViewLayoutContainer.(null) <stripped>
+WARNING: couldn't find address 0x2534c000f8070 (0x34c000f8070) in binary!
+	0x22620  @objc CollectionViewLayoutContainer.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x7dcffef34d0  @objc CollectionViewLayoutContainer.(null) <stripped>
-	0xe4ffef3518  @objc CollectionViewLayoutContainer.H«√ˇˇˇˇHâÿHÉƒ[A\A]A^A_]√UHâÂHã,Ö; <stripped>
-	0x454ffef35a0  @objc CollectionViewLayoutContainer.â⁄Aˇ÷Iâ∆LâÔˇÁ|4 <stripped>
-	0x6f4000fcea0  @objc CollectionViewLayoutContainer.«ËˆÍ) <stripped>
+	0x714ffeef948  @objc CollectionViewLayoutContainer.(null) <stripped>
+	0x24ffeef990  @objc CollectionViewLayoutContainer.ˇ))B)B )B0Lâ≠0ˇˇˇIãE Jã<8Hã5›: <stripped>
+	0x38cffeefa18  @objc CollectionViewLayoutContainer.âﬂHâ¬Aˇ‘HâÖ8ˇˇˇW¿Hçï¿˛ˇˇ))B)B )B0Lâ≠0ˇˇˇIãE Jã<8Hã5›: <stripped>
+	0x13c000f85e0  @objc CollectionViewLayoutContainer.ÑˆÑ’ <stripped>
 
 	// Swift methods
  }
 
  class GameCenterUI.BorderView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1f6f4000fcea0 (0x6f4000fcea0) in binary!
-	0x29188  @objc BorderView.(null) <stripped>
-WARNING: couldn't find address 0x2236c00105358 (0x36c00105358) in binary!
-	0x24f90  @objc BorderView.(null) <stripped>
-WARNING: couldn't find address 0x21edc000fc898 (0x6dc000fc898) in binary!
-	0x21ed8  @objc BorderView.(null) <stripped>
+WARNING: couldn't find address 0x1f93c000f85e0 (0x13c000f85e0) in binary!
+	0x2a420  @objc BorderView.(null) <stripped>
+WARNING: couldn't find address 0x225a400100a80 (0x5a400100a80) in binary!
+	0x251c8  @objc BorderView.(null) <stripped>
+WARNING: couldn't find address 0x22114000f7fd8 (0x114000f7fd8) in binary!
+	0x22110  @objc BorderView.(null) <stripped>
 WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
-	0x4acffef3de0  @objc BorderView.(null) <stripped>
-	0x7d4ffef3f18  @objc BorderView.EÿHâπ <stripped>
-	0x34ffef40d0  @objc BorderView.A]A^A_]ˇ%;…4 <stripped>
+	0x3fcffef0258  @objc BorderView.(null) <stripped>
+	0x724ffef0390  @objc BorderView.‹â: <stripped>
+	0x76cffef0548  @objc BorderView.â≈Hç=ßO6 <stripped>
  }
 
  class GameCenterUI.OnboardingKitButtonCollectionViewCell : BaseCollectionViewCell {
@@ -2804,23 +2811,23 @@ WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
 	let button : DynamicTypeButton
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1f6a4000fce50 (0x6a4000fce50) in binary!
-	0x29138  @objc OnboardingKitButtonCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x2018c001009b8 (0x18c001009b8) in binary!
-	0x20390  @objc OnboardingKitButtonCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x208c4000fd818 (0xc4000fd818) in binary!
-	0x208b8  @objc OnboardingKitButtonCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x208ac000fa3a8 (0xac000fa3a8) in binary!
+WARNING: couldn't find address 0x1f8ec000f8590 (0xec000f8590) in binary!
+	0x2a3d0  @objc OnboardingKitButtonCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x203b4000fc108 (0x3b4000fc108) in binary!
+	0x205b8  @objc OnboardingKitButtonCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x20aec000f8f50 (0x2ec000f8f50) in binary!
+	0x20ae0  @objc OnboardingKitButtonCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x20ad4000f5ae0 (0x2d4000f5ae0) in binary!
 	0x68000000c  @objc OnboardingKitButtonCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x1f644000fcdf0 (0x644000fcdf0) in binary!
-	0x290d8  @objc OnboardingKitButtonCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x2087c000fd7d0 (0x7c000fd7d0) in binary!
-	0x24ee0  @objc OnboardingKitButtonCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x20864000fd7e0 (0x64000fd7e0) in binary!
-	0x20858  @objc OnboardingKitButtonCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x1f88c000f8530 (0x8c000f8530) in binary!
+	0x2a370  @objc OnboardingKitButtonCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x20aa4000f8f08 (0x2a4000f8f08) in binary!
+	0x25118  @objc OnboardingKitButtonCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x20a8c000f8f18 (0x28c000f8f18) in binary!
+	0x20a80  @objc OnboardingKitButtonCollectionViewCell.(null) <stripped>
 
 	// Swift methods
-	0x1c9e90  func <stripped> // method 
+	0x1cabd0  func <stripped> // method 
  }
 
  class GameCenterUI.SectionBackgroundView : BaseCollectionReusableView {
@@ -2832,19 +2839,19 @@ WARNING: couldn't find address 0x20864000fd7e0 (0x64000fd7e0) in binary!
 	let bottomSeparator : SeparatorView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1f644000fcdf0 (0x644000fcdf0) in binary!
-	0x290d8  @objc SectionBackgroundView.(null) <stripped>
-WARNING: couldn't find address 0x2087c000fd7d0 (0x7c000fd7d0) in binary!
-	0x24ee0  @objc SectionBackgroundView.(null) <stripped>
-WARNING: couldn't find address 0x20864000fd7e0 (0x64000fd7e0) in binary!
-	0x20858  @objc SectionBackgroundView.(null) <stripped>
+WARNING: couldn't find address 0x1f88c000f8530 (0x8c000f8530) in binary!
+	0x2a370  @objc SectionBackgroundView.(null) <stripped>
+WARNING: couldn't find address 0x20aa4000f8f08 (0x2a4000f8f08) in binary!
+	0x25118  @objc SectionBackgroundView.(null) <stripped>
+WARNING: couldn't find address 0x20a8c000f8f18 (0x28c000f8f18) in binary!
+	0x20a80  @objc SectionBackgroundView.(null) <stripped>
 WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
-	0x3fcffefb630  @objc SectionBackgroundView.(null) <stripped>
-	0x774ffefba28  @objc SectionBackgroundView. <stripped>
-	0x664ffefc240  @objc SectionBackgroundView.«Ë.Ï) <stripped>
+	0x34cffef7af8  @objc SectionBackgroundView.(null) <stripped>
+	0x6acffef7ef0  @objc SectionBackgroundView.ù5 <stripped>
+	0x58cffef8708  @objc SectionBackgroundView. <stripped>
 
 	// Swift methods
-	0x1cb5e0  func <stripped> // method 
+	0x1cc340  func <stripped> // method 
  }
 
  enum GameCenterUI.GKMultiplayerViewStatus {
@@ -2862,17 +2869,17 @@ WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : ˜
+	var id : p
 	let title : String
 	let subtitle : String
 	let status : Status
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lastReportedDate : Kg
+	let lastReportedDate : kW
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var segue : kn
+	var segue : É^
 	var contextualMenu : ContextMenu
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var impressionMetrics : %|
+	var impressionMetrics : =l
  }
 
  enum GameCenterUI.Status {
@@ -2890,20 +2897,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let text : String
 	var drawingColor : UIColor
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ringThickness : Er
+	var ringThickness : Öb
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var innerRingSpacing : Er
+	var innerRingSpacing : Öb
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var fontSize : Er
+	var fontSize : Öb
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var outerRingTextPadding : Er
+	var outerRingTextPadding : Öb
 	let backgroundColor : UIColor
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startAngle : Er
+	let startAngle : Öb
 	let debugSquare : Bool
 
 	// Swift methods
-	0x1cfaf0  func <stripped> // method 
+	0x1d0880  func <stripped> // method 
  }
 
  class GameCenterUI.DetailView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2922,26 +2929,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var style : Style
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1f5f4000fcda0 (0x5f4000fcda0) in binary!
-	0x29088  @objc DetailView.(null) <stripped>
-WARNING: couldn't find address 0x2082c000fc7b8 (0x2c000fc7b8) in binary!
-	0x20820  @objc DetailView.(null) <stripped>
-WARNING: couldn't find address 0x200c4001008f0 (0xc4001008f0) in binary!
-	0x24e78  @objc DetailView.(null) <stripped>
-WARNING: couldn't find address 0x207fc000fa2f8 (0x7fc000fa2f8) in binary!
+WARNING: couldn't find address 0x1f83c000f84e0 (0x3c000f84e0) in binary!
+	0x2a320  @objc DetailView.(null) <stripped>
+WARNING: couldn't find address 0x20a54000f7ef8 (0x254000f7ef8) in binary!
+	0x20a48  @objc DetailView.(null) <stripped>
+WARNING: couldn't find address 0x202ec000fc040 (0x2ec000fc040) in binary!
+	0x250b0  @objc DetailView.(null) <stripped>
+WARNING: couldn't find address 0x20a24000f5a30 (0x224000f5a30) in binary!
 	0x88000000c  @objc DetailView.(null) <stripped>
-WARNING: couldn't find address 0x1f594000fcd40 (0x594000fcd40) in binary!
-	0x29028  @objc DetailView.(null) <stripped>
-WARNING: couldn't find address 0x2028c000fded0 (0x28c000fded0) in binary!
-	0x20070  @objc DetailView.(null) <stripped>
-WARNING: couldn't find address 0x207b4000fd708 (0x7b4000fd708) in binary!
-	0x24e18  @objc DetailView.(null) <stripped>
+WARNING: couldn't find address 0x1f7dc000f8480 (0x7dc000f8480) in binary!
+	0x2a2c0  @objc DetailView.(null) <stripped>
+WARNING: couldn't find address 0x204b4000f9620 (0x4b4000f9620) in binary!
+	0x20298  @objc DetailView.(null) <stripped>
+WARNING: couldn't find address 0x209dc000f8e40 (0x1dc000f8e40) in binary!
+	0x25050  @objc DetailView.(null) <stripped>
 
 	// Swift methods
-	0x1d1530  func <stripped> // setter 
-	0x1d2040  func <stripped> // method 
-	0x1d2120  func <stripped> // method 
-	0x1d2410  func <stripped> // method 
+	0x1d22c0  func <stripped> // setter 
+	0x1d2dd0  func <stripped> // method 
+	0x1d2eb0  func <stripped> // method 
+	0x1d31a0  func <stripped> // method 
  }
 
  class GameCenterUI.PlayerProfileInfoBarView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2953,25 +2960,25 @@ WARNING: couldn't find address 0x207b4000fd708 (0x7b4000fd708) in binary!
 	let scrollView : UIScrollView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1f594000fcd40 (0x594000fcd40) in binary!
-	0x29028  @objc PlayerProfileInfoBarView.(null) <stripped>
-WARNING: couldn't find address 0x2028c000fded0 (0x28c000fded0) in binary!
-	0x20070  @objc PlayerProfileInfoBarView.(null) <stripped>
-WARNING: couldn't find address 0x207b4000fd708 (0x7b4000fd708) in binary!
-	0x24e18  @objc PlayerProfileInfoBarView.(null) <stripped>
-WARNING: couldn't find address 0x221dc000fc730 (0x1dc000fc730) in binary!
-	0x20790  @objc PlayerProfileInfoBarView.(null) <stripped>
+WARNING: couldn't find address 0x1f7dc000f8480 (0x7dc000f8480) in binary!
+	0x2a2c0  @objc PlayerProfileInfoBarView.(null) <stripped>
+WARNING: couldn't find address 0x204b4000f9620 (0x4b4000f9620) in binary!
+	0x20298  @objc PlayerProfileInfoBarView.(null) <stripped>
+WARNING: couldn't find address 0x209dc000f8e40 (0x1dc000f8e40) in binary!
+	0x25050  @objc PlayerProfileInfoBarView.(null) <stripped>
+WARNING: couldn't find address 0x22414000f7e70 (0x414000f7e70) in binary!
+	0x209b8  @objc PlayerProfileInfoBarView.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x334fff03ab8  @objc PlayerProfileInfoBarView.(null) <stripped>
-	0x6acfff03bd0  @objc PlayerProfileInfoBarView.∏ˇˇˇˇˇˇˇI9«Ö∞ <stripped>
-	0xfff04198  @objc PlayerProfileInfoBarView.Hã1$; <stripped>
+	0x284fff00040  @objc PlayerProfileInfoBarView.(null) <stripped>
+	0x5e4fff00158  @objc PlayerProfileInfoBarView.êö) <stripped>
+	0xfff00720  @objc PlayerProfileInfoBarView.ÁHâ¬Aˇ’Hâ«Ëá3* <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x53cfff19070  @objc PlayerProfileInfoBarView.(null) <stripped>
+	0x474fff156f8  @objc PlayerProfileInfoBarView.(null) <stripped>
 
 	// Swift methods
-	0x1d4580  func <stripped> // method 
-	0x1d49f0  func <stripped> // method 
-	0x1d52c0  func <stripped> // getter 
+	0x1d5360  func <stripped> // method 
+	0x1d57d0  func <stripped> // method 
+	0x1d60a0  func <stripped> // getter 
  }
 
  class GameCenterUI.FriendsProfileSection : PlayerProfileSection { }
@@ -2980,7 +2987,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : ˜
+	var id : p
 	let artwork : Artwork
 	let ordinal : String?
 	let heading : String?
@@ -2989,9 +2996,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let buttonText : String?
 	let hasChevron : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var segue : kn
+	var segue : É^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var impressionMetrics : %|
+	var impressionMetrics : =l
  }
 
  struct GameCenterUI.PlayerAvatarPickerAction {
@@ -3011,16 +3018,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var artworkSize : CGSize
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1f52c000fccd8 (0x52c000fccd8) in binary!
-	0x28fc0  @objc ProgressLockupView.(null) <stripped>
-WARNING: couldn't find address 0x20224000fde68 (0x224000fde68) in binary!
-	0x20758  @objc ProgressLockupView.(null) <stripped>
-WARNING: couldn't find address 0x2074c000fa248 (0x74c000fa248) in binary!
+WARNING: couldn't find address 0x1f774000f8418 (0x774000f8418) in binary!
+	0x2a258  @objc ProgressLockupView.(null) <stripped>
+WARNING: couldn't find address 0x2044c000f95b8 (0x44c000f95b8) in binary!
+	0x20980  @objc ProgressLockupView.(null) <stripped>
+WARNING: couldn't find address 0x20974000f5980 (0x174000f5980) in binary!
 	0x28000000c  @objc ProgressLockupView.(null) <stripped>
-WARNING: couldn't find address 0x24da4000fb540 (0x5a4000fb540) in binary!
-	0x1f858  @objc ProgressLockupView.(null) <stripped>
+WARNING: couldn't find address 0x24fdc000f6c78 (0x7dc000f6c78) in binary!
+	0x1faa0  @objc ProgressLockupView.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x334fff1c730  @objc ProgressLockupView.(null) <stripped>
+	0x274fff18e08  @objc ProgressLockupView.(null) <stripped>
 
 	// Swift methods
  }
@@ -3029,21 +3036,21 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let level : -^ // +0x0 (0x0)
+	let level : 9N // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var messages :  empty-list  // +0xe (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startTime : eO // +0x0 (0x0)
+	let startTime : y? // +0x0 (0x0)
 	let isRoot : Bool // +0x0 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var endTime : Kg // +0x313984 (0x0)
+	var endTime : kW // +0x318944 (0x0)
 	var children : GKLogTimer // +0x0 (0x8)
 
 	// Swift methods
-	0x1da390  func <stripped> // method 
-	0x1da550  func <stripped> // method 
-	0x1da660  func <stripped> // method 
-	0x1da7b0  func <stripped> // method 
+	0x1db1e0  func <stripped> // method 
+	0x1db3a0  func <stripped> // method 
+	0x1db4b0  func <stripped> // method 
+	0x1db600  func <stripped> // method 
  }
 
  class GameCenterUI.PrivateProfileDescriptionProfileSection : PlayerProfileSection {
@@ -3055,7 +3062,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let color : UIColor // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blurRadius : Er // +0x8
+	let blurRadius : Öb // +0x8
 	let offset : CGSize // +0x10
  }
 
@@ -3088,13 +3095,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : ˜
+	var id : p
 	let itemKind : ItemKind
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var items :  empty-list 
 	var presentation : Presentation
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var impressionMetrics : %|
+	var impressionMetrics : =l
  }
 
  struct GameCenterUI.Presentation {
@@ -3110,15 +3117,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let avatarView : Uy // +0xf0
+	let avatarView : ïi // +0xf0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleLabel : ≠y // +0x118
+	let titleLabel : Ìi // +0x118
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subtitleLabel : st // +0x140
+	let subtitleLabel : ìd // +0x140
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let closeGlyphView : Uy // +0x168
+	let closeGlyphView : ïi // +0x168
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let addFriendButton : Uy // +0x190
+	let addFriendButton : ïi // +0x190
  }
 
  struct GameCenterUI.Metrics {
@@ -3126,14 +3133,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var avatarSize : CGSize // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var titleTextSpace : Àw // +0x10
+	var titleTextSpace : h // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var subtitleTextSpace : Àw // +0x38
+	var subtitleTextSpace : h // +0x38
 	var closeButtonEdgeInsets : UIEdgeInsets // +0x60
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var buttonTopMargin : Àw // +0x80
+	var buttonTopMargin : h // +0x80
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var buttonHeight : Àw // +0xa8
+	var buttonHeight : h // +0xa8
 	var layoutMargins : UIEdgeInsets // +0xd0
  }
 
@@ -3149,17 +3156,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let avatarView : Uy // +0xf8
+	let avatarView : ïi // +0xf8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleLabel : ≠y // +0x120
+	let titleLabel : Ìi // +0x120
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subtitleLabel : st // +0x148
+	let subtitleLabel : ìd // +0x148
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let friendStatusLabel : st // +0x170
+	let friendStatusLabel : ìd // +0x170
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let addFriendButton : Ey // +0x198
+	let addFriendButton : Öi // +0x198
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let infoBarView : Ey // +0x1c0
+	let infoBarView : Öi // +0x1c0
  }
 
  struct GameCenterUI.Metrics {
@@ -3167,15 +3174,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var avatarSize : CGSize // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var titleTextSpace : Àw // +0x10
+	var titleTextSpace : h // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var subtitleTextSpace : Àw // +0x38
+	var subtitleTextSpace : h // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var friendStatusTextSpace : Àw // +0x60
+	var friendStatusTextSpace : h // +0x60
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var buttonTopMargin : Àw // +0x88
+	var buttonTopMargin : h // +0x88
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var infoBarTopMargin : Àw // +0xb0
+	var infoBarTopMargin : h // +0xb0
 	var layoutMargins : UIEdgeInsets // +0xd8
  }
 
@@ -3197,15 +3204,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var currentAvatarChangeCompletion : ()? // +0x30 (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x24da4000fb540 (0x5a4000fb540) in binary!
-	0x1f858  @objc PlayerAvatarPickerActionImplementation.(null) <stripped>
+WARNING: couldn't find address 0x24fdc000f6c78 (0x7dc000f6c78) in binary!
+	0x1faa0  @objc PlayerAvatarPickerActionImplementation.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x334fff1c730  @objc PlayerAvatarPickerActionImplementation.(null) <stripped>
+	0x274fff18e08  @objc PlayerAvatarPickerActionImplementation.(null) <stripped>
 
 	// Swift methods
-	0x1ee660  func <stripped> // method 
-	0x1eee10  func <stripped> // method 
-	0x1eeee0  func <stripped> // method 
+	0x1ef5b0  func <stripped> // method 
+	0x1efd60  func <stripped> // method 
+	0x1efe30  func <stripped> // method 
  }
 
  enum GameCenterUI.AvatarPickerActionImplementationError {
@@ -3231,11 +3238,11 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	// Properties
 	let title : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : ˜
+	var id : p
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var segue : kn
+	var segue : É^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var impressionMetrics : %|
+	var impressionMetrics : =l
  }
 
  enum GameCenterUI.Alignment {
@@ -3253,11 +3260,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let paragraph : String
 	let paragraphAlignment : Alignment
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : ˜
+	var id : p
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var segue : kn
+	var segue : É^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var impressionMetrics : %|
+	var impressionMetrics : =l
  }
 
  class GameCenterUI.BootstrapPresenter : NSObject /usr/lib/libobjc.A.dylib {
@@ -3267,20 +3274,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isBootstrapping : Bool
 	var bootstrap : GameCenterUIBootstrap
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onDidFinishBootstrapping : ˚Y
+	let onDidFinishBootstrapping : J
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onDidFailBootstrapping : ÌY
+	let onDidFailBootstrapping : ˘I
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2071400103d80 (0x71400103d80) in binary!
-	0x22148  @objc BootstrapPresenter.(null) <stripped>
-WARNING: couldn't find address 0x206fc000fa1f8 (0x6fc000fa1f8) in binary!
+WARNING: couldn't find address 0x2093c000ff4a8 (0x13c000ff4a8) in binary!
+	0x22380  @objc BootstrapPresenter.(null) <stripped>
+WARNING: couldn't find address 0x20924000f5930 (0x124000f5930) in binary!
 	0x88000000c  @objc BootstrapPresenter.(null) <stripped>
-WARNING: couldn't find address 0x1f494000fcc40 (0x494000fcc40) in binary!
-	0x28f28  @objc BootstrapPresenter.(null) <stripped>
+WARNING: couldn't find address 0x1f6dc000f8380 (0x6dc000f8380) in binary!
+	0x2a1c0  @objc BootstrapPresenter.(null) <stripped>
 
 	// Swift methods
-	0x1f2440  func <stripped> // method 
+	0x1f33e0  func <stripped> // method 
  }
 
  enum GameCenterUI.TimingCurve {
@@ -3299,28 +3306,30 @@ WARNING: couldn't find address 0x1f494000fcc40 (0x494000fcc40) in binary!
 	var decorationView : UIView
 	var title : UILabel
 	var subtitle : UILabel
+	var wantsVerticalLayout : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1f494000fcc40 (0x494000fcc40) in binary!
-	0x28f28  @objc AchievementHighlightCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x2018c000fddd0 (0x18c000fddd0) in binary!
-	0x206c0  @objc AchievementHighlightCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x21c7c001048e0 (0x47c001048e0) in binary!
-	0x220e8  @objc AchievementHighlightCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x220dc000fc4a0 (0xdc000fc4a0) in binary!
-	0x20690  @objc AchievementHighlightCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x1f6dc000f8380 (0x6dc000f8380) in binary!
+	0x2a1c0  @objc AchievementHighlightCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x203b4000f9520 (0x3b4000f9520) in binary!
+	0x208e8  @objc AchievementHighlightCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x21eb400100010 (0x6b400100010) in binary!
+	0x22320  @objc AchievementHighlightCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x22314000f7bd8 (0x314000f7bd8) in binary!
+	0x208b8  @objc AchievementHighlightCollectionViewCell.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x234fff23f98  @objc AchievementHighlightCollectionViewCell.(null) <stripped>
-	0x5acfff240e0  @objc AchievementHighlightCollectionViewCell.: <stripped>
-	0x13cfff24408  @objc AchievementHighlightCollectionViewCell. <stripped>
-	0x3dc000fcb88  @objc AchievementHighlightCollectionViewCell. <stripped>
+	0x184fff206f0  @objc AchievementHighlightCollectionViewCell.(null) <stripped>
+	0x4e4fff20838  @objc AchievementHighlightCollectionViewCell.ã
+5; <stripped>
+	0x74fff20b60  @objc AchievementHighlightCollectionViewCell.â«Ëè4* <stripped>
+	0x624000f82c8  @objc AchievementHighlightCollectionViewCell. <stripped>
  }
 
  struct GameCenterUI.ProfileHeaderData {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : ˜
+	var id : p
 	let playerHandle : String
 	let subtitle : String?
 	let emphasizedSubtitleSegments : EmphasizedSegment
@@ -3333,13 +3342,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let showFriendStatus : Bool
 	let infoBarData : PlayerProfileInfoBarData
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let removeFriendAction : kn
+	let removeFriendAction : É^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let reportFriendAction : kn
+	let reportFriendAction : É^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var segue : kn
+	var segue : É^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var impressionMetrics : %|
+	var impressionMetrics : =l
  }
 
  enum GameCenterUI.EmphasizedSegment {
@@ -3353,13 +3362,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var tl : Er // +0x0
+	var tl : Öb // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var tr : Er // +0x8
+	var tr : Öb // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bl : Er // +0x10
+	var bl : Öb // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var br : Er // +0x18
+	var br : Öb // +0x18
  }
 
  struct GameCenterUI.SpecializedRoundedRectangle {
@@ -3367,7 +3376,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var squareTrailingEdge : Bool // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var trailingCornerRadius : Er // +0x8
+	var trailingCornerRadius : Öb // +0x8
  }
 
  class GameCenterUI.RecentlyPlayedWithFriendsListProfileSection : PlayerProfileSection { }
@@ -3380,17 +3389,40 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var separator : UIView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1f42c000fcbd8 (0x42c000fcbd8) in binary!
-	0x28ec0  @objc TitleWithHighlightsCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x20124000fdd68 (0x124000fdd68) in binary!
-	0x20658  @objc TitleWithHighlightsCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x21c1400104878 (0x41400104878) in binary!
-	0x20640  @objc TitleWithHighlightsCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x1f674000f8318 (0x674000f8318) in binary!
+	0x2a158  @objc TitleWithHighlightsCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x2034c000f94b8 (0x34c000f94b8) in binary!
+	0x20880  @objc TitleWithHighlightsCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x21e4c000fffa8 (0x64c000fffa8) in binary!
+	0x20868  @objc TitleWithHighlightsCollectionViewCell.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x1e4fff2e6b8  @objc TitleWithHighlightsCollectionViewCell.(null) <stripped>
-	0x3bc000fcb68  @objc TitleWithHighlightsCollectionViewCell.Hâ«Aˇ÷Hã5#ü: <stripped>
-WARNING: couldn't find address 0x1001c4fff33068 (0x1c4fff33068) in binary!
-	0x3400105020  @objc TitleWithHighlightsCollectionViewCell.(null) <stripped>
+	0x134fff2c3a0  @objc TitleWithHighlightsCollectionViewCell.(null) <stripped>
+	0x604000f82a8  @objc TitleWithHighlightsCollectionViewCell.ã]√UHâÂHã85; <stripped>
+WARNING: couldn't find address 0xfb914fff30d90 (0x114fff30d90) in binary!
+	0x26c00100748  @objc TitleWithHighlightsCollectionViewCell.(null) <stripped>
+ }
+
+ struct GameCenterUI.AlignmentLayout {
+
+	// Properties
+	var storage : Indirect // +0x0
+ }
+
+ enum GameCenterUI.Alignment {
+
+	// Properties
+	case leading  
+	case center  
+	case trailing  
+ }
+
+ struct GameCenterUI.Storage {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var view : ïi // +0x0
+	var horizontal : Alignment // +0x28
+	var vertical : Alignment // +0x29
  }
 
  struct GameCenterUI.GKMultiplayerCollectionViewCellVerticalLayout {
@@ -3398,33 +3430,33 @@ WARNING: couldn't find address 0x1001c4fff33068 (0x1c4fff33068) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let avatar : Uy // +0x100
+	let avatar : ïi // +0x100
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleText : ≠y // +0x128
+	let titleText : Ìi // +0x128
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subtitleText : ≠y // +0x150
+	let subtitleText : Ìi // +0x150
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let statusView : Ey // +0x178
+	let statusView : Öi // +0x178
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let messagesIcon : Ey // +0x1a0
+	let messagesIcon : Öi // +0x1a0
  }
 
  struct GameCenterUI.Metrics {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var topSpace : Àw // +0x0
+	var topSpace : h // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var titleSpace : Àw // +0x28
+	var titleSpace : h // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var subtitleTopSpace : Àw // +0x50
+	var subtitleTopSpace : h // +0x50
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var statusTopSpace : Àw // +0x78
+	var statusTopSpace : h // +0x78
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var statusBottomSpace : Àw // +0xa0
+	var statusBottomSpace : h // +0xa0
 	var margins : NSDirectionalEdgeInsets // +0xc8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var avatarMaximumHeight : Er // +0xe8
+	var avatarMaximumHeight : Öb // +0xe8
 	var messagesIconSize : CGSize // +0xf0
  }
 
@@ -3434,11 +3466,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : ˜
+	var id : p
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var segue : kn
+	var segue : É^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var impressionMetrics : %|
+	var impressionMetrics : =l
 	let title : String
 	let highlights : AchievementHighlight
  }
@@ -3450,7 +3482,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var viewController : weak UIViewController? // +0x10 (0x8)
 
 	// Swift methods
-	0x2039d0  func <stripped> // method 
+	0x205f80  func <stripped> // method 
  }
 
  enum GameCenterUI.TermsAndConditionsActionImplementationError {
@@ -3461,10 +3493,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class GameCenterUI.SectionFooterPlaceholderView : BaseCollectionReusableView {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1f3dc000fcb88 (0x3dc000fcb88) in binary!
-	0x28e70  @objc SectionFooterPlaceholderView.(null) <stripped>
+WARNING: couldn't find address 0x1f624000f82c8 (0x624000f82c8) in binary!
+	0x2a108  @objc SectionFooterPlaceholderView.(null) <stripped>
 WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
-	0x1c4fff33068  @objc SectionFooterPlaceholderView.(null) <stripped>
+	0x114fff30d90  @objc SectionFooterPlaceholderView.(null) <stripped>
  }
 
  struct GameCenterUI.GKMultiplayerCollectionViewCellHorizontalLayout {
@@ -3472,15 +3504,15 @@ WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let avatar : Uy // +0xb8
+	let avatar : ïi // +0xb8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleText : ≠y // +0xe0
+	let titleText : Ìi // +0xe0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subtitleView : Uy // +0x108
+	let subtitleView : ïi // +0x108
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let statusView : Ey // +0x130
+	let statusView : Öi // +0x130
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let messagesIcon : Ey // +0x158
+	let messagesIcon : Öi // +0x158
  }
 
  struct GameCenterUI.Metrics {
@@ -3489,11 +3521,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var margins : NSDirectionalEdgeInsets // +0x0
 	var iconSize : CGSize // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var titleMargin : Àw // +0x30
+	var titleMargin : h // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var statusMargin : Àw // +0x58
+	var statusMargin : h // +0x58
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var subtitleSpace : Àw // +0x80
+	var subtitleSpace : h // +0x80
 	var messagesIconSize : CGSize // +0xa8
  }
 
@@ -3502,16 +3534,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleText : ≠y // +0x28
+	let titleText : Ìi // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subtitleView : Uy // +0x50
+	let subtitleView : ïi // +0x50
  }
 
  struct GameCenterUI.Metrics {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var subtitleSpace : Àw // +0x0
+	var subtitleSpace : h // +0x0
  }
 
  class GameCenterUI.SmallLockupCollectionViewCell {
@@ -3522,35 +3554,35 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var hasShadow : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1f3bc000fcb68 (0x3bc000fcb68) in binary!
-	0x28e50  @objc AvatarView.(null) <stripped>
-WARNING: couldn't find address 0x2203400105020 (0x3400105020) in binary!
-	0x24c58  @objc AvatarView.(null) <stripped>
-WARNING: couldn't find address 0x2036c001054a8 (0x36c001054a8) in binary!
-	0x205d0  @objc AvatarView.(null) <stripped>
-WARNING: couldn't find address 0x24c34000fdbb0 (0x434000fdbb0) in binary!
-	0x205b8  @objc AvatarView.(null) <stripped>
+WARNING: couldn't find address 0x1f604000f82a8 (0x604000f82a8) in binary!
+	0x2a0e8  @objc AvatarView.(null) <stripped>
+WARNING: couldn't find address 0x2226c00100748 (0x26c00100748) in binary!
+	0x24e90  @objc AvatarView.(null) <stripped>
+WARNING: couldn't find address 0x2059400100bd0 (0x59400100bd0) in binary!
+	0x207f8  @objc AvatarView.(null) <stripped>
+WARNING: couldn't find address 0x24e6c000f9300 (0x66c000f9300) in binary!
+	0x207e0  @objc AvatarView.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x4ecfff34990  @objc AvatarView.(null) <stripped>
-	0x7cfff34a68  @objc AvatarView.å>; <stripped>
-	0x7ac000fc998  @objc AvatarView.1ˆHâ¬ËËÎ) <stripped>
-WARNING: couldn't find address 0xfff36ac8 (0xfff36ac8) in binary!
-	0x304000fcab0  @objc AvatarView.(null) <stripped>
+	0x424fff326b8  @objc AvatarView.(null) <stripped>
+	0x7b4fff32790  @objc AvatarView.Hâ«Aˇ‘Lã-+5 <stripped>
+	0x1e4000f80d8  @objc AvatarView.LâˆAˇ‘Hâ«Ë`5* <stripped>
+WARNING: couldn't find address 0xfff34820 (0xfff34820) in binary!
+	0x54c000f81f0  @objc AvatarView.(null) <stripped>
 
 	// Swift methods
-	0x2086f0  func <stripped> // getter 
-	0x208720  func <stripped> // setter 
-	0x208810  func <stripped> // modifyCoroutine 
-	0x209860  func <stripped> // getter 
-	0x209890  func <stripped> // setter 
-	0x208950  func <stripped> // modifyCoroutine 
-	0x2089b0  func <stripped> // getter 
-	0x2089f0  func <stripped> // setter 
-	0x208a10  func <stripped> // modifyCoroutine 
-	0x208b30  func <stripped> // method 
-	0x208be0  func <stripped> // method 
-	0x209840  func <stripped> // method 
-	0x208c90  func <stripped> // method 
+	0x20ace0  func <stripped> // getter 
+	0x20ad10  func <stripped> // setter 
+	0x20ae00  func <stripped> // modifyCoroutine 
+	0x20be40  func <stripped> // getter 
+	0x20be80  func <stripped> // setter 
+	0x20af40  func <stripped> // modifyCoroutine 
+	0x20afa0  func <stripped> // getter 
+	0x20afe0  func <stripped> // setter 
+	0x20b000  func <stripped> // modifyCoroutine 
+	0x20b120  func <stripped> // method 
+	0x20b1d0  func <stripped> // method 
+	0x20be60  func <stripped> // method 
+	0x20b280  func <stripped> // method 
  }
 
  struct GameCenterUI.GKVisualEffects {
@@ -3572,14 +3604,14 @@ WARNING: couldn't find address 0xfff36ac8 (0xfff36ac8) in binary!
 	let contentView : _UIContentUnavailableView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x28df400100168 (0x5f400100168) in binary!
-	0x20598  @objc ErrorView.(null) <stripped>
-WARNING: couldn't find address 0x1f33c000fcae8 (0x33c000fcae8) in binary!
-	0x20580  @objc ErrorView.(null) <stripped>
+WARNING: couldn't find address 0x2a08c000fb8b8 (0x8c000fb8b8) in binary!
+	0x207c0  @objc ErrorView.(null) <stripped>
+WARNING: couldn't find address 0x1f584000f8228 (0x584000f8228) in binary!
+	0x207a8  @objc ErrorView.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff36ac8  @objc ErrorView.(null) <stripped>
+	0xfff34820  @objc ErrorView.(null) <stripped>
 WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
-	0x10cfff39660  @objc ErrorView.(null) <stripped>
+	0x5cfff373b8  @objc ErrorView.(null) <stripped>
 
 	// Swift methods
  }
@@ -3588,20 +3620,20 @@ WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : ˜
+	var id : p
 	let title : String
 	let subtitle : String?
 	let avatarArtworkLoaderConfig : AvatarArtworkLoaderConfig
 	let avatarImage : UIImage?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let reportFriendAction : kn
+	let reportFriendAction : É^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var removeFriendAction : kn
+	var removeFriendAction : É^
 	let hasChevron : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var segue : kn
+	var segue : É^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var impressionMetrics : %|
+	var impressionMetrics : =l
  }
 
  class GameCenterUI.Components : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3611,19 +3643,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let componentCells :  empty-list 
 
 	// Swift methods
-	0x20bb60  func <stripped> // method 
-	0x20c000  func <stripped> // method 
-	0x20c160  func <stripped> // method 
-	0x20c390  func <stripped> // method 
-	0x20c550  func <stripped> // method 
-	0x20c5d0  func <stripped> // method 
-	0x20c690  func <stripped> // method 
-	0x20c6a0  func <stripped> // method 
+	0x20e170  func <stripped> // method 
+	0x20e610  func <stripped> // method 
+	0x20e770  func <stripped> // method 
+	0x20e9a0  func <stripped> // method 
+	0x20eb60  func <stripped> // method 
+	0x20ebe0  func <stripped> // method 
+	0x20eca0  func <stripped> // method 
+	0x20ecb0  func <stripped> // method 
  }
 
  class GameCenterUI.GameCenterSignOutActionImplementation : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x21fac000fc998 (0x7ac000fc998) in binary!
+WARNING: couldn't find address 0x221e4000f80d8 (0x1e4000f80d8) in binary!
 	0x98000000c  @objc GameCenterSignOutActionImplementation.(null) <stripped>
 
 	// Swift methods
@@ -3640,27 +3672,27 @@ WARNING: couldn't find address 0x21fac000fc998 (0x7ac000fc998) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let icon : Uy // +0xb8
+	let icon : ïi // +0xb8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let text : ≠y // +0xe0
+	let text : Ìi // +0xe0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let stepper : Ey // +0x108
+	let stepper : Öi // +0x108
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cancelButton : Uy // +0x130
+	let cancelButton : ïi // +0x130
  }
 
  struct GameCenterUI.Metrics {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var textMargin : Àw // +0x0
+	var textMargin : h // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var interItemMinimumSpacing : Àw // +0x28
+	var interItemMinimumSpacing : h // +0x28
 	var iconSize : CGSize // +0x50
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var verticalMargins : Àw // +0x60
+	var verticalMargins : h // +0x60
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var stepperOverflowMargin : Àw // +0x88
+	var stepperOverflowMargin : h // +0x88
 	var stepperPosition : StepperPosition // +0xb0
  }
 
@@ -3681,28 +3713,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var hasChevron : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1f304000fcab0 (0x304000fcab0) in binary!
-	0x28d98  @objc SmallFriendLockupView.(null) <stripped>
-WARNING: couldn't find address 0x1fffc000fdc40 (0x7fc000fdc40) in binary!
-	0x1fde0  @objc SmallFriendLockupView.(null) <stripped>
-WARNING: couldn't find address 0x20524000fd478 (0x524000fd478) in binary!
-	0x24b88  @objc SmallFriendLockupView.(null) <stripped>
-WARNING: couldn't find address 0x21f4c000fc338 (0x74c000fc338) in binary!
-	0x21f40  @objc SmallFriendLockupView.(null) <stripped>
-WARNING: couldn't find address 0x204f4000f9ff0 (0x4f4000f9ff0) in binary!
+WARNING: couldn't find address 0x1f54c000f81f0 (0x54c000f81f0) in binary!
+	0x2a030  @objc SmallFriendLockupView.(null) <stripped>
+WARNING: couldn't find address 0x20224000f9390 (0x224000f9390) in binary!
+	0x20008  @objc SmallFriendLockupView.(null) <stripped>
+WARNING: couldn't find address 0x2074c000f8bb0 (0x74c000f8bb0) in binary!
+	0x24dc0  @objc SmallFriendLockupView.(null) <stripped>
+WARNING: couldn't find address 0x22184000f7a70 (0x184000f7a70) in binary!
+	0x22178  @objc SmallFriendLockupView.(null) <stripped>
+WARNING: couldn't find address 0x2071c000f5728 (0x71c000f5728) in binary!
 	0x58000000c  @objc SmallFriendLockupView.(null) <stripped>
-WARNING: couldn't find address 0x1f28c000fca38 (0x28c000fca38) in binary!
-	0x28d20  @objc SmallFriendLockupView.(null) <stripped>
-WARNING: couldn't find address 0x1ff84000fdbc8 (0x784000fdbc8) in binary!
-	0x204b8  @objc SmallFriendLockupView.(null) <stripped>
-WARNING: couldn't find address 0x204ac000f9fa8 (0x4ac000f9fa8) in binary!
+WARNING: couldn't find address 0x1f4d4000f8178 (0x4d4000f8178) in binary!
+	0x29fb8  @objc SmallFriendLockupView.(null) <stripped>
+WARNING: couldn't find address 0x201ac000f9318 (0x1ac000f9318) in binary!
+	0x206e0  @objc SmallFriendLockupView.(null) <stripped>
+WARNING: couldn't find address 0x206d4000f56e0 (0x6d4000f56e0) in binary!
 	0x68000000c  @objc SmallFriendLockupView.(null) <stripped>
-WARNING: couldn't find address 0x1f244000fc9f0 (0x244000fc9f0) in binary!
-	0x28cd8  @objc SmallFriendLockupView.(null) <stripped>
+WARNING: couldn't find address 0x1f48c000f8130 (0x48c000f8130) in binary!
+	0x29f70  @objc SmallFriendLockupView.(null) <stripped>
 
 	// Swift methods
-	0x20f970  func <stripped> // method 
-	0x20fb20  func <stripped> // method 
+	0x211f90  func <stripped> // method 
+	0x212140  func <stripped> // method 
  }
 
  struct GameCenterUI.ReportFriendAction {
@@ -3718,16 +3750,16 @@ WARNING: couldn't find address 0x1f244000fc9f0 (0x244000fc9f0) in binary!
 	var style : Style
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1f28c000fca38 (0x28c000fca38) in binary!
-	0x28d20  @objc SeparatorView.(null) <stripped>
-WARNING: couldn't find address 0x1ff84000fdbc8 (0x784000fdbc8) in binary!
-	0x204b8  @objc SeparatorView.(null) <stripped>
-WARNING: couldn't find address 0x204ac000f9fa8 (0x4ac000f9fa8) in binary!
+WARNING: couldn't find address 0x1f4d4000f8178 (0x4d4000f8178) in binary!
+	0x29fb8  @objc SeparatorView.(null) <stripped>
+WARNING: couldn't find address 0x201ac000f9318 (0x1ac000f9318) in binary!
+	0x206e0  @objc SeparatorView.(null) <stripped>
+WARNING: couldn't find address 0x206d4000f56e0 (0x6d4000f56e0) in binary!
 	0x68000000c  @objc SeparatorView.(null) <stripped>
-WARNING: couldn't find address 0x1f244000fc9f0 (0x244000fc9f0) in binary!
-	0x28cd8  @objc SeparatorView.(null) <stripped>
-WARNING: couldn't find address 0x1ff3c000fdb80 (0x73c000fdb80) in binary!
-	0x1fd20  @objc SeparatorView.(null) <stripped>
+WARNING: couldn't find address 0x1f48c000f8130 (0x48c000f8130) in binary!
+	0x29f70  @objc SeparatorView.(null) <stripped>
+WARNING: couldn't find address 0x20164000f92d0 (0x164000f92d0) in binary!
+	0x1ff48  @objc SeparatorView.(null) <stripped>
  }
 
  struct GameCenterUI.AccessPointView {
@@ -3735,15 +3767,15 @@ WARNING: couldn't find address 0x1ff3c000fdb80 (0x73c000fdb80) in binary!
 	// Properties
 	var accessPoint : AccessPoint // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _isHidden : kS // +0x8
+	var _isHidden : GC // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _model : aS // +0x18
+	var _model : =C // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _useHighlightTransition : kS // +0x70
+	var _useHighlightTransition : GC // +0x70
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _useHighlightRemovalTransition : kS // +0x80
+	var _useHighlightRemovalTransition : GC // +0x80
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _alignment : SS // +0x90
+	var _alignment : /C // +0x90
  }
 
  class GameCenterUI.LeaderboardMovementLockupView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3755,31 +3787,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var playerViews : LeaderboardPlayerLockupView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1f244000fc9f0 (0x244000fc9f0) in binary!
-	0x28cd8  @objc LeaderboardMovementLockupView.(null) <stripped>
-WARNING: couldn't find address 0x1ff3c000fdb80 (0x73c000fdb80) in binary!
-	0x1fd20  @objc LeaderboardMovementLockupView.(null) <stripped>
-WARNING: couldn't find address 0x20464000fd3b8 (0x464000fd3b8) in binary!
-	0x20458  @objc LeaderboardMovementLockupView.(null) <stripped>
+WARNING: couldn't find address 0x1f48c000f8130 (0x48c000f8130) in binary!
+	0x29f70  @objc LeaderboardMovementLockupView.(null) <stripped>
+WARNING: couldn't find address 0x20164000f92d0 (0x164000f92d0) in binary!
+	0x1ff48  @objc LeaderboardMovementLockupView.(null) <stripped>
+WARNING: couldn't find address 0x2068c000f8af0 (0x68c000f8af0) in binary!
+	0x20680  @objc LeaderboardMovementLockupView.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x7f4fff467c0  @objc LeaderboardMovementLockupView.(null) <stripped>
-	0x664000fc850  @objc LeaderboardMovementLockupView.Å) <stripped>
-WARNING: couldn't find address 0xfc3b4fff51740 (0x3b4fff51740) in binary!
-	0x5eb00105110  @objc LeaderboardMovementLockupView.(null) <stripped>
+	0x71cfff444f8  @objc LeaderboardMovementLockupView.(null) <stripped>
+	0x9c000f7f90  @objc LeaderboardMovementLockupView.Aˇ‘Î)Hã5¿∫: <stripped>
+WARNING: couldn't find address 0xf7af4fff4f4b8 (0x2f4fff4f4b8) in binary!
+	0x4300100838  @objc LeaderboardMovementLockupView.(null) <stripped>
 
 	// Swift methods
-	0x218370  func <stripped> // method 
+	0x21a970  func <stripped> // method 
  }
 
  struct GameCenterUI.AchievementHighlightLayout {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let decorationView : Uy // +0x0
+	let decorationView : ïi // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleText : ≠y // +0x28
+	let titleText : Ìi // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subtitleText : ≠y // +0x50
+	let subtitleText : Ìi // +0x50
 	let orientation : Orientation // +0x78
 	let metrics : Metrics // +0x80
  }
@@ -3788,11 +3820,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var decorationTopSpace : Àw // +0x0
+	var decorationTopSpace : h // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var titleTopSpace : Àw // +0x28
+	var titleTopSpace : h // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var subtitleTopSpace : Àw // +0x50
+	var subtitleTopSpace : h // +0x50
  }
 
  enum GameCenterUI.Orientation {
@@ -3808,15 +3840,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let resourceLoader : GKResourceLoader // +0x0
 	let accessQueue : OS_dispatch_queue // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var completionHandlers :  empty-list  // +0x21cfa0
+	var completionHandlers :  empty-list  // +0x21f5a0
 	var requestCompletionMap : HashableRequestKey // +0x0
 	var isOccluded : Bool // +0x0
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x272d800103808 (0x2d800103808) in binary!
-	0x272cc  @objc ArtworkLoader.(null) <stripped>
+WARNING: couldn't find address 0x27530000fef30 (0x530000fef30) in binary!
+	0x27524  @objc ArtworkLoader.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x3b4fff51740  @objc ArtworkLoader.(null) <stripped>
+	0x2f4fff4f4b8  @objc ArtworkLoader.(null) <stripped>
 
 	// Swift methods
  }
@@ -3862,12 +3894,12 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	var isUpdating : Bool
 	var data : GameLayerSection
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onApplySnapshot : ”7
+	let onApplySnapshot : µ'
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var onUpdatePhaseChange : çw
+	var onUpdatePhaseChange : •g
 
 	// Swift methods
-	0x21f570  class func GameLayerAchievementsPresenter.__allocating_init(gameRecord:) // init 
+	0x221b80  class func GameLayerAchievementsPresenter.__allocating_init(gameRecord:) // init 
  }
 
  class GameCenterUI.LocalPlayerAuthenticationPresenter : NSObject /usr/lib/libobjc.A.dylib {
@@ -3876,23 +3908,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var localPlayer : GKLocalPlayer
 	var isUpdating : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var onUpdatePhaseChange : çw
+	var onUpdatePhaseChange : •g
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var onAuthenticatedPlayerDidChange : 37
+	var onAuthenticatedPlayerDidChange : '
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var onUIRequired : 7
+	var onUIRequired : ˚&
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x21e64000fc850 (0x664000fc850) in binary!
-	0x25df7  @objc LocalPlayerAuthenticationPresenter.(null) <stripped>
-WARNING: couldn't find address 0x25deb00105110 (0x5eb00105110) in binary!
-	0x20400  @objc LocalPlayerAuthenticationPresenter.(null) <stripped>
+WARNING: couldn't find address 0x2209c000f7f90 (0x9c000f7f90) in binary!
+	0x2604f  @objc LocalPlayerAuthenticationPresenter.(null) <stripped>
+WARNING: couldn't find address 0x2604300100838 (0x4300100838) in binary!
+	0x20628  @objc LocalPlayerAuthenticationPresenter.(null) <stripped>
 WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
-	0x384fff623c8  @objc LocalPlayerAuthenticationPresenter.(null) <stripped>
-	0x37cfff625d0  @objc LocalPlayerAuthenticationPresenter.(Hãÿä; <stripped>
+	0x2c4fff600d0  @objc LocalPlayerAuthenticationPresenter.(null) <stripped>
+	0x2bcfff602d8  @objc LocalPlayerAuthenticationPresenter.) <stripped>
 
 	// Swift methods
-	0x227990  func <stripped> // method 
+	0x229fd0  func <stripped> // method 
  }
 
  enum GameCenterUI.UIRequirement {
@@ -3952,7 +3984,7 @@ WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
 	case none  
  }
 
- struct GameCenterUI.GameLayerMetadataLayoutBuilder { }
+ struct GameCenterUI.GameLayerHighlightsLayoutBuilder { }
 
  class GameCenterUI.ScrollViewDelegateObserver : NSObject /usr/lib/libobjc.A.dylib {
 
@@ -3960,21 +3992,21 @@ WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
 	let compoundScrollObserver : CompoundScrollObserver
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x24a5c000fa080 (0x25c000fa080) in binary!
-	0x24a50  @objc ScrollViewDelegateObserver.(null) <stripped>
-WARNING: couldn't find address 0x24a44000fc380 (0x244000fc380) in binary!
-	0x25d90  @objc ScrollViewDelegateObserver.(null) <stripped>
-WARNING: couldn't find address 0x24a2c000fac38 (0x22c000fac38) in binary!
-	0x271a0  @objc ScrollViewDelegateObserver.(null) <stripped>
-WARNING: couldn't find address 0x21de4000fc7d0 (0x5e4000fc7d0) in binary!
-	0x20398  @objc ScrollViewDelegateObserver.(null) <stripped>
+WARNING: couldn't find address 0x24c94000f57b8 (0x494000f57b8) in binary!
+	0x24c88  @objc ScrollViewDelegateObserver.(null) <stripped>
+WARNING: couldn't find address 0x24c7c000f7ac0 (0x47c000f7ac0) in binary!
+	0x25fe8  @objc ScrollViewDelegateObserver.(null) <stripped>
+WARNING: couldn't find address 0x24c64000f6370 (0x464000f6370) in binary!
+	0x273f8  @objc ScrollViewDelegateObserver.(null) <stripped>
+WARNING: couldn't find address 0x2201c000f7f10 (0x1c000f7f10) in binary!
+	0x205c0  @objc ScrollViewDelegateObserver.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x674fff65b30  @objc ScrollViewDelegateObserver.(null) <stripped>
-	0x3b4001036f0  @objc ScrollViewDelegateObserver.ﬂAˇ÷LâÁAˇ÷Lã}∞LâˇHÉƒ([A\A]A^A_]ˇ%;…4 <stripped>
-WARNING: couldn't find address 0xfcddcfff6ad00 (0x5dcfff6ad00) in binary!
-	0x114000fc310  @objc ScrollViewDelegateObserver.(null) <stripped>
-WARNING: couldn't find address 0xfc30cfff6b0b8 (0x30cfff6b0b8) in binary!
-	0x574000fc308  @objc ScrollViewDelegateObserver.(null) <stripped>
+	0x5acfff63858  @objc ScrollViewDelegateObserver.(null) <stripped>
+	0x64c000fee18  @objc ScrollViewDelegateObserver.â«Ëo7* <stripped>
+WARNING: couldn't find address 0xf851cfff68a58 (0x51cfff68a58) in binary!
+	0x34c000f7a50  @objc ScrollViewDelegateObserver.(null) <stripped>
+WARNING: couldn't find address 0xf7a4cfff68e10 (0x24cfff68e10) in binary!
+	0x7ac000f7a48  @objc ScrollViewDelegateObserver.(null) <stripped>
  }
 
  struct GameCenterUI.GameLayerTitleLayoutBuilder { }
@@ -3985,23 +4017,23 @@ WARNING: couldn't find address 0xfc30cfff6b0b8 (0x30cfff6b0b8) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let locale : ”& // +0x0 (0x0)
+	let locale : Ω // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let extendedLocale : ”& // +0x0 (0x0)
+	let extendedLocale : Ω // +0x0 (0x0)
 	let localizedStringTables : LocalizedStringTable // +0x0 (0x8)
 	var dateFormatters : [String : NSDateFormatter] // +0x77735f5f (0x8)
 	var dynamicDateFormatters : [String : NSDateFormatter] // +0x6665725f (0x8)
 	var $__lazy_storage_$_relativeDateFormatter : NSDateFormatter? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x21dc4000fc7b0 (0x5c4000fc7b0) in binary!
-	0x20378  @objc Localization.(null) <stripped>
+WARNING: couldn't find address 0x21ffc000f7ef0 (0x7fc000f7ef0) in binary!
+	0x205a0  @objc Localization.(null) <stripped>
 WARNING: couldn't find address 0xf8000000c (0xf8000000c) in binary!
-	0x5dcfff6ad00  @objc Localization.(null) <stripped>
+	0x51cfff68a58  @objc Localization.(null) <stripped>
 
 	// Swift methods
-	0x23b880  func <stripped> // method 
-	0x23b9f0  func <stripped> // method 
+	0x23de70  func <stripped> // method 
+	0x23dfe0  func <stripped> // method 
  }
 
  struct GameCenterUI.GameAchievementsActionImplementation {
@@ -4046,59 +4078,59 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let authenticationPresenter : LocalPlayerAuthenticationPresenter // +0x28 (0x8)
 	var nicknamePresenter : NicknamePresenter // +0x30 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var nicknameUpdatedSubscription : )q // +0x0 (0x0)
+	var nicknameUpdatedSubscription : Aa // +0x0 (0x0)
 	var isUpdating : Bool // +0x45545f5f (0x1)
 	var sections : PlayerProfileSection // +0x0 (0x8)
 	var requiredData : Data // +0x0 (0x48)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var snapshot : ßb // +0x0 (0x0)
+	var snapshot : øR // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var onApplySnapshot : /g // +0x31bc20 (0x8)
+	var onApplySnapshot : GW // +0x320c60 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var onUpdatePhaseChange : çw // +0x598d (0x8)
+	var onUpdatePhaseChange : •g // +0x59ed (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var onShowAvatarEditor : ≈5 // +0x31bc20 (0x8)
+	var onShowAvatarEditor : ß% // +0x320c60 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var onNicknameChanged : w3 // +0x0 (0x8)
+	var onNicknameChanged : Y# // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x28bb4001036f0 (0x3b4001036f0) in binary!
-	0x21d98  @objc PlayerProfilePresenter.(null) <stripped>
-WARNING: couldn't find address 0x21914000fc310 (0x114000fc310) in binary!
-	0x21d80  @objc PlayerProfilePresenter.(null) <stripped>
-WARNING: couldn't find address 0x21d74000fc308 (0x574000fc308) in binary!
-	0x24998  @objc PlayerProfilePresenter.(null) <stripped>
-WARNING: couldn't find address 0x218e4000fc300 (0xe4000fc300) in binary!
-	0x218e0  @objc PlayerProfilePresenter.(null) <stripped>
-WARNING: couldn't find address 0x20304000fc2f8 (0x304000fc2f8) in binary!
-	0x218c8  @objc PlayerProfilePresenter.(null) <stripped>
-WARNING: couldn't find address 0x202ec000fc2f0 (0x2ec000fc2f0) in binary!
-	0x202e0  @objc PlayerProfilePresenter.(null) <stripped>
-WARNING: couldn't find address 0x202d4000fc2e8 (0x2d4000fc2e8) in binary!
-	0x21d08  @objc PlayerProfilePresenter.(null) <stripped>
-WARNING: couldn't find address 0x202bc000f9db8 (0x2bc000f9db8) in binary!
+WARNING: couldn't find address 0x29e4c000fee18 (0x64c000fee18) in binary!
+	0x21fd0  @objc PlayerProfilePresenter.(null) <stripped>
+WARNING: couldn't find address 0x21b4c000f7a50 (0x34c000f7a50) in binary!
+	0x21fb8  @objc PlayerProfilePresenter.(null) <stripped>
+WARNING: couldn't find address 0x21fac000f7a48 (0x7ac000f7a48) in binary!
+	0x24bd0  @objc PlayerProfilePresenter.(null) <stripped>
+WARNING: couldn't find address 0x21b1c000f7a40 (0x31c000f7a40) in binary!
+	0x21b18  @objc PlayerProfilePresenter.(null) <stripped>
+WARNING: couldn't find address 0x2052c000f7a38 (0x52c000f7a38) in binary!
+	0x21b00  @objc PlayerProfilePresenter.(null) <stripped>
+WARNING: couldn't find address 0x20514000f7a30 (0x514000f7a30) in binary!
+	0x20508  @objc PlayerProfilePresenter.(null) <stripped>
+WARNING: couldn't find address 0x204fc000f7a28 (0x4fc000f7a28) in binary!
+	0x21f40  @objc PlayerProfilePresenter.(null) <stripped>
+WARNING: couldn't find address 0x204e4000f54f0 (0x4e4000f54f0) in binary!
 	0x18000000c  @objc PlayerProfilePresenter.(null) <stripped>
-WARNING: couldn't find address 0x28af4000fe200 (0x2f4000fe200) in binary!
+WARNING: couldn't find address 0x29d8c000f9950 (0x58c000f9950) in binary!
 	0x18000000c  @objc PlayerProfilePresenter.(null) <stripped>
-WARNING: couldn't find address 0x21ccc000fc6b8 (0x4cc000fc6b8) in binary!
+WARNING: couldn't find address 0x21f04000f7df8 (0x704000f7df8) in binary!
 	0x28000000c  @objc PlayerProfilePresenter.(null) <stripped>
-WARNING: couldn't find address 0x28ac4000ffe38 (0x2c4000ffe38) in binary!
-	0x20268  @objc PlayerProfilePresenter.(null) <stripped>
+WARNING: couldn't find address 0x29d5c000fb588 (0x55c000fb588) in binary!
+	0x20490  @objc PlayerProfilePresenter.(null) <stripped>
 WARNING: couldn't find address 0xd8000000c (0xd8000000c) in binary!
-	0x60cfff739a0  @objc PlayerProfilePresenter.(null) <stripped>
-	0x4c4fff739e8  @objc PlayerProfilePresenter.»Hã•: <stripped>
-	0xecfff74070  @objc PlayerProfilePresenter.´) <stripped>
-	0x3ccfff74aa8  @objc PlayerProfilePresenter.ÊAˇ’HâﬂAˇ÷Hã5OB; <stripped>
+	0x55cfff71758  @objc PlayerProfilePresenter.(null) <stripped>
+	0x414fff717a0  @objc PlayerProfilePresenter.Ïÿ <stripped>
+	0x2cfff71e28  @objc PlayerProfilePresenter.√UHâÂHãTä; <stripped>
+	0x31cfff72860  @objc PlayerProfilePresenter.âﬂˇ∞5 <stripped>
 
 	// Swift methods
-	0x240fb0  func <stripped> // getter 
-	0x241d50  func <stripped> // method 
-	0x242560  func <stripped> // method 
-	0x2430d0  func <stripped> // method 
-	0x2435e0  func <stripped> // method 
-	0x2437e0  func <stripped> // method 
-	0x243a70  func <stripped> // method 
-	0x243c20  func <stripped> // method 
+	0x2435d0  func <stripped> // getter 
+	0x244370  func <stripped> // method 
+	0x244b80  func <stripped> // method 
+	0x2456f0  func <stripped> // method 
+	0x245c00  func <stripped> // method 
+	0x245e00  func <stripped> // method 
+	0x246090  func <stripped> // method 
+	0x246240  func <stripped> // method 
  }
 
  enum GameCenterUI.UpdateType {
@@ -4112,11 +4144,11 @@ WARNING: couldn't find address 0xd8000000c (0xd8000000c) in binary!
 
  class GameCenterUI.AchievementUtils : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x21ccc000fc6b8 (0x4cc000fc6b8) in binary!
+WARNING: couldn't find address 0x21f04000f7df8 (0x704000f7df8) in binary!
 	0x28000000c  @objc AchievementUtils.(null) <stripped>
 
 	// Swift methods
-	0x2455f0  class func <stripped> // method 
+	0x247c20  class func <stripped> // method 
  }
 
  class GameCenterUI.CappedSizeDynamicTypeLabel : DynamicTypeLabel {
@@ -4125,10 +4157,10 @@ WARNING: couldn't find address 0x21ccc000fc6b8 (0x4cc000fc6b8) in binary!
 	var maxSizeCategory : UIContentSizeCategory // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x28ac4000ffe38 (0x2c4000ffe38) in binary!
-	0x20268  @objc CappedSizeDynamicTypeLabel.(null) <stripped>
+WARNING: couldn't find address 0x29d5c000fb588 (0x55c000fb588) in binary!
+	0x20490  @objc CappedSizeDynamicTypeLabel.(null) <stripped>
 WARNING: couldn't find address 0xd8000000c (0xd8000000c) in binary!
-	0x60cfff739a0  @objc CappedSizeDynamicTypeLabel.(null) <stripped>
+	0x55cfff71758  @objc CappedSizeDynamicTypeLabel.(null) <stripped>
 
 	// Swift methods
  }
@@ -4143,22 +4175,22 @@ WARNING: couldn't find address 0xd8000000c (0xd8000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let view : ≠y // +0x0
+	let view : Ìi // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let firstLineSpace : Àw // +0x28
+	let firstLineSpace : h // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bottomSpace : Àw // +0x50
+	let bottomSpace : h // +0x50
  }
 
  struct GameCenterUI.TitleHeaderLayout {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let accessoryView : Ey // +0x0
+	let accessoryView : Öi // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let accessoryMargin : Àw // +0x28
+	let accessoryMargin : h // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bottomLineHeightMultiplier : Er // +0x50
+	let bottomLineHeightMultiplier : Öb // +0x50
 	let children : TextChild // +0x58
 	let accessoryVerticalAlignment : AccessoryVerticalAlignment // +0x60
 	let accessoryHorizontalAlignment : AccessoryHorizontalAlignment // +0x61
@@ -4187,43 +4219,43 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var wantsHiddenNavigationBar : Bool?
 	var wantsHiddenTitle : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var manualScrollEdgeAppearanceProgress : ì$
+	var manualScrollEdgeAppearanceProgress : }
 	let scrollObserver : ScrollViewDelegateObserver
 	var navbarScrollObserver : NavigationBarVisibilityScrollObserver
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x20288000fdc28 (0x288000fdc28) in binary!
-	0x28a98  @objc BaseCollectionViewController.(null) <stripped>
-WARNING: couldn't find address 0x21c7c000fcf28 (0x47c000fcf28) in binary!
-	0x248a0  @objc BaseCollectionViewController.(null) <stripped>
-WARNING: couldn't find address 0x20224000fd558 (0x224000fd558) in binary!
-	0x20218  @objc BaseCollectionViewController.(null) <stripped>
-WARNING: couldn't find address 0x217dc000fd778 (0x7dc000fd778) in binary!
-	0x20200  @objc BaseCollectionViewController.(null) <stripped>
-WARNING: couldn't find address 0x27704000ff090 (0x704000ff090) in binary!
-	0x24858  @objc BaseCollectionViewController.(null) <stripped>
-WARNING: couldn't find address 0x2484c00104fc0 (0x4c00104fc0) in binary!
-	0x28a20  @objc BaseCollectionViewController.(null) <stripped>
-WARNING: couldn't find address 0x201c4000f9cc0 (0x1c4000f9cc0) in binary!
+WARNING: couldn't find address 0x204b0000f9378 (0x4b0000f9378) in binary!
+	0x29d30  @objc BaseCollectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x21eb4000f8668 (0x6b4000f8668) in binary!
+	0x24ad8  @objc BaseCollectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x2044c000f8c90 (0x44c000f8c90) in binary!
+	0x20440  @objc BaseCollectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x21a14000f8ec8 (0x214000f8ec8) in binary!
+	0x20428  @objc BaseCollectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x2795c000fa7e0 (0x15c000fa7e0) in binary!
+	0x24a90  @objc BaseCollectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x24a84001006e8 (0x284001006e8) in binary!
+	0x29cb8  @objc BaseCollectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x203ec000f53f8 (0x3ec000f53f8) in binary!
 	0x18000000c  @objc BaseCollectionViewController.(null) <stripped>
-WARNING: couldn't find address 0x289fc000fc2e8 (0x1fc000fc2e8) in binary!
+WARNING: couldn't find address 0x29c94000f7a28 (0x494000f7a28) in binary!
 	0x18000000c  @objc BaseCollectionViewController.(null) <stripped>
-WARNING: couldn't find address 0x21bd4000fc5c0 (0x3d4000fc5c0) in binary!
+WARNING: couldn't find address 0x21e0c000f7d00 (0x60c000f7d00) in binary!
 	0xc8000000c  @objc BaseCollectionViewController.(null) <stripped>
-WARNING: couldn't find address 0x1ef2c000fc6d8 (0x72c000fc6d8) in binary!
-	0x20170  @objc BaseCollectionViewController.(null) <stripped>
-WARNING: couldn't find address 0x289b4000ffd28 (0x1b4000ffd28) in binary!
-	0x20158  @objc BaseCollectionViewController.(null) <stripped>
-WARNING: couldn't find address 0x1fc0c000fd850 (0x40c000fd850) in binary!
-	0x1f9f0  @objc BaseCollectionViewController.(null) <stripped>
-WARNING: couldn't find address 0x216fc00104360 (0x6fc00104360) in binary!
-	0x21b68  @objc BaseCollectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x1f174000f7e18 (0x174000f7e18) in binary!
+	0x20398  @objc BaseCollectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x29c4c000fb478 (0x44c000fb478) in binary!
+	0x20380  @objc BaseCollectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x1fe34000f8fa0 (0x634000f8fa0) in binary!
+	0x1fc18  @objc BaseCollectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x21934000ffa90 (0x134000ffa90) in binary!
+	0x21da0  @objc BaseCollectionViewController.(null) <stripped>
 
 	// Swift methods
-	0x2498b0  func <stripped> // getter 
-	0x2498f0  func <stripped> // setter 
-	0x249960  func <stripped> // modifyCoroutine 
-	0x249a10  func <stripped> // method 
+	0x24bf30  func <stripped> // getter 
+	0x24bf70  func <stripped> // setter 
+	0x24bfe0  func <stripped> // modifyCoroutine 
+	0x24c090  func <stripped> // method 
  }
 
  class GameCenterUI.ASCLockupBatchPresenter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4238,21 +4270,21 @@ WARNING: couldn't find address 0x216fc00104360 (0x6fc00104360) in binary!
 	var fetchedAdamIds : [ASCAdamID]
 	var pendingCacbeRequests : LockupCacheRequest
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onBatchStateChange : ≠0
+	let onBatchStateChange : è 
 
 	// Swift methods
-	0x24cf70  func <stripped> // method 
-	0x24e0b0  func <stripped> // method 
-	0x24e300  func <stripped> // method 
+	0x24f670  func <stripped> // method 
+	0x2507b0  func <stripped> // method 
+	0x250a00  func <stripped> // method 
  }
 
  struct GameCenterUI.LockupCacheRequest {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let id : ª"
+	let id : •
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adamIdsPromise : =2
+	let adamIdsPromise : "
 	let adamIdCount : Int
  }
 
@@ -4276,7 +4308,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : ˜
+	var id : p
 	let style : Style
 	let title : String
 	let subtitle : String?
@@ -4286,9 +4318,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let attachementStyle : AttachmentStyle
 	let isEnabled : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var segue : kn
+	var segue : É^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var impressionMetrics : %|
+	var impressionMetrics : =l
  }
 
  enum GameCenterUI.Style {
@@ -4313,7 +4345,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class GameCenterUI.BlackListCoreRecencyContactActionImplementation : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x21bd4000fc5c0 (0x3d4000fc5c0) in binary!
+WARNING: couldn't find address 0x21e0c000f7d00 (0x60c000f7d00) in binary!
 	0xc8000000c  @objc BlackListCoreRecencyContactActionImplementation.(null) <stripped>
 
 	// Swift methods
@@ -4372,35 +4404,35 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let badge : AchievementBadge // +0x198 (0x8)
 	let titleLabel : DynamicTypeLabel // +0x1a0 (0x8)
 	let subtitleLabel : DynamicTypeLabel // +0x1a8 (0x8)
-	var model : Achievement // +0x0 (0x0)
-	var alwaysShowShadow : Bool // +0x327334 (0x1)
-	var backgroundEffectsGroup : String // +0xc48 (0x10)
-	var wantsFixedContentSizeCategory : Bool // +0x327334 (0x1)
+	var model : Achievement // +0x32c48c (0x0)
+	var alwaysShowShadow : Bool // +0xca8 (0x1)
+	var backgroundEffectsGroup : String // +0x32c48c (0x10)
+	var wantsFixedContentSizeCategory : Bool // +0x0 (0x1)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1ef2c000fc6d8 (0x72c000fc6d8) in binary!
-	0x20170  @objc AchievementCard.(null) <stripped>
-WARNING: couldn't find address 0x289b4000ffd28 (0x1b4000ffd28) in binary!
-	0x20158  @objc AchievementCard.(null) <stripped>
-WARNING: couldn't find address 0x1fc0c000fd850 (0x40c000fd850) in binary!
-	0x1f9f0  @objc AchievementCard.(null) <stripped>
-WARNING: couldn't find address 0x216fc00104360 (0x6fc00104360) in binary!
-	0x21b68  @objc AchievementCard.(null) <stripped>
-WARNING: couldn't find address 0x21b5c000fbf20 (0x35c000fbf20) in binary!
-	0x21b50  @objc AchievementCard.(null) <stripped>
-WARNING: couldn't find address 0x21b44000fc128 (0x344000fc128) in binary!
-	0x200f8  @objc AchievementCard.(null) <stripped>
+WARNING: couldn't find address 0x1f174000f7e18 (0x174000f7e18) in binary!
+	0x20398  @objc AchievementCard.(null) <stripped>
+WARNING: couldn't find address 0x29c4c000fb478 (0x44c000fb478) in binary!
+	0x20380  @objc AchievementCard.(null) <stripped>
+WARNING: couldn't find address 0x1fe34000f8fa0 (0x634000f8fa0) in binary!
+	0x1fc18  @objc AchievementCard.(null) <stripped>
+WARNING: couldn't find address 0x21934000ffa90 (0x134000ffa90) in binary!
+	0x21da0  @objc AchievementCard.(null) <stripped>
+WARNING: couldn't find address 0x21d94000f7658 (0x594000f7658) in binary!
+	0x21d88  @objc AchievementCard.(null) <stripped>
+WARNING: couldn't find address 0x21d7c000f7868 (0x57c000f7868) in binary!
+	0x20320  @objc AchievementCard.(null) <stripped>
 WARNING: couldn't find address 0xf8000000c (0xf8000000c) in binary!
-	0x49cfff85300  @objc AchievementCard.(null) <stripped>
-	0xdcfff85338  @objc AchievementCard.§/; <stripped>
-	0x4f4fff85330  @objc AchievementCard.\ˇˇˇDãm‘Hã…π; <stripped>
-	0x794fff85568  @objc AchievementCard.Aˇ÷Hã{0Aˇ÷Hã{8Lâ[A^]ˇ‡UHâÂAWAVAUATSHÉÏHHâÒIâ˛Hã=[t; <stripped>
-	0x7f4fff865c0  @objc AchievementCard.ÁAˇ◊Hâ«Ë¯¯) <stripped>
-	0x5ccfff86f28  @objc AchievementCard.âˆAˇ’HâﬂAˇ◊Hã5~C; <stripped>
+	0x3ecfff83198  @objc AchievementCard.(null) <stripped>
+	0x14fff831d0  @objc AchievementCard.WH«E‡ <stripped>
+	0x444fff831c8  @objc AchievementCard.ÚH]ˇ%§Ô4 <stripped>
+	0x6e4fff83400  @objc AchievementCard.LâÔHâﬁËãÛ) <stripped>
+	0x72cfff84458  @objc AchievementCard.ˇ’HâﬂAˇ‘Hã5ôF; <stripped>
+	0x4f4fff84dc0  @objc AchievementCard.=#∂; <stripped>
 
 	// Swift methods
-	0x257f90  class func AchievementCard.__allocating_init(frame:theme:) // init 
-	0x258680  class func AchievementCard.__allocating_init(frame:metrics:theme:) // init 
+	0x25a6d0  class func AchievementCard.__allocating_init(frame:theme:) // init 
+	0x25adc0  class func AchievementCard.__allocating_init(frame:metrics:theme:) // init 
  }
 
  class GameCenterUI.TitleHeaderView : BaseCollectionReusableView {
@@ -4418,41 +4450,40 @@ WARNING: couldn't find address 0xf8000000c (0xf8000000c) in binary!
 	var avoidanceRegion : CGRect
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1ee94000fc640 (0x694000fc640) in binary!
-	0x28928  @objc TitleHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x21694000fc0f8 (0x694000fc0f8) in binary!
-	0x21b00  @objc TitleHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x21af4000fc0e8 (0x2f4000fc0e8) in binary!
-	0x24718  @objc TitleHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x2470c00104ef8 (0x70c00104ef8) in binary!
-	0x1fb50  @objc TitleHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x20084000fcfd8 (0x84000fcfd8) in binary!
-	0x20078  @objc TitleHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x21aac000fc0a8 (0x2ac000fc0a8) in binary!
-	0x246d0  @objc TitleHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x21a94000fbe80 (0x294000fbe80) in binary!
-	0x21a88  @objc TitleHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x2003c000f9b38 (0x3c000f9b38) in binary!
+WARNING: couldn't find address 0x1f0dc000f7d80 (0xdc000f7d80) in binary!
+	0x29bc0  @objc TitleHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x218cc000f7838 (0xcc000f7838) in binary!
+	0x21d38  @objc TitleHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x21d2c000f7828 (0x52c000f7828) in binary!
+	0x24950  @objc TitleHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x2494400100620 (0x14400100620) in binary!
+	0x1fd78  @objc TitleHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x202ac000f8710 (0x2ac000f8710) in binary!
+	0x202a0  @objc TitleHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x21ce4000f77e8 (0x4e4000f77e8) in binary!
+	0x24908  @objc TitleHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x21ccc000f75b8 (0x4cc000f75b8) in binary!
+	0x21cc0  @objc TitleHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x20264000f5270 (0x264000f5270) in binary!
 	0x38000000c  @objc TitleHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x1edd4000fc580 (0x5d4000fc580) in binary!
-	0x28868  @objc TitleHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x2441c000fbec0 (0x41c000fbec0) in binary!
+	0x29b00  -[GKSectionMetrics setItemHeightList:]
+WARNING: couldn't find address 0x24654000f75f8 (0x654000f75f8) in binary!
 	0x88000000c  @objc TitleHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x1eda4000fc550 (0x5a4000fc550) in binary!
-	0x28838  @objc TitleHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x27cec00104fe0 (0x4ec00104fe0) in binary!
-	0x27ce0  @objc TitleHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x1ffc400103c88 (0x7c400103c88) in binary!
-	0x24628  @objc TitleHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x27d0c00102ed0 (0x50c00102ed0) in binary!
-	0x1ffa0  @objc TitleHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x1efec000f7c90 (0x7ec000f7c90) in binary!
+	0x29ad0  @objc TitleHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x27f6400100710 (0x76400100710) in binary!
+	0x27f58  @objc TitleHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x201ec000ff3b0 (0x1ec000ff3b0) in binary!
+	0x24860  @objc TitleHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x27f84000fe5f8 (0x784000fe5f8) in binary!
+	0x201c8  @objc TitleHeaderView.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x27cfff94cc8  @objc TitleHeaderView.(null) <stripped>
+	0x1b4fff92d50  @objc TitleHeaderView.(null) <stripped>
 
 	// Swift methods
-	0x25b9a0  func <stripped> // method 
-	0x25cad0  func <stripped> // method 
-	0x25d880  func <stripped> // method 
+	0x25e100  func <stripped> // method 
+	0x25f230  func <stripped> // method 
+	0x25ffe0  func <stripped> // method 
  }
 
  struct GameCenterUI.Style {
@@ -4474,11 +4505,11 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let textColor : UIColor
 	let compositingFilter : String?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let fontUseCase : O(
+	let fontUseCase : 9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let firstLineSpace : )
+	let firstLineSpace : Î
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bottomSpace : )
+	let bottomSpace : Î
  }
 
  enum GameCenterUI.DetailPosition {
@@ -4492,7 +4523,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case failed : 5
+	case failed : Û$
 	case started  
 	case completed  
  }
@@ -4507,12 +4538,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class GameCenterUI.AchievementsLinkCollectionViewCell {
  class GameCenterUI.BaseCollectionViewCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1edd4000fc580 (0x5d4000fc580) in binary!
-	0x28868  @objc BaseCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x2441c000fbec0 (0x41c000fbec0) in binary!
+	0x29b00  -[GKSectionMetrics setItemHeightList:]
+WARNING: couldn't find address 0x24654000f75f8 (0x654000f75f8) in binary!
 	0x88000000c  @objc BaseCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x1eda4000fc550 (0x5a4000fc550) in binary!
-	0x28838  @objc BaseCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x1efec000f7c90 (0x7ec000f7c90) in binary!
+	0x29ad0  @objc BaseCollectionViewCell.(null) <stripped>
 
 	// Swift methods
  }
@@ -4524,31 +4554,31 @@ WARNING: couldn't find address 0x1eda4000fc550 (0x5a4000fc550) in binary!
 	// Properties
 	var fontUseCaseContentSizeCategory : UIContentSizeCategory // +0x8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var fontUseCase : ›w // +0x0 (0x0)
+	var fontUseCase : h // +0x0 (0x0)
 	var titleColorFollowsTintColor : Bool // +0x0 (0x1)
-	var imageAlignment : ImageAlignment // +0x7e4 (0x1)
-	var imageWantsBaselineAlignment : Bool // +0x327f7c (0x1)
-	var touchOutsideMargin : UIEdgeInsets // +0x0 (0x20)
+	var imageAlignment : ImageAlignment // +0x32d134 (0x1)
+	var imageWantsBaselineAlignment : Bool // +0x0 (0x1)
+	var touchOutsideMargin : UIEdgeInsets // +0x77735f5f (0x20)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1eda4000fc550 (0x5a4000fc550) in binary!
-	0x28838  @objc DynamicTypeButton.(null) <stripped>
-WARNING: couldn't find address 0x27cec00104fe0 (0x4ec00104fe0) in binary!
-	0x27ce0  @objc DynamicTypeButton.(null) <stripped>
-WARNING: couldn't find address 0x1ffc400103c88 (0x7c400103c88) in binary!
-	0x24628  @objc DynamicTypeButton.(null) <stripped>
-WARNING: couldn't find address 0x27d0c00102ed0 (0x50c00102ed0) in binary!
-	0x1ffa0  @objc DynamicTypeButton.(null) <stripped>
+WARNING: couldn't find address 0x1efec000f7c90 (0x7ec000f7c90) in binary!
+	0x29ad0  @objc DynamicTypeButton.(null) <stripped>
+WARNING: couldn't find address 0x27f6400100710 (0x76400100710) in binary!
+	0x27f58  @objc DynamicTypeButton.(null) <stripped>
+WARNING: couldn't find address 0x201ec000ff3b0 (0x1ec000ff3b0) in binary!
+	0x24860  @objc DynamicTypeButton.(null) <stripped>
+WARNING: couldn't find address 0x27f84000fe5f8 (0x784000fe5f8) in binary!
+	0x201c8  @objc DynamicTypeButton.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x27cfff94cc8  @objc DynamicTypeButton.(null) <stripped>
-	0x51c000fc4c8  @objc DynamicTypeButton.. <stripped>
-WARNING: couldn't find address 0xffb24fff9a768 (0x324fff9a768) in binary!
-	0x534001011b8  @objc DynamicTypeButton.(null) <stripped>
-WARNING: couldn't find address 0x1011d4fff9a7a0 (0x1d4fff9a7a0) in binary!
-	0x7ec00100018  @objc DynamicTypeButton.(null) <stripped>
+	0x1b4fff92d50  @objc DynamicTypeButton.(null) <stripped>
+	0x764000f7c08  @objc DynamicTypeButton.â«Ëg;* <stripped>
+WARNING: couldn't find address 0xfb274fff98800 (0x274fff98800) in binary!
+	0x76c000fc920  @objc DynamicTypeButton.(null) <stripped>
+WARNING: couldn't find address 0xfc93cfff98838 (0x13cfff98838) in binary!
+	0x214000fb768  @objc DynamicTypeButton.(null) <stripped>
 
 	// Swift methods
-	0x263db0  func <stripped> // getter 
+	0x2665a0  func <stripped> // getter 
  }
 
  enum GameCenterUI.ImageAlignment {
@@ -4568,38 +4598,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let placeholder : Model // +0x18 (0x50)
 	let signIn : Model // +0x68 (0x50)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _model : em // +0x0 (0x0)
+	var _model : }] // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _models : s( // +0x0 (0x0)
+	var _models : [ // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let activePublisher : π' // +0x6f72705f (0x0)
+	let activePublisher : ° // +0x6f72705f (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let hideCountPublisher : 	V // +0x45545f5f (0x0)
+	let hideCountPublisher : ÂE // +0x45545f5f (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let authStatePublisher : ì' // +0x0 (0x0)
+	let authStatePublisher : { // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_combineWith : +' // +0x0 (0x0)
+	var $__lazy_storage_$_combineWith :  // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let showHighlightsPublisher : ÎU // +0x328db8 (0x0)
+	let showHighlightsPublisher : «E // +0x32dfa8 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var sinks :  empty-list  // +0x78 (0x8)
-	var highlightIndex : Int // +0x328db8 (0x8)
+	var highlightIndex : Int // +0x32dfa8 (0x8)
 	var timer : NSTimer? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x219cc000fc3b8 (0x1cc000fc3b8) in binary!
-	0x1ff80  @objc AccessPoint.(null) <stripped>
+WARNING: couldn't find address 0x21c04000f7af8 (0x404000f7af8) in binary!
+	0x201a8  @objc AccessPoint.(null) <stripped>
 WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
-	0x324fff9a768  @objc AccessPoint.(null) <stripped>
+	0x274fff98800  @objc AccessPoint.(null) <stripped>
 
 	// Swift methods
-	0x2686a0  func <stripped> // getter 
-	0x268770  func <stripped> // getter 
-	0x2687d0  func <stripped> // method 
-	0x268da0  func <stripped> // getter 
-	0x2696d0  func <stripped> // method 
-	0x26b2c0  func <stripped> // method 
-	0x26b520  func <stripped> // method 
+	0x26aec0  func <stripped> // getter 
+	0x26af90  func <stripped> // getter 
+	0x26aff0  func <stripped> // method 
+	0x26b5c0  func <stripped> // getter 
+	0x26bef0  func <stripped> // method 
+	0x26dc10  func <stripped> // method 
+	0x26de70  func <stripped> // method 
  }
 
  struct GameCenterUI.Model {
@@ -4650,7 +4680,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let handler : (_:) // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let id : ˜ // +0x10
+	let id : p // +0x10
  }
 
  class GameCenterUI.PlayerProfileInfoBarCollectionViewCell {
@@ -4667,31 +4697,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let separator : SeparatorView // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1ed1c000fc4c8 (0x51c000fc4c8) in binary!
-	0x287b0  @objc SectionFooterView.(null) <stripped>
-WARNING: couldn't find address 0x21d34001011b8 (0x534001011b8) in binary!
-	0x21e78  @objc SectionFooterView.(null) <stripped>
-WARNING: couldn't find address 0x1f7ec00100018 (0x7ec00100018) in binary!
-	0x1ff30  @objc SectionFooterView.(null) <stripped>
-WARNING: couldn't find address 0x2459400104f90 (0x59400104f90) in binary!
-	0x1ff18  @objc SectionFooterView.(null) <stripped>
-WARNING: couldn't find address 0x214d4000fbf58 (0x4d4000fbf58) in binary!
-	0x214c8  @objc SectionFooterView.(null) <stripped>
-WARNING: couldn't find address 0x21934000fbf50 (0x134000fbf50) in binary!
-	0x1fee8  @objc SectionFooterView.(null) <stripped>
+WARNING: couldn't find address 0x1ef64000f7c08 (0x764000f7c08) in binary!
+	0x29a48  @objc SectionFooterView.(null) <stripped>
+WARNING: couldn't find address 0x21f6c000fc920 (0x76c000fc920) in binary!
+	0x220b0  @objc SectionFooterView.(null) <stripped>
+WARNING: couldn't find address 0x1fa14000fb768 (0x214000fb768) in binary!
+	0x20158  @objc SectionFooterView.(null) <stripped>
+WARNING: couldn't find address 0x247cc001006c0 (0x7cc001006c0) in binary!
+	0x20140  @objc SectionFooterView.(null) <stripped>
+WARNING: couldn't find address 0x2170c000f7698 (0x70c000f7698) in binary!
+	0x21700  @objc SectionFooterView.(null) <stripped>
+WARNING: couldn't find address 0x21b6c000f7690 (0x36c000f7690) in binary!
+	0x20110  @objc SectionFooterView.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x28cfff9e970  @objc SectionFooterView.(null) <stripped>
-	0x78cfff9e9a8  @objc SectionFooterView.5 <stripped>
-	0x194fff9ef40  @objc SectionFooterView.âÔAˇ‘Hâ«ËÁ¸) <stripped>
-	0x144000fd588  @objc SectionFooterView.HâﬂHãÃ4 <stripped>
-WARNING: couldn't find address 0x1047e4fff9f800 (0x7e4fff9f800) in binary!
-	0x71c000fff48  @objc SectionFooterView.(null) <stripped>
-WARNING: couldn't find address 0xfc3bcfff9f978 (0x3bcfff9f978) in binary!
-	0x654000f9950  @objc SectionFooterView.(null) <stripped>
+	0x1dcfff9ca78  @objc SectionFooterView.(null) <stripped>
+	0x6dcfff9cab0  @objc SectionFooterView.’Hã5¿ï: <stripped>
+	0xccfff9d048  @objc SectionFooterView.ﬂLâˆAˇ’Ñ¿uHâﬂHã+5 <stripped>
+	0x36c000f8cd8  @objc SectionFooterView.HâﬂHã.5 <stripped>
+WARNING: couldn't find address 0xfff0cfff9d938 (0x70cfff9d938) in binary!
+	0x144000fb698  @objc SectionFooterView.(null) <stripped>
+WARNING: couldn't find address 0xf7afcfff9dab0 (0x2fcfff9dab0) in binary!
+	0x7c000f5088  @objc SectionFooterView.(null) <stripped>
 
 	// Swift methods
-	0x271b80  func <stripped> // method 
-	0x272010  func <stripped> // method 
+	0x2744e0  func <stripped> // method 
+	0x274970  func <stripped> // method 
  }
 
  struct GameCenterUI.ContextMenu {
@@ -4707,7 +4737,7 @@ WARNING: couldn't find address 0xfc3bcfff9f978 (0x3bcfff9f978) in binary!
 	let title : String // +0x0
 	let imageName : String? // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let action : Sn // +0x20
+	let action : k^ // +0x20
  }
 
  class GameCenterUI.ProgressBarView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -4715,23 +4745,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let textLabel : EmphasizedLabel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var percentComplete : Er
+	var percentComplete : Öb
 	var textPosition : TextPosition
 	let progressFillView : ShadowView
 	let progressTrackView : UIView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1ec84000fc430 (0x484000fc430) in binary!
-	0x28718  @objc ProgressBarView.(null) <stripped>
-WARNING: couldn't find address 0x1f97c000fd5c0 (0x17c000fd5c0) in binary!
-	0x1f760  @objc ProgressBarView.(null) <stripped>
-WARNING: couldn't find address 0x1fea4000fcdf8 (0x6a4000fcdf8) in binary!
-	0x1fe98  @objc ProgressBarView.(null) <stripped>
+WARNING: couldn't find address 0x1eecc000f7b70 (0x6cc000f7b70) in binary!
+	0x299b0  @objc ProgressBarView.(null) <stripped>
+WARNING: couldn't find address 0x1fba4000f8d10 (0x3a4000f8d10) in binary!
+	0x1f988  @objc ProgressBarView.(null) <stripped>
+WARNING: couldn't find address 0x200cc000f8530 (0xcc000f8530) in binary!
+	0x200c0  @objc ProgressBarView.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x7e4fff9f800  @objc ProgressBarView.(null) <stripped>
-	0x3bcfff9f978  @objc ProgressBarView.UHãzHãZLãHãRPQVAQWSRAPË
-¨) <stripped>
-	0xfff9fa70  @objc ProgressBarView.”Lâ˜ˇ”LâÁˇ”HÅƒò <stripped>
+	0x70cfff9d938  @objc ProgressBarView.(null) <stripped>
+	0x2fcfff9dab0  @objc ProgressBarView.ÁLã5¿≈4 <stripped>
+	0xfff9dba8  @objc ProgressBarView.]È‚N* <stripped>
 
 	// Swift methods
  }
@@ -4740,20 +4769,20 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let height : Àw // +0x0 (0x28)
+	let height : h // +0x0 (0x28)
 	var tapHandler : ()? // +0x0 (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1f944000fd588 (0x144000fd588) in binary!
-	0x244e8  @objc RoundedTitledButton.(null) <stripped>
-WARNING: couldn't find address 0x1f71c000fff48 (0x71c000fff48) in binary!
-	0x1ec10  @objc RoundedTitledButton.(null) <stripped>
-WARNING: couldn't find address 0x1fe54000f9950 (0x654000f9950) in binary!
+WARNING: couldn't find address 0x1fb6c000f8cd8 (0x36c000f8cd8) in binary!
+	0x24720  @objc RoundedTitledButton.(null) <stripped>
+WARNING: couldn't find address 0x1f944000fb698 (0x144000fb698) in binary!
+	0x1ee58  @objc RoundedTitledButton.(null) <stripped>
+WARNING: couldn't find address 0x2007c000f5088 (0x7c000f5088) in binary!
 	0x98000000c  @objc RoundedTitledButton.(null) <stripped>
-WARNING: couldn't find address 0x2868c000ffa00 (0x68c000ffa00) in binary!
-	0x1fe30  @objc RoundedTitledButton.(null) <stripped>
-WARNING: couldn't find address 0x1fe2400104920 (0x62400104920) in binary!
-	0x213e0  @objc RoundedTitledButton.(null) <stripped>
+WARNING: couldn't find address 0x29924000fb150 (0x124000fb150) in binary!
+	0x20058  @objc RoundedTitledButton.(null) <stripped>
+WARNING: couldn't find address 0x2004c00100048 (0x4c00100048) in binary!
+	0x21618  @objc RoundedTitledButton.(null) <stripped>
 
 	// Swift methods
  }
@@ -4790,24 +4819,23 @@ WARNING: couldn't find address 0x1fe2400104920 (0x62400104920) in binary!
 	let progressLabel : UILabel
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2868c000ffa00 (0x68c000ffa00) in binary!
-	0x1fe30  @objc AchievementBadge.(null) <stripped>
-WARNING: couldn't find address 0x1fe2400104920 (0x62400104920) in binary!
-	0x213e0  @objc AchievementBadge.(null) <stripped>
-WARNING: couldn't find address 0x213d4000fbe78 (0x3d4000fbe78) in binary!
-	0x213c8  @objc AchievementBadge.(null) <stripped>
-WARNING: couldn't find address 0x281d4000fbe70 (0x1d4000fbe70) in binary!
-	0x1eb98  @objc AchievementBadge.(null) <stripped>
-WARNING: couldn't find address 0x1fddc000f98d8 (0x5dc000f98d8) in binary!
-	0x68000000c  @objc AchievementBadge.(null) <stripped>
-WARNING: couldn't find address 0x28614000ff988 (0x614000ff988) in binary!
-	0x1f878  @objc AchievementBadge.(null) <stripped>
-WARNING: couldn't find address 0x1fdac000fcd00 (0x5ac000fcd00) in binary!
-	0x24410  @objc AchievementBadge.(null) <stripped>
-WARNING: couldn't find address 0x1eb44000fc2f0 (0x344000fc2f0) in binary!
-	0x1fd88  @objc AchievementBadge.(null) <stripped>
+WARNING: couldn't find address 0x29924000fb150 (0x124000fb150) in binary!
+	0x20058  @objc AchievementBadge.(null) <stripped>
+WARNING: couldn't find address 0x2004c00100048 (0x4c00100048) in binary!
+	0x21618  @objc AchievementBadge.(null) <stripped>
+WARNING: couldn't find address 0x2160c000f75b8 (0x60c000f75b8) in binary!
+	0x21600  @objc AchievementBadge.(null) <stripped>
+WARNING: couldn't find address 0x2844c000f75b0 (0x44c000f75b0) in binary!
+	0x1ede0  @objc AchievementBadge.(null) <stripped>
+	0x68000000c  @objc AchievementBadge.◊ÚE∏Ú\¡ÚE∏Hâ]®HâﬂLâˆAˇ◊Hâ«Ë‚Ï <stripped>
+WARNING: couldn't find address 0x298ac000fb0d8 (0xac000fb0d8) in binary!
+	0x1faa0  @objc AchievementBadge.(null) <stripped>
+WARNING: couldn't find address 0x1ffd4000f8438 (0x7d4000f8438) in binary!
+	0x24648  @objc AchievementBadge.(null) <stripped>
+WARNING: couldn't find address 0x1ed8c000f7a30 (0x58c000f7a30) in binary!
+	0x1ffb0  @objc AchievementBadge.(null) <stripped>
 WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
-	0x12cfffa4fe0  @objc AchievementBadge.(null) <stripped>
+	0x7cfffa3118  @objc AchievementBadge.(null) <stripped>
 
 	// Swift methods
  }
@@ -4817,19 +4845,19 @@ WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
 	// Properties
 	var backing : UIVisualEffectView? // +0x8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let fontUseCase : ›w // +0x0 (0x0)
+	let fontUseCase : h // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x28614000ff988 (0x614000ff988) in binary!
-	0x1f878  @objc RoundedButton.(null) <stripped>
-WARNING: couldn't find address 0x1fdac000fcd00 (0x5ac000fcd00) in binary!
-	0x24410  @objc RoundedButton.(null) <stripped>
-WARNING: couldn't find address 0x1eb44000fc2f0 (0x344000fc2f0) in binary!
-	0x1fd88  @objc RoundedButton.(null) <stripped>
+WARNING: couldn't find address 0x298ac000fb0d8 (0xac000fb0d8) in binary!
+	0x1faa0  @objc RoundedButton.(null) <stripped>
+WARNING: couldn't find address 0x1ffd4000f8438 (0x7d4000f8438) in binary!
+	0x24648  @objc RoundedButton.(null) <stripped>
+WARNING: couldn't find address 0x1ed8c000f7a30 (0x58c000f7a30) in binary!
+	0x1ffb0  @objc RoundedButton.(null) <stripped>
 WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
-	0x12cfffa4fe0  @objc RoundedButton.(null) <stripped>
-	0x62cfffa5018  @objc RoundedButton.=3; <stripped>
-	0x324fffa5440  @objc RoundedButton.«LâÚAˇ‘HâﬂAˇ◊Lâ˜Aˇ◊Hã5¶M; <stripped>
+	0x7cfffa3118  @objc RoundedButton.(null) <stripped>
+	0x57cfffa3150  @objc RoundedButton.Lâ·Iâ¡1¿Aˇ’Hã=!; <stripped>
+	0x274fffa3578  @objc RoundedButton.ãBL; <stripped>
 
 	// Swift methods
  }
@@ -4845,30 +4873,30 @@ WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
 	let infoBar : PlayerProfileInfoBarView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1eb24000fc2d0 (0x324000fc2d0) in binary!
-	0x285b8  @objc PlayerProfileHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x1f81c000fd460 (0x1c000fd460) in binary!
-	0x1f600  @objc PlayerProfileHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x1fd44000fcc98 (0x544000fcc98) in binary!
-	0x243a8  @objc PlayerProfileHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x2176c000fbb58 (0x76c000fbb58) in binary!
-	0x21760  @objc PlayerProfileHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x1fd14000f9810 (0x514000f9810) in binary!
+WARNING: couldn't find address 0x1ed6c000f7a10 (0x56c000f7a10) in binary!
+	0x29850  @objc PlayerProfileHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x1fa44000f8bb0 (0x244000f8bb0) in binary!
+	0x1f828  @objc PlayerProfileHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x1ff6c000f83d0 (0x76c000f83d0) in binary!
+	0x245e0  @objc PlayerProfileHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x219a4000f7290 (0x1a4000f7290) in binary!
+	0x21998  @objc PlayerProfileHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x1ff3c000f4f48 (0x73c000f4f48) in binary!
 	0xc8000000c  @objc PlayerProfileHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x212c400104920 (0x2c400104920) in binary!
-	0x21ad0  @objc PlayerProfileHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x21d8c001048f8 (0x58c001048f8) in binary!
-	0x21718  @objc PlayerProfileHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x2433c000fd080 (0x33c000fd080) in binary!
-	0x21d68  @objc PlayerProfileHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x21d64000fd250 (0x564000fd250) in binary!
-	0x24318  @objc PlayerProfileHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x214fc00100048 (0x4fc00100048) in binary!
+	0x21d08  @objc PlayerProfileHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x21fc400100020 (0x7c400100020) in binary!
+	0x21950  @objc PlayerProfileHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x24574000f87b8 (0x574000f87b8) in binary!
+	0x21fa0  @objc PlayerProfileHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x21f9c000f89a0 (0x79c000f89a0) in binary!
+	0x24550  @objc PlayerProfileHeaderView.(null) <stripped>
 
 	// Swift methods
-	0x27bc90  func <stripped> // method 
-	0x27bf90  func <stripped> // method 
-	0x27c3c0  func <stripped> // method 
-	0x27c530  func <stripped> // method 
+	0x27e690  func <stripped> // method 
+	0x27e990  func <stripped> // method 
+	0x27edc0  func <stripped> // method 
+	0x27ef30  func <stripped> // method 
  }
 
  class GameCenterUI.Artwork : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4882,18 +4910,18 @@ WARNING: couldn't find address 0x21d64000fd250 (0x564000fd250) in binary!
 	let variants : Variant
 
 	// Swift methods
-	0x27eb70  class func Artwork.__allocating_init(template:size:backgroundColor:style:crop:variants:) // init 
-	0x27fce0  func <stripped> // getter 
-	0x27fda0  func <stripped> // method 
-	0x27fe40  func <stripped> // getter 
-	0x27fe60  func <stripped> // getter 
-	0x27fe80  func <stripped> // getter 
-	0x27ff90  func <stripped> // getter 
-	0x2800a0  func <stripped> // getter 
-	0x2801b0  func <stripped> // getter 
-	0x2801d0  func <stripped> // getter 
-	0x2801e0  func <stripped> // method 
-	0x2802f0  func <stripped> // getter 
+	0x2815a0  class func Artwork.__allocating_init(template:size:backgroundColor:style:crop:variants:) // init 
+	0x282710  func <stripped> // getter 
+	0x2827d0  func <stripped> // method 
+	0x282860  func <stripped> // getter 
+	0x282880  func <stripped> // getter 
+	0x2828a0  func <stripped> // getter 
+	0x2829b0  func <stripped> // getter 
+	0x282ac0  func <stripped> // getter 
+	0x282bd0  func <stripped> // getter 
+	0x282bf0  func <stripped> // getter 
+	0x282c00  func <stripped> // method 
+	0x282d10  func <stripped> // getter 
  }
 
  enum GameCenterUI.Style {
@@ -4949,37 +4977,37 @@ WARNING: couldn't find address 0x21d64000fd250 (0x564000fd250) in binary!
 	// Properties
 	var fontUseCaseContentSizeCategory : UIContentSizeCategory // +0x8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var fontUseCase : ›w // +0x45545f5f (0x0)
+	var fontUseCase : h // +0x45545f5f (0x0)
 	var directionalTextAlignment : DirectionalTextAlignment // +0x0 (0x1)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x212c400104920 (0x2c400104920) in binary!
-	0x21ad0  @objc DynamicTypeTextField.(null) <stripped>
-WARNING: couldn't find address 0x21d8c001048f8 (0x58c001048f8) in binary!
-	0x21718  @objc DynamicTypeTextField.(null) <stripped>
-WARNING: couldn't find address 0x2433c000fd080 (0x33c000fd080) in binary!
-	0x21d68  @objc DynamicTypeTextField.(null) <stripped>
-WARNING: couldn't find address 0x21d64000fd250 (0x564000fd250) in binary!
-	0x24318  @objc DynamicTypeTextField.(null) <stripped>
-WARNING: couldn't find address 0x1f54c000ffd78 (0x54c000ffd78) in binary!
-	0x1ea40  @objc DynamicTypeTextField.(null) <stripped>
-WARNING: couldn't find address 0x284d4000ff848 (0x4d4000ff848) in binary!
-	0x1fc78  @objc DynamicTypeTextField.(null) <stripped>
+WARNING: couldn't find address 0x214fc00100048 (0x4fc00100048) in binary!
+	0x21d08  @objc DynamicTypeTextField.(null) <stripped>
+WARNING: couldn't find address 0x21fc400100020 (0x7c400100020) in binary!
+	0x21950  @objc DynamicTypeTextField.(null) <stripped>
+WARNING: couldn't find address 0x24574000f87b8 (0x574000f87b8) in binary!
+	0x21fa0  @objc DynamicTypeTextField.(null) <stripped>
+WARNING: couldn't find address 0x21f9c000f89a0 (0x79c000f89a0) in binary!
+	0x24550  @objc DynamicTypeTextField.(null) <stripped>
+WARNING: couldn't find address 0x1f774000fb4c8 (0x774000fb4c8) in binary!
+	0x1ec88  @objc DynamicTypeTextField.(null) <stripped>
+WARNING: couldn't find address 0x2976c000faf98 (0x76c000faf98) in binary!
+	0x1fea0  @objc DynamicTypeTextField.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x55cfffade40  @objc DynamicTypeTextField.(null) <stripped>
-	0x1f4000fc1a0  @objc DynamicTypeTextField.UHâÂSPHâ˚Hã5à.; <stripped>
-WARNING: couldn't find address 0xff7fcfffaea10 (0x7fcfffaea10) in binary!
-	0x4c4000fba48  @objc DynamicTypeTextField.(null) <stripped>
-WARNING: couldn't find address 0xffd1cfffaedb8 (0x51cfffaedb8) in binary!
-	0x4c4000ffcf0  @objc DynamicTypeTextField.(null) <stripped>
-WARNING: couldn't find address 0xfcb5cfffaf130 (0x35cfffaf130) in binary!
-	0x26c00104568  @objc DynamicTypeTextField.(null) <stripped>
-WARNING: couldn't find address 0xf96ecfffaf5d8 (0x6ecfffaf5d8) in binary!
+	0x4acfffabfa8  @objc DynamicTypeTextField.(null) <stripped>
+	0x43c000f78e0  @objc DynamicTypeTextField.‘HâﬂAˇ’Hã=Ú¢; <stripped>
+WARNING: couldn't find address 0xfaf4cfffacb78 (0x74cfffacb78) in binary!
+	0x6ec000f7180  @objc DynamicTypeTextField.(null) <stripped>
+WARNING: couldn't find address 0xfb46cfffacf20 (0x46cfffacf20) in binary!
+	0x6ec000fb440  @objc DynamicTypeTextField.(null) <stripped>
+WARNING: couldn't find address 0xf8294fffad298 (0x294fffad298) in binary!
+	0x4a4000ffc90  @objc DynamicTypeTextField.(null) <stripped>
+WARNING: couldn't find address 0xf4e24fffad740 (0x624fffad740) in binary!
 	0x28000000c  @objc DynamicTypeTextField.(null) <stripped>
 
 	// Swift methods
-	0x281210  func <stripped> // getter 
-	0x281640  func <stripped> // setter 
+	0x283c30  func <stripped> // getter 
+	0x284060  func <stripped> // setter 
  }
 
  enum GameCenterUI.DirectionalTextAlignment {
@@ -5017,27 +5045,27 @@ WARNING: couldn't find address 0xf96ecfffaf5d8 (0x6ecfffaf5d8) in binary!
 	var addFriendsHandler : ()?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1e9f4000fc1a0 (0x1f4000fc1a0) in binary!
-	0x28488  @objc EmptyStateView.(null) <stripped>
-WARNING: couldn't find address 0x1f4c4000fba48 (0x4c4000fba48) in binary!
-	0x1e9fe  @objc EmptyStateView.(null) <stripped>
-WARNING: couldn't find address 0x1f4c4000ffcf0 (0x4c4000ffcf0) in binary!
-	0x1fc08  @objc EmptyStateView.(null) <stripped>
-WARNING: couldn't find address 0x2426c00104568 (0x26c00104568) in binary!
-	0x1fbf0  @objc EmptyStateView.(null) <stripped>
+WARNING: couldn't find address 0x1ec3c000f78e0 (0x43c000f78e0) in binary!
+	0x29720  @objc EmptyStateView.(null) <stripped>
+WARNING: couldn't find address 0x1f6ec000f7180 (0x6ec000f7180) in binary!
+	0x1ec46  @objc EmptyStateView.(null) <stripped>
+WARNING: couldn't find address 0x1f6ec000fb440 (0x6ec000fb440) in binary!
+	0x1fe30  @objc EmptyStateView.(null) <stripped>
+WARNING: couldn't find address 0x244a4000ffc90 (0x4a4000ffc90) in binary!
+	0x1fe18  @objc EmptyStateView.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x6ccfffb83e8  @objc EmptyStateView.(null) <stripped>
-	0x5fc000fbfe8  @objc EmptyStateView.) <stripped>
-WARNING: couldn't find address 0xf96acfffbdd68 (0x6acfffbdd68) in binary!
+	0x604fffb6780  @objc EmptyStateView.(null) <stripped>
+	0x34000f7728  @objc EmptyStateView.ˇ˙5 <stripped>
+WARNING: couldn't find address 0xf4de4fffbc110 (0x5e4fffbc110) in binary!
 	0x68000000c  @objc EmptyStateView.(null) <stripped>
-WARNING: couldn't find address 0x1e94c000fc0f8 (0x14c000fc0f8) in binary!
-	0x283e0  @objc EmptyStateView.(null) <stripped>
+WARNING: couldn't find address 0x1eb94000f7838 (0x394000f7838) in binary!
+	0x29678  @objc EmptyStateView.(null) <stripped>
  }
 
  class GameCenterUI.PlayerProfileComponents : Components {
 	// Swift methods
-	0x287180  func <stripped> // method 
-	0x2879e0  func <stripped> // method 
+	0x289bc0  func <stripped> // method 
+	0x28a420  func <stripped> // method 
  }
 
  class GameCenterUI.GameLayerAchievementsViewController {
@@ -5046,11 +5074,11 @@ WARNING: couldn't find address 0x1e94c000fc0f8 (0x14c000fc0f8) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let iconView : Uy // +0x60
+	let iconView : ïi // +0x60
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let text : ≠y // +0x88
+	let text : Ìi // +0x88
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let button : Uy // +0xb0
+	let button : ïi // +0xb0
  }
 
  struct GameCenterUI.Metrics {
@@ -5058,16 +5086,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var imageSize : CGSize // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var imageMargin : Àw // +0x10
+	var imageMargin : h // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var buttonMargin : Àw // +0x38
+	var buttonMargin : h // +0x38
  }
 
  struct GameCenterUI.CenteredTextSublayout {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let text : ≠y // +0x0
+	let text : Ìi // +0x0
  }
 
  class GameCenterUI.NicknamePresenter : NSObject /usr/lib/libobjc.A.dylib {
@@ -5077,20 +5105,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let placeholder : String
 	var localizedUpdateError : String?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onNicknameUpdated : •o
+	let onNicknameUpdated : Ω_
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onSuggestionsChanged : ≥o
+	let onSuggestionsChanged : À_
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2161c000fc008 (0x61c000fc008) in binary!
-	0x1fbd0  @objc NicknamePresenter.(null) <stripped>
+WARNING: couldn't find address 0x21854000f7748 (0x54000f7748) in binary!
+	0x1fdf8  @objc NicknamePresenter.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x6acfffbdd68  @objc NicknamePresenter.(null) <stripped>
+	0x5e4fffbc110  @objc NicknamePresenter.(null) <stripped>
 
 	// Swift methods
-	0x28de20  func <stripped> // method 
-	0x28e190  func <stripped> // method 
-	0x28e9b0  func <stripped> // method 
+	0x290a80  func <stripped> // method 
+	0x290df0  func <stripped> // method 
+	0x291610  func <stripped> // method 
  }
 
  enum GameCenterUI.UpdateState {
@@ -5103,9 +5131,9 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
  class GameCenterUI.GameCenter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x290200  func <stripped> // method 
-	0x290860  func <stripped> // method 
-	0x291660  func <stripped> // method 
+	0x292e60  func <stripped> // method 
+	0x2934c0  func <stripped> // method 
+	0x2942c0  func <stripped> // method 
  }
 
  enum GameCenterUI.FriendType {
@@ -5122,7 +5150,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	case unabledToFetchGames : (bundleIds: [String])
 	case unabledToFetchPlayers : (playerIds: [String])
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case gamedError : â'
+	case gamedError : a
 	case authenticationRequired  
  }
 
@@ -5141,13 +5169,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var viewController : weak UIViewController?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x215fc000fbfe8 (0x5fc000fbfe8) in binary!
-	0x1fbb0  @objc RemoveFriendActionImplementation.(null) <stripped>
+WARNING: couldn't find address 0x21834000f7728 (0x34000f7728) in binary!
+	0x1fdd8  @objc RemoveFriendActionImplementation.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x754fffc14f8  @objc RemoveFriendActionImplementation.(null) <stripped>
+	0x6a4fffbf8e0  @objc RemoveFriendActionImplementation.(null) <stripped>
 
 	// Swift methods
-	0x293dc0  func <stripped> // method 
+	0x296a30  func <stripped> // method 
  }
 
  enum GameCenterUI.RemoveFriendActionImplementationError {
@@ -5160,13 +5188,13 @@ WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : ˜
+	var id : p
 	let nicknamePresenter : NicknamePresenter
 	let canEditNickname : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var segue : kn
+	var segue : É^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var impressionMetrics : %|
+	var impressionMetrics : =l
  }
 
  class GameCenterUI.AppStoreLockupCollectionViewCell {
@@ -5178,16 +5206,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var insetLayoutMarginsFromSafeAreaInset : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1e94c000fc0f8 (0x14c000fc0f8) in binary!
-	0x283e0  @objc InsetViewControllerContentView.(null) <stripped>
-WARNING: couldn't find address 0x23f9400104ce0 (0x79400104ce0) in binary!
-	0x28ad5  @objc InsetViewControllerContentView.(null) <stripped>
-WARNING: couldn't find address 0x23f7c000fba20 (0x77c000fba20) in binary!
-	0x1fb60  @objc InsetViewControllerContentView.(null) <stripped>
+WARNING: couldn't find address 0x1eb94000f7838 (0x394000f7838) in binary!
+	0x29678  @objc InsetViewControllerContentView.(null) <stripped>
+WARNING: couldn't find address 0x241cc00100410 (0x1cc00100410) in binary!
+	0x28d3d  @objc InsetViewControllerContentView.(null) <stripped>
+WARNING: couldn't find address 0x241b4000f7158 (0x1b4000f7158) in binary!
+	0x1fd88  @objc InsetViewControllerContentView.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x12cfffc6c38  @objc InsetViewControllerContentView.(null) <stripped>
-	0x6ecfffc6d20  @objc InsetViewControllerContentView.w; <stripped>
-	0xfffc6e28  @objc InsetViewControllerContentView.ÈIâ¡1¿Aˇ◊Hã= <stripped>
+	0x7cfffc5030  @objc InsetViewControllerContentView.(null) <stripped>
+	0x63cfffc5118  @objc InsetViewControllerContentView.WAVSPIâˇHâ◊ˇ…4 <stripped>
+	0xfffc5220  @objc InsetViewControllerContentView.Hç—ƒ5 <stripped>
  }
 
  class GameCenterUI.AppStoreGamesListPresenter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -5196,30 +5224,30 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	let playerId : String // +0x10 (0x10)
 	var requiredData : RequiredData // +0x20 (0x11)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var appStoreLockupBatchObserver : Å! // +0x0 (0x0)
+	var appStoreLockupBatchObserver : Y // +0x0 (0x0)
 	var appStoreLockupBatchPresenter : ASCLockupBatchPresenter // +0x0 (0x8)
-	var isUpdating : Bool // +0x3aa8 (0x1)
+	var isUpdating : Bool // +0x2aa0 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var snapshot : ßb // +0x3340a8 (0x0)
+	var snapshot : øR // +0x339128 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var onApplySnapshot : /g // +0x0 (0x8)
+	var onApplySnapshot : GW // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var onUpdatePhaseChange : çw // +0x0 (0x8)
+	var onUpdatePhaseChange : •g // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onShowPageOverlay : w // +0x0 (0x8)
+	let onShowPageOverlay : óg // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var onFetchingMoreContent : ør // +0x626f5f5f (0x8)
+	var onFetchingMoreContent : ◊b // +0x626f5f5f (0x8)
 	var isPreparingNextPage : Bool // +0x7373616c (0x1)
 	var shouldPrepareNextPage : Bool // +0x45545f5f (0x1)
 
 	// Swift methods
-	0x298970  func <stripped> // modifyCoroutine 
-	0x298d10  func <stripped> // method 
-	0x299110  func <stripped> // method 
-	0x2997d0  func <stripped> // method 
-	0x299e00  func <stripped> // method 
-	0x299ef0  func <stripped> // method 
-	0x29a620  func <stripped> // method 
+	0x29b620  func <stripped> // modifyCoroutine 
+	0x29b9c0  func <stripped> // method 
+	0x29bdc0  func <stripped> // method 
+	0x29c480  func <stripped> // method 
+	0x29cab0  func <stripped> // method 
+	0x29cba0  func <stripped> // method 
+	0x29d2d0  func <stripped> // method 
  }
 
  struct GameCenterUI.RequiredData {
@@ -5249,52 +5277,52 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cornerRadius : Er
+	var cornerRadius : Öb
 	var cornerStyle : CornerStyle
 	var shadow : Shadow
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1fb4c000fcaa0 (0x34c000fcaa0) in binary!
-	0x241b0  @objc ShadowView.(null) <stripped>
-WARNING: couldn't find address 0x1e8e4000fc090 (0xe4000fc090) in binary!
-	0x28378  @objc ShadowView.(null) <stripped>
-WARNING: couldn't find address 0x1fb1c000f9618 (0x31c000f9618) in binary!
-	0x38000000c  @objc ShadowView.(null) <stripped>
-WARNING: couldn't find address 0x24174000fe798 (0x174000fe798) in binary!
-	0x21538  @objc ShadowView.(null) <stripped>
-WARNING: couldn't find address 0x1faec000f95e8 (0x2ec000f95e8) in binary!
-	0x68000000c  @objc ShadowView.(null) <stripped>
+WARNING: couldn't find address 0x1fd74000f81d8 (0x574000f81d8) in binary!
+	0x243e8  @objc ShadowView.(null) <stripped>
+WARNING: couldn't find address 0x1eb2c000f77d0 (0x32c000f77d0) in binary!
+	0x29610  @objc ShadowView.(null) <stripped>
+WARNING: couldn't find address 0x1fd44000f4d50 (0x544000f4d50) in binary!
+	0x18000000c  @objc ShadowView.(null) <stripped>
+WARNING: couldn't find address 0x2079c000fed30 (0x79c000fed30) in binary!
+	0x58000000c  @objc ShadowView.(null) <stripped>
+WARNING: couldn't find address 0x1eae4000f7788 (0x2e4000f7788) in binary!
+	0x295c8  @objc ShadowView.(null) <stripped>
 
 	// Swift methods
-	0x29d1f0  func <stripped> // method 
+	0x29feb0  func <stripped> // method 
  }
 
  struct GameCenterUI.InfoItem {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let valueLabel : ≠y // +0x0
+	let valueLabel : Ìi // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleLabel : ≠y // +0x28
+	let titleLabel : Ìi // +0x28
  }
 
  struct GameCenterUI.Metrics {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var infoItemValueTextSpace : Àw
+	var infoItemValueTextSpace : h
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var infoItemTitleTextSpace : Àw
+	var infoItemTitleTextSpace : h
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var interItemSpace : Àw
+	var interItemSpace : h
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var separatorWidth : Àw
+	var separatorWidth : h
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var infoItemHorizontalPlacement : ˝
+	var infoItemHorizontalPlacement : ›	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var infoItemMaxWidth : Øv
+	var infoItemMaxWidth : œf
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var infoItemMinWidth : Øv
+	var infoItemMinWidth : œf
  }
 
  struct GameCenterUI.PlayerProfileInfoBarLayout {
@@ -5306,6 +5334,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let separatorViews :  empty-list 
  }
 
+ class GameCenterUI.GKMultiplayerPickerNearbyInstructionCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	let imageView : UIImageView // +0x8 (0x8)
+	let textField : DynamicTypeLabel // +0x10 (0x8)
+
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0x1eae4000f7788 (0x2e4000f7788) in binary!
+	0x295c8  @objc GKMultiplayerPickerNearbyInstructionCell.(null) <stripped>
+WARNING: couldn't find address 0x1fcfc000f8160 (0x4fc000f8160) in binary!
+	0x1f5a0  @objc GKMultiplayerPickerNearbyInstructionCell.(null) <stripped>
+WARNING: couldn't find address 0x1fce4000f4cf0 (0x4e4000f4cf0) in binary!
+	0x38000000c  @objc GKMultiplayerPickerNearbyInstructionCell.(null) <stripped>
+WARNING: couldn't find address 0x2434c000f9e88 (0x34c000f9e88) in binary!
+	0x21710  @objc GKMultiplayerPickerNearbyInstructionCell.(null) <stripped>
+WARNING: couldn't find address 0x1fcb4000f4cc0 (0x4b4000f4cc0) in binary!
+	0x68000000c  @objc GKMultiplayerPickerNearbyInstructionCell.(null) <stripped>
+ }
+
  class GameCenterUI.ProfilePrivacyActionImplementation : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
@@ -5313,16 +5360,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var currentAction : ProfilePrivacyAction
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x24174000fe798 (0x174000fe798) in binary!
-	0x21538  @objc ProfilePrivacyActionImplementation.(null) <stripped>
-WARNING: couldn't find address 0x1faec000f95e8 (0x2ec000f95e8) in binary!
+WARNING: couldn't find address 0x2434c000f9e88 (0x34c000f9e88) in binary!
+	0x21710  @objc ProfilePrivacyActionImplementation.(null) <stripped>
+WARNING: couldn't find address 0x1fcb4000f4cc0 (0x4b4000f4cc0) in binary!
 	0x68000000c  @objc ProfilePrivacyActionImplementation.(null) <stripped>
-WARNING: couldn't find address 0x1e884000fc030 (0x84000fc030) in binary!
-	0x28318  @objc ProfilePrivacyActionImplementation.(null) <stripped>
+WARNING: couldn't find address 0x1ea6c000f7710 (0x26c000f7710) in binary!
+	0x29550  @objc ProfilePrivacyActionImplementation.(null) <stripped>
 
 	// Swift methods
-	0x2a0c20  func <stripped> // method 
-	0x2a0ed0  func <stripped> // method 
+	0x2a4cb0  func <stripped> // method 
+	0x2a4f60  func <stripped> // method 
  }
 
  class GameCenterUI.NoFriendsProfileSection : PlayerProfileSection { }
@@ -5331,7 +5378,7 @@ WARNING: couldn't find address 0x1e884000fc030 (0x84000fc030) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var impressionMetrics : %|
+	var impressionMetrics : =l
 	var title : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var items :  empty-list 
@@ -5348,21 +5395,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var playerSize : CGSize
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1e884000fc030 (0x84000fc030) in binary!
-	0x28318  @objc LeaderboardLockupView.(null) <stripped>
-WARNING: couldn't find address 0x1f57c000fd1c0 (0x57c000fd1c0) in binary!
-	0x1f360  @objc LeaderboardLockupView.(null) <stripped>
-WARNING: couldn't find address 0x1faa4000fc9f8 (0x2a4000fc9f8) in binary!
-	0x1fa98  @objc LeaderboardLockupView.(null) <stripped>
+WARNING: couldn't find address 0x1ea6c000f7710 (0x26c000f7710) in binary!
+	0x29550  @objc LeaderboardLockupView.(null) <stripped>
+WARNING: couldn't find address 0x1f744000f88b0 (0x744000f88b0) in binary!
+	0x1f528  @objc LeaderboardLockupView.(null) <stripped>
+WARNING: couldn't find address 0x1fc6c000f80d0 (0x46c000f80d0) in binary!
+	0x1fc60  @objc LeaderboardLockupView.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffd1500  @objc LeaderboardLockupView.(null) <stripped>
+	0xfffd0cb8  @objc LeaderboardLockupView.(null) <stripped>
 WARNING: couldn't find address 0x1d8000000c (0x1d8000000c) in binary!
-	0x2f4fff33048  @objc LeaderboardLockupView.(null) <stripped>
-	0x2ecfff33080  @objc LeaderboardLockupView.SHÉÏ(Iâ˛Hâ˜ˇˇã4 <stripped>
+	0x1d4fff30d10  @objc LeaderboardLockupView.(null) <stripped>
+	0x1ccfff30d48  @objc LeaderboardLockupView.ã~(Hã5ûÁ: <stripped>
 
 	// Swift methods
-	0x2a3b60  func <stripped> // method 
-	0x2a4070  func <stripped> // method 
+	0x2a7c00  func <stripped> // method 
+	0x2a8110  func <stripped> // method 
  }
 
  struct GameCenterUI.LocalizedStringTable {
@@ -5370,7 +5417,7 @@ WARNING: couldn't find address 0x1d8000000c (0x1d8000000c) in binary!
 	// Properties
 	let bundle : NSBundle
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let locale : ”&
+	let locale : Ω
  }
 
  class GameCenterUI.AddFriendsActionImplementation : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -5381,8 +5428,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var action : AddFriendsAction
 
 	// Swift methods
-	0x2a56b0  func <stripped> // method 
-	0x2a5f50  func <stripped> // method 
+	0x2a9790  func <stripped> // method 
+	0x2aa030  func <stripped> // method 
  }
 
  enum GameCenterUI.AddFriendsActionImplementationError {
@@ -5402,66 +5449,66 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var bootstrapPresenter : BootstrapPresenter
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let statePresenter : ∑
+	let statePresenter : â	
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var collectionContent : ±r
+	var collectionContent : —b
 	let components : Components
 	let clippingLayer : CALayer
 	var _rootController : PSRootController?
 	var _specifier : PSSpecifier?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x21034000fbaf8 (0x34000fbaf8) in binary!
-	0x240d0  @objc PlayerProfileViewController.(null) <stripped>
-WARNING: couldn't find address 0x21494000fbaf0 (0x494000fbaf0) in binary!
-	0x240b8  @objc PlayerProfileViewController.(null) <stripped>
-WARNING: couldn't find address 0x2147c000fbae8 (0x47c000fbae8) in binary!
-	0x240a0  @objc PlayerProfileViewController.(null) <stripped>
-WARNING: couldn't find address 0x21464000fbae0 (0x464000fbae0) in binary!
-	0x24088  @objc PlayerProfileViewController.(null) <stripped>
-WARNING: couldn't find address 0x253d4000fbad8 (0x3d4000fbad8) in binary!
-	0x26894  @objc PlayerProfileViewController.(null) <stripped>
-WARNING: couldn't find address 0x28244000fbad0 (0x244000fbad0) in binary!
-	0x253c7  @objc PlayerProfileViewController.(null) <stripped>
-WARNING: couldn't find address 0x1fa10000fd3b0 (0x210000fd3b0) in binary!
-	0x28220  @objc PlayerProfileViewController.(null) <stripped>
-WARNING: couldn't find address 0x21404000fbab0 (0x404000fbab0) in binary!
-	0x24028  @objc PlayerProfileViewController.(null) <stripped>
-WARNING: couldn't find address 0x213ec000fbaa8 (0x3ec000fbaa8) in binary!
-	0x1f9a0  @objc PlayerProfileViewController.(null) <stripped>
-WARNING: couldn't find address 0x1f994000ffb60 (0x194000ffb60) in binary!
-	0x1eab8  @objc PlayerProfileViewController.(null) <stripped>
-WARNING: couldn't find address 0x1eaac000fb7c0 (0x2ac000fb7c0) in binary!
-	0x1f981  @objc PlayerProfileViewController.(null) <stripped>
-WARNING: couldn't find address 0x267f8000fe850 (0x7f8000fe850) in binary!
-	0x1f978  @objc PlayerProfileViewController.(null) <stripped>
-WARNING: couldn't find address 0x2138c000fba50 (0x38c000fba50) in binary!
-	0x23fb0  @objc PlayerProfileViewController.(null) <stripped>
-WARNING: couldn't find address 0x21374000fba48 (0x374000fba48) in binary!
-	0x23f98  @objc PlayerProfileViewController.(null) <stripped>
-WARNING: couldn't find address 0x1f91c000f9418 (0x11c000f9418) in binary!
+WARNING: couldn't find address 0x2120c000f71d8 (0x20c000f71d8) in binary!
+	0x242a8  @objc PlayerProfileViewController.(null) <stripped>
+WARNING: couldn't find address 0x2166c000f71d0 (0x66c000f71d0) in binary!
+	0x24290  @objc PlayerProfileViewController.(null) <stripped>
+WARNING: couldn't find address 0x21654000f71c8 (0x654000f71c8) in binary!
+	0x24278  @objc PlayerProfileViewController.(null) <stripped>
+WARNING: couldn't find address 0x2163c000f71c0 (0x63c000f71c0) in binary!
+	0x24260  @objc PlayerProfileViewController.(null) <stripped>
+WARNING: couldn't find address 0x255cc000f71b8 (0x5cc000f71b8) in binary!
+	0x26a8c  @objc PlayerProfileViewController.(null) <stripped>
+WARNING: couldn't find address 0x2947c000f71b0 (0x47c000f71b0) in binary!
+	0x255bf  @objc PlayerProfileViewController.(null) <stripped>
+WARNING: couldn't find address 0x1fbd8000f8aa0 (0x3d8000f8aa0) in binary!
+	0x29458  @objc PlayerProfileViewController.(null) <stripped>
+WARNING: couldn't find address 0x215dc000f7190 (0x5dc000f7190) in binary!
+	0x24200  @objc PlayerProfileViewController.(null) <stripped>
+WARNING: couldn't find address 0x215c4000f7188 (0x5c4000f7188) in binary!
+	0x1fb68  @objc PlayerProfileViewController.(null) <stripped>
+WARNING: couldn't find address 0x1fb5c000fb250 (0x35c000fb250) in binary!
+	0x1eca0  @objc PlayerProfileViewController.(null) <stripped>
+WARNING: couldn't find address 0x1ec94000f6e98 (0x494000f6e98) in binary!
+	0x1fb49  @objc PlayerProfileViewController.(null) <stripped>
+WARNING: couldn't find address 0x269f0000f9f40 (0x1f0000f9f40) in binary!
+	0x1fb40  @objc PlayerProfileViewController.(null) <stripped>
+WARNING: couldn't find address 0x21564000f7130 (0x564000f7130) in binary!
+	0x24188  @objc PlayerProfileViewController.(null) <stripped>
+WARNING: couldn't find address 0x2154c000f7128 (0x54c000f7128) in binary!
+	0x24170  @objc PlayerProfileViewController.(null) <stripped>
+WARNING: couldn't find address 0x1fae4000f4af0 (0x2e4000f4af0) in binary!
 	0x28000000c  @objc PlayerProfileViewController.(null) <stripped>
-WARNING: couldn't find address 0x28154000ff4c8 (0x154000ff4c8) in binary!
-	0x1f8f8  @objc PlayerProfileViewController.(null) <stripped>
+WARNING: couldn't find address 0x2938c000fabb8 (0x38c000fabb8) in binary!
+	0x1fac0  @objc PlayerProfileViewController.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x6c4fffd81c0  @objc PlayerProfileViewController.(null) <stripped>
-	0x3bcfffd8478  @objc PlayerProfileViewController. <stripped>
-	0xfc000ff470  @objc PlayerProfileViewController. <stripped>
-WARNING: couldn't find address 0xfcfa4fffd9e98 (0x7a4fffd9e98) in binary!
-	0x94000fc7e8  @objc PlayerProfileViewController.(null) <stripped>
-WARNING: couldn't find address 0xfb9acfffda100 (0x1acfffda100) in binary!
-	0x62c000fbdd8  @objc PlayerProfileViewController.(null) <stripped>
-WARNING: couldn't find address 0xf936cfffda138 (0x36cfffda138) in binary!
+	0x5b4fffd79c8  @objc PlayerProfileViewController.(null) <stripped>
+	0x294fffd7c80  @objc PlayerProfileViewController.ãM¿LãE∞Hãu∏Hã{HãSLãHã[PQVAPWRSAQË¯) <stripped>
+	0x334000fab60  @objc PlayerProfileViewController.ﬂAˇ◊Hã5ÂI; <stripped>
+WARNING: couldn't find address 0xf8694fffd96a0 (0x694fffd96a0) in binary!
+	0x25c000f7ec0  @objc PlayerProfileViewController.(null) <stripped>
+WARNING: couldn't find address 0xf708cfffd9908 (0x8cfffd9908) in binary!
+	0x14000f74b8  @objc PlayerProfileViewController.(null) <stripped>
+WARNING: couldn't find address 0xf4a44fffd9940 (0x244fffd9940) in binary!
 	0x58000000c  @objc PlayerProfileViewController.(null) <stripped>
-WARNING: couldn't find address 0x2129c000fbc88 (0x29c000fbc88) in binary!
-	0x280a0  @objc PlayerProfileViewController.(null) <stripped>
-WARNING: couldn't find address 0x1f844000fcb78 (0x44000fcb78) in binary!
-	0x1f838  @objc PlayerProfileViewController.(null) <stripped>
-WARNING: couldn't find address 0x1f860000fd200 (0x60000fd200) in binary!
+WARNING: couldn't find address 0x21474000f7368 (0x474000f7368) in binary!
+	0x292d8  @objc PlayerProfileViewController.(null) <stripped>
+WARNING: couldn't find address 0x1fa0c000f8250 (0x20c000f8250) in binary!
+	0x1fa00  @objc PlayerProfileViewController.(null) <stripped>
+WARNING: couldn't find address 0x1fa28000f88f0 (0x228000f88f0) in binary!
 	0x60000028600  @objc PlayerProfileViewController.(null) <stripped>
 WARNING: couldn't find address 0x3f805038500048b (0x5038500048b) in binary!
 	0x16d0901ffff  @objc PlayerProfileViewController.(null) <stripped>
-	0x4d019b0001  @objc PlayerProfileViewController.eCenterViewController" <stripped>
+	0x4d019b0001  @objc PlayerProfileViewController.thWidth:columnSizeCategory:maxColumns: <stripped>
 WARNING: couldn't find offset 0xb01ffff in binary!
 WARNING: couldn't find offset 0xb01ffff in binary!
 WARNING: couldn't find address 0xcd0501960b01ffff (0x0) in binary!
@@ -5470,12 +5517,12 @@ WARNING: couldn't find address 0x437d00 (0x437d00) in binary!
 	0x200004b7700  @objc PlayerProfileViewController.(null) <stripped>
 
 	// Swift methods
-	0x2a8930  func <stripped> // method 
-	0x2a8d80  func <stripped> // method 
-	0x2a9790  func <stripped> // method 
-	0x2aaf60  func <stripped> // method 
-	0x2ab290  func <stripped> // method 
-	0x2ab4d0  func <stripped> // method 
+	0x2aca10  func <stripped> // method 
+	0x2ace60  func <stripped> // method 
+	0x2ad870  func <stripped> // method 
+	0x2af040  func <stripped> // method 
+	0x2af370  func <stripped> // method 
+	0x2af5b0  func <stripped> // method 
  }
 
  enum GameCenterUI.GKMultiplayerLayout {
@@ -5493,10 +5540,10 @@ WARNING: couldn't find address 0x437d00 (0x437d00) in binary!
 	var emphasizedLabelSegments : EmphasizedLabelSegment
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x28154000ff4c8 (0x154000ff4c8) in binary!
-	0x1f8f8  @objc EmphasizedLabel.(null) <stripped>
+WARNING: couldn't find address 0x2938c000fabb8 (0x38c000fabb8) in binary!
+	0x1fac0  @objc EmphasizedLabel.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x6c4fffd81c0  @objc EmphasizedLabel.(null) <stripped>
+	0x5b4fffd79c8  @objc EmphasizedLabel.(null) <stripped>
 
 	// Swift methods
  }
@@ -5506,7 +5553,7 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	// Properties
 	let text : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let fontUseCase : ›w
+	let fontUseCase : h
 	let textColor : UIColor?
  }
 
@@ -5515,16 +5562,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var trailingImageSpacer : Er // +0x0 (0x8)
+	var trailingImageSpacer : Öb // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x21324000fbd10 (0x324000fbd10) in binary!
-	0x23f48  @objc HeaderButton.(null) <stripped>
-WARNING: couldn't find address 0x1e67c000fbe28 (0x67c000fbe28) in binary!
-	0x1f8c0  @objc HeaderButton.(null) <stripped>
+WARNING: couldn't find address 0x214fc000f73f0 (0x4fc000f73f0) in binary!
+	0x24120  @objc HeaderButton.(null) <stripped>
+WARNING: couldn't find address 0x1e864000f7508 (0x64000f7508) in binary!
+	0x1fa88  @objc HeaderButton.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x7a4fffd9e98  @objc HeaderButton.(null) <stripped>
-	0x1acfffda100  @objc HeaderButton.* <stripped>
+	0x694fffd96a0  @objc HeaderButton.(null) <stripped>
+	0x8cfffd9908  @objc HeaderButton.–Hã5 <stripped>
 
 	// Swift methods
  }
@@ -5536,8 +5583,8 @@ WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
 	let itemKind : ItemKind
 
 	// Swift methods
-	0x2afa10  func <stripped> // method 
-	0x2af590  func <stripped> // method 
+	0x2b3b40  func <stripped> // method 
+	0x2b36c0  func <stripped> // method 
  }
 
  enum GameCenterUI.Identifier {
@@ -5573,16 +5620,16 @@ WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
 	let countLabel : DynamicTypeLabel
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x280fc000ff470 (0xfc000ff470) in binary!
-	0x1f360  @objc CountBadgeView.(null) <stripped>
-WARNING: couldn't find address 0x1f894000fc7e8 (0x94000fc7e8) in binary!
-	0x212c8  @objc CountBadgeView.(null) <stripped>
-WARNING: couldn't find address 0x1e62c000fbdd8 (0x62c000fbdd8) in binary!
-	0x1f870  @objc CountBadgeView.(null) <stripped>
+WARNING: couldn't find address 0x29334000fab60 (0x334000fab60) in binary!
+	0x1f528  @objc CountBadgeView.(null) <stripped>
+WARNING: couldn't find address 0x1fa5c000f7ec0 (0x25c000f7ec0) in binary!
+	0x214a0  @objc CountBadgeView.(null) <stripped>
+WARNING: couldn't find address 0x1e814000f74b8 (0x14000f74b8) in binary!
+	0x1fa38  @objc CountBadgeView.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x414fffdd668  @objc CountBadgeView.(null) <stripped>
-	0x70cfffdd700  @objc CountBadgeView.ˇuHIˇ∆L;µ8ˇˇˇÇjˇˇˇA∏ <stripped>
-	0x7fffffddc28  @objc CountBadgeView.‘4 <stripped>
+	0x304fffdceb0  @objc CountBadgeView.(null) <stripped>
+	0x5ecfffdcf48  @objc CountBadgeView.;C; <stripped>
+	0x7fffffdd470  @objc CountBadgeView.2T. <stripped>
 
 	// Swift methods
  }
@@ -5601,9 +5648,9 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	let viewControllerBackgroundStyle : ViewBackgroundStyle
 	let tableViewCellBackgroundColor : UIColor
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tableSectionSupplementaryFontUseCase : O(
+	let tableSectionSupplementaryFontUseCase : 9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tableSectionFooterFontUseCase : O(
+	let tableSectionFooterFontUseCase : 9
 	let linkColor : UIColor
 	let separatorColor : UIColor
 	let placeholderBackgroundColor : UIColor
@@ -5619,15 +5666,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class GameCenterUI.BaseViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2129c000fbc88 (0x29c000fbc88) in binary!
-	0x280a0  @objc BaseViewController.(null) <stripped>
-WARNING: couldn't find address 0x1f844000fcb78 (0x44000fcb78) in binary!
-	0x1f838  @objc BaseViewController.(null) <stripped>
-WARNING: couldn't find address 0x1f860000fd200 (0x60000fd200) in binary!
+WARNING: couldn't find address 0x21474000f7368 (0x474000f7368) in binary!
+	0x292d8  @objc BaseViewController.(null) <stripped>
+WARNING: couldn't find address 0x1fa0c000f8250 (0x20c000f8250) in binary!
+	0x1fa00  @objc BaseViewController.(null) <stripped>
+WARNING: couldn't find address 0x1fa28000f88f0 (0x228000f88f0) in binary!
 	0x60000028600  @objc BaseViewController.(null) <stripped>
 WARNING: couldn't find address 0x3f805038500048b (0x5038500048b) in binary!
 	0x16d0901ffff  @objc BaseViewController.(null) <stripped>
-	0x4d019b0001  @objc BaseViewController.eCenterViewController" <stripped>
+	0x4d019b0001  @objc BaseViewController.thWidth:columnSizeCategory:maxColumns: <stripped>
 
 	// Swift methods
  }
@@ -5636,19 +5683,19 @@ WARNING: couldn't find address 0x3f805038500048b (0x5038500048b) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var topSpace : Àw // +0x0
+	var topSpace : h // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var primarySpace : Àw // +0x28
+	var primarySpace : h // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var noImagePrimarySpace : Àw // +0x50
+	var noImagePrimarySpace : h // +0x50
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var secondarySpace : Àw // +0x78
+	var secondarySpace : h // +0x78
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var buttonTopSpace : Àw // +0xa0
+	var buttonTopSpace : h // +0xa0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var buttonMinWidth : Àw // +0xc8
+	var buttonMinWidth : h // +0xc8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottomSpace : Àw // +0xf0
+	var bottomSpace : h // +0xf0
  }
 
  struct GameCenterUI.EmptyStateViewLayout {
@@ -5656,11 +5703,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let imageView : Ey // +0x118
+	let imageView : Öi // +0x118
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let primaryText : ≠y // +0x140
+	let primaryText : Ìi // +0x140
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let secondaryText : ≠y // +0x168
+	let secondaryText : Ìi // +0x168
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let button : Ey // +0x190
+	let button : Öi // +0x190
  }

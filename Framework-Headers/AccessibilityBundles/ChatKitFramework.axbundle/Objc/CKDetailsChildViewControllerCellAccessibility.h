@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)accessibilityElements;
 - (BOOL)accessibilityScrollToVisibleWithChild:(id)arg1;
 
 @end

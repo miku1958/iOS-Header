@@ -42,13 +42,15 @@
 + (BOOL)_momentIsLocationTypeAtWork:(id)arg1;
 - (void).cxx_destruct;
 - (id)_defaultSortDescriptors;
-- (id)_fetchCurrentlyFeaturedSuggestions;
 - (id)_fetchFallbackMemoriesAndSetFeatured;
+- (id)_fetchFallbackSuggestionsAndSetFeatured;
 - (id)_fetchMemoriesWithFeaturedState:(unsigned long long)arg1;
 - (id)_fetchMomentByAssetUUIDForAssets:(id)arg1;
+- (id)_fetchSuggestionsWithFeaturedState:(unsigned short)arg1;
 - (id)_gatedCropSpecBySuggestionLocalIdentiferFromSuggestions:(id)arg1;
 - (id)_gatedKeyAssetByMemoryLocalIdentifierWithMemories:(id)arg1;
 - (id)_gatedKeyAssetBySuggestionLocalIdentifierWithSuggestions:(id)arg1;
+- (void)_initializeFeaturedCandidatesWithMemoryResult:(id)arg1 suggestionResult:(id)arg2;
 - (id)_keyAssetFetchOptions;
 - (id)init;
 - (id)initWithPhotoLibrary:(id)arg1;

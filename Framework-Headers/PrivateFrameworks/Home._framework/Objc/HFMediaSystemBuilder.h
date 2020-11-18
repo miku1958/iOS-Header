@@ -48,10 +48,13 @@
 
 + (Class)homeKitRepresentationClass;
 - (void).cxx_destruct;
+- (id)_arbitrateMusicAccount;
+- (id)_clearAndRecreateHomeTheater;
 - (id)_commitChangesToMediaSystemBuilder;
 - (id)_defaultName;
 - (id)_firstUnpopulatedRole;
 - (id)_rooms;
+- (id)_setHomeTheaterSource:(id)arg1 toDestination:(id)arg2;
 - (id)_updateAssistantAccessControl;
 - (id)_updateFavorite;
 - (id)_updateRoom;

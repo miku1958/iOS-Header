@@ -37,9 +37,9 @@
 @property (readonly, nonatomic) NSString *localizedShortName;
 @property (readonly, nonatomic) NSArray *metadata;
 @property (readonly, nonatomic) NSString *name;
+@property (readonly, nonatomic, getter=isRestricted) BOOL restricted;
 @property (readonly, nonatomic) NSArray *schemes; // @synthesize schemes=_schemes;
 @property (readonly, nonatomic) NSString *shortName;
-@property (readonly, nonatomic) long long state;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *stateAccessQueue; // @synthesize stateAccessQueue=_stateAccessQueue;
 
 - (void).cxx_destruct;

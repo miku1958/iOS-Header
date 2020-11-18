@@ -11,6 +11,7 @@
 @interface APPCLifecycleMetricsHelper : NSObject
 {
     MISSING_TYPE *metricsHelper;
+    MISSING_TYPE *placeholder;
     MISSING_TYPE *wasOnScreen;
 }
 

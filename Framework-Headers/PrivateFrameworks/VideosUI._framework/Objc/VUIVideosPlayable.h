@@ -40,6 +40,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isSubscription;
 @property (readonly, nonatomic) BOOL isiTunesPurchaseOrRental;
 @property (readonly, nonatomic) NSString *liveStreamServiceID;
+@property (readonly, nonatomic) NSNumber *mainContentRelativeResumeTime;
+@property (readonly, nonatomic) NSDate *mainContentRelativeResumeTimeTimestamp;
 @property (readonly, nonatomic) NSDictionary *mediaMetrics;
 @property (readonly, nonatomic) NSString *mediaType;
 @property (readonly, nonatomic) VUIContentMetadata *metadata; // @synthesize metadata=_metadata;
@@ -50,7 +52,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSNumber *repeatLoopCount;
 @property (readonly, nonatomic) NSNumber *requiredAgeForPlayback;
 @property (readonly, nonatomic) NSNumber *resumeTime;
-@property (readonly, nonatomic) NSDate *resumeTimeTimeStamp;
+@property (readonly, nonatomic) NSDate *resumeTimeTimestamp;
 @property (readonly, nonatomic) NSString *rtcServiceIdentifier;
 @property (readonly, nonatomic) NSURL *scrubVideoURL;
 @property (readonly, nonatomic) NSString *seasonCanonicalID;

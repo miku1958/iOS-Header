@@ -9,27 +9,29 @@
 #import <CoreSpeech/CSAudioServerCrashMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSAudioStreamProvidingDelegate-Protocol.h>
 
-@class CSAudioCircularBuffer, CSAudioStream, CSPlainAudioFileWriter, NSHashTable, NSMutableSet, NSString;
+@class CSAudioCircularBuffer, CSAudioStream, CSPlainAudioFileWriter, NSHashTable, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CSContinuousAudioFingerprintProvider : NSObject <CSAudioStreamProvidingDelegate, CSAudioServerCrashMonitorDelegate>
 {
     BOOL _isListenPollingStarting;
+    float _currentMaximumBufferSize;
     NSHashTable *_observers;
     CSAudioStream *_audioStream;
     NSObject<OS_dispatch_queue> *_queue;
     CSAudioCircularBuffer *_audioLoggingBuffer;
     CSPlainAudioFileWriter *_audioFileWriter;
-    NSMutableSet *_inUseServices;
+    NSMutableDictionary *_inUseServices;
 }
 
 @property (strong, nonatomic) CSPlainAudioFileWriter *audioFileWriter; // @synthesize audioFileWriter=_audioFileWriter;
 @property (strong, nonatomic) CSAudioCircularBuffer *audioLoggingBuffer; // @synthesize audioLoggingBuffer=_audioLoggingBuffer;
 @property (strong, nonatomic) CSAudioStream *audioStream; // @synthesize audioStream=_audioStream;
+@property (nonatomic) float currentMaximumBufferSize; // @synthesize currentMaximumBufferSize=_currentMaximumBufferSize;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSMutableSet *inUseServices; // @synthesize inUseServices=_inUseServices;
+@property (strong, nonatomic) NSMutableDictionary *inUseServices; // @synthesize inUseServices=_inUseServices;
 @property (nonatomic) BOOL isListenPollingStarting; // @synthesize isListenPollingStarting=_isListenPollingStarting;
 @property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
@@ -39,6 +41,7 @@
 - (void)CSAudioServerCrashMonitorDidReceiveServerRestart:(id)arg1;
 - (void)CSSiriEnabledMonitor:(id)arg1 didReceiveEnabled:(BOOL)arg2;
 - (void)_reset;
+- (void)_setMaximumBufferSizeFromInUseServices;
 - (void)_startListenPolling;
 - (void)_startListenPollingWithInterval:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_startListenWithCompletion:(CDUnknownBlockType)arg1;
@@ -50,7 +53,7 @@
 - (id)init;
 - (void)registerObserver:(id)arg1;
 - (void)reset;
-- (void)startWithUUID:(id)arg1;
+- (void)startWithUUID:(id)arg1 withMaximumBufferSize:(float)arg2;
 - (void)stopWithUUID:(id)arg1;
 - (void)unregisterObserver:(id)arg1;
 

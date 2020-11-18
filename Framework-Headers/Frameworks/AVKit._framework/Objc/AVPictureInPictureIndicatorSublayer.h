@@ -24,9 +24,11 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *customText; // @synthesize customText=_customText;
 
 - (void).cxx_destruct;
+- (BOOL)canRenderAttributedTextWithoutTruncationInsideRect:(struct CGRect)arg1;
 - (id)init;
 - (id)initWithDisplayScale:(double)arg1 placeholderImage:(struct CGImage *)arg2 opaque:(BOOL)arg3;
 - (void)layoutSublayers;
+- (void)layoutSublayersWithTextAndImageUsingInsetBounds:(struct CGRect)arg1;
 - (struct CGRect)textBoundingRectWhenDrawnInRect:(struct CGRect)arg1;
 
 @end

@@ -110,6 +110,7 @@
 - (void)_loadAssets;
 - (void)_loadMetalPipelines;
 - (void)_loadMetalState;
+- (void)_prewarmBlurWithBlitEncoder:(id)arg1 src:(id)arg2 dst:(id)arg3;
 - (void)_setMode:(long long)arg1;
 - (void)_setupSpring:(CDStruct_d7a90142 *)arg1 withType:(unsigned long long)arg2 initialValue:(float)arg3;
 - (void)_updateChipsSizesForOnOff;
@@ -121,6 +122,7 @@
 - (void)invalidate;
 - (float)linearPowerLevel;
 - (void)pauseAnimationAndReset;
+- (void)prewarmOrb;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setPowerLevel:(float)arg1;
 

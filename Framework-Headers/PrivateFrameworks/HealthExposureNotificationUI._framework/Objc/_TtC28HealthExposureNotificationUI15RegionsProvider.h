@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *_countries;
     MISSING_TYPE *_states;
+    MISSING_TYPE *_subdivisions;
 }
 
 @end

@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithSample:(id)arg1 delegate:(id)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)presentPDFViewController;
+- (long long)sampleAlgorithmVersion;
 - (void)shareButtonTapped:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

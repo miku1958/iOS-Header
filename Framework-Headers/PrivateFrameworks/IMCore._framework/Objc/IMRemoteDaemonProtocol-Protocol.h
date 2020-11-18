@@ -139,6 +139,7 @@
 - (void)printCachedRampState;
 - (void)printCachedSalt;
 - (void)purgeAttachments:(long long)arg1;
+- (void)purgeAttachmentsForChatGUID:(NSString *)arg1;
 - (void)registerAccount:(NSString *)arg1;
 - (void)relay:(NSString *)arg1 sendCancel:(NSDictionary *)arg2 toPerson:(NSString *)arg3 account:(NSString *)arg4;
 - (void)relay:(NSString *)arg1 sendInitateRequest:(NSDictionary *)arg2 toPerson:(NSString *)arg3 account:(NSString *)arg4;

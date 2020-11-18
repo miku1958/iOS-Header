@@ -13,12 +13,5 @@
     int _toLayoutAttribute;
 }
 
-@property (nonatomic) int fromLayoutAttribute; // @synthesize fromLayoutAttribute=_fromLayoutAttribute;
-@property (nonatomic) BOOL ignoreMargins; // @synthesize ignoreMargins=_ignoreMargins;
-@property (nonatomic) int toLayoutAttribute; // @synthesize toLayoutAttribute=_toLayoutAttribute;
-
-+ (id)descriptorWithFromLayoutAttribute:(int)arg1 toLayoutAttribute:(int)arg2 ignoreMargin:(BOOL)arg3;
-- (id)initWithFromLayoutAttribute:(int)arg1 toLayoutAttribute:(int)arg2 ignoreMargin:(BOOL)arg3;
-
 @end
 

@@ -32,6 +32,7 @@
 - (BOOL)_resetPullState:(id)arg1 error:(id *)arg2;
 - (BOOL)_shouldApplyAnchorRangeMap:(id)arg1 receivedAnchorMap:(id)arg2;
 - (void)_updatePersistedServerChangeToken:(id)arg1;
+- (BOOL)finishWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2 target:(id)arg3;
 - (void)main;

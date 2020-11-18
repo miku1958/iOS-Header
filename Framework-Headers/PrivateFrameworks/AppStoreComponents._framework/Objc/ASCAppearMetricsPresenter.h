@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)viewDidAction;
 - (void)viewDidEndRenderWithPredicate:(id)arg1;
+- (void)viewDidFailRequest:(id)arg1 withError:(id)arg2;
 - (void)viewDidMoveToWindow;
 - (void)viewDidRetryFailedRequest;
 - (void)viewDidSetHidden;

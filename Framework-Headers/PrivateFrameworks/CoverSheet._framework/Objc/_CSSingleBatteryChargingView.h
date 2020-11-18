@@ -6,7 +6,7 @@
 
 #import <CoverSheet/CSBatteryChargingView.h>
 
-@class CSBatteryFillView, NSArray, NSLayoutConstraint, SBUILegibilityLabel, UIImage, UIView, _UIBackdropView;
+@class CSBatteryFillView, NSArray, NSLayoutConstraint, SBUILegibilityLabel, UIImage, UIImageView, UIView, _UIBackdropView;
 
 @interface _CSSingleBatteryChargingView : CSBatteryChargingView
 {
@@ -17,12 +17,16 @@
     NSArray *_batteryConstraints;
     NSLayoutConstraint *_batteryTopOffset;
     UIImage *_batteryImage;
+    UIImage *_boltImage;
+    UIImageView *_boltImageView;
     BOOL _horizontalLayoutNeeded;
+    BOOL _includesBoltImage;
     struct CGSize _batterySize;
 }
 
 @property (nonatomic) struct CGSize batterySize; // @synthesize batterySize=_batterySize;
 @property (nonatomic) BOOL horizontalLayoutNeeded; // @synthesize horizontalLayoutNeeded=_horizontalLayoutNeeded;
+@property (nonatomic) BOOL includesBoltImage; // @synthesize includesBoltImage=_includesBoltImage;
 
 - (void).cxx_destruct;
 - (double)_batteryNoseOffset;

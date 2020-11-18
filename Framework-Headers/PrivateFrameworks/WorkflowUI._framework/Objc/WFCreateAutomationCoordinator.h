@@ -55,6 +55,8 @@
 - (void)openHomeApp;
 - (void)selectTypeViewController:(id)arg1 didChooseTriggerClass:(Class)arg2;
 - (void)startAtStep:(unsigned long long)arg1 hostingViewController:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)trackAddAutomationActions;
+- (void)trackAddAutomationWithRecord:(id)arg1;
 - (void)triggerComposeViewController:(id)arg1 didFinishWithWorkflow:(id)arg2;
 - (void)triggerComposeViewControllerDidCancel:(id)arg1;
 - (void)triggerConfigurationViewController:(id)arg1 didFinishWithTrigger:(id)arg2;

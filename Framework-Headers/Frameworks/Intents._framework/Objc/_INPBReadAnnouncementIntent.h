@@ -16,23 +16,31 @@
 {
     struct {
         unsigned int readType:1;
+        unsigned int userNotificationType:1;
     } _has;
     int _readType;
+    int _userNotificationType;
     _INPBIntentMetadata *_intentMetadata;
+    NSString *_startAnnouncementIdentifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (nonatomic) BOOL hasReadType;
+@property (readonly, nonatomic) BOOL hasStartAnnouncementIdentifier;
+@property (nonatomic) BOOL hasUserNotificationType;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (nonatomic) int readType; // @synthesize readType=_readType;
+@property (copy, nonatomic) NSString *startAnnouncementIdentifier; // @synthesize startAnnouncementIdentifier=_startAnnouncementIdentifier;
 @property (readonly) Class superclass;
+@property (nonatomic) int userNotificationType; // @synthesize userNotificationType=_userNotificationType;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsReadType:(id)arg1;
+- (int)StringAsUserNotificationType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
@@ -40,6 +48,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)readTypeAsString:(int)arg1;
+- (id)userNotificationTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

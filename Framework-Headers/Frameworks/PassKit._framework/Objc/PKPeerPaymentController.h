@@ -21,6 +21,7 @@
     PKPaymentAuthorizationCoordinator *_performQuoteAuthorizationCoordinator;
     NSObject<OS_dispatch_group> *_performQuoteGroup;
     NSObject<OS_dispatch_queue> *_performQuoteCallbackQueue;
+    NSObject<OS_dispatch_queue> *_queue;
     BOOL _performQuoteSuccess;
     NSError *_performQuoteError;
     PKPeerPaymentWebService *_webService;
@@ -81,6 +82,7 @@
 - (void)identifyRecipientWithRoutingNumber:(id)arg1 accountNumber:(id)arg2 accountName:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)init;
 - (id)initWithPeerPaymentWebService:(id)arg1;
+- (id)initWithPeerPaymentWebService:(id)arg1 queue:(id)arg2;
 - (id)internalState;
 - (void)paymentAuthorizationCoordinator:(id)arg1 didAuthorizePayment:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)paymentAuthorizationCoordinator:(id)arg1 didAuthorizePeerPaymentQuote:(id)arg2 handler:(CDUnknownBlockType)arg3;

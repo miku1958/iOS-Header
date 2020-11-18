@@ -22,6 +22,7 @@
 - (id)_changedKeysBetweenDictionary:(id)arg1 andDictionary:(id)arg2;
 - (id)_displayNameKey:(id)arg1 withNumber:(BOOL)arg2;
 - (id)_displayNameKeyForDisplayType:(id)arg1 withNumber:(BOOL)arg2;
+- (id)_displayNameKeyForDisplayType:(id)arg1 withNumber:(BOOL)arg2 nameContext:(long long)arg3;
 - (id)_displayNameKeyForUnit:(id)arg1 nameContext:(long long)arg2;
 - (void)_fetchHKUnitPreferencesWithAttempt:(long long)arg1;
 - (id)_generateDefaultHKUnitPreferences;
@@ -34,12 +35,14 @@
 - (id)_longDisplayNameOverrideForDisplayType:(id)arg1;
 - (void)_postNotificationWithChangedKeys:(id)arg1;
 - (void)_refreshHKUnitPreferencesWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_unitDisplayNameKeyForDisplayType:(id)arg1 nameContext:(long long)arg2;
 - (void)_unitPreferencesDidUpdate:(id)arg1;
 - (void)dealloc;
 - (id)displayRangeForDisplayType:(id)arg1;
 - (id)initWithHealthStore:(id)arg1;
 - (id)localizedDisplayNameForDisplayType:(id)arg1;
 - (id)localizedDisplayNameForDisplayType:(id)arg1 value:(id)arg2;
+- (id)localizedDisplayNameForDisplayType:(id)arg1 value:(id)arg2 nameContext:(long long)arg3;
 - (id)localizedDisplayNameForUnit:(id)arg1 value:(id)arg2;
 - (id)localizedDisplayNameForUnit:(id)arg1 value:(id)arg2 nameContext:(long long)arg3;
 - (id)localizedHealthUIStringForDisplayType:(id)arg1 key:(id)arg2 value:(id)arg3;

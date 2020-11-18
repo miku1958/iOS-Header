@@ -114,6 +114,7 @@
 @property (copy, setter=_setApplicationNameForUserAgent:) NSString *_applicationNameForUserAgent;
 @property (nonatomic, setter=_setBackgroundExtendsBeyondPage:) BOOL _backgroundExtendsBeyondPage;
 @property (readonly, nonatomic) BOOL _canTogglePictureInPicture;
+@property (nonatomic, setter=_setCanUseCredentialStorage:) BOOL _canUseCredentialStorage;
 @property (readonly, nonatomic) NSArray *_certificateChain;
 @property (readonly, nonatomic) NSURL *_committedURL;
 @property (readonly, nonatomic) struct UIEdgeInsets _computedObscuredInset;
@@ -261,6 +262,7 @@
 - (void)_alignRight:(id)arg1;
 - (id)_attachmentForIdentifier:(id)arg1;
 - (int)_audioRoutingArbitrationStatus;
+- (double)_audioRoutingArbitrationUpdateTime;
 - (void)_becomeFirstResponderWithSelectionMovingForward:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_beginAnimatedResizeWithUpdates:(CDUnknownBlockType)arg1;
 - (BOOL)_beginBackSwipeForTesting;

@@ -172,6 +172,7 @@
 - (void)coverSheetViewController:(id)arg1 unlockWithRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)coverSheetViewControllerIrisPlayingDidFinish:(id)arg1;
 - (void)coverSheetViewControllerShouldDismissContextMenu:(id)arg1;
+- (void)coverSheetWindowedAccessoryViewControllerDidDismiss:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)enableLostModePlugin;

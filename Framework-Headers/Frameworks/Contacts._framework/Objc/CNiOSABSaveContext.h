@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNMutableSaveResponse, CNSaveRequest, NSMapTable, NSMutableDictionary;
+@class CNMutableSaveResponse, CNSaveRequest, NSMapTable, NSMutableArray, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface CNiOSABSaveContext : NSObject
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_abGroupsByIdentifier;
     NSMutableDictionary *_abSourcesByIdentifier;
     NSMutableDictionary *_abAccountsByIdentifier;
+    NSMutableArray *_contactIdentifiersNeedingMetadataPurge;
     CNSaveRequest *_saveRequest;
 }
 
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableDictionary *abPersonsByIdentifier; // @synthesize abPersonsByIdentifier=_abPersonsByIdentifier;
 @property (strong, nonatomic) NSMutableDictionary *abSourcesByIdentifier; // @synthesize abSourcesByIdentifier=_abSourcesByIdentifier;
 @property (readonly, nonatomic) void *addressBook;
+@property (strong, nonatomic) NSMutableArray *contactIdentifiersNeedingMetadataPurge; // @synthesize contactIdentifiersNeedingMetadataPurge=_contactIdentifiersNeedingMetadataPurge;
 @property (readonly, nonatomic) NSMapTable *contactIndicesByInstance; // @synthesize contactIndicesByInstance=_contactIndicesByInstance;
 @property (readonly, nonatomic) NSMapTable *containerIndicesByInstance; // @synthesize containerIndicesByInstance=_containerIndicesByInstance;
 @property (readonly, nonatomic) NSMapTable *groupIndicesByInstance; // @synthesize groupIndicesByInstance=_groupIndicesByInstance;

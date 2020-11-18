@@ -10,6 +10,7 @@
 
 @class _MRVirtualTouchEventProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRSendVirtualTouchEventMessageProtobuf : PBCodable <NSCopying>
 {
     unsigned long long _virtualDeviceID;
@@ -19,19 +20,12 @@
     } _has;
 }
 
-@property (strong, nonatomic) _MRVirtualTouchEventProtobuf *event; // @synthesize event=_event;
-@property (readonly, nonatomic) BOOL hasEvent;
-@property (nonatomic) BOOL hasVirtualDeviceID;
-@property (nonatomic) unsigned long long virtualDeviceID; // @synthesize virtualDeviceID=_virtualDeviceID;
-
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

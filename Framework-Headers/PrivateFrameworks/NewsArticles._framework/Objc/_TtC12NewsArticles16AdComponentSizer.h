@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *layoutStore;
     MISSING_TYPE *bannerAdLayoutAttributesFactory;
     MISSING_TYPE *bannerAdFactory;
+    MISSING_TYPE *$__lazy_storage_$_isVisualDebuggingEnabled;
 }
 
 - (void).cxx_destruct;

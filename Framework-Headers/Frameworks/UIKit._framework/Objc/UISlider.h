@@ -36,6 +36,8 @@
 @property (nonatomic) float value; // @dynamic value;
 
 + (BOOL)_allowActionsToQueue;
++ (BOOL)_allowsUnsupportedMacIdiomBehavior;
++ (void)_setAllowsUnsupportedMacIdiomBehavior:(BOOL)arg1;
 - (void).cxx_destruct;
 - (BOOL)_alwaysHandleScrollerMouseEvent;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedHeight;

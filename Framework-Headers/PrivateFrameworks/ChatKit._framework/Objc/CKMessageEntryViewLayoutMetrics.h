@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) struct UIEdgeInsets entryViewContentInsets; // @synthesize entryViewContentInsets=_entryViewContentInsets;
 @property (readonly, nonatomic) struct UIEdgeInsets entryViewTextAlignmentInsets; // @synthesize entryViewTextAlignmentInsets=_entryViewTextAlignmentInsets;
 
++ (id)cachedMetricsRecalculatingIfNecessary;
 + (BOOL)supportsSecureCoding;
 - (void)calculateTextMetrics;
 - (void)encodeWithCoder:(id)arg1;

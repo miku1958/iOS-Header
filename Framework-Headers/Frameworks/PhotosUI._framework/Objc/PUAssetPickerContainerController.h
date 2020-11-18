@@ -12,12 +12,11 @@
 #import <PhotosUI/PXScrollViewControllerObserver-Protocol.h>
 #import <PhotosUI/UISearchBarDelegate-Protocol.h>
 #import <PhotosUI/UISearchResultsUpdating-Protocol.h>
-#import <PhotosUI/_PUPickerUnavailableUIViewControllerDelegate-Protocol.h>
 
-@class NSDictionary, NSHashTable, NSOrderedSet, NSString, PHCachingImageManager, PUAlbumsGadgetViewController, PUAssetPickerFilterOptions, PUAssetPickerSearchSuggestionsHeaderView, PUAssetPickerViewController, PUPhotoPickerResizeTaskDescriptorViewModel, PUSessionInfo, PXAssetsDataSourceManager, PXCachingCountManager, PXGAnchor, PXLoadingStatusManager, PXPhotosUIViewController, PXSearchComposableDataSource, PXSearchQueryController, PXSelectionCoordinator, UIBarButtonItem, UIButton, UILabel, UISearchController, UISegmentedControl, _PUPickerUnavailableUIViewController;
+@class NSDictionary, NSHashTable, NSOrderedSet, NSString, PHCachingImageManager, PUAlbumsGadgetViewController, PUAssetPickerFilterOptions, PUAssetPickerSearchSuggestionsHeaderView, PUAssetPickerViewController, PUPhotoPickerResizeTaskDescriptorViewModel, PUSessionInfo, PXAssetsDataSourceManager, PXCachingCountManager, PXGAnchor, PXLoadingStatusManager, PXPhotosUIViewController, PXSearchComposableDataSource, PXSearchQueryController, PXSelectionCoordinator, UIBarButtonItem, UIButton, UILabel, UISearchController, UISegmentedControl;
 @protocol PUAssetPickerContainerControllerActionHandler, PUAssetPickerViewControllerActionHandler;
 
-@interface PUAssetPickerContainerController : UIViewController <UISearchResultsUpdating, UISearchBarDelegate, PXPhotosViewDelegate, PXScrollViewControllerObserver, PUAssetPickerSearchSuggestionsSelectionDelegate, _PUPickerUnavailableUIViewControllerDelegate, PXChangeObserver>
+@interface PUAssetPickerContainerController : UIViewController <UISearchResultsUpdating, UISearchBarDelegate, PXPhotosViewDelegate, PXScrollViewControllerObserver, PUAssetPickerSearchSuggestionsSelectionDelegate, PXChangeObserver>
 {
     BOOL _allowsMultipleSelection;
     BOOL _allowSafeAreaChangeAnchor;
@@ -49,7 +48,7 @@
     NSHashTable *_pushedAssetPickerViewControllers;
     PXLoadingStatusManager *_loadingStatusManager;
     PXSelectionCoordinator *_selectionCoordinator;
-    _PUPickerUnavailableUIViewController *_unavailableViewController;
+    UIViewController *_unavailableViewController;
     PUPhotoPickerResizeTaskDescriptorViewModel *_resizeTaskDescriptorViewModel;
     PUSessionInfo *_sessionInfo;
 }
@@ -88,7 +87,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIButton *toolbarSelectedItemsButton; // @synthesize toolbarSelectedItemsButton=_toolbarSelectedItemsButton;
 @property (readonly, nonatomic) UIBarButtonItem *toolbarSelectedItemsFileSizeStackView; // @synthesize toolbarSelectedItemsFileSizeStackView=_toolbarSelectedItemsFileSizeStackView;
-@property (readonly, nonatomic) _PUPickerUnavailableUIViewController *unavailableViewController; // @synthesize unavailableViewController=_unavailableViewController;
+@property (readonly, nonatomic) UIViewController *unavailableViewController; // @synthesize unavailableViewController=_unavailableViewController;
 @property (readonly, weak, nonatomic) id<PUAssetPickerViewControllerActionHandler> viewControllerActionHandler; // @synthesize viewControllerActionHandler=_viewControllerActionHandler;
 @property (readonly, nonatomic) unsigned long long viewOptions; // @synthesize viewOptions=_viewOptions;
 
@@ -99,7 +98,7 @@
 + (void)updateToolbarSelectedItemsButton:(id)arg1 selectedAssets:(id)arg2;
 - (void).cxx_destruct;
 - (id)_createSearchController;
-- (void)_pickerUnavailableUIViewController:(id)arg1 cancelButtonTapped:(id)arg2;
+- (BOOL)_isInPopover;
 - (unsigned long long)_searchSuggestionLimit;
 - (id)_sectionLayoutForSection:(long long)arg1 environment:(id)arg2;
 - (id)_setupCollectionViewLayoutWithSectionProviders:(id)arg1;

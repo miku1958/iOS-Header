@@ -15,7 +15,6 @@
     MISSING_TYPE *invocationDeviceAssistantId;
     MISSING_TYPE *executionDeviceAssistantId;
     MISSING_TYPE *startRequestId;
-    MISSING_TYPE *logResultCompletion;
 }
 
 @end

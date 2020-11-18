@@ -65,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isDownloadingItem:(id)arg1;
 - (BOOL)makeContentLive:(id)arg1;
 - (void)performFirstSchedulingAfterStartupInDB:(id)arg1;
+- (unsigned int)recoverAndReportMissingJobs;
 - (void)rescheduleJobsForPendingDiskSpaceWithAvailableSpace:(unsigned long long)arg1;
 - (void)rescheduleJobsPendingInitialSyncInZone:(id)arg1;
 - (void)rescheduleJobsPendingWinnerForItem:(id)arg1;

@@ -46,7 +46,6 @@
 - (id)initWithBundleIdentifier:(id)arg1;
 - (void)performCommandRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeNowPlayingObserver:(id)arg1;
-- (void)setNeedsReload;
 
 @end
 

@@ -8,7 +8,9 @@
 
 @interface UIImage (TelephonyUI)
 + (id)_tpImageNamed:(id)arg1 inBundle:(id)arg2 compatibleWithTraitCollection:(id)arg3;
++ (id)bluetoothAudioRouteGlyphForDisplayStyle:(long long)arg1;
 + (BOOL)cappedSizedImagesAreValid;
++ (id)carplayRouteGlyphForDisplayStyle:(long long)arg1;
 + (void)clearCachedCappedSizeImagesIfNeeded;
 + (id)favoritesAudioGlyphImage;
 + (id)favoritesGlyphForSymbolType:(long long)arg1;
@@ -17,6 +19,11 @@
 + (id)favoritesTTYDirectGlyphImage;
 + (id)favoritesTTYRelayGlyphImage;
 + (id)favoritesVideoGlyphImage;
++ (id)headphonesRouteGlyphForDisplayStyle:(long long)arg1;
++ (id)iPadRouteGlyphForDisplayStyle:(long long)arg1;
++ (id)iPhoneRouteGlyphForDisplayStyle:(long long)arg1;
++ (id)iPodRouteGlyphForDisplayStyle:(long long)arg1;
++ (id)muteRouteGlyphForDisplayStyle:(long long)arg1;
 + (id)recentsGlyphForSymbolType:(long long)arg1;
 + (id)recentsOutgoingAudioCallGlyphImage;
 + (id)recentsOutgoingVideoCallGlyphImage;
@@ -25,24 +32,16 @@
 + (id)recentsTTYGlyphImage;
 + (id)recentsTTYRelayGlyphImage;
 + (id)recentsVerifiedCheckmarkImage;
++ (id)routeGlyphForAssetName:(id)arg1 displayStyle:(long long)arg2 shouldScaleAsset:(BOOL)arg3;
++ (id)routeGlyphForDeviceType:(long long)arg1 displayStyle:(long long)arg2;
++ (id)routeGlyphWithSymbolType:(long long)arg1 displayStyle:(long long)arg2;
 + (long long)scaleForTPScale:(long long)arg1;
++ (id)speakerRouteGlyphForDisplayStyle:(long long)arg1;
 + (id)systemImageNameForSymbolType:(long long)arg1;
 + (id)telephonyUIActionButtonGlyphImage;
 + (id)telephonyUIImageNamed:(id)arg1;
 + (id)telephonyUIInfoButtonGlyphImage;
 + (id)telephonyUIUnreadIndicatorGlyphImage;
-+ (id)telephonyUI_AudioControlsGlyphForDeviceType:(long long)arg1;
-+ (id)telephonyUI_AudioRouteGlyphForDeviceType:(long long)arg1;
-+ (id)telephonyUI_BluetoothAudioControlsGlyphImage;
-+ (id)telephonyUI_BluetoothAudioRouteGlyphImage;
-+ (id)telephonyUI_CarPlayAudioRouteGlyphImage;
-+ (id)telephonyUI_headphonesAudioControlsGlyphImage;
-+ (id)telephonyUI_headphonesAudioRouteGlyphImage;
-+ (id)telephonyUI_iPadAudioRouteGlyphImage;
-+ (id)telephonyUI_iPhoneAudioRouteGlyphImage;
-+ (id)telephonyUI_iPodAudioRouteGlyphImage;
-+ (id)telephonyUI_muteAudioRouteGlyphImage;
-+ (id)telephonyUI_speakerAudioRouteGlyphImage;
 + (id)tpImageForSymbolType:(long long)arg1 configuration:(id)arg2;
 + (id)tpImageForSymbolType:(long long)arg1 pointSize:(double)arg2;
 + (id)tpImageForSymbolType:(long long)arg1 textStyle:(id)arg2 cappedAt:(id)arg3;

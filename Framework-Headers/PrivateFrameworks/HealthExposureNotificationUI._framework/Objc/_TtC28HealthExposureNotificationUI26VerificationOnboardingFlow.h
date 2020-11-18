@@ -15,6 +15,7 @@
     MISSING_TYPE *healthAgencyModel;
     MISSING_TYPE *nonNilAgencyModel;
     MISSING_TYPE *currentSelectedRegion;
+    MISSING_TYPE *currentSelectedRegionSubdivisionCodes;
     MISSING_TYPE *exposureManager;
     MISSING_TYPE *symptomOnset;
     MISSING_TYPE *hasTraveled;

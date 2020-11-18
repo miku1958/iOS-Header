@@ -11,9 +11,9 @@
 
 @protocol FCNewsAppConfiguration <FCCoreConfiguration, NFCopying>
 
-@property (readonly, nonatomic) double adRequestThrottle;
 @property (readonly, nonatomic) long long analyticsEndpointMaxPayloadSize;
 @property (readonly, nonatomic) NSString *anfRenderingConfiguration;
+@property (readonly, nonatomic) double articleBannerAdRequestThrottle;
 @property (readonly, nonatomic) double articleDiversificationSimilarityExpectationEnd;
 @property (readonly, nonatomic) double articleDiversificationSimilarityExpectationStart;
 @property (readonly, nonatomic) double articleDiversificationUniquePublisherExpectationSlope;
@@ -37,11 +37,14 @@
 @property (readonly, nonatomic) BOOL enableLocationBasedAutofavorites;
 @property (readonly, nonatomic) NSString *exploreArticleID;
 @property (readonly, nonatomic) NSArray *externalAnalyticsConfigurations;
+@property (readonly, nonatomic) long long feedAdScreenfulsToPrefetch;
+@property (readonly, nonatomic) double feedBannerAdRequestThrottle;
 @property (readonly, nonatomic) long long feedContentExposureTestMaximumInterval;
 @property (readonly, nonatomic) NSString *feedNavigationConfigJSON;
 @property (readonly, nonatomic) BOOL forYouGroupShouldPromoteAccessibleHeadline;
 @property (readonly, nonatomic) FCIAdConfiguration *iAdConfig;
 @property (readonly, nonatomic) double interstitialAdLoadDelay;
+@property (readonly, nonatomic) double interstitialAdRequestThrottle;
 @property (readonly, nonatomic) BOOL isExpired;
 @property (readonly, nonatomic) NSString *issueArticleRecirculationConfigJSON;
 @property (readonly, nonatomic) unsigned long long likeDislikeBehavior;
@@ -50,6 +53,8 @@
 @property (readonly, nonatomic) long long maximumTrendingGroupSizeiPad;
 @property (readonly, nonatomic) long long maximumTrendingGroupSizeiPhone;
 @property (readonly, nonatomic) NSArray *mediaSharingBlacklistedChannelIDs;
+@property (readonly, nonatomic) double nativeInArticleAdRequestThrottle;
+@property (readonly, nonatomic) double nativeInFeedAdRequestThrottle;
 @property (readonly, nonatomic) long long newFavoriteNotificationAlertsFrequency;
 @property (readonly, nonatomic) double newsletterSubscriptionStatusCacheTimeout;
 @property (readonly, nonatomic) long long newsletterSubscriptionType;
@@ -65,9 +70,12 @@
 @property (readonly, nonatomic) NSString *personalizationUrlMappingResourceId;
 @property (readonly, nonatomic) NSString *personalizationWhitelistResourceId;
 @property (readonly, nonatomic) FCPrefetchConfiguration *prefetchConfig;
+@property (readonly, nonatomic) double prerollAdRequestThrottle;
 @property (readonly, nonatomic) double prerollLoadingTimeout;
+@property (readonly, nonatomic) NSArray *searchConfigurationProfiles;
 @property (readonly, nonatomic) NTPBDiscoverMoreVideosInfo *shareDiscoverMoreVideosInfo;
 @property (readonly, nonatomic) long long stateRestorationAllowedTimeWindow;
+@property (readonly, nonatomic) BOOL stateRestorationOniPhoneEnabled;
 @property (readonly, nonatomic) long long subscriptionsGracePeriodForTokenVerificationSeconds;
 @property (readonly, nonatomic) long long subscriptionsPlacardGlobalMaximumPerDay;
 @property (readonly, nonatomic) long long subscriptionsPlacardPublisherFrequencyInSeconds;
@@ -78,6 +86,7 @@
 @property (readonly, nonatomic) NSString *translationMapResourceID;
 @property (readonly, nonatomic) unsigned long long trendingStyle;
 @property (readonly, nonatomic) BOOL universalLinksEnabled;
+@property (readonly, nonatomic) BOOL useNewSearchEndpoint;
 @property (readonly, nonatomic) BOOL userSegmentationInWidgetAllowed;
 @property (readonly, nonatomic) NSString *userVectorModelResourceId;
 @property (readonly, nonatomic) NSString *userVectorWhitelistResourceId;

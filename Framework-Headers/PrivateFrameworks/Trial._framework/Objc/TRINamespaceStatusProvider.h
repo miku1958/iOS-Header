@@ -20,6 +20,7 @@
 - (BOOL)saveNamespaceStatus:(id)arg1 toURL:(id)arg2;
 - (BOOL)saveStatus:(id)arg1;
 - (id)statusForNamespaceWithName:(id)arg1;
+- (BOOL)updateStatusForNamespaceWithName:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)urlForStatusWithNamespaceName:(id)arg1;
 
 @end

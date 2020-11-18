@@ -15,6 +15,9 @@
     MISSING_TYPE *feedPersonalizer;
     MISSING_TYPE *subscriptionController;
     MISSING_TYPE *translationProvider;
+    MISSING_TYPE *readingHistory;
+    MISSING_TYPE *bundleSubscription;
+    MISSING_TYPE *purchaseController;
     MISSING_TYPE *personalizationTreatment;
     MISSING_TYPE *xavierEnabled;
 }

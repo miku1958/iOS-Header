@@ -10,12 +10,14 @@
 
 @interface HFActionNaturalLanguageOptions : HFSubstringNaturalLanguageOptions
 {
+    BOOL _useMediaContainersNotInContext;
     HMHome *_home;
     NSSet *_objectsInContext;
 }
 
 @property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) NSSet *objectsInContext; // @synthesize objectsInContext=_objectsInContext;
+@property (nonatomic) BOOL useMediaContainersNotInContext; // @synthesize useMediaContainersNotInContext=_useMediaContainersNotInContext;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

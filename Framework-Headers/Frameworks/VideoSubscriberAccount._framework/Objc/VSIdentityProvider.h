@@ -16,6 +16,7 @@
     NSString *_displayName;
     BOOL _prohibitedByStore;
     BOOL _developer;
+    BOOL _application;
     BOOL _isSetTopBoxSupported;
     BOOL _isSTBOptOutAllowed;
     VSOptional *_uniqueID;
@@ -38,6 +39,7 @@
 @property (copy, nonatomic) NSArray *appAdamIDs; // @synthesize appAdamIDs=_appAdamIDs;
 @property (copy, nonatomic) NSNumber *appPlacementPosition; // @synthesize appPlacementPosition=_appPlacementPosition;
 @property (copy, nonatomic) NSURL *appStoreRoomURL; // @synthesize appStoreRoomURL=_appStoreRoomURL;
+@property (nonatomic, getter=isApplication) BOOL application; // @synthesize application=_application;
 @property (copy, nonatomic) NSURL *authenticationURL; // @synthesize authenticationURL=_authenticationURL;
 @property (copy, nonatomic) NSString *defaultAppId; // @synthesize defaultAppId=_defaultAppId;
 @property (nonatomic, getter=isDeveloper) BOOL developer; // @synthesize developer=_developer;
@@ -63,6 +65,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
+- (id)initWithApplicationProvider:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isFullySupportedForRequestsExpectingAuthenticationSchemes:(id)arg1;

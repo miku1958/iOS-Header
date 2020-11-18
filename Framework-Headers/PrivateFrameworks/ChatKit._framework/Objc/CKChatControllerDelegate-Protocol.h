@@ -15,7 +15,6 @@
 
 @optional
 - (void)chatController:(CKChatController *)arg1 didDetachDetailsNavigationController:(CKDetailsNavigationController *)arg2;
-- (void)chatControllerWillDisplayDetailsPopover:(CKChatController *)arg1;
 - (void)dismissAndReopenDetailsNavigationController;
 - (void)dismissDetailsNavigationController;
 - (void)doneButtonPressedForChatController:(CKChatController *)arg1;

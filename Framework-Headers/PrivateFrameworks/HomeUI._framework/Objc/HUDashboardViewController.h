@@ -48,7 +48,6 @@
     HUDynamicScrollingOptions *_dynamicScrollingOptions;
     HUDashboardNavigationButton *_navigationAddButton;
     HUDashboardNavigationButton *_navigationAnnounceButton;
-    HUDashboardNavigationButton *_navigationAnnounceTextButton;
     HUDashboardNavigationButton *_navigationHomesAndRoomsButton;
     HUDashboardNavigationButton *_navigationEditDoneButton;
     HUDashboardScrollingAnimationController *_statusAnimationController;
@@ -94,7 +93,6 @@
 @property (strong, nonatomic) AMSUIUpdateMultiUserTokenTask *multiUserTokenFixTask; // @synthesize multiUserTokenFixTask=_multiUserTokenFixTask;
 @property (strong, nonatomic) HUDashboardNavigationButton *navigationAddButton; // @synthesize navigationAddButton=_navigationAddButton;
 @property (strong, nonatomic) HUDashboardNavigationButton *navigationAnnounceButton; // @synthesize navigationAnnounceButton=_navigationAnnounceButton;
-@property (strong, nonatomic) HUDashboardNavigationButton *navigationAnnounceTextButton; // @synthesize navigationAnnounceTextButton=_navigationAnnounceTextButton;
 @property (strong, nonatomic) HUDashboardNavigationButton *navigationEditDoneButton; // @synthesize navigationEditDoneButton=_navigationEditDoneButton;
 @property (strong, nonatomic) HUDashboardNavigationButton *navigationHomesAndRoomsButton; // @synthesize navigationHomesAndRoomsButton=_navigationHomesAndRoomsButton;
 @property (nonatomic) BOOL shouldShowFullMenu; // @synthesize shouldShowFullMenu=_shouldShowFullMenu;
@@ -113,17 +111,14 @@
 - (id)_defaultLayoutOptionsForViewSize:(struct CGSize)arg1;
 - (void)_didTapHomesAndRoomsButton:(id)arg1;
 - (void)_didTapLargeTitleButton:(id)arg1;
-- (void)_enableAnnounceButtons:(BOOL)arg1 delay:(unsigned long long)arg2;
 - (void)_finishEditing:(id)arg1;
 - (BOOL)_hasDetailViewControllerForItem:(id)arg1;
 - (unsigned long long)_incomingInvitationsCount;
 - (BOOL)_isWallpaperEnabled;
-- (void)_launchAnnounceRecordingServiceForCurrentHome:(id)arg1;
-- (void)_launchAnnounceRecordingServiceForCurrentRoom:(id)arg1;
 - (id)_layoutOptionsForSectionIndex:(unsigned long long)arg1;
 - (id)_loadWallpaperSlices;
 - (id)_loadWallpaperWithVariant:(long long)arg1;
-- (void)_markAnnounceTextButtonForCurrentContextAsSeen;
+- (id)_markAccessoriesAsUserNotified:(id)arg1;
 - (id)_navigationHost;
 - (id)_performTapActionForItem:(id)arg1;
 - (id)_presentCameraProfile:(id)arg1 withPresentationHandler:(CDUnknownBlockType)arg2 animated:(BOOL)arg3;
@@ -133,11 +128,8 @@
 - (double)_scaleFactorWithCurrentScrollDistance:(struct CGSize)arg1 dynamicScrollingSetting:(CDStruct_d6c048b4)arg2 timingFunction:(id)arg3 iterationCount:(long long)arg4;
 - (void)_setUpHomesAndRoomsMenuForButton:(id)arg1;
 - (void)_setupLargeTitleButtonIfNecessary;
-- (BOOL)_shouldShowAnnounceTextButtonForCurrentContext;
 - (void)_startEditing:(id)arg1;
 - (void)_updateAllowedNavigationOverlap;
-- (void)_updateAnnounceTextButtonDisplayCountForCurrentContext;
-- (void)_updateAnnounceTextButtonDisplayCountForCurrentContextToValue:(unsigned long long)arg1;
 - (void)_updateBarButtons;
 - (void)_updateEditButtonAnimated:(BOOL)arg1;
 - (void)_updateEmptyHomeDashboardStateIfNeededAnimated:(BOOL)arg1;
@@ -232,6 +224,8 @@
 - (void)showHomeSettings:(id)arg1;
 - (void)showRoom:(id)arg1;
 - (void)showRoomSettings:(id)arg1;
+- (id)softwareUpdateUIManager:(id)arg1 dismissViewController:(id)arg2;
+- (id)softwareUpdateUIManager:(id)arg1 presentViewController:(id)arg2;
 - (void)startEditing;
 - (id)traitCollectionForPresentationCoordinator:(id)arg1;
 - (BOOL)useCustomDragAndDrop;

@@ -48,7 +48,7 @@
 - (void).cxx_destruct;
 - (void)_appBoundDomains:(CDUnknownBlockType)arg1;
 - (void)_appBoundSchemes:(CDUnknownBlockType)arg1;
-- (void)_clearLoadedThirdPartyDomainsFor:(id)arg1;
+- (void)_clearLoadedSubresourceDomainsFor:(id)arg1;
 - (void)_clearPrevalentDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_clearResourceLoadStatistics:(CDUnknownBlockType)arg1;
 - (void)_fetchDataRecordsOfTypes:(id)arg1 withOptions:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -58,7 +58,7 @@
 - (BOOL)_hasRegisteredServiceWorker;
 - (id)_initWithConfiguration:(id)arg1;
 - (void)_isRegisteredAsSubresourceUnderFirstParty:(id)arg1 thirdParty:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_loadedThirdPartyDomainsFor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_loadedSubresourceDomainsFor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_logUserInteraction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_processStatisticsAndDataRecords:(CDUnknownBlockType)arg1;
 - (void)_renameOrigin:(id)arg1 to:(id)arg2 forDataOfTypes:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

@@ -13,10 +13,12 @@ __attribute__((visibility("hidden")))
 @interface PUAssetPickerFilterOptions : NSObject
 {
     id<PUPickerFilter> _selectionFilter;
+    unsigned long long _genericAssetTypes;
     NSPredicate *_selectionFilterAssetFetchPredicate;
     NSIndexSet *_includedItems;
 }
 
+@property (readonly, nonatomic) unsigned long long genericAssetTypes; // @synthesize genericAssetTypes=_genericAssetTypes;
 @property (readonly, nonatomic) NSIndexSet *includedItems; // @synthesize includedItems=_includedItems;
 @property (readonly, nonatomic) id<PUPickerFilter> selectionFilter; // @synthesize selectionFilter=_selectionFilter;
 @property (readonly, nonatomic) NSPredicate *selectionFilterAssetFetchPredicate; // @synthesize selectionFilterAssetFetchPredicate=_selectionFilterAssetFetchPredicate;

@@ -6,7 +6,7 @@
 
 #import <SpringBoard/SBTransitionSwitcherModifierEvent.h>
 
-@class NSArray, NSMutableDictionary, NSString, SBAppLayout, SBBannerUnfurlSourceContext;
+@class NSArray, NSMutableDictionary, NSSet, NSString, SBAppLayout, SBBannerUnfurlSourceContext;
 
 @interface SBMainTransitionSwitcherModifierEvent : SBTransitionSwitcherModifierEvent
 {
@@ -35,6 +35,7 @@
     unsigned long long _fromInlineAppExposeRoles;
     unsigned long long _toInlineAppExposeRoles;
     SBBannerUnfurlSourceContext *_bannerUnfurlSourceContext;
+    NSSet *_fromAppLayoutsPendingTermination;
 }
 
 @property (readonly, copy, nonatomic) NSArray *appLayoutsWithRemovalContexts;
@@ -45,6 +46,7 @@
 @property (nonatomic, getter=isDragAndDropTransition) BOOL dragAndDropTransition; // @synthesize dragAndDropTransition=_dragAndDropTransition;
 @property (copy, nonatomic) NSString *fromAppExposeBundleID; // @synthesize fromAppExposeBundleID=_fromAppExposeBundleID;
 @property (nonatomic) BOOL fromAppLayoutWantsExclusiveForeground; // @synthesize fromAppLayoutWantsExclusiveForeground=_fromAppLayoutWantsExclusiveForeground;
+@property (copy, nonatomic) NSSet *fromAppLayoutsPendingTermination; // @synthesize fromAppLayoutsPendingTermination=_fromAppLayoutsPendingTermination;
 @property (strong, nonatomic) SBAppLayout *fromFloatingAppLayout; // @synthesize fromFloatingAppLayout=_fromFloatingAppLayout;
 @property (nonatomic) long long fromFloatingConfiguration; // @synthesize fromFloatingConfiguration=_fromFloatingConfiguration;
 @property (nonatomic) BOOL fromFloatingSwitcherVisible; // @synthesize fromFloatingSwitcherVisible=_fromFloatingSwitcherVisible;

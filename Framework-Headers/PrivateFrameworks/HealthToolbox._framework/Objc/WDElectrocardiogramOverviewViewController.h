@@ -8,21 +8,21 @@
 
 #import <HealthToolbox/HKHeartRhythmAvailabilityObserver-Protocol.h>
 #import <HealthToolbox/HKOnboardingSetupViewDelegate-Protocol.h>
+#import <HealthToolbox/HRElectrocardiogramOnboardingManagerDelegate-Protocol.h>
 #import <HealthToolbox/HRFeatureRegulatoryReenableFeatureActionDelegate-Protocol.h>
-#import <HealthToolbox/HROnboardingManagerDelegate-Protocol.h>
 #import <HealthToolbox/WDElectrocardiogramFilterDataProviderDelegate-Protocol.h>
 
-@class HKDisplayType, HKHeartRhythmAvailability, HROnboardingManager, NSString, UITapGestureRecognizer, WDElectrocardiogramFilterDataProvider, WDElectrocardiogramListDataProvider, WDProfile;
+@class HKDisplayType, HKHeartRhythmAvailability, HRElectrocardiogramOnboardingManager, NSString, UITapGestureRecognizer, WDElectrocardiogramFilterDataProvider, WDElectrocardiogramListDataProvider, WDProfile;
 @protocol HKDataMetadataSectionProtocol;
 
-@interface WDElectrocardiogramOverviewViewController : HKTableViewController <HRFeatureRegulatoryReenableFeatureActionDelegate, HROnboardingManagerDelegate, WDElectrocardiogramFilterDataProviderDelegate, HKOnboardingSetupViewDelegate, HKHeartRhythmAvailabilityObserver>
+@interface WDElectrocardiogramOverviewViewController : HKTableViewController <HRFeatureRegulatoryReenableFeatureActionDelegate, HRElectrocardiogramOnboardingManagerDelegate, WDElectrocardiogramFilterDataProviderDelegate, HKOnboardingSetupViewDelegate, HKHeartRhythmAvailabilityObserver>
 {
     BOOL _firstViewDidLayoutSubviews;
     BOOL _previousElectrocardiogramDisabledCacheValue;
     long long _placeholderCellCount;
     HKDisplayType *_displayType;
     WDProfile *_profile;
-    HROnboardingManager *_onboardingManager;
+    HRElectrocardiogramOnboardingManager *_onboardingManager;
     WDElectrocardiogramListDataProvider *_dataProvider;
     WDElectrocardiogramFilterDataProvider *_filterDataProvider;
     HKHeartRhythmAvailability *_heartRhythmAvailability;
@@ -39,7 +39,7 @@
 @property (nonatomic) BOOL firstViewDidLayoutSubviews; // @synthesize firstViewDidLayoutSubviews=_firstViewDidLayoutSubviews;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HKHeartRhythmAvailability *heartRhythmAvailability; // @synthesize heartRhythmAvailability=_heartRhythmAvailability;
-@property (strong, nonatomic) HROnboardingManager *onboardingManager; // @synthesize onboardingManager=_onboardingManager;
+@property (strong, nonatomic) HRElectrocardiogramOnboardingManager *onboardingManager; // @synthesize onboardingManager=_onboardingManager;
 @property (nonatomic) long long placeholderCellCount; // @synthesize placeholderCellCount=_placeholderCellCount;
 @property (nonatomic) BOOL previousElectrocardiogramDisabledCacheValue; // @synthesize previousElectrocardiogramDisabledCacheValue=_previousElectrocardiogramDisabledCacheValue;
 @property (weak, nonatomic) WDProfile *profile; // @synthesize profile=_profile;
@@ -47,6 +47,7 @@
 @property (strong, nonatomic) UITapGestureRecognizer *tripleTapToSettingsRecognizer; // @synthesize tripleTapToSettingsRecognizer=_tripleTapToSettingsRecognizer;
 
 - (void).cxx_destruct;
+- (BOOL)_anyOnboardingCompleted;
 - (id)_cellForDataSourcesAndAccess;
 - (id)_cellForDescription;
 - (id)_cellForFavorites;

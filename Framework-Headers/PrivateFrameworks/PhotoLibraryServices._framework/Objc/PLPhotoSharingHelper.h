@@ -26,7 +26,7 @@
 + (id)_transactionWithName:(const char *)arg1;
 + (void)_userDidDeleteSharedAlbum:(id)arg1;
 + (void)_userDidDeleteSharedAssets:(id)arg1;
-+ (id)_videoDerivativeForVideoAtURL:(id)arg1 outputURL:(id)arg2 withPreset:(id)arg3 outputFileType:(id)arg4;
++ (id)_videoDerivativeForVideoAtURL:(id)arg1 outputURL:(id)arg2 withPreset:(id)arg3 reason:(id)arg4 outputFileType:(id)arg5;
 + (void)acceptPendingInvitationForAlbum:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (BOOL)accountMatchesEmail:(id)arg1;
 + (void)accountSettingsChanged;

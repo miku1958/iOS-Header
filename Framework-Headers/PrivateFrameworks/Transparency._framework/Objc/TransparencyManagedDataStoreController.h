@@ -37,8 +37,8 @@
 + (void)reportCoreDataEventForEntity:(id)arg1 write:(BOOL)arg2 code:(long long)arg3 underlyingError:(id)arg4;
 - (void).cxx_destruct;
 - (id)bundleURL;
-- (void)createContexts;
-- (void)createDataStores;
+- (BOOL)createContexts:(id *)arg1;
+- (BOOL)createDataStores:(id *)arg1;
 - (long long)currentSequenceId:(id *)arg1;
 - (void)handleDidSaveNotification:(id)arg1;
 - (id)init;

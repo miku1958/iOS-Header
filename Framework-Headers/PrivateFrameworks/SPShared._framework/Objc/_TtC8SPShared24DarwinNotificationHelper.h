@@ -11,6 +11,7 @@
 @interface _TtC8SPShared24DarwinNotificationHelper : _TtCs12_SwiftObject
 {
     MISSING_TYPE *notificationHandlers;
+    MISSING_TYPE *subscription;
 }
 
 @end

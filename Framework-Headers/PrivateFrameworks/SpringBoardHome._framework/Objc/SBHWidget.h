@@ -48,7 +48,8 @@
 - (BOOL)iconSupportsConfiguration:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithKind:(id)arg1 extensionBundleIdentifier:(id)arg2;
-- (id)initWithUniqueIdentifier:(id)arg1 kind:(id)arg2 extensionBundleIdentifier:(id)arg3;
+- (id)initWithKind:(id)arg1 extensionBundleIdentifier:(id)arg2 containerBundleIdentifier:(id)arg3;
+- (id)initWithUniqueIdentifier:(id)arg1 kind:(id)arg2 extensionBundleIdentifier:(id)arg3 containerBundleIdentifier:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)matchesPersonality:(id)arg1;
 - (unsigned long long)priorityForIcon:(id)arg1;

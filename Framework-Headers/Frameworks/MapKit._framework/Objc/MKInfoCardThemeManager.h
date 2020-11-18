@@ -48,6 +48,7 @@
 @property (readonly, nonatomic) UIColor *tintColor;
 @property (readonly, nonatomic) UIColor *transitChevronBackgroundColor;
 @property (readonly, nonatomic) UIColor *transitDelayedTextColor;
+@property (readonly, nonatomic) UIColor *transitIncidentBackgroundColor;
 @property (readonly, nonatomic) UIColor *transitOntimeTextColor;
 @property (nonatomic) BOOL useSmallFont; // @synthesize useSmallFont=_useSmallFont;
 

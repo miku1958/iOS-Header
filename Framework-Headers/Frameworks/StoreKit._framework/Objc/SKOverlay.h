@@ -28,6 +28,7 @@
 @property (readonly) Class superclass;
 
 + (void)dismissOverlayInScene:(id)arg1;
++ (id)unsupportedPlatformErrorWithAPIName:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithConfiguration:(id)arg1;
 - (void)presentInScene:(id)arg1;

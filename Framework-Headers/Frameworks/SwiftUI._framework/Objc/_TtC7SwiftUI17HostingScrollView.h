@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *pendingUpdate;
     MISSING_TYPE *animationTarget;
     MISSING_TYPE *animationOffset;
+    MISSING_TYPE *isAnimationCompletionCheckPending;
     MISSING_TYPE *configuration;
 }
 

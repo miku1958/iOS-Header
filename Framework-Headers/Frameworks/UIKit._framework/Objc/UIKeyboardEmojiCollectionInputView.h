@@ -62,7 +62,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_handleVariantSelectionEvent:(id)arg1;
 - (double)_recentlyUsedMediaRoundedOffset:(double)arg1 recentlyUsedMediaCellWidth:(double)arg2;
 - (void)_setUserHasSelectedSkinToneEmoji:(BOOL)arg1;
-- (BOOL)_shouldReverseLayoutDirection;
 - (BOOL)_shouldShowRecentlyUsedMedia;
 - (BOOL)_userHasSelectedSkinToneEmoji;
 - (BOOL)baseStringIsCoupleEmoji:(id)arg1;
@@ -97,6 +96,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3 screenTraits:(id)arg4;
 - (void)insertSelectedEmoji:(id)arg1 shouldDismissPopover:(BOOL)arg2;
 - (id)itemInRect:(struct CGRect)arg1;
+- (long long)keyCodeForCurrentEnvironmentFromKeyCode:(long long)arg1;
 - (BOOL)keySupportsVariants:(id)arg1;
 - (BOOL)memojiSettingEnabled;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;

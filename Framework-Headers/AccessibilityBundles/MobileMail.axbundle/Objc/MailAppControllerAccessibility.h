@@ -15,7 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityFirstElementForFocus;
 - (id)_accessibilityFirstElementForReadFromTop;
-- (id)_accessibilityScannerGroupElements;
+- (id)_accessibilitySplitViewControllerScannerGroupElements;
 - (id)_axAccessibilityGroupForKey:(id)arg1 fromSplitController:(id)arg2;
 - (id)_axVisibleViewController;
 

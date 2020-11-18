@@ -10,6 +10,7 @@
 
 @class _MRNowPlayingPlayerPathProtobuf, _MRTransactionPacketsProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRTransactionMessageProtobuf : PBCodable <NSCopying>
 {
     unsigned long long _name;
@@ -20,21 +21,12 @@
     } _has;
 }
 
-@property (nonatomic) BOOL hasName;
-@property (readonly, nonatomic) BOOL hasPackets;
-@property (readonly, nonatomic) BOOL hasPlayerPath;
-@property (nonatomic) unsigned long long name; // @synthesize name=_name;
-@property (strong, nonatomic) _MRTransactionPacketsProtobuf *packets; // @synthesize packets=_packets;
-@property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
-
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

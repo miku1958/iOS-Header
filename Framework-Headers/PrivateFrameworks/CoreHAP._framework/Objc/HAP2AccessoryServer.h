@@ -27,6 +27,7 @@
     id<HAP2AccessoryServerControllerPrivate> _controller;
     id<HAP2AccessoryServerBrowserPrivate> _browser;
     id<HAP2AccessoryServerMetadata> _currentMetadata;
+    NSString *_productData;
     NSArray *_privateAccessories;
     NSString *_pairedName;
     HMFVersion *_pairedProtocolVersion;
@@ -85,6 +86,9 @@
 @property (readonly, nonatomic, getter=isPaired) BOOL paired;
 @property (readonly, nonatomic) id<HAP2AccessoryServerPairingDriver> pairingDriver;
 @property (readonly, nonatomic) id<HAP2Accessory> primaryAccessory;
+@property (strong, nonatomic) NSString *productData;
+@property (strong, nonatomic) NSString *productData;
+@property (strong, nonatomic) NSString *productData; // @synthesize productData=_productData;
 @property (readonly, nonatomic) HMFVersion *protocolVersion;
 @property (readonly, nonatomic) HMFVersion *protocolVersion;
 @property (readonly, nonatomic) HMFVersion *protocolVersion;
@@ -109,6 +113,8 @@
 - (id)addPairing:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)becomePairedWithAccessoryServer:(id)arg1;
 - (void)becomeUnpairedWithAccessoryServer:(id)arg1;
+- (void)clearAccessories;
+- (void)dealloc;
 - (id)disableNotificationsForCharacteristics:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)enableNotificationsForCharacteristics:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)getPairingsWithCompletion:(CDUnknownBlockType)arg1;

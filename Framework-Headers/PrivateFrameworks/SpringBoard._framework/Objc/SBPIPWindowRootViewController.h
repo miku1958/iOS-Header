@@ -29,8 +29,8 @@
 - (void).cxx_destruct;
 - (BOOL)_hasOngoingMorphRestore;
 - (long long)_interfaceOrientationForContainerViewController:(id)arg1;
-- (void)_layoutContainerViewControllers:(id)arg1;
-- (void)_layoutInterfaceOrientationUnlockedContainerViewControllers;
+- (void)_layoutContainerViewControllers:(id)arg1 forceLayout:(BOOL)arg2;
+- (void)_layoutInterfaceOrientationUnlockedContainerViewControllersAndForceLayout:(BOOL)arg1;
 - (long long)_overrideInterfaceOrientationMechanics;
 - (long long)_overrideWindowActiveInterfaceOrientation;
 - (long long)_requiredInterfaceOrientationForContainerViewController:(id)arg1;

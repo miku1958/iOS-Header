@@ -68,6 +68,7 @@
 - (void)removeTrack:(id)arg1;
 - (void)scaleTimeRange:(CDStruct_e83c9415)arg1 toDuration:(CDStruct_1b6d18a9)arg2;
 - (long long)statusOfValueForKey:(id)arg1 error:(id *)arg2;
+- (id)trackReferences;
 - (id)trackWithTrackID:(int)arg1;
 - (id)tracksWithMediaCharacteristic:(id)arg1;
 - (id)tracksWithMediaType:(id)arg1;

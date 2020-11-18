@@ -266,7 +266,7 @@
 - (double)_convertVisualAltitude:(double)arg1 toWindow:(id)arg2;
 - (void)_createSystemGestureGateGestureRecognizerIfNeeded;
 - (id)_debugName;
-- (id)_deepestUnambiguousResponder;
+- (id)_deepestActionResponder;
 - (id)_deferringTargetWithContextID:(unsigned int)arg1;
 - (BOOL)_definesDynamicTintColor;
 - (id)_delegateViewController;
@@ -396,6 +396,7 @@
 - (void)_resignKeyWindowStatus;
 - (BOOL)_resizeWindowFrameToSceneBoundsIfNecessary;
 - (void)_resizeWindowToFullScreenIfNecessary;
+- (id)_responderForKeyEvents;
 - (id)_responderForKeyEventsInWindow;
 - (id)_responderSelectionContainerViewForResponder:(id)arg1;
 - (id)_responderWindow;

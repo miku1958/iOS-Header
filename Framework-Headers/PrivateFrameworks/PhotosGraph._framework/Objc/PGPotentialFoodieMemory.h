@@ -18,6 +18,7 @@
     NSDictionary *_personAssetUUIDsByMomentNodeLocalIdentifier;
     PGGraphNode *_featuredNode;
     PGGraphNode<PGGraphLocationOrArea> *_tripLocationNode;
+    unsigned long long _tripTitleLocationType;
 }
 
 @property (strong, nonatomic) PGGraphNode *featuredNode; // @synthesize featuredNode=_featuredNode;
@@ -26,6 +27,7 @@
 @property (readonly, nonatomic) unsigned long long relevantFoodAssetCount; // @synthesize relevantFoodAssetCount=_relevantFoodAssetCount;
 @property (strong, nonatomic) NSDictionary *relevantFoodAssetUUIDsByMomentNodeLocalIdentifier; // @synthesize relevantFoodAssetUUIDsByMomentNodeLocalIdentifier=_relevantFoodAssetUUIDsByMomentNodeLocalIdentifier;
 @property (strong, nonatomic) PGGraphNode<PGGraphLocationOrArea> *tripLocationNode; // @synthesize tripLocationNode=_tripLocationNode;
+@property (nonatomic) unsigned long long tripTitleLocationType; // @synthesize tripTitleLocationType=_tripTitleLocationType;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;

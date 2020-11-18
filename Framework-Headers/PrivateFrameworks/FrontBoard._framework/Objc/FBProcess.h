@@ -12,7 +12,7 @@
 #import <FrontBoard/RBSProcessMatching-Protocol.h>
 
 @class BSAuditToken, BSMachPortTaskNameRight, BSProcessHandle, FBProcessCPUStatistics, FBProcessExecutionContext, FBProcessExitContext, FBProcessState, FBProcessWatchdog, FBProcessWatchdogEventContext, FBSApplicationInfo, FBSProcessExecutionProvision, FBSProcessTerminationRequest, FBSProcessWatchdogPolicy, FBWorkspace, NSError, NSMutableArray, NSMutableSet, NSString, RBSAssertion, RBSProcessHandle, RBSProcessIdentity, RBSProcessState, RBSTarget;
-@protocol BSInvalidatable, FBProcessDelegate;
+@protocol FBProcessDelegate;
 
 @interface FBProcess : NSObject <FBProcessBootstrapping, FBSProcessInternal, RBSProcessMatching, FBSProcess>
 {
@@ -32,8 +32,6 @@
     NSString *_description;
     NSError *_bootstrapError;
     NSMutableSet *_observerLock_observers;
-    id<BSInvalidatable> _lock_workspaceAssertion;
-    RBSAssertion *_lock_launchAssertion;
     RBSAssertion *_lock_continuousAssertion;
     RBSAssertion *_lock_gracefulExitAssertion;
     NSMutableArray *_lock_launchCompletionBlocks;
@@ -71,6 +69,7 @@
 }
 
 @property (readonly, nonatomic) FBSApplicationInfo *applicationInfo; // @synthesize applicationInfo=_lock_applicationInfo;
+@property (readonly, nonatomic) unsigned char assertionState;
 @property (readonly, nonatomic) BSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (readonly, nonatomic, getter=isBeingDebugged) BOOL beingDebugged;
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
@@ -111,10 +110,11 @@
 - (void)_finishInit;
 - (id)_initWithHandle:(id)arg1 identity:(id)arg2 executionContext:(id)arg3;
 - (void)_killForReason:(long long)arg1 andReport:(BOOL)arg2 withDescription:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_launchDidComplete:(BOOL)arg1;
+- (void)_launchDidComplete:(BOOL)arg1 finalizeBlock:(CDUnknownBlockType)arg2;
 - (void)_lock_consumeLock_executeTerminationRequest;
 - (void)_lock_consumeLock_performGracefulKill;
 - (id)_newWatchdogForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_noteAssertionStateDidChange;
 - (void)_noteLaunchDidComplete;
 - (void)_notePendingExitForReason:(id)arg1;
 - (void)_noteProcessDidExit:(id)arg1;

@@ -58,7 +58,9 @@
     struct CGAffineTransform _stateQueue_preferredTransform;
     struct __CVBuffer *_stateQueue_currentPixelBuffer;
     BOOL _stateQueue_readyForSeeking;
+    CDStruct_1b6d18a9 _stateQueue_currentTime;
     CDStruct_d97c9657 _updateQueue_updateFlags;
+    long long _updateQueue_pendingPlayerItemSeekCount;
     BOOL _updateQueue_didFinishInitializingAudioSession;
     CDStruct_1b6d18a9 _updateQueue_lastPlayerTime;
     long long _updateQueue_playRequestIntervalSignpost;
@@ -105,6 +107,7 @@
 @property (readonly, nonatomic) NSString *statusDescription;
 @property (readonly) Class superclass;
 @property (nonatomic) CDStruct_1b6d18a9 videoDuration;
+@property (readonly, nonatomic) ISWrappedAVPlayer *videoPlayer;
 @property (readonly, nonatomic) float volume;
 
 - (void).cxx_destruct;
@@ -120,6 +123,7 @@
 - (void)_handleDidReachPlaybackTimeRangeEnd;
 - (void)_handleDisplayLink:(id)arg1;
 - (void)_handlePlayabilityDidLoadForAsset:(id)arg1;
+- (void)_handlePlayerItemSeekDidFinish;
 - (void)_handlePlayerTimeAdvancementTimer:(id)arg1;
 - (void)_handlePreferredTransformDidLoad;
 - (BOOL)_isAVPlayerPlayStateOutOfSync;
@@ -132,7 +136,6 @@
 - (void)_performChanges:(CDUnknownBlockType)arg1;
 - (id)_playbackStateDescription;
 - (void)_removeAllVideoOutputs;
-- (void)_seekToPlaybackTimeRangeStartIfNeeded;
 - (void)_setPlayabilityFromAsset:(id)arg1;
 - (id)_stateQueue_newPresentationStateFromCurrentWithPresenter:(void *)arg1;
 - (void)_updateAVPlayerPlayState;
@@ -149,6 +152,8 @@
 - (void)_updatePlayerItem;
 - (void)_updatePlayerItemInPlayer;
 - (void)_updatePlayerVolume;
+- (void)_updateQueue_decrementPendingPlayerItemSeekCount;
+- (void)_updateQueue_seekToPlaybackTimeRangeStartIfNeeded;
 - (void)_updateReadyForSeeking;
 - (void)_updateRotationTransform;
 - (void)_updateStalled;
@@ -166,6 +171,7 @@
 - (struct CGImage *)generateSnapshotImage;
 - (id)init;
 - (id)initWithContentProvider:(id)arg1;
+- (id)initWithContentProvider:(id)arg1 videoPlayer:(id)arg2;
 - (BOOL)isPlayerTimeAdvancing;
 - (void)leavePresentationContext:(long long)arg1 presenter:(void *)arg2;
 - (void)loadIfNeededWithPriority:(long long)arg1;
@@ -174,7 +180,7 @@
 - (void)outputMediaDataWillChange:(id)arg1;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)performChanges:(CDUnknownBlockType)arg1 withPresentationContext:(long long)arg2 presenter:(void *)arg3;
-- (void)performFinalCleanup;
+- (id)performFinalCleanup;
 - (unsigned long long)pixelBufferOutputTokenCount;
 - (id)playbackTimeRangeEndBoundaryObserver;
 - (void)prewarmVideoView;
@@ -198,7 +204,6 @@
 - (void)setVideoOutput:(id)arg1;
 - (void)setVolume:(float)arg1 withFade:(BOOL)arg2;
 - (id)videoOutput;
-- (id)videoPlayer;
 
 @end
 

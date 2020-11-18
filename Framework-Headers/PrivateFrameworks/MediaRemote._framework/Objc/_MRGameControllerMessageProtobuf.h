@@ -10,6 +10,7 @@
 
 @class _MRGameControllerButtonsProtobuf, _MRGameControllerDigitizerProtobuf, _MRGameControllerMotionProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRGameControllerMessageProtobuf : PBCodable <NSCopying>
 {
     unsigned long long _controllerID;
@@ -19,23 +20,12 @@
     CDStruct_669c4a63 _has;
 }
 
-@property (strong, nonatomic) _MRGameControllerButtonsProtobuf *buttons; // @synthesize buttons=_buttons;
-@property (nonatomic) unsigned long long controllerID; // @synthesize controllerID=_controllerID;
-@property (strong, nonatomic) _MRGameControllerDigitizerProtobuf *digitizer; // @synthesize digitizer=_digitizer;
-@property (readonly, nonatomic) BOOL hasButtons;
-@property (nonatomic) BOOL hasControllerID;
-@property (readonly, nonatomic) BOOL hasDigitizer;
-@property (readonly, nonatomic) BOOL hasMotion;
-@property (strong, nonatomic) _MRGameControllerMotionProtobuf *motion; // @synthesize motion=_motion;
-
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

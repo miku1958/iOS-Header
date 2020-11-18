@@ -40,6 +40,7 @@
 - (void)_accessibilitySetFirstResponderCoalesceTimer:(id)arg1;
 - (void)_accessibilitySetIOSMacRotors:(id)arg1;
 - (void)_accessibilitySetRemoteElement:(id)arg1;
+- (BOOL)_accessibilityShouldIncludeKeyboardInRemoteSubstituteChildren;
 - (BOOL)_accessibilityShouldUseRemoteElement;
 - (id)_accessibilityUserTestingParent;
 - (id)_accessibilityWindowSections;

@@ -37,6 +37,7 @@
     long long _queryID;
     NSString *_completionString;
     NSArray *_completionAttributes;
+    NSArray *_completionWeights;
     double _currentTime;
     NSArray *_mountPoints;
     NSArray *_scopes;
@@ -51,6 +52,7 @@
 @property (nonatomic) unsigned int completionOptions; // @synthesize completionOptions=_completionOptions;
 @property (nonatomic) long long completionResultCount; // @synthesize completionResultCount=_completionResultCount;
 @property (strong, nonatomic) NSString *completionString; // @synthesize completionString=_completionString;
+@property (strong, nonatomic) NSArray *completionWeights; // @synthesize completionWeights=_completionWeights;
 @property (nonatomic) BOOL counting;
 @property (nonatomic) double currentTime; // @synthesize currentTime=_currentTime;
 @property (strong, nonatomic) NSArray *disableBundles; // @synthesize disableBundles=_disableBundles;

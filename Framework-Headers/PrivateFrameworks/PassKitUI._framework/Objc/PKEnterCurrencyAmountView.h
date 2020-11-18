@@ -14,11 +14,11 @@
 @interface PKEnterCurrencyAmountView : UIView <UITextFieldDelegate>
 {
     UIView *_internalInputAccessoryView;
+    UIColor *_keyboardColor;
     BOOL _showsDecimalPointButton;
     BOOL _enabled;
     BOOL _ignoreIntegralNumber;
     BOOL _clearAmountOnFirstKeyboardInput;
-    BOOL _showDecimalPointButton;
     BOOL _isFirstKeyboardInput;
     UITextField *_amountTextField;
     NSString *_currency;
@@ -48,6 +48,7 @@
 @property (copy, nonatomic) UIFont *currencySymbolFont; // @synthesize currencySymbolFont=_currencySymbolFont;
 @property (strong, nonatomic) NSDecimalNumber *currentAmount;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) struct CGSize defaultKeyboardSize;
 @property (weak, nonatomic) id<PKEnterCurrencyAmountViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
@@ -61,7 +62,6 @@
 @property (nonatomic) struct CGSize lastLayoutBoundsSize; // @synthesize lastLayoutBoundsSize=_lastLayoutBoundsSize;
 @property (strong, nonatomic) PKNumberPadInputView *numberPad; // @synthesize numberPad=_numberPad;
 @property (strong, nonatomic) NSDecimalNumberHandler *roundingBehavior; // @synthesize roundingBehavior=_roundingBehavior;
-@property (nonatomic) BOOL showDecimalPointButton; // @synthesize showDecimalPointButton=_showDecimalPointButton;
 @property (nonatomic) BOOL showsDecimalPointButton; // @synthesize showsDecimalPointButton=_showsDecimalPointButton;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
@@ -77,6 +77,7 @@
 - (id)_formatAmountForDisplay:(id)arg1 alwaysShowDecimalSeparator:(BOOL)arg2 minimumFractionDigits:(unsigned long long)arg3 useGroupingSeparator:(BOOL)arg4;
 - (unsigned long long)_numberOfDecimalPlacesInString:(id)arg1 decimalSeperator:(id)arg2;
 - (void)_updateContent;
+- (void)didMoveToWindow;
 - (void)dismissKeyboard;
 - (id)initWithCurrency:(id)arg1 amount:(id)arg2;
 - (struct CGSize)intrinsicContentSize;

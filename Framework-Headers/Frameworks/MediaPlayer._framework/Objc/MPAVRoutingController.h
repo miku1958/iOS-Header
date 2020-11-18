@@ -68,8 +68,8 @@
 + (id)_iconImageForIdentifier:(id)arg1;
 + (id)_iconImageForRoute:(id)arg1;
 + (id)_iconImageForRoutes:(id)arg1;
-+ (id)_iconImageNameForDeviceComposition:(id)arg1;
-+ (id)_iconImageNameForDeviceSubtypes:(id)arg1;
++ (id)_iconImageNameForClusterRoute:(id)arg1;
++ (id)_iconImageNameForDeviceSubtypes:(id)arg1 route:(id)arg2;
 + (id)_iconNameForRoute:(id)arg1;
 + (id)_sharedSerialQueue;
 + (BOOL)bundleIdRepresentsLongFormVideoContent:(id)arg1;

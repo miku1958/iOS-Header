@@ -52,6 +52,7 @@
 - (struct CGRect)rightViewRectForBounds:(struct CGRect)arg1;
 - (void)setAlignmentBehavior:(long long)arg1 animated:(BOOL)arg2;
 - (void)setFont:(id)arg1;
+- (void)setReturnKeyType:(long long)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGRect)textRectForBounds:(struct CGRect)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

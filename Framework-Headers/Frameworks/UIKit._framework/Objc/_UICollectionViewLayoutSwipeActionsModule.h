@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)swipeActionController:(id)arg1 willBeginSwipeForItemAtIndexPath:(id)arg2;
 - (void)swipeItemAtIndexPath:(id)arg1 direction:(unsigned long long)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)swipeViewManipulatorForSwipeActionController:(id)arg1;
+- (void)teardown;
 - (void)transformCellLayoutAttributes:(id)arg1 isDisappearing:(BOOL)arg2;
 - (void)transformDecorationLayoutAttributes:(id)arg1 isDisappearing:(BOOL)arg2;
 - (void)updateWithUpdateItems:(id)arg1;

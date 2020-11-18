@@ -189,6 +189,7 @@
 @property (strong, nonatomic, setter=_setEmbeddingView:) UIView *_embeddingView; // @synthesize _embeddingView=__embeddingView;
 @property (strong, nonatomic, setter=_setExpectedWindow:) UIWindow *_expectedWindow; // @synthesize _expectedWindow;
 @property (nonatomic, setter=_setFreezeLayoutForOrientationChangeOnDismissal:) BOOL _freezeLayoutForOrientationChangeOnDismissal;
+@property (readonly, nonatomic) BOOL _hasDeepestActionResponder;
 @property (readonly, nonatomic) long long _horizontalSizeClass;
 @property (readonly, nonatomic) BOOL _isDimmingBackground;
 @property (readonly, nonatomic) BOOL _isInSheetPresentation;
@@ -450,7 +451,8 @@
 - (id)_customPresentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (SEL)_customSelectorToCreateChildViewControllerAtIndex:(long long)arg1;
 - (CDUnknownBlockType)_decodeRestorableStateAndReturnContinuationWithCoder:(id)arg1;
-- (id)_deepestUnambiguousResponder;
+- (id)_deepestActionResponder;
+- (id)_deepestPresentedActionResponderOrBlock:(CDUnknownBlockType)arg1;
 - (id)_defaultAnimationController;
 - (struct CGRect)_defaultInitialViewFrame;
 - (id)_definiteTransitionCoordinator;
@@ -505,6 +507,7 @@
 - (void)_handleTapToDismissModalCurl:(id)arg1;
 - (BOOL)_handlesCounterRotationForPresentation;
 - (BOOL)_hasAppeared;
+- (BOOL)_hasDeepestPresentedActionResponderOrBlock:(CDUnknownBlockType)arg1;
 - (BOOL)_hasPreferredInterfaceOrientationForPresentation;
 - (id)_hostApplicationBundleIdentifier;
 - (void)_hostApplicationDidEnterBackground;
@@ -547,7 +550,8 @@
 - (id)_navControllerToCreateManagedSearchPaletteForNavController:(id)arg1;
 - (id)_navigationBarForDragAffordance;
 - (id)_nextResponderIgnoringChildModalViewController:(BOOL)arg1;
-- (id)_nextResponderUsingLookupStrategy:(unsigned long long)arg1;
+- (id)_nextResponderUsingTargetActionStrategyFromChildViewController:(id)arg1 didTraverseToParentViewController:(BOOL *)arg2;
+- (id)_nextResponderUsingTraversalStrategy:(unsigned long long)arg1;
 - (id)_nextViewController;
 - (id)_nextViewControllerForUnwindSegueSearch;
 - (id)_nonModalAncestorViewController;

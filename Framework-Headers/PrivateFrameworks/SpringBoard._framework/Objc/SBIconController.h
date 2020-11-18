@@ -127,7 +127,6 @@
     SBProactiveHomeScreenSuggestionProvider *_proactiveSuggestionProvider;
     NSObject<OS_dispatch_queue> *_accountStoreQueue;
     SBWidgetMetricsServer *_widgetMetricsServer;
-    id<BSInvalidatable> _pageManagementWallpaperScaleAssertion;
     SBBarSwipeAffordanceViewController *_widgetAddSheetAffordanceViewController;
     WGWidgetGroupViewController *_widgetGroupViewController;
     SBHomeScreenOverlayController *_homeScreenOverlayController;
@@ -179,7 +178,6 @@
 @property (readonly, nonatomic) SBHIconImageCache *notificationIconImageCache;
 @property (readonly, nonatomic, getter=_openFolderController) SBFolderController *openFolderController;
 @property (readonly, nonatomic) PTSingleTestRecipe *organizeInFoldersTestRecipe; // @synthesize organizeInFoldersTestRecipe=_organizeInFoldersTestRecipe;
-@property (strong, nonatomic) id<BSInvalidatable> pageManagementWallpaperScaleAssertion; // @synthesize pageManagementWallpaperScaleAssertion=_pageManagementWallpaperScaleAssertion;
 @property (readonly, nonatomic) SBMainDisplayPolicyAggregator *policyAggregator;
 @property (strong, nonatomic) NSTimer *popoverDelayTimer; // @synthesize popoverDelayTimer=_popoverDelayTimer;
 @property (strong, nonatomic) SBProactiveHomeScreenSuggestionProvider *proactiveSuggestionProvider; // @synthesize proactiveSuggestionProvider=_proactiveSuggestionProvider;
@@ -274,6 +272,7 @@
 - (id)_policyAggregator;
 - (id)_ppt_currentHomescreenState;
 - (void)_ppt_setHomescreenState:(id)arg1;
+- (void)_prepareDefaultTodayLayoutIfNecessary;
 - (void)_primaryAppleAcountDidChange:(id)arg1;
 - (void)_relinquishStatusBarContentAssertion;
 - (void)_rootFolderDidChange;
@@ -293,6 +292,8 @@
 - (void)_storeAccountDidChange:(id)arg1;
 - (struct CGSize)_suggestedTodayViewSizeForBounds:(struct CGRect)arg1;
 - (void)_teardownDeweyTestConfigurations;
+- (void)_tryToPrepareDynamicDefaultTodayLayout;
+- (BOOL)_tryToPrepareNonDynamicDefaultTodayLayout;
 - (void)_updateEnabledBadgesSetWithSections:(id)arg1;
 - (void)_updateIconModelStore;
 - (void)_updateStatusBarContentAssertion;
@@ -386,6 +387,7 @@
 - (void)iconManager:(id)arg1 didCloseFolder:(id)arg2;
 - (void)iconManager:(id)arg1 didCreateRootFolderController:(id)arg2;
 - (void)iconManager:(id)arg1 didCreateRootViewController:(id)arg2;
+- (void)iconManager:(id)arg1 didDismissPageManagementWithContext:(id)arg2;
 - (void)iconManager:(id)arg1 didEndIconDragWithUniqueIdentifier:(id)arg2 numberOfDraggedItems:(unsigned long long)arg3;
 - (void)iconManager:(id)arg1 didOpenFolder:(id)arg2;
 - (void)iconManager:(id)arg1 didReceiveTapOnLaunchDisabledIconView:(id)arg2;
@@ -448,11 +450,11 @@
 - (void)iconManager:(id)arg1 willCloseFolderController:(id)arg2;
 - (void)iconManager:(id)arg1 willDestroyRootFolderController:(id)arg2;
 - (void)iconManager:(id)arg1 willDestroyRootViewController:(id)arg2;
-- (void)iconManager:(id)arg1 willDismissPageManagementUsingAnimator:(id)arg2;
+- (void)iconManager:(id)arg1 willDismissPageManagementUsingAnimator:(id)arg2 context:(id)arg3;
 - (void)iconManager:(id)arg1 willOpenFolder:(id)arg2;
 - (void)iconManager:(id)arg1 willOpenFolderController:(id)arg2;
 - (void)iconManager:(id)arg1 willPrepareIconViewForLaunch:(id)arg2;
-- (void)iconManager:(id)arg1 willPresentPageManagementUsingAnimator:(id)arg2;
+- (void)iconManager:(id)arg1 willPresentPageManagementUsingAnimator:(id)arg2 context:(id)arg3;
 - (void)iconManager:(id)arg1 willRemoveFakeStatusBar:(id)arg2 forFolderController:(id)arg3;
 - (void)iconManager:(id)arg1 willRemoveViewControllerForIdentifier:(id)arg2;
 - (void)iconManager:(id)arg1 willUseIconImageCache:(id)arg2;
@@ -460,7 +462,6 @@
 - (BOOL)iconManagerCanBeginIconDrags:(id)arg1;
 - (BOOL)iconManagerCanSaveIconState:(id)arg1;
 - (BOOL)iconManagerCanUseSeparateWindowForRotation:(id)arg1;
-- (void)iconManagerDidDismissPageManagement:(id)arg1;
 - (void)iconManagerDidDismissWidgetEditing:(id)arg1;
 - (void)iconManagerDidFinishInstallForIcon:(id)arg1;
 - (void)iconManagerDidNoteIconStateChangedExternally:(id)arg1;

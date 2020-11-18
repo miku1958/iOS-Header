@@ -14,6 +14,8 @@
     PKTableHeaderView *_headerView;
     NSArray *_webServices;
     PKAddPaymentPassRequestConfiguration *_configuration;
+    BOOL _viewHasAppeared;
+    BOOL _sentViewHasAppearedEvent;
     id<PKAddPaymentPassDevicePickerDelegate> _delegate;
 }
 
@@ -25,6 +27,7 @@
 - (id)initWithPaymentWebServices:(id)arg1 configuration:(id)arg2;
 - (id)initWithStyle:(long long)arg1;
 - (void)loadView;
+- (void)noteNavigationUserInterfaceDidDisappear;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)reloadContentFromWebServices;
 - (void)scrollViewDidScroll:(id)arg1;
@@ -33,6 +36,8 @@
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 
 @end

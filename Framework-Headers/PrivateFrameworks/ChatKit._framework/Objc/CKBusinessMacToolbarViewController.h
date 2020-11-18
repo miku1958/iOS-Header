@@ -26,9 +26,12 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (struct CGRect)_detailsPopoverFrame;
 - (void)_handleAddressBookPartialChange:(id)arg1;
-- (void)_updateBannerImage;
+- (void)_updateBannerImageData;
+- (void)_updateBrandColors;
+- (void)_updateFallbackTitle;
 - (void)dealloc;
 - (id)initWithConversation:(id)arg1 showingInStandAloneWindow:(BOOL)arg2;
+- (void)loadView;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;

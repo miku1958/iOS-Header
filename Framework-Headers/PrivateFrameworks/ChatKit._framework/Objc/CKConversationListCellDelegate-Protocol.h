@@ -9,6 +9,7 @@
 @class CKConversation, CKConversationListCell, UITableViewCell;
 
 @protocol CKConversationListCellDelegate <NSObject>
+- (double)widthForDeterminingAvatarVisibility;
 
 @optional
 - (void)avatarHeaderWasTappedForConversation:(CKConversation *)arg1 inCell:(CKConversationListCell *)arg2;

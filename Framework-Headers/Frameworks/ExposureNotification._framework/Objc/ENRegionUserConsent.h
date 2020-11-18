@@ -36,6 +36,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithConsentVersion:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)updatedConsent:(id)arg1;
 
 @end
 

@@ -25,9 +25,11 @@
     BOOL _isMuted;
     BOOL _isPlayerLoadingAllowed;
     BOOL _isActivated;
+    BOOL _shouldPreloadVideoContent;
     BOOL __isUpdatingAudioSession;
     BOOL _shouldLoadVideoSession;
     BOOL _shouldRegisterForPlayback;
+    BOOL _shouldFadeNextVolumeChange;
     float _volume;
     unsigned long long _activityCoordinatorQueuePosition;
     NSHashTable *_timeObservers;
@@ -77,7 +79,9 @@
 @property (readonly, nonatomic) long long playState;
 @property (readonly, nonatomic) PXActivityCoordinator *playbackCoordinator; // @synthesize playbackCoordinator=_playbackCoordinator;
 @property (strong, nonatomic, setter=_setPlayerItem:) AVPlayerItem *playerItem; // @synthesize playerItem=_playerItem;
+@property (nonatomic) BOOL shouldFadeNextVolumeChange; // @synthesize shouldFadeNextVolumeChange=_shouldFadeNextVolumeChange;
 @property (nonatomic) BOOL shouldLoadVideoSession; // @synthesize shouldLoadVideoSession=_shouldLoadVideoSession;
+@property (nonatomic) BOOL shouldPreloadVideoContent; // @synthesize shouldPreloadVideoContent=_shouldPreloadVideoContent;
 @property (nonatomic) BOOL shouldRegisterForPlayback; // @synthesize shouldRegisterForPlayback=_shouldRegisterForPlayback;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSHashTable *timeObservers; // @synthesize timeObservers=_timeObservers;
@@ -86,10 +90,11 @@
 @property (nonatomic) float volume; // @synthesize volume=_volume;
 
 - (void).cxx_destruct;
-- (void)_handleDidBecomeActiveNotification:(id)arg1;
+- (void)_handleSceneDidActivateNotification:(id)arg1;
+- (void)_handleSceneWillDeactivateNotification:(id)arg1;
 - (void)_handleShouldReloadAssetMediaNotification:(id)arg1;
-- (void)_handleWillResignActiveNotification:(id)arg1;
 - (void)_performPendingSeekIfNeeded;
+- (void)_setVideoSessionVolume:(id)arg1;
 - (void)_updateAudioSessionCategory;
 - (void)_updatePlayerLoadingAllowedWithUpdateID:(unsigned long long)arg1;
 - (void)_updatePlayerVolume;

@@ -8,15 +8,15 @@
 
 #import <Silex/SXVideoProviding-Protocol.h>
 
-@class NSString, NSURL, SVTimeline;
-@protocol SVVideoMetadata, SXAnalyticsReporting;
+@class NSString, NSURL, SXTimeline;
+@protocol SXAnalyticsReporting, SXVideoMetadata;
 
 @interface SXVideoProvider : NSObject <SXVideoProviding>
 {
     NSURL *_URL;
     id<SXAnalyticsReporting> _analyticsReporter;
-    id<SVVideoMetadata> _metadata;
-    SVTimeline *_timeline;
+    id<SXVideoMetadata> _metadata;
+    SXTimeline *_timeline;
     double _pausedAtTime;
     NSString *_mediaIdentifier;
     unsigned long long _playMethod;
@@ -29,11 +29,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double impressionThreshold;
 @property (readonly, nonatomic) NSString *mediaIdentifier; // @synthesize mediaIdentifier=_mediaIdentifier;
-@property (weak, nonatomic) id<SVVideoMetadata> metadata; // @synthesize metadata=_metadata;
+@property (weak, nonatomic) id<SXVideoMetadata> metadata; // @synthesize metadata=_metadata;
 @property (nonatomic) double pausedAtTime; // @synthesize pausedAtTime=_pausedAtTime;
 @property (nonatomic) unsigned long long playMethod; // @synthesize playMethod=_playMethod;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) SVTimeline *timeline; // @synthesize timeline=_timeline;
+@property (readonly, nonatomic) SXTimeline *timeline; // @synthesize timeline=_timeline;
 
 - (void).cxx_destruct;
 - (id)initWithURL:(id)arg1;

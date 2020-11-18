@@ -105,6 +105,7 @@
 + (id)signpostLog;
 + (id)userHandle;
 - (void).cxx_destruct;
+- (void)_clearOrphanedSearchableMessagesFromDatabase;
 - (void)_coalescingTimerFired;
 - (id)_consumeBatchOfSize:(unsigned long long)arg1;
 - (unsigned long long)_countOfItemsInPendingQueues;

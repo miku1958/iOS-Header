@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *name;
     MISSING_TYPE *startDate;
+    MISSING_TYPE *count;
 }
 
 @property (nonatomic, readonly) NSString *name;

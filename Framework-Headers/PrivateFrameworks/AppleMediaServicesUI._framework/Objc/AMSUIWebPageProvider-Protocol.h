@@ -6,13 +6,15 @@
 
 #import <AppleMediaServicesUI/AMSUIWebModelInterface-Protocol.h>
 
-@class AMSUIWebNavigationBarModel, UIViewController;
+@class AMSUIWebNavigationBarModel, NSString, UIViewController;
 @protocol AMSUIWebPagePresenter;
 
 @protocol AMSUIWebPageProvider <AMSUIWebModelInterface>
 
+@property (readonly, nonatomic) NSString *backgroundColor;
 @property (readonly, nonatomic) BOOL disableReappearPlaceholder;
 @property (readonly, nonatomic) AMSUIWebNavigationBarModel *navigationBar;
+@property (readonly, nonatomic) struct CGSize windowSize;
 
 - (UIViewController<AMSUIWebPagePresenter> *)createViewController;
 @end

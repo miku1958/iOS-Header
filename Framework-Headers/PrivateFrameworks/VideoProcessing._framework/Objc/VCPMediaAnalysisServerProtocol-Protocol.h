@@ -16,6 +16,7 @@
 - (void)requestClusterCacheValidation:(int)arg1 withPhotoLibraryURL:(NSURL *)arg2 andReply:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)requestFaceCandidatesforKeyFace:(int)arg1 withPersonsWithLocalIdentifiers:(NSArray *)arg2 andPhotoLibraryURL:(NSURL *)arg3 andReply:(void (^)(NSArray *, NSError *))arg4;
 - (void)requestLibraryProcessing:(int)arg1 withTaskID:(unsigned long long)arg2 forPhotoLibraryURL:(NSURL *)arg3 withOptions:(NSDictionary *)arg4 andReply:(void (^)(NSError *))arg5;
+- (void)requestPersonPreferenceForPhotoLibraryURL:(NSURL *)arg1 andReply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)requestPersonPromoterStatus:(int)arg1 withAdvancedFlag:(BOOL)arg2 andPhotoLibraryURL:(NSURL *)arg3 andReply:(void (^)(NSDictionary *, NSError *))arg4;
 - (void)requestRebuildPersons:(int)arg1 withLocalIdentifiers:(NSArray *)arg2 andPhotoLibraryURL:(NSURL *)arg3 andReply:(void (^)(BOOL, NSError *))arg4;
 - (void)requestReclusterFaces:(int)arg1 withPhotoLibraryURL:(NSURL *)arg2 andReply:(void (^)(BOOL, NSError *))arg3;
@@ -25,5 +26,6 @@
 - (void)requestSuggestedPersons:(int)arg1 withPersonWithLocalIdentifier:(NSString *)arg2 toBeConfirmedPersonSuggestions:(NSArray *)arg3 toBeRejectedPersonSuggestions:(NSArray *)arg4 andPhotoLibraryURL:(NSURL *)arg5 andReply:(void (^)(NSArray *, NSError *))arg6;
 - (void)requestURLAssetAnalysis:(int)arg1 forAssetWithResourcePaths:(NSArray *)arg2 withOptions:(NSDictionary *)arg3 analysisTypes:(unsigned long long)arg4 sandboxTokens:(NSArray *)arg5 withReply:(void (^)(NSDictionary *, NSError *))arg6;
 - (void)requestUpdateKeyFacesOfPersons:(int)arg1 withLocalIdentifiers:(NSArray *)arg2 andForceUpdate:(BOOL)arg3 andPhotoLibraryURL:(NSURL *)arg4 andReply:(void (^)(BOOL, NSError *))arg5;
+- (void)requestVIPModelStorageFilepathForPhotoLibraryURL:(NSURL *)arg1 andReply:(void (^)(NSString *, NSError *))arg2;
 @end
 

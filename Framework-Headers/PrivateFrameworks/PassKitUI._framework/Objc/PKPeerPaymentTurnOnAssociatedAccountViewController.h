@@ -7,20 +7,21 @@
 #import <UIKit/UITableViewController.h>
 
 @class PKFamilyMember;
-@protocol PKPeerPaymentAssociatedAccountSetupDelegate;
+@protocol PKPassLibraryDataProvider, PKPeerPaymentAssociatedAccountSetupDelegate;
 
 @interface PKPeerPaymentTurnOnAssociatedAccountViewController : UITableViewController
 {
     PKFamilyMember *_familyMember;
     PKFamilyMember *_viewer;
     long long _context;
+    id<PKPassLibraryDataProvider> _passLibraryDataProvider;
     id<PKPeerPaymentAssociatedAccountSetupDelegate> _delegate;
 }
 
 @property (weak, nonatomic) id<PKPeerPaymentAssociatedAccountSetupDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
-- (id)initWithFamilyMember:(id)arg1 viewer:(id)arg2 delegate:(id)arg3 context:(long long)arg4;
+- (id)initWithFamilyMember:(id)arg1 viewer:(id)arg2 delegate:(id)arg3 passLibraryDataProvider:(id)arg4 context:(long long)arg5;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

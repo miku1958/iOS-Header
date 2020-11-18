@@ -9,7 +9,8 @@
 #import <NewsAnalytics/NSSNewsAnalyticsSessionManagerObserving-Protocol.h>
 
 @interface _TtC13NewsAnalytics15SessionObserver (NewsAnalytics4) <NSSNewsAnalyticsSessionManagerObserving>
-- (void)sessionDidStartWithSessionID:(id)arg1;
-- (void)sessionWillEnd;
+- (void)sessionDidStartWithSessionID:(id)arg1 sourceApplication:(id)arg2;
+- (void)sessionWillEndWithEndReason:(id)arg1;
+- (void)sessionWillResignActive;
 @end
 

@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityFKAShouldProcessChildren;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (BOOL)_accessibilityUpdatesSwitchMenu;
 - (id)_accessibilityUserTestingChildren;
 - (void)_axMarkupMonthSelector;
 - (void)_setupViewHierarchy;

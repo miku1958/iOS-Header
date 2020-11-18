@@ -6,7 +6,6 @@
 
 #import <UIKit/UINavigationController.h>
 
-__attribute__((visibility("hidden")))
 @interface _TtC5TeaUI25DebugNavigationController : UINavigationController
 {
 }

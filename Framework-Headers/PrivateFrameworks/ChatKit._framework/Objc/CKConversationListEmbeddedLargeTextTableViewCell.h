@@ -13,7 +13,6 @@
 
 @interface CKConversationListEmbeddedLargeTextTableViewCell : CKConversationListLargeTextCell <CKConversationListEmbeddedTableViewCellProtocol>
 {
-    double _widthForDeterminingAvatarVisibility;
     struct UIEdgeInsets _marginInsets;
     struct CGRect _containerBounds;
 }
@@ -26,7 +25,6 @@
 @property (nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets=_marginInsets;
 @property (nonatomic) BOOL shouldHidePreviewSummary;
 @property (readonly) Class superclass;
-@property (nonatomic) double widthForDeterminingAvatarVisibility; // @synthesize widthForDeterminingAvatarVisibility=_widthForDeterminingAvatarVisibility;
 
 + (id)reuseIdentifier;
 - (id)avatarView;

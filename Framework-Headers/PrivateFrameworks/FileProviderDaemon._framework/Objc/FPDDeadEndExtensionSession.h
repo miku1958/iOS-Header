@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 
 - (void)asyncUnregisterLifetimeExtensionForObject:(id)arg1;
 - (void)dumpStateTo:(id)arg1;
-- (id)existingFileProviderProxyWithTimeout:(BOOL)arg1 pid:(int)arg2;
+- (id)existingFileProviderProxyWithTimeout:(BOOL)arg1 onlyAlreadyLifetimeExtended:(BOOL)arg2 pid:(int)arg3;
 - (void)invalidate;
 - (id)newFileProviderProxyWithPID:(int)arg1;
 - (id)newFileProviderProxyWithTimeout:(BOOL)arg1 pid:(int)arg2;

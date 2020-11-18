@@ -46,7 +46,6 @@
 - (void)obliterateShortcuts:(void (^)(NSError *))arg1;
 - (void)refreshTriggerWithIdentifier:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)requestDataMigration:(void (^)(BOOL, NSError *))arg1;
-- (void)requestSyncToWatchWithForceReset:(BOOL)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)resetDefaultShortcutFlagsWithCompletion:(void (^)(NSError *))arg1;
 - (void)resumeWorkflowFromContext:(WFWorkflowRunningContext *)arg1 presentationMode:(unsigned long long)arg2 completion:(void (^)(NSError *, BOOL))arg3;
 - (void)runWorkflowWithRequest:(WFWorkflowRunRequest *)arg1 context:(WFWorkflowRunningContext *)arg2 completion:(void (^)(NSError *, BOOL))arg3;

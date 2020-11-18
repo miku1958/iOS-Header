@@ -27,7 +27,6 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) struct _SXConvertibleValue top; // @synthesize top=_top;
 
-- (id)initWithTop:(struct _SXConvertibleValue)arg1 bottom:(struct _SXConvertibleValue)arg2;
 
 @end
 

@@ -19,9 +19,9 @@
     PSSpecifier *_onHomeScreenShowAppSpecifier;
     PSSpecifier *_onHomeScreenSuggestAppSpecifier;
     PSSpecifier *_onHomeScreenShowContentSpecifier;
-    PSSpecifier *_onHomeScreenSuggestShortcutsSpecifier;
+    PSSpecifier *_onHomeScreenShowSuggestionsSpecifier;
     PSSpecifier *_onLockScreenGroup;
-    PSSpecifier *_onLockScreenShowSiriSuggestionsSpecifier;
+    PSSpecifier *_onLockScreenShowSuggestionsSpecifier;
 }
 
 - (void).cxx_destruct;
@@ -38,10 +38,9 @@
 - (id)_loadDisabledSuggestAppsSet;
 - (void)_saveOnHomeScreenShowAppEnabled:(BOOL)arg1;
 - (void)_saveOnHomeScreenShowContentEnabled:(BOOL)arg1;
+- (void)_saveOnHomeScreenShowSuggestionsEnabled:(BOOL)arg1;
 - (void)_saveOnHomeScreenSuggestAppEnabled:(BOOL)arg1;
-- (void)_saveOnHomeScreenSuggestShortcutsEnabled:(BOOL)arg1;
-- (void)_saveOnLockScreenShowSiriSuggestionsEnabled:(BOOL)arg1;
-- (BOOL)_showLockscreenGroup;
+- (void)_saveOnLockScreenShowSuggestionsEnabled:(BOOL)arg1;
 - (id)_siriSuggestionsClients;
 - (id)_watchBundleToMirrorWithBundleId:(id)arg1;
 - (id)askSiriUseWithAskSiriEnabled:(id)arg1;
@@ -49,18 +48,18 @@
 - (id)inAppShowSiriSuggestionsEnabled:(id)arg1;
 - (id)onHomeScreenShowAppEnabled:(id)arg1;
 - (id)onHomeScreenShowContentEnabled:(id)arg1;
+- (id)onHomeScreenShowSuggestionsEnabled:(id)arg1;
 - (id)onHomeScreenSuggestAppEnabled:(id)arg1;
-- (id)onHomeScreenSuggestShortcutsEnabled:(id)arg1;
-- (id)onLockScreenShowSiriSuggestionsEnabled:(id)arg1;
+- (id)onLockScreenShowSuggestionsEnabled:(id)arg1;
 - (void)setAskSiriUseWithAskSiriEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setInAppLearnFromAppEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setInAppShowSiriSuggestionsEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setNanoInAppShowSiriSuggestionsEnabled:(BOOL)arg1 bundleId:(id)arg2;
 - (void)setOnHomeScreenShowAppEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setOnHomeScreenShowContentEnabled:(id)arg1 specifier:(id)arg2;
+- (void)setOnHomeScreenShowSuggestionsEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setOnHomeScreenSuggestAppEnabled:(id)arg1 specifier:(id)arg2;
-- (void)setOnHomeScreenSuggestShortcutsEnabled:(id)arg1 specifier:(id)arg2;
-- (void)setOnLockScreenShowSiriSuggestionsEnabled:(id)arg1 specifier:(id)arg2;
+- (void)setOnLockScreenShowSuggestionsEnabled:(id)arg1 specifier:(id)arg2;
 - (id)specifiers;
 - (void)viewWillAppear:(BOOL)arg1;
 

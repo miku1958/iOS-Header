@@ -13,8 +13,8 @@
     MISSING_TYPE *delegate;
     MISSING_TYPE *group;
     MISSING_TYPE *cursor;
-    MISSING_TYPE *feedContext;
-    MISSING_TYPE *paidBundleConfigManager;
+    MISSING_TYPE *myMagazinesModule;
+    MISSING_TYPE *pluginManager;
     MISSING_TYPE *subscriptionService;
     MISSING_TYPE *readingHistory;
     MISSING_TYPE *readingList;

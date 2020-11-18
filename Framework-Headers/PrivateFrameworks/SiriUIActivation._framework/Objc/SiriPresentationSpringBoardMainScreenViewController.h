@@ -27,7 +27,6 @@
 @property (readonly, nonatomic) BOOL tapsOutsideContentDismissAssistant; // @synthesize tapsOutsideContentDismissAssistant=_tapsOutsideContentDismissAssistant;
 
 - (BOOL)_canShowWhileLocked;
-- (void)_commonInit;
 - (void)hasContentAtPoint:(struct CGPoint)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithIdentifier:(long long)arg1;
@@ -35,6 +34,7 @@
 - (void)loadView;
 - (void)requestPasscodeUnlockWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestStatusBarVisible:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)resetGestureBehaviors;
 - (void)setDockFrame:(struct CGRect)arg1;
 - (void)setFluidDismissalState:(id)arg1;
 - (void)setShareHomeGesture:(BOOL)arg1;

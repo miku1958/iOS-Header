@@ -13,7 +13,8 @@
     id _subscriber;
     NSURL *_fileURL;
     BOOL _shouldStopAccessingURL;
-    NSObservation *_observation;
+    NSObservation *_totalUnitCountObservation;
+    NSObservation *_fractionCompletedObservation;
     BOOL _didSetupParentProgress;
     BOOL _updateFileCount;
 }

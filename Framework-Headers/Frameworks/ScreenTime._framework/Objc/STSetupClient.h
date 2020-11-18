@@ -18,6 +18,7 @@
 + (id)_newConnection;
 - (void).cxx_destruct;
 - (BOOL)applyUpdatedConfiguration:(id)arg1 error:(id *)arg2;
+- (void)collectPasscodeFromUserWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)currentConfigurationForUser:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)init;

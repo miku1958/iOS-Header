@@ -14,6 +14,7 @@
     MISSING_TYPE *publisherLogoImageCache;
     MISSING_TYPE *formatImageCache;
     MISSING_TYPE *rendererEnvironment;
+    MISSING_TYPE *lastRendererOptions;
 }
 
 @end

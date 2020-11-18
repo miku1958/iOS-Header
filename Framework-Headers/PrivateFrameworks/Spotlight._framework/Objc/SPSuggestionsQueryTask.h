@@ -10,12 +10,12 @@
 {
 }
 
+- (id)_allowListedTopResultFromSection:(id)arg1;
 - (id)_appResultSection;
 - (id)_makeSuggestionsSectionFromSuggestions:(id)arg1 andResultSection:(id)arg2 withSectionBundleIdentifier:(id)arg3;
 - (id)_newSuggestionSection;
 - (id)_originalTopResultFromSections:(id)arg1;
 - (id)_topResultOnlySectionFrom:(id)arg1;
-- (id)_whiteListedTopResultFromSection:(id)arg1;
 - (void)addAsYouTypeRelatedSearchResultToSections:(id)arg1 withRelatedSearchSection:(id)arg2;
 - (id)bundleIdentifiersForHiddenSections;
 - (void)clearInternal:(int)arg1 invalidate:(BOOL)arg2;

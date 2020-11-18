@@ -61,6 +61,7 @@
 - (void)nowPlayingManager:(id)arg1 didUpdateSnapshot:(id)arg2;
 - (id)preferredFocusEnvironments;
 - (void)reloadItems:(id)arg1;
+- (void)reloadTemplate:(id)arg1;
 - (BOOL)restoresFocusAfterTransition;
 - (void)setButton:(id)arg1 enabled:(BOOL)arg2;
 - (void)setButton:(id)arg1 hidden:(BOOL)arg2;
@@ -69,7 +70,6 @@
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
-- (void)updateSections:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

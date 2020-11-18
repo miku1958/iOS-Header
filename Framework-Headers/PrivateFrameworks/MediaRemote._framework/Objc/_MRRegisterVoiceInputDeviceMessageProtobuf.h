@@ -10,22 +10,18 @@
 
 @class _MRVoiceInputDeviceDescriptorProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRRegisterVoiceInputDeviceMessageProtobuf : PBCodable <NSCopying>
 {
     _MRVoiceInputDeviceDescriptorProtobuf *_descriptor;
 }
 
-@property (strong, nonatomic) _MRVoiceInputDeviceDescriptorProtobuf *descriptor; // @synthesize descriptor=_descriptor;
-@property (readonly, nonatomic) BOOL hasDescriptor;
-
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

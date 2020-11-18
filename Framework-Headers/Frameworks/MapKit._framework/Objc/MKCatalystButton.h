@@ -32,12 +32,14 @@
 @property (strong, nonatomic) NSAttributedString *title; // @synthesize title=_title;
 
 + (id)catalystButton;
++ (struct CGColor *)extraShadowLayerBackgroundColorWithDarkMode:(BOOL)arg1 isbuttonEnabled:(BOOL)arg2;
 + (id)titleFont;
 - (void).cxx_destruct;
 - (id)_attributedStringForSubTitle:(id)arg1 controlState:(unsigned long long)arg2;
 - (id)_attributedStringForTitle:(id)arg1 controlState:(unsigned long long)arg2;
 - (id)_attributedStringWithTitle:(id)arg1 subtitle:(id)arg2 controlState:(unsigned long long)arg3;
 - (void)_updateColors;
+- (void)applyBorder:(BOOL)arg1;
 - (void)buttonSelected:(id)arg1;
 - (void)didMoveToSuperview;
 - (struct CGSize)intrinsicContentSize;

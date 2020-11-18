@@ -6,7 +6,7 @@
 
 #import <MediaPlayer/MPAVRoutingDataSource.h>
 
-@class AVRoutingSessionManager, MPAVEndpointRoute, MPMRAVOutputContextWrapper, NSArray, NSObject, NSString;
+@class AVRoutingSessionManager, MPAVEndpointRoute, MPMRAVOutputContextWrapper, MRAVRoutingDiscoverySessionConfiguration, NSArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MPAVOutputDeviceRoutingDataSource : MPAVRoutingDataSource
@@ -20,6 +20,8 @@
     NSArray *_outputDeviceRoutes;
     BOOL _shouldSourceOutputDevicesFromAVODDS;
     AVRoutingSessionManager *_routingSessionManager;
+    BOOL _detachesRoutesToGroup;
+    BOOL _supportsQueueHandoff;
     BOOL _supportsRoutePrediction;
     MPMRAVOutputContextWrapper *_applicationOutputContext;
     MPAVEndpointRoute *_endpointRoute;
@@ -27,10 +29,13 @@
 }
 
 @property (strong, nonatomic) MPMRAVOutputContextWrapper *applicationOutputContext; // @synthesize applicationOutputContext=_applicationOutputContext;
+@property (nonatomic) BOOL detachesRoutesToGroup; // @synthesize detachesRoutesToGroup=_detachesRoutesToGroup;
+@property (readonly, nonatomic) MRAVRoutingDiscoverySessionConfiguration *discoverySessionConfiguration;
 @property (strong, nonatomic) MPAVEndpointRoute *endpointRoute; // @synthesize endpointRoute=_endpointRoute;
 @property (strong, nonatomic) NSString *initiator; // @synthesize initiator=_initiator;
 @property (copy, nonatomic) NSString *routingContextUID;
 @property (nonatomic) BOOL supportsMultipleSelection; // @synthesize supportsMultipleSelection=_supportsMultipleSelection;
+@property (nonatomic) BOOL supportsQueueHandoff; // @synthesize supportsQueueHandoff=_supportsQueueHandoff;
 @property (nonatomic) BOOL supportsRoutePrediction; // @synthesize supportsRoutePrediction=_supportsRoutePrediction;
 
 + (id)_globalAudioSessionLock;
@@ -42,9 +47,11 @@
 - (void)_registerNotifications;
 - (void)_routeStatusDidChangeNotification:(id)arg1;
 - (void)_setShouldSourceOutputDevicesFromAVODDS:(BOOL)arg1;
+- (BOOL)_shouldDetachOutputDevicesToGroup:(id)arg1;
 - (void)_unregisterNotifications;
 - (void)addRouteToGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addRoutesToGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)createGroupFromOutputDevices:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (BOOL)devicePresenceDetected;
 - (long long)discoveryMode;

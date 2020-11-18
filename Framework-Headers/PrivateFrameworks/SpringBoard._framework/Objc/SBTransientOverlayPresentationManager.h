@@ -46,6 +46,7 @@
     id<SBTransientOverlayPresentationManagerDelegate> _delegate;
 }
 
+@property (readonly, nonatomic) BOOL activePresentationPreventsDragAndDrop;
 @property (strong, nonatomic) SBBannerManager *bannerManager; // @synthesize bannerManager=_bannerManager;
 @property (readonly, nonatomic) BOOL canHandleButtonEvents;
 @property (strong, nonatomic) SBCoverSheetPresentationManager *coverSheetPresentationManager; // @synthesize coverSheetPresentationManager=_coverSheetPresentationManager;
@@ -97,6 +98,7 @@
 - (void)_updateStatusBarWithCurrentExternalStatusBarSettings:(id)arg1 animated:(BOOL)arg2;
 - (void)_updateWindowHitTestingForEntity:(id)arg1;
 - (double)_windowLevelForEntity:(id)arg1;
+- (void)_windowedAccessoryDidAttachOrDetach:(id)arg1;
 - (id)coordinatorRequestedIdleTimerBehavior:(id)arg1;
 - (void)dealloc;
 - (long long)defaultPreferredInterfaceOrientationForPresentationForTransientOverlayViewController:(id)arg1;

@@ -15,7 +15,6 @@
 @property (weak, nonatomic) NSObject<CKConversationListCellDelegate> *delegate;
 @property (nonatomic) struct UIEdgeInsets marginInsets;
 @property (nonatomic) BOOL shouldHidePreviewSummary;
-@property (nonatomic) double widthForDeterminingAvatarVisibility;
 
 - (CKAvatarView *)avatarView;
 - (BOOL)avatarView:(CKAvatarView *)arg1 shouldShowContact:(CNContact *)arg2;

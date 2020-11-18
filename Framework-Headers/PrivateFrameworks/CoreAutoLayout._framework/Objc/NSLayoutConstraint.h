@@ -93,6 +93,7 @@
 - (BOOL)_isIBPrototypingLayoutConstraint;
 - (BOOL)_lowerIntoExpression:(id)arg1 reportingConstantIsRounded:(BOOL *)arg2;
 - (BOOL)_loweredConstantIsRounded;
+- (id)_loweredExpression;
 - (id)_markerAndPositiveExtraVar;
 - (BOOL)_nsib_isRedundant;
 - (BOOL)_nsib_isRedundantInEngine:(id)arg1;

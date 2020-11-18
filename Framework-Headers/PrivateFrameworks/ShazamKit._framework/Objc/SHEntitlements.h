@@ -14,8 +14,10 @@
     BOOL _isEntitledForRemoteRecognition;
     BOOL _isEntitledForExternalAudioRecording;
     BOOL _isEntitledForInternalAudioRecording;
+    BOOL _isEntitledForControlCenterModuleAccess;
 }
 
+@property (readonly, nonatomic) BOOL isEntitledForControlCenterModuleAccess; // @synthesize isEntitledForControlCenterModuleAccess=_isEntitledForControlCenterModuleAccess;
 @property (readonly, nonatomic) BOOL isEntitledForExternalAudioRecording; // @synthesize isEntitledForExternalAudioRecording=_isEntitledForExternalAudioRecording;
 @property (readonly, nonatomic) BOOL isEntitledForInternalAudioRecording; // @synthesize isEntitledForInternalAudioRecording=_isEntitledForInternalAudioRecording;
 @property (readonly, nonatomic) BOOL isEntitledForMicrophone; // @synthesize isEntitledForMicrophone=_isEntitledForMicrophone;

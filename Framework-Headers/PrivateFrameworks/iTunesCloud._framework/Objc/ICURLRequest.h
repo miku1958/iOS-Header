@@ -8,7 +8,7 @@
 
 #import <iTunesCloud/NSProgressReporting-Protocol.h>
 
-@class ICRequestContext, ICURLResponseHandler, NSData, NSDictionary, NSError, NSMutableArray, NSMutableData, NSMutableDictionary, NSProgress, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSessionTask, NSURLSessionTaskTransactionMetrics;
+@class ICRequestContext, ICURLPerformanceMetrics, ICURLResponseHandler, NSData, NSDictionary, NSError, NSMutableArray, NSMutableData, NSMutableDictionary, NSProgress, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSessionTask;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface ICURLRequest : NSObject <NSProgressReporting>
@@ -42,7 +42,7 @@
     double _startTime;
     double _lastUpdateTime;
     double _lastProgressUpdateTime;
-    NSURLSessionTaskTransactionMetrics *_transactionMetrics;
+    ICURLPerformanceMetrics *_performanceMetrics;
     CDUnknownBlockType _completionHandler;
 }
 
@@ -58,6 +58,7 @@
 @property (nonatomic) double lastProgressUpdateTime; // @synthesize lastProgressUpdateTime=_lastProgressUpdateTime;
 @property (nonatomic) double lastUpdateTime; // @synthesize lastUpdateTime=_lastUpdateTime;
 @property (nonatomic) unsigned long long maxRetryCount;
+@property (strong, nonatomic) ICURLPerformanceMetrics *performanceMetrics; // @synthesize performanceMetrics=_performanceMetrics;
 @property (nonatomic) BOOL prioritize; // @synthesize prioritize=_prioritize;
 @property (strong, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property (nonatomic) unsigned long long redirectCount; // @synthesize redirectCount=_redirectCount;
@@ -73,7 +74,6 @@
 @property (nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSURLSessionTask *task; // @synthesize task=_task;
-@property (strong, nonatomic) NSURLSessionTaskTransactionMetrics *transactionMetrics; // @synthesize transactionMetrics=_transactionMetrics;
 @property (nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, nonatomic) NSURLRequest *urlRequest; // @synthesize urlRequest=_urlRequest;
 @property (strong, nonatomic) NSURLResponse *urlResponse; // @synthesize urlResponse=_urlResponse;

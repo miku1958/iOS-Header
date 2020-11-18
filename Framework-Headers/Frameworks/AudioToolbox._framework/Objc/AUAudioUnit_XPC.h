@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)didCrash;
 - (BOOL)disableProfile:(id)arg1 cable:(unsigned char)arg2 onChannel:(unsigned char)arg3 error:(id *)arg4;
 - (BOOL)enableProfile:(id)arg1 cable:(unsigned char)arg2 onChannel:(unsigned char)arg3 error:(id *)arg4;
+- (float)getV2Parameter:(unsigned long long)arg1 sequenceNumber:(unsigned int)arg2;
 - (id)inputBusses;
 - (void)internalDeallocateRenderResources;
 - (CDUnknownBlockType)internalRenderBlock;

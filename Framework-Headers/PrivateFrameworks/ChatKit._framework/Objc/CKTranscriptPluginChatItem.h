@@ -6,54 +6,52 @@
 
 #import <ChatKit/CKMessagePartChatItem.h>
 
-@class IMTranscriptPluginChatItem, NSArray, NSString, UIView, UIViewController;
-@protocol CKTranscriptBalloonPluginController, CKTranscriptPluginView;
+@class IMTranscriptPluginChatItem, NSArray, NSString;
 
 @interface CKTranscriptPluginChatItem : CKMessagePartChatItem
 {
+    BOOL _wantsTranscriptGroupMonograms;
+    BOOL _wantsOutline;
     BOOL _isAppearing;
     BOOL _isHandwriting;
     BOOL _isBusiness;
-    id<CKTranscriptBalloonPluginController> _balloonController;
     IMTranscriptPluginChatItem *_imTranscriptPluginChatItem;
     NSString *_conversationID;
     NSArray *_recipients;
 }
 
 @property (readonly, nonatomic) IMTranscriptPluginChatItem *IMChatItem; // @dynamic IMChatItem;
-@property (weak, nonatomic) id<CKTranscriptBalloonPluginController> balloonController; // @synthesize balloonController=_balloonController;
 @property (readonly, nonatomic) NSString *bundleIdentifier;
-@property (readonly, nonatomic) UIViewController *contentViewController;
 @property (strong, nonatomic) NSString *conversationID; // @synthesize conversationID=_conversationID;
-@property (readonly, nonatomic) UIView<CKTranscriptPluginView> *extensableView;
-@property (readonly, nonatomic) UIViewController *extensibleViewController;
 @property (strong, nonatomic) IMTranscriptPluginChatItem *imTranscriptPluginChatItem; // @synthesize imTranscriptPluginChatItem=_imTranscriptPluginChatItem;
 @property (nonatomic) BOOL isAppearing; // @synthesize isAppearing=_isAppearing;
 @property (nonatomic) BOOL isBusiness; // @synthesize isBusiness=_isBusiness;
 @property (readonly, nonatomic) BOOL isHandwriting; // @synthesize isHandwriting=_isHandwriting;
-@property (readonly, nonatomic) BOOL isInteractive;
 @property (readonly, nonatomic) BOOL isPlayed;
 @property (readonly, nonatomic) BOOL isSaved;
 @property (strong, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property (readonly, nonatomic) BOOL wantsBalloonGradient;
-@property (readonly, nonatomic) BOOL wantsOutline;
-@property (readonly, nonatomic) BOOL wantsTranscriptGroupMonograms;
+@property (readonly, nonatomic) BOOL wantsOutline; // @synthesize wantsOutline=_wantsOutline;
+@property (readonly, nonatomic) BOOL wantsTranscriptGroupMonograms; // @synthesize wantsTranscriptGroupMonograms=_wantsTranscriptGroupMonograms;
 
 - (void).cxx_destruct;
 - (void)_cacheConversationID:(id)arg1 recipients:(id)arg2 isBusiness:(BOOL)arg3;
 - (void)_configureBalloonController:(id)arg1 conversationID:(id)arg2 recipients:(id)arg3 isBusiness:(BOOL)arg4;
+- (id)balloonControllerForContext:(id)arg1;
 - (Class)balloonViewClass;
 - (BOOL)canCopy;
 - (BOOL)canForward;
 - (BOOL)canInlineReply;
 - (Class)cellClass;
 - (id)cellIdentifier;
-- (id)composition;
-- (void)configureWithConversationID:(id)arg1 recipients:(id)arg2 isBusiness:(BOOL)arg3;
+- (id)compositionWithContext:(id)arg1;
+- (void)configureWithConversationID:(id)arg1 recipients:(id)arg2 isBusiness:(BOOL)arg3 context:(id)arg4;
 - (id)contact;
 - (struct UIEdgeInsets)contentInsets;
+- (id)contentViewControllerForContext:(id)arg1;
 - (id)dragItemProvider;
-- (BOOL)handlePresentationAction;
+- (id)extensibleViewControllerForContext:(id)arg1;
+- (id)extensibleViewForContext:(id)arg1;
 - (id)initWithIMChatItem:(id)arg1 maxWidth:(double)arg2;
 - (id)layoutGroupSpacingForEnvironment:(id)arg1 supplementaryItems:(id)arg2;
 - (id)layoutItemSpacingForEnvironment:(id)arg1 supplementaryItems:(id)arg2;
@@ -62,21 +60,16 @@
 - (id)loadTranscriptDrawerText;
 - (id)menuTitle;
 - (id)message;
-- (id)pasteboardItems;
-- (void)performHostAppResume;
-- (void)pluginContentViewDidDisappear;
-- (void)pluginContentViewWillAppear;
-- (void)pluginContentViewWillDisappear;
-- (id)pluginDisplayContainer;
-- (void)releaseBalloonControllerIfNeeded;
-- (void)relinquishBalloonController;
+- (void)performHostAppResumeWithContext:(id)arg1;
+- (id)pluginDisplayContainerForContext:(id)arg1;
+- (void)releaseBalloonControllerIfNeededForContext:(id)arg1;
+- (void)relinquishBalloonControllerForContext:(id)arg1;
 - (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
 - (id)sender;
 - (BOOL)shouldSnapshot;
 - (id)snapshotGUIDForPluginPayload:(id)arg1;
 - (struct UIEdgeInsets)textAlignmentInsets;
 - (BOOL)transcriptOrientation;
-- (BOOL)wantsDrawerLayout;
 
 @end
 

@@ -20,8 +20,11 @@
     MISSING_TYPE *promotedContent;
     MISSING_TYPE *debugView;
     MISSING_TYPE *forcedReadiness;
+    MISSING_TYPE *wasTapped;
+    MISSING_TYPE *isBackgrounded;
     MISSING_TYPE *timingTracking;
     MISSING_TYPE *visibilityChecker;
+    MISSING_TYPE *needToSendOnScreen;
     MISSING_TYPE *interactionPresentationDelegate;
     MISSING_TYPE *visbilityCheckingView;
     MISSING_TYPE *offsetObserver;
@@ -44,6 +47,9 @@
 @property (nonatomic, weak) id<APPCMetricsViewReadyDelegate> readyDelegate; // @synthesize readyDelegate;
 
 - (void).cxx_destruct;
+- (void)appBackgrounded:(id)arg1;
+- (void)appForegrounded:(id)arg1;
+- (void)appWillResignActive:(id)arg1;
 - (void)collapse;
 - (void)dealloc;
 - (void)didMoveToSuperview;
@@ -55,6 +61,8 @@
 - (void)removeHandler;
 - (BOOL)safeCollapseAndReturnError:(id *)arg1;
 - (BOOL)safeExpandAndReturnError:(id *)arg1;
+- (void)unloadAdViewIfRequired;
+- (void)willEnterforeground;
 - (void)willMoveToSuperview:(id)arg1;
 
 @end

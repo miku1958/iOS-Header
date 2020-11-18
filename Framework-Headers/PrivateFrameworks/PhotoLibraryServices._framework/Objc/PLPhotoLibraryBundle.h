@@ -70,6 +70,7 @@
 - (void)distributeChangesSinceLastCheckpoint;
 - (id)initWithLibraryURL:(id)arg1 bundleController:(id)arg2;
 - (void)initializeChangeHandling;
+- (BOOL)isSystemPhotoLibrary;
 - (id)newAssetsdClient;
 - (id)newBoundAssetsdServicesTable;
 - (id)newChangeHandlingContainer;

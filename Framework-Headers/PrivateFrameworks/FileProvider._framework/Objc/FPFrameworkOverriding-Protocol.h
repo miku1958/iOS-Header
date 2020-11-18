@@ -22,6 +22,7 @@
 - (void)FPFileProviderServiceEndpointCreatingForItemAtURL:(NSURL *)arg1 synchronously:(BOOL)arg2 completionHandler:(void (^)(id<NSXPCProxyCreating><NSFileProviderServiceEndpointCreating>, NSArray *, void (^)(void), NSError *))arg3;
 - (BOOL)FPFilterActions:(NSMutableSet *)arg1 forDroppingItems:(NSArray *)arg2 underItem:(FPItem *)arg3;
 - (NSSet *)FPServerPackageExtensions;
+- (NSURL *)FPTrashURLForItemAtURL:(NSURL *)arg1 error:(id *)arg2;
 - (BOOL)FPURLIsInFileProvider:(NSURL *)arg1;
 - (void)FPUniversalBookmarkableStringFromDocumentURL:(NSURL *)arg1 completionHandler:(void (^)(NSString *, NSError *))arg2;
 - (void)FPValuesForAttributes:(NSArray *)arg1 forItemAtURL:(NSURL *)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;

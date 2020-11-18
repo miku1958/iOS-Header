@@ -25,6 +25,7 @@
     MISSING_TYPE *readingHistory;
     MISSING_TYPE *paidAccessChecker;
     MISSING_TYPE *tagService;
+    MISSING_TYPE *suggestionClusteringService;
 }
 
 @end

@@ -21,7 +21,7 @@
 
 - (void).cxx_destruct;
 - (void)ckLayerDidBecomeVisible:(BOOL)arg1;
-- (void)configureForChatItem:(id)arg1;
+- (void)configureForChatItem:(id)arg1 context:(id)arg2;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviewsForAlignmentContents;

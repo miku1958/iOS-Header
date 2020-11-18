@@ -16,10 +16,12 @@
     BOOL _shouldObserveRoutingContextUIDChanges;
     unsigned long long _dismissalReason;
     CDUnknownBlockType _dismissHandler;
+    NSString *_routeUID;
     NSXPCListener *_listener;
     NSXPCConnection *_connection;
     MPMediaControlsConfiguration *_configuration;
     CDUnknownBlockType _dismissHandlerWithReason;
+    struct CGRect _sourceRect;
 }
 
 @property (readonly, nonatomic) MPMediaControlsConfiguration *configuration; // @synthesize configuration=_configuration;
@@ -30,6 +32,8 @@
 @property (copy, nonatomic) CDUnknownBlockType dismissHandlerWithReason; // @synthesize dismissHandlerWithReason=_dismissHandlerWithReason;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSXPCListener *listener; // @synthesize listener=_listener;
+@property (strong, nonatomic) NSString *routeUID; // @synthesize routeUID=_routeUID;
+@property (nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

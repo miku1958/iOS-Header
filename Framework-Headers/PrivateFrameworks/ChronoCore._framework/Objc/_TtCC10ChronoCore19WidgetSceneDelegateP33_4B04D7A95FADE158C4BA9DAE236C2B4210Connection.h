@@ -14,7 +14,7 @@
     MISSING_TYPE *sceneDelegate;
     MISSING_TYPE *scene;
     MISSING_TYPE *sceneSettingsDiffInspector;
-    MISSING_TYPE *contentViewController;
+    MISSING_TYPE *_contentViewController;
     MISSING_TYPE *transaction;
     MISSING_TYPE *window;
 }

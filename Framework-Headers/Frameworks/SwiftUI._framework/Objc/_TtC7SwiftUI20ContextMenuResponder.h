@@ -10,7 +10,8 @@
 
 @interface _TtC7SwiftUI20ContextMenuResponder : _TtC7SwiftUI23UIViewSnapshotResponder
 {
-    MISSING_TYPE *items;
+    MISSING_TYPE *cachedItems;
+    MISSING_TYPE *_itemList;
     MISSING_TYPE *id;
 }
 

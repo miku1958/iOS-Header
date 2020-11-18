@@ -11,12 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI20EpisodeContainerView : UIView
 {
-    MISSING_TYPE *viewLayout;
+    MISSING_TYPE *delegate;
+    MISSING_TYPE *collectionView;
+    MISSING_TYPE *headerView;
+    MISSING_TYPE *headerViewLayout;
 }
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

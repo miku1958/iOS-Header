@@ -23,8 +23,8 @@
 @property (readonly, nonatomic, getter=isDerived) BOOL derived; // @synthesize derived=_derived;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isHiddenAtLaunch) BOOL hiddenAtLaunch;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic, getter=isLaunchWhitelisted) BOOL launchWhitelisted;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

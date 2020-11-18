@@ -6,12 +6,8 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE;
-
 @interface _TtC16SiriVideoIntents18BaseDialogProvider : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *testMode;
-    MISSING_TYPE *injectParams;
 }
 
 @end

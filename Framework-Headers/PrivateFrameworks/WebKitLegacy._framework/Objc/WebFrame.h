@@ -49,8 +49,8 @@
 - (id)_computePageRectsWithPrintScaleFactor:(float)arg1 pageSize:(struct CGSize)arg2;
 - (struct _NSRange)_convertDOMRangeToNSRange:(id)arg1;
 - (id)_convertNSRangeToDOMRange:(struct _NSRange)arg1;
-- (RefPtr_033e7b31)_convertToDOMRange:(struct _NSRange)arg1;
-- (RefPtr_033e7b31)_convertToDOMRange:(struct _NSRange)arg1 rangeIsRelativeTo:(unsigned char)arg2;
+- (Optional_b9c62d53)_convertToDOMRange:(struct _NSRange)arg1;
+- (Optional_b9c62d53)_convertToDOMRange:(struct _NSRange)arg1 rangeIsRelativeTo:(unsigned char)arg2;
 - (struct _NSRange)_convertToNSRange:(const struct SimpleRange *)arg1;
 - (id)_dataSource;
 - (void)_detachScriptDebugger;

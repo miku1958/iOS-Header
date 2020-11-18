@@ -7,7 +7,7 @@
 #import <UIKit/UIResponder.h>
 
 @class AVAsset, AVAssetTrack, AVMediaSelectionOption, AVObservationController, AVPlayer, AVPlayerLayer, AVTimecodeController, AVValueTiming, BSSimpleAssertion, NSArray, NSDate, NSDictionary, NSError, NSNumber, NSObject, NSString;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol AVPlayerControllerDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface AVPlayerController : UIResponder
 {
@@ -58,6 +58,7 @@
     double _defaultPlaybackRate;
     BOOL _touchBarRequiresLinearPlayback;
     AVTimecodeController *_timecodeController;
+    id<AVPlayerControllerDelegate> _internalDelegate;
     BOOL _atMaxTime;
     BOOL _atMinTime;
     BOOL _scrubbing;
@@ -114,6 +115,7 @@
 @property (nonatomic) BOOL hasBegunInspection; // @synthesize hasBegunInspection=_hasBegunInspection;
 @property (nonatomic) BOOL hasProtectedContent; // @synthesize hasProtectedContent=_hasProtectedContent;
 @property (readonly, nonatomic) BOOL hasReadableTimecodes;
+@property (weak, nonatomic) id<AVPlayerControllerDelegate> internalDelegate;
 @property (strong, nonatomic) AVValueTiming *maxTiming; // @synthesize maxTiming=_maxTiming;
 @property (readonly, nonatomic) struct CGSize maximumVideoResolution;
 @property (strong, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;

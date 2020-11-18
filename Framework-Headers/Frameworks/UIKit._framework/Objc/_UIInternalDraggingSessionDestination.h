@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
     BOOL _drivenByPointer;
     _UIDropSessionImpl *_dropSession;
     UIWindow *_centroidWindow;
+    UIWindow *_weakCentroidWindow;
     NSArray *_dropItemProviders;
     long long _sourceDataOwner;
     NSArray *_internalItems;
@@ -74,6 +75,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long sourceDataOwner; // @synthesize sourceDataOwner=_sourceDataOwner;
 @property (readonly, nonatomic) unsigned long long sourceOperationMask;
 @property (readonly) Class superclass;
+@property (readonly, weak, nonatomic) UIWindow *weakCentroidWindow; // @synthesize weakCentroidWindow=_weakCentroidWindow;
 
 - (void).cxx_destruct;
 - (void)_removeFromDragManager;

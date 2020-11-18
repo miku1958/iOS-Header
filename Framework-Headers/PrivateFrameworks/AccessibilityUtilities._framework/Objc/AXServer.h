@@ -30,7 +30,7 @@
 
 - (void).cxx_destruct;
 - (BOOL)_connectIfNecessary;
-- (void)_connectServerIfNecessary;
+- (BOOL)_connectServerIfNecessary;
 - (void)_didConnectToClient;
 - (void)_didConnectToServer;
 - (void)_initializeAssertionBookkeeping;

@@ -34,12 +34,6 @@ struct CGSize {
     double height;
 };
 
-struct NULayoutOptions {
-    unsigned long long flow;
-    unsigned long long direction;
-    struct UIEdgeInsets edgeInsets;
-};
-
 struct UIEdgeInsets {
     double top;
     double left;

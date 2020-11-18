@@ -20,6 +20,7 @@
     BOOL _syncLocalPassword;
     BOOL _monitorCredentialsCache;
     BOOL _delayUserSetup;
+    BOOL _requireTLSForLDAP;
     NSString *_cacheName;
     NSString *_principalName;
     NSString *_siteCode;
@@ -36,6 +37,7 @@
     NSString *_helpText;
     NSString *_customUsernameLabel;
     NSNumber *_replicationTime;
+    long long _credentialUseMode;
 }
 
 @property (nonatomic) BOOL allowAutomaticLogin; // @synthesize allowAutomaticLogin=_allowAutomaticLogin;
@@ -43,6 +45,7 @@
 @property (strong, nonatomic) NSString *cacheName; // @synthesize cacheName=_cacheName;
 @property (strong, nonatomic) NSString *certificateUUID; // @synthesize certificateUUID=_certificateUUID;
 @property (strong, nonatomic) NSArray *credentialBundleIdACL; // @synthesize credentialBundleIdACL=_credentialBundleIdACL;
+@property (nonatomic) long long credentialUseMode; // @synthesize credentialUseMode=_credentialUseMode;
 @property (strong, nonatomic) NSString *customUsernameLabel; // @synthesize customUsernameLabel=_customUsernameLabel;
 @property BOOL delayUserSetup; // @synthesize delayUserSetup=_delayUserSetup;
 @property (strong, nonatomic) NSDictionary *domainRealmMapping; // @synthesize domainRealmMapping=_domainRealmMapping;
@@ -60,6 +63,7 @@
 @property (strong, nonatomic) NSNumber *pwReqMinAge; // @synthesize pwReqMinAge=_pwReqMinAge;
 @property (strong, nonatomic) NSString *pwReqText; // @synthesize pwReqText=_pwReqText;
 @property (strong, nonatomic) NSNumber *replicationTime; // @synthesize replicationTime=_replicationTime;
+@property BOOL requireTLSForLDAP; // @synthesize requireTLSForLDAP=_requireTLSForLDAP;
 @property (nonatomic) BOOL requireUserPresence; // @synthesize requireUserPresence=_requireUserPresence;
 @property (strong, nonatomic) NSString *siteCode; // @synthesize siteCode=_siteCode;
 @property BOOL syncLocalPassword; // @synthesize syncLocalPassword=_syncLocalPassword;

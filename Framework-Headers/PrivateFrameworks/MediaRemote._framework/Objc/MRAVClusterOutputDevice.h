@@ -19,7 +19,10 @@
 - (id)clusterComposition;
 - (unsigned int)deviceSubtype;
 - (unsigned int)deviceType;
+- (id)groupID;
+- (id)initWithDevices:(id)arg1 sourceInfo:(id)arg2;
 - (id)initWithPrimaryOutputDevice:(id)arg1 members:(id)arg2 sourceInfo:(id)arg3;
+- (id)primaryID;
 - (id)uid;
 
 @end

@@ -23,6 +23,7 @@
 @property (readonly, nonatomic, getter=isEntitledForSPIAccess) BOOL entitledForSPIAccess;
 @property (readonly, nonatomic, getter=isEntitledForSecureAccess) BOOL entitledForSecureAccess;
 @property (readonly, nonatomic, getter=isEntitledForShortcutsAutomationAccess) BOOL entitledForShortcutsAutomationAccess;
+@property (readonly, nonatomic, getter=isEntitledForStateDump) BOOL entitledForStateDump;
 @property (readonly, nonatomic, getter=isEntitledToProvideAccessorySetupPayload) BOOL entitledToProvideAccessorySetupPayload;
 @property (readonly, nonatomic) unsigned long long entitlements;
 @property (readonly, nonatomic, getter=requiresHomeLocationEntitlement) BOOL homeLocationEntitlementRequired;

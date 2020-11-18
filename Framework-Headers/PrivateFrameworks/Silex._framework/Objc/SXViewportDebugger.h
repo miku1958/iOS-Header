@@ -28,8 +28,6 @@
 - (void).cxx_destruct;
 - (id)colorForAppearState:(unsigned long long)arg1;
 - (void)dealloc;
-- (id)initWithViewport:(id)arg1;
-- (void)presentOnView:(id)arg1;
 - (void)update;
 - (void)viewport:(id)arg1 appearStateChangedFromState:(unsigned long long)arg2;
 - (void)viewport:(id)arg1 boundsDidChangeFromBounds:(struct CGRect)arg2;

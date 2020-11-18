@@ -6,17 +6,19 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
+#import <ChatKit/CKConversationSearchCellDelegate-Protocol.h>
 #import <ChatKit/CKSearchResultCell-Protocol.h>
 
 @class CALayer, CKSpotlightQueryResult, NSString, UITableViewCell;
-@protocol CKConversationSearchCellProtocol;
+@protocol CKConversationSearchCellProtocol, CKMessageSearchResultCellDelegate;
 
-@interface CKMessageSearchResultCell : UICollectionViewCell <CKSearchResultCell>
+@interface CKMessageSearchResultCell : UICollectionViewCell <CKConversationSearchCellDelegate, CKSearchResultCell>
 {
     BOOL _ck_editing;
     NSString *_searchText;
     CALayer *_topHairline;
     CALayer *_bottomHairline;
+    id<CKMessageSearchResultCellDelegate> _delegate;
     UITableViewCell<CKConversationSearchCellProtocol> *_searchCell;
     CKSpotlightQueryResult *_result;
     struct UIEdgeInsets _marginInsets;
@@ -25,6 +27,7 @@
 @property (nonatomic, getter=_ck_isEditing, setter=_ck_setEditing:) BOOL _ck_editing; // @synthesize _ck_editing;
 @property (readonly, nonatomic) CALayer *bottomHairline; // @synthesize bottomHairline=_bottomHairline;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<CKMessageSearchResultCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets=_marginInsets;
@@ -33,7 +36,6 @@
 @property (copy, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) CALayer *topHairline; // @synthesize topHairline=_topHairline;
-@property (nonatomic) double widthForDeterminingAvatarVisibility;
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
@@ -47,6 +49,7 @@
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (void)prepareForReuse;
 - (void)refreshForSearchTextIfNeeded:(id)arg1;
+- (double)widthForDeterminingAvatarVisibility;
 
 @end
 

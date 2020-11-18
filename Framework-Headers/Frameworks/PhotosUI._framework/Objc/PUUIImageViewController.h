@@ -72,7 +72,7 @@ __attribute__((visibility("hidden")))
 - (void)_loadLivePhoto;
 - (id)cancelButtonTitle;
 - (id)chooseButtonTitle;
-- (void)cropOverlayFileResizingSelected:(id)arg1;
+- (id)cropOverlayFileSizeMenuActions:(id)arg1;
 - (int)cropOverlayMode;
 - (void)cropOverlayWasOKed:(id)arg1;
 - (id)customBackgroundColor;

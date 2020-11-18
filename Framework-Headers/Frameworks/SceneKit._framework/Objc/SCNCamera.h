@@ -153,6 +153,7 @@
 + (BOOL)supportsSecureCoding;
 - (const void *)__CFObject;
 - (BOOL)__removeAnimation:(id)arg1 forKey:(id)arg2;
+- (void)_checkSettingsConsistency;
 - (void)_copyAnimationsFrom:(id)arg1;
 - (void)_customEncodingOfSCNCamera:(id)arg1;
 - (void)_didDecodeSCNCamera:(id)arg1;

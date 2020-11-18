@@ -151,6 +151,7 @@
 - (void)speechRequestStateDidChange:(long long)arg1;
 - (void)unregisterActivationSourceIdentifier:(id)arg1;
 - (void)unregisterSiriPresentationIdentifier:(long long)arg1;
+- (void)updatePredicatedRecordRoute;
 
 @end
 

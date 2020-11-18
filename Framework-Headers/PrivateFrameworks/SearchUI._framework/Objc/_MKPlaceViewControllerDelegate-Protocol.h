@@ -76,6 +76,7 @@
 - (void)placeViewControllerDidSelectShareLocation:(_MKPlaceViewController *)arg1;
 - (void)placeViewControllerDidSelectShowBrandCard:(_MKPlaceViewController *)arg1;
 - (void)placeViewControllerDidSelectWriteAReview:(_MKPlaceViewController *)arg1;
+- (void)placeViewControllerDidUpdateCallProvider:(_MKPlaceViewController *)arg1;
 - (void)placeViewControllerDidUpdateHeight:(_MKPlaceViewController *)arg1;
 - (void)placeViewControllerLinkedServicesDidTapHeaderButton:(_MKPlaceViewController *)arg1;
 - (double)placeViewControllerPlaceCardHeaderTitleTrailingConstant:(_MKPlaceViewController *)arg1;

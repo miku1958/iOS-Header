@@ -9,7 +9,7 @@
 #import <WeatherFoundation/NSCopying-Protocol.h>
 #import <WeatherFoundation/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSLocale, NSString, NSURL, WFAQIScaleCategory, WFAirPollutant, WFAirQualityProviderAttribution, WFLocation;
+@class NSArray, NSDate, NSLocale, NSString, NSURL, WFAQIScale, WFAQIScaleCategory, WFAirPollutant, WFAirQualityProviderAttribution, WFLocation;
 
 @interface WFAirQualityConditions : NSObject <NSSecureCoding, NSCopying>
 {
@@ -25,6 +25,7 @@
     unsigned long long _significance;
     NSString *_localizedRecommendation;
     NSURL *_providerURL;
+    WFAQIScale *_scale;
     NSArray *_pollutants;
     WFAirPollutant *_primaryPollutant;
     unsigned long long _category;
@@ -50,6 +51,7 @@
 @property (copy, nonatomic) NSString *provider; // @synthesize provider=_provider;
 @property (strong, nonatomic) WFAirQualityProviderAttribution *providerAttribution; // @synthesize providerAttribution=_providerAttribution;
 @property (copy, nonatomic) NSURL *providerURL; // @synthesize providerURL=_providerURL;
+@property (strong, nonatomic) WFAQIScale *scale; // @synthesize scale=_scale;
 @property (nonatomic) unsigned long long significance; // @synthesize significance=_significance;
 @property (nonatomic) BOOL temporarilyUnavailable; // @synthesize temporarilyUnavailable=_temporarilyUnavailable;
 

@@ -18,9 +18,9 @@
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class AVOutputDeviceAuthorizedPeer, HAPPairingIdentity, HMBShareUserID, HMDAccountHandle, HMDAccountIdentifier, HMDAssistantAccessControl, HMDCloudShareMessenger, HMDCloudShareTrustManager, HMDHome, HMDPersonSettingsManager, HMDPhotosPersonManager, HMDSettingsControllerDependency, HMDUserDataController, HMDUserPhotosPersonDataManager, HMDUserSettingsBackingStoreController, HMFMessageDispatcher, HMPhotosPersonManagerSettings, HMUserPresenceAuthorization, NAFuture, NSMutableArray, NSNumber, NSObject, NSSet, NSString, NSUUID;
-@protocol HMFLocking, OS_dispatch_queue;
+@protocol HMDUserDataSource, HMFLocking, OS_dispatch_queue;
 
-@interface HMDUser : HMFObject <HMDSettingsControllerDelegate, HMDCloudShareTrustManagerDataSource, HMDCloudShareTrustManagerDelegate, HMDUserDataControllerDelegate, HMDUserSettingsBackingStoreControllerDelegate, HMFLogging, HMFDumpState, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver, NSSecureCoding>
+@interface HMDUser : HMFObject <HMDCloudShareTrustManagerDataSource, HMDCloudShareTrustManagerDelegate, HMDUserDataControllerDelegate, HMDUserSettingsBackingStoreControllerDelegate, HMFLogging, HMFDumpState, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver, HMDSettingsControllerDelegate, NSSecureCoding>
 {
     id<HMFLocking> _lock;
     NSObject<OS_dispatch_queue> *_queue;
@@ -48,11 +48,12 @@
     HMDCloudShareMessenger *_shareMessenger;
     HMDSettingsControllerDependency *_privateSettingsControllerDependency;
     HMDUserSettingsBackingStoreController *_privateBackingStoreController;
-    HMDUserDataController *_userDataController;
+    id<HMDUserDataSource> _dataSource;
     HMFMessageDispatcher *_messageDispatcher;
     unsigned long long _announceNotificationModeForCurrentDevice;
     HMDCloudShareTrustManager *_cloudShareTrustManager;
     HMDUserSettingsBackingStoreController *_sharedBackingStoreController;
+    HMDUserDataController *_userDataController;
 }
 
 @property (copy) HMDAccountIdentifier *accountIdentifier;
@@ -68,6 +69,7 @@
 @property (readonly) NAFuture *cloudShareIDFuture; // @synthesize cloudShareIDFuture=_cloudShareIDFuture;
 @property (strong) HMDCloudShareTrustManager *cloudShareTrustManager; // @synthesize cloudShareTrustManager=_cloudShareTrustManager;
 @property (readonly, getter=isCurrentUser) BOOL currentUser;
+@property (readonly) id<HMDUserDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *displayName; // @synthesize displayName=_displayName;
@@ -170,6 +172,7 @@
 - (void)handleRemovedAccessory:(id)arg1;
 - (id)homeForCloudShareTrustManager:(id)arg1;
 - (id)initWithAccountHandle:(id)arg1 home:(id)arg2 pairingIdentity:(id)arg3 privilege:(unsigned long long)arg4;
+- (id)initWithAccountHandle:(id)arg1 home:(id)arg2 pairingIdentity:(id)arg3 privilege:(unsigned long long)arg4 dataSource:(id)arg5;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModelObject:(id)arg1;
 - (void)initializeUserSettingsWithHome:(id)arg1;
@@ -207,6 +210,7 @@
 - (void)setDisplayName:(id)arg1;
 - (void)settingsController:(id)arg1 didUpdateWithCompletion:(CDUnknownBlockType)arg2;
 - (id)settingsController:(id)arg1 willUpdateSettingAtKeyPath:(id)arg2 withValue:(id)arg3;
+- (id)settingsControllerFollowerKeyPaths:(id)arg1;
 - (id)sharedSettingValuesByKeyPathForAWD;
 - (id)sharedZoneControllerForUserDataController:(id)arg1;
 - (id)shortDescription;

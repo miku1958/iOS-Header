@@ -47,8 +47,8 @@
 - (unsigned long long)hash;
 - (id)hashToString:(id)arg1;
 - (id)initWithAttributes:(id)arg1;
-- (void)invokeClientDownloadCompletion:(long long)arg1 completionBlockWithError:(CDUnknownBlockType)arg2;
-- (void)invokeClientDownloadCompletionAlreadyOnQueue:(long long)arg1 completionBlockWithError:(CDUnknownBlockType)arg2;
+- (void)invokeClientDownloadCompletion:(long long)arg1 asset:(id)arg2 completionBlockWithError:(CDUnknownBlockType)arg3;
+- (void)invokeClientDownloadCompletionAlreadyOnQueue:(long long)arg1 asset:(id)arg2 completionBlockWithError:(CDUnknownBlockType)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (void)logAsset;
 - (BOOL)nonUserInitiatedDownloadsAllowed;

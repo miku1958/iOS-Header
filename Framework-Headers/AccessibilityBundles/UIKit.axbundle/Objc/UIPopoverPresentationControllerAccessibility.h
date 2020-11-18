@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)preferredFocusEnvironments;
 - (id)preferredFocusedView;
+- (void)presentationTransitionWillBegin;
 
 @end
 

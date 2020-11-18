@@ -11,7 +11,9 @@
 }
 
 + (id)announceHomeAnnouncementRequestFromApp:(id)arg1;
++ (id)announceHomeAnnouncementRequestFromApp:(id)arg1 withAnnouncementIdentifier:(id)arg2 withUserNotificationType:(long long)arg3;
 + (id)readHomeAnnouncementRequestFromApp:(id)arg1;
++ (id)startPhoneCallRequestFromApp:(id)arg1;
 
 @end
 

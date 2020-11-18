@@ -15,9 +15,7 @@
 
 @property (readonly, nonatomic) NSString *localizedString; // @synthesize localizedString=_localizedString;
 
-+ (id)description;
 - (void).cxx_destruct;
-- (id)debugDescription;
 - (id)initWithLocalizedString:(id)arg1;
 - (id)localizedStringWithArgumentBlock:(CDUnknownBlockType)arg1;
 

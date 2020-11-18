@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC7NewsAds17DebugBannerAdView : UIView
 {
     MISSING_TYPE *contentIdentifier;
+    MISSING_TYPE *contentInfo;
     MISSING_TYPE *state;
     MISSING_TYPE *onLongPress;
     MISSING_TYPE *label;

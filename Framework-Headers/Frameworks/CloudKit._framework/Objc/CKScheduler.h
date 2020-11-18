@@ -49,6 +49,7 @@
 - (void)runActivityWithIdentifier:(id)arg1 xpcActivity:(id)arg2;
 - (void)submitActivity:(id)arg1;
 - (void)unregisterActivityIdentifier:(id)arg1;
+- (void)unregisterHandlerForActivityIdentifier:(id)arg1;
 - (id)xpcActivityForActivityWithIdentifier:(id)arg1;
 
 @end

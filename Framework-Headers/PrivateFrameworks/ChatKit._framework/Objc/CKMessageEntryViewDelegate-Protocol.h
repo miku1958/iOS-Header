@@ -6,9 +6,10 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKMediaObject, CKMessageEntryView, NSArray, UITextView;
+@class CKMediaObject, CKMessageEntryView, IMPluginPayload, NSArray, UITextView;
 
 @protocol CKMessageEntryViewDelegate <NSObject>
+- (void)messageEntryView:(CKMessageEntryView *)arg1 didInsertPluginPayload:(IMPluginPayload *)arg2;
 - (void)messageEntryView:(CKMessageEntryView *)arg1 didTapMediaObject:(CKMediaObject *)arg2;
 - (BOOL)messageEntryView:(CKMessageEntryView *)arg1 shouldInsertMediaObjects:(NSArray *)arg2;
 - (void)messageEntryViewDidBeginEditing:(CKMessageEntryView *)arg1;

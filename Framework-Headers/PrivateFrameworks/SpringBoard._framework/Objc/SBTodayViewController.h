@@ -25,7 +25,7 @@
 #import <SpringBoard/WGMajorListViewControllerDelegate-Protocol.h>
 #import <SpringBoard/WGWidgetIconAnimationExtraViewsProviding-Protocol.h>
 
-@class MTMaterialView, NSArray, NSHashTable, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, SBFTouchPassThroughView, SBHDateHeaderViewController, SBHIconManager, SBHWidgetSettings, SBIconListView, SBIconView, SBRootFolder, SBTodayIconListLayoutDelegate, SBTodayKeepOnHomeScreenPlatterView, SBTodayViewSpotlightPresenter, SBViewControllerTransitionContext, UILabel, UIScrollView, UIStackView, UITapGestureRecognizer, UIView, WGMajorListViewController, WGWidgetListHeaderView, _UILegibilitySettings;
+@class MTMaterialView, NSArray, NSHashTable, NSLayoutConstraint, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, SBFTouchPassThroughView, SBHDateHeaderViewController, SBHIconManager, SBHWidgetSettings, SBIconListView, SBIconView, SBRootFolder, SBTodayIconListLayoutDelegate, SBTodayKeepOnHomeScreenPlatterView, SBTodayViewSpotlightPresenter, SBViewControllerTransitionContext, UILabel, UIScrollView, UIStackView, UITapGestureRecognizer, UIView, WGMajorListViewController, WGWidgetListHeaderView, _UILegibilitySettings;
 @protocol SBFOverlayDismissalDelegate, SBIconListLayoutProvider, SBIconViewProviding, SBTodayViewControllerDelegate;
 
 @interface SBTodayViewController : UIViewController <SBUICoronaAnimationControllerParticipant, SBIconListLayoutObserver, SBIconViewObserver, UIScrollViewDelegate, SBIconListModelObserver, SBIconListViewDragDelegate, WGMajorListViewControllerDelegate, WGWidgetIconAnimationExtraViewsProviding, PTSettingsKeyObserver, SBTodayViewSpotlightPresenterDelegate, CSExternalBehaviorProviding, UIGestureRecognizerDelegate, SBUISpotlightInitiating, SBHLegibility, SBIconViewQuerying, SBIconLocationPresenting, SBFIdleTimerBehaviorProviding, SBHOccludable>
@@ -80,6 +80,7 @@
     double _searchBarTopOffset;
     NSHashTable *_viewControllerAppearStateOverrideAssertions;
     UITapGestureRecognizer *_dismissTapGestureRecognizer;
+    NSMapTable *_onScreenIconIndexRangeByIconListView;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *cancelTouchesAssertionsByLegacyWidgetID; // @synthesize cancelTouchesAssertionsByLegacyWidgetID=_cancelTouchesAssertionsByLegacyWidgetID;
@@ -126,6 +127,7 @@
 @property (nonatomic) long long location; // @synthesize location=_location;
 @property (readonly, nonatomic) long long notificationBehavior;
 @property (nonatomic, getter=isOccluded) BOOL occluded; // @synthesize occluded=_occluded;
+@property (strong, nonatomic) NSMapTable *onScreenIconIndexRangeByIconListView; // @synthesize onScreenIconIndexRangeByIconListView=_onScreenIconIndexRangeByIconListView;
 @property (readonly, nonatomic) long long participantState;
 @property (readonly, copy, nonatomic) NSSet *presentedIconLocations;
 @property (readonly, nonatomic) long long proximityDetectionMode;
@@ -216,8 +218,9 @@
 - (void)_updateTouchInsets;
 - (void)_updateVisibleRowRangeForListView:(id)arg1;
 - (void)_updateVisibleRowRangeForListViews;
-- (void)_updateVisiblySettledForIconView:(id)arg1;
+- (void)_updateVisiblySettledForIconView:(id)arg1 atIconIndex:(unsigned long long)arg2 inListView:(id)arg3;
 - (void)_updateVisiblySettledForIconViews;
+- (void)_updateVisiblySettledForIconViewsInListView:(id)arg1;
 - (id)_widgetIconViewAtLocation:(struct CGPoint)arg1;
 - (id)beginOverridingViewControllerAppearanceStateToRemainDisappearedForReason:(id)arg1;
 - (void)cleanupAfterSpotlightDismissal;

@@ -31,6 +31,7 @@
 @property (strong, nonatomic) NSUserActivity *siriActionActivity; // @synthesize siriActionActivity=_siriActionActivity;
 @property (readonly) Class superclass;
 
++ (BOOL)_showsHorizontalScrollIndicator;
 - (void).cxx_destruct;
 - (BOOL)_canUseStackedAlbumTransitionToNavigationToCollection:(id)arg1;
 - (void)_handlePinch:(id)arg1;

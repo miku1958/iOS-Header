@@ -13,15 +13,12 @@
 }
 
 @property (readonly, nonatomic) NSArray *addingOutputDeviceUIDs;
-@property (readonly, nonatomic) unsigned int contextType;
 @property (readonly, nonatomic) NSArray *removingOutputDeviceUIDs;
 @property (readonly, nonatomic) NSArray *settingOutputDeviceUIDs;
 
-+ (id)addDevicesRequestMessageWithContextType:(unsigned int)arg1 outputDeviceUIDs:(id)arg2;
-+ (id)removeDevicesRequestMessageWithContextType:(unsigned int)arg1 outputDeviceUIDs:(id)arg2;
-+ (id)setDevicesRequestMessageWithContextType:(unsigned int)arg1 outputDeviceUIDs:(id)arg2;
+- (unsigned int)contextType;
 - (id)description;
-- (id)initWithContextType:(unsigned int)arg1 addingDeviceUIDs:(id)arg2 removingDeviceUIDs:(id)arg3 settingDeviceUIDs:(id)arg4;
+- (id)initWithAddingDeviceUIDs:(id)arg1 removingDeviceUIDs:(id)arg2 settingDeviceUIDs:(id)arg3 clusterAwareAddingOutputDeviceUIDs:(id)arg4 clusterAwareRemovingOutputDeviceUIDs:(id)arg5 clusterAwareSettingOutputDeviceUIDs:(id)arg6;
 - (unsigned long long)type;
 
 @end

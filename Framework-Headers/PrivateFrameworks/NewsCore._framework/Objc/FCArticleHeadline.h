@@ -94,6 +94,8 @@
     NSString *_narrativeTrackTextRanges;
     COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *_personalizationVector;
     COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *_personalizationVectorAlt;
+    NSString *_layeredThumbnailJSON;
+    double _layeredThumbnailAspectRatio;
     NTPBArticleRecord *_articleRecord;
     FCInterestToken *_articleInterestToken;
     long long _behaviorFlags;
@@ -160,6 +162,8 @@
 - (id)language;
 - (id)lastFetchedDate;
 - (id)lastModifiedDate;
+- (double)layeredThumbnailAspectRatio;
+- (id)layeredThumbnailJSON;
 - (id)linkedArticleIDs;
 - (id)linkedIssueIDs;
 - (id)masterIssue;

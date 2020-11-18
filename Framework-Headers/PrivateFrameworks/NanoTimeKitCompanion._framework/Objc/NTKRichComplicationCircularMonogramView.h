@@ -6,30 +6,18 @@
 
 #import <NanoTimeKitCompanion/NTKRichComplicationCircularBaseTextView.h>
 
-#import <NanoTimeKitCompanion/NTKMonogramComplicationDisplay-Protocol.h>
+@class NTKColoringLabel;
 
-@class NSString, NTKColoringLabel;
-@protocol NTKComplicationDisplayObserver;
-
-@interface NTKRichComplicationCircularMonogramView : NTKRichComplicationCircularBaseTextView <NTKMonogramComplicationDisplay>
+@interface NTKRichComplicationCircularMonogramView : NTKRichComplicationCircularBaseTextView
 {
     NTKColoringLabel *_textLabel;
-    NSString *_monogramText;
 }
 
-@property (nonatomic) BOOL canUseCurvedText;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (weak, nonatomic) id<NTKComplicationDisplayObserver> displayObserver;
-@property (readonly) unsigned long long hash;
-@property (nonatomic, getter=isHighlighted) BOOL highlighted;
-@property (nonatomic) BOOL shouldUseTemplateColors;
-@property (readonly) Class superclass;
-
++ (BOOL)handlesComplicationTemplate:(id)arg1;
 - (void).cxx_destruct;
 - (id)_createLabelViewWithFont:(id)arg1;
 - (id)_labelFont;
-- (void)setMonogramText:(id)arg1;
+- (void)setComplicationTemplate:(id)arg1 reason:(long long)arg2;
 
 @end
 

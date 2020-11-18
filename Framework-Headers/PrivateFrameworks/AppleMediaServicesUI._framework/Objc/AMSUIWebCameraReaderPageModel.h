@@ -14,6 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface AMSUIWebCameraReaderPageModel : NSObject <AMSUIWebPageProvider>
 {
+    NSString *_backgroundColor;
     AMSUIWebNavigationBarModel *_navigationBar;
     NSString *_bottomLinkLabel;
     id<AMSUIWebActionRunnable> _bottomLinkAction;
@@ -23,9 +24,11 @@ __attribute__((visibility("hidden")))
     id<AMSUIWebActionRunnable> _action;
     AMSUIWebClientContext *_context;
     UIViewController *_presentedViewController;
+    struct CGSize _windowSize;
 }
 
 @property (strong, nonatomic) id<AMSUIWebActionRunnable> action; // @synthesize action=_action;
+@property (readonly, nonatomic) NSString *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (strong, nonatomic) id<AMSUIWebActionRunnable> bottomLinkAction; // @synthesize bottomLinkAction=_bottomLinkAction;
 @property (strong, nonatomic) NSString *bottomLinkLabel; // @synthesize bottomLinkLabel=_bottomLinkLabel;
 @property (strong, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
@@ -39,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *primaryLabel; // @synthesize primaryLabel=_primaryLabel;
 @property (strong, nonatomic) NSString *secondaryLabel; // @synthesize secondaryLabel=_secondaryLabel;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) struct CGSize windowSize; // @synthesize windowSize=_windowSize;
 
 - (void).cxx_destruct;
 - (id)createViewController;

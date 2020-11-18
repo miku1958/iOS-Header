@@ -6,27 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @interface MTTreatmentAction : NSObject
 {
     BOOL _blacklisted;
     NSString *_field;
-    id _value;
+    NSString *_sourceField;
+    id _overrideFieldValue;
     NSArray *_blacklistedFields;
     NSArray *_whitelistedFields;
+    NSDictionary *_fieldsMap;
+    NSArray *_dstKeyPath;
+    NSArray *_srcKeyPath;
 }
 
 @property (nonatomic) BOOL blacklisted; // @synthesize blacklisted=_blacklisted;
 @property (strong, nonatomic) NSArray *blacklistedFields; // @synthesize blacklistedFields=_blacklistedFields;
+@property (strong, nonatomic) NSArray *dstKeyPath; // @synthesize dstKeyPath=_dstKeyPath;
 @property (strong, nonatomic) NSString *field; // @synthesize field=_field;
-@property (strong, nonatomic) id value; // @synthesize value=_value;
+@property (strong, nonatomic) NSDictionary *fieldsMap; // @synthesize fieldsMap=_fieldsMap;
+@property (strong, nonatomic) id overrideFieldValue; // @synthesize overrideFieldValue=_overrideFieldValue;
+@property (strong, nonatomic) NSString *sourceField; // @synthesize sourceField=_sourceField;
+@property (strong, nonatomic) NSArray *srcKeyPath; // @synthesize srcKeyPath=_srcKeyPath;
 @property (strong, nonatomic) NSArray *whitelistedFields; // @synthesize whitelistedFields=_whitelistedFields;
 
 + (id)treatmentActionWithField:(id)arg1 configData:(id)arg2;
 - (void).cxx_destruct;
+- (void)computeKeyPaths;
 - (id)initWithField:(id)arg1 configDictionary:(id)arg2;
+- (id)performAction:(id)arg1 atKeyIndex:(long long)arg2 context:(id)arg3;
 - (id)performAction:(id)arg1 context:(id)arg2;
+- (void)performActionWithContext:(id)arg1;
 
 @end
 

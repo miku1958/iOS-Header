@@ -65,6 +65,7 @@
 - (BOOL)hasDismissedAnnounceOnboarding;
 - (BOOL)hasDismissedCameraRecordingOnboarding;
 - (BOOL)hasDismissedCameraRecordingReminderBanner;
+- (BOOL)hasDismissedHomeTheaterOnboarding;
 - (BOOL)hasDismissedIdentifyVoiceReminderBanner;
 - (BOOL)hasDismissedNaturalLightingOnboarding;
 - (BOOL)hasDismissedTVViewingProfilesOnboarding;
@@ -82,6 +83,7 @@
 - (id)setDismissAnnounceOnboarding:(BOOL)arg1;
 - (id)setDismissCameraRecordingOnboarding:(BOOL)arg1;
 - (id)setDismissCameraRecordingReminderBanner:(BOOL)arg1;
+- (id)setDismissHomeTheaterOnboarding:(BOOL)arg1;
 - (id)setDismissIdentifyVoiceOnboarding:(BOOL)arg1;
 - (id)setDismissIdentifyVoiceReminderBanner:(BOOL)arg1;
 - (id)setDismissNaturalLightingOnboarding:(BOOL)arg1;

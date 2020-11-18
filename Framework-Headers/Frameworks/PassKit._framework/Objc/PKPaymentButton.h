@@ -11,14 +11,16 @@
 @interface PKPaymentButton : UIButton
 {
     CAShapeLayer *_layer;
-    long long _style;
-    long long _type;
     CAFilter *_highlightFilter;
     BOOL _highlighted;
     double _cornerRadius;
+    long long _type;
+    long long _style;
 }
 
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+@property (nonatomic) long long style; // @synthesize style=_style;
+@property (nonatomic) long long type; // @synthesize type=_type;
 
 + (id)buttonWithType:(long long)arg1 style:(long long)arg2;
 + (Class)layerClass;

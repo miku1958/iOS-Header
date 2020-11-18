@@ -9,21 +9,26 @@
 #import <Home/HFHomeKitObject-Protocol.h>
 #import <Home/HFMediaProfileContainer-Protocol.h>
 #import <Home/HFServiceNameComponentsProviding-Protocol.h>
+#import <Home/HFUIRepresentableHomeObject-Protocol.h>
 
 @class HFHomeKitSettingsAdapterManager, HFHomeKitSettingsValueManager, HFServiceNameComponents, HMAccessory, HMAccessorySettings, HMHome, HMMediaSession, HMRoom, HMSymptomsHandler, NSDate, NSSet, NSString, NSUUID;
-@protocol HFHomeKitObject, HFMediaValueSource, HMMediaObjectDelegate;
+@protocol HFHomeKitObject, HFMediaValueSource, HFUIRepresentableHomeObject, HMMediaObjectDelegate;
 
-@interface HMMediaSystem (HFAdditions) <HFHomeKitObject, HFMediaProfileContainer, HFServiceNameComponentsProviding>
+@interface HMMediaSystem (HFAdditions) <HFUIRepresentableHomeObject, HFHomeKitObject, HFMediaProfileContainer, HFServiceNameComponentsProviding>
 
 @property (readonly, nonatomic) NSSet *accessories;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMMediaObjectDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasValidSettings;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSSet *hf_accessories;
 @property (readonly, nonatomic) HMAccessory *hf_backingAccessory;
 @property (readonly, copy, nonatomic) NSString *hf_categoryLocalizedDescription;
 @property (readonly, copy, nonatomic) NSDate *hf_dateAdded;
@@ -48,15 +53,20 @@
 @property (readonly, nonatomic) id<HFMediaValueSource> hf_mediaValueSource;
 @property (readonly, weak, nonatomic) HMRoom *hf_parentRoom;
 @property (readonly, nonatomic) NSString *hf_prettyDescription;
+@property (readonly, nonatomic) NSSet *hf_profiles;
 @property (readonly, nonatomic) HFServiceNameComponents *hf_serviceNameComponents;
 @property (readonly, nonatomic) HFServiceNameComponents *hf_serviceNameComponents;
+@property (readonly, nonatomic) HFServiceNameComponents *hf_serviceNameComponents;
+@property (readonly, nonatomic) NSSet *hf_services;
 @property (readonly, nonatomic) HFHomeKitSettingsAdapterManager *hf_settingsAdapterManager;
 @property (readonly, nonatomic) HFHomeKitSettingsValueManager *hf_settingsValueManager;
 @property (readonly, nonatomic) BOOL hf_shouldShowInFavorites;
 @property (readonly, nonatomic) BOOL hf_showsAudioSettings;
+@property (readonly, nonatomic) BOOL hf_supportsHomeTheater;
 @property (readonly, nonatomic) BOOL hf_supportsMusicAlarm;
 @property (readonly, nonatomic) BOOL hf_supportsSoftwareUpdate;
 @property (readonly, nonatomic) BOOL hf_supportsStereoPairing;
+@property (readonly, nonatomic) id<HFUIRepresentableHomeObject> hf_topLevelUIRepresentableHomeObject;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
 @property (readonly, nonatomic) BOOL isContainedWithinItemGroup;
 @property (readonly, nonatomic) BOOL isItemGroup;
@@ -66,15 +76,17 @@
 @property (readonly) HMAccessorySettings *settings;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (readonly, copy) NSSet *symptoms;
 @property (readonly, nonatomic) HMSymptomsHandler *symptomsHandler;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
-- (id)hf_accessories;
 - (id)hf_accessoryForRole:(id)arg1;
 - (id)hf_appleMusicCurrentLoggedInAccount;
 - (id)hf_appleMusicCurrentLoggedInAccountDSID;
+- (id)hf_destination;
 - (BOOL)hf_fake8021xNetworkSymptom;
 - (id)hf_fetchLog:(id)arg1 timeout:(double)arg2;
 - (id)hf_fetchLogListWithTimeout:(double)arg1;
@@ -82,11 +94,8 @@
 - (id)hf_homePodSupportsMultiUserLanguage;
 - (id)hf_idsDeviceIdentifierWithError:(id *)arg1;
 - (BOOL)hf_isValidObject;
-- (id)hf_profiles;
 - (id)hf_roleForAccessory:(id)arg1;
-- (id)hf_services;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
-- (id)hf_topLevelAccessoryLikeHomeObject;
 - (id)hf_updateDateAdded:(id)arg1;
 - (id)hf_updateIsFavorite:(BOOL)arg1;
 @end

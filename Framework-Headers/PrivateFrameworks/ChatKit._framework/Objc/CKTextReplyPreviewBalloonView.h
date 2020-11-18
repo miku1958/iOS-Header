@@ -26,6 +26,7 @@
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(struct UIEdgeInsets *)arg2 isSingleLine:(BOOL *)arg3;
+- (struct UIEdgeInsets)targetTextContainerInsets;
 
 @end
 

@@ -57,6 +57,7 @@
 @property (nonatomic) double zoomFactor;
 
 + (id)JSONStringFromDictionary:(id)arg1;
++ (void)cleanUp;
 + (id)compileSpec:(id)arg1 config:(id)arg2 baseConfig:(id)arg3 expressionFunctionNames:(id)arg4 error:(id *)arg5;
 + (id)compileSpecDictionary:(id)arg1 configDictionary:(id)arg2 baseConfig:(id)arg3 expressionFunctionNames:(id)arg4 error:(id *)arg5;
 + (id)configForBaseConfigType:(id)arg1;

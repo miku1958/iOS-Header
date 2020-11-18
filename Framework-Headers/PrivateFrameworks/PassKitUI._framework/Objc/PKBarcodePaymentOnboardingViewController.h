@@ -6,27 +6,36 @@
 
 #import <PassKitUI/PKExplanationViewController.h>
 
+#import <PassKitUI/PKExplanationViewControllerDelegate-Protocol.h>
 #import <PassKitUI/UITextViewDelegate-Protocol.h>
 
-@class NSString, PKPaymentSetupProduct;
+@class NSString, PKEducationPhone, PKWatchDeviceImageOverlayView;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKBarcodePaymentOnboardingViewController : PKExplanationViewController <UITextViewDelegate>
+@interface PKBarcodePaymentOnboardingViewController : PKExplanationViewController <UITextViewDelegate, PKExplanationViewControllerDelegate>
 {
     id<PKPaymentSetupViewControllerDelegate> _setupDelegate;
-    PKPaymentSetupProduct *_paymentSetupProduct;
+    NSString *_issuerName;
+    PKEducationPhone *_educationPhone;
+    PKWatchDeviceImageOverlayView *_watchView;
+    CDUnknownBlockType _continueHandler;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType continueHandler; // @synthesize continueHandler=_continueHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_imageForWatchView;
 - (void)_terminateSetupFlow;
+- (void)explanationViewControllerDidSelectCancel:(id)arg1;
+- (void)explanationViewControllerDidSelectDone:(id)arg1;
 - (void)explanationViewDidSelectContinue:(id)arg1;
-- (id)initWithPaymentSetupProduct:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3;
+- (id)initWithIssuerName:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 
 @end

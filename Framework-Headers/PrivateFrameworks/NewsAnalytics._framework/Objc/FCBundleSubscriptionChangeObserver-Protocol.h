@@ -6,12 +6,12 @@
 
 #import <NewsAnalytics/NSObject-Protocol.h>
 
-@class FCBundleSubscription, FCBundleSubscriptionChangeSet;
+@class FCBundleSubscription;
 
 @protocol FCBundleSubscriptionChangeObserver <NSObject>
 
 @optional
-- (void)bundleSubscriptionDidChange:(FCBundleSubscription *)arg1 previousBundleSubscription:(FCBundleSubscription *)arg2 changeSet:(FCBundleSubscriptionChangeSet *)arg3;
+- (void)bundleSubscriptionDidChange:(FCBundleSubscription *)arg1 previousBundleSubscription:(FCBundleSubscription *)arg2;
 - (void)bundleSubscriptionDidExpire:(FCBundleSubscription *)arg1;
 - (void)bundleSubscriptionDidSubscribe:(FCBundleSubscription *)arg1;
 @end

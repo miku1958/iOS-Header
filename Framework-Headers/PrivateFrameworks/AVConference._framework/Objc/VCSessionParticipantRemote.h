@@ -65,8 +65,9 @@ __attribute__((visibility("hidden")))
 + (BOOL)isDeviceLargeScreen;
 + (unsigned int)maxAudioNetworkBitrateForLocalInterfaceOnWiFi:(BOOL)arg1;
 + (unsigned int)maxVideoNetworkBitrateForVideoQuality:(unsigned char)arg1 isLocalOnWiFi:(BOOL)arg2 isRedundancyRequested:(BOOL)arg3;
-- (void)collectAudioChannelMetrics:(CDStruct_3ab08b48 *)arg1;
-- (void)collectVideoChannelMetrics:(CDStruct_3ab08b48 *)arg1;
+- (id)checkSubstreams:(id)arg1 forLowerQualityIndex:(unsigned int)arg2;
+- (void)collectAudioChannelMetrics:(CDStruct_1dd2c43e *)arg1;
+- (void)collectVideoChannelMetrics:(CDStruct_1dd2c43e *)arg1;
 - (BOOL)configureAudioIOWithDeviceRole:(int)arg1;
 - (BOOL)configureWithOneToOneParticipantConfig:(id)arg1;
 - (void)dealloc;

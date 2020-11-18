@@ -48,8 +48,6 @@
     id<SBRootFolderPageTransition> _searchGestureTransition;
     id<SBRootFolderPageTransition> _implicitScrollTransition;
     SBHRecentsDocumentExtensionProvider *_recentsDocumentExtensionProvider;
-    id<BSInvalidatable> _iconImageViewControllerKeepStaticForPageManagementVisibleAssertion;
-    id<BSInvalidatable> _iconImageViewControllerKeepStaticForPageManagementDismissalAssertion;
     CHSAvocadoDescriptorProvider *_avocadoDescriptorProvider;
 }
 
@@ -79,8 +77,6 @@
 @property (strong, nonatomic) SBFolderIconImageCache *folderIconImageCache;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SBHIconImageCache *iconImageCache;
-@property (strong, nonatomic) id<BSInvalidatable> iconImageViewControllerKeepStaticForPageManagementDismissalAssertion; // @synthesize iconImageViewControllerKeepStaticForPageManagementDismissalAssertion=_iconImageViewControllerKeepStaticForPageManagementDismissalAssertion;
-@property (strong, nonatomic) id<BSInvalidatable> iconImageViewControllerKeepStaticForPageManagementVisibleAssertion; // @synthesize iconImageViewControllerKeepStaticForPageManagementVisibleAssertion=_iconImageViewControllerKeepStaticForPageManagementVisibleAssertion;
 @property (strong, nonatomic) id<SBRootFolderPageTransition> implicitScrollTransition; // @synthesize implicitScrollTransition=_implicitScrollTransition;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings;
 @property (nonatomic) BOOL managesStatusBarWidth; // @synthesize managesStatusBarWidth=_managesStatusBarWidth;
@@ -107,6 +103,7 @@
 @property (readonly, nonatomic) UIView *searchableTodayWrapperView;
 @property (readonly, nonatomic) BOOL showsAddWidgetButtonWhileEditing; // @synthesize showsAddWidgetButtonWhileEditing=_showsAddWidgetButtonWhileEditing;
 @property (readonly, nonatomic) BOOL showsDoneButtonWhileEditing; // @synthesize showsDoneButtonWhileEditing=_showsDoneButtonWhileEditing;
+@property (readonly, nonatomic, getter=isSidebarEffectivelyAtLeastHalfVisible) BOOL sidebarEffectivelyAtLeastHalfVisible;
 @property (readonly, nonatomic, getter=isSidebarEffectivelyVisible) BOOL sidebarEffectivelyVisible;
 @property (readonly, nonatomic) long long sidebarPageIndex;
 @property (nonatomic, getter=isSidebarPinned) BOOL sidebarPinned;
@@ -164,7 +161,10 @@
 - (void)_handleWidgetSheetViewControllerWillDisappear:(id)arg1;
 - (void)_insertSmartStackSpecialAvocadosAtTheTopOfApplicationWidgetCollections:(id)arg1;
 - (void)_invalidateSearchGestureIconViewTouchCancellationAssertion;
+- (BOOL)_isDescriptorAllowed:(id)arg1;
+- (BOOL)_isDescriptorVisibleByDefault:(id)arg1;
 - (BOOL)_isDockSwitchedForOrientation:(long long)arg1;
+- (BOOL)_isVisibilityWidgetDefined:(long long)arg1;
 - (BOOL)_listIndexIsVisible:(unsigned long long)arg1;
 - (id)_makeContentViewWithConfiguration:(id)arg1;
 - (void)_reduceTransparencyChanged;
@@ -267,15 +267,15 @@
 - (void)removePageStateObserver:(id)arg1;
 - (void)rootFolderView:(id)arg1 didChangeEffectiveSidebarVisibilityProgress:(double)arg2;
 - (void)rootFolderView:(id)arg1 didChangeSidebarVisibilityProgress:(double)arg2;
+- (void)rootFolderView:(id)arg1 didDismissPageManagementWithContext:(id)arg2;
 - (void)rootFolderView:(id)arg1 didEndOverscrollOnFirstPageWithVelocity:(double)arg2 translation:(double)arg3;
 - (void)rootFolderView:(id)arg1 didEndOverscrollOnLastPageWithVelocity:(double)arg2 translation:(double)arg3;
 - (void)rootFolderView:(id)arg1 didEndSidebarVisibilityTransitionWithEffectiveProgress:(double)arg2;
 - (void)rootFolderView:(id)arg1 didOverscrollOnFirstPageByAmount:(double)arg2;
 - (void)rootFolderView:(id)arg1 didOverscrollOnLastPageByAmount:(double)arg2;
 - (void)rootFolderView:(id)arg1 wantsToAdjustTodayContentForEdgeBounceForScrollOffset:(struct CGPoint)arg2;
-- (void)rootFolderView:(id)arg1 willDismissPageManagementUsingAnimator:(id)arg2;
-- (void)rootFolderView:(id)arg1 willPresentPageManagementUsingAnimator:(id)arg2;
-- (void)rootFolderViewDidDismissPageManagement:(id)arg1;
+- (void)rootFolderView:(id)arg1 willDismissPageManagementUsingAnimator:(id)arg2 context:(id)arg3;
+- (void)rootFolderView:(id)arg1 willPresentPageManagementUsingAnimator:(id)arg2 context:(id)arg3;
 - (id)rootFolderViewIfLoaded;
 - (void)rootFolderViewWantsToEndEditing:(id)arg1;
 - (void)rootFolderViewWantsWidgetEditingViewControllerPresented:(id)arg1;
@@ -301,7 +301,6 @@
 - (void)stackConfigurationViewControllerViewWillDisappear:(id)arg1;
 - (struct UIEdgeInsets)statusBarInsetsForOrientation:(long long)arg1;
 - (BOOL)suspendsWallpaperAnimationWhileOpen;
-- (void)togglePageManagementUIWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)transitionContext:(id)arg1 updateTransitionProgress:(double)arg2;
 - (void)transitionDidFinish:(id)arg1;
 - (void)transitionWillBegin:(id)arg1;

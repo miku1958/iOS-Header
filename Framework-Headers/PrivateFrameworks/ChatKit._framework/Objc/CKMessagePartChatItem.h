@@ -6,7 +6,7 @@
 
 #import <ChatKit/CKBalloonChatItem.h>
 
-@class IMMessage, IMMessageItem, NSArray, NSString, UIItemProvider;
+@class IMMessage, IMMessageItem, NSArray, NSItemProvider, NSString;
 
 @interface CKMessagePartChatItem : CKBalloonChatItem
 {
@@ -15,7 +15,7 @@
 
 @property (readonly, nonatomic) BOOL canSendMessageAcknowledgment;
 @property (readonly, nonatomic) BOOL color;
-@property (readonly, nonatomic) UIItemProvider *dragItemProvider;
+@property (readonly, nonatomic) NSItemProvider *dragItemProvider;
 @property (readonly, nonatomic) BOOL hasMessageAcknowledgment;
 @property (readonly, nonatomic) BOOL hasStickers;
 @property (readonly, nonatomic) long long index;
@@ -26,7 +26,7 @@
 @property (readonly, nonatomic) IMMessage *message;
 @property (readonly, copy, nonatomic) NSArray *messageAcknowledgments;
 @property (readonly, nonatomic) struct _NSRange messagePartRange;
-@property (readonly, copy, nonatomic) NSArray *pasteboardItems;
+@property (readonly, nonatomic) NSArray *pasteboardItemProviders;
 @property (readonly, nonatomic) NSString *threadIdentifier;
 @property (readonly, nonatomic) IMMessageItem *threadOriginator;
 @property (readonly, nonatomic) NSArray *visibleAssociatedMessageChatItems; // @synthesize visibleAssociatedMessageChatItems=_visibleAssociatedMessageChatItems;
@@ -40,7 +40,7 @@
 - (BOOL)canInlineReply;
 - (BOOL)canSendAsTextMessage;
 - (unsigned long long)chatItemReplyLineContiguousTypeForChatStyle:(unsigned char)arg1;
-- (id)composition;
+- (id)compositionWithContext:(id)arg1;
 - (void)configureBalloonView:(id)arg1;
 - (id)description;
 - (BOOL)failed;

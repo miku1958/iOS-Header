@@ -12,6 +12,7 @@
 - (void)nonemptyDrawComplete;
 - (BOOL)rangeIsVisible:(HKValueRange *)arg1;
 - (struct CGRect)screenRectForSeries:(HKGraphSeries *)arg1;
+- (struct CGPoint)seriesContentOffset;
 - (void)seriesDidInvalidatePaths:(HKGraphSeries *)arg1 newDataArrived:(BOOL)arg2;
 - (BOOL)seriesDrawingDuringAutoscale;
 - (BOOL)seriesDrawingDuringScrolling;

@@ -19,6 +19,7 @@
     _MKQuickRouteManager *_quickRouteManager;
     NSNumber *_lastTransportTypeFound;
     MKMapItem *_nearestStationItem;
+    BOOL _distanceOrETAIsSuppressed;
     BOOL _distanceOrETAWasFound;
     NSString *_distanceTextItem;
     unsigned long long _etaTransportType;
@@ -62,6 +63,7 @@
 - (void)_commonInit;
 - (void)_configureETAForMapItem:(id)arg1;
 - (void)_didEnterBackground;
+- (void)_locationManagerApprovalDidChange:(id)arg1;
 - (void)_notifyETAAllObservers;
 - (void)_notifyLocationAllObservers;
 - (void)_refreshTimer;

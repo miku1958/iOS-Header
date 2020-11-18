@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (id)_authenticateRequestWithAuthType:(unsigned long long)arg1 taskInfo:(id)arg2 dialogResponse:(id)arg3;
-+ (id)_handleDialogFromAuthError:(id)arg1 taskInfo:(id)arg2;
++ (void)_handleDialogFromAuthError:(id)arg1 taskInfo:(id)arg2;
 + (id)_performAuthRequest:(id)arg1 actionResult:(id)arg2 redirectURL:(id)arg3 taskInfo:(id)arg4;
 + (id)_presentAuthRequest:(id)arg1 taskInfo:(id)arg2;
 + (void)_updateTaskWithAuthedAccount:(id)arg1 taskInfo:(id)arg2;

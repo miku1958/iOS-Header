@@ -15,6 +15,8 @@
     UIView *_contentView;
     UIImageView *_shadowView;
     UIVisualEffectView *_visualEffectView;
+    UIView *_darkOuterGlowView;
+    UIView *_innerGlowView;
     UIView *_paddleView;
     UIView *_viewToShow;
     struct CGRect _overlayRect;
@@ -23,7 +25,9 @@
 
 @property (nonatomic) struct CGRect anchorRect; // @synthesize anchorRect=_anchorRect;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+@property (strong, nonatomic) UIView *darkOuterGlowView; // @synthesize darkOuterGlowView=_darkOuterGlowView;
 @property (weak, nonatomic) id<CKPaddleOverlayViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) UIView *innerGlowView; // @synthesize innerGlowView=_innerGlowView;
 @property (nonatomic) struct CGRect overlayRect; // @synthesize overlayRect=_overlayRect;
 @property (strong, nonatomic) UIView *paddleView; // @synthesize paddleView=_paddleView;
 @property (strong, nonatomic) UIImageView *shadowView; // @synthesize shadowView=_shadowView;
@@ -32,9 +36,11 @@
 
 - (void).cxx_destruct;
 - (void)dismiss;
+- (void)drawMacPaddle;
 - (id)initWithOverlayView:(id)arg1 atAnchorRect:(struct CGRect)arg2 inView:(id)arg3 delegate:(id)arg4;
 - (void)showPaddleAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateShadowVisualStyling;
 
 @end

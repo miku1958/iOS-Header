@@ -15,6 +15,7 @@
     MISSING_TYPE *graceStore;
     MISSING_TYPE *inUseAssertionType;
     MISSING_TYPE *authMonitorType;
+    MISSING_TYPE *significantChangeMonitorType;
     MISSING_TYPE *graceStoreFlushInterval;
     MISSING_TYPE *inUseNanosecondsOfGrace;
     MISSING_TYPE *serialProcessingQueue;
@@ -26,8 +27,9 @@
     MISSING_TYPE *graceTimer;
     MISSING_TYPE *authMonitorByIdentifier;
     MISSING_TYPE *publisherLock;
-    MISSING_TYPE *authChangedExtensionIdentifiersPublisher;
-    MISSING_TYPE *authChangedExtensionIdentifiers;
+    MISSING_TYPE *significantChangeMonitor;
+    MISSING_TYPE *changedExtensionIdentifiersPublisher;
+    MISSING_TYPE *changedExtensionIdentifiers;
 }
 
 @end

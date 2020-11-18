@@ -8,7 +8,7 @@
 
 #import <ShazamKit/SHSessionDriver-Protocol.h>
 
-@class NSDate, NSString, SHSignature, SHSignatureBuffer;
+@class NSString, SHSignature, SHSignatureBuffer, SHSignatureMetrics;
 @protocol SHSessionDriverDelegate;
 
 __attribute__((visibility("hidden")))
@@ -17,10 +17,10 @@ __attribute__((visibility("hidden")))
     BOOL _waiting;
     id<SHSessionDriverDelegate> _sessionDelegate;
     double _currentRequiredLength;
-    NSDate *_sessionStartDate;
     double _maximumSignatureLength;
     double _minimumSignatureLength;
     SHSignatureBuffer *_signatureBuffer;
+    SHSignatureMetrics *_metrics;
 }
 
 @property (nonatomic) double currentRequiredLength; // @synthesize currentRequiredLength=_currentRequiredLength;
@@ -29,9 +29,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) SHSignature *matchingSignature;
 @property (nonatomic) double maximumSignatureLength; // @synthesize maximumSignatureLength=_maximumSignatureLength;
+@property (strong, nonatomic) SHSignatureMetrics *metrics; // @synthesize metrics=_metrics;
 @property (nonatomic) double minimumSignatureLength; // @synthesize minimumSignatureLength=_minimumSignatureLength;
 @property (weak, nonatomic) id<SHSessionDriverDelegate> sessionDelegate; // @synthesize sessionDelegate=_sessionDelegate;
-@property (strong, nonatomic) NSDate *sessionStartDate; // @synthesize sessionStartDate=_sessionStartDate;
 @property (strong, nonatomic) SHSignatureBuffer *signatureBuffer; // @synthesize signatureBuffer=_signatureBuffer;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL waiting; // @synthesize waiting=_waiting;
@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)didFinishForMatcher:(id)arg1;
 - (void)flow:(id)arg1 time:(id)arg2;
 - (id)initWithMinimumSignatureLength:(double)arg1 maximumSignatureLength:(double)arg2;
+- (BOOL)isCurrentSignature:(id)arg1;
 - (void)match;
 - (void)matcher:(id)arg1 didFailForSignature:(id)arg2 matcherResponse:(id)arg3 withError:(id)arg4;
 - (void)matcher:(id)arg1 didFindMatchingResponse:(id)arg2;

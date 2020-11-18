@@ -27,7 +27,7 @@
 - (void)repairMemoriesWithUUIDs:(NSArray *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)resetLimitedLibraryAccessForApplication:(id)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 - (void)setAssetKeywords:(NSSet *)arg1 forAssetUUID:(NSString *)arg2 reply:(void (^)(BOOL))arg3;
-- (void)setFetchFilterWithAssets:(NSArray *)arg1 forApplication:(NSString *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
+- (void)setFetchFilterWithAssets:(NSArray *)arg1 forApplication:(NSString *)arg2 withAuditToken:(CDStruct_6ad76789)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
 - (void)setWidgetTimelineGeneratedForDisplaySize:(struct CGSize)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 - (void)updateAssetLocationDataWithUUID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)waitForSearchIndexExistenceWithReply:(void (^)(BOOL, NSError *))arg1;

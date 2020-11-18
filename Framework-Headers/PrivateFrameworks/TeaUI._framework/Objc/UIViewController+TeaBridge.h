@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) UIViewController *ts_parentVC;
 @property (nonatomic, readonly) TSTransitionContainerViewController *ts_transitionContainerViewController;
 
++ (void)ts_performWithoutDeferringTransitions:(CDUnknownBlockType)arg1;
 - (id)tabBarSplitViewFocusable;
 - (id)tabBarSplitViewFousable;
 - (BOOL)ts_setAppearanceTransitionsAreDisabled:(BOOL)arg1;

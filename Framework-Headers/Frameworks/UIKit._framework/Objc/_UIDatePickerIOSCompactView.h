@@ -11,7 +11,7 @@
 #import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
 #import <UIKitCore/_UIDatePickerViewComponent-Protocol.h>
 
-@class NSArray, NSDateFormatter, NSString, UIColor, UIDatePicker, UILabel, UIPointerInteraction, UIView, _UIDatePickerDataModel;
+@class NSArray, NSDateFormatter, NSString, UIColor, UIDatePicker, UILabel, UILayoutGuide, UIPointerInteraction, UIView, _UIDatePickerDataModel, _UIDatePickerLinkedLabel;
 
 __attribute__((visibility("hidden")))
 @interface _UIDatePickerIOSCompactView : UIControl <UIContextMenuInteractionDelegate, UIContextMenuInteractionDelegate_Private, UIPointerInteractionDelegate, _UIDatePickerViewComponent>
@@ -19,12 +19,18 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned int isEnabled:1;
     } _flags;
-    NSDateFormatter *_dateFormatter;
+    NSDateFormatter *_dateFormatterMedium;
+    NSDateFormatter *_dateFormatterShort;
+    UIView *_dateView;
     UIView *_dateBackgroundPlatter;
-    UILabel *_dateLabel;
+    _UIDatePickerLinkedLabel *_dateLabel;
     NSDateFormatter *_timeFormatter;
+    UIView *_timeView;
     UIView *_timeBackgroundPlatter;
     UILabel *_timeLabel;
+    UILayoutGuide *_timeViewLayoutGuide;
+    NSDateFormatter *_layoutFormatter;
+    BOOL _dateOnLeadingSide;
     NSArray *_dateTimeConstraints;
     UIPointerInteraction *_pointerInteraction;
     UIDatePicker *_datePicker;
@@ -55,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (void)_setHidesLabels:(BOOL)arg1;
 - (struct CGSize)_sizeThatFits:(struct CGSize)arg1;
 - (id)_targetedPreviewForContextMenu;
+- (void)_updateDateBeforeTimeValue;
 - (void)_updateEnabledStyling;
 - (void)_updateUI;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;

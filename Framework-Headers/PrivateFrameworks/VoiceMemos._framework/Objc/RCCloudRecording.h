@@ -81,7 +81,7 @@
 - (id)searchableItem;
 - (void)setName:(id)arg1;
 - (id)subjectForActivityType:(id)arg1;
-- (BOOL)synchronizeRecordingMetadata:(id *)arg1;
+- (void)synchronizeRecordingMetadata;
 - (BOOL)synchronizeWithExistingAudioFuture:(id *)arg1;
 - (BOOL)validateForInsert:(id *)arg1;
 - (BOOL)validateForUpdate:(id *)arg1;

@@ -19,6 +19,7 @@
     MISSING_TYPE *eventManager;
     MISSING_TYPE *currentPlacementIdentifier;
     MISSING_TYPE *pendingLoadToken;
+    MISSING_TYPE *currentPageIdentifier;
 }
 
 @end

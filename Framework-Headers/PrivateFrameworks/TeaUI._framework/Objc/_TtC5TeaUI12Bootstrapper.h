@@ -16,6 +16,8 @@
     MISSING_TYPE *deferredPromise;
     MISSING_TYPE *deferringGroup;
     MISSING_TYPE *shouldCollapseSidebar;
+    MISSING_TYPE *defaultWidthConstraint;
+    MISSING_TYPE *defaultHeightConstraint;
 }
 
 - (void).cxx_destruct;

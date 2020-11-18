@@ -7,7 +7,7 @@
 #import <BannerKit/NSObject-Protocol.h>
 
 @class BNPendingDequeuePromise, NSArray, NSDictionary, NSSet, NSString;
-@protocol BNPresentable;
+@protocol BNPresentable, BNPresentableUniquelyIdentifying;
 
 @protocol BNPending <NSObject>
 
@@ -17,8 +17,7 @@
 
 - (void)enqueuePresentable:(id<BNPresentable>)arg1 withOptions:(unsigned long long)arg2 userInfo:(NSDictionary *)arg3;
 - (BNPendingDequeuePromise *)peekPresentable;
-- (NSArray *)pullAllPresentablesWithRequesterIdentifier:(NSString *)arg1;
-- (NSArray *)pullPresentablesWithRequestIdentifier:(NSString *)arg1 andRequesterIdentifier:(NSString *)arg2;
+- (NSArray *)pullPresentablesWithIdentification:(id<BNPresentableUniquelyIdentifying>)arg1;
 - (BOOL)setSuspended:(BOOL)arg1 forReason:(NSString *)arg2;
 @end
 

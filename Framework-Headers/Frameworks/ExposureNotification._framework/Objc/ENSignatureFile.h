@@ -17,6 +17,8 @@
 
 @property (copy, nonatomic) NSArray *signatures; // @synthesize signatures=_signatures;
 
++ (id)_signatureFileWithProtobufCoder:(id)arg1 error:(id *)arg2;
++ (id)signatureFileWithArchive:(id)arg1 error:(id *)arg2;
 + (id)signatureFileWithBytes:(const char *)arg1 length:(unsigned long long)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (BOOL)closeAndReturnError:(id *)arg1;

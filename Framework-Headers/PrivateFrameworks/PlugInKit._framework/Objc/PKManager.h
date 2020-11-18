@@ -32,6 +32,7 @@
 - (void)registerPlugInAtURL:(id)arg1 result:(CDUnknownBlockType)arg2;
 - (void)registerPlugInsInBundle:(id)arg1 result:(CDUnknownBlockType)arg2;
 - (void)releaseHold:(id)arg1;
+- (BOOL)releaseHold:(id)arg1 flags:(unsigned long long)arg2 withError:(id *)arg3;
 - (void)releaseHold:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (BOOL)releaseHold:(id)arg1 withError:(id *)arg2;
 - (BOOL)terminatePlugInAtURL:(id)arg1 withError:(id *)arg2;

@@ -98,7 +98,7 @@
 - (void)_updateEventSource:(long long)arg1 options:(unsigned long long)arg2;
 - (void)_updateFocusedSceneIdentityIfPermittedForWindow:(id)arg1 force:(BOOL)arg2;
 - (void)_updateProxySceneIdentity;
-- (void)addHostedWindowView:(id)arg1 fromPID:(int)arg2;
+- (void)addHostedWindowView:(id)arg1 fromPID:(int)arg2 forScene:(id)arg3;
 - (BOOL)allowedToShowKeyboard;
 - (void)applicationResume:(id)arg1;
 - (void)assertionActivationStateChangedToState:(BOOL)arg1 forType:(unsigned long long)arg2;
@@ -134,6 +134,7 @@
 - (void)performOnDistributedControllers:(CDUnknownBlockType)arg1;
 - (id)prepareForHostedWindowWithScene:(id)arg1;
 - (void)prepareToMoveKeyboard:(struct CGRect)arg1 withIAV:(struct CGRect)arg2 isIAVRelevant:(BOOL)arg3 showing:(BOOL)arg4 notifyRemote:(BOOL)arg5 forScene:(id)arg6;
+- (void)queue_activeProcessResignWithCompletion:(CDUnknownBlockType)arg1;
 - (void)queue_failedConnection:(id)arg1;
 - (void)queue_getDebugInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)queue_keyboardChanged:(id)arg1 onComplete:(CDUnknownBlockType)arg2;
@@ -164,6 +165,7 @@
 - (void)updateCurrentState:(id)arg1;
 - (void)updateEventSource:(long long)arg1 options:(unsigned long long)arg2;
 - (void)updateFocusedIdentityIfPermittedForHostWindow:(id)arg1 servicePID:(int)arg2;
+- (void)updateLastScreen:(id)arg1;
 - (void)updateTransition:(id)arg1 withInfo:(id)arg2;
 - (void)userSelectedApp:(id)arg1 onCompletion:(CDUnknownBlockType)arg2;
 - (void)userSelectedProcessIdentifier:(int)arg1 withSceneIdentity:(id)arg2 onCompletion:(CDUnknownBlockType)arg3;

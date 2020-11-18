@@ -6,14 +6,12 @@
 
 #import <MediaRemote/MRExternalDeviceTransport.h>
 
-@class IDSService, MRAVOutputDevice, MRIDSInputStream, MRIDSOutputStream;
+@class MRAVOutputDevice, MRIDSInputStream, MRIDSOutputStream;
 
 @interface MRIDSTransport : MRExternalDeviceTransport
 {
-    IDSService *_service;
     MRIDSInputStream *_inputStream;
     MRIDSOutputStream *_outputStream;
-    long long _type;
     MRAVOutputDevice *_outputDevice;
 }
 
@@ -23,8 +21,7 @@
 - (id)error;
 - (BOOL)getInputStream:(id *)arg1 outputStream:(id *)arg2 userInfo:(id)arg3;
 - (id)hostname;
-- (id)initWithType:(long long)arg1;
-- (id)initWithType:(long long)arg1 outputDevice:(id)arg2;
+- (id)initWithOutputDevice:(id)arg1;
 - (id)name;
 - (long long)port;
 - (void)reset;

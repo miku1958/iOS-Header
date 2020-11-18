@@ -17,6 +17,7 @@
     BOOL _canMakeRemotePayments;
     BOOL _isSRD;
     BOOL _canDecryptBAAEncryptedData;
+    unsigned long long _type;
 }
 
 @property (readonly, nonatomic, getter=_isDemoModeActive) BOOL _isDemoModeActive;
@@ -28,6 +29,7 @@
 @property (nonatomic) BOOL hasSecureElement; // @synthesize hasSecureElement=_hasSecureElement;
 @property (nonatomic, getter=isInFailForward) BOOL inFailForward; // @synthesize inFailForward=_inFailForward;
 @property (nonatomic) BOOL isSRD; // @synthesize isSRD=_isSRD;
+@property (nonatomic) unsigned long long type; // @synthesize type=_type;
 
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;

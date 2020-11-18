@@ -25,6 +25,7 @@
 }
 
 @property (readonly, nonatomic) unsigned long long _mutations;
+@property (nonatomic, setter=_setShowingCompactContextMenu:) BOOL _showingCompactContextMenu;
 @property (readonly, nonatomic) unsigned long long _viewConfigurationState;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -39,6 +40,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_appendPropertiesForDescription:(id)arg1;
+- (void)_configureWithViewConfigurationState:(unsigned long long)arg1;
 - (id)_customStatesForSwiftBridging;
 - (id)_initWithState:(id)arg1;
 - (void)_setSwiftBridgingCustomState:(id)arg1 forKey:(id)arg2;

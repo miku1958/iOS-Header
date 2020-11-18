@@ -63,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)getOutputDeviceIsPlaying:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)homeObserverDidUpdateKnownUIDs:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
+- (void)prewarm;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (void)setActiveSystemRoute:(id)arg1 reason:(id)arg2;
 

@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSMutableArray, NSString, TimingCollection, VCConnectionManager;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, VCConnectionProtocol;
 
 __attribute__((visibility("hidden")))
 @interface VCTransportSession : NSObject
@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     BOOL _isCallActive;
     BOOL _requiresWiFi;
     BOOL _useCompressedConnectionData;
-    BOOL _didRegisterForBasebandNotifications;
     unsigned int _basebandNotificationRegistrationToken;
     NSObject<OS_dispatch_queue> *_stateQueue;
     NSObject<OS_dispatch_queue> *_notificationQueue;
@@ -28,6 +27,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _eventHandler;
     NSMutableArray *_streams;
     struct _opaque_pthread_mutex_t _stateLock;
+    id<VCConnectionProtocol> _registeredConnection;
 }
 
 @property (readonly, nonatomic) unsigned int basebandNotificationRegistrationToken; // @synthesize basebandNotificationRegistrationToken=_basebandNotificationRegistrationToken;
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) int networkInterfaceType;
 @property (readonly) unsigned int networkMTU;
 @property (strong, nonatomic) TimingCollection *perfTimings; // @synthesize perfTimings=_perfTimings;
+@property (strong, nonatomic) id<VCConnectionProtocol> registeredConnection; // @synthesize registeredConnection=_registeredConnection;
 @property (nonatomic) BOOL requiresWiFi; // @synthesize requiresWiFi=_requiresWiFi;
 @property (nonatomic) BOOL useCompressedConnectionData; // @synthesize useCompressedConnectionData=_useCompressedConnectionData;
 

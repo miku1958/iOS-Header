@@ -42,7 +42,7 @@
 	// getter
 	// getter
  }
- protocol HealthPlatform.PendingValuesInner // 18 requirements
+ protocol HealthPlatform.PendingValuesInner // 19 requirements
  {
 	// class associated conformance access function
 	// class associated type access function
@@ -50,6 +50,7 @@
 	// getter
 	// setter
 	// modify coroutine
+	// getter
 	// getter
 	// setter
 	// modify coroutine
@@ -90,11 +91,19 @@
 	// method
  }
 
+ struct __C.os_unfair_recursive_lock_s {
+
+	// Properties
+	var ourl_lock : os_unfair_lock_s
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var ourl_count : UE
+ }
+
  struct __C.os_unfair_lock_s {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _os_unfair_lock_opaque : UH
+	var _os_unfair_lock_opaque : UE
  }
 
  struct HealthPlatform.ContentMagnitudeFeatureTag {
@@ -115,7 +124,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var uniqueIdentifier : String // +0x0
 	var sourceProfile : SourceProfile // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var data : SD // +0x18
+	var data : =A // +0x18
 	var pluginIdentifier : String // +0x28
  }
 
@@ -133,7 +142,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var uniqueIdentifier : String
 	var userInterface : UserInterface
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var userData : SD
+	var userData : =A
 	var relevantDateInterval : RelevantDateInterval
 	var contentKind : ContentKind
 	var associatedHKTypes : Set<HKObjectType>
@@ -246,7 +255,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisher : ŸA // +0x0
+	let publisher : ≈> // +0x0
 	var domain : GeneratorDomain // +0x8
 	var requiresSerializedGenerators : Bool // +0x21
  }
@@ -255,8 +264,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisher : øA // +0x0
+	let publisher : ´> // +0x0
 	let domain : GeneratorDomain // +0x8
+ }
+
+ class HealthPlatform.RecursiveUnfairLock : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var underlyingLock : os_unfair_recursive_lock_s
+
+	// Swift methods
+	0x13010  class func RecursiveUnfairLock.__allocating_init() // init 
+	0x130e0  func <stripped> // method 
+	0x130f0  func <stripped> // method 
+	0x13100  func <stripped> // method 
+	0x13110  func <stripped> // method 
  }
 
  struct HealthPlatform.MutualExclusionGroupFeatureTag {
@@ -404,11 +426,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var underlyingLock : os_unfair_lock_s
 
 	// Swift methods
-	0x221e0  class func UnfairLock.__allocating_init() // init 
-	0x222a0  func <stripped> // method 
-	0x222b0  func <stripped> // method 
-	0x222c0  func <stripped> // method 
-	0x222d0  func <stripped> // method 
+	0x22310  class func UnfairLock.__allocating_init() // init 
+	0x223d0  func <stripped> // method 
+	0x223e0  func <stripped> // method 
+	0x223f0  func <stripped> // method 
+	0x22400  func <stripped> // method 
  }
 
  struct HealthPlatform.HKTypesFeatureTag {
@@ -451,7 +473,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let interval : ≥=
+	let interval : ç:
 	let rampUpTime : Double
 	let rampDownTime : Double
  }

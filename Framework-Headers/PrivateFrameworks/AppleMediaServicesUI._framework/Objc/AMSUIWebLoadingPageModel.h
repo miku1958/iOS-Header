@@ -14,11 +14,14 @@ __attribute__((visibility("hidden")))
 @interface AMSUIWebLoadingPageModel : NSObject <AMSUIWebPageProvider>
 {
     BOOL _disableDelay;
+    NSString *_backgroundColor;
     AMSUIWebNavigationBarModel *_navigationBar;
     NSString *_message;
     AMSUIWebClientContext *_context;
+    struct CGSize _windowSize;
 }
 
+@property (readonly, nonatomic) NSString *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (strong, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -28,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *message; // @synthesize message=_message;
 @property (readonly, nonatomic) AMSUIWebNavigationBarModel *navigationBar; // @synthesize navigationBar=_navigationBar;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) struct CGSize windowSize; // @synthesize windowSize=_windowSize;
 
 - (void).cxx_destruct;
 - (id)createViewController;

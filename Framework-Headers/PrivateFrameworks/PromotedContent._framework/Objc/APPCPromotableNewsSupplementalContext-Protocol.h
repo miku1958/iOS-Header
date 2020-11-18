@@ -12,6 +12,7 @@
 @protocol APPCPromotableNewsSupplementalContext <APPCSecureCodable, NSCopying>
 
 @property (nonatomic, readonly) NSString *advertisementType;
+@property (nonatomic, readonly) NSDictionary *anfComponentMetadata;
 @property (nonatomic, readonly) NSString *contentEnvironment;
 @property (nonatomic, readonly) NSString *creativeType;
 @property (nonatomic, readonly) NSString *currentArticleArticleId;

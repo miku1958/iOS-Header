@@ -54,6 +54,7 @@
 @property (readonly, getter=isEntitledForSPIAccess) BOOL entitledForSPIAccess;
 @property (readonly, nonatomic, getter=isEntitledForSecureAccess) BOOL entitledForSecureAccess;
 @property (readonly, nonatomic, getter=isEntitledForShortcutsAutomationAccess) BOOL entitledForShortcutsAutomationAccess;
+@property (readonly, nonatomic, getter=isEntitledForStateDump) BOOL entitledForStateDump;
 @property (readonly, nonatomic, getter=isEntitledToProvideAccessorySetupPayload) BOOL entitledToProvideAccessorySetupPayload;
 @property (readonly) unsigned long long entitlements; // @synthesize entitlements=_entitlements;
 @property (readonly) unsigned long long hash;
@@ -74,7 +75,6 @@
 - (void).cxx_destruct;
 - (void)__handleApplicationStateChange:(id)arg1;
 - (id)_displayName;
-- (void)_notifyOfNewIncomingClientMessage;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)attributeDescriptions;
 - (BOOL)canSendMessage:(id)arg1;

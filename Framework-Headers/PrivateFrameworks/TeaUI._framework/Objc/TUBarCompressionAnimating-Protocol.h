@@ -15,6 +15,7 @@
 - (BOOL)animationShouldBeginForScrollView:(UIScrollView *)arg1 currentlyFullyCompressed:(BOOL)arg2;
 - (double)maximumBarHeightForTraitCollection:(UITraitCollection *)arg1;
 - (double)minimumBarHeightForTraitCollection:(UITraitCollection *)arg1;
+- (void)prepareForUpdates;
 - (void)reloadWithTraitCollection:(UITraitCollection *)arg1;
 - (void)scrollViewIsAtTop:(BOOL)arg1;
 - (void)updateWithPercentage:(double)arg1;

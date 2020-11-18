@@ -13,6 +13,8 @@
 
 @interface CLSCurrentUser : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _hasDataSeparatedAccount;
+    BOOL _hasMatchingPersona;
     BOOL _hasEDUAccount;
     BOOL _organizationProgressTrackingAllowed;
     int _devMode;
@@ -20,6 +22,7 @@
     int _handoutServiceAuthenticationState;
     CLSPerson *_person;
     NSString *_personaUniqueString;
+    NSString *_clientPersonaUniqueString;
     NSString *_organizationName;
     long long _catalogEnvironment;
     unsigned long long _roles;
@@ -27,9 +30,12 @@
 }
 
 @property (nonatomic) long long catalogEnvironment; // @synthesize catalogEnvironment=_catalogEnvironment;
+@property (copy, nonatomic) NSString *clientPersonaUniqueString; // @synthesize clientPersonaUniqueString=_clientPersonaUniqueString;
 @property (nonatomic) int devMode; // @synthesize devMode=_devMode;
 @property (nonatomic) int handoutServiceAuthenticationState; // @synthesize handoutServiceAuthenticationState=_handoutServiceAuthenticationState;
+@property (nonatomic) BOOL hasDataSeparatedAccount; // @synthesize hasDataSeparatedAccount=_hasDataSeparatedAccount;
 @property (nonatomic) BOOL hasEDUAccount; // @synthesize hasEDUAccount=_hasEDUAccount;
+@property (nonatomic) BOOL hasMatchingPersona; // @synthesize hasMatchingPersona=_hasMatchingPersona;
 @property (readonly, nonatomic) BOOL isAdministrator;
 @property (readonly, nonatomic) BOOL isInstructor;
 @property (readonly, nonatomic) BOOL isStudent;
@@ -49,6 +55,7 @@
 - (id)_init;
 - (unsigned long long)_useRoles;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasRole:(unsigned long long)arg1;
 - (id)initWithCoder:(id)arg1;

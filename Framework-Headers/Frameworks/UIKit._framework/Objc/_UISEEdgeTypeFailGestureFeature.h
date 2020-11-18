@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface _UISEEdgeTypeFailGestureFeature : _UISEGestureFeature
 {
-    long long _lastEdgeType;
+    BOOL _initialFromEdgeTip;
 }
 
 - (void)_incorporateSample:(const struct _UISEGestureFeatureSample *)arg1;

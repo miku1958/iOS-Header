@@ -25,7 +25,10 @@
 @property (readonly, copy, nonatomic) NSString *visualStyleSetName; // @synthesize visualStyleSetName=_visualStyleSetName;
 @property (readonly, nonatomic) long long visualStyleSetVersion; // @synthesize visualStyleSetVersion=_visualStyleSetVersion;
 
++ (id)recipeNameForRecipeFromStyle:(id)arg1 fromStyleSetWithName:(id)arg2;
 - (void).cxx_destruct;
+- (id)_materialDescriptionForStyle:(id)arg1;
+- (id)_newMaterialSettingsForStyle:(id)arg1;
 - (id)initWithName:(id)arg1 visualStyleSetDescription:(id)arg2 andDescendantDescriptions:(id)arg3;
 - (id)visualStylingForStyle:(id)arg1;
 

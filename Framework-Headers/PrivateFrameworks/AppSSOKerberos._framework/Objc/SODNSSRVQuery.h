@@ -11,7 +11,7 @@
 }
 
 - (id)init;
-- (id)lookupSRVWithQuery:(id)arg1 andBundleIdentifier:(id)arg2;
+- (id)lookupSRVWithQuery:(id)arg1 bundleIdentifier:(id)arg2 auditTokenData:(id)arg3;
 
 @end
 

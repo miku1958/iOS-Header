@@ -6,24 +6,44 @@
 
 #import <objc/NSObject.h>
 
+#import <ChatKit/AVPlayerViewControllerDelegate-Protocol.h>
+
 @class AVPlayerViewController, NSString;
+@protocol CKReusableVideoPlayerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKReusableVideoPlayer : NSObject
+@interface CKReusableVideoPlayer : NSObject <AVPlayerViewControllerDelegate>
 {
+    BOOL _observingPlayer;
     BOOL _playing;
+    BOOL _wasPlayingBeforeDisappearing;
     NSString *_videoTransferGUID;
+    id<CKReusableVideoPlayerDelegate> _delegate;
     AVPlayerViewController *_playerViewController;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<CKReusableVideoPlayerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isObservingPlayer) BOOL observingPlayer; // @synthesize observingPlayer=_observingPlayer;
 @property (readonly, nonatomic, getter=isPictureInPictureActive) BOOL pictureInPictureActive;
 @property (strong, nonatomic) AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;
-@property (readonly, nonatomic, getter=isPlaying) BOOL playing; // @synthesize playing=_playing;
+@property (nonatomic, getter=isPlaying) BOOL playing; // @synthesize playing=_playing;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *videoTransferGUID; // @synthesize videoTransferGUID=_videoTransferGUID;
+@property (nonatomic) BOOL wasPlayingBeforeDisappearing; // @synthesize wasPlayingBeforeDisappearing=_wasPlayingBeforeDisappearing;
 
 - (void).cxx_destruct;
 - (void)configureWithPlayerItem:(id)arg1;
+- (void)dealloc;
+- (id)init;
 - (BOOL)isReadyForReuse;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)pause;
+- (void)removeRateObserverIfNecessary;
+- (void)selectedConversationChanged;
+- (void)willDisappear;
 
 @end
 

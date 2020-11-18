@@ -16,6 +16,7 @@
 }
 
 @property (nonatomic) BOOL adjustsFontSizeToFitWidth;
+@property (nonatomic) struct CGRect boundsForBaselines;
 @property (readonly, nonatomic) UILabel *contentLabel; // @synthesize contentLabel=_contentLabel;
 @property (strong, nonatomic) UIFont *font;
 @property (nonatomic) long long lineBreakMode;
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) UIColor *textColor;
 
 - (void).cxx_destruct;
+- (double)_baselineOffsetFromBottom;
 - (double)_firstLineBaselineOffsetFromBoundsTop;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

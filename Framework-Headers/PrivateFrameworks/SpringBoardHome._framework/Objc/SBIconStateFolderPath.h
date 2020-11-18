@@ -12,17 +12,19 @@
 {
     NSMutableArray *_folderNames;
     NSMutableArray *_folderDefaultNames;
+    NSMutableArray *_folderUniqueIdentifiers;
     NSMutableArray *_folderPaths;
 }
 
 @property (readonly, nonatomic) unsigned long long count;
 
 - (void).cxx_destruct;
-- (void)addFolderWithName:(id)arg1 defaultName:(id)arg2 indexPath:(id)arg3;
+- (void)addFolderWithName:(id)arg1 defaultName:(id)arg2 uniqueIdentifier:(id)arg3 indexPath:(id)arg4;
 - (void)enumerateFoldersUsingBlock:(CDUnknownBlockType)arg1;
 - (id)folderDefaultNameAtIndex:(unsigned long long)arg1;
 - (id)folderIndexPathAtIndex:(unsigned long long)arg1;
 - (id)folderNameAtIndex:(unsigned long long)arg1;
+- (id)folderUniqueIdentifierAtIndex:(unsigned long long)arg1;
 - (id)init;
 
 @end

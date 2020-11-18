@@ -14,6 +14,7 @@
     MISSING_TYPE *channelDataFactory;
     MISSING_TYPE *scienceDataFactory;
     MISSING_TYPE *articleFooterContext;
+    MISSING_TYPE *trackerConfiguration;
 }
 
 @end

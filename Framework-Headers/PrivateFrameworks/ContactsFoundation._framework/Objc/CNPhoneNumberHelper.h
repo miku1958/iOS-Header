@@ -12,6 +12,7 @@
 
 + (id)countryCodeForNumber:(id)arg1;
 + (id)defaultCountryCode;
++ (id)internationalizedFormattedNumber:(id)arg1 countryCode:(id)arg2;
 + (id)lastFourDigitsForNumber:(id)arg1;
 
 @end

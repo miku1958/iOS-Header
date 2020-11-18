@@ -43,7 +43,6 @@
 - (void)prepareForReuse;
 - (id)presentingViewControllerForAvatarView:(id)arg1;
 - (void)registerForEvents;
-- (BOOL)shouldShowAvatarView;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateContentsForConversation:(id)arg1;
 - (void)updateContentsForConversation:(id)arg1 fastPreview:(BOOL)arg2;

@@ -8,12 +8,15 @@
 
 #import <WorkflowKit/WFApplicationStateObserver-Protocol.h>
 #import <WorkflowKit/WFDialogPresenter-Protocol.h>
+#import <WorkflowKit/WFScreenOnObserverDelegate-Protocol.h>
 
-@class NSString, VCVoiceShortcutClient, WFDialogRequest, WFWorkflowRunningContext;
+@class NSString, VCVoiceShortcutClient, WFDialogRequest, WFScreenOnObserver, WFWorkflowRunningContext;
 @protocol OS_dispatch_queue;
 
-@interface WFDaemonDialogPresenter : NSObject <WFApplicationStateObserver, WFDialogPresenter>
+@interface WFDaemonDialogPresenter : NSObject <WFScreenOnObserverDelegate, WFApplicationStateObserver, WFDialogPresenter>
 {
+    BOOL _screenDidTurnOffDuringActiveRequest;
+    WFScreenOnObserver *_screenOnObserver;
     WFWorkflowRunningContext *_runningContext;
     VCVoiceShortcutClient *_voiceShortcutClient;
     WFDialogRequest *_suspendedRequest;
@@ -26,6 +29,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly, nonatomic) WFWorkflowRunningContext *runningContext; // @synthesize runningContext=_runningContext;
+@property (nonatomic) BOOL screenDidTurnOffDuringActiveRequest; // @synthesize screenDidTurnOffDuringActiveRequest=_screenDidTurnOffDuringActiveRequest;
+@property (readonly, nonatomic) WFScreenOnObserver *screenOnObserver; // @synthesize screenOnObserver=_screenOnObserver;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) WFDialogRequest *suspendedRequest; // @synthesize suspendedRequest=_suspendedRequest;
 @property (copy, nonatomic) CDUnknownBlockType suspendedRequestCompletion; // @synthesize suspendedRequestCompletion=_suspendedRequestCompletion;
@@ -37,6 +42,8 @@
 - (void)dealloc;
 - (void)dismissPresentedContentWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithRunningContext:(id)arg1;
+- (void)reset;
+- (void)screenOnStateDidChange:(id)arg1;
 - (void)showDialogRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)stopObservingApplicationStateIfNecessary;
 

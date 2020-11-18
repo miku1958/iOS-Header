@@ -86,7 +86,6 @@
 - (void)obliterateShortcuts:(CDUnknownBlockType)arg1;
 - (void)refreshTriggerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)requestDataMigration:(id *)arg1;
-- (void)requestSyncToWatchWithForceReset:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resetDefaultShortcutFlagsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resumeWorkflowFromContext:(id)arg1 presentationMode:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)runWorkflowWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;

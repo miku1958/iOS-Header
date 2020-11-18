@@ -39,6 +39,7 @@
 - (BOOL)isDeviceRoute;
 - (BOOL)isDeviceSpeakerRoute;
 - (BOOL)isHomePodRoute;
+- (BOOL)isHomeTheaterRoute;
 - (BOOL)isLowLatencyRoute;
 - (BOOL)isPickedOnPairedDevice;
 - (BOOL)isProxyGroupPlayer;
@@ -55,6 +56,7 @@
 - (long long)routeSubtype;
 - (long long)routeType;
 - (id)routeUID;
+- (BOOL)supportsAirPlayGrouping;
 - (BOOL)supportsGrouping;
 - (BOOL)supportsWirelessDisplay;
 

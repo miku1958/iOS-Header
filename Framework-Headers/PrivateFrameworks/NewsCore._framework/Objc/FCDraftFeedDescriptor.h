@@ -11,9 +11,9 @@
 
 @interface FCDraftFeedDescriptor : FCFeedDescriptor
 {
-    id<FCChannelProviding> _channel;
     NSString *_articleListID;
     NSString *_issueListID;
+    id<FCChannelProviding> _channel;
 }
 
 @property (readonly, nonatomic) NSString *articleListID; // @synthesize articleListID=_articleListID;
@@ -23,6 +23,7 @@
 - (void).cxx_destruct;
 - (id)allEmitterClasses;
 - (id)backingChannel;
+- (id)backingTag;
 - (id)feedGroupEmittersWithConfiguration:(id)arg1 forYouConfig:(id)arg2;
 - (long long)feedType;
 - (id)initWithChannel:(id)arg1 articleListID:(id)arg2 issueListID:(id)arg3;

@@ -30,7 +30,9 @@ __attribute__((visibility("hidden")))
 - (id)embeddedNewMessageTableViewCell;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)selectedDeleteButtonForConversation:(id)arg1 inCell:(id)arg2;
+- (void)updateContentsForConversation:(id)arg1;
 - (void)updateFontSize;
+- (double)widthForDeterminingAvatarVisibility;
 
 @end
 

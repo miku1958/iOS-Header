@@ -8,7 +8,7 @@
 
 #import <ChatKit/UITextViewDelegate-Protocol.h>
 
-@class NSArray, NSString, UIButton, UIView;
+@class NSArray, NSString, UIButton;
 @protocol CKNicknameBannerViewDelegate;
 
 @interface CKNicknameBannerView : CKUpdateBannerView <UITextViewDelegate>
@@ -16,18 +16,14 @@
     id<CKNicknameBannerViewDelegate> _delegate;
     NSArray *_nicknameUpdates;
     UIButton *_updateButton;
-    UIView *_bottomSeparatorView;
-    UIView *_topSeparatorView;
 }
 
-@property (strong, nonatomic) UIView *bottomSeparatorView; // @synthesize bottomSeparatorView=_bottomSeparatorView;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<CKNicknameBannerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *nicknameUpdates; // @synthesize nicknameUpdates=_nicknameUpdates;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UIView *topSeparatorView; // @synthesize topSeparatorView=_topSeparatorView;
 @property (strong, nonatomic) UIButton *updateButton; // @synthesize updateButton=_updateButton;
 
 - (void).cxx_destruct;

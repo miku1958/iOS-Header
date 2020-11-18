@@ -23,6 +23,7 @@
     MISSING_TYPE *completedListeningProcessor;
     MISSING_TYPE *expirationTimer;
     MISSING_TYPE *topOfFeedTrack;
+    MISSING_TYPE *dailyBriefingTrack;
     MISSING_TYPE *upNextTracks;
     MISSING_TYPE *suggestedTracks;
     MISSING_TYPE *recentlyPlayedTracks;

@@ -24,6 +24,7 @@
 - (void)prewarmPreviewForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (void)saveAnimatedPreview:(id)arg1 toURL:(id)arg2 forOrientation:(BOOL)arg3;
 - (id)savedAnimatedPreviewFromURL:(id)arg1 forOrientation:(BOOL)arg2;
+- (id)savedPreviewFromURL:(id)arg1 forOrientation:(BOOL)arg2;
 - (id)scaledThumbnailFromThumbnail:(id)arg1 forWidth:(double)arg2 isSticker:(BOOL)arg3;
 - (id)thumbnailAtIndex:(unsigned long long)arg1 forWidth:(double)arg2 imageData:(id)arg3 isSticker:(BOOL)arg4 orientation:(BOOL)arg5;
 - (BOOL)validPreviewExistsAtURL:(id)arg1;

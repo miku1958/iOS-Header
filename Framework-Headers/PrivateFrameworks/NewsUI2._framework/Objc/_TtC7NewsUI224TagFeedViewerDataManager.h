@@ -4,17 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC7NewsUI224TagFeedViewerDataManager : _TtCs12_SwiftObject
+@interface _TtC7NewsUI224TagFeedViewerDataManager : NSObject
 {
+    MISSING_TYPE *delegate;
     MISSING_TYPE *cloudContext;
     MISSING_TYPE *tagService;
     MISSING_TYPE *subscriptionController;
     MISSING_TYPE *commandCenter;
+    MISSING_TYPE *membershipController;
+    MISSING_TYPE *channel;
 }
+
+- (void).cxx_destruct;
+- (void)dealloc;
+- (id)init;
 
 @end
 

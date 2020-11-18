@@ -20,6 +20,7 @@
     } _has;
     unsigned long long _endTime;
     NSString *_identifier;
+    NSString *_speechDataTranscription;
     _INPBURLValue *_speechDataURL;
     unsigned long long _startTime;
 }
@@ -29,10 +30,12 @@
 @property (nonatomic) unsigned long long endTime; // @synthesize endTime=_endTime;
 @property (nonatomic) BOOL hasEndTime;
 @property (readonly, nonatomic) BOOL hasIdentifier;
+@property (readonly, nonatomic) BOOL hasSpeechDataTranscription;
 @property (readonly, nonatomic) BOOL hasSpeechDataURL;
 @property (nonatomic) BOOL hasStartTime;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSString *speechDataTranscription; // @synthesize speechDataTranscription=_speechDataTranscription;
 @property (strong, nonatomic) _INPBURLValue *speechDataURL; // @synthesize speechDataURL=_speechDataURL;
 @property (nonatomic) unsigned long long startTime; // @synthesize startTime=_startTime;
 @property (readonly) Class superclass;

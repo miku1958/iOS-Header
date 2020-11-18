@@ -77,6 +77,8 @@
 
 + (unsigned long long)asYouTypeSearchQueryKind;
 + (unsigned long long)committedSearchQueryKind;
++ (void)logDismissalWithReason:(unsigned long long)arg1;
++ (void)logInvokeWithReason:(unsigned long long)arg1;
 + (id)tokenFromSearchEntity:(id)arg1;
 - (void).cxx_destruct;
 - (void)_dynamicUserInterfaceTraitDidChange;
@@ -88,6 +90,7 @@
 - (double)bottomPadding;
 - (void)cancelButtonClicked:(id)arg1;
 - (BOOL)cancelButtonIsVisible;
+- (void)clearLastSearchedText;
 - (void)clearSearchFieldWhyQuery:(unsigned long long)arg1 allowZKW:(BOOL)arg2;
 - (void)commitSearch;
 - (id)currentQueryContextWithString:(id)arg1;
@@ -96,8 +99,8 @@
 - (void)didMoveToWindow;
 - (void)enableDictationIfRequired;
 - (void)escapeKeyPressed;
-- (void)focusSearchFieldAndBeginDictation:(BOOL)arg1 selectAll:(BOOL)arg2;
-- (void)focusSearchFieldAndSelectAll:(BOOL)arg1;
+- (void)focusSearchFieldAndBeginDictation:(BOOL)arg1 selectAll:(BOOL)arg2 withReason:(unsigned long long)arg3;
+- (void)focusSearchFieldAndSelectAll:(BOOL)arg1 withReason:(unsigned long long)arg2;
 - (double)horizontalSpacingForChunkyHeight;
 - (id)init;
 - (BOOL)isFirstResponder;
@@ -122,7 +125,7 @@
 - (void)tlk_updateForAppearance:(id)arg1;
 - (double)topPadding;
 - (void)triggerSearchForUnlock;
-- (void)unfocusSearchField;
+- (void)unfocusSearchFieldWithReason:(unsigned long long)arg1;
 - (void)updateBlurProgress;
 - (void)updateFocusResult:(id)arg1 cardSection:(id)arg2 focusIsOnFirstResult:(BOOL)arg3;
 - (void)updateSearchFieldModel;

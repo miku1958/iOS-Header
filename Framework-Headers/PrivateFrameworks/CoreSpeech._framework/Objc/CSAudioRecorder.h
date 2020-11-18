@@ -54,7 +54,7 @@
 - (void)_audioRecorderDidStopRecordingForReason:(long long)arg1 streamHandleID:(unsigned long long)arg2;
 - (id)_compensateChannelDataIfNeeded:(id)arg1 receivedNumChannels:(unsigned int)arg2;
 - (void)_createDeInterleaverIfNeeded;
-- (id)_deinterleaveBufferIfNeeded:(id)arg1;
+- (id)_deinterleaveBufferIfNeeded:(id)arg1 force:(BOOL)arg2;
 - (void)_destroyVoiceController;
 - (id)_getRecordSettingsWithRequest:(id)arg1;
 - (void)_logResourceNotAvailableErrorIfNeeded:(id)arg1;

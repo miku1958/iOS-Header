@@ -14,6 +14,7 @@
     MISSING_TYPE *previewQueue;
     MISSING_TYPE *promotedContentContextFactory;
     MISSING_TYPE *adProviderFactories;
+    MISSING_TYPE *reusableContexts;
     MISSING_TYPE *prewarmingContexts;
 }
 

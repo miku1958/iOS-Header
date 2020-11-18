@@ -16,6 +16,7 @@
     BOOL _inlineAnimatingOut;
     unsigned char _chatStyle;
     BOOL _isResting;
+    BOOL _disableDynamicsWhileScrolling;
     BOOL _easingUp;
     BOOL _hasLoadMore;
     BOOL _useFastQuanta;
@@ -47,6 +48,7 @@
 @property (nonatomic) unsigned char chatStyle; // @synthesize chatStyle=_chatStyle;
 @property (nonatomic) BOOL coalesceInvalidations; // @synthesize coalesceInvalidations=_coalesceInvalidations;
 @property (copy, nonatomic) NSArray *decorationLayoutAttributes; // @synthesize decorationLayoutAttributes=_decorationLayoutAttributes;
+@property (nonatomic) BOOL disableDynamicsWhileScrolling; // @synthesize disableDynamicsWhileScrolling=_disableDynamicsWhileScrolling;
 @property (strong, nonatomic) IMScheduledUpdater *dynamicsUpdater; // @synthesize dynamicsUpdater=_dynamicsUpdater;
 @property (strong, nonatomic) NSMutableDictionary *finalParentVerticalOffsets; // @synthesize finalParentVerticalOffsets=_finalParentVerticalOffsets;
 @property (nonatomic) BOOL hasLoadMore; // @synthesize hasLoadMore=_hasLoadMore;

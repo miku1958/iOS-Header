@@ -10,6 +10,7 @@
 
 @interface _TtC12AppAnalytics17AppSessionManager : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *$__lazy_storage_$_sessionGroupManager;
     MISSING_TYPE *accessQueue;
     MISSING_TYPE *_appSessionID;
     MISSING_TYPE *_sessionManagers;

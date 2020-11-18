@@ -30,6 +30,7 @@
 
 @property (readonly, copy, nonatomic) NSSet *allFrameworksDirectories; // @synthesize allFrameworksDirectories=_allFrameworksDirectories;
 @property (readonly, nonatomic) BOOL allowDeletableSystemApps; // @synthesize allowDeletableSystemApps=_allowDeletableSystemApps;
+@property (readonly, nonatomic) BOOL allowsInternalSecurityPolicy;
 @property (readonly, copy, nonatomic) NSString *alternateThinningModelIdentifier;
 @property (readonly, copy, nonatomic) NSArray *appBundleMetadataItemNames;
 @property (readonly, copy, nonatomic) NSArray *appUserDataItemNames;
@@ -46,6 +47,7 @@
 @property (readonly, copy, nonatomic) NSDictionary *diskImageAppBundleIDToInfoMap; // @synthesize diskImageAppBundleIDToInfoMap=_diskImageAppBundleIDToInfoMap;
 @property (readonly, nonatomic) NSURL *factoryMountDirectory;
 @property (readonly, nonatomic) unsigned int gid; // @synthesize gid=_gid;
+@property (readonly, nonatomic) BOOL hasInternalContent;
 @property (readonly, copy, nonatomic) NSSet *installationBlacklist;
 @property (readonly, nonatomic) NSURL *installdPath; // @synthesize installdPath=_installdPath;
 @property (readonly, copy, nonatomic) NSDictionary *internalAppBundleIDToInfoMap; // @synthesize internalAppBundleIDToInfoMap=_internalAppBundleIDToInfoMap;
@@ -77,7 +79,6 @@
 - (id)_bundleIDMapForBundlesInDirectory:(id)arg1 withExtension:(id)arg2;
 - (id)_bundleIDMapForBundlesInDirectory:(id)arg1 withExtension:(id)arg2 loadingAdditionalKeys:(id)arg3;
 - (id)_testModeSentinelURL;
-- (BOOL)_useInternalDiagnostics;
 - (BOOL)clearIsRunningInTestMode:(id *)arg1;
 - (id)disableSystemAppDeletionCanaryFile;
 - (id)init;

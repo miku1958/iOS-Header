@@ -105,6 +105,7 @@
 - (id)_lookupChatUsingID:(id)arg1;
 - (void)_makeAllAttachmentsClassC;
 - (void)_markForksAsSyncedForChat:(id)arg1;
+- (void)_markGroupPhotosAsUnpurgeableIfNecessary;
 - (BOOL)_mergeDuplicateGroupsIfNeeded;
 - (id)_messageStore;
 - (void)_noteDownAttemptToMigratePersonCentricIDsOnIMDHandles;

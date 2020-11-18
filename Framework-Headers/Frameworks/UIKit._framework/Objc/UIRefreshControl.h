@@ -37,8 +37,10 @@
 @property (readonly, nonatomic) long long style;
 @property (strong, nonatomic) UIColor *tintColor;
 
++ (BOOL)_allowsUnsupportedMacIdiomBehavior;
 + (Class)_contentViewClassForStyle:(long long)arg1;
 + (id)_defaultColor;
++ (void)_setAllowsUnsupportedMacIdiomBehavior:(BOOL)arg1;
 - (void).cxx_destruct;
 - (void)_addInsetHeight:(double)arg1;
 - (void)_addInsets;

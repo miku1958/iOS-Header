@@ -42,6 +42,7 @@
 - (id)_initWithDatabaseID:(long long)arg1 serviceVisit:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithSQLRow:(id)arg1;
 - (id)initWithVisit:(id)arg1;
 - (id)visitWithUpdatedID:(long long)arg1 updatedItemID:(long long)arg2;
 

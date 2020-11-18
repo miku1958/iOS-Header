@@ -11,7 +11,9 @@
     long long _inCallPresentationMode;
 }
 
+@property (nonatomic, getter=isAttachedToWindowedAccessory) BOOL attachedToWindowedAccessory;
 @property (nonatomic) long long inCallPresentationMode; // @synthesize inCallPresentationMode=_inCallPresentationMode;
+@property (nonatomic) struct CGRect windowedAccessoryCutoutFrameInScreen;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;

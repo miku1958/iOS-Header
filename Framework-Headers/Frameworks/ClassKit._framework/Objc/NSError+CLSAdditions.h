@@ -22,6 +22,7 @@
 - (BOOL)cls_isClassKitError;
 - (BOOL)cls_isRetryable:(BOOL)arg1;
 - (void)cls_log:(id)arg1;
+- (void)cls_notice:(id)arg1;
 - (id)cls_underlyingErrorWithDomain:(id)arg1;
 - (void)cls_warn:(id)arg1;
 @end

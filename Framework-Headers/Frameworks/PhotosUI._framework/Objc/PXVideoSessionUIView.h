@@ -14,9 +14,7 @@
 @interface PXVideoSessionUIView : UIView <PXVideoViewDelegate>
 {
     UIView *_videoContainerView;
-    PXVideoView *_videoView;
     PXVideoView *_adoptedVideoView;
-    PXVideoView *_activeVideoView;
     UIImageView *_placeholderImageView;
     BOOL _placeholderVisible;
     BOOL _allowsEdgeAntialiasing;

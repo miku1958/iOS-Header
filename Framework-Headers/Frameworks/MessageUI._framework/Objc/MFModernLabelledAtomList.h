@@ -55,7 +55,6 @@
 - (void)_reflowIfNeeded;
 - (double)_remainingSpaceForRowAtPoint:(struct CGPoint)arg1;
 - (void)_setNeedsReflow;
-- (void)_updateNeedsReflow;
 - (void)addressAtom:(id)arg1 displayStringDidChange:(id)arg2;
 - (id)addressAtoms;
 - (void)addressBookDidChange:(id)arg1;
@@ -78,7 +77,6 @@
 - (void)setAddressAtomsArePrimary:(BOOL)arg1;
 - (void)setAddresses:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)setAtomAlpha:(double)arg1;
-- (void)setBounds:(struct CGRect)arg1;
 - (void)setOpaque:(BOOL)arg1;
 - (void)setOverrideFont:(id)arg1;
 - (id)title;

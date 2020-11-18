@@ -31,7 +31,6 @@
 
 - (void).cxx_destruct;
 - (struct CGSize)_labelLayoutSizeForWidth:(double)arg1;
-- (void)_layoutCloseButton;
 - (BOOL)_shouldUseManuallyWrappedCrashMessageForWidth:(double)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

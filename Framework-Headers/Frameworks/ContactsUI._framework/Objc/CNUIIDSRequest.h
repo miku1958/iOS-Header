@@ -15,7 +15,7 @@
 + (id)afterDelayRetryRefreshingStatusOfDestinations:(id)arg1 forService:(id)arg2 queryControllerWrapper:(id)arg3 scheduler:(id)arg4;
 + (id)errorRefreshingHandles:(id)arg1 forService:(id)arg2;
 + (BOOL)isDestinationAvailable:(id)arg1 givenStatusesByDestination:(id)arg2;
-+ (BOOL)isStatusOfEveryDestinationUnknown:(id)arg1;
++ (BOOL)isStatusOfAnyDestinationUnknown:(id)arg1;
 + (id)refreshStatusOfDestinations:(id)arg1 forService:(id)arg2 queryControllerWrapper:(id)arg3;
 + (id)refreshStatusOfDestinations:(id)arg1 forService:(id)arg2 queryControllerWrapper:(id)arg3 delay:(double)arg4 scheduler:(id)arg5;
 + (id)resultsForIDSControllerResult:(id)arg1 handlesByDestination:(id)arg2;

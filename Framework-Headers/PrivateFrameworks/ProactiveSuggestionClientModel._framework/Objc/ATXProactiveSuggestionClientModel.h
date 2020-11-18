@@ -31,6 +31,7 @@
 + (id)clientModelIdsFromClientModelTypesArray:(id)arg1;
 + (long long)clientModelTypeFromClientModelId:(id)arg1;
 + (BOOL)clientModelTypeIsEligibleForShortcutConversion:(long long)arg1;
++ (BOOL)clientModelTypeIsShortcutConversion:(long long)arg1;
 + (void)refreshBlendingLayer;
 - (void).cxx_destruct;
 - (void)dealloc;

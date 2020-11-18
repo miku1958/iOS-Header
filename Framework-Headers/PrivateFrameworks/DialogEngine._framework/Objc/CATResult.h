@@ -17,6 +17,7 @@
     NSArray *_dialogId;
     NSArray *_captionSpeak;
     NSArray *_captionPrint;
+    NSArray *_printOnly;
     NSArray *_spokenOnly;
 }
 
@@ -26,6 +27,7 @@
 @property (strong, nonatomic) NSArray *dialogId; // @synthesize dialogId=_dialogId;
 @property (strong, nonatomic) NSDictionary *meta; // @synthesize meta=_meta;
 @property (strong, nonatomic) NSArray *print; // @synthesize print=_print;
+@property (strong, nonatomic) NSArray *printOnly; // @synthesize printOnly=_printOnly;
 @property (strong, nonatomic) NSArray *speak; // @synthesize speak=_speak;
 @property (strong, nonatomic) NSArray *spokenOnly; // @synthesize spokenOnly=_spokenOnly;
 

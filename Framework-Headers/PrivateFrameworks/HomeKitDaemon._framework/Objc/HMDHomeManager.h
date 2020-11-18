@@ -58,7 +58,7 @@
     HMFTimer *_debounceHomesUpdateTimer;
     HMFTimer *_periodicMobileCatalogUpdateTimer;
     HMFTimer *_memoryMonitorLogEventTimer;
-    HMFTimer *_periodicCounterLoggingTimer;
+    HMFTimer *_messagingCounterLoggingTimer;
     unsigned long long _generationCounter;
     unsigned long long _stateHandle;
     NSMutableSet *_pendingHomesBeingRemoved;
@@ -218,6 +218,7 @@
 @property (strong, nonatomic) HMDMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
+@property (strong, nonatomic) HMFTimer *messagingCounterLoggingTimer; // @synthesize messagingCounterLoggingTimer=_messagingCounterLoggingTimer;
 @property (strong, nonatomic) HMDMobileAssetManager *mobileAssetManager; // @synthesize mobileAssetManager=_mobileAssetManager;
 @property (strong, nonatomic) HMDMessageFilterChain *msgFilterChain; // @synthesize msgFilterChain=_msgFilterChain;
 @property (readonly, nonatomic) HMDMultiUserStatusController *multiUserStatusController; // @synthesize multiUserStatusController=_multiUserStatusController;
@@ -233,7 +234,6 @@
 @property (strong, nonatomic) NSMutableSet *pendingResidentSetupSessions; // @synthesize pendingResidentSetupSessions=_pendingResidentSetupSessions;
 @property (strong, nonatomic) NSMutableArray *pendingResponsesForAccessoryFinder; // @synthesize pendingResponsesForAccessoryFinder=_pendingResponsesForAccessoryFinder;
 @property (strong, nonatomic) HMDPendingCloudSyncTransactions *pendingTransactions; // @synthesize pendingTransactions=_pendingTransactions;
-@property (strong, nonatomic) HMFTimer *periodicCounterLoggingTimer; // @synthesize periodicCounterLoggingTimer=_periodicCounterLoggingTimer;
 @property (strong, nonatomic) HMFTimer *periodicMobileCatalogUpdateTimer; // @synthesize periodicMobileCatalogUpdateTimer=_periodicMobileCatalogUpdateTimer;
 @property (strong, nonatomic) HMDPowerManager *powerManager; // @synthesize powerManager=_powerManager;
 @property (strong, nonatomic) NSUUID *primaryHomeUUID; // @synthesize primaryHomeUUID=_primaryHomeUUID;
@@ -280,6 +280,7 @@
 + (BOOL)doesSaveReasonAffectHomeManager:(id)arg1;
 + (BOOL)doesSaveReasonAffectOnlyLocalData:(id)arg1;
 + (BOOL)doesSaveReasonNotAffectLocalData:(id)arg1;
++ (BOOL)doesSaveReasonRequireForceSyncToWatch:(id)arg1;
 + (id)getCurrentAltDSID;
 + (id)getUniqueDeviceIdSalt;
 + (id)idsDeviceForDevice:(id)arg1;

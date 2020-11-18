@@ -21,6 +21,7 @@
     MISSING_TYPE *metricsBuilder;
     MISSING_TYPE *offerManager;
     MISSING_TYPE *dynamicViewControllerFactory;
+    MISSING_TYPE *amsUIWebViewControllerFactory;
     MISSING_TYPE *alternateUniversalLinksManager;
 }
 

@@ -19,6 +19,7 @@
 
 - (void).cxx_destruct;
 - (id)_descriptionFont;
+- (id)_descriptionTextColor;
 - (id)_labelWithFont:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 

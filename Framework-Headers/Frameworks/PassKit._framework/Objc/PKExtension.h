@@ -26,6 +26,8 @@
 @property (readonly, nonatomic) long long type;
 
 - (void).cxx_destruct;
+- (void)beginExtensionRequestWithCompletion:(CDUnknownBlockType)arg1;
+- (void)beginExtensionRequestWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginLocalExtensionServiceWithUserInteraction:(BOOL)arg1 completion:(CDUnknownBlockType)arg2 timeout:(unsigned long long)arg3 timeoutHandler:(CDUnknownBlockType)arg4;
 - (void)completeLocalExtensionServiceWithCompletion:(CDUnknownBlockType)arg1;
 - (id)description;

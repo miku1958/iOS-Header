@@ -55,8 +55,9 @@
 - (id)_canonicalizedDateComponents:(id)arg1 withCalendar:(id)arg2 usedUnits:(unsigned long long *)arg3 withReferenceDate:(id)arg4;
 - (void)_ensureUnitFormatterWithLocale:(id)arg1;
 - (void)_ensureUnitFormatterWithLocale_alreadyLocked:(id)arg1;
-- (void)_flushFormatterCache;
+- (void)_flushFormatterCache_locked;
 - (BOOL)_mayDecorateAttributedStringForObjectValue:(id)arg1;
+- (BOOL)_updateFormatterCacheIfNeeded_locked:(id)arg1 unitsStyle:(long long)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

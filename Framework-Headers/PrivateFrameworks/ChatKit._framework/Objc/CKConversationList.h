@@ -14,17 +14,17 @@
     BOOL _loadingConversations;
     BOOL _loadedConversations;
     BOOL _remergingConversations;
+    BOOL _loadedPinnedConversations;
     BOOL _holdingWasKnownSenderUpdates;
-    BOOL _completedInitalPinLoad;
     CKConversation *_pendingConversation;
     NSMutableDictionary *_conversationsDictionary;
     NSArray *_pinnedConversations;
 }
 
-@property (nonatomic) BOOL completedInitalPinLoad; // @synthesize completedInitalPinLoad=_completedInitalPinLoad;
 @property (strong, nonatomic) NSMutableDictionary *conversationsDictionary; // @synthesize conversationsDictionary=_conversationsDictionary;
 @property (nonatomic) BOOL holdingWasKnownSenderUpdates; // @synthesize holdingWasKnownSenderUpdates=_holdingWasKnownSenderUpdates;
 @property (readonly, nonatomic) BOOL loadedConversations; // @synthesize loadedConversations=_loadedConversations;
+@property (nonatomic) BOOL loadedPinnedConversations; // @synthesize loadedPinnedConversations=_loadedPinnedConversations;
 @property (readonly, nonatomic) BOOL loadingConversations; // @synthesize loadingConversations=_loadingConversations;
 @property (strong, nonatomic) CKConversation *pendingConversation; // @synthesize pendingConversation=_pendingConversation;
 @property (strong, nonatomic) NSArray *pinnedConversations; // @synthesize pinnedConversations=_pinnedConversations;

@@ -9,7 +9,7 @@
 #import <CloudDocsDaemon/BRCReachabilityDelegate-Protocol.h>
 #import <CloudDocsDaemon/BRCZone-Protocol.h>
 
-@class BRCAccountSession, BRCCreateZoneAndSubscribeOperation, BRCDeadlineSource, BRCItemID, BRCPQLConnection, BRCServerZone, BRCSyncBudgetThrottle, BRCSyncDownOperation, BRCSyncOperationThrottle, BRCSyncUpOperation, BRCThrottleBase, BRCZoneRowID, BRMangledID, CKOperationGroup, NSArray, NSDate, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSMutableSet, NSSet, NSString, brc_task_tracker;
+@class BRCAccountSession, BRCCreateZoneAndSubscribeOperation, BRCDeadlineSource, BRCItemID, BRCPQLConnection, BRCServerZone, BRCSyncBudgetThrottle, BRCSyncDownOperation, BRCSyncOperationBackoffRatio, BRCSyncOperationThrottle, BRCSyncUpOperation, BRCThrottleBase, BRCZoneRowID, BRMangledID, CKOperationGroup, NSArray, NSDate, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSMutableSet, NSSet, NSString, brc_task_tracker;
 @protocol BRCClientZoneDelegate, NSObject, OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
     NSError *_lastSyncDownError;
     BRCSyncOperationThrottle *_syncUpThrottle;
     BRCSyncBudgetThrottle *_syncUpBudget;
+    BRCSyncOperationBackoffRatio *_syncUpBackoffRatio;
     BRCSyncOperationThrottle *_syncDownThrottle;
     BRCDeadlineSource *_syncDeadlineSource;
     NSMutableIndexSet *_appliedTombstoneRanks;
@@ -132,6 +133,7 @@ __attribute__((visibility("hidden")))
 - (void)_performAfterResetServerAndClientTruthsAndUnlinkDataAndPurgeTheZone:(CDUnknownBlockType)arg1;
 - (void)_performResetAndWantsUnlink:(BOOL)arg1 clientTruthBlock:(CDUnknownBlockType)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_prepareForForegroundSyncDown;
+- (void)_recreateSyncBudgetsAndThrottlesIfNeeded;
 - (id)_refreshItemFromDB:(id)arg1;
 - (void)_removeAllShareAcceptanceBlocks;
 - (void)_removeDownloadedBlockToPerformForItemID:(id)arg1;
@@ -232,6 +234,7 @@ __attribute__((visibility("hidden")))
 - (id)reservedItemByParentID:(id)arg1 andLogicalName:(id)arg2;
 - (id)reservedItemByParentID:(id)arg1 andLogicalName:(id)arg2 db:(id)arg3;
 - (void)resetSyncBudgetAndThrottle;
+- (void)resetSyncUpBackoffRatio;
 - (void)resume;
 - (void)scheduleReset:(unsigned long long)arg1;
 - (void)scheduleReset:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -261,7 +264,8 @@ __attribute__((visibility("hidden")))
 - (id)syncDownImmediately;
 - (void)syncDownOperation:(id)arg1 didFinishWithError:(id)arg2 status:(long long)arg3;
 - (id)syncUpAnalyticsError;
-- (float)syncUpBackoff;
+- (float)syncUpBackoffDelay;
+- (float)syncUpBackoffRatio;
 - (long long)throttleHashWithItemID:(id)arg1;
 - (void)unregisterAllItemsDidUploadTracker:(id)arg1;
 - (void)updateWithPlist:(id)arg1;

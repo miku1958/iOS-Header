@@ -16,6 +16,7 @@
     NSMutableDictionary *_localMatchingDevicesFound;
     BOOL _useWeakMatching;
     BOOL _returnPartialResults;
+    BOOL _waitForCompleteClusters;
     BOOL _searchInProgress;
     BOOL _shouldWaitForUnanimousEndpoints;
     MRAVRoutingDiscoverySession *_discoverySession;
@@ -44,6 +45,7 @@
 @property (readonly, nonatomic) NSArray *matchingOutputDeviceUIDs;
 @property (nonatomic) BOOL returnPartialResults; // @synthesize returnPartialResults=_returnPartialResults;
 @property (nonatomic) BOOL useWeakMatching; // @synthesize useWeakMatching=_useWeakMatching;
+@property (nonatomic) BOOL waitForCompleteClusters; // @synthesize waitForCompleteClusters=_waitForCompleteClusters;
 
 - (void).cxx_destruct;
 - (void)beginSearchWithTimeout:(double)arg1 completion:(CDUnknownBlockType)arg2;

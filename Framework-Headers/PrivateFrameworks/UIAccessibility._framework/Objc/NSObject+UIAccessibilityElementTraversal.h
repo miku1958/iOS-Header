@@ -125,6 +125,7 @@
 - (id)_accessibilityCirclePathBasedOnBoundsWidth;
 - (void)_accessibilityCleanupContainerElementReferences;
 - (id)_accessibilityCollectionViewCellContentSubviews;
+- (BOOL)_accessibilityCollectionViewCellScrollShouldInformScrollDelegate;
 - (long long)_accessibilityCollectionViewItemsPerRow;
 - (CDUnknownBlockType)_accessibilityColorChangeMatch;
 - (unsigned long long)_accessibilityColumnCount;
@@ -396,6 +397,7 @@
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (BOOL)_accessibilityIsStarkElement;
 - (BOOL)_accessibilityIsStrongPasswordField;
+- (BOOL)_accessibilityIsSupportedGestureRecognizer;
 - (BOOL)_accessibilityIsTableCell;
 - (BOOL)_accessibilityIsTitleElement;
 - (BOOL)_accessibilityIsTouchContainer;
@@ -735,6 +737,7 @@
 - (BOOL)_accessibilityShouldIgnoreOpaqueElementProviders;
 - (BOOL)_accessibilityShouldIgnoreSoundForFailedMoveAttempt;
 - (BOOL)_accessibilityShouldIncludeArrowKeyCommandsForDirectionalFocusMovement;
+- (BOOL)_accessibilityShouldIncludeKeyboardInRemoteSubstituteChildren;
 - (BOOL)_accessibilityShouldIncludeMediaDescriptionsRotor;
 - (BOOL)_accessibilityShouldIncludeRowRangeInElementDescription;
 - (BOOL)_accessibilityShouldInheritTraits;
@@ -917,11 +920,12 @@
 - (double)_accessibilityVisibleItemDenominator;
 - (id)_accessibilityVisibleItemInList;
 - (id)_accessibilityVisibleOpaqueElements;
-- (id)_accessibilityVisibleOpaqueElementsHonoringGroups:(BOOL)arg1;
+- (id)_accessibilityVisibleOpaqueElementsHonoringGroups:(BOOL)arg1 sorted:(BOOL)arg2;
 - (struct CGPoint)_accessibilityVisiblePoint;
 - (struct CGPoint)_accessibilityVisiblePointHitTestingAnyElement:(BOOL)arg1;
 - (BOOL)_accessibilityVisiblePointHonorsScreenBounds;
 - (struct CGPoint)_accessibilityVisibleScrollArea:(BOOL)arg1;
+- (struct _NSRange)_accessibilityVisibleTextRange;
 - (BOOL)_accessibilityWantsOpaqueElementProviders;
 - (void)_accessibilityWarmPrefersNonAttributedLabelValueHintCache;
 - (id)_accessibilityWatchAutoSpeakElements;
@@ -930,6 +934,7 @@
 - (BOOL)_accessibilityWebViewIsLoading;
 - (id)_accessibilityWindow;
 - (id)_accessibilityWindowSections;
+- (BOOL)_accessibilityWindowUsesOwnOrientationForComparingGeometry;
 - (BOOL)_accessibilityWindowVisible;
 - (double)_accessibilityZoomScale;
 - (id)_accessibiltyAvailableKeyplanes;
@@ -1105,6 +1110,7 @@
 - (id)accessibilityUserDefinedWindowVisible;
 - (id)accessibilityViewWithIdentifier:(id)arg1;
 - (struct CGRect)accessibilityVisibleContentRect;
+- (id)accessibilityVisibleText;
 - (void)accessibilityZoomInAtPoint:(struct CGPoint)arg1;
 - (void)accessibilityZoomOutAtPoint:(struct CGPoint)arg1;
 - (unsigned long long)axContainerTypeFromUIKitContainerType:(long long)arg1;

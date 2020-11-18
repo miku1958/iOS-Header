@@ -92,7 +92,7 @@ __attribute__((visibility("hidden")))
     BOOL _sendActiveVoiceOnly;
     unsigned int _qualityIndex;
     double _lastReportingCallbackTime;
-    CDStruct_3ab08b48 _currentChannelMetrics;
+    CDStruct_1dd2c43e _currentChannelMetrics;
     CDStruct_94aa5fb4 _idsChannelDataFormat;
     unsigned int _maxIDSStreamIdCount;
     NSArray *_supportedNumRedundantPayload;
@@ -114,7 +114,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) int audioTxBitrate; // @synthesize audioTxBitrate=_audioTxBitrate;
 @property (readonly, nonatomic) VCAudioPayloadConfig *currentAudioPayloadConfig;
 @property (readonly, nonatomic) VCAudioTier *currentAudioTier; // @synthesize currentAudioTier=_currentAudioTier;
-@property (nonatomic) CDStruct_3ab08b48 currentChannelMetrics; // @synthesize currentChannelMetrics=_currentChannelMetrics;
+@property (nonatomic) CDStruct_1dd2c43e currentChannelMetrics; // @synthesize currentChannelMetrics=_currentChannelMetrics;
 @property (nonatomic, getter=isCurrentDTXEnabled) BOOL currentDTXEnable; // @synthesize currentDTXEnable=_currentDTXEnable;
 @property (readonly, copy) NSString *debugDescription;
 @property id<VCAudioTransmitterDelegate> delegate;

@@ -25,6 +25,8 @@
 + (void)scheduleWithDatabaseProvider:(id)arg1;
 + (void)scheduleWithScheduler:(id)arg1 databaseProvider:(id)arg2;
 - (void).cxx_destruct;
+- (BOOL)addAutomationSuggestionMetricsToEvent:(id)arg1 database:(id)arg2 error:(id *)arg3;
+- (BOOL)addWidgetMetricsToEvent:(id)arg1 error:(id *)arg2;
 - (unsigned int)averageShortcutCountPerFolder:(id)arg1;
 - (unsigned int)folderCount:(id)arg1;
 - (BOOL)homeAutomationsPresent:(id *)arg1;
@@ -32,12 +34,16 @@
 - (id)initWithDatabaseProvider:(id)arg1;
 - (BOOL)isAppInstalled;
 - (BOOL)isSharingEnabled;
-- (unsigned int)numberOfPersonalAutomationsEnabled:(id *)arg1;
-- (unsigned int)numberOfPersonalAutomationsFromSuggestionsEnabled:(id *)arg1;
+- (BOOL)isSleepEnabled;
+- (unsigned int)numberOfAppSessions:(id *)arg1;
+- (unsigned int)numberOfPersonalAutomationsEnabled:(id)arg1;
+- (unsigned int)numberOfShortcutRuns:(id)arg1;
 - (void)perform;
-- (BOOL)personalAutomationsPresent:(id *)arg1;
+- (BOOL)personalAutomationsPresent:(id)arg1;
 - (unsigned int)shortcutsCount:(id)arg1;
+- (unsigned int)sleepShortcutCount:(id)arg1;
 - (unsigned int)uncategorizedShortcutCount:(id)arg1;
+- (unsigned int)watchShortcutCount:(id)arg1;
 
 @end
 

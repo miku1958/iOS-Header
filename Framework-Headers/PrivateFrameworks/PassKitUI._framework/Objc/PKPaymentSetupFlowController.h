@@ -28,13 +28,16 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_barcodePaymentOnboardingViewControllerForProduct:(id)arg1;
 - (id)_defaultPaymentSetupViewControllerAllowingManualEntry:(BOOL)arg1;
 - (id)_educationViewControllerShouldShow;
 - (id)_nextPaymentCredentialControllerWithSetupProduct:(id)arg1 allowsManualEntry:(BOOL)arg2;
+- (id)_offerAMPEnrollmentViewController;
 - (id)_offerMakeDefaultViewController;
 - (id)_offerOptionalExpressModeSetup;
 - (id)_onboardingViewControllerForProduct:(id)arg1;
 - (id)_paymentSetupViewControllerForAssociatedCredential:(id)arg1 product:(id)arg2 allowsManualEntry:(BOOL)arg3;
+- (id)_watchExtensionInstallationViewController;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 delegate:(id)arg3;
 - (id)initialPaymentSetupViewControllerForMode:(long long)arg1 allowsManualEntry:(BOOL)arg2;
 - (id)manualEntryPaymentSetupViewControllerForProduct:(id)arg1 allowsSelectingBank:(BOOL)arg2;

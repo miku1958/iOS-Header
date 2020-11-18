@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     struct CGPDFDocument *document;
     NSURL *documentURL;
+    BOOL createdWithHighLatencyDataProvider;
     NSMutableArray *pages;
     NSMutableDictionary *pageIndices;
     NSMutableDictionary *pageDictionaryIndices;

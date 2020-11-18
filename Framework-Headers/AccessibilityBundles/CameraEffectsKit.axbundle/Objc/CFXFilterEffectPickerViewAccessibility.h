@@ -16,6 +16,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)_axFunCamFilterCarousel;
 - (void)_setAXFunCamFilterCarousel:(id)arg1;
+- (void)layoutSubviews;
 - (void)subviewsDidLoad;
 
 @end

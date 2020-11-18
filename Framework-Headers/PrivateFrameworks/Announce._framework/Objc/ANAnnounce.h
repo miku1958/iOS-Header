@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) NSArray *unplayedAnnouncements;
 
 - (void).cxx_destruct;
+- (void)_sendRequestLegacy:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)announcementForID:(id)arg1;
 - (void)announcementForID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)broadcastReply:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -33,25 +34,24 @@
 - (id)homeNamesForContext:(id)arg1;
 - (id)init;
 - (void)invalidate;
+- (BOOL)isAnnounceEnabledForAnyAccessoryInHome:(id)arg1;
+- (BOOL)isAnnounceEnabledForAnyAccessoryOrUserInHome:(id)arg1;
 - (BOOL)isLocalDeviceInRoom:(id)arg1;
 - (void)lastPlayedAnnouncementInfo:(CDUnknownBlockType)arg1;
 - (void)localParticipant:(CDUnknownBlockType)arg1;
 - (void)mockAnnouncement:(id)arg1 forHomeWithName:(id)arg2 playbackDeadline:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)prewarmWithHandler:(CDUnknownBlockType)arg1;
 - (void)receivedAnnouncementIDs:(CDUnknownBlockType)arg1;
-- (void)sendAnnouncement:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sendAnnouncement:(id)arg1 toHomeWithID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendAnnouncement:(id)arg1 toHomeWithName:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendAnnouncement:(id)arg1 toRoomsWithIDs:(id)arg2 andZonesWithIDs:(id)arg3 inHomeWithID:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)sendAnnouncement:(id)arg1 toRoomsWithIDs:(id)arg2 inHomeWithID:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)sendAnnouncement:(id)arg1 toRoomsWithNames:(id)arg2 andZonesWithNames:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)sendAnnouncement:(id)arg1 toRoomsWithNames:(id)arg2 andZonesWithNames:(id)arg3 inHomeWithName:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)sendAnnouncement:(id)arg1 toRoomsWithNames:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendAnnouncement:(id)arg1 toRoomsWithNames:(id)arg2 inHomeWithName:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)sendAnnouncement:(id)arg1 toZonesWithIDs:(id)arg2 inHomeWithID:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)sendAnnouncement:(id)arg1 toZonesWithNames:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendAnnouncement:(id)arg1 toZonesWithNames:(id)arg2 inHomeWithName:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)sendReply:(id)arg1 forAnnouncement:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)sendRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

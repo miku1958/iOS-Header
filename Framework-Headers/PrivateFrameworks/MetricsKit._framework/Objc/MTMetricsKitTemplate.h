@@ -32,6 +32,12 @@
 - (id)initWithTopic:(id)arg1;
 - (id)initWithTopic:(id)arg1 bagProfile:(id)arg2 profileVersion:(id)arg3;
 - (id)initWithTopic:(id)arg1 delegatePackage:(id)arg2;
+- (id)metricsDataWithEventHandlerName:(id)arg1 eventData:(id)arg2;
+- (id)metricsDataWithEventHandlerName:(id)arg1 fields:(id)arg2;
+- (id)metricsDataWithEventHandlerName:(id)arg1 pageData:(id)arg2 eventData:(id)arg3;
+- (id)metricsDataWithEventHandlerName:(id)arg1 pageData:(id)arg2 fields:(id)arg3;
+- (id)metricsDataWithEventHandlerName:(id)arg1 pageId:(id)arg2 pageType:(id)arg3 pageContext:(id)arg4 eventData:(id)arg5;
+- (id)metricsDataWithEventHandlerName:(id)arg1 pageId:(id)arg2 pageType:(id)arg3 pageContext:(id)arg4 fields:(id)arg5;
 
 @end
 

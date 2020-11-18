@@ -11,6 +11,7 @@
 @interface CNUILikenessRenderingScope : NSObject
 {
     BOOL _rightToLeft;
+    BOOL _excludePointSizeInEqualityCheck;
     double _scale;
     double _strokeWidth;
     struct CGColor *_strokeColor;
@@ -23,6 +24,7 @@
 
 @property (readonly, nonatomic) unsigned long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property (readonly, nonatomic) PRMonogramColor *color; // @synthesize color=_color;
+@property (nonatomic) BOOL excludePointSizeInEqualityCheck; // @synthesize excludePointSizeInEqualityCheck=_excludePointSizeInEqualityCheck;
 @property (readonly, nonatomic) NSIndexSet *maskedAvatarIndices; // @synthesize maskedAvatarIndices=_maskedAvatarIndices;
 @property (readonly, nonatomic) struct CGSize pointSize; // @synthesize pointSize=_pointSize;
 @property (readonly, nonatomic) BOOL rightToLeft; // @synthesize rightToLeft=_rightToLeft;
@@ -35,9 +37,12 @@
 + (id)renderingScopeWithPointSize:(struct CGSize)arg1 scale:(double)arg2 strokeWidth:(double)arg3 strokeColor:(struct CGColor *)arg4 rightToLeft:(BOOL)arg5 style:(unsigned long long)arg6 backgroundStyle:(unsigned long long)arg7 color:(id)arg8 maskedAvatarIndices:(id)arg9;
 + (id)renderingScopeWithPointSize:(struct CGSize)arg1 scale:(double)arg2 strokeWidth:(double)arg3 strokeColor:(struct CGColor *)arg4 rightToLeft:(BOOL)arg5 style:(unsigned long long)arg6 color:(id)arg7;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
+- (unsigned long long)hash;
 - (id)initWithPointSize:(struct CGSize)arg1 scale:(double)arg2 strokeWidth:(double)arg3 strokeColor:(struct CGColor *)arg4 rightToLeft:(BOOL)arg5 style:(unsigned long long)arg6 backgroundStyle:(unsigned long long)arg7 color:(id)arg8 maskedAvatarIndices:(id)arg9;
+- (BOOL)isEqual:(id)arg1;
 - (void)setStrokeColor:(struct CGColor *)arg1;
 
 @end

@@ -16,12 +16,14 @@ __attribute__((visibility("hidden")))
     AMSUIWebView *_webView;
     AMSUIWebClientContext *_context;
     AMSUIWebJSProperties *_properties;
+    NSString *_otpIdentifier;
 }
 
 @property (weak, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSString *otpIdentifier; // @synthesize otpIdentifier=_otpIdentifier;
 @property (strong, nonatomic) AMSUIWebJSProperties *properties; // @synthesize properties=_properties;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) AMSUIWebView *webView; // @synthesize webView=_webView;
@@ -31,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)_observeNotifications;
 - (void)_postSubscriptionChangedWithType:(long long)arg1;
 - (void)_purchaseDidSucceed:(id)arg1;
+- (void)_safariDataUpdate:(id)arg1;
 - (void)_subscriptionStatusChangeAppStore:(id)arg1;
 - (void)_subscriptionStatusChangeMusic:(id)arg1;
 - (void)_subscriptionStatusChangeNews:(id)arg1;
@@ -43,6 +46,8 @@ __attribute__((visibility("hidden")))
 - (id)postEvent:(id)arg1 options:(id)arg2;
 - (void)propertiesDidChange:(id)arg1;
 - (id)runJSRequest:(id)arg1;
+- (BOOL)startOTPListener;
+- (BOOL)stopOTPListener;
 - (id)syncProperties;
 
 @end

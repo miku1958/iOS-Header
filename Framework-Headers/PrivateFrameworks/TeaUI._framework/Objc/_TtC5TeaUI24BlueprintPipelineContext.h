@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *runOptions;
     MISSING_TYPE *recorder;
+    MISSING_TYPE *token;
     MISSING_TYPE *group;
 }
 

@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 + (double)associatedStickerXOriginForStickerFrame:(struct CGRect)arg1 parentSize:(struct CGSize)arg2 contentAlignmentRect:(struct CGRect)arg3 orientation:(BOOL)arg4 geometryDescriptor:(struct IMAssociatedMessageGeometryDescriptor)arg5 outBalloonOffset:(double *)arg6;
 - (void).cxx_destruct;
 - (void)animationTimerFired:(unsigned long long)arg1;
-- (void)configureForChatItem:(id)arg1;
+- (void)configureForChatItem:(id)arg1 context:(id)arg2;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (void)doubleTapGestureRecognized:(id)arg1;

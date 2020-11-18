@@ -26,9 +26,10 @@ struct DeletionPlan {
     unordered_map_fcbaed0a _field1;
     unordered_set_da619913 _field2;
     unordered_set_da619913 _field3;
-    unordered_set_da619913 _field4;
-    id _field5;
+    unordered_map_fcbaed0a _field4;
+    unordered_set_da619913 _field5;
     id _field6;
+    id _field7;
 };
 
 struct FrameMetadata {

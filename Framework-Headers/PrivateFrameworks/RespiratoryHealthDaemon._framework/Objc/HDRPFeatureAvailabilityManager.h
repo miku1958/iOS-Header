@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (long long)_currentOnboardingVersion;
 - (long long)_determineSupportedStateWithOnboardingCompletions:(id)arg1 device:(id)arg2;
+- (long long)_isRegionCodeFound:(id)arg1 availabilityWatch:(id)arg2 availabilityPhone:(id)arg3;
 - (id)_onboardingCompletionsForHighestVersionWithError:(id *)arg1;
 - (id)_onboardingCompletionsForLowestVersionWithError:(id *)arg1;
 - (id)_phoneAvailabilityForDevice:(id)arg1;

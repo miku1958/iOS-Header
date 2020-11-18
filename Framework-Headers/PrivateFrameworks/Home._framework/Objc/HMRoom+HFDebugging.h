@@ -32,6 +32,8 @@
 @property (readonly, copy, nonatomic) NSString *hf_displayName;
 @property (readonly, nonatomic) BOOL hf_hasAtleastOneHomePod;
 @property (readonly, nonatomic) BOOL hf_hasAtleastOneReachableHomePod;
+@property (readonly, nonatomic) NSArray *hf_homePodPairsNotInHomeTheaterGroup;
+@property (readonly, nonatomic) NSArray *hf_homePodsNotInHomeTheaterGroup;
 @property (readonly, nonatomic) NSArray *hf_pairedHomePods;
 @property (readonly, nonatomic) BOOL hf_shouldShowAnnounceButtonForThisRoom;
 @property (readonly, nonatomic) BOOL hf_shouldShowAnnounceFeatureForThisRoom;
@@ -46,6 +48,7 @@
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
 - (id)availableHomePodsSupportingStereoPairingVersions:(unsigned long long)arg1;
+- (id)availableHomeTheaterMediaPartnerFor:(id)arg1;
 - (BOOL)hf_atleastOneHomePodSupportsAndHasAnnounceEnabled;
 - (BOOL)hf_atleastOneHomePodSupportsAnnounce;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;

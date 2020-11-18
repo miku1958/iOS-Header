@@ -10,6 +10,7 @@
 - (BOOL)_accessibilityEnumerateSiblingsWithParent:(id *)arg1 options:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (BOOL)_accessibilityIsRemoteElement;
 - (id)_ancestorElementThatSupportsActivationAction;
+- (id)_handleElementTraversalRequestMovingForward:(BOOL)arg1 count:(unsigned long long)arg2 shouldIncludeSelf:(BOOL)arg3;
 - (id)_iosAccessibilityAttributeValue:(long long)arg1;
 - (id)_iosAccessibilityAttributeValue:(long long)arg1 forParameter:(id)arg2;
 - (BOOL)accessibilityActivate;

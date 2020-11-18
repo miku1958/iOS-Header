@@ -15,7 +15,7 @@
 #import <Silex/_WKFullscreenDelegate-Protocol.h>
 
 @class NFMultiDelegate, NSMutableSet, NSString, SWCrashRetryThrottler, SXEmbedResource, SXRelatedWebViewCache, UIActivityIndicatorView, UILabel, WKNavigation, WKWebView, WKWebsiteDataStore;
-@protocol SWReachabilityProvider, SXComponentActionHandler, SXEmbedDataProvider, SXEmbedType, SXLayoutInvalidator, SXProxyAuthenticationHandler;
+@protocol SWReachabilityProvider, SXComponentActionHandler, SXEmbedDataProvider, SXEmbedType, SXLayoutInvalidator, SXProxyAuthenticationHandler, SXSceneStateMonitor;
 
 @interface SXEmbedComponentView : SXComponentView <WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler, UIGestureRecognizerDelegate, UIScrollViewDelegate, SXViewportChangeListener, _WKFullscreenDelegate>
 {
@@ -40,6 +40,7 @@
     WKWebsiteDataStore *_dataStore;
     SXRelatedWebViewCache *_relatedWebViewCache;
     id<SXProxyAuthenticationHandler> _proxyAuthenticationHandler;
+    id<SXSceneStateMonitor> _sceneStateMonitor;
     struct CGSize _currentlyLayoutingForSize;
     struct CGSize _currentLayoutSize;
     struct CGSize _currentViewportSize;
@@ -67,6 +68,7 @@
 @property (readonly, nonatomic) id<SXProxyAuthenticationHandler> proxyAuthenticationHandler; // @synthesize proxyAuthenticationHandler=_proxyAuthenticationHandler;
 @property (readonly, nonatomic) id<SWReachabilityProvider> reachabilityProvider; // @synthesize reachabilityProvider=_reachabilityProvider;
 @property (readonly, nonatomic) SXRelatedWebViewCache *relatedWebViewCache; // @synthesize relatedWebViewCache=_relatedWebViewCache;
+@property (readonly, nonatomic) id<SXSceneStateMonitor> sceneStateMonitor; // @synthesize sceneStateMonitor=_sceneStateMonitor;
 @property (readonly, nonatomic) NFMultiDelegate *scriptMessageHandler; // @synthesize scriptMessageHandler=_scriptMessageHandler;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *userScript; // @synthesize userScript=_userScript;
@@ -91,7 +93,7 @@
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)handleError:(id)arg1;
 - (BOOL)hasLoadedEmbedData;
-- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 reachabilityProvider:(id)arg5 embedDataProvider:(id)arg6 actionHandler:(id)arg7 layoutInvalidator:(id)arg8 websiteDataStore:(id)arg9 relatedWebViewCache:(id)arg10 proxyAuthenticationHandler:(id)arg11;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 reachabilityProvider:(id)arg5 embedDataProvider:(id)arg6 actionHandler:(id)arg7 layoutInvalidator:(id)arg8 websiteDataStore:(id)arg9 relatedWebViewCache:(id)arg10 proxyAuthenticationHandler:(id)arg11 sceneStateMonitor:(id)arg12;
 - (double)initialScale;
 - (void)layoutWebViewForSize:(struct CGSize)arg1;
 - (void)loadComponent:(id)arg1;

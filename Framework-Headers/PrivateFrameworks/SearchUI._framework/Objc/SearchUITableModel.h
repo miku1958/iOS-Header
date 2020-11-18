@@ -28,6 +28,7 @@
 + (id)rowModelsForCardSections:(id)arg1 result:(id)arg2 isInline:(BOOL)arg3 queryId:(unsigned long long)arg4;
 + (id)rowModelsForResult:(id)arg1;
 + (id)tableModelWithCardSections:(id)arg1 isInline:(BOOL)arg2 queryId:(unsigned long long)arg3;
++ (id)tableModelWithCardSections:(id)arg1 isInline:(BOOL)arg2 queryId:(unsigned long long)arg3 shouldCombine:(BOOL)arg4;
 + (id)tableModelWithResult:(id)arg1;
 + (id)tableModelWithResults:(id)arg1;
 + (id)tableModelWithSections:(id)arg1 expandedSections:(id)arg2;
@@ -48,7 +49,7 @@
 - (BOOL)rowWillFillBackgroundWithContentAtIndexPath:(id)arg1;
 - (id)sectionForIndex:(unsigned long long)arg1;
 - (int)separatorStyleForIndexPath:(id)arg1;
-- (BOOL)shouldDisplayChevronForIndexPath:(id)arg1;
+- (BOOL)shouldDisplayChevronForIndexPath:(id)arg1 nextCardsEnabled:(BOOL)arg2;
 - (BOOL)shouldLeaveSpaceForChevronForIndexPath:(id)arg1;
 - (id)updatedTableModelWithExpandedSections:(id)arg1 hiddenSections:(id)arg2 atSectionIndex:(unsigned long long)arg3;
 

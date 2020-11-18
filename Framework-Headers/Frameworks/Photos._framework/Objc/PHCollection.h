@@ -53,6 +53,7 @@
 + (id)fetchType;
 + (id)managedEntityName;
 + (BOOL)managedObjectSupportsTrashedState;
++ (id)predicateForUserCollections;
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 - (void).cxx_destruct;
 - (id)_effectiveSortDescriptorsFromCustomSortKey:(id)arg1;

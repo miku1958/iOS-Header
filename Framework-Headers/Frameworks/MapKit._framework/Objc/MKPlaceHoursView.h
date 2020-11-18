@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateHoursView;
 - (void)_updateOptionsForCollapsingToSingleLineAndColor;
 - (void)applyRulesForTopAndBottomLabel;
+- (id)hoursGrayColor;
 - (void)infoCardThemeChanged;
 - (id)initWithBusinessHours:(id)arg1;
 - (void)setTopLabel:(id)arg1;

@@ -11,9 +11,9 @@
 @interface _TtC7NewsUI216TodayDataManager : NSObject
 {
     MISSING_TYPE *delegate;
-    MISSING_TYPE *feedService;
+    MISSING_TYPE *feedManager;
     MISSING_TYPE *feedServiceConfigFetcher;
-    MISSING_TYPE *paidBundleConfiguration;
+    MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *accessQueue;
     MISSING_TYPE *pluginManager;
     MISSING_TYPE *pluginFactory;
@@ -21,9 +21,11 @@
     MISSING_TYPE *readingList;
     MISSING_TYPE *appConfigManager;
     MISSING_TYPE *subscriptionList;
-    MISSING_TYPE *prewarmer;
     MISSING_TYPE *nativeAdService;
+    MISSING_TYPE *loadingGate;
     MISSING_TYPE *_subscribedTagIDsSinceLastRefresh;
+    MISSING_TYPE *subscriptionService;
+    MISSING_TYPE *cachePreFlushTask;
 }
 
 - (void).cxx_destruct;

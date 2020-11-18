@@ -31,6 +31,7 @@
 - (void)dismissSiriViewController:(AFUISiriViewController *)arg1 delayForTTS:(BOOL)arg2;
 - (void)dismissSiriViewController:(AFUISiriViewController *)arg1 delayForTTS:(BOOL)arg2 withDismissalReason:(unsigned long long)arg3;
 - (void)extendCurrentTTSRequested;
+- (void)resetGestureBehaviors;
 - (void)setShareHomeGesture:(BOOL)arg1;
 - (void)setShouldDismissForSwipesOutsideContent:(BOOL)arg1;
 - (void)setShouldDismissForTapOutsideContent:(BOOL)arg1;

@@ -1,6 +1,6 @@
  class TeaSnappy.PPT : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x63700005a08 (0x63700005a08) in binary!
+WARNING: couldn't find address 0x637000059b8 (0x637000059b8) in binary!
 	0x0  @objc PPT.(null) <stripped>
  }
 
@@ -8,7 +8,7 @@ WARNING: couldn't find address 0x63700005a08 (0x63700005a08) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case minHeight : µ
+	case minHeight : e
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case minWidth : µ
+	case minWidth : e
  }

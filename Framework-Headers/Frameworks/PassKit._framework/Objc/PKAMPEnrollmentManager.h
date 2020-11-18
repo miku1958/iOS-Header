@@ -22,6 +22,7 @@
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)_accessObserversWithHandler:(CDUnknownBlockType)arg1;
+- (id)_bag;
 - (void)canEnrollPaymentPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)enrollPaymentPass:(id)arg1 isDefault:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)enrollmentStatusForPaymentPass:(id)arg1 completion:(CDUnknownBlockType)arg2 progress:(CDUnknownBlockType)arg3;

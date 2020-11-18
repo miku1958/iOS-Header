@@ -51,6 +51,7 @@
 - (long long)sliceIndexForDate:(id)arg1 withInterval:(double)arg2;
 - (id)slicesWithTimeInterval:(double)arg1;
 - (BOOL)startsLaterThanDateRange:(id)arg1;
+- (id)timestampDescription;
 
 @end
 

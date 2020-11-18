@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSString *accountProviderAuthenticationToken;
 @property (readonly, nonatomic) BOOL allowsAuthenticationUI;
 @property (nonatomic) BOOL allowsPrivacyUI; // @synthesize allowsPrivacyUI=_allowsPrivacyUI;
+@property (readonly, copy, nonatomic) NSArray *applicationAccountProviders;
 @property (nonatomic) BOOL canVetoAuthentication; // @synthesize canVetoAuthentication=_canVetoAuthentication;
 @property (readonly, copy, nonatomic) NSArray *featuredIdentityProviderIdentifiers;
 @property (readonly, copy, nonatomic) NSString *localizedVideoTitle;

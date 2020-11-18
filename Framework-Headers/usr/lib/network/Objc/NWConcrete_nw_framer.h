@@ -29,6 +29,8 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType stop;
     CDUnknownBlockType cleanup;
     CDUnknownBlockType copy_metadata;
+    unsigned long long handshake_milliseconds;
+    unsigned long long handshake_rtt_milliseconds;
     struct nw_frame_array_s inbound_frames;
     struct nw_frame_array_s outbound_frames;
     unsigned long long input_needed;
@@ -60,7 +62,8 @@ __attribute__((visibility("hidden")))
     unsigned int failed:1;
     unsigned int pass_through_input:1;
     unsigned int pass_through_output:1;
-    unsigned int __pad_bits:2;
+    unsigned int wait_for_early_data:1;
+    unsigned int __pad_bits:1;
     char log_str[84];
 }
 

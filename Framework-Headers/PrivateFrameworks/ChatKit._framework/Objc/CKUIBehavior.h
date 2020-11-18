@@ -18,6 +18,7 @@
     UIImage *_dismissButtonImage;
     double _waveformMaxWidth;
     double _toFieldInterItemSpacing;
+    double _toFieldXOffset;
     double _toFieldYOffset;
     UIFont *_searchDetailsSubHeaderFont;
     double _balloonSelectionScrollThresholdTop;
@@ -289,6 +290,7 @@
 @property (readonly, nonatomic) BOOL isMentionSuggestionViewInKeyboard;
 @property (readonly, nonatomic) BOOL isProximityMonitoringSupported;
 @property (readonly, nonatomic) BOOL isRunningInStoreDemoMode;
+@property (readonly, nonatomic) BOOL isSendButtonEnabledOnPlatform;
 @property (readonly, nonatomic) BOOL isSizeConstrained;
 @property (readonly, nonatomic) BOOL joystickUsesWindow;
 @property (readonly, nonatomic) struct UIEdgeInsets landscapeKeyboardInsets;
@@ -389,6 +391,8 @@
 @property (readonly, nonatomic) BOOL opensLocationsInMapsApp;
 @property (readonly, nonatomic) UIImage *optionsImage;
 @property (readonly, nonatomic) UIImage *orbComposeImage; // @synthesize orbComposeImage=_orbComposeImage;
+@property (readonly, nonatomic) double paddleDividerInset;
+@property (readonly, nonatomic) double paddleOvelayRadius;
 @property (readonly, nonatomic) struct UIEdgeInsets phishingWarningEdgeInsets;
 @property (readonly, nonatomic) NSDictionary *phishingWarningTextAttributes;
 @property (readonly, nonatomic) BOOL phoneIsWhitelisted;
@@ -451,6 +455,7 @@
 @property (readonly, nonatomic) struct UIEdgeInsets replyButtonEdgeInsets;
 @property (readonly, nonatomic) UIFont *replyButtonFont;
 @property (readonly, nonatomic) double replyButtonHorizontalOriginOffsetPercent;
+@property (readonly, nonatomic) double replyButtonPadding;
 @property (readonly, nonatomic) double replyButtonTouchAlpha;
 @property (readonly, nonatomic) double replyButtonTouchScale;
 @property (readonly, nonatomic) double replyButtonVerticalOriginOffsetPercent;
@@ -594,6 +599,7 @@
 @property (readonly, nonatomic) BOOL timestampsPushBalloons;
 @property (readonly, nonatomic) double toFieldInterItemSpacing; // @synthesize toFieldInterItemSpacing=_toFieldInterItemSpacing;
 @property (readonly, nonatomic) struct UIEdgeInsets toFieldScrollViewInsets;
+@property (readonly, nonatomic) double toFieldXOffset; // @synthesize toFieldXOffset=_toFieldXOffset;
 @property (readonly, nonatomic) double toFieldYOffset; // @synthesize toFieldYOffset=_toFieldYOffset;
 @property (readonly, nonatomic) double topConversationListSpace;
 @property (readonly, nonatomic) double topTranscriptSpace;

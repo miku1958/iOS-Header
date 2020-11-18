@@ -31,14 +31,14 @@
 @property (readonly, nonatomic) BOOL hasKeyboardFocus;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier;
-@property (readonly, nonatomic) BOOL isAppLibrary;
+@property (readonly, nonatomic) BOOL isAppLauncher;
 @property (readonly, nonatomic) NSString *loggableDescription;
 @property (strong, nonatomic) SSHarvestedApplicationMetadata *metadata; // @synthesize metadata=_metadata;
 @property (readonly, nonatomic) struct CGRect rect;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsMetadataCapture;
 
-+ (id)_metadataIdentifierBlacklist;
++ (id)_metadataIdentifierBlocklist;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;

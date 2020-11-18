@@ -30,6 +30,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithItem:(id)arg1;
+- (id)initWithSQLRow:(id)arg1;
 
 @end
 

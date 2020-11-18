@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.2.26.4 clang-1200.0.29.4)
-// swift-module-flags: -target arm64-apple-ios14.1 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Osize -module-name SwiftUI
+// swift-compiler-version: Apple Swift version 5.3.1 (swiftlang-1200.2.40 clang-1200.0.32.7)
+// swift-module-flags: -target arm64-apple-ios14.2 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Osize -module-name SwiftUI
 import Combine
 import CoreData
 import CoreFoundation
@@ -28,67 +28,6 @@ public struct FileDocumentWriteConfiguration {
 public struct FileDocumentReadConfiguration {
   public let contentType: UniformTypeIdentifiers.UTType
   public let file: Foundation.FileWrapper
-}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-public protocol _WidgetModifier {
-  associatedtype WidgetBody : SwiftUI._Widget
-  func body(content: Self.WidgetContent) -> Self.WidgetBody
-  typealias WidgetContent = SwiftUI._WidgetModifier_Content<Self>
-  static func _makeWidget(modifier: SwiftUI._GraphValue<Self>, inputs: SwiftUI._WidgetInputs, body: @escaping (SwiftUI._Graph, SwiftUI._WidgetInputs) -> SwiftUI._WidgetOutputs) -> SwiftUI._WidgetOutputs
-}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-extension _WidgetModifier where Self.WidgetBody == Swift.Never {
-  public func body(content: Self.WidgetContent) -> Self.WidgetBody
-}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-extension EmptyModifier : SwiftUI._WidgetModifier {
-  public static func _makeWidget(modifier: SwiftUI._GraphValue<SwiftUI.EmptyModifier>, inputs: SwiftUI._WidgetInputs, body: @escaping (SwiftUI._Graph, SwiftUI._WidgetInputs) -> SwiftUI._WidgetOutputs) -> SwiftUI._WidgetOutputs
-  public typealias WidgetBody = Swift.Never
-}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-extension _Widget {
-  @inlinable internal func modifier<T>(_ modifier: T) -> SwiftUI.ModifiedContent<Self, T> {
-        return .init(content: self, modifier: modifier)
-    }
-}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-extension ModifiedContent : SwiftUI._Widget where Content : SwiftUI._Widget, Modifier : SwiftUI._WidgetModifier {
-  public typealias WidgetBody = Swift.Never
-  public static func _makeWidget(widget: SwiftUI._GraphValue<SwiftUI.ModifiedContent<Content, Modifier>>, inputs: SwiftUI._WidgetInputs) -> SwiftUI._WidgetOutputs
-  public var body: SwiftUI.ModifiedContent<Content, Modifier>.WidgetBody {
-    get
-  }
-}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-extension ModifiedContent : SwiftUI._WidgetModifier where Content : SwiftUI._WidgetModifier, Modifier : SwiftUI._WidgetModifier {
-  public static func _makeWidget(modifier: SwiftUI._GraphValue<SwiftUI.ModifiedContent<Content, Modifier>>, inputs: SwiftUI._WidgetInputs, body: @escaping (SwiftUI._Graph, SwiftUI._WidgetInputs) -> SwiftUI._WidgetOutputs) -> SwiftUI._WidgetOutputs
-}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-extension _WidgetModifier {
-  @inlinable internal func concat<T>(_ modifier: T) -> SwiftUI.ModifiedContent<Self, T> {
-        return .init(content: self, modifier: modifier)
-    }
-}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-public struct _WidgetModifier_Content<Modifier> : SwiftUI._Widget where Modifier : SwiftUI._WidgetModifier {
-  public static func _makeWidget(widget: SwiftUI._GraphValue<SwiftUI._WidgetModifier_Content<Modifier>>, inputs: SwiftUI._WidgetInputs) -> SwiftUI._WidgetOutputs
-  public typealias WidgetBody = Swift.Never
 }
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 public struct _ButtonGesture : SwiftUI.Gesture {
@@ -182,13 +121,6 @@ public protocol _ViewTraitKey {
   @available(iOS 14.0, OSX 11.0, tvOS 14.0, watchOS 7.0, *)
   public static func _viewListCount(inputs: SwiftUI._ViewListCountInputs, body: (SwiftUI._ViewListCountInputs) -> Swift.Int?) -> Swift.Int?
   public typealias Body = Swift.Never
-}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-@_functionBuilder public struct _WidgetBuilder {
-  public static func buildBlock() -> SwiftUI._EmptyWidget
-  public static func buildBlock<Content>(_ content: Content) -> Content where Content : SwiftUI._Widget
 }
 @available(iOS 13.0, OSX 10.15, watchOS 6.0, tvOS 14.0, *)
 public struct LongPressGesture : SwiftUI.Gesture {
@@ -577,6 +509,7 @@ extension View {
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 @frozen public struct Color : Swift.Hashable, Swift.CustomStringConvertible {
   private var provider: SwiftUI.AnyColorBox
+  @available(iOS 14.0, OSX 11, tvOS 14.0, watchOS 7.0, *)
   public var cgColor: CoreGraphics.CGColor? {
     get
   }
@@ -1122,29 +1055,6 @@ extension View {
   @inlinable public func onReceive<P>(_ publisher: P, perform action: @escaping (P.Output) -> Swift.Void) -> some SwiftUI.View where P : Combine.Publisher, P.Failure == Swift.Never {
         SubscriptionView(content: self, publisher: publisher, action: action)
     }
-  
-}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-extension _PreferenceWritingModifier : SwiftUI._WidgetModifier {
-  public typealias WidgetBody = Swift.Never
-  public static func _makeWidget(modifier: SwiftUI._GraphValue<SwiftUI._PreferenceWritingModifier<Key>>, inputs: SwiftUI._WidgetInputs, body: @escaping (SwiftUI._Graph, SwiftUI._WidgetInputs) -> SwiftUI._WidgetOutputs) -> SwiftUI._WidgetOutputs
-}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-extension _PreferenceTransformModifier : SwiftUI._WidgetModifier {
-  public typealias WidgetBody = Swift.Never
-  public static func _makeWidget(modifier: SwiftUI._GraphValue<SwiftUI._PreferenceTransformModifier<Key>>, inputs: SwiftUI._WidgetInputs, body: @escaping (SwiftUI._Graph, SwiftUI._WidgetInputs) -> SwiftUI._WidgetOutputs) -> SwiftUI._WidgetOutputs
-}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-extension _Widget {
-  public func _preference<K>(key _: K.Type = K.self, value: K.Value) -> some SwiftUI._Widget where K : SwiftUI.PreferenceKey
-  
-  public func _transformPreference<K>(_ key: K.Type = K.self, _ callback: @escaping (inout K.Value) -> Swift.Void) -> some SwiftUI._Widget where K : SwiftUI.PreferenceKey
   
 }
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
@@ -3111,7 +3021,7 @@ extension View {
   @available(watchOS, introduced: 6.0, deprecated: 100000.0, renamed: "listItemTint(_:)")
   @available(tvOS, unavailable)
   @inlinable public func listRowPlatterColor(_ color: SwiftUI.Color?) -> some SwiftUI.View {
-        listItemTint(color)
+        _trait(ListRowPlatterColorTraitKey.self, color)
     }
   
 }
@@ -4234,26 +4144,6 @@ public struct WheelPickerStyle : SwiftUI.PickerStyle {
   public static func _makeView<SelectionValue>(value: SwiftUI._GraphValue<SwiftUI._PickerValue<SwiftUI.WheelPickerStyle, SelectionValue>>, inputs: SwiftUI._ViewInputs) -> SwiftUI._ViewOutputs where SelectionValue : Swift.Hashable
   public static func _makeViewList<SelectionValue>(value: SwiftUI._GraphValue<SwiftUI._PickerValue<SwiftUI.WheelPickerStyle, SelectionValue>>, inputs: SwiftUI._ViewListInputs) -> SwiftUI._ViewListOutputs where SelectionValue : Swift.Hashable
 }
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-public protocol _Widget {
-  associatedtype WidgetBody : SwiftUI._Widget
-  var body: Self.WidgetBody { get }
-  static func _makeWidget(widget: SwiftUI._GraphValue<Self>, inputs: SwiftUI._WidgetInputs) -> SwiftUI._WidgetOutputs
-}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-extension _Widget {
-  public static func _makeWidget(widget: SwiftUI._GraphValue<Self>, inputs: SwiftUI._WidgetInputs) -> SwiftUI._WidgetOutputs
-}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-extension Never : SwiftUI._Widget {
-  public typealias WidgetBody = Swift.Never
-}
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 @frozen public struct _AnimationModifier<Value> : SwiftUI.ViewModifier where Value : Swift.Equatable {
   public var animation: SwiftUI.Animation?
@@ -4404,6 +4294,26 @@ extension View {
     }
   
 }
+@available(iOS 14.0, OSX 11.0, *)
+@available(tvOS, unavailable)
+@available(watchOS, unavailable)
+public struct TextEditingCommands : SwiftUI.Commands {
+  public init()
+  public var body: some SwiftUI.Commands {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s7SwiftUI19TextEditingCommandsV4bodyQrvp", 0) 🦸
+}
+@available(iOS 14.0, OSX 11.0, *)
+@available(tvOS, unavailable)
+@available(watchOS, unavailable)
+public struct TextFormattingCommands : SwiftUI.Commands {
+  public init()
+  public var body: some SwiftUI.Commands {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s7SwiftUI22TextFormattingCommandsV4bodyQrvp", 0) 🦸
+}
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 public enum ColorRenderingMode {
   case nonLinear
@@ -4546,6 +4456,18 @@ extension DisclosureGroup where Label == SwiftUI.Text {
   public init(_ titleKey: SwiftUI.LocalizedStringKey, isExpanded: SwiftUI.Binding<Swift.Bool>, @SwiftUI.ViewBuilder content: @escaping () -> Content)
   @_disfavoredOverload public init<S>(_ label: S, @SwiftUI.ViewBuilder content: @escaping () -> Content) where S : Swift.StringProtocol
   @_disfavoredOverload public init<S>(_ label: S, isExpanded: SwiftUI.Binding<Swift.Bool>, @SwiftUI.ViewBuilder content: @escaping () -> Content) where S : Swift.StringProtocol
+}
+@available(OSX 11.0, *)
+@available(iOS, unavailable)
+@available(tvOS, unavailable)
+@available(watchOS, unavailable)
+@usableFromInline
+internal struct IsExpandedTraitKey : SwiftUI._ViewTraitKey {
+  @inlinable internal static var defaultValue: SwiftUI.Binding<Swift.Bool>? {
+    get { nil }
+  }
+  @usableFromInline
+  internal typealias Value = SwiftUI.Binding<Swift.Bool>?
 }
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 public protocol _DataProvider {
@@ -4746,9 +4668,6 @@ final public class _ArchivedViewHost<Content, Delegate> where Content : SwiftUI.
   final public func archiveStates(to url: Foundation.URL, count: Swift.Int, body: (Swift.Int) -> Swift.Void) throws
   final public func forEachIdentifiedView(body: (SwiftUI._IdentifiedViewProxy) -> Swift.Void)
   @objc deinit
-}
-extension Encoder {
-  public func filteredImage(_ image: CoreGraphics.CGImage) throws -> CoreGraphics.CGImage
 }
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension View {
@@ -5008,25 +4927,6 @@ public struct _PagingView<Views> : SwiftUI.View where Views : Swift.RandomAccess
     get
   }
   public typealias Body = @_opaqueReturnTypeOf("$s7SwiftUI11_PagingViewV4bodyQrvp", 0) 🦸<Views>
-}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-extension Group : SwiftUI._Widget where Content : SwiftUI._Widget {
-  public typealias WidgetBody = Swift.Never
-  @inlinable public init(@SwiftUI._WidgetBuilder content: () -> Content) {
-        self.content = content()
-    }
-  public static func _makeWidget(widget: SwiftUI._GraphValue<SwiftUI.Group<Content>>, inputs: SwiftUI._WidgetInputs) -> SwiftUI._WidgetOutputs
-}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-public struct _TupleWidget<T> : SwiftUI._Widget {
-  public var value: T
-  public init(_ value: T)
-  public static func _makeWidget(widget: SwiftUI._GraphValue<SwiftUI._TupleWidget<T>>, inputs: SwiftUI._WidgetInputs) -> SwiftUI._WidgetOutputs
-  public typealias WidgetBody = Swift.Never
 }
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension Image {
@@ -5411,23 +5311,14 @@ public struct MenuPickerStyle : SwiftUI.PickerStyle {
   public static func _makeView<SelectionValue>(value: SwiftUI._GraphValue<SwiftUI._PickerValue<SwiftUI.MenuPickerStyle, SelectionValue>>, inputs: SwiftUI._ViewInputs) -> SwiftUI._ViewOutputs where SelectionValue : Swift.Hashable
   public static func _makeViewList<SelectionValue>(value: SwiftUI._GraphValue<SwiftUI._PickerValue<SwiftUI.MenuPickerStyle, SelectionValue>>, inputs: SwiftUI._ViewListInputs) -> SwiftUI._ViewListOutputs where SelectionValue : Swift.Hashable
 }
-@available(OSX 10.15, *)
 @available(iOS, unavailable)
+@available(OSX, introduced: 10.15, deprecated: 100000.0, message: "Use `MenuPickerStyle` instead.")
 @available(tvOS, unavailable)
 @available(watchOS, unavailable)
 public struct PopUpButtonPickerStyle : SwiftUI.PickerStyle {
   public init()
   public static func _makeView<SelectionValue>(value: SwiftUI._GraphValue<SwiftUI._PickerValue<SwiftUI.PopUpButtonPickerStyle, SelectionValue>>, inputs: SwiftUI._ViewInputs) -> SwiftUI._ViewOutputs where SelectionValue : Swift.Hashable
   public static func _makeViewList<SelectionValue>(value: SwiftUI._GraphValue<SwiftUI._PickerValue<SwiftUI.PopUpButtonPickerStyle, SelectionValue>>, inputs: SwiftUI._ViewListInputs) -> SwiftUI._ViewListOutputs where SelectionValue : Swift.Hashable
-}
-@available(macCatalyst 14.0, OSX 10.15, *)
-@available(iOS, unavailable)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-public struct _PopUpButtonPickerStyle : SwiftUI.PickerStyle {
-  public init()
-  public static func _makeView<SelectionValue>(value: SwiftUI._GraphValue<SwiftUI._PickerValue<SwiftUI._PopUpButtonPickerStyle, SelectionValue>>, inputs: SwiftUI._ViewInputs) -> SwiftUI._ViewOutputs where SelectionValue : Swift.Hashable
-  public static func _makeViewList<SelectionValue>(value: SwiftUI._GraphValue<SwiftUI._PickerValue<SwiftUI._PopUpButtonPickerStyle, SelectionValue>>, inputs: SwiftUI._ViewListInputs) -> SwiftUI._ViewListOutputs where SelectionValue : Swift.Hashable
 }
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 public enum PopoverAttachmentAnchor {
@@ -5473,6 +5364,7 @@ extension View {
   public func labelStyle<S>(_ style: S) -> some SwiftUI.View where S : SwiftUI.LabelStyle
   
 }
+@available(iOS 14.0, OSX 11.0, tvOS 14.0, watchOS 7.0, *)
 extension Text {
   public init<Subject>(_ subject: Subject, formatter: Foundation.Formatter) where Subject : Foundation.ReferenceConvertible
   public init<Subject>(_ subject: Subject, formatter: Foundation.Formatter) where Subject : ObjectiveC.NSObject
@@ -5846,6 +5738,9 @@ extension EnvironmentValues {
     get
     set
   }
+}
+@available(iOS 14.0, OSX 11.0, tvOS 14.0, watchOS 7.0, *)
+extension EnvironmentValues {
   public var accessibilityShowButtonShapes: Swift.Bool {
     get
   }
@@ -6304,12 +6199,14 @@ public struct ProgressView<Label, CurrentValueLabel> : SwiftUI.View where Label 
   }
   public typealias Body = @_opaqueReturnTypeOf("$s7SwiftUI12ProgressViewV4bodyQrvp", 0) 🦸<Label, CurrentValueLabel>
 }
+@available(iOS 14.0, OSX 11.0, tvOS 14.0, watchOS 7.0, *)
 extension ProgressView where CurrentValueLabel == SwiftUI.EmptyView {
   public init() where Label == SwiftUI.EmptyView
   public init(@SwiftUI.ViewBuilder label: () -> Label)
   public init(_ titleKey: SwiftUI.LocalizedStringKey) where Label == SwiftUI.Text
   @_disfavoredOverload public init<S>(_ title: S) where Label == SwiftUI.Text, S : Swift.StringProtocol
 }
+@available(iOS 14.0, OSX 11.0, tvOS 14.0, watchOS 7.0, *)
 extension ProgressView {
   public init<V>(value: V?, total: V = 1.0) where Label == SwiftUI.EmptyView, CurrentValueLabel == SwiftUI.EmptyView, V : Swift.BinaryFloatingPoint
   public init<V>(value: V?, total: V = 1.0, @SwiftUI.ViewBuilder label: () -> Label) where CurrentValueLabel == SwiftUI.EmptyView, V : Swift.BinaryFloatingPoint
@@ -6317,6 +6214,7 @@ extension ProgressView {
   public init<V>(_ titleKey: SwiftUI.LocalizedStringKey, value: V?, total: V = 1.0) where Label == SwiftUI.Text, CurrentValueLabel == SwiftUI.EmptyView, V : Swift.BinaryFloatingPoint
   @_disfavoredOverload public init<S, V>(_ title: S, value: V?, total: V = 1.0) where Label == SwiftUI.Text, CurrentValueLabel == SwiftUI.EmptyView, S : Swift.StringProtocol, V : Swift.BinaryFloatingPoint
 }
+@available(iOS 14.0, OSX 11.0, tvOS 14.0, watchOS 7.0, *)
 extension ProgressView {
   public init(_ progress: Foundation.Progress) where Label == SwiftUI.EmptyView, CurrentValueLabel == SwiftUI.EmptyView
 }
@@ -6439,7 +6337,7 @@ public struct GraphicalDatePickerStyle : SwiftUI.DatePickerStyle {
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 @frozen public struct _FlipForRTLEffect : SwiftUI.ViewModifier, Swift.Equatable {
   public var isEnabled: Swift.Bool
-  @inlinable public init(isEnabled: Swift.Bool = true) {
+  @inlinable public init(isEnabled: Swift.Bool) {
         self.isEnabled = isEnabled
     }
   public typealias Body = Swift.Never
@@ -6448,7 +6346,7 @@ public struct GraphicalDatePickerStyle : SwiftUI.DatePickerStyle {
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension View {
   @inlinable public func flipsForRightToLeftLayoutDirection(_ enabled: Swift.Bool) -> some SwiftUI.View {
-        return modifier(_FlipForRTLEffect())
+        modifier(_FlipForRTLEffect(isEnabled: enabled))
     }
   
 }
@@ -9406,13 +9304,9 @@ extension ShapeStyle where Self : SwiftUI.View, Self.Body == SwiftUI._ShapeView<
 @available(watchOS, unavailable)
 public struct _ProminentPopUpButtonStyle : SwiftUI._PopUpButtonStyle {
   public init()
-  public func body(configuration: SwiftUI._ResolvedPopUpButton) -> SwiftUI._ProminentPopUpButtonStyle.Body
-  public struct Body : SwiftUI.View {
-    public var body: some SwiftUI.View {
-      get
-    }
-    public typealias Body = @_opaqueReturnTypeOf("$s7SwiftUI26_ProminentPopUpButtonStyleV4BodyV4bodyQrvp", 0) 🦸
-  }
+  public func body(configuration: SwiftUI._ResolvedPopUpButton) -> some SwiftUI.View
+  
+  public typealias Body = @_opaqueReturnTypeOf("$s7SwiftUI26_ProminentPopUpButtonStyleV4body13configurationQrAA09_ResolveddeF0V_tF", 0) 🦸
 }
 @available(OSX 10.15, *)
 @available(iOS, unavailable)
@@ -9420,13 +9314,9 @@ public struct _ProminentPopUpButtonStyle : SwiftUI._PopUpButtonStyle {
 @available(watchOS, unavailable)
 public struct _PlainPopUpButtonStyle : SwiftUI._PopUpButtonStyle {
   public init(showArrows: Swift.Bool)
-  public func body(configuration: SwiftUI._ResolvedPopUpButton) -> SwiftUI._PlainPopUpButtonStyle.Body
-  public struct Body : SwiftUI.View {
-    public var body: some SwiftUI.View {
-      get
-    }
-    public typealias Body = @_opaqueReturnTypeOf("$s7SwiftUI22_PlainPopUpButtonStyleV4BodyV4bodyQrvp", 0) 🦸
-  }
+  public func body(configuration: SwiftUI._ResolvedPopUpButton) -> some SwiftUI.View
+  
+  public typealias Body = @_opaqueReturnTypeOf("$s7SwiftUI22_PlainPopUpButtonStyleV4body13configurationQrAA09_ResolveddeF0V_tF", 0) 🦸
 }
 @available(OSX 10.15, *)
 @available(iOS, unavailable)
@@ -9434,13 +9324,9 @@ public struct _PlainPopUpButtonStyle : SwiftUI._PopUpButtonStyle {
 @available(watchOS, unavailable)
 public struct _TexturedPopUpButtonStyle : SwiftUI._PopUpButtonStyle {
   public init()
-  public func body(configuration: SwiftUI._ResolvedPopUpButton) -> SwiftUI._TexturedPopUpButtonStyle.Body
-  public struct Body : SwiftUI.View {
-    public var body: some SwiftUI.View {
-      get
-    }
-    public typealias Body = @_opaqueReturnTypeOf("$s7SwiftUI25_TexturedPopUpButtonStyleV4BodyV4bodyQrvp", 0) 🦸
-  }
+  public func body(configuration: SwiftUI._ResolvedPopUpButton) -> some SwiftUI.View
+  
+  public typealias Body = @_opaqueReturnTypeOf("$s7SwiftUI25_TexturedPopUpButtonStyleV4body13configurationQrAA09_ResolveddeF0V_tF", 0) 🦸
 }
 @available(watchOS 7.0, *)
 @available(iOS, unavailable)
@@ -9896,24 +9782,6 @@ public struct Link<Label> : SwiftUI.View where Label : SwiftUI.View {
 extension Link where Label == SwiftUI.Text {
   public init(_ titleKey: SwiftUI.LocalizedStringKey, destination: Foundation.URL)
   @_disfavoredOverload public init<S>(_ title: S, destination: Foundation.URL) where S : Swift.StringProtocol
-}
-@available(iOS 14.0, OSX 11.0, tvOS 14.0, watchOS 7.0, *)
-@available(*, deprecated, message: "Use Link")
-public struct _Link<Label> : SwiftUI.View where Label : SwiftUI.View {
-  public init(url: Foundation.URL, @SwiftUI.ViewBuilder label: () -> Label)
-  public init(sensitiveUrl url: Foundation.URL, @SwiftUI.ViewBuilder label: () -> Label)
-  public var body: some SwiftUI.View {
-    get
-  }
-  public typealias Body = @_opaqueReturnTypeOf("$s7SwiftUI5_LinkV4bodyQrvp", 0) 🦸<Label>
-}
-@available(iOS 14.0, OSX 11.0, tvOS 14.0, watchOS 7.0, *)
-@available(*, deprecated, message: "Use Link")
-extension _Link where Label == SwiftUI.Text {
-  public init(_ titleKey: SwiftUI.LocalizedStringKey, url: Foundation.URL)
-  @_disfavoredOverload public init<S>(_ title: S, url: Foundation.URL) where S : Swift.StringProtocol
-  public init(_ titleKey: SwiftUI.LocalizedStringKey, sensitiveUrl url: Foundation.URL)
-  @_disfavoredOverload public init<S>(_ title: S, sensitiveUrl url: Foundation.URL) where S : Swift.StringProtocol
 }
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 @frozen public struct _EnvironmentKeyTransformModifier<Value> : SwiftUI.ViewModifier, SwiftUI._GraphInputsModifier {
@@ -11389,23 +11257,6 @@ public struct __SpiralLayout {
   public static func _makeView(view: SwiftUI._GraphValue<SwiftUI._BackdropEffectPlaceholder>, inputs: SwiftUI._ViewInputs) -> SwiftUI._ViewOutputs
   public typealias Body = Swift.Never
 }
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-@frozen public struct _EmptyWidget : SwiftUI._Widget {
-  @inlinable public init() {}
-  public static func _makeWidget(widget: SwiftUI._GraphValue<SwiftUI._EmptyWidget>, inputs: SwiftUI._WidgetInputs) -> SwiftUI._WidgetOutputs
-  public typealias WidgetBody = Swift.Never
-}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-final public class _WidgetHost<Content> where Content : SwiftUI._Widget {
-  public init(content: Content)
-  final public func readPreference<K>(_ key: K.Type) -> K.Value where K : SwiftUI.PreferenceKey
-  final public func setEnvironment(_ environment: SwiftUI.EnvironmentValues)
-  @objc deinit
-}
 @available(iOS 14.0, OSX 11.0, tvOS 14.0, watchOS 7.0, *)
 extension View {
   public func help(_ textKey: SwiftUI.LocalizedStringKey) -> some SwiftUI.View
@@ -11414,26 +11265,6 @@ extension View {
   
   @_disfavoredOverload public func help<S>(_ text: S) -> some SwiftUI.View where S : Swift.StringProtocol
   
-}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-public struct TextEditingCommands : SwiftUI.Commands {
-  public init()
-  public var body: some SwiftUI.Commands {
-    get
-  }
-  public typealias Body = @_opaqueReturnTypeOf("$s7SwiftUI19TextEditingCommandsV4bodyQrvp", 0) 🦸
-}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-public struct TextFormattingCommands : SwiftUI.Commands {
-  public init()
-  public var body: some SwiftUI.Commands {
-    get
-  }
-  public typealias Body = @_opaqueReturnTypeOf("$s7SwiftUI22TextFormattingCommandsV4bodyQrvp", 0) 🦸
 }
 @available(iOS 14.0, OSX 11.0, *)
 @available(tvOS, unavailable)
@@ -11734,8 +11565,8 @@ extension View {
 }
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension View {
-  @inlinable public func environmentObject<B>(_ bindable: B) -> some SwiftUI.View where B : Combine.ObservableObject {
-        return environment(B.environmentStore, bindable)
+  @inlinable public func environmentObject<T>(_ object: T) -> some SwiftUI.View where T : Combine.ObservableObject {
+        return environment(T.environmentStore, object)
     }
   
 }
@@ -12024,38 +11855,6 @@ extension CommandsBuilder {
     }
   
 }
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-extension _WidgetBuilder {
-  @_alwaysEmitIntoClient public static func buildBlock<C0, C1>(_ c0: C0, _ c1: C1) -> SwiftUI._TupleWidget<(C0, C1)> where C0 : SwiftUI._Widget, C1 : SwiftUI._Widget {
-        return .init((c0, c1))
-    }
-}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-extension _WidgetBuilder {
-  @_alwaysEmitIntoClient public static func buildBlock<C0, C1, C2>(_ c0: C0, _ c1: C1, _ c2: C2) -> SwiftUI._TupleWidget<(C0, C1, C2)> where C0 : SwiftUI._Widget, C1 : SwiftUI._Widget, C2 : SwiftUI._Widget {
-        return .init((c0, c1, c2))
-    }
-}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-extension _WidgetBuilder {
-  @_alwaysEmitIntoClient public static func buildBlock<C0, C1, C2, C3>(_ c0: C0, _ c1: C1, _ c2: C2, _ c3: C3) -> SwiftUI._TupleWidget<(C0, C1, C2, C3)> where C0 : SwiftUI._Widget, C1 : SwiftUI._Widget, C2 : SwiftUI._Widget, C3 : SwiftUI._Widget {
-        return .init((c0, c1, c2, c3))
-    }
-}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-extension _WidgetBuilder {
-  @_alwaysEmitIntoClient public static func buildBlock<C0, C1, C2, C3, C4>(_ c0: C0, _ c1: C1, _ c2: C2, _ c3: C3, _ c4: C4) -> SwiftUI._TupleWidget<(C0, C1, C2, C3, C4)> where C0 : SwiftUI._Widget, C1 : SwiftUI._Widget, C2 : SwiftUI._Widget, C3 : SwiftUI._Widget, C4 : SwiftUI._Widget {
-        return .init((c0, c1, c2, c3, c4))
-    }
-}
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension ViewBuilder {
   @_alwaysEmitIntoClient public static func buildBlock<C0, C1>(_ c0: C0, _ c1: C1) -> SwiftUI.TupleView<(C0, C1)> where C0 : SwiftUI.View, C1 : SwiftUI.View {
@@ -12233,6 +12032,7 @@ open class _UIHostingView<Content> : UIKit.UIView where Content : SwiftUI.View {
     @objc get
     @objc set
   }
+  @objc override dynamic open func accessibilityElementCount() -> Swift.Int
   @available(iOS 13.0, tvOS 13.0, *)
   @available(OSX, unavailable)
   @available(watchOS, unavailable)
@@ -12329,14 +12129,6 @@ extension SwiftUI.UserInterfaceSizeClass : Swift.Hashable {}
 @available(tvOS, unavailable)
 @available(watchOS, unavailable)
 extension Swift.Never : SwiftUI.Commands {}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-extension SwiftUI._PreferenceWritingModifier : SwiftUI.WidgetConfiguration {}
-@available(iOS 14.0, OSX 11.0, *)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-extension SwiftUI._PreferenceTransformModifier : SwiftUI.WidgetConfiguration {}
 @available(iOS 13.0, tvOS 13.0, *)
 @available(OSX, unavailable)
 @available(watchOS, unavailable)
@@ -12691,6 +12483,7 @@ extension SwiftUI._HStackLayout : SwiftUI.Animatable {}
 extension SwiftUI._ZStackLayout : SwiftUI._VariadicView_UnaryViewRoot {}
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension SwiftUI._ZStackLayout : SwiftUI.Animatable {}
+extension SwiftUI._ZStackLayout : SwiftUI._VariadicView_ViewRoot {}
 @available(watchOS 6.0, *)
 @available(iOS, unavailable)
 @available(OSX, unavailable)

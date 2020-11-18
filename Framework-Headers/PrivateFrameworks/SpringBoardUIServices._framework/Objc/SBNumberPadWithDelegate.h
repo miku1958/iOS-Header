@@ -21,6 +21,7 @@
 - (id)buttonForPoint:(struct CGPoint)arg1 forEvent:(id)arg2;
 - (void)buttonUp:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (BOOL)touchAtPoint:(struct CGPoint)arg1 isCloseToButton:(id)arg2;
 
 @end
 

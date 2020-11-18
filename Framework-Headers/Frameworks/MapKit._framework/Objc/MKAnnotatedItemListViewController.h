@@ -8,15 +8,17 @@
 
 #import <MapKit/MKModuleViewControllerProtocol-Protocol.h>
 #import <MapKit/MKPictureItemContainerAnalyticsDelegate-Protocol.h>
+#import <MapKit/MKPictureItemContainerDelegate-Protocol.h>
 #import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
 
 @class GEOMapItemAttribution, NSString, UIView;
-@protocol _MKInfoCardAnalyticsDelegate;
+@protocol MKAnnotatedItemListViewControllerDelegate, _MKInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MKAnnotatedItemListViewController : UIViewController <MKPictureItemContainerAnalyticsDelegate, MKModuleViewControllerProtocol, _MKInfoCardChildViewControllerAnalyticsDelegate>
+@interface MKAnnotatedItemListViewController : UIViewController <MKPictureItemContainerAnalyticsDelegate, MKPictureItemContainerDelegate, MKModuleViewControllerProtocol, _MKInfoCardChildViewControllerAnalyticsDelegate>
 {
     id<_MKInfoCardAnalyticsDelegate> _analyticsDelegate;
+    id<MKAnnotatedItemListViewControllerDelegate> _delegate;
     UIViewController *_annotatedItemListViewController;
     GEOMapItemAttribution *_attribution;
     NSString *_headerTitle;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UIView *bottomHairlineSeparator; // @synthesize bottomHairlineSeparator=_bottomHairlineSeparator;
 @property (nonatomic, getter=isBottomSeparatorHidden) BOOL bottomSeparatorHidden;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<MKAnnotatedItemListViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
@@ -53,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithPictureItemContainer:(id)arg1 title:(id)arg2 attribution:(id)arg3 presentingProtocol:(id)arg4;
 - (id)initWithTextItemContainer:(id)arg1 title:(id)arg2 attribution:(id)arg3;
 - (void)openAttribution;
+- (void)pictureItemContainerRequestsSceneActivationWithPhotoGallery:(id)arg1;
 - (void)updateUIForTheme:(id)arg1;
 - (void)viewDidLoad;
 

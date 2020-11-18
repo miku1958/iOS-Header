@@ -10,6 +10,7 @@
 
 @property (readonly, nonatomic) BOOL ts_isAnimatingScroll;
 @property (readonly, nonatomic) BOOL ts_isScrolling;
+@property (readonly, nonatomic) BOOL ts_isVerticalBouncing;
 @property (readonly, nonatomic) double ts_verticalVelocity;
 
 - (BOOL)ts_isAutomaticContentOffsetAdjustmentEnabled;

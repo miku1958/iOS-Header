@@ -28,6 +28,7 @@
 @property (readonly, nonatomic) CDUnknownBlockType valueClassBlock; // @synthesize valueClassBlock=_valueClassBlock;
 
 - (void).cxx_destruct;
+- (id)JSONRepresentation;
 - (id)NSDictionary;
 - (id)allKeys;
 - (id)allObjects;

@@ -100,11 +100,12 @@ struct PortDescriptionImpl {
     BOOL _field6;
     BOOL _field7;
     BOOL _field8;
-    unsigned long long _field9;
-    id _field10;
+    BOOL _field9;
+    unsigned long long _field10;
     id _field11;
     id _field12;
     id _field13;
+    id _field14;
 };
 
 struct RouteDescriptionImpl {

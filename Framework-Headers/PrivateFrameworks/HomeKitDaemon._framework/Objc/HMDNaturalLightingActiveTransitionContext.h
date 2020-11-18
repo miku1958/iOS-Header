@@ -8,22 +8,24 @@
 
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class NSDate;
+@class NSDate, NSNumber;
 
 @interface HMDNaturalLightingActiveTransitionContext : HMFObject <NSCopying>
 {
     NSDate *_startDate;
     unsigned long long _millisecondsElapsedSinceStartDate;
+    NSNumber *_transitionChecksum;
 }
 
 @property (readonly) unsigned long long millisecondsElapsedSinceStartDate; // @synthesize millisecondsElapsedSinceStartDate=_millisecondsElapsedSinceStartDate;
 @property (readonly, copy) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (readonly, copy) NSNumber *transitionChecksum; // @synthesize transitionChecksum=_transitionChecksum;
 
 - (void).cxx_destruct;
 - (id)attributeDescriptions;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
-- (id)initWithStartDate:(id)arg1 millisecondsElapsedSinceStartDate:(unsigned long long)arg2;
+- (id)initWithStartDate:(id)arg1 millisecondsElapsedSinceStartDate:(unsigned long long)arg2 transitionChecksum:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 
 @end

@@ -9,17 +9,16 @@
 #import <AvatarKit/SCNSceneRendererDelegate-Protocol.h>
 #import <AvatarKit/_SCNSceneRendererDelegateSPI-Protocol.h>
 
-@class AVTAvatar, AVTAvatarEnvironment, MTLRenderPassDescriptor, NSString, SCNRenderer;
+@class AVTAvatar, AVTRenderer, MTLRenderPassDescriptor, NSString;
 @protocol MTLCommandQueue;
 
 @interface AVTVariantBatchSnapshotter : NSObject <SCNSceneRendererDelegate, _SCNSceneRendererDelegateSPI>
 {
     AVTAvatar *_avatar;
-    AVTAvatarEnvironment *_environment;
     struct CGSize _size;
     double _scale;
     unsigned long long _antialiasingMode;
-    SCNRenderer *_renderer;
+    AVTRenderer *_renderer;
     id<MTLCommandQueue> _commandQueue;
     MTLRenderPassDescriptor *_renderPassDescriptor;
     struct CGContext *_bitmapContext;
@@ -31,12 +30,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_renderer:(id)arg1 didBuildSubdivDataForHash:(id)arg2 dataProvider:(CDUnknownBlockType)arg3;
-- (id)_renderer:(id)arg1 subdivDataForHash:(id)arg2;
 - (void)dealloc;
 - (id)imageWithOptions:(id)arg1 modifications:(CDUnknownBlockType)arg2;
 - (id)initWithAvatar:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 antialiasingMode:(unsigned long long)arg4 device:(id)arg5;
-- (void)renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
 
 @end
 

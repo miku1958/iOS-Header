@@ -10,20 +10,23 @@
 
 @interface CSAccessory : NSObject
 {
-    BOOL _shouldLockScreenWhenAttached;
     NSString *_endpointUUID;
     long long _type;
     UIColor *_primaryColor;
     UIColor *_secondaryColor;
 }
 
+@property (readonly, nonatomic) BOOL chimeOnDetach;
 @property (strong, nonatomic) NSString *endpointUUID; // @synthesize endpointUUID=_endpointUUID;
+@property (readonly, nonatomic) BOOL hasStaticView;
 @property (strong, nonatomic) UIColor *primaryColor; // @synthesize primaryColor=_primaryColor;
 @property (strong, nonatomic) UIColor *secondaryColor; // @synthesize secondaryColor=_secondaryColor;
 @property (readonly, nonatomic) BOOL shouldDelayAnimation;
-@property (nonatomic) BOOL shouldLockScreenWhenAttached; // @synthesize shouldLockScreenWhenAttached=_shouldLockScreenWhenAttached;
+@property (readonly, nonatomic) BOOL shouldLockScreenWhenAttached;
 @property (readonly, nonatomic) BOOL shouldShowAnimation;
 @property (nonatomic) long long type; // @synthesize type=_type;
+@property (readonly, nonatomic) struct CGRect visibleScreenCoordinates;
+@property (readonly, nonatomic, getter=isWindowed) BOOL windowed;
 
 + (id)accessoryWithType:(long long)arg1 primaryColor:(id)arg2 secondoryColor:(id)arg3;
 - (void).cxx_destruct;

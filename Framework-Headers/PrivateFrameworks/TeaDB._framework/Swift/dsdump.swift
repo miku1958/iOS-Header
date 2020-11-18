@@ -52,6 +52,11 @@
 	// class getter
 	// class init
  }
+ protocol TeaDB.FastEntityType // 2 requirements
+ {
+	// class base protocol
+	// getter
+ }
  protocol TeaDB.ConnectionType // 1 requirements
  {
 	// method
@@ -66,9 +71,9 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : K
+	var width : èK
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : K
+	var height : èK
  }
 
  struct __C.CGRect {
@@ -82,9 +87,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : K
+	var x : èK
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : K
+	var y : èK
  }
 
  class TeaDB.KeyValueStore {
@@ -151,7 +156,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case bool : Bool
 	case double : Double
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case blob : ∑H
+	case blob : ªH
 	case null  
  }
 
@@ -173,13 +178,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let queue : OS_dispatch_queue
 
 	// Swift methods
-	0x12f20  class func Database.__allocating_init(location:) // init 
+	0x135e0  class func Database.__allocating_init(location:) // init 
  }
 
  enum TeaDB.Location {
 
 	// Properties
 	case path : String
+	case documents : (name: String)
 	case inMemory  
  }
 
@@ -206,6 +212,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class TeaDB.Query {
+ struct TeaDB.ValueOf: QueryValueType {
+
+	// Properties
+	let value : String // +0x0
+ }
+
  struct TeaDB.InsertCommand {
 
 	// Properties
@@ -241,17 +253,44 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var parts : [String]
  }
 
+ enum TeaDB.OrderBy {
+
+	// Properties
+	case descending : (column: String)
+	case ascending : (column: String)
+ }
+
  struct TeaDB.SelectCommand {
 
 	// Properties
 	var parts : [String]
  }
 
+ class TeaDB.FastEntity : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let keysAndValues : ColumnCodable
+
+	// Swift methods
+	0x23620  class func FastEntity.__allocating_init<A>(_:) // init 
+	0x236d0  class func FastEntity.__allocating_init<A, B>(_:_:) // init 
+	0x237c0  class func FastEntity.__allocating_init<A, B, C>(_:_:_:) // init 
+	0x238d0  class func FastEntity.__allocating_init<A, B, C, D>(_:_:_:_:) // init 
+	0x23a40  class func FastEntity.__allocating_init<A, B, C, D, E>(_:_:_:_:_:) // init 
+	0x23b40  class func FastEntity.__allocating_init<A, B, C, D, E, F>(_:_:_:_:_:_:) // init 
+	0x23c70  class func FastEntity.__allocating_init<A, B, C, D, E, F, G>(_:_:_:_:_:_:_:) // init 
+	0x23dc0  class func FastEntity.__allocating_init<A, B, C, D, E, F, G, H>(_:_:_:_:_:_:_:_:) // init 
+	0x23f20  class func FastEntity.__allocating_init<A, B, C, D, E, F, G, H, I>(_:_:_:_:_:_:_:_:_:) // init 
+	0x240a0  class func FastEntity.__allocating_init<A, B, C, D, E, F, G, H, I, J>(_:_:_:_:_:_:_:_:_:_:) // init 
+	0x24240  class func FastEntity.__allocating_init<A, B, C, D, E, F, G, H, I, J, K>(_:_:_:_:_:_:_:_:_:_:_:) // init 
+	0x24400  class func FastEntity.__allocating_init<A, B, C, D, E, F, G, H, I, J, K, L>(_:_:_:_:_:_:_:_:_:_:_:_:) // init 
+ }
+
  class TeaDB.Connection : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ConnectionType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let handle : UH
+	let handle : IH
 
 	// Swift methods
  }
@@ -267,8 +306,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct TeaDB.Entity {
 
 	// Properties
-	let id : Column // +0x0
-	let version : Column // +0x8
+	var _id : FastColumn // +0x0
+	var _version : FastColumn // +0x8
  }
 
  enum TeaDB.CodingKeys {
@@ -326,6 +365,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case run  
  }
 
+ class TeaDB.FastColumn {
+ enum TeaDB.CodingKeys {
+
+	// Properties
+	case name  
+	case wrappedValue  
+ }
+
  enum TeaDB.Transaction {
 
 	// Properties
@@ -334,12 +381,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case exclusive  
  }
 
+ struct TeaDB.JSON {
+
+	// Properties
+	let value : A
+ }
+
+ enum TeaDB.CodingKeys {
+
+	// Properties
+	case value  
+ }
+
  class TeaDB.Table {
  class TeaDB.PreparedStatement : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let handle : UH
+	let handle : IH
 
 	// Swift methods
  }

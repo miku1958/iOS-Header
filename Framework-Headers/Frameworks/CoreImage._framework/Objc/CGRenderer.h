@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)drawEdge:(id)arg1 withPath:(id)arg2;
 - (void)drawNode:(id)arg1;
 - (void)flushRender;
+- (void)hyperlinkEdge:(id)arg1 from:(struct CGPoint)arg2 to:(struct CGPoint)arg3;
 - (id)init;
 - (BOOL)setCanvasWidth:(unsigned int)arg1 height:(unsigned int)arg2;
 - (void)setFileTitle:(id)arg1;

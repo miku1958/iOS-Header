@@ -90,6 +90,7 @@ __attribute__((visibility("hidden")))
 - (struct _NSRange)globalRowsInRect:(struct CGRect)arg1 canGuess:(BOOL)arg2;
 - (BOOL)hasFooterForSection:(long long)arg1;
 - (BOOL)hasHeaderForSection:(long long)arg1;
+- (BOOL)hasRows;
 - (long long)headerAlignmentForSection:(long long)arg1;
 - (double)heightForFooterInSection:(long long)arg1 canGuess:(BOOL)arg2;
 - (double)heightForHeaderInSection:(long long)arg1 canGuess:(BOOL)arg2;

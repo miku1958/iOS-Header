@@ -21,6 +21,7 @@
     SBUIPasscodeViewWithLockScreenStyle *_passcodeView;
     CSLockScreenPearlSettings *_pearlSettings;
     CSPoseidonViewController *_poseidonViewController;
+    BOOL _keyboardVisible;
     BOOL _showEmergencyCallButton;
     BOOL _useBiometricPresentation;
     int _intent;
@@ -47,6 +48,7 @@
 - (void)handleFailedAuthenticationRequest:(id)arg1 error:(id)arg2;
 - (void)handleInvalidAuthenticationRequest:(id)arg1;
 - (void)handleSuccessfulAuthenticationRequest:(id)arg1;
+- (void)handleWillShowKeyboard:(BOOL)arg1;
 - (long long)idleTimerDuration;
 - (long long)idleTimerMode;
 - (long long)idleWarnMode;
@@ -68,6 +70,7 @@
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

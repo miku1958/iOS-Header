@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 + (id)_animatorForStiffnessFactor:(double)arg1 initialVelocity:(struct CGVector)arg2;
 + (id)animatorForCollapse;
 + (id)animatorForCollapseWithAdditivelyAnimatedViews:(id)arg1;
++ (id)animatorForGenericUpdates;
 + (id)animatorForMoveWithOccurrence:(id)arg1;
 + (id)animatorForScanlineCollapse;
 + (id)animatorForTentativeWithOccurrence:(id)arg1;

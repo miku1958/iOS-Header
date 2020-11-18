@@ -6,7 +6,14 @@
 
 #import <NewsArticles/_TtC12NewsArticles24RSSArticleViewController.h>
 
+@class NSArray;
+
 @interface _TtC12NewsArticles24RSSArticleViewController (NewsArticles)
+
+@property (nonatomic, readonly) BOOL canBecomeFirstResponder;
+@property (nonatomic, readonly) NSArray *keyCommands;
+
+- (void)handleKeyCommandWithKeyCommand:(id)arg1;
 - (void)loadingDidFinishWithError:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;

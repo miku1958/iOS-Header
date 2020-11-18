@@ -44,10 +44,12 @@
 - (void)performOnApplicationWindowDidBecomeForeground:(CDUnknownBlockType)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)sceneDidBecomeActive;
-- (void)sceneDidBecomeActiveWithURL:(id)arg1 sourceApplication:(id)arg2;
+- (void)sceneDidBecomeActiveWithURL:(id)arg1 sourceApplication:(id)arg2 sceneID:(id)arg3;
 - (void)sceneDidEnterBackground;
+- (void)sceneDidEnterBackgroundWithSceneID:(id)arg1;
 - (void)sceneWillConnect;
 - (void)sceneWillEnterForeground;
+- (void)sceneWillResignActiveWithSceneID:(id)arg1;
 
 @end
 

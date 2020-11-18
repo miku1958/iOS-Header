@@ -98,6 +98,7 @@
 - (id)iMessageAccountForLastAddressedHandle:(id)arg1 simID:(id)arg2;
 - (id)init;
 - (id)jabberAccount;
+- (BOOL)metionedHandleMatchesMeCard:(id)arg1;
 - (id)mostLoggedInAccount;
 - (id)operationalAccountsForService:(id)arg1;
 - (id)operationalAccountsWithCapability:(unsigned long long)arg1;

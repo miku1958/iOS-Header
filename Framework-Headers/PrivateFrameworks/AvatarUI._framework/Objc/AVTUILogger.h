@@ -200,6 +200,11 @@
 - (void)logStartingPreLoadingTask:(id)arg1;
 - (void)logStartingServer;
 - (void)logStickerGeneratorPoolDidntHaveAvailableGenerator:(long long)arg1 maxCount:(long long)arg2;
+- (void)logStickerSchedulerAddedTask:(id)arg1 taskCount:(long long)arg2;
+- (void)logStickerSchedulerCancelledAllTasks;
+- (void)logStickerSchedulerCancelledStickerSheetTasksForIdentifier:(id)arg1;
+- (void)logStickerSchedulerCancelledTask:(id)arg1;
+- (void)logStickerSchedulerStartedTask:(id)arg1 forSchedulerRule:(id)arg2;
 - (void)logStickerViewSnapshotForBounds:(struct CGRect)arg1 offset:(struct CGPoint)arg2;
 - (void)logSyncEnabled;
 - (void)logTearingDownCoreDataStack:(id)arg1;

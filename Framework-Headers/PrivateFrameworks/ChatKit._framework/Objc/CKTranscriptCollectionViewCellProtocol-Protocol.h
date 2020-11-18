@@ -10,6 +10,6 @@
 
 @protocol CKTranscriptCollectionViewCellProtocol <NSObject>
 + (NSString *)reuseIdentifier;
-- (void)configureForChatItem:(CKChatItem *)arg1;
+- (void)configureForChatItem:(CKChatItem *)arg1 context:(NSString *)arg2;
 @end
 

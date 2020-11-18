@@ -41,9 +41,6 @@
 - (void)_handleLocationChanged:(id)arg1;
 - (BOOL)_hasLinkedTelephoneNumbersForEntity:(id)arg1;
 - (void)_inviteEntityToShareTheirScreen:(id)arg1;
-- (BOOL)_isFaceTimeAudioAvailable;
-- (BOOL)_isFaceTimeVideoAvailable;
-- (BOOL)_isTelephonyAvailable;
 - (void)_performUpdateViewModels;
 - (id)_preferredCallServiceToIDMap;
 - (BOOL)_preferredRoutesDisabledViaServerBag;
@@ -70,7 +67,11 @@
 - (void)dealloc;
 - (BOOL)hasPreferredCallServiceForEntity:(id)arg1;
 - (id)initWithConversation:(id)arg1 delegate:(id)arg2;
+- (BOOL)isFaceTimeAudioAvailable;
 - (BOOL)isFaceTimeAudioAvailableForEntity:(id)arg1;
+- (BOOL)isFaceTimeVideoAvailable;
+- (BOOL)isGroupFaceTimeSupported;
+- (BOOL)isTelephonyAvailable;
 - (unsigned long long)preferredCallServiceForID:(id)arg1;
 - (void)sendEmail;
 - (void)setPreferredCallService:(unsigned long long)arg1 forID:(id)arg2;

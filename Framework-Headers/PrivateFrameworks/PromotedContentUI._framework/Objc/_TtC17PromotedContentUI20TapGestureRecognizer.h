@@ -23,6 +23,7 @@
     MISSING_TYPE *location;
     MISSING_TYPE *pointIsInsideView;
     MISSING_TYPE *preventedTouches;
+    MISSING_TYPE *$__lazy_storage_$_scrollableAncestor;
 }
 
 - (void).cxx_destruct;

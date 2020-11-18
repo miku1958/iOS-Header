@@ -32,6 +32,7 @@
 - (id)activityGroupForAction:(id)arg1;
 - (id)initWithURLHandler:(id)arg1 URLPreviewing:(id)arg2 host:(id)arg3 URLQualifier:(id)arg4;
 - (void)open:(id)arg1;
+- (void)openInNewWindow:(id)arg1;
 - (void)openInSafari:(id)arg1;
 - (id)previewActivityForAction:(id)arg1;
 

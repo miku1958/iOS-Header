@@ -9,11 +9,12 @@
 #import <NanoPassKit/PKPaymentServiceDelegate-Protocol.h>
 
 @class NPKPaymentBarcode, NSData, NSString, PKAssertion, PKPaymentPass, PKPaymentService, PKPaymentTransaction;
-@protocol NPKBarcodePaymentSessionDelegate, OS_dispatch_source;
+@protocol NPKBarcodePaymentSessionDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface NPKBarcodePaymentSession : NSObject <PKPaymentServiceDelegate>
 {
     BOOL _sessionStarted;
+    BOOL _submittingAuthenticationResult;
     id<NPKBarcodePaymentSessionDelegate> _delegate;
     NPKPaymentBarcode *_currentPaymentBarcode;
     unsigned long long _currentTransactionStatus;
@@ -23,6 +24,8 @@
     PKPaymentService *_paymentService;
     NSObject<OS_dispatch_source> *_sessionTimeoutTimer;
     PKAssertion *_notificationSuppressionAssertion;
+    PKAssertion *_expressTransactionSuppressionAssertion;
+    NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
 @property (strong, nonatomic) NSData *authorizationCredential; // @synthesize authorizationCredential=_authorizationCredential;
@@ -32,15 +35,19 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<NPKBarcodePaymentSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) PKAssertion *expressTransactionSuppressionAssertion; // @synthesize expressTransactionSuppressionAssertion=_expressTransactionSuppressionAssertion;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PKAssertion *notificationSuppressionAssertion; // @synthesize notificationSuppressionAssertion=_notificationSuppressionAssertion;
 @property (readonly, nonatomic) PKPaymentPass *paymentPass; // @synthesize paymentPass=_paymentPass;
 @property (strong, nonatomic) PKPaymentService *paymentService; // @synthesize paymentService=_paymentService;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property (nonatomic) BOOL sessionStarted; // @synthesize sessionStarted=_sessionStarted;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *sessionTimeoutTimer; // @synthesize sessionTimeoutTimer=_sessionTimeoutTimer;
+@property (nonatomic) BOOL submittingAuthenticationResult; // @synthesize submittingAuthenticationResult=_submittingAuthenticationResult;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_acquireExpressTransactionSuppressAssertion;
 - (void)_acquireNotificationSuppressionAssertion;
 - (void)_completedAuthenticationForTransaction:(id)arg1;
 - (void)_extendSessionTimeoutTimer;
@@ -51,6 +58,7 @@
 - (void)_insertPaymentTransactionForActiveBarcode;
 - (void)_invokeExtensionToCollectPaymentInformation;
 - (void)_processedAuthenticationMechanismForTransaction:(id)arg1;
+- (void)_releaseExpressTransactionSuppressionAssertion;
 - (void)_releaseNotificationSuppressionAssertion;
 - (void)_startSessionTimeoutTimer;
 - (void)_stopSessionTimeoutTimer;

@@ -10,15 +10,15 @@
 	// Properties
 	let intentType : String // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let intentData : É // +0x20 (0x10)
+	let intentData : i // +0x20 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timestamp : ã // +0xfeedfacf (0x0)
+	let timestamp : ƒ // +0xfeedfacf (0x0)
 
 	// Swift methods
-	0x11f0  class func IntentStart.__allocating_init(intentType:intent:) // init 
-	0x12c0  class func IntentStart.__allocating_init(intentType:intent:timestamp:) // init 
-	0x15c0  class func IntentStart.__allocating_init(from:) // init 
-	0x1850  func <stripped> // method 
+	0x12d0  class func IntentStart.__allocating_init(intentType:intent:) // init 
+	0x13a0  class func IntentStart.__allocating_init(intentType:intent:timestamp:) // init 
+	0x16a0  class func IntentStart.__allocating_init(from:) // init 
+	0x1930  func <stripped> // method 
  }
 
  enum SiriIntentEvents.CodingKeys {
@@ -36,15 +36,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let intentType : String // +0x20 (0x10)
 	let multicardinalIndexValue : Int? // +0x30 (0x9)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let item : É // +0x40 (0x10)
+	let item : i // +0x40 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timestamp : ã // +0x3 (0x0)
+	let timestamp : ƒ // +0x3 (0x0)
 
 	// Swift methods
-	0x23c0  class func ConfirmationOffer.__allocating_init(parameterName:intentType:multicardinalIndexValue:item:timestamp:) // init 
-	0x24c0  class func ConfirmationOffer.__allocating_init(parameterName:intentType:multicardinalIndexValue:item:) // init 
-	0x2840  class func ConfirmationOffer.__allocating_init(from:) // init 
-	0x2b40  func <stripped> // method 
+	0x24c0  class func ConfirmationOffer.__allocating_init(parameterName:intentType:multicardinalIndexValue:item:timestamp:) // init 
+	0x25c0  class func ConfirmationOffer.__allocating_init(parameterName:intentType:multicardinalIndexValue:item:) // init 
+	0x2940  class func ConfirmationOffer.__allocating_init(from:) // init 
+	0x2c40  func <stripped> // method 
  }
 
  enum SiriIntentEvents.CodingKeys {
@@ -63,17 +63,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let intentId : String // +0x10 (0x10)
 	let eventType : IntentEventType // +0x20 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : É // +0x28 (0x10)
+	let eventData : i // +0x28 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let createdAt : ã // +0x1d (0x0)
+	let createdAt : ƒ // +0x1d (0x0)
 
 	// Swift methods
-	0x3770  class func IntentEvent.__allocating_init(intentId:intentStart:createdAt:) // init 
-	0x3870  class func IntentEvent.__allocating_init(intentId:disambiguationOffer:createdAt:) // init 
-	0x3980  class func IntentEvent.__allocating_init(intentId:disambiguationResult:createdAt:) // init 
-	0x3a90  class func IntentEvent.__allocating_init(intentId:confirmationOffer:createdAt:) // init 
-	0x3ba0  class func IntentEvent.__allocating_init(intentId:confirmationResult:createdAt:) // init 
-	0x3cb0  class func IntentEvent.__allocating_init(intentId:intentResult:createdAt:) // init 
+	0x3890  class func IntentEvent.__allocating_init(intentId:intentStart:createdAt:) // init 
+	0x3990  class func IntentEvent.__allocating_init(intentId:disambiguationOffer:createdAt:) // init 
+	0x3aa0  class func IntentEvent.__allocating_init(intentId:disambiguationResult:createdAt:) // init 
+	0x3bb0  class func IntentEvent.__allocating_init(intentId:confirmationOffer:createdAt:) // init 
+	0x3cc0  class func IntentEvent.__allocating_init(intentId:confirmationResult:createdAt:) // init 
+	0x3dd0  class func IntentEvent.__allocating_init(intentId:intentResult:createdAt:) // init 
  }
 
  enum SiriIntentEvents.IntentEventLoggerError {
@@ -89,15 +89,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let intentType : String // +0x20 (0x10)
 	let multicardinalIndexValue : Int? // +0x30 (0x9)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let disambiguationItems : É // +0x40 (0x10)
+	let disambiguationItems : i // +0x40 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timestamp : ã // +0x0 (0x0)
+	let timestamp : ƒ // +0x0 (0x0)
 
 	// Swift methods
-	0x4550  class func DisambiguationOffer.__allocating_init(parameterName:intentType:multicardinalIndexValue:disambiguationItems:) // init 
-	0x4660  class func DisambiguationOffer.__allocating_init(parameterName:intentType:multicardinalIndexValue:disambiguationItems:timestamp:) // init 
-	0x4a00  class func DisambiguationOffer.__allocating_init(from:) // init 
-	0x4d00  func <stripped> // method 
+	0x4680  class func DisambiguationOffer.__allocating_init(parameterName:intentType:multicardinalIndexValue:disambiguationItems:) // init 
+	0x4790  class func DisambiguationOffer.__allocating_init(parameterName:intentType:multicardinalIndexValue:disambiguationItems:timestamp:) // init 
+	0x4b30  class func DisambiguationOffer.__allocating_init(from:) // init 
+	0x4e30  func <stripped> // method 
  }
 
  enum SiriIntentEvents.CodingKeys {
@@ -114,9 +114,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case resolved : •
+	case resolved : 5
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case partiallyResolved : ‡
+	case partiallyResolved : '
 	case notResolved  
  }
 
@@ -128,15 +128,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let intentType : String // +0x30 (0x10)
 	let resolution : DisambiguationResolution // +0x40 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timestamp : ã // +0x13000 (0x0)
+	let timestamp : ƒ // +0x13000 (0x0)
 
 	// Swift methods
-	0x6180  class func DisambiguationResult.__allocating_init(parameterName:intentType:multicardinalIndexValue:resolution:) // init 
-	0x6340  class func DisambiguationResult.__allocating_init(parameterName:intentType:multicardinalIndexValue:resolvedValue:) // init 
-	0x6440  class func DisambiguationResult.__allocating_init(parameterName:intentType:multicardinalIndexValue:resolution:timestamp:) // init 
-	0x6540  class func DisambiguationResult.__allocating_init(parameterName:intentType:multicardinalIndexValue:resolvedValue:timestamp:) // init 
-	0x68d0  class func DisambiguationResult.__allocating_init(from:) // init 
-	0x6bc0  func <stripped> // method 
+	0x62b0  class func DisambiguationResult.__allocating_init(parameterName:intentType:multicardinalIndexValue:resolution:) // init 
+	0x6470  class func DisambiguationResult.__allocating_init(parameterName:intentType:multicardinalIndexValue:resolvedValue:) // init 
+	0x6570  class func DisambiguationResult.__allocating_init(parameterName:intentType:multicardinalIndexValue:resolution:timestamp:) // init 
+	0x6670  class func DisambiguationResult.__allocating_init(parameterName:intentType:multicardinalIndexValue:resolvedValue:timestamp:) // init 
+	0x6a00  class func DisambiguationResult.__allocating_init(from:) // init 
+	0x6cf0  func <stripped> // method 
  }
 
  enum SiriIntentEvents.CodingKeys {
@@ -168,17 +168,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let store : _DKKnowledgeSaving
 
 	// Swift methods
-	0x7df0  class func CoreDuetIntentEventLogger.__allocating_init() // init 
-	0x7e90  func <stripped> // method 
-	0x8500  func <stripped> // method 
-	0x8900  func <stripped> // method 
+	0x7f20  class func CoreDuetIntentEventLogger.__allocating_init() // init 
+	0x7fc0  func <stripped> // method 
+	0x8630  func <stripped> // method 
+	0x8a30  func <stripped> // method 
  }
 
  enum SiriIntentEvents.ConfirmationResolution {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case confirmed : ‡
+	case confirmed : '
 	case rejected  
 	case cancelled  
 	case unset  
@@ -192,15 +192,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let intentType : String // +0x30 (0x10)
 	let resolution : ConfirmationResolution // +0x40 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timestamp : ã // +0x0 (0x0)
+	let timestamp : ƒ // +0x0 (0x0)
 
 	// Swift methods
-	0xb240  class func ConfirmationResult.__allocating_init(parameterName:intentType:multicardinalIndexValue:resolution:) // init 
-	0xb3f0  class func ConfirmationResult.__allocating_init(parameterName:intentType:multicardinalIndexValue:confirmedValue:) // init 
-	0xb4f0  class func ConfirmationResult.__allocating_init(parameterName:intentType:multicardinalIndexValue:resolution:timestamp:) // init 
-	0xb5f0  class func ConfirmationResult.__allocating_init(parameterName:intentType:multicardinalIndexValue:confirmedValue:timestamp:) // init 
-	0xb980  class func ConfirmationResult.__allocating_init(from:) // init 
-	0xbc70  func <stripped> // method 
+	0xb3a0  class func ConfirmationResult.__allocating_init(parameterName:intentType:multicardinalIndexValue:resolution:) // init 
+	0xb550  class func ConfirmationResult.__allocating_init(parameterName:intentType:multicardinalIndexValue:confirmedValue:) // init 
+	0xb650  class func ConfirmationResult.__allocating_init(parameterName:intentType:multicardinalIndexValue:resolution:timestamp:) // init 
+	0xb750  class func ConfirmationResult.__allocating_init(parameterName:intentType:multicardinalIndexValue:confirmedValue:timestamp:) // init 
+	0xbae0  class func ConfirmationResult.__allocating_init(from:) // init 
+	0xbdd0  func <stripped> // method 
  }
 
  enum SiriIntentEvents.CodingKeys {
@@ -253,15 +253,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let intentType : String // +0x10 (0x10)
 	let type : IntentResultType // +0x20 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let intentData : É // +0x28 (0x10)
+	let intentData : i // +0x28 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timestamp : ã // +0x13000 (0x0)
+	let timestamp : ƒ // +0x13000 (0x0)
 
 	// Swift methods
-	0xdbe0  class func IntentResult.__allocating_init(intentType:type:intent:) // init 
-	0xdcb0  class func IntentResult.__allocating_init(intentType:type:intent:timestamp:) // init 
-	0xdff0  class func IntentResult.__allocating_init(from:) // init 
-	0xe2c0  func <stripped> // method 
+	0xdd40  class func IntentResult.__allocating_init(intentType:type:intent:) // init 
+	0xde10  class func IntentResult.__allocating_init(intentType:type:intent:timestamp:) // init 
+	0xe150  class func IntentResult.__allocating_init(from:) // init 
+	0xe420  func <stripped> // method 
  }
 
  enum SiriIntentEvents.CodingKeys {

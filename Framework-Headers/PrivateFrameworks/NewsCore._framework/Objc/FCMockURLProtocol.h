@@ -11,6 +11,7 @@
 }
 
 + (id)URLForData:(id)arg1 mimeType:(id)arg2;
++ (id)URLForData:(id)arg1 mimeType:(id)arg2 statusCode:(unsigned long long)arg3;
 + (id)URLForError:(id)arg1;
 + (BOOL)canInitWithRequest:(id)arg1;
 + (id)canonicalRequestForRequest:(id)arg1;

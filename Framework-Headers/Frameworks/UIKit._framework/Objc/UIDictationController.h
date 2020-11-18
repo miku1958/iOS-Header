@@ -284,6 +284,7 @@ __attribute__((visibility("hidden")))
 - (void)dictationConnectionDidStartRecording:(id)arg1;
 - (void)dictationConnectionWillStartRecording:(id)arg1;
 - (void)dictationConnnectionDidChangeAvailability:(id)arg1;
+- (BOOL)dictationDisabledDueToTelephonyActivity;
 - (BOOL)dictationEnabled;
 - (BOOL)dictationIsModifyingText;
 - (void)dictationPrivacySheetControllerDidFinish:(id)arg1;
@@ -291,7 +292,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)dictationSearchFieldUISupportsTraitCollection:(id)arg1;
 - (id)dictationUIState;
 - (void)didShowAlternatives:(id)arg1 correctionIdentifier:(id)arg2 interactionIdentifier:(id)arg3 instrumentationContext:(id)arg4 dictationLanguage:(id)arg5;
-- (BOOL)disabledDueToTelephonyActivity;
 - (void)dismissDictationView:(id)arg1;
 - (void)dismissSoftwareKeyboardIfNeeded;
 - (void)doubleTappedKey:(id)arg1;

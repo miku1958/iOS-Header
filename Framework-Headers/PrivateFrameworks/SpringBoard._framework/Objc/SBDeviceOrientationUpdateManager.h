@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet;
+@class NSHashTable;
 @protocol BSInvalidatable;
 
 @interface SBDeviceOrientationUpdateManager : NSObject
 {
-    NSMutableSet *_deferralAssertions;
+    NSHashTable *_deferralAssertions;
     BOOL _deviceOrientationIsDirty;
     id<BSInvalidatable> _stateCaptureHandle;
     long long _lastUpdatedDeviceOrientation;

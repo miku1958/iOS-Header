@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI218TagFeedPoolService : _TtCs12_SwiftObject
 {
     MISSING_TYPE *context;
+    MISSING_TYPE *headlineService;
 }
 
 @end

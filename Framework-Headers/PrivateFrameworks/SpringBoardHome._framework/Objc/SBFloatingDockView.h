@@ -12,11 +12,11 @@
 @interface SBFloatingDockView : SBFTouchPassThroughView
 {
     id<SBFloatingDockViewDelegate> _delegate;
+    SBFloatingDockPlatterView *_mainPlatterView;
     SBDockIconListView *_userIconListView;
     SBDockIconListView *_recentIconListView;
     double _platterVerticalMargin;
     unsigned long long _minimumUserIconSpaces;
-    SBFloatingDockPlatterView *_mainPlatterView;
     UIView *_dividerView;
     UIView *_touchReceivingView;
     double _iconContentScale;

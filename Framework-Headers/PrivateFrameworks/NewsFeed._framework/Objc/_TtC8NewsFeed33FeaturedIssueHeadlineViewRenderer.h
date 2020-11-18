@@ -10,10 +10,10 @@
 
 @interface _TtC8NewsFeed33FeaturedIssueHeadlineViewRenderer : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *thumbnailImageCache;
     MISSING_TYPE *publisherLogoImageCache;
     MISSING_TYPE *rendererTool;
     MISSING_TYPE *issueCoverViewRenderer;
+    MISSING_TYPE *articleThumbnailViewRenderer;
 }
 
 @end

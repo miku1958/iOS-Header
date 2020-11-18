@@ -21,6 +21,7 @@
 - (void)launchOutOfProcessFamilyWithOptions:(NSDictionary *)arg1 completion:(void (^)(FACircleStateResponse *))arg2;
 - (void)registerPushToken:(NSData *)arg1 options:(NSDictionary *)arg2 replyBlock:(void (^)(NSError *))arg3;
 - (void)removeFamilyMemberWithDSID:(NSNumber *)arg1 options:(NSDictionary *)arg2 replyBlock:(void (^)(BOOL, NSNumber *, NSError *))arg3;
+- (void)runHeartbeatWithOptions:(NSDictionary *)arg1 replyBlock:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)updateFamilyMemberFlagWithDSID:(NSNumber *)arg1 flag:(NSString *)arg2 enabled:(BOOL)arg3 replyBlock:(void (^)(NSError *))arg4;
 @end
 

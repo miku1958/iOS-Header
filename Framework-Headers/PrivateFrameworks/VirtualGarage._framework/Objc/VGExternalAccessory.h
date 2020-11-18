@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)_accessoryDidUpdateVehicle:(id)arg1;
 - (void)_loadInitialAccessoryState;
 - (void)_updateFromVehicleInfo:(id)arg1;
+- (void)dealloc;
 - (void)getStateOfChargeForVehicle:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)listCarsWithCompletion:(CDUnknownBlockType)arg1;

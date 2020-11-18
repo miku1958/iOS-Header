@@ -94,7 +94,9 @@
 - (void)exposureDetectionGetExposureInfoCompleted:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)exposureDetectionGetExposureInfoWithMaximumCount:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)exposureNotificationGetStatusForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchConfigurationsForRegion:(id)arg1 fetchReason:(unsigned int)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchConfigurationsForRegion:(id)arg1 forceServerFetch:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)fetchSubdivisionsForCountry:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchTestMetadataForSession:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)finishTestVerificationForSession:(id)arg1 userDidConsent:(BOOL)arg2 metadata:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)getAllEntitiesWithCompletion:(CDUnknownBlockType)arg1;

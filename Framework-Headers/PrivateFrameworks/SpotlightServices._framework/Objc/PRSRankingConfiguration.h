@@ -18,7 +18,7 @@
     NSMutableDictionary *_queryDependentCategoryProbabilities;
     SSPlistDataReader *_queryIndependentCategoryProbabilities;
     NSNumber *_localResultQualityThreshold;
-    NSMutableOrderedSet *_cepBlacklistSet;
+    NSMutableOrderedSet *_cepBlocklistSet;
     NSArray *_parsecCategoryOrder;
     NSString *_shortcutSectionBundleID;
     NSDictionary *_sqfData;
@@ -27,7 +27,7 @@
 
 @property (nonatomic) BOOL allow_coreduet_influence; // @synthesize allow_coreduet_influence=_allow_coreduet_influence;
 @property (strong, nonatomic) NSMutableDictionary *categoryEngagements; // @synthesize categoryEngagements=_categoryEngagements;
-@property (strong, nonatomic) NSMutableOrderedSet *cepBlacklistSet; // @synthesize cepBlacklistSet=_cepBlacklistSet;
+@property (strong, nonatomic) NSMutableOrderedSet *cepBlocklistSet; // @synthesize cepBlocklistSet=_cepBlocklistSet;
 @property (nonatomic) BOOL disableResultTruncation; // @synthesize disableResultTruncation=_disableResultTruncation;
 @property (strong, nonatomic) NSNumber *localResultQualityThreshold; // @synthesize localResultQualityThreshold=_localResultQualityThreshold;
 @property (nonatomic) float numAppsDeduped; // @synthesize numAppsDeduped=_numAppsDeduped;
@@ -40,13 +40,14 @@
 @property (strong, nonatomic) NSDictionary *sqfData; // @synthesize sqfData=_sqfData;
 
 - (void).cxx_destruct;
-- (void)appendToExistingCEPBlacklist:(id)arg1;
+- (void)appendToExistingCEPBlocklist:(id)arg1;
 - (float)engagementProbabilityForCategory:(id)arg1;
 - (id)init;
+- (float)maxEngagementProbability;
 - (void)mergeWith:(id)arg1;
 - (double)queryDependentProbabilityForCategory:(id)arg1;
 - (double)queryIndependentProbabilityForCategory:(id)arg1;
-- (void)updateQueryDependentProbabilityAndBlacklistSetWith:(id)arg1;
+- (void)updateQueryDependentProbabilityAndBlocklistSetWith:(id)arg1;
 - (void)updateWithSQFData:(id)arg1;
 
 @end

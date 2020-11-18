@@ -99,7 +99,7 @@
 - (unsigned long long)nicknameOnboardingLastShownVersion;
 - (void)prepareForOnboarding;
 - (void)prepareForSuspend;
-- (void)presentFromPrefsPresentationController;
+- (void)presentFromPrefsPresentationController:(id)arg1 resizeToFitContent:(BOOL)arg2;
 - (void)presentMemojiSetup;
 - (BOOL)presentNicknameSharingSetupFlow;
 - (BOOL)presentNicknameSharingSetupFlowWithMemoji:(BOOL)arg1;

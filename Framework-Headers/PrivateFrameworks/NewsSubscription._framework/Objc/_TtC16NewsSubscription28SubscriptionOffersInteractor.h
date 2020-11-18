@@ -21,6 +21,7 @@
     MISSING_TYPE *routeModel;
     MISSING_TYPE *webAccessAuthenticatorFactory;
     MISSING_TYPE *webAccessAuthenticator;
+    MISSING_TYPE *webAccessConversionEventReporter;
 }
 
 @end

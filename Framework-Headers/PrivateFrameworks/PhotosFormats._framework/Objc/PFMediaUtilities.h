@@ -18,6 +18,7 @@
 + (BOOL)canLoadAssetAsRawForInteractiveEditingWithImageProperties:(id)arg1;
 + (long long)defaultRasterizationDPI;
 + (long long)devicePerformanceMemoryClass;
++ (BOOL)embeddedJPEGSuitableForDerivatives:(id)arg1 imageProperties:(id)arg2;
 + (id)imagePropertiesFromImageSource:(struct CGImageSource *)arg1;
 + (id)imagePropertiesFromImageSource:(struct CGImageSource *)arg1 atIndex:(unsigned long long)arg2;
 + (BOOL)isAudioUTI:(id)arg1;

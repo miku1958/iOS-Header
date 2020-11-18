@@ -6,12 +6,11 @@
 
 #import <GameCenterUI/GKBasePlayerCell.h>
 
-@class GKLabel, GKTurnBasedMatch, GKTurnBasedParticipant, NSArray, NSLayoutConstraint, UIButton, UIImageView, UILabel, UIStackView, UIView, _TtC12GameCenterUI22OverlappingPlayersView;
+@class GKLabel, GKTurnBasedMatch, GKTurnBasedParticipant, NSArray, NSDictionary, NSLayoutConstraint, UIButton, UIImageView, UILabel, UIStackView, UIView, _TtC12GameCenterUI22OverlappingPlayersView;
 
 @interface GKTurnParticipantCell : GKBasePlayerCell
 {
     BOOL _isDetail;
-    BOOL _loadingPlayerAvatars;
     GKTurnBasedMatch *_match;
     GKTurnBasedParticipant *_participant;
     SEL _detailPressedAction;
@@ -31,8 +30,9 @@
     _TtC12GameCenterUI22OverlappingPlayersView *_overlappingPlayersView;
     UIView *_overlappingPlayersViewContainer;
     UILabel *_additionalPlayerCountLabel;
-    NSArray *_playerAvatars;
     NSArray *_constraints;
+    NSDictionary *_playerAvatarMapping;
+    NSArray *_previousParticipants;
     struct UIEdgeInsets _insets;
 }
 
@@ -46,14 +46,14 @@
 @property (strong, nonatomic) NSLayoutConstraint *iconLeadingConstraint; // @synthesize iconLeadingConstraint=_iconLeadingConstraint;
 @property (nonatomic) struct UIEdgeInsets insets; // @synthesize insets=_insets;
 @property (nonatomic) BOOL isDetail; // @synthesize isDetail=_isDetail;
-@property (nonatomic) BOOL loadingPlayerAvatars; // @synthesize loadingPlayerAvatars=_loadingPlayerAvatars;
 @property (strong, nonatomic) GKTurnBasedMatch *match; // @synthesize match=_match;
 @property (strong, nonatomic) _TtC12GameCenterUI22OverlappingPlayersView *overlappingPlayersView; // @synthesize overlappingPlayersView=_overlappingPlayersView;
 @property (strong, nonatomic) UIView *overlappingPlayersViewContainer; // @synthesize overlappingPlayersViewContainer=_overlappingPlayersViewContainer;
 @property (strong, nonatomic) NSLayoutConstraint *overlappingPlayersViewTrailingConstraint; // @synthesize overlappingPlayersViewTrailingConstraint=_overlappingPlayersViewTrailingConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *overlappingPlayersViewWidthConstraint; // @synthesize overlappingPlayersViewWidthConstraint=_overlappingPlayersViewWidthConstraint;
 @property (strong, nonatomic) GKTurnBasedParticipant *participant; // @synthesize participant=_participant;
-@property (strong, nonatomic) NSArray *playerAvatars; // @synthesize playerAvatars=_playerAvatars;
+@property (strong, nonatomic) NSDictionary *playerAvatarMapping; // @synthesize playerAvatarMapping=_playerAvatarMapping;
+@property (strong, nonatomic) NSArray *previousParticipants; // @synthesize previousParticipants=_previousParticipants;
 @property (strong, nonatomic) NSLayoutConstraint *statusImageTrailingConstraint; // @synthesize statusImageTrailingConstraint=_statusImageTrailingConstraint;
 @property (strong, nonatomic) UIImageView *statusImageView; // @synthesize statusImageView=_statusImageView;
 @property (strong, nonatomic) NSLayoutConstraint *textContainerTrailingConstraint; // @synthesize textContainerTrailingConstraint=_textContainerTrailingConstraint;
@@ -72,11 +72,13 @@
 - (void)didUpdateModel;
 - (void)establishConstraints;
 - (double)getOverlappingPlayerAvatarIconSize;
+- (id)getPlayerIDForAllNonAutomatchedTurnBasedParticipants;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)matchWantsLocalPlayerAttention;
-- (void)prepareForReuse;
+- (BOOL)needsRefreshOverlappingPlayersView;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateMarginConstraints;
+- (void)updateOverlappingPlayerViewsAvatar;
 - (void)updateUIBasedOnTraitCollection;
 
 @end

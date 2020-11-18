@@ -99,8 +99,8 @@ __attribute__((visibility("hidden")))
 - (void)cameraAvailabilityDidChange:(BOOL)arg1;
 - (BOOL)checkSubscribedStreamsConsistency:(id)arg1;
 - (id)clientCaptureRule;
-- (void)collectAudioChannelMetrics:(CDStruct_3ab08b48 *)arg1;
-- (void)collectVideoChannelMetrics:(CDStruct_3ab08b48 *)arg1;
+- (void)collectAudioChannelMetrics:(CDStruct_1dd2c43e *)arg1;
+- (void)collectVideoChannelMetrics:(CDStruct_1dd2c43e *)arg1;
 - (BOOL)configureAudioIOWithDeviceRole:(int)arg1;
 - (BOOL)configureWithOneToOneParticipantConfig:(id)arg1;
 - (BOOL)containsStreamWithIDSStreamID:(unsigned short)arg1;

@@ -12,6 +12,8 @@
 {
     MISSING_TYPE *collectionViewModel;
     MISSING_TYPE *originatorViewModel;
+    MISSING_TYPE *indexPath;
+    MISSING_TYPE *selectedViewModel;
     MISSING_TYPE *documentController;
     MISSING_TYPE *shareActionDataSourceKey;
     MISSING_TYPE *completionHandler;

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <SleepHealth/HKRedactedDescription-Protocol.h>
 #import <SleepHealth/NSCopying-Protocol.h>
 #import <SleepHealth/NSSecureCoding-Protocol.h>
 
-@class HKQuantity, HKSleepSchedule, NSArray, NSCalendar, NSDateInterval;
+@class HKQuantity, HKSleepSchedule, NSArray, NSCalendar, NSDateInterval, NSString;
 
-@interface HKSHSleepDaySummary : NSObject <NSSecureCoding, NSCopying>
+@interface HKSHSleepDaySummary : NSObject <HKRedactedDescription, NSSecureCoding, NSCopying>
 {
     double _inBedDuration;
     double _sleepDuration;
@@ -26,6 +27,7 @@
 
 @property (readonly, copy, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 @property (readonly, copy, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
+@property (readonly, copy) NSString *hk_redactedDescription;
 @property (readonly, nonatomic) double inBedDuration;
 @property (readonly, nonatomic) long long morningIndex; // @synthesize morningIndex=_morningIndex;
 @property (readonly, copy, nonatomic) NSArray *periods; // @synthesize periods=_periods;
@@ -45,7 +47,6 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)redactedDescription;
 
 @end
 

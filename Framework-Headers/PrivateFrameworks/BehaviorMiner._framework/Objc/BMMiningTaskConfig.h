@@ -21,8 +21,6 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithConfigFilePath:(id)arg1;
-- (id)initWithDefaultConfig;
 - (BOOL)loadBMMiningTaskConfig:(id)arg1;
 - (void)loadDefaultConfig;
 - (void)updateFactorLevelsFromFilePath:(id)arg1;

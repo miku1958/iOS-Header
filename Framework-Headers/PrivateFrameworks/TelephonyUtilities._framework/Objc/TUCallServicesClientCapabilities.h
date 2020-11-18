@@ -15,11 +15,13 @@
     BOOL _wantsCallDisconnectionOnInvalidation;
     BOOL _wantsCallStopStreamingOnInvalidation;
     BOOL _wantsFrequencyChangeNotifications;
+    BOOL _wantsCallNotificationsDisabledWhileSuspended;
     id<TUCallServicesClientCapabilitiesActions> _delegate;
 }
 
 @property (weak, nonatomic) id<TUCallServicesClientCapabilitiesActions> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL wantsCallDisconnectionOnInvalidation; // @synthesize wantsCallDisconnectionOnInvalidation=_wantsCallDisconnectionOnInvalidation;
+@property (nonatomic) BOOL wantsCallNotificationsDisabledWhileSuspended; // @synthesize wantsCallNotificationsDisabledWhileSuspended=_wantsCallNotificationsDisabledWhileSuspended;
 @property (nonatomic) BOOL wantsCallStopStreamingOnInvalidation; // @synthesize wantsCallStopStreamingOnInvalidation=_wantsCallStopStreamingOnInvalidation;
 @property (nonatomic) BOOL wantsFrequencyChangeNotifications; // @synthesize wantsFrequencyChangeNotifications=_wantsFrequencyChangeNotifications;
 

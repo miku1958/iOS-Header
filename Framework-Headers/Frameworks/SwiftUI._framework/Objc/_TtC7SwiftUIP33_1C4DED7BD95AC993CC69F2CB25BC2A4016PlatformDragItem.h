@@ -10,9 +10,7 @@
 
 @interface _TtC7SwiftUIP33_1C4DED7BD95AC993CC69F2CB25BC2A4016PlatformDragItem : UIDragItem
 {
-    MISSING_TYPE *frame;
-    MISSING_TYPE *snapshotView;
-    MISSING_TYPE *contentPath;
+    MISSING_TYPE *responder;
 }
 
 - (void).cxx_destruct;

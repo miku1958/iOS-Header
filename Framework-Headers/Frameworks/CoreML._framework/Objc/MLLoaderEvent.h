@@ -20,7 +20,9 @@ __attribute__((visibility("hidden")))
     NSNumber *_computeUnits;
     NSNumber *_modelOrigin;
     NSNumber *_modelLoadError;
+    NSString *_bundleIdentifier;
     NSString *_modelName;
+    NSNumber *_firstPartyExecutable;
     NSString *_modelHash;
     NSString *_nnModelNetHash;
     NSString *_nnModelShapeHash;
@@ -28,11 +30,13 @@ __attribute__((visibility("hidden")))
     NSNumber *_modelDimension;
 }
 
+@property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) NSString *compilerVersion; // @synthesize compilerVersion=_compilerVersion;
 @property (copy, nonatomic) NSNumber *computeUnits; // @synthesize computeUnits=_computeUnits;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) NSDictionary *dictionaryRepresentation;
+@property (copy, nonatomic) NSNumber *firstPartyExecutable; // @synthesize firstPartyExecutable=_firstPartyExecutable;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSNumber *modelDimension; // @synthesize modelDimension=_modelDimension;
 @property (copy, nonatomic) NSString *modelHash; // @synthesize modelHash=_modelHash;

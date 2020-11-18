@@ -23,12 +23,14 @@
     NSMapTable *_iconViewControllersByListModel;
     NSMapTable *_pageIconsByListModel;
     SBRootFolderView *_rootFolderView;
+    id _userInfo;
     UILabel *_titleLabel;
     SBTitledHomeScreenButton *_doneButton;
     SBIconListView *_rootListView;
     UIScrollView *_pageManagementScrollView;
     id<SBDockOffscreenFractionModifying> _dockOffscreenAssertion;
     unsigned long long _transitionCount;
+    unsigned long long _activeTransitionCount;
     SBPageManagementIcon *_draggingIcon;
     long long _layoutAction;
     long long _layoutConfiguration;
@@ -37,6 +39,7 @@
     id<BSInvalidatable> _pageControlBorrowedAssertion;
 }
 
+@property (nonatomic) unsigned long long activeTransitionCount; // @synthesize activeTransitionCount=_activeTransitionCount;
 @property (strong, nonatomic) UITapGestureRecognizer *backgroundTapGestureRecognizer; // @synthesize backgroundTapGestureRecognizer=_backgroundTapGestureRecognizer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -54,6 +57,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (nonatomic) unsigned long long transitionCount; // @synthesize transitionCount=_transitionCount;
+@property (strong, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
 
 - (void).cxx_destruct;
 - (void)backgroundTapped:(id)arg1;
@@ -86,14 +90,14 @@
 - (BOOL)isIconViewRecycled:(id)arg1;
 - (void)layoutDoneButtonInFolderView:(id)arg1 metrics:(const struct SBRootFolderViewMetrics *)arg2;
 - (void)layoutScrollViewAndRootListViewInFolderView:(id)arg1;
-- (void)layoutSubviews;
+- (void)layoutSubviewsInFolderView:(id)arg1;
 - (void)layoutTitleLabelsInFolderView:(id)arg1;
-- (void)makeRootListViewAnimated:(BOOL)arg1;
-- (id)newCellBackgroundMaterialViewWithInitialWeighting:(double)arg1;
+- (void)makeRootListViewInFolderView:(id)arg1 animated:(BOOL)arg2;
+- (id)newCellBackgroundMaterialViewInFolderView:(id)arg1 initialWeighting:(double)arg2;
 - (void)pageManagementCellViewControllerDidReceiveTap:(id)arg1;
 - (void)recycleIconView:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
-- (void)transitionToActive:(BOOL)arg1 usingAnimator:(id)arg2;
+- (void)transitionToActive:(BOOL)arg1 inFolderView:(id)arg2 usingAnimator:(id)arg3;
 
 @end
 

@@ -11,7 +11,7 @@
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
 
 @class NSString, PKBankAccountInformation, PKPaymentPass, PKPeerPaymentAccount, PKPeerPaymentTermsController, PKPeerPaymentWebService;
-@protocol PKPeerPaymentActionControllerDelegate;
+@protocol PKPassLibraryDataProvider, PKPeerPaymentActionControllerDelegate;
 
 @interface PKPeerPaymentActionController : NSObject <PKPaymentSetupViewControllerDelegate, PKAddBankAccountInformationViewControllerDelegate, PKExplanationViewControllerDelegate>
 {
@@ -20,6 +20,7 @@
     PKPeerPaymentAccount *_account;
     long long _context;
     PKPeerPaymentTermsController *_termsController;
+    id<PKPassLibraryDataProvider> _passLibraryDataProvider;
     BOOL _performingAction;
     unsigned long long _controllerAction;
     id<PKPeerPaymentActionControllerDelegate> _delegate;
@@ -47,7 +48,7 @@
 - (void)_updateAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (void)bankAccountInformationViewControllerChangedBankAccountInformation:(id)arg1;
 - (void)explanationViewControllerDidSelectCancel:(id)arg1;
-- (id)initWithPaymentPass:(id)arg1 webService:(id)arg2 context:(long long)arg3 delegate:(id)arg4;
+- (id)initWithPaymentPass:(id)arg1 webService:(id)arg2 context:(long long)arg3 passLibraryDataProvider:(id)arg4 delegate:(id)arg5;
 - (void)performActionWithCurrencyAmount:(id)arg1;
 - (void)presentAddBankAccountViewController;
 - (void)presentAddDebitCardViewController;

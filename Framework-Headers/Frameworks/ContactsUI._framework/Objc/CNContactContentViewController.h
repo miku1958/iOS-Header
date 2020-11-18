@@ -105,7 +105,8 @@
     NSArray *_nameEditingGroups;
     NSMutableDictionary *_groupsAfterGroup;
     NSMapTable *_cachedLabelWidths;
-    NSArray *_extraBarButtonItems;
+    NSArray *_extraRightBarButtonItems;
+    NSArray *_extraLeftBarButtonItems;
     CNCardGroup *_cardActionsGroup;
     CNCardGroup *_cardShareLocationGroup;
     CNCardGroup *_cardMedicalIDGroup;
@@ -260,7 +261,8 @@
 @property (strong, nonatomic) CNEmergencyContactAction *emergencyContactAction; // @synthesize emergencyContactAction=_emergencyContactAction;
 @property (strong, nonatomic) NSString *emergencyNumberIdentifier; // @synthesize emergencyNumberIdentifier=_emergencyNumberIdentifier;
 @property (readonly, nonatomic) CNUIContactsEnvironment *environment; // @synthesize environment=_environment;
-@property (strong, nonatomic) NSArray *extraBarButtonItems; // @synthesize extraBarButtonItems=_extraBarButtonItems;
+@property (strong, nonatomic) NSArray *extraLeftBarButtonItems; // @synthesize extraLeftBarButtonItems=_extraLeftBarButtonItems;
+@property (strong, nonatomic) NSArray *extraRightBarButtonItems; // @synthesize extraRightBarButtonItems=_extraRightBarButtonItems;
 @property (strong, nonatomic) CNPropertyFaceTimeAction *faceTimeAction; // @synthesize faceTimeAction=_faceTimeAction;
 @property (strong, nonatomic) CNPropertyFaceTimeAction *faceTimeAudioAction; // @synthesize faceTimeAudioAction=_faceTimeAudioAction;
 @property (strong, nonatomic) id<CNCancelable> faceTimeIDSLookupToken; // @synthesize faceTimeIDSLookupToken=_faceTimeIDSLookupToken;

@@ -24,6 +24,7 @@
 @property (readonly, copy, nonatomic) NSString *bundleID; // @dynamic bundleID;
 @property (nonatomic, getter=isComplete) BOOL complete; // @synthesize complete=_complete;
 @property (readonly, nonatomic) unsigned long long coordinationState;
+@property (readonly, nonatomic) unsigned int creatorEUID; // @dynamic creatorEUID;
 @property (readonly, nonatomic) unsigned long long creatorIdentifier; // @dynamic creatorIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

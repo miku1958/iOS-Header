@@ -22,6 +22,7 @@
     UIView *_compositingView;
     UIView *_titleLabelFillView;
     UILabel *_label;
+    UILabel *_overlayLabelForNonColoredGlyphs;
     UIActivityIndicatorView *_activityIndicator;
     double _scalingFactor;
     BOOL _wrappingSupported;
@@ -73,6 +74,11 @@
 + (id)_defaultTintColor;
 + (id)_downtimeBlockedTintColor;
 + (id)_failureTintColor;
++ (id)_hoveredDefaultTintColor;
++ (id)_hoveredDowntimeBlockedTintColor;
++ (id)_hoveredFailureTintColor;
++ (id)_hoveredSMSTintColor;
++ (id)_newTextLabel;
 + (struct CGPoint)defaultBaselinePoint;
 + (id)defaultFont;
 + (double)defaultHeight;
@@ -90,11 +96,13 @@
 - (double)_rightPadding;
 - (void)_setEffectiveTintColor:(id)arg1;
 - (void)_setPresentationOption:(unsigned long long)arg1 enabled:(BOOL)arg2;
+- (void)_setupOverlayLabelForNonColoredGlyphs;
 - (void)_updateActivityIndicator;
 - (void)_updateCompositingFilters;
 - (void)_updateFontIfNecessary;
 - (void)_updateIconViewsSemanticContentAttribute;
 - (void)_updateLabelAttributes;
+- (void)_updateOverlayLabelText;
 - (void)_updateSubviewsForWrapping;
 - (BOOL)appearsSelected;
 - (void)appendPresentationOption:(unsigned long long)arg1;
@@ -110,6 +118,7 @@
 - (double)preferredWidthWithSizeConstraints:(struct CGSize)arg1;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2 style:(unsigned long long)arg3;
+- (void)setupOverlayLabelTextForEmojiRanges:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tintColorDidChange;
 - (void)traitCollectionDidChange:(id)arg1;

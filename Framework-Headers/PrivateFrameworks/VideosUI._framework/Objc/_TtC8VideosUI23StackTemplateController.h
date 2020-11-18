@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *supportsTabBarChildControllerBehaviours;
     MISSING_TYPE *enqueuedBannerViewModel;
     MISSING_TYPE *hasInAppBanner;
+    MISSING_TYPE *anchorIdToHighlight;
     MISSING_TYPE *showcasePercentageObserver;
     MISSING_TYPE *lastShowcasePercentage;
     MISSING_TYPE *statusBarStyle;

@@ -15,6 +15,7 @@
 {
     BOOL _isFromMe;
     BOOL _suppressPreviewForUnknownSender;
+    BOOL _allowAutoplay;
     BOOL _forceInlinePreviewGeneration;
     BOOL _cachedValidPreviewExists;
     id<CKFileTransfer> _transfer;
@@ -26,6 +27,7 @@
 }
 
 @property (readonly, copy, nonatomic) NSString *UTIType;
+@property (nonatomic) BOOL allowAutoplay; // @synthesize allowAutoplay=_allowAutoplay;
 @property (strong, nonatomic) NSURL *cachedHighQualityFileURL; // @synthesize cachedHighQualityFileURL=_cachedHighQualityFileURL;
 @property (nonatomic) BOOL cachedValidPreviewExists; // @synthesize cachedValidPreviewExists=_cachedValidPreviewExists;
 @property (readonly, nonatomic) BOOL canShareItem;
@@ -99,6 +101,7 @@
 - (id)icon;
 - (id)image:(id)arg1 withBackgroundColor:(id)arg2;
 - (id)initWithTransfer:(id)arg1 isFromMe:(BOOL)arg2 suppressPreview:(BOOL)arg3 forceInlinePreview:(BOOL)arg4;
+- (id)initWithTransfer:(id)arg1 isFromMe:(BOOL)arg2 suppressPreview:(BOOL)arg3 forceInlinePreview:(BOOL)arg4 allowAutoplay:(BOOL)arg5;
 - (Class)inlineStickerBalloonViewClass;
 - (id)invisibleInkEffectImageWithPreview:(id)arg1;
 - (BOOL)isDirectory;
@@ -106,7 +109,7 @@
 - (BOOL)isPreviewable;
 - (BOOL)isPromisedItem;
 - (id)location;
-- (id)pasteboardItem;
+- (id)pasteboardItemProvider;
 - (Class)previewBalloonViewClass;
 - (id)previewCacheKeyWithOrientation:(BOOL)arg1;
 - (id)previewCachesFileURLWithOrientation:(BOOL)arg1 extension:(id)arg2 generateIntermediaries:(BOOL)arg3;
@@ -114,6 +117,7 @@
 - (id)previewForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (void)prewarmPreviewForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)richIcon;
+- (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
 - (void)savePreview:(id)arg1 toURL:(id)arg2 forOrientation:(BOOL)arg3;
 - (id)savedPreviewFromURL:(id)arg1 forOrientation:(BOOL)arg2;
 - (BOOL)shouldBeQuickLooked;

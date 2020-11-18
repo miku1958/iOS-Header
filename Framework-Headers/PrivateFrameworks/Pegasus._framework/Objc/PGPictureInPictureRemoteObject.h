@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     PGInterruptionAssistant *_interruptionAssistant;
     unsigned long long _transitioningState;
     BOOL _hasBegunTwoStateStop;
+    BOOL _stashed;
     unsigned long long _resourcesUsageReductionReasons;
     id<BSInvalidatable> _stateCaptureInvalidatable;
     id<PGPictureInPictureRemoteObjectDelegate> _delegate;
@@ -83,10 +84,12 @@ __attribute__((visibility("hidden")))
 - (void)_invalidateInterruptionBeganFinishTaskAssertion;
 - (id)_invalidationTimerWithTimeout:(double)arg1;
 - (id)_invalidationTimerWithTimeout:(double)arg1 block:(CDUnknownBlockType)arg2;
+- (BOOL)_isUnderLock;
 - (id)_processAssertionForProcessIdentifier:(int)arg1;
 - (void)_setCurrentState:(long long)arg1;
 - (void)_startPreventingCancelAndRestoreUserActions;
 - (void)_tearDownAndNotifyClientAboutCancellation:(BOOL)arg1;
+- (void)_updatePreferredContentSize:(struct CGSize)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)beginTwoStageStopPictureInPictureByRestoringUserInterfaceWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)cancel;
 - (oneway void)checkActivePictureInPictureCancellationPolicyWithCompletion:(CDUnknownBlockType)arg1;

@@ -33,6 +33,7 @@
 + (void)enableNotifications;
 + (BOOL)isInMemoryOnly;
 + (void)reset;
++ (void)resetWithCompletion:(CDUnknownBlockType)arg1;
 + (void)resumeNotifications;
 + (void)setUseInMemoryOnly:(BOOL)arg1;
 + (BOOL)shouldMoveStoreAsideWithError:(id)arg1;
@@ -41,6 +42,7 @@
 + (void)suppressNotifications;
 + (BOOL)useInMemoryOnly;
 - (void).cxx_destruct;
+- (void)checkStoreLoadedWithCompletion:(CDUnknownBlockType)arg1;
 - (void)contextDidSaveWithNotification:(id)arg1;
 - (void)deleteAll;
 - (void)getBackgroundReadContextWithCompletion:(CDUnknownBlockType)arg1;
@@ -52,9 +54,11 @@
 - (void)loadStoresWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remoteChangeWithNotification:(id)arg1;
 - (void)resetInMemoryStore;
+- (void)resetInMemoryStoreWithCompletion:(CDUnknownBlockType)arg1;
 - (id)unsafeGetBackgroundReadContextAndReturnError:(id *)arg1;
 - (id)unsafeGetReadContextAndReturnError:(id *)arg1;
 - (id)unsafeGetWriteContextAndReturnError:(id *)arg1;
+- (void)whenReadyWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

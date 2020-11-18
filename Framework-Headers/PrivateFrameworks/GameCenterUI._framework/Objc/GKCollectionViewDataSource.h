@@ -69,7 +69,6 @@
 - (void)notifyItemMovedFromIndexPath:(id)arg1 toIndexPaths:(id)arg2;
 - (void)notifyItemsInsertedAtIndexPaths:(id)arg1;
 - (void)notifyItemsRefreshedAtIndexPaths:(id)arg1;
-- (void)notifyItemsRefreshedAtIndexPaths:(id)arg1 animated:(BOOL)arg2;
 - (void)notifyItemsRemovedAtIndexPaths:(id)arg1;
 - (void)notifyPlaceholderUpdated:(BOOL)arg1;
 - (void)notifySectionMovedFrom:(long long)arg1 to:(long long)arg2;

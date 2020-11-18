@@ -6,7 +6,7 @@
 
 #import <SpringBoardHome/SBFolderControllerDelegate-Protocol.h>
 
-@class NSString, SBHAddWidgetSheetViewController, SBIconListView, SBIconView, SBRootFolderController, SBViewControllerTransitionContext, SBWidgetIcon, UIView, UIViewPropertyAnimator;
+@class NSMutableDictionary, NSString, SBHAddWidgetSheetViewController, SBIconListView, SBIconView, SBRootFolderController, SBViewControllerTransitionContext, SBWidgetIcon, UIView, UIViewPropertyAnimator;
 @protocol UIViewImplicitlyAnimating;
 
 @protocol SBRootFolderControllerDelegate <SBFolderControllerDelegate>
@@ -21,6 +21,7 @@
 - (double)preferredExternalDockVerticalMarginForRootFolderController:(SBRootFolderController *)arg1;
 - (void)rootFolderController:(SBRootFolderController *)arg1 didChangeEffectiveSidebarVisibilityProgress:(double)arg2;
 - (void)rootFolderController:(SBRootFolderController *)arg1 didChangeSidebarVisibilityProgress:(double)arg2;
+- (void)rootFolderController:(SBRootFolderController *)arg1 didDismissPageManagementWithContext:(NSMutableDictionary *)arg2;
 - (void)rootFolderController:(SBRootFolderController *)arg1 didEndOverscrollOnFirstPageWithVelocity:(double)arg2 translation:(double)arg3;
 - (void)rootFolderController:(SBRootFolderController *)arg1 didEndOverscrollOnLastPageWithVelocity:(double)arg2 translation:(double)arg3;
 - (void)rootFolderController:(SBRootFolderController *)arg1 didOverscrollOnFirstPageByAmount:(double)arg2;
@@ -30,12 +31,11 @@
 - (void)rootFolderController:(SBRootFolderController *)arg1 statusBarInsetsDidChange:(struct UIEdgeInsets)arg2;
 - (NSString *)rootFolderController:(SBRootFolderController *)arg1 vendorNameForAppWithBundleIdentifiers:(NSString *)arg2;
 - (void)rootFolderController:(SBRootFolderController *)arg1 wantsToAdjustTodayContentForEdgeBounceForScrollOffset:(struct CGPoint)arg2;
-- (void)rootFolderController:(SBRootFolderController *)arg1 willDismissPageManagementUsingAnimator:(id<UIViewImplicitlyAnimating>)arg2;
-- (void)rootFolderController:(SBRootFolderController *)arg1 willPresentPageManagementUsingAnimator:(id<UIViewImplicitlyAnimating>)arg2;
+- (void)rootFolderController:(SBRootFolderController *)arg1 willDismissPageManagementUsingAnimator:(id<UIViewImplicitlyAnimating>)arg2 context:(NSMutableDictionary *)arg3;
+- (void)rootFolderController:(SBRootFolderController *)arg1 willPresentPageManagementUsingAnimator:(id<UIViewImplicitlyAnimating>)arg2 context:(NSMutableDictionary *)arg3;
 - (void)rootFolderController:(SBRootFolderController *)arg1 willUsePropertyAnimator:(UIViewPropertyAnimator *)arg2 toTransitionToState:(long long)arg3;
 - (void)rootFolderController:(SBRootFolderController *)arg1 willUseTransitionContext:(SBViewControllerTransitionContext *)arg2 toTransitionToState:(long long)arg3;
 - (BOOL)rootFolderControllerCanUseSeparateWindowForRotation:(SBRootFolderController *)arg1;
-- (void)rootFolderControllerDidDismissPageManagement:(SBRootFolderController *)arg1;
 - (void)rootFolderControllerDidDismissWidgetEditing:(SBRootFolderController *)arg1;
 - (void)rootFolderControllerViewDidDisappear:(SBRootFolderController *)arg1;
 - (void)rootFolderControllerViewWillAppear:(SBRootFolderController *)arg1;

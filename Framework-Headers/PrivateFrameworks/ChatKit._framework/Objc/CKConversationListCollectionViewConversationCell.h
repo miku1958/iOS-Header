@@ -16,7 +16,6 @@
 {
     NSObject<CKConversationListCollectionViewCellDelegate> *_delegate;
     _CKCollectionViewTapGestureRecognizer *_avatarViewTapGestureRecognizer;
-    double _widthForDeterminingAvatarVisibility;
     struct UIEdgeInsets _marginInsets;
 }
 
@@ -28,7 +27,6 @@
 @property (nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets=_marginInsets;
 @property (nonatomic) BOOL shouldHidePreviewSummary;
 @property (readonly) Class superclass;
-@property (nonatomic) double widthForDeterminingAvatarVisibility; // @synthesize widthForDeterminingAvatarVisibility=_widthForDeterminingAvatarVisibility;
 
 + (double)cellHeightForDisplayScale:(double)arg1;
 + (Class)conversationCellClassForCurrentSizeCategory;
@@ -48,6 +46,7 @@
 - (void)setEditingMode:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)updateContentsForConversation:(id)arg1;
 - (void)updateContentsForConversation:(id)arg1 fastPreview:(BOOL)arg2;
+- (double)widthForDeterminingAvatarVisibility;
 
 @end
 

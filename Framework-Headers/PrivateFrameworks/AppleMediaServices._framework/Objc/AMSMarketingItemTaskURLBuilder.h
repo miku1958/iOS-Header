@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)_additionalQueryItems;
 - (id)_countryCodeFromBag:(id)arg1;
 - (id)_formattedURLPathWithBag:(id)arg1;
+- (id)_languageTagFromBag:(id)arg1 fallback:(id)arg2;
 - (id)_realmFromBag:(id)arg1;
 - (id)_realmOverridesFromBag:(id)arg1;
 - (id)_stringForKey:(id)arg1 fromBag:(id)arg2;

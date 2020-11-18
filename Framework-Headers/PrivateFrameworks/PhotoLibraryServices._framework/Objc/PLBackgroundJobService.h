@@ -6,21 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotoLibraryServices/PLBackgroundJobCameraWatcherDelegate-Protocol.h>
+#import <PhotoLibraryServices/PFCameraViewfinderSessionWatcherDelegate-Protocol.h>
 #import <PhotoLibraryServices/PLBackgroundJobLibraryCoordinatorDelegate-Protocol.h>
 #import <PhotoLibraryServices/PLForegroundMonitorDelegate-Protocol.h>
 
-@class NSDictionary, NSString, PFCoalescer, PLBackgroundJobCameraWatcher, PLBackgroundJobLibraryCoordinator, PLForegroundMonitor;
+@class NSDictionary, NSString, PFCameraViewfinderSessionWatcher, PFCoalescer, PLBackgroundJobLibraryCoordinator, PLForegroundMonitor;
 @protocol OS_dispatch_queue, OS_dispatch_source, OS_xpc_object, PLBackgroundJobServiceDelegate;
 
-@interface PLBackgroundJobService : NSObject <PLBackgroundJobLibraryCoordinatorDelegate, PLForegroundMonitorDelegate, PLBackgroundJobCameraWatcherDelegate>
+@interface PLBackgroundJobService : NSObject <PLBackgroundJobLibraryCoordinatorDelegate, PLForegroundMonitorDelegate, PFCameraViewfinderSessionWatcherDelegate>
 {
     NSObject<OS_xpc_object> *_xpcActivity;
     unsigned long long _state;
     PLBackgroundJobLibraryCoordinator *_libraryCoordinator;
     PFCoalescer *_registrationCoalescer;
     PLForegroundMonitor *_foregroundMonitor;
-    PLBackgroundJobCameraWatcher *_cameraWatcher;
+    PFCameraViewfinderSessionWatcher *_cameraWatcher;
     double _registrationCoalescerPushBackTimeInterval;
     NSDictionary *_libraryInvalidationCompletionHandlerByLibraryURL;
     NSDictionary *_bundlesToProcessByPriority;

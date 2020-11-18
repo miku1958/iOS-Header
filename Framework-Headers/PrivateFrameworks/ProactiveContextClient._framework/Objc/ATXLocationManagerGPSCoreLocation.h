@@ -41,7 +41,7 @@
 - (id)_existingRegionWithIdentifierOnCLQueue:(id)arg1;
 - (id)_init;
 - (void)_requestStateIfNeededForRegion:(id)arg1;
-- (void)_startUpdateIfNeeded;
+- (void)_startUpdateIfNeededWithPreciseLocation:(BOOL)arg1;
 - (void)_updateConditionAndInvokeLocationBlocks:(id)arg1 error:(id)arg2;
 - (void)beginMonitoringRegion:(id)arg1;
 - (void)dealloc;

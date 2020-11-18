@@ -24,6 +24,7 @@
 @property (strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 
 - (void).cxx_destruct;
+- (id)initWithContentItems:(id)arg1;
 - (id)initWithItems:(id)arg1;
 - (id)initWithTextItems:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;

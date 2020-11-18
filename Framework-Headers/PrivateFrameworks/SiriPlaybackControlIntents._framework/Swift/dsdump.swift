@@ -129,17 +129,17 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deviceSelector : ˜
+	let deviceSelector : 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deviceState : üÚ
+	let deviceState : ˚
 	let contextUtil : ContextUtil
 	let analyticsService : AnalyticsService
 
 	// Swift methods
-	0x6100  func <stripped> // method 
-	0x6520  func <stripped> // method 
-	0x7400  func <stripped> // method 
-	0x90b0  func <stripped> // method 
+	0x6550  func <stripped> // method 
+	0x6970  func <stripped> // method 
+	0x7850  func <stripped> // method 
+	0x9410  func <stripped> // method 
  }
 
  struct SiriPlaybackControlIntents.Speaker {
@@ -178,52 +178,52 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let playbackController : ]Ú
+	let playbackController : Ì˙
 	let deviceSelector : DeviceSelectingUtil
 	let analyticsService : AnalyticsService
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xfeb400039f48 (0x6b400039f48) in binary!
-	0xea18  @objc SkipContentIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xea0c00039e08 (0x20c00039e08) in binary!
-	0xea00  @objc SkipContentIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xd7e600039de0 (0x7e600039de0) in binary!
+WARNING: couldn't find address 0xfea4000378d8 (0x6a4000378d8) in binary!
+	0xea78  @objc SkipContentIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xea6c00037798 (0x26c00037798) in binary!
+	0xea60  @objc SkipContentIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xd84600037770 (0x4600037770) in binary!
 	0x58000000c  @objc SkipContentIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xfe6c00039f00 (0x66c00039f00) in binary!
-	0xe9d0  @objc SkipContentIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xe9c400039da0 (0x1c400039da0) in binary!
-	0xe9b8  @objc SkipContentIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xfe5c00037890 (0x65c00037890) in binary!
+	0xea30  @objc SkipContentIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xea2400037730 (0x22400037730) in binary!
+	0xea18  @objc SkipContentIntentHandler.(null) <stripped>
 
 	// Swift methods
-	0x1ad50  func <stripped> // method 
-	0x1b000  func <stripped> // method 
-	0x1b380  func <stripped> // method 
+	0x1b0e0  func <stripped> // method 
+	0x1b390  func <stripped> // method 
+	0x1b710  func <stripped> // method 
  }
 
  class SiriPlaybackControlIntents.SetRepeatStateIntentHandler : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let playbackController : ]Ú
+	let playbackController : Ì˙
 	let deviceSelector : DeviceSelectingUtil
 	let analyticsService : AnalyticsService
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xfe6c00039f00 (0x66c00039f00) in binary!
-	0xe9d0  @objc SetRepeatStateIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xe9c400039da0 (0x1c400039da0) in binary!
-	0xe9b8  @objc SetRepeatStateIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xd79e00039d98 (0x79e00039d98) in binary!
+WARNING: couldn't find address 0xfe5c00037890 (0x65c00037890) in binary!
+	0xea30  @objc SetRepeatStateIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xea2400037730 (0x22400037730) in binary!
+	0xea18  @objc SetRepeatStateIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xd7fe00037728 (0x7fe00037728) in binary!
 	0x18000000c  @objc SetRepeatStateIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xfe2400039f50 (0x62400039f50) in binary!
+WARNING: couldn't find address 0xfe14000378e0 (0x614000378e0) in binary!
 	0x68000000c  @objc SetRepeatStateIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xfe0c00039ea0 (0x60c00039ea0) in binary!
-	0xe970  @objc SetRepeatStateIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xfdfc00037830 (0x5fc00037830) in binary!
+	0xe9d0  @objc SetRepeatStateIntentHandler.(null) <stripped>
 
 	// Swift methods
-	0x1c820  func <stripped> // method 
-	0x1cad0  func <stripped> // method 
-	0x1ce50  func <stripped> // method 
+	0x1cbc0  func <stripped> // method 
+	0x1ce70  func <stripped> // method 
+	0x1d1f0  func <stripped> // method 
  }
 
  class SiriPlaybackControlIntents.PauseMediaFlowDelegate {
@@ -245,28 +245,30 @@ WARNING: couldn't find address 0xfe0c00039ea0 (0x60c00039ea0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let playbackController : ]Ú
+	let playbackController : Ì˙
 	let deviceSelector : DeviceSelectingUtil
 	let analyticsService : AnalyticsService
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xfe0c00039ea0 (0x60c00039ea0) in binary!
-	0xe970  @objc SkipTimeIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xe96400039d28 (0x16400039d28) in binary!
-	0xe958  @objc SkipTimeIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xe94c00039d00 (0x14c00039d00) in binary!
-	0xd732  @objc SkipTimeIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xfdfc00037830 (0x5fc00037830) in binary!
+	0xe9d0  @objc SkipTimeIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xe9c4000376b8 (0x1c4000376b8) in binary!
+	0xe9b8  @objc SkipTimeIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xe9ac00037690 (0x1ac00037690) in binary!
+	0xd792  @objc SkipTimeIntentHandler.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x4ccfff6f128  @objc SkipTimeIntentHandler.(null) <stripped>
-	0x4a4fff70480  @objc SkipTimeIntentHandler.âˇæ <stripped>
-	0xfff70a68  @objc SkipTimeIntentHandler.}êHãU–HãM¿IâŸË|ˇˇÈ´ <stripped>
+	0x65cfff6e4b8  @objc SkipTimeIntentHandler.(null) <stripped>
+	0x634fff6f850  @objc SkipTimeIntentHandler.ã]Iº¯ˇˇˇˇˇˇ <stripped>
+	0xfff6fe38  @objc SkipTimeIntentHandler.¿HâM–âU¥HâuêIâˇLãm LãuHã]Iº¯ˇˇˇˇˇˇ <stripped>
 
 	// Swift methods
-	0x29d70  func <stripped> // method 
-	0x2a020  func <stripped> // method 
-	0x2a160  func <stripped> // method 
-	0x2a4e0  func <stripped> // method 
+	0x2a240  func <stripped> // method 
+	0x2a4f0  func <stripped> // method 
+	0x2a630  func <stripped> // method 
+	0x2a9b0  func <stripped> // method 
  }
+
+ enum SiriPlaybackControlIntents.ControlsFlowProvider { }
 
  enum SiriPlaybackControlIntents.ControlsFlowFrameProvider { }
 
@@ -304,65 +306,64 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	let globals : [String : Any]
 
 	// Swift methods
-	0x396c0  func <stripped> // method 
-	0x39e80  func <stripped> // method 
+	0x3a0a0  func <stripped> // method 
+	0x3a860  func <stripped> // method 
  }
 
  class SiriPlaybackControlIntents.ResumeMediaIntentHandler : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let playbackController : ]Ú
+	let playbackController : Ì˙
 	let deviceSelector : DeviceSelectingUtil
 	let analyticsService : AnalyticsService
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let aceService : sÊ
+	let aceServiceHelper : AceServiceHelper
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xfdbc00039e50 (0x5bc00039e50) in binary!
-	0xe920  @objc ResumeMediaIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xe91400039cb8 (0x11400039cb8) in binary!
-	0xe908  @objc ResumeMediaIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xd6ee00039ce8 (0x6ee00039ce8) in binary!
+WARNING: couldn't find address 0xfdac000377e0 (0x5ac000377e0) in binary!
+	0xe980  @objc ResumeMediaIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xe97400037648 (0x17400037648) in binary!
+	0xe968  @objc ResumeMediaIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xd74e00037678 (0x74e00037678) in binary!
 	0x68000000c  @objc ResumeMediaIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xfd7400039e08 (0x57400039e08) in binary!
-	0xe8d8  @objc ResumeMediaIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xe8cc00039c58 (0xcc00039c58) in binary!
-	0xe8c0  @objc ResumeMediaIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xfd6400037798 (0x56400037798) in binary!
+	0xe938  @objc ResumeMediaIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xe92c000375e8 (0x12c000375e8) in binary!
+	0xe920  @objc ResumeMediaIntentHandler.(null) <stripped>
 
 	// Swift methods
-	0x3a5e0  func <stripped> // method 
-	0x3b580  func <stripped> // method 
-	0x3b900  func <stripped> // method 
-	0x3ba00  func <stripped> // method 
+	0x3afe0  func <stripped> // method 
+	0x3bfc0  func <stripped> // method 
+	0x3c340  func <stripped> // method 
+	0x3c440  func <stripped> // method 
  }
 
  class SiriPlaybackControlIntents.SetAudioLanguageIntentHandler : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let playbackController : ]Ú
+	let playbackController : Ì˙
 	let deviceSelector : DeviceSelectingUtil
 	let analyticsService : AnalyticsService
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xfd7400039e08 (0x57400039e08) in binary!
-	0xe8d8  @objc SetAudioLanguageIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xe8cc00039c58 (0xcc00039c58) in binary!
-	0xe8c0  @objc SetAudioLanguageIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xe8b400039c30 (0xb400039c30) in binary!
-	0xd69a  @objc SetAudioLanguageIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xfd6400037798 (0x56400037798) in binary!
+	0xe938  @objc SetAudioLanguageIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xe92c000375e8 (0x12c000375e8) in binary!
+	0xe920  @objc SetAudioLanguageIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xe914000375c0 (0x114000375c0) in binary!
+	0xd6fa  @objc SetAudioLanguageIntentHandler.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff810d0  @objc SetAudioLanguageIntentHandler.(null) <stripped>
+	0xfff7ff70  @objc SetAudioLanguageIntentHandler.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x3e4fff818d8  @objc SetAudioLanguageIntentHandler.(null) <stripped>
-	0x3bcfff81f40  @objc SetAudioLanguageIntentHandler. <stripped>
+	0x574fff80778  @objc SetAudioLanguageIntentHandler.(null) <stripped>
+	0x54cfff80de0  @objc SetAudioLanguageIntentHandler.  <stripped>
 
 	// Swift methods
-	0x3ea10  func <stripped> // method 
-	0x3ed30  func <stripped> // method 
-	0x3f890  func <stripped> // method 
-	0x3fb70  func <stripped> // method 
+	0x3eeb0  func <stripped> // method 
+	0x3f1d0  func <stripped> // method 
+	0x3fd30  func <stripped> // method 
+	0x40010  func <stripped> // method 
  }
 
  enum SiriPlaybackControlIntents.LanguageNLContextProvider { }
@@ -379,26 +380,26 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let playbackController : ]Ú
+	let playbackController : Ì˙
 	let deviceSelector : DeviceSelectingUtil
 	let analyticsService : AnalyticsService
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xfd0c00039da0 (0x50c00039da0) in binary!
-	0xe870  @objc SetShuffleStateIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xe86400039bd0 (0x6400039bd0) in binary!
-	0xe858  @objc SetShuffleStateIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xd63e00039c38 (0x63e00039c38) in binary!
+WARNING: couldn't find address 0xfcfc00037730 (0x4fc00037730) in binary!
+	0xe8d0  @objc SetShuffleStateIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xe8c400037560 (0xc400037560) in binary!
+	0xe8b8  @objc SetShuffleStateIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xd69e000375c8 (0x69e000375c8) in binary!
 	0x58000000c  @objc SetShuffleStateIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xfcc400039d58 (0x4c400039d58) in binary!
-	0xe828  @objc SetShuffleStateIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xe81c00039b70 (0x1c00039b70) in binary!
-	0xe810  @objc SetShuffleStateIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xfcb4000376e8 (0x4b4000376e8) in binary!
+	0xe888  @objc SetShuffleStateIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xe87c00037500 (0x7c00037500) in binary!
+	0xe870  @objc SetShuffleStateIntentHandler.(null) <stripped>
 
 	// Swift methods
-	0x4ce40  func <stripped> // method 
-	0x4d0f0  func <stripped> // method 
-	0x4d470  func <stripped> // method 
+	0x4d350  func <stripped> // method 
+	0x4d600  func <stripped> // method 
+	0x4d980  func <stripped> // method 
  }
 
  enum SiriPlaybackControlIntents.MediaPlayerDeviceDisambiguationProvider { }
@@ -411,7 +412,7 @@ WARNING: couldn't find address 0xe81c00039b70 (0x1c00039b70) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let playbackController : ]Ú
+	let playbackController : Ì˙
 	let deviceSelector : DeviceSelectingUtil
 	var timer : OS_dispatch_source_timer?
 	var queue : OS_dispatch_queue?
@@ -419,22 +420,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let analyticsService : AnalyticsService
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xfcc400039d58 (0x4c400039d58) in binary!
-	0xe828  @objc WhatDidTheySayIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xe81c00039b70 (0x1c00039b70) in binary!
-	0xe810  @objc WhatDidTheySayIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xd5f600039bf0 (0x5f600039bf0) in binary!
+WARNING: couldn't find address 0xfcb4000376e8 (0x4b4000376e8) in binary!
+	0xe888  @objc WhatDidTheySayIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xe87c00037500 (0x7c00037500) in binary!
+	0xe870  @objc WhatDidTheySayIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xd65600037580 (0x65600037580) in binary!
 	0x28000000c  @objc WhatDidTheySayIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xfe9c00039c50 (0x69c00039c50) in binary!
-	0xfc70  @objc WhatDidTheySayIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xfe8c000375e0 (0x68c000375e0) in binary!
+	0xfc60  @objc WhatDidTheySayIntentHandler.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x304fffa3708  @objc WhatDidTheySayIntentHandler.(null) <stripped>
+	0x494fffa3418  @objc WhatDidTheySayIntentHandler.(null) <stripped>
 
 	// Swift methods
-	0x542e0  func <stripped> // method 
-	0x54e40  func <stripped> // method 
-	0x56220  func <stripped> // method 
-	0x56320  func <stripped> // method 
+	0x54820  func <stripped> // method 
+	0x55380  func <stripped> // method 
+	0x56760  func <stripped> // method 
+	0x56860  func <stripped> // method 
+ }
+
+ class SiriPlaybackControlIntents.AceServiceHelper : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let deviceState : ˚
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let aceService : üÍ
+
+	// Swift methods
  }
 
  class SiriPlaybackControlIntents.LanguageControlsDialogProvider : BaseDialogProvider {
@@ -699,28 +711,28 @@ WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let playbackController : ]Ú
+	let playbackController : Ì˙
 	let deviceSelector : DeviceSelectingUtil
 	let analyticsService : AnalyticsService
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xfc5c00039cf0 (0x45c00039cf0) in binary!
-	0xe7c0  @objc SetSubtitleStateIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xe7b400039af0 (0x7b400039af0) in binary!
-	0xe7a8  @objc SetSubtitleStateIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xe79c00039ac8 (0x79c00039ac8) in binary!
-	0xd582  @objc SetSubtitleStateIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xfc4c00037680 (0x44c00037680) in binary!
+	0xe820  @objc SetSubtitleStateIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xe81400037480 (0x1400037480) in binary!
+	0xe808  @objc SetSubtitleStateIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xe7fc00037458 (0x7fc00037458) in binary!
+	0xd5e2  @objc SetSubtitleStateIntentHandler.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffe2178  @objc SetSubtitleStateIntentHandler.(null) <stripped>
+	0xfffe1f38  @objc SetSubtitleStateIntentHandler.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x27cffff61c0  @objc SetSubtitleStateIntentHandler.(null) <stripped>
-	0x254ffff68f8  @objc SetSubtitleStateIntentHandler.Lâˇæ <stripped>
+	0x40cffff5f90  @objc SetSubtitleStateIntentHandler.(null) <stripped>
+	0x3e4ffff67c8  @objc SetSubtitleStateIntentHandler.ç=ö¥ <stripped>
 
 	// Swift methods
-	0x6ed20  func <stripped> // method 
-	0x6f040  func <stripped> // method 
-	0x6fba0  func <stripped> // method 
-	0x6fe80  func <stripped> // method 
+	0x700a0  func <stripped> // method 
+	0x703c0  func <stripped> // method 
+	0x70f20  func <stripped> // method 
+	0x71200  func <stripped> // method 
  }
 
  enum SiriPlaybackControlIntents.MediaDeviceDisambiguationProvider { }
@@ -751,7 +763,7 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var intent : 5‘
+	var intent : âÿ
  }
 
  enum SiriPlaybackControlIntents.ConfirmationStateValue {
@@ -1431,11 +1443,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let autoResumableProximitiesInShortWindow : DeviceProximity
 
 	// Swift methods
-	0xaee00  func <stripped> // getter 
-	0xaef00  func <stripped> // getter 
-	0xb1aa0  func <stripped> // method 
-	0xb2080  func <stripped> // method 
-	0xb2e50  func <stripped> // method 
+	0xb0230  func <stripped> // getter 
+	0xb0330  func <stripped> // getter 
+	0xb2ed0  func <stripped> // method 
+	0xb34b0  func <stripped> // method 
+	0xb4280  func <stripped> // method 
  }
 
  struct SiriPlaybackControlIntents.DeviceGroup {
@@ -1453,33 +1465,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let playbackController : ]Ú
+	let playbackController : Ì˙
 	let deviceSelector : DeviceSelectingUtil
 	let analyticsService : AnalyticsService
+	let aceServiceHelper : AceServiceHelper
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xfbf400039c88 (0x3f400039c88) in binary!
-	0xe758  @objc PauseMediaIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xe74c00039a68 (0x74c00039a68) in binary!
-	0xe740  @objc PauseMediaIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xd52600039b20 (0x52600039b20) in binary!
+WARNING: couldn't find address 0xfbe400037618 (0x3e400037618) in binary!
+	0xe7b8  @objc PauseMediaIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xe7ac000373f8 (0x7ac000373f8) in binary!
+	0xe7a0  @objc PauseMediaIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xd586000374b0 (0x586000374b0) in binary!
 	0x68000000c  @objc PauseMediaIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xfbac00039c40 (0x3ac00039c40) in binary!
-	0xe710  @objc PauseMediaIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xe70400039a08 (0x70400039a08) in binary!
-	0xe6f8  @objc PauseMediaIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xfb9c000375d0 (0x39c000375d0) in binary!
+	0xe770  @objc PauseMediaIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xe76400037398 (0x76400037398) in binary!
+	0xe758  @objc PauseMediaIntentHandler.(null) <stripped>
 
 	// Swift methods
-	0xc1840  func <stripped> // method 
-	0xc1bc0  func <stripped> // method 
-	0xc1f40  func <stripped> // method 
+	0xc2c80  func <stripped> // method 
+	0xc3100  func <stripped> // method 
+	0xc3480  func <stripped> // method 
  }
 
  struct SiriPlaybackControlIntents.MediaNLIntent {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var intent : 5‘
+	var intent : âÿ
  }
 
  enum SiriPlaybackControlIntents.ConfirmationStateValue {
@@ -1517,17 +1530,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let playbackController : ]Ú
+	let playbackController : Ì˙
 	let deviceSelector : DeviceSelectingUtil
 	let analyticsService : AnalyticsService
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xfbac00039c40 (0x3ac00039c40) in binary!
-	0xe710  @objc SeekTimeIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xe70400039a08 (0x70400039a08) in binary!
-	0xe6f8  @objc SeekTimeIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xe6ec000399e0 (0x6ec000399e0) in binary!
-	0xd4d2  @objc SeekTimeIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xfb9c000375d0 (0x39c000375d0) in binary!
+	0xe770  @objc SeekTimeIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xe76400037398 (0x76400037398) in binary!
+	0xe758  @objc SeekTimeIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xe74c00037370 (0x74c00037370) in binary!
+	0xd532  @objc SeekTimeIntentHandler.(null) <stripped>
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	0x1533a4d4152  @objc SeekTimeIntentHandler.(null) <stripped>
 WARNING: couldn't find address 0x6b63616279616c50 (0x16279616c50) in binary!
@@ -1536,10 +1549,10 @@ WARNING: couldn't find address 0x3a5443454a4f5250 (0x3454a4f5250) in binary!
 	0x7436b636162  @objc SeekTimeIntentHandler.(null) <stripped>
 
 	// Swift methods
-	0xc6230  func <stripped> // method 
-	0xc64e0  func <stripped> // method 
-	0xc6800  func <stripped> // method 
-	0xc7300  func <stripped> // method 
+	0xc7850  func <stripped> // method 
+	0xc7b00  func <stripped> // method 
+	0xc7e20  func <stripped> // method 
+	0xc8920  func <stripped> // method 
  }
 
  enum __C.NowPlayingMediaType { }

@@ -6,27 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURLRequest, NSURLSession;
+@class NSDate, NSString, NSURLRequest;
 
 @interface FCURLRequest : NSObject
 {
     NSURLRequest *_URLRequest;
-    NSURLSession *_URLSession;
     long long _destination;
     long long _priority;
+    NSDate *_dateInitiated;
     NSString *_loggingKey;
     CDUnknownBlockType _completion;
+    long long _remainingRetries;
 }
 
 @property (readonly, copy, nonatomic) NSURLRequest *URLRequest; // @synthesize URLRequest=_URLRequest;
-@property (readonly, nonatomic) NSURLSession *URLSession; // @synthesize URLSession=_URLSession;
 @property (readonly, copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
+@property (readonly, copy, nonatomic) NSDate *dateInitiated; // @synthesize dateInitiated=_dateInitiated;
 @property (readonly, nonatomic) long long destination; // @synthesize destination=_destination;
 @property (readonly, copy, nonatomic) NSString *loggingKey; // @synthesize loggingKey=_loggingKey;
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
+@property (nonatomic) long long remainingRetries; // @synthesize remainingRetries=_remainingRetries;
 
++ (CDUnknownBlockType)comparator;
 - (void).cxx_destruct;
-- (id)initWithURLRequest:(id)arg1 session:(id)arg2 destination:(long long)arg3 priority:(long long)arg4 loggingKey:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (long long)compare:(id)arg1;
+- (id)description;
+- (id)initWithURLRequest:(id)arg1 destination:(long long)arg2 priority:(long long)arg3 dateInitiated:(id)arg4 loggingKey:(id)arg5 completion:(CDUnknownBlockType)arg6;
 
 @end
 

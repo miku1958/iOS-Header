@@ -21,6 +21,8 @@
 @property (nonatomic, readonly) BOOL hasGlobalUserFeedback;
 @property (nonatomic, readonly) BOOL hasVideo;
 @property (nonatomic, readonly) BOOL hiddenFromAutoFavorites;
+@property (nonatomic, readonly) NSArray *iAdCategories;
+@property (nonatomic, readonly) BOOL isEvergreen;
 @property (nonatomic, readonly) BOOL isFeatured;
 @property (nonatomic, readonly) NSString *itemID;
 @property (nonatomic, readonly) BOOL paid;

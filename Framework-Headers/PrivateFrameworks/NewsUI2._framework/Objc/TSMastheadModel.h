@@ -14,9 +14,9 @@
 }
 
 @property (nonatomic, readonly) NSString *appName;
-@property (nonatomic, readonly) NSString *formattedDate;
 
 - (void).cxx_destruct;
+- (id)formattedDate;
 - (id)init;
 - (id)initWithType:(long long)arg1;
 

@@ -31,6 +31,7 @@
 + (id)stateFromUserInfoDictionary:(id)arg1;
 + (id)userInfoDictionaryForState:(id)arg1;
 - (void).cxx_destruct;
+- (void)_setFrameNameForWindowIfNeeded;
 - (id)canActivatePredicate;
 - (id)init;
 - (id)predicateMatchingConversation:(id)arg1;

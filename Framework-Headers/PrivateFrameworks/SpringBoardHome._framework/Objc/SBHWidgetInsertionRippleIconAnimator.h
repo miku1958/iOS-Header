@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class CADisplayLink, NSMapTable, SBHRippleSimulation, SBHWidgetSettings, SBIconListView, SBIconView, SBWidgetIcon, UIView, _UIPortalView;
+#import <SpringBoardHome/SBIconViewObserver-Protocol.h>
 
-@interface SBHWidgetInsertionRippleIconAnimator : NSObject
+@class CADisplayLink, NSMapTable, NSString, SBHRippleSimulation, SBHWidgetSettings, SBIconListView, SBIconView, SBWidgetIcon, UIView, _UIPortalView;
+
+@interface SBHWidgetInsertionRippleIconAnimator : NSObject <SBIconViewObserver>
 {
     SBIconListView *_iconListView;
     SBIconView *_referenceIconView;
@@ -18,7 +20,7 @@
     SBIconListView *_additionalIconListView;
     UIView *_rippleIconsPortalContainerView;
     UIView *_rippleIconsPortalContainerViewForAdditionalIconListView;
-    NSMapTable *_portalViewsForIcons;
+    NSMapTable *_portalViewsForIconViews;
     NSMapTable *_gridCoordinateForIcons;
     UIView *_portalContainerView;
     _UIPortalView *_widgetIconPortalView;
@@ -30,12 +32,18 @@
     CDUnknownBlockType _animationCompletion;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 - (void).cxx_destruct;
 - (struct CGPoint)_centerOfIconViewAssumingCenteredAnchorPoint:(id)arg1;
 - (void)_createPortalViewsForIconViews;
 - (void)_createPortalViewsForIconViewsInIconListView:(id)arg1 dropIconListView:(id)arg2 withPortalContainerView:(id)arg3 widgetIconCenter:(struct CGPoint)arg4;
 - (void)_displayLinkFired:(id)arg1;
 - (void)_finishRippleAnimation;
+- (void)_finishRippleAnimationEarlyForIconView:(id)arg1;
 - (void)_layoutRippleIconViews;
 - (void)_performJumpAnimationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performWidgetIconScaleOvershootAnimation;
@@ -43,6 +51,7 @@
 - (void)_reparentPortalViewIntoIconListViewAfterDelay:(double)arg1;
 - (void)_startRippleAnimationWithDelay:(double)arg1;
 - (void)animateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)iconViewWasRecycled:(id)arg1;
 - (id)initWithIconListView:(id)arg1 widgetIcon:(id)arg2 referenceIconView:(id)arg3 additionalIconListView:(id)arg4;
 
 @end

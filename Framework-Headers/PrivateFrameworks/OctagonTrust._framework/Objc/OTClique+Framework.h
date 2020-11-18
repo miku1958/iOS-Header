@@ -7,6 +7,8 @@
 #import <Security/OTClique.h>
 
 @interface OTClique (Framework)
++ (id)fetchAllEscrowRecords:(id)arg1 error:(id *)arg2;
++ (id)fetchAndHandleEscrowRecords:(id)arg1 shouldFilter:(BOOL)arg2 error:(id *)arg3;
 + (id)fetchEscrowRecords:(id)arg1 error:(id *)arg2;
 + (id)filterRecords:(id)arg1;
 + (id)filterViableSOSRecords:(id)arg1;

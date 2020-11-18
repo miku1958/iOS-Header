@@ -31,10 +31,10 @@
 + (BOOL)supportsSecureCoding;
 + (long long)videoRequestVersionFromAdjustmentBaseVersion:(long long)arg1;
 - (void).cxx_destruct;
-- (BOOL)_canBeHandledByClientUsingVerificationBlock:(CDUnknownBlockType)arg1;
-- (BOOL)_contentEditingHasAdjustments;
+- (BOOL)_contentEditing_containsValidAdjustment;
+- (BOOL)_contentEditing_readableByClientWithVerificationBlock:(CDUnknownBlockType)arg1;
+- (long long)_contentEditing_requiredBaseVersionReadableByClient:(BOOL *)arg1 verificationBlock:(CDUnknownBlockType)arg2;
 - (BOOL)_hasAdjustments;
-- (long long)_requiredBaseVersionWithCanHandleAdjustmentData:(BOOL)arg1 assetIsVideo:(BOOL)arg2;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

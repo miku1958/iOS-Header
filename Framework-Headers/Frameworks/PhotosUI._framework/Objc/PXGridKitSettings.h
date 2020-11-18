@@ -12,10 +12,12 @@
     BOOL _enableXcodeCustomDebugHierarchy;
     BOOL _sortSpritesInXcodeCustomDebugHierarchy;
     BOOL _includeLayoutsLocalSpritesInDebugHierarchy;
+    BOOL _simulateMissingMetalDevice;
     BOOL _enableMetalRenderer;
     BOOL _enableViewRenderer;
     BOOL _lowLatency;
     BOOL _lowMemoryMode;
+    BOOL _inLowMemoryModePreferMasterThumb;
     BOOL _enableRoundedCorners;
     BOOL _enableColorMatching;
     BOOL _debugExtendedColorRange;
@@ -101,6 +103,7 @@
 @property (nonatomic) BOOL enableRoundedCorners; // @synthesize enableRoundedCorners=_enableRoundedCorners;
 @property (nonatomic) BOOL enableViewRenderer; // @synthesize enableViewRenderer=_enableViewRenderer;
 @property (nonatomic) BOOL enableXcodeCustomDebugHierarchy; // @synthesize enableXcodeCustomDebugHierarchy=_enableXcodeCustomDebugHierarchy;
+@property (nonatomic) BOOL inLowMemoryModePreferMasterThumb; // @synthesize inLowMemoryModePreferMasterThumb=_inLowMemoryModePreferMasterThumb;
 @property (nonatomic) double inactivityTimeout; // @synthesize inactivityTimeout=_inactivityTimeout;
 @property (nonatomic) BOOL includeLayoutsLocalSpritesInDebugHierarchy; // @synthesize includeLayoutsLocalSpritesInDebugHierarchy=_includeLayoutsLocalSpritesInDebugHierarchy;
 @property (nonatomic) double livePhotoInitialCrossfadeDuration; // @synthesize livePhotoInitialCrossfadeDuration=_livePhotoInitialCrossfadeDuration;
@@ -116,6 +119,7 @@
 @property (nonatomic) BOOL requestThumbnailsOnly; // @synthesize requestThumbnailsOnly=_requestThumbnailsOnly;
 @property (nonatomic) long long sampleCount; // @synthesize sampleCount=_sampleCount;
 @property (nonatomic) BOOL shouldShowBoundariesOfTextTextures; // @synthesize shouldShowBoundariesOfTextTextures=_shouldShowBoundariesOfTextTextures;
+@property (nonatomic) BOOL simulateMissingMetalDevice; // @synthesize simulateMissingMetalDevice=_simulateMissingMetalDevice;
 @property (nonatomic) BOOL simulateSomeAssetsInCloud; // @synthesize simulateSomeAssetsInCloud=_simulateSomeAssetsInCloud;
 @property (nonatomic) double slowAnimationsSpeed; // @synthesize slowAnimationsSpeed=_slowAnimationsSpeed;
 @property (nonatomic) BOOL sortSpritesInXcodeCustomDebugHierarchy; // @synthesize sortSpritesInXcodeCustomDebugHierarchy=_sortSpritesInXcodeCustomDebugHierarchy;

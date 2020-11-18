@@ -16,7 +16,6 @@
     MISSING_TYPE *paidBundleConfig;
     MISSING_TYPE *appConfig;
     MISSING_TYPE *cachePolicy;
-    MISSING_TYPE *dateRange;
     MISSING_TYPE *subscriptionController;
     MISSING_TYPE *refreshInterval;
     MISSING_TYPE *cacheKey;

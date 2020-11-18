@@ -7,11 +7,11 @@
 #import <Silex/NSObject-Protocol.h>
 
 @class ADMediaAnalyticsEventInfo, ADMediaAnalyticsProgressEventInfo;
-@protocol SVVideoMetadata;
+@protocol SXVideoMetadata;
 
 @protocol SXVASTAnalyticsEventInfoFactory <NSObject>
 - (ADMediaAnalyticsEventInfo *)createAnalyticsEventInfo;
-- (ADMediaAnalyticsEventInfo *)createAnalyticsEventInfoWithMetadata:(id<SVVideoMetadata>)arg1;
-- (ADMediaAnalyticsProgressEventInfo *)createAnalyticsProgressEventInfoForQuartile:(unsigned long long)arg1 withMetadata:(id<SVVideoMetadata>)arg2;
+- (ADMediaAnalyticsEventInfo *)createAnalyticsEventInfoWithMetadata:(id<SXVideoMetadata>)arg1;
+- (ADMediaAnalyticsProgressEventInfo *)createAnalyticsProgressEventInfoForQuartile:(unsigned long long)arg1 withMetadata:(id<SXVideoMetadata>)arg2;
 @end
 

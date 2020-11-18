@@ -14,8 +14,10 @@
     MISSING_TYPE *metricsState;
     MISSING_TYPE *aceServiceInvoker;
     MISSING_TYPE *sharedContextService;
+    MISSING_TYPE *contextSession;
     MISSING_TYPE *featureFlags;
-    MISSING_TYPE *storedContext;
+    MISSING_TYPE *storedInvocationState;
+    MISSING_TYPE *eventBus;
 }
 
 @end

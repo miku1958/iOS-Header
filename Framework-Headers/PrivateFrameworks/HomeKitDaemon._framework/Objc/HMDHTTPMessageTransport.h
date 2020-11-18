@@ -82,6 +82,7 @@
 - (void)setTXTRecordValue:(id)arg1 forKey:(id)arg2;
 - (id)shortDescription;
 - (void)startObservingIsPublishingForService:(id)arg1;
+- (int)transportType;
 
 @end
 

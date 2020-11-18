@@ -35,6 +35,7 @@
 
 - (void).cxx_destruct;
 - (double)_contentAspectRatio;
+- (BOOL)_limitToNonScrollingContentHeight;
 - (void)_updateContentViewContainerConstraints;
 - (void)_updateContentViewInsetConstraints;
 - (void)_viewDidUpdateContent;

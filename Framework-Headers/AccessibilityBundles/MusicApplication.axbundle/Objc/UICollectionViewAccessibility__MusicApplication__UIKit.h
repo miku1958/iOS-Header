@@ -16,6 +16,8 @@
 - (BOOL)_accessibilityIsShelfCollectionView;
 - (BOOL)_accessibilityShouldAvoidScrollingCollectionViewCells;
 - (struct UIEdgeInsets)_accessibilityVisibleContentInset;
+- (BOOL)accessibilityScrollDownPage;
+- (BOOL)accessibilityScrollUpPage;
 - (BOOL)accessibilityShouldSpeakItemReorderEvents;
 
 @end

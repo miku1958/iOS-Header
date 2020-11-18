@@ -18,12 +18,14 @@
     unsigned long long _saveCount;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDPersistentStore *_persistentStore;
+    unsigned long long _savePeriod;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *eventCounters; // @synthesize eventCounters=_eventCounters;
 @property (strong, nonatomic) NSDate *lastSaveTime; // @synthesize lastSaveTime=_lastSaveTime;
 @property (readonly) HMDPersistentStore *persistentStore; // @synthesize persistentStore=_persistentStore;
 @property (nonatomic) unsigned long long saveCount; // @synthesize saveCount=_saveCount;
+@property (nonatomic) unsigned long long savePeriod; // @synthesize savePeriod=_savePeriod;
 @property (nonatomic, getter=isSaving) BOOL saving; // @synthesize saving=_saving;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
@@ -37,6 +39,8 @@
 - (void)_resetEventCounterForEventName:(id)arg1 requestGroup:(id)arg2;
 - (void)_save;
 - (void)archiveEventCountersWithEventCountersSnapshot:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)dumpState;
+- (unsigned long long)fetchAggregatedEventCountersForRequestGroup:(id)arg1;
 - (id)fetchAllEventCounters;
 - (unsigned long long)fetchEventCounterForEventName:(id)arg1 requestGroup:(id)arg2;
 - (id)fetchEventCountersForRequestGroup:(id)arg1;

@@ -28,13 +28,15 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)canMarkPendingRequestAsOptionalForProgress:(id)arg1;
 - (id)convertVideoAtSourceURL:(id)arg1 toDestinationURL:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)convertVideoAtSourceURLCollection:(id)arg1 toDestinationURLCollection:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)extractStillImageFromVideoAtSourceURL:(id)arg1 toDestinationURL:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)handleRequestCompletionForIdentifier:(id)arg1;
 - (id)init;
 - (void)invalidateAfterPendingRequestCompletion;
-- (void)performCleanupForJobGroupIdentifier:(id)arg1;
+- (void)markPendingRequestAsOptionalForProgress:(id)arg1;
+- (void)modifyRequestWithIdentifier:(id)arg1 modifications:(id)arg2;
 - (void)setupServiceConnection;
 - (void)transitionToInvalidatedState;
 - (void)updateProgress:(id)arg1;

@@ -29,10 +29,10 @@
 + (id)shared;
 - (void).cxx_destruct;
 - (void)announcementEntryAgeLimit:(id)arg1 timeExceeded:(double)arg2;
-- (void)announcementFinishedPlaying:(id)arg1 withTime:(float)arg2 ofGroupCount:(long long)arg3;
-- (void)announcementPlayed:(id)arg1 withTime:(float)arg2 deadlineViolation:(float)arg3 playbackSource:(unsigned long long)arg4 ofGroupCount:(long long)arg5;
-- (void)announcementReceived:(id)arg1 withTime:(float)arg2 receiveTimeType:(unsigned long long)arg3;
-- (void)announcementSent:(id)arg1 inHome:(id)arg2 withError:(long long)arg3 withTime:(float)arg4 sendType:(unsigned long long)arg5 ofGroupCount:(long long)arg6;
+- (void)announcementFinishedPlaying:(id)arg1 withTime:(double)arg2 ofGroupCount:(long long)arg3;
+- (void)announcementPlayed:(id)arg1 withTime:(double)arg2 deadlineViolation:(double)arg3 playbackSource:(unsigned long long)arg4 ofGroupCount:(long long)arg5;
+- (void)announcementReceived:(id)arg1 withTime:(double)arg2 receiveTimeType:(unsigned long long)arg3;
+- (void)announcementSent:(id)arg1 inHome:(id)arg2 withError:(long long)arg3 withTime:(double)arg4 sendType:(unsigned long long)arg5 ofGroupCount:(long long)arg6;
 - (void)announcementsExpired:(id)arg1 ofGroupCount:(long long)arg2;
 - (void)announcementsStorageAgeLimit:(id)arg1;
 - (void)dailyReport:(id)arg1 withPayload:(id)arg2;

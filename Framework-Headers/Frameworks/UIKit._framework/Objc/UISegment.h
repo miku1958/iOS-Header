@@ -77,6 +77,7 @@ __attribute__((visibility("hidden")))
 - (id)_effectiveSelectedSegmentTintColor;
 - (BOOL)_effectiveUseDynamicShadow;
 - (id)_effectiveVibrancyEffect;
+- (id)_enabledColor:(BOOL)arg1;
 - (id)_encodableSubviews;
 - (void)_finishInitialSegmentSetup;
 - (id)_floatingContentView;
@@ -129,6 +130,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isAnimatingSelectionIndicator;
 - (BOOL)isHighlighted;
 - (BOOL)isHovered;
+- (BOOL)isRightHighlighted;
 - (BOOL)isRightSelected;
 - (BOOL)isSelectionIndicatorDragged;
 - (id)label;

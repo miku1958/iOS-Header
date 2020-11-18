@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <TVPlayback/TVPBaseMediaItem.h>
+#import <VideosUI/VUIBaseMediaItem.h>
 
 #import <VideosUI/TVPContentKeyLoading-Protocol.h>
 #import <VideosUI/TVPMediaItemReporting-Protocol.h>
@@ -13,7 +13,7 @@
 
 @class NSDictionary, NSError, NSNumber, NSObject, NSString, NSURL, TVPPlayer, VUIMutableBookmark, VUIStoreFPSKeyLoader, VUIVideoManagedObject;
 
-@interface VUIStoreAuxMediaItem : TVPBaseMediaItem <VUIStoreFPSKeyLoaderDelegate, TVPContentKeyLoading, TVPMediaItemReporting, TVPMediaItemReportingDelegate>
+@interface VUIStoreAuxMediaItem : VUIBaseMediaItem <VUIStoreFPSKeyLoaderDelegate, TVPContentKeyLoading, TVPMediaItemReporting, TVPMediaItemReportingDelegate>
 {
     BOOL _isAudioOnly;
     BOOL _disableResumeMenu;
@@ -78,7 +78,7 @@
 - (void)dealloc;
 - (BOOL)hasTrait:(id)arg1;
 - (id)initWithURL:(id)arg1;
-- (id)initWithVideoManagedObject:(id)arg1 isForStartingDownload:(BOOL)arg2 externalBookmarkTime:(id)arg3 externalBookmarkTimeStamp:(id)arg4;
+- (id)initWithVideoManagedObject:(id)arg1 isForStartingDownload:(BOOL)arg2 externalBookmarkTime:(id)arg3 externalBookmarkTimestamp:(id)arg4;
 - (BOOL)isEqualToMediaItem:(id)arg1;
 - (void)loadFairPlayStreamingKeyRequests:(id)arg1;
 - (void)loadFairPlayStreamingKeyRequests:(id)arg1 completion:(CDUnknownBlockType)arg2;

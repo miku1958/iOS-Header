@@ -66,6 +66,8 @@
 - (void)makeCursorWeak;
 - (void)removeAllAssertions;
 - (void)reportDebugStateDescription:(CDUnknownBlockType)arg1;
+- (void)resetState;
+- (BOOL)scribbleEnabled;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)simulateFirstResponderChangeForTesting:(id)arg1;
 - (void)textInputSourceDidChange:(id)arg1;

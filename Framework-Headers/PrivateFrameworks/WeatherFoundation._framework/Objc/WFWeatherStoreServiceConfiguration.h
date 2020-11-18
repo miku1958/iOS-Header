@@ -46,6 +46,7 @@
 - (void)URLSession:(id)arg1 task:(id)arg2 didFinishCollectingMetrics:(id)arg3;
 - (id)apiConfiguration;
 - (id)apiConfigurationForAPIVersion:(id)arg1;
+- (id)aqiScaleRequestForScaleNamed:(id)arg1 language:(id)arg2 error:(id *)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)forecastRequestForTypes:(unsigned long long)arg1 location:(id)arg2 date:(id)arg3 apiVersion:(id)arg4 error:(id *)arg5;
 - (id)forecastRequestForTypes:(unsigned long long)arg1 location:(id)arg2 date:(id)arg3 error:(id *)arg4;
@@ -53,6 +54,7 @@
 - (id)init;
 - (void)invalidate;
 - (BOOL)isServiceAvailableSync;
+- (id)parseAQIScaleNamed:(id)arg1 language:(id)arg2 data:(id)arg3 apiVersion:(id)arg4 error:(id *)arg5;
 - (id)parseForecast:(unsigned long long)arg1 data:(id)arg2 location:(id)arg3 units:(int)arg4 locale:(id)arg5 date:(id)arg6 apiVersion:(id)arg7 error:(id *)arg8;
 - (id)parseForecast:(unsigned long long)arg1 data:(id)arg2 location:(id)arg3 units:(int)arg4 locale:(id)arg5 date:(id)arg6 error:(id *)arg7;
 

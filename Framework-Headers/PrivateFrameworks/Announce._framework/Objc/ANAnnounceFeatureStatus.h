@@ -13,7 +13,6 @@
 + (BOOL)isEnabled;
 + (BOOL)isEnabledForPersonalDevices;
 + (BOOL)shouldStopPlaybackOnSiriActivation;
-+ (BOOL)supportsPersonalDevices;
 
 @end
 

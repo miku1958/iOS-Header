@@ -29,6 +29,7 @@
 + (id)controlItemPredicate;
 - (void).cxx_destruct;
 - (void)_addAlarmControlView;
+- (BOOL)_canShowWhileLocked;
 - (void)_updateConstraints;
 - (id)controlItem;
 - (id)createDetailsViewController;

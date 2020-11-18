@@ -10,7 +10,7 @@
 #import <PassKitCore/PKPaymentServiceDelegate-Protocol.h>
 #import <PassKitCore/PKPaymentWebServiceDelegate-Protocol.h>
 
-@class CLLocationManager, NSArray, NSExtension, NSHashTable, NSMutableArray, NSMutableSet, NSSet, NSString, NSTimer, PKPaymentCredential, PKPaymentEligibilityResponse, PKPaymentPass, PKPaymentProvisioningControllerCredentialQueue, PKPaymentProvisioningResponse, PKPaymentRequirementsResponse, PKPaymentService, PKPaymentSetupMoreInfoItem, PKPaymentSetupProductModel, PKPaymentWebService;
+@class CLLocationManager, NSArray, NSExtension, NSHashTable, NSMutableArray, NSMutableSet, NSSet, NSString, NSTimer, PKAddPaymentPassRequestConfiguration, PKPaymentCredential, PKPaymentEligibilityResponse, PKPaymentPass, PKPaymentProvisioningControllerCredentialQueue, PKPaymentProvisioningResponse, PKPaymentRequirementsResponse, PKPaymentService, PKPaymentSetupMoreInfoItem, PKPaymentSetupProductModel, PKPaymentWebService;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface PKPaymentProvisioningController : NSObject <CLLocationManagerDelegate, PKPaymentServiceDelegate, PKPaymentWebServiceDelegate>
@@ -23,6 +23,7 @@
     BOOL _proxyTargetDeviceWebServiceInUse;
     NSString *_provisioningNonce;
     PKPaymentCredential *_currentCredential;
+    PKAddPaymentPassRequestConfiguration *_currentAddPaymentPassRequestConfiguration;
     NSHashTable *_delegates;
     struct os_unfair_lock_s _delegatesLock;
     NSSet *_supportedFeatureIdentifierStrings;
@@ -37,6 +38,7 @@
     long long _provisioningStatusCount;
     NSObject<OS_dispatch_queue> *_updateQueue;
     BOOL _expressModeSetupOptional;
+    BOOL _AMPEnrollmentAvailable;
     NSString *_productIdentifier;
     NSString *_referrerIdentifier;
     PKPaymentWebService *_webService;
@@ -59,6 +61,7 @@
     NSSet *_allowedProductIdentifiers;
 }
 
+@property (readonly, nonatomic, getter=isAMPEnrollmentAvailable) BOOL AMPEnrollmentAvailable; // @synthesize AMPEnrollmentAvailable=_AMPEnrollmentAvailable;
 @property (readonly, copy, nonatomic) NSArray *allCredentials;
 @property (strong, nonatomic) NSSet *allowedFeatureIdentifiers; // @synthesize allowedFeatureIdentifiers=_allowedFeatureIdentifiers;
 @property (strong, nonatomic) NSArray *allowedPaymentNetworks; // @synthesize allowedPaymentNetworks=_allowedPaymentNetworks;
@@ -108,8 +111,10 @@
 - (BOOL)_hasSetupConfiguration;
 - (void)_informDelegatesOfPaymentPassUpdateOnCredential:(id)arg1;
 - (void)_ingestPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (BOOL)_isProvisioningPaymentAccount;
 - (BOOL)_isValidLocation:(id)arg1;
 - (void)_loadMoreInfoItemForMarket:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_localizedProgressDescriptionForEnablingCard;
 - (id)_mockBrowseBanksResponse;
 - (void)_noteProvisioningDidBegin;
 - (void)_noteProvisioningDidEnd;

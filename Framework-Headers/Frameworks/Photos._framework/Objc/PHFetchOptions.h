@@ -54,12 +54,12 @@
     NSNumber *_includeOnlyContentContributedByCurrentUserNumber;
     NSPredicate *_predicate;
     NSArray *_sortDescriptors;
-    NSArray *_customObjectIDSortOrder;
     PHQueryChangeDetectionCriteria *_changeDetectionCriteria;
     NSString *_transientIdentifier;
     NSPredicate *_internalPredicate;
     NSArray *_internalSortDescriptors;
     NSPredicate *_internalInclusionPredicate;
+    NSArray *_customObjectIDSortOrder;
     NSSet *_verifiedPersonTypes;
     PHPhotoLibrary *_photoLibrary;
     NSString *_importantFetchName;
@@ -113,6 +113,7 @@
 @property (strong, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property (nonatomic) BOOL reverseSortOrder;
 @property (nonatomic) unsigned long long sharingStream;
+@property (readonly, nonatomic) NSString *shortDescription;
 @property (nonatomic) BOOL shouldPrefetchCount;
 @property (strong, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 @property (strong, nonatomic) NSString *transientIdentifier; // @synthesize transientIdentifier=_transientIdentifier;

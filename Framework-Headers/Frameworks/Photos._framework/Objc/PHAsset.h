@@ -345,6 +345,7 @@
 - (long long)cloudSharedAssetPlaceholderKind;
 - (id)coarseLocationProperties;
 - (id)commentProperties;
+- (unsigned long long)contentChangeFromAsset:(id)arg1;
 - (id)curationProperties;
 - (id)debugFilename;
 - (id)descriptionForAestheticsWithManagedAsset:(id)arg1;

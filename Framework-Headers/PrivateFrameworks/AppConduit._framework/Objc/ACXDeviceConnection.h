@@ -13,6 +13,7 @@
 
 @interface ACXDeviceConnection : NSObject <ACXDeviceConnectionDelegateProtocol>
 {
+    BOOL _observersEnabled;
     BOOL _monitoringForDeviceChanges;
     id<ACXDeviceConnectionDelegate> _delegate;
     NSXPCConnection *_xpcConnection;
@@ -31,6 +32,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *observerQueue; // @synthesize observerQueue=_observerQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *observerReEstablishTimer; // @synthesize observerReEstablishTimer=_observerReEstablishTimer;
 @property (readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
+@property (nonatomic) BOOL observersEnabled; // @synthesize observersEnabled=_observersEnabled;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
@@ -44,6 +46,7 @@
 - (void)_invalidateXPCConnection;
 - (void)_onQueue_beginMonitoringNanoRegistryDeviceState;
 - (BOOL)_onQueue_createXPCConnectionIfNecessary:(id *)arg1;
+- (BOOL)_onQueue_enableObserversIfNeededForAValidXPCConnection;
 - (void)_onQueue_endMonitoringNanoRegistryDeviceState;
 - (void)_onQueue_reEstablishObserverConnectionIfNeeded;
 - (id)_proxyWithErrorHandler:(CDUnknownBlockType)arg1;
@@ -109,6 +112,7 @@
 - (void)installProvisioningProfileWithURL:(id)arg1 onPairedDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)installRequestFailedForApp:(id)arg1 onDeviceWithPairingID:(id)arg2 failureReason:(id)arg3 wasUserInitiated:(BOOL)arg4 error:(id *)arg5;
 - (BOOL)killDaemonForTestingWithError:(id *)arg1;
+- (void)observerRegistrationSuccessful;
 - (void)removeApplication:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeApplication:(id)arg1 fromPairedDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeObserver:(id)arg1;

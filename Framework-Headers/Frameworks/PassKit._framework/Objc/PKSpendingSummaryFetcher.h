@@ -19,6 +19,7 @@
     PKAccount *_account;
     NSCache *_weeklySummaryItemsPerStartDate;
     NSCache *_monthlySummaryItemsPerStartDate;
+    NSCache *_yearlySummaryItemsPerStartDate;
     NSDate *_oldestTransactionDate;
     NSDate *_newestTransactionDate;
     NSObject<OS_dispatch_queue> *_workQueue;
@@ -43,11 +44,11 @@
 + (id)_spendingCategoriesFromTransactions:(id)arg1 currencyCode:(id)arg2;
 + (id)_spendingMerchantsFromTransaction:(id)arg1 currencyCode:(id)arg2;
 + (id)nextStartOfWeekFromDate:(id)arg1;
-+ (id)previousStartOfMonthFromDate:(id)arg1;
 + (id)previousStartOfWeekFromDate:(id)arg1;
 + (id)summaryWithTransactions:(id)arg1 currency:(id)arg2 type:(unsigned long long)arg3 startDate:(id)arg4 endDate:(id)arg5 lastSummary:(id)arg6;
 - (void).cxx_destruct;
 - (void)_accessObserversWithHandler:(CDUnknownBlockType)arg1;
+- (id)_cacheForType:(unsigned long long)arg1;
 - (id)_cachedSpendingSummaryStartingWithDate:(id)arg1 type:(unsigned long long)arg2 withLastPeriodChange:(BOOL)arg3;
 - (void)_processNextRequest;
 - (void)_resetCurrentCalendar;
@@ -58,7 +59,7 @@
 - (void)dealloc;
 - (id)initWithPaymentPass:(id)arg1 account:(id)arg2;
 - (void)registerObserver:(id)arg1;
-- (void)spendingSummaryStartingWithDate:(id)arg1 type:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)spendingSummaryStartingWithDate:(id)arg1 type:(unsigned long long)arg2 includingLastPeriodChange:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)statementsChangedForAccountIdentifier:(id)arg1;
 - (void)transactionSourceIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)unregisterObserver:(id)arg1;

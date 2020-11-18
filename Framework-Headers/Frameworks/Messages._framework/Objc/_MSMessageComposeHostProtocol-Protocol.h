@@ -15,6 +15,7 @@
 - (void)_dragMediaItemMoved:(_MSMessageMediaPayload *)arg1 frameInRemoteView:(struct CGRect)arg2 rotation:(double)arg3 scale:(double)arg4 completionHandler:(void (^)(BOOL, NSError *))arg5;
 - (void)_openURL:(NSURL *)arg1 completionHandler:(void (^)(BOOL))arg2;
 - (void)_presentAlertWithTitle:(NSString *)arg1 message:(NSString *)arg2 buttonTitle:(NSString *)arg3 completion:(void (^)(void))arg4;
+- (void)_presentAlertWithTitle:(NSString *)arg1 message:(NSString *)arg2 buttonTitle:(NSString *)arg3 destructiveButtonTitle:(NSString *)arg4 completion:(void (^)(BOOL))arg5;
 - (void)_remoteViewDidBecomeReadyForDisplay;
 - (void)_requestPresentationStyle:(unsigned long long)arg1;
 - (void)_stageAppItem:(MSMessage *)arg1 skipShelf:(BOOL)arg2 completionHandler:(void (^)(NSError *))arg3;

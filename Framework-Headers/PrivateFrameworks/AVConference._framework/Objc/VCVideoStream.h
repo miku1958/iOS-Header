@@ -94,9 +94,9 @@ __attribute__((visibility("hidden")))
 - (id)clientCaptureRule;
 - (void)collectChannelSequenceMetrics:(id)arg1;
 - (void)collectImageQueuePerformanceMetrics:(struct __CFDictionary *)arg1;
-- (void)collectRxChannelMetrics:(CDStruct_3ab08b48 *)arg1;
-- (void)collectRxChannelMetrics:(CDStruct_3ab08b48 *)arg1 interval:(float)arg2;
-- (void)collectTxChannelMetrics:(CDStruct_3ab08b48 *)arg1;
+- (void)collectRxChannelMetrics:(CDStruct_1dd2c43e *)arg1;
+- (void)collectRxChannelMetrics:(CDStruct_1dd2c43e *)arg1 interval:(float)arg2;
+- (void)collectTxChannelMetrics:(CDStruct_1dd2c43e *)arg1;
 - (void)collectVideoConfigMetrics:(struct __CFDictionary *)arg1;
 - (void)collectVideoStreamStartMetrics:(struct __CFDictionary *)arg1;
 - (void)converter:(id)arg1 didConvertFrame:(struct opaqueCMSampleBuffer *)arg2 frameTime:(CDStruct_1b6d18a9)arg3 cameraStatusBits:(unsigned char)arg4;

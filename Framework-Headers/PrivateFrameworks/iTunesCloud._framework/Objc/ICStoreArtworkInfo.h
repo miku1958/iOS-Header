@@ -40,6 +40,7 @@
 - (struct CGColor *)copyColorWithKind:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithArtworkResponseArray:(id)arg1;
 - (id)initWithArtworkResponseDictionary:(id)arg1;
 - (id)initWithArtworkResponseValue:(id)arg1;

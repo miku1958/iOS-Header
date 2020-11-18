@@ -7,6 +7,7 @@
 #import <HealthAlgorithms/HAMenstrualAlgorithmsAnalysis.h>
 
 @interface HAMenstrualAlgorithmsAnalysis (UnitTesting)
++ (id)hdmc_demoAnalysisCycleFactorWithStartDayIndex:(long long)arg1;
 + (id)hdmc_demoAnalysisWithStartDayIndex:(long long)arg1;
 @end
 

@@ -15,6 +15,7 @@
     MISSING_TYPE *controllerRef;
     MISSING_TYPE *contextDataRef;
     MISSING_TYPE *appendContextDataRef;
+    MISSING_TYPE *siriUserActivityCanonicalId;
     MISSING_TYPE *delegate;
     MISSING_TYPE *fragmentRequestor;
 }

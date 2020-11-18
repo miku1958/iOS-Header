@@ -22,7 +22,6 @@
     BOOL _pausedUntilTouchedUpOrMovedAwayFromEdge;
     BOOL _shouldActivateWithThreshold;
     BOOL _shouldRequireGestureToStartAtEdge;
-    BOOL _shouldSwitchAxes;
     BOOL _gesturePassedThroughScreenCenterRegion;
     unsigned long long _edges;
     CDUnknownBlockType _translationAdjustmentBlock;
@@ -74,7 +73,6 @@
 @property (nonatomic) BOOL shouldInvertXAxis; // @synthesize shouldInvertXAxis=_shouldInvertXAxis;
 @property (nonatomic) BOOL shouldInvertYAxis; // @synthesize shouldInvertYAxis=_shouldInvertYAxis;
 @property (nonatomic) BOOL shouldRequireGestureToStartAtEdge; // @synthesize shouldRequireGestureToStartAtEdge=_shouldRequireGestureToStartAtEdge;
-@property (nonatomic) BOOL shouldSwitchAxes; // @synthesize shouldSwitchAxes=_shouldSwitchAxes;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) SBSystemGestureManager *systemGestureManager; // @synthesize systemGestureManager=_systemGestureManager;
 @property (strong, nonatomic) SBTouchHistory *touchHistory; // @synthesize touchHistory=_touchHistory;
@@ -87,6 +85,7 @@
 - (struct CGPoint)_centerOfCircleForRoundedCorner:(unsigned long long)arg1 radius:(double)arg2 inView:(id)arg3;
 - (struct CGPoint)_convertPoint:(struct CGPoint)arg1 fromView:(id)arg2 toView:(id)arg3;
 - (unsigned long long)_edgeForPointerModelLocation:(struct CGPoint)arg1 inView:(id)arg2 inset:(double)arg3;
+- (long long)_effectiveOrientation;
 - (BOOL)_hasTranslationReachedThreshold:(double)arg1 withTranslation:(struct CGPoint)arg2 forEdge:(unsigned long long)arg3;
 - (void)_hoverCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)_hoverEntered:(id)arg1 withEvent:(id)arg2;
@@ -99,7 +98,6 @@
 - (struct CGPoint)_pointerModelLocation;
 - (void)_resetTranslationState;
 - (BOOL)_shouldReceiveEvent:(id)arg1;
-- (BOOL)_shouldSwitchAxes;
 - (void)_updateTranslationWithPointerEventAttributes:(id)arg1 activeEdge:(unsigned long long)arg2;
 - (double)averageTouchPathAngleOverTimeDuration:(double)arg1;
 - (struct CGPoint)averageTouchVelocityOverTimeDuration:(double)arg1;

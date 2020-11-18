@@ -20,14 +20,15 @@ __attribute__((visibility("hidden")))
     char *description;
     char *redacted_description;
     NWConcrete_nw_endpoint *parent_endpoint;
-    unsigned short alternate_port;
     struct nw_endpoint_alterative_s first_alternative;
     struct {
         struct nw_endpoint_alterative_s *tqh_first;
         struct nw_endpoint_alterative_s **tqh_last;
     } alternative_list;
-    struct os_unfair_lock_s lock;
+    struct os_unfair_lock_s endpoint_lock;
+    struct os_unfair_lock_s description_lock;
     struct nw_hash_table *associations;
+    unsigned short alternate_port;
     unsigned int is_local_domain:1;
     unsigned int parent_is_proxy:1;
     unsigned int description_used:1;

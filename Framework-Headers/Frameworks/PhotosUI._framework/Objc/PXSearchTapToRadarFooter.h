@@ -6,11 +6,17 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
+@class UILabel;
+
 @interface PXSearchTapToRadarFooter : UICollectionReusableView
 {
     CDUnknownBlockType _tapToRadarHandler;
+    UILabel *_tapToRadarAppleInternalLabel;
+    UILabel *_tapToRadarDescriptionLabel;
 }
 
+@property (strong, nonatomic) UILabel *tapToRadarAppleInternalLabel; // @synthesize tapToRadarAppleInternalLabel=_tapToRadarAppleInternalLabel;
+@property (strong, nonatomic) UILabel *tapToRadarDescriptionLabel; // @synthesize tapToRadarDescriptionLabel=_tapToRadarDescriptionLabel;
 @property (copy, nonatomic) CDUnknownBlockType tapToRadarHandler; // @synthesize tapToRadarHandler=_tapToRadarHandler;
 
 + (id)reuseIdentifier;
@@ -18,6 +24,7 @@
 - (void)_didSelectTapToRadarButton;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)prepareForReuse;
+- (void)shouldDisplayRadarDescriptionLabel:(BOOL)arg1;
 
 @end
 

@@ -47,7 +47,7 @@
 - (double)_titleLastBaselineToBodyTop;
 - (void)_updateContentViewBottomConstraintWithAnchor:(id)arg1 constant:(double)arg2;
 - (void)_updateUIWithLatestVisibleBubbleView:(id)arg1 animated:(BOOL)arg2;
-- (id)initWithSpeedBumpItem:(id)arg1 onboarding:(BOOL)arg2;
+- (id)initWithSpeedBumpItem:(id)arg1 onboarding:(BOOL)arg2 upgradingFromAlgorithmVersion:(long long)arg3;
 - (void)setUpConstraints;
 - (void)setUpUI;
 - (void)stackedButtonView:(id)arg1 didTapButtonAtIndex:(long long)arg2;

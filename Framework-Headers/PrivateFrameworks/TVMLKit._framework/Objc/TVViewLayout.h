@@ -36,6 +36,7 @@
     struct UIEdgeInsets _margin;
     struct UIEdgeInsets _padding;
     struct UIEdgeInsets _focusMargin;
+    struct CGAffineTransform _focusTransform;
 }
 
 @property (nonatomic) BOOL acceptsFocus; // @synthesize acceptsFocus=_acceptsFocus;
@@ -48,6 +49,7 @@
 @property (copy, nonatomic) NSString *focusAlign; // @synthesize focusAlign=_focusAlign;
 @property (nonatomic) struct UIEdgeInsets focusMargin; // @synthesize focusMargin=_focusMargin;
 @property (nonatomic) double focusSizeIncrease; // @synthesize focusSizeIncrease=_focusSizeIncrease;
+@property (nonatomic) struct CGAffineTransform focusTransform; // @synthesize focusTransform=_focusTransform;
 @property (copy, nonatomic) NSString *group; // @synthesize group=_group;
 @property (nonatomic) double height; // @synthesize height=_height;
 @property (strong, nonatomic) UIColor *highlightColor; // @synthesize highlightColor=_highlightColor;
@@ -70,6 +72,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (double)defaultFocusSizeIncrease;
+- (id)init;
 - (CDUnknownBlockType)tv_layoutPropertyGetterForStyle:(id)arg1;
 - (CDUnknownBlockType)tv_layoutPropertySetterForStyle:(id)arg1;
 

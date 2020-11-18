@@ -12,6 +12,8 @@
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *isEnabled;
+    MISSING_TYPE *shouldExpandAtBottom;
+    MISSING_TYPE *$__lazy_storage_$_state;
     MISSING_TYPE *scrollView;
     MISSING_TYPE *proxyMultiDelegate;
     MISSING_TYPE *barAnimator;
@@ -23,6 +25,7 @@
     MISSING_TYPE *lastContentOffset;
     MISSING_TYPE *initialContentOffset;
     MISSING_TYPE *scrollDebounce;
+    MISSING_TYPE *_lastBarCompressEvent;
 }
 
 - (void).cxx_destruct;

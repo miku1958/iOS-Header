@@ -16,6 +16,8 @@
 - (BOOL)addNameRecords:(id)arg1 error:(id *)arg2;
 - (BOOL)deleteCacheIfTooOld;
 - (BOOL)deleteNameRecordCache;
+- (long long)lastCreatedAt;
+- (void)setLastCreatedAt:(long long)arg1;
 - (BOOL)updateNameRecordCacheWithHistoryRecords:(id)arg1 error:(id *)arg2;
 
 @end

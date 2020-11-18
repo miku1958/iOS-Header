@@ -6,7 +6,7 @@
 
 #import <Home/HFAccessorySettingAdapter.h>
 
-@class HMAccessoryCollectionSetting, NAFuture, NSHashTable, NSMutableSet, NSSet;
+@class HMAccessoryCollectionSetting, NAFuture, NSHashTable, NSMutableSet, NSSet, NSUserDefaults;
 
 @interface HFAccessorySettingMobileTimerAdapter : HFAccessorySettingAdapter
 {
@@ -16,6 +16,7 @@
     NSMutableSet *_internalAlarmsBeingAdded;
     NSMutableSet *_internalAlarmsBeingRemoved;
     NSMutableSet *_internalAlarmsBeingUpdated;
+    NSUserDefaults *_soundBoardPrefs;
 }
 
 @property (readonly, nonatomic) HMAccessoryCollectionSetting *alarmCollectionSetting;
@@ -27,6 +28,8 @@
 @property (readonly, nonatomic) BOOL isAdapterReady;
 @property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (readonly, nonatomic) NAFuture *setupAccessoryAdapterModeFuture; // @synthesize setupAccessoryAdapterModeFuture=_setupAccessoryAdapterModeFuture;
+@property (readonly, nonatomic) BOOL shouldSynchronizeMobileTimerToHomeKit;
+@property (strong, nonatomic) NSUserDefaults *soundBoardPrefs; // @synthesize soundBoardPrefs=_soundBoardPrefs;
 
 - (void).cxx_destruct;
 - (void)_alarmWasAdded:(id)arg1;

@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)handlePreConnectionDataReceived:(id)arg1;
 - (void)handleProbingResponse:(id)arg1;
 - (void)handleRATChanged:(id)arg1;
-- (void)handleUpdateRemoteSessionInfo:(id)arg1;
+- (void)handleSessionInfoResponse:(id)arg1;
 - (id)initWithCallID:(unsigned int)arg1 reportingAgent:(id)arg2;
 - (id)initWithCallID:(unsigned int)arg1 requireEncryptionInfo:(BOOL)arg2 reportingAgent:(id)arg3 notificationQueue:(id)arg4;
 - (int)onStart;

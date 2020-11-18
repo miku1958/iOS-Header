@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
 + (struct CGPath **)createCGPathArrayWithBezierPaths:(id)arg1;
 + (id)createLigtherColor:(struct CGColor *)arg1 withIntensity:(double)arg2;
 + (void)createPillBezier:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
++ (void)drawAppearance:(int)arg1 ofAnnotation:(id)arg2 withBox:(long long)arg3 inContext:(struct CGContext *)arg4;
++ (void)drawAppearance:(int)arg1 ofAnnotation:(id)arg2 withBox:(long long)arg3 inContext:(struct CGContext *)arg4 scaleProportional:(BOOL)arg5;
 + (void)drawArrowFrom:(struct CGPoint)arg1 to:(struct CGPoint)arg2 open:(BOOL)arg3 inContext:(struct CGContext *)arg4 withBorder:(id)arg5;
 + (void)drawBulletAtPoint:(struct CGPoint)arg1 shape:(int)arg2 inContext:(struct CGContext *)arg3 withBorder:(id)arg4;
 + (void)drawCheckBox:(id)arg1 inContext:(struct CGContext *)arg2 withState:(long long)arg3 withBackgroundColor:(id)arg4 withBorderColor:(id)arg5 withFontColor:(id)arg6 isHighlighted:(BOOL)arg7;

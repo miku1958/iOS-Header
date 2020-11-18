@@ -16,6 +16,7 @@
     id<MapsSuggestionsVirtualGarageConnector> _connector;
     MapsSuggestionsObservers *_observers;
     NSObject<OS_dispatch_queue> *_queue;
+    BOOL _isConnectedToVG;
 }
 
 @property (readonly, copy) NSString *debugDescription;

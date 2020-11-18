@@ -15,8 +15,9 @@
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintViewController;
     MISSING_TYPE *blueprintLayoutProvider;
-    MISSING_TYPE *gradientView;
+    MISSING_TYPE *featureAvailability;
     MISSING_TYPE *offlineAlertControllerFactory;
+    MISSING_TYPE *gradientView;
     MISSING_TYPE *isBeingUsedAsPlugin;
     MISSING_TYPE *pluggableDelegate;
 }

@@ -7,7 +7,7 @@
 @class MLDictionaryFeatureProvider, MLFeatureDescription, MLFeatureValue, MLInternalSettings, MLKey, MLModelConfiguration, MLModelDescription, MLPredictionOptions, MLSecureModelDecryptCredential, NSArray, NSData, NSNumber, NSString, NSURL;
 
 @protocol CoreMLModelSecurityProtocol
-- (void)createPersistentKeyBlobForKeyID:(NSString *)arg1 completionBlock:(void (^)(NSData *, NSError *))arg2;
+- (void)createPersistentKeyBlobForKeyID:(NSString *)arg1 usesCodeSigningIdentityForEncryption:(BOOL)arg2 completionBlock:(void (^)(NSData *, NSError *))arg3;
 - (void)extractTeamIdentifierWithReply:(void (^)(NSString *, NSError *))arg1;
 - (void)secureModelMLDictionaryFeatureProvider:(MLDictionaryFeatureProvider *)arg1 withReply:(void (^)(MLDictionaryFeatureProvider *, NSString *))arg2;
 - (void)secureModelMLFeatureDescription:(MLFeatureDescription *)arg1 withReply:(void (^)(MLFeatureDescription *, NSString *))arg2;

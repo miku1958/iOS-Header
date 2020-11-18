@@ -6,7 +6,7 @@
 
 #import <SearchFoundation/SFResultSection.h>
 
-@class NSArray, NSMutableOrderedSet, NSNumber, NSString;
+@class NSArray, NSMutableOrderedSet, NSNumber, NSString, SPGroupHeadingResult;
 
 @interface SFMutableResultSection : SFResultSection
 {
@@ -20,6 +20,7 @@
     NSString *_groupName;
     NSNumber *_groupId;
     NSMutableOrderedSet *_resultSet;
+    SPGroupHeadingResult *_headerResult;
     NSString *_relatedSectionBundleIdentifier;
     NSString *_sourceDomain;
     NSString *_resultSetIdentifier;
@@ -29,6 +30,7 @@
 @property (nonatomic) unsigned int domain; // @synthesize domain=_domain;
 @property (strong, nonatomic) NSNumber *groupId; // @synthesize groupId=_groupId;
 @property (strong, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
+@property (strong, nonatomic) SPGroupHeadingResult *headerResult; // @synthesize headerResult=_headerResult;
 @property (strong, nonatomic) NSArray *hiddenExtResults; // @synthesize hiddenExtResults=_hiddenExtResults;
 @property (nonatomic) BOOL isGlanceCategory; // @synthesize isGlanceCategory=_isGlanceCategory;
 @property BOOL pinToTop; // @synthesize pinToTop=_pinToTop;

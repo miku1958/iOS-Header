@@ -21,6 +21,7 @@
 - (struct UIEdgeInsets)layoutMargins;
 - (void)reset;
 - (struct UIEdgeInsets)safeAreaInsets;
+- (void)setFrame:(struct CGRect)arg1;
 
 @end
 

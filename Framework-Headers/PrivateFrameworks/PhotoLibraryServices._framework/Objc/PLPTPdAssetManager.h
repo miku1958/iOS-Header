@@ -34,6 +34,7 @@
 
 - (void).cxx_destruct;
 - (id)_allAssetObjectIDs;
+- (id)_dataByJPEGCompressingCGImage:(struct CGImage *)arg1 orSource:(struct CGImageSource *)arg2 toLengthLimit:(long long)arg3 initialCompressionQuality:(float)arg4 size:(struct CGSize)arg5 orientation:(long long)arg6;
 - (void)_expungeAsset:(id)arg1 withReason:(id)arg2;
 - (id)_generateThumbnailForAsset:(id)arg1 fromOriginalImagePath:(id)arg2 size:(struct CGSize)arg3 compressionQuality:(float)arg4;
 - (void)_inverseAffineTransformForExifOrientation:(long long)arg1 width:(double)arg2 height:(double)arg3 completion:(CDUnknownBlockType)arg4;
@@ -53,7 +54,6 @@
 - (id)adjustmentFilePathForAsset:(id)arg1 requiresTemporaryFileCleanup:(BOOL *)arg2;
 - (id)assetReaderForFormatConvertedPTPAsset:(id)arg1 ofManagedAsset:(id)arg2 path:(id)arg3;
 - (void)beginSignpostForThumbnailGenerationForAsset:(id)arg1 inputResourceTypeLabel:(id)arg2;
-- (id)dataByJPEGCompressingCGImage:(struct CGImage *)arg1 toLengthLimit:(long long)arg2 initialCompressionQuality:(float)arg3 size:(struct CGSize)arg4 orientation:(long long)arg5;
 - (id)dataForThumbnailFileAtPath:(id)arg1 rotatedToOrientation:(long long)arg2 size:(struct CGSize)arg3 compressionQuality:(float)arg4;
 - (void)dealloc;
 - (void)endSignpostForThumbnailGenerationForAsset:(id)arg1;

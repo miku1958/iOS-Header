@@ -12,10 +12,6 @@
 {
     MISSING_TYPE *styler;
     MISSING_TYPE *shineImageFactory;
-    MISSING_TYPE *blueprintProvider;
-    MISSING_TYPE *cloudContext;
-    MISSING_TYPE *featureAvailability;
-    MISSING_TYPE *debugEnabled;
 }
 
 @end

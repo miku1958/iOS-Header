@@ -32,6 +32,7 @@
     BOOL _forcesEdgeAntialiasing;
     BOOL _showStackBorderWhenShowingPageControl;
     BOOL _flashPageControlOnNextAppearance;
+    BOOL _flashPageControlOnNextAlphaChange;
     CDUnknownBlockType _backgroundViewProvider;
     double _brightness;
     unsigned long long _presentationMode;
@@ -78,6 +79,7 @@
 @property (strong, nonatomic) UIView *dimmingView; // @synthesize dimmingView=_dimmingView;
 @property (nonatomic, getter=isDropping) BOOL dropping;
 @property (nonatomic, getter=isEditing) BOOL editing; // @synthesize editing=_editing;
+@property (nonatomic) BOOL flashPageControlOnNextAlphaChange; // @synthesize flashPageControlOnNextAlphaChange=_flashPageControlOnNextAlphaChange;
 @property (nonatomic) BOOL flashPageControlOnNextAppearance; // @synthesize flashPageControlOnNextAppearance=_flashPageControlOnNextAppearance;
 @property (nonatomic) BOOL forcesEdgeAntialiasing; // @synthesize forcesEdgeAntialiasing=_forcesEdgeAntialiasing;
 @property (readonly) unsigned long long hash;
@@ -116,7 +118,6 @@
 - (void).cxx_destruct;
 - (BOOL)_alwaysShowStackBorder;
 - (BOOL)_alwaysShowStackPageControl;
-- (void)_animateRemovalOfWidget:(id)arg1;
 - (BOOL)_canShowWhileLocked;
 - (void)_createBackgroundViewIfNecessary;
 - (BOOL)_createViewControllerForWidgetIfNecessary:(id)arg1 usingSize:(struct CGSize)arg2;
@@ -133,6 +134,7 @@
 - (long long)_newActiveWidgetIndexForContentOffset:(struct CGPoint)arg1;
 - (BOOL)_pageControlIsHorizontallyConstrained;
 - (struct CGSize)_pageSize;
+- (void)_removeWidget:(id)arg1 animated:(BOOL)arg2;
 - (void)_restartPageControlTimer;
 - (struct CGPoint)_restingContentOffset;
 - (BOOL)_scrollToActiveWidgetAnimated:(BOOL)arg1;
@@ -166,6 +168,7 @@
 - (void)leafIcon:(id)arg1 didChangeActiveDataSource:(id)arg2;
 - (void)leafIcon:(id)arg1 didRemoveIconDataSource:(id)arg2;
 - (void)loadView;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)removeCustomImageViewControllerObserver:(id)arg1;
 - (void)scrollViewDidEndScrolling:(id)arg1;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;

@@ -10,6 +10,7 @@
 
 @interface HRElectrocardiogramResultViewItem : NSObject
 {
+    NSString *_badge;
     NSString *_title;
     NSString *_numberedTitle;
     NSString *_visibleBodyText;
@@ -17,6 +18,7 @@
     NSArray *_expandedContentItems;
 }
 
+@property (readonly, copy, nonatomic) NSString *badge; // @synthesize badge=_badge;
 @property (readonly, nonatomic) NSArray *expandedContentItems; // @synthesize expandedContentItems=_expandedContentItems;
 @property (readonly, copy, nonatomic) NSString *numberedTitle; // @synthesize numberedTitle=_numberedTitle;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
@@ -27,9 +29,10 @@
 + (id)_makeItemForHighOrLowAbove120Below50AlgorithmVersionOne;
 + (id)_makeItemForInconclusiveAlgorithmVersionOneWithLearnMoreDelegate:(id)arg1;
 + (id)_makeItemForSinusRhythmAlgorithmVersionOne;
-+ (id)viewItemWithClassification:(unsigned long long)arg1 activeAlgorithmVersion:(long long)arg2 learnMoreDelegate:(id)arg3;
++ (id)viewItemWithClassification:(unsigned long long)arg1 forAlgorithmVersion:(long long)arg2 learnMoreDelegate:(id)arg3;
++ (id)viewItemWithClassification:(unsigned long long)arg1 forAlgorithmVersion:(long long)arg2 upgradingFromAlgorithmVersion:(long long)arg3 learnMoreDelegate:(id)arg4;
 - (void).cxx_destruct;
-- (id)initWithTitle:(id)arg1 numberedTitle:(id)arg2 visibleBodyText:(id)arg3 videoPath:(id)arg4 expandedContentItems:(id)arg5;
+- (id)initWithBadge:(id)arg1 title:(id)arg2 numberedTitle:(id)arg3 visibleBodyText:(id)arg4 videoPath:(id)arg5 expandedContentItems:(id)arg6;
 
 @end
 

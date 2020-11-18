@@ -33,6 +33,7 @@
 + (void)_enableLogging;
 - (long long)_getDownloadIdent;
 - (void)_invalidate;
+- (void)_managerFailedToStartInTime;
 - (void)_updateDownloadState:(id)arg1;
 - (void)cancel;
 - (void)cancelAuthenticationChallenge:(id)arg1;

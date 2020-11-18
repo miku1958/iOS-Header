@@ -19,6 +19,7 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)createAnalyticsConsentStackForAgencyModel:(id)arg1 exposureManager:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)createKeyReleaseDialogueWithBundleIdentifier:(id)arg1 region:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)createOnboardingStackForAgencyModel:(id)arg1 exposureManager:(id)arg2 fromAvailabilityAlert:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)createPreApprovalDialogueWithBundleIdentifier:(id)arg1 region:(id)arg2 completion:(CDUnknownBlockType)arg3;

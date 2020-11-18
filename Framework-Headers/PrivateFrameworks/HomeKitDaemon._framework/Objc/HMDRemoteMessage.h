@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFMessage.h>
 
-@class HMDHomeKitVersion, NSUUID;
+@class HMDHomeKitVersion, NSString, NSUUID;
 
 @interface HMDRemoteMessage : HMFMessage
 {
@@ -16,6 +16,7 @@
     HMDHomeKitVersion *_sourceVersion;
 }
 
+@property (copy, nonatomic) NSString *attributedMessageName;
 @property (nonatomic) unsigned long long restriction;
 @property (nonatomic, getter=isSecure) BOOL secure;
 @property (strong, nonatomic) HMDHomeKitVersion *sourceVersion; // @synthesize sourceVersion=_sourceVersion;

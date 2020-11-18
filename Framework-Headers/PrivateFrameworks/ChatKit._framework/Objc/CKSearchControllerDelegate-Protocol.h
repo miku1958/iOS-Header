@@ -19,6 +19,7 @@
 - (void)searchController:(CKSearchController *)arg1 requestsPresentationOfAlertController:(UIAlertController *)arg2 atRect:(struct CGRect)arg3;
 - (void)searchController:(CKSearchController *)arg1 requestsPresentationOfShareController:(UIViewController *)arg2 atRect:(struct CGRect)arg3;
 - (void)searchControllerContentsDidChange:(CKSearchController *)arg1;
+- (double)widthForDeterminingAvatarVisibility;
 
 @optional
 - (NSArray *)searchControllerChatGUIDsForDetailsSearch:(CKSearchController *)arg1;

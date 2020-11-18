@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<UIFocusItem> currentFocusItem; // @synthesize currentFocusItem=_currentFocusItem;
 
 - (void).cxx_destruct;
+- (id)description;
 - (id)initWithClientID:(id)arg1;
 
 @end

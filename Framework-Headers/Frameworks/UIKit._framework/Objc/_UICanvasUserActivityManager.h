@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=_isDisplayingActivityContinuationUI, setter=_setIsDisplayingActivityContinuationUI:) BOOL isDisplayingActivityContinuationUI; // @synthesize isDisplayingActivityContinuationUI=_isDisplayingActivityContinuationUI;
 @property (readonly) Class superclass;
 
-+ (id)_activityContinuationDictionaryWithAction:(id)arg1;
++ (id)_activityContinuationDictionaryWithAction:(id)arg1 sourceApplication:(id)arg2;
 + (void)_deleteSavedSceneSessionDirectoryWithIdentifier:(id)arg1;
 + (void)_deleteSceneSessionsWithPersistentIdentifiers:(id)arg1;
 + (id)_fetchSceneSessionWithPersistentIdentifier:(id)arg1;

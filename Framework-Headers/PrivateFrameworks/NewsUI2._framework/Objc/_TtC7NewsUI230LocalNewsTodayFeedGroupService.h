@@ -13,7 +13,6 @@
     MISSING_TYPE *sectionHeadlinesService;
     MISSING_TYPE *personalizer;
     MISSING_TYPE *heroSelector;
-    MISSING_TYPE *channelFontService;
     MISSING_TYPE *weatherService;
     MISSING_TYPE *formatService;
     MISSING_TYPE *subscriptionController;

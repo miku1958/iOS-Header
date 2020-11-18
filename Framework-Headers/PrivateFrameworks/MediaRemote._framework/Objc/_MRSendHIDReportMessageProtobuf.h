@@ -10,25 +10,19 @@
 
 @class NSData, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MRSendHIDReportMessageProtobuf : PBCodable <NSCopying>
 {
     NSData *_report;
     NSString *_virtualDeviceID;
 }
 
-@property (readonly, nonatomic) BOOL hasReport;
-@property (readonly, nonatomic) BOOL hasVirtualDeviceID;
-@property (strong, nonatomic) NSData *report; // @synthesize report=_report;
-@property (strong, nonatomic) NSString *virtualDeviceID; // @synthesize virtualDeviceID=_virtualDeviceID;
-
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

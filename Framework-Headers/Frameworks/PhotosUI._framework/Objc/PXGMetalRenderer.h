@@ -89,6 +89,7 @@
 - (void)_setupSquareGeometryBuffer;
 - (void)_setupYCbCrMatrices;
 - (void)dealloc;
+- (void)draw;
 - (void)drawInMTKView:(id)arg1;
 - (id)init;
 - (void)metalTextureConverter:(id)arg1 didCreateTexture:(id)arg2;

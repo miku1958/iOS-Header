@@ -18,7 +18,7 @@
 - (void).cxx_destruct;
 - (void)_adjustLayoutAttributes:(id)arg1;
 - (struct CGSize)collectionViewContentSize;
-- (id)initWithHorizontalLayoutDelegate:(id)arg1;
+- (id)initWithHorizontalLayoutDelegate:(id)arg1 showsHorizontalScrollIndicator:(BOOL)arg2;
 - (void)invalidateLayout;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;

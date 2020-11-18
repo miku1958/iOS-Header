@@ -107,13 +107,13 @@ __attribute__((visibility("hidden")))
 - (void)_cleanUpEverything;
 - (void)_cleanUpEverythingPlaybackRelated;
 - (void)_delayLoadImage:(id)arg1;
+- (void)_didPlayMediaItemToEnd:(id)arg1;
 - (void)_handleApplicationDidBecomeActiveNotification:(id)arg1;
 - (void)_handleApplicationDidEnterBackgroundNotification:(id)arg1;
 - (void)_handleApplicationWillResignActiveNotification:(id)arg1;
 - (BOOL)_hasSecondaryView;
 - (void)_mediaControllerStartedPlayback:(id)arg1;
 - (struct CGRect)_playbackContainerViewFrame:(BOOL)arg1 hasSecondaryVideoView:(BOOL)arg2;
-- (void)_playbackDidPlayToEndNotification:(id)arg1;
 - (void)_playbackStateChanged:(id)arg1;
 - (void)_registerForApplicationStateNotifications;
 - (void)_registerPlayerNotifications;

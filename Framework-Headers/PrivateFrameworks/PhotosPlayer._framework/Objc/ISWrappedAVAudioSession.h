@@ -23,6 +23,10 @@
 + (id)auxiliarySession;
 + (id)sharedAmbientInstance;
 + (void)sharedAmbientInstanceWithLoadHandler:(CDUnknownBlockType)arg1;
++ (id)sharedPhotosOneUpInstance;
++ (void)sharedPhotosOneUpInstanceWithLoadHandler:(CDUnknownBlockType)arg1;
++ (id)sharedPlaybackInstance;
++ (void)sharedPlaybackInstanceWithLoadHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (void)_beginObservingOutputVolumeIfNeeded;
 - (void)_endObservingOutputVolumeIfNeeded;

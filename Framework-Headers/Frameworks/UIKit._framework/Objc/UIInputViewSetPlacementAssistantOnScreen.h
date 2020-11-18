@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)supportsSecureCoding;
-- (BOOL)accessoryViewWillAppear;
 - (Class)applicatorClassForKeyboard:(BOOL)arg1;
 - (double)inputAssistantViewHeightForInputViewSet:(id)arg1;
 - (BOOL)inputViewWillAppear;

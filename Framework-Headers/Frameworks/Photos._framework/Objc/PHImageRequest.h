@@ -35,7 +35,6 @@
 - (void).cxx_destruct;
 - (void)_decodeImageConfiguredWithURL:(id)arg1 isPrimaryFormat:(BOOL)arg2 exifOrientation:(long long)arg3;
 - (void)cancel;
-- (void)configureWithURL:(id)arg1;
 - (void)configureWithURL:(id)arg1 uniformTypeIdentifier:(id)arg2 exifOrientation:(int)arg3;
 - (id)description;
 - (long long)downloadIntent;

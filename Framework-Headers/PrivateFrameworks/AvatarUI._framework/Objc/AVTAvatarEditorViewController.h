@@ -61,6 +61,7 @@
 - (id)appropriatePresentationController;
 - (void)attributeEditor:(id)arg1 didUpdateVisibleLayout:(id)arg2;
 - (void)attributeEditorDidMakeFirstSelection:(id)arg1;
+- (BOOL)canBecomeFirstResponder;
 - (void)cancel:(id)arg1;
 - (void)configureNavigationItems;
 - (void)configurePPTMemoji;
@@ -68,16 +69,19 @@
 - (void)controllerPresentationWillObstructView:(id)arg1;
 - (BOOL)disableAvatarSnapshotting;
 - (void)enableDoneButton:(BOOL)arg1;
+- (void)escPressed:(id)arg1;
 - (void)finish:(id)arg1;
 - (void)handleDiscardAttempt;
 - (id)initWithAvatarRecord:(id)arg1 avtViewSessionProvider:(id)arg2 store:(id)arg3 enviroment:(id)arg4 isCreating:(BOOL)arg5;
 - (BOOL)isModalInPresentation;
+- (id)keyCommands;
 - (void)loadAttributeEditorViewWithAvatarRecord:(id)arg1;
 - (void)loadSplashScreen;
 - (void)prepareForAnimatedTransitionWithLayout:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)prepareForPresetsScrollTestOnCategory:(id)arg1 readyHandler:(CDUnknownBlockType)arg2;
 - (void)presentationControllerDidAttemptToDismiss:(id)arg1;
 - (BOOL)presentationControllerShouldDismiss:(id)arg1;
+- (void)returnPressed:(id)arg1;
 - (void)setDisableAvatarSnapshotting:(BOOL)arg1;
 - (void)setupInitialViewState;
 - (void)splashScreenViewControllerDidFinish:(id)arg1;

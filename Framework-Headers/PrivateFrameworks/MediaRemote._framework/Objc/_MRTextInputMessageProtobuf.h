@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MRTextInputMessageProtobuf : PBCodable <NSCopying>
 {
     double _timestamp;
@@ -21,23 +22,12 @@
     } _has;
 }
 
-@property (nonatomic) int actionType; // @synthesize actionType=_actionType;
-@property (nonatomic) BOOL hasActionType;
-@property (readonly, nonatomic) BOOL hasText;
-@property (nonatomic) BOOL hasTimestamp;
-@property (strong, nonatomic) NSString *text; // @synthesize text=_text;
-@property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
-
 - (void).cxx_destruct;
-- (int)StringAsActionType:(id)arg1;
-- (id)actionTypeAsString:(int)arg1;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

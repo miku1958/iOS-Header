@@ -61,14 +61,14 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
-- (int)_clientHandleCommitResponse:(id)arg1;
-- (int)_clientHandlePrepareResponse:(id)arg1;
+- (int)_clientHandleCommitResponse:(id)arg1 options:(id)arg2;
+- (int)_clientHandlePrepareResponse:(id)arg1 options:(id)arg2;
 - (int)_clientPairVerifyExchange:(id)arg1;
 - (void)_clientRunStateMachine;
 - (int)_clientSendCommitRequest:(id)arg1;
 - (int)_clientSendPrepareRequest:(id)arg1;
-- (void)_completeTransaction:(id)arg1 response:(id)arg2 status:(int)arg3;
-- (void)_completeUserTransaction:(id)arg1 response:(id)arg2 status:(int)arg3;
+- (void)_completeTransaction:(id)arg1 response:(id)arg2 options:(id)arg3 status:(int)arg4;
+- (void)_completeUserTransaction:(id)arg1 response:(id)arg2 options:(id)arg3 status:(int)arg4;
 - (void)_runStateMachine;
 - (void)_sendRequest:(id)arg1 options:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (void)_sendUserRequest:(id)arg1 options:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
@@ -76,7 +76,7 @@
 - (int)_serverHandleCommitRequest:(id)arg1 options:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (int)_serverHandleDecryptedRequest:(id)arg1 options:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (void)_serverHandleEncryptedRequest:(id)arg1 options:(id)arg2;
-- (int)_serverHandlePrepareRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
+- (int)_serverHandlePrepareRequest:(id)arg1 options:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (void)_serverPairVerifyExchange:(id)arg1 options:(id)arg2;
 - (void)_serverRunStateMachine;
 - (int)_setupEncryption;

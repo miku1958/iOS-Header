@@ -10,6 +10,7 @@
 
 @class NSString, _MRTextInputTraitsProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRTextEditingAttributesProtobuf : PBCodable <NSCopying>
 {
     _MRTextInputTraitsProtobuf *_inputTraits;
@@ -17,21 +18,12 @@
     NSString *_title;
 }
 
-@property (readonly, nonatomic) BOOL hasInputTraits;
-@property (readonly, nonatomic) BOOL hasPrompt;
-@property (readonly, nonatomic) BOOL hasTitle;
-@property (strong, nonatomic) _MRTextInputTraitsProtobuf *inputTraits; // @synthesize inputTraits=_inputTraits;
-@property (strong, nonatomic) NSString *prompt; // @synthesize prompt=_prompt;
-@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
-
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -8,6 +8,7 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface _MRTextInputTraitsProtobuf : PBCodable <NSCopying>
 {
     struct {
@@ -37,46 +38,13 @@
     } _has;
 }
 
-@property (nonatomic) int autocapitalizationType; // @synthesize autocapitalizationType=_autocapitalizationType;
-@property (nonatomic) BOOL autocorrection; // @synthesize autocorrection=_autocorrection;
-@property (nonatomic) BOOL enablesReturnKeyAutomatically; // @synthesize enablesReturnKeyAutomatically=_enablesReturnKeyAutomatically;
-@property (nonatomic) BOOL hasAutocapitalizationType;
-@property (nonatomic) BOOL hasAutocorrection;
-@property (nonatomic) BOOL hasEnablesReturnKeyAutomatically;
-@property (nonatomic) BOOL hasKeyboardType;
-@property (nonatomic) BOOL hasReturnKeyType;
-@property (nonatomic) BOOL hasSecureTextEntry;
-@property (nonatomic) BOOL hasSpellchecking;
-@property (nonatomic) BOOL hasValidTextRangeLength;
-@property (nonatomic) BOOL hasValidTextRangeLocation;
-@property (nonatomic) int keyboardType; // @synthesize keyboardType=_keyboardType;
-@property (readonly, nonatomic) unsigned long long *pINEntrySeparatorIndexes;
-@property (readonly, nonatomic) unsigned long long pINEntrySeparatorIndexesCount;
-@property (nonatomic) int returnKeyType; // @synthesize returnKeyType=_returnKeyType;
-@property (nonatomic) BOOL secureTextEntry; // @synthesize secureTextEntry=_secureTextEntry;
-@property (nonatomic) BOOL spellchecking; // @synthesize spellchecking=_spellchecking;
-@property (nonatomic) unsigned long long validTextRangeLength; // @synthesize validTextRangeLength=_validTextRangeLength;
-@property (nonatomic) unsigned long long validTextRangeLocation; // @synthesize validTextRangeLocation=_validTextRangeLocation;
-
-- (int)StringAsAutocapitalizationType:(id)arg1;
-- (int)StringAsKeyboardType:(id)arg1;
-- (int)StringAsReturnKeyType:(id)arg1;
-- (void)addPINEntrySeparatorIndexes:(unsigned long long)arg1;
-- (id)autocapitalizationTypeAsString:(int)arg1;
-- (void)clearPINEntrySeparatorIndexes;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (id)keyboardTypeAsString:(int)arg1;
-- (void)mergeFrom:(id)arg1;
-- (unsigned long long)pINEntrySeparatorIndexesAtIndex:(unsigned long long)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)returnKeyTypeAsString:(int)arg1;
-- (void)setPINEntrySeparatorIndexes:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -6,14 +6,16 @@
 
 #import <SpringBoard/SBSleepWakeHardwareButtonInteraction.h>
 
-@class SBHIDUILockAssertion;
+@class SBHIDUILockAssertion, SBProximitySensorManager;
 
 @interface SBDoubleClickSleepWakeHardwareButtonInteraction : SBSleepWakeHardwareButtonInteraction
 {
     SBHIDUILockAssertion *_proxLockAssertion;
+    SBProximitySensorManager *_proximitySensorManager;
 }
 
 @property (strong, nonatomic) SBHIDUILockAssertion *proxLockAssertion; // @synthesize proxLockAssertion=_proxLockAssertion;
+@property (strong, nonatomic) SBProximitySensorManager *proximitySensorManager; // @synthesize proximitySensorManager=_proximitySensorManager;
 
 - (void).cxx_destruct;
 - (void)_cancelPreviousResumeProxRequests;
@@ -25,6 +27,7 @@
 - (BOOL)consumeInitialPressDown;
 - (BOOL)consumeInitialPressUp;
 - (BOOL)consumeSecondPressDown;
+- (id)initWithProximitySensorManager:(id)arg1;
 - (void)observeFinalPressUp;
 - (void)observeSinglePressDidFail;
 

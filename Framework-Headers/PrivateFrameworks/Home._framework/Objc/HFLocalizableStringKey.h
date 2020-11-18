@@ -23,12 +23,12 @@
 @property (strong, nonatomic) NSString *key; // @synthesize key=_key;
 @property (copy, nonatomic) CDUnknownBlockType stringLocalizationBlock; // @synthesize stringLocalizationBlock=_stringLocalizationBlock;
 
-+ (id)description;
 + (id)stringKeyWithKey:(id)arg1 argumentKeys:(id)arg2;
 + (id)stringKeyWithKey:(id)arg1 arguments:(id)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
+- (id)description;
 - (id)initWithKey:(id)arg1 argumentKeys:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)localizedStringWithArgumentBlock:(CDUnknownBlockType)arg1;

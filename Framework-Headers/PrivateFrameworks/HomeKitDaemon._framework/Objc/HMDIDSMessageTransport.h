@@ -24,7 +24,6 @@
     NSMutableDictionary *_pendingResponseTimers;
 }
 
-@property (readonly, nonatomic) int awdTransportType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSMutableDictionary *destinationAddress; // @synthesize destinationAddress=_destinationAddress;
@@ -39,6 +38,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (id)logCategory;
 + (long long)priorityForMessage:(id)arg1;
 + (unsigned long long)restriction;
 + (unsigned long long)sendMessageLimit;
@@ -58,6 +58,7 @@
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(BOOL)arg4 error:(id)arg5 context:(id)arg6;
 - (void)service:(id)arg1 account:(id)arg2 incomingMessage:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)start;
+- (int)transportType;
 
 @end
 

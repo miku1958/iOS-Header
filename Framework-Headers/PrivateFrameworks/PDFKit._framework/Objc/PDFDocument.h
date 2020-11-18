@@ -81,6 +81,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)coreFindString:(id)arg1;
 - (void)coreFindStrings:(id)arg1;
+- (BOOL)createdWithWithHighLatencyDataProvider;
 - (id)dataRepresentation;
 - (id)dataRepresentationWithOptions:(id)arg1;
 - (void)dealloc;

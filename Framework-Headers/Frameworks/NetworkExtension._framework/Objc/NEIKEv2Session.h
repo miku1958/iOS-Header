@@ -161,6 +161,7 @@
 - (void)expireSA:(id)arg1;
 - (void)finishConfigurationEstablishment;
 - (BOOL)fireWaitingRequestHandlerWithPacket:(id)arg1;
+- (void)flushPendingRequestContexts;
 - (void)forceRekeyChild:(unsigned int)arg1;
 - (void)forceRekeyIKE;
 - (BOOL)generateSPIForChild:(id)arg1 proposals:(id)arg2;
@@ -184,6 +185,7 @@
 - (BOOL)innerReceiveDeleteIKESA:(id)arg1;
 - (BOOL)installChildSA:(id)arg1;
 - (void)invalidate;
+- (void)invalidateWithCompletionHandler:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)migrateAllChildSAs;
 - (BOOL)migrateChildSA:(id)arg1;
 - (void)receiveConnection:(id)arg1;

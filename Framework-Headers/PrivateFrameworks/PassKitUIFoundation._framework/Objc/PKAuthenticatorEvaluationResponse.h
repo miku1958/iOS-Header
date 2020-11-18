@@ -17,7 +17,7 @@
 }
 
 @property (readonly, nonatomic) BOOL biometricMatch; // @synthesize biometricMatch=_biometricMatch;
-@property (readonly, nonatomic) NSData *credential; // @synthesize credential=_credential;
+@property (readonly, copy, nonatomic) NSData *credential; // @synthesize credential=_credential;
 @property (copy, nonatomic) NSString *kextBlacklistVersion; // @synthesize kextBlacklistVersion=_kextBlacklistVersion;
 @property (readonly, nonatomic) long long result; // @synthesize result=_result;
 

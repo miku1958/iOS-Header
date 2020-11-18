@@ -41,7 +41,7 @@
 + (id)newDataFromRevGeoLocationInfo:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (BOOL)_isCurrentLocaleLanguageNonReverseAddress;
+- (unsigned long long)_locationInfoOrderForCurrentLocale;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasLocation;

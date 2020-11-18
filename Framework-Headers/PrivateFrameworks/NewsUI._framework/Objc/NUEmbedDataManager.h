@@ -13,6 +13,7 @@
 
 @interface NUEmbedDataManager : NSObject <NUEmbedDataManager>
 {
+    BOOL _hasLoaded;
     id<NUEmbedConfigurationLoader> _embedConfigurationLoader;
     SXJSONDictionary *_embedConfiguration;
 }
@@ -21,6 +22,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) SXJSONDictionary *embedConfiguration; // @synthesize embedConfiguration=_embedConfiguration;
 @property (readonly, nonatomic) id<NUEmbedConfigurationLoader> embedConfigurationLoader; // @synthesize embedConfigurationLoader=_embedConfigurationLoader;
+@property (readonly, nonatomic) BOOL hasLoaded; // @synthesize hasLoaded=_hasLoaded;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

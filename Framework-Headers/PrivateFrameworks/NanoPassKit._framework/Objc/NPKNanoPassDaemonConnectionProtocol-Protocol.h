@@ -6,9 +6,10 @@
 
 #import <NanoPassKit/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSSet, PKAppletSubcredentialSharingInvitation, PKBarcodeEventMetadataRequest;
+@class NSSet, PKAppletSubcredentialSharingInvitation, PKBarcodeEventMetadataRequest, PKPaymentPass, PKPaymentTransaction;
 
 @protocol NPKNanoPassDaemonConnectionProtocol <PDXPCServiceExportedInterface>
+- (void)handleApplicationRedirectRequestOnPairedDeviceForPaymentPass:(PKPaymentPass *)arg1 transaction:(PKPaymentTransaction *)arg2;
 - (void)handleMetadataRequestOnPairedDevice:(PKBarcodeEventMetadataRequest *)arg1 withAssociatedApplicationIdentifiers:(NSSet *)arg2 completion:(void (^)(PKBarcodeEventMetadataResponse *, NSError *))arg3;
 - (void)noteWillDeleteAccountsWithCompletion:(void (^)(void))arg1;
 - (void)startSubcredentialProvisioningOnLocalDeviceMatchingInvitation:(PKAppletSubcredentialSharingInvitation *)arg1 shouldFetchAnonymizationSaltFromRemoteDevice:(BOOL)arg2 completion:(void (^)(PKPaymentPass *, NSError *))arg3;

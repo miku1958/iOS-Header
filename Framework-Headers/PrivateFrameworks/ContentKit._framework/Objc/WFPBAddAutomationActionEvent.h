@@ -14,15 +14,18 @@ __attribute__((visibility("hidden")))
 @interface WFPBAddAutomationActionEvent : PBCodable <NSCopying>
 {
     NSString *_actionIdentifier;
-    NSString *_actionIndex;
+    unsigned int _actionIndex;
     NSString *_key;
     NSString *_shortcutIdentifier;
+    struct {
+        unsigned int actionIndex:1;
+    } _has;
 }
 
 @property (strong, nonatomic) NSString *actionIdentifier; // @synthesize actionIdentifier=_actionIdentifier;
-@property (strong, nonatomic) NSString *actionIndex; // @synthesize actionIndex=_actionIndex;
+@property (nonatomic) unsigned int actionIndex; // @synthesize actionIndex=_actionIndex;
 @property (readonly, nonatomic) BOOL hasActionIdentifier;
-@property (readonly, nonatomic) BOOL hasActionIndex;
+@property (nonatomic) BOOL hasActionIndex;
 @property (readonly, nonatomic) BOOL hasKey;
 @property (readonly, nonatomic) BOOL hasShortcutIdentifier;
 @property (strong, nonatomic) NSString *key; // @synthesize key=_key;

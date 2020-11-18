@@ -14,15 +14,18 @@
 {
     MISSING_TYPE *timeWindow;
     MISSING_TYPE *store;
+    MISSING_TYPE *isStateRestorationFeatureEnabled;
     MISSING_TYPE *hasStateDiscarded;
 }
 
 @property (nonatomic) BOOL hasStateDiscarded; // @synthesize hasStateDiscarded;
 @property (nonatomic, readonly) BOOL isStateRestorationAllowed;
+@property (nonatomic, readonly) BOOL isStateRestorationFeatureEnabled; // @synthesize isStateRestorationFeatureEnabled;
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithTimeWindow:(double)arg1;
+- (id)initWithTimeWindow:(double)arg1 isRunningPPT:(BOOL)arg2;
+- (id)initWithTimeWindow:(double)arg1 isStateRestorationEnabled:(BOOL)arg2;
 - (void)markStateDiscarded;
 - (void)sceneDidEnterBackground;
 

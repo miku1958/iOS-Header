@@ -20,8 +20,8 @@
 - (void).cxx_destruct;
 - (void)_initializeMusicKitURLResponse;
 - (id)description;
-- (id)initWithURLResponse:(id)arg1 urlRequest:(id)arg2 bodyData:(id)arg3 transactionMetrics:(id)arg4;
-- (id)initWithURLResponse:(id)arg1 urlRequest:(id)arg2 bodyDataURL:(id)arg3 transactionMetrics:(id)arg4;
+- (id)initWithURLResponse:(id)arg1 urlRequest:(id)arg2 bodyData:(id)arg3 performanceMetrics:(id)arg4;
+- (id)initWithURLResponse:(id)arg1 urlRequest:(id)arg2 bodyDataURL:(id)arg3 performanceMetrics:(id)arg4;
 
 @end
 

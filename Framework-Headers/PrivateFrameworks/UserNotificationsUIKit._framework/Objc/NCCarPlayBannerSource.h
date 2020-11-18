@@ -44,9 +44,9 @@
 - (BOOL)_isPresentableSticky:(id)arg1;
 - (id)_peekPostedPresentable;
 - (unsigned long long)_postedPresentableCount;
-- (id)_postedPresentablesWithRequestIdentifier:(id)arg1;
+- (id)_postedPresentablesWithIdentification:(id)arg1;
 - (void)_presentableDidDisappear:(id)arg1;
-- (void)_presentableWithRequestIdentifierDidDisappear:(id)arg1;
+- (void)_presentableWithIdentificationDidDisappear:(id)arg1;
 - (id)_pullPostedPresentableAtIndex:(unsigned long long)arg1;
 - (void)_revokePreviouslyPostedPresentableIfPossible;
 - (BOOL)_setSuspended:(BOOL)arg1 forReason:(id)arg2 revokingCurrent:(BOOL)arg3;
@@ -59,8 +59,9 @@
 - (BOOL)postPresentable:(id)arg1 options:(unsigned long long)arg2 userInfo:(id)arg3 error:(out id *)arg4;
 - (void)presentableDidAppearAsBanner:(id)arg1;
 - (void)presentableDidDisappearAsBanner:(id)arg1 withReason:(id)arg2;
-- (BOOL)revokeAllPresentablesWithReason:(id)arg1 userInfo:(id)arg2 error:(out id *)arg3;
-- (BOOL)revokePresentableWithRequestIdentifier:(id)arg1 animated:(BOOL)arg2 reason:(id)arg3 userInfo:(id)arg4 error:(out id *)arg5;
+- (id)revokeAllPresentablesWithReason:(id)arg1 userInfo:(id)arg2 error:(out id *)arg3;
+- (id)revokePresentableWithIdentification:(id)arg1 reason:(id)arg2 animated:(BOOL)arg3 userInfo:(id)arg4 error:(out id *)arg5;
+- (id)revokePresentableWithRequestIdentifier:(id)arg1 reason:(id)arg2 animated:(BOOL)arg3 userInfo:(id)arg4 error:(out id *)arg5;
 - (BOOL)setSuspended:(BOOL)arg1 forReason:(id)arg2 revokingCurrent:(BOOL)arg3 error:(out id *)arg4;
 
 @end

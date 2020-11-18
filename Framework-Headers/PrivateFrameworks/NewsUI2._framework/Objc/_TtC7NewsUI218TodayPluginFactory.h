@@ -10,13 +10,10 @@
 
 @interface _TtC7NewsUI218TodayPluginFactory : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *articleViewerObserver;
     MISSING_TYPE *resolver;
     MISSING_TYPE *tracker;
     MISSING_TYPE *blueprintProvider;
-    MISSING_TYPE *paidBundleConfigManager;
-    MISSING_TYPE *subscriptionService;
-    MISSING_TYPE *readingHistory;
-    MISSING_TYPE *readingList;
     MISSING_TYPE *articleRouteFactory;
 }
 

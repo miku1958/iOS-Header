@@ -53,6 +53,7 @@
 @property (readonly, nonatomic) long long _indexingHash; // @synthesize _indexingHash;
 @property (readonly, nonatomic) long long _intentCategory;
 @property (readonly, nonatomic, getter=_intents_isExemptFromMulitWindowRequirementForInAppHandling) BOOL _intents_exemptFromMulitWindowRequirementForInAppHandling;
+@property (readonly, nonatomic) CDStruct_8caa76fc _intents_preferredScaledImageSize;
 @property (readonly) long long _intents_toggleState;
 @property (strong, nonatomic, setter=_setIsOwnedByCurrentUser:) NSNumber *_isOwnedByCurrentUser;
 @property (readonly) INImage *_keyImage;

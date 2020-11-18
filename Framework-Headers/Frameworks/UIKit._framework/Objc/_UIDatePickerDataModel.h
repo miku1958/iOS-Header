@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_setupDerivedLocaleAndCalendars;
+- (id)createDatePickerRepresentingDataModel;
 - (id)init;
 - (void)resetForCurrentLocaleOrCalendarChange;
 

@@ -10,6 +10,7 @@
 
 @class NSMutableArray, NSString, _MRContentItemProtobuf, _MRNowPlayingPlayerPathProtobuf, _MRPlaybackSessionRequestProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRPlaybackSessionMigrateRequestProtobuf : PBCodable <NSCopying>
 {
     double _playbackPosition;
@@ -31,45 +32,12 @@
     } _has;
 }
 
-@property (strong, nonatomic) _MRContentItemProtobuf *contentItem; // @synthesize contentItem=_contentItem;
-@property (nonatomic) int endpointOptions; // @synthesize endpointOptions=_endpointOptions;
-@property (strong, nonatomic) NSMutableArray *events; // @synthesize events=_events;
-@property (readonly, nonatomic) BOOL hasContentItem;
-@property (nonatomic) BOOL hasEndpointOptions;
-@property (nonatomic) BOOL hasPlaybackPosition;
-@property (nonatomic) BOOL hasPlaybackRate;
-@property (readonly, nonatomic) BOOL hasPlaybackSessionRequest;
-@property (nonatomic) BOOL hasPlaybackState;
-@property (nonatomic) BOOL hasPlayerOptions;
-@property (readonly, nonatomic) BOOL hasPlayerPath;
-@property (readonly, nonatomic) BOOL hasRequestID;
-@property (nonatomic) double playbackPosition; // @synthesize playbackPosition=_playbackPosition;
-@property (nonatomic) double playbackRate; // @synthesize playbackRate=_playbackRate;
-@property (strong, nonatomic) _MRPlaybackSessionRequestProtobuf *playbackSessionRequest; // @synthesize playbackSessionRequest=_playbackSessionRequest;
-@property (nonatomic) int playbackState; // @synthesize playbackState=_playbackState;
-@property (nonatomic) int playerOptions; // @synthesize playerOptions=_playerOptions;
-@property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
-@property (strong, nonatomic) NSString *requestID; // @synthesize requestID=_requestID;
-
-+ (Class)eventsType;
 - (void).cxx_destruct;
-- (int)StringAsEndpointOptions:(id)arg1;
-- (int)StringAsPlaybackState:(id)arg1;
-- (int)StringAsPlayerOptions:(id)arg1;
-- (void)addEvents:(id)arg1;
-- (void)clearEvents;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (id)endpointOptionsAsString:(int)arg1;
-- (id)eventsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)eventsCount;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
-- (id)playbackStateAsString:(int)arg1;
-- (id)playerOptionsAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

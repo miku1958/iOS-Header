@@ -8,7 +8,7 @@
 
 #import <AppleMediaServicesUI/AMSUIWebPagePresenter-Protocol.h>
 
-@class AMSUIWebAppearance, AMSUIWebBrowserPageModel, AMSUIWebClientContext, AMSUIWebView, NSString, NSURL;
+@class AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebPageModel, AMSUIWebView, NSString, NSURL;
 @protocol AMSUIWebPageViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     NSURL *_URL;
     AMSUIWebAppearance *_appearance;
     AMSUIWebClientContext *_context;
-    AMSUIWebBrowserPageModel *_model;
+    AMSUIWebPageModel *_model;
     struct CGSize _contentSize;
 }
 
@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<AMSUIWebPageViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) AMSUIWebBrowserPageModel *model; // @synthesize model=_model;
+@property (strong, nonatomic) AMSUIWebPageModel *model; // @synthesize model=_model;
 @property (nonatomic) BOOL replacing; // @synthesize replacing=_replacing;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) AMSUIWebView *webView; // @synthesize webView=_webView;

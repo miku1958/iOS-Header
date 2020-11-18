@@ -181,6 +181,7 @@
 - (BOOL)_shouldDNDDelayDeliveryOfNotificationRequest:(id)arg1;
 - (BOOL)_shouldFilterNotificationRequest:(id)arg1;
 - (BOOL)_shouldPadBottomSpacing;
+- (BOOL)_shouldPadBottomSpacingIsDragging:(BOOL)arg1;
 - (BOOL)_shouldScreenTimeSuppressNotificationsForBundleIdentifier:(id)arg1;
 - (void)_startScreenOnTimer;
 - (double)_statusBarHeight;

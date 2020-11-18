@@ -6,18 +6,14 @@
 
 #import <MediaRemote/MRAVRoutingDiscoverySession.h>
 
-#import <MediaRemote/IDSServiceDelegate-Protocol.h>
 #import <MediaRemote/MRProtocolClientConnectionDelegate-Protocol.h>
 
-@class CURunLoopThread, IDSService, MRConcreteEndpoint, MRProtocolClientConnection, MSVTimer, NSArray, NSDate, NSObject, NSRunLoop, NSString;
+@class CURunLoopThread, MRConcreteEndpoint, MRProtocolClientConnection, NSArray, NSObject, NSRunLoop, NSString;
 @protocol OS_dispatch_queue;
 
-@interface MRIDSDiscoverySession : MRAVRoutingDiscoverySession <IDSServiceDelegate, MRProtocolClientConnectionDelegate>
+@interface MRIDSDiscoverySession : MRAVRoutingDiscoverySession <MRProtocolClientConnectionDelegate>
 {
-    IDSService *_service;
     MRProtocolClientConnection *_discoveryChannel;
-    NSDate *_discoveryChannelConnectionAttemptDate;
-    MSVTimer *_discoveryChannelConnectionTimer;
     NSArray *_availableExternalAudioOutputDevices;
     NSArray *_availableExternalOutputDevices;
     NSArray *_availableExternalEndpoints;

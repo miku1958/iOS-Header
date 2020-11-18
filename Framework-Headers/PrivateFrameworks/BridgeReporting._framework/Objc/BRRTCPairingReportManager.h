@@ -56,7 +56,6 @@
 - (void)flagForAutomation;
 - (id)initWithPairingBeginsType:(unsigned long long)arg1;
 - (void)initializeEndToEndMetric;
-- (BOOL)metricKeyIsBlacklisted:(id)arg1;
 - (void)setupPairingMetric:(unsigned long long)arg1;
 - (void)submitAnyPendingMetrics;
 - (id)trimPrecision:(id)arg1;

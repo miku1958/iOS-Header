@@ -95,6 +95,7 @@
 - (id)_autoRedEyeFilterWithFeatures:(id)arg1 imageProperties:(id)arg2 context:(id)arg3 options:(id)arg4;
 - (id)_dictForFeature:(id)arg1 invOrientationTransform:(struct CGAffineTransform)arg2 extent:(struct CGRect)arg3;
 - (id)_imageByApplyingBlur:(double)arg1;
+- (id)_imageByApplyingColorMatrixRed:green:blue:bias: /* Error: Ran out of types for this method. */;
 - (id)_imageByApplyingGamma:(double)arg1;
 - (id)_imageByClampingAlpha;
 - (id)_imageByMatchingColorSpaceToWorkingSpace:(struct CGColorSpace *)arg1;

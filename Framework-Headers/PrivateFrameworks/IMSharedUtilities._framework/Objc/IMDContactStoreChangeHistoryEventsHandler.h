@@ -24,11 +24,14 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)addAliasToCNIDToAliasMap:(id)arg1 withCNID:(id)arg2;
 - (id)generateCNIDToAliasesMapFrom:(id)arg1;
 - (id)getAliasToCNIDMap;
+- (id)getCNIDToAliasesMap;
 - (void)handleAddOrUpdateEventForCNContact:(id)arg1;
 - (id)initWithAliasToCNIDMap:(id)arg1;
 - (id)matchAliasesFromCacheForCNContact:(id)arg1;
+- (void)removeAliasFromCNIDToAliasesMap:(id)arg1 withCNID:(id)arg2;
 - (void)visitAddContactEvent:(id)arg1;
 - (void)visitDeleteContactEvent:(id)arg1;
 - (void)visitDropEverythingEvent:(id)arg1;

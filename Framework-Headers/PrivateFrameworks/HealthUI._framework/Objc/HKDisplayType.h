@@ -192,7 +192,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)listIconOverride;
 - (unsigned long long)presentationOptionsForTimeScope:(long long)arg1;
-- (id)unitDisplayNameKeyOverrideForUnit:(id)arg1;
+- (id)unitDisplayNameKeyOverrideForUnit:(id)arg1 nameContext:(long long)arg2;
 - (id)unitNameForValue:(id)arg1 unitPreferenceController:(id)arg2;
 
 @end

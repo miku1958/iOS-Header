@@ -10,5 +10,7 @@
 {
 }
 
+- (void)acceptVisitor:(id)arg1;
+
 @end
 

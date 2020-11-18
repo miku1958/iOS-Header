@@ -143,6 +143,7 @@
 - (void)issueDefrag:(id)arg1 group:(id)arg2;
 - (void)issueDumpForward:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)issueDumpReverse:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)issueDuplicateOidCheck:(id)arg1;
 - (void)issueRepair:(id)arg1;
 - (void)issueSplit:(id)arg1;
 - (double)lastUpdateTime;
@@ -165,7 +166,7 @@
 - (void)recordEngagementForBundleID:(id)arg1 uniqueIdentifier:(id)arg2 protectionClass:(id)arg3 userQuery:(id)arg4 date:(id)arg5;
 - (void)reindexAllItemsWithIndexers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resume;
-- (void)revokeExpiredItems:(id)arg1;
+- (void)revokeExpiredItems:(id)arg1 protected:(BOOL)arg2;
 - (void)runMigration;
 - (id)searchServiceName;
 - (void)setServiceName:(id)arg1;

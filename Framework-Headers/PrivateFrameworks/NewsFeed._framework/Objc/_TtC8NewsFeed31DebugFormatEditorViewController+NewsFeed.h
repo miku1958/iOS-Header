@@ -11,6 +11,7 @@
 - (void)doDismiss;
 - (void)doLightDarkModeWithSender:(id)arg1;
 - (void)doOptionsWithSender:(id)arg1;
+- (void)doReload;
 - (void)doToggleSidebar;
 - (void)resetZoom;
 - (void)scrollViewDidEndZooming:(id)arg1 withView:(id)arg2 atScale:(double)arg3;

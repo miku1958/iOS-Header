@@ -15,7 +15,10 @@
     struct UIEdgeInsets _paddingOutsideRing;
     UIColor *_color;
     UIView *_ringView;
+    BOOL _animatingUnreveal;
 }
+
+@property (nonatomic, getter=isAnimatingUnreveal) BOOL animatingUnreveal; // @synthesize animatingUnreveal=_animatingUnreveal;
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1 paddingOutsideRing:(struct UIEdgeInsets)arg2 useLightStyle:(BOOL)arg3;

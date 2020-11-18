@@ -7,7 +7,7 @@
 #import <IMDaemonCore/IMDCKAbstractSyncController.h>
 
 @class CKRecord, CKServerChangeToken, IMDCKChatSyncCKOperationFactory, IMDChatRegistry, IMDRecordZoneManager, NSObject;
-@protocol IMDCKSyncTokenStore, OS_dispatch_queue;
+@protocol IMDCKSyncTokenStore, OS_dispatch_queue, OS_xpc_object;
 
 @interface IMDCKChatSyncController : IMDCKAbstractSyncController
 {
@@ -21,9 +21,11 @@
     CKRecord *_lockRecord;
     CKRecord *_manateeLockRecord;
     CKRecord *_stingRayLockRecord;
+    NSObject<OS_xpc_object> *_activity;
 }
 
 @property (strong, nonatomic) IMDCKChatSyncCKOperationFactory *CKOperationFactory; // @synthesize CKOperationFactory=_CKOperationFactory;
+@property NSObject<OS_xpc_object> *activity; // @synthesize activity=_activity;
 @property (strong, nonatomic) IMDChatRegistry *chatRegistry; // @synthesize chatRegistry=_chatRegistry;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *ckQueue; // @synthesize ckQueue=_ckQueue;
 @property (nonatomic) BOOL fetchedChatsDuringLastSync; // @synthesize fetchedChatsDuringLastSync=_fetchedChatsDuringLastSync;
@@ -84,8 +86,7 @@
 - (id)initWithSyncTokenStore:(id)arg1;
 - (id)lockRecordForStingRay:(BOOL)arg1;
 - (void)setLockRecord:(id)arg1 isUsingStingRay:(BOOL)arg2;
-- (void)syncChatsWithCloudKit:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)syncChatsWithCloudKitWithCompletion:(CDUnknownBlockType)arg1;
+- (void)syncChatsWithType:(long long)arg1 withActivity:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (long long)syncControllerRecordType;
 - (void)syncPendingDeletionWithCompletion:(CDUnknownBlockType)arg1;
 

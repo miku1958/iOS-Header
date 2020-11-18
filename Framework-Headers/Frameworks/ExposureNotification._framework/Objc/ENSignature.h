@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <ExposureNotification/CUXPCCodable-Protocol.h>
+
 @class NSData, NSString;
 
-@interface ENSignature : NSObject
+@interface ENSignature : NSObject <CUXPCCodable>
 {
     unsigned int _batchNumber;
     unsigned int _batchCount;
@@ -32,8 +34,11 @@
 - (void).cxx_destruct;
 - (BOOL)_encodeInfoWithProtobufCoder:(id)arg1 error:(id *)arg2;
 - (BOOL)_readSignatureInfoPtr:(const char *)arg1 length:(unsigned long long)arg2 error:(id *)arg3;
+- (id)description;
 - (BOOL)encodeWithProtobufCoder:(id)arg1 error:(id *)arg2;
+- (void)encodeWithXPCObject:(id)arg1;
 - (id)initWithBytes:(const char *)arg1 length:(unsigned long long)arg2 error:(id *)arg3;
+- (id)initWithXPCObject:(id)arg1 error:(id *)arg2;
 
 @end
 

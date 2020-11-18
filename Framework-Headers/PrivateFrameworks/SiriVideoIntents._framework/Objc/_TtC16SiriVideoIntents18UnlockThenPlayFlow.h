@@ -10,8 +10,10 @@
 
 @interface _TtC16SiriVideoIntents18UnlockThenPlayFlow : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *namespace;
     MISSING_TYPE *input;
+    MISSING_TYPE *viewFactory;
+    MISSING_TYPE *deviceState;
+    MISSING_TYPE *videoDialogs;
 }
 
 @end

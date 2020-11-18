@@ -14,7 +14,9 @@
 - (void)launchApp:(ASDApp *)arg1 extensionType:(long long)arg2 withReplyHandler:(void (^)(long long))arg3;
 - (void)launchApp:(ASDApp *)arg1 onPairedDevice:(NSUUID *)arg2 withReplyHandler:(void (^)(long long))arg3;
 - (void)launchApp:(ASDApp *)arg1 withReplyHandler:(void (^)(long long))arg2;
+- (void)lookupBundleIDsForDeletableSystemAppsForWatchWithItemIDs:(NSArray *)arg1 withReplyHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)lookupBundleIDsForDeletableSystemAppsWithItemIDs:(NSArray *)arg1 withReplyHandler:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)lookupItemIDsForDeletableSystemAppsForWatchWithBundleIDs:(NSArray *)arg1 withReplyHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)lookupItemIDsForDeletableSystemAppsWithBundleIDs:(NSArray *)arg1 withReplyHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)pauseApp:(ASDApp *)arg1 withReplyHandler:(void (^)(NSError *))arg2;
 - (void)resumeApp:(ASDApp *)arg1 withReplyHandler:(void (^)(NSError *))arg2;

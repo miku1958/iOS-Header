@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _remoteKeepAliveTimerCount;
     NSArray *_cachedContext;
     BSServiceConnectionEndpointInjector *_endpointGrantInjector;
+    int _prevActiveIdentifier;
     NSXPCConnection *_connection;
     double _iavHeight;
 }
@@ -44,7 +45,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL deactivating; // @synthesize deactivating=_deactivating;
 @property (readonly) BOOL hasHostedPids;
 @property (readonly) double iavHeight; // @synthesize iavHeight=_iavHeight;
+@property (readonly) BOOL isKeyboardOnScreen;
 @property (readonly) double level; // @synthesize level=_level;
+@property int prevActiveIdentifier; // @synthesize prevActiveIdentifier=_prevActiveIdentifier;
 @property (readonly) int processIdentifier;
 @property (readonly, strong) FBSSceneIdentityToken *remoteSceneIdentity; // @synthesize remoteSceneIdentity=_remoteSceneIdentity;
 @property BOOL running; // @synthesize running=_running;
@@ -69,7 +72,6 @@ __attribute__((visibility("hidden")))
 - (void)invalidate;
 - (BOOL)isHandlerShowableWithHandler:(id)arg1;
 - (BOOL)isHostingPID:(int)arg1;
-- (BOOL)isKeyboardOnScreen;
 - (void)notifyHostedPIDsOfSuppression:(BOOL)arg1;
 - (void)notifyIAVHeight:(double)arg1;
 - (void)releaseProcessAssertion;

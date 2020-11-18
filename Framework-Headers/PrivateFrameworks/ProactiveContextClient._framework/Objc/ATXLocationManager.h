@@ -71,6 +71,7 @@
 - (id)initWithStateStore:(id)arg1;
 - (void)invalidateLocationOfInterestCache;
 - (BOOL)isAvailableLocationOfInterestType:(long long)arg1;
+- (BOOL)isLocationNearKnownTypeLocationOfInterest:(id)arg1;
 - (BOOL)isNearFrequentLocationOfInterest;
 - (BOOL)isNearKnownTypeLocationOfInterest;
 - (BOOL)isNearKnownTypeOrFrequentLocationOfInterest;

@@ -11,6 +11,7 @@
 @interface _TtC7NewsAds20AdsModuleStartupTask : _TtCs12_SwiftObject
 {
     MISSING_TYPE *resolver;
+    MISSING_TYPE *environment;
 }
 
 @end

@@ -12,7 +12,6 @@
 @interface _TtC7NewsUI223ForYouMagazineFeedGroup : NSObject
 {
     MISSING_TYPE *group;
-    MISSING_TYPE *config;
     MISSING_TYPE *identifier;
     MISSING_TYPE *headlines;
     MISSING_TYPE *assetHandles;

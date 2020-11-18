@@ -24,6 +24,7 @@
     NSNumber *_speakEmojis;
     NSNumber *_containerFeedback;
     NSNumber *_imageDescriptions;
+    NSNumber *_hints;
     NSString *_voiceIdentifier;
     NSNumber *_speechRate;
     NSNumber *_volume;
@@ -49,6 +50,7 @@
 @property (strong, nonatomic) NSString *brailleTable; // @synthesize brailleTable=_brailleTable;
 @property (nonatomic) BOOL builtIn; // @synthesize builtIn=_builtIn;
 @property (strong, nonatomic) NSNumber *containerFeedback; // @synthesize containerFeedback=_containerFeedback;
+@property (strong, nonatomic) NSNumber *hints; // @synthesize hints=_hints;
 @property (strong, nonatomic) NSNumber *imageDescriptions; // @synthesize imageDescriptions=_imageDescriptions;
 @property (strong, nonatomic) NSNumber *modifierKeys; // @synthesize modifierKeys=_modifierKeys;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;

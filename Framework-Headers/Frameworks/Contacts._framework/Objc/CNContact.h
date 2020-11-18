@@ -321,6 +321,7 @@
 - (id)searchableItemAttributeSetForUserActivity;
 - (id)searchableItemForDragging;
 - (id)searchableItemForIndexing;
+- (id)selfOrMutableCopy;
 - (id)shortDebugDescription;
 - (id)snapshot;
 - (BOOL)updateNewPublicABPerson:(void *)arg1 inAddressBook:(void *)arg2;

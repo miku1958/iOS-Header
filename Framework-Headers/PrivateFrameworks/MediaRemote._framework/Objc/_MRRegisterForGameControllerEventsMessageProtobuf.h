@@ -8,6 +8,7 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface _MRRegisterForGameControllerEventsMessageProtobuf : PBCodable <NSCopying>
 {
     int _inputModeFlags;
@@ -16,18 +17,11 @@
     } _has;
 }
 
-@property (nonatomic) BOOL hasInputModeFlags;
-@property (nonatomic) int inputModeFlags; // @synthesize inputModeFlags=_inputModeFlags;
-
-- (int)StringAsInputModeFlags:(id)arg1;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
-- (id)inputModeFlagsAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

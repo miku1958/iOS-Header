@@ -35,7 +35,9 @@
 + (id)trimAttributedString:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addDataDetectionAttributes:(id)arg1;
+- (void)_appendComponentWithKey:(id)arg1 from:(id)arg2 to:(id)arg3;
 - (id)_parseHTMLBody:(id)arg1 encoding:(unsigned long long)arg2 maxLength:(unsigned long long)arg3 maxImageWidth:(double)arg4 partiallyParsed:(BOOL *)arg5 imageAttachmentsLoaded:(id *)arg6 urlsForValidation:(id)arg7 urlsFound:(id *)arg8;
+- (id)_parsePlainTextBody:(id)arg1 encoding:(unsigned long long)arg2;
 - (BOOL)_validateURLsAndHTMLTagsInParsedString:(id)arg1 urlsFound:(id *)arg2;
 - (void)appendImageWithSource:(id)arg1 width:(double)arg2 height:(double)arg3 stringAttributes:(id)arg4;
 - (void)appendString:(id)arg1 stringAttributes:(id)arg2;
@@ -45,6 +47,7 @@
 - (BOOL)isWebLink:(id)arg1;
 - (id)parseHTMLBody:(id)arg1 encoding:(unsigned long long)arg2 maxLength:(unsigned long long)arg3 maxImageWidth:(double)arg4 partiallyParsed:(BOOL *)arg5 imageAttachmentsLoaded:(id *)arg6 urlsForValidation:(id)arg7;
 - (id)parseHTMLBody:(id)arg1 encoding:(unsigned long long)arg2 maxLength:(unsigned long long)arg3 maxImageWidth:(double)arg4 partiallyParsed:(BOOL *)arg5 imageAttachmentsLoaded:(id *)arg6 urlsFound:(id *)arg7;
+- (id)parseTextBody:(id)arg1;
 
 @end
 

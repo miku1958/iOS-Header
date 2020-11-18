@@ -25,12 +25,10 @@ __attribute__((visibility("hidden")))
 - (id)initWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
 - (int)interactionType;
 - (id)localizedName;
-- (void)mailComposeController:(id)arg1 didFinishWithResult:(long long)arg2 error:(id)arg3;
 - (id)notificationIconBundleIdentifier;
 - (id)notificationTitle;
 - (id)notificationURL;
 - (void)performFromView:(id)arg1;
-- (id)viewController;
 
 @end
 

@@ -9,7 +9,7 @@
 #import <Announce/ANMessage-Protocol.h>
 #import <Announce/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, NSUUID;
+@class NSArray, NSNumber, NSString, NSUUID;
 
 @interface ANLocation : NSObject <ANMessage, NSSecureCoding>
 {
@@ -19,6 +19,7 @@
     NSArray *_userUUIDs;
     NSArray *_deviceIDs;
     unsigned long long _flags;
+    NSNumber *_homeLocationStatus;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,6 +27,7 @@
 @property (strong, nonatomic) NSArray *deviceIDs; // @synthesize deviceIDs=_deviceIDs;
 @property (nonatomic) unsigned long long flags; // @synthesize flags=_flags;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSNumber *homeLocationStatus; // @synthesize homeLocationStatus=_homeLocationStatus;
 @property (copy, nonatomic) NSUUID *homeUUID; // @synthesize homeUUID=_homeUUID;
 @property (strong, nonatomic) NSArray *roomUUIDs; // @synthesize roomUUIDs=_roomUUIDs;
 @property (readonly) Class superclass;

@@ -28,6 +28,7 @@
 - (void)_showFamilyFlow;
 - (void)configureWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
+- (void)handleButtonActions:(id)arg1;
 - (long long)preferredStatusBarStyle;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewWillAppear:(BOOL)arg1;

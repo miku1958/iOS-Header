@@ -6,20 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI2/CLLocationManagerDelegate-Protocol.h>
+@class CLLocation, MISSING_TYPE;
 
-@class MISSING_TYPE;
-
-@interface _TtC7NewsUI224LocationDetectionManager : NSObject <CLLocationManagerDelegate>
+@interface _TtC7NewsUI224LocationDetectionManager : NSObject
 {
     MISSING_TYPE *locationManager;
+    MISSING_TYPE *observableMostFrequentLocation;
 }
 
 @property (nonatomic, readonly) BOOL authorized;
 @property (nonatomic, readonly) BOOL locationServicesEnabled;
+@property (nonatomic, readonly) CLLocation *mostFrequentLocation;
+@property (nonatomic, strong) id observableMostFrequentLocation; // @synthesize observableMostFrequentLocation;
 
 - (void).cxx_destruct;
-- (void)fetchLocationWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 
 @end

@@ -8,12 +8,16 @@
 
 #import <ProactiveEventTracker/PETLoggingOutlet-Protocol.h>
 
-@class NSString;
-@protocol OS_dispatch_queue;
+@class NSDictionary, NSMutableDictionary, NSString;
+@protocol OS_dispatch_queue, OS_os_transaction;
 
 @interface PET2LoggingOutlet : NSObject <PETLoggingOutlet>
 {
     NSObject<OS_dispatch_queue> *_loggingQueue;
+    NSDictionary *_pet1HistogramBuckets;
+    NSMutableDictionary *_addKeys;
+    NSMutableDictionary *_updateKeys;
+    NSObject<OS_os_transaction> *_batchTxn;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,6 +27,8 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_dispatchBatchForKey:(id)arg1 value:(unsigned long long)arg2 isUpdate:(BOOL)arg3;
+- (id)_findBucketsForKey:(id)arg1;
 - (id)init;
 - (void)logDoubleValue:(double)arg1 forEvent:(id)arg2 featureId:(id)arg3 stringifiedProperties:(id)arg4 metaData:(id)arg5;
 - (void)logErrorForEvent:(id)arg1 featureId:(id)arg2 reason:(id)arg3;

@@ -13,7 +13,6 @@
     long long _lastAlertedMessageDate;
     long long _lastAlertedFailedMessageDate;
     UNUserNotificationCenter *_notificationCenter;
-    UNUserNotificationCenter *_notificationCenterCatalyst;
     UNNotificationCategory *_incomingMessageNotificationCategory;
     UNNotificationCategory *_incomingFilesNotificationCategory;
     IMBusinessNameManager *_businessNameManager;
@@ -32,7 +31,6 @@
 @property (strong, nonatomic) CNContact *meContact; // @synthesize meContact=_meContact;
 @property (strong, nonatomic) NSSet *meTokens; // @synthesize meTokens=_meTokens;
 @property (strong, nonatomic) UNUserNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
-@property (strong, nonatomic) UNUserNotificationCenter *notificationCenterCatalyst; // @synthesize notificationCenterCatalyst=_notificationCenterCatalyst;
 @property (strong, nonatomic) id suggestionsService; // @synthesize suggestionsService=_suggestionsService;
 
 + (id)_IMDCoreSpotlightCNContactForAddress:(id)arg1;

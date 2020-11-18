@@ -70,16 +70,18 @@
 - (void).cxx_destruct;
 - (id)_calculateComposedFragments;
 - (double)_composedDuration;
+- (id)_compositionAsset:(BOOL)arg1 error:(id *)arg2;
 - (id)_compositionByReplacingDecomposedFragments:(id)arg1;
 - (id)_eaccess_repairDecomposedFragmentMetadataIfNecessaryAndSave:(BOOL)arg1;
 - (void)_eaccess_saveCompositionAndRecordingDuration:(BOOL)arg1;
+- (BOOL)_enumerateFragmentsForInsertion:(CDUnknownBlockType)arg1;
 - (unsigned long long)_fileSizeOfComposedAssetsIncludingRelatedResources:(BOOL)arg1;
 - (id)_initWithComposedAVURL:(id)arg1 savedRecordingUUID:(id)arg2 creationDate:(id)arg3 title:(id)arg4 musicMemoMetadata:(id)arg5 decomposedFragments:(id)arg6 composedFragments:(id)arg7;
 - (id)_initWithSavedRecording:(id)arg1 decomposedFragments:(id)arg2 composedFragments:(id)arg3;
 - (void)_loadMusicMemoMetadata;
 - (id)_privateModel;
 - (id)composedFragmentsIntersectingTimeRange:(CDStruct_73a5d3ca)arg1;
-- (id)compositionAsset;
+- (id)compositionAssetForExport:(id *)arg1;
 - (id)compositionByAppendingFragment:(id)arg1;
 - (id)compositionByClippingToComposedTimeRange:(CDStruct_73a5d3ca)arg1;
 - (id)compositionByDeletingAndSplittingAtComposedTimeRange:(CDStruct_73a5d3ca)arg1;
@@ -95,7 +97,7 @@
 - (id)initWithDictionaryPListRepresentation:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)newRandomFragmentWithInsertionTimeRangeInComposition:(CDStruct_73a5d3ca)arg1 pathExtension:(id)arg2;
-- (id)playableAsset;
+- (id)playableAsset:(id *)arg1;
 - (void)rcs_composeToFinalDestinationAndDeleteDecomposedFragments:(BOOL)arg1 composeWaveform:(BOOL)arg2 canGenerateWaveformByProcessingAVURL:(BOOL)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (id)rcs_repairDecomposedFragmentMetadataIfNecessary;
 - (void)recacheComposedDuration;

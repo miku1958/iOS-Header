@@ -18,6 +18,7 @@
 @property (readonly, nonatomic, getter=isAssociatedWithFragmentMinder) BOOL associatedWithFragmentMinder;
 @property (readonly, nonatomic) NSArray *tracks;
 
++ (BOOL)expectsPropertyRevisedNotifications;
 + (id)fragmentedAssetWithURL:(id)arg1 options:(id)arg2;
 - (Class)_classForAssetTracks;
 - (BOOL)_mindsFragments;

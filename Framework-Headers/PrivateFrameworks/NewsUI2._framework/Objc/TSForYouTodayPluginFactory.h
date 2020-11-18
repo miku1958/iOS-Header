@@ -17,6 +17,8 @@
     MISSING_TYPE *layoutOptionsProvider;
     MISSING_TYPE *paidBundleConfigManager;
     MISSING_TYPE *webEmbedViewControllerReuseManager;
+    MISSING_TYPE *cloudContext;
+    MISSING_TYPE *appConfigManager;
 }
 
 - (void).cxx_destruct;

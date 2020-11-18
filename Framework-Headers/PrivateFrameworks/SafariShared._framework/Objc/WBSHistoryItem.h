@@ -73,6 +73,7 @@
 - (void)removeVisitsOnSynchronizationQueue:(id)arg1 candidateLastVisit:(id)arg2;
 - (void)scoreOfVisit:(id)arg1 wasUpdatedFrom:(unsigned long long)arg2 to:(unsigned long long)arg3;
 - (void)updateLastVisitIfNil:(id)arg1;
+- (void)updateWithServiceItem:(id)arg1;
 - (void)updateWithStreamedItem:(const struct _HistoryStreamedItem *)arg1;
 - (void)visitWasModified:(id)arg1;
 - (void)wasRedirectedFrom:(id)arg1 to:(id)arg2;

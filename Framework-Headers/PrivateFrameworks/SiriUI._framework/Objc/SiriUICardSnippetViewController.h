@@ -31,6 +31,7 @@
     NSTimer *_cardLoadingTimer;
     BOOL _isCardLoading;
     long long _sizeClass;
+    NSString *_feedbackEngagementInstrumentationIdentifier;
     SiriUIModalContainerViewController *_presentedModalContainerViewController;
     UIViewController<CRKCardViewControlling> *_cardViewController;
     CRKCardPresentation *_cardPresentation;
@@ -60,6 +61,7 @@
 - (id)_metricsContextOfEventsForCard:(id)arg1;
 - (id)_metricsContextOfEventsForCardSection:(id)arg1 inCard:(id)arg2;
 - (void)_navigationButtonTapped:(id)arg1;
+- (void)_populateCommand:(id)arg1 withInstrumentationTurn:(id)arg2;
 - (void)_removeBottomKeylineFromCard:(id)arg1;
 - (void)_removeCardViewControllerFromParentViewController:(id)arg1;
 - (void)_updateContentSizeAndNotifyDelegateIfNecessary:(BOOL)arg1;
@@ -69,6 +71,7 @@
 - (BOOL)cardLoader:(id)arg1 loadCard:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)cardLoader:(id)arg1 shouldLoadCard:(id)arg2;
 - (void)cardLoadingMonitor:(id)arg1 didReceiveCardSnippet:(id)arg2;
+- (void)cardSectionView:(id)arg1 willProcessEngagementFeedback:(id)arg2;
 - (void)cardSectionViewDidAppearForCardSection:(id)arg1 withAppearanceFeedback:(id)arg2;
 - (void)cardSectionViewDidDisappearForCardSection:(id)arg1 withDisappearanceFeedback:(id)arg2;
 - (void)cardSectionViewWillAppearForCardSection:(id)arg1 withAppearanceFeedback:(id)arg2;

@@ -41,7 +41,7 @@
 @property (readonly, nonatomic) BOOL isReadOnly; // @synthesize isReadOnly=_isReadOnly;
 @property (readonly, nonatomic) double preferredIconScale; // @synthesize preferredIconScale=_preferredIconScale;
 @property (readonly, nonatomic) struct CGSize preferredIconSize; // @synthesize preferredIconSize=_preferredIconSize;
-@property (weak, nonatomic) id<WBSSiteMetadataProviderDelegate> providerDelegate; // @synthesize providerDelegate=_providerDelegate;
+@property (weak) id<WBSSiteMetadataProviderDelegate> providerDelegate; // @synthesize providerDelegate=_providerDelegate;
 @property (readonly, nonatomic) BOOL providesFavicons;
 @property (readonly) Class superclass;
 

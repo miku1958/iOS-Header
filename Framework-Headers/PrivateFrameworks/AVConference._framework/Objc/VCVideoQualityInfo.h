@@ -11,23 +11,17 @@ __attribute__((visibility("hidden")))
 {
     BOOL _videoIsExpected;
     BOOL _isVideoQualityDegraded;
-    double _lastGoodVideoQualityTime;
-    double _lastBadVideoQualityTime;
-    double _lastVideoQualityDegradedSwitchTime;
     double _firstDegradedMeasure;
     double _videoDegradedThreshold;
-    double _videoImprovedThreshold;
-    double _videoMinFrameRate;
-    BOOL _shouldUseExitHysteresis;
+    unsigned long long _idsParticipantID;
 }
 
 @property (readonly, nonatomic) BOOL isVideoQualityDegraded; // @synthesize isVideoQualityDegraded=_isVideoQualityDegraded;
 @property (nonatomic) BOOL videoIsExpected; // @synthesize videoIsExpected=_videoIsExpected;
 
 - (void)dealloc;
-- (id)init;
-- (void)resetLastGoodVideoQualityTime:(double)arg1;
-- (BOOL)updateWithCurrentFramerate:(double)arg1 bitrate:(double)arg2 time:(double)arg3;
+- (id)initWithParticipantID:(unsigned long long)arg1;
+- (BOOL)updateWithLastDecodedFrameTime:(double)arg1 time:(double)arg2;
 
 @end
 

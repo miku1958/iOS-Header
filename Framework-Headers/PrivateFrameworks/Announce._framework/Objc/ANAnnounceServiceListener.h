@@ -26,11 +26,13 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_handleError:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handleError:(long long)arg1 requestSentCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)_handleError:(long long)arg1 sentCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)_sendReplyRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_sendRequestWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_sendRequestWithNames:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_translateSentHandlerResponseAnnouncement:(id)arg1 error:(id)arg2 toRequestSentHandler:(CDUnknownBlockType)arg3;
 - (void)announcementForID:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)broadcastReply:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)broadcastReply:(id)arg1 forAnnouncement:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)broadcastReply:(id)arg1 forAnnouncementID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)contextFromAnnouncement:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)failedToDeliverAnnouncement:(id)arg1 error:(id)arg2;
 - (void)getReceivedAnnouncementsWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -38,6 +40,8 @@
 - (void)getUnplayedAnnouncementsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)homeNamesForContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)init;
+- (void)isAnnounceEnabledForAnyAccessoryInHome:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)isAnnounceEnabledForAnyAccessoryOrUserInHome:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)isLocalDeviceInRoom:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)lastPlayedAnnouncementInfo:(CDUnknownBlockType)arg1;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
@@ -46,13 +50,8 @@
 - (void)prewarm:(CDUnknownBlockType)arg1;
 - (void)receivedAnnouncement:(id)arg1;
 - (void)receivedAnnouncementIDs:(CDUnknownBlockType)arg1;
-- (void)sendAnnouncement:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)sendAnnouncement:(id)arg1 toHomeWithID:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)sendAnnouncement:(id)arg1 toHomeWithName:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)sendAnnouncement:(id)arg1 toRoomsWithIDs:(id)arg2 andZonesWithIDs:(id)arg3 inHomeWithID:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)sendAnnouncement:(id)arg1 toRoomsWithNames:(id)arg2 andZonesWithNames:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)sendAnnouncement:(id)arg1 toRoomsWithNames:(id)arg2 andZonesWithNames:(id)arg3 inHomeWithName:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)sendReply:(id)arg1 forAnnouncement:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)sendRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)sendRequestLegacy:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

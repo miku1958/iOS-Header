@@ -4,12 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NewsCore/FCEndpointConnection.h>
+#import <objc/NSObject.h>
 
-@interface FCAnalyticsEndpointConnection : FCEndpointConnection
+@class FCAsyncSerialQueue, FCEndpointConnection;
+
+@interface FCAnalyticsEndpointConnection : NSObject
 {
+    FCEndpointConnection *_endpointConnection;
+    FCAsyncSerialQueue *_serialQueue;
 }
 
+@property (strong, nonatomic) FCEndpointConnection *endpointConnection; // @synthesize endpointConnection=_endpointConnection;
+@property (strong, nonatomic) FCAsyncSerialQueue *serialQueue; // @synthesize serialQueue=_serialQueue;
+
+- (void).cxx_destruct;
+- (id)initWithEndpointConnection:(id)arg1;
+- (id)initWithSourceApplicationBundleIdentifier:(id)arg1;
 - (void)uploadEnvelopeBatch:(id)arg1 withURL:(id)arg2 valuesByHTTPHeaderField:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)uploadEnvelopeBatch:(id)arg1 withURL:(id)arg2 valuesByHTTPHeaderField:(id)arg3 priority:(float)arg4 callbackQueue:(id)arg5 completion:(CDUnknownBlockType)arg6;
 

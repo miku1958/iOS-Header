@@ -11,7 +11,7 @@
 }
 
 + (id)_ANAudioEffectToName:(unsigned long long)arg1;
-+ (id)_createEngine:(unsigned long long)arg1 player:(id)arg2 sourceFile:(id)arg3 error:(id *)arg4;
++ (BOOL)_configureEngine:(id)arg1 player:(id)arg2 effect:(id)arg3 sourceFile:(id)arg4 error:(id *)arg5;
 + (struct AudioComponentDescription)_lookupComponent:(unsigned long long)arg1;
 + (id)_lookupTunings:(unsigned long long)arg1;
 + (void)_renderAudioTo:(id)arg1 length:(long long)arg2 engine:(id)arg3 error:(id *)arg4;

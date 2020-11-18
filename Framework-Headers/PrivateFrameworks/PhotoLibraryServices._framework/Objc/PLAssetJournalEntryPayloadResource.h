@@ -32,6 +32,7 @@
 - (BOOL)isAdjusted;
 - (BOOL)isOriginalResource;
 - (BOOL)isReferenceResource;
+- (BOOL)isValidForRebuild;
 - (short)trashedState;
 - (void)updateStoredResource:(id)arg1;
 - (id)validatedExternalResourceWithAsset:(id)arg1 isCPLEnabled:(BOOL)arg2;

@@ -10,7 +10,7 @@
 #import <MapsSupport/MSPSharedTripXPCClient-Protocol.h>
 #import <MapsSupport/MSPSharedTripXPCServer-Protocol.h>
 
-@class GEOObserverHashTable, MSPMapsPaths, MSPSharedTripContactController, MSPSharedTripSharingIdentity, NSArray, NSDate, NSMutableArray, NSString, NSXPCConnection;
+@class GEOObserverHashTable, MSPMapsPaths, MSPSharedTripContactController, MSPSharedTripSharingIdentity, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSString, NSXPCConnection;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface MSPSharedTripService : NSObject <MSPSharedTripXPCServer, MSPSharedTripXPCClient, MSPSharedTripContactControllerDelegate>
@@ -24,6 +24,7 @@
     GEOObserverHashTable *_sendingObservers;
     NSMutableArray *_receivedTrips;
     MSPSharedTripContactController *_sharingContactController;
+    NSMutableDictionary *_subscriptionTokensByTripID;
     struct os_unfair_lock_s _sharingIdentityLock;
     unsigned long long _permissions;
     MSPSharedTripSharingIdentity *_sharingIdentity;
@@ -46,6 +47,7 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)_addSubscriptionTokenForTripID:(id)arg1;
 - (void)_blockSharedTrip:(id)arg1;
 - (void)_checkEnabledState;
 - (void)_checkin;
@@ -55,11 +57,12 @@
 - (void)_fetchSharedTripsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_fetchSharingIdentityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_handleCheckinWithSharingIdentity:(id)arg1 activeRecipients:(id)arg2 receivedTrips:(id)arg3 permissions:(unsigned long long)arg4;
-- (void)_insertOrUpdateTrip:(id)arg1;
+- (id)_insertOrUpdateTrip:(id)arg1;
 - (BOOL)_isMapsInstalled;
 - (void)_openConnectionIfNeeded;
 - (void)_performBlockAfterInitialSync:(CDUnknownBlockType)arg1;
 - (void)_performBlockWhenCheckinCompleted:(CDUnknownBlockType)arg1;
+- (void)_purgeToken:(id)arg1 forTripID:(id)arg2;
 - (id)_remoteObjectProxy;
 - (id)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)_reportUserConfirmationOfSharingIdentity:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -75,7 +78,7 @@
 - (void)_stopSharingTripWithMessagesGroup:(id)arg1;
 - (void)_stopSharingWithContact:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_subscribeToSharedTripUpdatesWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_unsubscribeFromSharedTripUpdatesWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_subscriptionTokensForTripID:(id)arg1 createIfNeeded:(BOOL)arg2;
 - (void)_validateCurrentConfigurationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)addReceivingObserver:(id)arg1;
 - (void)addSendingObserver:(id)arg1;
@@ -94,6 +97,7 @@
 - (id)init;
 - (BOOL)isSharingWithContact:(id)arg1;
 - (void)performBlockAfterInitialSync:(CDUnknownBlockType)arg1;
+- (void)purgeToken:(id)arg1 forTripID:(id)arg2;
 - (void)refreshReceivedTripsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)refreshSharingIdentityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeReceivingObserver:(id)arg1;

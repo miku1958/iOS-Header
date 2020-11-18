@@ -27,6 +27,7 @@
 @property (nonatomic) BOOL incomingCallsTTY;
 @property (nonatomic) long long incomingTTYCallCount;
 @property (nonatomic) BOOL internalOverrideTTYAvailability;
+@property (nonatomic) BOOL isRelayCallingEnabled;
 @property (nonatomic) double lastCallCountReset;
 @property (nonatomic) double lastDBVacuum;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *nanoSynchronizeQueue; // @synthesize nanoSynchronizeQueue=_nanoSynchronizeQueue;
@@ -35,6 +36,7 @@
 @property (strong, nonatomic) NSMutableSet *registeredNotifications; // @synthesize registeredNotifications=_registeredNotifications;
 @property (nonatomic) BOOL rttInlineAbbreviationBarEnabled;
 @property (nonatomic) BOOL rttNotificationsEnabled;
+@property (nonatomic) BOOL supportsRelayCalling;
 @property (strong, nonatomic) NSMutableSet *synchronizePreferences; // @synthesize synchronizePreferences=_synchronizePreferences;
 @property (nonatomic) BOOL ttyShouldBeRealtime;
 @property (strong, nonatomic) NSMutableDictionary *updateBlocks; // @synthesize updateBlocks=_updateBlocks;

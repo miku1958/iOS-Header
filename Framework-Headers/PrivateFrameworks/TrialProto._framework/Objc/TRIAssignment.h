@@ -6,7 +6,7 @@
 
 #import <TrialProto/TRIPBMessage.h>
 
-@class TRICoreMLAssignmentLanguage, TRINSExpressionAssignmentLanguage, TRIPlanOutAssignmentLanguage, TRIUIAssignmentLanguage;
+@class TRICoreMLAssignmentLanguage, TRINSExpressionAssignmentLanguage, TRIPlanOutAssignmentLanguage, TRIRolloutAssignmentLanguage, TRIUIAssignmentLanguage;
 
 @interface TRIAssignment : TRIPBMessage
 {
@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) int languageOneOfCase; // @dynamic languageOneOfCase;
 @property (strong, nonatomic) TRINSExpressionAssignmentLanguage *nsexpressionLanguage; // @dynamic nsexpressionLanguage;
 @property (strong, nonatomic) TRIPlanOutAssignmentLanguage *planoutLanguage; // @dynamic planoutLanguage;
+@property (strong, nonatomic) TRIRolloutAssignmentLanguage *rolloutLanguage; // @dynamic rolloutLanguage;
 @property (strong, nonatomic) TRIUIAssignmentLanguage *uiLanguage; // @dynamic uiLanguage;
 
 + (id)descriptor;

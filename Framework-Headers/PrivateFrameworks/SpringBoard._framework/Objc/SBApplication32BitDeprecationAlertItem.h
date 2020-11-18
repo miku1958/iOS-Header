@@ -20,7 +20,9 @@
 - (id)_title;
 - (void)configure:(BOOL)arg1 requirePasscodeForActions:(BOOL)arg2;
 - (BOOL)dismissOnLock;
+- (BOOL)forcesModalAlertAppearance;
 - (id)initWithApplication:(id)arg1;
+- (BOOL)shouldShowInLockScreen;
 
 @end
 

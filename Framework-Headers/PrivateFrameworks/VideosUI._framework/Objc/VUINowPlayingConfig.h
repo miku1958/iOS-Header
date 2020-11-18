@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     BOOL _showsLozengeForLivePlayback;
     BOOL _showsStillWatchingAlert;
     BOOL _allowQOSReportingForiTunesLibraryPlayback;
+    BOOL _convertMainContentRelativeStartTimeOfZeroToAbsoluteStartTimeOfZero;
     double _stillWatchingAlertDuration;
     double _alertIdleTimeout;
     NSArray *_mediaTypesExcludedFromReporting;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) double alertIdleTimeout; // @synthesize alertIdleTimeout=_alertIdleTimeout;
 @property (nonatomic) BOOL allowQOSReportingForiTunesLibraryPlayback; // @synthesize allowQOSReportingForiTunesLibraryPlayback=_allowQOSReportingForiTunesLibraryPlayback;
+@property (nonatomic) BOOL convertMainContentRelativeStartTimeOfZeroToAbsoluteStartTimeOfZero; // @synthesize convertMainContentRelativeStartTimeOfZeroToAbsoluteStartTimeOfZero=_convertMainContentRelativeStartTimeOfZeroToAbsoluteStartTimeOfZero;
 @property (copy, nonatomic) NSArray *mediaTypesExcludedFromReporting; // @synthesize mediaTypesExcludedFromReporting=_mediaTypesExcludedFromReporting;
 @property (nonatomic) BOOL showsLozengeForLivePlayback; // @synthesize showsLozengeForLivePlayback=_showsLozengeForLivePlayback;
 @property (nonatomic) BOOL showsStillWatchingAlert; // @synthesize showsStillWatchingAlert=_showsStillWatchingAlert;

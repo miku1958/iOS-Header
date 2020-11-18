@@ -16,7 +16,7 @@
     MISSING_TYPE *articleRecirculationConfigFactory;
     MISSING_TYPE *articleProviderService;
     MISSING_TYPE *historyService;
-    MISSING_TYPE *feedTransformationEndOfArticleFactory;
+    MISSING_TYPE *endOfArticleQuotaSatisfierFactory;
     MISSING_TYPE *personalizationService;
 }
 

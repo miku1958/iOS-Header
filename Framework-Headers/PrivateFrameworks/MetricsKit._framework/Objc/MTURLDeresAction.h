@@ -6,16 +6,19 @@
 
 #import <MetricsKit/MTTreatmentAction.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface MTURLDeresAction : MTTreatmentAction
 {
     NSString *_scope;
+    NSDictionary *_allowedParams;
 }
 
+@property (strong, nonatomic) NSDictionary *allowedParams; // @synthesize allowedParams=_allowedParams;
 @property (strong, nonatomic) NSString *scope; // @synthesize scope=_scope;
 
 - (void).cxx_destruct;
+- (id)allowedQueryItemsFromItems:(id)arg1;
 - (id)initWithField:(id)arg1 configDictionary:(id)arg2;
 - (id)performAction:(id)arg1 context:(id)arg2;
 

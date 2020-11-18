@@ -26,7 +26,6 @@
 @property (strong, nonatomic) AXUIElement *systemAppElement; // @synthesize systemAppElement=_systemAppElement;
 @property (strong, nonatomic) AXUIElement *systemWideElement; // @synthesize systemWideElement=_systemWideElement;
 
-+ (id)_iosParameterFromPlatformParameter:(id)arg1;
 + (id)sharedInstance;
 + (id)translationObjectFromUIKitObject:(id)arg1;
 - (void).cxx_destruct;
@@ -46,6 +45,7 @@
 - (id)_processCustomActionsAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processCustomRotorData:(id)arg1;
 - (id)_processDirectAttributeRequest:(id)arg1 iosAttribute:(long long)arg2 axpAttribute:(unsigned long long)arg3 parameter:(id)arg4 error:(unsigned long long *)arg5;
+- (id)_processElementHelpAttributeResquest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processFirstContainedElement:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processFirstElementForFocus:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processFocusedElementAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
@@ -76,6 +76,7 @@
 - (id)_processValueAttributeRequest:(id)arg1 error:(unsigned long long *)arg2 axpAttribute:(unsigned long long)arg3;
 - (id)_processViewControllerDescriptionAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processVisibleOpaqueElements:(id)arg1 error:(unsigned long long *)arg2;
+- (id)_processVisisbleTextRangeAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processingSmuggledMarzipanRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (void)_registerAccessibilityNotifications;
 - (void)_signalAppAXReady;

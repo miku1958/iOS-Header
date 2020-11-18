@@ -20,6 +20,7 @@
     BOOL _locallyAvailable;
     NSDate *_trashedDate;
     BOOL _trashed;
+    BOOL _inCloud;
     PHPhotoLibrary *_photoLibrary;
     CDUnknownBlockType _privateFileLoader;
     BOOL _current;
@@ -41,6 +42,7 @@
 @property (nonatomic) unsigned long long cplResourceType; // @synthesize cplResourceType=_cplResourceType;
 @property (readonly, nonatomic, getter=isCurrent) BOOL current; // @synthesize current=_current;
 @property (readonly, nonatomic) unsigned long long fileSize;
+@property (readonly, nonatomic, getter=isInCloud) BOOL inCloud;
 @property (readonly, nonatomic) NSString *libraryID; // @synthesize libraryID=_libraryID;
 @property (readonly, nonatomic, getter=isLocallyAvailable) BOOL locallyAvailable;
 @property (nonatomic, getter=isLocallyAvailable) BOOL locallyAvailable; // @synthesize locallyAvailable=_locallyAvailable;

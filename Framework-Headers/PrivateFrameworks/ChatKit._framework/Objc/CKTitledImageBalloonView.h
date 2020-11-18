@@ -6,17 +6,19 @@
 
 #import <ChatKit/CKImageBalloonView.h>
 
-@class NSString, UIImageView, UILabel;
+@class NSString, UIImageView, UILabel, UIVisualEffectView;
 @protocol CKTitledImageBalloonViewDelegate;
 
 @interface CKTitledImageBalloonView : CKImageBalloonView
 {
     UIImageView *_chevron;
     UILabel *_titleLabel;
+    UIVisualEffectView *_effectView;
 }
 
 @property (strong, nonatomic) UIImageView *chevron; // @synthesize chevron=_chevron;
 @property (weak, nonatomic) id<CKTitledImageBalloonViewDelegate> delegate; // @dynamic delegate;
+@property (strong, nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
 @property (copy, nonatomic) NSString *title;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
@@ -26,6 +28,7 @@
 - (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3 hasInvisibleInkEffect:(BOOL)arg4;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)prepareForDisplay;
 - (void)prepareForReuse;
 - (void)setOrientation:(BOOL)arg1;
 - (void)tapGestureRecognized:(id)arg1;

@@ -69,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (void)allowTransferToProcess:(int)arg1 receiverAuditTokenData:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)authMethodWithReply:(CDUnknownBlockType)arg1;
 - (void)bootstrapServiceType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)credentialOfType:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)evaluateACL:(id)arg1 operation:(id)arg2 options:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)evaluateACL:(id)arg1 operation:(id)arg2 options:(id)arg3 uiDelegate:(id)arg4 reply:(CDUnknownBlockType)arg5;

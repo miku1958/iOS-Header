@@ -26,7 +26,6 @@
 + (id)sectionTitle;
 - (id)_activityItemProviderForResult:(id)arg1;
 - (id)_mapItemForResult:(id)arg1;
-- (id)_pasteboardItemsForResult:(id)arg1;
 - (id)additionalMenuElementsForResult:(id)arg1;
 - (BOOL)applyLayoutMarginsToLayoutGroup;
 - (id)cellForSupplementryItemInCollectionView:(id)arg1 atIndexPath:(id)arg2 supplementryViewKind:(id)arg3;
@@ -37,11 +36,13 @@
 - (void)fractionalWidth:(double *)arg1 count:(unsigned long long *)arg2 forLayoutWidth:(unsigned long long)arg3;
 - (BOOL)handleSelectionForResult:(id)arg1;
 - (double)interGroupSpacing;
+- (id)itemProviderForSearchResult:(id)arg1;
 - (id)layoutGroupWithEnvironment:(id)arg1;
 - (id)previewViewControllerForResult:(id)arg1;
 - (id)queryAttributesForText:(id)arg1;
 - (BOOL)shouldStartMenuInteractionForResult:(id)arg1;
 - (void)updateSupplementryViewIfNeeded:(id)arg1 atIndexPath:(id)arg2;
+- (id)urlForQueryResult:(id)arg1;
 
 @end
 

@@ -4,17 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <BannerKit/BNPresentableIdentification.h>
 
-#import <BannerKit/BSXPCSecureCoding-Protocol.h>
+#import <BannerKit/BNPresentableSpecifying-Protocol.h>
 
 @class NSString, NSUUID;
 
-@interface BNBannerSourcePresentableSpecification : NSObject <BSXPCSecureCoding>
+@interface BNBannerSourcePresentableSpecification : BNPresentableIdentification <BNPresentableSpecifying>
 {
-    NSString *_requesterIdentifier;
-    NSString *_requestIdentifier;
-    NSUUID *_uniqueIdentifier;
     long long _presentableType;
     struct CGSize _preferredContentSize;
     struct UIEdgeInsets _contentOutsets;
@@ -26,13 +23,11 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGSize preferredContentSize; // @synthesize preferredContentSize=_preferredContentSize;
 @property (nonatomic) long long presentableType; // @synthesize presentableType=_presentableType;
-@property (copy, nonatomic) NSString *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
-@property (copy, nonatomic) NSString *requesterIdentifier; // @synthesize requesterIdentifier=_requesterIdentifier;
+@property (readonly, copy, nonatomic) NSString *requestIdentifier;
+@property (readonly, copy, nonatomic) NSString *requesterIdentifier;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
-+ (BOOL)supportsBSXPCSecureCoding;
-- (void).cxx_destruct;
 - (void)encodeWithBSXPCCoder:(id)arg1;
 - (id)initWithBSXPCCoder:(id)arg1;
 

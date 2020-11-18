@@ -102,7 +102,7 @@
 - (id)_clientConfiguration;
 - (id)_clientService;
 - (id)_clientServiceWithErrorHandler:(CDUnknownBlockType)arg1;
-- (void)_completeRequestWithUUID:(id)arg1 error:(id)arg2;
+- (void)_completeRequestWithUUID:(id)arg1 forReason:(long long)arg2 error:(id)arg3;
 - (id)_connection;
 - (void)_connectionFailedWithError:(id)arg1;
 - (void)_dispatchCallbackGroupBlock:(CDUnknownBlockType)arg1;

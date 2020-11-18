@@ -19,7 +19,6 @@
 @property (strong, nonatomic) NSDictionary *fieldActions; // @synthesize fieldActions=_fieldActions;
 @property (strong, nonatomic) MTMetricsDataPredicate *predicate; // @synthesize predicate=_predicate;
 
-+ (id)performAction:(id)arg1 data:(id)arg2 keypath:(id)arg3 keyIndex:(long long)arg4 context:(id)arg5;
 + (id)treatmentWithConfigData:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithConfigDictionary:(id)arg1;

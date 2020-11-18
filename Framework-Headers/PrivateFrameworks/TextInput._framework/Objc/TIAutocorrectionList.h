@@ -14,6 +14,7 @@
 {
     BOOL _containsProactiveTriggers;
     BOOL _proactiveSuggestionsEmpty;
+    BOOL _empty;
     TIKeyboardCandidate *_autocorrection;
     NSArray *_predictions;
     NSArray *_emojiList;
@@ -24,6 +25,7 @@
 @property (readonly, nonatomic) NSArray *candidates;
 @property (nonatomic) BOOL containsProactiveTriggers; // @synthesize containsProactiveTriggers=_containsProactiveTriggers;
 @property (readonly, nonatomic) NSArray *emojiList; // @synthesize emojiList=_emojiList;
+@property (nonatomic) BOOL empty; // @synthesize empty=_empty;
 @property (readonly, nonatomic) NSArray *predictions; // @synthesize predictions=_predictions;
 @property (nonatomic) BOOL proactiveSuggestionsEmpty; // @synthesize proactiveSuggestionsEmpty=_proactiveSuggestionsEmpty;
 @property (readonly, nonatomic) NSArray *proactiveTriggers; // @synthesize proactiveTriggers=_proactiveTriggers;

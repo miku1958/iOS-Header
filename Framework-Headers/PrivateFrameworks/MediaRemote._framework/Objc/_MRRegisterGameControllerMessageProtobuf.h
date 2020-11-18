@@ -10,22 +10,18 @@
 
 @class _MRGameControllerPropertiesProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRRegisterGameControllerMessageProtobuf : PBCodable <NSCopying>
 {
     _MRGameControllerPropertiesProtobuf *_properties;
 }
 
-@property (readonly, nonatomic) BOOL hasProperties;
-@property (strong, nonatomic) _MRGameControllerPropertiesProtobuf *properties; // @synthesize properties=_properties;
-
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

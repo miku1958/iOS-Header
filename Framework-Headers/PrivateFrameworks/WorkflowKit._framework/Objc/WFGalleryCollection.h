@@ -18,6 +18,7 @@
     NSString *_name;
     NSString *_collectionDescription;
     NSArray *_workflows;
+    long long _minVersion;
     NSDate *_modifiedAt;
     NSString *_language;
     CKRecordID *_base;
@@ -31,6 +32,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CKRecordID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSString *language; // @synthesize language=_language;
+@property (readonly, nonatomic) long long minVersion; // @synthesize minVersion=_minVersion;
 @property (readonly, nonatomic) NSDate *modifiedAt; // @synthesize modifiedAt=_modifiedAt;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSString *persistentIdentifier; // @synthesize persistentIdentifier=_persistentIdentifier;

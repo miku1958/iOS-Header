@@ -37,6 +37,8 @@
     BOOL _hasGroupLeader;
     BOOL _airPlayActive;
     BOOL _hasAirPlayActive;
+    BOOL _clusterAware;
+    unsigned int _clusterType;
     long long _deviceClass;
     unsigned long long _protocolVersion;
     unsigned long long _groupedDeviceCount;
@@ -63,6 +65,7 @@
     NSString *_linkAgent;
     NSString *_clusterID;
     NSString *_clusterLeaderID;
+    NSString *_modelID;
 }
 
 @property (nonatomic, getter=isAirPlayActive) BOOL airPlayActive; // @synthesize airPlayActive=_airPlayActive;
@@ -71,8 +74,10 @@
 @property (copy, nonatomic) NSString *buildVersion; // @synthesize buildVersion=_buildVersion;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
+@property (nonatomic, getter=isClusterAware) BOOL clusterAware; // @synthesize clusterAware=_clusterAware;
 @property (copy, nonatomic) NSString *clusterID; // @synthesize clusterID=_clusterID;
 @property (copy, nonatomic) NSString *clusterLeaderID; // @synthesize clusterLeaderID=_clusterLeaderID;
+@property (nonatomic) unsigned int clusterType; // @synthesize clusterType=_clusterType;
 @property (readonly, nonatomic, getter=isCompanion) BOOL companion;
 @property (nonatomic, getter=isConnected) BOOL connected; // @synthesize connected=_connected;
 @property (readonly, copy, nonatomic) NSData *data;
@@ -107,6 +112,7 @@
 @property (copy, nonatomic) NSString *localizedModelName; // @synthesize localizedModelName=_localizedModelName;
 @property (copy, nonatomic) NSString *managedConfigurationDeviceIdentifier; // @synthesize managedConfigurationDeviceIdentifier=_managedConfigurationDeviceIdentifier;
 @property (readonly, copy, nonatomic) NSString *minimalDescription;
+@property (copy, nonatomic) NSString *modelID; // @synthesize modelID=_modelID;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic, getter=isPairingAllowed) BOOL pairingAllowed; // @synthesize pairingAllowed=_pairingAllowed;
 @property (readonly, nonatomic) _MRDeviceInfoMessageProtobuf *protobuf;
@@ -124,12 +130,9 @@
 @property (nonatomic, getter=isTightSyncGroup) BOOL tightSyncGroup; // @synthesize tightSyncGroup=_tightSyncGroup;
 @property (copy, nonatomic) NSString *tightSyncUID; // @synthesize tightSyncUID=_tightSyncUID;
 
-+ (id)_deviceIDFromData:(id)arg1;
-+ (id)currentDeviceInfo;
 + (id)dataFromDeviceInfos:(id)arg1;
 + (long long)deviceClass;
 + (id)deviceInfosFromData:(id)arg1;
-+ (id)networkIdentifier;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)deltaDescriptionFromDeviceInfo:(id)arg1;

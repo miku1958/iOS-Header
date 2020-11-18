@@ -18,6 +18,7 @@
 @interface SXMosaicGalleryComponentView : SXGalleryComponentView <SXMosaicGalleryLayouterDataSource, SXFullscreenCanvasShowable, SXImageViewDelegate, SXFullscreenCaptionDataSource, SXViewportChangeListener>
 {
     BOOL _loadedAtleastOneImage;
+    BOOL _layoutRequired;
     id<SXGalleryItemImageViewFactory> _imageViewFactory;
     SXFullscreenCanvasController *_fullScreenCanvasController;
     UIView *_galleryView;
@@ -37,6 +38,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<SXGalleryItemImageViewFactory> imageViewFactory; // @synthesize imageViewFactory=_imageViewFactory;
 @property (readonly, nonatomic) NSMutableArray *imageViews; // @synthesize imageViews=_imageViews;
+@property (nonatomic, getter=isLayoutRequired) BOOL layoutRequired; // @synthesize layoutRequired=_layoutRequired;
 @property (nonatomic) BOOL loadedAtleastOneImage; // @synthesize loadedAtleastOneImage=_loadedAtleastOneImage;
 @property (strong, nonatomic) SXMediaViewEvent *mediaViewEvent; // @synthesize mediaViewEvent=_mediaViewEvent;
 @property (readonly) Class superclass;

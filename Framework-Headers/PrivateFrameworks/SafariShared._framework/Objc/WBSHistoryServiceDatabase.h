@@ -82,7 +82,9 @@
 - (id)_findObsoleteItemsForPlan:(struct DeletionPlan *)arg1;
 - (void)_finishedClearingHistory;
 - (id)_generateDisposedVisitsForPlan:(struct DeletionPlan *)arg1;
-- (id)_generateUpdatedLastVisitForPlan:(struct DeletionPlan *)arg1;
+- (id)_generateItemsDictionary:(const unordered_map_fcbaed0a *)arg1;
+- (id)_generateUpdatedLastVisit:(const unordered_map_fcbaed0a *)arg1;
+- (id)_generateVisitsDictionary:(const unordered_map_fcbaed0a *)arg1;
 - (id)_insertItem:(id)arg1;
 - (id)_insertTombstone:(id)arg1;
 - (id)_insertTombstonesForURLs:(id)arg1 afterDate:(id)arg2 beforeDate:(id)arg3 tombstoneMode:(unsigned long long)arg4;
@@ -104,7 +106,7 @@
 - (unsigned long long)_pruneTombstonesOnDatabaseQueueWithEndDatePriorToDate:(id)arg1 error:(id *)arg2;
 - (void)_queuePendingUpdates;
 - (id)_recomputeItemScores:(unordered_set_da619913 *)arg1;
-- (id)_recomputeLatestVisitsForItems:(const unordered_set_da619913 *)arg1;
+- (unordered_map_fcbaed0a)_recomputeLatestVisitsForItems:(const unordered_set_da619913 *)arg1 error:(id *)arg2;
 - (id)_recomputeVisitScores:(unordered_set_da619913 *)arg1;
 - (void)_registerHistoryTagFrecencyScoringFunction;
 - (void)_removeLegacyHistoryDatabaseIfNeeded;

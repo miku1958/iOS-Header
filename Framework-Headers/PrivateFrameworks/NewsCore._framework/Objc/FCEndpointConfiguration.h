@@ -17,6 +17,7 @@
     NSString *_newsletterAPIBaseURLString;
     NSString *_appAnalyticsBaseURLString;
     NSString *_fairPlayBaseURLString;
+    NSString *_searchAPIBaseURLString;
 }
 
 @property (readonly, nonatomic) NSString *appAnalyticsBaseURLString; // @synthesize appAnalyticsBaseURLString=_appAnalyticsBaseURLString;
@@ -25,6 +26,7 @@
 @property (readonly, nonatomic) NSString *newsletterAPIBaseURLString; // @synthesize newsletterAPIBaseURLString=_newsletterAPIBaseURLString;
 @property (readonly, nonatomic) NSString *notificationsBaseURLString; // @synthesize notificationsBaseURLString=_notificationsBaseURLString;
 @property (readonly, nonatomic) NSString *remoteDataSourceBaseURLString; // @synthesize remoteDataSourceBaseURLString=_remoteDataSourceBaseURLString;
+@property (readonly, nonatomic) NSString *searchAPIBaseURLString; // @synthesize searchAPIBaseURLString=_searchAPIBaseURLString;
 @property (readonly, nonatomic) NSString *staticAssetBaseURLString; // @synthesize staticAssetBaseURLString=_staticAssetBaseURLString;
 
 - (void).cxx_destruct;
@@ -34,6 +36,7 @@
 - (id)initWithClientAPIBaseURLString:(id)arg1 notificationsBaseURLString:(id)arg2 staticAssetBaseURLString:(id)arg3 remoteDataSourceBaseURLString:(id)arg4 newsletterAPIBaseURLString:(id)arg5;
 - (id)initWithClientAPIBaseURLString:(id)arg1 notificationsBaseURLString:(id)arg2 staticAssetBaseURLString:(id)arg3 remoteDataSourceBaseURLString:(id)arg4 newsletterAPIBaseURLString:(id)arg5 appAnalyticsBaseURLString:(id)arg6;
 - (id)initWithClientAPIBaseURLString:(id)arg1 notificationsBaseURLString:(id)arg2 staticAssetBaseURLString:(id)arg3 remoteDataSourceBaseURLString:(id)arg4 newsletterAPIBaseURLString:(id)arg5 appAnalyticsBaseURLString:(id)arg6 fairPlayBaseURLString:(id)arg7;
+- (id)initWithClientAPIBaseURLString:(id)arg1 notificationsBaseURLString:(id)arg2 staticAssetBaseURLString:(id)arg3 remoteDataSourceBaseURLString:(id)arg4 newsletterAPIBaseURLString:(id)arg5 appAnalyticsBaseURLString:(id)arg6 fairPlayBaseURLString:(id)arg7 searchAPIBaseURLString:(id)arg8;
 - (BOOL)isEqual:(id)arg1;
 
 @end

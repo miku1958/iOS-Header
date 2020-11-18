@@ -12,12 +12,14 @@
 
 @interface NTPBPersonalizationLocalData : PBCodable <NSCopying>
 {
+    NSMutableArray *_aggregates;
     NSMutableArray *_closedChangeGroups;
     NSString *_currentInstanceIdentifier;
     NSMutableArray *_openChangeGroupDeltas;
     NSData *_remoteRecordData;
 }
 
+@property (strong, nonatomic) NSMutableArray *aggregates; // @synthesize aggregates=_aggregates;
 @property (strong, nonatomic) NSMutableArray *closedChangeGroups; // @synthesize closedChangeGroups=_closedChangeGroups;
 @property (strong, nonatomic) NSString *currentInstanceIdentifier; // @synthesize currentInstanceIdentifier=_currentInstanceIdentifier;
 @property (readonly, nonatomic) BOOL hasCurrentInstanceIdentifier;
@@ -25,10 +27,15 @@
 @property (strong, nonatomic) NSMutableArray *openChangeGroupDeltas; // @synthesize openChangeGroupDeltas=_openChangeGroupDeltas;
 @property (strong, nonatomic) NSData *remoteRecordData; // @synthesize remoteRecordData=_remoteRecordData;
 
++ (Class)aggregatesType;
 + (Class)closedChangeGroupsType;
 + (Class)openChangeGroupDeltasType;
+- (void)addAggregates:(id)arg1;
 - (void)addClosedChangeGroups:(id)arg1;
 - (void)addOpenChangeGroupDeltas:(id)arg1;
+- (id)aggregatesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)aggregatesCount;
+- (void)clearAggregates;
 - (void)clearClosedChangeGroups;
 - (void)clearOpenChangeGroupDeltas;
 - (id)closedChangeGroupsAtIndex:(unsigned long long)arg1;

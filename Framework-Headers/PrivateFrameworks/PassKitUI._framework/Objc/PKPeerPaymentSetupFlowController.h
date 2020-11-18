@@ -11,14 +11,16 @@
 #import <PassKitUI/PKPeerPaymentConfirmNameViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPeerPaymentServiceObserver-Protocol.h>
 
-@class NSHashTable, NSString, PKAppleCashSharingRecipientCapabilitiesFetchStatus, PKPaymentPass, PKPaymentProvisioningController, PKPaymentWebService, PKPeerPaymentAccount, PKPeerPaymentConfirmNameViewController, PKPeerPaymentCredential, PKPeerPaymentService, PKPeerPaymentTermsController, PKPeerPaymentWebService, UIImage, UIViewController;
-@protocol PKPeerPaymentSetupFlowControllerConfiguration, PKPeerPaymentSetupFlowControllerDataSource;
+@class NSHashTable, NSString, PKAppleCashSharingRecipientCapabilitiesFetchStatus, PKPaymentPass, PKPaymentProvisioningController, PKPaymentWebService, PKPeerPaymentAccount, PKPeerPaymentConfirmNameViewController, PKPeerPaymentCredential, PKPeerPaymentService, PKPeerPaymentTermsController, PKPeerPaymentWebService, PKSecurityCapabilitiesController, UIImage, UIViewController;
+@protocol PKPassLibraryDataProvider, PKPeerPaymentSetupFlowControllerConfiguration, PKPeerPaymentSetupFlowControllerDataSource;
 
 @interface PKPeerPaymentSetupFlowController : NSObject <PKPaymentSelectPassesViewControllerDelegate, PKPaymentSetupViewControllerDelegate, PKPeerPaymentServiceObserver, PKPeerPaymentConfirmNameViewControllerDelegate>
 {
     PKPaymentPass *_peerPaymentPass;
     PKPeerPaymentTermsController *_termsController;
+    PKSecurityCapabilitiesController *_securityCapabiltiesController;
     BOOL _hasPresentedDeviceToDeviceEncryptionFlow;
+    id<PKPassLibraryDataProvider> _passLibraryDataProvider;
     PKPeerPaymentConfirmNameViewController *_confirmNameViewControllerBeingPresented;
     PKAppleCashSharingRecipientCapabilitiesFetchStatus *_familyMemberCapabilitiesFetchStatus;
     unsigned long long _operations;
@@ -86,7 +88,7 @@
 - (void)didReceiveAppleCashSharingRecipientCapabilities:(id)arg1 forHandle:(id)arg2;
 - (id)familyMemberCashCapabilitiesStatus;
 - (id)firstPeerPaymentAccountSetupViewController;
-- (id)initWithPeerPaymentCredential:(id)arg1 provisioningController:(id)arg2 configuration:(id)arg3 context:(long long)arg4;
+- (id)initWithPeerPaymentCredential:(id)arg1 provisioningController:(id)arg2 passLibraryDataProvider:(id)arg3 configuration:(id)arg4 context:(long long)arg5;
 - (void)nextViewControllerAfterPerfomingOperations:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)passesIncludingPeerPaymentPass:(BOOL)arg1;
 - (void)removeDelegate:(id)arg1;

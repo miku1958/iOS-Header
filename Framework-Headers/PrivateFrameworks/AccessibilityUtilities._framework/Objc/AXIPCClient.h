@@ -13,6 +13,7 @@
     struct __CFMachPort *_serverPort;
     NSLock *_serverPortLock;
     unsigned int _assignedServerMachPort;
+    struct os_unfair_lock_s _clientIdentifierLock;
     CDUnknownBlockType _portDeathHandler;
     float _timeout;
     NSString *_clientIdentifier;

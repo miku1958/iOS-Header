@@ -10,7 +10,9 @@
 
 @interface _TtC7NewsUI231TagFeedBlueprintModifierFactory : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *headlineService;
     MISSING_TYPE *sectionFactory;
+    MISSING_TYPE *nativeAdManager;
     MISSING_TYPE *feedContextFactory;
     MISSING_TYPE *policyValidator;
     MISSING_TYPE *layoutCollectionProvider;

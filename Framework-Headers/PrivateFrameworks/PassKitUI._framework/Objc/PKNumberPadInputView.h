@@ -13,18 +13,20 @@
     UIStackView *_verticalStackView;
     BOOL _showsDecimalPointButton;
     UIColor *_numberPadColor;
+    UIColor *_textColor;
 }
 
 @property (copy, nonatomic) UIColor *numberPadColor; // @synthesize numberPadColor=_numberPadColor;
 @property (nonatomic) BOOL showsDecimalPointButton; // @synthesize showsDecimalPointButton=_showsDecimalPointButton;
+@property (copy, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 
-+ (struct CGSize)defaultSize;
++ (struct CGSize)defaultSizeForInterfaceOrientation:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_numericKeyPressed:(id)arg1;
 - (void)_performDelete;
 - (void)_performInsertion:(id)arg1;
 - (void)_reloadSubviews;
-- (id)initWithDefaultFrame;
+- (id)initWithDefaultFrameForInterfaceOrientation:(long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 

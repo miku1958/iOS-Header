@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BRCSyncOperationThrottleParams, NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString;
+@class BRCSyncOperationThrottleParams, NSArray, NSDictionary, NSIndexSet, NSMutableDictionary, NSSet, NSString;
 @protocol OS_xpc_object;
 
 @interface BRCUserDefaults : NSObject
@@ -52,6 +52,12 @@
 @property (readonly, nonatomic) float dbAutovacuumRatio;
 @property (readonly, nonatomic) double dbBatchDelay;
 @property (readonly, nonatomic) int dbBatchSize;
+@property (readonly, nonatomic) BOOL dbIntegrityCheckApplyJobs;
+@property (readonly, nonatomic) BOOL dbIntegrityCheckDownloadJobs;
+@property (readonly, nonatomic) BOOL dbIntegrityCheckReaderJobs;
+@property (readonly, nonatomic) BOOL dbIntegrityCheckSyncUpJobs;
+@property (readonly, nonatomic) BOOL dbIntegrityCheckUploadJobs;
+@property (readonly, nonatomic) NSObject<OS_xpc_object> *dbIntegrityCheckXPCActivity;
 @property (readonly, nonatomic) BOOL dbProfiled;
 @property (readonly, nonatomic) long long dbReclaimableSpaceThreshold;
 @property (readonly, nonatomic) BOOL dbTraced;
@@ -226,6 +232,7 @@
 @property (readonly, nonatomic) double systemReachabilityLatency;
 @property (readonly, nonatomic) double telemetryApplySchedulerTimeout;
 @property (readonly, nonatomic) unsigned long long telemetryErrorDescriptionMaxLength;
+@property (readonly, nonatomic) NSIndexSet *telemetryEventDisabledMessages;
 @property (readonly, nonatomic) unsigned int telemetryEventQueueReductionAmount;
 @property (readonly, nonatomic) long long telemetryEventQueueSize;
 @property (readonly, nonatomic) long long telemetryEventReportBatchSize;
@@ -282,6 +289,8 @@
 - (double)doubleForKey:(id)arg1 min:(double)arg2 max:(double)arg3 byDefault:(double)arg4;
 - (float)floatForKey:(id)arg1 inheritFromGlobal:(BOOL)arg2 min:(float)arg3 max:(float)arg4 byDefault:(float)arg5;
 - (float)floatForKey:(id)arg1 min:(float)arg2 max:(float)arg3 byDefault:(float)arg4;
+- (id)indexSetForKey:(id)arg1 byDefault:(id)arg2;
+- (id)indexSetForKey:(id)arg1 inheritFromGlobal:(BOOL)arg2 byDefault:(id)arg3;
 - (id)initAsGlobalWithServerConfiguration:(id)arg1;
 - (id)initWithServerConfiguration:(id)arg1 globalUserDefaults:(id)arg2 clientZoneIdentifier:(id)arg3;
 - (int)intForKey:(id)arg1 min:(int)arg2 max:(int)arg3 byDefault:(int)arg4;

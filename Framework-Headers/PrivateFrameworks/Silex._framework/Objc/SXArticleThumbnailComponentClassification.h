@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Silex/SXDefaultContainerComponentClassification.h>
+#import <Silex/SXComponentClassification.h>
 
-@interface SXArticleThumbnailComponentClassification : SXDefaultContainerComponentClassification
+@interface SXArticleThumbnailComponentClassification : SXComponentClassification
 {
 }
 
-+ (int)role;
 + (id)roleString;
++ (id)typeString;
+- (id)accessibilityContextualLabel;
+- (Class)componentModelClass;
 
 @end
 

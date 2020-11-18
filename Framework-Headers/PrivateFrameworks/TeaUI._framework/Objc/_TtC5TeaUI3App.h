@@ -11,6 +11,7 @@
 @interface _TtC5TeaUI3App : _TtCs12_SwiftObject
 {
     MISSING_TYPE *monitor;
+    MISSING_TYPE *sceneProvider;
     MISSING_TYPE *application;
     MISSING_TYPE *environment;
 }

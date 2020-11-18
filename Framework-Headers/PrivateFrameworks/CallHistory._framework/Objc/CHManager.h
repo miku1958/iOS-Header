@@ -6,7 +6,7 @@
 
 #import <CallHistory/CHSynchronizedLoggable.h>
 
-@class NSArray, NSDate, NSPredicate, NSString;
+@class CHPhoneBookIOSManager, NSArray, NSDate, NSPredicate, NSString;
 @protocol SyncManagerProtocol;
 
 @interface CHManager : CHSynchronizedLoggable
@@ -15,6 +15,7 @@
     BOOL _showsFaceTimeVideoCalls;
     BOOL _showsFaceTimeAudioCalls;
     BOOL _generateSyncTransactions;
+    BOOL _contactsDisabled;
     BOOL _cacheIsDirty;
     BOOL _reCoalesce;
     unsigned int _limitingCallTypes;
@@ -32,12 +33,14 @@
 
 @property BOOL cacheIsDirty; // @synthesize cacheIsDirty=_cacheIsDirty;
 @property (copy, nonatomic) NSString *coalescingStrategy; // @synthesize coalescingStrategy=_coalescingStrategy;
+@property (nonatomic, getter=isContactsDisabled) BOOL contactsDisabled; // @synthesize contactsDisabled=_contactsDisabled;
 @property (nonatomic) BOOL generateSyncTransactions; // @synthesize generateSyncTransactions=_generateSyncTransactions;
 @property (copy, nonatomic) NSArray *limitingCallKinds; // @synthesize limitingCallKinds=_limitingCallKinds;
 @property (nonatomic) unsigned int limitingCallTypes; // @synthesize limitingCallTypes=_limitingCallTypes;
 @property (copy, nonatomic) NSDate *limitingEndDate; // @synthesize limitingEndDate=_limitingEndDate;
 @property (copy, nonatomic) NSDate *limitingStartDate; // @synthesize limitingStartDate=_limitingStartDate;
 @property long long numberOfUnseenMissedCalls; // @synthesize numberOfUnseenMissedCalls=_numberOfUnseenMissedCalls;
+@property (readonly, nonatomic) CHPhoneBookIOSManager *phoneBookManager;
 @property (strong, nonatomic) NSPredicate *postFetchingPredicate; // @synthesize postFetchingPredicate=_postFetchingPredicate;
 @property BOOL reCoalesce; // @synthesize reCoalesce=_reCoalesce;
 @property (strong, nonatomic) NSArray *recentCalls; // @synthesize recentCalls=_recentCalls;

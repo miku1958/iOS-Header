@@ -11,8 +11,8 @@
 #import <SpringBoard/NCCarPlayBannerPresentableViewControllerDelegate-Protocol.h>
 #import <SpringBoard/NCNotificationAlertDestination-Protocol.h>
 
-@class BNBannerHostMonitorListener, BSServiceConnectionEndpoint, CRCarPlayAppPolicyEvaluator, DNDEventBehaviorResolutionService, NCCarPlayBannerSource, NSHashTable, NSMutableDictionary, NSMutableSet, NSString;
-@protocol NCNotificationAlertDestinationDelegate;
+@class BNBannerHostMonitorListener, BSServiceConnectionEndpoint, CRCarPlayAppPolicyEvaluator, DNDEventBehaviorResolutionService, NCCarPlayBannerSource, NSHashTable, NSMutableDictionary, NSString;
+@protocol BNPresentable, NCNotificationAlertDestinationDelegate;
 
 @interface SBNotificationCarPlayDestination : NSObject <BNBannerHostMonitorListenerObserving, BNPresentableObserving, NCCarPlayBannerPresentableViewControllerDelegate, NCNotificationAlertDestination>
 {
@@ -21,7 +21,7 @@
     NSHashTable *_presentables;
     CRCarPlayAppPolicyEvaluator *_appPolicyEvaluator;
     NSMutableDictionary *_appPolicyForBundleID;
-    NSMutableSet *_suspensionReasons;
+    id<BNPresentable> _presentablePresentingAlertController;
     id<NCNotificationAlertDestinationDelegate> _delegate;
     NCCarPlayBannerSource *_carPlayBannerSource;
 }
@@ -55,6 +55,7 @@
 - (id)_policyForApp:(id)arg1;
 - (id)_presentablesWithRequestIdentifier:(id)arg1;
 - (id)_removePresentable:(id)arg1;
+- (BOOL)_setSuspended:(BOOL)arg1 forPresentingAlertControllerForPresentable:(id)arg2;
 - (id)_subActionLabelsForNotificationRequest:(id)arg1;
 - (id)_subActionsForNotificationRequest:(id)arg1;
 - (id)_supplementaryActionsForNotificationRequest:(id)arg1;

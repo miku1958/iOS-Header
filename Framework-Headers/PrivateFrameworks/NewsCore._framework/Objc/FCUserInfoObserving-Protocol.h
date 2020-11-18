@@ -13,6 +13,7 @@
 @optional
 - (void)userInfo:(FCUserInfo *)arg1 didChangeAccessTokenForTagID:(NSString *)arg2;
 - (void)userInfo:(FCUserInfo *)arg1 didRemoveAccessTokenForTagID:(NSString *)arg2 userInitiated:(BOOL)arg3;
+- (void)userInfoDidChangeAdsUserID:(FCUserInfo *)arg1 fromCloud:(BOOL)arg2;
 - (void)userInfoDidChangeDateLastViewedSaved:(FCUserInfo *)arg1 fromCloud:(BOOL)arg2;
 - (void)userInfoDidChangeEditorialArticleVersion:(FCUserInfo *)arg1;
 - (void)userInfoDidChangeEndOfAudioTrackNotificationsEnabled:(FCUserInfo *)arg1 fromCloud:(BOOL)arg2;

@@ -42,6 +42,7 @@
 - (void)endDictionary;
 - (void)endType;
 - (id)init;
+- (const struct _MDPlistContainer *)plistContainer;
 
 @end
 

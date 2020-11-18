@@ -22,6 +22,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 - (void).cxx_destruct;
 - (id)_accessibilityCuratedLibraryUIViewController;
+- (id)_accessibilityDefaultFocusGroupDescriptor;
 - (id)_accessibilityInfoSource;
 - (BOOL)_accessibilityOverridesInstructionsHint;
 - (id)_accessibilityScrollStatus;
@@ -75,6 +76,7 @@
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
+- (BOOL)canBecomeFocused;
 - (id)initWithAccessibilityContainer:(id)arg1 forGroup:(id)arg2 inView:(id)arg3;
 - (id)initWithAccessibilityContainer:(id)arg1 forGroup:(id)arg2 inView:(id)arg3 withAdditionalScrollViewElements:(id)arg4;
 - (BOOL)isAccessibilityElement;

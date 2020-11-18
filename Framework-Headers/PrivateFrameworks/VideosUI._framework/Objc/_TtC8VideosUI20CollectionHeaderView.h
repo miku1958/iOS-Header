@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI20CollectionHeaderView : UICollectionReusableView
 {
+    MISSING_TYPE *containerView;
     MISSING_TYPE *layout;
     MISSING_TYPE *titleView;
     MISSING_TYPE *subtitleView;

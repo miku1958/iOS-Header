@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
 {
     BOOL _wantsDoubleDigitHours;
     BOOL _forceDoubleDigitHours;
+    BOOL _hasLeadingLiteral;
+    BOOL _hasTrailingLiteral;
     NSString *_timeFormat;
     NSString *_hourFormat;
     long long _clock;
@@ -25,6 +27,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long clock; // @synthesize clock=_clock;
 @property (readonly, nonatomic) long long clockLayout; // @synthesize clockLayout=_clockLayout;
 @property (readonly, nonatomic) BOOL forceDoubleDigitHours; // @synthesize forceDoubleDigitHours=_forceDoubleDigitHours;
+@property (readonly, nonatomic) BOOL hasLeadingLiteral; // @synthesize hasLeadingLiteral=_hasLeadingLiteral;
+@property (readonly, nonatomic) BOOL hasTrailingLiteral; // @synthesize hasTrailingLiteral=_hasTrailingLiteral;
 @property (readonly, nonatomic) NSString *hourFormat; // @synthesize hourFormat=_hourFormat;
 @property (readonly, nonatomic) NSNumberFormatter *hourFormatter; // @synthesize hourFormatter=_hourFormatter;
 @property (readonly, nonatomic) NSNumberFormatter *minuteFormatter; // @synthesize minuteFormatter=_minuteFormatter;

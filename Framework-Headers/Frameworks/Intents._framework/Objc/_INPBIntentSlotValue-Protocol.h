@@ -309,6 +309,8 @@
 @property (readonly, nonatomic) unsigned long long payloadURLValuesCount;
 @property (readonly, nonatomic) int *payloadUpdateAlarmOperations;
 @property (readonly, nonatomic) unsigned long long payloadUpdateAlarmOperationsCount;
+@property (readonly, nonatomic) int *payloadUserNotificationTypes;
+@property (readonly, nonatomic) unsigned long long payloadUserNotificationTypesCount;
 @property (readonly, nonatomic) int *payloadVisualCodeTypes;
 @property (readonly, nonatomic) unsigned long long payloadVisualCodeTypesCount;
 @property (copy, nonatomic) NSArray *payloadVoiceCommandDeviceInformations;
@@ -483,6 +485,7 @@
 - (int)StringAsPayloadTimerStates:(NSString *)arg1;
 - (int)StringAsPayloadTimerTypes:(NSString *)arg1;
 - (int)StringAsPayloadUpdateAlarmOperations:(NSString *)arg1;
+- (int)StringAsPayloadUserNotificationTypes:(NSString *)arg1;
 - (int)StringAsPayloadVisualCodeTypes:(NSString *)arg1;
 - (int)StringAsPayloadWellnessObjectTypes:(NSString *)arg1;
 - (int)StringAsPayloadWellnessQueryResultTypes:(NSString *)arg1;
@@ -639,6 +642,7 @@
 - (void)addPayloadTimerType:(int)arg1;
 - (void)addPayloadURLValue:(_INPBURLValue *)arg1;
 - (void)addPayloadUpdateAlarmOperation:(int)arg1;
+- (void)addPayloadUserNotificationType:(int)arg1;
 - (void)addPayloadVisualCodeType:(int)arg1;
 - (void)addPayloadVoiceCommandDeviceInformation:(_INPBVoiceCommandDeviceInformation *)arg1;
 - (void)addPayloadVolumeValue:(_INPBVolumeValue *)arg1;
@@ -800,6 +804,7 @@
 - (void)clearPayloadTimers;
 - (void)clearPayloadURLValues;
 - (void)clearPayloadUpdateAlarmOperations;
+- (void)clearPayloadUserNotificationTypes;
 - (void)clearPayloadVisualCodeTypes;
 - (void)clearPayloadVoiceCommandDeviceInformations;
 - (void)clearPayloadVolumeValues;
@@ -1018,6 +1023,8 @@
 - (_INPBURLValue *)payloadURLValueAtIndex:(unsigned long long)arg1;
 - (int)payloadUpdateAlarmOperationAtIndex:(unsigned long long)arg1;
 - (NSString *)payloadUpdateAlarmOperationsAsString:(int)arg1;
+- (int)payloadUserNotificationTypeAtIndex:(unsigned long long)arg1;
+- (NSString *)payloadUserNotificationTypesAsString:(int)arg1;
 - (int)payloadVisualCodeTypeAtIndex:(unsigned long long)arg1;
 - (NSString *)payloadVisualCodeTypesAsString:(int)arg1;
 - (_INPBVoiceCommandDeviceInformation *)payloadVoiceCommandDeviceInformationAtIndex:(unsigned long long)arg1;
@@ -1093,6 +1100,7 @@
 - (void)setPayloadTimerStates:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadTimerTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadUpdateAlarmOperations:(int *)arg1 count:(unsigned long long)arg2;
+- (void)setPayloadUserNotificationTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadVisualCodeTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadWellnessObjectTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadWellnessQueryResultTypes:(int *)arg1 count:(unsigned long long)arg2;

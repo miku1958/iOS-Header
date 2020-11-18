@@ -26,7 +26,7 @@
 @property (readonly, copy, nonatomic) NSString *localizedNotificationBody; // @synthesize localizedNotificationBody=_localizedNotificationBody;
 @property (readonly, copy, nonatomic) NSString *localizedNotificationSubject; // @synthesize localizedNotificationSubject=_localizedNotificationSubject;
 
-+ (BOOL)getNotificationConfiguration:(id *)arg1 fromDictionary:(id)arg2 locale:(id)arg3 index:(unsigned long long)arg4;
++ (BOOL)getNotificationConfiguration:(id *)arg1 fromDictionary:(id)arg2 locale:(id)arg3 index:(unsigned char)arg4;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

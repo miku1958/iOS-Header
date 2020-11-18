@@ -7,19 +7,22 @@
 #import <UIKit/UIViewController.h>
 
 #import <ChatKit/CKPluginEntryViewController-Protocol.h>
+#import <ChatKit/UIContextMenuInteractionDelegate-Protocol.h>
 
-@class CKBalloonView, IMBalloonPlugin, IMBalloonPluginDataSource, NSString;
+@class CKBalloonView, IMBalloonPlugin, IMBalloonPluginDataSource, NSString, UIContextMenuInteraction;
 @protocol CKPluginEntryViewControllerDelegate, CKTranscriptBalloonPluginController;
 
-@interface CKDefaultPluginEntryViewController : UIViewController <CKPluginEntryViewController>
+@interface CKDefaultPluginEntryViewController : UIViewController <UIContextMenuInteractionDelegate, CKPluginEntryViewController>
 {
     IMBalloonPluginDataSource *_datasource;
     UIViewController<CKTranscriptBalloonPluginController> *_pluginBubbleViewController;
     CKBalloonView *_balloonView;
     IMBalloonPlugin *_plugin;
+    UIContextMenuInteraction *_contextMenuInteraction;
 }
 
 @property (strong, nonatomic) CKBalloonView *balloonView; // @synthesize balloonView=_balloonView;
+@property (strong, nonatomic) UIContextMenuInteraction *contextMenuInteraction; // @synthesize contextMenuInteraction=_contextMenuInteraction;
 @property (strong, nonatomic) IMBalloonPluginDataSource *datasource; // @synthesize datasource=_datasource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -33,9 +36,12 @@
 @property (readonly) BOOL wantsEdgeToEdgeLayout;
 
 - (void).cxx_destruct;
+- (id)_copyActionForImageBalloonView;
 - (id)_imageBalloon;
 - (void)_loadBalloonView;
+- (id)_saveActionForImageBalloonView;
 - (id)_transcriptPluginBalloon;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)dealloc;
 - (void)didFinishAnimatedBoundsChange;
 - (id)initWithDataSource:(id)arg1 entryViewDelegate:(id)arg2;

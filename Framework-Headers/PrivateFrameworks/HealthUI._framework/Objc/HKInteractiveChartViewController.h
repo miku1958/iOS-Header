@@ -238,6 +238,7 @@
 - (void)primaryGraphViewControllerDidInitialize:(id)arg1;
 - (void)removeChartViewObserver:(id)arg1;
 - (void)removeOverlayDisplayType:(id)arg1 stackOffset:(long long)arg2;
+- (void)removeOverlayDisplayType:(id)arg1 stackOffset:(long long)arg2 automaticAutoscale:(BOOL)arg3;
 - (void)replaceCurrentDisplayTypesWithTypes:(id)arg1 stackOffset:(long long)arg2 resetDateRange:(BOOL)arg3;
 - (id)replaceRangeClause:(id)arg1;
 - (void)reportStartupTime:(CDUnknownBlockType)arg1;

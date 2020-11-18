@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NEFlowMetaData, NSData;
+@class NEFlowMetaData, NSData, NSString;
 @protocol OS_dispatch_queue, OS_nw_interface;
 
 @interface NEAppProxyFlow : NSObject
 {
     NEFlowMetaData *_metaData;
+    NSString *_remoteHostname;
     struct _NEFlow *_flow;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_nw_interface> *__networkInterface;
@@ -23,6 +24,7 @@
 @property (readonly) NEFlowMetaData *metaData; // @synthesize metaData=_metaData;
 @property (copy) NSObject<OS_nw_interface> *networkInterface;
 @property (strong) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (readonly) NSString *remoteHostname; // @synthesize remoteHostname=_remoteHostname;
 
 + (id)copyRemoteEndpointFromFlow:(struct _NEFlow *)arg1;
 + (struct __CFError *)copyVPNFlowErrorFromFlowError:(id)arg1;

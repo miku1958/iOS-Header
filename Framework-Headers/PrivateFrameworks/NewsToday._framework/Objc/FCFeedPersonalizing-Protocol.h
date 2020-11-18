@@ -6,10 +6,13 @@
 
 #import <NewsToday/FCTagRanking-Protocol.h>
 
-@class FCFeedPersonalizedItems, NSArray, NSDictionary, NSMapTable, NSString;
+@class FCFeedPersonalizedItems, FCPersonalizationWhitelist, NSArray, NSDictionary, NSMapTable, NSString;
 @protocol FCFeedPersonalizingItem;
 
 @protocol FCFeedPersonalizing <FCTagRanking>
+
+@property (readonly) FCPersonalizationWhitelist *whitelist;
+
 - (double)decayedPublisherDiversificationPenalty;
 - (NSArray *)diversifyItems:(NSArray *)arg1 limit:(unsigned long long)arg2;
 - (NSArray *)diversifyItems:(NSArray *)arg1 limit:(unsigned long long)arg2 preselectedItems:(NSArray *)arg3;

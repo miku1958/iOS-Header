@@ -60,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)setOtherPlacement:(id)arg1;
 - (struct CGAffineTransform)transform;
 - (id)verticalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
+- (struct CGRect)visibleFrameForNotificationsUsingHostingItem:(id)arg1;
 - (id)widthConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 
 @end

@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI32ContextMenuPreviewItemController : UIViewController
 {
+    MISSING_TYPE *viewModel;
     MISSING_TYPE *cardView;
 }
 

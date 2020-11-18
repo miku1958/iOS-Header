@@ -16,6 +16,9 @@
 - (void)getActivePlayerPathWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getCurrentlyPlayingMediaWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getLocalPlaybackCapabilityWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getPreferredMediaControlDestinationForOutputDeviceUIDs:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)getPreferredMediaControlOriginWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getPreferredPlaybackDestinationForPlaybackArchive:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)getPreferredPlaybackOriginWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)queueItemsWithIdentifierSets:(id)arg1 inAdditionMode:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;

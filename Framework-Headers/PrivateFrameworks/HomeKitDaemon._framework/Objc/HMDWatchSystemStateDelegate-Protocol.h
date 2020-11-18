@@ -9,7 +9,6 @@
 @protocol HMDWatchSystemStateDelegate <NSObject>
 
 @optional
-- (void)didReceiveNewIncomingMessage;
 - (void)didUpdateReachabilityChangeForCompanion:(BOOL)arg1;
 @end
 

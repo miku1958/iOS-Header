@@ -30,7 +30,7 @@
 - (BOOL)_createNewDatabaseSchema;
 - (id)_deleteAllEntriesSQLiteStatement;
 - (id)_deleteEntrySQLiteStatementWithHost:(id)arg1;
-- (int)_insertEntry:(id)arg1;
+- (id)_insertEntry:(id)arg1;
 - (id)_insertEntrySQLiteStatementWithEntry:(id)arg1;
 - (BOOL)_migrateToCurrentSchemaVersionifNeeded;
 - (BOOL)_openDatabase:(id)arg1 andCheckIntegrity:(BOOL)arg2;
@@ -39,7 +39,7 @@
 - (id)_selectEntrySQLiteStatementWithHost:(id)arg1;
 - (int)_setDatabaseSchemaVersion:(int)arg1;
 - (id)_statementsForMigrationToSchemaVersion:(long long)arg1;
-- (int)_updateEntry:(id)arg1;
+- (id)_updateEntry:(id)arg1;
 - (id)_updateEntrySQLiteStatementWithEntry:(id)arg1;
 - (id)allEntries;
 - (void)close;
@@ -49,7 +49,7 @@
 - (id)entryWithHost:(id)arg1;
 - (id)initWithDatabaseURL:(id)arg1;
 - (id)initWithDatabaseURL:(id)arg1 protectionType:(long long)arg2;
-- (BOOL)saveEntry:(id)arg1;
+- (id)saveEntry:(id)arg1;
 
 @end
 

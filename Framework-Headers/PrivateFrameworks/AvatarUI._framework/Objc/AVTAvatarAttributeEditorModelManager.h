@@ -46,7 +46,8 @@
 
 - (void).cxx_destruct;
 - (void)applyConfigurationToAvatar:(id)arg1 animated:(BOOL)arg2;
-- (void)applyEarringColorUpdateIfNeeded:(id)arg1;
+- (void)applyPairColorUpdateIfNeeded:(id)arg1 forCategoryRight:(long long)arg2 categoryLeft:(long long)arg3;
+- (void)applyPairColorUpdatesIfNeeded:(id)arg1;
 - (id)buildInitialEditorState;
 - (id)buildUIModel;
 - (id)buildUIModelWithSelectedCategory:(id)arg1 atIndex:(unsigned long long)arg2;

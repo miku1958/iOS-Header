@@ -22,6 +22,7 @@
     NSString *_locale;
     NSDictionary *_parameters;
     NSDictionary *_globalParameters;
+    NSDictionary *_userSettings;
     NSString *_pluginName;
     DEContext *_context;
     CDUnknownBlockType _callback;
@@ -47,6 +48,7 @@
 @property (nonatomic) BOOL resetState; // @synthesize resetState=_resetState;
 @property (strong, nonatomic) NSString *templateDir; // @synthesize templateDir=_templateDir;
 @property (nonatomic) BOOL test; // @synthesize test=_test;
+@property (strong, nonatomic) NSDictionary *userSettings; // @synthesize userSettings=_userSettings;
 @property (strong, nonatomic) NSString *voiceGender; // @synthesize voiceGender=_voiceGender;
 
 + (void)executeWithJson:(id)arg1 callback:(CDUnknownBlockType)arg2 completionBlock:(CDUnknownBlockType)arg3;

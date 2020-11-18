@@ -14,6 +14,7 @@
     MISSING_TYPE *visibleCellsUpdate;
     MISSING_TYPE *ignoreGraphUpdates;
     MISSING_TYPE *pendingGraphUpdate;
+    MISSING_TYPE *pendingScrollTarget;
     MISSING_TYPE *previousHorizontalMargin;
     MISSING_TYPE *_lastUpdateSeed;
     MISSING_TYPE *bridgedState;

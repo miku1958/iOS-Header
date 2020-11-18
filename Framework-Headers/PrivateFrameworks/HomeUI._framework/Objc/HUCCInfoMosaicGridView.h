@@ -32,6 +32,7 @@
 - (void).cxx_destruct;
 - (void)_invalidateConstraints;
 - (void)_setupInfoMosaicView;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)resetView;
 - (void)updateConstraints;

@@ -15,9 +15,9 @@
 {
     CDStruct_42e984b2 _delegateFlags;
     CDStruct_e83c9415 _trimRange;
+    BOOL _showsUntrimmed;
     BOOL _didPlayBeforeSeek;
     BOOL _didLoopVideoBeforeSeek;
-    BOOL _showsUntrimmed;
     id<PXTrimToolPlayerObserver> _playerObserver;
     id<PXTrimToolPlayerWrapperNUMediaViewPlayerItemSource> _playerItemSource;
     NSArray *_fullVideoPipelineFilters;

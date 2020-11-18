@@ -17,6 +17,7 @@
     unsigned long long _matcherCount;
     const void **_matchers;
     unsigned long long _queryTermCount;
+    unsigned long long _matchersPerTerm;
     void *_tokenizer;
     NSMutableArray *_tokenizedQueryTerms;
     NSString *_language;
@@ -27,6 +28,7 @@
 @property (nonatomic) BOOL matchOncePerTerm; // @synthesize matchOncePerTerm=_matchOncePerTerm;
 @property (nonatomic) unsigned long long matcherCount; // @synthesize matcherCount=_matcherCount;
 @property (nonatomic) const void **matchers; // @synthesize matchers=_matchers;
+@property (nonatomic) unsigned long long matchersPerTerm; // @synthesize matchersPerTerm=_matchersPerTerm;
 @property (nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (readonly, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
 @property (nonatomic) unsigned long long queryTermCount; // @synthesize queryTermCount=_queryTermCount;

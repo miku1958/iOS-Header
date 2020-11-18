@@ -20,7 +20,6 @@
 - (id)_downloadOptionsWithUserInitiation:(BOOL)arg1 timeout:(long long)arg2;
 - (void)_executeQueries:(id)arg1 currentIndex:(unsigned long long)arg2 userInitiated:(BOOL)arg3 sortDescriptors:(id)arg4 timeout:(long long)arg5 completion:(CDUnknownBlockType)arg6;
 - (id)_queriesForCityCodeStationProvider:(id)arg1;
-- (id)_queriesForEducationVideo;
 - (id)_queriesForMarketIdentifer:(id)arg1;
 - (void)_retrieveAssetWithQueries:(id)arg1 latestCompatibilityVersion:(unsigned long long)arg2 userInitiated:(BOOL)arg3 sortDescriptors:(id)arg4 timeout:(unsigned long long)arg5 catalogExpirationDays:(long long)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)fetchAssetsForMarketWithIdentifier:(id)arg1 userInitiated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;

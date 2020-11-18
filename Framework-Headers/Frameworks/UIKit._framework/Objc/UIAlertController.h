@@ -37,6 +37,7 @@
     NSPointerArray *_actionsWithInvokedHandlers;
     UIAlertControllerStackManager *_alertControllerStackManager;
     UIImage *_image;
+    BOOL dismissedFromShim;
     BOOL _hidden;
     BOOL _springLoaded;
     BOOL __shouldFlipFrameForShimDismissal;
@@ -93,6 +94,7 @@
 @property (weak, nonatomic) id<UIAlertControllerCoordinatedActionPerforming> coordinatedActionPerformingDelegate; // @synthesize coordinatedActionPerformingDelegate=_coordinatedActionPerformingDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=_dismissedFromShim, setter=_setDismissedFromShim:) BOOL dismissedFromShim; // @synthesize dismissedFromShim;
 @property (nonatomic, getter=_effectAlpha, setter=_setEffectAlpha:) double effectAlpha;
 @property (nonatomic, getter=_hasPreservedInputViews, setter=_setHasPreservedInputViews:) BOOL hasPreservedInputViews; // @synthesize hasPreservedInputViews=_hasPreservedInputViews;
 @property (readonly) unsigned long long hash;

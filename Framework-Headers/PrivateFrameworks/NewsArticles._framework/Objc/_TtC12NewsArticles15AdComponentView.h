@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *integrator;
     MISSING_TYPE *exposureMonitor;
     MISSING_TYPE *tracker;
+    MISSING_TYPE *journal;
     MISSING_TYPE *layoutAttributes;
 }
 
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)presentComponentWithChanges:(CDStruct_2a4d9400)arg1;
 - (void)receivedInfo:(id)arg1 fromLayoutingPhaseWithIdentifier:(id)arg2;
 - (void)renderContents;
+- (void)visibilityStateDidChangeFromState:(long long)arg1;
 
 @end
 

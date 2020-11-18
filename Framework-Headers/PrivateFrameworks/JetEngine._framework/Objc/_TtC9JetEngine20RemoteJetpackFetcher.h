@@ -12,8 +12,6 @@
 {
     MISSING_TYPE *remoteFetcher;
     MISSING_TYPE *artifactStoreURL;
-    MISSING_TYPE *isRetryLock;
-    MISSING_TYPE *isRetry;
 }
 
 @end

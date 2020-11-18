@@ -88,6 +88,7 @@
 - (id)constituentDevices;
 - (void)dealloc;
 - (id)debugDescription;
+- (unsigned long long)degradedCaptureQualityFactors;
 - (id)description;
 - (struct OpaqueCMClock *)deviceClock;
 - (id)deviceType;

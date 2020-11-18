@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 
 + (id)_remoteViewControllerInterface;
 - (void).cxx_destruct;
-- (void)_pickerUnavailableUIViewController:(id)arg1 cancelButtonTapped:(id)arg2;
+- (void)_pickerUnavailableUIViewControllerCancelButtonTapped:(id)arg1;
 - (void)coordinator:(id)arg1 didFinishWithAssets:(id)arg2;
 - (void)logExitIfNeeded:(id)arg1;
 - (BOOL)setImagePickerPhotoLibrary:(id)arg1 error:(id *)arg2;

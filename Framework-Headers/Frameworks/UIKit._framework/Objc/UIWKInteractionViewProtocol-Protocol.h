@@ -30,6 +30,7 @@
 
 @optional
 - (void)adjustSelectionWithDelta:(struct _NSRange)arg1 completionHandler:(void (^)(void))arg2;
+- (NSArray *)alternativesForSelectedText;
 - (NSAttributedString *)attributedMarkedText;
 - (void)changeSelectionWithTouchAt:(struct CGPoint)arg1 withSelectionTouch:(long long)arg2 baseIsStart:(BOOL)arg3 withFlags:(long long)arg4;
 - (void)clearSelection;

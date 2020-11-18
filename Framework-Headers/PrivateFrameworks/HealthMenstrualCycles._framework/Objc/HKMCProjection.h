@@ -6,10 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthMenstrualCycles/HKRedactedDescription-Protocol.h>
 #import <HealthMenstrualCycles/NSCopying-Protocol.h>
 #import <HealthMenstrualCycles/NSSecureCoding-Protocol.h>
 
-@interface HKMCProjection : NSObject <NSSecureCoding, NSCopying>
+@class NSString;
+
+@interface HKMCProjection : NSObject <HKRedactedDescription, NSSecureCoding, NSCopying>
 {
     double _startMean;
     double _startStandardDeviation;
@@ -20,6 +23,7 @@
 }
 
 @property (readonly, nonatomic) CDStruct_ef5fcbe6 allDays; // @synthesize allDays=_allDays;
+@property (readonly, copy) NSString *hk_redactedDescription;
 @property (readonly, nonatomic) CDStruct_ef5fcbe6 mostLikelyDays;
 @property (readonly, nonatomic, getter=isPartiallyLogged) BOOL partiallyLogged; // @synthesize partiallyLogged=_partiallyLogged;
 
@@ -34,7 +38,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStartMean:(double)arg1 startStandardDeviation:(double)arg2 endMean:(double)arg3 endStandardDeviation:(double)arg4 allDays:(CDStruct_ef5fcbe6)arg5 partiallyLogged:(BOOL)arg6;
 - (BOOL)isEqual:(id)arg1;
-- (id)redactedDescription;
 - (CDStruct_ef5fcbe6)startDayRange;
 
 @end

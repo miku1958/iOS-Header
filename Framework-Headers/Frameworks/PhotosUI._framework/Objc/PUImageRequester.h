@@ -15,8 +15,9 @@ __attribute__((visibility("hidden")))
     BOOL _shouldRequestPenultimateVersion;
     BOOL _useLowMemoryMode;
     BOOL _networkAccessAllowed;
-    BOOL _includeGainMap;
+    BOOL _requiresFullQualityImage;
     BOOL _imageIsFullQuality;
+    BOOL _includeGainMap;
     BOOL _imageIsPlaceholder;
     BOOL __needsUpdate;
     BOOL __hasRequestedFullsizeImageData;
@@ -61,6 +62,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (nonatomic, getter=isNetworkAccessAllowed) BOOL networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
 @property (strong, nonatomic) NSArray *requestFullSizeImageDataUTTypes; // @synthesize requestFullSizeImageDataUTTypes=_requestFullSizeImageDataUTTypes;
+@property (readonly, nonatomic) BOOL requiresFullQualityImage; // @synthesize requiresFullQualityImage=_requiresFullQualityImage;
 @property (nonatomic) BOOL shouldRequestPenultimateVersion; // @synthesize shouldRequestPenultimateVersion=_shouldRequestPenultimateVersion;
 @property (nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
 @property (nonatomic) BOOL useLowMemoryMode; // @synthesize useLowMemoryMode=_useLowMemoryMode;
@@ -78,7 +80,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)handlePreloadedImage:(id)arg1;
 - (id)init;
-- (id)initWithMediaProvider:(id)arg1 asset:(id)arg2;
+- (id)initWithMediaProvider:(id)arg1 asset:(id)arg2 requiresFullQualityImage:(BOOL)arg3;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)registerObserver:(id)arg1;
 - (void)setAsset:(id)arg1;

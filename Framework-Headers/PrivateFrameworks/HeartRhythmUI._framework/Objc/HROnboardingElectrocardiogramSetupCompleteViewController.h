@@ -9,6 +9,7 @@
 #import <HeartRhythmUI/HRStackedButtonViewDelegate-Protocol.h>
 
 @class HKAnchoredObjectQuery, HKElectrocardiogram, HKElectrocardiogramCardView, HRStackedButtonView, NSLayoutConstraint, NSLayoutYAxisAnchor, UIActivityIndicatorView, UILabel, UITapGestureRecognizer;
+@protocol HROnboardingElectrocardiogramSetupCompleteViewControllerDelegate;
 
 @interface HROnboardingElectrocardiogramSetupCompleteViewController : HROnboardingBaseViewController <HRStackedButtonViewDelegate>
 {
@@ -18,6 +19,7 @@
     HKAnchoredObjectQuery *_electrocardiogramQuery;
     HKElectrocardiogram *_electrocardiogram;
     UITapGestureRecognizer *_electrocardiogramCardTapGestureRecognizer;
+    id<HROnboardingElectrocardiogramSetupCompleteViewControllerDelegate> _electrocardiogramDelegate;
     UILabel *_titleLabel;
     UIActivityIndicatorView *_activityIndicatorView;
     UILabel *_classificationLabel;
@@ -35,6 +37,7 @@
 @property (strong, nonatomic) HKElectrocardiogram *electrocardiogram; // @synthesize electrocardiogram=_electrocardiogram;
 @property (strong, nonatomic) UITapGestureRecognizer *electrocardiogramCardTapGestureRecognizer; // @synthesize electrocardiogramCardTapGestureRecognizer=_electrocardiogramCardTapGestureRecognizer;
 @property (strong, nonatomic) HKElectrocardiogramCardView *electrocardiogramCardView; // @synthesize electrocardiogramCardView=_electrocardiogramCardView;
+@property (weak, nonatomic) id<HROnboardingElectrocardiogramSetupCompleteViewControllerDelegate> electrocardiogramDelegate; // @synthesize electrocardiogramDelegate=_electrocardiogramDelegate;
 @property (strong, nonatomic) HKAnchoredObjectQuery *electrocardiogramQuery; // @synthesize electrocardiogramQuery=_electrocardiogramQuery;
 @property (nonatomic) BOOL firstViewDidLayoutSubviews; // @synthesize firstViewDidLayoutSubviews=_firstViewDidLayoutSubviews;
 @property (readonly, nonatomic) BOOL isSampleInteractive; // @synthesize isSampleInteractive=_isSampleInteractive;
@@ -59,8 +62,7 @@
 - (id)_subheadlineFont;
 - (void)_updateUI;
 - (void)_updateUIForElectrocardiogram:(id)arg1;
-- (id)initForOnboarding:(BOOL)arg1;
-- (id)initForOnboarding:(BOOL)arg1 isSampleInteractive:(BOOL)arg2;
+- (id)initForOnboarding:(BOOL)arg1 isSampleInteractive:(BOOL)arg2 electrocardiogramDelegate:(id)arg3;
 - (void)stackedButtonView:(id)arg1 didTapButtonAtIndex:(long long)arg2;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

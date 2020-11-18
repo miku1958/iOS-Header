@@ -8,11 +8,11 @@
 
 #import <PhotoLibraryServices/PLAssetsdCloudServiceProtocol-Protocol.h>
 
-@class NSString, PLAssetsdCPLResourceDownloader;
+@class NSString, PLLazyObject;
 
 @interface PLAssetsdCloudService : PLAbstractLibraryServicesManagerService <PLAssetsdCloudServiceProtocol>
 {
-    PLAssetsdCPLResourceDownloader *_resourceDownloader;
+    PLLazyObject *_lazyResourceDownloader;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,8 +26,9 @@
 - (void)cancelCPLDownloadTaskWithIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)computeFingerPrintsOfAssetWithObjectURI:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)downloadCloudPhotoLibraryAssetWithObjectURI:(id)arg1 taskIdentifier:(id)arg2 resourceType:(unsigned long long)arg3 HighPriority:(BOOL)arg4 trackCPLDownload:(BOOL)arg5 downloadIsTransient:(BOOL)arg6 reply:(CDUnknownBlockType)arg7;
-- (id)initWithLibraryServicesManager:(id)arg1 resourceDownloader:(id)arg2;
+- (id)initWithLibraryServicesManager:(id)arg1 lazyResourceDownloader:(id)arg2;
 - (void)requestVideoPlaybackURLForCloudSharedAsset:(id)arg1 mediaAssetType:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
+- (id)resourceDownloader;
 
 @end
 

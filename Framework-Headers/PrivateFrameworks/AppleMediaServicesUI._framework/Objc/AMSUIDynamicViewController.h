@@ -38,6 +38,7 @@
 + (id)bagSubProfileVersion;
 + (id)createBagForSubProfile;
 - (void).cxx_destruct;
+- (void)_setup;
 - (void)_setupContentSize;
 - (id)initWithBag:(id)arg1 URL:(id)arg2;
 - (id)initWithBag:(id)arg1 bagValue:(id)arg2;

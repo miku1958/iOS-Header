@@ -10,7 +10,7 @@
 
 @interface TUDebugWindow : UIWindow
 {
-    MISSING_TYPE *resolver;
+    MISSING_TYPE *debugDelegate;
     MISSING_TYPE *isAllowed;
     MISSING_TYPE *isPresenting;
 }

@@ -87,7 +87,7 @@
 - (id)_iconState;
 - (void)_removeIconStateAutosaveDisableAssertion:(id)arg1;
 - (void)_rootFolder:(id)arg1 moveIconsToFirstPage:(id)arg2 placeBumpedIconsSomewhereNice:(id)arg3;
-- (void)_saveIconState;
+- (BOOL)_saveIconStateWithError:(id *)arg1;
 - (BOOL)_shouldSkipAddingIcon:(id)arg1 toRootFolder:(id)arg2;
 - (id)_unarchiveRootFolder;
 - (id)addDownloadingIconForBundleID:(id)arg1 withIdentifier:(id)arg2;
@@ -95,6 +95,7 @@
 - (void)addIcon:(id)arg1;
 - (void)addIconsOfClass:(Class)arg1 toSet:(id)arg2;
 - (void)adjustIconsToShow:(id)arg1 iconsToHide:(id)arg2 afterChangeToVisibleIconTags:(id)arg3 hiddenIconTags:(id)arg4;
+- (void)autosaveTimerDidFire:(id)arg1;
 - (void)checkModelConsistency;
 - (void)checkModelConsistencyInRootFolder:(id)arg1;
 - (void)clearDesiredIconState;
@@ -136,6 +137,7 @@
 - (void)loadAllIcons;
 - (id)localizedFolderNameForDefaultDisplayName:(id)arg1;
 - (id)makeFolderWithDisplayName:(id)arg1;
+- (id)makeFolderWithDisplayName:(id)arg1 uniqueIdentifier:(id)arg2;
 - (void)markIconStateClean;
 - (void)markIconStateDirty;
 - (unsigned long long)maxColumnCountForListInRootFolderWithInterfaceOrientation:(long long)arg1;
@@ -147,7 +149,7 @@
 - (void)removeIconForIdentifier:(id)arg1;
 - (void)removeIcons:(id)arg1;
 - (void)saveDesiredIconState;
-- (void)saveIconStateIfNeeded;
+- (BOOL)saveIconStateIfNeeded;
 - (void)scheduleIconStateAutosave;
 - (void)setForecastedLeavesOnIconModel:(id)arg1 includingMissingIcons:(id)arg2;
 - (void)setLeafIconsByIdentifier:(id)arg1;

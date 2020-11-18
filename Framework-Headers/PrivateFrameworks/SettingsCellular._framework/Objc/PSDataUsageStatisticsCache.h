@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class CTDeviceDataUsage, CoreTelephonyClient, NSDictionary;
+@class CTDeviceDataUsage, CoreTelephonyClient, Logger, NSDictionary;
 @protocol OS_dispatch_queue;
 
 @interface PSDataUsageStatisticsCache : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
+    Logger *_logger;
     BOOL _refreshInProgress;
     BOOL _cacheNeedsRefresh;
     CoreTelephonyClient *_client;
@@ -46,6 +47,7 @@
 - (void)fetchDeviceDataUsageWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchHotspotClientsUsage;
 - (void)fetchWorkspaceInfo;
+- (id)getLogger;
 - (id)hotspotClientIDsForPeriod:(unsigned long long)arg1;
 - (id)init;
 - (id)initPrivate;

@@ -49,6 +49,7 @@
     unsigned int waiting_for_writable:1;
     unsigned int input_available_unacknowledged:1;
     unsigned int input_suspended:1;
+    unsigned int deferred_input_finished:1;
     unsigned int servicing_reads:1;
     unsigned int servicing_handshake:1;
     unsigned int server:1;

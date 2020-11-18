@@ -32,9 +32,9 @@
     BOOL _isSuspended;
     BOOL _stashTabHidden;
     BOOL _stashTabShownLeft;
+    BOOL _isShowingChrome;
     unsigned long long _inFlightStashTabAnimationIdentifier;
     unsigned long long _inFlightStashProgressAnimationIdentifier;
-    long long _stashState;
     UITapGestureRecognizer *_stashedTapGestureRecognizer;
     struct CGSize _preferredContentSize;
     id<PGPictureInPictureViewControllerContentContainer> _contentContainer;
@@ -52,6 +52,7 @@
         unsigned int performRotateAnimationWithRotation:1;
     } _contentContainerRespondsTo;
     BOOL _canStartShowingChrome;
+    BOOL _stashed;
     PGPictureInPictureApplication *_application;
     CDUnknownBlockType _waitForUIFinalizationCompletionBlock;
     long long _controlsStyle;
@@ -74,7 +75,7 @@
 @property (nonatomic) struct CGSize minimumStashTabSize; // @synthesize minimumStashTabSize=_minimumStashTabSize;
 @property (readonly, nonatomic) double preferredMinimumWidth;
 @property (readonly, nonatomic) BOOL prefersIdleTimerDisabled;
-@property (nonatomic) long long stashState; // @synthesize stashState=_stashState;
+@property (nonatomic) BOOL stashed; // @synthesize stashed=_stashed;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PGControlsViewModel *viewModel;
 @property (copy, nonatomic) CDUnknownBlockType waitForUIFinalizationCompletionBlock; // @synthesize waitForUIFinalizationCompletionBlock=_waitForUIFinalizationCompletionBlock;

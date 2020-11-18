@@ -12,11 +12,14 @@ __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI22CardCollectionViewCell : VUICardCollectionViewCell
 {
     MISSING_TYPE *viewLayout;
+    MISSING_TYPE *imageViewModel;
 }
 
 - (void).cxx_destruct;
+- (void)imageViewHandler:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)prepareForReuse;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

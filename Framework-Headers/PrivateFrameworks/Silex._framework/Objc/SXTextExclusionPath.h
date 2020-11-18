@@ -6,8 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, SXTextExclusionPathWrapper, UIBezierPath;
-@protocol TSDWrappable;
+@class NSString, SXTextExclusionPathWrapper;
 
 @interface SXTextExclusionPath : NSObject
 {
@@ -29,31 +28,8 @@
     struct CGRect _exclusionRect;
 }
 
-@property (nonatomic) struct CGPoint actualPosition; // @synthesize actualPosition=_actualPosition;
-@property (readonly, nonatomic) struct CGPoint anchorPoint; // @synthesize anchorPoint=_anchorPoint;
-@property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
-@property (strong, nonatomic) NSString *componentIdentifier; // @synthesize componentIdentifier=_componentIdentifier;
-@property (nonatomic) struct CGRect exclusionRect; // @synthesize exclusionRect=_exclusionRect;
-@property (nonatomic) BOOL fullBleed; // @synthesize fullBleed=_fullBleed;
-@property (readonly, nonatomic) struct UIEdgeInsets insets; // @synthesize insets=_insets;
-@property (nonatomic) int lineVerticalAlignment; // @synthesize lineVerticalAlignment=_lineVerticalAlignment;
-@property (copy, nonatomic) CDUnknownBlockType minYBlock; // @synthesize minYBlock=_minYBlock;
-@property (nonatomic) double padding; // @synthesize padding=_padding;
-@property (readonly, nonatomic) UIBezierPath *path;
-@property (readonly, nonatomic) struct CGPoint position; // @synthesize position=_position;
-@property (nonatomic) struct _NSRange range; // @synthesize range=_range;
-@property (copy, nonatomic) CDUnknownBlockType startBlock; // @synthesize startBlock=_startBlock;
-@property (readonly, nonatomic) int type; // @synthesize type=_type;
-@property (nonatomic) double verticalAlignmentFactor; // @synthesize verticalAlignmentFactor=_verticalAlignmentFactor;
-@property (readonly, nonatomic) id<TSDWrappable> wrappable;
-@property (readonly, nonatomic) SXTextExclusionPathWrapper *wrapper; // @synthesize wrapper=_wrapper;
-
 - (void).cxx_destruct;
-- (void)adjustYPositionWithCurrentPosition:(struct CGPoint)arg1;
-- (void)callCompletionBlock;
-- (void)callStartBlock;
 - (id)description;
-- (id)initWithTextRange:(struct _NSRange)arg1 position:(struct CGPoint)arg2 rect:(struct CGRect)arg3 withInsets:(struct UIEdgeInsets)arg4;
 
 @end
 

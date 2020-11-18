@@ -7,17 +7,19 @@
 #import <HomeKitDaemon/HMDStreamInterface.h>
 
 #import <HomeKitDaemon/AVCAudioStreamDelegate-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class AVCAudioStream, NSNumber, NSString;
 @protocol HMDAudioStreamInterfaceDelegate;
 
-@interface HMDAudioStreamInterface : HMDStreamInterface <AVCAudioStreamDelegate>
+@interface HMDAudioStreamInterface : HMDStreamInterface <HMFLogging, AVCAudioStreamDelegate>
 {
     BOOL _streamStarted;
     AVCAudioStream *_audioStream;
     id<HMDAudioStreamInterfaceDelegate> _delegate;
     unsigned long long _audioStreamSetting;
     double _rtcpSendIntervalSec;
+    CDUnknownBlockType _stopStreamCompletionHandler;
 }
 
 @property (strong, nonatomic) AVCAudioStream *audioStream; // @synthesize audioStream=_audioStream;
@@ -33,6 +35,7 @@
 @property (nonatomic) double rtcpTimeOutIntervalSec;
 @property (nonatomic, getter=isRTPTimeOutEnabled) BOOL rtpTimeOutEnabled;
 @property (nonatomic) double rtpTimeOutIntervalSec;
+@property (copy) CDUnknownBlockType stopStreamCompletionHandler; // @synthesize stopStreamCompletionHandler=_stopStreamCompletionHandler;
 @property (nonatomic) BOOL streamStarted; // @synthesize streamStarted=_streamStarted;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSNumber *syncSource;
@@ -51,6 +54,7 @@
 - (void)_pauseStream;
 - (void)_resumeStream;
 - (void)_startStream:(id)arg1;
+- (void)_stopStreamWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_updateAudioSetting:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4 sessionHandler:(id)arg5 localNetworkConfig:(id)arg6;

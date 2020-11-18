@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) BOOL ckShouldShowDigitalTouchCanvas;
 @property (readonly, nonatomic) NSArray *ckSuggestedReplies;
 
++ (id)__ck_appleMapsURLForCoordinate:(struct CLLocationCoordinate2D)arg1 coordinateName:(id)arg2;
 + (id)ckURLForChatIdentifier:(id)arg1 entryBody:(id)arg2;
 + (id)ckURLForResource:(id)arg1 withExtension:(id)arg2;
 - (BOOL)ckIsSMSPrivateURLScheme;

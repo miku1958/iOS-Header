@@ -11,6 +11,8 @@
 - (void)tabBarSplitViewDidUnobsureView;
 - (void)tabBarSplitViewWillObsureView;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

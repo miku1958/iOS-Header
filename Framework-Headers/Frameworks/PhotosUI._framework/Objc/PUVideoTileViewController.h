@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     UIImageView *_placeholderImageView;
     UIImage *_preloadedImage;
     BOOL _hidePlaceholderImmediately;
+    BOOL _waitForFocusValueForCrossfade;
     BOOL _canPlayVideo;
     BOOL __isDisplayingFullQualityImage;
     BOOL _playerIsSeeking;

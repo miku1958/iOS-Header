@@ -29,11 +29,14 @@
     struct CGRect _titleLabelFrame;
     struct CGRect _titleLabelLastLineBounds;
     double _titleLabelLastLineDescent;
+    UIImageView *_bodyImageView;
     UIButton *_bodyButton;
     UITextView *_secondaryBodyTextView;
     UIView *_topBackgroundView;
     BOOL _forceShowSetupLaterButton;
     BOOL _hideTitleText;
+    BOOL _titleTextAdjustsFontSizeToWidth;
+    int _titleTextNumberOfLines;
     id<PKExplanationViewDelegate> _delegate;
     double _titleHyphenationFactor;
     double _topLogoPadding;
@@ -43,6 +46,7 @@
     UIImage *_titleImage;
     UIFont *_titleFont;
     long long _titleTextAlignment;
+    UIImage *_bodyImage;
     NSString *_bodyText;
     NSAttributedString *_attributedBodyText;
     NSAttributedString *_attributedSecondaryBodyText;
@@ -66,6 +70,8 @@
 @property (nonatomic) long long bodyButtonNumberOfLines; // @synthesize bodyButtonNumberOfLines=_bodyButtonNumberOfLines;
 @property (copy, nonatomic) NSString *bodyButtonText; // @synthesize bodyButtonText=_bodyButtonText;
 @property (nonatomic) unsigned long long bodyDataDetectorTypes; // @synthesize bodyDataDetectorTypes=_bodyDataDetectorTypes;
+@property (strong, nonatomic) UIImage *bodyImage; // @synthesize bodyImage=_bodyImage;
+@property (readonly, nonatomic) UIImageView *bodyImageView;
 @property (copy, nonatomic) NSString *bodyText; // @synthesize bodyText=_bodyText;
 @property (nonatomic) long long bodyTextAlignment; // @synthesize bodyTextAlignment=_bodyTextAlignment;
 @property (readonly, nonatomic) UIFont *bodyTextFont;
@@ -93,7 +99,9 @@
 @property (nonatomic) double titleHyphenationFactor; // @synthesize titleHyphenationFactor=_titleHyphenationFactor;
 @property (strong, nonatomic) UIImage *titleImage; // @synthesize titleImage=_titleImage;
 @property (copy, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
+@property (nonatomic) BOOL titleTextAdjustsFontSizeToWidth; // @synthesize titleTextAdjustsFontSizeToWidth=_titleTextAdjustsFontSizeToWidth;
 @property (nonatomic) long long titleTextAlignment; // @synthesize titleTextAlignment=_titleTextAlignment;
+@property (nonatomic) int titleTextNumberOfLines; // @synthesize titleTextNumberOfLines=_titleTextNumberOfLines;
 @property (strong, nonatomic) UIColor *topBackgroundColor; // @synthesize topBackgroundColor=_topBackgroundColor;
 @property (nonatomic) double topLogoPadding; // @synthesize topLogoPadding=_topLogoPadding;
 @property (nonatomic) double topMargin; // @synthesize topMargin=_topMargin;
@@ -119,6 +127,7 @@
 - (void)layoutSubviews;
 - (void)pk_applyAppearance:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)setTitleTextAdjustsFontSizeToFitWidth:(BOOL)arg1;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)tintColorDidChange;
 - (long long)visibilityBackdropView:(id)arg1 preferredStyleForTraitCollection:(id)arg2;

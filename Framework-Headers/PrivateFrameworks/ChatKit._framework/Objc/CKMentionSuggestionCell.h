@@ -6,21 +6,24 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class CKAvatarView, CKEntity, CKLabel;
+@class CKAvatarView, CKEntity, CKLabel, UIView;
 
 @interface CKMentionSuggestionCell : UICollectionViewCell
 {
     CKEntity *_suggestedEntity;
     CKLabel *_handleLabel;
     CKAvatarView *_avatarView;
+    UIView *_hoverView;
 }
 
 @property (strong, nonatomic) CKAvatarView *avatarView; // @synthesize avatarView=_avatarView;
 @property (strong, nonatomic) CKLabel *handleLabel; // @synthesize handleLabel=_handleLabel;
+@property (strong, nonatomic) UIView *hoverView; // @synthesize hoverView=_hoverView;
 @property (strong, nonatomic) CKEntity *suggestedEntity; // @synthesize suggestedEntity=_suggestedEntity;
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
+- (void)didHoverOverCell:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

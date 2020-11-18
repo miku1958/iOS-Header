@@ -17,7 +17,9 @@
 - (id)_axBalloonViewCustomActions;
 - (id)_axBuddyNameForBalloon;
 - (id)_axChatItemForBalloon;
+- (id)_axDigitalTouchDescription;
 - (BOOL)_axIsBalloonOfType:(id)arg1;
+- (BOOL)_axIsDigitalTouch;
 - (BOOL)_axIsImessage;
 - (BOOL)_axIsInNotification;
 - (BOOL)_axIsMessageFromMe;

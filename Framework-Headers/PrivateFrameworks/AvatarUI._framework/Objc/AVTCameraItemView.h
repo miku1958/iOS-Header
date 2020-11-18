@@ -6,18 +6,23 @@
 
 #import <UIKit/UIView.h>
 
-@class CAShapeLayer;
+@class CAShapeLayer, UIImageSymbolConfiguration, UIImageView;
 
 @interface AVTCameraItemView : UIView
 {
     CAShapeLayer *_shapeLayer;
+    UIImageView *_imageView;
+    UIImageSymbolConfiguration *_cameraConfiguration;
 }
 
+@property (strong, nonatomic) UIImageSymbolConfiguration *cameraConfiguration; // @synthesize cameraConfiguration=_cameraConfiguration;
+@property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (strong, nonatomic) CAShapeLayer *shapeLayer; // @synthesize shapeLayer=_shapeLayer;
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)updateCameraImage;
 
 @end
 

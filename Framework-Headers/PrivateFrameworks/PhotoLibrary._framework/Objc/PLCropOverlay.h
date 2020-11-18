@@ -60,6 +60,8 @@
 
 - (void).cxx_destruct;
 - (void)_backgroundSavePhoto:(id)arg1 cropRect:(struct CGRect)arg2 minimalCropDimension:(double)arg3;
+- (id)_bottomBarFileSizeMenu;
+- (id)_bottomBarFileSizeMenuActions;
 - (void)_createCropView;
 - (void)_fadeOutCompleted:(id)arg1;
 - (id)_fileResizingButton;
@@ -70,7 +72,6 @@
 - (void)_setMode:(int)arg1;
 - (void)_tappedBottomBarCancelButton:(id)arg1;
 - (void)_tappedBottomBarDoneButton:(id)arg1;
-- (void)_tappedBottomBarFileResizingButton;
 - (void)_tappedBottomBarMotionToggle;
 - (void)_tappedBottomBarPlaybackButton:(id)arg1;
 - (void)_tappedBottomBarSetBothButton;

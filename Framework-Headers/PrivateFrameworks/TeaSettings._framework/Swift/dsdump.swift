@@ -70,7 +70,7 @@
 	var apply : PresetApplicatorType
 
 	// Swift methods
-	0x2020  class func Preset.__allocating_init(extends:apply:) // init 
+	0x1f90  class func Preset.__allocating_init(extends:apply:) // init 
  }
 
  class TeaSettings.SettingGroup : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -79,9 +79,9 @@
 	var enabledSetting : Setting
 
 	// Swift methods
-	0x2140  func <stripped> // getter 
-	0x2180  func <stripped> // method 
-	0x2230  class func SettingGroup.__allocating_init(key:defaultValue:access:) // init 
+	0x20b0  func <stripped> // getter 
+	0x20f0  func <stripped> // method 
+	0x21a0  class func SettingGroup.__allocating_init(key:defaultValue:access:) // init 
  }
 
  enum TeaSettings.Access {
@@ -99,7 +99,7 @@
 	var observers : SettingObserver
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1b3a000076e0 (0x33a000076e0) in binary!
+WARNING: couldn't find address 0x1b3a00007440 (0x33a00007440) in binary!
 	0x0  @objc SettingsStore.(null) <stripped>
 
 	// Swift methods
@@ -201,9 +201,9 @@ WARNING: couldn't find address 0x1b3a000076e0 (0x33a000076e0) in binary!
 	let actions : SettingAction
 
 	// Swift methods
-	0xdf70  class func PresetItem.__allocating_init(_:label:actions:) // init 
-	0xdfe0  func <stripped> // getter 
-	0xe270  func <stripped> // getter 
+	0xe1e0  class func PresetItem.__allocating_init(_:label:actions:) // init 
+	0xe250  func <stripped> // getter 
+	0xe4e0  func <stripped> // getter 
  }
 
  enum TeaSettings.FeatureState {
@@ -249,12 +249,12 @@ WARNING: couldn't find address 0x1b3a000076e0 (0x33a000076e0) in binary!
 	let closure : Updatable
 
 	// Swift methods
-	0x11d50  func <stripped> // getter 
-	0x11d80  func <stripped> // setter 
-	0x11dc0  func <stripped> // modifyCoroutine 
-	0x11ac0  class func SettingAction.__allocating_init(_:_:) // init 
-	0x11e60  func <stripped> // method 
-	0x11eb0  func <stripped> // method 
+	0x11fd0  func <stripped> // getter 
+	0x12000  func <stripped> // setter 
+	0x12040  func <stripped> // modifyCoroutine 
+	0x11d40  class func SettingAction.__allocating_init(_:_:) // init 
+	0x120e0  func <stripped> // method 
+	0x12130  func <stripped> // method 
  }
 
  enum TeaSettings.PostInstruction {
@@ -274,7 +274,7 @@ WARNING: couldn't find address 0x1b3a000076e0 (0x33a000076e0) in binary!
 	var presets : Preset
 
 	// Swift methods
-	0x12ac0  class func PresetManager.__allocating_init() // init 
+	0x12d40  class func PresetManager.__allocating_init() // init 
  }
 
  enum TeaSettings.Domain {
@@ -300,8 +300,8 @@ WARNING: couldn't find address 0x1b3a000076e0 (0x33a000076e0) in binary!
 	let presetManager : PresetManagerType
 
 	// Swift methods
-	0x14dd0  class func PresetStartupTask.__allocating_init(presetManager:) // init 
-	0x14e70  func <stripped> // method 
+	0x15060  class func PresetStartupTask.__allocating_init(presetManager:) // init 
+	0x15100  func <stripped> // method 
  }
 
  class TeaSettings.ResetItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -313,7 +313,7 @@ WARNING: couldn't find address 0x1b3a000076e0 (0x33a000076e0) in binary!
 	let layout : Group
 
 	// Swift methods
-	0x155d0  class func ResetItem.__allocating_init(layout:) // init 
+	0x15860  class func ResetItem.__allocating_init(layout:) // init 
  }
 
  class TeaSettings.Presets : _SwiftObject /usr/lib/swift/libswiftCore.dylib {

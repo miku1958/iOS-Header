@@ -229,6 +229,7 @@
 - (id)initWithPlaceData:(id)arg1;
 - (id)initWithPlaceData:(id)arg1 attributionMap:(id)arg2 disambiguationLabel:(id)arg3 detourInfo:(id)arg4 externalTransitStationCode:(id)arg5 additionalPlaces:(id)arg6;
 - (id)initWithPlaceData:(id)arg1 detourInfo:(id)arg2;
+- (id)initWithPlaceData:(id)arg1 detourInfo:(id)arg2 additionalPlaceDatas:(id)arg3;
 - (BOOL)isEqualToMapItem:(id)arg1;
 - (void)iterateGroundViewsWithBlock:(CDUnknownBlockType)arg1;
 - (id)shortAddress;

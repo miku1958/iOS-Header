@@ -31,6 +31,7 @@
     MISSING_TYPE *commitSeed;
     MISSING_TYPE *displayIndex;
     MISSING_TYPE *removedSeed;
+    MISSING_TYPE *failedSeed;
     MISSING_TYPE *placement;
     MISSING_TYPE *releaseSecondaryElements;
     MISSING_TYPE *willEnableTransitions;

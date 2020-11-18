@@ -10,7 +10,6 @@
 
 @protocol MTIDSecretStore <NSObject>
 - (void)clearLocalData;
-- (MTPromise *)resetSecretForScheme:(MTIDScheme *)arg1 options:(NSDictionary *)arg2;
 - (MTPromise *)secretForScheme:(MTIDScheme *)arg1 options:(NSDictionary *)arg2;
 
 @optional

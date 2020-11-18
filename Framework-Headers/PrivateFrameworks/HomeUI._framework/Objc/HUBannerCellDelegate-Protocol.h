@@ -6,9 +6,13 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
+@class HUBannerCell, UIButton, UIView;
+
 @protocol HUBannerCellDelegate <NSObject>
 
 @optional
-- (void)bannerDismissButtonPressed:(id)arg1;
+- (void)bannerCell:(HUBannerCell *)arg1 dismissButtonTapped:(UIButton *)arg2;
+- (void)bannerCell:(HUBannerCell *)arg1 footerViewTapped:(UIView *)arg2;
+- (BOOL)bannerCell:(HUBannerCell *)arg1 shouldReceiveFooterViewTaps:(UIView *)arg2;
 @end
 

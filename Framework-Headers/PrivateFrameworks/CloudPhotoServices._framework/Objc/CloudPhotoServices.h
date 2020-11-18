@@ -31,7 +31,7 @@
 + (void)generateDerivativeResourcesFromInputResource:(id)arg1 withAdjustments:(id)arg2 destinationDirectory:(id)arg3 derivativesFilter:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 + (void)generateFullSizeJPEGIfNecessaryFromInputResource:(id)arg1 destinationDirectory:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)generateGIFForVideoAtURL:(id)arg1 destinationURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-+ (void)generatePosterFrameForVideoAtURL:(id)arg1 maximumPixelCount:(long long)arg2 destinationURL:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
++ (void)generatePosterFrameForVideoAtURL:(id)arg1 maximumPixelCount:(long long)arg2 destinationURL:(id)arg3 reason:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 + (void)initialize;
 + (BOOL)isMovieUTI:(id)arg1;
 + (BOOL)isUnsupportedOriginalFormatError:(id)arg1;
@@ -39,7 +39,7 @@
 + (void)resizeImageAtURL:(id)arg1 destinationURL:(id)arg2 maximumPixelCount:(long long)arg3 bakeInOrientation:(BOOL)arg4 colorOutput:(long long)arg5 completionHandler:(CDUnknownBlockType)arg6;
 + (void)resizeImageAtURL:(id)arg1 destinationURL:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (BOOL)shouldGenerateVideoDerivativeForAVAsset:(id)arg1 forResourceType:(unsigned long long)arg2 adjusted:(BOOL)arg3;
-+ (id)transcodeVideoAtURL:(id)arg1 withAdjustments:(id)arg2 destinationURL:(id)arg3 options:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
++ (id)transcodeVideoAtURL:(id)arg1 withAdjustments:(id)arg2 destinationURL:(id)arg3 options:(id)arg4 reason:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 + (id)workQueue;
 
 @end

@@ -8,12 +8,12 @@
 
 #import <Silex/SXVideoPlayerViewControllerProvider-Protocol.h>
 
-@class NSMutableDictionary, NSString, NSURL, SVVolumeProvider;
+@class NSMutableDictionary, NSString, NSURL, SXVolumeProvider;
 
 @interface SXVideoPlayerViewControllerManager : NSObject <SXVideoPlayerViewControllerProvider>
 {
     BOOL _presentedAndAppeared;
-    SVVolumeProvider *_volumeProvider;
+    SXVolumeProvider *_volumeProvider;
     NSURL *_autoplayURL;
     NSMutableDictionary *_videoAnalyticsRouters;
     NSMutableDictionary *_visibilityMonitors;
@@ -37,7 +37,7 @@
 @property (readonly, nonatomic) NSMutableDictionary *videoAnalyticsRouters; // @synthesize videoAnalyticsRouters=_videoAnalyticsRouters;
 @property (readonly, nonatomic) NSMutableDictionary *videoPlayerViewControllers; // @synthesize videoPlayerViewControllers=_videoPlayerViewControllers;
 @property (readonly, nonatomic) NSMutableDictionary *visibilityMonitors; // @synthesize visibilityMonitors=_visibilityMonitors;
-@property (readonly, nonatomic) SVVolumeProvider *volumeProvider; // @synthesize volumeProvider=_volumeProvider;
+@property (readonly, nonatomic) SXVolumeProvider *volumeProvider; // @synthesize volumeProvider=_volumeProvider;
 
 - (void).cxx_destruct;
 - (void)configureAutoplayForVideoWithURL:(id)arg1 analyticsRouter:(id)arg2;

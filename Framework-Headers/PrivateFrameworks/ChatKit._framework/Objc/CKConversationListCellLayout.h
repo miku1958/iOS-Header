@@ -9,11 +9,13 @@
 @interface CKConversationListCellLayout : NSObject
 {
     BOOL _shouldShowChevron;
+    BOOL _shouldShowAvatarView;
     BOOL _invalid;
     double _tableViewWidth;
     double _summaryLabelCapFrameYOrigin;
     double _trailingLayoutMarginSize;
     double _contentViewWidth;
+    double _widthForDeterminingAvatarVisibility;
     double _lastUsedDisplayScale;
     double _cellHeight;
     struct CGRect _summaryFrame;
@@ -21,8 +23,10 @@
     struct CGRect _senderFrame;
     struct CGRect _chevronFrame;
     struct CGRect _unreadFrame;
+    struct CGRect _avatarFrame;
 }
 
+@property (nonatomic) struct CGRect avatarFrame; // @synthesize avatarFrame=_avatarFrame;
 @property (nonatomic) double cellHeight; // @synthesize cellHeight=_cellHeight;
 @property (nonatomic) struct CGRect chevronFrame; // @synthesize chevronFrame=_chevronFrame;
 @property (nonatomic) double contentViewWidth; // @synthesize contentViewWidth=_contentViewWidth;
@@ -30,19 +34,21 @@
 @property (nonatomic) BOOL invalid; // @synthesize invalid=_invalid;
 @property (nonatomic) double lastUsedDisplayScale; // @synthesize lastUsedDisplayScale=_lastUsedDisplayScale;
 @property (nonatomic) struct CGRect senderFrame; // @synthesize senderFrame=_senderFrame;
+@property (nonatomic) BOOL shouldShowAvatarView; // @synthesize shouldShowAvatarView=_shouldShowAvatarView;
 @property (nonatomic) BOOL shouldShowChevron; // @synthesize shouldShowChevron=_shouldShowChevron;
 @property (nonatomic) struct CGRect summaryFrame; // @synthesize summaryFrame=_summaryFrame;
 @property (nonatomic) double summaryLabelCapFrameYOrigin; // @synthesize summaryLabelCapFrameYOrigin=_summaryLabelCapFrameYOrigin;
 @property (nonatomic) double tableViewWidth; // @synthesize tableViewWidth=_tableViewWidth;
 @property (nonatomic) double trailingLayoutMarginSize; // @synthesize trailingLayoutMarginSize=_trailingLayoutMarginSize;
 @property (nonatomic) struct CGRect unreadFrame; // @synthesize unreadFrame=_unreadFrame;
+@property (nonatomic) double widthForDeterminingAvatarVisibility; // @synthesize widthForDeterminingAvatarVisibility=_widthForDeterminingAvatarVisibility;
 
 + (id)sharedInstance;
 - (double)cellHeightForDisplayScale:(double)arg1;
 - (id)init;
 - (void)invalidate;
-- (BOOL)isValidForContentViewWidth:(double)arg1;
-- (void)markAsValidForContentViewWidth:(double)arg1;
+- (BOOL)isValidForContentViewWidth:(double)arg1 widthForDeterminingAvatarVisibility:(double)arg2;
+- (void)markAsValidForContentViewWidth:(double)arg1 widthForDeterminingAvatarVisibility:(double)arg2;
 
 @end
 

@@ -15,10 +15,12 @@ __attribute__((visibility("hidden")))
 {
     NSURL *_URL;
     AMSUIWebClientContext *_context;
+    NSString *_callbackScheme;
     ASWebAuthenticationSession *_session;
 }
 
 @property (strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+@property (strong, nonatomic) NSString *callbackScheme; // @synthesize callbackScheme=_callbackScheme;
 @property (strong, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -26,7 +28,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) ASWebAuthenticationSession *session; // @synthesize session=_session;
 @property (readonly) Class superclass;
 
-+ (void)_openURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (id)resultFromURL:(id)arg1 error:(id)arg2;
 - (void).cxx_destruct;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 - (id)runAction;

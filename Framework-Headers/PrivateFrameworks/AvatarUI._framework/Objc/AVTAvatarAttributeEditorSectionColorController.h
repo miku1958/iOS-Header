@@ -101,6 +101,7 @@
 - (void)selectIndexPath:(id)arg1;
 - (void)setSelectedState:(BOOL)arg1 animated:(BOOL)arg2 forCellAtIndexPath:(id)arg3;
 - (void)showSliderAnimated:(BOOL)arg1;
+- (struct CGSize)sizeForFocusingItemAtIndex:(long long)arg1 fittingSize:(struct CGSize)arg2;
 - (struct CGSize)sizeForItemAtIndex:(long long)arg1 fittingSize:(struct CGSize)arg2;
 - (void)updateCell:(id)arg1 forItemAtIndex:(long long)arg2;
 - (void)updateCellLayer:(id)arg1 withColorItem:(id)arg2 withColorPreset:(id)arg3;

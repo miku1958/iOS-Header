@@ -45,18 +45,22 @@
 @property (readonly) Class superclass;
 
 + (id)_audioCategoryForAlert:(id)arg1;
++ (unsigned long long)_audioCategoryOptionsForAlert:(id)arg1;
 + (id)_audioModeForAlert:(id)arg1 audioCategory:(id)arg2;
++ (long long)_audioVolumeApplicationPolicyForAlert:(id)arg1;
 + (id)_celestialAudioCategoryForAudioSessionCategory:(id)arg1;
 + (id)_clientNameForAlert:(id)arg1;
 + (long long)_clientPriorityForAlert:(id)arg1;
 + (id)_propertyKeysOfInterestForToneAssets;
 + (BOOL)_shouldApplyAttentionAwarenessEffectsForAlert:(id)arg1;
 + (BOOL)_shouldBypassRingerSwitchPolicyForAlert:(id)arg1;
++ (BOOL)_shouldEnsureActiveAudioSessionWhenStartingPlaybackForAlert:(id)arg1;
 + (BOOL)_shouldHandleAudioSessionActivationForAlert:(id)arg1;
 + (BOOL)_shouldVibrateForAlert:(id)arg1;
 - (void).cxx_destruct;
 - (void)_activateAudioSessionIfNeeded;
 - (float)_adjustAudioVolumeForOptimalRampingPerception:(float)arg1;
+- (void)_applyAudioVolume:(float)arg1 forAlert:(id)arg2;
 - (void)_assertRunningOnAudioEventQueue;
 - (id)_audioMixForVolumeRampingWithDuration:(double)arg1 toneAsset:(id)arg2 toneAssetDuration:(double)arg3 itemIndex:(unsigned long long)arg4;
 - (float)_audioVolumeForAlert:(id)arg1 audioCategory:(id)arg2;

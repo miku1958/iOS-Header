@@ -11,11 +11,13 @@
 @interface MPSetPlaybackSessionCommand : MPRemoteCommand
 {
     NSString *_currentPlaybackSessionIdentifier;
+    NSString *_currentPlaybackSessionRevision;
     NSArray *_exportableSessionTypes;
     NSArray *_supportedSessionTypes;
 }
 
 @property (copy, nonatomic) NSString *currentPlaybackSessionIdentifier; // @synthesize currentPlaybackSessionIdentifier=_currentPlaybackSessionIdentifier;
+@property (copy, nonatomic) NSString *currentPlaybackSessionRevision; // @synthesize currentPlaybackSessionRevision=_currentPlaybackSessionRevision;
 @property (copy, nonatomic) NSArray *exportableSessionTypes; // @synthesize exportableSessionTypes=_exportableSessionTypes;
 @property (copy, nonatomic) NSArray *supportedSessionTypes; // @synthesize supportedSessionTypes=_supportedSessionTypes;
 

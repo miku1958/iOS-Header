@@ -70,6 +70,7 @@
 - (void)_updateWithDataSource:(id)arg1 changeHistory:(id)arg2;
 - (void)autoScroller:(id)arg1 didAutoscrollWithTimestamp:(double)arg2;
 - (void)automaticallyTransitionToMultiSelectModeKeepingCurrentSelection:(BOOL)arg1;
+- (void)didCancelMultiSelectInteraction:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)didEndMultiSelectInteraction:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (id)init;
 - (id)initWithSelectionManager:(id)arg1 scrollView:(id)arg2;

@@ -16,8 +16,6 @@
     struct AUListenerBase *_parameterListener;
     BOOL _removingObserverWithContext;
     struct atomic<bool> _willSetFullState;
-    semaphore_e8b15a0e _parameterListenerSemaphore;
-    struct atomic<unsigned long long> _expectedEventMessages;
     struct atomic<unsigned int> _eventsTriggeringParameterTreeInvalidation;
     NSObject<OS_dispatch_queue> *_parameterTreeRebuildQueue;
     struct OpaqueAudioComponentInstance *_audioUnit;
@@ -33,11 +31,13 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (CDUnknownBlockType)MIDIOutputEventBlock;
+- (id)_buildNewParameterTree;
 - (void)_createEventListenerQueue;
 - (id)_createParameterTree;
 - (unsigned int)_elementCount:(unsigned int)arg1;
 - (BOOL)_elementCountWritable:(unsigned int)arg1;
 - (void)_invalidateParameterTree:(unsigned int)arg1;
+- (void)_notifyParameterChange:(unsigned long long)arg1;
 - (void)_rebuildBusses:(unsigned int)arg1;
 - (BOOL)_setElementCount:(unsigned int)arg1 count:(unsigned int)arg2 error:(id *)arg3;
 - (void)_setValue:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
@@ -47,6 +47,7 @@
 - (struct OpaqueAudioComponentInstance *)audioUnit;
 - (id)channelCapabilities;
 - (void)dealloc;
+- (void)deliverV2Parameters:(const union AURenderEvent *)arg1;
 - (int)enableBus:(unsigned int)arg1 scope:(unsigned int)arg2 enable:(BOOL)arg3;
 - (void)init2;
 - (id)initWithAudioUnit:(struct OpaqueAudioComponentInstance *)arg1 description:(struct AudioComponentDescription)arg2;

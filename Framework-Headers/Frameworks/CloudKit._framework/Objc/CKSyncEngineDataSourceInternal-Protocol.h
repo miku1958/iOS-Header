@@ -6,11 +6,12 @@
 
 #import <CloudKit/CKSyncEngineDataSource-Protocol.h>
 
-@class CKSyncEngine, NSError, NSOperation;
+@class CKSchedulerActivity, CKSyncEngine, NSError, NSOperation;
 
 @protocol CKSyncEngineDataSourceInternal <CKSyncEngineDataSource>
 
 @optional
+- (void)syncEngine:(CKSyncEngine *)arg1 didHandleSchedulerActivity:(CKSchedulerActivity *)arg2;
 - (void)syncEngine:(CKSyncEngine *)arg1 didSaveSubscriptionWithError:(NSError *)arg2;
 - (void)syncEngine:(CKSyncEngine *)arg1 didUpdateAccountStatus:(long long)arg2;
 - (void)syncEngine:(CKSyncEngine *)arg1 willEnqueueOperation:(NSOperation *)arg2;

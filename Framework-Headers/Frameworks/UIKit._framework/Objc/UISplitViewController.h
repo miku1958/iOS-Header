@@ -80,7 +80,7 @@
 - (void)_commonInit;
 - (double)_contentMarginForChildViewController:(id)arg1;
 - (struct CGSize)_contentSizeForChildViewController:(id)arg1 inPopoverController:(id)arg2;
-- (id)_deepestUnambiguousResponder;
+- (id)_deepestActionResponder;
 - (void)_descendantWillPresentViewController:(id)arg1 modalSourceViewController:(id)arg2 presentationController:(id)arg3 animated:(BOOL)arg4;
 - (void)_didChangeToFirstResponder:(id)arg1;
 - (void)_didEndSnapshotSession:(id)arg1;
@@ -101,9 +101,11 @@
 - (void)_marginInfoForChild:(id)arg1 leftMargin:(double *)arg2 rightMargin:(double *)arg3;
 - (id)_multitaskingDragExclusionRects;
 - (void)_navigationController:(id)arg1 navigationBar:(id)arg2 topItemUpdatedContentLayout:(id)arg3;
+- (id)_navigationController:(id)arg1 navigationBarAdditionalActionsForBackButtonMenu:(id)arg2;
 - (void)_navigationControllerDidChangeNavigationBarHidden:(id)arg1;
 - (void)_navigationControllerDidUpdateStack:(id)arg1;
 - (BOOL)_navigationControllerShouldNotAdjustTransitioningSizeForChildContainer:(id)arg1;
+- (id)_nextResponderUsingTargetActionStrategyFromChildViewController:(id)arg1 didTraverseToParentViewController:(BOOL *)arg2;
 - (BOOL)_optsOutOfPopoverControllerHierarchyCheck;
 - (id)_panelImpl;
 - (void)_popoverController:(id)arg1 didChangeFromVisible:(BOOL)arg2;
@@ -122,7 +124,7 @@
 - (long long)_subclassPreferredFocusedViewPrioritizationType;
 - (id)_super_childViewControllerForStatusBarStyle;
 - (id)_super_childViewControllersToSendViewWillTransitionToSize;
-- (id)_super_deepestUnambiguousResponder;
+- (id)_super_deepestActionResponder;
 - (void)_super_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (BOOL)_super_disableAutomaticKeyboardBehavior;
 - (id)_super_multitaskingDragExclusionRects;
@@ -140,6 +142,7 @@
 - (void)_tabBarControllerDidChangeSelection:(id)arg1;
 - (id)_traitCollectionForChildEnvironment:(id)arg1;
 - (void)_triggerSidebarKeyCommandAction:(id)arg1;
+- (struct UIEdgeInsets)_tvOSColumnStyleExtraInsetsForChildViewController:(id)arg1;
 - (void)_updateChildContentMargins;
 - (void)_updateDisplayModeButtonItem;
 - (void)_updateLayoutForStatusBarAndInterfaceOrientation;

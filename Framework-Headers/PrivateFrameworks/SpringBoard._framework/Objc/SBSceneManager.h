@@ -128,7 +128,7 @@
 - (id)slaveTransactionsForTransitionRequest:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
-- (id)transientApplicationSceneHandleIdentityForApplication:(id)arg1;
+- (id)transientApplicationSceneHandlesForApplication:(id)arg1;
 
 @end
 

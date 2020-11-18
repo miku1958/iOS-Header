@@ -101,6 +101,7 @@
 + (Class)layerClass;
 + (BOOL)lowLatency;
 + (unsigned long long)renderingAPIForOptions:(id)arg1;
++ (BOOL)usesSeparateWorkGroup;
 - (void)SCN_displayLinkCallback:(double)arg1;
 - (const void *)__CFObject;
 - (void)_adjustBackingLayerPixelFormat;

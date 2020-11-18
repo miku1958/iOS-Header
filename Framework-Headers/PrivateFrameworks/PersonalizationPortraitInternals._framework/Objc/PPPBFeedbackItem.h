@@ -11,17 +11,13 @@
 @interface PPPBFeedbackItem : PBCodable <NSCopying>
 {
     int _feedbackType;
-    float _mappingWeight;
     struct {
         unsigned int feedbackType:1;
-        unsigned int mappingWeight:1;
     } _has;
 }
 
 @property (nonatomic) int feedbackType; // @synthesize feedbackType=_feedbackType;
 @property (nonatomic) BOOL hasFeedbackType;
-@property (nonatomic) BOOL hasMappingWeight;
-@property (nonatomic) float mappingWeight; // @synthesize mappingWeight=_mappingWeight;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

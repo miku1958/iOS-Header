@@ -7,9 +7,11 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (AppleMediaServicesUI)
+- (double)ams_alpha;
 - (id)ams_backgroundColor;
 - (void)ams_layout;
 - (void)ams_sendSubviewToBack:(id)arg1;
+- (void)ams_setAlpha:(double)arg1;
 - (void)ams_setBackgroundColor:(id)arg1;
 @end
 

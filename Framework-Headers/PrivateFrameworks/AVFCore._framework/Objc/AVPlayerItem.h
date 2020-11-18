@@ -190,9 +190,8 @@
 - (void)_respondToBecomingReadyForBasicInspectionWithDuration:(CDStruct_1b6d18a9)arg1;
 - (id)_seekableTimeRanges;
 - (id)_seekableTimeRangesFromFPSeekableTimeIntervals:(id)arg1;
+- (void)_selectMediaOption:(id)arg1 inGroup:(id)arg2 cacheIfAppropriate:(BOOL)arg3;
 - (void)_selectMediaOption:(id)arg1 inMediaSelectionGroup:(id)arg2 cacheIfAppropriate:(BOOL)arg3;
-- (void)_selectMediaOption:(id)arg1 inNonStreamingGroup:(id)arg2 cacheIfAppropriate:(BOOL)arg3;
-- (void)_selectMediaOption:(id)arg1 inStreamingGroup:(id)arg2 cacheIfAppropriate:(BOOL)arg3;
 - (void)_selectMediaOption:(id)arg1 usingFigSelectedMediaArrayObtainedFromGroup:(id)arg2;
 - (void)_setAsset:(id)arg1;
 - (void)_setAssetToAssetWithFigPlaybackItemIfAppropriate;

@@ -7,12 +7,13 @@
 #import <ChatKit/CKImageBalloonView.h>
 
 #import <ChatKit/AVPlayerViewControllerDelegate-Protocol.h>
+#import <ChatKit/CKReusableVideoPlayerDelegate-Protocol.h>
 #import <ChatKit/UIGestureRecognizerDelegate-Protocol.h>
 
 @class CKMovieMediaObject, CKReusableVideoPlayer, CKVideoPlayerReusePool, NSString, UIView;
 @protocol CKVideoPlayerBalloonViewDelegate;
 
-@interface CKVideoPlayerBalloonView : CKImageBalloonView <UIGestureRecognizerDelegate, AVPlayerViewControllerDelegate>
+@interface CKVideoPlayerBalloonView : CKImageBalloonView <UIGestureRecognizerDelegate, AVPlayerViewControllerDelegate, CKReusableVideoPlayerDelegate>
 {
     CKMovieMediaObject *_mediaObject;
     UIView *_playerView;
@@ -45,7 +46,10 @@
 - (id)playerViewController;
 - (void)prepareForDisplay;
 - (void)prepareForReuse;
+- (void)reusablePlayerDidStart;
+- (void)reusablePlayerDidStop;
 - (void)showPlayerViewController;
+- (void)startPlayingInlineVideo;
 - (void)tapGestureRecognized:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 

@@ -8,12 +8,11 @@
 
 #import <NewsUI/NUPagingFactory-Protocol.h>
 
-@class NSString, NUArticlePageFactory, NUWelcomeToNewsPageFactory;
+@class NSString, NUArticlePageFactory;
 
 @interface NUPagingEngine : NSObject <NUPagingFactory>
 {
     NUArticlePageFactory *_articlePageFactory;
-    NUWelcomeToNewsPageFactory *_welcomeToNewsPageFactory;
 }
 
 @property (readonly, nonatomic) NUArticlePageFactory *articlePageFactory; // @synthesize articlePageFactory=_articlePageFactory;
@@ -21,11 +20,10 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NUWelcomeToNewsPageFactory *welcomeToNewsPageFactory; // @synthesize welcomeToNewsPageFactory=_welcomeToNewsPageFactory;
 
 - (void).cxx_destruct;
 - (id)createPagingForArticleIDs:(id)arg1;
-- (id)initWithArticlePageFactory:(id)arg1 welcomeToNewsPageFactory:(id)arg2;
+- (id)initWithArticlePageFactory:(id)arg1;
 - (id)paging:(id)arg1 byAddingPage:(id)arg2 afterPage:(id)arg3;
 - (id)paging:(id)arg1 byRemovingPage:(id)arg2;
 

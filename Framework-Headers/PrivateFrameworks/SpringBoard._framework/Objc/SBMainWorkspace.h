@@ -81,12 +81,14 @@
 - (void).cxx_destruct;
 - (void)_addRequestCompletionBlock:(CDUnknownBlockType)arg1 toTransaction:(id)arg2;
 - (void)_addStateCaptureHandlers;
+- (id)_alertItemForPreventingLaunchOfApp:(id)arg1 fromTrustState:(unsigned long long)arg2;
 - (void)_applicationEntityWasRemovedFromAppSwitcher:(id)arg1;
 - (id)_applicationForIdentifier:(id)arg1;
 - (BOOL)_applicationProcessExited:(id)arg1 withContext:(id)arg2;
 - (void)_applyCommonActivationSettings:(id)arg1 forRequestWithOptions:(id)arg2 clientProcess:(id)arg3 application:(id)arg4;
 - (void)_attemptUnlockToApplication:(id)arg1 showPasscode:(BOOL)arg2 origin:(id)arg3 givenOrigin:(id)arg4 options:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_broadcastCurrentTransaction;
+- (BOOL)_canExecuteTransitionRequest:(id)arg1 forExecution:(BOOL)arg2;
 - (BOOL)_canImplicitlyUnlockAtLockScreenWhileAuthenticatedFromOrigin:(id)arg1 givenOrigin:(id)arg2 trustedRequest:(BOOL)arg3 outReason:(id *)arg4;
 - (void)_coversheetDidDismiss;
 - (void)_coversheetDidPresent;
@@ -109,7 +111,7 @@
 - (void)_initializeAndObserveDefaults;
 - (BOOL)_isApplicationRunningAsViewService:(id)arg1;
 - (void)_noteDidWakeFromSleep;
-- (BOOL)_preflightTransitionRequest:(id)arg1;
+- (BOOL)_preflightTransitionRequest:(id)arg1 forExecution:(BOOL)arg2;
 - (void)_proposeIdleTimerBehaviorForReason:(id)arg1;
 - (void)_registerHandler:(id)arg1 forExtensionPoint:(id)arg2;
 - (void)_removeApplicationEntities:(id)arg1 withDestroyalIntent:(id)arg2 completion:(CDUnknownBlockType)arg3;

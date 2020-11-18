@@ -25,6 +25,7 @@
     unsigned long long _colorTemperatureUpdateIntervalInMilliseconds;
 }
 
+@property (readonly) unsigned long long checksum;
 @property unsigned long long colorTemperatureNotifyIntervalThresholdInMilliseconds; // @synthesize colorTemperatureNotifyIntervalThresholdInMilliseconds=_colorTemperatureNotifyIntervalThresholdInMilliseconds;
 @property unsigned long long colorTemperatureNotifyValueChangeThreshold; // @synthesize colorTemperatureNotifyValueChangeThreshold=_colorTemperatureNotifyValueChangeThreshold;
 @property unsigned long long colorTemperatureUpdateIntervalInMilliseconds; // @synthesize colorTemperatureUpdateIntervalInMilliseconds=_colorTemperatureUpdateIntervalInMilliseconds;

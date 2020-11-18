@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccount, ACAccountStore, NSNumber, STManagementState;
+@class ACAccount, ACAccountStore, NSNumber, OTClique, STManagementState;
 @protocol OS_dispatch_queue;
 
 @interface WBUFeatureManager : NSObject
@@ -16,6 +16,7 @@
     ACAccount *_account;
     NSNumber *_cachedShouldRequestMoreTime;
     STManagementState *_managementState;
+    OTClique *_keychainClique;
     BOOL _autoFillAvailable;
     BOOL _bookmarksAvailable;
     BOOL _readingListAvailable;
@@ -33,6 +34,7 @@
 @property (readonly, nonatomic, getter=isCloudTabsAvailable) BOOL cloudTabsAvailable;
 @property (readonly, nonatomic, getter=isCreditCardStorageAvailable) BOOL creditCardStorageAvailable;
 @property (readonly, nonatomic, getter=isInMemoryBookmarkChangeTrackingAvailable) BOOL inMemoryBookmarkChangeTrackingAvailable; // @synthesize inMemoryBookmarkChangeTrackingAvailable=_inMemoryBookmarkChangeTrackingAvailable;
+@property (readonly, nonatomic, getter=isKeychainSyncEnabled) BOOL keychainSyncEnabled;
 @property (readonly, nonatomic, getter=isOfflineReadingListAvailable) BOOL offlineReadingListAvailable; // @synthesize offlineReadingListAvailable=_offlineReadingListAvailable;
 @property (readonly, nonatomic, getter=isPrivateBrowsingAvailable) BOOL privateBrowsingAvailable;
 @property (readonly, nonatomic, getter=isReadingListAvailable) BOOL readingListAvailable; // @synthesize readingListAvailable=_readingListAvailable;
@@ -47,6 +49,7 @@
 - (void)_setupAccountStore;
 - (void)_updateAppleAccount;
 - (void)_updateFeatureAvailabilityByAccessLevel;
+- (void)_updateKeychainSyncingStatus;
 - (void)dealloc;
 - (void)determineIfPrivateBrowsingIsAvailableWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)determineIfUserIsRestrictedByScreenTimeWithCompletionHandler:(CDUnknownBlockType)arg1;

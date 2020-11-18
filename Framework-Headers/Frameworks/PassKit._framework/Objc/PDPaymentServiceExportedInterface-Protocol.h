@@ -6,7 +6,7 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSArray, NSCalendar, NSData, NSDate, NSError, NSSet, NSString, NSUUID, PKAppletSubcredential, PKAppletSubcredentialSharingInvitation, PKAppletSubcredentialSharingInvitationRequest, PKApplyWebServiceApplicationDeleteRequest, PKApplyWebServiceApplyRequest, PKApplyWebServiceDocumentSubmissionRequest, PKApplyWebServiceTermsRequest, PKBarcodePaymentEvent, PKEncryptedDataObject, PKEncryptedPushProvisioningTarget, PKExpressPassInformation, PKMerchant, PKPaymentApplication, PKPaymentProductsActionRequest, PKPaymentTransaction, PKPaymentTransactionRequest, PKPaymentWebServiceContext, PKPlaceholderPassConfiguration, PKPushProvisioningTarget, PKTapToRadarRequest;
+@class NSArray, NSCalendar, NSData, NSDate, NSError, NSPredicate, NSSet, NSString, NSUUID, PKAppletSubcredential, PKAppletSubcredentialSharingInvitation, PKAppletSubcredentialSharingInvitationRequest, PKApplyWebServiceApplicationDeleteRequest, PKApplyWebServiceApplyRequest, PKApplyWebServiceDocumentSubmissionRequest, PKApplyWebServiceTermsRequest, PKBarcodePaymentEvent, PKEncryptedDataObject, PKEncryptedPushProvisioningTarget, PKExpressPassInformation, PKMerchant, PKPaymentApplication, PKPaymentProductsActionRequest, PKPaymentTransaction, PKPaymentTransactionRequest, PKPaymentWebServiceContext, PKPlaceholderPassConfiguration, PKPushProvisioningTarget, PKTapToRadarRequest;
 
 @protocol PDPaymentServiceExportedInterface <PDXPCServiceExportedInterface>
 - (void)accountAttestationAnonymizationSaltWithCompletion:(void (^)(NSString *, NSError *))arg1;
@@ -108,6 +108,7 @@
 - (void)transactionWithReferenceIdentifier:(NSString *)arg1 completion:(void (^)(PKPaymentTransaction *))arg2;
 - (void)transactionWithServiceIdentifier:(NSString *)arg1 transactionSourceIdentifier:(NSString *)arg2 completion:(void (^)(PKPaymentTransaction *))arg3;
 - (void)transactionWithTransactionIdentifier:(NSString *)arg1 completion:(void (^)(PKPaymentTransaction *))arg2;
+- (void)transactionsForPredicate:(NSPredicate *)arg1 limit:(long long)arg2 completion:(void (^)(NSArray *))arg3;
 - (void)transactionsForRequest:(PKPaymentTransactionRequest *)arg1 completion:(void (^)(NSArray *))arg2;
 - (void)transactionsForTransactionSourceIdentifiers:(NSSet *)arg1 matchingMerchant:(PKMerchant *)arg2 withTransactionSource:(unsigned long long)arg3 withBackingData:(unsigned long long)arg4 limit:(long long)arg5 completion:(void (^)(NSSet *))arg6;
 - (void)transactionsForTransactionSourceIdentifiers:(NSSet *)arg1 withMerchantCategory:(long long)arg2 withTransactionSource:(unsigned long long)arg3 withBackingData:(unsigned long long)arg4 startDate:(NSDate *)arg5 endDate:(NSDate *)arg6 limit:(long long)arg7 completion:(void (^)(NSSet *))arg8;

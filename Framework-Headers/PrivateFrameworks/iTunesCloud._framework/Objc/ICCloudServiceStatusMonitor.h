@@ -17,6 +17,7 @@
     NSError *_cloudServiceStatusMonitorConnectionEstablishmentError;
     NSMutableSet *_activeTransactionIdentifiersForCloudServiceStatusMonitorConnection;
     ICCloudServerListenerEndpointProvider *_listenerEndpointProvider;
+    long long _privacyAcknowledgementPolicy;
     BOOL _isObservingCloudServiceStatus;
     NSUUID *_observationToken;
     NSString *_transactionIdentifierForActiveObservationToken;
@@ -33,6 +34,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, getter=isObservingCloudServiceStatus) BOOL observingCloudServiceStatus;
+@property long long privacyAcknowledgementPolicy;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

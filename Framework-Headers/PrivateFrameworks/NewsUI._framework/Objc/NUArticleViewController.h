@@ -43,6 +43,7 @@
     NSDate *_manualScrollingStartDate;
     id<NUSpotlightManager> _spotlightManager;
     id<NUChromeControl> _chromeControl;
+    double _articleLoadedTime;
 }
 
 @property (readonly, nonatomic) NUArticleAdManager *adManager; // @synthesize adManager=_adManager;
@@ -50,6 +51,7 @@
 @property (strong, nonatomic) NUArticleContext *articleContext; // @synthesize articleContext=_articleContext;
 @property (readonly, nonatomic) id<NUArticleDataProvider> articleDataProvider; // @synthesize articleDataProvider=_articleDataProvider;
 @property (nonatomic) BOOL articleIsPresentingFullscreen; // @synthesize articleIsPresentingFullscreen=_articleIsPresentingFullscreen;
+@property (nonatomic) double articleLoadedTime; // @synthesize articleLoadedTime=_articleLoadedTime;
 @property (readonly, nonatomic) id<NUArticleScrollPositionManagerType> articleScrollPositionManager; // @synthesize articleScrollPositionManager=_articleScrollPositionManager;
 @property (readonly, nonatomic) FCObservable *articleViewStyler; // @synthesize articleViewStyler=_articleViewStyler;
 @property (readonly, nonatomic) id<NUChromeControl> chromeControl; // @synthesize chromeControl=_chromeControl;

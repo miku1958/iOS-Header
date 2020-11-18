@@ -16,10 +16,12 @@
 - (id)_init;
 - (id)createMatcher;
 - (id)deviceModel;
+- (id)deviceOSVersion;
+- (id)deviceProductVersion;
 - (id)deviceSystemName;
-- (id)deviceSystemVersion;
 - (id)frameworkShortVersion;
 - (void)preload;
+- (id)systemInfoByName:(char *)arg1;
 
 @end
 

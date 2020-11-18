@@ -14,10 +14,12 @@
     BOOL _wantsExtraLineFragment;
     BOOL _usesDefaultHyphenation;
     BOOL _allowsFontSubstitutionAffectingVerticalMetrics;
+    BOOL _limitsLayoutForSuspiciousContents;
     CDUnknownBlockType _laidOutLineFragment;
     id<NSCoreTypesetterDelegate> delegate;
     CDUnknownBlockType _validateLineBreakIndex;
     NSDictionary *__extraLineFragmentAttributes;
+    long long _layoutOrientation;
     struct _NSRange characterRange;
     struct CGSize textContainerSize;
 }
@@ -27,6 +29,8 @@
 @property struct _NSRange characterRange; // @synthesize characterRange;
 @property (weak) id<NSCoreTypesetterDelegate> delegate; // @synthesize delegate;
 @property (copy) CDUnknownBlockType laidOutLineFragment; // @synthesize laidOutLineFragment=_laidOutLineFragment;
+@property long long layoutOrientation; // @synthesize layoutOrientation=_layoutOrientation;
+@property BOOL limitsLayoutForSuspiciousContents; // @synthesize limitsLayoutForSuspiciousContents=_limitsLayoutForSuspiciousContents;
 @property struct CGSize textContainerSize; // @synthesize textContainerSize;
 @property BOOL usesDefaultHyphenation; // @synthesize usesDefaultHyphenation=_usesDefaultHyphenation;
 @property (copy) CDUnknownBlockType validateLineBreakIndex; // @synthesize validateLineBreakIndex=_validateLineBreakIndex;

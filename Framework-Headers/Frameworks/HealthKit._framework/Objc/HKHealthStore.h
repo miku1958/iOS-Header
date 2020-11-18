@@ -96,6 +96,7 @@
 - (id)_heightCharacteristicQuantityWithError:(id *)arg1;
 - (id)_initWithIdentifier:(id)arg1;
 - (id)_leanBodyMassCharacteristicQuantityWithError:(id *)arg1;
+- (id)_modificationDateForCharacteristicWithType:(id)arg1 error:(id *)arg2;
 - (void)_mostRecentQuantityOfType:(id)arg1 beforeDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (CDUnknownBlockType)_objectCompletionOnClientQueue:(CDUnknownBlockType)arg1;
 - (BOOL)_prepareObjectsForSaving:(id)arg1 errorOut:(id *)arg2;

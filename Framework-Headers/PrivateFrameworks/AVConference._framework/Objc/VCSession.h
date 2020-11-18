@@ -18,7 +18,7 @@
 #import <AVConference/VCSessionParticipantStreamDelegate-Protocol.h>
 #import <AVConference/VCSessionStatsControllerDelegate-Protocol.h>
 
-@class AVCRateController, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSObject, NSString, VCControlChannelMultiWay, VCNetworkFeedbackController, VCRateControlMediaController, VCSecurityKeyManager, VCSessionConfiguration, VCSessionDownlinkBandwidthAllocator, VCSessionMessaging, VCSessionParticipant, VCSessionParticipantLocal, VCSessionStatsController, VCTransportSession;
+@class AVCRateController, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSObject, NSString, VCControlChannelMultiWay, VCNetworkFeedbackController, VCRateControlMediaController, VCSecurityKeyManager, VCSessionBitrateArbiter, VCSessionConfiguration, VCSessionDownlinkBandwidthAllocator, VCSessionMessaging, VCSessionParticipant, VCSessionParticipantLocal, VCSessionStatsController, VCTransportSession;
 @protocol OS_dispatch_queue, VCConnectionProtocol, VCSessionDelegate;
 
 __attribute__((visibility("hidden")))
@@ -64,6 +64,7 @@ __attribute__((visibility("hidden")))
     NSError *_stopError;
     BOOL _isGKVoiceChat;
     struct _VCSessionOneToOneSettings _oneToOneSettings;
+    VCSessionBitrateArbiter *_bitrateArbiter;
 }
 
 @property (readonly, nonatomic) NSDictionary *capabilities;

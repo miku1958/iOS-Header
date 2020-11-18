@@ -8,11 +8,12 @@
 
 #import <FamilyCircleUI/AAUIServerHook-Protocol.h>
 
-@class AAUIServerHookResponse, NSString, RUIObjectModel;
+@class AAUIServerHookResponse, NSString, PKPeerPaymentAssociatedAccountsController, RUIObjectModel;
 @protocol AAUIServerHookDelegate;
 
 @interface FAPeerPaymentHook : NSObject <AAUIServerHook>
 {
+    PKPeerPaymentAssociatedAccountsController *_peerPaymentController;
     id<AAUIServerHookDelegate> _delegate;
 }
 

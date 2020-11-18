@@ -10,6 +10,7 @@
 
 @class NSData, NSString, _MRTransactionKeyProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRTransactionPacketProtobuf : PBCodable <NSCopying>
 {
     unsigned long long _totalLength;
@@ -23,27 +24,14 @@
     } _has;
 }
 
-@property (readonly, nonatomic) BOOL hasIdentifier;
-@property (readonly, nonatomic) BOOL hasKey;
-@property (readonly, nonatomic) BOOL hasPacketData;
-@property (nonatomic) BOOL hasTotalLength;
-@property (nonatomic) BOOL hasTotalWritePosition;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) _MRTransactionKeyProtobuf *key; // @synthesize key=_key;
-@property (strong, nonatomic) NSData *packetData; // @synthesize packetData=_packetData;
-@property (nonatomic) unsigned long long totalLength; // @synthesize totalLength=_totalLength;
-@property (nonatomic) unsigned long long totalWritePosition; // @synthesize totalWritePosition=_totalWritePosition;
-
 + (void)initialize;
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)customDictionaryRepresentation;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

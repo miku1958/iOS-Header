@@ -12,6 +12,7 @@
 + (BOOL)deviceSupportsHDR;
 - (NSURL *)fileURLIfLocal;
 - (BOOL)hasAssociatedMediaMetadata;
+- (BOOL)isDerivative;
 - (BOOL)isDownloadable;
 - (BOOL)isHDRDerivative;
 - (BOOL)isHDROrSDRDependingOnMasterVideo;

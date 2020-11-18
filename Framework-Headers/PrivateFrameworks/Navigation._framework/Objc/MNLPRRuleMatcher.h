@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOLPRVehicle, NSArray, NSDate, NSDictionary, NSTimeZone, _MNLPRPlate;
+@class GEOLPRVehicle, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSTimeZone, _MNLPRPlate;
 
 @interface MNLPRRuleMatcher : NSObject
 {
@@ -17,6 +17,7 @@
     NSDate *_lastDate;
     NSTimeZone *_lastTimeZone;
     NSDictionary *_usedRegions;
+    NSMutableDictionary *_usedRegionETAs;
 }
 
 - (void).cxx_destruct;

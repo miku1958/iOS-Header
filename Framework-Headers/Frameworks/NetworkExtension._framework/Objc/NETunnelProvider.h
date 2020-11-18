@@ -14,6 +14,7 @@
 {
     BOOL _reasserting;
     BOOL _onDemandEnabled;
+    BOOL _gracefulShutdown;
     NEVPNProtocol *_protocolConfiguration;
     NSArray *_appRules;
 }
@@ -21,6 +22,7 @@
 @property (strong) NSArray *appRules; // @synthesize appRules=_appRules;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property BOOL gracefulShutdown; // @synthesize gracefulShutdown=_gracefulShutdown;
 @property (readonly) unsigned long long hash;
 @property BOOL onDemandEnabled; // @synthesize onDemandEnabled=_onDemandEnabled;
 @property (strong) NEVPNProtocol *protocolConfiguration; // @synthesize protocolConfiguration=_protocolConfiguration;

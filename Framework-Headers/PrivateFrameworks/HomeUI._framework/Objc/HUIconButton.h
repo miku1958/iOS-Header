@@ -6,14 +6,16 @@
 
 #import <UIKit/UIControl.h>
 
-@class HUIconView;
+@class HUIconView, UIVisualEffectView;
 @protocol HFIconDescriptor;
 
 @interface HUIconButton : UIControl
 {
     HUIconView *_iconView;
+    UIVisualEffectView *_backgroundEffectView;
 }
 
+@property (strong, nonatomic) UIVisualEffectView *backgroundEffectView; // @synthesize backgroundEffectView=_backgroundEffectView;
 @property (readonly, nonatomic) id<HFIconDescriptor> iconDescriptor;
 @property (strong, nonatomic) HUIconView *iconView; // @synthesize iconView=_iconView;
 
@@ -21,7 +23,11 @@
 - (long long)contentMode;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)setBackgroundVisualEffect:(id)arg1 animated:(BOOL)arg2;
+- (void)setBackgroundVisualEffectViewCornerRaduis:(double)arg1;
 - (void)setContentMode:(long long)arg1;
+- (void)setIconSize:(unsigned long long)arg1;
+- (void)setIconTintColor:(id)arg1;
 - (void)setSelected:(BOOL)arg1;
 - (void)setVibrancyEffect:(id)arg1 animated:(BOOL)arg2;
 - (void)tintColorDidChange;

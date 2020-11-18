@@ -60,7 +60,7 @@
 - (void)_showAddToWatchOfferForPass:(id)arg1;
 - (void)_showAutomaticSelectionForPass:(id)arg1;
 - (void)_showVerificationMethodsForPass:(id)arg1;
-- (void)_showVerifiedUI;
+- (void)_showVerifiedUIForPass:(id)arg1;
 - (void)_waitForActivation:(id)arg1;
 - (void)_waitForActivationDidTimeout:(id)arg1;
 - (void)acceptTerms;

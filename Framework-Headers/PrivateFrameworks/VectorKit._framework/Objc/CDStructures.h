@@ -1036,18 +1036,19 @@ struct MapEngine {
     BOOL _field30;
     struct atomic<bool> _field31;
     struct atomic<bool> _field32;
-    BOOL _field33;
-    struct unique_ptr<md::MapEngineConfiguration, std::__1::default_delete<md::MapEngineConfiguration>> _field34;
-    struct unique_ptr<md::MapEngineMode, std::__1::default_delete<md::MapEngineMode>> _field35;
+    struct atomic<bool> _field33;
+    BOOL _field34;
+    struct unique_ptr<md::MapEngineConfiguration, std::__1::default_delete<md::MapEngineConfiguration>> _field35;
+    struct unique_ptr<md::MapEngineMode, std::__1::default_delete<md::MapEngineMode>> _field36;
     struct _retain_ptr<VKManifestTileGroupObserverProxy *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
         CDUnknownFunctionPointerType *_field1;
         id _field2;
         struct _retain_objc _field3;
         struct _release_objc _field4;
-    } _field36;
-    unsigned long long _field37;
+    } _field37;
     unsigned long long _field38;
-    struct shared_ptr<std::__1::atomic<unsigned long>> _field39;
+    unsigned long long _field39;
+    struct shared_ptr<std::__1::atomic<unsigned long>> _field40;
 };
 
 struct MapEngineConfiguration;
@@ -1792,6 +1793,7 @@ struct RouteRenderLayer {
     struct vector<md::realistic::RouteRenderLayer::RouteDataMapping, std::__1::allocator<md::realistic::RouteRenderLayer::RouteDataMapping>> _field21;
     struct unique_ptr<md::FlyoverRouteOverlayCache, std::__1::default_delete<md::FlyoverRouteOverlayCache>> _field22;
     struct CommandBufferLocation _field23;
+    BOOL _field24;
 };
 
 struct RouteSegment;

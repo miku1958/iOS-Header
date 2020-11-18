@@ -12,24 +12,24 @@
 {
     struct archive *_archive;
     struct archive_entry *_entry;
-    NSString *_originalPath;
+    struct __sFILE *_fileHandle;
     BOOL _endOfArchive;
 }
 
 @property (readonly, nonatomic) BOOL endOfArchive; // @synthesize endOfArchive=_endOfArchive;
 @property (readonly, nonatomic) unsigned short entryFileType;
 @property (readonly, copy, nonatomic) NSString *entryPath;
-@property (readonly, nonatomic) unsigned long long entrySize;
 
-- (void).cxx_destruct;
+- (BOOL)_checkEntryAndReturnError:(id *)arg1;
 - (BOOL)advanceEntryAndReturnError:(id *)arg1;
+- (id)cloneAndReturnError:(id *)arg1;
 - (id)cloneToCurrentEntryAndReturnError:(id *)arg1;
 - (void)close;
 - (void)dealloc;
-- (id)getDataAndReturnError:(id *)arg1;
-- (id)getDataWithSize:(unsigned long long)arg1 error:(id *)arg2;
+- (id)initWithFD:(int)arg1 error:(id *)arg2;
 - (id)initWithPath:(id)arg1 error:(id *)arg2;
 - (BOOL)readDataIntoBuffer:(void *)arg1 length:(unsigned long long)arg2 error:(id *)arg3;
+- (long long)readDataIntoBuffer:(void *)arg1 maxLength:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)skipBytes:(unsigned long long)arg1 error:(id *)arg2;
 
 @end

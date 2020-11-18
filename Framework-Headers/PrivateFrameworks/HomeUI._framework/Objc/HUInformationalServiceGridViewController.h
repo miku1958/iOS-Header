@@ -8,16 +8,16 @@
 
 #import <HomeUI/HUServiceGridItemManagerDelegate-Protocol.h>
 
-@class NSString;
+@class NSSet, NSString;
 
 @interface HUInformationalServiceGridViewController : HUServiceGridViewController <HUServiceGridItemManagerDelegate>
 {
-    CDUnknownBlockType _filter;
+    NSSet *_accessoriesToDisplay;
 }
 
+@property (copy, nonatomic) NSSet *accessoriesToDisplay; // @synthesize accessoriesToDisplay=_accessoriesToDisplay;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

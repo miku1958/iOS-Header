@@ -6,24 +6,19 @@
 
 #import <MediaRemote/MRAVBufferedInputStream.h>
 
-#import <MediaRemote/IDSServiceDelegate-Protocol.h>
+@class MRIDSConnectivityManager, NSString;
 
-@class IDSService, NSString;
-
-@interface MRIDSInputStream : MRAVBufferedInputStream <IDSServiceDelegate>
+@interface MRIDSInputStream : MRAVBufferedInputStream
 {
-    IDSService *_service;
+    MRIDSConnectivityManager *_connection;
     long long _type;
+    NSString *_destination;
+    NSString *_session;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
 - (void).cxx_destruct;
-- (void)handleIncomingData:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
-- (id)initWithService:(id)arg1 type:(long long)arg2;
+- (void)dealloc;
+- (id)initWithConnection:(id)arg1 type:(long long)arg2 destination:(id)arg3 session:(id)arg4;
 
 @end
 

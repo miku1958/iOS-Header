@@ -13,8 +13,8 @@
 #import <Silex/SXVideoPlayerViewControllerDelegate-Protocol.h>
 #import <Silex/SXViewportChangeListener-Protocol.h>
 
-@class NSString, SVVolumeProvider, SXPosterFrameView, SXVideoAnalyticsRouter, SXVideoComponentAnalyticsReporting, SXVideoPlayerViewController, SXVideoPlayerViewControllerManager;
-@protocol SWReachabilityProvider, SXAppStateMonitor, SXBookmarkManager, SXResourceDataSource, SXScrollObserverManager, SXVideoAdProviderFactory;
+@class NSString, SXPosterFrameView, SXVideoAnalyticsRouter, SXVideoComponentAnalyticsReporting, SXVideoPlayerViewController, SXVideoPlayerViewControllerManager, SXVolumeProvider;
+@protocol SWReachabilityProvider, SXAppStateMonitor, SXBookmarkManager, SXResourceDataSource, SXSceneStateMonitor, SXScrollObserverManager, SXVideoAdProviderFactory;
 
 @interface SXVideoComponentView : SXMediaComponentView <SXViewportChangeListener, SXMediaPlaybackDelegate, SXVideoPlayerViewControllerDelegate, SXVideoPlayerViewControllerDataSource, SWReachabilityObserver, SXFullscreenVideoPlaybackCandidate>
 {
@@ -23,12 +23,13 @@
     id<SXResourceDataSource> _resourceDataSource;
     id<SWReachabilityProvider> _reachabilityProvider;
     id<SXAppStateMonitor> _appStateMonitor;
+    id<SXSceneStateMonitor> _sceneStateMonitor;
     SXPosterFrameView *_posterFrame;
     CDUnknownBlockType _thumbnailRequestCancelHandler;
     SXVideoAnalyticsRouter *_analyticsRouter;
     SXVideoComponentAnalyticsReporting *_videoComponentAnalyticsReporter;
     id<SXScrollObserverManager> _scrollObserverManager;
-    SVVolumeProvider *_volumeProvider;
+    SXVolumeProvider *_volumeProvider;
     SXVideoPlayerViewControllerManager *_videoPlayerViewControllerManager;
     id<SXBookmarkManager> _bookmarkManager;
     CDUnknownBlockType _presentationBlock;
@@ -47,13 +48,14 @@
 @property (copy, nonatomic) CDUnknownBlockType presentationBlock; // @synthesize presentationBlock=_presentationBlock;
 @property (readonly, nonatomic) id<SWReachabilityProvider> reachabilityProvider; // @synthesize reachabilityProvider=_reachabilityProvider;
 @property (readonly, nonatomic) id<SXResourceDataSource> resourceDataSource; // @synthesize resourceDataSource=_resourceDataSource;
+@property (readonly, nonatomic) id<SXSceneStateMonitor> sceneStateMonitor; // @synthesize sceneStateMonitor=_sceneStateMonitor;
 @property (readonly, nonatomic) id<SXScrollObserverManager> scrollObserverManager; // @synthesize scrollObserverManager=_scrollObserverManager;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType thumbnailRequestCancelHandler; // @synthesize thumbnailRequestCancelHandler=_thumbnailRequestCancelHandler;
 @property (strong, nonatomic) SXVideoComponentAnalyticsReporting *videoComponentAnalyticsReporter; // @synthesize videoComponentAnalyticsReporter=_videoComponentAnalyticsReporter;
 @property (strong, nonatomic) SXVideoPlayerViewController *videoPlayerViewController; // @synthesize videoPlayerViewController=_videoPlayerViewController;
 @property (readonly, nonatomic) SXVideoPlayerViewControllerManager *videoPlayerViewControllerManager; // @synthesize videoPlayerViewControllerManager=_videoPlayerViewControllerManager;
-@property (readonly, nonatomic) SVVolumeProvider *volumeProvider; // @synthesize volumeProvider=_volumeProvider;
+@property (readonly, nonatomic) SXVolumeProvider *volumeProvider; // @synthesize volumeProvider=_volumeProvider;
 
 - (void).cxx_destruct;
 - (BOOL)allowHierarchyRemoval;
@@ -62,7 +64,7 @@
 - (BOOL)canEnterFullscreen;
 - (void)discardContents;
 - (void)enterFullscreen;
-- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 resourceDataSource:(id)arg7 reachabilityProvider:(id)arg8 scrollObserverManager:(id)arg9 volumeProvider:(id)arg10 videoPlayerViewControllerManager:(id)arg11 bookmarkManager:(id)arg12 prerollAdFactory:(id)arg13;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 sceneStateMonitor:(id)arg7 resourceDataSource:(id)arg8 reachabilityProvider:(id)arg9 scrollObserverManager:(id)arg10 volumeProvider:(id)arg11 videoPlayerViewControllerManager:(id)arg12 bookmarkManager:(id)arg13 prerollAdFactory:(id)arg14;
 - (void)loadComponent:(id)arg1;
 - (void)loadPosterFrameImage;
 - (void)pauseMediaPlayback;

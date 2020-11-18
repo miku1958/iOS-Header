@@ -96,7 +96,7 @@
 - (void)dealloc;
 - (void)handleAccessoryDisconnected:(id)arg1;
 - (void)handleCameraSettingsDidChangeNotification:(id)arg1;
-- (id)initWithAccessory:(id)arg1 workQueue:(id)arg2 streamSnapshotHandler:(id)arg3 uniqueIdentifier:(id)arg4 logID:(id)arg5 msgDispatcher:(id)arg6 networkMonitor:(id)arg7 residentMessageHandler:(id)arg8;
+- (id)initWithAccessory:(id)arg1 workQueue:(id)arg2 streamSnapshotHandler:(id)arg3 uniqueIdentifier:(id)arg4 logID:(id)arg5 msgDispatcher:(id)arg6 networkMonitor:(id)arg7;
 - (id)logIdentifier;
 - (void)registerForMessages;
 - (void)releaseSnapshot:(id)arg1;

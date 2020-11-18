@@ -82,6 +82,7 @@
 @property (strong, nonatomic) NSDictionary *visualProviderInfo; // @synthesize visualProviderInfo=_visualProviderInfo;
 
 + (struct CGSize)intrinsicContentSizeForTargetScreen:(id)arg1 orientation:(long long)arg2 onLockScreen:(BOOL)arg3;
++ (struct CGSize)intrinsicContentSizeForTargetScreen:(id)arg1 orientation:(long long)arg2 onLockScreen:(BOOL)arg3 isAzulBLinked:(BOOL)arg4;
 + (id)sensorActivityIndicator;
 + (id)sensorActivityIndicatorPartIdentifier;
 + (void)setSensorActivityIndicator:(id)arg1;

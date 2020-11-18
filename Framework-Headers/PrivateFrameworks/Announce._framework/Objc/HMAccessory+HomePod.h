@@ -9,7 +9,7 @@
 @interface HMAccessory (HomePod)
 
 @property (readonly, nonatomic) BOOL isAnnounceEnabled;
-@property (readonly, nonatomic) BOOL isAnnounceReachable;
+@property (readonly, nonatomic) BOOL isAppleTV;
 @property (readonly, nonatomic) BOOL isHomePod;
 
 - (BOOL)isPartOfHome:(id)arg1;

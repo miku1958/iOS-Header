@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary;
+@class NSArray, NSDictionary, NSMutableDictionary, PKZeroingDataContainer;
 
 @interface PKOverlayableWebServiceRequest : PKWebServiceRequest <NSSecureCoding>
 {
@@ -19,6 +19,7 @@
     BOOL _requiresConfigurationForRedirect;
 }
 
+@property (readonly, nonatomic) PKZeroingDataContainer *archivedData;
 @property (copy, nonatomic) NSDictionary *overlayParameters;
 @property (nonatomic) BOOL requiresConfigurationForRedirect; // @synthesize requiresConfigurationForRedirect=_requiresConfigurationForRedirect;
 @property (nonatomic) BOOL requiresConfigurationForRetry; // @synthesize requiresConfigurationForRetry=_requiresConfigurationForRetry;

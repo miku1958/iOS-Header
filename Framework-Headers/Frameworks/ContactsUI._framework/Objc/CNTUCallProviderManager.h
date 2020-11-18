@@ -23,6 +23,8 @@
 
 - (void).cxx_destruct;
 - (id)init;
+- (BOOL)isActionType:(id)arg1 supportedByProvider:(id)arg2;
+- (BOOL)isFirstPartyCallProvider:(id)arg1;
 - (id)observableForCallProvidersChangedWithSchedulerProvider:(id)arg1;
 - (id)providerManagerQueue;
 - (id)thirdPartyCallProviderWithBundleIdentifier:(id)arg1;

@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (long long)_activityStyle;
 + (long long)activityCategory;
 - (id)_systemImageName;
 - (id)activityTitle;

@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=isPaired) BOOL paired;
 @property (readonly, nonatomic) NSArray *personalOutputDevices; // @synthesize personalOutputDevices=_personalOutputDevices;
 @property (readonly, nonatomic) long long port;
+@property (copy, nonatomic) NSArray *subscribedPlayerPaths;
 @property (readonly, nonatomic) MRSupportedProtocolMessages *supportedMessages;
 @property (nonatomic, getter=isUsingSystemPairing) BOOL usingSystemPairing; // @synthesize usingSystemPairing=_usingSystemPairing;
 @property (readonly, nonatomic, getter=isValid) BOOL valid; // @synthesize valid=_valid;
@@ -43,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)currentClientUpdatesConfigMessage;
 - (void)disconnect:(id)arg1;
 - (id)errorForCurrentState;
-- (void)modifyOutputContextOfType:(unsigned int)arg1 addingDeviceUIDs:(id)arg2 removingDeviceUIDs:(id)arg3 settingDeviceUIDs:(id)arg4 withReplyQueue:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)modifyByAddingDeviceUIDs:(id)arg1 removingDeviceUIDs:(id)arg2 settingDeviceUIDs:(id)arg3 addingClusterAwareDeviceUIDs:(id)arg4 removingClusterAwareDeviceUIDs:(id)arg5 settingClusterAwareDeviceUIDs:(id)arg6 withReplyQueue:(id)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)outputDeviceVolume:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)outputDeviceVolumeControlCapabilities:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)ping:(double)arg1 callback:(CDUnknownBlockType)arg2 withQueue:(id)arg3;

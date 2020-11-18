@@ -13,8 +13,8 @@
 #import <Silex/SXVideoPlaybackObserver-Protocol.h>
 #import <Silex/UIGestureRecognizerDelegate-Protocol.h>
 
-@class AVPlayerViewController, NSString, SVAdPrivacyButton, SVKeyValueObserver, SVLearnMoreButton, SXAutomaticFullscreenVideoPlaybackBehaviorManager, SXPlaybackCoordinator, SXVideoAdSkipButton, SXVideoPlaybackQueue, SXVideoVolumeObserver, UIActivityIndicatorView, UIGestureRecognizer;
-@protocol SVVolumeReporting, SXVideoAdProviding, SXVideoPlayerViewControllerDataSource, SXVideoPlayerViewControllerDelegate;
+@class AVPlayerViewController, NSString, SVKeyValueObserver, SXAdPrivacyButton, SXAutomaticFullscreenVideoPlaybackBehaviorManager, SXLearnMoreButton, SXPlaybackCoordinator, SXVideoAdSkipButton, SXVideoPlaybackQueue, SXVideoVolumeObserver, UIActivityIndicatorView, UIGestureRecognizer;
+@protocol SXVideoAdProviding, SXVideoPlayerViewControllerDataSource, SXVideoPlayerViewControllerDelegate, SXVolumeReporting;
 
 @interface SXVideoPlayerViewController : UIViewController <SXVideoPlaybackObserver, AVPlayerViewControllerDelegate_WebKitOnly, AVPlayerViewControllerDelegatePrivate, SXAutomaticFullscreenVideoPlaybackBehaviorManagerDelegate, UIGestureRecognizerDelegate, SXVideoAdViewControllerProviding>
 {
@@ -29,19 +29,19 @@
     SXPlaybackCoordinator *_coordinator;
     id<SXVideoAdProviding> _videoAd;
     AVPlayerViewController *_playerViewController;
-    SVLearnMoreButton *_learnMoreButton;
+    SXLearnMoreButton *_learnMoreButton;
     SXVideoAdSkipButton *_skipButton;
-    SVAdPrivacyButton *_adPrivacyButton;
+    SXAdPrivacyButton *_adPrivacyButton;
     UIActivityIndicatorView *_activityIndicatorView;
     SVKeyValueObserver *_videoBoundsObserver;
     SXAutomaticFullscreenVideoPlaybackBehaviorManager *_fullscreenBehaviorManager;
-    id<SVVolumeReporting> _volumeReporter;
+    id<SXVolumeReporting> _volumeReporter;
     SXVideoVolumeObserver *_volumeObserver;
     UIGestureRecognizer *_tapGesture;
 }
 
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicatorView; // @synthesize activityIndicatorView=_activityIndicatorView;
-@property (strong, nonatomic) SVAdPrivacyButton *adPrivacyButton; // @synthesize adPrivacyButton=_adPrivacyButton;
+@property (strong, nonatomic) SXAdPrivacyButton *adPrivacyButton; // @synthesize adPrivacyButton=_adPrivacyButton;
 @property (strong, nonatomic) SXPlaybackCoordinator *coordinator; // @synthesize coordinator=_coordinator;
 @property (weak, nonatomic) id<SXVideoPlayerViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
@@ -51,7 +51,7 @@
 @property (nonatomic) unsigned long long fullscreenBehavior; // @synthesize fullscreenBehavior=_fullscreenBehavior;
 @property (readonly, nonatomic) SXAutomaticFullscreenVideoPlaybackBehaviorManager *fullscreenBehaviorManager; // @synthesize fullscreenBehaviorManager=_fullscreenBehaviorManager;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) SVLearnMoreButton *learnMoreButton; // @synthesize learnMoreButton=_learnMoreButton;
+@property (strong, nonatomic) SXLearnMoreButton *learnMoreButton; // @synthesize learnMoreButton=_learnMoreButton;
 @property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property (nonatomic) BOOL playButtonTapped; // @synthesize playButtonTapped=_playButtonTapped;
 @property (strong, nonatomic) AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;
@@ -65,7 +65,7 @@
 @property (strong, nonatomic) SVKeyValueObserver *videoBoundsObserver; // @synthesize videoBoundsObserver=_videoBoundsObserver;
 @property (readonly, nonatomic) UIViewController *viewControllerForModalPresentation;
 @property (strong, nonatomic) SXVideoVolumeObserver *volumeObserver; // @synthesize volumeObserver=_volumeObserver;
-@property (readonly, nonatomic) id<SVVolumeReporting> volumeReporter; // @synthesize volumeReporter=_volumeReporter;
+@property (readonly, nonatomic) id<SXVolumeReporting> volumeReporter; // @synthesize volumeReporter=_volumeReporter;
 
 - (void).cxx_destruct;
 - (void)adSkipButtonTapped:(id)arg1;

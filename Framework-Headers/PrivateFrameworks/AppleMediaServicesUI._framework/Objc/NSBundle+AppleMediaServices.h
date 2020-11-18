@@ -12,5 +12,6 @@
 
 @property (readonly, nonatomic) UIImage *icon;
 
+- (id)ams_imageForResource:(id)arg1;
 @end
 

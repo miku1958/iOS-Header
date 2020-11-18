@@ -12,6 +12,8 @@
 
 @property (strong, nonatomic) NSString *deferredSearchQuery;
 @property (nonatomic) unsigned long long filterMode;
+@property (readonly, nonatomic) BOOL isSearchActive;
+@property (readonly, nonatomic) BOOL isSearchActiveAndDisplayingResultsForSearchText;
 @property (readonly, nonatomic) BOOL isVisible;
 @property (weak, nonatomic) CKMessagesController *messagesController;
 
@@ -42,5 +44,6 @@
 - (void)updateConversationList;
 - (void)updateConversationListForMessageSentToConversation:(CKConversation *)arg1;
 - (void)updateConversationSelection;
+- (void)updateSyncProgressIfNeeded;
 @end
 

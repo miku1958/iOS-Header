@@ -34,6 +34,7 @@
 + (id)keyForIntervalType:(long long)arg1;
 + (void)moveSafariTopHitsToTopOfSection:(id)arg1;
 + (void)reloadCommittedSearchParametersFromTrial;
++ (void)reloadLocaleSpecificMatchingParameters;
 + (void)reloadRankingParametersFromTrial;
 + (void)reloadRecencyThresholds;
 + (void)reloadSuggestionsRankingThresholds;
@@ -53,8 +54,8 @@
 - (id)rankSectionsUsingBundleIDToSectionMapping:(id)arg1 withRanker:(id)arg2 preferredBundleIds:(id)arg3 isPeopleSearch:(BOOL)arg4 isScopedAppSearch:(BOOL)arg5 queryId:(unsigned long long)arg6 isCJK:(BOOL)arg7 isBullseyeNonCommittedSearch:(BOOL)arg8 isBullseyeCommittedSearch:(BOOL)arg9;
 - (void)refineSectionShowingVisibleResultsWithBetterTextMatches:(id)arg1;
 - (id)relativeRankWithAbsRank:(id)arg1 numberValues:(unsigned long long)arg2;
-- (id)removeBlackListedSectionsForMapping:(id)arg1;
-- (id)removeBlackListedSectionsForMapping:(id)arg1 withRankingConfiguration:(id)arg2;
+- (id)removeBlockListedSectionsForMapping:(id)arg1;
+- (id)removeBlockListedSectionsForMapping:(id)arg1 withRankingConfiguration:(id)arg2;
 - (double)roundedValueForScore:(double)arg1;
 - (BOOL)sectionContainsOnlyStaleApps:(id)arg1;
 - (BOOL)sectionsContainsOnlyOneAppSection:(id)arg1;

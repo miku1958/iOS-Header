@@ -19,6 +19,8 @@
 }
 
 @property (copy, nonatomic) NSDate *aLaCarteSubscriptionMeteredCountLastResetDate;
+@property (copy, nonatomic) NSString *adsUserID;
+@property (copy, nonatomic) NSDate *appLaunchUpsellLastSeenDate;
 @property (copy, nonatomic) NSDate *bundleSubscriptionMeteredCountLastResetDate;
 @property (copy, nonatomic) NSString *canonicalLanguage;
 @property (copy, nonatomic) NSDate *dateLastOpened;
@@ -68,6 +70,7 @@
 + (id)userInfoCKRecordFromUserInfoDictionary:(id)arg1;
 - (void).cxx_destruct;
 - (void)_modifyUserInfoWithBlock:(CDUnknownBlockType)arg1;
+- (void)_persistAdsUserID:(id)arg1;
 - (void)_persistNotificationsUserID:(id)arg1;
 - (void)_setUserInfoValue:(id)arg1 forKey:(id)arg2;
 - (id)_userInfoValueForKey:(id)arg1;
@@ -89,6 +92,7 @@
 - (id)recordsForRestoringZoneName:(id)arg1;
 - (void)refreshOnboardingVersion:(CDUnknownBlockType)arg1;
 - (void)removeObserver:(id)arg1;
+- (void)syncLocalAdsUserID:(id)arg1 withRemoteAdsUserID:(id)arg2;
 - (void)syncLocalNotificationsUserID:(id)arg1 withRemoteNotificationsUserID:(id)arg2;
 - (void)syncWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateOnboardingVersion;

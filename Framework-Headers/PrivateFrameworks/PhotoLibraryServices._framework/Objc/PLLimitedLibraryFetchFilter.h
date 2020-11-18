@@ -14,9 +14,8 @@
 }
 
 @property (copy, nonatomic) NSString *applicationIdentifier; // @dynamic applicationIdentifier;
+@property (copy, nonatomic) NSString *designatedRequirement; // @dynamic designatedRequirement;
 @property (strong, nonatomic) NSData *fetchFilterData; // @dynamic fetchFilterData;
-@property (nonatomic) int lastKnownProcessIdentifier; // @dynamic lastKnownProcessIdentifier;
-@property (nonatomic) short state; // @dynamic state;
 
 + (id)_assetUUIDStringsFromFetchFilterData:(id)arg1;
 + (id)_decodeFetchFilterData:(id)arg1 withUUIDHandler:(CDUnknownBlockType)arg2 resultHandler:(CDUnknownBlockType)arg3;
@@ -29,7 +28,7 @@
 + (id)entityNameToPredicateMapFromFetchFilterData:(id)arg1;
 + (id)fetchFilterIdentifierForApplicationIdentifier:(id)arg1;
 + (id)fetchLimitedLibraryFetchFilterWithApplicationIdentifier:(id)arg1 inManagedObjectContext:(id)arg2;
-+ (id)fetchLimitedLibraryFetchFilterWithClientBundleIdentifier:(id)arg1 inManagedObjectContext:(id)arg2;
++ (id)fetchOrCreateLimitedLibraryFetchFilterWithApplicationIdentifier:(id)arg1 auditToken:(CDStruct_4c969caf)arg2 inManagedObjectContext:(id)arg3;
 + (id)insertIntoManagedObjectContext:(id)arg1 forApplicationIdentifier:(id)arg2;
 - (void).cxx_destruct;
 - (void)_loadAssetUUIDs;

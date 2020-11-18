@@ -69,7 +69,8 @@
 @property (strong, nonatomic) NSMutableDictionary *visibleViews; // @synthesize visibleViews=_visibleViews;
 
 - (void).cxx_destruct;
-- (void)_adjustContentSizeIfNecessaryForUpdatedHeight:(double)arg1;
+- (void)_adjustContentSizeHeightIfNecessaryForUpdatedHeight:(double)arg1;
+- (void)_adjustContentSizeWidthIfNecessary;
 - (double)_adjustedFrictionForRevealAnimation;
 - (double)_adjustedTensionForRevealAnimation;
 - (void)_configureClippingIfNecessary;

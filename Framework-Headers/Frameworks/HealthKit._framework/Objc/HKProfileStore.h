@@ -39,6 +39,7 @@
 - (void)fetchDisplayImageData:(CDUnknownBlockType)arg1;
 - (void)fetchDisplayName:(CDUnknownBlockType)arg1;
 - (void)fetchProfileIdentifierForNRDeviceUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchProfileIdentifierForNRDeviceUUID:(id)arg1 ownerAppleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithHealthStore:(id)arg1;
 - (id)remoteInterface;
 - (void)removeObserver:(id)arg1;

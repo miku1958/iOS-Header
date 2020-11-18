@@ -35,7 +35,7 @@
 - (void)explanationViewDidSelectBodyButton:(id)arg1;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
-- (id)initWithFamilyMember:(id)arg1 viewer:(id)arg2 webService:(id)arg3 delegate:(id)arg4 context:(long long)arg5;
+- (id)initWithFamilyMember:(id)arg1 viewer:(id)arg2 webService:(id)arg3 passLibraryDataProvider:(id)arg4 delegate:(id)arg5 context:(long long)arg6;
 - (BOOL)shouldPushTerms;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;

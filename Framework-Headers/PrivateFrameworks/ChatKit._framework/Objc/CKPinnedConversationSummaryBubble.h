@@ -6,24 +6,21 @@
 
 #import <ChatKit/CKPinnedConversationTailedActivityItemView.h>
 
-@class CKPinnedConversationSummaryBubbleActivityItem, NSString, UILabel;
+@class CKPinnedConversationSummaryBubbleActivityItem, NSAttributedString, UILabel;
 
 @interface CKPinnedConversationSummaryBubble : CKPinnedConversationTailedActivityItemView
 {
     CKPinnedConversationSummaryBubbleActivityItem *_summaryBubbleActivityItem;
-    double _textScaleFactor;
     UILabel *_summaryLabel;
 }
 
 @property (readonly, nonatomic) CKPinnedConversationSummaryBubbleActivityItem *summaryBubbleActivityItem; // @synthesize summaryBubbleActivityItem=_summaryBubbleActivityItem;
 @property (strong, nonatomic) UILabel *summaryLabel; // @synthesize summaryLabel=_summaryLabel;
-@property (strong, nonatomic) NSString *summaryText;
-@property (nonatomic) double textScaleFactor; // @synthesize textScaleFactor=_textScaleFactor;
+@property (readonly, nonatomic) NSAttributedString *summaryText;
 
 - (void).cxx_destruct;
-- (void)_updateFont;
+- (id)_summaryLabelTextColor;
 - (void)_updateSummaryLabel;
-- (void)_updateSummaryLabelTextColors;
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (long long)contentViewContentMode;
 - (struct UIEdgeInsets)contentViewPadding;
@@ -31,6 +28,7 @@
 - (double)pillCornerRadius;
 - (void)setActivityItem:(id)arg1;
 - (void)setActivityItemViewContentScale:(long long)arg1;
+- (id)summaryLabelFont;
 - (BOOL)supportsActivityItemViewContentScale;
 - (BOOL)supportsAlignmentWithOriginationSubAvatarFrame;
 - (void)traitCollectionDidChange:(id)arg1;

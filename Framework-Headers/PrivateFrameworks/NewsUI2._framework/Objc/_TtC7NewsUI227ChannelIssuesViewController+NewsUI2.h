@@ -6,9 +6,12 @@
 
 #import <NewsUI2/_TtC7NewsUI227ChannelIssuesViewController.h>
 
+@class NSArray;
+
 @interface _TtC7NewsUI227ChannelIssuesViewController (NewsUI2)
 
 @property (nonatomic, readonly) long long pluginItemCount;
+@property (nonatomic, readonly) NSArray *pluginItemIdentifiers;
 @property (nonatomic, readonly) long long pluginVisibleItemCount;
 
 - (void)deselect;

@@ -16,27 +16,39 @@
     NSString *_realm;
     NSDictionary *_domainRealmMapping;
     NSArray *_hosts;
-    NSString *_siteCode;
-    NSUUID *_currentCredential;
+    long long _credentialUseMode;
 }
 
-@property (strong, nonatomic) NSUUID *currentCredential; // @synthesize currentCredential=_currentCredential;
+@property (nonatomic) long long credentialUseMode; // @synthesize credentialUseMode=_credentialUseMode;
+@property (strong, nonatomic) NSUUID *currentCredential;
 @property (nonatomic, getter=isDefaultRealm) BOOL defaultRealm; // @synthesize defaultRealm=_defaultRealm;
 @property (strong, nonatomic) NSDictionary *domainRealmMapping; // @synthesize domainRealmMapping=_domainRealmMapping;
 @property (strong, nonatomic) NSArray *hosts; // @synthesize hosts=_hosts;
-@property (strong, nonatomic) NSString *realm; // @synthesize realm=_realm;
-@property (strong, nonatomic) NSString *siteCode; // @synthesize siteCode=_siteCode;
+@property (readonly, nonatomic) NSString *realm; // @synthesize realm=_realm;
+@property (strong, nonatomic) NSString *siteCode;
 
-+ (BOOL)createOrSaveSettings:(id)arg1 realm:(id)arg2 error:(id *)arg3;
++ (id)appSSOKerberosCacheName;
++ (struct HeimCred_s *)createCacheEntryWithError:(id *)arg1;
++ (BOOL)createSettingCacheEntryIfNeededWithError:(id *)arg1;
++ (void)deleteAllSettings;
 + (BOOL)deleteSettingsForRealm:(id)arg1 error:(id *)arg2;
 + (id)retrieveAllCurrentSettings;
++ (struct HeimCred_s *)retrieveCacheEntry;
 + (struct HeimCred_s *)retrieveCurrentSettingsForRealm:(id)arg1;
 + (id)retrieveCurrentSettingsForRealm:(id)arg1 error:(id *)arg2;
++ (struct HeimCred_s *)retrieveSetting:(id)arg1 forRealm:(id)arg2;
++ (void)setAppSSOKerberosCacheName:(id)arg1;
++ (id)stringWithCredentialUseMode:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
+- (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithRealm:(id)arg1;
+- (BOOL)saveSetting:(id)arg1 data:(id)arg2 withError:(id *)arg3;
+- (BOOL)saveWithError:(id *)arg1;
 
 @end
 

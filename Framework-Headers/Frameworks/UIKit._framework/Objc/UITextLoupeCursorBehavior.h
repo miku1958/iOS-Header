@@ -8,12 +8,11 @@
 
 #import <UIKitCore/UITextLoupeInteractionBehaviorDelegate-Protocol.h>
 
-@class NSNumber, NSString, UITextSelectionGrabberSuppressionAssertion, _UIKeyboardTextSelectionController;
+@class NSString, UITextSelectionGrabberSuppressionAssertion, _UIKeyboardTextSelectionController;
 
 __attribute__((visibility("hidden")))
 @interface UITextLoupeCursorBehavior : NSObject <UITextLoupeInteractionBehaviorDelegate>
 {
-    NSNumber *_inheritedGranularity;
     _UIKeyboardTextSelectionController *_activeSelectionController;
     UITextSelectionGrabberSuppressionAssertion *_grabberHandleSuppressionAssertion;
 }

@@ -140,7 +140,6 @@
 - (void)_invalidateRelationshipOrderKeyManager;
 - (void)_invalidateSearchIndexManager;
 - (void)_invalidateSystemPhotoLibrarySpecificServices;
-- (BOOL)_isSystemPhotoLibrary;
 - (id)_libraryServicesStateNodeWithState:(long long)arg1;
 - (void)_resetStateQueueQoS;
 - (void)_setCameraRollCountedInQuota:(BOOL)arg1;
@@ -166,6 +165,7 @@
 - (void)initializeChangeHandling;
 - (void)initializeConstraintsDirector;
 - (void)invalidateReverseLocationDataOnAllAssets;
+- (BOOL)isSystemPhotoLibrary;
 - (id)newAlbumCountCoalescer:(id)arg1;
 - (id)newCloudPhotoLibraryManager;
 - (id)newCrashRecoverySupport;

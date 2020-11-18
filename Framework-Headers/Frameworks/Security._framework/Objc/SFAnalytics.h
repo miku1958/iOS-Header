@@ -30,6 +30,8 @@
 + (void)addOSVersionToEvent:(id)arg1;
 + (id)databasePath;
 + (id)defaultAnalyticsDatabasePath:(id)arg1;
++ (id)defaultProtectedAnalyticsDatabasePath:(id)arg1;
++ (id)defaultProtectedAnalyticsDatabasePath:(id)arg1 uuid:(id)arg2;
 + (long long)fuzzyDaysSinceDate:(id)arg1;
 + (id)hwModelID;
 + (id)logger;

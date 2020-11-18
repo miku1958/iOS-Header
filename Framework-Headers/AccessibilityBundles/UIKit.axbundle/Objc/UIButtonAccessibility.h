@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityAuditIssuesWithOptions:(id)arg1;
 - (unsigned long long)_accessibilityAutomationType;
+- (id)_accessibilityButtonMacCatalystPopupButtonCell;
 - (id)_accessibilityImagePath;
 - (unsigned long long)_accessibilityNativeTraits;
 - (id)_accessibilityUserTestingChildren;
@@ -24,6 +25,7 @@
 - (id)accessibilityPath;
 - (BOOL)accessibilityPerformEscape;
 - (unsigned long long)accessibilityTraits;
+- (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
 
 @end

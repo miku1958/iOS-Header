@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) unsigned long long voiceTriggerPastDataFramesAvailable;
 
 + (BOOL)isAPIAvailable;
+- (void)callServerCrashedBlock;
 - (void)callServerResetBlock;
 - (void)dealloc;
 - (void)enableBargeInMode:(BOOL)arg1 completionBlock:(CDUnknownBlockType)arg2;

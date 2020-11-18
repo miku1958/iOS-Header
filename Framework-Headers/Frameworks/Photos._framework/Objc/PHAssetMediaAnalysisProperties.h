@@ -37,8 +37,10 @@
 @property (readonly, nonatomic) unsigned long long mediaAnalysisVersion; // @synthesize mediaAnalysisVersion=_mediaAnalysisVersion;
 @property (readonly, nonatomic) float videoScore; // @synthesize videoScore=_videoScore;
 
++ (id)additionalPropertiesToFetchOnPrimaryObject;
 + (id)entityName;
 + (id)keyPathFromPrimaryObject;
++ (id)keyPathToPrimaryObject;
 + (id)propertiesToFetch;
 + (id)propertySetName;
 - (void).cxx_destruct;

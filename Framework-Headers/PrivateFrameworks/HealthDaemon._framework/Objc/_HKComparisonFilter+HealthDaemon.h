@@ -6,13 +6,16 @@
 
 #import <HealthKit/_HKComparisonFilter.h>
 
+#import <HealthDaemon/_HKFilterBuilding-Protocol.h>
+
 @class NSString;
 
-@interface _HKComparisonFilter (HealthDaemon)
+@interface _HKComparisonFilter (HealthDaemon) <_HKFilterBuilding>
 
 @property (readonly, copy, nonatomic) NSString *propertyForKeyPath;
 
 - (id)beginsWithPredicate;
+- (id)builder_filterWithDataTypes:(id)arg1;
 - (id)containsPredicate;
 - (id)endsWithPredicate;
 - (id)likePredicate;

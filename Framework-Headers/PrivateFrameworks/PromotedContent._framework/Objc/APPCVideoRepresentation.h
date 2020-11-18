@@ -32,7 +32,7 @@
 @property (nonatomic, copy) NSURL *videoURL;
 
 - (void).cxx_destruct;
-- (id)initWithIdentifier:(id)arg1 adType:(long long)arg2 videoURL:(id)arg3 duration:(double)arg4 fileSize:(long long)arg5 skipThreshold:(double)arg6 skipEnabled:(BOOL)arg7 unbranded:(BOOL)arg8 bitrate:(double)arg9 connectionType:(long long)arg10 signalStrength:(unsigned long long)arg11 tapAction:(id)arg12;
+- (id)initWithIdentifier:(id)arg1 adType:(long long)arg2 desiredPosition:(long long)arg3 videoURL:(id)arg4 duration:(double)arg5 fileSize:(long long)arg6 skipThreshold:(double)arg7 skipEnabled:(BOOL)arg8 unbranded:(BOOL)arg9 bitrate:(double)arg10 connectionType:(long long)arg11 signalStrength:(unsigned long long)arg12 tapAction:(id)arg13;
 
 @end
 

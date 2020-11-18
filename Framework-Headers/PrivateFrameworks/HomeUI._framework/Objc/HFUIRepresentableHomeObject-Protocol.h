@@ -15,7 +15,7 @@
 @property (readonly, nonatomic) NSSet *hf_accessories;
 @property (readonly, nonatomic) NSSet *hf_profiles;
 @property (readonly, nonatomic) NSSet *hf_services;
-@property (readonly, nonatomic) id<HFUIRepresentableHomeObject> hf_topLevelAccessoryLikeHomeObject;
+@property (readonly, nonatomic) id<HFUIRepresentableHomeObject> hf_topLevelUIRepresentableHomeObject;
 
 @end
 

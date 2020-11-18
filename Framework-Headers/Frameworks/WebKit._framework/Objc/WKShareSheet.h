@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithView:(id)arg1;
 - (void)presentWithParameters:(const struct ShareDataWithParsedURL *)arg1 inRect:(Optional_93f3c085)arg2 completionHandler:(CompletionHandler_e3f3fa93 *)arg3;
 - (void)presentWithShareDataArray:(id)arg1 inRect:(Optional_93f3c085)arg2;
-- (void)presentationControllerDidDismiss:(id)arg1;
 
 @end
 

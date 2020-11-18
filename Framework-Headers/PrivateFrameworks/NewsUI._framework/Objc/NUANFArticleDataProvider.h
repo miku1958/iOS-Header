@@ -8,7 +8,7 @@
 
 #import <NewsUI/NUArticleDataProvider-Protocol.h>
 
-@class FCArticle, NFEventManager, NSString, NUANFAssetLoader, NUANFContextLoader, NUANFFontLoader;
+@class FCArticle, NFEventManager, NSString, NUANFAssetLoader, NUANFContextLoader, NUANFFontLoader, NUANFLinkedContentLoader;
 @protocol FCContentContext, NUEmbedDataManager, NUFontRegistration, SXHost;
 
 @interface NUANFArticleDataProvider : NSObject <NUArticleDataProvider>
@@ -23,6 +23,7 @@
     NUANFAssetLoader *_assetLoader;
     id<NUEmbedDataManager> _embedDataManger;
     NFEventManager *_eventManager;
+    NUANFLinkedContentLoader *_linkedContentLoader;
 }
 
 @property (strong, nonatomic) FCArticle *article; // @synthesize article=_article;
@@ -38,11 +39,13 @@
 @property (readonly, nonatomic) id<NUFontRegistration> fontRegistration; // @synthesize fontRegistration=_fontRegistration;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<SXHost> host; // @synthesize host=_host;
+@property (strong, nonatomic) NUANFLinkedContentLoader *linkedContentLoader; // @synthesize linkedContentLoader=_linkedContentLoader;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)cancelAssetPrefetch;
 - (void)dealloc;
+- (id)headlineForIdentifier:(id)arg1;
 - (id)initWithArticle:(id)arg1 contentContext:(id)arg2 fontRegistration:(id)arg3 host:(id)arg4 embedDataManager:(id)arg5;
 - (void)loadArticleWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)loadContextWithCompletionBlock:(CDUnknownBlockType)arg1;

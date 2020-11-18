@@ -16,6 +16,10 @@
     MISSING_TYPE *offensiveState;
     MISSING_TYPE *draggableState;
     MISSING_TYPE *accessLevel;
+    MISSING_TYPE *deletedState;
+    MISSING_TYPE *nativeAdInfo;
+    MISSING_TYPE *blockedState;
+    MISSING_TYPE *premiumBadge;
 }
 
 @end

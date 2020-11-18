@@ -24,6 +24,7 @@
     NSMutableDictionary *_childrenByID;
     CLSObject *_parent;
     struct os_unfair_recursive_lock_s _lock;
+    BOOL _needsRepair;
     BOOL _temporary;
     unsigned int _generation;
     NSDate *_dateCreated;
@@ -75,8 +76,10 @@
 - (id)initWithDeletedObjectID:(id)arg1;
 - (void)lock;
 - (void)mergeWithObject:(id)arg1;
+- (BOOL)needsRepair;
 - (void)removeChild:(id)arg1;
 - (void)removeChild:(id)arg1 changedPropertyName:(id)arg2;
+- (void)setNeedsRepair:(BOOL)arg1;
 - (void)unlock;
 - (BOOL)validateObject:(id *)arg1;
 - (void)willSaveObject;

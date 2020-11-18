@@ -23,7 +23,14 @@ struct Fields {
 
 struct UTHardwareColor {
     unsigned char _field1;
-    unsigned char _field2;
-    unsigned char _field3;
+    unsigned char _field2[3];
+    union {
+        struct {
+            unsigned char _field1;
+            unsigned char _field2;
+            unsigned char _field3;
+        } _field1;
+        int _field2;
+    } _field3;
 };
 

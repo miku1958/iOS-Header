@@ -43,6 +43,7 @@
 - (void)_removeFakeSelectionBackgroundColorForRange:(struct _NSRange)arg1;
 - (void)_setFakeSelectionBackgroundColor;
 - (void)_setFakeSelectionBackgroundColorForRange:(struct _NSRange)arg1;
+- (BOOL)_showsEditMenu;
 - (id)_textWithHyphenationAppliedForAttributedText:(id)arg1;
 - (void)_updateFakeSelectionBackgroundColor:(id)arg1;
 - (BOOL)becomeFirstResponder;

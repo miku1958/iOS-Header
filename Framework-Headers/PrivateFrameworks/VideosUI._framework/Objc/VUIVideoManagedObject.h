@@ -46,6 +46,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isAdultContent; // @dynamic isAdultContent;
 @property (copy, nonatomic) NSString *localPlaybackRelativeFilePath; // @dynamic localPlaybackRelativeFilePath;
 @property (copy, nonatomic) NSURL *localPlaybackURL; // @dynamic localPlaybackURL;
+@property (copy, nonatomic) NSNumber *mainContentRelativeBookmarkTime; // @dynamic mainContentRelativeBookmarkTime;
+@property (copy, nonatomic) NSDate *mainContentRelativeBookmarkTimeStamp; // @dynamic mainContentRelativeBookmarkTimeStamp;
 @property (nonatomic) BOOL markedAsDeleted; // @dynamic markedAsDeleted;
 @property (readonly, nonatomic) NSDictionary *mediaMetrics;
 @property (strong, nonatomic) NSData *mediaMetricsJSONData; // @dynamic mediaMetricsJSONData;

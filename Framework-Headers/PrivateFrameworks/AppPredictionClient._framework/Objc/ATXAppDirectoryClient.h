@@ -23,10 +23,12 @@
     BOOL _didSearchDuringSession;
     BOOL _didSendFeedbackDuringSession;
     NSArray *_topAppsVisible;
+    NSArray *_recentAppsVisible;
 }
 
 @property (nonatomic) BOOL didSearchDuringSession; // @synthesize didSearchDuringSession=_didSearchDuringSession;
 @property (nonatomic) BOOL didSendFeedbackDuringSession; // @synthesize didSendFeedbackDuringSession=_didSendFeedbackDuringSession;
+@property (strong) NSArray *recentAppsVisible; // @synthesize recentAppsVisible=_recentAppsVisible;
 @property (strong) NSArray *topAppsVisible; // @synthesize topAppsVisible=_topAppsVisible;
 
 + (id)_allBundleIdsFromHomeScreenService:(id)arg1;
@@ -45,6 +47,7 @@
 - (void)_logUserFeedbackWithAppDirectoryResponse:(id)arg1 engagementType:(unsigned long long)arg2 bundleIdentifier:(id)arg3 bundleIdsShown:(id)arg4 explicitlyRejectedBundleIds:(id)arg5;
 - (id)_readRecentAppsWithError:(id *)arg1;
 - (void)_resetSessionState;
+- (id)_suggestionsPodDedupableBundleIds;
 - (void)_updateTopAppsVisibilityWithCategories:(id)arg1;
 - (void)appLaunchDatesWithReply:(CDUnknownBlockType)arg1;
 - (void)categoriesWithReply:(CDUnknownBlockType)arg1;

@@ -36,6 +36,7 @@
 - (id)init;
 - (BOOL)isFrontmostStatusBarHidden;
 - (BOOL)isFrontmostStatusBarPartHidden:(long long)arg1;
+- (id)leadingStatusBarStyleRequest;
 - (void)recycleStatusBar:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

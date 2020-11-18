@@ -7,13 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <PDSAgent/IDSPushHandlerDelegate-Protocol.h>
+#import <PDSAgent/IMSystemMonitorListener-Protocol.h>
 #import <PDSAgent/PDSEntryStoreDelegate-Protocol.h>
 #import <PDSAgent/PDSRequestQueueDelegate-Protocol.h>
 
 @class CUTDeferredTaskQueue, IDSPushHandler, IMTimer, NSDate, NSString, PDSBag, PDSRequestQueue;
 @protocol OS_dispatch_queue;
 
-@interface PDSCoordinator : NSObject <PDSRequestQueueDelegate, IDSPushHandlerDelegate, PDSEntryStoreDelegate>
+@interface PDSCoordinator : NSObject <PDSRequestQueueDelegate, IDSPushHandlerDelegate, IMSystemMonitorListener, PDSEntryStoreDelegate>
 {
     BOOL _requestPending;
     BOOL _disabled;
@@ -76,6 +77,7 @@
 - (void)_processEntryStore;
 - (void)_pushTokenChangedWithEntryStore:(id)arg1;
 - (BOOL)_requestMatchesPreviousRequest:(id)arg1;
+- (void)_scheduleHeartbeatWithCheckpointTime:(id)arg1;
 - (void)_scheduleHeartbeatWithTTL:(double)arg1;
 - (double)_timeToDelayRequestForTopics:(id)arg1;
 - (BOOL)_topicAvoidsCoalescing:(id)arg1;
@@ -90,9 +92,10 @@
 - (void)dealloc;
 - (void)entryStore:(id)arg1 didUpdatePendingTopics:(id)arg2;
 - (void)handler:(id)arg1 pushTokenChanged:(id)arg2;
-- (id)initWithQueue:(id)arg1 serverBag:(id)arg2 requestQueue:(id)arg3 kvStoreBlock:(CDUnknownBlockType)arg4 entryStoreBlock:(CDUnknownBlockType)arg5 pushTokenBlock:(CDUnknownBlockType)arg6;
+- (id)initWithQueue:(id)arg1 serverBag:(id)arg2 requestQueue:(id)arg3 kvStoreBlock:(CDUnknownBlockType)arg4 entryStoreBlock:(CDUnknownBlockType)arg5 pushTokenBlock:(CDUnknownBlockType)arg6 systemMonitor:(id)arg7;
 - (void)registerIfNeeded;
 - (void)requestQueue:(id)arg1 processedRequest:(id)arg2 withResponse:(id)arg3;
+- (void)systemDidLeaveFirstDataProtectionLock;
 - (long long)ttlForRequest:(id)arg1;
 
 @end

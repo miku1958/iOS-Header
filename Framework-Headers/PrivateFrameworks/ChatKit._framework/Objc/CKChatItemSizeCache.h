@@ -46,6 +46,7 @@
 - (void)_persistCache;
 - (id)_systemVersion;
 - (void)_updateKeyMap:(id)arg1 forKey:(id)arg2 sizeCacheKey:(id)arg3;
+- (void)applicationWillResignActive;
 - (id)cacheKeyForChatItem:(id)arg1 fittingSize:(struct CGSize)arg2;
 - (BOOL)cachedSizeForChatItem:(id)arg1 size:(out struct CGSize *)arg2 textAlignmentInsets:(out struct UIEdgeInsets *)arg3 fittingSize:(struct CGSize)arg4;
 - (void)dealloc;

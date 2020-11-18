@@ -86,32 +86,34 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _os_unfair_lock_opaque : ∫
+	var _os_unfair_lock_opaque : ´
  }
+
+ enum __C.CHSWidgetVisibility { }
 
  struct __C.CGSize {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : G´
+	var width : ßú
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : G´
+	var height : ßú
  }
 
  struct __C.audit_token_t {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var val : ˘π
+	var val : ˚™
  }
 
  struct __C.CGPoint {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : G´
+	var x : ßú
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : G´
+	var y : ßú
  }
 
  struct __C.CHSWidgetFamilyMask {
@@ -131,14 +133,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let reloadPolicy : TimelineReloadPolicy // +0xfeedfacf (0x0)
 	let requiresReload : Bool // +0x6100085 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_dateRange : ›™ // +0x0 (0x0)
+	var $__lazy_storage_$_dateRange : =ú // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var creationDate : Â™ // +0x3 (0x0)
-	let protectionLevel : DataProtectionLevel // +0x30 (0x1)
+	var creationDate : Eú // +0x3 (0x0)
+	let protectionLevel : DataProtectionLevel // +0x31 (0x1)
 	var viewableEntries : ViewableTimelineEntry // +0x0 (0x8)
 
 	// Swift methods
-	0x2ba0  class func WidgetViewCollection.__allocating_init(widget:environment:entries:reloadPolicy:) // init 
+	0x30d0  class func WidgetViewCollection.__allocating_init(widget:environment:entries:reloadPolicy:) // init 
  }
 
  struct WidgetKit.WidgetEnvironment {
@@ -153,20 +155,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var tuples : CodingKeys
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x9d740001eed0 (0x5740001eed0) in binary!
-	0x9d68  @objc Storage.(null) <stripped>
-WARNING: couldn't find address 0x9d640001f050 (0x5640001f050) in binary!
-	0x8b14  @objc Storage.(null) <stripped>
-WARNING: couldn't find address 0x7cc40001ee78 (0x4c40001ee78) in binary!
+WARNING: couldn't find address 0x9e140001d0d0 (0x6140001d0d0) in binary!
+	0x9e08  @objc Storage.(null) <stripped>
+WARNING: couldn't find address 0x9e040001d250 (0x6040001d250) in binary!
+	0x8c34  @objc Storage.(null) <stripped>
+WARNING: couldn't find address 0x909c0001d078 (0x9c0001d078) in binary!
 	0x18000000c  @objc Storage.(null) <stripped>
-WARNING: couldn't find address 0x8ae80001ee58 (0x2e80001ee58) in binary!
+WARNING: couldn't find address 0x8c080001d058 (0x4080001d058) in binary!
 	0xa8000000c  @objc Storage.(null) <stripped>
-WARNING: couldn't find address 0x9d140001ef78 (0x5140001ef78) in binary!
-	0x9d08  @objc Storage.(null) <stripped>
+WARNING: couldn't find address 0x9db40001d178 (0x5b40001d178) in binary!
+	0x9da8  @objc Storage.(null) <stripped>
 
 	// Swift methods
-	0xf600  class func WidgetEnvironment.Storage.__allocating_init(from:) // init 
-	0x103a0  class func WidgetEnvironment.Storage.__allocating_init(coder:) // init 
+	0xfc10  class func WidgetEnvironment.Storage.__allocating_init(from:) // init 
+	0x109b0  class func WidgetEnvironment.Storage.__allocating_init(coder:) // init 
  }
 
  struct WidgetKit.EnvironmentValuesEnumerator {
@@ -174,7 +176,7 @@ WARNING: couldn't find address 0x9d140001ef78 (0x5140001ef78) in binary!
 	// Properties
 	let environment : WidgetEnvironment
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let base : ıØ
+	let base : M°
  }
 
  struct WidgetKit.Iterator {
@@ -182,7 +184,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var iterator : Iterator
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let base : ıØ
+	let base : M°
  }
 
  class WidgetKit.AnyKey : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -191,18 +193,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let storage : StorageBase
 
 	// Swift methods
-	0x12840  class func <stripped> // init 
+	0x12e50  class func <stripped> // init 
  }
 
  class WidgetKit.StorageBase : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x12da0  func <stripped> // getter 
-	0x12df0  func <stripped> // getter 
-	0x12e40  func <stripped> // getter 
-	0x12e90  func <stripped> // getter 
-	0x12ee0  func <stripped> // method 
-	0x12f30  func <stripped> // method 
-	0x12f80  func <stripped> // method 
+	0x133b0  func <stripped> // getter 
+	0x13400  func <stripped> // getter 
+	0x13450  func <stripped> // getter 
+	0x134a0  func <stripped> // getter 
+	0x134f0  func <stripped> // method 
+	0x13540  func <stripped> // method 
+	0x13590  func <stripped> // method 
  }
 
  class WidgetKit.Storage {
@@ -212,16 +214,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let storage : StorageBase
 
 	// Swift methods
-	0x135c0  class func <stripped> // init 
+	0x13bd0  class func <stripped> // init 
  }
 
  class WidgetKit.StorageBase : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x13c60  func <stripped> // getter 
-	0x13cb0  func <stripped> // getter 
-	0x13d00  func <stripped> // method 
-	0x13d50  func <stripped> // method 
-	0x13da0  func <stripped> // method 
+	0x14270  func <stripped> // getter 
+	0x142c0  func <stripped> // getter 
+	0x14310  func <stripped> // method 
+	0x14360  func <stripped> // method 
+	0x143b0  func <stripped> // method 
  }
 
  class WidgetKit.Storage {
@@ -236,12 +238,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class WidgetKit.StorageBase : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x14400  func <stripped> // getter 
-	0x14450  func <stripped> // getter 
-	0x144a0  func <stripped> // getter 
-	0x144f0  func <stripped> // getter 
-	0x14540  func <stripped> // method 
-	0x14590  func <stripped> // method 
+	0x14a10  func <stripped> // getter 
+	0x14a60  func <stripped> // getter 
+	0x14ab0  func <stripped> // getter 
+	0x14b00  func <stripped> // getter 
+	0x14b50  func <stripped> // method 
+	0x14ba0  func <stripped> // method 
  }
 
  class WidgetKit.Storage {
@@ -357,7 +359,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var iterator : %Æ
+	var iterator : /ü
 	var isEqualProvider : (_:_:)
  }
 
@@ -365,7 +367,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var iterator : %Æ
+	var iterator : /ü
 	var isEqualProvider : (_:_:)
 	var lastValue : A?
  }
@@ -382,16 +384,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var platform : ∫ // +0x0
+	var platform : ´ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sdk : ∫ // +0x4
+	var sdk : ´ // +0x4
  }
 
  struct WidgetKit.BundleStub {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var url : •û
+	var url : ˇè
 	var identifier : String
 	var version : String
  }
@@ -400,7 +402,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var date : Â™
+	var date : Eú
 	var relevance : TimelineEntryRelevance
  }
 
@@ -409,7 +411,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var systemVersion : SystemVersion
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var creationDate : Â™
+	var creationDate : Eú
 	var extensionBundle : BundleStub
 	var environment : WidgetEnvironment
 	var widget : CHSWidget
@@ -474,7 +476,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let family : WidgetFamily
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let date : Â™
+	let date : Eú
 	let configuration : INIntent?
 	var widgetHost : WidgetHost
  }
@@ -484,7 +486,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let family : WidgetFamily
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let date : Â™
+	let date : Eú
 	let configuration : INIntent?
 	var widgetHost : WidgetHost
  }
@@ -522,7 +524,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var date : ©
+	var date : ]ö
  }
 
  struct WidgetKit.Timeline {
@@ -545,10 +547,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let connection : NSXPCConnection
 
 	// Swift methods
-	0x32cb0  func <stripped> // method 
-	0x337a0  func <stripped> // method 
-	0x33fa0  func <stripped> // method 
-	0x34b30  func <stripped> // method 
+	0x33440  func <stripped> // method 
+	0x33f30  func <stripped> // method 
+	0x34730  func <stripped> // method 
+	0x352c0  func <stripped> // method 
  }
 
  struct WidgetKit.UserInfoKey { }
@@ -563,9 +565,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _urlAction : mú
+	var _urlAction : Øç
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : •û
+	let url : ˇè
  }
 
  enum WidgetKit.CodableKeys {
@@ -594,30 +596,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var requiresReload : Bool // +0x10 (0x1)
 	var protectionLevel : DataProtectionLevel // +0x11 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_dateRange : ›™ // +0x0 (0x0)
+	var $__lazy_storage_$_dateRange : =ú // +0x0 (0x0)
 	var metadata : _WidgetArchivableMetadata // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var archivedStates : )ü // +0x45545f5f (0x0)
+	var archivedStates : kê // +0x45545f5f (0x0)
 
 	// Swift methods
-	0x37d70  func <stripped> // getter 
-	0x37df0  func <stripped> // getter 
-	0x37e70  func <stripped> // getter 
-	0x37f00  func <stripped> // getter 
-	0x37fe0  func <stripped> // getter 
-	0x380f0  func <stripped> // getter 
-	0x38120  func <stripped> // setter 
-	0x38150  func <stripped> // modifyCoroutine 
-	0x38190  func <stripped> // getter 
-	0x382a0  func <stripped> // getter 
-	0x382d0  func <stripped> // setter 
-	0x38300  func <stripped> // modifyCoroutine 
-	0x38400  func <stripped> // getter 
-	0x38960  func <stripped> // setter 
-	0x38a10  func <stripped> // modifyCoroutine 
-	0x38b40  func <stripped> // getter 
-	0x38cd0  func <stripped> // method 
-	0x39720  func <stripped> // method 
+	0x38540  func <stripped> // getter 
+	0x385c0  func <stripped> // getter 
+	0x38640  func <stripped> // getter 
+	0x386d0  func <stripped> // getter 
+	0x387b0  func <stripped> // getter 
+	0x388c0  func <stripped> // getter 
+	0x388f0  func <stripped> // setter 
+	0x38920  func <stripped> // modifyCoroutine 
+	0x38960  func <stripped> // getter 
+	0x38a70  func <stripped> // getter 
+	0x38aa0  func <stripped> // setter 
+	0x38ad0  func <stripped> // modifyCoroutine 
+	0x38bd0  func <stripped> // getter 
+	0x39130  func <stripped> // setter 
+	0x391e0  func <stripped> // modifyCoroutine 
+	0x39310  func <stripped> // getter 
+	0x394a0  func <stripped> // method 
+	0x39ef0  func <stripped> // method 
  }
 
  class WidgetKit.WGAutoreleasePool : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -635,33 +637,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let kind : String
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x9d140001ef78 (0x5140001ef78) in binary!
-	0x9d08  @objc WidgetPersonality.(null) <stripped>
-WARNING: couldn't find address 0x8a680001ef68 (0x2680001ef68) in binary!
-	0x7d97  @objc WidgetPersonality.(null) <stripped>
-WARNING: couldn't find address 0x8a500001ee00 (0x2500001ee00) in binary!
-	0x9ce0  @objc WidgetPersonality.(null) <stripped>
-WARNING: couldn't find address 0x8a900001ee08 (0x2900001ee08) in binary!
-	0x9cc0  @objc WidgetPersonality.(null) <stripped>
-WARNING: couldn't find address 0x9cb40001ee10 (0x4b40001ee10) in binary!
-	0x7c28  @objc WidgetPersonality.(null) <stripped>
+WARNING: couldn't find address 0x9db40001d178 (0x5b40001d178) in binary!
+	0x9da8  @objc WidgetPersonality.(null) <stripped>
+WARNING: couldn't find address 0x8b880001d168 (0x3880001d168) in binary!
+	0x7eb7  @objc WidgetPersonality.(null) <stripped>
+WARNING: couldn't find address 0x8b700001d000 (0x3700001d000) in binary!
+	0x9d80  @objc WidgetPersonality.(null) <stripped>
+WARNING: couldn't find address 0x8bb00001d008 (0x3b00001d008) in binary!
+	0x9d60  @objc WidgetPersonality.(null) <stripped>
+WARNING: couldn't find address 0x9d540001d010 (0x5540001d010) in binary!
+	0x9000  @objc WidgetPersonality.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffce9a8  @objc WidgetPersonality.(null) <stripped>
+	0xfffce398  @objc WidgetPersonality.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x764fffcee50  @objc WidgetPersonality.(null) <stripped>
-	0x45c0001edb8  @objc WidgetPersonality.âbHâJÎ3HãE∏HâLâ`LâhE1ˆÎHãM¿Lãe»Lãm–HãE∏Lãu®HâLâ`LâhLâHÉƒ8[A\A]A^A_]√Ñ <stripped>
-WARNING: couldn't find address 0x1eeecfffd2fa0 (0x6ecfffd2fa0) in binary!
-	0x2040001eed8  @objc WidgetPersonality.(null) <stripped>
-WARNING: couldn't find address 0x1eec4fffd3048 (0x6c4fffd3048) in binary!
+	0x164fffce840  @objc WidgetPersonality.(null) <stripped>
+	0x4fc0001cfb8  @objc WidgetPersonality.HâM–uæ <stripped>
+WARNING: couldn't find address 0x1d0ecfffd29b0 (0xecfffd29b0) in binary!
+	0x2a40001d0d8  @objc WidgetPersonality.(null) <stripped>
+WARNING: couldn't find address 0x1d0c4fffd2a58 (0xc4fffd2a58) in binary!
 	0x28000000c  @objc WidgetPersonality.(null) <stripped>
 
 	// Swift methods
-	0x3a990  class func WidgetPersonality.__allocating_init(extensionBundleIdentifier:kind:) // init 
-	0x3aa50  class func WidgetPersonality.__allocating_init<A>(_:) // init 
-	0x3aac0  func <stripped> // method 
-	0x3ae30  class func <stripped> // getter 
-	0x3ae40  class func WidgetPersonality.__allocating_init(coder:) // init 
-	0x3aff0  func <stripped> // method 
+	0x3b180  class func WidgetPersonality.__allocating_init(extensionBundleIdentifier:kind:) // init 
+	0x3b240  class func WidgetPersonality.__allocating_init<A>(_:) // init 
+	0x3b2b0  func <stripped> // method 
+	0x3b620  class func <stripped> // getter 
+	0x3b630  class func WidgetPersonality.__allocating_init(coder:) // init 
+	0x3b7e0  func <stripped> // method 
  }
 
  class WidgetKit.WidgetLocalizations : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -672,17 +674,17 @@ WARNING: couldn't find address 0x1eec4fffd3048 (0x6c4fffd3048) in binary!
 	let supportsMixedLocalizations : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8a400001edb8 (0x2400001edb8) in binary!
-	0x9c78  @objc WidgetLocalizations.(null) <stripped>
+WARNING: couldn't find address 0x8b600001cfb8 (0x3600001cfb8) in binary!
+	0x9d18  @objc WidgetLocalizations.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x6ecfffd2fa0  @objc WidgetLocalizations.(null) <stripped>
+	0xecfffd29b0  @objc WidgetLocalizations.(null) <stripped>
 
 	// Swift methods
-	0x3bbb0  class func WidgetLocalizations.__allocating_init(identifier:availableLocalizations:supportsMixedLocalizations:) // init 
-	0x3bfc0  func <stripped> // method 
-	0x3c120  class func WidgetLocalizations.__allocating_init(coder:) // init 
-	0x3c550  class func WidgetLocalizations.__allocating_init(from:) // init 
+	0x3c3a0  class func WidgetLocalizations.__allocating_init(identifier:availableLocalizations:supportsMixedLocalizations:) // init 
 	0x3c7b0  func <stripped> // method 
+	0x3c910  class func WidgetLocalizations.__allocating_init(coder:) // init 
+	0x3cd40  class func WidgetLocalizations.__allocating_init(from:) // init 
+	0x3cfa0  func <stripped> // method 
  }
 
  enum WidgetKit.CodingKeys {
@@ -702,7 +704,7 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	// Properties
 	case failedToEncode : (types: [Any.Type])
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case bundleLookupFailed : ?ß
+	case bundleLookupFailed : Iò
 	case imageTooLarge : CGSize
 	case missingNecessaryWidgetMetrics  
  }
@@ -719,13 +721,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class WidgetKit.WidgetHostContext : _AvocadoExtensionBaseContext {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x9c5c0001edb8 (0x45c0001edb8) in binary!
-	0x9c58  @objc WidgetHostContext.(null) <stripped>
-WARNING: couldn't find address 0xa2040001eed8 (0x2040001eed8) in binary!
-	0x8b10  @objc WidgetHostContext.(null) <stripped>
+WARNING: couldn't find address 0x9cfc0001cfb8 (0x4fc0001cfb8) in binary!
+	0x9cf8  @objc WidgetHostContext.(null) <stripped>
+WARNING: couldn't find address 0xa2a40001d0d8 (0x2a40001d0d8) in binary!
+	0x8c30  @objc WidgetHostContext.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x6f4fffd6188  @objc WidgetHostContext.(null) <stripped>
-	0x2040001ef98  @objc WidgetHostContext.Hâ¯HãHãVHâWHâ√f.Ñ <stripped>
+	0xf4fffd5c18  @objc WidgetHostContext.(null) <stripped>
+	0x75c0001d100  @objc WidgetHostContext.ˇLØHãu»LˆLâÍHãM–Ë≠< <stripped>
  }
 
  class WidgetKit.ResolvedWidgetHost {
@@ -733,11 +735,11 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let host : •ö
+	let host : ˜ã
 	var widgetDescriptors : WidgetDescriptor
 
 	// Swift methods
-	0x41aa0  class func ResolvedWidgetBundleHost.__allocating_init<A>(_:) // init 
+	0x42320  class func ResolvedWidgetBundleHost.__allocating_init<A>(_:) // init 
  }
 
  class WidgetKit.OptionalLocalizationsWrapper : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -746,17 +748,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let value : WidgetLocalizations // +0x0
 
 	// Swift methods
-	0x42c40  func <stripped> // method 
+	0x434d0  func <stripped> // method 
  }
 
  class WidgetKit.CHSWidgetMetricsCodable : CHSWidgetMetrics /System/Library/PrivateFrameworks/ChronoServices.framework/ChronoServices {
 	// ObjC -> Swift bridged methods
-	0x8c10  ___swift_memcpy16_8
-WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x784fffdf208  @objc CHSWidgetMetricsCodable.(null) <stripped>
+WARNING: couldn't find address 0x9ccc0001d118 (0x4cc0001d118) in binary!
+	0x8d30  @objc CHSWidgetMetricsCodable.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xfffdacf8  @objc CHSWidgetMetricsCodable.(null) <stripped>
 
 	// Swift methods
-	0x43860  func <stripped> // method 
+	0x440f0  func <stripped> // method 
  }
 
  struct WidgetKit.LocalizationTokenKey { }
@@ -791,7 +794,7 @@ WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : ≈ß // +0x0
+	let rawValue : ô // +0x0
  }
 
  enum WidgetKit.WidgetFamily {
@@ -815,18 +818,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case bundleStubNotSupported : ?ß
+	case bundleStubNotSupported : Iò
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case systemVersionNotSupported : ?ß
+	case systemVersionNotSupported : Iò
  }
 
  struct WidgetKit.ValidationOptions {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var isSystemVersionSupported : o§ // +0x0
+	var isSystemVersionSupported : qï // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var isBundleSupported : W§ // +0x10
+	var isBundleSupported : Yï // +0x10
  }
 
  enum WidgetKit.SimpleError {
@@ -835,18 +838,43 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case message : String
  }
 
+ class WidgetKit.DisplayLink : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var date : Eú
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var publisher : ØÖ
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let subject : ÂÖ
+
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0x8f5c0001d100 (0x75c0001d100) in binary!
+	0x68000000c  @objc DisplayLink.(null) <stripped>
+
+	// Swift methods
+ }
+
+ class WidgetKit.MobileDisplayLink : DisplayLink {
+
+	// Properties
+	var link : CADisplayLink? // +0x0 (0x8)
+
+	// Swift methods
+ }
+
  struct WidgetKit._ClockHandRotationEffect {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _widgetIsSnapshotting : î
+	var _displayLink : —Ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _controller : ìî
+	var _widgetIsSnapshotting : +Ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let anchor : ô
+	let anchor : !ã
 	let period : Double
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timeZone : í
+	let timeZone : kÑ
  }
 
  enum WidgetKit.Period {
@@ -856,40 +884,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case hourHand  
 	case minuteHand  
 	case secondHand  
- }
-
- class WidgetKit.ClockHandController : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var animationSeed : ∫ // +0x10 (0x4)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var date : Â™ // +0x0 (0x0)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var publisher : ˝í // +0x0 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subject : 3ì // +0x0 (0x8)
-	let clockSetNotification : DarwinNotification // +0x0 (0x4)
-	let timezoneChangeNotification : DarwinNotification // +0x0 (0x4)
-	var didResynchronize : Bool // +0x0 (0x1)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resyncTimer : Ìí // +0x0 (0x8)
-
-	// Swift methods
- }
-
- struct WidgetKit.DarwinNotification {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let token : c† // +0x0
- }
-
- struct WidgetKit.AnimationID {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var rawValue : ∫ // +0x0
  }
 
  enum WidgetKit.CodableKeys {
@@ -923,38 +917,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let theExtension : NSExtension // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sessionUUID : ©è // +0x80000408 (0x0)
+	let sessionUUID : ”Ç // +0x80000408 (0x0)
 	let hostContext : WidgetHostContext // +0x6 (0x8)
 	let loggingIdentifier : String // +0x74735f5f (0x10)
 	let lock : UnfairLock // +0x65706c65 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var subscriptions :  empty-list  // +0x45545f5f (0x8)
 	let watchdogTimeoutQueue : OS_dispatch_queue // +0x0 (0x8)
-	let watchdogTimeoutProvider : WidgetExtensionSessionOperation // +0x6bd3c (0x10)
-	let rbsInterface : RunningBoardInterface // +0x141a (0x28)
-	let suspensionObserver : WidgetExtensionSessionSuspensionObserving // +0x6bd3c (0x28)
+	let watchdogTimeoutProvider : WidgetExtensionSessionOperation // +0x6cb94 (0x10)
+	let rbsInterface : RunningBoardInterface // +0x13c0 (0x28)
+	let suspensionObserver : WidgetExtensionSessionSuspensionObserving // +0x6cb94 (0x28)
 	var widgetExtensionAssertion : Swift.AnyObject? // +0x0 (0x8)
 	var lock_invalidated : Bool // +0x0 (0x1)
 	let connection : NSXPCConnection // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8a040001ef98 (0x2040001ef98) in binary!
-	0x79a0  @objc _WidgetExtensionSession.(null) <stripped>
-WARNING: couldn't find address 0x8a060001ef70 (0x2060001ef70) in binary!
-	0x7988  @objc _WidgetExtensionSession.(null) <stripped>
-WARNING: couldn't find address 0x7b3c0001ef48 (0x33c0001ef48) in binary!
-	0x7b48  @objc _WidgetExtensionSession.(null) <stripped>
+WARNING: couldn't find address 0x8b0c0001d1a8 (0x30c0001d1a8) in binary!
+	0x7aa8  @objc _WidgetExtensionSession.(null) <stripped>
+WARNING: couldn't find address 0x8b0e0001d180 (0x30e0001d180) in binary!
+	0x7a90  @objc _WidgetExtensionSession.(null) <stripped>
+WARNING: couldn't find address 0x7c440001d158 (0x4440001d158) in binary!
+	0x8f08  @objc _WidgetExtensionSession.(null) <stripped>
 WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
-	0x70cffff0208  @objc _WidgetExtensionSession.(null) <stripped>
-	0x714ffff02d0  @objc _WidgetExtensionSession.LâÔËÑ@ <stripped>
-	0x6ecffff1df8  @objc _WidgetExtensionSession. <stripped>
+	0x11cffff0200  @objc _WidgetExtensionSession.(null) <stripped>
+	0x124ffff02c8  @objc _WidgetExtensionSession.HcH˛øˇ <stripped>
+	0xfcffff1df0  @objc _WidgetExtensionSession.HâﬂLâÊHãU¿HãE»ˇP Hã}–Hâ}êËJ? <stripped>
 
 	// Swift methods
-	0x4cfc0  func <stripped> // method 
-	0x4d670  func <stripped> // method 
-	0x4da80  func <stripped> // method 
-	0x4f310  func <stripped> // method 
-	0x4f7a0  func <stripped> // method 
+	0x4ccc0  func <stripped> // method 
+	0x4d370  func <stripped> // method 
+	0x4d780  func <stripped> // method 
+	0x4f010  func <stripped> // method 
+	0x4f4a0  func <stripped> // method 
  }
 
  class WidgetKit.WidgetPreviewAgent : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -964,11 +958,11 @@ WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
  class WidgetKit.Cartesian2ProductCollection {
  class WidgetKit.BaseEntryProviderBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib, EntryProviding {
 	// Swift methods
-	0x564c0  func <stripped> // getter 
-	0x56650  class func BaseEntryProviderBox.__allocating_init() // init 
-	0x56670  func <stripped> // method 
-	0x56680  func <stripped> // method 
-	0x59ca0  func <stripped> // method 
+	0x56c40  func <stripped> // getter 
+	0x56dd0  class func BaseEntryProviderBox.__allocating_init() // init 
+	0x56df0  func <stripped> // method 
+	0x56e00  func <stripped> // method 
+	0x5aaa0  func <stripped> // method 
  }
 
  struct WidgetKit.EntryDescriptor {
@@ -994,15 +988,16 @@ WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
 	var intentType : String? // +0x28
 	var onURLSessionEventsConfigurations : WidgetURLSessionEventConfiguration // +0x38
 	var entryDescriptor : EntryDescriptor // +0x40
+	var widgetVisibility : CHSWidgetVisibility // +0x50
  }
 
  struct WidgetKit.WidgetDescriptorKey { }
 
  class WidgetKit.WidgetHost : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x59e30  func <stripped> // getter 
-	0x59e70  func <stripped> // getter 
-	0x59eb0  func <stripped> // method 
+	0x5ac30  func <stripped> // getter 
+	0x5ac70  func <stripped> // getter 
+	0x5acb0  func <stripped> // method 
  }
 
  class WidgetKit.UnfairLock : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LockProtocol {
@@ -1030,7 +1025,7 @@ WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
 	let id : NSUUID
 
 	// Swift methods
-	0x5cbe0  func <stripped> // method 
+	0x5d9f0  func <stripped> // method 
  }
 
  class WidgetKit.WidgetExtensionContext : _AvocadoExtensionBaseContext {
@@ -1040,37 +1035,36 @@ WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
 	var urlHandlers : WidgetURLHandler
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7b340001ecc8 (0x3340001ecc8) in binary!
-	0x7b28  @objc WidgetExtensionContext.(null) <stripped>
-WARNING: couldn't find address 0x899c0001ef30 (0x19c0001ef30) in binary!
-	0x89aa  @objc WidgetExtensionContext.(null) <stripped>
-WARNING: couldn't find address 0x792c0001ef10 (0x12c0001ef10) in binary!
-	0x7ae0  @objc WidgetExtensionContext.(null) <stripped>
-WARNING: couldn't find address 0x79140001eee8 (0x1140001eee8) in binary!
-	0x9b60  @objc WidgetExtensionContext.(null) <stripped>
-WARNING: couldn't find address 0x9b5c0001edf0 (0x35c0001edf0) in binary!
-	0xa108  @objc WidgetExtensionContext.(null) <stripped>
-WARNING: couldn't find address 0x8a140001edc8 (0x2140001edc8) in binary!
-	0x7ab0  @objc WidgetExtensionContext.(null) <stripped>
+WARNING: couldn't find address 0x8ef40001ceb0 (0x6f40001ceb0) in binary!
+	0x8ee8  @objc WidgetExtensionContext.(null) <stripped>
+WARNING: couldn't find address 0x8aa40001d140 (0x2a40001d140) in binary!
+	0x8ab2  @objc WidgetExtensionContext.(null) <stripped>
+WARNING: couldn't find address 0x7a340001d120 (0x2340001d120) in binary!
+	0x7be8  @objc WidgetExtensionContext.(null) <stripped>
+WARNING: couldn't find address 0x7a1c0001d0f8 (0x21c0001d0f8) in binary!
+	0x9be8  @objc WidgetExtensionContext.(null) <stripped>
+WARNING: couldn't find address 0x9be40001cfd8 (0x3e40001cfd8) in binary!
+	0xa190  @objc WidgetExtensionContext.(null) <stripped>
+	0x8e70  ___swift_project_boxed_opaque_existential_1
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x414ffffd830  @objc WidgetExtensionContext.(null) <stripped>
-	0xffffd888  @objc WidgetExtensionContext.L <stripped>
+	0x5fcffffd8a8  @objc WidgetExtensionContext.(null) <stripped>
+	0xffffd900  @objc WidgetExtensionContext.ˇˇHãM∏LãU®LãM†LãE»LãmÿÈ”˛ˇˇf.Ñ <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x57cffffd880  @objc WidgetExtensionContext.(null) <stripped>
-	0x554ffffd928  @objc WidgetExtensionContext.HâÛHâ}∏HâM¿Hâœˇ\ó <stripped>
-	0xffffdb00  @objc WidgetExtensionContext.[√f.Ñ <stripped>
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	0x1573a4d4152  @objc WidgetExtensionContext.(null) <stripped>
+	0x764ffffd8f8  @objc WidgetExtensionContext.(null) <stripped>
+	0x73cffffd9a0  @objc WidgetExtensionContext.ÿË∏ˇˇLãmÿÈ„˛ˇˇø <stripped>
+	0xffffdb78  @objc WidgetExtensionContext.Hâﬂ1…ËV? <stripped>
+WARNING: couldn't find address 0x474f525029232840 (0x25029232840) in binary!
+	0x74694b7465  @objc WidgetExtensionContext.(null) <stripped>
 
 	// Swift methods
-	0x5d6b0  func <stripped> // method 
+	0x5e4c0  func <stripped> // method 
  }
 
  class WidgetKit.TightLeadingFontDefinition : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x61240  class func <stripped> // method 
-	0x616d0  class func <stripped> // method 
-	0x61840  class func <stripped> // method 
+	0x62040  class func <stripped> // method 
+	0x624d0  class func <stripped> // method 
+	0x62640  class func <stripped> // method 
  }
 
  class WidgetKit.ContentSizeCategoryDecrementingFontDefinition : TightLeadingFontDefinition { }
@@ -1081,9 +1075,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let date : Â™
+	let date : Eú
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let view : Âç
+	let view : ìÄ
 	let relevance : TimelineEntryRelevance
  }
 
@@ -1098,16 +1092,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class WidgetKit._AvocadoExtensionBaseContext : NSExtensionContext /System/Library/Frameworks/Foundation.framework/Foundation {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x9aec0001ec48 (0x2ec0001ec48) in binary!
-	0x9ae8  @objc _AvocadoExtensionBaseContext.(null) <stripped>
-WARNING: couldn't find address 0xa0940001ed68 (0x940001ed68) in binary!
-	0x89a0  @objc _AvocadoExtensionBaseContext.(null) <stripped>
-WARNING: couldn't find address 0x7a3c0001ebf0 (0x23c0001ebf0) in binary!
-	0x0  @objc _AvocadoExtensionBaseContext.(null) <stripped>
-WARNING: couldn't find address 0x474f525029232840 (0x25029232840) in binary!
-	0x74694b7465  @objc _AvocadoExtensionBaseContext.(null) <stripped>
-WARNING: couldn't find address 0x433a5443454a4f52 (0x443454a4f52) in binary!
-	0xa322e382e  @objc _AvocadoExtensionBaseContext.(null) <stripped>
+WARNING: couldn't find address 0x9b740001ce30 (0x3740001ce30) in binary!
+	0x9b70  @objc _AvocadoExtensionBaseContext.(null) <stripped>
+WARNING: couldn't find address 0xa11c0001cf50 (0x11c0001cf50) in binary!
+	0x8aa8  @objc _AvocadoExtensionBaseContext.(null) <stripped>
+WARNING: couldn't find address 0x8dfc0001cdd8 (0x5fc0001cdd8) in binary!
+	0x25029232840  @objc _AvocadoExtensionBaseContext.(null) <stripped>
+WARNING: couldn't find address 0x676469573a4d4152 (0x1573a4d4152) in binary!
+	0x443454a4f52  @objc _AvocadoExtensionBaseContext.(null) <stripped>
+WARNING: couldn't find address 0x30312d6f6e6f7268 (0x56f6e6f7268) in binary!
+	0x1999999999a  @objc _AvocadoExtensionBaseContext.(null) <stripped>
 
 	// Swift methods
  }

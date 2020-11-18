@@ -13,14 +13,14 @@
     MISSING_TYPE *appSessionManager;
     MISSING_TYPE *client;
     MISSING_TYPE *endpoint;
+    MISSING_TYPE *contentType;
     MISSING_TYPE *config;
     MISSING_TYPE *clientFactory;
     MISSING_TYPE *signingService;
     MISSING_TYPE *uploadDropboxPathProvider;
     MISSING_TYPE *fileManager;
-    MISSING_TYPE *uploadManagers;
-    MISSING_TYPE *flushDispatchGroup;
     MISSING_TYPE *state;
+    MISSING_TYPE *flushQueue;
 }
 
 @end

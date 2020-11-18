@@ -12,11 +12,17 @@
 
 @interface NTPBAsset : PBCodable <NSCopying>
 {
+    int _error;
     int _type;
     NSData *_wrappingKeyID;
-    CDStruct_f953fb60 _has;
+    struct {
+        unsigned int error:1;
+        unsigned int type:1;
+    } _has;
 }
 
+@property (nonatomic) int error; // @synthesize error=_error;
+@property (nonatomic) BOOL hasError;
 @property (nonatomic) BOOL hasType;
 @property (readonly, nonatomic) BOOL hasWrappingKeyID;
 @property (nonatomic) int type; // @synthesize type=_type;

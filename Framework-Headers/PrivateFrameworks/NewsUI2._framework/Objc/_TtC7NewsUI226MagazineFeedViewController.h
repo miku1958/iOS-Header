@@ -25,7 +25,8 @@
     MISSING_TYPE *bundlePurchasePrewarmer;
     MISSING_TYPE *heightChangeRelayoutThreshold;
     MISSING_TYPE *viewportFromLastRelayout;
-    MISSING_TYPE *commandCenter;
+    MISSING_TYPE *commandContainer;
+    MISSING_TYPE *newsActivityManager;
     MISSING_TYPE *isBeingUsedAsPlugin;
     MISSING_TYPE *pluggableDelegate;
 }

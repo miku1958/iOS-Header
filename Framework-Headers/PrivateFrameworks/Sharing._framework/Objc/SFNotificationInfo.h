@@ -23,6 +23,7 @@
     SFNotificationError *_error;
     NSString *_header;
     NSString *_title;
+    unsigned long long _homePodType;
 }
 
 @property (strong, nonatomic) NSURL *attachmentURL; // @synthesize attachmentURL=_attachmentURL;
@@ -30,6 +31,7 @@
 @property (nonatomic) unsigned char deviceClass; // @synthesize deviceClass=_deviceClass;
 @property (strong, nonatomic) SFNotificationError *error; // @synthesize error=_error;
 @property (strong, nonatomic) NSString *header; // @synthesize header=_header;
+@property (nonatomic) unsigned long long homePodType; // @synthesize homePodType=_homePodType;
 @property (nonatomic) unsigned char interactionBehavior; // @synthesize interactionBehavior=_interactionBehavior;
 @property (nonatomic) unsigned char interactionDirection; // @synthesize interactionDirection=_interactionDirection;
 @property (readonly, nonatomic) SFNotificationInfo *mediumBubbleVersion;

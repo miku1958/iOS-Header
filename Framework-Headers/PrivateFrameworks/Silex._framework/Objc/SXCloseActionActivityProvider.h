@@ -20,11 +20,9 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) id<SXViewControllerPresenting> viewControllerPresenting; // @synthesize viewControllerPresenting=_viewControllerPresenting;
 
 - (void).cxx_destruct;
 - (id)activityGroupForAction:(id)arg1;
-- (id)initWithViewControllerPresenting:(id)arg1;
 
 @end
 

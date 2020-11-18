@@ -131,6 +131,7 @@
 - (unsigned short)glyphWithName:(id)arg1;
 - (id)htmlMarkupDescription;
 - (unsigned int)hyphenGlyphForLocale:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFamilyName:(id)arg1 traits:(int)arg2 size:(double)arg3;
 - (id)initWithMarkupDescription:(id)arg1;

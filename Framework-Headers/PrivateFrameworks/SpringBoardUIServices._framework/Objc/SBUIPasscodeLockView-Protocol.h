@@ -42,6 +42,7 @@
 - (void)setAllowsStatusTextUpdatingOnResignFirstResponder:(BOOL)arg1;
 - (void)setKeypadVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setPasscodeLockViewState:(long long)arg1 animated:(BOOL)arg2;
+- (BOOL)supportsPoseidonCoaching;
 - (void)updateStatusText:(NSString *)arg1 subtitle:(NSString *)arg2 animated:(BOOL)arg3;
 @end
 

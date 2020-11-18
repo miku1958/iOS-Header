@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) MROrigin *skeleton;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
++ (id)anyOrigin;
 + (id)localOrigin;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

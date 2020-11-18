@@ -10,13 +10,19 @@
 #import <HomeKitDaemon/HMDCoreAnalyticsLogging-Protocol.h>
 #import <HomeKitDaemon/HMDDiagnosticReportLogging-Protocol.h>
 
-@class HMDRemoteMessage, NSString;
+@class NSDictionary, NSString;
 
 @interface HMDRemoteMessageLogEvent : HMDLogEvent <HMDAWDLogEvent, HMDDiagnosticReportLogging, HMDCoreAnalyticsLogging>
 {
     BOOL _sending;
+    BOOL _secure;
     int _transportType;
-    HMDRemoteMessage *_remoteMessage;
+    NSString *_msgIdentifier;
+    NSString *_transactionIdentifier;
+    NSDictionary *_msgPayload;
+    NSString *_msgName;
+    long long _msgType;
+    NSString *_peerInformation;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,24 +30,33 @@
 @property (readonly, copy) NSString *diagnosticReportEventSubType;
 @property (readonly, copy) NSString *diagnosticReportEventType;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) HMDRemoteMessage *remoteMessage; // @synthesize remoteMessage=_remoteMessage;
+@property (readonly, copy, nonatomic) NSString *msgIdentifier; // @synthesize msgIdentifier=_msgIdentifier;
+@property (readonly, nonatomic) NSString *msgName; // @synthesize msgName=_msgName;
+@property (readonly, copy, nonatomic) NSDictionary *msgPayload; // @synthesize msgPayload=_msgPayload;
+@property (readonly, nonatomic) long long msgType; // @synthesize msgType=_msgType;
+@property (readonly, nonatomic) NSString *peerInformation; // @synthesize peerInformation=_peerInformation;
+@property (readonly, nonatomic) BOOL secure; // @synthesize secure=_secure;
 @property (readonly, nonatomic) BOOL sending; // @synthesize sending=_sending;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *transactionIdentifier; // @synthesize transactionIdentifier=_transactionIdentifier;
 @property (readonly, nonatomic) int transportType; // @synthesize transportType=_transportType;
 
 + (int)awdMessageTypeFromHMDMessageType:(long long)arg1;
++ (id)receivedRemoteMessage:(id)arg1 identifier:(id)arg2 transactionIdentifier:(id)arg3 messageType:(long long)arg4 peerInformation:(id)arg5 secure:(BOOL)arg6 transportType:(int)arg7;
 + (id)receivedRemoteMessage:(id)arg1 transportType:(int)arg2;
++ (id)sendingRemoteMessage:(id)arg1 identifier:(id)arg2 transactionIdentifier:(id)arg3 messageType:(long long)arg4 peerInformation:(id)arg5 secure:(BOOL)arg6 transportType:(int)arg7;
 + (id)sendingRemoteMessage:(id)arg1 transportType:(int)arg2;
 + (id)uuid;
 - (void).cxx_destruct;
 - (unsigned int)AWDMessageType;
 - (id)asCommaSeparateValues;
 - (id)eventName;
-- (id)initWithRemoteMessage:(id)arg1 transportType:(int)arg2 sending:(BOOL)arg3;
+- (id)initWithRemoteMessage:(id)arg1 identifier:(id)arg2 transactionIdentifier:(id)arg3 messageType:(long long)arg4 peerInformation:(id)arg5 secure:(BOOL)arg6 transportType:(int)arg7 sending:(BOOL)arg8;
 - (id)metricForAWD;
 - (id)serializedEvent;
 - (id)serializedEventForDiagnostics:(BOOL)arg1;
 - (BOOL)shouldSubmitEvent;
+- (int)toAWDType:(int)arg1;
 - (void)updateDiagnosticReportSignature:(id)arg1;
 
 @end

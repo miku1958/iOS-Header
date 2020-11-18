@@ -169,10 +169,12 @@
 @property (readonly, nonatomic) long long navBarStyle;
 @property (readonly, nonatomic) UIColor *nicknameViewBackgroundColor;
 @property (readonly, nonatomic) UIColor *notificationSubtitleColor;
-@property (readonly, nonatomic) UIColor *paddleBorderColor;
+@property (readonly, nonatomic) UIColor *paddleInnerGlow;
 @property (readonly, nonatomic) UIColor *paddleNameColor;
+@property (readonly, nonatomic) UIColor *paddleOuterGlow;
 @property (readonly, nonatomic) UIColor *paddleSelectionColor;
 @property (readonly, nonatomic) UIColor *paddleSeparatorColor;
+@property (readonly, nonatomic) UIColor *paddleShadow;
 @property (readonly, nonatomic) UIColor *paddleShadowColor;
 @property (readonly, nonatomic) UIColor *primaryLabelColor;
 @property (readonly, nonatomic) UIColor *progressBarTrackTintColor;

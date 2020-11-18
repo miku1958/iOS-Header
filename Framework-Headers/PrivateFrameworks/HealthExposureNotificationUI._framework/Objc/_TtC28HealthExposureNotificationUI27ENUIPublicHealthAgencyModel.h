@@ -17,17 +17,24 @@
     MISSING_TYPE *header;
     MISSING_TYPE *legalese;
     MISSING_TYPE *consentStatus;
+    MISSING_TYPE *consentVersion;
     MISSING_TYPE *isAuthorized;
     MISSING_TYPE *regionVersion;
     MISSING_TYPE *regionWebsiteURL;
+    MISSING_TYPE *wantsAnalytics;
+    MISSING_TYPE *analyticsConsentStatus;
+    MISSING_TYPE *analyticsConsentText;
     MISSING_TYPE *verificationIntroductoryText;
     MISSING_TYPE *verificationCodeHelpURL;
     MISSING_TYPE *verificationSymptomOnsetText;
     MISSING_TYPE *verificationTravelStatusText;
 }
 
+@property (nonatomic) long long analyticsConsentStatus; // @synthesize analyticsConsentStatus;
+@property (nonatomic, readonly) NSString *analyticsConsentText;
 @property (nonatomic, readonly) NSString *appBundleId;
 @property (nonatomic, readonly) _TtC28HealthExposureNotificationUI21ENUIUserConsentStatus *consentStatus; // @synthesize consentStatus;
+@property (nonatomic, readonly) NSString *consentVersion;
 @property (nonatomic, readonly) _TtC28HealthExposureNotificationUI22ENUIPublicHealthHeader *header; // @synthesize header;
 @property (nonatomic, readonly) UIImage *installedAppIcon;
 @property (nonatomic, readonly) NSString *installedAppName;
@@ -47,6 +54,7 @@
 @property (nonatomic, readonly) NSString *verificationIntroductoryText;
 @property (nonatomic, readonly) NSString *verificationSymptomOnsetText;
 @property (nonatomic, readonly) NSString *verificationTravelStatusText;
+@property (nonatomic, readonly) BOOL wantsAnalytics; // @synthesize wantsAnalytics;
 
 + (id)activeRegion;
 + (id)allRegions;
@@ -59,7 +67,7 @@
 + (void)setAvailableRegions:(id)arg1;
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithRegion:(id)arg1 name:(id)arg2 appBundleId:(id)arg3 introductoryText:(id)arg4 header:(id)arg5 legalese:(id)arg6 consentStatus:(id)arg7 isAuthorized:(BOOL)arg8 regionVersion:(long long)arg9 regionWebsiteURL:(id)arg10 verificationIntroductoryText:(id)arg11 verificationCodeHelpURL:(id)arg12 verificationSymptomOnsetText:(id)arg13 verificationTravelStatusText:(id)arg14;
+- (id)initWithRegion:(id)arg1 name:(id)arg2 appBundleId:(id)arg3 introductoryText:(id)arg4 header:(id)arg5 legalese:(id)arg6 consentStatus:(id)arg7 consentVersion:(id)arg8 isAuthorized:(BOOL)arg9 regionVersion:(long long)arg10 regionWebsiteURL:(id)arg11 wantsAnalytics:(BOOL)arg12 analyticsConsentStatus:(long long)arg13 analyticsConsentText:(id)arg14 verificationIntroductoryText:(id)arg15 verificationCodeHelpURL:(id)arg16 verificationSymptomOnsetText:(id)arg17 verificationTravelStatusText:(id)arg18;
 
 @end
 

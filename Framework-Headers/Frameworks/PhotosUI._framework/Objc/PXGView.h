@@ -85,9 +85,9 @@
 + (id)debugHierarchyObjectsInGroupWithID:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3;
 + (void)enumerateAllViewsUsingBlock:(CDUnknownBlockType)arg1;
 + (BOOL)forceAccessibilityEnabled;
-+ (BOOL)isAvailable;
 + (long long)screenPixelCount;
 + (void)setForceAccessibilityEnabled:(BOOL)arg1;
++ (unsigned long long)supportLevel;
 - (void).cxx_destruct;
 - (void)_ensureEndAnimatedScroll;
 - (struct CGImage *)_fallbackImageForAssetReference:(id)arg1 mediaProvider:(id)arg2;

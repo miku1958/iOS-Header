@@ -41,13 +41,12 @@
 @property (nonatomic) BOOL shouldUseAllSubviews; // @synthesize shouldUseAllSubviews=_shouldUseAllSubviews;
 @property (nonatomic) BOOL sorted; // @synthesize sorted=_sorted;
 
++ (id)defaultMacCatalystPlatformOptions;
 + (id)defaultSpeakScreenOptions;
 + (id)defaultSwitchControlOptions;
 + (id)defaultVoiceOverOptions;
-+ (id)defaultVoiceOverOptionsHonoringGroupsForContainer:(id)arg1;
 + (id)options;
-+ (id)optionsHonoringGroupsForContainer:(id)arg1;
-+ (id)voiceOverOptionsIncludingElementsFromOpaqueProviders:(BOOL)arg1;
++ (id)voiceOverOptionsIncludingElementsFromOpaqueProviders:(BOOL)arg1 honorsGroups:(BOOL)arg2;
 - (void).cxx_destruct;
 - (id)description;
 - (id)init;

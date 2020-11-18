@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <MetricsKit/NSSecureCoding-Protocol.h>
+
 @class NSArray, NSString;
 
-@interface MTIDScheme : NSObject
+@interface MTIDScheme : NSObject <NSSecureCoding>
 {
     BOOL _isDefault;
     NSString *_idNamespace;
@@ -37,14 +39,18 @@
 
 + (id)localCalendar;
 + (id)referenceDateComponents;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (unsigned long long)calculateHash;
-- (id)debugInfo;
 - (id)description;
+- (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithNamespace:(id)arg1 options:(id)arg2;
 - (id)initWithNamespace:(id)arg1 type:(long long)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (void)overrideLifespanMaybe;
 - (id)rollingEndDateForDate:(id)arg1;
 - (id)rollingStartDateForDate:(id)arg1;
 - (id)rotatedSecretNameForDate:(id)arg1 maxCount:(long long)arg2;

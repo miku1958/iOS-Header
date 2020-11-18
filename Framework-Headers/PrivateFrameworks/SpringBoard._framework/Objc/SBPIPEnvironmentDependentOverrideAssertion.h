@@ -24,6 +24,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (long long)_environmentModeForLayoutState:(id)arg1;
 - (id)_layoutCoordinator;
 - (void)_updateStateForTransitionWithContext:(id)arg1;
 - (void)dealloc;

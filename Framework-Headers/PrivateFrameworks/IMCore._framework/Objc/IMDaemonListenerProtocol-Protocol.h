@@ -89,6 +89,7 @@
 - (void)fileTransferHighQualityDownloadFailed:(NSString *)arg1;
 - (void)fileTransfers:(NSArray *)arg1 createdWithLocalPaths:(NSArray *)arg2;
 - (void)finishedDownloadingPurgedAssetsForChatIDs:(NSArray *)arg1;
+- (void)fixedUpSMSChatsWithGroupIDMap:(NSDictionary *)arg1;
 - (void)frequentRepliesQuery:(NSString *)arg1 chatID:(NSString *)arg2 services:(NSArray *)arg3 finishedWithResult:(NSArray *)arg4 limit:(unsigned long long)arg5;
 - (void)groupPhotoUpdatedForChatIdentifier:(NSString *)arg1 style:(unsigned char)arg2 account:(NSString *)arg3 userInfo:(NSDictionary *)arg4;
 - (void)handlesSharingNicknamesDidChange;

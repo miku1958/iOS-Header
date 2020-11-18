@@ -36,7 +36,6 @@
 - (id)_companionLoginWithAccount:(id)arg1 cell:(id)arg2;
 - (void)_disableCells;
 - (void)_enableCells;
-- (void)_logout;
 - (id)_proxyLoginWithAccount:(id)arg1 cell:(id)arg2;
 - (void)_reloadForAuthEvent;
 - (void)_setupButtonCell:(id)arg1 enabled:(BOOL)arg2;
@@ -50,6 +49,7 @@
 - (unsigned long long)didSelectItem:(id)arg1;
 - (id)initWithModule:(id)arg1;
 - (id)kickOffManualLogin;
+- (void)logout;
 - (void)setupCell:(id)arg1 forItem:(id)arg2;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 animated:(BOOL)arg3;
 

@@ -19,6 +19,7 @@
     UITraitCollection *_transcriptTraitCollection;
     NSAttributedString *_transcriptText;
     NSAttributedString *_transcriptDrawerText;
+    NSString *_transcriptIdentifier;
     struct CGSize _size;
     struct UIEdgeInsets _textAlignmentInsets;
 }
@@ -49,6 +50,7 @@
 @property (readonly, nonatomic) BOOL stickersSnapToPoint;
 @property (readonly, nonatomic) struct UIEdgeInsets textAlignmentInsets; // @synthesize textAlignmentInsets=_textAlignmentInsets;
 @property (copy, nonatomic) NSAttributedString *transcriptDrawerText; // @synthesize transcriptDrawerText=_transcriptDrawerText;
+@property (strong, nonatomic) NSString *transcriptIdentifier; // @synthesize transcriptIdentifier=_transcriptIdentifier;
 @property (readonly, nonatomic) BOOL transcriptOrientation;
 @property (copy, nonatomic) NSAttributedString *transcriptText; // @synthesize transcriptText=_transcriptText;
 @property (readonly, nonatomic) struct UIEdgeInsets transcriptTextAlignmentInsets;

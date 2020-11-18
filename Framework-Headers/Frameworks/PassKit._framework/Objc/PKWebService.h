@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <PassKitCore/NSURLSessionDataDelegate-Protocol.h>
 #import <PassKitCore/NSURLSessionTaskDelegate-Protocol.h>
 
 @class ACAccountStore, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSSet, NSString, NSURLSession, NSURLSessionConfiguration;
 @protocol OS_dispatch_queue, PKTapToRadarDelegate;
 
-@interface PKWebService : NSObject <NSURLSessionTaskDelegate>
+@interface PKWebService : NSObject <NSURLSessionTaskDelegate, NSURLSessionDataDelegate>
 {
     ACAccountStore *_accountStore;
     unsigned long long _taskIDCounter;
@@ -19,6 +20,7 @@
     NSOperationQueue *_delegateOperationQueue;
     NSMutableDictionary *_webServiceTasks;
     NSMutableDictionary *_diagnosticReasonsByTaskID;
+    NSMutableDictionary *_tasksMetadata;
     NSMutableArray *_diagnosticReasons;
     NSURLSession *_urlSession;
     NSObject<OS_dispatch_queue> *_diagnosticReasonsQueue;
@@ -38,8 +40,11 @@
 
 + (id)_sharedCookieStorage;
 - (void).cxx_destruct;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 willCacheResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
 - (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)URLSession:(id)arg1 taskIsWaitingForConnectivity:(id)arg2;
 - (id)_accountStore;
@@ -49,6 +54,7 @@
 - (id)_redactLogsWithData:(id)arg1;
 - (BOOL)_trustPassesExtendedValidation:(struct __SecTrust *)arg1;
 - (id)_urlRequestTaggedWithDiagnosticReasonHeader:(id)arg1 forTaskID:(unsigned long long)arg2;
+- (id)_urlRequestTaggedWithUniqueRequestIdentifier:(id)arg1;
 - (id)_urlRequestTaggedWithWebServiceSessionMarkerHeader:(id)arg1;
 - (void)addDiagnosticReason:(id)arg1;
 - (BOOL)canBypassTrustExtendedValidation;
@@ -64,7 +70,9 @@
 - (void)logRequest:(id)arg1;
 - (void)logResponse:(id)arg1 withData:(id)arg2;
 - (unsigned long long)nextTaskID;
+- (void)performRequest:(id)arg1 taskIdentifier:(unsigned long long)arg2 cacheResponse:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)performRequest:(id)arg1 taskIdentifier:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)performRequest:(id)arg1 taskIdentifier:(unsigned long long)arg2 retries:(unsigned long long)arg3 authHandling:(BOOL)arg4 cacheResponse:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)performRequest:(id)arg1 taskIdentifier:(unsigned long long)arg2 retries:(unsigned long long)arg3 authHandling:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)processRetryRequest:(id)arg1 responseData:(id)arg2 orginalRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)refreshSessionWithConfiguration:(id)arg1;

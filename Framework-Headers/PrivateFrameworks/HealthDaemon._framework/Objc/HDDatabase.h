@@ -114,7 +114,6 @@
 - (void)_checkInDatabase:(id)arg1 type:(long long)arg2 flushImmediately:(BOOL)arg3;
 - (id)_checkOutDatabaseForTransaction:(id)arg1 databaseType:(long long)arg2 error:(id *)arg3;
 - (id)_cloudSyncJournalDirectoryPath;
-- (void)_considerRebuildingHFDIndex;
 - (id)_createAndVerifyDatabaseConnectionWithType:(long long)arg1 error:(id *)arg2;
 - (id)_createDatabaseConnectionWithType:(long long)arg1;
 - (id)_currentDatabaseJournal;
@@ -155,6 +154,7 @@
 - (id)checkOutUnprotectedDatabase:(id)arg1 error:(id *)arg2;
 - (id)cloneAccessibilityAssertion:(id)arg1 ownerIdentifier:(id)arg2 error:(id *)arg3;
 - (void)contentProtectionStateChanged:(long long)arg1 previousState:(long long)arg2;
+- (long long)currentHFDRebuildStage;
 - (void)databaseJournalMergeDidComplete:(id)arg1;
 - (void)databasePool:(id)arg1 didFlushDatabases:(id)arg2;
 - (id)databasePoolForDatabaseType:(long long)arg1;
@@ -186,11 +186,17 @@
 - (BOOL)performWithTransactionContext:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (id)progressForJournalMergeWithType:(long long)arg1;
 - (id)protectedDatabaseURL;
+- (BOOL)rebuildIfNeeded:(id *)arg1;
 - (void)removeDatabaseJournalMergeObserver:(id)arg1 journalType:(long long)arg2;
 - (void)removeProtectedDataObserver:(id)arg1;
+- (void)reportHFDRebuildStatus:(long long)arg1 error:(id)arg2;
+- (void)requestHFDRebuild;
+- (void)setCurrentHFDRebuildStage:(long long)arg1;
+- (BOOL)shouldRequestRebuildForFailure:(long long)arg1 code:(int)arg2;
 - (id)takeAccessibilityAssertionWithOwnerIdentifier:(id)arg1 shouldPerformTransaction:(BOOL)arg2 timeout:(double)arg3 error:(id *)arg4;
 - (id)takeAccessibilityAssertionWithOwnerIdentifier:(id)arg1 timeout:(double)arg2 error:(id *)arg3;
 - (id)unitTest_currentTransaction;
+- (void)unitTest_requestHFDRebuild;
 - (void)unitTest_setContentProtectionStateAndWait:(long long)arg1;
 
 @end

@@ -15,6 +15,9 @@
     MISSING_TYPE *offensiveStateProvider;
     MISSING_TYPE *draggableStateProvider;
     MISSING_TYPE *paidAccessChecker;
+    MISSING_TYPE *deletedStatusProvider;
+    MISSING_TYPE *blockedStatusProvider;
+    MISSING_TYPE *feedContextFactory;
 }
 
 @end

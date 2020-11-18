@@ -6,9 +6,13 @@
 
 #import <NearbyInteraction/NSObject-Protocol.h>
 
-@class NIConfiguration, NSString;
+@class NIConfiguration, NIDiscoveryToken, NIRegionPredicate, NSString;
 
 @protocol UWBSessionServerProtocol <NSObject>
+- (void)_addObject:(NIDiscoveryToken *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)_addRegionPredicate:(NIRegionPredicate *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)_removeObject:(NIDiscoveryToken *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)_removeRegionPredicate:(NIRegionPredicate *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)activate:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)pause:(void (^)(NSError *))arg1;
 - (void)queryDeviceCapabilities:(void (^)(NSDictionary *))arg1;

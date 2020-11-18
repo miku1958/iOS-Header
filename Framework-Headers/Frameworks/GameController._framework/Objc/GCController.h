@@ -139,6 +139,7 @@
 - (id)controllerSettings;
 - (void *)createInputBufferForDevice:(struct __IOHIDDevice *)arg1 withSize:(unsigned long long)arg2;
 - (void)dealloc;
+- (id)detailedProductCategory;
 - (BOOL)displayTrueSiriRemoteName;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleEvent:(struct __IOHIDEvent *)arg1;
@@ -148,6 +149,7 @@
 - (id)initWithComponents:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 components:(id)arg2;
 - (id)initWithProfile:(id)arg1;
+- (id)initWithProfileClass:(Class)arg1 serviceRef:(struct __IOHIDServiceClient *)arg2;
 - (id)initWithProfileClass:(Class)arg1 services:(id)arg2;
 - (id)initWithServiceRef:(struct __IOHIDServiceClient *)arg1;
 - (void)initializeHapticEngines;

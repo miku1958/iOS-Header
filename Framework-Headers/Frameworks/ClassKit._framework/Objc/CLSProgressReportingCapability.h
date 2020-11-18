@@ -31,6 +31,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithKind:(long long)arg1 details:(id)arg2;
+- (void)mergeWithObject:(id)arg1;
 - (BOOL)validateObject:(id *)arg1;
 
 @end

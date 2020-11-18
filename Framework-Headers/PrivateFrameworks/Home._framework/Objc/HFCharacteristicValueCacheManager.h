@@ -7,13 +7,14 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSMutableOrderedSet;
-@protocol OS_dispatch_group;
+@protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface HFCharacteristicValueCacheManager : NSObject
 {
-    struct _opaque_pthread_rwlock_t _rwlock;
-    struct _opaque_pthread_rwlock_t _unprocessedTransctionLock;
     NSObject<OS_dispatch_group> *_dispatchGroup;
+    struct os_unfair_lock_s _cacheLock;
+    struct os_unfair_lock_s _unprocessedTransctionLock;
+    NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_transactionsByCharacteristicID;
     NSMutableDictionary *_transactionsByActionSetID;
     NSMutableOrderedSet *_unprocessedAddedTransactions;
@@ -27,20 +28,16 @@
 
 - (void).cxx_destruct;
 - (void)_enumerateTransactionsRemovingFailingItems:(id)arg1 block:(CDUnknownBlockType)arg2;
-- (void)_finishUpdatesNowIfNeeded;
 - (void)_locked_updateWithAddedTransaction:(id)arg1;
 - (void)_locked_updateWithRemovedTransaction:(id)arg1;
 - (id)_perfomUpdatedCacheRead:(CDUnknownBlockType)arg1;
-- (id)_performReadLock:(struct _opaque_pthread_rwlock_t *)arg1 block:(CDUnknownBlockType)arg2;
-- (void)_performWriteLock:(struct _opaque_pthread_rwlock_t *)arg1 block:(CDUnknownBlockType)arg2;
-- (void)_scheduleRemoveTransactions:(id)arg1 fromSet:(id)arg2;
+- (id)_performLock:(struct os_unfair_lock_s *)arg1 block:(CDUnknownBlockType)arg2;
 - (BOOL)_transaction:(id)arg1 isWritingCharacteristic:(id)arg2;
 - (BOOL)_transaction:(id)arg1 isWritingCharacteristic:(id)arg2 allowingActions:(BOOL)arg3;
 - (id)cachedValueForCharacteristic:(id)arg1;
 - (BOOL)containsTransactionsExecutingActionSet:(id)arg1;
 - (BOOL)containsTransactionsReadingCharacteristic:(id)arg1 filterBlock:(CDUnknownBlockType)arg2;
 - (BOOL)containsTransactionsWritingCharacteristic:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (void)transactionAdded:(id)arg1;
 - (void)transactionRemoved:(id)arg1;

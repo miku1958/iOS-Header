@@ -21,6 +21,7 @@
 - (int)generateHandsRegions:(const vector_7cb31c67 *)arg1 boxes:(id)arg2 maxNumRegions:(int)arg3;
 - (float *)getInputBuffer:(int)arg1 srcWidth:(int)arg2 cnnInputHeight:(int *)arg3 cnnInputWidth:(int *)arg4;
 - (int)handsDetection:(struct __CVBuffer *)arg1 handsRegions:(id)arg2 cancel:(CDUnknownBlockType)arg3;
+- (int)handsDetectionGFT:(struct __CVBuffer *)arg1 handsRegions:(id)arg2 cancel:(CDUnknownBlockType)arg3;
 - (void)nonMaxSuppression:(id)arg1;
 - (int)retrieveBoxes:(float *)arg1 outHeight:(int)arg2 outWidth:(int)arg3 boxes:(id)arg4 anchorBox:(float [3][2])arg5;
 - (int)updateModelWithResConfig:(id)arg1;

@@ -8,7 +8,7 @@
 
 #import <SpringBoard/SBViewMorphAnimatorObserver-Protocol.h>
 
-@class NSString, NSUUID, PGPictureInPictureViewController, SBPIPMorphAnimatorDataSource, SBViewMorphAnimator;
+@class NSString, NSUUID, SBPIPContainerViewController, SBPIPMorphAnimatorDataSource, SBViewMorphAnimator;
 @protocol SBPIPMorphAnimatorControllerDelegate;
 
 @interface SBPIPMorphAnimatorController : NSObject <SBViewMorphAnimatorObserver>
@@ -16,7 +16,7 @@
     NSUUID *_uuid;
     SBViewMorphAnimator *_viewMorphAnimator;
     SBPIPMorphAnimatorDataSource *_viewMorphAnimatorDataSource;
-    PGPictureInPictureViewController *_pictureInPictureViewController;
+    SBPIPContainerViewController *_pictureInPictureContainerViewController;
     id<SBPIPMorphAnimatorControllerDelegate> _delegate;
     CDUnknownBlockType _setupCompletionBlock;
     CDUnknownBlockType _animatorWaitingForExternalAnimationActionBlock;
@@ -30,7 +30,7 @@
 @property (weak, nonatomic) id<SBPIPMorphAnimatorControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) PGPictureInPictureViewController *pictureInPictureViewController; // @synthesize pictureInPictureViewController=_pictureInPictureViewController;
+@property (weak, nonatomic) SBPIPContainerViewController *pictureInPictureContainerViewController; // @synthesize pictureInPictureContainerViewController=_pictureInPictureContainerViewController;
 @property (copy, nonatomic) CDUnknownBlockType setupCompletionBlock; // @synthesize setupCompletionBlock=_setupCompletionBlock;
 @property (nonatomic) long long startedSourceAnimations; // @synthesize startedSourceAnimations=_startedSourceAnimations;
 @property (readonly) Class superclass;
@@ -40,6 +40,7 @@
 
 - (void).cxx_destruct;
 - (BOOL)_isWaitingForExternalAnimationCompletion;
+- (void)_performAnimatorWaitingForExternalAnimationActionBlock;
 - (void)_terminate;
 - (void)animatorWasInterrupted:(id)arg1;
 - (void)cancel;
@@ -48,9 +49,9 @@
 - (id)init;
 - (id)initWithTargetProcessIdentifier:(int)arg1 uuid:(id)arg2 scenePersistenceIdentifier:(id)arg3 direction:(long long)arg4 gestureInitiated:(BOOL)arg5;
 - (void)interrupt;
-- (BOOL)isContentFromFillGravity;
 - (id)scenePersistenceIdentifier;
 - (int)targetProcessIdentifier;
+- (void)willRemoveTargeMatchMoveAnimationAtFrame:(struct CGRect)arg1 withinSourceFrame:(struct CGRect)arg2;
 - (void)willStartSourceAnimations:(unsigned long long)arg1;
 
 @end

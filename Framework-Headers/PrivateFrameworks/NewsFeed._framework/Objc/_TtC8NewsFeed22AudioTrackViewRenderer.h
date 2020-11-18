@@ -15,7 +15,7 @@
     MISSING_TYPE *rendererTool;
     MISSING_TYPE *traitCollection;
     MISSING_TYPE *layoutAttributes;
-    MISSING_TYPE *thumbnailFallbackAssetHandle;
+    MISSING_TYPE *$__lazy_storage_$_thumbnailFallbackAssetHandle;
 }
 
 @end

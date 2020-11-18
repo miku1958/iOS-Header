@@ -15,6 +15,7 @@
     MISSING_TYPE *blueprintViewController;
     MISSING_TYPE *toolbarManager;
     MISSING_TYPE *sharingActivityProviderFactory;
+    MISSING_TYPE *titleText;
 }
 
 - (void).cxx_destruct;

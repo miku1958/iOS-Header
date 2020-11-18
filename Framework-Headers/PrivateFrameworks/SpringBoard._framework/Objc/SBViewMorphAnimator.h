@@ -8,7 +8,7 @@
 
 #import <SpringBoard/SBViewMorphAnimatorObserver-Protocol.h>
 
-@class BSTimer, NSHashTable, NSString, NSUUID, SBHomeGestureSettings, SBViewMorphAnimatorContentBlackCurtainView, SBViewMorphAnimatorContentClippingView, UIView;
+@class BSTimer, NSHashTable, NSString, NSUUID, SBFFluidBehaviorSettings, SBViewMorphAnimatorContentBlackCurtainView, SBViewMorphAnimatorContentClippingView, UIView;
 @protocol SBViewMorphAnimatorDataSource;
 
 @interface SBViewMorphAnimator : NSObject <SBViewMorphAnimatorObserver>
@@ -17,6 +17,8 @@
     BOOL _automaticallyStartTargetAnimations;
     BOOL _invalidated;
     BOOL _sourceScaleAndPositionEnded;
+    BOOL _targetExternalPlaceholderAllEnded;
+    BOOL _sourceContentFrameWasAltered;
     NSUUID *_uuid;
     UIView *_sourceView;
     UIView *_sourceContentView;
@@ -24,10 +26,13 @@
     UIView *_targetContentView;
     long long _fromOrientation;
     long long _toOrientation;
+    SBFFluidBehaviorSettings *_sourceClipAnimationSettings;
+    SBFFluidBehaviorSettings *_targetClipAnimationSettings;
     id<SBViewMorphAnimatorDataSource> _targetDataSource;
     long long _direction;
     double _sourceFinalScale;
     double _targetCornerRadius;
+    double _sourceCornerRadius;
     NSHashTable *_observers;
     long long _startedSourceAnimations;
     long long _completedSourceAnimations;
@@ -36,7 +41,6 @@
     CDUnknownBlockType _sourceAllAnimationsCompletionBlock;
     BSTimer *_animationTimeoutTimer;
     BSTimer *_sourceAnimationsCompletionContinueBlockTimeoutTimer;
-    SBHomeGestureSettings *_homeGestureSettings;
     SBViewMorphAnimatorContentClippingView *_sourceContentClippingView;
     SBViewMorphAnimatorContentBlackCurtainView *_sourceBlackCurtainView;
     SBViewMorphAnimatorContentClippingView *_targetContentClippingView;
@@ -59,17 +63,19 @@
 @property (nonatomic) long long direction; // @synthesize direction=_direction;
 @property (nonatomic) long long fromOrientation; // @synthesize fromOrientation=_fromOrientation;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) SBHomeGestureSettings *homeGestureSettings; // @synthesize homeGestureSettings=_homeGestureSettings;
 @property (nonatomic) BOOL invalidated; // @synthesize invalidated=_invalidated;
 @property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (copy, nonatomic) CDUnknownBlockType sourceAllAnimationsCompletionBlock; // @synthesize sourceAllAnimationsCompletionBlock=_sourceAllAnimationsCompletionBlock;
 @property (strong, nonatomic) BSTimer *sourceAnimationsCompletionContinueBlockTimeoutTimer; // @synthesize sourceAnimationsCompletionContinueBlockTimeoutTimer=_sourceAnimationsCompletionContinueBlockTimeoutTimer;
 @property (nonatomic) struct CGRect sourceAppLayoutFrame; // @synthesize sourceAppLayoutFrame=_sourceAppLayoutFrame;
 @property (strong, nonatomic) SBViewMorphAnimatorContentBlackCurtainView *sourceBlackCurtainView; // @synthesize sourceBlackCurtainView=_sourceBlackCurtainView;
+@property (strong, nonatomic) SBFFluidBehaviorSettings *sourceClipAnimationSettings; // @synthesize sourceClipAnimationSettings=_sourceClipAnimationSettings;
 @property (strong, nonatomic) SBViewMorphAnimatorContentClippingView *sourceContentClippingView; // @synthesize sourceContentClippingView=_sourceContentClippingView;
 @property (nonatomic) struct CGRect sourceContentClippingViewInitialFrame; // @synthesize sourceContentClippingViewInitialFrame=_sourceContentClippingViewInitialFrame;
 @property (readonly, nonatomic) struct CGRect sourceContentFrame; // @synthesize sourceContentFrame=_sourceContentFrame;
+@property (nonatomic) BOOL sourceContentFrameWasAltered; // @synthesize sourceContentFrameWasAltered=_sourceContentFrameWasAltered;
 @property (weak, nonatomic) UIView *sourceContentView; // @synthesize sourceContentView=_sourceContentView;
+@property (readonly, nonatomic) double sourceCornerRadius; // @synthesize sourceCornerRadius=_sourceCornerRadius;
 @property (readonly, nonatomic) struct CGPoint sourceFinalCenter; // @synthesize sourceFinalCenter=_sourceFinalCenter;
 @property (readonly, nonatomic) double sourceFinalScale; // @synthesize sourceFinalScale=_sourceFinalScale;
 @property (nonatomic) BOOL sourceScaleAndPositionEnded; // @synthesize sourceScaleAndPositionEnded=_sourceScaleAndPositionEnded;
@@ -77,11 +83,13 @@
 @property (nonatomic) long long startedSourceAnimations; // @synthesize startedSourceAnimations=_startedSourceAnimations;
 @property (nonatomic) long long startedTargetAnimations; // @synthesize startedTargetAnimations=_startedTargetAnimations;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) SBFFluidBehaviorSettings *targetClipAnimationSettings; // @synthesize targetClipAnimationSettings=_targetClipAnimationSettings;
 @property (strong, nonatomic) SBViewMorphAnimatorContentClippingView *targetContentClippingView; // @synthesize targetContentClippingView=_targetContentClippingView;
 @property (nonatomic) struct CGRect targetContentClippingViewInitialFrame; // @synthesize targetContentClippingViewInitialFrame=_targetContentClippingViewInitialFrame;
 @property (weak, nonatomic) UIView *targetContentView; // @synthesize targetContentView=_targetContentView;
 @property (readonly, nonatomic) double targetCornerRadius; // @synthesize targetCornerRadius=_targetCornerRadius;
 @property (weak, nonatomic) id<SBViewMorphAnimatorDataSource> targetDataSource; // @synthesize targetDataSource=_targetDataSource;
+@property (nonatomic) BOOL targetExternalPlaceholderAllEnded; // @synthesize targetExternalPlaceholderAllEnded=_targetExternalPlaceholderAllEnded;
 @property (readonly, nonatomic) struct CGRect targetFinalFrame; // @synthesize targetFinalFrame=_targetFinalFrame;
 @property (readonly, nonatomic) struct CGRect targetSourcePinningFrame; // @synthesize targetSourcePinningFrame=_targetSourcePinningFrame;
 @property (weak, nonatomic) UIView *targetView; // @synthesize targetView=_targetView;
@@ -93,6 +101,7 @@
 - (void)_continueSourceAnimationsCompletionPendingBlock;
 - (void)_handleHandoffTimeout;
 - (BOOL)_isReversed;
+- (BOOL)_isTargetSourcePinningFrameEquivalentToSourceViewFrame;
 - (void)_noteAnimatorWasCanceled;
 - (void)_noteAnimatorWasInterrupted;
 - (void)_noteDidEndAllAnimations;
@@ -109,6 +118,7 @@
 - (struct CGRect)_targetInitialClippingBoundsWithSourceContentFrame:(struct CGRect)arg1 sourceFinalScale:(double)arg2 targetViewBounds:(struct CGRect)arg3;
 - (struct CGRect)_targetSourcePinningFrameWithSourceContentFrame:(struct CGRect)arg1 targetFinalFrame:(struct CGRect)arg2;
 - (void)_updateParameters;
+- (struct CGRect)_validatedSourceContentFrame:(struct CGRect)arg1 withinSourceView:(id)arg2 withSourceFinalScale:(double)arg3;
 - (void)addObserver:(id)arg1;
 - (void)cancel:(CDUnknownBlockType)arg1;
 - (void)dealloc;
@@ -121,6 +131,7 @@
 - (void)noteSourceAnimationsWillStart:(unsigned long long)arg1;
 - (void)noteTargetAnimationsDidEnd:(unsigned long long)arg1 finished:(BOOL)arg2 continueBlock:(CDUnknownBlockType)arg3;
 - (void)noteTargetAnimationsWillStart:(unsigned long long)arg1;
+- (void)noteWillRemoveTargeMatchMoveAnimationAtFrame:(struct CGRect)arg1 withinSourceFrame:(struct CGRect)arg2;
 - (BOOL)preflightCheck;
 - (BOOL)startSourceAnimations:(unsigned long long)arg1;
 - (BOOL)startTargetAnimations:(unsigned long long)arg1;

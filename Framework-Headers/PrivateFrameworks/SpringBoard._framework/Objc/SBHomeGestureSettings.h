@@ -15,8 +15,6 @@
     BOOL _snapToMaxVelocityThresholdAfterAccelerationDip;
     BOOL _injectGestureVelocityForZoomDown;
     BOOL _onlyInjectVelocityForShortFlicks;
-    BOOL _morphShouldShowBlackCurtainOverSource;
-    BOOL _morphShouldMatchMove;
     BOOL _preventMultipleEdgesAfterAppInteraction;
     BOOL _resetSwitcherListAfterAppInteraction;
     double _hysteresis;
@@ -61,10 +59,6 @@
     double _positionVelocityYPercentOfGestureVelocityY;
     double _scaleVelocityPercentOfGestureVelocityYDividedByViewHeight;
     double _maximumScaleVelocity;
-    double _morphSourceClipDuration;
-    double _morphTargetUnclipDuration;
-    double _morphSourceUnclipDuration;
-    double _morphTargetClipDuration;
     double _secondsToAllowMultipleEdges;
     double _secondsToResetSwitcherListAfterTransition;
     double _travelDistanceForTranslatingScreenHeight;
@@ -102,12 +96,6 @@
 @property (nonatomic) double minimumYDistanceToConsiderAccelerationDip; // @synthesize minimumYDistanceToConsiderAccelerationDip=_minimumYDistanceToConsiderAccelerationDip;
 @property (nonatomic) double minimumYVelocityForArcSwipe; // @synthesize minimumYVelocityForArcSwipe=_minimumYVelocityForArcSwipe;
 @property (nonatomic) double minimumYVelocityForHome; // @synthesize minimumYVelocityForHome=_minimumYVelocityForHome;
-@property (nonatomic) BOOL morphShouldMatchMove; // @synthesize morphShouldMatchMove=_morphShouldMatchMove;
-@property (nonatomic) BOOL morphShouldShowBlackCurtainOverSource; // @synthesize morphShouldShowBlackCurtainOverSource=_morphShouldShowBlackCurtainOverSource;
-@property (nonatomic) double morphSourceClipDuration; // @synthesize morphSourceClipDuration=_morphSourceClipDuration;
-@property (nonatomic) double morphSourceUnclipDuration; // @synthesize morphSourceUnclipDuration=_morphSourceUnclipDuration;
-@property (nonatomic) double morphTargetClipDuration; // @synthesize morphTargetClipDuration=_morphTargetClipDuration;
-@property (nonatomic) double morphTargetUnclipDuration; // @synthesize morphTargetUnclipDuration=_morphTargetUnclipDuration;
 @property (nonatomic) double normalizedDistanceYThresholdForUnconditionalHome; // @synthesize normalizedDistanceYThresholdForUnconditionalHome=_normalizedDistanceYThresholdForUnconditionalHome;
 @property (nonatomic) double normalizedDistanceYThresholdRangeForUnconditionalHome; // @synthesize normalizedDistanceYThresholdRangeForUnconditionalHome=_normalizedDistanceYThresholdRangeForUnconditionalHome;
 @property (nonatomic) BOOL onlyInjectVelocityForShortFlicks; // @synthesize onlyInjectVelocityForShortFlicks=_onlyInjectVelocityForShortFlicks;

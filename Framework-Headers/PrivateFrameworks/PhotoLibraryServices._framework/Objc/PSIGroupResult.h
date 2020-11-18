@@ -34,6 +34,7 @@
 @property (strong, nonatomic) const struct __CFArray *collectionIds; // @synthesize collectionIds=_collectionIds;
 @property (readonly, nonatomic) unsigned long long collectionMatchCount;
 @property (readonly, weak) NSArray *collectionResults;
+@property (readonly, nonatomic) BOOL containsFilterSearchTokens;
 @property (readonly, nonatomic) NSArray *contentStrings;
 @property (nonatomic) short dedupingSkippedCategory; // @synthesize dedupingSkippedCategory=_dedupingSkippedCategory;
 @property (weak, nonatomic) id<PSIGroupResultDelegate> delegate; // @synthesize delegate=_delegate;
@@ -68,6 +69,7 @@
 - (id)initWithQueue:(id)arg1;
 - (BOOL)isContentStringTextSearchableAtIndex:(long long)arg1;
 - (BOOL)isMatchedByIdentifierAtIndex:(long long)arg1;
+- (id)lookupIdentifiersForSearchIndexCategories:(id)arg1;
 - (id)matchRangesAtIndex:(long long)arg1;
 - (id)normalizedStringAtIndex:(long long)arg1;
 - (id)normalizedUnitTestDescription;

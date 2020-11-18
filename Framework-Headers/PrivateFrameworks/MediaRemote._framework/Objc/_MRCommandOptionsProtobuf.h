@@ -31,6 +31,12 @@
     int _playbackQueueOffset;
     float _playbackRate;
     NSData *_playbackSession;
+    NSString *_playbackSessionFilePath;
+    NSString *_playbackSessionIdentifier;
+    NSData *_playbackSessionMetadata;
+    int _playbackSessionPriority;
+    NSString *_playbackSessionRevision;
+    NSString *_playbackSessionType;
     int _queueEndAction;
     NSString *_radioStationHash;
     float _rating;
@@ -64,6 +70,7 @@
         unsigned int playbackQueueInsertionPosition:1;
         unsigned int playbackQueueOffset:1;
         unsigned int playbackRate:1;
+        unsigned int playbackSessionPriority:1;
         unsigned int queueEndAction:1;
         unsigned int rating:1;
         unsigned int repeatMode:1;
@@ -113,6 +120,12 @@
 @property (nonatomic) BOOL hasPlaybackQueueOffset;
 @property (nonatomic) BOOL hasPlaybackRate;
 @property (readonly, nonatomic) BOOL hasPlaybackSession;
+@property (readonly, nonatomic) BOOL hasPlaybackSessionFilePath;
+@property (readonly, nonatomic) BOOL hasPlaybackSessionIdentifier;
+@property (readonly, nonatomic) BOOL hasPlaybackSessionMetadata;
+@property (nonatomic) BOOL hasPlaybackSessionPriority;
+@property (readonly, nonatomic) BOOL hasPlaybackSessionRevision;
+@property (readonly, nonatomic) BOOL hasPlaybackSessionType;
 @property (nonatomic) BOOL hasPreservesQueueEndAction;
 @property (nonatomic) BOOL hasPreservesRepeatMode;
 @property (nonatomic) BOOL hasPreservesShuffleMode;
@@ -150,6 +163,12 @@
 @property (nonatomic) int playbackQueueOffset; // @synthesize playbackQueueOffset=_playbackQueueOffset;
 @property (nonatomic) float playbackRate; // @synthesize playbackRate=_playbackRate;
 @property (strong, nonatomic) NSData *playbackSession; // @synthesize playbackSession=_playbackSession;
+@property (strong, nonatomic) NSString *playbackSessionFilePath; // @synthesize playbackSessionFilePath=_playbackSessionFilePath;
+@property (strong, nonatomic) NSString *playbackSessionIdentifier; // @synthesize playbackSessionIdentifier=_playbackSessionIdentifier;
+@property (strong, nonatomic) NSData *playbackSessionMetadata; // @synthesize playbackSessionMetadata=_playbackSessionMetadata;
+@property (nonatomic) int playbackSessionPriority; // @synthesize playbackSessionPriority=_playbackSessionPriority;
+@property (strong, nonatomic) NSString *playbackSessionRevision; // @synthesize playbackSessionRevision=_playbackSessionRevision;
+@property (strong, nonatomic) NSString *playbackSessionType; // @synthesize playbackSessionType=_playbackSessionType;
 @property (nonatomic) BOOL preservesQueueEndAction; // @synthesize preservesQueueEndAction=_preservesQueueEndAction;
 @property (nonatomic) BOOL preservesRepeatMode; // @synthesize preservesRepeatMode=_preservesRepeatMode;
 @property (nonatomic) BOOL preservesShuffleMode; // @synthesize preservesShuffleMode=_preservesShuffleMode;
@@ -175,6 +194,7 @@
 @property (nonatomic) BOOL verifySupportedCommands; // @synthesize verifySupportedCommands=_verifySupportedCommands;
 
 - (void).cxx_destruct;
+- (int)StringAsPlaybackSessionPriority:(id)arg1;
 - (int)StringAsQueueEndAction:(id)arg1;
 - (int)StringAsRepeatMode:(id)arg1;
 - (int)StringAsReplaceIntent:(id)arg1;
@@ -187,6 +207,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)playbackSessionPriorityAsString:(int)arg1;
 - (id)queueEndActionAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)repeatModeAsString:(int)arg1;

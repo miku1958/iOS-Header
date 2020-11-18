@@ -18,7 +18,9 @@
     ENRegion *_region;
     ENRegionUserConsent *_userConsent;
     long long _travelerModeEnabled;
+    double _creationDateTimeInterval;
     double _lastConfigurationUpdateTimeInterval;
+    unsigned long long _enRampMode;
     long long _differentialPrivacyConsent;
     double _differentialPrivacyConsentTimestamp;
     long long _consent;
@@ -27,8 +29,10 @@
 
 @property (readonly, nonatomic) long long consent; // @synthesize consent=_consent;
 @property (readonly, nonatomic) double consentTimestamp; // @synthesize consentTimestamp=_consentTimestamp;
+@property (nonatomic) double creationDateTimeInterval; // @synthesize creationDateTimeInterval=_creationDateTimeInterval;
 @property (readonly, nonatomic) long long differentialPrivacyConsent; // @synthesize differentialPrivacyConsent=_differentialPrivacyConsent;
 @property (readonly, nonatomic) double differentialPrivacyConsentTimestamp; // @synthesize differentialPrivacyConsentTimestamp=_differentialPrivacyConsentTimestamp;
+@property (nonatomic) unsigned long long enRampMode; // @synthesize enRampMode=_enRampMode;
 @property (nonatomic) unsigned long long enVersion; // @synthesize enVersion=_enVersion;
 @property (nonatomic) BOOL everStartedOnboarding; // @synthesize everStartedOnboarding=_everStartedOnboarding;
 @property (nonatomic) double lastConfigurationUpdateTimeInterval; // @synthesize lastConfigurationUpdateTimeInterval=_lastConfigurationUpdateTimeInterval;

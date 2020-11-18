@@ -8,10 +8,11 @@
 
 #import <PhotoLibraryServices/PLAssetsdLibraryServiceProtocol-Protocol.h>
 
-@class NSMutableArray, NSString, PLAssetsdConnectionAuthorization, PLAssetsdService, PLPhotoLibraryBundleController;
+@class NSMutableArray, NSString, PLAssetsdConnectionAuthorization, PLAssetsdService, PLPhotoLibraryBundleController, PLXPCPhotoLibraryStoreContainer;
 
 @interface PLAssetsdLibraryService : PLAbstractLibraryServicesManagerService <PLAssetsdLibraryServiceProtocol>
 {
+    PLXPCPhotoLibraryStoreContainer *_xpcPhotoLibraryStoreContainer;
     PLAssetsdConnectionAuthorization *_connectionAuthorization;
     NSMutableArray *_preRunningProgressFollowers;
     NSMutableArray *_postRunningProgressFollowers;

@@ -234,7 +234,7 @@ struct RenderTask {
     struct atomic<unsigned int> _field2;
     char *_field3;
     char *_field4;
-    char *_field5;
+    char _field5[128];
     int _field6;
     BOOL _field7;
     unsigned long long _field8;

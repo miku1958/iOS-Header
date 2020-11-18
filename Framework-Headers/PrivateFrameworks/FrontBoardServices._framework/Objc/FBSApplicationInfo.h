@@ -87,6 +87,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=_isInstalling, setter=_setInstalling:) BOOL installing; // @synthesize installing=_installing;
 @property (nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
+@property (readonly, nonatomic) BOOL isSignatureVersionSupportEndingSoon;
 @property (readonly, nonatomic) NSNumber *itemID; // @synthesize itemID=_itemID;
 @property (readonly, nonatomic) double lastModifiedDate; // @synthesize lastModifiedDate=_lastModifiedDate;
 @property (readonly, nonatomic) float minimumBrightnessLevel; // @synthesize minimumBrightnessLevel=_minimumBrightnessLevel;
@@ -102,6 +103,7 @@
 @property (readonly, nonatomic) long long screenTimePolicy; // @synthesize screenTimePolicy=_screenTimePolicy;
 @property (readonly, copy, nonatomic) NSString *sdkVersion; // @synthesize sdkVersion=_sdkVersion;
 @property (readonly, copy, nonatomic) NSString *shortVersionString; // @synthesize shortVersionString=_shortVersionString;
+@property (readonly, nonatomic) unsigned int signatureVersion;
 @property (readonly, copy, nonatomic) NSString *signerIdentity; // @synthesize signerIdentity=_signerIdentity;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long supportedInterfaceOrientations; // @synthesize supportedInterfaceOrientations=_supportedInterfaceOrientations;

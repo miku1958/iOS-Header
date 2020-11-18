@@ -7,11 +7,12 @@
 #import <CoverSheet/CSAccessoryViewController.h>
 
 #import <CoverSheet/BCBatteryDeviceObserving-Protocol.h>
+#import <CoverSheet/CSAccessorySleeveViewDelegate-Protocol.h>
 
 @class BCBatteryDeviceController, CSAccessorySleeveView, NSString, SBFLockScreenDateViewController;
 @protocol SBFDateProviding;
 
-@interface CSAccessorySleeveViewController : CSAccessoryViewController <BCBatteryDeviceObserving>
+@interface CSAccessorySleeveViewController : CSAccessoryViewController <BCBatteryDeviceObserving, CSAccessorySleeveViewDelegate>
 {
     BOOL _chargingAnimationVisible;
     id<SBFDateProviding> _dateProvider;
@@ -19,13 +20,12 @@
     SBFLockScreenDateViewController *_secodaryDateViewController;
     BCBatteryDeviceController *_batteryDeviceController;
     CSAccessorySleeveView *_sleeveView;
-    struct CGRect _dateViewBounds;
+    struct CGRect _visibleBounds;
 }
 
 @property (strong, nonatomic) BCBatteryDeviceController *batteryDeviceController; // @synthesize batteryDeviceController=_batteryDeviceController;
 @property (nonatomic) BOOL chargingAnimationVisible; // @synthesize chargingAnimationVisible=_chargingAnimationVisible;
 @property (strong, nonatomic) id<SBFDateProviding> dateProvider; // @synthesize dateProvider=_dateProvider;
-@property (nonatomic) struct CGRect dateViewBounds; // @synthesize dateViewBounds=_dateViewBounds;
 @property (strong, nonatomic) SBFLockScreenDateViewController *dateViewController; // @synthesize dateViewController=_dateViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -33,12 +33,14 @@
 @property (strong, nonatomic) SBFLockScreenDateViewController *secodaryDateViewController; // @synthesize secodaryDateViewController=_secodaryDateViewController;
 @property (strong, nonatomic) CSAccessorySleeveView *sleeveView; // @synthesize sleeveView=_sleeveView;
 @property (readonly) Class superclass;
+@property (nonatomic) struct CGRect visibleBounds; // @synthesize visibleBounds=_visibleBounds;
 
 - (void).cxx_destruct;
 - (id)accessoryView;
 - (double)animationDurationBeforeDismissal;
 - (double)chargingAnimationDuration;
 - (void)connectedDevicesDidChange:(id)arg1;
+- (void)dismissButtonTapped:(id)arg1;
 - (BOOL)hasChargingAnimation;
 - (id)initWithAccessory:(id)arg1;
 - (BOOL)isStatic;

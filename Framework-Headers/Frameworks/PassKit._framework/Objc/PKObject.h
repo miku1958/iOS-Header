@@ -43,8 +43,15 @@
 @property (copy, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
 @property (copy, nonatomic) NSURL *webServiceURL; // @synthesize webServiceURL=_webServiceURL;
 
++ (id)_createWithFileDataAccessor:(id)arg1 validate:(BOOL)arg2 warnings:(id *)arg3 error:(id *)arg4;
++ (Class)classForDictionary:(id)arg1 bundle:(id)arg2;
++ (id)createWithData:(id)arg1 warnings:(id *)arg2 error:(id *)arg3;
++ (id)createWithFileDataAccessor:(id)arg1 warnings:(id *)arg2 error:(id *)arg3;
++ (id)createWithFileURL:(id)arg1 warnings:(id *)arg2 error:(id *)arg3;
++ (id)createWithValidatedFileDataAccessor:(id)arg1;
 + (unsigned long long)defaultSettings;
-+ (BOOL)isValidObjectWithFileURL:(id)arg1 warnings:(id *)arg2 orError:(id *)arg3;
++ (BOOL)isValidObjectWithFileDataAccessor:(id)arg1 warnings:(id *)arg2 error:(id *)arg3;
++ (Class)resolvingClass;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_lock_flushLoadedImageSets;
@@ -65,12 +72,8 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1 error:(id *)arg2;
-- (id)initWithData:(id)arg1 warnings:(id *)arg2 orError:(id *)arg3;
 - (id)initWithDictionary:(id)arg1 bundle:(id)arg2;
-- (id)initWithFileDataAccessor:(id)arg1;
 - (id)initWithFileURL:(id)arg1 error:(id *)arg2;
-- (id)initWithFileURL:(id)arg1 validate:(BOOL)arg2 warnings:(id *)arg3 orError:(id *)arg4;
-- (id)initWithFileURL:(id)arg1 warnings:(id *)arg2 orError:(id *)arg3;
 - (BOOL)isContentLoaded;
 - (BOOL)isImageSetLoaded:(long long)arg1;
 - (BOOL)isImageSetType:(long long)arg1 equalToImageSetTypeFromObject:(id)arg2;

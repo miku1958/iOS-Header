@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 + (struct CAMutex *)getLock;
 + (id)sharedManager;
 - (void).cxx_destruct;
-- (int)audioIssueDetectorAnalyzeBuffer:(struct AudioBufferList)arg1 numFrames:(unsigned int)arg2 timeStamp:(const struct AudioTimeStamp *)arg3;
+- (int)audioIssueDetectorAnalyzeBuffer:(struct AudioBufferList)arg1 numFrames:(unsigned int)arg2 timeStamp:(const struct AudioTimeStamp *)arg3 shouldAnalyze:(BOOL)arg4;
 - (void)dealloc;
 - (id)getStringDate:(id)arg1;
 - (id)init;

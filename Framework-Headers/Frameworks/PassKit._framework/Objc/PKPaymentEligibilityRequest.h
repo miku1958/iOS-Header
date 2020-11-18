@@ -6,7 +6,7 @@
 
 #import <PassKitCore/PKPaymentWebServiceRequest.h>
 
-@class NSData, NSString, PKPaymentCredential;
+@class NSData, NSString, PKAddPaymentPassRequestConfiguration, PKPaymentCredential;
 
 @interface PKPaymentEligibilityRequest : PKPaymentWebServiceRequest
 {
@@ -30,10 +30,12 @@
     NSString *_nonce;
     long long _source;
     NSString *_referrerIdentifier;
+    PKAddPaymentPassRequestConfiguration *_addPaymentPassRequestConfiguration;
     NSString *_passOwnershipToken;
 }
 
 @property (copy, nonatomic) NSData *FPInfo; // @synthesize FPInfo=_FPInfo;
+@property (readonly, nonatomic) PKAddPaymentPassRequestConfiguration *addPaymentPassRequestConfiguration; // @synthesize addPaymentPassRequestConfiguration=_addPaymentPassRequestConfiguration;
 @property (copy, nonatomic) NSString *cardholderName; // @synthesize cardholderName=_cardholderName;
 @property (nonatomic) long long cardholderNameInputMethod; // @synthesize cardholderNameInputMethod=_cardholderNameInputMethod;
 @property (copy, nonatomic) NSData *encryptedCardData; // @synthesize encryptedCardData=_encryptedCardData;

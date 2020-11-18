@@ -8,10 +8,11 @@
 
 #import <PhotoLibraryServices/PLAssetsdLibraryInternalServiceProtocol-Protocol.h>
 
-@class NSString;
+@class NSString, PLAssetsdConnectionAuthorization;
 
 @interface PLAssetsdLibraryInternalService : PLAbstractLibraryServicesManagerService <PLAssetsdLibraryInternalServiceProtocol>
 {
+    PLAssetsdConnectionAuthorization *_connectionAuthorization;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -19,6 +20,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)applyGraphUpdates:(id)arg1 supportingData:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)applySearchIndexUpdates:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)backgroundJobServiceRemoveAllBundleRecordsFromProcessingSet;
@@ -29,6 +31,7 @@
 - (void)getLibrarySizesFromDB:(BOOL)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getSearchIndexProgressWithReply:(CDUnknownBlockType)arg1;
 - (void)getSizeOfResourcesToUploadByCPLWithReply:(CDUnknownBlockType)arg1;
+- (id)initWithLibraryServicesManager:(id)arg1 connectionAuthorization:(id)arg2;
 - (void)invalidateBehavioralScoreOnAllAssetsWithReply:(CDUnknownBlockType)arg1;
 - (void)invalidateReverseLocationDataOnAllAssetsWithReply:(CDUnknownBlockType)arg1;
 - (void)markPersonAsNeedingKeyFaceWithPersonUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -37,7 +40,7 @@
 - (void)repairMemoriesWithUUIDs:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)resetLimitedLibraryAccessForApplication:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setAssetKeywords:(id)arg1 forAssetUUID:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)setFetchFilterWithAssets:(id)arg1 forApplication:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)setFetchFilterWithAssets:(id)arg1 forApplication:(id)arg2 withAuditToken:(CDStruct_4c969caf)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setWidgetTimelineGeneratedForDisplaySize:(struct CGSize)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateAssetLocationDataWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)waitForSearchIndexExistenceWithReply:(CDUnknownBlockType)arg1;

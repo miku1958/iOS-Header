@@ -50,6 +50,7 @@
 - (void)loadableModulesChangedForModuleRepository:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)requestExpandModuleForContentModuleContext:(id)arg1;
+- (void)requestModuleLayoutSizeUpdateForContentModuleContext:(id)arg1;
 
 @end
 

@@ -9,7 +9,7 @@
 #import <NewsUI/NUArticleViewControllerFactory-Protocol.h>
 
 @class NSHashTable, NSString;
-@protocol NFResolver, NUArticleAdManagerFactory, NUArticleDataProviderFactory, NUArticleKeyCommandManager, NUArticlePrefetcherType, NUArticleScrollPositionManagerType, NUDocumentSectionBlueprintProvider, NUSpotlightManager, SXAppStateMonitor, SXURLHandling;
+@protocol NFResolver, NUArticleAdManagerFactory, NUArticleDataProviderFactory, NUArticleKeyCommandManager, NUArticlePrefetcherType, NUArticleScrollPositionManagerType, NUDocumentSectionBlueprintProvider, NUSpotlightManager, SXAppStateMonitor;
 
 @interface NUArticleViewControllerFactory : NSObject <NUArticleViewControllerFactory>
 {
@@ -17,7 +17,6 @@
     id<NUArticleDataProviderFactory> _articleDataProviderFactory;
     id<NUArticleAdManagerFactory> _articleAdManagerFactory;
     id<SXAppStateMonitor> _appStateMonitor;
-    id<SXURLHandling> _URLHandler;
     id<NUArticleKeyCommandManager> _keyCommandManager;
     id<NFResolver> _resolver;
     id<NUDocumentSectionBlueprintProvider> _headerBlueprintProvider;
@@ -26,7 +25,6 @@
     id<NUSpotlightManager> _spotlightManager;
 }
 
-@property (readonly, nonatomic) id<SXURLHandling> URLHandler; // @synthesize URLHandler=_URLHandler;
 @property (readonly, nonatomic) id<SXAppStateMonitor> appStateMonitor; // @synthesize appStateMonitor=_appStateMonitor;
 @property (readonly, nonatomic) id<NUArticleAdManagerFactory> articleAdManagerFactory; // @synthesize articleAdManagerFactory=_articleAdManagerFactory;
 @property (readonly, nonatomic) id<NUArticleDataProviderFactory> articleDataProviderFactory; // @synthesize articleDataProviderFactory=_articleDataProviderFactory;
@@ -43,9 +41,8 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)createArticleViewControllerWithArticle:(id)arg1;
-- (id)createArticleViewControllerWithArticle:(id)arg1 issue:(id)arg2;
-- (id)initWithArticleDataProviderFactory:(id)arg1 articleAdManagerFactory:(id)arg2 appStateMonitor:(id)arg3 URLHandler:(id)arg4 keyCommandManager:(id)arg5 headerBlueprintProvider:(id)arg6 articlePrefetcher:(id)arg7 articleScrollPositionManager:(id)arg8 spotlightManager:(id)arg9 resolver:(id)arg10;
+- (id)createArticleViewControllerWithArticle:(id)arg1 context:(id)arg2;
+- (id)createArticleViewControllerWithArticle:(id)arg1 issue:(id)arg2 context:(id)arg3;
 - (id)initWithArticleDataProviderFactory:(id)arg1 articleAdManagerFactory:(id)arg2 appStateMonitor:(id)arg3 keyCommandManager:(id)arg4 headerBlueprintProvider:(id)arg5 articlePrefetcher:(id)arg6 articleScrollPositionManager:(id)arg7 spotlightManager:(id)arg8 resolver:(id)arg9;
 
 @end

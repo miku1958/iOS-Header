@@ -10,7 +10,7 @@
 
 @interface _TtC7NewsUI230AMSHandleNotificationDiscerner : NSObject
 {
-    MISSING_TYPE *pushHandler;
+    MISSING_TYPE *$__lazy_storage_$_pushHandler;
 }
 
 - (void).cxx_destruct;

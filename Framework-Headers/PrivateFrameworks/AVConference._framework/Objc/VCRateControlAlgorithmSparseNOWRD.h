@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
     double _lastOWRDChangeTime;
     double _lastCongestionTime;
     double _lastRampUpTime;
+    double _lastAllowRampUpTime;
     double _rampUpFrozenTime;
     BOOL _isCongested;
     BOOL _isFirstTimestampArrived;
@@ -155,6 +156,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldRampDownDueToBaseband;
 - (BOOL)shouldRampUp;
 - (BOOL)shouldRampUpDueToBaseband;
+- (BOOL)shouldUnblockRampUpAfterTimeOut;
 - (void)stateChangeTo:(int)arg1;
 - (void)stateEnter;
 - (void)stateExit;

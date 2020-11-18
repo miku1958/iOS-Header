@@ -24,7 +24,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) Class doorbellBulletinUtilitiesClass;
 @property (readonly) double doorbellChimeMaximumAnnounceDelay;
-@property (readonly, getter=isDoorbellEnabledForHome) BOOL doorbellEnabledForHome;
 @property (readonly, getter=isFeatureEnabled) BOOL featureEnabled;
 @property (readonly) unsigned long long hash;
 @property (readonly) HMDCharacteristicsAvailabilityListener *listener; // @synthesize listener=_listener;

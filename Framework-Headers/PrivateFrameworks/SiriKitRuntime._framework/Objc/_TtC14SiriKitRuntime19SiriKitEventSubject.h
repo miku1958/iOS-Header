@@ -11,6 +11,7 @@
 @interface _TtC14SiriKitRuntime19SiriKitEventSubject : _TtCs12_SwiftObject
 {
     MISSING_TYPE *subject;
+    MISSING_TYPE *asyncSubscribersCancelDispatchGroup;
 }
 
 @end

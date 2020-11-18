@@ -84,6 +84,7 @@
     struct UIEdgeInsets _cursorHitTestPadding;
     NSHashTable *_observers;
     NSCountedSet *_forbidEditingModeReasons;
+    NSCountedSet *_forbidAccessoryReasons;
     struct SBIconImageInfo _iconImageInfo;
     UIFont *_labelFont;
     SBHRecentsDocumentExtensionProvider *_recentsDocumentExtensionProvider;
@@ -128,6 +129,7 @@
     id<SBHIconViewConfigurationInteraction> _currentStackConfigurationInteraction;
     UIPointerInteraction *_iconViewCursorInteraction;
     UIPointerInteraction *_closeBoxCursorInteraction;
+    UIViewPropertyAnimator *_closeBoxAnimator;
 }
 
 @property (strong, nonatomic) UIColor *accessibilityTintColor; // @synthesize accessibilityTintColor=_accessibilityTintColor;
@@ -150,6 +152,7 @@
 @property (readonly, nonatomic) BOOL canBeginDrags;
 @property (readonly, nonatomic) BOOL canShowCloseBox;
 @property (readonly, nonatomic) unsigned long long centerVisibleMiniIconIndex;
+@property (strong, nonatomic) UIViewPropertyAnimator *closeBoxAnimator; // @synthesize closeBoxAnimator=_closeBoxAnimator;
 @property (readonly, nonatomic) UIPointerInteraction *closeBoxCursorInteraction; // @synthesize closeBoxCursorInteraction=_closeBoxCursorInteraction;
 @property (nonatomic) unsigned long long configurationOptions;
 @property (readonly, nonatomic) UIView *contentContainerView;
@@ -314,6 +317,7 @@
 - (void)_boldTextStatusDidChange:(id)arg1;
 - (struct CGPoint)_centerForAccessoryView;
 - (struct CGPoint)_centerForCloseBox;
+- (void)_checkAndRemoveCloseBoxAfterAnimation;
 - (void)_closeBoxTapGestureChanged:(id)arg1;
 - (long long)_closeBoxType;
 - (void)_configureIconImageView:(id)arg1;
@@ -479,6 +483,7 @@
 - (double)effectiveIconLabelAlpha;
 - (id)effectiveListLayoutProvider;
 - (double)effectiveOverallAlpha;
+- (void)endForbiddingAccessoryWithReason:(id)arg1 animated:(BOOL)arg2;
 - (void)endForbiddingEditingModeWithReason:(id)arg1;
 - (id)folder;
 - (struct CGRect)frameForMiniIconAtIndex:(unsigned long long)arg1;
@@ -571,6 +576,7 @@
 - (BOOL)shouldActivateApplicationShortcutItem:(id)arg1 atIndex:(unsigned long long)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)sourceIconViewForConfigurationInteraction:(id)arg1;
+- (void)startForbiddingAccessoryWithReason:(id)arg1 animated:(BOOL)arg2;
 - (void)startForbiddingEditingModeWithReason:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

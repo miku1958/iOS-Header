@@ -23,6 +23,7 @@
 
 - (void).cxx_destruct;
 - (void)applyShadowToLayer:(id)arg1;
+- (struct CGRect)rectsForSource:(struct CGRect)arg1 shadowRect:(struct CGRect *)arg2 unionRect:(struct CGRect *)arg3 positionTransform:(struct CGAffineTransform *)arg4;
 
 @end
 

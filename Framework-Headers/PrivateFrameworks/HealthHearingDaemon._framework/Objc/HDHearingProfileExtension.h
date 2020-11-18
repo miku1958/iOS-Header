@@ -8,14 +8,12 @@
 
 #import <HealthHearingDaemon/HDProfileExtension-Protocol.h>
 
-@class HDAudioAnalyticsManager, HDHeadphoneAudioExposureStatisticsManager, HDHeadphoneDoseManager, HDHeadphoneDoseMetadataStore, NSString;
+@class HDAudioAnalyticsManager, HDHeadphoneDoseManager, NSString;
 
 __attribute__((visibility("hidden")))
 @interface HDHearingProfileExtension : NSObject <HDProfileExtension>
 {
     HDAudioAnalyticsManager *_analyticsManager;
-    HDHeadphoneDoseMetadataStore *_headphoneKeyValueStore;
-    HDHeadphoneAudioExposureStatisticsManager *_headphoneStatisticsManager;
     HDHeadphoneDoseManager *_headphoneDoseManager;
 }
 
@@ -23,8 +21,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HDHeadphoneDoseManager *headphoneDoseManager; // @synthesize headphoneDoseManager=_headphoneDoseManager;
-@property (readonly, nonatomic) HDHeadphoneDoseMetadataStore *headphoneKeyValueStore; // @synthesize headphoneKeyValueStore=_headphoneKeyValueStore;
-@property (readonly, nonatomic) HDHeadphoneAudioExposureStatisticsManager *headphoneStatisticsManager; // @synthesize headphoneStatisticsManager=_headphoneStatisticsManager;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

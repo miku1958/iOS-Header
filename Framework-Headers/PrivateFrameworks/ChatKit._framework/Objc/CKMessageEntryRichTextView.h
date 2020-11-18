@@ -40,6 +40,8 @@
 - (id)_compositionFromSelection;
 - (void)_showCustomInputView;
 - (id)attributedTextForCompositionText:(id)arg1;
+- (id)cachedMediaObjectForTransferGUID:(id)arg1;
+- (id)cachedPluginDisplayContainerForGUID:(id)arg1;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)composeImageForTransferGUID:(id)arg1;
 - (id)compositionText;
@@ -51,6 +53,7 @@
 - (void)handlePastedString:(id)arg1 toRange:(id)arg2;
 - (void)handleTapOrLongPress:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 textContainer:(id)arg2;
+- (BOOL)isSingleLineDocument;
 - (void)paste:(id)arg1;
 - (id)pasteboard;
 - (void)previewDidChange:(id)arg1;

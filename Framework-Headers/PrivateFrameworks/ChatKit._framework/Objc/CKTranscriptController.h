@@ -41,6 +41,7 @@
 @property (nonatomic) double pluginPlaybackDelay;
 @property (nonatomic) BOOL shouldLoadDefaultConversationViewingMessageCountOnAppear;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *transcriptIdentifier;
 @property (nonatomic, getter=isTranscriptUpdateAnimated) BOOL transcriptUpdateAnimated;
 @property (nonatomic) BOOL transitionedFromComposing;
 @property (nonatomic) BOOL transitioningFromComposing;

@@ -20,7 +20,6 @@
     MISSING_TYPE *didUpdateAfterInitialLaunch;
     MISSING_TYPE *appLaunchedWithOptions;
     MISSING_TYPE *openingURL;
-    MISSING_TYPE *continuingUserActivity;
     MISSING_TYPE *didEnterBackground;
     MISSING_TYPE *sceneActivationURL;
 }

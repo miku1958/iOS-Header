@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)endWriteCoordinationInAppLibrary:(id)arg1 rowID:(long long)arg2;
 - (id)initWithAccountSession:(id)arg1;
 - (void)monitorFaultingForZone:(id)arg1;
+- (unsigned int)recoverAndReportMissingJobs;
 - (void)repopulateJobsForZone:(id)arg1;
 - (void)rescheduleMissingTargetAliasesWithTarget:(id)arg1;
 - (void)resetBackoffForServerItem:(id)arg1;

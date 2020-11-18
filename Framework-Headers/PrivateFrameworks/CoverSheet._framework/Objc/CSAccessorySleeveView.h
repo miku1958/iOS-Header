@@ -6,21 +6,23 @@
 
 #import <CoverSheet/CSAccessoryView.h>
 
-@class BCBatteryDevice, CALayer, CSBatteryChargingView, SBFLockScreenDateView, UIColor, UIImageView;
+@class BCBatteryDevice, CALayer, CSBatteryChargingView, SBFLockScreenDateView, UIButton, UIImageView;
+@protocol CSAccessorySleeveViewDelegate;
 
 @interface CSAccessorySleeveView : CSAccessoryView
 {
     BOOL _charging;
+    id<CSAccessorySleeveViewDelegate> _delegate;
     SBFLockScreenDateView *_dateView;
     SBFLockScreenDateView *_secondaryDateView;
-    UIColor *_dateLabelBackgroundColor;
     CALayer *_backgroundColorLayer;
     CALayer *_backgroundColorLayerWithBlendLabelColor1;
     CALayer *_backgroundColorLayerWithBlendLabelColor2;
+    UIButton *_dismissButton;
     CSBatteryChargingView *_batteryChargingView;
     UIImageView *_chargingBoltImageView;
     BCBatteryDevice *_batteryDevice;
-    struct CGRect _dateViewFrame;
+    struct CGRect _visibleWindowFrame;
 }
 
 @property (strong, nonatomic) CALayer *backgroundColorLayer; // @synthesize backgroundColorLayer=_backgroundColorLayer;
@@ -30,18 +32,21 @@
 @property (strong, nonatomic) BCBatteryDevice *batteryDevice; // @synthesize batteryDevice=_batteryDevice;
 @property (nonatomic) BOOL charging; // @synthesize charging=_charging;
 @property (strong, nonatomic) UIImageView *chargingBoltImageView; // @synthesize chargingBoltImageView=_chargingBoltImageView;
-@property (strong, nonatomic) UIColor *dateLabelBackgroundColor; // @synthesize dateLabelBackgroundColor=_dateLabelBackgroundColor;
 @property (strong, nonatomic) SBFLockScreenDateView *dateView; // @synthesize dateView=_dateView;
-@property (nonatomic) struct CGRect dateViewFrame; // @synthesize dateViewFrame=_dateViewFrame;
+@property (weak, nonatomic) id<CSAccessorySleeveViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) UIButton *dismissButton; // @synthesize dismissButton=_dismissButton;
 @property (strong, nonatomic) SBFLockScreenDateView *secondaryDateView; // @synthesize secondaryDateView=_secondaryDateView;
+@property (nonatomic) struct CGRect visibleWindowFrame; // @synthesize visibleWindowFrame=_visibleWindowFrame;
 
 - (void).cxx_destruct;
 - (double)_batteryChargingLevel;
 - (struct CGRect)_chargingViewFrame;
 - (id)_colorForBatteryLevel:(double)arg1;
 - (void)_dismissAnimation;
+- (void)_dismissButtonTapped:(id)arg1;
 - (void)_presentAnimation;
 - (void)_runAnimationWithType:(unsigned long long)arg1;
+- (void)_updateViewsAfterAnimation:(unsigned long long)arg1;
 - (double)animationDurationBeforeDismissal;
 - (id)batteryChargingViewWithChargingInfo:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

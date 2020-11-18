@@ -50,7 +50,6 @@
 - (void)clearSnapshotData;
 - (id)collectionAtIndex:(long long)arg1;
 - (void)createBatchControllerIfNeededUsingIdentifiers:(id)arg1 andPlaceCollections:(id)arg2 usingCollectionFetcher:(id)arg3 usingGuideConsumer:(id)arg4 usingBatchSize:(unsigned long long)arg5;
-- (void)didEndDisplayingCellAtIndexpath:(id)arg1 usingSnapShot:(id)arg2;
 - (void)didStartFetchingBatch;
 - (void)displayCollections;
 - (void)endDisplayingCellAtIndexPath:(id)arg1;

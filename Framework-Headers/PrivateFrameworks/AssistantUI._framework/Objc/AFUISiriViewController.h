@@ -50,6 +50,7 @@
     AFUINetworkAvailabilityStateMachine *_networkAvailabilityStateMachine;
     unsigned long long _currentSessionAvailabilityState;
     AFUISiriTapPanDismissalPolicyManager *_tapPanDismissalPolicyManager;
+    BOOL _immersiveExperienceOn;
     BOOL _visible;
     BOOL _eyesFree;
     BOOL _deviceIsInStarkMode;
@@ -246,6 +247,7 @@
 - (void)requestStatusBarVisible:(BOOL)arg1;
 - (void)requestStatusBarVisible:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)resetContextTypes:(long long)arg1;
+- (void)resetGestureBehaviors;
 - (void)routePickerController:(id)arg1 hasRoutesToPick:(BOOL)arg2;
 - (void)routePickerControllerPickedNewRoute:(id)arg1 isBluetooth:(BOOL)arg2;
 - (void)routePickerControllerWillDismiss:(id)arg1;
@@ -338,6 +340,7 @@
 - (void)siriSessionDidReceiveDelayedActionCommand:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)siriSessionDidResetContext:(id)arg1;
 - (void)siriSessionDidUpdateSessionInfo:(id)arg1;
+- (void)siriSessionImmersiveExperienceRequested;
 - (void)siriSessionRecordingPreparationHasFinished:(id)arg1;
 - (void)siriSessionShouldEndExtendAudioSessionForImminentPhoneCall;
 - (void)siriSessionShouldExtendAudioSessionForImminentPhoneCall;

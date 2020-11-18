@@ -16,11 +16,12 @@
 #import <SpringBoardHome/SBIconViewProviding-Protocol.h>
 #import <SpringBoardHome/SBIconViewQuerying-Protocol.h>
 #import <SpringBoardHome/SBScaleIconZoomAnimationContaining-Protocol.h>
+#import <SpringBoardHome/SBUICoronaAnimationControllerParticipant-Protocol.h>
 
 @class NSArray, NSHashTable, NSMutableArray, NSSet, NSString, SBFTouchPassThroughView, SBFloatingDockView, SBFolderController, SBFolderPresentingViewController, SBHFloatingDockStyleConfiguration, SBHIconManager, SBHIconModel, SBHomeScreenIconTransitionAnimator, SBIconListModel, SBIconListView, UIView, UIViewController, UIWindow, _UILegibilitySettings;
 @protocol SBFloatingDockSuggestionsViewProviding, SBFloatingDockViewControllerDelegate, SBIconViewProviding;
 
-@interface SBFloatingDockViewController : SBFTouchPassThroughViewController <SBIconListViewDragDelegate, SBIconListModelObserver, SBFolderControllerDelegate, SBFolderPresentingViewControllerDelegate, SBScaleIconZoomAnimationContaining, SBIconViewProviding, SBFloatingDockViewDelegate, SBIconViewQuerying, SBIconLocationPresenting, BSDescriptionProviding>
+@interface SBFloatingDockViewController : SBFTouchPassThroughViewController <SBIconListViewDragDelegate, SBIconListModelObserver, SBFolderControllerDelegate, SBFolderPresentingViewControllerDelegate, SBScaleIconZoomAnimationContaining, SBIconViewProviding, SBFloatingDockViewDelegate, SBUICoronaAnimationControllerParticipant, SBIconViewQuerying, SBIconLocationPresenting, BSDescriptionProviding>
 {
     SBFloatingDockView *_dockView;
     _UILegibilitySettings *_legibilitySettings;
@@ -113,6 +114,7 @@
 - (void)configureIconView:(id)arg1 forIcon:(id)arg2;
 - (double)contentHeightForFrame:(struct CGRect)arg1;
 - (Class)controllerClassForFolder:(id)arg1;
+- (void)coronaAnimationController:(id)arg1 willAnimateCoronaTransitionWithAnimator:(id)arg2;
 - (void)dealloc;
 - (id)dequeueReusableIconViewOfClass:(Class)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -204,6 +206,8 @@
 - (id)targetIconContainerView;
 - (id)userIconListView;
 - (id)userIconLocation;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 

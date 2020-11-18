@@ -16,11 +16,6 @@
     UIImage *_right;
 }
 
-@property (strong, nonatomic) UIImage *bottom; // @synthesize bottom=_bottom;
-@property (strong, nonatomic) UIImage *left; // @synthesize left=_left;
-@property (strong, nonatomic) UIImage *right; // @synthesize right=_right;
-@property (strong, nonatomic) UIImage *top; // @synthesize top=_top;
-
 - (void).cxx_destruct;
 
 @end

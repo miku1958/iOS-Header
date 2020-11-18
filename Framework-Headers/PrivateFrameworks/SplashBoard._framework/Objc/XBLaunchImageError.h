@@ -17,8 +17,8 @@
 
 + (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithCode:(long long)arg1 bundleID:(id)arg2 reason:(id)arg3 fatal:(BOOL)arg4;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDomain:(id)arg1 code:(long long)arg2 userInfo:(id)arg3 fatal:(BOOL)arg4 shouldDeny:(BOOL)arg5;
 
 @end
 

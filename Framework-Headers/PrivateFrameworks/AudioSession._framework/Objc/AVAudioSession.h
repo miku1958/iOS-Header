@@ -88,6 +88,7 @@
 - (double)outputSampleRate;
 - (float)outputVolume;
 - (BOOL)overrideOutputAudioPort:(unsigned long long)arg1 error:(id *)arg2;
+- (BOOL)participatesInMutePriority;
 - (BOOL)participatesInNowPlayingAppPolicy;
 - (id)pickedRoute;
 - (BOOL)preferDecoupledIO:(BOOL)arg1 error:(id *)arg2;
@@ -168,6 +169,7 @@
 - (BOOL)setInterruptionPriority:(long long)arg1 error:(id *)arg2;
 - (BOOL)setMode:(id)arg1 error:(id *)arg2;
 - (BOOL)setOutputDataSource:(id)arg1 error:(id *)arg2;
+- (BOOL)setParticipatesInMutePriority:(BOOL)arg1 error:(id *)arg2;
 - (BOOL)setParticipatesInNowPlayingAppPolicy:(BOOL)arg1 error:(id *)arg2;
 - (BOOL)setPreferredHardwareSampleRate:(double)arg1 error:(id *)arg2;
 - (BOOL)setPreferredIOBufferDuration:(double)arg1 error:(id *)arg2;

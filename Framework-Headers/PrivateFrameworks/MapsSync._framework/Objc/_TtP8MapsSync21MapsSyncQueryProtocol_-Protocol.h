@@ -7,9 +7,12 @@
 @class OS_dispatch_queue, _TtC8MapsSync19MapsSyncDataSession;
 
 @protocol _TtP8MapsSync21MapsSyncQueryProtocol_
+
+@property (nonatomic, readonly) BOOL isReady;
+
 - (void)deleteAllObjectsWithCompletion:(void (^)(NSError *))arg1;
 - (_TtC8MapsSync19MapsSyncDataSession *)getSession;
-- (void)reloadContentsWithCompletion:(void (^)(NSArray *))arg1 queue:(OS_dispatch_queue *)arg2;
+- (void)reloadContentsWithCompletion:(void (^)(NSArray *, NSError *))arg1 queue:(OS_dispatch_queue *)arg2;
 - (void)sendNotification;
 @end
 

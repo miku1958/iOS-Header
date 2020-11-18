@@ -22,6 +22,7 @@
     NSString *_userActivityType;
     unsigned long long _supportedSizeClasses;
     CHSLocalizableString *_localizableWidgetDescription;
+    long long _widgetVisibility;
     INCWidgetIntentProvider *_defaultIntentProvider;
     INIntent *_defaultIntent;
     NSMutableArray *_fetchDefaultIntentCompletions;
@@ -36,12 +37,14 @@
 @property (strong, nonatomic) NSMutableArray *fetchDefaultIntentCompletions; // @synthesize fetchDefaultIntentCompletions=_fetchDefaultIntentCompletions;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *intentType; // @synthesize intentType=_intentType;
+@property (readonly, nonatomic, getter=isInternal) BOOL internal;
 @property (readonly, copy, nonatomic) NSString *kind; // @synthesize kind=_kind;
 @property (readonly, copy, nonatomic) CHSLocalizableString *localizableDisplayName; // @synthesize localizableDisplayName=_localizableDisplayName;
 @property (readonly, copy, nonatomic) CHSLocalizableString *localizableWidgetDescription; // @synthesize localizableWidgetDescription=_localizableWidgetDescription;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long supportedSizeClasses; // @synthesize supportedSizeClasses=_supportedSizeClasses;
 @property (readonly, copy, nonatomic) NSString *userActivityType; // @synthesize userActivityType=_userActivityType;
+@property (readonly, nonatomic) long long widgetVisibility; // @synthesize widgetVisibility=_widgetVisibility;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -54,6 +57,7 @@
 - (id)initWithExtensionBundleIdentifier:(id)arg1 containerBundleIdentifier:(id)arg2 kind:(id)arg3 displayName:(id)arg4 intentType:(id)arg5 userActivityType:(id)arg6 supportedSizeClasses:(unsigned long long)arg7 widgetDescription:(id)arg8;
 - (id)initWithExtensionBundleIdentifier:(id)arg1 containerBundleIdentifier:(id)arg2 kind:(id)arg3 displayName:(id)arg4 supportedSizeClasses:(unsigned long long)arg5 widgetDescription:(id)arg6;
 - (id)initWithExtensionBundleIdentifier:(id)arg1 containerBundleIdentifier:(id)arg2 kind:(id)arg3 localizableDisplayName:(id)arg4 intentType:(id)arg5 supportedSizeClasses:(unsigned long long)arg6 localizableWidgetDescription:(id)arg7;
+- (id)initWithExtensionBundleIdentifier:(id)arg1 containerBundleIdentifier:(id)arg2 kind:(id)arg3 localizableDisplayName:(id)arg4 intentType:(id)arg5 supportedSizeClasses:(unsigned long long)arg6 localizableWidgetDescription:(id)arg7 widgetVisibility:(long long)arg8;
 - (BOOL)isEqual:(id)arg1;
 - (void)loadDefaultIntent:(CDUnknownBlockType)arg1;
 - (BOOL)matchesPersonality:(id)arg1;

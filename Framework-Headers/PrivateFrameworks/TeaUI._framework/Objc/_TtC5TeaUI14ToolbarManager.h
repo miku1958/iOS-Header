@@ -16,6 +16,9 @@
     MISSING_TYPE *_toolbarEnabled;
     MISSING_TYPE *lazyTemplate;
     MISSING_TYPE *configurations;
+    MISSING_TYPE *currentProvider;
+    MISSING_TYPE *queuedUpdates;
+    MISSING_TYPE *dispatchedRebuild;
 }
 
 - (void).cxx_destruct;

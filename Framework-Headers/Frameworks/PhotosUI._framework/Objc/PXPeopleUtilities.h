@@ -27,6 +27,7 @@
 + (CDUnknownBlockType)comparatorForFetchType:(unsigned long long)arg1;
 + (struct CGRect)faceRectForPeopleFaceTile:(id)arg1;
 + (id)facesForPerson:(id)arg1 inAssets:(id)arg2;
++ (id)finalMergeTargetPersonForPersonWithUUID:(id)arg1;
 + (id)generateNewFaceTileFromFaceTile:(id)arg1;
 + (id)identifiersForPeople:(id)arg1;
 + (BOOL)isFavoritePerson:(id)arg1;

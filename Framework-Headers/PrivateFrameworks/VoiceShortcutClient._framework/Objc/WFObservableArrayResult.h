@@ -21,6 +21,7 @@
 
 + (void)getResultWithQuery:(id)arg1 valueType:(Class)arg2 glyphSize:(struct CGSize)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
+- (id)description;
 - (void)handleChangeNotification:(id)arg1;
 - (id)initWithValueType:(Class)arg1 glyphSize:(struct CGSize)arg2 initialValues:(id)arg3 query:(id)arg4 resultState:(id)arg5;
 

@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)titleLabel;
-- (void)transitionToActive:(BOOL)arg1 usingAnimator:(id)arg2;
+- (void)transitionToActive:(BOOL)arg1 inFolderView:(id)arg2 usingAnimator:(id)arg3;
 
 @end
 

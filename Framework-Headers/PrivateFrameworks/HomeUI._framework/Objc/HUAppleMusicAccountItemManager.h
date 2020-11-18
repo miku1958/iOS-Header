@@ -7,18 +7,21 @@
 #import <Home/HFItemManager.h>
 
 @class HUAppleMusicAccountModule;
+@protocol HFMediaProfileContainer;
 
 @interface HUAppleMusicAccountItemManager : HFItemManager
 {
     BOOL _shouldDisableUpdates;
-    HUAppleMusicAccountModule *_module;
+    id<HFMediaProfileContainer> _mediaProfileContainer;
+    HUAppleMusicAccountModule *_appleMusicAccountModule;
 }
 
-@property (readonly, nonatomic) HUAppleMusicAccountModule *module; // @synthesize module=_module;
+@property (strong, nonatomic) HUAppleMusicAccountModule *appleMusicAccountModule; // @synthesize appleMusicAccountModule=_appleMusicAccountModule;
+@property (readonly, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
 @property (nonatomic) BOOL shouldDisableUpdates; // @synthesize shouldDisableUpdates=_shouldDisableUpdates;
 
 - (void).cxx_destruct;
-- (id)_buildItemProvidersForHome:(id)arg1;
+- (id)_buildItemModulesForHome:(id)arg1;
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
 - (void)_moduleStateDidChangeFrom:(unsigned long long)arg1 to:(unsigned long long)arg2;
 - (id)initWithMediaProfileContainer:(id)arg1 delegate:(id)arg2;

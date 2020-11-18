@@ -11,6 +11,7 @@
 #import <MapKit/_MKStackViewDelegate-Protocol.h>
 
 @class MKPlaceActionManager, NSArray, NSString;
+@protocol _MKPlaceViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MKPlaceCardActionsViewController : MKPlaceSectionViewController <MKPlaceCardActionSectionViewDelegate, _MKStackViewDelegate, _MKInfoCardChildViewControllerAnalyticsDelegate>
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
     NSArray *_actionItemArray;
     NSArray *_viewArray;
     MKPlaceActionManager *_actionManager;
+    id<_MKPlaceViewControllerDelegate> _placeViewControllerDelegate;
 }
 
 @property (copy, nonatomic) NSArray *actionItemArray; // @synthesize actionItemArray=_actionItemArray;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL haveTwoColumns; // @synthesize haveTwoColumns=_haveTwoColumns;
+@property (weak, nonatomic) id<_MKPlaceViewControllerDelegate> placeViewControllerDelegate; // @synthesize placeViewControllerDelegate=_placeViewControllerDelegate;
 @property (nonatomic) BOOL showTopButtonSeparator; // @synthesize showTopButtonSeparator=_showTopButtonSeparator;
 @property (nonatomic) BOOL showTopSeparator; // @synthesize showTopSeparator=_showTopSeparator;
 @property (readonly) Class superclass;

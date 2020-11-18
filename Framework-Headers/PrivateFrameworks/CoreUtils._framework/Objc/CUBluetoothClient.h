@@ -99,6 +99,7 @@
 @property (copy, nonatomic) CDUnknownBlockType updateTipiHandler; // @synthesize updateTipiHandler=_updateTipiHandler;
 
 - (void).cxx_destruct;
+- (void)_btAccessoryNameChanged:(struct BTDeviceImpl *)arg1;
 - (void)_btAccessoryPlacementChanged:(struct BTAccessoryManagerImpl *)arg1 device:(struct BTDeviceImpl *)arg2;
 - (void)_btAccessoryStreamStateChanged:(int)arg1 device:(struct BTDeviceImpl *)arg2;
 - (struct BTDeviceImpl *)_btDeviceWithID:(id)arg1 error:(id *)arg2;

@@ -12,6 +12,7 @@
 @property (readonly, nonatomic) long long deviceClass;
 @property (readonly, nonatomic) BOOL hasAppleNeuralEngine;
 @property (readonly, nonatomic) BOOL isDeviceLargeScreen;
+@property (readonly, nonatomic) BOOL isHEVC444DecodeSupported;
 @property (readonly, nonatomic) BOOL isPixelFormatAvailable;
 @property (readonly, nonatomic) BOOL isSecondDisplaySupportEnabled;
 @property (readonly, nonatomic) unsigned int maxActiveVideoDecoders;

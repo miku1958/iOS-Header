@@ -37,7 +37,7 @@
 - (void)_commonInit;
 - (double)_contentMarginForChildViewController:(UIViewController *)arg1;
 - (struct CGSize)_contentSizeForChildViewController:(UIViewController *)arg1 inPopoverController:(UIPopoverController *)arg2;
-- (UIResponder *)_deepestUnambiguousResponder;
+- (UIResponder *)_deepestActionResponder;
 - (void)_descendantWillPresentViewController:(UIViewController *)arg1 modalSourceViewController:(UIViewController *)arg2 presentationController:(UIPresentationController *)arg3 animated:(BOOL)arg4;
 - (void)_didChangeToFirstResponder:(UIResponder *)arg1;
 - (void)_didEndSnapshotSession;
@@ -57,6 +57,7 @@
 - (BOOL)_layoutPrimaryOnRight;
 - (void)_marginInfoForChild:(UIViewController *)arg1 leftMargin:(double *)arg2 rightMargin:(double *)arg3;
 - (NSArray *)_multitaskingDragExclusionRects;
+- (UIViewController *)_nextVisibleViewControllerForResponderAfterChildViewController:(UIViewController *)arg1;
 - (BOOL)_optsOutOfPopoverControllerHierarchyCheck;
 - (void)_popoverController:(UIPopoverController *)arg1 didChangeFromVisible:(BOOL)arg2;
 - (void)_popoverController:(UIPopoverController *)arg1 willChangeToVisible:(BOOL)arg2;

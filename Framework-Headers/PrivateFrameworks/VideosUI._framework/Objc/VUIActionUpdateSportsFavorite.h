@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *sportsTeamName; // @synthesize sportsTeamName=_sportsTeamName;
 @property (weak, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 
++ (void)performFavoritesOperation:(BOOL)arg1 teamId:(id)arg2 teamName:(id)arg3 requestExecutionHandler:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
 - (id)initWithContextData:(id)arg1 viewElement:(id)arg2;
 - (BOOL)isAccountRequired;

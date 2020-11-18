@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *coreConfigurationManager;
     MISSING_TYPE *feedContextFactory;
+    MISSING_TYPE *headlineModelFactory;
 }
 
 @end

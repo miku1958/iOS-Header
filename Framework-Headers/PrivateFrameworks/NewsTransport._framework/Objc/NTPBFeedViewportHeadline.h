@@ -19,6 +19,7 @@
     NSString *_clusterID;
     NTPBDate *_displayDate;
     int _storyType;
+    int _surfacedByArticleListIDRef;
     int _surfacedByBinIDRef;
     int _surfacedByChannelIDRef;
     int _surfacedBySectionIDRef;
@@ -28,6 +29,7 @@
     struct {
         unsigned int tileProminenceScore:1;
         unsigned int storyType:1;
+        unsigned int surfacedByArticleListIDRef:1;
         unsigned int surfacedByBinIDRef:1;
         unsigned int surfacedByChannelIDRef:1;
         unsigned int surfacedBySectionIDRef:1;
@@ -46,6 +48,7 @@
 @property (readonly, nonatomic) BOOL hasClusterID;
 @property (readonly, nonatomic) BOOL hasDisplayDate;
 @property (nonatomic) BOOL hasStoryType;
+@property (nonatomic) BOOL hasSurfacedByArticleListIDRef;
 @property (nonatomic) BOOL hasSurfacedByBinIDRef;
 @property (nonatomic) BOOL hasSurfacedByChannelIDRef;
 @property (nonatomic) BOOL hasSurfacedBySectionIDRef;
@@ -54,6 +57,7 @@
 @property (nonatomic) BOOL hasTopStoryType;
 @property (nonatomic) BOOL hasUsesImageOnTopLayout;
 @property (nonatomic) int storyType; // @synthesize storyType=_storyType;
+@property (nonatomic) int surfacedByArticleListIDRef; // @synthesize surfacedByArticleListIDRef=_surfacedByArticleListIDRef;
 @property (nonatomic) int surfacedByBinIDRef; // @synthesize surfacedByBinIDRef=_surfacedByBinIDRef;
 @property (nonatomic) int surfacedByChannelIDRef; // @synthesize surfacedByChannelIDRef=_surfacedByChannelIDRef;
 @property (nonatomic) int surfacedBySectionIDRef; // @synthesize surfacedBySectionIDRef=_surfacedBySectionIDRef;

@@ -27,6 +27,7 @@
         unsigned int editing:1;
         unsigned int swiped:1;
         unsigned int reordering:1;
+        unsigned int showingCompactContextMenu:1;
         unsigned int editingStyle:3;
         unsigned int accessoryType:3;
         unsigned int editingAccessoryType:3;
@@ -34,6 +35,7 @@
         unsigned int showTopSeparator:1;
         unsigned int hideTopSeparatorDuringReordering:1;
         unsigned int sectionLocation:3;
+        unsigned int selectionGrouping:3;
         unsigned int tableViewStyle:5;
         unsigned int shouldIndentWhileEditing:1;
         unsigned int fontSet:1;
@@ -95,6 +97,7 @@
         unsigned int automaticallyUpdatesContentViewConfiguration:1;
         unsigned int automaticallyUpdatesBackgroundViewConfiguration:1;
         unsigned int hasShownHighlightedOrSelectedBackground:1;
+        unsigned int needsFocusRingUpdateAfterLayout:1;
     } _tableCellFlags;
     NSMutableDictionary *__editingControlTintColors;
     id<UITable_UITableViewCellDelegate> _tableView;
@@ -155,7 +158,6 @@
     UILongPressGestureRecognizer *_longPressGesture;
     NSIndexPath *_representedIndexPath;
     UIView *_clearBlendingView;
-    double _sectionCornerRadius;
     double _defaultLeadingMarginWidth;
     double _defaultTrailingCellMarginWidth;
     UIFocusGuide *_editControlFocusGuide;
@@ -224,13 +226,15 @@
 - (BOOL)_allowsReorderingWhenNotEditing;
 - (void)_animateFloatingSeparatorForInsertion:(BOOL)arg1 withRowAnimation:(long long)arg2;
 - (void)_animateInnerShadowForInsertion:(BOOL)arg1 withRowAnimation:(long long)arg2;
-- (BOOL)_appliesMaskingToCellWhenUsingBackgroundConfiguration;
+- (BOOL)_appliesMaskingToBackgroundConfiguration;
 - (void)_applyBackgroundViewConfiguration:(id)arg1 withState:(id)arg2;
 - (void)_applyContentViewConfiguration:(id)arg1 withState:(id)arg2 usingSPI:(BOOL)arg3;
 - (void)_applySelectedStateToSeparators:(BOOL)arg1;
 - (BOOL)_automaticallyUpdatesBackgroundViewConfiguration;
 - (BOOL)_automaticallyUpdatesContentViewConfiguration;
+- (BOOL)_backgroundFillIsCustomizedForSelectionOrHighlight;
 - (struct UIEdgeInsets)_backgroundInset;
+- (BOOL)_backgroundIsVerticallyInset;
 - (struct UIEdgeInsets)_backgroundSeparatorInset;
 - (id)_backgroundView:(BOOL)arg1;
 - (id)_backgroundViewConfiguration;
@@ -318,7 +322,6 @@
 - (BOOL)_insetsBackground;
 - (BOOL)_insetsContentViewsToSafeArea;
 - (BOOL)_isAnimating;
-- (BOOL)_isCurrentlyConsideredHighlighted;
 - (BOOL)_isDeleteAnimationInProgress;
 - (BOOL)_isDragging;
 - (BOOL)_isDropTarget;
@@ -328,6 +331,7 @@
 - (BOOL)_isReorderControlActive;
 - (BOOL)_isReorderable;
 - (BOOL)_isReordering;
+- (BOOL)_isShowingCompactContextMenu;
 - (BOOL)_isSwiped;
 - (BOOL)_isUsingOldStyleMultiselection;
 - (id)_layoutDebuggingTitle;
@@ -336,6 +340,7 @@
 - (void)_layoutSystemBackgroundView;
 - (id)_leadingAccessoriesForEditing:(BOOL)arg1 style:(long long)arg2;
 - (void)_longPressGestureRecognized:(id)arg1;
+- (void)_macSidebarDefaultIconSizeChanged;
 - (double)_marginWidth;
 - (unsigned long long)_maskedCornersForSystemBackgroundView;
 - (void)_monitoredView:(id)arg1 didMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
@@ -376,6 +381,7 @@
 - (long long)_sanitizedEditingStyleForEditing:(BOOL)arg1 style:(long long)arg2;
 - (void)_saveOpaqueViewState:(id)arg1;
 - (id)_selectedBackgroundView:(BOOL)arg1;
+- (int)_selectionGrouping;
 - (long long)_separatorBackdropOverlayBlendMode;
 - (BOOL)_separatorDrawsInVibrantLightMode;
 - (id)_separatorEffect;
@@ -445,6 +451,7 @@
 - (void)_setReordering:(BOOL)arg1;
 - (void)_setRightMarginWidth:(double)arg1;
 - (void)_setSectionLocation:(int)arg1 animated:(BOOL)arg2 forceBackgroundSetup:(BOOL)arg3;
+- (void)_setSelectionGrouping:(int)arg1;
 - (void)_setSelectionStyle:(long long)arg1 selectionTintColor:(id)arg2;
 - (void)_setSeparatorBackdropOverlayBlendMode:(long long)arg1;
 - (void)_setSeparatorDrawsInVibrantLightMode:(BOOL)arg1;
@@ -455,6 +462,7 @@
 - (void)_setShouldHaveFullLengthBottomSeparator:(BOOL)arg1;
 - (void)_setShouldHaveFullLengthTopSeparator:(BOOL)arg1;
 - (void)_setShouldIndentWhileEditing:(BOOL)arg1;
+- (void)_setShowingCompactContextMenu:(BOOL)arg1;
 - (void)_setShowingDeleteConfirmation:(BOOL)arg1;
 - (void)_setShowsReorderControl:(BOOL)arg1;
 - (void)_setSwipeContainerView:(id)arg1;
@@ -474,6 +482,7 @@
 - (BOOL)_shouldHideSeparator;
 - (BOOL)_shouldMaskToBoundsWhileAnimating;
 - (BOOL)_shouldSaveOpaqueStateForView:(id)arg1;
+- (BOOL)_shouldUseHighlightedOrSelectedAppearance;
 - (BOOL)_showFullLengthTopSeparatorForTopOfSection;
 - (void)_showMenuFromLongPressGesture;
 - (BOOL)_showSeparatorAtTopOfSection;

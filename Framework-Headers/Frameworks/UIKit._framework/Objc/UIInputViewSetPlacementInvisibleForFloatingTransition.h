@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (BOOL)isHiddenForFloatingTransition;
+- (struct CGRect)visibleFrameForNotificationsUsingHostingItem:(id)arg1;
 
 @end
 

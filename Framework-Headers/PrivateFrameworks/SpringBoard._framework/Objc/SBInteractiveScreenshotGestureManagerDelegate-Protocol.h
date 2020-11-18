@@ -11,5 +11,6 @@
 @protocol SBInteractiveScreenshotGestureManagerDelegate <NSObject>
 - (void)interactiveScreenshotGestureManager:(SBInteractiveScreenshotGestureManager *)arg1 requestsScreenshotPreheatWithPresentationOptions:(SSScreenCapturerPresentationOptions *)arg2;
 - (void)interactiveScreenshotGestureManager:(SBInteractiveScreenshotGestureManager *)arg1 requestsScreenshotWithOptionsCollection:(SSScreenCapturerScreenshotOptionsCollection *)arg2 presentationOptions:(SSScreenCapturerPresentationOptions *)arg3;
+- (BOOL)interactiveScreenshotGestureManagerShouldPreventGestureRecognition:(SBInteractiveScreenshotGestureManager *)arg1;
 @end
 

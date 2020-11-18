@@ -16,6 +16,7 @@
     NSArray *_results;
     NSObject<OS_dispatch_queue> *_searchQueue;
     id<TUIEmojiSearchSourceDelegate> _delegate;
+    NSArray *_multilingualSearchLocales;
     NSLocale *_locale;
     EMFEmojiLocaleData *_localeData;
 }
@@ -23,6 +24,7 @@
 @property (weak, nonatomic) id<TUIEmojiSearchSourceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property (strong, nonatomic) EMFEmojiLocaleData *localeData; // @synthesize localeData=_localeData;
+@property (strong, nonatomic) NSArray *multilingualSearchLocales; // @synthesize multilingualSearchLocales=_multilingualSearchLocales;
 @property (readonly, nonatomic) NSArray *results; // @synthesize results=_results;
 @property (readonly, nonatomic) NSArray *suggestedEmojis;
 
@@ -30,8 +32,10 @@
 - (void)_deliverResults:(id)arg1 forExactQuery:(id)arg2 autocorrectedQuery:(id)arg3;
 - (id)_emojiResultSetForExactQuery:(id)arg1 autocorrectedQuery:(id)arg2;
 - (id)_filteredTokensIgnoringModifiers:(id)arg1;
+- (id)_repeatSearchQuery:(id)arg1 forLocales:(id)arg2;
 - (void)beginSearchForExactQuery:(id)arg1 autocorrectedQuery:(id)arg2;
 - (id)initWithLocale:(id)arg1;
+- (id)languagesForMultilingualSearch;
 - (BOOL)shouldSupplyVerbatimResultsFor:(id)arg1;
 
 @end

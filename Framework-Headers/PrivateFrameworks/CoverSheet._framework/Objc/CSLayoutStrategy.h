@@ -23,6 +23,7 @@
 - (struct UIEdgeInsets)suggestedContentInsetsForListForPage:(id)arg1;
 - (struct CGRect)suggestedFrameForDateTimeViewInScreenCoordinates:(struct CGRect)arg1 forceCenteredX:(BOOL)arg2;
 - (struct CGRect)suggestedFrameForListForPage:(id)arg1 bounds:(struct CGRect)arg2;
+- (struct CGRect)suggestedVisibleFrameForSleeveInScreenCoordinates:(struct CGRect)arg1 forceCenteredX:(BOOL)arg2;
 
 @end
 

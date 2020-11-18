@@ -102,7 +102,7 @@
 - (void)_childEndAppearanceTransition:(id)arg1;
 - (struct CGSize)_contentSizeForSize:(struct CGSize)arg1;
 - (void)_contentViewFrameOrBoundsDidChange;
-- (id)_deepestUnambiguousResponder;
+- (id)_deepestActionResponder;
 - (struct CGRect)_disabledScrollingRegion;
 - (struct UIEdgeInsets)_edgeInsetsForChildViewController:(id)arg1 insetsAreAbsolute:(BOOL *)arg2;
 - (struct CGSize)_effectiveTapRegionBreadths;

@@ -10,6 +10,7 @@
 
 @class NSString, _MRNowPlayingInfoProtobuf, _MRNowPlayingPlayerPathProtobuf, _MRPlaybackQueueCapabilitiesProtobuf, _MRPlaybackQueueProtobuf, _MRPlaybackQueueRequestProtobuf, _MRSupportedCommandsProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRSetStateMessageProtobuf : PBCodable <NSCopying>
 {
     double _playbackStateTimestamp;
@@ -28,37 +29,12 @@
     } _has;
 }
 
-@property (strong, nonatomic) NSString *displayID; // @synthesize displayID=_displayID;
-@property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property (readonly, nonatomic) BOOL hasDisplayID;
-@property (readonly, nonatomic) BOOL hasDisplayName;
-@property (readonly, nonatomic) BOOL hasNowPlayingInfo;
-@property (readonly, nonatomic) BOOL hasPlaybackQueue;
-@property (readonly, nonatomic) BOOL hasPlaybackQueueCapabilities;
-@property (nonatomic) BOOL hasPlaybackState;
-@property (nonatomic) BOOL hasPlaybackStateTimestamp;
-@property (readonly, nonatomic) BOOL hasPlayerPath;
-@property (readonly, nonatomic) BOOL hasRequest;
-@property (readonly, nonatomic) BOOL hasSupportedCommands;
-@property (strong, nonatomic) _MRNowPlayingInfoProtobuf *nowPlayingInfo; // @synthesize nowPlayingInfo=_nowPlayingInfo;
-@property (strong, nonatomic) _MRPlaybackQueueProtobuf *playbackQueue; // @synthesize playbackQueue=_playbackQueue;
-@property (strong, nonatomic) _MRPlaybackQueueCapabilitiesProtobuf *playbackQueueCapabilities; // @synthesize playbackQueueCapabilities=_playbackQueueCapabilities;
-@property (nonatomic) int playbackState; // @synthesize playbackState=_playbackState;
-@property (nonatomic) double playbackStateTimestamp; // @synthesize playbackStateTimestamp=_playbackStateTimestamp;
-@property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
-@property (strong, nonatomic) _MRPlaybackQueueRequestProtobuf *request; // @synthesize request=_request;
-@property (strong, nonatomic) _MRSupportedCommandsProtobuf *supportedCommands; // @synthesize supportedCommands=_supportedCommands;
-
 - (void).cxx_destruct;
-- (int)StringAsPlaybackState:(id)arg1;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
-- (id)playbackStateAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

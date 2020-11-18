@@ -27,10 +27,11 @@
 
 - (void).cxx_destruct;
 - (double)_deviceIconsPadding;
-- (void)_setHemeButtonOutlineColor;
+- (void)_setHomeButtonOutlineColor;
 - (void)_startPowerIndicatorAnimation;
 - (double)_topPadding;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 displayOptions:(unsigned long long)arg2;
 - (void)layoutSubviews;
 - (void)setPassImage:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

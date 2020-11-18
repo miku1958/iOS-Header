@@ -19,10 +19,13 @@
     double _highPrecisionThreshold;
     NSMutableSet *_parentNodes;
     NSMutableSet *_childNodes;
+    NSMutableSet *_detectorNodes;
 }
 
 @property (strong) NSMutableSet *childNodes; // @synthesize childNodes=_childNodes;
 @property (readonly, copy) NSSet *children;
+@property (strong) NSMutableSet *detectorNodes; // @synthesize detectorNodes=_detectorNodes;
+@property (readonly, copy) NSSet *detectors;
 @property (readonly) double graphHighPrecisionThreshold;
 @property (readonly) double graphHighRecallThreshold;
 @property (readonly) double highPrecisionThreshold; // @synthesize highPrecisionThreshold=_highPrecisionThreshold;
@@ -39,6 +42,7 @@
 + (id)localizedStringForKey:(id)arg1 localizationBundle:(id)arg2 tableName:(id)arg3;
 - (void).cxx_destruct;
 - (void)addChildNode:(id)arg1;
+- (void)addDetectorNode:(id)arg1;
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithSceneClassId:(unsigned int)arg1 name:(id)arg2 indexed:(BOOL)arg3 threshold:(double)arg4 highRecallThreshold:(double)arg5 highPrecisionThreshold:(double)arg6 taxonomy:(id)arg7;

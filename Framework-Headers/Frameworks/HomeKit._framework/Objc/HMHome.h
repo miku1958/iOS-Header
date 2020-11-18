@@ -359,6 +359,7 @@
 - (id)location;
 - (id)logIdentifier;
 - (void)manageUsersWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)mediaDestintionsWithSupportedOptions:(unsigned long long)arg1;
 - (id)mediaProfileWithProfileUUID:(id)arg1;
 - (id)mediaProfileWithUUID:(id)arg1;
 - (id)mediaSystems;

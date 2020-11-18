@@ -16,12 +16,7 @@
     NSArray *_results;
 }
 
-@property (readonly, nonatomic) id<SXComponentInserter> inserter; // @synthesize inserter=_inserter;
-@property (readonly, nonatomic) NSArray *results; // @synthesize results=_results;
-@property (readonly, nonatomic) id<SXComponentInsertionCacheValidator> validator; // @synthesize validator=_validator;
-
 - (void).cxx_destruct;
-- (id)initWithInserter:(id)arg1 validator:(id)arg2 results:(id)arg3;
 
 @end
 

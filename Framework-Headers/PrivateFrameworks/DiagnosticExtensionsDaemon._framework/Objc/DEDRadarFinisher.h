@@ -11,7 +11,7 @@
 #import <DiagnosticExtensionsDaemon/NSSecureCoding-Protocol.h>
 #import <DiagnosticExtensionsDaemon/NSURLSessionDataDelegate-Protocol.h>
 
-@class DEDBugSession, NSArray, NSMutableSet, NSString;
+@class DEDBugSession, NSMutableSet, NSString;
 @protocol OS_os_log;
 
 @interface DEDRadarFinisher : NSObject <NSURLSessionDataDelegate, DEDFinisher, NSSecureCoding, DEDSecureArchiving>
@@ -19,11 +19,9 @@
     float _percentComplete;
     DEDBugSession *_session;
     NSObject<OS_os_log> *_log;
-    NSArray *_attachments;
     NSMutableSet *_uploadItems;
 }
 
-@property (strong) NSArray *attachments; // @synthesize attachments=_attachments;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -41,6 +39,7 @@
 - (BOOL)allUploadsComplete;
 - (void)encodeWithCoder:(id)arg1;
 - (void)finishSession:(id)arg1 withConfiguration:(id)arg2;
+- (id)folderNameForAttachmentGroup:(id)arg1;
 - (id)getUploadItemForTask:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithConfiguration:(id)arg1 session:(id)arg2;

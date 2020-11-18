@@ -94,9 +94,9 @@ __attribute__((visibility("hidden")))
 - (void)checkRTCPPacketTimeoutAgainstTime:(double)arg1 lastReceivedPacketTime:(double)arg2;
 - (void)checkRTPPacketTimeoutAgainstTime:(double)arg1 lastReceivedPacketTime:(double)arg2;
 - (void)cleanupNWConnection:(id *)arg1;
-- (void)collectRxChannelMetrics:(CDStruct_3ab08b48 *)arg1;
-- (void)collectRxChannelMetrics:(CDStruct_3ab08b48 *)arg1 interval:(float)arg2;
-- (void)collectTxChannelMetrics:(CDStruct_3ab08b48 *)arg1;
+- (void)collectRxChannelMetrics:(CDStruct_1dd2c43e *)arg1;
+- (void)collectRxChannelMetrics:(CDStruct_1dd2c43e *)arg1 interval:(float)arg2;
+- (void)collectTxChannelMetrics:(CDStruct_1dd2c43e *)arg1;
 - (double)computeNextTimoutWithEnabledTime:(double)arg1 timeoutInterval:(double)arg2 lastReceivedPacketTime:(double)arg3 currentTime:(double)arg4 lastTimeoutReportTime:(double)arg5;
 - (void)createLocalMediaControlInfoGeneratorWithType:(unsigned int)arg1 version:(unsigned char)arg2;
 - (void)createNWMonitor;

@@ -43,7 +43,6 @@
 - (void).cxx_destruct;
 - (void)_addConditionWaiter:(id)arg1;
 - (void)_serviceConditionWaiters;
-- (id)allFeedItemsAfterTransformation:(id)arg1;
 - (id)catchUpErrorForContentTypes:(long long)arg1;
 - (void)enumerateEditorialSectionsByRecencyAfterTransformation:(id)arg1 minFamilySize:(unsigned long long)arg2 block:(CDUnknownBlockType)arg3;
 - (id)initWithContext:(id)arg1 configuration:(id)arg2 dateRange:(id)arg3 contentTypes:(long long)arg4 background:(BOOL)arg5;

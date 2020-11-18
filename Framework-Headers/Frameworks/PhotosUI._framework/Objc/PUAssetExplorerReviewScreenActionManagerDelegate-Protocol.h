@@ -20,7 +20,6 @@
 - (void)assetExplorerReviewScreenActionManagerDidPressCancel:(PUAssetExplorerReviewScreenActionManager *)arg1;
 - (void)assetExplorerReviewScreenActionManagerDidPressDeselectAll:(PUAssetExplorerReviewScreenActionManager *)arg1;
 - (void)assetExplorerReviewScreenActionManagerDidPressDone:(PUAssetExplorerReviewScreenActionManager *)arg1;
-- (void)assetExplorerReviewScreenActionManagerDidPressFileSize:(PUAssetExplorerReviewScreenActionManager *)arg1;
 - (void)assetExplorerReviewScreenActionManagerDidPressRetake:(PUAssetExplorerReviewScreenActionManager *)arg1;
 - (void)assetExplorerReviewScreenActionManagerDidPressSelectAll:(PUAssetExplorerReviewScreenActionManager *)arg1;
 - (void)assetExplorerReviewScreenActionManagerDidPressSend:(PUAssetExplorerReviewScreenActionManager *)arg1;

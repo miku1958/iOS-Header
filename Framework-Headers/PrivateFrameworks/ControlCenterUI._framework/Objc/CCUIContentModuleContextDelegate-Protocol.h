@@ -14,5 +14,6 @@
 - (void)dismissControlCenterForContentModuleContext:(CCUIContentModuleContext *)arg1;
 - (void)dismissExpandedViewForContentModuleContext:(CCUIContentModuleContext *)arg1;
 - (void)requestExpandModuleForContentModuleContext:(CCUIContentModuleContext *)arg1;
+- (void)requestModuleLayoutSizeUpdateForContentModuleContext:(CCUIContentModuleContext *)arg1;
 @end
 

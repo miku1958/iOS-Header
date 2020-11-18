@@ -30,15 +30,13 @@
     NSDate *_endDate;
     BOOL _hasTransactions;
     NSCalendar *_currentCalendar;
-    NSString *_navTitle;
     double _transitionAlpha;
     NSArray *_currentMonthTransactions;
     NSArray *_upcomingScheduledPayments;
     NSDateFormatter *_formatterMonth;
     NSDateFormatter *_formatterFullMonth;
-    NSDateFormatter *_formatterMonthNoYear;
     NSDateFormatter *_formatterDay;
-    NSDateFormatter *_formatterShortMonthNoYear;
+    NSDateFormatter *_formatterYear;
     PKTransactionGroupItemPresenter *_transactionGroupPresenter;
     PKSpendingSummaryPresenter *_summaryPresenter;
     PKDashboardTitleHeaderView *_sampleHeaderView;
@@ -94,7 +92,6 @@
 - (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (id)indexPathForSummary;
 - (id)initWithTransationSource:(id)arg1 account:(id)arg2 transactionGroupPresenter:(id)arg3 summaryPresenter:(id)arg4 currentMonthTransactions:(id)arg5 upcomingScheduledPayments:(id)arg6;
-- (id)navigationTitle;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)setAlphaForTransition:(double)arg1;

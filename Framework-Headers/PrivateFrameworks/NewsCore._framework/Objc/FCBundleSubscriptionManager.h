@@ -49,13 +49,12 @@
 - (void)addObserver:(id)arg1;
 - (void)bundleChannelProvider:(id)arg1 bundleChannelIDsDidChangeWithChannelIDs:(id)arg2;
 - (id)bundleSubscriptionLookupEntry;
-- (id)changeSetBetween:(id)arg1 newSubscription:(id)arg2;
 - (void)clearBundleSubscription;
 - (void)expireBundleSubscription;
 - (void)forceExpireBundleSubscriptionBasedOnInternalSettings;
 - (id)init;
 - (id)initWithPrivateDataDirectory:(id)arg1 configurationManager:(id)arg2 purchaseLookupRecordSource:(id)arg3 appActivityMonitor:(id)arg4 entitlementsProvider:(id)arg5;
-- (void)notifyObserversForChangeStateWithNewSubscription:(id)arg1 previousBundleSubscription:(id)arg2 changeSet:(id)arg3;
+- (void)notifyObserversForChangeStateWithNewSubscription:(id)arg1 previousBundleSubscription:(id)arg2;
 - (void)notifyObserversForExpiredStateWithSubscription:(id)arg1;
 - (void)notifyObserversForSubscribedStateWithSubscription:(id)arg1;
 - (void)prepareForUseWithCompletion:(CDUnknownBlockType)arg1;

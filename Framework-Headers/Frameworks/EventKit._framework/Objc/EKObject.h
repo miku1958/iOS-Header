@@ -45,6 +45,7 @@
 
 + (id)EKObjectChangeSummarizer_multiValueDiffKeys;
 + (id)EKObjectChangeSummarizer_singleValueDiffKeys;
++ (void)_addChangesFromObject:(id)arg1 toObjects:(id)arg2 except:(id)arg3 keep:(id)arg4 copyingBackingObjects:(BOOL)arg5;
 + (BOOL)_compareAllKnownKeysExceptKeys:(id)arg1 forObject:(id)arg2 againstObject:(id)arg3;
 + (BOOL)_compareAllKnownKeysExceptKeys:(id)arg1 forObject:(id)arg2 againstObject:(id)arg3 compareIdentityKeys:(BOOL)arg4;
 + (BOOL)_compareIdentityKeysForObject:(id)arg1 againstObject:(id)arg2 propertiesToIgnore:(id)arg3;
@@ -70,6 +71,8 @@
 + (unsigned long long)_numberOfSharedLocksForUnitTesting;
 + (BOOL)_object:(id)arg1 equalsObject:(id)arg2 forKeys:(id)arg3 compareImmutableKeys:(BOOL)arg4 ignoringProperties:(id)arg5;
 + (BOOL)_objects:(id)arg1 haveSameMeltedClass:(Class)arg2 frozenClass:(Class)arg3;
++ (void)addChangesFromObject:(id)arg1 toObjects:(id)arg2 except:(id)arg3;
++ (void)addChangesFromObject:(id)arg1 toObjects:(id)arg2 keep:(id)arg3;
 + (BOOL)canonicalizedEqualityTestValue1:(id)arg1 value2:(id)arg2 key:(id)arg3 object1:(id)arg4 object2:(id)arg5;
 + (Class)frozenClass;
 + (BOOL)isDerivedRelationship;
@@ -81,7 +84,9 @@
 + (id)knownIdentityKeysForComparison;
 + (id)knownImmutableKeys;
 + (id)knownRelationshipMultiValueKeys;
++ (id)knownRelationshipMultiValueKeysForValidation;
 + (id)knownRelationshipSingleValueKeys;
++ (id)knownRelationshipSingleValueKeysForValidation;
 + (id)knownRelationshipWeakKeys;
 + (id)knownSingleValueKeysForComparison;
 + (id)knownSummaryKeys;
@@ -90,7 +95,7 @@
 - (void).cxx_destruct;
 - (void)_addCachedMeltedObject:(id)arg1 forMultiValueKey:(id)arg2;
 - (void)_addChanges:(id)arg1 copyingBackingObjects:(BOOL)arg2;
-- (void)_addChangesFromObject:(id)arg1 except:(id)arg2 keep:(id)arg3 copyingBackingObjects:(BOOL)arg4;
+- (void)_addChangesFromObject:(id)arg1 except:(id)arg2 keep:(id)arg3 ignoreRelations:(id)arg4 copyingBackingObjects:(BOOL)arg5;
 - (void)_addSummaryWithDepth:(long long)arg1 toMutableString:(id)arg2 indentFirstLine:(BOOL)arg3;
 - (void)_applyDefinedAfterFirstSaveFrom:(id)arg1;
 - (void)_applyKnownImmutableValuesFrom:(id)arg1;
@@ -144,8 +149,6 @@
 - (void)addChanges:(id)arg1;
 - (void)addChangesFromObject:(id)arg1;
 - (void)addChangesFromObject:(id)arg1 copyingBackingObjects:(BOOL)arg2;
-- (void)addChangesFromObject:(id)arg1 except:(id)arg2;
-- (void)addChangesFromObject:(id)arg1 keep:(id)arg2;
 - (void)addCoCommitObject:(id)arg1;
 - (void)addMultiChangedObjectValue:(id)arg1 forKey:(id)arg2;
 - (void)addMultiChangedObjectValues:(id)arg1 forKey:(id)arg2;

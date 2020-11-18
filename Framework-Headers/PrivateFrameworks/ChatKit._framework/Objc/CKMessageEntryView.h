@@ -333,6 +333,7 @@
 - (void)layoutSubviews;
 - (void)loadRecordedAudioViewsIfNeeded;
 - (void)messageEntryContentView:(id)arg1 didPasteURL:(id)arg2;
+- (void)messageEntryContentView:(id)arg1 didStagePluginPayload:(id)arg2;
 - (void)messageEntryContentView:(id)arg1 didTapMediaObject:(id)arg2;
 - (BOOL)messageEntryContentView:(id)arg1 shouldInsertMediaObjects:(id)arg2;
 - (void)messageEntryContentViewCancelWasTapped:(id)arg1 shelfPluginPayload:(id)arg2;
@@ -362,6 +363,7 @@
 - (BOOL)photoButtonEnabled;
 - (void)photoButtonTapped:(id)arg1;
 - (void)photoButtonTouchDown:(id)arg1;
+- (void)photoButtonTouchUpOutside:(id)arg1;
 - (double)placeholderHeight;
 - (void)playMenuItemAction:(id)arg1;
 - (BOOL)pluginButtonsEnabled;
@@ -386,6 +388,7 @@
 - (void)setShouldHideBackgroundView:(BOOL)arg1;
 - (void)setShowAppStrip:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setShowMentionSuggestions:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)shouldAllowSendWhenSendButtonDisabled;
 - (BOOL)shouldHideBackgroundView;
 - (BOOL)shouldRecordForService:(id)arg1;
 - (BOOL)shouldShowMentionSuggestions;

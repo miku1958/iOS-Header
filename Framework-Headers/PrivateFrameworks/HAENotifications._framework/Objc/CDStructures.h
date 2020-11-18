@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class NSString;
+
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -17,6 +19,20 @@ struct os_unfair_lock_s {
 };
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    NSString *countryCode;
+    NSString *source;
+    NSString *disposition;
+    BOOL featureMandatory;
+    BOOL EUVolumeLimitBehavior;
+} CDStruct_a62c2e44;
+
+typedef struct {
+    float currVolume;
+    float targetVolume;
+    unsigned int volumeAction;
+} CDStruct_597f0ab2;
 
 typedef struct {
     struct __CFString *_field1;

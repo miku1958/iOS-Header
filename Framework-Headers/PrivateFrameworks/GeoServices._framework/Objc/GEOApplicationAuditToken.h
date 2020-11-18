@@ -30,6 +30,7 @@
 @property (readonly, copy, nonatomic, getter=_secondaryIdentifier) NSString *secondaryIdentifier; // @synthesize secondaryIdentifier=_secondaryIdentifier;
 @property (readonly) Class superclass;
 
++ (id)currentProcessAuditToken;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_bundleIdForAuditToken;

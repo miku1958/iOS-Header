@@ -9,8 +9,7 @@
 #import <CallHistory/NSCopying-Protocol.h>
 #import <CallHistory/NSSecureCoding-Protocol.h>
 
-@class CHHandle, CNContact, NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSUUID, NSValue;
-@protocol CHPhoneBookManagerProtocol;
+@class CHHandle, CHPhoneBookIOSManager, CNContact, NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSUUID, NSValue;
 
 @interface CHRecentCall : NSObject <NSSecureCoding, NSCopying>
 {
@@ -53,14 +52,13 @@
     NSString *_addressBookCallerIDMultiValueId;
     NSString *_devicePhoneId;
     NSString *_callerId;
+    CNContact *_contactRef;
     long long _junkConfidence;
     long long _verificationStatus;
     NSString *_callerName;
     NSString *_callerIdLabel;
     NSString *_callerIdLocation;
-    CNContact *_contactRef;
     NSString *_callerIdFormatted;
-    id<CHPhoneBookManagerProtocol> _phoneBookManager;
 }
 
 @property (copy, nonatomic) NSString *addressBookCallerIDMultiValueId; // @synthesize addressBookCallerIDMultiValueId=_addressBookCallerIDMultiValueId;
@@ -103,7 +101,7 @@
 @property BOOL mobileOriginated; // @synthesize mobileOriginated=_mobileOriginated;
 @property (nonatomic) BOOL multiCall; // @synthesize multiCall=_multiCall;
 @property (strong, nonatomic) NSUUID *outgoingLocalParticipantUUID; // @synthesize outgoingLocalParticipantUUID=_outgoingLocalParticipantUUID;
-@property (strong) id<CHPhoneBookManagerProtocol> phoneBookManager; // @synthesize phoneBookManager=_phoneBookManager;
+@property (readonly, nonatomic) CHPhoneBookIOSManager *phoneBookManager;
 @property (nonatomic) BOOL read; // @synthesize read=_read;
 @property (copy, nonatomic) NSSet *remoteParticipantHandles; // @synthesize remoteParticipantHandles=_remoteParticipantHandles;
 @property (copy, nonatomic) NSString *serviceProvider; // @synthesize serviceProvider=_serviceProvider;

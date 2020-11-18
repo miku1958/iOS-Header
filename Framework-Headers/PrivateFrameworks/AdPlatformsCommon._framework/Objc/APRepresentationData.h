@@ -17,6 +17,7 @@
     NSUUID *_identifier;
     NSString *_contentDataIdentifier;
     long long _placementType;
+    long long _desiredPosition;
     unsigned long long _privacyMarkerPosition;
     APTapAction *_tapAction;
     NSString *_adTag;
@@ -42,6 +43,7 @@
 @property (strong) NSString *campaignData; // @synthesize campaignData=_campaignData;
 @property long long connectionType; // @synthesize connectionType=_connectionType;
 @property (strong) NSString *contentDataIdentifier; // @synthesize contentDataIdentifier=_contentDataIdentifier;
+@property long long desiredPosition; // @synthesize desiredPosition=_desiredPosition;
 @property double duration; // @synthesize duration=_duration;
 @property (strong) NSError *error; // @synthesize error=_error;
 @property (readonly) NSUUID *identifier; // @synthesize identifier=_identifier;

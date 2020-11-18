@@ -27,6 +27,7 @@
 @property (copy, nonatomic) NSSet *mxSessionIDs; // @synthesize mxSessionIDs=_mxSessionIDs;
 @property (readonly, nonatomic) MRPlayer *skeleton;
 
++ (id)anyPlayer;
 + (id)defaultPlayer;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

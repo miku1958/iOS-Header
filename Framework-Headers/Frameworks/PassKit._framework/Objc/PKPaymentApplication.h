@@ -106,6 +106,7 @@
 - (id)protobuf;
 - (BOOL)supportsAutomaticSelectionForTCI:(id)arg1;
 - (BOOL)supportsExpress;
+- (BOOL)supportsExpressForAutomaticSelectionCriteriaPassingTest:(CDUnknownBlockType)arg1;
 - (BOOL)supportsExpressForAutomaticSelectionTechnologyType:(long long)arg1;
 - (BOOL)supportsExpressMode:(id)arg1;
 - (BOOL)supportsWebPaymentMode:(long long)arg1 withExclusionList:(id)arg2;

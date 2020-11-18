@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) HMAccessoryOwnershipToken *hf_ownershipToken;
 
 - (id)hf_home;
+- (BOOL)hf_isLogitechCircleViewDoorbell;
 - (id)hf_populateSetupMetadata;
 @end
 

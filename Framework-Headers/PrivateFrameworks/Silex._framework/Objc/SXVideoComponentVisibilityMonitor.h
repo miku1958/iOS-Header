@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SilexVideo/SVVisibilityMonitor.h>
+#import <Silex/SXVisibilityMonitor.h>
 
 #import <Silex/SXScrollObserving-Protocol.h>
 
 @class NSString;
 
-@interface SXVideoComponentVisibilityMonitor : SVVisibilityMonitor <SXScrollObserving>
+@interface SXVideoComponentVisibilityMonitor : SXVisibilityMonitor <SXScrollObserving>
 {
 }
 

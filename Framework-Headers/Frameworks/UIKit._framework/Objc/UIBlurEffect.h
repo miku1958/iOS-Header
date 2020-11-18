@@ -19,7 +19,6 @@
 @property (readonly, nonatomic) long long _style;
 @property (readonly, nonatomic) UIColor *_tintColor;
 
-+ (id)_coreUIImplementationForStyle:(long long)arg1;
 + (id)_effectForLightMaterial:(id)arg1 darkMaterial:(id)arg2 bundle:(id)arg3;
 + (id)_effectWithBlurRadius:(double)arg1 scale:(double)arg2;
 + (id)_effectWithInfiniteRadius;

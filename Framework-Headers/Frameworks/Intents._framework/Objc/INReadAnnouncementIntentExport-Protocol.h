@@ -7,9 +7,13 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol INReadAnnouncementIntentExport <NSObject, JSExport>
 
 @property (nonatomic) long long readType;
+@property (copy, nonatomic) NSString *startAnnouncementIdentifier;
+@property (nonatomic) long long userNotificationType;
 
 - (id)init;
 @end

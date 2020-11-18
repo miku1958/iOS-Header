@@ -42,6 +42,7 @@
 #import <ChatKit/QLPreviewControllerDelegate-Protocol.h>
 #import <ChatKit/SGSuggestionPresenterDelegate-Protocol.h>
 #import <ChatKit/STLockoutViewControllerDelegate-Protocol.h>
+#import <ChatKit/UIContextMenuInteractionDelegate-Protocol.h>
 #import <ChatKit/UIDragInteractionDelegate-Protocol.h>
 #import <ChatKit/UIDropInteractionDelegate-Protocol.h>
 #import <ChatKit/UIGestureRecognizerDelegate-Protocol.h>
@@ -56,10 +57,10 @@
 #import <ChatKit/UIViewControllerTransitioningDelegate-Protocol.h>
 #import <ChatKit/_UIClickInteractionDelegate-Protocol.h>
 
-@class CADisplayLink, CKAudioTrimViewController, CKBusinessMacToolbarViewController, CKChatInputController, CKComposition, CKDetailsContactsManager, CKEffectPickerViewController, CKFunCameraViewController, CKGroupUpdateBannerView, CKInlineReplyChatController, CKInvisibleInkEffectController, CKMacRecipientsController, CKMacToolbarController, CKMacToolbarItem, CKMessageEntryView, CKMessageEntryViewController, CKNavbarCanvasViewController, CKNavigationBarTitleController, CKNicknameBannerView, CKNicknameUpdate, CKNicknameUpdatesViewController, CKOnboardingController, CKQLDetailsPreviewController, CKQLPreviewController, CKQLPreviewControllerDataSource, CKRaiseGesture, CKScheduledUpdater, CKThrowAnimationManager, CKUnexpectedlyLoggedOutNotificationView, CKUnreadBannerView, CKVideoMessageRecordingViewController, CKVideoTrimController, CNContactPickerViewController, IMPluginPayload, IMScheduledUpdater, NSLayoutConstraint, NSNumber, NSObject, NSString, SGFoundInSuggestionPresenter, STConversationContext, UIImagePickerController, UIKeyboardInputMode, UITapGestureRecognizer, UIToolbar, UIView, UIViewController, UIWindow;
+@class CADisplayLink, CKAudioTrimViewController, CKBusinessMacToolbarViewController, CKChatInputController, CKComposition, CKDetailsContactsManager, CKEffectPickerViewController, CKFunCameraViewController, CKGroupUpdateBannerView, CKInlineReplyChatController, CKInvisibleInkEffectController, CKMacRecipientsController, CKMacToolbarController, CKMacToolbarItem, CKMessageEntryView, CKMessageEntryViewController, CKNavbarCanvasViewController, CKNavigationBarTitleController, CKNicknameBannerView, CKNicknameUpdate, CKNicknameUpdatesViewController, CKOnboardingController, CKQLDetailsPreviewController, CKQLPreviewController, CKQLPreviewControllerDataSource, CKRaiseGesture, CKScheduledUpdater, CKThrowAnimationManager, CKUnexpectedlyLoggedOutNotificationView, CKUnreadBannerView, CKVideoMessageRecordingViewController, CKVideoTrimController, CNContactPickerViewController, IMPluginPayload, IMScheduledUpdater, NSLayoutConstraint, NSNumber, NSObject, NSString, SGFoundInSuggestionPresenter, STConversationContext, UIContextMenuInteraction, UIImagePickerController, UIKeyboardInputMode, UITapGestureRecognizer, UIToolbar, UIView, UIViewController, UIWindow;
 @protocol CKChatControllerDelegate, CKEffectPickerViewControllerProtocol, OS_dispatch_group, UIDragSession, UIDropSession;
 
-@interface CKChatController : CKCoreChatController <CKStickerDetailViewControllerDelegate, CKEffectPickerViewControllerDelegate, CKThrowAnimationManagerDelegate, CKSendAnimationManagerDelegate, CKSendAnimationBalloonProvider, UIInteractionProgressObserver, QLPreviewControllerConformingDelegate, QLPreviewControllerDelegate, CKReaderViewControllerDelegate, PKAddPassesViewControllerDelegate, UIViewControllerTransitioningDelegate, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, CKVideoMessageRecordingViewControllerDelegate, CKActionMenuGestureRecognizerButtonDelegate, PHPhotoLibraryChangeObserver, CNContactPickerDelegate, CKNavigationBarTitleControllerDelegate, CKMessageEntryViewDelegate, CKTrimControllerDelegate, AFContextProvider, UIGestureRecognizerDelegate, CKChatInputControllerDelegate, CKFullScreenBalloonViewControllerDelegate, CKBrowserDragControllerTranscriptDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SGSuggestionPresenterDelegate, CKDetailsControllerDelegate, _UIClickInteractionDelegate, CKUnexpectedlyLoggedOutNotificationViewDelegate, UIPopoverPresentationControllerDelegate, UIDragInteractionDelegate, UIDropInteractionDelegate, UITextDropDelegate, UITextPasteDelegate, CKExtensionConsumer, CKFunCameraViewControllerDelegate, ILClassificationUIExtensionHostViewControllerDelegate, CKNicknameBannerViewDelegate, CKOnboardingControllerDelegate, CKNicknameUpdatesViewControllerDelegate, CKInlineReplyInteractionDelegate, CKBannerUpdatesViewDelegate, CKMacRecipientsControllerDelegate, CKDetailsContactsManagerDelegate, CKNavbarCanvasViewControllerDelegate, STLockoutViewControllerDelegate, CKMacToolbarItemProvider>
+@interface CKChatController : CKCoreChatController <CKStickerDetailViewControllerDelegate, UIContextMenuInteractionDelegate, CKEffectPickerViewControllerDelegate, CKThrowAnimationManagerDelegate, CKSendAnimationManagerDelegate, CKSendAnimationBalloonProvider, UIInteractionProgressObserver, QLPreviewControllerConformingDelegate, QLPreviewControllerDelegate, CKReaderViewControllerDelegate, PKAddPassesViewControllerDelegate, UIViewControllerTransitioningDelegate, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, CKVideoMessageRecordingViewControllerDelegate, CKActionMenuGestureRecognizerButtonDelegate, PHPhotoLibraryChangeObserver, CNContactPickerDelegate, CKNavigationBarTitleControllerDelegate, CKMessageEntryViewDelegate, CKTrimControllerDelegate, AFContextProvider, UIGestureRecognizerDelegate, CKChatInputControllerDelegate, CKFullScreenBalloonViewControllerDelegate, CKBrowserDragControllerTranscriptDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SGSuggestionPresenterDelegate, CKDetailsControllerDelegate, _UIClickInteractionDelegate, CKUnexpectedlyLoggedOutNotificationViewDelegate, UIPopoverPresentationControllerDelegate, UIDragInteractionDelegate, UIDropInteractionDelegate, UITextDropDelegate, UITextPasteDelegate, CKExtensionConsumer, CKFunCameraViewControllerDelegate, ILClassificationUIExtensionHostViewControllerDelegate, CKNicknameBannerViewDelegate, CKOnboardingControllerDelegate, CKNicknameUpdatesViewControllerDelegate, CKInlineReplyInteractionDelegate, CKBannerUpdatesViewDelegate, CKMacRecipientsControllerDelegate, CKDetailsContactsManagerDelegate, CKNavbarCanvasViewControllerDelegate, STLockoutViewControllerDelegate, CKMacToolbarItemProvider>
 {
     struct CGPoint _startingScrollOffset;
     BOOL _shouldBecomeFirstResponderWhenDismissingModalBrowser;
@@ -90,6 +91,7 @@
     BOOL _wantsInlineOverlay;
     BOOL _transcriptWasScrolledToBottomBeforeInlinePresentation;
     CKDetailsContactsManager *_detailsContactsManager;
+    UIContextMenuInteraction *_transcriptContextMenuInteraction;
     double _lastLaidOutWidth;
     long long _lastKnownDeviceOrientation;
     NSNumber *_transcriptBottomContentOffsetAtSuspend;
@@ -270,6 +272,7 @@
 @property (strong, nonatomic) CKThrowAnimationManager *throwAnimationManager; // @dynamic throwAnimationManager;
 @property (strong, nonatomic) CKThrowAnimationManager *throwAnimationManager; // @synthesize throwAnimationManager=_throwAnimationManager;
 @property (strong, nonatomic) NSNumber *transcriptBottomContentOffsetAtSuspend; // @synthesize transcriptBottomContentOffsetAtSuspend=_transcriptBottomContentOffsetAtSuspend;
+@property (strong, nonatomic) UIContextMenuInteraction *transcriptContextMenuInteraction; // @synthesize transcriptContextMenuInteraction=_transcriptContextMenuInteraction;
 @property (strong, nonatomic) CKScheduledUpdater *transcriptInlineNotificationUpdater; // @synthesize transcriptInlineNotificationUpdater=_transcriptInlineNotificationUpdater;
 @property (nonatomic) BOOL transcriptWasScrolledToBottomBeforeInlinePresentation; // @synthesize transcriptWasScrolledToBottomBeforeInlinePresentation=_transcriptWasScrolledToBottomBeforeInlinePresentation;
 @property (nonatomic, getter=isTransitioningSize) BOOL transitioningSize; // @synthesize transitioningSize=_transitioningSize;
@@ -298,6 +301,7 @@
 - (struct UIEdgeInsets)_avoidanceInsets;
 - (void)_backbuttonPressed;
 - (id)_balloonViewForCellAtIndexPath:(id)arg1;
+- (BOOL)_balloonViewOfCell:(id)arg1 containsPoint:(struct CGPoint)arg2 fromView:(id)arg3;
 - (void)_callButtonPressedWithVideoEnabled:(BOOL)arg1;
 - (BOOL)_canReloadEntryView;
 - (BOOL)_canShowBackButtonView;
@@ -321,6 +325,7 @@
 - (void)_deleteStickerWithTransferGUID:(id)arg1;
 - (void)_detailsButtonPressed;
 - (void)_didSendCompositionInConversation:(id)arg1;
+- (void)_dismissFullScreenBubbleViewControllerAnimated:(BOOL)arg1 withSendAnimation:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_dismissPresentedViewController:(id)arg1;
 - (void)_dismissSentWithSiriUI;
 - (void)_dismissUpdateBannerView:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -372,13 +377,13 @@
 - (id)_menuForChatItem:(id)arg1;
 - (id)_menuTitleForChatItem:(id)arg1;
 - (id)_moreActionForChatItem:(id)arg1;
-- (BOOL)_multiwayAvailable;
 - (id)_navigationControllerToPop;
 - (id)_nicknameBannerUpdatesAndStyle:(unsigned long long *)arg1;
 - (id)_parentChatItemForIndexPath:(id)arg1;
 - (id)_parentIndexPathForCellAtIndexPath:(id)arg1;
 - (void)_passKitUIDismissed:(id)arg1;
 - (void)_performResume;
+- (BOOL)_point:(struct CGPoint)arg1 visuallyIntersectsBalloonViewInCollectionView:(id)arg2;
 - (void)_popoverPresentationController:(id)arg1 didDetachScene:(id)arg2;
 - (BOOL)_popoverPresentationController:(id)arg1 shouldDetachScene:(id)arg2;
 - (BOOL)_popoverPresentationControllerShouldConvertToScene:(id)arg1;
@@ -421,6 +426,7 @@
 - (void)_showPassbookCardViewForMediaObject:(id)arg1;
 - (void)_showPhotoPickerWithSourceType:(long long)arg1;
 - (void)_showReaderForAggregateChatItem:(id)arg1 balloonView:(id)arg2;
+- (id)_showTimestampsAction;
 - (void)_showVCalViewerForMediaObject:(id)arg1;
 - (void)_showVCardViewerForMediaObject:(id)arg1;
 - (void)_sizeEffectPickerWindow;
@@ -433,7 +439,7 @@
 - (void)_textInputModeDidChange:(id)arg1;
 - (id)_threadIdentifierForMessagePart:(id)arg1;
 - (id)_threadOriginatorForMessagePart:(id)arg1;
-- (id)_timestampActionForChatItem:(id)arg1;
+- (void)_transferFileTooLarge:(id)arg1;
 - (void)_transferFinishedNotification:(id)arg1;
 - (void)_transferRestoredNotification:(id)arg1;
 - (void)_updateActionsToolbarItems;
@@ -481,11 +487,12 @@
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)cancelBarButtonItemPressed:(id)arg1;
-- (void)capitalizeSentencesAutomatically;
+- (void)capitalizeSentencesAutomatically:(id)arg1;
 - (void)chatAllowedByScreenTimeChanged:(id)arg1;
 - (id)chatForSendAnimationManager:(id)arg1;
 - (void)chatInputController:(id)arg1 presentShelfModal:(id)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)chatInputControllerCanSend:(id)arg1;
+- (void)chatInputControllerCancelSelectFunCamera:(id)arg1;
 - (void)chatInputControllerDidDismissCompactBrowserViewController:(id)arg1;
 - (void)chatInputControllerDidDismissModalBrowserViewController:(id)arg1;
 - (void)chatInputControllerDidPresentModalBrowserViewController:(id)arg1;
@@ -508,9 +515,10 @@
 - (void)chatInputDidUpdateInputViewShowingBrowser:(BOOL)arg1 entryFieldCollapsed:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)chatInputDidUpdateWithNewInputViewController:(id)arg1;
 - (void)chatInputSentComposition:(id)arg1;
+- (id)chatInputTranscriptIdentifier;
 - (void)chatInputWillChangeHeightForCompactPresentation:(double)arg1;
 - (void)chatInputWillUpdateInputViewShowingBrowser;
-- (void)checkSpellingWhileTyping;
+- (void)checkSpellingWhileTyping:(id)arg1;
 - (void)checkSuggestionsForBanner;
 - (void)ckVideoMessageRecordingViewController:(id)arg1 mediaObjectCaptured:(id)arg2 error:(id)arg3;
 - (void)ckVideoMessageRecordingViewControllerRecordingCanceled:(id)arg1;
@@ -531,9 +539,10 @@
 - (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
 - (void)contactsManager:(id)arg1 didRequestCallTypeForEntity:(id)arg2 addresses:(id)arg3 abLabels:(id)arg4 faceTimeAudioEnabled:(BOOL)arg5;
 - (void)contactsManagerViewModelsDidChange:(id)arg1;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)controller:(id)arg1 didCompleteClassificationRequest:(id)arg2 withResponse:(id)arg3;
 - (void)copy:(id)arg1;
-- (void)correctSpellingAutomatically;
+- (void)correctSpellingAutomatically:(id)arg1;
 - (id)createAlertControllerForAccountComposition:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)createContactWithNicknameUpdate:(id)arg1;
 - (id)createGroupUpdateWithType:(unsigned long long)arg1;
@@ -573,6 +582,7 @@
 - (void)dropInteraction:(id)arg1 sessionDidEnd:(id)arg2;
 - (void)effectPickerViewController:(id)arg1 effectWithIdentifierSelected:(id)arg2;
 - (void)effectPickerViewControllerClose:(id)arg1;
+- (void)emojiReplacement:(id)arg1;
 - (void)endHoldingAutorotationForKey:(id)arg1;
 - (void)escButtonPressed:(id)arg1;
 - (void)evaluateSendMetricsForComposition:(id)arg1;
@@ -628,7 +638,6 @@
 - (BOOL)isChatAllowedByScreenTime:(id)arg1;
 - (BOOL)isCollapsed;
 - (BOOL)isDetailsNavigationControllerDetached;
-- (BOOL)isDowntimeLimited;
 - (BOOL)isHandwritingLandscape;
 - (BOOL)isSafeToMarkAsRead;
 - (BOOL)isTesting;
@@ -663,6 +672,7 @@
 - (struct UIEdgeInsets)macToolbarInsets;
 - (void)makeEntryViewActiveAfterSend;
 - (void)messageAcknowledgmentPickerViewController:(id)arg1 didPickAcknowledgment:(long long)arg2;
+- (void)messageEntryView:(id)arg1 didInsertPluginPayload:(id)arg2;
 - (void)messageEntryView:(id)arg1 didTapMediaObject:(id)arg2;
 - (BOOL)messageEntryView:(id)arg1 shouldInsertMediaObjects:(id)arg2;
 - (void)messageEntryView:(id)arg1 shouldShowAppStrip:(BOOL)arg2 animated:(BOOL)arg3;
@@ -745,6 +755,7 @@
 - (void)primeTranscriptWithInitialOffset:(struct CGPoint)arg1 inset:(struct UIEdgeInsets)arg2;
 - (id)progressBar;
 - (void)providerWillBeRemovedFromToolbarController:(id)arg1;
+- (void)purgeAttachmentsForChat:(id)arg1;
 - (void)raiseGestureRecognized:(id)arg1;
 - (void)readerViewControllerWillDismiss:(id)arg1;
 - (void)refreshMacToolbar;
@@ -758,6 +769,7 @@
 - (void)restoreContentOffsetChanges;
 - (void)restoreEntryViewAfterPreview;
 - (void)restoreInputAfterPreviewPresentation;
+- (void)restoreInputAfterSearchPresentation;
 - (id)rotatingFooterView;
 - (BOOL)saveContact:(id)arg1 shouldUpdate:(BOOL)arg2;
 - (void)scrollToMessage:(id)arg1 highlight:(BOOL)arg2;
@@ -789,6 +801,7 @@
 - (void)setSendingMessage:(BOOL)arg1;
 - (void)setUnreadBannerHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setUpStyleForDarkEffect;
+- (void)setupClickyOrbForConversation:(id)arg1;
 - (void)setupScrollingForKeyboardInteraction;
 - (void)setupStateForLaunchPluginWithBundleID:(id)arg1 pluginPayload:(id)arg2;
 - (void)setupStateForLaunchURL:(id)arg1;
@@ -820,9 +833,9 @@
 - (void)showStickersAssociatedWithChatItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)showUpdatePromptForNicknameUpdate:(id)arg1 sourceView:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)showViewerForMediaObject:(id)arg1;
-- (void)smartDashes;
-- (void)smartInsertDelete;
-- (void)smartQuotes;
+- (void)smartDashes:(id)arg1;
+- (void)smartInsertDelete:(id)arg1;
+- (void)smartQuotes:(id)arg1;
 - (void)spacePressed:(id)arg1;
 - (id)splitViewController;
 - (void)stageAssetArchive:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;

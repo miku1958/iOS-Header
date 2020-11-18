@@ -25,9 +25,11 @@
     NSArray *_attributeNames;
     NSArray *_supportedAuthenticationSchemes;
     NSString *_accountProviderAuthenticationToken;
+    NSArray *_applicationAccountProviders;
 }
 
 @property (copy, nonatomic) NSString *accountProviderAuthenticationToken; // @synthesize accountProviderAuthenticationToken=_accountProviderAuthenticationToken;
+@property (copy, nonatomic) NSArray *applicationAccountProviders; // @synthesize applicationAccountProviders=_applicationAccountProviders;
 @property (copy, nonatomic) NSArray *attributeNames; // @synthesize attributeNames=_attributeNames;
 @property (copy, nonatomic) NSString *channelIdentifier; // @synthesize channelIdentifier=_channelIdentifier;
 @property (copy, nonatomic) NSArray *featuredAccountProviderIdentifiers; // @synthesize featuredAccountProviderIdentifiers=_featuredAccountProviderIdentifiers;

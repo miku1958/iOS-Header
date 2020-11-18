@@ -31,6 +31,7 @@
     NSObject<OS_dispatch_semaphore> *_getSocketSemaphore;
     NEIKEv2MOBIKE *_mobikeHandle;
     CDUnknownBlockType _startTunnelCompletionHandler;
+    CDUnknownBlockType _stopTunnelCompletionHandler;
     CDUnknownBlockType _dnsResolverCompletionHandler;
     long long _tunnelKind;
     NWPath *_path;
@@ -69,6 +70,7 @@
 @property (strong) NEIKEv2Session *session; // @synthesize session=_session;
 @property BOOL sessionDidConnect; // @synthesize sessionDidConnect=_sessionDidConnect;
 @property (copy) CDUnknownBlockType startTunnelCompletionHandler; // @synthesize startTunnelCompletionHandler=_startTunnelCompletionHandler;
+@property (copy) CDUnknownBlockType stopTunnelCompletionHandler; // @synthesize stopTunnelCompletionHandler=_stopTunnelCompletionHandler;
 @property long long tunnelKind; // @synthesize tunnelKind=_tunnelKind;
 @property struct NEVirtualInterface_s *virtualInterface; // @synthesize virtualInterface=_virtualInterface;
 

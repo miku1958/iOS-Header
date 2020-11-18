@@ -10,22 +10,18 @@
 
 @class _MRNowPlayingClientProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRSetNowPlayingClientMessageProtobuf : PBCodable <NSCopying>
 {
     _MRNowPlayingClientProtobuf *_client;
 }
 
-@property (strong, nonatomic) _MRNowPlayingClientProtobuf *client; // @synthesize client=_client;
-@property (readonly, nonatomic) BOOL hasClient;
-
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

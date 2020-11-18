@@ -10,7 +10,7 @@
 #import <Silex/SXLayoutInvalidationManagerDelegate-Protocol.h>
 #import <Silex/SXLayoutPipelineDelegate-Protocol.h>
 
-@class NSString, SXDOMObjectProvider, SXLayoutBlueprintProvider, SXLayoutOptions, SXLayoutParametersManager;
+@class NSString, SXDOMObjectProvider, SXDelayed, SXLayoutBlueprintProvider, SXLayoutOptions, SXLayoutParametersManager;
 @protocol SXDocumentProviding, SXLayoutCoordinatorDelegate, SXLayoutInstructionFactory, SXLayoutIntegrator, SXLayoutInvalidationManager, SXLayoutPipeline, SXLayoutPolicyManager;
 
 @interface SXLayoutCoordinator : NSObject <SXLayoutPipelineDelegate, SXLayoutInvalidationManagerDelegate, SXLayoutCoordinator>
@@ -26,10 +26,12 @@
     id<SXDocumentProviding> _documentProvider;
     id<SXLayoutPolicyManager> _layoutPolicyManager;
     SXLayoutOptions *_layoutOptions;
+    SXDelayed *_debouncer;
 }
 
 @property (readonly, nonatomic) SXDOMObjectProvider *DOMObjectProvider; // @synthesize DOMObjectProvider=_DOMObjectProvider;
 @property (readonly, nonatomic) SXLayoutBlueprintProvider *blueprintProvider; // @synthesize blueprintProvider=_blueprintProvider;
+@property (strong, nonatomic) SXDelayed *debouncer; // @synthesize debouncer=_debouncer;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SXLayoutCoordinatorDelegate> delegate; // @synthesize delegate;
 @property (readonly, copy) NSString *description;

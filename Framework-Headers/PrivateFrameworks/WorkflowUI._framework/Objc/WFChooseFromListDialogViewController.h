@@ -10,18 +10,20 @@
 #import <WorkflowUI/UITableViewDelegatePrivate-Protocol.h>
 #import <WorkflowUI/WFCompactPlatterContentClippingDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, UITableView, WFChooseFromListDialogCell;
+@class NSCache, NSMutableArray, NSString, UITableView, WFChooseFromListDialogCell;
 
 @interface WFChooseFromListDialogViewController : WFCompactDialogViewController <UITableViewDataSource, UITableViewDelegatePrivate, WFCompactPlatterContentClippingDelegate>
 {
     UITableView *_listTableView;
     NSMutableArray *_selectedItems;
     WFChooseFromListDialogCell *_prototypeCell;
+    NSCache *_imageCache;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSCache *imageCache; // @synthesize imageCache=_imageCache;
 @property (weak, nonatomic) UITableView *listTableView; // @synthesize listTableView=_listTableView;
 @property (strong, nonatomic) WFChooseFromListDialogCell *prototypeCell; // @synthesize prototypeCell=_prototypeCell;
 @property (strong, nonatomic) NSMutableArray *selectedItems; // @synthesize selectedItems=_selectedItems;

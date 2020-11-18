@@ -31,10 +31,13 @@
     MISSING_TYPE *lastPerformedAction;
     MISSING_TYPE *shouldBlockNavigation;
     MISSING_TYPE *tapWasRecognized;
+    MISSING_TYPE *nativeArticleOnDisplay;
     MISSING_TYPE *interactionDelegate;
     MISSING_TYPE *interactionPresentationDelegate;
     MISSING_TYPE *readiness;
     MISSING_TYPE *nativeView;
+    MISSING_TYPE *oldPercentageTimestamp;
+    MISSING_TYPE *newPercentageTimestamp;
     MISSING_TYPE *overriddenPrivacyMarkerPosition;
 }
 

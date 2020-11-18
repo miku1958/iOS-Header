@@ -17,6 +17,7 @@
 - (oneway void)notificationBeaconForSubscriptionId:(NSUUID *)arg1 completion:(void (^)(SPBeacon *))arg2;
 - (oneway void)primaryAccountModified;
 - (oneway void)removeLocalAccountDataWithCompletion:(void (^)(BOOL))arg1;
+- (oneway void)repairDataStore:(void (^)(void))arg1;
 - (oneway void)setServiceState:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)unacceptedBeaconsWithCompletion:(void (^)(NSSet *))arg1;
 @end

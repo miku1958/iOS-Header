@@ -24,7 +24,7 @@
 + (id)batteryChargingRingViewWithConfiguration:(id)arg1;
 + (id)batteryChargingViewWithDoubleBattery;
 + (id)batteryChargingViewWithSingleBattery;
-+ (id)horizontalBatteryChargingViewForBatterySize:(struct CGSize)arg1;
++ (id)horizontalBatteryChargingViewForBatterySize:(struct CGSize)arg1 includeBoltImage:(BOOL)arg2;
 + (id)maskImageNameForChargingBattery;
 + (id)maskImageNameForExternalChargingBattery;
 + (id)maskImageNameForInternalChargingBattery;

@@ -84,7 +84,6 @@
 - (BOOL)notifyZoomLockButtonWasPressed;
 - (BOOL)notifyZoomReturnedToClockFaceAtIdle;
 - (void)notifyZoomSOSMedicalIDShown;
-- (BOOL)notifyZoomSpeakUnderFingerSettingChanged;
 - (BOOL)notifyZoomWillHideBrailleInputUI;
 - (BOOL)notifyZoomWillShowBrailleInputUI;
 - (void)panDown;

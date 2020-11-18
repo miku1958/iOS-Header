@@ -13,6 +13,7 @@
     unsigned int _persistedAlbumDataDirectoryExists;
     NSString *_photoDataDirectory;
     NSString *_photoDataCachesDirectory;
+    NSString *_photoDataAnalyticsDirectory;
     NSString *_photoDataSearchDirectory;
     NSString *_restoreInfoDirectory;
     NSString *_dcimDirectory;

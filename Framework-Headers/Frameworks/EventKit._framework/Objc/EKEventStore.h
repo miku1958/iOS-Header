@@ -177,11 +177,13 @@
 - (void)_removeCachedCalendarFromSource:(id)arg1;
 - (void)_removeCachedCalendarWithID:(id)arg1;
 - (BOOL)_removeCalendar:(id)arg1 commit:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)_removeEvent:(id)arg1 span:(long long)arg2 commit:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)_removeReminder:(id)arg1 commit:(BOOL)arg2 error:(id *)arg3;
 - (void)_requestAccessForEntityType:(unsigned long long)arg1;
 - (void)_reregisterObject:(id)arg1 oldID:(id)arg2;
 - (BOOL)_saveAndRollbackIfNeededForEvent:(id)arg1 span:(long long)arg2;
 - (BOOL)_saveCalendar:(id)arg1 commit:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)_saveEvent:(id)arg1 span:(long long)arg2 commit:(BOOL)arg3 error:(id *)arg4;
 - (void)_saveWithoutNotify;
 - (void)_setIsUnitTesting:(BOOL)arg1;
 - (void)_setNeedsCommitForRemoteChanges;

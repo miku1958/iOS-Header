@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)accessibilityLabel;
 - (id)initWithVisualProvider:(id)arg1;
 - (BOOL)isAccessibilityElement;
 

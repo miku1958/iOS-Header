@@ -8,5 +8,6 @@
 
 @protocol HDHFDataStoreDelegate
 - (void)HFDataStore:(HDHFDataStore *)arg1 detectedCorruptionOfType:(long long)arg2 code:(int)arg3 error:(NSError *)arg4 shouldPromptUser:(BOOL)arg5;
+- (BOOL)rebuildIfNeeded:(id *)arg1;
 @end
 

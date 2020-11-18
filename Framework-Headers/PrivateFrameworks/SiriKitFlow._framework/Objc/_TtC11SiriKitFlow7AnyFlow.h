@@ -10,9 +10,12 @@
 
 @interface _TtC11SiriKitFlow7AnyFlow : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *description;
+    MISSING_TYPE *_underlyingFlow;
     MISSING_TYPE *_onInput;
     MISSING_TYPE *_onFocus;
     MISSING_TYPE *_exit;
+    MISSING_TYPE *$__lazy_storage_$_flowCapabilities;
 }
 
 @end

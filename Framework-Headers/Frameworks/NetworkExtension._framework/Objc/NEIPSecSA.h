@@ -71,6 +71,7 @@
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
 - (unsigned long long)hash;
 - (id)initInboundSA;
+- (id)initInboundSAWithSPI:(unsigned int)arg1;
 - (id)initOutboundSAWithSPI:(unsigned int)arg1;
 - (void)invalidate;
 - (BOOL)isEqual:(id)arg1;

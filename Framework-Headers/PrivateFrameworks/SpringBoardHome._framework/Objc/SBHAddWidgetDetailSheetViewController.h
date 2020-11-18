@@ -15,6 +15,7 @@
 
 @interface SBHAddWidgetDetailSheetViewController : UIViewController <BSUIScrollViewDelegate, SBHWidgetWrapperViewControllerDelegate, SBHWidgetDragHandlerPassing>
 {
+    BOOL _scrollingInitiatedByInfoScrollView;
     id<SBHAddWidgetSheetViewControllerDelegate> _delegate;
     SBHApplicationWidgetCollection *_applicationWidgetCollection;
     id<SBIconListLayoutProvider> _listLayoutProvider;
@@ -50,6 +51,7 @@
 @property (strong, nonatomic) UIPageControl *pageControl; // @synthesize pageControl=_pageControl;
 @property (strong, nonatomic) NSMutableArray *pages; // @synthesize pages=_pages;
 @property (strong, nonatomic) BSUIScrollView *scrollView; // @synthesize scrollView=_scrollView;
+@property (nonatomic) BOOL scrollingInitiatedByInfoScrollView; // @synthesize scrollingInitiatedByInfoScrollView=_scrollingInitiatedByInfoScrollView;
 @property (readonly) Class superclass;
 @property (readonly, weak, nonatomic) id<SBHWidgetDragHandling> widgetDragHandler;
 @property (strong, nonatomic) BSUIScrollView *widgetInfoScrollView; // @synthesize widgetInfoScrollView=_widgetInfoScrollView;
@@ -62,10 +64,14 @@
 - (void)_createConstraints;
 - (void)_createViews;
 - (id)_currentGalleryItem;
+- (unsigned long long)_pageIndexAtContentOffset:(struct CGPoint)arg1;
 - (void)_scrollMainScrollViewToMatchInfoScrollViewIfNeeded;
 - (void)_scrollToPageIndex:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)_updateBackgroundRecipe;
 - (void)_updateControlsForContentOffset:(struct CGPoint)arg1;
+- (void)_updatePageViewControllerAppearanceForFastScrollToTargetIndex:(unsigned long long)arg1;
+- (void)_updatePageViewControllerAppearanceForNormalScroll;
+- (void)_updatePageViewControllerAppearanceWithAppearedBlock:(CDUnknownBlockType)arg1;
 - (void)_updateParallaxEffect;
 - (void)addButtonTapped:(id)arg1;
 - (void)closeButtonTapped:(id)arg1;
@@ -75,6 +81,7 @@
 - (void)pageControlChanged:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
+- (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (id)widgetInfoViews;

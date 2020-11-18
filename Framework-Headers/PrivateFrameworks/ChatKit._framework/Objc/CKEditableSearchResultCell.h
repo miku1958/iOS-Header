@@ -12,10 +12,14 @@
 {
     BOOL __ck_editing;
     UIImageView *_checkmarkView;
+    UIImageView *_imageView;
+    UIImageView *_selectionOverlay;
 }
 
 @property (nonatomic, getter=_ck_isEditing, setter=_ck_setEditing:) BOOL _ck_editing; // @synthesize _ck_editing=__ck_editing;
 @property (strong, nonatomic) UIImageView *checkmarkView; // @synthesize checkmarkView=_checkmarkView;
+@property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+@property (strong, nonatomic) UIImageView *selectionOverlay; // @synthesize selectionOverlay=_selectionOverlay;
 
 - (void).cxx_destruct;
 - (void)layoutSubviews;

@@ -33,6 +33,7 @@
 - (BOOL)productionClient;
 - (void)requestAttributionDetails:(CDUnknownBlockType)arg1;
 - (void)requestAttributionDetailsWithBlock:(CDUnknownBlockType)arg1;
+- (void)setServerToTest:(long long)arg1;
 - (void)setStocksAdEnabled:(BOOL)arg1;
 
 @end

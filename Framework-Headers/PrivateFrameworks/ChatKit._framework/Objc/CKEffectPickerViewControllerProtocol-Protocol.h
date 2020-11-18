@@ -14,6 +14,7 @@
 - (void)handleTouchUp:(struct CGPoint)arg1;
 - (void)presentPicker;
 - (void)setCloseButtonYPosition:(double)arg1;
+- (void)setShowingInStandAloneWindow:(BOOL)arg1;
 - (void)updateColor:(BOOL)arg1;
 - (void)updateHintTransition:(double)arg1;
 @end

@@ -10,8 +10,7 @@
 + (id)hu_cameraErrorImage;
 + (id)hu_cellCheckmarkImage;
 + (id)hu_closeButtonImage;
-+ (id)hu_fastForwardButtonImageDark;
-+ (id)hu_fastForwardButtonImageLight;
++ (id)hu_fastForwardButtonImage;
 + (id)hu_flatWhiteResizableTemplateImage;
 + (id)hu_gearImageWithBadgeCount:(unsigned long long)arg1;
 + (id)hu_largeQRBadgeTemplateImage;

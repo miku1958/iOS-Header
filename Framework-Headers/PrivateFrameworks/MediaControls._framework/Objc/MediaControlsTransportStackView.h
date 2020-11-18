@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _empty;
     BOOL _shouldShowTVRemoteButton;
+    BOOL _isGMCEnabled;
     long long _style;
     MPCPlayerResponse *_response;
     MTVisualStylingProvider *_visualStylingProvider;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEmpty) BOOL empty; // @synthesize empty=_empty;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isGMCEnabled; // @synthesize isGMCEnabled=_isGMCEnabled;
 @property (strong, nonatomic) MediaControlsTransportButton *languageOptionsButton; // @synthesize languageOptionsButton=_languageOptionsButton;
 @property (strong, nonatomic) MediaControlsTransportButton *leftButton; // @synthesize leftButton=_leftButton;
 @property (strong, nonatomic) MediaControlsTransportButton *middleButton; // @synthesize middleButton=_middleButton;

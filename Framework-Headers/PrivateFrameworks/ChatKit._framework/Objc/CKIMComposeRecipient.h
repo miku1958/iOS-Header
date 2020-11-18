@@ -13,6 +13,7 @@
 @interface CKIMComposeRecipient : CNComposeRecipient <CKIMComposeRecipient>
 {
     IMHandle *_handle;
+    BOOL _useAbbreviatedDisplayName;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,6 +21,7 @@
 @property (readonly, nonatomic) IMHandle *handle; // @synthesize handle=_handle;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL useAbbreviatedDisplayName; // @synthesize useAbbreviatedDisplayName=_useAbbreviatedDisplayName;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

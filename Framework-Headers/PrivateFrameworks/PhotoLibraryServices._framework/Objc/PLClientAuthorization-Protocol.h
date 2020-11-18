@@ -10,6 +10,8 @@
 
 @protocol PLClientAuthorization <NSObject>
 
+@property (readonly, nonatomic) BOOL analyticsCacheReadEntitled;
+@property (readonly, nonatomic) BOOL analyticsCacheWriteEntitled;
 @property (readonly, nonatomic) CDStruct_4c969caf clientAuditToken;
 @property (readonly, nonatomic, getter=isClientLimitedLibraryCapable) BOOL clientLimitedLibraryCapable;
 @property (readonly, nonatomic) int clientProcessIdentifier;

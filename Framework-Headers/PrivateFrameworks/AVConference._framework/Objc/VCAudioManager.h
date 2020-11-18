@@ -37,6 +37,8 @@ __attribute__((visibility("hidden")))
     int _interruptThreadState;
     VCAudioRelay *_interruptThread;
     VCAudioRelayIO *_interruptThreadClient;
+    BOOL _isInterrupting;
+    struct _opaque_pthread_mutex_t _interruptingMutex;
 }
 
 @property (strong, nonatomic) VCAudioSessionMediaProperties *currentAudioSessionMediaProperties; // @synthesize currentAudioSessionMediaProperties=_currentAudioSessionMediaProperties;

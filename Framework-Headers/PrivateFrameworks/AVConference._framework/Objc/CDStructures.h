@@ -193,6 +193,7 @@ struct VCRateControlAlgorithmConfig {
     double rampUpNOWRDThreshold;
     double rampUpNOWRDAccThreshold;
     double rampUpOverBandwidthCalmDuration;
+    double rampUpBlockedTimeout;
     int rampUpOverBandwidthTierNumber;
     int rampDownLossEventThreshold;
     double rampUpFrozenPLRThreshold;
@@ -240,6 +241,8 @@ struct VCRateControlAlgorithmConfig {
     double rampUpQueuingDelayThreshold;
     double rampUpNBDCDCoolDownTime;
     double rampUpAudioFractionCoolDownTime;
+    double basebandRATSwitchCoolDownTime;
+    double rampUpNetworkUnstableCoolDownTime;
     double autoResumeDurationAfterPaused;
     BOOL oscillationDetectionEnabled;
     double oscillationCoolDownTime;
@@ -247,6 +250,8 @@ struct VCRateControlAlgorithmConfig {
     int oscillationDeviationCountThreshold;
     BOOL preventBasebandRampDownCloseToKeyFrame;
     int basebandRampDownSlowDownFactor;
+    double networkUnstableRTTThreshold;
+    double networkUnstablePLRThreshold;
 };
 
 struct VCRateControlMediaSuggestion {
@@ -449,6 +454,7 @@ struct _VCAudioPowerSpectrumMeterRealtimeContext {
     double nextDeliveryTime;
     double audioSpectrumRefreshRate;
     struct atomic_flag isProcessingOutput;
+    double nextHeatlhPrintTime;
     struct __CFDictionary *outputPowerSpectrums;
     id powerSpectrumMeterDelegate;
     void *powerSpectrumMeterDelegateContext;
@@ -466,6 +472,8 @@ struct _VCAudioPowerSpectrumRealtimeContext {
     unsigned int outputBinCount;
     float *lerpIdxs;
     float fftNormFactor;
+    long long streamToken;
+    float averageLevel;
     struct opaqueVCAudioBufferList *sampleBuffer;
     struct _VCAudioPowerSpectrumChannel *channels;
     void *sinkContext;
@@ -1669,7 +1677,8 @@ typedef struct {
     unsigned int averageNetworkBitrate;
     unsigned int averageMediaBitrate;
     double averageFramerate;
-} CDStruct_3ab08b48;
+    double lastDecodedFrameTime;
+} CDStruct_1dd2c43e;
 
 typedef struct {
     unsigned long long _field1;

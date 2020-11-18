@@ -7,9 +7,7 @@
 #import <UIKit/UIWindow.h>
 
 @interface UIWindow (Bridge)
-
-@property (nonatomic) BOOL ts_canResizeToFitContent;
-
+- (void)didBecomeKeyWindow;
 - (void)ts_installDebugMenuHandler:(CDUnknownBlockType)arg1;
 @end
 

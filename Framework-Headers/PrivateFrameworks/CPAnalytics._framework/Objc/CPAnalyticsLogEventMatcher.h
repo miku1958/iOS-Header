@@ -14,9 +14,11 @@
     BOOL _shouldLogEventName;
     NSString *_eventTypeLabel;
     NSArray *_eventPropertiesToLog;
+    NSArray *_eventPublicPropertiesToLog;
 }
 
 @property (readonly, nonatomic) NSArray *eventPropertiesToLog; // @synthesize eventPropertiesToLog=_eventPropertiesToLog;
+@property (readonly, nonatomic) NSArray *eventPublicPropertiesToLog; // @synthesize eventPublicPropertiesToLog=_eventPublicPropertiesToLog;
 @property (readonly, nonatomic) NSString *eventTypeLabel; // @synthesize eventTypeLabel=_eventTypeLabel;
 @property (readonly, nonatomic) BOOL shouldLogEventName; // @synthesize shouldLogEventName=_shouldLogEventName;
 

@@ -32,6 +32,7 @@
     NSAttributedString *_salableInfoLabel;
     NSString *_storeName;
     NSString *_accountName;
+    NSArray *_attributedList;
     long long _confirmationTitleType;
     NSString *_countryCode;
     NSString *_currencyCode;
@@ -50,6 +51,7 @@
 @property (copy) NSString *accountHeader; // @synthesize accountHeader=_accountHeader;
 @property (copy) NSString *accountName; // @synthesize accountName=_accountName;
 @property (getter=isApplePayClassic) BOOL applePayClassic; // @synthesize applePayClassic=_applePayClassic;
+@property (readonly) NSArray *attributedList; // @synthesize attributedList=_attributedList;
 @property (readonly, copy) NSString *buyParams; // @synthesize buyParams=_buyParams;
 @property long long confirmationTitleType; // @synthesize confirmationTitleType=_confirmationTitleType;
 @property (copy) NSString *countryCode; // @synthesize countryCode=_countryCode;
@@ -82,6 +84,9 @@
 
 + (id)stringWithFormattedUsernameForString:(id)arg1 username:(id)arg2;
 - (void).cxx_destruct;
+- (id)_attributedListForFlexList:(id)arg1;
+- (id)_attributedStringForAttributedArray:(id)arg1;
+- (id)_attributedStringForAttributedDictionary:(id)arg1;
 - (id)_attributedStringForSalableInfoStringArray:(id)arg1;
 - (id)_attributedStringForString:(id)arg1;
 - (id)_attributedStringForStringArray:(id)arg1 useGrey:(BOOL)arg2;

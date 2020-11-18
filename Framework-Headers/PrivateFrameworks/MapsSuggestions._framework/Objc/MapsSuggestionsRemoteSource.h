@@ -17,7 +17,6 @@
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_queue> *_queue;
     BOOL _started;
-    CDUnknownBlockType _oneShotCallback;
 }
 
 @property (readonly, copy) NSString *debugDescription;

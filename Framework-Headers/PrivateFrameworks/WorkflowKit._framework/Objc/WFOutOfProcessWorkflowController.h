@@ -14,6 +14,7 @@
 
 @interface WFOutOfProcessWorkflowController : NSObject <WFOutOfProcessWorkflowControllerHost, WFTimerHandler>
 {
+    BOOL _isPersonalAutomation;
     id<WFOutOfProcessWorkflowControllerDelegate> _delegate;
     long long _presentationMode;
     WFWorkflowRunningContext *_runningContext;
@@ -39,6 +40,7 @@
 @property (strong, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
 @property (strong, nonatomic) NSUUID *extensionRequestIdentifier; // @synthesize extensionRequestIdentifier=_extensionRequestIdentifier;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isPersonalAutomation; // @synthesize isPersonalAutomation=_isPersonalAutomation;
 @property (nonatomic) long long presentationMode; // @synthesize presentationMode=_presentationMode;
 @property (readonly, nonatomic, getter=isRunning) BOOL running;
 @property (readonly, copy, nonatomic) WFWorkflowRunningContext *runningContext; // @synthesize runningContext=_runningContext;

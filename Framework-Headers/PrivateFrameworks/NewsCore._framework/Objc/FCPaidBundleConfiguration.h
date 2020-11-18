@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) NSString *appLaunchUpsellInstanceID;
 @property (readonly, nonatomic) long long appLaunchUpsellNewSessionBackgroundTimeInterval;
 @property (readonly, nonatomic) unsigned long long appLaunchUpsellPaidVisibility;
+@property (readonly, nonatomic) long long appLaunchUpsellQuiescenceInterval;
 @property (readonly, nonatomic) long long appLaunchUpsellRequiredAppLaunchCount;
 @property (readonly, nonatomic) unsigned long long articleHardPaywallType;
 @property (readonly, nonatomic) NSArray *audioChannelPaywallOverrideAllowedTagIDs;

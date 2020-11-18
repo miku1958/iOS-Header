@@ -10,13 +10,14 @@
 #import <PassKitUI/PKPassFooterContentViewDelegate-Protocol.h>
 #import <PassKitUI/PKUIForegroundActiveArbiterDeactivationObserver-Protocol.h>
 
-@class NSObject, NSString, PKPassFooterContentView, PKPassView, PKPaymentSessionHandle;
+@class NSObject, NSString, PKPassFooterContentView, PKPassFooterViewConfiguration, PKPaymentSessionHandle;
 @protocol OS_dispatch_group, OS_dispatch_source, PKPassFooterViewDelegate;
 
 @interface PKPassFooterView : UIView <PKPassFooterContentViewDelegate, PKForegroundActiveArbiterObserver, PKUIForegroundActiveArbiterDeactivationObserver>
 {
-    PKPassView *_passView;
     PKPassFooterContentView *_contentView;
+    PKPassFooterContentView *_fadingContentView;
+    BOOL _fadingContentViewNeedsDidHide;
     NSObject<OS_dispatch_source> *_sessionStartTimer;
     BOOL _isBackgrounded;
     BOOL _isAssistantActive;
@@ -28,21 +29,20 @@
     unsigned char _visibility;
     unsigned char _contentViewVisibility;
     BOOL _physicalButtonRequired;
-    long long _state;
+    PKPassFooterViewConfiguration *_configuration;
     long long _coachingState;
     id<PKPassFooterViewDelegate> _delegate;
 }
 
 @property (readonly, nonatomic) long long coachingState; // @synthesize coachingState=_coachingState;
+@property (readonly, nonatomic) PKPassFooterViewConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKPassFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isPassAuthorized) BOOL passAuthorized;
-@property (strong, nonatomic) PKPassView *passView; // @synthesize passView=_passView;
 @property (readonly, nonatomic, getter=isPhysicalButtonRequired) BOOL physicalButtonRequired; // @synthesize physicalButtonRequired=_physicalButtonRequired;
 @property (readonly, nonatomic) BOOL requestPileSuppression;
-@property (readonly, nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -52,9 +52,10 @@
 - (void)_advanceVisibilityToState:(unsigned char)arg1 animated:(BOOL)arg2;
 - (BOOL)_canApplyContentViewForPersonalizedApplication;
 - (BOOL)_canApplyContentViewForValueAddedService;
+- (void)_commitContentViewAnimated:(BOOL)arg1;
 - (void)_configureForPersonalizedPaymentApplicationWithContext:(id)arg1;
-- (void)_configureForState:(long long)arg1 context:(id)arg2 passView:(id)arg3;
 - (void)_configureForValueAddedServiceWithContext:(id)arg1;
+- (void)_configureWithConfiguration:(id)arg1 context:(id)arg2 animated:(BOOL)arg3;
 - (void)_endSession;
 - (void)_endSessionStartTimer;
 - (void)_lostModeButtonTapped;
@@ -70,13 +71,14 @@
 - (void)_startContactlessInterfaceSessionWithContext:(id)arg1 sessionAvailable:(CDUnknownBlockType)arg2 sessionUnavailable:(CDUnknownBlockType)arg3;
 - (void)_updateForForegroundActivePresentationIfNecessaryAnimated:(BOOL)arg1;
 - (void)_updateForNonForegroundActivePresentationAnimated:(BOOL)arg1;
-- (void)configureForState:(long long)arg1 context:(id)arg2 passView:(id)arg3;
+- (void)configureWithConfiguration:(id)arg1 context:(id)arg2 options:(CDStruct_d7010776)arg3;
 - (void)dealloc;
 - (void)didBecomeHiddenAnimated:(BOOL)arg1;
 - (void)didBecomeVisibleAnimated:(BOOL)arg1;
 - (void)foregroundActiveArbiter:(id)arg1 didUpdateDeactivationReasons:(unsigned int)arg2;
 - (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_973bafd3)arg2;
-- (id)initWithPassView:(id)arg1 state:(long long)arg2 context:(id)arg3;
+- (id)init;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)invalidate;
 - (BOOL)isPassFooterContentViewInGroup:(id)arg1;
 - (void)layoutSubviews;

@@ -6,26 +6,32 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, UIImage;
+@class NSData, UIImage, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface CKBusinessMacToolbarView : UIView
 {
     BOOL _showingInStandAloneWindow;
-    UIImage *_bannerImage;
-    NSString *_fallbackTitle;
+    NSData *_bannerImageData;
     double _preferredHeight;
     UIView *_leftItemView;
+    UIImage *_bannerImage;
+    UILabel *_fallbackTitleLabel;
+    struct CGRect _detailsPopoverFrame;
 }
 
 @property (strong, nonatomic) UIImage *bannerImage; // @synthesize bannerImage=_bannerImage;
-@property (strong, nonatomic) NSString *fallbackTitle; // @synthesize fallbackTitle=_fallbackTitle;
+@property (strong, nonatomic) NSData *bannerImageData; // @synthesize bannerImageData=_bannerImageData;
+@property (nonatomic) struct CGRect detailsPopoverFrame; // @synthesize detailsPopoverFrame=_detailsPopoverFrame;
+@property (strong, nonatomic) UILabel *fallbackTitleLabel; // @synthesize fallbackTitleLabel=_fallbackTitleLabel;
 @property (strong, nonatomic) UIView *leftItemView; // @synthesize leftItemView=_leftItemView;
 @property (nonatomic) double preferredHeight; // @synthesize preferredHeight=_preferredHeight;
 @property (nonatomic) BOOL showingInStandAloneWindow; // @synthesize showingInStandAloneWindow=_showingInStandAloneWindow;
 
 - (void).cxx_destruct;
 - (void)layoutSubviews;
+- (void)setFallbackTitle:(id)arg1;
+- (void)setFallbackTitleColor:(id)arg1;
 
 @end
 

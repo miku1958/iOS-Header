@@ -17,9 +17,13 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axAnnotatePuck;
 - (BOOL)_axIsShowingVLFCallout;
+- (BOOL)_axIsShowingVLFUI;
 - (id)_axPuck;
 - (id)_axVLFElements;
 - (id)accessibilityElements;
+- (id)accessibilityHint;
+- (id)accessibilityLabel;
+- (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 - (id)vlfPassiveModeCircleView;
 

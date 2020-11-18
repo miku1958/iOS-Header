@@ -67,8 +67,7 @@
 + (BOOL)isBlendingScoreDemoted:(float)arg1;
 + (BOOL)isCJK;
 + (BOOL)isContentWordQuery:(id)arg1 queryTermCount:(long long)arg2 keyboardLanguage:(id)arg3;
-+ (BOOL)isJ;
-+ (BOOL)isK;
++ (BOOL)isKeywordsHidingEnabled;
 + (struct _LanguageModel *)languageModel;
 + (id)phoneFavoritesCopy;
 + (void)preheat;

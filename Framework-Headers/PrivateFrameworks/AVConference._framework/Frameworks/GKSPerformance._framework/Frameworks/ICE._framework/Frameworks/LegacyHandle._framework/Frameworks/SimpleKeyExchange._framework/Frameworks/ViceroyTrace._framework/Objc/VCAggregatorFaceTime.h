@@ -157,6 +157,8 @@ __attribute__((visibility("hidden")))
     unsigned int _averageVPCProcessingTimeCounter;
     VCHistogram *_callVideoSwitchPeriodHistogram;
     VCAdaptiveLearning *_adaptiveLearning;
+    unsigned long long _localWRMDuplicationSwitchCount;
+    unsigned long long _remoteWRMDuplicationSwitchCount;
 }
 
 @property (readonly) VCHistogram *JBQSizeDeltaAudLarger; // @synthesize JBQSizeDeltaAudLarger=_JBQSizeDeltaAudLarger;

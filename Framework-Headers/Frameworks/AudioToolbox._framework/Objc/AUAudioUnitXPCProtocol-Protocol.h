@@ -19,7 +19,7 @@
 - (void)disableProfile:(MIDICIProfile *)arg1 cable:(unsigned char)arg2 onChannel:(unsigned char)arg3 reply:(void (^)(NSError *))arg4;
 - (void)enableProfile:(MIDICIProfile *)arg1 cable:(unsigned char)arg2 onChannel:(unsigned char)arg3 reply:(void (^)(NSError *))arg4;
 - (void)getBusses:(unsigned int)arg1 reply:(void (^)(NSError *, NSArray *))arg2;
-- (void)getParameter:(unsigned long long)arg1 reply:(void (^)(NSError *, float))arg2;
+- (void)getParameter:(unsigned long long)arg1 sequenceNumber:(unsigned int)arg2 reply:(void (^)(NSError *, float))arg3;
 - (void)getParameterTree:(void (^)(NSError *, AUParameterTree *))arg1;
 - (void)getSpeechVoices:(void (^)(NSError *, NSArray *))arg1;
 - (void)initialize:(unsigned long long)arg1 reply:(void (^)(NSError *, unsigned long long, unsigned long long, unsigned long long, NSData *, BOOL, unsigned int))arg2;

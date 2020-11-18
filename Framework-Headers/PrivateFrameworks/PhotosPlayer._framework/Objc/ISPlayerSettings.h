@@ -22,30 +22,22 @@ __attribute__((visibility("hidden")))
     BOOL _useDedicatedQueues;
     BOOL _allowFrameBlending;
     BOOL _allowVideoPreRoll;
-    BOOL _allowPlayerReuse;
     float _vitalityEaseMinRate;
     double _vitalityEaseDuration;
     long long _startBehavior;
-    double _forceScrubMinimumPressure;
-    double _forceScrubMaximumPressure;
     double _forceScrubRewindFactor;
     double _forceScrubMinRateChange;
     double _forceScrubMinimumRate;
     double _forceScrubMaximumInteractiveRate;
-    double _audioRampDuration;
 }
 
 @property (nonatomic) BOOL allowFrameBlending; // @synthesize allowFrameBlending=_allowFrameBlending;
-@property (nonatomic) BOOL allowPlayerReuse; // @synthesize allowPlayerReuse=_allowPlayerReuse;
 @property (nonatomic) BOOL allowVideoPreRoll; // @synthesize allowVideoPreRoll=_allowVideoPreRoll;
 @property (nonatomic) BOOL audioEnabled; // @synthesize audioEnabled=_audioEnabled;
-@property (nonatomic) double audioRampDuration; // @synthesize audioRampDuration=_audioRampDuration;
 @property (nonatomic) BOOL crossfadeEnabled; // @synthesize crossfadeEnabled=_crossfadeEnabled;
 @property (nonatomic) BOOL easingEnabled; // @synthesize easingEnabled=_easingEnabled;
 @property (nonatomic) double forceScrubMaximumInteractiveRate; // @synthesize forceScrubMaximumInteractiveRate=_forceScrubMaximumInteractiveRate;
-@property (nonatomic) double forceScrubMaximumPressure; // @synthesize forceScrubMaximumPressure=_forceScrubMaximumPressure;
 @property (nonatomic) double forceScrubMinRateChange; // @synthesize forceScrubMinRateChange=_forceScrubMinRateChange;
-@property (nonatomic) double forceScrubMinimumPressure; // @synthesize forceScrubMinimumPressure=_forceScrubMinimumPressure;
 @property (nonatomic) double forceScrubMinimumRate; // @synthesize forceScrubMinimumRate=_forceScrubMinimumRate;
 @property (nonatomic) double forceScrubRewindFactor; // @synthesize forceScrubRewindFactor=_forceScrubRewindFactor;
 @property (nonatomic) BOOL longExposureVitality; // @synthesize longExposureVitality=_longExposureVitality;

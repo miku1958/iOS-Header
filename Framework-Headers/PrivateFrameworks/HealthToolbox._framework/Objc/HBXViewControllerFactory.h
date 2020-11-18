@@ -57,7 +57,7 @@
 - (id)localizedDisplayNameForUnit:(id)arg1;
 - (id)localizedPreferredUnitDisplayNameForType:(id)arg1;
 - (id)localizedPreferredUnitDisplayNameForType:(id)arg1 nameContext:(long long)arg2;
-- (id)localizedUnitDisplayNameForDisplayType:(id)arg1;
+- (id)localizedUnitDisplayNameForDisplayType:(id)arg1 nameContext:(long long)arg2;
 - (id)notificationManager;
 - (id)preferredUnitForType:(id)arg1;
 - (id)unitStringForType:(id)arg1;

@@ -11,8 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface CKImageBalloonPluginDatasource : IMBalloonPluginDataSource
 {
-    CKBalloonView *_balloonView;
     CKMediaObject *_mediaObject;
+    CKBalloonView *_balloonView;
 }
 
 @property (strong, nonatomic) CKBalloonView *balloonView; // @synthesize balloonView=_balloonView;

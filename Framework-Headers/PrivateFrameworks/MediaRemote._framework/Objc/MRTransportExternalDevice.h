@@ -8,7 +8,7 @@
 
 #import <MediaRemote/MRProtocolClientConnectionDelegate-Protocol.h>
 
-@class CURunLoopThread, MRContentItem, MRDeviceInfo, MRExternalClientConnection, MRExternalDeviceTransport, MROSTransaction, MROrigin, MRPlayerPath, NSData, NSDate, NSDictionary, NSObject, NSRunLoop, NSString;
+@class CURunLoopThread, MRContentItem, MRDeviceInfo, MRExternalClientConnection, MRExternalDeviceTransport, MROSTransaction, MROrigin, MRPlayerPath, NSArray, NSData, NSDate, NSDictionary, NSObject, NSRunLoop, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MRTransportExternalDevice : MRExternalDevice <MRProtocolClientConnectionDelegate>
@@ -32,6 +32,7 @@
     BOOL _disconnecting;
     BOOL _isClientSyncActive;
     MROSTransaction *_transaction;
+    NSArray *_subscribedPlayerPaths;
     BOOL _isCallingClientCallback;
     MRExternalClientConnection *_clientConnection;
     MROrigin *_customOrigin;
@@ -112,8 +113,8 @@
 - (void)_callOutputDevicesUpdatedCallbackWithOutputDevices:(id)arg1;
 - (void)_callVolumeCallback:(float)arg1 outputDeviceUID:(id)arg2;
 - (void)_callVolumeControlCapabilitiesCallback:(unsigned int)arg1 outputDeviceUID:(id)arg2;
-- (void)_cleanUpStreamsWithReason:(long long)arg1;
-- (void)_cleanUpWithReason:(long long)arg1;
+- (void)_cleanUpStreamsWithReason:(long long)arg1 error:(id)arg2;
+- (void)_cleanUpWithReason:(long long)arg1 error:(id)arg2;
 - (void)_contentItemUpdatedNotification:(id)arg1;
 - (id)_createPlaybackQueue:(BOOL)arg1;
 - (void)_handleCryptoPairingMessage:(id)arg1;
@@ -184,7 +185,7 @@
 - (BOOL)isPaired;
 - (BOOL)isUsingSystemPairing;
 - (BOOL)isValid;
-- (void)modifyOutputContextOfType:(unsigned int)arg1 addingDeviceUIDs:(id)arg2 removingDeviceUIDs:(id)arg3 settingDeviceUIDs:(id)arg4 withReplyQueue:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)modifyByAddingDeviceUIDs:(id)arg1 removingDeviceUIDs:(id)arg2 settingDeviceUIDs:(id)arg3 addingClusterAwareDeviceUIDs:(id)arg4 removingClusterAwareDeviceUIDs:(id)arg5 settingClusterAwareDeviceUIDs:(id)arg6 withReplyQueue:(id)arg7 completion:(CDUnknownBlockType)arg8;
 - (id)name;
 - (void)outputDeviceVolume:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)outputDeviceVolumeControlCapabilities:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -206,6 +207,7 @@
 - (void)setOutputDevicesUpdatedCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setPairingAllowedCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setPairingCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
+- (void)setSubscribedPlayerPaths:(id)arg1;
 - (void)setUsingSystemPairing:(BOOL)arg1;
 - (void)setVolumeCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setVolumeControlCapabilitiesCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
@@ -215,6 +217,7 @@
 - (void)setWantsOutputDeviceNotifications:(BOOL)arg1;
 - (void)setWantsSystemEndpointNotifications:(BOOL)arg1;
 - (void)setWantsVolumeNotifications:(BOOL)arg1;
+- (id)subscribedPlayerPaths;
 - (id)supportedMessages;
 - (void)unpair;
 - (void)veirfyConnectionStatusAndMaybeDisconnect:(id)arg1;

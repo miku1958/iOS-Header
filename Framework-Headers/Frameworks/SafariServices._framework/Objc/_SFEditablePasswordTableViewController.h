@@ -72,6 +72,7 @@
 - (id)_drillInAutoFillCellForTableView:(id)arg1;
 - (void)_editNavigationBarItemTapped:(id)arg1;
 - (void)_findAndRemoveEntryForCompletedDetailViewUpgrade;
+- (long long)_indexOfFirstPasswordSection;
 - (id)_indexPathForSavedPassword:(id)arg1;
 - (long long)_passwordAutoFillCellStyle;
 - (BOOL)_passwordAutoFillIsEnabled;
@@ -84,7 +85,6 @@
 - (id)_rightToolbarItem;
 - (id)_savePasswordIfPossibleAndGetController:(id)arg1;
 - (long long)_sectionForSectionIndex:(long long)arg1;
-- (long long)_sectionOffset;
 - (BOOL)_sectionWithIndexIsConfigurationSection:(long long)arg1;
 - (long long)_securityRecommendationsSectionIndex;
 - (id)_sharablePasswordFromResourceDictionary:(id)arg1;
@@ -119,6 +119,7 @@
 - (void)setPasswordAutoFillIsEnabled:(BOOL)arg1;
 - (void)setToolbarItems:(id)arg1 animated:(BOOL)arg2;
 - (void)showConflictAlertForSharablePasswordIfNecessary;
+- (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 didDeselectRowAtIndexPath:(id)arg2;

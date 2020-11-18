@@ -9,14 +9,17 @@
 #import <NewsCore/FCPurchaseMetadataFetcher-Protocol.h>
 
 @class FCPurchaseLookupResult, NSNumber;
+@protocol OS_dispatch_queue;
 
 @interface FCPurchaseMetadataFetcher : NSObject <FCPurchaseMetadataFetcher>
 {
     NSNumber *_bundleID;
     NSNumber *_externalVersionID;
     FCPurchaseLookupResult *_lookupResult;
+    NSObject<OS_dispatch_queue> *_accessQueue;
 }
 
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
 @property (copy, nonatomic) NSNumber *bundleID; // @synthesize bundleID=_bundleID;
 @property (copy, nonatomic) NSNumber *externalVersionID; // @synthesize externalVersionID=_externalVersionID;
 @property (strong, nonatomic) FCPurchaseLookupResult *lookupResult; // @synthesize lookupResult=_lookupResult;
@@ -25,6 +28,7 @@
 - (id)checkIfOfferUsedAlreadyWithAppAdamID:(id)arg1;
 - (id)createAMSLookupWithProfile:(id)arg1;
 - (id)fetchPurchaseMetadataForPurchaseID:(id)arg1 restorePurchase:(BOOL)arg2;
+- (id)init;
 - (id)promiseBundleIDWithAppAdamID:(id)arg1;
 - (id)promiseProductLookupWithLookupResult:(id)arg1 externalVersionID:(id)arg2 restorePurchase:(BOOL)arg3;
 - (id)promisePurchaseLookupWithAppAdamID:(id)arg1;

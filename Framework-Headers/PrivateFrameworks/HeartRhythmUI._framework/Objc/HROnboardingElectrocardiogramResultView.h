@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class HKSeparatorLineView, HRVideoPlayerView, NSLayoutConstraint, NSString, UIButton, UILabel;
+@class HKSeparatorLineView, HRPaddingLabel, HRVideoPlayerView, NSLayoutConstraint, NSString, UIButton, UILabel;
 
 @interface HROnboardingElectrocardiogramResultView : UIView
 {
@@ -15,10 +15,12 @@
     BOOL _shouldHideSeparatorLine;
     BOOL _expanded;
     NSString *_title;
-    UILabel *_numberedTitleLabel;
     HRVideoPlayerView *_playerView;
+    NSString *_badge;
     NSString *_numberedTitle;
     NSString *_visibleBody;
+    HRPaddingLabel *_badgeLabel;
+    UILabel *_numberedTitleLabel;
     UILabel *_visibleBodyLabel;
     UIButton *_learnMoreButton;
     UIView *_expandedView;
@@ -28,6 +30,8 @@
 }
 
 @property (nonatomic, getter=isAlwaysExpanded) BOOL alwaysExpanded; // @synthesize alwaysExpanded=_alwaysExpanded;
+@property (copy, nonatomic) NSString *badge; // @synthesize badge=_badge;
+@property (strong, nonatomic) HRPaddingLabel *badgeLabel; // @synthesize badgeLabel=_badgeLabel;
 @property (strong, nonatomic) NSLayoutConstraint *bottomConstraint; // @synthesize bottomConstraint=_bottomConstraint;
 @property (nonatomic, getter=isExpanded) BOOL expanded; // @synthesize expanded=_expanded;
 @property (strong, nonatomic) UIView *expandedView; // @synthesize expandedView=_expandedView;
@@ -45,9 +49,12 @@
 
 + (id)resultViewWithItem:(id)arg1;
 - (void).cxx_destruct;
+- (id)_badgeFont;
+- (double)_badgeTopToFirstBaseline;
 - (double)_learnMoreButtonLastBaselineToBottom;
 - (id)_numberedTitleFont;
 - (double)_numberedTitleLastBaseLineToVideoTop;
+- (double)_numberedTitleToBadgeLastBaseline;
 - (double)_numberedTitleTopToFirstBaseline;
 - (double)_playerViewOrVisibleBodyLabelTopConstant;
 - (id)_playerViewOrVisibleBodyLabelTopConstraint;
@@ -62,7 +69,7 @@
 - (id)_visibleBodyFont;
 - (id)_visibleBodyFontTextStyle;
 - (double)_visibleBodyLastBaselineToLearnMoreButtonFirstBaseline;
-- (id)initWithTitle:(id)arg1 numberedTitle:(id)arg2 visibleBodyText:(id)arg3 video:(id)arg4 expandedView:(id)arg5;
+- (id)initWithBadge:(id)arg1 title:(id)arg2 numberedTitle:(id)arg3 visibleBodyText:(id)arg4 video:(id)arg5 expandedView:(id)arg6;
 - (void)learnMoreButtonTapped:(id)arg1;
 
 @end

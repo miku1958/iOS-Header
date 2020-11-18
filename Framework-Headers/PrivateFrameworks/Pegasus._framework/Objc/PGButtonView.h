@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleTouchDown:(id)arg1;
 - (void)_handleTouchUpInside:(id)arg1;
 - (void)_handleTouchUpOrCancel:(id)arg1;
+- (BOOL)_shouldHitTest;
 - (void)_updateForCircularAppearanceIfNeeded;
 - (void)_updateGlyphConfigurationIfNeeded;
 - (id)accessibilityIdentifier;

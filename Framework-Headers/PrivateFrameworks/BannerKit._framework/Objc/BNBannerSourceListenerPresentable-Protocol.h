@@ -6,14 +6,13 @@
 
 #import <BannerKit/BNPresentable-Protocol.h>
 
-@class FBProcess, FBScene, NSUUID;
+@class FBProcess, FBScene;
 
 @protocol BNBannerSourceListenerPresentable <BNPresentable>
 
 @property (readonly, nonatomic) FBProcess *clientProcess;
 @property (readonly, nonatomic, getter=isContentHosted) BOOL contentHosted;
 @property (readonly, nonatomic) FBScene *scene;
-@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
 @end
 

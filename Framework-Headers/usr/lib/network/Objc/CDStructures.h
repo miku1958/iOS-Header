@@ -264,6 +264,14 @@ struct nw_association_cache_entry;
 
 struct nw_connection_metadata_changed_registration;
 
+struct nw_connection_protocol_establishment_report_s {
+    char _field1[32];
+    unsigned long long _field2;
+    unsigned long long _field3;
+    int _field4;
+    unsigned char _field5[4];
+};
+
 struct nw_connection_report_s {
     unsigned long long _field1;
     unsigned long long _field2;
@@ -314,9 +322,12 @@ struct nw_connection_report_s {
     unsigned char _field47;
     unsigned char _field48;
     unsigned char _field49[16];
-    unsigned char _field50[50][16];
-    char _field51[256];
+    unsigned char _field50[16];
+    unsigned char _field51[50][16];
     char _field52[256];
+    char _field53[256];
+    unsigned char _field54[2];
+    struct nw_connection_protocol_establishment_report_s _field55[10];
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -346,8 +357,9 @@ struct nw_connection_report_s {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
-    unsigned int :3;
-    unsigned char _field53[6];
+    unsigned int :1;
+    unsigned int :2;
+    unsigned char _field56[4];
 };
 
 struct nw_connection_throughput_monitor_s {
@@ -620,6 +632,8 @@ struct nw_path_necp_result {
     unsigned int policy_id;
     unsigned int num_interface_options;
     unsigned int num_netagents;
+    unsigned int flow_divert_aggregate_unit;
+    unsigned int padding;
 };
 
 struct nw_protocol {

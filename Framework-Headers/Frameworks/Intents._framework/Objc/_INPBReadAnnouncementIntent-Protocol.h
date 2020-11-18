@@ -12,10 +12,16 @@
 
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (nonatomic) BOOL hasReadType;
+@property (readonly, nonatomic) BOOL hasStartAnnouncementIdentifier;
+@property (nonatomic) BOOL hasUserNotificationType;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata;
 @property (nonatomic) int readType;
+@property (copy, nonatomic) NSString *startAnnouncementIdentifier;
+@property (nonatomic) int userNotificationType;
 
 - (int)StringAsReadType:(NSString *)arg1;
+- (int)StringAsUserNotificationType:(NSString *)arg1;
 - (NSString *)readTypeAsString:(int)arg1;
+- (NSString *)userNotificationTypeAsString:(int)arg1;
 @end
 

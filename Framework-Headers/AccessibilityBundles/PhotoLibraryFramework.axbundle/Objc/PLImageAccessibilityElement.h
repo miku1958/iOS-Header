@@ -13,6 +13,7 @@
 
 @property (nonatomic) int index; // @synthesize index=_index;
 
+- (id)_accessibilityDefaultFocusGroupDescriptor;
 - (id)_accessibilityElementStoredUserLabel;
 - (id)_accessibilityPhotoDescription;
 - (long long)_albumPhotoIndex;

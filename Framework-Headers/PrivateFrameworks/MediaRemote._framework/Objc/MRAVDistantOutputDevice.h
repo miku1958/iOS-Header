@@ -30,6 +30,8 @@
 - (BOOL)canPlayEncryptedProgressiveDownloadAssets;
 - (BOOL)canRelayCommunicationChannel;
 - (id)clusterComposition;
+- (unsigned int)clusterType;
+- (unsigned long long)configuredClusterSize;
 - (id)description;
 - (id)descriptor;
 - (unsigned int)deviceSubtype;
@@ -59,6 +61,7 @@
 - (BOOL)parentGroupContainsDiscoverableLeader;
 - (id)parentGroupIdentifier;
 - (BOOL)presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
+- (id)primaryID;
 - (BOOL)requiresAuthorization;
 - (id)sourceInfo;
 - (BOOL)supportsBufferedAirPlay;

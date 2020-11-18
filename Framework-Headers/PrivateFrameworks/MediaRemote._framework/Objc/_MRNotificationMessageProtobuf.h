@@ -10,6 +10,7 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface _MRNotificationMessageProtobuf : PBCodable <NSCopying>
 {
     NSMutableArray *_notifications;
@@ -17,34 +18,13 @@
     NSMutableArray *_userInfos;
 }
 
-@property (strong, nonatomic) NSMutableArray *notifications; // @synthesize notifications=_notifications;
-@property (strong, nonatomic) NSMutableArray *playerPaths; // @synthesize playerPaths=_playerPaths;
-@property (strong, nonatomic) NSMutableArray *userInfos; // @synthesize userInfos=_userInfos;
-
-+ (Class)notificationType;
-+ (Class)playerPathType;
-+ (Class)userInfoType;
 - (void).cxx_destruct;
-- (void)addNotification:(id)arg1;
-- (void)addPlayerPath:(id)arg1;
-- (void)addUserInfo:(id)arg1;
-- (void)clearNotifications;
-- (void)clearPlayerPaths;
-- (void)clearUserInfos;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
-- (id)notificationAtIndex:(unsigned long long)arg1;
-- (unsigned long long)notificationsCount;
-- (id)playerPathAtIndex:(unsigned long long)arg1;
-- (unsigned long long)playerPathsCount;
 - (BOOL)readFrom:(id)arg1;
-- (id)userInfoAtIndex:(unsigned long long)arg1;
-- (unsigned long long)userInfosCount;
 - (void)writeTo:(id)arg1;
 
 @end

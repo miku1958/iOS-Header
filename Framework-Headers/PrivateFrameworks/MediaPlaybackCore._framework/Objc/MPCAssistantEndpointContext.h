@@ -26,6 +26,7 @@
 - (void)_updateDiscoverableDeviceList:(id)arg1 deviceInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)modifySystemMusicContextForDestination:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)shouldSearchForLogicalDevices;
 
 @end
 

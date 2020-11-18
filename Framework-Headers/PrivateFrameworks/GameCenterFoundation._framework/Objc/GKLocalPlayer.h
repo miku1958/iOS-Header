@@ -126,6 +126,7 @@
 - (void)loadFriendPlayersWithFilter:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)loadFriendsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadRecentPlayersWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)promotePlayerInternalToLocalPlayerInternal:(id)arg1;
 - (void)registerListener:(id)arg1;
 - (void)removeAllFriendsWithBlock:(CDUnknownBlockType)arg1;
 - (void)removeFriend:(id)arg1 block:(CDUnknownBlockType)arg2;

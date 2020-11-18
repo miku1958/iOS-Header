@@ -42,6 +42,7 @@
 + (long long)cloudDeletionTypeForTombstone:(id)arg1;
 + (id)cloudUUIDKeyForDeletion;
 + (id)entityName;
++ (id)insertNewFolderWithTitle:(id)arg1 kind:(int)arg2 intoLibrary:(id)arg3;
 + (id)localizedRecoveredTitle;
 + (id)validKindsForPersistence;
 - (void)_enforceFixedOrderKeyCompliance;

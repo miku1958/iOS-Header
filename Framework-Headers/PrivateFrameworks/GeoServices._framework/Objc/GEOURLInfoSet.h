@@ -44,6 +44,7 @@
     GEOURLInfo *_logMessageUsageV3URL;
     GEOURLInfo *_muninBaseURL;
     GEOURLInfo *_polyLocationShiftURL;
+    GEOURLInfo *_pressureProbeDataURL;
     GEOURLInfo *_proactiveAppClipURL;
     GEOURLInfo *_proactiveRoutingURL;
     GEOURLInfo *_problemCategoriesURL;
@@ -99,6 +100,7 @@
         unsigned int read_logMessageUsageV3URL:1;
         unsigned int read_muninBaseURL:1;
         unsigned int read_polyLocationShiftURL:1;
+        unsigned int read_pressureProbeDataURL:1;
         unsigned int read_proactiveAppClipURL:1;
         unsigned int read_proactiveRoutingURL:1;
         unsigned int read_problemCategoriesURL:1;
@@ -178,6 +180,7 @@
 @property (readonly, nonatomic) BOOL hasLogMessageUsageV3URL;
 @property (readonly, nonatomic) BOOL hasMuninBaseURL;
 @property (readonly, nonatomic) BOOL hasPolyLocationShiftURL;
+@property (readonly, nonatomic) BOOL hasPressureProbeDataURL;
 @property (readonly, nonatomic) BOOL hasProactiveAppClipURL;
 @property (readonly, nonatomic) BOOL hasProactiveRoutingURL;
 @property (readonly, nonatomic) BOOL hasProblemCategoriesURL;
@@ -201,6 +204,7 @@
 @property (strong, nonatomic) GEOURLInfo *logMessageUsageV3URL;
 @property (strong, nonatomic) GEOURLInfo *muninBaseURL;
 @property (strong, nonatomic) GEOURLInfo *polyLocationShiftURL;
+@property (strong, nonatomic) GEOURLInfo *pressureProbeDataURL;
 @property (strong, nonatomic) GEOURLInfo *proactiveAppClipURL;
 @property (strong, nonatomic) GEOURLInfo *proactiveRoutingURL;
 @property (strong, nonatomic) GEOURLInfo *problemCategoriesURL;

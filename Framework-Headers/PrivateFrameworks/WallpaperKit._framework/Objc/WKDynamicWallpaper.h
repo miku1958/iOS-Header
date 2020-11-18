@@ -26,6 +26,7 @@
 + (id)na_identity;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (CDUnknownBlockType)descriptionBuilderBlock;
 - (unsigned long long)hash;
 - (id)initWithIdentifier:(long long)arg1 dictionary:(id)arg2;
 - (id)initWithIdentifier:(long long)arg1 name:(id)arg2;

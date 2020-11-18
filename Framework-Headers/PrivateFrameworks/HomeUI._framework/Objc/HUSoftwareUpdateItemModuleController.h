@@ -30,6 +30,7 @@
 - (unsigned long long)didSelectItem:(id)arg1;
 - (id)initWithModule:(id)arg1;
 - (id)initWithModule:(id)arg1 delegate:(id)arg2;
+- (void)setupCell:(id)arg1 forItem:(id)arg2;
 - (id)softwareUpdateUIManager:(id)arg1 dismissViewController:(id)arg2;
 - (id)softwareUpdateUIManager:(id)arg1 presentViewController:(id)arg2;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 animated:(BOOL)arg3;

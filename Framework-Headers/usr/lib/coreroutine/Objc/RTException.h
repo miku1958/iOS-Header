@@ -11,7 +11,6 @@
 }
 
 + (void)dontOpenDeadInside;
-+ (void)kuzcoSaysNoTouchy;
 
 @end
 

@@ -57,7 +57,7 @@
 - (void)disableProfile:(id)arg1 cable:(unsigned char)arg2 onChannel:(unsigned char)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)enableProfile:(id)arg1 cable:(unsigned char)arg2 onChannel:(unsigned char)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)getBusses:(unsigned int)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)getParameter:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)getParameter:(unsigned long long)arg1 sequenceNumber:(unsigned int)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)getParameterTree:(CDUnknownBlockType)arg1;
 - (void)getSpeechVoices:(CDUnknownBlockType)arg1;
 - (id)initWithInputItems:(id)arg1 xpcConnection:(id)arg2;

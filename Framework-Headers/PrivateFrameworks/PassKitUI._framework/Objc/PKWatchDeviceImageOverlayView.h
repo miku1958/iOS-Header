@@ -18,8 +18,11 @@
 @property (strong, nonatomic) UIImage *overlayImage; // @synthesize overlayImage=_overlayImage;
 
 - (void).cxx_destruct;
+- (double)_watchScreenCenterXOffset;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)pk_applyAppearance:(id)arg1;
+- (id)pk_childrenForAppearance;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

@@ -34,6 +34,7 @@
 @interface HUServiceDetailsViewController : HUItemTableViewController <HUControlPanelControllerDelegate, HUPresentationDelegate, HUServiceDetailsItemManagerDelegate, HUSwitchCellDelegate, HUServiceGroupEditorViewControllerDelegate, HUContainedServiceGridViewControllerDelegate, HUEditRoomViewControllerPresentationDelegate, HUTriggerEditorDelegate, HFAccessoryObserver, UIGestureRecognizerDelegate, HUAccessorySettingsItemModuleControllerDelegate, HUSoftwareUpdateItemModuleControllerDelegate, HUMediaSystemEditorViewControllerDelegate, HUContainedMediaAccessoriesGridViewControllerDelegate, HUChildServiceModuleControllerDelegate, HFHomeObserver, HUPickerCellDelegate, HUHomeAssistantDeviceSplitAccountActionDelegate, UINavigationControllerDelegate, HUDetailsPresentationDelegateHost, HUServiceLikeItemDetailsViewControllerProtocol>
 {
     BOOL _requiresPresentingViewControllerDismissal;
+    BOOL _shouldIncludeRoomNameInHeaderTitle;
     BOOL _isMultiServiceAccessory;
     BOOL _isItemGroup;
     BOOL _supportsCustomIconEditing;
@@ -85,6 +86,7 @@
 @property (weak, nonatomic) id<HUPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property (nonatomic) BOOL requiresPresentingViewControllerDismissal; // @synthesize requiresPresentingViewControllerDismissal=_requiresPresentingViewControllerDismissal;
 @property (strong, nonatomic) HUAssociatedSceneAndTriggerModuleController *sceneAndTriggerModuleController; // @synthesize sceneAndTriggerModuleController=_sceneAndTriggerModuleController;
+@property (nonatomic) BOOL shouldIncludeRoomNameInHeaderTitle; // @synthesize shouldIncludeRoomNameInHeaderTitle=_shouldIncludeRoomNameInHeaderTitle;
 @property (nonatomic) BOOL shouldTrackProgrammableSwitchActivations; // @synthesize shouldTrackProgrammableSwitchActivations=_shouldTrackProgrammableSwitchActivations;
 @property (strong, nonatomic) HUSoftwareUpdateItemModuleController *softwareUpdateItemModuleController; // @synthesize softwareUpdateItemModuleController=_softwareUpdateItemModuleController;
 @property (readonly) Class superclass;
@@ -109,6 +111,8 @@
 - (void)_longPressRecognized:(id)arg1;
 - (id)_magicallyUpdateNavigationStackForNewRootItem:(id)arg1 topViewController:(id)arg2;
 - (void)_notifyOfHomePodPairingIfNecessary:(id)arg1;
+- (BOOL)_notifyOfHomeTheaterReconfigurationIfNecessary:(id)arg1;
+- (void)_offerToCreateHomeTheaterIfPossible:(id)arg1;
 - (void)_presentContainedItems;
 - (void)_presentGroupPicker;
 - (void)_presentRemoveConfirmation:(id)arg1;
@@ -120,6 +124,7 @@
 - (id)_removeItem;
 - (void)_restartGroupedHomePodAccessory;
 - (void)_restartHomePod;
+- (id)_roomForItem:(id)arg1;
 - (id)_secondaryStatusTextForLatestResults:(id)arg1;
 - (void)_separateOrUnifyTile;
 - (void)_setDismissedHomePodHasNonMemberMediaAccountWarning:(BOOL)arg1;

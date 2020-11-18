@@ -43,6 +43,7 @@
 - (id)_lockedOrRestrictedAccountErrorWithUnderlyingError:(id)arg1;
 - (id)_negativeBalanceErrorWithUnderlyingError:(id)arg1;
 - (id)_newPeerPaymentController;
+- (id)_newPeerPaymentControllerWithQueue:(id)arg1;
 - (void)_postNotificationWithRecipient:(id)arg1 error:(id)arg2;
 - (id)_sharedPeerPaymentWebService;
 - (id)_skeletonPeerPaymentQuoteWithPeerPaymentController:(id)arg1 selectedAmount:(id)arg2 recipient:(id)arg3;

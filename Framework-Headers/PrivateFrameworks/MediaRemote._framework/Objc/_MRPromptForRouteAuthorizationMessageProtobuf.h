@@ -10,6 +10,7 @@
 
 @class _MRAVOutputDeviceDescriptorProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRPromptForRouteAuthorizationMessageProtobuf : PBCodable <NSCopying>
 {
     int _inputType;
@@ -19,21 +20,12 @@
     } _has;
 }
 
-@property (nonatomic) BOOL hasInputType;
-@property (readonly, nonatomic) BOOL hasRoute;
-@property (nonatomic) int inputType; // @synthesize inputType=_inputType;
-@property (strong, nonatomic) _MRAVOutputDeviceDescriptorProtobuf *route; // @synthesize route=_route;
-
 - (void).cxx_destruct;
-- (int)StringAsInputType:(id)arg1;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
-- (id)inputTypeAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

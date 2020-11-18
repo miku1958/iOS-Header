@@ -8,11 +8,10 @@
 
 #import <ChatKit/CKSearchResultCell-Protocol.h>
 
-@class CKSpotlightQueryResult, NSString, UIImageView, UILabel, UIVisualEffectView;
+@class CKSpotlightQueryResult, NSString, UILabel, UIVisualEffectView;
 
 @interface CKLocationSearchResultCell : CKEditableSearchResultCell <CKSearchResultCell>
 {
-    UIImageView *_imageView;
     UILabel *_placeLabel;
     UIVisualEffectView *_blurEffectView;
     CKSpotlightQueryResult *_result;
@@ -26,7 +25,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;
 @property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) UILabel *placeLabel; // @synthesize placeLabel=_placeLabel;

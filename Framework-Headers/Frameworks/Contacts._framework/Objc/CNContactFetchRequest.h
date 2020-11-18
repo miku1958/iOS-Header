@@ -42,6 +42,7 @@
 + (unsigned long long)makeSerialNumber;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)acceptVisitor:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)effectiveKeysToFetch;

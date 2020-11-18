@@ -451,6 +451,7 @@
 - (void)_runTodayViewPullDownToSpotlight;
 - (void)_runTodayViewScrollWidgetsTestWithOptions:(id)arg1;
 - (void)_runToggleSearchTest;
+- (void)_runVolumeChangeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_screenshotWindowWasDismissed;
 - (void)_screenshotWindowWillBeDisplayed;
 - (void)_setAmbiguousControlCenterActivationMargin:(double)arg1;
@@ -552,6 +553,7 @@
 - (void)installNotificationObserverForNotificationName:(id)arg1 forOneNotification:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)interactiveScreenshotGestureManager:(id)arg1 requestsScreenshotPreheatWithPresentationOptions:(id)arg2;
 - (void)interactiveScreenshotGestureManager:(id)arg1 requestsScreenshotWithOptionsCollection:(id)arg2 presentationOptions:(id)arg3;
+- (BOOL)interactiveScreenshotGestureManagerShouldPreventGestureRecognition:(id)arg1;
 - (long long)interfaceOrientationForCurrentDeviceOrientation:(BOOL)arg1;
 - (long long)interfaceOrientationForRawOrientation:(long long)arg1 validOrientation:(long long)arg2 ignoringHomeScreenRotationStyle:(BOOL)arg3;
 - (BOOL)isBundleIdentifierRestrictionDisabled:(id)arg1;

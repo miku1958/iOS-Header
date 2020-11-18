@@ -9,7 +9,6 @@
 
 @protocol HMDMRSetEndpointVolumeOperationExternalObjectInterface
 - (NSArray *)copyMRAVEndpointOutputDevices:(HMDMRAVEndpoint *)arg1;
-- (NSString *)copyMRAVOutputDeviceUniqueIdentifier:(void *)arg1;
 - (MPCAssistantConnection *)createMPCAssistantConnection;
 - (MPCAssistantDiscovery *)createMPCAssistantDiscovery;
 - (NAFuture *)getMRAVEndpointOutputDeviceUIDVolumeControlCapabilitiesForEndpoint:(HMDMRAVEndpoint *)arg1 outputDeviceUID:(NSString *)arg2 queue:(NSObject<OS_dispatch_queue> *)arg3;

@@ -6,26 +6,21 @@
 
 #import <HealthDaemon/HDStandardTaskServer.h>
 
-#import <SleepHealthDaemon/HDContentProtectionObserver-Protocol.h>
 #import <SleepHealthDaemon/HDDiagnosticObject-Protocol.h>
 #import <SleepHealthDaemon/HDSleepHealthDaemonPluginServerInterface-Protocol.h>
 
-@class HDAssertion, HDHealthStoreClient, HDProfile, HDSHProfileExtension, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@class HDHealthStoreClient, HDProfile, HDSHProfileExtension, NSString;
 
-@interface HDSHPluginServer : HDStandardTaskServer <HDDiagnosticObject, HDSleepHealthDaemonPluginServerInterface, HDContentProtectionObserver>
+@interface HDSHPluginServer : HDStandardTaskServer <HDDiagnosticObject, HDSleepHealthDaemonPluginServerInterface>
 {
     HDProfile *_profile;
     HDSHProfileExtension *_profileExtension;
     HDHealthStoreClient *_client;
-    HDAssertion *_accessibilityAssertion;
-    NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, getter=isSleepTrackingSessionInProgress) BOOL sleepTrackingSessionInProgress;
 @property (readonly) Class superclass;
 
 + (id)requiredEntitlements;
@@ -35,12 +30,9 @@
 - (BOOL)_insertSamplesWithClientSource:(id)arg1 error:(id *)arg2;
 - (BOOL)_populateSamplesToInsert:(id)arg1 samplesToDelete:(id)arg2 forSleepDurationGoal:(id)arg3 error:(id *)arg4;
 - (BOOL)_populateSamplesToInsert:(id)arg1 samplesToDelete:(id)arg2 forSleepSchedules:(id)arg3 error:(id *)arg4;
-- (void)_queue_takeAccessibilityAssertion;
 - (BOOL)_replaceSamples:(id)arg1 withSamples:(id)arg2 error:(id *)arg3;
-- (void)_restoreSleepTrackingState;
 - (void)_saveSleepTrackingSamplesAfterFirstUnlock:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)connectionInvalidated;
-- (void)contentProtectionStateChanged:(long long)arg1 previousState:(long long)arg2;
 - (id)diagnosticDescription;
 - (id)exportedInterface;
 - (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;

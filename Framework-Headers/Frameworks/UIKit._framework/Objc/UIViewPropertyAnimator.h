@@ -133,6 +133,7 @@
 + (void)animator:(id)arg1 isObserving:(id)arg2;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)observedsOfAnimatorWithTrackingId:(id)arg1;
++ (void)removeAllObservedForObservingAnimatorWithId:(id)arg1;
 + (void)removeObserved:(id)arg1 forObservingAnimatorWithId:(id)arg2;
 + (id)runningPropertyAnimatorWithDuration:(double)arg1 delay:(double)arg2 options:(unsigned long long)arg3 animations:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (void).cxx_destruct;

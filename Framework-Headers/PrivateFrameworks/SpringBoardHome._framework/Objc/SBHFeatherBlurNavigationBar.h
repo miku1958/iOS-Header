@@ -35,6 +35,7 @@
 - (struct CGRect)_calculateFeatherBlurBackgroundViewFrame;
 - (id)_capturedLargeTextLabelContainerView;
 - (id)_capturedTinyTextLabelContainerView;
+- (double)_topMargin;
 - (void)_updateAppearance;
 - (void)_updateHeights;
 - (void)_updateLabel;

@@ -20,6 +20,7 @@
     MPRemoteCommandCenter *_commandCenter;
     NSMutableArray *_sessionArchives;
     NSMutableDictionary *_sessionIdentifierArchiveMap;
+    NSMutableDictionary *_stagedQueueControllers;
 }
 
 @property (readonly, nonatomic) MPRemoteCommandCenter *commandCenter; // @synthesize commandCenter=_commandCenter;
@@ -32,6 +33,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property (readonly, nonatomic) NSMutableArray *sessionArchives; // @synthesize sessionArchives=_sessionArchives;
 @property (readonly, nonatomic) NSMutableDictionary *sessionIdentifierArchiveMap; // @synthesize sessionIdentifierArchiveMap=_sessionIdentifierArchiveMap;
+@property (readonly, nonatomic) NSMutableDictionary *stagedQueueControllers; // @synthesize stagedQueueControllers=_stagedQueueControllers;
 @property (strong, nonatomic) NSString *stateRestorationSessionIdentifier;
 @property (readonly) Class superclass;
 
@@ -47,7 +49,11 @@
 - (id)nowPlayingInfoCenter:(id)arg1 contentItemForID:(id)arg2;
 - (id)nowPlayingInfoCenter:(id)arg1 contentItemIDForOffset:(long long)arg2;
 - (void)publishIfNeeded;
+- (id)queueControllerForIdentifier:(id)arg1;
 - (void)saveSessionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)stageQueueController:(id)arg1 forIdentifier:(id)arg2;
+- (id)stagedQueueControllerIdentifiers;
+- (BOOL)unstageQueueControllerForIdentifier:(id)arg1;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HDKeyValueDomain, HDProfile;
+@class HDKeyValueDomain, HDProfile, HDProfileIdentifier;
 
 @interface HDHeadphoneDoseMetadataStore : NSObject
 {
@@ -16,6 +16,8 @@
     double _doseLimit;
     BOOL _shouldLoadDoseLimitOverride;
 }
+
+@property (readonly, nonatomic) HDProfileIdentifier *_profileIdentifier;
 
 + (id)_earliestFireDateAllowedWithNow:(id)arg1;
 - (void).cxx_destruct;

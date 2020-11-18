@@ -21,7 +21,6 @@
 - (void)deleteTriggerWithIdentifier:(id)arg1 notifyDaemon:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithDatabase:(id)arg1;
 - (void)saveNewConfiguredTrigger:(id)arg1 workflow:(id)arg2 notifyDaemon:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)saveNewConfiguredTrigger:(id)arg1 workflowReference:(id)arg2 notifyDaemon:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)updateConfiguredTrigger:(id)arg1 triggerID:(id)arg2 notifyDaemon:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end

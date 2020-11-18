@@ -49,6 +49,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isHearstDoubleTapTriggered;
 - (BOOL)isHearstVoiceTriggered;
+- (BOOL)isHomePressed;
 - (BOOL)isJarvisVoiceTriggered;
 - (BOOL)isRTSTriggered;
 - (BOOL)isServerInvoked;

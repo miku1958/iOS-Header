@@ -13,6 +13,8 @@
     MISSING_TYPE *contextBuilder;
     MISSING_TYPE *headlineService;
     MISSING_TYPE *adManager;
+    MISSING_TYPE *adRequestManager;
+    MISSING_TYPE *adRequestStore;
     MISSING_TYPE *providers;
 }
 

@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (nonatomic) id<VCMediaStreamSyncSource> syncSource; // @synthesize syncSource=_syncSource;
 
-- (void)collectChannelMetrics:(CDStruct_3ab08b48 *)arg1 interval:(float)arg2;
+- (void)collectChannelMetrics:(CDStruct_1dd2c43e *)arg1 interval:(float)arg2;
 - (void)handleActiveConnectionChange:(id)arg1;
 - (void)pauseVideo;
 - (void)rtcpSendIntervalElapsed;

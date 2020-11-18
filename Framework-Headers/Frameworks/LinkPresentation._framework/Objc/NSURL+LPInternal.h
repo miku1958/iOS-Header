@@ -11,6 +11,7 @@
 - (id)_lp_componentsNoCopy;
 - (id)_lp_formattedTelephoneNumber;
 - (BOOL)_lp_hasAllowedNonHTTPScheme;
+- (BOOL)_lp_hasWalletRelatedScheme;
 - (BOOL)_lp_isHTTPFamilyOrLinkPresentationTestingURL;
 - (BOOL)_lp_isTelephoneURL;
 - (id)_lp_pathComponentAtIndex:(unsigned long long)arg1;

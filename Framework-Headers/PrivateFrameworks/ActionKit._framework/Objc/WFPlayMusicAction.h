@@ -12,7 +12,6 @@
 
 - (void)finishRunningWithError:(id)arg1;
 - (void)getContentFromInput:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)getRemoteControlDestinationForPlaybackArchive:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)localizedKeyParameterDisplayName;
 - (id)mediaQueryFromMediaCollection:(id)arg1;
 - (void)playContent:(id)arg1 withMusicPlayer:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

@@ -37,9 +37,12 @@
 @property (nonatomic) int processUserIdentifier; // @synthesize processUserIdentifier=_processUserIdentifier;
 @property (readonly, nonatomic) _MRNowPlayingClientProtobuf *protobuf;
 @property (readonly, nonatomic) MRClient *skeleton;
+@property (readonly, nonatomic, getter=isSystemMediaApplication) BOOL systemMediaApplication;
+@property (readonly, nonatomic, getter=isSystemPodcastsApplication) BOOL systemPodcastsApplication;
 @property (copy, nonatomic) MRColorComponents *tintColor; // @synthesize tintColor=_tintColor;
 @property (nonatomic) long long visibility; // @synthesize visibility=_visibility;
 
++ (id)anyClient;
 + (id)localClient;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -50,6 +53,7 @@
 - (id)initWithProtobuf:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)resolvePlaceholdersForDeviceInfo:(id)arg1;
 
 @end
 

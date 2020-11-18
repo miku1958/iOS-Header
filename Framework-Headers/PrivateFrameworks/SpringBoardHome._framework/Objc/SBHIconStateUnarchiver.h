@@ -19,13 +19,13 @@
 @property (readonly, nonatomic) SBHIconModel *iconSource; // @synthesize iconSource=_iconSource;
 @property (nonatomic) BOOL removesEmptyFolders; // @synthesize removesEmptyFolders=_removesEmptyFolders;
 
-+ (void)_getFolderDisplayName:(id *)arg1 defaultDisplayName:(id *)arg2 forRepresentation:(id)arg3 iconSource:(id)arg4;
++ (void)_getFolderDisplayName:(id *)arg1 defaultDisplayName:(id *)arg2 uniqueIdentifier:(id *)arg3 forRepresentation:(id)arg4 iconSource:(id)arg5;
 - (void).cxx_destruct;
 - (BOOL)_canAddIconDataSource:(id)arg1 toIcon:(id)arg2;
 - (id)_customIconElementFromRepresentation:(id)arg1 context:(id)arg2;
 - (Class)_folderClassForFolderType:(id)arg1 context:(id)arg2;
 - (id)_folderFromRepresentation:(id)arg1 withContext:(id)arg2;
-- (void)_getFolderDisplayName:(id *)arg1 defaultDisplayName:(id *)arg2 forRepresentation:(id)arg3;
+- (void)_getFolderDisplayName:(id *)arg1 defaultDisplayName:(id *)arg2 uniqueIdentifier:(id *)arg3 forRepresentation:(id)arg4;
 - (id)_iconFromRepresentation:(id)arg1 withContext:(id)arg2;
 - (id)_listFromRepresentation:(id)arg1 listGridSize:(struct SBHIconGridSize)arg2 gridSizeClassSizes:(struct SBHIconGridSizeClassSizes)arg3 identifier:(id)arg4 context:(id)arg5 overflow:(id)arg6;
 - (id)_newFolderIconForFolder:(id)arg1;

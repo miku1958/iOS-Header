@@ -23,6 +23,7 @@
     long long _lastImageDataSpecIndex;
     NSMutableIndexSet *_requestIDsPendingCancellation;
     BOOL _lowMemoryMode;
+    BOOL _canDeliverThumbnailData;
     PXGViewEnvironment *_viewEnvironment;
     NSIndexSet *_requestIDsInTargetRect;
     id<PXGTextureProviderDelegate> _delegate;
@@ -32,6 +33,7 @@
     CDStruct_a02a4563 _interactionState;
 }
 
+@property (nonatomic) BOOL canDeliverThumbnailData; // @synthesize canDeliverThumbnailData=_canDeliverThumbnailData;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGTextureProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

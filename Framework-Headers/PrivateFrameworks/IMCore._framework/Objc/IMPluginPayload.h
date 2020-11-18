@@ -74,6 +74,7 @@
 - (id)initWithMessageItem:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToPluginPayload:(id)arg1;
+- (id)payloadDictionary;
 
 @end
 

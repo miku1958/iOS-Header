@@ -6,7 +6,7 @@
 
 #import <UIKit/UINavigationController.h>
 
-@class NSString, VUIAppInstallConfirmationViewController;
+@class NSString, VUIASDDialogObserver, VUIAppInstallConfirmationViewController;
 @protocol WLKInstallable;
 
 @interface VUIAppInstallerViewController : UINavigationController
@@ -15,6 +15,7 @@
     double _lastProgress;
     CDUnknownBlockType _progressBlock;
     VUIAppInstallConfirmationViewController *_confirmationController;
+    VUIASDDialogObserver *_dialogObserver;
     BOOL _displayAppStoreLink;
     BOOL _displaySecondaryLink;
     id<WLKInstallable> _installable;

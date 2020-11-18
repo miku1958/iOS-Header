@@ -13,9 +13,11 @@
 @property (nonatomic) unsigned long long endTime;
 @property (nonatomic) BOOL hasEndTime;
 @property (readonly, nonatomic) BOOL hasIdentifier;
+@property (readonly, nonatomic) BOOL hasSpeechDataTranscription;
 @property (readonly, nonatomic) BOOL hasSpeechDataURL;
 @property (nonatomic) BOOL hasStartTime;
 @property (copy, nonatomic) NSString *identifier;
+@property (copy, nonatomic) NSString *speechDataTranscription;
 @property (strong, nonatomic) _INPBURLValue *speechDataURL;
 @property (nonatomic) unsigned long long startTime;
 

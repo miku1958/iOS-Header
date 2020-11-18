@@ -31,25 +31,25 @@
 	// method
 	// method
  }
- protocol XavierNews.ClassicArticleTrainingDataType // 6 requirements
+ protocol XavierNews.UserContextType // 9 requirements
  {
-	// class base protocol
-	// class base protocol
+	// getter
+	// getter
+	// getter
+	// getter
+	// getter
 	// getter
 	// getter
 	// getter
 	// getter
  }
- protocol XavierNews.UserContextType // 3 requirements
- {
-	// getter
-	// getter
-	// getter
- }
- protocol XavierNews.ClassicArticleDataType // 7 requirements
+ protocol XavierNews.ClassicArticleDataType // 10 requirements
  {
 	// class base protocol
 	// class base protocol
+	// getter
+	// getter
+	// getter
 	// getter
 	// getter
 	// getter
@@ -90,7 +90,7 @@
 	let impressions : Double
 	let eventCount : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let updatedAt : ÃT
+	let updatedAt : !h
  }
 
  struct XavierNews.Aggregate: AggregateType,  ReadonlyAggregateType {
@@ -101,7 +101,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var impressions : Double
 	var eventCount : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var updatedAt : ÃT
+	var updatedAt : !h
  }
 
  enum XavierNews.CodingKeys {
@@ -140,12 +140,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var updatedAt : ÃT // +0xfeedfacf (0x0)
+	var updatedAt : !h // +0xfeedfacf (0x0)
 	var aggregates : ReadonlyAggregate // +0x3 (0x8)
 
 	// Swift methods
-	0x52b0  class func AggregateContext.__allocating_init(aggregates:updatedAt:) // init 
-	0x5a20  class func AggregateContext.__allocating_init(from:) // init 
+	0x5000  class func AggregateContext.__allocating_init(aggregates:updatedAt:) // init 
+	0x57e0  class func AggregateContext.__allocating_init(from:) // init 
  }
 
  enum XavierNews.CodingKeys {
@@ -155,22 +155,40 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case aggregates  
  }
 
- struct XavierNews.ClassicArticleTrainingData: ClassicArticleTrainingDataType {
+ struct XavierNews.ClassicArticleTrainingData {
 
 	// Properties
-	let articleID : String // +0x0
-	let publisherID : String // +0x10
-	let topicIDs : [String] // +0x20
-	let extraAggregateIdentifiers : Set<String> // +0x28
+	let adCategories : [String]? // +0x0
+	let articleID : String // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let articleLength : Kh // +0x18
+	let hasVideo : Bool // +0x21
+	let isANF : Bool? // +0x22
+	let isPaid : Bool // +0x23
+	let publisherID : String // +0x28
+	let topicIDs : [String] // +0x38
  }
 
  enum XavierNews.CodingKeys {
 
 	// Properties
+	case adCategories  
 	case articleID  
+	case articleLength  
+	case hasVideo  
+	case isANF  
+	case isPaid  
 	case publisherID  
 	case topicIDs  
-	case extraAggregateIdentifiers  
+ }
+
+ enum XavierNews.PremiumSubscriptionState {
+
+	// Properties
+	case unknown  
+	case free  
+	case paid  
+	case trial  
  }
 
  class XavierNews.UserContext : _SwiftObject /usr/lib/swift/libswiftCore.dylib, UserContextType {
@@ -179,9 +197,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let subscribed : [String]
 	let autofavorited : [String]
 	let muted : [String]
+	let groupable : [String]
+	let subscriptionState : PremiumSubscriptionState
+	let bundled : Set<String>
+	let purchased : Set<String>
+	let read : Set<String>
+	let seen : Set<String>
 
 	// Swift methods
-	0x121f0  class func UserContext.__allocating_init(subscribed:autofavorited:muted:) // init 
+	0x12930  class func UserContext.__allocating_init(subscribed:autofavorited:muted:groupable:subscriptionState:bundled:purchased:read:seen:) // init 
  }
 
  enum XavierNews.Action {
@@ -192,22 +216,42 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case subscribe : String
 	case unsubscribe : String
 	case feedView : String
-	case articleSeen : ClassicArticleTrainingDataType
-	case articleVisited : ClassicArticleTrainingDataType
-	case articleRead : ClassicArticleTrainingDataType
-	case like : ClassicArticleTrainingDataType
-	case dislike : ClassicArticleTrainingDataType
-	case share : ClassicArticleTrainingDataType
+	case articleSeen : ClassicArticleDataType
+	case articleVisited : ClassicArticleDataType
+	case articleRead : ClassicArticleDataType
+	case like : ClassicArticleDataType
+	case dislike : ClassicArticleDataType
+	case share : ClassicArticleDataType
  }
 
  struct XavierNews.ClassicArticleData: ClassicArticleDataType {
 
 	// Properties
-	let articleID : String // +0x0
-	let publisherID : String // +0x10
-	let topicIDs : [String] // +0x20
-	let cohorts : ClassicHeadlineCohortData // +0x28
-	let extraAggregateIdentifiers : Set<String> // +0x30
+	let adCategories : [String]?
+	let articleID : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let articleLength : Kh
+	let halfLife : Double
+	let hasVideo : Bool
+	let isANF : Bool?
+	let isPaid : Bool
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let publishDate : ýd
+	let publisherID : String
+	let sourceFeedID : String?
+	let topicIDs : [String]
+	let cohorts : ClassicHeadlineCohortType
+	let conversionData : ClassicHeadlineCohortData
+	let isAudio : Bool
+	let featured : Bool
+	let isEvergreen : Bool
+ }
+
+ enum XavierNews.ClassicHeadlineCohortType {
+
+	// Properties
+	case free  
+	case paid  
  }
 
  struct XavierNews.ClassicHeadlineCohortData {
@@ -227,11 +271,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum XavierNews.CodingKeys {
 
 	// Properties
+	case adCategories  
 	case articleID  
+	case articleLength  
+	case halfLife  
+	case hasVideo  
+	case isANF  
+	case isPaid  
+	case publishDate  
 	case publisherID  
+	case sourceFeedID  
 	case topicIDs  
 	case cohorts  
-	case extraAggregateIdentifiers  
+	case conversionData  
+	case isAudio  
+	case featured  
+	case isEvergreen  
  }
 
  struct XavierNews.GroupableHeadline {
@@ -242,9 +297,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let topicIDs : [String] // +0x20
 	let score : Double // +0x28
 	let accessible : Bool // +0x30
+	let evergreen : Bool // +0x31
  }
 
  struct XavierNews.Classic { }
+
+ struct XavierNews.TagEvaluator { }
 
  struct XavierNews.Configuration {
 
@@ -252,8 +310,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let actionConfiguration : ActionConfiguration // +0x0
 	let clusteringConfiguration : ClusteringConfiguration // +0x8
 	let evaluationConfiguration : EvaluationConfiguration // +0x68
-	let featureConfiguration : FeatureConfiguration // +0x140
-	let trainingConfiguration : TrainingConfiguration // +0x168
+	let featureConfiguration : FeatureConfiguration // +0x280
+	let trainingConfiguration : TrainingConfiguration // +0x2c8
  }
 
  struct XavierNews.ActionConfiguration {
@@ -304,23 +362,46 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let autofavoritedScoreCoefficient : Double // +0x0
 	let autofavoritedScoreConfiguration : SubscribedCountScoreConfiguration // +0x8
-	let clientScoreCoefficient : Double // +0x28
-	let ctrWithSubscribedChannel : Double // +0x30
-	let democratizationFactor : Double // +0x38
-	let halfLifeCoefficient : Double // +0x40
-	let publisherAggregateWeight : Double // +0x48
-	let serverScoreCoefficient : Double // +0x50
-	let subscribedChannelScoreCoefficent : Double // +0x58
-	let subscribedTopicScoreCoefficient : Double // +0x60
-	let subscribedTopicScoreConfiguration : SubscribedCountScoreConfiguration // +0x68
-	let userFeedbackScoreConfiguration : UserFeedbackScoreConfiguration // +0x88
+	let channelTopicDiversificationInitialPenalty : Double // +0x28
+	let channelTopicDiversificationPenalty : Double // +0x30
+	let channelTopicDiversificationPenaltyHalfLife : Double // +0x38
+	let clientScoreCoefficient : Double // +0x40
+	let conversionScoreConfiguration : UserFeedbackScoreConfiguration // +0x48
+	let ctrWithSubscribedChannel : Double // +0x80
+	let democratizationFactor : Double // +0x88
+	let diversificationInitialPenalty : Double // +0x90
+	let diversificationPenalty : Double // +0x98
+	let diversificationPenaltyHalfLife : Double // +0xa0
+	let firstPassArticleFilter : Double // +0xa8
+	let firstPassDiversificationPenalty : Double // +0xb0
+	let firstPassHalfLifeCoefficient : Double // +0xb8
+	let firstPassEvergreenHalfLifeCoefficient : Double // +0xc0
+	let freePremiumSubscriptionConfiguration : PremiumSubscriptionConfiguration // +0xc8
+	let halfLifeCoefficient : Double // +0x100
+	let evergreenHalfLifeCoefficient : Double // +0x108
+	let mutedVoteDampener : Double // +0x110
+	let paidPremiumSubscriptionConfiguration : PremiumSubscriptionConfiguration // +0x118
+	let readPenalty : Double // +0x150
+	let seenPenalty : Double // +0x158
+	let serverScoreCoefficientHalfLife : Double // +0x160
+	let serverScoreCoefficientInitialMultiplier : Double // +0x168
+	let sparseTagsPenalty : Double // +0x170
+	let subscribedChannelScoreCoefficent : Double // +0x178
+	let subscribedTopicScoreCoefficient : Double // +0x180
+	let subscribedTopicScoreConfiguration : SubscribedCountScoreConfiguration // +0x188
+	let trialPremiumSubscriptionConfiguration : PremiumSubscriptionConfiguration // +0x1a8
+	let userFeedbackScoreConfiguration : UserFeedbackScoreConfiguration // +0x1e0
  }
 
  struct XavierNews.FeatureConfiguration {
 
 	// Properties
-	let priors : FeaturePriors // +0x0
-	let publisherTopicMinimumEventCount : Int // +0x20
+	let articleLengthAggregateWeight : Double // +0x0
+	let articleLengthMediumThreshold : Double // +0x8
+	let articleLengthLongThreshold : Double // +0x10
+	let priors : FeaturePriors // +0x18
+	let publisherAggregateWeight : Double // +0x38
+	let publisherTopicMinimumEventCount : Int // +0x40
  }
 
  struct XavierNews.FeaturePrior {
@@ -343,6 +424,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let decayRate : Double // +0x0
 	let topStoriesGroupAggregateBias : Double // +0x8
 	let trendingGroupAggregateBias : Double // +0x10
+ }
+
+ struct XavierNews.PremiumSubscriptionConfiguration {
+
+	// Properties
+	let audioMultiplier : Double // +0x0
+	let bundleFreeMultiplier : Double // +0x8
+	let bundlePaidMultiplier : Double // +0x10
+	let conversionCoefficient : Double // +0x18
+	let featuredMultiplier : Double // +0x20
+	let evergreenMultiplier : Double // +0x28
+	let serverScoreCoefficient : Double // +0x30
  }
 
  struct XavierNews.SubscribedCountScoreConfiguration {
@@ -381,26 +474,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let baselineMembership : Double // +0x0
-	let ctrCeiling : Double // +0x8
-	let curvature : Double // +0x10
-	let dilutionFactor : Double // +0x18
-	let globalWeight : Double // +0x20
-	let minWeightedImpressions : Double // +0x28
-	let paddingFactor : Double // +0x30
-	let postBaselineCurvature : Double // +0x38
-	let preBaselineCurvature : Double // +0x40
-	let subscribedBoost : Double // +0x48
+	let dilutionFactor : Double // +0x8
+	let globalWeight : Double // +0x10
+	let paddingFactor : Double // +0x18
+	let postBaselineCurvature : Double // +0x20
+	let preBaselineCurvature : Double // +0x28
+	let subscribedBoost : Double // +0x30
  }
 
  enum XavierNews.CodingKeys {
 
 	// Properties
 	case baselineMembership  
-	case ctrCeiling  
-	case curvature  
 	case dilutionFactor  
 	case globalWeight  
-	case minWeightedImpressions  
 	case paddingFactor  
 	case postBaselineCurvature  
 	case preBaselineCurvature  
@@ -442,6 +529,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum XavierNews.CodingKeys {
 
 	// Properties
+	case audioMultiplier  
+	case bundleFreeMultiplier  
+	case bundlePaidMultiplier  
+	case conversionCoefficient  
+	case featuredMultiplier  
+	case evergreenMultiplier  
+	case serverScoreCoefficient  
+ }
+
+ enum XavierNews.CodingKeys {
+
+	// Properties
 	case decayRate  
 	case topStoriesGroupAggregateBias  
 	case trendingGroupAggregateBias  
@@ -464,7 +563,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum XavierNews.CodingKeys {
 
 	// Properties
+	case articleLengthAggregateWeight  
+	case articleLengthMediumThreshold  
+	case articleLengthLongThreshold  
 	case priors  
+	case publisherAggregateWeight  
 	case publisherTopicMinimumEventCount  
  }
 
@@ -473,15 +576,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case autofavoritedScoreCoefficient  
 	case autofavoritedScoreConfiguration  
+	case channelTopicDiversificationInitialPenalty  
+	case channelTopicDiversificationPenalty  
+	case channelTopicDiversificationPenaltyHalfLife  
 	case clientScoreCoefficient  
+	case conversionScoreConfiguration  
 	case ctrWithSubscribedChannel  
 	case democratizationFactor  
+	case diversificationInitialPenalty  
+	case diversificationPenalty  
+	case diversificationPenaltyHalfLife  
+	case firstPassArticleFilter  
+	case firstPassDiversificationPenalty  
+	case firstPassHalfLifeCoefficient  
+	case firstPassEvergreenHalfLifeCoefficient  
+	case freePremiumSubscriptionConfiguration  
 	case halfLifeCoefficient  
-	case publisherAggregateWeight  
-	case serverScoreCoefficient  
+	case evergreenHalfLifeCoefficient  
+	case mutedVoteDampener  
+	case paidPremiumSubscriptionConfiguration  
+	case readPenalty  
+	case seenPenalty  
+	case serverScoreCoefficientHalfLife  
+	case serverScoreCoefficientInitialMultiplier  
+	case sparseTagsPenalty  
 	case subscribedChannelScoreCoefficent  
 	case subscribedTopicScoreCoefficient  
 	case subscribedTopicScoreConfiguration  
+	case trialPremiumSubscriptionConfiguration  
 	case userFeedbackScoreConfiguration  
  }
 
@@ -592,6 +714,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case propertyFailedValidation : (propertyName: String, message: String)
  }
 
+ enum XavierNews.Errors {
+
+	// Properties
+	case propertyFailedValidation : (propertyName: String, message: String)
+ }
+
+ enum XavierNews.HeadlineClusteringError {
+
+	// Properties
+	case reachedMaxInaccessibleHeadlines  
+	case reachedMaxPublisherOccurrences  
+	case reachedTopicDiversityThreshold  
+	case reachedMaxEvergreenHeadlines  
+ }
+
+ enum XavierNews.HeadlineClusteringRule {
+
+	// Properties
+	case accessibility : (maxInaccessibleHeadlines: Int)
+	case evergreenLimit : (maxEvergreenHeadlines: Int)
+	case publisherDiversity : (maxPublisherOccurrences: Int)
+	case topicDiversity : (threshold: Double, windowSize: Int, whitelistedTopicIDs: Set<String>)
+ }
+
  struct XavierNews.HeadlineClusterer { }
 
  struct XavierNews.CandidateTopicGroup {
@@ -607,13 +753,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct XavierNews.HeadlineScoreProfile {
 
 	// Properties
-	let clientScore : Double // +0x0
-	let serverScore : Double // +0x8
-	let subscribedChannelScore : Double // +0x10
-	let subscribedTopicScore : Double // +0x18
-	let autofavoritedScore : Double // +0x20
-	let personalizedScore : Double // +0x28
-	let timeDecayedScore : Double // +0x30
+	let articleCohorts : ClassicHeadlineCohortData // +0x0
+	let audioMultiplier : Double // +0x8
+	let autofavoritedScore : Double // +0x10
+	let bundleFreeMultiplier : Double // +0x18
+	let bundlePaidMultiplier : Double // +0x20
+	let clientScore : Double // +0x28
+	let conversionCohorts : ClassicHeadlineCohortData // +0x30
+	var diversifiedScore : Double // +0x38
+	let evergreenMultiplier : Double // +0x40
+	let featuredMultiplier : Double // +0x48
+	var firstPassScore : Double // +0x50
+	let personalizedScore : Double // +0x58
+	let readPenalty : Double // +0x60
+	let seenPenalty : Double // +0x68
+	let serverScore : Double // +0x70
+	let serverScoreCoefficient : Double // +0x78
+	let sparseTagsPenalty : Double // +0x80
+	let subscribedChannelScore : Double // +0x88
+	let subscribedTopicScore : Double // +0x90
+	var timeDecayedScore : Double // +0x98
+	let userCohortMemberships : [String : Double] // +0xa0
  }
 
  struct XavierNews.ClassicEventData: ClassicEventDataType {
@@ -630,12 +790,41 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case groupType  
  }
 
+ enum XavierNews.ArticleLengthType {
+
+	// Properties
+	case short  
+	case medium  
+	case long  
+ }
+
  enum XavierNews.Feature {
 
 	// Properties
-	case tag : String
+	case adCategory : String
+	case articleLength : ArticleLengthType
+	case premiumPublisher : (publisher: String)
 	case publisherTopic : (publisher: String, topic: String)
+	case tag : String
+	case videoPublisher : (publisher: String)
 	case baseline  
+	case flint  
+	case nonFlint  
+	case video  
+ }
+
+ struct XavierNews.WhitelistTag {
+
+	// Properties
+	let identifier : String // +0x0
+	let score : Double // +0x10
+ }
+
+ struct XavierNews.Whitelist {
+
+	// Properties
+	let defaultTags : WhitelistTag // +0x0
+	let optionalTags : WhitelistTag // +0x8
  }
 
  struct XavierNews.ArticleTrainer { }

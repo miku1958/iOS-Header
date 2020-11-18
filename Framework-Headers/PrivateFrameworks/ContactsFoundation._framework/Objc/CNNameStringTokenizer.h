@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
+@class CNUnfairLock;
 @protocol OS_dispatch_queue;
 
 @interface CNNameStringTokenizer : NSObject
 {
     struct __CFStringTokenizer *_tokenizer;
     NSObject<OS_dispatch_queue> *_syncQueue;
+    CNUnfairLock *_lock;
 }
 
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *syncQueue; // @synthesize syncQueue=_syncQueue;
+@property (readonly, nonatomic) CNUnfairLock *lock; // @synthesize lock=_lock;
 @property (readonly, nonatomic) struct __CFStringTokenizer *tokenizer; // @synthesize tokenizer=_tokenizer;
 
 + (void)setInferredNameOrder:(long long *)arg1 toTokenizerNameOrder:(int)arg2;

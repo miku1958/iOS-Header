@@ -21,6 +21,7 @@
     NSString *_identifier;
     long long __renderingMode;
     CDStruct_8caa76fc _imageSize;
+    CDStruct_8caa76fc _preferredScaledSize;
 }
 
 @property (copy, nonatomic, setter=_setBundleIdentifier:) NSString *_bundleIdentifier;
@@ -32,6 +33,7 @@
 @property (readonly, nonatomic) BOOL _isSupportedForDonation;
 @property (readonly) INImage *_keyImage;
 @property (copy, nonatomic, setter=_setName:) NSString *_name;
+@property (nonatomic, setter=_setPreferredScaledSize:) CDStruct_8caa76fc _preferredScaledSize; // @synthesize _preferredScaledSize;
 @property (nonatomic, setter=_setRenderingMode:) long long _renderingMode; // @synthesize _renderingMode=__renderingMode;
 @property (readonly, nonatomic) BOOL _requiresRetrieval;
 @property (copy, nonatomic, setter=_setSandboxExtensionData:) NSData *_sandboxExtensionData;

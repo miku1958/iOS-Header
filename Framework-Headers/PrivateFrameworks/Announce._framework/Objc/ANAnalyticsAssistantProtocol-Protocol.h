@@ -9,6 +9,9 @@
 @protocol ANAnalyticsAssistantProtocol
 - (struct ANAnalyticsAssistantAudioData)audioDataForAnnouncement:(ANAnnouncement *)arg1;
 - (long long)boundGroupCount:(long long)arg1;
+- (long long)bucketFromDuration:(double)arg1;
+- (long long)bucketFromReceiveTime:(double)arg1;
+- (long long)bucketFromSize:(long long)arg1;
 - (struct ANAnalyticsAssistantSenderData)senderDataForAnnouncement:(ANAnnouncement *)arg1;
 @end
 

@@ -38,9 +38,9 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFormattedString:(id)arg1 sanitizedFormattedString:(id)arg2 confidence:(double)arg3 lowConfidence:(BOOL)arg4 tokens:(id)arg5 preToPostITN:(id)arg6;
-- (id)initWithOspreyMtResponsePhrase:(id)arg1;
+- (id)initWithOspreyMtResponsePhrase:(id)arg1 locale:(id)arg2;
 - (id)initWithOspreyPhrase:(id)arg1;
-- (void)updateWithEngineMeta:(id)arg1;
+- (void)updateWithEngineMeta:(id)arg1 locale:(id)arg2;
 
 @end
 

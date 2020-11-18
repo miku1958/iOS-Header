@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)dynamicViewController:(id)arg1 didFinishWithPurchaseResult:(id)arg2 error:(id)arg3;
+- (void)dynamicViewController:(id)arg1 didFinishPurchaseWithResult:(id)arg2 error:(id)arg3;
 - (id)initWithContext:(id)arg1 URL:(id)arg2;
 - (void)willPresentPageModel:(id)arg1 appearance:(id)arg2;
 

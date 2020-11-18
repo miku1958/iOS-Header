@@ -8,6 +8,7 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface _MRRegisterHIDDeviceResultMessageProtobuf : PBCodable <NSCopying>
 {
     unsigned int _deviceIdentifier;
@@ -18,18 +19,11 @@
     } _has;
 }
 
-@property (nonatomic) unsigned int deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
-@property (nonatomic) unsigned int errorCode; // @synthesize errorCode=_errorCode;
-@property (nonatomic) BOOL hasDeviceIdentifier;
-@property (nonatomic) BOOL hasErrorCode;
-
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

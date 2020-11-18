@@ -79,6 +79,7 @@
 - (id)launchURLForInputMode:(id)arg1;
 - (Class)lockoutViewControllerClass;
 - (BOOL)messageEntryShouldHideCaret:(id)arg1;
+- (void)messageEntryView:(id)arg1 didInsertPluginPayload:(id)arg2;
 - (void)messageEntryView:(id)arg1 didTapMediaObject:(id)arg2;
 - (BOOL)messageEntryView:(id)arg1 shouldInsertMediaObjects:(id)arg2;
 - (void)messageEntryViewBrowserButtonHit:(id)arg1;

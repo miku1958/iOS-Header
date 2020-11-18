@@ -6,10 +6,14 @@
 
 #import <UIKit/UIColor.h>
 
+@class NSArray, NSData;
+
 @interface UIColor (SafariSharedExtras)
+
+@property (readonly, copy, nonatomic) NSData *safari_colorDataForSerialization;
+@property (readonly, copy, nonatomic) NSArray *safari_rgbColorComponents;
+
 + (id)safari_colorWithRGBColorComponents:(id)arg1;
 + (id)safari_colorWithSerializedColorData:(id)arg1;
-- (id)safari_colorDataForSerialization;
-- (id)safari_rgbColorComponents;
 @end
 

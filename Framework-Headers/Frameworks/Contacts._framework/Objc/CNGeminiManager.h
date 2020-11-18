@@ -42,6 +42,7 @@
 - (id)bestSubscriptionForHandle:(id)arg1 contactStore:(id)arg2 error:(id *)arg3;
 - (id)channelForContact:(id)arg1 error:(id *)arg2;
 - (id)channelForFavoritesEntry:(id)arg1 error:(id *)arg2;
+- (void)danglingPlansDidUpdate:(id)arg1;
 - (id)fetchedSenderIdentitiesWithError:(id *)arg1;
 - (id)geminiResultForContact:(id)arg1 error:(id *)arg2;
 - (id)geminiResultForContact:(id)arg1 substituteDefaultForDangling:(BOOL)arg2 error:(id *)arg3;

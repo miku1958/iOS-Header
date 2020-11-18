@@ -6,17 +6,15 @@
 
 #import <NanoTimeKitCompanion/NTKAVListingFaceBaseView.h>
 
-@class NTKComplicationDisplayWrapperView, NTKFaceViewComplicationFactory, NTKInfinityController, NTKInfinityListing, UIColor, UILabel, UIView;
+@class NTKFaceViewComplicationFactory, NTKInfinityController, NTKInfinityListing, UIColor, UILabel, UIView;
 
 @interface NTKInfinityFaceView : NTKAVListingFaceBaseView
 {
-    unsigned int _tapToPlayGestureEnabled:1;
     unsigned int _tapPromptedVideoChange:1;
     UIView *_cornerView;
     UILabel *_reviewLabel;
     long long _previousDataMode;
     NTKFaceViewComplicationFactory *_faceViewComplicationFactory;
-    NTKComplicationDisplayWrapperView *_touchWrapper;
     NTKInfinityController *_controller;
     NTKInfinityListing *_currentQueueListing;
     UIColor *_currentComplicationColor;
@@ -27,7 +25,6 @@
 - (void)_applyDataMode;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_cleanupAfterEditing;
-- (id)_complicationDisplayWrapperForTouch:(id)arg1;
 - (long long)_complicationPickerStyleForSlot:(id)arg1;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (id)_currentPosterImageView;
@@ -69,10 +66,6 @@
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (void)layoutSubviews;
 - (void)setTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 customEditMode:(long long)arg4 slot:(id)arg5;
-- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
-- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
-- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
-- (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)updateReviewDirection:(id)arg1;
 - (id)videoPlayerView;
 - (void)videoPlayerViewDidBeginPlaying:(id)arg1;

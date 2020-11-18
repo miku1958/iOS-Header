@@ -4,23 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NewsCore/FCEndpointConnection.h>
+#import <objc/NSObject.h>
 
-@class FCFileCoordinatedNotificationDropbox, NSString;
-@protocol FCBundleSubscriptionManagerType;
+#import <NewsCore/FCCoreConfigurationObserving-Protocol.h>
 
-@interface FCNotificationsEndpointConnection : FCEndpointConnection
+@class FCAsyncSerialQueue, FCEndpointConnection, FCFileCoordinatedNotificationDropbox, NSString, NSURL;
+@protocol FCBundleSubscriptionManagerType, FCCoreConfigurationManager;
+
+@interface FCNotificationsEndpointConnection : NSObject <FCCoreConfigurationObserving>
 {
+    FCEndpointConnection *_endpointConnection;
+    id<FCCoreConfigurationManager> _configurationManager;
+    id<FCBundleSubscriptionManagerType> _bundleSubscriptionManager;
+    FCAsyncSerialQueue *_serialQueue;
     NSString *_deviceType;
     NSString *_deviceOSVersion;
     FCFileCoordinatedNotificationDropbox *_fileCoordinatedNotificationDropbox;
-    id<FCBundleSubscriptionManagerType> _bundleSubscriptionManager;
+    NSURL *_baseURL;
 }
 
+@property (strong, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 @property (strong, nonatomic) id<FCBundleSubscriptionManagerType> bundleSubscriptionManager; // @synthesize bundleSubscriptionManager=_bundleSubscriptionManager;
+@property (strong, nonatomic) id<FCCoreConfigurationManager> configurationManager; // @synthesize configurationManager=_configurationManager;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *deviceOSVersion; // @synthesize deviceOSVersion=_deviceOSVersion;
 @property (copy, nonatomic) NSString *deviceType; // @synthesize deviceType=_deviceType;
+@property (strong, nonatomic) FCEndpointConnection *endpointConnection; // @synthesize endpointConnection=_endpointConnection;
 @property (strong, nonatomic) FCFileCoordinatedNotificationDropbox *fileCoordinatedNotificationDropbox; // @synthesize fileCoordinatedNotificationDropbox=_fileCoordinatedNotificationDropbox;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) FCAsyncSerialQueue *serialQueue; // @synthesize serialQueue=_serialQueue;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_deviceInfoWithDeviceToken:(id)arg1;
@@ -35,12 +49,14 @@
 - (void)configurationManager:(id)arg1 configurationDidChange:(id)arg2;
 - (id)initWithBaseURLString:(id)arg1;
 - (id)initWithConfigurationManager:(id)arg1 bundleSubscriptionManager:(id)arg2;
+- (id)initWithEndpointConnection:(id)arg1 configurationManager:(id)arg2 bundleSubscriptionManager:(id)arg3;
 - (void)modifyMarketingSubscriptionWithType:(int)arg1 action:(int)arg2 dsid:(id)arg3 callbackQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)refreshNotificationsForChannelIDs:(id)arg1 paidChannelIDs:(id)arg2 userID:(id)arg3 deviceToken:(id)arg4 storefrontID:(id)arg5 callbackQueue:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)registerDeviceWithUserID:(id)arg1 deviceToken:(id)arg2 storefrontID:(id)arg3 callbackQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)subscribeNotificationsForChannelIDs:(id)arg1 paidChannelIDs:(id)arg2 userID:(id)arg3 deviceToken:(id)arg4 storefrontID:(id)arg5 callbackQueue:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)unregisterDeviceWithUserID:(id)arg1 deviceToken:(id)arg2 storefrontID:(id)arg3 callbackQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)unsubscribeNotificationsForChannelIDs:(id)arg1 userID:(id)arg2 deviceToken:(id)arg3 storefrontID:(id)arg4 callbackQueue:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)updateBaseURL:(id)arg1;
 
 @end
 

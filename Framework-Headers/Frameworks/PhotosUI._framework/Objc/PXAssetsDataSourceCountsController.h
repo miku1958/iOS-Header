@@ -33,10 +33,12 @@
 @property (nonatomic) BOOL waitingToPrepare; // @synthesize waitingToPrepare=_waitingToPrepare;
 
 - (void).cxx_destruct;
+- (void)_dataSourceManagerDidChange;
 - (void)_handlePreparationCompletion;
 - (void)_prepareCounts;
 - (void)_prepareFetchResults:(id)arg1;
 - (void)_updateCounts;
+- (void)assetsDataSourceManagerDidFinishBackgroundFetching:(id)arg1;
 - (id)init;
 - (id)initWithAssetsDataSourceManager:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;

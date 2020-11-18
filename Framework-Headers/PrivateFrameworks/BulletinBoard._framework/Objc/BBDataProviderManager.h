@@ -30,7 +30,7 @@
 - (void).cxx_destruct;
 - (id)_configureDataProvider:(id)arg1 performMigration:(BOOL)arg2;
 - (id)_configureSectionInfo:(id)arg1 forDataProvider:(id)arg2;
-- (id)_queue_dataProviderForUniversalSectionID:(id)arg1;
+- (id)_queue_dataProvidersForUniversalSectionID:(id)arg1;
 - (id)_queue_getSectionInfoForSectionID:(id)arg1;
 - (id)dataProviderForSectionID:(id)arg1;
 - (void)dataProviderStore:(id)arg1 didAddDataProvider:(id)arg2 performMigration:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
@@ -40,7 +40,7 @@
 - (id)debugDescriptionWithChildren:(unsigned long long)arg1;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2;
 - (void)loadAllDataProvidersAndPerformMigration:(BOOL)arg1;
-- (id)localSectionIdentifierFromDismissalSectionIdentifer:(id)arg1;
+- (id)localSectionIdentifiersFromDismissalSectionIdentifer:(id)arg1;
 - (void)noteSettingsChanged:(id)arg1 forSectionID:(id)arg2;
 - (id)parentSectionDataProviderFactoryForSectionID:(id)arg1;
 - (void)performBlockOnDataProviders:(CDUnknownBlockType)arg1;

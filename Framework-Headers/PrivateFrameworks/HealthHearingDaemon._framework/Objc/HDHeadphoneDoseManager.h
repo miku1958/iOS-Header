@@ -6,45 +6,74 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthHearingDaemon/HDHeadphoneAudioExposureStatisticsManagerObserver-Protocol.h>
+#import <HealthHearingDaemon/HDDataObserver-Protocol.h>
+#import <HealthHearingDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
+#import <HealthHearingDaemon/HDHealthDaemonReadyObserver-Protocol.h>
+#import <HealthHearingDaemon/HDQuantitySeriesObserver-Protocol.h>
 
-@class HDDataCollectionAssertion, HDHeadphoneAudioExposureStatisticsManager, HDHeadphoneDoseMetadataStore, HDHeadphoneExposureNotificationCenter, HDProfile, HKObserverSet;
+@class HDDataCollectionAssertion, HDHeadphoneAudioExposureStatisticsCalculator, HDHeadphoneDoseMetadataStore, HDHeadphoneExposureNotificationCenter, HDProfile, NSDate, NSString;
+@protocol OS_dispatch_queue;
 
-@interface HDHeadphoneDoseManager : NSObject <HDHeadphoneAudioExposureStatisticsManagerObserver>
+@interface HDHeadphoneDoseManager : NSObject <HDHealthDaemonReadyObserver, HDDatabaseProtectedDataObserver, HDDataObserver, HDQuantitySeriesObserver>
 {
     HDProfile *_profile;
     double _dose;
     struct os_unfair_lock_s _lock;
-    HKObserverSet *_observers;
+    NSObject<OS_dispatch_queue> *_queue;
+    BOOL _enabled;
     HDHeadphoneDoseMetadataStore *_keyValueStore;
     HDHeadphoneExposureNotificationCenter *_notificationCenter;
-    HDHeadphoneAudioExposureStatisticsManager *_statisticsManager;
+    HDHeadphoneAudioExposureStatisticsCalculator *_statisticsCalculator;
     HDDataCollectionAssertion *_collectionAssertion;
     BOOL _lastUpdateSuppressedUserNotification;
-    CDUnknownBlockType _unitTesting_didUpdateDose;
+    NSDate *_lastLockDateForAnalytics;
+    CDUnknownBlockType _unitTesting_daemonDidBecomeReady;
+    CDUnknownBlockType _unitTesting_didUpdateHandler;
     CDUnknownBlockType _unitTesting_didNotifyUser;
+    CDUnknownBlockType _unitTesting_protectedDataDidBecomeAvailable;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) HDHeadphoneAudioExposureStatisticsCalculator *unitTesting_calculator;
+@property (copy, nonatomic) CDUnknownBlockType unitTesting_daemonDidBecomeReady; // @synthesize unitTesting_daemonDidBecomeReady=_unitTesting_daemonDidBecomeReady;
 @property (copy, nonatomic) CDUnknownBlockType unitTesting_didNotifyUser; // @synthesize unitTesting_didNotifyUser=_unitTesting_didNotifyUser;
-@property (copy, nonatomic) CDUnknownBlockType unitTesting_didUpdateDose; // @synthesize unitTesting_didUpdateDose=_unitTesting_didUpdateDose;
+@property (copy, nonatomic) CDUnknownBlockType unitTesting_didUpdateHandler; // @synthesize unitTesting_didUpdateHandler=_unitTesting_didUpdateHandler;
+@property (readonly, nonatomic) HDHeadphoneDoseMetadataStore *unitTesting_keyValueStore;
+@property (copy, nonatomic) CDUnknownBlockType unitTesting_protectedDataDidBecomeAvailable; // @synthesize unitTesting_protectedDataDidBecomeAvailable=_unitTesting_protectedDataDidBecomeAvailable;
 
 - (void).cxx_destruct;
+- (id)_fetchDoseLimitInfoWithError:(id *)arg1;
 - (void)_handleSignificantTimeChangeNotification:(id)arg1;
+- (void)_headphoneExposureNotificationsEnabledDidChange:(id)arg1;
 - (id)_infoWithError:(id *)arg1;
-- (id)_initWithProfile:(id)arg1 keyValueStore:(id)arg2 statisticsManager:(id)arg3 observers:(id)arg4;
-- (void)_lock_notifyObserversWithDose:(double)arg1 reason:(id)arg2;
-- (BOOL)_lock_rebuildWithError:(id *)arg1;
+- (id)_initWithProfile:(id)arg1 keyValueStore:(id)arg2 calculator:(id)arg3 unitTesting_didUpdateHandler:(CDUnknownBlockType)arg4;
+- (id)_lock_pruneWithNowDate:(id)arg1 limit:(unsigned long long)arg2 error:(id *)arg3;
+- (BOOL)_lock_rebuildWithAssertion:(id)arg1 error:(id *)arg2;
 - (void)_lock_setCollectionAssertion:(id)arg1;
 - (void)_lock_updateCollectionAssertionForDoseAccumulated:(double)arg1;
-- (BOOL)_lock_updateCurrentDoseUsingCache:(id)arg1 suppressUserNotification:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)_lock_updateCurrentDoseUsingStatisticsResult:(id)arg1 assertion:(id)arg2 error:(id *)arg3;
+- (void)_lock_updateIsEnabledForInitialSetup:(BOOL)arg1 assertion:(id)arg2;
+- (void)_lock_updateWithNotifications:(id)arg1 journaled:(BOOL)arg2 assertion:(id)arg3;
+- (BOOL)_overrideDoseLimit:(id)arg1 error:(id *)arg2;
+- (id)_pruneWithNowDate:(id)arg1 limit:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)_rebuildWithError:(id *)arg1;
 - (void)_registerForSignificantTimeChangeNotification;
+- (void)_reportSyncedHeadphoneNotificationSamples:(id)arg1 journaled:(BOOL)arg2 nowDate:(id)arg3;
+- (id)_takeAccessibilityAssertion;
 - (void)_unregisterForSignificantTimeChangeNotification;
+- (void)daemonReady:(id)arg1;
+- (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)dealloc;
-- (void)headphoneAudioExposureStatisticsManager:(id)arg1 didUpdateCache:(id)arg2 suppressUserNotification:(BOOL)arg3;
-- (id)initWithProfile:(id)arg1 keyValueStore:(id)arg2 statisticsManager:(id)arg3;
-- (void)registerObserver:(id)arg1 queue:(id)arg2;
-- (void)unregisterObserver:(id)arg1;
+- (id)initWithProfile:(id)arg1;
+- (id)initWithProfile:(id)arg1 keyValueStore:(id)arg2 calculator:(id)arg3;
+- (void)profile:(id)arg1 didDiscardSeriesOfType:(id)arg2;
+- (void)samplesAdded:(id)arg1 anchor:(id)arg2;
+- (void)samplesJournaled:(id)arg1 type:(id)arg2;
+- (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
+- (CDUnknownBlockType)transactionalQuantityInsertHandlerForProfile:(id)arg1 journaled:(BOOL)arg2 count:(long long)arg3;
 
 @end
 

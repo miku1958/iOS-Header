@@ -13,10 +13,8 @@
     NSString *_rootPath;
 }
 
-+ (BOOL)_appPredictionPanelExistsInPages:(id)arg1;
-+ (BOOL)_suggestionsWidgetExistsInPages:(id)arg1;
-+ (BOOL)appPredictionPanelExistsOnHomeScreenOrTodayPage;
-+ (BOOL)suggestionsWidgetExistsOnHomeScreenOrTodayPage;
++ (BOOL)appPredictionPanelExistsInPage:(id)arg1;
++ (BOOL)suggestionsWidgetExistsInPage:(id)arg1;
 - (void).cxx_destruct;
 - (id)_filePathForDockConfig;
 - (id)_filePathForHomeScreenPageConfig;

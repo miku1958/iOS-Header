@@ -103,7 +103,7 @@
     unsigned long long _overlappingLivePhotosCountLimit;
     double _vitalityMaskBlur;
     double _vitalityFeatherScale;
-    double _vitalityMaxAllowedInset;
+    double _vitalityMaxAllowedInsetPoints;
     unsigned long long _viewModelCacheCountLimit;
     double _visibilityDurationForEnteringQuickPagingRegime;
     double _visibilityDurationForExitingQuickPagingRegime;
@@ -240,7 +240,7 @@
 @property (nonatomic) double visibilityDurationForExitingQuickPagingRegime; // @synthesize visibilityDurationForExitingQuickPagingRegime=_visibilityDurationForExitingQuickPagingRegime;
 @property (nonatomic) double vitalityFeatherScale; // @synthesize vitalityFeatherScale=_vitalityFeatherScale;
 @property (nonatomic) double vitalityMaskBlur; // @synthesize vitalityMaskBlur=_vitalityMaskBlur;
-@property (nonatomic) double vitalityMaxAllowedInset; // @synthesize vitalityMaxAllowedInset=_vitalityMaxAllowedInset;
+@property (nonatomic) double vitalityMaxAllowedInsetPoints; // @synthesize vitalityMaxAllowedInsetPoints=_vitalityMaxAllowedInsetPoints;
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;

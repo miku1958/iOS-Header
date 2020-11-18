@@ -13,15 +13,20 @@
     UITextView *_textView;
     struct CGRect _previousBounds;
     NSDictionary *_cachedTextAttributes;
+    NSDictionary *_lastAppliedNonColorAttributes;
+    BOOL _highlighted;
     MKMultiPartAttributedString *_multiPartString;
     UIFont *_font;
     UIColor *_textColor;
     long long _textAlignment;
+    UIColor *_highlightedTextColor;
     _MKMultiPartLabelMetrics *_data;
 }
 
 @property (strong, nonatomic) _MKMultiPartLabelMetrics *data; // @synthesize data=_data;
 @property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
+@property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
+@property (strong, nonatomic) UIColor *highlightedTextColor; // @synthesize highlightedTextColor=_highlightedTextColor;
 @property (nonatomic) long long lineBreakMode;
 @property (strong, nonatomic) MKMultiPartAttributedString *multiPartString; // @synthesize multiPartString=_multiPartString;
 @property (nonatomic) unsigned long long numberOfLines;
@@ -36,8 +41,10 @@
 - (id)_attributedAdjustedMultiPartStringFromString:(id)arg1;
 - (void)_setupTextView;
 - (id)_textAttributes;
+- (void)_updateColorsForCurrentState;
 - (void)_updateStrings;
 - (void)_updateTextViewTextAndInvalidateLayout:(id)arg1;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;

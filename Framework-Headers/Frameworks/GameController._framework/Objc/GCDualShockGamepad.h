@@ -21,6 +21,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_activateExtendedSupport;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithController:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;

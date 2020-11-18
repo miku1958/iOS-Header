@@ -18,6 +18,7 @@
     NSString *_appBundleIdentifier;
     NSString *_activityType;
     NSString *_automationSuggestionsTrialIdentifier;
+    NSString *_shortcutIdentifier;
 }
 
 @property (nonatomic) unsigned int actionCount; // @synthesize actionCount=_actionCount;
@@ -26,6 +27,7 @@
 @property (copy, nonatomic) NSString *automationSuggestionsTrialIdentifier; // @synthesize automationSuggestionsTrialIdentifier=_automationSuggestionsTrialIdentifier;
 @property (copy, nonatomic) NSString *intentType; // @synthesize intentType=_intentType;
 @property (copy, nonatomic) NSString *key; // @synthesize key=_key;
+@property (copy, nonatomic) NSString *shortcutIdentifier; // @synthesize shortcutIdentifier=_shortcutIdentifier;
 @property (copy, nonatomic) NSString *source; // @synthesize source=_source;
 @property (copy, nonatomic) NSString *triggerType; // @synthesize triggerType=_triggerType;
 

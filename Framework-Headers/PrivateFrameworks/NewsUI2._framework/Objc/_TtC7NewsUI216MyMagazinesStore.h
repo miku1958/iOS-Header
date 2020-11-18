@@ -23,6 +23,7 @@
     MISSING_TYPE *offlineIssueManager;
     MISSING_TYPE *paidBundleConfigManager;
     MISSING_TYPE *persistentStore;
+    MISSING_TYPE *accessQueue;
     MISSING_TYPE *$__lazy_storage_$_lazyInitializingPromise;
     MISSING_TYPE *firstFullRefresh;
 }

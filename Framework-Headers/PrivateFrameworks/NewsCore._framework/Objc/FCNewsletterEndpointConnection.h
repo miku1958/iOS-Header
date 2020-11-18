@@ -4,17 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NewsCore/FCEndpointConnection.h>
+#import <objc/NSObject.h>
 
-@interface FCNewsletterEndpointConnection : FCEndpointConnection
+#import <NewsCore/FCCoreConfigurationObserving-Protocol.h>
+
+@class FCAsyncSerialQueue, FCEndpointConnection, NSString, NSURL;
+@protocol FCCoreConfigurationManager;
+
+@interface FCNewsletterEndpointConnection : NSObject <FCCoreConfigurationObserving>
 {
+    FCEndpointConnection *_endpointConnection;
+    FCAsyncSerialQueue *_serialQueue;
+    id<FCCoreConfigurationManager> _configurationManager;
+    NSURL *_baseURL;
 }
 
+@property (strong, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
+@property (strong, nonatomic) id<FCCoreConfigurationManager> configurationManager; // @synthesize configurationManager=_configurationManager;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) FCEndpointConnection *endpointConnection; // @synthesize endpointConnection=_endpointConnection;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) FCAsyncSerialQueue *serialQueue; // @synthesize serialQueue=_serialQueue;
+@property (readonly) Class superclass;
+
+- (void).cxx_destruct;
+- (void)configurationManager:(id)arg1 configurationDidChange:(id)arg2;
 - (void)deletePersonalizationVectorWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getNewsletterSubscriptionWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithConfigurationManager:(id)arg1;
+- (id)initWithEndpointConnection:(id)arg1 configurationManager:(id)arg2;
 - (void)newsletterSubscribeTo:(id)arg1 callbackQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)submitPersonalizationVector:(id)arg1 withCallbackQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)updateBaseURL:(id)arg1;
 
 @end
 

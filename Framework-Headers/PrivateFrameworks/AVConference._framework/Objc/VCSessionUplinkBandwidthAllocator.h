@@ -35,10 +35,11 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)init;
 - (BOOL)peerSubscription:(BOOL)arg1 streamID:(unsigned short)arg2;
-- (id)videoMediaBitratesForTargetNetworkBitrate:(unsigned int)arg1;
+- (id)videoBitratesForTargetNetworkBitrate:(unsigned int)arg1;
 - (id)videoRepairStreamIDsForStreamIDs;
 - (id)videoStreamIDsforTargetBitrate:(unsigned int)arg1;
 - (id)videoStreamIDsforTargetBitrateCap:(unsigned int)arg1;
+- (id)videoStreamsAndMediaBitratesForTargetNetworkBitrate:(unsigned int)arg1;
 
 @end
 

@@ -28,12 +28,12 @@
 + (id)reuseIdentifier;
 + (id)sectionIdentifier;
 + (id)sectionTitle;
++ (BOOL)supportsMacSelection;
 + (BOOL)supportsQuicklookForResult:(id)arg1;
 - (id)_activityItemProviderForResult:(id)arg1;
 - (id)_additionalMenuElementsForResult:(id)arg1;
 - (void)_filterControlTapped:(id)arg1;
 - (double)_internalInterGroupSpacing;
-- (id)_pasteboardItemsForResult:(id)arg1;
 - (struct NSDirectionalEdgeInsets)additionalGroupInsets;
 - (BOOL)applyLayoutMarginsToLayoutGroup;
 - (id)cellForSupplementryItemInCollectionView:(id)arg1 atIndexPath:(id)arg2 supplementryViewKind:(id)arg3;
@@ -45,6 +45,7 @@
 - (Class)headerOverrideClass;
 - (id)initWithSectionIndex:(unsigned long long)arg1;
 - (double)interGroupSpacing;
+- (id)itemProviderForSearchResult:(id)arg1;
 - (id)layoutGroupWithEnvironment:(id)arg1;
 - (unsigned long long)maxResultsForMode:(unsigned long long)arg1;
 - (id)previewViewControllerForResult:(id)arg1;

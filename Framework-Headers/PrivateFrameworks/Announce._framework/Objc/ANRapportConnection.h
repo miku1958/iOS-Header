@@ -8,17 +8,19 @@
 
 #import <Announce/ANRapportConnectionProvider-Protocol.h>
 
-@class NSArray, NSDate, NSMutableDictionary, NSString, RPCompanionLinkClient, RPCompanionLinkDevice;
-@protocol ANConnectionDelegate, OS_dispatch_queue, OS_dispatch_source;
+@class NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSString, RPCompanionLinkClient, RPCompanionLinkDevice;
+@protocol ANRapportConnectionDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface ANRapportConnection : NSObject <ANRapportConnectionProvider>
 {
-    id<ANConnectionDelegate> _delegate;
+    BOOL _isTimerSuspended;
+    id<ANRapportConnectionDelegate> _delegate;
     RPCompanionLinkClient *_companionLinkClient;
     NSObject<OS_dispatch_queue> *_rapportQueue;
     NSMutableDictionary *_clients;
     NSArray *_activeDevices;
     NSDate *_lastScanStartTimestamp;
+    NSMutableArray *_deviceDelegates;
     NSObject<OS_dispatch_source> *_timer;
 }
 
@@ -26,10 +28,12 @@
 @property (strong) NSMutableDictionary *clients; // @synthesize clients=_clients;
 @property (strong, nonatomic) RPCompanionLinkClient *companionLinkClient; // @synthesize companionLinkClient=_companionLinkClient;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<ANConnectionDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<ANRapportConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSMutableArray *deviceDelegates; // @synthesize deviceDelegates=_deviceDelegates;
 @property (readonly, nonatomic) NSArray *devices;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isTimerSuspended; // @synthesize isTimerSuspended=_isTimerSuspended;
 @property (strong) NSDate *lastScanStartTimestamp; // @synthesize lastScanStartTimestamp=_lastScanStartTimestamp;
 @property (readonly, nonatomic) RPCompanionLinkDevice *localDevice;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *rapportQueue; // @synthesize rapportQueue=_rapportQueue;
@@ -40,14 +44,19 @@
 - (void).cxx_destruct;
 - (void)_cancelTimer;
 - (void)_decrementMessageCountForCompanionLinkClient:(id)arg1;
+- (void)_handleLinkInvalidation;
 - (void)_handleTimerExpired;
 - (void)_incrementMessageCountForCompanionLinkClient:(id)arg1;
 - (void)_linkForDevice:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (BOOL)_needsScan;
-- (void)_registerMessageID;
-- (void)_registerMessageID:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_notifyDeviceDelegatesConnectionDidFindDevice:(id)arg1;
+- (void)_notifyDeviceDelegatesConnectionDidLoseDevice:(id)arg1;
+- (void)_registerHandlers;
+- (void)_registerHomeLocationStatusRequestHandler;
+- (void)_registerMessageRequestHandler;
 - (double)_remainingScanTimeInterval;
 - (void)_sendDailyRequest:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_sendHomeLocationStatusRequestToDevice:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_sendMessage:(id)arg1 linkClient:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_setupLink:(CDUnknownBlockType)arg1;
 - (void)_simulateDeliveryFailureForMessage:(id)arg1;
@@ -56,10 +65,13 @@
 - (void)_updateDevices;
 - (id)activateLinkWithOptions:(unsigned long long)arg1;
 - (void)activateLinkWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)deactivateLink;
+- (void)addDeviceDelegate:(id)arg1 queue:(id)arg2;
+- (void)deactivateLinkWithOptions:(unsigned long long)arg1;
 - (id)init;
 - (void)registerDailyRequest:(CDUnknownBlockType)arg1;
+- (void)removeDeviceDelegate:(id)arg1;
 - (void)sendDailyRequest:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)sendHomeLocationStatusRequestToDevice:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)sendMessage:(id)arg1 device:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
 
 @end

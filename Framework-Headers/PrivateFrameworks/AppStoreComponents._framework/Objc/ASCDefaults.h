@@ -11,13 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface ASCDefaults : NSObject
 {
-    BOOL _enableWebInspector;
     NSString *_bundleID;
 }
 
 @property (readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (nonatomic) BOOL disableShutdownTimer;
-@property (nonatomic) BOOL enableWebInspector; // @synthesize enableWebInspector=_enableWebInspector;
+@property (nonatomic) BOOL enableWebInspector;
 @property (nonatomic) BOOL forceRightToLeftLayout;
 @property (copy, nonatomic) NSNumber *overlaysLoadTimeout;
 @property (copy, nonatomic) NSNumber *overlaysRateLimitRequestsPerSecond;

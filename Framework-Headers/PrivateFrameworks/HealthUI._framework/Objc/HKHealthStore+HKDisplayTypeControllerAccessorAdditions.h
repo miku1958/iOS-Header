@@ -14,7 +14,7 @@
 
 + (BOOL)_assignMostRecentQuantity:(id *)arg1 dateInterval:(id *)arg2 forQuantitySample:(id)arg3;
 + (BOOL)_isHighFrequencyQuantityType:(id)arg1;
-+ (id)_mostRecentStartDateSortDescriptorForQuantityType:(id)arg1;
++ (id)_mostRecentEndDateSortDescriptorForQuantityType:(id)arg1;
 + (void)_processQuantitySample:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)_processStatisticsCollection:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)_queryForHighFrequencyMostRecentQuantityOfType:(id)arg1 sample:(id)arg2 healthStore:(id)arg3 completion:(CDUnknownBlockType)arg4;

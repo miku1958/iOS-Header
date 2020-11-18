@@ -33,7 +33,6 @@
 + (void)setDaemonVirtualDevices:(id)arg1;
 - (void).cxx_destruct;
 - (void)_availableOutputDevicesDidChangeNotification:(id)arg1;
-- (void)_checkClusterConsistencyWithLeaders:(id)arg1 members:(id)arg2;
 - (void)_onQueue_reload;
 - (void)_onQueue_reloadAvailableOutputDevices;
 - (void)_scheduleAvailableOutputDevicesReload;

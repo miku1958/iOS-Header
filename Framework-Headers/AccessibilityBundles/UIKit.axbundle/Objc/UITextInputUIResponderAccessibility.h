@@ -39,6 +39,7 @@
 - (id)_accessibilityTextRectsForSpeakThisStringRange:(struct _NSRange)arg1 string:(id)arg2 wantsSentences:(BOOL)arg3;
 - (id)_accessibilityTextRectsForSpeakThisStringRange:(struct _NSRange)arg1 wantsSentences:(BOOL)arg2;
 - (id)_accessibilityTextViewTextOperationResponder;
+- (struct _NSRange)_accessibilityVisibleTextRange;
 - (void)_axDrawFocusRingAroundFirstResponderAndMoveFocus:(BOOL)arg1;
 - (void)_axResetFKAFocusToFirstResponder;
 - (BOOL)_axShouldDrawFocusAroundFirstResponder;

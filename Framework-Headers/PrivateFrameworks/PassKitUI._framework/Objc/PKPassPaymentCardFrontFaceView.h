@@ -6,7 +6,7 @@
 
 #import <PassKitUI/PKPassFrontFaceView.h>
 
-@class PKBackdropView, PKBarcodeStickerView, UIButton, UIImageView, UILabel, UIView;
+@class NSMutableArray, PKBackdropView, PKBarcodeStickerView, UIButton, UIImageView, UILabel, UIView;
 
 @interface PKPassPaymentCardFrontFaceView : PKPassFrontFaceView
 {
@@ -15,6 +15,8 @@
     PKBackdropView *_backdropView;
     PKBarcodeStickerView *_topBarcodeView;
     PKBarcodeStickerView *_bottomBarcodeView;
+    NSMutableArray *_oldTopBarcodeViews;
+    NSMutableArray *_oldBottomBarcodeViews;
     UIButton *_fullScreenButton;
     UIImageView *_compactBankLogoView;
 }
@@ -29,9 +31,12 @@
 - (void)_updateBalanceLabelFontSize;
 - (void)_updateBalanceWithAccount:(id)arg1;
 - (struct CGSize)contentSize;
+- (void)createBodyContentViews;
 - (void)createHeaderContentViews;
 - (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)setDynamicBarcodeData:(id)arg1;
 - (void)setShowsLiveBalance:(BOOL)arg1;
 - (void)setViewExpanded:(BOOL)arg1;
 - (BOOL)showsShare;

@@ -199,6 +199,7 @@
 - (BOOL)_shouldSchedulePhaticAtStartRecording;
 - (BOOL)_shouldSetStartSampleCount;
 - (BOOL)_shouldSetStartSampleCountForRTS;
+- (BOOL)_shouldTrackLaunchLatency;
 - (BOOL)_shouldUseLanguageDetector:(id)arg1;
 - (void)_startPhaticDecision;
 - (void)_teardownAudioProviderIfNeeded;

@@ -10,6 +10,7 @@
 
 @interface SOAsynchronousLDAPOperation : SOAsynchronousOperation
 {
+    BOOL _requireTLSForLDAP;
     unsigned short _port;
     CDUnknownBlockType _completion;
     NSString *_realm;
@@ -22,9 +23,10 @@
 @property (strong, nonatomic) NSString *host; // @synthesize host=_host;
 @property (nonatomic) unsigned short port; // @synthesize port=_port;
 @property (strong, nonatomic) NSString *realm; // @synthesize realm=_realm;
+@property (nonatomic) BOOL requireTLSForLDAP; // @synthesize requireTLSForLDAP=_requireTLSForLDAP;
 
 - (void).cxx_destruct;
-- (id)initWithRealm:(id)arg1 andHost:(id)arg2 andPort:(unsigned short)arg3 andBundleIdentifier:(id)arg4 andCompetion:(CDUnknownBlockType)arg5;
+- (id)initWithRealm:(id)arg1 andHost:(id)arg2 andPort:(unsigned short)arg3 andBundleIdentifier:(id)arg4 andRequireTLSForLDAP:(BOOL)arg5 andCompletion:(CDUnknownBlockType)arg6;
 - (void)main;
 
 @end

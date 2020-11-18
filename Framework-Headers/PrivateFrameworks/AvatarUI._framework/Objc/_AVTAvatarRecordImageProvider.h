@@ -39,9 +39,9 @@
 - (CDUnknownBlockType)_providerForAvatar:(id)arg1 forRecord:(id)arg2 scope:(id)arg3 usingCache:(BOOL)arg4;
 - (CDUnknownBlockType)_providerForRecord:(id)arg1 scope:(id)arg2;
 - (id)initWithEnvironment:(id)arg1;
-- (id)initWithEnvironment:(id)arg1 scheduler:(id)arg2;
-- (id)initWithPersistentCache:(id)arg1 volatileCache:(id)arg2 allowPreFlight:(BOOL)arg3 scheduler:(id)arg4 environment:(id)arg5;
-- (id)initWithPersistentCache:(id)arg1 volatileCache:(id)arg2 renderingQueue:(id)arg3 callbackQueue:(id)arg4 configurationRenderer:(id)arg5 avatarRenderer:(id)arg6 scheduler:(id)arg7 allowPreFlight:(BOOL)arg8 environment:(id)arg9;
+- (id)initWithEnvironment:(id)arg1 taskScheduler:(id)arg2;
+- (id)initWithPersistentCache:(id)arg1 volatileCache:(id)arg2 allowPreFlight:(BOOL)arg3 taskScheduler:(id)arg4 environment:(id)arg5;
+- (id)initWithPersistentCache:(id)arg1 volatileCache:(id)arg2 renderingQueue:(id)arg3 callbackQueue:(id)arg4 configurationRenderer:(id)arg5 avatarRenderer:(id)arg6 taskScheduler:(id)arg7 allowPreFlight:(BOOL)arg8 environment:(id)arg9;
 - (CDUnknownBlockType)providerForAvatar:(id)arg1 forRecord:(id)arg2 scope:(id)arg3 usingCache:(BOOL)arg4;
 - (CDUnknownBlockType)providerForRecord:(id)arg1 scope:(id)arg2;
 

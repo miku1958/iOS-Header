@@ -22,15 +22,16 @@
     NSObject<OS_dispatch_queue> *_videoAccessQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     NSCache *_fallbackImageArtworkRepresentationCache;
-    NSMapTable *_catalogTaskMap;
     NSMutableDictionary *_pendingRequestURLToCompletionHandlers;
+    NSMapTable *_catalogImageTaskMap;
+    NSMapTable *_resourceLoadingRequestVideoTaskMap;
     NSURLSession *_imageURLSession;
     NSURLSession *_videoURLSession;
 }
 
 @property (readonly, nonatomic) NSURLSessionConfiguration *URLSessionConfiguration; // @synthesize URLSessionConfiguration=_URLSessionConfiguration;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
-@property (strong, nonatomic) NSMapTable *catalogTaskMap; // @synthesize catalogTaskMap=_catalogTaskMap;
+@property (strong, nonatomic) NSMapTable *catalogImageTaskMap; // @synthesize catalogImageTaskMap=_catalogImageTaskMap;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSCache *fallbackImageArtworkRepresentationCache; // @synthesize fallbackImageArtworkRepresentationCache=_fallbackImageArtworkRepresentationCache;
@@ -38,6 +39,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *imageAccessQueue; // @synthesize imageAccessQueue=_imageAccessQueue;
 @property (strong, nonatomic) NSURLSession *imageURLSession; // @synthesize imageURLSession=_imageURLSession;
 @property (strong, nonatomic) NSMutableDictionary *pendingRequestURLToCompletionHandlers; // @synthesize pendingRequestURLToCompletionHandlers=_pendingRequestURLToCompletionHandlers;
+@property (strong, nonatomic) NSMapTable *resourceLoadingRequestVideoTaskMap; // @synthesize resourceLoadingRequestVideoTaskMap=_resourceLoadingRequestVideoTaskMap;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL usesFallbackCache; // @synthesize usesFallbackCache=_usesFallbackCache;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *videoAccessQueue; // @synthesize videoAccessQueue=_videoAccessQueue;
@@ -46,8 +48,6 @@
 
 + (void)_applyImageURLCachePolicy:(unsigned long long)arg1 cacheDiskPath:(id)arg2 toConfiguration:(id)arg3;
 + (void)_applyVideoCacheURL:(id)arg1 toConfiguration:(id)arg2;
-+ (BOOL)ignoreUserAgentInURLCache;
-+ (void)setIgnoreUserAgentInURLCache:(BOOL)arg1;
 - (void).cxx_destruct;
 - (id)_artworkRepresentationWithImageFromData:(id)arg1 forURLResponse:(id)arg2 size:(struct CGSize)arg3 immediateImageDecompressionAllowed:(BOOL)arg4;
 - (struct CGSize)_bestAvailableSizeForCatalog:(id)arg1 kind:(long long)arg2;
@@ -76,6 +76,7 @@
 - (void)loadRepresentationOfKind:(long long)arg1 forArtworkCatalog:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)requestForCatalog:(id)arg1 kind:(long long)arg2 size:(struct CGSize)arg3;
 - (id)requestForCatalog:(id)arg1 size:(struct CGSize)arg2;
+- (void)resourceLoader:(id)arg1 didCancelLoadingRequest:(id)arg2;
 - (BOOL)resourceLoader:(id)arg1 shouldWaitForLoadingOfRequestedResource:(id)arg2;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (BOOL)shouldLookForLargerImageRepresentationsWhenBestRepresentationIsUnavailable;

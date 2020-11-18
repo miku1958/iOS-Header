@@ -40,6 +40,7 @@
 - (void).cxx_destruct;
 - (struct UIEdgeInsets)defaultBaselineRelativeLayoutMargins;
 - (void)disableUnbatchedUpdates;
+- (struct UIEdgeInsets)effectiveLayoutMargins;
 - (id)init;
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isLayoutSizeDependentOnPerpendicularAxis;

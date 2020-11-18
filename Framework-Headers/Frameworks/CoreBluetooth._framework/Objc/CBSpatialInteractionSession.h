@@ -34,6 +34,7 @@
     unsigned int _controlFlags;
     int _scanRate;
     int _scanRateOverride;
+    unsigned int _uwbTokenFlags;
     unsigned int _clientID;
     unsigned int _internalFlags;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
@@ -46,8 +47,10 @@
     CDUnknownBlockType _systemOverrideHandler;
     CDUnknownBlockType _advertisingAddressChangedHandler;
     NSData *_advertisingAddressData;
+    CDUnknownBlockType _aopDataHandler;
     CDUnknownBlockType _errorHandler;
     CDUnknownBlockType _interruptionHandler;
+    CDUnknownBlockType _measurementHandler;
     CDUnknownBlockType _tokenChangedHandler;
     NSData *_tokenData;
     NSData *_uwbConfigData;
@@ -59,6 +62,7 @@
 @property (nonatomic) int advertiseRate; // @synthesize advertiseRate=_advertiseRate;
 @property (copy, nonatomic) CDUnknownBlockType advertisingAddressChangedHandler; // @synthesize advertisingAddressChangedHandler=_advertisingAddressChangedHandler;
 @property (readonly, copy, nonatomic) NSData *advertisingAddressData; // @synthesize advertisingAddressData=_advertisingAddressData;
+@property (copy, nonatomic) CDUnknownBlockType aopDataHandler; // @synthesize aopDataHandler=_aopDataHandler;
 @property (readonly, nonatomic) long long bluetoothState; // @synthesize bluetoothState=_bluetoothState;
 @property (copy, nonatomic) CDUnknownBlockType bluetoothStateChangedHandler; // @synthesize bluetoothStateChangedHandler=_bluetoothStateChangedHandler;
 @property (nonatomic) unsigned int clientID; // @synthesize clientID=_clientID;
@@ -74,6 +78,7 @@
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (copy, nonatomic) NSData *irkData; // @synthesize irkData=_irkData;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property (copy, nonatomic) CDUnknownBlockType measurementHandler; // @synthesize measurementHandler=_measurementHandler;
 @property (nonatomic) int scanRate; // @synthesize scanRate=_scanRate;
 @property (nonatomic) int scanRateOverride; // @synthesize scanRateOverride=_scanRateOverride;
 @property (readonly, nonatomic) unsigned int systemOverrideFlags; // @synthesize systemOverrideFlags=_systemOverrideFlags;
@@ -82,6 +87,7 @@
 @property (copy, nonatomic) CDUnknownBlockType tokenChangedHandler; // @synthesize tokenChangedHandler=_tokenChangedHandler;
 @property (copy, nonatomic) NSData *tokenData; // @synthesize tokenData=_tokenData;
 @property (copy, nonatomic) NSData *uwbConfigData; // @synthesize uwbConfigData=_uwbConfigData;
+@property (nonatomic) unsigned int uwbTokenFlags; // @synthesize uwbTokenFlags=_uwbTokenFlags;
 
 - (void).cxx_destruct;
 - (void)_activate;
@@ -97,6 +103,7 @@
 - (void)_reAddTokens;
 - (void)_update;
 - (void)_updateIfNeededWithBlock:(CDUnknownBlockType)arg1;
+- (void)_xpcReceivedAOPData:(id)arg1;
 - (void)_xpcReceivedAdvertisingAddressChanged:(id)arg1;
 - (void)_xpcReceivedDeviceFound:(id)arg1;
 - (void)_xpcReceivedDeviceLost:(id)arg1;
@@ -114,6 +121,7 @@
 - (id)init;
 - (id)initWithXPCObject:(id)arg1 error:(id *)arg2;
 - (void)invalidate;
+- (BOOL)matchesWithDevice:(id)arg1;
 - (void)removePeerToken:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setAdvertiseRate:(int)arg1 timeout:(double)arg2;
 - (BOOL)updateWithSession:(id)arg1;

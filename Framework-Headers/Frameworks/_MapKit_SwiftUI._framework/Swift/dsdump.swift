@@ -9,9 +9,9 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : £)
+	var x : 3(
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : £)
+	var y : 3(
  }
 
  struct __C.CLLocationCoordinate2D {
@@ -69,7 +69,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var coordinate : CLLocationCoordinate2D // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var tintColor : Î* // +0x10
+	var tintColor : {) // +0x10
  }
 
  struct _MapKit_SwiftUI.MapMarker: MapAnnotationProtocol {
@@ -77,7 +77,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var coordinate : CLLocationCoordinate2D // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var tintColor : Î* // +0x10
+	var tintColor : {) // +0x10
  }
 
  struct _MapKit_SwiftUI._MapAnnotationData {
@@ -119,10 +119,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class _MapKit_SwiftUI.MapViewCoordinator {
  class _MapKit_SwiftUI._SwiftUIMKMapView : MKMapView /System/Library/Frameworks/MapKit.framework/MapKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x23ec00006c30 (0x3ec00006c30) in binary!
-	0x240a  @objc _SwiftUIMKMapView.(null) <stripped>
-WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x3fcfffff208  @objc _SwiftUIMKMapView.(null) <stripped>
+WARNING: couldn't find address 0x23fc00005ae8 (0x3fc00005ae8) in binary!
+	0x2830  @objc _SwiftUIMKMapView.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xfffff318  @objc _SwiftUIMKMapView.(null) <stripped>
  }
 
  struct _MapKit_SwiftUI._MapView {
@@ -133,16 +133,16 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	var interactions : MapInteractionModes
 	var showsUserLocation : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var userTrackingMode : è)
+	var userTrackingMode : (
  }
 
  enum _MapKit_SwiftUI.Region {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case rect : #)
+	case rect : ≥'
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case region : )
+	case region : •'
  }
 
  struct _MapKit_SwiftUI._DefaultAnnotatedMapContent {
@@ -152,7 +152,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let interactionModes : MapInteractionModes
 	let showsUserLocation : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userTrackingMode : 5(
+	let userTrackingMode : ≈&
 	let items : A?
 	let content : _MapAnnotationData
  }
@@ -164,7 +164,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let interactionModes : MapInteractionModes // +0x30
 	let showsUserLocation : Bool // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userTrackingMode : 5( // +0x40
+	let userTrackingMode : ≈& // +0x40
  }
 
  struct _MapKit_SwiftUI.AnnotationData { }
@@ -173,22 +173,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var wrappedView : £'
+	var wrappedView : 3&
 	var anchorPoint : CGPoint
 	let model : Model
 	let hostView : UIView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x22fd00006c80 (0x2fd00006c80) in binary!
-	0x23ea  @objc SwiftUIAnnotationView.(null) <stripped>
-WARNING: couldn't find address 0x22ce00006c30 (0x2ce00006c30) in binary!
-	0x27c8  @objc SwiftUIAnnotationView.(null) <stripped>
-WARNING: couldn't find address 0x22b600006af0 (0x2b600006af0) in binary!
+WARNING: couldn't find address 0x27f600005b20 (0x7f600005b20) in binary!
+	0x27f8  @objc SwiftUIAnnotationView.(null) <stripped>
+WARNING: couldn't find address 0x22d600005ad0 (0x2d600005ad0) in binary!
+	0x27f0  @objc SwiftUIAnnotationView.(null) <stripped>
+WARNING: couldn't find address 0x22be00005990 (0x2be00005990) in binary!
 	0x0  @objc SwiftUIAnnotationView.(null) <stripped>
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	0x41b0  @objc SwiftUIAnnotationView.(null) <stripped>
-WARNING: couldn't find address 0xd400000048 (0xd400000048) in binary!
-	0xec00000038  @objc SwiftUIAnnotationView.(null) <stripped>
+WARNING: couldn't find address 0x3fe0000000000000 (0x0) in binary!
+	0x8400000058  @objc SwiftUIAnnotationView.(null) <stripped>
+	0x4040  @objc SwiftUIAnnotationView.â√Hã@¯HâEêHã@@HÉ¿HÉ‡IâÂI)≈LâÏLcs8MÓHãE»Hã <stripped>
 
 	// Swift methods
  }
@@ -198,5 +197,5 @@ WARNING: couldn't find address 0xd400000048 (0xd400000048) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _model : …&
+	var _model : Y%
  }

@@ -31,6 +31,7 @@
 - (id)_openSqliteDatabaseAtPath:(id)arg1;
 - (BOOL)addAbuseControlOutcomeForSuggestion:(id)arg1 forTimestamp:(long long)arg2 outcome:(long long)arg3;
 - (BOOL)addAbuseControlOutcomes:(id)arg1;
+- (BOOL)addStackConfigStatistics:(id)arg1;
 - (BOOL)appendDismissRecord:(id)arg1;
 - (BOOL)atomicallyDeleteInfoSuggestions:(id)arg1 insertInfoSuggestions:(id)arg2;
 - (BOOL)clearOldAbuseControlOutcomeData;
@@ -47,6 +48,7 @@
 - (id)earliestFutureSuggestionChangeDate;
 - (id)fetchAbuseControlOutcomesForSuggestion:(id)arg1 sinceDate:(id)arg2;
 - (id)fetchDistinctWidgetsIgnoringIntentSinceDate:(id)arg1;
+- (id)fetchStackConfigStatisticsForWidgetBundleId:(id)arg1 widgetKind:(id)arg2 containerBundleIdentifier:(id)arg3 widgetFamily:(long long)arg4;
 - (id)fetchTimelineEntriesForWidget:(id)arg1 sinceDate:(id)arg2;
 - (id)firstTimeAtWhichSuggestionPassedTimelineFilters:(id)arg1;
 - (id)init;

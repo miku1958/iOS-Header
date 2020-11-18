@@ -50,6 +50,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRegion:(id)arg1;
+- (id)notificationConfigurationForName:(id)arg1;
 
 @end
 

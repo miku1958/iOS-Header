@@ -25,6 +25,7 @@
     WFWorkflow *_workflow;
     WFTrigger *_trigger;
     WFAutomationSuggestion *_suggestion;
+    unsigned long long _source;
     NSString *_shortcutName;
     NSString *_shortcutDescription;
     WFWorkflowIcon *_shortcutIcon;
@@ -58,6 +59,7 @@
 @property (copy, nonatomic) NSString *shortcutDescription; // @synthesize shortcutDescription=_shortcutDescription;
 @property (copy, nonatomic) WFWorkflowIcon *shortcutIcon; // @synthesize shortcutIcon=_shortcutIcon;
 @property (copy, nonatomic) NSString *shortcutName; // @synthesize shortcutName=_shortcutName;
+@property (nonatomic) unsigned long long source; // @synthesize source=_source;
 @property (strong, nonatomic) WFAutomationSuggestion *suggestion; // @synthesize suggestion=_suggestion;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;

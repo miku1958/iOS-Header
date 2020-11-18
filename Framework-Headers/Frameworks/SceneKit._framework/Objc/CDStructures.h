@@ -734,7 +734,7 @@ struct __C3DFXMetalProgram {
     void *_field6;
     struct __CFDictionary *_field7;
     void *_field8;
-    struct __CFString *_field9;
+    unsigned long long _field9;
 };
 
 struct __C3DFXPass {
@@ -2299,6 +2299,27 @@ typedef struct {
 } CDStruct_65434d98;
 
 typedef struct {
+    struct __C3DFXMetalProgram *_field1;
+    struct __C3DMaterial *_field2;
+    struct __C3DGeometry *_field3;
+    struct __C3DFXPass *_field4;
+    struct __C3DFXPass *_field5;
+    id _field6;
+    struct __C3DBlendStates *_field7;
+    struct __C3DNode *_field8;
+    unsigned char _field9;
+    unsigned char _field10;
+    unsigned char _field11;
+    unsigned char _field12;
+    BOOL _field13;
+    id _field14;
+    struct {
+        unsigned char _field1;
+        CDUnknownBlockType _field2;
+    } _field15;
+} CDStruct_315dd483;
+
+typedef struct {
     struct __C3DFXProgram *weakProgram;
     unsigned int baseIndex;
     unsigned int baseVertex;
@@ -2328,27 +2349,6 @@ typedef struct {
     NSMutableSet *_usedMeshElements;
     NSMutableSet *_freeMeshElements;
 } CDStruct_5d7f1bfa;
-
-typedef struct {
-    struct __C3DFXProgram *_field1;
-    struct __C3DMaterial *_field2;
-    struct __C3DGeometry *_field3;
-    struct __C3DFXPass *_field4;
-    struct __C3DFXPass *_field5;
-    id _field6;
-    struct __C3DBlendStates *_field7;
-    struct __C3DNode *_field8;
-    unsigned char _field9;
-    unsigned char _field10;
-    unsigned char _field11;
-    unsigned char _field12;
-    BOOL _field13;
-    id _field14;
-    struct {
-        unsigned char _field1;
-        CDUnknownBlockType _field2;
-    } _field15;
-} CDStruct_1c56e179;
 
 typedef struct {
     struct __C3DMesh *_field1;
@@ -2394,7 +2394,7 @@ typedef struct {
 } CDStruct_7841dd09;
 
 typedef struct {
-    CDStruct_1c56e179 _field1;
+    CDStruct_315dd483 _field1;
     id _field2;
     CDStruct_8f3d16ac _field3;
     struct __C3DBlendStates *_field4;
@@ -2409,7 +2409,7 @@ typedef struct {
     BOOL _field13;
     BOOL _field14;
     BOOL _field15;
-} CDStruct_0aa79a9f;
+} CDStruct_2f83adfc;
 
 typedef struct {
     struct {

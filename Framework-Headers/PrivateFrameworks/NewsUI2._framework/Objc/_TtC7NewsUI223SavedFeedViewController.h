@@ -16,6 +16,7 @@
     MISSING_TYPE *sharingActivityProviderFactory;
     MISSING_TYPE *userInfo;
     MISSING_TYPE *toolbarManager;
+    MISSING_TYPE *newsActivityManager;
 }
 
 - (void).cxx_destruct;

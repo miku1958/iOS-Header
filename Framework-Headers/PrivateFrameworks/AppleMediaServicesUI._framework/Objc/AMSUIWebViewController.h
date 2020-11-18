@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <AppleMediaServicesUI/AMSUICommonViewController.h>
 
 #import <AppleMediaServicesUI/AMSBagConsumer-Protocol.h>
 #import <AppleMediaServicesUI/AMSUIWebActionRunnerDelegate-Protocol.h>
@@ -13,10 +13,10 @@
 #import <AppleMediaServicesUI/AMSURLProtocolDelegate-Protocol.h>
 #import <AppleMediaServicesUI/NSURLSessionDelegate-Protocol.h>
 
-@class ACAccount, AMSProcessInfo, AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebContainerViewController, AMSUIWebPageViewController, NSDictionary, NSString, NSURL;
+@class ACAccount, AMSProcessInfo, AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebContainerViewController, AMSUIWebPageViewController, NSDictionary, NSString, NSURL, UIViewController;
 @protocol AMSBagProtocol, AMSUIWebDelegate;
 
-@interface AMSUIWebViewController : UIViewController <NSURLSessionDelegate, AMSURLProtocolDelegate, AMSUIWebActionRunnerDelegate, AMSUIWebPageViewControllerDelegate, AMSUIWebProtocolDelegate, AMSBagConsumer>
+@interface AMSUIWebViewController : AMSUICommonViewController <NSURLSessionDelegate, AMSURLProtocolDelegate, AMSUIWebActionRunnerDelegate, AMSUIWebPageViewControllerDelegate, AMSUIWebProtocolDelegate, AMSBagConsumer>
 {
     BOOL _hasAppeared;
     BOOL _hasStarted;
@@ -57,13 +57,10 @@
 - (void).cxx_destruct;
 - (void)AMSURLSession:(id)arg1 task:(id)arg2 handleAuthenticateRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)AMSURLSession:(id)arg1 task:(id)arg2 handleDialogRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_applyAppearance;
 - (void)_dismiss;
 - (id)_handleAuthenticateRequest:(id)arg1 pauseTimeouts:(BOOL)arg2;
 - (id)_handleDialogRequest:(id)arg1 pauseTimeouts:(BOOL)arg2;
 - (void)_handleDidEncodeNetworkRequest:(id)arg1;
-- (void)_handleWillAppear;
-- (void)_handleWillLayout;
 - (id)_lazyPromiseForBagSnapshot;
 - (id)_lazyPromiseForLoadingRequest:(id)arg1 bagValue:(id)arg2;
 - (id)_lazyPromiseForLoadingSession;

@@ -30,6 +30,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)defaultButtonTitle;
 - (void)defaultResponse;
 - (id)initWithButtonTitle:(id)arg1 handles:(id)arg2 dialAction:(CDUnknownBlockType)arg3;

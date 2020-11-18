@@ -26,6 +26,7 @@
 + (void)startNotificationCenterServer;
 - (void).cxx_destruct;
 - (void)addHAENotificationEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)addHAENotificationEvent:(id)arg1 error:(id *)arg2;
 - (id)initWithBundleIdentifier:(id)arg1;
 - (void)setDelegate:(id)arg1;
 

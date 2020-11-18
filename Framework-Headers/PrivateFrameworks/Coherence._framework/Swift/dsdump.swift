@@ -583,10 +583,10 @@
 	var temporaryIDs : Renames
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12fe00003e268 (0x7e00003e268) in binary!
+WARNING: couldn't find address 0x12fe00003d598 (0x7e00003d598) in binary!
 	0x12fe8  @objc CRContext.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x4ecffe11830  @objc CRContext.(null) <stripped>
+	0x1cffe11360  @objc CRContext.(null) <stripped>
 
 	// Swift methods
  }
@@ -613,10 +613,10 @@ WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
 	// Properties
 	let contents : CRType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let removed : h
+	let removed : 3[
 	let moved : Move
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let added : h
+	let added : 3[
  }
 
  struct Coherence.MutatingAction {
@@ -631,7 +631,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var arrayIterator : ´q
+	var arrayIterator : €d
  }
 
  enum Coherence.CRAffinity {
@@ -655,7 +655,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let sqlStore : CRSQLStore
 
 	// Swift methods
-	0x3eed0  func <stripped> // method 
+	0x3e7e0  func <stripped> // method 
  }
 
  class Coherence.CRDataStorePartialDecodeContext : CRDataStoreDecodeContext {
@@ -783,29 +783,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let path : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dbPointer : n
+	let dbPointer : Oa
 	let SQLITE_STATIC : @convention(c) (_:)
 	let SQLITE_TRANSIENT : @convention(c) (_:)
 
 	// Swift methods
-	0x68960  func <stripped> // method 
-	0x68a10  func <stripped> // method 
-	0x68a60  func <stripped> // method 
-	0x68ab0  func <stripped> // method 
-	0x68b00  func <stripped> // method 
+	0x684a0  func <stripped> // method 
+	0x68550  func <stripped> // method 
+	0x685a0  func <stripped> // method 
+	0x685f0  func <stripped> // method 
+	0x68640  func <stripped> // method 
  }
 
  class Coherence.CRSQLStore : _CRSQLStore {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dataQueryStatement : n
+	var dataQueryStatement : Oa
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var versionQueryStatement : n
+	var versionQueryStatement : Oa
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dataInsertStatement : n
+	var dataInsertStatement : Oa
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dataDeleteStatement : n
+	var dataDeleteStatement : Oa
  }
 
  enum Coherence.SQLiteError {
@@ -864,10 +864,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class Coherence.CRAnyKeyPathComponent : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x6d6a0  func <stripped> // method 
-	0x6d6f0  func <stripped> // method 
-	0x6d700  func <stripped> // getter 
-	0x6d720  func <stripped> // method 
+	0x6d060  func <stripped> // method 
+	0x6d0b0  func <stripped> // method 
+	0x6d0c0  func <stripped> // getter 
+	0x6d0e0  func <stripped> // method 
  }
 
  class Coherence.CRKeyPathComponent {
@@ -879,8 +879,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var context : CRContext
 
 	// Swift methods
-	0x6ea70  func <stripped> // method 
-	0x6ec90  func <stripped> // method 
+	0x6e430  func <stripped> // method 
+	0x6e650  func <stripped> // method 
  }
 
  class Coherence.CRProtoDecodeContext : CRDecodeContext {
@@ -908,9 +908,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _crdtContainer : CRDTContainer
 
 	// Swift methods
-	0x6fad0  func <stripped> // method 
-	0x6fdc0  func CRDecoder.valueContainer() // method 
-	0x6fe20  func CRDecoder.crdtContainer() // method 
+	0x6f490  func <stripped> // method 
+	0x6f780  func CRDecoder.valueContainer() // method 
+	0x6f7e0  func CRDecoder.crdtContainer() // method 
  }
 
  class Coherence.CRDTContainer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -920,14 +920,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let decodeContext : CRDecodeContext
 
 	// Swift methods
-	0x6fe80  func CRDecoder.CRDTContainer.decode<A>(_:) // method 
-	0x6ff30  func CRDecoder.CRDTContainer.decode<A>(_:) // method 
-	0x6ffb0  func CRDecoder.CRDTContainer.decode<A, B>(_:) // method 
-	0x70050  func CRDecoder.CRDTContainer.decode<A>(_:) // method 
-	0x70070  func CRDecoder.CRDTContainer.decode(_:) // method 
-	0x70130  func CRDecoder.CRDTContainer.decode(_:) // method 
-	0x701c0  func CRDecoder.CRDTContainer.decodeTagged() // method 
-	0x70490  func CRDecoder.CRDTContainer.decodeSibling() // method 
+	0x6f840  func CRDecoder.CRDTContainer.decode<A>(_:) // method 
+	0x6f8f0  func CRDecoder.CRDTContainer.decode<A>(_:) // method 
+	0x6f970  func CRDecoder.CRDTContainer.decode<A, B>(_:) // method 
+	0x6fa10  func CRDecoder.CRDTContainer.decode<A>(_:) // method 
+	0x6fa30  func CRDecoder.CRDTContainer.decode(_:) // method 
+	0x6faf0  func CRDecoder.CRDTContainer.decode(_:) // method 
+	0x6fb80  func CRDecoder.CRDTContainer.decodeTagged() // method 
+	0x6fe50  func CRDecoder.CRDTContainer.decodeSibling() // method 
  }
 
  class Coherence.CRValueContainer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -937,13 +937,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let decodeContext : CRDecodeContext
 
 	// Swift methods
-	0x706d0  func CRDecoder.CRValueContainer.decode(_:) // method 
-	0x70780  func CRDecoder.CRValueContainer.decode(_:) // method 
-	0x70840  func CRDecoder.CRValueContainer.decode(_:) // method 
-	0x70960  func CRDecoder.CRValueContainer.decode(_:) // method 
-	0x70a20  func CRDecoder.CRValueContainer.decode(_:) // method 
-	0x70ae0  func CRDecoder.CRValueContainer.decode<A>(_:) // method 
-	0x70d10  func CRDecoder.CRValueContainer.decode<A>(_:) // method 
+	0x70090  func CRDecoder.CRValueContainer.decode(_:) // method 
+	0x70140  func CRDecoder.CRValueContainer.decode(_:) // method 
+	0x70200  func CRDecoder.CRValueContainer.decode(_:) // method 
+	0x70320  func CRDecoder.CRValueContainer.decode(_:) // method 
+	0x703e0  func CRDecoder.CRValueContainer.decode(_:) // method 
+	0x704a0  func CRDecoder.CRValueContainer.decode<A>(_:) // method 
+	0x706d0  func CRDecoder.CRValueContainer.decode<A>(_:) // method 
  }
 
  class Coherence.CREncoder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -953,10 +953,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _crdtContainer : CRDTContainer
 
 	// Swift methods
-	0x70e50  func <stripped> // method 
-	0x71650  func <stripped> // method 
-	0x718c0  func CREncoder.valueContainer() // method 
-	0x718e0  func CREncoder.crdtContainer() // method 
+	0x70810  func <stripped> // method 
+	0x71010  func <stripped> // method 
+	0x71280  func CREncoder.valueContainer() // method 
+	0x712a0  func CREncoder.crdtContainer() // method 
  }
 
  class Coherence.CRDTContainer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -965,14 +965,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var crdt : Proto_CRDT
 
 	// Swift methods
-	0x71930  func CREncoder.CRDTContainer.encode<A>(_:) // method 
-	0x71950  func CREncoder.CRDTContainer.encode<A>(_:) // method 
-	0x71b00  func CREncoder.CRDTContainer.encode<A, B>(_:) // method 
-	0x71b80  func CREncoder.CRDTContainer.encode<A>(_:) // method 
-	0x71ba0  func CREncoder.CRDTContainer.encode(_:) // method 
-	0x71c10  func CREncoder.CRDTContainer.encode(_:) // method 
-	0x71dd0  func CREncoder.CRDTContainer.encodeTagged(tag:encode:) // method 
-	0x72220  func CREncoder.CRDTContainer.encodeSibling(data:) // method 
+	0x712f0  func CREncoder.CRDTContainer.encode<A>(_:) // method 
+	0x71310  func CREncoder.CRDTContainer.encode<A>(_:) // method 
+	0x714c0  func CREncoder.CRDTContainer.encode<A, B>(_:) // method 
+	0x71540  func CREncoder.CRDTContainer.encode<A>(_:) // method 
+	0x71560  func CREncoder.CRDTContainer.encode(_:) // method 
+	0x715d0  func CREncoder.CRDTContainer.encode(_:) // method 
+	0x71790  func CREncoder.CRDTContainer.encodeTagged(tag:encode:) // method 
+	0x71be0  func CREncoder.CRDTContainer.encodeSibling(data:) // method 
  }
 
  class Coherence.CRDTKeyedContainer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -981,7 +981,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let container : CRDTContainer
 
 	// Swift methods
-	0x72520  func <stripped> // method 
+	0x71ee0  func <stripped> // method 
  }
 
  class Coherence.CRValueContainer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -990,13 +990,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var value : Proto_Value
 
 	// Swift methods
-	0x72bd0  func CREncoder.CRValueContainer.encode(_:) // method 
-	0x72d00  func CREncoder.CRValueContainer.encode(_:) // method 
-	0x72e30  func CREncoder.CRValueContainer.encode(_:) // method 
-	0x72ef0  func CREncoder.CRValueContainer.encode(_:) // method 
-	0x73030  func CREncoder.CRValueContainer.encode(_:) // method 
-	0x73160  func CREncoder.CRValueContainer.encode<A>(_:) // method 
-	0x735b0  func CREncoder.CRValueContainer.encode<A>(_:) // method 
+	0x72590  func CREncoder.CRValueContainer.encode(_:) // method 
+	0x726c0  func CREncoder.CRValueContainer.encode(_:) // method 
+	0x727f0  func CREncoder.CRValueContainer.encode(_:) // method 
+	0x728b0  func CREncoder.CRValueContainer.encode(_:) // method 
+	0x729f0  func CREncoder.CRValueContainer.encode(_:) // method 
+	0x72b20  func CREncoder.CRValueContainer.encode<A>(_:) // method 
+	0x72f70  func CREncoder.CRValueContainer.encode<A>(_:) // method 
  }
 
  enum Coherence.JSONEncodingError {
@@ -1075,7 +1075,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var interned :  empty-list 
 
 	// Swift methods
-	0x7c9a0  func <stripped> // method 
+	0x7c3a0  func <stripped> // method 
  }
 
  struct Coherence._NameMap {
@@ -1091,13 +1091,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case same : +i
+	case same : [\
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case standard : +i
+	case standard : [\
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case unique : i
+	case unique : M\
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case aliased : i
+	case aliased : 7\
  }
 
  struct Coherence.Name {
@@ -1120,7 +1120,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case string : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case staticString : «h
+	case staticString : ˜[
  }
 
  struct Coherence.JSONScanner {
@@ -1146,7 +1146,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var scanner : TextFormatScanner // +0x0
 	var fieldCount : Int // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var terminator : ëj // +0x48
+	var terminator : ¡] // +0x48
 	var fieldNameMap : _NameMap // +0x50
 	var messageType : Message // +0x70
  }
@@ -1157,7 +1157,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var data : M] // +0x0
+	var data : }P // +0x0
  }
 
  struct Coherence.CRVersion {
@@ -1170,33 +1170,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var uuid : µ[
+	var uuid : ÂN
 	var index : Int
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12f700003e270 (0x7700003e270) in binary!
+WARNING: couldn't find address 0x12f700003d5a0 (0x7700003d5a0) in binary!
 	0x121dc  @objc ObjCReplica.(null) <stripped>
-WARNING: couldn't find address 0x151e40003e1f8 (0x1e40003e1f8) in binary!
+WARNING: couldn't find address 0x151e40003d528 (0x1e40003d528) in binary!
 	0x131cc  @objc ObjCReplica.(null) <stripped>
-WARNING: couldn't find address 0x1216e0003e200 (0x16e0003e200) in binary!
+WARNING: couldn't find address 0x1216e0003d530 (0x16e0003d530) in binary!
 	0x12f34  @objc ObjCReplica.(null) <stripped>
-WARNING: couldn't find address 0x12f3c0003e010 (0x73c0003e010) in binary!
+WARNING: couldn't find address 0x12f3c0003d340 (0x73c0003d340) in binary!
 	0x68000000c  @objc ObjCReplica.(null) <stripped>
-WARNING: couldn't find address 0x12f100003e390 (0x7100003e390) in binary!
+WARNING: couldn't find address 0x12f100003d6c0 (0x7100003d6c0) in binary!
 	0x15190  @objc ObjCReplica.(null) <stripped>
-WARNING: couldn't find address 0x121260003e458 (0x1260003e458) in binary!
+WARNING: couldn't find address 0x121260003d788 (0x1260003d788) in binary!
 	0x12eec  @objc ObjCReplica.(null) <stripped>
-WARNING: couldn't find address 0x12ee00003e168 (0x6e00003e168) in binary!
+WARNING: couldn't find address 0x12ee00003d498 (0x6e00003d498) in binary!
 	0x12ee8  @objc ObjCReplica.(null) <stripped>
 
 	// Swift methods
-	0x9b170  func ObjCReplica.uuid.getter // getter 
-	0x9b280  func ObjCReplica.uuid.setter // setter 
-	0x9b2e0  func ObjCReplica.uuid.modify // modifyCoroutine 
-	0x9b370  func ObjCReplica.index.getter // getter 
-	0x9b3e0  func ObjCReplica.index.setter // setter 
-	0x9b420  func ObjCReplica.index.modify // modifyCoroutine 
-	0x9ac10  class func ObjCReplica.__allocating_init(uuid:index:) // init 
+	0x9ac70  func ObjCReplica.uuid.getter // getter 
+	0x9ad80  func ObjCReplica.uuid.setter // setter 
+	0x9ade0  func ObjCReplica.uuid.modify // modifyCoroutine 
+	0x9ae70  func ObjCReplica.index.getter // getter 
+	0x9aee0  func ObjCReplica.index.setter // setter 
+	0x9af20  func ObjCReplica.index.modify // modifyCoroutine 
+	0x9a710  class func ObjCReplica.__allocating_init(uuid:index:) // init 
  }
 
  class Coherence.ObjCTimestamp : NSObject /usr/lib/libobjc.A.dylib {
@@ -1205,22 +1205,22 @@ WARNING: couldn't find address 0x12ee00003e168 (0x6e00003e168) in binary!
 	var timestamp : Timestamp
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12f100003e390 (0x7100003e390) in binary!
+WARNING: couldn't find address 0x12f100003d6c0 (0x7100003d6c0) in binary!
 	0x15190  @objc ObjCTimestamp.(null) <stripped>
-WARNING: couldn't find address 0x121260003e458 (0x1260003e458) in binary!
+WARNING: couldn't find address 0x121260003d788 (0x1260003d788) in binary!
 	0x12eec  @objc ObjCTimestamp.(null) <stripped>
-WARNING: couldn't find address 0x12ee00003e168 (0x6e00003e168) in binary!
+WARNING: couldn't find address 0x12ee00003d498 (0x6e00003d498) in binary!
 	0x12ee8  @objc ObjCTimestamp.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x79cffea2e60  @objc ObjCTimestamp.(null) <stripped>
-	0x1180003e110  @objc ObjCTimestamp.ôÜ  <stripped>
-WARNING: couldn't find address 0x3e11cffea3070 (0x11cffea3070) in binary!
-	0x69c0003df70  @objc ObjCTimestamp.(null) <stripped>
+	0x2ccffea2cb0  @objc ObjCTimestamp.(null) <stripped>
+	0x1180003d440  @objc ObjCTimestamp.ã}†HãuêLâÚIâÿË< <stripped>
+WARNING: couldn't find address 0x3d44cffea2ec0 (0x44cffea2ec0) in binary!
+	0x69c0003d2a0  @objc ObjCTimestamp.(null) <stripped>
 
 	// Swift methods
-	0x9b700  func ObjCTimestamp.replica.getter // getter 
-	0x9b9a0  func ObjCTimestamp.counter.getter // getter 
-	0x9ba10  class func ObjCTimestamp.__allocating_init(replica:counter:) // init 
+	0x9b200  func ObjCTimestamp.replica.getter // getter 
+	0x9b4b0  func ObjCTimestamp.counter.getter // getter 
+	0x9b520  class func ObjCTimestamp.__allocating_init(replica:counter:) // init 
  }
 
  struct Coherence.Timestamp {
@@ -1238,16 +1238,16 @@ WARNING: couldn't find address 0x3e11cffea3070 (0x11cffea3070) in binary!
 	var replicaState : ReplicaState
 
 	// Swift methods
-	0xb5800  func <stripped> // method 
-	0xb5840  func <stripped> // method 
-	0xb5880  func <stripped> // method 
-	0xb58c0  func <stripped> // method 
-	0xb5900  func <stripped> // method 
-	0xb5940  func <stripped> // method 
-	0xb5980  func <stripped> // method 
-	0xb59c0  func <stripped> // method 
-	0xb5a00  func <stripped> // method 
-	0xb5a40  func <stripped> // getter 
+	0xb5310  func <stripped> // method 
+	0xb5350  func <stripped> // method 
+	0xb5390  func <stripped> // method 
+	0xb53d0  func <stripped> // method 
+	0xb5410  func <stripped> // method 
+	0xb5450  func <stripped> // method 
+	0xb5490  func <stripped> // method 
+	0xb54d0  func <stripped> // method 
+	0xb5510  func <stripped> // method 
+	0xb5550  func <stripped> // getter 
  }
 
  class Coherence.CRReferenceRef {
@@ -1273,43 +1273,43 @@ WARNING: couldn't find address 0x3e11cffea3070 (0x11cffea3070) in binary!
 	var decodeContext : CRDecodeContext
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x130e40003df78 (0xe40003df78) in binary!
+WARNING: couldn't find address 0x130e40003d2a8 (0xe40003d2a8) in binary!
 	0x12e64  @objc CRStringDecoder.(null) <stripped>
-WARNING: couldn't find address 0x130cc0003dfa0 (0xcc0003dfa0) in binary!
+WARNING: couldn't find address 0x130cc0003d2d0 (0xcc0003d2d0) in binary!
 	0x130c0  @objc CRStringDecoder.(null) <stripped>
-WARNING: couldn't find address 0x150cc0003df80 (0xcc0003df80) in binary!
+WARNING: couldn't find address 0x150cc0003d2b0 (0xcc0003d2b0) in binary!
 	0x130b4  @objc CRStringDecoder.(null) <stripped>
-WARNING: couldn't find address 0x130b30003dfd0 (0xb30003dfd0) in binary!
+WARNING: couldn't find address 0x130b30003d300 (0xb30003d300) in binary!
 	0x130a7  @objc CRStringDecoder.(null) <stripped>
-WARNING: couldn't find address 0x1509c0003dfd8 (0x9c0003dfd8) in binary!
+WARNING: couldn't find address 0x1509c0003d308 (0x9c0003d308) in binary!
 	0x13097  @objc CRStringDecoder.(null) <stripped>
-WARNING: couldn't find address 0x1308b0003dfd0 (0x8b0003dfd0) in binary!
+WARNING: couldn't find address 0x1308b0003d300 (0x8b0003d300) in binary!
 	0x13077  @objc CRStringDecoder.(null) <stripped>
-WARNING: couldn't find address 0x1506c0003dfc8 (0x6c0003dfc8) in binary!
+WARNING: couldn't find address 0x1506c0003d2f8 (0x6c0003d2f8) in binary!
 	0x13067  @objc CRStringDecoder.(null) <stripped>
-WARNING: couldn't find address 0x12dc80003e050 (0x5c80003e050) in binary!
+WARNING: couldn't find address 0x12dc80003d380 (0x5c80003d380) in binary!
 	0x12dd0  @objc CRStringDecoder.(null) <stripped>
 WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
-	0x7f4ffea1d18  @objc CRStringDecoder.(null) <stripped>
-	0x7e4ffea1f70  @objc CRStringDecoder.IçBˇI!¿MÖ…t)IãHâIâ1HãHÖ¿thHã@É˘vEL9–rF1“I˜ÚHâ–Î<HçGHãWHâHâwHãJâ¬HãHÖ¿t2Hã@É˘vL9–r1“I˜ÚHâ–ÎIˇ L!–L9¿uÎIˇ L!–HãHâ4¡HˇG]√UHâÂAVSHÉÏ HâÚHâ˚LçuÿLâ˜HâﬁË6 <stripped>
-	0x7dcffea24a8  @objc CRStringDecoder.¿1“I˜ÚIâ–ÎIçBˇI!¿MÖ…t)IãHâIâ1HãHÖ¿thHã@É˘vEL9–rF1“I˜ÚHâ–Î<HçGHãWHâHâwHãJâ¬HãHÖ¿t2Hã@É˘vL9–r1“I˜ÚHâ–ÎIˇ L!–L9¿uÎIˇ L!–HãHâ4¡HˇG]√UHâÂAVSHÉÏ HâÚHâ˚LçuÿLâ˜HâﬁË6 <stripped>
-	0x7d4ffea27b0  @objc CRStringDecoder.çIÕH«¡ËˇˇˇHM®HM∞Iâ∆L9‡Öá˛ˇˇHÉƒ8[A\A]A^A_]√Hâ√Hã}¿ˇ^# <stripped>
-	0x624ffea2b58  @objc CRStringDecoder.M–âãE»AâE <stripped>
-	0x5280003dd80  @objc CRStringDecoder.HçsLâˇËØ <stripped>
-WARNING: couldn't find address 0x3dd6cfffd9c48 (0x56cfffd9c48) in binary!
-	0x5240003dd58  @objc CRStringDecoder.(null) <stripped>
-WARNING: couldn't find address 0x3dd44fffd9ee0 (0x544fffd9ee0) in binary!
-	0x4f80003df80  @objc CRStringDecoder.(null) <stripped>
+	0x324ffea1b68  @objc CRStringDecoder.(null) <stripped>
+	0x314ffea1dc0  @objc CRStringDecoder.Ç˛ˇˇÈÊ <stripped>
+	0x30cffea22f8  @objc CRStringDecoder.†I9ﬂHãEàÖÇ˛ˇˇÈÊ <stripped>
+	0x304ffea2600  @objc CRStringDecoder.HØ H¡È8É˘wHÉ¯rHˇ»HΩ»ÉÒ?ˆŸ∏ <stripped>
+	0x154ffea29a8  @objc CRStringDecoder.ÒH∫H! HπHØ H¡È8É˘wHÉ¯rHˇ»HΩ»ÉÒ?ˆŸ∏ <stripped>
+	0x5280003d0b0  @objc CRStringDecoder.}∞ˇ”Dãe¨ÎnDãe¨Ö <stripped>
+WARNING: couldn't find address 0x3d09cfffd9bf8 (0x9cfffd9bf8) in binary!
+	0x5240003d088  @objc CRStringDecoder.(null) <stripped>
+WARNING: couldn't find address 0x3d074fffd9e90 (0x74fffd9e90) in binary!
+	0x4f80003d2b0  @objc CRStringDecoder.(null) <stripped>
 
 	// Swift methods
-	0xbbce0  func <stripped> // method 
-	0xbbe80  func <stripped> // method 
-	0xbc120  func <stripped> // method 
-	0xbc490  func <stripped> // method 
-	0xbc570  func <stripped> // method 
-	0xbc760  func <stripped> // method 
-	0xbc920  func <stripped> // method 
-	0xbc9c0  func <stripped> // method 
+	0xbb800  func <stripped> // method 
+	0xbb9a0  func <stripped> // method 
+	0xbbc40  func <stripped> // method 
+	0xbbfb0  func <stripped> // method 
+	0xbc090  func <stripped> // method 
+	0xbc280  func <stripped> // method 
+	0xbc440  func <stripped> // method 
+	0xbc4e0  func <stripped> // method 
  }
 
  class Coherence.CRStringEncoder : NSObject /usr/lib/libobjc.A.dylib {
@@ -1319,32 +1319,32 @@ WARNING: couldn't find address 0x3dd44fffd9ee0 (0x544fffd9ee0) in binary!
 	var subsequence : Proto_Subsequence
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1308c0003dff0 (0x8c0003dff0) in binary!
+WARNING: couldn't find address 0x1308c0003d320 (0x8c0003d320) in binary!
 	0x13080  @objc CRStringEncoder.(null) <stripped>
-WARNING: couldn't find address 0x130820003dfe0 (0x820003dfe0) in binary!
+WARNING: couldn't find address 0x130820003d310 (0x820003d310) in binary!
 	0x13076  @objc CRStringEncoder.(null) <stripped>
-WARNING: couldn't find address 0x12d8c0003dfe0 (0x58c0003dfe0) in binary!
+WARNING: couldn't find address 0x12d8c0003d310 (0x58c0003d310) in binary!
 	0x11fe4  @objc CRStringEncoder.(null) <stripped>
-WARNING: couldn't find address 0x11fd80003dfd8 (0x7d80003dfd8) in binary!
+WARNING: couldn't find address 0x11fd80003d308 (0x7d80003d308) in binary!
 	0x11fcc  @objc CRStringEncoder.(null) <stripped>
-WARNING: couldn't find address 0x12d480003dfd0 (0x5480003dfd0) in binary!
+WARNING: couldn't find address 0x12d480003d300 (0x5480003d300) in binary!
 	0x12d50  @objc CRStringEncoder.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x56cfffd9c48  @objc CRStringEncoder.(null) <stripped>
-	0x544fffd9ee0  @objc CRStringEncoder.D$Mã,$LâˇLâÊËÑ <stripped>
-	0x5d4fffda128  @objc CRStringEncoder.¯HâE–HâÿIâﬂÎ*IçGHâE–Mâ˝IÉ≈HâÿÎI›HâÿL)¯HâE–HâÿL)‡Iâ«Lãe∏Hã8HãE¿IâˇŸ^# <stripped>
-	0x7640003de00  @objc CRStringEncoder.âGMãgIâGMÖ‰tPL9Ût&CAD$Mã,$LâˇLâÊËÑ <stripped>
-WARNING: couldn't find address 0x3de4cffff51a8 (0x64cffff51a8) in binary!
-	0x880003e1a0  @objc CRStringEncoder.(null) <stripped>
+	0x9cfffd9bf8  @objc CRStringEncoder.(null) <stripped>
+	0x74fffd9e90  @objc CRStringEncoder.M9ÂDãe¨Lã≠pˇˇˇÇò <stripped>
+	0x104fffda0d8  @objc CRStringEncoder.,¬H∫¯?.¡HB¡IÉˇr}Lâ˘H—ÈH∫UUUUUUUUH! Lâ˘H)—H∫33333333HâŒH¡ÓH!—H!÷HŒHâÒH¡ÈHÒH∫H! HπHØ H¡È8É˘wHÉ¯rHˇ»HΩ»ÉÒ?ˆŸ∏ <stripped>
+	0x7640003d130  @objc CRStringEncoder.ÈLãmàM9Ât+HâﬂHãåA# <stripped>
+WARNING: couldn't find address 0x3d17cffff5168 (0x17cffff5168) in binary!
+	0x880003d4d0  @objc CRStringEncoder.(null) <stripped>
 
 	// Swift methods
-	0xbcc00  func <stripped> // method 
-	0xbcfb0  func <stripped> // method 
-	0xbd2c0  func <stripped> // method 
-	0xbd470  func <stripped> // method 
-	0xbd760  func <stripped> // method 
-	0xbd920  func <stripped> // method 
-	0xbdaa0  func <stripped> // method 
+	0xbc720  func <stripped> // method 
+	0xbcad0  func <stripped> // method 
+	0xbcde0  func <stripped> // method 
+	0xbcf90  func <stripped> // method 
+	0xbd280  func <stripped> // method 
+	0xbd440  func <stripped> // method 
+	0xbd5c0  func <stripped> // method 
  }
 
  class Coherence.CRArrayDecoder : CRStringDecoder {
@@ -1353,10 +1353,10 @@ WARNING: couldn't find address 0x3de4cffff51a8 (0x64cffff51a8) in binary!
 	var getStorage : Proto_CRDT
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x131340003dfc8 (0x1340003dfc8) in binary!
+WARNING: couldn't find address 0x131340003d2f8 (0x1340003d2f8) in binary!
 	0x12ec8  @objc CRArrayDecoder.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x11cffea3070  @objc CRArrayDecoder.(null) <stripped>
+	0x44cffea2ec0  @objc CRArrayDecoder.(null) <stripped>
 
 	// Swift methods
  }
@@ -1367,11 +1367,11 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var getElements : Proto_CRDT
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x121180003e110 (0x1180003e110) in binary!
+WARNING: couldn't find address 0x121180003d440 (0x1180003d440) in binary!
 	0x12e94  @objc CRArrayEncoder.(null) <stripped>
-WARNING: couldn't find address 0x12e9c0003df70 (0x69c0003df70) in binary!
+WARNING: couldn't find address 0x12e9c0003d2a0 (0x69c0003d2a0) in binary!
 	0x108000000c  @objc CRArrayEncoder.(null) <stripped>
-WARNING: couldn't find address 0x130e40003df78 (0xe40003df78) in binary!
+WARNING: couldn't find address 0x130e40003d2a8 (0xe40003d2a8) in binary!
 	0x12e64  @objc CRArrayEncoder.(null) <stripped>
 
 	// Swift methods
@@ -1428,14 +1428,14 @@ WARNING: couldn't find address 0x130e40003df78 (0xe40003df78) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var setIterator : ˇ_
+	var setIterator : /S
  }
 
  struct Coherence.Index {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let setIndex : ›_
+	let setIndex : S
  }
 
  struct Coherence._CRDictionaryCodingKey {
@@ -1484,7 +1484,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var separator : ß` // +0x0
+	var separator : ◊S // +0x0
 	var encoder : JSONEncoder // +0x18
  }
 
@@ -1494,7 +1494,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var data :  empty-list  // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var separator : ëj // +0x8
+	var separator : ¡] // +0x8
 	let doubleFormatter : DoubleFormatter // +0x10
  }
 
@@ -1512,20 +1512,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var state : InternalState
 
 	// Swift methods
-	0xd2c60  func <stripped> // getter 
-	0xd3160  func <stripped> // method 
-	0xd3240  func <stripped> // method 
-	0xd3640  func <stripped> // method 
+	0xd2790  func <stripped> // getter 
+	0xd2c90  func <stripped> // method 
+	0xd2d70  func <stripped> // method 
+	0xd3170  func <stripped> // method 
  }
 
  enum Coherence.InternalState {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case binary : M]
+	case binary : }P
 	case message : Message
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case contentJSON : yT
+	case contentJSON : ©G
  }
 
  struct Coherence.Anonymous {
@@ -1550,9 +1550,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seconds : p // +0x0
+	var seconds : 3c // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var nanos : ıa // +0x8
+	var nanos : %U // +0x8
 	var unknownFields : UnknownStorage // +0x10
  }
 
@@ -1628,12 +1628,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var seenNilWeakReference : Bool
 
 	// Swift methods
-	0xec570  func <stripped> // method 
-	0xec870  func <stripped> // method 
-	0xed490  func <stripped> // method 
-	0xef100  func <stripped> // method 
-	0xf0110  func <stripped> // method 
-	0xf05b0  func <stripped> // method 
+	0xec100  func <stripped> // method 
+	0xec400  func <stripped> // method 
+	0xed020  func <stripped> // method 
+	0xeec90  func <stripped> // method 
+	0xefca0  func <stripped> // method 
+	0xf0140  func <stripped> // method 
  }
 
  struct Coherence.UniquePathReference {
@@ -1641,7 +1641,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let keypath : CRKeyPath
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let uuid : µ[
+	let uuid : ÂN
  }
 
  struct Coherence.CRStructCodingKey {
@@ -1661,7 +1661,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var identity : µ[
+	var identity : ÂN
 	let context : CRContext
 	var ref : CRReferenceRef
  }
@@ -1689,7 +1689,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var work : UnsafeMutableRawBufferPointer
 
 	// Swift methods
-	0x169e70  func <stripped> // method 
+	0x169a40  func <stripped> // method 
  }
 
  struct Coherence.Google_Protobuf_Empty {
@@ -1732,15 +1732,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var renameGeneration : Int
 
 	// Swift methods
-	0x16fc50  func <stripped> // method 
-	0x16fe90  func <stripped> // method 
-	0x170250  func <stripped> // method 
-	0x170330  func <stripped> // method 
-	0x170550  func <stripped> // method 
-	0x170e40  func <stripped> // method 
-	0x171070  func <stripped> // method 
-	0x1712a0  func <stripped> // method 
-	0x171450  func <stripped> // method 
+	0x16f820  func <stripped> // method 
+	0x16fa60  func <stripped> // method 
+	0x16fe20  func <stripped> // method 
+	0x16ff00  func <stripped> // method 
+	0x170120  func <stripped> // method 
+	0x170a10  func <stripped> // method 
+	0x170c40  func <stripped> // method 
+	0x170e70  func <stripped> // method 
+	0x171020  func <stripped> // method 
  }
 
  struct Coherence.CRCounter {
@@ -1759,18 +1759,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var countersQueryStatement : n // +0x38 (0x8)
+	var countersQueryStatement : Oa // +0x38 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var counterSetStatement : n // +0x40 (0x8)
+	var counterSetStatement : Oa // +0x40 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var replicaQueryStatement : n // +0x48 (0x8)
+	var replicaQueryStatement : Oa // +0x48 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var replicaSetStatement : n // +0x50 (0x8)
+	var replicaSetStatement : Oa // +0x50 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var counters :  empty-list  // +0x58 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var updatedCounters :  empty-list  // +0x60 (0x8)
-	var replica : Replica // +0x21b530 (0x0)
+	var replica : Replica // +0x21b200 (0x0)
 	var replicaUpdated : Bool // +0x0 (0x1)
  }
 
@@ -1778,20 +1778,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let uuid : µ[
+	let uuid : ÂN
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var maxTimestampCounter : p
+	var maxTimestampCounter : 3c
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var uniqueTimestampCounter : p
+	var uniqueTimestampCounter : 3c
  }
 
  struct Coherence.Google_Protobuf_Timestamp {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seconds : p // +0x0
+	var seconds : 3c // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var nanos : ıa // +0x8
+	var nanos : %U // +0x8
 	var unknownFields : UnknownStorage // +0x10
  }
 
@@ -1823,14 +1823,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var setIterator : áR
+	var setIterator : ∑E
  }
 
  struct Coherence.Index {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let setIndex : gR
+	let setIndex : óE
  }
 
  struct Coherence.Google_Protobuf_Any {
@@ -1881,14 +1881,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var register : CRRegister
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var uuid : µ[
+	var uuid : ÂN
  }
 
  struct Coherence.Replica {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let uuid : µ[
+	let uuid : ÂN
 	let index : Int
  }
 
@@ -1987,11 +1987,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var kind : Kind // +0x0
 	var cardinality : Cardinality // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var number : ıa // +0x1c
+	var number : %U // +0x1c
 	var name : String // +0x20
 	var typeURL : String // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var oneofIndex : ıa // +0x40
+	var oneofIndex : %U // +0x40
 	var packed : Bool // +0x44
 	var options : Google_Protobuf_Option // +0x48
 	var jsonName : String // +0x50
@@ -2046,7 +2046,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var name : String // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var number : ıa // +0x10
+	var number : %U // +0x10
 	var options : Google_Protobuf_Option // +0x18
 	var unknownFields : UnknownStorage // +0x20
  }
@@ -2128,7 +2128,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _uuid : M]
+	var _uuid : }P
 	var _timestamp : Proto_Timestamp
 	var _value : Proto_Value
 
@@ -2139,7 +2139,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _uuid : M]
+	var _uuid : }P
 	var _positive : Proto_Version
 	var _negative : Proto_Version
 
@@ -2150,7 +2150,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _uuid : M]
+	var _uuid : }P
 	var _version : Proto_Version
 	var _insertions : Element
 
@@ -2180,7 +2180,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _uuid : M]
+	var _uuid : }P
 	var _version : Proto_Version
 	var _crdt : Proto_CRDT
 	var _keyPath : Proto_KeyPath
@@ -2200,7 +2200,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _tag : p
+	var _tag : 3c
 	var _wrapped : Proto_CRDT
 
 	// Swift methods
@@ -2210,7 +2210,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _tag : p
+	var _tag : 3c
 	var _wrapped : Proto_Value
 
 	// Swift methods
@@ -2221,7 +2221,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var _version : Proto_Version
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _data : M]
+	var _data : }P
 
 	// Swift methods
  }
@@ -2243,7 +2243,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var _sequenceStartID : Proto_IndexedTimestamp
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _length : yb
+	var _length : ©U
 	var _addedBy : Proto_IndexedTimestamp
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _child :  empty-list 
@@ -2264,9 +2264,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var uuidIndex : p // +0x0
+	var uuidIndex : 3c // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var counter : p // +0x8
+	var counter : 3c // +0x8
 	var unknownFields : UnknownStorage // +0x10
  }
 
@@ -2295,9 +2295,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var uuid : M] // +0x0
+	var uuid : }P // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var counter : p // +0x10
+	var counter : 3c // +0x10
 	var unknownFields : UnknownStorage // +0x18
  }
 
@@ -2319,11 +2319,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case int : p
+	case int : 3c
 	case double : Double
 	case string : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case data : M]
+	case data : }P
 	case date : Google_Protobuf_Timestamp
 	case reference : Proto_Reference
 	case optional : Proto_Optional
@@ -2479,7 +2479,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var uuid : M] // +0x0
+	var uuid : }P // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var runs :  empty-list  // +0x10
 	var unknownFields : UnknownStorage // +0x18
@@ -2503,7 +2503,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : p // +0x0
+	var value : 3c // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
@@ -2511,7 +2511,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : ·b // +0x0
+	var value : V // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
@@ -2519,7 +2519,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : ıa // +0x0
+	var value : %U // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
@@ -2527,7 +2527,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : yb // +0x0
+	var value : ©U // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
@@ -2549,7 +2549,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : M] // +0x0
+	var value : }P // +0x0
 	var unknownFields : UnknownStorage // +0x10
  }
 
@@ -2567,7 +2567,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var identity : µ[ // +0x7373616c (0x0)
+	var identity : ÂN // +0x7373616c (0x0)
 	var localCounter : Int // +0x41445f5f (0x8)
 	var _replica : Replica // +0x0 (0x0)
 
@@ -2576,17 +2576,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class Coherence.CRDTBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x1e4790  func <stripped> // getter 
-	0x1e47e0  func <stripped> // getter 
-	0x1e4830  func <stripped> // method 
-	0x1e4880  func <stripped> // method 
-	0x1e48d0  func <stripped> // method 
-	0x1e4920  func <stripped> // method 
-	0x1e4970  func <stripped> // method 
-	0x1e49c0  func <stripped> // method 
-	0x1e4a10  func <stripped> // method 
-	0x1e4a60  func <stripped> // method 
-	0x1e4ab0  func <stripped> // method 
+	0x1e43f0  func <stripped> // getter 
+	0x1e4440  func <stripped> // getter 
+	0x1e4490  func <stripped> // method 
+	0x1e44e0  func <stripped> // method 
+	0x1e4530  func <stripped> // method 
+	0x1e4580  func <stripped> // method 
+	0x1e45d0  func <stripped> // method 
+	0x1e4620  func <stripped> // method 
+	0x1e4670  func <stripped> // method 
+	0x1e46c0  func <stripped> // method 
+	0x1e4710  func <stripped> // method 
  }
 
  class Coherence.CRDTBoxHelper {
@@ -2598,17 +2598,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class Coherence.CRValueBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x1e5530  func <stripped> // getter 
-	0x1e5580  func <stripped> // getter 
-	0x1e55d0  func <stripped> // method 
-	0x1e5620  func <stripped> // method 
-	0x1e5670  func <stripped> // method 
-	0x1e56c0  func <stripped> // method 
-	0x1e5710  func <stripped> // method 
-	0x1e5760  func <stripped> // method 
-	0x1e57b0  func <stripped> // method 
-	0x1e5800  func <stripped> // method 
-	0x1e5850  func <stripped> // method 
+	0x1e5190  func <stripped> // getter 
+	0x1e51e0  func <stripped> // getter 
+	0x1e5230  func <stripped> // method 
+	0x1e5280  func <stripped> // method 
+	0x1e52d0  func <stripped> // method 
+	0x1e5320  func <stripped> // method 
+	0x1e5370  func <stripped> // method 
+	0x1e53c0  func <stripped> // method 
+	0x1e5410  func <stripped> // method 
+	0x1e5460  func <stripped> // method 
+	0x1e54b0  func <stripped> // method 
  }
 
  class Coherence.CRValueBoxHelper {
@@ -2636,34 +2636,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var options : BinaryDecodingOptions // +0x68
 	var recursionBudget : Int // +0x78
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownData : âe // +0x80
+	var unknownData : πX // +0x80
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownOverride : âe // +0x90
+	var unknownOverride : πX // +0x90
  }
 
  class Coherence.CRFileSyncPresenter : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let fileURL : 3@ // +0x2597a8 (0x0)
+	let fileURL : c3 // +0x2587a8 (0x0)
 	let queue : NSOperationQueue // +0xe8 (0x8)
-	var manager : CRFileSyncPresenterManager // +0x2597a8 (0x10)
+	var manager : CRFileSyncPresenterManager // +0x2587a8 (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12d280003dd80 (0x5280003dd80) in binary!
+WARNING: couldn't find address 0x12d280003d0b0 (0x5280003d0b0) in binary!
 	0x12d1c  @objc CRFileSyncPresenter.(null) <stripped>
-WARNING: couldn't find address 0x12d240003dd58 (0x5240003dd58) in binary!
+WARNING: couldn't find address 0x12d240003d088 (0x5240003d088) in binary!
 	0x11f7c  @objc CRFileSyncPresenter.(null) <stripped>
-WARNING: couldn't find address 0x12cf80003df80 (0x4f80003df80) in binary!
+WARNING: couldn't find address 0x12cf80003d2b0 (0x4f80003d2b0) in binary!
 	0x12d00  @objc CRFileSyncPresenter.(null) <stripped>
 WARNING: couldn't find address 0xb8000000c (0xb8000000c) in binary!
-	0x64cffff51a8  @objc CRFileSyncPresenter.(null) <stripped>
-	0x73cffff5280  @objc CRFileSyncPresenter.H˜ÿHâEêHã‚E$ <stripped>
-	0x1a4ffff57c8  @objc CRFileSyncPresenter.tf  <stripped>
+	0x17cffff5168  @objc CRFileSyncPresenter.(null) <stripped>
+	0x26cffff5240  @objc CRFileSyncPresenter.A  <stripped>
+	0x4d4ffff5788  @objc CRFileSyncPresenter.òÑs <stripped>
 
 	// Swift methods
-	0x1f4fd0  func <stripped> // method 
-	0x1f5200  func <stripped> // method 
+	0x1f4c50  func <stripped> // method 
+	0x1f4e80  func <stripped> // method 
  }
 
  class Coherence._CRFileSyncManager {
@@ -2703,38 +2703,38 @@ WARNING: couldn't find address 0xb8000000c (0xb8000000c) in binary!
 	var renames : Renames
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x14f640003de00 (0x7640003de00) in binary!
+WARNING: couldn't find address 0x14f640003d130 (0x7640003d130) in binary!
 	0x14f58  @objc ObjCRenames.(null) <stripped>
-WARNING: couldn't find address 0x150880003e1a0 (0x880003e1a0) in binary!
+WARNING: couldn't find address 0x150880003d4d0 (0x880003d4d0) in binary!
 	0x12cb4  @objc ObjCRenames.(null) <stripped>
-WARNING: couldn't find address 0x150800003e190 (0x800003e190) in binary!
+WARNING: couldn't find address 0x150800003d4c0 (0x800003d4c0) in binary!
 	0x1507f  @objc ObjCRenames.(null) <stripped>
-WARNING: couldn't find address 0x150840003e180 (0x840003e180) in binary!
+WARNING: couldn't find address 0x150840003d4b0 (0x840003d4b0) in binary!
 	0x15092  @objc ObjCRenames.(null) <stripped>
-WARNING: couldn't find address 0x11fcc0003dca8 (0x7cc0003dca8) in binary!
+WARNING: couldn't find address 0x11fcc0003cfd8 (0x7cc0003cfd8) in binary!
 	0x12c6c  @objc ObjCRenames.(null) <stripped>
-WARNING: couldn't find address 0x12c740003dd48 (0x4740003dd48) in binary!
+WARNING: couldn't find address 0x12c740003d078 (0x4740003d078) in binary!
 	0x118000000c  @objc ObjCRenames.(null) <stripped>
-WARNING: couldn't find address 0x12c480003ded0 (0x4480003ded0) in binary!
+WARNING: couldn't find address 0x12c480003d200 (0x4480003d200) in binary!
 	0x15004  @objc ObjCRenames.(null) <stripped>
-WARNING: couldn't find address 0x14ebc0003e160 (0x6bc0003e160) in binary!
+WARNING: couldn't find address 0x14ebc0003d490 (0x6bc0003d490) in binary!
 	0x14fec  @objc ObjCRenames.(null) <stripped>
-WARNING: couldn't find address 0x14ff00003e130 (0x7f00003e130) in binary!
+WARNING: couldn't find address 0x14ff00003d460 (0x7f00003d460) in binary!
 	0x12c0c  @objc ObjCRenames.(null) <stripped>
-WARNING: couldn't find address 0x151400003e200 (0x1400003e200) in binary!
+WARNING: couldn't find address 0x151400003d530 (0x1400003d530) in binary!
 	0x15134  @objc ObjCRenames.(null) <stripped>
-WARNING: couldn't find address 0x12be80003df30 (0x3e80003df30) in binary!
+WARNING: couldn't find address 0x12be80003d260 (0x3e80003d260) in binary!
 	0x1511c  @objc ObjCRenames.(null) <stripped>
 
 	// Swift methods
-	0x210510  func ObjCRenames.generation.getter // getter 
-	0x210580  func ObjCRenames.count.getter // getter 
-	0x210600  func ObjCRenames.hasLocalRenames.getter // getter 
-	0x210740  func ObjCRenames.renamed(replica:) // method 
-	0x210b80  func ObjCRenames.renamed(_:replica:) // method 
-	0x2110a0  func ObjCRenames.renamed(range:replica:) // method 
-	0x211830  func ObjCRenames.addMapping(replica:from:) // method 
-	0x211e30  func ObjCRenames.addMapping(replica:fromRange:) // method 
+	0x2101a0  func ObjCRenames.generation.getter // getter 
+	0x210210  func ObjCRenames.count.getter // getter 
+	0x210290  func ObjCRenames.hasLocalRenames.getter // getter 
+	0x2103d0  func ObjCRenames.renamed(replica:) // method 
+	0x210810  func ObjCRenames.renamed(_:replica:) // method 
+	0x210d30  func ObjCRenames.renamed(range:replica:) // method 
+	0x2114c0  func ObjCRenames.addMapping(replica:from:) // method 
+	0x211ac0  func ObjCRenames.addMapping(replica:fromRange:) // method 
  }
 
  class Coherence.ObjCRLE : NSObject /usr/lib/libobjc.A.dylib {
@@ -2743,11 +2743,11 @@ WARNING: couldn't find address 0x12be80003df30 (0x3e80003df30) in binary!
 	var rle : RLEMapping
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12b100003dd98 (0x3100003dd98) in binary!
+WARNING: couldn't find address 0x12b100003d0c8 (0x3100003d0c8) in binary!
 	0x14d90  @objc ObjCRLE.(null) <stripped>
-WARNING: couldn't find address 0x14f7c0003dff0 (0x77c0003dff0) in binary!
+WARNING: couldn't find address 0x14f7c0003d320 (0x77c0003d320) in binary!
 	0x14f8b  @objc ObjCRLE.(null) <stripped>
-WARNING: couldn't find address 0x12ae00003df98 (0x2e00003df98) in binary!
+WARNING: couldn't find address 0x12ae00003d2c8 (0x2e00003d2c8) in binary!
 	0x12ae8  @objc ObjCRLE.(null) <stripped>
 WARNING: couldn't find address 0x474f525029232840 (0x25029232840) in binary!
 	0x65636e6572  @objc ObjCRLE.(null) <stripped>
@@ -2757,9 +2757,9 @@ WARNING: couldn't find address 0x3ff0000000000000 (0x0) in binary!
 	0x0  @objc ObjCRLE.(null) <stripped>
 
 	// Swift methods
-	0x212820  func ObjCRLE.rangeCount.getter // getter 
-	0x2128c0  func ObjCRLE.enumerateRanges(in:_:) // method 
-	0x212cb0  func ObjCRLE.addMapping(from:to:) // method 
+	0x2124b0  func ObjCRLE.rangeCount.getter // getter 
+	0x212550  func ObjCRLE.enumerateRanges(in:_:) // method 
+	0x212940  func ObjCRLE.addMapping(from:to:) // method 
  }
 
  class Coherence.ObjCRenameSequence : NSObject /usr/lib/libobjc.A.dylib {
@@ -2769,26 +2769,26 @@ WARNING: couldn't find address 0x3ff0000000000000 (0x0) in binary!
 	var renameAddedBySequence : Replica
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x14f380003deb0 (0x7380003deb0) in binary!
+WARNING: couldn't find address 0x14f380003d1e0 (0x7380003d1e0) in binary!
 	0x11eb8  @objc ObjCRenameSequence.(null) <stripped>
-WARNING: couldn't find address 0x11eac0003e068 (0x6ac0003e068) in binary!
+WARNING: couldn't find address 0x11eac0003d398 (0x6ac0003d398) in binary!
 	0x11dc4  @objc ObjCRenameSequence.(null) <stripped>
-WARNING: couldn't find address 0x12b400003dff8 (0x3400003dff8) in binary!
+WARNING: couldn't find address 0x12b400003d328 (0x3400003d328) in binary!
 	0x12b34  @objc ObjCRenameSequence.(null) <stripped>
-WARNING: couldn't find address 0x12b3c0003dc10 (0x33c0003dc10) in binary!
+WARNING: couldn't find address 0x12b3c0003cf40 (0x33c0003cf40) in binary!
 	0x68000000c  @objc ObjCRenameSequence.(null) <stripped>
-WARNING: couldn't find address 0x12b100003dd98 (0x3100003dd98) in binary!
+WARNING: couldn't find address 0x12b100003d0c8 (0x3100003d0c8) in binary!
 	0x14d90  @objc ObjCRenameSequence.(null) <stripped>
-WARNING: couldn't find address 0x14f7c0003dff0 (0x77c0003dff0) in binary!
+WARNING: couldn't find address 0x14f7c0003d320 (0x77c0003d320) in binary!
 	0x14f8b  @objc ObjCRenameSequence.(null) <stripped>
-WARNING: couldn't find address 0x12ae00003df98 (0x2e00003df98) in binary!
+WARNING: couldn't find address 0x12ae00003d2c8 (0x2e00003d2c8) in binary!
 	0x12ae8  @objc ObjCRenameSequence.(null) <stripped>
 
 	// Swift methods
-	0x213310  func ObjCRenameSequence.isEmpty.getter // getter 
-	0x213380  func ObjCRenameSequence.add(replica:range:) // method 
-	0x213410  func ObjCRenameSequence.addAddedBy(replica:range:) // method 
-	0x213730  func ObjCRenameSequence.addAddedByVersion(_:) // method 
+	0x212fa0  func ObjCRenameSequence.isEmpty.getter // getter 
+	0x213010  func ObjCRenameSequence.add(replica:range:) // method 
+	0x2130a0  func ObjCRenameSequence.addAddedBy(replica:range:) // method 
+	0x2133c0  func ObjCRenameSequence.addAddedByVersion(_:) // method 
  }
 
  class Coherence.ObjCVersion : NSObject /usr/lib/libobjc.A.dylib {
@@ -2797,54 +2797,54 @@ WARNING: couldn't find address 0x12ae00003df98 (0x2e00003df98) in binary!
 	var version : CRVersion
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12c480003ded0 (0x4480003ded0) in binary!
+WARNING: couldn't find address 0x12c480003d200 (0x4480003d200) in binary!
 	0x15004  @objc ObjCVersion.(null) <stripped>
-WARNING: couldn't find address 0x14ebc0003e160 (0x6bc0003e160) in binary!
+WARNING: couldn't find address 0x14ebc0003d490 (0x6bc0003d490) in binary!
 	0x14fec  @objc ObjCVersion.(null) <stripped>
-WARNING: couldn't find address 0x14ff00003e130 (0x7f00003e130) in binary!
+WARNING: couldn't find address 0x14ff00003d460 (0x7f00003d460) in binary!
 	0x12c0c  @objc ObjCVersion.(null) <stripped>
-WARNING: couldn't find address 0x151400003e200 (0x1400003e200) in binary!
+WARNING: couldn't find address 0x151400003d530 (0x1400003d530) in binary!
 	0x15134  @objc ObjCVersion.(null) <stripped>
-WARNING: couldn't find address 0x12be80003df30 (0x3e80003df30) in binary!
+WARNING: couldn't find address 0x12be80003d260 (0x3e80003d260) in binary!
 	0x1511c  @objc ObjCVersion.(null) <stripped>
-WARNING: couldn't find address 0x151240003dfa8 (0x1240003dfa8) in binary!
+WARNING: couldn't find address 0x151240003d2d8 (0x1240003d2d8) in binary!
 	0x15118  @objc ObjCVersion.(null) <stripped>
-WARNING: couldn't find address 0x11e300003e0d8 (0x6300003e0d8) in binary!
+WARNING: couldn't find address 0x11e300003d408 (0x6300003d408) in binary!
 	0x11e24  @objc ObjCVersion.(null) <stripped>
-WARNING: couldn't find address 0x11e180003dfe8 (0x6180003dfe8) in binary!
+WARNING: couldn't find address 0x11e180003d318 (0x6180003d318) in binary!
 	0x12b94  @objc ObjCVersion.(null) <stripped>
-WARNING: couldn't find address 0x12b9c0003dc70 (0x39c0003dc70) in binary!
+WARNING: couldn't find address 0x12b9c0003cfa0 (0x39c0003cfa0) in binary!
 	0x78000000c  @objc ObjCVersion.(null) <stripped>
-WARNING: couldn't find address 0x14f380003deb0 (0x7380003deb0) in binary!
+WARNING: couldn't find address 0x14f380003d1e0 (0x7380003d1e0) in binary!
 	0x11eb8  @objc ObjCVersion.(null) <stripped>
-WARNING: couldn't find address 0x11eac0003e068 (0x6ac0003e068) in binary!
+WARNING: couldn't find address 0x11eac0003d398 (0x6ac0003d398) in binary!
 	0x11dc4  @objc ObjCVersion.(null) <stripped>
-WARNING: couldn't find address 0x12b400003dff8 (0x3400003dff8) in binary!
+WARNING: couldn't find address 0x12b400003d328 (0x3400003d328) in binary!
 	0x12b34  @objc ObjCVersion.(null) <stripped>
-WARNING: couldn't find address 0x12b3c0003dc10 (0x33c0003dc10) in binary!
+WARNING: couldn't find address 0x12b3c0003cf40 (0x33c0003cf40) in binary!
 	0x68000000c  @objc ObjCVersion.(null) <stripped>
-WARNING: couldn't find address 0x12b100003dd98 (0x3100003dd98) in binary!
+WARNING: couldn't find address 0x12b100003d0c8 (0x3100003d0c8) in binary!
 	0x14d90  @objc ObjCVersion.(null) <stripped>
-WARNING: couldn't find address 0x14f7c0003dff0 (0x77c0003dff0) in binary!
+WARNING: couldn't find address 0x14f7c0003d320 (0x77c0003d320) in binary!
 	0x14f8b  @objc ObjCVersion.(null) <stripped>
-WARNING: couldn't find address 0x12ae00003df98 (0x2e00003df98) in binary!
+WARNING: couldn't find address 0x12ae00003d2c8 (0x2e00003d2c8) in binary!
 	0x12ae8  @objc ObjCVersion.(null) <stripped>
 WARNING: couldn't find address 0x474f525029232840 (0x25029232840) in binary!
 	0x65636e6572  @objc ObjCVersion.(null) <stripped>
 
 	// Swift methods
-	0x214200  func ObjCVersion.isEmpty.getter // getter 
-	0x214320  func ObjCVersion.maxCounter.getter // getter 
-	0x214460  func ObjCVersion.hasTemporaryComponents.getter // getter 
-	0x2144b0  func ObjCVersion.temporaryComponents(excluding:) // method 
-	0x214730  func ObjCVersion.sortedUUIDs.getter // getter 
-	0x214c10  func ObjCVersion.hasDeltaTo(_:) // method 
-	0x215020  func ObjCVersion.contains(_:) // method 
-	0x215370  func ObjCVersion.insert(range:replica:) // method 
-	0x215540  func ObjCVersion.subtract(range:replica:) // method 
-	0x215760  func ObjCVersion.subtract(_:) // method 
-	0x2157a0  func ObjCVersion.shallowMerge(_:) // method 
-	0x215910  func ObjCVersion.apply(_:) // method 
+	0x213e90  func ObjCVersion.isEmpty.getter // getter 
+	0x213fb0  func ObjCVersion.maxCounter.getter // getter 
+	0x2140f0  func ObjCVersion.hasTemporaryComponents.getter // getter 
+	0x214140  func ObjCVersion.temporaryComponents(excluding:) // method 
+	0x2143c0  func ObjCVersion.sortedUUIDs.getter // getter 
+	0x2148a0  func ObjCVersion.hasDeltaTo(_:) // method 
+	0x214cb0  func ObjCVersion.contains(_:) // method 
+	0x215000  func ObjCVersion.insert(range:replica:) // method 
+	0x2151d0  func ObjCVersion.subtract(range:replica:) // method 
+	0x2153f0  func ObjCVersion.subtract(_:) // method 
+	0x215430  func ObjCVersion.shallowMerge(_:) // method 
+	0x2155a0  func ObjCVersion.apply(_:) // method 
  }
 
  struct Coherence.RLEMapping {

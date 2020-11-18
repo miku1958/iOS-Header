@@ -30,7 +30,7 @@
 - (BOOL)_validateLivePhotoResourceURLs:(id)arg1 error:(id *)arg2;
 - (BOOL)_validateVideoURL:(id)arg1 error:(id *)arg2;
 - (void)getLivePhotoImageMetadataFromURL:(id)arg1 pairingIdentifier:(id *)arg2;
-- (void)getLivePhotoVideoMetadataFromURL:(id)arg1 pairingIdentifier:(id *)arg2 videoDuration:(CDStruct_1b6d18a9 *)arg3 imageDisplayTime:(CDStruct_1b6d18a9 *)arg4;
+- (BOOL)getLivePhotoVideoMetadataFromURL:(id)arg1 pairingIdentifier:(id *)arg2 videoDuration:(CDStruct_1b6d18a9 *)arg3 imageDisplayTime:(CDStruct_1b6d18a9 *)arg4 error:(id *)arg5;
 - (BOOL)isValidImagePathExtension:(id)arg1;
 - (BOOL)isValidVideoPathExtension:(id)arg1;
 - (BOOL)validateData:(id)arg1 withOptions:(unsigned long long)arg2 error:(id *)arg3;

@@ -79,8 +79,8 @@
 - (id)avatarNodeForPhysicsController:(id)arg1;
 - (id)bakedAnimationCopy;
 - (id)bakedAnimationPlayer;
-- (long long)blendShapeIndexForBlendShapeName:(id)arg1;
-- (id)blendShapeNameForBlendShapeIndex:(unsigned long long)arg1;
+- (long long)blendShapeIndexForARKitBlendShapeName:(id)arg1;
+- (id)blendShapeNameForARKitBlendShapeIndex:(unsigned long long)arg1;
 - (id)cameraNode;
 - (void)configureForBestAnimationQuality;
 - (id)copyWithUsageIntent:(unsigned long long)arg1;
@@ -93,6 +93,7 @@
 - (void)didAddToScene:(id)arg1;
 - (void)disabledBlendshapesSpecializationSettingsDidChange;
 - (id)effectiveMorphedNodeForTargetName:(id)arg1 candidateNode:(id)arg2;
+- (void)enumerateMorphInfoForCustomCustomBlendShapeName:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)evaluatePhysicalizedDescriptors;
 - (id)init;
 - (id)initWithDictionaryRepresentation:(id)arg1 usageIntent:(unsigned long long)arg2 error:(id *)arg3;

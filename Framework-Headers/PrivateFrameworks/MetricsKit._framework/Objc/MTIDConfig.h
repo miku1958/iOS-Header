@@ -26,6 +26,7 @@
 - (void).cxx_destruct;
 - (id)allKnownSchemes;
 - (unsigned long long)calculateCombinedHashForNamespaces:(id)arg1;
+- (id)dictionaryRepresentation;
 - (id)initWithDictionary:(id)arg1;
 - (id)namespaceForTopic:(id)arg1 idType:(long long)arg2;
 - (id)schemeForNamespace:(id)arg1;

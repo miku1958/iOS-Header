@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MRUpdateActiveSystemEndpointRequestProtobuf : PBCodable <NSCopying>
 {
     int _changeType;
@@ -22,25 +23,12 @@
     } _has;
 }
 
-@property (nonatomic) int changeType; // @synthesize changeType=_changeType;
-@property (nonatomic) BOOL hasChangeType;
-@property (readonly, nonatomic) BOOL hasOutputDeviceUID;
-@property (nonatomic) BOOL hasPairedDeviceSync;
-@property (readonly, nonatomic) BOOL hasReason;
-@property (strong, nonatomic) NSString *outputDeviceUID; // @synthesize outputDeviceUID=_outputDeviceUID;
-@property (nonatomic) BOOL pairedDeviceSync; // @synthesize pairedDeviceSync=_pairedDeviceSync;
-@property (strong, nonatomic) NSString *reason; // @synthesize reason=_reason;
-
 - (void).cxx_destruct;
-- (int)StringAsChangeType:(id)arg1;
-- (id)changeTypeAsString:(int)arg1;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

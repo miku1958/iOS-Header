@@ -79,10 +79,10 @@ WARNING: couldn't find offset 0x7c7 in binary!
 WARNING: couldn't find address 0x7d300003de0 (0x7d300003de0) in binary!
 	0x0  @objc ComplicationHostingView.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x43cffffdd00  @objc ComplicationHostingView.(null) <stripped>
+	0x43cffffdcf0  @objc ComplicationHostingView.(null) <stripped>
 WARNING: couldn't find offset 0xa2f in binary!
 WARNING: couldn't find offset 0xa2f in binary!
-WARNING: couldn't find address 0xffffddb400000a2f (0x0) in binary!
+WARNING: couldn't find address 0xffffdda400000a2f (0x0) in binary!
 	0x7433a4d4152  @objc ComplicationHostingView.(null) <stripped>
 WARNING: couldn't find address 0x6e6f69746163696c (0x1746163696c) in binary!
 	0x54a4f525020  @objc ComplicationHostingView.(null) <stripped>
@@ -100,36 +100,36 @@ WARNING: couldn't find address 0x77656956676e69 (0x56956676e69) in binary!
 WARNING: couldn't find address 0xc8c00000fe4 (0x48c00000fe4) in binary!
 	0xd0000002a  @objc ComplicationHostingView.(null) <stripped>
 WARNING: couldn't find address 0x170000000a (0x170000000a) in binary!
-	0x13ffffbab0  @objc ComplicationHostingView.(null) <stripped>
-WARNING: couldn't find address 0x14ffffbb48 (0x14ffffbb48) in binary!
+	0x13ffffbaa0  @objc ComplicationHostingView.(null) <stripped>
+WARNING: couldn't find address 0x14ffffbb38 (0x14ffffbb38) in binary!
 	0x1300000000  @objc ComplicationHostingView.(null) <stripped>
 WARNING: couldn't find address 0x1400000000 (0x1400000000) in binary!
-	0x13ffffbd40  @objc ComplicationHostingView.(null) <stripped>
+	0x13ffffbd30  @objc ComplicationHostingView.(null) <stripped>
 
 	// Swift methods
-	0x1f60  func <stripped> // getter 
-	0x2000  func <stripped> // setter 
-	0x2100  func <stripped> // modifyCoroutine 
-	0x2220  func <stripped> // getter 
-	0x2340  func <stripped> // setter 
-	0x2500  func <stripped> // modifyCoroutine 
-	0x2560  func <stripped> // getter 
-	0x25a0  func <stripped> // setter 
-	0x2600  func <stripped> // modifyCoroutine 
-	0x2660  func <stripped> // getter 
-	0x26a0  func <stripped> // setter 
-	0x2700  func <stripped> // modifyCoroutine 
-	0x2930  class func <stripped> // method 
-	0x2950  class func <stripped> // method 
-	0x29f0  class func ComplicationHostingView.__allocating_init(frame:async:) // init 
-	0x33a0  func <stripped> // getter 
-	0x34d0  func <stripped> // setter 
-	0x3620  func <stripped> // modifyCoroutine 
-	0x36b0  func <stripped> // getter 
-	0x3760  func <stripped> // setter 
-	0x3880  func <stripped> // modifyCoroutine 
-	0x38c0  func <stripped> // method 
-	0x39a0  func <stripped> // method 
+	0x1f50  func <stripped> // getter 
+	0x1ff0  func <stripped> // setter 
+	0x20f0  func <stripped> // modifyCoroutine 
+	0x2210  func <stripped> // getter 
+	0x2330  func <stripped> // setter 
+	0x24f0  func <stripped> // modifyCoroutine 
+	0x2550  func <stripped> // getter 
+	0x2590  func <stripped> // setter 
+	0x25f0  func <stripped> // modifyCoroutine 
+	0x2650  func <stripped> // getter 
+	0x2690  func <stripped> // setter 
+	0x26f0  func <stripped> // modifyCoroutine 
+	0x2920  class func <stripped> // method 
+	0x2940  class func <stripped> // method 
+	0x29e0  class func ComplicationHostingView.__allocating_init(frame:async:) // init 
+	0x3390  func <stripped> // getter 
+	0x34c0  func <stripped> // setter 
+	0x3610  func <stripped> // modifyCoroutine 
+	0x36a0  func <stripped> // getter 
+	0x3750  func <stripped> // setter 
+	0x3870  func <stripped> // modifyCoroutine 
+	0x38b0  func <stripped> // method 
+	0x3990  func <stripped> // method 
  }
 
  class ComplicationDisplay.MonochromeModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib {

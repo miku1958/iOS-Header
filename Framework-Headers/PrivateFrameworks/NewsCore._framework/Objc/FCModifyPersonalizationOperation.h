@@ -29,6 +29,7 @@
 @property (strong, nonatomic) CKRecord *savedRecord; // @synthesize savedRecord=_savedRecord;
 @property (strong, nonatomic) FCPersonalizationTreatment *treatment; // @synthesize treatment=_treatment;
 
++ (void)applyAggregates:(id)arg1 toProfile:(id)arg2;
 + (void)applyChangeGroups:(id)arg1 toProfile:(id)arg2 treatment:(id)arg3 prune:(BOOL)arg4;
 + (void)applyDeltas:(id)arg1 toProfile:(id)arg2 treatment:(id)arg3 prune:(BOOL)arg4;
 + (id)personalizationProfileFromRecord:(id)arg1;

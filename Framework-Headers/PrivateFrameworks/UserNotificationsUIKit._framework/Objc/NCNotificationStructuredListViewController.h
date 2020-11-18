@@ -61,6 +61,7 @@
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
 - (void)_contentSizeCategoryDidChange;
+- (void)_didChangeDeepestActionResponder;
 - (void)_didChangeDeepestUnambiguousResponder;
 - (BOOL)_forwarNotificationRequestToLongLookIfNecessary:(id)arg1;
 - (id)_logDescription;

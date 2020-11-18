@@ -14,7 +14,7 @@
 - (void)echo:(NSString *)arg1 reply:(void (^)(NSString *))arg2;
 - (void)extractStillImageFromVideoAtSourceBookmarkDictionary:(NSDictionary *)arg1 toDestinationBookmarkDictionary:(NSDictionary *)arg2 options:(NSDictionary *)arg3 replyHandler:(void (^)(long long, NSDictionary *, NSError *))arg4;
 - (void)generateGIFForVideoAtSourceBookmarkDictionary:(NSDictionary *)arg1 toDestinationBookmarkDictionary:(NSDictionary *)arg2 options:(NSDictionary *)arg3 replyHandler:(void (^)(long long, NSDictionary *, NSError *))arg4;
-- (void)performCleanupForJobGroupIdentifier:(NSString *)arg1;
+- (void)modifyJobWithIdentifier:(NSString *)arg1 modifications:(NSDictionary *)arg2;
 - (void)singlePassConvertVideoAtSourceBookmarkDictionary:(NSDictionary *)arg1 toDestinationBookmarkDictionary:(NSDictionary *)arg2 options:(NSDictionary *)arg3 replyHandler:(void (^)(long long, NSDictionary *, NSError *))arg4;
 @end
 

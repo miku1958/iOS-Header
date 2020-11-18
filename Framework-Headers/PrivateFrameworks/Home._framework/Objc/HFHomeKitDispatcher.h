@@ -38,6 +38,7 @@
     NADelegateDispatcher *_softwareUpdateObserverDispatcher;
     NADelegateDispatcher *_userObserverDispatcher;
     NADelegateDispatcher *_symptomsHandlerObserverDispatcher;
+    NADelegateDispatcher *_mediaDestinationControllerObserverDispatcher;
     NADelegateDispatcher *_symptomFixSessionObserverDispatcher;
     NADelegateDispatcher *_homeKitSettingsObserverDispatcher;
     NADelegateDispatcher *_networkConfigurationObserverDispatcher;
@@ -81,6 +82,7 @@
 @property (strong, nonatomic) HFLocationSensingCoordinator *locationCoordinator; // @synthesize locationCoordinator=_locationCoordinator;
 @property (strong, nonatomic) NAFuture *locationCoordinatorSetupFuture; // @synthesize locationCoordinatorSetupFuture=_locationCoordinatorSetupFuture;
 @property (readonly, nonatomic) NAFuture *locationSensingAvailableFuture;
+@property (strong, nonatomic) NADelegateDispatcher *mediaDestinationControllerObserverDispatcher; // @synthesize mediaDestinationControllerObserverDispatcher=_mediaDestinationControllerObserverDispatcher;
 @property (strong, nonatomic) NADelegateDispatcher *mediaObjectObserverDispatcher; // @synthesize mediaObjectObserverDispatcher=_mediaObjectObserverDispatcher;
 @property (strong, nonatomic) NADelegateDispatcher *mediaSessionObserverDispatcher; // @synthesize mediaSessionObserverDispatcher=_mediaSessionObserverDispatcher;
 @property (strong, nonatomic) NADelegateDispatcher *networkConfigurationObserverDispatcher; // @synthesize networkConfigurationObserverDispatcher=_networkConfigurationObserverDispatcher;
@@ -143,6 +145,7 @@
 - (void)addHomeObserver:(id)arg1;
 - (void)addHomePersonManagerObserver:(id)arg1;
 - (void)addLightObserver:(id)arg1;
+- (void)addMediaDestinationControllerObserver:(id)arg1;
 - (void)addMediaObjectObserver:(id)arg1;
 - (void)addMediaProfileObserver:(id)arg1;
 - (void)addMediaSessionObserver:(id)arg1;
@@ -167,6 +170,7 @@
 - (void)dispatchHomeObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchHomePersonManagerObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchLightObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
+- (void)dispatchMediaDestinationControllerObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchMediaObjectObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchMediaSessionObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchNetworkConfigurationObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
@@ -195,6 +199,7 @@
 - (void)removeHomeObserver:(id)arg1;
 - (void)removeHomePersonManagerObserver:(id)arg1;
 - (void)removeLightObserver:(id)arg1;
+- (void)removeMediaDestinationControllerObserver:(id)arg1;
 - (void)removeMediaObjectObserver:(id)arg1;
 - (void)removeMediaProfileObserver:(id)arg1;
 - (void)removeMediaSessionObserver:(id)arg1;

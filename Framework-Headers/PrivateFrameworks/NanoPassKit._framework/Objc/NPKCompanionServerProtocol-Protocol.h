@@ -19,6 +19,7 @@
 - (void)defaultCard:(void (^)(NSString *))arg1;
 - (void)defaultPaymentApplicationForPassWithUniqueID:(NSString *)arg1 completion:(void (^)(PKPaymentApplication *))arg2;
 - (void)deletePaymentTransactionWithIdentifier:(NSString *)arg1 fromDeviceWithPairingID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)fetchPendingTransactionForPassWithUniqueID:(NSString *)arg1 completion:(void (^)(PKPaymentPass *, PKPaymentTransaction *, NSString *))arg2;
 - (void)handleDeviceUnlockedForPendingProvisioningRequestFromGizmo;
 - (void)handlePeerPaymentTermsAndConditionsRequestFromGizmo;
 - (void)handlePendingUnpairingWithCompletion:(void (^)(void))arg1;
@@ -26,6 +27,7 @@
 - (void)initiateConsistencyCheckWithCompletion:(void (^)(void))arg1;
 - (void)initiateLostModeExitAuthWithCompletion:(void (^)(NSError *))arg1;
 - (void)markAllAppletsForDeletionWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)markPendingTransactionAsProcessedForPassWithUniqueID:(NSString *)arg1;
 - (void)noteForegroundVerificationObserverActive:(BOOL)arg1;
 - (void)noteProvisioningPreflightCompleteWithSuccess:(BOOL)arg1 error:(NSError *)arg2 completion:(void (^)(void))arg3;
 - (void)noteWatchOfferDisplayedForPaymentPassWithUniqueID:(NSString *)arg1;

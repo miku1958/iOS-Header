@@ -22,7 +22,7 @@
 @property (readonly, nonatomic) CDStruct_1b6d18a9 validatedVideoDuration; // @synthesize validatedVideoDuration=_validatedVideoDuration;
 
 - (void).cxx_destruct;
-- (void)getLivePhotoVideoMetadataFromURL:(id)arg1 pairingIdentifier:(id *)arg2 videoDuration:(CDStruct_1b6d18a9 *)arg3 imageDisplayTime:(CDStruct_1b6d18a9 *)arg4;
+- (BOOL)getLivePhotoVideoMetadataFromURL:(id)arg1 pairingIdentifier:(id *)arg2 videoDuration:(CDStruct_1b6d18a9 *)arg3 imageDisplayTime:(CDStruct_1b6d18a9 *)arg4 error:(id *)arg5;
 - (id)initWithAssetCreationRequest:(id)arg1;
 
 @end

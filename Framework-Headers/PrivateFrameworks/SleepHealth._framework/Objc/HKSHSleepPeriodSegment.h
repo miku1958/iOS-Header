@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <SleepHealth/HKRedactedDescription-Protocol.h>
 #import <SleepHealth/NSCopying-Protocol.h>
 #import <SleepHealth/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDateInterval;
+@class NSArray, NSDateInterval, NSString;
 
-@interface HKSHSleepPeriodSegment : NSObject <NSSecureCoding, NSCopying>
+@interface HKSHSleepPeriodSegment : NSObject <HKRedactedDescription, NSSecureCoding, NSCopying>
 {
     NSDateInterval *_dateInterval;
     NSArray *_sampleIntervals;
@@ -20,6 +21,7 @@
 
 @property (readonly, nonatomic) long long category; // @synthesize category=_category;
 @property (readonly, copy, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
+@property (readonly, copy) NSString *hk_redactedDescription;
 @property (readonly, copy, nonatomic) NSArray *sampleIntervals; // @synthesize sampleIntervals=_sampleIntervals;
 
 + (id)sleepPeriodSegmentWithDateInterval:(id)arg1 category:(long long)arg2;
@@ -32,7 +34,6 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)redactedDescription;
 
 @end
 

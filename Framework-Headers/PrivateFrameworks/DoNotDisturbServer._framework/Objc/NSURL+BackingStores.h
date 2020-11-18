@@ -9,6 +9,7 @@
 @interface NSURL (BackingStores)
 + (id)dnds_legacySettingsFileURL;
 + (id)dnds_localAssertionBackingStoreFileURL;
++ (id)dnds_metricsBackingStoreFileURL;
 + (id)dnds_settingsBackingStoreFileURL;
 @end
 

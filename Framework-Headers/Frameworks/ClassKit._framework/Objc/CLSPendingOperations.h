@@ -7,20 +7,22 @@
 #import <objc/NSObject.h>
 
 @class NSMutableArray;
+@protocol OS_os_log;
 
 __attribute__((visibility("hidden")))
 @interface CLSPendingOperations : NSObject
 {
     struct os_unfair_recursive_lock_s _lock;
     NSMutableArray *_operations;
+    NSObject<OS_os_log> *_logType;
 }
 
 - (void).cxx_destruct;
-- (id)_init;
 - (void)addOperation:(id)arg1;
 - (unsigned long long)count;
+- (id)initWithLogType:(id)arg1;
 - (void)lock;
-- (void)performOperation:(id)arg1 onOperationQueue:(id)arg2 withTimeOut:(double)arg3 logType:(id)arg4;
+- (void)performOperation:(id)arg1 onOperationQueue:(id)arg2 withTimeOut:(double)arg3;
 - (void)removeOperation:(id)arg1;
 - (void)unlock;
 

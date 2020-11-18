@@ -47,6 +47,7 @@
 + (id)reuseIdentifier;
 + (id)sectionIdentifier;
 + (id)sectionTitle;
++ (BOOL)supportsMacSelection;
 + (BOOL)supportsMenuInteraction;
 + (BOOL)supportsQuicklookForResult:(id)arg1;
 + (BOOL)useRecencyRankedSearchForMode:(unsigned long long)arg1;
@@ -55,7 +56,6 @@
 - (id)_additionalMenuElementsForResult:(id)arg1;
 - (BOOL)_currentModeIsDetails;
 - (id)_overridingMenuElementsForResult:(id)arg1;
-- (id)_pasteboardItemsForResult:(id)arg1;
 - (id)_queryContextWithText:(id)arg1;
 - (id)_queryStringWithText:(id)arg1;
 - (struct NSDirectionalEdgeInsets)additionalGroupInsets;
@@ -75,6 +75,7 @@
 - (Class)headerOverrideClass;
 - (id)initWithSectionIndex:(unsigned long long)arg1;
 - (double)interGroupSpacing;
+- (id)itemProviderForSearchResult:(id)arg1;
 - (id)layoutGroupWithEnvironment:(id)arg1;
 - (unsigned long long)layoutWidth;
 - (unsigned long long)maxResultsForMode:(unsigned long long)arg1;

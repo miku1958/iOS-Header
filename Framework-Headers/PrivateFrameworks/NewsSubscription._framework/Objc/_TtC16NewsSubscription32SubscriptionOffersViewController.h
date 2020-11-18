@@ -25,6 +25,7 @@
     MISSING_TYPE *offers;
     MISSING_TYPE *viewModel;
     MISSING_TYPE *tag;
+    MISSING_TYPE *webOptinFlowManager;
 }
 
 - (void).cxx_destruct;

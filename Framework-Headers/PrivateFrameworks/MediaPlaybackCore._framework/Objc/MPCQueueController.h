@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 #import <MediaPlaybackCore/MPAVQueueController-Protocol.h>
+#import <MediaPlaybackCore/MPArtworkDataSource-Protocol.h>
 #import <MediaPlaybackCore/MPCContinueListeningRadioQueueProviding-Protocol.h>
 #import <MediaPlaybackCore/MPCPlaybackEngineEventObserving-Protocol.h>
 #import <MediaPlaybackCore/MPCQueueItemProviding-Protocol.h>
@@ -17,7 +18,7 @@
 @class MPAVItem, MPCPlaybackEngine, MPSectionedIdentifierList, MPSectionedIdentifierListPosition, MPShuffleableSectionedIdentifierList, NSError, NSMutableDictionary, NSString, NSUserDefaults;
 @protocol MPAVQueueControllerDelegate, MPAVQueueCoordinating;
 
-@interface MPCQueueController : NSObject <MPShuffleableSectionedIdentifierListDelegate, MPSectionedIdentifierListAnnotationDelegate, MPCContinueListeningRadioQueueProviding, MPCPlaybackEngineEventObserving, MPCQueueItemProviding, MPAVQueueController, MSVSegmentedCoding>
+@interface MPCQueueController : NSObject <MPShuffleableSectionedIdentifierListDelegate, MPSectionedIdentifierListAnnotationDelegate, MPCContinueListeningRadioQueueProviding, MPCPlaybackEngineEventObserving, MPArtworkDataSource, MPCQueueItemProviding, MPAVQueueController, MSVSegmentedCoding>
 {
     unsigned long long _stateHandle;
     NSUserDefaults *_defaults;
@@ -111,8 +112,10 @@
 - (void)addPlaybackContext:(id)arg1 atPosition:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addPlaybackContext:(id)arg1 atPosition:(long long)arg2 jumpToIt:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)addPlaybackContext:(id)arg1 atPosition:(long long)arg2 jumpToIt:(BOOL)arg3 userModification:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (BOOL)areRepresentationsAvailableForCatalog:(id)arg1;
 - (BOOL)canSkipInDirection:(long long)arg1 fromQueueItem:(id)arg2;
 - (BOOL)canSkipItem:(id)arg1;
+- (void)cancelLoadingRepresentationForArtworkCatalog:(id)arg1;
 - (void)clearUpNext;
 - (id)contentItemIDAtIndex:(long long)arg1;
 - (id)contentItemIDWithCurrentItemOffset:(long long)arg1 mode:(long long)arg2 didReachEnd:(BOOL *)arg3;
@@ -127,18 +130,21 @@
 - (void)engine:(id)arg1 didChangeItemElapsedTime:(double)arg2 rate:(float)arg3;
 - (void)engine:(id)arg1 didChangeToState:(unsigned long long)arg2;
 - (void)engine:(id)arg1 didReachEndOfQueueWithReason:(id)arg2;
+- (id)existingRepresentationForArtworkCatalog:(id)arg1;
 - (void)finalizeStateRestorationWithAccountManager:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)firstContentItemIDForItemIntersectingIdentifierSet:(id)arg1;
 - (void)incrementVersionForSegment:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isPlaceholderItemForContentItemID:(id)arg1;
+- (BOOL)isRepresentation:(id)arg1 bestRepresentationForArtworkCatalog:(id)arg2;
 - (id)itemForContentItemID:(id)arg1;
 - (id)itemForContentItemID:(id)arg1 allowReuse:(BOOL)arg2;
 - (id)itemToFollowItem:(id)arg1 direction:(long long)arg2 distance:(long long)arg3 jumpToItem:(BOOL)arg4;
 - (void)jumpToContentItemID:(id)arg1;
 - (void)jumpToContentItemID:(id)arg1 userInitiated:(BOOL)arg2;
 - (void)jumpToFirstContentItem;
+- (void)loadRepresentationForArtworkCatalog:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)moveContentItemID:(id)arg1 afterContentItemID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)moveContentItemID:(id)arg1 beforeContentItemID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)player:(id)arg1 currentItemDidChangeFromItem:(id)arg2 toItem:(id)arg3;
@@ -164,6 +170,7 @@
 - (id)segmentForCodingKey:(id)arg1;
 - (void)updateLocationDependentPropertiesForItem:(id)arg1;
 - (long long)versionForSegment:(id)arg1;
+- (id)visualIdenticalityIdentifierForCatalog:(id)arg1;
 
 @end
 

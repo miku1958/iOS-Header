@@ -10,6 +10,7 @@
 {
 }
 
+- (void)observeAttachedToWindowedAccessoryWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeInCallPresentationModeWithBlock:(CDUnknownBlockType)arg1;
 
 @end

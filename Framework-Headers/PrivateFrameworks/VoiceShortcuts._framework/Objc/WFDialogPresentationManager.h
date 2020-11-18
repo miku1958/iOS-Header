@@ -53,6 +53,7 @@
 - (void).cxx_destruct;
 - (void)beginConnection;
 - (void)beginPersistentModeWithRunningContext:(id)arg1 attribution:(id)arg2;
+- (void)clearPersistentModeStateIfNecessary;
 - (void)completePersistentModeWithSuccess:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)connectedDialog;
 - (void)connectedDialogDidDisconnect;

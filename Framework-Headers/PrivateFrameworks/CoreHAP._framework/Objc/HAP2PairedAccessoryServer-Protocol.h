@@ -6,7 +6,7 @@
 
 #import <CoreHAP/HAP2AccessoryServer-Protocol.h>
 
-@class HAPPairingIdentity, NSArray;
+@class HAPPairingIdentity, NSArray, NSString;
 @protocol HAP2Accessory, HAP2Cancelable;
 
 @protocol HAP2PairedAccessoryServer <HAP2AccessoryServer>
@@ -14,6 +14,7 @@
 @property (readonly, nonatomic) NSArray *accessories;
 @property (readonly, nonatomic, getter=isPaired) BOOL paired;
 @property (readonly, nonatomic) id<HAP2Accessory> primaryAccessory;
+@property (readonly, nonatomic) NSString *productData;
 
 - (id<HAP2Cancelable>)addPairing:(HAPPairingIdentity *)arg1 completion:(void (^)(NSError *))arg2;
 - (id<HAP2Cancelable>)getPairingsWithCompletion:(void (^)(NSArray *, NSError *))arg1;

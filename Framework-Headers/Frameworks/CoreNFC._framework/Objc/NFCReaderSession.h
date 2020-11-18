@@ -20,8 +20,8 @@
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSObject<OS_dispatch_queue> *_sessionQueue;
     NSObject<NFReaderSessionInterface><NSXPCProxyCreating> *_proxy;
-    BOOL _started;
-    BOOL _invalidated;
+    long long _sessionState;
+    BOOL _delegateQueueStarted;
     long long _invalidationCode;
     id<NFTag> _connectedTag;
     NSObject<OS_dispatch_group> *_sessionStartInProgress;
@@ -55,9 +55,11 @@
 - (void)_callbackDidInvalidateWithError:(id)arg1;
 - (BOOL)_connectTag:(id)arg1 error:(id *)arg2;
 - (id)_convertMessageToInternal:(id)arg1;
-- (void)_invalidateSessionWithCode:(long long)arg1 callbackOnQueue:(BOOL)arg2;
-- (void)_invalidateSessionWithCode:(long long)arg1 message:(id)arg2 finalUIState:(long long)arg3 callbackOnQueue:(BOOL)arg4;
+- (void)_invalidateSessionAndActivateCallbackWithCode:(long long)arg1;
+- (void)_invalidateSessionWithCode:(long long)arg1;
+- (void)_invalidateSessionWithCode:(long long)arg1 message:(id)arg2 finalUIState:(long long)arg3 activateCallback:(BOOL)arg4;
 - (void)_restartPollingWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_resumeDelegateQueue;
 - (void)_startPollingWithMethod:(unsigned long long)arg1 sessionConfig:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_stopPollingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)beginSession;
@@ -71,7 +73,10 @@
 - (void)didInvalidate;
 - (void)didStartSession:(id)arg1;
 - (void)didTerminate:(id)arg1;
+- (void)didUIControllerInvalidate:(id)arg1;
 - (BOOL)disconnectTagWithError:(id *)arg1;
+- (void)handleSessionResumed;
+- (void)handleSessionSuspended:(id)arg1;
 - (void)hardwareFailedToLoad;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 pollMethod:(unsigned long long)arg3;
 - (id)initWithDelegate:(id)arg1 sessionDelegateType:(long long)arg2 queue:(id)arg3 pollMethod:(unsigned long long)arg4 sessionConfig:(unsigned long long)arg5;

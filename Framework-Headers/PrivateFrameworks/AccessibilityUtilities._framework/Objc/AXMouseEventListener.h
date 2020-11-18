@@ -29,14 +29,15 @@
 + (id)_mouseMatching;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_handleMouseButtonEvent:(id)arg1;
+- (void)_finishHandlingMouseButtonEvent:(id)arg1 buttonMask:(double)arg2 creatorHIDServiceClient:(struct __IOHIDServiceClient *)arg3;
+- (BOOL)_handleMouseButtonEvent:(id)arg1;
 - (id)_init;
 - (void)addObserver:(id)arg1;
-- (void)beginFilteringEvents;
+- (void)beginFilteringButtonEvents;
 - (void)dealloc;
 - (void)deviceMonitorDidDetectDeviceEvent:(id)arg1;
 - (id)discoveredMouseDevices;
-- (void)endFilteringEvents;
+- (void)endFilteringButtonEvents;
 - (void)mouseSettingsDidChange;
 - (void)removeObserver:(id)arg1;
 

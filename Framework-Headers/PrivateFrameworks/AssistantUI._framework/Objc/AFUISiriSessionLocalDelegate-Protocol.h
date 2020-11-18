@@ -21,6 +21,7 @@
 - (void)siriSessionDidReceiveDelayedActionCancelCommand:(SAUIDelayedActionCancelCommand *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;
 - (void)siriSessionDidReceiveDelayedActionCommand:(SAUIDelayedActionCommand *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;
 - (void)siriSessionDidResetContext:(AFUISiriSession *)arg1;
+- (void)siriSessionImmersiveExperienceRequested;
 - (void)siriSessionRecordingPreparationHasFinished:(AFUISiriSession *)arg1;
 - (void)siriSessionShouldEndExtendAudioSessionForImminentPhoneCall;
 - (void)siriSessionShouldExtendAudioSessionForImminentPhoneCall;

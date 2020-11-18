@@ -11,8 +11,8 @@
 
 @interface APPCPromotedContent : NSObject
 {
-    MISSING_TYPE *metricsHelper;
     MISSING_TYPE *diagnosticMetricHelper;
+    MISSING_TYPE *metricsHelper;
     MISSING_TYPE *identifier;
     MISSING_TYPE *journeyIdentifier;
     MISSING_TYPE *context;
@@ -59,7 +59,7 @@
 @property (nonatomic, copy) NSString *journeyIdentifier;
 @property (nonatomic, strong) id<APPCMediaMetricsHelping> mediaMetricHelper; // @synthesize mediaMetricHelper;
 @property (nonatomic, copy) NSDictionary *metaData;
-@property (nonatomic, readonly) id<APPCJourneyMetricsHelping> metricsHelper; // @synthesize metricsHelper;
+@property (nonatomic, strong) id<APPCJourneyMetricsHelping> metricsHelper; // @synthesize metricsHelper;
 @property (nonatomic) unsigned long long minimumTimeBetweenPresentation; // @synthesize minimumTimeBetweenPresentation;
 @property (nonatomic, readonly) BOOL placeholder; // @synthesize placeholder;
 @property (nonatomic, copy) NSArray *representations;
@@ -68,6 +68,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)replaceMetricsHelperWithNewMetricsHelper:(id)arg1;
 
 @end
 

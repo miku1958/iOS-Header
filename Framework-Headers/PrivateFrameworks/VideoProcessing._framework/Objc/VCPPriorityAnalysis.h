@@ -20,21 +20,22 @@
     VCPCNNHandsDetector *_handsDetector;
     VCPCNNHandKeypointsDetector *_handsKeypointsDetector;
     VCPCNNFastGestureRecognition *_fastGestureDetector;
+    NSArray *_prevFrameHandKeypoint;
+    NSDate *_prevTimeStampHandDetected;
+    NSDate *_prevTimeSignLanguageDetected;
     NSMutableArray *_classIndexTracker;
     NSMutableArray *_gestureScoreTracker;
     NSMutableArray *_motionScoreTracker;
     NSMutableArray *_iouTracker;
     NSMutableArray *_handKeypointTracker;
-    NSArray *_prevFrameHandKeypoint;
-    NSDate *_prevTimeStampHandDetected;
-    NSDate *_prevTimeSignLanguageDetected;
     struct CGPoint _prevHandCenter;
 }
 
 + (id)priorityAnalysis;
 - (void).cxx_destruct;
+- (float)avgPooling:(id)arg1;
 - (int)calculatePriorityScore:(float *)arg1 ofPixelBuffer:(struct __CVBuffer *)arg2 withMetadata:(id)arg3;
-- (float)computeIOU:(struct CGRect *)arg1 boxB:(struct CGRect *)arg2;
+- (float)computeIOU:(struct CGRect *)arg1 boxB:(struct CGRect *)arg2 handToFaceRatio:(float *)arg3;
 - (float)computeMaxMinDistance:(id)arg1 prevFrameKeypoints:(id)arg2;
 - (void)dealloc;
 - (int)fastSignLanguageDetection:(float *)arg1 ofPixelBuffer:(struct __CVBuffer *)arg2 withMetadata:(id)arg3;

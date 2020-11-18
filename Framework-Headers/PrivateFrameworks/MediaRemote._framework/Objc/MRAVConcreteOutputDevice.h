@@ -43,6 +43,8 @@
 - (BOOL)canPlayEncryptedProgressiveDownloadAssets;
 - (BOOL)canRelayCommunicationChannel;
 - (id)clusterComposition;
+- (unsigned int)clusterType;
+- (unsigned long long)configuredClusterSize;
 - (id)currentBluetoothListeningMode;
 - (unsigned int)deviceSubtype;
 - (unsigned int)deviceType;

@@ -139,6 +139,7 @@ __attribute__((visibility("hidden")))
 - (void)_screenLockedMonitorStart;
 - (void)_screenLockedMonitorStop;
 - (void)_screenOnMonitorStart;
+- (void)_screenOnMonitorStartiOS;
 - (void)_screenOnMonitorStop;
 - (void)_screenSaverMonitorStart;
 - (void)_screenSaverMonitorStop;

@@ -183,10 +183,11 @@
 - (long long)_currentInterfaceIdiom;
 - (id)_currentPrimaryChildViewController;
 - (id)_currentSupplementaryChildViewController;
-- (id)_deepestUnambiguousResponder;
+- (id)_deepestActionResponder;
 - (double)_defaultMaximumIPadWidthForColumn:(long long)arg1 withSize:(struct CGSize)arg2;
 - (double)_defaultMaximumPrimaryColumnWidthForSize:(struct CGSize)arg1;
 - (double)_defaultMaximumSupplementaryColumnWidthForSize:(struct CGSize)arg1;
+- (double)_defaultMaximumTVWidthForColumn:(long long)arg1 withSize:(struct CGSize)arg2;
 - (struct CGSize)_defaultViewSizeForResolvingDisplayModeOrSplitBehavior;
 - (void)_descendantWillPresentViewController:(id)arg1 modalSourceViewController:(id)arg2 presentationController:(id)arg3 animated:(BOOL)arg4;
 - (void)_didChangeToFirstResponder:(id)arg1;
@@ -232,11 +233,13 @@
 - (id)_multitaskingDragExclusionRects;
 - (id)_navigationBarForSidebarButtonForColumn:(long long)arg1;
 - (void)_navigationController:(id)arg1 navigationBar:(id)arg2 topItemUpdatedContentLayout:(id)arg3;
+- (id)_navigationController:(id)arg1 navigationBarAdditionalActionsForBackButtonMenu:(id)arg2;
 - (void)_navigationControllerDidChangeNavigationBarHidden:(id)arg1;
 - (void)_navigationControllerDidUpdateStack:(id)arg1;
 - (BOOL)_navigationControllerShouldNotAdjustTransitioningSizeForChildContainer:(id)arg1;
 - (id)_newBarContentAnimationClippingView;
 - (long long)_nextTargetDisplayModeForDisplayMode:(long long)arg1 showMoreIfPossible:(BOOL)arg2;
+- (id)_nextVisibleViewControllerForResponderAfterChildViewController:(id)arg1;
 - (void)_notifyFluidPresentationGestureDidEnd;
 - (void)_notifyFluidPresentationGestureWillBegin;
 - (BOOL)_optsOutOfPopoverControllerHierarchyCheck;
@@ -280,6 +283,7 @@
 - (void)_triggerDisplayModeAction:(id)arg1;
 - (void)_triggerSecondaryOnlyShortcutAction:(id)arg1;
 - (void)_triggerSidebarKeyCommandAction:(id)arg1;
+- (struct UIEdgeInsets)_tvOSColumnStyleExtraInsetsForChildViewController:(id)arg1;
 - (id)_unspecifiedCompositionDisplayModeButtonItem;
 - (void)_unspecifiedShowDetailViewController:(id)arg1 onTargetVC:(id)arg2 sender:(id)arg3;
 - (void)_unspecifiedStyleChangeToDisplayMode:(long long)arg1 fromPreferredDisplayMode:(long long)arg2;

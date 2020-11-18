@@ -13,6 +13,7 @@
     MISSING_TYPE *requestID;
     MISSING_TYPE *appContext;
     MISSING_TYPE *parent;
+    MISSING_TYPE *contextData;
     MISSING_TYPE *requestType;
     MISSING_TYPE *controllerRef;
     MISSING_TYPE *contextDataRef;

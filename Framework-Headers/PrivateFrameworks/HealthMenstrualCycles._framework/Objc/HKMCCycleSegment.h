@@ -6,15 +6,19 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthMenstrualCycles/HKRedactedDescription-Protocol.h>
 #import <HealthMenstrualCycles/NSSecureCoding-Protocol.h>
 
-@interface HKMCCycleSegment : NSObject <NSSecureCoding>
+@class NSString;
+
+@interface HKMCCycleSegment : NSObject <HKRedactedDescription, NSSecureCoding>
 {
     CDStruct_ef5fcbe6 _days;
     long long _type;
 }
 
 @property (readonly, nonatomic) CDStruct_ef5fcbe6 days; // @synthesize days=_days;
+@property (readonly, copy) NSString *hk_redactedDescription;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (id)_fertileWindowSegmentWithDays:(CDStruct_ef5fcbe6)arg1;
@@ -26,7 +30,6 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)redactedDescription;
 
 @end
 

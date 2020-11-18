@@ -12,7 +12,6 @@
 
 @property (readonly, nonatomic) NSArray *allUsersIncludingCurrentUser;
 @property (readonly, nonatomic) BOOL announceAccessAllowedForCurrentUser;
-@property (readonly, nonatomic) BOOL announceNotificationsEnabledForCurrentUser;
 @property (readonly, nonatomic) NSDictionary *homePods;
 @property (readonly, nonatomic) NSDictionary *homePodsIncludingCurrentAccessory;
 @property (readonly, nonatomic) NSArray *homePodsIncludingCurrentAccessorySupportingAnnounce;
@@ -20,6 +19,8 @@
 @property (readonly, nonatomic) NSArray *homePodsSupportingAnnounce;
 @property (readonly, nonatomic) NSArray *homePodsWithAnnounceEnabled;
 @property (readonly, nonatomic) BOOL isAnnounceAvailable;
+@property (readonly, nonatomic) BOOL isAnnounceEnabledForAnyAccessory;
+@property (readonly, nonatomic) BOOL isAnnounceEnabledForAnyAccessoryOrUser;
 @property (readonly, nonatomic) BOOL isAnnounceSupported;
 @property (readonly, nonatomic) BOOL isCurrentUserAdministrator;
 @property (readonly, nonatomic) BOOL isCurrentUserOwner;
@@ -34,6 +35,7 @@
 - (id)accessoryForID:(id)arg1;
 - (id)accessoryForUUIDString:(id)arg1;
 - (BOOL)announceAccessAllowedForUser:(id)arg1;
+- (BOOL)announceNotificationsEnabledForCurrentUserWithOverrideHomeLocationStatus:(long long)arg1;
 - (BOOL)isAdministrator:(id)arg1;
 - (BOOL)isOwner:(id)arg1;
 - (BOOL)isRemoteAccessAllowedForUser:(id)arg1;

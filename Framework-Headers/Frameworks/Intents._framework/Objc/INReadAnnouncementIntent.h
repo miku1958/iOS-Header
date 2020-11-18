@@ -18,7 +18,9 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long readType;
+@property (readonly, copy, nonatomic) NSString *startAnnouncementIdentifier;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) long long userNotificationType;
 
 - (id)_categoryVerb;
 - (id)_dictionaryRepresentation;
@@ -28,11 +30,13 @@
 - (void)_setMetadata:(id)arg1;
 - (id)_typedBackingStore;
 - (id)domain;
-- (id)initWithReadType:(long long)arg1;
+- (id)initWithReadType:(long long)arg1 startAnnouncementIdentifier:(id)arg2 userNotificationType:(long long)arg3;
 - (id)parametersByName;
 - (void)setDomain:(id)arg1;
 - (void)setParametersByName:(id)arg1;
 - (void)setReadType:(long long)arg1;
+- (void)setStartAnnouncementIdentifier:(id)arg1;
+- (void)setUserNotificationType:(long long)arg1;
 - (void)setVerb:(id)arg1;
 - (id)verb;
 

@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityAddEditActions:(id)arg1;
+- (id)_accessibilityAddToDragSessionCustomAction;
 - (void)_accessibilityAddTodayViewAction:(id)arg1;
 - (unsigned long long)_accessibilityAutomationType;
 - (void)_accessibilityBeginDragAtPoint:(struct CGPoint)arg1 endpoint:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -29,6 +30,7 @@
 - (BOOL)_accessibilityHasBadge;
 - (void)_accessibilityInDockActions:(id)arg1;
 - (BOOL)_accessibilityIsCategoryIconView;
+- (BOOL)_accessibilityIsDraggingWidget;
 - (BOOL)_accessibilityIsFolderIconView;
 - (BOOL)_accessibilityIsInCmdTabSwitcher;
 - (BOOL)_accessibilityIsInFolder;

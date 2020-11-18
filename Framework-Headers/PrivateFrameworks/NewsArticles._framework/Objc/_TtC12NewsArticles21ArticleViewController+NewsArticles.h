@@ -12,9 +12,12 @@
 #import <NewsArticles/NUURLHandlerDelegate-Protocol.h>
 #import <NewsArticles/UIScrollViewDelegate-Protocol.h>
 
+@class NSArray;
+
 @interface _TtC12NewsArticles21ArticleViewController (NewsArticles) <NULoadingDelegate, NUArticleViewControllerLoadingListener, NUArticleHardPaywallPresentationReporting, UIScrollViewDelegate, NUURLHandlerDelegate>
 
 @property (nonatomic, readonly) BOOL canBecomeFirstResponder;
+@property (nonatomic, readonly) NSArray *keyCommands;
 
 - (void)URLHandler:(id)arg1 wantsToPresentViewController:(id)arg2 animated:(BOOL)arg3;
 - (BOOL)accessibilityShouldScroll:(id)arg1;

@@ -6,23 +6,22 @@
 
 #import <GeoServices/GEONavdPeer.h>
 
-@class GEOApplicationAuditToken, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface MNNavigationServicePeer : GEONavdPeer
 {
     NSString *_peerIdentifier;
     int _processIdentifier;
-    GEOApplicationAuditToken *_auditToken;
 }
 
-@property (readonly, nonatomic) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (readonly, nonatomic) NSString *peerIdentifier; // @synthesize peerIdentifier=_peerIdentifier;
 @property (readonly, nonatomic) int processIdentifier; // @synthesize processIdentifier=_processIdentifier;
 
 + (const char *)logCategory;
 + (id)peerForConnection:(id)arg1;
 - (void).cxx_destruct;
+- (id)auditToken;
 - (void)clearConnectionHandlers;
 - (void)dealloc;
 - (id)initWithConnection:(id)arg1 peerIdentifier:(id)arg2 processIdentifier:(int)arg3;

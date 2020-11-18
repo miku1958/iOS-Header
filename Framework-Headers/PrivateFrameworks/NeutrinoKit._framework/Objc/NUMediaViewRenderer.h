@@ -153,6 +153,7 @@
 - (void)seekToTime:(CDStruct_198678f7)arg1;
 - (void)seekToTime:(CDStruct_198678f7)arg1 exact:(BOOL)arg2;
 - (void)seekToTime:(CDStruct_198678f7)arg1 toleranceBefore:(CDStruct_198678f7)arg2 toleranceAfter:(CDStruct_198678f7)arg3;
+- (void)seekToTime:(CDStruct_198678f7)arg1 toleranceBefore:(CDStruct_198678f7)arg2 toleranceAfter:(CDStruct_198678f7)arg3 forceSeek:(BOOL)arg4;
 - (void)setVideoEnabled:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)stepByCount:(long long)arg1;
 - (struct CGSize)targetSize;

@@ -11,7 +11,6 @@
 
 @interface _TtC12NewsArticles26EndOfArticleViewController : UIViewController
 {
-    MISSING_TYPE *adPresentationDelegateProvider;
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintViewController;

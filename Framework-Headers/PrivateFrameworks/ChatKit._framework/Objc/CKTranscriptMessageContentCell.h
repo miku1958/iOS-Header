@@ -30,7 +30,7 @@
 @property (nonatomic) struct CGSize messageDisplayViewRequestedSize; // @synthesize messageDisplayViewRequestedSize=_messageDisplayViewRequestedSize;
 
 - (void).cxx_destruct;
-- (void)configureForChatItem:(id)arg1;
+- (void)configureForChatItem:(id)arg1 context:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviewsForAlignmentContents;
 - (void)layoutSubviewsForDrawer;

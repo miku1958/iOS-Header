@@ -41,7 +41,7 @@
 @property (nonatomic, getter=isTimeHidden) BOOL timeHidden; // @synthesize timeHidden=_timeHidden;
 
 + (long long)_deviceUserInterfaceLayoutDirection;
-+ (double)_heightForStyle:(long long)arg1 orientation:(long long)arg2 forStatusBarFrame:(BOOL)arg3 inWindow:(id)arg4;
++ (double)_heightForStyle:(long long)arg1 orientation:(long long)arg2 forStatusBarFrame:(BOOL)arg3 inWindow:(id)arg4 isAzulBLinked:(BOOL)arg5;
 + (BOOL)_isLightContentStyle:(long long)arg1;
 + (id)_newStyleAttributesForRequest:(id)arg1;
 + (double)_regularPadBaselineOffset;

@@ -7,6 +7,7 @@
 #import <NewsArticles/_TtC12NewsArticles10URLHandler.h>
 
 @interface _TtC12NewsArticles10URLHandler (NewsArticles)
+- (void)openNewWindowWithURL:(id)arg1;
 - (void)openURL:(id)arg1;
 @end
 

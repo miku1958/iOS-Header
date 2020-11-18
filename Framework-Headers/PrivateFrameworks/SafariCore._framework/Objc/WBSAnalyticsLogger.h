@@ -23,6 +23,7 @@
 + (id)sharedLogger;
 - (void).cxx_destruct;
 - (void)_didSelectFavoritesGridItemOfSection:(int)arg1 type:(int)arg2 atIndex:(unsigned long long)arg3 itemsPerRow:(unsigned long long)arg4 isNewTabPage:(BOOL)arg5;
+- (id)_nameForStartPageSection:(long long)arg1;
 - (void)_sendEvent:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)_sendEventAddingVersionInfo:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)ckBookmarkSyncFinishedWithResult:(long long)arg1 error:(id)arg2;
@@ -48,6 +49,7 @@
 - (void)didShowContactAutoFillSetsWithMeCardSets:(BOOL)arg1 showingPreviouslyCustomizedSet:(BOOL)arg2;
 - (void)didStartMigratingToCKBookmarksAsPrimaryMigrator:(BOOL)arg1 localState:(long long)arg2 remoteState:(long long)arg3;
 - (void)didSuccessfullyMigrateToCKBookmarksAsPrimaryMigrator:(BOOL)arg1;
+- (void)didSwitchToSafari:(id)arg1 entryPoint:(id)arg2;
 - (void)didToggleDomainSpecificAutomaticReader:(BOOL)arg1;
 - (void)didToggleGloballyUseAutomaticReader:(BOOL)arg1;
 - (void)didToggleShowLessButtonForSection:(long long)arg1;

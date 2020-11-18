@@ -32,6 +32,7 @@
 - (BOOL)_lock_openHighFrequencyDataStoreWithError:(id *)arg1;
 - (shared_ptr_88ae0538)_lock_primitiveOpenHighFrequencyDataStoreWithError:(id *)arg1;
 - (BOOL)accessStoreWithError:(id *)arg1 block:(CDUnknownBlockType)arg2;
+- (BOOL)archiveHFDTo:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)description;
 - (BOOL)discardStoreWithError:(id *)arg1;

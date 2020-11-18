@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)_forgetEventMetrics:(id)arg1;
 - (void)_gatherAppTelemetryEventsWithActivity:(id)arg1;
 - (void)_handleApplySchedulerTimeoutWithActivity:(id)arg1;
-- (void)_reportSyncUpBackoffRatio;
+- (void)_reportSyncUpBackoffInfo;
 - (void)_waitForApplySchedulerToBeIdleWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_withEventMetricsOfKind:(id)arg1 accessor:(CDUnknownBlockType)arg2;
 - (void)createFSEventToSyncUpEventForFileID:(unsigned long long)arg1 genID:(unsigned int)arg2;

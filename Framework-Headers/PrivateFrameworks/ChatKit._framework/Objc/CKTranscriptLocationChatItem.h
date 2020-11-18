@@ -21,9 +21,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (Class)balloonViewClass;
 - (BOOL)canCopy;
+- (id)dragItemProvider;
 - (struct CGSize)loadSizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(out struct UIEdgeInsets *)arg2;
 - (id)mediaObject;
-- (id)pasteboardItems;
 - (id)transferGUID;
 
 @end

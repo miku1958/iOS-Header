@@ -49,7 +49,7 @@
     BOOL _alignsIconsOnPixelBoundaries;
     id<SBIconListLayoutProvider> _layoutProvider;
     long long _orientation;
-    double _statusBarHeight;
+    unsigned long long _automaticallyReversedLayoutOrientations;
     unsigned long long _userInterfaceLayoutDirectionHandling;
     unsigned long long _iconViewConfigurationOptions;
     _UILegibilitySettings *_legibilitySettings;
@@ -76,6 +76,7 @@
 @property (readonly, nonatomic) struct CGSize alignmentIconSize;
 @property (nonatomic) BOOL alignsIconsOnPixelBoundaries; // @synthesize alignsIconsOnPixelBoundaries=_alignsIconsOnPixelBoundaries;
 @property (nonatomic) BOOL automaticallyAdjustsLayoutMetricsToFit; // @synthesize automaticallyAdjustsLayoutMetricsToFit=_automaticallyAdjustsLayoutMetricsToFit;
+@property (nonatomic) unsigned long long automaticallyReversedLayoutOrientations; // @synthesize automaticallyReversedLayoutOrientations=_automaticallyReversedLayoutOrientations;
 @property (readonly, nonatomic) Class baseIconViewClass;
 @property (nonatomic) BOOL boundsSizeTracksContentSize; // @synthesize boundsSizeTracksContentSize=_boundsSizeTracksContentSize;
 @property (strong, nonatomic) SBIconListViewIconLocationTransitionHandler *currentIconLocationTransitionHandler; // @synthesize currentIconLocationTransitionHandler=_currentIconLocationTransitionHandler;
@@ -118,7 +119,6 @@
 @property (nonatomic) BOOL pausesIconsForScrolling; // @synthesize pausesIconsForScrolling=_pausesIconsForScrolling;
 @property (nonatomic) struct SBIconListPredictedVisibleColumn predictedVisibleColumn; // @synthesize predictedVisibleColumn=_predictedVisibleColumn;
 @property (nonatomic, getter=isPurged) BOOL purged; // @synthesize purged=_purged;
-@property (nonatomic) double statusBarHeight; // @synthesize statusBarHeight=_statusBarHeight;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isTransitioningIconLocation) BOOL transitioningIconLocation;
 @property (readonly, nonatomic) long long userInterfaceLayoutDirection;
@@ -289,6 +289,7 @@
 - (id)succinctDescriptionBuilder;
 - (id)tintColor;
 - (void)updateEditingStateAnimated:(BOOL)arg1;
+- (void)updateReversedLayoutBasedOnOrientation;
 - (id)visibleGridCellIndexes;
 - (id)visibleGridCellIndexesWithMetrics:(id)arg1;
 - (void)willMoveToWindow:(id)arg1;

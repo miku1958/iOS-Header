@@ -14,6 +14,7 @@
 {
     SBHIconManager *_iconManager;
     CHSConfiguredWidgetContainerConsumer *_chronoConsumer;
+    unsigned long long _widgetDataGeneration;
 }
 
 @property (readonly, nonatomic) CHSConfiguredWidgetContainerConsumer *chronoConsumer; // @synthesize chronoConsumer=_chronoConsumer;
@@ -22,6 +23,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) SBHIconManager *iconManager; // @synthesize iconManager=_iconManager;
 @property (readonly) Class superclass;
+@property (nonatomic) unsigned long long widgetDataGeneration; // @synthesize widgetDataGeneration=_widgetDataGeneration;
 
 - (void).cxx_destruct;
 - (id)_containerDescriptorForWidgetIcon:(id)arg1 atLocation:(long long)arg2 page:(unsigned long long)arg3;

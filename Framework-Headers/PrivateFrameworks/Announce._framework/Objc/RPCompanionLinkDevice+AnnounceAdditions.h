@@ -8,7 +8,9 @@
 
 @interface RPCompanionLinkDevice (AnnounceAdditions)
 
+@property (readonly, nonatomic) BOOL isAccessory;
 @property (readonly, nonatomic) BOOL isOwnerDevice;
+@property (readonly, nonatomic) BOOL isPairedCompanion;
 @property (readonly, nonatomic) BOOL supportsAnnounce;
 
 @end

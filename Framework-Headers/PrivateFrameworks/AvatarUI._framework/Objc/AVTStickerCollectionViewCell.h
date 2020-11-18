@@ -43,6 +43,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
+- (void)purgeImageContents;
 - (void)setupPrereleaseLabelIfNeeded;
 - (void)stickerViewDidBeginPeel:(id)arg1;
 - (struct CGRect)stickerViewFrameForImageSize:(struct CGSize)arg1 clippingRect:(struct CGRect)arg2;

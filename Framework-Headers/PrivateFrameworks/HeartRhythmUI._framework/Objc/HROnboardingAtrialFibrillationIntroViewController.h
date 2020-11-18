@@ -47,7 +47,6 @@
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
-- (BOOL)_activeWatchNeedsLocationCheck;
 - (double)_assetImageBottomToTitleFirstBaseline;
 - (id)_bodyFont;
 - (id)_bodyFontTextStyle;
@@ -72,7 +71,7 @@
 - (id)deviceNotSupportedBodyString;
 - (id)featureDisabledBodyString;
 - (id)footnoteString;
-- (id)initForOnboarding:(BOOL)arg1;
+- (id)initForOnboarding:(BOOL)arg1 upgradingFromAlgorithmVersion:(long long)arg2;
 - (void)learnMoreButtonTapped:(id)arg1;
 - (id)learnMoreString;
 - (id)locationFeatureAlertAckButtonString;

@@ -14,10 +14,6 @@
     SXComponentClassification *_replacementClassification;
 }
 
-@property (readonly, nonatomic) SXComponentClassification *replacementClassification; // @synthesize replacementClassification=_replacementClassification;
-@property (readonly, nonatomic) NSString *typeString; // @synthesize typeString=_typeString;
-
-+ (id)deprecatedComponentWithType:(id)arg1 withReplacementClassificationClass:(Class)arg2;
 - (void).cxx_destruct;
 - (id)initWithType:(id)arg1 withReplacementClassification:(Class)arg2;
 

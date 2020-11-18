@@ -10,18 +10,20 @@
 {
 }
 
-+ (id)UDIDeviceIdentifierForProductWithName:(id)arg1 error:(out id *)arg2;
++ (id)_assembleUniqueDeviceIdentifierForDeviceType:(long long)arg1 majorVersion:(id)arg2 deviceIdentifier:(id)arg3;
 + (id)_deviceIdentifierForProductName:(id)arg1 key:(id)arg2 error:(out id *)arg3;
 + (id)_infoDictionaryForProductWithName:(id)arg1 error:(out id *)arg2;
 + (id)_productBuildVersion;
-+ (id)_updateVersionForMajorVersion:(id)arg1 productBuildVersion:(id)arg2;
 + (id)dateOfManufactureForProductWithName:(id)arg1 error:(out id *)arg2;
 + (id)majorVersionForProductWithName:(id)arg1 error:(out id *)arg2;
++ (id)phoneElectrocardiogramRecordingUniqueDeviceIdentifier;
 + (id)productBuildVersionForDeviceType:(long long)arg1;
 + (CDStruct_f6aba300)semanticVersionForProductWithName:(id)arg1 error:(out id *)arg2;
++ (id)uniqueDeviceIdentifierForProductWithName:(id)arg1 error:(out id *)arg2;
++ (id)updateVersionForMajorVersion:(id)arg1 productBuildVersion:(id)arg2;
 + (id)versionForProductWithName:(id)arg1 deviceType:(long long)arg2 error:(out id *)arg3;
 + (id)versionForProductWithName:(id)arg1 error:(out id *)arg2;
-+ (id)watchECGUDIDeviceIdentifier;
++ (id)watchElectrocardiogramRecordingUniqueDeviceIdentifier;
 + (id)yearOfReleaseForProductWithName:(id)arg1 error:(out id *)arg2;
 
 @end

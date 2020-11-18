@@ -11,6 +11,7 @@
 @interface _TtC8VideosUI8Document : _TtCs12_SwiftObject
 {
     MISSING_TYPE *pagePerfMetricsKey;
+    MISSING_TYPE *delegate;
     MISSING_TYPE *appContext;
     MISSING_TYPE *templateViewModel;
     MISSING_TYPE *navigationBar;

@@ -10,6 +10,7 @@
 
 @interface TVImageScaleDecorator : TVImageDecorator
 {
+    BOOL _centerGrowth;
     BOOL _cornerContinuous;
     BOOL _preservesAlpha;
     long long _scaleMode;
@@ -21,6 +22,7 @@
 }
 
 @property (copy, nonatomic) UIColor *bgColor; // @synthesize bgColor=_bgColor;
+@property (nonatomic) BOOL centerGrowth; // @synthesize centerGrowth=_centerGrowth;
 @property (nonatomic) BOOL cornerContinuous; // @synthesize cornerContinuous=_cornerContinuous;
 @property (nonatomic) struct TVCornerRadii cornerRadii; // @synthesize cornerRadii=_cornerRadii;
 @property (nonatomic) BOOL cropToFit;

@@ -6,12 +6,22 @@
 
 #import <VideosUI/_TtC8VideosUI19StackViewController.h>
 
+@class MISSING_TYPE;
+
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI25SearchStackViewController : _TtC8VideosUI19StackViewController
 {
+    MISSING_TYPE *delegate;
+    MISSING_TYPE *validResultCategoryId;
+    MISSING_TYPE *isShowingHints;
+    MISSING_TYPE *$__lazy_storage_$_portraitFullScreenSizeClass;
 }
 
+- (void).cxx_destruct;
+- (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (void)didMoveToParentViewController:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)viewDidLoad;
 
 @end
 

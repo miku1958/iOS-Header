@@ -10,6 +10,7 @@
 
 @class NSMutableArray, NSString, _MRNowPlayingPlayerPathProtobuf, _MRPlaybackQueueContextProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRPlaybackQueueProtobuf : PBCodable <NSCopying>
 {
     NSMutableArray *_contentItems;
@@ -25,33 +26,12 @@
     } _has;
 }
 
-@property (strong, nonatomic) NSMutableArray *contentItems; // @synthesize contentItems=_contentItems;
-@property (strong, nonatomic) _MRPlaybackQueueContextProtobuf *context; // @synthesize context=_context;
-@property (readonly, nonatomic) BOOL hasContext;
-@property (nonatomic) BOOL hasLocation;
-@property (readonly, nonatomic) BOOL hasQueueIdentifier;
-@property (readonly, nonatomic) BOOL hasRequestID;
-@property (readonly, nonatomic) BOOL hasResolvedPlayerPath;
-@property (nonatomic) BOOL hasSendingPlaybackQueueTransaction;
-@property (nonatomic) int location; // @synthesize location=_location;
-@property (strong, nonatomic) NSString *queueIdentifier; // @synthesize queueIdentifier=_queueIdentifier;
-@property (strong, nonatomic) NSString *requestID; // @synthesize requestID=_requestID;
-@property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *resolvedPlayerPath; // @synthesize resolvedPlayerPath=_resolvedPlayerPath;
-@property (nonatomic) BOOL sendingPlaybackQueueTransaction; // @synthesize sendingPlaybackQueueTransaction=_sendingPlaybackQueueTransaction;
-
-+ (Class)contentItemType;
 - (void).cxx_destruct;
-- (void)addContentItem:(id)arg1;
-- (void)clearContentItems;
-- (id)contentItemAtIndex:(unsigned long long)arg1;
-- (unsigned long long)contentItemsCount;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

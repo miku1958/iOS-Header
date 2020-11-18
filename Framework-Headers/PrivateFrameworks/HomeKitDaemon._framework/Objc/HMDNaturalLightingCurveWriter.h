@@ -56,7 +56,7 @@
 - (id)initWithUUID:(id)arg1 workQueue:(id)arg2 logIdentifier:(id)arg3;
 - (id)initWithUUID:(id)arg1 workQueue:(id)arg2 logIdentifier:(id)arg3 dataSource:(id)arg4 notificationCenter:(id)arg5 timerFactory:(CDUnknownBlockType)arg6;
 - (BOOL)supportsDeviceWithCapabilities:(id)arg1;
-- (void)synchronizeCurveToAccessory;
+- (void)synchronizeCurveWithActiveTransitionContext:(id)arg1;
 - (void)timerDidFire:(id)arg1;
 - (void)writeForNaturalLightingEnabledWithReason:(id)arg1;
 - (void)writeWithNaturalLightingEnabled:(BOOL)arg1 reason:(id)arg2 completion:(CDUnknownBlockType)arg3;

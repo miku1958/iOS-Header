@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (id)_accessibilityTreeAncestor;
 - (BOOL)_accessibilityValueIsAutofilled;
 - (id)_accessibilityWebDocumentView;
+- (id)_accessibilityWebRoleAsString;
 - (BOOL)_addAccessibilityObject:(struct AccessibilityObject *)arg1 toTextMarkerArray:(id)arg2;
 - (unsigned long long)_axAdjustableTrait;
 - (unsigned long long)_axButtonTrait;
@@ -75,7 +76,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_axVisitedTrait;
 - (unsigned long long)_axWebContentTrait;
 - (Optional_b9c62d53)_convertToDOMRange:(struct _NSRange)arg1;
-- (struct _NSRange)_convertToNSRange:(struct Range *)arg1;
+- (struct _NSRange)_convertToNSRange:(const struct SimpleRange *)arg1;
 - (BOOL)_prepareAccessibilityCall;
 - (id)_stringForRange:(struct _NSRange)arg1 attributed:(BOOL)arg2;
 - (id)_stringFromStartMarker:(id)arg1 toEndMarker:(id)arg2 attributed:(BOOL)arg3;

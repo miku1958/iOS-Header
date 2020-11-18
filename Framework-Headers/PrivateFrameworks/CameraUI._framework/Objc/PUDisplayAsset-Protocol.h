@@ -47,5 +47,6 @@
 - (unsigned long long)isContentEqualTo:(id<PUDisplayAsset>)arg1;
 
 @optional
+- (unsigned long long)contentChangeFromDisplayAsset:(id<PUDisplayAsset>)arg1;
 @end
 

@@ -19,13 +19,13 @@
 @property (strong, nonatomic) UIImage *composeImage; // @synthesize composeImage=_composeImage;
 @property (strong, nonatomic) IMPluginPayload *pluginPayload; // @synthesize pluginPayload=_pluginPayload;
 
-+ (id)pluginDisplayContinerWithPluginPayload:(id)arg1 composeImage:(id)arg2;
++ (id)pluginDisplayContainerWithPluginPayload:(id)arg1 composeImage:(id)arg2;
 + (BOOL)supportsSecureCoding;
++ (id)unarchiveFromData:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)itemProvider;
-- (id)pasteboardItem;
+- (id)pasteboardItemProvider;
 - (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
 
 @end

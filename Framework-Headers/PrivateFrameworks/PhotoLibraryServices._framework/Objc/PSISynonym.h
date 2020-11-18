@@ -16,9 +16,11 @@
     NSString *_text;
     unsigned long long _category;
     unsigned long long _owningGroupId;
+    NSString *_identifier;
 }
 
 @property (readonly, nonatomic) unsigned long long category; // @synthesize category=_category;
+@property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) unsigned long long owningGroupId; // @synthesize owningGroupId=_owningGroupId;
 @property (readonly, nonatomic) NSString *text; // @synthesize text=_text;
 
@@ -26,8 +28,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;
-- (id)identifier;
-- (id)initWithText:(id)arg1 category:(unsigned long long)arg2 owningGroupId:(unsigned long long)arg3;
+- (id)initWithText:(id)arg1 category:(unsigned long long)arg2 owningGroupId:(unsigned long long)arg3 identifier:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 
 @end

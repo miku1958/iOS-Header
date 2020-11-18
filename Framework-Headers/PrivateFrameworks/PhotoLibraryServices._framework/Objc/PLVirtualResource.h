@@ -72,6 +72,7 @@
 - (id)initWithRecipe:(id)arg1 forAsset:(id)arg2;
 - (BOOL)isDefaultOrientation;
 - (BOOL)isDerivative;
+- (BOOL)isInCloud;
 - (BOOL)isPlayableVideo;
 - (id)photosCTLJSONDict;
 - (float)scaleGivenAssetHasAdjustments:(BOOL)arg1 currentWidth:(long long)arg2 currentHeight:(long long)arg3;

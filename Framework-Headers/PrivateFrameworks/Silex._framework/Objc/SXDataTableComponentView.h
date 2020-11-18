@@ -12,7 +12,7 @@
 #import <Silex/UIGestureRecognizerDelegate-Protocol.h>
 
 @class CALayer, NSString, SXDataTableBlueprint, SXDataTableComponentController, SXDataTableDictionary, SXDataTableView, SXScrollView, SXTangierController;
-@protocol SXComponentActionHandler, SXComponentController, SXImageViewFactory, SXTextComponentLayoutHosting;
+@protocol SXAdIgnorableViewFactory, SXComponentActionHandler, SXComponentController, SXImageViewFactory, SXTextComponentLayoutHosting;
 
 @interface SXDataTableComponentView : SXComponentView <SXDataTableViewDataSource, SXTangierControllerDelegate, SXViewportChangeListener, UIGestureRecognizerDelegate>
 {
@@ -20,6 +20,7 @@
     id<SXComponentActionHandler> _componentActionHandler;
     id<SXTextComponentLayoutHosting> _textComponentLayoutHosting;
     id<SXComponentController> _componentController;
+    id<SXAdIgnorableViewFactory> _adIgnorableViewFactory;
     SXDataTableView *_tableView;
     SXDataTableComponentController *_dataTableComponentController;
     SXDataTableBlueprint *_blueprint;
@@ -31,6 +32,7 @@
     CALayer *_leftShadow;
 }
 
+@property (readonly, nonatomic) id<SXAdIgnorableViewFactory> adIgnorableViewFactory; // @synthesize adIgnorableViewFactory=_adIgnorableViewFactory;
 @property (strong, nonatomic) SXDataTableBlueprint *blueprint; // @synthesize blueprint=_blueprint;
 @property (readonly, nonatomic) id<SXComponentActionHandler> componentActionHandler; // @synthesize componentActionHandler=_componentActionHandler;
 @property (readonly, weak, nonatomic) id<SXComponentController> componentController; // @synthesize componentController=_componentController;
@@ -57,7 +59,7 @@
 - (id)descriptorForIndexPath:(CDStruct_2fea82da)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
-- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 imageViewFactory:(id)arg5 componentActionHandler:(id)arg6 textComponentLayoutHosting:(id)arg7 componentController:(id)arg8;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 imageViewFactory:(id)arg5 componentActionHandler:(id)arg6 textComponentLayoutHosting:(id)arg7 componentController:(id)arg8 adIgnorableViewFactory:(id)arg9;
 - (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (void)receivedInfo:(id)arg1 fromLayoutingPhaseWithIdentifier:(id)arg2;
 - (void)setupShadowsIfNeeded;

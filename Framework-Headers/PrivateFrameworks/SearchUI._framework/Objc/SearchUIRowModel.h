@@ -60,6 +60,7 @@
 - (id)initWithResult:(id)arg1 cardSection:(id)arg2 queryId:(unsigned long long)arg3;
 - (id)initWithResults:(id)arg1;
 - (id)initWithResults:(id)arg1 cardSection:(id)arg2 queryId:(unsigned long long)arg3;
+- (BOOL)isEqualToModel:(id)arg1;
 
 @end
 

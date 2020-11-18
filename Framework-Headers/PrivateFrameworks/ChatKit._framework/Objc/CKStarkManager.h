@@ -6,15 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class CKStarkConversationController;
+#import <ChatKit/CPInterfaceControllerDelegate-Protocol.h>
+#import <ChatKit/CPTemplateApplicationSceneDelegate-Protocol.h>
+#import <ChatKit/UISceneDelegate-Protocol.h>
 
-@interface CKStarkManager : NSObject
+@class CKStarkConversationController, NSString;
+
+@interface CKStarkManager : NSObject <CPTemplateApplicationSceneDelegate, CPInterfaceControllerDelegate, UISceneDelegate>
 {
     CKStarkConversationController *_conversationController;
 }
 
 @property (strong, nonatomic) CKStarkConversationController *conversationController; // @synthesize conversationController=_conversationController;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
++ (void)_activateSiriWithContext:(id)arg1;
++ (id)_directActionSource;
 + (void)activateForConversation:(id)arg1;
 + (void)activateForRecipient:(id)arg1;
 + (BOOL)isCarPlayConnected;
@@ -23,6 +33,8 @@
 - (void)openURL:(id)arg1 sourceApplication:(id)arg2;
 - (void)scene:(id)arg1 openURLContexts:(id)arg2;
 - (void)scene:(id)arg1 willConnectToSession:(id)arg2 options:(id)arg3;
+- (void)templateApplicationScene:(id)arg1 didConnectInterfaceController:(id)arg2;
+- (void)templateApplicationScene:(id)arg1 didDisconnectInterfaceController:(id)arg2;
 
 @end
 

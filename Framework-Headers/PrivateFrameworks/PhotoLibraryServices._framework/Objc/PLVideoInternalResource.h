@@ -26,6 +26,7 @@
 - (id)fileURLIfLocal;
 - (BOOL)hasAssociatedMediaMetadata;
 - (id)initWithBackingResource:(id)arg1;
+- (BOOL)isDerivative;
 - (BOOL)isDownloadable;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isHDRDerivative;

@@ -61,7 +61,7 @@
 - (void)_updateTableHeaderHeight;
 - (void)dealloc;
 - (void)enterCurrencyAmountPassViewDidLoadPassSnapshot:(id)arg1;
-- (id)initWithPaymentPass:(id)arg1 webService:(id)arg2 context:(long long)arg3;
+- (id)initWithPaymentPass:(id)arg1 webService:(id)arg2 passLibraryDataProvider:(id)arg3 context:(long long)arg4;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)peerPaymentActionController:(id)arg1 hasChangedState:(unsigned long long)arg2;

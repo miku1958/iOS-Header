@@ -21,6 +21,7 @@
     MISSING_TYPE *allowLocationForVisibility;
     MISSING_TYPE *allowLocationForActivity;
     MISSING_TYPE *monitorAssertion;
+    MISSING_TYPE *reloadForSignificantLocationChange;
     MISSING_TYPE *ext;
 }
 

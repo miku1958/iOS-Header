@@ -40,12 +40,13 @@
     HMFTimer *_homeLocationTimer;
     HMFTimer *_accessoryReachabilityUpdatesTimer;
     NSMutableSet *_reachabilityUpdatedAccessories;
+    unsigned long long _skippedInterDeviceChangeNotifications;
+    NSMapTable *_retrievalCompletionTuplesForAccessories;
     BOOL _anyBTLEAccessoryReachable;
     BOOL _activeNetworkRouterInitialSetupNeeded;
     BOOL _watchSkipVersionCheck;
     BOOL _ownerTrustZoneCapable;
     BOOL _migrationNeeded;
-    BOOL _threadNetworkRunning;
     BOOL _multiUserEnabled;
     BOOL _doorbellChimeEnabled;
     BOOL _hasAnyUserAcknowledgedCameraRecordingOnboarding;
@@ -102,7 +103,6 @@
     NSMutableDictionary *_addPendingAccessorySetupCodes;
     NSMapTable *_addPendingAccessories;
     NSMutableDictionary *_addAccessoryRequestMap;
-    NSMapTable *_retrievalCompletionTuplesForAccessories;
     NSMutableDictionary *_notificationHandlerMap;
     HMDHomeReprovisionHandler *_homeReprovisionHandler;
     unsigned long long _stateHandle;
@@ -146,7 +146,6 @@
     HMDResidentDeviceManager *_residentDeviceManager;
     HMDSharedHomeUpdateHandler *_sharedHomeUpdateHandler;
     HMDResidentDevice *_resident;
-    HMFTimer *_reachabilityDeregistrationTimer;
     NSMutableArray *_reachabilityRegisteredDevices;
     HMFTimer *_reachabilityNotificationTimer;
     NSMutableArray *_remoteReachabilityNotificationPendingAccessories;
@@ -213,6 +212,7 @@
 @property (strong, nonatomic) NSDate *firstHAPAccessoryAddedDate; // @synthesize firstHAPAccessoryAddedDate=_firstHAPAccessoryAddedDate;
 @property (readonly, copy) NSArray *hapAccessories;
 @property (nonatomic) BOOL hasAnyUserAcknowledgedCameraRecordingOnboarding; // @synthesize hasAnyUserAcknowledgedCameraRecordingOnboarding=_hasAnyUserAcknowledgedCameraRecordingOnboarding;
+@property (readonly) BOOL hasCharacteristicNotificationRegistrations;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableSet *heartbeatPingMessagesQueuedWithServer; // @synthesize heartbeatPingMessagesQueuedWithServer=_heartbeatPingMessagesQueuedWithServer;
 @property (readonly, weak) HMDHome *home;
@@ -228,6 +228,7 @@
 @property (readonly, nonatomic) HMDLogEventDispatcher *logEventDispatcher;
 @property (readonly, nonatomic) HMDHomeObjectLookup *lookup; // @synthesize lookup=_lookup;
 @property (strong, nonatomic) HMDMediaActionRouter *mediaActionRouter; // @synthesize mediaActionRouter=_mediaActionRouter;
+@property (readonly, copy) NSArray *mediaDestinations;
 @property (strong, nonatomic) NSArray *mediaSessionStates; // @synthesize mediaSessionStates=_mediaSessionStates;
 @property (strong, nonatomic) NSArray *mediaSessions; // @synthesize mediaSessions=_mediaSessions;
 @property (strong) HMDHomeMediaSystemHandler *mediaSystemController; // @synthesize mediaSystemController=_mediaSystemController;
@@ -280,7 +281,6 @@
 @property (strong, nonatomic) NSUUID *primaryNetworkRouterManagingDeviceUUID; // @synthesize primaryNetworkRouterManagingDeviceUUID=_primaryNetworkRouterManagingDeviceUUID;
 @property (readonly) long long protectionMode;
 @property long long protectionMode; // @synthesize protectionMode=_protectionMode;
-@property (strong, nonatomic) HMFTimer *reachabilityDeregistrationTimer; // @synthesize reachabilityDeregistrationTimer=_reachabilityDeregistrationTimer;
 @property (readonly) HMDResidentReachabilityNotificationManager *reachabilityNotificationManager; // @synthesize reachabilityNotificationManager=_reachabilityNotificationManager;
 @property (strong, nonatomic) HMFTimer *reachabilityNotificationTimer; // @synthesize reachabilityNotificationTimer=_reachabilityNotificationTimer;
 @property (strong, nonatomic) NSMutableArray *reachabilityRegisteredDevices; // @synthesize reachabilityRegisteredDevices=_reachabilityRegisteredDevices;
@@ -298,7 +298,6 @@
 @property (readonly, nonatomic) HMDResidentDeviceManager *residentDeviceManager; // @synthesize residentDeviceManager=_residentDeviceManager;
 @property (readonly, copy, nonatomic) NSArray *residentEnabledDevices;
 @property (readonly, nonatomic, getter=isResidentSupported) BOOL residentSupported;
-@property (strong, nonatomic) NSMapTable *retrievalCompletionTuplesForAccessories; // @synthesize retrievalCompletionTuplesForAccessories=_retrievalCompletionTuplesForAccessories;
 @property (strong, nonatomic) HMDRoom *roomForEntireHome; // @synthesize roomForEntireHome=_roomForEntireHome;
 @property (strong, nonatomic) NSMutableArray *rooms; // @synthesize rooms=_rooms;
 @property (readonly) HMDNetworkRouterClientManager *routerClientManager;
@@ -313,7 +312,6 @@
 @property (readonly) Class superclass;
 @property (readonly) BOOL supportsRouterManagement;
 @property (copy, nonatomic) NSString *threadNetworkID; // @dynamic threadNetworkID;
-@property (nonatomic, getter=isThreadNetworkRunning) BOOL threadNetworkRunning; // @synthesize threadNetworkRunning=_threadNetworkRunning;
 @property (nonatomic) unsigned long long threadNetworkSequenceNumber; // @synthesize threadNetworkSequenceNumber=_threadNetworkSequenceNumber;
 @property (strong, nonatomic) NSMutableArray *triggerOwnedActionSets; // @synthesize triggerOwnedActionSets=_triggerOwnedActionSets;
 @property (readonly, copy) NSArray *triggers;
@@ -397,6 +395,7 @@
 - (void)_createUniquePSKClientConfigurationWithRequestMessage:(id)arg1 pairingEvent:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_currentDeviceCapabilities;
 - (id)_dequeueAllRetrievalCompletionTuplesForLinkType:(long long)arg1 accessory:(id)arg2;
+- (void)_dequeueRetrievalCompletionTuple:(id)arg1 forAccessory:(id)arg2;
 - (void)_deregisterDeviceForReachabilityNotification:(id)arg1;
 - (void)_deregisterPairedAccessory:(id)arg1;
 - (void)_deregisterStateHandler;
@@ -407,10 +406,9 @@
 - (BOOL)_doesResidentExistInMyCircleWithAddress:(id)arg1 homeManager:(id)arg2;
 - (void)_enableMediaNotifications:(BOOL)arg1 forMediaAccessory:(id)arg2;
 - (void)_enableNotificationsForDevices:(id)arg1;
-- (void)_enableResidentReachabilityNotification:(BOOL)arg1 forAccessories:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_encodeActionSets:(id)arg1 coder:(id)arg2;
 - (void)_encodeObjectsWithAcessoriesWithCoder:(id)arg1;
-- (void)_enqueueRetrievalCompletionTuple:(id)arg1 forAccessory:(id)arg2;
+- (BOOL)_enqueueRetrievalCompletionTuple:(id)arg1 forAccessory:(id)arg2;
 - (BOOL)_ensureDevicesSymptomDiscoveryMessageCanBeHandled:(id)arg1;
 - (void)_evaluateNetworkProtectionAndRouterManagement;
 - (void)_evaluateNetworkProtectionSupport;
@@ -458,7 +456,6 @@
 - (void)_handleCoalescedModifyNotifications;
 - (void)_handleContinuePairingAccessory:(id)arg1;
 - (void)_handleCreateUniquePSKClientConfiguration:(id)arg1;
-- (void)_handleDeviceCapabilitiesUpdated:(id)arg1;
 - (void)_handleDidReceiveIDSMessageWithNoListenerFromAddress:(id)arg1;
 - (void)_handleDisableNotificationsTimerFired;
 - (void)_handleEnableMultiUserRequest:(id)arg1;
@@ -485,7 +482,6 @@
 - (void)_handleReadMediaProperties:(id)arg1 source:(unsigned long long)arg2 message:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_handleReceivedNonCloudSourcedSharedHomeModel;
 - (void)_handleRemoteGatewayNotificationRegistration:(id)arg1 enable:(BOOL)arg2;
-- (void)_handleRemoteReachabilityDeregistrationTimerFired;
 - (void)_handleRemoteReachabilityNotificationTimerFired;
 - (void)_handleRemoteUserClientCloudShareRepairRequest:(id)arg1;
 - (void)_handleRemoteUserClientCloudShareRequest:(id)arg1;
@@ -547,7 +543,6 @@
 - (BOOL)_isNetworkRouterSupportEnabledForCurrentDevice;
 - (BOOL)_isRegisteredForNotificationsForClients:(id)arg1;
 - (BOOL)_isRegisteredForNotificationsWithRemoteGateway:(id)arg1;
-- (BOOL)_isRetrievalInProgressForLinkType:(long long)arg1 accessory:(id)arg2;
 - (BOOL)_isSecureClassTriggeredByCharactersitics:(id)arg1;
 - (BOOL)_isSharedHomeVersionTrustZoneCapable;
 - (BOOL)_isUserValid:(id)arg1 error:(id *)arg2;
@@ -594,22 +589,22 @@
 - (void)_purgeResidentUsers;
 - (void)_reachabilityChangedForAccessory:(id)arg1 reachable:(BOOL)arg2;
 - (void)_readCharacteristicValues:(id)arg1 requestMessage:(id)arg2 source:(unsigned long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
-- (void)_readCharacteristicValuesForAccessories:(id)arg1 readRequestMap:(id)arg2 responseTuples:(id)arg3 requestMessage:(id)arg4 viaDevice:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)_readCharacteristicValuesForAccessories:(id)arg1 readRequestMap:(id)arg2 responseTuples:(id)arg3 requestMessage:(id)arg4 source:(unsigned long long)arg5 viaDevice:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)_readProfileState:(id)arg1 viaDevice:(id)arg2 message:(id)arg3;
 - (void)_reconfigureAccessoriesOnRouterRemovalWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_redispatchAccessoryReachabilityEventNotificationRegistrationToOtherResidentsWithPayload:(id)arg1 withUserID:(id)arg2;
-- (void)_redispatchReadForAccessories:(id)arg1 dispatchGroup:(id)arg2 requestMap:(id)arg3 requestMessage:(id)arg4 responseTuples:(id)arg5 errorResponseTuples:(id)arg6;
+- (void)_redispatchReadForAccessories:(id)arg1 dispatchGroup:(id)arg2 requestMap:(id)arg3 requestMessage:(id)arg4 source:(unsigned long long)arg5 responseTuples:(id)arg6 errorResponseTuples:(id)arg7;
 - (void)_redispatchWriteForAccessories:(id)arg1 dispatchGroup:(id)arg2 requestMap:(id)arg3 requestMessage:(id)arg4 source:(unsigned long long)arg5 responseTuples:(id)arg6;
 - (void)_reevaluateAccessoryInfoWithBadgeRefresh:(BOOL)arg1;
 - (void)_refreshCharacteristicValuesOnHomeNotificationEnable;
 - (void)_refreshMediaProfilesOnHomeNotificationEnable;
 - (void)_refreshUserDisplayNames;
+- (void)_registerCameraReachabilityEventNotificationsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_registerDeviceForReachabilityNotification:(id)arg1 accessoryList:(id)arg2;
 - (void)_registerForMessages;
 - (void)_registerForNotifications;
 - (void)_registerForReachabilityChangeNotifications:(id)arg1 mode:(BOOL)arg2;
 - (void)_registerPairedAccessory:(id)arg1 transports:(unsigned long long)arg2 setupHash:(id)arg3;
-- (void)_registerReachabilityEventNotifications;
+- (void)_registerResidentReachabilityNotificationWithEnableAccessories:(id)arg1 disableAccessories:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_registerStateHandler;
 - (void)_registerThreadResidentCommissioningMessageHandlers;
 - (void)_relayAddTriggerToResident:(id)arg1;
@@ -663,7 +658,7 @@
 - (BOOL)_shouldAllowAddingAccessoryOfCategory:(id)arg1 requestMessage:(id)arg2 error:(id *)arg3;
 - (BOOL)_shouldAllowAddingAccessoryWithDescription:(id)arg1 requestMessage:(id)arg2 error:(id *)arg3;
 - (BOOL)_shouldRegisterForNotificationsWithDevice:(id)arg1;
-- (BOOL)_shouldSendToDestination:(id)arg1;
+- (BOOL)_shouldSendToDestination:(id)arg1 device:(id)arg2 remoteSourceDevice:(id)arg3;
 - (BOOL)_shouldWaitForAccessoriesToBeReachable;
 - (id)_splitCharacteristicChanges:(id)arg1 changedAccessories:(id)arg2;
 - (void)_startHomeNotificationDeregistrationTimer;
@@ -742,6 +737,7 @@
 - (void)computeBridgedAccessoriesForAllBridges;
 - (void)configureAfterAccessoriesConfigurationTrackerNotificationsWithCurrentAccessory:(id)arg1 accessories:(id)arg2;
 - (void)configureBulletinNotification;
+- (void)configureMediaDestinationControllersForAccessories:(id)arg1;
 - (void)configureMediaSystems;
 - (void)configureNaturalLightingForDemoMode;
 - (void)configureNaturalLightingWithDemoModeEnabled:(BOOL)arg1;
@@ -755,6 +751,10 @@
 - (id)deletedBackingStoreObject;
 - (unsigned long long)deriveNetworkRouterSupport:(unsigned long long)arg1;
 - (id)descriptionWithPointer:(BOOL)arg1;
+- (id)destinationControllerWithIdentifier:(id)arg1;
+- (id)destinationManagerWithParentIdentifier:(id)arg1;
+- (id)destinationManagersWithDestinationIdentifiers:(id)arg1 supportedOptions:(unsigned long long)arg2;
+- (long long)destinationTypeForDestinationWithIdentifier:(id)arg1;
 - (void)disableNotificationsForDevices:(id)arg1;
 - (void)dispatchRequestToEvaluateCondition:(id)arg1 forCharacteristics:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dropAllChangesWithArrayOfObjectIDs:(id)arg1;
@@ -766,8 +766,8 @@
 - (id)dumpUnpairedSecondaryAccessories;
 - (id)emptyModelObjectWithChangeType:(unsigned long long)arg1;
 - (void)enableHomeNotificationsForMediaAccessory:(id)arg1;
+- (void)enableMultiUser;
 - (void)enableNotificationsForDevices:(id)arg1;
-- (void)enableResidentReachabilityNotification:(BOOL)arg1 forAccessories:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (void)evaluateIfMediaPlaybackStateChanged:(id)arg1;
 - (void)evaluateNotificationConditionForCharacteristics:(id)arg1 homePresence:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -792,11 +792,13 @@
 - (void)handleActiveAccountChanged:(id)arg1;
 - (void)handleBackgroundTaskAgentJob:(id)arg1;
 - (void)handleCurrentUserPrivilegeChanged:(id)arg1;
+- (void)handleDeviceCapabilitiesUpdated:(id)arg1;
 - (void)handleDidReceiveIDSMessageWithNoListener:(id)arg1;
 - (void)handleEvaluatePredicateMessage:(id)arg1;
 - (void)handleInactive:(id)arg1;
 - (void)handleNetworkRouterProfileAdded:(id)arg1;
 - (void)handleNetworkRouterProfileRemoved:(id)arg1;
+- (void)handlePrimaryResidentConfirmedStateChangedNotification:(id)arg1;
 - (void)handleRemoveAccessory:(id)arg1;
 - (void)handleRemovedMediaSessions:(id)arg1;
 - (void)handleSignificantTimeChange;
@@ -822,6 +824,8 @@
 - (int)keyPathValuesToWhitelistedEnum:(id)arg1;
 - (id)lightProfileWithUUID:(id)arg1;
 - (id)logIdentifier;
+- (id)mediaDestinationManagersWithSupportedOptions:(unsigned long long)arg1;
+- (id)mediaDestinationsInRoom:(id)arg1;
 - (id)mediaPassword;
 - (id)mediaProfileWithUUID:(id)arg1;
 - (id)mediaSessionStateWithIdentifier:(id)arg1;
@@ -862,7 +866,6 @@
 - (void)reachabilityChangedForAccessory:(id)arg1 reachable:(BOOL)arg2;
 - (void)readCharacteristicValues:(id)arg1 identifier:(id)arg2 source:(unsigned long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)readCharacteristicValues:(id)arg1 source:(unsigned long long)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (void)redispatchAccessoryReachabilityEventNotificationRegistrationToOtherResidentsWithPayload:(id)arg1 withUserID:(id)arg2;
 - (void)redispatchMediaReadRequests:(id)arg1 viaDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)redispatchMediaWriteRequests:(id)arg1 viaDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)redispatchToResidentMessage:(id)arg1 target:(id)arg2 responseQueue:(id)arg3;
@@ -870,6 +873,7 @@
 - (void)reevaluateAccessoryInfo;
 - (void)refreshUserDisplayNames;
 - (void)regionStateUpdated;
+- (void)registerCameraReachabilityEventNotificationsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)relayManager:(id)arg1 didUpdateControllerIdentifier:(id)arg2;
 - (void)remoteAccessEnabled:(BOOL)arg1;
 - (void)remoteAccessHealthMonitorTimerDidFire;
@@ -904,6 +908,7 @@
 - (void)retrieveHAPAccessoryForHMDAccessory:(id)arg1 linkType:(long long)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)roomWithName:(id)arg1;
 - (id)roomWithUUID:(id)arg1;
+- (id)rootDestinationManagerWithDescendantDestinationIdentifier:(id)arg1;
 - (void)saveAddAccessoryRequest:(id)arg1;
 - (void)saveSharedHomeToAccountWithReason:(id)arg1 postSyncNotification:(BOOL)arg2 options:(id)arg3;
 - (void)saveToCurrentAccountWithReason:(id)arg1;
@@ -917,6 +922,7 @@
 - (id)serviceGroupWithUUID:(id)arg1;
 - (void)setAnyBTLEAccessoryReachable:(BOOL)arg1;
 - (void)setAutomaticSoftwareUpdateEnabled:(BOOL)arg1;
+- (void)setCameraReachabilityEventNotificationsEnabled:(BOOL)arg1 forAccessory:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setHomeLocation:(long long)arg1;
 - (void)setMediaPassword:(id)arg1;
 - (void)setMediaPeerToPeerEnabled:(BOOL)arg1;
@@ -929,9 +935,7 @@
 - (void)startThreadNetwork;
 - (void)stopThreadNetwork;
 - (void)subscribeForNotificationsFromRemoteGateway;
-- (void)takeOwnershipOfAccessories:(id)arg1;
-- (void)takeOwnershipOfAppData:(id)arg1;
-- (BOOL)takeOwnershipOfBuiltinActionSets:(id)arg1;
+- (id)targetAccessoriesWithDestinationIdentifiers:(id)arg1;
 - (void)timerDidFire:(id)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;

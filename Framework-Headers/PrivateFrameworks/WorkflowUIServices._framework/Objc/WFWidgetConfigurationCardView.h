@@ -16,6 +16,7 @@
     WFWidgetConfigurationCardHeaderView *_headerView;
     UIView *_contentView;
     id<WFWidgetConfigurationCardViewDelegate> _delegate;
+    double _widgetDescriptionTallScriptCompensatedSpacing;
     MTVisualStylingProvider *_strokeProvider;
     MTVisualStylingProvider *_fillProvider;
     MTStylingProvidingSolidColorView *_backgroundView;
@@ -33,6 +34,7 @@
 @property (readonly, nonatomic) WFWidgetConfigurationCardHeaderView *headerView; // @synthesize headerView=_headerView;
 @property (readonly, nonatomic) MTVisualStylingProvider *strokeProvider; // @synthesize strokeProvider=_strokeProvider;
 @property (readonly) Class superclass;
+@property (nonatomic) double widgetDescriptionTallScriptCompensatedSpacing; // @synthesize widgetDescriptionTallScriptCompensatedSpacing=_widgetDescriptionTallScriptCompensatedSpacing;
 
 - (void).cxx_destruct;
 - (id)initWithRequest:(id)arg1 contentView:(id)arg2;

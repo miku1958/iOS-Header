@@ -215,6 +215,7 @@
 - (BOOL)isContactsSectionCollapsible;
 - (BOOL)isGroupChat;
 - (BOOL)isGroupPhotoEnabled;
+- (id)keyCommands;
 - (id)labelForChat;
 - (id)leaveCellForIndexPath:(id)arg1;
 - (void)loadView;
@@ -257,6 +258,7 @@
 - (void)showMapkitBusinessData;
 - (id)simCellText:(id)arg1;
 - (id)simTypeCellForIndexPath:(id)arg1;
+- (void)spacePressed:(id)arg1;
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 contextMenuConfigurationForRowAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;

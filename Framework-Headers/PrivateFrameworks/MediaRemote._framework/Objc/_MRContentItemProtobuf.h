@@ -10,6 +10,7 @@
 
 @class NSData, NSMutableArray, NSString, _MRContentItemMetadataProtobuf, _MRLyricsItemProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRContentItemProtobuf : PBCodable <NSCopying>
 {
     NSString *_ancestorIdentifier;
@@ -32,56 +33,13 @@
     } _has;
 }
 
-@property (strong, nonatomic) NSString *ancestorIdentifier; // @synthesize ancestorIdentifier=_ancestorIdentifier;
-@property (strong, nonatomic) NSData *artworkData; // @synthesize artworkData=_artworkData;
-@property (nonatomic) int artworkDataHeight; // @synthesize artworkDataHeight=_artworkDataHeight;
-@property (nonatomic) int artworkDataWidth; // @synthesize artworkDataWidth=_artworkDataWidth;
-@property (strong, nonatomic) NSMutableArray *availableLanguageOptions; // @synthesize availableLanguageOptions=_availableLanguageOptions;
-@property (strong, nonatomic) NSMutableArray *currentLanguageOptions; // @synthesize currentLanguageOptions=_currentLanguageOptions;
-@property (readonly, nonatomic) BOOL hasAncestorIdentifier;
-@property (readonly, nonatomic) BOOL hasArtworkData;
-@property (nonatomic) BOOL hasArtworkDataHeight;
-@property (nonatomic) BOOL hasArtworkDataWidth;
-@property (readonly, nonatomic) BOOL hasIdentifier;
-@property (readonly, nonatomic) BOOL hasInfo;
-@property (readonly, nonatomic) BOOL hasLyrics;
-@property (readonly, nonatomic) BOOL hasMetadata;
-@property (readonly, nonatomic) BOOL hasParentIdentifier;
-@property (readonly, nonatomic) BOOL hasQueueIdentifier;
-@property (readonly, nonatomic) BOOL hasRequestIdentifier;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) NSString *info; // @synthesize info=_info;
-@property (strong, nonatomic) _MRLyricsItemProtobuf *lyrics; // @synthesize lyrics=_lyrics;
-@property (strong, nonatomic) _MRContentItemMetadataProtobuf *metadata; // @synthesize metadata=_metadata;
-@property (strong, nonatomic) NSString *parentIdentifier; // @synthesize parentIdentifier=_parentIdentifier;
-@property (strong, nonatomic) NSString *queueIdentifier; // @synthesize queueIdentifier=_queueIdentifier;
-@property (strong, nonatomic) NSString *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
-@property (strong, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
-
-+ (Class)availableLanguageOptionsType;
-+ (Class)currentLanguageOptionsType;
-+ (Class)sectionsType;
 - (void).cxx_destruct;
-- (void)addAvailableLanguageOptions:(id)arg1;
-- (void)addCurrentLanguageOptions:(id)arg1;
-- (void)addSections:(id)arg1;
-- (id)availableLanguageOptionsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)availableLanguageOptionsCount;
-- (void)clearAvailableLanguageOptions;
-- (void)clearCurrentLanguageOptions;
-- (void)clearSections;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)currentLanguageOptionsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)currentLanguageOptionsCount;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)sectionsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)sectionsCount;
 - (void)writeTo:(id)arg1;
 
 @end

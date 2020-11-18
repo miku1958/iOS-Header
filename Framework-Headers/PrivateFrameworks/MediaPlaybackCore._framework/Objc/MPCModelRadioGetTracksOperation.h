@@ -13,6 +13,7 @@
     ICPlayActivityController *_playActivityController;
     ICRadioGetTracksRequest *_request;
     NSString *_siriAssetInfo;
+    void *_radioQueueFeederPointerForLogging;
     CDUnknownBlockType _completionHandler;
 }
 
@@ -22,7 +23,7 @@
 - (id)_cacheTracksForStep:(id)arg1;
 - (void)_runStep:(id)arg1 withFinishHandler:(CDUnknownBlockType)arg2;
 - (void)execute;
-- (id)initWithGetTracksRequest:(id)arg1 siriAssetInfo:(id)arg2 playActivityController:(id)arg3;
+- (id)initWithGetTracksRequest:(id)arg1 siriAssetInfo:(id)arg2 playActivityController:(id)arg3 radioQueueFeeder:(id)arg4;
 
 @end
 

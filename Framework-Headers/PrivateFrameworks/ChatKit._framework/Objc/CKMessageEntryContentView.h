@@ -9,12 +9,13 @@
 #import <ChatKit/CKMessageEntryRichTextViewDelegate-Protocol.h>
 #import <ChatKit/CKMessageEntryViewStyleProtocol-Protocol.h>
 #import <ChatKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <ChatKit/UITextDragDelegate-Protocol.h>
 #import <ChatKit/UITextViewDelegate-Protocol.h>
 
 @class CKComposition, CKConversation, CKMessageEntryRichTextView, CKMessageEntryTextView, IMPluginPayload, NSDictionary, NSString, UIButton, UIView, UIViewController;
 @protocol CKPluginEntryViewController;
 
-@interface CKMessageEntryContentView : UIScrollView <UITextViewDelegate, CKMessageEntryRichTextViewDelegate, CKMessageEntryViewStyleProtocol, UIGestureRecognizerDelegate>
+@interface CKMessageEntryContentView : UIScrollView <UITextViewDelegate, CKMessageEntryRichTextViewDelegate, UITextDragDelegate, CKMessageEntryViewStyleProtocol, UIGestureRecognizerDelegate>
 {
     BOOL _shouldShowSubject;
     BOOL _needsTextLayout;
@@ -121,7 +122,9 @@
 - (BOOL)shouldLayoutPluginEdgeToEdge;
 - (BOOL)shouldShowClearButton;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (id)textDraggableView:(id)arg1 itemsForDrag:(id)arg2;
 - (BOOL)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
+- (BOOL)textView:(id)arg1 shouldInteractWithTextAttachment:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)textViewDidBeginEditing:(id)arg1;
 - (void)textViewDidChange:(id)arg1;
 - (void)textViewDidChangeSelection:(id)arg1;

@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) UIResponder *hitTestResponder; // @synthesize hitTestResponder=_hitTestResponder;
 
 - (double)_currentScreenScale;
-- (BOOL)_shouldReverseLayoutDirection;
 - (id)backgroundColor;
 - (id)closestCellForPoint:(struct CGPoint)arg1;
 - (void)dealloc;

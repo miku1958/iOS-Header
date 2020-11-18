@@ -17,7 +17,7 @@
 @property (strong, nonatomic) VUIPostPlayConfig *postPlayConfig; // @synthesize postPlayConfig=_postPlayConfig;
 @property (strong, nonatomic) WLKPlaybackReporter *reporter; // @synthesize reporter=_reporter;
 
-+ (void)_cachePlaybackResumeTime:(id)arg1 resumeTime:(id)arg2;
++ (void)_cachePlaybackResumeTime:(id)arg1 absoluteResumeTime:(id)arg2 featureRelativeResumeTime:(id)arg3;
 + (BOOL)_shouldCacheResumeTimeForMediaType:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;

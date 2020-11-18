@@ -56,7 +56,7 @@
 @property (readonly) NSTimeZone *creationDateTimeZone; // @synthesize creationDateTimeZone=_creationDateTimeZone;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong) PHMediaFormatConversionDestination *destination; // @synthesize destination=_destination;
+@property (strong, nonatomic) PHMediaFormatConversionDestination *destination; // @synthesize destination=_destination;
 @property (strong) PFMediaCapabilities *destinationCapabilities; // @synthesize destinationCapabilities=_destinationCapabilities;
 @property (strong) NSURL *directoryForTemporaryFiles; // @synthesize directoryForTemporaryFiles=_directoryForTemporaryFiles;
 @property (strong) NSError *error; // @synthesize error=_error;

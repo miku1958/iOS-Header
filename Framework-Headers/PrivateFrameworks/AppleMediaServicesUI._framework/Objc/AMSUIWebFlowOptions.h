@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     BOOL _animated;
     BOOL _deferredPresentation;
     BOOL _initialLoad;
-    BOOL _isReappear;
+    BOOL _reuseExistingPage;
     NSString *_backgroundColor;
     AMSUIWebLoadingPageModel *_loadingPage;
     long long _modalPresentationStyle;
@@ -27,12 +27,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (nonatomic) BOOL deferredPresentation; // @synthesize deferredPresentation=_deferredPresentation;
 @property (nonatomic) BOOL initialLoad; // @synthesize initialLoad=_initialLoad;
-@property (nonatomic) BOOL isReappear; // @synthesize isReappear=_isReappear;
 @property (strong, nonatomic) AMSUIWebLoadingPageModel *loadingPage; // @synthesize loadingPage=_loadingPage;
 @property (nonatomic) long long modalPresentationStyle; // @synthesize modalPresentationStyle=_modalPresentationStyle;
 @property (nonatomic) long long modalTransitionStyle; // @synthesize modalTransitionStyle=_modalTransitionStyle;
 @property (strong, nonatomic) AMSUIWebNavigationBarModel *navigationBar; // @synthesize navigationBar=_navigationBar;
 @property (strong, nonatomic) NSDictionary *pageData; // @synthesize pageData=_pageData;
+@property (nonatomic) BOOL reuseExistingPage; // @synthesize reuseExistingPage=_reuseExistingPage;
 
 - (void).cxx_destruct;
 

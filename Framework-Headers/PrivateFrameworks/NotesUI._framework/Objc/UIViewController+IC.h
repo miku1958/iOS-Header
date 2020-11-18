@@ -20,6 +20,7 @@
 - (void)ic_dismissViewControllerOfClass:(Class)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)ic_embedInNavigationControllerForModalPresentation;
 - (BOOL)ic_isViewVisible;
+- (void)ic_performBlockAfterActiveTransition:(CDUnknownBlockType)arg1;
 - (double)ic_safeAreaDistanceFromBottom;
 - (double)ic_safeAreaDistanceFromTop;
 - (id)ic_safeAreaLayoutGuide;

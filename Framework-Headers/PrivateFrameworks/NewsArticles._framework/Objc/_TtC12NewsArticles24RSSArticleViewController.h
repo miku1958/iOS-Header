@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *observableScrollView;
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
+    MISSING_TYPE *keyCommandManager;
 }
 
 - (void).cxx_destruct;

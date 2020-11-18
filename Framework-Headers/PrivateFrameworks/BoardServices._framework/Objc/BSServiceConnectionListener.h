@@ -37,7 +37,7 @@
 @property (readonly, copy, nonatomic) NSString *service; // @synthesize service=_service;
 @property (readonly) Class superclass;
 
-+ (void)disableLaunchWhitelist;
++ (id)extendBootstrap;
 + (id)listenerWithConfigurator:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (void)activate;

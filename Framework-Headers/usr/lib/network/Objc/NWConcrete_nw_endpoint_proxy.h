@@ -24,12 +24,12 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_array> *pac_resolvers;
     unsigned int direct_prohibited:1;
     unsigned int synthesized_url:1;
+    unsigned int pac_failed_missing_url:1;
     unsigned int overrode_to_https:1;
     unsigned int has_pac:1;
     unsigned int transport_finished:1;
     unsigned int is_custom_proxy:1;
     unsigned int is_pac_connection:1;
-    unsigned int __pad_bits:1;
 }
 
 @property (readonly, copy) NSString *debugDescription;

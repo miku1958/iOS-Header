@@ -15,6 +15,7 @@
     MISSING_TYPE *formatService;
     MISSING_TYPE *paidAccessChecker;
     MISSING_TYPE *personalizationService;
+    MISSING_TYPE *headlineService;
     MISSING_TYPE *name;
 }
 

@@ -25,6 +25,7 @@
     MISSING_TYPE *interstitialAdManager;
     MISSING_TYPE *paidAccessChecker;
     MISSING_TYPE *featureManager;
+    MISSING_TYPE *toolbarManager;
     MISSING_TYPE *featureTransitions;
     MISSING_TYPE *hasPresentedFirstPage;
     MISSING_TYPE *pageSheetPresentationObserver;

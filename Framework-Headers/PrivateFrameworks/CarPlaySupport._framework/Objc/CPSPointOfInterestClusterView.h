@@ -6,20 +6,15 @@
 
 #import <MapKit/MKMarkerAnnotationView.h>
 
-@class CPImageSet;
-
 @interface CPSPointOfInterestClusterView : MKMarkerAnnotationView
 {
-    CPImageSet *_imageSet;
 }
 
-@property (strong, nonatomic) CPImageSet *imageSet; // @synthesize imageSet=_imageSet;
-
-- (void).cxx_destruct;
+- (void)_configure;
 - (id)initWithAnnotation:(id)arg1 reuseIdentifier:(id)arg2;
-- (void)setSelected:(BOOL)arg1;
-- (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setUnselected:(BOOL)arg1;
+- (void)prepareForDisplay;
+- (void)prepareForReuse;
+- (void)setAnnotation:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)update;
 

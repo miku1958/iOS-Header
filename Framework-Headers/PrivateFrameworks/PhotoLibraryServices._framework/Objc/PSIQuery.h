@@ -42,6 +42,7 @@
     NSDictionary *_substitutions;
     unsigned long long _numberOfNextKeywordSuggestionToProcess;
     NSArray *_nextKeywordSuggestions;
+    NSSet *_sceneIdentifiers;
     NSArray *_dedupedGroupResults;
     unsigned long long _mergeFilterTokenAssetIDsIntervalID;
 }
@@ -60,6 +61,7 @@
 @property (nonatomic) unsigned long long numberOfNextKeywordSuggestionToProcess; // @synthesize numberOfNextKeywordSuggestionToProcess=_numberOfNextKeywordSuggestionToProcess;
 @property (nonatomic) BOOL preventUnnecessaryImplicitTokenization; // @synthesize preventUnnecessaryImplicitTokenization=_preventUnnecessaryImplicitTokenization;
 @property (readonly, copy, nonatomic) NSArray *queryTokens; // @synthesize queryTokens=_queryTokens;
+@property (copy, nonatomic) NSSet *sceneIdentifiers; // @synthesize sceneIdentifiers=_sceneIdentifiers;
 @property (readonly, copy, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;
 @property (copy, nonatomic) NSSet *socialGroupExtendedAssetIds; // @synthesize socialGroupExtendedAssetIds=_socialGroupExtendedAssetIds;
 @property (copy, nonatomic) NSSet *socialGroupExtendedCollectionIds; // @synthesize socialGroupExtendedCollectionIds=_socialGroupExtendedCollectionIds;
@@ -86,7 +88,7 @@
 + (BOOL)tokenIsEligibleForDateParsing:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_enumerateImplicitlyTokenizedParsesWithBaseParse:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (struct __CFSet *)_idsOfGroupsMatchingString:(id)arg1 categories:(id)arg2 textIsSearchable:(BOOL)arg3;
+- (struct __CFSet *)_idsOfGroupsMatchingString:(id)arg1 categories:(id)arg2 textIsSearchable:(BOOL)arg3 isFilterTypeToken:(BOOL)arg4;
 - (struct __CFSet *)_idsOfGroupsMatchingToken:(id)arg1;
 - (void)_postProcessPersonGroupsInGroupArrays:(id)arg1;
 - (void)bootstrap;

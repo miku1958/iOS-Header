@@ -6,7 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@interface MTLIntersectionFunctionTableDescriptor : NSObject
+#import <Metal/NSCopying-Protocol.h>
+
+@interface MTLIntersectionFunctionTableDescriptor : NSObject <NSCopying>
 {
 }
 

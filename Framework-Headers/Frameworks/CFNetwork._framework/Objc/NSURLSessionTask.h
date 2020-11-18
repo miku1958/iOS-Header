@@ -172,6 +172,7 @@
 @property long long _countOfPendingBytesReceivedEncoded; // @synthesize _countOfPendingBytesReceivedEncoded=__countOfPendingBytesReceivedEncoded;
 @property unsigned int _darkWakePowerAssertion; // @synthesize _darkWakePowerAssertion;
 @property (strong, nonatomic) NSDictionary *_dependencyInfo; // @synthesize _dependencyInfo=_dependencyInfo_ivar;
+@property (readonly, nonatomic) NSString *_description;
 @property BOOL _disallowCellular; // @synthesize _disallowCellular;
 @property (nonatomic) long long _discretionaryOverride; // @synthesize _discretionaryOverride;
 @property (nonatomic) BOOL _doesSZExtractorConsumeExtractedData; // @synthesize _doesSZExtractorConsumeExtractedData;

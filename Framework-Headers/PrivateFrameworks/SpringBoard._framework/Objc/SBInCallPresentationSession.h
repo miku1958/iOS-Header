@@ -19,7 +19,7 @@
 #import <SpringBoard/SBUIActiveOrientationObserver-Protocol.h>
 #import <SpringBoard/SBWorkspaceApplicationSceneTransitionContextDelegate-Protocol.h>
 
-@class BSEventQueue, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, SBAppStatusBarSettingsAssertion, SBBacklightController, SBBannerManager, SBDeviceApplicationSceneHandle, SBInCallBannerPresentableViewController, SBInCallTransientOverlayViewController, SBLayoutElement, SBLockScreenManager, SBMainDisplaySceneManager, SBMainSwitcherViewController, SBMainWorkspace, SBSetupManager, SBWorkspaceKeyboardFocusController, SpringBoard, UIApplicationSceneDeactivationAssertion, UIApplicationSceneDeactivationManager, UIScreen;
+@class BSEventQueue, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, SBAppStatusBarSettingsAssertion, SBBacklightController, SBBannerManager, SBDeviceApplicationSceneHandle, SBInCallBannerPresentableViewController, SBInCallTransientOverlayViewController, SBLayoutElement, SBLockScreenManager, SBMainDisplaySceneManager, SBMainSwitcherViewController, SBMainWorkspace, SBSetupManager, SBUIController, SBWorkspaceKeyboardFocusController, SpringBoard, UIApplicationSceneDeactivationAssertion, UIApplicationSceneDeactivationManager, UIScreen;
 @protocol BSInvalidatable, SBInCallPresentationSessionDelegate;
 
 @interface SBInCallPresentationSession : NSObject <SBApplicationSceneHandleUpdateContributing, SBBannerUnfurlSourceContextProviding, SBDeviceApplicationSceneHandleObserver, SBDeviceApplicationSceneStatusBarStateObserver, SBInCallBannerPresentableViewControllerDelegate, SBInCallTransientOverlayViewControllerDelegate, SBSceneHandleActionConsuming, SBWorkspaceApplicationSceneTransitionContextDelegate, SBLayoutStateTransitionObserver, SBUIActiveOrientationObserver, BSInvalidatable, SBApplicationHosting>
@@ -45,6 +45,7 @@
     SBMainSwitcherViewController *_mainSwitcherViewController;
     SBSetupManager *_setupManager;
     SpringBoard *_springBoard;
+    SBUIController *_uiController;
     NSMutableDictionary *_bannerDidDisappearHandlerByUUID;
     BOOL _isInvalidated;
     BOOL _hasBegunSceneDestroy;
@@ -53,6 +54,8 @@
     BOOL _hasAdoptedFullscreenOverlayAPI;
     BOOL _isPerformingSwitcherPresentation;
     unsigned long long _presentationModeRevisionID;
+    BOOL _isAttachedToWindowedAccessory;
+    id<BSInvalidatable> _suppressHomeIndicatorWhileAttachedToWindowedAccessoryAssertion;
     UIApplicationSceneDeactivationManager *_deactivationManager;
     UIApplicationSceneDeactivationAssertion *_systemAnimationSceneDeactivationAssertion;
     UIApplicationSceneDeactivationAssertion *_systemGestureSceneDeactivationAssertion;
@@ -75,7 +78,6 @@
 @property (readonly, nonatomic) SBDeviceApplicationSceneHandle *sceneHandle; // @synthesize sceneHandle=_sceneHandle;
 @property (nonatomic) BOOL shouldIgnoreHomeIndicatorAutoHiddenClientSettings; // @synthesize shouldIgnoreHomeIndicatorAutoHiddenClientSettings=_shouldIgnoreHomeIndicatorAutoHiddenClientSettings;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsBecomingVisibleWhenWakingDisplay;
 @property (readonly, nonatomic) BOOL supportsHandlingDeviceLock;
 
 - (void).cxx_destruct;
@@ -92,6 +94,7 @@
 - (void)_handleRequestInCallPresentationModeAction:(id)arg1;
 - (BOOL)_hasExistingSceneSettingsPresentationModeForLayoutState:(id)arg1;
 - (BOOL)_isCallConnectedForScene;
+- (void)_notifySceneOfDeviceLockFromSource:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_performBannerDismissalTransitionAnimated:(BOOL)arg1 analyticsSource:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_performBannerPresentationTransitionWithAnalyticsSource:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_performBannerToFullScreenPresentationTransitionAnimated:(BOOL)arg1 analyticsSource:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -116,6 +119,7 @@
 - (void)_updateAppStatusBarSettingsAssertion;
 - (void)_updateKeyboardFocusPreventionAssertionWithLayoutState:(id)arg1;
 - (void)_updateSceneDeactivationAssertions;
+- (void)_windowedAccessoryDidAttachOrDetach:(id)arg1;
 - (void)activeInterfaceOrientationDidChangeToOrientation:(long long)arg1 willAnimateWithDuration:(double)arg2 fromOrientation:(long long)arg3;
 - (void)activeInterfaceOrientationWillChangeToOrientation:(long long)arg1;
 - (void)applicationSceneHandle:(id)arg1 appendToSceneSettings:(id)arg2 fromRequestContext:(id)arg3 entity:(id)arg4;
@@ -127,6 +131,7 @@
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)dismissAnimated:(BOOL)arg1 shouldFinalizeSceneDestruction:(BOOL)arg2 analyticsSource:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)handleAccessoryAttachWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleDeviceLockFromSource:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)hostedAppSceneHandle;
 - (id)hostedAppSceneHandles;
@@ -147,7 +152,7 @@
 - (void)inCallTransientOverlayViewController:(id)arg1 willAppearAnimated:(BOOL)arg2;
 - (void)inCallTransientOverlayViewController:(id)arg1 willDisappearAnimated:(BOOL)arg2;
 - (void)inCallTransientOverlayViewControllerRequestsDismissal:(id)arg1;
-- (id)initWithSceneHandle:(id)arg1 screen:(id)arg2 sceneManager:(id)arg3 workspace:(id)arg4 bannerManager:(id)arg5 lockScreenManager:(id)arg6 deactivationManager:(id)arg7 mainSwitcherViewController:(id)arg8 backlightController:(id)arg9 keyboardFocusController:(id)arg10 springBoard:(id)arg11 setupManager:(id)arg12;
+- (id)initWithSceneHandle:(id)arg1 screen:(id)arg2 sceneManager:(id)arg3 workspace:(id)arg4 bannerManager:(id)arg5 lockScreenManager:(id)arg6 deactivationManager:(id)arg7 mainSwitcherViewController:(id)arg8 backlightController:(id)arg9 keyboardFocusController:(id)arg10 springBoard:(id)arg11 setupManager:(id)arg12 uiController:(id)arg13;
 - (void)invalidate;
 - (BOOL)isHostingAnApp;
 - (id)layoutStateForApplicationTransitionContext:(id)arg1;
@@ -160,6 +165,7 @@
 - (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarStyleOverridesToSuppressTo:(int)arg2;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
+- (BOOL)supportsBecomingVisibleWhenUnlockingFromSource:(int)arg1 wakingDisplay:(BOOL)arg2;
 
 @end
 

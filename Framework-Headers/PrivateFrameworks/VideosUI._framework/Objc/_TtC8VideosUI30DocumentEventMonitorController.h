@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *lastMonitoringReason;
     MISSING_TYPE *hasRefreshEvents;
     MISSING_TYPE *isDocumentDirtyForRefreshEvents;
+    MISSING_TYPE *registrationHandler;
     MISSING_TYPE *isSuspended;
 }
 

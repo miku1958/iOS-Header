@@ -27,11 +27,12 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_refreshPageWithForContainer:(id)arg1 options:(id)arg2 isRetry:(BOOL)arg3;
+- (void)_setWindowSize:(struct CGSize)arg1 onContainer:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_takeSnapshotFromContainer:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dismissViewController;
 - (id)initWithRootContainer:(id)arg1 context:(id)arg2;
 - (void)popViewController;
-- (void)presentWithOptions:(id)arg1;
+- (void)presentWithOptions:(id)arg1 windowSize:(struct CGSize)arg2;
 - (void)pushWithOptions:(id)arg1;
 - (id)refreshPageForContainer:(id)arg1 options:(id)arg2;
 - (void)replaceWithPageModel:(id)arg1 forContainer:(id)arg2 options:(id)arg3;

@@ -19,6 +19,8 @@
     NSString *_firstSectionStartString;
     NSString *_lastSectionStartString;
     struct __CFStringTokenizer *_tokenizer;
+    BOOL _primaryLanguageIsJapanese;
+    BOOL _preferJapaneseRomajiTranscriptions;
 }
 
 @property (readonly, nonatomic) NSArray *sectionIndexTitles;
@@ -27,6 +29,7 @@
 + (id)collationWithDictionary:(id)arg1;
 + (id)currentCollation;
 - (void).cxx_destruct;
+- (id)_kanaTranscriptionForString:(id)arg1;
 - (void)dealloc;
 - (id)initWithDictionary:(id)arg1;
 - (long long)sectionForObject:(id)arg1 collationStringSelector:(SEL)arg2;

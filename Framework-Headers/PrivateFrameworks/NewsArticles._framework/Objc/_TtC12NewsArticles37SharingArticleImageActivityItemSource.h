@@ -10,7 +10,7 @@
 
 @interface _TtC12NewsArticles37SharingArticleImageActivityItemSource : NSObject
 {
-    MISSING_TYPE *articleImage;
+    MISSING_TYPE *headline;
 }
 
 - (void).cxx_destruct;

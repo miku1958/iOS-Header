@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *sharingActivityItemFactory;
     MISSING_TYPE *activityTypeProvider;
+    MISSING_TYPE *issueActivityTypeProvider;
     MISSING_TYPE *paidAccessChecker;
 }
 

@@ -25,9 +25,12 @@
 
 + (id)dataScalerInputName;
 + (id)dataScalerOutputName;
-+ (id)defaultDataScalerPath;
-+ (id)defaultModelPath;
++ (id)defaultAestheticQualityDataScalerPath;
++ (id)defaultAestheticQualityModelPath;
++ (id)defaultRecognizabilityDataScalerPath;
++ (id)defaultRecognizabilityModelPath;
 + (id)logCategory;
++ (id)modelPathForResource:(id)arg1;
 + (id)svmInputName;
 + (id)svmOutputName;
 - (void).cxx_destruct;

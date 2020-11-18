@@ -12,11 +12,14 @@
 
 + (BOOL)QAMode;
 + (id)UIURLOverrides;
++ (id)_allKeysForDomain:(struct __CFString *)arg1;
 + (BOOL)_boolForKey:(id)arg1 defaultValue:(BOOL)arg2;
 + (BOOL)_boolForKey:(id)arg1 defaultValue:(BOOL)arg2 domain:(struct __CFString *)arg3;
++ (void)_cleanupSampleSessions;
 + (long long)_integerForKey:(id)arg1 defaultValue:(long long)arg2;
 + (long long)_integerForKey:(id)arg1 defaultValue:(long long)arg2 domain:(struct __CFString *)arg3;
 + (double)_randomDouble;
++ (BOOL)_resultFromSampleSession:(id)arg1 isActive:(BOOL *)arg2;
 + (void)_setBool:(BOOL)arg1 forKey:(id)arg2;
 + (void)_setBool:(BOOL)arg1 forKey:(id)arg2 domain:(struct __CFString *)arg3;
 + (void)_setInteger:(long long)arg1 forKey:(id)arg2;
@@ -24,6 +27,7 @@
 + (void)_setValue:(id)arg1 forKey:(id)arg2 domain:(struct __CFString *)arg3;
 + (id)_valueForKey:(id)arg1;
 + (id)_valueForKey:(id)arg1 domain:(struct __CFString *)arg2;
++ (id)allKeys;
 + (BOOL)allowDuplicateAccounts;
 + (BOOL)allowUpsellEnrollmentForAppliedAccounts;
 + (BOOL)alwaysSendCacheBuster;
@@ -36,7 +40,6 @@
 + (long long)cardEnrollmentManual;
 + (long long)cardEnrollmentSilent;
 + (long long)cardEnrollmentUpsell;
-+ (void)cleanupSampleSessions;
 + (id)defaultPaymentPassIdentifier;
 + (id)demoAccount;
 + (id)deviceBiometricIdentities;
@@ -103,6 +106,7 @@
 + (void)setEnablePurchaseQueue:(BOOL)arg1;
 + (void)setEnableRemoteSecuritySigning:(BOOL)arg1;
 + (void)setExtendedBiometricACLVersion:(id)arg1;
++ (void)setForceEngagementPurchaseSuccess:(BOOL)arg1;
 + (void)setForceLoadUrlMetrics:(long long)arg1;
 + (void)setHarURLFilters:(id)arg1;
 + (void)setIgnoreServerTrustEvaluation:(BOOL)arg1;

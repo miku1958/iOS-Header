@@ -32,6 +32,7 @@
 - (void)_presentAnimation;
 - (void)_runAnimationWithType:(unsigned long long)arg1;
 - (double)animationDurationBeforeDismissal;
+- (unsigned long long)cornersToMask;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)performAnimation:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;

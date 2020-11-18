@@ -554,6 +554,7 @@ __attribute__((visibility("hidden")))
 - (void)setupVideoPauseMessages;
 - (void)setupWRMAlertStateUpdateMessage;
 - (void)setupWRMClient;
+- (void)setupWRMCoexMetricsMessage;
 - (BOOL)shouldNotifyDelegateDidStartBeforeAudioSetup;
 - (void)shouldSendBlackFrame:(BOOL)arg1;
 - (void)shutdownVoiceChatFromRemoteSIPSignal:(int)arg1 withReason:(const char *)arg2;

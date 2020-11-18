@@ -47,9 +47,10 @@
 - (int)mediaType;
 - (id)metricsCollectorMediaType;
 - (struct CGSize)originalSize;
-- (id)pasteboardItem;
+- (id)pasteboardItemProvider;
 - (id)previewItemTitle;
 - (id)previewItemURL;
+- (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
 - (BOOL)validatePreviewFormat;
 
 @end

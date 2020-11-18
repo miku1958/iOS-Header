@@ -10,7 +10,6 @@
 {
 }
 
-+ (id)_axElementForUID:(CDStruct_4bcfbbae)arg1;
 + (void)_initializeAXRuntime;
 + (void)accessibilityInitializeBundle;
 

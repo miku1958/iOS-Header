@@ -37,6 +37,7 @@
 - (void)rpcResetCloudKit:(id)arg1 reason:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)rpcResetLocal:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)rpcResync:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)rpcResyncLocal:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)rpcStatus:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)rpcTLKMissing:(id)arg1 reply:(CDUnknownBlockType)arg2;
 

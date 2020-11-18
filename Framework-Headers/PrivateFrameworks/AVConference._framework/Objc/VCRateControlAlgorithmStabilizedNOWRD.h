@@ -61,6 +61,7 @@ __attribute__((visibility("hidden")))
     double _lastRampDownTimeDueToFeedback;
     double _lastRampDownTimeDueToBaseband;
     double _lastPositiveOWRDTime;
+    double _lastAllowRampUpTime;
     BOOL _isCongested;
     BOOL _isRampUpSettling;
     BOOL _isStable;
@@ -84,6 +85,8 @@ __attribute__((visibility("hidden")))
     double _basebandExpectedQueuingDelay;
     double _basebandNormalizedBDCD;
     double _basebandNormalizedQueuingDelay;
+    double _basebandLTEOrGreaterRATSwitchTime;
+    int _basebandRadioTechnology;
     BOOL _isWaitingForBasebandRampDown;
     double _lastBasebandRampDownTime;
     double _lastHighNBDCDTime;
@@ -161,6 +164,7 @@ __attribute__((visibility("hidden")))
 - (unsigned short)getTimestampFromMicroTime:(double)arg1;
 - (id)init;
 - (BOOL)isBasebandNotificationOutOfKeyFrameCoolDownTime;
+- (BOOL)isBasebandRATGreaterOrSameAsLTE:(int)arg1;
 - (BOOL)isBitrateOscillatingWithCurrentTierIndex:(int)arg1;
 - (BOOL)isNetworkSaturated;
 - (BOOL)isRoundTripTimeDecreasingOrLessThanMinEnvelope;
@@ -174,6 +178,7 @@ __attribute__((visibility("hidden")))
 - (void)resetRampingStatus;
 - (void)runRateControlStateTransition;
 - (void)setBitrateUnstable;
+- (BOOL)shouldEnableBasebandAdaptationWithCurrentBasebandRAT:(int)arg1 previousBasebandRAT:(int)arg2;
 - (BOOL)shouldFastRampUp;
 - (BOOL)shouldRampDown;
 - (BOOL)shouldRampDownDueToBaseband;
@@ -181,6 +186,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldRampDownDueToNOWRDAcc;
 - (BOOL)shouldRampUp;
 - (BOOL)shouldRampUpDueToBaseband;
+- (BOOL)shouldUnblockRampUpAfterTimeOut;
 - (void)stateChangeTo:(int)arg1;
 - (void)stateEnter;
 - (void)stateExit;

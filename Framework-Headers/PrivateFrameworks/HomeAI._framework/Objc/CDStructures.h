@@ -32,6 +32,11 @@ struct CGVector {
 
 struct GreedyClusterer;
 
+struct HMIVideoEncoderDataRate {
+    long long bytes;
+    long long seconds;
+};
+
 struct ImageDescriptorBufferFloat32 {
     CDUnknownFunctionPointerType *_field1;
     struct vector<long long, std::__1::allocator<long long>> _field2;

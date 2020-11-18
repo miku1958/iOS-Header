@@ -26,6 +26,7 @@
 @property (nonatomic) double brookCoolDownInterval;
 @property (readonly, nonatomic, getter=isBrookTentpoleEnabled) BOOL brookTentpoleEnabled;
 @property (nonatomic, getter=isDataCollectionEnabled) BOOL dataCollectionEnabled;
+@property (readonly, nonatomic, getter=isDataCollectionOnboardingComplete) BOOL dataCollectionOnboardingComplete;
 @property (nonatomic, getter=isDataCollectionUploadDisabled) BOOL dataCollectionUploadDisabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

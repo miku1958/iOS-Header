@@ -131,6 +131,7 @@
 - (BOOL)isCPLOriginalResource;
 - (BOOL)isCPLResource;
 - (BOOL)isDefaultOrientation;
+- (BOOL)isInCloud;
 - (BOOL)isLocallyAvailable;
 - (BOOL)isPlayableVideo;
 - (BOOL)isRemotelyAvailable;
@@ -147,6 +148,7 @@
 - (id)redactedDescription;
 - (id)referenceMediaFileURL;
 - (BOOL)repairResourceValidationErrors:(id)arg1 managedObjectContext:(id)arg2;
+- (void)resetPrefetchState;
 - (float)scaleGivenAssetHasAdjustments:(BOOL)arg1 currentWidth:(long long)arg2 currentHeight:(long long)arg3;
 - (id)scopedIdentifier;
 - (void)setCloudAttributesWithExternalResource:(id)arg1;

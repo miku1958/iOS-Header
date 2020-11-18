@@ -28,6 +28,7 @@
     BOOL _carplayRoute;
     BOOL _homePodRoute;
     BOOL _b520Route;
+    BOOL _homeTheaterRoute;
     BOOL _clusterRoute;
     NSString *_routeUID;
     NSString *_productIdentifier;
@@ -77,6 +78,7 @@
 @property (readonly, nonatomic, getter=isHeadphonesRoute) BOOL headphonesRoute;
 @property (readonly, nonatomic, getter=isHearingDeviceRoute) BOOL hearingDeviceRoute;
 @property (readonly, nonatomic, getter=isHomePodRoute) BOOL homePodRoute; // @synthesize homePodRoute=_homePodRoute;
+@property (readonly, nonatomic, getter=isHomeTheaterRoute) BOOL homeTheaterRoute; // @synthesize homeTheaterRoute=_homeTheaterRoute;
 @property (readonly, nonatomic) BOOL isDeviceRoute;
 @property (readonly, nonatomic) BOOL isSplitRoute;
 @property (readonly, nonatomic, getter=isLowLatencyRoute) BOOL lowLatencyRoute;
@@ -105,6 +107,7 @@
 @property (readonly, nonatomic, getter=isSplitRoute) BOOL splitRoute;
 @property (readonly, nonatomic, getter=isSplitterCapable) BOOL splitterCapable;
 @property (readonly, nonatomic, getter=isStereoPair) BOOL stereoPair;
+@property (readonly, nonatomic) BOOL supportsAirPlayGrouping;
 @property (readonly, nonatomic) BOOL supportsGrouping;
 @property (readonly, nonatomic) BOOL supportsRemoteControl;
 @property (readonly, nonatomic) BOOL supportsWirelessDisplay;

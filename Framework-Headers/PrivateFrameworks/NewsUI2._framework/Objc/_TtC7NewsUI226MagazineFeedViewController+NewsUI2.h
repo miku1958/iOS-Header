@@ -10,9 +10,12 @@
 #import <NewsUI2/TUKeyCommandTraversable-Protocol.h>
 #import <NewsUI2/TUPluggable-Protocol.h>
 
+@class NSArray;
+
 @interface _TtC7NewsUI226MagazineFeedViewController (NewsUI2) <TUPluggable, TUKeyCommandTraversable, TUDeselectable>
 
 @property (nonatomic, readonly) long long pluginItemCount;
+@property (nonatomic, readonly) NSArray *pluginItemIdentifiers;
 @property (nonatomic, readonly) long long pluginVisibleItemCount;
 
 - (void)deselect;
@@ -20,10 +23,13 @@
 - (void)relayoutWithCompletion:(CDUnknownBlockType)arg1;
 - (void)startTraversingWithDirection:(long long)arg1;
 - (void)tabBarSplitViewDidChangeFocusToFocus:(long long)arg1 action:(long long)arg2;
+- (void)tabBarSplitViewDidUnobsureView;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 @end
 

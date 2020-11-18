@@ -10,22 +10,18 @@
 
 @class _MRVirtualTouchDeviceDescriptorProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRRegisterHIDDeviceMessageProtobuf : PBCodable <NSCopying>
 {
     _MRVirtualTouchDeviceDescriptorProtobuf *_deviceDescriptor;
 }
 
-@property (strong, nonatomic) _MRVirtualTouchDeviceDescriptorProtobuf *deviceDescriptor; // @synthesize deviceDescriptor=_deviceDescriptor;
-@property (readonly, nonatomic) BOOL hasDeviceDescriptor;
-
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

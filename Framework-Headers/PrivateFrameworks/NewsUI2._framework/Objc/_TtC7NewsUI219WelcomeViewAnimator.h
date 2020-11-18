@@ -14,7 +14,6 @@
     MISSING_TYPE *model;
     MISSING_TYPE *renderer;
     MISSING_TYPE *layoutAttributesFactory;
-    MISSING_TYPE *shouldShowLocationOptInUI;
 }
 
 @end

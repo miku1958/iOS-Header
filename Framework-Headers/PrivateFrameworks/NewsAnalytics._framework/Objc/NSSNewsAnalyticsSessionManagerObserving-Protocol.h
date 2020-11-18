@@ -4,10 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString;
+#import <NewsAnalytics/NSObject-Protocol.h>
 
-@protocol NSSNewsAnalyticsSessionManagerObserving
-- (void)sessionDidStartWithSessionID:(NSString *)arg1;
-- (void)sessionWillEnd;
+@class NSNumber, NSString;
+
+@protocol NSSNewsAnalyticsSessionManagerObserving <NSObject>
+
+@property (nonatomic, readonly) NSString *sceneSessionIdentifier;
+
+- (void)sessionDidStartWithSessionID:(NSString *)arg1 sourceApplication:(NSString *)arg2;
+- (void)sessionWillEndWithEndReason:(NSNumber *)arg1;
+- (void)sessionWillResignActive;
 @end
 

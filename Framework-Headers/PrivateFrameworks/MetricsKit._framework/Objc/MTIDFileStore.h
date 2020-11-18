@@ -29,7 +29,6 @@
 - (id)debugInfo;
 - (id)fileURLForScheme:(id)arg1 date:(id)arg2;
 - (id)initWithContainerIdentifer:(id)arg1;
-- (id)resetSecretForScheme:(id)arg1 options:(id)arg2;
 - (id)secretForScheme:(id)arg1 options:(id)arg2;
 
 @end

@@ -82,6 +82,7 @@
 + (BOOL)isCompanionRegionCheckEnabledForDevice:(id)arg1;
 + (BOOL)isCompanionRegionCheckEnabledOnPairedPhone;
 + (BOOL)isElectrocardiogramAppDeletableForActiveWatch;
++ (BOOL)isElectrocardiogramAppInstallableForLocale:(id)arg1;
 + (BOOL)isElectrocardiogramSupportedOnActiveWatch;
 + (BOOL)isElectrocardiogramSupportedOnAllWatches;
 + (BOOL)isElectrocardiogramSupportedOnAnyWatch;
@@ -94,6 +95,7 @@
 - (void).cxx_destruct;
 - (id)_electrocardiogramFirstOnboardingCompletedDate;
 - (void)_featureAvailabilityConditionsDidUpdate;
+- (long long)_getOnboardingVersionForKey:(id)arg1;
 - (BOOL)_isOnboardingCompletedForKey:(id)arg1 version:(long long)arg2;
 - (BOOL)_isOnboardingCompletedForKey:(id)arg1 version:(long long)arg2 useCache:(BOOL)arg3;
 - (void)_localeDidChange;
@@ -102,18 +104,22 @@
 - (BOOL)_meetsMinimumAgeRequirementWithMinimumRequiredAge:(long long)arg1 currentDate:(id)arg2;
 - (void)_pairedOrActiveDevicesDidChange:(id)arg1;
 - (void)_registerForNotifications;
+- (void)_removeFirstOnboardingCompletedDatesForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_resetIsAtrialFibrillationDetectionDisabledCacheWithLock:(BOOL)arg1;
 - (void)_resetIsElectrocardiogramDisabledCacheWithLock:(BOOL)arg1;
 - (void)_setAtrialFibrillationDetectionOnboardingCompletedForVersion:(long long)arg1 inCountryCode:(id)arg2;
 - (void)_setElectrocardiogramOnboardingCompletedForVersion:(long long)arg1 inCountryCode:(id)arg2;
 - (void)_setFirstOnboardingCompletedDate:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_setOnboardingVersionCompleted:(long long)arg1 forKey:(id)arg2 additionalValues:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)_shouldAdvertiseECGDirectOnboardingWithDevice:(id)arg1;
 - (void)_triggerFeatureAvailabilityUpdateOnPhoneAndWatchWithDelay:(long long)arg1;
 - (void)_unregisterForNotifications;
+- (void)_updateOnboardingCompletionForKey:(id)arg1 andVersion:(long long)arg2;
 - (void)addHeartRhythmAvailabilityObserver:(id)arg1;
 - (id)atrialFibrillationDetectionOnboardingCountryCode;
 - (void)dealloc;
 - (void)electrocardiogramAppInstallStateOnActiveWatch:(CDUnknownBlockType)arg1;
+- (long long)electrocardiogramOnboardingCompletedVersionNoCache;
 - (id)electrocardiogramOnboardingCountryCode;
 - (id)initWithHealthStore:(id)arg1;
 - (void)isAtrialFibrillationDetectionOnboardingAvailableInCurrentLocation:(CDUnknownBlockType)arg1;
@@ -143,6 +149,7 @@
 - (BOOL)shouldAdvertiseAtrialFibrillationDetectionForWatch:(id)arg1;
 - (BOOL)shouldAdvertiseElectrocardiogramForActiveWatch;
 - (BOOL)shouldAdvertiseElectrocardiogramForWatch:(id)arg1;
+- (void)updateOnboardingCompletionVersionCache;
 
 @end
 

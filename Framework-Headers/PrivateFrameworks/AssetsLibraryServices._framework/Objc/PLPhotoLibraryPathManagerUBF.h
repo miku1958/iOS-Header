@@ -30,6 +30,7 @@
     NSString *_resourcesProjectsDataDirectory;
     NSString *_resourcesProjectsLegacyDirectory;
     NSString *_resourcesMomentSharedDirectory;
+    NSString *_resourcesAnalyticsDirectory;
     NSString *_externalDirectory;
     NSFileManager *_fm;
 }

@@ -58,6 +58,7 @@
 @property (nonatomic) int productType; // @synthesize productType=_productType;
 @property (readonly, nonatomic) NSDate *receiptTimestamp; // @synthesize receiptTimestamp=_receiptTimestamp;
 @property (readonly, nonatomic) NSDictionary *remoteSessionDictionary;
+@property (readonly, nonatomic) NSDictionary *sendFailureDictionary;
 @property (strong, nonatomic) ANSender *sender; // @synthesize sender=_sender;
 @property (nonatomic) unsigned long long source; // @synthesize source=_source;
 @property (nonatomic) unsigned long long statusFlags; // @synthesize statusFlags=_statusFlags;
@@ -88,7 +89,7 @@
 - (void)processAudioTranscription:(CDUnknownBlockType)arg1;
 - (BOOL)processAudioWithEffects:(unsigned long long)arg1 error:(id *)arg2;
 - (void)removeAudioFileDataItems;
-- (void)updateWithContentsOfAnnouncement:(id)arg1;
+- (BOOL)updateWithContentsOfAnnouncement:(id)arg1;
 
 @end
 

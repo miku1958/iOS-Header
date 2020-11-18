@@ -12,6 +12,7 @@
 @interface HROnboardingBaseViewController : HKViewController
 {
     BOOL _onboarding;
+    long long _upgradingFromAlgorithmVersion;
     UIView *_contentView;
     UIScrollView *_scrollView;
     long long _leftButtonType;
@@ -29,6 +30,7 @@
 @property (nonatomic) long long rightButtonType; // @synthesize rightButtonType=_rightButtonType;
 @property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (strong, nonatomic) NSLayoutConstraint *scrollViewBottomConstraint; // @synthesize scrollViewBottomConstraint=_scrollViewBottomConstraint;
+@property (nonatomic) long long upgradingFromAlgorithmVersion; // @synthesize upgradingFromAlgorithmVersion=_upgradingFromAlgorithmVersion;
 
 - (void).cxx_destruct;
 - (void)_adjustScrollViewForFooterView;
@@ -44,6 +46,7 @@
 - (void)closeButtonTapped:(id)arg1;
 - (double)contentTop;
 - (id)initForOnboarding:(BOOL)arg1;
+- (id)initForOnboarding:(BOOL)arg1 upgradingFromAlgorithmVersion:(long long)arg2;
 - (void)onboardingAtrialFibrillationDetectionCancelButtonTapped:(id)arg1;
 - (void)onboardingElectrocardiogramCancelButtonTapped:(id)arg1;
 - (void)presentAlertWithMessage:(id)arg1;

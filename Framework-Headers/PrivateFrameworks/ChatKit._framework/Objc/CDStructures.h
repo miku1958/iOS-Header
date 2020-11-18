@@ -174,6 +174,14 @@ typedef struct {
 } CDStruct_70511ce9;
 
 typedef struct {
+    double currentDragDistance;
+    double previousProposedWidth;
+    BOOL proposedPreviouslyIncreasing;
+    BOOL previouslyAtSnap;
+    BOOL previouslyAtMin;
+} CDStruct_644752d7;
+
+typedef struct {
     long long value;
     int timescale;
     unsigned int flags;

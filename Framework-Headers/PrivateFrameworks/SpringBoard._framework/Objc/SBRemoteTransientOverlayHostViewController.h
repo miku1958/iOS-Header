@@ -49,6 +49,7 @@
     BOOL _shouldDisableInteractiveScreenshotGesture;
     BOOL _shouldDisableSiri;
     BOOL _shouldPendAlertItems;
+    BOOL _attachedToWindowedAccessory;
     int _preferredStatusBarStyleOverridesToCancel;
     id<SBRemoteTransientOverlayHostViewControllerDelegate> _delegate;
     id<SBIdleTimerCoordinating> _idleTimerCoordinator;
@@ -57,11 +58,13 @@
     long long _preferredBackgroundStyle;
     NSNumber *_preferredSceneDeactivationReasonValue;
     _UILegibilitySettings *_preferredStatusBarLegibilitySettings;
+    struct CGRect _windowedAccessoryCutoutFrameInScreen;
 }
 
 @property (nonatomic, getter=isActivatingForSiri) BOOL activatingForSiri; // @synthesize activatingForSiri=_activatingForSiri;
 @property (nonatomic) BOOL allowsCustomPresentationDismissalAnimations; // @synthesize allowsCustomPresentationDismissalAnimations=_allowsCustomPresentationDismissalAnimations;
 @property (readonly, nonatomic) BOOL allowsStackingOverlayContentAbove; // @synthesize allowsStackingOverlayContentAbove=_allowsStackingOverlayContentAbove;
+@property (readonly, nonatomic, getter=isAttachedToWindowedAccessory) BOOL attachedToWindowedAccessory; // @synthesize attachedToWindowedAccessory=_attachedToWindowedAccessory;
 @property (readonly, nonatomic, getter=isContentOpaque) BOOL contentOpaque; // @synthesize contentOpaque=_contentOpaque;
 @property (readonly, nonatomic) double customIdleExpirationTimeout;
 @property (readonly, nonatomic) double customIdleWarningTimeout;
@@ -93,6 +96,7 @@
 @property (readonly, nonatomic) BOOL shouldPendAlertItems; // @synthesize shouldPendAlertItems=_shouldPendAlertItems;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isSwitcherEligible) BOOL switcherEligible; // @synthesize switcherEligible=_switcherEligible;
+@property (readonly, nonatomic) struct CGRect windowedAccessoryCutoutFrameInScreen; // @synthesize windowedAccessoryCutoutFrameInScreen=_windowedAccessoryCutoutFrameInScreen;
 
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
@@ -114,6 +118,7 @@
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)didInvalidateForRemoteAlert;
+- (void)didTransitionToAttachedToWindowedAccessory:(BOOL)arg1 windowedAccessoryCutoutFrameInScreen:(struct CGRect)arg2;
 - (void)dismiss;
 - (void)dismissForTransientOverlayAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)handleDoubleHeightStatusBarTap;

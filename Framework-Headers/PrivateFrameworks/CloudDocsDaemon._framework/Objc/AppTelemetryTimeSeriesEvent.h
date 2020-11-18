@@ -56,10 +56,16 @@
 + (id)newFolderSharingCountMismatchEventWithCount:(int)arg1 zoneMangledID:(id)arg2;
 + (id)newFromSqliteStatement:(struct sqlite3_stmt *)arg1 atIndex:(int)arg2;
 + (id)newFromSqliteValue:(struct sqlite3_value *)arg1;
++ (id)newMissingApplyJobEventWithNumberMissing:(unsigned int)arg1;
++ (id)newMissingDownloaderJobEventWithNumberMissing:(unsigned int)arg1;
 + (id)newMissingPushEventWithNumberOutOfSync:(unsigned int)arg1 zoneMangledID:(id)arg2;
++ (id)newMissingReaderJobEventWithNumberMissing:(unsigned int)arg1;
++ (id)newMissingSyncUpJobEventWithNumberMissing:(unsigned int)arg1;
++ (id)newMissingUploaderJobEventWithNumberMissing:(unsigned int)arg1;
 + (id)newPermanentlyInconsistentEventWithZoneMangledID:(id)arg1;
 + (id)newShareAliasInSharedFolderEventWithZoneMangledID:(id)arg1;
-+ (id)newSyncUpBackoffEventWithBackoff:(float)arg1 zoneMangledID:(id)arg2;
++ (id)newSyncUpBackoffDelayEventWithBackoff:(float)arg1 zoneMangledID:(id)arg2;
++ (id)newSyncUpBackoffRatioEventWithRatio:(float)arg1 zoneMangledID:(id)arg2;
 + (id)newTelemetryEventInZoneWithMangledID:(id)arg1;
 + (id)newTelemetryEventInZoneWithMangledID:(id)arg1 fromError:(id)arg2 errorDescription:(id)arg3;
 + (id)newTestMetricEventWithMagnitude:(unsigned int)arg1;

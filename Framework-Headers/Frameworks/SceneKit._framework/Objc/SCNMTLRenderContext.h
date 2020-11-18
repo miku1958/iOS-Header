@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
     id<CAMetalDrawable> _drawable;
     float _targetedFrameInterval;
     BOOL _shouldPresentAfterMinimumDuration;
+    BOOL _shouldPresentWithTransaction;
     MTLRenderPassDescriptor *_currentRenderPassDescriptor;
     MTLRenderPassDescriptor *_originalRenderPassDescriptor;
     MISSING_TYPE *_renderSize;
@@ -128,7 +129,7 @@ __attribute__((visibility("hidden")))
         SCNMTLMesh *metalMesh;
         struct __C3DMeshElement *meshElement;
         SCNMTLMeshElement *metalMeshElement;
-        struct __C3DFXProgram *program;
+        struct __C3DFXMetalProgram *program;
         struct __C3DMaterial *material;
         struct __C3DGeometry *geometry;
         SCNMTLShadable *metalShadable;
@@ -289,7 +290,7 @@ __attribute__((visibility("hidden")))
 - (id)radianceTextureForEffectSlot:(struct __C3DEffectSlot *)arg1;
 - (void)renderBackground:(struct __C3DEffectSlot *)arg1 engineContext:(struct __C3DEngineContext *)arg2 passInstance:(struct __C3DFXPassInstance *)arg3;
 - (void)renderLight:(struct __C3DNode *)arg1 lightType:(int)arg2 lightData:(struct __C3DLightRuntimeData *)arg3;
-- (void)renderMesh:(struct __C3DMesh *)arg1 meshElement:(struct __C3DMeshElement *)arg2 withProgram:(struct __C3DFXProgram *)arg3 engineContext:(struct __C3DEngineContext *)arg4 transform:(union C3DMatrix4x4)arg5 color:(const C3DColor4_0cad58d8 *)arg6 rasterizerStates:(struct __C3DRasterizerStates *)arg7 blendState:(struct __C3DBlendStates *)arg8 texture:(struct __C3DImage *)arg9 depthBias:(BOOL)arg10;
+- (void)renderMesh:(struct __C3DMesh *)arg1 meshElement:(struct __C3DMeshElement *)arg2 withProgram:(struct __C3DFXMetalProgram *)arg3 engineContext:(struct __C3DEngineContext *)arg4 transform:(union C3DMatrix4x4)arg5 color:(const C3DColor4_0cad58d8 *)arg6 rasterizerStates:(struct __C3DRasterizerStates *)arg7 blendState:(struct __C3DBlendStates *)arg8 texture:(struct __C3DImage *)arg9 depthBias:(BOOL)arg10;
 - (void)renderSKSceneWithRenderer:(id)arg1 overlay:(BOOL)arg2 atTime:(double)arg3;
 - (MISSING_TYPE *)renderSize;
 - (float)renderTime;

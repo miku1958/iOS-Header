@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)_hideCurrentActivityContinuationProgressUI;
 - (void)_userActivityWillSave:(id)arg1;
 - (id)activityContinuationDictionaryWithAction:(id)arg1;
+- (id)activityContinuationDictionaryWithAction:(id)arg1 sourceApplication:(id)arg2;
 - (BOOL)activityContinuationsAreBeingTracked;
 - (void)addResponder:(id)arg1 document:(id)arg2 forUserActivity:(id)arg3;
 - (void)handleActivityContinuation:(id)arg1 isSuspended:(BOOL)arg2;

@@ -47,7 +47,6 @@ __attribute__((visibility("hidden")))
 - (void)_loadRecognizers;
 - (void)_loadTranslatorForTask:(id)arg1;
 - (id)_paragraphResultFromSentences:(id)arg1;
-- (void)_speak:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_translate:(id)arg1 withContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_translate:(id)arg1 withContext:(id)arg2 toLocale:(id)arg3 paragraphResult:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_translateParagraph:(id)arg1 withContext:(id)arg2 toLocale:(id)arg3 completion:(CDUnknownBlockType)arg4;

@@ -11,6 +11,7 @@
 @interface _TtC8NewsFeed22FormatViewNodeRenderer : _TtCs12_SwiftObject
 {
     MISSING_TYPE *imageRenderer;
+    MISSING_TYPE *micaRenderer;
 }
 
 @end

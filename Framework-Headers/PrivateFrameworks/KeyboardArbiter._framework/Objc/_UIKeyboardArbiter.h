@@ -22,7 +22,6 @@
     FBSSceneIdentityToken *_currentFocusSceneIdentity;
     _UIKeyboardArbiterHandle *_keyboardFocusHandle;
     _UIKeyboardArbiterHandle *_commandFocusHandle;
-    _UIKeyboardArbiterHandle *_savedHandle;
     FBSWorkspace *_workspace;
     FBSScene *_scene;
     int _updateCounter;
@@ -32,7 +31,6 @@
     _UIKeyboardArbiterHandle *_disablingHandle;
     id<_UIKeyboardArbiterLink> _sceneLink;
     _UIKeyboardChangedInformation *_lastUpdate;
-    _UIKeyboardChangedInformation *_savedUpdate;
 }
 
 @property (readonly, weak) _UIKeyboardArbiterHandle *activeHandle; // @synthesize activeHandle=_activeHandle;
@@ -41,7 +39,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _UIKeyboardChangedInformation *lastUpdate; // @synthesize lastUpdate=_lastUpdate;
-@property (strong, nonatomic) _UIKeyboardChangedInformation *savedUpdate; // @synthesize savedUpdate=_savedUpdate;
 @property (readonly, nonatomic) id<_UIKeyboardArbiterLink> sceneLink; // @synthesize sceneLink=_sceneLink;
 @property (readonly) Class superclass;
 
@@ -69,7 +66,7 @@
 - (void)processWithPID:(int)arg1 foreground:(BOOL)arg2 suspended:(BOOL)arg3;
 - (void)reevaluateHardwareKeyboardClient;
 - (void)reevaluateSceneClientSettings;
-- (id)remoteScene;
+- (id)remoteSceneIdentity;
 - (void)resume;
 - (void)retrieveClientDebugInformationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)retrieveDebugInformationWithCompletion:(CDUnknownBlockType)arg1;

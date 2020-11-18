@@ -15,7 +15,6 @@
 - (void)authenticator:(PKAuthenticator *)arg1 didTransitionToEvaluationStateWithEvent:(CDStruct_912cb5d2)arg2;
 - (void)authenticatorDidActivateTouchID:(PKAuthenticator *)arg1;
 - (void)authenticatorDidDeactivateTouchID:(PKAuthenticator *)arg1 status:(long long)arg2;
-- (void)authenticatorDidEncounterBiometricLockout:(PKAuthenticator *)arg1;
 - (void)dismissPasscodeViewController;
 - (void)dismissPassphraseViewController;
 - (UIViewController *)passcodeViewController;

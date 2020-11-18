@@ -12,6 +12,8 @@
 
 + (int)role;
 + (id)roleString;
++ (id)typeString;
+- (id)accessibilityContextualLabel;
 
 @end
 

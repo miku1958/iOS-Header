@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary, NSMutableSet;
+@class NSMutableArray, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -16,8 +16,6 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_clients;
     NSMutableDictionary *_selectedMediaEntriesForClients;
     NSMutableDictionary *_allocatedMediaEntriesForClients;
-    NSMutableSet *_decoderConstrainedClients;
-    NSMutableSet *_bandwidthConstrainedClients;
     NSMutableArray *_sortedMediaEntries;
     struct opaqueRTCReporting *_reportingAgent;
     unsigned int _maxConcurrentVideoClients;
@@ -36,7 +34,6 @@ __attribute__((visibility("hidden")))
 - (unsigned int)requiredAudioBitrate:(unsigned int)arg1 highestAudioBitrates:(id)arg2;
 - (void)reset;
 - (void)sortMediaEntries;
-- (void)updateClient:(id)arg1 bandwidthConstrained:(BOOL)arg2 decoderConstrained:(BOOL)arg3;
 - (void)updateHighestAudioBitrates:(id)arg1 bitrate:(unsigned int)arg2;
 - (void)updateSelectedMediaEntriesForClientWithUUID:(id)arg1;
 

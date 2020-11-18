@@ -10,7 +10,7 @@
 #import <MapsSuggestions/_TtP8MapsSync25MapsSyncDataQueryDelegate_-Protocol.h>
 #import <MapsSuggestions/_TtP8MapsSync30MapsSyncDataQueryMergeDelegate_-Protocol.h>
 
-@class NSArray, NSLock, NSString, _TtC8MapsSync25MapsSyncFavoriteItemQuery;
+@class NSArray, NSLock, NSString, _TtC8MapsSync25MapsSyncFavoriteItemQuery, geo_isolater;
 @protocol OS_dispatch_queue;
 
 @interface MapsSuggestionsMapsSyncShortcutStorage : NSObject <_TtP8MapsSync25MapsSyncDataQueryDelegate_, _TtP8MapsSync30MapsSyncDataQueryMergeDelegate_, MapsSuggestionsShortcutStorage>
@@ -20,6 +20,7 @@
     NSLock *_lock;
     BOOL _willNotify;
     BOOL _editing;
+    geo_isolater *_queryIsolator;
     BOOL _hasAttemptedLoadingContents;
     _TtC8MapsSync25MapsSyncFavoriteItemQuery *_query;
     NSObject<OS_dispatch_queue> *_callbackQueue;
@@ -31,7 +32,7 @@
 @property (nonatomic) BOOL editing;
 @property (nonatomic) BOOL hasAttemptedLoadingContents; // @synthesize hasAttemptedLoadingContents=_hasAttemptedLoadingContents;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) _TtC8MapsSync25MapsSyncFavoriteItemQuery *query; // @synthesize query=_query;
+@property (readonly, nonatomic) _TtC8MapsSync25MapsSyncFavoriteItemQuery *query; // @synthesize query=_query;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueName;
 @property (nonatomic) BOOL willNotify;

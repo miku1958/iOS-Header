@@ -36,7 +36,6 @@
     AVExternalPlaybackController *_avExternalPlaybackController;
     NSDictionary *_savedErrorUserInfo;
     id _savedErrorContext;
-    NSString *_mostRecentMediaType;
     VideosExtrasPresenter *_extrasPresenter;
     VUINowPlayingFeatureMonitor *_featureMonitor;
     UIButton *_skipButton;
@@ -75,7 +74,6 @@
 @property (strong, nonatomic) VUIVideoAdvisoryLogoImageDownloader *logoImageDownloader; // @synthesize logoImageDownloader=_logoImageDownloader;
 @property (strong, nonatomic) UIViewController<VUIPlayerViewController> *mainAVPlayerViewController; // @synthesize mainAVPlayerViewController=_mainAVPlayerViewController;
 @property (strong, nonatomic) VUIPlayer *mainPlayer; // @synthesize mainPlayer=_mainPlayer;
-@property (copy, nonatomic) NSString *mostRecentMediaType; // @synthesize mostRecentMediaType=_mostRecentMediaType;
 @property (strong, nonatomic) NSNumber *postPlayImpressionTime; // @synthesize postPlayImpressionTime=_postPlayImpressionTime;
 @property (strong, nonatomic) NSString *postPlayItemId; // @synthesize postPlayItemId=_postPlayItemId;
 @property (strong, nonatomic) VUIPostPlayView *postPlayView; // @synthesize postPlayView=_postPlayView;
@@ -123,6 +121,7 @@
 - (void)_avPlayerViewControllerPresentationDidTimeout;
 - (void)_configureStillWatchingFeatureMonitoringIfLivePlayback;
 - (void)_currentMediaItemDidChange:(id)arg1;
+- (id)_deepLinkPlaybackURLForCurrentMediaItem;
 - (void)_dismissPostPlayWithSwipe:(id)arg1;
 - (void)_downloadProductPlacementImageIfAvailable:(id)arg1;
 - (void)_downloadRatingImageIfAvailable:(id)arg1;

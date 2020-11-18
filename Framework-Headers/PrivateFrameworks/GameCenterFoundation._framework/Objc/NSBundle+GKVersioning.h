@@ -31,6 +31,7 @@
 - (id)_gkPathForMessageImage;
 - (id)_gkPathForSoundWithName:(id)arg1;
 - (id)_gkPreferredLanguage;
+- (id)_gkPreferredSystemLanguage;
 - (id)_gkSystemLocalizedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3;
 @end
 

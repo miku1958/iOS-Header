@@ -12,22 +12,27 @@
     BOOL _idleTimerDisabled;
     BOOL _shouldBecomeVisibleWhenWakingDisplay;
     BOOL _callConnected;
+    BOOL _deviceAttachedToWindowedAccessory;
     int _preferredStatusBarStyleOverridesToSuppress;
     unsigned long long _preferredHardwareButtonEventTypes;
     long long _presentationMode;
+    struct CGRect _windowedAccessoryCutoutFrameInScreen;
 }
 
 @property (nonatomic, getter=isCallConnected) BOOL callConnected; // @synthesize callConnected=_callConnected;
+@property (readonly, nonatomic, getter=isDeviceAttachedToWindowedAccessory) BOOL deviceAttachedToWindowedAccessory; // @synthesize deviceAttachedToWindowedAccessory=_deviceAttachedToWindowedAccessory;
 @property (nonatomic, getter=isIdleTimerDisabled) BOOL idleTimerDisabled; // @synthesize idleTimerDisabled=_idleTimerDisabled;
 @property (nonatomic) unsigned long long preferredHardwareButtonEventTypes; // @synthesize preferredHardwareButtonEventTypes=_preferredHardwareButtonEventTypes;
 @property (nonatomic) int preferredStatusBarStyleOverridesToSuppress; // @synthesize preferredStatusBarStyleOverridesToSuppress=_preferredStatusBarStyleOverridesToSuppress;
 @property (readonly, nonatomic) long long presentationMode; // @synthesize presentationMode=_presentationMode;
 @property (nonatomic) BOOL shouldBecomeVisibleWhenWakingDisplay; // @synthesize shouldBecomeVisibleWhenWakingDisplay=_shouldBecomeVisibleWhenWakingDisplay;
 @property (nonatomic) BOOL supportsDeviceLockEvents; // @synthesize supportsDeviceLockEvents=_supportsDeviceLockEvents;
+@property (readonly, nonatomic) struct CGRect windowedAccessoryCutoutFrameInScreen; // @synthesize windowedAccessoryCutoutFrameInScreen=_windowedAccessoryCutoutFrameInScreen;
 
 - (void)_handleDeviceLockAction:(id)arg1;
 - (void)_handleFrameChanged;
 - (void)_handleHardwareButtonEventSceneActions:(id)arg1;
+- (void)_setAttachedToWindowedAccessory:(BOOL)arg1 windowedAccessoryCutoutFrameInScreen:(struct CGRect)arg2;
 - (void)_updatePresentationMode:(long long)arg1 analyticsSource:(id)arg2;
 - (id)initWithSession:(id)arg1 connectionOptions:(id)arg2;
 - (void)requestTransitionToPresentationMode:(long long)arg1;

@@ -8,7 +8,7 @@
 
 #import <Translation/_LTTranslationEngine-Protocol.h>
 
-@class AFSettingsConnection, FTBlazarService, FTMtService, NSOperationQueue, NSString, _LTBatchTranslationResponseHandler, _LTOspreySpeechTranslationSession, _LTTextToSpeechCache;
+@class AFSettingsConnection, FTBlazarService, FTMtService, NSDate, NSOperationQueue, NSString, _LTBatchTranslationResponseHandler, _LTOspreySpeechTranslationSession, _LTTextToSpeechCache;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -23,14 +23,17 @@ __attribute__((visibility("hidden")))
     _LTBatchTranslationResponseHandler *batchTranslationResponseHandler;
     NSObject<OS_dispatch_queue> *_timerQueue;
     NSObject<OS_dispatch_source> *_serverTimer;
+    NSDate *_startTime;
     AFSettingsConnection *_assistantSettingsConnection;
     long long _dataSharingOptInStatus;
     _LTTextToSpeechCache *_ttsCache;
+    NSObject<OS_dispatch_queue> *_serverQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *serverQueue; // @synthesize serverQueue=_serverQueue;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _LTTextToSpeechCache *ttsCache; // @synthesize ttsCache=_ttsCache;
 

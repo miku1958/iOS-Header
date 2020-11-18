@@ -18,12 +18,14 @@
     MISSING_TYPE *videoDuration;
     MISSING_TYPE *videoURL;
     MISSING_TYPE *videoQuality;
+    MISSING_TYPE *mediaHasStarted;
+    MISSING_TYPE *promotedContent;
+    MISSING_TYPE *$__lazy_storage_$_initialVolumeSender;
 }
 
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithContextIdentifier:(id)arg1 promotedContentIdentifier:(id)arg2 primitiveCreator:(id)arg3 notificationOwner:(id)arg4;
-- (void)mediaChosenWithVideoWidth:(float)arg1 videoHeight:(float)arg2;
 - (void)mediaContractedAtPosition:(double)arg1 fullScreen:(BOOL)arg2;
 - (void)mediaExpandedAtPosition:(double)arg1 fullScreen:(BOOL)arg2;
 - (void)mediaFinished;
@@ -38,6 +40,7 @@
 - (void)registerHandlerForAllMetricsWithClosure:(CDUnknownBlockType)arg1;
 - (void)removeHandler;
 - (void)updateVisiblePercentage:(long long)arg1;
+- (void)videoChosenWithVideoWidth:(float)arg1 videoHeight:(float)arg2;
 
 @end
 

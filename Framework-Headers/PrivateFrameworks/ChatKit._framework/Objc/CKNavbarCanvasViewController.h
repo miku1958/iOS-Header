@@ -75,11 +75,10 @@
 - (void)_facetimeVideoButtonTapped:(id)arg1;
 - (void)_handleAddressBookChange:(id)arg1;
 - (void)_handleAllowedByScreenTimeChatChanged:(id)arg1;
+- (void)_handleConversationRecipientsDidChange:(id)arg1;
 - (void)_handleTranscriptScroll:(id)arg1;
 - (void)_infoButtonTapped:(id)arg1;
 - (void)_initializeForTraitCollection:(id)arg1;
-- (BOOL)_isFaceTimeSupportedForIndividualCalls;
-- (BOOL)_isMuliwayAvaialble;
 - (id)_leftItemViewForTraitCollection:(id)arg1;
 - (void)_notifyDelegateThatViewControllerWantsResize;
 - (double)_preferredHeightForTraitCollection:(id)arg1;
@@ -87,6 +86,7 @@
 - (id)_secondaryRightItemViewForTraitCollection:(id)arg1;
 - (id)_titleItemViewForTraitCollection:(id)arg1;
 - (long long)_unreadCount;
+- (void)_updateFTControls;
 - (void)_updateMultiwayButtonStateWithConversation:(id)arg1;
 - (void)_updateUnreadCountForBackbuttonView:(long long)arg1;
 - (void)_userDidTapNavigationBar:(id)arg1;
@@ -101,8 +101,6 @@
 - (void)handleCloseNavBarAnimationCompleteNotification:(id)arg1;
 - (id)initWithConversation:(id)arg1;
 - (id)initWithConversation:(id)arg1 navigationController:(id)arg2;
-- (BOOL)isFaceTimeVideoSupported;
-- (BOOL)isMultiwayFaceTimeAudioSupported;
 - (void)loadView;
 - (void)multiwayStateChanged:(id)arg1;
 - (id)navBarTitleFromConversation:(id)arg1;

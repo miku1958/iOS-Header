@@ -10,6 +10,7 @@
 
 @class _MRVoiceInputDeviceDescriptorProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRVoiceInputDevice : PBCodable <NSCopying>
 {
     _MRVoiceInputDeviceDescriptorProtobuf *_descriptor;
@@ -21,24 +22,13 @@
     } _has;
 }
 
-@property (strong, nonatomic) _MRVoiceInputDeviceDescriptorProtobuf *descriptor; // @synthesize descriptor=_descriptor;
-@property (nonatomic) unsigned int deviceID; // @synthesize deviceID=_deviceID;
-@property (readonly, nonatomic) BOOL hasDescriptor;
-@property (nonatomic) BOOL hasDeviceID;
-@property (nonatomic) BOOL hasRecordingState;
-@property (nonatomic) int recordingState; // @synthesize recordingState=_recordingState;
-
 - (void).cxx_destruct;
-- (int)StringAsRecordingState:(id)arg1;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)recordingStateAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

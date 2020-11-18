@@ -44,6 +44,7 @@
 + (BOOL)secureMoveItemAtURL:(id)arg1 toURL:(id)arg2 capabilities:(id)arg3 error:(id *)arg4;
 + (BOOL)setPhotoLibraryBasePath:(id)arg1;
 + (BOOL)stripExtendedAttributesFromFileAtURL:(id)arg1 inDomain:(id)arg2 error:(id *)arg3;
++ (BOOL)stripImmutableFlagIfNecessaryFromFileAtPath:(id)arg1;
 + (id)systemLibraryURL;
 
 @end

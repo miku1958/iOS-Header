@@ -10,5 +10,8 @@
 
 @protocol SXURLHandling <NSObject>
 - (void)openURL:(NSURL *)arg1;
+
+@optional
+- (void)openNewWindowWithURL:(NSURL *)arg1;
 @end
 

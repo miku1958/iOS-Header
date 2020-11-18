@@ -89,7 +89,6 @@
 @property (readonly, nonatomic) PXGMetalRenderer *metalRenderer; // @synthesize metalRenderer=_metalRenderer;
 @property (nonatomic) BOOL missedScrollEventThisFrame; // @synthesize missedScrollEventThisFrame=_missedScrollEventThisFrame;
 @property (readonly, nonatomic) PXGAnimator *ppt_animator;
-@property (readonly, nonatomic) unsigned int presentedSpriteCount;
 @property (readonly, nonatomic) NSArray *renderers; // @synthesize renderers=_renderers;
 @property (readonly, nonatomic) struct _PXGEngineScrollState scrollState; // @synthesize scrollState=_scrollState;
 @property (strong, nonatomic) PXScrollViewController *scrollViewController; // @synthesize scrollViewController=_scrollViewController;
@@ -129,9 +128,9 @@
 - (void)_updateLayout;
 - (void)_updateScrollStateWithReason:(unsigned long long)arg1;
 - (void)_updateTextureManager;
+- (BOOL)copyPresentedSpriteFor:(id)arg1 geometry:(CDStruct_3ab912e1 *)arg2 style:(CDStruct_506f5052 *)arg3 info:(CDStruct_9d1ebe49 *)arg4;
 - (void)dealloc;
 - (void)ensureUpdatedLayout;
-- (void)enumerateSpritesInRange:(struct _PXGSpriteIndexRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateSpritesInRect:(struct CGRect)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)handleDisplayLink:(id)arg1;
 - (void)handleScreensDidWakeNotification:(id)arg1;

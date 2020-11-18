@@ -10,6 +10,7 @@
 
 @class NSMutableArray, _MRLanguageOptionProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRLanguageOptionGroupProtobuf : PBCodable <NSCopying>
 {
     _MRLanguageOptionProtobuf *_defaultLanguageOption;
@@ -20,25 +21,12 @@
     } _has;
 }
 
-@property (nonatomic) BOOL allowEmptySelection; // @synthesize allowEmptySelection=_allowEmptySelection;
-@property (strong, nonatomic) _MRLanguageOptionProtobuf *defaultLanguageOption; // @synthesize defaultLanguageOption=_defaultLanguageOption;
-@property (nonatomic) BOOL hasAllowEmptySelection;
-@property (readonly, nonatomic) BOOL hasDefaultLanguageOption;
-@property (strong, nonatomic) NSMutableArray *languageOptions; // @synthesize languageOptions=_languageOptions;
-
-+ (Class)languageOptionsType;
 - (void).cxx_destruct;
-- (void)addLanguageOptions:(id)arg1;
-- (void)clearLanguageOptions;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (id)languageOptionsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)languageOptionsCount;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

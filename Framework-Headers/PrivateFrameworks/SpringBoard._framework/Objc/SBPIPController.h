@@ -39,9 +39,8 @@
     id<BSInvalidatable> _fullscreenModalElementInsetOverrideAssertion;
     SBPIPStashAssertion *_stashForInterruptionAssertion;
     SBPIPInterruptionDebouncingTimer *_interruptionEndDebouncingTimer;
-    long long _defaultStashState;
+    BOOL _defaultToStashed;
     NSMutableSet *_pictureInPictureMorphAnimatorControllers;
-    BOOL _fillGravity;
     UIView *_keyboardInsetsVisualizerView;
     long long _unlockedEnvironmentModeWhenKeyboardFocusChanged;
     FBSDisplayLayoutMonitor *_displayLayoutMonitor;
@@ -86,7 +85,7 @@
 - (BOOL)_pointInside:(struct CGPoint)arg1;
 - (long long)_reasonForAssertion:(id)arg1;
 - (void)_removePictureInPictureMorphAnimatorController:(id)arg1;
-- (void)_setContainersStashState:(long long)arg1;
+- (void)_setContainersStashed:(BOOL)arg1;
 - (void)_setPictureInPictureWindowMargin:(struct UIEdgeInsets)arg1;
 - (void)_updateContainerViewControllersContentPadding;
 - (void)_updateFloatingDockInsets;
@@ -109,7 +108,7 @@
 - (void)beginPiPInterruptionForAssertion:(id)arg1;
 - (void)cancelPictureInPictureForApplicationWithProcessIdentifierEnteringBackground:(int)arg1 scenePersistenceIdentifier:(id)arg2;
 - (void)containerViewController:(id)arg1 didFinishStartAnimationWithInitialInterfaceOrientation:(long long)arg2;
-- (void)containerViewController:(id)arg1 userDidUpdateStashState:(long long)arg2;
+- (void)containerViewController:(id)arg1 userDidUpdateStashState:(BOOL)arg2;
 - (void)containerViewControllerStartReducingResourcesUsage:(id)arg1;
 - (void)containerViewControllerStopReducingResourcesUsage:(id)arg1;
 - (void)containerViewControllerUserMayUpdateStashState:(id)arg1;
@@ -122,7 +121,6 @@
 - (void)forcePictureInPictureContainerWithView:(id)arg1 toFrame:(struct CGRect)arg2;
 - (id)init;
 - (struct CGRect)initialFrameForInteractivePictureInPictureAnimationEnteringBackgroundForApplicationWithProcessIdentifier:(int)arg1 scenePersistenceIdentifier:(id)arg2;
-- (BOOL)isPictureInPictureContentInFillGravity;
 - (BOOL)isPictureInPictureWindowVisible;
 - (void)keyboardFocusController:(id)arg1 didUpdateFocusToPID:(int)arg2 sceneID:(id)arg3;
 - (void)morphAnimatorControllerDidTerminate:(id)arg1;
@@ -136,7 +134,6 @@
 - (id)pictureInPictureMorphAnimatorControllerForProcessIdentifier:(int)arg1;
 - (struct CGSize)preferredContentSizeForActivePictureInPictureWithApplicationWithProcessIdentifier:(int)arg1 scenePersistenceIdentifier:(id)arg2;
 - (struct CGSize)preferredContentSizeForInteractivelyEnteringBackgroundForApplicationWithProcessIdentifier:(int)arg1 scenePersistenceIdentifier:(id)arg2;
-- (void)setLastPictureInPictureContentWasFromFillGravity:(BOOL)arg1;
 - (void)setPictureInPictureWindowHidden:(BOOL)arg1 withReason:(id)arg2;
 - (BOOL)shouldStartPictureInPictureForApplicationWithProcessIdentifierEnteringBackground:(int)arg1 scenePersistenceIdentifier:(id)arg2;
 - (void)startPictureInPictureForApplicationWithProcessIdentifierEnteringBackground:(int)arg1 scenePersistenceIdentifier:(id)arg2 animated:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;

@@ -15,8 +15,8 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_updateToolbarItems;
-- (void)pinConversation:(id)arg1;
-- (void)unpinConversation:(id)arg1;
+- (void)pinConversation:(id)arg1 withReason:(id)arg2;
+- (void)unpinConversation:(id)arg1 withReason:(id)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 
 @end

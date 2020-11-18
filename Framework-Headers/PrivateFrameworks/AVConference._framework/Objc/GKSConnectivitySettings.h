@@ -44,6 +44,7 @@
 + (id)getTestGroupPermutations:(unsigned char)arg1;
 + (double)getThresholdForSwitch:(unsigned int)arg1;
 + (id)getVCRCSeverBagConfigWithKey:(id)arg1;
++ (int)getWRMRSSIThresholdValue:(int)arg1;
 + (void)setAddress:(id)arg1 forService:(id)arg2;
 + (void)setClientOptions:(id)arg1;
 + (void)setServerAddresses:(id)arg1;

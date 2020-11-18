@@ -6,18 +6,19 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class BNBannerSourceLayoutDescription, BNBannerSourceListener, NSDictionary, NSString, UIApplicationSceneSpecification;
-@protocol BNPresentable;
+@class BNBannerSourceLayoutDescription, BNBannerSourceListener, NSArray, NSDictionary, NSString, UIApplicationSceneSpecification;
+@protocol BNPresentable, BNPresentableUniquelyIdentifying;
 
 @protocol BNBannerSourceListenerDelegate <NSObject>
 - (BNBannerSourceLayoutDescription *)bannerSourceListener:(BNBannerSourceListener *)arg1 layoutDescriptionWithError:(id *)arg2;
 - (BOOL)bannerSourceListener:(BNBannerSourceListener *)arg1 recommendsSuspending:(BOOL)arg2 forReason:(NSString *)arg3 revokingCurrent:(BOOL)arg4 error:(id *)arg5;
 - (BOOL)bannerSourceListener:(BNBannerSourceListener *)arg1 requestsPostingPresentable:(id<BNPresentable>)arg2 options:(unsigned long long)arg3 userInfo:(NSDictionary *)arg4 error:(id *)arg5;
-- (BOOL)bannerSourceListener:(BNBannerSourceListener *)arg1 requestsRevokingAllPresentablesForRequesterWithIdentifier:(NSString *)arg2 reason:(NSString *)arg3 userInfo:(NSDictionary *)arg4 error:(id *)arg5;
-- (BOOL)bannerSourceListener:(BNBannerSourceListener *)arg1 requestsRevokingPresentableWithRequestIdentifier:(NSString *)arg2 requesterIdentifier:(NSString *)arg3 animated:(BOOL)arg4 reason:(NSString *)arg5 userInfo:(NSDictionary *)arg6 error:(id *)arg7;
+- (NSArray *)bannerSourceListener:(BNBannerSourceListener *)arg1 requestsRevokingPresentablesWithIdentification:(id<BNPresentableUniquelyIdentifying>)arg2 reason:(NSString *)arg3 animated:(BOOL)arg4 userInfo:(NSDictionary *)arg5 error:(id *)arg6;
 
 @optional
 - (void)bannerSourceListener:(BNBannerSourceListener *)arg1 presentationSize:(out struct CGSize *)arg2 containerSize:(out struct CGSize *)arg3 error:(id *)arg4;
+- (BOOL)bannerSourceListener:(BNBannerSourceListener *)arg1 requestsRevokingAllPresentablesForRequesterWithIdentifier:(NSString *)arg2 reason:(NSString *)arg3 userInfo:(NSDictionary *)arg4 error:(id *)arg5;
+- (BOOL)bannerSourceListener:(BNBannerSourceListener *)arg1 requestsRevokingPresentableWithRequestIdentifier:(NSString *)arg2 requesterIdentifier:(NSString *)arg3 animated:(BOOL)arg4 reason:(NSString *)arg5 userInfo:(NSDictionary *)arg6 error:(id *)arg7;
 - (UIApplicationSceneSpecification *)sceneSpecificationForBannerSourceListener:(BNBannerSourceListener *)arg1;
 @end
 

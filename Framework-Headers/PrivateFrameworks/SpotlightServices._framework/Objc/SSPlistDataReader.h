@@ -15,13 +15,13 @@
 }
 
 @property (readonly, copy, nonatomic) NSMutableArray *allKeys;
-@property (readonly, nonatomic) NSArray *blacklist;
+@property (readonly, nonatomic) NSArray *blocklist;
 @property (readonly, nonatomic) unsigned long long count;
 
 - (struct _MDPlistContainer *)container;
 - (void)dealloc;
 - (id)description;
-- (BOOL)doesBundleExistInAppWhiteList:(id)arg1;
+- (BOOL)doesBundleExistInAppAllowList:(id)arg1;
 - (double)doubleValueForBundle:(id)arg1;
 - (double)doubleValueForKey:(const char *)arg1;
 - (id)initWithPlistContainer:(struct _MDPlistContainer *)arg1;

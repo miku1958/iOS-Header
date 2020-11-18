@@ -7,31 +7,45 @@
 #import <PhotoAnalysis/PHAWorker.h>
 
 @class NSObject;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_os_log;
 
 @interface PHAPresentationWorker : PHAWorker
 {
     NSObject<OS_dispatch_queue> *_backgroundTaskQueue;
+    NSObject<OS_os_log> *_loggingConnection;
 }
 
+@property (readonly, nonatomic) NSObject<OS_os_log> *loggingConnection; // @synthesize loggingConnection=_loggingConnection;
+
++ (id)_ageRangeDescriptionFromBirthday:(id)arg1;
 + (id)_dateFormatter;
 + (id)_domainErrorWithCode:(long long)arg1;
++ (id)_fetchDemographicsSummary;
++ (id)_fetchLibrarySummaryForPhotoLibrary:(id)arg1;
 + (void)_findAndSetFeaturedStateForMemoriesAndSuggestionsIfNeededInPhotoLibrary:(id)arg1;
 + (void)_findMemoriesAndSetFeaturedStateIfNeededInPhotoLibrary:(id)arg1;
 + (void)_findSuggestionsAndSetFeaturedStateIfNeededInPhotoLibrary:(id)arg1;
++ (id)_genderDescriptionFromGivenName:(id)arg1;
++ (id)_meContact;
 + (long long)applicationDataFolderIdentifier;
 + (void)configureXPCConnection:(id)arg1;
 + (BOOL)persistsState;
 + (BOOL)reloadWidgetTimelineWithPhotoLibrary:(id)arg1 error:(id *)arg2;
 + (short)workerType;
 - (void).cxx_destruct;
+- (id)_buildPropertyCache;
 - (BOOL)_didExceedTimeInterval:(double)arg1 forBackgroundJobUserDefaultsKey:(id)arg2;
+- (BOOL)_hasAdditionalJobForCachingCPAnalyticsPropertiesInScenario:(unsigned long long)arg1;
 - (BOOL)_hasAdditionalJobForFeaturesUsageReportingInScenario:(unsigned long long)arg1;
 - (BOOL)_hasAdditionalJobForMediaSampleReportingInScenario:(unsigned long long)arg1;
 - (id)_libraryScopedWorkerFeaturesUsageURL;
 - (id)_libraryScopedWorkerFeaturesUsageWithError:(id *)arg1;
 - (void)_reportMediaSampleWithOptions:(id)arg1 context:(id)arg2 progressHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)_shouldAllowBackgroundActivityWithDescription:(id)arg1;
+- (id)cacheCPAnalyticsPropertiesJobWithScenario:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)cacheCPAnalyticsPropertiesWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (BOOL)cacheCPAnalyticsPropertiesWithError:(id *)arg1;
+- (void)cacheCPAnalyticsPropertiesWithOptions:(id)arg1 context:(id)arg2 progressHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)canRunWhenGraphIsLoaded;
 - (void)cooldown;
 - (id)featuresUsageReportingJobWithScenario:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;

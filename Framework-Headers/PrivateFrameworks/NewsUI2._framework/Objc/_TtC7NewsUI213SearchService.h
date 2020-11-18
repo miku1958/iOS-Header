@@ -4,17 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC7NewsUI213SearchService : _TtCs12_SwiftObject
+@interface _TtC7NewsUI213SearchService : NSObject
 {
-    MISSING_TYPE *context;
-    MISSING_TYPE *tagService;
-    MISSING_TYPE *headlineModelFactory;
-    MISSING_TYPE *feedContextFactory;
+    MISSING_TYPE *configQueue;
+    MISSING_TYPE *baseURL;
+    MISSING_TYPE *configurationProfiles;
+    MISSING_TYPE *connection;
+    MISSING_TYPE *parsecParamsFactory;
+    MISSING_TYPE *configManager;
+    MISSING_TYPE *purchaseProvider;
+    MISSING_TYPE *bundleSubscriptionProvider;
 }
+
+- (void).cxx_destruct;
+- (id)init;
 
 @end
 

@@ -8,20 +8,20 @@
 
 #import <HealthToolbox/HKHeartRhythmAvailabilityObserver-Protocol.h>
 #import <HealthToolbox/HKOnboardingSetupViewDelegate-Protocol.h>
+#import <HealthToolbox/HRAtrialFibrillationOnboardingManagerDelegate-Protocol.h>
 #import <HealthToolbox/HRFeatureRegulatoryReenableFeatureActionDelegate-Protocol.h>
-#import <HealthToolbox/HROnboardingManagerDelegate-Protocol.h>
 #import <HealthToolbox/UITextViewDelegate-Protocol.h>
 
-@class HKDisplayType, HKHeartRhythmAvailability, HKKeyValueDomain, HROnboardingManager, NSArray, NSDate, NSString, UITapGestureRecognizer, WDProfile;
+@class HKDisplayType, HKHeartRhythmAvailability, HKKeyValueDomain, HRAtrialFibrillationOnboardingManager, NSArray, NSDate, NSString, UITapGestureRecognizer, WDProfile;
 @protocol HKDataMetadataSectionProtocol, WDDataListViewControllerDataProvider;
 
-@interface WDAtrialFibrillationEventOverviewViewController : HKTableViewController <HRFeatureRegulatoryReenableFeatureActionDelegate, HROnboardingManagerDelegate, UITextViewDelegate, HKOnboardingSetupViewDelegate, HKHeartRhythmAvailabilityObserver>
+@interface WDAtrialFibrillationEventOverviewViewController : HKTableViewController <HRFeatureRegulatoryReenableFeatureActionDelegate, HRAtrialFibrillationOnboardingManagerDelegate, UITextViewDelegate, HKOnboardingSetupViewDelegate, HKHeartRhythmAvailabilityObserver>
 {
     BOOL _firstViewDidLayoutSubviews;
     BOOL _previousAtrialFibrillationDetectionDisabledCacheValue;
     HKDisplayType *_displayType;
     WDProfile *_profile;
-    HROnboardingManager *_onboardingManager;
+    HRAtrialFibrillationOnboardingManager *_onboardingManager;
     HKHeartRhythmAvailability *_heartRhythmAvailability;
     HKKeyValueDomain *_keyValueDomain;
     long long _detectionState;
@@ -46,7 +46,7 @@
 @property (strong, nonatomic) HKKeyValueDomain *keyValueDomain; // @synthesize keyValueDomain=_keyValueDomain;
 @property (strong, nonatomic) NSDate *latestAnalyzedSampleDate; // @synthesize latestAnalyzedSampleDate=_latestAnalyzedSampleDate;
 @property (strong, nonatomic) id<HKDataMetadataSectionProtocol> metaDataSection; // @synthesize metaDataSection=_metaDataSection;
-@property (strong, nonatomic) HROnboardingManager *onboardingManager; // @synthesize onboardingManager=_onboardingManager;
+@property (strong, nonatomic) HRAtrialFibrillationOnboardingManager *onboardingManager; // @synthesize onboardingManager=_onboardingManager;
 @property (nonatomic) BOOL previousAtrialFibrillationDetectionDisabledCacheValue; // @synthesize previousAtrialFibrillationDetectionDisabledCacheValue=_previousAtrialFibrillationDetectionDisabledCacheValue;
 @property (strong, nonatomic) WDProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) NSArray *sectionsToDisplay; // @synthesize sectionsToDisplay=_sectionsToDisplay;

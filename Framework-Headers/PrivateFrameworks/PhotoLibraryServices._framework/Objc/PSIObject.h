@@ -26,6 +26,7 @@
 - (void)addContentString:(id)arg1 identifier:(id)arg2 category:(short)arg3 owningCategory:(short)arg4;
 - (void)addIdentifier:(id)arg1 category:(short)arg2 owningCategory:(short)arg3;
 - (void)addSynonym:(id)arg1 category:(short)arg2 originalContentString:(id)arg3;
+- (void)addSynonym:(id)arg1 identifier:(id)arg2 category:(short)arg3 originalContentString:(id)arg4;
 - (void)clear;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

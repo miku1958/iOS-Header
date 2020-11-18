@@ -17,7 +17,6 @@
 - (id)__ck_browserImageGenerateSynchronously:(BOOL)arg1 interfaceStyle:(long long)arg2;
 - (id)__ck_generateAssetCatalogImageForInterfaceStyle:(long long)arg1;
 - (id)__ck_iconServicesBundleIdentifier;
-- (BOOL)__ck_isAnimojiStickersAndRunningInCameraAppsClient;
 - (BOOL)__ck_preferIconServices;
 - (id)__ck_statusImage;
 - (id)_adamID;

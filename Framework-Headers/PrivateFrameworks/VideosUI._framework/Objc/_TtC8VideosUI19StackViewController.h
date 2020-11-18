@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI19StackViewController : UIViewController
 {
+    MISSING_TYPE *peekingEnabled;
     MISSING_TYPE *collectionImpressioner;
     MISSING_TYPE *stackType;
     MISSING_TYPE *collectionView;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *collectionViewModel;
     MISSING_TYPE *$__lazy_storage_$_prototypeCells;
     MISSING_TYPE *sectionViewModels;
+    MISSING_TYPE *$__lazy_storage_$_hostingCellViewControllers;
     MISSING_TYPE *_showcasePercentage;
     MISSING_TYPE *_showcaseHeight;
     MISSING_TYPE *verticalPaginationMonitor;

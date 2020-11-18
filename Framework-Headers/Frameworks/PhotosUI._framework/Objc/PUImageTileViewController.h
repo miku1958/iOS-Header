@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     BOOL __isDisplayingFullQualityImage;
     BOOL _shouldUsePenultimateVersionForNextImageUpdate;
     BOOL _canUseFullsizeTiledLayer;
+    BOOL _requiresFullQualityImage;
     float _gainMapValue;
     PUAssetViewModel *_assetViewModel;
     id<PUDisplayAsset> _asset;
@@ -85,6 +86,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (nonatomic) BOOL needsUpdateTargetSize; // @synthesize needsUpdateTargetSize=_needsUpdateTargetSize;
 @property (copy, nonatomic) UIColor *placeholderColor; // @synthesize placeholderColor=_placeholderColor;
+@property (nonatomic) BOOL requiresFullQualityImage; // @synthesize requiresFullQualityImage=_requiresFullQualityImage;
 @property (nonatomic) BOOL shouldUseFullsizeImageData; // @synthesize shouldUseFullsizeImageData=_shouldUseFullsizeImageData;
 @property (nonatomic, setter=_setShouldUsePenultimateVersionForNextImageUpdate:) BOOL shouldUsePenultimateVersionForNextImageUpdate; // @synthesize shouldUsePenultimateVersionForNextImageUpdate=_shouldUsePenultimateVersionForNextImageUpdate;
 @property (readonly) Class superclass;
@@ -116,7 +118,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateReadyForDisplay;
 - (void)_updateTargetSizeIfNeeded;
 - (void)applyLayoutInfo:(id)arg1;
-- (void)assetContentDidChange;
 - (void)assetDidChange;
 - (void)assetViewModelDidChange;
 - (void)becomeReusable;
@@ -125,7 +126,6 @@ __attribute__((visibility("hidden")))
 - (id)generateAssetTransitionInfo;
 - (void)imageRequester:(id)arg1 didChange:(id)arg2;
 - (id)loadView;
-- (void)mediaProviderDidChange;
 - (void)setEdgeAntialiasingEnabled:(BOOL)arg1;
 - (void)setGainMapImage:(struct CGImage *)arg1;
 - (void)setGainMapValue:(float)arg1;

@@ -9,7 +9,7 @@
 #import <ClockKit/NSCopying-Protocol.h>
 #import <ClockKit/NSSecureCoding-Protocol.h>
 
-@class CLKUserActivity, NSArray, NSDictionary, NSString, NSUserActivity;
+@class CLKUserActivity, NSArray, NSDictionary, NSLocale, NSString, NSUserActivity;
 
 @interface CLKComplicationDescriptor : NSObject <NSSecureCoding, NSCopying>
 {
@@ -18,12 +18,14 @@
     NSString *_displayName;
     NSArray *_supportedFamilies;
     NSDictionary *_userInfo;
+    NSLocale *_locale;
     CLKUserActivity *_clkUserActivity;
 }
 
 @property (strong, nonatomic) CLKUserActivity *clkUserActivity; // @synthesize clkUserActivity=_clkUserActivity;
 @property (readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property (nonatomic) BOOL needsAppNotify; // @synthesize needsAppNotify=_needsAppNotify;
 @property (readonly, nonatomic) NSArray *supportedFamilies; // @synthesize supportedFamilies=_supportedFamilies;
 @property (readonly, nonatomic) NSUserActivity *userActivity;

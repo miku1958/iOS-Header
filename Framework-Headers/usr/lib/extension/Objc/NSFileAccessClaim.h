@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_sandboxTokens;
     NSObject<OS_dispatch_queue> *_arbiterQueue;
     id _originatingReactorQueueID;
+    NSMutableDictionary *_fileHandlesForEvictionProtection;
 }
 
 @property (readonly, copy) NSArray *allURLs;
@@ -50,6 +51,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)canReadingItemAtLocation:(id)arg1 options:(unsigned long long)arg2 safelyOverlapNewWriting:(BOOL)arg3 ofItemAtLocation:(id)arg4 options:(unsigned long long)arg5;
 + (BOOL)supportsSecureCoding;
 - (void)_checkIfMovingRequiresProvidingAmongWritingLocations:(id)arg1 options:(unsigned long long *)arg2 thenContinue:(CDUnknownBlockType)arg3;
+- (void)_protectIfNecessaryFileAtURL:(id)arg1 withOptions:(unsigned long long)arg2 forReading:(BOOL)arg3;
 - (void)_setupWithClaimID:(id)arg1 purposeID:(id)arg2 originatingReactorQueueID:(id)arg3;
 - (BOOL)_writeArchiveOfDirectoryAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (void)acceptClaimFromClient:(id)arg1 arbiterQueue:(id)arg2 grantHandler:(CDUnknownBlockType)arg3;
@@ -99,6 +101,7 @@ __attribute__((visibility("hidden")))
 - (id)pendingClaims;
 - (void)prepareClaimForGrantingWithArbiterQueue:(id)arg1;
 - (void)prepareItemForUploadingFromURL:(id)arg1 thenContinue:(CDUnknownBlockType)arg2;
+- (void)protectFilesAgainstEviction;
 - (id)purposeID;
 - (id)purposeIDOfClaimOnItemAtLocation:(id)arg1 forMessagingPresenter:(id)arg2;
 - (void)removeBlockingReactorID:(id)arg1;

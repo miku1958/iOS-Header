@@ -6,13 +6,12 @@
 
 #import <BannerKit/NSObject-Protocol.h>
 
-@class BNBannerSourcePresentableSpecification, NSDictionary, NSNumber, NSString;
+@class BNBannerSourcePresentableSpecification, BNPresentableIdentification, NSDictionary, NSNumber, NSString;
 
 @protocol BNBannerSourceClientToHostInterface <NSObject>
 - (void)__layoutDescriptionWithReply:(void (^)(BNBannerSourceLayoutDescription *, NSError *))arg1;
 - (void)__postPresentableWithSpecification:(BNBannerSourcePresentableSpecification *)arg1 options:(NSNumber *)arg2 userInfo:(NSDictionary *)arg3 reply:(void (^)(NSNumber *, NSError *))arg4;
 - (void)__recommendSuspension:(NSNumber *)arg1 forReason:(NSString *)arg2 revokingCurrent:(NSNumber *)arg3 reply:(void (^)(NSNumber *, NSError *))arg4;
-- (void)__revokeAllPresentablesWithRequesterIdentifier:(NSString *)arg1 reason:(NSString *)arg2 userInfo:(NSDictionary *)arg3 reply:(void (^)(NSNumber *, NSError *))arg4;
-- (void)__revokePresentableWithRequestIdentifier:(NSString *)arg1 requesterIdentifier:(NSString *)arg2 withAnimation:(NSNumber *)arg3 reason:(NSString *)arg4 userInfo:(NSDictionary *)arg5 reply:(void (^)(NSNumber *, NSError *))arg6;
+- (void)__revokePresentablesWithIdentification:(BNPresentableIdentification *)arg1 withAnimation:(NSNumber *)arg2 reason:(NSString *)arg3 userInfo:(NSDictionary *)arg4 reply:(void (^)(NSArray<__BNPresentableIdentification__> *, NSError *))arg5;
 @end
 

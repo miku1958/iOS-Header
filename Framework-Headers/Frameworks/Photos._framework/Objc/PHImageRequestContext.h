@@ -6,7 +6,7 @@
 
 #import <Photos/PHMediaRequestContext.h>
 
-@class NSProgress, PHCompositeMediaResult, PHImageRequest, PHImageRequestOptions, PHMediaResourceRequest;
+@class NSProgress, PHCompositeMediaResult, PHImageRequest, PHImageRequestOptions;
 
 @interface PHImageRequestContext : PHMediaRequestContext
 {
@@ -14,7 +14,6 @@
     PHImageRequest *_initialRequest;
     PHImageRequest *_intermediateRequest;
     PHImageRequest *_finalRequest;
-    PHMediaResourceRequest *_resourceRequest;
     struct atomic_flag _firstNonFastResultWasObserved;
     struct atomic_flag _finalResultSent;
     PHCompositeMediaResult *_delayedFinalInvalidDataResult;

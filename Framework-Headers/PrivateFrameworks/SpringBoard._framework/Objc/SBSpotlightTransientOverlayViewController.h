@@ -72,8 +72,10 @@
 - (BOOL)prefersWindowHitTestingDisabled;
 - (id)presentationDimmingViewColor;
 - (BOOL)preservesAppSwitcherDuringPresentationAndDismissal;
+- (BOOL)preventsClippingToBounds;
 - (CDUnknownBlockType)sceneDeactivationPredicate;
 - (BOOL)shouldAutorotate;
+- (BOOL)shouldPreventDragAndDrop;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)updateInteractivePresentationWithProgress:(double)arg1 translation:(double)arg2;
 - (void)viewDidAppear:(BOOL)arg1;

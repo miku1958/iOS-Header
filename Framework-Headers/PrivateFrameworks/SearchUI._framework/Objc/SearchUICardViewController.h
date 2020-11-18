@@ -47,6 +47,7 @@
 - (double)contentHeightForWidth:(double)arg1;
 - (void)contentSizeDidChange:(struct CGSize)arg1 animated:(BOOL)arg2;
 - (void)displayLoadingViewAfterDelay:(double)arg1 withSpinner:(BOOL)arg2;
+- (BOOL)hasCustomViewControllersForCardSections;
 - (id)init;
 - (id)initWithCard:(id)arg1 feedbackListener:(id)arg2;
 - (id)initWithCard:(id)arg1 style:(unsigned long long)arg2 feedbackListener:(id)arg3;

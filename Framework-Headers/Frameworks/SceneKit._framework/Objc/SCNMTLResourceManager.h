@@ -70,7 +70,7 @@ __attribute__((visibility("hidden")))
 - (id)_bufferForMTLBuffer:(void *)arg1;
 - (void)_configureComputePipeline:(id)arg1 withDescriptor:(id)arg2;
 - (BOOL)_copyImage:(struct __C3DImage *)arg1 toTexture:(id)arg2 desc:(id)arg3 textureOptions:(int)arg4 needsMipMapGeneration:(BOOL)arg5;
-- (void)_createPipelineStateWithDescriptor:(id)arg1 desc:(CDStruct_0aa79a9f)arg2 pipeline:(id)arg3;
+- (void)_createPipelineStateWithDescriptor:(id)arg1 desc:(CDStruct_2f83adfc)arg2 pipeline:(id)arg3;
 - (void)_enqueueCopyFromTexture:(id)arg1 toTexture:(id)arg2 blitEncoder:(struct SCNMTLBlitCommandEncoder *)arg3 generateMipMaps:(BOOL)arg4;
 - (void)_geometryWillDie:(id)arg1;
 - (void)_imageProxyWillDie:(id)arg1;
@@ -85,7 +85,7 @@ __attribute__((visibility("hidden")))
 - (void)_programHashCodeWillDie:(id)arg1;
 - (void)_programWillDie:(id)arg1;
 - (void)_rasterizerStateDidDie:(const void *)arg1;
-- (void)_removeMatchingProgram:(struct __C3DFXProgram *)arg1 pass:(struct __C3DFXPass *)arg2;
+- (void)_removeMatchingProgram:(struct __C3DFXMetalProgram *)arg1 pass:(struct __C3DFXPass *)arg2;
 - (void)_skinWillDie:(id)arg1;
 - (id)_textureDescriptorFromImage:(struct __C3DImage *)arg1 needsMipMap:(BOOL)arg2 textureOptions:(int)arg3;
 - (id)areaLightPrecomputedDataTexture;
@@ -97,7 +97,7 @@ __attribute__((visibility("hidden")))
 - (id)defaultCubeTexture;
 - (id)defaultLightingEnvironmentIrradianceTexture;
 - (id)defaultLightingEnvironmentRadianceTexture;
-- (struct __C3DFXProgram *)defaultProgramUsingTessellation:(BOOL)arg1;
+- (struct __C3DFXMetalProgram *)defaultProgramUsingTessellation:(BOOL)arg1;
 - (id)defaultTexture;
 - (id)defaultTexture3D;
 - (id)depthAndStencilStateWithReadWriteDepthDisabled;
@@ -120,7 +120,7 @@ __attribute__((visibility("hidden")))
 - (id)newConstantBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (id)newIndexBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (id)newRadianceTextureForEnvironmentTexture:(id)arg1 engineContext:(struct __C3DEngineContext *)arg2 cpuAccessible:(BOOL)arg3 commandBuffer:(id)arg4;
-- (id)newRenderPipelineStateWithDesc:(CDStruct_0aa79a9f)arg1;
+- (id)newRenderPipelineStateWithDesc:(CDStruct_2f83adfc)arg1;
 - (id)newTextureUsingMTKTextureLoaderWithURL:(id)arg1 options:(id)arg2;
 - (id)newTextureWithDescriptor:(id)arg1;
 - (id)radianceTextureForEnvironmentTexture:(id)arg1 engineContext:(struct __C3DEngineContext *)arg2 commandBuffer:(id)arg3;
@@ -133,7 +133,7 @@ __attribute__((visibility("hidden")))
 - (id)renderResourceForMeshElement:(struct __C3DMeshElement *)arg1;
 - (id)renderResourceForMeshSource:(struct __C3DMeshSource *)arg1;
 - (id)renderResourceForMorph:(struct __C3DMorph *)arg1 baseGeometry:(struct __C3DGeometry *)arg2;
-- (id)renderResourceForProgramDesc:(CDStruct_1c56e179)arg1 renderPassDescriptor:(id)arg2;
+- (id)renderResourceForProgramDesc:(CDStruct_315dd483)arg1 renderPassDescriptor:(id)arg2;
 - (id)renderResourceForRasterizerState:(struct __C3DRasterizerStates *)arg1 reverseZ:(BOOL)arg2;
 - (id)renderResourceForSampler:(struct __C3DTextureSampler *)arg1;
 - (id)renderResourceForSkinner:(struct __C3DSkinner *)arg1 baseMesh:(struct __C3DMesh *)arg2 baseGeometry:(struct __C3DGeometry *)arg3;

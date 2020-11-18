@@ -14,6 +14,7 @@
     MISSING_TYPE *publisherLogoImageSize;
     MISSING_TYPE *scale;
     MISSING_TYPE *theme;
+    MISSING_TYPE *options;
 }
 
 @property (nonatomic, copy) NSDictionary *assetHandles;

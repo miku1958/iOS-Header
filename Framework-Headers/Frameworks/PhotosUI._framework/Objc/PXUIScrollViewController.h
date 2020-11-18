@@ -29,6 +29,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)addFloatingSublayer:(id)arg1 forAxis:(long long)arg2;
 - (void)addGestureRecognizer:(id)arg1;
 - (void)addSubview:(id)arg1;
 - (void)addSubviewToScrollView:(id)arg1;

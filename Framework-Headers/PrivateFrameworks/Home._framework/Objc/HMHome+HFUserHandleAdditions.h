@@ -91,7 +91,9 @@
 - (id)hf_allTargetControlAccessories;
 - (id)hf_allUsersIncludingCurrentUser;
 - (id)hf_allVisibleServices;
+- (id)hf_appleTVUsingAudioDestination:(id)arg1;
 - (id)hf_appleTVs;
+- (id)hf_appleTVsSupportingHomeTheater;
 - (BOOL)hf_atleastOneHomePodSupportsAndHasAnnounceEnabled;
 - (BOOL)hf_atleastOneHomePodSupportsAnnounce;
 - (BOOL)hf_atleastTwoDistinctHomePodsSupportsAnnounce;
@@ -150,6 +152,7 @@
 - (id)hf_personWithIdentifier:(id)arg1;
 - (id)hf_personalRequestAccessories;
 - (id)hf_primaryResidentDevice;
+- (id)hf_relatedHomeTheaterMediaProfileContainerFor:(id)arg1;
 - (unsigned long long)hf_remoteAccessState;
 - (id)hf_reorderableActionSetsList;
 - (id)hf_reorderableCamerasList;

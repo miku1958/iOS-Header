@@ -14,6 +14,7 @@
     NSString *_clientIdentifier;
     NSString *_sourceIdentifier;
     NSUUID *_externallyVisibleConnectionUUID;
+    NSUUID *_externallyVisibleParentUUID;
     NSArray *_externallyVisibleActivityUUIDs;
     NWL2Report *_layer2Report;
     NWDeviceReport *_deviceReport;
@@ -46,6 +47,7 @@
 @property (strong, nonatomic) NSString *effectiveBundleID;
 @property (strong, nonatomic) NSArray *externallyVisibleActivityUUIDs; // @synthesize externallyVisibleActivityUUIDs=_externallyVisibleActivityUUIDs;
 @property (strong, nonatomic) NSUUID *externallyVisibleConnectionUUID; // @synthesize externallyVisibleConnectionUUID=_externallyVisibleConnectionUUID;
+@property (strong, nonatomic) NSUUID *externallyVisibleParentUUID; // @synthesize externallyVisibleParentUUID=_externallyVisibleParentUUID;
 @property (readonly, nonatomic) BOOL fallbackEligible;
 @property (readonly, nonatomic) unsigned int flowDurationMsecs;
 @property (readonly, nonatomic) int interfaceType;
@@ -59,6 +61,7 @@
 @property (readonly, nonatomic) unsigned long long packetsOOO;
 @property (readonly, nonatomic) unsigned long long packetsOut;
 @property (readonly, nonatomic) unsigned long long packetsRetransmitted;
+@property (readonly, nonatomic) NSUUID *parentUUID;
 @property (nonatomic) struct netcore_stats_tcp_report report; // @synthesize report=_report;
 @property (strong, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
 @property (readonly, nonatomic) unsigned int tcpAppDataStallTimerMsecs;

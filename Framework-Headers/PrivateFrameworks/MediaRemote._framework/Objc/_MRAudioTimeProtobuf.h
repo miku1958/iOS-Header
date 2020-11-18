@@ -8,6 +8,7 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface _MRAudioTimeProtobuf : PBCodable <NSCopying>
 {
     double _sampleRate;
@@ -18,18 +19,11 @@
     } _has;
 }
 
-@property (nonatomic) BOOL hasSampleRate;
-@property (nonatomic) BOOL hasTimestamp;
-@property (nonatomic) double sampleRate; // @synthesize sampleRate=_sampleRate;
-@property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
-
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

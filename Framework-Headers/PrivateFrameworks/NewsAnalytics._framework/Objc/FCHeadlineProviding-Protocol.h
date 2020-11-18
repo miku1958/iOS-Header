@@ -53,6 +53,8 @@
 @property (nonatomic, readonly) NSString *language;
 @property (nonatomic, readonly) NSDate *lastFetchedDate;
 @property (nonatomic, readonly) NSDate *lastModifiedDate;
+@property (nonatomic, readonly) double layeredThumbnailAspectRatio;
+@property (nonatomic, readonly) NSString *layeredThumbnailJSON;
 @property (nonatomic, readonly) NSArray *linkedArticleIDs;
 @property (nonatomic, readonly) NSArray *linkedIssueIDs;
 @property (nonatomic, readonly) NSString *localDraftPath;
@@ -62,6 +64,7 @@
 @property (nonatomic, readonly) FCArticleAudioTrack *narrativeTrack;
 @property (nonatomic, readonly) FCArticleAudioTrack *narrativeTrackSample;
 @property (nonatomic, readonly) NSString *narrativeTrackTextRanges;
+@property (nonatomic, readonly) NSString *nativeAdCampaignData;
 @property (nonatomic, readonly) BOOL needsRapidUpdates;
 @property (nonatomic, readonly) BOOL paid;
 @property (nonatomic, readonly) BOOL pressRelease;
@@ -84,6 +87,7 @@
 @property (nonatomic, readonly) id<FCHeadlineStocksFields> stocksFields;
 @property (nonatomic, readonly) FCTopStoriesStyleConfiguration *storyStyle;
 @property (nonatomic, readonly) unsigned long long storyType;
+@property (nonatomic, readonly) NSString *surfacedByArticleListID;
 @property (nonatomic, readonly) NSString *surfacedByBinID;
 @property (nonatomic, readonly) NSString *surfacedByChannelID;
 @property (nonatomic, readonly) NSString *surfacedBySectionID;

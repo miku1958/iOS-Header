@@ -6,11 +6,14 @@
 
 #import <SafariServices/_SFPinnableBanner.h>
 
-@class NSString, UIImageView, UILabel, UIView, _SFDimmingButton;
+@class NSLayoutConstraint, NSString, UIImageView, UILabel, UIView, _SFDimmingButton;
 
 @interface _SFLinkBanner : _SFPinnableBanner
 {
     UIView *_separator;
+    NSLayoutConstraint *_titleTopConstraint;
+    NSLayoutConstraint *_messageTopConstraint;
+    NSLayoutConstraint *_messageBottomConstraint;
     UIImageView *_icon;
     UILabel *_titleLabel;
     UILabel *_messageLabel;
@@ -26,6 +29,7 @@
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
+- (id)_messageLabelFont;
 - (void)_open;
 - (id)_titleLabelFont;
 - (void)contentSizeCategoryDidChange;

@@ -8,11 +8,13 @@
 
 @interface MTShadowView : UIImageView
 {
+    BOOL _continuousCorners;
     double _maskCornerRadius;
     struct UIEdgeInsets _shadowOutsets;
     CDStruct_b48b9fb5 _shadowAttributes;
 }
 
+@property (readonly, nonatomic) BOOL continuousCorners; // @synthesize continuousCorners=_continuousCorners;
 @property (readonly, nonatomic) double maskCornerRadius; // @synthesize maskCornerRadius=_maskCornerRadius;
 @property (readonly, nonatomic) CDStruct_b48b9fb5 shadowAttributes; // @synthesize shadowAttributes=_shadowAttributes;
 @property (readonly, nonatomic) struct UIEdgeInsets shadowOutsets; // @synthesize shadowOutsets=_shadowOutsets;
@@ -24,6 +26,7 @@
 - (void)didMoveToSuperview;
 - (struct CGRect)frameWithContentWithFrame:(struct CGRect)arg1;
 - (id)initWithShadowAttributes:(CDStruct_b48b9fb5)arg1 maskCornerRadius:(double)arg2;
+- (id)initWithShadowAttributes:(CDStruct_b48b9fb5)arg1 maskCornerRadius:(double)arg2 continuousCorners:(BOOL)arg3;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

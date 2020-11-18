@@ -68,7 +68,6 @@
 @property (readonly, nonatomic) BOOL isRecentlyAddedAlbum;
 @property (nonatomic) BOOL isRegisteredForChanges; // @synthesize isRegisteredForChanges;
 @property (readonly, nonatomic) BOOL isRegularRootFolder;
-@property (readonly, nonatomic) BOOL isRootFolder;
 @property (readonly, nonatomic) BOOL isSmartAlbum;
 @property (readonly, nonatomic) BOOL isStandInAlbum;
 @property (readonly, nonatomic) BOOL isUserCreated;
@@ -150,13 +149,11 @@
 + (id)insertNewAlbumWithKind:(int)arg1 title:(id)arg2 intoLibrary:(id)arg3;
 + (id)insertNewAlbumWithTitle:(id)arg1 intoLibrary:(id)arg2;
 + (id)insertNewCloudSharedAlbumWithTitle:(id)arg1 lastInterestingDate:(id)arg2 intoLibrary:(id)arg3;
-+ (id)insertNewFolderWithTitle:(id)arg1 intoLibrary:(id)arg2;
 + (id)insertNewLegacyFaceAlbumIntoLibrary:(id)arg1;
 + (id)insertNewProjectAlbumWithTitle:(id)arg1 documentType:(id)arg2 intoLibrary:(id)arg3;
 + (id)insertNewSmartAlbumIntoLibrary:(id)arg1;
 + (id)insertNewSyncedEventIntoLibrary:(id)arg1;
 + (id)insertNewSyncedEventWithTitle:(id)arg1 intoLibrary:(id)arg2;
-+ (id)insertNewSyncedFolderWithTitle:(id)arg1 intoLibrary:(id)arg2;
 + (BOOL)is1WaySyncKind:(int)arg1;
 + (BOOL)isFolder:(int)arg1;
 + (BOOL)isSmartAlbumForKind:(int)arg1;

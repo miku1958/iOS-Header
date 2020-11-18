@@ -459,6 +459,8 @@ struct GyroBiasConstraints;
 
 struct GyroBiasCorrection;
 
+struct GyroBiasEstimateError;
+
 struct GyroBiasFit;
 
 struct GyroCalibrationDataFactory;
@@ -594,6 +596,7 @@ struct Item {
     struct unique_ptr<CMMsl::GyroBiasAndVariance, std::__1::default_delete<CMMsl::GyroBiasAndVariance>> _gyroBiasAndVariance;
     struct unique_ptr<CMMsl::GyroBiasConstraints, std::__1::default_delete<CMMsl::GyroBiasConstraints>> _gyroBiasConstraints;
     struct unique_ptr<CMMsl::GyroBiasCorrection, std::__1::default_delete<CMMsl::GyroBiasCorrection>> _gyroBiasCorrection;
+    struct unique_ptr<CMMsl::GyroBiasEstimateError, std::__1::default_delete<CMMsl::GyroBiasEstimateError>> _gyroBiasEstimateError;
     struct unique_ptr<CMMsl::GyroBiasFit, std::__1::default_delete<CMMsl::GyroBiasFit>> _gyroBiasFit;
     struct unique_ptr<CMMsl::GyroCalibrationDataFactory, std::__1::default_delete<CMMsl::GyroCalibrationDataFactory>> _gyroCalibrationDataFactory;
     struct unique_ptr<CMMsl::GyroCalibrationDataNonlinearNonFactory, std::__1::default_delete<CMMsl::GyroCalibrationDataNonlinearNonFactory>> _gyroCalibrationDataNonlinearNonFactory;
@@ -644,6 +647,7 @@ struct Item {
     struct unique_ptr<CMMsl::PearlAttitude, std::__1::default_delete<CMMsl::PearlAttitude>> _pearlAttitude;
     struct unique_ptr<CMMsl::PredictedRelativeDeviceMotion, std::__1::default_delete<CMMsl::PredictedRelativeDeviceMotion>> _predictedRelativeDeviceMotion;
     struct unique_ptr<CMMsl::Pressure, std::__1::default_delete<CMMsl::Pressure>> _pressure;
+    struct unique_ptr<CMMsl::PressureCalibration, std::__1::default_delete<CMMsl::PressureCalibration>> _pressureCalibration;
     struct unique_ptr<CMMsl::PressureCompensated, std::__1::default_delete<CMMsl::PressureCompensated>> _pressureCompensated;
     struct unique_ptr<CMMsl::PressureFiltered, std::__1::default_delete<CMMsl::PressureFiltered>> _pressureFiltered;
     struct unique_ptr<CMMsl::PressureFilteredNoTemperature, std::__1::default_delete<CMMsl::PressureFilteredNoTemperature>> _pressureFilteredNoTemperature;
@@ -789,6 +793,8 @@ struct PearlAttitude;
 struct PredictedRelativeDeviceMotion;
 
 struct Pressure;
+
+struct PressureCalibration;
 
 struct PressureCompensated;
 
@@ -1628,6 +1634,12 @@ struct unique_ptr<CMMsl::GyroBiasCorrection, std::__1::default_delete<CMMsl::Gyr
     } __ptr_;
 };
 
+struct unique_ptr<CMMsl::GyroBiasEstimateError, std::__1::default_delete<CMMsl::GyroBiasEstimateError>> {
+    struct __compressed_pair<CMMsl::GyroBiasEstimateError *, std::__1::default_delete<CMMsl::GyroBiasEstimateError>> {
+        struct GyroBiasEstimateError *__value_;
+    } __ptr_;
+};
+
 struct unique_ptr<CMMsl::GyroBiasFit, std::__1::default_delete<CMMsl::GyroBiasFit>> {
     struct __compressed_pair<CMMsl::GyroBiasFit *, std::__1::default_delete<CMMsl::GyroBiasFit>> {
         struct GyroBiasFit *__value_;
@@ -1925,6 +1937,12 @@ struct unique_ptr<CMMsl::PredictedRelativeDeviceMotion, std::__1::default_delete
 struct unique_ptr<CMMsl::Pressure, std::__1::default_delete<CMMsl::Pressure>> {
     struct __compressed_pair<CMMsl::Pressure *, std::__1::default_delete<CMMsl::Pressure>> {
         struct Pressure *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::PressureCalibration, std::__1::default_delete<CMMsl::PressureCalibration>> {
+    struct __compressed_pair<CMMsl::PressureCalibration *, std::__1::default_delete<CMMsl::PressureCalibration>> {
+        struct PressureCalibration *__value_;
     } __ptr_;
 };
 

@@ -9,7 +9,7 @@
 #import <ExposureNotification/NSCopying-Protocol.h>
 #import <ExposureNotification/NSSecureCoding-Protocol.h>
 
-@class ENRegion, NSString;
+@class ENRegion, NSArray, NSString;
 
 @interface ENRegionServerConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
@@ -18,6 +18,7 @@
     BOOL _dynamicAlgorithmEnabled;
     BOOL _dynamicThrottleDownRSSI;
     BOOL _enableV1;
+    BOOL _telemetryAuthorization;
     unsigned int _dailyDetectExposureLimit;
     unsigned int _detectExposureNKDLimit;
     unsigned int _numberOfAdvSamplesForRPIThreshold;
@@ -25,6 +26,7 @@
     unsigned int _dynamicThrottleUpAdvDensity;
     unsigned long long _enVersion;
     ENRegion *_region;
+    NSArray *_subdivisions;
     NSString *_appBundleID;
     NSString *_publicKey;
     NSString *_publicKeyVersion;
@@ -40,8 +42,11 @@
     double _regionDisabledTransitionGracePeriod;
     NSString *_phaTelemetryPublicCertificateChain;
     NSString *_phaTelemetryAppleCertificateChain;
+    NSString *_phaTelemetryEndpoint;
+    NSString *_phaTelemetryOptInMessage;
     NSString *_partnerTelemetryPublicCertificateChain;
     NSString *_partnerTelemetryAppleCertificateChain;
+    NSString *_partnerTelemetryEndpoint;
     NSString *_appleTelemetryEndpoint;
     NSString *_appleTelemetryEndpointCredentials;
 }
@@ -67,8 +72,11 @@
 @property (readonly, nonatomic) unsigned int numberOfAdvSamplesForRPIThreshold; // @synthesize numberOfAdvSamplesForRPIThreshold=_numberOfAdvSamplesForRPIThreshold;
 @property (readonly, nonatomic) double osTriggeredAppRunInterval; // @synthesize osTriggeredAppRunInterval=_osTriggeredAppRunInterval;
 @property (copy, nonatomic) NSString *partnerTelemetryAppleCertificateChain; // @synthesize partnerTelemetryAppleCertificateChain=_partnerTelemetryAppleCertificateChain;
+@property (copy, nonatomic) NSString *partnerTelemetryEndpoint; // @synthesize partnerTelemetryEndpoint=_partnerTelemetryEndpoint;
 @property (copy, nonatomic) NSString *partnerTelemetryPublicCertificateChain; // @synthesize partnerTelemetryPublicCertificateChain=_partnerTelemetryPublicCertificateChain;
 @property (copy, nonatomic) NSString *phaTelemetryAppleCertificateChain; // @synthesize phaTelemetryAppleCertificateChain=_phaTelemetryAppleCertificateChain;
+@property (copy, nonatomic) NSString *phaTelemetryEndpoint; // @synthesize phaTelemetryEndpoint=_phaTelemetryEndpoint;
+@property (copy, nonatomic) NSString *phaTelemetryOptInMessage; // @synthesize phaTelemetryOptInMessage=_phaTelemetryOptInMessage;
 @property (copy, nonatomic) NSString *phaTelemetryPublicCertificateChain; // @synthesize phaTelemetryPublicCertificateChain=_phaTelemetryPublicCertificateChain;
 @property (readonly, copy, nonatomic) NSString *publicKey; // @synthesize publicKey=_publicKey;
 @property (readonly, copy, nonatomic) NSString *publicKeyVersion; // @synthesize publicKeyVersion=_publicKeyVersion;
@@ -77,6 +85,8 @@
 @property (readonly, nonatomic) double regionTransitionGracePeriod; // @synthesize regionTransitionGracePeriod=_regionTransitionGracePeriod;
 @property (readonly, nonatomic) double rpiAdvertisementTolerance; // @synthesize rpiAdvertisementTolerance=_rpiAdvertisementTolerance;
 @property (readonly, nonatomic) double rpiDuplicateAdvertisementTolerance; // @synthesize rpiDuplicateAdvertisementTolerance=_rpiDuplicateAdvertisementTolerance;
+@property (readonly, copy, nonatomic) NSArray *subdivisions; // @synthesize subdivisions=_subdivisions;
+@property (readonly, nonatomic) BOOL telemetryAuthorization; // @synthesize telemetryAuthorization=_telemetryAuthorization;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

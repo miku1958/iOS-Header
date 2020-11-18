@@ -9,7 +9,7 @@
 #import <SpringBoard/PGPictureInPictureViewControllerContentContainer-Protocol.h>
 #import <SpringBoard/SBPIPInteractionControllerDelegate-Protocol.h>
 
-@class BSTimer, FBDisplayLayoutElement, NSHashTable, NSString, PGPictureInPictureViewController, SBFFluidBehaviorSettings, SBPIPInteractionController, UIView;
+@class BSTimer, FBDisplayLayoutElement, NSHashTable, NSMutableArray, NSString, PGPictureInPictureViewController, SBFFluidBehaviorSettings, SBPIPInteractionController, UIView;
 
 @interface SBPIPContainerViewController : UIViewController <PGPictureInPictureViewControllerContentContainer, SBPIPInteractionControllerDelegate>
 {
@@ -22,6 +22,8 @@
     SBFFluidBehaviorSettings *_interactiveAnimationSettings;
     SBFFluidBehaviorSettings *_stashTabFluidBehavior;
     BSTimer *_stashedStateReduceResourcesUsageTimer;
+    unsigned long long _inFlightAnimationCounter;
+    NSMutableArray *_waitInteractionAnimationsCompletionBlocks;
     FBDisplayLayoutElement *_displayLayoutElement;
     double _displayLayoutElementLevel;
     BOOL _animateSafeAreaInsetsChanges;
@@ -45,10 +47,11 @@
 - (struct CGRect)_contentViewFrameFromInterfaceOrientation:(long long)arg1 frameInFixedCoordinateSpace:(struct CGRect)arg2;
 - (struct CGRect)_contentViewFrameInDisplayReferenceSpace;
 - (long long)_currentInterfaceOrientation;
-- (BOOL)_isContentFromFillGravityWithInitialLayerFrame:(struct CGRect)arg1;
+- (void)_noteStashState:(BOOL)arg1;
+- (void)_performStopAnimationWithFinalInterfaceOrientation:(long long)arg1 finalLayerFrame:(struct CGRect)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_relinquishInterfaceOrientationLock;
 - (void)_requireInterfaceOrientation:(long long)arg1;
-- (void)_setStashState:(long long)arg1;
+- (void)_setStashed:(BOOL)arg1;
 - (void)_updateContentPadding;
 - (void)_updateContentViewFrame:(struct CGRect)arg1 reason:(id)arg2;
 - (void)_updateDisplayLayoutElementReferenceFrame;
@@ -78,8 +81,9 @@
 - (void)removeObserver:(id)arg1;
 - (void)setContentViewPadding:(struct UIEdgeInsets)arg1;
 - (void)setInteractionControllerEnabled:(BOOL)arg1;
+- (void)setInteractionsEnabled:(BOOL)arg1;
 - (void)setNeedsLayoutForInteractionController:(id)arg1 traits:(unsigned long long)arg2 withReason:(unsigned long long)arg3 behavior:(int)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)setStashState:(long long)arg1;
+- (void)setStashed:(BOOL)arg1;
 - (void)startResourcesUsageReductionAfterTimeout:(double)arg1;
 - (void)stopResourcesUsageReduction;
 - (void)viewDidAppear:(BOOL)arg1;

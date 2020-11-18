@@ -9,6 +9,7 @@
 @interface UIViewController (NUScrollView)
 - (id)navigationControl;
 - (void)nu_adjustInsetsForScrollView:(id)arg1;
+- (void)nu_adjustInsetsForScrollView:(id)arg1 transparentNavigationBar:(BOOL)arg2 withEdgeInsets:(struct UIEdgeInsets)arg3;
 - (void)nu_adjustInsetsForScrollView:(id)arg1 withEdgeInsets:(struct UIEdgeInsets)arg2;
 @end
 

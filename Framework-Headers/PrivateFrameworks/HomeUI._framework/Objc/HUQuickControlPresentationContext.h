@@ -15,6 +15,7 @@
 {
     BOOL _didAuthenticate;
     BOOL _prefersSystemTransitions;
+    BOOL _shouldIncludeRoomNameInHeaderTitle;
     unsigned long long _colorStyle;
     HFItem<NSCopying> *_item;
     NSSet *_controlItems;
@@ -31,6 +32,7 @@
 @property (strong, nonatomic) HFItem<NSCopying> *item; // @synthesize item=_item;
 @property (strong, nonatomic) HUQuickControlPresentationItemManager *itemManager; // @synthesize itemManager=_itemManager;
 @property (nonatomic) BOOL prefersSystemTransitions; // @synthesize prefersSystemTransitions=_prefersSystemTransitions;
+@property (nonatomic) BOOL shouldIncludeRoomNameInHeaderTitle; // @synthesize shouldIncludeRoomNameInHeaderTitle=_shouldIncludeRoomNameInHeaderTitle;
 @property (nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;
 @property (weak, nonatomic) UIViewController *sourceViewController; // @synthesize sourceViewController=_sourceViewController;
 

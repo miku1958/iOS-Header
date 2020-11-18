@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasBaseband;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isDeviceLargeScreen;
+@property (readonly, nonatomic) BOOL isHEVC444DecodeSupported;
 @property (readonly, nonatomic) BOOL isPixelFormatAvailable;
 @property (readonly, nonatomic) BOOL isSecondDisplaySupportEnabled;
 @property (readonly, nonatomic) unsigned int maxActiveVideoDecoders;

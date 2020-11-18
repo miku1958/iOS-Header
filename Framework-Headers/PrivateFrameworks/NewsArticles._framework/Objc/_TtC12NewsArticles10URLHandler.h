@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC12NewsArticles10URLHandler : NSObject
 {
     MISSING_TYPE *closures;
+    MISSING_TYPE *newWindowClosures;
 }
 
 - (void).cxx_destruct;

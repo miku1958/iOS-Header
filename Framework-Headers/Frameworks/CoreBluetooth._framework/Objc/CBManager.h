@@ -17,7 +17,6 @@
     CBPairingAgent *_pairingAgent;
     BOOL _tccComplete;
     long long _state;
-    long long _authorization;
     NSData *_advertisingAddress;
     long long _advertisingAddressType;
     NSData *_nonConnectableAdvertisingAddress;
@@ -28,7 +27,7 @@
 
 @property (copy, nonatomic) NSData *advertisingAddress; // @synthesize advertisingAddress=_advertisingAddress;
 @property (readonly, nonatomic) long long advertisingAddressType; // @synthesize advertisingAddressType=_advertisingAddressType;
-@property (nonatomic) long long authorization; // @synthesize authorization=_authorization;
+@property (readonly, nonatomic) long long authorization;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

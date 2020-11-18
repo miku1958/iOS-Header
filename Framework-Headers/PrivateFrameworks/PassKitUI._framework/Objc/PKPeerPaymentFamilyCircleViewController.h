@@ -9,6 +9,7 @@
 #import <PassKitUI/PKPeerPaymentAssociatedAccountSetupDelegate-Protocol.h>
 
 @class NSArray, NSString, PKFamilyMember, PKPaymentService, PKPeerPaymentAccount, PKPeerPaymentService;
+@protocol PKPassLibraryDataProvider;
 
 @interface PKPeerPaymentFamilyCircleViewController : UITableViewController <PKPeerPaymentAssociatedAccountSetupDelegate>
 {
@@ -18,6 +19,7 @@
     BOOL _loadingFamily;
     NSArray *_sortedRows;
     PKFamilyMember *_viewer;
+    id<PKPassLibraryDataProvider> _passLibraryDataProvider;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -39,9 +41,7 @@
 - (void)_reloadSortedRows;
 - (void)addPeerPaymentAssociatedAccountDidSkipSetupForFamilyMember:(id)arg1;
 - (void)addPeerPaymentAssociatedAccountSetupCompletedWithSucess:(BOOL)arg1 updatedAccount:(id)arg2 forFamilyMember:(id)arg3;
-- (id)init;
-- (id)initWithPKFamilyMembers:(id)arg1;
-- (id)initWithPKFamilyMembers:(id)arg1 altDSIDToImageData:(id)arg2;
+- (id)initWithPKFamilyMembers:(id)arg1 altDSIDToImageData:(id)arg2 passLibraryDataProvider:(id)arg3;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

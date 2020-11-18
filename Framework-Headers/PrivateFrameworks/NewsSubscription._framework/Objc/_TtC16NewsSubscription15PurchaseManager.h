@@ -17,6 +17,7 @@
     MISSING_TYPE *purchaseContextEntriesManager;
     MISSING_TYPE *metricsBuilder;
     MISSING_TYPE *bundleSubscriptionManager;
+    MISSING_TYPE *sceneProvider;
 }
 
 - (void).cxx_destruct;

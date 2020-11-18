@@ -35,7 +35,7 @@
 
 - (void)addFilter:(id)arg1;
 - (void)clearFilters;
-- (void)configureForChatItem:(id)arg1;
+- (void)configureForChatItem:(id)arg1 context:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)layoutSubviewsForAlignmentContents;

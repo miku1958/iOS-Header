@@ -13,6 +13,7 @@
     MISSING_TYPE *resolver;
     MISSING_TYPE *tracker;
     MISSING_TYPE *contextBuilder;
+    MISSING_TYPE *mastheadModelProvider;
 }
 
 @end

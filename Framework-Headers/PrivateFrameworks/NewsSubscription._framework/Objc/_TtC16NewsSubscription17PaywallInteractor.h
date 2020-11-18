@@ -16,6 +16,7 @@
     MISSING_TYPE *purchaseSessionID;
     MISSING_TYPE *webAccessAuthenticatorFactory;
     MISSING_TYPE *webAccessAuthenticator;
+    MISSING_TYPE *webAccessConversionEventReporter;
 }
 
 - (void).cxx_destruct;

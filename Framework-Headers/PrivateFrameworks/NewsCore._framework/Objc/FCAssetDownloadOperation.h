@@ -50,9 +50,9 @@
 + (id)sharedURLRequestScheduler;
 + (id)sharedURLSession;
 - (void).cxx_destruct;
+- (unsigned long long)maxRetries;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
-- (void)resetForRetry;
 - (id)throttleGroup;
 - (BOOL)validateOperation;
 

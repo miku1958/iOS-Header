@@ -29,6 +29,7 @@
 - (void)_sendGraphLoadIfNeeded;
 - (void)_setupXPCConnection;
 - (id)_xpcConnection;
+- (void)cacheCPAnalyticsPropertiesWithReply:(CDUnknownBlockType)arg1;
 - (void)cancelOperationsWithIdentifiers:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)differencesBetweenClustersInClusterCacheAndLibrary:(id *)arg1;

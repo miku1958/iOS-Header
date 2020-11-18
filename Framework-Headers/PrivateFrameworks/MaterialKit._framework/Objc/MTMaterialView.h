@@ -15,6 +15,7 @@
 {
     BOOL _useBuiltInAlphaTransformerAndBackdropScaleAdjustment;
     BOOL _recipeDynamic;
+    BOOL _shadowed;
     NSMutableDictionary *_cmVisualStyleCategoriesToProviders;
     NSDictionary *_recipeNamesByTraitCollection;
     NSBundle *_recipeBundle;
@@ -43,10 +44,12 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (nonatomic) BOOL ignoresScreenClip;
+@property (nonatomic, getter=isInPlaceFilteringEnabled) BOOL inPlaceFilteringEnabled;
 @property (readonly, nonatomic, getter=_materialLayer) MTMaterialLayer *materialLayer;
 @property (nonatomic) long long recipe; // @synthesize recipe=_recipe;
 @property (nonatomic, getter=isRecipeDynamic) BOOL recipeDynamic;
 @property (copy, nonatomic) NSString *recipeName;
+@property (nonatomic, getter=isShadowed) BOOL shadowed;
 @property (nonatomic) BOOL shouldCrossfade;
 @property (nonatomic) BOOL shouldCrossfadeIfNecessary;
 @property (readonly) Class superclass;
@@ -62,6 +65,7 @@
 + (id)materialViewWithRecipe:(long long)arg1 configuration:(long long)arg2 initialWeighting:(double)arg3;
 + (id)materialViewWithRecipe:(long long)arg1 configuration:(long long)arg2 initialWeighting:(double)arg3 compatibleWithTraitCollection:(id)arg4;
 + (id)materialViewWithRecipe:(long long)arg1 configuration:(long long)arg2 initialWeighting:(double)arg3 scaleAdjustment:(CDUnknownBlockType)arg4;
++ (id)materialViewWithRecipeNamed:(id)arg1;
 + (id)materialViewWithRecipeNamed:(id)arg1 inBundle:(id)arg2 configuration:(long long)arg3 initialWeighting:(double)arg4 scaleAdjustment:(CDUnknownBlockType)arg5;
 + (id)materialViewWithRecipeNamesByTraitCollection:(id)arg1 compatibleWithTraitCollection:(id)arg2 bundle:(id)arg3 configuration:(long long)arg4 initialWeighting:(double)arg5 scaleAdjustment:(CDUnknownBlockType)arg6;
 + (id)materialViewWithRecipeNamesByTraitCollection:(id)arg1 inBundle:(id)arg2 configuration:(long long)arg3 initialWeighting:(double)arg4 scaleAdjustment:(CDUnknownBlockType)arg5;

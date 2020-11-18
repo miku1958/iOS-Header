@@ -14,7 +14,7 @@
 #import <NewsCore/FCPrivateDataContext-Protocol.h>
 #import <NewsCore/FCTestingContext-Protocol.h>
 
-@class FCAccessChecker, FCArticleController, FCAssetManager, FCAudioPlaylist, FCClientEndpointConnection, FCCommandQueue, FCFeedManager, FCFlintResourceManager, FCIssueReadingHistory, FCLocalAreasManager, FCNetworkBehaviorMonitor, FCNewsletterEndpointConnection, FCNotificationController, FCNotificationsEndpointConnection, FCPersonalizationData, FCPersonalizationWhitelist, FCPrivateChannelMembershipController, FCPurchaseController, FCReadingHistory, FCReadingList, FCSubscriptionController, FCSubscriptionList, FCTagController, FCTagSettings, FCTranslationManager, FCUserInfo, FCUserVectorManager, NSString, NSURL;
+@class FCAccessChecker, FCArticleController, FCAssetManager, FCAudioPlaylist, FCClientEndpointConnection, FCCommandQueue, FCFeedManager, FCFlintResourceManager, FCIssueReadingHistory, FCLocalAreasManager, FCNetworkBehaviorMonitor, FCNewsletterEndpointConnection, FCNotificationController, FCNotificationsEndpointConnection, FCPersonalizationData, FCPrivateChannelMembershipController, FCPurchaseController, FCReadingHistory, FCReadingList, FCSubscriptionController, FCSubscriptionList, FCTagController, FCTagSettings, FCTranslationManager, FCUserInfo, FCUserVectorManager, NSString, NSURL;
 @protocol FCAVAssetPrewarming, FCAppActivityMonitor, FCBackgroundTaskable, FCBundleSubscriptionManagerType, FCContentContext, FCContentContextInternal, FCCoreConfigurationManager, FCCurrentIssuesChecker, FCFeedPersonalizing, FCForYouBridgedConfigurationParser, FCForYouMagazineFeedManaging, FCForYouPluginGroupManaging, FCLocalRegionManager, FCNewsAppConfigurationManager, FCNewsletterManager, FCOfflineArticleManagerType, FCPPTContext, FCPaidAccessCheckerType, FCPrivateDataContext, FCPrivateDataContextInternal, FCPurchaseManagerType, FCPurchaseProviderType, FCPushNotificationHandling, FCWebArchiveSource;
 
 @interface FCCloudContext : NSObject <FCTestingContext, FCCKDatabaseEncryptionDelegate, FCAssetKeyManagerDelegate, FCBundleSubscriptionChangeObserver, FCContentContext, FCPrivateDataContext, FCCacheFlushing>
@@ -37,7 +37,6 @@
     id<FCPurchaseProviderType> _purchaseProvider;
     id<FCPurchaseManagerType> _purchaseManager;
     id<FCBundleSubscriptionManagerType> _bundleSubscriptionManager;
-    FCPersonalizationWhitelist *_personalizationWhitelist;
     FCTranslationManager *_translationManager;
     FCLocalAreasManager *_localAreasManager;
     FCUserVectorManager *_userVectorManager;
@@ -109,7 +108,6 @@
 @property (nonatomic) long long options; // @synthesize options=_options;
 @property (strong, nonatomic) id<FCPaidAccessCheckerType> paidAccessChecker; // @synthesize paidAccessChecker=_paidAccessChecker;
 @property (readonly, nonatomic) FCPersonalizationData *personalizationData;
-@property (strong, nonatomic) FCPersonalizationWhitelist *personalizationWhitelist; // @synthesize personalizationWhitelist=_personalizationWhitelist;
 @property (readonly, nonatomic) id<FCPPTContext> pptContext; // @synthesize pptContext=_pptContext;
 @property (readonly, nonatomic) long long preferredMediaQuality;
 @property (readonly, nonatomic) FCPrivateChannelMembershipController *privateChannelMembershipController;

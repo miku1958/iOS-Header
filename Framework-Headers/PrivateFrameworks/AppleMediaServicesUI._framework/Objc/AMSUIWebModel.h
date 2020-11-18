@@ -11,7 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)backgroundColorFromPageModel:(id)arg1;
++ (id)navigationBarFromPageModel:(id)arg1 context:(id)arg2;
 + (id)pageModelFromJSObject:(id)arg1 context:(id)arg2;
++ (struct CGSize)windowSizeFromJSObject:(id)arg1 key:(id)arg2;
++ (struct CGSize)windowSizeFromPageModel:(id)arg1;
 
 @end
 

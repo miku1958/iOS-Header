@@ -82,6 +82,8 @@
 - (void)keyboardOrActionSwitchToPreviousViewController;
 - (void)managePreviousAndNextViewController;
 - (void)performWhenIdle:(CDUnknownBlockType)arg1;
+- (void)reindexNextViewControllers;
+- (void)reindexPreviousViewControllers;
 - (void)reindexViewControllers;
 - (void)removeViewController:(id)arg1;
 - (void)repositionPages;

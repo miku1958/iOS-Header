@@ -125,8 +125,8 @@ __attribute__((visibility("hidden")))
 - (void)audioPowerSpectrumSinkDidUnregister;
 - (void)callDelegateWithBlock:(CDUnknownBlockType)arg1;
 - (void)callStreamDelegateWithBlock:(CDUnknownBlockType)arg1;
-- (void)collectAudioChannelMetrics:(CDStruct_3ab08b48 *)arg1;
-- (void)collectVideoChannelMetrics:(CDStruct_3ab08b48 *)arg1;
+- (void)collectAudioChannelMetrics:(CDStruct_1dd2c43e *)arg1;
+- (void)collectVideoChannelMetrics:(CDStruct_1dd2c43e *)arg1;
 - (void)completeStreamSetup:(id)arg1;
 - (BOOL)configureAudioIOWithDeviceRole:(int)arg1;
 - (BOOL)configureAudioWithDeviceRole:(int)arg1;

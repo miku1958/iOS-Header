@@ -11,6 +11,7 @@
 @interface TSAppMonitor : NSObject
 {
     MISSING_TYPE *isActive;
+    MISSING_TYPE *isTracking;
     MISSING_TYPE *onWindowDidBecomeBackgroundBlock;
     MISSING_TYPE *onWindowWillBecomeForegroundBlock;
 }

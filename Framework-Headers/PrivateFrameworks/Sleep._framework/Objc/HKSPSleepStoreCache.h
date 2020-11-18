@@ -25,15 +25,15 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) struct os_unfair_lock_s cacheLock; // @synthesize cacheLock=_cacheLock;
-@property (readonly, nonatomic) HKSPSleepEventRecord *sleepEventRecord; // @synthesize sleepEventRecord=_sleepEventRecord;
+@property (readonly, copy, nonatomic) HKSPSleepEventRecord *sleepEventRecord; // @synthesize sleepEventRecord=_sleepEventRecord;
 @property (readonly, nonatomic) BOOL sleepEventRecordNeedsUpdate; // @synthesize sleepEventRecordNeedsUpdate=_sleepEventRecordNeedsUpdate;
 @property (readonly, nonatomic) long long sleepMode; // @synthesize sleepMode=_sleepMode;
 @property (readonly, nonatomic) BOOL sleepModeNeedsUpdate; // @synthesize sleepModeNeedsUpdate=_sleepModeNeedsUpdate;
-@property (readonly, nonatomic) HKSPSleepSchedule *sleepSchedule; // @synthesize sleepSchedule=_sleepSchedule;
+@property (readonly, copy, nonatomic) HKSPSleepSchedule *sleepSchedule; // @synthesize sleepSchedule=_sleepSchedule;
 @property (readonly, nonatomic) BOOL sleepScheduleNeedsUpdate; // @synthesize sleepScheduleNeedsUpdate=_sleepScheduleNeedsUpdate;
 @property (readonly, nonatomic) unsigned long long sleepScheduleState; // @synthesize sleepScheduleState=_sleepScheduleState;
 @property (readonly, nonatomic) BOOL sleepScheduleStateNeedsUpdate; // @synthesize sleepScheduleStateNeedsUpdate=_sleepScheduleStateNeedsUpdate;
-@property (readonly, nonatomic) HKSPSleepSettings *sleepSettings; // @synthesize sleepSettings=_sleepSettings;
+@property (readonly, copy, nonatomic) HKSPSleepSettings *sleepSettings; // @synthesize sleepSettings=_sleepSettings;
 @property (readonly, nonatomic) BOOL sleepSettingsNeedsUpdate; // @synthesize sleepSettingsNeedsUpdate=_sleepSettingsNeedsUpdate;
 
 - (void).cxx_destruct;

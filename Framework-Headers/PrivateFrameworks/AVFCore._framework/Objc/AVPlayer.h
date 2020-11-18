@@ -154,6 +154,7 @@
 - (float)_rate;
 - (id)_rateDidChangeNotificationPayloadForAVFRateChangeReason:(id)arg1 rateChangeIdentifier:(id)arg2;
 - (id)_rateDidChangeNotificationPayloadForFigRateChangeReason:(int)arg1 rateChangeIdentifier:(id)arg2;
+- (BOOL)_rateUpdatedDuringTransition;
 - (void)_removeAllItems;
 - (void)_removeAllLayers;
 - (void)_removeFPListeners;

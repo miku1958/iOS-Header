@@ -25,6 +25,7 @@
 - (void)handleDismiss;
 - (void)handleSidebarWithSender:(id)arg1;
 - (void)tabBarSplitViewDidChangeTraitCollectionToTraitCollection:(id)arg1;
+- (void)tabBarSplitViewWillChangeDisplayModeToDisplayMode:(long long)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

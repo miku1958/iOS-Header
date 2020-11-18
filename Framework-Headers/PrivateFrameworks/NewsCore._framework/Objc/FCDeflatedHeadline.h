@@ -65,6 +65,7 @@
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) BOOL isBlockedExplicitContent;
 @property (readonly, nonatomic) BOOL isDraft;
+@property (readonly, nonatomic) BOOL isEvergreen;
 @property (readonly, nonatomic) BOOL isFeatured;
 @property (readonly, nonatomic) BOOL isFullTrackAvailableToAll;
 @property (readonly, nonatomic) BOOL isLocalDraft;
@@ -74,6 +75,8 @@
 @property (readonly, copy, nonatomic) NSString *language;
 @property (readonly, copy, nonatomic) NSDate *lastFetchedDate;
 @property (readonly, copy, nonatomic) NSDate *lastModifiedDate;
+@property (readonly, nonatomic) double layeredThumbnailAspectRatio;
+@property (readonly, nonatomic) NSString *layeredThumbnailJSON;
 @property (readonly, copy, nonatomic) NSArray *linkedArticleIDs;
 @property (readonly, copy, nonatomic) NSArray *linkedIssueIDs;
 @property (readonly, copy, nonatomic) NSString *localDraftPath;
@@ -83,6 +86,7 @@
 @property (readonly, nonatomic) FCArticleAudioTrack *narrativeTrack;
 @property (readonly, nonatomic) FCArticleAudioTrack *narrativeTrackSample;
 @property (readonly, nonatomic) NSString *narrativeTrackTextRanges;
+@property (readonly, copy, nonatomic) NSString *nativeAdCampaignData;
 @property (readonly, nonatomic) BOOL needsRapidUpdates;
 @property (readonly, nonatomic) unsigned long long order;
 @property (readonly, nonatomic, getter=isPaid) BOOL paid;
@@ -118,6 +122,7 @@
 @property (readonly, nonatomic) FCTopStoriesStyleConfiguration *storyStyle;
 @property (readonly, nonatomic) unsigned long long storyType;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *surfacedByArticleListID;
 @property (readonly, copy, nonatomic) NSString *surfacedByBinID;
 @property (readonly, copy, nonatomic) NSString *surfacedByChannelID;
 @property (readonly, copy, nonatomic) NSString *surfacedBySectionID;

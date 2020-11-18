@@ -10,6 +10,7 @@
 
 @class _MRNowPlayingPlayerPathProtobuf, _MRPlaybackSessionMigrateRequestProtobuf, _MRPlaybackSessionProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRPlaybackSessionMigrateRequestMessageProtobuf : PBCodable <NSCopying>
 {
     _MRPlaybackSessionProtobuf *_playbackSession;
@@ -17,21 +18,12 @@
     _MRPlaybackSessionMigrateRequestProtobuf *_request;
 }
 
-@property (readonly, nonatomic) BOOL hasPlaybackSession;
-@property (readonly, nonatomic) BOOL hasPlayerPath;
-@property (readonly, nonatomic) BOOL hasRequest;
-@property (strong, nonatomic) _MRPlaybackSessionProtobuf *playbackSession; // @synthesize playbackSession=_playbackSession;
-@property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
-@property (strong, nonatomic) _MRPlaybackSessionMigrateRequestProtobuf *request; // @synthesize request=_request;
-
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -82,7 +82,7 @@
 - (void)handleCameraSettingsDidChangeNotification:(id)arg1;
 - (void)handleMessage:(id)arg1;
 - (void)handleProcessStateChange:(id)arg1;
-- (id)initWithWorkQueue:(id)arg1 streamSnapshotHandler:(id)arg2 accessory:(id)arg3 streamManagementService:(id)arg4 profileUniqueIdentifier:(id)arg5 networkMonitor:(id)arg6 residentMessageHandler:(id)arg7;
+- (id)initWithWorkQueue:(id)arg1 streamSnapshotHandler:(id)arg2 accessory:(id)arg3 streamManagementService:(id)arg4 profileUniqueIdentifier:(id)arg5 networkMonitor:(id)arg6;
 - (id)initWithWorkQueue:(id)arg1 streamSnapshotHandler:(id)arg2 accessory:(id)arg3 streamManagementService:(id)arg4 profileUniqueIdentifier:(id)arg5 networkMonitor:(id)arg6 residentMessageHandler:(id)arg7 phoneCallObserver:(id)arg8 deviceCapabilities:(id)arg9 dataSource:(id)arg10;
 - (BOOL)isEqual:(id)arg1;
 - (id)logIdentifier;

@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)presentPicker;
 - (void)setCloseButtonYPosition:(double)arg1;
 - (void)setSemanticContentAttribute:(id)arg1 forceLTR:(BOOL)arg2;
+- (void)setShowingInStandAloneWindow:(BOOL)arg1;
 - (void)touchUpInsideCloseButton;
 - (void)updateColor:(BOOL)arg1;
 - (void)updateHintTransition:(double)arg1;

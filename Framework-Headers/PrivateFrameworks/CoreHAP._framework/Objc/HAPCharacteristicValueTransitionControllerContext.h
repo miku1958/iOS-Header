@@ -15,6 +15,7 @@
 {
     NSData *_identifier;
     HAPTLVUnsignedNumberValue *_startTime;
+    HAPTLVUnsignedNumberValue *_transitionChecksum;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,12 +24,13 @@
 @property (strong, nonatomic) NSData *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) HAPTLVUnsignedNumberValue *startTime; // @synthesize startTime=_startTime;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) HAPTLVUnsignedNumberValue *transitionChecksum; // @synthesize transitionChecksum=_transitionChecksum;
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (id)initWithIdentifier:(id)arg1 startTime:(id)arg2;
+- (id)initWithIdentifier:(id)arg1 startTime:(id)arg2 transitionChecksum:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)parseFromData:(id)arg1 error:(id *)arg2;
 - (id)serializeWithError:(id *)arg1;

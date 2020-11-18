@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
     struct CGSize _defaultItemFullScreenSize;
     struct CGSize _routePickerButtonInlineSize;
     struct CGSize _routePickerButtonFullScreenSize;
+    struct CGSize _audioRoutePickerFullScreenSize;
     struct CGSize _minimumScrubberSize;
     struct NSDirectionalEdgeInsets _doubleRowLayoutMargins;
     struct NSDirectionalEdgeInsets _doubleRowLayoutMarginsWhenShowingScrubInstructions;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) double additionalInlinePaddingForDodgingSafeArea; // @synthesize additionalInlinePaddingForDodgingSafeArea=_additionalInlinePaddingForDodgingSafeArea;
+@property (readonly, nonatomic) struct CGSize audioRoutePickerFullScreenSize; // @synthesize audioRoutePickerFullScreenSize=_audioRoutePickerFullScreenSize;
 @property (readonly, nonatomic) struct CGSize defaultItemFullScreenSize; // @synthesize defaultItemFullScreenSize=_defaultItemFullScreenSize;
 @property (readonly, nonatomic) struct CGSize defaultItemInlineSize; // @synthesize defaultItemInlineSize=_defaultItemInlineSize;
 @property (readonly, nonatomic) struct NSDirectionalEdgeInsets doubleRowLayoutMargins; // @synthesize doubleRowLayoutMargins=_doubleRowLayoutMargins;

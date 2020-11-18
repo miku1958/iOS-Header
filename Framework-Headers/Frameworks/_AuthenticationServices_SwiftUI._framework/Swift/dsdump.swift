@@ -45,18 +45,18 @@
 	// ObjC -> Swift bridged methods
 WARNING: couldn't find offset 0xb79 in binary!
 WARNING: couldn't find offset 0xb79 in binary!
-WARNING: couldn't find address 0xb8500002628 (0x38500002628) in binary!
+WARNING: couldn't find address 0xb8500002588 (0x38500002588) in binary!
 	0x0  @objc Coordinator.(null) <stripped>
 WARNING: couldn't find offset 0xb07 in binary!
 WARNING: couldn't find offset 0xb07 in binary!
-WARNING: couldn't find address 0xb3f00002620 (0x33f00002620) in binary!
+WARNING: couldn't find address 0xb3f00002580 (0x33f00002580) in binary!
 	0x0  @objc Coordinator.(null) <stripped>
 WARNING: couldn't find offset 0xaef in binary!
 WARNING: couldn't find offset 0xaef in binary!
-WARNING: couldn't find address 0xb0300002618 (0x30300002618) in binary!
+WARNING: couldn't find address 0xb0300002578 (0x30300002578) in binary!
 	0x0  @objc Coordinator.(null) <stripped>
 WARNING: couldn't find address 0x1 (0x1) in binary!
-	0x2818  @objc Coordinator.(null) <stripped>
+	0x2ab8  @objc Coordinator.(null) <stripped>
 WARNING: couldn't find offset 0x2c00000 in binary!
 WARNING: couldn't find offset 0x2c00000 in binary!
 WARNING: couldn't find address 0x65300000651 (0x65300000651) in binary!
@@ -67,14 +67,14 @@ WARNING: couldn't find address 0xffffe72cffffe6f0 (0x0) in binary!
 	0x5687475415f  @objc Coordinator.(null) <stripped>
 
 	// Swift methods
-	0x2a80  func <stripped> // method 
+	0x2b20  func <stripped> // method 
  }
 
  struct _AuthenticationServices_SwiftUI.ViewRepresentable {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _style : s // +0x0
+	var _style : Ó // +0x0
 	var config : Configuration // +0x10
  }
 

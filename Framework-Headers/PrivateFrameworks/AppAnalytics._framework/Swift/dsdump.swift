@@ -2,8 +2,10 @@
  {
 	// method
  }
- protocol AppAnalytics.EventType // 1 requirements
+ protocol AppAnalytics.EventType // 3 requirements
  {
+	// class getter
+	// class getter
 	// class init
  }
  protocol AppAnalytics.SignerType // 1 requirements
@@ -66,18 +68,18 @@
  {
 	// getter
  }
- protocol AppAnalytics.ResourceType // 5 requirements
+ protocol AppAnalytics.ResourceType // 4 requirements
  {
-	// class getter
 	// class getter
 	// getter
 	// getter
 	// method
  }
- protocol AppAnalytics.TrackerDelegate // 10 requirements
+ protocol AppAnalytics.TrackerDelegate // 11 requirements
  {
 	// getter
 	// getter
+	// method
 	// method
 	// method
 	// method
@@ -193,14 +195,14 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : ø≠
+	let rawValue : ◊Ø
  }
 
  struct __C.os_unfair_lock_s {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _os_unfair_lock_opaque : ø≠
+	var _os_unfair_lock_opaque : ◊Ø
  }
 
  struct __C.z_stream_s {
@@ -209,23 +211,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var next_in :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var avail_in : ø≠
+	var avail_in : ◊Ø
 	var total_in : UInt
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var next_out :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var avail_out : ø≠
+	var avail_out : ◊Ø
 	var total_out : UInt
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var msg :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var state : [¨
+	var state : sÆ
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var zalloc :  first-element-marker 
 	var zfree : @convention(c) (_:_:)?
 	var opaque : UnsafeMutableRawPointer?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var data_type : ”¨
+	var data_type : ÎÆ
 	var adler : UInt
 	var reserved : UInt
  }
@@ -255,7 +257,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let session : NSURLSession
 
 	// Swift methods
-	0x3a70  class func ExternalAnalyticsUploader.__allocating_init() // init 
+	0x3fd0  class func ExternalAnalyticsUploader.__allocating_init() // init 
  }
 
  enum AppAnalytics.Errors {
@@ -273,24 +275,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let kind : BridgedSessionKind // +0x18 (0x8)
 	let name : String? // +0x20 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startDate : 3¶ // +0xfeedfacf (0x0)
+	let startDate : ® // +0xfeedfacf (0x0)
 	let sessionData : [String : Any] // +0x3 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x717c000233e0 (0x17c000233e0) in binary!
-	0x7b7c  @objc BridgedSession.(null) <stripped>
-WARNING: couldn't find address 0x716400023500 (0x16400023500) in binary!
-	0x7158  @objc BridgedSession.(null) <stripped>
-WARNING: couldn't find address 0x714c000233c8 (0x14c000233c8) in binary!
-	0x7140  @objc BridgedSession.(null) <stripped>
-WARNING: couldn't find address 0x9334000233b8 (0x334000233b8) in binary!
+WARNING: couldn't find address 0x757c00022d00 (0x57c00022d00) in binary!
+	0x801c  @objc BridgedSession.(null) <stripped>
+WARNING: couldn't find address 0x756400022e20 (0x56400022e20) in binary!
+	0x7558  @objc BridgedSession.(null) <stripped>
+WARNING: couldn't find address 0x754c00022ce8 (0x54c00022ce8) in binary!
+	0x7540  @objc BridgedSession.(null) <stripped>
+WARNING: couldn't find address 0x99d400022cd8 (0x1d400022cd8) in binary!
 	0x48000000c  @objc BridgedSession.(null) <stripped>
-WARNING: couldn't find address 0x70fc000233a8 (0xfc000233a8) in binary!
-	0x7104  @objc BridgedSession.(null) <stripped>
-WARNING: couldn't find address 0x710400023508 (0x10400023508) in binary!
-	0x92f8  @objc BridgedSession.(null) <stripped>
+WARNING: couldn't find address 0x74fc00022cc8 (0x4fc00022cc8) in binary!
+	0x7504  @objc BridgedSession.(null) <stripped>
+WARNING: couldn't find address 0x750400022e28 (0x50400022e28) in binary!
+	0x9998  @objc BridgedSession.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff96070  @objc BridgedSession.(null) <stripped>
+	0xfff8c170  @objc BridgedSession.(null) <stripped>
 
 	// Swift methods
  }
@@ -318,7 +320,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	// Properties
 	let eventID : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventTimestamp : 3¶
+	let eventTimestamp : ®
 	let eventPath : String
 	let sessionID : String
 	let appSessionID : String?
@@ -340,17 +342,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let flushManager : FlushManager
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x70fc000233a8 (0xfc000233a8) in binary!
-	0x7104  @objc BridgedFlushManager.(null) <stripped>
-WARNING: couldn't find address 0x710400023508 (0x10400023508) in binary!
-	0x92f8  @objc BridgedFlushManager.(null) <stripped>
+WARNING: couldn't find address 0x74fc00022cc8 (0x4fc00022cc8) in binary!
+	0x7504  @objc BridgedFlushManager.(null) <stripped>
+WARNING: couldn't find address 0x750400022e28 (0x50400022e28) in binary!
+	0x9998  @objc BridgedFlushManager.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff96070  @objc BridgedFlushManager.(null) <stripped>
+	0xfff8c170  @objc BridgedFlushManager.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x544fff95fb8  @objc BridgedFlushManager.(null) <stripped>
+	0x664fff8c0b8  @objc BridgedFlushManager.(null) <stripped>
 
 	// Swift methods
-	0x65e0  class func BridgedFlushManager.__allocating_init(appSessionManager:client:endpoint:config:) // init 
+	0x6c00  class func BridgedFlushManager.__allocating_init(appSessionManager:client:endpoint:config:) // init 
  }
 
  class AppAnalytics.BridgedRawDataEvent : NSObject /usr/lib/libobjc.A.dylib {
@@ -360,16 +362,16 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	let dictionary : [String : Any]
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb79400023368 (0x79400023368) in binary!
-	0x70c0  @objc BridgedRawDataEvent.(null) <stripped>
-WARNING: couldn't find address 0x70b4000234b8 (0xb4000234b8) in binary!
-	0x92a8  @objc BridgedRawDataEvent.(null) <stripped>
+WARNING: couldn't find address 0x843800022c88 (0x43800022c88) in binary!
+	0x74c0  @objc BridgedRawDataEvent.(null) <stripped>
+WARNING: couldn't find address 0x74b400022dd8 (0x4b400022dd8) in binary!
+	0x9948  @objc BridgedRawDataEvent.(null) <stripped>
 WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
-	0x334fff96270  @objc BridgedRawDataEvent.(null) <stripped>
-	0x32cfff96358  @objc BridgedRawDataEvent.âÂHç=E <stripped>
+	0x454fff8c370  @objc BridgedRawDataEvent.(null) <stripped>
+	0x44cfff8c458  @objc BridgedRawDataEvent.ëô	 <stripped>
 
 	// Swift methods
-	0x6e80  class func BridgedRawDataEvent.__allocating_init(name:dictionary:) // init 
+	0x7670  class func BridgedRawDataEvent.__allocating_init(name:dictionary:) // init 
  }
 
  class AppAnalytics.BridgedDataEventTraits : NSObject /usr/lib/libobjc.A.dylib {
@@ -380,31 +382,32 @@ WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
 	var discardWhenPresent : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x727000023338 (0x27000023338) in binary!
-	0x7182  @objc BridgedDataEventTraits.(null) <stripped>
-WARNING: couldn't find address 0x725800023330 (0x25800023330) in binary!
-	0x716a  @objc BridgedDataEventTraits.(null) <stripped>
-WARNING: couldn't find address 0x724000023328 (0x24000023328) in binary!
-	0x7152  @objc BridgedDataEventTraits.(null) <stripped>
-WARNING: couldn't find address 0x704c00023450 (0x4c00023450) in binary!
+WARNING: couldn't find address 0x76a000022c58 (0x6a000022c58) in binary!
+	0x75b2  @objc BridgedDataEventTraits.(null) <stripped>
+WARNING: couldn't find address 0x768800022c50 (0x68800022c50) in binary!
+	0x759a  @objc BridgedDataEventTraits.(null) <stripped>
+WARNING: couldn't find address 0x767000022c48 (0x67000022c48) in binary!
+	0x7582  @objc BridgedDataEventTraits.(null) <stripped>
+WARNING: couldn't find address 0x744c00022d70 (0x44c00022d70) in binary!
 	0xc8000000c  @objc BridgedDataEventTraits.(null) <stripped>
-WARNING: couldn't find address 0x7a4800023308 (0x24800023308) in binary!
-	0x7a3c  @objc BridgedDataEventTraits.(null) <stripped>
-WARNING: couldn't find address 0x801400023300 (0x1400023300) in binary!
-	0x71ec  @objc BridgedDataEventTraits.(null) <stripped>
-	0x6ff8  @objc BridgedDataEventTraits. <stripped>
+WARNING: couldn't find address 0x7ee800022c28 (0x6e800022c28) in binary!
+	0x7edc  @objc BridgedDataEventTraits.(null) <stripped>
+WARNING: couldn't find address 0x84e400022c20 (0x4e400022c20) in binary!
+	0x761c  @objc BridgedDataEventTraits.(null) <stripped>
+WARNING: couldn't find address 0x740400022c18 (0x40400022c18) in binary!
+	0x73f8  @objc BridgedDataEventTraits.(null) <stripped>
 
 	// Swift methods
-	0x7250  func <stripped> // getter 
-	0x7290  func <stripped> // setter 
-	0x72f0  func <stripped> // modifyCoroutine 
-	0x7350  func <stripped> // getter 
-	0x7390  func <stripped> // setter 
-	0x73f0  func <stripped> // modifyCoroutine 
-	0x7480  func <stripped> // getter 
-	0x7530  func <stripped> // setter 
-	0x7650  func <stripped> // modifyCoroutine 
-	0x7820  func <stripped> // getter 
+	0x7a40  func <stripped> // getter 
+	0x7a80  func <stripped> // setter 
+	0x7ae0  func <stripped> // modifyCoroutine 
+	0x7b40  func <stripped> // getter 
+	0x7b80  func <stripped> // setter 
+	0x7be0  func <stripped> // modifyCoroutine 
+	0x7c70  func <stripped> // getter 
+	0x7d20  func <stripped> // setter 
+	0x7e40  func <stripped> // modifyCoroutine 
+	0x8010  func <stripped> // getter 
  }
 
  enum AppAnalytics.JSONError { }
@@ -415,44 +418,45 @@ WARNING: couldn't find address 0x801400023300 (0x1400023300) in binary!
 	let value : Any?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7a4800023308 (0x24800023308) in binary!
-	0x7a3c  @objc JSON.(null) <stripped>
-WARNING: couldn't find address 0x801400023300 (0x1400023300) in binary!
-	0x71ec  @objc JSON.(null) <stripped>
-	0x6ff8  @objc JSON. <stripped>
-WARNING: couldn't find address 0x6fec000232f0 (0x7ec000232f0) in binary!
-	0x6fe0  @objc JSON.(null) <stripped>
-WARNING: couldn't find address 0x6fd4000232e8 (0x7d4000232e8) in binary!
-	0x71b4  @objc JSON.(null) <stripped>
-WARNING: couldn't find address 0x6fbc000233c0 (0x7bc000233c0) in binary!
-	0x91b0  @objc JSON.(null) <stripped>
+WARNING: couldn't find address 0x7ee800022c28 (0x6e800022c28) in binary!
+	0x7edc  @objc JSON.(null) <stripped>
+WARNING: couldn't find address 0x84e400022c20 (0x4e400022c20) in binary!
+	0x761c  @objc JSON.(null) <stripped>
+WARNING: couldn't find address 0x740400022c18 (0x40400022c18) in binary!
+	0x73f8  @objc JSON.(null) <stripped>
+WARNING: couldn't find address 0x73ec00022c10 (0x3ec00022c10) in binary!
+	0x73e0  @objc JSON.(null) <stripped>
+WARNING: couldn't find address 0x73d400022c08 (0x3d400022c08) in binary!
+	0x75e4  @objc JSON.(null) <stripped>
+WARNING: couldn't find address 0x73bc00022ce0 (0x3bc00022ce0) in binary!
+	0x9850  @objc JSON.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff981a8  @objc JSON.(null) <stripped>
+	0xfff8e2a8  @objc JSON.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff9e960  @objc JSON.(null) <stripped>
+	0xfff957d0  @objc JSON.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff9e258  @objc JSON.(null) <stripped>
+	0xfff950c8  @objc JSON.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff9f030  @objc JSON.(null) <stripped>
+	0xfff95ea0  @objc JSON.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff9e0d8  @objc JSON.(null) <stripped>
+	0xfff94f48  @objc JSON.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffa0d30  @objc JSON.(null) <stripped>
+	0xfff97c50  @objc JSON.(null) <stripped>
 
 	// Swift methods
-	0x7da0  class func JSON.__allocating_init(_:) // init 
-	0x7f20  func <stripped> // getter 
-	0x80f0  func <stripped> // getter 
-	0x82d0  func <stripped> // getter 
-	0x8370  func <stripped> // getter 
-	0x8440  func <stripped> // getter 
-	0x84b0  func <stripped> // getter 
-	0x8520  func <stripped> // getter 
-	0x8590  func <stripped> // getter 
-	0x8660  func <stripped> // getter 
-	0x88d0  func <stripped> // getter 
-	0x8d00  func <stripped> // getter 
-	0x8e70  func <stripped> // method 
+	0x8590  class func JSON.__allocating_init(_:) // init 
+	0x8710  func <stripped> // getter 
+	0x88e0  func <stripped> // getter 
+	0x8ac0  func <stripped> // getter 
+	0x8b60  func <stripped> // getter 
+	0x8c30  func <stripped> // getter 
+	0x8ca0  func <stripped> // getter 
+	0x8d10  func <stripped> // getter 
+	0x8d80  func <stripped> // getter 
+	0x8e50  func <stripped> // getter 
+	0x90c0  func <stripped> // getter 
+	0x94f0  func <stripped> // getter 
+	0x9660  func <stripped> // method 
  }
 
  class AppAnalytics.BridgedEventMirrorStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -461,7 +465,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	var cache : EventMirrorProperty
 
 	// Swift methods
-	0xecb0  func <stripped> // method 
+	0x10210  func <stripped> // method 
  }
 
  class AppAnalytics.FlushManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -470,18 +474,20 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	let appSessionManager : AppSessionManagerType
 	let client : Client
 	let endpoint : AAEndpointType
+	let contentType : ContentType
 	let config : UploadBatchEventConfig
 	let clientFactory : UploadClientFactory
 	let signingService : SigningServiceType
 	let uploadDropboxPathProvider : UploadDropboxPathProviderType
 	let fileManager : UploadDropboxFileManagerType
-	var uploadManagers : UploadManagerType
-	let flushDispatchGroup : OS_dispatch_group
 	var state : State
+	let flushQueue : OS_dispatch_queue
 
 	// Swift methods
-	0x12030  func <stripped> // method 
-	0x136e0  func <stripped> // method 
+	0x13640  func <stripped> // method 
+	0x13dc0  func <stripped> // method 
+	0x14950  func <stripped> // method 
+	0x15500  func <stripped> // method 
  }
 
  enum AppAnalytics.State {
@@ -519,10 +525,10 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	let bag : AMSBag
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6ef4000232f8 (0x6f4000232f8) in binary!
-	0x90e8  @objc Contract.(null) <stripped>
+WARNING: couldn't find address 0x72f400022c18 (0x2f400022c18) in binary!
+	0x9788  @objc Contract.(null) <stripped>
 WARNING: couldn't find address 0xb8000000c (0xb8000000c) in binary!
-	0x264fffa73d0  @objc Contract.(null) <stripped>
+	0x384fff9f1e0  @objc Contract.(null) <stripped>
  }
 
  struct AppAnalytics.SessionData {
@@ -551,6 +557,24 @@ WARNING: couldn't find address 0xb8000000c (0xb8000000c) in binary!
 
 	// Properties
 	let realTask : NSURLSessionUploadTask // +0x0
+ }
+
+ class AppAnalytics.SessionGroupManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let accessQueue : OS_dispatch_queue
+	var sessionMapping : Key
+	var appSessionMapping : Key
+
+	// Swift methods
+	0x18d90  class func SessionGroupManager.__allocating_init(accessQueue:) // init 
+ }
+
+ struct AppAnalytics.Key {
+
+	// Properties
+	let identifier : String // +0x0
+	let groupName : String // +0x10
  }
 
  struct AppAnalytics.UploadResponse {
@@ -583,32 +607,32 @@ WARNING: couldn't find address 0xb8000000c (0xb8000000c) in binary!
 	let buildNumber : String // +0x40 (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6ed400023138 (0x6d400023138) in binary!
-	0x6ec8  @objc Client.(null) <stripped>
-WARNING: couldn't find address 0x6ebc000231e0 (0x6bc000231e0) in binary!
-	0x78bc  @objc Client.(null) <stripped>
-WARNING: couldn't find address 0x6ea4000231d8 (0x6a4000231d8) in binary!
-	0x6e98  @objc Client.(null) <stripped>
-WARNING: couldn't find address 0x78a0000231d0 (0xa0000231d0) in binary!
-	0x6e60  @objc Client.(null) <stripped>
-WARNING: couldn't find address 0x7894000231c0 (0x94000231c0) in binary!
-	0x6e68  @objc Client.(null) <stripped>
-WARNING: couldn't find address 0x905c000230e0 (0x5c000230e0) in binary!
+WARNING: couldn't find address 0x72d400022a58 (0x2d400022a58) in binary!
+	0x72c8  @objc Client.(null) <stripped>
+WARNING: couldn't find address 0x72bc00022b00 (0x2bc00022b00) in binary!
+	0x7d5c  @objc Client.(null) <stripped>
+WARNING: couldn't find address 0x72a400022af8 (0x2a400022af8) in binary!
+	0x7298  @objc Client.(null) <stripped>
+WARNING: couldn't find address 0x7d4000022af0 (0x54000022af0) in binary!
+	0x7260  @objc Client.(null) <stripped>
+WARNING: couldn't find address 0x7d3400022ae0 (0x53400022ae0) in binary!
+	0x7268  @objc Client.(null) <stripped>
+WARNING: couldn't find address 0x96fc00022a00 (0x6fc00022a00) in binary!
 	0x18000000c  @objc Client.(null) <stripped>
-WARNING: couldn't find address 0xafe800023200 (0x7e800023200) in binary!
+WARNING: couldn't find address 0xb6d800022b20 (0x6d800022b20) in binary!
 	0x68000000c  @objc Client.(null) <stripped>
-WARNING: couldn't find address 0x6e2c000231c8 (0x62c000231c8) in binary!
-	0x6e20  @objc Client.(null) <stripped>
-WARNING: couldn't find address 0x6e1400023168 (0x61400023168) in binary!
-	0x6e08  @objc Client.(null) <stripped>
-WARNING: couldn't find address 0x6dfc00023200 (0x5fc00023200) in binary!
-	0x8ff0  @objc Client.(null) <stripped>
-WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x13cfffb10e8  @objc Client.(null) <stripped>
+WARNING: couldn't find address 0x722c00022ae8 (0x22c00022ae8) in binary!
+	0x7220  @objc Client.(null) <stripped>
+WARNING: couldn't find address 0x721400022a88 (0x21400022a88) in binary!
+	0x7208  @objc Client.(null) <stripped>
+WARNING: couldn't find address 0x71fc00022b20 (0x1fc00022b20) in binary!
+	0x9690  @objc Client.(null) <stripped>
+WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
+	0x25cfffa9598  @objc Client.(null) <stripped>
 
 	// Swift methods
-	0x18760  func <stripped> // getter 
-	0x188e0  class func Client.__allocating_init(identifier:name:version:buildNumber:) // init 
+	0x1ac60  func <stripped> // getter 
+	0x1ade0  class func Client.__allocating_init(identifier:name:version:buildNumber:) // init 
  }
 
  class AppAnalytics.SHA1Base64SigningService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SigningServiceType {
@@ -618,6 +642,8 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 
 	// Swift methods
  }
+
+ enum AppAnalytics.ContentType { }
 
  class AppAnalytics.UnfairLock : _SwiftObject /usr/lib/swift/libswiftCore.dylib, Lock {
 
@@ -635,6 +661,7 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	let processorManager : ProcessorManager
 	var appSessionProvider : AppSessionProviding
 	let accessQueue : OS_dispatch_queue
+	let sessionGroupManager : SessionGroupManager
 	var suspendCount : AtomicCounter
 	var state : SessionState
 	var dataStacks : DataEventStackType
@@ -643,11 +670,11 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	let flushProcessor : FlushProcessor
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xafe800023200 (0x7e800023200) in binary!
+WARNING: couldn't find address 0xb6d800022b20 (0x6d800022b20) in binary!
 	0x68000000c  @objc SessionManager.(null) <stripped>
 
 	// Swift methods
-	0x1b040  class func SessionManager.__allocating_init(accessQueue:options:flushProcessor:) // init 
+	0x1d690  class func SessionManager.__allocating_init(accessQueue:sessionGroupManager:options:flushProcessor:) // init 
  }
 
  struct AppAnalytics.Options {
@@ -689,16 +716,16 @@ WARNING: couldn't find address 0xafe800023200 (0x7e800023200) in binary!
 	let groupName : String?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6e2c000231c8 (0x62c000231c8) in binary!
-	0x6e20  @objc BridgedProcessEvent.(null) <stripped>
-WARNING: couldn't find address 0x6e1400023168 (0x61400023168) in binary!
-	0x6e08  @objc BridgedProcessEvent.(null) <stripped>
-WARNING: couldn't find address 0x6dfc00023200 (0x5fc00023200) in binary!
-	0x8ff0  @objc BridgedProcessEvent.(null) <stripped>
-WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x13cfffb10e8  @objc BridgedProcessEvent.(null) <stripped>
-	0x1bcfffb1450  @objc BridgedProcessEvent.UHâÂHÉ? <stripped>
-	0xfffb14b8  @objc BridgedProcessEvent.Ëí <stripped>
+WARNING: couldn't find address 0x722c00022ae8 (0x22c00022ae8) in binary!
+	0x7220  @objc BridgedProcessEvent.(null) <stripped>
+WARNING: couldn't find address 0x721400022a88 (0x21400022a88) in binary!
+	0x7208  @objc BridgedProcessEvent.(null) <stripped>
+WARNING: couldn't find address 0x71fc00022b20 (0x1fc00022b20) in binary!
+	0x9690  @objc BridgedProcessEvent.(null) <stripped>
+WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
+	0x25cfffa9598  @objc BridgedProcessEvent.(null) <stripped>
+	0x314fffa9a20  @objc BridgedProcessEvent._]√Lçm–æ <stripped>
+	0x144fffa9c28  @objc BridgedProcessEvent.}e∂u–Lçm»HãU¿HãM∏LãE∞Ëç  <stripped>
 
 	// Swift methods
  }
@@ -709,20 +736,21 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	var proxyEventProcessor : EventProcessorType
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb4a400023140 (0x4a400023140) in binary!
-	0x7ca0  @objc BridgedUploadBatchEventProcessor.(null) <stripped>
-WARNING: couldn't find address 0xb4a800023200 (0x4a800023200) in binary!
-	0x6db8  @objc BridgedUploadBatchEventProcessor.(null) <stripped>
-WARNING: couldn't find address 0x8fac00023030 (0x7ac00023030) in binary!
-	0x48000000c  @objc BridgedUploadBatchEventProcessor.(null) <stripped>
-WARNING: couldn't find address 0x7d8c00023108 (0x58c00023108) in binary!
-	0xb46c  @objc BridgedUploadBatchEventProcessor.(null) <stripped>
-WARNING: couldn't find address 0x6d7c00023180 (0x57c00023180) in binary!
-	0x8f70  @objc BridgedUploadBatchEventProcessor.(null) <stripped>
+WARNING: couldn't find address 0x814800022a60 (0x14800022a60) in binary!
+	0x8150  @objc BridgedUploadBatchEventProcessor.(null) <stripped>
+WARNING: couldn't find address 0x816400022a58 (0x16400022a58) in binary!
+	0xbb98  @objc BridgedUploadBatchEventProcessor.(null) <stripped>
+WARNING: couldn't find address 0x71ac00022ad0 (0x1ac00022ad0) in binary!
+	0x9640  @objc BridgedUploadBatchEventProcessor.(null) <stripped>
+WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
+	0x2dcfffaa528  @objc BridgedUploadBatchEventProcessor.(null) <stripped>
+	0x10cfffaa670  @objc BridgedUploadBatchEventProcessor.jÎ <stripped>
+	0x15400022a78  @objc BridgedUploadBatchEventProcessor.Hçu»A∏ <stripped>
 
 	// Swift methods
-	0x22180  class func BridgedUploadBatchEventProcessor.__allocating_init(client:endpoint:) // init 
-	0x22460  class func BridgedUploadBatchEventProcessor.__allocating_init(client:endpoint:config:) // init 
+	0x24d20  class func BridgedUploadBatchEventProcessor.__allocating_init(client:endpoint:) // init 
+	0x25000  class func BridgedUploadBatchEventProcessor.__allocating_init(client:endpoint:config:) // init 
+	0x25230  class func BridgedUploadBatchEventProcessor.__allocating_init(client:endpoint:contentType:config:) // init 
  }
 
  class AppAnalytics.ActiveSession : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ActiveSessionType {
@@ -731,7 +759,7 @@ WARNING: couldn't find address 0x6d7c00023180 (0x57c00023180) in binary!
 	let identifier : String // +0x10 (0x10)
 	let kind : Kind // +0x20 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startDate : 3¶ // +0x22 (0x0)
+	let startDate : ® // +0x22 (0x0)
 	let appSessionIdentifier : String? // +0x6100085 (0x10)
 
 	// Swift methods
@@ -756,16 +784,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var proxyEventProcessor : EventProcessorType
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7d8c00023108 (0x58c00023108) in binary!
-	0xb46c  @objc BridgingLoggingEventProcessor.(null) <stripped>
-WARNING: couldn't find address 0x6d7c00023180 (0x57c00023180) in binary!
-	0x8f70  @objc BridgingLoggingEventProcessor.(null) <stripped>
+WARNING: couldn't find address 0x825400022a28 (0x25400022a28) in binary!
+	0xbb60  @objc BridgingLoggingEventProcessor.(null) <stripped>
+WARNING: couldn't find address 0x717400022a98 (0x17400022a98) in binary!
+	0x9608  @objc BridgingLoggingEventProcessor.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x7d4fffb6348  @objc BridgingLoggingEventProcessor.(null) <stripped>
-	0x69c00022e78  @objc BridgingLoggingEventProcessor.ÔLâ˙HãM–ËUp <stripped>
+	0xecfffaeaf0  @objc BridgingLoggingEventProcessor.(null) <stripped>
+	0x3f400022790  @objc BridgingLoggingEventProcessor._ <stripped>
 
 	// Swift methods
-	0x22f00  class func BridgingLoggingEventProcessor.__allocating_init(format:) // init 
+	0x25d00  class func BridgingLoggingEventProcessor.__allocating_init(format:) // init 
  }
 
  class AppAnalytics.UploadService {
@@ -782,10 +810,10 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let eventMirrorStore : BridgedEventMirrorStore
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6d5c00023160 (0x55c00023160) in binary!
-	0x8f50  @objc BridgedAccessTracker.(null) <stripped>
+WARNING: couldn't find address 0x715400022a78 (0x15400022a78) in binary!
+	0x95e8  @objc BridgedAccessTracker.(null) <stripped>
 WARNING: couldn't find address 0x1c8000000c (0x1c8000000c) in binary!
-	0x664fffb8b38  @objc BridgedAccessTracker.(null) <stripped>
+	0x77cfffb12e0  @objc BridgedAccessTracker.(null) <stripped>
 
 	// Swift methods
  }
@@ -800,6 +828,15 @@ WARNING: couldn't find address 0x1c8000000c (0x1c8000000c) in binary!
 	// Swift methods
  }
 
+ enum AppAnalytics.SessionObserverChange {
+
+	// Properties
+	case didStart : ActiveSession
+	case willEnd : ActiveSession
+	case didEnd : Session
+	case willStart  
+ }
+
  class AppAnalytics.DelayedToken : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
@@ -807,15 +844,15 @@ WARNING: couldn't find address 0x1c8000000c (0x1c8000000c) in binary!
 	var sealed : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8de400022f60 (0x5e400022f60) in binary!
-	0x6bd8  @objc DelayedToken.(null) <stripped>
-WARNING: couldn't find address 0x8dcc00022e50 (0x5cc00022e50) in binary!
+WARNING: couldn't find address 0x947c00022880 (0x47c00022880) in binary!
+	0x6fd0  @objc DelayedToken.(null) <stripped>
+WARNING: couldn't find address 0x946400022768 (0x46400022768) in binary!
 	0x28000000c  @objc DelayedToken.(null) <stripped>
-WARNING: couldn't find address 0x6bb400022fb8 (0x3b400022fb8) in binary!
-	0x8da8  @objc DelayedToken.(null) <stripped>
+WARNING: couldn't find address 0x6fac000228d0 (0x7ac000228d0) in binary!
+	0x9440  @objc DelayedToken.(null) <stripped>
 
 	// Swift methods
-	0x2de60  func <stripped> // method 
+	0x32d50  func <stripped> // method 
  }
 
  class AppAnalytics.LoggingEventProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -824,14 +861,14 @@ WARNING: couldn't find address 0x6bb400022fb8 (0x3b400022fb8) in binary!
 	let logFormatter : LoggingEventProcessorFormatterType
 
 	// Swift methods
-	0x2e030  class func LoggingEventProcessor.__allocating_init(logFormat:) // init 
+	0x32f20  class func LoggingEventProcessor.__allocating_init(logFormat:) // init 
  }
 
  enum AppAnalytics.GZIPError {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case failed : π§
+	case failed : ç¶
  }
 
  enum AppAnalytics.ExternalResult {
@@ -839,7 +876,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case success : (value: A)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case failed : q§
+	case failed : E¶
  }
 
  struct AppAnalytics.AnyDataEventEntry {
@@ -874,10 +911,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let processorManager : ProcessorManager
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6bb400022fb8 (0x3b400022fb8) in binary!
-	0x8da8  @objc BridgedProcessorManager.(null) <stripped>
+WARNING: couldn't find address 0x6fac000228d0 (0x7ac000228d0) in binary!
+	0x9440  @objc BridgedProcessorManager.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x744fffc0fb0  @objc BridgedProcessorManager.(null) <stripped>
+	0x5cfffbb7c8  @objc BridgedProcessorManager.(null) <stripped>
 
 	// Swift methods
  }
@@ -894,29 +931,29 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	// Properties
 	let eventID : String // +0x8 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventDate : 3¶ // +0x19 (0x0)
+	let eventDate : ® // +0x19 (0x0)
 	let eventPath : String // +0x45545f5f (0x10)
 	let sessionID : String // +0x0 (0x10)
 	let appSessionID : String? // +0x0 (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6b4400022ec8 (0x34400022ec8) in binary!
-	0x6b38  @objc BridgedEventData.(null) <stripped>
-WARNING: couldn't find address 0x6b2c00022ec0 (0x32c00022ec0) in binary!
-	0x6b20  @objc BridgedEventData.(null) <stripped>
-WARNING: couldn't find address 0x6b1400022d68 (0x31400022d68) in binary!
-	0x6b08  @objc BridgedEventData.(null) <stripped>
-WARNING: couldn't find address 0x6afc00022f00 (0x2fc00022f00) in binary!
-	0x8cf0  @objc BridgedEventData.(null) <stripped>
+WARNING: couldn't find address 0x6f3c000227e8 (0x73c000227e8) in binary!
+	0x6f30  @objc BridgedEventData.(null) <stripped>
+WARNING: couldn't find address 0x6f24000226a0 (0x724000226a0) in binary!
+	0x6f18  @objc BridgedEventData.(null) <stripped>
+WARNING: couldn't find address 0x6f0c00022678 (0x70c00022678) in binary!
+	0x6f00  @objc BridgedEventData.(null) <stripped>
+WARNING: couldn't find address 0x6ef400022818 (0x6f400022818) in binary!
+	0x9388  @objc BridgedEventData.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x534fffc1e48  @objc BridgedEventData.(null) <stripped>
-	0x53cfffc2030  @objc BridgedEventData.1 <stripped>
-	0x4a400022b38  @objc BridgedEventData.A_]√UHâÂAVAUSPIâ˝ˇïÍ <stripped>
-WARNING: couldn't find address 0x22e8cfffc6f50 (0x68cfffc6f50) in binary!
-	0x17000022b18  @objc BridgedEventData.(null) <stripped>
+	0x64cfffbc670  @objc BridgedEventData.(null) <stripped>
+	0x654fffbc858  @objc BridgedEventData.A\A]A^A_]√f.Ñ <stripped>
+	0x33c00022450  @objc BridgedEventData.ﬁË˙ <stripped>
+WARNING: couldn't find address 0x227a4fffc1a18 (0x7a4fffc1a18) in binary!
+	0x6400022430  @objc BridgedEventData.(null) <stripped>
 
 	// Swift methods
-	0x33110  func <stripped> // method 
+	0x38030  func <stripped> // method 
  }
 
  class AppAnalytics.BridgedTracker : NSObject /usr/lib/libobjc.A.dylib {
@@ -928,40 +965,47 @@ WARNING: couldn't find address 0x22e8cfffc6f50 (0x68cfffc6f50) in binary!
 	let eventMirrorStore : BridgedEventMirrorStore
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6adc00022e78 (0x2dc00022e78) in binary!
-	0x6ad0  @objc BridgedTracker.(null) <stripped>
-WARNING: couldn't find address 0x6ac400022ec8 (0x2c400022ec8) in binary!
-	0x8cb8  @objc BridgedTracker.(null) <stripped>
-WARNING: couldn't find address 0x318000000c (0x318000000c) in binary!
-	0x68cfffc6f50  @objc BridgedTracker.(null) <stripped>
-	0x304fffc6ce8  @objc BridgedTracker.t <stripped>
+WARNING: couldn't find address 0x6ed400022790 (0x6d400022790) in binary!
+	0x6ec8  @objc BridgedTracker.(null) <stripped>
+WARNING: couldn't find address 0x6ebc000227e0 (0x6bc000227e0) in binary!
+	0x9350  @objc BridgedTracker.(null) <stripped>
+WARNING: couldn't find address 0x338000000c (0x338000000c) in binary!
+	0x7a4fffc1a18  @objc BridgedTracker.(null) <stripped>
+	0x41cfffc1790  @objc BridgedTracker.ˇHâù(ˇˇˇHã!Q	 <stripped>
 
 	// Swift methods
+ }
+
+ enum AppAnalytics.SessionGroup {
+
+	// Properties
+	case custom : String
+	case default  
  }
 
  class AppAnalytics.BridgedTimedData : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startDate : 3¶ // +0x87000 (0x0)
+	let startDate : ® // +0x92000 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let endDate : 3¶ // +0x0 (0x0)
-	let duration : Double // +0x87000 (0x8)
+	let endDate : ® // +0x0 (0x0)
+	let duration : Double // +0x92000 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x683400022aa8 (0x3400022aa8) in binary!
-	0x6828  @objc BridgedTimedData.(null) <stripped>
-WARNING: couldn't find address 0x8f6d00022a60 (0x76d00022a60) in binary!
-	0x6810  @objc BridgedTimedData.(null) <stripped>
-	0x89f8  @objc BridgedTimedData.HÖ¿tY√Hç=‚ <stripped>
+WARNING: couldn't find address 0x6c14000223a8 (0x414000223a8) in binary!
+	0x6c08  @objc BridgedTimedData.(null) <stripped>
+	0x6bf0  dispatch thunk of EventType.init()
+WARNING: couldn't find address 0x6be400022508 (0x3e400022508) in binary!
+	0x9078  @objc BridgedTimedData.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x3dcfffc9cb0  @objc BridgedTimedData.(null) <stripped>
-	0xfffca068  @objc BridgedTimedData.,LâÔËPô <stripped>
+	0x4dcfffc4ef0  @objc BridgedTimedData.(null) <stripped>
+	0xfffc52a8  @objc BridgedTimedData.√Ä <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x344fffcb720  @objc BridgedTimedData.(null) <stripped>
+	0x444fffc6d60  @objc BridgedTimedData.(null) <stripped>
 
 	// Swift methods
-	0x39890  func <stripped> // method 
+	0x3f170  func <stripped> // method 
  }
 
  struct AppAnalytics.Session {
@@ -971,7 +1015,7 @@ WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
 	let appSessionID : String?
 	let kind : Kind
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startDate : 3¶
+	let startDate : ®
 	let sessionData : [String : Any]
  }
 
@@ -990,7 +1034,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var cache : EventMirrorProperty
 
 	// Swift methods
-	0x3a790  func <stripped> // method 
+	0x400a0  func <stripped> // method 
  }
 
  struct AppAnalytics.SnapshotEntry {
@@ -1007,15 +1051,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let properties : BridgedRawEventProperty
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xaeac00022a20 (0x6ac00022a20) in binary!
-	0x67d8  @objc BridgedRawEvent.(null) <stripped>
-WARNING: couldn't find address 0x89cc00022a50 (0x1cc00022a50) in binary!
+WARNING: couldn't find address 0x7b3000022318 (0x33000022318) in binary!
+	0x6bb8  @objc BridgedRawEvent.(null) <stripped>
+WARNING: couldn't find address 0x904c00022350 (0x4c00022350) in binary!
 	0x68000000c  @objc BridgedRawEvent.(null) <stripped>
-WARNING: couldn't find address 0x67b400022ca8 (0x7b400022ca8) in binary!
-	0x67a8  @objc BridgedRawEvent.(null) <stripped>
+WARNING: couldn't find address 0x6b94000225a8 (0x394000225a8) in binary!
+	0x6b88  @objc BridgedRawEvent.(null) <stripped>
 
 	// Swift methods
-	0x3b460  class func BridgedRawEvent.__allocating_init(name:properties:) // init 
+	0x40db0  class func BridgedRawEvent.__allocating_init(name:properties:) // init 
  }
 
  enum AppAnalytics.PushEvent {
@@ -1029,25 +1073,25 @@ WARNING: couldn't find address 0x67b400022ca8 (0x7b400022ca8) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : § // +0x5 (0x0)
+	let url : ¶ // +0x5 (0x0)
 	let name : String // +0x15 (0x10)
 	let sharedContainerIdentifier : String? // +0x65745f5f (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x67b400022ca8 (0x7b400022ca8) in binary!
-	0x67a8  @objc Endpoint.(null) <stripped>
-WARNING: couldn't find address 0x679c000229d0 (0x79c000229d0) in binary!
-	0x7660  @objc Endpoint.(null) <stripped>
-WARNING: couldn't find address 0x678400022b88 (0x78400022b88) in binary!
-	0x8978  @objc Endpoint.(null) <stripped>
+WARNING: couldn't find address 0x6b94000225a8 (0x394000225a8) in binary!
+	0x6b88  @objc Endpoint.(null) <stripped>
+WARNING: couldn't find address 0x6b7c000222c8 (0x37c000222c8) in binary!
+	0x7af0  @objc Endpoint.(null) <stripped>
+WARNING: couldn't find address 0x6b6400022488 (0x36400022488) in binary!
+	0x8ff8  @objc Endpoint.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffd9c90  @objc Endpoint.(null) <stripped>
+	0xfffd8340  @objc Endpoint.(null) <stripped>
 WARNING: couldn't find address 0xb8000000c (0xb8000000c) in binary!
-	0x15cfffd9ca8  @objc Endpoint.(null) <stripped>
-	0x134fffd9d10  @objc Endpoint.«Î <stripped>
+	0x254fffd8358  @objc Endpoint.(null) <stripped>
+	0x22cfffd83c0  @objc Endpoint.Iâ÷Hâ˚øˇ <stripped>
 
 	// Swift methods
-	0x3d160  class func Endpoint.__allocating_init(url:name:sharedContainerIdentifier:) // init 
+	0x42eb0  class func Endpoint.__allocating_init(url:name:sharedContainerIdentifier:) // init 
  }
 
  enum AppAnalytics.UploadBatchQueueKey {
@@ -1062,7 +1106,7 @@ WARNING: couldn't find address 0xb8000000c (0xb8000000c) in binary!
 	// Properties
 	case success : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case failed : ·°
+	case failed : Ø£
  }
 
  class AppAnalytics.Tracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1083,8 +1127,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var willSubmitObservers : TrackerWillSubmitObserver
 
 	// Swift methods
-	0x3f7f0  func <stripped> // getter 
-	0x40e50  func <stripped> // method 
+	0x45820  func <stripped> // getter 
+	0x47050  func <stripped> // method 
  }
 
  class AppAnalytics.AccessTracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1110,7 +1154,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startTime : 3¶
+	let startTime : ®
  }
 
  enum AppAnalytics.TrackerName {
@@ -1144,31 +1188,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let maxUploadTries : Int
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x715800022970 (0x15800022970) in binary!
-	0x714c  @objc UploadBatchEventConfig.(null) <stripped>
-WARNING: couldn't find address 0x691000022948 (0x11000022948) in binary!
-	0x7134  @objc UploadBatchEventConfig.(null) <stripped>
-WARNING: couldn't find address 0x91bd00022920 (0x1bd00022920) in binary!
-	0x7708  @objc UploadBatchEventConfig.(null) <stripped>
-WARNING: couldn't find address 0x76fc000228f8 (0x6fc000228f8) in binary!
-	0x91b2  @objc UploadBatchEventConfig.(null) <stripped>
-WARNING: couldn't find address 0x76e4000228d0 (0x6e4000228d0) in binary!
-	0x66e0  @objc UploadBatchEventConfig.(null) <stripped>
-WARNING: couldn't find address 0x88d400022958 (0xd400022958) in binary!
+WARNING: couldn't find address 0x75d800022268 (0x5d800022268) in binary!
+	0x75cc  @objc UploadBatchEventConfig.(null) <stripped>
+WARNING: couldn't find address 0x6d2000022240 (0x52000022240) in binary!
+	0x75b4  @objc UploadBatchEventConfig.(null) <stripped>
+WARNING: couldn't find address 0x985d00022218 (0x5d00022218) in binary!
+	0x7bb8  @objc UploadBatchEventConfig.(null) <stripped>
+WARNING: couldn't find address 0x7bac000221f0 (0x3ac000221f0) in binary!
+	0x9852  @objc UploadBatchEventConfig.(null) <stripped>
+WARNING: couldn't find address 0x7b94000221c8 (0x394000221c8) in binary!
+	0x6ac0  @objc UploadBatchEventConfig.(null) <stripped>
+WARNING: couldn't find address 0x8f5400022258 (0x75400022258) in binary!
 	0x38000000c  @objc UploadBatchEventConfig.(null) <stripped>
-WARNING: couldn't find address 0x92df00022890 (0x2df00022890) in binary!
-	0x66b0  @objc UploadBatchEventConfig.(null) <stripped>
-WARNING: couldn't find address 0x88a400022928 (0xa400022928) in binary!
+WARNING: couldn't find address 0x997f00022188 (0x17f00022188) in binary!
+	0x6a90  @objc UploadBatchEventConfig.(null) <stripped>
+WARNING: couldn't find address 0x8f2400022228 (0x72400022228) in binary!
 	0x18000000c  @objc UploadBatchEventConfig.(null) <stripped>
-WARNING: couldn't find address 0xa83000022a48 (0x3000022a48) in binary!
+WARNING: couldn't find address 0xaf0000022348 (0x70000022348) in binary!
 	0x48000000c  @objc UploadBatchEventConfig.(null) <stripped>
-WARNING: couldn't find address 0x667400022a10 (0x67400022a10) in binary!
-	0x6668  @objc UploadBatchEventConfig.(null) <stripped>
-WARNING: couldn't find address 0x665c00022a60 (0x65c00022a60) in binary!
-	0x8850  @objc UploadBatchEventConfig.(null) <stripped>
+WARNING: couldn't find address 0x6a5400022310 (0x25400022310) in binary!
+	0x6a48  @objc UploadBatchEventConfig.(null) <stripped>
+WARNING: couldn't find address 0x6a3c00022360 (0x23c00022360) in binary!
+	0x8ed0  @objc UploadBatchEventConfig.(null) <stripped>
 
 	// Swift methods
-	0x4b6a0  class func UploadBatchEventConfig.__allocating_init(batchSize:batchDebugging:) // init 
+	0x54460  class func UploadBatchEventConfig.__allocating_init(batchSize:batchDebugging:) // init 
  }
 
  class AppAnalytics.Lazy {
@@ -1185,15 +1229,15 @@ WARNING: couldn't find address 0x665c00022a60 (0x65c00022a60) in binary!
 	let requirement : BridgedEventPropertyRequirement
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x92df00022890 (0x2df00022890) in binary!
-	0x66b0  @objc BridgedRawEventProperty.(null) <stripped>
-WARNING: couldn't find address 0x88a400022928 (0xa400022928) in binary!
+WARNING: couldn't find address 0x997f00022188 (0x17f00022188) in binary!
+	0x6a90  @objc BridgedRawEventProperty.(null) <stripped>
+WARNING: couldn't find address 0x8f2400022228 (0x72400022228) in binary!
 	0x18000000c  @objc BridgedRawEventProperty.(null) <stripped>
-WARNING: couldn't find address 0xa83000022a48 (0x3000022a48) in binary!
+WARNING: couldn't find address 0xaf0000022348 (0x70000022348) in binary!
 	0x48000000c  @objc BridgedRawEventProperty.(null) <stripped>
 
 	// Swift methods
-	0x4c2a0  class func BridgedRawEventProperty.__allocating_init(dataName:requirement:) // init 
+	0x55060  class func BridgedRawEventProperty.__allocating_init(dataName:requirement:) // init 
  }
 
  class AppAnalytics.UploadDropbox : _SwiftObject /usr/lib/swift/libswiftCore.dylib, UploadDropboxType {
@@ -1214,7 +1258,7 @@ WARNING: couldn't find address 0xa83000022a48 (0x3000022a48) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case enabled : mö
+	case enabled : ú
 	case none  
  }
 
@@ -1247,12 +1291,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var flushQueue : OS_dispatch_queue
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa83000022a48 (0x3000022a48) in binary!
+WARNING: couldn't find address 0xaf0000022348 (0x70000022348) in binary!
 	0x48000000c  @objc UploadManager.(null) <stripped>
 
 	// Swift methods
-	0x528d0  func <stripped> // method 
-	0x52c10  func <stripped> // method 
+ }
+
+ enum AppAnalytics.TimestampGranularity {
+
+	// Properties
+	case precise  
+	case day  
  }
 
  class AppAnalytics.Group : NSObject /usr/lib/libobjc.A.dylib {
@@ -1260,17 +1309,18 @@ WARNING: couldn't find address 0xa83000022a48 (0x3000022a48) in binary!
 	// Properties
 	let name : String // +0x8 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startDate : 3¶ // +0x0 (0x0)
+	let startDate : ® // +0x0 (0x0)
+	var count : Int // +0x45545f5f (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x667400022a10 (0x67400022a10) in binary!
-	0x6668  @objc Group.(null) <stripped>
-WARNING: couldn't find address 0x665c00022a60 (0x65c00022a60) in binary!
-	0x8850  @objc Group.(null) <stripped>
+WARNING: couldn't find address 0x6a5400022310 (0x25400022310) in binary!
+	0x6a48  @objc Group.(null) <stripped>
+WARNING: couldn't find address 0x6a3c00022360 (0x23c00022360) in binary!
+	0x8ed0  @objc Group.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffede88  @objc Group.(null) <stripped>
+	0xfffed208  @objc Group.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x7e4ffff0540  @objc Group.(null) <stripped>
+	0xdcfffef8d0  @objc Group.(null) <stripped>
 
 	// Swift methods
  }
@@ -1303,9 +1353,9 @@ WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
 	// Properties
 	var identifier : String // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : § // +0x45545f5f (0x0)
-	var eventCount : Int // +0x0 (0x8)
-	var byteSize : Int // +0x1d20 (0x8)
+	let url : ¶ // +0x0 (0x0)
+	var eventCount : Int // +0x2140 (0x8)
+	var byteSize : Int // +0x77f6a (0x8)
 	var state : UploadDropboxFileState // +0x0 (0xa)
 	var fileHandle : NSFileHandle? // +0x0 (0x8)
 	var lock : UnfairLock // +0x0 (0x8)
@@ -1315,7 +1365,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class AppAnalytics.UploadDropboxFileManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, UploadDropboxFileManagerType {
 	// Swift methods
-	0x57390  func <stripped> // method 
+	0x60540  func <stripped> // method 
  }
 
  enum AppAnalytics.Errors {
@@ -1352,15 +1402,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let type : Any.Type // +0x10
  }
 
+ struct AppAnalytics.FoundData {
+
+	// Properties
+	let key : String // +0x0
+	let data : Any // +0x10
+ }
+
  class AppAnalytics.AppSessionManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AppSessionManagerType,  AppSessionProviding {
 
 	// Properties
+	var $__lazy_storage_$_sessionGroupManager : SessionGroupManager
 	let accessQueue : OS_dispatch_queue
 	var _appSessionID : String?
 	var _sessionManagers : WeakSessionManager
 
 	// Swift methods
-	0x5a810  class func AppSessionManager.__allocating_init(accessQueue:) // init 
+	0x64060  class func AppSessionManager.__allocating_init(accessQueue:) // init 
  }
 
  class AppAnalytics.WeakSessionManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1384,7 +1442,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case posixError : ªù
+	case posixError : Sü
 	case noSuchFileOrDirectory  
  }
 
@@ -1393,7 +1451,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case success : ProcessEvent
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case failed : ·°
+	case failed : Ø£
  }
 
  enum AppAnalytics.EventSubmit {
@@ -1412,7 +1470,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let isEnabled : Bool // +0x0 (0x1)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa7e0000229f8 (0x7e0000229f8) in binary!
+WARNING: couldn't find address 0xaeb0000222f8 (0x6b0000222f8) in binary!
 	0x68000000c  @objc UploadBatchEventProcessor.(null) <stripped>
 
 	// Swift methods
@@ -1430,17 +1488,17 @@ WARNING: couldn't find address 0xa7e0000229f8 (0x7e0000229f8) in binary!
 	let appSessionManager : AppSessionManager // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x662400022a28 (0x62400022a28) in binary!
-	0x6618  @objc BridgedAppSessionManager.(null) <stripped>
-WARNING: couldn't find address 0x880c000227d0 (0xc000227d0) in binary!
-	0x65f4  @objc BridgedAppSessionManager.(null) <stripped>
-WARNING: couldn't find address 0x87f4000227a8 (0x7f4000227a8) in binary!
-	0x87e8  @objc BridgedAppSessionManager.(null) <stripped>
+WARNING: couldn't find address 0x6a0400022328 (0x20400022328) in binary!
+	0x69f8  @objc BridgedAppSessionManager.(null) <stripped>
+WARNING: couldn't find address 0x8e8c000220c8 (0x68c000220c8) in binary!
+	0x69d4  @objc BridgedAppSessionManager.(null) <stripped>
+WARNING: couldn't find address 0x8e74000220a0 (0x674000220a0) in binary!
+	0x8e68  @objc BridgedAppSessionManager.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x1ccffff2190  @objc BridgedAppSessionManager.(null) <stripped>
-	0xffff2268  @objc BridgedAppSessionManager.ÈÓ˛ˇˇêêêUHâÂˇV]√êêêêêêêUHâÂAWAVAUATSHÉÏ8LâËLâm»HâM–Iâ’IâÙHâu∏Hâ˚Hâ}¿Hâ«Ëô <stripped>
+	0x2ccffff1520  @objc BridgedAppSessionManager.(null) <stripped>
+	0xffff15f8  @objc BridgedAppSessionManager. <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffff2660  @objc BridgedAppSessionManager.(null) <stripped>
+	0xffff19f0  @objc BridgedAppSessionManager.(null) <stripped>
  }
 
  struct AppAnalytics.FlushEvents {
@@ -1459,16 +1517,16 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	var timer : OS_dispatch_source_timer?
 
 	// Swift methods
-	0x627b0  func <stripped> // getter 
-	0x627e0  func <stripped> // setter 
-	0x62830  func <stripped> // modifyCoroutine 
-	0x62450  class func FlushProcessor.__allocating_init(flushEvents:flushInterval:) // init 
-	0x62a70  func <stripped> // method 
-	0x62b90  func <stripped> // method 
-	0x62ca0  func <stripped> // method 
-	0x62f40  func <stripped> // method 
-	0x62f50  func <stripped> // method 
-	0x62f60  func <stripped> // method 
+	0x6c250  func <stripped> // getter 
+	0x6c280  func <stripped> // setter 
+	0x6c2d0  func <stripped> // modifyCoroutine 
+	0x6bef0  class func FlushProcessor.__allocating_init(flushEvents:flushInterval:) // init 
+	0x6c510  func <stripped> // method 
+	0x6c630  func <stripped> // method 
+	0x6c740  func <stripped> // method 
+	0x6c9e0  func <stripped> // method 
+	0x6c9f0  func <stripped> // method 
+	0x6ca00  func <stripped> // method 
  }
 
  enum AppAnalytics.SessionChange { }
@@ -1479,15 +1537,15 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	let sessionObserver : SessionObserver
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xacb800022780 (0x4b800022780) in binary!
-	0x65c8  @objc BridgedSessionObserver.(null) <stripped>
-WARNING: couldn't find address 0x87bc00022840 (0x7bc00022840) in binary!
+WARNING: couldn't find address 0xb39400022078 (0x39400022078) in binary!
+	0x69a8  @objc BridgedSessionObserver.(null) <stripped>
+WARNING: couldn't find address 0x8e3c00022140 (0x63c00022140) in binary!
 	0x18000000c  @objc BridgedSessionObserver.(null) <stripped>
-WARNING: couldn't find address 0xa74800022960 (0x74800022960) in binary!
+WARNING: couldn't find address 0xae1800022260 (0x61800022260) in binary!
 	0x38000000c  @objc BridgedSessionObserver.(null) <stripped>
 
 	// Swift methods
-	0x63bf0  func <stripped> // method 
+	0x6d690  func <stripped> // method 
  }
 
  class AppAnalytics.ProxyEventProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1497,7 +1555,7 @@ WARNING: couldn't find address 0xa74800022960 (0x74800022960) in binary!
 	let proxyEventProcessor : EventProcessorType
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa74800022960 (0x74800022960) in binary!
+WARNING: couldn't find address 0xae1800022260 (0x61800022260) in binary!
 	0x38000000c  @objc ProxyEventProcessor.(null) <stripped>
 
 	// Swift methods
@@ -1507,25 +1565,25 @@ WARNING: couldn't find address 0xa74800022960 (0x74800022960) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_baseURL : ≥ñ
+	var $__lazy_storage_$_baseURL : ò
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_debugBaseURL : ≥ñ
+	var $__lazy_storage_$_debugBaseURL : ò
 	let environmentName : String
 	let fileManager : UploadDropboxFileManagerType
 	let staticPathProvider : UploadDropboxPathProviderType
 
 	// Swift methods
-	0x64210  func <stripped> // getter 
-	0x64360  func <stripped> // getter 
+	0x6dcb0  func <stripped> // getter 
+	0x6de00  func <stripped> // getter 
  }
 
  class AppAnalytics.BaseDocumentDirectoryUploadDropboxPathProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, UploadDropboxPathProviderType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let baseURL : §
+	let baseURL : ¶
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let debugBaseURL : §
+	let debugBaseURL : ¶
 
 	// Swift methods
  }
@@ -1534,18 +1592,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_baseURL : ≥ñ
+	var $__lazy_storage_$_baseURL : ò
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_debugBaseURL : ≥ñ
+	var $__lazy_storage_$_debugBaseURL : ò
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let baseURLProvider : üñ
+	let baseURLProvider : ˇó
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let debugURLProvider : üñ
+	let debugURLProvider : ˇó
 	let fileManager : UploadDropboxFileManagerType
 
 	// Swift methods
-	0x647b0  func <stripped> // getter 
-	0x647e0  func <stripped> // getter 
+	0x6e250  func <stripped> // getter 
+	0x6e280  func <stripped> // getter 
  }
 
  enum AppAnalytics.DataEventTrait {
@@ -1563,15 +1621,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let data : AADataEventType
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xac5400022730 (0x45400022730) in binary!
-	0x6580  @objc BridgedSessionData.(null) <stripped>
-WARNING: couldn't find address 0x8774000227f8 (0x774000227f8) in binary!
+WARNING: couldn't find address 0x78d800022028 (0xd800022028) in binary!
+	0x6960  @objc BridgedSessionData.(null) <stripped>
+WARNING: couldn't find address 0x8df4000220f8 (0x5f4000220f8) in binary!
 	0x38000000c  @objc BridgedSessionData.(null) <stripped>
-WARNING: couldn't find address 0xa9b5000226f8 (0x1b5000226f8) in binary!
-	0x6550  @objc BridgedSessionData.(null) <stripped>
+WARNING: couldn't find address 0xb08500021ff0 (0x8500021ff0) in binary!
+	0x6930  @objc BridgedSessionData.(null) <stripped>
 
 	// Swift methods
-	0x657e0  class func BridgedSessionData.__allocating_init(key:data:) // init 
+	0x6f280  class func BridgedSessionData.__allocating_init(key:data:) // init 
  }
 
  class AppAnalytics.BridgedEventProperty : NSObject /usr/lib/libobjc.A.dylib {
@@ -1582,15 +1640,15 @@ WARNING: couldn't find address 0xa9b5000226f8 (0x1b5000226f8) in binary!
 	let dataKey : String
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa9b5000226f8 (0x1b5000226f8) in binary!
-	0x6550  @objc BridgedEventProperty.(null) <stripped>
-WARNING: couldn't find address 0x8744000227c8 (0x744000227c8) in binary!
+WARNING: couldn't find address 0xb08500021ff0 (0x8500021ff0) in binary!
+	0x6930  @objc BridgedEventProperty.(null) <stripped>
+WARNING: couldn't find address 0x8dc4000220c8 (0x5c4000220c8) in binary!
 	0x78000000c  @objc BridgedEventProperty.(null) <stripped>
-WARNING: couldn't find address 0x6708000226a8 (0x708000226a8) in binary!
-	0xac04  @objc BridgedEventProperty.(null) <stripped>
+WARNING: couldn't find address 0x6b1800021fa0 (0x31800021fa0) in binary!
+	0xb2e0  @objc BridgedEventProperty.(null) <stripped>
 
 	// Swift methods
-	0x65a50  class func BridgedEventProperty.__allocating_init(dataType:requirement:) // init 
+	0x6f4f0  class func BridgedEventProperty.__allocating_init(dataType:requirement:) // init 
  }
 
  struct AppAnalytics.SequenceEntry {
@@ -1598,6 +1656,15 @@ WARNING: couldn't find address 0x6708000226a8 (0x708000226a8) in binary!
 	// Properties
 	let name : String // +0x0
 	let data : DataEventType // +0x10
+	let kind : Kind // +0x38
+ }
+
+ enum AppAnalytics.Kind {
+
+	// Properties
+	case timedData  
+	case eventData  
+	case userDefined  
  }
 
  class AppAnalytics.BridgedSessionManager : NSObject /usr/lib/libobjc.A.dylib {
@@ -1608,19 +1675,19 @@ WARNING: couldn't find address 0x6708000226a8 (0x708000226a8) in binary!
 	let sessionManager : SessionManager
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x64cc00022660 (0x4cc00022660) in binary!
-	0x64c0  @objc BridgedSessionManager.(null) <stripped>
-WARNING: couldn't find address 0x64b4000228b8 (0x4b4000228b8) in binary!
-	0x6ebc  @objc BridgedSessionManager.(null) <stripped>
-WARNING: couldn't find address 0x869c00022720 (0x69c00022720) in binary!
+WARNING: couldn't find address 0x68ac00021f58 (0xac00021f58) in binary!
+	0x68a0  @objc BridgedSessionManager.(null) <stripped>
+WARNING: couldn't find address 0x6894000221b8 (0x94000221b8) in binary!
+	0x733c  @objc BridgedSessionManager.(null) <stripped>
+WARNING: couldn't find address 0x8d1c00022020 (0x51c00022020) in binary!
 	0xd8000000c  @objc BridgedSessionManager.(null) <stripped>
-WARNING: couldn't find address 0xa62800022840 (0x62800022840) in binary!
-	0xaa43  @objc BridgedSessionManager.(null) <stripped>
-WARNING: couldn't find address 0xaa4c00022448 (0x24c00022448) in binary!
-	0xaa40  @objc BridgedSessionManager.(null) <stripped>
+WARNING: couldn't find address 0xacf800022140 (0x4f800022140) in binary!
+	0xb113  @objc BridgedSessionManager.(null) <stripped>
+WARNING: couldn't find address 0xb11c00021d38 (0x11c00021d38) in binary!
+	0xb110  @objc BridgedSessionManager.(null) <stripped>
 
 	// Swift methods
-	0x67460  class func BridgedSessionManager.__allocating_init(accessQueue:) // init 
+	0x71710  class func BridgedSessionManager.__allocating_init(accessQueue:) // init 
  }
 
  class AppAnalytics.BridgedAccessSessionManager : NSObject /usr/lib/libobjc.A.dylib {
@@ -1629,19 +1696,19 @@ WARNING: couldn't find address 0xaa4c00022448 (0x24c00022448) in binary!
 	let accessSessionManager : AccessSessionManager
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6708000226a8 (0x708000226a8) in binary!
-	0xac04  @objc BridgedAccessSessionManager.(null) <stripped>
-WARNING: couldn't find address 0x60f400022b28 (0xf400022b28) in binary!
-	0x8582  @objc BridgedAccessSessionManager.(null) <stripped>
-WARNING: couldn't find address 0xaaac00022660 (0x2ac00022660) in binary!
-	0x64f0  @objc BridgedAccessSessionManager.(null) <stripped>
-WARNING: couldn't find address 0x86e400022768 (0x6e400022768) in binary!
+WARNING: couldn't find address 0x6b1800021fa0 (0x31800021fa0) in binary!
+	0xb2e0  @objc BridgedAccessSessionManager.(null) <stripped>
+WARNING: couldn't find address 0x651400022430 (0x51400022430) in binary!
+	0x8ac2  @objc BridgedAccessSessionManager.(null) <stripped>
+WARNING: couldn't find address 0xb17c00021f58 (0x17c00021f58) in binary!
+	0x68d0  @objc BridgedAccessSessionManager.(null) <stripped>
+WARNING: couldn't find address 0x8d6400022068 (0x56400022068) in binary!
 	0x58000000c  @objc BridgedAccessSessionManager.(null) <stripped>
-WARNING: couldn't find address 0x64cc00022660 (0x4cc00022660) in binary!
-	0x64c0  @objc BridgedAccessSessionManager.(null) <stripped>
-WARNING: couldn't find address 0x64b4000228b8 (0x4b4000228b8) in binary!
-	0x6ebc  @objc BridgedAccessSessionManager.(null) <stripped>
-WARNING: couldn't find address 0x869c00022720 (0x69c00022720) in binary!
+WARNING: couldn't find address 0x68ac00021f58 (0xac00021f58) in binary!
+	0x68a0  @objc BridgedAccessSessionManager.(null) <stripped>
+WARNING: couldn't find address 0x6894000221b8 (0x94000221b8) in binary!
+	0x733c  @objc BridgedAccessSessionManager.(null) <stripped>
+WARNING: couldn't find address 0x8d1c00022020 (0x51c00022020) in binary!
 	0xd8000000c  @objc BridgedAccessSessionManager.(null) <stripped>
 
 	// Swift methods
@@ -1655,6 +1722,7 @@ WARNING: couldn't find address 0x869c00022720 (0x69c00022720) in binary!
 	case select : String
 	case swipe  
 	case deepLink  
+	case notification  
  }
 
  struct AppAnalytics.ActionSequence {
@@ -1682,11 +1750,11 @@ WARNING: couldn't find address 0x869c00022720 (0x69c00022720) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startTimestamp : 3¶
+	let startTimestamp : ®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let endTimestamp : 3¶
+	let endTimestamp : ®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let duration : ◊õ
+	let duration : Wù
  }
 
  enum AppAnalytics.CodingKeys {
@@ -1718,12 +1786,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let identifier : String
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x63dc00022640 (0x3dc00022640) in binary!
-	0x63d0  @objc ViewingSession.(null) <stripped>
-WARNING: couldn't find address 0x85c400022648 (0x5c400022648) in binary!
+WARNING: couldn't find address 0x67bc00021f40 (0x7bc00021f40) in binary!
+	0x67b0  @objc ViewingSession.(null) <stripped>
+WARNING: couldn't find address 0x8c4400021f48 (0x44400021f48) in binary!
 	0x68000000c  @objc ViewingSession.(null) <stripped>
-WARNING: couldn't find address 0xaa7400022508 (0x27400022508) in binary!
-	0x5f80  @objc ViewingSession.(null) <stripped>
+WARNING: couldn't find address 0xb14c000222d8 (0x14c000222d8) in binary!
+	0x63a0  @objc ViewingSession.(null) <stripped>
 
 	// Swift methods
  }
@@ -1735,12 +1803,12 @@ WARNING: couldn't find address 0xaa7400022508 (0x27400022508) in binary!
 	var activeSession : Session
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xaa7400022508 (0x27400022508) in binary!
-	0x5f80  @objc ViewingSessionManager.(null) <stripped>
-WARNING: couldn't find address 0xaa78000224e0 (0x278000224e0) in binary!
-	0x8588  @objc ViewingSessionManager.(null) <stripped>
-WARNING: couldn't find address 0x637c00022780 (0x37c00022780) in binary!
-	0x8570  @objc ViewingSessionManager.(null) <stripped>
+WARNING: couldn't find address 0xb14c000222d8 (0x14c000222d8) in binary!
+	0x63a0  @objc ViewingSessionManager.(null) <stripped>
+WARNING: couldn't find address 0xb15400021de0 (0x15400021de0) in binary!
+	0x8c08  @objc ViewingSessionManager.(null) <stripped>
+WARNING: couldn't find address 0x675c00022080 (0x75c00022080) in binary!
+	0x8bf0  @objc ViewingSessionManager.(null) <stripped>
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	0x413a4d4152  @objc ViewingSessionManager.(null) <stripped>
 WARNING: couldn't find address 0x73636974796c616e (0x174796c616e) in binary!
@@ -1755,6 +1823,7 @@ WARNING: couldn't find address 0x312d73636974796c (0x3636974796c) in binary!
 	let identifier : String
 	let contentIdentifier : String
 	var objects : NSHashTable<Swift.AnyObject>
+	var onEndClosures : ViewingSession
 	var viewingSession : ViewingSession
 
 	// Swift methods

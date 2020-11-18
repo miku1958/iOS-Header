@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 + (void)deviceManager:(id)arg1 willPublishPhysicalDevice:(id)arg2;
 + (void)logicalDevice:(id)arg1 determinePhysicalInputType:(id)arg2;
 + (id)logicalDevice:(id)arg1 makeControllerPhysicalInputProfileWithIdentifier:(id)arg2;
++ (id)logicalDeviceControllerDetailedProductCategory:(id)arg1;
 + (id)logicalDeviceControllerProductCategory:(id)arg1;
 + (void)physicalDevice:(id)arg1 getBatteryWithReply:(CDUnknownBlockType)arg2;
 + (id)physicalDeviceGetHapticCapabilities:(id)arg1;

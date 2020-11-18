@@ -11,11 +11,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (BOOL)isCanonicalBrowserUIEnabled;
 + (BOOL)isEpicShelfEnabled;
 + (BOOL)isFlowcaseEnabled;
 + (BOOL)isNewSearchUIEnabled;
 + (BOOL)isPageControlUIEnabled;
 + (BOOL)isPaginationEnabled;
++ (BOOL)isViewModelPostPlayUIEnabled;
 + (BOOL)isViewModelUIEnabled;
 
 @end

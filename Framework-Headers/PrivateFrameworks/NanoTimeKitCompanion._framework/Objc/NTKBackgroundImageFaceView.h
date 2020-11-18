@@ -8,7 +8,7 @@
 
 #import <NanoTimeKitCompanion/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, NTKEditOption, UIImageView, UIView;
+@class NSString, NTKComplicationDisplayWrapperView, NTKEditOption, UIImageView, UIView;
 
 @interface NTKBackgroundImageFaceView : NTKDigitalFaceView <UIGestureRecognizerDelegate>
 {
@@ -23,6 +23,7 @@
     UIView *_selectedContentView;
     double _breathScaleModifier;
     double _rubberBandScaleModifier;
+    NTKComplicationDisplayWrapperView *_touchWrapper;
     UIView *_backgroundContainerView;
     UIView *_zoomMaskView;
     UIImageView *_zoomVignette;
@@ -58,6 +59,7 @@
 - (void)_beginTransitionToOption;
 - (void)_cleanupAfterTransitionToOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_cleanupAfterZoom;
+- (id)_complicationDisplayWrapperForTouch:(id)arg1;
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_didTransitionToOptionView:(id)arg1;
@@ -98,6 +100,10 @@
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)setViewMode:(long long)arg1;
+- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
+- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 
 @end
 

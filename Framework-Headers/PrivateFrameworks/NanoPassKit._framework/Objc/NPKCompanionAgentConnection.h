@@ -68,17 +68,16 @@
 - (void)balanceReminderForBalance:(id)arg1 pass:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)balancesForPaymentPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginPairedWatchInstallationOfApplicationForPaymentPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)beginPairedWatchInstallationOfApplicationWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginProvisioningFromWatchOfferForPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)canAddSecureElementPassWithConfiguration:(id)arg1;
 - (void)commutePlanReminderForCommutePlan:(id)arg1 pass:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (BOOL)companionHasApplicationWithBundleID:(id)arg1;
 - (void)consistencyCheckWithCompletion:(CDUnknownBlockType)arg1;
 - (void)credentialedPassUniqueIDsSynchronous:(BOOL)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)defaultCardUniqueID:(CDUnknownBlockType)arg1;
 - (void)defaultPaymentApplicationForPassWithUniqueID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deletePaymentTransactionWithIdentifier:(id)arg1 fromDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)fetchPendingTransactionForPassWithUniqueID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleDeviceUnlockedForPendingProvisioningRequestFromGizmo;
 - (void)handlePeerPaymentTermsAndConditionsRequestFromGizmo;
 - (void)handlePendingUnpairingWithCompletion:(CDUnknownBlockType)arg1;
@@ -86,6 +85,7 @@
 - (id)init;
 - (void)initiateLostModeExitAuthWithCompletion:(CDUnknownBlockType)arg1;
 - (void)markAllAppletsForDeletionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)markPendingTransactionAsProcessedForPassWithUniqueID:(id)arg1;
 - (void)noteForegroundVerificationObserverActive:(BOOL)arg1;
 - (void)noteProvisioningPreflightCompleteWithSuccess:(BOOL)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)noteWatchOfferShownForPaymentPass:(id)arg1;

@@ -43,6 +43,7 @@
 @property (copy, nonatomic) NSString *currency; // @synthesize currency=_currency;
 @property (strong, nonatomic) NSDecimalNumber *currentAmount; // @synthesize currentAmount=_currentAmount;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) struct CGSize defaultKeyboardSize;
 @property (weak, nonatomic) id<PKPaymentSetupPurchaseAmountViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) NSDecimalNumber *depositAmount; // @synthesize depositAmount=_depositAmount;
 @property (readonly, copy) NSString *description;
@@ -75,6 +76,7 @@
 - (void)_updateMessageLabelForAmount:(id)arg1;
 - (BOOL)enterCurrencyAmountView:(id)arg1 shouldChangeAmountFrom:(id)arg2 to:(id)arg3;
 - (void)enterCurrencyAmountViewDidChangeAmount:(id)arg1;
+- (void)enterCurrencyAmountViewDidLayoutKeyboard:(id)arg1;
 - (id)initWithProduct:(id)arg1 provisioningMethodMetadata:(id)arg2 showTransferButton:(BOOL)arg3;
 - (void)layoutSubviews;
 - (void)numberPadSuggestionsView:(id)arg1 didSelectSuggestion:(id)arg2;

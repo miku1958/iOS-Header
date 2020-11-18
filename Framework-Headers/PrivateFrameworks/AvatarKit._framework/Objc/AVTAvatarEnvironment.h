@@ -18,6 +18,9 @@
     SCNNode *_whitePlane;
     SCNNode *_environmentNode;
     SCNNode *_defaultPointOfView;
+    SCNNode *_animojiCamera;
+    SCNNode *_memojiCameraGroup;
+    SCNNode *_customCamera;
     SCNNode *_specializedLightingNode;
     SCNNode *_defaultLightingNode;
 }
@@ -38,6 +41,7 @@
 - (BOOL)showReticle;
 - (void)showTrackingLossIndicator;
 - (void)updateARMode:(BOOL)arg1;
+- (void)updateCustomCameras;
 - (void)updateSpecializedLighting;
 - (void)willSnapshot;
 

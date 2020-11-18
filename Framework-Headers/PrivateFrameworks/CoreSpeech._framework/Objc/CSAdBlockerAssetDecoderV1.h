@@ -6,14 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSData;
+@class NSData, NSMutableDictionary;
 
 @interface CSAdBlockerAssetDecoderV1 : NSObject
 {
+    float _maxFingerprintBufferSize;
+    NSMutableDictionary *_shouldResetAdsDictionary;
     NSData *_payloadData;
 }
 
+@property (readonly, nonatomic) float maxFingerprintBufferSize; // @synthesize maxFingerprintBufferSize=_maxFingerprintBufferSize;
 @property (strong, nonatomic) NSData *payloadData; // @synthesize payloadData=_payloadData;
+@property (readonly, nonatomic) NSMutableDictionary *shouldResetAdsDictionary; // @synthesize shouldResetAdsDictionary=_shouldResetAdsDictionary;
 
 - (void).cxx_destruct;
 - (id)initWithData:(id)arg1;

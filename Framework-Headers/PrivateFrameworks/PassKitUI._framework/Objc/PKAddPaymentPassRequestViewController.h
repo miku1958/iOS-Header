@@ -29,6 +29,7 @@
     double _offsetForTextfield;
     BOOL _viewAppearing;
     BOOL _preconditionsValidated;
+    BOOL _sentViewHasAppearedEvent;
     PKTableHeaderView *_headerView;
     OBPrivacyLinkController *_privacyController;
     RemoteUIController *_termsController;

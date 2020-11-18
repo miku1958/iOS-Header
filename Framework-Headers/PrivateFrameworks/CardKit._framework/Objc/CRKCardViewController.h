@@ -71,6 +71,7 @@
 - (void)_setCardWithLoadedBundles:(id)arg1 loadProvidersImmediately:(BOOL)arg2;
 - (struct CGSize)boundingSizeForCardSectionViewController:(id)arg1;
 - (void)cardEventDidOccur:(unsigned long long)arg1 withIdentifier:(id)arg2 userInfo:(id)arg3;
+- (void)cardSectionView:(id)arg1 willProcessEngagementFeedback:(id)arg2;
 - (void)cardSectionViewController:(id)arg1 didSelectPreferredPunchoutIndex:(long long)arg2;
 - (void)cardSectionViewController:(id)arg1 requestsHandlingOfIntent:(id)arg2;
 - (void)cardSectionViewControllerBoundsDidChange:(id)arg1;

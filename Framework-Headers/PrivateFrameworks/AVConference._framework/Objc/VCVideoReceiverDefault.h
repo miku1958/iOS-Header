@@ -25,13 +25,14 @@ __attribute__((visibility("hidden")))
     unsigned short _lastKeyFrameRequestStreamID;
     VCVideoStreamRateAdaptationFeedbackOnly *_rateAdaptation;
     VCDisplayLink *_displayLink;
+    double _lastDecodedFrameTime;
 }
 
 @property (strong) VideoAttributes *remoteVideoAttributes; // @synthesize remoteVideoAttributes;
 @property (nonatomic) BOOL shouldEnableFaceZoom; // @synthesize shouldEnableFaceZoom=_shouldEnableFaceZoom;
 
 - (void)cleanUpDisplayLink;
-- (void)collectChannelMetrics:(CDStruct_3ab08b48 *)arg1 interval:(float)arg2;
+- (void)collectChannelMetrics:(CDStruct_1dd2c43e *)arg1 interval:(float)arg2;
 - (void)dealloc;
 - (void)didSwitchFromStreamID:(unsigned short)arg1 toStreamID:(unsigned short)arg2;
 - (void)displayLinkTick:(id)arg1;

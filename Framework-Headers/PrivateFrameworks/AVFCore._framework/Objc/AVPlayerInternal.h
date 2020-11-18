@@ -120,6 +120,7 @@ __attribute__((visibility("hidden")))
     BOOL reevaluateBackgroundPlayback;
     BOOL hadAssociatedOnscreenPlayerLayerWhenSuspended;
     BOOL suspensionExpected;
+    BOOL rateUpdatedDuringTransition;
     BOOL videoLayersAreAttached;
     struct OpaqueCMClock *figMasterClock;
     NSString *captionRenderingStrategy;

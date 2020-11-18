@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
     struct NSEdgeInsets legibleContentInsets;
     BOOL honorContentScale;
     double screenScale;
+    BOOL isVisible;
 }
 
 @end

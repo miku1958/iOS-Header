@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <Silex/SVVideoMetadata-Protocol.h>
+#import <Silex/SXVideoMetadata-Protocol.h>
 
-@class NSArray, NSError, NSHashTable, NSString, SVKeyValueObserver, SVTimeline, SXAVPlayer;
+@class NSArray, NSError, NSHashTable, NSString, SVKeyValueObserver, SXAVPlayer, SXTimeline;
 @protocol SXAVPlayerFactory, SXVideoPlaybackHost, SXVideoProviding;
 
-@interface SXPlaybackCoordinator : NSObject <SVVideoMetadata>
+@interface SXPlaybackCoordinator : NSObject <SXVideoMetadata>
 {
     BOOL _playbackLikelyToKeepUp;
     BOOL _playbackBufferFull;
@@ -31,7 +31,7 @@
     SVKeyValueObserver *_muteStateObserver;
     SVKeyValueObserver *_playbackLikelyToKeepUpObserver;
     SVKeyValueObserver *_playbackBufferFullObserver;
-    SVTimeline *_timeline;
+    SXTimeline *_timeline;
     double _pausedAtTime;
     struct CGSize _dimensions;
 }
@@ -50,6 +50,7 @@
 @property (readonly, nonatomic) double loadingProgress;
 @property (strong, nonatomic) SVKeyValueObserver *muteStateObserver; // @synthesize muteStateObserver=_muteStateObserver;
 @property (nonatomic) BOOL muted; // @synthesize muted=_muted;
+@property (readonly, nonatomic) struct CGSize naturalSize;
 @property (readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (nonatomic) double pausedAtTime; // @synthesize pausedAtTime=_pausedAtTime;
 @property (readonly, nonatomic) BOOL playbackBufferFull; // @synthesize playbackBufferFull=_playbackBufferFull;
@@ -65,7 +66,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double time;
 @property (readonly, nonatomic) double timePlayed;
-@property (readonly, nonatomic) SVTimeline *timeline; // @synthesize timeline=_timeline;
+@property (readonly, nonatomic) SXTimeline *timeline; // @synthesize timeline=_timeline;
 @property (readonly, nonatomic) id<SXVideoProviding> video; // @synthesize video=_video;
 @property (readonly, nonatomic) double volume;
 

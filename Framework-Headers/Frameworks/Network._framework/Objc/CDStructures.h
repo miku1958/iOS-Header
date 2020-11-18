@@ -139,6 +139,14 @@ struct nw_activity_report_s {
     unsigned char __pad[7];
 };
 
+struct nw_connection_protocol_establishment_report_s {
+    char protocol_name[32];
+    unsigned long long handshake_milliseconds;
+    unsigned long long handshake_rtt_milliseconds;
+    int protocol_index;
+    unsigned char __pad[4];
+};
+
 struct nw_connection_report_s {
     unsigned long long bytes_in;
     unsigned long long bytes_out;
@@ -189,9 +197,12 @@ struct nw_connection_report_s {
     unsigned char first_address_family;
     unsigned char connected_address_family;
     unsigned char connection_uuid[16];
+    unsigned char parent_uuid[16];
     unsigned char activities[50][16];
     char bundle_id[256];
     char effective_bundle_id[256];
+    unsigned char __pad_bytes[2];
+    struct nw_connection_protocol_establishment_report_s protocol_establishment_reports[10];
     unsigned int triggered_path:1;
     unsigned int system_proxy_configured:1;
     unsigned int custom_proxy_configured:1;
@@ -221,8 +232,9 @@ struct nw_connection_report_s {
     unsigned int svcb_requested:1;
     unsigned int svcb_received:1;
     unsigned int svcb_dohuri:1;
-    unsigned int __pad_bits:3;
-    unsigned char __pad[6];
+    unsigned int is_probe:1;
+    unsigned int __pad_bits:2;
+    unsigned char __pad[4];
 };
 
 struct nw_protocol {

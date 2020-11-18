@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)addBouncedItem:(id)arg1;
+- (BOOL)cleanStitchedForItemID:(id)arg1;
 - (id)init;
 - (void)registerStitchingSession:(id)arg1;
 - (void)removeBouncedItemsWithIDs:(id)arg1;

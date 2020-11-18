@@ -77,6 +77,7 @@
 - (long long)type;
 - (id)validIntentDictionaryWithURLParameters:(id)arg1;
 - (void)windowScene:(id)arg1 performActionForShortcutItem:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)windowSceneDidBecomeVisible:(id)arg1;
 
 @end
 

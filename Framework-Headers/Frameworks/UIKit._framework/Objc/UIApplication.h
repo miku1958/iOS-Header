@@ -15,7 +15,7 @@
 #import <UIKitCore/UIStatusBarStyleDelegate_SpringBoardOnly-Protocol.h>
 #import <UIKitCore/_UIApplicationInitializationContextFactory-Protocol.h>
 
-@class BKSAnimationFenceHandle, BSServiceConnectionEndpointMonitor, FBSDisplayLayoutMonitor, NSArray, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSObject, NSSet, NSString, NSTimer, PKPushRegistry, SBSApplicationShortcutService, UIActivityContinuationManager, UIAlertController, UIEventDispatcher, UIEventFetcher, UIForceStageObservable, UIGestureEnvironment, UINotificationFeedbackGenerator, UIRepeatedAction, UISApplicationState, UIStatusBar, UIStatusBarWindow, UISystemNavigationAction, UIWindow, _UIApplicationInfoParser, _UIFenceTask, _UIIdleModeController;
+@class BKSAnimationFenceHandle, BSServiceConnectionEndpointMonitor, FBSDisplayLayoutMonitor, NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSSet, NSString, NSTimer, PKPushRegistry, SBSApplicationShortcutService, UIActivityContinuationManager, UIAlertController, UIEventDispatcher, UIEventFetcher, UIForceStageObservable, UIGestureEnvironment, UINotificationFeedbackGenerator, UIRepeatedAction, UISApplicationState, UIStatusBar, UIStatusBarWindow, UISystemNavigationAction, UIWindow, _UIApplicationInfoParser, _UIFenceTask, _UIHIDEventOrderedDescriptorSet, _UIIdleModeController;
 @protocol BSInvalidatable, FBSWorkspaceFencing, OS_dispatch_queue, UIApplicationDelegate;
 
 @interface UIApplication : UIResponder <FBSUIApplicationWorkspaceDelegate, FBSDisplayLayoutObserver, PKPushRegistryDelegate, UIActivityContinuationManagerApplicationContext, UIApplicationSnapshotPreparing, UIRepeatedActionDelegate, UIStatusBarStyleDelegate_SpringBoardOnly, _UIApplicationInitializationContextFactory>
@@ -129,7 +129,7 @@
     } _applicationFlags;
     id<BSInvalidatable> _keyCommandToken;
     NSMutableDictionary *_physicalKeyCommandMap;
-    NSMutableOrderedSet *_physicalKeycodeMap;
+    _UIHIDEventOrderedDescriptorSet *_physicalKeycodeSet;
     BOOL _alwaysHitTestsForMainScreen;
     UIWindow *_backgroundHitTestWindow;
     _UIApplicationInfoParser *_appInfo;
@@ -640,6 +640,7 @@
 - (void)_unregisterForSignificantTimeChangeNotification;
 - (void)_unregisterForTimeChangedNotification;
 - (void)_unregisterForUserDefaultsChanges;
+- (id)_unswizzledTargetInChainForAction:(SEL)arg1 sender:(id)arg2;
 - (void)_updateAccessibilityItunesSettings;
 - (void)_updateAppPriorityForSuspendedState;
 - (void)_updateApplicationAccessibility;

@@ -13,6 +13,9 @@
     MISSING_TYPE *inAppSubscriptionStatusChecker;
     MISSING_TYPE *webSubscriptionStatusChecker;
     MISSING_TYPE *purchaseManager;
+    MISSING_TYPE *checkBlocker;
+    MISSING_TYPE *didCompleteFinishLaunching;
+    MISSING_TYPE *featureAvailability;
 }
 
 - (void)entitlementsDidChange;

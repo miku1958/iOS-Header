@@ -10,6 +10,7 @@
 
 @class NSString, _MRVolumeControlAvailabilityProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRVolumeControlCapabilitiesDidChangeMessageProtobuf : PBCodable <NSCopying>
 {
     _MRVolumeControlAvailabilityProtobuf *_capabilities;
@@ -17,21 +18,12 @@
     NSString *_outputDeviceUID;
 }
 
-@property (strong, nonatomic) _MRVolumeControlAvailabilityProtobuf *capabilities; // @synthesize capabilities=_capabilities;
-@property (strong, nonatomic) NSString *endpointUID; // @synthesize endpointUID=_endpointUID;
-@property (readonly, nonatomic) BOOL hasCapabilities;
-@property (readonly, nonatomic) BOOL hasEndpointUID;
-@property (readonly, nonatomic) BOOL hasOutputDeviceUID;
-@property (strong, nonatomic) NSString *outputDeviceUID; // @synthesize outputDeviceUID=_outputDeviceUID;
-
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

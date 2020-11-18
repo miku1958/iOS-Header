@@ -4,19 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UICollectionReusableView.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI24EpisodeSectionHeaderView : UIView
+@interface _TtC8VideosUI24EpisodeSectionHeaderView : UICollectionReusableView
 {
-    MISSING_TYPE *delegate;
+    MISSING_TYPE *buttonView;
+    MISSING_TYPE *layout;
 }
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

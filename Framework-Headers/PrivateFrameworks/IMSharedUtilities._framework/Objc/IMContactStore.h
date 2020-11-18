@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class CNContact, CNContactStore, NSArray, NSData, NSDictionary, NSMutableDictionary;
+@protocol OS_dispatch_queue;
 
 @interface IMContactStore : NSObject
 {
@@ -19,6 +20,7 @@
     double _lastContactStoreSync;
     double _lastMeContactStoreSync;
     CNContact *_meContact;
+    NSObject<OS_dispatch_queue> *_changeHistoryFetchQueue;
     NSArray *_CNIDsForBatchFetch;
 }
 
@@ -26,6 +28,7 @@
 @property (strong, nonatomic) NSArray *CNIDsForBatchFetch; // @synthesize CNIDsForBatchFetch=_CNIDsForBatchFetch;
 @property (strong, nonatomic) NSMutableDictionary *IDToCNContactMap; // @synthesize IDToCNContactMap=_IDToCNContactMap;
 @property (nonatomic) BOOL batchFetchingForLaunchCompleted; // @synthesize batchFetchingForLaunchCompleted=_batchFetchingForLaunchCompleted;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *changeHistoryFetchQueue; // @synthesize changeHistoryFetchQueue=_changeHistoryFetchQueue;
 @property (strong, nonatomic) NSData *changeHistoryToken; // @synthesize changeHistoryToken=_changeHistoryToken;
 @property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property (strong, nonatomic) NSDictionary *handleIDToCNIDMap; // @synthesize handleIDToCNIDMap=_handleIDToCNIDMap;
@@ -85,6 +88,7 @@
 - (void)_logDictionaryInformation:(id)arg1 inRange:(struct _NSRange)arg2;
 - (void)addContact:(id)arg1 withID:(id)arg2;
 - (void)addEntriesToIDToCNContactMap:(id)arg1;
+- (void)addIDToCNIDToHandleIDsMap:(id)arg1 withCNID:(id)arg2;
 - (void)cacheBatchFetchResults:(id)arg1 handleIDsWithoutCNID:(id)arg2;
 - (void)checkForContactStoreChanges;
 - (id)completedContact:(id)arg1 withKeys:(id)arg2;
@@ -95,6 +99,7 @@
 - (id)fetchCNContactWithIdentifier:(id)arg1;
 - (void)fetchCNContactsForHandlesWithIDs:(id)arg1 isFinalBatch:(BOOL)arg2;
 - (id)fetchMeContactWithKeys:(id)arg1;
+- (id)fetchMeContactWithKeys:(id)arg1 withError:(id *)arg2;
 - (void)generateCNIDToHandleIDMap;
 - (id)getAllKeysFromIDToCNContactMap;
 - (id)getCNIDToHandleIDsMap;
@@ -109,6 +114,7 @@
 - (id)initWithContactStore:(id)arg1;
 - (BOOL)isBatchFetchingForLaunchCompleted;
 - (BOOL)isContactWithIDAlreadyFetched:(id)arg1;
+- (BOOL)isIDAKnownContact:(id)arg1;
 - (void)logCNContact:(id)arg1;
 - (void)logCNContact:(id)arg1 andID:(id)arg2;
 - (void)logContactFetchRequestResults:(id)arg1;
@@ -119,6 +125,7 @@
 - (void)logHandleIDs:(id)arg1;
 - (void)meCardChanged:(id)arg1;
 - (void)removeContactWithID:(id)arg1;
+- (void)removeIDFromCNIDToHandleIDsMap:(id)arg1 withCNID:(id)arg2;
 - (void)replaceContact:(id)arg1 withID:(id)arg2;
 - (void)replaceWithMutableContactForID:(id)arg1;
 - (void)resetMeCard;

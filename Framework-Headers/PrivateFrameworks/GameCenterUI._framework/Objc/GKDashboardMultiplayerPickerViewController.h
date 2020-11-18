@@ -78,6 +78,7 @@
 - (void)didBeginSearchTextEditing;
 - (void)didEndSearchTextEditing;
 - (void)didPressShowContactPickerButton:(id)arg1;
+- (void)handleSearchTextFieldReturn:(id)arg1;
 - (BOOL)hasData;
 - (id)initWithMaxSelectable:(long long)arg1 hiddenPlayers:(id)arg2 nearbyOnly:(BOOL)arg3;
 - (void)pickerDatasource:(id)arg1 didPickPlayers:(id)arg2;

@@ -44,6 +44,7 @@
 - (void)recipientSelectionControllerRequestDismissKeyboard:(id)arg1;
 - (void)recipientSelectionControllerReturnPressed:(id)arg1;
 - (void)recipientSelectionControllerSearchListDidShowOrHide:(id)arg1;
+- (void)recipientSelectionControllerShouldResignFirstResponder:(id)arg1;
 - (void)recipientSelectionControllerTabPressed:(id)arg1;
 - (BOOL)shouldAutorotate;
 - (BOOL)shouldSuppressSearchResultsTable;

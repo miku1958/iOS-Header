@@ -23,11 +23,11 @@
 + (id)_highOrLowAbove120Below50HeartRateExpandedContentItemsAlgVersionOne;
 + (id)_inconclusiveExpandedContentItemsAlgVersionOneWithLearnMoreDelegate:(id)arg1;
 + (id)_sinusRhythmExpandedContentItemsAlgVersionOne;
-+ (id)atrialFibrillationItemsWithActiveAlgorithmVersion:(long long)arg1;
-+ (id)highOrLowAbove120Below50HeartRateItemsWithActiveAlgorithmVersion:(long long)arg1;
-+ (id)inconclusiveItemsWithActiveAlgorithmVersion:(long long)arg1 learnMoreDelegate:(id)arg2;
++ (id)atrialFibrillationItemsForAlgorithmVersion:(long long)arg1;
++ (id)highOrLowAbove120Below50HeartRateItemsForAlgorithmVersion:(long long)arg1;
++ (id)inconclusiveItemsForAlgorithmVersion:(long long)arg1 upgradingFromAlgorithmVersion:(long long)arg2 learnMoreDelegate:(id)arg3;
 + (id)itemWithType:(long long)arg1 title:(id)arg2;
-+ (id)sinusRhythmItemsWithActiveAlgorithmVersion:(long long)arg1;
++ (id)sinusRhythmItemsForAlgorithmVersion:(long long)arg1;
 - (void).cxx_destruct;
 - (id)initWithType:(long long)arg1 title:(id)arg2;
 

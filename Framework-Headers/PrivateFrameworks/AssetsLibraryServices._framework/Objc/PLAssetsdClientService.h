@@ -24,7 +24,7 @@
 - (void)addPhotoLibraryUnavailabilityHandler:(CDUnknownBlockType)arg1;
 - (void)assetAvailableForIdentifier:(id)arg1 success:(BOOL)arg2 error:(id)arg3;
 - (void)downloadStatusForIdentifier:(id)arg1 progress:(double)arg2 completed:(BOOL)arg3 data:(id)arg4 error:(id)arg5;
-- (void)libraryBecameUnavailable:(id)arg1 reason:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)libraryBecameUnavailable:(id)arg1 reason:(id)arg2;
 
 @end
 

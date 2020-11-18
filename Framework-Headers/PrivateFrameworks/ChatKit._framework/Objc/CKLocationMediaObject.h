@@ -29,7 +29,6 @@
 + (BOOL)isPreviewable;
 + (id)placeholderPreviewCache;
 + (id)placeholderPreviewForWidth:(double)arg1 orientation:(BOOL)arg2;
-+ (id)titleBarMaskImageForWidth:(double)arg1;
 + (id)vcardDataFromCLLocation:(id)arg1;
 - (id)attachmentSummary:(unsigned long long)arg1;
 - (Class)balloonViewClassForWidth:(double)arg1 orientation:(BOOL)arg2;
@@ -43,11 +42,13 @@
 - (id)mapItem;
 - (int)mediaType;
 - (id)metricsCollectorMediaType;
+- (id)pasteboardItemProvider;
 - (Class)previewBalloonViewClass;
 - (id)previewCacheKeyWithOrientation:(BOOL)arg1;
 - (id)previewCachesFileURLWithOrientation:(BOOL)arg1 extension:(id)arg2 generateIntermediaries:(BOOL)arg3;
 - (id)previewForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)previewItemTitle;
+- (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
 - (id)transcriptTraitCollection;
 - (id)vCardURLProperties;
 

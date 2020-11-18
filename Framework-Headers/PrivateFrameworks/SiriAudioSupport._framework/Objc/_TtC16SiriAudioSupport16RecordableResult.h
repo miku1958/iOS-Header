@@ -11,6 +11,7 @@
 @interface _TtC16SiriAudioSupport16RecordableResult : NSObject
 {
     MISSING_TYPE *name;
+    MISSING_TYPE *version;
     MISSING_TYPE *timeElapsed;
     MISSING_TYPE *rows;
     MISSING_TYPE *info;

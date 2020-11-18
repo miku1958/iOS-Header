@@ -259,6 +259,7 @@
 - (long long)preferredComplicationFamilyForComplication:(id)arg1 withSlot:(id)arg2;
 - (void)prepareEditOptions;
 - (void)prepareForDeletion;
+- (void)prepareForSharing;
 - (id)rankedComplicationFamiliesForSlot:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (BOOL)sanitizeFaceConfiguration:(id *)arg1;

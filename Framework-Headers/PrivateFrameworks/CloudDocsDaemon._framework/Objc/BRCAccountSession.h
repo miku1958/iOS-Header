@@ -196,6 +196,7 @@
 - (id)_privateClientZonesEnumerator:(id)arg1;
 - (id)_privateServerZoneByName:(id)arg1 db:(id)arg2;
 - (id)_privateServerZonesEnumerator:(id)arg1;
+- (unsigned int)_recoverAndReportMissingJobs;
 - (void)_recreateSymlinkIfNecessaryForDocumentsPath:(id)arg1 folderName:(id)arg2 destinationPath:(id)arg3;
 - (BOOL)_recursivelyPrepareFolderForLogOutAtURL:(id)arg1 pruneEmptyFolders:(BOOL)arg2 pruneEmptyTopLevelFolder:(BOOL)arg3 maxDepth:(unsigned long long)arg4;
 - (void)_registerBackgroundXPCActivities;

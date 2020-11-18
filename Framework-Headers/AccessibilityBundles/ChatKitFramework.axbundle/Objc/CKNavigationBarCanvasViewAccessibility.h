@@ -13,8 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (void)_setupButtonContainer;
 - (void)_tearDownButtonContainer;
+- (void)setTitleView:(id)arg1;
 
 @end
 

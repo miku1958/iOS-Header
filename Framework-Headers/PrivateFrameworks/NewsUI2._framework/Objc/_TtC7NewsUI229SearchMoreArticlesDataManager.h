@@ -14,6 +14,7 @@
     MISSING_TYPE *streamingResults;
     MISSING_TYPE *readingHistory;
     MISSING_TYPE *readingList;
+    MISSING_TYPE *headlineService;
 }
 
 - (void).cxx_destruct;

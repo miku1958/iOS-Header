@@ -26,6 +26,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1 metadata:(id)arg2;
+- (id)titleContent;
 
 @end
 

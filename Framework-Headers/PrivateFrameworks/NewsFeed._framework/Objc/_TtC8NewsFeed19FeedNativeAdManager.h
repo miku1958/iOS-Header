@@ -12,6 +12,9 @@
 {
     MISSING_TYPE *nativeAdService;
     MISSING_TYPE *observers;
+    MISSING_TYPE *lock;
+    MISSING_TYPE *fetchingSectionIdentifiers;
+    MISSING_TYPE *state;
 }
 
 @end

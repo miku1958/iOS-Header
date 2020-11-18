@@ -22,23 +22,9 @@
     struct _NSRange _flowRange;
 }
 
-@property (readonly, nonatomic) NSString *componentIdentifier; // @synthesize componentIdentifier=_componentIdentifier;
-@property (readonly, nonatomic) UIView<TSDRepDirectLayerHosting> *directLayerHost; // @synthesize directLayerHost=_directLayerHost;
-@property (readonly, nonatomic) SXTextTangierFlowInfo *flowInfo; // @synthesize flowInfo=_flowInfo;
-@property (strong, nonatomic) SXTextTangierFlowLayout *flowLayout; // @synthesize flowLayout=_flowLayout;
-@property (readonly, nonatomic) struct _NSRange flowRange; // @synthesize flowRange=_flowRange;
-@property (readonly, nonatomic) SXTextTangierFlowStorage *flowStorage; // @synthesize flowStorage=_flowStorage;
-@property (strong, nonatomic) SXTextTangierTextLayout *layout; // @synthesize layout=_layout;
-@property (readonly, nonatomic) BOOL selectable; // @synthesize selectable=_selectable;
-@property (strong, nonatomic) SXTextTangierStorage *storage; // @synthesize storage=_storage;
-
 - (void).cxx_destruct;
-- (void)appendToFlowStorage:(id)arg1;
 - (id)debugDescription;
 - (id)description;
-- (id)flowLayoutWithICC:(id)arg1;
-- (id)initWithStorage:(id)arg1 layout:(id)arg2 directLayerHost:(id)arg3 selectable:(BOOL)arg4 componentIdentifier:(id)arg5;
-- (void)updateWithLayout:(id)arg1;
 
 @end
 

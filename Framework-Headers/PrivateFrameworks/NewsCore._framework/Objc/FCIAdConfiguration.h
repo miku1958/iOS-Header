@@ -17,6 +17,8 @@
     long long _segmentsSubmissionFrequency;
     long long _segmentsHistoryWindowInterval;
     long long _segmentsMinimumArticleCount;
+    long long _segmentsMinimumEventCount;
+    double _segmentsMinRelativeRate;
     NSArray *_iAdSegmentIDs;
     NSDictionary *_adStatusConditionsByType;
     double _feedNumberofViewportsBetweenAds;
@@ -29,7 +31,9 @@
 @property (readonly, nonatomic) NSArray *iAdSegmentIDs; // @synthesize iAdSegmentIDs=_iAdSegmentIDs;
 @property (readonly, nonatomic, getter=areSegmentsEnabled) BOOL segmentsEnabled; // @synthesize segmentsEnabled=_segmentsEnabled;
 @property (readonly, nonatomic) long long segmentsHistoryWindowInterval; // @synthesize segmentsHistoryWindowInterval=_segmentsHistoryWindowInterval;
+@property (readonly, nonatomic) double segmentsMinRelativeRate; // @synthesize segmentsMinRelativeRate=_segmentsMinRelativeRate;
 @property (readonly, nonatomic) long long segmentsMinimumArticleCount; // @synthesize segmentsMinimumArticleCount=_segmentsMinimumArticleCount;
+@property (readonly, nonatomic) long long segmentsMinimumEventCount; // @synthesize segmentsMinimumEventCount=_segmentsMinimumEventCount;
 @property (readonly, nonatomic) long long segmentsSubmissionFrequency; // @synthesize segmentsSubmissionFrequency=_segmentsSubmissionFrequency;
 @property (readonly, nonatomic) double segmentsThreshold; // @synthesize segmentsThreshold=_segmentsThreshold;
 

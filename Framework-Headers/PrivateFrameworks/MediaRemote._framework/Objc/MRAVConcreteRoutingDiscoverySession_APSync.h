@@ -26,8 +26,8 @@
 @property (readonly) Class superclass;
 
 + (id)externalDeviceCache;
-+ (CDUnknownBlockType)externalDeviceForIdentifier;
-+ (void)setExternalDeviceForIdentifier:(CDUnknownBlockType)arg1;
++ (CDUnknownBlockType)externalDeviceForOutputDeviceUID;
++ (void)setExternalDeviceForOutputDeviceUID:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (void)_availableEndpointsDidChangeNotification:(id)arg1;
 - (void)_externalDeviceConnectionStateDidChange:(id)arg1;

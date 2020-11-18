@@ -21,8 +21,8 @@
 - (void)_accessibilitySwitchControlStatusChanged;
 - (void)_accessibilityVoiceOverStatusChanged;
 - (id)_axCurrentPageControl;
-- (id)_axGrabbedIcons;
 - (id)_axGrabbedIconsLabel;
+- (id)_axGrabbedIconsWithView:(BOOL)arg1;
 - (BOOL)_axHideTodayView;
 - (id)_axIconScrollView;
 - (BOOL)_axIsIconDragging;

@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *learnMoreURL;
     MISSING_TYPE *webAuthButtonTitle;
+    MISSING_TYPE *configurationManager;
     MISSING_TYPE *purchaseController;
     MISSING_TYPE *purchaseProvider;
 }

@@ -13,6 +13,7 @@
 
 @interface NUANFFontLoader : NSObject <NUFontRegistrator>
 {
+    BOOL _hasLoaded;
     long long _relativePriority;
     FCFlintManifest *_flintManifest;
     FCFlintResourceManager *_flintResourceManager;
@@ -30,6 +31,7 @@
 @property (readonly, nonatomic) id<NUFontRegistration> fontRegistration; // @synthesize fontRegistration=_fontRegistration;
 @property (readonly, nonatomic) NSMutableArray *fontResourcesRegistered; // @synthesize fontResourcesRegistered=_fontResourcesRegistered;
 @property (readonly, nonatomic) NSMutableArray *fontResourcesToRegister; // @synthesize fontResourcesToRegister=_fontResourcesToRegister;
+@property (readonly, nonatomic) BOOL hasLoaded; // @synthesize hasLoaded=_hasLoaded;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long relativePriority; // @synthesize relativePriority=_relativePriority;
 @property (readonly) Class superclass;

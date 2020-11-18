@@ -30,6 +30,9 @@
 @property (nonatomic) BOOL shouldPresentDisambiguationUI; // @synthesize shouldPresentDisambiguationUI=_shouldPresentDisambiguationUI;
 @property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
 
++ (id)imageForSystemImageNamed:(id)arg1;
++ (id)imageForSystemImageNamed:(id)arg1 withPointSize:(double)arg2;
++ (id)imageForSystemImageNamed:(id)arg1 withTextStyle:(id)arg2;
 - (void).cxx_destruct;
 - (id)initWithTitle:(id)arg1 actionType:(id)arg2 actionBlock:(CDUnknownBlockType)arg3;
 - (id)initWithTitle:(id)arg1 actionType:(id)arg2 image:(id)arg3 actionBlock:(CDUnknownBlockType)arg4;

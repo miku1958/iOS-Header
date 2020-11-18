@@ -27,6 +27,7 @@
 - (long long)addReason:(long long)arg1;
 - (id)init;
 - (id)initWithExceptionPolicy:(long long)arg1;
+- (BOOL)isInterruptedForReason:(long long)arg1;
 - (void)noteDidNotifyProxyOfInterruptionBegan;
 - (void)noteDidNotifyProxyOfInterruptionEnded;
 - (void)notePictureInPictureSessionDidEnd;

@@ -28,6 +28,7 @@
 - (long long)numberOfItems;
 - (id<AVTAvatarAttributeEditorSectionItemPrefetching>)prefetchingSectionItemForIndex:(long long)arg1;
 - (void)resetToDefaultState;
+- (struct CGSize)sizeForFocusingItemAtIndex:(long long)arg1 fittingSize:(struct CGSize)arg2;
 - (struct CGSize)sizeForItemAtIndex:(long long)arg1 fittingSize:(struct CGSize)arg2;
 - (void)updateCell:(AVTAttributeCollectionViewCell *)arg1 forItemAtIndex:(long long)arg2;
 - (void)updateWithSection:(id<AVTAvatarAttributeEditorSection>)arg1;

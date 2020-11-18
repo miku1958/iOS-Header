@@ -10,11 +10,13 @@
 
 @interface _TtC5TeaUI23ModalHostViewController : UIViewController
 {
+    MISSING_TYPE *delegate;
     MISSING_TYPE *style;
     MISSING_TYPE *viewController;
     MISSING_TYPE *closeButton;
     MISSING_TYPE *transitionEffectView;
     MISSING_TYPE *effect;
+    MISSING_TYPE *session;
 }
 
 - (void).cxx_destruct;

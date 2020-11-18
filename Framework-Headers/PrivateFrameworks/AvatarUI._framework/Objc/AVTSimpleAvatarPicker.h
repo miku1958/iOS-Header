@@ -16,7 +16,7 @@
 #import <AvatarUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 
 @class AVTAvatarPickerDataSource, AVTEdgeDisappearingCollectionViewLayout, AVTImageStore, AVTRenderingScope, AVTSimpleAvatarPickerHeaderView, AVTViewSessionProvider, NSMutableDictionary, NSString, UICollectionView, UIView, _AVTAvatarRecordImageProvider;
-@protocol AVTAvatarPickerDelegate, AVTPresenterDelegate, AVTTaskScheduler;
+@protocol AVTAvatarPickerDelegate, AVTPresenterDelegate, AVTStickerTaskScheduler;
 
 @interface AVTSimpleAvatarPicker : NSObject <AVTAvatarEditorViewControllerDelegate, AVTAvatarActionsViewControllerDelegate, AVTNotifyingContainerViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, AVTObjectViewController, AVTAvatarPicker>
 {
@@ -30,7 +30,7 @@
     AVTAvatarPickerDataSource *_dataSource;
     AVTImageStore *_imageStore;
     NSMutableDictionary *_itemsToTasksMap;
-    id<AVTTaskScheduler> _scheduler;
+    id<AVTStickerTaskScheduler> _taskScheduler;
     _AVTAvatarRecordImageProvider *_imageProvider;
     AVTViewSessionProvider *_viewSessionProvider;
     AVTRenderingScope *_renderingScope;
@@ -54,8 +54,8 @@
 @property (nonatomic) double minimumInteritemSpacing; // @synthesize minimumInteritemSpacing=_minimumInteritemSpacing;
 @property (weak, nonatomic) id<AVTPresenterDelegate> presenterDelegate; // @synthesize presenterDelegate;
 @property (readonly, nonatomic) AVTRenderingScope *renderingScope; // @synthesize renderingScope=_renderingScope;
-@property (readonly, nonatomic) id<AVTTaskScheduler> scheduler; // @synthesize scheduler=_scheduler;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) id<AVTStickerTaskScheduler> taskScheduler; // @synthesize taskScheduler=_taskScheduler;
 @property (strong, nonatomic) UIView *view; // @synthesize view=_view;
 @property (readonly, nonatomic) AVTViewSessionProvider *viewSessionProvider; // @synthesize viewSessionProvider=_viewSessionProvider;
 
@@ -67,6 +67,7 @@
 - (void)avatarEditorViewControllerDidCancel:(id)arg1;
 - (BOOL)canCreateAvatar;
 - (void)cancelCurrentRenderingTaskForRecordItem:(id)arg1;
+- (BOOL)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 didHighlightItemAtIndexPath:(id)arg2;
@@ -83,7 +84,7 @@
 - (void)deselectPreviousSelectedItemExcludingIndexPath:(id)arg1;
 - (void)headerViewButtonPressed;
 - (long long)indexForSelectedAvatar;
-- (id)initWithDataSource:(id)arg1 recordImageProvider:(id)arg2 scheduler:(id)arg3 allowEditing:(BOOL)arg4;
+- (id)initWithDataSource:(id)arg1 recordImageProvider:(id)arg2 taskScheduler:(id)arg3 allowEditing:(BOOL)arg4;
 - (id)initWithStore:(id)arg1 environment:(id)arg2 allowAddItem:(BOOL)arg3;
 - (BOOL)isItemAtIndexPathOffscreen:(id)arg1;
 - (struct CGSize)itemSize;
@@ -97,6 +98,7 @@
 - (void)registerRenderingTask:(CDUnknownBlockType)arg1 forRecordItem:(id)arg2;
 - (void)reloadData;
 - (void)reloadDataSource;
+- (void)scheduleRenderingTask:(CDUnknownBlockType)arg1 forRecordItem:(id)arg2;
 - (void)selectAvatarRecordWithIdentifier:(id)arg1 animated:(BOOL)arg2;
 - (id)selectedAvatar;
 - (BOOL)shouldShowHeaderButton;

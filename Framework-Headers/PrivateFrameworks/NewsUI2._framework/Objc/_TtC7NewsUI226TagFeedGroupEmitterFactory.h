@@ -10,7 +10,6 @@
 
 @interface _TtC7NewsUI226TagFeedGroupEmitterFactory : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *feedManager;
     MISSING_TYPE *paywallFactory;
     MISSING_TYPE *formatService;
 }

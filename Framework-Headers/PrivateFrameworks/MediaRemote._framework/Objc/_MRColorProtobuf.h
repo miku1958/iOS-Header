@@ -8,6 +8,7 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface _MRColorProtobuf : PBCodable <NSCopying>
 {
     float _alpha;
@@ -22,22 +23,11 @@
     } _has;
 }
 
-@property (nonatomic) float alpha; // @synthesize alpha=_alpha;
-@property (nonatomic) float blue; // @synthesize blue=_blue;
-@property (nonatomic) float green; // @synthesize green=_green;
-@property (nonatomic) BOOL hasAlpha;
-@property (nonatomic) BOOL hasBlue;
-@property (nonatomic) BOOL hasGreen;
-@property (nonatomic) BOOL hasRed;
-@property (nonatomic) float red; // @synthesize red=_red;
-
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

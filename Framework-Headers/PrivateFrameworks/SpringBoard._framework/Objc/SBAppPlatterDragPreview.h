@@ -112,7 +112,7 @@
 - (void)setIconIsEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
-- (void)updateDestinationIconLocation:(id)arg1 animated:(BOOL)arg2;
+- (void)updateDestinationIconLocation:(id)arg1 allowsLabelArea:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)updateSourceView:(id)arg1;
 
 @end

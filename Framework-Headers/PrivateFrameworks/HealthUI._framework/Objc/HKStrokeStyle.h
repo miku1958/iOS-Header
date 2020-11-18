@@ -30,6 +30,7 @@
 + (id)strokeStyleWithColor:(id)arg1 lineWidth:(double)arg2;
 - (void).cxx_destruct;
 - (void)applyToContext:(struct CGContext *)arg1;
+- (void)applyToContext:(struct CGContext *)arg1 dashPhase:(double)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 

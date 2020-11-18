@@ -12,6 +12,7 @@
 
 @interface HMDRemoteMessageTransport : HMFMessageTransport <HMFLogging>
 {
+    int _transportType;
     HMDAccountRegistry *_accountRegistry;
     long long _qualityOfService;
 }
@@ -23,6 +24,7 @@
 @property (readonly, nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
 @property (readonly, nonatomic, getter=isSecure) BOOL secure;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) int transportType; // @synthesize transportType=_transportType;
 
 + (id)logCategory;
 + (id)remoteMessageFromMessage:(id)arg1 secure:(BOOL)arg2 accountRegistry:(id)arg3;

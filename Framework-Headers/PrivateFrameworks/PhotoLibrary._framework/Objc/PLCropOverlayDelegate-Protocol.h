@@ -6,12 +6,12 @@
 
 #import <PhotoLibrary/NSObject-Protocol.h>
 
-@class PLCropOverlay;
+@class NSArray, PLCropOverlay;
 
 @protocol PLCropOverlayDelegate <NSObject>
 
 @optional
-- (void)cropOverlayFileResizingSelected:(PLCropOverlay *)arg1;
+- (NSArray *)cropOverlayFileSizeMenuActions:(PLCropOverlay *)arg1;
 - (void)cropOverlayPause:(PLCropOverlay *)arg1;
 - (void)cropOverlayPlay:(PLCropOverlay *)arg1;
 - (void)cropOverlayWasCancelled:(PLCropOverlay *)arg1;

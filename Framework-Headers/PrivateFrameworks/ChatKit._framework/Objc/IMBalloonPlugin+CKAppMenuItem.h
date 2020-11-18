@@ -8,14 +8,14 @@
 
 #import <ChatKit/CKAppMenuItem-Protocol.h>
 
-@class NSString, UIImage;
+@class NSString;
 
 @interface IMBalloonPlugin (CKAppMenuItem) <CKAppMenuItem>
 
 @property (readonly, nonatomic) NSString *__ck_displayName;
 @property (readonly, nonatomic) id __ck_identifier;
-@property (readonly, nonatomic) UIImage *__ck_image;
 
++ (id)__ck_appIconFromPayloadDictionary:(id)arg1;
 - (id)__ckImageForInterfaceStyle:(long long)arg1 generateSynchronously:(BOOL)arg2;
 - (id)__ck_attributionInfo;
 - (id)__ck_badgeImage;
@@ -30,6 +30,7 @@
 - (id)__ck_iconServicesBundleIdentifier;
 - (id)__ck_iconServicesDescriptor;
 - (id)__ck_iconServicesIconForInterfaceStyle:(long long)arg1;
+- (id)__ck_imageForTraitCollection:(id)arg1;
 - (id)__ck_placeholderImageForInterfaceStyle:(long long)arg1;
 - (void)__ck_postImageUpdateNotificationWithImage:(id)arg1;
 - (BOOL)__ck_preferIconServices;

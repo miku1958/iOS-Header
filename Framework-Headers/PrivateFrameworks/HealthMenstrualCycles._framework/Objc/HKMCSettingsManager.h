@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HKObserverSet, NSArray, NSDateComponents, NSString, NSUserDefaults;
+@class HKObserverSet, NSArray, NSDate, NSDateComponents, NSString, NSUserDefaults;
 
 @interface HKMCSettingsManager : NSObject
 {
@@ -19,6 +19,7 @@
     int _algorithmVersionMismatchSettingsNotifyToken;
 }
 
+@property (strong, nonatomic) NSDate *cycleTrackingOnboardingTileDismissedDate;
 @property (strong, nonatomic) NSDateComponents *fertileWindowNotificationTimeOfDay;
 @property (nonatomic) BOOL fertileWindowNotificationsEnabled;
 @property (nonatomic) BOOL fertileWindowProjectionsDisabledForVersionMismatch;

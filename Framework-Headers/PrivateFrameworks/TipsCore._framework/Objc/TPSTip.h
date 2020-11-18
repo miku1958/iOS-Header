@@ -37,14 +37,14 @@
 @property (readonly, nonatomic, getter=isWelcome) BOOL welcome; // @dynamic welcome;
 @property (copy, nonatomic) TPSWidgetContent *widgetContent; // @synthesize widgetContent=_widgetContent;
 
-+ (id)URLSchemeWithTipIdentifier:(id)arg1 collectionIdentifier:(id)arg2 launchSource:(id)arg3;
++ (id)URLSchemeWithTipIdentifier:(id)arg1 collectionIdentifier:(id)arg2 referrer:(id)arg3;
 + (id)classSet;
 + (long long)contentTypeForDictionary:(id)arg1;
-+ (void)getValuesFromOpenURLSchemeQueryItems:(id)arg1 tipIdentifier:(id *)arg2 collectionIdentifier:(id *)arg3 launchSource:(id *)arg4;
++ (void)getValuesFromOpenURLSchemeQueryItems:(id)arg1 tipIdentifier:(id *)arg2 collectionIdentifier:(id *)arg3 referrer:(id *)arg4;
 + (BOOL)supportsSecureCoding;
 + (id)tipIdFromDictionary:(id)arg1;
 - (void).cxx_destruct;
-- (id)URLSchemeWithLaunchSource:(id)arg1;
+- (id)URLSchemeWithReferrer:(id)arg1;
 - (id)actions;
 - (void)addCollectionIdentifier:(id)arg1;
 - (id)bodyContent;

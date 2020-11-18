@@ -13,6 +13,7 @@
     MISSING_TYPE *decorationView;
     MISSING_TYPE *title;
     MISSING_TYPE *subtitle;
+    MISSING_TYPE *wantsVerticalLayout;
 }
 
 @property (nonatomic, readonly) UILabel *accessibilitySubtitleLabel;

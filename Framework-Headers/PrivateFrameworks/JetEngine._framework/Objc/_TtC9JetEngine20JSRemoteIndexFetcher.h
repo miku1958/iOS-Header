@@ -11,8 +11,6 @@
 @interface _TtC9JetEngine20JSRemoteIndexFetcher : _TtCs12_SwiftObject
 {
     MISSING_TYPE *remoteFetcher;
-    MISSING_TYPE *isRetryLock;
-    MISSING_TYPE *isRetry;
 }
 
 @end

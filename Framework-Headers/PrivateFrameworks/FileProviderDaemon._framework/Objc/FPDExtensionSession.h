@@ -57,7 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)asyncUnregisterLifetimeExtensionForObject:(id)arg1;
 - (void)dealloc;
 - (void)dumpStateTo:(id)arg1;
-- (id)existingFileProviderProxyWithTimeout:(BOOL)arg1 pid:(int)arg2;
+- (id)existingFileProviderProxyWithTimeout:(BOOL)arg1 onlyAlreadyLifetimeExtended:(BOOL)arg2 pid:(int)arg3;
 - (id)initWithDomain:(id)arg1 extension:(id)arg2 queue:(id)arg3;
 - (void)invalidate;
 - (id)newAssertionWithFlags:(unsigned int)arg1 reason:(id)arg2;

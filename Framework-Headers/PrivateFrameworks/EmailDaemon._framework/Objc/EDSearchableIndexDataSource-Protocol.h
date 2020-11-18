@@ -11,6 +11,7 @@
 
 @protocol EDSearchableIndexDataSource <NSObject>
 - (NSArray *)childIdentifiersToRemoveFromSearchableIndex:(EDSearchableIndex *)arg1 whenRemovingParentIdentifiers:(NSArray *)arg2;
+- (void)clearOrphanedSearchableMessagesFromDatabase;
 - (long long)indexingTypeForSearchableIndex:(EDSearchableIndex *)arg1 item:(id<EDIndexableItem>)arg2;
 - (void)searchableIndex:(EDSearchableIndex *)arg1 assignIndexingType:(long long)arg2 forIdentifiers:(NSArray *)arg3;
 - (NSArray *)searchableIndex:(EDSearchableIndex *)arg1 assignTransaction:(long long)arg2 updates:(EDSearchableIndexUpdates *)arg3;

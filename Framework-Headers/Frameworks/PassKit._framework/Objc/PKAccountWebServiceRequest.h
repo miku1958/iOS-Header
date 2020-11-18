@@ -11,7 +11,6 @@
 }
 
 - (id)_murlRequestWithServiceURL:(id)arg1 endpointComponents:(id)arg2 queryParameters:(id)arg3 appleAccountInformation:(id)arg4;
-- (id)_murlRequestWithURL:(id)arg1;
 
 @end
 

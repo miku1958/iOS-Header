@@ -12,8 +12,6 @@
 {
     MISSING_TYPE *aceServiceInvoker;
     MISSING_TYPE *deviceState;
-    MISSING_TYPE *eventBus;
-    MISSING_TYPE *metricsState;
 }
 
 @end

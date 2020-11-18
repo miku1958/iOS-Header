@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (id)_defaultsForUserInterfaceIdiom:(long long)arg1;
-+ (id)_fontSizesForUserInterfaceIdiom:(long long)arg1;
++ (void)_getFontSizesForUserInterfaceIdiom:(long long)arg1 labelFontSize:(double *)arg2 buttonFontSize:(double *)arg3 systemFontSize:(double *)arg4 smallSystemFontSize:(double *)arg5;
 + (id)_unspecifiedDefaults;
 - (void).cxx_destruct;
 - (id)_init;

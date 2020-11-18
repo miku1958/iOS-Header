@@ -8,14 +8,12 @@
 
 @interface _UIBlurThroughEffect : _UICoreUIEffect
 {
-    long long _style;
 }
 
 + (id)_blurThroughWithStyle:(long long)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
+- (long long)_expectedUsage;
+- (BOOL)_indicatesMacSidebarBackground;
 - (id)initWithStyle:(long long)arg1;
-- (BOOL)isEqual:(id)arg1;
 
 @end
 

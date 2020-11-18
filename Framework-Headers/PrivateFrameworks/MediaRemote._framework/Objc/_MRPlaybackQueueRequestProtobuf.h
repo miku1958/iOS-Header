@@ -10,6 +10,7 @@
 
 @class NSMutableArray, NSString, _MRNowPlayingPlayerPathProtobuf, _MRPlaybackQueueContextProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRPlaybackQueueRequestProtobuf : PBCodable <NSCopying>
 {
     double _artworkHeight;
@@ -45,53 +46,12 @@
     } _has;
 }
 
-@property (nonatomic) double artworkHeight; // @synthesize artworkHeight=_artworkHeight;
-@property (nonatomic) double artworkWidth; // @synthesize artworkWidth=_artworkWidth;
-@property (nonatomic) int cachingPolicy; // @synthesize cachingPolicy=_cachingPolicy;
-@property (strong, nonatomic) NSMutableArray *contentItemIdentifiers; // @synthesize contentItemIdentifiers=_contentItemIdentifiers;
-@property (strong, nonatomic) _MRPlaybackQueueContextProtobuf *context; // @synthesize context=_context;
-@property (nonatomic) BOOL hasArtworkHeight;
-@property (nonatomic) BOOL hasArtworkWidth;
-@property (nonatomic) BOOL hasCachingPolicy;
-@property (readonly, nonatomic) BOOL hasContext;
-@property (nonatomic) BOOL hasIncludeInfo;
-@property (nonatomic) BOOL hasIncludeLanguageOptions;
-@property (nonatomic) BOOL hasIncludeLyrics;
-@property (nonatomic) BOOL hasIncludeMetadata;
-@property (nonatomic) BOOL hasIncludeSections;
-@property (nonatomic) BOOL hasIsLegacyNowPlayingInfoRequest;
-@property (readonly, nonatomic) BOOL hasLabel;
-@property (nonatomic) BOOL hasLength;
-@property (nonatomic) BOOL hasLocation;
-@property (readonly, nonatomic) BOOL hasPlayerPath;
-@property (readonly, nonatomic) BOOL hasRequestID;
-@property (nonatomic) BOOL hasReturnContentItemAssetsInUserCompletion;
-@property (nonatomic) BOOL includeInfo; // @synthesize includeInfo=_includeInfo;
-@property (nonatomic) BOOL includeLanguageOptions; // @synthesize includeLanguageOptions=_includeLanguageOptions;
-@property (nonatomic) BOOL includeLyrics; // @synthesize includeLyrics=_includeLyrics;
-@property (nonatomic) BOOL includeMetadata; // @synthesize includeMetadata=_includeMetadata;
-@property (nonatomic) BOOL includeSections; // @synthesize includeSections=_includeSections;
-@property (nonatomic) BOOL isLegacyNowPlayingInfoRequest; // @synthesize isLegacyNowPlayingInfoRequest=_isLegacyNowPlayingInfoRequest;
-@property (strong, nonatomic) NSString *label; // @synthesize label=_label;
-@property (nonatomic) int length; // @synthesize length=_length;
-@property (nonatomic) int location; // @synthesize location=_location;
-@property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
-@property (strong, nonatomic) NSString *requestID; // @synthesize requestID=_requestID;
-@property (nonatomic) BOOL returnContentItemAssetsInUserCompletion; // @synthesize returnContentItemAssetsInUserCompletion=_returnContentItemAssetsInUserCompletion;
-
-+ (Class)contentItemIdentifiersType;
 - (void).cxx_destruct;
-- (void)addContentItemIdentifiers:(id)arg1;
-- (void)clearContentItemIdentifiers;
-- (id)contentItemIdentifiersAtIndex:(unsigned long long)arg1;
-- (unsigned long long)contentItemIdentifiersCount;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

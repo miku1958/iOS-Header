@@ -58,17 +58,19 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_adjustWebViewForReplaceWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_adjustWebViewScrollFor:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_applyAppearance;
-- (id)_barButtonItemFromModel:(id)arg1;
-- (void)_cacheScrollViewPositionFor:(id)arg1;
-- (void)_determineActivePresentationType;
+- (id)_barButtonItemFromModel:(id)arg1 navModel:(id)arg2;
+- (unsigned long long)_determineActivePresentationType;
 - (void)_handlePushDismissal;
 - (void)_handleSelectedNavigationButton:(id)arg1;
 - (void)_postEvent:(id)arg1;
+- (void)_prepareToMoveWebViewToVC:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_refreshForInitialAppear;
 - (void)_scrollTo:(struct CGPoint)arg1 webView:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_setupNavBarAnimated:(BOOL)arg1;
-- (void)applyModel:(id)arg1;
+- (void)applyNavigationModel:(id)arg1;
+- (void)cacheScrollViewPositionFor:(id)arg1;
 - (void)dealloc;
 - (void)didDismissController:(id)arg1;
 - (void)handleModalDismissal;

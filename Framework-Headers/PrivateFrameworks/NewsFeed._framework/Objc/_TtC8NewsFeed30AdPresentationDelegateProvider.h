@@ -11,6 +11,7 @@
 @interface _TtC8NewsFeed30AdPresentationDelegateProvider : _TtCs12_SwiftObject
 {
     MISSING_TYPE *viewController;
+    MISSING_TYPE *$__lazy_storage_$_delegate;
 }
 
 @end

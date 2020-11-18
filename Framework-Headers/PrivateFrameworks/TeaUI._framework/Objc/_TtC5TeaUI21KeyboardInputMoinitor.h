@@ -4,14 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC5TeaUI21KeyboardInputMoinitor : _TtCs12_SwiftObject
+@interface _TtC5TeaUI21KeyboardInputMoinitor : NSObject
 {
     MISSING_TYPE *currentModifierFlags;
 }
+
+- (void)handle:(id)arg1;
+- (id)init;
 
 @end
 

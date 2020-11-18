@@ -15,8 +15,10 @@
 
 @property (readonly, nonatomic) NSArray *pages; // @synthesize pages=_pages;
 
-+ (id)firstTimeAntimonyOnlyOnboardingSequence;
-+ (id)firstTimeElectrocardiogramOnboardingSequence;
++ (id)firstTimeAtrialFibrillationAvailabilitySequence;
++ (id)firstTimeAtrialFibrillationOnboardingSequence;
++ (id)firstTimeElectrocardiogramAvailabilitySequence;
++ (id)firstTimeElectrocardiogramOnboardingSequenceWithAlgorithmVersion:(long long)arg1;
 - (void).cxx_destruct;
 - (id)_initWithPages:(id)arg1;
 

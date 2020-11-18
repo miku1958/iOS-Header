@@ -20,13 +20,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) id<SXMediaPlaybackDelegate> mediaPlaybackDelegate; // @synthesize mediaPlaybackDelegate=_mediaPlaybackDelegate;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) SXViewport *viewport; // @synthesize viewport=_viewport;
 
 - (void).cxx_destruct;
-- (id)initWithViewport:(id)arg1;
-- (void)registerMediaPlayBack:(id)arg1;
 - (void)viewport:(id)arg1 appearStateChangedFromState:(unsigned long long)arg2;
 
 @end

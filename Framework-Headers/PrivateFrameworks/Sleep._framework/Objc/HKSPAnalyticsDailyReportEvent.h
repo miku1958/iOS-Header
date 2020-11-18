@@ -23,7 +23,7 @@
     BOOL _scheduleMigration;
     BOOL _scheduleChangePast24Hours;
     BOOL _scheduleChangePast7days;
-    BOOL _interactionWithWindDownLast24hrs;
+    BOOL _interactedWithWindDownLast24Hrs;
     BOOL _alarmFriday;
     BOOL _alarmMonday;
     BOOL _alarmSaturday;
@@ -87,7 +87,7 @@
 @property (copy, nonatomic) NSString *hapticToneIdentifierTuesday; // @synthesize hapticToneIdentifierTuesday=_hapticToneIdentifierTuesday;
 @property (copy, nonatomic) NSString *hapticToneIdentifierWednesday; // @synthesize hapticToneIdentifierWednesday=_hapticToneIdentifierWednesday;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL interactionWithWindDownLast24hrs; // @synthesize interactionWithWindDownLast24hrs=_interactionWithWindDownLast24hrs;
+@property (nonatomic) BOOL interactedWithWindDownLast24Hrs; // @synthesize interactedWithWindDownLast24Hrs=_interactedWithWindDownLast24Hrs;
 @property (nonatomic) BOOL isDefaultScheduleFriday; // @synthesize isDefaultScheduleFriday=_isDefaultScheduleFriday;
 @property (nonatomic) BOOL isDefaultScheduleMonday; // @synthesize isDefaultScheduleMonday=_isDefaultScheduleMonday;
 @property (nonatomic) BOOL isDefaultScheduleSaturday; // @synthesize isDefaultScheduleSaturday=_isDefaultScheduleSaturday;

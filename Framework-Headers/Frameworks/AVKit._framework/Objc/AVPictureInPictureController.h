@@ -45,6 +45,7 @@
 @property (nonatomic) BOOL allowsPictureInPictureFromInlineWhenEnteringBackground; // @synthesize allowsPictureInPictureFromInlineWhenEnteringBackground=_allowsPictureInPictureFromInlineWhenEnteringBackground;
 @property (nonatomic) BOOL allowsPictureInPicturePlayback; // @synthesize allowsPictureInPicturePlayback=_allowsPictureInPicturePlayback;
 @property (nonatomic) BOOL canStartAutomaticallyWhenEnteringBackground; // @synthesize canStartAutomaticallyWhenEnteringBackground=_canStartAutomaticallyWhenEnteringBackground;
+@property (nonatomic) BOOL canStartPictureInPictureAutomaticallyFromInline;
 @property (nonatomic, setter=_setCanStopPictureInPicture:) BOOL canStopPictureInPicture; // @synthesize canStopPictureInPicture=_canStopPictureInPicture;
 @property (strong, nonatomic) AVPictureInPictureControllerContentSource *contentSource; // @synthesize contentSource=_contentSource;
 @property (nonatomic) long long controlsStyle; // @synthesize controlsStyle=_controlsStyle;

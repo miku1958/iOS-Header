@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccount, AMSProcessInfo;
+@class ACAccount, AMSProcessInfo, NSString;
 
 @interface AMSMetricsIdentifier : NSObject
 {
     ACAccount *_account;
     AMSProcessInfo *_clientInfo;
+    NSString *_domain;
     double _duration;
 }
 
 @property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
 @property (strong, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
+@property (strong, nonatomic) NSString *domain; // @synthesize domain=_domain;
 @property (nonatomic) double duration; // @synthesize duration=_duration;
 
 + (id)_accountIdentifierForAccount:(id)arg1;

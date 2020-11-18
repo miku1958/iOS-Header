@@ -13,16 +13,19 @@
 __attribute__((visibility("hidden")))
 @interface AMSUIWebDynamicPageModel : NSObject <AMSUIWebPageProvider>
 {
+    NSString *_backgroundColor;
     AMSUIWebNavigationBarModel *_navigationBar;
     ACAccount *_account;
     NSDictionary *_clientOptions;
     NSDictionary *_metricsOverlay;
     NSURL *_URL;
     AMSUIWebClientContext *_context;
+    struct CGSize _windowSize;
 }
 
 @property (strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
+@property (readonly, nonatomic) NSString *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (strong, nonatomic) NSDictionary *clientOptions; // @synthesize clientOptions=_clientOptions;
 @property (strong, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
@@ -32,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSDictionary *metricsOverlay; // @synthesize metricsOverlay=_metricsOverlay;
 @property (readonly, nonatomic) AMSUIWebNavigationBarModel *navigationBar; // @synthesize navigationBar=_navigationBar;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) struct CGSize windowSize; // @synthesize windowSize=_windowSize;
 
 - (void).cxx_destruct;
 - (id)createViewController;

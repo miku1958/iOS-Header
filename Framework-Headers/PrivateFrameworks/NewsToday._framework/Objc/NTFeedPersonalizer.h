@@ -8,7 +8,7 @@
 
 #import <NewsToday/FCFeedPersonalizing-Protocol.h>
 
-@class FCPersonalizationTreatment, NSString;
+@class FCPersonalizationTreatment, FCPersonalizationWhitelist, NSString;
 @protocol FCReadonlyPersonalizationAggregateStore, FCTodayPrivateData;
 
 @interface NTFeedPersonalizer : NSObject <FCFeedPersonalizing>
@@ -33,6 +33,7 @@
 @property (strong, nonatomic) id<FCReadonlyPersonalizationAggregateStore> readonlyPersonalizationAggregateStore; // @synthesize readonlyPersonalizationAggregateStore=_readonlyPersonalizationAggregateStore;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) id<FCTodayPrivateData> todayData; // @synthesize todayData=_todayData;
+@property (readonly) FCPersonalizationWhitelist *whitelist;
 
 - (void).cxx_destruct;
 - (id)_userProfile;

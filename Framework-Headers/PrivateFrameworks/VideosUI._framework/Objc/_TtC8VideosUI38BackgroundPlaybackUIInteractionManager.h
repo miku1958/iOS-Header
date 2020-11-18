@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)init;
 
 @end

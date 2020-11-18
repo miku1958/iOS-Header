@@ -29,6 +29,7 @@
     NSTextAttachmentView *_wrapperView;
 }
 
+@property (strong) NSString *accessibilityLabel;
 @property (nonatomic) struct CGRect bounds; // @dynamic bounds;
 @property (strong) UIView *contentView;
 @property (copy, nonatomic) NSData *contents; // @dynamic contents;

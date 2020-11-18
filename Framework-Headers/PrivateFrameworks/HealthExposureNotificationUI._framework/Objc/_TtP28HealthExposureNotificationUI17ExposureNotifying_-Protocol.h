@@ -14,7 +14,6 @@
 
 - (void)allRegionConfigurations:(void (^)(NSArray *))arg1;
 - (void)isPreReleaseAuthorizedForRegion:(ENRegion *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
-- (void)isShareStatisticsEnabledForRegion:(ENRegion *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)isTravelStatusEnabledForRegion:(ENRegion *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)latestExposureNotification:(void (^)(ENExposureNotification *))arg1;
 - (void)onboardingDidStartForRegion:(ENRegion *)arg1 source:(long long)arg2;
@@ -23,7 +22,7 @@
 - (void)setAvailabilityAlertsEnabled:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setExposureNotificationEnabled:(BOOL)arg1 completion:(void (^)(BOOL))arg2;
 - (void)setPreReleaseAuthorized:(BOOL)arg1 region:(ENRegion *)arg2 completion:(void (^)(NSError *))arg3;
-- (void)setShareStatisticsEnabled:(BOOL)arg1 region:(ENRegion *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)setShareAnalyticsEnabled:(BOOL)arg1 region:(ENRegion *)arg2 version:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)setTravelStatusEnabled:(BOOL)arg1 region:(ENRegion *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)setUserConsent:(long long)arg1 region:(ENRegion *)arg2 text:(NSString *)arg3 version:(NSString *)arg4 completion:(void (^)(NSError *))arg5;
 @end

@@ -361,6 +361,7 @@
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
+- (struct CGPoint)seriesContentOffset;
 - (void)seriesDidInvalidatePaths:(id)arg1 newDataArrived:(BOOL)arg2;
 - (BOOL)seriesDrawingDuringAutoscale;
 - (BOOL)seriesDrawingDuringScrolling;

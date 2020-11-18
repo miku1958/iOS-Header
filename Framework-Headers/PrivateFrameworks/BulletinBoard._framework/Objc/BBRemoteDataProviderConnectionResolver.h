@@ -39,10 +39,10 @@
 - (void)_registerForPublicationNotification;
 - (void)_registerServiceName:(id)arg1 appBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)dataProviderForSectionID:(id)arg1;
-- (id)dataProviderForUniversalSectionID:(id)arg1;
 - (void)dataProviderStore:(id)arg1 didAddDataProvider:(id)arg2 performMigration:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)dataProviderStore:(id)arg1 didAddParentSectionFactory:(id)arg2;
 - (void)dataProviderStore:(id)arg1 didRemoveDataProvider:(id)arg2;
+- (id)dataProvidersForUniversalSectionID:(id)arg1;
 - (void)dealloc;
 - (id)debugDescriptionWithChildren:(unsigned long long)arg1;
 - (id)initWithDelegate:(id)arg1;

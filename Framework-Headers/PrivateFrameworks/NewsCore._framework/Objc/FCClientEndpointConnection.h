@@ -4,16 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NewsCore/FCEndpointConnection.h>
+#import <objc/NSObject.h>
 
-@interface FCClientEndpointConnection : FCEndpointConnection
+#import <NewsCore/FCCoreConfigurationObserving-Protocol.h>
+
+@class FCAsyncSerialQueue, FCEndpointConnection, NSString, NSURL;
+@protocol FCCoreConfigurationManager;
+
+@interface FCClientEndpointConnection : NSObject <FCCoreConfigurationObserving>
 {
+    NSURL *_baseURL;
+    FCEndpointConnection *_endpointConnection;
+    id<FCCoreConfigurationManager> _configurationManager;
+    FCAsyncSerialQueue *_serialQueue;
 }
 
+@property (strong, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
+@property (strong, nonatomic) id<FCCoreConfigurationManager> configurationManager; // @synthesize configurationManager=_configurationManager;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) FCEndpointConnection *endpointConnection; // @synthesize endpointConnection=_endpointConnection;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) FCAsyncSerialQueue *serialQueue; // @synthesize serialQueue=_serialQueue;
+@property (readonly) Class superclass;
+
+- (void).cxx_destruct;
+- (void)configurationManager:(id)arg1 configurationDidChange:(id)arg2;
 - (void)fetchArticleWithURL:(id)arg1 callbackQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithConfigurationManager:(id)arg1;
+- (id)initWithEndpointConnection:(id)arg1 configurationManager:(id)arg2;
 - (void)reportConcern:(id)arg1 callbackQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)submitWebAccessWithTagID:(id)arg1 purchaseID:(id)arg2 emailAddress:(id)arg3 purchaseReceipt:(id)arg4 countryCode:(id)arg5 languageCode:(id)arg6 callbackQueue:(id)arg7 completion:(CDUnknownBlockType)arg8;
+- (void)updateBaseURLWith:(id)arg1;
 
 @end
 

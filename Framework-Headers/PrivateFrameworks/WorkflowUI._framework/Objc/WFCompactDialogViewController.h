@@ -6,26 +6,32 @@
 
 #import <WorkflowUI/WFCompactPlatterViewController.h>
 
-@class WFDialogRequest;
+@class NSArray, WFCompactDialogAction, WFDialogRequest;
 @protocol WFCompactDialogViewControllerDelegate;
 
 @interface WFCompactDialogViewController : WFCompactPlatterViewController
 {
     id<WFCompactDialogViewControllerDelegate> _delegate;
     WFDialogRequest *_request;
+    NSArray *_actions;
+    WFCompactDialogAction *_preferredAction;
 }
 
+@property (copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property (weak, nonatomic) id<WFCompactDialogViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) WFCompactDialogAction *preferredAction; // @synthesize preferredAction=_preferredAction;
 @property (readonly, nonatomic) WFDialogRequest *request; // @synthesize request=_request;
 
-+ (id)interfaceActionForDialogButton:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+- (BOOL)canBecomeFirstResponder;
 - (BOOL)canHandleFollowUpRequest:(id)arg1;
 - (void)configureActionGroupWithActions:(id)arg1;
+- (void)doneKeyPressed;
 - (void)finishWithResponse:(id)arg1;
 - (void)finishWithResponse:(id)arg1 waitForFollowUpRequest:(BOOL)arg2;
 - (void)handleFollowUpRequest:(id)arg1;
 - (id)initWithRequest:(id)arg1;
+- (id)keyCommands;
 - (void)loadView;
 
 @end

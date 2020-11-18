@@ -14,10 +14,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityFindIconIntersectingDraggedIconForDropSession:(id)arg1;
-- (id)_accessibilityGetLastAnnouncedIcon;
 - (void)_accessibilityIconMovedToPosition;
 - (Class)_accessibilityIconViewclass;
-- (void)_accessibilitySetLastAnnouncedIcon:(id)arg1;
 - (id)_axCurrentIconListView;
 - (void)_dragPauseTimerFired:(id)arg1;
 - (void)_updateDragPauseForDropSession:(id)arg1;

@@ -22,7 +22,6 @@
     BOOL _useCondensedWidthLayout;
     NSLayoutConstraint *_titleLabelToTopConstraint;
     NSLayoutConstraint *_bottomToLabelConstraint;
-    NSLayoutConstraint *_lastUpdatedToTitleBaselineConstraint;
     NSLayoutConstraint *_titleToLastUpdatedLabelConstraint;
     NSLayoutConstraint *_bottomToBackgroundConstraint;
     double _bottomToBackgroundOffset;

@@ -72,14 +72,14 @@
 + (BOOL)_viewImageBeforeSelectingEnabled:(id)arg1;
 + (BOOL)pu_legacy_shouldDownloadVideoComplement:(id)arg1 filterOptions:(id)arg2;
 - (void).cxx_destruct;
-- (id)_alertControllerWithResizingOptionsForAssets:(id)arg1;
 - (void)_dismissDownloadProgressViewWithSuccess:(BOOL)arg1;
+- (id)_fileSizeActionsForAssets:(id)arg1;
 - (void)_handleProgressControllerCancellation;
 - (id)_setupProgressController;
 - (void)_updateProgressViewProgress:(id)arg1;
 - (BOOL)assetExplorerReviewScreenViewController:(id)arg1 canPerformActionType:(unsigned long long)arg2 onAsset:(id)arg3 inAssetCollection:(id)arg4;
 - (void)assetExplorerReviewScreenViewController:(id)arg1 didPerformCompletionAction:(unsigned long long)arg2 withSelectedAssetUUIDs:(id)arg3 livePhotoDisabledAssetUUIDs:(id)arg4 substituteAssetsByUUID:(id)arg5;
-- (void)assetExplorerReviewScreenViewController:(id)arg1 didPressFileSizeButtonWithSelectedUUIDs:(id)arg2;
+- (id)assetExplorerReviewScreenViewController:(id)arg1 fileSizeMenuForSelectedUUIDs:(id)arg2;
 - (BOOL)assetExplorerReviewScreenViewController:(id)arg1 shouldEnableActionType:(unsigned long long)arg2 onAsset:(id)arg3 inAssetCollection:(id)arg4;
 - (void)assetExplorerReviewScreenViewControllerDidPressCancel:(id)arg1;
 - (id)assetsForResizing;
@@ -91,7 +91,7 @@
 - (void)downloadProgressDidFinishForAsset:(id)arg1 success:(BOOL)arg2;
 - (void)endShowingProgressWithIdentifier:(id)arg1;
 - (void)imageViewControllerDidConfirmSelection:(id)arg1;
-- (void)imageViewControllerDidSelectFileResizing:(id)arg1;
+- (id)imageViewControllerFileSizeMenuActions:(id)arg1;
 - (id)init;
 - (id)initWithConfiguration:(id)arg1 coordinatorActionHandler:(id)arg2;
 - (id)initWithConfiguration:(id)arg1 filterOptions:(id)arg2 navigationControllerClass:(Class)arg3 selectedAssets:(id)arg4 coordinatorActionHandler:(id)arg5;

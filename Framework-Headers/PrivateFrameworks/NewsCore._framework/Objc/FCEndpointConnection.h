@@ -7,37 +7,26 @@
 #import <objc/NSObject.h>
 
 #import <NewsCore/FCCoreConfigurationObserving-Protocol.h>
+#import <NewsCore/FCEndpointConnectionType-Protocol.h>
 #import <NewsCore/NSURLSessionDelegate-Protocol.h>
 
-@class FCAsyncSerialQueue, NSString, NSURL, NSURLSession;
-@protocol FCCoreConfigurationManager;
+@class NSString, NSURLSession;
 
-@interface FCEndpointConnection : NSObject <NSURLSessionDelegate, FCCoreConfigurationObserving>
+@interface FCEndpointConnection : NSObject <NSURLSessionDelegate, FCCoreConfigurationObserving, FCEndpointConnectionType>
 {
-    id<FCCoreConfigurationManager> _configurationManager;
     NSURLSession *_session;
-    NSURL *_baseURL;
-    FCAsyncSerialQueue *_requestSerialQueue;
 }
 
-@property (copy) NSURL *baseURL; // @synthesize baseURL=_baseURL;
-@property (strong, nonatomic) id<FCCoreConfigurationManager> configurationManager; // @synthesize configurationManager=_configurationManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) FCAsyncSerialQueue *requestSerialQueue; // @synthesize requestSerialQueue=_requestSerialQueue;
 @property (strong, nonatomic) NSURLSession *session; // @synthesize session=_session;
 @property (readonly) Class superclass;
 
-+ (id)_CAPIBaseURLStringFromConfiguration:(id)arg1;
-+ (id)_errorByUpdatingRetryStatusForError:(id)arg1;
-+ (id)_errorForStatus:(long long)arg1 url:(id)arg2;
-+ (id)_fairPlayBaseURLStringFromConfiguration:(id)arg1;
-+ (BOOL)_hasOverrideCAPIBaseURL;
-+ (id)_overrideCAPIBaseURLString;
++ (id)errorForStatus:(long long)arg1 url:(id)arg2;
 - (void).cxx_destruct;
-- (id)initWithConfigurationManager:(id)arg1;
-- (id)initWithConfigurationManager:(id)arg1 sourceApplicationBundleIdentifier:(id)arg2;
+- (id)init;
+- (id)initWithSourceApplicationBundleIdentifier:(id)arg1;
 - (void)performAuthenticatedHTTPRequestWithURL:(id)arg1 valuesByHTTPHeaderField:(id)arg2 method:(id)arg3 data:(id)arg4 contentType:(id)arg5 priority:(float)arg6 reauthenticateIfNeeded:(BOOL)arg7 callbackQueue:(id)arg8 completion:(CDUnknownBlockType)arg9;
 - (void)performHTTPRequestWithURL:(id)arg1 method:(id)arg2 data:(id)arg3 contentType:(id)arg4 priority:(float)arg5 requiresMescalSigning:(BOOL)arg6 callbackQueue:(id)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)performHTTPRequestWithURL:(id)arg1 valuesByHTTPHeaderField:(id)arg2 method:(id)arg3 data:(id)arg4 contentType:(id)arg5 priority:(float)arg6 requiresMescalSigning:(BOOL)arg7 callbackQueue:(id)arg8 completion:(CDUnknownBlockType)arg9;

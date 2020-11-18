@@ -22,7 +22,7 @@
         BOOL respondsToCanPerformActionType;
         BOOL respondsToShouldEnableActionType;
         BOOL respondsToWillTransitionToSize;
-        BOOL respondsToDidPressFileSizeButton;
+        BOOL respondsToFileSizeMenu;
     } _delegateFlags;
     BOOL __lowMemoryMode;
     id<PUAssetExplorerReviewScreenViewControllerDelegate> _delegate;
@@ -84,6 +84,7 @@
 - (id)_createProgressControllerForRemainingRequests:(id)arg1;
 - (id)_createReviewAssetRequestForAsset:(id)arg1;
 - (void)_deleteAllLinkedFiles;
+- (id)_fileSizeMenuForSelectedUUIDs:(id)arg1;
 - (id)_getSelectedSubstituteAssetsAndRemoveFilesForUnneededAssets;
 - (void)_handleCompletionAction:(unsigned long long)arg1;
 - (void)_handleFailedReviewAssetRequestAlertControllerDismissal;
@@ -113,7 +114,6 @@
 - (void)assetExplorerReviewScreenActionManagerDidPressCancel:(id)arg1;
 - (void)assetExplorerReviewScreenActionManagerDidPressDeselectAll:(id)arg1;
 - (void)assetExplorerReviewScreenActionManagerDidPressDone:(id)arg1;
-- (void)assetExplorerReviewScreenActionManagerDidPressFileSize:(id)arg1;
 - (void)assetExplorerReviewScreenActionManagerDidPressRetake:(id)arg1;
 - (void)assetExplorerReviewScreenActionManagerDidPressSelectAll:(id)arg1;
 - (void)assetExplorerReviewScreenActionManagerDidPressSend:(id)arg1;

@@ -6,19 +6,39 @@
 
 #import <UIKit/UIViewController.h>
 
+@class NSError, PXContentUnavailableView;
 @protocol _PUPickerUnavailableUIViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _PUPickerUnavailableUIViewController : UIViewController
 {
+    unsigned long long _reason;
+    NSError *_error;
     id<_PUPickerUnavailableUIViewControllerDelegate> _delegate;
+    PXContentUnavailableView *_unavailableView;
 }
 
 @property (weak, nonatomic) id<_PUPickerUnavailableUIViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy, nonatomic) NSError *error; // @synthesize error=_error;
+@property (readonly, nonatomic) unsigned long long reason; // @synthesize reason=_reason;
+@property (readonly, nonatomic) PXContentUnavailableView *unavailableView; // @synthesize unavailableView=_unavailableView;
 
-+ (id)createControllerEmbeddedInNavigationControllerForError:(id)arg1 delegate:(id)arg2;
++ (id)unavailableUIViewController:(unsigned long long)arg1 error:(id)arg2 delegate:(id)arg3;
++ (id)unavailableUIViewControllerEmbeddedInNavigationController:(unsigned long long)arg1 error:(id)arg2 delegate:(id)arg3;
 - (void).cxx_destruct;
+- (void)askDelegateToCancel;
+- (void)askDelegateToRetry;
 - (void)cancelButtonTapped:(id)arg1;
+- (id)init;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithReason:(unsigned long long)arg1 error:(id)arg2;
+- (id)reasonDebugDescription;
+- (id)unavailableButtonTitle;
+- (id)unavailableMessage;
+- (id)unavailableTitle;
+- (void)updateReason:(unsigned long long)arg1 error:(id)arg2;
+- (void)updateUnavailableView;
 - (void)viewDidLoad;
 
 @end

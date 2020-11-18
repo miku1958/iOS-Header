@@ -161,6 +161,7 @@
 - (void)_registerForSyncTriggers;
 - (void)_resetSyncAnchorsForStore:(id)arg1;
 - (BOOL)_saveGuardianDetailsWithUserInfo:(id)arg1 guardianParticipant:(id)arg2 error:(id *)arg3;
+- (void)_scheduleResetReceivedNanoSyncAnchorsForHFD;
 - (BOOL)_scheduleTransparencyAlert:(id *)arg1;
 - (void)_sendFinalMessageForSyncSession:(id)arg1 status:(id)arg2 success:(BOOL)arg3 error:(id)arg4;
 - (void)_sendFinalStatusMessageForSyncSession:(id)arg1 didFinishSuccessfully:(BOOL)arg2 error:(id)arg3;

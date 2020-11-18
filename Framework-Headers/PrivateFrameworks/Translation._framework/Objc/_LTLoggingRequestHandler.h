@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)startSafariFeedbackRequest:(id)arg1;
 - (void)startSafariLatencyLoggingRequest:(id)arg1;
 - (void)startSpeechLIDRequest:(id)arg1;
+- (void)startSpeechSensesLoggingRequest:(id)arg1;
 - (void)streamDidReceiveSpeechTranslationStreamingResponse:(id)arg1;
 - (void)streamFailVerifySpeechTranslationStreamingResponse:(id)arg1;
 

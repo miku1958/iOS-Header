@@ -19,6 +19,7 @@
 
 - (void).cxx_destruct;
 - (void)beginAction;
+- (void)didAddSubview:(id)arg1;
 
 @end
 

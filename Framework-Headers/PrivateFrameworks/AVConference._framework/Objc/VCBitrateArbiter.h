@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     unsigned int _maxAllowedBitrate2G;
     unsigned int _maxAllowedBitrate3G;
     unsigned int _maxAllowedBitrateLTE;
-    unsigned int _maxAllowedBitrate5G;
+    unsigned int _maxAllowedBitrateHighRat;
     unsigned int _maxAllowedBitrateWifi;
     unsigned int _maxAllowedScreenShareBitrate2G;
     unsigned int _maxAllowedScreenShareBitrate3G;
@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned int maxAllowedBitrate; // @synthesize maxAllowedBitrate=_maxAllowedBitrate;
 @property (readonly) unsigned int maxAllowedBitrate2G; // @synthesize maxAllowedBitrate2G=_maxAllowedBitrate2G;
 @property (readonly) unsigned int maxAllowedBitrate3G; // @synthesize maxAllowedBitrate3G=_maxAllowedBitrate3G;
+@property (readonly) unsigned int maxAllowedBitrateHighRat; // @synthesize maxAllowedBitrateHighRat=_maxAllowedBitrateHighRat;
 @property (readonly) unsigned int maxAllowedBitrateLTE; // @synthesize maxAllowedBitrateLTE=_maxAllowedBitrateLTE;
 @property (readonly) unsigned int maxAllowedBitrateP2P; // @synthesize maxAllowedBitrateP2P=_maxAllowedBitrateP2P;
 @property (readonly) unsigned int maxAllowedBitrateUSB; // @synthesize maxAllowedBitrateUSB=_maxAllowedBitrateUSB;

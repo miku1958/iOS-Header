@@ -48,7 +48,7 @@
 - (void)_addPresentable:(id)arg1 withTransitioningDelegate:(id)arg2 incrementingTier:(BOOL)arg3;
 - (BOOL)_canShowWhileLocked;
 - (void)_dismissPresentable:(id)arg1 withReason:(id)arg2 animated:(BOOL)arg3 userInfo:(id)arg4;
-- (id)_dismissPresentableWithRequestIdentifier:(id)arg1 requesterIdentifier:(id)arg2 reason:(id)arg3 animated:(BOOL)arg4 userInfo:(id)arg5;
+- (id)_dismissPresentablesWithIdentification:(id)arg1 reason:(id)arg2 animated:(BOOL)arg3 userInfo:(id)arg4;
 - (struct CGRect)_dismissedFrameForViewController:(id)arg1 withContainerBounds:(struct CGRect)arg2;
 - (struct CGRect)_dismissedFrameWithPaddingForViewController:(id)arg1 withContainerBounds:(struct CGRect)arg2;
 - (long long)_effectTierForPresentable:(id)arg1;
@@ -71,7 +71,7 @@
 - (id)_presentableForGestureInView:(id)arg1;
 - (id)_presentableForScrollEvent:(id)arg1;
 - (id)_presentableForTouch:(id)arg1;
-- (id)_presentableWithRequestIdentifier:(id)arg1 requesterIdentifier:(id)arg2;
+- (id)_presentablesWithIdentification:(id)arg1;
 - (struct CGRect)_presentedFrame:(BOOL)arg1 forViewController:(id)arg2 withContainerBounds:(struct CGRect)arg3 overshoot:(BOOL)arg4;
 - (struct CGRect)_presentedFrameForPresentable:(id)arg1 withContainerBounds:(struct CGRect)arg2;
 - (struct CGRect)_presentedFrameForViewController:(id)arg1 withContainerBounds:(struct CGRect)arg2;
@@ -85,9 +85,8 @@
 - (struct CGPoint)_velocityInContainerViewForGesture:(id)arg1;
 - (BOOL)becomeFirstResponder;
 - (BOOL)canBecomeFirstResponder;
-- (id)dismissAllPresentablesWithRequesterIdentifier:(id)arg1 withReason:(id)arg2 userInfo:(id)arg3;
-- (id)dismissPresentableWithRequestIdentifier:(id)arg1 requesterIdentifier:(id)arg2 reason:(id)arg3 animated:(BOOL)arg4 userInfo:(id)arg5;
-- (id)dismissPresentableWithRequestIdentifier:(id)arg1 requesterIdentifier:(id)arg2 reason:(id)arg3 userInfo:(id)arg4;
+- (id)dismissPresentablesWithIdentification:(id)arg1 reason:(id)arg2 animated:(BOOL)arg3 userInfo:(id)arg4;
+- (id)dismissPresentablesWithIdentification:(id)arg1 reason:(id)arg2 userInfo:(id)arg3;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveEvent:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (struct CGPoint)gestureRecognizerProxy:(id)arg1 locationForTouch:(id)arg2 inCoordinateSpace:(id)arg3;

@@ -50,6 +50,7 @@
     HFItem *_alarmItem;
     HFItem *_statusAndNotificationItem;
     HFItem *_separateTileItem;
+    HFItem *_homeTheaterAudioOutputItem;
     NSArray *_supportedVoiceRecognitionLanguages;
     ACAccount *_homeMediaAccount;
     HFItem *_removeItem;
@@ -86,6 +87,7 @@
     NSArray *_doorbellMuteSections;
     NSArray *_collectDiagnosticsSections;
     NSArray *_lockAuthenticatedNFCSections;
+    NSArray *_homeTheaterAudioSections;
     HFAssociatedServiceTypeOptionItemProvider *_associatedServiceTypeOptionItemProvider;
     HFStaticItemProvider *_staticItemProvider;
     HULinkedApplicationItemProvider *_linkedApplicationItemProvider;
@@ -129,6 +131,8 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HFItem *headerItem; // @synthesize headerItem=_headerItem;
 @property (strong, nonatomic) ACAccount *homeMediaAccount; // @synthesize homeMediaAccount=_homeMediaAccount;
+@property (strong, nonatomic) HFItem *homeTheaterAudioOutputItem; // @synthesize homeTheaterAudioOutputItem=_homeTheaterAudioOutputItem;
+@property (strong, nonatomic) NSArray *homeTheaterAudioSections; // @synthesize homeTheaterAudioSections=_homeTheaterAudioSections;
 @property (strong, nonatomic) NSArray *inputSourceEditorSections; // @synthesize inputSourceEditorSections=_inputSourceEditorSections;
 @property (strong, nonatomic) HUInputSourceItemModule *inputSourceItemModule; // @synthesize inputSourceItemModule=_inputSourceItemModule;
 @property (strong, nonatomic) HFItem *internalDebuggingItem; // @synthesize internalDebuggingItem=_internalDebuggingItem;
@@ -192,6 +196,7 @@
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
 - (id)_characteristicSectionForIdentifier:(id)arg1;
 - (void)_didFinishUpdateTransactionWithAffectedItems:(id)arg1;
+- (id)_getHomeTheaterAppleTVForSourceItem;
 - (BOOL)_hasDismissedHomePodHasNonMemberMediaAccountWarning;
 - (id)_homeFuture;
 - (BOOL)_isGroupedHomePod;
@@ -222,6 +227,7 @@
 - (BOOL)isRoomItem:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)registerKVO;
+- (void)resetServiceLikeItemBuilder;
 - (void)restartAccessory;
 - (id)selectAssociatedServiceType:(id)arg1;
 - (id)selectRoom:(id)arg1;

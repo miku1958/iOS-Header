@@ -10,6 +10,7 @@
 
 @interface UIAccessibilityCustomAction (Private)
 
+@property (nonatomic) struct CGPoint activationPoint;
 @property (nonatomic) BOOL ignoreWhenVoiceOverTouches;
 @property (strong, nonatomic, getter=_accessibilityInternalCustomActionIdentifier, setter=_accessibilitySetInternalCustomActionIdentifier:) NSString *internalCustomActionIdentifier;
 @property (strong, nonatomic) NSString *localizedActionRotorCategory;

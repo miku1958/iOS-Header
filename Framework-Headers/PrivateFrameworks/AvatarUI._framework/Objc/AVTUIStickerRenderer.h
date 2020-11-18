@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class AVTClippableImageStore, AVTUIEnvironment, AVTUILogger, AVTUIStickerGeneratorPool;
-@protocol AVTAvatarRecord, AVTCacheableResource, AVTResourceCache, AVTTaskScheduler, OS_dispatch_queue;
+@protocol AVTAvatarRecord, AVTCacheableResource, AVTResourceCache, AVTStickerTaskScheduler, OS_dispatch_queue;
 
 @interface AVTUIStickerRenderer : NSObject
 {
@@ -16,7 +16,7 @@
     AVTClippableImageStore *_imageStore;
     AVTUIEnvironment *_environment;
     AVTUILogger *_logger;
-    id<AVTTaskScheduler> _renderingScheduler;
+    id<AVTStickerTaskScheduler> _renderingScheduler;
     NSObject<OS_dispatch_queue> *_renderingQueue;
     NSObject<OS_dispatch_queue> *_encodingQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
@@ -35,7 +35,7 @@
 @property (readonly, nonatomic) AVTUILogger *logger; // @synthesize logger=_logger;
 @property (nonatomic) BOOL parallelizeEncoding; // @synthesize parallelizeEncoding=_parallelizeEncoding;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *renderingQueue; // @synthesize renderingQueue=_renderingQueue;
-@property (readonly, nonatomic) id<AVTTaskScheduler> renderingScheduler; // @synthesize renderingScheduler=_renderingScheduler;
+@property (readonly, nonatomic) id<AVTStickerTaskScheduler> renderingScheduler; // @synthesize renderingScheduler=_renderingScheduler;
 @property (readonly, nonatomic) AVTUIStickerGeneratorPool *stickerGeneratorPool; // @synthesize stickerGeneratorPool=_stickerGeneratorPool;
 
 + (BOOL)clearStickersForAvatarRecordIdentifier:(id)arg1;

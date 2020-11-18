@@ -30,6 +30,7 @@
 @property (readonly, nonatomic) TUCall *conferenceCall;
 @property (readonly, copy, nonatomic) NSArray *conferenceParticipantCalls;
 @property (readonly, nonatomic) unsigned long long currentAudioAndVideoCallCount;
+@property (readonly, copy, nonatomic) NSArray *currentAudioAndVideoCallGroups;
 @property (readonly, copy, nonatomic) NSArray *currentAudioAndVideoCalls;
 @property (readonly, nonatomic) unsigned long long currentCallCount;
 @property (readonly, copy, nonatomic) NSArray *currentCallGroups;

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic, readonly) struct UIEdgeInsets safeAreaInsets;
 
++ (BOOL)_wantsViewBasedPositioning;
 - (void).cxx_destruct;
 - (id)initWithAnnotation:(id)arg1 reuseIdentifier:(id)arg2;
 - (id)initWithCoder:(id)arg1;

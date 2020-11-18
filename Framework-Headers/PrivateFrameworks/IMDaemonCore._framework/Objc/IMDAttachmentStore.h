@@ -31,8 +31,10 @@
 - (BOOL)isSafeToDeleteAttachmentAtPath:(id)arg1;
 - (void)markAllAttachmentsAsNeedingCloudKitSync;
 - (void)markAllAttachmentsAsNotPurgeable;
+- (void)markAttachment:(id)arg1 purgeable:(BOOL)arg2;
 - (void)markAttachmentPurgeable:(id)arg1;
-- (void)markFileAsPurgeable:(id)arg1;
+- (void)markAttachmentUnpurgeable:(id)arg1;
+- (void)markFile:(id)arg1 asPurgeable:(BOOL)arg2;
 - (BOOL)removeAttachment:(id)arg1 fromMessageWithGUID:(id)arg2;
 - (BOOL)storeAttachment:(id)arg1 associateWithMessageWithGUID:(id)arg2;
 - (BOOL)storeAttachment:(id)arg1 associateWithMessageWithGUID:(id)arg2 chatGUID:(id)arg3 storeAtExternalLocation:(BOOL)arg4;

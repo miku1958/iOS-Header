@@ -12,16 +12,20 @@
 {
     BOOL _isCalibratedBarometricAlt;
     BOOL _isMapMatched;
+    BOOL _isOutdoorContext;
     struct {
         unsigned int isCalibratedBarometricAlt:1;
         unsigned int isMapMatched:1;
+        unsigned int isOutdoorContext:1;
     } _has;
 }
 
 @property (nonatomic) BOOL hasIsCalibratedBarometricAlt;
 @property (nonatomic) BOOL hasIsMapMatched;
+@property (nonatomic) BOOL hasIsOutdoorContext;
 @property (nonatomic) BOOL isCalibratedBarometricAlt; // @synthesize isCalibratedBarometricAlt=_isCalibratedBarometricAlt;
 @property (nonatomic) BOOL isMapMatched; // @synthesize isMapMatched=_isMapMatched;
+@property (nonatomic) BOOL isOutdoorContext; // @synthesize isOutdoorContext=_isOutdoorContext;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

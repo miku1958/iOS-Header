@@ -38,6 +38,7 @@
 + (BOOL)shouldTrackIndexUse;
 - (void).cxx_destruct;
 - (BOOL)_configurePersistentStoreCoordinator:(id)arg1 overrideCurrentModelVersionInStore:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)_configureXPCPersistentStoreCoordinator:(id)arg1 error:(id *)arg2;
 - (long long)configureSharedPersistentStoreCoordinatorAndMigrateOrRebuildIfNecessaryWithModelMigrator:(id)arg1 migrationPolicy:(unsigned int)arg2 error:(id *)arg3;
 - (void)dealloc;
 - (id)initWithLibraryURL:(id)arg1 lazyAssetsdClient:(id)arg2;

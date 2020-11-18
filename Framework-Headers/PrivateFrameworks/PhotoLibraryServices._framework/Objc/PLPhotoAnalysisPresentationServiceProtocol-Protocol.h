@@ -7,6 +7,7 @@
 @class NSDictionary;
 
 @protocol PLPhotoAnalysisPresentationServiceProtocol
+- (void)cacheCPAnalyticsPropertiesWithContext:(NSDictionary *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 - (void)recordFeatureUsageFromCounts:(NSDictionary *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 - (void)reloadWidgetTimelineWithContext:(NSDictionary *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 @end

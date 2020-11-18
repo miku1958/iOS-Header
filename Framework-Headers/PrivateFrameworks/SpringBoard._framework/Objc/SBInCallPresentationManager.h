@@ -20,6 +20,7 @@
     SBInCallBannerAuthority *_bannerAuthority;
     NSMutableDictionary *_clientIdentifierToPresentationSession;
     NSMutableArray *_pendingInvalidationSessions;
+    BOOL _supportsHandlingUILockForWindowedAccessoryAttach;
     id<SBInCallPresentationManagerDelegate> _delegate;
     SBMainDisplaySceneManager *_sceneManager;
 }
@@ -32,8 +33,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) SBMainDisplaySceneManager *sceneManager; // @synthesize sceneManager=_sceneManager;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsBecomingVisibleWhenWakingDisplay;
 @property (readonly, nonatomic) BOOL supportsHandlingDeviceLock;
+@property (readonly, nonatomic) BOOL supportsHandlingUILockForWindowedAccessoryAttach; // @synthesize supportsHandlingUILockForWindowedAccessoryAttach=_supportsHandlingUILockForWindowedAccessoryAttach;
 
 + (BOOL)isSpecializedAPISupported;
 - (void).cxx_destruct;
@@ -44,6 +45,7 @@
 - (id)_sessionForSceneWithIdentifier:(id)arg1;
 - (BOOL)canHostAnApp;
 - (void)conformsToSBApplicationHosting;
+- (void)handleAccessoryAttachWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleDeviceLockFromSource:(int)arg1;
 - (void)handlePresentationForActivityContinuationIdentifier:(id)arg1;
 - (id)hostedAppSceneHandle;
@@ -59,6 +61,7 @@
 - (id)initWithSceneManager:(id)arg1 applicationController:(id)arg2 bannerManager:(id)arg3;
 - (BOOL)isHostingAnApp;
 - (void)reactivateInCallForReason:(long long)arg1;
+- (BOOL)supportsBecomingVisibleWhenUnlockingFromSource:(int)arg1 wakingDisplay:(BOOL)arg2;
 
 @end
 

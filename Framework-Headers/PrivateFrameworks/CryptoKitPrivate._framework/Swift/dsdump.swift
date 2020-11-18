@@ -23,23 +23,23 @@
 	// Properties
 	var field : cczp
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var threshold : «/
+	var threshold : «-
  }
 
  struct __C.ccspake_ctx {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scp : ».
+	var scp : »,
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var mac : ».
+	var mac : »,
 	var rng : ccrng_state
 	var is_prover : Bool
 	var aad_len : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var aad :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var state : ?/
+	var state : ?-
  }
 
  struct __C.ccss_shamir_generator {
@@ -47,7 +47,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var field : cczp
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var degree : «/
+	var degree : «-
  }
 
  struct __C.ccss_shamir_share {
@@ -55,7 +55,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var field : cczp
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : «/
+	var x : «-
  }
 
  struct __C.ccss_shamir_share_bag {
@@ -63,9 +63,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var field : cczp
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var threshold : «/
+	var threshold : «-
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var share_count : «/
+	var share_count : «-
  }
 
  struct __C.cczp {
@@ -73,16 +73,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var n : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bitlen : ©/
+	var bitlen : ©-
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var funcs : ».
+	var funcs : »,
  }
 
  struct __C.ccrng_state {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var generate : Û.
+	var generate : Û,
  }
 
  enum CryptoKitPrivate.SSParameterSelection {
@@ -96,18 +96,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let thresholdMin : Int // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let thresholdMax : k/ // +0x8
+	let thresholdMax : k- // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maxNumOfShares : k/ // +0xc
+	let maxNumOfShares : k- // +0xc
 	let gcmKeyByteCount : Int // +0x10
 	let shareRandomnessByteCount : Int // +0x18
 	let gcmIVByteCount : Int // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let prime :  empty-list  // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let gcmKeyLabel : [, // +0x30
+	let gcmKeyLabel : [* // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let gcmIVLabel : [, // +0x40
+	let gcmIVLabel : [* // +0x40
  }
 
  class CryptoKitPrivate.Backing {
@@ -135,7 +135,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let type : SecretSharingErrorType // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var corecryptoError : ©, // +0x4
+	var corecryptoError : ©* // +0x4
 	var cryptoKitError : CryptoKitError // +0xc
 	let line : Int // +0x18
 	let function : String // +0x20
@@ -174,32 +174,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var X :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var z0_self : Ç'
+	var z0_self : Ç%
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var z1_self : Ç'
+	var z1_self : Ç%
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x269400005e68 (0x69400005e68) in binary!
+WARNING: couldn't find address 0x269400005c68 (0x69400005c68) in binary!
 	0x269c  @objc AlishaSPAKE2Prover.(null) <stripped>
-WARNING: couldn't find address 0x269800005e40 (0x69800005e40) in binary!
+WARNING: couldn't find address 0x269800005c40 (0x69800005c40) in binary!
 	0x2684  @objc AlishaSPAKE2Prover.(null) <stripped>
-WARNING: couldn't find address 0x268e00005e20 (0x68e00005e20) in binary!
+WARNING: couldn't find address 0x268e00005c20 (0x68e00005c20) in binary!
 	0xa8000000c  @objc AlishaSPAKE2Prover.(null) <stripped>
-WARNING: couldn't find address 0x266000005e00 (0x66000005e00) in binary!
+WARNING: couldn't find address 0x266000005c00 (0x66000005c00) in binary!
 	0x2654  @objc AlishaSPAKE2Prover.(null) <stripped>
-WARNING: couldn't find address 0x264800005dd8 (0x64800005dd8) in binary!
+WARNING: couldn't find address 0x264800005bd8 (0x64800005bd8) in binary!
 	0x263c  @objc AlishaSPAKE2Prover.(null) <stripped>
 
 	// Swift methods
-	0x4d60  func <stripped> // getter 
-	0x4de0  func <stripped> // setter 
-	0x4e40  func <stripped> // modifyCoroutine 
-	0x4f90  func <stripped> // getter 
-	0x5000  func <stripped> // setter 
-	0x5070  func <stripped> // modifyCoroutine 
-	0x50b0  class func AlishaSPAKE2Prover.__allocating_init(password:salt:authenticatedData:keyDerivationCost:) // init 
-	0x5e40  func <stripped> // method 
-	0x5ed0  func <stripped> // method 
+	0x4f00  func <stripped> // getter 
+	0x4f80  func <stripped> // setter 
+	0x4fe0  func <stripped> // modifyCoroutine 
+	0x5130  func <stripped> // getter 
+	0x51a0  func <stripped> // setter 
+	0x5210  func <stripped> // modifyCoroutine 
+	0x5250  class func AlishaSPAKE2Prover.__allocating_init(password:salt:authenticatedData:keyDerivationCost:) // init 
+	0x5fe0  func <stripped> // method 
+	0x6070  func <stripped> // method 
  }
 
  class CryptoKitPrivate.AlishaSPAKE2ProverConfirmed : NSObject /usr/lib/libobjc.A.dylib {
@@ -215,20 +215,20 @@ WARNING: couldn't find address 0x264800005dd8 (0x64800005dd8) in binary!
 	let M2 : NSData // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x266000005e00 (0x66000005e00) in binary!
+WARNING: couldn't find address 0x266000005c00 (0x66000005c00) in binary!
 	0x2654  @objc AlishaSPAKE2ProverConfirmed.(null) <stripped>
-WARNING: couldn't find address 0x264800005dd8 (0x64800005dd8) in binary!
+WARNING: couldn't find address 0x264800005bd8 (0x64800005bd8) in binary!
 	0x263c  @objc AlishaSPAKE2ProverConfirmed.(null) <stripped>
-WARNING: couldn't find address 0x263000005db0 (0x63000005db0) in binary!
+WARNING: couldn't find address 0x263000005bb0 (0x63000005bb0) in binary!
 	0x2624  @objc AlishaSPAKE2ProverConfirmed.(null) <stripped>
-WARNING: couldn't find address 0x261800005d88 (0x61800005d88) in binary!
+WARNING: couldn't find address 0x261800005b88 (0x61800005b88) in binary!
 	0x260c  @objc AlishaSPAKE2ProverConfirmed.(null) <stripped>
-WARNING: couldn't find address 0x260000005df0 (0x60000005df0) in binary!
+WARNING: couldn't find address 0x260000005bf0 (0x60000005bf0) in binary!
 	0x260a  @objc AlishaSPAKE2ProverConfirmed.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffff57d8  @objc AlishaSPAKE2ProverConfirmed.(null) <stripped>
+	0xffff5778  @objc AlishaSPAKE2ProverConfirmed.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffff58d0  @objc AlishaSPAKE2ProverConfirmed.(null) <stripped>
+	0xffff5870  @objc AlishaSPAKE2ProverConfirmed.(null) <stripped>
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	0x2433a4d4152  @objc AlishaSPAKE2ProverConfirmed.(null) <stripped>
 WARNING: couldn't find address 0x69725074694b6f74 (0x74694b6f74) in binary!
@@ -241,7 +241,7 @@ WARNING: couldn't find address 0x2d74694b6f747079 (0x14b6f747079) in binary!
 
  class CryptoKitPrivate.Scrypt : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x25c800005db8 (0x5c800005db8) in binary!
+WARNING: couldn't find address 0x25c800005bb8 (0x5c800005bb8) in binary!
 	0x0  @objc Scrypt.(null) <stripped>
  }
 
@@ -249,7 +249,7 @@ WARNING: couldn't find address 0x25c800005db8 (0x5c800005db8) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case underlyingCoreCryptoError : K,
+	case underlyingCoreCryptoError : K*
 	case incorrectKeySize  
 	case incorrectParameterSize  
 	case authenticationFailure  
@@ -285,19 +285,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let version : Int // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let shareNumber : «/ // +0x8
+	let shareNumber : «- // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let threshold : u, // +0xc
+	let threshold : u* // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let shamirSecretShare : Ç' // +0x18
+	let shamirSecretShare : Ç% // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let iv : Ç' // +0x28
+	let iv : Ç% // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let ciphertext : Ç' // +0x38
+	let ciphertext : Ç% // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tag : Ç' // +0x48
+	let tag : Ç% // +0x48
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let associatedData : U' // +0x58
+	let associatedData : U% // +0x58
  }
 
  struct CryptoKitPrivate.SymmetricKeySize {

@@ -30,6 +30,7 @@
 - (long long)_resolvedBaseWritingDirectionWithFallbackDirection:(long long)arg1;
 - (void)dealloc;
 - (id)description;
+- (struct CGSize)estimatedIntrinsicContentSizeForTextLayoutManager:(id)arg1;
 - (id)init;
 - (id)initWithAttributedString:(id)arg1;
 - (id)initWithAttributedString:(id)arg1 range:(struct _NSRange)arg2;

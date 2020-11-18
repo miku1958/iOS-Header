@@ -8,6 +8,7 @@
 
 @class NSMutableDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface NWAccumulation : NSObject
 {
     struct os_unfair_lock_s _lock;

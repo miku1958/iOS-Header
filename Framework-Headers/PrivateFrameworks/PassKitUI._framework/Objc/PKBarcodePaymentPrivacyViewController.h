@@ -8,13 +8,12 @@
 
 #import <PassKitUI/PKLinkedApplicationObserver-Protocol.h>
 
-@class NSString, PKLinkedApplication, PKPaymentPass, PKPaymentSetupProduct;
+@class NSString, PKLinkedApplication;
 
 @interface PKBarcodePaymentPrivacyViewController : PKExplanationViewController <PKLinkedApplicationObserver>
 {
     unsigned long long _displayContext;
-    PKPaymentPass *_pass;
-    PKPaymentSetupProduct *_product;
+    NSString *_issuerName;
     PKLinkedApplication *_linkedApplication;
 }
 
@@ -27,13 +26,10 @@
 - (BOOL)_canShowWhileLocked;
 - (void)_closeButtonPressed:(id)arg1;
 - (void)_dismiss;
-- (id)_initWithPaymentPass:(id)arg1 paymentSetupProduct:(id)arg2 linkedApplication:(id)arg3 displayContext:(unsigned long long)arg4 paymentSetupContext:(long long)arg5;
 - (void)_openAppButtonPressed:(id)arg1;
-- (id)_partnerName;
 - (void)_updateOpenApplicationButtonVisibility;
 - (void)explanationViewDidSelectContinue:(id)arg1;
-- (id)initWithPaymentPass:(id)arg1 linkedApplication:(id)arg2 displayContext:(unsigned long long)arg3 paymentSetupContext:(long long)arg4;
-- (id)initWithPaymentSetupProduct:(id)arg1 linkedApplication:(id)arg2 displayContext:(unsigned long long)arg3 paymentSetupContext:(long long)arg4;
+- (id)initWithIssuerName:(id)arg1 linkedApplication:(id)arg2 displayContext:(unsigned long long)arg3 paymentSetupContext:(long long)arg4;
 - (void)linkedApplicationDidChangeState:(id)arg1;
 - (void)viewDidLoad;
 

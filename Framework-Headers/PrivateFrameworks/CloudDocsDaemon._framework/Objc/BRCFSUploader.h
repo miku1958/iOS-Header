@@ -84,6 +84,7 @@ __attribute__((visibility("hidden")))
 - (void)ownerDidReceiveOutOfQuotaError:(id)arg1;
 - (void)performFirstSchedulingAfterStartupInDB:(id)arg1;
 - (id)quotaAvailableForOwner:(id)arg1;
+- (unsigned int)recoverAndReportMissingJobs;
 - (void)removeBoostedDocID:(id)arg1;
 - (void)rescheduleJobsPendingInitialSyncInZone:(id)arg1;
 - (void)resume;

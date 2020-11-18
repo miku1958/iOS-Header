@@ -11,40 +11,61 @@
 __attribute__((visibility("hidden")))
 @interface MRAVRoutingDiscoverySessionWrapper : NSProxy
 {
+    NSMutableDictionary *_endpointsChangedCallbacks;
+    NSMutableDictionary *_endpointsAddedCallbacks;
+    NSMutableDictionary *_endpointsRemovedCallbacks;
+    NSMutableDictionary *_endpointsModifiedCallbacks;
+    NSMutableDictionary *_outputDevicesChangedCallbacks;
+    NSMutableDictionary *_outputDevicesAddedCallbacks;
+    NSMutableDictionary *_outputDevicesRemovedCallbacks;
+    NSMutableDictionary *_outputDevicesModifiedCallbacks;
+    NSMutableDictionary *_endpointsTokensMap;
+    NSMutableDictionary *_outputDevicesTokensMap;
     unsigned int _discoveryMode;
     MRAVRoutingDiscoverySessionConfiguration *_configuration;
     MRAVRoutingDiscoverySession *_sharedSession;
-    NSMutableDictionary *_endpointCallbacks;
-    NSMutableDictionary *_endpointTokenMap;
-    NSMutableDictionary *_outputDeviceCallbacks;
-    NSMutableDictionary *_outputDeviceTokenMap;
 }
 
 @property (strong, nonatomic) MRAVRoutingDiscoverySessionConfiguration *configuration; // @synthesize configuration=_configuration;
-@property (strong, nonatomic) NSMutableDictionary *endpointCallbacks; // @synthesize endpointCallbacks=_endpointCallbacks;
-@property (strong, nonatomic) NSMutableDictionary *endpointTokenMap; // @synthesize endpointTokenMap=_endpointTokenMap;
-@property (strong, nonatomic) NSMutableDictionary *outputDeviceCallbacks; // @synthesize outputDeviceCallbacks=_outputDeviceCallbacks;
-@property (strong, nonatomic) NSMutableDictionary *outputDeviceTokenMap; // @synthesize outputDeviceTokenMap=_outputDeviceTokenMap;
 @property (strong, nonatomic) MRAVRoutingDiscoverySession *sharedSession; // @synthesize sharedSession=_sharedSession;
 
 - (void).cxx_destruct;
+- (id)addEndpointsAddedCallback:(CDUnknownBlockType)arg1;
 - (id)addEndpointsChangedCallback:(CDUnknownBlockType)arg1;
+- (id)addEndpointsModifiedCallback:(CDUnknownBlockType)arg1;
+- (id)addEndpointsRemovedCallback:(CDUnknownBlockType)arg1;
+- (id)addOutputDevicesAddedCallback:(CDUnknownBlockType)arg1;
 - (id)addOutputDevicesChangedCallback:(CDUnknownBlockType)arg1;
+- (id)addOutputDevicesModifiedCallback:(CDUnknownBlockType)arg1;
+- (id)addOutputDevicesRemovedCallback:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (unsigned int)discoveryMode;
 - (void)forwardInvocation:(id)arg1;
 - (id)initWithSession:(id)arg1 configuration:(id)arg2;
-- (id)mappedEndpointTokenForToken:(id)arg1;
-- (id)mappedOutputDeviceTokenForToken:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)reevaluateDiscoveryModeForSession:(id)arg1;
+- (void)removeEndpointsAddedCallback:(id)arg1;
 - (void)removeEndpointsChangedCallback:(id)arg1;
+- (void)removeEndpointsModifiedCallback:(id)arg1;
+- (void)removeEndpointsRemovedCallback:(id)arg1;
+- (void)removeOutputDevicesAddedCallback:(id)arg1;
 - (void)removeOutputDevicesChangedCallback:(id)arg1;
+- (void)removeOutputDevicesModifiedCallback:(id)arg1;
+- (void)removeOutputDevicesRemovedCallback:(id)arg1;
 - (void)setAlwaysAllowUpdates:(BOOL)arg1;
 - (void)setDiscoveryMode:(unsigned int)arg1;
 - (void)setPopulatesExternalDevice:(BOOL)arg1;
 - (void)setRoutingContextUID:(id)arg1;
 - (void)transferCallbacksFromSession:(id)arg1 toSession:(id)arg2;
+- (void)transferEndpointsAddedCallbacksFromSession:(id)arg1 toSession:(id)arg2;
+- (void)transferEndpointsChangedCallbacksFromSession:(id)arg1 toSession:(id)arg2;
+- (void)transferEndpointsModifiedCallbacksFromSession:(id)arg1 toSession:(id)arg2;
+- (void)transferEndpointsRemovedCallbacksFromSession:(id)arg1 toSession:(id)arg2;
+- (void)transferOutputDevicesAddedCallbacksFromSession:(id)arg1 toSession:(id)arg2;
+- (void)transferOutputDevicesChangedCallbacksFromSession:(id)arg1 toSession:(id)arg2;
+- (void)transferOutputDevicesModifiedCallbacksFromSession:(id)arg1 toSession:(id)arg2;
+- (void)transferOutputDevicesRemovedCallbacksFromSession:(id)arg1 toSession:(id)arg2;
+- (void)updatePreviousSharedSessionState:(id)arg1;
 - (void)updateSharedSession;
 
 @end

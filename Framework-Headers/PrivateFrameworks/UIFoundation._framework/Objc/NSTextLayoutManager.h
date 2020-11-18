@@ -10,7 +10,7 @@
 #import <UIFoundation/NSTextSelectionDataSource-Protocol.h>
 #import <UIFoundation/NSTextViewportElementProvider-Protocol.h>
 
-@class NSArray, NSLayoutManager, NSOperationQueue, NSString, NSTextContainer, NSTextContentManager, NSTextParagraph, NSTextRange, NSTextSelectionNavigation, NSTextViewportLayoutController;
+@class NSArray, NSLayoutManager, NSOperationQueue, NSString, NSTextContainer, NSTextContentManager, NSTextParagraph, NSTextRange, NSTextSelectionNavigation, NSTextViewportLayoutController, _NSTextAttributeStorage;
 @protocol NSTextLayoutManagerDelegate, NSTextLayoutManagerDelegatePrivate, NSTextLocation;
 
 @interface NSTextLayoutManager : NSObject <NSTextViewportElementProvider, NSSecureCoding, NSTextSelectionDataSource>
@@ -22,6 +22,7 @@
     id<NSTextLayoutManagerDelegatePrivate> _delegate;
     NSLayoutManager *_companion;
     NSTextSelectionNavigation *_textSelectionNavigation;
+    _NSTextAttributeStorage *_temporaryAttributesTable;
     BOOL _usesFontLeading;
     BOOL _limitsLayoutForSuspiciousContents;
     BOOL _usesDefaultHyphenation;
@@ -72,6 +73,8 @@
 + (Class)viewportLayoutControllerClass;
 - (void)_addTextContainerFromTemplate:(id)arg1;
 - (void)_commonInit;
+- (void)_configureCoreTypesetter:(id)arg1 forTextParagraph:(id)arg2;
+- (double)_estimatedVerticalSizeForTextRange:(id)arg1 adjustedTextRange:(out id *)arg2;
 - (void)_fixSelectionAfterChangeInCharacterRange:(struct _NSRange)arg1 changeInLength:(long long)arg2;
 - (BOOL)_hasLayoutForLocation:(id)arg1;
 - (void)_invalidateTextParagraphForEmptyDocument;
@@ -79,14 +82,20 @@
 - (void)_removeTextContainer;
 - (void)_removeTextContainersUntilCondition:(CDUnknownBlockType)arg1;
 - (id)_selectionAndMarkedTextAttributesForLocation:(id)arg1 inTextRange:(id)arg2 effectiveTextRange:(out id *)arg3;
+- (BOOL)_shouldDrawTextCorrectionMarkerWithType:(long long)arg1 inRange:(id)arg2;
 - (id)_textLayoutFragmentAtLocation:(id)arg1;
 - (id)_textLineFragmentAtLocation:(id)arg1 textLayoutFragment:(out id *)arg2 rangeDelta:(out long long *)arg3;
 - (id)_textParagraphForEmptyDocument;
+- (id)_textRangeForDoubleClickAtLocation:(id)arg1;
+- (id)_textSelectionsFromTextView;
+- (id)_textViewRespondingToSelector:(SEL)arg1;
 - (BOOL)_validateTextContainerEntries;
 - (void)addRenderingAttribute:(id)arg1 value:(id)arg2 forTextRange:(id)arg3;
+- (void)addTemporaryAttribute:(id)arg1 value:(id)arg2 forTextRange:(id)arg3;
 - (id)adjustedTextSelectionsForEditingContextFromTextSelections:(id)arg1;
 - (BOOL)allowsFontSubstitutionAffectingVerticalMetrics;
 - (long long)applicationFrameworkContext;
+- (id)baseLocation;
 - (long long)baseWritingDirectionAtLocation:(id)arg1;
 - (id)companionLayoutManager;
 - (void)dealloc;
@@ -97,6 +106,7 @@
 - (void)enumerateContainerBoundariesFromLocation:(id)arg1 reverse:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateRenderingAttributesFromLocation:(id)arg1 reverse:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateSubstringsFromLocation:(id)arg1 options:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateTemporaryAttributesFromLocation:(id)arg1 reverse:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)enumerateTextLayoutFragmentsFromLocation:(id)arg1 options:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)enumerateTextLayoutFragmentsInTextRange:(id)arg1 options:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateTextSegmentsInRange:(id)arg1 type:(long long)arg2 options:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
@@ -106,6 +116,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)invalidateLayoutForRange:(id)arg1;
 - (void)invalidateRenderingAttributesForTextRange:(id)arg1;
+- (void)invalidateTemporaryAttributesForTextRange:(id)arg1;
 - (BOOL)isCountableDataSource;
 - (long long)layoutOrientationAtLocation:(id)arg1;
 - (id)lineFragmentRangeForPoint:(struct CGPoint)arg1 inContainerAtLocation:(id)arg2;
@@ -114,6 +125,7 @@
 - (void)processLayoutInvalidationForTextRange:(id)arg1 synchronizing:(BOOL)arg2;
 - (id)rangeForTextContainerAtIndex:(long long)arg1;
 - (void)removeRenderingAttribute:(id)arg1 forTextRange:(id)arg2;
+- (void)removeTemporaryAttribute:(id)arg1 forTextRange:(id)arg2;
 - (id)renderingAttributesForLink:(id)arg1 atLocation:(id)arg2;
 - (id)renderingColorForDocumentColor:(id)arg1 atLocation:(id)arg2;
 - (void)replaceCharactersInRange:(id)arg1 withAttributedString:(id)arg2;
@@ -122,14 +134,17 @@
 - (void)setAllowsFontSubstitutionAffectingVerticalMetrics:(BOOL)arg1;
 - (void)setApplicationFrameworkContext:(long long)arg1;
 - (void)setRenderingAttributes:(id)arg1 forTextRange:(id)arg2;
+- (void)setTemporaryAttributes:(id)arg1 forTextRange:(id)arg2;
 - (void)setTextContentManager:(id)arg1;
 - (void)synchronize;
+- (id)temporaryAttributesTable;
 - (void)textContainerChangedGeometry:(id)arg1;
 - (id)textContainerForLocation:(id)arg1;
 - (id)textLayoutFragmentForLocation:(id)arg1;
 - (id)textLayoutFragmentForPosition:(struct CGPoint)arg1 inTextContainerAtIndex:(long long)arg2;
 - (id)textRangeForSelectionGranularity:(long long)arg1 enclosingLocation:(id)arg2;
 - (void)updateLayoutWithTextLayoutFragment:(id)arg1;
+- (void)updateLayoutWithTextLayoutFragment:(id)arg1 addition:(BOOL)arg2;
 - (struct CGRect)usageBoundsInTextContainerAtIndex:(long long)arg1;
 - (id)viewportLayoutController;
 

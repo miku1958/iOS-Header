@@ -13,6 +13,7 @@
     MISSING_TYPE *completionHandler;
     MISSING_TYPE *healthAgencyModel;
     MISSING_TYPE *currentSelectedRegion;
+    MISSING_TYPE *currentSelectedRegionSubdivisionCodes;
     MISSING_TYPE *exposureManager;
     MISSING_TYPE *isFromAvailabilityAlert;
 }

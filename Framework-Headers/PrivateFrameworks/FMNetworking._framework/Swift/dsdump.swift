@@ -83,37 +83,37 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let data : —x // +0x0
+	let data : Ås // +0x0
 	let response : NSHTTPURLResponse? // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let error : ü{ // +0x18
+	let error : Ov // +0x18
  }
 
  class FMNetworking.FMNAuthenticationCredential : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var authToken : String // +0x10 (0x10)
-	var personId : String // +0x20 (0x10)
-	var hostName : String // +0x30 (0x10)
-	var accountType : FMNAccountType // +0x40 (0x1)
+	var authToken : String
+	var personId : String
+	var hostName : String
+	var accountType : FMNAccountType
 
 	// Swift methods
+	0x6460  func <stripped> // getter 
+	0x64a0  func <stripped> // setter 
+	0x64e0  func <stripped> // modifyCoroutine 
+	0x65b0  func <stripped> // getter 
+	0x65f0  func <stripped> // setter 
+	0x6630  func <stripped> // modifyCoroutine 
+	0x6700  func <stripped> // getter 
+	0x6740  func <stripped> // setter 
+	0x6780  func <stripped> // modifyCoroutine 
 	0x6860  func <stripped> // getter 
-	0x68a0  func <stripped> // setter 
-	0x68e0  func <stripped> // modifyCoroutine 
-	0x69b0  func <stripped> // getter 
-	0x69f0  func <stripped> // setter 
-	0x6a30  func <stripped> // modifyCoroutine 
-	0x6b00  func <stripped> // getter 
-	0x6b40  func <stripped> // setter 
-	0x6b80  func <stripped> // modifyCoroutine 
-	0x6c30  func <stripped> // getter 
-	0x6c60  func <stripped> // setter 
-	0x6c90  func <stripped> // modifyCoroutine 
-	0x79d0  func <stripped> // getter 
-	0x7da0  class func FMNAuthenticationCredential.__allocating_init(accountType:authToken:personId:hostName:) // init 
-	0x7f30  class func FMNAuthenticationCredential.__allocating_init(from:) // init 
-	0x8290  func <stripped> // method 
+	0x68c0  func <stripped> // setter 
+	0x6920  func <stripped> // modifyCoroutine 
+	0x7600  func <stripped> // getter 
+	0x79d0  class func FMNAuthenticationCredential.__allocating_init(accountType:authToken:personId:hostName:) // init 
+	0x7b70  class func FMNAuthenticationCredential.__allocating_init(from:) // init 
+	0x7ed0  func <stripped> // method 
  }
 
  enum FMNetworking.FMNAuthenticationCredentialError {
@@ -135,15 +135,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : µu
+	let url : ep
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let data : «u
+	let data : wp
 	let headers : [String : String]
  }
 
  enum FMNetworking.FMNAccountType {
 
 	// Properties
+	case accessory : (overrideHostname: String?)
 	case fmf  
 	case fmfApp  
 	case fmip  
@@ -186,25 +187,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var credential : FMNAuthenticationCredential
 
 	// Swift methods
-	0x10120  func <stripped> // getter 
-	0x10150  func <stripped> // setter 
-	0x10180  func <stripped> // modifyCoroutine 
-	0x10270  func <stripped> // getter 
-	0x102b0  func <stripped> // setter 
-	0x102f0  func <stripped> // modifyCoroutine 
-	0x10320  func <stripped> // getter 
-	0x10390  class func FMNAuthenticationProvider.__allocating_init() // init 
-	0x106c0  func <stripped> // method 
-	0x10fd0  func <stripped> // method 
-	0x11c10  func <stripped> // method 
-	0x11d50  func <stripped> // method 
+	0xff00  func <stripped> // getter 
+	0xff30  func <stripped> // setter 
+	0xff60  func <stripped> // modifyCoroutine 
+	0x10050  func <stripped> // getter 
+	0x10090  func <stripped> // setter 
+	0x100d0  func <stripped> // modifyCoroutine 
+	0x10100  func <stripped> // getter 
+	0x10170  class func FMNAuthenticationProvider.__allocating_init() // init 
+	0x104a0  func <stripped> // method 
+	0x10e00  func <stripped> // method 
+	0x11aa0  func <stripped> // method 
+	0x11c00  func <stripped> // method 
  }
 
  struct FMNetworking.FMNHTTPArchiveReader {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let httpArchiveFileURL : µu
+	let httpArchiveFileURL : ep
  }
 
  struct FMNetworking.FMNMockingPreferences {
@@ -218,9 +219,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dateDecodingStrategy : ≥s
+	let dateDecodingStrategy : Qn
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dateEncodingStrategy : Às
+	let dateEncodingStrategy : in
  }
 
  struct FMNetworking.OptionalDecodable {
@@ -249,10 +250,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let fileURL : µu
+	let fileURL : ep
 	let method : FMNRequestMethod
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : µu
+	let url : ep
 	let additionalHeaderFields : [String : String]
 	let credential : FMNRequestCredential
  }
@@ -269,9 +270,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let method : FMNRequestMethod
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : µu
+	let url : ep
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let body : «u
+	let body : wp
 	let additionalHeaderFields : [String : String]
 	let credential : FMNRequestCredential
  }
@@ -289,7 +290,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let serialQueue : OS_dispatch_queue // +0x0
 	let credential : FMNRequestCredential // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let decoder : œr // +0x30
+	let decoder : mm // +0x30
  }
 
  enum FMNetworking.CodingKeys {
@@ -312,9 +313,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let preferences : FMNMockingPreferences
 
 	// Swift methods
-	0x203f0  class func FMNURLSessionFactory.__allocating_init(mockSessionCreationBlock:preferences:) // init 
-	0x20470  func <stripped> // method 
-	0x20900  func <stripped> // method 
+	0x20820  class func FMNURLSessionFactory.__allocating_init(mockSessionCreationBlock:preferences:) // init 
+	0x208a0  func <stripped> // method 
+	0x20d40  func <stripped> // method 
  }
 
  enum FMNetworking.URLSessionFactoryError {
@@ -329,12 +330,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let executionBlock : ()
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x50b00000fc90 (0xb00000fc90) in binary!
-	0x50ac  @objc MockURLDataTask.(null) <stripped>
-WARNING: couldn't find address 0x50980000fb08 (0x980000fb08) in binary!
+WARNING: couldn't find address 0x50d00000f730 (0xd00000f730) in binary!
+	0x50cc  @objc MockURLDataTask.(null) <stripped>
+WARNING: couldn't find address 0x50b80000f5a8 (0xb80000f5a8) in binary!
 	0x38000000c  @objc MockURLDataTask.(null) <stripped>
-WARNING: couldn't find address 0x50800000fc00 (0x800000fc00) in binary!
-	0x507c  @objc MockURLDataTask.(null) <stripped>
+WARNING: couldn't find address 0x50a00000f6a0 (0xa00000f6a0) in binary!
+	0x509c  @objc MockURLDataTask.(null) <stripped>
 
 	// Swift methods
  }
@@ -350,13 +351,13 @@ WARNING: couldn't find address 0x50800000fc00 (0x800000fc00) in binary!
 	let urlSessionFactory : FMNURLSessionFactory
 
 	// Swift methods
-	0x213d0  class func FMNServerInteractionController.__allocating_init(authenticationProvider:mockingPreferences:urlSessionFactory:) // init 
-	0x215e0  func <stripped> // method 
-	0x21600  func <stripped> // method 
-	0x21640  func <stripped> // method 
-	0x216c0  func <stripped> // method 
-	0x216e0  func <stripped> // method 
-	0x217e0  func <stripped> // method 
+	0x21810  class func FMNServerInteractionController.__allocating_init(authenticationProvider:mockingPreferences:urlSessionFactory:) // init 
+	0x21a20  func <stripped> // method 
+	0x21a40  func <stripped> // method 
+	0x21a80  func <stripped> // method 
+	0x21b00  func <stripped> // method 
+	0x21b20  func <stripped> // method 
+	0x21c20  func <stripped> // method 
  }
 
  enum FMNetworking.FMNServerInteractionError {
@@ -375,23 +376,23 @@ WARNING: couldn't find address 0x50800000fc00 (0x800000fc00) in binary!
 
 	// Properties
 	var credential : FMNRequestCredential // +0x10 (0x28)
-	var accountType : FMNAccountType // +0x38 (0x1)
+	var accountType : FMNAccountType // +0x38 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var urlComponents : €q // +0x19 (0x0)
+	var urlComponents : yl // +0x19 (0x0)
 
 	// Swift methods
-	0x228c0  func <stripped> // getter 
-	0x22900  func <stripped> // setter 
-	0x22950  func <stripped> // modifyCoroutine 
-	0x229f0  func <stripped> // getter 
-	0x22a20  func <stripped> // setter 
-	0x22a50  func <stripped> // modifyCoroutine 
-	0x22b00  func <stripped> // getter 
-	0x22b50  func <stripped> // setter 
-	0x22bb0  func <stripped> // modifyCoroutine 
-	0x22bf0  class func FMNHTTPRequest.__allocating_init(hostName:scheme:path:) // init 
-	0x22cb0  func <stripped> // method 
 	0x22d10  func <stripped> // getter 
+	0x22d50  func <stripped> // setter 
+	0x22da0  func <stripped> // modifyCoroutine 
+	0x22e60  func <stripped> // getter 
+	0x22ea0  func <stripped> // setter 
+	0x22ee0  func <stripped> // modifyCoroutine 
+	0x22f90  func <stripped> // getter 
+	0x22fe0  func <stripped> // setter 
+	0x23040  func <stripped> // modifyCoroutine 
+	0x23080  class func FMNHTTPRequest.__allocating_init(hostName:scheme:path:) // init 
+	0x23140  func <stripped> // method 
+	0x231a0  func <stripped> // getter 
  }
 
  class FMNetworking.FMNHttpClient : NSObject /usr/lib/libobjc.A.dylib {
@@ -407,32 +408,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let statusCodeHandlerQueue : OS_dispatch_queue
 	var session : FMNetworkingURLSession
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sessionLock : Àq
+	var sessionLock : il
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x50800000fc00 (0x800000fc00) in binary!
-	0x507c  @objc FMNHttpClient.(null) <stripped>
-WARNING: couldn't find address 0x50680000fad8 (0x680000fad8) in binary!
+WARNING: couldn't find address 0x50a00000f6a0 (0xa00000f6a0) in binary!
+	0x509c  @objc FMNHttpClient.(null) <stripped>
+WARNING: couldn't find address 0x50880000f578 (0x880000f578) in binary!
 	0x18000000c  @objc FMNHttpClient.(null) <stripped>
-WARNING: couldn't find address 0x542c0000fab8 (0x42c0000fab8) in binary!
+WARNING: couldn't find address 0x544c0000f558 (0x44c0000f558) in binary!
 	0x38000000c  @objc FMNHttpClient.(null) <stripped>
 
 	// Swift methods
-	0x24100  func <stripped> // getter 
-	0x24150  func <stripped> // setter 
-	0x241b0  func <stripped> // modifyCoroutine 
-	0x242b0  func <stripped> // getter 
-	0x24300  func <stripped> // setter 
-	0x24350  func <stripped> // modifyCoroutine 
-	0x23400  class func FMNHttpClient.__allocating_init(credential:urlSessionFactory:) // init 
-	0x245b0  func <stripped> // method 
-	0x248c0  func <stripped> // method 
-	0x24ad0  func <stripped> // method 
-	0x24c40  func <stripped> // method 
-	0x25110  func <stripped> // method 
-	0x26440  func <stripped> // method 
-	0x266e0  func <stripped> // method 
-	0x26940  func <stripped> // method 
+	0x245c0  func <stripped> // getter 
+	0x24610  func <stripped> // setter 
+	0x24670  func <stripped> // modifyCoroutine 
+	0x24770  func <stripped> // getter 
+	0x247c0  func <stripped> // setter 
+	0x24810  func <stripped> // modifyCoroutine 
+	0x238c0  class func FMNHttpClient.__allocating_init(credential:urlSessionFactory:) // init 
+	0x24a70  func <stripped> // method 
+	0x24d80  func <stripped> // method 
+	0x24f90  func <stripped> // method 
+	0x25100  func <stripped> // method 
+	0x255d0  func <stripped> // method 
+	0x26900  func <stripped> // method 
+	0x26ba0  func <stripped> // method 
+	0x26e00  func <stripped> // method 
  }
 
  enum FMNetworking.ErrorCode { }
@@ -461,7 +462,7 @@ WARNING: couldn't find address 0x542c0000fab8 (0x42c0000fab8) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startedDateTime : ◊o
+	let startedDateTime : uj
 	let request : HARRequest
 	let response : HARResponse
  }
@@ -623,35 +624,35 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_apsConnection : APSConnection??
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x50380000fbb8 (0x380000fbb8) in binary!
-	0x5034  @objc FMNPushNotificatonHandler.(null) <stripped>
-WARNING: couldn't find address 0x50200000fa90 (0x200000fa90) in binary!
+WARNING: couldn't find address 0x50580000f658 (0x580000f658) in binary!
+	0x5054  @objc FMNPushNotificatonHandler.(null) <stripped>
+WARNING: couldn't find address 0x50400000f530 (0x400000f530) in binary!
 	0x38000000c  @objc FMNPushNotificatonHandler.(null) <stripped>
-WARNING: couldn't find address 0x59340000fa68 (0x1340000fa68) in binary!
-	0x5938  @objc FMNPushNotificatonHandler.(null) <stripped>
+WARNING: couldn't find address 0x59540000f508 (0x1540000f508) in binary!
+	0x5958  @objc FMNPushNotificatonHandler.(null) <stripped>
 
 	// Swift methods
-	0x30a70  func <stripped> // getter 
-	0x30c50  func <stripped> // method 
-	0x31280  func <stripped> // method 
+	0x30fb0  func <stripped> // getter 
+	0x31190  func <stripped> // method 
+	0x317c0  func <stripped> // method 
  }
 
  class FMNetworking.FMNMockClientURLSession : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let httpArchiveFileURL : µu // +0x44000 (0x0)
+	let httpArchiveFileURL : ep // +0x44000 (0x0)
 	let responseReadQueue : OS_dispatch_queue // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var urlResponseByURL :  empty-list  // +0x0 (0x8)
 
 	// Swift methods
-	0x34000  class func FMNMockClientURLSession.__allocating_init(httpArchiveFileURL:) // init 
-	0x34700  func <stripped> // method 
-	0x347a0  func <stripped> // method 
-	0x34c90  func <stripped> // method 
-	0x350f0  func <stripped> // method 
-	0x357a0  func <stripped> // method 
+	0x34540  class func FMNMockClientURLSession.__allocating_init(httpArchiveFileURL:) // init 
+	0x34c40  func <stripped> // method 
+	0x34ce0  func <stripped> // method 
+	0x351d0  func <stripped> // method 
+	0x35630  func <stripped> // method 
+	0x35ce0  func <stripped> // method 
  }
 
  enum FMNetworking.FMNClientError {
@@ -665,7 +666,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class FMNetworking.FMNHTTPArchiveWriter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x36b50  class func FMNHTTPArchiveWriter.__allocating_init() // init 
-	0x36b80  func <stripped> // method 
-	0x37540  func <stripped> // method 
+	0x370a0  class func FMNHTTPArchiveWriter.__allocating_init() // init 
+	0x370d0  func <stripped> // method 
+	0x37a90  func <stripped> // method 
  }

@@ -19,7 +19,6 @@
 - (id)_accessibilityScrollAncestor;
 - (BOOL)_accessibilityServesAsContainingParentForOrdering;
 - (BOOL)_accessibilityShouldIncludeArrowKeyCommandsForDirectionalFocusMovement;
-- (BOOL)_accessibilitySupportsActivateAction;
 - (BOOL)_accessibilityViewIsVisible;
 - (BOOL)_axHasOpenFolder;
 - (BOOL)_axIsLastPage;

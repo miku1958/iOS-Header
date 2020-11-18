@@ -45,6 +45,7 @@
 - (id)initWithLibraryURL:(id)arg1;
 - (id)initWithLibraryURL:(id)arg1 bundleScope:(unsigned char)arg2;
 - (id)rebuidHistoryFilePath;
+- (id)redactedDescription;
 - (void)setOrCompareLibraryURL:(id)arg1;
 - (id)sqliteErrorIndicatorFilePath;
 - (id)timeMachineExclusionPathForPathType:(unsigned char)arg1;

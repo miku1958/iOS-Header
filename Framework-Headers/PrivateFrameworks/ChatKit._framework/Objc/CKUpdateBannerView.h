@@ -30,6 +30,8 @@
     UIImageView *_contactsIconView;
     UIButton *_cancelButton;
     id<CKBannerUpdatesViewDelegate> _updatesDelegate;
+    UIView *_bottomSeparatorView;
+    UIView *_topSeparatorView;
 }
 
 @property (strong, nonatomic) UIView *avatarCutoutView; // @synthesize avatarCutoutView=_avatarCutoutView;
@@ -37,6 +39,7 @@
 @property (nonatomic) double avatarViewAlignmentX; // @synthesize avatarViewAlignmentX=_avatarViewAlignmentX;
 @property (nonatomic) unsigned long long bannerType; // @synthesize bannerType=_bannerType;
 @property (strong, nonatomic) UIVisualEffectView *blurView; // @synthesize blurView=_blurView;
+@property (strong, nonatomic) UIView *bottomSeparatorView; // @synthesize bottomSeparatorView=_bottomSeparatorView;
 @property (strong, nonatomic) UIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property (strong, nonatomic) NSDictionary *contactMap; // @synthesize contactMap=_contactMap;
 @property (strong, nonatomic) UIImageView *contactsIconView; // @synthesize contactsIconView=_contactsIconView;
@@ -50,6 +53,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITextView *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (nonatomic) double titleLabelAlignmentX; // @synthesize titleLabelAlignmentX=_titleLabelAlignmentX;
+@property (strong, nonatomic) UIView *topSeparatorView; // @synthesize topSeparatorView=_topSeparatorView;
 @property (nonatomic) id<CKBannerUpdatesViewDelegate> updatesDelegate; // @synthesize updatesDelegate=_updatesDelegate;
 @property (nonatomic) BOOL useNamedSubtitles; // @synthesize useNamedSubtitles=_useNamedSubtitles;
 @property (nonatomic) BOOL useNamedTitles; // @synthesize useNamedTitles=_useNamedTitles;
@@ -59,6 +63,7 @@
 - (void)_updateAvatarView;
 - (void)_updateSubtitleLabel;
 - (void)_updateTitleLabel;
+- (void)addSeparators;
 - (id)cancelGlyph;
 - (id)initWithFrame:(struct CGRect)arg1 style:(unsigned long long)arg2 useNamedTitles:(BOOL)arg3 updates:(id)arg4 inUpdatesMode:(BOOL)arg5;
 - (struct UIEdgeInsets)layoutMargins;

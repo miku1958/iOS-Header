@@ -34,6 +34,7 @@
 - (id)_cardViewControllerForCardSection:(id)arg1;
 - (id)_createCardViewControllerForCard:(id)arg1;
 - (struct CGSize)boundingSizeForCardSectionViewController:(id)arg1;
+- (void)cardSectionView:(id)arg1 willProcessEngagementFeedback:(id)arg2;
 - (void)cardSectionViewController:(id)arg1 didSelectPreferredPunchoutIndex:(long long)arg2;
 - (void)cardSectionViewDidAppearForCardSection:(id)arg1 withAppearanceFeedback:(id)arg2;
 - (void)cardSectionViewDidDisappearForCardSection:(id)arg1 withDisappearanceFeedback:(id)arg2;

@@ -9,13 +9,14 @@
 #import <BannerKit/BNBannerHostSceneViewControllerViewDelegate-Protocol.h>
 #import <BannerKit/BNBannerSourceListenerPresentable-Protocol.h>
 #import <BannerKit/BNPresentableObservable-Protocol.h>
+#import <BannerKit/BNPresentableUniquelyIdentifying-Protocol.h>
 #import <BannerKit/BSInvalidatable-Protocol.h>
 #import <BannerKit/FBSceneObserver-Protocol.h>
 
 @class BSAnimationSettings, FBProcess, FBScene, NSHashTable, NSMutableArray, NSString, NSUUID;
 @protocol UIScenePresenter;
 
-@interface BNBannerHostSceneViewController : UIViewController <FBSceneObserver, BNBannerHostSceneViewControllerViewDelegate, BSInvalidatable, BNBannerSourceListenerPresentable, BNPresentableObservable>
+@interface BNBannerHostSceneViewController : UIViewController <FBSceneObserver, BNBannerHostSceneViewControllerViewDelegate, BSInvalidatable, BNBannerSourceListenerPresentable, BNPresentableUniquelyIdentifying, BNPresentableObservable>
 {
     id<UIScenePresenter> _scenePresenter;
     struct UIEdgeInsets _bannerContentOutsets;

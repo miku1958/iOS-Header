@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     VSAuditToken *_auditToken;
     NSArray *_supportedIdentityProviderIdentifiers;
     NSArray *_featuredIdentityProviderIdentifiers;
+    NSArray *_applicationAccountProviders;
     VSOptional *_currentAccount;
     VSOptional *_result;
     NSOperationQueue *_privateQueue;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic, getter=isAccountModificationAllowed) BOOL accountModificationAllowed; // @synthesize accountModificationAllowed=_accountModificationAllowed;
+@property (copy, nonatomic) NSArray *applicationAccountProviders; // @synthesize applicationAccountProviders=_applicationAccountProviders;
 @property (copy, nonatomic) VSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (strong, nonatomic) VSIdentityProviderAvailabilityInfoCenter *availabilityInfoCenter; // @synthesize availabilityInfoCenter=_availabilityInfoCenter;
 @property (strong, nonatomic) VSStoreURLBag *bag; // @synthesize bag=_bag;

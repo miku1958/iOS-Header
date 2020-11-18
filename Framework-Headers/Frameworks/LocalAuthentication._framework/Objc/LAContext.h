@@ -39,6 +39,7 @@
 + (unsigned int)newCommandId;
 + (unsigned int)newInstanceId;
 + (void)notifyEvent:(long long)arg1;
++ (void)notifyEvent:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_evaluateAccessControl:(struct __SecAccessControl *)arg1 operation:(id)arg2 options:(id)arg3 log:(long long)arg4 cid:(unsigned int)arg5 reply:(CDUnknownBlockType)arg6;
@@ -57,6 +58,8 @@
 - (void)bootstrapServiceType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)canEvaluatePolicy:(long long)arg1 error:(id *)arg2;
 - (BOOL)checkContextValidWithError:(id *)arg1;
+- (id)credentialOfType:(long long)arg1 error:(id *)arg2;
+- (void)credentialOfType:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

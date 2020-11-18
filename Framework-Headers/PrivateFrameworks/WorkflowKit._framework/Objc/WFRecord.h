@@ -46,8 +46,8 @@
 - (id)descriptionWithValues:(BOOL)arg1;
 - (void)enumerateSettablePropertiesWithBlock:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)initWithStorage:(id)arg1 error:(id *)arg2;
-- (id)initWithStorage:(id)arg1 properties:(id)arg2 error:(id *)arg3;
+- (id)initWithStorage:(id)arg1;
+- (id)initWithStorage:(id)arg1 properties:(id)arg2;
 - (void)loadFromStorage:(id)arg1;
 - (void)loadFromStorage:(id)arg1 properties:(id)arg2;
 - (void)markPropertyModifiedIfNecessary:(id)arg1;

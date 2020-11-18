@@ -75,6 +75,7 @@
 @property (nonatomic) double assistiveTouchMotionTrackerYNormalizationOrder;
 @property (nonatomic) BOOL assistiveTouchMouseAllowAppleBluetoothDevicesPairing;
 @property (nonatomic) BOOL assistiveTouchMouseAlwaysShowSoftwareKeyboardEnabled;
+@property (nonatomic) BOOL assistiveTouchMouseBehavesLikeFinger;
 @property (readonly, nonatomic) NSArray *assistiveTouchMouseCustomizedClickActions;
 @property (nonatomic) double assistiveTouchMouseDwellControlActivationTimeout;
 @property (strong, nonatomic) NSString *assistiveTouchMouseDwellControlAutorevertAction;
@@ -192,6 +193,7 @@
 @property BOOL highContrastFocusIndicatorsEnabled;
 @property (nonatomic) BOOL ignoreAXAsserts;
 @property (nonatomic) BOOL ignoreAXServerEntitlements;
+@property (copy, nonatomic) NSArray *imageCaptioningDisabledApps;
 @property (nonatomic) BOOL includeBacktraceInLogs;
 @property BOOL increaseButtonLegibilityEnabled;
 @property (nonatomic) BOOL independentHearingAidSettings;
@@ -233,7 +235,6 @@
 @property BOOL monoAudioEnabled;
 @property (nonatomic) BOOL phoneticFeedbackEnabled;
 @property (nonatomic) unsigned long long quickSpeakHighlightOption;
-@property (nonatomic) BOOL quickSpeakHighlightText;
 @property (nonatomic) struct CGPoint quickSpeakNubbitNormalizedPosition;
 @property (nonatomic) long long quickSpeakSentenceHighlightColor;
 @property (nonatomic) unsigned long long quickSpeakSentenceHighlightOption;
@@ -262,7 +263,6 @@
 @property BOOL siriSemanticContextEnabled;
 @property (nonatomic) BOOL skipHearingAidMFiAuth;
 @property (nonatomic) BOOL speakCorrectionsEnabled;
-@property (nonatomic) BOOL speakScreenIsHighlightVisible;
 @property (nonatomic) long long speechControllerDoubleTapAction;
 @property (nonatomic) double speechControllerIdleOpacity;
 @property (nonatomic) long long speechControllerLongPressAction;
@@ -388,6 +388,7 @@
 @property (copy, nonatomic) NSUUID *voiceOverPunctuationGroup;
 @property (nonatomic) long long voiceOverPunctuationLevel;
 @property (copy, nonatomic) NSArray *voiceOverRotorItems;
+@property (nonatomic) BOOL voiceOverSceneDescriptionsEnabled;
 @property BOOL voiceOverScreenCurtainEnabled;
 @property (strong, nonatomic) AXVoiceOverActivity *voiceOverSelectedActivity;
 @property (nonatomic) BOOL voiceOverShouldDisallowUSBRestrictedMode;

@@ -7,7 +7,6 @@
 #import <HeartRhythmUI/NSObject-Protocol.h>
 
 @class HKDateCache, HKHealthStore, NSMutableDictionary;
-@protocol HROnboardingManagerDelegate;
 
 @protocol HROnboardingPageViewControllerDelegate <NSObject>
 
@@ -16,10 +15,9 @@
 
 - (HKDateCache *)dateCache;
 - (HKHealthStore *)healthStore;
-- (id<HROnboardingManagerDelegate>)onboardingManagerDelegate;
 - (void)stepForward;
 
 @optional
-- (void)notNowTapped;
+- (void)onboardingCancelled;
 @end
 

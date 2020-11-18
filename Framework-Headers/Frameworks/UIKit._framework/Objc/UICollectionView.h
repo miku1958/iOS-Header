@@ -163,7 +163,7 @@
         unsigned int allowsUserInitiatedMultipleSelection:1;
         unsigned int allowsMultipleSelectionDuringEditing:1;
         unsigned int selectionFollowsFocus:1;
-        unsigned int shouldBecomeFocusedOnSelection:1;
+        unsigned int shouldBecomeFocusedOnSelection:2;
         unsigned int allowsCursorInteractionSPI:1;
         unsigned int displaysHorizontalIndexTitleBar:1;
         unsigned int fadeCellsForBoundsChange:1;
@@ -201,6 +201,7 @@
         unsigned int generatingDescriptionWithDataSource:1;
         unsigned int skipAttributesApplication:1;
         unsigned int isApplyingDiffableUpdate:1;
+        unsigned int delaysUserInitiatedItemSelection:1;
         unsigned int isAnimatingInteractiveMovementCompletion:1;
         unsigned int shouldResetInitialLayoutOnDataSourceChange:1;
         unsigned int shouldPersistSelectionOnReloadDataWhenPossible:1;
@@ -382,6 +383,7 @@
 - (id)_dataSourceSectionIndexTitles;
 - (void)_decrementUpdateAnimationCount;
 - (id)_defaultTargetedPreviewForIdentifier:(id)arg1;
+- (BOOL)_delaysUserInitiatedItemSelection;
 - (id)_delegateActual;
 - (BOOL)_delegateAllowsHighlightingItemAtIndexPath:(id)arg1;
 - (BOOL)_delegateAllowsSelectingItemAtIndexPath:(id)arg1;
@@ -465,7 +467,7 @@
 - (id)_indexPathForCell:(id)arg1 includePrefetchedCells:(BOOL)arg2;
 - (id)_indexPathForEntryWithTitle:(id)arg1 atIndex:(long long)arg2;
 - (id)_indexPathForGlobalIndex:(long long)arg1;
-- (id)_indexPathForInsertionAtPoint:(struct CGPoint)arg1 sourceIndexPath:(id)arg2;
+- (id)_indexPathForInsertionAtPoint:(struct CGPoint)arg1 dropIntent:(long long)arg2 sourceIndexPath:(id)arg3 indicatorLayoutAttributes:(id *)arg4;
 - (id)_indexPathForItemAtPoint:(struct CGPoint)arg1;
 - (id)_indexPathForView:(id)arg1 ofType:(unsigned long long)arg2 includePrefetchedCells:(BOOL)arg3;
 - (BOOL)_indexPathIsSectionAppendingIndexPath:(id)arg1;
@@ -590,6 +592,7 @@
 - (void)_setCollectionViewLayout:(id)arg1 animated:(BOOL)arg2 isInteractive:(BOOL)arg3 completion:(CDUnknownBlockType)arg4 animator:(id)arg5;
 - (void)_setDefaultAlwaysBounceVertical:(BOOL)arg1 horizontal:(BOOL)arg2;
 - (void)_setDefaultLayoutMargins:(struct UIEdgeInsets)arg1 fromViewController:(BOOL)arg2;
+- (void)_setDelaysUserInitiatedItemSelection:(BOOL)arg1;
 - (void)_setDisplaysHorizontalIndexTitleBar:(BOOL)arg1;
 - (void)_setDragPlaceholderInsertionCadence:(long long)arg1;
 - (void)_setDragReorderingCadence:(long long)arg1;
@@ -653,12 +656,13 @@
 - (void)_updateAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (void)_updateBackgroundColorIfNeeded;
 - (void)_updateBackgroundView;
+- (void)_updateCompactContextMenuStateForVisibleCells:(id)arg1;
 - (void)_updateContainerScrollViewsForNotifications;
 - (void)_updateContentFocusContainerGuides;
 - (void)_updateDefaultLayoutMargins;
 - (void)_updateDragDestinationVisualStyle;
 - (void)_updateDragInteractionForCurrentInteractionEnabledState;
-- (void)_updateDropTargetAppearanceWithTargetIndexPath:(id)arg1 intent:(long long)arg2;
+- (void)_updateDropTargetAppearanceWithTargetIndexPath:(id)arg1 intent:(long long)arg2 indicatorLayoutAttributes:(id)arg3;
 - (void)_updateEditing:(BOOL)arg1 forView:(id)arg2 atIndexPath:(id)arg3;
 - (void)_updateFocusedCellIndexPathIfNecessaryWithLastFocusedRect:(struct CGRect)arg1;
 - (void)_updateHorizontalIndexTitleBarSelectionForFocusedIndexPath:(id)arg1;

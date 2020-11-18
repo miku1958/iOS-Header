@@ -28,16 +28,19 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) BOOL adjustsFontForContentSizeCategory;
+@property (nonatomic) BOOL adjustsFontSizeToFitWidth;
 @property (readonly, nonatomic) UILayoutGuide *contentLayoutGuide; // @synthesize contentLayoutGuide=_contentLayoutGuide;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIFont *font;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double minimumScaleFactor;
 @property (strong, nonatomic) NSArray *possibleTitles; // @synthesize possibleTitles=_possibleTitles;
 @property (strong, nonatomic) _UIDatePickerLinkedLabelStorage *storage; // @synthesize storage=_storage;
 @property (readonly) Class superclass;
 @property (nonatomic) long long textAlignment;
 @property (strong, nonatomic) UIColor *textColor;
+@property (nonatomic) BOOL textColorFollowsTintColor;
 @property (strong, nonatomic) NSArray *titles; // @synthesize titles=_titles;
 
 - (void).cxx_destruct;

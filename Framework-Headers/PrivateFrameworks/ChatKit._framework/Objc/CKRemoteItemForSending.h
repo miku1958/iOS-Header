@@ -49,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMSMessage:(id)arg1;
 - (id)initWithRichLinkWithURL:(id)arg1 data:(id)arg2;
+- (BOOL)isAttachmentTooLarge:(id)arg1;
 - (id)previewUIImage;
 - (void)waitForPreviewGenerationIfNecessary;
 

@@ -11,7 +11,7 @@
 #import <iTunesCloud/NSXPCListenerDelegate-Protocol.h>
 
 @class AMSPushHandler, ICInAppMessageStore, ICUserIdentityStore, NSMutableSet, NSOperationQueue, NSString, NSXPCConnection, NSXPCListener;
-@protocol OS_dispatch_queue;
+@protocol NSCopying, OS_dispatch_queue;
 
 @interface ICInAppMessageManager : NSObject <NSXPCListenerDelegate, ICInAppMessageManagerProtocol, ICEnvironmentMonitorObserver>
 {
@@ -24,6 +24,7 @@
     BOOL _isSystemService;
     AMSPushHandler *_amsPushHandler;
     NSString *_foregroundApplicationIdentifier;
+    id<NSCopying> _privacyObserverToken;
     NSXPCListener *_xpcServiceListener;
     NSMutableSet *_xpcConnections;
     NSXPCConnection *_xpcClientConnection;

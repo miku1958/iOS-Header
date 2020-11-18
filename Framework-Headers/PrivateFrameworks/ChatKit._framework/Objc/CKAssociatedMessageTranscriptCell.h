@@ -31,7 +31,7 @@
 - (void)applyLayoutAttributes:(id)arg1;
 - (struct CGRect)associatedViewFrame:(struct CGRect)arg1 inContainerFrame:(struct CGRect)arg2;
 - (void)clearFilters;
-- (void)configureForChatItem:(id)arg1;
+- (void)configureForChatItem:(id)arg1 context:(id)arg2;
 - (BOOL)failureButtonAdjustsContentAlignmentRect;
 - (BOOL)hidesCheckmark;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;

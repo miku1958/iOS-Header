@@ -6,7 +6,7 @@
 
 #import <NewsCore/FCHeadline.h>
 
-@class FCAssetManager, FCCoverArt, FCHeadlineThumbnail, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSDictionary, NSString, NSURL;
+@class FCArticleAudioTrack, FCAssetManager, FCCoverArt, FCHeadlineThumbnail, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSDictionary, NSString, NSURL;
 @protocol FCChannelProviding;
 
 @interface FCNotificationArticleHeadline : FCHeadline
@@ -71,6 +71,15 @@
     FCCoverArt *_coverArt;
     unsigned long long _role;
     long long _bodyTextLength;
+    NSArray *_linkedArticleIDs;
+    NSArray *_linkedIssueIDs;
+    NSString *_callToActionText;
+    NSString *_surfacedByArticleListID;
+    FCArticleAudioTrack *_narrativeTrack;
+    FCArticleAudioTrack *_narrativeTrackSample;
+    NSString *_narrativeTrackTextRanges;
+    NSString *_layeredThumbnailJSON;
+    double _layeredThumbnailAspectRatio;
     FCAssetManager *_assetManager;
     NSDictionary *_articlePayload;
     NSString *_flintDocumentUrlString;
@@ -95,6 +104,7 @@
 - (long long)backendArticleVersion;
 - (id)blockedStorefrontIDs;
 - (long long)bodyTextLength;
+- (id)callToActionText;
 - (id)clusterID;
 - (id)contentManifestWithContext:(id)arg1;
 - (unsigned long long)contentType;
@@ -123,8 +133,15 @@
 - (BOOL)isValid;
 - (id)lastFetchedDate;
 - (id)lastModifiedDate;
+- (double)layeredThumbnailAspectRatio;
+- (id)layeredThumbnailJSON;
+- (id)linkedArticleIDs;
+- (id)linkedIssueIDs;
 - (long long)minimumNewsVersion;
 - (id)moreFromPublisherArticleIDs;
+- (id)narrativeTrack;
+- (id)narrativeTrackSample;
+- (id)narrativeTrackTextRanges;
 - (BOOL)needsRapidUpdates;
 - (id)primaryAudience;
 - (id)publishDate;
@@ -136,6 +153,7 @@
 - (void)setAccessoryText:(id)arg1;
 - (void)setArticleID:(id)arg1;
 - (void)setBundlePaid:(BOOL)arg1;
+- (void)setCallToActionText:(id)arg1;
 - (void)setClusterID:(id)arg1;
 - (void)setContentType:(unsigned long long)arg1;
 - (void)setDeleted:(BOOL)arg1;
@@ -150,6 +168,7 @@
 - (void)setSponsored:(BOOL)arg1;
 - (void)setStoryStyle:(id)arg1;
 - (void)setStoryType:(unsigned long long)arg1;
+- (void)setSurfacedByArticleListID:(id)arg1;
 - (void)setThumbnail:(id)arg1;
 - (void)setThumbnailFocalFrame:(struct CGRect)arg1;
 - (void)setThumbnailHQ:(id)arg1;
@@ -165,6 +184,7 @@
 - (id)sourceName;
 - (id)storyStyle;
 - (unsigned long long)storyType;
+- (id)surfacedByArticleListID;
 - (id)thumbnail;
 - (struct CGRect)thumbnailFocalFrame;
 - (id)thumbnailHQ;

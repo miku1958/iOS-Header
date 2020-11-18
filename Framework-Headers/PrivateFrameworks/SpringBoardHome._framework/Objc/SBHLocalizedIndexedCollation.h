@@ -19,7 +19,7 @@
 @property (readonly, nonatomic) NSArray *appendedSectionTitles;
 
 + (id)defaultCollation;
-+ (id)defaultDimSumCollation;
++ (id)dimSumCollation;
 - (void).cxx_destruct;
 - (BOOL)addSection:(id)arg1;
 - (BOOL)containsSection:(id)arg1;

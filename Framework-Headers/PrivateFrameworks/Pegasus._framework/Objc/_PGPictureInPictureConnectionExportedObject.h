@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (oneway void)pictureInPictureStartRequestedAnimated:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)pictureInPictureStopRequestedAnimated:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)setResourcesUsageReductionReasons:(unsigned long long)arg1;
+- (oneway void)setStashedOrUnderLock:(BOOL)arg1;
 - (oneway void)updateHostedWindowSize:(struct CGSize)arg1 animationType:(long long)arg2 initialSpringVelocity:(double)arg3 synchronizationFence:(id)arg4;
 - (oneway void)updatePictureInPicturePossible:(BOOL)arg1;
 

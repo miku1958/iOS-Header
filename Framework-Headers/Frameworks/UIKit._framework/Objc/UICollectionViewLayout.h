@@ -111,6 +111,8 @@
 - (id)_invalidationContextForReorderingTargetPosition:(struct CGPoint)arg1 targetIndexPaths:(id)arg2 withPreviousPosition:(struct CGPoint)arg3 previousIndexPaths:(id)arg4;
 - (id)_invalidationContextForUpdatedLayoutMargins:(struct UIEdgeInsets)arg1;
 - (id)_layoutAttributesForElementsInProjectedRect:(struct CGRect)arg1 withProjectionVector:(struct CGVector)arg2 projectionDistance:(double)arg3;
+- (id)_layoutAttributesForInsertionIndicatorAtItemWithTargetAttributes:(id)arg1 targetPositionEdges:(unsigned long long)arg2;
+- (id)_layoutAttributesForInsertionIndicatorAtTargetIndexPath:(id)arg1;
 - (id)_layoutAttributesForInsertionIndicatorAtTargetPosition:(struct CGPoint)arg1 sourceIndexPath:(id)arg2;
 - (id)_layoutAttributesForItemNearestPosition:(struct CGPoint)arg1 maximumDistance:(double)arg2;
 - (id)_layoutAttributesForReorderedItemAtIndexPath:(id)arg1 withTargetPosition:(struct CGPoint)arg2;

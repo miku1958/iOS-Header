@@ -39,7 +39,6 @@
 + (BOOL)_isSerializableAccessibilityElement;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_accessibilityScrollToVisible;
 - (BOOL)_axAreChildrenFocused;
 - (void)_axSetAreChildrenFocused:(BOOL)arg1;
 - (void)_destroyFocusLayer;

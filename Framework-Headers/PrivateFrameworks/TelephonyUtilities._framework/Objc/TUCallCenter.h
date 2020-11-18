@@ -48,6 +48,7 @@
 @property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property (strong, nonatomic) TUConversationManager *conversationManager; // @synthesize conversationManager=_conversationManager;
 @property (readonly, nonatomic) unsigned long long currentAudioAndVideoCallCount;
+@property (readonly, copy, nonatomic) NSArray *currentAudioAndVideoCallGroups;
 @property (readonly, copy, nonatomic) NSArray *currentAudioAndVideoCalls;
 @property (readonly, nonatomic) unsigned long long currentCallCount;
 @property (readonly, copy, nonatomic) NSArray *currentCallGroups;
@@ -140,7 +141,7 @@
 - (void)groupCall:(id)arg1 withOtherCall:(id)arg2;
 - (void)handleActionForWiredHeadsetMiddleButtonLongPress;
 - (void)handleActionForWiredHeadsetMiddleButtonPress;
-- (void)handleActionForWiredHeadsetMiddleButtonPressWithSourceIdentifier:(id)arg1 allowBluetoothAnswerWithoutDowngrade:(BOOL)arg2;
+- (void)handleActionForWiredHeadsetMiddleButtonPressWithSourceIdentifier:(id)arg1 allowBluetoothAnswerWithoutDowngrade:(BOOL)arg2 shouldForceDowngradeToAudio:(BOOL)arg3;
 - (void)holdActiveAndAnswerCall:(id)arg1;
 - (void)holdCall:(id)arg1;
 - (id)init;

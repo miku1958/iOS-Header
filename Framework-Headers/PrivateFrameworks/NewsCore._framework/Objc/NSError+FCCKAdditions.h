@@ -7,6 +7,7 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (FCCKAdditions)
++ (id)fc_HTTPErrorWithURL:(id)arg1 statusCode:(unsigned long long)arg2 requestUUID:(id)arg3 additionalUserInfo:(id)arg4;
 + (id)fc_authUserAccountInvalid;
 + (id)fc_belowMinimumVersionError;
 + (id)fc_blockedInCurrentStorefrontErrorWithIdentifiers:(id)arg1;
@@ -53,6 +54,7 @@
 - (BOOL)fc_isCKErrorWithCodePassingTest:(CDUnknownBlockType)arg1;
 - (BOOL)fc_isCKUnknownItemError;
 - (BOOL)fc_isCancellationError;
+- (BOOL)fc_isHTTPNotFoundError;
 - (BOOL)fc_isMissingZoneError;
 - (BOOL)fc_isNetworkUnavailableError;
 - (BOOL)fc_isOfflineError;

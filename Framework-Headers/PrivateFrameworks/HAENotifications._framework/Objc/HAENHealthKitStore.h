@@ -15,9 +15,9 @@
     HKHealthStore *_healthStore;
 }
 
++ (id)createHKCategorySampleForEvent:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)createHKCategorySampleForEvent:(id)arg1;
 - (id)init;
 - (id)saveNotificationEventToHealthKit:(id)arg1;
 - (id)saveNotificationEventToHealthKit:(id)arg1 withDelegate:(id)arg2;

@@ -13,14 +13,14 @@
 #import <SpringBoardHome/SBIconObserver-Protocol.h>
 #import <SpringBoardHome/SBIconViewObserver-Protocol.h>
 #import <SpringBoardHome/UIGestureRecognizerDelegate-Protocol.h>
+#import <SpringBoardHome/UITableViewDelegatePrivate-Protocol.h>
 #import <SpringBoardHome/UITableViewDragDelegate-Protocol.h>
 
-@class NSHashTable, NSMapTable, NSSet, NSString, SBFolderIconImageCache, SBHAppLibrarySettings, SBHIconImageCache, SBHIconLibraryQuery, SBHIconModel, SBHIconTableViewDiffableDataSource, SBHLibraryCategoryMap, SBHLibrarySearchController, SBHTableViewIconLibrary, SBIconView, SBRootFolder, UILabel, UIView, _UILegibilitySettings;
+@class NSHashTable, NSMapTable, NSSet, NSString, SBFolderIconImageCache, SBHAppLibrarySettings, SBHIconImageCache, SBHIconLibraryQuery, SBHIconModel, SBHIconTableViewDiffableDataSource, SBHLibraryCategoryMap, SBHLibrarySearchController, SBHTableViewIconLibrary, SBIconView, SBRootFolder, UIView, _UILegibilitySettings;
 @protocol SBHIconLibraryTableViewControllerObserver, SBIconListLayoutProvider, SBIconViewProviding;
 
-@interface SBHIconLibraryTableViewController : SBHTableViewController <SBIconObserver, SBIconViewObserver, PTSettingsKeyObserver, UITableViewDragDelegate, UIGestureRecognizerDelegate, SBHTableViewIconLibraryObserver, SBHLibraryChildViewController, SBHSearchResultsUpdating>
+@interface SBHIconLibraryTableViewController : SBHTableViewController <SBIconObserver, SBIconViewObserver, PTSettingsKeyObserver, UITableViewDelegatePrivate, UITableViewDragDelegate, UIGestureRecognizerDelegate, SBHTableViewIconLibraryObserver, SBHLibraryChildViewController, SBHSearchResultsUpdating>
 {
-    UILabel *_noResultsLabel;
     BOOL _showHeaders;
     BOOL _needsLowQualityAlphaFade;
     NSHashTable *_grabbedIconViews;
@@ -141,6 +141,7 @@
 - (BOOL)tableView:(id)arg1 dragSessionAllowsMoveOperation:(id)arg2;
 - (void)tableView:(id)arg1 dragSessionDidEnd:(id)arg2;
 - (void)tableView:(id)arg1 dragSessionWillBegin:(id)arg2;
+- (struct CGRect)tableView:(id)arg1 frameForSectionIndexGivenProposedFrame:(struct CGRect)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 itemsForBeginningDragSession:(id)arg2 atIndexPath:(id)arg3;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;

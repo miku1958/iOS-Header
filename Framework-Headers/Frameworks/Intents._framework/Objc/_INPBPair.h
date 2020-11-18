@@ -22,6 +22,7 @@
     NSArray *_pairCurrencyAmountValues;
     NSArray *_pairCustomObjects;
     NSArray *_pairDataStrings;
+    NSArray *_pairDataValues;
     NSArray *_pairDistanceValues;
     NSArray *_pairDoubleValues;
     NSArray *_pairImageValues;
@@ -46,6 +47,8 @@
 @property (readonly, nonatomic) unsigned long long pairCustomObjectsCount;
 @property (copy, nonatomic) NSArray *pairDataStrings; // @synthesize pairDataStrings=_pairDataStrings;
 @property (readonly, nonatomic) unsigned long long pairDataStringsCount;
+@property (copy, nonatomic) NSArray *pairDataValues; // @synthesize pairDataValues=_pairDataValues;
+@property (readonly, nonatomic) unsigned long long pairDataValuesCount;
 @property (copy, nonatomic) NSArray *pairDistanceValues; // @synthesize pairDistanceValues=_pairDistanceValues;
 @property (readonly, nonatomic) unsigned long long pairDistanceValuesCount;
 @property (copy, nonatomic) NSArray *pairDoubleValues; // @synthesize pairDoubleValues=_pairDoubleValues;
@@ -72,6 +75,7 @@
 + (Class)pairCurrencyAmountValueType;
 + (Class)pairCustomObjectType;
 + (Class)pairDataStringType;
++ (Class)pairDataValueType;
 + (Class)pairDistanceValueType;
 + (Class)pairDoubleValueType;
 + (Class)pairImageValueType;
@@ -87,6 +91,7 @@
 - (void)addPairCurrencyAmountValue:(id)arg1;
 - (void)addPairCustomObject:(id)arg1;
 - (void)addPairDataString:(id)arg1;
+- (void)addPairDataValue:(id)arg1;
 - (void)addPairDistanceValue:(id)arg1;
 - (void)addPairDoubleValue:(id)arg1;
 - (void)addPairImageValue:(id)arg1;
@@ -100,6 +105,7 @@
 - (void)clearPairCurrencyAmountValues;
 - (void)clearPairCustomObjects;
 - (void)clearPairDataStrings;
+- (void)clearPairDataValues;
 - (void)clearPairDistanceValues;
 - (void)clearPairDoubleValues;
 - (void)clearPairImageValues;
@@ -118,6 +124,7 @@
 - (id)pairCurrencyAmountValueAtIndex:(unsigned long long)arg1;
 - (id)pairCustomObjectAtIndex:(unsigned long long)arg1;
 - (id)pairDataStringAtIndex:(unsigned long long)arg1;
+- (id)pairDataValueAtIndex:(unsigned long long)arg1;
 - (id)pairDistanceValueAtIndex:(unsigned long long)arg1;
 - (id)pairDoubleValueAtIndex:(unsigned long long)arg1;
 - (id)pairImageValueAtIndex:(unsigned long long)arg1;

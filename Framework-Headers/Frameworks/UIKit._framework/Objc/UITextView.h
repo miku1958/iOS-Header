@@ -56,6 +56,7 @@
         unsigned int containerViewSizeInvalid:1;
         unsigned int isAnimatingPaste:1;
         unsigned int textSizeCacheEnabled:1;
+        unsigned int showsEditMenu:1;
     } _tvFlags;
     long long _contentSizeUpdateSeqNo;
     _UITextViewRestorableScrollPosition *_scrollTarget;
@@ -340,6 +341,7 @@
 - (void)_setNeedsTextLayout;
 - (void)_setOverridePlaceholder:(id)arg1 alignment:(long long)arg2;
 - (void)_setPreferredMaxLayoutWidth:(double)arg1;
+- (void)_setShowsEditMenu:(BOOL)arg1;
 - (void)_setSiriAnimationDictationStyleWithCharacterInsertionRate:(double)arg1 minimumDurationBetweenHypotheses:(double)arg2;
 - (void)_setTextColor:(id)arg1;
 - (void)_setTextSizeCacheEnabled:(BOOL)arg1;
@@ -350,9 +352,11 @@
 - (BOOL)_shouldInvalidateBaselineConstraintsForSize:(struct CGSize)arg1 oldSize:(struct CGSize)arg2;
 - (BOOL)_shouldObscureInput;
 - (BOOL)_shouldScrollEnclosingScrollView;
+- (BOOL)_shouldShowEditMenu;
 - (BOOL)_shouldStartDataDetectors;
 - (BOOL)_shouldSuppressSelectionCommands;
 - (void)_showTextStyleOptions:(id)arg1;
+- (BOOL)_showsEditMenu;
 - (void)_startDataDetectors;
 - (void)_startDataDetectorsIfNeeded;
 - (void)_syncTypingAttributesToTextContainerAttributesForExtraLineFragment;

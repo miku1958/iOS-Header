@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MRAVOutputDeviceSourceInfoProtobuf : PBCodable <NSCopying>
 {
     NSString *_routingContextUID;
@@ -19,19 +20,12 @@
     } _has;
 }
 
-@property (nonatomic) BOOL hasMultipleBuiltInDevices;
-@property (readonly, nonatomic) BOOL hasRoutingContextUID;
-@property (nonatomic) BOOL multipleBuiltInDevices; // @synthesize multipleBuiltInDevices=_multipleBuiltInDevices;
-@property (strong, nonatomic) NSString *routingContextUID; // @synthesize routingContextUID=_routingContextUID;
-
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

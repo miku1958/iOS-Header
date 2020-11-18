@@ -20,6 +20,6 @@
 - (void)draggingSourceDroppedWithOperation:(unsigned long long)arg1;
 - (void)dropDestinationAnimationCompleted;
 - (void)setIconIsEditing:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)updateDestinationIconLocation:(NSString *)arg1 animated:(BOOL)arg2;
+- (void)updateDestinationIconLocation:(NSString *)arg1 allowsLabelArea:(BOOL)arg2 animated:(BOOL)arg3;
 @end
 

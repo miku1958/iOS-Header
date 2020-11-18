@@ -25,14 +25,15 @@
     BOOL _invalidated;
     BOOL _paused;
     BOOL _loaded;
+    BOOL _effectiveMotionEnabled;
     BOOL _automaticallyLoadContent;
-    BOOL _reduceMotionEnabled;
+    BOOL _motionEnabled;
 }
 
 @property (nonatomic) BOOL automaticallyLoadContent; // @synthesize automaticallyLoadContent=_automaticallyLoadContent;
 @property (readonly, nonatomic, getter=isLoaded) BOOL loaded;
+@property (nonatomic, getter=isMotionEnabled) BOOL motionEnabled; // @synthesize motionEnabled=_motionEnabled;
 @property (nonatomic, getter=isPaused) BOOL paused;
-@property (nonatomic, getter=isReduceMotionEnabled) BOOL reduceMotionEnabled; // @synthesize reduceMotionEnabled=_reduceMotionEnabled;
 
 - (void).cxx_destruct;
 - (void)_addParallaxMotionEffect;
@@ -40,7 +41,6 @@
 - (void)_configureViews;
 - (id)_dimmingLayerAnimationWithDuration:(double)arg1;
 - (void)_removeParallaxMotionEffect;
-- (void)_updateDynamicElements;
 - (void)_updateVisibility;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 pass:(id)arg2;

@@ -6,9 +6,11 @@
 
 #import <UserNotificationsUIKit/BNBannerSourceProviding-Protocol.h>
 
-@class UIScreen, UIWindow;
+@class NSArray, NSDictionary, NSString, UIScreen, UIWindow;
+@protocol BNPresentableUniquelyIdentifying><BSXPCSecureCoding;
 
 @protocol BNBannerSourceProvidingPrivate <BNBannerSourceProviding>
 - (UIWindow *)keyWindowForScreen:(UIScreen *)arg1;
+- (NSArray *)revokePresentableWithIdentification:(id<BNPresentableUniquelyIdentifying><BSXPCSecureCoding>)arg1 reason:(NSString *)arg2 animated:(BOOL)arg3 userInfo:(NSDictionary *)arg4 error:(out id *)arg5;
 @end
 

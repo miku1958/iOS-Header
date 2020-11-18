@@ -31,6 +31,7 @@
 
 + (BOOL)allowsVideo;
 + (BOOL)isAddPersonEnabled;
++ (unsigned long long)maximumNumberOfInvitedMembers;
 + (long long)memorySize;
 + (BOOL)supportsConversations;
 + (BOOL)supportsEffects;

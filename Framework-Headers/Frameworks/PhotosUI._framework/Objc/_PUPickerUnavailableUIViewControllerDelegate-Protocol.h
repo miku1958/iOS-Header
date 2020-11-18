@@ -6,9 +6,12 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class UIBarButtonItem, _PUPickerUnavailableUIViewController;
+@class _PUPickerUnavailableUIViewController;
 
 @protocol _PUPickerUnavailableUIViewControllerDelegate <NSObject>
-- (void)_pickerUnavailableUIViewController:(_PUPickerUnavailableUIViewController *)arg1 cancelButtonTapped:(UIBarButtonItem *)arg2;
+
+@optional
+- (void)_pickerUnavailableUIViewControllerCancelButtonTapped:(_PUPickerUnavailableUIViewController *)arg1;
+- (void)_pickerUnavailableUIViewControllerRetryButtonTapped:(_PUPickerUnavailableUIViewController *)arg1;
 @end
 

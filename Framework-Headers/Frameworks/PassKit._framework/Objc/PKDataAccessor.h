@@ -7,11 +7,9 @@
 #import <objc/NSObject.h>
 
 @class NSBundle, NSData, PKRemoteAssetManager;
-@protocol OS_dispatch_queue;
 
 @interface PKDataAccessor : NSObject
 {
-    NSObject<OS_dispatch_queue> *_processingQueue;
 }
 
 @property (readonly, nonatomic) NSData *archiveData;
@@ -21,7 +19,6 @@
 @property (readonly, nonatomic) BOOL remoteAssetsDownloaded;
 @property (readonly, nonatomic) NSData *serializedFileWrapper;
 
-- (void).cxx_destruct;
 - (id)cachedImageSetForType:(long long)arg1 withDisplayProfile:(id)arg2 displayTraits:(id)arg3;
 - (id)content;
 - (void)contentWithCompletion:(CDUnknownBlockType)arg1;

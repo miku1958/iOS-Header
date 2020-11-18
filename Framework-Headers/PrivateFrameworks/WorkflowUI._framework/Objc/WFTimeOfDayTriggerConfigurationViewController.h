@@ -37,6 +37,8 @@
 - (id)allDaysOfWeek;
 - (id)calendarFooterText;
 - (id)currentDayOfMonth;
+- (id)currentSunriseTime;
+- (id)currentSunsetTime;
 - (id)dateComponentsFromTriggerDays;
 - (void)dayOfWeekPickerCell:(id)arg1 didChangeSelectedRecurrences:(id)arg2;
 - (void)dismissKeyboard;
@@ -58,7 +60,6 @@
 - (id)titleForIndexPath:(id)arg1;
 - (void)updateCalendarDayIfNeeded;
 - (void)updateCalendarFooterText;
-- (void)updateSunriseSunsetTimesIfNeeded;
 - (void)updateTriggerCalendarDayFromDate:(id)arg1;
 - (void)updateTriggerTimeFromDate:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;

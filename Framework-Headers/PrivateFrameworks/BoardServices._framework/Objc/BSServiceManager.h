@@ -15,6 +15,8 @@
     BSServicesConfiguration *_configuration;
     NSDictionary *_identifierToDomain;
     struct os_unfair_lock_s _lock;
+    BOOL _lock_bootstrapped;
+    unsigned long long _lock_bootstrapExtensions;
     NSMutableDictionary *_lock_endpointToOutgoingRootConnections;
     NSMutableDictionary *_lock_inheritanceToEndpoint;
     NSMapTable *_lock_endpointToInheritances;

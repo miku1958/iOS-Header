@@ -15,7 +15,7 @@
 }
 
 - (void).cxx_destruct;
-- (void)_checkForAccount:(id)arg1 destination:(id)arg2 origin:(void *)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_checkForAccount:(id)arg1 destination:(id)arg2 origin:(id)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void *)_findEndpointFromEndpoints:(id)arg1 byGroupLeader:(id)arg2;
 - (void)_formGroupAndSendCommand:(unsigned int)arg1 withOptions:(id)arg2 toExternalDestination:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)_isAnyDeviceControllable:(id)arg1;

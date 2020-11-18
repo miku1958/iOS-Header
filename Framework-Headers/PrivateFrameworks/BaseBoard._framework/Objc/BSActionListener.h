@@ -15,6 +15,7 @@
     NSMapTable *_queue_portToContextMap;
 }
 
++ (BOOL)_registersWithNotifyd;
 - (void)dealloc;
 - (id)init;
 - (id)initWithServiceName:(id)arg1 onQueue:(id)arg2;

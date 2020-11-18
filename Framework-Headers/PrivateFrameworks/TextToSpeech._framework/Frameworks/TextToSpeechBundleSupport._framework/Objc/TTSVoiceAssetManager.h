@@ -18,8 +18,8 @@
 + (id)_nonLocalMobileAssetQueue;
 + (id)queryForVoiceResourceAsset:(id)arg1 localOnly:(BOOL)arg2;
 + (id)sharedInstance;
-+ (id)voiceResourceAssetForLanguage:(id)arg1;
-+ (id)voiceResourceFromAsset:(id)arg1;
++ (id)voiceResourceAssetForLanguage:(id)arg1 voiceType:(long long)arg2;
++ (id)voiceResourceFromAsset:(id)arg1 voiceType:(long long)arg2;
 - (void).cxx_destruct;
 - (BOOL)_assetExistsOnDisk:(id)arg1;
 - (id)_voiceAssetForMAAsset:(id)arg1 voiceType:(long long)arg2;

@@ -10,7 +10,9 @@
 {
 }
 
+@property (readonly, nonatomic, getter=isAttachedToWindowedAccessory) BOOL attachedToWindowedAccessory;
 @property (readonly, nonatomic) long long inCallPresentationMode;
+@property (readonly, nonatomic) struct CGRect windowedAccessoryCutoutFrameInScreen;
 
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

@@ -31,8 +31,10 @@
 
 + (id)sharedManager;
 - (void).cxx_destruct;
+- (void)_addAnnouncement:(id)arg1 home:(id)arg2 groupID:(id)arg3;
 - (void)_cleanDirectory;
 - (void)_handleExpiredTimer:(id)arg1 withID:(id)arg2;
+- (void)_notifyDelegatesAnnouncementsChangedForGroupID:(id)arg1;
 - (id)_pathComponentForAnnouncementType:(unsigned long long)arg1;
 - (void)_removeAnnouncementFromQueueWithID:(id)arg1;
 - (void)_removeAnnouncementWithID:(id)arg1;
@@ -46,7 +48,7 @@
 - (void)_startTimerWithID:(id)arg1;
 - (void)_suspendTimer:(id)arg1;
 - (void)_wipeFileDataForAnnouncement:(id)arg1;
-- (void)addAnnouncement_sync:(id)arg1;
+- (void)addAnnouncement:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addDelegate:(id)arg1;
 - (id)announcementContextsForGroupID:(id)arg1;
 - (id)announcementDataDirectoryForType:(unsigned long long)arg1;
@@ -56,6 +58,7 @@
 - (id)init;
 - (void)pauseAllTimers;
 - (void)removeDelegate:(id)arg1;
+- (void)removeOldAnnouncements;
 - (void)resetAllTimers;
 - (void)resumeAllTimers;
 - (void)updateAnnouncement_sync:(id)arg1 statusFlags:(unsigned long long)arg2;

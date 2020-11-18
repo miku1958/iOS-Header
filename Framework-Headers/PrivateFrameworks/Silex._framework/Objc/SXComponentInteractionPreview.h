@@ -14,11 +14,7 @@
     UIViewController *_viewController;
 }
 
-@property (readonly, nonatomic) SXComponentInteraction *interaction; // @synthesize interaction=_interaction;
-@property (readonly, weak, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
-
 - (void).cxx_destruct;
-- (id)initWithInteraction:(id)arg1 viewController:(id)arg2;
 
 @end
 

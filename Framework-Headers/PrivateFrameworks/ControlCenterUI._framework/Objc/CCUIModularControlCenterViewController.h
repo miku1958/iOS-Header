@@ -73,8 +73,10 @@
 - (void)moduleCollectionViewController:(id)arg1 willRemoveModuleContainerViewController:(id)arg2;
 - (void)moduleCollectionViewControllerDidUpdateModules:(id)arg1;
 - (void)moduleInstancesChangedForModuleInstanceManager:(id)arg1;
+- (void)moduleInstancesLayoutChangedForModuleInstanceManager:(id)arg1;
 - (struct CGSize)preferredContentSize;
 - (void)requestExpandModuleForContentModuleContext:(id)arg1;
+- (void)requestModuleLayoutSizeUpdateForContentModuleContext:(id)arg1;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (void)viewDidLoad;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

@@ -22,6 +22,7 @@
 }
 
 @property (readonly, nonatomic) BOOL canMakeSharingThumbnails;
+@property (readonly, nonatomic) BOOL isMac;
 @property (readonly, nonatomic) BOOL isPad;
 @property (readonly, nonatomic) BOOL lowPerformanceDevice;
 @property (readonly, nonatomic) unsigned long long memorySize; // @synthesize memorySize=_memSize;

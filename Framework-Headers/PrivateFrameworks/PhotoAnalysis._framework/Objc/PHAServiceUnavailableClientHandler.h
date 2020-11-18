@@ -13,6 +13,7 @@
 {
 }
 
+- (void)cacheCPAnalyticsPropertiesWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)cancelOperationsWithIdentifiers:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)dumpAnalysisStatusWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)error;

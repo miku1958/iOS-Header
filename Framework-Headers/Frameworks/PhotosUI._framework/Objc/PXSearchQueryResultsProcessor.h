@@ -57,7 +57,7 @@
 - (id)initForUnitTesting;
 - (id)initWithSearchIndexManager:(id)arg1 dispatchQueue:(id)arg2 resultsProcessingHandler:(CDUnknownBlockType)arg3;
 - (void)photoLibraryDidChange:(id)arg1;
-- (void)processSearchResults:(id)arg1 assetSearchResults:(id)arg2 personSearchResults:(id)arg3 searchSuggestions:(id)arg4 forSearchQuery:(id)arg5;
+- (void)processSearchResults:(id)arg1 assetSearchResults:(id)arg2 personSearchResults:(id)arg3 searchSuggestions:(id)arg4 sceneIdentifiers:(id)arg5 forSearchQuery:(id)arg6;
 
 @end
 

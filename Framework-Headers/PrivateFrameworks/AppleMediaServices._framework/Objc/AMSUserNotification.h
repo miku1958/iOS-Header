@@ -13,6 +13,7 @@
 @interface AMSUserNotification : NSObject <AMSBagConsumer>
 {
     BOOL _explicitContent;
+    BOOL _anonymizeMetrics;
     BOOL _shouldSuppressDefaultAction;
     ACAccount *_account;
     NSURL *_artworkUrl;
@@ -35,6 +36,7 @@
 }
 
 @property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
+@property (nonatomic) BOOL anonymizeMetrics; // @synthesize anonymizeMetrics=_anonymizeMetrics;
 @property (strong, nonatomic) NSURL *artworkUrl; // @synthesize artworkUrl=_artworkUrl;
 @property (strong, nonatomic) NSArray *buttonActions; // @synthesize buttonActions=_buttonActions;
 @property (strong, nonatomic) NSString *categoryIdentifier; // @synthesize categoryIdentifier=_categoryIdentifier;

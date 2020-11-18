@@ -36,7 +36,9 @@
 @property (readonly, nonatomic) BOOL hasVideo;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isHiddenFromAutoFavorites) BOOL hiddenFromAutoFavorites;
+@property (readonly, copy, nonatomic) NSArray *iAdCategories;
 @property (readonly, nonatomic) NSString *identifier;
+@property (readonly, nonatomic) BOOL isEvergreen;
 @property (readonly, nonatomic) BOOL isFeatured;
 @property (readonly, copy, nonatomic) NSString *itemID;
 @property (readonly, nonatomic) long long minimumNewsVersion;
@@ -56,8 +58,9 @@
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSArray *topicIDs;
 
-+ (id)cloudKitKeysWithRecordSource:(id)arg1;
-+ (id)feedItemWithCKFeedItemAndArticleRecord:(id)arg1 storefrontID:(id)arg2 recordSource:(id)arg3;
++ (id)feedItemFromCKRecord:(id)arg1 storefrontID:(id)arg2 recordSource:(id)arg3;
++ (id)keysForArticleRecordWithRecordSource:(id)arg1;
++ (id)keysForFeedItemAndArticleRecordWithRecordSource:(id)arg1;
 - (unsigned long long)articleContentType;
 - (long long)compareOrder:(id)arg1;
 - (long long)compareOrderDescending:(id)arg1;

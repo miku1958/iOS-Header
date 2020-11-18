@@ -10,6 +10,7 @@
 
 @class NSData;
 
+__attribute__((visibility("hidden")))
 @interface _MRGameControllerAccelerationProtobuf : PBCodable <NSCopying>
 {
     NSData *_data;
@@ -27,23 +28,13 @@
 
 @property (strong, nonatomic) NSData *data; // @synthesize data=_data;
 @property (readonly, nonatomic) BOOL hasData;
-@property (nonatomic) BOOL hasW;
-@property (nonatomic) BOOL hasX;
-@property (nonatomic) BOOL hasY;
-@property (nonatomic) BOOL hasZ;
-@property (nonatomic) float w; // @synthesize w=_w;
-@property (nonatomic) float x; // @synthesize x=_x;
-@property (nonatomic) float y; // @synthesize y=_y;
-@property (nonatomic) float z; // @synthesize z=_z;
 
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

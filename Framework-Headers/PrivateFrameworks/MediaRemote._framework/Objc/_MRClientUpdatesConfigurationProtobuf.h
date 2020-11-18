@@ -8,8 +8,12 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
+@class NSMutableArray;
+
+__attribute__((visibility("hidden")))
 @interface _MRClientUpdatesConfigurationProtobuf : PBCodable <NSCopying>
 {
+    NSMutableArray *_subscribedPlayerPaths;
     BOOL _artworkUpdates;
     BOOL _keyboardUpdates;
     BOOL _nowPlayingUpdates;
@@ -26,26 +30,12 @@
     } _has;
 }
 
-@property (nonatomic) BOOL artworkUpdates; // @synthesize artworkUpdates=_artworkUpdates;
-@property (nonatomic) BOOL hasArtworkUpdates;
-@property (nonatomic) BOOL hasKeyboardUpdates;
-@property (nonatomic) BOOL hasNowPlayingUpdates;
-@property (nonatomic) BOOL hasOutputDeviceUpdates;
-@property (nonatomic) BOOL hasSystemEndpointUpdates;
-@property (nonatomic) BOOL hasVolumeUpdates;
-@property (nonatomic) BOOL keyboardUpdates; // @synthesize keyboardUpdates=_keyboardUpdates;
-@property (nonatomic) BOOL nowPlayingUpdates; // @synthesize nowPlayingUpdates=_nowPlayingUpdates;
-@property (nonatomic) BOOL outputDeviceUpdates; // @synthesize outputDeviceUpdates=_outputDeviceUpdates;
-@property (nonatomic) BOOL systemEndpointUpdates; // @synthesize systemEndpointUpdates=_systemEndpointUpdates;
-@property (nonatomic) BOOL volumeUpdates; // @synthesize volumeUpdates=_volumeUpdates;
-
-- (void)copyTo:(id)arg1;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

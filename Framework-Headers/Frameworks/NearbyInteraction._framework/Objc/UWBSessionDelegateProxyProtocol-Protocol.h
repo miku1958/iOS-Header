@@ -6,11 +6,14 @@
 
 #import <NearbyInteraction/NSObject-Protocol.h>
 
-@class NSArray, NSError;
+@class NINearbyObject, NIRegionPredicate, NSArray, NSError;
 
 @protocol UWBSessionDelegateProxyProtocol <NSObject>
+- (void)didDiscoverNearbyObject:(NINearbyObject *)arg1;
 - (void)didRemoveNearbyObjects:(NSArray *)arg1 withReason:(unsigned long long)arg2;
 - (void)didUpdateNearbyObjects:(NSArray *)arg1;
+- (void)objectDidEnter:(NINearbyObject *)arg1 region:(NIRegionPredicate *)arg2;
+- (void)objectDidExit:(NINearbyObject *)arg1 region:(NIRegionPredicate *)arg2;
 - (void)uwbSessionDidFailWithError:(NSError *)arg1;
 - (void)uwbSessionDidInvalidateWithError:(NSError *)arg1;
 - (void)uwbSessionInterruptedWithReason:(long long)arg1 timestamp:(double)arg2;

@@ -13,6 +13,7 @@
     BOOL _dryRun;
     BOOL _containerIsCloud;
     BOOL _encryptModel;
+    BOOL _usesCodeSigningIdentityForEncryption;
     NSString *_platform;
     NSString *_platformVersion;
     NSNumber *_keyInfoVersion;
@@ -34,6 +35,7 @@
 @property (strong) NSString *platform; // @synthesize platform=_platform;
 @property (strong) NSString *platformVersion; // @synthesize platformVersion=_platformVersion;
 @property (copy) NSData *sinf; // @synthesize sinf=_sinf;
+@property BOOL usesCodeSigningIdentityForEncryption; // @synthesize usesCodeSigningIdentityForEncryption=_usesCodeSigningIdentityForEncryption;
 
 + (id)defaultOptions;
 - (void).cxx_destruct;

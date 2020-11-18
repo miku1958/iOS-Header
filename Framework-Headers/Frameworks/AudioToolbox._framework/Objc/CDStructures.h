@@ -21,15 +21,30 @@ struct AUAudioUnitV2Bridge_Renderer;
 struct AUAudioUnit_XPC_PropListener;
 
 struct AUEventSchedule {
+    struct AUv2GetParameterSynchronizer *mAUv2GetParameterSynchronizer;
     struct AURenderEventAllocator *mAllocator;
-    struct TAtomicStack<AURenderEventStruct> mAddedEventStack;
+    struct AUScheduledParameterRefresher2 *mScheduledParameterRefresher;
+    struct lf_mpsc_queue<AURenderEventNode, caulk::concurrent::intrusive_single_link_member<AURenderEventNode, &AURenderEventNode::next>> mAddedEventQueue;
+    struct atomic<bool> mHavePendingSetParameter;
     union AURenderEvent *mScheduleHead;
-    AUAudioUnit *mOwningAU;
+    void *mOwningAU;
+    CDUnknownBlockType mRenderBlock;
+    struct PreviousRenderTime mPreviousRenderTime;
 };
 
 struct AUInputElement;
 
 struct AULocalParameterObserver;
+
+struct AUMIDIEvent {
+    union AURenderEvent *_field1;
+    long long _field2;
+    unsigned char _field3;
+    unsigned char _field4;
+    unsigned short _field5;
+    unsigned char _field6;
+    unsigned char _field7[3];
+};
 
 struct AUOOPRenderClientUser {
     AUAudioUnit_XPC *au;
@@ -39,6 +54,7 @@ struct AUOOPRenderClientUser {
     CDUnknownBlockType MIDIOutputEventBlock;
     unsigned int serviceProcessAUInstanceToken;
     BOOL isOffline;
+    BOOL isMIDIProcessor;
 };
 
 struct AUOOPRenderingServerUser {
@@ -48,9 +64,11 @@ struct AUOOPRenderingServerUser {
     CDUnknownBlockType mRetainedRenderBlock;
     CDUnknownBlockType mRenderBlock;
     BOOL mCanProcessInPlace;
+    BOOL mIsV2AudioUnit;
     long long mMIDIOutBaseSampleTime;
     struct AUEventSchedule *mEventSchedule;
     struct AUOOPSharedMemory *mSharedBuffers;
+    struct optional<std::__1::__thread_id> mRenderThreadId;
 };
 
 struct AUOOPSharedMemory;
@@ -80,6 +98,16 @@ struct AUPBMethods {
     CDUnknownFunctionPointerType _field8;
 };
 
+struct AUParameterEvent {
+    union AURenderEvent *_field1;
+    long long _field2;
+    unsigned char _field3;
+    unsigned char _field4[3];
+    unsigned int _field5;
+    unsigned long long _field6;
+    float _field7;
+};
+
 struct AUParameterObserverExtendedToken {
     unsigned long long _field1;
 };
@@ -93,7 +121,37 @@ struct AUProcessingBlock {
 
 struct AURenderEventAllocator;
 
-struct AURenderEventStruct;
+struct AURenderEventHeader {
+    union AURenderEvent *_field1;
+    long long _field2;
+    unsigned char _field3;
+    unsigned char _field4;
+};
+
+struct AURenderEventNode;
+
+struct AUScheduledParameterRefresher2 {
+    CDUnknownFunctionPointerType *_field1;
+    struct unfair_lock _field2;
+    struct XAtomicPoolAllocator _field3;
+    struct messenger _field4;
+    struct condition_message _field5;
+    struct lf_mpsc_queue<AUScheduledParameterRefresher::InvalidatedParameter, caulk::concurrent::intrusive_single_link_node<AUScheduledParameterRefresher::InvalidatedParameter>> _field6;
+    struct guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences> _field7;
+    struct ParameterWatchdog _field8;
+};
+
+struct AUv2GetParameterSynchronizer {
+    struct atomic<AUv2GetParameterSynchronizer::SeqNumPair> mSeqNums;
+    struct semaphore {
+        struct semaphore {
+            unsigned int mMachSem;
+            BOOL mOwned;
+        } mImpl;
+        struct atomic<int> mCounter;
+        int mOriginalCounter;
+    } mSyncGetParamSema;
+};
 
 struct AUv3InstanceBase {
     CDUnknownFunctionPointerType *_field1;
@@ -113,8 +171,9 @@ struct AUv3InstanceBase {
     CDUnknownBlockType _field15;
     struct ParameterMap _field16;
     struct HostCallbackInfo _field17;
-    BOOL _field18;
-    BOOL _field19;
+    struct atomic<unsigned int> _field18;
+    CDUnknownFunctionPointerType _field19;
+    CDUnknownFunctionPointerType _field20;
 };
 
 struct AUv3RenderAdapter {
@@ -194,6 +253,8 @@ struct ConnectionInfo {
     BOOL mLinkedSDKRequiresEntitlement;
 };
 
+struct CountAndSema;
+
 struct HostCallbackInfo {
     void *_field1;
     CDUnknownFunctionPointerType _field2;
@@ -212,6 +273,8 @@ struct InterAppAudioAppInfo {
     struct __CFString *_field5;
     struct __CFURL *_field6;
 };
+
+struct InvalidatedParameter;
 
 struct KVOAggregator {
     struct vector<KVOAggregator::Record, std::__1::allocator<KVOAggregator::Record>> mRecords;
@@ -245,7 +308,23 @@ struct ParameterMap {
     id _field11;
 };
 
+struct ParameterWatchdog {
+    struct AUScheduledParameterRefresher2 *_field1;
+    struct unfair_lock _field2;
+    struct priority_queue<ParameterWatchdogQueueElem, std::__1::vector<ParameterWatchdogQueueElem, std::__1::allocator<ParameterWatchdogQueueElem>>, std::__1::less<ParameterWatchdogQueueElem>> _field3;
+    long long _field4;
+    struct queue _field5;
+    struct CAEventReceiver _field6;
+};
+
+struct ParameterWatchdogQueueElem;
+
 struct PipeSubPool;
+
+struct PreviousRenderTime {
+    double mSampleRate;
+    struct atomic<PreviousRenderTime::Snapshot> mLastRender;
+};
 
 struct PropertyListener;
 
@@ -255,10 +334,13 @@ struct PurgeableDataWrapper {
 };
 
 struct RealtimeState {
-    struct semaphore_mutex_t<caulk::semaphore> mRenderMutex;
+    struct pooled_semaphore_mutex mMultipleRenderMutex;
+    struct pooled_semaphore_mutex mResetVsRenderMutex;
     struct RenderObserverList renderObserverList;
     struct AUEventSchedule eventSchedule;
+    struct AUv2GetParameterSynchronizer auv2GetParameterSynchronizer;
     struct optional<RenderContextChangeGenerator> contextChangeGenerator;
+    int renderBlockType;
 };
 
 struct Record;
@@ -287,8 +369,16 @@ struct RenderPipeUser {
 
 struct ScopeElementIDObj;
 
-struct TAtomicStack<AURenderEventStruct> {
-    struct AURenderEventStruct *mHead;
+struct SeqNumPair;
+
+struct Snapshot;
+
+struct TAtomicStack2<XAtomicPoolAllocator::FreeNode> {
+    struct {
+        void *_field1;
+        long long _field2;
+    } _field1;
+    long long _field2;
 };
 
 struct TThreadSafeList<RenderObserver> {
@@ -301,9 +391,22 @@ struct TestAUProcessingBlock;
 
 struct WorkgroupMirror;
 
+struct XAtomicPoolAllocator {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+    struct TAtomicStack2<XAtomicPoolAllocator::FreeNode> _field4;
+    struct TAtomicStack2<XAtomicPoolAllocator::FreeNode> _field5;
+    int _field6;
+};
+
 struct __CFData;
 
 struct __CFString;
+
+struct __cxx_atomic_impl<bool, std::__1::__cxx_atomic_base_impl<bool>> {
+    _Atomic BOOL __a_value;
+};
 
 struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*> {
     struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*> *__next_;
@@ -320,6 +423,32 @@ struct _opaque_pthread_mutex_t {
     char __opaque[56];
 };
 
+struct _opaque_pthread_t;
+
+struct atomic<AURenderEventNode *> {
+    struct __cxx_atomic_impl<AURenderEventNode *, std::__1::__cxx_atomic_base_impl<AURenderEventNode *>> {
+        _Atomic struct AURenderEventNode *__a_value;
+    } __a_;
+};
+
+struct atomic<AUScheduledParameterRefresher::InvalidatedParameter *> {
+    struct __cxx_atomic_impl<AUScheduledParameterRefresher::InvalidatedParameter *, std::__1::__cxx_atomic_base_impl<AUScheduledParameterRefresher::InvalidatedParameter *>> {
+        _Atomic struct InvalidatedParameter *_field1;
+    } _field1;
+};
+
+struct atomic<AUv2GetParameterSynchronizer::SeqNumPair> {
+    struct __cxx_atomic_impl<AUv2GetParameterSynchronizer::SeqNumPair, std::__1::__cxx_atomic_base_impl<AUv2GetParameterSynchronizer::SeqNumPair>> {
+        _Atomic struct SeqNumPair __a_value;
+    } __a_;
+};
+
+struct atomic<PreviousRenderTime::Snapshot> {
+    struct __cxx_atomic_impl<PreviousRenderTime::Snapshot, std::__1::__cxx_atomic_base_impl<PreviousRenderTime::Snapshot>> {
+        _Atomic struct Snapshot __a_value;
+    } __a_;
+};
+
 struct atomic<_opaque_pthread_t *> {
     struct __cxx_atomic_impl<_opaque_pthread_t *, std::__1::__cxx_atomic_base_impl<_opaque_pthread_t *>> {
         _Atomic struct _opaque_pthread_t *_field1;
@@ -327,8 +456,24 @@ struct atomic<_opaque_pthread_t *> {
 };
 
 struct atomic<bool> {
-    struct __cxx_atomic_impl<bool, std::__1::__cxx_atomic_base_impl<bool>> {
-        _Atomic BOOL __a_value;
+    struct __cxx_atomic_impl<bool, std::__1::__cxx_atomic_base_impl<bool>> __a_;
+};
+
+struct atomic<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl *> {
+    struct __cxx_atomic_impl<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl *, std::__1::__cxx_atomic_base_impl<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl *>> {
+        _Atomic struct table_impl *_field1;
+    } _field1;
+};
+
+struct atomic<caulk::concurrent::message *> {
+    struct __cxx_atomic_impl<caulk::concurrent::message *, std::__1::__cxx_atomic_base_impl<caulk::concurrent::message *>> {
+        _Atomic struct message *_field1;
+    } _field1;
+};
+
+struct atomic<caulk::pooled_semaphore_mutex::CountAndSema> {
+    struct __cxx_atomic_impl<caulk::pooled_semaphore_mutex::CountAndSema, std::__1::__cxx_atomic_base_impl<caulk::pooled_semaphore_mutex::CountAndSema>> {
+        _Atomic struct CountAndSema __a_value;
     } __a_;
 };
 
@@ -344,16 +489,23 @@ struct atomic<unsigned int> {
     } __a_;
 };
 
-struct atomic<unsigned long long> {
-    struct __cxx_atomic_impl<unsigned long long, std::__1::__cxx_atomic_base_impl<unsigned long long>> {
-        _Atomic unsigned long long __a_value;
-    } __a_;
-};
-
 struct atomic<void *> {
     struct __cxx_atomic_impl<void *, std::__1::__cxx_atomic_base_impl<void *>> {
         _Atomic void *_field1;
     } _field1;
+};
+
+struct atomic_flag {
+    struct __cxx_atomic_impl<bool, std::__1::__cxx_atomic_base_impl<bool>> _field1;
+};
+
+struct condition_message {
+    CDUnknownFunctionPointerType *_field1;
+    struct intrusive_single_link_node<caulk::concurrent::message> _field2;
+    struct atomic<unsigned int> _field3;
+    struct messenger *_field4;
+    struct atomic_flag _field5;
+    function_d3afe2e2 _field6;
 };
 
 struct function<NSData *()> {
@@ -367,6 +519,13 @@ struct function<NSXPCConnection *(NSUUID *)> {
     struct __value_func<NSXPCConnection *(NSUUID *)> {
         struct type _field1;
         struct __base<NSXPCConnection *(NSUUID *)> *_field2;
+    } _field1;
+};
+
+struct function<unsigned int (void *)> {
+    struct __value_func<unsigned int (void *)> {
+        struct type _field1;
+        struct __base<unsigned int (void *)> *_field2;
     } _field1;
 };
 
@@ -389,6 +548,33 @@ struct function<void (const AudioComponentVector &, AudioComponentVector &)> {
         struct type _field1;
         struct __base<void (const AudioComponentVector &, AudioComponentVector &)> *_field2;
     } _field1;
+};
+
+struct guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences> {
+    struct function<unsigned int (void *)> _field1;
+    unsigned int _field2;
+    struct atomic<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl *> _field3;
+    struct atomic<int> _field4;
+    struct vector<std::__1::unique_ptr<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl, std::__1::default_delete<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl>>, std::__1::allocator<std::__1::unique_ptr<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl, std::__1::default_delete<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl>>>> _field5;
+    struct mutex _field6;
+};
+
+struct intrusive_single_link_node<caulk::concurrent::message> {
+    struct atomic<caulk::concurrent::message *> _field1;
+};
+
+struct less<ParameterWatchdogQueueElem>;
+
+struct lf_mpsc_queue<AURenderEventNode, caulk::concurrent::intrusive_single_link_member<AURenderEventNode, &AURenderEventNode::next>> {
+    struct atomic<AURenderEventNode *> mEnqueueHead;
+    void *mCachelineSeparation[7];
+    struct AURenderEventNode *mDequeueHead;
+};
+
+struct lf_mpsc_queue<AUScheduledParameterRefresher::InvalidatedParameter, caulk::concurrent::intrusive_single_link_node<AUScheduledParameterRefresher::InvalidatedParameter>> {
+    struct atomic<AUScheduledParameterRefresher::InvalidatedParameter *> _field1;
+    void *_field2[7];
+    struct InvalidatedParameter *_field3;
 };
 
 struct mach_timebase_info {
@@ -432,8 +618,20 @@ struct map<unsigned int, RemoteAUHandleInfo, std::__1::less<unsigned int>, std::
     } __tree_;
 };
 
+struct message;
+
+struct messenger {
+    struct shared_ptr<caulk::concurrent::details::messenger_servicer> _field1;
+};
+
+struct messenger_servicer;
+
 struct mutex {
     struct _opaque_pthread_mutex_t __m_;
+};
+
+struct object {
+    id _field1;
 };
 
 struct optional<AUOOPRenderingServerUser> {
@@ -460,6 +658,16 @@ struct optional<auoop::RenderPipeUser> {
     BOOL __engaged_;
 };
 
+struct optional<std::__1::__thread_id> {
+    union {
+        char __null_state_;
+        struct __thread_id {
+            struct _opaque_pthread_t *__id_;
+        } __val_;
+    } ;
+    BOOL __engaged_;
+};
+
 struct os_unfair_lock_s {
     unsigned int _field1;
 };
@@ -467,6 +675,19 @@ struct os_unfair_lock_s {
 struct os_unfair_recursive_lock_s {
     struct os_unfair_lock_s _field1;
     unsigned int _field2;
+};
+
+struct pooled_semaphore_mutex {
+    struct atomic<caulk::pooled_semaphore_mutex::CountAndSema> mCountAndSema;
+};
+
+struct priority_queue<ParameterWatchdogQueueElem, std::__1::vector<ParameterWatchdogQueueElem, std::__1::allocator<ParameterWatchdogQueueElem>>, std::__1::less<ParameterWatchdogQueueElem>> {
+    struct vector<ParameterWatchdogQueueElem, std::__1::allocator<ParameterWatchdogQueueElem>> _field1;
+    struct less<ParameterWatchdogQueueElem> _field2;
+};
+
+struct queue {
+    struct object _field1;
 };
 
 struct recursive_mutex {
@@ -477,10 +698,6 @@ struct reply_watchdog_factory {
     BOOL mDebugging;
     int mDefaultTimeoutMS;
     function_d3afe2e2 mTimeoutHandler;
-};
-
-struct semaphore_mutex_t<caulk::semaphore> {
-    semaphore_e8b15a0e mSema;
 };
 
 struct set<AUObserverController::AddressOriginator, std::__1::less<AUObserverController::AddressOriginator>, std::__1::allocator<AUObserverController::AddressOriginator>> {
@@ -517,6 +734,11 @@ struct shared_ptr<auoop::WorkgroupMirror> {
     struct __shared_weak_count *__cntrl_;
 };
 
+struct shared_ptr<caulk::concurrent::details::messenger_servicer> {
+    struct messenger_servicer *_field1;
+    struct __shared_weak_count *_field2;
+};
+
 struct shared_ptr<caulk::synchronized<AUExtensionScanner, caulk::mach::unfair_lock, caulk::empty_atomic_interface<AUExtensionScanner>>> {
     struct synchronized<AUExtensionScanner, caulk::mach::unfair_lock, caulk::empty_atomic_interface<AUExtensionScanner>> *_field1;
     struct __shared_weak_count *_field2;
@@ -536,8 +758,14 @@ struct synchronized<std::__1::vector<std::__1::shared_ptr<AUv3InstanceBase::Clie
     struct vector<std::__1::shared_ptr<AUv3InstanceBase::ClientPropertyListener>, std::__1::allocator<std::__1::shared_ptr<AUv3InstanceBase::ClientPropertyListener>>> _field2;
 };
 
+struct table_impl;
+
 struct type {
     unsigned char __lx[32];
+};
+
+struct unfair_lock {
+    struct os_unfair_lock_s _field1;
 };
 
 struct unfair_recursive_lock {
@@ -579,6 +807,8 @@ struct unique_ptr<TestAUProcessingBlock, std::__1::default_delete<TestAUProcessi
         struct TestAUProcessingBlock *__value_;
     } __ptr_;
 };
+
+struct unique_ptr<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl, std::__1::default_delete<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl>>;
 
 struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*>*>>> {
     struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*>*>>> {
@@ -686,6 +916,14 @@ struct vector<ParameterAutomationEvent, std::__1::allocator<ParameterAutomationE
     } _field3;
 };
 
+struct vector<ParameterWatchdogQueueElem, std::__1::allocator<ParameterWatchdogQueueElem>> {
+    struct ParameterWatchdogQueueElem *_field1;
+    struct ParameterWatchdogQueueElem *_field2;
+    struct __compressed_pair<ParameterWatchdogQueueElem *, std::__1::allocator<ParameterWatchdogQueueElem>> {
+        struct ParameterWatchdogQueueElem *_field1;
+    } _field3;
+};
+
 struct vector<PropertyListener, std::__1::allocator<PropertyListener>> {
     struct PropertyListener *__begin_;
     struct PropertyListener *__end_;
@@ -702,23 +940,18 @@ struct vector<std::__1::shared_ptr<AUv3InstanceBase::ClientPropertyListener>, st
     } _field3;
 };
 
+struct vector<std::__1::unique_ptr<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl, std::__1::default_delete<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl>>, std::__1::allocator<std::__1::unique_ptr<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl, std::__1::default_delete<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl>>>> {
+    struct unique_ptr<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl, std::__1::default_delete<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl>> *_field1;
+    struct unique_ptr<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl, std::__1::default_delete<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl>> *_field2;
+    struct __compressed_pair<std::__1::unique_ptr<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl, std::__1::default_delete<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl>>*, std::__1::allocator<std::__1::unique_ptr<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl, std::__1::default_delete<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl>>>> {
+        struct unique_ptr<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl, std::__1::default_delete<caulk::concurrent::guarded_lookup_hash_table<void *, int, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>::table_impl>> *_field1;
+    } _field3;
+};
+
 struct weak_ptr<AUObserverController> {
     struct AUObserverController *_field1;
     struct __shared_weak_count *_field2;
 };
-
-#if 0
-// Names with conflicting types:
-typedef struct {
-    struct semaphore {
-        unsigned int mMachSem;
-        BOOL mOwned;
-    } mImpl;
-    struct atomic<int> mCounter;
-    int mOriginalCounter;
-} semaphore_e8b15a0e;
-
-#endif
 
 #pragma mark Typedef'd Structures
 
@@ -767,5 +1000,9 @@ typedef struct vector<BusPropertyObserver, std::__1::allocator<BusPropertyObserv
 
 #pragma mark Named Unions
 
-union AURenderEvent;
+union AURenderEvent {
+    struct AURenderEventHeader _field1;
+    struct AUParameterEvent _field2;
+    struct AUMIDIEvent _field3;
+};
 

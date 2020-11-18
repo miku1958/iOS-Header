@@ -89,9 +89,9 @@ __attribute__((visibility("hidden")))
 - (void)cleanupAudio;
 - (void)cleanupBeforeReconfigure:(id)arg1;
 - (unsigned int)codecTypeFromAudioPayload:(int)arg1;
-- (void)collectRxChannelMetrics:(CDStruct_3ab08b48 *)arg1;
-- (void)collectRxChannelMetrics:(CDStruct_3ab08b48 *)arg1 interval:(float)arg2;
-- (void)collectTxChannelMetrics:(CDStruct_3ab08b48 *)arg1;
+- (void)collectRxChannelMetrics:(CDStruct_1dd2c43e *)arg1;
+- (void)collectRxChannelMetrics:(CDStruct_1dd2c43e *)arg1 interval:(float)arg2;
+- (void)collectTxChannelMetrics:(CDStruct_1dd2c43e *)arg1;
 - (unsigned int)computePacketTimestampWithInputTimestamp:(unsigned int)arg1 numSamples:(int)arg2 hostTime:(double)arg3;
 - (id)configForPayloadType:(int)arg1;
 - (BOOL)createAudioReceiver;

@@ -193,6 +193,13 @@ typedef struct {
 } CDStruct_6ea78fe2;
 
 typedef struct {
+    int _field1;
+    long long _field2;
+    struct __CFData *_field3;
+    unsigned long long _field4;
+} CDStruct_55991ab6;
+
+typedef struct {
     id *objs;
     union {
         unsigned long long mutations;

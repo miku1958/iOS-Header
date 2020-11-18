@@ -12,16 +12,18 @@
 
 @interface HRElectrocardiogramEducationSection : HKDataMetadataSection <HROnboardingPageViewControllerDelegate>
 {
+    BOOL _firstTimeOnboarding;
+    NSMutableDictionary *_userInfo;
     HKHealthStore *_store;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL firstTimeOnboarding;
+@property (readonly, nonatomic) BOOL firstTimeOnboarding; // @synthesize firstTimeOnboarding=_firstTimeOnboarding;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HKHealthStore *store; // @synthesize store=_store;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSMutableDictionary *userInfo;
+@property (strong, nonatomic) NSMutableDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
 - (void).cxx_destruct;
 - (id)_cellTitleForEducationRow:(unsigned long long)arg1;
@@ -30,7 +32,6 @@
 - (id)dateCache;
 - (id)healthStore;
 - (unsigned long long)numberOfRowsInSection;
-- (id)onboardingManagerDelegate;
 - (id)sectionTitle;
 - (void)selectCellForIndex:(unsigned long long)arg1 navigationController:(id)arg2 animated:(BOOL)arg3;
 - (void)stepForward;

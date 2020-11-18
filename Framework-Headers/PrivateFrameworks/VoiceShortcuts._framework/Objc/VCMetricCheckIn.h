@@ -17,11 +17,13 @@
 
 @property (readonly, copy, nonatomic) NSDate *checkInDate;
 @property (readonly, copy, nonatomic) NSDate *currentDate; // @synthesize currentDate=_currentDate;
+@property (readonly, copy, nonatomic) NSDate *intervalStartDate;
 @property (readonly, nonatomic) long long mode; // @synthesize mode=_mode;
 @property (readonly, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 
 + (id)recentCheckInWithMode:(long long)arg1;
 - (void).cxx_destruct;
+- (id)calendar;
 - (id)checkInKey;
 - (id)initWithCurrentDate:(id)arg1 mode:(long long)arg2 defaults:(id)arg3;
 - (BOOL)isCheckInAllowed;

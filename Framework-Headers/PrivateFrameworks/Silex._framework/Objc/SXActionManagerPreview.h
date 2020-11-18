@@ -16,12 +16,7 @@
     UIViewController *_viewController;
 }
 
-@property (readonly, nonatomic) id<SXAction> action; // @synthesize action=_action;
-@property (readonly, nonatomic) id<SXActionPreviewActivity> previewActivity; // @synthesize previewActivity=_previewActivity;
-@property (readonly, weak, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
-
 - (void).cxx_destruct;
-- (id)initWithAction:(id)arg1 viewController:(id)arg2 previewActivity:(id)arg3;
 
 @end
 

@@ -117,9 +117,9 @@
 
 - (void).cxx_destruct;
 - (void)_advanceToPasscodeForMatchFailure:(BOOL)arg1;
-- (void)_advanceToPasscodeTimerFiredWithReason:(id)arg1;
+- (void)_advanceToPasscodeTimerFired;
 - (void)_applyProudLockContainerViewControllerConfiguration;
-- (void)_armAdvanceToPasscodeTimerWithReason:(id)arg1;
+- (void)_armAdvanceToPasscodeTimer;
 - (double)_biometricViewAlphaFromPasscodeLockViewState:(long long)arg1;
 - (BOOL)_canRecognizeBiometricAuthentication;
 - (void)_clearBrightnessChangeTimer;
@@ -195,6 +195,7 @@
 - (void)setKeypadVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setNeedsStatusTextUpdate;
 - (void)setPasscodeLockViewState:(long long)arg1 animated:(BOOL)arg2;
+- (BOOL)supportsPoseidonCoaching;
 - (void)updateForTransitionToPasscodeView:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)updateStatusText:(id)arg1 subtitle:(id)arg2 animated:(BOOL)arg3;
 - (void)updateStatusTextAnimated:(BOOL)arg1;

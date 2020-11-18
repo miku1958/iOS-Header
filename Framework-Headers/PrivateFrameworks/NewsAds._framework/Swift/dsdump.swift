@@ -28,11 +28,6 @@
 	// method
 	// method
  }
- protocol NewsAds.AdRequestPolicyValidatorType // 2 requirements
- {
-	// method
-	// method
- }
  protocol NewsAds.DebugJournalSummaryViewLayoutAttributesFactoryType // 1 requirements
  {
 	// method
@@ -55,6 +50,11 @@
  {
 	// method
  }
+ protocol NewsAds.AdContentInfoType // 2 requirements
+ {
+	// getter
+	// getter
+ }
  protocol NewsAds.InterstitialAdViewStylerType // 0 requirements
  {
  }
@@ -63,8 +63,9 @@
 	// class base protocol
 	// method
  }
- protocol NewsAds.PromotableContentDepictionProviding // 2 requirements
+ protocol NewsAds.PromotableContentDepictionProviding // 3 requirements
  {
+	// getter
 	// getter
 	// getter
  }
@@ -91,6 +92,10 @@
 	// method
 	// method
 	// method
+ }
+ protocol NewsAds.AdPlacementReusable // 1 requirements
+ {
+	// getter
  }
  protocol NewsAds.AdContextDataType // 2 requirements
  {
@@ -120,8 +125,9 @@
 	// class base protocol
 	// method
  }
- protocol NewsAds.BannerAdViewType // 3 requirements
+ protocol NewsAds.BannerAdViewType // 4 requirements
  {
+	// getter
 	// getter
 	// getter
 	// getter
@@ -238,22 +244,31 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : G‹
+	var top : ”Ù
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : G‹
+	var left : ”Ù
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : G‹
+	var bottom : ”Ù
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : G‹
+	var right : ”Ù
  }
 
  struct __C.CGSize {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : G‹
+	var width : ”Ù
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : G‹
+	var height : ”Ù
+ }
+
+ struct __C.CGPoint {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var x : ”Ù
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var y : ”Ù
  }
 
  struct __C.CGRect {
@@ -267,15 +282,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	var _rawValue : NSString
- }
-
- struct __C.CGPoint {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : G‹
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : G‹
  }
 
  struct __C.MatchingFlags {
@@ -300,7 +306,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var layouts : '‹
+	var layouts : œÙ
 
 	// Swift methods
  }
@@ -309,29 +315,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : —€
+	let resolver : qÙ
+	let environment : Environment
 
 	// Swift methods
+ }
+
+ enum NewsAds.Environment {
+
+	// Properties
+	case production  
+	case test  
  }
 
  class NewsAds.DebugBannerAdView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 	let contentIdentifier : String
+	let contentInfo : AdContentInfoType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let state : œ€
+	let state : _Ù
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onLongPress : Q›
+	let onLongPress : Aˆ
 	let label : UILabel
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xac6400033830 (0x46400033830) in binary!
-	0xdd7c  @objc DebugBannerAdView.(null) <stripped>
-WARNING: couldn't find address 0xac5c00033570 (0x45c00033570) in binary!
-	0xdd64  @objc DebugBannerAdView.(null) <stripped>
+WARNING: couldn't find address 0xc3f400032ef0 (0x3f400032ef0) in binary!
+	0xb284  @objc DebugBannerAdView.(null) <stripped>
+WARNING: couldn't find address 0xc3ec00032c00 (0x3ec00032c00) in binary!
+	0xb26c  @objc DebugBannerAdView.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x53cfff87398  @objc DebugBannerAdView.(null) <stripped>
-	0xfff87460  @objc DebugBannerAdView.)¡HâçˇˇˇHâÃIâ‰I)ƒLâ‰1ˇHâﬁË[o <stripped>
+	0x3ccfff68598  @objc DebugBannerAdView.(null) <stripped>
+	0xfff68660  @objc DebugBannerAdView. <stripped>
 
 	// Swift methods
  }
@@ -340,6 +355,14 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 
 	// Properties
 	case debugError  
+ }
+
+ enum NewsAds.AdPolicyFailureType {
+
+	// Properties
+	case noAdsInFirstViewport  
+	case multipleAdsInSameViewport  
+	case expandingWhileVisible  
  }
 
  enum NewsAds.AdContextDataNamespace {
@@ -375,6 +398,7 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let adSections : [String] // +0x28
 	let adKeywords : [String] // +0x30
 	let adCategories : [String] // +0x38
+	let language : String? // +0x40
  }
 
  enum NewsAds.CodingKeys {
@@ -387,6 +411,7 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	case adSections  
 	case adKeywords  
 	case adCategories  
+	case language  
  }
 
  struct NewsAds.FeedAdData {
@@ -398,6 +423,7 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let primaryAudience : String // +0x20
 	let adKeywords : [String] // +0x30
 	let adCategories : [String] // +0x38
+	let language : String? // +0x40
  }
 
  enum NewsAds.CodingKeys {
@@ -409,6 +435,7 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	case primaryAudience  
 	case adKeywords  
 	case adCategories  
+	case language  
  }
 
  class NewsAds.Assembly : NSObject /usr/lib/libobjc.A.dylib {
@@ -417,12 +444,12 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let assemblies : [NFAssembly]
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb838000334f8 (0x38000334f8) in binary!
-	0xb82c  @objc Assembly.(null) <stripped>
-WARNING: couldn't find address 0xdd38000334e8 (0x538000334e8) in binary!
+WARNING: couldn't find address 0xa63000032b58 (0x63000032b58) in binary!
+	0xa624  @objc Assembly.(null) <stripped>
+WARNING: couldn't find address 0xb24000032b48 (0x24000032b48) in binary!
 	0x58000000c  @objc Assembly.(null) <stripped>
-WARNING: couldn't find address 0xabfc000337c8 (0x3fc000337c8) in binary!
-	0xdd14  @objc Assembly.(null) <stripped>
+WARNING: couldn't find address 0xc38c00032e88 (0x38c00032e88) in binary!
+	0xb21c  @objc Assembly.(null) <stripped>
  }
 
  struct NewsAds.DebugAds { }
@@ -437,7 +464,7 @@ WARNING: couldn't find address 0xabfc000337c8 (0x3fc000337c8) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : —€
+	let resolver : qÙ
 
 	// Swift methods
  }
@@ -448,7 +475,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case success : AdRequest
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case failure : è‡
+	case failure : •˘
  }
 
  class NewsAds.Journal {
@@ -457,7 +484,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : —€
+	let resolver : qÙ
 
 	// Swift methods
  }
@@ -468,7 +495,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let styler : BannerAdViewStylerType
 	let debugViewRenderer : DebugJournalSummaryViewRendererType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let commandCenter : yŸ
+	let commandCenter : GÚ
 
 	// Swift methods
  }
@@ -483,24 +510,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let identifier : String // +0x0
  }
 
- class NewsAds.AdRequestPolicyValidator : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AdRequestPolicyValidatorType {
-
-	// Properties
-	var policies : AdPolicyType
-
-	// Swift methods
-	0x10290  class func AdRequestPolicyValidator.__allocating_init() // init 
- }
-
  class NewsAds.AdPendingLoadToken : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let promotedContentInfo : gÿ
+	let promotedContentInfo : 1Ò
 
 	// Swift methods
-	0x11670  func <stripped> // method 
-	0x11690  func <stripped> // method 
+	0x12790  func <stripped> // method 
+	0x127b0  func <stripped> // method 
  }
 
  class NewsAds.DebugJournalSummaryViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, DebugJournalSummaryViewLayoutAttributesFactoryType {
@@ -525,15 +543,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let textView : UITextView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xabfc000337c8 (0x3fc000337c8) in binary!
-	0xdd14  @objc DebugJournalCodableViewController.(null) <stripped>
-WARNING: couldn't find address 0xdd0800033620 (0x50800033620) in binary!
-	0xb30b  @objc DebugJournalCodableViewController.(null) <stripped>
-WARNING: couldn't find address 0xdcf0000334a0 (0x4f0000334a0) in binary!
+WARNING: couldn't find address 0xc38c00032e88 (0x38c00032e88) in binary!
+	0xb21c  @objc DebugJournalCodableViewController.(null) <stripped>
+WARNING: couldn't find address 0xb21000032cc8 (0x21000032cc8) in binary!
+	0xcaab  @objc DebugJournalCodableViewController.(null) <stripped>
+WARNING: couldn't find address 0xb1f800032b00 (0x1f800032b00) in binary!
 	0x18000000c  @objc DebugJournalCodableViewController.(null) <stripped>
-WARNING: couldn't find address 0xb7c0000334d0 (0x7c0000334d0) in binary!
+WARNING: couldn't find address 0xa5b800032b60 (0x5b800032b60) in binary!
 	0x18000000c  @objc DebugJournalCodableViewController.(null) <stripped>
-WARNING: couldn't find address 0xb7b000033460 (0x7b000033460) in binary!
+WARNING: couldn't find address 0xd45c00032ac0 (0x45c00032ac0) in binary!
 	0x18000000c  @objc DebugJournalCodableViewController.(null) <stripped>
 
 	// Swift methods
@@ -598,18 +616,53 @@ WARNING: couldn't find address 0xb7b000033460 (0x7b000033460) in binary!
 	// Swift methods
  }
 
- struct NewsAds.NativeAdInfo {
+ enum NewsAds.NativeAdInfo {
 
 	// Properties
-	let advertiserName : String? // +0x0
-	let articleID : String // +0x10
-	let articleTitle : String? // +0x20
-	let campaignData : String // +0x30
-	let identifier : String // +0x40
+	case fulfilled : Fulfilled
+	case unfilled : Unfilled
+	case discarded : Discarded
+ }
+
+ struct NewsAds.Fulfilled {
+
+	// Properties
+	let placementIdentifier : String
+	let advertiserName : String?
+	let articleID : String
+	let articleTitle : String?
+	let campaignData : String
+	let identifier : String
+	let journal : Journal
+	let request : AdRequest
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let promotedContentInfo : gÿ // +0x50
+	let promotedContentInfo : 1Ò
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let context : ◊ // +0x58
+	let context : oÔ
+ }
+
+ struct NewsAds.Unfilled {
+
+	// Properties
+	let placementIdentifier : String // +0x0
+	let identifier : String // +0x10
+	let journal : Journal // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let promotedContentInfo : 1Ò // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let context : oÔ // +0x30
+ }
+
+ struct NewsAds.Discarded {
+
+	// Properties
+	let placementIdentifier : String // +0x0
+	let identifier : String // +0x10
+	let journal : Journal // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let promotedContentInfo : 1Ò // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let context : oÔ // +0x30
  }
 
  class NewsAds.DebugCommandHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -630,15 +683,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsAds.RendererAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb7c0000334d0 (0x7c0000334d0) in binary!
+WARNING: couldn't find address 0xa5b800032b60 (0x5b800032b60) in binary!
 	0x18000000c  @objc RendererAssembly.(null) <stripped>
+ }
+
+ struct NewsAds.AdContentInfo: AdContentInfoType {
+
+	// Properties
+	let identifier : String // +0x0
+	let metricsHelper : APPCLifecycleMetricsHelping // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let promotedContentInfo : 1Ò // +0x18
  }
 
  enum NewsAds.AdPolicyErrors {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case missingEnvironment : ‹
+	case missingEnvironment : Yı
 	case policiesFailed : AdPolicyFailure
  }
 
@@ -647,10 +709,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let boundingSize : CGSize // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let screenScale : G‹ // +0x10
+	let screenScale : ”Ù // +0x10
 	let layoutMargins : UIEdgeInsets // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let padding : G‹ // +0x38
+	let padding : ”Ù // +0x38
  }
 
  struct NewsAds.Embedded { }
@@ -673,7 +735,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsAds.StoreAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb790000334a0 (0x790000334a0) in binary!
+WARNING: couldn't find address 0xa58800032b30 (0x58800032b30) in binary!
 	0x18000000c  @objc StoreAssembly.(null) <stripped>
  }
 
@@ -771,7 +833,7 @@ WARNING: couldn't find address 0xb790000334a0 (0x790000334a0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let error : ‹ // +0x0
+	let error : Yı // +0x0
 	let shortDescription : String // +0x8
 	let additionalInfo : Info // +0x18
  }
@@ -780,7 +842,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let error : ‹ // +0x0
+	let error : Yı // +0x0
 	let shortDescription : String // +0x8
 	let additionalInfo : Info // +0x18
  }
@@ -789,7 +851,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	case abandoned  
-	case noAdReturned  
 	case noRequestCached  
  }
 
@@ -842,10 +903,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let userData : UserAdData // +0x8
 	let creativeData : CreativeAdData // +0x10
 	let feedData : FeedAdData // +0x18
-	let sectionData : SectionAdData // +0x58
-	let leadingGroupData : FeedGroupAdData // +0x68
-	let trailingGroupData : FeedGroupAdData // +0xa8
-	let referralData : ReferralAdData // +0xe8
+	let sectionData : SectionAdData // +0x68
+	let leadingGroupData : FeedGroupAdData // +0x78
+	let trailingGroupData : FeedGroupAdData // +0xc0
+	let referralData : ReferralAdData // +0x108
  }
 
  enum NewsAds.CodingKeys {
@@ -861,6 +922,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case referralData  
  }
 
+ struct NewsAds.AdHostDescription {
+
+	// Properties
+	let name : String // +0x0
+	let identifier : String? // +0x10
+ }
+
  class NewsAds.BannerAdViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, BannerAdViewStylerType {
 	// Swift methods
  }
@@ -871,7 +939,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let parent : AdContextBuilder // +0x10 (0x8)
 	let name : String // +0x18 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lock : ÷ // +0x28 (0x8)
+	let lock : ØÓ // +0x28 (0x8)
 	var dataStack : AdContextDataType // +0x30 (0x8)
 
 	// Swift methods
@@ -948,24 +1016,50 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let placementIdentifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let desiredPlacement : {—
+	let desiredPlacement : „È
 	let boundingSize : CGSize
 	let insertionType : AdInsertionType
+	let reuseIdentifier : String
  }
 
- struct NewsAds.NativeAd {
+ enum NewsAds.NativeAd {
+
+	// Properties
+	case headline : Headline
+	case unfilled : Unfilled
+	case discarded : Discarded
+ }
+
+ enum NewsAds.Headline {
+
+	// Properties
+	case headline : NativeAdHeadline
+	case debug : DebugNativeAdHeadline
+ }
+
+ struct NewsAds.NativeAdHeadline {
+
+	// Properties
+	let identifier : String
+	let headline : FCHeadlineProviding
+	let info : Fulfilled
+	let journal : Journal
+ }
+
+ struct NewsAds.DebugNativeAdHeadline {
 
 	// Properties
 	let identifier : String // +0x0
 	let headline : FCHeadlineProviding // +0x10
-	let info : NativeAdInfo // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let desiredPosition : È // +0x18
  }
 
  struct NewsAds.MinimumDistanceAdPolicy {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let numberOfViewports : G‹ // +0x0
+	let numberOfViewports : ”Ù // +0x0
 	let adState : AdState // +0x8
  }
 
@@ -984,7 +1078,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum NewsAds.BannerAdState {
 
 	// Properties
-	case fulfilled : (contentIdentifier: String)
+	case fulfilled : AdContentInfoType
 	case failed : Recover
 	case initial  
 	case pending  
@@ -993,7 +1087,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum NewsAds.Recover {
 
 	// Properties
-	case offscreen : AdRequestType
+	case offscreen : AdContentInfoType
 	case never  
  }
 
@@ -1002,7 +1096,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let placementIdentifier : String // +0x0
 	let state : BannerAdState // +0x10
-	let journal : DebugJournal // +0x28
+	let journal : DebugJournal // +0x68
  }
 
  struct NewsAds.AdPolicyViewportEnvironment {
@@ -1010,7 +1104,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let viewportSize : CGSize // +0x0
 	let contentOffset : CGPoint // +0x10
-	let contentSize : CGSize // +0x20
+	let bounds : CGRect // +0x20
+	let contentSize : CGSize // +0x40
+	let adjustedContentInset : UIEdgeInsets // +0x50
  }
 
  struct NewsAds.BannerAdViewLayoutAttributes {
@@ -1033,7 +1129,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let fontSize : G‹
+	let fontSize : ”Ù
 
 	// Swift methods
  }
@@ -1046,11 +1142,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ class NewsAds.AdContextManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let contextBuilder : AdContextBuilderType // +0x10 (0x28)
+	let subscriptionController : FCSubscriptionController // +0x38 (0x8)
+
+	// Swift methods
+ }
+
  enum NewsAds.BannerAdViewState {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case error : #÷
+	case error : wÓ
 	case notReady  
 	case ready  
  }
@@ -1058,20 +1163,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsAds.BannerAdMetricsView : UIView /System/Library/Frameworks/UIKit.framework/UIKit, BannerAdViewType {
 
 	// Properties
-	var contentIdentifier : String
+	let placementIdentifier : String
+	var contentInfo : AdContentInfoType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let state : œ€
+	let state : _Ù
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onLongPress : Q›
+	let onLongPress : Aˆ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var promotedContentInfoObserver : ’Ã
+	var metricsView : πÁ
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var promotedContentInfoObserver : [‰
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var unfilledReasonObserver : [‰
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xab5400033720 (0x35400033720) in binary!
-	0xab58  @objc BannerAdMetricsView.(null) <stripped>
-WARNING: couldn't find address 0xdc6000033410 (0x46000033410) in binary!
+WARNING: couldn't find address 0xc2e400032de0 (0x2e400032de0) in binary!
+	0xc2e8  @objc BannerAdMetricsView.(null) <stripped>
+WARNING: couldn't find address 0xb16800032a70 (0x16800032a70) in binary!
 	0x18000000c  @objc BannerAdMetricsView.(null) <stripped>
-WARNING: couldn't find address 0xb738000333e0 (0x738000333e0) in binary!
+WARNING: couldn't find address 0xd3e400032a40 (0x3e400032a40) in binary!
 	0x18000000c  @objc BannerAdMetricsView.(null) <stripped>
 
 	// Swift methods
@@ -1082,14 +1192,14 @@ WARNING: couldn't find address 0xb738000333e0 (0x738000333e0) in binary!
 	// Properties
 	let placementIdentifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let desiredPlacement : {—
+	let desiredPlacement : „È
 	let boundingSize : CGSize
 	let insertionType : AdInsertionType
  }
 
  class NewsAds.PreviewAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb71800033428 (0x71800033428) in binary!
+WARNING: couldn't find address 0xa51000032ab8 (0x51000032ab8) in binary!
 	0x18000000c  @objc PreviewAssembly.(null) <stripped>
  }
 
@@ -1099,7 +1209,7 @@ WARNING: couldn't find address 0xb71800033428 (0x71800033428) in binary!
 	let updater : AdSegmentUpdaterType
 	var providers : ProviderContainer
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lock : ÷
+	let lock : ØÓ
 	var cachedSegments : AdSegmentScope
 	var timer : NSTimer?
 	let queueDuration : Double
@@ -1114,7 +1224,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let segment : AdSegmentType // +0x0
 	let needsUpdate : () // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let updates : YŒ // +0x38
+	let updates : ÔÂ // +0x38
  }
 
  enum NewsAds.Errors {
@@ -1134,7 +1244,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : —€
+	let resolver : qÙ
 
 	// Swift methods
  }
@@ -1151,7 +1261,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let placementIdentifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let desiredPlacement : {—
+	let desiredPlacement : „È
 	let insertionType : AdInsertionType
  }
 
@@ -1164,7 +1274,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsAds.ContextAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb6e8000333f8 (0x6e8000333f8) in binary!
+WARNING: couldn't find address 0xa4e000032a88 (0x4e000032a88) in binary!
 	0x18000000c  @objc ContextAssembly.(null) <stripped>
  }
 
@@ -1175,6 +1285,21 @@ WARNING: couldn't find address 0xb6e8000333f8 (0x6e8000333f8) in binary!
 	let debugBannerProvider : DebugBannerAdProvider
 
 	// Swift methods
+ }
+
+ class NewsAds.DebugLifecycleMetricsHelper : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0xb0d800032b58 (0xd800032b58) in binary!
+	0xb0cc  @objc DebugLifecycleMetricsHelper.(null) <stripped>
+WARNING: couldn't find address 0xb0c000032c10 (0xc000032c10) in binary!
+	0x18000000c  @objc DebugLifecycleMetricsHelper.(null) <stripped>
+WARNING: couldn't find address 0xa48000032a28 (0x48000032a28) in binary!
+	0x18000000c  @objc DebugLifecycleMetricsHelper.(null) <stripped>
+
+	// Swift methods
+	0x52c50  func <stripped> // method 
+	0x52c70  func <stripped> // method 
+	0x52c90  func <stripped> // method 
  }
 
  class NewsAds.AdSegments : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1194,7 +1319,7 @@ WARNING: couldn't find address 0xb6e8000333f8 (0x6e8000333f8) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : —€
+	let resolver : qÙ
 
 	// Swift methods
  }
@@ -1206,12 +1331,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let userData : UserAdData // +0x8
 	let creativeData : CreativeAdData // +0x10
 	let articleData : ArticleAdData // +0x18
-	let channelData : ChannelAdData // +0x58
-	let issueData : IssueAdData // +0x98
-	let sectionData : SectionAdData // +0xb0
-	let feedData : FeedAdData // +0xc0
-	let referralData : ReferralAdData // +0x100
-	let anfDocumentData : ANFDocumentAdData // +0x108
+	let channelData : ChannelAdData // +0x68
+	let issueData : IssueAdData // +0xa8
+	let sectionData : SectionAdData // +0xc0
+	let feedData : FeedAdData // +0xd0
+	let groupData : FeedGroupAdData // +0x120
+	let referralData : ReferralAdData // +0x168
+	let anfDocumentData : ANFDocumentAdData // +0x170
+	let anfComponentData : ANFComponentAdData // +0x178
+	let campaignData : CampaignAdData // +0x180
  }
 
  enum NewsAds.CodingKeys {
@@ -1225,8 +1353,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case issueData  
 	case sectionData  
 	case feedData  
+	case groupData  
 	case referralData  
 	case anfDocumentData  
+	case anfComponentData  
+	case campaignData  
  }
 
  struct NewsAds.ReferralAdData {
@@ -1277,7 +1408,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let styler : DebugJournalSummaryViewStylerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let commandCenter : yŸ
+	let commandCenter : GÚ
 
 	// Swift methods
  }
@@ -1291,12 +1422,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let userData : UserAdData // +0x8
 	let placementData : PlacementAdData // +0x10
 	let feedData : FeedAdData // +0x18
-	let leadingGroupData : FeedGroupAdData // +0x58
-	let trailingGroupData : FeedGroupAdData // +0x98
-	let issueData : IssueAdData // +0xd8
-	let sectionData : SectionAdData // +0xf0
-	let articleData : ArticleAdData // +0x100
-	let channelData : ChannelAdData // +0x140
+	let groupData : FeedGroupAdData // +0x68
+	let leadingGroupData : FeedGroupAdData // +0xb0
+	let trailingGroupData : FeedGroupAdData // +0xf8
+	let issueData : IssueAdData // +0x140
+	let sectionData : SectionAdData // +0x158
+	let articleData : ArticleAdData // +0x168
+	let channelData : ChannelAdData // +0x1b8
+	let referralData : ReferralAdData // +0x1f8
  }
 
  enum NewsAds.CodingKeys {
@@ -1306,12 +1439,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case userData  
 	case placementData  
 	case feedData  
+	case groupData  
 	case leadingGroupData  
 	case trailingGroupData  
 	case issueData  
 	case sectionData  
 	case articleData  
 	case channelData  
+	case referralData  
  }
 
  struct NewsAds.Ads { }
@@ -1331,14 +1466,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class NewsAds.DebugBanner {
+ class NewsAds.NativeOverride {
+ enum NewsAds.DesiredPosition {
+
+	// Properties
+	case none  
+	case publisher  
+	case related  
+ }
+
+ class NewsAds.FeedPrefetchDistance {
  class NewsAds.AdPolicyLayoutEnvironmentProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AdPolicyLayoutEnvironmentProviderType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ˜ 
+	var _environment : 5‚
 
 	// Swift methods
-	0x56050  class func AdPolicyLayoutEnvironmentProvider.__allocating_init() // init 
+	0x6f000  class func AdPolicyLayoutEnvironmentProvider.__allocating_init() // init 
  }
 
  enum NewsAds.Errors {
@@ -1352,14 +1497,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let appData : AppAdData // +0x0
 	let userData : UserAdData // +0x8
-	let feedData : FeedAdData // +0x10
-	let issueData : IssueAdData // +0x50
-	let sectionData : SectionAdData // +0x68
-	let interstitialData : InterstitialAdData // +0x78
-	let trailingArticleData : ArticleAdData // +0x80
-	let trailingChannelData : ChannelAdData // +0xc0
-	let leadingArticleData : ArticleAdData // +0x100
-	let leadingChannelData : ChannelAdData // +0x140
+	let referralData : ReferralAdData // +0x10
+	let feedData : FeedAdData // +0x18
+	let issueData : IssueAdData // +0x68
+	let sectionData : SectionAdData // +0x80
+	let interstitialData : InterstitialAdData // +0x90
+	let trailingArticleData : ArticleAdData // +0x98
+	let trailingChannelData : ChannelAdData // +0xe8
+	let leadingArticleData : ArticleAdData // +0x128
+	let leadingChannelData : ChannelAdData // +0x178
  }
 
  enum NewsAds.CodingKeys {
@@ -1367,6 +1513,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case appData  
 	case userData  
+	case referralData  
 	case feedData  
 	case issueData  
 	case sectionData  
@@ -1379,7 +1526,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsAds.CommandAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb6b8000333c8 (0x6b8000333c8) in binary!
+WARNING: couldn't find address 0xa48000032a28 (0x48000032a28) in binary!
 	0x18000000c  @objc CommandAssembly.(null) <stripped>
  }
 
@@ -1392,6 +1539,15 @@ WARNING: couldn't find address 0xb6b8000333c8 (0x6b8000333c8) in binary!
 	let languages : [String] // +0x20
 	let contentProviderID : Int // +0x28
 	let channelIdentifier : String? // +0x30
+	let adjacentArticles : Article // +0x40
+ }
+
+ struct NewsAds.Article {
+
+	// Properties
+	let identifier : String // +0x0
+	let title : String // +0x10
+	let keywords : [String] // +0x20
  }
 
  enum NewsAds.Kind {
@@ -1404,6 +1560,7 @@ WARNING: couldn't find address 0xb6b8000333c8 (0x6b8000333c8) in binary!
 	case trending  
 	case forYou  
 	case missedStories  
+	case latestStories  
 	case moreForYou  
 	case audioDailyBriefing  
 	case topic  
@@ -1429,11 +1586,20 @@ WARNING: couldn't find address 0xb6b8000333c8 (0x6b8000333c8) in binary!
 	case languages  
 	case contentProviderID  
 	case channelIdentifier  
+	case adjacentArticles  
+ }
+
+ enum NewsAds.CodingKeys {
+
+	// Properties
+	case identifier  
+	case title  
+	case keywords  
  }
 
  class NewsAds.ManagerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb68800033398 (0x68800033398) in binary!
+WARNING: couldn't find address 0xa450000329f8 (0x450000329f8) in binary!
 	0x18000000c  @objc ManagerAssembly.(null) <stripped>
  }
 
@@ -1441,7 +1607,7 @@ WARNING: couldn't find address 0xb68800033398 (0x68800033398) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let context : ◊ // +0x0
+	let context : oÔ // +0x0
  }
 
  class NewsAds.DebugJournalSummaryView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1456,24 +1622,61 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let statusIndicator : UIView
 	let moreDetailsButton : UIButton
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onTapMoreDetails : Q›
+	let onTapMoreDetails : Aˆ
 	let buttonSeparator : UIView
 	let reportIssueButton : UIButton
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onTapReportIssue : Q›
+	let onTapReportIssue : Aˆ
 	let topSeparator : UIView
 	let bottomSeparator : UIView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xaa5c00033370 (0x25c00033370) in binary!
-	0xaa40  @objc DebugJournalSummaryView.(null) <stripped>
-WARNING: couldn't find address 0xdb5800033308 (0x35800033308) in binary!
+WARNING: couldn't find address 0xc1bc000329d0 (0x1bc000329d0) in binary!
+	0xc1a0  @objc DebugJournalSummaryView.(null) <stripped>
+WARNING: couldn't find address 0xb03000032938 (0x3000032938) in binary!
 	0x48000000c  @objc DebugJournalSummaryView.(null) <stripped>
-WARNING: couldn't find address 0xaa1c000335e8 (0x21c000335e8) in binary!
-	0xdb34  @objc DebugJournalSummaryView.(null) <stripped>
+WARNING: couldn't find address 0xc17c00032c78 (0x17c00032c78) in binary!
+	0xb00c  @objc DebugJournalSummaryView.(null) <stripped>
+ }
+
+ struct NewsAds.ANFComponentAdData {
+
+	// Properties
+	let metadata : [String : Any] // +0x0
+ }
+
+ enum NewsAds.CodingKeys {
+
+	// Properties
+	case metadata  
  }
 
  class NewsAds.InterstitialAdViewManager {
+ struct NewsAds.AdConfiguration {
+
+	// Properties
+	let framework : Framework // +0x0
+ }
+
+ enum NewsAds.Framework {
+
+	// Properties
+	case adLib  
+	case promotedContent  
+ }
+
+ struct NewsAds.CampaignAdData {
+
+	// Properties
+	let campaignData : String // +0x0
+ }
+
+ enum NewsAds.CodingKeys {
+
+	// Properties
+	case campaignData  
+ }
+
  class NewsAds.ArticleBannerAdProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
@@ -1488,19 +1691,19 @@ WARNING: couldn't find address 0xaa1c000335e8 (0x21c000335e8) in binary!
 	// Properties
 	let contentIdentifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onLongPress : Q›
+	let onLongPress : Aˆ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let metricsView : µœ
+	let metricsView : πÁ
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xaa1c000335e8 (0x21c000335e8) in binary!
-	0xdb34  @objc InterstitialAdMetricsView.(null) <stripped>
-WARNING: couldn't find address 0xaa1400033328 (0x21400033328) in binary!
-	0xdb1c  @objc InterstitialAdMetricsView.(null) <stripped>
+WARNING: couldn't find address 0xc17c00032c78 (0x17c00032c78) in binary!
+	0xb00c  @objc InterstitialAdMetricsView.(null) <stripped>
+WARNING: couldn't find address 0xc17400032988 (0x17400032988) in binary!
+	0xaff4  @objc InterstitialAdMetricsView.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffff8c00  @objc InterstitialAdMetricsView.(null) <stripped>
+	0xffff7cb0  @objc InterstitialAdMetricsView.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffff8c98  @objc InterstitialAdMetricsView.(null) <stripped>
+	0xffff7d48  @objc InterstitialAdMetricsView.(null) <stripped>
 
 	// Swift methods
  }
@@ -1509,9 +1712,10 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let desiredPlacement : {—
+	let desiredPlacement : „È
 	let placementIdentifier : String
 	let insertionType : AdInsertionType
+	let boundingSize : CGSize
  }
 
  struct NewsAds.DebugJournal {
@@ -1523,15 +1727,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let subtitle : String // +0x60
 	let details : Detail // +0x70
 	let additionalDetails : Detail // +0x78
-	let actions : Action // +0x80
-	let historicalJournals : DebugJournal // +0x88
- }
-
- struct NewsAds.Detail {
-
-	// Properties
-	let label : String // +0x0
-	let value : String // +0x10
+	let historicalJournals : DebugJournal // +0x80
+	let actions : Action // +0x88
  }
 
  struct NewsAds.Summary {
@@ -1540,6 +1737,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let placementIdentifier : String // +0x0
 	let contentIdentifier : String? // +0x10
 	let status : JournalEntryStatus // +0x20
+ }
+
+ struct NewsAds.Detail {
+
+	// Properties
+	let label : String // +0x0
+	let value : String // +0x10
  }
 
  enum NewsAds.Action {
@@ -1582,7 +1786,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let height : G‹ // +0x0
+	let height : ”Ù // +0x0
  }
 
  class NewsAds.PromotedContentContextFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PromotedContentContextFactoryType {
@@ -1594,7 +1798,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let boundingSize : CGSize // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let screenScale : G‹ // +0x10
+	let screenScale : ”Ù // +0x10
 	let layoutMargins : UIEdgeInsets // +0x18
  }
 
@@ -1602,7 +1806,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layoutOptions : q∆
+	let layoutOptions : ı‹
  }
 
  struct NewsAds.PrerollAdPlacement {
@@ -1610,7 +1814,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let placementIdentifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let desiredPlacement : {—
+	let desiredPlacement : „È
+	let boundingSize : CGSize
 	let insertionType : AdInsertionType
  }
 
@@ -1618,7 +1823,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let metricsView : »
+	let metricsView : Ûﬁ
 	let contentIdentifier : String
 	let placement : PrerollAdPlacement
  }
@@ -1636,15 +1841,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _adsEnabled : s≈
+	var _adsEnabled : ˜€
 	let previewQueue : AdPreviewQueueType
 	let promotedContentContextFactory : PromotedContentContextFactoryType
 	var adProviderFactories : [String : Any]
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var prewarmingContexts : ﬂ∆
+	var reusableContexts : u›
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var prewarmingContexts : u›
 
 	// Swift methods
-	0x6afe0  class func AdManager.__allocating_init(previewQueue:) // init 
+	0x88790  class func AdManager.__allocating_init(previewQueue:) // init 
  }
 
  class NewsAds.AnyFactory {
@@ -1653,7 +1860,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let styler : InterstitialAdViewStylerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cache : K∆
+	var cache : ·‹
 
 	// Swift methods
  }
@@ -1671,13 +1878,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let contextWrapper : PromotedContentContextWrapperType // +0x10 (0x28)
 
 	// Swift methods
- }
-
- enum NewsAds.Errors {
-
-	// Properties
-	case fetchError : (code: Int)
-	case missingNativeInfo  
  }
 
  struct NewsAds.PreviewInterstitialAdContext {
@@ -1702,7 +1902,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let placement : AdPolicyPlacement // +0x0
-	let recoverable : Bool // +0x20
+	let failureType : AdPolicyFailureType // +0x20
+	let recoverable : Bool // +0x21
 	let description : String // +0x28
 	let additionalInfo : Info // +0x38
  }
@@ -1718,7 +1919,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : —€
+	let resolver : qÙ
 
 	// Swift methods
  }
@@ -1728,7 +1929,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let createdDate : '√
+	let createdDate : ≈Ÿ
 	let placementIdentifier : String
 	let status : JournalEntryStatus
 	let contentIdentifier : String?
@@ -1742,14 +1943,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let appData : AppAdData // +0x0
 	let userData : UserAdData // +0x8
 	let articleData : ArticleAdData // +0x10
-	let channelData : ChannelAdData // +0x50
-	let videoData : VideoAdData // +0x90
-	let placementData : PlacementAdData // +0x98
-	let issueData : IssueAdData // +0xa0
-	let sectionData : SectionAdData // +0xb8
-	let feedData : FeedAdData // +0xc8
-	let referralData : ReferralAdData // +0x108
-	let anfDocumentData : ANFDocumentAdData // +0x110
+	let channelData : ChannelAdData // +0x60
+	let videoData : VideoAdData // +0xa0
+	let placementData : PlacementAdData // +0xa8
+	let issueData : IssueAdData // +0xb0
+	let sectionData : SectionAdData // +0xc8
+	let feedData : FeedAdData // +0xd8
+	let groupData : FeedGroupAdData // +0x128
+	let referralData : ReferralAdData // +0x170
+	let anfDocumentData : ANFDocumentAdData // +0x178
+	let anfComponentData : ANFComponentAdData // +0x180
  }
 
  enum NewsAds.CodingKeys {
@@ -1764,14 +1967,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case issueData  
 	case sectionData  
 	case feedData  
+	case groupData  
 	case referralData  
 	case anfDocumentData  
+	case anfComponentData  
  }
 
- struct NewsAds.CreativeAdData {
+ struct NewsAds.DebugAdContentInfo {
 
 	// Properties
-	let creativeType : CreativeType // +0x0
+	let identifier : String // +0x0
+	let metricsHelper : APPCLifecycleMetricsHelping // +0x10
  }
 
  enum NewsAds.CreativeType {
@@ -1784,6 +1990,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case large  
 	case mediumRectangle  
 	case native  
+ }
+
+ struct NewsAds.CreativeAdData {
+
+	// Properties
+	let creativeType : CreativeType // +0x0
  }
 
  enum NewsAds.CodingKeys {
@@ -1854,7 +2066,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsAds.ProviderAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb5f000033300 (0x5f000033300) in binary!
+WARNING: couldn't find address 0xa3b800032960 (0x3b800032960) in binary!
 	0x18000000c  @objc ProviderAssembly.(null) <stripped>
  }
 
@@ -1865,11 +2077,11 @@ WARNING: couldn't find address 0xb5f000033300 (0x5f000033300) in binary!
 	let viewportEnvironmentProvider : AdPolicyViewportEnvironmentProviderType
 	var policies : AdPolicyType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _queue : ≥√
+	var _queue : G⁄
 	let validationQueue : OS_dispatch_queue
 
 	// Swift methods
-	0x7ccf0  class func AdPlacementPolicyValidator.__allocating_init(layoutEnvironmentProvider:viewportEnvironmentProvider:) // init 
+	0x9c770  class func AdPlacementPolicyValidator.__allocating_init(layoutEnvironmentProvider:viewportEnvironmentProvider:) // init 
  }
 
  class NewsAds.DebugJournalViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1877,29 +2089,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let commandCenter : yŸ
+	let commandCenter : GÚ
 	let journal : DebugJournal
 	let presentationOptions : PresentationOptions
 	let tableView : UITableView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa9b400033580 (0x1b400033580) in binary!
-	0xdacc  @objc DebugJournalViewController.(null) <stripped>
-WARNING: couldn't find address 0xdac800033600 (0x2c800033600) in binary!
-	0xdab4  @objc DebugJournalViewController.(null) <stripped>
-WARNING: couldn't find address 0xdaa8000335d0 (0x2a8000335d0) in binary!
-	0xb0ab  @objc DebugJournalViewController.(null) <stripped>
-WARNING: couldn't find address 0xda9000033240 (0x29000033240) in binary!
+WARNING: couldn't find address 0xc11400032c10 (0x11400032c10) in binary!
+	0xafa4  @objc DebugJournalViewController.(null) <stripped>
+WARNING: couldn't find address 0xf8a800032ca0 (0xa800032ca0) in binary!
+	0xaf8c  @objc DebugJournalViewController.(null) <stripped>
+WARNING: couldn't find address 0xaf8000032c70 (0x78000032c70) in binary!
+	0xc81b  @objc DebugJournalViewController.(null) <stripped>
+WARNING: couldn't find address 0xaf6800032870 (0x76800032870) in binary!
 	0x58000000c  @objc DebugJournalViewController.(null) <stripped>
-WARNING: couldn't find address 0xdac900033208 (0x2c900033208) in binary!
-	0xdac8  @objc DebugJournalViewController.(null) <stripped>
-WARNING: couldn't find address 0xdaca000331e0 (0x2ca000331e0) in binary!
-	0xb063  @objc DebugJournalViewController.(null) <stripped>
-WARNING: couldn't find address 0xda82000331b8 (0x282000331b8) in binary!
+WARNING: couldn't find address 0xf8a900032838 (0xa900032838) in binary!
+	0xf8a8  @objc DebugJournalViewController.(null) <stripped>
+WARNING: couldn't find address 0xf8aa00032810 (0xaa00032810) in binary!
+	0xc7d3  @objc DebugJournalViewController.(null) <stripped>
+WARNING: couldn't find address 0xf862000327e8 (0x62000327e8) in binary!
 	0x28000000c  @objc DebugJournalViewController.(null) <stripped>
 
 	// Swift methods
-	0x7eb80  class func DebugJournalViewController.__allocating_init(commandCenter:journal:presentationOptions:) // init 
+	0x9e870  class func DebugJournalViewController.__allocating_init(commandCenter:journal:presentationOptions:) // init 
  }
 
  enum NewsAds.PresentationOptions {
@@ -1910,21 +2122,19 @@ WARNING: couldn't find address 0xda82000331b8 (0x282000331b8) in binary!
 
  class NewsAds.DebugJournalValueTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xdafd000335a8 (0x2fd000335a8) in binary!
-	0xa900  @objc DebugJournalValueTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0xf8dd00032c50 (0xdd00032c50) in binary!
+	0xc060  @objc DebugJournalValueTableViewCell.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x4acffffcf78  @objc DebugJournalValueTableViewCell.(null) <stripped>
+	0x33cffffd538  @objc DebugJournalValueTableViewCell.(null) <stripped>
  }
 
  class NewsAds.DebugJournalSubtitleTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xdadd00033588 (0x2dd00033588) in binary!
-	0xa8e0  @objc DebugJournalSubtitleTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0xf8bd00032c30 (0xbd00032c30) in binary!
+	0xc040  @objc DebugJournalSubtitleTableViewCell.(null) <stripped>
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	0x54e3a4d4152  @objc DebugJournalSubtitleTableViewCell.(null) <stripped>
  }
-
- struct NewsAds.Tracker { }
 
  enum NewsAds.Section {
 
@@ -1935,3 +2145,5 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case actions  
 	case history  
  }
+
+ struct NewsAds.Tracker { }

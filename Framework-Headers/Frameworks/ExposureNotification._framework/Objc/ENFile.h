@@ -18,7 +18,6 @@
     NSMutableDictionary *_mutableMetadata;
     NSMutableData *_outputData;
     ENProtobufCoder *_protobufCoder;
-    long long _sandboxHandle;
     ENProtobufCoder *_tekProtobufCoder;
     NSDictionary *_metadata;
     NSData *_sha256Data;
@@ -41,8 +40,6 @@
 - (BOOL)_writePrepareAndReturnError:(id *)arg1;
 - (BOOL)closeAndReturnError:(id *)arg1;
 - (void)dealloc;
-- (id)init;
-- (BOOL)openCloneWithFD:(int)arg1 sandboxToken:(const char *)arg2 reading:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)openForWritingToData:(id)arg1 error:(id *)arg2;
 - (BOOL)openWithArchive:(id)arg1 error:(id *)arg2;
 - (BOOL)openWithFD:(int)arg1 reading:(BOOL)arg2 error:(id *)arg3;

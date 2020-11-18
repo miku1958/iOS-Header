@@ -61,6 +61,7 @@
 - (void)deleteInteractionsWithGroupIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
 - (void)deleteInteractionsWithIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
 - (void)deleteUserActivitiesWithPersistentIdentifiers:(id)arg1 bundleID:(id)arg2 retainedData:(id)arg3;
+- (void)dictionary:(id)arg1 setDecoderData:(id)arg2 forKey:(const char *)arg3;
 - (void)disableReceiver;
 - (BOOL)disabled;
 - (void)donateRelevantActions:(id)arg1 bundleID:(id)arg2;

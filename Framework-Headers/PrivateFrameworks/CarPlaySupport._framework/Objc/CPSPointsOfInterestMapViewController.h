@@ -81,6 +81,7 @@
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (void)locationManagerDidChangeAuthorization:(id)arg1;
 - (id)mapView:(id)arg1 clusterAnnotationForMemberAnnotations:(id)arg2;
+- (void)mapView:(id)arg1 didAddAnnotationViews:(id)arg2;
 - (void)mapView:(id)arg1 didSelectAnnotationView:(id)arg2;
 - (void)mapView:(id)arg1 regionDidChangeAnimated:(BOOL)arg2;
 - (id)mapView:(id)arg1 viewForAnnotation:(id)arg2;

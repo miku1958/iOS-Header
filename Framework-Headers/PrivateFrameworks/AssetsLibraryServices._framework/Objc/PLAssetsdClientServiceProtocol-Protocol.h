@@ -11,6 +11,6 @@
 @protocol PLAssetsdClientServiceProtocol <NSObject>
 - (void)assetAvailableForIdentifier:(NSString *)arg1 success:(BOOL)arg2 error:(NSError *)arg3;
 - (void)downloadStatusForIdentifier:(NSString *)arg1 progress:(double)arg2 completed:(BOOL)arg3 data:(NSData *)arg4 error:(NSError *)arg5;
-- (void)libraryBecameUnavailable:(NSURL *)arg1 reason:(NSError *)arg2 reply:(void (^)(BOOL, NSError *))arg3;
+- (void)libraryBecameUnavailable:(NSURL *)arg1 reason:(NSError *)arg2;
 @end
 

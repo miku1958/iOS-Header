@@ -43,6 +43,7 @@
 - (long long)_intentCategory;
 - (id)_intents_backgroundHandlingAssertionForBundleIdentifier:(id)arg1 context:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)_intents_isExemptFromMulitWindowRequirementForInAppHandling;
+- (CDStruct_8caa76fc)_intents_preferredScaledImageSize;
 - (id)_keyCodableAttributes;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;

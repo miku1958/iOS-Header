@@ -21,10 +21,8 @@
 
 + (id)sharedState;
 - (void).cxx_destruct;
-- (void)_callDidReceiveNewIncomingMessageForDelegate:(id)arg1;
 - (void)_callDidUpdateReachabilityChangeForCompanion:(BOOL)arg1 forDelegate:(id)arg2;
 - (id)init;
-- (void)newIncomingMessageFromClient;
 - (void)registerDelegate:(id)arg1;
 
 @end

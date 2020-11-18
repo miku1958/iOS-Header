@@ -62,6 +62,7 @@
 - (void)_sceneWillDeactivate:(id)arg1;
 - (id)_screenAvailabilityName;
 - (BOOL)_shouldIgnoreScreen:(id)arg1;
+- (BOOL)_shouldUpdateSecondDisplayModeWithCurrentContent;
 - (void)_switchModeForHighResolutionContent:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateScreenContentWithShouldTryToFindAvailableScreen:(BOOL)arg1;
 - (void)_updateSecondDisplayModeWithCurrentContent;

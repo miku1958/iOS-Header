@@ -17,6 +17,7 @@
 - (void).cxx_destruct;
 - (unsigned long long)_accessibilityAutomationType;
 - (long long)_accessibilityContentKind;
+- (id)_accessibilityDefaultFocusGroupDescriptor;
 - (long long)_accessibilityScannerActivateBehavior;
 - (BOOL)_accessibilitySkipImageTraitDescription;
 - (id)_accessibilitySupplementaryFooterViews;

@@ -6,11 +6,18 @@
 
 #import <objc/NSObject.h>
 
+@class APMescalSigning;
+
 @interface APProxyURLCredentialService : NSObject
 {
+    APMescalSigning *_mescalSigningObject;
 }
 
+@property (readonly, nonatomic) APMescalSigning *mescalSigningObject; // @synthesize mescalSigningObject=_mescalSigningObject;
+
+- (void).cxx_destruct;
 - (id)_signedCredentialForUrl:(id)arg1 userAgent:(id)arg2 withPersistence:(unsigned long long)arg3;
+- (id)init;
 - (id)signedCredentialForRequest:(id)arg1 withPersistence:(unsigned long long)arg2;
 - (id)signedCredentialForUrl:(id)arg1 userAgent:(id)arg2 request:(id)arg3 withPersistence:(unsigned long long)arg4;
 - (id)signedCredentialForUrl:(id)arg1 userAgent:(id)arg2 withPersistence:(unsigned long long)arg3;

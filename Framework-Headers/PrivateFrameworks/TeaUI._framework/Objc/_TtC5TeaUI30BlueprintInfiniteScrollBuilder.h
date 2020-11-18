@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *infiniteScrollProvider;
     MISSING_TYPE *trigger;
+    MISSING_TYPE *idleTrigger;
 }
 
 @end

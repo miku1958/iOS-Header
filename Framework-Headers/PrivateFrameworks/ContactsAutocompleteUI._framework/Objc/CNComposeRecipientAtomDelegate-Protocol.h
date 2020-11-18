@@ -14,5 +14,6 @@
 - (void)deselectComposeRecipientAtom:(CNComposeRecipientAtom *)arg1;
 - (UIContextMenuConfiguration *)menuConfigurationForAtomView:(CNComposeRecipientAtom *)arg1;
 - (void)selectComposeRecipientAtom:(CNComposeRecipientAtom *)arg1;
+- (void)shiftSelectComposeRecipientAtom:(CNComposeRecipientAtom *)arg1;
 @end
 

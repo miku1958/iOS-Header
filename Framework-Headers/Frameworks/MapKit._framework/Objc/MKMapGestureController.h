@@ -81,6 +81,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isRotationEnabled) BOOL rotationEnabled;
 @property (strong, nonatomic) MKRotationFilter *rotationFilter; // @synthesize rotationFilter=_rotationFilter;
 @property (readonly, nonatomic) UIRotationGestureRecognizer *rotationGestureRecognizer; // @synthesize rotationGestureRecognizer=_rotationGestureRecognizer;
+@property (nonatomic) BOOL rotationSnappingEnabled; // @synthesize rotationSnappingEnabled=_rotationSnappingEnabled;
 @property (strong, nonatomic) MKScaleView *scaleView; // @synthesize scaleView=_scaleView;
 @property (nonatomic, getter=isScrollEnabled) BOOL scrollEnabled;
 @property (readonly) Class superclass;

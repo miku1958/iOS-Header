@@ -188,6 +188,7 @@ struct LSBundleData {
     int recordModificationTime;
     unsigned int supportedGameControllers;
     unsigned int mobileInstallIDs;
+    unsigned int signatureVersion;
     unsigned int _reserved5;
 };
 

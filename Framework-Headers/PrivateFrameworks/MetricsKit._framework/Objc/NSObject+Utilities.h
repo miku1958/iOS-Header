@@ -9,5 +9,7 @@
 @interface NSObject (Utilities)
 - (id)mt_nullableValueForKey:(id)arg1;
 - (id)mt_nullableValueForKeyPath:(id)arg1;
+- (id)mt_nullableValueForKeyPathArray:(id)arg1 index:(long long)arg2;
+- (id)mt_nullableValueForKeyPathExt:(id)arg1;
 @end
 

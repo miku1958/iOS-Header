@@ -34,6 +34,7 @@
     STLockoutPolicyController *_policyController;
     NSString *_applicationName;
     NSDictionary *_contactNameByHandle;
+    NSString *_blockedContactsHandle;
     STHourglassView *_hourglassView;
     UIImageView *_communicationLimitView;
     UILabel *_titleLabel;
@@ -42,11 +43,14 @@
     UIButton *_okButton;
     long long _okButtonAction;
     CDUnknownBlockType _addContactHandler;
+    CDUnknownBlockType _addBlockedContactHandler;
     id<STLockoutViewControllerDelegate> _viewControllerDelegate;
 }
 
+@property (copy) CDUnknownBlockType addBlockedContactHandler; // @synthesize addBlockedContactHandler=_addBlockedContactHandler;
 @property (copy) CDUnknownBlockType addContactHandler; // @synthesize addContactHandler=_addContactHandler;
 @property (readonly) NSString *applicationName; // @synthesize applicationName=_applicationName;
+@property (copy) NSString *blockedContactsHandle; // @synthesize blockedContactsHandle=_blockedContactsHandle;
 @property (copy, nonatomic) NSString *bundleIdentifier;
 @property (weak) UIImageView *communicationLimitView; // @synthesize communicationLimitView=_communicationLimitView;
 @property (readonly, copy) NSDictionary *contactNameByHandle; // @synthesize contactNameByHandle=_contactNameByHandle;

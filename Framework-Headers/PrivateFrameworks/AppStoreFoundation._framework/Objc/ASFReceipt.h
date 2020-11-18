@@ -67,6 +67,7 @@
 @property (readonly) NSData *sha1; // @synthesize sha1=_sha1;
 
 + (id)_receiptURLForBundleURL:(id)arg1;
++ (id)_receiptURLFromRecordWithBundleURL:(id)arg1;
 + (id)receiptFromBundleAtPath:(id)arg1;
 + (id)receiptFromBundleAtURL:(id)arg1;
 + (id)receiptWithContentsOfFile:(id)arg1;

@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
+- (void)addShadowToLabel:(id)arg1;
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (void)fetchImageIfNecessary;
 - (id)initWithPictureItem:(id)arg1 providerName:(id)arg2;

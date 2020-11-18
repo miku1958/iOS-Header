@@ -10,7 +10,7 @@
 #import <CoreHAP/HAP2AccessoryServerCoordinatorPrivate-Protocol.h>
 #import <CoreHAP/HAP2AccessoryServerDiscoveryDelegate-Protocol.h>
 
-@class HAP2PropertyLock, HAP2SerializedOperationQueue, NSMutableDictionary, NSString;
+@class HAP2PropertyLock, HAP2SerializedOperationQueue, NSMutableDictionary, NSOperationQueue, NSString;
 @protocol HAP2AccessoryServerBrowserPrivate, HAP2AccessoryServerControllerFactory, HAP2AccessoryServerCoordinatorDelegate, HAP2AccessoryServerDiscovery, HAP2AccessoryServerEncodingFactory, HAP2AccessoryServerPairingFactory, HAP2AccessoryServerSecureTransportFactory, HAP2AccessoryServerTransportFactory;
 
 @interface HAP2AccessoryServerCoordinator : HAP2LoggingObject <HAP2AccessoryServerDiscoveryDelegate, HAP2AccessoryServerCoordinatorPrivate, HAP2AccessoryServerCoordinator>
@@ -28,6 +28,7 @@
     id<HAP2AccessoryServerEncodingFactory> _encodingFactory;
     id<HAP2AccessoryServerControllerFactory> _controllerFactory;
     HAP2SerializedOperationQueue *_operationQueue;
+    NSOperationQueue *_localOperationQueue;
     HAP2PropertyLock *_propertyLock;
 }
 
@@ -41,6 +42,7 @@
 @property (readonly, nonatomic) id<HAP2AccessoryServerDiscovery> discovery; // @synthesize discovery=_discovery;
 @property (readonly, nonatomic) id<HAP2AccessoryServerEncodingFactory> encodingFactory; // @synthesize encodingFactory=_encodingFactory;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSOperationQueue *localOperationQueue; // @synthesize localOperationQueue=_localOperationQueue;
 @property (readonly, nonatomic) HAP2SerializedOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property (readonly, nonatomic) id<HAP2AccessoryServerPairingFactory> pairingFactory; // @synthesize pairingFactory=_pairingFactory;
 @property (readonly, nonatomic) HAP2PropertyLock *propertyLock; // @synthesize propertyLock=_propertyLock;
@@ -54,10 +56,10 @@
 - (id)_createMetadataForAccessoryServerWithAccessoryInfo:(id)arg1;
 - (id)_createPairedAccessoryServerWithAccessoryInfo:(id)arg1 transport:(id)arg2 operationQueue:(id)arg3;
 - (id)_createUnpairedAccessoryServerWithAccessoryInfo:(id)arg1 transport:(id)arg2 operationQueue:(id)arg3;
-- (void)_didDeterminePairingStateForAccessory:(id)arg1 isPaired:(BOOL)arg2;
-- (void)_didDiscoverAccessory:(id)arg1;
-- (void)_didDiscoverPairedAccessory:(id)arg1 transport:(id)arg2 operationQueue:(id)arg3;
-- (void)_didDiscoverUnpairedAccessory:(id)arg1 transport:(id)arg2 operationQueue:(id)arg3;
+- (void)_didDeterminePairingStateForAccessory:(id)arg1 isPaired:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_didDiscoverAccessory:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_didDiscoverPairedAccessory:(id)arg1 transport:(id)arg2 operationQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_didDiscoverUnpairedAccessory:(id)arg1 transport:(id)arg2 operationQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_didLoseAccessory:(id)arg1 error:(id)arg2;
 - (void)_didStartDiscoveringWithError:(id)arg1;
 - (void)_didStopDiscoveringWithError:(id)arg1;

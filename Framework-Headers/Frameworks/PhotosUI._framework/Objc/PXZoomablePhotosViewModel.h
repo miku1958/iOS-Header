@@ -26,6 +26,7 @@
     double _pinchLastDate;
     BOOL _wasPinching;
     BOOL _wasInteractiveZooming;
+    unsigned long long _supportLevel;
     id _pauseToken;
     BOOL _lowMemoryMode;
     BOOL _isPinching;

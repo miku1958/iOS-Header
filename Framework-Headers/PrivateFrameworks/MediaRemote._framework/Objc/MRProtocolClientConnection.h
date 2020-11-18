@@ -21,11 +21,11 @@
     MRProtocolMessageQueue *_messageQueue;
     unsigned long long _firstClientNanoseconds;
     unsigned long long _firstDeviceTicks;
+    MRSupportedProtocolMessages *_supportedMessages;
     BOOL _disconnected;
     NSInputStream *_inputStream;
     NSOutputStream *_outputStream;
     MRDeviceInfo *_deviceInfo;
-    MRSupportedProtocolMessages *_supportedMessages;
     NSString *_label;
     id<MRProtocolClientConnectionDelegate> _delegate;
 }
@@ -39,14 +39,15 @@
 @property (readonly, nonatomic) NSInputStream *inputStream; // @synthesize inputStream=_inputStream;
 @property (strong, nonatomic) NSString *label; // @synthesize label=_label;
 @property (readonly, nonatomic) NSOutputStream *outputStream; // @synthesize outputStream=_outputStream;
+@property (strong, nonatomic) NSRunLoop *runLoop; // @synthesize runLoop=_runLoop;
 @property (readonly, nonatomic) BOOL streamsAreValid;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) MRSupportedProtocolMessages *supportedMessages; // @synthesize supportedMessages=_supportedMessages;
+@property (strong, nonatomic) MRSupportedProtocolMessages *supportedMessages;
 
 - (void).cxx_destruct;
-- (void)closeAllStreams;
 - (void)dealloc;
 - (id)decryptData:(id)arg1 error:(id *)arg2;
+- (void)disconnectWithError:(id)arg1;
 - (id)encryptDataForMessage:(id)arg1;
 - (id)initWithInputStream:(id)arg1 outputStream:(id)arg2 runLoop:(id)arg3;
 - (id)messageQueue:(id)arg1 dataForMessage:(id)arg2;

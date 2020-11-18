@@ -103,7 +103,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_abandonActiveEnrollmentAttempts;
+- (BOOL)_abandonActiveEnrollmentAttempts;
 - (void)_abandonPSD2StyleAMPBuy;
 - (void)_addPassphraseViewControllerToHierarchy:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (long long)_authenticatorPolicy;
@@ -173,7 +173,6 @@
 - (Class)_viewPresenterClassForDataItem:(id)arg1;
 - (void)authenticator:(id)arg1 didTransitionToCoachingState:(long long)arg2;
 - (void)authenticator:(id)arg1 didTransitionToEvaluationStateWithEvent:(CDStruct_912cb5d2)arg2;
-- (void)authenticatorDidEncounterBiometricLockout:(id)arg1;
 - (void)authorizationDidAuthorizeApplePayTrustSignatureCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizeCashDisbursementWithResult:(id)arg1;
 - (void)authorizationDidAuthorizeContextCompleteWithResult:(id)arg1;

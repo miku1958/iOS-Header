@@ -58,6 +58,7 @@
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (strong, nonatomic) NSObject<OS_xpc_object> *testListenerEndpoint; // @synthesize testListenerEndpoint=_testListenerEndpoint;
 
++ (unsigned int)featureFlags;
 - (void).cxx_destruct;
 - (void)_activate;
 - (void)_activateAssertionWithFlagsDirect:(unsigned int)arg1 completion:(CDUnknownBlockType)arg2;

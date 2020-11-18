@@ -16,6 +16,7 @@
 @interface WFWidgetViewController : UIViewController <WFWidgetGridViewDelegate, WFWorkflowRunnerClientDelegate, WFObservableResultObserver>
 {
     BOOL _running;
+    BOOL _needsLayout;
     WFObservableResult *_observedResult;
     WFWidgetGridView *_gridView;
     double _cornerRadius;
@@ -28,9 +29,10 @@
 @property (readonly, nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) WFWidgetGridView *gridView; // @synthesize gridView=_gridView;
+@property (readonly, nonatomic) WFWidgetGridView *gridView; // @synthesize gridView=_gridView;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
+@property (readonly, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
+@property (nonatomic) BOOL needsLayout; // @synthesize needsLayout=_needsLayout;
 @property (strong, nonatomic) WFObservableResult *observedResult; // @synthesize observedResult=_observedResult;
 @property (readonly, nonatomic) WFWidgetOptions *options; // @synthesize options=_options;
 @property (nonatomic) BOOL running; // @synthesize running=_running;
@@ -47,12 +49,12 @@
 - (void)gridView:(id)arg1 didTapCell:(id)arg2;
 - (void)gridViewDidFinishLayout:(id)arg1;
 - (id)initWithOptions:(id)arg1;
-- (void)layoutWithWorkflows:(id)arg1;
+- (void)layoutWithObservableResult:(id)arg1;
 - (void)loadView;
 - (void)observableResultDidChange:(id)arg1;
 - (void)performInitialFetch;
 - (CDUnknownBlockType)publishingHandlerForCell:(id)arg1;
-- (void)refreshWorkflowsWithLimit:(long long)arg1;
+- (void)refreshWorkflows;
 - (void)removeStaleRunningContexts;
 - (void)restoreRunningStateIfNecessary;
 - (void)resumeRunningWithCell:(id)arg1;

@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) NSArray *predictedApps; // @synthesize predictedApps=_predictedApps;
 @property (readonly, nonatomic) NSArray *recentApps; // @synthesize recentApps=_recentApps;
+@property (readonly, nonatomic) NSArray *recentAppsVisible;
 @property (readonly, nonatomic) ATXResponse *response; // @synthesize response=_response;
 
 - (void).cxx_destruct;

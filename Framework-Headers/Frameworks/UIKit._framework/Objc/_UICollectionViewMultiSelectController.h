@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)_deselectIndexPaths:(id)arg1;
 - (void)_extendSelectionToPoint:(struct CGPoint)arg1;
 - (unsigned long long)_hitTestForSystemEditControlAtPoint:(struct CGPoint)arg1;
-- (BOOL)_isUsingTableViewLayout;
+- (BOOL)_isUsingTableLayoutSPI;
 - (BOOL)_point:(struct CGPoint)arg1 liesBeyondFrame:(struct CGRect)arg2 inDirection:(double)arg3;
 - (void)_selectIndexPaths:(id)arg1;
 - (BOOL)_shouldBeginInteractionAtIndexPath:(id)arg1;

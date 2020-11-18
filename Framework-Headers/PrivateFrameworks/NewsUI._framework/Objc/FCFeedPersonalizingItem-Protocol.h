@@ -21,6 +21,8 @@
 @property (readonly, nonatomic) BOOL hasGlobalUserFeedback;
 @property (readonly, nonatomic) BOOL hasVideo;
 @property (readonly, nonatomic, getter=isHiddenFromAutoFavorites) BOOL hiddenFromAutoFavorites;
+@property (readonly, copy, nonatomic) NSArray *iAdCategories;
+@property (readonly, nonatomic) BOOL isEvergreen;
 @property (readonly, nonatomic) BOOL isFeatured;
 @property (readonly, copy, nonatomic) NSString *itemID;
 @property (readonly, nonatomic, getter=isPaid) BOOL paid;

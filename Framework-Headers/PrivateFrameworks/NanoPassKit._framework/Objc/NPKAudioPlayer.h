@@ -18,6 +18,7 @@
 + (void)playProvisioningSuccessHaptic;
 + (void)playSessionStartFailureHaptic;
 + (void)playSessionTimeoutHaptic;
++ (void)playTransactionAuthenticationHaptic;
 + (void)playTransactionFailureHaptic;
 + (void)playTransactionSuccessHaptic;
 + (void)playWarsawHaptic;

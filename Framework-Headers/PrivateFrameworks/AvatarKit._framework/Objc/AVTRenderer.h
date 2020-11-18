@@ -14,6 +14,7 @@
 @interface AVTRenderer : SCNRenderer <SCNSceneRendererDelegate, _SCNSceneRendererDelegateSPI>
 {
     AVTAvatarEnvironment *_environment;
+    NSString *_framingMode;
     AVTAvatar *_avatar;
     SCNNode *_avatarNode;
     NSLock *_lock;
@@ -25,6 +26,7 @@
 @property (nonatomic) unsigned long long avt_antialiasingMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *framingMode;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
@@ -32,7 +34,7 @@
 + (id)rendererWithDevice:(id)arg1 options:(id)arg2;
 - (void).cxx_destruct;
 - (void)__setAvatar:(id)arg1;
-- (void)_avtSetup;
+- (void)_avtSetupWithOptions:(id)arg1;
 - (void)_renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
 - (void)_renderer:(id)arg1 didBuildSubdivDataForHash:(id)arg2 dataProvider:(CDUnknownBlockType)arg3;
 - (id)_renderer:(id)arg1 subdivDataForHash:(id)arg2;
@@ -43,6 +45,7 @@
 - (void)dealloc;
 - (void)fadePuppetToWhite:(float)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
+- (void)updatePointOfViewFromFramingMode;
 
 @end
 

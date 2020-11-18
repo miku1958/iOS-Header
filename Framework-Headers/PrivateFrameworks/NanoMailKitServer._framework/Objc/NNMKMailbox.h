@@ -27,12 +27,14 @@
     NSURL *_url;
     NSString *_customName;
     NSDate *_lastUpdate;
+    NSString *_displayName;
 }
 
 @property (strong, nonatomic) NSString *accountId; // @synthesize accountId=_accountId;
 @property (strong, nonatomic) NSString *accountLocalId; // @synthesize accountLocalId=_accountLocalId;
 @property (strong, nonatomic) NSString *customName; // @synthesize customName=_customName;
 @property (nonatomic) BOOL databaseContentVerified; // @synthesize databaseContentVerified=_databaseContentVerified;
+@property (readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (nonatomic) unsigned long long filterType; // @synthesize filterType=_filterType;
 @property (nonatomic) BOOL hasSelection; // @synthesize hasSelection=_hasSelection;
 @property (nonatomic) BOOL isPushEnabled; // @synthesize isPushEnabled=_isPushEnabled;

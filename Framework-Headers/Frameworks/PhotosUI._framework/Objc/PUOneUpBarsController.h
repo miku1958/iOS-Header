@@ -56,6 +56,7 @@
     BOOL __needsUpdateCommentsTitle;
     BOOL __nextCommentsActionShouldBeginEditing;
     BOOL __needsUpdateFileSizeButtonTitle;
+    BOOL __needsUpdateFileSizeButtonMenu;
     BOOL __needsUpdateChromeVisibility;
     BOOL __lastChromeVisibility;
     BOOL __needsUpdatePlayPauseItems;
@@ -88,6 +89,7 @@
 @property (strong, nonatomic, setter=_setLeftNavBarButtonItemCollection:) PUBarButtonItemCollection *_leftNavBarButtonItemCollection; // @synthesize _leftNavBarButtonItemCollection=__leftNavBarButtonItemCollection;
 @property (nonatomic, setter=_setNeedsUpdateChromeVisibility:) BOOL _needsUpdateChromeVisibility; // @synthesize _needsUpdateChromeVisibility=__needsUpdateChromeVisibility;
 @property (nonatomic, setter=_setNeedsUpdateCommentsTitle:) BOOL _needsUpdateCommentsTitle; // @synthesize _needsUpdateCommentsTitle=__needsUpdateCommentsTitle;
+@property (nonatomic, setter=_setNeedsUpdateFileSizeButtonMenu:) BOOL _needsUpdateFileSizeButtonMenu; // @synthesize _needsUpdateFileSizeButtonMenu=__needsUpdateFileSizeButtonMenu;
 @property (nonatomic, setter=_setNeedsUpdateFileSizeButtonTitle:) BOOL _needsUpdateFileSizeButtonTitle; // @synthesize _needsUpdateFileSizeButtonTitle=__needsUpdateFileSizeButtonTitle;
 @property (nonatomic, setter=_setNeedsUpdatePlayPauseItems:) BOOL _needsUpdatePlayPauseItems; // @synthesize _needsUpdatePlayPauseItems=__needsUpdatePlayPauseItems;
 @property (nonatomic, setter=_setNeedsUpdateTitle:) BOOL _needsUpdateTitle; // @synthesize _needsUpdateTitle=__needsUpdateTitle;
@@ -152,6 +154,7 @@
 - (void)_initializeBarButtonItemCollections;
 - (void)_invalidateChromeVisibilityWithAnimationType:(long long)arg1;
 - (void)_invalidateCommentsTitle;
+- (void)_invalidateFileSizeButtonMenu;
 - (void)_invalidateFileSizeButtonTitle;
 - (void)_invalidateScrubber;
 - (void)_invalidateTitle;
@@ -197,6 +200,7 @@
 - (void)_updateCommentsButton:(id)arg1 withTitle:(id)arg2;
 - (void)_updateCommentsTitleIfNeeded;
 - (void)_updateFavoriteBarButtonItem;
+- (void)_updateFileSizeButtonMenuIfNeeded;
 - (void)_updateFileSizeButtonTitleIfNeeded;
 - (void)_updateIdentifiersIndexesWithIdentifier:(long long)arg1 location:(long long)arg2 shouldEnable:(BOOL)arg3;
 - (void)_updateScrubberViewIfNeeded;

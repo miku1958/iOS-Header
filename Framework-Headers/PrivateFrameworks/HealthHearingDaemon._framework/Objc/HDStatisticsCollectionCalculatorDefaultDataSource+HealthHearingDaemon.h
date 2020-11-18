@@ -7,6 +7,6 @@
 #import <HealthDaemon/HDStatisticsCollectionCalculatorDefaultDataSource.h>
 
 @interface HDStatisticsCollectionCalculatorDefaultDataSource (HealthHearingDaemon)
-- (id)hh_addQuantitySamples:(id)arg1 calculator:(id)arg2 error:(id *)arg3;
+- (id)hearing_addQuantitySamples:(id)arg1 calculator:(id)arg2 error:(id *)arg3;
 @end
 

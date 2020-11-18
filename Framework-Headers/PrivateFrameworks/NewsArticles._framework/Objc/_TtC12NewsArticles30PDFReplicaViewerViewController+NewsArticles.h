@@ -17,6 +17,7 @@
 - (void)didMoveToParentViewController:(id)arg1;
 - (void)nextPageKeyCommand;
 - (void)previousPageKeyCommand;
+- (void)tabBarSplitViewDidChangeFocusToFocus:(long long)arg1 action:(long long)arg2;
 - (void)tabBarSplitViewWillChangeDisplayModeToDisplayMode:(long long)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
@@ -24,5 +25,6 @@
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 @end
 

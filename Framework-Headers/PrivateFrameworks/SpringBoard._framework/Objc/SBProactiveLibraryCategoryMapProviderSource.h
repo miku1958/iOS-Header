@@ -8,11 +8,13 @@
 
 #import <SpringBoard/SBHLibraryCategoryMapProviderSource-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 @protocol SBHLibraryCategoryMapProviderSourceDelegate;
 
 @interface SBProactiveLibraryCategoryMapProviderSource : NSObject <SBHLibraryCategoryMapProviderSource>
 {
+    NSArray *_lastKnownGoodSuggestions;
+    NSArray *_lastKnownGoodRecentApps;
     id<SBHLibraryCategoryMapProviderSourceDelegate> _delegate;
 }
 

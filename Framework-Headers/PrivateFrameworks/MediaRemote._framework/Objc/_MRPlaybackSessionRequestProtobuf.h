@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MRPlaybackSessionRequestProtobuf : PBCodable <NSCopying>
 {
     NSString *_identifier;
@@ -23,25 +24,12 @@
     } _has;
 }
 
-@property (readonly, nonatomic) BOOL hasIdentifier;
-@property (nonatomic) BOOL hasLength;
-@property (nonatomic) BOOL hasLocation;
-@property (readonly, nonatomic) BOOL hasRequestID;
-@property (readonly, nonatomic) BOOL hasType;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (nonatomic) int length; // @synthesize length=_length;
-@property (nonatomic) int location; // @synthesize location=_location;
-@property (strong, nonatomic) NSString *requestID; // @synthesize requestID=_requestID;
-@property (strong, nonatomic) NSString *type; // @synthesize type=_type;
-
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

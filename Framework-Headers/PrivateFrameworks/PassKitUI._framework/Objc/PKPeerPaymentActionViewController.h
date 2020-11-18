@@ -9,7 +9,7 @@
 #import <PassKitUI/PKPeerPaymentActionControllerDelegate-Protocol.h>
 
 @class NSDecimalNumber, NSString, PKPaymentPass, PKPeerPaymentAccount, PKPeerPaymentAccountFeatureDescriptor, PKPeerPaymentActionController, PKPeerPaymentWebService;
-@protocol PKPeerPaymentActionViewControllerDelegate;
+@protocol PKPassLibraryDataProvider, PKPeerPaymentActionViewControllerDelegate;
 
 @interface PKPeerPaymentActionViewController : UIViewController <PKPeerPaymentActionControllerDelegate>
 {
@@ -17,6 +17,7 @@
     BOOL _dismissingViewController;
     BOOL _showCancelButton;
     id<PKPeerPaymentActionViewControllerDelegate> _delegate;
+    id<PKPassLibraryDataProvider> _passLibraryDataProvider;
     PKPeerPaymentAccount *_account;
     PKPeerPaymentActionController *_actionController;
     PKPeerPaymentWebService *_webService;
@@ -46,12 +47,13 @@
 @property (copy, nonatomic) NSDecimalNumber *minBalance; // @synthesize minBalance=_minBalance;
 @property (copy, nonatomic) NSDecimalNumber *minLoadAmount; // @synthesize minLoadAmount=_minLoadAmount;
 @property (readonly, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
+@property (weak, nonatomic) id<PKPassLibraryDataProvider> passLibraryDataProvider; // @synthesize passLibraryDataProvider=_passLibraryDataProvider;
 @property (nonatomic) BOOL showCancelButton; // @synthesize showCancelButton=_showCancelButton;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PKPeerPaymentWebService *webService; // @synthesize webService=_webService;
 
 + (id)navigationBarBackgroundColor;
-+ (id)peerPaymentActionViewControllerForAction:(unsigned long long)arg1 paymentPass:(id)arg2 webService:(id)arg3 context:(long long)arg4;
++ (id)peerPaymentActionViewControllerForAction:(unsigned long long)arg1 paymentPass:(id)arg2 webService:(id)arg3 passLibraryDataProvider:(id)arg4 context:(long long)arg5;
 - (void).cxx_destruct;
 - (id)_cancelBarButton;
 - (void)_cancelButtonPressed:(id)arg1;
@@ -60,7 +62,7 @@
 - (void)_handlePeerPaymentAccountDidChangeNotification:(id)arg1;
 - (void)_performedAction;
 - (void)dealloc;
-- (id)initWithPaymentPass:(id)arg1 webService:(id)arg2 context:(long long)arg3;
+- (id)initWithPaymentPass:(id)arg1 webService:(id)arg2 passLibraryDataProvider:(id)arg3 context:(long long)arg4;
 - (void)loadView;
 - (void)peerPaymentActionController:(id)arg1 hasChangedState:(unsigned long long)arg2;
 - (void)peerPaymentActionController:(id)arg1 requestPresentViewController:(id)arg2;

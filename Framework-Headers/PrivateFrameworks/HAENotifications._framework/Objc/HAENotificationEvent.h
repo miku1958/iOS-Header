@@ -31,7 +31,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)getEventString;
+- (id)getEventTypeString;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithEventType:(unsigned int)arg1 exposureLevel:(double)arg2 dateInterval:(id)arg3 metadata:(id)arg4;
 

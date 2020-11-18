@@ -34,6 +34,7 @@
 - (void)_handleClearFromPlayHistoryRequestDidFinishNotification:(id)arg1;
 - (void)_handleClearPlayHistoryNotification:(id)arg1;
 - (void)_handleEntitlementsDidChangeNotification:(id)arg1;
+- (void)_handleFamilyUpdate:(id)arg1;
 - (void)_handleFavoritesRequestDidFinishNotification:(id)arg1;
 - (void)_handleIAMMessageDidReceiveNotification:(id)arg1;
 - (void)_handleLocationAuthorizationDidChangeNotification:(id)arg1;
@@ -59,6 +60,7 @@
 - (void)_postPurchaseNotification:(id)arg1 error:(id)arg2;
 - (void)_postSubscriptionNotification:(id)arg1 interruptedOfferDetails:(id)arg2 error:(id)arg3;
 - (void)addObserver:(id)arg1 forEventDescriptors:(id)arg2;
+- (void)addObserver:(id)arg1 forEventDescriptors:(id)arg2 viewController:(id)arg3;
 - (void)dealloc;
 - (id)init;
 - (void)removeObserver:(id)arg1;

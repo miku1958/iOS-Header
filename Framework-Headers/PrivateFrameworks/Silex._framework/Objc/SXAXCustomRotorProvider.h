@@ -14,13 +14,8 @@
     NSObject *_rootElement;
 }
 
-@property (readonly, copy, nonatomic) NSSet *cachedAvailableRotors; // @synthesize cachedAvailableRotors=_cachedAvailableRotors;
-@property (weak, nonatomic) NSObject *rootElement; // @synthesize rootElement=_rootElement;
-
 - (void).cxx_destruct;
-- (id)graphSearchForAvailableCustomRotorsAndUpdateCache;
 - (id)init;
-- (id)initWithRootElement:(id)arg1;
 
 @end
 

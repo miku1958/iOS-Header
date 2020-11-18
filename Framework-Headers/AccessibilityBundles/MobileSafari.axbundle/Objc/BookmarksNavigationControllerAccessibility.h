@@ -17,6 +17,7 @@
 - (id)_segmentedControlItemForCollection:(id)arg1;
 - (id)_setAccessibilityLabelForItem:(id)arg1 fromCollection:(id)arg2;
 - (BOOL)accessibilityPerformEscape;
+- (void)navigationTransitionView:(id)arg1 didEndTransition:(long long)arg2 fromView:(id)arg3 toView:(id)arg4;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSSet, NSString, NSURL, NSUUID, SBFolder, SBFolderController, SBHAddWidgetSheetViewController, SBHCustomIconElement, SBHIconAnimationSettings, SBHIconImageCache, SBHIconManager, SBHWidget, SBHomeScreenIconTransitionAnimator, SBIcon, SBIconListModel, SBIconListView, SBIconView, SBLeafIcon, SBNestingViewController, SBRootFolderController, SBRootFolderControllerConfiguration, SBSApplicationShortcutItem, SBViewControllerTransitionContext, SBWidgetIcon, UIColor, UIDragItem, UIDragPreviewParameters, UIStatusBar, UIStatusBarStyleRequest, UIView, UIViewController, UIViewPropertyAnimator, UIWindow, _UIContextMenuStyle;
+@class NSArray, NSData, NSDictionary, NSMutableDictionary, NSSet, NSString, NSURL, NSUUID, SBFolder, SBFolderController, SBHAddWidgetSheetViewController, SBHCustomIconElement, SBHIconAnimationSettings, SBHIconImageCache, SBHIconManager, SBHWidget, SBHomeScreenIconTransitionAnimator, SBIcon, SBIconListModel, SBIconListView, SBIconView, SBLeafIcon, SBNestingViewController, SBRootFolderController, SBRootFolderControllerConfiguration, SBSApplicationShortcutItem, SBViewControllerTransitionContext, SBWidgetIcon, UIColor, UIDragItem, UIDragPreviewParameters, UIStatusBar, UIStatusBarStyleRequest, UIView, UIViewController, UIViewPropertyAnimator, UIWindow, _UIContextMenuStyle;
 @protocol BSInvalidatable, SBHIconRootViewProviding, SBHIconViewConfigurationInteraction, SBIconDragPreview, SBIconDragPreviewContaining, SBIconViewSnapshotProviding, SBLeafIconDataSource, SBRecycledViewsContainerProviding, SBViewControllerTransitionCoordinator, UIDragSession, UIDropSession, UIViewImplicitlyAnimating;
 
 @protocol SBHIconManagerDelegate <NSObject>
@@ -51,6 +51,7 @@
 - (void)iconManager:(SBHIconManager *)arg1 didCloseFolder:(SBFolder *)arg2;
 - (void)iconManager:(SBHIconManager *)arg1 didCreateRootFolderController:(SBRootFolderController *)arg2;
 - (void)iconManager:(SBHIconManager *)arg1 didCreateRootViewController:(UIViewController<SBHIconRootViewProviding> *)arg2;
+- (void)iconManager:(SBHIconManager *)arg1 didDismissPageManagementWithContext:(NSMutableDictionary *)arg2;
 - (void)iconManager:(SBHIconManager *)arg1 didEndIconDragWithUniqueIdentifier:(NSUUID *)arg2 numberOfDraggedItems:(unsigned long long)arg3;
 - (void)iconManager:(SBHIconManager *)arg1 didOpenFolder:(SBFolder *)arg2;
 - (void)iconManager:(SBHIconManager *)arg1 didReceiveTapOnLaunchDisabledIconView:(SBIconView *)arg2;
@@ -119,11 +120,11 @@
 - (void)iconManager:(SBHIconManager *)arg1 willCloseFolderController:(SBFolderController *)arg2;
 - (void)iconManager:(SBHIconManager *)arg1 willDestroyRootFolderController:(SBRootFolderController *)arg2;
 - (void)iconManager:(SBHIconManager *)arg1 willDestroyRootViewController:(UIViewController<SBHIconRootViewProviding> *)arg2;
-- (void)iconManager:(SBHIconManager *)arg1 willDismissPageManagementUsingAnimator:(id<UIViewImplicitlyAnimating>)arg2;
+- (void)iconManager:(SBHIconManager *)arg1 willDismissPageManagementUsingAnimator:(id<UIViewImplicitlyAnimating>)arg2 context:(NSMutableDictionary *)arg3;
 - (void)iconManager:(SBHIconManager *)arg1 willOpenFolder:(SBFolder *)arg2;
 - (void)iconManager:(SBHIconManager *)arg1 willOpenFolderController:(SBFolderController *)arg2;
 - (void)iconManager:(SBHIconManager *)arg1 willPrepareIconViewForLaunch:(SBIconView *)arg2;
-- (void)iconManager:(SBHIconManager *)arg1 willPresentPageManagementUsingAnimator:(id<UIViewImplicitlyAnimating>)arg2;
+- (void)iconManager:(SBHIconManager *)arg1 willPresentPageManagementUsingAnimator:(id<UIViewImplicitlyAnimating>)arg2 context:(NSMutableDictionary *)arg3;
 - (void)iconManager:(SBHIconManager *)arg1 willRemoveFakeStatusBar:(UIStatusBar *)arg2 forFolderController:(SBFolderController *)arg3;
 - (void)iconManager:(SBHIconManager *)arg1 willRemoveViewControllerForIdentifier:(NSString *)arg2;
 - (void)iconManager:(SBHIconManager *)arg1 willUseIconImageCache:(SBHIconImageCache *)arg2;
@@ -131,7 +132,6 @@
 - (BOOL)iconManagerCanBeginIconDrags:(SBHIconManager *)arg1;
 - (BOOL)iconManagerCanSaveIconState:(SBHIconManager *)arg1;
 - (BOOL)iconManagerCanUseSeparateWindowForRotation:(SBHIconManager *)arg1;
-- (void)iconManagerDidDismissPageManagement:(SBHIconManager *)arg1;
 - (void)iconManagerDidDismissWidgetEditing:(SBHIconManager *)arg1;
 - (void)iconManagerDidFinishInstallForIcon:(SBHIconManager *)arg1;
 - (void)iconManagerDidNoteIconStateChangedExternally:(SBHIconManager *)arg1;
