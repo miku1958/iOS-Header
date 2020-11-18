@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, UIColor, UIKeyboardAssistantBar;
+@class NSArray, UIBlurEffect, UIColor, UIKeyboardAssistantBar;
 
 @interface UITextInputAssistantItem : NSObject
 {
@@ -18,12 +18,14 @@
     NSArray *_centerBarButtonGroups;
     double _marginOverride;
     UIColor *_detachedBackgroundColor;
+    UIBlurEffect *_detachedBackgroundEffect;
     UIColor *_detachedTintColor;
 }
 
 @property (nonatomic) BOOL allowsHidingShortcuts; // @synthesize allowsHidingShortcuts=_allowsHidingShortcuts;
 @property (copy, nonatomic, getter=_centerBarButtonGroups, setter=_setCenterBarButtonGroups:) NSArray *centerBarButtonGroups; // @synthesize centerBarButtonGroups=_centerBarButtonGroups;
 @property (strong, nonatomic, getter=_detachedBackgroundColor, setter=_setDetachedBackgroundColor:) UIColor *detachedBackgroundColor; // @synthesize detachedBackgroundColor=_detachedBackgroundColor;
+@property (copy, nonatomic, getter=_detachedBackgroundEffect, setter=_setDetachedBackgroundEffect:) UIBlurEffect *detachedBackgroundEffect; // @synthesize detachedBackgroundEffect=_detachedBackgroundEffect;
 @property (strong, nonatomic, getter=_detachedTintColor, setter=_setDetachedTintColor:) UIColor *detachedTintColor; // @synthesize detachedTintColor=_detachedTintColor;
 @property (readonly, nonatomic, getter=_hasItemsToDisplay) BOOL hasItemsToDisplay;
 @property (nonatomic, getter=_independentGroupSizes, setter=_setIndependentGroupSizes:) BOOL independentGroupSizes; // @synthesize independentGroupSizes=_independentGroupSizes;

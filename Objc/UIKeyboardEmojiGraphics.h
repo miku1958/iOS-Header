@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 + (id)emojiFontAttributesForPortrait:(BOOL)arg1;
 + (double)emojiPageControlYOffset:(BOOL)arg1;
 + (struct CGSize)emojiSize:(BOOL)arg1;
++ (BOOL)isWildcatKeyboard;
 + (struct CGPoint)margin:(BOOL)arg1;
 + (double)optionalDescriptionPadding:(BOOL)arg1;
 + (struct CGPoint)padding:(BOOL)arg1;

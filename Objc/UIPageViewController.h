@@ -56,6 +56,8 @@
         unsigned int dataSourceSuppliesPageCount:1;
         unsigned int dataSourceSuppliesPageNumber:1;
     } _delegateFlags;
+    id<UIPageViewControllerDataSource> _unsafeUnretainedDataSource;
+    id<UIPageViewControllerDelegate> _unsafeUnretainedDelegate;
 }
 
 @property (readonly, nonatomic) _UIPageViewControllerContentView *_contentView;
@@ -103,6 +105,7 @@
 - (void)_childEndAppearanceTransition:(id)arg1;
 - (struct CGSize)_contentSizeForSize:(struct CGSize)arg1;
 - (void)_contentViewFrameOrBoundsDidChange;
+- (id)_deepestUnambiguousResponder;
 - (struct CGRect)_disabledScrollingRegion;
 - (struct UIEdgeInsets)_edgeInsetsForChildViewController:(id)arg1 insetsAreAbsolute:(BOOL *)arg2;
 - (struct CGSize)_effectiveTapRegionBreadths;
@@ -115,6 +118,7 @@
 - (void)_handlePanGesture:(id)arg1;
 - (void)_handleReverseTapGesture:(id)arg1;
 - (void)_handleTapGesture:(id)arg1;
+- (BOOL)_hasPreferredInterfaceOrientationForPresentation;
 - (id)_incomingViewControllersForGestureDrivenCurlInDirection:(long long)arg1;
 - (void)_invalidateEffectiveTapRegions;
 - (void)_invalidatePageCurl;
@@ -136,7 +140,7 @@
 - (void)_setViewControllers:(id)arg1 withScrollInDirection:(long long)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)_shouldBeginNavigationInDirection:(long long *)arg1 inResponseToPanGestureRecognizer:(id)arg2;
 - (BOOL)_shouldCompleteManualCurlWithSuggestedVelocity:(double *)arg1;
-- (BOOL)_shouldFlipInRTL;
+- (BOOL)_shouldFlipInRightToLeft;
 - (BOOL)_shouldNavigateInDirection:(long long *)arg1 inResponseToTapGestureRecognizer:(id)arg2;
 - (BOOL)_shouldNavigateInDirection:(long long *)arg1 inResponseToVelocity:(double *)arg2 ofGestureRecognizedByPanGestureRecognizer:(id)arg3;
 - (BOOL)_shouldPersistViewWhenCoding;

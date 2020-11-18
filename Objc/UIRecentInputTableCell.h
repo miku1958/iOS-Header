@@ -23,11 +23,13 @@ __attribute__((visibility("hidden")))
 + (id)focusedTextColorForBlurEffectStyle:(long long)arg1;
 + (id)unfocusedTextColorForBlurEffectStyle:(long long)arg1;
 - (void).cxx_destruct;
-- (void)_setupSelectedBackgroundView;
+- (BOOL)_tvIsDarkMode;
+- (void)_updateAppearance;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)layoutSubviews;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setInputText:(id)arg1 withBlurStyle:(long long)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

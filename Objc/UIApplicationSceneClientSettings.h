@@ -33,10 +33,12 @@
 @property (readonly, nonatomic) struct UIEdgeInsets primaryWindowOverlayInsets;
 @property (readonly, nonatomic) unsigned long long proximityDetectionModes;
 @property (readonly, nonatomic) unsigned int statusBarContextID;
+@property (readonly, nonatomic, getter=isStatusBarForegroundTransparent) BOOL statusBarForegroundTransparent;
 @property (readonly, nonatomic) BOOL statusBarHidden;
 @property (readonly, nonatomic) long long statusBarStyle;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long supportedInterfaceOrientations;
+@property (readonly, nonatomic) long long whitePointAdaptivityStyle;
 
 - (BOOL)isUISubclass;
 - (id)keyDescriptionForOtherSetting:(unsigned long long)arg1;

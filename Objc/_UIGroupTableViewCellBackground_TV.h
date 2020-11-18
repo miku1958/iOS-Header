@@ -9,10 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface _UIGroupTableViewCellBackground_TV : UIView
 {
+    double _backgroundImageAlpha;
 }
 
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 alpha:(double)arg2;
+@property (readonly, nonatomic) double backgroundImageAlpha; // @synthesize backgroundImageAlpha=_backgroundImageAlpha;
+
+- (id)initWithFrame:(struct CGRect)arg1 backgroundImageAlpha:(double)arg2;
 
 @end
 

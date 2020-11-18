@@ -13,11 +13,13 @@
 @property (readonly, nonatomic) BOOL canShowAlerts;
 @property (readonly, nonatomic) unsigned long long deactivationReasons;
 @property (readonly, nonatomic) BOOL deviceOrientationEventsEnabled;
+@property (readonly, nonatomic) BOOL forcedStatusBarForegroundTransparent;
 @property (readonly, strong, nonatomic) NSNumber *forcedStatusBarHidden;
 @property (readonly, strong, nonatomic) NSNumber *forcedStatusBarStyle;
 @property (readonly, nonatomic) BOOL idleModeEnabled;
 @property (readonly, nonatomic) int statusBarStyleOverridesToSuppress;
 @property (readonly, nonatomic) BOOL underLock;
+@property (readonly, nonatomic) long long userInterfaceStyle;
 
 @end
 

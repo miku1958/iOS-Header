@@ -16,23 +16,26 @@
     BOOL _keyboardOnScreen;
     BKSAnimationFenceHandle *_animationFence;
     struct CGRect _keyboardPosition;
+    struct CGRect _keyboardPositionWithIAV;
 }
 
 @property (readonly, copy) BKSAnimationFenceHandle *animationFence; // @synthesize animationFence=_animationFence;
 @property (readonly) BOOL keyboardOnScreen; // @synthesize keyboardOnScreen=_keyboardOnScreen;
 @property (readonly) struct CGRect keyboardPosition; // @synthesize keyboardPosition=_keyboardPosition;
+@property (readonly) struct CGRect keyboardPositionWithIAV; // @synthesize keyboardPositionWithIAV=_keyboardPositionWithIAV;
 
 + (id)animationFence;
 + (id)informationForKeyboardDown;
-+ (id)informationForKeyboardUp:(struct CGRect)arg1;
++ (id)informationForKeyboardUp:(struct CGRect)arg1 withIAV:(struct CGRect)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)copyWithoutIAV;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithKeyboardRect:(struct CGRect)arg1 onScreen:(BOOL)arg2 fence:(id)arg3;
+- (id)initWithKeyboardRect:(struct CGRect)arg1 iavPosition:(struct CGRect)arg2 onScreen:(BOOL)arg3 fence:(id)arg4;
 - (void)resetAnimationFencing;
 
 @end

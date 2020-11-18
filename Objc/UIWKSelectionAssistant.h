@@ -25,6 +25,7 @@
 - (void)initializeSelectionView;
 - (id)interactionView;
 - (void)lookup:(id)arg1 fromRect:(struct CGRect)arg2;
+- (void)lookup:(id)arg1 withRange:(struct _NSRange)arg2 fromRect:(struct CGRect)arg3;
 - (void)selectionChanged;
 - (void)selectionChangedWithGestureAt:(struct CGPoint)arg1 withGesture:(long long)arg2 withState:(long long)arg3;
 - (void)selectionChangedWithGestureAt:(struct CGPoint)arg1 withGesture:(long long)arg2 withState:(long long)arg3 withFlags:(long long)arg4;
@@ -37,7 +38,6 @@
 - (void)showSelectionCommands;
 - (void)showShareSheetFor:(id)arg1 fromRect:(struct CGRect)arg2;
 - (void)showTextServiceFor:(id)arg1 fromRect:(struct CGRect)arg2;
-- (void)willBeginGesture;
 
 @end
 

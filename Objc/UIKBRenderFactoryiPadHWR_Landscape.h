@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)dismissKeyOffset;
 - (double)internationalKeyFontSize;
 - (double)keyCornerRadius;
+- (id)messagesWriteboardKeyImageName;
 - (double)moreKeyFontSize;
 - (double)spaceKeyFontSize;
 - (struct CGPoint)spaceReturnKeyTextOffset;

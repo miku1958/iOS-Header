@@ -46,7 +46,6 @@ __attribute__((visibility("hidden")))
 - (id)headerViewForCandidateSet:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
 - (BOOL)isExtendedList;
-- (BOOL)isHiddenCandidatesList;
 - (BOOL)isTenKey;
 - (id)keyboardBehaviors;
 - (void)setCandidates:(id)arg1 inlineText:(id)arg2 inlineRect:(struct CGRect)arg3 maxX:(double)arg4 layout:(BOOL)arg5;

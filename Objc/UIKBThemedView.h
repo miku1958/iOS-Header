@@ -13,12 +13,14 @@
 __attribute__((visibility("hidden")))
 @interface UIKBThemedView : UIView <UIKBCacheableView>
 {
-    CALayer *_borders;
+    CALayer *_rightBorder;
+    CALayer *_leftBorder;
     CALayer *_background;
     BOOL _lightKeyboard;
     BOOL _active;
     BOOL _usePersistentCaching;
-    BOOL _noBorders;
+    BOOL _showsLeftBorder;
+    BOOL _showsRightBorder;
     int _style;
     struct UIEdgeInsets _cacheInsets;
 }
@@ -32,7 +34,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL keepNonPersistent;
-@property (nonatomic) BOOL noBorders; // @synthesize noBorders=_noBorders;
+@property (nonatomic) BOOL showsLeftBorder; // @synthesize showsLeftBorder=_showsLeftBorder;
+@property (nonatomic) BOOL showsRightBorder; // @synthesize showsRightBorder=_showsRightBorder;
 @property (nonatomic) int style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL usePersistentCaching; // @synthesize usePersistentCaching=_usePersistentCaching;

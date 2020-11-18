@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UISystemNavigationAction *systemNavigationAction; // @synthesize systemNavigationAction=_systemNavigationAction;
 
 - (void).cxx_destruct;
+- (double)extraRightPadding;
 - (long long)labelLineBreakMode;
 - (id)shortenedTitleWithCompressionLevel:(int)arg1;
 - (BOOL)updateForNewData:(id)arg1 actions:(int)arg2;

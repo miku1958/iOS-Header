@@ -15,6 +15,7 @@
 @property (nonatomic, setter=_setPercentOffset:) double _percentOffset;
 
 - (void)__runAlongsideAnimations;
+- (long long)_alongsideAnimationsCount;
 - (void)_interactivityDidChange:(BOOL)arg1;
 @end
 

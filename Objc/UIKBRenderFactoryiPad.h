@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 - (void)_customizeGeometry:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
 - (void)_customizePopupTraits:(id)arg1 forKey:(id)arg2 onKeyplane:(id)arg3;
 - (void)_customizeSymbolStyle:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
-- (void)_customizeTraits:(id)arg1 forPopupForKey:(id)arg2 withRenderConfig:(id)arg3 keycapsFontName:(id)arg4;
+- (void)_customizeTraits:(id)arg1 forPopupForKey:(id)arg2 withRenderingContext:(id)arg3 keycapsFontName:(id)arg4;
 - (double)_row4ControlSegmentWidthLeft;
 - (double)_row4ControlSegmentWidthRight;
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
@@ -51,6 +51,9 @@ __attribute__((visibility("hidden")))
 - (double)keyCornerRadius;
 - (double)keyInsetBottom;
 - (id)lightKeycapsFontName;
+- (id)lowQualityLayeredBackgroundColorName;
+- (double)messagesTypeKeyplanSwitchKeyFontSize;
+- (id)messagesWriteboardKeyImageName;
 - (double)moreKeyFontSize;
 - (id)multitapCompleteKeyImageName;
 - (id)muttitapReverseKeyImageName;

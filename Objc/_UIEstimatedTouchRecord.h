@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSMutableArray, UITouch;
+@class NSArray, NSMutableArray, NSNumber, UITouch;
 
 __attribute__((visibility("hidden")))
 @interface _UIEstimatedTouchRecord : NSObject
@@ -14,15 +14,18 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_touchables;
     UITouch *_liveTouch;
     UITouch *_frozenTouch;
+    NSNumber *_contextID;
 }
 
-@property (readonly, strong) UITouch *frozenTouch; // @synthesize frozenTouch=_frozenTouch;
-@property (readonly, strong) UITouch *liveTouch; // @synthesize liveTouch=_liveTouch;
-@property (readonly, strong) NSArray *touchables; // @synthesize touchables=_touchables;
+@property (readonly, nonatomic) NSNumber *contextID; // @synthesize contextID=_contextID;
+@property (readonly, nonatomic) UITouch *frozenTouch; // @synthesize frozenTouch=_frozenTouch;
+@property (readonly, nonatomic) UITouch *liveTouch; // @synthesize liveTouch=_liveTouch;
+@property (readonly, nonatomic) NSArray *touchables; // @synthesize touchables=_touchables;
 
 - (void).cxx_destruct;
 - (void)addTouchable:(id)arg1;
-- (id)initWithLiveTouch:(id)arg1 freezeTouch:(id)arg2;
+- (void)dispatchUpdateWithPressure:(double)arg1 stillEstimated:(BOOL)arg2;
+- (id)initWithLiveTouch:(id)arg1 freezeTouch:(id)arg2 contextID:(id)arg3;
 - (void)removeTouchable:(id)arg1;
 
 @end

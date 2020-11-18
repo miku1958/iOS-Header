@@ -9,8 +9,8 @@
 #import <UIKit/UIKeyboardInput-Protocol.h>
 #import <UIKit/UITextInputPrivate-Protocol.h>
 
-@class NSDictionary, NSIndexSet, NSString, UIColor, UIImage, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange;
-@protocol UITextInputDelegate, UITextInputTokenizer;
+@class NSDictionary, NSIndexSet, NSString, UIColor, UIImage, UIInputContextHistory, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange;
+@protocol UITextInputDelegate, UITextInputSuggestionDelegate, UITextInputTokenizer;
 
 @interface UIDefaultKeyboardInput : UIView <UIKeyboardInput, UITextInputPrivate>
 {
@@ -18,6 +18,8 @@
 }
 
 @property (copy, nonatomic) NSIndexSet *PINEntrySeparatorIndexes;
+@property (nonatomic) long long _textInputSource;
+@property (nonatomic) BOOL acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji; // @dynamic acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
 @property (nonatomic) BOOL acceptsSplitKeyboard;
@@ -29,6 +31,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL deferBecomingResponder;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL disableInputBars;
 @property (nonatomic) BOOL disablePrediction;
 @property (nonatomic) BOOL displaySecureEditsUsingPlainText;
 @property (nonatomic) BOOL displaySecureTextUsingPlainText;
@@ -36,9 +39,16 @@
 @property (nonatomic) BOOL enablesReturnKeyAutomatically; // @dynamic enablesReturnKeyAutomatically;
 @property (nonatomic) BOOL enablesReturnKeyOnNonWhiteSpaceContent;
 @property (readonly, nonatomic) UITextPosition *endOfDocument;
+@property (nonatomic) BOOL forceDefaultDictationInfo;
+@property (nonatomic) long long forceDictationKeyboardType;
+@property (nonatomic) BOOL forceDisableDictation;
 @property (nonatomic) BOOL forceEnableDictation;
+@property (nonatomic) BOOL hasDefaultContents;
+@property (readonly, nonatomic) BOOL hasText;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIInputContextHistory *inputContextHistory;
 @property (weak, nonatomic) id<UITextInputDelegate> inputDelegate;
+@property (readonly, nonatomic) id insertDictationResultPlaceholder;
 @property (strong, nonatomic) UIColor *insertionPointColor; // @dynamic insertionPointColor;
 @property (nonatomic) unsigned long long insertionPointWidth; // @dynamic insertionPointWidth;
 @property (readonly, nonatomic) UITextInteractionAssistant *interactionAssistant;
@@ -64,8 +74,11 @@
 @property (nonatomic) long long spellCheckingType; // @dynamic spellCheckingType;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL suppressReturnKeyStyling;
+@property (copy, nonatomic) NSString *textContentType;
+@property (readonly, nonatomic) id<UITextInputSuggestionDelegate> textInputSuggestionDelegate;
 @property (readonly, nonatomic) UIView *textInputView;
 @property (nonatomic) int textLoupeVisibility; // @dynamic textLoupeVisibility;
+@property (nonatomic) long long textScriptType;
 @property (nonatomic) int textSelectionBehavior; // @dynamic textSelectionBehavior;
 @property (nonatomic) id textSuggestionDelegate; // @dynamic textSuggestionDelegate;
 @property (nonatomic) struct __CFCharacterSet *textTrimmingSet; // @dynamic textTrimmingSet;
@@ -96,7 +109,6 @@
 - (void)forwardInvocation:(id)arg1;
 - (BOOL)hasContent;
 - (BOOL)hasSelection;
-- (BOOL)hasText;
 - (void)insertText:(id)arg1;
 - (BOOL)isEditable;
 - (BOOL)isEditing;

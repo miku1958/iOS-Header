@@ -6,18 +6,18 @@
 
 #import <Foundation/NSObject.h>
 
-@class _UIAsyncInvocationObserver;
-
 @interface _UIAsyncInvocation : NSObject
 {
-    _UIAsyncInvocationObserver *_observer;
+    _Atomic void *_observer;
     CDUnknownBlockType _invocationBlock;
-    BOOL _invocationBlockHasBeenCalled;
+    _Atomic BOOL _invocationBlockHasBeenCalled;
+    _Atomic long long _invokeCallCount;
 }
 
 + (id)emptyInvocation;
 + (id)invocationWithBlock:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)invoke;
 
 @end

@@ -16,7 +16,9 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_appBundleIdentifier;
+- (long long)buttonType;
 - (void)layoutSubviews;
+- (double)neededSizeForImageSet:(id)arg1;
 - (BOOL)updateForNewData:(id)arg1 actions:(int)arg2;
 
 @end

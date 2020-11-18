@@ -6,23 +6,24 @@
 
 #import <UIKit/UIView.h>
 
-#import <UIKit/UIAlertControllerBackgroundView-Protocol.h>
+#import <UIKit/UIInterfaceActionVisualBackgroundDisplaying-Protocol.h>
+#import <UIKit/UIInterfaceActionVisualGroupBackgroundDisplaying-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIAlertControllerCarActionHighlightedBackgroundView : UIView <UIAlertControllerBackgroundView>
+@interface _UIAlertControllerCarActionHighlightedBackgroundView : UIView <UIInterfaceActionVisualBackgroundDisplaying, UIInterfaceActionVisualGroupBackgroundDisplaying>
 {
 }
 
-@property double cornerRadius;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setPressed:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setCornerRadius:(double)arg1;
+- (void)setHighlighted:(BOOL)arg1;
+- (void)setPressed:(BOOL)arg1;
 - (void)tintColorDidChange;
 
 @end

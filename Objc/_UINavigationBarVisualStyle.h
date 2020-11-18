@@ -29,13 +29,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double buttonImagePadding;
 @property (strong, nonatomic) _UINavigationBarVisualStyleEnvironment *environment; // @synthesize environment=_environment;
 @property (readonly, nonatomic) double headingFontSize;
+@property (readonly, nonatomic) double horizontalMarginAdjustment;
 @property (nonatomic) long long idiom; // @synthesize idiom=_idiom;
 @property (readonly, nonatomic) double interBlockSpace;
 @property (readonly, nonatomic) double interItemSpace;
 @property (readonly, nonatomic) double leftBackImageMargin;
 @property (readonly, nonatomic) double leftBackTitleMargin;
 @property (readonly, nonatomic) double leftEdgeMargin;
-@property (readonly, nonatomic) double leftMarginAdjustment;
 @property (readonly, nonatomic) double leftTextMargin;
 @property (readonly, nonatomic) double leftTitleMargin;
 @property (readonly, nonatomic) double maxBackButtonProportion;
@@ -67,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (long long)navigationBar:(id)arg1 metricsForOrientation:(long long)arg2 hasPrompt:(BOOL)arg3;
 - (BOOL)shouldForceLegacyLeftBackTitleMarginForCustomBackButtonBackground:(id)arg1;
 - (double)textButtonMarginInNavigationBar:(id)arg1;
+- (id)timingFunctionForAnimationInView:(id)arg1 withKeyPath:(id)arg2 isInteractive:(BOOL)arg3;
 
 @end
 

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)addPlaceholderForEmptyReplacements:(id)arg1;
+- (BOOL)isStringToReplaceMisspelled;
 - (id)replacementWithText:(id)arg1;
 - (id)replacements;
 - (BOOL)shouldAllowString:(id)arg1 intoReplacements:(id)arg2;

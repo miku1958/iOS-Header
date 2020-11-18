@@ -6,10 +6,12 @@
 
 #import <UIKit/_UIRefreshControlContentView.h>
 
-@class NSMutableDictionary, UIActivityIndicatorView, UIImageView, UILabel;
+#import <UIKit/CAAnimationDelegate-Protocol.h>
+
+@class NSMutableDictionary, NSString, UIActivityIndicatorView, UIImageView, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface _UIRefreshControlDefaultContentView : _UIRefreshControlContentView
+@interface _UIRefreshControlDefaultContentView : _UIRefreshControlContentView <CAAnimationDelegate>
 {
     BOOL _animationsAreValid;
     UIImageView *_imageView;
@@ -24,8 +26,12 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) BOOL areAnimationsValid; // @synthesize areAnimationsValid=_areAnimationsValid;
 @property (readonly, nonatomic) UIImageView *arrow; // @synthesize arrow=_arrow;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (readonly, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 
 - (void).cxx_destruct;
@@ -44,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)_spinOutMagic;
 - (void)_updateTimeOffsetOfRelevantLayers;
 - (id)attributedTitle;
-- (void)didTransitionFromState:(int)arg1 toState:(int)arg2;
+- (void)didTransitionFromState:(long long)arg1 toState:(long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (double)maximumSnappingHeight;
@@ -54,7 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)setTintColor:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (long long)style;
-- (void)willTransitionFromState:(int)arg1 toState:(int)arg2;
+- (void)willTransitionFromState:(long long)arg1 toState:(long long)arg2;
 
 @end
 

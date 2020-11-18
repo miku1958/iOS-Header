@@ -6,11 +6,20 @@
 
 #import <Foundation/NSObject.h>
 
+#import <UIKit/CAAnimationDelegate-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface _UIViewAnimationDelegate : NSObject
+@interface _UIViewAnimationDelegate : NSObject <CAAnimationDelegate>
 {
     CDUnknownBlockType _completionBlock;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;

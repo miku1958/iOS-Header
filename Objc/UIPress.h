@@ -17,6 +17,7 @@
     BOOL _abandonForwardingRecord;
     BOOL _isDelayed;
     BOOL _sentPressesEnded;
+    BOOL _longClick;
     double _timestamp;
     long long _phase;
     long long _type;
@@ -25,10 +26,12 @@
     double _force;
     unsigned long long _source;
     unsigned long long _gameControllerComponent;
+    unsigned long long _clickCount;
 }
 
 @property (nonatomic, setter=_setForwardablePhase:) long long _forwardablePhase;
 @property (strong, nonatomic, setter=_setResponder:) UIResponder *_responder;
+@property (nonatomic) unsigned long long clickCount; // @synthesize clickCount=_clickCount;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double force; // @synthesize force=_force;
@@ -36,6 +39,7 @@
 @property (copy, nonatomic) NSArray *gestureRecognizers;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isDelayed; // @synthesize isDelayed=_isDelayed;
+@property (nonatomic, getter=isLongClick) BOOL longClick; // @synthesize longClick=_longClick;
 @property (nonatomic) long long phase; // @synthesize phase=_phase;
 @property (strong, nonatomic) UIResponder *responder; // @synthesize responder=_responder;
 @property (nonatomic) BOOL sentPressesEnded; // @synthesize sentPressesEnded=_sentPressesEnded;

@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (double)legibilityStrength;
 - (long long)legibilityStyle;
 - (double)maximumOverlap;
+- (double)neededSizeForImageSet:(id)arg1;
 - (void)performPendedActions;
 - (double)resetContentOverlap;
 - (void)setContentMode:(long long)arg1;
@@ -67,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)setPersistentAnimationsEnabled:(BOOL)arg1;
 - (double)setStatusBarData:(id)arg1 actions:(int)arg2;
 - (void)setVisible:(BOOL)arg1 frame:(struct CGRect)arg2 duration:(double)arg3;
+- (void)setVisible:(BOOL)arg1 settingAlpha:(BOOL)arg2;
 - (double)shadowPadding;
 - (double)standardPadding;
 - (long long)textAlignment;

@@ -36,7 +36,6 @@ __attribute__((visibility("hidden")))
 
 + (id)visualStyleForTraitCollection:(id)arg1;
 - (double)columnDividerHeightForHUDHeight:(double)arg1;
-- (BOOL)isEqual:(id)arg1;
 - (double)maxHUDHeightForHeight:(double)arg1;
 - (double)maxHUDWidthForWidth:(double)arg1;
 

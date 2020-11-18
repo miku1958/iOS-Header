@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKBRenderEffect-Protocol.h>
 
-@class NSString;
+@class NSString, UIKBGradient;
 
 __attribute__((visibility("hidden")))
 @interface UIKBShadowEffect : NSObject <UIKBRenderEffect>
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct UIEdgeInsets concaveInsets; // @synthesize concaveInsets=_concaveInsets;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) UIKBGradient *gradient;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct UIEdgeInsets insets; // @synthesize insets=_insets;
 @property (readonly, nonatomic) BOOL isValid;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) SEL renderSelector;
 @property (readonly, nonatomic) BOOL renderUnder;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL usesRGBColors;
 @property (nonatomic) double weight; // @synthesize weight=_weight;
 
 + (id)effectWithColor:(id)arg1 offset:(struct CGSize)arg2 insets:(struct UIEdgeInsets)arg3 weight:(double)arg4;

@@ -9,8 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface _UIKBCompatInputView : UIView
 {
+    UIView *_snapshotView;
 }
 
+@property (strong, nonatomic) UIView *snapshotView; // @synthesize snapshotView=_snapshotView;
 @property (readonly, nonatomic) UIView *touchableView;
 
 + (BOOL)_retroactivelyRequiresConstraintBasedLayout;
@@ -18,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)_didChangeKeyplaneWithContext:(id)arg1;
 - (BOOL)_hasAutolayoutHeightConstraint;
 - (void)addSubview:(id)arg1;
+- (void)dealloc;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;

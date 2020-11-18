@@ -9,7 +9,6 @@
 @class NSExtension, _UIWaitingForRemoteViewContainerViewController;
 @protocol NSCopying;
 
-__attribute__((visibility("hidden")))
 @interface _UIResilientRemoteViewContainerViewController : UIViewController
 {
     UIViewController *_remoteViewController;
@@ -37,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)delayDisplayOfRemoteController;
 - (void)endDelayingDisplayOfRemoteController;
 - (id)initWithExtension:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)invalidate;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 

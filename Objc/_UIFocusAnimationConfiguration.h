@@ -12,7 +12,6 @@
 {
     double _focusingBaseDuration;
     double _unfocusingBaseDuration;
-    double _focusingDelay;
     unsigned long long _animationOptions;
     double _focusingDurationScaleFactorLowerBound;
     double _focusingDurationScaleFactorUpperBound;
@@ -21,6 +20,7 @@
     double _minimumFocusDuration;
     double _unfocusingRepositionBaseDuration;
     double _unfocusingBackgroundFadeDurationPercentage;
+    double _focusingDelay;
 }
 
 @property (nonatomic) unsigned long long animationOptions; // @synthesize animationOptions=_animationOptions;

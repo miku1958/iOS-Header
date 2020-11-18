@@ -26,7 +26,7 @@
 @property (readonly, nonatomic, getter=_isInUpdateAnimation) BOOL inUpdateAnimation;
 @property (copy, nonatomic, getter=_layoutAttributes, setter=_setLayoutAttributes:) UICollectionViewLayoutAttributes *layoutAttributes;
 @property (nonatomic, getter=_arePreferredAttributesValid) BOOL preferredAttributesValid; // @synthesize preferredAttributesValid=_preferredAttributesValid;
-@property (copy, nonatomic) NSString *reuseIdentifier; // @synthesize reuseIdentifier=_reuseIdentifier;
+@property (copy, nonatomic, setter=_setReuseIdentifier:) NSString *reuseIdentifier; // @synthesize reuseIdentifier=_reuseIdentifier;
 
 - (void).cxx_destruct;
 - (void)_addUpdateAnimation;
@@ -36,14 +36,16 @@
 - (void)_markAsDequeued;
 - (id)_preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (void)_setBaseLayoutAttributes:(id)arg1;
-- (void)_setReuseIdentifier:(id)arg1;
 - (BOOL)_wasDequeued;
 - (void)applyLayoutAttributes:(id)arg1;
+- (BOOL)canBeEdited;
 - (void)didTransitionFromLayout:(id)arg1 toLayout:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEditing;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (void)prepareForReuse;
+- (void)setEditing:(BOOL)arg1;
 - (void)willTransitionFromLayout:(id)arg1 toLayout:(id)arg2;
 
 @end

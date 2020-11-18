@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKBAlertControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, UIAlertController, UIKBTree, UILexicon, UIView;
+@class NSArray, NSString, UIAlertController, UIKBTree, UILabel, UILexicon, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardLayoutCursor : UIKeyboardLayoutStar <UIKBAlertControllerDelegate>
@@ -17,13 +17,14 @@ __attribute__((visibility("hidden")))
     UIView *_selectionView;
     NSArray *_keyplaneKeys;
     long long _selectedKeyIndex;
-    long long _savedSelectedKeyIndex;
     BOOL _ignoreEventsUntilPressEnds;
     UILexicon *_recentInputs;
     BOOL _disableTouchInput;
     BOOL _suppressOperations;
     UIKBTree *_cachedMultitapKeyplane;
     BOOL _cachedCanMultitap;
+    UILabel *_dictationHelpLabel;
+    BOOL _didVariantDelete;
     UIAlertController *_recentInputsAlert;
     NSString *_keyplaneBeforeDictation;
     long long _selectedKeyBeforeDictation;
@@ -69,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (int)enabledStateForKey:(id)arg1;
 - (void)endMultitapForKey:(id)arg1;
 - (void)flushKeyCache:(id)arg1;
+- (unsigned char)getHandRestRecognizerState;
 - (BOOL)handleLinearDirectionalInput:(int)arg1;
 - (void)handleVariantDeleteIfNecessaryForKey:(id)arg1;
 - (BOOL)handleVisualDirectionalInput:(int)arg1;
@@ -85,6 +87,7 @@ __attribute__((visibility("hidden")))
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (BOOL)refreshSelectedCellIfNecessaryForKey:(id)arg1;
 - (void)remoteControlReceivedWithEvent:(id)arg1;
+- (void)returnToKeyplaneAfterDictation;
 - (void)runWithSuppressedActions:(CDUnknownBlockType)arg1;
 - (void)selectInitialKeyIfNecessary;
 - (struct CGRect)selectionFrameForKeyIndex:(long long)arg1;
@@ -95,8 +98,8 @@ __attribute__((visibility("hidden")))
 - (void)setKeyboardName:(id)arg1 appearance:(long long)arg2;
 - (void)setKeyplaneName:(id)arg1;
 - (void)setRecentInputs:(id)arg1;
+- (void)setRenderConfig:(id)arg1;
 - (void)setSelectedKeyIndex:(long long)arg1;
-- (BOOL)shouldAddHandRestRecognizer;
 - (BOOL)shouldAllowCurrentKeyplaneReload;
 - (BOOL)shouldDeactivateWithoutWindow;
 - (BOOL)shouldMatchCaseForDomainKeys;
@@ -111,10 +114,11 @@ __attribute__((visibility("hidden")))
 - (int)stateForCandidateListKey:(id)arg1;
 - (int)stateForKeyplaneSwitchKey:(id)arg1;
 - (BOOL)supportsEmoji;
-- (void)switchToDictationKeyplane;
+- (void)switchToDictationKeyplaneWithActivationIdentifier:(id)arg1;
 - (void)takeKeyAction:(id)arg1;
 - (unsigned long long)targetEdgesForScreenGestureRecognition;
 - (long long)targetKeyIndexAtOffset:(struct CGPoint)arg1 fromKey:(id)arg2;
+- (void)updateDictationHelpString;
 - (void)updateKeyplaneSwitchEdgeBiases;
 - (void)updateRecentInputsKeyIfNecessary;
 - (void)updateStatesForGridSelection;

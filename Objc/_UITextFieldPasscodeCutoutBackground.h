@@ -29,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (id)_fillColor:(BOOL)arg1;
 - (id)_layer;
 - (double)_pathInset;
-- (double)_pixelAlignment;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (id)_strokeColor:(BOOL)arg1;
 - (void)_updateLightingOutlinePath;

@@ -4,20 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <UIKit/UIAlertActionMutablePropertyObservering-Protocol.h>
 #import <UIKit/UIAlertActionViewRepresentation-Protocol.h>
 
-@class NSString, UIAlertAction, UIColor;
-
-@protocol UIAlertActionViewRepresentation_Internal <UIAlertActionViewRepresentation>
+@protocol UIAlertActionViewRepresentation_Internal <UIAlertActionMutablePropertyObservering, UIAlertActionViewRepresentation>
 
 @property (nonatomic, getter=isHighlighted) BOOL highlighted;
 
-- (void)_action:(UIAlertAction *)arg1 changedToBePreferred:(BOOL)arg2;
-- (void)_action:(UIAlertAction *)arg1 changedToChecked:(BOOL)arg2;
-- (void)_action:(UIAlertAction *)arg1 changedToEnabled:(BOOL)arg2;
-- (void)_action:(UIAlertAction *)arg1 changedToTitle:(NSString *)arg2;
-- (void)_action:(UIAlertAction *)arg1 changedToTitleTextAlignment:(long long)arg2;
-- (void)_action:(UIAlertAction *)arg1 updatedImageTintColor:(UIColor *)arg2;
-- (void)_action:(UIAlertAction *)arg1 updatedTitleTextColor:(UIColor *)arg2;
 @end
 

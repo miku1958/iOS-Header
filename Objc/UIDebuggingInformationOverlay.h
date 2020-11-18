@@ -8,15 +8,27 @@
 
 #import <UIKit/UISplitViewControllerDelegate-Protocol.h>
 
-@class UIDebuggingInformationRootTableViewController;
+@class NSMutableArray, UIDebuggingInformationOverlayViewController, UIDebuggingInformationRootTableViewController, UIEvent;
 
 __attribute__((visibility("hidden")))
 @interface UIDebuggingInformationOverlay : UIWindow <UISplitViewControllerDelegate>
 {
-    UIDebuggingInformationRootTableViewController *_rootTableViewController;
+    BOOL _checkingTouches;
+    BOOL _touchCaptureEnabled;
+    NSMutableArray *_touchObservers;
+    UIWindow *_inspectedWindow;
+    UIEvent *_lastTouch;
+    struct CGPoint _drawingOrigin;
 }
 
-@property (strong, nonatomic) UIDebuggingInformationRootTableViewController *rootTableViewController; // @synthesize rootTableViewController=_rootTableViewController;
+@property (nonatomic) BOOL checkingTouches; // @synthesize checkingTouches=_checkingTouches;
+@property (nonatomic) struct CGPoint drawingOrigin; // @synthesize drawingOrigin=_drawingOrigin;
+@property (strong, nonatomic) UIWindow *inspectedWindow; // @synthesize inspectedWindow=_inspectedWindow;
+@property (strong, nonatomic) UIEvent *lastTouch; // @synthesize lastTouch=_lastTouch;
+@property (readonly, nonatomic) UIDebuggingInformationOverlayViewController *overlayViewController;
+@property (strong, nonatomic) UIDebuggingInformationRootTableViewController *rootTableViewController;
+@property (nonatomic) BOOL touchCaptureEnabled; // @synthesize touchCaptureEnabled=_touchCaptureEnabled;
+@property (strong, nonatomic) NSMutableArray *touchObservers; // @synthesize touchObservers=_touchObservers;
 
 + (id)overlay;
 + (void)popDisableApplyingConfigurations;
@@ -24,7 +36,10 @@ __attribute__((visibility("hidden")))
 + (void)pushDisableApplyingConfigurations;
 - (void).cxx_destruct;
 - (void)_handleActivationGesture:(id)arg1;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)init;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)toggleFullscreen;
 - (void)toggleVisibility;
 
 @end

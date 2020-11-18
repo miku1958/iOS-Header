@@ -19,7 +19,5 @@ __attribute__((visibility("hidden")))
     UITouch *lastTouch;
 }
 
-- (void).cxx_destruct;
-
 @end
 

@@ -13,7 +13,7 @@
 #import <UIKit/_UIWebDoubleTapDelegate-Protocol.h>
 #import <UIKit/_UIWebRotationDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSMapTable, UIAlertView, UIColor, UIDocumentPasswordView, UIView, UIWebPDFLabelView, UIWebPDFView, WebPDFNSNumberFormatter, _UIHighlightView, _UIRotatingAlertController;
+@class NSArray, NSDictionary, NSMapTable, NSString, UIAlertView, UIColor, UIDocumentPasswordView, UIView, UIWebPDFLabelView, UIWebPDFView, WebPDFNSNumberFormatter, _UIHighlightView, _UIRotatingAlertController;
 @protocol UIWebPDFViewHandlerDelegate;
 
 @interface UIWebPDFViewHandler : NSObject <UIWebPDFViewPrivateDelegate, UIDocumentPasswordViewDelegate, _UIRotatingAlertControllerDelegate, UIWebPDFViewDelegate, _UIWebDoubleTapDelegate, _UIWebRotationDelegate>
@@ -43,13 +43,17 @@
 }
 
 @property (strong, nonatomic) UIColor *backgroundColorForUnRenderedContent; // @synthesize backgroundColorForUnRenderedContent=_backgroundColorForUnRenderedContent;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) UIView *frontView;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideActivityIndicatorForUnRenderedContent; // @synthesize hideActivityIndicatorForUnRenderedContent=_hideActivityIndicatorForUnRenderedContent;
 @property (nonatomic) BOOL hidePageViewsUntilReadyToRender; // @synthesize hidePageViewsUntilReadyToRender=_hidePageViewsUntilReadyToRender;
 @property (nonatomic) NSObject<UIWebPDFViewHandlerDelegate> *pdfHandlerDelegate; // @synthesize pdfHandlerDelegate=_pdfHandlerDelegate;
 @property (readonly, nonatomic) UIWebPDFView *pdfView;
 @property (nonatomic) BOOL scalesPageToFit; // @synthesize scalesPageToFit=_scalesPageToFit;
 @property (nonatomic) BOOL showPageLabels; // @synthesize showPageLabels=_showPageLabels;
+@property (readonly) Class superclass;
 
 - (id)_absoluteUrlRelativeToDocumentURL:(id)arg1;
 - (id)_actionForType:(int)arg1;

@@ -21,9 +21,11 @@ __attribute__((visibility("hidden")))
     unsigned int _caughtDeceleratingScrollView:1;
     unsigned int _directionalLockEnabled:1;
     unsigned int _transfersTrackingFromParentScrollView:1;
+    unsigned int _movedAfterCaughtDeceleratingScrollViewButBeganNotYetDelivered:1;
     double _translationScaleFactor;
 }
 
+@property (readonly, nonatomic, getter=_beganCaughtDeceleratingScrollViewAndMoved) BOOL beganCaughtDeceleratingScrollViewAndMoved;
 @property (readonly, nonatomic, getter=_caughtDeceleratingScrollView) BOOL caughtDeceleratingScrollView;
 @property (nonatomic, getter=isDirectionalLockEnabled) BOOL directionalLockEnabled;
 @property (weak, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
@@ -33,6 +35,8 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)_adjustSceneReferenceLocation:(struct CGPoint)arg1;
 - (BOOL)_canTransferTrackingFromParentPagingScrollView;
 - (void)_centroidMovedTo:(struct CGPoint)arg1 atTime:(double)arg2;
+- (struct CGPoint)_convertPoint:(struct CGPoint)arg1 fromSceneReferenceCoordinatesToView:(id)arg2;
+- (struct CGPoint)_convertPoint:(struct CGPoint)arg1 toSceneReferenceCoordinatesFromView:(id)arg2;
 - (double)_hysteresis;
 - (void)_resetGestureRecognizer;
 - (void)_scrollViewDidEndZooming;
@@ -43,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)delaysTouchesBegan;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 - (void)removeTarget:(id)arg1 action:(SEL)arg2;
+- (void)setAllowedTouchTypes:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;

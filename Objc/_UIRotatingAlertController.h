@@ -24,6 +24,8 @@
 
 - (void).cxx_destruct;
 - (void)_didRotateAndLayout;
+- (void)_presentingViewControllerDidChange:(id)arg1;
+- (void)_presentingViewControllerWillChange:(id)arg1;
 - (BOOL)_shouldAbortAdaptationFromTraitCollection:(id)arg1 toTraitCollection:(id)arg2 withTransitionCoordinator:(id)arg3;
 - (void)_updateSheetPositionAfterRotation;
 - (void)dealloc;

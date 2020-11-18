@@ -8,41 +8,53 @@
 
 #import <UIKit/NSCopying-Protocol.h>
 
-@class NSIndexPath, UITableView;
+@class NSIndexPath, UITableViewHeaderFooterView;
+@protocol UITable_RowDataSource;
 
 __attribute__((visibility("hidden")))
 @interface UITableViewRowData : NSObject <NSCopying>
 {
-    UITableView *_tableView;
+    id<UITable_RowDataSource> _tableView;
     long long _numSections;
     long long _sectionRowDataCapacity;
     id *_sectionRowData;
+    UITableViewHeaderFooterView *_headerFooterViewUsedForMeasurements;
     double _minimumRowHeight;
+    double _rowSpacing;
     double _tableViewWidth;
-    BOOL _tableHeaderHeightValid;
     double _tableHeaderHeight;
-    BOOL _tableFooterHeightValid;
     double _tableFooterHeight;
     double _heightForTableHeaderViewHiding;
     double _tableTopPadding;
     double _tableBottomPadding;
-    BOOL _tableSidePaddingValid;
     double _tableSidePadding;
     NSIndexPath *_reorderedIndexPath;
     NSIndexPath *_gapIndexPath;
     double _reorderedRowHeight;
-    BOOL _estimatesRowHeights;
+    struct {
+        unsigned int tableHeaderHeightValid:1;
+        unsigned int tableFooterHeightValid:1;
+        unsigned int tableSidePaddingValid:1;
+        unsigned int usesVariableMargins:1;
+        unsigned int pinsTableHeaderView:1;
+    } _rowDataFlags;
+    double _defaultSectionHeaderHeight;
+    double _defaultSectionFooterHeight;
 }
 
-@property (nonatomic) BOOL estimatesRowHeights; // @synthesize estimatesRowHeights=_estimatesRowHeights;
+@property (readonly, nonatomic) double defaultSectionFooterHeight; // @synthesize defaultSectionFooterHeight=_defaultSectionFooterHeight;
+@property (readonly, nonatomic) double defaultSectionHeaderHeight; // @synthesize defaultSectionHeaderHeight=_defaultSectionHeaderHeight;
 @property (readonly, nonatomic) double heightForAutohidingTableHeaderView;
 @property (readonly, nonatomic) double heightForTableHeaderViewHiding;
 @property (nonatomic) double minimumRowHeight; // @synthesize minimumRowHeight=_minimumRowHeight;
+@property (nonatomic) BOOL pinsTableHeaderView;
 @property (readonly, nonatomic) NSIndexPath *reorderGapIndexPath; // @synthesize reorderGapIndexPath=_gapIndexPath;
 @property (readonly, nonatomic) double reorderedRowHeight; // @synthesize reorderedRowHeight=_reorderedRowHeight;
+@property (nonatomic) double rowSpacing; // @synthesize rowSpacing=_rowSpacing;
 @property (nonatomic) double tableBottomPadding; // @synthesize tableBottomPadding=_tableBottomPadding;
-@property (nonatomic) double tableSidePadding;
+@property (nonatomic) double tableSidePadding; // @synthesize tableSidePadding=_tableSidePadding;
 @property (nonatomic) double tableTopPadding; // @synthesize tableTopPadding=_tableTopPadding;
+@property (nonatomic) BOOL usesVariableMargins;
 
 - (void).cxx_destruct;
 - (void)_assertValidIndexPath:(id)arg1 allowEmptySection:(BOOL)arg2;
@@ -60,8 +72,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)ensureAllSectionsAreValid;
 - (BOOL)ensureHeightsFaultedInForIndexPath:(id)arg1 availHeight:(double)arg2 edgeInset:(struct UIEdgeInsets)arg3 scrollPosition:(long long)arg4;
-- (struct CGRect)floatingRectForFooterInSection:(long long)arg1 visibleRect:(struct CGRect)arg2;
-- (struct CGRect)floatingRectForHeaderInSection:(long long)arg1 visibleRect:(struct CGRect)arg2;
+- (struct CGRect)floatingRectForFooterInSection:(long long)arg1 visibleRect:(struct CGRect)arg2 heightCanBeGuessed:(BOOL)arg3;
+- (struct CGRect)floatingRectForHeaderInSection:(long long)arg1 visibleRect:(struct CGRect)arg2 heightCanBeGuessed:(BOOL)arg3;
 - (long long)footerAlignmentForSection:(long long)arg1;
 - (long long)globalRowForRowAtIndexPath:(id)arg1;
 - (struct _NSRange)globalRowsInRect:(struct CGRect)arg1 canGuess:(BOOL)arg2;

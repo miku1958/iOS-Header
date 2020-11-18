@@ -6,6 +6,8 @@
 
 #import <Foundation/NSObject.h>
 
+@class NSSet;
+
 @interface UIEvent : NSObject
 {
     struct __GSEvent *_gsEvent;
@@ -13,12 +15,14 @@
     double _timestamp;
 }
 
+@property (readonly, nonatomic) NSSet *allTouches;
 @property (readonly, nonatomic) long long subtype;
 @property (readonly, nonatomic) double timestamp;
 @property (readonly, nonatomic) long long type;
 
 - (struct CGPoint)_digitizerLocation;
 - (unsigned long long)_focusHeading;
+- (id)_gestureRecognizersForWindow:(id)arg1;
 - (struct __GSEvent *)_gsEvent;
 - (struct __IOHIDEvent *)_hidEvent;
 - (id)_init;
@@ -38,7 +42,6 @@
 - (id)_unmodifiedInput;
 - (double)_wheelVelocity;
 - (id)_windows;
-- (id)allTouches;
 - (id)coalescedTouchesForTouch:(id)arg1;
 - (void)dealloc;
 - (BOOL)isKeyDown;

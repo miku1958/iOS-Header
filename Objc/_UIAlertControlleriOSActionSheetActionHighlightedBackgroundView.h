@@ -6,17 +6,17 @@
 
 #import <UIKit/UIView.h>
 
-#import <UIKit/UIAlertControllerBackgroundView-Protocol.h>
+#import <UIKit/UIInterfaceActionVisualBackgroundDisplaying-Protocol.h>
+#import <UIKit/UIInterfaceActionVisualGroupBackgroundDisplaying-Protocol.h>
 
 @class NSString, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
-@interface _UIAlertControlleriOSActionSheetActionHighlightedBackgroundView : UIView <UIAlertControllerBackgroundView>
+@interface _UIAlertControlleriOSActionSheetActionHighlightedBackgroundView : UIView <UIInterfaceActionVisualBackgroundDisplaying, UIInterfaceActionVisualGroupBackgroundDisplaying>
 {
     UIVisualEffectView *_effectView;
 }
 
-@property double cornerRadius;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
@@ -26,8 +26,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setPressed:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setCornerRadius:(double)arg1;
+- (void)setHighlighted:(BOOL)arg1;
+- (void)setPressed:(BOOL)arg1;
 
 @end
 

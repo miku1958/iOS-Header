@@ -9,10 +9,11 @@
 __attribute__((visibility("hidden")))
 @interface UICGColor : UIColor
 {
-    struct CGColor *cachedColor;
+    struct CGColor *_cachedColor;
 }
 
 - (struct CGColor *)CGColor;
+- (BOOL)_isDeepColor;
 - (double)alphaComponent;
 - (id)colorSpaceName;
 - (id)colorWithAlphaComponent:(double)arg1;

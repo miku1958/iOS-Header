@@ -9,7 +9,7 @@
 #import <UIKit/UIMovieScrubberTrackViewDataSource-Protocol.h>
 #import <UIKit/UIMovieScrubberTrackViewDelegate-Protocol.h>
 
-@class NSString, UIImage, UIImageView, UILabel, UIMovieScrubberEditingView, UIMovieScrubberTrackView;
+@class NSString, UIImage, UIImageView, UILabel, UIMovieScrubberEditingView, UIMovieScrubberTrackView, UIPanGestureRecognizer;
 @protocol UIMovieScrubberDataSource, UIMovieScrubberDelegate;
 
 @interface UIMovieScrubber : UIControl <UIMovieScrubberTrackViewDataSource, UIMovieScrubberTrackViewDelegate>
@@ -75,6 +75,7 @@
         unsigned int delegateWillZoom:1;
         unsigned int dataSourceRequestThumbnailImageIsSummmary:1;
     } _sliderFlags;
+    UIPanGestureRecognizer *_panGestureRecognizer;
     double _edgeInset;
 }
 
@@ -108,18 +109,18 @@
 - (void).cxx_destruct;
 - (BOOL)_alwaysHandleScrollerMouseEvent;
 - (void)_animateAfterEdit:(BOOL)arg1;
-- (void)_beginTrackPressWithTouch:(id)arg1 touchesBegan:(BOOL)arg2;
+- (void)_beginTrackPressWithLocatable:(id)arg1 touchesBegan:(BOOL)arg2;
 - (void)_cancelTrackPress:(BOOL)arg1;
-- (void)_cancelTrackPressIfNeccessaryWithTouch:(id)arg1;
+- (void)_cancelTrackPressIfNeccessaryWithLocatable:(id)arg1;
 - (void)_computeTrackRectForBounds:(struct CGRect)arg1;
 - (void)_controlTouchBegan:(id)arg1 withEvent:(id)arg2;
 - (void)_controlTouchEnded:(id)arg1 withEvent:(id)arg2;
 - (void)_controlTouchMoved:(id)arg1 withEvent:(id)arg2;
-- (int)_editingHandleWithTouch:(id)arg1;
+- (int)_editingHandleWithLocatable:(id)arg1;
 - (struct CGRect)_editingRect;
 - (struct CGRect)_editingRectForStartTime:(double)arg1 endTime:(double)arg2;
+- (void)_handlePanGesture:(id)arg1;
 - (void)_initSubviews;
-- (id)_scriptingInfo;
 - (void)_sendDelayedActions;
 - (void)_setValue:(double)arg1 andSendAction:(BOOL)arg2;
 - (void)_setZoomAnimating:(BOOL)arg1;
@@ -130,16 +131,16 @@
 - (void)_trimAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (void)_updateThumbLocation;
 - (void)_updateTimes;
-- (double)_valueForTouch:(id)arg1;
+- (double)_valueForLocatable:(id)arg1;
 - (void)animateAfterEdit;
 - (void)animateCancelEdit;
-- (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (void)beginTrackingWithLocatable:(id)arg1;
 - (BOOL)cancelTouchTracking;
-- (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (void)continueTrackingWithLocatable:(id)arg1;
 - (void)dealloc;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;
-- (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (void)endTrackingWithLocatable:(id)arg1;
 - (void)forceUnzoom;
 - (BOOL)forceZoom;
 - (id)init;
@@ -160,7 +161,6 @@
 - (double)movieScrubberTrackViewZoomAnimationDuration:(id)arg1;
 - (BOOL)pointInsideThumb:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)reloadData;
-- (id)scriptingInfoWithChildren;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setRotationDisabled:(BOOL)arg1;
@@ -169,7 +169,6 @@
 - (void)setZoomAnimationDuration:(double)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGRect)thumbRectForValue:(double)arg1;
-- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (struct CGRect)trackRect;
 
 @end

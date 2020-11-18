@@ -11,22 +11,25 @@
 __attribute__((visibility("hidden")))
 @interface UIInputViewSetPlacementUndocked : UIInputViewSetPlacement <NSSecureCoding>
 {
-    double _normalizedOffset;
+    struct CGPoint _normalizedOffset;
     struct UIEdgeInsets _chromeBuffer;
 }
 
 @property (nonatomic) struct UIEdgeInsets chromeBuffer; // @synthesize chromeBuffer=_chromeBuffer;
-@property (nonatomic) double normalizedOffset; // @synthesize normalizedOffset=_normalizedOffset;
+@property (nonatomic) struct CGPoint normalizedOffset; // @synthesize normalizedOffset=_normalizedOffset;
 
-+ (id)placementWithUndockedOffset:(double)arg1 chromeBuffer:(struct UIEdgeInsets)arg2;
++ (id)infoWithPoint:(struct CGPoint)arg1;
++ (id)placementWithUndockedOffset:(struct CGPoint)arg1 chromeBuffer:(struct UIEdgeInsets)arg2;
 + (BOOL)supportsSecureCoding;
+- (Class)applicatorClassForKeyboard:(BOOL)arg1;
+- (id)applicatorInfoForOwner:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (double)heightOfInputViews:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)inputViewWillAppear;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isUndocked;
-- (struct CGRect)remoteIntrinsicContentSizeForInputViewInSet:(id)arg1;
+- (struct CGRect)remoteIntrinsicContentSizeForInputViewInSet:(id)arg1 includingIAV:(BOOL)arg2;
 - (id)verticalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 
 @end

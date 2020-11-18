@@ -25,7 +25,10 @@ __attribute__((visibility("hidden")))
     BOOL _cachedControlKeyRenderingPreference;
     BOOL _renderAsMask;
     int _cachedAnchorCorner;
+    unsigned long long _cachedShiftState;
+    long long _cachedSelector;
     UIKeyboardMenuView *_popupMenu;
+    double _endingTransitionDuration;
 }
 
 @property (readonly, nonatomic) BOOL cacheDeferable;
@@ -33,6 +36,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int cachedAnchorCorner; // @synthesize cachedAnchorCorner=_cachedAnchorCorner;
 @property (nonatomic) BOOL cachedControlKeyRenderingPreference; // @synthesize cachedControlKeyRenderingPreference=_cachedControlKeyRenderingPreference;
 @property (readonly) long long cachedRenderFlags;
+@property (nonatomic) long long cachedSelector; // @synthesize cachedSelector=_cachedSelector;
+@property (nonatomic) unsigned long long cachedShiftState; // @synthesize cachedShiftState=_cachedShiftState;
 @property (strong, nonatomic) NSString *cachedTraitsHashString; // @synthesize cachedTraitsHashString=_cachedTraitsHashString;
 @property (readonly, nonatomic) double cachedWidth;
 @property (readonly, nonatomic) UIKBKeyView *contentsKeyView;
@@ -40,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) struct UIEdgeInsets displayInsets;
 @property (nonatomic) struct CGRect drawFrame; // @synthesize drawFrame=m_drawFrame;
+@property (nonatomic) double endingTransitionDuration; // @synthesize endingTransitionDuration=_endingTransitionDuration;
 @property (strong, nonatomic) UIKBRenderFactory *factory; // @synthesize factory=m_factory;
 @property (readonly, nonatomic) BOOL hasRendered;
 @property (readonly) unsigned long long hash;
@@ -58,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)_populateLayer:(id)arg1 withContents:(id)arg2;
 - (BOOL)_shouldUpdateLayers;
 - (BOOL)_viewShouldBeOpaque;
+- (BOOL)allowBackgroundCachingForRenderFlags:(long long)arg1;
 - (id)cacheKeysForRenderFlags:(id)arg1;
 - (void)dealloc;
 - (long long)didInputSubTree:(id)arg1;

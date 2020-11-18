@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)_openURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_performInputViewControllerOutput:(id)arg1;
 - (void)_tearDownRemoteService;
+- (void)dealloc;
 
 @end
 

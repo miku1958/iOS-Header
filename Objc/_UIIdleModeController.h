@@ -33,15 +33,16 @@ __attribute__((visibility("hidden")))
 - (void)_applyLayoutAttributes:(id)arg1 toView:(id)arg2;
 - (void)_applyPresentationLayoutAttributesToViews;
 - (void)_completeDismissal;
-- (double)_dimmingOverlayWhiteValue;
+- (double)_dimmingOverlayWhiteValueForUserInterfaceStyle:(long long)arg1;
 - (double)_dismissalAnimationDuration;
 - (void)_enterIdleMode;
 - (void)_exitIdleMode;
+- (id)_imageForTraitCollection:(id)arg1;
 - (id)_originalAttributesForView:(id)arg1 comparedToIdleModeAttributes:(id)arg2;
 - (void)_prepareForPresentationWithKeyWindow:(id)arg1 focusedView:(id)arg2;
 - (double)_presentationAnimationDuration;
 - (BOOL)_recordLayoutAttributesStartingAtView:(id)arg1;
-- (double)_vignetteAlpha;
+- (double)_vignetteAlphaForUserInterfaceStyle:(long long)arg1;
 - (id)_vignetteImageAroundFocusedFrame:(struct CGRect)arg1;
 - (void)dealloc;
 - (id)initWithScreen:(id)arg1;

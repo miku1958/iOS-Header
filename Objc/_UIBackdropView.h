@@ -11,9 +11,12 @@
 
 @interface _UIBackdropView : UIView
 {
+    double _cornerRadius;
+    BOOL _cornerRadiusIsContinuous;
     BOOL _autosizesToFitSuperview;
     BOOL _computesColorSettings;
     BOOL _appliesOutputSettingsAutomatically;
+    BOOL _applySaturationBeforeBlur;
     BOOL _appliesOutputSettingsAutomaticallyEnabledComputesColorSettings;
     BOOL _applyingBackdropChanges;
     BOOL _applyingTransition;
@@ -21,6 +24,7 @@
     BOOL _wantsColorSettings;
     BOOL _blursBackground;
     BOOL _allowsColorSettingsSuppression;
+    BOOL _autoGroup;
     BOOL _contentViewAccessed;
     BOOL _contentViewAccessorGuard;
     BOOL _applySettingsAfterLayout;
@@ -30,7 +34,6 @@
     BOOL _blurRadiusSetOnce;
     BOOL _disablesOccludedBackdropBlurs;
     BOOL __backdropVisible;
-    BOOL __zoomsBack;
     long long _style;
     NSHashTable *_observers;
     id<_UIBackdropViewObserver> _observer;
@@ -86,14 +89,15 @@
 @property (copy, nonatomic) NSString *_blurQuality; // @synthesize _blurQuality=__blurQuality;
 @property (nonatomic) double _blurRadius; // @synthesize _blurRadius=__blurRadius;
 @property (nonatomic) double _saturationDeltaFactor; // @synthesize _saturationDeltaFactor=__saturationDeltaFactor;
-@property (nonatomic, setter=setZoomsBack:) BOOL _zoomsBack; // @synthesize _zoomsBack=__zoomsBack;
 @property (nonatomic) BOOL allowsColorSettingsSuppression; // @synthesize allowsColorSettingsSuppression=_allowsColorSettingsSuppression;
 @property (nonatomic) double appliesOutputSettingsAnimationDuration; // @synthesize appliesOutputSettingsAnimationDuration=_appliesOutputSettingsAnimationDuration;
 @property (nonatomic) BOOL appliesOutputSettingsAutomatically; // @synthesize appliesOutputSettingsAutomatically=_appliesOutputSettingsAutomatically;
 @property (nonatomic) BOOL appliesOutputSettingsAutomaticallyEnabledComputesColorSettings; // @synthesize appliesOutputSettingsAutomaticallyEnabledComputesColorSettings=_appliesOutputSettingsAutomaticallyEnabledComputesColorSettings;
+@property (nonatomic) BOOL applySaturationBeforeBlur; // @synthesize applySaturationBeforeBlur=_applySaturationBeforeBlur;
 @property (nonatomic) BOOL applySettingsAfterLayout; // @synthesize applySettingsAfterLayout=_applySettingsAfterLayout;
 @property (nonatomic) BOOL applyingBackdropChanges; // @synthesize applyingBackdropChanges=_applyingBackdropChanges;
 @property (nonatomic) BOOL applyingTransition; // @synthesize applyingTransition=_applyingTransition;
+@property (nonatomic) BOOL autoGroup; // @synthesize autoGroup=_autoGroup;
 @property (nonatomic) BOOL autosizesToFitSuperview; // @synthesize autosizesToFitSuperview=_autosizesToFitSuperview;
 @property (strong, nonatomic) _UIBackdropEffectView *backdropEffectView; // @synthesize backdropEffectView=_backdropEffectView;
 @property (nonatomic) BOOL backdropVisibilitySetOnce; // @synthesize backdropVisibilitySetOnce=_backdropVisibilitySetOnce;
@@ -165,8 +169,14 @@
 + (void)suppressColorSettingsForRunLoopModePush:(id)arg1;
 + (void)suppressColorSettingsForWillResignActive:(id)arg1;
 - (void).cxx_destruct;
+- (void)_applyCornerRadiusToSubviews;
+- (double)_continuousCornerRadius;
+- (double)_cornerRadius;
 - (void)_setBlursBackground:(BOOL)arg1;
+- (void)_setContinuousCornerRadius:(double)arg1;
+- (void)_setCornerRadius:(double)arg1;
 - (void)_transitionToGraphicsQuality:(long long)arg1;
+- (void)_updateBackdropGroupName;
 - (void)_updateFilters;
 - (void)addBackdropEffectViewIfNeededForSettings:(id)arg1;
 - (void)addColorBurnTintViewIfNeededForSettings:(id)arg1;
@@ -190,6 +200,7 @@
 - (void)delayedComputeAndApplySettings;
 - (void)didCallRenderInContextOnBackdropViewLayer;
 - (void)didMoveToSuperview;
+- (void)didMoveToWindow;
 - (void)ensureProperSubviewOrdering;
 - (id)filters;
 - (id)init;

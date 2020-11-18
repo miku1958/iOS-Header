@@ -6,15 +6,20 @@
 
 #import <UIFoundation/NSLayoutManager.h>
 
+@class UIFont;
+
 __attribute__((visibility("hidden")))
 @interface _UIFieldEditorLayoutManager : NSLayoutManager
 {
-    BOOL _needsExtraBulletRendering;
+    UIFont *_fontForExtraBulletRendering;
 }
 
-@property BOOL needsExtraBulletRendering; // @synthesize needsExtraBulletRendering=_needsExtraBulletRendering;
+@property (readonly, nonatomic) UIFont *fontForExtraBulletRendering; // @synthesize fontForExtraBulletRendering=_fontForExtraBulletRendering;
 
+- (void).cxx_destruct;
+- (void)resetFontForExtraBulletRendering;
 - (void)showCGGlyphs:(const unsigned short *)arg1 positions:(const struct CGPoint *)arg2 count:(unsigned long long)arg3 font:(id)arg4 matrix:(struct CGAffineTransform)arg5 attributes:(id)arg6 inContext:(struct CGContext *)arg7;
+- (void)useFontForExtraBulletRendering:(id)arg1;
 
 @end
 

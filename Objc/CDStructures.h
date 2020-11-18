@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString, NSTimer, UIImage, UIView, UIWebPDFView;
+@class NSString, NSTimer, UIWebPDFView;
 
 #pragma mark Function Pointers and Blocks
 
@@ -190,13 +190,19 @@ struct _UIWebViewportConfiguration {
     BOOL allowsShrinkToFit;
 };
 
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
     id _field1;
     id _field2;
     id _field3;
-} CDStruct_0f015c83;
+    BOOL _field4;
+    BOOL _field5;
+} CDStruct_0fda2562;
 
 typedef struct {
     UIWebPDFView *view;
@@ -234,7 +240,7 @@ typedef struct {
 } CDStruct_70511ce9;
 
 typedef struct {
-    BOOL itemIsEnabled[29];
+    BOOL itemIsEnabled[34];
     char timeString[64];
     int gsmSignalStrengthRaw;
     int gsmSignalStrengthBars;
@@ -263,10 +269,14 @@ typedef struct {
     unsigned int tetheringConnectionCount;
     unsigned int batterySaverModeActive:1;
     unsigned int deviceIsRTL:1;
+    unsigned int lock:1;
     char breadcrumbTitle[256];
     char breadcrumbSecondaryTitle[256];
     char personName[100];
-} CDStruct_996e841e;
+    char returnToAppBundleIdentifier[100];
+    unsigned int electronicTollCollectionAvailable:1;
+    unsigned int wifiLinkWarning:1;
+} CDStruct_18395a89;
 
 typedef struct {
     unsigned int val[8];
@@ -299,13 +309,6 @@ typedef struct {
     double _field4;
     double _field5;
 } CDStruct_d83abbfb;
-
-typedef struct {
-    double x;
-    double y;
-    double z;
-    double w;
-} CDStruct_91d2e2b9;
 
 typedef struct {
     double _field1;
@@ -355,14 +358,17 @@ typedef struct {
 typedef struct {
     long long userInterfaceIdiom;
     double displayScale;
+    long long displayGamut;
     long long touchLevel;
     unsigned long long interactionModel;
     unsigned long long primaryInteractionModel;
     long long horizontalSizeClass;
     long long verticalSizeClass;
     long long userInterfaceStyle;
+    long long layoutDirection;
     long long forceTouchCapability;
-} CDStruct_e384231c;
+    long long preferredContentSizeCategory;
+} CDStruct_44017d25;
 
 typedef struct {
     long long width;
@@ -379,7 +385,7 @@ typedef struct {
 } CDStruct_0ba2c6ed;
 
 typedef struct {
-    BOOL overrideItemIsEnabled[29];
+    BOOL overrideItemIsEnabled[34];
     unsigned int overrideTimeString:1;
     unsigned int overrideGsmSignalStrengthRaw:1;
     unsigned int overrideGsmSignalStrengthBars:1;
@@ -400,11 +406,13 @@ typedef struct {
     unsigned int overrideActivityDisplayId:1;
     unsigned int overrideBluetoothConnected:1;
     unsigned int overrideBreadcrumb:1;
+    unsigned int overrideLock;
     unsigned int overrideDisplayRawGSMSignal:1;
     unsigned int overrideDisplayRawWifiSignal:1;
     unsigned int overridePersonName:1;
-    CDStruct_996e841e values;
-} CDStruct_2d0a2756;
+    unsigned int overrideWifiLinkWarning:1;
+    CDStruct_18395a89 values;
+} CDStruct_d68fcdaa;
 
 typedef struct {
     CDStruct_73524d89 _field1[4];
@@ -433,6 +441,14 @@ typedef struct {
 } CDStruct_41b0f204;
 
 typedef struct {
+    BOOL _field1;
+    struct CGRect _field2;
+    struct CGSize _field3;
+    struct UIEdgeInsets _field4;
+    struct CGSize _field5;
+} CDStruct_92d81df2;
+
+typedef struct {
     struct CGRect left;
     struct CGRect middle;
     struct CGRect right;
@@ -446,19 +462,11 @@ typedef struct {
 
 // Ambiguous groups
 typedef struct {
-    unsigned int isPresentingModalViewController:1;
-    unsigned int isPresentingActionSheet:1;
-    unsigned int wasIgnoringDimmingViewTouchesBeforeScrolling:1;
-    unsigned int isInTextEffectsWindow:1;
-    unsigned int isEmbeddingInView:1;
-    unsigned int embeddedPresentationBounces:1;
-} CDStruct_4a475a17;
-
-typedef struct {
-    float _field1;
-    float _field2;
-    float _field3;
-} CDStruct_869f9c67;
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+} CDStruct_d2b197d1;
 
 typedef struct {
     struct CGPoint _field1;
@@ -506,11 +514,6 @@ union _GLKVector3 {
 };
 
 #pragma mark Typedef'd Unions
-
-typedef union {
-    UIImage *image;
-    UIView *view;
-} CDUnion_b710d1cf;
 
 typedef union {
     CDStruct_961fb75c styling;

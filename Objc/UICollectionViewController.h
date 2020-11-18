@@ -70,6 +70,7 @@
 - (id)previewViewControllerForLocation:(struct CGPoint)arg1 inSourceView:(id)arg2;
 - (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
 - (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
+- (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setView:(id)arg1;
 - (BOOL)shouldCrossFadeBottomBars;
 - (BOOL)shouldCrossFadeNavigationBar;

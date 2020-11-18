@@ -19,6 +19,8 @@
     UIView *_contentView;
     struct __CFDictionary *_backgroundColorsByState;
     NSMutableArray *_contentMotionEffects;
+    double _shadowOpacityLight;
+    double _shadowOpacityDark;
     struct CGPoint _focusDirection;
     struct CGPoint _contentRotation;
     struct CGPoint _contentTranslation;
@@ -32,9 +34,9 @@
     BOOL _roundContentWhenDeselected;
     BOOL __disableOutsetShadowPath;
     double _cornerRadius;
+    double _visualEffectContainerViewScaleFactor;
     _UIFocusAnimationConfiguration *_focusAnimationConfiguration;
     double _shadowRadius;
-    double _shadowOpacity;
     double _shadowVerticalOffset;
     double _unfocusedShadowRadius;
     double _unfocusedShadowOpacity;
@@ -73,7 +75,7 @@
 @property (nonatomic, getter=isShadowEnabled) BOOL shadowEnabled; // @synthesize shadowEnabled=_shadowEnabled;
 @property (nonatomic) struct CGSize shadowExpansion; // @synthesize shadowExpansion=_shadowExpansion;
 @property (strong, nonatomic) UIImage *shadowImage; // @synthesize shadowImage=_shadowImage;
-@property (nonatomic) double shadowOpacity; // @synthesize shadowOpacity=_shadowOpacity;
+@property (nonatomic) double shadowOpacity;
 @property (nonatomic) double shadowRadius; // @synthesize shadowRadius=_shadowRadius;
 @property (nonatomic) struct CGSize shadowSize; // @synthesize shadowSize=_shadowSize;
 @property (nonatomic) double shadowVerticalOffset; // @synthesize shadowVerticalOffset=_shadowVerticalOffset;
@@ -83,11 +85,14 @@
 @property (nonatomic) double unfocusedShadowVerticalOffset; // @synthesize unfocusedShadowVerticalOffset=_unfocusedShadowVerticalOffset;
 @property (nonatomic) BOOL useShadowImage; // @synthesize useShadowImage=_useShadowImage;
 @property (readonly, nonatomic) UIView *visualEffectContainerView;
+@property (nonatomic) double visualEffectContainerViewScaleFactor; // @synthesize visualEffectContainerViewScaleFactor=_visualEffectContainerViewScaleFactor;
 
 + (id)_defaultFocusAnimationConfiguration;
 + (Class)layerClass;
 - (void).cxx_destruct;
 - (BOOL)_applyKeyPathsAndRelativeValues:(id)arg1 forMotionEffect:(id)arg2;
+- (double)_currentShadowOpacity;
+- (double)_effectiveShadowOpacity;
 - (double)_effectiveShadowRadius;
 - (void)_installContentMotionEffects;
 - (void)_layoutShadow;
@@ -120,6 +125,9 @@
 - (void)setControlState:(unsigned long long)arg1 withAnimationCoordinator:(id)arg2;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setShadowImage:(id)arg1 stretchable:(BOOL)arg2;
+- (void)setShadowOpacity:(double)arg1 forUserInterfaceStyle:(long long)arg2;
+- (double)shadowOpacityForUserInterfaceStyle:(long long)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

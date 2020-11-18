@@ -24,6 +24,7 @@
         unsigned int shouldNotifyDidCompleteImmediately:1;
         unsigned int useViewControllerAppearanceCallbacks:1;
         unsigned int shouldRestoreFromViewAlpha:1;
+        unsigned int shouldRestoreGroupOpacity:1;
         unsigned int shouldRasterize:1;
         unsigned int enableRotationAfterTransition:1;
         unsigned int removeFromView:1;
@@ -43,6 +44,7 @@
 - (void)_didCompleteTransition:(BOOL)arg1;
 - (void)_didStartTransition;
 - (BOOL)_isTransitioningFromFromView:(id)arg1;
+- (BOOL)_shouldDisableGroupOpacityOnAlphaTransitions;
 - (void)_startTransition:(int)arg1 withDuration:(double)arg2;
 - (void)_transitionDidStop:(id)arg1 finished:(id)arg2;
 - (id)delegate;

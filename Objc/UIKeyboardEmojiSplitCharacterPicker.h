@@ -17,9 +17,9 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
-- (void)reloadForCategory:(long long)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (double)snappedYOffsetForOffset:(double)arg1;
+- (void)updateToCategory:(long long)arg1;
 
 @end
 

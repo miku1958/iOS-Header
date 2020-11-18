@@ -8,7 +8,7 @@
 
 #import <UIKit/NSSecureCoding-Protocol.h>
 
-@class CIImage, NSArray, UIImageAsset, UITraitCollection;
+@class CIImage, NSArray, UIGraphicsImageRendererFormat, UIImageAsset, UITraitCollection;
 
 @interface UIImage : NSObject <NSSecureCoding>
 {
@@ -38,6 +38,7 @@
 @property (readonly, nonatomic) BOOL flipsForRightToLeftLayoutDirection; // @synthesize flipsForRightToLeftLayoutDirection=_flipsForRightToLeftLayoutDirection;
 @property (strong, nonatomic) UIImageAsset *imageAsset; // @synthesize imageAsset=_imageAsset;
 @property (readonly, nonatomic) long long imageOrientation;
+@property (readonly, nonatomic) UIGraphicsImageRendererFormat *imageRendererFormat;
 @property (readonly, nonatomic) NSArray *images;
 @property (readonly, nonatomic) long long leftCapWidth;
 @property (readonly, nonatomic) long long renderingMode;
@@ -63,6 +64,7 @@
 + (void)_flushSharedImageCache;
 + (id)_iconForResourceProxy:(id)arg1 format:(int)arg2;
 + (id)_iconForResourceProxy:(id)arg1 variant:(int)arg2 variantsScale:(double)arg3;
++ (int)_iconVariantForUIApplicationIconFormat:(int)arg1 idiom:(long long)arg2 scale:(double *)arg3;
 + (int)_iconVariantForUIApplicationIconFormat:(int)arg1 scale:(double *)arg2;
 + (long long)_idiomDefinedByPath:(id)arg1;
 + (id)_imageNamed:(id)arg1 withTrait:(id)arg2;
@@ -95,6 +97,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_applicationIconImageForFormat:(int)arg1 precomposed:(BOOL)arg2;
+- (id)_applicationIconImageForFormat:(int)arg1 precomposed:(BOOL)arg2 idiom:(long long)arg3 scale:(double)arg4;
 - (id)_applicationIconImageForFormat:(int)arg1 precomposed:(BOOL)arg2 scale:(double)arg3;
 - (id)_applyBackdropViewSettings:(id)arg1;
 - (id)_applyBackdropViewSettings:(id)arg1 allowImageResizing:(BOOL)arg2;
@@ -103,7 +106,6 @@
 - (id)_applyBackdropViewStyle:(long long)arg1 includeTints:(BOOL)arg2 includeBlur:(BOOL)arg3;
 - (id)_applyBackdropViewStyle:(long long)arg1 includeTints:(BOOL)arg2 includeBlur:(BOOL)arg3 graphicsQuality:(long long)arg4;
 - (id)_applyBackdropViewStyle:(long long)arg1 includeTints:(BOOL)arg2 includeBlur:(BOOL)arg3 graphicsQuality:(long long)arg4 allowImageResizing:(BOOL)arg5;
-- (id)_automationID;
 - (id)_bezeledImageWithShadowRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4 fillRed:(double)arg5 green:(double)arg6 blue:(double)arg7 alpha:(double)arg8 drawShadow:(BOOL)arg9;
 - (id)_cachedImageStyledWithPresets:(id)arg1 forTintColor:(id)arg2;
 - (CDStruct_afa449f9)_calculateStatistics;
@@ -159,6 +161,7 @@
 - (void)_setNamed:(BOOL)arg1;
 - (void)_setSuppressesAccessibilityHairlineThickening:(BOOL)arg1;
 - (struct CGSize)_sizeInPixels;
+- (struct CGSize)_sizeWithHairlineThickening:(BOOL)arg1 renderingEffects:(unsigned long long)arg2 forTraitCollection:(id)arg3;
 - (void)_startEagerDecompression;
 - (id)_stretchableImageWithCapInsets:(struct UIEdgeInsets)arg1;
 - (id)_subimageInRect:(struct CGRect)arg1;
@@ -189,10 +192,10 @@
 - (void)drawInRect:(struct CGRect)arg1 blendMode:(int)arg2 alpha:(double)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)imageFlippedForRightToLeft;
 - (id)imageFlippedForRightToLeftLayoutDirection;
 - (struct CGImage *)imageRef;
 - (id)imageWithAlignmentRectInsets:(struct UIEdgeInsets)arg1;
+- (id)imageWithHorizontallyFlippedOrientation;
 - (id)imageWithRenderingMode:(long long)arg1;
 - (id)initWithCGImage:(struct CGImage *)arg1;
 - (id)initWithCGImage:(struct CGImage *)arg1 imageOrientation:(long long)arg2;

@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     UIPickerView *_pickerView;
     struct CGRect _tableFrame;
     struct CATransform3D _perspectiveTransform;
+    BOOL _isNoLongerInUse;
     UIColor *__textColor;
     double _leftHitTestExtension;
     double _rightHitTestExtension;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isNoLongerInUse; // @synthesize isNoLongerInUse=_isNoLongerInUse;
 @property (nonatomic) double leftHitTestExtension; // @synthesize leftHitTestExtension=_leftHitTestExtension;
 @property (nonatomic) struct CATransform3D perspectiveTransform; // @synthesize perspectiveTransform=_perspectiveTransform;
 @property (nonatomic) double rightHitTestExtension; // @synthesize rightHitTestExtension=_rightHitTestExtension;
@@ -64,10 +66,10 @@ __attribute__((visibility("hidden")))
 - (struct _NSRange)_visibleGlobalRows;
 - (void)beginUpdates;
 - (id)cellForRowAtIndexPath:(id)arg1;
-- (void)clearDataSourceAndDelegate;
 - (void)endUpdates;
 - (id)initWithFrame:(struct CGRect)arg1 tableFrame:(struct CGRect)arg2 middleBarHeight:(double)arg3 rowHeight:(double)arg4 pickerView:(id)arg5 transform:(struct CATransform3D)arg6;
 - (BOOL)isRowChecked:(long long)arg1;
+- (void)markAsNoLongerInUse;
 - (long long)numberOfRowsInSection:(long long)arg1;
 - (void)pickerTableView:(id)arg1 didChangeSelectionBarRowFrom:(long long)arg2 to:(long long)arg3;
 - (void)reloadData;

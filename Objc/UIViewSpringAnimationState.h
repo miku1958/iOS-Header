@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     double _velocity;
 }
 
++ (void)computeDerivedSpringParameters:(double)arg1 zeta:(double)arg2 mass:(double)arg3 velocity:(double)arg4 epsilon:(double)arg5 stiffness:(double *)arg6 damping:(double *)arg7;
 + (id)defaultSpringAnimationForKey:(id)arg1 mass:(double)arg2 stiffness:(double)arg3 damping:(double)arg4 velocity:(double)arg5;
 - (id)_defaultAnimationForKey:(id)arg1;
 - (id)animationForLayer:(id)arg1 forKey:(id)arg2 forView:(id)arg3;

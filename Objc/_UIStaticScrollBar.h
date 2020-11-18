@@ -15,22 +15,19 @@ __attribute__((visibility("hidden")))
     UIButton *_downButton;
     UIView *_dividerLine;
     NSInvocation *_invocation;
-    NSArray *_buttonConstraints;
-    NSArray *_dividerConstraints;
-    BOOL _shouldInsetButtons;
-    BOOL _isOnLeftSide;
+    NSArray *_constraints;
+    BOOL _shouldInsetButtonsForIndex;
 }
 
-@property (nonatomic) BOOL isOnLeftSide; // @synthesize isOnLeftSide=_isOnLeftSide;
-@property (nonatomic) BOOL shouldInsetButtons; // @synthesize shouldInsetButtons=_shouldInsetButtons;
+@property (readonly, nonatomic) BOOL isOnLeftSide;
+@property (nonatomic) BOOL shouldInsetButtonsForIndex; // @synthesize shouldInsetButtonsForIndex=_shouldInsetButtonsForIndex;
 
 - (void).cxx_destruct;
-- (void)_updateButtonConstraints;
-- (void)_updateDividerConstraints;
 - (void)buttonTapped:(id)arg1;
 - (struct CGRect)centeringBounds;
-- (id)initWithFrame:(struct CGRect)arg1;
 - (void)setTarget:(id)arg1 forAction:(SEL)arg2;
+- (void)updateConstraints;
+- (void)willMoveToWindow:(id)arg1;
 
 @end
 

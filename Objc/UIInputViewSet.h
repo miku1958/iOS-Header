@@ -84,6 +84,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (BOOL)inSyncWithOrientation:(long long)arg1 forKeyboard:(id)arg2;
+- (void)inheritNullState:(id)arg1;
 - (id)initWithInputView:(id)arg1 accessoryView:(id)arg2 assistantView:(id)arg3 isKeyboard:(BOOL)arg4;
 - (id)inputSetWithInputAccessoryViewFromInputSet:(id)arg1;
 - (id)inputSetWithInputAccessoryViewOnly;

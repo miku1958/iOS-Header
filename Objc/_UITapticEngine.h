@@ -6,17 +6,22 @@
 
 #import <Foundation/NSObject.h>
 
-__attribute__((visibility("hidden")))
+@class _UIFeedbackStatesBehavior;
+
 @interface _UITapticEngine : NSObject
 {
+    BOOL _feedbackActivated;
+    _UIFeedbackStatesBehavior *_feedbackBehavior;
 }
 
-- (void)_actuateSystemSoundWithIdentifier:(unsigned int)arg1;
-- (double)_preferredDelayForFeedback:(long long)arg1;
-- (void)_setActivated:(BOOL)arg1 forFeedback:(long long)arg2;
-- (unsigned int)_systemSoundIdentifierForFeedback:(long long)arg1;
+@property (nonatomic) BOOL feedbackActivated; // @synthesize feedbackActivated=_feedbackActivated;
+@property (strong, nonatomic) _UIFeedbackStatesBehavior *feedbackBehavior; // @synthesize feedbackBehavior=_feedbackBehavior;
+
+- (void).cxx_destruct;
+- (id)_stateForFeedback:(long long)arg1;
 - (void)actuateFeedback:(long long)arg1;
 - (void)endUsingFeedback:(long long)arg1;
+- (id)init;
 - (void)prepareUsingFeedback:(long long)arg1;
 
 @end

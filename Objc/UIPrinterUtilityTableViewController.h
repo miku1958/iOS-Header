@@ -13,6 +13,10 @@ __attribute__((visibility("hidden")))
 {
     PKPrinter *_printer;
     BOOL _showSupplyDataUnderPrinterName;
+    long long _mainPrinterCellSection;
+    long long _printerNameAndLocationSection;
+    long long _identifyPrinterSection;
+    long long _removeKeychainItemSection;
     NSArray *_supplyData;
 }
 

@@ -84,6 +84,7 @@
 + (id)_defaultBackgroundImageForType:(long long)arg1 andState:(unsigned long long)arg2;
 + (id)_defaultImageColorForState:(unsigned long long)arg1 button:(id)arg2;
 + (id)_defaultImageForType:(long long)arg1 andState:(unsigned long long)arg2;
++ (double)_defaultNeighborSpacingForAxis:(long long)arg1;
 + (id)_defaultNormalTitleColor;
 + (id)_defaultNormalTitleShadowColor;
 + (id)_defaultTitleColorForState:(unsigned long long)arg1 button:(id)arg2;
@@ -101,7 +102,8 @@
 + (id)buttonWithType:(long long)arg1;
 - (void).cxx_destruct;
 - (BOOL)_alwaysHandleScrollerMouseEvent;
-- (void)_applyAppropriateChargeForButtonType;
+- (void)_applyAppropriateChargeForButton;
+- (void)_applyCarPlaySystemButtonCustomizations;
 - (id)_archivableContent:(id *)arg1;
 - (id)_attributedTitleForState:(unsigned long long)arg1;
 - (double)_autolayoutSpacingAtEdge:(int)arg1 inContainer:(id)arg2;
@@ -156,9 +158,10 @@
 - (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (void)_invalidateContentConstraints;
-- (BOOL)_isEffectivelyDisabledExternalRoundedRectButton;
-- (BOOL)_isExternalRoundedRectButton;
+- (BOOL)_isCarPlaySystemTypeButton;
+- (BOOL)_isEffectivelyDisabledExternalButton;
 - (BOOL)_isExternalRoundedRectButtonWithPressednessState;
+- (BOOL)_isInCarPlay;
 - (BOOL)_isModernButton;
 - (BOOL)_isTitleFrozen;
 - (void)_layoutBackgroundImageView;
@@ -178,7 +181,6 @@
 - (id)_preferredConfigurationForFocusAnimation:(long long)arg1 inContext:(id)arg2;
 - (void)_prepareMaskAnimationViewIfNecessary;
 - (BOOL)_requiresLayoutForPropertyChange;
-- (id)_scriptingInfo;
 - (void)_selectGestureChanged:(id)arg1;
 - (double)_selectedIndicatorAlpha;
 - (struct CGRect)_selectedIndicatorBounds;
@@ -221,6 +223,7 @@
 - (void)_takeContentFromArchivableContent:(id)arg1;
 - (BOOL)_textNeedsCompositingModeWhenSelected;
 - (void)_titleAttributesChanged;
+- (void)_titleAttributesThatDoNotAffectSizeOrLayoutChanged;
 - (id)_titleColorForState:(unsigned long long)arg1;
 - (id)_titleForState:(unsigned long long)arg1;
 - (id)_titleOrImageViewForBaselineLayout;
@@ -259,7 +262,6 @@
 - (struct CGRect)imageRectForContentRect:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)interactionTintColorDidChange;
 - (void)invalidateIntrinsicContentSize;
 - (BOOL)isAccessibilityElementByDefault;
 - (BOOL)isElementAccessibilityExposedToInterfaceBuilder;

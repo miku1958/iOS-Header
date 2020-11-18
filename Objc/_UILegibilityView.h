@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CAFilter, UIImage, UIImageView, _UILegibilitySettings;
+@class UIImage, UIImageView, _UILegibilitySettings;
 
 @interface _UILegibilityView : UIView
 {
@@ -17,24 +17,21 @@
     double _strength;
     UIImageView *_imageView;
     UIImageView *_shadowImageView;
-    CAFilter *_imageColorFilter;
-    CAFilter *_shadowImageColorFilter;
     long long _options;
 }
 
 @property (nonatomic) BOOL hidesImage; // @synthesize hidesImage=_hidesImage;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
-@property (strong, nonatomic) CAFilter *imageColorFilter; // @synthesize imageColorFilter=_imageColorFilter;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic) long long options; // @synthesize options=_options;
 @property (strong, nonatomic) _UILegibilitySettings *settings; // @synthesize settings=_settings;
 @property (strong, nonatomic) UIImage *shadowImage; // @synthesize shadowImage=_shadowImage;
-@property (strong, nonatomic) CAFilter *shadowImageColorFilter; // @synthesize shadowImageColorFilter=_shadowImageColorFilter;
 @property (strong, nonatomic) UIImageView *shadowImageView; // @synthesize shadowImageView=_shadowImageView;
 @property (nonatomic) double strength; // @synthesize strength=_strength;
 @property (readonly, nonatomic) long long style; // @dynamic style;
 @property (readonly, nonatomic) BOOL usesColorFilters;
 
+- (void)_updateFilters;
 - (void)dealloc;
 - (id)drawingColor;
 - (id)initWithSettings:(id)arg1 strength:(double)arg2 image:(id)arg3;

@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 + (struct CGSize)keyboardSizeForInputMode:(id)arg1 screenTraits:(id)arg2 keyboardType:(long long)arg3;
 - (int)_clipCornersOfView:(id)arg1;
 - (id)currentKeyplane;
-- (struct CGSize)dragGestureSize;
+- (struct CGRect)dragGestureRectInView:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setRenderConfig:(id)arg1;

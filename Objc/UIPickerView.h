@@ -12,10 +12,10 @@
 #import <UIKit/UITableViewDataSource-Protocol.h>
 #import <UIKit/UITableViewDelegate-Protocol.h>
 
-@class CALayer, NSMutableArray, NSString, UIColor, UIImageView, _UIPickerViewTestParameters;
+@class CALayer, NSMutableArray, NSString, UIColor, UIImageView, _UIFeedbackRetargetBehavior, _UIPickerViewTestParameters;
 @protocol UIPickerViewDataSource, UIPickerViewDelegate;
 
-@interface UIPickerView : UIView <UIPickerTableViewContainerDelegate, UITableViewDelegate, UIPickerViewScrollTesting, NSCoding, UITableViewDataSource>
+@interface UIPickerView : UIView <UIPickerViewScrollTesting, UIPickerTableViewContainerDelegate, UITableViewDelegate, UITableViewDataSource, NSCoding>
 {
     NSMutableArray *_tables;
     UIView *_topFrame;
@@ -47,35 +47,39 @@
         unsigned int soundsDisabled:1;
         unsigned int usesCheckedSelection:1;
         unsigned int skipsBackground:1;
+        unsigned int isInLayoutSubviews:1;
     } _pickerViewFlags;
     BOOL _usesModernStyle;
     UIColor *_textColor;
     UIColor *_textShadowColor;
     _UIPickerViewTestParameters *_currentTestParameters;
-    BOOL _isInLayoutSubviews;
     BOOL _magnifierEnabled;
+    BOOL _enabled;
+    UIColor *_magnifierLineColor;
+    _UIFeedbackRetargetBehavior *_retargetBehavior;
 }
 
-@property (nonatomic, setter=_setInLayoutSubviews:) BOOL _isInLayoutSubviews; // @synthesize _isInLayoutSubviews;
 @property (nonatomic, setter=_setMagnifierEnabled:) BOOL _magnifierEnabled; // @synthesize _magnifierEnabled;
 @property (weak, nonatomic) id<UIPickerViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UIPickerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=_enabled, setter=_setEnabled:) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic, getter=_highlightColor, setter=_setHighlightColor:) UIColor *highlightColor;
+@property (strong, nonatomic, getter=_magnifierLineColor, setter=_setMagnifierLineColor:) UIColor *magnifierLineColor; // @synthesize magnifierLineColor=_magnifierLineColor;
 @property (readonly, nonatomic) long long numberOfComponents; // @synthesize numberOfComponents=_numberOfComponents;
+@property (strong, nonatomic, getter=_retargetBehavior, setter=_setRetargetBehavior:) _UIFeedbackRetargetBehavior *retargetBehavior; // @synthesize retargetBehavior=_retargetBehavior;
 @property (nonatomic) BOOL showsSelectionIndicator;
 @property (readonly) Class superclass;
 @property (strong, nonatomic, getter=_textColor, setter=_setTextColor:) UIColor *textColor;
 @property (strong, nonatomic, getter=_textShadowColor, setter=_setTextShadowColor:) UIColor *textShadowColor;
 @property (getter=_usesModernStyle, setter=_setUsesModernStyle:) BOOL usesModernStyle;
 
-+ (id)_modernCenterCellFont;
-+ (id)_modernNonCenterCellFont;
 + (struct CGSize)defaultSizeForCurrentOrientation;
 + (struct CGSize)defaultSizeForMainScreenTraits;
 + (struct CGSize)defaultSizeForTraits:(id)arg1;
++ (void)initialize;
 + (struct CGSize)sizeForMainScreenTraitsThatFits:(struct CGSize)arg1;
 + (struct CGSize)sizeThatFits:(struct CGSize)arg1 forTraits:(id)arg2;
 - (void).cxx_destruct;
@@ -83,10 +87,11 @@
 - (void)_completeCurrentTest;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedHeight;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedWidth;
+- (struct CGSize)_contentSizeForRow:(long long)arg1 inComponent:(long long)arg2;
 - (id)_contentView;
 - (id)_createColumnWithTableFrame:(struct CGRect)arg1 rowHeight:(double)arg2;
 - (id)_createTableWithFrame:(struct CGRect)arg1 forComponent:(long long)arg2;
-- (id)_createViewForPickerPiece:(int)arg1;
+- (id)_createViewForPickerPiece:(long long)arg1;
 - (id)_delegateAttributedTitleForRow:(long long)arg1 forComponent:(long long)arg2;
 - (long long)_delegateNumberOfComponents;
 - (long long)_delegateNumberOfRowsInComponent:(long long)arg1;
@@ -95,9 +100,11 @@
 - (double)_delegateWidthForComponent:(long long)arg1 ofCount:(int)arg2 withSizeLeft:(double)arg3;
 - (BOOL)_drawsBackground;
 - (struct CGRect)_effectiveTableViewFrameForColumn:(long long)arg1;
+- (BOOL)_forceTextAlignmentCentered;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (BOOL)_isLandscapeOrientation;
 - (void)_iterateOnCurrentTest;
+- (BOOL)_needsLayout;
 - (void)_noteScrollingFinishedForComponent:(long long)arg1;
 - (id)_orientationImageSuffix;
 - (void)_performScrollTest:(id)arg1 withIterations:(long long)arg2 rowsToScroll:(long long)arg3 inComponent:(long long)arg4;
@@ -112,6 +119,7 @@
 - (void)_sendCheckedRow:(long long)arg1 inTableView:(id)arg2 checked:(BOOL)arg3;
 - (void)_sendSelectionChangedForComponent:(long long)arg1 notify:(BOOL)arg2;
 - (void)_sendSelectionChangedFromTable:(id)arg1 notify:(BOOL)arg2;
+- (void)_setColumnView:(id)arg1 enabled:(BOOL)arg2;
 - (void)_setDrawsBackground:(BOOL)arg1;
 - (void)_setUsesCheckedSelection:(BOOL)arg1;
 - (BOOL)_shouldDrawWithModernStyle;
@@ -119,7 +127,6 @@
 - (BOOL)_soundsEnabled;
 - (double)_tableRowHeight;
 - (void)_updateSelectedRows;
-- (void)_updateSound;
 - (void)_updateWithOldSize:(struct CGSize)arg1 newSize:(struct CGSize)arg2;
 - (BOOL)_usesCheckSelection;
 - (BOOL)_usesCheckedSelection;
@@ -133,7 +140,7 @@
 - (void)didMoveToWindow;
 - (void)encodeWithCoder:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)imageForPickerPiece:(int)arg1;
+- (id)imageForPickerPiece:(long long)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -156,11 +163,9 @@
 - (int)selectedRowForColumn:(int)arg1;
 - (long long)selectedRowInComponent:(long long)arg1;
 - (void)setAllowsMultipleSelection:(BOOL)arg1;
-- (void)setAlpha:(double)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
-- (void)setHidden:(BOOL)arg1;
 - (void)setNeedsLayout;
 - (void)setSoundsEnabled:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

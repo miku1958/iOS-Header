@@ -6,56 +6,14 @@
 
 #import <UIKit/_UIForceLevelClassifier.h>
 
-__attribute__((visibility("hidden")))
+@class _UIPreviewInteractionStateRecognizer;
+
 @interface _UIPreviewInteractionForceLevelClassifier : _UIForceLevelClassifier
 {
-    double _smoothedForce;
-    double _maximumForce;
-    double _timeMark;
-    double _currentTime;
-    double _previousTime;
-    double _popOffsetInitial;
-    double _popOffsetLongterm;
-    double _popOffsetDecayAlpha;
-    double _lowpassForceAlpha;
-    double _popDecayingOffset;
-    double _popReductionForce;
-    double _progressToStrongThreshold;
-    BOOL _allowsPopOffsetDecay;
-    double _revealThreshold;
-    double _standardThreshold;
-    double _strongThreshold;
-    double _hintAndPeekInterval;
-    double _hintReductionForce;
-    double _transitionInterval;
-    double _actualHintForce;
-    double _actualPeekForce;
-    double _actualPopForce;
-    double _actualHintTime;
-    double _actualPeekTime;
-    double _actualPopTime;
-    unsigned long long _peekPopCount;
+    _UIPreviewInteractionStateRecognizer *_stateRecognizer;
 }
 
-@property (readonly, nonatomic) double actualHintForce; // @synthesize actualHintForce=_actualHintForce;
-@property (readonly, nonatomic) double actualHintTime; // @synthesize actualHintTime=_actualHintTime;
-@property (readonly, nonatomic) double actualPeekForce; // @synthesize actualPeekForce=_actualPeekForce;
-@property (readonly, nonatomic) double actualPeekTime; // @synthesize actualPeekTime=_actualPeekTime;
-@property (readonly, nonatomic) double actualPopForce; // @synthesize actualPopForce=_actualPopForce;
-@property (readonly, nonatomic) double actualPopTime; // @synthesize actualPopTime=_actualPopTime;
-@property (nonatomic) double hintAndPeekInterval; // @synthesize hintAndPeekInterval=_hintAndPeekInterval;
-@property (nonatomic) double hintReductionForce; // @synthesize hintReductionForce=_hintReductionForce;
-@property (readonly, nonatomic) unsigned long long peekPopCount; // @synthesize peekPopCount=_peekPopCount;
-@property (nonatomic) double revealThreshold; // @synthesize revealThreshold=_revealThreshold;
-@property (nonatomic) double standardThreshold; // @synthesize standardThreshold=_standardThreshold;
-@property (nonatomic) double strongThreshold; // @synthesize strongThreshold=_strongThreshold;
-@property (nonatomic) double transitionInterval; // @synthesize transitionInterval=_transitionInterval;
-
-- (double)_calculateProgressOfTouchForceValue:(double)arg1 toForceLevel:(long long)arg2 minimumRequiredForceLevel:(long long)arg3;
-- (double)_denormalizedTouchForceValue:(double)arg1;
-- (long long)_forceLevelForTouchForceValue:(double)arg1;
-- (double)_normalizedTouchForceValue:(double)arg1;
-- (double)_thresholdForForceLevel:(long long)arg1;
+- (void).cxx_destruct;
 - (id)init;
 - (void)observeTouchWithForceValue:(double)arg1 atTimestamp:(double)arg2 withCentroidAtLocation:(struct CGPoint)arg3;
 - (void)reset;

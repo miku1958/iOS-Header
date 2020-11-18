@@ -19,10 +19,11 @@
     id _providedItem;
 }
 
-@property (copy, nonatomic) NSString *activityType; // @synthesize activityType=_activityType;
+@property (copy, nonatomic, setter=_setActivityType:) NSString *activityType; // @synthesize activityType=_activityType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id item;
 @property (strong, nonatomic) id placeholderItem; // @synthesize placeholderItem=_placeholderItem;
 @property (nonatomic) float progress; // @synthesize progress=_progress;
 @property (strong, nonatomic) id providedItem; // @synthesize providedItem=_providedItem;
@@ -30,12 +31,10 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_setActivityType:(id)arg1;
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
 - (id)activityViewControllerPlaceholderItem:(id)arg1;
 - (id)init;
 - (id)initWithPlaceholderItem:(id)arg1;
-- (id)item;
 - (void)main;
 
 @end

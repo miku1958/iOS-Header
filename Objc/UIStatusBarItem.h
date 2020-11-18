@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) int type; // @synthesize type=_type;
 @property (readonly, nonatomic) Class viewClass;
 
-+ (BOOL)isItemWithTypeExclusive:(int)arg1;
++ (BOOL)isItemWithTypeExclusive:(int)arg1 outBlacklistItems:(id *)arg2 outWhitelistItems:(id *)arg3;
 + (BOOL)itemType:(int)arg1 idiom:(long long)arg2 appearsInRegion:(int)arg3;
 + (BOOL)itemType:(int)arg1 idiom:(long long)arg2 canBeEnabledForData:(id)arg3 style:(id)arg4;
 + (id)itemWithType:(int)arg1 idiom:(long long)arg2;

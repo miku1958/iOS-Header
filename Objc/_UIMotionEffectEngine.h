@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     _UIMotionEffectEventProvider *_eventProvider;
     BOOL _hasReceivedAtLeastOneEventSinceStarting;
     _UIMotionEffectEvent *_pendingEvent;
-    int _pendingEventLock;
+    struct os_unfair_lock_s _pendingEventLock;
     CADisplayLink *_displayLink;
     BOOL _generatingUpdates;
     NSMutableSet *_suspendReasons;

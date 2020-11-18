@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
     double _height;
 }
 
-+ (id)placementWithHeight:(double)arg1 undockedOffset:(double)arg2 chromeBuffer:(struct UIEdgeInsets)arg3;
++ (id)placementWithHeight:(double)arg1 undockedOffset:(struct CGPoint)arg2 chromeBuffer:(struct UIEdgeInsets)arg3;
 - (double)heightOfInputViews:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

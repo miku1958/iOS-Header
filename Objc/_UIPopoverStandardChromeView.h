@@ -6,7 +6,7 @@
 
 #import <UIKit/UIPopoverBackgroundView.h>
 
-@class NSArray, UIColor, UIView, _UIBackdropView;
+@class UIColor, UIView, _UIPopoverBackgroundVisualEffectView, _UIVisualEffectCaptureView;
 
 __attribute__((visibility("hidden")))
 @interface _UIPopoverStandardChromeView : UIPopoverBackgroundView
@@ -14,22 +14,22 @@ __attribute__((visibility("hidden")))
     UIView *_arrowView;
     UIView *_leftCapView;
     UIView *_rightCapView;
-    _UIBackdropView *_blurView;
-    NSArray *_dimmingViews;
+    _UIVisualEffectCaptureView *_blurViewCapture;
+    _UIPopoverBackgroundVisualEffectView *_blurView;
     UIColor *_popoverBackgroundColor;
+    BOOL _popoverBackgroundColorIsOpaque;
     double _arrowOffset;
     unsigned long long _arrowDirection;
     long long _backgroundStyle;
     BOOL _arrowVisible;
     BOOL useShortMode;
     BOOL _debugMode;
-    double _dimmingViewTopEdgeInset;
 }
 
 @property (nonatomic, getter=isArrowVisible) BOOL arrowVisible;
 @property (nonatomic) long long backgroundStyle;
+@property (readonly, nonatomic) UIColor *contentBlendingColor;
 @property (nonatomic, getter=isDebugModeEnabled) BOOL debugModeEnabled; // @synthesize debugModeEnabled=_debugMode;
-@property (nonatomic) double dimmingViewTopEdgeInset; // @synthesize dimmingViewTopEdgeInset=_dimmingViewTopEdgeInset;
 @property (copy, nonatomic) UIColor *popoverBackgroundColor;
 @property (nonatomic) BOOL useShortMode; // @synthesize useShortMode;
 
@@ -37,17 +37,22 @@ __attribute__((visibility("hidden")))
 + (double)arrowHeight;
 + (struct UIEdgeInsets)contentViewInsets;
 - (void).cxx_destruct;
+- (void)_configureEffectView;
 - (void)_layoutArrowViewsLeftOrRight;
 - (void)_layoutArrowViewsNone;
 - (void)_layoutArrowViewsUpOrDown;
 - (void)_loadNecessaryViews;
+- (BOOL)_needsSeperateBlending;
+- (void)_removeEffectView;
 - (struct UIEdgeInsets)_shadowInsets;
 - (struct CGSize)_shadowOffset;
 - (double)_shadowOpacity;
 - (id)_shadowPath;
 - (double)_shadowRadius;
+- (void)_updateChrome;
 - (unsigned long long)arrowDirection;
 - (double)arrowOffset;
+- (id)backgroundEffect;
 - (void)didMoveToWindow;
 - (BOOL)hasComponentViews;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -17,15 +17,20 @@ __attribute__((visibility("hidden")))
     UIView *_seed;
     BOOL _hasFinishedRevealing;
     UILabel *_textLabel;
+    BOOL _scrollViewVerticalFeedbackBehaviorEnabled;
     BOOL _areAnimationsValid;
     double _currentPopStiffness;
+    double _impactIntensity;
 }
 
 @property (nonatomic) BOOL areAnimationsValid; // @synthesize areAnimationsValid=_areAnimationsValid;
 @property (nonatomic) double currentPopStiffness; // @synthesize currentPopStiffness=_currentPopStiffness;
+@property (nonatomic) double impactIntensity; // @synthesize impactIntensity=_impactIntensity;
 @property (readonly, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 
 - (void).cxx_destruct;
+- (void)_bloom;
+- (struct CGAffineTransform)_bloomedSeedTransform;
 - (void)_cleanUpAfterRevealing;
 - (double)_currentTimeOffset;
 - (double)_effectiveScrollViewHeight;
@@ -36,14 +41,18 @@ __attribute__((visibility("hidden")))
 - (double)_percentageShowing;
 - (void)_resetToRevealingState;
 - (void)_reveal;
+- (void)_setBloomedAppearance;
 - (void)_setSpunAppearance;
+- (void)_setUnbloomedAppearance;
 - (void)_snappingMagic;
 - (void)_spin;
 - (void)_tick;
 - (void)_tickDueToProgrammaticRefresh;
+- (void)_unbloom;
+- (struct CGAffineTransform)_unbloomedSeedTransform;
 - (void)_updateTimeOffsetOfRelevantLayers;
 - (id)attributedTitle;
-- (void)didTransitionFromState:(int)arg1 toState:(int)arg2;
+- (void)didTransitionFromState:(long long)arg1 toState:(long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (double)maximumSnappingHeight;
@@ -51,7 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)setTintColor:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (long long)style;
-- (void)willTransitionFromState:(int)arg1 toState:(int)arg2;
+- (void)willTransitionFromState:(long long)arg1 toState:(long long)arg2;
 
 @end
 

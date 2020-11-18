@@ -6,12 +6,15 @@
 
 #import <UIKit/UIViewPrintFormatter.h>
 
-@class UIWebPaginationInfo;
+@class UIWebPaginationInfo, WebFrame;
 
 @interface UIWebDocumentViewPrintFormatter : UIViewPrintFormatter
 {
     UIWebPaginationInfo *_paginationInfo;
+    WebFrame *_frameToPrint;
 }
+
+@property (strong, nonatomic) WebFrame *frameToPrint; // @synthesize frameToPrint=_frameToPrint;
 
 - (void).cxx_destruct;
 - (long long)_recalcPageCount;

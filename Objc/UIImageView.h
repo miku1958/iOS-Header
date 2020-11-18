@@ -13,6 +13,7 @@
     id _storage;
     struct UIEdgeInsets _cachedEdgeInsetsForEffects;
     UITraitCollection *_lastResolvedTraitCollection;
+    long long _lastResolvedLayoutDirectionTrait;
     BOOL _templateSettingsAreInvalid;
     BOOL _edgeInsetsForEffectsAreValid;
     BOOL _adjustsImageWhenAncestorFocused;
@@ -30,6 +31,7 @@
 @property (nonatomic, setter=_setTemplateImageRenderingEffects:) unsigned long long _templateImageRenderingEffects;
 @property (readonly, nonatomic) BOOL _templateSettingsAreInvalid; // @synthesize _templateSettingsAreInvalid;
 @property (nonatomic) BOOL adjustsImageWhenAncestorFocused; // @synthesize adjustsImageWhenAncestorFocused=_adjustsImageWhenAncestorFocused;
+@property (readonly, nonatomic, getter=isAnimating) BOOL animating;
 @property (nonatomic) double animationDuration;
 @property (copy, nonatomic) NSArray *animationImages;
 @property (nonatomic) long long animationRepeatCount;
@@ -53,6 +55,7 @@
 - (id)_checkImageForAdaptation:(id)arg1 hasAdapted:(BOOL *)arg2;
 - (void)_clearPretiledImageCacheForImage:(id)arg1;
 - (void)_configureForLayeredImage:(id)arg1;
+- (id)_currentAnimationKeyframeImage;
 - (id)_currentHighlightedImage;
 - (id)_currentImage;
 - (id)_decompressingImageForType:(unsigned long long)arg1;
@@ -61,6 +64,7 @@
 - (void)_drawImageEffectsForImage:(id)arg1 inRect:(struct CGRect)arg2;
 - (id)_effectiveTintColorWithImage:(id)arg1;
 - (id)_generateBackdropMaskImage;
+- (BOOL)_getDrawModeCompositeOperation:(int *)arg1 color:(id *)arg2 andAlpha:(double *)arg3;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (void)_invalidateTemplateSettings;
 - (BOOL)_needsImageEffectsForImage:(id)arg1;
@@ -95,7 +99,6 @@
 - (id)initWithImage:(id)arg1;
 - (id)initWithImage:(id)arg1 highlightedImage:(id)arg2;
 - (BOOL)isAccessibilityElementByDefault;
-- (BOOL)isAnimating;
 - (BOOL)isElementAccessibilityExposedToInterfaceBuilder;
 - (void)layoutSubviews;
 - (void)setAnimating:(BOOL)arg1;

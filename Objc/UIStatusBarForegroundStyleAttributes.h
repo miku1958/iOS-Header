@@ -6,10 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
+#import <UIKit/NSCopying-Protocol.h>
+
 @class NSMutableDictionary, NSString, UIColor;
 
 __attribute__((visibility("hidden")))
-@interface UIStatusBarForegroundStyleAttributes : NSObject
+@interface UIStatusBarForegroundStyleAttributes : NSObject <NSCopying>
 {
     double _height;
     long long _legibilityStyle;
@@ -26,21 +28,25 @@ __attribute__((visibility("hidden")))
 @property (readonly, strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 
 - (void).cxx_destruct;
-- (id)_batteryColorForCapacity:(double)arg1 lowCapacity:(double)arg2 style:(unsigned long long)arg3;
+- (id)_batteryColorForCapacity:(int)arg1 lowCapacity:(int)arg2 style:(unsigned long long)arg3;
+- (id)_bluetoothBatteryColorForNormalizedCapacity:(double)arg1;
 - (void)_cacheImage:(id)arg1 named:(id)arg2;
+- (void)_cacheQueue_cacheImage:(id)arg1 named:(id)arg2 inTempGroup:(id)arg3 groupFullName:(id)arg4 tintColor:(id)arg5;
+- (id)_cacheQueue_cachedImageNamed:(id)arg1 inTempGroup:(id)arg2 groupFullName:(id)arg3;
 - (id)_cachedImageNamed:(id)arg1;
 - (void)_drawText:(id)arg1 inRect:(struct CGRect)arg2 withFont:(id)arg3 lineBreakMode:(long long)arg4 letterSpacing:(double)arg5 textAlignment:(long long)arg6;
 - (double)_roundDimension:(double)arg1;
 - (BOOL)_shouldUseBoldFontForStyle:(long long)arg1;
 - (long long)activityIndicatorStyleWithSyncActivity:(BOOL)arg1;
+- (double)baselineOffsetForStyle:(long long)arg1;
 - (double)batteryAccessoryMargin;
-- (id)batteryImageNameWithCapacity:(double)arg1;
 - (double)bluetoothBatteryExtraPadding;
 - (id)bluetoothBatteryImageNameWithCapacity:(double)arg1;
 - (void)cacheImage:(id)arg1 named:(id)arg2 inTempGroup:(id)arg3;
 - (id)cachedImageNamed:(id)arg1 inTempGroup:(id)arg2;
 - (id)cachedImageWithText:(id)arg1 forWidth:(double)arg2 lineBreakMode:(long long)arg3 letterSpacing:(double)arg4 textAlignment:(long long)arg5 style:(long long)arg6 itemType:(int)arg7;
-- (void)drawBatteryInsidesWithSize:(struct CGSize)arg1 capacity:(double)arg2 style:(unsigned long long)arg3;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)drawBatteryInsidesWithSize:(struct CGSize)arg1 capacity:(int)arg2 style:(unsigned long long)arg3;
 - (void)drawBluetoothBatteryInsidesWithSize:(struct CGSize)arg1 capacity:(double)arg2;
 - (void)drawText:(id)arg1 forWidth:(double)arg2 lineBreakMode:(long long)arg3 letterSpacing:(double)arg4 textAlignment:(long long)arg5 style:(long long)arg6 textSize:(struct CGSize)arg7 textHeight:(double)arg8;
 - (void)drawTextInRect:(struct CGRect)arg1 withColor:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
@@ -48,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (struct UIEdgeInsets)edgeInsetsForBluetoothBatteryInsides;
 - (double)edgePadding;
 - (id)expandedNameForImageName:(id)arg1;
+- (id)generateUniqueIdentifier;
 - (double)height;
 - (long long)idiom;
 - (id)imageIdWithText:(id)arg1 forWidth:(double)arg2 lineBreakMode:(long long)arg3 letterSpacing:(double)arg4 style:(long long)arg5;
@@ -58,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithHeight:(double)arg1 legibilityStyle:(long long)arg2 tintColor:(id)arg3 hasBusyBackground:(BOOL)arg4 idiom:(long long)arg5;
 - (long long)legibilityStyle;
 - (id)makeTextFontForStyle:(long long)arg1;
+- (double)middlePadding;
 - (struct CGPoint)positionForMoonMaskInBounds:(struct CGRect)arg1;
 - (id)proportionalFontForFont:(id)arg1;
 - (double)scale;

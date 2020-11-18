@@ -6,17 +6,23 @@
 
 #import <UIKit/_UIBarItemAppearanceStorage.h>
 
-@class NSValue;
+@class NSMutableDictionary, UIColor;
 
 __attribute__((visibility("hidden")))
 @interface _UITabBarItemAppearanceStorage : _UIBarItemAppearanceStorage
 {
-    NSValue *titleOffset;
+    NSMutableDictionary *_badgeTextAttributesForState;
+    UIColor *_badgeColor;
+    struct UIOffset _titleOffset;
 }
 
-@property (strong, nonatomic) NSValue *titleOffset; // @synthesize titleOffset;
+@property (copy, nonatomic) UIColor *badgeColor; // @synthesize badgeColor=_badgeColor;
+@property (nonatomic) struct UIOffset titleOffset; // @synthesize titleOffset=_titleOffset;
 
-- (void)dealloc;
+- (void).cxx_destruct;
+- (id)badgeTextAttributesForState:(unsigned long long)arg1;
+- (void)enumerateBadgeTextAttributesWithBlock:(CDUnknownBlockType)arg1;
+- (void)setBadgeTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 
 @end
 

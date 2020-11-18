@@ -12,6 +12,8 @@
 
 - (CDStruct_d58201db)__sizeClassPair;
 - (id)_firstCurrentContextChildInWindow;
+- (struct CGRect)_frameOfPresentedViewControllerViewInSuperview;
+- (BOOL)_shouldPresentedViewControllerControlStatusBarAppearance;
 - (BOOL)_shouldRespectDefinesPresentationContext;
 - (struct CGRect)frameOfPresentedViewInContainerView;
 - (long long)presentationStyle;

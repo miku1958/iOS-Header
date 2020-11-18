@@ -15,10 +15,10 @@ __attribute__((visibility("hidden")))
     double _translationWeight;
     double _pinchingWeight;
     double _rotationWeight;
-    int _dominantComponent;
+    long long _dominantComponent;
 }
 
-@property (readonly, nonatomic) int dominantComponent; // @synthesize dominantComponent=_dominantComponent;
+@property (readonly, nonatomic) long long dominantComponent; // @synthesize dominantComponent=_dominantComponent;
 @property (nonatomic) double pinchingWeight; // @synthesize pinchingWeight=_pinchingWeight;
 @property (nonatomic) double rotationWeight; // @synthesize rotationWeight=_rotationWeight;
 @property (nonatomic) double translationWeight; // @synthesize translationWeight=_translationWeight;

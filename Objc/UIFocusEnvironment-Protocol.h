@@ -6,15 +6,18 @@
 
 #import <UIKit/NSObject-Protocol.h>
 
-@class UIFocusAnimationCoordinator, UIFocusUpdateContext, UIView;
+@class NSArray, UIFocusAnimationCoordinator, UIFocusUpdateContext, UIView;
 
 @protocol UIFocusEnvironment <NSObject>
 
+@property (readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
 @property (readonly, weak, nonatomic) UIView *preferredFocusedView;
 
 - (void)didUpdateFocusInContext:(UIFocusUpdateContext *)arg1 withAnimationCoordinator:(UIFocusAnimationCoordinator *)arg2;
 - (void)setNeedsFocusUpdate;
 - (BOOL)shouldUpdateFocusInContext:(UIFocusUpdateContext *)arg1;
 - (void)updateFocusIfNeeded;
+
+@optional
 @end
 

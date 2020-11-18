@@ -6,10 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class UIButton, UIColor;
+#import <UIKit/CAAnimationDelegate-Protocol.h>
+
+@class NSString, UIButton, UIColor;
 
 __attribute__((visibility("hidden")))
-@interface _UIButtonMaskAnimationView : UIView
+@interface _UIButtonMaskAnimationView : UIView <CAAnimationDelegate>
 {
     unsigned long long _hardEdge;
     UIView *_hardEdgeLine;
@@ -18,8 +20,12 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) UIColor *borderColor;
 @property double borderWidth;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) UIButton *delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property unsigned long long hardEdge;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (struct CGRect)_frameForLine;

@@ -13,10 +13,14 @@
 
 @interface UIVisualEffect : NSObject <NSCopying, NSSecureCoding>
 {
-    _UIVisualEffectConfig *_effectConfig;
+    BOOL __isATVStyle;
+    BOOL __isAutomaticStyle;
     _UIBackdropViewSettings *_effectSettings;
+    _UIVisualEffectConfig *_effectConfig;
 }
 
+@property (readonly, nonatomic) BOOL _isATVStyle; // @synthesize _isATVStyle=__isATVStyle;
+@property (readonly, nonatomic) BOOL _isAutomaticStyle; // @synthesize _isAutomaticStyle=__isAutomaticStyle;
 @property (readonly, nonatomic) _UIVisualEffectConfig *effectConfig; // @synthesize effectConfig=_effectConfig;
 @property (readonly, nonatomic) _UIBackdropViewSettings *effectSettings; // @synthesize effectSettings=_effectSettings;
 

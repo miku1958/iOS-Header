@@ -19,8 +19,10 @@
     NSString *normalizedIdentifier;
     NSString *softwareLayout;
     NSString *hardwareLayout;
+    NSArray *_multilingualLanguages;
 }
 
+@property (readonly, nonatomic) NSString *automaticHardwareLayout;
 @property (readonly, nonatomic) NSBundle *containingBundle;
 @property (readonly, nonatomic) NSString *containingBundleDisplayName;
 @property (readonly, nonatomic) BOOL defaultLayoutIsASCIICapable;
@@ -34,6 +36,7 @@
 @property (nonatomic) BOOL isDisplayed; // @synthesize isDisplayed;
 @property (readonly, nonatomic) BOOL isExtensionInputMode;
 @property (strong, nonatomic) NSString *languageWithRegion; // @synthesize languageWithRegion;
+@property (strong, nonatomic) NSArray *multilingualLanguages; // @synthesize multilingualLanguages=_multilingualLanguages;
 @property (strong, nonatomic) NSString *normalizedIdentifier; // @synthesize normalizedIdentifier;
 @property (readonly, strong, nonatomic) NSArray *normalizedIdentifierLevels;
 @property (strong, nonatomic) NSString *primaryLanguage; // @synthesize primaryLanguage;
@@ -45,6 +48,7 @@
 + (id)intlInputMode;
 + (id)keyboardInputModeWithIdentifier:(id)arg1;
 + (id)softwareLayoutFromIdentifier:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

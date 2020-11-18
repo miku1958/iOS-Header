@@ -65,7 +65,6 @@
 - (double)_gapBetweenPages;
 - (id)_initWithFrame:(struct CGRect)arg1 enableReachability:(BOOL)arg2;
 - (id)_initWithWebView:(id)arg1;
-- (void)_lookup:(struct CGPoint)arg1;
 - (id)_makeAlertView;
 - (id)_networkInterfaceName;
 - (unsigned long long)_pageCount;
@@ -85,6 +84,7 @@
 - (void)_setDrawInWebThread:(BOOL)arg1;
 - (void)_setDrawsCheckeredPattern:(BOOL)arg1;
 - (void)_setGapBetweenPages:(double)arg1;
+- (void)_setIsBlankBeforeFirstNonEmptyLayout:(BOOL)arg1;
 - (void)_setNetworkInterfaceName:(id)arg1;
 - (void)_setOverridesOrientationChangeEventHandling:(BOOL)arg1;
 - (void)_setPageLength:(double)arg1;
@@ -110,7 +110,6 @@
 - (void)_webViewCommonInitWithWebView:(id)arg1 scalesPageToFit:(BOOL)arg2;
 - (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
-- (void)configureWithSettings:(id)arg1;
 - (void)copy:(id)arg1;
 - (struct CGImage *)createSnapshotWithRect:(struct CGRect)arg1;
 - (void)dealloc;

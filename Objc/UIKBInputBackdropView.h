@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIKBBackdropView *inputBackdropFullView; // @synthesize inputBackdropFullView=_inputBackdropFullView;
 @property (strong, nonatomic) UIKBBackdropView *inputBackdropLeftView; // @synthesize inputBackdropLeftView=_inputBackdropLeftView;
 @property (strong, nonatomic) UIKBBackdropView *inputBackdropRightView; // @synthesize inputBackdropRightView=_inputBackdropRightView;
+@property (readonly) long long style; // @synthesize style=_style;
 
 + (BOOL)_retroactivelyRequiresConstraintBasedLayout;
 - (void)_beginSplitTransitionIfNeeded:(double)arg1 gapWidth:(double)arg2;

@@ -15,12 +15,12 @@ __attribute__((visibility("hidden")))
     UIColor *_rgbColor;
 }
 
+- (void).cxx_destruct;
 - (struct CGColor *)CGColor;
 - (id)CIColor;
 - (id)_rgbColor;
 - (id)colorWithAlphaComponent:(double)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (BOOL)getRed:(double *)arg1 green:(double *)arg2 blue:(double *)arg3 alpha:(double *)arg4;
 - (BOOL)getWhite:(double *)arg1 alpha:(double *)arg2;

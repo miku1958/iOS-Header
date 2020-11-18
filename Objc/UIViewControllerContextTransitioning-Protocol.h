@@ -9,17 +9,20 @@
 @class NSString, UIView, UIViewController;
 
 @protocol UIViewControllerContextTransitioning <NSObject>
+
+@property (readonly, nonatomic, getter=isAnimated) BOOL animated;
+@property (readonly, nonatomic) UIView *containerView;
+@property (readonly, nonatomic, getter=isInteractive) BOOL interactive;
+@property (readonly, nonatomic) long long presentationStyle;
+@property (readonly, nonatomic) struct CGAffineTransform targetTransform;
+@property (readonly, nonatomic) BOOL transitionWasCancelled;
+
 - (void)cancelInteractiveTransition;
 - (void)completeTransition:(BOOL)arg1;
-- (UIView *)containerView;
 - (struct CGRect)finalFrameForViewController:(UIViewController *)arg1;
 - (void)finishInteractiveTransition;
 - (struct CGRect)initialFrameForViewController:(UIViewController *)arg1;
-- (BOOL)isAnimated;
-- (BOOL)isInteractive;
-- (long long)presentationStyle;
-- (struct CGAffineTransform)targetTransform;
-- (BOOL)transitionWasCancelled;
+- (void)pauseInteractiveTransition;
 - (void)updateInteractiveTransition:(double)arg1;
 - (UIViewController *)viewControllerForKey:(NSString *)arg1;
 - (UIView *)viewForKey:(NSString *)arg1;

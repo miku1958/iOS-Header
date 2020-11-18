@@ -23,7 +23,9 @@
     id _windowWillAnimateToken;
     _UISearchControllerDidScrollDelegate *_didScrollDelegate;
     UISystemInputViewController *_systemInputViewController;
+    BOOL _shouldFocusResults;
     UITapGestureRecognizer *_backButtonDismissGestureRecognizer;
+    UITapGestureRecognizer *_doneButtonGestureRecognizer;
     struct {
         unsigned int searchBarWasTableHeaderView:1;
         unsigned int searchBarWasFirstResponder:1;
@@ -78,6 +80,7 @@
 - (void)_dismissPresentation:(BOOL)arg1;
 - (void)_endWatchingPresentingController;
 - (void)_installBackGestureRecognizer;
+- (void)_installDoneGestureRecognizer;
 - (void)_keyboardWillHide:(id)arg1;
 - (void)_keyboardWillShow:(id)arg1;
 - (id)_locatePresentingViewController;
@@ -98,8 +101,10 @@
 - (id)_searchPresentationController;
 - (void)_sizeSearchViewToPresentingViewController:(id)arg1;
 - (void)_uninstallBackGestureRecognizer;
+- (void)_uninstallDoneGestureRecognizer;
 - (void)_updateBackdropMaskViewsInScrollView:(id)arg1;
 - (void)_updateBarPresentationStyleForPresentingViewController:(id)arg1;
+- (void)_updateFocusFromDoneButton:(id)arg1;
 - (void)_updateSearchBarMaskIfNecessary;
 - (void)_updateSearchResultsContentScrollViewWithDelta:(struct CGSize)arg1;
 - (void)_updateSearchResultsControllerWithDelta:(struct CGSize)arg1;
@@ -118,10 +123,11 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSearchResultsController:(id)arg1;
 - (void)loadView;
-- (id)preferredFocusedItem;
+- (id)preferredFocusEnvironments;
 - (void)setModalPresentationStyle:(long long)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (double)transitionDuration:(id)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

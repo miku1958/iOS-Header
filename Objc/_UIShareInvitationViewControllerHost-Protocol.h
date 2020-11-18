@@ -6,11 +6,17 @@
 
 #import <UIKit/NSObject-Protocol.h>
 
+@class CKShare, NSError;
+
 @protocol _UIShareInvitationViewControllerHost <NSObject>
-- (void)_dismissViewController;
+- (void)_dismissForActivityRepresentation:(void (^)(void))arg1;
+- (void)_dismissViewControllerWithError:(NSError *)arg1;
 - (void)_performAuxiliaryActionWithCompletion:(void (^)(void))arg1;
 - (void)_performHeaderActionWithCompletion:(void (^)(void))arg1;
-- (void)_shareDidChange;
+- (void)_representFullscreenAfterActivityDismissal:(void (^)(void))arg1;
+- (void)_requestContentSize:(struct CGSize)arg1;
+- (void)_requestSavedShareWithCompletion:(void (^)(CKShare *, CKContainerID *))arg1;
+- (void)_shareDidChange:(CKShare *)arg1;
 - (void)_shareWasMadePrivate;
 @end
 

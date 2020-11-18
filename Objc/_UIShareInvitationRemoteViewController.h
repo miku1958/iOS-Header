@@ -8,30 +8,41 @@
 
 #import <UIKit/_UIShareInvitationViewControllerHost-Protocol.h>
 
-@class NSString, _UISharingViewController;
+@class NSString, UIViewController;
+@protocol _UISharingPublicController;
 
 __attribute__((visibility("hidden")))
 @interface _UIShareInvitationRemoteViewController : _UIRemoteViewController <_UIShareInvitationViewControllerHost>
 {
-    _UISharingViewController *_publicController;
+    UIViewController<_UISharingPublicController> *_publicController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) _UISharingViewController *publicController; // @synthesize publicController=_publicController;
+@property (weak, nonatomic) UIViewController<_UISharingPublicController> *publicController; // @synthesize publicController=_publicController;
 @property (readonly) Class superclass;
 
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
+- (void).cxx_destruct;
+- (void)_dismissAndRepresentForActivity:(CDUnknownBlockType)arg1;
+- (void)_dismissForActivityRepresentation:(CDUnknownBlockType)arg1;
 - (void)_dismissViewController;
+- (void)_dismissViewControllerWithError:(id)arg1;
 - (void)_performAuxiliaryActionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performHeaderActionWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_shareDidChange;
+- (void)_representFullscreenAfterActivityDismissal:(CDUnknownBlockType)arg1;
+- (void)_requestContentSize:(struct CGSize)arg1;
+- (void)_requestSavedShareWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_shareDidChange:(id)arg1;
 - (void)_shareWasMadePrivate;
 - (void)_tintColorDidChangeToColor:(id)arg1;
+- (void)_updateTraitCollectionForPopoverStatus;
+- (void)didMoveToParentViewController:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end
 

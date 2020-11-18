@@ -11,14 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface _UIDocumentActivityItemProvider : UIActivityItemProvider
 {
-    BOOL _userCancelled;
     UIDocumentInteractionController *_documentInteractionController;
 }
 
 @property (weak) UIDocumentInteractionController *documentInteractionController; // @synthesize documentInteractionController=_documentInteractionController;
-@property BOOL userCancelled; // @synthesize userCancelled=_userCancelled;
 
 - (void).cxx_destruct;
+- (BOOL)_activitySupportsPromiseURLs;
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
 - (id)activityViewControllerPlaceholderItem:(id)arg1;
 - (id)item;

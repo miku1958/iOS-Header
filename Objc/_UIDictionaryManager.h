@@ -16,9 +16,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly) NSArray *availableDefinitionDictionaries; // @synthesize availableDefinitionDictionaries=_availableDefinitionDictionaries;
 
-+ (id)_filteredDictionaryIDs;
 + (id)assetManager;
-+ (void)initialize;
 - (void).cxx_destruct;
 - (id)_allAvailableDefinitionDictionariesUsingRemoteInfo:(BOOL)arg1;
 - (id)_availableDictionaryAssets;
@@ -26,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)_currentlyAvailableDefinitionDictionaries;
 - (id)_definitionValuesForTerm:(id)arg1;
 - (BOOL)_hasDefinitionForTerm:(id)arg1;
+- (BOOL)_isTTYEnabled;
 - (id)init;
 
 @end

@@ -34,10 +34,10 @@
 + (id)_horizontalLayoutGuide;
 + (id)_verticalLayoutGuide;
 + (id)classFallbacksForKeyedArchiver;
-- (void).cxx_destruct;
 - (BOOL)_isFloatingLayoutItem;
 - (id)_layoutVariablesWithAmbiguousValue;
 - (void)_setUpCounterDimensionConstraint;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

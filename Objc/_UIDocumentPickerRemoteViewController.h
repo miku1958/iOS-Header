@@ -12,7 +12,6 @@
 @class NSString, UIViewController;
 @protocol _UIDocumentPickerRemoteViewControllerContaining;
 
-__attribute__((visibility("hidden")))
 @interface _UIDocumentPickerRemoteViewController : _UIRemoteViewController <_UIDocumentPickerViewControllerHost, _UIDocumentPickerServiceInvalidating>
 {
     UIViewController<_UIDocumentPickerRemoteViewControllerContaining> *_publicController;

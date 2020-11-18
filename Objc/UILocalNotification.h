@@ -9,7 +9,7 @@
 #import <UIKit/NSCoding-Protocol.h>
 #import <UIKit/NSCopying-Protocol.h>
 
-@class CLRegion, NSCalendar, NSDate, NSDictionary, NSString, NSTimeZone;
+@class CLRegion, NSCalendar, NSDate, NSDictionary, NSNumber, NSString, NSTimeZone;
 
 @interface UILocalNotification : NSObject <NSCopying, NSCoding>
 {
@@ -21,6 +21,7 @@
 @property (copy, nonatomic) NSString *alertTitle; // @dynamic alertTitle;
 @property (nonatomic) BOOL allowSnooze; // @dynamic allowSnooze;
 @property (nonatomic) long long applicationIconBadgeNumber; // @dynamic applicationIconBadgeNumber;
+@property (strong, nonatomic) NSNumber *audioVolume; // @dynamic audioVolume;
 @property (copy, nonatomic) NSString *category; // @dynamic category;
 @property (copy, nonatomic) NSString *customLockSliderLabel; // @dynamic customLockSliderLabel;
 @property (copy, nonatomic) NSDate *fireDate; // @dynamic fireDate;
@@ -41,6 +42,7 @@
 @property (copy, nonatomic) NSString *snoozedNotificationName; // @dynamic snoozedNotificationName;
 @property (copy, nonatomic) NSString *soundName; // @dynamic soundName;
 @property (nonatomic) int soundType; // @dynamic soundType;
+@property (copy, nonatomic) NSString *threadIdentifier; // @dynamic threadIdentifier;
 @property (copy, nonatomic) NSTimeZone *timeZone; // @dynamic timeZone;
 @property (nonatomic) int totalRepeatCount; // @dynamic totalRepeatCount;
 @property (copy, nonatomic) NSDictionary *userInfo; // @dynamic userInfo;

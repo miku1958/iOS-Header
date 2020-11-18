@@ -15,6 +15,7 @@
 {
     _UIDatePickerView *_pickerView;
     BOOL _useCurrentDateDuringDecoding;
+    BOOL shouldAnimateSetDateCall;
 }
 
 @property (nonatomic, getter=_usesModernStyle, setter=_setUsesModernStyle:) BOOL _usesModernStyle;
@@ -33,6 +34,7 @@
 @property (strong, nonatomic) NSDate *maximumDate; // @dynamic maximumDate;
 @property (strong, nonatomic) NSDate *minimumDate; // @dynamic minimumDate;
 @property (nonatomic) long long minuteInterval; // @dynamic minuteInterval;
+@property (nonatomic, getter=_shouldAnimateSetDateCall, setter=_setShouldAnimateSetDateCall:) BOOL shouldAnimateSetDateCall; // @synthesize shouldAnimateSetDateCall;
 @property (strong, nonatomic, getter=_textColor, setter=_setTextColor:) UIColor *textColor;
 @property (strong, nonatomic, getter=_textShadowColor, setter=_setTextShadowColor:) UIColor *textShadowColor;
 @property (nonatomic) double timeInterval; // @dynamic timeInterval;
@@ -43,6 +45,8 @@
 - (void).cxx_destruct;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedHeight;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedWidth;
+- (unsigned long long)_controlEventsForActionTriggered;
+- (void)_emitValueChanged;
 - (void)_installPickerView:(id)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (id)_labelTextForCalendarUnit:(unsigned long long)arg1;
@@ -56,6 +60,7 @@
 - (void)_setUpInitialValues;
 - (void)awakeFromNib;
 - (id)dateComponents;
+- (void)didReceiveBindingsUpdate;
 - (void)encodeWithCoder:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (int)hour;
@@ -70,11 +75,13 @@
 - (void)setDate:(id)arg1 animated:(BOOL)arg2;
 - (void)setDateComponents:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setEnabled:(BOOL)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setHighlightsToday:(BOOL)arg1;
 - (void)setStaggerTimeIntervals:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)willReceiveBindingsUpdate;
 
 @end
 

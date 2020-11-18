@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
     float *_rowHeights;
     NSMutableIndexSet *_forcedNegativeRows;
     double *_rowOffsets;
-    BOOL _estimatesRowHeights;
+    BOOL _estimatesHeights;
     double _sectionHeight;
     long long _headerAlignment;
     long long _footerAlignment;
@@ -45,6 +45,8 @@ __attribute__((visibility("hidden")))
 - (void)addOffset:(double)arg1 fromRow:(long long)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (double)defaultSectionFooterHeight;
+- (double)defaultSectionHeaderHeight;
 - (void)deleteRowAtIndex:(long long)arg1;
 - (double)heightForEmptySection:(long long)arg1 inTableView:(id)arg2 rowData:(id)arg3;
 - (double)heightForFooterInSection:(long long)arg1 canGuess:(BOOL)arg2;

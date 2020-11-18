@@ -7,6 +7,15 @@
 #import <Foundation/NSValue.h>
 
 @interface NSValue (NSValueUIGeometryExtensions)
+
+@property (readonly, nonatomic) struct CGAffineTransform CGAffineTransformValue;
+@property (readonly, nonatomic) struct CGPoint CGPointValue;
+@property (readonly, nonatomic) struct CGRect CGRectValue;
+@property (readonly, nonatomic) struct CGSize CGSizeValue;
+@property (readonly, nonatomic) struct CGVector CGVectorValue;
+@property (readonly, nonatomic) struct UIEdgeInsets UIEdgeInsetsValue;
+@property (readonly, nonatomic) struct UIOffset UIOffsetValue;
+
 + (id)valueWithCGAffineTransform:(struct CGAffineTransform)arg1;
 + (id)valueWithCGPoint:(struct CGPoint)arg1;
 + (id)valueWithCGRect:(struct CGRect)arg1;
@@ -14,12 +23,5 @@
 + (id)valueWithCGVector:(struct CGVector)arg1;
 + (id)valueWithUIEdgeInsets:(struct UIEdgeInsets)arg1;
 + (id)valueWithUIOffset:(struct UIOffset)arg1;
-- (struct CGAffineTransform)CGAffineTransformValue;
-- (struct CGPoint)CGPointValue;
-- (struct CGRect)CGRectValue;
-- (struct CGSize)CGSizeValue;
-- (struct CGVector)CGVectorValue;
-- (struct UIEdgeInsets)UIEdgeInsetsValue;
-- (struct UIOffset)UIOffsetValue;
 @end
 

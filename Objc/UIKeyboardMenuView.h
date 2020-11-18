@@ -10,7 +10,7 @@
 #import <UIKit/UITableViewDataSource-Protocol.h>
 #import <UIKit/UITableViewDelegate-Protocol.h>
 
-@class NSString, NSTimer, UIDimmingView, UIInputSwitcherSelectionExtraView, UIInputSwitcherShadowView, UIInputSwitcherTableView, UIKBTree, UIKeyboardLayoutStar;
+@class NSString, NSTimer, UIDimmingView, UIInputSwitcherSelectionExtraView, UIInputSwitcherShadowView, UIInputSwitcherTableView, UIKBKeyView, UIKBTree, UIKeyboardLayoutStar, _UIFeedbackRetargetBehavior;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardMenuView : UIView <UITableViewDataSource, UITableViewDelegate, UIDimmingViewDelegate>
@@ -32,6 +32,11 @@ __attribute__((visibility("hidden")))
     unsigned long long m_firstVisibleRow;
     int m_mode;
     UIDimmingView *m_dimmingView;
+    UIView *m_inputView;
+    struct CGPoint m_referenceLocation;
+    UIKBKeyView *m_backgroundKeyView;
+    double m_timeDismissed;
+    _UIFeedbackRetargetBehavior *m_slideBehavior;
     BOOL _usesStraightLeftEdge;
     BOOL _usesDarkTheme;
     UIKBTree *_referenceKey;
@@ -49,13 +54,13 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL usesStraightLeftEdge; // @synthesize usesStraightLeftEdge=_usesStraightLeftEdge;
 @property (readonly) BOOL usesTable;
 
-+ (id)viewThatContainsBaseKey;
 - (void)_delayedFade;
 - (int)_internationalKeyRoundedCornerInLayout:(id)arg1;
 - (void)applicationWillSuspend:(id)arg1;
 - (id)assistantSwitch;
 - (void)autoscrollTimerFired:(id)arg1;
 - (BOOL)centerPopUpOverKey;
+- (id)containerView;
 - (void)dealloc;
 - (unsigned long long)defaultSelectedIndex;
 - (void)didSelectItemAtIndex:(unsigned long long)arg1;
@@ -65,12 +70,14 @@ __attribute__((visibility("hidden")))
 - (void)fade;
 - (void)fadeAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (void)fadeWithDelay:(double)arg1;
+- (id)floatingSwitch;
 - (id)font;
 - (id)fontForItemAtIndex:(unsigned long long)arg1;
 - (void)hide;
 - (void)highlightRow:(unsigned long long)arg1;
 - (unsigned long long)indexForIndexPath:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)inputView;
 - (void)insertSelExtraView;
 - (BOOL)isVisible;
 - (id)localizedTitleForItemAtIndex:(unsigned long long)arg1;
@@ -91,14 +98,17 @@ __attribute__((visibility("hidden")))
 - (void)setNeedsDisplayForCell:(id)arg1;
 - (void)setNeedsDisplayForTopBottomCells;
 - (void)setRenderConfig:(id)arg1;
+- (void)setupBackgroundKeyViewWithSize:(struct CGSize)arg1;
 - (void)setupShadowViewWithSize:(struct CGSize)arg1;
 - (void)show;
 - (void)showAsHUD;
+- (void)showAsHUDFromLocation:(struct CGPoint)arg1 withInputView:(id)arg2 touchBegan:(double)arg3;
 - (void)showAsPopupForKey:(id)arg1 inLayout:(id)arg2;
 - (void)stopAnyAutoscrolling;
 - (id)subtitleFont;
 - (id)subtitleFontForItemAtIndex:(unsigned long long)arg1;
 - (id)subtitleForItemAtIndex:(unsigned long long)arg1;
+- (id)switches;
 - (id)table;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
@@ -109,6 +119,7 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (id)titleForItemAtIndex:(unsigned long long)arg1;
 - (void)toggleKeyboardAssistantPreference;
+- (void)toggleKeyboardFloatingPreference;
 - (void)toggleKeyboardPredictionPreference;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     int _anchorCorner;
     NSString *_fontName;
     double _fontSize;
+    double _imageScale;
     double _minFontSize;
     double _kerning;
     double _textOpacity;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double fontSize; // @synthesize fontSize=_fontSize;
 @property (nonatomic) double fontWeight; // @synthesize fontWeight=_fontWeight;
 @property (nonatomic) BOOL ignoreTextMarginOnKey; // @synthesize ignoreTextMarginOnKey=_ignoreTextMarginOnKey;
+@property (nonatomic) double imageScale; // @synthesize imageScale=_imageScale;
 @property (nonatomic) double kerning; // @synthesize kerning=_kerning;
 @property (nonatomic) double minFontSize; // @synthesize minFontSize=_minFontSize;
 @property (nonatomic) double pathWeight; // @synthesize pathWeight=_pathWeight;

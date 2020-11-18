@@ -9,8 +9,6 @@
 __attribute__((visibility("hidden")))
 @interface _UIScreenEdgePanRecognizerDwellSettings : _UISettings
 {
-    double _longPressFlatPermittedHorizontalMovement;
-    double _longPressFlatPermittedVerticalMovement;
     double _longPressTipPermittedHorizontalMovement;
     double _longPressTipPermittedVerticalMovement;
     double _longPressPermittedHorizontalMovement;
@@ -18,8 +16,6 @@ __attribute__((visibility("hidden")))
     double _longPressRequiredDuration;
 }
 
-@property (nonatomic) double longPressFlatPermittedHorizontalMovement; // @synthesize longPressFlatPermittedHorizontalMovement=_longPressFlatPermittedHorizontalMovement;
-@property (nonatomic) double longPressFlatPermittedVerticalMovement; // @synthesize longPressFlatPermittedVerticalMovement=_longPressFlatPermittedVerticalMovement;
 @property (nonatomic) double longPressPermittedHorizontalMovement; // @synthesize longPressPermittedHorizontalMovement=_longPressPermittedHorizontalMovement;
 @property (nonatomic) double longPressPermittedVerticalMovement; // @synthesize longPressPermittedVerticalMovement=_longPressPermittedVerticalMovement;
 @property (nonatomic) double longPressRequiredDuration; // @synthesize longPressRequiredDuration=_longPressRequiredDuration;

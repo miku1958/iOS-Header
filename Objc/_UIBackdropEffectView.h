@@ -6,16 +6,22 @@
 
 #import <UIKit/UIView.h>
 
-@class CABackdropLayer;
+#import <UIKit/CABackdropLayerDelegate-Protocol.h>
+
+@class CABackdropLayer, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIBackdropEffectView : UIView
+@interface _UIBackdropEffectView : UIView <CABackdropLayerDelegate>
 {
     CABackdropLayer *_backdropLayer;
     double _zoom;
 }
 
 @property (strong, nonatomic) CABackdropLayer *backdropLayer; // @synthesize backdropLayer=_backdropLayer;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (nonatomic) double zoom; // @synthesize zoom=_zoom;
 
 + (Class)layerClass;

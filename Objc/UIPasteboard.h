@@ -10,7 +10,6 @@
 
 @interface UIPasteboard : NSObject
 {
-    NSString *_name;
 }
 
 @property (copy, nonatomic) NSURL *URL;
@@ -18,35 +17,38 @@
 @property (readonly, nonatomic) long long changeCount;
 @property (copy, nonatomic) UIColor *color;
 @property (copy, nonatomic) NSArray *colors;
+@property (readonly, nonatomic) BOOL hasColors;
+@property (readonly, nonatomic) BOOL hasImages;
+@property (readonly, nonatomic) BOOL hasStrings;
+@property (readonly, nonatomic) BOOL hasURLs;
 @property (copy, nonatomic) UIImage *image;
 @property (copy, nonatomic) NSArray *images;
 @property (copy, nonatomic) NSArray *items;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) long long numberOfItems;
-@property (nonatomic, getter=isPersistent) BOOL persistent;
+@property (readonly, nonatomic) NSArray *pasteboardTypes;
+@property (readonly, nonatomic, getter=isPersistent) BOOL persistent;
 @property (copy, nonatomic) NSString *string;
 @property (copy, nonatomic) NSArray *strings;
 
-+ (id)_findPasteboard;
-+ (id)_printPasteboard;
++ (id)_pasteboardWithName:(id)arg1 create:(BOOL)arg2;
++ (id)_pasteboardWithUniqueName;
 + (id)generalPasteboard;
 + (id)pasteboardWithName:(id)arg1 create:(BOOL)arg2;
 + (id)pasteboardWithUniqueName;
 + (void)removePasteboardWithName:(id)arg1;
-- (void)_addItems:(id)arg1 oldPasteboardTypes:(id)arg2;
-- (id)_initWithName:(id)arg1 system:(BOOL)arg2 create:(BOOL)arg3;
-- (void)_pasteboardChanged:(id)arg1;
+- (BOOL)_hasStrings;
 - (void)addItems:(id)arg1;
 - (BOOL)containsPasteboardTypes:(id)arg1;
 - (BOOL)containsPasteboardTypes:(id)arg1 inItemSet:(id)arg2;
 - (id)dataForPasteboardType:(id)arg1;
 - (id)dataForPasteboardType:(id)arg1 inItemSet:(id)arg2;
-- (void)dealloc;
-- (id)init;
 - (id)itemSetWithPasteboardTypes:(id)arg1;
-- (id)pasteboardTypes;
 - (id)pasteboardTypesForItemSet:(id)arg1;
 - (void)setData:(id)arg1 forPasteboardType:(id)arg2;
+- (void)setItems:(id)arg1 options:(id)arg2;
+- (void)setName:(id)arg1;
+- (void)setPersistent:(BOOL)arg1;
 - (void)setValue:(id)arg1 forPasteboardType:(id)arg2;
 - (id)valueForPasteboardType:(id)arg1;
 - (id)valuesForPasteboardType:(id)arg1 inItemSet:(id)arg2;

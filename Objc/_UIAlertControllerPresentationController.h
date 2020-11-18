@@ -9,7 +9,7 @@
 #import <UIKit/UIAdaptivePresentationControllerDelegate-Protocol.h>
 #import <UIKit/UIForcePresentationController-Protocol.h>
 
-@class NSString, UIGestureRecognizer, UIView, _UIKeyboardLayoutAlignmentView;
+@class NSString, UIGestureRecognizer, UIView, _UIFeedbackStatesBehavior, _UIKeyboardLayoutAlignmentView;
 @protocol _UIForcePresentationControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _presentationPhaseCompletionBlock;
     id<_UIForcePresentationControllerDelegate> _forcePresentationControllerDelegate;
     UIView *_revealContainerView;
+    _UIFeedbackStatesBehavior *_feedbackBehavior;
 }
 
 @property (nonatomic, getter=_isChromeHidden, setter=_setChromeHidden:) BOOL _chromeHidden; // @synthesize _chromeHidden;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL _sourceViewSnapshotAndScaleTransformSuppressed; // @synthesize _sourceViewSnapshotAndScaleTransformSuppressed;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) _UIFeedbackStatesBehavior *feedbackBehavior; // @synthesize feedbackBehavior=_feedbackBehavior;
 @property (weak, nonatomic) id<_UIForcePresentationControllerDelegate> forcePresentationControllerDelegate; // @synthesize forcePresentationControllerDelegate=_forcePresentationControllerDelegate;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIGestureRecognizer *panningGestureRecognizer; // @synthesize panningGestureRecognizer=_panningGestureRecognizer;
@@ -53,7 +55,6 @@ __attribute__((visibility("hidden")))
 - (id)_presentedAlertController;
 - (void)_presentedAlertControllerDidAdapt;
 - (BOOL)_preserveResponderAcrossWindows;
-- (BOOL)_shouldChangeStatusBarViewController;
 - (BOOL)_shouldOccludeDuringPresentation;
 - (BOOL)_shouldRespectDefinesPresentationContext;
 - (void)_willRunTransitionForCurrentStateDeferred:(BOOL)arg1;
@@ -62,7 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)containerViewDidLayoutSubviews;
 - (void)containerViewWillLayoutSubviews;
 - (id)initWithPresentedViewController:(id)arg1 presentingViewController:(id)arg2;
-- (struct CGSize)preferredContentSize;
+- (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (id)presentationController:(id)arg1 viewControllerForAdaptivePresentationStyle:(long long)arg2;
 - (void)presentationTransitionWillBegin;
 - (void)setDelegate:(id)arg1;

@@ -12,6 +12,7 @@
 + (id)ui_incomingDirectory:(BOOL)arg1;
 - (id)ui_bookmarkForExportWithError:(id *)arg1;
 - (BOOL)ui_canOpenInPlace;
+- (id)ui_downloadOperationForActivity:(id)arg1;
 - (BOOL)ui_hasReadSandboxExtended;
 - (BOOL)ui_hasSandboxExtendedForClass:(const char *)arg1;
 - (BOOL)ui_isFileProviderURL;

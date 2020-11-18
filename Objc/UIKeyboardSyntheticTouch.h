@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 
 + (id)syntheticTouchWithPoint:(struct CGPoint)arg1 timestamp:(double)arg2 window:(id)arg3;
 - (void)_setLocationInWindow:(struct CGPoint)arg1 resetPrevious:(BOOL)arg2;
+- (void)dealloc;
 - (struct CGPoint)getLocationInWindow;
 - (id)initWithPoint:(struct CGPoint)arg1 timestamp:(double)arg2 window:(id)arg3;
 - (struct CGPoint)locationInView:(id)arg1;

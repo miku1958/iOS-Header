@@ -16,9 +16,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) double baselineOffset; // @synthesize baselineOffset=_baselineOffset;
-@property (weak, nonatomic) UIView *baselineView; // @synthesize baselineView=_baselineView;
+@property (nonatomic) UIView *baselineView; // @synthesize baselineView=_baselineView;
 
-- (void).cxx_destruct;
 - (id)description;
 
 @end

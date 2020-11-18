@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
     UIImagePickerController *_imagePicker;
     UIViewController *_presentationViewController;
     UIPopoverController *_presentationPopover;
-    BOOL _documentViewPresentedViewController;
     struct CGPoint _interactionPoint;
     DOMNode *_interactionElement;
     BOOL _allowMultipleFiles;

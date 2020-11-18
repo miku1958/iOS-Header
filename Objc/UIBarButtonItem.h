@@ -23,7 +23,6 @@
     struct UIEdgeInsets _landscapeImagePhoneInsets;
     double _width;
     UIView *_view;
-    long long _tag;
     id _appearanceStorage;
     struct {
         unsigned int enabled:1;
@@ -35,6 +34,7 @@
         unsigned int disableAutosizing:1;
         unsigned int selected:1;
         unsigned int imageHasEffects:1;
+        unsigned int actsAsFakeBackButton:1;
     } _barButtonItemFlags;
     BOOL _flexible;
     BOOL __showsBackButtonIndicator;
@@ -103,6 +103,7 @@
 + (Class)classForNavigationButton;
 + (Class)classForToolbarButton;
 - (void).cxx_destruct;
+- (BOOL)_actsAsFakeBackButton;
 - (id)_appearanceStorage;
 - (void)_applyPositionAdjustmentToSegmentedControl:(id)arg1;
 - (void)_connectInterfaceBuilderEventConnection:(id)arg1;
@@ -120,7 +121,9 @@
 - (id)_resolveSystemTitle;
 - (double)_rightImagePaddingForEdgeMarginInNavBar;
 - (void)_sendAction:(id)arg1 withEvent:(id)arg2;
+- (void)_setActsAsFakeBackButton:(BOOL)arg1;
 - (void)_setButtonGroup:(id)arg1 isRepresentative:(BOOL)arg2;
+- (void)_setEnclosingBar:(id)arg1 onItem:(id)arg2;
 - (void)_setSystemItem:(long long)arg1;
 - (void)_setWidth:(double)arg1;
 - (BOOL)_shouldBezelSystemButtonImage;
@@ -150,12 +153,12 @@
 - (id)initWithTitle:(id)arg1 style:(long long)arg2 target:(id)arg3 action:(SEL)arg4;
 - (BOOL)isCustomViewItem;
 - (BOOL)isMinibarView;
+- (BOOL)isSpaceItem;
 - (id)itemVariation;
 - (id)landscapeImagePhone;
 - (struct UIEdgeInsets)landscapeImagePhoneInsets;
 - (id)nextResponder;
 - (id)resolvedTitle;
-- (id)scriptingID;
 - (void)setBackButtonBackgroundImage:(id)arg1 forState:(unsigned long long)arg2 barMetrics:(long long)arg3;
 - (void)setBackButtonBackgroundVerticalPositionAdjustment:(double)arg1 forBarMetrics:(long long)arg2;
 - (void)setBackButtonTitlePositionAdjustment:(struct UIOffset)arg1 forBarMetrics:(long long)arg2;
@@ -167,12 +170,10 @@
 - (void)setIsMinibarView:(BOOL)arg1;
 - (void)setLandscapeImagePhone:(id)arg1;
 - (void)setLandscapeImagePhoneInsets:(struct UIEdgeInsets)arg1;
-- (void)setTag:(long long)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setTitlePositionAdjustment:(struct UIOffset)arg1 forBarMetrics:(long long)arg2;
 - (void)setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)setView:(id)arg1;
-- (long long)tag;
 - (id)title;
 - (struct UIOffset)titlePositionAdjustmentForBarMetrics:(long long)arg1;
 - (id)titleTextAttributesForState:(unsigned long long)arg1;

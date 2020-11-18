@@ -8,7 +8,7 @@
 
 #import <UIKit/UIRecentsInputViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSMutableDictionary, NSString, UIButton, UICompatibilityInputViewController, UIKBSystemLayoutViewController, UIKeyboard, UILexicon, UIRecentsInputViewController, UIResponder, UITextInputTraits, UIView;
+@class NSArray, NSLayoutConstraint, NSMutableDictionary, NSString, UIButton, UICompatibilityInputViewController, UIKBSystemLayoutViewController, UIKeyboard, UILabel, UILexicon, UIRecentsInputViewController, UIResponder, UITextInputTraits, UITraitCollection, UIView;
 @protocol UISystemInputViewControllerDelegate, UITextInput;
 
 @interface UISystemInputViewController : UIViewController <UIRecentsInputViewControllerDelegate>
@@ -24,6 +24,7 @@
     BOOL _didDisplayRecents;
     id<UISystemInputViewControllerDelegate> _systemInputViewControllerDelegate;
     UIResponder<UITextInput> *_persistentDelegate;
+    UITraitCollection *_containingResponderTraitCollection;
     UIKeyboard *_keyboard;
     NSArray *_keyboardConstraints;
     UICompatibilityInputViewController *_keyboardVC;
@@ -37,13 +38,16 @@
     UIResponder<UITextInput> *_nextInputDelegate;
     UITextInputTraits *_textInputTraits;
     UILexicon *_cachedRecents;
+    UILabel *_promptLabel;
     UIView *_containingView;
     UIView *_contentLayoutView;
     long long _blurEffectStyle;
 }
 
+@property (strong, nonatomic) UILabel *_promptLabel; // @synthesize _promptLabel;
 @property (nonatomic) long long blurEffectStyle; // @synthesize blurEffectStyle=_blurEffectStyle;
 @property (strong, nonatomic) UILexicon *cachedRecents; // @synthesize cachedRecents=_cachedRecents;
+@property (strong, nonatomic) UITraitCollection *containingResponderTraitCollection; // @synthesize containingResponderTraitCollection=_containingResponderTraitCollection;
 @property (strong, nonatomic) UIView *containingView; // @synthesize containingView=_containingView;
 @property (strong, nonatomic) UIView *contentLayoutView; // @synthesize contentLayoutView=_contentLayoutView;
 @property (readonly, copy) NSString *debugDescription;
@@ -71,20 +75,26 @@
 @property (strong, nonatomic) NSLayoutConstraint *verticalAlignment; // @synthesize verticalAlignment=_verticalAlignment;
 @property (nonatomic) BOOL willPresentFullscreen; // @synthesize willPresentFullscreen=_willPresentFullscreen;
 
++ (id)_canonicalTraitsForResponder:(id)arg1;
 + (BOOL)canUseSystemInputViewControllerForResponder:(id)arg1;
 + (id)systemInputViewControllerForResponder:(id)arg1 editorView:(id)arg2;
 + (id)systemInputViewControllerForResponder:(id)arg1 editorView:(id)arg2 containingResponder:(id)arg3;
 - (id)_accessoryViewControllerForEdge:(long long)arg1;
 - (void)_addAccessoryViewController:(id)arg1;
 - (void)_addChildInputViewController;
+- (void)_clearCursorLocationIfNotFirstResponder;
 - (void)_createKeyboardIfNecessary;
 - (void)_didSuspend:(id)arg1;
 - (BOOL)_disableAutomaticKeyboardBehavior;
 - (void)_dismissSystemInputViewController;
+- (id)_effectView;
 - (unsigned long long)_horizontalLayoutTypeForEdge:(long long)arg1;
 - (void)_removeAccessoryViewController:(id)arg1;
+- (void)_resetDelegate;
 - (void)_returnButtonPressed;
 - (void)_setNonInputViewVisibility:(BOOL)arg1;
+- (id)_traitCollectionForUserInterfaceStyle;
+- (void)_updateRemoteTextEditingSession;
 - (unsigned long long)_verticalLayoutTypeForEdge:(long long)arg1;
 - (void)_willResume:(id)arg1;
 - (id)accessoryViewControllerForEdge:(long long)arg1;
@@ -94,13 +104,14 @@
 - (id)constraintsForEdge:(long long)arg1;
 - (void)dealloc;
 - (void)didSelectRecentInput;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)doneButtonStringForCurrentInputDelegate;
 - (void)findNextInputDelegate;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)inputModeDidChange:(id)arg1;
 - (void)notifyDelegateWithAccessoryVisibility:(BOOL)arg1;
 - (void)populateCoreHierarchy;
-- (id)preferredFocusedItem;
+- (id)preferredFocusEnvironments;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
@@ -110,12 +121,15 @@
 - (void)setConstraints:(id)arg1 forEdge:(long long)arg2;
 - (void)setupKeyboard;
 - (void)switchToKeyboard;
+- (id)traitCollection;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateAlignmentConstraints;
 - (void)updateViewConstraints;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
+- (BOOL)willShowRecentsList;
 
 @end
 

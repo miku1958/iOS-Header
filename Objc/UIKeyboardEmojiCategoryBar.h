@@ -4,44 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBKeyView.h>
+#import <UIKit/UIKeyboardEmojiKeyView.h>
 
-#import <UIKit/UIKeyboardEmojiCategoryControl-Protocol.h>
-
-@class NSString, UIKeyboardEmojiCategoryController, UIKeyboardEmojiGraphicsTraits, UIView;
+@class UIKeyboardEmojiGraphicsTraits, UIView;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardEmojiCategoryBar : UIKBKeyView <UIKeyboardEmojiCategoryControl>
+@interface UIKeyboardEmojiCategoryBar : UIKeyboardEmojiKeyView
 {
-    UIKeyboardEmojiCategoryController *_categoryController;
-    int _selected;
+    unsigned long long _selectedIndex;
     UIView *_scrubView;
     UIKeyboardEmojiGraphicsTraits *_emojiGraphicsTraits;
     BOOL _isScrubbing;
     double _scrubStartXLocation;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIKeyboardEmojiGraphicsTraits *emojiGraphicsTraits; // @synthesize emojiGraphicsTraits=_emojiGraphicsTraits;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *scrubView; // @synthesize scrubView=_scrubView;
-@property long long selectedIndex; // @dynamic selectedIndex;
-@property (readonly) Class superclass;
+@property unsigned long long selectedIndex; // @synthesize selectedIndex=_selectedIndex;
 
 - (void)animateScrubberToRect:(struct CGRect)arg1;
 - (struct CGRect)categorySelectedCircleRect:(long long)arg1;
 - (void)dealloc;
+- (void)didMoveToWindow;
 - (void)dimKeys:(id)arg1;
 - (struct CGRect)frameForDivider:(int)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
-- (void)receiveNotifictaion:(id)arg1;
-- (void)setCategory:(id)arg1;
+- (unsigned long long)selectedIndexForTouches:(id)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)updateCategory;
+- (void)updateCategoryOnBar:(unsigned long long)arg1;
+- (void)updateToCategory:(long long)arg1;
 
 @end
 

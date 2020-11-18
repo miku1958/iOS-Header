@@ -9,11 +9,12 @@
 #import <UIKit/UIViewControllerAnimatedTransitioningEx-Protocol.h>
 #import <UIKit/_UIBasicAnimationFactory-Protocol.h>
 
-@class NSString, UIView, _UINavigationInteractiveTransitionBase, _UIParallaxDimmingView;
+@class NSString, NSUUID, UIView, _UINavigationInteractiveTransitionBase, _UIParallaxDimmingView;
 @protocol UIViewControllerContextTransitioning;
 
 @interface _UINavigationParallaxTransition : NSObject <_UIBasicAnimationFactory, UIViewControllerAnimatedTransitioningEx>
 {
+    NSUUID *_currentRunningAnimationsUUID;
     BOOL _interactionAborted;
     BOOL _clipUnderlapWhileTransitioning;
     BOOL __shouldReverseLayoutDirection;
@@ -49,6 +50,7 @@
 
 - (void).cxx_destruct;
 - (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;
+- (void)_stopTransitionImmediately;
 - (id)_timingFunctionForAnimation;
 - (void)animateKeyboard:(id)arg1;
 - (void)animateTransition:(id)arg1;

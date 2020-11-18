@@ -6,18 +6,13 @@
 
 #import <UIKit/UIKBCacheToken_Key.h>
 
-@class NSString;
-
 __attribute__((visibility("hidden")))
 @interface UIKBCacheToken_KeyTemplate : UIKBCacheToken_Key
 {
-    NSString *_annotationString;
 }
 
 + (id)tokenTemplateForKey:(id)arg1 name:(id)arg2 style:(int)arg3 size:(struct CGSize)arg4;
 - (id)_stringWithAdditionalValues:(CDUnknownBlockType)arg1;
-- (void)annotateWithBool:(BOOL)arg1;
-- (void)dealloc;
 
 @end
 

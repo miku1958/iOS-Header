@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSNumber *shouldUseAcceleration; // @synthesize shouldUseAcceleration=_shouldUseAcceleration;
 
 + (id)sharedInstance;
+- (void)dealloc;
 - (void)setDefaultValues;
 
 @end

@@ -6,19 +6,22 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString;
+@class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _UIPopoverViewBackgroundComponentView : UIView
 {
-    NSString *directionSelector;
+    NSMutableArray *_replicants;
+    NSString *_directionSelector;
 }
 
-@property (strong, nonatomic) NSString *directionSelector; // @synthesize directionSelector;
+@property (copy, nonatomic) NSString *directionSelector; // @synthesize directionSelector=_directionSelector;
 
 - (void).cxx_destruct;
-- (id)_generateBackdropMaskViewForFlag:(long long)arg1;
+- (id)_newReplicant;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
+- (id)replicate;
+- (void)updateReplicants;
 
 @end
 

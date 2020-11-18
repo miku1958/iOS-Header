@@ -32,7 +32,7 @@
 - (void)didShowViewController:(id)arg1 animated:(BOOL)arg2;
 - (id)init;
 - (void)pushViewController:(id)arg1 animated:(BOOL)arg2;
-- (void)restoreOriginalNavigationController:(id)arg1;
+- (void)restoreOriginalNavigationControllerIfNecessary:(id)arg1;
 
 @end
 

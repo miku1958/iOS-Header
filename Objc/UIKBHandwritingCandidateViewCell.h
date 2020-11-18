@@ -6,21 +6,29 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class TIKeyboardCandidate, UIKBThemedView, UILabel;
+@class TIKeyboardCandidate, UIKBThemedView, UIKeyboardCandidatePocketShadow, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface UIKBHandwritingCandidateViewCell : UICollectionViewCell
 {
     TIKeyboardCandidate *_candidate;
     CDStruct_961fb75c _visualStyling;
+    long long _leftBorderEdge;
+    long long _rightBorderEdge;
     UILabel *_label;
     UILabel *_secondaryLabel;
     UIKBThemedView *_themedView;
+    UIKeyboardCandidatePocketShadow *_leftHardBorder;
+    UIKeyboardCandidatePocketShadow *_rightHardBorder;
 }
 
 @property (copy, nonatomic) TIKeyboardCandidate *candidate; // @synthesize candidate=_candidate;
 @property (readonly, nonatomic) struct UIEdgeInsets edgeInsets;
 @property (strong, nonatomic) UILabel *label; // @synthesize label=_label;
+@property (nonatomic) long long leftBorderEdge; // @synthesize leftBorderEdge=_leftBorderEdge;
+@property (strong, nonatomic) UIKeyboardCandidatePocketShadow *leftHardBorder; // @synthesize leftHardBorder=_leftHardBorder;
+@property (nonatomic) long long rightBorderEdge; // @synthesize rightBorderEdge=_rightBorderEdge;
+@property (strong, nonatomic) UIKeyboardCandidatePocketShadow *rightHardBorder; // @synthesize rightHardBorder=_rightHardBorder;
 @property (strong, nonatomic) UILabel *secondaryLabel; // @synthesize secondaryLabel=_secondaryLabel;
 @property (strong, nonatomic) UIKBThemedView *themedView; // @synthesize themedView=_themedView;
 @property (nonatomic) CDStruct_961fb75c visualStyling; // @synthesize visualStyling=_visualStyling;
@@ -30,9 +38,10 @@ __attribute__((visibility("hidden")))
 + (id)secondaryLabelFont;
 + (double)systemFontSize;
 + (double)widthForCandidate:(id)arg1 visualStyling:(CDStruct_961fb75c)arg2;
+- (void).cxx_destruct;
 - (BOOL)_canDrawContent;
 - (void)_setRenderConfig:(id)arg1;
-- (void)dealloc;
+- (void)_updateBorders;
 - (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)reloadData;

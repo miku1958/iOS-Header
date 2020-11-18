@@ -7,11 +7,13 @@
 #import <Foundation/NSObject.h>
 
 @class NSMutableArray, NSUUID, NSValue;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface UIKBTouchOrderedTaskList : NSObject
 {
     NSUUID *_touchUUID;
+    NSObject<OS_dispatch_queue> *_touchStateTasksQueue;
     NSMutableArray *_touchStateTasks;
     NSValue *_currentTouchPoint;
     BOOL _ignoredOnBegin;
@@ -32,6 +34,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)executeTasksInView:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)firstTouchStateForUITouchPhase:(long long)arg1;
 - (id)initWithTouchUUID:(id)arg1 withPathIndex:(unsigned long long)arg2;
+- (BOOL)isExecutingFirstTask;
+- (void)removeTasksMatchingFilter:(CDUnknownBlockType)arg1;
 
 @end
 

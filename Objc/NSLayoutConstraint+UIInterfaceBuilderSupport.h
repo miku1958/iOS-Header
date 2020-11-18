@@ -10,7 +10,7 @@
 
 @interface NSLayoutConstraint (UIInterfaceBuilderSupport)
 
-@property (strong, getter=_encodedConstant, setter=_setEncodedConstant:) _NSLayoutConstraintConstant *encodedConstant;
+@property (getter=_encodedConstant, setter=_setEncodedConstant:) _NSLayoutConstraintConstant *encodedConstant;
 
 @end
 

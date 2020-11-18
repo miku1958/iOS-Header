@@ -29,13 +29,13 @@ __attribute__((visibility("hidden")))
     NSNumberFormatter *_formatter;
     _UIDatePickerView *_datePickerView;
     BOOL _isUsingJapaneseCalendar;
-    unsigned long long _numberOfComponents;
     long long _minuteInterval;
     double _todaySinceReferenceDate;
     NSDate *_minimumDate;
     NSDateComponents *_minimumDateComponents;
     NSDate *_maximumDate;
     NSDateComponents *_maximumDateComponents;
+    unsigned long long _numberOfComponents;
     NSDate *_baseDate;
     NSDate *_originatingDate;
 }

@@ -37,6 +37,7 @@
 @property (readonly) Class superclass;
 
 + (long long)activityCategory;
++ (id)applicationBundleID;
 - (void).cxx_destruct;
 - (id)_activityImage;
 - (id)_activitySettingsImage;
@@ -56,7 +57,7 @@
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (void)encodeRestorableStateWithCoder:(id)arg1;
 - (id)init;
-- (void)mailComposeController:(id)arg1 didFinishWithResult:(int)arg2 error:(id)arg3;
+- (void)mailComposeController:(id)arg1 didFinishWithResult:(long long)arg2 error:(id)arg3;
 - (void)prepareWithActivityItems:(id)arg1;
 
 @end

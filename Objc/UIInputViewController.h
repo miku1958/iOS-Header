@@ -14,12 +14,17 @@
 
 @interface UIInputViewController : UIViewController <_UITextDocumentInterfaceDelegate, UITextInputDelegate>
 {
+    BOOL _commitInputModeOnTouchEnd;
+    BOOL _inputModeListIsShown;
+    double _touchBegan;
     BOOL _alignsToContentViewController;
+    BOOL _autosizeToCurrentKeyboard;
     id<UITextDocumentProxy> _textDocumentProxy;
     NSString *_primaryLanguage;
 }
 
 @property (nonatomic) BOOL _alignsToContentViewController; // @synthesize _alignsToContentViewController;
+@property (nonatomic, setter=_setAutosizeToCurrentKeyboard:) BOOL _autosizeToCurrentKeyboard; // @synthesize _autosizeToCurrentKeyboard;
 @property (readonly, nonatomic) BOOL _isPlaceholder;
 @property (readonly, nonatomic) UIKeyboard *_keyboard;
 @property (readonly, copy) NSString *debugDescription;
@@ -31,6 +36,9 @@
 @property (readonly, nonatomic) id<UITextDocumentProxy> textDocumentProxy; // @synthesize textDocumentProxy=_textDocumentProxy;
 
 + (BOOL)_requiresProxyInterface;
++ (void)presentDialogForAddingKeyboard;
+- (BOOL)_canBecomeFirstResponder;
+- (BOOL)_canResignIfContainsFirstResponder;
 - (id)_compatibilityController;
 - (void)_didResetDocumentState;
 - (id)_extensionContext;
@@ -46,6 +54,7 @@
 - (void)dealloc;
 - (void)didReceiveMemoryWarning;
 - (void)dismissKeyboard;
+- (void)handleInputModeListFromView:(id)arg1 withEvent:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
@@ -54,6 +63,7 @@
 - (void)selectionDidChange:(id)arg1;
 - (void)selectionWillChange:(id)arg1;
 - (void)setView:(id)arg1;
+- (void)set_autosizeToCurrentKeyboard:(BOOL)arg1;
 - (void)textDidChange:(id)arg1;
 - (void)textWillChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

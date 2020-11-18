@@ -41,10 +41,12 @@
         unsigned int inTransitionFromTransitionLayout:1;
         unsigned int inTransitionToTransitionLayout:1;
         unsigned int prepared:1;
+        unsigned int wantsRightToLeftHorizontalMirroringIfNeeded:1;
     } _layoutFlags;
     long long _sublayoutType;
 }
 
+@property (nonatomic, setter=_setWantsRightToLeftHorizontalMirroringIfNeeded:) BOOL _wantsRightToLeftHorizontalMirroringIfNeeded;
 @property (readonly, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property (nonatomic, getter=_compositionLayout, setter=_setCompositionLayout:) _UICollectionViewCompositionLayout *compositionLayout;
 @property (copy, nonatomic, getter=_elementKinds, setter=_setElementKinds:) NSArray *elementKinds;
@@ -63,10 +65,12 @@
 - (CDUnknownBlockType)_animationForReusableView:(id)arg1 toLayoutAttributes:(id)arg2;
 - (CDUnknownBlockType)_animationForReusableView:(id)arg1 toLayoutAttributes:(id)arg2 type:(unsigned long long)arg3;
 - (struct CGRect)_bounds;
+- (BOOL)_cellsShouldConferWithAutolayoutEngineForSizingInfo;
 - (id)_decorationViewForLayoutAttributes:(id)arg1;
 - (void)_didFinishLayoutTransitionAnimations:(BOOL)arg1;
 - (id)_dynamicAnimator;
 - (struct CGRect)_dynamicReferenceBounds;
+- (BOOL)_estimatesSizes;
 - (void)_finalizeCollectionViewItemAnimations;
 - (void)_finalizeLayoutTransition;
 - (id)_indexPathsToDeleteForDecorationViewOfKind:(id)arg1;
@@ -78,6 +82,7 @@
 - (id)_invalidationContextForReorderingTargetPosition:(struct CGPoint)arg1 targetIndexPaths:(id)arg2 withPreviousPosition:(struct CGPoint)arg3 previousIndexPaths:(id)arg4;
 - (id)_layoutAttributesForReorderedItemAtIndexPath:(id)arg1 withTargetPosition:(struct CGPoint)arg2;
 - (struct CGPoint)_offsetInTopParentLayout:(struct _UICollectionViewCompositionLayout **)arg1;
+- (struct UIEdgeInsets)_preferredLayoutMargins;
 - (void)_prepareForTransitionFromLayout:(id)arg1;
 - (void)_prepareForTransitionToLayout:(id)arg1;
 - (void)_prepareToAnimateFromCollectionViewItems:(id)arg1 atContentOffset:(struct CGPoint)arg2 toItems:(id)arg3 atContentOffset:(struct CGPoint)arg4;
@@ -88,6 +93,7 @@
 - (void)_setExternalObjectTable:(id)arg1 forNibLoadingOfDecorationViewOfKind:(id)arg2;
 - (BOOL)_shouldScrollToContentBeginningInRightToLeft;
 - (BOOL)_supportsAdvancedTransitionAnimations;
+- (BOOL)canBeEdited;
 - (struct CGSize)collectionViewContentSize;
 - (struct CGRect)convertRect:(struct CGRect)arg1 fromLayout:(id)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 toLayout:(id)arg2;
@@ -113,6 +119,7 @@
 - (id)invalidationContextForEndingInteractiveMovementOfItemsToFinalIndexPaths:(id)arg1 previousIndexPaths:(id)arg2 movementCancelled:(BOOL)arg3;
 - (id)invalidationContextForInteractivelyMovingItems:(id)arg1 withTargetPosition:(struct CGPoint)arg2 previousIndexPaths:(id)arg3 previousPosition:(struct CGPoint)arg4;
 - (id)invalidationContextForPreferredLayoutAttributes:(id)arg1 withOriginalAttributes:(id)arg2;
+- (BOOL)isEditing;
 - (id)layoutAttributesForDecorationViewOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (id)layoutAttributesForInteractivelyMovingItemAtIndexPath:(id)arg1 withTargetPosition:(struct CGPoint)arg2;
@@ -125,6 +132,7 @@
 - (void)prepareLayout;
 - (void)registerClass:(Class)arg1 forDecorationViewOfKind:(id)arg2;
 - (void)registerNib:(id)arg1 forDecorationViewOfKind:(id)arg2;
+- (void)setEditing:(BOOL)arg1;
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
 - (BOOL)shouldInvalidateLayoutForPreferredLayoutAttributes:(id)arg1 withOriginalAttributes:(id)arg2;
 - (id)snapshottedLayoutAttributeForItemAtIndexPath:(id)arg1;

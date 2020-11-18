@@ -11,9 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (struct UIEdgeInsets)actionImageMarginForAction:(id)arg1 withViewRepresentation:(id)arg2 inAlertController:(id)arg3;
 - (void)animateAlertControllerView:(id)arg1 ofAlertController:(id)arg2 forPresentation:(BOOL)arg3 inContainerView:(id)arg4 descendantOfContainerView:(id)arg5 duration:(double)arg6 completionBlock:(CDUnknownBlockType)arg7;
-- (double)backgroundCornerRadius;
 - (struct UIEdgeInsets)contentInsets;
 - (double)marginAboveMessageLabelFirstBaseline;
 - (double)marginAboveTitleLabelFirstBaseline;
@@ -23,10 +21,8 @@ __attribute__((visibility("hidden")))
 - (double)maximumWidth;
 - (id)messageLabelColor;
 - (id)messageLabelFont;
-- (double)minimumActionHeight;
 - (long long)permittedActionLayoutDirection;
-- (id)preferredActionFont;
-- (id)regularActionFont;
+- (BOOL)placementAvoidsKeyboard;
 - (id)textFieldContainingViewWithTextField:(id)arg1;
 - (id)titleLabelColor;
 - (id)titleLabelFont;

@@ -8,7 +8,7 @@
 
 #import <UIKit/NSCoding-Protocol.h>
 
-@class CAShapeLayer, NSArray, NSObservation, NSProgress, UIColor, UIImage, UIImageView, UIVisualEffectView;
+@class NSArray, NSObservation, NSProgress, UIColor, UIImage, UIImageView, UIVisualEffectView;
 
 @interface UIProgressView : UIView <NSCoding>
 {
@@ -20,7 +20,6 @@
     UIView *_contentView;
     UIImageView *_trackView;
     UIImageView *_progressView;
-    CAShapeLayer *_maskLayer;
     BOOL _isAnimating;
     NSArray *_trackColors;
     NSArray *_progressColors;

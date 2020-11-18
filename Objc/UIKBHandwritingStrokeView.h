@@ -19,9 +19,11 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) struct CGRect aggregateInvalidRect; // @synthesize aggregateInvalidRect=_aggregateInvalidRect;
 @property (readonly, nonatomic) struct CGContext *bitmapContext; // @synthesize bitmapContext=_bitmapContext;
-@property (strong, nonatomic) UIKBHandwritingView *keyView; // @synthesize keyView=_keyView;
+@property (weak, nonatomic) UIKBHandwritingView *keyView; // @synthesize keyView=_keyView;
 @property (readonly, nonatomic) double scaleFactor; // @synthesize scaleFactor=_scaleFactor;
 
+- (void).cxx_destruct;
+- (BOOL)_wantsDeepDrawing;
 - (void)addHandwritingPoint:(struct)arg1;
 - (void)addTrapezoidFromFirstPoint:(struct)arg1 secondPoint:(struct)arg2;
 - (void)clearRect:(struct CGRect)arg1;

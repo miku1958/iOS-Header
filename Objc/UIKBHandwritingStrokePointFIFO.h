@@ -16,9 +16,9 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) TIHandwritingStrokes *strokes; // @synthesize strokes=_strokes;
 
+- (void).cxx_destruct;
 - (void)addPoint:(struct)arg1;
 - (void)clear;
-- (void)dealloc;
 - (void)flush;
 - (id)initWithFIFO:(id)arg1;
 

@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)applyLayoutAttributes:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)tintColorDidChange;
 
 @end
 

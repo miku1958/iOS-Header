@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL wantsAnimation; // @synthesize wantsAnimation=_wantsAnimation;
 
 - (id)actionForKey:(id)arg1;
+- (void)display;
 - (void)drawInContext:(struct CGContext *)arg1;
 
 @end

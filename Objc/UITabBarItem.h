@@ -6,7 +6,7 @@
 
 #import <UIKit/UIBarItem.h>
 
-@class NSString, UIColor, UIImage, UIView;
+@class NSString, UIColor, UIImage, UITabBarButton, _UITabBarItemAppearanceStorage;
 
 @interface UITabBarItem : UIBarItem
 {
@@ -19,57 +19,54 @@
     UIImage *_unselectedImage;
     struct UIEdgeInsets _imageInsets;
     NSString *_badgeValue;
-    UIView *_view;
-    long long _tag;
-    id _appearanceStorage;
+    UITabBarButton *_view;
+    _UITabBarItemAppearanceStorage *_appearanceStorage;
     struct {
         unsigned int enabled:1;
         unsigned int style:3;
         unsigned int isSystemItem:1;
         unsigned int systemItem:7;
-        unsigned int viewIsCustom:1;
-        unsigned int animatedBadge:1;
         unsigned int customSelectedImage:1;
         unsigned int customUnselectedImage:1;
     } _tabBarItemFlags;
-    long long _barMetrics;
-    long long _imageStyle;
-    UIColor *_tintColor;
+    long long __barMetrics;
+    long long __imageStyle;
+    UIColor *__tintColor;
 }
 
-@property (nonatomic, setter=_setBarMetrics:) long long _barMetrics; // @synthesize _barMetrics;
-@property (nonatomic, setter=_setImageStyle:) long long _imageStyle; // @synthesize _imageStyle;
-@property (strong, nonatomic, setter=_setTintColor:) UIColor *_tintColor; // @synthesize _tintColor;
-@property (nonatomic) SEL action;
-@property (nonatomic) BOOL animatedBadge;
-@property (copy, nonatomic) NSString *badgeValue;
+@property (nonatomic, setter=_setBarMetrics:) long long _barMetrics; // @synthesize _barMetrics=__barMetrics;
+@property (nonatomic, setter=_setImageStyle:) long long _imageStyle; // @synthesize _imageStyle=__imageStyle;
+@property (nonatomic, getter=_isSelected, setter=_setSelected:) BOOL _selected;
+@property (strong, nonatomic, setter=_setTintColor:) UIColor *_tintColor; // @synthesize _tintColor=__tintColor;
+@property (copy, nonatomic) UIColor *badgeColor;
+@property (copy, nonatomic) NSString *badgeValue; // @synthesize badgeValue=_badgeValue;
 @property (strong, nonatomic) UIImage *selectedImage;
-@property (nonatomic) id target;
 @property (nonatomic) struct UIOffset titlePositionAdjustment;
-@property (strong, nonatomic) UIImage *unselectedImage;
-@property (strong, nonatomic) UIView *view;
-@property (nonatomic) BOOL viewIsCustom;
 
 + (id)_appearanceBlindViewClasses;
-- (id)_createViewForTabBar:(id)arg1 showingBadge:(BOOL)arg2;
-- (id)_createViewForTabBar:(id)arg1 showingBadge:(BOOL)arg2 withTint:(BOOL)arg3;
+- (void).cxx_destruct;
+- (id)_createViewForTabBar:(id)arg1 asProxyView:(BOOL)arg2;
+- (id)_imageForState:(unsigned long long)arg1 metrics:(long long)arg2 position:(long long)arg3 type:(long long)arg4;
 - (id)_internalTemplateImage;
 - (id)_internalTemplateImages;
 - (id)_internalTitle;
-- (BOOL)_isSelected;
 - (void)_setInternalTemplateImage:(id)arg1;
 - (void)_setInternalTitle:(id)arg1;
-- (void)_setSelected:(BOOL)arg1;
 - (void)_setTitleTextAttributeValue:(id)arg1 forAttributeKey:(id)arg2 state:(unsigned long long)arg3;
+- (void)_showSelectedIndicator:(BOOL)arg1 changeSelection:(BOOL)arg2;
 - (void)_updateButtonForTintColor:(id)arg1 selected:(BOOL)arg2;
 - (id)_updateImageWithTintColor:(id)arg1 isSelected:(BOOL)arg2 getImageOffset:(struct UIOffset *)arg3;
 - (void)_updateToMatchCurrentState;
 - (void)_updateView;
 - (void)_updateViewAndPositionItems:(BOOL)arg1;
-- (void)dealloc;
+- (void)_updateViewBadge;
+- (SEL)action;
+- (BOOL)animatedBadge;
+- (id)badgeTextAttributesForState:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)finishedSelectedImage;
 - (id)finishedUnselectedImage;
+- (BOOL)hasTitle;
 - (id)image;
 - (struct UIEdgeInsets)imageInsets;
 - (id)init;
@@ -79,18 +76,25 @@
 - (id)initWithTitle:(id)arg1 image:(id)arg2 tag:(long long)arg3;
 - (BOOL)isEnabled;
 - (BOOL)isSystemItem;
-- (id)nextResponder;
+- (id)resolvedTitle;
+- (void)setAction:(SEL)arg1;
+- (void)setAnimatedBadge:(BOOL)arg1;
+- (void)setBadgeTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setFinishedSelectedImage:(id)arg1 withFinishedUnselectedImage:(id)arg2;
 - (void)setImage:(id)arg1;
 - (void)setImageInsets:(struct UIEdgeInsets)arg1;
-- (void)setTag:(long long)arg1;
+- (void)setTarget:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
+- (void)setUnselectedImage:(id)arg1;
+- (void)setView:(id)arg1;
 - (long long)systemItem;
-- (long long)tag;
+- (id)target;
 - (id)title;
 - (id)titleTextAttributesForState:(unsigned long long)arg1;
+- (id)unselectedImage;
+- (id)view;
 
 @end
 

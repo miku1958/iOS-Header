@@ -9,12 +9,13 @@
 #import <UIKit/UITextInput-Protocol.h>
 #import <UIKit/UITextInputTraits-Protocol.h>
 #import <UIKit/UITextLinkInteraction-Protocol.h>
+#import <UIKit/WebEditingDelegate-Protocol.h>
 #import <UIKit/WebPolicyDelegate-Protocol.h>
 
 @class DOMHTMLElement, NSAttributedString, NSDictionary, NSString, UIColor, UIFont, UITextInteractionAssistant, UITextPosition, UITextRange, UIWebDocumentView, WebFrame;
 @protocol UITextContentViewDelegate, UITextInputDelegate, UITextInputTokenizer;
 
-@interface UITextContentView : UIView <WebPolicyDelegate, UITextInput, UITextLinkInteraction, UITextInputTraits>
+@interface UITextContentView : UIView <WebPolicyDelegate, WebEditingDelegate, UITextInput, UITextLinkInteraction, UITextInputTraits>
 {
     id m_delegate;
     WebFrame *m_frame;
@@ -51,8 +52,10 @@
 @property (nonatomic) BOOL enablesReturnKeyAutomatically; // @dynamic enablesReturnKeyAutomatically;
 @property (readonly, nonatomic) UITextPosition *endOfDocument;
 @property (strong, nonatomic) UIFont *font;
+@property (readonly, nonatomic) BOOL hasText;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<UITextInputDelegate> inputDelegate;
+@property (readonly, nonatomic) id insertDictationResultPlaceholder;
 @property (nonatomic) long long keyboardAppearance; // @dynamic keyboardAppearance;
 @property (nonatomic) long long keyboardType; // @dynamic keyboardType;
 @property (readonly, nonatomic) UITextRange *markedTextRange;
@@ -69,19 +72,18 @@
 @property (copy, nonatomic) NSString *text;
 @property (nonatomic) long long textAlignment;
 @property (strong, nonatomic) UIColor *textColor;
+@property (copy, nonatomic) NSString *textContentType;
 @property (readonly, nonatomic) UIView *textInputView;
 @property (readonly, nonatomic) id<UITextInputTokenizer> tokenizer;
 
 - (void).cxx_destruct;
 - (void)_addShortcut:(id)arg1;
 - (unsigned long long)_allowedLinkTypes;
-- (id)_automationValue;
 - (void)_define:(id)arg1;
 - (void)_didScroll;
 - (void)_hideSelectionCommands;
 - (void)_insertAttributedTextWithoutClosingTyping:(id)arg1;
 - (id)_keyboardResponder;
-- (void)_lookup:(struct CGPoint)arg1;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (void)_promptForReplace:(id)arg1;
 - (id)_proxyTextInput;
@@ -138,14 +140,12 @@
 - (struct CGRect)frameForDictationResultPlaceholder:(id)arg1;
 - (BOOL)hasMarkedText;
 - (BOOL)hasSelection;
-- (BOOL)hasText;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)increaseSize:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 webView:(id)arg2;
 - (void)insertDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2;
-- (id)insertDictationResultPlaceholder;
 - (void)insertText:(id)arg1;
 - (id)interactionAssistant;
 - (BOOL)isFirstResponder;

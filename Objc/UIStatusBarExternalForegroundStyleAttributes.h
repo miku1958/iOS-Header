@@ -16,10 +16,12 @@ __attribute__((visibility("hidden")))
 - (struct UIEdgeInsets)edgeInsetsForBluetoothBatteryInsides;
 - (double)edgePadding;
 - (id)makeTextFontForStyle:(long long)arg1;
+- (double)middlePadding;
 - (double)scale;
 - (double)standardPadding;
 - (id)textForNetworkType:(int)arg1;
 - (double)textOffsetForStyle:(long long)arg1;
+- (id)uniqueIdentifier;
 - (BOOL)usesVerticalLayout;
 
 @end

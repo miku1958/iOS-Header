@@ -44,7 +44,7 @@
 @property (nonatomic, getter=isAnimating) BOOL animating; // @synthesize animating=_animating;
 @property (nonatomic) double cachedTrackMaskWidth; // @synthesize cachedTrackMaskWidth=_cachedTrackMaskWidth;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<_UIActionSliderDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<_UIActionSliderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIColor *knobColor;
@@ -91,6 +91,7 @@
 - (void)closeTrackAnimated:(BOOL)arg1;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 vibrantSettings:(id)arg2;

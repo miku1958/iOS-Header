@@ -19,7 +19,6 @@
 + (id)_screenModeForDisplayMode:(id)arg1 mainScreen:(BOOL)arg2;
 - (void).cxx_destruct;
 - (id)_displayMode;
-- (BOOL)_isNTSCOrPAL;
 - (struct CGSize)_sizeWithLevel:(unsigned long long)arg1;
 - (id)description;
 - (id)initWithDisplayMode:(id)arg1 mainScreen:(BOOL)arg2;

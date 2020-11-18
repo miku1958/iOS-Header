@@ -9,7 +9,7 @@
 #import <UIKit/UITableViewSubviewReusing-Protocol.h>
 
 @class NSString, UIColor, UIImage, UILabel, UITableView, _UITableViewHeaderFooterViewLabel;
-@protocol UITableViewConstants;
+@protocol UITable, UITableConstants;
 
 @interface UITableViewHeaderFooterView : UIView <UITableViewSubviewReusing>
 {
@@ -17,7 +17,7 @@
     UIImage *_backgroundImage;
     struct CGRect _frame;
     long long _textAlignment;
-    UITableView *_tableView;
+    id<UITable> _tableView;
     double _maxTitleWidth;
     NSString *_reuseIdentifier;
     UIView *_backgroundView;
@@ -26,7 +26,7 @@
     UIView *_contentView;
     UIColor *_tintColor;
     struct UIEdgeInsets _separatorInset;
-    id<UITableViewConstants> _constants;
+    id<UITableConstants> _constants;
     struct {
         unsigned int isHeader:1;
         unsigned int labelBackgroundColorNeedsUpdate:1;
@@ -37,11 +37,12 @@
         unsigned int didSetSectionHeader:1;
         unsigned int didSetupDefaults:1;
     } _headerFooterFlags;
+    id<UITable> _table;
 }
 
 @property (strong, nonatomic) UIImage *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
 @property (strong, nonatomic) UIView *backgroundView;
-@property (strong, nonatomic, getter=_constants, setter=_setConstants:) id<UITableViewConstants> constants;
+@property (strong, nonatomic, getter=_constants, setter=_setConstants:) id<UITableConstants> constants;
 @property (readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -55,7 +56,8 @@
 @property (nonatomic) BOOL sectionHeader;
 @property (nonatomic, getter=_stripPadding, setter=_setStripPadding:) BOOL stripPadding;
 @property (readonly) Class superclass;
-@property (weak, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
+@property (weak, nonatomic) id<UITable> table; // @synthesize table=_table;
+@property (weak, nonatomic) UITableView *tableView;
 @property (nonatomic) long long tableViewStyle;
 @property (copy, nonatomic) NSString *text;
 @property (nonatomic) long long textAlignment;
@@ -65,17 +67,20 @@
 
 + (id)_defaultFontForHeaderFooterView:(id)arg1;
 + (id)_defaultFontForTableViewStyle:(long long)arg1 isSectionHeader:(BOOL)arg2;
++ (id)_defaultPlainHeaderFooterFont;
 + (id)_defaultTextColorForTableViewStyle:(long long)arg1 isSectionHeader:(BOOL)arg2;
++ (double)defaultFooterHeightForStyle:(long long)arg1;
++ (double)defaultHeaderHeightForStyle:(long long)arg1;
 - (void).cxx_destruct;
 - (struct CGRect)_backgroundRect;
 - (struct CGRect)_detailLabelFrame;
 - (struct CGSize)_detailTextSizeForWidth:(double)arg1;
+- (BOOL)_forwardsSystemLayoutFittingSizeToContentView:(id)arg1;
 - (void)_invalidateDetailLabelBackgroundColor;
 - (void)_invalidateLabelBackgroundColor;
 - (BOOL)_isTransparentFocusRegion;
 - (id)_label:(BOOL)arg1;
 - (struct CGRect)_labelFrame;
-- (id)_scriptingInfo;
 - (void)_setBackgroundViewColor:(id)arg1;
 - (void)_setupBackgroundView;
 - (void)_setupDefaultsIfNecessary;
@@ -91,6 +96,7 @@
 - (void)_updateLabelBackgroundColorIfNeeeded;
 - (void)_updateLayerContents;
 - (BOOL)_useDetailText;
+- (void)encodeWithCoder:(id)arg1;
 - (struct CGRect)frame;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -99,6 +105,7 @@
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)setBackgroundColor:(id)arg1;
+- (void)setContentView:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setNeedsUpdateConstraints;
 - (void)setOpaque:(BOOL)arg1;

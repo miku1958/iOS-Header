@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) UITouch *activeTouch; // @synthesize activeTouch=m_activeTouch;
+@property (readonly, nonatomic) struct CGPoint activeTouchPoint;
 @property (nonatomic) BOOL animateUpdate; // @synthesize animateUpdate=m_animateUpdate;
 @property (readonly, nonatomic) BOOL autoscrolled;
 @property (nonatomic) BOOL baseIsStart; // @synthesize baseIsStart=m_baseIsStart;

@@ -6,27 +6,29 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSExtension;
+@class NSExtension, NSString, UIImage, UIViewController;
 
 @interface UIActivity : NSObject
 {
     long long _defaultPriority;
-    CDUnknownBlockType _activityCompletionHandler;
     CDUnknownBlockType _activityCompletionWithItemsHandler;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType activityCompletionHandler; // @synthesize activityCompletionHandler=_activityCompletionHandler;
 @property (copy, nonatomic) CDUnknownBlockType activityCompletionWithItemsHandler; // @synthesize activityCompletionWithItemsHandler=_activityCompletionWithItemsHandler;
+@property (readonly, nonatomic) UIImage *activityImage;
+@property (readonly, nonatomic) NSString *activityTitle;
+@property (readonly, nonatomic) NSString *activityType;
+@property (readonly, nonatomic) UIViewController *activityViewController;
 @property (readonly, nonatomic) NSExtension *applicationExtension;
 
 + (id)_activityFunctionImage:(id)arg1;
-+ (id)_activityGenericImage:(id)arg1;
 + (id)_activityImageForApplication:(id)arg1;
 + (id)_activitySettingsImageForApplication:(id)arg1;
 + (long long)activityCategory;
 - (void).cxx_destruct;
 - (id)_activityImage;
 - (id)_activitySettingsImage;
+- (BOOL)_activitySupportsPromiseURLs;
 - (id)_attachmentNameForActivityItem:(id)arg1;
 - (id)_beforeActivity;
 - (BOOL)_canBeExcludedByActivityViewController:(id)arg1;
@@ -37,7 +39,6 @@
 - (id)_embeddedActivityViewController;
 - (void)_injectedJavaScriptResult:(id)arg1;
 - (BOOL)_presentActivityOnViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_setActivityCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_setActivityCompletionWithItemsHandler:(CDUnknownBlockType)arg1;
 - (void)_setSubject:(id)arg1;
 - (id)_subjectForActivityItem:(id)arg1;
@@ -46,11 +47,7 @@
 - (void)_willPresentAsFormSheet;
 - (void)activityDidFinish:(BOOL)arg1;
 - (void)activityDidFinish:(BOOL)arg1 items:(id)arg2 error:(id)arg3;
-- (id)activityImage;
 - (id)activitySettingsImage;
-- (id)activityTitle;
-- (id)activityType;
-- (id)activityViewController;
 - (BOOL)canPerformWithActivityItems:(id)arg1;
 - (void)performActivity;
 - (void)prepareWithActivityItems:(id)arg1;

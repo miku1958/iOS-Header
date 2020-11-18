@@ -32,6 +32,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSLayoutConstraint *widthConstraint; // @synthesize widthConstraint=_widthConstraint;
 
 - (void).cxx_destruct;
+- (id)_uiktest_FocusedCellLabel;
+- (id)_uiktest_UnfocusedCellBackgroundView;
+- (id)_uiktest_UnfocusedCellLabel;
 - (void)didSelectButtonAtIndexPath:(id)arg1;
 - (void)ensureConstraints;
 - (id)indexPathForPreferredFocusedViewInTableView:(id)arg1;

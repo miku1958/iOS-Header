@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
         unsigned int isExtended;
         unsigned int didMinimizeKeyboard;
         unsigned int isSplit;
+        unsigned int isFloating;
     } _candidateBarFlags;
 }
 
@@ -36,15 +37,18 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 + (id)sharedInstanceForInlineView;
 + (id)sharedInstanceForInlineView:(BOOL)arg1;
+- (BOOL)_needsBackdrop;
 - (unsigned long long)_numberOfColumns:(BOOL)arg1;
 - (void)_toggleExtendedCandidateView:(id)arg1;
 - (id)activeCandidateList;
 - (void)candidatesDidChange;
 - (void)dealloc;
 - (double)extendedViewAnimationDuration;
+- (double)extendedViewHeight;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isExtended;
+- (BOOL)isFloating;
 - (BOOL)isSplit;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -52,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)setCandidateViewExtended:(BOOL)arg1;
 - (void)setCandidatesToExtendedViewFromCollapsedView:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)setIsFloating:(BOOL)arg1;
 - (BOOL)shouldUseKeyboardBackground:(id)arg1;
 - (void)updatePageControlStatus;
 - (void)willMoveToSuperview:(id)arg1;

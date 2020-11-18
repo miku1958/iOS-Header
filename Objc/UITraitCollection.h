@@ -9,20 +9,24 @@
 #import <UIKit/NSCopying-Protocol.h>
 #import <UIKit/NSSecureCoding-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
 @interface UITraitCollection : NSObject <NSCopying, NSSecureCoding>
 {
-    CDStruct_e384231c _builtinTraits;
+    CDStruct_44017d25 _builtinTraits;
     NSDictionary *_clientDefinedTraits;
 }
 
 @property (readonly, nonatomic) long long barMetrics;
 @property (readonly, nonatomic) long long barPosition;
+@property (readonly, nonatomic) long long displayGamut;
 @property (readonly, nonatomic) double displayScale;
 @property (readonly, nonatomic) long long forceTouchCapability;
 @property (readonly, nonatomic) long long horizontalSizeClass;
+@property (readonly, nonatomic) long long layoutDirection;
+@property (readonly, copy, nonatomic) NSString *preferredContentSizeCategory;
 @property (readonly, nonatomic) long long userInterfaceIdiom;
+@property (readonly, nonatomic) long long userInterfaceStyle;
 @property (readonly, nonatomic) long long verticalSizeClass;
 
 + (id)_emptyTraitCollection;
@@ -30,20 +34,25 @@
 + (BOOL)supportsSecureCoding;
 + (id)traitCollectionWithBarMetrics:(long long)arg1;
 + (id)traitCollectionWithBarPosition:(long long)arg1;
++ (id)traitCollectionWithDisplayGamut:(long long)arg1;
 + (id)traitCollectionWithDisplayScale:(double)arg1;
 + (id)traitCollectionWithForceTouchCapability:(long long)arg1;
 + (id)traitCollectionWithHorizontalSizeClass:(long long)arg1;
 + (id)traitCollectionWithInteractionModel:(unsigned long long)arg1;
++ (id)traitCollectionWithLayoutDirection:(long long)arg1;
++ (id)traitCollectionWithPreferredContentSizeCategory:(id)arg1;
 + (id)traitCollectionWithPrimaryInteractionModel:(unsigned long long)arg1;
 + (id)traitCollectionWithTouchLevel:(long long)arg1;
 + (id)traitCollectionWithTraitsFromCollections:(id)arg1;
 + (id)traitCollectionWithUserInterfaceIdiom:(long long)arg1;
 + (id)traitCollectionWithUserInterfaceStyle:(long long)arg1;
 + (id)traitCollectionWithVerticalSizeClass:(long long)arg1;
+- (BOOL)_changedContentSizeCategoryFromTraitCollection:(id)arg1;
 - (long long)_compare:(id)arg1;
-- (id)_initWithBuiltinTraitStorage:(CDStruct_e384231c *)arg1 clientDefinedTraits:(id)arg2;
+- (id)_initWithBuiltinTraitStorage:(CDStruct_44017d25 *)arg1 clientDefinedTraits:(id)arg2;
 - (BOOL)_matchesIntersectionWithTraitCollection:(id)arg1;
 - (id)_namedImageDescription;
+- (id)_traitCollectionByReplacingValue:(id)arg1 forTraitName:(id)arg2;
 - (id)_valueForTraitNamed:(id)arg1;
 - (BOOL)containsTraitsInCollection:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -57,7 +66,6 @@
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)primaryInteractionModel;
 - (long long)touchLevel;
-- (long long)userInterfaceStyle;
 
 @end
 

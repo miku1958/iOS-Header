@@ -66,7 +66,9 @@ __attribute__((visibility("hidden")))
 - (void)_intrinsicContentSizeInvalidatedForItem:(id)arg1;
 - (BOOL)_itemCountChanged;
 - (id)_lastVisibleItem;
+- (long long)_maxAttributeForGapConstraintRespectingBaselineRelative:(BOOL)arg1;
 - (long long)_minAttributeForGapConstraint;
+- (long long)_minAttributeForGapConstraintRespectingBaselineRelative:(BOOL)arg1;
 - (BOOL)_monitorsSystemLayoutFittingSizeForItem:(id)arg1;
 - (void)_notifyCanvasesBaselineParametersDidChange;
 - (id)_orderedConfigurationHistory;

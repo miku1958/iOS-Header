@@ -8,6 +8,7 @@
 
 @protocol _UIKeyboardArbitrationClient
 - (void)queue_applicationLostFocusWithCompletion:(void (^)(void))arg1;
+- (void)queue_getDebugInfoWithCompletion:(void (^)(NSDictionary *))arg1;
 - (void)queue_keyboardChanged:(_UIKeyboardChangedInformation *)arg1 onComplete:(void (^)(void))arg2;
 - (void)queue_keyboardChangedWithCompletion:(void (^)(void))arg1;
 - (void)queue_keyboardSuppressed:(BOOL)arg1 withCompletion:(void (^)(void))arg2;

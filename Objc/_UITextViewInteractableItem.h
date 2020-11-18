@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     _UIRotatingAlertController *_linkInteractionAlertController;
     BOOL _interactionIsFinished;
     UITextView *_textView;
+    NSString *_localizedTitle;
     NSArray *_actions;
     NSDictionary *_defaultAction;
     UIWindow *_windowForActionSheetPresentation;
@@ -24,11 +25,15 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) NSArray *actions; // @synthesize actions=_actions;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) NSDictionary *defaultAction; // @synthesize defaultAction=_defaultAction;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL interactionIsFinished; // @synthesize interactionIsFinished=_interactionIsFinished;
-@property (readonly, nonatomic) NSString *localizedTitle;
+@property (readonly, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 @property (nonatomic) struct _NSRange range; // @synthesize range=_range;
 @property (nonatomic) struct _NSRange subRange; // @synthesize subRange=_subRange;
+@property (readonly) Class superclass;
 @property (weak, nonatomic) UITextView *textView; // @synthesize textView=_textView;
 @property (strong, nonatomic) UIWindow *windowForActionSheetPresentation; // @synthesize windowForActionSheetPresentation=_windowForActionSheetPresentation;
 
@@ -39,13 +44,14 @@ __attribute__((visibility("hidden")))
 - (void)_handleActionAndFinish:(id)arg1;
 - (void)_showActionSheet;
 - (BOOL)allowHighlight;
-- (BOOL)allowInteraction;
+- (BOOL)allowInteraction:(long long)arg1;
 - (void)handleLongPress;
 - (void)handleTap;
 - (id)hostViewForSheet:(id)arg1;
 - (struct CGRect)initialPresentationRectInHostViewForSheet:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (struct CGRect)presentationRectInHostViewForSheet:(id)arg1;
+- (void)sheet:(id)arg1 presentingViewControllerWillChange:(id)arg2;
 
 @end
 

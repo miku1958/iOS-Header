@@ -10,8 +10,10 @@
 
 @interface UIPopoverBackgroundView : UIView <UIPopoverBackgroundViewMethods>
 {
+    BOOL __chromeHidden;
 }
 
+@property (nonatomic, setter=_setChromeHidden:) BOOL _chromeHidden; // @synthesize _chromeHidden=__chromeHidden;
 @property (nonatomic) unsigned long long arrowDirection;
 @property (nonatomic) double arrowOffset;
 
@@ -25,6 +27,7 @@
 - (struct CGRect)_contentViewFrame;
 - (struct UIEdgeInsets)_contentViewInsets;
 - (struct UIEdgeInsets)_contentViewInsetsForArrowDirection:(unsigned long long)arg1;
+- (BOOL)_needsSeperateBlending;
 - (struct UIEdgeInsets)_shadowInsets;
 - (struct CGSize)_shadowOffset;
 - (double)_shadowOpacity;
@@ -32,6 +35,7 @@
 - (id)_shadowPathForRect:(struct CGRect)arg1 arrowDirection:(unsigned long long)arg2;
 - (double)_shadowRadius;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
+- (void)_updateChrome;
 - (void)_updateShadow;
 - (BOOL)_wantsDefaultContentAppearance;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;

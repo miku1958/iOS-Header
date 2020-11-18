@@ -4,17 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIFocusEnvironment-Protocol.h>
+#import <UIKit/_UIFocusEnvironmentPrivate-Protocol.h>
 
 @class UIFocusAnimationCoordinator, UIFocusUpdateContext;
 @protocol UIFocusEnvironment;
 
-@protocol _UIFocusEnvironmentInternal <UIFocusEnvironment>
+@protocol _UIFocusEnvironmentInternal <_UIFocusEnvironmentPrivate>
 
 @optional
 - (void)_didUpdateFocusInContext:(UIFocusUpdateContext *)arg1 withAnimationCoordinator:(UIFocusAnimationCoordinator *)arg2;
 - (id<UIFocusEnvironment>)_overridingDestinationEnvironmentForFocusUpdateInContext:(UIFocusUpdateContext *)arg1;
-- (void)_setNeedsNonDeferredFocusUpdate;
 - (BOOL)_shouldUpdateFocusInContext:(UIFocusUpdateContext *)arg1;
 - (void)_willUpdateFocusInContext:(UIFocusUpdateContext *)arg1 withAnimationCoordinator:(UIFocusAnimationCoordinator *)arg2;
 @end

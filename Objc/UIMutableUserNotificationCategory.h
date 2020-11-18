@@ -10,12 +10,10 @@
 
 @interface UIMutableUserNotificationCategory : UIUserNotificationCategory
 {
-    NSString *identifier;
 }
 
-@property (copy, nonatomic) NSString *identifier; // @synthesize identifier;
+@property (copy, nonatomic) NSString *identifier; // @dynamic identifier;
 
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)setActions:(id)arg1 forContext:(unsigned long long)arg2;
 

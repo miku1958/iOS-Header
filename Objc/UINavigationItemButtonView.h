@@ -65,7 +65,6 @@ __attribute__((visibility("hidden")))
 - (void)_focusedViewWillChange:(id)arg1;
 - (void)_installBackSelectGestureRecognizer;
 - (void)_resetRenderingModesForAccessibilityBackgrounds;
-- (id)_scriptingInfo;
 - (void)_setBackButtonBackgroundImage:(id)arg1 forState:(unsigned long long)arg2 barMetrics:(long long)arg3;
 - (void)_setBackButtonBackgroundVerticalPositionAdjustment:(double)arg1 forBarMetrics:(long long)arg2;
 - (void)_setBackButtonTitlePositionAdjustment:(struct UIOffset)arg1 forBarMetrics:(long long)arg2;

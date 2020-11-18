@@ -15,10 +15,10 @@
     NSString *identifier;
     NSString *_title;
     CDUnknownBlockType _handler;
-    UIColor *_color;
     long long _style;
     NSArray *__subitems;
     UIImage *_image;
+    UIColor *_color;
 }
 
 @property (copy, nonatomic, getter=_subitems, setter=_setSubitems:) NSArray *_subitems; // @synthesize _subitems=__subitems;
@@ -34,7 +34,6 @@
 + (id)itemWithTitle:(id)arg1 style:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 + (id)itemWithTitle:(id)arg1 style:(long long)arg2 items:(id)arg3;
 + (id)itemWithViewControllerPreviewAction:(id)arg1;
-+ (id)itemWithViewControllerQuickAction:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

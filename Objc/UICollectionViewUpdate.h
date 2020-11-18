@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
     id *_animatedHeaders;
     id *_animatedFooters;
     NSMutableArray *_viewAnimations;
-    NSMutableArray *_gaps;
     NSIndexPath *_oldFocusedIndexPath;
     NSIndexPath *_newFocusedIndexPath;
     long long _oldFocusedViewType;
@@ -41,7 +40,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)_computeGaps;
 - (void)_computeItemUpdates;
 - (void)_computeSectionUpdates;
 - (void)_computeSupplementaryUpdates;

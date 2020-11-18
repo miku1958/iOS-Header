@@ -8,11 +8,12 @@
 
 #import <UIKit/NSSecureCoding-Protocol.h>
 
-@class CUINamedLayerStack, NSString, UITraitCollection, _UIAssetManager;
+@class CUINamedLayerStack, NSBundle, NSString, UITraitCollection, _UIAssetManager;
 
 @interface UIImageAsset : NSObject <NSSecureCoding>
 {
     _UIAssetManager *_assetManager;
+    NSBundle *_containingBundle;
     BOOL _cacheContents;
     UITraitCollection *_defaultTraitCollection;
     struct {
@@ -20,9 +21,9 @@
         unsigned int supportsBlockGeneration:1;
         unsigned int disconnectedFromAssetManager:1;
     } _assetFlags;
+    CDUnknownBlockType _creationBlock;
     NSString *_assetName;
     CUINamedLayerStack *__layerStack;
-    CDUnknownBlockType _creationBlock;
 }
 
 @property (readonly, weak, nonatomic) _UIAssetManager *_assetManager; // @synthesize _assetManager;
@@ -37,8 +38,10 @@
 - (BOOL)_containsImagesInPath:(id)arg1;
 - (id)_defaultTraitCollection;
 - (void)_disconnectFromAssetManager;
+- (id)_initWithAssetName:(id)arg1 forFilesInBundle:(id)arg2;
 - (id)_initWithAssetName:(id)arg1 forManager:(id)arg2;
 - (id)_mutableCatalog;
+- (id)_nameForStoringRuntimeRegisteredImagesInMutableCatalog;
 - (void)_registerImage:(id)arg1 withTraitCollection:(id)arg2 cache:(BOOL)arg3;
 - (id)_updateAssetFromBlockGenerationWithTraitCollection:(id)arg1 resolvedCatalogImage:(id)arg2;
 - (void)dealloc;

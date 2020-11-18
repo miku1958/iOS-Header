@@ -8,12 +8,14 @@
 
 #import <UIKit/_UIPlatterMenuPanningTransformerDelegate-Protocol.h>
 
-@class NSArray, NSString, UIAttachmentBehavior, UICollisionBehavior, UIDynamicAnimator, UIDynamicItemBehavior, UIView, _UIDynamicItemObservingBehavior, _UIPlatterMenuPanningTransformer, _UIPlatterMenuSnapBehavior;
+@class NSString, UIAttachmentBehavior, UICollisionBehavior, UIDynamicAnimator, UIDynamicItemBehavior, UIView, _UIDynamicItemObservingBehavior, _UIFeedbackStatesBehavior, _UIPlatterMenuPanningTransformer, _UIPlatterMenuSnapBehavior;
 @protocol _UIPlatterMenuDynamicsControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UIPlatterMenuDynamicsController : NSObject <_UIPlatterMenuPanningTransformerDelegate>
 {
+    BOOL _leadingSwipeActionViewSelected;
+    BOOL _trailingSwipeActionViewSelected;
     BOOL _isCurrentlyUnderDirectManipulation;
     id<_UIPlatterMenuDynamicsControllerDelegate> _delegate;
     UIView *_containerView;
@@ -37,7 +39,7 @@ __attribute__((visibility("hidden")))
     UICollisionBehavior *_platterMenuCollisionBounds;
     _UIDynamicItemObservingBehavior *_observingBehavior;
     long long _didPresentCount;
-    NSArray *_platterFollowingViewBehaviors;
+    _UIFeedbackStatesBehavior *_swipeFeedbackBehavior;
     struct CGPoint _initialTouchPoint;
 }
 
@@ -53,6 +55,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGPoint initialTouchPoint; // @synthesize initialTouchPoint=_initialTouchPoint;
 @property (nonatomic) BOOL isCurrentlyUnderDirectManipulation; // @synthesize isCurrentlyUnderDirectManipulation=_isCurrentlyUnderDirectManipulation;
+@property (nonatomic) BOOL leadingSwipeActionViewSelected; // @synthesize leadingSwipeActionViewSelected=_leadingSwipeActionViewSelected;
 @property (nonatomic) double leadingSwipeEdgeMultiplier; // @synthesize leadingSwipeEdgeMultiplier=_leadingSwipeEdgeMultiplier;
 @property (strong, nonatomic) _UIPlatterMenuSnapBehavior *menuDismissedSnapBehavior; // @synthesize menuDismissedSnapBehavior=_menuDismissedSnapBehavior;
 @property (strong, nonatomic) UIDynamicItemBehavior *menuItemBehavior; // @synthesize menuItemBehavior=_menuItemBehavior;
@@ -62,7 +65,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIDynamicItemBehavior *noRotationBehavior; // @synthesize noRotationBehavior=_noRotationBehavior;
 @property (strong, nonatomic) _UIDynamicItemObservingBehavior *observingBehavior; // @synthesize observingBehavior=_observingBehavior;
 @property (strong, nonatomic) _UIPlatterMenuPanningTransformer *panningLockTransformer; // @synthesize panningLockTransformer=_panningLockTransformer;
-@property (strong, nonatomic) NSArray *platterFollowingViewBehaviors; // @synthesize platterFollowingViewBehaviors=_platterFollowingViewBehaviors;
 @property (strong, nonatomic) UIDynamicItemBehavior *platterItemBehavior; // @synthesize platterItemBehavior=_platterItemBehavior;
 @property (strong, nonatomic) UIAttachmentBehavior *platterMenuAttachmentBehavior; // @synthesize platterMenuAttachmentBehavior=_platterMenuAttachmentBehavior;
 @property (strong, nonatomic) UICollisionBehavior *platterMenuCollisionBounds; // @synthesize platterMenuCollisionBounds=_platterMenuCollisionBounds;
@@ -71,13 +73,18 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) UIView *platterView; // @synthesize platterView=_platterView;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) _UIFeedbackStatesBehavior *swipeFeedbackBehavior; // @synthesize swipeFeedbackBehavior=_swipeFeedbackBehavior;
+@property (nonatomic) BOOL trailingSwipeActionViewSelected; // @synthesize trailingSwipeActionViewSelected=_trailingSwipeActionViewSelected;
 @property (nonatomic) double trailingSwipeEdgeMultiplier; // @synthesize trailingSwipeEdgeMultiplier=_trailingSwipeEdgeMultiplier;
 
 - (void).cxx_destruct;
-- (void)_addPlatterFollowingView:(id)arg1;
+- (void)_activateFeedbackIfNeeded;
 - (void)_animateToPlatterPresentedWithVelocity:(struct CGVector)arg1;
 - (void)_beginInYLockedStatePresented;
 - (void)_configureAnimator;
+- (void)_configureFeedbackBehavior;
+- (void)_deactivateFeedbackIfNeeded;
+- (void)_fireConfirmFeedbackIfNeededForInitialSelectionState:(BOOL)arg1 finalSelectionState:(BOOL)arg2;
 - (BOOL)_isPlatterInYLockedPosition;
 - (void)_positionSwipeActionViewsForCurrentPlatterViewPosition;
 - (long long)_stateForPosition:(struct CGPoint)arg1 offset:(struct CGVector)arg2 velocity:(struct CGVector)arg3;

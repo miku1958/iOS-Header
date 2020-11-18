@@ -6,20 +6,16 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSLayoutConstraint, NSString, UIActivityIndicatorView, UILabel;
+@class NSArray, NSString, UIActivityIndicatorView, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface _UIPrintMessageAndSpinnerView : UIView
 {
-    BOOL _centeringConstraintsSet;
     UILabel *_label;
     UIActivityIndicatorView *_spinner;
     NSArray *_currentHorizontalConstraints;
-    NSLayoutConstraint *_centerLabelConstraint;
 }
 
-@property (strong, nonatomic) NSLayoutConstraint *centerLabelConstraint; // @synthesize centerLabelConstraint=_centerLabelConstraint;
-@property (nonatomic) BOOL centeringConstraintsSet; // @synthesize centeringConstraintsSet=_centeringConstraintsSet;
 @property (strong, nonatomic) NSArray *currentHorizontalConstraints; // @synthesize currentHorizontalConstraints=_currentHorizontalConstraints;
 @property (strong, nonatomic) UILabel *label; // @synthesize label=_label;
 @property (strong, nonatomic) NSString *messageText;

@@ -15,14 +15,12 @@ __attribute__((visibility("hidden")))
     CAFilter *_saturateFilter;
     CAFilter *_colorOffsetFilter;
     NSMutableArray *_pendingScaleTransitionBlocks;
-    id _statisticsDelegate;
     unsigned long long _blurHardEdges;
     double _blurRadius;
 }
 
 @property (nonatomic) unsigned long long blurHardEdges; // @synthesize blurHardEdges=_blurHardEdges;
 @property (nonatomic) double blurRadius; // @synthesize blurRadius=_blurRadius;
-@property (nonatomic) id statisticsDelegate; // @synthesize statisticsDelegate=_statisticsDelegate;
 
 + (id)_additionAnimationsKeys;
 + (Class)layerClass;
@@ -35,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateBackdropScaleWithSettingsDeferredIfNecessary:(id)arg1;
 - (void)applySettings:(id)arg1;
 - (id)backdropLayer;
-- (void)backdropLayerStatisticsDidChange:(id)arg1;
 - (void)willMoveToWindow:(id)arg1;
 
 @end

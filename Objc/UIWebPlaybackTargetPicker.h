@@ -8,14 +8,14 @@
 
 #import <UIKit/UIPopoverControllerDelegate-Protocol.h>
 
-@class MPAVRoutingController, MPAudioVideoRoutingActionSheet, MPAudioVideoRoutingPopoverController, NSString, UIWebDocumentView;
+@class MPAVRoutingController, MPAVRoutingSheet, MPAudioVideoRoutingPopoverController, NSString, UIWebDocumentView;
 
 __attribute__((visibility("hidden")))
 @interface UIWebPlaybackTargetPicker : UIView <UIPopoverControllerDelegate>
 {
     MPAVRoutingController *_routingController;
     MPAudioVideoRoutingPopoverController *_popoverController;
-    MPAudioVideoRoutingActionSheet *_actionSheet;
+    MPAVRoutingSheet *_actionSheet;
     UIWebDocumentView *_delegate;
 }
 
@@ -33,8 +33,8 @@ __attribute__((visibility("hidden")))
 - (void)popoverControllerDidDismissPopover:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)show:(BOOL)arg1 fromRect:(struct CGRect)arg2;
-- (void)showAirPlayPickerIPad:(unsigned long long)arg1 fromRect:(struct CGRect)arg2;
-- (void)showAirPlayPickerIPhone:(unsigned long long)arg1;
+- (void)showAirPlayPickerIPad:(long long)arg1 fromRect:(struct CGRect)arg2;
+- (void)showAirPlayPickerIPhone:(long long)arg1;
 
 @end
 

@@ -6,10 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, UINavigationController, UIViewController;
+@class NSArray, UINavigationController, UIViewController, _UIBarBackground;
 
 @interface _UINavigationControllerPalette : UIView
 {
+    _UIBarBackground *_backgroundView;
     struct {
         unsigned int isAttached:1;
         unsigned int attachmentIsChanging:1;
@@ -19,10 +20,8 @@
         unsigned int paletteShadowIsHidden:1;
     } _paletteFlags;
     BOOL __paletteOverridesPinningBar;
-    BOOL _paletteIsAboveBar;
     BOOL _visibleWhenPinningBarIsHidden;
     BOOL __palettePinningBarHidden;
-    UIView *__backgroundView;
     UINavigationController *_navController;
     unsigned long long _boundaryEdge;
     UIViewController *__unpinnedController;
@@ -35,7 +34,7 @@
 
 @property (readonly, nonatomic, getter=_attachmentIsChanging) BOOL _attachmentIsChanging;
 @property (strong, nonatomic, setter=_setBackgroundConstraints:) NSArray *_backgroundConstraints; // @synthesize _backgroundConstraints=__backgroundConstraints;
-@property (strong, nonatomic, setter=_setBackgroundView:) UIView *_backgroundView; // @synthesize _backgroundView=__backgroundView;
+@property (strong, nonatomic, setter=_setBackgroundView:) UIView *_backgroundView;
 @property (strong, nonatomic, setter=_setConstraints:) NSArray *_constraints; // @synthesize _constraints=__constraints;
 @property (nonatomic, setter=_setPaletteOverridesPinningBar:) BOOL _paletteOverridesPinningBar; // @synthesize _paletteOverridesPinningBar=__paletteOverridesPinningBar;
 @property (nonatomic, getter=_isPalettePinningBarHidden, setter=_setPalettePinningBarHidden:) BOOL _palettePinningBarHidden; // @synthesize _palettePinningBarHidden=__palettePinningBarHidden;
@@ -45,7 +44,6 @@
 @property (nonatomic) UIViewController *_unpinnedController; // @synthesize _unpinnedController=__unpinnedController;
 @property (readonly, nonatomic) unsigned long long boundaryEdge; // @synthesize boundaryEdge=_boundaryEdge;
 @property (readonly, nonatomic) UINavigationController *navController; // @synthesize navController=_navController;
-@property (nonatomic) BOOL paletteIsAboveBar; // @synthesize paletteIsAboveBar=_paletteIsAboveBar;
 @property (nonatomic) BOOL paletteShadowIsHidden;
 @property (nonatomic, getter=isPinned) BOOL pinned;
 @property (nonatomic) BOOL pinningBarShadowIsHidden;

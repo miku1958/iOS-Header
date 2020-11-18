@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (double)keyCornerRadius;
+- (id)messagesWriteboardKeyImageName;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <UIKit/_UIKBRTObject.h>
 
-@class NSObject, NSUUID, _UIKBRTTimerBlock;
+@class NSObject, _UIKBRTTimerBlock;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -14,34 +14,32 @@ __attribute__((visibility("hidden")))
 {
     BOOL _currentTouchState;
     BOOL _preRuleTouchState;
-    BOOL _canLogTouch;
     double _originalTimestamp;
+    double _maximumRadius;
     double _currentTimestamp;
+    double _originalZGradient;
+    double _currentZGradient;
     id _touchIdentifier;
-    NSUUID *_touchUUID;
-    double _majorRadius;
-    double _majorRadiusTolerance;
     _UIKBRTTimerBlock *_timer;
     NSObject<OS_dispatch_queue> *_timerQueue;
     struct CGPoint _originalTouchPoint;
     struct CGPoint _currentTouchPoint;
 }
 
-@property (readonly, nonatomic) BOOL canLogTouch; // @synthesize canLogTouch=_canLogTouch;
 @property (readonly, nonatomic) double currentTimestamp; // @synthesize currentTimestamp=_currentTimestamp;
 @property (readonly, nonatomic) struct CGPoint currentTouchPoint; // @synthesize currentTouchPoint=_currentTouchPoint;
 @property (nonatomic) BOOL currentTouchState; // @synthesize currentTouchState=_currentTouchState;
-@property (readonly, nonatomic) double majorRadius; // @synthesize majorRadius=_majorRadius;
-@property (readonly, nonatomic) double majorRadiusTolerance; // @synthesize majorRadiusTolerance=_majorRadiusTolerance;
+@property (readonly, nonatomic) double currentZGradient; // @synthesize currentZGradient=_currentZGradient;
+@property (readonly, nonatomic) double maximumRadius; // @synthesize maximumRadius=_maximumRadius;
 @property (readonly, nonatomic) _UIKBRTTouchInfo *nextTouch;
 @property (readonly, nonatomic) double originalTimestamp; // @synthesize originalTimestamp=_originalTimestamp;
 @property (readonly, nonatomic) struct CGPoint originalTouchPoint; // @synthesize originalTouchPoint=_originalTouchPoint;
+@property (readonly, nonatomic) double originalZGradient; // @synthesize originalZGradient=_originalZGradient;
 @property (nonatomic) BOOL preRuleTouchState; // @synthesize preRuleTouchState=_preRuleTouchState;
 @property (readonly, nonatomic) _UIKBRTTouchInfo *previousTouch;
 @property (readonly, nonatomic) _UIKBRTTimerBlock *timer; // @synthesize timer=_timer;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *timerQueue; // @synthesize timerQueue=_timerQueue;
 @property (readonly, nonatomic) id touchIdentifier; // @synthesize touchIdentifier=_touchIdentifier;
-@property (readonly, nonatomic) NSUUID *touchUUID; // @synthesize touchUUID=_touchUUID;
 
 + (id)createTouchInfoForTouch:(id)arg1 withIdentifier:(id)arg2 canLogTouch:(BOOL)arg3;
 + (void)setTouchInfo:(id)arg1 forIdentifier:(id)arg2;

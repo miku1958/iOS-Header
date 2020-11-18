@@ -22,9 +22,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *prevPoints; // @synthesize prevPoints=_prevPoints;
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 
+- (void).cxx_destruct;
 - (void)addPoint:(struct)arg1;
 - (void)clear;
-- (void)dealloc;
 - (void)flush;
 - (id)initWithFIFO:(id)arg1 scale:(double)arg2;
 

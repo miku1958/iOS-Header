@@ -9,7 +9,7 @@
 #import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKit/_UIPanOrFlickGestureRecognizerDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, UIDelayedAction, UITextMagnifierTimeWeightedPoint, _UIKeyboardTextSelectionController;
+@class NSMutableArray, NSString, UIDelayedAction, UITextMagnifierTimeWeightedPoint, _UIFeedbackStatesBehavior, _UIKeyboardTextSelectionController;
 @protocol _UIKeyboardTextSelectionGestureControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_activeGestures;
     UIDelayedAction *_tapLogTimer;
     UIDelayedAction *_longForcePressAction;
+    _UIFeedbackStatesBehavior *_feedbackBehaviour;
     struct CGPoint _lastPanTranslation;
     struct CGPoint _accumulatedAcceleration;
     struct CGPoint _accumulatedBounding;
@@ -40,12 +41,13 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) struct CGPoint accumulatedAcceleration; // @synthesize accumulatedAcceleration=_accumulatedAcceleration;
 @property (nonatomic) struct CGPoint accumulatedBounding; // @synthesize accumulatedBounding=_accumulatedBounding;
-@property (nonatomic) NSMutableArray *activeGestures; // @synthesize activeGestures=_activeGestures;
+@property (strong, nonatomic) NSMutableArray *activeGestures; // @synthesize activeGestures=_activeGestures;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<_UIKeyboardTextSelectionGestureControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didFloatCursor; // @synthesize didFloatCursor=_didFloatCursor;
 @property (nonatomic) BOOL didSuppressSelectionGrabbers; // @synthesize didSuppressSelectionGrabbers=_didSuppressSelectionGrabbers;
+@property (strong, nonatomic) _UIFeedbackStatesBehavior *feedbackBehaviour; // @synthesize feedbackBehaviour=_feedbackBehaviour;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isLongPressing; // @synthesize isLongPressing=_isLongPressing;
 @property (nonatomic) BOOL isPanning; // @synthesize isPanning=_isPanning;
@@ -73,6 +75,8 @@ __attribute__((visibility("hidden")))
 - (void)_granularityExpandingGestureWithTimeInterval:(double)arg1 timeGranularity:(double)arg2 isMidPan:(BOOL)arg3;
 - (void)_logTapCounts:(id)arg1;
 - (void)_longForcePressDetected:(id)arg1;
+- (void)_prepareForGesture;
+- (void)_tidyUpGesture;
 - (void)_willBeginIndirectSelectionGesture:(id)arg1;
 - (struct CGPoint)acceleratedTranslation:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2 final:(BOOL)arg3;
 - (id)addOneFingerForcePressRecognizerToView:(id)arg1;

@@ -40,7 +40,6 @@
 - (void)_minusButtonFadeAnimationStopped;
 - (struct CGRect)_removeConfirmationEndingFrame;
 - (struct CGRect)_removeConfirmationStartingFrame;
-- (id)_scriptingInfo;
 - (void)_setInsertControl:(BOOL)arg1;
 - (void)_setInterceptMouseEvent:(BOOL)arg1;
 - (void)_setRemoveConfirmationShowing:(BOOL)arg1 animated:(BOOL)arg2;

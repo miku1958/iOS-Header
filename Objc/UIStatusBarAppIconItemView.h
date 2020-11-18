@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIStatusBarItemView.h>
+#import <UIKit/UIStatusBarButtonActionItemView.h>
 
 __attribute__((visibility("hidden")))
-@interface UIStatusBarAppIconItemView : UIStatusBarItemView
+@interface UIStatusBarAppIconItemView : UIStatusBarButtonActionItemView
 {
 }
 
 - (id)_appBundleIdentifier;
 - (id)contentsImage;
+- (id)highlightImage;
 
 @end
 

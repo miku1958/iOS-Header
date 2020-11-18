@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
     BOOL m_allowsEditingTextAttributes;
     BOOL m_usesAttributedText;
     BOOL m_clearsOnInsertion;
+    BOOL m_didFreezeTextContainerSize;
 }
 
 - (void).cxx_destruct;

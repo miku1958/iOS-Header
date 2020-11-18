@@ -6,7 +6,7 @@
 
 #import <UIKit/UIButton.h>
 
-@class NSDictionary, NSSet, NSString, UIBarButtonItem, UIColor, UIImage, UINavigationItem;
+@class NSDictionary, NSSet, NSString, UIBarButtonItem, UIColor, UIImage, UINavigationItem, UIView;
 
 @interface UINavigationButton : UIButton
 {
@@ -32,6 +32,7 @@
     double _fontScaleAdjustment;
     UIColor *_accessibilityBackgroundTintColor;
     Class _appearanceGuideClass;
+    UIView *__enclosingBar;
     struct UIEdgeInsets __additionalSelectionInsets;
 }
 
@@ -41,6 +42,7 @@
 @property (nonatomic, setter=_setBarItemHidden:) BOOL _barItemHidden; // @synthesize _barItemHidden=__barItemHidden;
 @property (nonatomic, setter=_setButtonItemStyle:) long long _buttonItemStyle; // @synthesize _buttonItemStyle;
 @property (nonatomic, setter=_setCreatedByBarButtonItem:) BOOL _createdByBarButtonItem; // @synthesize _createdByBarButtonItem;
+@property (weak, nonatomic, setter=_setEnclosingBar:) UIView *_enclosingBar; // @synthesize _enclosingBar=__enclosingBar;
 @property (nonatomic, setter=_setFontScaleAdjustment:) double _fontScaleAdjustment; // @synthesize _fontScaleAdjustment;
 @property (nonatomic, setter=_setFontScaleInvalid:) BOOL _isFontScaleInvalid; // @synthesize _isFontScaleInvalid;
 @property (copy, nonatomic, setter=_setStylesForSizingTitles:) NSDictionary *_stylesForSizingTitles; // @synthesize _stylesForSizingTitles;
@@ -88,15 +90,16 @@
 - (struct CGSize)_defaultTitleShadowOffsetForState:(unsigned long long)arg1;
 - (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(BOOL)arg3;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
+- (id)_externalTitleColorForState:(unsigned long long)arg1;
 - (id)_externalUnfocusedBorderColor;
 - (BOOL)_hasBaselineAlignedAbsoluteVerticalPosition:(out double *)arg1 withinNavBar:(id)arg2 forSize:(struct CGSize)arg3;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
+- (BOOL)_isCarPlaySystemTypeButton;
 - (BOOL)_isExternalRoundedRectButton;
 - (BOOL)_isModernButton;
 - (struct UIEdgeInsets)_pathImageEdgeInsets;
 - (struct UIEdgeInsets)_pathTitleEdgeInsets;
 - (void)_prepareToAppearInNavigationItem:(id)arg1 onLeft:(BOOL)arg2;
-- (id)_scriptingInfo;
 - (struct CGRect)_selectedIndicatorBounds;
 - (void)_sendSetNeedsLayoutToSuperviewOnTitleAnimationCompletionIfNecessary;
 - (void)_setBackButtonBackgroundImage:(id)arg1 forState:(unsigned long long)arg2 barMetrics:(long long)arg3;
@@ -124,6 +127,7 @@
 - (void)_updateTitleForLetterpress;
 - (id)_visualStyleForMetrics:(long long)arg1;
 - (BOOL)_wantsAccessibilityButtonShapes;
+- (long long)buttonType;
 - (BOOL)canBecomeFocused;
 - (BOOL)contentsEqualTo:(id)arg1 withStyle:(int)arg2;
 - (void)dealloc;

@@ -18,15 +18,15 @@ __attribute__((visibility("hidden")))
     BOOL _showsBackgroundComponentHighlights;
     BOOL _showsBackgroundViewHighlight;
     BOOL _showsContentViewHighlight;
+    BOOL _chromeHidden;
     UIActionSheet *_presentedActionSheet;
     UIPopoverController *_popoverController;
-    double __dimmingViewTopEdgeInset;
 }
 
-@property (nonatomic, setter=_setDimmingViewTopEdgeInset:) double _dimmingViewTopEdgeInset; // @synthesize _dimmingViewTopEdgeInset=__dimmingViewTopEdgeInset;
 @property (nonatomic) unsigned long long arrowDirection;
 @property (nonatomic) double arrowOffset;
 @property (nonatomic) long long backgroundStyle;
+@property (nonatomic) BOOL chromeHidden; // @synthesize chromeHidden=_chromeHidden;
 @property (copy, nonatomic) UIColor *popoverBackgroundColor;
 @property (nonatomic) UIPopoverController *popoverController; // @synthesize popoverController=_popoverController;
 @property (strong, nonatomic) UIActionSheet *presentedActionSheet; // @synthesize presentedActionSheet=_presentedActionSheet;
@@ -37,14 +37,11 @@ __attribute__((visibility("hidden")))
 + (id)popoverViewContainingView:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_allowsCustomizationOfContent;
+- (BOOL)_backgroundNeedsSeperateBlending;
 - (void)_hideArrow;
 - (BOOL)_isIgnoringTapsInDimmingView;
 - (void)_layoutToolbarShine;
 - (BOOL)_needsLayoutOnAnimatedFrameChangeForNewFrame:(struct CGRect)arg1;
-- (void)_presentationInPopoverDidBeginForViewController:(id)arg1;
-- (void)_presentationInPopoverDidEndForViewController:(id)arg1;
-- (void)_presentationInPopoverWillBeginForViewController:(id)arg1;
-- (void)_presentationInPopoverWillEndForViewController:(id)arg1;
 - (void)_setCornerRadius:(double)arg1;
 - (void)_setFrame:(struct CGRect)arg1 arrowOffset:(double)arg2;
 - (void)_setIgnoreTapsInDimmingView:(BOOL)arg1;
@@ -52,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)_showArrow;
 - (struct CGRect)_snapshotBounds;
 - (int)_style;
+- (void)_updateContentBlendingColor;
 - (id)_viewForModalPresentationOfViewController:(id)arg1;
 - (id)backgroundView;
 - (id)contentView;

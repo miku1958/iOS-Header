@@ -6,26 +6,38 @@
 
 #import <UIKit/UIStatusBarItemView.h>
 
-@class UIButton;
+@class CALayer, UIButton;
 
 __attribute__((visibility("hidden")))
 @interface UIStatusBarButtonActionItemView : UIStatusBarItemView
 {
     UIButton *_button;
     UIButton *_externalButton;
+    BOOL _selected;
+    CALayer *_ringLayer;
 }
 
-@property (readonly, nonatomic) double buttonCharge;
+@property (readonly, nonatomic) BOOL extendsHitTestingFrame;
+@property (strong, nonatomic) CALayer *ringLayer; // @synthesize ringLayer=_ringLayer;
+@property (nonatomic) BOOL selected; // @synthesize selected=_selected;
 
 - (void).cxx_destruct;
+- (struct CGRect)_contentsImageFrame;
 - (id)_createButton;
 - (void)_doubleTapButton:(id)arg1;
 - (void)_pressAndHoldButton:(id)arg1;
 - (void)_pressButton:(id)arg1;
 - (void)_triggerButtonWithAction:(long long)arg1;
 - (long long)buttonType;
+- (BOOL)canBecomeFocused;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (id)highlightImage;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
+- (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)setLayerHighlightImage:(id)arg1;
 - (double)updateContentsAndWidth;
 - (BOOL)usesAdvancedActions;
 

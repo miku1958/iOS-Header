@@ -8,16 +8,17 @@
 
 #import <UIKit/NSCopying-Protocol.h>
 #import <UIKit/UIPreviewActionItem-Protocol.h>
+#import <UIKit/UIPreviewActionItem_Internal-Protocol.h>
 
 @class NSArray, NSString, UIColor, UIImage;
 
-@interface UIPreviewActionGroup : NSObject <NSCopying, UIPreviewActionItem>
+@interface UIPreviewActionGroup : NSObject <UIPreviewActionItem_Internal, NSCopying, UIPreviewActionItem>
 {
     NSString *_title;
-    NSString *_identifier;
-    long long _style;
-    UIColor *_color;
     UIImage *_image;
+    NSString *_identifier;
+    UIColor *_color;
+    long long _style;
     NSArray *_actions;
 }
 
@@ -36,6 +37,8 @@
 + (id)_actionGroupWithTitle:(id)arg1 style:(long long)arg2 color:(id)arg3 actions:(id)arg4;
 + (id)actionGroupWithTitle:(id)arg1 style:(long long)arg2 actions:(id)arg3;
 - (void).cxx_destruct;
+- (id)_effectiveColor;
+- (id)_effectiveImage;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

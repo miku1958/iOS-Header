@@ -6,10 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, UIImage;
+#import <UIKit/CAAnimationDelegate-Protocol.h>
+
+@class CIContext, NSArray, NSString, UIImage;
 
 __attribute__((visibility("hidden")))
-@interface _UIImageViewExtendedStorage : NSObject
+@interface _UIImageViewExtendedStorage : NSObject <CAAnimationDelegate>
 {
     BOOL _highlighted;
     UIImage *_image;
@@ -24,7 +26,13 @@ __attribute__((visibility("hidden")))
     unsigned long long _templateImageRenderingEffects;
     UIImage *_displayedImage;
     UIImage *_displayedHighlightedImage;
+    CIContext *_CIContext;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;

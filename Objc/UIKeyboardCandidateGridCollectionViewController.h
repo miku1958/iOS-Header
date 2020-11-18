@@ -16,9 +16,8 @@
 __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidateGridCollectionViewController : UIViewController <UICollectionViewDataSource, UIKeyboardCandidateList, UIKeyboardCandidateGridLayoutDelegate>
 {
-    BOOL _alwaysShowExtensionCandidates;
+    BOOL _layoutExtensionCandidates;
     BOOL _hasSecondaryCandidates;
-    BOOL _showHiddenCandidatesOnly;
     BOOL _singleLineMode;
     BOOL _supportsNumberKeySelection;
     BOOL _secondaryCandidatesViewIsCurrent;
@@ -38,7 +37,6 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) BOOL _usesDeemphasizedTextAppearance; // @synthesize _usesDeemphasizedTextAppearance=__usesDeemphasizedTextAppearance;
-@property (nonatomic) BOOL alwaysShowExtensionCandidates; // @synthesize alwaysShowExtensionCandidates=_alwaysShowExtensionCandidates;
 @property (strong, nonatomic) NSArray *candidateGroups; // @synthesize candidateGroups=_candidateGroups;
 @property (nonatomic) id<UIKeyboardCandidateListDelegate> candidateListDelegate; // @synthesize candidateListDelegate=_candidateListDelegate;
 @property (strong, nonatomic) TIKeyboardCandidateResultSet *candidateSet; // @synthesize candidateSet=_candidateSet;
@@ -53,11 +51,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasSecondaryCandidates; // @synthesize hasSecondaryCandidates=_hasSecondaryCandidates;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *headerView; // @synthesize headerView=_headerView;
+@property (nonatomic) BOOL layoutExtensionCandidates; // @synthesize layoutExtensionCandidates=_layoutExtensionCandidates;
 @property (readonly, nonatomic) UIButton *padInlineFloatingArrowButton; // @synthesize padInlineFloatingArrowButton=_padInlineFloatingArrowButton;
 @property (nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;
 @property (strong, nonatomic) UIKBCandidateCollectionView *secondaryCandidatesView; // @synthesize secondaryCandidatesView=_secondaryCandidatesView;
 @property (nonatomic) BOOL secondaryCandidatesViewIsCurrent; // @synthesize secondaryCandidatesViewIsCurrent=_secondaryCandidatesViewIsCurrent;
-@property (nonatomic) BOOL showHiddenCandidatesOnly; // @synthesize showHiddenCandidatesOnly=_showHiddenCandidatesOnly;
 @property (nonatomic) BOOL singleLineMode; // @synthesize singleLineMode=_singleLineMode;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsNumberKeySelection; // @synthesize supportsNumberKeySelection=_supportsNumberKeySelection;
@@ -89,13 +87,13 @@ __attribute__((visibility("hidden")))
 - (id)indexPathForCandidate:(id)arg1;
 - (id)init;
 - (BOOL)isExtendedList;
-- (BOOL)isHiddenCandidatesList;
 - (id)keyboardBehaviors;
 - (id)lastCandidateIndexPath;
 - (id)lastCandidateIndexPathInGroupAtIndex:(unsigned long long)arg1;
 - (void)layout;
 - (void)loadSecondaryCandidatesView;
 - (void)loadView;
+- (unsigned long long)maxNumberOfProactiveCells;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)padInlineFloatingExpand;
 - (BOOL)padInlineFloatingIsExpanded;
@@ -110,6 +108,7 @@ __attribute__((visibility("hidden")))
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewIndexChanged:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
+- (id)secureCandidateRenderTraits;
 - (id)selectedItemIndexPath;
 - (unsigned long long)selectedSortIndex;
 - (void)setCandidates:(id)arg1 inlineText:(id)arg2 inlineRect:(struct CGRect)arg3 maxX:(double)arg4 layout:(BOOL)arg5;

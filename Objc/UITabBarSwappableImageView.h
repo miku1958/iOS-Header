@@ -6,24 +6,17 @@
 
 #import <UIKit/UIImageView.h>
 
-@class UITabBar;
+@class UIImage;
 
 __attribute__((visibility("hidden")))
 @interface UITabBarSwappableImageView : UIImageView
 {
-    id _value;
-    id _alternate;
-    double _scale;
+    UIImage *_value;
+    UIImage *_alternate;
     BOOL _showAlternate;
-    BOOL _flipped;
-    int _currentAnimation;
-    UITabBar *_tabBar;
-    int _buttonTag;
 }
 
-- (void)animateImage:(float)arg1 withTabBar:(id)arg2 withTag:(int)arg3;
-- (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithImage:(id)arg1 alternateImage:(id)arg2;
 - (void)setAlternateImage:(id)arg1;
 - (void)setCurrentImage;

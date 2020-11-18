@@ -18,11 +18,9 @@ __attribute__((visibility("hidden")))
     unsigned int _style:2;
     unsigned int _rotated:1;
     unsigned int _rotating:1;
-    unsigned int _hiding:1;
     unsigned int _reserved:27;
 }
 
-@property (nonatomic, getter=isHiding) BOOL hiding;
 @property (nonatomic, getter=isRotated) BOOL rotated;
 @property (readonly, nonatomic) BOOL wantsImageShadow;
 @property (readonly, nonatomic) BOOL wantsMaskingWhileAnimatingDisabled;

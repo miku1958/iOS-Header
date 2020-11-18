@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSDate, _UIPlatterPanningVelocityIntegrator;
+@class NSDate, _UIVelocityIntegrator;
 @protocol _UIPlatterMenuPanningTransformerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     double _lastAxisLockTime;
     NSDate *_timeForLastDirectionalChange;
     NSDate *_panBeginTime;
-    _UIPlatterPanningVelocityIntegrator *_velocityIntegrator;
+    _UIVelocityIntegrator *_velocityIntegrator;
     struct CGPoint _transitionZonePosition;
     struct CGSize _transitionZoneSize;
     struct CGPoint _lastTouchPosition;
@@ -47,7 +47,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct CGRect transitionZoneRect; // @synthesize transitionZoneRect=_transitionZoneRect;
 @property (nonatomic) struct CGSize transitionZoneSize; // @synthesize transitionZoneSize=_transitionZoneSize;
 @property (readonly, nonatomic) struct CGVector velocity;
-@property (strong, nonatomic) _UIPlatterPanningVelocityIntegrator *velocityIntegrator; // @synthesize velocityIntegrator=_velocityIntegrator;
+@property (strong, nonatomic) _UIVelocityIntegrator *velocityIntegrator; // @synthesize velocityIntegrator=_velocityIntegrator;
 
 + (id)transformerWithAxisTransitionZonePosition:(struct CGPoint)arg1 axisTransitionZoneSize:(struct CGSize)arg2;
 - (void).cxx_destruct;

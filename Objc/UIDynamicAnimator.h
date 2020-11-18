@@ -53,6 +53,7 @@
 
 @property (readonly, copy, nonatomic) NSArray *behaviors;
 @property (weak, nonatomic) id<UIDynamicAnimatorDelegate> delegate;
+@property (readonly, nonatomic) double elapsedTime;
 @property (readonly, nonatomic) UIView *referenceView;
 @property (readonly, nonatomic, getter=isRunning) BOOL running;
 @property (strong, nonatomic) UIDynamicAnimatorTicker *ticker; // @synthesize ticker=_ticker;
@@ -127,7 +128,6 @@
 - (id)description;
 - (void)didBeginContact:(id)arg1;
 - (void)didEndContact:(id)arg1;
-- (double)elapsedTime;
 - (id)init;
 - (id)initWithCollectionViewLayout:(id)arg1;
 - (id)initWithReferenceSystem:(id)arg1;

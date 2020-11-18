@@ -22,10 +22,10 @@ __attribute__((visibility("hidden")))
 }
 
 @property BOOL cloneForSecondDelivery; // @synthesize cloneForSecondDelivery=_cloneForSecondDelivery;
-@property (strong) UIPressesEvent *event; // @synthesize event=_event;
-@property (strong) UIPress *press; // @synthesize press=_press;
-@property (strong) UIPress *stateWhenDelayed; // @synthesize stateWhenDelayed=_stateWhenDelayed;
-@property (strong) UIPress *stateWhenDelivered; // @synthesize stateWhenDelivered=_stateWhenDelivered;
+@property (strong, nonatomic) UIPressesEvent *event; // @synthesize event=_event;
+@property (strong, nonatomic) UIPress *press; // @synthesize press=_press;
+@property (strong, nonatomic) UIPress *stateWhenDelayed; // @synthesize stateWhenDelayed=_stateWhenDelayed;
+@property (strong, nonatomic) UIPress *stateWhenDelivered; // @synthesize stateWhenDelivered=_stateWhenDelivered;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

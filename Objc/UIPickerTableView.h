@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
         unsigned int cancellingAnimation:1;
         unsigned int updatingContentInset:1;
     } _pickerTableFlags;
+    BOOL _playsFeedback;
 }
 
 @property (strong, nonatomic, getter=_textColor, setter=_setTextColor:) UIColor *_textColor;
@@ -40,8 +41,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long lastSelectedRow; // @synthesize lastSelectedRow=_lastSelectedRow;
+@property (getter=_playsFeedback, setter=_setPlaysFeedback:) BOOL playsFeedback; // @synthesize playsFeedback=_playsFeedback;
 @property (nonatomic) struct CGRect selectionBarRect; // @synthesize selectionBarRect=_selectionBarRect;
-@property (nonatomic) long long selectionBarRow; // @synthesize selectionBarRow=_selectionBarRow;
+@property (nonatomic, setter=_setSelectionBarRow:) long long selectionBarRow; // @synthesize selectionBarRow=_selectionBarRow;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -57,10 +59,10 @@ __attribute__((visibility("hidden")))
 - (double)_rotationForCellCenterY:(double)arg1;
 - (BOOL)_scrollRowAtIndexPathToSelectionBar:(id)arg1 animated:(BOOL)arg2;
 - (void)_scrollViewAnimationEnded:(id)arg1 finished:(BOOL)arg2;
+- (void)_scrollViewDidInterruptDecelerating:(id)arg1;
 - (void)_scrollingFinished;
 - (struct CGRect)_selectionBarRectForBounds:(struct CGRect)arg1;
 - (void)_setContentOffset:(struct CGPoint)arg1 notify:(BOOL)arg2;
-- (void)_setSelectionBarRow:(long long)arg1;
 - (BOOL)_shouldWrapCells;
 - (struct CATransform3D)_transformForCellAtY:(double)arg1;
 - (double)_unitYForViewY:(double)arg1;

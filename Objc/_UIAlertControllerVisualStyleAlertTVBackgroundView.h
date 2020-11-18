@@ -6,17 +6,17 @@
 
 #import <UIKit/UIView.h>
 
-@class UIImageView, _UIBackdropView;
+@class _UIBackdropView;
 
 __attribute__((visibility("hidden")))
 @interface _UIAlertControllerVisualStyleAlertTVBackgroundView : UIView
 {
     _UIBackdropView *_backdropView;
-    UIImageView *_noiseView;
+    UIView *_noiseView;
 }
 
 @property (strong, nonatomic) _UIBackdropView *backdropView; // @synthesize backdropView=_backdropView;
-@property (strong, nonatomic) UIImageView *noiseView; // @synthesize noiseView=_noiseView;
+@property (strong, nonatomic) UIView *noiseView; // @synthesize noiseView=_noiseView;
 
 - (void).cxx_destruct;
 - (id)init;

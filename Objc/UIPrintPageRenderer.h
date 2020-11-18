@@ -21,6 +21,7 @@
 
 @property (nonatomic) double footerHeight; // @synthesize footerHeight=_footerHeight;
 @property (nonatomic) double headerHeight; // @synthesize headerHeight=_headerHeight;
+@property (readonly, nonatomic) long long numberOfPages;
 @property (nonatomic) struct CGRect paperRect; // @synthesize paperRect=_paperRect;
 @property (copy, nonatomic) NSArray *printFormatters; // @synthesize printFormatters=_printFormatters;
 @property (nonatomic) struct CGRect printableRect; // @synthesize printableRect=_printableRect;
@@ -42,7 +43,6 @@
 - (void)drawHeaderForPageAtIndex:(long long)arg1 inRect:(struct CGRect)arg2;
 - (void)drawPageAtIndex:(long long)arg1 inRect:(struct CGRect)arg2;
 - (void)drawPrintFormatter:(id)arg1 forPageAtIndex:(long long)arg2;
-- (long long)numberOfPages;
 - (void)prepareForDrawingPages:(struct _NSRange)arg1;
 - (id)printFormattersForPageAtIndex:(long long)arg1;
 

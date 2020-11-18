@@ -11,16 +11,17 @@
 @interface UIFocusAnimationCoordinator : NSObject
 {
     BOOL _locked;
-    long long _activeFocusAnimation;
-    UIFocusUpdateContext *_focusUpdateContext;
     NSMutableDictionary *_configurations;
     NSMutableDictionary *_coordinatedAnimations;
     NSMutableDictionary *_coordinatedCompletions;
+    UIFocusUpdateContext *_focusUpdateContext;
+    long long _activeFocusAnimation;
 }
 
 @property (readonly, nonatomic, getter=_activeAnimationDuration) double activeAnimationDuration;
 @property (readonly, copy, nonatomic, getter=_activeConfiguration) _UIFocusAnimationConfiguration *activeConfiguration;
 @property (readonly, nonatomic) long long activeFocusAnimation; // @synthesize activeFocusAnimation=_activeFocusAnimation;
+@property (readonly, nonatomic, getter=_animationDelay) double animationDelay;
 @property (readonly, nonatomic, getter=_animationOptions) unsigned long long animationOptions;
 @property (readonly, nonatomic, getter=_configurations) NSMutableDictionary *configurations; // @synthesize configurations=_configurations;
 @property (readonly, nonatomic, getter=_coordinatedAnimations) NSMutableDictionary *coordinatedAnimations; // @synthesize coordinatedAnimations=_coordinatedAnimations;

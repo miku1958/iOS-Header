@@ -23,7 +23,7 @@
     BOOL _selected;
     BOOL _enabled;
     BOOL _backdropVisible;
-    BOOL _zoomsBack;
+    double _zoom;
     double _grayscaleTintLevel;
     double _grayscaleTintAlpha;
     double _grayscaleTintMaskAlpha;
@@ -66,7 +66,6 @@
     BOOL _designMode;
     long long _blurHardEdges;
     unsigned long long _version;
-    double _zoom;
 }
 
 @property (nonatomic) BOOL appliesTintAndBlurSettings; // @synthesize appliesTintAndBlurSettings=_appliesTintAndBlurSettings;
@@ -125,7 +124,7 @@
 @property (nonatomic) BOOL usesGrayscaleTintView; // @synthesize usesGrayscaleTintView=_usesGrayscaleTintView;
 @property (nonatomic) unsigned long long version; // @synthesize version=_version;
 @property (nonatomic) double zoom; // @synthesize zoom=_zoom;
-@property (nonatomic) BOOL zoomsBack; // @synthesize zoomsBack=_zoomsBack;
+@property (nonatomic) BOOL zoomsBack;
 
 + (id)darkeningTintColor;
 + (id)settingsForPrivateStyle:(long long)arg1;

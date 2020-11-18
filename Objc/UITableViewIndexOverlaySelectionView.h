@@ -29,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (void)_doneTapped;
 - (void)_invalidateTable;
 - (void)_setIndexColor:(id)arg1;
-- (BOOL)canBecomeFirstResponder;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;

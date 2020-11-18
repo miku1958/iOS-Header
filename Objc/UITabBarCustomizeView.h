@@ -30,9 +30,9 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSArray *availableItems; // @synthesize availableItems=_availableItems;
 
+- (void).cxx_destruct;
 - (long long)_barMetrics;
 - (void)adjustDragImageWithTouches:(id)arg1 withEvent:(id)arg2;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)itemInTabBarWithTouches:(id)arg1 withEvent:(id)arg2;
 - (void)layoutSubviews;

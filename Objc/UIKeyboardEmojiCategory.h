@@ -22,6 +22,20 @@
 @property (nonatomic) long long lastVisibleFirstEmojiIndex; // @synthesize lastVisibleFirstEmojiIndex=_lastVisibleFirstEmojiIndex;
 @property (readonly, nonatomic, getter=name) NSString *name;
 
++ (id)ActivityEmoji;
++ (id)CelebrationEmoji;
++ (id)DingbatVariantsEmoji;
++ (id)FoodAndDrinkEmoji;
++ (id)GenderEmoji;
++ (id)NatureEmoji;
++ (id)NoneVariantEmoji;
++ (id)ObjectsAndSymbolsEmoji;
++ (id)ObjectsEmoji;
++ (id)PeopleEmoji;
++ (id)PrepopulatedEmoji;
++ (id)SkinToneEmoji;
++ (id)SymbolsEmoji;
++ (id)TravelAndPlacesEmoji;
 + (id)categories;
 + (id)categoryForType:(long long)arg1;
 + (unsigned long long)categoryIndexForCategoryType:(long long)arg1;
@@ -29,7 +43,7 @@
 + (id)computeEmojiFlagsSortedByLanguage;
 + (id)displayName:(long long)arg1;
 + (id)emojiRecentsFromPreferences;
-+ (BOOL)emojiString:(id)arg1 inGroup:(unsigned int *)arg2 withGroupCount:(int)arg3;
++ (BOOL)emojiString:(id)arg1 inGroup:(id)arg2;
 + (id)enabledCategoryIndexes;
 + (id)fallbackDisplayName:(long long)arg1;
 + (id)flagEmojiCountryCodesCommon;

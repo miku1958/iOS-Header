@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)debugDescription;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)layoutSubviews;
 
 @end
 

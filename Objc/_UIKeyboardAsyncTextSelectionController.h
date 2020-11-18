@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)endFloatingCursor;
 - (void)selectPositionAtBoundary:(long long)arg1 inDirection:(long long)arg2 relativeToSelection:(id)arg3 executionContext:(id)arg4;
 - (void)selectPositionAtPoint:(struct CGPoint)arg1 executionContext:(id)arg2;
+- (void)selectTextWithGranularity:(long long)arg1 atPoint:(struct CGPoint)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)selectTextWithGranularity:(long long)arg1 atPoint:(struct CGPoint)arg2 executionContext:(id)arg3;
 - (void)showSelectionCommands;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1;

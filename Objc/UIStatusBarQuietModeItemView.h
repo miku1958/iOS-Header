@@ -6,13 +6,22 @@
 
 #import <UIKit/UIStatusBarIndicatorItemView.h>
 
+#import <UIKit/CAAnimationDelegate-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface UIStatusBarQuietModeItemView : UIStatusBarIndicatorItemView
+@interface UIStatusBarQuietModeItemView : UIStatusBarIndicatorItemView <CAAnimationDelegate>
 {
     BOOL _hideForAction;
     BOOL _registeredForNotifications;
     BOOL _inactive;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void)_triggerAction:(id)arg1;
 - (double)_visibleAlpha;

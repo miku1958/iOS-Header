@@ -19,7 +19,7 @@
 @property (nonatomic) double magnitude;
 
 + (BOOL)_isPrimitiveBehavior;
-- (void)_addItem:(id)arg1;
+- (void)_addGravityItem:(id)arg1;
 - (void)_associate;
 - (void)_dissociate;
 - (void)_setAngle:(double)arg1 magnitude:(double)arg2;

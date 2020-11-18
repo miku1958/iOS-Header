@@ -32,9 +32,9 @@
 
 + (id)_horizontalLayoutSpacer;
 + (id)_verticalLayoutSpacer;
-- (void).cxx_destruct;
 - (id)_layoutVariablesWithAmbiguousValue;
 - (void)_setUpCounterDimensionConstraint;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

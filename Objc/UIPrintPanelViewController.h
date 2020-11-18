@@ -26,9 +26,12 @@ __attribute__((visibility("hidden")))
     BOOL _observingRotation;
     BOOL _canShowColor;
     CDUnknownBlockType _previewCompletionHandler;
+    BOOL _contentLargerThanRollPaper;
     NSArray *_lastUsedPrinterArray;
 }
 
+@property (nonatomic) BOOL annotationsImaged;
+@property (readonly, nonatomic) BOOL contentLargerThanRollPaper; // @synthesize contentLargerThanRollPaper=_contentLargerThanRollPaper;
 @property (nonatomic) long long copies;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -46,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) PKPrinter *printer; // @synthesize printer=_printer;
 @property (nonatomic) BOOL punch;
 @property (nonatomic) BOOL scaleUpDocument;
+@property (readonly, nonatomic) BOOL showAnnotationSwitch;
 @property (readonly, nonatomic) BOOL showColor;
 @property (readonly, nonatomic) BOOL showCopies;
 @property (readonly, nonatomic) BOOL showDuplex;
@@ -87,6 +91,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (void)startPrinting;
 - (unsigned long long)supportedInterfaceOrientations;
+- (BOOL)testIfContentLargerThanRollPaper:(id)arg1;
 
 @end
 

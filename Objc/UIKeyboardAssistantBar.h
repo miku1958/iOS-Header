@@ -14,15 +14,20 @@ __attribute__((visibility("hidden")))
     UIKeyboardBIUImageGenerator *m_BIUImageGenerator;
     UIBarButtonItemGroup *m_dismissGroup;
     UIBarButtonItem *m_dismissButton;
+    UIBarButtonItem *m_writeboardButton;
     UIBarButtonItemGroup *m_predictionGroup;
     NSLayoutConstraint *m_predictionWidthConstraint;
     UITextInputAssistantItem *m_defaultAssistantItem;
     UITextInputAssistantItem *m_currentAssistantItem;
+    int m_validateGuard;
     BOOL m_useLargeButton;
     BOOL m_isLandscape;
     BOOL m_lightKeyboard;
     BOOL m_needsDismissButton;
+    BOOL m_needsUpdateBarOnMoveToWindow;
     BOOL m_show;
+    struct CGRect m_splitGap;
+    BOOL m_suppressAXSHairlineThickening;
     BOOL _hideAssistantBar;
     BOOL _shouldShow;
 }
@@ -34,6 +39,7 @@ __attribute__((visibility("hidden")))
 + (id)activeInstance;
 + (double)assistantBarHeight;
 + (id)sharedInstance;
++ (double)sideBarWidthForOrientation:(long long)arg1;
 - (id)BIUGenerator;
 - (SEL)action:(int)arg1;
 - (double)assistantBarHeight;
@@ -48,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)assistantRedo;
 - (void)assistantUnderline;
 - (void)assistantUndo;
+- (void)assistantWriteboard;
 - (id)barButtonItem:(unsigned long long)arg1;
 - (BOOL)canPerformAction:(int)arg1;
 - (id)currentAssistantItem;
@@ -56,12 +63,14 @@ __attribute__((visibility("hidden")))
 - (void)didMoveToWindow;
 - (void)dimKeys:(id)arg1;
 - (BOOL)disabledByPrediction;
+- (BOOL)enableInputClicksWhenVisible;
 - (BOOL)enabled;
 - (void)executeAction:(int)arg1;
 - (BOOL)hasCustomButtons;
 - (BOOL)hasItems;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)newAssistantItemWithDefaultItems;
+- (BOOL)pointInside:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setInputAssistantButtonItems;
 - (void)setInputAssistantButtonItemsForResponder:(id)arg1;
@@ -73,6 +82,7 @@ __attribute__((visibility("hidden")))
 - (void)updateBar;
 - (void)updateBar:(BOOL)arg1;
 - (void)updateButtons;
+- (void)updatePredictionViewForCustomButtons;
 
 @end
 

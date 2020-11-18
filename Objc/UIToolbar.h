@@ -7,14 +7,13 @@
 #import <UIKit/UIView.h>
 
 #import <UIKit/UIBarPositioning-Protocol.h>
-#import <UIKit/_UIBackdropViewGraphicsQualityChangeDelegate-Protocol.h>
 #import <UIKit/_UIBarPositioningInternal-Protocol.h>
 #import <UIKit/_UIShadowedView-Protocol.h>
 
-@class NSArray, NSString, UIColor, UIImageView, _UIBackdropView;
+@class NSArray, NSString, UIColor, _UIBarBackground;
 @protocol UIToolbarDelegate;
 
-@interface UIToolbar : UIView <_UIShadowedView, _UIBackdropViewGraphicsQualityChangeDelegate, _UIBarPositioningInternal, UIBarPositioning>
+@interface UIToolbar : UIView <_UIShadowedView, _UIBarPositioningInternal, UIBarPositioning>
 {
     id<UIToolbarDelegate> _delegate;
     NSArray *_items;
@@ -23,34 +22,33 @@
         unsigned int barStyle:3;
         unsigned int barTranslucence:3;
         unsigned int isLocked:1;
-        unsigned int hasCustomBackgroundView:1;
+        unsigned int linkedBeforeWhitetailAndInitializedFromCoder:1;
     } _toolbarFlags;
     double _extraEdgeInsets;
     id _appearanceStorage;
-    _UIBackdropView *_adaptiveBackdrop;
-    UIImageView *_backgroundView;
-    UIView *_shadowView;
-    BOOL _centerTextButtons;
+    _UIBarBackground *_barBackgroundView;
+    UIView *_customBackgroundView;
     BOOL __wantsLetterpressContent;
+    BOOL _centerTextButtons;
+    UIView *_shadowView;
     long long _barPosition;
-    NSString *_backdropViewLayerGroupName;
 }
 
-@property (strong, nonatomic, setter=_setBackgroundView:) UIImageView *_backgroundView;
+@property (strong, nonatomic, getter=_backdropViewLayerGroupName, setter=_setBackdropViewLayerGroupName:) NSString *_backdropViewLayerGroupName;
+@property (strong, nonatomic, setter=_setBackgroundView:) UIView *_backgroundView;
 @property (nonatomic, setter=_setHidesShadow:) BOOL _hidesShadow;
 @property (nonatomic, getter=_isLocked, setter=_setLocked:) BOOL _locked;
 @property (strong, nonatomic, setter=_setShadowView:) UIView *_shadowView; // @synthesize _shadowView;
 @property (nonatomic, setter=_setWantsLetterpressContent:) BOOL _wantsLetterpressContent; // @synthesize _wantsLetterpressContent=__wantsLetterpressContent;
-@property (strong, nonatomic, getter=_backdropViewLayerGroupName, setter=_setBackdropViewLayerGroupName:) NSString *backdropViewLayerGroupName; // @synthesize backdropViewLayerGroupName=_backdropViewLayerGroupName;
 @property (readonly, nonatomic) long long barPosition; // @synthesize barPosition=_barPosition;
 @property (nonatomic) long long barStyle;
 @property (strong, nonatomic) UIColor *barTintColor; // @synthesize barTintColor=_barTintColor;
 @property (nonatomic) BOOL centerTextButtons; // @synthesize centerTextButtons=_centerTextButtons;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<UIToolbarDelegate> delegate;
+@property (weak, nonatomic) id<UIToolbarDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSArray *items;
+@property (copy, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (readonly, nonatomic, getter=isMinibar) BOOL minibar;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIColor *tintColor; // @dynamic tintColor;
@@ -62,13 +60,11 @@
 + (double)defaultHeightForBarSize:(int)arg1;
 + (double)defaultSelectionModeHeight;
 + (Class)defaultTextButtonClass;
-- (id)_adaptiveBackdrop;
+- (void).cxx_destruct;
 - (double)_autolayoutSpacingAtEdge:(int)arg1 inContainer:(id)arg2;
 - (double)_autolayoutSpacingAtEdge:(int)arg1 nextToNeighbor:(id)arg2;
 - (long long)_barPosition;
 - (void)_buttonBarFinishedAnimating;
-- (id)_buttonName:(id)arg1 withType:(int)arg2;
-- (void)_cleanupAdaptiveBackdrop;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedHeight;
 - (id)_currentCustomBackground;
 - (id)_currentCustomBackgroundRespectOversize_legacy:(BOOL *)arg1;
@@ -84,7 +80,6 @@
 - (BOOL)_isAdaptiveToolbarDisabled;
 - (BOOL)_isInNavigationBar;
 - (BOOL)_isTopBar_legacy;
-- (void)_layoutBackgroundViewConsideringStatusBar;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (void)_positionToolbarButtons:(id)arg1 ignoringItem:(id)arg2 resetFontScaleAdjustment:(BOOL)arg3;
 - (id)_positionToolbarButtons:(id)arg1 ignoringItem:(id)arg2 resetFontScaleAdjustment:(BOOL)arg3 actuallyRepositionButtons:(BOOL)arg4;
@@ -95,26 +90,22 @@
 - (void)_setBarPosition:(long long)arg1;
 - (void)_setButtonBackgroundImage:(id)arg1 mini:(id)arg2 forStates:(unsigned long long)arg3;
 - (void)_setForceTopBarAppearance:(BOOL)arg1;
+- (void)_setNeedsBackgroundViewUpdate;
 - (void)_setVisualAltitude:(double)arg1;
 - (void)_setVisualAltitudeBias:(struct CGSize)arg1;
 - (BOOL)_subclassImplementsDrawRect;
-- (BOOL)_supportsAdaptiveBackground;
-- (void)_updateBackgroundColor;
-- (void)_updateBackgroundImage;
+- (void)_updateBackgroundView;
 - (void)_updateBarForStyle;
 - (void)_updateItemsForNewFrame:(id)arg1;
 - (void)_updateOpacity;
-- (void)_updateScriptingInfo:(id)arg1 view:(id)arg2;
 - (void)addConstraint:(id)arg1;
 - (void)animateToolbarItemIndex:(unsigned long long)arg1 duration:(double)arg2 target:(id)arg3 didFinishSelector:(SEL)arg4;
 - (void)animateWithDuration:(float)arg1 forButton:(int)arg2;
 - (void)backdropView:(id)arg1 didChangeToGraphicsQuality:(long long)arg2;
-- (id)backdropView:(id)arg1 willChangeToGraphicsQuality:(long long)arg2;
 - (id)backgroundImageForToolbarPosition:(long long)arg1 barMetrics:(long long)arg2;
 - (id)buttonItems;
 - (id)createButtonWithDescription:(id)arg1;
 - (int)currentButtonGroup;
-- (void)dealloc;
 - (struct CGSize)defaultSizeForOrientation:(long long)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -133,8 +124,6 @@
 - (void)positionButtons:(id)arg1 tags:(int *)arg2 count:(int)arg3 group:(int)arg4;
 - (void)registerButtonGroup:(int)arg1 withButtons:(int *)arg2 withCount:(int)arg3;
 - (void)removeConstraint:(id)arg1;
-- (id)scriptingInfoWithChildren;
-- (void)setAutoresizingMask:(unsigned long long)arg1;
 - (void)setBackgroundImage:(id)arg1 forToolbarPosition:(long long)arg2 barMetrics:(long long)arg3;
 - (void)setBadgeAnimated:(BOOL)arg1 forButton:(int)arg2;
 - (void)setBadgeGlyph:(id)arg1 forButton:(int)arg2;

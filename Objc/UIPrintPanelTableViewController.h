@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (double)heightOfPreviewView;
 - (id)initWithPrintPanelViewController:(id)arg1;
 - (id)jobAccountTextField;
+- (id)keyCommands;
 - (void)moreButtonPushed:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)pdfFileURL;
@@ -75,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)updatePageRange:(struct _NSRange)arg1;
 - (void)updatePageRangeText;
 - (void)updatePunch:(id)arg1;
+- (void)updateSettingsSummaryText;
 - (void)updateStaple:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;

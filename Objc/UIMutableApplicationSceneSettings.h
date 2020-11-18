@@ -19,6 +19,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL deviceOrientationEventsEnabled;
+@property (nonatomic) BOOL forcedStatusBarForegroundTransparent;
 @property (strong, nonatomic) NSNumber *forcedStatusBarHidden;
 @property (strong, nonatomic) NSNumber *forcedStatusBarStyle;
 @property (readonly) unsigned long long hash;
@@ -26,6 +27,7 @@
 @property (nonatomic) int statusBarStyleOverridesToSuppress;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL underLock;
+@property (nonatomic) long long userInterfaceStyle;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)isUISubclass;

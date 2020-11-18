@@ -70,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (void)_positionInfo;
 - (void)_positionInfoWithoutAnimation;
 - (id)_preferredConfigurationForFocusAnimation:(long long)arg1 inContext:(id)arg2;
+- (id)_segmentLabel;
 - (unsigned long long)_segmentState;
 - (void)_setEnabledAppearance:(BOOL)arg1;
 - (void)_setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
@@ -90,7 +91,6 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)infoName;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithInfo:(id)arg1 style:(long long)arg2 size:(int)arg3 barStyle:(long long)arg4 tintColor:(id)arg5 appearanceStorage:(id)arg6 position:(unsigned int)arg7 autosizeText:(BOOL)arg8;
 - (void)insertDividerView;
@@ -113,6 +113,7 @@ __attribute__((visibility("hidden")))
 - (void)setWasSelected:(BOOL)arg1;
 - (BOOL)showDivider;
 - (void)tintColorDidChange;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;
 - (void)updateDividerViewForChangedSegment:(id)arg1;
 - (void)updateForAppearance:(id)arg1 style:(int)arg2;

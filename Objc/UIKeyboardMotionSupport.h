@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)_disconnectingController:(id)arg1;
 - (id)_initWithScreen:(id)arg1 options:(id)arg2;
 - (BOOL)_matchingOptions:(id)arg1;
+- (void)_updatedController;
 - (void)dealloc;
 
 @end

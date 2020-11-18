@@ -21,6 +21,7 @@
     unsigned long long _windowLevelCount;
     double _windowLevelStack[5];
     struct CGSize _hostedSceneSize;
+    BOOL _manualHostingOverride;
 }
 
 @property (readonly) UIScreen *_intendedScreen;
@@ -67,7 +68,9 @@
 - (void)_setWindowLevel:(double)arg1;
 - (BOOL)_shouldParticipateInVirtualResizing;
 - (BOOL)_shouldResizeWithScene;
+- (BOOL)_shouldTextEffectsWindowBeHostedForView:(id)arg1;
 - (BOOL)_shouldTintStatusBar;
+- (void)_updateRootViewConstraintsForInterfaceOrientationAndStatusBarHeight;
 - (void)_updateTransformLayer;
 - (void)_updateTransformLayerForClassicPresentation;
 - (void)_willSnapshot;
@@ -86,13 +89,14 @@
 - (void)dealloc;
 - (void)delayHideWindow;
 - (void)didAddSubview:(id)arg1;
+- (BOOL)enableRemoteHosting;
 - (void)handleStatusBarChangeFromHeight:(double)arg1 toHeight:(double)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (long long)interfaceOrientation;
 - (BOOL)isInternalWindow;
-- (struct CGPoint)magnifierConvertPoint:(struct CGPoint)arg1 forWindow:(id)arg2;
 - (void)resetTransform;
 - (void)sendSubviewToBack:(id)arg1;
+- (void)setEnableRemoteHosting:(BOOL)arg1;
 - (void)sortSubviews;
 - (void)updateForOrientation:(long long)arg1;
 - (void)updateForOrientation:(long long)arg1 forceResetTransform:(BOOL)arg2;

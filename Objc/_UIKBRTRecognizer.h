@@ -12,7 +12,8 @@
 __attribute__((visibility("hidden")))
 @interface _UIKBRTRecognizer : NSObject
 {
-    int _resetCounter;
+    BOOL _isWaiting;
+    BOOL _disableHomeRowReturn;
     id<_UIKBRTRecognizerDelegate> _delegate;
     id<_UIKBRTRecognizerTouchLoggingProtocol> _touchLogger;
     id<_UIKBRTRecognizerTouchPointTrackingProtocol> _touchTracker;
@@ -20,11 +21,13 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_averagingRules;
     double _maximumNonRestMoveDistance;
     NSObject<OS_dispatch_queue> *_touchQueue;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
     NSMutableArray *_touchInfos;
     NSMutableSet *_activeTouches;
     NSObject<OS_dispatch_queue> *_activeTouchesQueue;
     NSMutableArray *_ignoredTouches;
     NSObject<OS_dispatch_queue> *_ignoredTouchesQueue;
+    unsigned long long _numProlongedTouches;
     double _touchIntervalAverage;
     struct CGSize _clusterRestHaloSize;
 }
@@ -35,10 +38,12 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct CGSize clusterRestHaloSize; // @synthesize clusterRestHaloSize=_clusterRestHaloSize;
 @property (readonly, nonatomic) NSMutableSet *definitiveRules; // @synthesize definitiveRules=_definitiveRules;
 @property (nonatomic) id<_UIKBRTRecognizerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
+@property (nonatomic) BOOL disableHomeRowReturn; // @synthesize disableHomeRowReturn=_disableHomeRowReturn;
 @property (strong, nonatomic) NSMutableArray *ignoredTouches; // @synthesize ignoredTouches=_ignoredTouches;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *ignoredTouchesQueue; // @synthesize ignoredTouchesQueue=_ignoredTouchesQueue;
 @property (nonatomic) double maximumNonRestMoveDistance; // @synthesize maximumNonRestMoveDistance=_maximumNonRestMoveDistance;
-@property (nonatomic) int resetCounter; // @synthesize resetCounter=_resetCounter;
+@property (nonatomic) unsigned long long numProlongedTouches; // @synthesize numProlongedTouches=_numProlongedTouches;
 @property (strong, nonatomic) NSMutableArray *touchInfos; // @synthesize touchInfos=_touchInfos;
 @property (nonatomic) double touchIntervalAverage; // @synthesize touchIntervalAverage=_touchIntervalAverage;
 @property (strong, nonatomic) id<_UIKBRTRecognizerTouchLoggingProtocol> touchLogger; // @synthesize touchLogger=_touchLogger;
@@ -53,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)_doMarkTouchProcessedWithTouchInfo:(id)arg1;
 - (void)_doMovedTouchWithTouchInfo:(id)arg1;
 - (BOOL)addedToActiveTouches:(id)arg1;
+- (void)cancelTouchOnLayoutWithTouchInfo:(id)arg1;
 - (void)explicitlyIgnoreTouch:(id)arg1 withIdentifier:(id)arg2;
 - (id)init;
 - (void)kbStatusMessage:(id)arg1;
@@ -65,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)markTouchProcessed:(id)arg1 withIdentifier:(id)arg2;
 - (void)notifyDelegateOfCancelledTouch:(id)arg1;
 - (void)notifyDelegateOfIgnoringTouch:(id)arg1;
+- (void)notifyDelegateOfMovedIgnoredTouch:(id)arg1;
 - (BOOL)notifyDelegateOfMovedTouch:(id)arg1;
 - (void)notifyDelegateOfRestingTouch:(id)arg1;
 - (void)notifyDelegateOfSuccessfulTouch:(id)arg1;
@@ -73,7 +80,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)queryDelegateOfRestingTouch:(id)arg1;
 - (BOOL)queryDelegateToBeginTouch:(id)arg1 forBeginState:(unsigned long long)arg2 restartIfNecessary:(BOOL)arg3;
 - (BOOL)removedFromActiveTouches:(id)arg1;
-- (void)resetWithStandardKeyPixelSize:(struct CGSize)arg1;
+- (void)reset;
+- (void)setStandardKeyPixelSize:(struct CGSize)arg1;
 - (void)touchCancelled:(id)arg1 withIdentifier:(id)arg2;
 - (void)touchDown:(id)arg1 withIdentifier:(id)arg2 canLogTouch:(BOOL)arg3;
 - (void)touchDragged:(id)arg1 withIdentifier:(id)arg2;

@@ -12,9 +12,9 @@ __attribute__((visibility("hidden")))
     double _shift;
 }
 
+- (BOOL)_forceTextAlignmentCentered;
 - (double)_wheelShift;
 - (void)layoutSubviews;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 
 @end
 

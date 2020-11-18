@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     BOOL _beginsFirstPage;
     BOOL _endsLastPage;
     BOOL _isAtLeftEdge;
+    BOOL _isAutocorrectionCandidate;
     UIKBThemedView *_themedView;
     UILabel *_label;
     UILabel *_annotationLabel;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL endsLastPage; // @synthesize endsLastPage=_endsLastPage;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isAtLeftEdge; // @synthesize isAtLeftEdge=_isAtLeftEdge;
+@property (nonatomic) BOOL isAutocorrectionCandidate; // @synthesize isAutocorrectionCandidate=_isAutocorrectionCandidate;
 @property (readonly, nonatomic) BOOL keepNonPersistent;
 @property (strong, nonatomic) UILabel *label; // @synthesize label=_label;
 @property (readonly) Class superclass;

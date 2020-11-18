@@ -9,14 +9,18 @@
 #import <UIKit/UIViewControllerInteractiveTransitioning-Protocol.h>
 
 @class NSString, NSUUID;
+@protocol UITimingCurveProvider, UIViewImplicitlyAnimating;
 
 @interface UIPercentDrivenInteractiveTransition : NSObject <UIViewControllerInteractiveTransitioning>
 {
     double _duration;
     BOOL _didCommitAnimations;
+    id<UIViewImplicitlyAnimating> _interruptibleAnimator;
+    BOOL _wantsInteractiveStart;
     BOOL __transitionInterrupted;
     double _completionSpeed;
     long long _completionCurve;
+    id<UITimingCurveProvider> _timingCurve;
     NSString *__originalFillMode;
     NSUUID *__uuid;
 }
@@ -32,16 +36,21 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) double percentComplete;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) id<UITimingCurveProvider> timingCurve; // @synthesize timingCurve=_timingCurve;
+@property (nonatomic) BOOL wantsInteractiveStart; // @synthesize wantsInteractiveStart=_wantsInteractiveStart;
 
 - (void).cxx_destruct;
+- (void)_continueInterruptibleTransition:(id)arg1 reverse:(BOOL)arg2;
 - (void)_resetInteractionController;
 - (void)_setDuration:(double)arg1;
+- (BOOL)_startInterruptibleTransition:(id)arg1;
 - (void)_stopInteractiveTransition;
 - (void)_stopInteractiveTransition:(id)arg1;
 - (void)_updateInteractiveTransition:(id)arg1 percent:(double)arg2 isFinished:(BOOL)arg3 didComplete:(BOOL)arg4;
 - (void)cancelInteractiveTransition;
 - (void)finishInteractiveTransition;
 - (id)init;
+- (void)pauseInteractiveTransition;
 - (void)startInteractiveTransition:(id)arg1;
 - (void)startInteractiveTransition:(id)arg1 containerViews:(id)arg2 animation:(CDUnknownBlockType)arg3;
 - (void)updateInteractiveTransition:(double)arg1;

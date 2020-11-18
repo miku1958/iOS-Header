@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (Class)foregroundStyleClass;
 - (double)heightForMetrics:(long long)arg1;
+- (BOOL)isLockScreen;
 - (BOOL)shouldShowInternalItemType:(int)arg1 withScreenCapabilities:(id)arg2;
 
 @end

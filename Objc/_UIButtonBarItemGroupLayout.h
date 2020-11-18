@@ -33,10 +33,13 @@ __attribute__((visibility("hidden")))
 - (void)_addLayoutGuides:(id)arg1;
 - (void)_addLayoutViews:(id)arg1;
 - (void)_configure;
+- (id)_effectiveLayout;
 - (BOOL)_isGroup;
 - (BOOL)_isSpace;
+- (id)_itemLayouts;
 - (void)_iterateConfiguredLayouts:(CDUnknownBlockType)arg1;
 - (id)_newLayoutForBarButtonItem:(id)arg1 useGroupSizing:(BOOL)arg2;
+- (id)_representativeLayout;
 - (void)_updateGroupSizing;
 - (id)description;
 - (id)initWithLayoutMetrics:(id)arg1;

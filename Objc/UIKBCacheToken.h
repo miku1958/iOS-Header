@@ -44,9 +44,11 @@
 - (void)annotateWithInt:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)description;
 - (id)initWithComponents:(id)arg1 name:(id)arg2;
 - (id)initWithName:(id)arg1;
 - (BOOL)isUsableForCacheToken:(id)arg1 withRenderFlags:(long long)arg2;
+- (void)resetAnnotations;
 - (id)stringForComponentArray:(id)arg1 additionalValues:(CDUnknownBlockType)arg2;
 - (id)stringForConstruction:(CDUnknownBlockType)arg1;
 - (id)stringForKey:(id)arg1 state:(int)arg2;

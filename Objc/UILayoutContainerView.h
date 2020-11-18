@@ -8,28 +8,32 @@
 
 #import <UIKit/NSCoding-Protocol.h>
 
+@protocol UILayoutContainerViewDelegate;
+
 __attribute__((visibility("hidden")))
 @interface UILayoutContainerView : UIView <NSCoding>
 {
-    double _cornerRadius;
-    BOOL _shadowViewsInstalled;
     UIView *_shadowView;
-    BOOL _usesRoundedCorners;
+    struct {
+        unsigned int delegateRespondsToSemanticContentAttributeChanged:1;
+        unsigned int delegateRespondsToViewWillLayoutSubviews:1;
+        unsigned int delegateRespondsToWillMoveToWindow:1;
+        unsigned int delegateRespondsToDidMoveToWindow:1;
+    } _layoutContainerViewFlags;
     BOOL _usesInnerShadow;
-    BOOL _forwardMoveToWindowCallbacks;
-    BOOL __delegateRespondsToSemanticContentAttributeChanged;
-    id _delegate;
+    BOOL _usesRoundedCorners;
+    id<UILayoutContainerViewDelegate> _delegate;
 }
 
-@property (nonatomic, setter=_setDelegateRespondsToSemanticContentAttributeChanged:) BOOL _delegateRespondsToSemanticContentAttributeChanged; // @synthesize _delegateRespondsToSemanticContentAttributeChanged=__delegateRespondsToSemanticContentAttributeChanged;
-@property (weak, nonatomic) id delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) BOOL forwardMoveToWindowCallbacks; // @synthesize forwardMoveToWindowCallbacks=_forwardMoveToWindowCallbacks;
+@property (weak, nonatomic) id<UILayoutContainerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL usesInnerShadow; // @synthesize usesInnerShadow=_usesInnerShadow;
 @property (nonatomic) BOOL usesRoundedCorners; // @synthesize usesRoundedCorners=_usesRoundedCorners;
 
 - (void).cxx_destruct;
 - (void)_installShadowViews;
+- (void)_setFlagsFromDelegate:(id)arg1;
 - (void)_tearDownShadowViews;
+- (void)_updateShadowViews;
 - (void)addSubview:(id)arg1;
 - (void)dealloc;
 - (void)didMoveToWindow;

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIStatusBarItemView.h>
 
-@class UIView;
+@class UIView, _UILegibilityImageSet;
 
 __attribute__((visibility("hidden")))
 @interface UIStatusBarBatteryItemView : UIStatusBarItemView
@@ -15,11 +15,21 @@ __attribute__((visibility("hidden")))
     int _state;
     BOOL _batterySaverModeActive;
     UIView *_accessoryView;
+    BOOL _cachedImageHasAccessoryImage;
+    int _cachedCapacity;
+    _UILegibilityImageSet *_cachedImageSet;
+    unsigned long long _cachedBatteryStyle;
 }
+
+@property (nonatomic) unsigned long long cachedBatteryStyle; // @synthesize cachedBatteryStyle=_cachedBatteryStyle;
+@property (nonatomic) int cachedCapacity; // @synthesize cachedCapacity=_cachedCapacity;
+@property (nonatomic) BOOL cachedImageHasAccessoryImage; // @synthesize cachedImageHasAccessoryImage=_cachedImageHasAccessoryImage;
+@property (strong, nonatomic) _UILegibilityImageSet *cachedImageSet; // @synthesize cachedImageSet=_cachedImageSet;
 
 - (void).cxx_destruct;
 - (id)_accessoryImage;
 - (struct CGSize)_batteryOffsetWithBackground:(id)arg1;
+- (id)_contentsImage;
 - (BOOL)_needsAccessoryImage;
 - (void)_updateAccessoryImage;
 - (id)contentsImage;

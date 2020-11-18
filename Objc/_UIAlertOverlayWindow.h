@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateTransformLayerForClassicPresentation;
 - (void)handleStatusBarChangeFromHeight:(double)arg1 toHeight:(double)arg2;
 - (BOOL)isInternalWindow;
-- (id)representation;
 - (int)textEffectsVisibilityLevel;
 
 @end

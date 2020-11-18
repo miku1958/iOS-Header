@@ -10,7 +10,7 @@
 #import <UIKit/UIKeyboardKeyplaneTransitionDelegate-Protocol.h>
 #import <UIKit/UIScrollViewIntersectionDelegate-Protocol.h>
 
-@class CADisplayLink, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, UIInputViewPostPinningReloadState, UIInputViewSet, UIInputViewTransition, UIKeyboard, UIKeyboardAutomatic, UIKeyboardRotationState, UIPanGestureRecognizer, UIPeripheralHostState, UIPeripheralHostView, UIResponder, UIScrollView, UITextEffectsWindow, UIView;
+@class CADisplayLink, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, UIInputViewPostPinningReloadState, UIInputViewSet, UIInputViewTransition, UIKeyboard, UIKeyboardAutomatic, UIKeyboardRotationState, UIPanGestureRecognizer, UIPeripheralHostState, UIPeripheralHostView, UIResponder, UIScrollView, UITextEffectsWindow, UITextInputMode, UIView;
 
 @interface UIPeripheralHost : NSObject <UIScrollViewIntersectionDelegate, UIKeyboardKeyplaneTransitionDelegate, UIGestureRecognizerDelegate>
 {
@@ -56,7 +56,6 @@
     NSMutableArray *_targetStateStack;
     UIInputViewSet *_inputViewSet;
     UIResponder *_responder;
-    BOOL _ignoreInputModeChanges;
     NSMutableSet *_pinningResponders;
     BOOL _ignoresPinning;
     UIInputViewPostPinningReloadState *_postPinningReloadState;
@@ -86,11 +85,12 @@
     double _ambiguousControlCenterActivationMargin;
     UIResponder *_responderWithoutAutomaticAppearanceEnabled;
     UITextEffectsWindow *_containerWindow;
-    BOOL _springBoardLockStateIsLocked;
     int _hostedAnimationToggleCount;
     int _deactivationCount;
     BOOL _dontNeedAssistantBar;
+    CDUnknownBlockType _deferredTransitionTask;
     UIInputViewSet *_transientInputViewSet;
+    UITextInputMode *_documentInputMode;
 }
 
 @property (strong, nonatomic) UIInputViewSet *_inputViews; // @synthesize _inputViews=_inputViewSet;
@@ -109,6 +109,7 @@
 @property (strong, nonatomic) UIInputViewTransition *currentTransition; // @synthesize currentTransition=_currentTransition;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UITextInputMode *documentInputMode; // @synthesize documentInputMode=_documentInputMode;
 @property (readonly, nonatomic) NSMutableArray *dropShadowViews;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL ignoresPinning;
@@ -127,12 +128,16 @@
 
 + (void)_releaseSharedInstance;
 + (id)activeInstance;
++ (struct CGPoint)defaultUndockedOffset;
 + (id)endPlacementForInputViewSet:(id)arg1;
 + (double)gridViewRubberBandValueForValue:(double)arg1 target:(double)arg2 timeInterval:(double)arg3 velocity:(double *)arg4;
 + (Class)hostViewClass;
++ (BOOL)inputViewSetContainsView:(id)arg1;
 + (id)passthroughViews;
 + (struct CGRect)screenBoundsInAppOrientation;
++ (void)setFloating:(BOOL)arg1 onCompletion:(CDUnknownBlockType)arg2;
 + (id)sharedInstance;
++ (struct CGRect)visibleInputViewFrame;
 + (struct CGRect)visiblePeripheralFrame;
 - (void)_beginDisablingAnimations;
 - (void)_beginIgnoringReloadInputViews;
@@ -220,6 +225,7 @@
 - (void)finishRotationOfKeyboard:(id)arg1;
 - (void)finishScrollViewTransition;
 - (void)finishTransitionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)flushDelayedTasks;
 - (void)forceOrderInAutomatic;
 - (void)forceOrderInAutomaticAnimated:(BOOL)arg1;
 - (void)forceOrderInAutomaticFromDirection:(int)arg1 withDuration:(double)arg2;
@@ -248,6 +254,8 @@
 - (BOOL)isTranslating;
 - (BOOL)isUndocked;
 - (double)keyboardAttachedViewHeight;
+- (id)lastUsedInputModeForCurrentContext;
+- (id)lastUsedInputModeForTextInputMode:(id)arg1;
 - (void)layoutIfNeeded;
 - (void)layoutInputViews;
 - (void)layoutInputViewsForGeometry:(struct UIPeripheralAnimationGeometry)arg1;
@@ -271,6 +279,7 @@
 - (void)orderInAutomaticSkippingAnimation;
 - (void)orderInWithAnimationStyle:(id)arg1;
 - (void)orderOutAutomatic;
+- (void)orderOutAutomaticExceptAccessoryView;
 - (void)orderOutAutomaticSkippingAnimation;
 - (void)orderOutAutomaticToDirection:(int)arg1 withDuration:(double)arg2;
 - (void)orderOutWithAnimation:(BOOL)arg1 toDirection:(int)arg2 duration:(double)arg3;
@@ -298,6 +307,7 @@
 - (void)prepareForTransition;
 - (void)prepareToAnimateClippedKeyboardWithOffsets:(struct CGRect)arg1 orderingIn:(BOOL)arg2 onSnapshot:(BOOL)arg3;
 - (void)pushAnimationStyle:(id)arg1;
+- (void)queueDelayedTask:(CDUnknownBlockType)arg1;
 - (void)refreshCorners;
 - (void)resetCurrentOrderOutAnimationDuration:(double)arg1;
 - (void)resetNextAutomaticOrderInDirectionAndDuration;
@@ -327,7 +337,6 @@
 - (void)showInputViewsIfNeeded;
 - (struct CGSize)sizeOfInputViewForInputViewSet:(id)arg1 withInterfaceOrientation:(long long)arg2;
 - (BOOL)skipTransitionForInputViews:(id)arg1;
-- (void)springBoardLockStateChanged:(id)arg1;
 - (void)syncToExistingAnimations;
 - (void)textEffectsWindowDidRotate:(id)arg1;
 - (id)topAnimationStyle;

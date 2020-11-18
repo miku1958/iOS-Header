@@ -6,11 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
+#import <UIKit/CAAnimationDelegate-Protocol.h>
 #import <UIKit/UIAlertViewDelegate-Protocol.h>
 
 @class NSString, UIAlertView;
 
-@interface UITwoSidedAlertController : NSObject <UIAlertViewDelegate>
+@interface UITwoSidedAlertController : NSObject <UIAlertViewDelegate, CAAnimationDelegate>
 {
     UIAlertView *_front;
     UIAlertView *_back;

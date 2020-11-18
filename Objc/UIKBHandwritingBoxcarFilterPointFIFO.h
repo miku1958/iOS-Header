@@ -18,9 +18,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *prevPoints; // @synthesize prevPoints=_prevPoints;
 @property (nonatomic) unsigned long long width; // @synthesize width=_width;
 
+- (void).cxx_destruct;
 - (void)addPoint:(struct)arg1;
 - (void)clear;
-- (void)dealloc;
 - (void)emitAveragedPoint;
 - (void)flush;
 - (id)initWithFIFO:(id)arg1 width:(unsigned long long)arg2;

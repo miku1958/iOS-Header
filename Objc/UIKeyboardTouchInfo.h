@@ -19,11 +19,13 @@ __attribute__((visibility("hidden")))
     struct CGPoint _initialDragPoint;
     BOOL _dragged;
     int _stage;
+    int _fingerID;
     BOOL _maySuppressUpAction;
     int _initialKeyState;
 }
 
 @property (nonatomic) BOOL dragged; // @synthesize dragged=_dragged;
+@property (nonatomic) int fingerID; // @synthesize fingerID=_fingerID;
 @property (nonatomic) struct CGPoint initialDragPoint; // @synthesize initialDragPoint=_initialDragPoint;
 @property (nonatomic) int initialKeyState; // @synthesize initialKeyState=_initialKeyState;
 @property (nonatomic) struct CGPoint initialPoint; // @synthesize initialPoint=_initialPoint;

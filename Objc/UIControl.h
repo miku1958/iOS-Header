@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSSet;
 
 @interface UIControl : UIView
 {
@@ -32,6 +32,8 @@
     } _controlFlags;
 }
 
+@property (readonly, nonatomic) unsigned long long allControlEvents;
+@property (readonly, nonatomic) NSSet *allTargets;
 @property (nonatomic) long long contentHorizontalAlignment; // @dynamic contentHorizontalAlignment;
 @property (nonatomic) long long contentVerticalAlignment; // @dynamic contentVerticalAlignment;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @dynamic enabled;
@@ -74,8 +76,6 @@
 - (id)actionsForTarget:(id)arg1 forControlEvent:(unsigned long long)arg2;
 - (void)addTarget:(id)arg1 action:(SEL)arg2 forControlEvents:(unsigned long long)arg3;
 - (void)addTarget:(id)arg1 action:(SEL)arg2 forEvents:(int)arg3;
-- (unsigned long long)allControlEvents;
-- (id)allTargets;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canBecomeFocused;

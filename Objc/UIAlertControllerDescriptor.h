@@ -12,9 +12,11 @@ __attribute__((visibility("hidden")))
     BOOL _hasTitle;
     BOOL _hasMessage;
     BOOL _hasContentViewController;
+    BOOL _applicationIsFullscreen;
     long long _numberOfActions;
 }
 
+@property BOOL applicationIsFullscreen; // @synthesize applicationIsFullscreen=_applicationIsFullscreen;
 @property BOOL hasContentViewController; // @synthesize hasContentViewController=_hasContentViewController;
 @property BOOL hasMessage; // @synthesize hasMessage=_hasMessage;
 @property BOOL hasTitle; // @synthesize hasTitle=_hasTitle;

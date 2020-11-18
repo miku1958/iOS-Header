@@ -34,7 +34,6 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_labelFrame;
 - (void)_prepareCrossViewsForNewSize:(struct CGSize)arg1;
 - (void)_resetTitleSize;
-- (id)_scriptingInfo;
 - (void)_setFont:(id)arg1;
 - (void)_setLineBreakMode:(long long)arg1;
 - (struct CGSize)_titleSize;
@@ -43,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateLabelColor;
 - (void)_updateLabelContents;
 - (BOOL)_useSilverLookForBarStyle:(long long)arg1;
+- (id)description;
 - (id)font;
 - (id)initWithNavigationItem:(id)arg1;
 - (void)layoutSubviews;

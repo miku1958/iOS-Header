@@ -10,7 +10,6 @@
 
 @class NSString, UIImage;
 
-__attribute__((visibility("hidden")))
 @interface _UIDocumentPickerAuxiliaryOption : NSObject <NSSecureCoding>
 {
     BOOL _newlyAdded;

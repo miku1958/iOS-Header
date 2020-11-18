@@ -29,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)canHideActivity:(id)arg1;
 - (id)defaultsValueForKey:(id)arg1 activity:(id)arg2;
 - (id)identifierForActivity:(id)arg1;
-- (id)init;
 - (id)initWithIdentifier:(id)arg1 userDefaults:(id)arg2;
 - (id)migrateSortOrderIfNeededForBuiltInActivityType:(id)arg1 activityIdentifierOrder:(id)arg2;
 - (id)mutableActivityIdentifiersArrayForActivitiesArray:(id)arg1;

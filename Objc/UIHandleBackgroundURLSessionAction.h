@@ -17,6 +17,7 @@
 - (long long)UIActionType;
 - (id)initWithInfo:(id)arg1 timeout:(double)arg2 forResponseOnQueue:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (id)initWithSessionIdentifier:(id)arg1;
+- (id)initWithSessionIdentifier:(id)arg1 timeout:(double)arg2 forResponseOnQueue:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 
 @end

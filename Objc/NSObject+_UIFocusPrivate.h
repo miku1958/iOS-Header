@@ -7,7 +7,6 @@
 #import <Foundation/NSObject.h>
 
 @interface NSObject (_UIFocusPrivate)
-- (id)_parentFocusEnvironment;
 - (void)didUpdateFocusFromView:(id)arg1;
 - (BOOL)shouldUpdateFocusFromView:(id)arg1 toView:(id)arg2 heading:(unsigned long long)arg3;
 - (void)willUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;

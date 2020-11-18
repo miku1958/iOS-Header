@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 - (void)_controlTouchBegan:(id)arg1 withEvent:(id)arg2;
 - (void)_controlTouchEnded:(id)arg1 withEvent:(id)arg2;
 - (void)_controlTouchMoved:(id)arg1 withEvent:(id)arg2;
-- (id)_scriptingInfo;
 - (float)buttonWidth;
 - (void)dealloc;
 - (void)drawRect:(struct CGRect)arg1;

@@ -28,8 +28,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double fontScaleFactor; // @synthesize fontScaleFactor=_fontScaleFactor;
 
 - (void).cxx_destruct;
-- (id)initWithVisualStyle:(id)arg1 delegate:(id)arg2;
-- (void)setKeyCommands:(id)arg1;
+- (id)initWithDelegate:(id)arg1;
+- (void)setKeyCommands:(id)arg1 withVisualStyle:(id)arg2;
 
 @end
 

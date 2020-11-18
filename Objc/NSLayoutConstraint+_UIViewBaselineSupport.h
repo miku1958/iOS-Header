@@ -8,6 +8,9 @@
 
 @interface NSLayoutConstraint (_UIViewBaselineSupport)
 - (id)_baselineLoweringInfoForFirstItem:(BOOL)arg1;
+- (id)_debuggableEquationBaseDescription;
+- (id)_debuggableEquationDescriptionWithoutLegend;
+- (id)_debuggableEquationLegendDescription;
 - (void)_setBaselineLoweringInfo:(id)arg1 forFirstItem:(BOOL)arg2;
 @end
 

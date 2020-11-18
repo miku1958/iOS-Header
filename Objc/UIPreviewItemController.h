@@ -36,7 +36,7 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<UIPreviewItemDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<UIPreviewItemDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *gestureRecognizers;
 @property (readonly) unsigned long long hash;
@@ -51,6 +51,7 @@
 @property (readonly, weak, nonatomic) UIView *view; // @synthesize view=_view;
 
 - (void).cxx_destruct;
+- (BOOL)_isMobileSafariRestricted;
 - (BOOL)_shouldCancelPreviewWithNegativeFeedback;
 - (void)clearPreviewIndicator;
 - (void)dealloc;
@@ -64,11 +65,11 @@
 - (void)previewInteractionController:(id)arg1 didDismissViewController:(id)arg2 committing:(BOOL)arg3;
 - (void)previewInteractionController:(id)arg1 interactionProgress:(id)arg2 forRevealAtLocation:(struct CGPoint)arg3 inSourceView:(id)arg4 containerView:(id)arg5;
 - (void)previewInteractionController:(id)arg1 performCommitForPreviewViewController:(id)arg2 committedViewController:(id)arg3;
-- (void)previewInteractionController:(id)arg1 performCommitToViewController:(id)arg2;
 - (void)previewInteractionController:(id)arg1 performCustomCommitForPreviewViewController:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)previewInteractionController:(id)arg1 shouldUseStandardRevealTransformForPreviewingAtLocation:(struct CGPoint)arg2 inView:(id)arg3;
 - (id)previewInteractionController:(id)arg1 viewControllerForPreviewingAtPosition:(struct CGPoint)arg2 inView:(id)arg3 presentingViewController:(id *)arg4;
 - (void)previewInteractionController:(id)arg1 willPresentViewController:(id)arg2 forPosition:(struct CGPoint)arg3 inSourceView:(id)arg4;
+- (BOOL)previewInteractionControllerShouldPerformCompatibilityCommitTransition:(id)arg1;
 - (id)previewViewControllerForPosition:(struct CGPoint)arg1 inSourceView:(id)arg2 documentProperties:(id)arg3;
 - (void)setupPreviewIndicatorInSourceView:(id)arg1;
 - (void)startInteraction;

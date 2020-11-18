@@ -15,8 +15,10 @@ __attribute__((visibility("hidden")))
 {
     UIKBTouchState *_touchState;
     CDUnknownBlockType _task;
+    BOOL _isBusy;
 }
 
+@property (nonatomic) BOOL isBusy; // @synthesize isBusy=_isBusy;
 @property (readonly, copy, nonatomic) CDUnknownBlockType task; // @synthesize task=_task;
 @property (readonly, strong, nonatomic) UIKBTouchState *touchState; // @synthesize touchState=_touchState;
 

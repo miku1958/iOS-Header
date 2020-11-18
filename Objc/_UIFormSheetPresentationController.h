@@ -13,10 +13,14 @@
     UIDimmingView *_dimmingView;
     UIDropShadowView *_dropShadowView;
     BOOL _layoutStateShouldAvoidKeyboard;
+    double _keyboardYOrigin;
+    BOOL _shouldDismissWhenTappedOutside;
 }
 
+@property (nonatomic, getter=_shouldDismissWhenTappedOutside, setter=_setShouldDismissWhenTappedOutside:) BOOL shouldDismissWhenTappedOutside; // @synthesize shouldDismissWhenTappedOutside=_shouldDismissWhenTappedOutside;
+
 - (void).cxx_destruct;
-- (void)_changeLayoutModeToAvoidKeyboard:(BOOL)arg1;
+- (void)_changeLayoutModeToAvoidKeyboard:(BOOL)arg1 withOrigin:(double)arg2;
 - (long long)_defaultPresentationStyleForTraitCollection:(id)arg1;
 - (double)_dropShadowCornerRadius;
 - (struct CGRect)_frameOfPresentedViewControllerViewInSuperview;
@@ -24,22 +28,22 @@
 - (void)_keyboardWillShow:(id)arg1;
 - (BOOL)_presentationPotentiallyUnderlapsStatusBar;
 - (id)_presentationView;
-- (BOOL)_shouldChangeStatusBarViewController;
 - (BOOL)_shouldHideBottomCorner;
 - (BOOL)_shouldOccludeDuringPresentation;
+- (BOOL)_shouldPresentedViewControllerControlStatusBarAppearance;
 - (void)_transitionFromDidEnd;
 - (void)_transitionFromWillBegin;
 - (void)_transitionToDidEnd;
 - (void)_transitionToWillBegin;
 - (void)containerViewDidLayoutSubviews;
 - (void)containerViewWillLayoutSubviews;
+- (void)dimmingViewWasTapped:(id)arg1;
 - (void)dismissalTransitionDidEnd:(BOOL)arg1;
 - (void)dismissalTransitionWillBegin;
 - (unsigned long long)dropShadowAutoresizingMask;
 - (struct CGRect)frameOfPresentedViewInContainerView;
 - (id)initWithPresentedViewController:(id)arg1 presentingViewController:(id)arg2;
 - (long long)presentationStyle;
-- (void)presentationTransitionDidEnd:(BOOL)arg1;
 - (void)presentationTransitionWillBegin;
 - (id)presentedView;
 - (BOOL)shouldPresentInFullscreen;

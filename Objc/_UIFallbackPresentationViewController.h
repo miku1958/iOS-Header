@@ -12,14 +12,19 @@
 {
     _UIFallbackPresentationWindow *_presentationWindow;
     BOOL _hasPreservedKeyboardInputViews;
+    BOOL _hasDismissCompletionHandler;
     UIWindow *_rotationDecider;
+    CDUnknownBlockType _presentationPreparationBlock;
 }
 
+@property (nonatomic) BOOL hasDismissCompletionHandler; // @synthesize hasDismissCompletionHandler=_hasDismissCompletionHandler;
 @property (nonatomic) BOOL hasPreservedKeyboardInputViews; // @synthesize hasPreservedKeyboardInputViews=_hasPreservedKeyboardInputViews;
+@property (copy, nonatomic) CDUnknownBlockType presentationPreparationBlock; // @synthesize presentationPreparationBlock=_presentationPreparationBlock;
 @property (strong, nonatomic) UIWindow *rotationDecider; // @synthesize rotationDecider=_rotationDecider;
 
 - (void).cxx_destruct;
 - (void)_dismissViewControllerWithTransition:(int)arg1 from:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_preparePresentationControllerForPresenting:(id)arg1;
 - (void)_presentViewController:(id)arg1 sendingView:(id)arg2 animated:(BOOL)arg3;
 - (void)_preserveInputViewsAnimated:(BOOL)arg1;
 - (void)_restoreInputViewsAnimated:(BOOL)arg1;
