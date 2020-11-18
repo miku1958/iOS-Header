@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic, setter=_setAppearanceGuideClass:) Class _appearanceGuideClass; // @synthesize _appearanceGuideClass;
+@property (readonly, nonatomic, getter=isDefaultTVLayout) BOOL _defaultTVLayout;
 @property (readonly, nonatomic) UIColor *_defaultUnselectedLabelTintColor;
 @property (nonatomic, getter=_isSelected, setter=_setSelected:) BOOL _selected;
 @property (nonatomic, setter=_setShowsHighlightedState:) BOOL _showsHighlightedState; // @synthesize _showsHighlightedState;
@@ -111,12 +112,15 @@ __attribute__((visibility("hidden")))
 - (id)badgeTextAttributesForState:(long long)arg1;
 - (struct UIOffset)badgeTitlePositionAdjustmentForState:(long long)arg1;
 - (BOOL)canBecomeFocused;
+- (double)defaultAlphaForState:(long long)arg1;
 - (id)defaultColorForState:(long long)arg1;
+- (long long)defaultCompositingModeForState:(long long)arg1;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)iconColorForState:(long long)arg1;
 - (BOOL)iconShouldUseVibrancyForState:(long long)arg1;
 - (id)initWithImage:(id)arg1 landscapeImage:(id)arg2 selectedImage:(id)arg3 landscapeSelectedImage:(id)arg4 label:(id)arg5 withInsets:(struct UIEdgeInsets)arg6 landscapeInsets:(struct UIEdgeInsets)arg7 tabBar:(id)arg8;
 - (id)initWithImage:(id)arg1 selectedImage:(id)arg2 label:(id)arg3 withInsets:(struct UIEdgeInsets)arg4 tabBar:(id)arg5;
+- (BOOL)isDefaultColor:(id)arg1 forState:(long long)arg2;
 - (BOOL)labelShouldUseVibrancyForState:(long long)arg1;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;

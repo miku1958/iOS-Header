@@ -25,6 +25,7 @@
 - (void)appendSectionWithIdentifier:(id)arg1;
 - (void)appendSectionsWithIdentifiers:(id)arg1;
 - (void)applyDifferencesFromSnapshot:(id)arg1;
+- (void)applyDifferencesFromSnapshot:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)applySnapshot:(id)arg1;
 - (long long)defaultRowAnimation;
 - (void)deleteAllItems;
@@ -56,6 +57,7 @@
 - (void)moveSectionWithIdentifier:(id)arg1 beforeSectionWithIdentifier:(id)arg2;
 - (long long)numberOfItemsInSection:(id)arg1;
 - (void)reloadFromSnapshot:(id)arg1;
+- (void)reloadFromSnapshot:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)reloadItemsWithIdentifiers:(id)arg1;
 - (void)reloadSectionsWithIdentifiers:(id)arg1;
 - (id)sectionIdentifierForSectionContainingItemIdentifier:(id)arg1;

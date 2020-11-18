@@ -258,6 +258,7 @@
         unsigned int reloadSkippedDuringSuspension:1;
         unsigned int displaySkippedDuringSuspension:1;
         unsigned int needsReload:1;
+        unsigned int needsRebuildGeometry:1;
         unsigned int scheduledUpdateVisibleCells:1;
         unsigned int scheduledUpdateVisibleCellsFrames:1;
         unsigned int displayTopSeparator:1;
@@ -344,6 +345,8 @@
         unsigned int scrollFirstResponderCellVisibleAfterVisibleCellsUpdate:1;
         unsigned int ignoreCopyFilterForTableAnimations:1;
         unsigned int disableReuseQueuePurgeOnTextSizeChanges:1;
+        unsigned int doFirstResponderUpdatesAfterVisibleCellsUpdate:1;
+        unsigned int useUnifiedSelectionBehavior:1;
     } _tableFlags;
     id<UITableViewDragDelegate> _dragDelegate;
     id<UITableViewDropDelegate> _dropDelegate;
@@ -663,7 +666,6 @@
 - (void)_dropEntered:(id)arg1;
 - (void)_dropExited:(id)arg1;
 - (id)_dropPreviewParametersForIndexPath:(id)arg1;
-- (id)_dropTargetIndexPathAtPoint:(struct CGPoint)arg1 adjustedForGap:(BOOL)arg2;
 - (unsigned long long)_edgesApplyingBaseInsetsToIndexBarInsets;
 - (long long)_editingStyleForRowAtIndexPath:(id)arg1;
 - (void)_endAnimatingCells;
@@ -754,6 +756,7 @@
 - (BOOL)_isReordering;
 - (BOOL)_isRowMultiSelect:(id)arg1;
 - (BOOL)_isScrolledToTop;
+- (BOOL)_isScrolledToTopAtContentOffsetY:(double)arg1;
 - (BOOL)_isTableHeaderViewHidden;
 - (id)_itemsForAddingToDragSession:(id)arg1 atIndexPath:(id)arg2 point:(struct CGPoint)arg3 withDataOwner:(long long)arg4;
 - (id)_itemsForBeginningDragSession:(id)arg1 atIndexPath:(id)arg2;
@@ -807,6 +810,7 @@
 - (void)_rebaseExistingShadowUpdatesIfNecessaryWithSortedInsertItems:(id)arg1 sortedDeleteItems:(id)arg2 sortedMoveItems:(id)arg3;
 - (void)_rebuildGeometry;
 - (void)_rebuildGeometryForcingRowDataUpdate:(BOOL)arg1 skipContentOffsetAdjustment:(BOOL)arg2 updateImmediatelyIfPossible:(BOOL)arg3;
+- (void)_rebuildGeometryWithCompatibility;
 - (void)_recomputeSectionIndexTitleIndex;
 - (void)_rectChangedWithNewSize:(struct CGSize)arg1 oldSize:(struct CGSize)arg2;
 - (struct CGRect)_rectForFooterInSection:(long long)arg1 usingPresentationValues:(BOOL)arg2;
@@ -911,6 +915,7 @@
 - (void)_setIsAncestorOfFirstResponder:(BOOL)arg1;
 - (void)_setMarginWidth:(double)arg1;
 - (void)_setNeedsIndexBarInsetsUpdate;
+- (void)_setNeedsRebuildGeometry;
 - (void)_setNeedsVisibleCellsUpdate:(BOOL)arg1 withFrames:(BOOL)arg2;
 - (void)_setNeedsVisibleCellsUpdate:(BOOL)arg1 withFrames:(BOOL)arg2 updateImmediatelyIfPossible:(BOOL)arg3;
 - (void)_setPinsTableHeaderView:(BOOL)arg1;
@@ -929,6 +934,7 @@
 - (void)_setSeparatorsDrawInVibrantLightModeUIAppearance:(id)arg1;
 - (void)_setTopPadding:(double)arg1;
 - (void)_setUpContentFocusContainerGuide;
+- (void)_setUseUnifiedSelectionBehavior:(BOOL)arg1;
 - (void)_setUsesStaticScrollBar:(BOOL)arg1;
 - (void)_setupCell:(id)arg1 forEditing:(BOOL)arg2 atIndexPath:(id)arg3 animated:(BOOL)arg4 updateSeparators:(BOOL)arg5;
 - (void)_setupCell:(id)arg1 forEditing:(BOOL)arg2 atIndexPath:(id)arg3 canEdit:(BOOL)arg4 editingStyle:(long long)arg5 shouldIndentWhileEditing:(BOOL)arg6 showsReorderControl:(BOOL)arg7 accessoryType:(long long)arg8 animated:(BOOL)arg9 updateSeparators:(BOOL)arg10;
@@ -945,6 +951,7 @@
 - (BOOL)_shouldChangeIndexBasedOnValueChanged;
 - (BOOL)_shouldConfigureCellForDisplayDuringDequeueForIndexPath:(id)arg1;
 - (BOOL)_shouldConsumePressEvent:(id)arg1;
+- (BOOL)_shouldDeselectRowsOnTouchesBegan;
 - (BOOL)_shouldDisplayExtraSeparatorsAtOffset:(double *)arg1;
 - (BOOL)_shouldDrawDarkSeparators;
 - (BOOL)_shouldDrawSeparatorAtBottomOfSection:(long long)arg1;
@@ -981,6 +988,7 @@
 - (void)_stopLongPressAutoscrollTimer;
 - (void)_stopScrollingNotify:(BOOL)arg1 pin:(BOOL)arg2;
 - (void)_storePreReloadStateForRestoringContentOffsetWithFirstVisibleIndexPath:(id)arg1;
+- (void)_storeStateForRestoringContentOffsetIfNeeded;
 - (long long)_styleForAppearance;
 - (void)_suspendReloads;
 - (id)_swipeActionController;
@@ -1067,6 +1075,7 @@
 - (void)_updateWrapperFrame;
 - (void)_updateWrapperView;
 - (id)_updatedDropProposalForIndexPath:(id)arg1 dropSession:(id)arg2 withDefaultProposal:(id)arg3;
+- (BOOL)_useUnifiedSelectionBehavior;
 - (void)_userSelectCell:(id)arg1;
 - (void)_userSelectRowAtPendingSelectionIndexPath:(id)arg1;
 - (BOOL)_usingCustomBackgroundView;

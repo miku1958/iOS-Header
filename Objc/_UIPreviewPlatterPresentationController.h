@@ -65,7 +65,9 @@ __attribute__((visibility("hidden")))
 - (void)_handlePlatterActionTapGesture:(id)arg1;
 - (void)_preDismissalTasks;
 - (BOOL)_shouldDisableInteractionDuringTransitions;
+- (BOOL)_shouldKeepCurrentFirstResponder;
 - (BOOL)_shouldOccludeDuringPresentation;
+- (BOOL)_shouldRestoreFirstResponder;
 - (void)_testing_dismissByTappingOutside;
 - (void)_testing_tapAnAction;
 - (id)_traitCollectionForChildEnvironment:(id)arg1;
@@ -82,6 +84,8 @@ __attribute__((visibility("hidden")))
 - (CDStruct_6f807b77)layoutAnchor;
 - (void)platterPanControllerDidSwipeDown:(id)arg1;
 - (void)platterPanControllerDidTearOff:(id)arg1;
+- (void)platterPanInteractionBegan:(id)arg1;
+- (void)platterPanInteractionEnded:(id)arg1;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (long long)presentationStyle;
 - (void)presentationTransitionDidEnd:(BOOL)arg1;

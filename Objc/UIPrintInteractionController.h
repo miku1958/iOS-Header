@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, PKPrinter, UIPrintFormatter, UIPrintInfo, UIPrintPageRenderer, UIPrintPaper;
+@class NSArray, PKPrinter, UIPrintFormatter, UIPrintInfo, UIPrintPageRenderer, UIPrintPaper, UIWindowScene;
 @protocol OS_dispatch_queue, UIPrintInteractionControllerActivityDelegate, UIPrintInteractionControllerDelegate;
 
 @interface UIPrintInteractionController : NSObject
@@ -27,10 +27,12 @@
     UIPrintFormatter *_printFormatter;
     id _printingItem;
     NSArray *_printingItems;
+    UIWindowScene *_hostingWindowScene;
     id<UIPrintInteractionControllerActivityDelegate> _printActivityDelegate;
 }
 
 @property (weak, nonatomic) id<UIPrintInteractionControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) UIWindowScene *hostingWindowScene; // @synthesize hostingWindowScene=_hostingWindowScene;
 @property (nonatomic) BOOL isContentManaged; // @synthesize isContentManaged=_isContentManaged;
 @property (readonly, nonatomic) long long pageCount;
 @property (strong, nonatomic) NSArray *pageRanges;

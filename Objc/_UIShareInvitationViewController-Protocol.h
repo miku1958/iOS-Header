@@ -17,7 +17,10 @@
 - (void)_setCloudKitShare:(CKShare *)arg1 containerID:(CKContainerID *)arg2;
 - (void)_setCloudKitThumbnail:(NSData *)arg1 title:(NSString *)arg2 type:(NSString *)arg3;
 - (void)_setCollaborationUIEnabled:(BOOL)arg1;
+- (void)_setFolderSubitemName:(NSString *)arg1;
 - (void)_setHeaderActionTitle:(NSString *)arg1;
+- (void)_setHeaderPrimaryImage:(UIImage *)arg1;
+- (void)_setHeaderSecondaryImage:(UIImage *)arg1;
 - (void)_setHeaderSubtitle:(NSString *)arg1;
 - (void)_setInitialHeaderSubtitle:(NSString *)arg1;
 - (void)_setIsInPopoverMode:(BOOL)arg1;
@@ -28,6 +31,7 @@
 - (void)_setParticipantDetails:(NSDictionary *)arg1;
 - (void)_setPrimaryAuxiliarySwitchState:(BOOL)arg1;
 - (void)_setPrimaryAuxiliarySwitchTitle:(NSString *)arg1;
+- (void)_setRootFolderTitle:(NSString *)arg1;
 - (void)_setSandboxingURLWrapper:(FPSandboxingURLWrapper *)arg1;
 - (void)_setSecondaryAuxiliarySwitchState:(BOOL)arg1;
 - (void)_setSecondaryAuxiliarySwitchTitle:(NSString *)arg1;

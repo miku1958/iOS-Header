@@ -9,17 +9,17 @@
 #import <UIKitCore/NSCopying-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface _UIWeakReference : NSObject <NSCopying>
+@interface _UIShadowViewImageCacheKey : NSObject <NSCopying>
 {
-    id _object;
+    double _scale;
+    double _size;
 }
 
-@property (weak, nonatomic) id object; // @synthesize object=_object;
-
-+ (id)weakReferenceWrappingObject:(id)arg1;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithObject:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithSize:(double)arg1 scale:(double)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToCacheKey:(id)arg1;
 
 @end
 

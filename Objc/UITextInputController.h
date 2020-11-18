@@ -147,6 +147,7 @@
 @property (nonatomic) long long smartQuotesType;
 @property (nonatomic) long long spellCheckingType;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsImagePaste;
 @property (nonatomic) BOOL suppressReturnKeyStyling;
 @property (copy, nonatomic) NSString *textContentType;
 @property (readonly, nonatomic) id<UITextInputSuggestionDelegate> textInputSuggestionDelegate;
@@ -244,6 +245,7 @@
 - (id)_moveToStartOfParagraph:(BOOL)arg1 withHistory:(id)arg2;
 - (id)_moveToStartOfWord:(BOOL)arg1 withHistory:(id)arg2;
 - (id)_moveUp:(BOOL)arg1 withHistory:(id)arg2;
+- (id)_newAttributedStringForInsertionOfAttributedText:(id)arg1 inRange:(struct _NSRange)arg2;
 - (id)_newAttributedStringForInsertionOfText:(id)arg1 inRange:(struct _NSRange)arg2;
 - (id)_normalizedStringForRangeComparison:(id)arg1;
 - (struct _NSRange)_nsrangeForTextRange:(id)arg1;
@@ -302,6 +304,7 @@
 - (void)_sendDelegateWillChangeNotificationsForText:(BOOL)arg1 selection:(BOOL)arg2;
 - (id)_senderForDelegateNotifications;
 - (void)_setAttributedMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
+- (void)_setAttributedMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2 fromKeyboard:(BOOL)arg3;
 - (void)_setCaretSelectionAtEndOfSelection;
 - (void)_setGestureRecognizers;
 - (id)_setHistory:(id)arg1 withExtending:(BOOL)arg2 withAnchor:(int)arg3 withAffinityDownstream:(BOOL)arg4;

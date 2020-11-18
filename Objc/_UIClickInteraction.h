@@ -37,6 +37,7 @@
 @property (readonly, nonatomic) UIGestureRecognizer *driverPrimaryGestureRecognizer;
 @property (strong, nonatomic) _UIClickFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
 @property (nonatomic) BOOL hapticsEnabled; // @synthesize hapticsEnabled=_hapticsEnabled;
+@property (readonly, nonatomic) BOOL hasDriverExceededAllowableMovement;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<UIInteractionEffect> interactionEffect; // @synthesize interactionEffect=_interactionEffect;
 @property (readonly, nonatomic) BOOL isDriverCurrentlyAcceleratedByForce;
@@ -57,7 +58,6 @@
 - (void)clickDriver:(id)arg1 didUpdateHighlightProgress:(double)arg2;
 - (void)clickDriver:(id)arg1 shouldBegin:(CDUnknownBlockType)arg2;
 - (BOOL)clickDriver:(id)arg1 shouldDelayGestureRecognizer:(id)arg2;
-- (BOOL)clickDriverShouldBegin:(id)arg1;
 - (void)didMoveToView:(id)arg1;
 - (id)init;
 - (struct CGPoint)locationInCoordinateSpace:(id)arg1;

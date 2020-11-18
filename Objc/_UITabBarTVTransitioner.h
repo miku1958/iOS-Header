@@ -14,22 +14,22 @@
 __attribute__((visibility("hidden")))
 @interface _UITabBarTVTransitioner : NSObject <_UITabBarControllerInterruptibleTransitioning>
 {
+    BOOL _fromViewOriginalShouldRasterize;
+    double _fromViewLayerOriginalRasterizationScale;
+    BOOL _toViewOriginalShouldRasterize;
+    double _toViewLayerOriginalRasterizationScale;
     BOOL _transitionFromRight;
     long long _transitionStyle;
     id<UIViewControllerContextTransitioning> _transitionContext;
     UISpringTimingParameters *_slideTimingParameters;
-    double _fromViewLayerOriginalRasterizationScale;
-    double _toViewLayerOriginalRasterizationScale;
     UIView *_toViewXFlippedScreenShot;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) double fromViewLayerOriginalRasterizationScale; // @synthesize fromViewLayerOriginalRasterizationScale=_fromViewLayerOriginalRasterizationScale;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UISpringTimingParameters *slideTimingParameters; // @synthesize slideTimingParameters=_slideTimingParameters;
 @property (readonly) Class superclass;
-@property (nonatomic) double toViewLayerOriginalRasterizationScale; // @synthesize toViewLayerOriginalRasterizationScale=_toViewLayerOriginalRasterizationScale;
 @property (strong, nonatomic) UIView *toViewXFlippedScreenShot; // @synthesize toViewXFlippedScreenShot=_toViewXFlippedScreenShot;
 @property (strong, nonatomic) id<UIViewControllerContextTransitioning> transitionContext; // @synthesize transitionContext=_transitionContext;
 @property (nonatomic) BOOL transitionFromRight; // @synthesize transitionFromRight=_transitionFromRight;

@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<_UIClickInteractionDriverDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UITouchForceGestureRecognizer *gestureRecognizer; // @synthesize gestureRecognizer=_gestureRecognizer;
+@property (readonly, nonatomic) BOOL hasExceededAllowableMovement;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isCurrentlyAcceleratedByForce;
 @property (readonly, nonatomic) double maximumEffectProgress;

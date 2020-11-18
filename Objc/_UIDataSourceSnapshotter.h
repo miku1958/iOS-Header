@@ -12,12 +12,13 @@
 __attribute__((visibility("hidden")))
 @interface _UIDataSourceSnapshotter : NSObject <NSCopying, _UIDataSourceSnapshot>
 {
-    struct _NSRange *_sectionRanges;
-    long long _sectionCount;
+    struct vector<_NSRange, std::__1::allocator<_NSRange>> _sectionRanges;
 }
 
 + (id)snapshotForDataSourceBackedView:(id)arg1;
 + (id)snapshotWithSectionCountsProvider:(CDUnknownBlockType)arg1;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (BOOL)_decrementSectionCount:(long long)arg1;
 - (BOOL)_decrementSectionCount:(long long)arg1 byCount:(long long)arg2;
 - (BOOL)_deleteAllSections;
@@ -27,13 +28,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)_insertSection:(long long)arg1 withInitialCount:(long long)arg2;
 - (void)_recomputeRangeLocations;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (long long)globalIndexForIndexPath:(id)arg1;
 - (id)indexPathForAppendingInsertInSection:(long long)arg1;
 - (id)indexPathForGlobalIndex:(long long)arg1;
 - (BOOL)indexPathIsSectionAppendingInsert:(id)arg1;
-- (id)init;
 - (id)initWithDataSourceBackedView:(id)arg1;
 - (id)initWithSectionCounts:(id)arg1;
 - (id)initWithSectionCountsProvider:(CDUnknownBlockType)arg1;

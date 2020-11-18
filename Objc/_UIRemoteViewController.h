@@ -71,11 +71,13 @@
     BOOL __shouldUpdateRemoteTextEffectsWindow;
     long long _preferredUserInterfaceStyle;
     BOOL _isUpdatingSize;
+    BOOL _isUpdatingSizeInHost;
     BOOL _serviceViewShouldShareTouchesWithHost;
     BKSTouchDeliveryPolicyAssertion *_touchDeliveryPolicyAssertion;
 }
 
 @property (nonatomic, setter=_setIsUpdatingSize:) BOOL _isUpdatingSize; // @synthesize _isUpdatingSize;
+@property (nonatomic, setter=_setIsUpdatingSizeInHost:) BOOL _isUpdatingSizeInHost; // @synthesize _isUpdatingSizeInHost;
 @property (nonatomic, setter=_setShouldUpdateRemoteTextEffectsWindow:) BOOL _shouldUpdateRemoteTextEffectsWindow;
 @property (strong, nonatomic, setter=_setTouchDeliveryPolicyAssertion:) BKSTouchDeliveryPolicyAssertion *_touchDeliveryPolicyAssertion; // @synthesize _touchDeliveryPolicyAssertion;
 @property (readonly, nonatomic) CDStruct_4c969caf serviceAuditToken;

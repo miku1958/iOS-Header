@@ -12,9 +12,6 @@ __attribute__((visibility("hidden")))
 @interface _UIPopoverStandardChromeView : UIPopoverBackgroundView
 {
     UIView *_arrowBackgroundView;
-    UIView *_arrowView;
-    UIView *_leftCapView;
-    UIView *_rightCapView;
     UIVisualEffectView *_blurView;
     UIView *_maskView;
     UIColor *_popoverBackgroundColor;
@@ -25,18 +22,26 @@ __attribute__((visibility("hidden")))
     long long _requestedBackgroundStyle;
     long long _backgroundStyle;
     BOOL _arrowVisible;
+    BOOL _wasPinned;
     BOOL useShortMode;
     BOOL _debugMode;
     UIView *viewToMaskWhenContentExtendsOverArrow;
     UIColor *_contentBlendingColor;
+    UIView *_arrowView;
+    UIView *_leftCapView;
+    UIView *_rightCapView;
 }
 
 @property (copy, nonatomic) UIColor *arrowBackgroundColor;
+@property (readonly, nonatomic) UIView *arrowView; // @synthesize arrowView=_arrowView;
 @property (nonatomic, getter=isArrowVisible) BOOL arrowVisible;
 @property (nonatomic) long long backgroundStyle;
 @property (readonly, nonatomic) UIColor *contentBlendingColor; // @synthesize contentBlendingColor=_contentBlendingColor;
 @property (nonatomic, getter=isDebugModeEnabled) BOOL debugModeEnabled; // @synthesize debugModeEnabled=_debugMode;
+@property (readonly, nonatomic) BOOL hasComponentViews;
+@property (readonly, nonatomic) UIView *leftCapView; // @synthesize leftCapView=_leftCapView;
 @property (copy, nonatomic) UIColor *popoverBackgroundColor;
+@property (readonly, nonatomic) UIView *rightCapView; // @synthesize rightCapView=_rightCapView;
 @property (nonatomic) BOOL useShortMode; // @synthesize useShortMode;
 @property (weak, nonatomic) UIView *viewToMaskWhenContentExtendsOverArrow; // @synthesize viewToMaskWhenContentExtendsOverArrow;
 
@@ -51,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)_layoutArrowViewsUpOrDown;
 - (void)_loadNecessaryViews;
 - (void)_removeEffectView;
+- (void)_resetComponentViews;
 - (long long)_resolvedBackgroundStyle;
 - (struct UIEdgeInsets)_shadowInsets;
 - (struct CGSize)_shadowOffset;
@@ -64,7 +70,6 @@ __attribute__((visibility("hidden")))
 - (double)arrowOffset;
 - (id)backgroundEffect;
 - (void)didMoveToWindow;
-- (BOOL)hasComponentViews;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isPinned;
 - (BOOL)isRightArrowPinnedToBottom;

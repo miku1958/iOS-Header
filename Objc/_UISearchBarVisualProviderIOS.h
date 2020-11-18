@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
         unsigned int showsScopeBar:1;
         unsigned int showDictationButton:1;
         unsigned int allowedToShowDictationButton:1;
+        unsigned int dictationButtonSetupComplete:1;
     } _searchBarVisualProviderFlags;
     UIView<_UISearchBarVisualProvidingDelegate><_UINavigationBarAugmentedTitleView><UITextInputTraits_Private> *_delegate;
     UISearchBarTextField *_searchField;
@@ -182,8 +183,10 @@ __attribute__((visibility("hidden")))
 - (double)barHeightForBarMetrics:(long long)arg1 withEffectiveInsets:(struct UIEdgeInsets)arg2;
 - (long long)barMetricsForOrientation:(long long)arg1;
 - (struct CGRect)boundsForSearchBarAndUpdateIfNecessaryFromSuggestedBounds:(struct CGRect)arg1;
+- (BOOL)canShowDictationButton;
 - (id)cancelBarButtonItemIfExists;
 - (void)cancelTransitionToSearchLayoutState:(long long)arg1;
+- (void)cleanUpDictationMicsWithSearchField:(id)arg1;
 - (id)colorForComponent:(unsigned long long)arg1 disabled:(BOOL)arg2;
 - (void)completeTransitionToSearchLayoutState:(long long)arg1;
 - (void)configureLayout:(id)arg1;
@@ -193,6 +196,7 @@ __attribute__((visibility("hidden")))
 - (double)defaultHeightForOrientation:(long long)arg1;
 - (void)destroyCancelButton;
 - (void)destroyPromptLabel;
+- (void)dictationAvailabilityDidChange:(id)arg1;
 - (void)dictationButtonPressed:(id)arg1 withEvent:(id)arg2;
 - (void)dictationControllerDidFinish:(id)arg1;
 - (void)displayNavBarCancelButton:(BOOL)arg1 animated:(BOOL)arg2;
@@ -264,6 +268,7 @@ __attribute__((visibility("hidden")))
 - (void)updateBackgroundToBackdropStyle:(long long)arg1;
 - (void)updateDictationButton;
 - (void)updateEffectiveContentInset;
+- (void)updateForAllowedToShowDictationChange;
 - (void)updateForDrawsBackgroundInPalette;
 - (void)updateIfNecessaryForOldSize:(struct CGSize)arg1;
 - (void)updateMagnifyingGlassView;

@@ -270,6 +270,7 @@
 @property (strong, nonatomic) UIColor *underlineColorForTextAlternatives;
 @property (nonatomic) BOOL useAutomaticEndpointing;
 @property (nonatomic) BOOL useInterfaceLanguageForLocalization;
+@property (nonatomic) BOOL usesStandardTextScaling;
 @property (nonatomic) struct _NSRange validTextRange;
 @property (strong, nonatomic) _UITextFieldVisualStyle *visualStyle; // @synthesize visualStyle=_visualStyle;
 

@@ -341,7 +341,7 @@
 - (void)_startDataDetectors;
 - (void)_startDataDetectorsIfNeeded;
 - (void)_syncTypingAttributesToTextContainerAttributesForExtraLineFragment;
-- (id)_targetedPreviewForTextInteractableItem:(id)arg1;
+- (id)_targetedPreviewForTextInteractableItem:(id)arg1 dismissing:(BOOL)arg2;
 - (void)_textContainerSizeDidChange:(id)arg1;
 - (id)_textGeometry;
 - (id)_textInputTraits;

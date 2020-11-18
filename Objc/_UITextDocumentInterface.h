@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=_keyboardOutput) TIKeyboardOutput *keyboardOutput; // @synthesize keyboardOutput=_keyboardOutput;
 @property (nonatomic) long long keyboardType;
 @property (readonly, nonatomic) NSString *markedText;
+@property (readonly, nonatomic) BOOL needsInputModeSwitchKey;
 @property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (nonatomic) long long returnKeyType;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
@@ -66,7 +67,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)deleteBackward;
 - (void)insertText:(id)arg1;
-- (BOOL)needsInputModeSwitchKey;
 - (void)setForwardingInterface:(id)arg1;
 - (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
 - (void)unmarkText;

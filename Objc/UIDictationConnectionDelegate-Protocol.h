@@ -17,6 +17,7 @@
 - (void)dictationConnection:(UIDictationConnection *)arg1 receivedInterpretation:(NSString *)arg2 languageModel:(NSString *)arg3 secureInput:(BOOL)arg4;
 - (void)dictationConnection:(UIDictationConnection *)arg1 updateOptions:(UIDictationConnectionOptions *)arg2;
 - (void)dictationConnectionDidCancel:(UIDictationConnection *)arg1;
+- (void)dictationConnectionDidCancelIncompatibleLocalRecognizer:(UIDictationConnection *)arg1;
 - (void)dictationConnectionDidCancelRecording:(UIDictationConnection *)arg1;
 - (void)dictationConnectionDidEndRecording:(UIDictationConnection *)arg1;
 - (void)dictationConnectionDidFinish:(UIDictationConnection *)arg1;

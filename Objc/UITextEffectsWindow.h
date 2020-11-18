@@ -34,6 +34,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) double defaultWindowLevel; // @synthesize defaultWindowLevel=_defaultWindowLevel;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) UIEditingOverlayViewController *editingOverlayViewController; // @synthesize editingOverlayViewController=_editingOverlayViewController;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct CGRect hostedFrame;
 @property (nonatomic) struct UIEdgeInsets hostedSafeInsets; // @synthesize hostedSafeInsets=_hostedSafeInsets;

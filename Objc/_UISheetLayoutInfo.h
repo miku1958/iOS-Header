@@ -78,6 +78,7 @@ __attribute__((visibility("hidden")))
     double __shadowOpacity;
     double __alpha;
     double __grabberAlpha;
+    double __magicShadowOpacity;
     NSArray *__dimmedPassthroughViews;
     UIViewController *__presentingViewController;
     UIViewController *__presentedViewController;
@@ -147,13 +148,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=_isInteractionEnabled) BOOL _interactionEnabled; // @synthesize _interactionEnabled=__interactionEnabled;
 @property (nonatomic, setter=_setKeyboardFrame:) struct CGRect _keyboardFrame; // @synthesize _keyboardFrame=__keyboardFrame;
 @property (nonatomic, setter=_setLatestUserChosenOffset:) double _latestUserChosenOffset; // @synthesize _latestUserChosenOffset=__latestUserChosenOffset;
+@property (readonly, nonatomic) double _magicShadowOpacity; // @synthesize _magicShadowOpacity=__magicShadowOpacity;
 @property (readonly, nonatomic) double _maximumNonDismissDetentOffset; // @synthesize _maximumNonDismissDetentOffset=__maximumNonDismissDetentOffset;
 @property (readonly, nonatomic) double _maximumWidth; // @synthesize _maximumWidth=__maximumWidth;
 @property (readonly, nonatomic) double _minimumTopInset; // @synthesize _minimumTopInset=__minimumTopInset;
 @property (nonatomic, setter=_setMode:) long long _mode; // @synthesize _mode=__mode;
 @property (readonly, nonatomic) NSMutableArray *_mutableActiveDetentValues; // @synthesize _mutableActiveDetentValues=__mutableActiveDetentValues;
 @property (readonly, nonatomic) NSMutableArray *_mutableActiveReversedDetentIndexes; // @synthesize _mutableActiveReversedDetentIndexes=__mutableActiveReversedDetentIndexes;
-@property (strong, nonatomic, setter=_setParentSheetLayoutInfo:) _UISheetLayoutInfo *_parentLayoutInfo; // @synthesize _parentLayoutInfo=__parentLayoutInfo;
+@property (weak, nonatomic, setter=_setParentSheetLayoutInfo:) _UISheetLayoutInfo *_parentLayoutInfo; // @synthesize _parentLayoutInfo=__parentLayoutInfo;
 @property (strong, nonatomic, setter=_setPassthroughViews:) NSArray *_passthroughViews; // @synthesize _passthroughViews=__passthroughViews;
 @property (readonly, nonatomic) double _percentDimmed; // @synthesize _percentDimmed=__percentDimmed;
 @property (readonly, nonatomic) double _percentDimmedFromOffset; // @synthesize _percentDimmedFromOffset=__percentDimmedFromOffset;
@@ -162,7 +164,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGSize _preferredSize; // @synthesize _preferredSize=__preferredSize;
 @property (nonatomic, getter=_isPresented, setter=_setPresented:) BOOL _presented; // @synthesize _presented=__presented;
 @property (strong, nonatomic) UIViewController *_presentedViewController; // @synthesize _presentedViewController=__presentedViewController;
-@property (strong, nonatomic) UIViewController *_presentingViewController; // @synthesize _presentingViewController=__presentingViewController;
+@property (weak, nonatomic) UIViewController *_presentingViewController; // @synthesize _presentingViewController=__presentingViewController;
 @property (nonatomic, getter=_isReduceMotionEnabled, setter=_setReduceMotionEnabled:) BOOL _reduceMotionEnabled; // @synthesize _reduceMotionEnabled=__reduceMotionEnabled;
 @property (strong, nonatomic, setter=_setReversedDetents:) NSArray *_reversedDetents; // @synthesize _reversedDetents=__reversedDetents;
 @property (nonatomic, setter=_setReversedIndexOfCurrentDetent:) long long _reversedIndexOfCurrentDetent;

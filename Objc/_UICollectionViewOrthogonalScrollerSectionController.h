@@ -8,7 +8,7 @@
 
 #import <UIKitCore/UIScrollViewDelegate-Protocol.h>
 
-@class NSHashTable, NSIndexSet, NSMapTable, NSString, UICollectionView;
+@class NSHashTable, NSIndexSet, NSMapTable, NSString, UICollectionView, UIScrollView;
 
 __attribute__((visibility("hidden")))
 @interface _UICollectionViewOrthogonalScrollerSectionController : NSObject <UIScrollViewDelegate>
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSMapTable *_scrollViewToSectionMap;
     NSHashTable *_frontMostElements;
     NSIndexSet *_currentOrthogonalSectionIndexes;
+    UIScrollView *_scrollViewCurrentlyBeingConfigured;
 }
 
 @property (weak, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSHashTable *frontMostElements; // @synthesize frontMostElements=_frontMostElements;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIScrollView *scrollViewCurrentlyBeingConfigured; // @synthesize scrollViewCurrentlyBeingConfigured=_scrollViewCurrentlyBeingConfigured;
 @property (strong, nonatomic) NSMapTable *scrollViewFromSectionMap; // @synthesize scrollViewFromSectionMap=_scrollViewFromSectionMap;
 @property (strong, nonatomic) NSMapTable *scrollViewToSectionMap; // @synthesize scrollViewToSectionMap=_scrollViewToSectionMap;
 @property (readonly) Class superclass;

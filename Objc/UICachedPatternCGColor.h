@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/UICGColor.h>
+#import <UIKitCore/UIPatternCGColor.h>
 
 __attribute__((visibility("hidden")))
-@interface UICachedDevicePatternColor : UICGColor
+@interface UICachedPatternCGColor : UIPatternCGColor
 {
 }
 

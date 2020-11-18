@@ -39,6 +39,7 @@
         double maximum;
     } _interactiveScrollNavBarIntrinsicHeightRange;
     long long _updateTopViewFramesToMatchScrollOffsetDisabledCount;
+    struct CGSize _externallySetNavControllerPreferredContentSize;
     unsigned int _pushSoundID;
     unsigned int _popSoundID;
     struct {

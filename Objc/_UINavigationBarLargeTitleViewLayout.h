@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (struct CGSize)_cachedTitleHeightSizeAndUpdateRestingSizeForWidth:(double)arg1;
+- (struct CGSize)_cachedTitleHeightSizeAndUpdateRestingSizeForWidthSupportingMultiLineShrinkToFit:(double)arg1;
 - (struct CGRect)_contentLayoutBounds;
 - (struct CGRect)_contentLayoutBoundsUsingRestingTitleHeight:(BOOL)arg1;
 - (void)_enforceLayoutOrdering;
@@ -49,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithContentView:(id)arg1;
 - (void)layoutViews;
 - (void)layoutViewsWithOffset:(struct UIOffset)arg1 useRestingTitleHeight:(BOOL)arg2;
+- (void)layoutViewsWithOffsetSupportingMultiLineShrinkToFit:(struct UIOffset)arg1 useRestingTitleHeight:(BOOL)arg2;
 - (void)removeContent;
 - (void)setContentAlpha:(double)arg1;
 - (void)setContentHidden:(BOOL)arg1;

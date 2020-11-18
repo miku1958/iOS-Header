@@ -173,6 +173,7 @@
 - (void)setActionGroup:(id)arg1;
 - (void)setActionLayoutAxis:(long long)arg1;
 - (void)setActiveTestingVisualStyle:(id)arg1;
+- (void)setFrame:(struct CGRect)arg1;
 - (void)setSimultaneouslyPresentedGroupViews:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;

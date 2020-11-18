@@ -134,6 +134,7 @@
 @property (nonatomic) long long smartQuotesType; // @dynamic smartQuotesType;
 @property (nonatomic) long long spellCheckingType; // @dynamic spellCheckingType;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsImagePaste;
 @property (nonatomic) BOOL suppressReturnKeyStyling;
 @property (readonly, nonatomic) NSTextContainer *textContainer;
 @property (copy, nonatomic) NSString *textContentType; // @dynamic textContentType;

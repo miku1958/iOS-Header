@@ -15,6 +15,7 @@
 @property (nonatomic) BOOL cancelsTouchesInView;
 @property (readonly, nonatomic) BOOL clicksUpAutomaticallyAfterTimeout;
 @property (weak, nonatomic) id<_UIClickInteractionDriverDelegate> delegate;
+@property (readonly, nonatomic) BOOL hasExceededAllowableMovement;
 @property (readonly, nonatomic) BOOL isCurrentlyAcceleratedByForce;
 @property (readonly, nonatomic) double maximumEffectProgress;
 @property (readonly, nonatomic) UIGestureRecognizer *primaryGestureRecognizer;

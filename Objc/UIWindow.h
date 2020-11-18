@@ -281,6 +281,7 @@
 - (unsigned long long)_edgesForSystemGesturesTouchDelay;
 - (void)_endKeyWindowDeferral;
 - (id)_exclusiveTouchView;
+- (void)_executeDeferredLaunchBlock;
 - (unsigned long long)_expectedWindowInternalConstraintsCount;
 - (BOOL)_extendsScreenSceneLifetime;
 - (void)_fadeCalloutBarIfNeededForTouchInView:(id)arg1;
@@ -374,14 +375,14 @@
 - (void)_registerScrollToTopView:(id)arg1;
 - (void)_registerSubtreeMonitor:(id)arg1;
 - (id)_registeredScrollToTopViews;
-- (void)_removeAllPresentationsFromWindowHierarchy;
-- (void)_removeAllViewControllersFromWindowHierarchy;
+- (void)_removeAllViewControllersFromWindowHierarchyFromDealloc:(BOOL)arg1;
 - (void)_removeFocusEventRecognizer;
 - (void)_removeRotationViewController:(id)arg1;
 - (BOOL)_requiresKeyboardPresentationFence;
 - (void)_resignKeyWindowStatus;
 - (BOOL)_resizeWindowFrameToSceneBoundsIfNecessary;
 - (void)_resizeWindowToFullScreenIfNecessary;
+- (id)_responderForKeyEventsInWindow;
 - (id)_responderSelectionContainerViewForResponder:(id)arg1;
 - (id)_responderWindow;
 - (id)_rootForKeyResponderCycle;

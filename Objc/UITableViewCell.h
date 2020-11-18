@@ -235,6 +235,8 @@
 - (BOOL)_drawsSeparatorAtTopOfSection;
 - (BOOL)_drawsTopSeparatorDuringReordering;
 - (id)_dropAnimationContainerView;
+- (id)_editControlAccessoryForStyle:(long long)arg1;
+- (BOOL)_editControlShouldBeOnLeadingSideForStyle:(long long)arg1;
 - (id)_editableTextField;
 - (id)_editableTextField:(BOOL)arg1;
 - (id)_editingAccessoryView:(BOOL)arg1;
@@ -312,6 +314,7 @@
 - (void)_restoreLabelTextAfterSystemTextSizeChangeIfNeeded;
 - (double)_rightMarginWidth;
 - (void)_safeAreaInsetsDidChangeFromOldInsets:(struct UIEdgeInsets)arg1;
+- (long long)_sanitizedEditingStyleForEditing:(BOOL)arg1 style:(long long)arg2;
 - (void)_saveOpaqueViewState:(id)arg1;
 - (id)_selectedBackgroundView:(BOOL)arg1;
 - (long long)_separatorBackdropOverlayBlendMode;
@@ -411,7 +414,7 @@
 - (id)_textLabel:(BOOL)arg1;
 - (void)_toggleExpansionButton;
 - (struct CGRect)_topSeparatorFrame;
-- (id)_trailingAccessoriesForType:(long long)arg1 view:(id)arg2 editing:(BOOL)arg3;
+- (id)_trailingAccessoriesForType:(long long)arg1 view:(id)arg2 editing:(BOOL)arg3 style:(long long)arg4;
 - (void)_transitionToReorderingAppearance:(BOOL)arg1;
 - (void)_updateAccessories;
 - (void)_updateAccessoriesIfNeeded;
@@ -422,6 +425,7 @@
 - (void)_updateDefaultAccessoryViewForFocus:(BOOL)arg1;
 - (void)_updateDefaultLabelsForFocus:(BOOL)arg1;
 - (void)_updateExpansionButton:(id)arg1 forType:(long long)arg2 animated:(BOOL)arg3;
+- (BOOL)_updateExpansionButtonFromType:(long long)arg1 toType:(long long)arg2;
 - (void)_updateFloatingContentControlStateAnimated:(BOOL)arg1;
 - (void)_updateFloatingContentControlStateInContext:(id)arg1 withAnimationCoordinator:(id)arg2 animated:(BOOL)arg3;
 - (void)_updateHighlightColors;

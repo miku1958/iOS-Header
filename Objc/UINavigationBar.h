@@ -114,6 +114,7 @@
 + (id)_defaultVisualStyleForOrientation:(long long)arg1;
 + (BOOL)_forceLegacyVisualProvider;
 + (void)_initializeForIdiom:(long long)arg1;
++ (BOOL)_requiresModernVisualProvider;
 + (void)_setUseCustomBackButtonAction:(BOOL)arg1;
 + (id)_statusBarBaseTintColorForStyle:(long long)arg1 translucent:(BOOL)arg2 tintColor:(id)arg3;
 + (id)_statusBarBaseTintColorForStyle:(long long)arg1 translucent:(BOOL)arg2 tintColor:(id)arg3 backgroundImage:(id)arg4 viewSize:(struct CGSize)arg5;

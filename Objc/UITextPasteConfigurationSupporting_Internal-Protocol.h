@@ -11,6 +11,9 @@
 @protocol UITextPasteSession;
 
 @protocol UITextPasteConfigurationSupporting_Internal <UITextPasteConfigurationSupporting, UITextInput>
+
+@property (nonatomic) BOOL usesStandardTextScaling;
+
 - (NSAttributedString *)_attributedStringForInsertionOfAttributedString:(NSAttributedString *)arg1;
 - (NSArray *)_implicitPasteConfigurationClasses;
 - (UITextInputController *)_inputController;

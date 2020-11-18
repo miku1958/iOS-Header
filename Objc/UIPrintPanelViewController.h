@@ -67,8 +67,11 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (struct CGSize)_getPreferredContentSize:(struct CGRect)arg1 windowFrame:(struct CGRect)arg2;
 - (void)_keyWindowWillRotate:(id)arg1;
+- (struct CGSize)_makeContentSizeeWithLongSize:(double)arg1 shortSize:(double)arg2;
 - (void)_presentInParentAnimated:(BOOL)arg1;
+- (void)_printNavigationConrollerDidDismiss;
 - (id)_removeRollsFrom:(id)arg1;
 - (void)cancelPrinting;
 - (void)dealloc;
@@ -83,7 +86,6 @@ __attribute__((visibility("hidden")))
 - (void)presentPrintPanelFromBarButtonItem:(id)arg1 animated:(BOOL)arg2;
 - (void)presentPrintPanelFromRect:(struct CGRect)arg1 inView:(id)arg2 animated:(BOOL)arg3;
 - (void)printMoreOptionsViewDidDisappear;
-- (void)printNavigationConrollerDidDismiss;
 - (void)printPanelDidDisappear;
 - (void)printPaperViewDidDisappear;
 - (void)printRangeViewDidDisappear;

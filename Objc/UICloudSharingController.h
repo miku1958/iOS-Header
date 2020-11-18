@@ -10,7 +10,7 @@
 #import <UIKitCore/_UIRemoteViewControllerContaining-Protocol.h>
 #import <UIKitCore/_UISharingPublicController-Protocol.h>
 
-@class CKContainer, CKContainerSetupInfo, CKShare, NSDictionary, NSObject, NSString, _UIRemoteViewController, _UIResilientRemoteViewContainerViewController, _UIShareInvitationRemoteViewController;
+@class CKContainer, CKContainerSetupInfo, CKShare, NSDictionary, NSObject, NSString, UIImage, _UIRemoteViewController, _UIResilientRemoteViewContainerViewController, _UIShareInvitationRemoteViewController;
 @protocol OS_dispatch_semaphore, UICloudSharingControllerDelegate, _UICloudSharingControllerDelegate_Internal;
 
 @interface UICloudSharingController : UIViewController <_UISharingPublicController, UIActionSheetPresentationControllerDelegate, _UIRemoteViewControllerContaining>
@@ -33,6 +33,10 @@
     UIViewController *_strongReferenceToOurself;
     NSString *_primaryAuxiliarySwitchTitle;
     NSString *_secondaryAuxiliarySwitchTitle;
+    NSString *_rootFolderTitle;
+    NSString *_folderSubitemName;
+    UIImage *_headerPrimaryImage;
+    UIImage *_headerSecondaryImage;
     id<_UICloudSharingControllerDelegate_Internal> _internalDelegate;
 }
 
@@ -44,7 +48,10 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UICloudSharingControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic, getter=_folderSubitemName, setter=_setFolderSubitemName:) NSString *folderSubitemName; // @synthesize folderSubitemName=_folderSubitemName;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic, getter=_headerPrimaryImage, setter=_setHeaderPrimaryImage:) UIImage *headerPrimaryImage; // @synthesize headerPrimaryImage=_headerPrimaryImage;
+@property (strong, nonatomic, getter=_headerSecondaryImage, setter=_setHeaderSecondaryImage:) UIImage *headerSecondaryImage; // @synthesize headerSecondaryImage=_headerSecondaryImage;
 @property (weak, nonatomic) id<_UICloudSharingControllerDelegate_Internal> internalDelegate; // @synthesize internalDelegate=_internalDelegate;
 @property (weak, nonatomic, getter=_originalPresentingViewController, setter=_setOriginalPresentingViewController:) UIViewController *originalPresentingViewController; // @synthesize originalPresentingViewController=_originalPresentingViewController;
 @property (strong, nonatomic, getter=_participantDetails, setter=_setParticipantDetails:) NSDictionary *participantDetails; // @synthesize participantDetails=_participantDetails;
@@ -52,6 +59,7 @@
 @property (nonatomic, getter=_primaryAuxiliarySwitchState, setter=_setPrimaryAuxiliarySwitchState:) BOOL primaryAuxiliarySwitchState; // @synthesize primaryAuxiliarySwitchState=_primaryAuxiliarySwitchState;
 @property (strong, nonatomic, getter=_primaryAuxiliarySwitchTitle, setter=_setPrimaryAuxiliarySwitchTitle:) NSString *primaryAuxiliarySwitchTitle; // @synthesize primaryAuxiliarySwitchTitle=_primaryAuxiliarySwitchTitle;
 @property (readonly, nonatomic, getter=_remoteViewController) _UIShareInvitationRemoteViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
+@property (strong, nonatomic, getter=_rootFolderTitle, setter=_setRootFolderTitle:) NSString *rootFolderTitle; // @synthesize rootFolderTitle=_rootFolderTitle;
 @property (nonatomic, getter=_secondaryAuxiliarySwitchState, setter=_setSecondaryAuxiliarySwitchState:) BOOL secondaryAuxiliarySwitchState; // @synthesize secondaryAuxiliarySwitchState=_secondaryAuxiliarySwitchState;
 @property (strong, nonatomic, getter=_secondaryAuxiliarySwitchTitle, setter=_setSecondaryAuxiliarySwitchTitle:) NSString *secondaryAuxiliarySwitchTitle; // @synthesize secondaryAuxiliarySwitchTitle=_secondaryAuxiliarySwitchTitle;
 @property (strong, nonatomic) CKShare *share; // @synthesize share=_share;
@@ -61,6 +69,7 @@
 - (void).cxx_destruct;
 - (void)__viewControllerWillBePresented:(BOOL)arg1;
 - (void)_callPreparationHandler:(CDUnknownBlockType)arg1;
+- (void)_cloudSharingControllerDidActivateShowSharedFolder;
 - (void)_cloudSharingControllerDidModifyPrimarySwitch:(BOOL)arg1;
 - (void)_cloudSharingControllerDidModifySecondarySwitch:(BOOL)arg1;
 - (BOOL)_commonInit;

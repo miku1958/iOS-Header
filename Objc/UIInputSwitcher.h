@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)handleSwitchCommand:(BOOL)arg1 withHUD:(BOOL)arg2 withDelay:(BOOL)arg3;
 - (BOOL)handleSwitchingKeyEvent:(id)arg1;
 - (void)hideSwitcher;
+- (void)hideSwitcherIfNeeded;
 - (id)init;
 - (id)inputModeIdentifierWithNextFlag:(BOOL)arg1;
 - (BOOL)isVisible;

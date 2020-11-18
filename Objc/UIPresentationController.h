@@ -61,6 +61,7 @@
     CDUnknownBlockType __computeToEndFrameForCurrentTransition;
     CDUnknownBlockType __currentTransitionDidComplete;
     UIView *_customViewForTouchContinuation;
+    UITraitCollection *_internalOverrideTraitCollection;
     UIView *_realSourceView;
     struct CGSize _preferredContentSize;
     struct CGRect _sourceRect;
@@ -98,6 +99,7 @@
 @property (readonly, nonatomic) struct CGRect frameOfPresentedViewInContainerView;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic, getter=_internalOverrideTraitCollection, setter=_setInternalOverrideTraitCollection:) UITraitCollection *internalOverrideTraitCollection; // @synthesize internalOverrideTraitCollection=_internalOverrideTraitCollection;
 @property (nonatomic) BOOL isCurrentStateCancelled; // @synthesize isCurrentStateCancelled=_isCurrentStateCancelled;
 @property (copy, nonatomic) UITraitCollection *overrideTraitCollection; // @synthesize overrideTraitCollection=_overrideTraitCollection;
 @property (readonly, weak, nonatomic) id<UIFocusEnvironment> parentFocusEnvironment;
@@ -181,6 +183,7 @@
 - (id)_preferredAnimationControllerForPresentation;
 - (id)_preferredInteractionControllerForDismissal:(id)arg1;
 - (id)_preferredInteractionControllerForPresentation:(id)arg1;
+- (void)_prepareForWindowDeallocRecursively:(BOOL)arg1;
 - (void)_presentWithAnimationController:(id)arg1 interactionController:(id)arg2 target:(id)arg3 didEndSelector:(SEL)arg4;
 - (id)_presentationControllerForTraitCollection:(id)arg1;
 - (BOOL)_presentationPotentiallyUnderlapsStatusBar;
@@ -197,6 +200,7 @@
 - (void)_sendFallbackWillDismiss;
 - (void)_sendPresentationControllerNotification:(id)arg1 userInfo:(id)arg2;
 - (void)_sendWillDismiss;
+- (void)_setOverrideTraitCollection:(id)arg1 updatingPresentedViewControllerImmediately:(BOOL)arg2;
 - (void)_setRealSourceView:(id)arg1;
 - (BOOL)_shouldAdaptFromTraitCollection:(id)arg1 toTraitCollection:(id)arg2;
 - (BOOL)_shouldDisableInteractionDuringTransitions;
@@ -208,6 +212,7 @@
 - (BOOL)_shouldOccludeDuringPresentation;
 - (BOOL)_shouldPresentedViewControllerControlStatusBarAppearance;
 - (BOOL)_shouldRespectDefinesPresentationContext;
+- (BOOL)_shouldRestoreFirstResponder;
 - (BOOL)_shouldSavePresentedViewControllerForStateRestoration;
 - (long long)_subclassPreferredFocusedViewPrioritizationType;
 - (void)_systemLayoutFittingSizeDidChangeForChildContentContainer:(id)arg1 childViewController:(id)arg2;

@@ -37,10 +37,11 @@ __attribute__((visibility("hidden")))
 + (void)_removePresenter:(id)arg1;
 + (BOOL)_shouldPresentActionSheetsFullscreen;
 - (void).cxx_destruct;
-- (void)_createWindowIfNecessary;
+- (void)_createWindowIfNecessaryWithScene:(id)arg1;
 - (void)_dismissAlertControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_popoverController;
 - (void)_presentAlertControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_presentAlertControllerAnimated:(BOOL)arg1 hostingScene:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_presentAlertControllerFromBarButtonItem:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_presentAlertControllerFromRect:(struct CGRect)arg1 inView:(id)arg2 direction:(unsigned long long)arg3 animated:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_tearDownInPopoverViewController;

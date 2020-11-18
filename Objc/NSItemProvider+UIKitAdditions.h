@@ -16,7 +16,9 @@
 
 + (id)itemProviderWithURL:(id)arg1 title:(id)arg2;
 - (void)_NSItemProviderDidRegisterObject:(id)arg1;
+- (void)_addFileURLRepresentationIfPossible;
 - (Class)_highestFidelityClassForLoading:(id)arg1;
+- (id)_loadObjectOfClass:(Class)arg1 userInfo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)dataAvailabilityByTypeIdentifier;
 - (BOOL)isDataAvailableImmediatelyForTypeIdentifier:(id)arg1;
 - (void)registerFileProviderItemForTypeIdentifier:(id)arg1 visibility:(long long)arg2 loadHandler:(CDUnknownBlockType)arg3;

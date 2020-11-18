@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_delayedFade;
 - (unsigned long long)_internationalKeyRoundedCornerInLayout:(id)arg1;
+- (id)_renderConfig;
 - (void)applicationWillSuspend:(id)arg1;
 - (void)autoscrollTimerFired:(id)arg1;
 - (BOOL)centerPopUpOverKey;

@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithKeyboardAppearance:(long long)arg1;
 - (BOOL)isPortrait;
 - (void)layoutSubviews;
+- (void)restartPagingAnimation;
 - (struct UIEdgeInsets)safeAreaInsets;
 - (struct CGSize)sizeForTutorialPageView;
 - (void)tapInsideButton:(id)arg1;

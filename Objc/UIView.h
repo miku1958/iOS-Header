@@ -267,7 +267,7 @@
 @property (nonatomic, getter=_overrideVibrancyTrait, setter=_setOverrideVibrancyTrait:) long long _overrideVibrancyTrait;
 @property (readonly, nonatomic) long long _pendingHiddenCount;
 @property (nonatomic, setter=_setPreferedContentsFormat:) long long _preferedContentsFormat; // @synthesize _preferedContentsFormat=__preferedContentsFormat;
-@property (strong, nonatomic, getter=_presentationControllerToNotifyOnLayoutSubviews, setter=_setPresentationControllerToNotifyOnLayoutSubviews:) UIPresentationController *_presentationControllerToNotifyOnLayoutSubviews; // @dynamic _presentationControllerToNotifyOnLayoutSubviews;
+@property (weak, nonatomic, getter=_presentationControllerToNotifyOnLayoutSubviews, setter=_setPresentationControllerToNotifyOnLayoutSubviews:) UIPresentationController *_presentationControllerToNotifyOnLayoutSubviews; // @dynamic _presentationControllerToNotifyOnLayoutSubviews;
 @property (nonatomic, setter=_setRawLayoutMargins:) struct UIEdgeInsets _rawLayoutMargins; // @synthesize _rawLayoutMargins;
 @property (nonatomic, setter=_setShouldArchiveUIAppearanceTags:) BOOL _shouldArchiveUIAppearanceTags; // @dynamic _shouldArchiveUIAppearanceTags;
 @property (readonly, nonatomic) BOOL _shouldReverseLayoutDirection;
@@ -872,7 +872,6 @@
 - (void)_handleLayoutEngineHostingConstraintsIfNecessary;
 - (void)_handleSizeConstraintsAsAppropriate;
 - (void)_handleTraitChangeForHierarchyChange;
-- (BOOL)_hasActingParentViewForGestureRecognizers:(id)arg1;
 - (BOOL)_hasAmbiguousLayout;
 - (BOOL)_hasAutolayoutHeightConstraint;
 - (BOOL)_hasBaseline;
@@ -934,6 +933,7 @@
 - (BOOL)_isAncestorOfFirstResponder;
 - (BOOL)_isChargeEnabled;
 - (BOOL)_isDeallocating;
+- (BOOL)_isEffectivelyDescendantOfViewForGestures:(id)arg1;
 - (BOOL)_isFloatingLayoutItem;
 - (BOOL)_isFocusDirectionFlippedHorizontally;
 - (BOOL)_isFocusableElement;
@@ -1057,8 +1057,10 @@
 - (struct CGSize)_preferredLayoutEngineToUserScalingCoefficients;
 - (double)_preferredMaxLayoutWidth;
 - (BOOL)_prefersDrawingWithForcedScaleFactorInClassicMode;
+- (void)_prepareDescendantsForWindowDealloc;
 - (void)_prepareForFirstIntrinsicContentSizeCalculation;
 - (void)_prepareForSecondIntrinsicContentSizeCalculationWithLayoutEngineBounds:(struct CGRect)arg1;
+- (void)_prepareForWindowDealloc;
 - (id)_previewingSegueTemplateStorageForLocation:(struct CGPoint)arg1 inView:(id)arg2;
 - (id)_previousFittingSizeInfo;
 - (id)_previousKeyResponder;

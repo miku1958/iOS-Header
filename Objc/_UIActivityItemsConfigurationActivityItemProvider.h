@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 subjectForActivityType:(id)arg2;
 - (id)activityViewControllerLinkMetadata:(id)arg1;
-- (id)initWithActivityItemsConfiguration:(id)arg1 index:(long long)arg2;
+- (id)initWithActivityItemsConfiguration:(id)arg1 itemAtIndex:(long long)arg2;
 - (id)item;
 
 @end

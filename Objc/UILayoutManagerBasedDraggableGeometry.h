@@ -9,11 +9,12 @@
 #import <UIKitCore/UITextDraggableGeometry-Protocol.h>
 #import <UIKitCore/UITextDraggableGeometryFastSameViewOperationsSupporting-Protocol.h>
 
-@class NSLayoutManager, NSString, UIView;
+@class NSLayoutManager, NSString, UIColor, UIView;
 @protocol UITextDragSupporting><UITextDropSupporting;
 
 @interface UILayoutManagerBasedDraggableGeometry : NSObject <UITextDraggableGeometry, UITextDraggableGeometryFastSameViewOperationsSupporting>
 {
+    UIColor *_previousBackgroundColor;
     long long _geometryOptions;
     UIView<UITextDragSupporting><UITextDropSupporting> *_view;
     NSLayoutManager *_layoutManager;
@@ -34,7 +35,7 @@
 - (void)_renderTextInRange:(struct _NSRange)arg1 image:(out id *)arg2 boundingRectangles:(out id *)arg3 forLifting:(BOOL)arg4;
 - (CDUnknownBlockType)_targetedPreviewProviderForImage:(id)arg1 inRange:(struct _NSRange)arg2;
 - (CDUnknownBlockType)_targetedPreviewProviderForTextInRange:(struct _NSRange)arg1;
-- (CDUnknownBlockType)_targetedPreviewProviderForTextInRange:(struct _NSRange)arg1 overrideLifting:(CDUnknownBlockType)arg2;
+- (CDUnknownBlockType)_targetedPreviewProviderForTextInRange:(struct _NSRange)arg1 dismissing:(BOOL)arg2 overrideLifting:(CDUnknownBlockType)arg3;
 - (struct CGPoint)_textOriginOffsetForRange:(struct _NSRange)arg1 inView:(id)arg2;
 - (struct CGRect)_textRectForRange:(struct _NSRange)arg1 inView:(id)arg2;
 - (id)_textStorage;
@@ -43,7 +44,7 @@
 - (id)initWithView:(id)arg1 layoutManager:(id)arg2;
 - (id)performSameViewDropOperation:(id)arg1;
 - (id)previewForDroppingTextInRange:(id)arg1 toPosition:(id)arg2 inContainerView:(id)arg3;
-- (CDUnknownBlockType)targetedPreviewProviderForTextInRange:(struct _NSRange)arg1;
+- (CDUnknownBlockType)targetedPreviewProviderForTextInRange:(struct _NSRange)arg1 dismissing:(BOOL)arg2;
 - (id)textRangeForAttachmentInTextRange:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (id)textRangesForAttachmentsInTextRange:(id)arg1;
 

@@ -82,6 +82,7 @@ __attribute__((visibility("hidden")))
 - (void)updateSelectionRects;
 - (void)updateSelectionWithExtentAtBoundary:(long long)arg1 inDirection:(long long)arg2 executionContext:(id)arg3;
 - (void)updateSelectionWithExtentAtBoundary:(long long)arg1 inDirection:(long long)arg2 relativeToSelection:(id)arg3 executionContext:(id)arg4;
+- (void)updateSelectionWithExtentPoint:(struct CGPoint)arg1 andExtentPosition:(id)arg2 executionContext:(id)arg3;
 - (void)updateSelectionWithExtentPoint:(struct CGPoint)arg1 executionContext:(id)arg2;
 - (void)updateSelectionWithExtentPoint:(struct CGPoint)arg1 withBoundary:(long long)arg2 executionContext:(id)arg3;
 - (void)updateSelectionWithExtentPosition:(id)arg1 executionContext:(id)arg2;

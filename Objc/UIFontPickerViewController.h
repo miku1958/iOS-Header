@@ -10,8 +10,8 @@
 #import <UIKitCore/_UIFontPickerRemoteViewControllerHost-Protocol.h>
 #import <UIKitCore/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class NSString, UIFontDescriptor, UIFontPickerViewControllerConfiguration, _UIFontPickerRemoteViewController, _UIRemoteViewController;
-@protocol UIFontPickerViewControllerDelegate;
+@class NSExtension, NSString, UIFontDescriptor, UIFontPickerViewControllerConfiguration, _UIFontPickerRemoteViewController, _UIRemoteViewController;
+@protocol NSCopying, UIFontPickerViewControllerDelegate;
 
 @interface UIFontPickerViewController : UIViewController <_UIFontPickerRemoteViewControllerHost, _UIRemoteViewControllerContaining, UIFontPicker>
 {
@@ -20,6 +20,8 @@
     UIFontPickerViewControllerConfiguration *_configuration;
     id<UIFontPickerViewControllerDelegate> _delegate;
     UIFontDescriptor *_selectedFontDescriptor;
+    NSExtension *_extension;
+    id<NSCopying> _extensionRequestIdentifier;
 }
 
 @property (readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
@@ -27,6 +29,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UIFontPickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
+@property (copy, nonatomic) id<NSCopying> extensionRequestIdentifier; // @synthesize extensionRequestIdentifier=_extensionRequestIdentifier;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIFontDescriptor *selectedFontDescriptor; // @synthesize selectedFontDescriptor=_selectedFontDescriptor;
 @property (readonly) Class superclass;
@@ -39,6 +43,7 @@
 - (void)_pickerDidSelectFont:(id)arg1;
 - (void)_setChildViewController:(id)arg1;
 - (void)_viewControllerPresentationDidInitiate;
+- (void)dealloc;
 - (void)dismissViewControllerWithTransition:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
@@ -46,6 +51,7 @@
 - (id)initWithConfiguration:(id)arg1;
 - (id)initWithMode:(unsigned long long)arg1;
 - (id)initWithSelectedFont:(id)arg1 inMode:(unsigned long long)arg2;
+- (void)invalidate;
 - (id)remoteViewController;
 - (void)viewWillAppear:(BOOL)arg1;
 

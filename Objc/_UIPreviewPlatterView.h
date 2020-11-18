@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UIView.h>
 
-@class UITargetedPreview, UIVisualEffectView, _UIPlatterSoftShadowView, _UIPlatterTransformView;
+@class UITargetedPreview, UIViewFloatAnimatableProperty, _UICutoutShadowView, _UIPlatterSoftShadowView, _UIPlatterTransformView;
 
 __attribute__((visibility("hidden")))
 @interface _UIPreviewPlatterView : UIView
@@ -16,8 +16,10 @@ __attribute__((visibility("hidden")))
     BOOL _hideChromeWhenCollapsed;
     BOOL _alwaysCompact;
     BOOL _preventPreviewRasterization;
+    BOOL _shouldMorphContents;
     BOOL _frozen;
     BOOL _contentSizeDidChange;
+    int _preferredMorphingAxis;
     UITargetedPreview *_collapsedPreview;
     UITargetedPreview *_expandedPreview;
     UIView *_collapsedClippingView;
@@ -25,11 +27,15 @@ __attribute__((visibility("hidden")))
     UIView *_expandedClippingView;
     _UIPlatterTransformView *_expandedTransformView;
     _UIPlatterSoftShadowView *_pathShadowView;
-    UIVisualEffectView *_rectangularShadowView;
+    _UICutoutShadowView *_rectangularShadowView;
+    UIViewFloatAnimatableProperty *_expansionProgress;
+    UIViewFloatAnimatableProperty *_platterWidth;
+    UIViewFloatAnimatableProperty *_platterHeight;
 }
 
 @property (nonatomic) BOOL allowsUserInteractionInExpandedPreview;
 @property (nonatomic) BOOL alwaysCompact; // @synthesize alwaysCompact=_alwaysCompact;
+@property (readonly, nonatomic) BOOL bothViewsAreLikelyOpaque;
 @property (strong, nonatomic) UIView *collapsedClippingView; // @synthesize collapsedClippingView=_collapsedClippingView;
 @property (strong, nonatomic) UITargetedPreview *collapsedPreview; // @synthesize collapsedPreview=_collapsedPreview;
 @property (strong, nonatomic) _UIPlatterTransformView *collapsedTransformView; // @synthesize collapsedTransformView=_collapsedTransformView;
@@ -38,16 +44,25 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIView *expandedClippingView; // @synthesize expandedClippingView=_expandedClippingView;
 @property (strong, nonatomic) UITargetedPreview *expandedPreview; // @synthesize expandedPreview=_expandedPreview;
 @property (strong, nonatomic) _UIPlatterTransformView *expandedTransformView; // @synthesize expandedTransformView=_expandedTransformView;
+@property (strong, nonatomic) UIViewFloatAnimatableProperty *expansionProgress; // @synthesize expansionProgress=_expansionProgress;
 @property (nonatomic, getter=isFrozen) BOOL frozen; // @synthesize frozen=_frozen;
 @property (nonatomic) BOOL hideChromeWhenCollapsed; // @synthesize hideChromeWhenCollapsed=_hideChromeWhenCollapsed;
 @property (nonatomic) BOOL hideShadowWhenCollapsed; // @synthesize hideShadowWhenCollapsed=_hideShadowWhenCollapsed;
 @property (strong, nonatomic) _UIPlatterSoftShadowView *pathShadowView; // @synthesize pathShadowView=_pathShadowView;
+@property (strong, nonatomic) UIViewFloatAnimatableProperty *platterHeight; // @synthesize platterHeight=_platterHeight;
+@property (strong, nonatomic) UIViewFloatAnimatableProperty *platterWidth; // @synthesize platterWidth=_platterWidth;
+@property (nonatomic) int preferredMorphingAxis; // @synthesize preferredMorphingAxis=_preferredMorphingAxis;
 @property (nonatomic) BOOL preventPreviewRasterization; // @synthesize preventPreviewRasterization=_preventPreviewRasterization;
-@property (strong, nonatomic) UIVisualEffectView *rectangularShadowView; // @synthesize rectangularShadowView=_rectangularShadowView;
+@property (strong, nonatomic) _UICutoutShadowView *rectangularShadowView; // @synthesize rectangularShadowView=_rectangularShadowView;
+@property (nonatomic) BOOL shouldMorphContents; // @synthesize shouldMorphContents=_shouldMorphContents;
 
 - (void).cxx_destruct;
 - (void)_installPreview:(id)arg1 inClippingView:(id)arg2 transformView:(id)arg3;
+- (double)_pathShadowAlphaForExpansionProgress:(double)arg1;
+- (void)_prepareAnimatableProperties;
 - (BOOL)_previewIsLikelyOpaque:(id)arg1;
+- (double)_rectangularShadowAlphaForExpansionProgress:(double)arg1;
+- (void)_setPresentationTransformForMorphingView:(id)arg1 toBounds:(struct CGRect)arg2 alongAxis:(int)arg3 elastic:(BOOL)arg4;
 - (void)_updateClippingViews;
 - (void)_updateCollapsedChrome;
 - (void)_updatePathShadow;

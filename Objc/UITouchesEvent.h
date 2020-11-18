@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)_digitizerLocation;
 - (id)_exclusiveTouchWindows;
 - (id)_firstTouchForView:(id)arg1;
+- (void)_gestureRecognizerNoLongerNeedsSendEvent:(id)arg1;
 - (id)_gestureRecognizersForWindow:(id)arg1;
 - (id)_init;
 - (id)_initWithEvent:(struct __GSEvent *)arg1 touches:(id)arg2;

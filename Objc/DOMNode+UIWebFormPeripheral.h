@@ -92,6 +92,7 @@
 @property (nonatomic) long long spellCheckingType;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsImagePaste;
 @property (nonatomic) BOOL suppressReturnKeyStyling;
 @property (copy, nonatomic) NSString *textContentType;
 @property (readonly, nonatomic) id<UITextInputSuggestionDelegate> textInputSuggestionDelegate;

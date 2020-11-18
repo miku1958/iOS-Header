@@ -25,14 +25,19 @@ __attribute__((visibility("hidden")))
     _UIContextMenuAnimator *_alongsideAnimator;
     unsigned long long _dismissalStyle;
     NSArray *_preferredBackgroundEffects;
+    UIViewPropertyAnimator *_backgroundEffectAnimator;
     _UIPortalView *_reparentingPortalView;
-    UIViewFloatAnimatableProperty *_animationProgress;
     UITargetedPreview *_trackedPreviewForReparenting;
+    UIViewFloatAnimatableProperty *_animationProgress;
+    CDUnknownBlockType _reparentingAnimationBlock;
+    CDUnknownBlockType _backgroundAnimationBlock;
     struct UIEdgeInsets _preferredBackgroundInsets;
 }
 
 @property (strong, nonatomic) _UIContextMenuAnimator *alongsideAnimator; // @synthesize alongsideAnimator=_alongsideAnimator;
 @property (strong, nonatomic) UIViewFloatAnimatableProperty *animationProgress; // @synthesize animationProgress=_animationProgress;
+@property (copy, nonatomic) CDUnknownBlockType backgroundAnimationBlock; // @synthesize backgroundAnimationBlock=_backgroundAnimationBlock;
+@property (strong, nonatomic) UIViewPropertyAnimator *backgroundEffectAnimator; // @synthesize backgroundEffectAnimator=_backgroundEffectAnimator;
 @property (readonly, nonatomic) UIViewPropertyAnimator *customAnimator;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_UIPreviewPlatterPresentationAnimatorDelegate> delegate; // @synthesize delegate=_delegate;
@@ -43,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *preferredBackgroundEffects; // @synthesize preferredBackgroundEffects=_preferredBackgroundEffects;
 @property (nonatomic) struct UIEdgeInsets preferredBackgroundInsets; // @synthesize preferredBackgroundInsets=_preferredBackgroundInsets;
 @property (weak, nonatomic) _UIPreviewPlatterPresentationController *presentationController; // @synthesize presentationController=_presentationController;
+@property (copy, nonatomic) CDUnknownBlockType reparentingAnimationBlock; // @synthesize reparentingAnimationBlock=_reparentingAnimationBlock;
 @property (strong, nonatomic) _UIPortalView *reparentingPortalView; // @synthesize reparentingPortalView=_reparentingPortalView;
 @property (nonatomic) BOOL reparentsInDestinationContainer; // @synthesize reparentsInDestinationContainer=_reparentsInDestinationContainer;
 @property (copy, nonatomic) UITargetedPreview *sourcePreview; // @synthesize sourcePreview=_sourcePreview;
@@ -52,16 +58,20 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_actionsView;
 - (void)_actuallyPerformTransitionFromView:(id)arg1 toView:(id)arg2 containerView:(id)arg3;
+- (void)_anchorTransitionViewToTargetedPreview:(id)arg1;
 - (id)_backgroundView;
 - (id)_containerView;
 - (BOOL)_isDismissingToDrag;
-- (void)_layoutAnchorTransitionViewToTargetedPreview:(id)arg1;
+- (void)_performReduceMotionAppearanceTransition;
+- (void)_performReduceMotionDisappearanceTransition;
 - (id)_platterTransitionView;
 - (id)_platterView;
+- (void)_prepareAnimatablePropertyBasedAnimations;
 - (void)_prepareReparentingAnimationWithDismissalTarget:(id)arg1;
 - (void)_setBackgroundVisible:(BOOL)arg1;
 - (id)_targetedPreviewForDismissalAnimation;
 - (void)animateForDragSetDown;
+- (void)dealloc;
 - (id)initWithPresentationController:(id)arg1 asDismissal:(BOOL)arg2;
 - (void)performTransitionFromView:(id)arg1 toView:(id)arg2 containerView:(id)arg3;
 - (void)prepareTransitionFromView:(id)arg1 toView:(id)arg2 containerView:(id)arg3;

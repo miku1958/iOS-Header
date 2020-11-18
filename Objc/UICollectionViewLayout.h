@@ -76,6 +76,7 @@
 - (id)_decorationViewForLayoutAttributes:(id)arg1;
 - (void)_didFinishLayoutTransitionAnimations:(BOOL)arg1;
 - (void)_didPerformUpdateVisibleCellsPass;
+- (BOOL)_disallowsFadeCellsForBoundsChange;
 - (id)_dynamicAnimator;
 - (struct CGRect)_dynamicReferenceBounds;
 - (unsigned long long)_edgesForSafeAreaPropagationToDescendants;

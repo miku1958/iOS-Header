@@ -61,6 +61,7 @@
 @property (copy, nonatomic, getter=_thumbnail, setter=_setThumbnail:) UIImage *thumbnail; // @synthesize thumbnail=_thumbnail;
 
 - (void).cxx_destruct;
+- (void)_cloudSharingControllerDidActivateShowSharedFolder;
 - (void)_cloudSharingControllerDidModifyPrimarySwitch:(BOOL)arg1;
 - (void)_cloudSharingControllerDidModifySecondarySwitch:(BOOL)arg1;
 - (id)_customPresentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
@@ -69,6 +70,7 @@
 - (void)_dismissViewControllerWithError:(id)arg1;
 - (void)_performAuxiliaryActionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performHeaderActionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_presentationControllerDidDismiss:(id)arg1;
 - (void)_representFullscreenAfterActivityDismissal:(CDUnknownBlockType)arg1;
 - (void)_requestSavedShareWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_requiresCustomPresentationController;

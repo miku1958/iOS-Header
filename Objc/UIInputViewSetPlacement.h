@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isFloating;
 @property (readonly, nonatomic) BOOL isInteractive;
 @property (readonly, nonatomic) BOOL isUndocked;
+@property (readonly, nonatomic) BOOL requiresWindowBasedSafeAreaInsets;
 @property (readonly, nonatomic) BOOL showsInputViews;
 @property (readonly, nonatomic) BOOL showsKeyboard;
 @property (strong, nonatomic) NSArray *subPlacements; // @synthesize subPlacements=_subPlacements;

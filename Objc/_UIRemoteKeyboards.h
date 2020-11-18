@@ -93,6 +93,7 @@
 - (void)completeTransition:(id)arg1 withInfo:(id)arg2;
 - (void)controllerDidLayoutSubviews:(id)arg1;
 - (void)dealloc;
+- (void)didBecomeActive:(id)arg1;
 - (BOOL)didHandleKeyboardChange:(id)arg1 shouldConsiderSnapshottingKeyboard:(BOOL)arg2 isLocalEvent:(BOOL)arg3;
 - (void)didRemoveDeactivationReason:(id)arg1;
 - (void)didSuspend:(id)arg1;
@@ -101,7 +102,6 @@
 - (BOOL)hasAnyHostedViews;
 - (void)ignoreLayoutNotifications:(CDUnknownBlockType)arg1;
 - (id)init;
-- (BOOL)isKeyboardExtension;
 - (BOOL)isOnScreenRotating;
 - (void)keyboardChangedCompleted;
 - (Class)keyboardWindowClass;
@@ -146,6 +146,7 @@
 - (BOOL)wantsToShowKeyboardForViewServiceHostWindow:(id)arg1;
 - (BOOL)wantsToShowKeyboardForWindow:(id)arg1;
 - (void)willAddDeactivationReason:(id)arg1;
+- (void)willResignActive:(id)arg1;
 - (void)willResume:(id)arg1;
 
 @end
