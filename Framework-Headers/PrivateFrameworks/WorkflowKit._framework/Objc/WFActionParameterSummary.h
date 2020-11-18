@@ -24,8 +24,12 @@
 
 - (void).cxx_destruct;
 - (id)explodedPossibleValuesForLocalization;
+- (id)explodedPossibleValuesForLocalizationWithParameterReplacements;
+- (id)explodedSummaryStringWithKey:(id)arg1 value:(id)arg2;
 - (id)initWithAction:(id)arg1 definition:(id)arg2;
 - (id)localizedFormatString;
+- (id)parameterReplacedString:(id)arg1 withOverrides:(id)arg2;
+- (id)placeholderForKey:(id)arg1;
 - (id)possibleValuesFromDictionary:(id)arg1;
 
 @end

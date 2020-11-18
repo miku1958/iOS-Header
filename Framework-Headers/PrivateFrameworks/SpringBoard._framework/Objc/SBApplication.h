@@ -11,7 +11,7 @@
 #import <SpringBoard/UISApplicationStateServiceDataSource-Protocol.h>
 #import <SpringBoard/XBApplicationSnapshotManifestDelegate-Protocol.h>
 
-@class FBApplicationProcess, FBProcessExitContext, FBSApplicationDataStore, NSArray, NSDate, NSHashTable, NSMapTable, NSSet, NSString, NSUserDefaults, SBApplicationInfo, SBApplicationProcessState, SBApplicationSupportServiceRequestContext, SBApplicationWakeScheduler, XBApplicationSnapshotManifest;
+@class FBApplicationProcess, FBProcessExitContext, FBSApplicationDataStore, NSArray, NSDate, NSHashTable, NSMapTable, NSMutableDictionary, NSString, NSUserDefaults, SBApplicationInfo, SBApplicationProcessState, SBApplicationSupportServiceRequestContext, SBApplicationWakeScheduler, XBApplicationSnapshotManifest;
 
 @interface SBApplication : NSObject <XBApplicationSnapshotManifestDelegate, SBLeafIconDataSource, UISApplicationStateServiceDataSource, BSDescriptionProviding>
 {
@@ -33,7 +33,7 @@
     BOOL _hasShownDataPlanAlertSinceLock;
     NSHashTable *_statusBarStyleOverridesAssertions;
     NSMapTable *_statusBarStyleOverridesAssertionsByStyleOverride;
-    NSSet *_suppressVolumeHudCategories;
+    NSMutableDictionary *_suppressVolumeHUDCategoriesBySceneIdentifier;
     int _showsProgressCount;
     BOOL _isRestoringApplicationFromHiding;
     int _applicationRestorationCheckState;
@@ -179,7 +179,6 @@
 - (void)_resetDataUsage;
 - (void)_resetLaunchImageIngestionStatus;
 - (void)_saveSnapshotForSceneHandle:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)_sceneIdentifierForDisplayIdentity:(id)arg1;
 - (id)_sceneIdentifierForStoredPersistenceIdentifier:(id)arg1;
 - (void)_setApplicationRestorationCheckState:(int)arg1;
 - (void)_setCurrentClassicMode:(long long)arg1;
@@ -199,7 +198,7 @@
 - (id)badgeNumberOrStringForIcon:(id)arg1;
 - (id)bestSnapshotWithImageName:(id)arg1 sceneHandle:(id)arg2 variantID:(id)arg3 scale:(double)arg4 size:(struct CGSize)arg5 contentTypeMask:(unsigned long long)arg6 statusBarStateMask:(unsigned long long)arg7 launchingOrientation:(long long)arg8 contentOverridesContext:(id)arg9 userInterfaceStyle:(long long)arg10;
 - (id)cachedImageForSnapshot:(id)arg1 interfaceOrientation:(long long)arg2;
-- (BOOL)canShowSystemVolumeHUDForCategory:(id)arg1;
+- (BOOL)canShowSystemVolumeHUDForCategory:(id)arg1 forSceneIdentifier:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)createDownscaledVariantForSnapshot:(id)arg1 sceneHandle:(id)arg2 scaleFactor:(double)arg3 didSaveImage:(CDUnknownBlockType)arg4;
 - (void)dealloc;
@@ -242,7 +241,7 @@
 - (id)restrictedClassicModeDisplayConfigurationForDisplayConfiguration:(id)arg1;
 - (void)saveSnapshotForSceneHandle:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)saveSuspendSnapshot:(id)arg1 forSceneHandle:(id)arg2;
-- (void)setAudioCategoriesThatDisableSystemVolumeHUD:(id)arg1;
+- (void)setAudioCategoriesThatDisableSystemVolumeHUD:(id)arg1 forSceneIdentifier:(id)arg2;
 - (void)setHasDisplayedLaunchAlert:(BOOL)arg1 forType:(unsigned long long)arg2;
 - (BOOL)shouldReceiveSourceApplicationContextFromOriginatingApplication:(id)arg1;
 - (struct CGRect)snapshotFrameForClassicInsideBounds:(struct CGRect)arg1 forOrientation:(long long)arg2 scaleFactor:(double *)arg3 inReferenceSpace:(BOOL)arg4;

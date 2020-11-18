@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)ruleDictionaryForStyle:(id)arg1;
++ (id)ruleDictionaryForStyleWithDarkInterface:(id)arg1;
 + (id)styleSet;
 - (void)addChildAsRow:(id)arg1;
 - (id)initWithThemePath:(id)arg1 generator:(id)arg2;

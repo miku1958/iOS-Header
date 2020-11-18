@@ -20,7 +20,7 @@
 - (void)_createConnection;
 - (id)_remoteObjectProxy;
 - (id)applyMaterialRecipe:(id)arg1 recipeName:(id)arg2 weighting:(double)arg3 downsampleFactor:(double)arg4;
-- (id)treatWallpaperImage:(id)arg1 needsLuminanceTreatment:(BOOL)arg2 needsDimmingTreatment:(BOOL)arg3 downsampleFactor:(double)arg4;
+- (id)treatWallpaperImage:(id)arg1 needsLuminanceTreatment:(BOOL)arg2 needsDimmingTreatment:(BOOL)arg3 downsampleFactor:(double)arg4 averageColor:(id)arg5;
 
 @end
 

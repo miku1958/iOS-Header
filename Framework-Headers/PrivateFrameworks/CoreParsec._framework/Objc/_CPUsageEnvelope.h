@@ -23,6 +23,7 @@
     long long _collectionStartTimestamp;
     long long _collectionEndTimestamp;
     _CPDeviceContext *_context;
+    NSData *_uuidBytes;
     unsigned long long _whichKind;
 }
 
@@ -41,6 +42,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) int totalSessions; // @synthesize totalSessions=_totalSessions;
 @property (strong, nonatomic) _CPUsageSinceLookback *usageSinceLookback; // @synthesize usageSinceLookback=_usageSinceLookback;
+@property (copy, nonatomic) NSData *uuidBytes; // @synthesize uuidBytes=_uuidBytes;
 @property (readonly, nonatomic) unsigned long long whichKind; // @synthesize whichKind=_whichKind;
 
 - (void).cxx_destruct;

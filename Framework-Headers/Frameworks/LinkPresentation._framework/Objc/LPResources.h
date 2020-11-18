@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 + (id)safariIcon;
 + (id)searchGlyph;
 + (id)telephoneIcon;
++ (id)textIcon;
 + (id)transportDriveIcon;
 + (id)transportTransitIcon;
 + (id)transportWalkIcon;

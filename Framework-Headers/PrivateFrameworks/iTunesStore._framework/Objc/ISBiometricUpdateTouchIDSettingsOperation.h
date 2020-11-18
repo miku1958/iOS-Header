@@ -34,7 +34,7 @@
 @property (readonly) long long status; // @synthesize status=_status;
 
 - (void).cxx_destruct;
-- (id)_newUpdateTouchIDSettingsOperationWithTwoKeys;
+- (id)_newUpdateTouchIDSettingsOperation;
 - (id)initWithAccountIdentifier:(id)arg1;
 - (void)run;
 

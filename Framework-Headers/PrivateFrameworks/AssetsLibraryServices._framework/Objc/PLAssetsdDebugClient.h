@@ -20,6 +20,7 @@
 - (id)getCPLState;
 - (id)getStatus;
 - (id)getXPCTransactionStatus;
+- (void)identifyAssetsWithInconsistentCloudState;
 - (BOOL)invalidateHighlightSubtitlesAndRegenerateHighlightTitlesWithError:(id *)arg1;
 - (id)momentGenerationStatus;
 - (void)prefetchResourcesForHighlights:(id)arg1;

@@ -16,6 +16,8 @@
 @property (readonly, nonatomic) BOOL hasCurrentLocation;
 @property (readonly, nonatomic) BOOL hasFile;
 @property (readonly, nonatomic) BOOL hasFileURL;
+@property (readonly, nonatomic) BOOL hasSpeechDataURL;
+@property (strong, nonatomic) _INPBURLValue *speechDataURL;
 @property (readonly, nonatomic) unsigned long long whichDatasource;
 
 @end

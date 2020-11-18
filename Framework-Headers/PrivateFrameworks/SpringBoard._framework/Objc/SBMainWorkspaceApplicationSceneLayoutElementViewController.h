@@ -7,23 +7,26 @@
 #import <SpringBoard/SBAppContainerViewController.h>
 
 #import <SpringBoard/SBDeviceApplicationSceneHandleObserver-Protocol.h>
+#import <SpringBoard/SBInlineAppExposeContainerViewControllerDelegate-Protocol.h>
+#import <SpringBoard/SBMainDisplaySceneLayoutElementViewControlling-Protocol.h>
 #import <SpringBoard/SBMedusaDecoratedDeviceApplicationSceneViewControlling-Protocol.h>
 #import <SpringBoard/SBMedusaDecoratedDeviceApplicationSceneViewControlling_Internal-Protocol.h>
 
-@class BSCornerRadiusConfiguration, NSMutableSet, NSString, SBHomeGrabberView, SBInlineAppExposeContainerViewController, SBSceneHandle, UIDropInteraction, UIView;
+@class BSCornerRadiusConfiguration, NSMutableSet, NSString, SBHomeGrabberView, SBInlineAppExposeContainerViewController, SBSceneHandle, SBSceneViewStatusBarAssertion, UIDropInteraction, UIView;
 @protocol SBApplicationSceneViewControllingStatusBarDelegate, SBScenePlaceholderContentContext;
 
-@interface SBMainWorkspaceApplicationSceneLayoutElementViewController : SBAppContainerViewController <SBDeviceApplicationSceneHandleObserver, SBMedusaDecoratedDeviceApplicationSceneViewControlling_Internal, SBMedusaDecoratedDeviceApplicationSceneViewControlling>
+@interface SBMainWorkspaceApplicationSceneLayoutElementViewController : SBAppContainerViewController <SBDeviceApplicationSceneHandleObserver, SBInlineAppExposeContainerViewControllerDelegate, SBMedusaDecoratedDeviceApplicationSceneViewControlling_Internal, SBMainDisplaySceneLayoutElementViewControlling, SBMedusaDecoratedDeviceApplicationSceneViewControlling>
 {
     BOOL _nubViewHidden;
     BOOL _nubViewHighlighted;
     NSMutableSet *_maskDisplayCornersReasons;
     BOOL _clipsToBounds;
-    double _shadowOpacity;
-    double _shadowOffset;
-    BSCornerRadiusConfiguration *_cornerRadiusConfiguration;
     double _darkenViewAlpha;
     UIDropInteraction *_dropInteraction;
+    BSCornerRadiusConfiguration *_cornerRadiusConfiguration;
+    double _shadowOpacity;
+    double _shadowOffset;
+    SBSceneViewStatusBarAssertion *_inlineAppExposeContainerStatusBarAssertion;
     SBInlineAppExposeContainerViewController *_inlineAppExposeContainerOverlayViewController;
 }
 
@@ -43,6 +46,7 @@
 @property (nonatomic) long long homeGrabberDisplayMode;
 @property (readonly, nonatomic) SBHomeGrabberView *homeGrabberView;
 @property (readonly, nonatomic) SBInlineAppExposeContainerViewController *inlineAppExposeContainerOverlayViewController; // @synthesize inlineAppExposeContainerOverlayViewController=_inlineAppExposeContainerOverlayViewController;
+@property (strong, nonatomic) SBSceneViewStatusBarAssertion *inlineAppExposeContainerStatusBarAssertion; // @synthesize inlineAppExposeContainerStatusBarAssertion=_inlineAppExposeContainerStatusBarAssertion;
 @property (nonatomic, getter=isNubViewHidden) BOOL nubViewHidden;
 @property (nonatomic, getter=isNubViewHighlighted) BOOL nubViewHighlighted;
 @property (readonly, nonatomic) long long overrideStatusBarStyle;
@@ -54,6 +58,8 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)SB_conformsToMainDisplaySceneLayoutElementViewControlling;
+- (BOOL)SB_conformsToMedusaDecoratedDeviceApplicationSceneViewControlling;
 - (id)_applicationSceneViewController;
 - (id)_applicationSceneViewControllerForSceneHandle:(id)arg1;
 - (void)_beginRequiringSceneViewMatchMoveAnimationForReason:(id)arg1;
@@ -63,7 +69,7 @@
 - (void)_endRequiringSceneViewMatchMoveAnimationForReason:(id)arg1;
 - (id)_medusaDecoratedVC;
 - (id)_medusaDecoratedVC:(id)arg1;
-- (long long)_overrideStatusBarOrientation;
+- (long long)_overrideStatusBarOrientationGivenFallbackOrientation:(long long)arg1;
 - (id)_relinquishInlineAppExposeContainerViewController;
 - (BOOL)_shouldDisplayLayoutElementBecomeActive;
 - (id)animationControllerForTransitionRequest:(id)arg1;
@@ -72,6 +78,7 @@
 - (id)containerViewForBlurContentView;
 - (id)initWithDisplayIdentity:(id)arg1;
 - (id)initialCornerRadiusConfiguration;
+- (void)inlineContainerViewController:(id)arg1 setStatusBarHidden:(BOOL)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidBeginWithTransitionContext:(id)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidEndWithTransitionContext:(id)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionWillEndWithTransitionContext:(id)arg2;

@@ -113,6 +113,7 @@
 @property (readonly, nonatomic, getter=isAnimatingScrolling) BOOL animatingScrolling;
 @property (strong, nonatomic) NSArray *applicationShortcutItems; // @synthesize applicationShortcutItems=_applicationShortcutItems;
 @property (readonly, nonatomic) SBFParallaxSettings *badgeParallaxSettings;
+@property (readonly, nonatomic) double baselineOffsetFromBottom;
 @property (readonly, nonatomic) BOOL canShowCloseBox;
 @property (readonly, nonatomic) unsigned long long centerVisibleMiniIconIndex;
 @property (nonatomic) unsigned long long configurationOptions;
@@ -137,6 +138,7 @@
 @property (readonly, nonatomic) double effectiveIconImageAlpha;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) Class expectedIconImageViewClass;
+@property (readonly, nonatomic) double firstLineBaseline;
 @property (readonly, nonatomic) unsigned long long firstVisibleMiniIconIndex;
 @property (nonatomic) unsigned long long folderBackgroundStyle;
 @property (strong, nonatomic) SBFolderIcon *folderIcon; // @synthesize folderIcon=_folderIcon;
@@ -166,6 +168,7 @@
 @property (strong, nonatomic) UIFont *labelFont; // @synthesize labelFont=_labelFont;
 @property (nonatomic, getter=isLabelHidden) BOOL labelHidden;
 @property (readonly, nonatomic) UIView<SBIconLabelView> *labelView;
+@property (readonly, nonatomic) double lastLineBaseline;
 @property (copy, nonatomic) NSDate *lastTouchDownDate; // @synthesize lastTouchDownDate=_lastTouchDownDate;
 @property (readonly, nonatomic) unsigned long long lastVisibleMiniIconIndex;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
@@ -250,6 +253,7 @@
 - (void)_configureLabelAccessoryViewForType:(long long)arg1;
 - (void)_configureViewAsFolderIconImageView:(id)arg1;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
+- (id)_contextMenuInteraction:(id)arg1 overrideSuggestedActionsForConfiguration:(id)arg2;
 - (id)_contextMenuInteraction:(id)arg1 previewForIconWithConfigurationOptions:(unsigned long long)arg2;
 - (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
 - (BOOL)_contextMenuInteractionShouldAllowDragAfterDismiss:(id)arg1;
@@ -287,6 +291,7 @@
 - (void)_recursiveNotifyInteractionTintColorDidChangeForReasons:(unsigned long long)arg1;
 - (void)_recursivelyUpdateBackdropMaskFrames;
 - (void)_registerForAddWidgetRequestsIfNecessary;
+- (void)_removeUnknownSubviews;
 - (void)_setShowingAccessoryView:(BOOL)arg1;
 - (void)_setShowingCloseBox:(BOOL)arg1;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
@@ -365,12 +370,10 @@
 - (id)folder;
 - (struct CGRect)frameForMiniIconAtIndex:(unsigned long long)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)hideActivatingOrDismissingPreview;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)iconAccessoriesDidUpdate:(id)arg1;
-- (void)iconDropDidComplete;
 - (double)iconImageCornerRadius;
 - (void)iconImageDidUpdate:(id)arg1;
 - (void)iconInteractedWhenDisabled;
@@ -385,13 +388,14 @@
 - (BOOL)isTimedOut;
 - (id)labelConfiguration;
 - (void)layoutSubviews;
+- (id)matchingIconViewByAddingConfigurationOptions:(unsigned long long)arg1 removingConfigurationOptions:(unsigned long long)arg2;
 - (id)matchingIconViewWithConfigurationOptions:(unsigned long long)arg1;
 - (id)newComponentBackgroundView;
 - (id)pauseReasonsDescriptions;
 - (CDUnknownBlockType)pendingAnimatorCompletionForConfiguration:(id)arg1;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)pointMostlyInside:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)prepareForIconDrop;
+- (id)prepareForIconDrop;
 - (void)prepareForReuse;
 - (void)prepareToCrossfadeImageWithView:(id)arg1 maskCorners:(BOOL)arg2 trueCrossfade:(BOOL)arg3;
 - (void)prepareToCrossfadeImageWithView:(id)arg1 maskCorners:(BOOL)arg2 trueCrossfade:(BOOL)arg3 anchorPoint:(struct CGPoint)arg4;

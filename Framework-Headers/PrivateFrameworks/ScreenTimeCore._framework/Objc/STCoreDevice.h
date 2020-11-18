@@ -21,6 +21,7 @@
 @property (copy, nonatomic) NSString *identifier; // @dynamic identifier;
 @property (strong, nonatomic) STUserDeviceState *localUserDeviceState; // @dynamic localUserDeviceState;
 @property (copy, nonatomic) NSString *name; // @dynamic name;
+@property (nonatomic) short platform; // @dynamic platform;
 @property (readonly) Class superclass;
 @property (readonly) id<STSerializableManagedObject> syncableRootObject;
 @property (strong, nonatomic) NSSet *usages; // @dynamic usages;

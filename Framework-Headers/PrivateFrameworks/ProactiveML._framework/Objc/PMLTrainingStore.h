@@ -25,7 +25,7 @@
 + (long long)migrate:(id)arg1 to:(id)arg2 forStore:(id)arg3;
 + (void)setLastUsedTimestampLimit:(double)arg1;
 - (void).cxx_destruct;
-- (void)_loadSessionsForModel:(id)arg1 positiveRowId:(unsigned long long)arg2 negativeRowId:(unsigned long long)arg3 excludeItemIdsUsedWithin:(double)arg4 limit:(unsigned long long)arg5 onlyAppleInternal:(BOOL)arg6 positiveLabel:(unsigned long long)arg7 skew:(double)arg8 ignoreIfSingular:(BOOL)arg9 block:(CDUnknownBlockType)arg10;
+- (void)_loadSessionsForModel:(id)arg1 positiveRowId:(unsigned long long)arg2 negativeRowId:(unsigned long long)arg3 excludeItemIdsUsedWithin:(double)arg4 limit:(unsigned long long)arg5 onlyAppleInternal:(BOOL)arg6 positiveLabel:(unsigned long long)arg7 skew:(double)arg8 block:(CDUnknownBlockType)arg9;
 - (void)_loadSessionsForModel:(id)arg1 privacyBudgetRefreshPeriod:(double)arg2 labelAndStartRows:(id)arg3 batchSize:(unsigned long long)arg4 supportPerLabel:(unsigned long long)arg5 block:(CDUnknownBlockType)arg6;
 - (void)_loadSessionsFromLabelAndTuples:(id)arg1 model:(id)arg2 numberOfRows:(unsigned long long)arg3 numberOfColumns:(unsigned long long)arg4 lastUsedMax:(double)arg5 block:(CDUnknownBlockType)arg6;
 - (long long)_openDbIfUnlocked;
@@ -52,7 +52,7 @@
 - (void)limitSessionsByMaxTimesAccessed;
 - (void)limitSessionsForEachLabelWithSessionDescriptor:(id)arg1 totalSessionLimit:(unsigned long long)arg2;
 - (void)loadSessionsForModel:(id)arg1 excludeItemIdsUsedWithin:(double)arg2 limit:(unsigned long long)arg3 onlyAppleInternal:(BOOL)arg4 block:(CDUnknownBlockType)arg5;
-- (void)loadSessionsForModel:(id)arg1 excludeItemIdsUsedWithin:(double)arg2 limit:(unsigned long long)arg3 onlyAppleInternal:(BOOL)arg4 positiveLabel:(unsigned long long)arg5 skew:(double)arg6 ignoreIfSingular:(BOOL)arg7 block:(CDUnknownBlockType)arg8;
+- (void)loadSessionsForModel:(id)arg1 excludeItemIdsUsedWithin:(double)arg2 limit:(unsigned long long)arg3 onlyAppleInternal:(BOOL)arg4 positiveLabel:(unsigned long long)arg5 skew:(double)arg6 block:(CDUnknownBlockType)arg7;
 - (void)loadSessionsForModel:(id)arg1 excludeItemIdsUsedWithin:(double)arg2 withSkew:(double)arg3 andLimit:(int)arg4 block:(CDUnknownBlockType)arg5;
 - (void)loadSessionsForModel:(id)arg1 privacyBudgetRefreshPeriod:(double)arg2 labels:(id)arg3 batchSize:(unsigned long long)arg4 supportPerLabel:(unsigned long long)arg5 block:(CDUnknownBlockType)arg6;
 - (long long)migrateTo:(id)arg1;

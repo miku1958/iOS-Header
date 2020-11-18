@@ -15,6 +15,7 @@
 
 @property (copy, nonatomic) NSDictionary *authenticationResults; // @dynamic authenticationResults;
 @property (weak, nonatomic) id<CDPStateUIProvider> cdpUiProvider; // @dynamic cdpUiProvider;
+@property (nonatomic) long long operationUIPermissions; // @dynamic operationUIPermissions;
 @property (nonatomic) BOOL shouldForceOperation; // @dynamic shouldForceOperation;
 @property (strong, nonatomic) UIViewController *viewController; // @dynamic viewController;
 

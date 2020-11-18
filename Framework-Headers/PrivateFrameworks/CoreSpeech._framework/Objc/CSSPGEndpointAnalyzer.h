@@ -19,6 +19,7 @@
     id<CSSPGEndpointAnalyzerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_queue;
     EARCaesuraSilencePosteriorGenerator *_caesuraSPG;
+    double _lastSilencePosterior;
 }
 
 @property (strong, nonatomic) EARCaesuraSilencePosteriorGenerator *caesuraSPG; // @synthesize caesuraSPG=_caesuraSPG;
@@ -29,6 +30,7 @@
 @property (nonatomic) BOOL hasReported; // @synthesize hasReported=_hasReported;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isAnalyzeMode; // @synthesize isAnalyzeMode=_isAnalyzeMode;
+@property (nonatomic) double lastSilencePosterior; // @synthesize lastSilencePosterior=_lastSilencePosterior;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 

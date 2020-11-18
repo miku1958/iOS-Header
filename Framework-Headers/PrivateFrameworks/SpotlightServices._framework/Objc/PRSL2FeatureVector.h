@@ -52,7 +52,7 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)dictionaryRepresentationWithoutDefaultValues;
-- (float *)getAllScores:(float [1235])arg1;
+- (float *)getAllScores:(float [1238])arg1;
 - (id)init;
 - (id)initWithCache:(struct PRSL2FeatureScoreSmallCache)arg1 featureData:(void *)arg2 featureDataSize:(unsigned short)arg3 flags:(unsigned char)arg4 values:(unsigned char)arg5;
 - (float)scoreForFeature:(unsigned short)arg1;

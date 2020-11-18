@@ -25,6 +25,7 @@
     id<HMDCameraRecordingSessionDelegate> _delegate;
     double _configuredFragmentDuration;
     HMFActivity *_sessionActivity;
+    NSString *_logIdentifier;
     HMDCameraRecordingUploader *_recordingUploader;
     unsigned long long _pendingFragmentsCount;
     NSString *_fragmentDirectoryPath;
@@ -54,6 +55,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong) NSDictionary *homePresenceByPairingIdentity; // @synthesize homePresenceByPairingIdentity=_homePresenceByPairingIdentity;
 @property (readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property BOOL noMoreFragmentsAvailable; // @synthesize noMoreFragmentsAvailable=_noMoreFragmentsAvailable;
 @property unsigned long long pendingFragmentsCount; // @synthesize pendingFragmentsCount=_pendingFragmentsCount;
 @property (strong) HMDCameraRecordingUploader *recordingUploader; // @synthesize recordingUploader=_recordingUploader;
@@ -86,7 +88,6 @@
 - (void)handleFragment:(id)arg1;
 - (void)handleNoMoreFragmentsAvailable;
 - (id)initWithWorkQueue:(id)arg1 camera:(id)arg2 configuredFragmentDuration:(double)arg3 fragmentContextManager:(id)arg4 factory:(id)arg5;
-- (id)logIdentifier;
 - (void)recordingUploader:(id)arg1 didFinishClip:(id)arg2;
 - (void)recordingUploader:(id)arg1 didStartClip:(id)arg2;
 - (void)recordingUploader:(id)arg1 willFinishClip:(id)arg2;

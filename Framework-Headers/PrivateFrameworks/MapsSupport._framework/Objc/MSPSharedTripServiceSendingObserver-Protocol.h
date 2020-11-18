@@ -9,8 +9,9 @@
 @class MSPSharedTripService, NSError, NSString;
 
 @protocol MSPSharedTripServiceSendingObserver <NSObject>
+- (void)invalidateActiveHandlesForSharedTripService:(MSPSharedTripService *)arg1;
 - (void)sharedTripService:(MSPSharedTripService *)arg1 sendMessage:(NSString *)arg2 toGroup:(NSString *)arg3;
 - (void)sharedTripService:(MSPSharedTripService *)arg1 sendMessage:(NSString *)arg2 toParticipant:(NSString *)arg3;
-- (void)sharedTripService:(MSPSharedTripService *)arg1 sharingDidInvalidateWithHandler:(NSError *)arg2;
+- (void)sharedTripService:(MSPSharedTripService *)arg1 sharingDidInvalidateWithError:(NSError *)arg2;
 @end
 

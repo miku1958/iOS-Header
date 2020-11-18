@@ -28,8 +28,10 @@
 
 - (void).cxx_destruct;
 - (void)_acknowledgeSuggestedEventWithSourceClientIdentifier:(id)arg1 accept:(BOOL)arg2;
+- (void)_clearSuggestedEventNotificationWithObjectID:(id)arg1;
 - (id)_eventForSourceClientIdentifier:(id)arg1 eventStore:(id)arg2;
 - (id)_notificationInfoFromNotification:(id)arg1 inEventStore:(id)arg2;
+- (void)clearSuggestedEventNotificationWithSourceClientIdentifier:(id)arg1;
 - (void)confirmSuggestedEventWithSourceClientIdentifier:(id)arg1;
 - (void)deleteCanceledSuggestedEventWithSourceClientIdentifier:(id)arg1;
 - (id)fetchSuggestedEventNotificationObjectIDs;

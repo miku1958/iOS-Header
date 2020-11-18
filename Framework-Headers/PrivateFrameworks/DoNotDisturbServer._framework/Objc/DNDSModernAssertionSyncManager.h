@@ -33,7 +33,6 @@
 - (void).cxx_destruct;
 - (void)_queue_handleMessage:(id)arg1 withVersionNumber:(unsigned long long)arg2;
 - (void)_queue_sendStateSnapshotToPairedDevice:(id)arg1 force:(BOOL)arg2;
-- (id)initWithClientDetailsProvider:(id)arg1;
 - (id)initWithClientDetailsProvider:(id)arg1 syncService:(id)arg2;
 - (void)resume;
 - (void)syncService:(id)arg1 didReceiveMessage:(id)arg2 withVersionNumber:(unsigned long long)arg3 fromDeviceIdentifier:(id)arg4;

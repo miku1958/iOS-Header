@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSCache, NSHashTable, NSMapTable, WFWorkflow;
+@protocol OS_dispatch_queue;
 
 @interface WFVariableAvailability : NSObject
 {
@@ -18,9 +19,11 @@
     NSMapTable *_actionOutputVariableActionsByUUID;
     NSCache *_cachedContentClassesForVariableNameAtIndex;
     NSHashTable *_variableObservers;
+    NSObject<OS_dispatch_queue> *_actionOutputWorkQueue;
 }
 
 @property (strong, nonatomic) NSMapTable *actionOutputVariableActionsByUUID; // @synthesize actionOutputVariableActionsByUUID=_actionOutputVariableActionsByUUID;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *actionOutputWorkQueue; // @synthesize actionOutputWorkQueue=_actionOutputWorkQueue;
 @property (strong, nonatomic) NSCache *cachedContentClassesForVariableNameAtIndex; // @synthesize cachedContentClassesForVariableNameAtIndex=_cachedContentClassesForVariableNameAtIndex;
 @property (readonly, nonatomic) BOOL extensionInputVariableUsed; // @synthesize extensionInputVariableUsed=_extensionInputVariableUsed;
 @property (strong, nonatomic) NSMapTable *providingActionsByVariableName; // @synthesize providingActionsByVariableName=_providingActionsByVariableName;
@@ -51,6 +54,7 @@
 - (BOOL)isVariableWithOutputUUIDAvailable:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)notifyContentClassesChanged;
 - (void)notifyVariablesChanged;
+- (void)populateActionOutputVariableActionsByUUID;
 - (void)populateCache;
 - (id)possibleContentClassesForVariableNamed:(id)arg1 atIndex:(unsigned long long)arg2 context:(id)arg3 excludingAction:(id)arg4;
 - (void)removeVariableObserver:(id)arg1;

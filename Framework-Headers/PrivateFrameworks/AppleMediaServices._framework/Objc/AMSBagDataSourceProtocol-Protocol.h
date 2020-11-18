@@ -11,6 +11,7 @@
 @protocol AMSBagDataSourceProtocol <NSObject>
 
 @property (copy, nonatomic) CDUnknownBlockType dataSourceChangedHandler;
+@property (copy, nonatomic) CDUnknownBlockType dataSourceDataInvalidatedHandler;
 @property (readonly, nonatomic) NSDate *expirationDate;
 @property (readonly, nonatomic, getter=isLoaded) BOOL loaded;
 @property (readonly, copy, nonatomic) NSString *profile;

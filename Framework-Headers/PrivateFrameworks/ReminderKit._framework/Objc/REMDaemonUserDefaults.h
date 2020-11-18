@@ -26,6 +26,7 @@
 @property (nonatomic) BOOL isDatabaseMigrated;
 @property (copy, nonatomic) NSString *lastDatabaseMigrationSystemBuildVersion;
 @property (copy, nonatomic) NSDate *lastPresentAlarmDate;
+@property (copy, nonatomic) NSDate *lastSyncPoll;
 @property (readonly, nonatomic) BOOL newAppShouldTakeoverEKReminderNotifications;
 @property (copy, nonatomic) NSDate *nextScheduledAlarmDate;
 @property (strong, nonatomic) REMObjectID *preferredDefaultListID;

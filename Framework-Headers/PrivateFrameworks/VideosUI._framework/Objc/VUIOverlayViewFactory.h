@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)_appImageLayout;
 + (id)_gradientLayerWithViewElement:(id)arg1 overlayType:(long long)arg2 existingLayer:(id)arg3;
 + (struct UIEdgeInsets)_overlayPaddingWithElement:(id)arg1;
 + (struct UIEdgeInsets)_overlayPaddingWithMediaItem:(id)arg1;

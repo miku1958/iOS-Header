@@ -10,7 +10,7 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBHomeAttributeValue-Protocol.h>
 
-@class NSString;
+@class NSString, _INPBHomeAttributeRange;
 
 @interface _INPBHomeAttributeValue : PBCodable <_INPBHomeAttributeValue, NSSecureCoding, NSCopying>
 {
@@ -29,6 +29,7 @@
     int _valueType;
     double _doubleValue;
     long long _integerValue;
+    _INPBHomeAttributeRange *_rangeValue;
     NSString *_stringValue;
 }
 
@@ -41,12 +42,14 @@
 @property (nonatomic) BOOL hasDoubleValue;
 @property (nonatomic) BOOL hasIntegerValue;
 @property (nonatomic) BOOL hasLimitValue;
+@property (readonly, nonatomic) BOOL hasRangeValue;
 @property (readonly, nonatomic) BOOL hasStringValue;
 @property (nonatomic) BOOL hasUnit;
 @property (nonatomic) BOOL hasValueType;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long integerValue; // @synthesize integerValue=_integerValue;
 @property (nonatomic) int limitValue; // @synthesize limitValue=_limitValue;
+@property (strong, nonatomic) _INPBHomeAttributeRange *rangeValue; // @synthesize rangeValue=_rangeValue;
 @property (copy, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
 @property (readonly) Class superclass;
 @property (nonatomic) int unit; // @synthesize unit=_unit;

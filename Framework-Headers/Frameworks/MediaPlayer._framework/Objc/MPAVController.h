@@ -126,6 +126,7 @@
     id<MPAVQueueCoordinating> _queueCoordinator;
     id<MPAVQueueController> _queueController;
     NSString *_identifier;
+    long long _stateBeforeInterruption;
     AVPictureInPictureController *_pictureInPictureController;
 }
 
@@ -173,6 +174,7 @@
 @property (nonatomic) BOOL shouldResetQueueWhenReachingEnd; // @synthesize shouldResetQueueWhenReachingEnd=_shouldResetQueueWhenReachingEnd;
 @property (readonly, nonatomic) BOOL showPlaybackStateOverlaysOnTVOut;
 @property (nonatomic) long long state; // @synthesize state=_state;
+@property (readonly, nonatomic) long long stateBeforeInterruption; // @synthesize stateBeforeInterruption=_stateBeforeInterruption;
 @property (nonatomic) BOOL stopAtEnd;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL ubiquitousBookkeepingEnabled;

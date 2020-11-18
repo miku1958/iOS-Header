@@ -14,6 +14,7 @@
 
 + (Class)classFromRecipeID:(unsigned int)arg1;
 + (id)recipeFromID:(unsigned int)arg1;
+- (long long)adjustedIngredientsForAsset:(id)arg1 ingredients:(id)arg2 version:(unsigned int)arg3;
 - (id)chooseIngredientsFrom:(id)arg1 version:(unsigned int)arg2;
 - (id)codecInContext:(id)arg1;
 - (id)colorSpaceGivenSourceColorSpace:(id)arg1 inContext:(id)arg2;

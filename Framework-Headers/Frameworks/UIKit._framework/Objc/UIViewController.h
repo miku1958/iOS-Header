@@ -700,6 +700,7 @@
 - (void)_setNavigationControllerGradientMaskInsetAdjustment:(struct UIEdgeInsets)arg1;
 - (void)_setNeedsNonDeferredFocusUpdate;
 - (void)_setNeedsScreenWhitePointAdaptivityStyleUpdate;
+- (void)_setNeedsStatusBarAppearanceUpdateWithAnimationParameters:(id)arg1;
 - (void)_setNeedsUserInterfaceAppearanceUpdate;
 - (void)_setPopoverController:(id)arg1;
 - (void)_setPreviousRootViewController:(id)arg1;

@@ -4,39 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <WorkflowUI/WFActionCustomView.h>
 
 #import <ActionKitUI/WFDictateTextActionRunningDelegate-Protocol.h>
 
-@class NSString, UIButton, UITextView, WFDictateTextAction, WFDictateTextActionStopButton;
-@protocol WFComponentNavigationContext;
+@class NSString, UIButton, UITextView, WFDictateTextActionStopButton;
 
 __attribute__((visibility("hidden")))
-@interface WFDictateTextActionView : UIView <WFDictateTextActionRunningDelegate>
+@interface WFDictateTextActionView : WFActionCustomView <WFDictateTextActionRunningDelegate>
 {
-    WFDictateTextAction *_action;
-    id<WFComponentNavigationContext> _navigationContext;
     UITextView *_textView;
     WFDictateTextActionStopButton *_stopButton;
     UIButton *_inputSourceButton;
 }
 
-@property (weak, nonatomic) WFDictateTextAction *action; // @synthesize action=_action;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) UIButton *inputSourceButton; // @synthesize inputSourceButton=_inputSourceButton;
-@property (weak, nonatomic) id<WFComponentNavigationContext> navigationContext; // @synthesize navigationContext=_navigationContext;
 @property (weak, nonatomic) WFDictateTextActionStopButton *stopButton; // @synthesize stopButton=_stopButton;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) UITextView *textView; // @synthesize textView=_textView;
 
++ (double)preferredHeightForAction:(id)arg1;
 - (void).cxx_destruct;
 - (void)action:(id)arg1 didReceiveTranscription:(id)arg2;
 - (void)actionDidBeginListening:(id)arg1;
 - (void)dealloc;
 - (void)didEnterReusePool;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setAction:(id)arg1;
 - (void)sourceButtonTapped;
 - (void)stopButtonTapped;
 - (void)updateInputSourceButton;

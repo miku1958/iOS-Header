@@ -32,6 +32,7 @@
 - (NSArray *)switcherContentController:(id<SBSwitcherContentViewControlling>)arg1 hiddenAppLayoutsForBundleIdentifier:(NSString *)arg2;
 - (BOOL)switcherContentController:(id<SBSwitcherContentViewControlling>)arg1 isAppLayoutHigherPriorityInTetheredSwitcher:(SBAppLayout *)arg2;
 - (BOOL)switcherContentController:(id<SBSwitcherContentViewControlling>)arg1 shouldMorphToPiPForTransitionContext:(SBWorkspaceApplicationSceneTransitionContext *)arg2;
+- (BOOL)switcherContentControllerReloadsSnapshotsForActiveInterfaceOrientationChange:(id<SBSwitcherContentViewControlling>)arg1;
 - (SBTransientOverlayViewController *)viewControllerForTransientOverlayAppLayout:(SBAppLayout *)arg1;
 @end
 

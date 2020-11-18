@@ -77,6 +77,7 @@
 - (id)initWithSceneHandle:(id)arg1;
 - (void)invalidate;
 - (BOOL)overlayViewProviderRendersWhileLocked:(id)arg1;
+- (void)sceneHandle:(id)arg1 didChangeStatusBarAvoidanceFrame:(struct CGRect)arg2;
 - (void)sceneHandle:(id)arg1 didChangeStatusBarParts:(long long)arg2;
 - (void)sceneView:(id)arg1 changedPreferredStatusBarStyleTo:(long long)arg2;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;

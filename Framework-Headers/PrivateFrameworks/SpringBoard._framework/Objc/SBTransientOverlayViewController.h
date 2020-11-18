@@ -12,7 +12,7 @@
 #import <SpringBoard/SBHomeGrabberDelegate-Protocol.h>
 #import <SpringBoard/SBIdleTimerProviding-Protocol.h>
 
-@class FBDisplayLayoutElement, NSNumber, NSString, SBDisplayItem, SBFHomeGrabberSettings, SBHomeGrabberView, SBUIKeyboardHomeAffordanceAssertion, UIStatusBar, UIStatusBarStyleRequest, UIView, UIWindow, _UILegibilitySettings;
+@class FBDisplayLayoutElement, NSNumber, NSString, SBDisplayItem, SBFHomeGrabberSettings, SBHomeGrabberView, SBKeyboardHomeAffordanceAssertion, UIStatusBar, UIStatusBarStyleRequest, UIView, UIWindow, _UILegibilitySettings;
 @protocol SBIdleTimerCoordinating, SBTransientOverlayViewControllerDelegate;
 
 @interface SBTransientOverlayViewController : UIViewController <SBHomeGrabberDelegate, BSDescriptionProviding, SBButtonEventsHandler, SBFIdleTimerBehaviorProviding, SBIdleTimerProviding>
@@ -24,7 +24,7 @@
     SBFHomeGrabberSettings *_grabberSettings;
     BOOL _hasPreservedInputViews;
     BOOL _isDisplayLayoutElementActive;
-    SBUIKeyboardHomeAffordanceAssertion *_keyboardHomeAffordanceAssertion;
+    SBKeyboardHomeAffordanceAssertion *_keyboardHomeAffordanceAssertion;
     UIWindow *_keyboardHomeAffordanceAssertionWindow;
     UIView *_presentationBackgroundView;
     long long _presentationPrefersHomeGrabberHidden;

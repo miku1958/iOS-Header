@@ -33,6 +33,7 @@
 
 + (void)requestInstanceWithInfo:(id)arg1 configuration:(id)arg2 synchronousRemoteViewControllerDelegate:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)_interaction;
 - (id)_minimumSizesBySystemVersion;
 - (struct CGSize)cachedSizeForSynchronousRemoteView:(id)arg1;

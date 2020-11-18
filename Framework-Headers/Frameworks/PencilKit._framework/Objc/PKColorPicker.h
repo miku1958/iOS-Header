@@ -18,6 +18,7 @@
 }
 
 @property (strong, nonatomic) _PKColorPickerView *colorPickerView; // @synthesize colorPickerView=_colorPickerView;
+@property (nonatomic) long long colorUserInterfaceStyle;
 @property (weak, nonatomic) id<PKColorPickerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UIColor *selectedColor;
 

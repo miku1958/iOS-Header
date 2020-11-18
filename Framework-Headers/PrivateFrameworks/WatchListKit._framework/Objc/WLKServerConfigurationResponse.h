@@ -44,6 +44,7 @@
 - (id)initWithServerResponseDictionary:(id)arg1 expirationDate:(id)arg2 environmentHash:(unsigned long long)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValid;
+- (BOOL)isValidIgnoringExpiration;
 - (id)utsc;
 
 @end

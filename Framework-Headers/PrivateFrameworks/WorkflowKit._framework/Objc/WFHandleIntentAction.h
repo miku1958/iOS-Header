@@ -48,7 +48,7 @@
 - (id)errorFromHandleResponse:(id)arg1 intent:(id)arg2;
 - (id)errorFromResolutionResult:(id)arg1 forSlot:(id)arg2 onIntent:(id)arg3;
 - (id)errorThatLaunchesApp:(id)arg1;
-- (id)executorWithIntent:(id)arg1;
+- (id)executorWithIntent:(id)arg1 groupIdentifier:(id)arg2;
 - (void)finishRunningByContinuingInApp;
 - (void)finishRunningWithError:(id)arg1;
 - (void)generatePopulatedIntentFromInput:(id)arg1 processedParameters:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -64,6 +64,7 @@
 - (void)intentViewControllerDidConfirmIntent:(id)arg1;
 - (void)intentViewControllerDidDismissPlatter:(id)arg1;
 - (void)intentViewControllerWasTapped:(id)arg1;
+- (BOOL)isWorkflowInDatabase;
 - (void)localizedDisambiguationPromptForAttribute:(id)arg1 intent:(id)arg2 disambiguationItems:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)opensInApp;
 - (id)parameterForSlot:(id)arg1;
@@ -71,6 +72,7 @@
 - (BOOL)requiresShowsWhenRun;
 - (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)runAsynchronouslyWithInput:(id)arg1;
+- (BOOL)shouldDonateIntent:(id)arg1;
 - (BOOL)shouldOpenAppThroughSiriForIntent:(id)arg1 intentResponse:(id)arg2;
 - (void)showAskForValueAndRetryForSlot:(id)arg1 onIntent:(id)arg2;
 - (void)showDisambiguationAndRetryForSlot:(id)arg1 items:(id)arg2 onIntent:(id)arg3;

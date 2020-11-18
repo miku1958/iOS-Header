@@ -49,7 +49,7 @@
 - (BOOL)_executeUncachedSQL:(id)arg1 error:(id *)arg2;
 - (BOOL)_executeUncachedSQL:(id)arg1 error:(id *)arg2 retryIfBusy:(BOOL)arg3;
 - (BOOL)_integerValueForPragma:(id)arg1 databaseName:(id)arg2 value:(long long *)arg3 error:(id *)arg4;
-- (int)_openForWriting:(BOOL)arg1 error:(id *)arg2;
+- (int)_openForWriting:(BOOL)arg1 additionalFlags:(int)arg2 error:(id *)arg3;
 - (BOOL)_prepareStatementForSQL:(id)arg1 cache:(BOOL)arg2 error:(id *)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (id)_schemaForDatabaseWithName:(id)arg1 error:(id *)arg2;
 - (id)_schemaForIndexWithName:(id)arg1 database:(id)arg2 error:(id *)arg3;
@@ -92,6 +92,7 @@
 - (void)onCommit:(CDUnknownBlockType)arg1 orRollback:(CDUnknownBlockType)arg2;
 - (int)openForReadingWithError:(id *)arg1;
 - (int)openWithError:(id *)arg1;
+- (int)openWithFileProtectionCompleteUnlessOpenWithError:(id *)arg1;
 - (BOOL)performIntegrityCheckWithError:(id *)arg1 integrityErrorHandler:(CDUnknownBlockType)arg2;
 - (BOOL)performTransactionWithType:(long long)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)queryPlanForSQL:(id)arg1 error:(id *)arg2;

@@ -18,7 +18,6 @@
 
 - (void).cxx_destruct;
 - (void)_handleDirChange;
-- (void)_prefetchAssetMapping;
 - (void)dealloc;
 - (id)init;
 - (id)initWithCacheBasePath:(id)arg1;

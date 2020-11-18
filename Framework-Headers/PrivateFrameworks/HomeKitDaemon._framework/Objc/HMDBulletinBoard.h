@@ -50,7 +50,7 @@
 - (void)archive;
 - (void)configureHomeManager:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (void)fetchNotificationUUIDsForClipBulletinWithIndentifier:(id)arg1 callback:(CDUnknownBlockType)arg2;
+- (void)fetchNotificationUUIDsForClipBulletinWithIdentifier:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)insertBulletinForIncomingInvitation:(id)arg1;

@@ -21,6 +21,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL needsToSetPasscode; // @dynamic needsToSetPasscode;
 @property (copy, nonatomic) NSString *passcode; // @dynamic passcode;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) STCoreUser *user; // @dynamic user;

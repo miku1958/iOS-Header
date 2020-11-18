@@ -25,6 +25,7 @@
     NSString *_deviceID;
     NSString *_secureElementID;
     NSString *_pushToken;
+    NSString *_nextPushToken;
     NSString *_companionSerialNumber;
     NSDate *_registrationDate;
     NSDate *_configurationDate;
@@ -47,6 +48,7 @@
 @property BOOL ignoreProvisioningEnablementPercentage; // @synthesize ignoreProvisioningEnablementPercentage=_ignoreProvisioningEnablementPercentage;
 @property (copy) NSString *lastUpdatedTag; // @synthesize lastUpdatedTag=_lastUpdatedTag;
 @property BOOL messageServiceDisabled; // @synthesize messageServiceDisabled=_messageServiceDisabled;
+@property (copy) NSString *nextPushToken; // @synthesize nextPushToken=_nextPushToken;
 @property (readonly, nonatomic) NSURL *peerPaymentServiceURL;
 @property (readonly, weak) PKPaymentWebServiceRegion *primaryRegion;
 @property (copy) NSString *primaryRegionIdentifier; // @synthesize primaryRegionIdentifier=_primaryRegionIdentifier;

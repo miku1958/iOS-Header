@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     unsigned int _switchIntoDupCount;
     unsigned int _direction;
     NSNumber *_streamToken;
+    NSString *_sessionID;
     NSObject<OS_dispatch_queue> *_stateQueue;
     NSObject<OS_dispatch_queue> *_notificationQueue;
     id<VCAggregatorDelegate> _delegate;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned int direction; // @synthesize direction=_direction;
 @property (readonly) unsigned long long hash;
+@property (readonly) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property (readonly) NSNumber *streamToken; // @synthesize streamToken=_streamToken;
 @property (readonly) Class superclass;
 

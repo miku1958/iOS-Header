@@ -32,14 +32,13 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
+- (id)_copyHeroFrameAtURL:(id)arg1;
 - (BOOL)_createDirectoryAtPathIfNonExistent:(id)arg1;
-- (void)_postClipSignificantEventNotification:(id)arg1 postedNotificationUUIDs:(id)arg2;
-- (unsigned long long)_reasonForSignificantEventNotification:(id)arg1;
+- (unsigned long long)_effectiveReasonForSignificantEvent:(id)arg1;
+- (void)_postSignificantEventNotification:(id)arg1 forCameraProfile:(id)arg2 postedNotificationUUIDs:(id)arg3 postedHeroFrameURL:(id)arg4;
 - (void)_removeFile:(id)arg1;
-- (id)_writeHeroFrameDataToFileForNotification:(id)arg1;
 - (id)initWithBulletinBoard:(id)arg1 fileManager:(id)arg2 dataSource:(id)arg3 workQueue:(id)arg4;
-- (void)postClipSignificantEventNotification:(id)arg1;
-- (void)postSignificantEventNotification:(id)arg1;
+- (void)postSignificantEventNotification:(id)arg1 forCameraProfile:(id)arg2;
 - (void)removeEventNotificationForClipWithUUID:(id)arg1;
 
 @end

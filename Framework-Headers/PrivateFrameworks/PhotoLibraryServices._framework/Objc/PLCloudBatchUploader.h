@@ -55,7 +55,8 @@
 - (void)_sortRelationshipData:(id)arg1 forRelationshipUpdate:(id)arg2 inManagedObjectContext:(id)arg3;
 - (id)_syncDescriptionForObject:(id)arg1;
 - (BOOL)_updateDeletionRecordListForKey:(id)arg1 removingRecordID:(id)arg2;
-- (BOOL)_validate:(id)arg1 onRelatedObject:(id)arg2;
+- (BOOL)_validateAdditionalAssetAttributes:(id)arg1 onRelatedObject:(id)arg2;
+- (BOOL)_validateAsset:(id)arg1 onRelatedObject:(id)arg2;
 - (id)_validateAssets:(id)arg1 fromCloudUuidDeleteList:(id)arg2;
 - (void)addBatches:(id)arg1;
 - (void)clearUploadArray;

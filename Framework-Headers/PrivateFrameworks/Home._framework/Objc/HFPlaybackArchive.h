@@ -13,6 +13,8 @@
     MPPlaybackArchive *_mediaPlayerPlaybackArchive;
 }
 
+@property (readonly, nonatomic) BOOL isRepeatSupported;
+@property (readonly, nonatomic) BOOL isShuffleSupported;
 @property (strong, nonatomic) MPPlaybackArchive *mediaPlayerPlaybackArchive; // @synthesize mediaPlayerPlaybackArchive=_mediaPlayerPlaybackArchive;
 @property (nonatomic, getter=isRepeatEnabled) BOOL repeatEnabled;
 @property (nonatomic, getter=isShuffleEnabled) BOOL shuffleEnabled;

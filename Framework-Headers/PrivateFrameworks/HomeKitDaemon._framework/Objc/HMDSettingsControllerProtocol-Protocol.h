@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeKitDaemon/NSObject-Protocol.h>
+#import <HomeKitDaemon/AWDHMDSettingsControllerProtocol-Protocol.h>
+#import <HomeKitDaemon/HMFObject-Protocol.h>
 
 @class NSArray, NSCoder;
 @protocol HMDSettingGroupProtocol;
 
-@protocol HMDSettingsControllerProtocol <NSObject>
+@protocol HMDSettingsControllerProtocol <HMFObject, AWDHMDSettingsControllerProtocol>
 
 @property (readonly) NSArray *allObjectIdentifiers;
 @property (readonly) id<HMDSettingGroupProtocol> rootGroup;

@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (BOOL)isSystemSpeaking;
 - (BOOL)isSystemSpeakingOnBehalfOfCurrentConnection;
+- (void)killDaemon;
 - (void)pauseCurrentSpeechRequestAtMark:(long long)arg1;
 - (void)prewarmIfNeededWithRequest:(id)arg1;
 - (BOOL)queryPhaticCapabilityWithRequest:(id)arg1;

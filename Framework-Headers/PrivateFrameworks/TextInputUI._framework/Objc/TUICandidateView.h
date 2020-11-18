@@ -103,7 +103,7 @@
 - (id)sortControlTitles;
 - (BOOL)toggleSortControl:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)updateArrowButtonVisibility;
-- (void)updateClipsToBoundsViewCornerRadius;
+- (void)updateCornerRadius;
 - (void)updateDisambiguationSelectionIndex;
 - (void)updatePrimaryGridRowTypeWithOptions:(unsigned long long)arg1 animated:(BOOL)arg2 animator:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)updateSortControlTitlesIfNeeded;

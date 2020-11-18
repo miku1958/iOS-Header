@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (id)ruleDictionaryForStyle:(id)arg1;
++ (id)ruleDictionaryForStyleWithDarkInterface:(id)arg1;
 + (id)styleSet;
 - (void).cxx_destruct;
 - (void)buildComponents;

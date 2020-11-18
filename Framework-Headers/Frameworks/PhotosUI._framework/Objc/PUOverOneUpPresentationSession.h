@@ -96,6 +96,7 @@
 - (void)_invalidatePresentedViewControllers;
 - (long long)_numberOfItems;
 - (void)_performNavigationRequestForAssetDisplayDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)_popToOneUpFromViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)_prepareForActivitySharingControllerDismiss:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_prepareForSharingViewControllerDismiss:(id)arg1 withAsset:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)_presentActivityViewController:(id)arg1;
@@ -106,6 +107,7 @@
 - (BOOL)_presentPhotosSharingViewController:(id)arg1;
 - (BOOL)_presentScreenRoutePickerViewController:(id)arg1;
 - (BOOL)_presentSlideshowViewController:(id)arg1;
+- (void)_removeViewController:(id)arg1;
 - (long long)_tileCountForCurrentModalViewController;
 - (id)_tilingView;
 - (void)_updatePresentedViewControllersIfNeeded;

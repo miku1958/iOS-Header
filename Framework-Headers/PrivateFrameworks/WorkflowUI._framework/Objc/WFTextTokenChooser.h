@@ -6,7 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSIndexSet, NSSet, NSString, UIColor, WFAlert, WFVariable;
+@class NSArray, NSIndexSet, NSSet, NSString, WFAlert, WFVariable;
+@protocol WFUIKitUserInterface;
 
 @interface WFTextTokenChooser : NSObject
 {
@@ -18,13 +19,13 @@
     NSString *_noChoicesMessage;
     NSSet *_allowedVariableTypes;
     NSArray *_additionalButtons;
-    UIColor *_tintColor;
     WFVariable *_selectedVariable;
     NSIndexSet *_selectedButtonIndexes;
     CDUnknownBlockType _choiceHandler;
     CDUnknownBlockType _cancelHandler;
     WFAlert *_presentedAlert;
     NSArray *_auxiliaryButtons;
+    id<WFUIKitUserInterface> _userInterface;
 }
 
 @property (copy, nonatomic) NSArray *additionalButtons; // @synthesize additionalButtons=_additionalButtons;
@@ -40,8 +41,8 @@
 @property (strong, nonatomic) WFVariable *selectedVariable; // @synthesize selectedVariable=_selectedVariable;
 @property (nonatomic) BOOL showsClearButton; // @synthesize showsClearButton=_showsClearButton;
 @property (nonatomic) BOOL showsDoneButton; // @synthesize showsDoneButton=_showsDoneButton;
-@property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (weak, nonatomic) id<WFUIKitUserInterface> userInterface; // @synthesize userInterface=_userInterface;
 
 - (void).cxx_destruct;
 - (id)alertButtonForVariable:(id)arg1 selected:(BOOL)arg2;

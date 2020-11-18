@@ -8,7 +8,7 @@
 
 #import <AnnotationKit/UINavigationBarDelegate-Protocol.h>
 
-@class AKController, AKInkSignatureView, AKSignatureBaselineView, AKSmoothPathView, NSString, UILabel, UINavigationBar;
+@class AKController, AKInkSignatureView, AKSignatureBaselineView, AKSmoothPathView, NSString, UILabel, UINavigationBar, UIResponder;
 @protocol AKSignatureCreationControllerDelegate;
 
 @interface AKSignatureCreationViewController_iOS : UIViewController <UINavigationBarDelegate>
@@ -20,6 +20,7 @@
     AKSignatureBaselineView *_baselineView;
     UILabel *_label;
     AKController *_controller;
+    UIResponder *_responderToRestore;
 }
 
 @property (strong, nonatomic) AKSignatureBaselineView *baselineView; // @synthesize baselineView=_baselineView;
@@ -31,6 +32,7 @@
 @property (strong, nonatomic) UILabel *label; // @synthesize label=_label;
 @property (strong, nonatomic) UINavigationBar *navBar; // @synthesize navBar=_navBar;
 @property (strong, nonatomic) AKSmoothPathView *pathView; // @synthesize pathView=_pathView;
+@property (weak, nonatomic) UIResponder *responderToRestore; // @synthesize responderToRestore=_responderToRestore;
 @property (strong, nonatomic) AKInkSignatureView *signatureView; // @synthesize signatureView=_signatureView;
 @property (readonly) Class superclass;
 
@@ -41,12 +43,15 @@
 - (void)_done:(id)arg1;
 - (void)_setToolPickerVisible;
 - (void)_validateButtons;
+- (BOOL)becomeFirstResponder;
+- (BOOL)canBecomeFirstResponder;
 - (void)didReceiveMemoryWarning;
 - (id)initWithController:(id)arg1;
 - (void)loadView;
 - (long long)positionForBar:(id)arg1;
 - (BOOL)prefersStatusBarHidden;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 

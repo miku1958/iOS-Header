@@ -12,6 +12,8 @@
 {
     MISSING_TYPE *offlineIssueManager;
     MISSING_TYPE *offlineIssueList;
+    MISSING_TYPE *tracker;
+    MISSING_TYPE *channelDataFactory;
 }
 
 @end

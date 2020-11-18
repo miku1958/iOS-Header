@@ -95,6 +95,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)equivalentFPItemRequestWithItem:(id)arg1 representationTypes:(unsigned long long)arg2;
 - (id)fileIdentifier;
 - (void)finish;
 - (BOOL)forceGeneration;

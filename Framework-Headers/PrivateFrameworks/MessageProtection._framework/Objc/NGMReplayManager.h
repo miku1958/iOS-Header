@@ -18,12 +18,12 @@
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (id)computeDestinationHashWithIdentityKey:(id)arg1 sendingIdentity:(id)arg2 outgoing:(BOOL)arg3;
-- (unsigned int)counterForDestinationWithIdentityKey:(id)arg1 sendingIdentity:(id)arg2 error:(id *)arg3;
+- (unsigned int)counterForDestinationWithIdentityKey:(id)arg1 sendingIdentity:(id)arg2 error:(id *)arg3 success:(BOOL *)arg4;
 - (id)dbNameFromProcess;
 - (BOOL)deleteExpiredSendingDestinations;
 - (BOOL)deleteReceivingCountersForKey:(id)arg1;
 - (id)init;
-- (id)persistentStoreDescription;
+- (id)persistentStoreDescriptionWithError:(id *)arg1;
 - (BOOL)processFetchRequestAndValidate:(id)arg1 counter:(unsigned int)arg2 commit:(BOOL)arg3 theirIdentity:(id)arg4 prekey:(id)arg5 error:(id *)arg6;
 - (id)registeredPrekeyForNGMPrekey:(id)arg1 objectContext:(id)arg2;
 - (CDUnknownBlockType)validateIncomingCounter:(unsigned int)arg1 prekey:(id)arg2 publicIdentity:(id)arg3 error:(id *)arg4;

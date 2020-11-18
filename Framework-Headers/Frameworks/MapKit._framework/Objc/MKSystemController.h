@@ -21,6 +21,7 @@
 - (BOOL)_isRunningInLockScreen;
 - (BOOL)_openURLsOnBackgroundThread;
 - (BOOL)_shouldUseLaunchServices;
+- (id)_transformURLIfNecessary:(id)arg1;
 - (BOOL)isDevicePluggedIn;
 - (BOOL)isHiDPI;
 - (BOOL)isInternalInstall;

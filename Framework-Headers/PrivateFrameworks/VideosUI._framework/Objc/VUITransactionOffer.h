@@ -24,6 +24,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
+- (id)notificationBody;
+- (id)notificationTitle;
 
 @end
 

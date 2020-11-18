@@ -95,6 +95,7 @@
 - (void)deleteCookiesMatchingPredicate:(id)arg1;
 - (void)dispose;
 - (id)downloadCachedResponse:(id)arg1;
+- (id)downloadCachesDirectory;
 - (id)downloadImageFromURL:(id)arg1 category:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)downloadImageWithRequest:(id)arg1 category:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)downloadRequest:(id)arg1 category:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

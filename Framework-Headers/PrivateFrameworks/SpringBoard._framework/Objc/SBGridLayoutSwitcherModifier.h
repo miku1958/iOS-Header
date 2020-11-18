@@ -22,6 +22,7 @@
     unsigned long long _fixedGroupingSize;
     NSString *_softFilteredBundleIdentifier;
     unsigned long long _alignment;
+    unsigned long long _layoutDirection;
     struct CGSize _fixedCardSize;
 }
 
@@ -34,6 +35,7 @@
 @property (nonatomic) unsigned long long fixedGroupingSize; // @synthesize fixedGroupingSize=_fixedGroupingSize;
 @property (weak, nonatomic) id<SBGridLayoutSwitcherModifierDelegate> gridDelegate; // @synthesize gridDelegate=_gridDelegate;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long layoutDirection; // @synthesize layoutDirection=_layoutDirection;
 @property (nonatomic) unsigned long long scrollAxis; // @synthesize scrollAxis=_scrollAxis;
 @property (weak, nonatomic) id<SBFluidSwitcherScrollProvidingDelegate> scrollDelegate; // @synthesize scrollDelegate=_scrollDelegate;
 @property (copy, nonatomic) NSString *softFilteredBundleIdentifier; // @synthesize softFilteredBundleIdentifier=_softFilteredBundleIdentifier;
@@ -63,7 +65,7 @@
 - (BOOL)cardsNeedBackgroundWallpaperTreatment;
 - (double)centerYOffsetWhenPresented;
 - (BOOL)clipsToUnobscuredMarginAtIndex:(unsigned long long)arg1;
-- (struct CGPoint)contentOffsetForIndex:(unsigned long long)arg1;
+- (struct CGPoint)contentOffsetForIndex:(unsigned long long)arg1 centered:(BOOL)arg2;
 - (struct CGSize)contentSize;
 - (double)contentViewScale;
 - (double)darkeningAlphaForIndex:(unsigned long long)arg1;
@@ -75,7 +77,7 @@
 - (id)handleSwitcherSettingsChangedEvent:(id)arg1;
 - (unsigned long long)indexToScrollToAfterInsertingAtIndex:(unsigned long long)arg1;
 - (unsigned long long)indexToScrollToAfterRemovingIndex:(unsigned long long)arg1;
-- (id)initWithScrollAxis:(unsigned long long)arg1 fixedGroupingSize:(unsigned long long)arg2 cardScale:(double)arg3 alignment:(unsigned long long)arg4;
+- (id)initWithScrollAxis:(unsigned long long)arg1 fixedGroupingSize:(unsigned long long)arg2 cardScale:(double)arg3 alignment:(unsigned long long)arg4 layoutDirection:(unsigned long long)arg5;
 - (struct CGSize)interpageSpacingForPaging;
 - (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (long long)layoutUpdateMode;

@@ -33,6 +33,7 @@
 - (void)activateRingerHUDForVolumeChangeWithInitialVolume:(float)arg1;
 - (void)activateRingerHUDFromMuteSwitch:(int)arg1;
 - (void)buttonReleased;
+- (id)existingRingerHUDViewController;
 - (void)hideRingerHUDIfVisible;
 - (id)initWithHUDController:(id)arg1 soundController:(id)arg2;
 - (BOOL)lastSavedRingerMutedState;

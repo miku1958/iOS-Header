@@ -18,12 +18,14 @@ __attribute__((visibility("hidden")))
     EKCalendar *_selectedCalendar;
     unsigned long long _entityType;
     BOOL _limitToSource;
+    BOOL _onlyShowUnmanagedSources;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL limitToSource; // @synthesize limitToSource=_limitToSource;
+@property (nonatomic) BOOL onlyShowUnmanagedSources; // @synthesize onlyShowUnmanagedSources=_onlyShowUnmanagedSources;
 @property (strong, nonatomic) EKCalendar *selectedCalendar;
 @property (readonly) Class superclass;
 

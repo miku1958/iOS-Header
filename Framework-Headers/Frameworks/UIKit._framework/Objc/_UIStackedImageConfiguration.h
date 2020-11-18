@@ -15,6 +15,7 @@
     BOOL _overlayFixedFrame;
     BOOL _adjustMotionForSize;
     BOOL _flatImageContainsCornerRadius;
+    BOOL _useSeparateUnfocusedShadowImage;
     BOOL _allowsNonOpaqueShadow;
     BOOL _boostBrightness;
     BOOL _hueShift;
@@ -116,6 +117,7 @@
 @property (nonatomic) double specularOpacity; // @synthesize specularOpacity=_specularOpacity;
 @property (nonatomic) struct CGPoint translationOffset; // @synthesize translationOffset=_translationOffset;
 @property (nonatomic) double unpressedDuration; // @synthesize unpressedDuration=_unpressedDuration;
+@property (nonatomic) BOOL useSeparateUnfocusedShadowImage; // @synthesize useSeparateUnfocusedShadowImage=_useSeparateUnfocusedShadowImage;
 @property (nonatomic) double zDepth; // @synthesize zDepth=_zDepth;
 
 + (id)newAppIconConfiguration;

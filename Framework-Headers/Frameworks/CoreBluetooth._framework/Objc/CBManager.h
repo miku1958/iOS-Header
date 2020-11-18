@@ -19,11 +19,13 @@
     long long _state;
     long long _authorization;
     NSData *_advertisingAddress;
+    long long _advertisingAddressType;
     NSString *_localAddressString;
     NSString *_localName;
 }
 
 @property (copy, nonatomic) NSData *advertisingAddress; // @synthesize advertisingAddress=_advertisingAddress;
+@property (readonly, nonatomic) long long advertisingAddressType; // @synthesize advertisingAddressType=_advertisingAddressType;
 @property (nonatomic) long long authorization; // @synthesize authorization=_authorization;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -35,6 +37,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL tccComplete; // @synthesize tccComplete=_tccComplete;
 
++ (long long)authorization;
 - (void).cxx_destruct;
 - (void)_handleAdvertisingAddressChanged:(id)arg1;
 - (void)closeL2CAPChannelForPeerUUID:(id)arg1 withPsm:(unsigned short)arg2;

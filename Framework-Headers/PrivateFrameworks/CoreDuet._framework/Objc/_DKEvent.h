@@ -22,8 +22,10 @@
     NSTimeZone *_timeZone;
     NSDictionary *_metadata;
     double _confidence;
+    long long _compatibilityVersion;
 }
 
+@property long long compatibilityVersion; // @synthesize compatibilityVersion=_compatibilityVersion;
 @property double confidence; // @synthesize confidence=_confidence;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;

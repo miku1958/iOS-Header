@@ -11,6 +11,7 @@
 @interface ARUICountdownView : ARUIRingsView
 {
     ARUICountdownController *_countdownController;
+    ARUICountdownController *_backingTrackController;
 }
 
 @property (readonly, nonatomic) ARUICountdownController *countdownController;
@@ -18,7 +19,9 @@
 + (id)countdownViewConfiguredForCompanion;
 + (id)countdownViewConfiguredForWatch;
 - (void).cxx_destruct;
+- (id)backingTrackController;
 - (id)initWithCountdownController:(id)arg1;
+- (id)initWithCountdownController:(id)arg1 backingTrackController:(id)arg2;
 
 @end
 

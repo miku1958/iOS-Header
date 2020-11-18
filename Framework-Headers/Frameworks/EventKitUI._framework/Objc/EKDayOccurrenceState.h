@@ -17,8 +17,8 @@
     BOOL _isProposedTime;
     BOOL _isSelected;
     BOOL _isDimmed;
-    BOOL _usesSmallText;
     BOOL _isVibrant;
+    BOOL _usesSmallText;
     EKEvent *_occurrence;
     UIColor *_displayColor;
     UITraitCollection *_traitCollection;

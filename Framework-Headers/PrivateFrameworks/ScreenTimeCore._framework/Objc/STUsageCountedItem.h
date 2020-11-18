@@ -17,8 +17,8 @@
 @property (readonly, nonatomic) long long numberOfNotifications; // @dynamic numberOfNotifications;
 @property (readonly, nonatomic) long long numberOfPickups; // @dynamic numberOfPickups;
 
-+ (id)notificationDetailItemsForCountedItems:(id)arg1;
-+ (id)pickupDetailItemsForCountedItems:(id)arg1;
++ (id)notificationItemsExcludingSystemHiddenApplications:(id)arg1;
++ (id)pickupItemsExcludingSystemHiddenApplications:(id)arg1;
 
 @end
 

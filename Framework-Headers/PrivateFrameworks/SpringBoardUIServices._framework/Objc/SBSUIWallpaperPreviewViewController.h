@@ -10,7 +10,7 @@
 #import <SpringBoardUIServices/SBFLegibilitySettingsProviderDelegate-Protocol.h>
 #import <SpringBoardUIServices/SBSUIWallpaperPreviewViewDelegate-Protocol.h>
 
-@class AVURLAsset, NSDictionary, NSString, NSTimer, SBFWallpaperConfiguration, SBFWallpaperConfigurationManager, SBFWallpaperOptions, SBSUIProgressHUD, UIImage, _UILegibilitySettings;
+@class AVURLAsset, NSDictionary, NSString, NSTimer, SBFWallpaperConfiguration, SBFWallpaperConfigurationManager, SBFWallpaperOptions, SBSUIProgressHUD, UIImage, _SBSUIOrientedImageView, _UILegibilitySettings;
 @protocol SBFLegibilitySettingsProviderDelegate, SBSUIWallpaperPreviewViewControllerDelegate;
 
 @interface SBSUIWallpaperPreviewViewController : UIViewController <SBFLegibilitySettingsProviderDelegate, SBSUIWallpaperPreviewViewDelegate, SBFLegibilitySettingsProvider>
@@ -34,8 +34,8 @@
     BOOL _disableSegmentedControl;
     BOOL _enableButtons;
     BOOL _disableContents;
-    BOOL _disableDimming;
     SBSUIProgressHUD *_hud;
+    _SBSUIOrientedImageView *_homeScreenPreviewView;
     BOOL _motionEnabled;
     BOOL _irisEnabled;
     id<SBFLegibilitySettingsProviderDelegate> _delegate;
@@ -62,6 +62,7 @@
 @property (nonatomic) double zoomScale; // @synthesize zoomScale=_zoomScale;
 
 - (void).cxx_destruct;
+- (void)_applyHomeScreenPreview;
 - (id)_colorWallpaperViewWithFrame:(struct CGRect)arg1 variant:(long long)arg2 configuration:(id)arg3;
 - (id)_dateView;
 - (void)_displaySettingWallpaperHUD;

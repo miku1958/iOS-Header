@@ -6,37 +6,42 @@
 
 #import <HomeKitDaemon/HMDNetworkRouterFirewallRule.h>
 
-@class HMFNetAddress;
+@class HMFNetAddress, NSArray, NSString;
 
 @interface HMDNetworkRouterFirewallRuleWAN : HMDNetworkRouterFirewallRule
 {
     unsigned char _transportProtocol;
-    BOOL _usingIGD;
     unsigned short _portStart;
     unsigned short _portEnd;
     unsigned long long _purpose;
+    NSString *_hostname;
     HMFNetAddress *_address;
     HMFNetAddress *_addressEnd;
+    NSArray *_icmpTypes;
 }
 
 @property (readonly, nonatomic) HMFNetAddress *address; // @synthesize address=_address;
 @property (readonly, nonatomic) HMFNetAddress *addressEnd; // @synthesize addressEnd=_addressEnd;
+@property (readonly, nonatomic) NSString *hostname; // @synthesize hostname=_hostname;
+@property (readonly, nonatomic) NSArray *icmpTypes; // @synthesize icmpTypes=_icmpTypes;
 @property (readonly, nonatomic) unsigned short portEnd; // @synthesize portEnd=_portEnd;
 @property (readonly, nonatomic) unsigned short portStart; // @synthesize portStart=_portStart;
 @property (readonly, nonatomic) unsigned long long purpose; // @synthesize purpose=_purpose;
 @property (readonly, nonatomic) unsigned char transportProtocol; // @synthesize transportProtocol=_transportProtocol;
-@property (readonly, nonatomic, getter=isUsingIGD) BOOL usingIGD; // @synthesize usingIGD=_usingIGD;
 
-+ (BOOL)__decodeAddresses:(struct NSDictionary *)arg1 address:(id *)arg2 addressEnd:(id *)arg3;
 + (BOOL)__decodeFlags:(struct NSDictionary *)arg1 critical:(BOOL *)arg2;
++ (BOOL)__decodeHostnameOrAddresses:(struct NSDictionary *)arg1 hostname:(id *)arg2 address:(id *)arg3 addressEnd:(id *)arg4;
 + (BOOL)__decodePorts:(struct NSDictionary *)arg1 portStart:(unsigned short *)arg2 portEnd:(unsigned short *)arg3;
 + (BOOL)__decodePurpose:(struct NSDictionary *)arg1 purpose:(unsigned long long *)arg2;
-+ (BOOL)__decodeType:(struct NSDictionary *)arg1 transportProtocol:(unsigned char *)arg2 usingIGD:(BOOL *)arg3;
-+ (id)__ipAddressAny;
++ (BOOL)__decodeType:(struct NSDictionary *)arg1 transportProtocol:(unsigned char *)arg2;
++ (BOOL)__isWildcardAddress:(id)arg1;
 + (id)createWithJSONDictionary:(struct NSDictionary *)arg1;
++ (id)ipAddressAny;
++ (id)ipAddressAnyIPv4;
++ (id)ipAddressAnyIPv6;
 - (void).cxx_destruct;
 - (id)attributeDescriptions;
-- (id)initWithJSONDictionary:(struct NSDictionary *)arg1 name:(id)arg2 critical:(BOOL)arg3 purpose:(unsigned long long)arg4 transportProtocol:(unsigned char)arg5 usingIGD:(BOOL)arg6 address:(id)arg7 addressEnd:(id)arg8 portStart:(unsigned short)arg9 portEnd:(unsigned short)arg10;
+- (id)initWithJSONDictionary:(struct NSDictionary *)arg1 name:(id)arg2 critical:(BOOL)arg3 purpose:(unsigned long long)arg4 transportProtocol:(unsigned char)arg5 hostname:(id)arg6 address:(id)arg7 addressEnd:(id)arg8 portStart:(unsigned short)arg9 portEnd:(unsigned short)arg10 icmpTypes:(id)arg11;
 - (struct NSDictionary *)prettyJSONDictionary;
 
 @end

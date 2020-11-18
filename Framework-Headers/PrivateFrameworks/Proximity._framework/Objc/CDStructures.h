@@ -71,7 +71,9 @@ struct NeighborMeasurements {
     BOOL _field7;
     int _field8;
     BOOL _field9;
-    BOOL _field10;
+    double _field10;
+    BOOL _field11;
+    BOOL _field12;
 };
 
 struct SharingImportanceManager;

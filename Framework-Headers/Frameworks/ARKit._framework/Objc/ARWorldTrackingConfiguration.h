@@ -71,7 +71,6 @@
 - (void)setFrontCameraFaceAnchorsEnabled:(BOOL)arg1;
 - (BOOL)shouldEnableVisionDataForImageSensorSettings:(id)arg1;
 - (BOOL)shouldUseSuperWide;
-- (id)visionDataParametersForWorldTrackingOptions:(id)arg1;
 
 @end
 

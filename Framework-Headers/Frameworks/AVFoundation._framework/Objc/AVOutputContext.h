@@ -19,6 +19,7 @@
 
 + (id)auxiliaryOutputContext;
 + (Class)defaultOutputContextImplClass;
++ (id)defaultSharedOutputContext;
 + (id)iTunesAudioContext;
 + (void)initialize;
 + (id)outputContext;

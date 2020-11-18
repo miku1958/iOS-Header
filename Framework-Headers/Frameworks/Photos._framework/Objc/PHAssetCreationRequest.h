@@ -116,7 +116,7 @@
 - (BOOL)_restoreMovedFilesOnFailure;
 - (short)_savedAssetTypeForAsset;
 - (id)_secureMove:(BOOL)arg1 assetResource:(id)arg2 photoLibrary:(id)arg3 error:(id *)arg4;
-- (id)_secureMove:(BOOL)arg1 fileAtURL:(id)arg2 toURL:(id)arg3 error:(id *)arg4;
+- (id)_secureMove:(BOOL)arg1 fileAtURL:(id)arg2 toURL:(id)arg3 capabilities:(id)arg4 error:(id *)arg5;
 - (void)_setupConcurrentWorkIfNecessaryWithImageSource:(struct CGImageSource *)arg1 originalImageData:(id)arg2;
 - (id)_sourceOptionsForCreateThumbnailWithAsset:(id)arg1 hasAdjustments:(BOOL)arg2;
 - (void)_updateMutationsForDuplicatingPrivateMetadataFromAsset:(id)arg1;

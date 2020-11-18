@@ -24,6 +24,7 @@
     id<UICoordinateSpace> _coordinateSpace;
     BOOL _shouldDisableTouchCancellationOnRotation;
     BOOL _windowWasInitializedWithDefaultStoryboard;
+    BOOL _didMakeKeyAndVisible;
     id<_UISceneMetricsCalculating> _metricsCalculator;
     BOOL __isKeyWindowScene;
     long long _screenRequestedOverscanCompensation;
@@ -73,11 +74,14 @@
 @property (readonly, nonatomic) NSArray *windows;
 
 + (id)_canvasForScene:(id)arg1;
++ (id)_findNewKeyWindowSceneOnScreen:(id)arg1;
 + (BOOL)_hostsWindows;
 + (id)_keyWindowScene;
 + (id)_keyboardWindowSceneForScreen:(id)arg1 create:(BOOL)arg2;
 + (id)_placeholderWindowSceneForScreen:(id)arg1 create:(BOOL)arg2;
 + (void)_registerComponentClass:(Class)arg1 withKey:(id)arg2 predicate:(id)arg3;
++ (void)_setShouldRestoreKeyWindowSceneOnActivation:(BOOL)arg1;
++ (BOOL)_shouldRestoreKeyWindowSceneOnActivation;
 + (id)_unassociatedWindowSceneForScreen:(id)arg1 create:(BOOL)arg2;
 + (void)_updateVisibleSceneAndWindowOrderWithTest:(CDUnknownBlockType)arg1;
 + (void)initialize;
@@ -100,6 +104,7 @@
 - (void)_invalidateScreen;
 - (void)_loadWindowWithStoryboardIfNeeded:(id)arg1;
 - (void)_makeKeyAndVisibleIfNeeded;
+- (BOOL)_needsMakeKeyAndVisible;
 - (BOOL)_permitContextCreationForBindingDescription:(CDStruct_a002d41c)arg1;
 - (void)_prepareForResume;
 - (void)_prepareForSuspend;

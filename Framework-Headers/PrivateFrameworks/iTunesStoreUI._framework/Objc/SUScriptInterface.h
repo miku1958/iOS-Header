@@ -70,6 +70,7 @@
 @property (readonly) SUScriptKeyValueStore *deviceLocalStorage;
 @property (readonly) NSArray *deviceOffers;
 @property (readonly) NSString *deviceSerialNumber;
+@property (readonly, getter=isFinanceInterruption) id financeInterruption;
 @property (readonly) id globalRootObject;
 @property (readonly) NSString *gsToken;
 @property (readonly) unsigned long long hash;

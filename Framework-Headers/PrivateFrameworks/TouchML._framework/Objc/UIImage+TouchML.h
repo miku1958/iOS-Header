@@ -20,10 +20,13 @@
 @property (copy, nonatomic) NSString *accessibilityValue;
 @property (readonly, nonatomic) double aspectRatio;
 @property (readonly, nonatomic) TMLRect *bounds;
+@property (readonly, nonatomic) double height;
 @property (readonly, nonatomic) double scale;
+@property (readonly, nonatomic) double width;
 
 + (void)initializeJSContext:(id)arg1;
 - (id)colorPattern;
+- (id)cropImageToRect:(struct CGRect)arg1;
 - (id)resizableImage:(id)arg1:(long long)arg2;
 - (id)withRenderingMode:(long long)arg1;
 @end

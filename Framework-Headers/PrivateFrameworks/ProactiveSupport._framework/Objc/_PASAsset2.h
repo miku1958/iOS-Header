@@ -32,10 +32,11 @@
 - (void).cxx_destruct;
 - (id)_assetDescription;
 - (id)_defaultBundleFilesystemPathsForAssetDataRelativePaths:(id)arg1 guardedData:(id)arg2 assetVersion:(unsigned long long *)arg3;
-- (id)_initWithAssetTypeIdentifier:(id)arg1 defaultBundlePath:(id)arg2 compatibilityVersion:(unsigned long long)arg3 matchingKeysAndValues:(id)arg4 notificationQueue:(id)arg5 logHandle:(id)arg6 enableAssetUpdates:(BOOL)arg7;
+- (id)_initWithAssetTypeIdentifier:(id)arg1 defaultBundlePath:(id)arg2 compatibilityVersion:(unsigned long long)arg3 matchingKeysAndValues:(id)arg4 notificationQueue:(id)arg5 logHandle:(id)arg6 enableAssetUpdates:(BOOL)arg7 purgeObsoleteInstalledAssets:(BOOL)arg8;
 - (void)_issueUpdateNotificationsWithCallback:(CDUnknownBlockType)arg1;
 - (BOOL)_loadDefaultBundleVersionWithGuardedData:(id)arg1;
 - (id)_maFilesystemPathsForAssetDataRelativePaths:(id)arg1 guardedData:(id)arg2 isMissingData:(BOOL *)arg3 assetVersion:(unsigned long long *)arg4;
+- (void)_purgeObsoleteInstalledAssetsFromCandidates:(id)arg1 guardedData:(id)arg2;
 - (void)_updateAssetMetadata;
 - (void)addOverridePath:(id)arg1 forResourceWithRelativePath:(id)arg2;
 - (void)callAssetUpdateHandlers;
@@ -51,6 +52,7 @@
 - (id)init;
 - (id)initWithAssetTypeDescriptorPath:(id)arg1 defaultBundlePath:(id)arg2 matchingKeysAndValues:(id)arg3 notificationQueue:(id)arg4 logHandle:(id)arg5;
 - (id)initWithAssetTypeDescriptorPath:(id)arg1 defaultBundlePath:(id)arg2 matchingKeysAndValues:(id)arg3 notificationQueue:(id)arg4 logHandle:(id)arg5 enableAssetUpdates:(BOOL)arg6;
+- (id)initWithAssetTypeDescriptorPath:(id)arg1 defaultBundlePath:(id)arg2 matchingKeysAndValues:(id)arg3 notificationQueue:(id)arg4 logHandle:(id)arg5 enableAssetUpdates:(BOOL)arg6 purgeObsoleteInstalledAssets:(BOOL)arg7;
 - (void)invokeWithBundleOverride:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (BOOL)overrideDefaultBundleWithBundleAtPath:(id)arg1;
 - (id)registerUpdateHandler:(CDUnknownBlockType)arg1;

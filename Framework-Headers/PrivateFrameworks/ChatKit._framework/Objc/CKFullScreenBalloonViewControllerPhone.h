@@ -9,10 +9,11 @@
 #import <ChatKit/CKActionSheetMenuViewDelegate-Protocol.h>
 #import <ChatKit/CKBalloonViewDelegate-Protocol.h>
 #import <ChatKit/CKStickerDetailViewControllerDelegate-Protocol.h>
+#import <ChatKit/PHLivePhotoViewDelegate-Protocol.h>
 
-@class CKActionSheetMenuView, CKGroupAcknowledgmentVotingViewController, NSArray, NSString, UIView;
+@class CKActionSheetMenuView, CKGroupAcknowledgmentVotingViewController, CKLivePhotoBalloonView, NSArray, NSString, UIView;
 
-@interface CKFullScreenBalloonViewControllerPhone : CKFullScreenBalloonViewController <CKActionSheetMenuViewDelegate, CKBalloonViewDelegate, CKStickerDetailViewControllerDelegate>
+@interface CKFullScreenBalloonViewControllerPhone : CKFullScreenBalloonViewController <CKActionSheetMenuViewDelegate, CKBalloonViewDelegate, CKStickerDetailViewControllerDelegate, PHLivePhotoViewDelegate>
 {
     BOOL _shouldLayoutViews;
     BOOL _animationsDisabledForTesting;
@@ -20,6 +21,7 @@
     CKGroupAcknowledgmentVotingViewController *_votingViewController;
     UIView *_balloonView;
     NSArray *_interfaceActions;
+    CKLivePhotoBalloonView *_livePhotoBalloonView;
     double _balloonYOffsetFromTranscript;
 }
 
@@ -30,6 +32,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *interfaceActions; // @synthesize interfaceActions=_interfaceActions;
+@property (strong, nonatomic) CKLivePhotoBalloonView *livePhotoBalloonView; // @synthesize livePhotoBalloonView=_livePhotoBalloonView;
 @property (strong, nonatomic) CKActionSheetMenuView *menuView; // @synthesize menuView=_menuView;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) CKGroupAcknowledgmentVotingViewController *votingViewController; // @synthesize votingViewController=_votingViewController;
@@ -48,6 +51,8 @@
 - (void)interactionStartedFromPreviewItemControllerInBalloonView:(id)arg1;
 - (void)interactionStoppedFromPreviewItemControllerInBalloonView:(id)arg1;
 - (void)liveBalloonTouched:(id)arg1;
+- (void)livePhotoView:(id)arg1 didEndPlaybackWithStyle:(long long)arg2;
+- (void)loadLivePhotoBalloonViewIfNeeded;
 - (void)performClosingAnimationsWithSendAnimation:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)performInitialAnimations;
 - (void)presentStickerDetailControllerWithStickers:(id)arg1;

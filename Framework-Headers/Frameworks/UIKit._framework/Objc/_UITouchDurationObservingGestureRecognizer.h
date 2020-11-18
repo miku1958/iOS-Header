@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _UITouchDurationObservingGestureRecognizer : UIGestureRecognizer
 {
+    BOOL _hasExceededAllowableMovement;
     CADisplayLink *_displayLink;
     double _minimumDurationRequired;
     double _allowableMovement;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double allowableMovement; // @synthesize allowableMovement=_allowableMovement;
 @property (readonly, nonatomic) UIDelayedAction *delayedAction; // @synthesize delayedAction=_delayedAction;
 @property (readonly, nonatomic) CADisplayLink *displayLink; // @synthesize displayLink=_displayLink;
+@property (readonly, nonatomic) BOOL hasExceededAllowableMovement; // @synthesize hasExceededAllowableMovement=_hasExceededAllowableMovement;
 @property (nonatomic) double minimumDurationRequired; // @synthesize minimumDurationRequired=_minimumDurationRequired;
 @property (nonatomic) struct CGPoint originalCentroid; // @synthesize originalCentroid=_originalCentroid;
 @property (readonly, nonatomic) double touchDuration;

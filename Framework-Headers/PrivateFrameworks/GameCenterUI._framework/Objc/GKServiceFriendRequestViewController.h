@@ -28,12 +28,14 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_useBackdropViewForWindowBackground;
 - (void)constructPrivateViewController;
 - (void)displayAlertWithTitle:(id)arg1 andMessage:(id)arg2;
 - (id)init;
 - (void)messageComposeViewController:(id)arg1 didFinishWithResult:(long long)arg2;
 - (void)messageComposeViewController:(id)arg1 shouldSendMessage:(id)arg2 toRecipients:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setInitialState:(id)arg1 withReply:(CDUnknownBlockType)arg2;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

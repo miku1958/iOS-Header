@@ -31,8 +31,8 @@ __attribute__((visibility("hidden")))
     struct vector<LineCostProxy, std::__1::allocator<LineCostProxy>> vClusterOutliersProxies;
     struct vector<LineCostProxy, std::__1::allocator<LineCostProxy>> hClusterOutliersProxies;
     MISSING_TYPE *initialSimplexVerticesXYZ[64];
-    MISSING_TYPE *initialSimplexVerticesXZ[64];
-    MISSING_TYPE *initialSimplexVerticesYZ[64];
+    MISSING_TYPE *initialSimplexVerticesXZ[16];
+    MISSING_TYPE *initialSimplexVerticesYZ[16];
     int solutionType;
     struct Solution solution;
     double unlimitedPitch;

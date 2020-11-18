@@ -14,11 +14,13 @@
     NSString *_displayName;
     NSString *_fakeFullPath;
     NSString *_fakeURLString;
+    long long _fakeMailboxID;
 }
 
 @property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (copy, nonatomic) NSString *fakeFullPath; // @synthesize fakeFullPath=_fakeFullPath;
 @property (nonatomic) BOOL fakeIsSpecialMailboxUid; // @synthesize fakeIsSpecialMailboxUid=_fakeIsSpecialMailboxUid;
+@property (nonatomic) long long fakeMailboxID; // @synthesize fakeMailboxID=_fakeMailboxID;
 @property (copy, nonatomic) NSString *fakeURLString; // @synthesize fakeURLString=_fakeURLString;
 
 - (void).cxx_destruct;
@@ -27,8 +29,10 @@
 - (id)fullPath;
 - (id)initWithAccount:(id)arg1 URLString:(id)arg2 fullPath:(id)arg3;
 - (id)initWithAccount:(id)arg1 URLString:(id)arg2 fullPath:(id)arg3 isSpecial:(BOOL)arg4;
+- (id)initWithAccount:(id)arg1 URLString:(id)arg2 fullPath:(id)arg3 isSpecial:(BOOL)arg4 mailboxID:(long long)arg5;
 - (BOOL)isSpecialMailboxUid;
 - (BOOL)isStore;
+- (long long)mailboxID;
 - (id)store;
 
 @end

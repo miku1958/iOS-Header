@@ -13,6 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityHandwritingAttributeAcceptsContractedBraille;
+- (BOOL)_accessibilitySupportsTextInsertionAndDeletion;
 - (void)_deleteLastCharacter;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

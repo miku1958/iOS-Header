@@ -23,6 +23,7 @@
 }
 
 @property (readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property (readonly, nonatomic, getter=isFullyResolved) BOOL fullyResolved;
 @property (readonly, nonatomic, getter=isInProcess) BOOL inProcess;
 @property (readonly, nonatomic) void *mediaRemotePlayerPath; // @synthesize mediaRemotePlayerPath=_mediaRemotePlayerPath;
 @property (readonly, nonatomic) void *origin;

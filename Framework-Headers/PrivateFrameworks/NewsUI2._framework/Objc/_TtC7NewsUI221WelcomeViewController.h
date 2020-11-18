@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *viewProvider;
     MISSING_TYPE *viewAnimator;
     MISSING_TYPE *keyFrame;
+    MISSING_TYPE *startedFirstAnimation;
 }
 
 - (void).cxx_destruct;

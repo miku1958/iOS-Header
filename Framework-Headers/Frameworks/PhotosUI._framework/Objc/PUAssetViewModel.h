@@ -42,6 +42,7 @@
     long long _lastAccessoryViewVisibilityChangeReason;
     long long _lastContentOffsetChangeReason;
     double _contentOffsetOverrideFactor;
+    long long _flippingFullSizeRenderState;
     long long __currentFavoriteOverrideRequest;
     long long _displayedContentUpdateCount;
     PUMediaProvider *_mediaProvider;
@@ -68,6 +69,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long displayedContentUpdateCount; // @synthesize displayedContentUpdateCount=_displayedContentUpdateCount;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *displayedContentUpdateGroup; // @synthesize displayedContentUpdateGroup=_displayedContentUpdateGroup;
+@property (nonatomic) long long flippingFullSizeRenderState; // @synthesize flippingFullSizeRenderState=_flippingFullSizeRenderState;
 @property (nonatomic) double focusValue; // @synthesize focusValue=_focusValue;
 @property (nonatomic) BOOL forceBadgesVisible; // @synthesize forceBadgesVisible=_forceBadgesVisible;
 @property (readonly) unsigned long long hash;

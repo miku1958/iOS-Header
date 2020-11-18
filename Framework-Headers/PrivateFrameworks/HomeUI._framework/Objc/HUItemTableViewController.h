@@ -99,6 +99,7 @@
 - (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;
 - (id)itemManager:(id)arg1 futureToUpdateItems:(id)arg2 itemUpdateOptions:(id)arg3;
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
+- (void)itemManagerDidFinishUpdate:(id)arg1;
 - (id)itemModuleControllers;
 - (id)itemTableFooterMessage;
 - (id)itemTableFooterView;
@@ -118,6 +119,7 @@
 - (BOOL)shouldHideHeaderAboveSection:(long long)arg1;
 - (BOOL)shouldHideSeparatorsForCell:(id)arg1 indexPath:(id)arg2;
 - (BOOL)shouldManageTextFieldForItem:(id)arg1;
+- (BOOL)shouldResizeHeaderWhenLayoutSubviews;
 - (void)tableView:(id)arg1 accessoryButtonTappedForRowWithIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;

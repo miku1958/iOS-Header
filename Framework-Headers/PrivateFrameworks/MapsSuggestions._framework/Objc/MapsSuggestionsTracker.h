@@ -55,6 +55,7 @@
 + (BOOL)_isLocationShiftRequiredForLocation:(id)arg1;
 - (void).cxx_destruct;
 - (id)_bestValidOfflineETAForEntry:(id)arg1 destinationKey:(id)arg2;
+- (void)_captureSignalsFromEntries:(struct NSArray *)arg1;
 - (void)_decorateEntry:(id)arg1 eta:(id)arg2;
 - (id)_distanceTitleFormatterForType:(long long)arg1;
 - (id)_etaTitleFormatterForType:(long long)arg1;

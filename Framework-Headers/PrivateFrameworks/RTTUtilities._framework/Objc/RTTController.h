@@ -51,6 +51,7 @@
 - (id)handleDatabaseRequest:(id)arg1;
 - (id)handleDictionaryRequest:(id)arg1;
 - (id)handleIncomingNotificationSuppressionChange:(id)arg1;
+- (id)handleMediaAction:(id)arg1;
 - (id)handleSettingsRequest:(id)arg1;
 - (void)handleUpdatedCalls:(id)arg1;
 - (id)init;

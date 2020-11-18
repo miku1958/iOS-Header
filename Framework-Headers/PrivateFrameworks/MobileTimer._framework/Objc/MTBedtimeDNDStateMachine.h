@@ -8,10 +8,11 @@
 
 #import <MobileTimer/MTBedtimeDNDStateMachineEventHandler-Protocol.h>
 
-@class MTBedtimeDNDStateMachineOffState, MTBedtimeDNDStateMachineWaitingState, NSString;
+@class MTBedtimeDNDStateMachineInitialState, MTBedtimeDNDStateMachineOffState, MTBedtimeDNDStateMachineWaitingState, NSString;
 
 @interface MTBedtimeDNDStateMachine : MTStateMachine <MTBedtimeDNDStateMachineEventHandler>
 {
+    MTBedtimeDNDStateMachineInitialState *_initialState;
     MTBedtimeDNDStateMachineOffState *_offState;
     MTBedtimeDNDStateMachineWaitingState *_waitingState;
 }
@@ -19,6 +20,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) MTBedtimeDNDStateMachineInitialState *initialState; // @synthesize initialState=_initialState;
 @property (readonly, nonatomic) MTBedtimeDNDStateMachineOffState *offState; // @synthesize offState=_offState;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) MTBedtimeDNDStateMachineWaitingState *waitingState; // @synthesize waitingState=_waitingState;

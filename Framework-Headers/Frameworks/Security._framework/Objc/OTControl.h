@@ -62,6 +62,8 @@
 - (void)signingKey:(CDUnknownBlockType)arg1;
 - (void)startOctagonStateMachine:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)status:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)tapToRadar:(id)arg1 description:(id)arg2 radar:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)waitForOctagonUpgrade:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 
 @end
 

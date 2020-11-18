@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UIAlertController, UIPrintingProgressViewController;
+@class NSString, UIAlertController, UIPrintingProgressViewController, UIWindow, UIWindowScene;
 
 __attribute__((visibility("hidden")))
 @interface UIPrintingProgress : NSObject
@@ -22,19 +22,23 @@ __attribute__((visibility("hidden")))
     BOOL _creatingPDF;
     double _lastPageUpdate;
     double _progressAlertDelay;
+    UIWindowScene *_hostingWindowScene;
+    UIWindow *_progressAlertWindow;
 }
 
 @property BOOL creatingPDF; // @synthesize creatingPDF=_creatingPDF;
+@property (weak) UIWindowScene *hostingWindowScene; // @synthesize hostingWindowScene=_hostingWindowScene;
 @property double lastPageUpdate; // @synthesize lastPageUpdate=_lastPageUpdate;
 @property double progressAlertDelay; // @synthesize progressAlertDelay=_progressAlertDelay;
+@property (strong) UIWindow *progressAlertWindow; // @synthesize progressAlertWindow=_progressAlertWindow;
 @property (readonly) NSString *title;
 
 - (void).cxx_destruct;
-- (void)_endNoPresentingViewControllerAlertController:(id)arg1;
+- (void)_presentProgressAlert;
 - (void)endProgress;
 - (void)hideProgressAnimated:(BOOL)arg1;
-- (id)initPDFCreationWithCancelHandler:(CDUnknownBlockType)arg1;
-- (id)initWithPrinterName:(id)arg1 forceDisplayAsAlert:(BOOL)arg2 cancelHandler:(CDUnknownBlockType)arg3;
+- (id)initPDFCreationWithHostingWindowScene:(id)arg1 cancelHandler:(CDUnknownBlockType)arg2;
+- (id)initWithPrinterName:(id)arg1 forceDisplayAsAlert:(BOOL)arg2 hostingWindowScene:(id)arg3 cancelHandler:(CDUnknownBlockType)arg4;
 - (double)nextPrintDelay;
 - (void)progressCancel;
 - (BOOL)progressVisible;

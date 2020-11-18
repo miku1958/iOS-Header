@@ -20,6 +20,7 @@
 - (id)dd_phoneNumberFromTelScheme;
 - (id)dd_phoneNumberFromTelSchemeAndExtractBody:(id *)arg1;
 - (id)dd_phoneNumberFromValidSchemes:(id)arg1;
+- (BOOL)dd_previewActionSupported;
 - (id)dd_rdarLinkFromTelScheme;
 @end
 

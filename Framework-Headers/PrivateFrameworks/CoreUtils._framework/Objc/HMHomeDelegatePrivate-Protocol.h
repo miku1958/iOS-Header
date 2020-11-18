@@ -6,18 +6,21 @@
 
 #import <CoreUtils/HMHomeDelegate-Protocol.h>
 
-@class CLLocation, HMAccessory, HMActionSet, HMHome, HMMediaSystem, HMResidentDevice, HMRoom, HMServiceGroup, HMUser, NSArray, NSString;
+@class CLLocation, HMAccessory, HMAccessoryNetworkProtectionGroup, HMActionSet, HMHome, HMMediaSystem, HMResidentDevice, HMRoom, HMServiceGroup, HMUser, NSArray, NSString;
 
 @protocol HMHomeDelegatePrivate <HMHomeDelegate>
 
 @optional
+- (void)home:(HMHome *)arg1 didAddAccessoryNetworkProtectionGroup:(HMAccessoryNetworkProtectionGroup *)arg2;
 - (void)home:(HMHome *)arg1 didAddMediaSystem:(HMMediaSystem *)arg2;
 - (void)home:(HMHome *)arg1 didAddResidentDevice:(HMResidentDevice *)arg2;
 - (void)home:(HMHome *)arg1 didEnableNotifications:(BOOL)arg2;
+- (void)home:(HMHome *)arg1 didRemoveAccessoryNetworkProtectionGroup:(HMAccessoryNetworkProtectionGroup *)arg2;
 - (void)home:(HMHome *)arg1 didRemoveMediaSystem:(HMMediaSystem *)arg2;
 - (void)home:(HMHome *)arg1 didRemoveResidentDevice:(HMResidentDevice *)arg2;
 - (void)home:(HMHome *)arg1 didUpdateAccesoryInvitationsForUser:(HMUser *)arg2;
 - (void)home:(HMHome *)arg1 didUpdateAccessControlForUser:(HMUser *)arg2;
+- (void)home:(HMHome *)arg1 didUpdateAccessoryNetworkProtectionGroup:(HMAccessoryNetworkProtectionGroup *)arg2;
 - (void)home:(HMHome *)arg1 didUpdateApplicationDataForActionSet:(HMActionSet *)arg2;
 - (void)home:(HMHome *)arg1 didUpdateApplicationDataForRoom:(HMRoom *)arg2;
 - (void)home:(HMHome *)arg1 didUpdateApplicationDataForServiceGroup:(HMServiceGroup *)arg2;

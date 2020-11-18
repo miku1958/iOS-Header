@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isOutOfProcess;
 - (void)isPresentingEditingController:(BOOL)arg1;
 - (void)isPresentingFullscreen:(BOOL)arg1;
+- (void)presentCancelConfirmationAlert;
 - (BOOL)shouldPerformDefaultActionForContact:(id)arg1 propertyKey:(id)arg2 propertyIdentifier:(id)arg3;
 - (void)updateEditing:(BOOL)arg1 doneButtonEnabled:(BOOL)arg2 doneButtonText:(id)arg3;
 - (void)viewDidAppear;

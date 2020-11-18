@@ -41,6 +41,7 @@
     struct {
         unsigned int highlighted:1;
         unsigned int autosizeTextToFit:1;
+        unsigned int supportMultiLineShrinkToFit:1;
         unsigned int autotrackTextToFit:1;
         unsigned int baselineAdjustment:2;
         unsigned int enabled:1;
@@ -66,7 +67,6 @@
     } _textLabelFlags;
     BOOL _adjustsFontForContentSizeCategory;
     BOOL __textColorFollowsTintColor;
-    BOOL __supportMultiLineShrinkToFit;
     double _preferredMaxLayoutWidth;
     double _multilineContextWidth;
     UIFont *_fontForShortcutBaselineCalculation;
@@ -83,7 +83,6 @@
 @property (nonatomic, setter=_setHyphenationFactorIgnoredIfURLsDetected:) BOOL _hyphenationFactorIgnoredIfURLsDetected;
 @property (readonly, nonatomic) double _lastLineBaseline;
 @property (nonatomic, setter=_setLastLineBaselineFrameOriginY:) double _lastLineBaselineFrameOriginY;
-@property (nonatomic, setter=_setSupportMultiLineShrinkToFit:) BOOL _supportMultiLineShrinkToFit; // @synthesize _supportMultiLineShrinkToFit=__supportMultiLineShrinkToFit;
 @property (strong, nonatomic, getter=_synthesizedAttributedText, setter=_setSynthesizedAttributedText:) NSAttributedString *_synthesizedAttributedText;
 @property (nonatomic, setter=_setTextColorFollowsTintColor:) BOOL _textColorFollowsTintColor; // @synthesize _textColorFollowsTintColor=__textColorFollowsTintColor;
 @property (strong, nonatomic, setter=_setVisualStyle:) _UILabelVisualStyle *_visualStyle; // @synthesize _visualStyle=__visualStyle;
@@ -158,6 +157,7 @@
 - (id)_disabledFontColor;
 - (void)_drawFullMarqueeTextInRect:(struct CGRect)arg1;
 - (void)_drawTextInRect:(struct CGRect)arg1 baselineCalculationOnly:(BOOL)arg2;
+- (void)_drawTextInRectSupportingMultiLineShrinkToFit:(struct CGRect)arg1 baselineCalculationOnly:(BOOL)arg2;
 - (BOOL)_drawsUnderline;
 - (struct CGRect)_ensureBaselineMetricsReturningBounds;
 - (id)_fallbackTextColorForUserInterfaceStyle:(long long)arg1;
@@ -213,6 +213,7 @@
 - (void)_setOverallWritingDirectionFollowsLayoutDirection:(BOOL)arg1;
 - (void)_setShadow:(id)arg1;
 - (void)_setShadowUIOffset:(struct UIOffset)arg1;
+- (void)_setSupportMultiLineShrinkToFit:(BOOL)arg1;
 - (void)_setText:(id)arg1;
 - (void)_setTextAlignment:(long long)arg1;
 - (void)_setTextAlignmentFollowsWritingDirection:(BOOL)arg1;
@@ -232,11 +233,13 @@
 - (void)_stopMarqueeWithRedisplay:(BOOL)arg1;
 - (id)_stringDrawingContext;
 - (long long)_stringDrawingOptions;
+- (BOOL)_supportMultiLineShrinkToFit;
 - (id)_synthesizedTextAttributes;
 - (BOOL)_textAlignmentFollowsWritingDirection;
 - (BOOL)_textAlignmentMirrored;
 - (struct CGRect)_textRectForBounds:(struct CGRect)arg1 limitedToNumberOfLines:(long long)arg2 includingShadow:(BOOL)arg3;
 - (BOOL)_updateScaledMetricsForRect:(struct CGRect)arg1;
+- (BOOL)_updateScaledMetricsForRectSupportingMultiLineShrinkToFit:(struct CGRect)arg1;
 - (void)_updateTextColorWithFallbackColorIfNeeded;
 - (void)_updateTextEffectsConfigurationIfNeeded;
 - (void)_updateVariableLengthStringIfNeeded;

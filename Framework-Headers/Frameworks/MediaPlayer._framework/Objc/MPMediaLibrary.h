@@ -14,7 +14,6 @@
 @interface MPMediaLibrary : NSObject <NSSecureCoding>
 {
     id<MPMediaLibraryDataProviderPrivate> _libraryDataProvider;
-    long long _libraryChangeObservers;
     NSObject<OS_dispatch_queue> *_entityCacheQueue;
     NSObject<OS_dispatch_queue> *_fixedQueue;
     NSArray *_notificationObservers;
@@ -82,6 +81,7 @@
     id __MLCoreStorage;
     NSObject<OS_dispatch_queue> *_accessQueue;
     ICUserIdentity *_userIdentity;
+    long long _libraryChangeObservers;
 }
 
 @property (strong, nonatomic, setter=_setMLCoreStorage:) id _MLCoreStorage; // @synthesize _MLCoreStorage=__MLCoreStorage;
@@ -89,6 +89,7 @@
 @property (readonly, nonatomic) NSString *_syncValidity;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
 @property (readonly, nonatomic) NSDate *lastModifiedDate;
+@property (readonly, nonatomic) long long libraryChangeObservers; // @synthesize libraryChangeObservers=_libraryChangeObservers;
 @property (readonly, nonatomic) ML3MusicLibrary *ml3Library;
 @property (readonly, nonatomic) NSURL *protectedContentSupportStorageURL;
 @property (nonatomic) long long removalReason;
@@ -102,7 +103,7 @@
 @property (copy, nonatomic) NSString *storefrontIdentifier;
 @property (readonly, copy, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 
-+ (id)_deviceMediaLibraryWithUserIdentity:(id)arg1 isSingletonLibrary:(BOOL)arg2 createIfRequired:(BOOL)arg3;
++ (id)_deviceMediaLibraryWithUserIdentity:(id)arg1 createIfRequired:(BOOL)arg2;
 + (void)_endDiscoveringMediaLibrariesIfAllowed;
 + (id)_libraryDataProviders;
 + (id)_libraryForDataProvider:(id)arg1;
@@ -140,7 +141,6 @@
 + (void)validatePermissionsExpiryWithCompletion:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (id)URLForHomeSharingRequest:(id)arg1;
-- (void)_activeUserDidChangeForDeviceMediaLibrary:(id)arg1;
 - (void)_canShowCloudTracksDidChangeNotification:(id)arg1;
 - (BOOL)_checkHasContent:(BOOL *)arg1 determined:(BOOL *)arg2 mediaType:(unsigned long long)arg3 queryHasEntitiesBlock:(CDUnknownBlockType)arg4;
 - (BOOL)_checkHasContent:(BOOL *)arg1 determined:(BOOL *)arg2 queryHasEntitiesBlock:(CDUnknownBlockType)arg3;
@@ -155,12 +155,14 @@
 - (void)_disconnect;
 - (void)_displayValuesDidChangeNotification:(id)arg1;
 - (id)_getCachedValueForQueryCritiera:(id)arg1 valueCriteriaCache:(id)arg2 entitiesForCriteriaCache:(id)arg3 didLoadBlocksByQueryCriteria:(id)arg4 valueLoadedFromEntitiesArrayBlock:(CDUnknownBlockType)arg5 loadValueFromDataProviderBlock:(CDUnknownBlockType)arg6;
+- (BOOL)_handlesSameAccountAs:(id)arg1;
 - (BOOL)_hasCollectionsForQueryCriteria:(id)arg1;
 - (BOOL)_hasItemsForQueryCriteria:(id)arg1;
 - (id)_initWithLibraryDataProvider:(id)arg1;
-- (id)_initWithUserIdentity:(id)arg1 isSingletonLibrary:(BOOL)arg2;
+- (id)_initWithUserIdentity:(id)arg1;
 - (id)_itemPersistentIdentifiersForQueryCriteria:(id)arg1;
 - (id)_itemsForQueryCriteria:(id)arg1;
+- (void)_performBlockOnLibraryHandlingTheSameAccount:(CDUnknownBlockType)arg1;
 - (unsigned long long)_persistentIDForAssetURL:(id)arg1;
 - (void)_reloadLibraryForContentsChangeWithNotificationInfo:(id)arg1;
 - (void)_reloadLibraryForDynamicPropertyChangeWithNotificationInfo:(id)arg1;
@@ -169,6 +171,7 @@
 - (void)_reloadLibraryForRestrictionsChange;
 - (void)_removeConnectionAssertion:(id)arg1;
 - (void)_scheduleLibraryChangeNotificationPostingBlock:(CDUnknownBlockType)arg1;
+- (void)_setLibraryFilterPredicates;
 - (void)_setupNotifications;
 - (void)_tearDownNotifications;
 - (void)addAdvertisementItemWithDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -299,7 +302,6 @@
 - (BOOL)removePlaylist:(id)arg1;
 - (BOOL)requiresAuthentication;
 - (void)setCloudFilteringType:(long long)arg1;
-- (void)setLibraryFilterPredicates;
 - (void)setSyncPlaylistId:(unsigned long long)arg1;
 - (BOOL)setValue:(id)arg1 forDatabaseProperty:(id)arg2;
 - (void)setValues:(id)arg1 forProperties:(id)arg2 forItemPersistentIDs:(id)arg3;

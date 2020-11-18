@@ -15,6 +15,8 @@
 @property (nonatomic) BOOL confirmed;
 @property (strong, nonatomic) _INPBImageValue *defaultImageValue;
 @property (nonatomic) int executionContext;
+@property (copy, nonatomic) NSArray *forceNeedsValueForParameters;
+@property (readonly, nonatomic) unsigned long long forceNeedsValueForParametersCount;
 @property (nonatomic) BOOL hasBackgroundLaunch;
 @property (readonly, nonatomic) BOOL hasCategoryVerb;
 @property (nonatomic) BOOL hasConfirmed;
@@ -65,11 +67,14 @@
 - (int)StringAsIntentCategory:(NSString *)arg1;
 - (int)StringAsRequiredEntitlements:(NSString *)arg1;
 - (int)StringAsTriggerMethod:(NSString *)arg1;
+- (void)addForceNeedsValueForParameter:(NSString *)arg1;
 - (void)addParameterImages:(_INPBPair *)arg1;
 - (void)addRequiredEntitlement:(int)arg1;
+- (void)clearForceNeedsValueForParameters;
 - (void)clearParameterImages;
 - (void)clearRequiredEntitlements;
 - (NSString *)executionContextAsString:(int)arg1;
+- (NSString *)forceNeedsValueForParameterAtIndex:(unsigned long long)arg1;
 - (NSString *)idiomAsString:(int)arg1;
 - (NSString *)intentCategoryAsString:(int)arg1;
 - (_INPBPair *)parameterImagesAtIndex:(unsigned long long)arg1;

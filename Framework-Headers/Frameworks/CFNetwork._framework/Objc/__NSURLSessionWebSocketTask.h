@@ -6,7 +6,7 @@
 
 #import <CFNetwork/__NSCFLocalSessionTask.h>
 
-@class NSData, NSError, NSMutableArray;
+@class NSData, NSError, NSMutableArray, NSString;
 
 @interface __NSURLSessionWebSocketTask : __NSCFLocalSessionTask
 {
@@ -21,6 +21,7 @@
     NSMutableArray *_highPriorityPendingWork;
     NSMutableArray *_delegateWork;
     NSError *_webSocketError;
+    NSString *_protocolPicked;
 }
 
 @property (readonly) long long closeCode; // @synthesize closeCode=_closeCode;
@@ -31,6 +32,7 @@
 @property (strong) NSMutableArray *pendingReceiveWork; // @synthesize pendingReceiveWork=_pendingReceiveWork;
 @property (strong) NSMutableArray *pendingSendWork; // @synthesize pendingSendWork=_pendingSendWork;
 @property int pingSeed; // @synthesize pingSeed=_pingSeed;
+@property (strong) NSString *protocolPicked; // @synthesize protocolPicked=_protocolPicked;
 @property BOOL readInProgress; // @synthesize readInProgress=_readInProgress;
 @property (strong) NSError *webSocketError; // @synthesize webSocketError=_webSocketError;
 @property BOOL webSocketHandshakeCompleted; // @synthesize webSocketHandshakeCompleted=_webSocketHandshakeCompleted;
@@ -42,11 +44,13 @@
 - (void)_onqueue_checkForCompletion;
 - (void)_onqueue_didReceiveResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_onqueue_enableWebSocketFraming:(id)arg1;
+- (void)_onqueue_handshakeFailureWithReason:(unsigned long long)arg1;
 - (void)_onqueue_ioTick;
 - (void)_onqueue_pingWithPongHandler:(CDUnknownBlockType)arg1;
 - (void)_onqueue_receiveMessageWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_onqueue_resume;
 - (void)_onqueue_sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)_onqueue_validateWebSocketHandshake;
 - (void)cancel;
 - (void)cancelWithCloseCode:(long long)arg1 reason:(id)arg2;
 - (void)connection:(id)arg1 didFinishLoadingWithError:(id)arg2;

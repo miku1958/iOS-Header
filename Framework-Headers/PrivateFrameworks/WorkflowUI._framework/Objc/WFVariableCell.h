@@ -24,6 +24,8 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isAccessibilityElement;
 - (void)setHighlighted:(BOOL)arg1;
+- (void)tintColorDidChange;
+- (void)updateVariableImage;
 
 @end
 

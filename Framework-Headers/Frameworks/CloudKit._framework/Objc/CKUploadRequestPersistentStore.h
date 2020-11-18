@@ -50,6 +50,7 @@
 - (void)setLastFetchDate:(id)arg1;
 - (id)sortedDelayedSyncRecordsForDatabase:(id)arg1;
 - (id)syncEngineMetadata;
+- (id)unarchivedObjectOfClass:(Class)arg1 fromData:(id)arg2 error:(id *)arg3;
 
 @end
 

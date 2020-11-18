@@ -26,6 +26,7 @@
 + (id)platformsIcon:(id)arg1;
 + (id)prepareDeleteAllCellForTableView:(id)arg1;
 + (id)prepareSwitchCellForIndexPath:(id)arg1 title:(id)arg2 state:(id)arg3 delegate:(id)arg4 tableView:(id)arg5;
++ (id)sortedServices:(id)arg1;
 + (id)userFacingNameForAuthGroup:(id)arg1;
 - (void).cxx_destruct;
 - (id)authGroupUserFacingName;

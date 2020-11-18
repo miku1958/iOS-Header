@@ -37,6 +37,7 @@
 
 + (Class)responseClass;
 - (void).cxx_destruct;
+- (id)_stateDumpObject;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)middlewareClasses;

@@ -13,12 +13,16 @@
     BOOL _activeUser;
     NSDictionary *_requiredRequestKeyValuePairs;
     NSDate *_timestamp;
+    NSString *_utsc;
+    NSString *_vppaState;
 }
 
 @property (nonatomic) BOOL activeUser; // @synthesize activeUser=_activeUser;
 @property (strong, nonatomic) NSDictionary *requiredRequestKeyValuePairs; // @synthesize requiredRequestKeyValuePairs=_requiredRequestKeyValuePairs;
 @property (strong, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
+@property (strong, nonatomic) NSString *utsc; // @synthesize utsc=_utsc;
 @property (readonly, nonatomic) NSString *utsk;
+@property (strong, nonatomic) NSString *vppaState; // @synthesize vppaState=_vppaState;
 
 - (void).cxx_destruct;
 - (id)description;

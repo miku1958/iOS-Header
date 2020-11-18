@@ -126,7 +126,7 @@
 - (void)_hideCanvas;
 - (BOOL)_isValidDropPointForStrokes:(struct CGPoint)arg1;
 - (void)_layoutSubviews;
-- (void)_layoutSubviewsUpdateTiles:(BOOL)arg1;
+- (void)_layoutSubviewsUpdateTilesForRendering:(BOOL)arg1;
 - (void)_observeScrollViewDidScroll:(id)arg1;
 - (void)_resetDrawingState;
 - (void)_resetSelectedStrokeStateForRenderer;

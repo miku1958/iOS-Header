@@ -68,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)_createRequestController;
 - (void)_getConnected:(BOOL *)arg1 invalid:(BOOL *)arg2;
 - (void)_initRoutingController;
+- (void)_maybeReloadPlayerPathWithRoute:(id)arg1;
 - (void)_reloadPlayerPathWithRoute:(id)arg1;
 - (void)_updateState;
 - (void)connectAllowingAuthenticationWithCompletion:(CDUnknownBlockType)arg1;

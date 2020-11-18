@@ -35,6 +35,9 @@
 - (BOOL)jarvisAudioLoggingEnabled;
 - (unsigned long long)maxNumLoggingFiles;
 - (BOOL)myriadFileLoggingEnabled;
+- (id)myriadHashDirectory;
+- (id)myriadHashFilePath;
+- (BOOL)opportuneSpeakListenerBypassEnabled;
 - (float)overwritingRemoteVADScore;
 - (BOOL)phraseSpotterEnabled;
 - (double)remoteVoiceTriggerDelayTime;

@@ -6,7 +6,7 @@
 
 #import <TextInputCore/TIKeyboardInputManager.h>
 
-@class MCKeyboardInput, NSArray, NSCharacterSet, NSMutableArray, NSMutableDictionary, NSString, TIKeyboardTouchEvent, TIWordSearch, TIWordSearchCandidateResultSet;
+@class MCDrawInput, MCKeyboardInput, NSArray, NSCharacterSet, NSMutableArray, NSMutableDictionary, NSString, TIKeyboardTouchEvent, TIWordSearch, TIWordSearchCandidateResultSet;
 
 @interface TIKeyboardInputManager_zh_ja : TIKeyboardInputManager
 {
@@ -24,6 +24,7 @@
     NSString *_currentClientIdentifier;
     NSString *_currentRecipientIdentifier;
     TIKeyboardTouchEvent *_previousTouchEvent;
+    MCDrawInput *_cancelledDrawInput;
     RefPtr_54d74a7c _favoniusLayoutForCharacterKeysFrame;
     CDUnknownBlockType _compositionCompletionHandler;
     TIWordSearch *_wordSearch;
@@ -37,6 +38,7 @@
 }
 
 @property (readonly, nonatomic) RefPtr_54d74a7c baseLayout; // @synthesize baseLayout=_baseLayout;
+@property (strong, nonatomic) MCDrawInput *cancelledDrawInput; // @synthesize cancelledDrawInput=_cancelledDrawInput;
 @property (readonly, nonatomic) TIKeyboardInputManager_zh_ja *chainedKeyboardInputManager; // @synthesize chainedKeyboardInputManager;
 @property (strong, nonatomic) NSArray *clearedGeometryDataArray; // @synthesize clearedGeometryDataArray=_clearedGeometryDataArray;
 @property (strong, nonatomic) NSArray *clearedTouchDataArray; // @synthesize clearedTouchDataArray=_clearedTouchDataArray;

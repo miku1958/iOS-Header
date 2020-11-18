@@ -17,6 +17,7 @@
 
 @property (readonly, nonatomic) BOOL alwaysShowsButton; // @synthesize alwaysShowsButton=_alwaysShowsButton;
 @property (readonly, nonatomic) NSArray *displayNames; // @synthesize displayNames=_displayNames;
+@property (readonly, nonatomic) BOOL hidesAccessoryIconInEditor;
 @property (readonly, nonatomic) NSArray *possibleStates;
 @property (readonly, nonatomic) BOOL preferItemPickerSheet;
 @property (readonly, nonatomic) NSArray *staticPossibleStates; // @synthesize staticPossibleStates=_staticPossibleStates;
@@ -34,6 +35,8 @@
 - (BOOL)parameterStateIsValid:(id)arg1;
 - (void)possibleStatesDidChange;
 - (Class)singleStateClass;
+- (void)startUpdatingPossibleValues;
+- (void)stopUpdatingPossibleValues;
 
 @end
 

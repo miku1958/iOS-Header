@@ -17,6 +17,7 @@
 + (id)framesPerSecond;
 + (id)gigahertz;
 + (id)hertz;
++ (void)initialize;
 + (id)kilohertz;
 + (id)megahertz;
 + (id)microhertz;

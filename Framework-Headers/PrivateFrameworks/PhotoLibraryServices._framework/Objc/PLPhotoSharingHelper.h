@@ -46,6 +46,7 @@
 + (void)deleteCloudSharedAssetsFromServer:(id)arg1 inSharedAlbum:(id)arg2;
 + (void)deleteCommentWithGUIDFromServer:(id)arg1;
 + (void)deleteDebugBreadcrumbsForAlbumGUID:(id)arg1;
++ (void)deleteLocalAlbumsForMSASAlbumsWithGUID:(id)arg1 inviterAddress:(id)arg2;
 + (void)deleteLocalAlbumsForMSASAlbumsWithGUIDs:(id)arg1;
 + (id)derivativesForMasterAsset:(id)arg1 withSpecifications:(id)arg2;
 + (struct CGSize)derivedAssetSizeForMasterSizeWidth:(double)arg1 height:(double)arg2 derivativeType:(int)arg3 withSpecificationInfo:(id)arg4;

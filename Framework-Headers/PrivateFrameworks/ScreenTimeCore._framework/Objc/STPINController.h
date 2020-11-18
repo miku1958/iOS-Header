@@ -6,33 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class NSManagedObjectContext, STCoreUser;
+@class NSDate, STCoreUser;
+@protocol OS_dispatch_source;
 
 @interface STPINController : NSObject
 {
+    NSDate *_timeoutEndDate;
     STCoreUser *_user;
-    NSManagedObjectContext *_managedObjectContext;
+    NSObject<OS_dispatch_source> *_backoffTimer;
 }
 
-@property (readonly, nonatomic) NSManagedObjectContext *managedObjectContext; // @synthesize managedObjectContext=_managedObjectContext;
+@property (strong) NSObject<OS_dispatch_source> *backoffTimer; // @synthesize backoffTimer=_backoffTimer;
+@property (copy) NSDate *timeoutEndDate; // @synthesize timeoutEndDate=_timeoutEndDate;
 @property (readonly, nonatomic) STCoreUser *user; // @synthesize user=_user;
 
 + (unsigned long long)pinLength;
 - (void).cxx_destruct;
 - (BOOL)_authenticateWithPIN:(id)arg1 forUser:(id)arg2 error:(id *)arg3;
+- (void)_beginTimeoutUntilDate:(id)arg1;
 - (BOOL)_isPINValid:(id)arg1;
-- (BOOL)_setNewPIN:(id)arg1 current:(id)arg2 forUser:(id)arg3 error:(id *)arg4;
 - (void)_setNewPIN:(id)arg1 currentPIN:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)_setNewPIN:(id)arg1 currentPIN:(id)arg2 error:(id *)arg3;
+- (id)_timeoutEndDateForAttemptNumber:(long long)arg1;
 - (void)authenticateWithPIN:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (BOOL)authenticateWithPIN:(id)arg1 error:(id *)arg2;
+- (long long)authenticateWithPIN:(id)arg1 error:(id *)arg2;
 - (id)initWithUser:(id)arg1;
 - (void)removePIN:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (BOOL)removePIN:(id)arg1 error:(id *)arg2;
 - (void)setPIN:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (BOOL)setPIN:(id)arg1 error:(id *)arg2;
 - (void)updatePIN:(id)arg1 toPIN:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)updatePIN:(id)arg1 toPIN:(id)arg2 error:(id *)arg3;
 
 @end
 

@@ -45,6 +45,7 @@
 - (id)_mailboxObjectIDsDescriptionIsDebug:(BOOL)arg1;
 - (id)_mailboxObjectIDsForTypesWithMailboxTypeResolver:(id)arg1;
 - (id)_mailboxTypesDescription;
+- (BOOL)_scopeContainsMailboxWithObjectID:(id)arg1 mailboxTypeBlock:(CDUnknownBlockType)arg2;
 - (id)allMailboxObjectIDsWithMailboxTypeResolver:(id)arg1 forExclusion:(BOOL *)arg2;
 - (id)cachedSelf;
 - (id)copyWithZone:(struct _NSZone *)arg1;

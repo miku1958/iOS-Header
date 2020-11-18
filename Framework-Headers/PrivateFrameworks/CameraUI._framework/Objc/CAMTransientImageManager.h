@@ -20,12 +20,14 @@
 @property (readonly, nonatomic) NSMutableDictionary *_pairedVideosByPairedUUID; // @synthesize _pairedVideosByPairedUUID=__pairedVideosByPairedUUID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=isEmpty) BOOL empty;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_handleRequestTimeout:(id)arg1;
 - (id)existingPairedVideoForUUID:(id)arg1;
+- (id)existingPairedVideoUUIDs;
 - (id)init;
 - (id)insertPairedVideoWithConvertible:(id)arg1 filterType:(long long)arg2;
 - (void)removePairedVideoForUUID:(id)arg1;

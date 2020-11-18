@@ -13,6 +13,7 @@
     ASDServiceBroker *_serviceBroker;
     int _newsCacheUpdatedNotificationToken;
     int _appStoreCacheUpdatedNotificationToken;
+    int _appStoreArcadeSubscriptionBagUpdatedNotificationToken;
 }
 
 + (id)sharedInstance;

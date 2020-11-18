@@ -13,6 +13,7 @@
 @interface UIDragPreview : NSObject <NSCopying>
 {
     NSValue *_preferredAnchorPoint;
+    BOOL _preventAfterScreenUpdatesSnapshot;
     BOOL _avoidAnimation;
     UIView *_view;
     UIDragPreviewParameters *_parameters;
@@ -25,6 +26,7 @@
 @property (nonatomic) BOOL avoidAnimation; // @synthesize avoidAnimation=_avoidAnimation;
 @property (readonly, copy, nonatomic) UIDragPreviewParameters *parameters; // @synthesize parameters=_parameters;
 @property (nonatomic) struct CGPoint preferredAnchorPoint;
+@property (nonatomic, getter=_preventAfterScreenUpdatesSnapshot, setter=_setPreventAfterScreenUpdatesSnapshot:) BOOL preventAfterScreenUpdatesSnapshot; // @synthesize preventAfterScreenUpdatesSnapshot=_preventAfterScreenUpdatesSnapshot;
 @property (readonly, nonatomic) UIView *view; // @synthesize view=_view;
 
 + (struct CGSize)defaultBoundingSize;

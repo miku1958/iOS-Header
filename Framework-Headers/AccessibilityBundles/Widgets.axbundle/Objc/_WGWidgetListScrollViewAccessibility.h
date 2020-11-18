@@ -16,7 +16,6 @@
 - (BOOL)_accessibilityScrollToFrame:(struct CGRect)arg1 forView:(id)arg2;
 - (struct CGRect)_axAdjustedFrameForFrame:(struct CGRect)arg1;
 - (long long)accessibilityContainerType;
-- (id)accessibilityLabel;
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (BOOL)accessibilityScrollToVisibleWithChild:(id)arg1;
 - (BOOL)shouldGroupAccessibilityChildren;

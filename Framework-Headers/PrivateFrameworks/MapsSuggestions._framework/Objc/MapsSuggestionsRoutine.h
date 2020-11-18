@@ -37,7 +37,6 @@
 - (BOOL)_addFieldsToSuggestionsEntry:(id)arg1 fromRTMapItem:(id)arg2;
 - (void)_addLabelForEntry:(id)arg1;
 - (BOOL)_addMapItemToShortcut:(id)arg1 fromLOI:(id)arg2 group:(id)arg3;
-- (BOOL)_addMapItemToShortcut:(id)arg1 fromLOI:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (BOOL)_addParkedCarFieldsToSuggestionsEntry:(id)arg1 vehicleEvent:(id)arg2;
 - (BOOL)_addRecentsFieldsToSuggestionEntry:(id)arg1 fromSource:(id)arg2;
 - (BOOL)_addResumeRouteFieldsToSuggestionEntry:(id)arg1 fromSource:(id)arg2;

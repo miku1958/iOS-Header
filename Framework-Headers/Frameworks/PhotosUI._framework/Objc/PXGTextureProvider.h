@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXImageDataSpecRegistration-Protocol.h>
 
-@class NSMutableIndexSet, NSString, PXGViewEnvironment;
+@class NSIndexSet, NSMutableIndexSet, NSString, PXGViewEnvironment;
 @protocol OS_dispatch_queue, PXGTextureProviderDelegate;
 
 @interface PXGTextureProvider : NSObject <PXImageDataSpecRegistration>
@@ -23,18 +23,20 @@
     long long _lastImageDataSpecIndex;
     NSMutableIndexSet *_requestIDsPendingCancellation;
     PXGViewEnvironment *_viewEnvironment;
+    NSIndexSet *_requestIDsInTargetRect;
     id<PXGTextureProviderDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_requestQueue;
     NSObject<OS_dispatch_queue> *_processingQueue;
-    CDStruct_04522d6a _interactionState;
+    CDStruct_93894d6c _interactionState;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGTextureProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) CDStruct_04522d6a interactionState; // @synthesize interactionState=_interactionState;
+@property (nonatomic) CDStruct_93894d6c interactionState; // @synthesize interactionState=_interactionState;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
+@property (copy, nonatomic) NSIndexSet *requestIDsInTargetRect; // @synthesize requestIDsInTargetRect=_requestIDsInTargetRect;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *requestQueue; // @synthesize requestQueue=_requestQueue;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) PXGViewEnvironment *viewEnvironment; // @synthesize viewEnvironment=_viewEnvironment;
@@ -42,11 +44,12 @@
 - (void).cxx_destruct;
 - (void)cancelTextureRequestDeferred:(int)arg1;
 - (void)cancelTextureRequests:(id)arg1;
+- (void)clearTextureAtlasManagerCache;
 - (void)dealloc;
 - (void)didFinishRequestingTextures;
 - (CDStruct_1b544862)imageDataSpecAtIndex:(long long)arg1;
 - (id)init;
-- (void)interactionStateDidChange:(CDStruct_04522d6a)arg1;
+- (void)interactionStateDidChange:(CDStruct_93894d6c)arg1;
 - (BOOL)isRequestActive:(int)arg1;
 - (void)performDeferredCancellations;
 - (void)prepareImageDataSpecs;

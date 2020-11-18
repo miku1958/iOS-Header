@@ -63,6 +63,7 @@
     UILabel *_interestLabel;
     PKCurvedTextLabel *_topCurvedTextLabel;
     PKCurvedTextLabel *_bottomCurvedTextLabel;
+    BOOL _userSelectedAngleChange;
     BOOL _enabled;
     BOOL _isSmall;
     id<PKBillPaymentRingViewDelegate> _delegate;

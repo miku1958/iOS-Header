@@ -28,7 +28,7 @@
 - (BOOL)isSectionMapped:(unsigned long long)arg1;
 - (unsigned long long)numberOfMappedSections;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (BOOL)recomputeMappedSections;
+- (BOOL)recomputeMappedSectionsAndReloadSections:(id)arg1;
 - (BOOL)reloadData;
 - (void)reloadSection:(unsigned long long)arg1;
 - (void)reloadSections:(id)arg1;

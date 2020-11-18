@@ -28,6 +28,7 @@
 + (id)decimalNumberWithString:(id)arg1;
 + (id)decimalNumberWithString:(id)arg1 locale:(id)arg2;
 + (id)defaultBehavior;
++ (void)initialize;
 + (id)maximumDecimalNumber;
 + (id)minimumDecimalNumber;
 + (id)notANumber;

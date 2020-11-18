@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double forceMultiplier; // @synthesize forceMultiplier=_forceMultiplier;
 @property (strong, nonatomic) _UITouchDurationObservingGestureRecognizer *gestureRecognizer; // @synthesize gestureRecognizer=_gestureRecognizer;
+@property (readonly, nonatomic) BOOL hasExceededAllowableMovement;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isCurrentlyAcceleratedByForce;
 @property (readonly, nonatomic) double maximumEffectProgress;

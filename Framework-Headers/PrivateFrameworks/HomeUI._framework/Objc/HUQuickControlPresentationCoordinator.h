@@ -16,7 +16,7 @@
 #import <HomeUI/_UIClickPresentationInteractionDelegate-Protocol.h>
 #import <HomeUI/_UISheetPresentationControllerDelegate-Protocol.h>
 
-@class HUCardViewController, HUForceInterpolatedPressGestureRecognizer, HUGridActionSetTitleAndDescriptionView, HUGridServiceCell, HUGridServiceCellTextView, HUIconView, HUItemTableViewController, HUPressedItemContext, HUQuickControlContainerViewController, HUQuickControlPresentationContext, NSMapTable, NSMutableSet, NSString, UIImpactFeedbackGenerator, UILabel, UINavigationController, UITapGestureRecognizer, UITraitCollection, UIView, UIViewController, UIVisualEffectView, _UIClickPresentationInteraction;
+@class HUCardViewController, HUForceInterpolatedPressGestureRecognizer, HUGridActionSetTitleAndDescriptionView, HUGridServiceCell, HUGridServiceCellTextView, HUIconView, HUItemTableViewController, HUPressedItemContext, HUQuickControlContainerViewController, HUQuickControlNavigationController, HUQuickControlPresentationContext, NSMapTable, NSMutableSet, NSString, UIImpactFeedbackGenerator, UILabel, UITapGestureRecognizer, UITraitCollection, UIView, UIViewController, UIVisualEffectView, _UIClickPresentationInteraction;
 @protocol HUQuickControlPresentationCoordinatorDelegate, NACancelable;
 
 @interface HUQuickControlPresentationCoordinator : NSObject <HUQuickControlContainerViewControllerDelegate, HUPresentationDelegate, UIGestureRecognizerDelegate, HUCardViewControllerDelegate, UIPresentationControllerDelegatePrivate, _UIClickPresentationInteractionDelegate, UIViewControllerTransitioningDelegate, _UISheetPresentationControllerDelegate, UITraitEnvironment>
@@ -27,7 +27,7 @@
     HUGridServiceCell *_pressedTile;
     UIView *_targetView;
     id<HUQuickControlPresentationCoordinatorDelegate> _delegate;
-    UINavigationController *_cardNavigationController;
+    HUQuickControlNavigationController *_cardNavigationController;
     HUItemTableViewController *_settingsViewController;
     UITapGestureRecognizer *_singleTapGestureRecognizer;
     UITapGestureRecognizer *_doubleTapGestureRecognizer;
@@ -47,11 +47,12 @@
     UIVisualEffectView *_transitionTitleAndDescriptionVibrantEffectView;
     UILabel *_transitionSecondaryLabel;
     UIVisualEffectView *_transitionSecondaryLabelVibrantEffectView;
+    UIVisualEffectView *_transitionBlurView;
     UIImpactFeedbackGenerator *_feedbackGenerator;
 }
 
 @property (readonly, nonatomic) HUPressedItemContext *activePressedItemContext;
-@property (strong, nonatomic) UINavigationController *cardNavigationController; // @synthesize cardNavigationController=_cardNavigationController;
+@property (strong, nonatomic) HUQuickControlNavigationController *cardNavigationController; // @synthesize cardNavigationController=_cardNavigationController;
 @property (strong, nonatomic) HUCardViewController *cardViewController; // @synthesize cardViewController=_cardViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUQuickControlPresentationCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
@@ -75,6 +76,7 @@
 @property (readonly) Class superclass;
 @property (readonly, weak, nonatomic) UIView *targetView; // @synthesize targetView=_targetView;
 @property (readonly, nonatomic) UITraitCollection *traitCollection;
+@property (strong, nonatomic) UIVisualEffectView *transitionBlurView; // @synthesize transitionBlurView=_transitionBlurView;
 @property (strong, nonatomic) HUIconView *transitionIconView; // @synthesize transitionIconView=_transitionIconView;
 @property (strong, nonatomic) HUIconView *transitionIconViewVibrant; // @synthesize transitionIconViewVibrant=_transitionIconViewVibrant;
 @property (strong, nonatomic) UILabel *transitionPrimaryLabel; // @synthesize transitionPrimaryLabel=_transitionPrimaryLabel;

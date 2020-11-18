@@ -30,10 +30,12 @@
 @property (readonly) long long targetProtectionMode;
 
 - (void).cxx_destruct;
-- (id)initWithAccessoryIdentifier:(id)arg1 targetProtection:(long long)arg2 currentProtection:(long long)arg3 allowedHosts:(id)arg4 accessViolation:(id)arg5 supportsWiFiReconfiguration:(BOOL)arg6 credentialType:(long long)arg7;
+- (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
+- (id)initWithAccessoryIdentifier:(id)arg1 targetProtection:(long long)arg2 currentProtection:(long long)arg3 networkAccessRestricted:(BOOL)arg4 allowedHosts:(id)arg5 accessViolation:(id)arg6 supportsWiFiReconfiguration:(BOOL)arg7 credentialType:(long long)arg8;
 - (void)networkConfigurationProfileDidUpdateAccessViolation:(id)arg1;
 - (void)networkConfigurationProfileDidUpdateAllowedHosts:(id)arg1;
-- (void)networkConfigurationProfileDidUpdateProtectionMode:(id)arg1 accessModeChanged:(BOOL)arg2;
+- (void)networkConfigurationProfileDidUpdateNetworkAccessMode:(id)arg1;
+- (void)networkConfigurationProfileDidUpdateProtectionMode:(id)arg1;
 - (void)networkConfigurationProfileDidUpdateWiFiCredentialType:(id)arg1;
 - (void)networkConfigurationProfileDidUpdateWiFiReconfigurationSupport:(id)arg1;
 - (void)reconfigureWiFiWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -16,6 +16,5 @@
 - (void)pk_presentViewController:(id)arg1 transition:(int)arg2 popToViewControllerAfterPresentation:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)pkui_disablesAutomaticDismissalUponEnteringBackground;
 - (id)pkui_frontMostViewController;
-- (void)pkui_setNeedsNavigationBarUpdate;
 @end
 

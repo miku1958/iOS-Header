@@ -19,12 +19,12 @@
     NSHashTable *_fvcObservers;
     NSHashTable *_observers;
     NSDictionary *_complicationSlotDescriptors;
-    BOOL _editOptionsPrepared;
     NSMutableDictionary *_selectedSlotsByEditMode;
     BOOL _suppressingConfigurationChangeNotifications;
     BOOL _configurationChangedWhileSuppressingNotifications;
     BOOL _resourceDirectoryIsOwned;
     NSString *_cachedDefaultName;
+    BOOL _editOptionsPrepared;
     BOOL _isLibraryFace;
     BOOL _complicationExistenceInvalidatesSnapshot;
     BOOL _beingEdited;
@@ -44,6 +44,7 @@
 @property (strong, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (readonly, nonatomic) long long editModeForCustomEditViewController;
 @property (readonly, nonatomic) NSArray *editModes;
+@property (readonly, nonatomic) BOOL editOptionsPrepared; // @synthesize editOptionsPrepared=_editOptionsPrepared;
 @property (readonly, nonatomic, getter=isEditable) BOOL editable;
 @property (nonatomic) long long editedState;
 @property (readonly, nonatomic) long long faceStyle; // @synthesize faceStyle=_faceStyle;

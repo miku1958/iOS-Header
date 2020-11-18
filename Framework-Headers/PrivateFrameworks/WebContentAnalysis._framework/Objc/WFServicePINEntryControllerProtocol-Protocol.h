@@ -8,6 +8,8 @@
 
 @protocol WFServicePINEntryControllerProtocol
 - (void)cancel;
+- (void)getIsPINPresentWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)permitURLWithCompletion:(void (^)(NSError *))arg1;
 - (void)setPageTitle:(NSString *)arg1;
 - (void)setURL:(NSURL *)arg1;
 @end

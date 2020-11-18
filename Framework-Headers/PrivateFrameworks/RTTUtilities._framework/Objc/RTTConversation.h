@@ -8,14 +8,16 @@
 
 #import <RTTUtilities/NSSecureCoding-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, TUCall;
 
 @interface RTTConversation : NSObject <NSSecureCoding>
 {
     NSString *_callIdentifier;
     NSMutableArray *_utterances;
+    TUCall *_call;
 }
 
+@property (strong, nonatomic) TUCall *call; // @synthesize call=_call;
 @property (strong, nonatomic) NSString *callIdentifier; // @synthesize callIdentifier=_callIdentifier;
 @property (strong, nonatomic) NSMutableArray *utterances; // @synthesize utterances=_utterances;
 

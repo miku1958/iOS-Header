@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
+- (void)setEnabled:(BOOL)arg1;
 - (void)setPaymentSetupField:(id)arg1;
 - (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (BOOL)textFieldShouldClear:(id)arg1;

@@ -6,13 +6,14 @@
 
 #import <ChatKit/UITextViewDelegate-Protocol.h>
 
-@class CKMediaObject, CKMessageEntryRichTextView, NSArray, NSString;
+@class CKMediaObject, CKMessageEntryRichTextView, NSArray, NSString, UIGestureRecognizer;
 
 @protocol CKMessageEntryRichTextViewDelegate <UITextViewDelegate>
 - (double)maxWidthForPreviewImagesInMessageEntryRichTextView:(CKMessageEntryRichTextView *)arg1;
 - (void)messageEntryRichTextView:(CKMessageEntryRichTextView *)arg1 didTapMediaObject:(CKMediaObject *)arg2;
 - (void)messageEntryRichTextView:(CKMessageEntryRichTextView *)arg1 pastedURL:(NSString *)arg2;
 - (BOOL)messageEntryRichTextView:(CKMessageEntryRichTextView *)arg1 shouldPasteMediaObjects:(NSArray *)arg2;
+- (BOOL)messageEntryRichTextView:(CKMessageEntryRichTextView *)arg1 shouldRecognizeGesture:(UIGestureRecognizer *)arg2;
 - (void)messageEntryRichTextViewDidTapHandwritingKey:(CKMessageEntryRichTextView *)arg1;
 - (void)messageEntryRichTextViewWasTapped:(CKMessageEntryRichTextView *)arg1 isLongPress:(BOOL)arg2;
 @end

@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) unsigned int dataType; // @synthesize dataType=_dataType;
 @property (readonly, strong, nonatomic) id<MTLDevice> device;
 @property (readonly, nonatomic) unsigned long long length; // @synthesize length=_length;
+@property (readonly, nonatomic) unsigned long long offset; // @synthesize offset=_offset;
 @property (readonly, nonatomic) unsigned long long vectorBytes; // @synthesize vectorBytes=_vectorBytes;
 @property (readonly, nonatomic) unsigned long long vectors; // @synthesize vectors=_vectors;
 

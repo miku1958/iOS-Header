@@ -47,6 +47,7 @@
 - (void)cut:(id)arg1;
 - (void)dealloc;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)handlePastedString:(id)arg1 toRange:(id)arg2;
 - (void)handleTapOrLongPress:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 textContainer:(id)arg2;

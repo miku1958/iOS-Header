@@ -26,6 +26,7 @@
 - (oneway void)getVoiceInfoForLanguageCode:(NSString *)arg1 footprint:(long long)arg2 gender:(long long)arg3 type:(long long)arg4 reply:(void (^)(VSVoiceAsset *))arg5;
 - (oneway void)getVoiceNamesForLanguage:(NSString *)arg1 reply:(void (^)(NSArray *))arg2;
 - (oneway void)getVoiceResourceForLanguage:(NSString *)arg1 reply:(void (^)(VSVoiceResourceAsset *))arg2;
+- (oneway void)killDaemon;
 - (oneway void)pauseSpeechRequestAtMark:(long long)arg1;
 - (oneway void)prewarmIfNeededWithRequest:(VSSpeechRequest *)arg1;
 - (oneway void)queryPhaticCapabilityWithRequest:(VSSpeechRequest *)arg1 reply:(void (^)(BOOL))arg2;

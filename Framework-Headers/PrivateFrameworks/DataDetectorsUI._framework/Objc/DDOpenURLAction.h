@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)notificationIconBundleIdentifier;
 - (id)notificationURL;
 - (void)performFromView:(id)arg1;
-- (BOOL)useAppLink;
+- (BOOL)urlOverrideDisabled;
 
 @end
 

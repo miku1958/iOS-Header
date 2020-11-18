@@ -16,6 +16,7 @@
 - (id)_accessibilityActionControlsInButtonView:(id)arg1;
 - (id)_accessibilityCellActionControls;
 - (BOOL)_accessibilityIsAwayAlertElement;
+- (BOOL)_accessibilityIsSpeakThisElement;
 - (id)_accessibilityOpenActionControls;
 - (id)_accessibilitySupplementaryFooterViews;
 - (BOOL)_accessibilitySupportsActivateAction;

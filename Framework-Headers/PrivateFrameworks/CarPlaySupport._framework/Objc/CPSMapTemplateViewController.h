@@ -164,6 +164,7 @@
 - (void)_updateInterestingArea;
 - (void)_updateMapButtonVisibility;
 - (void)_updateMapButtonsWithButtons:(id)arg1;
+- (void)_updatePanGestureForHiFiTouch;
 - (void)_updateSafeArea;
 - (void)_viewDidLoad;
 - (void)applicationStateMonitor:(id)arg1 didBecomeActive:(BOOL)arg2;

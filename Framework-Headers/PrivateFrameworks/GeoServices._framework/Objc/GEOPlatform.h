@@ -16,8 +16,6 @@
 - (BOOL)_deviceSupportsNavigation;
 - (id)buildVersion;
 - (id)clientCapabilities;
-- (id)deviceCountrySKU;
-- (id)deviceCountrySKUForServiceRequests;
 - (long long)deviceScreenHeightInPixels;
 - (double)deviceScreenScale;
 - (long long)deviceScreenWidthInPixels;

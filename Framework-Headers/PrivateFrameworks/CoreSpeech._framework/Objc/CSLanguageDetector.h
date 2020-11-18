@@ -26,6 +26,7 @@
     unsigned long long _numLatestLanguages;
     NSString *_languageDetectorAssetHash;
     CSAsset *_currentAsset;
+    NSString *_interactionID;
     NSObject<OS_dispatch_queue> *_queue;
     id<CSLanguageDetectorDelegate> _delegate;
 }
@@ -38,8 +39,9 @@
 @property (weak, nonatomic) id<CSLanguageDetectorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *interactionID; // @synthesize interactionID=_interactionID;
 @property (strong, nonatomic) _EARLanguageDetector *languageDetector; // @synthesize languageDetector=_languageDetector;
-@property (strong, nonatomic) NSString *languageDetectorAssetHash; // @synthesize languageDetectorAssetHash=_languageDetectorAssetHash;
+@property (copy, nonatomic) NSString *languageDetectorAssetHash; // @synthesize languageDetectorAssetHash=_languageDetectorAssetHash;
 @property (strong, nonatomic) NSMutableArray *latestDetectedLanguages; // @synthesize latestDetectedLanguages=_latestDetectedLanguages;
 @property (nonatomic) BOOL needsToUpdateModel; // @synthesize needsToUpdateModel=_needsToUpdateModel;
 @property (nonatomic) int notifyToken; // @synthesize notifyToken=_notifyToken;
@@ -53,6 +55,7 @@
 - (id)_constructLangPriors;
 - (id)_getDefaultValues;
 - (void)_initializeStartOfSpeechDetector:(id)arg1;
+- (void)_logLanguageDetectorMetricsForLoggingInfo:(id)arg1;
 - (void)_logSoSResult:(id)arg1 toPath:(id)arg2;
 - (id)_readJsonDictionaryAt:(id)arg1;
 - (void)_recordRecognitionLanguage:(id)arg1;
@@ -69,6 +72,7 @@
 - (void)languageDetectorDidCompleteProcessing:(id)arg1 loggingInfo:(id)arg2;
 - (void)recordRecognitionLanguage:(id)arg1;
 - (void)resetForNewRequest:(id)arg1;
+- (void)setInteractionIDforCurrentRequest:(id)arg1;
 - (void)setMostRecentRecognitionLanguage:(id)arg1;
 - (void)startOfSpeechDetector:(id)arg1 foundStartSampleAt:(unsigned long long)arg2;
 

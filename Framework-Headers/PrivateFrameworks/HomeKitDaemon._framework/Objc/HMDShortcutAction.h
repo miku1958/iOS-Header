@@ -32,7 +32,7 @@
 - (void)executeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModelObject:(id)arg1 parent:(id)arg2 error:(id *)arg3;
-- (id)initWithSerializedShortcut:(id)arg1 actionSet:(id)arg2;
+- (id)initWithSerializedShortcut:(id)arg1 uuid:(id)arg2 actionSet:(id)arg3;
 - (Class)modelClass;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)removeShortcut;

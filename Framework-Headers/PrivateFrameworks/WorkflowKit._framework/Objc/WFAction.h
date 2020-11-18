@@ -8,12 +8,13 @@
 
 #import <WorkflowKit/NSCopying-Protocol.h>
 #import <WorkflowKit/WFParameterEventObserver-Protocol.h>
+#import <WorkflowKit/WFUUIDProvider-Protocol.h>
 #import <WorkflowKit/WFVariableProvider-Protocol.h>
 
 @class ICApp, NSArray, NSAttributedString, NSDate, NSDictionary, NSHashTable, NSMutableDictionary, NSProgress, NSSet, NSString, NSUnit, UIImage, WFActionParameterSummary, WFContentCollection, WFParameter, WFResourceManager, WFWorkflow;
 @protocol WFActionParameterInputProvider, WFUserInterface, WFVariableDataSource;
 
-@interface WFAction : NSObject <WFParameterEventObserver, NSCopying, WFVariableProvider>
+@interface WFAction : NSObject <WFUUIDProvider, WFParameterEventObserver, NSCopying, WFVariableProvider>
 {
     BOOL _running;
     BOOL _inputParameterUnlocked;
@@ -40,7 +41,7 @@
     id<WFActionParameterInputProvider> _parameterInputProvider;
 }
 
-@property (readonly, nonatomic) NSString *UUID;
+@property (copy, nonatomic) NSString *UUID;
 @property (readonly, nonatomic) NSString *accessibilityName;
 @property (readonly, nonatomic) NSSet *allPossibleDescriptionRequires;
 @property (readonly, nonatomic) NSArray *allPossibleDescriptionResults;
@@ -55,7 +56,7 @@
 @property (readonly, nonatomic) BOOL blocksSnapping;
 @property (readonly, nonatomic) NSArray *categories;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property (readonly, nonatomic) Class configurationUIComponentClass;
+@property (readonly, nonatomic) Class configurationViewClass;
 @property (readonly, nonatomic, getter=isConstructorAction) BOOL constructorAction;
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, nonatomic, getter=isDebugAction) BOOL debugAction;
@@ -109,6 +110,7 @@
 @property (readonly, nonatomic) NSString *localizedDescriptionRequires;
 @property (readonly, nonatomic) NSString *localizedDescriptionResult;
 @property (readonly, nonatomic) NSString *localizedDescriptionSummary;
+@property (readonly, nonatomic) NSAttributedString *localizedFooter;
 @property (readonly, copy, nonatomic) NSString *localizedKeyParameterDisplayName;
 @property (readonly, nonatomic) NSArray *localizedKeywords;
 @property (readonly, nonatomic) NSString *localizedName;
@@ -140,7 +142,7 @@
 @property (readonly, nonatomic, getter=isResidentCompatible) BOOL residentCompatible;
 @property (readonly, nonatomic) WFResourceManager *resourceManager; // @synthesize resourceManager=_resourceManager;
 @property (nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
-@property (readonly, nonatomic) Class runningUIComponentClass;
+@property (readonly, nonatomic) Class runningViewClass;
 @property (readonly, nonatomic) NSDictionary *settingsUIDefinition;
 @property (readonly, nonatomic) Class settingsViewControllerClass;
 @property (readonly, nonatomic) NSString *shortName;
@@ -195,7 +197,8 @@
 - (BOOL)descriptionInputIncludesSupportingItemClasses;
 - (void)didChangeVariableName:(id)arg1 to:(id)arg2;
 - (void)finishRunningWithError:(id)arg1;
-- (id)generateUUIDIfNecessary;
+- (id)generateOutputUUIDForAction:(id)arg1;
+- (id)generateUUIDIfNecessaryWithUUIDProvider:(id)arg1;
 - (BOOL)getInputContentFromVariablesInParameterState:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)hasAvailableActionOutputVariables;
 - (BOOL)hasAvailableVariables;
@@ -219,7 +222,7 @@
 - (void)nameUpdated;
 - (void)outputDetailsUpdated;
 - (id)outputDictionary;
-- (id)outputVariableWithVariableProvider:(id)arg1;
+- (id)outputVariableWithVariableProvider:(id)arg1 UUIDProvider:(id)arg2;
 - (void)parameterDefaultSerializedRepresentationDidChange:(id)arg1;
 - (id)parameterForKey:(id)arg1;
 - (id)parameterKeysIgnoredForParameterSummary;

@@ -45,6 +45,7 @@
 - (void)_commonInitWithMuninView:(id)arg1;
 - (void)_setDimmingViewHidden:(BOOL)arg1 loading:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)_updateDimmingStateForMuninView:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_updateDimmingViewActivityIndicator;
 - (void)_updateDimmingViewBackgroundColor;
 - (void)cancelIfPresent;
 - (void)dealloc;

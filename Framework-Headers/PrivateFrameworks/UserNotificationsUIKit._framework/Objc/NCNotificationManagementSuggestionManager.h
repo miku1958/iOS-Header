@@ -19,6 +19,7 @@
     NSMutableDictionary *_notificationManagementSuggestionContentProviders;
     NSMutableSet *_sectionIdentifiersWithNotificationManagementSuggestions;
     NCNotificationRequest *_requestWithRemoteNotificationManagementSuggestion;
+    NCNotificationRequest *_requestWithProvisionalNotificationManagementSuggestion;
     double _scoreForRequestWithRemoteNotificationManagementSuggestion;
 }
 
@@ -28,6 +29,7 @@
 @property (nonatomic, getter=isDeviceAuthenticated) BOOL deviceAuthenticated; // @synthesize deviceAuthenticated=_deviceAuthenticated;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableDictionary *notificationManagementSuggestionContentProviders; // @synthesize notificationManagementSuggestionContentProviders=_notificationManagementSuggestionContentProviders;
+@property (strong, nonatomic) NCNotificationRequest *requestWithProvisionalNotificationManagementSuggestion; // @synthesize requestWithProvisionalNotificationManagementSuggestion=_requestWithProvisionalNotificationManagementSuggestion;
 @property (strong, nonatomic) NCNotificationRequest *requestWithRemoteNotificationManagementSuggestion; // @synthesize requestWithRemoteNotificationManagementSuggestion=_requestWithRemoteNotificationManagementSuggestion;
 @property (nonatomic) double scoreForRequestWithRemoteNotificationManagementSuggestion; // @synthesize scoreForRequestWithRemoteNotificationManagementSuggestion=_scoreForRequestWithRemoteNotificationManagementSuggestion;
 @property (strong, nonatomic) NSMutableSet *sectionIdentifiersWithNotificationManagementSuggestions; // @synthesize sectionIdentifiersWithNotificationManagementSuggestions=_sectionIdentifiersWithNotificationManagementSuggestions;

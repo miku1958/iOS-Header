@@ -37,6 +37,7 @@
 + (id)locationWithTitle:(id)arg1;
 - (void).cxx_destruct;
 - (void)_clearGeoLocationCache;
+- (BOOL)_reset;
 - (id)cacheKey;
 - (id)calLocation;
 - (id)copyWithZone:(struct _NSZone *)arg1;

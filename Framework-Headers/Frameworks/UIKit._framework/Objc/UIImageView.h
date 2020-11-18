@@ -114,6 +114,7 @@
 - (BOOL)_hasBaseline;
 - (id)_imageContentGuideAllowingCreation:(BOOL)arg1;
 - (void)_imageContentParametersDidChange;
+- (id)_imageResolvingTraitCollectionForTraitCollection:(id)arg1 layoutDirection:(long long)arg2;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (void)_invalidateImageLayouts;
 - (void)_invalidateTemplateSettings;
@@ -126,6 +127,8 @@
 - (id)_renditionForSource:(id)arg1 size:(struct CGSize)arg2 withCGImageProvider:(CDUnknownBlockType)arg3 lazy:(BOOL)arg4;
 - (BOOL)_resolveImageForTrait:(id)arg1;
 - (BOOL)_resolveImageForTrait:(id)arg1 previouslyDisplayedImage:(id)arg2;
+- (id)_resolvedImageFromImage:(id)arg1;
+- (id)_resolvedImageFromImage:(id)arg1 forTrait:(id)arg2;
 - (double)_scaleFactorForImage;
 - (void)_setDecompressingImage:(id)arg1 forType:(unsigned long long)arg2;
 - (BOOL)_setImageViewContents:(id)arg1;

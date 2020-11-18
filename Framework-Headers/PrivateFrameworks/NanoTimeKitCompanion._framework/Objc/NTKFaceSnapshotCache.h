@@ -13,12 +13,14 @@
 {
     NSMutableDictionary *_snapshots;
     NSMapTable *_callbacks;
+    NSMapTable *_faceQOS;
     NSMapTable *_callCount;
     NSObject<OS_dispatch_queue> *_snapshotQueue;
 }
 
 @property (readonly, nonatomic) NSMapTable *callCount; // @synthesize callCount=_callCount;
 @property (readonly, nonatomic) NSMapTable *callbacks; // @synthesize callbacks=_callbacks;
+@property (readonly, nonatomic) NSMapTable *faceQOS; // @synthesize faceQOS=_faceQOS;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *snapshotQueue; // @synthesize snapshotQueue=_snapshotQueue;
 @property (readonly, nonatomic) NSMutableDictionary *snapshots; // @synthesize snapshots=_snapshots;
 
@@ -29,7 +31,7 @@
 - (void)_snapshotProcessInterrupted:(id)arg1;
 - (id)cachedSnapshotOfFace:(id)arg1;
 - (void)dealloc;
-- (void)fetchSnapshotOfFace:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchSnapshotOfFace:(id)arg1 atQOS:(unsigned int)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 
 @end

@@ -8,16 +8,18 @@
 
 #import <AppleMediaServices/AMSBagConsumer-Protocol.h>
 
-@class NSString;
+@class ACAccount, NSString;
 @protocol AMSBagProtocol;
 
 @interface AMSFamilyInfoLookupTask : AMSTask <AMSBagConsumer>
 {
+    ACAccount *_account;
     id<AMSBagProtocol> _bag;
     NSString *_logKey;
 }
 
-@property (strong, nonatomic) id<AMSBagProtocol> bag; // @synthesize bag=_bag;
+@property (readonly, nonatomic) ACAccount *account; // @synthesize account=_account;
+@property (readonly, nonatomic) id<AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -35,6 +37,7 @@
 - (id)_currentCachedFamilyInfo;
 - (id)_pathForCachedFamilyInfoLookupResult;
 - (id)_performFamilyInfoRequestForAccount:(id)arg1 error:(id *)arg2;
+- (id)initWithAccount:(id)arg1 bag:(id)arg2;
 - (id)initWithBag:(id)arg1;
 - (id)initWithBagContract:(id)arg1;
 - (id)performFamilyInfoLookup;

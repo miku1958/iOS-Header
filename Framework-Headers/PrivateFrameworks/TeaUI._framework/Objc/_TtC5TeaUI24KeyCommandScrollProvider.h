@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *invalidator;
     MISSING_TYPE *scrollView;
+    MISSING_TYPE *delegate;
 }
 
 @end

@@ -34,7 +34,6 @@
 @property (nonatomic, getter=_isHidden, setter=_setHidden:) BOOL _hidden;
 @property (readonly, nonatomic) BOOL _isFullyHidden;
 @property (nonatomic, getter=_isNewCopy, setter=_setIsNewCopy:) BOOL _isNewCopy;
-@property (readonly, nonatomic) unsigned long long _legacyRandomSeed;
 @property (readonly, nonatomic) unsigned int _randomSeed;
 @property (nonatomic) struct _PKStrokeID _sortID; // @synthesize _sortID;
 @property (strong, nonatomic) _PKStrokeData *_strokeData; // @synthesize _strokeData;
@@ -130,7 +129,6 @@
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (vector_acef39cc *)newOutlinePaths;
 - (struct CGPath *)newPathRepresentation;
-- (unsigned long long)oldHashForRandomSeedSoonToBeObsoleted;
 - (struct CGPoint)readPointFromArchive:(const struct Point *)arg1;
 - (struct _PKStrokePoint)readPointFromLegacyArchive:(const struct Point *)arg1 deltaFrom:(const struct _PKStrokePoint *)arg2;
 - (struct _PKStrokeID)readStrokeIDFromArchive:(const struct StrokeID *)arg1 withSortedUUIDs:(id)arg2;

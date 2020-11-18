@@ -87,6 +87,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSLayoutConstraint *undoStateHUDTopConstraint; // @synthesize undoStateHUDTopConstraint=_undoStateHUDTopConstraint;
 @property (weak, nonatomic) UIView *view; // @synthesize view=_view;
 
++ (id)iWorkFamily;
 + (void)presentProductivityGestureTutorialIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 + (void)presentProductivityGestureTutorialInlineWithCompletion:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
@@ -109,6 +110,7 @@ __attribute__((visibility("hidden")))
 - (void)animateInStateHUD;
 - (void)animateSpringCoverWithSuccess:(BOOL)arg1 direction:(long long)arg2 remainingDistanceToTravel:(double)arg3;
 - (void)applicationWillSuspend;
+- (BOOL)bundleIniWorkFamily:(id)arg1;
 - (BOOL)canCopy;
 - (BOOL)canCut;
 - (BOOL)canPaste;
@@ -127,10 +129,12 @@ __attribute__((visibility("hidden")))
 - (void)deactiveActiveKeysIfNeeded:(id)arg1;
 - (void)didMoveToView:(id)arg1;
 - (void)disableEnclosingScrollViewScrolling;
+- (BOOL)editingInteractionOptionsAllowGestureRecognizerToBegin:(id)arg1;
 - (void)editingOverlayContainerDidChangeToSceneBounds:(struct CGRect)arg1;
-- (void)fullyCloseCoverWithBeginDirection:(long long)arg1 complete:(CDUnknownBlockType)arg2;
+- (void)fullyCloseCoverWithComplete:(CDUnknownBlockType)arg1;
 - (void)fullyOpenAndCloseCoverWithBeginDirection:(long long)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)interactiveHUDButtonForDirection:(long long)arg1;
@@ -147,6 +151,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)privateEditingInteractionOptions;
 - (void)redo:(BOOL)arg1;
 - (void)removeAllHUDOnContainerChange;
+- (id)responderForOperation:(SEL)arg1 withSender:(id)arg2;
 - (id)scrollViewForInputDelegate;
 - (void)setUndoHUDType:(long long)arg1 visibility:(BOOL)arg2;
 - (void)setUndoInteractiveHUDVisibility:(BOOL)arg1;

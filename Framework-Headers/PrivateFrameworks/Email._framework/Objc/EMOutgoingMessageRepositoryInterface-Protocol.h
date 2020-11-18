@@ -10,7 +10,7 @@
 
 @protocol EMOutgoingMessageRepositoryInterface <NSObject>
 - (void)deleteDraftsInMailboxID:(EMMailboxObjectID *)arg1 documentID:(NSString *)arg2 previousDraftObjectID:(EMMessageObjectID *)arg3;
-- (void)deliverMessage:(EMOutgoingMessage *)arg1 usingMailDrop:(BOOL)arg2 completion:(void (^)(long long))arg3;
+- (void)deliverMessage:(EMOutgoingMessage *)arg1 usingMailDrop:(BOOL)arg2 completion:(void (^)(EMMessageDeliveryResult *))arg3;
 - (void)isProcessingWithCompletion:(void (^)(BOOL))arg1;
 - (void)numberOfPendingMessagesWithCompletion:(void (^)(unsigned long long))arg1;
 - (void)outboxContainsMessageFromAccountObjectID:(EMObjectID *)arg1 completion:(void (^)(BOOL))arg2;

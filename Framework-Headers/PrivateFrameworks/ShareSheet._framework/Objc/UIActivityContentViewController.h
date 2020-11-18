@@ -19,6 +19,7 @@
     BOOL _sharingCollapsed;
     BOOL _photosLandscapeMode;
     BOOL _contentInstalled;
+    BOOL _ignorePersonTap;
     id<UIActivityContentDelegate> _delegate;
     UIViewController *_photosCarouselViewController;
     NSArray *_applicationActivities;
@@ -40,9 +41,11 @@
     NSArray *_shareProxies;
     NSArray *_actionProxies;
     NSNumber *_nearbyCountSlotID;
+    NSMutableDictionary *_peopleSlots;
     NSMutableDictionary *_shareSlots;
     NSMutableDictionary *_actionSlots;
     UIVisualEffectView *_backgroundView;
+    NSUUID *_airDropUUID;
 }
 
 @property (strong, nonatomic) NSArray *actionProxies; // @synthesize actionProxies=_actionProxies;
@@ -50,6 +53,7 @@
 @property (strong, nonatomic) NSDictionary *activitiesByUUID; // @synthesize activitiesByUUID=_activitiesByUUID;
 @property (strong, nonatomic) _UIActivityContentCollectionView *activityCollectionView; // @synthesize activityCollectionView=_activityCollectionView;
 @property (strong, nonatomic) NSArray *airDropSlots; // @synthesize airDropSlots=_airDropSlots;
+@property (strong, nonatomic) NSUUID *airDropUUID; // @synthesize airDropUUID=_airDropUUID;
 @property (strong, nonatomic) NSArray *applicationActivities; // @synthesize applicationActivities=_applicationActivities;
 @property (strong, nonatomic) UIVisualEffectView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (strong, nonatomic) UIBarButtonItem *cancelButton; // @synthesize cancelButton=_cancelButton;
@@ -70,8 +74,10 @@
 @property (strong, nonatomic) NSMutableDictionary *identifierToProgress; // @synthesize identifierToProgress=_identifierToProgress;
 @property (strong, nonatomic) NSMutableDictionary *identifierToPulse; // @synthesize identifierToPulse=_identifierToPulse;
 @property (strong, nonatomic) NSMutableDictionary *identifierToSubtitle; // @synthesize identifierToSubtitle=_identifierToSubtitle;
+@property (nonatomic) BOOL ignorePersonTap; // @synthesize ignorePersonTap=_ignorePersonTap;
 @property (strong, nonatomic) NSNumber *nearbyCountSlotID; // @synthesize nearbyCountSlotID=_nearbyCountSlotID;
 @property (strong, nonatomic) UIBarButtonItem *nextButton; // @synthesize nextButton=_nextButton;
+@property (strong, nonatomic) NSMutableDictionary *peopleSlots; // @synthesize peopleSlots=_peopleSlots;
 @property (strong, nonatomic) NSUUID *photosCarouselUUID; // @synthesize photosCarouselUUID=_photosCarouselUUID;
 @property (strong, nonatomic) UIViewController *photosCarouselViewController; // @synthesize photosCarouselViewController=_photosCarouselViewController;
 @property (nonatomic) BOOL photosLandscapeMode; // @synthesize photosLandscapeMode=_photosLandscapeMode;
@@ -103,6 +109,7 @@
 - (void)updateHeaderMetadata;
 - (void)updateHeaderSize;
 - (void)updateProgress:(double)arg1 withTopText:(id)arg2 bottomText:(id)arg3 forNodeWithIdentifier:(id)arg4 shouldPulse:(BOOL)arg5 animated:(BOOL)arg6;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 

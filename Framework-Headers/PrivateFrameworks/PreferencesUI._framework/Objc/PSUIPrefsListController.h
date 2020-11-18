@@ -156,6 +156,7 @@
 - (void)didAcceptEnteredPIN:(id)arg1;
 - (void)didCancelEnteringPIN;
 - (void)didDismissSearchController:(id)arg1;
+- (void)didSelectRowAtIndexPath:(id)arg1;
 - (void)dismissPopover;
 - (void)displayIdentifiersChanged;
 - (id)generalViewController;

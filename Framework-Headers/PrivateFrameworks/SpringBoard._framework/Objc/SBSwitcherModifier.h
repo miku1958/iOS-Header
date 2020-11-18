@@ -26,7 +26,7 @@
 + (id)queryProtocol;
 - (id)_forwardEventToChildren:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (double)distanceToLeadingEdgeOfLeadingCardFromTrailingEdgeOfScreenWithVisibleIndexToStartSearch:(unsigned long long)arg1 numberOfRows:(unsigned long long)arg2 padding:(double)arg3;
+- (double)distanceToLeadingEdgeOfLeadingCardFromTrailingEdgeOfScreenWithVisibleIndexToStartSearch:(unsigned long long)arg1 numberOfRows:(unsigned long long)arg2 padding:(double)arg3 layoutDirection:(unsigned long long)arg4;
 - (id)handleAppExposeEvent:(id)arg1;
 - (id)handleEvent:(id)arg1;
 - (id)handleGestureEvent:(id)arg1;
@@ -45,6 +45,7 @@
 - (id)handleTetheredRemovalEvent:(id)arg1;
 - (id)handleTimerEvent:(id)arg1;
 - (id)init;
+- (struct CGRect)scaledFrameForIndex:(unsigned long long)arg1;
 
 @end
 

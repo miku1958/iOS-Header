@@ -11,10 +11,12 @@
 @interface CSBluetoothDeviceInfo : NSObject
 {
     BOOL _supportDoAP;
+    BOOL _isTemporaryPairedNotInContacts;
     NSString *_address;
 }
 
 @property (copy, nonatomic) NSString *address; // @synthesize address=_address;
+@property (nonatomic) BOOL isTemporaryPairedNotInContacts; // @synthesize isTemporaryPairedNotInContacts=_isTemporaryPairedNotInContacts;
 @property (nonatomic) BOOL supportDoAP; // @synthesize supportDoAP=_supportDoAP;
 
 - (void).cxx_destruct;

@@ -45,6 +45,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithJunkImageClassificationObservations:(id)arg1 imageAestheticsObservation:(id)arg2 saliencyObservation:(id)arg3 scenePrintObservation:(id)arg4 compressedScenePrintObservation:(id)arg5 imageCorrectionNeedObservation:(id)arg6 detectedObjectsInfoHumanFaces:(id)arg7 detectedObjectsInfoHumanBodies:(id)arg8 detectedObjectsInfoCatBodies:(id)arg9 detectedObjectsInfoDogBodies:(id)arg10 detectedObjectsSalientObjects:(id)arg11 stitchConfidence:(unsigned long long)arg12 horizonLinePresent:(BOOL)arg13 horizonLineAngleInDegrees:(float)arg14 captureFolderPath:(id)arg15;
+- (id)initWithSpatialOverCapturePrivateClientMetadata:(id)arg1;
 
 @end
 

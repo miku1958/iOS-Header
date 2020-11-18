@@ -24,6 +24,7 @@
 + (id)request:(id *)arg1;
 - (void).cxx_destruct;
 - (BOOL)cachePrerecord:(id)arg1 serializedPrerecord:(id)arg2 error:(id *)arg3;
+- (void)dealloc;
 - (id)fetchPrerecord:(id)arg1 error:(id *)arg2;
 - (id)fetchRequestWaitingOnPasscode:(id *)arg1;
 - (id)fetchStatuses:(id *)arg1;

@@ -23,7 +23,6 @@
 - (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3 floatingConfiguration:(long long)arg4;
 - (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (id)layoutSettings;
-- (long long)layoutUpdateMode;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (double)shadowOpacityForIndex:(unsigned long long)arg1;

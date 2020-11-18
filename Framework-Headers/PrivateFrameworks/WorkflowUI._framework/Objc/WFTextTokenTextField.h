@@ -87,6 +87,7 @@
 - (BOOL)shouldChangeCharactersWithNonbreakingSpacesIfNecessaryInRange:(struct _NSRange)arg1 replacementString:(id)arg2;
 - (struct CGRect)textRectForBounds:(struct CGRect)arg1;
 - (id)textWithRegularSpaces;
+- (void)tintColorDidChange;
 - (void)updateAllowedVariableTypes;
 - (void)updateDoneButtonPresence;
 - (void)updateVariableBlock;

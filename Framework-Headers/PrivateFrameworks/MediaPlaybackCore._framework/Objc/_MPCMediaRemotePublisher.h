@@ -48,6 +48,7 @@
 - (void)_enqueueFallbackIntentIfNeededForCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_likedStateChangedNotification:(id)arg1;
 - (void)_performCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)_playbackStateIsIdle:(long long)arg1;
 - (void)_subscriptionStatusChangedNotification:(id)arg1;
 - (id)_supportedSessionTypes;
 - (void)_updateLaunchCommands;

@@ -90,7 +90,7 @@
 - (BOOL)donateRelevantActions:(id)arg1;
 - (void)donateRelevantActions:(id)arg1 bundleID:(id)arg2 options:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)fetchAttributes:(id)arg1;
-- (void)fetchAttributes:(id)arg1 protectionClass:(id)arg2 bundleID:(id)arg3 identifiers:(id)arg4 reply:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)fetchAttributes:(id)arg1 protectionClass:(id)arg2 bundleID:(id)arg3 identifiers:(id)arg4 includeParents:(BOOL)arg5 reply:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (BOOL)fetchClientState:(id)arg1;
 - (void)fetchLastClientStateWithProtectionClass:(id)arg1 forBundleID:(id)arg2 clientStateName:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)flushUserActivities;

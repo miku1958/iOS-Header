@@ -14,23 +14,31 @@ __attribute__((visibility("hidden")))
     BOOL _isInProgress;
     NSString *_inProgresText;
     NSString *_completionText;
+    NSString *_longWaitingWarningText;
+    double _longWaitingWarningThreshold;
     UIActivityIndicatorView *_spinnerView;
     UIImageView *_completionIconImageView;
     UILabel *_textLabel;
+    UILabel *_longWaitingWarningLabel;
 }
 
 @property (strong, nonatomic) UIImageView *completionIconImageView; // @synthesize completionIconImageView=_completionIconImageView;
 @property (strong, nonatomic) NSString *completionText; // @synthesize completionText=_completionText;
 @property (strong, nonatomic) NSString *inProgresText; // @synthesize inProgresText=_inProgresText;
 @property (nonatomic) BOOL isInProgress; // @synthesize isInProgress=_isInProgress;
+@property (strong, nonatomic) UILabel *longWaitingWarningLabel; // @synthesize longWaitingWarningLabel=_longWaitingWarningLabel;
+@property (strong, nonatomic) NSString *longWaitingWarningText; // @synthesize longWaitingWarningText=_longWaitingWarningText;
+@property (nonatomic) double longWaitingWarningThreshold; // @synthesize longWaitingWarningThreshold=_longWaitingWarningThreshold;
 @property (strong, nonatomic) UIActivityIndicatorView *spinnerView; // @synthesize spinnerView=_spinnerView;
 @property (strong, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 
 - (void).cxx_destruct;
+- (void)_scheduleLongWaitingWarning;
 - (void)completeActivityAnimated:(BOOL)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
 - (void)viewDidLayoutSubviews;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

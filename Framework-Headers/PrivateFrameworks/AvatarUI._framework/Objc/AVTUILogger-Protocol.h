@@ -153,7 +153,7 @@
 - (void)logRenderingModelPreset:(NSString *)arg1;
 - (void)logRenderingRecord:(NSString *)arg1 size:(struct CGSize)arg2;
 - (void)logRenderingStickerEnd:(NSString *)arg1;
-- (void)logRenderingStickerStart:(NSString *)arg1;
+- (void)logRenderingStickerStart:(NSString *)arg1 forRecord:(NSString *)arg2;
 - (void)logRequestingPreLoadingTask:(NSString *)arg1 forIndex:(unsigned long long)arg2 section:(unsigned long long)arg3;
 - (void)logRequestingThumbnailForIndex:(unsigned long long)arg1 section:(NSString *)arg2;
 - (void)logResetSyncReason:(unsigned long long)arg1;

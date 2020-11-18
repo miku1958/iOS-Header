@@ -32,6 +32,8 @@
     MISSING_TYPE *renderSubscription;
     MISSING_TYPE *realityAssetCollisionSubscription;
     MISSING_TYPE *__disableComposition;
+    MISSING_TYPE *__nonARKitDevices;
+    MISSING_TYPE *enablePresentsWithTransaction;
     MISSING_TYPE *presentsWithTransactionFrames;
     MISSING_TYPE *__statisticsOptions;
     MISSING_TYPE *__disableStatisticsRendering;

@@ -8,7 +8,7 @@
 
 #import <AssetsLibraryServices/PLPhotoLibraryPathManager-Protocol.h>
 
-@class NSFileManager, NSString, NSURL;
+@class NSFileManager, NSString, NSURL, PLFileSystemCapabilities;
 
 @interface PLPhotoLibraryPathManagerCore : NSObject <PLPhotoLibraryPathManager>
 {
@@ -19,6 +19,7 @@
     unsigned int _externalDirectoriesExists;
     unsigned int _persistedAlbumDataDirectoryExists;
     NSFileManager *_fm;
+    PLFileSystemCapabilities *_capabilities;
     NSURL *_libraryURL;
     NSString *_baseDirectory;
     NSString *_assetUUIDRecoveryMappingPath;
@@ -29,6 +30,7 @@
 
 @property (copy) NSString *assetUUIDRecoveryMappingPath; // @synthesize assetUUIDRecoveryMappingPath=_assetUUIDRecoveryMappingPath;
 @property (copy) NSString *baseDirectory; // @synthesize baseDirectory=_baseDirectory;
+@property (readonly, nonatomic) PLFileSystemCapabilities *capabilities; // @synthesize capabilities=_capabilities;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -43,10 +45,11 @@
 + (void)_updateSystemLibraryURLWithOldValue:(id)arg1;
 + (id)basenameForSpatialOverCaptureFromOriginalBasename:(id)arg1;
 + (void)initialize;
++ (BOOL)isSupportedFileSystemAtURL:(id)arg1;
 + (BOOL)isSystemLibraryURLDefined;
 + (BOOL)isSystemPhotoLibraryURL:(id)arg1;
-+ (BOOL)isValidSystemPhotoLibraryURL:(id)arg1;
 + (void)listenForSystemPhotoLibraryURLChanges;
++ (void)recordPrevSystemLibraryPath:(id)arg1;
 + (BOOL)setSystemLibraryURL:(id)arg1 options:(unsigned short)arg2 error:(id *)arg3;
 + (BOOL)setTimeMachineExclusionAttribute:(BOOL)arg1 url:(id)arg2 error:(id *)arg3;
 + (id)systemLibraryBaseDirectory;

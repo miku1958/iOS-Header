@@ -25,6 +25,7 @@
 - (void)_accessibilitySetAllRemoteElements:(id)arg1;
 - (void)_accessibilitySetIOSMacRotors:(id)arg1;
 - (id)_accessibilityUserTestingParent;
+- (BOOL)_accessibilityWindowVisible;
 - (void)_axCheckForExistingRemoteElements;
 - (void)_axListenForRemoteElement;
 - (void)_axRemoteElementRegistered:(id)arg1;

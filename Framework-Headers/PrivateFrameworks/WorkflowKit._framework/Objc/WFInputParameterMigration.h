@@ -11,7 +11,7 @@
 }
 
 + (BOOL)workflowNeedsMigration:(id)arg1 fromClientVersion:(id)arg2;
-- (id)findActionProvidingInputToActionAtIndex:(unsigned long long)arg1 inWorkflow:(id)arg2 reachedBeginning:(BOOL *)arg3;
+- (id)findActionProvidingInputToActionAtIndex:(unsigned long long)arg1 inWorkflow:(id)arg2 reachedBeginning:(BOOL *)arg3 inputActionIndex:(unsigned long long *)arg4;
 - (id)findGetVariableActionProvidingInputToActionAtIndex:(long long)arg1 inWorkflow:(id)arg2;
 - (void)migrateLegacyInputVariablesInParameterDictionary:(id)arg1 toVariable:(id)arg2;
 - (void)migrateWorkflow;

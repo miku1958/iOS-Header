@@ -6,21 +6,23 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-@class NSArray, UILabel, UITextView;
+@class HUTappableTextView, NSArray, UILabel;
 @protocol HFStringGenerator;
 
 @interface HUItemTableSectionHeaderFooterView : UITableViewHeaderFooterView
 {
     id<HFStringGenerator> _message;
-    UITextView *_messageTextView;
+    HUTappableTextView *_messageTextView;
     unsigned long long _type;
     NSArray *_constraints;
+    struct UIEdgeInsets _indentationInset;
 }
 
 @property (strong, nonatomic) NSArray *constraints; // @synthesize constraints=_constraints;
 @property (readonly, nonatomic) UILabel *detailTextLabel; // @dynamic detailTextLabel;
+@property (nonatomic) struct UIEdgeInsets indentationInset; // @synthesize indentationInset=_indentationInset;
 @property (copy, nonatomic) id<HFStringGenerator> message; // @synthesize message=_message;
-@property (strong, nonatomic) UITextView *messageTextView; // @synthesize messageTextView=_messageTextView;
+@property (strong, nonatomic) HUTappableTextView *messageTextView; // @synthesize messageTextView=_messageTextView;
 @property (readonly, nonatomic) UILabel *textLabel; // @dynamic textLabel;
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
 

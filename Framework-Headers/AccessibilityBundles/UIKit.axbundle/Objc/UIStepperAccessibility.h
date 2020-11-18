@@ -17,6 +17,7 @@
 - (id)_accessibilityKeyCommands;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axAnnotateButtons;
+- (BOOL)_axIsAccessibilityNumericalPicker;
 - (void)_commonStepperInit;
 - (void)_fkaTapMinus;
 - (void)_fkaTapPlus;

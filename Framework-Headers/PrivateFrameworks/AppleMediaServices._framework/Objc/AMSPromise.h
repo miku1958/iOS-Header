@@ -44,6 +44,7 @@
 - (BOOL)cancel;
 - (id)catchWithBlock:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)completionHandlerAdapter;
+- (id)continueWithBlock:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)errorOnlyCompletionHandlerAdapter;
 - (BOOL)finishWithError:(id)arg1;
 - (BOOL)finishWithResult:(id)arg1;

@@ -301,6 +301,7 @@
 - (BOOL)canStepForward;
 - (BOOL)canUseNetworkResourcesForLiveStreamingWhilePaused;
 - (void)cancelPendingSeeks;
+- (id)configurationGroup;
 - (CDStruct_1b6d18a9)configuredTimeOffsetFromLive;
 - (BOOL)continuesPlayingDuringPrerollForRateChange;
 - (BOOL)continuesPlayingDuringPrerollForSeek;

@@ -127,6 +127,7 @@
 - (id)notesFolders;
 - (id)onBehalfOfBundleIdentifier;
 - (id)performCalendarDirectorySearchForTerms:(id)arg1 recordTypes:(id)arg2 resultLimit:(unsigned long long)arg3 consumer:(id)arg4;
+- (void)performSearchQuery:(id)arg1;
 - (id)policyManager;
 - (id)protocol;
 - (id)protocolVersion;

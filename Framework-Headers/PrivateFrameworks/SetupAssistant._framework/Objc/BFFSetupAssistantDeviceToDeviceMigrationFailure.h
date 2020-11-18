@@ -23,11 +23,13 @@ __attribute__((visibility("hidden")))
     NSString *_targetDeviceModel;
     NSString *_targetDeviceProductVersion;
     NSString *_underlyingErrorDomain;
+    BOOL _inAppleStore;
     struct {
         unsigned int errorCode:1;
         unsigned int timestamp:1;
         unsigned int underlyingErrorCode:1;
         unsigned int connectionType:1;
+        unsigned int inAppleStore:1;
     } _has;
 }
 
@@ -37,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasConnectionType;
 @property (nonatomic) BOOL hasErrorCode;
 @property (readonly, nonatomic) BOOL hasErrorDomain;
+@property (nonatomic) BOOL hasInAppleStore;
 @property (readonly, nonatomic) BOOL hasSourceDeviceModel;
 @property (readonly, nonatomic) BOOL hasSourceDeviceProductVersion;
 @property (readonly, nonatomic) BOOL hasTargetDeviceModel;
@@ -44,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic) BOOL hasUnderlyingErrorCode;
 @property (readonly, nonatomic) BOOL hasUnderlyingErrorDomain;
+@property (nonatomic) BOOL inAppleStore; // @synthesize inAppleStore=_inAppleStore;
 @property (strong, nonatomic) NSString *sourceDeviceModel; // @synthesize sourceDeviceModel=_sourceDeviceModel;
 @property (strong, nonatomic) NSString *sourceDeviceProductVersion; // @synthesize sourceDeviceProductVersion=_sourceDeviceProductVersion;
 @property (strong, nonatomic) NSString *targetDeviceModel; // @synthesize targetDeviceModel=_targetDeviceModel;

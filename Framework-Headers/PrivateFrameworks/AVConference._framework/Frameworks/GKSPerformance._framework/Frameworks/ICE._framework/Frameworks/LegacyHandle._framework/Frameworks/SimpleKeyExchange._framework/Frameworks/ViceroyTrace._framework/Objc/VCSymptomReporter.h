@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (int)reportSymptomWithOptions:(id)arg1 type:(id)arg2 subType:(id)arg3 context:(id)arg4;
 - (int)reportSymptomWithType:(id)arg1 subType:(id)arg2 context:(id)arg3 actions:(id)arg4;
 - (int)reportTargetBitrateOvershoot;
+- (int)reportUnexpectedHighRTT;
 - (int)reportUnexpectedLowTargetBitrate;
 - (int)reportVideoStall;
 - (id)symptomNameWithDomain:(id)arg1 subtypeContext:(id)arg2;

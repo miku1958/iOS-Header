@@ -20,7 +20,6 @@
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;
 
 @end

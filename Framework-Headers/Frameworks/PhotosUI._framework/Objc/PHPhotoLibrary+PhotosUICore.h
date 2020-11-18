@@ -24,6 +24,7 @@
 - (void)px_endPausingChanges:(id)arg1;
 - (BOOL)px_fetchHasNoVisibleAssets;
 - (id)px_memoryWithLocalIdentifier:(id)arg1;
+- (id)px_objectWithLocalIdentifier:(id)arg1;
 - (void)px_registerChangeObserver:(id)arg1;
 - (void)px_unregisterChangeObserver:(id)arg1;
 @end

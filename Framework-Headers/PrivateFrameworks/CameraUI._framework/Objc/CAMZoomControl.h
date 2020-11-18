@@ -39,6 +39,7 @@
     double __previousTouchTime;
     NSTimer *__zoomDialVisibilityTimer;
     NSDate *__startTimeForHideAnimationInProgress;
+    double __hideAnimationInProgressDuration;
     CAMZoomButton *__highlightedZoomButton;
     CAMFeedbackController *__feedbackController;
     NSArray *__significantHapticDisplayValues;
@@ -62,6 +63,7 @@
 @property (readonly, nonatomic) double _displayZoomValue;
 @property (nonatomic, getter=_isEligibleForSwipeDownToDismiss, setter=_setEligibleForSwipeDownToDismiss:) BOOL _eligibleForSwipeDownToDismiss; // @synthesize _eligibleForSwipeDownToDismiss=__eligibleForSwipeDownToDismiss;
 @property (readonly, nonatomic) CAMFeedbackController *_feedbackController; // @synthesize _feedbackController=__feedbackController;
+@property (nonatomic, setter=_setHideAnimationInProgressDuration:) double _hideAnimationInProgressDuration; // @synthesize _hideAnimationInProgressDuration=__hideAnimationInProgressDuration;
 @property (strong, nonatomic, setter=_setHighlightedZoomButton:) CAMZoomButton *_highlightedZoomButton; // @synthesize _highlightedZoomButton=__highlightedZoomButton;
 @property (nonatomic) long long _lastHapticZone; // @synthesize _lastHapticZone=__lastHapticZone;
 @property (nonatomic, setter=_setPreviousTouchLocation:) struct CGPoint _previousTouchLocation; // @synthesize _previousTouchLocation=__previousTouchLocation;

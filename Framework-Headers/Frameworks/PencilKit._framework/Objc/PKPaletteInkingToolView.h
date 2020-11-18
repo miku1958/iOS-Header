@@ -69,7 +69,6 @@
 
 + (id)defaultColorForInkingToolWithIdentifier:(id)arg1;
 - (void).cxx_destruct;
-- (double)_bandVerticalOffset;
 - (struct CGRect)_colorIndicatorImageViewFrame;
 - (id)_opacityLabelFont;
 - (void)_reloadToolImage;
@@ -78,6 +77,8 @@
 - (id)_toolColorIndicatorImageForCurrentEdgeLocation;
 - (id)_toolTipContourImageForCurrentEdgeLocation;
 - (id)_toolTipImageForCurrentEdgeLocation;
+- (id)_uiColor;
+- (long long)_uiColorUserInterfaceStyle;
 - (void)_updateOpacityLabel;
 - (void)_updateToolColorBandAndTipImageViews;
 - (id)attributeViewController;

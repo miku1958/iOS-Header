@@ -10,6 +10,7 @@
 
 @protocol HealthPluginHost <HKHealthAppPluginHost>
 - (void)collectFeedPopulationDiagnosticLogsWithCompletion:(void (^)(NSArray *))arg1;
+- (void)deleteFeedWithFeedKinds:(NSArray *)arg1 completion:(void (^)(void))arg2;
 - (void)indicateMajorUserInteractionWithCompletion:(void (^)(BOOL))arg1;
 - (void)populateFeedWithFeedKinds:(NSArray *)arg1 for:(NSDateInterval *)arg2 completion:(void (^)(void))arg3;
 - (void)postNotificationWith:(NSString *)arg1 userInfo:(NSDictionary *)arg2;

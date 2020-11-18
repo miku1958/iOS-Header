@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_originalItems;
     NSMutableDictionary *_stitchedItems;
     NSMutableDictionary *_stitchedPlaceholders;
+    NSMutableDictionary *_placeholderReplacements;
     NSMutableDictionary *_deletedItems;
     BOOL _started;
     BOOL _finished;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) BOOL isActive;
 @property (readonly, nonatomic) NSArray *placeholderItems;
+@property (readonly, nonatomic) NSArray *placeholderReplacementsIDs;
 @property (copy, nonatomic) CDUnknownBlockType placeholdersCreationBlock; // @synthesize placeholdersCreationBlock=_placeholdersCreationBlock;
 @property (readonly, nonatomic) NSDictionary *stitchedFieldsAndItemsByItemIDs;
 

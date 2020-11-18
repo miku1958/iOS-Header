@@ -34,6 +34,7 @@
 + (id)length:(id)arg1;
 + (id)like:(id)arg1 expression:(id)arg2;
 + (id)like:(id)arg1 expression:(id)arg2 escape:(unsigned short)arg3;
++ (id)likely:(id)arg1;
 + (id)lower:(id)arg1;
 + (id)ltrim:(id)arg1 pattern:(id)arg2;
 + (id)max:(id)arg1;
@@ -45,6 +46,7 @@
 + (id)substr:(id)arg1 index:(id)arg2 length:(id)arg3;
 + (id)trim:(id)arg1 pattern:(id)arg2;
 + (id)typeOf:(id)arg1;
++ (id)unlikely:(id)arg1;
 + (id)upper:(id)arg1;
 - (void).cxx_destruct;
 - (id)ef_aggregateColumnExpression;

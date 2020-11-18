@@ -14,7 +14,7 @@
 
 @interface ECEmailAddressComponents : NSObject <ECEmailAddressConvertible, EFPubliclyDescribable, NSCopying>
 {
-    NSString *_address;
+    NSString *_simpleAddress;
     NSString *_localPart;
     NSString *_domain;
     NSString *_idnaDomain;
@@ -22,7 +22,6 @@
     NSString *_displayName;
 }
 
-@property (readonly) NSString *address; // @synthesize address=_address;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy) NSString *displayName; // @synthesize displayName=_displayName;
@@ -34,6 +33,7 @@
 @property (readonly, copy) NSString *idnaAddress;
 @property (copy, setter=setIDNADomain:) NSString *idnaDomain; // @synthesize idnaDomain=_idnaDomain;
 @property (copy) NSString *localPart; // @synthesize localPart=_localPart;
+@property (readonly) NSString *simpleAddress; // @synthesize simpleAddress=_simpleAddress;
 @property (readonly) NSString *stringValue;
 @property (readonly) Class superclass;
 

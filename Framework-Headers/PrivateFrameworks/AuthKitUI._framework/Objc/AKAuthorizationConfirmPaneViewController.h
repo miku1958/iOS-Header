@@ -121,7 +121,6 @@
 - (void)_setupValidatedScopes;
 - (id)_shareMyEmailCell;
 - (BOOL)_shouldOverrideIntrinsicContentHeight;
-- (void)_showOrHideConfirmButton;
 - (id)_singleEmailCellForIndex:(long long)arg1;
 - (id)_textFieldForRow:(unsigned long long)arg1;
 - (id)_textFromTextField:(id)arg1;
@@ -131,7 +130,7 @@
 - (void)_updateIconViewWithIconContext:(id)arg1;
 - (void)_updateLayoutForHeightChange:(double)arg1;
 - (void)_useOtherIDButtonSelected:(id)arg1;
-- (double)contentTrayOffset;
+- (double)contentScrollOffset;
 - (void)dealloc;
 - (void)didSelectEditScope:(id)arg1 options:(id)arg2;
 - (id)init;

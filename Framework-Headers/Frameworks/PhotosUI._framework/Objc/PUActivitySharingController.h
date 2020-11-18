@@ -19,6 +19,7 @@
 __attribute__((visibility("hidden")))
 @interface PUActivitySharingController : NSObject <PUActivityViewControllerDelegate, UIActivityViewControllerAirDropDelegate, PUCarouselSharingViewControllerDelegate, UIPresentationControllerDelegatePrivate, PXChangeObserver, PXActivitySharingController>
 {
+    BOOL _activityViewControllerWasCreated;
     BOOL _allowAirPlayActivity;
     BOOL _excludeShareActivity;
     id<PXActivitySharingControllerDelegate> _delegate;
@@ -64,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateExcludedActivityTypes;
 - (void)_updateSelectedAssetIdentifiers;
 - (void)activityViewControllerDidFinishAirdropTransfer:(id)arg1;
+- (id)activityViewControllerIfAvailable;
 - (BOOL)activityViewControllerShouldCancelAfterPreparationCanceled:(id)arg1;
 - (void)activityViewControllerWillDisappear:(id)arg1;
 - (void)carouselSharingViewController:(id)arg1 addAssetItem:(id)arg2;

@@ -229,6 +229,7 @@
 - (BOOL)conformsToRecurrenceRules:(id)arg1;
 - (BOOL)couldBeJunk;
 - (unsigned long long)countOfAttendeeProposedTimes;
+- (id)defaultAlarms;
 - (void)dismissAcceptedProposeNewTimeNotification;
 - (CDStruct_79f9e052)endDatePinnedForAllDay;
 - (id)endDateRaw;

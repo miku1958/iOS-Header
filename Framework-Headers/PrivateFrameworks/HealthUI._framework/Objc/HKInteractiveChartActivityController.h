@@ -36,11 +36,11 @@
 @property (strong, nonatomic) NSMapTable *yAxisAccessoryViewsByGraphSeries; // @synthesize yAxisAccessoryViewsByGraphSeries=_yAxisAccessoryViewsByGraphSeries;
 
 - (void).cxx_destruct;
-- (id)_activitySeriesForActivityValue:(long long)arg1 wheelchairUseCharacteristicCache:(id)arg2 unitPreferenceController:(id)arg3;
+- (id)_activitySeriesForActivityValue:(long long)arg1 wheelchairUseCharacteristicCache:(id)arg2 unitPreferenceController:(id)arg3 displayTypeController:(id)arg4;
 - (id)_activityYAxisForActivityValue:(long long)arg1 zeroOnly:(BOOL)arg2 stackOffset:(long long)arg3 bottomLabelPadding:(double)arg4 displayTypeController:(id)arg5 unitPreferenceController:(id)arg6;
 - (id)_dayActivitySummaryForDateRange:(id)arg1;
 - (id)_displayTypeForActivityValue:(long long)arg1 yAxis:(id)arg2 dataProvider:(id)arg3 displayTypeController:(id)arg4 unitPreferenceController:(id)arg5 wheelchairUseCharacteristicCache:(id)arg6;
-- (id)_generateActivityBarSeriesWithColor:(id)arg1 legendTitle:(id)arg2 metGoalFillStyle:(id)arg3 missedGoalFillStyle:(id)arg4 activityValue:(long long)arg5 unitPreferenceController:(id)arg6;
+- (id)_generateActivityBarSeriesWithColor:(id)arg1 legendTitle:(id)arg2 metGoalFillStyle:(id)arg3 missedGoalFillStyle:(id)arg4 activityValue:(long long)arg5 unitPreferenceController:(id)arg6 displayTypeController:(id)arg7;
 - (id)_generateActivityGoalLineSeriesWithColor:(id)arg1;
 - (id)_lineColorForActivityValue:(long long)arg1;
 - (id)_metGoalFillStyleForActivityValue:(long long)arg1;

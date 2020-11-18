@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_axIsPickerType;
 - (BOOL)_axIsTextFieldType;
+- (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;

@@ -17,6 +17,7 @@
     BOOL _rendersAsynchronously;
     BOOL _wantsMinificationFilter;
     BOOL _asynchronousRenderingDisabled;
+    BOOL _asynchronousRenderingTemporarilyDisabled;
     SBFloatingApplicationLiveContentWindow *_window;
     SBWindowSelfHostWrapper *_windowHostWrapper;
     SBUISizeObservingView *_sizeObservingView;
@@ -26,7 +27,8 @@
     FBDisplayLayoutElement *_displayLayoutElement;
 }
 
-@property (nonatomic) BOOL asynchronousRenderingDisabled; // @synthesize asynchronousRenderingDisabled=_asynchronousRenderingDisabled;
+@property (readonly, nonatomic) BOOL asynchronousRenderingDisabled; // @synthesize asynchronousRenderingDisabled=_asynchronousRenderingDisabled;
+@property (readonly, nonatomic) BOOL asynchronousRenderingTemporarilyDisabled; // @synthesize asynchronousRenderingTemporarilyDisabled=_asynchronousRenderingTemporarilyDisabled;
 @property (readonly, nonatomic) UIView *contentOverlayView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -44,13 +46,17 @@
 
 - (void).cxx_destruct;
 - (void)_updateAsynchronousRendering;
+- (void)_updateContentWindowFrameFromView:(id)arg1;
 - (void)configureWithWorkspaceEntity:(id)arg1 referenceFrame:(struct CGRect)arg2 interfaceOrientation:(long long)arg3;
 - (id)contentViewController;
 - (void)dealloc;
+- (void)disableAsynchronousRenderingForNextCommit;
 - (id)initWithWindow:(id)arg1;
 - (void)invalidate;
 - (void)noteKeyboardFocusDidChangeToSceneID:(id)arg1;
+- (void)noteNeedsLayoutUpdateFor180DegreeRotation;
 - (void)sceneHandle:(id)arg1 didCreateScene:(id)arg2;
+- (void)setAsynchronousRenderingDisabled:(BOOL)arg1;
 - (void)setHomeGrabberHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setRendersAsynchronously:(BOOL)arg1 withMinificationFilterEnabled:(BOOL)arg2;
 - (void)setStatusBarHidden:(BOOL)arg1 nubViewHidden:(BOOL)arg2 animator:(CDUnknownBlockType)arg3;

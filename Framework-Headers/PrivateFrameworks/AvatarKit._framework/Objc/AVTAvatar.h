@@ -143,6 +143,7 @@
 - (void)setupEyeOrientationAndReflections;
 - (void)setupFaceTracking;
 - (void)setupMorphInfo;
+- (void)setupMorphInfoForChangeInSubHierarchy;
 - (void)setupPhysicsIfNeeded;
 - (struct UIImage *)snapshotWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3;
 - (id)stickerPhysicsStateIdentifier;

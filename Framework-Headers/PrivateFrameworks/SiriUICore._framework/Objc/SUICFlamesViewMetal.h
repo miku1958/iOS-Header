@@ -65,6 +65,7 @@
     BOOL _reduceFrameRate;
     BOOL _reduceThinkingFramerate;
     BOOL _renderInBackground;
+    BOOL _flamesPaused;
     id<SUICFlamesViewProvidingDelegate> _flamesDelegate;
     long long _state;
     UIColor *_dictationColor;
@@ -80,13 +81,13 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIColor *dictationColor; // @synthesize dictationColor=_dictationColor;
 @property (weak, nonatomic) id<SUICFlamesViewProvidingDelegate> flamesDelegate; // @synthesize flamesDelegate=_flamesDelegate;
+@property (nonatomic) BOOL flamesPaused; // @synthesize flamesPaused=_flamesPaused;
 @property (nonatomic) BOOL freezesAura; // @synthesize freezesAura=_freezesAura;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double horizontalScaleFactor; // @synthesize horizontalScaleFactor=_horizontalScaleFactor;
 @property (readonly, nonatomic) BOOL isRenderingEnabled;
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) UIImage *overlayImage; // @synthesize overlayImage=_overlayImage;
-@property (nonatomic) BOOL paused;
 @property (nonatomic) BOOL reduceFrameRate; // @synthesize reduceFrameRate=_reduceFrameRate;
 @property (nonatomic) BOOL reduceThinkingFramerate; // @synthesize reduceThinkingFramerate=_reduceThinkingFramerate;
 @property (nonatomic) BOOL renderInBackground; // @synthesize renderInBackground=_renderInBackground;

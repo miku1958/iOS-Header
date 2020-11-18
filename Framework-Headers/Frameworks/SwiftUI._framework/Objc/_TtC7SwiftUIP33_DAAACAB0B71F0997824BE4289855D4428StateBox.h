@@ -10,7 +10,6 @@
 
 @interface _TtC7SwiftUIP33_DAAACAB0B71F0997824BE4289855D4428StateBox : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *host;
     MISSING_TYPE *isActive;
     MISSING_TYPE *phase;
     MISSING_TYPE *sampler;

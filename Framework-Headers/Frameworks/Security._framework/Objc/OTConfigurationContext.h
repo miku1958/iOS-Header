@@ -26,6 +26,7 @@
 @property (strong) id sbd; // @synthesize sbd=_sbd;
 
 - (void).cxx_destruct;
+- (id)makeOTControl:(id *)arg1;
 
 @end
 

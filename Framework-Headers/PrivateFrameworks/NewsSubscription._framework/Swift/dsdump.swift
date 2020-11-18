@@ -1,3 +1,7 @@
+ protocol NewsSubscription.PurchasePresenterType // 1 requirements
+ {
+	// method
+ }
  protocol NewsSubscription.PurchasingSpinnerViewStylerType // 3 requirements
  {
 	// method
@@ -43,6 +47,10 @@
 	// method
 	// method
  }
+ protocol NewsSubscription.PurchaseStarterType // 1 requirements
+ {
+	// method
+ }
  protocol NewsSubscription.PurchaseContextEntriesManagerType // 4 requirements
  {
 	// method
@@ -51,6 +59,10 @@
 	// method
  }
  protocol NewsSubscription.SoftPaywallLayoutAttributesFactoryType // 1 requirements
+ {
+	// method
+ }
+ protocol NewsSubscription.FamilySharingLandingPageLauncherType // 1 requirements
  {
 	// method
  }
@@ -89,9 +101,8 @@
 	// method
 	// method
  }
- protocol NewsSubscription.PaywallInteractorTypeDelegate // 6 requirements
+ protocol NewsSubscription.PaywallInteractorTypeDelegate // 5 requirements
  {
-	// method
 	// method
 	// method
 	// method
@@ -214,9 +225,8 @@
 	// method
 	// method
  }
- protocol NewsSubscription.PaywallEventHandlerTypeDelegate // 6 requirements
+ protocol NewsSubscription.PaywallEventHandlerTypeDelegate // 5 requirements
  {
-	// method
 	// method
 	// method
 	// method
@@ -401,6 +411,17 @@
 	case creativeID  
  }
 
+ class NewsSubscription.PurchasePresenter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PurchasePresenterType {
+
+	// Properties
+	let purchaseStarter : PurchaseStarterType // +0x10 (0x28)
+	let familySharingLandingPageLauncher : FamilySharingLandingPageLauncherType // +0x38 (0x28)
+	let purchasingSpinnerViewControllerFactory : PurchasingSpinnerViewControllerFactoryType // +0x60 (0x28)
+	var $__lazy_storage_$_spinnerViewController : PurchasingSpinnerViewController? // +0x88 (0x8)
+
+	// Swift methods
+ }
+
  struct NewsSubscription.PurchaseDisabledAlert { }
 
  class NewsSubscription.BridgedPaywall : NSObject /usr/lib/libobjc.A.dylib {
@@ -416,23 +437,23 @@
 	var internalDelegate : PaywallDelegate? // +0x40 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0xb400  @objc BridgedPaywall.paywallType <stripped>
-	0xb440  @objc BridgedPaywall.softPaywallHeightProvider <stripped>
-	0xb4a0  @objc BridgedPaywall.deferredHardPaywallHeightProvider <stripped>
-	0xb500  @objc BridgedPaywall.paywallViewController <stripped>
-	0xb5e0  @objc BridgedPaywall.delegate <stripped>
-	0xb660  @objc BridgedPaywall.setDelegate: <stripped>
-	0xb980  @objc BridgedPaywall.init <stripped>
-	0xbd90  @objc BridgedPaywall..cxx_destruct <stripped>
+	0xb660  @objc BridgedPaywall.paywallType <stripped>
+	0xb6a0  @objc BridgedPaywall.softPaywallHeightProvider <stripped>
+	0xb700  @objc BridgedPaywall.deferredHardPaywallHeightProvider <stripped>
+	0xb760  @objc BridgedPaywall.paywallViewController <stripped>
+	0xb840  @objc BridgedPaywall.delegate <stripped>
+	0xb8c0  @objc BridgedPaywall.setDelegate: <stripped>
+	0xbbe0  @objc BridgedPaywall.init <stripped>
+	0xbff0  @objc BridgedPaywall..cxx_destruct <stripped>
 
 	// Swift methods
-	0xb540  func <stripped> // getter 
-	0xb620  func <stripped> // getter 
-	0xb6a0  func <stripped> // setter 
-	0xb770  func <stripped> // modifyCoroutine 
-	0xb9a0  class func BridgedPaywall.__allocating_init(softPaywallViewController:softPaywallHeightProvider:) // init 
-	0xbb00  class func BridgedPaywall.__allocating_init(hardPaywallViewController:) // init 
-	0xbb90  class func BridgedPaywall.__allocating_init(deferredHardPaywallViewController:deferredHardPaywallHeightProvider:) // init 
+	0xb7a0  func <stripped> // getter 
+	0xb880  func <stripped> // getter 
+	0xb900  func <stripped> // setter 
+	0xb9d0  func <stripped> // modifyCoroutine 
+	0xbc00  class func BridgedPaywall.__allocating_init(softPaywallViewController:softPaywallHeightProvider:) // init 
+	0xbd60  class func BridgedPaywall.__allocating_init(hardPaywallViewController:) // init 
+	0xbdf0  class func BridgedPaywall.__allocating_init(deferredHardPaywallViewController:deferredHardPaywallHeightProvider:) // init 
  }
 
  class NewsSubscription.PurchasingSpinnerViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PurchasingSpinnerViewStylerType {
@@ -459,12 +480,12 @@
 	let familyEigibilityProvider : NPFamilyEligibilityProviderType // +0x40 (0x8)
 
 	// Swift methods
-	0xd060  func <stripped> // getter 
-	0xd090  func <stripped> // setter 
-	0xd100  func <stripped> // modifyCoroutine 
-	0xd480  func <stripped> // method 
-	0xd560  func <stripped> // method 
-	0xe3e0  func <stripped> // method 
+	0xd2c0  func <stripped> // getter 
+	0xd2f0  func <stripped> // setter 
+	0xd360  func <stripped> // modifyCoroutine 
+	0xd6e0  func <stripped> // method 
+	0xd7c0  func <stripped> // method 
+	0xe640  func <stripped> // method 
  }
 
  struct NewsSubscription.StoreDescriptor { }
@@ -516,10 +537,10 @@
 	let purchasingScrim : UIImageView // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x16470  @objc PurchasingSpinnerView.init <stripped>
-	0x16520  @objc PurchasingSpinnerView.initWithCoder: <stripped>
-	0x16620  @objc PurchasingSpinnerView.initWithFrame: <stripped>
-	0x166d0  @objc PurchasingSpinnerView..cxx_destruct <stripped>
+	0x16560  @objc PurchasingSpinnerView.init <stripped>
+	0x16610  @objc PurchasingSpinnerView.initWithCoder: <stripped>
+	0x16710  @objc PurchasingSpinnerView.initWithFrame: <stripped>
+	0x167c0  @objc PurchasingSpinnerView..cxx_destruct <stripped>
  }
 
  enum NewsSubscription.SubscribeButtonLocation {
@@ -535,7 +556,7 @@
 
  class NewsSubscription.UtilityAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x17fa0  @objc UtilityAssembly.init <stripped>
+	0x18560  @objc UtilityAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -558,7 +579,7 @@
 	case missingConfiguration  
  }
 
- class NewsSubscription.PurchaseStarter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ class NewsSubscription.PurchaseStarter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PurchaseStarterType {
 
 	// Properties
 	let configurationManager : FCCoreConfigurationManager // +0x10 (0x8)
@@ -584,8 +605,8 @@
 
  class NewsSubscription.Images : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1fb20  @objc Images.init <stripped>
-	0x1fbc0  @objc Images..cxx_destruct <stripped>
+	0x201c0  @objc Images.init <stripped>
+	0x20260  @objc Images..cxx_destruct <stripped>
  }
 
  class NewsSubscription.SoftPaywallLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SoftPaywallLayoutAttributesFactoryType {
@@ -611,7 +632,7 @@
 
  class NewsSubscription.StylerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x21140  @objc StylerAssembly.init <stripped>
+	0x217e0  @objc StylerAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -623,6 +644,17 @@
 	let purchaseID : String // +0x8
 	let purchaseType : PurchaseType // +0x18
 	let paywallHostType : PaywallHostType // +0x19
+ }
+
+ class NewsSubscription.FamilySharingLandingPageLauncher : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FamilySharingLandingPageLauncherType {
+
+	// Properties
+	let configurationManager : FCCoreConfigurationManager // +0x10 (0x8)
+	let familyEligibilityProvider : NPFamilyEligibilityProviderType // +0x18 (0x8)
+	let router : SubscriptionsRouterType // +0x20 (0x28)
+
+	// Swift methods
+	0x21f50  class func FamilySharingLandingPageLauncher.__allocating_init(configurationManager:familyEligibilityProvider:router:) // init 
  }
 
  class NewsSubscription.SoftPaywallRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SoftPaywallRendererType {
@@ -638,9 +670,10 @@
  class NewsSubscription.AccountPageViewControllerFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AccountPageViewControllerFactoryType {
 
 	// Properties
-	let bridgedAccountPageViewControllerFactory : BridgedAccountPageViewControllerFactory // +0x10 (0x8)
+	let accountPageViewControllerFactory : BridgedAccountPageViewControllerFactory // +0x10 (0x8)
 
 	// Swift methods
+	0x23630  class func AccountPageViewControllerFactory.__allocating_init(accountPageViewControllerFactory:) // init 
  }
 
  class NewsSubscription.BridgedPurchaseManager : NSObject /usr/lib/libobjc.A.dylib {
@@ -651,18 +684,18 @@
 	var purchaseObservers : ContainerPurchaseObserver
 
 	// ObjC -> Swift bridged methods
-	0x22cb0  @objc BridgedPurchaseManager.addPurchaseObserver: <stripped>
-	0x230a0  @objc BridgedPurchaseManager.removePurchaseObserver: <stripped>
-	0x23360  @objc BridgedPurchaseManager.addTransactionObserver: <stripped>
-	0x23750  @objc BridgedPurchaseManager.removeTransactionObserver: <stripped>
-	0x23ae0  @objc BridgedPurchaseManager.purchaseMetadataWithPurchaseID:restorePurchase: <stripped>
-	0x23cb0  @objc BridgedPurchaseManager.startPurchaseWithPurchaseModel:purchaseContext:error: <stripped>
-	0x23e30  @objc BridgedPurchaseManager.startBundlePurchaseWithPurchaseModel:purchaseContext:error: <stripped>
-	0x23f90  @objc BridgedPurchaseManager.init <stripped>
-	0x24010  @objc BridgedPurchaseManager..cxx_destruct <stripped>
+	0x23d00  @objc BridgedPurchaseManager.addPurchaseObserver: <stripped>
+	0x240f0  @objc BridgedPurchaseManager.removePurchaseObserver: <stripped>
+	0x243b0  @objc BridgedPurchaseManager.addTransactionObserver: <stripped>
+	0x247a0  @objc BridgedPurchaseManager.removeTransactionObserver: <stripped>
+	0x24b30  @objc BridgedPurchaseManager.purchaseMetadataWithPurchaseID:restorePurchase: <stripped>
+	0x24d00  @objc BridgedPurchaseManager.startPurchaseWithPurchaseModel:purchaseContext:error: <stripped>
+	0x24e80  @objc BridgedPurchaseManager.startBundlePurchaseWithPurchaseModel:purchaseContext:error: <stripped>
+	0x24fe0  @objc BridgedPurchaseManager.init <stripped>
+	0x25060  @objc BridgedPurchaseManager..cxx_destruct <stripped>
 
 	// Swift methods
-	0x22820  class func BridgedPurchaseManager.__allocating_init(purchaseManager:) // init 
+	0x23870  class func BridgedPurchaseManager.__allocating_init(purchaseManager:) // init 
  }
 
  class NewsSubscription.ContainerPurchaseTransactionObserver : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -688,9 +721,9 @@
 	let tracker : Tracker // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x25cd0  @objc HardPaywallModule.createViewController <stripped>
-	0x25de0  @objc HardPaywallModule.init <stripped>
-	0x25e90  @objc HardPaywallModule..cxx_destruct <stripped>
+	0x26d20  @objc HardPaywallModule.createViewController <stripped>
+	0x26e30  @objc HardPaywallModule.init <stripped>
+	0x26ee0  @objc HardPaywallModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -727,12 +760,12 @@
 	let heightProvider : SoftPaywallHeightProvider // +0x10 (0x8)
 
 	// Swift methods
-	0x2a2d0  class func SoftPaywallDocumentSectionItemHeightProvider.__allocating_init(heightProvider:) // init 
+	0x2b320  class func SoftPaywallDocumentSectionItemHeightProvider.__allocating_init(heightProvider:) // init 
  }
 
  class NewsSubscription.SoftPaywallAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x2b9e0  @objc SoftPaywallAssembly.init <stripped>
+	0x2ca50  @objc SoftPaywallAssembly.init <stripped>
  }
 
  class NewsSubscription.PaywallInteractor : NSObject /usr/lib/libobjc.A.dylib, PaywallInteractorType {
@@ -743,22 +776,21 @@
 	let paywallModel : PaywallModel // +0x40 (0x1a)
 	var purchaseSessionID : String // +0x60 (0x10)
 	let dataManager : PaywallDataManagerType // +0x70 (0x10)
-	let purchaseStarter : PurchaseStarter // +0x80 (0x8)
-	let webAccessAuthenticatorFactory : WebAccessAuthenticatorFactoryType // +0x88 (0x28)
-	var webAccessAuthenticator : WebAccessAuthenticatorType? // +0xb0 (0x28)
-	var purchaseConversionLocation : PurchaseConversionLocation // +0xd8 (0x1)
-	let paywallType : PaywallType // +0xe0 (0x8)
+	let webAccessAuthenticatorFactory : WebAccessAuthenticatorFactoryType // +0x80 (0x28)
+	var webAccessAuthenticator : WebAccessAuthenticatorType? // +0xa8 (0x28)
+	var purchaseConversionLocation : PurchaseConversionLocation // +0xd0 (0x1)
+	let paywallType : PaywallType // +0xd8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2c1a0  @objc PaywallInteractor.init <stripped>
-	0x2c220  @objc PaywallInteractor..cxx_destruct <stripped>
+	0x2d1f0  @objc PaywallInteractor.init <stripped>
+	0x2d270  @objc PaywallInteractor..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
  class NewsSubscription.PurchasingSpinnerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x2dfb0  @objc PurchasingSpinnerAssembly.init <stripped>
+	0x2e9f0  @objc PurchasingSpinnerAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -775,15 +807,14 @@
 
 	// Properties
 	let purchasingSpinnerViewControllerFactory : PurchasingSpinnerViewControllerFactoryType // +0x10 (0x28)
-	var $__lazy_storage_$_purchaseSpinner : PurchasingSpinnerViewController? // +0x38 (0x8)
-	var $__lazy_storage_$_verificationSpinner : PurchasingSpinnerViewController? // +0x40 (0x8)
-	let tag : FCTagProviding? // +0x48 (0x8)
-	var delegate : weak PaywallDelegate? // +0x50 (0x10)
-	var presentationViewController : weak UIViewController? // +0x60 (0x8)
+	var $__lazy_storage_$_verificationSpinner : PurchasingSpinnerViewController? // +0x38 (0x8)
+	let tag : FCTagProviding? // +0x40 (0x8)
+	var delegate : weak PaywallDelegate? // +0x48 (0x10)
+	var presentationViewController : weak UIViewController? // +0x58 (0x8)
+	let purchasePresenter : PurchasePresenterType // +0x60 (0x28)
 
 	// Swift methods
-	0x2ed90  func <stripped> // getter 
-	0x2ee90  func <stripped> // getter 
+	0x2f7d0  func <stripped> // getter 
  }
 
  class NewsSubscription.BridgedPurchaseContext : NSObject /usr/lib/libobjc.A.dylib {
@@ -806,42 +837,42 @@
 	var campaignType : String? // +0xc8 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x30100  @objc BridgedPurchaseContext.conversionLocation <stripped>
-	0x30140  @objc BridgedPurchaseContext.setConversionLocation: <stripped>
-	0x301c0  @objc BridgedPurchaseContext.sourceChannelID <stripped>
-	0x30200  @objc BridgedPurchaseContext.setSourceChannelID: <stripped>
-	0x30280  @objc BridgedPurchaseContext.productID <stripped>
-	0x302c0  @objc BridgedPurchaseContext.setProductID: <stripped>
-	0x30340  @objc BridgedPurchaseContext.purchaseID <stripped>
-	0x30380  @objc BridgedPurchaseContext.setPurchaseID: <stripped>
-	0x30400  @objc BridgedPurchaseContext.articleID <stripped>
-	0x30440  @objc BridgedPurchaseContext.setArticleID: <stripped>
-	0x304c0  @objc BridgedPurchaseContext.issueID <stripped>
-	0x30500  @objc BridgedPurchaseContext.setIssueID: <stripped>
-	0x30580  @objc BridgedPurchaseContext.sectionID <stripped>
-	0x305c0  @objc BridgedPurchaseContext.setSectionID: <stripped>
-	0x30640  @objc BridgedPurchaseContext.qToken <stripped>
-	0x30680  @objc BridgedPurchaseContext.setQToken: <stripped>
-	0x30700  @objc BridgedPurchaseContext.purchaseSessionID <stripped>
-	0x307f0  @objc BridgedPurchaseContext.setPurchaseSessionID: <stripped>
-	0x30920  @objc BridgedPurchaseContext.parentFeedType <stripped>
-	0x30990  @objc BridgedPurchaseContext.setParentFeedType: <stripped>
-	0x30a50  @objc BridgedPurchaseContext.arrivedFromAd <stripped>
-	0x30a90  @objc BridgedPurchaseContext.setArrivedFromAd: <stripped>
-	0x30b10  @objc BridgedPurchaseContext.webAccessOptIn <stripped>
-	0x30bc0  @objc BridgedPurchaseContext.setWebAccessOptIn: <stripped>
-	0x30ce0  @objc BridgedPurchaseContext.creativeID <stripped>
-	0x30d20  @objc BridgedPurchaseContext.setCreativeID: <stripped>
-	0x30da0  @objc BridgedPurchaseContext.campaignID <stripped>
-	0x30de0  @objc BridgedPurchaseContext.setCampaignID: <stripped>
-	0x30e70  @objc BridgedPurchaseContext.campaignType <stripped>
-	0x30f70  @objc BridgedPurchaseContext.setCampaignType: <stripped>
-	0x31740  @objc BridgedPurchaseContext.initWithProductID:purchaseID:sourceChannelID:purchaseSessionID:conversionLocation:articleID:issueID:parentFeedType:sectionID:webAccessOptIn:arrivedFromAd:qToken:creativeID:campaignID:campaignType: <stripped>
-	0x31b00  @objc BridgedPurchaseContext.init <stripped>
-	0x31b80  @objc BridgedPurchaseContext..cxx_destruct <stripped>
+	0x308e0  @objc BridgedPurchaseContext.conversionLocation <stripped>
+	0x30920  @objc BridgedPurchaseContext.setConversionLocation: <stripped>
+	0x309a0  @objc BridgedPurchaseContext.sourceChannelID <stripped>
+	0x309e0  @objc BridgedPurchaseContext.setSourceChannelID: <stripped>
+	0x30a60  @objc BridgedPurchaseContext.productID <stripped>
+	0x30aa0  @objc BridgedPurchaseContext.setProductID: <stripped>
+	0x30b20  @objc BridgedPurchaseContext.purchaseID <stripped>
+	0x30b60  @objc BridgedPurchaseContext.setPurchaseID: <stripped>
+	0x30be0  @objc BridgedPurchaseContext.articleID <stripped>
+	0x30c20  @objc BridgedPurchaseContext.setArticleID: <stripped>
+	0x30ca0  @objc BridgedPurchaseContext.issueID <stripped>
+	0x30ce0  @objc BridgedPurchaseContext.setIssueID: <stripped>
+	0x30d60  @objc BridgedPurchaseContext.sectionID <stripped>
+	0x30da0  @objc BridgedPurchaseContext.setSectionID: <stripped>
+	0x30e20  @objc BridgedPurchaseContext.qToken <stripped>
+	0x30e60  @objc BridgedPurchaseContext.setQToken: <stripped>
+	0x30ee0  @objc BridgedPurchaseContext.purchaseSessionID <stripped>
+	0x30fd0  @objc BridgedPurchaseContext.setPurchaseSessionID: <stripped>
+	0x31100  @objc BridgedPurchaseContext.parentFeedType <stripped>
+	0x31170  @objc BridgedPurchaseContext.setParentFeedType: <stripped>
+	0x31230  @objc BridgedPurchaseContext.arrivedFromAd <stripped>
+	0x31270  @objc BridgedPurchaseContext.setArrivedFromAd: <stripped>
+	0x312f0  @objc BridgedPurchaseContext.webAccessOptIn <stripped>
+	0x313a0  @objc BridgedPurchaseContext.setWebAccessOptIn: <stripped>
+	0x314c0  @objc BridgedPurchaseContext.creativeID <stripped>
+	0x31500  @objc BridgedPurchaseContext.setCreativeID: <stripped>
+	0x31580  @objc BridgedPurchaseContext.campaignID <stripped>
+	0x315c0  @objc BridgedPurchaseContext.setCampaignID: <stripped>
+	0x31650  @objc BridgedPurchaseContext.campaignType <stripped>
+	0x31750  @objc BridgedPurchaseContext.setCampaignType: <stripped>
+	0x31f20  @objc BridgedPurchaseContext.initWithProductID:purchaseID:sourceChannelID:purchaseSessionID:conversionLocation:articleID:issueID:parentFeedType:sectionID:webAccessOptIn:arrivedFromAd:qToken:creativeID:campaignID:campaignType: <stripped>
+	0x322e0  @objc BridgedPurchaseContext.init <stripped>
+	0x32360  @objc BridgedPurchaseContext..cxx_destruct <stripped>
 
 	// Swift methods
-	0x310c0  class func BridgedPurchaseContext.__allocating_init(productID:purchaseID:sourceChannelID:purchaseSessionID:conversionLocation:articleID:issueID:parentFeedType:sectionID:webAccessOptIn:arrivedFromAd:qToken:creativeID:campaignID:campaignType:) // init 
+	0x318a0  class func BridgedPurchaseContext.__allocating_init(productID:purchaseID:sourceChannelID:purchaseSessionID:conversionLocation:articleID:issueID:parentFeedType:sectionID:webAccessOptIn:arrivedFromAd:qToken:creativeID:campaignID:campaignType:) // init 
  }
 
  enum NewsSubscription.WebAuthenticationResult {
@@ -853,15 +884,15 @@
 
  class NewsSubscription.PaywallImageProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-	0x32aa0  @objc PaywallImageProcessor.process: <stripped>
+	0x33280  @objc PaywallImageProcessor.process: <stripped>
 
 	// Swift methods
-	0x32a10  class func PaywallImageProcessor.__allocating_init() // init 
+	0x331f0  class func PaywallImageProcessor.__allocating_init() // init 
  }
 
  class NewsSubscription.FactoryAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x333e0  @objc FactoryAssembly.init <stripped>
+	0x33bc0  @objc FactoryAssembly.init <stripped>
  }
 
  enum NewsSubscription.PaywallType { }
@@ -880,11 +911,11 @@
 	let webAuthButton : PillButton // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x33cc0  @objc HardPaywallView.initWithFrame: <stripped>
-	0x33cf0  @objc HardPaywallView.initWithCoder: <stripped>
-	0x33d10  @objc HardPaywallView.accessibilityFrame <stripped>
-	0x33d50  @objc HardPaywallView.setAccessibilityFrame: <stripped>
-	0x33db0  @objc HardPaywallView..cxx_destruct <stripped>
+	0x344a0  @objc HardPaywallView.initWithFrame: <stripped>
+	0x344d0  @objc HardPaywallView.initWithCoder: <stripped>
+	0x344f0  @objc HardPaywallView.accessibilityFrame <stripped>
+	0x34530  @objc HardPaywallView.setAccessibilityFrame: <stripped>
+	0x34590  @objc HardPaywallView..cxx_destruct <stripped>
  }
 
  class NewsSubscription.PaywallDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PaywallDataManagerType {
@@ -901,14 +932,14 @@
 	let spinnerView : PurchasingSpinnerView // +0x88 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x34560  @objc PurchasingSpinnerViewController.initWithCoder: <stripped>
-	0x348c0  @objc PurchasingSpinnerViewController.viewDidAppear: <stripped>
-	0x34b40  @objc PurchasingSpinnerViewController.viewWillLayoutSubviews <stripped>
-	0x34c10  @objc PurchasingSpinnerViewController.initWithNibName:bundle: <stripped>
-	0x34c90  @objc PurchasingSpinnerViewController..cxx_destruct <stripped>
+	0x34d40  @objc PurchasingSpinnerViewController.initWithCoder: <stripped>
+	0x350a0  @objc PurchasingSpinnerViewController.viewDidAppear: <stripped>
+	0x35320  @objc PurchasingSpinnerViewController.viewWillLayoutSubviews <stripped>
+	0x353f0  @objc PurchasingSpinnerViewController.initWithNibName:bundle: <stripped>
+	0x35470  @objc PurchasingSpinnerViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x34600  class func PurchasingSpinnerViewController.__allocating_init(spinner:viewStyler:viewLayoutAttributesFactory:viewRenderer:) // init 
+	0x34de0  class func PurchasingSpinnerViewController.__allocating_init(spinner:viewStyler:viewLayoutAttributesFactory:viewRenderer:) // init 
  }
 
  enum NewsSubscription.FamilyStatus {
@@ -945,7 +976,7 @@
 
  class NewsSubscription.DeferredHardPaywallAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x37520  @objc DeferredHardPaywallAssembly.init <stripped>
+	0x37d20  @objc DeferredHardPaywallAssembly.init <stripped>
  }
 
  class NewsSubscription.SoftPaywallStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SoftPaywallStylerType {
@@ -965,7 +996,7 @@
 	var subscriptionsURL : URL? // +0x0 (0x0)
 
 	// Swift methods
-	0x392a0  class func ManageSubscriptionsURLProvider.__allocating_init(defaultUrl:) // init 
+	0x39aa0  class func ManageSubscriptionsURLProvider.__allocating_init(defaultUrl:) // init 
  }
 
  class NewsSubscription.PurchasingSpinnerViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PurchasingSpinnerViewLayoutAttributesFactoryType {
@@ -994,14 +1025,14 @@
 	let webAuthButton : PillButton // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3a6d0  @objc SoftPaywallView.initWithFrame: <stripped>
-	0x3a700  @objc SoftPaywallView.initWithCoder: <stripped>
-	0x3a770  @objc SoftPaywallView..cxx_destruct <stripped>
+	0x3aed0  @objc SoftPaywallView.initWithFrame: <stripped>
+	0x3af00  @objc SoftPaywallView.initWithCoder: <stripped>
+	0x3af70  @objc SoftPaywallView..cxx_destruct <stripped>
  }
 
  class NewsSubscription.HardPaywallAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3bb80  @objc HardPaywallAssembly.init <stripped>
+	0x3c3a0  @objc HardPaywallAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -1044,15 +1075,14 @@
 	let renderer : HardPaywallRendererType // +0x0 (0x28)
 	let layoutAttributesFactory : HardPaywallLayoutAttributesFactory // +0x0 (0x8)
 	let purchasingSpinnerViewControllerFactory : PurchasingSpinnerViewControllerFactoryType // +0x0 (0x28)
-	var $__lazy_storage_$_spinnerViewController : PurchasingSpinnerViewController? // +0x0 (0x8)
 	var $__lazy_storage_$_verifyingSpinnerViewController : PurchasingSpinnerViewController? // +0x0 (0x8)
 	let paywallApplicationStateMonitor : PaywallApplicationStateMonitor // +0x0 (0x8)
 	let eventHandlerDelegate : PaywallEventHandlerDelegate // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3ee80  @objc HardPaywallViewController.initWithCoder: <stripped>
-	0x3ef40  @objc HardPaywallViewController.initWithNibName:bundle: <stripped>
-	0x3efe0  @objc HardPaywallViewController..cxx_destruct <stripped>
+	0x3f690  @objc HardPaywallViewController.initWithCoder: <stripped>
+	0x3f800  @objc HardPaywallViewController.initWithNibName:bundle: <stripped>
+	0x3f8a0  @objc HardPaywallViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1081,6 +1111,7 @@
 	let mediumGradientHeight : CGFloat // +0xd0 (0x8)
 	let smallGradientHeight : CGFloat // +0xd8 (0x8)
 	let footerImageExtraHeight : CGFloat // +0xe0 (0x8)
+	let minimumBaseFooterImageHeight : CGFloat // +0xe8 (0x8)
 
 	// Swift methods
  }
@@ -1139,9 +1170,9 @@
 	let tracker : Tracker // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x46380  @objc SoftPaywallModule.createViewController <stripped>
-	0x46490  @objc SoftPaywallModule.init <stripped>
-	0x46540  @objc SoftPaywallModule..cxx_destruct <stripped>
+	0x46dd0  @objc SoftPaywallModule.createViewController <stripped>
+	0x46ee0  @objc SoftPaywallModule.init <stripped>
+	0x46f90  @objc SoftPaywallModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1157,8 +1188,8 @@
 	var accessLock : UnfairLock // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x46810  @objc BundlePurchasePrewarmer.init <stripped>
-	0x46890  @objc BundlePurchasePrewarmer..cxx_destruct <stripped>
+	0x47260  @objc BundlePurchasePrewarmer.init <stripped>
+	0x472e0  @objc BundlePurchasePrewarmer..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1192,8 +1223,8 @@
 	var bundleSubscriptionMeteredCountMaxLimit : Int // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4a910  @objc SubscriptionAccessMeter.canAccessArticleWithHeadline:articleAccess: <stripped>
-	0x4b3a0  @objc SubscriptionAccessMeter.incrementCountForHeadline: <stripped>
+	0x4b360  @objc SubscriptionAccessMeter.canAccessArticleWithHeadline:articleAccess: <stripped>
+	0x4bdf0  @objc SubscriptionAccessMeter.incrementCountForHeadline: <stripped>
 
 	// Swift methods
  }
@@ -1205,9 +1236,9 @@
 	let tracker : Tracker // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4bb40  @objc DeferredHardPaywallModule.createViewController <stripped>
-	0x4bc50  @objc DeferredHardPaywallModule.init <stripped>
-	0x4bd00  @objc DeferredHardPaywallModule..cxx_destruct <stripped>
+	0x4c590  @objc DeferredHardPaywallModule.createViewController <stripped>
+	0x4c6a0  @objc DeferredHardPaywallModule.init <stripped>
+	0x4c750  @objc DeferredHardPaywallModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1220,7 +1251,7 @@
 	var baseHostName : String
 
 	// Swift methods
-	0x4bfa0  class func FinanceURLHandler.__allocating_init(patterns:router:) // init 
+	0x4c9f0  class func FinanceURLHandler.__allocating_init(patterns:router:) // init 
  }
 
  class NewsSubscription.Contract : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1233,7 +1264,7 @@
 
  class NewsSubscription.RendererAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4d0d0  @objc RendererAssembly.init <stripped>
+	0x4daf0  @objc RendererAssembly.init <stripped>
  }
 
  enum NewsSubscription.Paywall {
@@ -1313,12 +1344,12 @@
 	let size : CGSize // +0x18 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x50b80  @objc PaywallImageProcessorRequest.assetHandles <stripped>
-	0x50c50  @objc PaywallImageProcessorRequest.setAssetHandles: <stripped>
-	0x50d60  @objc PaywallImageProcessorRequest.cacheIdentifier <stripped>
+	0x51370  @objc PaywallImageProcessorRequest.assetHandles <stripped>
+	0x51440  @objc PaywallImageProcessorRequest.setAssetHandles: <stripped>
+	0x51550  @objc PaywallImageProcessorRequest.cacheIdentifier <stripped>
 
 	// Swift methods
-	0x509d0  class func PaywallImageProcessorRequest.__allocating_init(assetHandle:size:) // init 
+	0x511c0  class func PaywallImageProcessorRequest.__allocating_init(assetHandle:size:) // init 
  }
 
  class NewsSubscription.HardPaywallLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HardPaywallLayoutAttributesFactoryType {
@@ -1392,7 +1423,7 @@
 	let heightProvider : DeferredHardPaywallHeightProvider // +0x10 (0x8)
 
 	// Swift methods
-	0x54c60  class func DeferredHardPaywallDocumentSectionItemHeightProvider.__allocating_init(heightProvider:) // init 
+	0x55450  class func DeferredHardPaywallDocumentSectionItemHeightProvider.__allocating_init(heightProvider:) // init 
  }
 
  class NewsSubscription.DeferredHardPaywallViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1406,15 +1437,13 @@
 	let renderer : DeferredHardPaywallRendererType // +0x0 (0x28)
 	let layoutAttributesFactory : DeferredHardPaywallLayoutAttributesFactoryType // +0x0 (0x28)
 	let purchasingSpinnerViewControllerFactory : PurchasingSpinnerViewControllerFactoryType // +0x0 (0x28)
-	var $__lazy_storage_$_spinnerViewController : PurchasingSpinnerViewController? // +0x0 (0x8)
-	var $__lazy_storage_$_verifyingSpinnerViewController : PurchasingSpinnerViewController? // +0x0 (0x8)
 	let paywallApplicationStateMonitor : PaywallApplicationStateMonitor // +0x0 (0x8)
 	let eventHandlerDelegate : PaywallEventHandlerDelegate // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x553f0  @objc DeferredHardPaywallViewController.initWithCoder: <stripped>
-	0x554b0  @objc DeferredHardPaywallViewController.initWithNibName:bundle: <stripped>
-	0x55550  @objc DeferredHardPaywallViewController..cxx_destruct <stripped>
+	0x55bd0  @objc DeferredHardPaywallViewController.initWithCoder: <stripped>
+	0x55d30  @objc DeferredHardPaywallViewController.initWithNibName:bundle: <stripped>
+	0x55dd0  @objc DeferredHardPaywallViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1449,15 +1478,14 @@
 	let renderer : SoftPaywallRendererType // +0x0 (0x28)
 	let layoutAttributesFactory : SoftPaywallLayoutAttributesFactoryType // +0x0 (0x28)
 	let purchasingSpinnerViewControllerFactory : PurchasingSpinnerViewControllerFactoryType // +0x0 (0x28)
-	var $__lazy_storage_$_purchasingSpinnerViewController : PurchasingSpinnerViewController? // +0x0 (0x8)
 	var $__lazy_storage_$_verifyingSpinnerViewController : PurchasingSpinnerViewController? // +0x0 (0x8)
 	let paywallApplicationStateMonitor : PaywallApplicationStateMonitor // +0x0 (0x8)
 	let eventHandlerDelegate : PaywallEventHandlerDelegate // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x586c0  @objc SoftPaywallViewController.initWithCoder: <stripped>
-	0x58780  @objc SoftPaywallViewController.initWithNibName:bundle: <stripped>
-	0x58820  @objc SoftPaywallViewController..cxx_destruct <stripped>
+	0x58e60  @objc SoftPaywallViewController.initWithCoder: <stripped>
+	0x58fd0  @objc SoftPaywallViewController.initWithNibName:bundle: <stripped>
+	0x59070  @objc SoftPaywallViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1492,9 +1520,9 @@
 	let webAuthButton : PillButton // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5a520  @objc DeferredHardPaywallView.initWithFrame: <stripped>
-	0x5a550  @objc DeferredHardPaywallView.initWithCoder: <stripped>
-	0x5a5c0  @objc DeferredHardPaywallView..cxx_destruct <stripped>
+	0x5ac90  @objc DeferredHardPaywallView.initWithFrame: <stripped>
+	0x5acc0  @objc DeferredHardPaywallView.initWithCoder: <stripped>
+	0x5ad30  @objc DeferredHardPaywallView..cxx_destruct <stripped>
  }
 
  struct NewsSubscription.BundleSubscriptions { }
@@ -1505,13 +1533,13 @@
 	let familyStatusManager : FamilySharingStatusManagerType // +0x8 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x5b190  @objc BridgedFamilyStatusManager.refreshFamilyStatus <stripped>
-	0x5b460  @objc BridgedFamilyStatusManager.syncFamilyStatus <stripped>
-	0x5b5d0  @objc BridgedFamilyStatusManager.init <stripped>
-	0x5b650  @objc BridgedFamilyStatusManager..cxx_destruct <stripped>
+	0x5b900  @objc BridgedFamilyStatusManager.refreshFamilyStatus <stripped>
+	0x5bc10  @objc BridgedFamilyStatusManager.syncFamilyStatus <stripped>
+	0x5bd80  @objc BridgedFamilyStatusManager.init <stripped>
+	0x5be00  @objc BridgedFamilyStatusManager..cxx_destruct <stripped>
 
 	// Swift methods
-	0x5ad40  class func BridgedFamilyStatusManager.__allocating_init(familyStatusManager:) // init 
+	0x5b4b0  class func BridgedFamilyStatusManager.__allocating_init(familyStatusManager:) // init 
  }
 
  class NewsSubscription.BridgedSoftPaywallHeightProvider : NSObject /usr/lib/libobjc.A.dylib {
@@ -1520,11 +1548,11 @@
 	let heightProvider : SoftPaywallHeightProvider // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5bb00  @objc BridgedSoftPaywallHeightProvider.init <stripped>
-	0x5bb80  @objc BridgedSoftPaywallHeightProvider..cxx_destruct <stripped>
+	0x5c2b0  @objc BridgedSoftPaywallHeightProvider.init <stripped>
+	0x5c330  @objc BridgedSoftPaywallHeightProvider..cxx_destruct <stripped>
 
 	// Swift methods
-	0x5b9b0  class func BridgedSoftPaywallHeightProvider.__allocating_init(heightProvider:) // init 
+	0x5c160  class func BridgedSoftPaywallHeightProvider.__allocating_init(heightProvider:) // init 
  }
 
  struct NewsSubscription.FamilyMember {
@@ -1572,9 +1600,9 @@
 	let assemblies : [NFAssembly] // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5e870  @objc Assembly.assemblies <stripped>
-	0x5eb80  @objc Assembly.init <stripped>
-	0x5ebf0  @objc Assembly..cxx_destruct <stripped>
+	0x5f070  @objc Assembly.assemblies <stripped>
+	0x5f380  @objc Assembly.init <stripped>
+	0x5f3f0  @objc Assembly..cxx_destruct <stripped>
  }
 
  enum NewsSubscription.ArticleAccess { }
@@ -1586,7 +1614,7 @@
 	let bridgedCampaignClickRecorder : BridgedCampaignClickRecorder // +0x18 (0x8)
 
 	// Swift methods
-	0x5ef20  class func CampaignClickRecorder.__allocating_init(patterns:) // init 
+	0x5f720  class func CampaignClickRecorder.__allocating_init(patterns:) // init 
  }
 
  struct NewsSubscription.ProcessRedirectValue {
@@ -1610,7 +1638,7 @@
 
  class NewsSubscription.ManagerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x639c0  @objc ManagerAssembly.init <stripped>
+	0x641c0  @objc ManagerAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -1629,11 +1657,11 @@
 	let heightProvider : DeferredHardPaywallHeightProvider // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x64240  @objc BridgedDeferredHardPaywallHeightProvider.init <stripped>
-	0x642c0  @objc BridgedDeferredHardPaywallHeightProvider..cxx_destruct <stripped>
+	0x64a40  @objc BridgedDeferredHardPaywallHeightProvider.init <stripped>
+	0x64ac0  @objc BridgedDeferredHardPaywallHeightProvider..cxx_destruct <stripped>
 
 	// Swift methods
-	0x640f0  class func BridgedDeferredHardPaywallHeightProvider.__allocating_init(heightProvider:) // init 
+	0x648f0  class func BridgedDeferredHardPaywallHeightProvider.__allocating_init(heightProvider:) // init 
  }
 
  enum NewsSubscription.PurchaseConversionLocation {
@@ -1670,7 +1698,7 @@
 
  class NewsSubscription.DatabaseAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x65e40  @objc DatabaseAssembly.init <stripped>
+	0x66640  @objc DatabaseAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -1701,8 +1729,8 @@
 
  class NewsSubscription.UnselectableLinkEnabledTextView : UITextView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x68160  @objc UnselectableLinkEnabledTextView.initWithFrame:textContainer: <stripped>
-	0x681f0  @objc UnselectableLinkEnabledTextView.initWithCoder: <stripped>
+	0x688f0  @objc UnselectableLinkEnabledTextView.initWithFrame:textContainer: <stripped>
+	0x68980  @objc UnselectableLinkEnabledTextView.initWithCoder: <stripped>
  }
 
  enum NewsSubscription.PurchaseErrorAlert {

@@ -16,6 +16,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axAdjustZoomLevel:(BOOL)arg1;
 - (id)_axSiblingScrollView;
+- (void)_updateSelection;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
 - (id)accessibilityLabel;

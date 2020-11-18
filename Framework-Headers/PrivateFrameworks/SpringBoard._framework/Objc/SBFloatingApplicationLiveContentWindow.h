@@ -31,6 +31,7 @@
 - (struct CGRect)convertRect:(struct CGRect)arg1 toCoordinateSpace:(id)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 toView:(id)arg2;
 - (id)initWithDebugName:(id)arg1;
+- (void)setFrame:(struct CGRect)arg1;
 - (void)setRootViewController:(id)arg1;
 
 @end

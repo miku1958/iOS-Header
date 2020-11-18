@@ -91,6 +91,7 @@
 
 + (BOOL)_canReloadDuringUnitTests;
 - (void).cxx_destruct;
+- (id)_accessoryItemsToHideInSet:(id)arg1;
 - (id)_allDisplayedItemsIncludingInternalItems;
 - (id)_allItemsIncludingInternalItems;
 - (id)_allSuppressedCharacteristics;
@@ -140,6 +141,7 @@
 - (id)_itemsToUpdateForModifiedEvents:(id)arg1;
 - (id)_itemsToUpdateForModifiedMetadataForHomes:(id)arg1;
 - (id)_itemsToUpdateForModifiedNetworkConfigurationProfiles:(id)arg1;
+- (id)_itemsToUpdateForModifiedNetworkProtectionGroups:(id)arg1;
 - (id)_itemsToUpdateForModifiedNetworkRouterProfiles:(id)arg1;
 - (id)_itemsToUpdateForModifiedResidentDevices:(id)arg1;
 - (id)_itemsToUpdateForModifiedRooms:(id)arg1;
@@ -249,6 +251,7 @@
 - (id)footerTitleForSection:(unsigned long long)arg1;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (void)home:(id)arg1 didAddAccessory:(id)arg2;
+- (void)home:(id)arg1 didAddAccessoryNetworkProtectionGroup:(id)arg2;
 - (void)home:(id)arg1 didAddActionSet:(id)arg2;
 - (void)home:(id)arg1 didAddMediaSystem:(id)arg2;
 - (void)home:(id)arg1 didAddResidentDevice:(id)arg2;
@@ -263,6 +266,7 @@
 - (void)home:(id)arg1 didExecuteActionSets:(id)arg2 failedActionSets:(id)arg3;
 - (void)home:(id)arg1 didReadValuesForCharacteristics:(id)arg2 failedCharacteristics:(id)arg3;
 - (void)home:(id)arg1 didRemoveAccessory:(id)arg2;
+- (void)home:(id)arg1 didRemoveAccessoryNetworkProtectionGroup:(id)arg2;
 - (void)home:(id)arg1 didRemoveActionSet:(id)arg2;
 - (void)home:(id)arg1 didRemoveMediaSystem:(id)arg2;
 - (void)home:(id)arg1 didRemoveResidentDevice:(id)arg2;
@@ -276,6 +280,7 @@
 - (void)home:(id)arg1 didUnblockAccessory:(id)arg2;
 - (void)home:(id)arg1 didUpdateAccesoryInvitationsForUser:(id)arg2;
 - (void)home:(id)arg1 didUpdateAccessControlForUser:(id)arg2;
+- (void)home:(id)arg1 didUpdateAccessoryNetworkProtectionGroup:(id)arg2;
 - (void)home:(id)arg1 didUpdateActionsForActionSet:(id)arg2;
 - (void)home:(id)arg1 didUpdateApplicationDataForActionSet:(id)arg2;
 - (void)home:(id)arg1 didUpdateApplicationDataForRoom:(id)arg2;
@@ -334,8 +339,6 @@
 - (void)profileDidUpdateSatellites:(id)arg1;
 - (void)profileDidUpdateWiFiCredentialType:(id)arg1;
 - (void)profileDidUpdateWiFiReconfigurationSupport:(id)arg1;
-- (void)profilesDidUpdateAllowedHosts:(id)arg1;
-- (void)profilesDidUpdateNetworkProtectionMode:(id)arg1;
 - (void)recalculateVisibilityAndSortAllItems;
 - (id)reloadAndUpdateAllItemsFromSenderSelector:(SEL)arg1;
 - (id)reloadAndUpdateItemsForProviders:(id)arg1 senderSelector:(SEL)arg2;

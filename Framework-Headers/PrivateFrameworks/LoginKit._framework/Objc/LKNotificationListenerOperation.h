@@ -13,11 +13,13 @@
     BOOL _operationCancelled;
     BOOL _operationReady;
     int _notifyToken;
+    CDUnknownBlockType _listenerStartedBlock;
     unsigned long long _notificationType;
     double _timeOutPeriod;
     CDUnknownBlockType _notificationListenerCompletionBlock;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType listenerStartedBlock; // @synthesize listenerStartedBlock=_listenerStartedBlock;
 @property (copy, nonatomic) CDUnknownBlockType notificationListenerCompletionBlock; // @synthesize notificationListenerCompletionBlock=_notificationListenerCompletionBlock;
 @property (nonatomic) unsigned long long notificationType; // @synthesize notificationType=_notificationType;
 @property (nonatomic) int notifyToken; // @synthesize notifyToken=_notifyToken;

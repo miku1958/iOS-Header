@@ -194,6 +194,7 @@
 - (void)_updateTrackingSpringTargets;
 - (void)_updateViewsFromCurrentState;
 - (void)dealloc;
+- (void)externalButtonCancelled;
 - (void)externalButtonPressed;
 - (void)externalButtonReleased;
 - (void)externalLockButtonPressed;

@@ -64,6 +64,7 @@
 - (void)_t_unblockReader;
 - (void)actionMain;
 - (void)cancel;
+- (void)checkNonEmptyPackage;
 - (void)completedWithResult:(id)arg1 error:(id)arg2;
 - (unsigned long long)defaultLastUsedDatePolicy;
 - (id)fp_prettyDescription;

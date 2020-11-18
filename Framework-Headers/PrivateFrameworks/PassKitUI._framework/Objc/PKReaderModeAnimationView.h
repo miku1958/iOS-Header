@@ -10,19 +10,20 @@
 
 @interface PKReaderModeAnimationView : UIView
 {
+    unsigned long long _state;
     CAPackage *_package;
     CALayer *_phoneLayer;
     CAStateController *_stateController;
+    BOOL _isPhoneTarget;
 }
+
+@property (nonatomic) unsigned long long state;
 
 - (void).cxx_destruct;
 - (void)_setState:(unsigned long long)arg1 animated:(BOOL)arg2;
-- (void)animateToState:(unsigned long long)arg1;
 - (unsigned long long)animationStateForProvisioningViewState:(unsigned long long)arg1;
-- (id)init;
-- (id)initWithAssetName:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 assetName:(id)arg2;
-- (void)setAnimationState:(unsigned long long)arg1 animated:(BOOL)arg2;
+- (id)initWithAssetName:(id)arg1 forPhoneTarget:(BOOL)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 assetName:(id)arg2 forPhoneTarget:(BOOL)arg3;
 - (void)setDigitalCardImage:(id)arg1;
 - (void)setImageForCard:(id)arg1 image:(id)arg2;
 - (void)setPlasticCardImage:(id)arg1;

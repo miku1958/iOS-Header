@@ -22,6 +22,7 @@
     NSURL *_paymentServicesURL;
     NSURL *_inAppPaymentServicesURL;
     NSURL *_paymentServicesMerchantURL;
+    NSURL *_partnerServiceURL;
     NSURL *_trustedServiceManagerURL;
     NSString *_trustedServiceManagerPushTopic;
     long long _consistencyCheckBackoffLevel;
@@ -34,6 +35,7 @@
     NSURL *_applyServiceURL;
     NSString *_applyServicePushTopic;
     NSString *_productsPushTopic;
+    NSString *_transactionZonePushTopic;
     NSURL *_peerPaymentServiceURL;
 }
 
@@ -52,11 +54,13 @@
 @property (copy, nonatomic) NSString *lastDeviceCheckInBuildVersion; // @synthesize lastDeviceCheckInBuildVersion=_lastDeviceCheckInBuildVersion;
 @property (strong, nonatomic) NSString *lastUpdatedTag; // @synthesize lastUpdatedTag=_lastUpdatedTag;
 @property (nonatomic) long long outstandingCheckInAction; // @synthesize outstandingCheckInAction=_outstandingCheckInAction;
+@property (strong, nonatomic) NSURL *partnerServiceURL; // @synthesize partnerServiceURL=_partnerServiceURL;
 @property (strong, nonatomic) NSURL *paymentServicesMerchantURL; // @synthesize paymentServicesMerchantURL=_paymentServicesMerchantURL;
 @property (strong, nonatomic) NSURL *paymentServicesURL; // @synthesize paymentServicesURL=_paymentServicesURL;
 @property (strong, nonatomic) NSURL *peerPaymentServiceURL; // @synthesize peerPaymentServiceURL=_peerPaymentServiceURL;
 @property (copy, nonatomic) NSString *productsPushTopic; // @synthesize productsPushTopic=_productsPushTopic;
 @property (strong, nonatomic) NSString *regionCode; // @synthesize regionCode=_regionCode;
+@property (copy, nonatomic) NSString *transactionZonePushTopic; // @synthesize transactionZonePushTopic=_transactionZonePushTopic;
 @property (strong, nonatomic) NSString *trustedServiceManagerPushTopic; // @synthesize trustedServiceManagerPushTopic=_trustedServiceManagerPushTopic;
 @property (strong, nonatomic) NSURL *trustedServiceManagerURL; // @synthesize trustedServiceManagerURL=_trustedServiceManagerURL;
 @property (strong, nonatomic) NSString *userNotificationPushTopic; // @synthesize userNotificationPushTopic=_userNotificationPushTopic;

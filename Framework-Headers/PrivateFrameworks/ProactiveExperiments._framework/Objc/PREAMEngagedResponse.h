@@ -20,6 +20,7 @@
     NSString *_lang;
     NSString *_locale;
     unsigned int _modelId;
+    unsigned int _numberOfResponsesGenerated;
     unsigned int _position;
     unsigned int _replyTextId;
     unsigned int _responseClassId;
@@ -32,6 +33,7 @@
         unsigned int generationStatus:1;
         unsigned int inputMethod:1;
         unsigned int modelId:1;
+        unsigned int numberOfResponsesGenerated:1;
         unsigned int position:1;
         unsigned int replyTextId:1;
         unsigned int responseClassId:1;
@@ -53,6 +55,7 @@
 @property (readonly, nonatomic) BOOL hasLang;
 @property (readonly, nonatomic) BOOL hasLocale;
 @property (nonatomic) BOOL hasModelId;
+@property (nonatomic) BOOL hasNumberOfResponsesGenerated;
 @property (nonatomic) BOOL hasPosition;
 @property (nonatomic) BOOL hasQuestionMark; // @synthesize hasQuestionMark=_hasQuestionMark;
 @property (nonatomic) BOOL hasReplyTextId;
@@ -65,6 +68,7 @@
 @property (strong, nonatomic) NSString *lang; // @synthesize lang=_lang;
 @property (strong, nonatomic) NSString *locale; // @synthesize locale=_locale;
 @property (nonatomic) unsigned int modelId; // @synthesize modelId=_modelId;
+@property (nonatomic) unsigned int numberOfResponsesGenerated; // @synthesize numberOfResponsesGenerated=_numberOfResponsesGenerated;
 @property (nonatomic) unsigned int position; // @synthesize position=_position;
 @property (nonatomic) unsigned int replyTextId; // @synthesize replyTextId=_replyTextId;
 @property (nonatomic) unsigned int responseClassId; // @synthesize responseClassId=_responseClassId;

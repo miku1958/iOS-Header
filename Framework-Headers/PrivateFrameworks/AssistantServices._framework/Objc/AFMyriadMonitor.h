@@ -48,6 +48,7 @@
 - (void)_setDecisionIsPending;
 - (void)dealloc;
 - (void)dequeueBlocksWaitingForMyriadDecision;
+- (BOOL)didWin;
 - (void)ignoreMyriadEvents:(BOOL)arg1;
 - (id)init;
 - (void)notifyObserver:(id)arg1 didReceiveNotificationWithToken:(int)arg2;

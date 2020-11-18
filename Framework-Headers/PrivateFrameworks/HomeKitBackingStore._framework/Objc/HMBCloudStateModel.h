@@ -6,18 +6,15 @@
 
 #import <HomeKitBackingStore/HMBModel.h>
 
-@class CKServerChangeToken, CKSubscription, NSNumber;
+@class CKServerChangeToken;
 
 @interface HMBCloudStateModel : HMBModel
 {
 }
 
 @property (strong, nonatomic) CKServerChangeToken *serverChangeToken; // @dynamic serverChangeToken;
-@property (strong, nonatomic) CKSubscription *subscription; // @dynamic subscription;
-@property (strong, nonatomic) NSNumber *wantsSubscription; // @dynamic wantsSubscription;
 
 + (id)hmbProperties;
-- (id)initWithModelID:(id)arg1 parentModelID:(id)arg2;
 
 @end
 

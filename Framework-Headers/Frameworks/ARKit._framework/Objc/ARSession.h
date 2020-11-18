@@ -136,6 +136,7 @@
 - (void)_sessionWillRunWithConfiguration:(id)arg1;
 - (void)_setPrimaryTechnique:(id)arg1;
 - (void)_setPrimaryTechnique:(id)arg1 secondaryTechnique:(id)arg2;
+- (BOOL)_shouldSkipAnchorCreationForData:(id)arg1;
 - (void)_startSensorsWithDataTypes:(unsigned long long)arg1;
 - (id)_stateQueue;
 - (void)_stopAllSensors;

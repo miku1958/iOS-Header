@@ -18,6 +18,7 @@
     struct Results _results;
     RLMRealm *_realm;
     struct RLMClassInfo *_info;
+    BOOL _optional;
 }
 
 @property (readonly, nonatomic, getter=isAttached) BOOL attached;
@@ -29,12 +30,14 @@
 @property (readonly, copy, nonatomic) NSString *objectClassName;
 @property (readonly, nonatomic) struct RLMClassInfo *objectInfo;
 @property (readonly, nonatomic) id objectiveCMetadata;
+@property (nonatomic, getter=isOptional) BOOL optional; // @synthesize optional=_optional;
 @property (readonly, nonatomic) RLMRealm *realm; // @synthesize realm=_realm;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) int type;
 
 + (id)emptyDetachedResults;
 + (id)objectWithThreadSafeReference:(unique_ptr_d0e912ad)arg1 metadata:(id)arg2 realm:(id)arg3;
-+ (id)resultsWithObjectInfo:(struct RLMClassInfo *)arg1 results:(struct Results)arg2;
++ (id)resultsWithObjectInfo:(struct RLMClassInfo *)arg1 results:(struct Results *)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)_aggregateForKeyPath:(id)arg1 method:(id)arg2 methodName:(BOOL)arg3 returnNilForEmpty: /* Error: Ran out of types for this method. */;
@@ -51,13 +54,16 @@
 - (id)averageOfProperty:(id)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)deleteObjectsFromRealm;
+- (id)distinctResultsUsingKeyPaths:(id)arg1;
+- (id)fastEnumerator;
 - (id)firstObject;
-- (unsigned long long)indexInSource:(unsigned long long)arg1;
 - (unsigned long long)indexOfObject:(id)arg1;
 - (unsigned long long)indexOfObjectWhere:(id)arg1;
 - (unsigned long long)indexOfObjectWhere:(id)arg1 args:(struct __va_list_tag [1])arg2;
 - (unsigned long long)indexOfObjectWithPredicate:(id)arg1;
 - (id)initPrivate;
+- (id)initWithObjectInfo:(struct RLMClassInfo *)arg1 results:(struct Results *)arg2;
+- (id)initWithResults:(struct Results)arg1;
 - (id)lastObject;
 - (unique_ptr_d0e912ad)makeThreadSafeReference;
 - (id)maxOfProperty:(id)arg1;
@@ -70,7 +76,7 @@
 - (void)setValue:(id)arg1 forKey:(id)arg2;
 - (id)sortedResultsUsingDescriptors:(id)arg1;
 - (id)sortedResultsUsingKeyPath:(id)arg1 ascending:(BOOL)arg2;
-- (id)sortedResultsUsingProperty:(id)arg1 ascending:(BOOL)arg2;
+- (id)subresultsWithResults:(struct Results)arg1;
 - (id)sumOfProperty:(id)arg1;
 - (struct TableView)tableView;
 - (id)valueForKey:(id)arg1;

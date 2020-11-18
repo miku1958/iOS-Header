@@ -64,6 +64,7 @@
 + (BOOL)canGenerateIconsInBackground;
 + (Class)downloadingIconClass;
 + (BOOL)forcesBackgroundIconGeneration;
++ (BOOL)hasIconImage;
 + (id)iconImageFromUnmaskedImage:(id)arg1 info:(struct SBIconImageInfo)arg2;
 - (void).cxx_destruct;
 - (void)_notifyAccessoriesDidUpdate;

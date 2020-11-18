@@ -263,8 +263,8 @@
 	let healthStore : HKHealthStore // +0x28 (0x8)
 
 	// Swift methods
-	0x6bb0  func InsightService.generateInsights(requests:) // method 
-	0x7700  func <stripped> // method 
+	0x67f0  func InsightService.generateInsights(requests:) // method 
+	0x7340  func <stripped> // method 
  }
 
  enum HealthVisualization.InsightServiceError {
@@ -291,8 +291,8 @@
 	let unit : HKUnit // +0x10 (0x8)
 
 	// Swift methods
-	0xad80  class func AverageValueStatsCollectionConverter.__allocating_init(unit:) // init 
-	0xae10  func AverageValueStatsCollectionConverter.convert(from:) // method 
+	0xa9c0  class func AverageValueStatsCollectionConverter.__allocating_init(unit:) // init 
+	0xaa50  func AverageValueStatsCollectionConverter.convert(from:) // method 
  }
 
  class HealthVisualization.InsightCalculatorFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -309,9 +309,9 @@
 	var currentDirection : NSComparisonResult // +0x48 (0x8)
 
 	// Swift methods
-	0xbd10  func <stripped> // method 
-	0xc2d0  func <stripped> // method 
-	0xc960  func <stripped> // method 
+	0xb950  func <stripped> // method 
+	0xbf10  func <stripped> // method 
+	0xc5a0  func <stripped> // method 
  }
 
  class HealthVisualization.DiagramDistribution : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -325,7 +325,7 @@
 	let axisHandler : DiagramAxis // +0x180 (0x8)
 
 	// Swift methods
-	0xd6f0  func <stripped> // getter 
+	0xd330  func <stripped> // getter 
  }
 
  struct HealthVisualization.DiagramDistributionPoints {
@@ -360,11 +360,11 @@
 	let defaultLocalizationFile : String // +0x18 (0x10)
 
 	// Swift methods
-	0x14ab0  class func static Localization.localize(_:substitutions:mySelf:) // method 
-	0x14b30  class func static Localization.localize(_:substitutions:mySelf:tableName:) // method 
-	0x14bd0  class func static Localization.localize(stringsDictKey:stringsDictFormatArguments:substitutions:mySelf:tableName:) // method 
-	0x14c80  class func static Localization.registerLocalization(classForBundle:localizationFile:) // method 
-	0x14db0  func <stripped> // method 
+	0x14780  class func static Localization.localize(_:substitutions:mySelf:) // method 
+	0x14800  class func static Localization.localize(_:substitutions:mySelf:tableName:) // method 
+	0x148a0  class func static Localization.localize(stringsDictKey:stringsDictFormatArguments:substitutions:mySelf:tableName:) // method 
+	0x14950  class func static Localization.registerLocalization(classForBundle:localizationFile:) // method 
+	0x14a80  func <stripped> // method 
  }
 
  struct HealthVisualization.ObjectTypeConfiguration {
@@ -416,9 +416,9 @@
 
  class HealthVisualization.AllInsightsDataSourceProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x1ebb0  func AllInsightsDataSourceProvider.selectedDataSources(for:) // method 
-	0x1eec0  func <stripped> // method 
-	0x1f320  func <stripped> // method 
+	0x1e880  func AllInsightsDataSourceProvider.selectedDataSources(for:) // method 
+	0x1eb90  func <stripped> // method 
+	0x1eff0  func <stripped> // method 
  }
 
  struct HealthVisualization.AudioExposureStatistics {
@@ -447,12 +447,12 @@
 	let audioExposureResult : AudioExposureStatistics
 
 	// ObjC -> Swift bridged methods
-	0x22040  @objc AudioExposureStatisticsQueryOperation.main <stripped>
-	0x222b0  @objc AudioExposureStatisticsQueryOperation.init <stripped>
-	0x223e0  @objc AudioExposureStatisticsQueryOperation..cxx_destruct <stripped>
+	0x21d10  @objc AudioExposureStatisticsQueryOperation.main <stripped>
+	0x21f80  @objc AudioExposureStatisticsQueryOperation.init <stripped>
+	0x220b0  @objc AudioExposureStatisticsQueryOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x215a0  class func AudioExposureStatisticsQueryOperation.__allocating_init(quantityType:operationQueue:queryConfiguration:queryConfigurationOverrides:name:queryQualityOfService:healthStore:resultHandler:) // init 
+	0x21270  class func AudioExposureStatisticsQueryOperation.__allocating_init(quantityType:operationQueue:queryConfiguration:queryConfigurationOverrides:name:queryQualityOfService:healthStore:resultHandler:) // init 
  }
 
  enum HealthVisualization.CodingKeys {
@@ -493,29 +493,29 @@
 	var lastUsedModelSpace : CGRect? // +0x58 (0x21)
 
 	// ObjC -> Swift bridged methods
-	0x2a760  @objc DiagramImageView.intrinsicContentSize <stripped>
-	0x2a7a0  @objc DiagramImageView.frame <stripped>
-	0x2a7e0  @objc DiagramImageView.setFrame: <stripped>
-	0x2a820  @objc DiagramImageView.bounds <stripped>
-	0x2a930  @objc DiagramImageView.setBounds: <stripped>
-	0x2afa0  @objc DiagramImageView.initWithFrame: <stripped>
-	0x2b040  @objc DiagramImageView.initWithCoder: <stripped>
-	0x2b390  @objc DiagramImageView.traitCollectionDidChange: <stripped>
-	0x2c280  @objc DiagramImageView.initWithImage: <stripped>
-	0x2c330  @objc DiagramImageView.initWithImage:highlightedImage: <stripped>
-	0x2c3c0  @objc DiagramImageView..cxx_destruct <stripped>
+	0x2a430  @objc DiagramImageView.intrinsicContentSize <stripped>
+	0x2a470  @objc DiagramImageView.frame <stripped>
+	0x2a4b0  @objc DiagramImageView.setFrame: <stripped>
+	0x2a4f0  @objc DiagramImageView.bounds <stripped>
+	0x2a600  @objc DiagramImageView.setBounds: <stripped>
+	0x2ac70  @objc DiagramImageView.initWithFrame: <stripped>
+	0x2ad10  @objc DiagramImageView.initWithCoder: <stripped>
+	0x2b060  @objc DiagramImageView.traitCollectionDidChange: <stripped>
+	0x2bf50  @objc DiagramImageView.initWithImage: <stripped>
+	0x2c000  @objc DiagramImageView.initWithImage:highlightedImage: <stripped>
+	0x2c090  @objc DiagramImageView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2a360  func DiagramImageView.delegate.getter // getter 
-	0x2a3a0  func DiagramImageView.delegate.setter // setter 
-	0x2a400  func DiagramImageView.delegate.modify // modifyCoroutine 
-	0x2a4f0  func DiagramImageView.lastUsedTransformer.getter // getter 
-	0x2a5a0  func DiagramImageView.lastUsedTransformer.setter // setter 
-	0x2a640  func DiagramImageView.lastUsedTransformer.modify // modifyCoroutine 
-	0x2a680  func DiagramImageView.lastUsedModelSpace.getter // getter 
-	0x2a6d0  func DiagramImageView.lastUsedModelSpace.setter // setter 
-	0x2a710  func DiagramImageView.lastUsedModelSpace.modify // modifyCoroutine 
-	0x2b3e0  func DiagramImageView.drawContent(modelSpace:screenInsets:drawingBlock:) // method 
+	0x2a030  func DiagramImageView.delegate.getter // getter 
+	0x2a070  func DiagramImageView.delegate.setter // setter 
+	0x2a0d0  func DiagramImageView.delegate.modify // modifyCoroutine 
+	0x2a1c0  func DiagramImageView.lastUsedTransformer.getter // getter 
+	0x2a270  func DiagramImageView.lastUsedTransformer.setter // setter 
+	0x2a310  func DiagramImageView.lastUsedTransformer.modify // modifyCoroutine 
+	0x2a350  func DiagramImageView.lastUsedModelSpace.getter // getter 
+	0x2a3a0  func DiagramImageView.lastUsedModelSpace.setter // setter 
+	0x2a3e0  func DiagramImageView.lastUsedModelSpace.modify // modifyCoroutine 
+	0x2b0b0  func DiagramImageView.drawContent(modelSpace:screenInsets:drawingBlock:) // method 
  }
 
  struct HealthVisualization.DiagramTransformer {
@@ -596,7 +596,7 @@
 
  class HealthVisualization.LinearRegressionConverter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x318c0  func LinearRegressionConverter.convert(from:) // method 
+	0x31590  func LinearRegressionConverter.convert(from:) // method 
  }
 
  struct HealthVisualization.QuantityDistributionConfigurationOverrides {
@@ -623,9 +623,9 @@
 	let operationQueue : NSOperationQueue // +0x20 (0x8)
 
 	// Swift methods
-	0x33170  func OnlineInsightService.generateInsights() // method 
-	0x33340  func <stripped> // method 
-	0x33560  func <stripped> // method 
+	0x32e40  func OnlineInsightService.generateInsights() // method 
+	0x33010  func <stripped> // method 
+	0x33230  func <stripped> // method 
  }
 
  class HealthVisualization.DiagramAxisMetricsCalculator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -636,8 +636,8 @@
 	let calculator : (_:_:_:) // +0x20 (0x10)
 
 	// Swift methods
-	0x33d40  class func DiagramAxisMetricsCalculator.__allocating_init(axisLabelDimension:maximumLabelCount:calculator:) // init 
-	0x33dd0  func DiagramAxisMetricsCalculator.axisMetrics(for:customLocations:) // method 
+	0x33a10  class func DiagramAxisMetricsCalculator.__allocating_init(axisLabelDimension:maximumLabelCount:calculator:) // init 
+	0x33aa0  func DiagramAxisMetricsCalculator.axisMetrics(for:customLocations:) // method 
  }
 
  enum HealthVisualization.Constants { }
@@ -698,9 +698,9 @@
 
  class HealthVisualization.DiagramFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x37560  class func DiagramFactory.__allocating_init() // init 
-	0x375b0  func DiagramFactory.drawDiagram(diagramImageView:diagramData:configuration:) // method 
-	0x376b0  func <stripped> // method 
+	0x37230  class func DiagramFactory.__allocating_init() // init 
+	0x37280  func DiagramFactory.drawDiagram(diagramImageView:diagramData:configuration:) // method 
+	0x37380  func <stripped> // method 
  }
 
  enum HealthVisualization.CodingKeys {
@@ -724,8 +724,8 @@
 	let statisticsOption : StatisticsOption // +0x18 (0x1)
 
 	// Swift methods
-	0x3aba0  class func ChartPointStatsCollectionConverter.__allocating_init(unit:statisticsOption:) // init 
-	0x3ac40  func ChartPointStatsCollectionConverter.convert(from:) // method 
+	0x3a870  class func ChartPointStatsCollectionConverter.__allocating_init(unit:statisticsOption:) // init 
+	0x3a910  func ChartPointStatsCollectionConverter.convert(from:) // method 
  }
 
  enum HealthVisualization.InsightVariant {
@@ -879,21 +879,21 @@
 	var $__lazy_storage_$_activityRingsView : HKActivityRingView?
 
 	// ObjC -> Swift bridged methods
-	0x42d90  @objc HighlightCalendarDayView.axDate <stripped>
-	0x42f50  @objc HighlightCalendarDayView.axProbability <stripped>
-	0x43070  @objc HighlightCalendarDayView.axProjectionKind <stripped>
-	0x431c0  @objc HighlightCalendarDayView.axCircleState <stripped>
-	0x44ca0  @objc HighlightCalendarDayView.initWithCoder: <stripped>
-	0x45720  @objc HighlightCalendarDayView.traitCollectionDidChange: <stripped>
-	0x45740  @objc HighlightCalendarDayView.initWithFrame: <stripped>
-	0x45770  @objc HighlightCalendarDayView.initWithArrangedSubviews: <stripped>
-	0x457e0  @objc HighlightCalendarDayView..cxx_destruct <stripped>
+	0x42aa0  @objc HighlightCalendarDayView.axDate <stripped>
+	0x42c60  @objc HighlightCalendarDayView.axProbability <stripped>
+	0x42d80  @objc HighlightCalendarDayView.axProjectionKind <stripped>
+	0x42ed0  @objc HighlightCalendarDayView.axCircleState <stripped>
+	0x449a0  @objc HighlightCalendarDayView.initWithCoder: <stripped>
+	0x45420  @objc HighlightCalendarDayView.traitCollectionDidChange: <stripped>
+	0x45440  @objc HighlightCalendarDayView.initWithFrame: <stripped>
+	0x45470  @objc HighlightCalendarDayView.initWithArrangedSubviews: <stripped>
+	0x454e0  @objc HighlightCalendarDayView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x42e20  func <stripped> // getter 
-	0x44cc0  func <stripped> // method 
-	0x44fa0  func <stripped> // method 
-	0x45240  func <stripped> // method 
+	0x42b30  func <stripped> // getter 
+	0x449c0  func <stripped> // method 
+	0x44ca0  func <stripped> // method 
+	0x44f40  func <stripped> // method 
  }
 
  class HealthVisualization.HighlightCalendarView : NUIContainerGridView /System/Library/PrivateFrameworks/AppSupportUI.framework/AppSupportUI {
@@ -906,16 +906,16 @@
 	var monthLabels : [UILabel] // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x45980  @objc HighlightCalendarView.initWithCoder: <stripped>
-	0x46610  @objc HighlightCalendarView.traitCollectionDidChange: <stripped>
-	0x476d0  @objc HighlightCalendarView.initWithFrame: <stripped>
-	0x477e0  @objc HighlightCalendarView.initWithArrangedSubviewRows: <stripped>
-	0x47860  @objc HighlightCalendarView..cxx_destruct <stripped>
+	0x45680  @objc HighlightCalendarView.initWithCoder: <stripped>
+	0x46310  @objc HighlightCalendarView.traitCollectionDidChange: <stripped>
+	0x473d0  @objc HighlightCalendarView.initWithFrame: <stripped>
+	0x474e0  @objc HighlightCalendarView.initWithArrangedSubviewRows: <stripped>
+	0x47560  @objc HighlightCalendarView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x459a0  class func HighlightCalendarView.__allocating_init(model:) // init 
-	0x46690  func <stripped> // method 
-	0x47120  func <stripped> // method 
+	0x456a0  class func HighlightCalendarView.__allocating_init(model:) // init 
+	0x46390  func <stripped> // method 
+	0x46e20  func <stripped> // method 
  }
 
  class HealthVisualization.StatisticsQueryOperation : type metadata for AsynchronousOperation /System/Library/PrivateFrameworks/HealthExperience.framework/HealthExperience {
@@ -931,13 +931,13 @@
 	var $__lazy_storage_$_query : HKStatisticsQuery? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4d8b0  @objc StatisticsQueryOperation.main <stripped>
-	0x4daf0  @objc StatisticsQueryOperation.init <stripped>
-	0x4dbf0  @objc StatisticsQueryOperation..cxx_destruct <stripped>
+	0x4d5b0  @objc StatisticsQueryOperation.main <stripped>
+	0x4d7f0  @objc StatisticsQueryOperation.init <stripped>
+	0x4d8f0  @objc StatisticsQueryOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x4d1d0  func StatisticsQueryOperation.result.getter // getter 
-	0x4d010  class func StatisticsQueryOperation.__allocating_init(sampleType:configuration:configurationOverrides:name:queryQualityOfService:healthStore:resultHandler:) // init 
+	0x4ced0  func StatisticsQueryOperation.result.getter // getter 
+	0x4cd10  class func StatisticsQueryOperation.__allocating_init(sampleType:configuration:configurationOverrides:name:queryQualityOfService:healthStore:resultHandler:) // init 
  }
 
  class HealthVisualization.DateDistributionCalculator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -947,7 +947,7 @@
 	let configuration : DistributionConfiguration // +0x18 (0x9)
 
 	// Swift methods
-	0x4eca0  func <stripped> // method 
+	0x4e9a0  func <stripped> // method 
  }
 
  enum HealthVisualization.Errors {
@@ -1000,16 +1000,16 @@
 	var item : SectionedDataSourceItem? // +0x10 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x543c0  @objc AllInsightsSectionHeaderView.titleLabel <stripped>
-	0x543e0  @objc AllInsightsSectionHeaderView.setTitleLabel: <stripped>
-	0x54a80  @objc AllInsightsSectionHeaderView.initWithFrame: <stripped>
-	0x54bd0  @objc AllInsightsSectionHeaderView.initWithCoder: <stripped>
-	0x54c60  @objc AllInsightsSectionHeaderView..cxx_destruct <stripped>
+	0x540c0  @objc AllInsightsSectionHeaderView.titleLabel <stripped>
+	0x540e0  @objc AllInsightsSectionHeaderView.setTitleLabel: <stripped>
+	0x54780  @objc AllInsightsSectionHeaderView.initWithFrame: <stripped>
+	0x548d0  @objc AllInsightsSectionHeaderView.initWithCoder: <stripped>
+	0x54960  @objc AllInsightsSectionHeaderView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x54590  func AllInsightsSectionHeaderView.item.getter // getter 
-	0x54630  func AllInsightsSectionHeaderView.item.setter // setter 
-	0x54730  func AllInsightsSectionHeaderView.item.modify // modifyCoroutine 
+	0x54290  func AllInsightsSectionHeaderView.item.getter // getter 
+	0x54330  func AllInsightsSectionHeaderView.item.setter // setter 
+	0x54430  func AllInsightsSectionHeaderView.item.modify // modifyCoroutine 
  }
 
  struct HealthVisualization.AllInsightsSectionHeaderItem {
@@ -1028,9 +1028,9 @@
 	let eventHorizonCalculation : (_:) // +0x30 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x55a70  @objc AggregateInsightResponseProducerOperation.main <stripped>
-	0x55aa0  @objc AggregateInsightResponseProducerOperation.init <stripped>
-	0x55b70  @objc AggregateInsightResponseProducerOperation..cxx_destruct <stripped>
+	0x55770  @objc AggregateInsightResponseProducerOperation.main <stripped>
+	0x557a0  @objc AggregateInsightResponseProducerOperation.init <stripped>
+	0x55870  @objc AggregateInsightResponseProducerOperation..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1067,18 +1067,18 @@
 	let dateInterval : DateInterval // +0x6f635f5f (0x0)
 	let calendar : Calendar // +0x0 (0x0)
 	let healthStore : HKHealthStore // +0x45545f5f (0x8)
-	let queryQualityOfService : NSQualityOfService // +0xde270 (0x8)
+	let queryQualityOfService : NSQualityOfService // +0xde0f0 (0x8)
 	let resultHandler : (_:) // +0x0 (0x10)
 	var $__lazy_storage_$_query : HKQuery? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x583c0  @objc SleepQueryOperation.main <stripped>
-	0x58650  @objc SleepQueryOperation.init <stripped>
-	0x58750  @objc SleepQueryOperation..cxx_destruct <stripped>
+	0x580c0  @objc SleepQueryOperation.main <stripped>
+	0x58350  @objc SleepQueryOperation.init <stripped>
+	0x58450  @objc SleepQueryOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x579c0  func SleepQueryOperation.result.getter // getter 
-	0x57a10  class func SleepQueryOperation.__allocating_init(dateInterval:calendar:name:queryQualityOfService:healthStore:resultHandler:) // init 
+	0x576c0  func SleepQueryOperation.result.getter // getter 
+	0x57710  class func SleepQueryOperation.__allocating_init(dateInterval:calendar:name:queryQualityOfService:healthStore:resultHandler:) // init 
  }
 
  struct HealthVisualization.TimehopConfiguration {
@@ -1122,8 +1122,8 @@
 
  class HealthVisualization.DiagramAxisMetricsCalculatorFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, DiagramAxisMetricsCalculatorProducing {
 	// Swift methods
-	0x5b0e0  class func DiagramAxisMetricsCalculatorFactory.__allocating_init() // init 
-	0x5b130  func DiagramAxisMetricsCalculatorFactory.diagramAxisMetricsCalculator(for:orientation:) // method 
+	0x5ade0  class func DiagramAxisMetricsCalculatorFactory.__allocating_init() // init 
+	0x5ae30  func DiagramAxisMetricsCalculatorFactory.diagramAxisMetricsCalculator(for:orientation:) // method 
  }
 
  class HealthVisualization.HiLoScalarAxisDimension : HKAxisLabelDimensionScalar /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI {
@@ -1134,9 +1134,9 @@
 	let unitPreferenceController : HKUnitPreferenceController?
 
 	// ObjC -> Swift bridged methods
-	0x5b730  @objc HiLoScalarAxisDimension.stringForLocation: <stripped>
-	0x5b7c0  @objc HiLoScalarAxisDimension.init <stripped>
-	0x5b840  @objc HiLoScalarAxisDimension..cxx_destruct <stripped>
+	0x5b430  @objc HiLoScalarAxisDimension.stringForLocation: <stripped>
+	0x5b4c0  @objc HiLoScalarAxisDimension.init <stripped>
+	0x5b540  @objc HiLoScalarAxisDimension..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1154,8 +1154,8 @@
 	var $__lazy_storage_$_computedPageDateIntervals : [ClosedRange<Int> : DateInterval]?
 
 	// ObjC -> Swift bridged methods
-	0x5c270  @objc InsightQueryManager.init <stripped>
-	0x5c300  @objc InsightQueryManager..cxx_destruct <stripped>
+	0x5bf70  @objc InsightQueryManager.init <stripped>
+	0x5c000  @objc InsightQueryManager..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1166,8 +1166,8 @@
 	let boxedValue : InsightValue
 
 	// ObjC -> Swift bridged methods
-	0x5beb0  @objc InsightValueObject.init <stripped>
-	0x5bf00  @objc InsightValueObject..cxx_destruct <stripped>
+	0x5bbb0  @objc InsightValueObject.init <stripped>
+	0x5bc00  @objc InsightValueObject..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1183,10 +1183,10 @@
 
  class HealthVisualization.AllInsightsViewController : type metadata for DataTypeDetailViewController /System/Library/PrivateFrameworks/HealthExperienceUI.framework/HealthExperienceUI {
 	// ObjC -> Swift bridged methods
-	0x5cc60  @objc AllInsightsViewController.viewDidLoad <stripped>
-	0x5cd30  @objc AllInsightsViewController.initWithCoder: <stripped>
-	0x5ce50  @objc AllInsightsViewController.initWithCollectionViewLayout: <stripped>
-	0x5cfe0  @objc AllInsightsViewController.initWithNibName:bundle: <stripped>
+	0x5c960  @objc AllInsightsViewController.viewDidLoad <stripped>
+	0x5ca30  @objc AllInsightsViewController.initWithCoder: <stripped>
+	0x5cb50  @objc AllInsightsViewController.initWithCollectionViewLayout: <stripped>
+	0x5cce0  @objc AllInsightsViewController.initWithNibName:bundle: <stripped>
  }
 
  enum HealthVisualization.Constants { }
@@ -1198,7 +1198,7 @@
 	let configuration : TrendConfiguration // +0x18 (0x19)
 
 	// Swift methods
-	0x5d860  func <stripped> // method 
+	0x5d560  func <stripped> // method 
  }
 
  enum HealthVisualization.Errors {
@@ -1260,9 +1260,9 @@
 	let calculatorFactory : InsightCalculatorOperationFactory // +0x130 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x63c90  @objc InsightResponseProducerOperation.main <stripped>
-	0x63d10  @objc InsightResponseProducerOperation.init <stripped>
-	0x63e00  @objc InsightResponseProducerOperation..cxx_destruct <stripped>
+	0x63990  @objc InsightResponseProducerOperation.main <stripped>
+	0x63a10  @objc InsightResponseProducerOperation.init <stripped>
+	0x63b00  @objc InsightResponseProducerOperation..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1310,11 +1310,11 @@
 	var lock : UnfairLock // +0x60 (0x8)
 
 	// Swift methods
-	0x64a90  class func ChangeDetector.__allocating_init(healthStore:name:types:anchor:includeChangeDetails:updateHandler:) // init 
-	0x64bd0  func ChangeDetector.start() // method 
-	0x64e00  func <stripped> // method 
-	0x65600  func ChangeDetector.stop() // method 
-	0x65720  class func static ChangeDetector.Operation(for:anchor:healthStore:waitForChanges:includeChangeDetails:) // method 
+	0x64790  class func ChangeDetector.__allocating_init(healthStore:name:types:anchor:includeChangeDetails:updateHandler:) // init 
+	0x648d0  func ChangeDetector.start() // method 
+	0x64b00  func <stripped> // method 
+	0x65300  func ChangeDetector.stop() // method 
+	0x65420  class func static ChangeDetector.Operation(for:anchor:healthStore:waitForChanges:includeChangeDetails:) // method 
  }
 
  enum HealthVisualization.State {
@@ -1370,8 +1370,8 @@
 	let innerAxisInsets : CGSize? // +0x98 (0x11)
 
 	// Swift methods
-	0x68d80  func <stripped> // method 
-	0x68e50  func <stripped> // method 
+	0x68a80  func <stripped> // method 
+	0x68b50  func <stripped> // method 
  }
 
  struct HealthVisualization.InsightConfiguration {
@@ -1404,19 +1404,19 @@
 	var underlyingResult : Atomic<Result<HKStatisticsCollection>> // +0x30 (0x8)
 	let sampleType : HKSampleType // +0x38 (0x8)
 	let configuration : StatisticsQueryConfiguration // +0x40 (0x12)
-	let configurationOverrides : StatisticsQueryConfigurationOverrides? // +0xde270 (0x0)
+	let configurationOverrides : StatisticsQueryConfigurationOverrides? // +0xde0f0 (0x0)
 	let healthStore : HKHealthStore // +0x0 (0x8)
 	let query : HKStatisticsCollectionQuery // +0x0 (0x8)
-	var resultHandler : (_:)? // +0xf838 (0x10)
+	var resultHandler : (_:)? // +0xf8c8 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x70280  @objc StatisticsCollectionQueryOperation.main <stripped>
-	0x70440  @objc StatisticsCollectionQueryOperation.init <stripped>
-	0x70540  @objc StatisticsCollectionQueryOperation..cxx_destruct <stripped>
+	0x6ff80  @objc StatisticsCollectionQueryOperation.main <stripped>
+	0x70140  @objc StatisticsCollectionQueryOperation.init <stripped>
+	0x70240  @objc StatisticsCollectionQueryOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x6ed80  func StatisticsCollectionQueryOperation.result.getter // getter 
-	0x6ebc0  class func StatisticsCollectionQueryOperation.__allocating_init(sampleType:configuration:configurationOverrides:name:queryQualityOfService:healthStore:resultHandler:) // init 
+	0x6ea80  func StatisticsCollectionQueryOperation.result.getter // getter 
+	0x6e8c0  class func StatisticsCollectionQueryOperation.__allocating_init(sampleType:configuration:configurationOverrides:name:queryQualityOfService:healthStore:resultHandler:) // init 
  }
 
  class HealthVisualization.DiagramLine : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1427,7 +1427,7 @@
 	let axisHandler : DiagramAxis // +0x58 (0x8)
 
 	// Swift methods
-	0x708a0  func <stripped> // getter 
+	0x705a0  func <stripped> // getter 
  }
 
  enum HealthVisualization.StatisticsOption {
@@ -1449,13 +1449,13 @@
 	var expectedDateInterval : DateInterval? // +0x0 (0x0)
 
 	// Swift methods
-	0x75180  func InsightValueCollectionConverter.expectedDateInterval.getter // getter 
-	0x751c0  func InsightValueCollectionConverter.expectedDateInterval.setter // setter 
-	0x75210  func InsightValueCollectionConverter.expectedDateInterval.modify // modifyCoroutine 
-	0x74f40  class func InsightValueCollectionConverter.__allocating_init(unit:insightConfig:expectedDateInterval:) // init 
-	0x75380  func InsightValueCollectionConverter.convert(from:) // method 
-	0x761e0  func <stripped> // method 
-	0x76360  func <stripped> // method 
+	0x74e80  func InsightValueCollectionConverter.expectedDateInterval.getter // getter 
+	0x74ec0  func InsightValueCollectionConverter.expectedDateInterval.setter // setter 
+	0x74f10  func InsightValueCollectionConverter.expectedDateInterval.modify // modifyCoroutine 
+	0x74c40  class func InsightValueCollectionConverter.__allocating_init(unit:insightConfig:expectedDateInterval:) // init 
+	0x75080  func InsightValueCollectionConverter.convert(from:) // method 
+	0x75ee0  func <stripped> // method 
+	0x76060  func <stripped> // method 
  }
 
  class HealthVisualization.DiagramBar : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1466,7 +1466,7 @@
 	let axisHandler : DiagramAxis // +0x60 (0x8)
 
 	// Swift methods
-	0x79c60  func <stripped> // getter 
+	0x79960  func <stripped> // getter 
  }
 
  struct HealthVisualization.DelayedImmutable {
@@ -1540,12 +1540,12 @@
 	var $__lazy_storage_$_signpostID : OSSignpostID? // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x813c0  @objc ActivitySummaryQueryOperation.main <stripped>
-	0x826a0  @objc ActivitySummaryQueryOperation.init <stripped>
-	0x82790  @objc ActivitySummaryQueryOperation..cxx_destruct <stripped>
+	0x81200  @objc ActivitySummaryQueryOperation.main <stripped>
+	0x824e0  @objc ActivitySummaryQueryOperation.init <stripped>
+	0x825d0  @objc ActivitySummaryQueryOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x80c70  class func ActivitySummaryQueryOperation.__allocating_init(predicate:orderedAscending:limit:name:queryQualityOfService:healthStore:resultHandler:) // init 
+	0x80ab0  class func ActivitySummaryQueryOperation.__allocating_init(predicate:orderedAscending:limit:name:queryQualityOfService:healthStore:resultHandler:) // init 
  }
 
  class HealthVisualization.DiagramAxisOnly : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1555,7 +1555,7 @@
 	let axisHandler : DiagramAxis // +0x28 (0x8)
 
 	// Swift methods
-	0x863f0  func <stripped> // getter 
+	0x86230  func <stripped> // getter 
  }
 
  enum HealthVisualization.LocalizationReplacement {
@@ -1575,11 +1575,11 @@
 	var $__lazy_storage_$_integerFormatter : NSNumberFormatter? // +0x0 (0x8)
 
 	// Swift methods
-	0x875a0  class func TrendTextSupport.__allocating_init(with:) // init 
-	0x877b0  func TrendTextSupport.localizedTitle.getter // getter 
-	0x87a30  func TrendTextSupport.localizedDescription.getter // getter 
-	0x88c30  class func TrendTextSupport.__allocating_init(from:) // init 
-	0x88f00  func TrendTextSupport.encode(to:) // method 
+	0x873e0  class func TrendTextSupport.__allocating_init(with:) // init 
+	0x875f0  func TrendTextSupport.localizedTitle.getter // getter 
+	0x87870  func TrendTextSupport.localizedDescription.getter // getter 
+	0x88a70  class func TrendTextSupport.__allocating_init(from:) // init 
+	0x88d40  func TrendTextSupport.encode(to:) // method 
  }
 
  enum HealthVisualization.CodingKeys {
@@ -1664,19 +1664,19 @@
 	let correlatedQuantityTypes : [HKQuantityType] // +0x40 (0x8)
 	let configuration : StatisticsQueryConfiguration // +0x48 (0x12)
 	let configurationOverrides : StatisticsQueryConfigurationOverrides? // +0x0 (0x0)
-	let queryQualityOfService : NSQualityOfService // +0xedab0 (0x8)
-	let healthStore : HKHealthStore // +0x6295 (0x8)
+	let queryQualityOfService : NSQualityOfService // +0xed9c0 (0x8)
+	let healthStore : HKHealthStore // +0x62e5 (0x8)
 	var accumulatedStatisticsCollections : Atomic<[HKQuantityType : HKStatisticsCollection]> // +0x67 (0x8)
 	var resultHandler : (_:)? // +0x45545f5f (0x10)
 	let operationQueue : NSOperationQueue // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x961c0  @objc CorrelatedStatisticsCollectionQueryOperation.main <stripped>
-	0x96370  @objc CorrelatedStatisticsCollectionQueryOperation.init <stripped>
-	0x96490  @objc CorrelatedStatisticsCollectionQueryOperation..cxx_destruct <stripped>
+	0x96000  @objc CorrelatedStatisticsCollectionQueryOperation.main <stripped>
+	0x961b0  @objc CorrelatedStatisticsCollectionQueryOperation.init <stripped>
+	0x962d0  @objc CorrelatedStatisticsCollectionQueryOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x94dc0  class func CorrelatedStatisticsCollectionQueryOperation.__allocating_init(correlationType:correlatedQuantityTypes:configuration:configurationOverrides:name:queryQualityOfService:healthStore:resultHandler:) // init 
+	0x94c00  class func CorrelatedStatisticsCollectionQueryOperation.__allocating_init(correlationType:correlatedQuantityTypes:configuration:configurationOverrides:name:queryQualityOfService:healthStore:resultHandler:) // init 
  }
 
  struct HealthVisualization.QuantityDistributionConfiguration {
@@ -1724,10 +1724,10 @@
 	var $__lazy_storage_$_perMinuteReadings : MinuteLine // +0x50 (0x8)
 
 	// Swift methods
-	0x9d600  func <stripped> // getter 
-	0x9d970  func DiagramHeartRateRecovery.modelSpace.getter // getter 
-	0x9d9b0  func DiagramHeartRateRecovery.screenInsets.getter // getter 
-	0x9dc80  func DiagramHeartRateRecovery.drawingBlock.getter // getter 
+	0x9d440  func <stripped> // getter 
+	0x9d7b0  func DiagramHeartRateRecovery.modelSpace.getter // getter 
+	0x9d7f0  func DiagramHeartRateRecovery.screenInsets.getter // getter 
+	0x9dac0  func DiagramHeartRateRecovery.drawingBlock.getter // getter 
  }
 
  enum HealthVisualization.MinuteLine {
@@ -1775,32 +1775,32 @@
 	let configuration : QuantityDistributionConfiguration // +0x0 (0x10)
 	let queryQualityOfService : NSQualityOfService // +0x0 (0x8)
 	let queryStartDate : Date // +0x0 (0x0)
-	let queryEndDate : Date // +0xf3d46 (0x0)
-	let anchorDate : Date // +0x4e70 (0x0)
-	let intervalComponents : DateComponents // +0xf3d46 (0x0)
+	let queryEndDate : Date // +0xf3ca6 (0x0)
+	let anchorDate : Date // +0x4e78 (0x0)
+	let intervalComponents : DateComponents // +0xf3ca6 (0x0)
 	let queryPredicate : NSPredicate? // +0x0 (0x8)
 	var $__lazy_storage_$_quantityDistributionQuery : _HKQuantityDistributionQuery? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xa2180  @objc QuantityDistributionQueryOperation.main <stripped>
-	0xa2880  @objc QuantityDistributionQueryOperation.init <stripped>
-	0xa29f0  @objc QuantityDistributionQueryOperation..cxx_destruct <stripped>
+	0xa1fc0  @objc QuantityDistributionQueryOperation.main <stripped>
+	0xa26c0  @objc QuantityDistributionQueryOperation.init <stripped>
+	0xa2830  @objc QuantityDistributionQueryOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0xa03d0  func QuantityDistributionQueryOperation.result.getter // getter 
-	0xa0500  class func QuantityDistributionQueryOperation.__allocating_init(quantityType:configuration:configurationOverrides:name:queryQualityOfService:healthStore:baseDate:resultHandler:) // init 
-	0xa2370  func <stripped> // method 
+	0xa0210  func QuantityDistributionQueryOperation.result.getter // getter 
+	0xa0340  class func QuantityDistributionQueryOperation.__allocating_init(quantityType:configuration:configurationOverrides:name:queryQualityOfService:healthStore:baseDate:resultHandler:) // init 
+	0xa21b0  func <stripped> // method 
  }
 
  class HealthVisualization.InsightTextSupportFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xa35a0  class func static InsightTextSupportFactory.textSupport(for:) // method 
+	0xa33e0  class func static InsightTextSupportFactory.textSupport(for:) // method 
  }
 
  class HealthVisualization.CurrentValueDateIntervalStatsCollectionConverter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xa3720  class func CurrentValueDateIntervalStatsCollectionConverter.__allocating_init() // init 
-	0xa37a0  func CurrentValueDateIntervalStatsCollectionConverter.convert(from:) // method 
+	0xa3560  class func CurrentValueDateIntervalStatsCollectionConverter.__allocating_init() // init 
+	0xa35e0  func CurrentValueDateIntervalStatsCollectionConverter.convert(from:) // method 
  }
 
  class HealthVisualization.AllInsightsSectionedDataSource {
@@ -1822,31 +1822,31 @@
 	let associatedObjectTypes : [HKObjectType] // +0x50 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xa58b0  @objc ItemDetailViewController.initWithCoder: <stripped>
-	0xa6c20  @objc ItemDetailViewController.viewDidLoad <stripped>
-	0xa6da0  @objc ItemDetailViewController.initWithNibName:bundle: <stripped>
-	0xa6e20  @objc ItemDetailViewController..cxx_destruct <stripped>
+	0xa56f0  @objc ItemDetailViewController.initWithCoder: <stripped>
+	0xa6a60  @objc ItemDetailViewController.viewDidLoad <stripped>
+	0xa6be0  @objc ItemDetailViewController.initWithNibName:bundle: <stripped>
+	0xa6c60  @objc ItemDetailViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xa4f40  func ItemDetailViewController.scrollView.getter // getter 
-	0xa4f60  func ItemDetailViewController.scrollView.setter // setter 
-	0xa4f80  func ItemDetailViewController.scrollView.modify // modifyCoroutine 
-	0xa4fc0  func ItemDetailViewController.closeButton.getter // getter 
-	0xa4fe0  func ItemDetailViewController.closeButton.setter // setter 
-	0xa5000  func ItemDetailViewController.closeButton.modify // modifyCoroutine 
-	0xa5040  func ItemDetailViewController.allItemsButton.getter // getter 
-	0xa5060  func ItemDetailViewController.allItemsButton.setter // setter 
-	0xa5080  func ItemDetailViewController.allItemsButton.modify // modifyCoroutine 
-	0xa50c0  func ItemDetailViewController.containerView.getter // getter 
-	0xa50e0  func ItemDetailViewController.containerView.setter // setter 
-	0xa5100  func ItemDetailViewController.containerView.modify // modifyCoroutine 
-	0xa5140  func ItemDetailViewController.buttonStackView.getter // getter 
-	0xa51a0  func ItemDetailViewController.buttonStackView.setter // setter 
-	0xa5200  func ItemDetailViewController.buttonStackView.modify // modifyCoroutine 
-	0xa5270  func ItemDetailViewController.associatedObjectTypeButtons.getter // getter 
-	0xa55d0  func ItemDetailViewController.associatedObjectTypeButtons.setter // setter 
-	0xa55f0  func ItemDetailViewController.associatedObjectTypeButtons.modify // modifyCoroutine 
-	0xa5660  class func ItemDetailViewController.__allocating_init(embedding:associatedObjectTypes:dataProvider:) // init 
+	0xa4d80  func ItemDetailViewController.scrollView.getter // getter 
+	0xa4da0  func ItemDetailViewController.scrollView.setter // setter 
+	0xa4dc0  func ItemDetailViewController.scrollView.modify // modifyCoroutine 
+	0xa4e00  func ItemDetailViewController.closeButton.getter // getter 
+	0xa4e20  func ItemDetailViewController.closeButton.setter // setter 
+	0xa4e40  func ItemDetailViewController.closeButton.modify // modifyCoroutine 
+	0xa4e80  func ItemDetailViewController.allItemsButton.getter // getter 
+	0xa4ea0  func ItemDetailViewController.allItemsButton.setter // setter 
+	0xa4ec0  func ItemDetailViewController.allItemsButton.modify // modifyCoroutine 
+	0xa4f00  func ItemDetailViewController.containerView.getter // getter 
+	0xa4f20  func ItemDetailViewController.containerView.setter // setter 
+	0xa4f40  func ItemDetailViewController.containerView.modify // modifyCoroutine 
+	0xa4f80  func ItemDetailViewController.buttonStackView.getter // getter 
+	0xa4fe0  func ItemDetailViewController.buttonStackView.setter // setter 
+	0xa5040  func ItemDetailViewController.buttonStackView.modify // modifyCoroutine 
+	0xa50b0  func ItemDetailViewController.associatedObjectTypeButtons.getter // getter 
+	0xa5410  func ItemDetailViewController.associatedObjectTypeButtons.setter // setter 
+	0xa5430  func ItemDetailViewController.associatedObjectTypeButtons.modify // modifyCoroutine 
+	0xa54a0  class func ItemDetailViewController.__allocating_init(embedding:associatedObjectTypes:dataProvider:) // init 
  }
 
  struct HealthVisualization.HealthTypeProxy {
@@ -1861,9 +1861,9 @@
 	var responses : [InsightResponse] // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xa9340  @objc InsightResponseCollatorOperation.main <stripped>
-	0xa9370  @objc InsightResponseCollatorOperation.init <stripped>
-	0xa9430  @objc InsightResponseCollatorOperation..cxx_destruct <stripped>
+	0xa9180  @objc InsightResponseCollatorOperation.main <stripped>
+	0xa91b0  @objc InsightResponseCollatorOperation.init <stripped>
+	0xa9270  @objc InsightResponseCollatorOperation..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1889,9 +1889,9 @@
 	var result : Result<AnchoredChangeSet>
 
 	// ObjC -> Swift bridged methods
-	0xaba30  @objc ChangeDetectorOperation.main <stripped>
-	0xabb40  @objc ChangeDetectorOperation.init <stripped>
-	0xabc30  @objc ChangeDetectorOperation..cxx_destruct <stripped>
+	0xab870  @objc ChangeDetectorOperation.main <stripped>
+	0xab980  @objc ChangeDetectorOperation.init <stripped>
+	0xaba70  @objc ChangeDetectorOperation..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1907,9 +1907,9 @@
 	var bins : Bin // +0x0 (0x8)
 
 	// Swift methods
-	0xac380  func <stripped> // method 
-	0xac640  func <stripped> // method 
-	0xacaf0  func <stripped> // method 
+	0xac1c0  func <stripped> // method 
+	0xac480  func <stripped> // method 
+	0xac930  func <stripped> // method 
  }
 
  struct HealthVisualization.Bin {
@@ -2384,8 +2384,8 @@
 
  class HealthVisualization.DiagramDateAxisMetricsCalculator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xd0bf0  func <stripped> // method 
-	0xd11a0  func DiagramDateAxisMetricsCalculator.axisMetrics(for:customLocations:) // method 
+	0xd0a30  func <stripped> // method 
+	0xd0fe0  func DiagramDateAxisMetricsCalculator.axisMetrics(for:customLocations:) // method 
  }
 
  struct HealthVisualization.DateTickIntervalStrategy {
@@ -2421,19 +2421,19 @@
 	var lock_state : State // +0x61 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0xd9a20  @objc AggregateChangeDetector.init <stripped>
-	0xd9aa0  @objc AggregateChangeDetector..cxx_destruct <stripped>
+	0xd9860  @objc AggregateChangeDetector.init <stripped>
+	0xd98e0  @objc AggregateChangeDetector..cxx_destruct <stripped>
 
 	// Swift methods
-	0xd55c0  func AggregateChangeDetector.dispatchPending.getter // getter 
-	0xd5670  class func AggregateChangeDetector.__allocating_init(types:highFrequencyTypes:anchor:includeChangeDetails:name:healthStore:deliveryQueue:changesHandler:) // init 
-	0xd6710  func AggregateChangeDetector.start() // method 
-	0xd6b50  func AggregateChangeDetector.stop() // method 
-	0xd6d30  func AggregateChangeDetector.dispatchChanges() // method 
-	0xd81b0  func <stripped> // method 
-	0xd8750  func <stripped> // method 
-	0xd88e0  func <stripped> // method 
-	0xd8b10  func <stripped> // method 
+	0xd5400  func AggregateChangeDetector.dispatchPending.getter // getter 
+	0xd54b0  class func AggregateChangeDetector.__allocating_init(types:highFrequencyTypes:anchor:includeChangeDetails:name:healthStore:deliveryQueue:changesHandler:) // init 
+	0xd6550  func AggregateChangeDetector.start() // method 
+	0xd6990  func AggregateChangeDetector.stop() // method 
+	0xd6b70  func AggregateChangeDetector.dispatchChanges() // method 
+	0xd7ff0  func <stripped> // method 
+	0xd8590  func <stripped> // method 
+	0xd8720  func <stripped> // method 
+	0xd8950  func <stripped> // method 
  }
 
  enum HealthVisualization.State {

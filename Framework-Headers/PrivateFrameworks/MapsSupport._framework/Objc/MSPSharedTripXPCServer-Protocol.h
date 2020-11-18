@@ -11,6 +11,9 @@
 @protocol MSPSharedTripXPCServer <NSObject>
 - (void)blockSharedTrip:(NSString *)arg1;
 - (void)checkin;
+- (void)fetchAccountValidWithCompletion:(void (^)(BOOL))arg1;
+- (void)fetchActiveHandlesWithCompletion:(void (^)(NSArray *))arg1;
+- (void)fetchSendingIdentityWithCompletion:(void (^)(NSString *, NSString *))arg1;
 - (void)fetchSharedTripsWithCompletion:(void (^)(NSArray *))arg1;
 - (void)startSharingTripWithContacts:(NSArray *)arg1;
 - (void)startSharingTripWithMessagesContacts:(NSArray *)arg1;

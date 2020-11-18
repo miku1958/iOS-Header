@@ -21,6 +21,7 @@
     HMAccessory *_accessory;
 }
 
+@property (readonly, getter=isAccessModeChangeNotificationEnabled) BOOL accessModeChangeNotificationEnabled;
 @property (readonly, getter=isAccessModeIndicatorEnabled) BOOL accessModeIndicatorEnabled;
 @property (strong, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
 @property (readonly, getter=isCameraDisabledByThirdParty) BOOL cameraDisabledByThirdParty;
@@ -34,6 +35,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly, getter=isNightVisionModeEnabled) BOOL nightVisionModeEnabled;
+@property (readonly, getter=isRecordingAudioEnabled) BOOL recordingAudioEnabled;
 @property (readonly) unsigned long long recordingEventTriggers;
 @property (readonly) unsigned long long recordingStorageDuration;
 @property (readonly) HMCameraBulletinBoardSmartNotification *smartNotificationBulletin;
@@ -54,8 +56,10 @@
 - (id)logIdentifier;
 - (id)messageDestination;
 - (void)updateAccessMode:(unsigned long long)arg1 forPresenceEventType:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)updateAccessModeChangeNotificationEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateAccessModeIndicatorEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateNightVisionModeEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateRecordingAudioEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateRecordingEventTriggers:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateRecordingStorageDuration:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateSnapshotsAllowed:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;

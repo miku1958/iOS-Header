@@ -29,9 +29,11 @@
 - (void).cxx_destruct;
 - (void)_addEventObserver:(id)arg1;
 - (void)_cleanupAfterDispatch;
+- (unsigned long long)_clickCount;
 - (struct CGPoint)_digitizerLocation;
 - (id)_eventObservers;
 - (unsigned long long)_focusHeading;
+- (void)_gestureRecognizerNoLongerNeedsSendEvent:(id)arg1;
 - (id)_gestureRecognizersForWindow:(id)arg1;
 - (struct __GSEvent *)_gsEvent;
 - (struct __IOHIDEvent *)_hidEvent;

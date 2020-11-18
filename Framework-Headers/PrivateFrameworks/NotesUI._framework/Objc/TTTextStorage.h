@@ -188,6 +188,7 @@
 - (BOOL)shouldBreakUndoCoalescingWithReplacementRange:(struct _NSRange)arg1 replacementLength:(unsigned long long)arg2;
 - (id)standardizedAttributedStringFixingTextAttachments;
 - (id)standardizedAttributedStringFixingTextAttachmentsForRange:(struct _NSRange)arg1;
+- (id)standardizedAttributedStringFixingTextAttachmentsForRange:(struct _NSRange)arg1 styler:(id)arg2;
 - (id)string;
 - (void)styleTextInRange:(struct _NSRange)arg1;
 - (BOOL)textViewHasMarkedText:(struct UITextView *)arg1;

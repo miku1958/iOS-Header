@@ -27,7 +27,7 @@
 + (id)recoverWithContextData:(id)arg1 bottleID:(id)arg2 escrowedEntropy:(id)arg3 error:(id *)arg4;
 + (void)setNewRecoveryKeyWithData:(id)arg1 recoveryKey:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
-- (long long)_fetchCliqueStatus:(id)arg1 cached:(BOOL)arg2 error:(id *)arg3;
+- (long long)_fetchCliqueStatus:(id)arg1 error:(id *)arg2;
 - (BOOL)accountUserKeyAvailable;
 - (long long)cachedCliqueStatus:(BOOL)arg1 error:(id *)arg2;
 - (id)copyPeerPeerInfo:(id *)arg1;
@@ -62,6 +62,7 @@
 - (BOOL)tryUserCredentialsAndDSID:(id)arg1 password:(id)arg2 error:(id *)arg3;
 - (BOOL)viewSet:(id)arg1 disabledViews:(id)arg2;
 - (BOOL)waitForInitialSync:(id *)arg1;
+- (BOOL)waitForOctagonUpgrade:(id *)arg1;
 
 @end
 

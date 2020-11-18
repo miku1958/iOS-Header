@@ -6,10 +6,12 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMBShareUserID, HMDCloudShareTrustManager;
+@class HMBShareUserID, HMDCloudShareTrustManager, NSUUID;
 
 @protocol HMDCloudShareTrustManagerDelegate <NSObject>
 - (void)cloudShareTrustManager:(HMDCloudShareTrustManager *)arg1 didFetchOwnerCloudShareID:(HMBShareUserID *)arg2;
+- (void)cloudShareTrustManager:(HMDCloudShareTrustManager *)arg1 didRemoveUserWithUUID:(NSUUID *)arg2;
 - (void)didFinishConfiguringForCloudShareTrustManager:(HMDCloudShareTrustManager *)arg1;
+- (void)didRemoveTrustZoneInCloudShareTrustManager:(HMDCloudShareTrustManager *)arg1;
 @end
 

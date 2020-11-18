@@ -47,14 +47,14 @@
 - (void)_createAndResumePublicXPCConnection;
 - (void)_createAndResumeXPCConnection;
 - (void)_defaultsDidChange;
-- (void)_destroyPublicXPCConnection;
-- (void)_destroyXPCConnection;
+- (void)_destroyPublicXPCConnectionAndInvalidate:(BOOL)arg1;
+- (void)_destroyXPCConnectionAndInvalidate:(BOOL)arg1;
 - (void)_detectProfiledCrashes;
+- (id)_disallowedRestrictionErrorForRestrictionKey:(id)arg1;
 - (void)_effectiveSettingsDidChange:(id)arg1;
 - (int)_getPasscodeComplianceWarningExpiryDate:(id)arg1 lastLockDate:(id)arg2 outLocalizedTitle:(id *)arg3 outLocalizedMessage:(id *)arg4;
 - (id)_handleQueueProfileError:(id)arg1 forTargetDevice:(unsigned long long)arg2;
 - (void)_internalDefaultsDidChange;
-- (BOOL)_isRestrictionDictionaryForbiddenForUserEnrollment:(id)arg1;
 - (id)_localizedCertificateSourceDescriptionFromMDMName:(id)arg1 exchangeName:(id)arg2 exchangeCount:(long long)arg3 profileName:(id)arg4 profileCount:(long long)arg5;
 - (id)_localizedRestrictionSourceDescriptionFromMDMName:(id)arg1 exchangeName:(id)arg2 exchangeCount:(long long)arg3 profileName:(id)arg4 profileCount:(long long)arg5;
 - (id)_localizedSourceDescriptionForType:(long long)arg1 MDMName:(id)arg2 exchangeName:(id)arg3 exchangeCount:(long long)arg4 profileName:(id)arg5 profileCount:(long long)arg6;
@@ -77,6 +77,7 @@
 - (BOOL)_shouldApplyContactsFilterForBundleID:(id)arg1 sourceAccountManagement:(int)arg2 outAllowManagedAccounts:(BOOL *)arg3 outAllowUnmanagedAccounts:(BOOL *)arg4;
 - (BOOL)_shouldApplyContactsFilterForTargetBundleID:(id)arg1 targetAccountManagement:(int)arg2 outAllowManagedAccounts:(BOOL *)arg3 outAllowUnmanagedAccounts:(BOOL *)arg4;
 - (id)_soldToIdsFromDict:(id)arg1;
+- (id)_transmogrifyRestrictionDictionaryForUserEnrollment:(id)arg1 outError:(id *)arg2;
 - (BOOL)_unmanagedMayReadManagedContacts;
 - (id)acceptedFileExtensions;
 - (id)acceptedMIMETypes;
@@ -323,6 +324,7 @@
 - (BOOL)isMultitaskingAllowed;
 - (BOOL)isMusicArtistActivityAllowed;
 - (BOOL)isMusicServiceAllowed;
+- (BOOL)isNetworkDriveAccessInFilesAllowed;
 - (BOOL)isNewsAllowed;
 - (BOOL)isNewsTodayAllowed;
 - (BOOL)isNotificationsModificationAllowedForBundleID:(id)arg1;

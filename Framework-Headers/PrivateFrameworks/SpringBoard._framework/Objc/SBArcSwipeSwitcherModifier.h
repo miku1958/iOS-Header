@@ -28,9 +28,9 @@
 - (BOOL)isWallpaperRequiredForSwitcher;
 - (long long)keyboardSuppressionMode;
 - (id)layoutSettings;
-- (long long)layoutUpdateMode;
 - (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (double)opacityForIndex:(unsigned long long)arg1;
+- (BOOL)shouldPerformCrossfadeForReduceMotion;
 - (id)transitionWillBegin;
 - (long long)wallpaperStyle;
 - (BOOL)wantsAsynchronousRenderingAssertion;

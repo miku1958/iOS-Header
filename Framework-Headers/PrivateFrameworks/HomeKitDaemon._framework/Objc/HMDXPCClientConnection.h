@@ -14,11 +14,11 @@
 
 @interface HMDXPCClientConnection : HMFMessageTransport <HMDaemonConnection, HMFLogging>
 {
+    BOOL _activated;
     BOOL _entitledForAPIAccess;
     BOOL _entitledForBackgroundMode;
     BOOL _entitledForCameraClipsAccess;
     BOOL _entitledForMultiUserSetupAccess;
-    BOOL _activated;
     NSXPCConnection *_xpcConnection;
     HMDProcessInfo *_processInfo;
     unsigned long long _entitlements;
@@ -28,7 +28,7 @@
     HMDApplicationRegistry *_appRegistry;
 }
 
-@property (nonatomic) BOOL activated; // @synthesize activated=_activated;
+@property (nonatomic, getter=isActivated) BOOL activated; // @synthesize activated=_activated;
 @property (readonly, nonatomic) NSSet *activeRequests;
 @property (weak, nonatomic) HMDApplicationRegistry *appRegistry; // @synthesize appRegistry=_appRegistry;
 @property (readonly, nonatomic) NSString *applicationBundleIdentifier;

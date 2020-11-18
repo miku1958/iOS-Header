@@ -30,6 +30,7 @@
     NSNumber *_pwReqMinAge;
     NSNumber *_pwReqHistory;
     NSString *_pwReqText;
+    NSNumber *_replicationTime;
 }
 
 @property (nonatomic) BOOL allowAutomaticLogin; // @synthesize allowAutomaticLogin=_allowAutomaticLogin;
@@ -48,6 +49,7 @@
 @property (strong, nonatomic) NSNumber *pwReqLength; // @synthesize pwReqLength=_pwReqLength;
 @property (strong, nonatomic) NSNumber *pwReqMinAge; // @synthesize pwReqMinAge=_pwReqMinAge;
 @property (strong, nonatomic) NSString *pwReqText; // @synthesize pwReqText=_pwReqText;
+@property (strong, nonatomic) NSNumber *replicationTime; // @synthesize replicationTime=_replicationTime;
 @property (nonatomic) BOOL requireUserPresence; // @synthesize requireUserPresence=_requireUserPresence;
 @property (strong, nonatomic) NSString *siteCode; // @synthesize siteCode=_siteCode;
 @property BOOL syncLocalPassword; // @synthesize syncLocalPassword=_syncLocalPassword;

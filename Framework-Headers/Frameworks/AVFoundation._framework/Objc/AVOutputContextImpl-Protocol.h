@@ -24,6 +24,7 @@
 @property (readonly) float volume;
 
 + (id)auxiliaryOutputContext;
++ (id)defaultSharedOutputContextImpl;
 + (id)iTunesAudioContext;
 + (BOOL)outputContextExistsWithRemoteOutputDevice;
 + (id)outputContextImplForControllingOutputDeviceGroupWithID:(NSString *)arg1 options:(NSDictionary *)arg2;

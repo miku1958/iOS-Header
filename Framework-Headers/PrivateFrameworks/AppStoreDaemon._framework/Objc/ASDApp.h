@@ -37,6 +37,7 @@
     ASDProgress *_remoteProgress;
 }
 
+@property (readonly, getter=isArcadeOpenable) BOOL arcadeOpenable;
 @property (strong) NSString *artistName; // @synthesize artistName=_artistName;
 @property (readonly, getter=isBetaApp) BOOL betaApp;
 @property (readonly) NSString *bundleID; // @synthesize bundleID=_bundleID;

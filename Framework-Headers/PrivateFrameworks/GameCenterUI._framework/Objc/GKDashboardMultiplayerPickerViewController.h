@@ -12,7 +12,7 @@
 #import <GameCenterUI/UITextFieldDelegate-Protocol.h>
 
 @class GKContactSkipControl, GKDashboardMultiplayerPickerDataSource, NSArray, NSLayoutConstraint, NSString, UIButton, UILabel, UISearchController, UISegmentedControl, UITextField, UIView, UIViewController, UIVisualEffectView;
-@protocol GKDashboardNearbyBrowserDelegate;
+@protocol GKDashboardMultiplayerPickerDelegate, GKDashboardNearbyBrowserDelegate;
 
 @interface GKDashboardMultiplayerPickerViewController : GKDashboardCollectionViewController <UITextFieldDelegate, UISearchBarDelegate, GKComposeControllerDelegate, UISearchResultsUpdating>
 {
@@ -23,6 +23,7 @@
     NSString *_message;
     CDUnknownBlockType _completionHandler;
     id<GKDashboardNearbyBrowserDelegate> _nearbyDelegate;
+    id<GKDashboardMultiplayerPickerDelegate> _multiplayerPickerDelegate;
     NSArray *_initiallySelectedPlayers;
     UILabel *_descriptionLabel;
     UIButton *_sendButton;
@@ -59,6 +60,7 @@
 @property (strong, nonatomic) NSArray *initiallySelectedPlayers; // @synthesize initiallySelectedPlayers=_initiallySelectedPlayers;
 @property (copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property (strong, nonatomic) UITextField *messageField; // @synthesize messageField=_messageField;
+@property (weak, nonatomic) id<GKDashboardMultiplayerPickerDelegate> multiplayerPickerDelegate; // @synthesize multiplayerPickerDelegate=_multiplayerPickerDelegate;
 @property (nonatomic) id<GKDashboardNearbyBrowserDelegate> nearbyDelegate; // @synthesize nearbyDelegate=_nearbyDelegate;
 @property (readonly, nonatomic) GKDashboardMultiplayerPickerDataSource *pickerDataSource;
 @property (strong, nonatomic) UIView *scrollingHeader; // @synthesize scrollingHeader=_scrollingHeader;

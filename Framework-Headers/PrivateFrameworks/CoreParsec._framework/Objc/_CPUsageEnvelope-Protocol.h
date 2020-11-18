@@ -21,6 +21,7 @@
 @property (strong, nonatomic) _CPSpotlightUsagePropensity *spotlightUsagePropensity;
 @property (nonatomic) int totalSessions;
 @property (strong, nonatomic) _CPUsageSinceLookback *usageSinceLookback;
+@property (copy, nonatomic) NSData *uuidBytes;
 @property (readonly, nonatomic) unsigned long long whichKind;
 
 - (id)initWithDictionary:(NSDictionary *)arg1;

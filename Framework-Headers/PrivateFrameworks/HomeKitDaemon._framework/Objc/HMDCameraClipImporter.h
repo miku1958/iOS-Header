@@ -4,35 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDHome, HMFMessage, NSString;
+@class HMBLocalZone, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDCameraClipImporter : NSObject <HMFLogging>
+@interface HMDCameraClipImporter : HMFObject <HMFLogging>
 {
-    HMDHome *_home;
-    HMFMessage *_message;
+    NSUUID *_logIdentifier;
+    HMBLocalZone *_localZone;
     NSObject<OS_dispatch_queue> *_workQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) HMDHome *home; // @synthesize home=_home;
-@property (readonly) HMFMessage *message; // @synthesize message=_message;
+@property (readonly) HMBLocalZone *localZone; // @synthesize localZone=_localZone;
+@property (readonly, copy) NSUUID *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property (readonly) Class superclass;
 @property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)logCategory;
 - (void).cxx_destruct;
-- (id)_createFuturesForCameraProfile:(id)arg1 clipsMetadata:(id)arg2;
-- (id)cameraProfiles;
-- (void)import;
-- (id)initWithHome:(id)arg1 importMessage:(id)arg2;
-- (id)logIdentifier;
+- (id)importClipsWithImportData:(id)arg1;
+- (id)initWithLocalZone:(id)arg1;
 
 @end
 

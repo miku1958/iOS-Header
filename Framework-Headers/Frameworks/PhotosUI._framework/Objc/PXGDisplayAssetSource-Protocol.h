@@ -10,6 +10,7 @@
 @protocol PXDisplayAssetFetchResult, PXGDisplayAssetRequestObserver;
 
 @protocol PXGDisplayAssetSource <PXGLayoutContentSource>
+- (unsigned long long)desiredPlaceholderStyleInLayout:(PXGLayout *)arg1;
 - (id<PXDisplayAssetFetchResult>)displayAssetFetchResultForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 inLayout:(PXGLayout *)arg2;
 - (id<PXGDisplayAssetRequestObserver>)displayAssetRequestObserverForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 inLayout:(PXGLayout *)arg2;
 - (struct CGSize)minSpriteSizeForPresentationStyle:(unsigned long long)arg1;

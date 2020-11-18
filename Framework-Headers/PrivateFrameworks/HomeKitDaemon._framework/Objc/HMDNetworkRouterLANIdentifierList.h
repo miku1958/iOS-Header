@@ -13,20 +13,20 @@
 
 @interface HMDNetworkRouterLANIdentifierList : NSObject <NSCopying, HMDTLVProtocol>
 {
-    NSMutableArray *_identifier;
+    NSMutableArray *_identifiers;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSMutableArray *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) NSMutableArray *identifiers; // @synthesize identifiers=_identifiers;
 @property (readonly) Class superclass;
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (id)initWithIdentifier:(id)arg1;
+- (id)initWithIdentifiers:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)parseFromData:(id)arg1 error:(id *)arg2;
 - (id)serializeWithError:(id *)arg1;

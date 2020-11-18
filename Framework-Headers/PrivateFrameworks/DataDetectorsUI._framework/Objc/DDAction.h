@@ -25,12 +25,13 @@
     BOOL _cachedCoalescedResult;
     BOOL _cachedAssociatedResults;
     BOOL _isDefaultAction;
-    BOOL _companion;
+    BOOL _isCompanion;
+    BOOL _hasCompanion;
     int _hostApplication;
     NSObject<DDActionDelegate> *_delegate;
 }
 
-@property (nonatomic) BOOL companion; // @synthesize companion=_companion;
+@property (nonatomic) BOOL companion; // @synthesize companion=_isCompanion;
 @property (readonly, weak, nonatomic) DDAction *companionAction;
 @property (strong) CNContact *contact; // @synthesize contact=_contact;
 @property (weak, nonatomic) NSObject<DDActionDelegate> *delegate; // @synthesize delegate=_delegate;
@@ -54,6 +55,7 @@
 - (void)_copyURL:(id)arg1;
 - (void)_copyURL:(id)arg1 andString:(id)arg2;
 - (void)_performFromView:(id)arg1 byOpeningURL:(id)arg2;
+- (void)_performFromView:(id)arg1 byOpeningURL:(id)arg2 disableAppLink:(BOOL)arg3;
 - (void)adaptForPresentationInPopover:(BOOL)arg1;
 - (void)addToRecents;
 - (const struct __CFArray *)associatedResults;

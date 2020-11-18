@@ -87,6 +87,7 @@
 - (void)contactlessInterfaceDidPresentFromSource:(long long)arg1;
 - (BOOL)containsPass:(id)arg1;
 - (id)contentForUniqueID:(id)arg1;
+- (unsigned long long)countOfPasses;
 - (unsigned long long)countPassesOfType:(unsigned long long)arg1;
 - (id)dataForBundleResourceNamed:(id)arg1 withExtension:(id)arg2 objectUniqueIdentifier:(id)arg3;
 - (id)dataForBundleResources:(id)arg1 objectUniqueIdentifier:(id)arg2;
@@ -144,6 +145,7 @@
 - (id)passes;
 - (id)passesOfType:(unsigned long long)arg1;
 - (id)passesPendingActivation;
+- (void)paymentPassWithAssociatedAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)paymentPassesWithLocallyStoredValue;
 - (void)paymentSetupFeaturesForConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)peerPaymentPassUniqueID;

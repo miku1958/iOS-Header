@@ -100,6 +100,7 @@ __attribute__((visibility("hidden")))
 - (struct _PCSIdentityData *)createCombinedIdentityWithOutOfNetworkPrivateKey:(id)arg1 publicSharingIdentity:(id)arg2;
 - (struct _OpaquePCSShareProtection *)createEmptySharePCSOfType:(unsigned long long)arg1 error:(id *)arg2;
 - (struct _OpaquePCSShareProtection *)createEmptySignedSharePCSOfType:(unsigned long long)arg1 forPCSServiceType:(unsigned long long)arg2 withError:(id *)arg3;
+- (void)createIngestedPPPCSDataFromInvitationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)createNewSharePCSDataForShareWithID:(id)arg1 withPublicSharingKey:(id)arg2 addDebugIdentity:(BOOL)arg3 error:(id *)arg4;
 - (struct _OpaquePCSShareProtection *)createPCSObjectFromData:(id)arg1 ofType:(unsigned long long)arg2 sharedToPCS:(struct _OpaquePCSShareProtection *)arg3 error:(id *)arg4;
 - (struct _OpaquePCSShareProtection *)createPCSObjectFromData:(id)arg1 ofType:(unsigned long long)arg2 sharedToPCS:(struct _OpaquePCSShareProtection *)arg3 logFailure:(BOOL)arg4 error:(id *)arg5;
@@ -140,7 +141,6 @@ __attribute__((visibility("hidden")))
 - (id)keyRollForZoneWideShareWithZonePCS:(id)arg1 sharePCS:(id)arg2;
 - (void)markUndecryptablePCS:(id)arg1;
 - (id)newAssetKeyWithType:(unsigned long long)arg1 withError:(id *)arg2;
-- (id)participantPCSDataFromSharingInvitationData:(id)arg1 error:(id *)arg2;
 - (id)participantPublicKeyForServiceType:(unsigned long long)arg1 error:(id *)arg2;
 - (void)pcsDataFromFetchedShare:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)pcsDataFromFetchedShare:(id)arg1 withPublicSharingKey:(id)arg2 withServiceType:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;

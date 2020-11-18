@@ -23,6 +23,7 @@
 @property (nonatomic) BOOL expectsMediaDataInRealTime;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic, getter=_helper, setter=_setHelper:) AVAssetWriterInputHelper *helper;
+@property (readonly, getter=_markAsFinishedCalled) BOOL markAsFinishedCalled;
 @property (readonly, nonatomic) NSString *mediaType;
 @property (copy, nonatomic) NSArray *metadata;
 @property (readonly) long long numberOfAppendFailures;

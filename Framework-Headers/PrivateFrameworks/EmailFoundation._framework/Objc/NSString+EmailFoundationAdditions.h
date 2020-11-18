@@ -40,6 +40,7 @@
 - (BOOL)ef_caseInsensitiveIsEqualToString:(id)arg1;
 - (BOOL)ef_conformsToUTType:(struct __CFString *)arg1;
 - (BOOL)ef_hasCaseInsensitivePrefix:(id)arg1;
+- (BOOL)ef_isUnsignedIntegerString;
 - (BOOL)ef_isWebAddress;
 - (const void *)ef_lossyDefaultCStringBytes;
 - (id)ef_quotedWordComponentsForLanguages:(id)arg1;

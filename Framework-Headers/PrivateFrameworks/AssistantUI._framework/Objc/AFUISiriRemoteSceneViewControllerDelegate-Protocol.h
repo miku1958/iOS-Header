@@ -6,7 +6,7 @@
 
 #import <AssistantUI/NSObject-Protocol.h>
 
-@class AFUISiriRemoteSceneViewController, NSDictionary, NSError, NSString, NSURL, SASRequestOptions;
+@class AFUISiriRemoteSceneViewController, NSArray, NSDictionary, NSError, NSString, NSURL, SASRequestOptions;
 
 @protocol AFUISiriRemoteSceneViewControllerDelegate <NSObject>
 - (void)dismissSiriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 delayForTTS:(BOOL)arg2 userInfo:(NSDictionary *)arg3;
@@ -19,6 +19,7 @@
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 didRequestCurrentTextInputWithReplyHandler:(void (^)(NSString *))arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 didRequestKeyboard:(BOOL)arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 didRequestKeyboard:(BOOL)arg2 minimized:(BOOL)arg3;
+- (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 didUpdateAudioCategoriesDisablingVolumeHUD:(NSArray *)arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 failTest:(NSString *)arg2 withReason:(NSString *)arg3;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 handlePasscodeUnlockWithCompletion:(void (^)(long long))arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 launchApplicationWithBundleIdentifier:(NSString *)arg2 withURL:(NSURL *)arg3 launchOptions:(long long)arg4 replyHandler:(void (^)(BOOL))arg5;
@@ -59,7 +60,6 @@
 - (void)siriRemoteViewControllerWillBeginTapToEdit:(AFUISiriRemoteSceneViewController *)arg1;
 - (void)startGuidedAccessForRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1;
 - (void)userRelevantEventDidOccurInSiriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1;
-- (void)viewWillAppearFinishedForSiriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1;
 
 @optional
 - (void)extendCurrentTTSRequested;

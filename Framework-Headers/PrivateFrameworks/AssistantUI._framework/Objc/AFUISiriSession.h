@@ -71,6 +71,7 @@
 - (void)_outputVoiceDidChange:(id)arg1;
 - (void)_performAceCommand:(id)arg1 forRequestUpdateViewsCommand:(id)arg2 afterDelay:(double)arg3;
 - (void)_performBlockWithDelegate:(CDUnknownBlockType)arg1;
+- (void)_performPunchoutCommand:(id)arg1 delegate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_performTransitionForEvent:(long long)arg1;
 - (id)_preparedSpeechRequestWithRequestOptions:(id)arg1;
 - (void)_requestContextWithCompletion:(CDUnknownBlockType)arg1;

@@ -25,6 +25,7 @@
 - (void).cxx_destruct;
 - (void)configureWithWorkspaceEntity:(id)arg1 referenceFrame:(struct CGRect)arg2 interfaceOrientation:(long long)arg3;
 - (id)contentViewController;
+- (void)disableAsynchronousRenderingForNextCommit;
 - (void)invalidate;
 - (void)noteKeyboardFocusDidChangeToSceneID:(id)arg1;
 - (BOOL)rendersAsynchronously;

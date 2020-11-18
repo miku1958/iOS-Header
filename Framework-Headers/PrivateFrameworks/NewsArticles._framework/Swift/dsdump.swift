@@ -590,10 +590,8 @@
 	// method
 	// method
  }
- protocol NewsArticles.TableOfContentsInteractorTypeDelegate // 3 requirements
+ protocol NewsArticles.TableOfContentsInteractorTypeDelegate // 1 requirements
  {
-	// method
-	// method
 	// method
  }
  protocol NewsArticles.AnalyticsEventTransformerType // 1 requirements
@@ -889,10 +887,8 @@
 	// method
 	// method
  }
- protocol NewsArticles.TableOfContentsEventHandlerTypeDelegate // 3 requirements
+ protocol NewsArticles.TableOfContentsEventHandlerTypeDelegate // 1 requirements
  {
-	// method
-	// method
 	// method
  }
  protocol NewsArticles.ArticleViewerArticleFactoryType // 1 requirements
@@ -1116,12 +1112,12 @@
 	var pageSheetPresentationObserver : PageSheetPresentationObserver? // +0x198 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x6900  @objc PDFReplicaViewerViewController.prefersStatusBarHidden <stripped>
-	0x6990  @objc PDFReplicaViewerViewController.preferredStatusBarUpdateAnimation <stripped>
-	0x69a0  @objc PDFReplicaViewerViewController.prefersHomeIndicatorAutoHidden <stripped>
-	0x6e10  @objc PDFReplicaViewerViewController.initWithCoder: <stripped>
-	0x6e30  @objc PDFReplicaViewerViewController.initWithNibName:bundle: <stripped>
-	0x6eb0  @objc PDFReplicaViewerViewController..cxx_destruct <stripped>
+	0x67b0  @objc PDFReplicaViewerViewController.prefersStatusBarHidden <stripped>
+	0x6840  @objc PDFReplicaViewerViewController.preferredStatusBarUpdateAnimation <stripped>
+	0x6850  @objc PDFReplicaViewerViewController.prefersHomeIndicatorAutoHidden <stripped>
+	0x6cc0  @objc PDFReplicaViewerViewController.initWithCoder: <stripped>
+	0x6ce0  @objc PDFReplicaViewerViewController.initWithNibName:bundle: <stripped>
+	0x6d60  @objc PDFReplicaViewerViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1176,9 +1172,9 @@
 	let borderLayer : CALayer // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x11f50  @objc TableOfContentsPDFCellView.initWithFrame: <stripped>
-	0x11f80  @objc TableOfContentsPDFCellView.initWithCoder: <stripped>
-	0x120c0  @objc TableOfContentsPDFCellView..cxx_destruct <stripped>
+	0x11fa0  @objc TableOfContentsPDFCellView.initWithFrame: <stripped>
+	0x11fd0  @objc TableOfContentsPDFCellView.initWithCoder: <stripped>
+	0x12110  @objc TableOfContentsPDFCellView..cxx_destruct <stripped>
  }
 
  enum NewsArticles.BarButtonItemAction {
@@ -1257,7 +1253,7 @@
 
  class NewsArticles.ReportConcernDetailAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1ab20  @objc ReportConcernDetailAssembly.init <stripped>
+	0x1ab70  @objc ReportConcernDetailAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -1293,8 +1289,8 @@
 	let tracker : Tracker // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1e150  @objc ArticleViewerModule.init <stripped>
-	0x1e1d0  @objc ArticleViewerModule..cxx_destruct <stripped>
+	0x1e1a0  @objc ArticleViewerModule.init <stripped>
+	0x1e220  @objc ArticleViewerModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1319,7 +1315,7 @@
 
  class NewsArticles.ServiceAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1f960  @objc ServiceAssembly.init <stripped>
+	0x1f9b0  @objc ServiceAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -1342,8 +1338,8 @@
 	let tracker : Tracker // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x20e30  @objc PDFReplicaViewerModule.init <stripped>
-	0x20eb0  @objc PDFReplicaViewerModule..cxx_destruct <stripped>
+	0x20e80  @objc PDFReplicaViewerModule.init <stripped>
+	0x20f00  @objc PDFReplicaViewerModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1362,8 +1358,8 @@
 	var viewController : weak UIViewController? // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x21ba0  @objc TableOfContentsURLHandler.init <stripped>
-	0x21c20  @objc TableOfContentsURLHandler..cxx_destruct <stripped>
+	0x21bf0  @objc TableOfContentsURLHandler.init <stripped>
+	0x21c70  @objc TableOfContentsURLHandler..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1374,10 +1370,10 @@
 	var issueImage : UIImage? // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x222e0  @objc SharingIssueImageActivityItemSource.activityViewControllerPlaceholderItem: <stripped>
-	0x22590  @objc SharingIssueImageActivityItemSource.activityViewController:itemForActivityType: <stripped>
-	0x22690  @objc SharingIssueImageActivityItemSource.init <stripped>
-	0x22740  @objc SharingIssueImageActivityItemSource..cxx_destruct <stripped>
+	0x22330  @objc SharingIssueImageActivityItemSource.activityViewControllerPlaceholderItem: <stripped>
+	0x225e0  @objc SharingIssueImageActivityItemSource.activityViewController:itemForActivityType: <stripped>
+	0x226e0  @objc SharingIssueImageActivityItemSource.init <stripped>
+	0x22790  @objc SharingIssueImageActivityItemSource..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1391,10 +1387,10 @@
 	let renderer : IssueCoverViewRendererType // +0x40 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x22780  @objc ANFIssueCoverViewProvider.viewForIssueCover: <stripped>
-	0x227e0  @objc ANFIssueCoverViewProvider.presentIssueCover:onView:options: <stripped>
-	0x22870  @objc ANFIssueCoverViewProvider.init <stripped>
-	0x228f0  @objc ANFIssueCoverViewProvider..cxx_destruct <stripped>
+	0x227d0  @objc ANFIssueCoverViewProvider.viewForIssueCover: <stripped>
+	0x22830  @objc ANFIssueCoverViewProvider.presentIssueCover:onView:options: <stripped>
+	0x228c0  @objc ANFIssueCoverViewProvider.init <stripped>
+	0x22940  @objc ANFIssueCoverViewProvider..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1408,16 +1404,16 @@
 	var image : Image // +0x30 (0x18)
 
 	// ObjC -> Swift bridged methods
-	0x23020  @objc SharingActivityItem.canPerformWithActivityItems: <stripped>
-	0x23040  @objc SharingActivityItem.activityType <stripped>
-	0x23060  @objc SharingActivityItem.activityTitle <stripped>
-	0x23110  @objc SharingActivityItem._systemImageName <stripped>
-	0x23190  @objc SharingActivityItem.performActivity <stripped>
-	0x23280  @objc SharingActivityItem.init <stripped>
-	0x23300  @objc SharingActivityItem..cxx_destruct <stripped>
+	0x23070  @objc SharingActivityItem.canPerformWithActivityItems: <stripped>
+	0x23090  @objc SharingActivityItem.activityType <stripped>
+	0x230b0  @objc SharingActivityItem.activityTitle <stripped>
+	0x23160  @objc SharingActivityItem._systemImageName <stripped>
+	0x231e0  @objc SharingActivityItem.performActivity <stripped>
+	0x232d0  @objc SharingActivityItem.init <stripped>
+	0x23350  @objc SharingActivityItem..cxx_destruct <stripped>
 
 	// Swift methods
-	0x22e50  class func SharingActivityItem.__allocating_init(type:title:image:performActivityHandler:) // init 
+	0x22ea0  class func SharingActivityItem.__allocating_init(type:title:image:performActivityHandler:) // init 
  }
 
  struct NewsArticles.Image {
@@ -1436,9 +1432,9 @@
 	let textViewProvider : TextViewProviderType // +0x48 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x236b0  @objc ReportConcernDetailViewController.initWithCoder: <stripped>
-	0x23700  @objc ReportConcernDetailViewController.initWithNibName:bundle: <stripped>
-	0x23780  @objc ReportConcernDetailViewController..cxx_destruct <stripped>
+	0x23700  @objc ReportConcernDetailViewController.initWithCoder: <stripped>
+	0x23750  @objc ReportConcernDetailViewController.initWithNibName:bundle: <stripped>
+	0x237d0  @objc ReportConcernDetailViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1519,7 +1515,7 @@
 
  class NewsArticles.PDFReplicaAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x2a0d0  @objc PDFReplicaAssembly.init <stripped>
+	0x2a1d0  @objc PDFReplicaAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -1566,8 +1562,8 @@
 	var onSaveObservers : [String : [()]] // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2fb30  @objc ReadingListObserver.init <stripped>
-	0x2fbb0  @objc ReadingListObserver..cxx_destruct <stripped>
+	0x2fc40  @objc ReadingListObserver.init <stripped>
+	0x2fcc0  @objc ReadingListObserver..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1628,12 +1624,12 @@
 
  class NewsArticles.PDFReplicaViewerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x38b40  @objc PDFReplicaViewerAssembly.init <stripped>
+	0x38cc0  @objc PDFReplicaViewerAssembly.init <stripped>
  }
 
  class NewsArticles.BlueprintArticleViewerToken : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x391f0  class func BlueprintArticleViewerToken.__allocating_init() // init 
+	0x39370  class func BlueprintArticleViewerToken.__allocating_init() // init 
  }
 
  class NewsArticles.BlueprintArticleViewerBlueprintProvider {
@@ -1659,7 +1655,7 @@
 
  class NewsArticles.IssueViewerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3c810  @objc IssueViewerAssembly.init <stripped>
+	0x3c990  @objc IssueViewerAssembly.init <stripped>
  }
 
  class NewsArticles.IssueViewerModule : NSObject /usr/lib/libobjc.A.dylib, IssueViewerModuleType {
@@ -1669,8 +1665,8 @@
 	let tracker : Tracker // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3ced0  @objc IssueViewerModule.init <stripped>
-	0x3cf80  @objc IssueViewerModule..cxx_destruct <stripped>
+	0x3d050  @objc IssueViewerModule.init <stripped>
+	0x3d100  @objc IssueViewerModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1703,13 +1699,13 @@
 	let additionalPageContentInset : UIEdgeInsets // +0x10 (0x20)
 
 	// ObjC -> Swift bridged methods
-	0x3d920  @objc BarButtonItem.barButtonItem <stripped>
-	0x3d960  @objc BarButtonItem.additionalPageContentInset <stripped>
-	0x3db60  @objc BarButtonItem.init <stripped>
-	0x3dbf0  @objc BarButtonItem..cxx_destruct <stripped>
+	0x3daa0  @objc BarButtonItem.barButtonItem <stripped>
+	0x3dae0  @objc BarButtonItem.additionalPageContentInset <stripped>
+	0x3dce0  @objc BarButtonItem.init <stripped>
+	0x3dd70  @objc BarButtonItem..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3d9b0  class func BarButtonItem.__allocating_init(barButtonItem:additionalPageContentInset:) // init 
+	0x3db30  class func BarButtonItem.__allocating_init(barButtonItem:additionalPageContentInset:) // init 
  }
 
  class NewsArticles.SharingArticleImageActivityItemSource : NSObject /usr/lib/libobjc.A.dylib {
@@ -1718,13 +1714,13 @@
 	var articleImage : UIImage? // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3ddd0  @objc SharingArticleImageActivityItemSource.activityViewControllerPlaceholderItem: <stripped>
-	0x3e060  @objc SharingArticleImageActivityItemSource.activityViewController:itemForActivityType: <stripped>
-	0x3e160  @objc SharingArticleImageActivityItemSource.init <stripped>
-	0x3e1e0  @objc SharingArticleImageActivityItemSource..cxx_destruct <stripped>
+	0x3df50  @objc SharingArticleImageActivityItemSource.activityViewControllerPlaceholderItem: <stripped>
+	0x3e1e0  @objc SharingArticleImageActivityItemSource.activityViewController:itemForActivityType: <stripped>
+	0x3e2e0  @objc SharingArticleImageActivityItemSource.init <stripped>
+	0x3e360  @objc SharingArticleImageActivityItemSource..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3dc40  class func SharingArticleImageActivityItemSource.__allocating_init(headline:) // init 
+	0x3ddc0  class func SharingArticleImageActivityItemSource.__allocating_init(headline:) // init 
  }
 
  class NewsArticles.ReportConcernBlueprintViewCellProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1803,7 +1799,7 @@
 	var activities : [UIActivity] // +0x38 (0x8)
 
 	// Swift methods
-	0x41b90  func <stripped> // getter 
+	0x41d10  func <stripped> // getter 
  }
 
  enum NewsArticles.ArticleViewerFeatureAction {
@@ -1832,8 +1828,8 @@
 	let followingManager : FollowingManagerType // +0xd0 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x437b0  @objc ArticleViewerInteractor.init <stripped>
-	0x43830  @objc ArticleViewerInteractor..cxx_destruct <stripped>
+	0x43930  @objc ArticleViewerInteractor.init <stripped>
+	0x439b0  @objc ArticleViewerInteractor..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1844,10 +1840,10 @@
 	let viewController : UIViewController & ModalHostable // +0x8 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x44f60  @objc ANFIssueTableOfContentsViewController.initWithCoder: <stripped>
-	0x45190  @objc ANFIssueTableOfContentsViewController.viewDidLoad <stripped>
-	0x451c0  @objc ANFIssueTableOfContentsViewController.initWithNibName:bundle: <stripped>
-	0x45240  @objc ANFIssueTableOfContentsViewController..cxx_destruct <stripped>
+	0x45120  @objc ANFIssueTableOfContentsViewController.initWithCoder: <stripped>
+	0x45350  @objc ANFIssueTableOfContentsViewController.viewDidLoad <stripped>
+	0x45380  @objc ANFIssueTableOfContentsViewController.initWithNibName:bundle: <stripped>
+	0x45400  @objc ANFIssueTableOfContentsViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1893,23 +1889,23 @@
 
  class NewsArticles.ManagerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x46a90  @objc ManagerAssembly.init <stripped>
+	0x46aa0  @objc ManagerAssembly.init <stripped>
 
 	// Swift methods
  }
 
  class NewsArticles.StylerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x47350  @objc StylerAssembly.init <stripped>
+	0x47360  @objc StylerAssembly.init <stripped>
 
 	// Swift methods
  }
 
  class NewsArticles.MessagePresenter : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x47910  @objc MessagePresenter.canPresentMessage <stripped>
-	0x47920  @objc MessagePresenter.presentMessage: <stripped>
-	0x47930  @objc MessagePresenter.init <stripped>
+	0x47920  @objc MessagePresenter.canPresentMessage <stripped>
+	0x47930  @objc MessagePresenter.presentMessage: <stripped>
+	0x47940  @objc MessagePresenter.init <stripped>
 
 	// Swift methods
  }
@@ -1940,10 +1936,10 @@
 	let comments : String // +0x18 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x47d30  @objc ReportConcernCommand.initWithCoder: <stripped>
-	0x47f30  @objc ReportConcernCommand.executeWithContext:delegate:qualityOfService: <stripped>
-	0x47ff0  @objc ReportConcernCommand.init <stripped>
-	0x48070  @objc ReportConcernCommand..cxx_destruct <stripped>
+	0x47d40  @objc ReportConcernCommand.initWithCoder: <stripped>
+	0x47f40  @objc ReportConcernCommand.executeWithContext:delegate:qualityOfService: <stripped>
+	0x48000  @objc ReportConcernCommand.init <stripped>
+	0x48080  @objc ReportConcernCommand..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1956,9 +1952,9 @@
 	let assemblies : [NFAssembly] // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x48810  @objc Assembly.assemblies <stripped>
-	0x48c70  @objc Assembly.init <stripped>
-	0x48ce0  @objc Assembly..cxx_destruct <stripped>
+	0x48820  @objc Assembly.assemblies <stripped>
+	0x48c80  @objc Assembly.init <stripped>
+	0x48cf0  @objc Assembly..cxx_destruct <stripped>
  }
 
  class NewsArticles.ArticleEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ArticleEventHandlerType {
@@ -1973,7 +1969,7 @@
 
  class NewsArticles.SubscriptionAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x495e0  @objc SubscriptionAssembly.init <stripped>
+	0x496a0  @objc SubscriptionAssembly.init <stripped>
  }
 
  class NewsArticles.Localized : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2010,7 +2006,7 @@
 	let articleIdentifier : String // +0x0
 	let asset : String // +0x10
 	let assetType : IssuePages.ANF.Page.ReplicaAdvertisement.MIMEType // +0x20
-	let clickthroughLink : String // +0x28
+	let clickthroughLink : String? // +0x28
  }
 
  struct NewsArticles.Article {
@@ -2041,20 +2037,20 @@
  enum NewsArticles.CodingKeys {
 
 	// Properties
-	case identifier  
-	case pageAsset  
-	case thumbnailAssetLQ  
-	case thumbnailAssetHQ  
-	case links  
+	case articleIdentifier  
+	case asset  
+	case assetType  
+	case clickthroughLink  
  }
 
  enum NewsArticles.CodingKeys {
 
 	// Properties
-	case articleIdentifier  
-	case asset  
-	case assetType  
-	case clickthroughLink  
+	case identifier  
+	case pageAsset  
+	case thumbnailAssetLQ  
+	case thumbnailAssetHQ  
+	case links  
  }
 
  enum NewsArticles.PageType {
@@ -2069,6 +2065,10 @@
  enum NewsArticles.Keys {
 
 	// Properties
+	case articleIdentifier  
+	case asset  
+	case assetType  
+	case clickthroughLink  
 	case type  
  }
 
@@ -2111,7 +2111,7 @@
 
  class NewsArticles.SharingAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4e080  @objc SharingAssembly.init <stripped>
+	0x4e8c0  @objc SharingAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -2176,15 +2176,14 @@
 	var styler : TableOfContentsStylerType // +0x8 (0x28)
 	let eventHandler : TableOfContentsEventHandlerType // +0x30 (0x10)
 	let blueprintViewController : TableOfContentsViewController // +0x40 (0x8)
-	let purchasingSpinnerViewControllerFactory : PurchasingSpinnerViewControllerFactoryType // +0x48 (0x28)
-	var $__lazy_storage_$_spinnerViewController : PurchasingSpinnerViewController? // +0x70 (0x8)
-	var modalHostStyle : SyncObservable<ModalHostViewStyle> // +0x78 (0x8)
-	var pageIdentifierToDisplay : String? // +0x80 (0x10)
+	let purchasePresenter : PurchasePresenterType // +0x48 (0x28)
+	var modalHostStyle : SyncObservable<ModalHostViewStyle> // +0x70 (0x8)
+	var pageIdentifierToDisplay : String? // +0x78 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x54bc0  @objc TableOfContentsViewController.initWithCoder: <stripped>
-	0x54be0  @objc TableOfContentsViewController.initWithNibName:bundle: <stripped>
-	0x54c60  @objc TableOfContentsViewController..cxx_destruct <stripped>
+	0x55600  @objc TableOfContentsViewController.initWithCoder: <stripped>
+	0x556d0  @objc TableOfContentsViewController.initWithNibName:bundle: <stripped>
+	0x55750  @objc TableOfContentsViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -2234,12 +2233,12 @@
 	let observers : NSHashTable<NUANFDebugSettingsObserver> // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5ab80  @objc ANFDebugSettingsProvider.viewportDebuggingEnabled <stripped>
-	0x5aba0  @objc ANFDebugSettingsProvider.setViewportDebuggingEnabled: <stripped>
-	0x5abc0  @objc ANFDebugSettingsProvider.testingConditionEnabled <stripped>
-	0x5abe0  @objc ANFDebugSettingsProvider.setTestingConditionEnabled: <stripped>
-	0x5b080  @objc ANFDebugSettingsProvider.init <stripped>
-	0x5b0f0  @objc ANFDebugSettingsProvider..cxx_destruct <stripped>
+	0x5b0d0  @objc ANFDebugSettingsProvider.viewportDebuggingEnabled <stripped>
+	0x5b0f0  @objc ANFDebugSettingsProvider.setViewportDebuggingEnabled: <stripped>
+	0x5b110  @objc ANFDebugSettingsProvider.testingConditionEnabled <stripped>
+	0x5b130  @objc ANFDebugSettingsProvider.setTestingConditionEnabled: <stripped>
+	0x5b5d0  @objc ANFDebugSettingsProvider.init <stripped>
+	0x5b640  @objc ANFDebugSettingsProvider..cxx_destruct <stripped>
  }
 
  class NewsArticles.TextSizeControlModule : NSObject /usr/lib/libobjc.A.dylib, TextSizeControlModuleType {
@@ -2248,9 +2247,9 @@
 	let resolver : ResolverType // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x5b390  @objc TextSizeControlModule.createViewController <stripped>
-	0x5b420  @objc TextSizeControlModule.init <stripped>
-	0x5b4a0  @objc TextSizeControlModule..cxx_destruct <stripped>
+	0x5b8e0  @objc TextSizeControlModule.createViewController <stripped>
+	0x5b970  @objc TextSizeControlModule.init <stripped>
+	0x5b9f0  @objc TextSizeControlModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -2266,7 +2265,7 @@
 
  class NewsArticles.AnalyticsAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x5c8e0  @objc AnalyticsAssembly.init <stripped>
+	0x5ce30  @objc AnalyticsAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -2282,13 +2281,13 @@
 	var channelSubscriptionStatus : SXSubscriptionStatus // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5d0d0  @objc SubscriptionStatusProvider.bundleSubscriptionStatus <stripped>
-	0x5d0f0  @objc SubscriptionStatusProvider.setBundleSubscriptionStatus: <stripped>
-	0x5d110  @objc SubscriptionStatusProvider.channelSubscriptionStatus <stripped>
-	0x5d130  @objc SubscriptionStatusProvider.setChannelSubscriptionStatus: <stripped>
-	0x5dae0  @objc SubscriptionStatusProvider.purchaseListChangedWithNotification: <stripped>
-	0x5db80  @objc SubscriptionStatusProvider.init <stripped>
-	0x5dc00  @objc SubscriptionStatusProvider..cxx_destruct <stripped>
+	0x5d620  @objc SubscriptionStatusProvider.bundleSubscriptionStatus <stripped>
+	0x5d640  @objc SubscriptionStatusProvider.setBundleSubscriptionStatus: <stripped>
+	0x5d660  @objc SubscriptionStatusProvider.channelSubscriptionStatus <stripped>
+	0x5d680  @objc SubscriptionStatusProvider.setChannelSubscriptionStatus: <stripped>
+	0x5e030  @objc SubscriptionStatusProvider.purchaseListChangedWithNotification: <stripped>
+	0x5e0d0  @objc SubscriptionStatusProvider.init <stripped>
+	0x5e150  @objc SubscriptionStatusProvider..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -2315,13 +2314,13 @@
 	let observers : NSHashTable<SXDebugLayoutOptionsObserving> // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5e730  @objc ANFDebugLayoutOptionsProvider.init <stripped>
-	0x5e7a0  @objc ANFDebugLayoutOptionsProvider..cxx_destruct <stripped>
+	0x5ec80  @objc ANFDebugLayoutOptionsProvider.init <stripped>
+	0x5ecf0  @objc ANFDebugLayoutOptionsProvider..cxx_destruct <stripped>
  }
 
  class NewsArticles.CommandAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x5fff0  @objc CommandAssembly.init <stripped>
+	0x60540  @objc CommandAssembly.init <stripped>
  }
 
  class NewsArticles.SharingArticleTextActivityItemSource : NSObject /usr/lib/libobjc.A.dylib {
@@ -2331,15 +2330,15 @@
 	var itemTitle : String // +0x10 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x60aa0  @objc SharingArticleTextActivityItemSource.activityViewControllerPlaceholderItem: <stripped>
-	0x61280  @objc SharingArticleTextActivityItemSource.activityViewController:itemForActivityType: <stripped>
-	0x61420  @objc SharingArticleTextActivityItemSource.activityViewController:dataTypeIdentifierForActivityType: <stripped>
-	0x61590  @objc SharingArticleTextActivityItemSource.activityViewController:subjectForActivityType: <stripped>
-	0x61670  @objc SharingArticleTextActivityItemSource.init <stripped>
-	0x616f0  @objc SharingArticleTextActivityItemSource..cxx_destruct <stripped>
+	0x60ff0  @objc SharingArticleTextActivityItemSource.activityViewControllerPlaceholderItem: <stripped>
+	0x617d0  @objc SharingArticleTextActivityItemSource.activityViewController:itemForActivityType: <stripped>
+	0x61970  @objc SharingArticleTextActivityItemSource.activityViewController:dataTypeIdentifierForActivityType: <stripped>
+	0x61ae0  @objc SharingArticleTextActivityItemSource.activityViewController:subjectForActivityType: <stripped>
+	0x61bc0  @objc SharingArticleTextActivityItemSource.init <stripped>
+	0x61c40  @objc SharingArticleTextActivityItemSource..cxx_destruct <stripped>
 
 	// Swift methods
-	0x606f0  class func SharingArticleTextActivityItemSource.__allocating_init(headline:) // init 
+	0x60c40  class func SharingArticleTextActivityItemSource.__allocating_init(headline:) // init 
  }
 
  class NewsArticles.IssuePDFReplicaPageService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, IssuePDFReplicaPageServiceType {
@@ -2372,10 +2371,10 @@
 	var viewControllerPresenting : SXViewControllerPresenting // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x63c70  @objc MailPresenter.canComposeMail <stripped>
-	0x64290  @objc MailPresenter.presentMail: <stripped>
-	0x642e0  @objc MailPresenter.init <stripped>
-	0x64360  @objc MailPresenter..cxx_destruct <stripped>
+	0x641c0  @objc MailPresenter.canComposeMail <stripped>
+	0x647e0  @objc MailPresenter.presentMail: <stripped>
+	0x64830  @objc MailPresenter.init <stripped>
+	0x648b0  @objc MailPresenter..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -2386,8 +2385,8 @@
 	let resolver : ResolverType // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x64670  @objc ReportConcernDetailModule.init <stripped>
-	0x64720  @objc ReportConcernDetailModule..cxx_destruct <stripped>
+	0x64bc0  @objc ReportConcernDetailModule.init <stripped>
+	0x64c70  @objc ReportConcernDetailModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -2416,8 +2415,8 @@
 	let barHider : BarHider
 
 	// ObjC -> Swift bridged methods
-	0x650f0  @objc PDFReplicaBarVisibilityAnimatorForiOS.init <stripped>
-	0x65140  @objc PDFReplicaBarVisibilityAnimatorForiOS..cxx_destruct <stripped>
+	0x65640  @objc PDFReplicaBarVisibilityAnimatorForiOS.init <stripped>
+	0x65690  @objc PDFReplicaBarVisibilityAnimatorForiOS..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -2433,8 +2432,8 @@
 	let barHider : BarHider
 
 	// ObjC -> Swift bridged methods
-	0x65800  @objc PDFReplicaBarVisibilityAnimatorForMacOS.init <stripped>
-	0x65890  @objc PDFReplicaBarVisibilityAnimatorForMacOS..cxx_destruct <stripped>
+	0x65d50  @objc PDFReplicaBarVisibilityAnimatorForMacOS.init <stripped>
+	0x65de0  @objc PDFReplicaBarVisibilityAnimatorForMacOS..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -2446,7 +2445,7 @@
 	var hideStatusBar : Bool
 
 	// Swift methods
-	0x65bb0  func <stripped> // method 
+	0x66100  func <stripped> // method 
  }
 
  class NewsArticles.ReplicaAdvertisementLoadingIndicatorProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2502,9 +2501,9 @@
 	let decreaseAction : Action<()> // +0x58 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x6bea0  @objc TextSizeControlViewController.initWithCoder: <stripped>
-	0x6bec0  @objc TextSizeControlViewController.initWithNibName:bundle: <stripped>
-	0x6bf40  @objc TextSizeControlViewController..cxx_destruct <stripped>
+	0x6c3f0  @objc TextSizeControlViewController.initWithCoder: <stripped>
+	0x6c410  @objc TextSizeControlViewController.initWithNibName:bundle: <stripped>
+	0x6c490  @objc TextSizeControlViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -2531,11 +2530,12 @@
 	var deferredHardPaywallIsVisible : Bool // +0xe0 (0x1)
 	var deferredHardPaywallHeightProvider : DeferredHardPaywallHeightProvider? // +0xe8 (0x8)
 	var destinationViewSize : CGSize // +0xf0 (0x10)
+	var headline : FCHeadlineProviding? // +0x100 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x6e170  @objc ArticleViewController.initWithCoder: <stripped>
-	0x6e230  @objc ArticleViewController.initWithNibName:bundle: <stripped>
-	0x6e2e0  @objc ArticleViewController..cxx_destruct <stripped>
+	0x6e6d0  @objc ArticleViewController.initWithCoder: <stripped>
+	0x6e790  @objc ArticleViewController.initWithNibName:bundle: <stripped>
+	0x6e840  @objc ArticleViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -2666,15 +2666,15 @@
 	var itemCoverDate : String // +0x20 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x7e790  @objc SharingIssueTextActivityItemSource.activityViewControllerPlaceholderItem: <stripped>
-	0x7ee20  @objc SharingIssueTextActivityItemSource.activityViewController:itemForActivityType: <stripped>
-	0x7efc0  @objc SharingIssueTextActivityItemSource.activityViewController:dataTypeIdentifierForActivityType: <stripped>
-	0x7f130  @objc SharingIssueTextActivityItemSource.activityViewController:subjectForActivityType: <stripped>
-	0x7f210  @objc SharingIssueTextActivityItemSource.init <stripped>
-	0x7f290  @objc SharingIssueTextActivityItemSource..cxx_destruct <stripped>
+	0x7ef90  @objc SharingIssueTextActivityItemSource.activityViewControllerPlaceholderItem: <stripped>
+	0x7f620  @objc SharingIssueTextActivityItemSource.activityViewController:itemForActivityType: <stripped>
+	0x7f7c0  @objc SharingIssueTextActivityItemSource.activityViewController:dataTypeIdentifierForActivityType: <stripped>
+	0x7f930  @objc SharingIssueTextActivityItemSource.activityViewController:subjectForActivityType: <stripped>
+	0x7fa10  @objc SharingIssueTextActivityItemSource.init <stripped>
+	0x7fa90  @objc SharingIssueTextActivityItemSource..cxx_destruct <stripped>
 
 	// Swift methods
-	0x7e520  class func SharingIssueTextActivityItemSource.__allocating_init(issue:) // init 
+	0x7ed20  class func SharingIssueTextActivityItemSource.__allocating_init(issue:) // init 
  }
 
  class NewsArticles.SharingChannelTextActivityItemSource : NSObject /usr/lib/libobjc.A.dylib {
@@ -2684,14 +2684,14 @@
 	var itemTitle : String // +0x10 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x7f630  @objc SharingChannelTextActivityItemSource.activityViewControllerPlaceholderItem: <stripped>
-	0x7fc10  @objc SharingChannelTextActivityItemSource.activityViewController:itemForActivityType: <stripped>
-	0x7fdb0  @objc SharingChannelTextActivityItemSource.activityViewController:dataTypeIdentifierForActivityType: <stripped>
-	0x7ff60  @objc SharingChannelTextActivityItemSource.init <stripped>
-	0x7ffe0  @objc SharingChannelTextActivityItemSource..cxx_destruct <stripped>
+	0x7fe30  @objc SharingChannelTextActivityItemSource.activityViewControllerPlaceholderItem: <stripped>
+	0x80410  @objc SharingChannelTextActivityItemSource.activityViewController:itemForActivityType: <stripped>
+	0x805b0  @objc SharingChannelTextActivityItemSource.activityViewController:dataTypeIdentifierForActivityType: <stripped>
+	0x80760  @objc SharingChannelTextActivityItemSource.init <stripped>
+	0x807e0  @objc SharingChannelTextActivityItemSource..cxx_destruct <stripped>
 
 	// Swift methods
-	0x7f450  class func SharingChannelTextActivityItemSource.__allocating_init(channel:) // init 
+	0x7fc50  class func SharingChannelTextActivityItemSource.__allocating_init(channel:) // init 
  }
 
  class NewsArticles.TextResizeArticleViewerFeatureProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2728,9 +2728,9 @@
 	let alertPresenter : OverlayAlertPresenterType // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x82180  @objc ArticleSavedAlert.readingList:didAddArticles:removeArticles:eventInitiationLevel: <stripped>
-	0x82360  @objc ArticleSavedAlert.init <stripped>
-	0x823e0  @objc ArticleSavedAlert..cxx_destruct <stripped>
+	0x82980  @objc ArticleSavedAlert.readingList:didAddArticles:removeArticles:eventInitiationLevel: <stripped>
+	0x82b60  @objc ArticleSavedAlert.init <stripped>
+	0x82be0  @objc ArticleSavedAlert..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -2791,9 +2791,9 @@
 	let issueCoverLayoutAttributesFactory : IssueCoverViewLayoutAttributesFactoryType // +0x18 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x838c0  @objc ANFIssueCoverLayoutAttributesFactory.createAttributesWithIssueCover:options: <stripped>
-	0x83940  @objc ANFIssueCoverLayoutAttributesFactory.init <stripped>
-	0x839c0  @objc ANFIssueCoverLayoutAttributesFactory..cxx_destruct <stripped>
+	0x841a0  @objc ANFIssueCoverLayoutAttributesFactory.createAttributesWithIssueCover:options: <stripped>
+	0x84220  @objc ANFIssueCoverLayoutAttributesFactory.init <stripped>
+	0x842a0  @objc ANFIssueCoverLayoutAttributesFactory..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -2827,7 +2827,7 @@
 
  class NewsArticles.ArticleAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x877f0  @objc ArticleAssembly.init <stripped>
+	0x88170  @objc ArticleAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -2995,8 +2995,8 @@
 	var onWindowBackgroundClosures : [()] // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x96ad0  @objc ArticleViewerAppStateMonitor.init <stripped>
-	0x96b40  @objc ArticleViewerAppStateMonitor..cxx_destruct <stripped>
+	0x97470  @objc ArticleViewerAppStateMonitor.init <stripped>
+	0x974e0  @objc ArticleViewerAppStateMonitor..cxx_destruct <stripped>
  }
 
  class NewsArticles.MediaEngageCompleteAnalyticsEventTransformer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3035,12 +3035,12 @@
 	var delegate : weak NABridgedArticleViewerPageItemActionHandlerDelegateType?
 
 	// ObjC -> Swift bridged methods
-	0x992a0  @objc BridgedArticleViewerPageItemActionHandler.initWithDelegate: <stripped>
-	0x996f0  @objc BridgedArticleViewerPageItemActionHandler.init <stripped>
-	0x99740  @objc BridgedArticleViewerPageItemActionHandler..cxx_destruct <stripped>
+	0x99c40  @objc BridgedArticleViewerPageItemActionHandler.initWithDelegate: <stripped>
+	0x9a090  @objc BridgedArticleViewerPageItemActionHandler.init <stripped>
+	0x9a0e0  @objc BridgedArticleViewerPageItemActionHandler..cxx_destruct <stripped>
 
 	// Swift methods
-	0x99160  class func BridgedArticleViewerPageItemActionHandler.__allocating_init(delegate:) // init 
+	0x99b00  class func BridgedArticleViewerPageItemActionHandler.__allocating_init(delegate:) // init 
  }
 
  class NewsArticles.BridgedToolbarIssueCoverBarButtonItemProvider : NSObject /usr/lib/libobjc.A.dylib {
@@ -3051,13 +3051,13 @@
 	var barPageItem : Any?
 
 	// ObjC -> Swift bridged methods
-	0x99a80  @objc BridgedToolbarIssueCoverBarButtonItemProvider.initWithResolver:bridgedActionHandler: <stripped>
-	0x99dc0  @objc BridgedToolbarIssueCoverBarButtonItemProvider.barButtonItemForIssue: <stripped>
-	0x99e50  @objc BridgedToolbarIssueCoverBarButtonItemProvider.init <stripped>
-	0x99f10  @objc BridgedToolbarIssueCoverBarButtonItemProvider..cxx_destruct <stripped>
+	0x9a420  @objc BridgedToolbarIssueCoverBarButtonItemProvider.initWithResolver:bridgedActionHandler: <stripped>
+	0x9a760  @objc BridgedToolbarIssueCoverBarButtonItemProvider.barButtonItemForIssue: <stripped>
+	0x9a7f0  @objc BridgedToolbarIssueCoverBarButtonItemProvider.init <stripped>
+	0x9a8b0  @objc BridgedToolbarIssueCoverBarButtonItemProvider..cxx_destruct <stripped>
 
 	// Swift methods
-	0x99770  class func BridgedToolbarIssueCoverBarButtonItemProvider.__allocating_init(resolver:bridgedActionHandler:) // init 
+	0x9a110  class func BridgedToolbarIssueCoverBarButtonItemProvider.__allocating_init(resolver:bridgedActionHandler:) // init 
  }
 
  class NewsArticles.AssetFetchService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AssetFetchServiceType {
@@ -3129,11 +3129,11 @@
 	var channelURL : URL? // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x9e330  @objc SharingChannelURLActivityItemSource.init <stripped>
-	0x9e3a0  @objc SharingChannelURLActivityItemSource..cxx_destruct <stripped>
+	0x9ec10  @objc SharingChannelURLActivityItemSource.init <stripped>
+	0x9ec80  @objc SharingChannelURLActivityItemSource..cxx_destruct <stripped>
 
 	// Swift methods
-	0x9e220  class func SharingChannelURLActivityItemSource.__allocating_init(channel:) // init 
+	0x9eb00  class func SharingChannelURLActivityItemSource.__allocating_init(channel:) // init 
  }
 
  struct NewsArticles.RemoveIssue { }
@@ -3155,7 +3155,7 @@
 	let supportedActivityTypes : [SharingArticleActivity.ActivityType] // +0x10 (0x8)
 
 	// Swift methods
-	0x9fbb0  class func SharingActivityTypeProvider.__allocating_init(supportedActivityTypes:) // init 
+	0xa0490  class func SharingActivityTypeProvider.__allocating_init(supportedActivityTypes:) // init 
  }
 
  class NewsArticles.ArticleViewerPageViewControllerProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3177,7 +3177,7 @@
 
  class NewsArticles.ArticleViewerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xa4560  @objc ArticleViewerAssembly.init <stripped>
+	0xa4e40  @objc ArticleViewerAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -3257,7 +3257,7 @@
 
  class NewsArticles.UtilityAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xad4f0  @objc UtilityAssembly.init <stripped>
+	0xad340  @objc UtilityAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -3278,17 +3278,18 @@
 	// Properties
 	var headline : FCHeadlineProviding? // +0x8 (0x8)
 	var actionModel : SubscribeActionModel // +0x10 (0x28)
-	let purchaseStarter : PurchaseStarter // +0x38 (0x8)
-	let purchasingSpinnerViewControllerFactory : PurchasingSpinnerViewControllerFactoryType // +0x40 (0x28)
-	var $__lazy_storage_$_purchasingSpinnerViewController : PurchasingSpinnerViewController? // +0x68 (0x8)
-	var $__lazy_storage_$_verifyingSpinnerViewController : PurchasingSpinnerViewController? // +0x70 (0x8)
-	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x78 (0x8)
-	let configurationManager : FCCoreConfigurationManager // +0x80 (0x8)
-	let router : SubscriptionsRouterType // +0x88 (0x28)
+	let purchaseStarter : PurchaseStarterType // +0x38 (0x28)
+	let purchasingSpinnerViewControllerFactory : PurchasingSpinnerViewControllerFactoryType // +0x60 (0x28)
+	var $__lazy_storage_$_purchasingSpinnerViewController : PurchasingSpinnerViewController? // +0x88 (0x8)
+	var $__lazy_storage_$_verifyingSpinnerViewController : PurchasingSpinnerViewController? // +0x90 (0x8)
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x98 (0x8)
+	let configurationManager : FCCoreConfigurationManager // +0xa0 (0x8)
+	let router : SubscriptionsRouterType // +0xa8 (0x28)
+	let familySharingLandingPageLauncher : FamilySharingLandingPageLauncherType // +0xd0 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0xae340  @objc SubscribeActionHandler.init <stripped>
-	0xae3c0  @objc SubscribeActionHandler..cxx_destruct <stripped>
+	0xae150  @objc SubscribeActionHandler.init <stripped>
+	0xae1d0  @objc SubscribeActionHandler..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3330,13 +3331,13 @@
 	let bridgedActionHandler : BridgedArticleViewerPageItemActionHandler // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xb1d90  @objc BridgedIssueTableOfContentsViewControllerFactory.initWithResolver:bridgedActionHandler: <stripped>
-	0xb2200  @objc BridgedIssueTableOfContentsViewControllerFactory.createViewControllerFor: <stripped>
-	0xb22b0  @objc BridgedIssueTableOfContentsViewControllerFactory.init <stripped>
-	0xb2330  @objc BridgedIssueTableOfContentsViewControllerFactory..cxx_destruct <stripped>
+	0xb1dc0  @objc BridgedIssueTableOfContentsViewControllerFactory.initWithResolver:bridgedActionHandler: <stripped>
+	0xb2230  @objc BridgedIssueTableOfContentsViewControllerFactory.createViewControllerFor: <stripped>
+	0xb22e0  @objc BridgedIssueTableOfContentsViewControllerFactory.init <stripped>
+	0xb2360  @objc BridgedIssueTableOfContentsViewControllerFactory..cxx_destruct <stripped>
 
 	// Swift methods
-	0xb1bf0  class func BridgedIssueTableOfContentsViewControllerFactory.__allocating_init(resolver:bridgedActionHandler:) // init 
+	0xb1c20  class func BridgedIssueTableOfContentsViewControllerFactory.__allocating_init(resolver:bridgedActionHandler:) // init 
  }
 
  class NewsArticles.ArticleStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ArticleStylerType {
@@ -3413,9 +3414,9 @@
 	var pageSheetPresentationObserver : PageSheetPresentationObserver? // +0x120 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xb4840  @objc ArticleViewerViewController.initWithCoder: <stripped>
-	0xb4ab0  @objc ArticleViewerViewController.initWithNibName:bundle: <stripped>
-	0xb4b30  @objc ArticleViewerViewController..cxx_destruct <stripped>
+	0xb4870  @objc ArticleViewerViewController.initWithCoder: <stripped>
+	0xb4ae0  @objc ArticleViewerViewController.initWithNibName:bundle: <stripped>
+	0xb4b60  @objc ArticleViewerViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3436,8 +3437,8 @@
 	let articleCoordinator : ArticleCoordinatorType? // +0x30 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0xbe4d0  @objc AnalyticsEventReporter.init <stripped>
-	0xbe550  @objc AnalyticsEventReporter..cxx_destruct <stripped>
+	0xbe450  @objc AnalyticsEventReporter.init <stripped>
+	0xbe4d0  @objc AnalyticsEventReporter..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3497,11 +3498,11 @@
 	var articleURL : URL? // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0xc35a0  @objc SharingArticleURLActivityItemSource.init <stripped>
-	0xc3610  @objc SharingArticleURLActivityItemSource..cxx_destruct <stripped>
+	0xc35b0  @objc SharingArticleURLActivityItemSource.init <stripped>
+	0xc3620  @objc SharingArticleURLActivityItemSource..cxx_destruct <stripped>
 
 	// Swift methods
-	0xc2570  class func SharingArticleURLActivityItemSource.__allocating_init(headline:) // init 
+	0xc2580  class func SharingArticleURLActivityItemSource.__allocating_init(headline:) // init 
  }
 
  struct NewsArticles.ToolbarIssueCoverViewLayoutAttributes {
@@ -3529,9 +3530,9 @@
 	var loadingStateMachine : NFStateMachine? // +0xa8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xc56b0  @objc PDFReplicaViewController.initWithCoder: <stripped>
-	0xc56d0  @objc PDFReplicaViewController.initWithNibName:bundle: <stripped>
-	0xc5750  @objc PDFReplicaViewController..cxx_destruct <stripped>
+	0xc56c0  @objc PDFReplicaViewController.initWithCoder: <stripped>
+	0xc56e0  @objc PDFReplicaViewController.initWithNibName:bundle: <stripped>
+	0xc5760  @objc PDFReplicaViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3571,9 +3572,9 @@
 	let descriptionLabel : UILabel // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xc9c60  @objc TableOfContentsHeaderView.initWithFrame: <stripped>
-	0xc9c90  @objc TableOfContentsHeaderView.initWithCoder: <stripped>
-	0xc9d00  @objc TableOfContentsHeaderView..cxx_destruct <stripped>
+	0xc9c70  @objc TableOfContentsHeaderView.initWithFrame: <stripped>
+	0xc9ca0  @objc TableOfContentsHeaderView.initWithCoder: <stripped>
+	0xc9d10  @objc TableOfContentsHeaderView..cxx_destruct <stripped>
  }
 
  enum NewsArticles.SharingChannelActivity {
@@ -3631,12 +3632,12 @@
 	var zoomable : weak NAZoomable? // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xceb30  @objc WeakZoomable.initWithZoomable: <stripped>
-	0xcec20  @objc WeakZoomable.init <stripped>
-	0xceca0  @objc WeakZoomable..cxx_destruct <stripped>
+	0xceb40  @objc WeakZoomable.initWithZoomable: <stripped>
+	0xcec30  @objc WeakZoomable.init <stripped>
+	0xcecb0  @objc WeakZoomable..cxx_destruct <stripped>
 
 	// Swift methods
-	0xce9e0  class func WeakZoomable.__allocating_init(_:) // init 
+	0xce9f0  class func WeakZoomable.__allocating_init(_:) // init 
  }
 
  struct NewsArticles.TableOfContentsArticleViewerFeatureViewModel {
@@ -3744,9 +3745,9 @@
 	let resolver : ResolverType // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0xd7530  @objc ReportConcernModule.createViewControllerForHeadline: <stripped>
-	0xd7660  @objc ReportConcernModule.init <stripped>
-	0xd7710  @objc ReportConcernModule..cxx_destruct <stripped>
+	0xd74a0  @objc ReportConcernModule.createViewControllerForHeadline: <stripped>
+	0xd75d0  @objc ReportConcernModule.init <stripped>
+	0xd7680  @objc ReportConcernModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3902,11 +3903,11 @@
 	var activityImageIdentifier : String? // +0x48 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0xdd7a0  @objc AppsSharingActivityItem._bundleIdentifierForActivityImageCreation <stripped>
-	0xdd930  @objc AppsSharingActivityItem..cxx_destruct <stripped>
+	0xdd710  @objc AppsSharingActivityItem._bundleIdentifierForActivityImageCreation <stripped>
+	0xdd8a0  @objc AppsSharingActivityItem..cxx_destruct <stripped>
 
 	// Swift methods
-	0xdd540  class func AppsSharingActivityItem.__allocating_init(type:title:image:activityImageIdentifier:performActivityHandler:) // init 
+	0xdd4b0  class func AppsSharingActivityItem.__allocating_init(type:title:image:activityImageIdentifier:performActivityHandler:) // init 
  }
 
  enum NewsArticles.ViewingLocationOverride {
@@ -3931,6 +3932,8 @@
  struct NewsArticles.Debugging { }
 
  class NewsArticles.Conditional {
+ struct NewsArticles.Embed { }
+
  struct NewsArticles.ArticleViewerFeatureBarButtonViewModel {
 
 	// Properties
@@ -4129,8 +4132,8 @@
 	let kind : PageKind // +0x8 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0xecd00  @objc BridgedPageKind.init <stripped>
-	0xecd80  @objc BridgedPageKind..cxx_destruct <stripped>
+	0xecd90  @objc BridgedPageKind.init <stripped>
+	0xece10  @objc BridgedPageKind..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -4146,7 +4149,7 @@
 
  class NewsArticles.TextSizeControlAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xeede0  @objc TextSizeControlAssembly.init <stripped>
+	0xeee70  @objc TextSizeControlAssembly.init <stripped>
  }
 
  class NewsArticles.HeadlineProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HeadlineProviderType {
@@ -4184,11 +4187,11 @@
 	var afterLoad : (_:)? // +0xb8 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0xef730  @objc IssueViewerViewController.childViewControllerForStatusBarHidden <stripped>
-	0xef730  @objc IssueViewerViewController.childViewControllerForHomeIndicatorAutoHidden <stripped>
-	0xef790  @objc IssueViewerViewController.initWithCoder: <stripped>
-	0xef850  @objc IssueViewerViewController.initWithNibName:bundle: <stripped>
-	0xef8d0  @objc IssueViewerViewController..cxx_destruct <stripped>
+	0xef7c0  @objc IssueViewerViewController.childViewControllerForStatusBarHidden <stripped>
+	0xef7c0  @objc IssueViewerViewController.childViewControllerForHomeIndicatorAutoHidden <stripped>
+	0xef820  @objc IssueViewerViewController.initWithCoder: <stripped>
+	0xef8e0  @objc IssueViewerViewController.initWithNibName:bundle: <stripped>
+	0xef960  @objc IssueViewerViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -4201,7 +4204,7 @@
 
  class NewsArticles.RendererAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xf2e30  @objc RendererAssembly.init <stripped>
+	0xf2ec0  @objc RendererAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -4338,7 +4341,7 @@
 
  class NewsArticles.TableOfContentsAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xfba00  @objc TableOfContentsAssembly.init <stripped>
+	0xfb9f0  @objc TableOfContentsAssembly.init <stripped>
  }
 
  struct NewsArticles.TextResizeArticleViewerFeatureTransitionAnimator {
@@ -4354,13 +4357,13 @@
 	var closures : [(_:)] // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xff970  @objc URLHandler.init <stripped>
-	0xffa40  @objc URLHandler..cxx_destruct <stripped>
+	0xff960  @objc URLHandler.init <stripped>
+	0xffa30  @objc URLHandler..cxx_destruct <stripped>
  }
 
  class NewsArticles.ReportConcernAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x102980  @objc ReportConcernAssembly.init <stripped>
+	0x102970  @objc ReportConcernAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -4394,9 +4397,9 @@
 	let blueprintViewController : ReportConcernViewController // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x104b30  @objc ReportConcernViewController.initWithCoder: <stripped>
-	0x104b80  @objc ReportConcernViewController.initWithNibName:bundle: <stripped>
-	0x104c00  @objc ReportConcernViewController..cxx_destruct <stripped>
+	0x104b20  @objc ReportConcernViewController.initWithCoder: <stripped>
+	0x104b70  @objc ReportConcernViewController.initWithNibName:bundle: <stripped>
+	0x104bf0  @objc ReportConcernViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -4420,9 +4423,9 @@
 	var placeholderText : NSAttributedString? // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1064c0  @objc TextInputView.initWithFrame: <stripped>
-	0x1064f0  @objc TextInputView.initWithCoder: <stripped>
-	0x106560  @objc TextInputView..cxx_destruct <stripped>
+	0x1064b0  @objc TextInputView.initWithFrame: <stripped>
+	0x1064e0  @objc TextInputView.initWithCoder: <stripped>
+	0x106550  @objc TextInputView..cxx_destruct <stripped>
  }
 
  class NewsArticles.TableOfContentsArticleViewerFeatureProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4516,10 +4519,10 @@
 	var $__lazy_storage_$_title : String? // +0x28 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x10ce60  @objc SubscriptionButtonTextProvider.title <stripped>
-	0x10cf20  @objc SubscriptionButtonTextProvider.setTitle: <stripped>
-	0x10d490  @objc SubscriptionButtonTextProvider.init <stripped>
-	0x10d510  @objc SubscriptionButtonTextProvider..cxx_destruct <stripped>
+	0x10ce50  @objc SubscriptionButtonTextProvider.title <stripped>
+	0x10cf10  @objc SubscriptionButtonTextProvider.setTitle: <stripped>
+	0x10d480  @objc SubscriptionButtonTextProvider.init <stripped>
+	0x10d500  @objc SubscriptionButtonTextProvider..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -4534,7 +4537,7 @@
 
  class NewsArticles.FactoryAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x10e5e0  @objc FactoryAssembly.init <stripped>
+	0x10e5d0  @objc FactoryAssembly.init <stripped>
  }
 
  enum NewsArticles.ArticleViewerPageItemAction {
@@ -4597,8 +4600,8 @@
 
  class NewsArticles.Images : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x111850  @objc Images.init <stripped>
-	0x1118f0  @objc Images..cxx_destruct <stripped>
+	0x111840  @objc Images.init <stripped>
+	0x1118e0  @objc Images..cxx_destruct <stripped>
  }
 
  class NewsArticles.SharingPlainTextBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4647,11 +4650,11 @@
 	let issueCoverDate : String // +0x0 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x1142e0  @objc SharingIssueURLActivityItemSource.init <stripped>
-	0x114350  @objc SharingIssueURLActivityItemSource..cxx_destruct <stripped>
+	0x1142d0  @objc SharingIssueURLActivityItemSource.init <stripped>
+	0x114340  @objc SharingIssueURLActivityItemSource..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1136e0  class func SharingIssueURLActivityItemSource.__allocating_init(issue:) // init 
+	0x1136d0  class func SharingIssueURLActivityItemSource.__allocating_init(issue:) // init 
  }
 
  class NewsArticles.ColorPalette : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ColorPaletteProviding {
@@ -4687,11 +4690,11 @@
 	let onTap : Action<()> // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x115d30  @objc TitleView.init <stripped>
-	0x115d50  @objc TitleView.initWithCoder: <stripped>
-	0x115e00  @objc TitleView.layoutSubviews <stripped>
-	0x115ef0  @objc TitleView.initWithFrame: <stripped>
-	0x115f70  @objc TitleView..cxx_destruct <stripped>
+	0x115d20  @objc TitleView.init <stripped>
+	0x115d40  @objc TitleView.initWithCoder: <stripped>
+	0x115df0  @objc TitleView.layoutSubviews <stripped>
+	0x115ee0  @objc TitleView.initWithFrame: <stripped>
+	0x115f60  @objc TitleView..cxx_destruct <stripped>
  }
 
  class NewsArticles.ToolbarIssueCoverView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -4701,10 +4704,10 @@
 	var callToActionLabel : UILabel
 
 	// ObjC -> Swift bridged methods
-	0x116710  @objc ToolbarIssueCoverView.init <stripped>
-	0x116730  @objc ToolbarIssueCoverView.initWithCoder: <stripped>
-	0x116800  @objc ToolbarIssueCoverView.initWithFrame: <stripped>
-	0x116850  @objc ToolbarIssueCoverView..cxx_destruct <stripped>
+	0x116700  @objc ToolbarIssueCoverView.init <stripped>
+	0x116720  @objc ToolbarIssueCoverView.initWithCoder: <stripped>
+	0x1167f0  @objc ToolbarIssueCoverView.initWithFrame: <stripped>
+	0x116840  @objc ToolbarIssueCoverView..cxx_destruct <stripped>
  }
 
  class NewsArticles.ToolbarIssueCoverButton : UIButton /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -4715,15 +4718,15 @@
 	var highlightColor : UIColor
 
 	// ObjC -> Swift bridged methods
-	0x116890  @objc ToolbarIssueCoverButton.isHighlighted <stripped>
-	0x1168f0  @objc ToolbarIssueCoverButton.setHighlighted: <stripped>
-	0x116b70  @objc ToolbarIssueCoverButton.initWithCoder: <stripped>
-	0x116c10  @objc ToolbarIssueCoverButton.pointInside:withEvent: <stripped>
-	0x116ee0  @objc ToolbarIssueCoverButton.hitTest:withEvent: <stripped>
-	0x116f60  @objc ToolbarIssueCoverButton.accessibilityFrame <stripped>
-	0x117610  @objc ToolbarIssueCoverButton.setAccessibilityFrame: <stripped>
-	0x117690  @objc ToolbarIssueCoverButton.initWithFrame: <stripped>
-	0x117720  @objc ToolbarIssueCoverButton..cxx_destruct <stripped>
+	0x116880  @objc ToolbarIssueCoverButton.isHighlighted <stripped>
+	0x1168e0  @objc ToolbarIssueCoverButton.setHighlighted: <stripped>
+	0x116b60  @objc ToolbarIssueCoverButton.initWithCoder: <stripped>
+	0x116c00  @objc ToolbarIssueCoverButton.pointInside:withEvent: <stripped>
+	0x116ed0  @objc ToolbarIssueCoverButton.hitTest:withEvent: <stripped>
+	0x116f50  @objc ToolbarIssueCoverButton.accessibilityFrame <stripped>
+	0x117600  @objc ToolbarIssueCoverButton.setAccessibilityFrame: <stripped>
+	0x117680  @objc ToolbarIssueCoverButton.initWithFrame: <stripped>
+	0x117710  @objc ToolbarIssueCoverButton..cxx_destruct <stripped>
 
 	// Swift methods
  }

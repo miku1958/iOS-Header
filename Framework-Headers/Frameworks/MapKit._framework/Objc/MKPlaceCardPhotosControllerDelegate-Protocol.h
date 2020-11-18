@@ -17,6 +17,7 @@
 - (void)placeCardPhotosController:(MKPlacePhotosViewController *)arg1 enterMuninForMapItem:(MKMapItem *)arg2 muninView:(MKMuninView *)arg3;
 - (void)placeCardPhotosControllerDidCloseFullscreenPhotos:(MKPlacePhotosViewController *)arg1;
 - (void)placeCardPhotosControllerDidOpenFullscreenPhotos:(MKPlacePhotosViewController *)arg1;
+- (BOOL)shouldMoveMuninStorefrontViewForPlaceCardPhotosController:(MKPlacePhotosViewController *)arg1;
 - (BOOL)shouldUseSmallPhotosWithPhotosController:(MKPlacePhotosViewController *)arg1;
 @end
 

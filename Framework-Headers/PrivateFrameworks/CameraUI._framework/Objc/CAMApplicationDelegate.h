@@ -7,10 +7,11 @@
 #import <UIKit/UIResponder.h>
 
 #import <CameraUI/UIApplicationDelegate-Protocol.h>
+#import <CameraUI/UNUserNotificationCenterDelegate-Protocol.h>
 
 @class CAMBurstController, CAMCameraRollController, CAMIrisVideoController, CAMKeepAliveController, CAMLocationController, CAMMotionController, CAMNebulaDaemonProxyManager, CAMPersistenceController, CAMPowerController, CAMProtectionController, CAMRemoteShutterController, CAMTimelapseController, CAMViewfinderViewController, CUCaptureController, NSString, UIWindow;
 
-@interface CAMApplicationDelegate : UIResponder <UIApplicationDelegate>
+@interface CAMApplicationDelegate : UIResponder <UNUserNotificationCenterDelegate, UIApplicationDelegate>
 {
     UIWindow *_window;
     CAMViewfinderViewController *_viewfinderViewController;
@@ -61,6 +62,8 @@
 - (void)applicationWillTerminate:(id)arg1;
 - (void)prepareForDefaultImageSnapshotForScreen:(id)arg1;
 - (void)updateShortcutItemsForApplication:(id)arg1;
+- (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)userNotificationCenter:(id)arg1 willPresentNotification:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

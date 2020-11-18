@@ -22,7 +22,6 @@
     BOOL _deviceAuthenticated;
     BOOL _adjustsFontForContentSizeCategory;
     BOOL _grouped;
-    BOOL _persistentGroup;
     BOOL _clockNotificationGroup;
     BOOL _longLookDismissalFinalFrameCalculatedWithoutWindow;
     NSString *_logDescription;
@@ -53,8 +52,10 @@
 @property (strong, nonatomic) NCNotificationListCell *cellRecycledWhilePresentingLongLook; // @synthesize cellRecycledWhilePresentingLongLook=_cellRecycledWhilePresentingLongLook;
 @property (nonatomic, getter=isClockNotificationGroup) BOOL clockNotificationGroup; // @synthesize clockNotificationGroup=_clockNotificationGroup;
 @property (strong, nonatomic) NSMutableDictionary *clockSnoozeAlarmContentProviders; // @synthesize clockSnoozeAlarmContentProviders=_clockSnoozeAlarmContentProviders;
+@property (readonly, nonatomic) BOOL containsNonPersistentNotificationRequests;
 @property (strong, nonatomic) NSMutableDictionary *contentProviders; // @synthesize contentProviders=_contentProviders;
 @property (readonly, nonatomic) unsigned long long count;
+@property (readonly, nonatomic) NSArray *criticalAlerts;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<NCNotificationGroupListDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -75,7 +76,7 @@
 @property (strong, nonatomic) NCNotificationListCache *notificationListCache; // @synthesize notificationListCache=_notificationListCache;
 @property (strong, nonatomic) NCNotificationSectionSettings *notificationSectionSettings; // @synthesize notificationSectionSettings=_notificationSectionSettings;
 @property (strong, nonatomic) NSMutableArray *orderedRequests; // @synthesize orderedRequests=_orderedRequests;
-@property (nonatomic, getter=isPersistentGroup) BOOL persistentGroup; // @synthesize persistentGroup=_persistentGroup;
+@property (readonly, nonatomic) NSArray *persistentNotificationRequests;
 @property (copy, nonatomic) NSString *preferredContentSizeCategory;
 @property (readonly, nonatomic) NSString *sectionIdentifier; // @synthesize sectionIdentifier=_sectionIdentifier;
 @property (strong, nonatomic) NCNotificationSummaryBuilder *summaryBuilder; // @synthesize summaryBuilder=_summaryBuilder;

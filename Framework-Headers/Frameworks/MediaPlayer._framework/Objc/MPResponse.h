@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <MediaPlayer/NSCopying-Protocol.h>
+#import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
-@interface MPResponse : NSObject <NSCopying>
+@interface MPResponse : NSObject <_MPStateDumpPropertyListTransformable, NSCopying>
 {
     BOOL _valid;
     id _request;
@@ -19,15 +20,19 @@
 }
 
 @property (readonly, nonatomic) id builder; // @synthesize builder=_builder;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *middleware; // @synthesize middleware=_middleware;
 @property (readonly, copy, nonatomic) id request; // @synthesize request=_request;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isValid) BOOL valid; // @synthesize valid=_valid;
 
 + (id)builderProtocol;
 - (void).cxx_destruct;
+- (id)_stateDumpObject;
 - (id)chain;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)initWithRequest:(id)arg1 middleware:(id)arg2;
 - (void)invalidate;
 

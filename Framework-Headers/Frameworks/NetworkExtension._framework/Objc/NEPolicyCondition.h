@@ -75,6 +75,7 @@
 + (id)localAddress:(id)arg1 prefix:(unsigned char)arg2;
 + (id)localAddressStart:(id)arg1 end:(id)arg2;
 + (id)localNetworks;
++ (id)platformBinary;
 + (id)realApplication:(id)arg1;
 + (id)remoteAddress:(id)arg1 prefix:(unsigned char)arg2;
 + (id)remoteAddressStart:(id)arg1 end:(id)arg2;

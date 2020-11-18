@@ -10,8 +10,8 @@
 {
 }
 
-+ (id)_dotPlusDColor;
-+ (id)_dotPlusLColor;
++ (id)_dotColor;
++ (struct CAColorMatrix)_vibrantColorMatrixInput;
 
 @end
 

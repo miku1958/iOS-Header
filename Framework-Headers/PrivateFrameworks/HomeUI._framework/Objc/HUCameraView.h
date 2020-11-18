@@ -12,7 +12,7 @@
 {
     BOOL _showActivityIndicator;
     unsigned long long _maskedCameraCorners;
-    NSLayoutYAxisAnchor *_badgeTopAnchor;
+    NSLayoutYAxisAnchor *_badgeBottomAnchor;
     HUCameraErrorContent *_errorContent;
     UIImageView *_demoSnapshotImageView;
     HURemoteContextHostingView *_cameraContainerView;
@@ -25,18 +25,18 @@
     NADecayingTimer *_snapshotAgeUpdateTimer;
     NSArray *_staticConstraints;
     NSLayoutConstraint *_cameraAspectRatioConstraint;
-    NSLayoutConstraint *_badgeTopConstraint;
-    NSLayoutConstraint *_badgeLeadingConstraint;
+    NSLayoutConstraint *_badgeBottomConstraint;
+    NSLayoutConstraint *_badgeTrailingConstraint;
     struct UIOffset _badgeOffset;
 }
 
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicatorView; // @synthesize activityIndicatorView=_activityIndicatorView;
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property (strong, nonatomic) NSLayoutYAxisAnchor *badgeBottomAnchor; // @synthesize badgeBottomAnchor=_badgeBottomAnchor;
+@property (strong, nonatomic) NSLayoutConstraint *badgeBottomConstraint; // @synthesize badgeBottomConstraint=_badgeBottomConstraint;
 @property (nonatomic, getter=isBadgeHidden) BOOL badgeHidden;
-@property (strong, nonatomic) NSLayoutConstraint *badgeLeadingConstraint; // @synthesize badgeLeadingConstraint=_badgeLeadingConstraint;
 @property (nonatomic) struct UIOffset badgeOffset; // @synthesize badgeOffset=_badgeOffset;
-@property (strong, nonatomic) NSLayoutYAxisAnchor *badgeTopAnchor; // @synthesize badgeTopAnchor=_badgeTopAnchor;
-@property (strong, nonatomic) NSLayoutConstraint *badgeTopConstraint; // @synthesize badgeTopConstraint=_badgeTopConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *badgeTrailingConstraint; // @synthesize badgeTrailingConstraint=_badgeTrailingConstraint;
 @property (readonly, nonatomic) HUCameraBadgeView *badgeView; // @synthesize badgeView=_badgeView;
 @property (strong, nonatomic) NSLayoutConstraint *cameraAspectRatioConstraint; // @synthesize cameraAspectRatioConstraint=_cameraAspectRatioConstraint;
 @property (readonly, nonatomic) HURemoteContextHostingView *cameraContainerView; // @synthesize cameraContainerView=_cameraContainerView;

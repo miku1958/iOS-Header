@@ -53,6 +53,7 @@
 + (void)setIsGeod;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_createLongSessionWithOffset:(BOOL)arg1;
 - (void)_generateNewNavSessionID;
 - (double)_getCurrentTime;
 - (void)_overrideShortSessionId:(struct GEOSessionID)arg1 sessionMachBasisTime:(unsigned long long)arg2 sessionStartTime:(double)arg3;
@@ -60,6 +61,7 @@
 - (void)_renewLongSessionID;
 - (void)_renewThirtyDayCountsSessionID;
 - (void)_resetSessionID;
+- (void)_rollInitialLongSessionId;
 - (void)_safe_renewCohortSessionID;
 - (void)_safe_renewLongSessionID;
 - (void)_safe_renewThirtyDayCountsSessionID;

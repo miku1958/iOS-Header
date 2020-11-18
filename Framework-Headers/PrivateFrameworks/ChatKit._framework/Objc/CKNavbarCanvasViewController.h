@@ -17,6 +17,7 @@
 {
     BOOL _canShowBackButtonView;
     BOOL _shouldShowDoneButton;
+    BOOL _isInEditingMode;
     BOOL _editing;
     id<CKNavbarCanvasViewControllerDelegate> _delegate;
     UIButton *_callButton;
@@ -54,6 +55,7 @@
 @property (nonatomic) BOOL editing; // @synthesize editing=_editing;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long indicatorType; // @synthesize indicatorType=_indicatorType;
+@property (nonatomic) BOOL isInEditingMode; // @synthesize isInEditingMode=_isInEditingMode;
 @property (strong, nonatomic) NSString *navbarTitle; // @synthesize navbarTitle=_navbarTitle;
 @property (weak, nonatomic) UINavigationController *proxyNavigationController; // @synthesize proxyNavigationController=_proxyNavigationController;
 @property (nonatomic) BOOL shouldShowDoneButton; // @synthesize shouldShowDoneButton=_shouldShowDoneButton;

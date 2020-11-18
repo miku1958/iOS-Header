@@ -26,10 +26,8 @@ __attribute__((visibility("hidden")))
 + (id)defaultPreflightManager;
 - (void).cxx_destruct;
 - (id)_contentRatingValue;
-- (BOOL)_isAllowed:(BOOL)arg1 isTVShow:(BOOL)arg2;
-- (BOOL)_isMovie;
+- (BOOL)_isAllowedToPlayForRatingDomain:(id)arg1;
 - (BOOL)_isOnWiFi;
-- (BOOL)_isTVShow;
 - (BOOL)_isTrailer;
 - (id)_lastAgeConfirmationPrompted;
 - (long long)_lastConfirmedAge;
@@ -37,12 +35,13 @@ __attribute__((visibility("hidden")))
 - (void)_performRestrictionsCheckWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_preflightDownloadWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_preflightWithOptions:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_ratingDomain;
 - (long long)_requiredAgeForPlayback;
 - (void)_setLastAgeConfirmationPrompted:(id)arg1;
 - (void)_setLastConfirmedAge:(long long)arg1;
 - (BOOL)_shouldShowAgeConfirmationAlert;
 - (void)_showAgeConfirmationWithPresentingViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_showRestrictionsAlert:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_showRestrictionsAlertForRatingDomain:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)preflightWithOptions:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 

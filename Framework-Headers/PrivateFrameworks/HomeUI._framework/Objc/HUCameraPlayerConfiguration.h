@@ -10,7 +10,6 @@
 
 @interface HUCameraPlayerConfiguration : NSObject
 {
-    BOOL _shouldFetchClips;
     HMHome *_home;
     HMCameraProfile *_cameraProfile;
     long long _scrubberType;
@@ -22,12 +21,12 @@
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) NSUUID *notificationUUID; // @synthesize notificationUUID=_notificationUUID;
 @property (readonly, nonatomic) long long scrubberType; // @synthesize scrubberType=_scrubberType;
-@property (nonatomic) BOOL shouldFetchClips; // @synthesize shouldFetchClips=_shouldFetchClips;
 @property (strong, nonatomic) NSDate *startingPlaybackDate; // @synthesize startingPlaybackDate=_startingPlaybackDate;
 
 - (void).cxx_destruct;
 - (void)fetchClipsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithHome:(id)arg1 cameraProfile:(id)arg2 scrubberType:(long long)arg3 notificationUUID:(id)arg4;
+- (BOOL)isConfiguredForLiveStream;
 
 @end
 

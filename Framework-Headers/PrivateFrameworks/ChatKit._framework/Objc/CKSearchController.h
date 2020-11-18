@@ -36,6 +36,7 @@
 @property (nonatomic) BOOL suppressAvatars; // @synthesize suppressAvatars=_suppressAvatars;
 
 + (Class)cellClass;
++ (id)indexingString;
 + (long long)orthogonalScrollingBehavior;
 + (BOOL)previewControllerPresentsModally;
 + (unsigned long long)recencyRankedTargetResultCount;

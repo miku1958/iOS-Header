@@ -48,6 +48,7 @@
 - (void)_buttonOverlayWasTouchedDown:(id)arg1;
 - (void)_buttonOverlayWasTouchedUpInside:(id)arg1;
 - (void)_buttonOverlayWasTouchedUpOutside:(id)arg1;
+- (BOOL)_canShowWhileLocked;
 - (void)_cancelTouchesIfNecessary;
 - (void)_cardSectionTapped;
 - (BOOL)_checkIfCardSectionIsNull:(id)arg1;

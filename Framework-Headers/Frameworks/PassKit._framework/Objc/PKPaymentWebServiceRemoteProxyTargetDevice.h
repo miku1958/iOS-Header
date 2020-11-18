@@ -73,6 +73,7 @@
 - (void)signData:(id)arg1 signatureEntanglementMode:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)startRequiringUpgradedPasscodeWithPasscodeMeetsPolicy:(BOOL)arg1;
 - (void)storePassOwnershipToken:(id)arg1 withIdentifier:(id)arg2;
+- (void)supportedFeatureIdentifiersForAccountProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 - (void)supportedFeatureIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)supportsAccountsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)supportsPeerPaymentRegistrationWithCompletion:(CDUnknownBlockType)arg1;

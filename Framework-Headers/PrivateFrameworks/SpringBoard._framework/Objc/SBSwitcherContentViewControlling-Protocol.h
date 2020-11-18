@@ -21,7 +21,8 @@
 
 - (void)acquiredViewController:(SBTransientOverlayViewController *)arg1 forTransientOverlayAppLayout:(SBAppLayout *)arg2;
 - (SBUIAnimationController *)animationControllerForTransitionRequest:(SBMainWorkspaceTransitionRequest *)arg1;
-- (SBSwitcherModifierAction *)dispatchAndReturnTetheredInsertionEventIfNeededWithID:(NSUUID *)arg1 phase:(unsigned long long)arg2 animated:(BOOL)arg3;
+- (SBSwitcherModifierAction *)dispatchAndReturnTetheredInsertionEventIfNeededWithID:(NSUUID *)arg1 phase:(unsigned long long)arg2;
+- (SBSwitcherModifierAction *)dispatchAndReturnTetheredRemovalEventIfNeededWithID:(NSUUID *)arg1 phase:(unsigned long long)arg2;
 - (SBSwitcherModifierAction *)enterAppExposeForBundleID:(NSString *)arg1;
 - (SBSwitcherModifierAction *)handleGestureDidBegin:(SBFluidSwitcherGesture *)arg1;
 - (SBSwitcherModifierAction *)handleGestureDidEnd:(SBFluidSwitcherGesture *)arg1;
@@ -35,13 +36,17 @@
 - (void)noteAppLayoutsDidChange;
 - (void)noteKeyboardFocusDidChangeToSceneID:(NSString *)arg1;
 - (SBSwitcherModifierAction *)noteModelDidMutateForInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2;
-- (void)performInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2 animated:(BOOL)arg3 completion:(void (^)(BOOL, BOOL))arg4;
-- (SBSwitcherModifierAction *)prepareInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2 shouldAnimate:(inout BOOL *)arg3;
+- (SBSwitcherModifierAction *)noteModelDidMutateForRemovalOfAppLayout:(SBAppLayout *)arg1 forReason:(long long)arg2 animated:(BOOL)arg3;
+- (void)performAnimatedInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2 completion:(void (^)(BOOL, BOOL))arg3;
+- (void)performAnimatedRemovalOfAppLayout:(SBAppLayout *)arg1 forReason:(long long)arg2 completion:(void (^)(BOOL, BOOL))arg3;
+- (SBSwitcherModifierAction *)prepareAnimatedInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2;
+- (SBSwitcherModifierAction *)prepareAnimatedRemovalOfAppLayout:(SBAppLayout *)arg1 forReason:(long long)arg2;
 - (void)relinquishTransientOverlayViewController:(SBTransientOverlayViewController *)arg1;
-- (void)removeAppLayout:(SBAppLayout *)arg1 forReason:(long long)arg2 modelMutationBlock:(void (^)(void))arg3 completion:(void (^)(BOOL, SBAppLayout *, SBAppLayout *))arg4;
 - (void)respondToInAppStatusBarRequestedHiddenUpdate;
 - (BOOL)shouldAcceleratedHomeButtonPressBegin;
 - (BOOL)shouldAddAppLayoutToFront:(SBAppLayout *)arg1 forTransitionWithContext:(SBWorkspaceApplicationSceneTransitionContext *)arg2 transitionCompleted:(BOOL)arg3;
+- (BOOL)shouldAnimateInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2;
+- (BOOL)shouldAnimateRemovalOfAppLayout:(SBAppLayout *)arg1 forReason:(long long)arg2;
 - (BOOL)shouldRubberbandHomeGrabberView;
 - (double)snapshotScaleForSceneHandle:(SBApplicationSceneHandle *)arg1;
 @end

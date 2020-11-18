@@ -31,6 +31,7 @@
 - (void)scene:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 oldClientSettings:(id)arg3 transitionContext:(id)arg4;
 - (id)sceneSpecification;
 - (void)setBlurProgress:(double)arg1 animated:(BOOL)arg2;
+- (BOOL)setSceneFrameOnRotation;
 - (void)updateSceneSettingsWithBlock:(CDUnknownBlockType)arg1;
 
 @end

@@ -8,12 +8,13 @@
 
 #import <ScreenTimeCore/NSFetchedResultsControllerDelegate-Protocol.h>
 
-@class NSArray, NSDateInterval, NSFetchedResultsController, NSString;
+@class NSArray, NSDate, NSDateInterval, NSFetchedResultsController, NSManagedObjectID, NSString;
 
 @interface STUsageReporter : NSObject <NSFetchedResultsControllerDelegate>
 {
     BOOL _includeTotalUsageDetailItem;
     NSDateInterval *_dateInterval;
+    NSManagedObjectID *_userManagedObjectID;
     NSFetchedResultsController *_fetchedResultsController;
 }
 
@@ -23,6 +24,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) NSFetchedResultsController *fetchedResultsController; // @synthesize fetchedResultsController=_fetchedResultsController;
+@property (readonly, copy) NSDate *firstPickup;
 @property (readonly) unsigned long long hash;
 @property BOOL includeTotalUsageDetailItem; // @synthesize includeTotalUsageDetailItem=_includeTotalUsageDetailItem;
 @property (readonly, copy) NSArray *notifications;
@@ -31,13 +33,16 @@
 @property (readonly) long long totalNotifications;
 @property (readonly) long long totalPickups;
 @property (readonly) double totalScreenTime;
+@property (readonly, copy) NSManagedObjectID *userManagedObjectID; // @synthesize userManagedObjectID=_userManagedObjectID;
 
 - (void).cxx_destruct;
 - (id)_categoryUsageWithoutAllUsageItem;
 - (void)_enumerateUsageBlocksWithUnitGranularity:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
+- (id)_firstPickupFromUsageBlocks:(id)arg1;
 - (id)_ratiosForCategory:(id)arg1 perCalendarUnit:(unsigned long long)arg2 useTotalScreenTime:(BOOL)arg3;
 - (id)categoryRatiosPerCalendarUnit:(unsigned long long)arg1 numberOfCategories:(unsigned long long)arg2;
 - (void)controllerDidChangeContent:(id)arg1;
+- (id)firstPickupOfIntervalWithMostPickups:(unsigned long long *)arg1 perCalendarUnit:(unsigned long long)arg2;
 - (BOOL)generateReport:(id *)arg1;
 - (id)initWithUsage:(id)arg1 dateInterval:(id)arg2;
 - (id)notificationRatiosForApplication:(id)arg1 perCalendarUnit:(unsigned long long)arg2;

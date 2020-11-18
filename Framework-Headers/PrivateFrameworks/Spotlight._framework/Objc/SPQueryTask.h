@@ -58,6 +58,7 @@
 - (void)pushAndPostUpdates;
 - (BOOL)readyToUpdate;
 - (void)start;
+- (void)startAtUIPriority;
 - (id)unsafeCombinedSuggestions;
 - (void)updateResultsThroughDelegate:(BOOL)arg1 state:(int)arg2 sections:(id)arg3;
 - (void)updateResultsThroughDelegate:(BOOL)arg1 state:(int)arg2 unchanged:(BOOL)arg3 sections:(id)arg4;

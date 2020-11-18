@@ -33,6 +33,7 @@
     NSString *_promptString;
     SKScrollDetector *_scrollDetector;
     BOOL _viewWasOnScreen;
+    CDUnknownBlockType _dismissalCompleted;
 }
 
 @property (copy, nonatomic) NSString *additionalBuyParameters; // @synthesize additionalBuyParameters=_additionalBuyParameters;
@@ -55,13 +56,13 @@
 
 + (id)_defaultIXStoreSheetDictionary;
 + (void)_validateURL:(id)arg1 withSheetInfo:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-+ (id)allocWithZone:(struct _NSZone *)arg1;
 + (void)getCanLoadURL:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 + (void)getCanLoadURL:(id)arg1 withURLBag:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (void)_addRemoteView;
 - (void)_configureForFullScreenPresentationOrThrowException;
 - (void)_didFinish;
+- (void)_didFinishDismissal;
 - (void)_didFinishWithResult:(long long)arg1;
 - (void)_fireLoadBlockBeforeFinishing;
 - (void)_forceOrientationBackToSupportedOrientation;
@@ -77,6 +78,8 @@
 - (void)_throwUnsupportedPresentationException;
 - (void)_willBecomeContentViewControllerOfPopover:(id)arg1;
 - (void)dealloc;
+- (void)dismissModalViewControllerAnimated:(BOOL)arg1;
+- (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)finishImmediately;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadProductWithPageDictionary:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;

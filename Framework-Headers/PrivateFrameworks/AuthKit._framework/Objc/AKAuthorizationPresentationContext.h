@@ -37,7 +37,6 @@
 - (void).cxx_destruct;
 - (void)_addPresentationParametersForContext:(id)arg1;
 - (void)_addPresenterParameters;
-- (int)_iconVariantForScale:(float)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContext:(id)arg1 bundleID:(id)arg2;

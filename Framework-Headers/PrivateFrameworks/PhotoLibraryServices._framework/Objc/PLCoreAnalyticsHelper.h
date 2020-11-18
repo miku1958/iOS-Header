@@ -15,9 +15,9 @@
 + (void)sendAnalysisStateEvent:(id)arg1;
 + (void)sendCMMSharingSuggestionsEvent:(id)arg1;
 + (void)sendCMMSummaryEvent:(id)arg1;
-+ (void)sendCTMFinishProcessingEventWithTime:(double)arg1 isAutoReframe:(BOOL)arg2 isOnDemand:(BOOL)arg3;
++ (void)sendCTMFinishProcessingEventForAsset:(id)arg1 startDate:(id)arg2 isAutoReframe:(BOOL)arg3 isOnDemand:(BOOL)arg4;
 + (void)sendCTMLibrarySummaryEvent:(id)arg1;
-+ (void)sendCTMScheduleAnalyticsWithTime:(double)arg1 isAutoReframe:(BOOL)arg2 isOnDemand:(BOOL)arg3;
++ (void)sendCTMScheduleAnalyticsForAsset:(id)arg1 isAutoReframe:(BOOL)arg2 isOnDemand:(BOOL)arg3;
 + (void)sendHyperionLocalResourcesEvent:(id)arg1;
 + (void)sendLibrarySummaryEvent:(id)arg1;
 + (void)sendMomentStatisticsEvent:(id)arg1;

@@ -21,7 +21,5 @@
 - (void)rootFolderView:(SBRootFolderView *)arg1 didEndOverscrollOnFirstPageWithVelocity:(double)arg2;
 - (void)rootFolderView:(SBRootFolderView *)arg1 didOverscrollOnFirstPageByAmount:(double)arg2;
 - (void)rootFolderView:(SBRootFolderView *)arg1 wantsToAdjustTodayContentForEdgeBounceForScrollOffset:(struct CGPoint)arg2;
-- (void)rootFolderViewDidChangeSidebarPinned:(SBRootFolderView *)arg1;
-- (BOOL)rootFolderViewShouldAllowOverscrollOnFirstPage:(SBRootFolderView *)arg1;
 @end
 

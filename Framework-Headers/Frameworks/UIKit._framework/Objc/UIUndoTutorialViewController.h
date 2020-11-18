@@ -6,18 +6,23 @@
 
 #import <UIKitCore/UIViewController.h>
 
+@class UIUndoTutorialView;
+
 __attribute__((visibility("hidden")))
 @interface UIUndoTutorialViewController : UIViewController
 {
     CDUnknownBlockType _completionHandler;
+    UIUndoTutorialView *_tutorialView;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (strong, nonatomic) UIUndoTutorialView *tutorialView; // @synthesize tutorialView=_tutorialView;
 
 - (void).cxx_destruct;
 - (void)doneButtonPressed;
 - (id)initWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)viewDidLoad;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

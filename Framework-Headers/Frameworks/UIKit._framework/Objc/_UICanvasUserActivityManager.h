@@ -34,12 +34,13 @@ __attribute__((visibility("hidden")))
 + (void)_deleteSavedSceneSessionDirectoryWithIdentifier:(id)arg1;
 + (void)_deleteSceneSessionsWithPersistentIdentifiers:(id)arg1;
 + (id)_fetchSceneSessionWithPersistentIdentifier:(id)arg1;
-+ (id)_getCanvasRestorationUserActivityForCanvasIdentifier:(id)arg1 error:(id *)arg2;
++ (id)_getRestorationUserActivityForPersistentIdentifier:(id)arg1 error:(id *)arg2;
 + (id)_getUserInfoForSceneIdentifier:(id)arg1 error:(id *)arg2;
 + (void)_initializeUserActivityManager;
 + (id)_knownSceneSessionMap;
-+ (BOOL)_restorationUserActivityAvailableForCanvasIdentifier:(id)arg1;
++ (BOOL)_restorationUserActivityAvailableForSceneIdentifier:(id)arg1;
 + (void)_saveRestorationStateForScene:(id)arg1;
++ (void)_scheduleDataSaveForSceneSession:(id)arg1 saveRestorationActivity:(BOOL)arg2;
 + (void)_showProgressForScene:(id)arg1 whenFetchingUserActivityForTypes:(id)arg2;
 + (void)_updatePersistedSceneSession:(id)arg1;
 + (id)_userActivityManagerForScene:(id)arg1;
@@ -47,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)_checkActivityContinuationAndBecomeCurrentIfNeeded;
 - (void)_performCanvasRestoration;
 - (void)_performCanvasRestorationIfNecessary;
+- (void)_saveOrClearRestorationDictionary:(id)arg1 forScene:(id)arg2;
 - (void)_saveSceneRestorationState;
 - (void)_scene:(id)arg1 didTransitionFromActivationState:(long long)arg2 withReasonsMask:(unsigned long long)arg3;
 - (void)_scene:(id)arg1 willTransitionToActivationState:(long long)arg2 withReasonsMask:(unsigned long long)arg3;

@@ -123,6 +123,7 @@
 - (id)_fetchRequestToIdentifyBakedInVariationsCandidatesIncludingLongExposure:(BOOL)arg1;
 - (BOOL)_filterSceneClassificationsInStore:(id)arg1;
 - (BOOL)_fixAdjustedAssets:(id)arg1;
+- (BOOL)_fixAdjustedFingerprintsInStore:(id)arg1;
 - (BOOL)_fixAlbumAndFolderSortAscending:(id)arg1;
 - (BOOL)_fixAssetMasterResources:(id)arg1;
 - (BOOL)_fixCloudMasterCloudLocalState:(id)arg1;
@@ -380,6 +381,7 @@
 - (void)forceImportFileSystemDataIntoDatabase;
 - (id)generatePathToAssetUUIDRecoveryMapping;
 - (BOOL)graphPersonResetRequiredForPreviousStoreVersion:(unsigned long long)arg1;
+- (void)handleGreenChanges:(id)arg1;
 - (void)importAfterCrash:(id)arg1 dictionariesByPhotoStreamID:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)initWithPathManager:(id)arg1 relationshipOrderKeyManager:(id)arg2;
 - (BOOL)isLoadingFacesFromFileSystem;

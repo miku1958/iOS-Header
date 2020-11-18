@@ -53,6 +53,7 @@
 - (void)_partitionAndProcessActivitySummariesForAllTimeScopes:(id)arg1;
 - (id)_predicateForStartDate:(id)arg1 endDate:(id)arg2 calendar:(id)arg3;
 - (id)_queriesForTimeScope:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (BOOL)_sampleDate:(id)arg1 withinHourAfterDate:(id)arg2;
 - (void)_setupActivitySummaryChangeObserver;
 - (void)_stopActivitySummaryChangeObserver;
 - (void)_submitHourlyQueryForPageNumber:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;

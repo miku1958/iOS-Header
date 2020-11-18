@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <OnBoardingKit/OBWelcomeController.h>
+#import <HomeUI/HUImageOBWelcomeController.h>
 
 #import <HomeUI/HUConfigurationViewController-Protocol.h>
 #import <HomeUI/HUOnboardingWarningPresenter-Protocol.h>
@@ -13,7 +13,7 @@
 @class HUPersonalRequestsEditorItemManager, NSArray, NSString, OBLinkTrayButton, OBTrayButton;
 @protocol HUConfigurationViewControllerDelegate;
 
-@interface HUHomeAssistantDeviceLanguageSetupViewController : OBWelcomeController <HUOnboardingWarningPresenter, HUConfigurationViewController, HUPreloadableViewController>
+@interface HUHomeAssistantDeviceLanguageSetupViewController : HUImageOBWelcomeController <HUOnboardingWarningPresenter, HUConfigurationViewController, HUPreloadableViewController>
 {
     BOOL _maxNumberOfVoicesReached;
     BOOL _shouldSetMultiUserIsEnabled;

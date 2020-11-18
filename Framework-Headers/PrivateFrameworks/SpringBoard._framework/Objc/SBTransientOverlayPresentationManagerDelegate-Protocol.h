@@ -25,6 +25,7 @@
 - (id<BSInvalidatable>)transientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1 acquireInteractiveScreenshotGestureDisabledAssertionWithReason:(NSString *)arg2;
 - (id<BSInvalidatable>)transientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1 acquireProximitySensorEnabledAssertionWithReason:(NSString *)arg2;
 - (id<BSInvalidatable>)transientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1 acquireSiriWindowLevelAssertionWithReason:(NSString *)arg2 windowLevel:(double)arg3;
+- (id<BSInvalidatable>)transientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1 acquireWallpaperAnimationSuspensionAssertionWithReason:(NSString *)arg2;
 - (void)transientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1 didDismissViewController:(SBTransientOverlayViewController *)arg2 wasTopmostPresentation:(BOOL)arg3;
 - (UIApplicationSceneDeactivationAssertion *)transientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1 newSceneDeactivationAssertionWithReason:(long long)arg2;
 - (void)transientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1 preferredWhitePointAdaptivityStyleDidChangeWithAnimationSettings:(BSAnimationSettings *)arg2;

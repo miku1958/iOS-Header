@@ -6,11 +6,13 @@
 
 #import <FrontBoard/FBSServiceFacilityClientHandle-Protocol.h>
 
+@class NSString;
 @protocol BSXPCServiceConnectionMessaging;
 
 @protocol FBSServiceFacilityClientHandle_Internal <FBSServiceFacilityClientHandle>
 
 @property (readonly, nonatomic) id<BSXPCServiceConnectionMessaging> clientHandle_messageBuilder;
 
+- (NSString *)prettyProcessDescription;
 @end
 

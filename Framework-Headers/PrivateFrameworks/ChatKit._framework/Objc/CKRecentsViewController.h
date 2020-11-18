@@ -69,6 +69,7 @@
 - (void)startDragSticker:(id)arg1 frameInRemoteView:(struct CGRect)arg2 fence:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)stickerBrowserView:(id)arg1 shouldDrawBorderAroundSticker:(id)arg2;
 - (id)stickerBrowserView:(id)arg1 stickerAtIndex:(long long)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;

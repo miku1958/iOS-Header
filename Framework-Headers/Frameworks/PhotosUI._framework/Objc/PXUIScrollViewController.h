@@ -53,6 +53,7 @@
 - (void)scrollViewLayoutIfNeeded;
 - (struct CGSize)scrollViewReferenceSize;
 - (BOOL)scrollViewShouldScrollToTop:(id)arg1;
+- (struct CGRect)scrollViewTargetRect;
 - (struct CGRect)scrollViewVisibleRect;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;

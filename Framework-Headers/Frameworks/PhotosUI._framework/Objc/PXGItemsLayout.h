@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/PXGLayout.h>
 
-@protocol PXGItemsLayoutDelegate;
+@protocol PXGItemsGeometry, PXGItemsLayoutDelegate;
 
 @interface PXGItemsLayout : PXGLayout
 {
@@ -15,6 +15,7 @@
     long long _applyingItemChangesCount;
     BOOL _lazy;
     id<PXGItemsLayoutDelegate> _delegate;
+    id<PXGItemsGeometry> _itemsGeometry;
     long long __numberOfItems;
     struct _NSRange _loadedItems;
 }
@@ -22,6 +23,7 @@
 @property (nonatomic) long long _numberOfItems; // @synthesize _numberOfItems=__numberOfItems;
 @property (weak, nonatomic) id<PXGItemsLayoutDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL isApplyingItemChanges;
+@property (readonly, nonatomic) id<PXGItemsGeometry> itemsGeometry; // @synthesize itemsGeometry=_itemsGeometry;
 @property (nonatomic, getter=isLazy) BOOL lazy; // @synthesize lazy=_lazy;
 @property (nonatomic) struct _NSRange loadedItems; // @synthesize loadedItems=_loadedItems;
 @property (nonatomic) long long numberOfItems;

@@ -178,7 +178,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)filePath;
 - (id)fileSize;
-- (id)fp_appContainerBundleIdentifier;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithQueryItem:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

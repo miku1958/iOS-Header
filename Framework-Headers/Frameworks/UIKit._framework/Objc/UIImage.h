@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <UIKitCore/NSCopying-Protocol.h>
 #import <UIKitCore/NSItemProviderReading-Protocol.h>
 #import <UIKitCore/NSItemProviderWriting-Protocol.h>
 #import <UIKitCore/NSSecureCoding-Protocol.h>
@@ -15,7 +16,7 @@
 
 @class CIImage, NSArray, NSMapTable, NSString, UIGraphicsImageRendererFormat, UIImageAsset, UIImageConfiguration, UIImageSymbolConfiguration, UITraitCollection, _UIImageContent;
 
-@interface UIImage : NSObject <NSItemProviderReading, NSItemProviderWriting, UIItemProviderPresentationSizeProviding, UIItemProviderReading, UIItemProviderWriting, NSSecureCoding>
+@interface UIImage : NSObject <NSItemProviderReading, NSItemProviderWriting, UIItemProviderPresentationSizeProviding, UIItemProviderReading, UIItemProviderWriting, NSCopying, NSSecureCoding>
 {
     NSMapTable *_siblingImages;
     UIImageConfiguration *_configuration;
@@ -202,7 +203,9 @@
 - (id)_applyBackdropViewStyle:(long long)arg1 includeTints:(BOOL)arg2 includeBlur:(BOOL)arg3 graphicsQuality:(long long)arg4 allowImageResizing:(BOOL)arg5;
 - (double)_baselineOffsetFromBottom;
 - (id)_bezeledImageWithShadowRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4 fillRed:(double)arg5 green:(double)arg6 blue:(double)arg7 alpha:(double)arg8 drawShadow:(BOOL)arg9;
+- (CDStruct_e79446ac)_calculateEdgeStatistics;
 - (CDStruct_e79446ac)_calculateStatistics;
+- (CDStruct_e79446ac)_calculateStatisticsOfEdge:(BOOL)arg1;
 - (BOOL)_canEncodeWithName:(id)arg1 coder:(id)arg2;
 - (id)_colorForFlattening;
 - (void)_configureImage:(id)arg1 assumePreconfigured:(BOOL)arg2;

@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
 - (void)didFinish;
+- (void)didFinishDismissal;
 - (void)didFinishWithResult:(id)arg1;
 - (void)didReceiveTitle:(id)arg1;
 - (void)loadDidFinishWithResult:(id)arg1 error:(id)arg2;

@@ -9,10 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface VUICanvasBrowserViewController : VUIProductShowcaseViewController
 {
-    BOOL _hasBanner;
+    BOOL _shouldNeverShowLargeTitle;
 }
 
-@property (nonatomic) BOOL hasBanner; // @synthesize hasBanner=_hasBanner;
+@property (nonatomic) BOOL shouldNeverShowLargeTitle; // @synthesize shouldNeverShowLargeTitle=_shouldNeverShowLargeTitle;
 
 - (long long)_overrideLargeTitleDisplayMode;
 - (void)updateWithViewElement:(id)arg1;

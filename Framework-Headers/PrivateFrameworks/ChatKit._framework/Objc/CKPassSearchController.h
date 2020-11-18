@@ -20,6 +20,7 @@
 @property (readonly) Class superclass;
 
 + (Class)cellClass;
++ (id)indexingString;
 + (BOOL)previewControllerPresentsModally;
 + (unsigned long long)recencyRankedTargetResultCount;
 + (id)reuseIdentifier;

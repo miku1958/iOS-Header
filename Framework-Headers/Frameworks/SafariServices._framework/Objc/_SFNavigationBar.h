@@ -196,6 +196,7 @@
 - (void)_updateControlTints;
 - (void)_updateEffectiveTheme;
 - (void)_updateFakeViews;
+- (void)_updateFillColorForProgressView:(id)arg1;
 - (void)_updateFonts;
 - (void)_updateLockIconHasEVCertificateTint;
 - (void)_updateLockViewIfNeeded;
@@ -205,6 +206,7 @@
 - (void)_updatePlaceholderText;
 - (void)_updateProgressView;
 - (void)_updateProgressViewCornerRadius;
+- (void)_updateProgressViewFillColor;
 - (void)_updateReaderButtonAndAvailabilityTextVisibility;
 - (void)_updateReaderButtonSelected;
 - (void)_updateReaderButtonVisibilityAnimated:(BOOL)arg1 showAvailabilityText:(BOOL)arg2 adjustURLLabels:(BOOL)arg3;

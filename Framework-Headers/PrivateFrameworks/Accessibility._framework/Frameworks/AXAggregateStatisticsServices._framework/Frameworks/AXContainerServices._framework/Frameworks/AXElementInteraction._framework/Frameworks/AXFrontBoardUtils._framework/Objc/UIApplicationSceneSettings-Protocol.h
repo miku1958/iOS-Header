@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) BOOL forcedStatusBarForegroundTransparent;
 @property (readonly, nonatomic) NSNumber *forcedStatusBarStyle;
 @property (readonly, nonatomic) double homeAffordanceOverlayAllowance;
+@property (readonly, nonatomic) unsigned int hostContextIdentifierForSnapshotting;
 @property (readonly, nonatomic) BOOL idleModeEnabled;
 @property (readonly, nonatomic) struct UIEdgeInsets peripheryInsets;
 @property (readonly, nonatomic) NSString *persistenceIdentifier;
@@ -26,6 +27,7 @@
 @property (readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsLandscapeRight;
 @property (readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsPortrait;
 @property (readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsPortraitUpsideDown;
+@property (readonly, nonatomic) unsigned long long scenePresenterRenderIdentifierForSnapshotting;
 @property (readonly, nonatomic) struct CGRect statusBarAvoidanceFrame;
 @property (readonly, nonatomic) BOOL statusBarDisabled;
 @property (readonly, nonatomic) double statusBarHeight;

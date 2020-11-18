@@ -35,6 +35,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue;
 
++ (id)initializeScanner;
 + (id)sharedScanLock;
 - (void).cxx_destruct;
 - (void)_checkCanScan;

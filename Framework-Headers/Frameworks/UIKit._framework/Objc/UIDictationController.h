@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
     BOOL _discardNextHypothesis;
     BOOL _hasPreheated;
     BOOL _logAppEnterBackground;
+    BOOL _didToggleSoftwareKeyboardVisibleForDictation;
     BOOL _wantsAvailabilityMonitoringWhenAppActive;
     BOOL _selectionEndWasInitiallyAtParagraphBoundaryForAsyncDelegate;
     BOOL _selectionStartWasInitiallyAtParagraphBoundaryForAsyncDelegate;
@@ -71,11 +72,13 @@ __attribute__((visibility("hidden")))
     NSString *_initialDictationLanguage;
     NSString *_fallbackDictationLanguage;
     unsigned long long _dictationSourceType;
+    NSString *_currentKeyboardPrimaryLanguage;
     struct _NSRange _insertionRange;
 }
 
 @property (copy, nonatomic) NSString *activationIdentifier; // @synthesize activationIdentifier=_activationIdentifier;
 @property (strong, nonatomic) UIKeyboardInputMode *currentInputModeForDictation; // @synthesize currentInputModeForDictation=_currentInputModeForDictation;
+@property (copy, nonatomic) NSString *currentKeyboardPrimaryLanguage; // @synthesize currentKeyboardPrimaryLanguage=_currentKeyboardPrimaryLanguage;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *detectedLanguage; // @synthesize detectedLanguage=_detectedLanguage;
@@ -84,6 +87,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIDictationPrivacySheetController *dictationPrivacySheetController; // @synthesize dictationPrivacySheetController=_dictationPrivacySheetController;
 @property (readonly, strong, nonatomic) NSNumber *dictationRequestOrigin;
 @property (nonatomic) unsigned long long dictationSourceType; // @synthesize dictationSourceType=_dictationSourceType;
+@property (nonatomic) BOOL didToggleSoftwareKeyboardVisibleForDictation; // @synthesize didToggleSoftwareKeyboardVisibleForDictation=_didToggleSoftwareKeyboardVisibleForDictation;
 @property (nonatomic) BOOL discardNextHypothesis; // @synthesize discardNextHypothesis=_discardNextHypothesis;
 @property (copy, nonatomic) NSString *fallbackDictationLanguage; // @synthesize fallbackDictationLanguage=_fallbackDictationLanguage;
 @property (nonatomic) BOOL hasPreheated; // @synthesize hasPreheated=_hasPreheated;
@@ -116,6 +120,7 @@ __attribute__((visibility("hidden")))
 + (id)_dictationLog;
 + (id)activeConnection;
 + (id)activeInstance;
++ (id)activeSLSDictationLanguages;
 + (void)applicationDidBecomeActive;
 + (void)applicationDidEnterBackgroundNotification;
 + (void)applicationWillResignActive;
@@ -221,6 +226,7 @@ __attribute__((visibility("hidden")))
 - (void)dictationConnection:(id)arg1 updateOptions:(id)arg2;
 - (id)dictationConnection:(id)arg1 willFilterTokensWithLanguageModel:(id)arg2 forFinalize:(BOOL)arg3;
 - (void)dictationConnectionDidCancel:(id)arg1;
+- (void)dictationConnectionDidCancelIncompatibleLocalRecognizer:(id)arg1;
 - (void)dictationConnectionDidCancelRecording:(id)arg1;
 - (void)dictationConnectionDidEndRecording:(id)arg1;
 - (void)dictationConnectionDidFinish:(id)arg1;
@@ -235,6 +241,7 @@ __attribute__((visibility("hidden")))
 - (void)didShowAlternatives:(id)arg1;
 - (BOOL)disabledDueToTelephonyActivity;
 - (void)dismissDictationView:(id)arg1;
+- (void)dismissSoftwareKeyboardIfNeeded;
 - (void)endSessionIfNecessaryForTransitionFromState:(int)arg1 toState:(int)arg2;
 - (void)endSmartLanguageSelectionOverride;
 - (void)errorAnimationDidFinish;
@@ -242,6 +249,7 @@ __attribute__((visibility("hidden")))
 - (void)finishDictationRecognitionWithPhrases:(id)arg1 languageModel:(id)arg2 correctionIdentifier:(id)arg3 secureInput:(BOOL)arg4;
 - (id)init;
 - (void)insertSerializedDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2;
+- (BOOL)isFallingBackToMonolingualDictation;
 - (BOOL)isIgnoringDocumentChanges;
 - (BOOL)isRecievingResults;
 - (void)keyboardDismissed:(id)arg1;
@@ -277,6 +285,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldOverrideManualEndpointing;
 - (BOOL)shouldPresentOptInAlert;
 - (BOOL)shouldUseDictationSearchFieldBehavior;
+- (void)showSoftwareKeyboardIfNeeded;
 - (BOOL)smartLanguageSelectionOverridden;
 - (void)startConnection;
 - (void)startDictation;

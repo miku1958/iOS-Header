@@ -21,7 +21,6 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (void)layoutSubviews;
-- (void)setAspectRatio:(long long)arg1;
 
 @end
 

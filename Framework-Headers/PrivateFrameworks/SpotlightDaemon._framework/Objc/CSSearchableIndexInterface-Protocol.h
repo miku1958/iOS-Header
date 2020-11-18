@@ -6,7 +6,7 @@
 
 #import <SpotlightDaemon/NSObject-Protocol.h>
 
-@class CSIndexJob, CSSearchContext, CSSearchableItem, CSUserAction, INInteraction, NSArray, NSData, NSDate, NSNumber, NSString;
+@class CSIndexJob, CSSearchContext, CSSearchableItem, CSUserAction, INInteraction, NSArray, NSData, NSDate, NSNumber, NSObject, NSString;
 
 @protocol CSSearchableIndexInterface <NSObject>
 - (void)changeStateOfSearchableItemsWithUIDs:(NSArray *)arg1 toState:(long long)arg2 protectionClass:(NSString *)arg3 forBundleID:(NSString *)arg4 forUTIType:(NSString *)arg5 options:(long long)arg6;
@@ -31,7 +31,7 @@
 - (void)deleteAllSearchableItemsWithBundleID:(NSString *)arg1 protectionClass:(NSString *)arg2 shouldGC:(BOOL)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (void)deleteInteractionsWithGroupIdentifiers:(NSArray *)arg1 bundleID:(NSString *)arg2 protectionClass:(NSString *)arg3 options:(long long)arg4 completionHandler:(void (^)(NSError *))arg5;
 - (void)deleteInteractionsWithIdentifiers:(NSArray *)arg1 bundleID:(NSString *)arg2 protectionClass:(NSString *)arg3 options:(long long)arg4 completionHandler:(void (^)(NSError *))arg5;
-- (void)fetchAttributes:(NSArray *)arg1 protectionClass:(NSString *)arg2 bundleID:(NSString *)arg3 identifiers:(NSArray *)arg4 completionHandler:(void (^)(id, NSError *))arg5;
+- (void)fetchAttributes:(NSArray *)arg1 protectionClass:(NSString *)arg2 bundleID:(NSString *)arg3 identifiers:(NSObject *)arg4 includeParents:(BOOL)arg5 completionHandler:(void (^)(id, NSError *))arg6;
 - (void)flushUserActivities;
 - (void)performDataMigrationWithTimeout:(NSNumber *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)userPerformedAction:(CSUserAction *)arg1 withItem:(CSSearchableItem *)arg2 protectionClass:(NSString *)arg3;

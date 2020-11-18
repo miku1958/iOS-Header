@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)intrinsicContentSize;
 - (double)mapViewHeight;
 - (void)setLocationsNumber:(unsigned long long)arg1;
+- (BOOL)useImageView;
 
 @end
 

@@ -15,6 +15,7 @@
     MISSING_TYPE *issueReadingHistory;
     MISSING_TYPE *isiCloudPrivateDataSyncingEnabled;
     MISSING_TYPE *store;
+    MISSING_TYPE *bundleSubscriptionManager;
 }
 
 @end

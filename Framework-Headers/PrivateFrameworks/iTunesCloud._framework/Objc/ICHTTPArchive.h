@@ -17,6 +17,9 @@
     NSString *_currentArchiveFileName;
     NSDateFormatter *_dateFormatter;
     NSDictionary *_creatorDictionary;
+    NSString *_archiveDirectoryPath;
+    NSMutableArray *_archiveFilePaths;
+    BOOL _hasValidArchiveDirectory;
 }
 
 + (id)sharedArchive;
@@ -25,6 +28,7 @@
 - (id)_archiveForRequest:(id)arg1;
 - (id)_archiveForResponse:(id)arg1 responseData:(id)arg2;
 - (id)_arrayFromHeaderDictionary:(id)arg1;
+- (void)_loadExistingArchivePaths;
 - (void)_onQueueFlush;
 - (void)_pruneOldArchives;
 - (void)archiveRequest:(id)arg1 withResponse:(id)arg2 responseData:(id)arg3;

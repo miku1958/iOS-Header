@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)pauseVideoConferences:(BOOL)arg1;
 - (void)registerBlocksForConference;
 - (void)removeVideoConference:(id)arg1;
+- (void)setupVTPCallback;
 - (void)startSIPWithPacketMultiplexMode:(int)arg1 transportType:(unsigned int)arg2;
 - (void)stopSIPWithTransportType:(unsigned int)arg1;
 - (void)videoConference:(id)arg1 cancelRelayRequest:(unsigned int)arg2 requestDict:(id)arg3;

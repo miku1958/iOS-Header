@@ -30,7 +30,7 @@
 - (id)giveBoostWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)setClientIsInForeground:(BOOL)arg1;
-- (void)setCurrentlyVisibleMailboxes:(id)arg1;
+- (void)setCurrentlyVisibleMailboxObjectIDs:(id)arg1;
 
 @end
 

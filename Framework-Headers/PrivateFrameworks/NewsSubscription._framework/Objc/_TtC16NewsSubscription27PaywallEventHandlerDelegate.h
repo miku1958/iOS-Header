@@ -11,11 +11,11 @@
 @interface _TtC16NewsSubscription27PaywallEventHandlerDelegate : _TtCs12_SwiftObject
 {
     MISSING_TYPE *purchasingSpinnerViewControllerFactory;
-    MISSING_TYPE *$__lazy_storage_$_purchaseSpinner;
     MISSING_TYPE *$__lazy_storage_$_verificationSpinner;
     MISSING_TYPE *tag;
     MISSING_TYPE *delegate;
     MISSING_TYPE *presentationViewController;
+    MISSING_TYPE *purchasePresenter;
 }
 
 @end

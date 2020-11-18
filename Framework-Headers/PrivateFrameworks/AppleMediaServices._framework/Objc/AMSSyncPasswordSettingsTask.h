@@ -9,26 +9,28 @@
 #import <AppleMediaServices/AMSBagConsumer-Protocol.h>
 #import <AppleMediaServices/AMSURLProtocolDelegate-Protocol.h>
 
-@class ACAccount, AMSURLSession, NSString;
-@protocol AMSBagProtocol;
+@class ACAccount, AMSProcessInfo, NSString;
+@protocol AMSBagProtocol, NSURLSessionDelegate><AMSURLProtocolDelegate;
 
 @interface AMSSyncPasswordSettingsTask : AMSTask <AMSURLProtocolDelegate, AMSBagConsumer>
 {
     ACAccount *_account;
+    id<AMSBagProtocol> _bag;
+    AMSProcessInfo *_clientInfo;
+    id<NSURLSessionDelegate><AMSURLProtocolDelegate> _delegate;
     unsigned long long _freeSetting;
     unsigned long long _paidSetting;
-    AMSURLSession *_session;
-    id<AMSBagProtocol> _bag;
 }
 
-@property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
-@property (strong, nonatomic) id<AMSBagProtocol> bag; // @synthesize bag=_bag;
+@property (readonly, nonatomic) ACAccount *account; // @synthesize account=_account;
+@property (readonly, nonatomic) id<AMSBagProtocol> bag; // @synthesize bag=_bag;
+@property (strong, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, weak, nonatomic) id<NSURLSessionDelegate><AMSURLProtocolDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) unsigned long long freeSetting; // @synthesize freeSetting=_freeSetting;
+@property (readonly, nonatomic) unsigned long long freeSetting; // @synthesize freeSetting=_freeSetting;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) unsigned long long paidSetting; // @synthesize paidSetting=_paidSetting;
-@property (strong, nonatomic) AMSURLSession *session; // @synthesize session=_session;
+@property (readonly, nonatomic) unsigned long long paidSetting; // @synthesize paidSetting=_paidSetting;
 @property (readonly) Class superclass;
 
 + (void)addRequiredBagKeysToAggregator:(id)arg1;

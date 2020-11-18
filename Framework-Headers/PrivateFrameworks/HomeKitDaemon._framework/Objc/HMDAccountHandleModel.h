@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSNumber *local; // @dynamic local;
 
 + (id)properties;
++ (id)schemaHashRoot;
 
 @end
 

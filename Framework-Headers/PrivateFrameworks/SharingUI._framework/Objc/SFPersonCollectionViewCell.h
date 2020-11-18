@@ -88,6 +88,7 @@
 - (void)prepareHaptics;
 - (void)prepareHapticsPreWarm:(BOOL)arg1;
 - (void)removeObserverOfValuesForKeyPaths:(id)arg1 ofObject:(id)arg2;
+- (void)resetTransferState;
 - (void)restoreCellStateFromFinalTransferState:(long long)arg1;
 - (void)setCellState:(long long)arg1 animated:(BOOL)arg2 silent:(BOOL)arg3;
 - (void)setSecondLabelText:(id)arg1 withTextColor:(id)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;

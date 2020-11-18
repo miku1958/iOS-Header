@@ -9,7 +9,7 @@
 #import <WorkflowKit/NSCopying-Protocol.h>
 #import <WorkflowKit/WFVariableDelegate-Protocol.h>
 
-@class UIFont, WFVariable, WFVariableAttachmentCell;
+@class UIColor, UIFont, WFVariable, WFVariableAttachmentCell;
 
 @interface WFVariableAttachment : NSTextAttachment <WFVariableDelegate, NSCopying>
 {
@@ -17,6 +17,7 @@
     BOOL _selected;
     BOOL _highlighted;
     UIFont *_font;
+    UIColor *_tintColor;
     WFVariable *_variable;
     WFVariableAttachmentCell *_wf_attachmentCell;
 }
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
+@property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property (readonly, nonatomic) WFVariable *variable; // @synthesize variable=_variable;
 @property (strong, nonatomic) WFVariableAttachmentCell *wf_attachmentCell; // @synthesize wf_attachmentCell=_wf_attachmentCell;
 

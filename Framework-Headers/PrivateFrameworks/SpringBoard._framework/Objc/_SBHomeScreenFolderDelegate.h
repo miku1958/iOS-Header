@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (id)backgroundViewForDockForRootFolderController:(id)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
+- (BOOL)respondsToSelector:(SEL)arg1;
 
 @end
 

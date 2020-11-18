@@ -113,6 +113,7 @@
 - (void)_updateTraitCollectionForViewController:(id)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)attributePicker:(id)arg1 didSelectToolWithTag:(long long)arg2 attributeTag:(long long)arg3;
+- (BOOL)canBecomeFirstResponder;
 - (id)createUndoViewController;
 - (void)dealloc;
 - (void)didDismissPopover;

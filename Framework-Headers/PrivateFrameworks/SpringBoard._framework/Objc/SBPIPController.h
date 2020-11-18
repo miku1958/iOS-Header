@@ -18,6 +18,7 @@
     PGPictureInPictureController *_pictureInPictureController;
     SBPIPWindow *_pictureInPictureWindow;
     struct UIEdgeInsets _pictureInPictureWindowMargin;
+    BOOL _expectKeyboardVisible;
     NSMutableSet *_pictureInPictureWindowHiddenReasons;
     NSMutableDictionary *_pictureInPictureInsetsForSource;
     NSMutableSet *_pictureInPictureMorphAnimatorControllers;
@@ -42,8 +43,8 @@
 - (void)_destroyWindowAndRootViewControllerIfPossible;
 - (void)_floatingDockHeightWillChange:(id)arg1;
 - (void)_keyboardWillChangeFrame:(id)arg1;
-- (void)_keyboardWillDisappear:(id)arg1;
 - (void)_keyboardWillRotate:(id)arg1;
+- (void)_keyboardWillShowOrHide:(id)arg1;
 - (void)_lockStateDidChange:(id)arg1;
 - (void)_managePictureInPictureWindowLevel;
 - (void)_managePictureInPictureWindowVisibilityAnimated:(BOOL)arg1;
@@ -62,6 +63,7 @@
 - (void)applyPictureInPictureInsets:(struct UIEdgeInsets)arg1 fromSource:(long long)arg2 duration:(double)arg3;
 - (void)assistantDidDisappear:(id)arg1;
 - (void)assistantWillAppear:(id)arg1;
+- (void)cancelPictureInPictureForApplicationWithProcessIdentifierEnteringBackground:(int)arg1 scenePersistenceIdentifier:(id)arg2;
 - (void)dealloc;
 - (struct CGRect)defaultHomeScreenInitialPiPFrame:(struct CGRect)arg1 withPreferredContentSize:(struct CGSize)arg2;
 - (id)init;

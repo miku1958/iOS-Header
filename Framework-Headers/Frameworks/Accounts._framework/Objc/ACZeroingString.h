@@ -16,11 +16,13 @@
 @property (readonly) unsigned long long length;
 
 + (id)_emptyString;
++ (Class)classForKeyedUnarchiver;
 + (BOOL)supportsSecureCoding;
 - (BOOL)_allowsDirectEncoding;
 - (id)_compatibleCopy;
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;
 - (Class)classForCoder;
+- (Class)classForKeyedArchiver;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

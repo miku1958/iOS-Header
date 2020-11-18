@@ -9,10 +9,13 @@
 @interface SFPersonImageView : UIImageView
 {
     BOOL _imageIsSquare;
+    double _highlightDarkeningAlpha;
 }
 
+@property (nonatomic) double highlightDarkeningAlpha; // @synthesize highlightDarkeningAlpha=_highlightDarkeningAlpha;
 @property (nonatomic) BOOL imageIsSquare; // @synthesize imageIsSquare=_imageIsSquare;
 
++ (id)darkenImage:(id)arg1 toLevel:(double)arg2;
 - (id)initWithImage:(id)arg1 isSquare:(BOOL)arg2;
 - (void)layoutSubviews;
 - (void)setHighlighted:(BOOL)arg1;

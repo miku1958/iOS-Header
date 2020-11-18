@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 + (id)_containedPerformerClasses;
 + (BOOL)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2 person:(id)arg3;
++ (BOOL)canPerformOnSubsetOfSelection;
 + (id)createBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2;
 - (void)_handleActionPick:(id)arg1 forPerformerClass:(Class)arg2;
 - (void)performUserInteractionTask;

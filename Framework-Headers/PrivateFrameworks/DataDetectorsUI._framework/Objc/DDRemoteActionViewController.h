@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
 - (void)_prepareForAction:(id)arg1 inActionController:(id)arg2;
-- (void)actionBecameCancellable:(BOOL)arg1;
+- (void)actionCanBeCancelledExternally:(BOOL)arg1;
 - (void)actionDidFinish;
 - (void)adaptForPresentationInPopover:(BOOL)arg1;
 - (void)getIsBeingPresentedInPopover:(CDUnknownBlockType)arg1;

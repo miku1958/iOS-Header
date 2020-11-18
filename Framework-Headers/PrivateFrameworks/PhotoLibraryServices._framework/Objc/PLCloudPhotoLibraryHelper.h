@@ -20,11 +20,13 @@
 + (void)setShouldClearPurgeableResourcesOnce:(BOOL)arg1;
 + (void)setShouldHandleOptimizeModeChange:(BOOL)arg1;
 + (void)setShouldMarkPurgeableResourcesOnce:(BOOL)arg1;
++ (void)setShouldRepushMasterWithMissingMediaMetadataOnce:(BOOL)arg1;
 + (void)setShouldRepushVideoAssetsMetadataOnce:(BOOL)arg1;
 + (void)setShouldSendOptimizeFeedbackOnce:(BOOL)arg1;
 + (BOOL)shouldClearPurgeableResourcesOnce;
 + (BOOL)shouldHandleOptimizeModeChange;
 + (BOOL)shouldMarkPurgeableResourcesOnce;
++ (BOOL)shouldRepushMasterWithMissingMediaMetadataOnce;
 + (BOOL)shouldRepushVideoAssetsMetadataOnce;
 + (BOOL)shouldSendOptimizeFeedbackOnce;
 

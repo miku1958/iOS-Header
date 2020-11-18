@@ -6,14 +6,15 @@
 
 #import <UIKit/UIControl.h>
 
+#import <MediaControls/MTVisualStylingProviderObservingPrivate-Protocol.h>
+
 @class MTVisualStylingProvider, NSString, UIButton, UIColor, UIImage, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsRoundButton : UIControl
+@interface MediaControlsRoundButton : UIControl <MTVisualStylingProviderObservingPrivate>
 {
     BOOL _shouldInsetOnHighlight;
     NSString *_title;
-    NSString *_selectedTitle;
     NSString *_subtitle;
     UIImage *_image;
     UIColor *_selectedBackgroundColor;
@@ -21,7 +22,6 @@ __attribute__((visibility("hidden")))
     long long _axis;
     UIButton *_button;
     UILabel *_titleLabel;
-    UILabel *_selectedTitleLabel;
     UILabel *_subtitleLabel;
     UIView *_highlightView;
     UIView *_selectedView;
@@ -29,16 +29,18 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) long long axis; // @synthesize axis=_axis;
 @property (strong, nonatomic) UIButton *button; // @synthesize button=_button;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *highlightView; // @synthesize highlightView=_highlightView;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (readonly, nonatomic) struct CGRect imageFrame;
 @property (strong, nonatomic) UIColor *selectedBackgroundColor; // @synthesize selectedBackgroundColor=_selectedBackgroundColor;
-@property (copy, nonatomic) NSString *selectedTitle; // @synthesize selectedTitle=_selectedTitle;
-@property (strong, nonatomic) UILabel *selectedTitleLabel; // @synthesize selectedTitleLabel=_selectedTitleLabel;
 @property (strong, nonatomic) UIView *selectedView; // @synthesize selectedView=_selectedView;
 @property (nonatomic) BOOL shouldInsetOnHighlight; // @synthesize shouldInsetOnHighlight=_shouldInsetOnHighlight;
 @property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (strong, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) MTVisualStylingProvider *visualStylingProvider; // @synthesize visualStylingProvider=_visualStylingProvider;
@@ -48,9 +50,12 @@ __attribute__((visibility("hidden")))
 - (void)_endHighlight;
 - (void)_startHighlight;
 - (void)_updateBackgroundFrames;
+- (void)_updateLabelVisualStyling;
+- (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)didTapButton;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)providedStylesDidChangeForProvider:(id)arg1;
 - (void)setSelected:(BOOL)arg1;
 
 @end

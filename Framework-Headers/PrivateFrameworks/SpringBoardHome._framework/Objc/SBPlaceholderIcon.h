@@ -20,6 +20,7 @@
 
 + (id)grabbedIconPlaceholderForIcon:(id)arg1;
 + (id)grabbedIconPlaceholderForIcons:(id)arg1;
++ (BOOL)hasIconImage;
 + (id)placeholderForIcon:(id)arg1;
 + (id)placeholderNodeIdentifierForIcon:(id)arg1;
 + (id)placeholderNodeIdentifierForIconNodeIdentifier:(id)arg1;

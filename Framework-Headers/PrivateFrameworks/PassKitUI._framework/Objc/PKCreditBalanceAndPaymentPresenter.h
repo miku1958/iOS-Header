@@ -33,7 +33,7 @@
 
 - (void).cxx_destruct;
 - (id)_accountServiceResoultionControllerWithItem:(id)arg1;
-- (void)_configureActivityCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 forIndexPath:(id)arg4;
+- (void)_configureActivityCell:(id)arg1 forItem:(id)arg2 sizing:(BOOL)arg3 inCollectionView:(id)arg4 forIndexPath:(id)arg5;
 - (void)_configureBalanceCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 forIndexPath:(id)arg4;
 - (void)_configurePaymentDueCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 forIndexPath:(id)arg4;
 - (BOOL)_useAccessibilityLayoutForCollectionView:(id)arg1;

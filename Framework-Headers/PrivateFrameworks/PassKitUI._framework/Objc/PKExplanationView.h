@@ -10,7 +10,7 @@
 #import <PassKitUI/UITextViewDelegate-Protocol.h>
 #import <PassKitUI/_PKUIKVisibilityBackdropViewDelegate-Protocol.h>
 
-@class NSAttributedString, NSString, OBPrivacyLinkController, PKCheckGlyphLayer, PKPaymentSetupDockView, UIActivityIndicatorView, UIButton, UIFont, UIImage, UIImageView, UILabel, UIScrollView, UITextView, _PKUIKVisibilityBackdropView;
+@class NSAttributedString, NSString, OBPrivacyLinkController, PKCheckGlyphLayer, PKPaymentSetupDockView, UIActivityIndicatorView, UIButton, UIColor, UIFont, UIImage, UIImageView, UILabel, UIScrollView, UITextView, _PKUIKVisibilityBackdropView;
 @protocol PKExplanationViewDelegate;
 
 @interface PKExplanationView : UIView <UIScrollViewDelegate, UITextViewDelegate, _PKUIKVisibilityBackdropViewDelegate>
@@ -32,11 +32,13 @@
     double _titleLabelLastLineDescent;
     UIButton *_bodyButton;
     UITextView *_secondaryBodyTextView;
+    UIView *_topBackgroundView;
     BOOL _forceShowSetupLaterButton;
     BOOL _hideTitleText;
     id<PKExplanationViewDelegate> _delegate;
     UIImage *_image;
     UIView *_heroView;
+    UIColor *_topBackgroundColor;
     UIImage *_titleImage;
     UIFont *_titleFont;
     long long _titleTextAlignment;
@@ -83,6 +85,7 @@
 @property (strong, nonatomic) UIImage *titleImage; // @synthesize titleImage=_titleImage;
 @property (copy, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
 @property (nonatomic) long long titleTextAlignment; // @synthesize titleTextAlignment=_titleTextAlignment;
+@property (strong, nonatomic) UIColor *topBackgroundColor; // @synthesize topBackgroundColor=_topBackgroundColor;
 @property (nonatomic) double topMargin; // @synthesize topMargin=_topMargin;
 
 - (void).cxx_destruct;

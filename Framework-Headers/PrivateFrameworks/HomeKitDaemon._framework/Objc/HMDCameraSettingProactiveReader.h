@@ -13,31 +13,35 @@
 
 @interface HMDCameraSettingProactiveReader : HMFObject <HMFLogging>
 {
-    HMFMessage *_message;
     NSObject<OS_dispatch_queue> *_workQueue;
     id<HMDCameraSettingProactiveReaderDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSSet *_streamControlMessageHandlers;
     NSString *_logID;
     HMDAccessory *_accessory;
+    HMFMessage *_pendingMessage;
+    NSString *_sessionID;
 }
 
-@property (readonly, weak, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
+@property (readonly, weak) HMDAccessory *accessory; // @synthesize accessory=_accessory;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, weak, nonatomic) id<HMDCameraSettingProactiveReaderDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
+@property (readonly, weak) id<HMDCameraSettingProactiveReaderDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *logID; // @synthesize logID=_logID;
-@property (readonly, nonatomic) HMFMessage *message; // @synthesize message=_message;
-@property (readonly, nonatomic) NSSet *streamControlMessageHandlers; // @synthesize streamControlMessageHandlers=_streamControlMessageHandlers;
+@property (readonly) NSString *logID; // @synthesize logID=_logID;
+@property (strong) HMFMessage *pendingMessage; // @synthesize pendingMessage=_pendingMessage;
+@property (readonly) NSString *sessionID; // @synthesize sessionID=_sessionID;
+@property (readonly) NSSet *streamControlMessageHandlers; // @synthesize streamControlMessageHandlers=_streamControlMessageHandlers;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)logCategory;
 - (void).cxx_destruct;
-- (void)_callDidCompleteReadDelegateCallbackWithMessageHandled:(BOOL)arg1;
+- (void)_callDidCompleteReadDelegateCallback;
 - (void)_handleStreamStatusMultireadResponse:(id)arg1;
+- (void)handleMessage:(id)arg1;
+- (BOOL)hasPendingNegotiateMessageForSessionWithIdentifier:(id)arg1;
 - (id)initWithWorkQueue:(id)arg1 accessory:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4 message:(id)arg5 streamMessageHandlers:(id)arg6 logID:(id)arg7;
 - (id)logIdentifier;
 - (void)readSetting;

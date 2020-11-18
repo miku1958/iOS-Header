@@ -54,7 +54,7 @@
     id<BSInvalidatable> _faceDetectWantedAssertion;
     BOOL _faceInView;
     BOOL _screenOn;
-    BOOL _coverSheetWasPulledDown;
+    BOOL _coverSheetWasDismissed;
     BOOL _dndNotificationDeliveryDelayActive;
     BOOL _dndDrivingModeActive;
     BOOL _disableScrolling;

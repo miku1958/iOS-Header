@@ -25,7 +25,6 @@
 - (void)cancel;
 - (void)cleanupSpeechSynthesizer;
 - (void)initializeParameters;
-- (BOOL)isAirPlaySession:(id)arg1;
 - (id)languagePickerParameter;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (void)speakTextUsingSynthesizer:(id)arg1 voice:(id)arg2 rate:(float)arg3 pitch:(float)arg4 waitUntilFinished:(BOOL)arg5;

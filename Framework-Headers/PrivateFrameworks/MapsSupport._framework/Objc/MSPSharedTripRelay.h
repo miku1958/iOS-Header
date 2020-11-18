@@ -9,7 +9,7 @@
 #import <MapsSupport/IDSServiceDelegate-Protocol.h>
 
 @class IDSService, MSPSharedTripGroupSession, MSPSharedTripStorageController, NSMutableDictionary, NSString;
-@protocol MSPSharedTripRelayDelegate;
+@protocol MSPSharedTripAvailabiltyDelegate, MSPSharedTripRelayDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MSPSharedTripRelay : NSObject <IDSServiceDelegate>
@@ -22,23 +22,28 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_packetBuckets;
     MSPSharedTripStorageController *_storageController;
     id<MSPSharedTripRelayDelegate> _delegate;
+    id<MSPSharedTripAvailabiltyDelegate> _availabilityDelegate;
 }
 
+@property (weak, nonatomic) id<MSPSharedTripAvailabiltyDelegate> availabilityDelegate; // @synthesize availabilityDelegate=_availabilityDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MSPSharedTripRelayDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *sharingHandle;
+@property (readonly, nonatomic) NSString *sharingName;
 @property (strong, nonatomic) MSPSharedTripStorageController *storageController; // @synthesize storageController=_storageController;
 @property (readonly) Class superclass;
 
-+ (id)sharedRelay;
 - (void).cxx_destruct;
 - (void)_fetchDisplayName;
 - (void)_handleChunk:(id)arg1 fromID:(id)arg2 receivingHandle:(id)arg3 receivingAccountIdentifier:(id)arg4;
 - (void)_handleCommand:(id)arg1 fromID:(id)arg2;
 - (void)_handleIncomingMessage:(id)arg1 info:(id)arg2 fromID:(id)arg3 receivingHandle:(id)arg4 receivingAccountIdentifier:(id)arg5;
+- (BOOL)_hasValidIDSAccount;
 - (void)_removeFinishedSession:(id)arg1;
 - (void)_startService;
+- (void)dealloc;
 - (id)groupSessionForIdentifier:(id)arg1;
 - (id)init;
 - (id)removeSharingWith:(id)arg1;
@@ -48,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)service:(id)arg1 account:(id)arg2 incomingMessage:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)service:(id)arg1 account:(id)arg2 incomingResourceAtURL:(id)arg3 metadata:(id)arg4 fromID:(id)arg5 context:(id)arg6;
 - (void)service:(id)arg1 account:(id)arg2 receivedGroupSessionParticipantUpdate:(id)arg3;
+- (void)service:(id)arg1 activeAccountsChanged:(id)arg2;
 - (id)startSharingGroupSessionWithTripIdentifer:(id)arg1;
 - (void)stopSharing;
 

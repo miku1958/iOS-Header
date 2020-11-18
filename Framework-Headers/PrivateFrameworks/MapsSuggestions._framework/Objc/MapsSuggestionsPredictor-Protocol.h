@@ -15,7 +15,7 @@
 
 @optional
 - (void)cancelCapturingAnalytics;
-- (void)captureActualTransportationMode:(int)arg1 withMapItem:(struct GEOMapItemStorage *)arg2;
+- (void)captureActualTransportationMode:(int)arg1 originMapItem:(struct GEOMapItemStorage *)arg2 destinationMapItem:(struct GEOMapItemStorage *)arg3;
 - (void)capturePredictedTransportationMode:(int)arg1;
 @end
 

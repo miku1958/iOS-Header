@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WorkflowKit/WFAccessResource.h>
+#import <WorkflowKit/WFGranularAccessResource.h>
 
 #import <ActionKit/WFActionEventObserver-Protocol.h>
 
 @class HKHealthStore, NSString, WFAction;
 
-@interface WFHealthKitAccessResource : WFAccessResource <WFActionEventObserver>
+@interface WFHealthKitAccessResource : WFGranularAccessResource <WFActionEventObserver>
 {
     unsigned long long _globalLevelStatus;
     WFAction *_action;
@@ -26,6 +26,7 @@
 
 + (BOOL)alwaysMakeAvailable;
 + (BOOL)isSystemResource;
++ (Class)perWorkflowStateClass;
 - (void).cxx_destruct;
 - (void)action:(id)arg1 parameterStateDidChangeForKey:(id)arg2;
 - (id)associatedAppIdentifier;
@@ -37,6 +38,10 @@
 - (id)initWithDefinition:(id)arg1;
 - (id)localizedErrorReasonForGlobalLevelStatus:(unsigned long long)arg1;
 - (id)localizedImportErrorReasonForGlobalLevelStatus:(unsigned long long)arg1;
+- (id)localizedWorkflowLevelDeniedStatusMessage;
+- (id)localizedWorkflowLevelMessageTemplate;
+- (id)localizedWorkflowLevelNotDeterminedStatusMessage;
+- (id)localizedWorkflowLevelPromptTemplate;
 - (void)makeAvailableAtGlobalLevelWithUserInterface:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)objectTypes;
 - (id)objectTypesForAccessType:(id)arg1;
@@ -44,6 +49,7 @@
 - (id)readTypes;
 - (id)readableUnauthorizedResourceDescription;
 - (void)refreshAvailability;
+- (id)requestedEntries;
 - (id)writeTypes;
 
 @end

@@ -36,15 +36,15 @@
 	var notify : (_:) // +0x18 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x81f0  @objc UserDefaultsObserver.dealloc <stripped>
-	0x84d0  @objc UserDefaultsObserver.observeValueForKeyPath:ofObject:change:context: <stripped>
-	0x86d0  @objc UserDefaultsObserver.init <stripped>
-	0x8250  @objc UserDefaultsObserver..cxx_destruct <stripped>
+	0x7050  @objc UserDefaultsObserver.dealloc <stripped>
+	0x7330  @objc UserDefaultsObserver.observeValueForKeyPath:ofObject:change:context: <stripped>
+	0x7530  @objc UserDefaultsObserver.init <stripped>
+	0x70b0  @objc UserDefaultsObserver..cxx_destruct <stripped>
 
 	// Swift methods
-	0x7f10  class func UserDefaultsObserver.__allocating_init(keys:defaults:notificationBlock:) // init 
-	0x82a0  func UserDefaultsObserver.start() // method 
-	0x8380  func UserDefaultsObserver.stop() // method 
+	0x6d70  class func UserDefaultsObserver.__allocating_init(keys:defaults:notificationBlock:) // init 
+	0x7100  func UserDefaultsObserver.start() // method 
+	0x71e0  func UserDefaultsObserver.stop() // method 
  }
 
  enum SPShared.FutureError {
@@ -67,10 +67,10 @@
 	let block : () // +0x40 (0x10)
 
 	// Swift methods
-	0xc150  func DispatchTimer.isCancelled.getter // getter 
-	0xc190  class func DispatchTimer.__allocating_init(queue:deadline:repeating:leeway:block:) // init 
-	0xc3c0  func DispatchTimer.resume() // method 
-	0xc3f0  func DispatchTimer.cancel() // method 
+	0xafb0  func DispatchTimer.isCancelled.getter // getter 
+	0xaff0  class func DispatchTimer.__allocating_init(queue:deadline:repeating:leeway:block:) // init 
+	0xb220  func DispatchTimer.resume() // method 
+	0xb250  func DispatchTimer.cancel() // method 
  }
 
  class SPShared.DarwinNotificationManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -79,9 +79,9 @@
 	var helpers : [DarwinNotificationHelper] // +0x10 (0x8)
 
 	// Swift methods
-	0xcbf0  func DarwinNotificationManager.registerHelper(helper:) // method 
-	0xcce0  func DarwinNotificationManager.unregisterHelper(helper:) // method 
-	0xcf20  func DarwinNotificationManager.setUp() // method 
+	0xba50  func DarwinNotificationManager.registerHelper(helper:) // method 
+	0xbb40  func DarwinNotificationManager.unregisterHelper(helper:) // method 
+	0xbd80  func DarwinNotificationManager.setUp() // method 
  }
 
  enum SPShared.Relativity {
@@ -211,9 +211,9 @@
 	let accessQueue : OS_dispatch_queue
 
 	// Swift methods
-	0x23620  func <stripped> // modifyCoroutine 
-	0x23660  func <stripped> // method 
-	0x23830  func <stripped> // getter 
+	0x22560  func <stripped> // modifyCoroutine 
+	0x225a0  func <stripped> // method 
+	0x22770  func <stripped> // getter 
  }
 
  class SPShared._ImmediateScheduler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SchedulerProtocol {
@@ -222,8 +222,8 @@
 
  class SPShared._MainThreadScheduler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SchedulerProtocol {
 	// Swift methods
-	0x23ee0  func <stripped> // method 
-	0x240e0  func <stripped> // method 
+	0x22e20  func <stripped> // method 
+	0x23020  func <stripped> // method 
  }
 
  class SPShared._QueueScheduler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SchedulerProtocol {
@@ -232,9 +232,9 @@
 	let queue : OS_dispatch_queue
 
 	// Swift methods
-	0x247e0  func <stripped> // method 
-	0x24a30  func <stripped> // method 
-	0x24d90  func <stripped> // method 
+	0x23720  func <stripped> // method 
+	0x23970  func <stripped> // method 
+	0x23cd0  func <stripped> // method 
  }
 
  class SPShared._OperationQueueScheduler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SchedulerProtocol {
@@ -243,8 +243,8 @@
 	let queue : NSOperationQueue
 
 	// Swift methods
-	0x25170  func <stripped> // method 
-	0x252e0  func <stripped> // method 
+	0x240b0  func <stripped> // method 
+	0x24220  func <stripped> // method 
  }
 
  enum SPShared.LegacyResult {
@@ -260,8 +260,8 @@
 	var notificationHandlers : [CFStringRef : ()] // +0x10 (0x8)
 
 	// Swift methods
-	0x26880  class func DarwinNotificationHelper.__allocating_init(notificationHandlers:) // init 
-	0x273b0  func DarwinNotificationHelper.onNotification(notificationName:) // method 
+	0x257c0  class func DarwinNotificationHelper.__allocating_init(notificationHandlers:) // init 
+	0x262f0  func DarwinNotificationHelper.onNotification(notificationName:) // method 
  }
 
  enum SPShared.DispatchUtilities { }
@@ -271,12 +271,12 @@
 	// Properties
 	let flag : String // +0x10 (0x10)
 	let start : Date // +0x0 (0x0)
-	var duration : Double // +0x80000400 (0x8)
+	var duration : Double // +0x0 (0x8)
 
 	// Swift methods
-	0x29150  func PerformanceCapture.duration.getter // getter 
-	0x29180  class func PerformanceCapture.__allocating_init(flag:) // init 
-	0x29320  func PerformanceCapture.finished() // method 
+	0x280c0  func PerformanceCapture.duration.getter // getter 
+	0x280f0  class func PerformanceCapture.__allocating_init(flag:) // init 
+	0x28290  func PerformanceCapture.finished() // method 
  }
 
  class SPShared.XPCSessionManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -288,8 +288,8 @@
 	var listeners : ListenerRecord
 
 	// Swift methods
-	0x299d0  class func XPCSessionManager.__allocating_init(name:) // init 
-	0x29a90  func XPCSessionManager.register(service:) // method 
+	0x28940  class func XPCSessionManager.__allocating_init(name:) // init 
+	0x28a00  func XPCSessionManager.register(service:) // method 
  }
 
  class SPShared._XPCListenerDelegateTrampoline : NSObject /usr/lib/libobjc.A.dylib {
@@ -298,9 +298,9 @@
 	var sessionManager : XPCSessionManager
 
 	// ObjC -> Swift bridged methods
-	0x2a6d0  @objc _XPCListenerDelegateTrampoline.listener:shouldAcceptNewConnection: <stripped>
-	0x2a770  @objc _XPCListenerDelegateTrampoline.init <stripped>
-	0x2a7f0  @objc _XPCListenerDelegateTrampoline..cxx_destruct <stripped>
+	0x29640  @objc _XPCListenerDelegateTrampoline.listener:shouldAcceptNewConnection: <stripped>
+	0x296e0  @objc _XPCListenerDelegateTrampoline.init <stripped>
+	0x29760  @objc _XPCListenerDelegateTrampoline..cxx_destruct <stripped>
 
 	// Swift methods
  }

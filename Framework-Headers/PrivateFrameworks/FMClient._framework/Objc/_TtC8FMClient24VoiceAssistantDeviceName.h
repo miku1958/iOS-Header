@@ -13,6 +13,7 @@
     MISSING_TYPE *deviceName;
     MISSING_TYPE *ownerFirstName;
     MISSING_TYPE *ownerLastName;
+    MISSING_TYPE *$__lazy_storage_$_syncAnchor;
 }
 
 @property (nonatomic, readonly) NSString *description;
@@ -20,6 +21,7 @@
 @property (nonatomic, readonly) long long hash;
 @property (nonatomic, readonly) NSString *ownerFirstName;
 @property (nonatomic, readonly) NSString *ownerLastName;
+@property (nonatomic, copy) NSString *syncAnchor;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

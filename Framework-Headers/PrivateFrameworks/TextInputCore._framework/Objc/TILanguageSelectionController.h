@@ -41,6 +41,7 @@
 
 + (id)inferInputModeForLanguage:(id)arg1 enabled:(id)arg2;
 + (id)inferSecondaryInputModeForPrimary:(id)arg1 enabled:(id)arg2;
++ (id)inferSecondaryInputModeForPrimary:(id)arg1 enabled:(id)arg2 enabledExcludingPreferredLanguages:(id)arg3;
 + (id)inputModeForLanguageIdentifier:(id)arg1;
 + (id)inputModesForLanguageIdentifiers:(id)arg1;
 + (id)multilingualInputModesForInputModes:(id)arg1;
@@ -57,6 +58,7 @@
 - (void)feedBufferedTokenStringsToModel;
 - (id)fetchPreferredSecondaryInputMode;
 - (id)fetchUserEnabledInputModes;
+- (id)fetchUserEnabledInputModesExcludingPreferredLanguages;
 - (void)flushBuffer;
 - (id)init;
 - (id)initWithLanguageLikelihoodModel:(id)arg1 preferenceProvider:(id)arg2;

@@ -13,7 +13,8 @@
 @property (readonly, nonatomic) CDPContext *cdpContext;
 
 - (BOOL)anyPeerHasEnabledViewsInSet:(NSSet *)arg1 error:(id *)arg2;
-- (unsigned long long)cachedCircleStatus:(id *)arg1;
+- (int)cachedCircleStatus:(id *)arg1;
+- (unsigned long long)cachedCliqueStatus:(id *)arg1;
 - (BOOL)canAuthenticate;
 - (unsigned long long)circleStatus:(id *)arg1;
 - (void)didJoinCircleAfterRecovery:(OTClique *)arg1;
@@ -40,5 +41,6 @@
 - (BOOL)synchronizeCircleViews;
 - (BOOL)tryRegisteringCredentials;
 - (BOOL)viewMemberForAutofillPasswords:(id *)arg1;
+- (void)waitForUpdate;
 @end
 

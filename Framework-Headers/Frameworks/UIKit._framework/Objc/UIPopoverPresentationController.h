@@ -9,7 +9,7 @@
 #import <UIKitCore/UIDimmingViewDelegate-Protocol.h>
 #import <UIKitCore/UIGestureRecognizerDelegatePrivate-Protocol.h>
 
-@class NSArray, NSString, UIBarButtonItem, UIColor, UIDimmingView, UIPanGestureRecognizer, UIView, UIViewController, UIVisualEffectView, _UIPopoverLayoutInfo, _UIPopoverView;
+@class NSArray, NSString, UIBarButtonItem, UIColor, UIDimmingView, UIPanGestureRecognizer, UIView, UIViewController, _UICutoutShadowView, _UIPopoverLayoutInfo, _UIPopoverView;
 @protocol UIPopoverPresentationControllerDelegate;
 
 @interface UIPopoverPresentationController : UIPresentationController <UIDimmingViewDelegate, UIGestureRecognizerDelegatePrivate>
@@ -17,7 +17,7 @@
     UIViewController *_contentViewController;
     _UIPopoverView *_popoverView;
     UIDimmingView *_dimmingView;
-    UIVisualEffectView *_shadowView;
+    _UICutoutShadowView *_shadowView;
     UIView *_layoutConstraintView;
     struct CGRect _targetRectInEmbeddingView;
     UIBarButtonItem *_targetBarButtonItem;
@@ -135,7 +135,6 @@
 - (void)_clearCachedPopoverContentSize;
 - (void)_commonPresentPopoverFromRect:(struct CGRect)arg1 inView:(id)arg2 permittedArrowDirections:(unsigned long long)arg3 animated:(BOOL)arg4;
 - (CDUnknownBlockType)_completionBlockForDismissalWhenNotifyingDelegate:(BOOL)arg1;
-- (void)_containedViewControllerModalStateChanged;
 - (struct CGSize)_currentPopoverContentSize;
 - (Class)_defaultChromeViewClass;
 - (long long)_defaultPresentationStyleForTraitCollection:(id)arg1;

@@ -42,6 +42,7 @@
     BOOL _suspendedForDisposition;
     BOOL _didCheckMixedReplace;
     BOOL _isMixedReplace;
+    BOOL _sentDidFinishCollectingMetrics;
 }
 
 @property (copy) CDUnknownBlockType async_initialization; // @synthesize async_initialization=_async_initialization;
@@ -61,9 +62,11 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_askForConnectedSocketLater;
+- (void)_didSendMetrics;
 - (void)_finishAllow;
 - (void)_finishBecomeDownload:(id)arg1;
 - (void)_finishBecomeStream:(id)arg1 forConnection:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)_needSendingMetrics;
 - (void)_onSessionQueue_disavow;
 - (void)_onqueue_adjustBytesPerSecondLimit:(long long)arg1;
 - (void)_onqueue_adjustLoadingPoolPriority;

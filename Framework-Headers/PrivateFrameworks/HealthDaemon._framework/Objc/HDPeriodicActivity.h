@@ -21,6 +21,7 @@
     CDUnknownBlockType _waitingActivityCompletion;
     NSString *_errorCountUserDefaultsKey;
     NSString *_minimumIntervalDefaultsKey;
+    BOOL _unitTest_shouldDeferOverride;
     NSString *_name;
     NSObject<OS_os_log> *_loggingCategory;
     double _interval;
@@ -37,6 +38,7 @@
 @property (readonly, nonatomic) double interval; // @synthesize interval=_interval;
 @property (readonly, nonatomic) NSObject<OS_os_log> *loggingCategory; // @synthesize loggingCategory=_loggingCategory;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) BOOL shouldDefer;
 @property (readonly) Class superclass;
 
 + (id)_userDefaultsKeyForName:(id)arg1 key:(id)arg2;
@@ -68,6 +70,7 @@
 - (id)lastSuccessfulRunDate;
 - (void)reset;
 - (void)synthesizeActivityFire;
+- (void)unitTest_setShouldDefer:(BOOL)arg1;
 
 @end
 

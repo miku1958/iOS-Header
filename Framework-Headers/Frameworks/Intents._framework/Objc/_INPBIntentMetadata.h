@@ -43,6 +43,7 @@
     NSString *_nanoLaunchId;
     NSString *_systemExtensionBundleId;
     NSString *_systemUIExtensionBundleId;
+    NSArray *_forceNeedsValueForParameters;
     NSString *_intentDescription;
     NSString *_intentId;
     NSString *_originatingDeviceIdsIdentifier;
@@ -63,6 +64,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) int executionContext; // @synthesize executionContext=_executionContext;
+@property (copy, nonatomic) NSArray *forceNeedsValueForParameters; // @synthesize forceNeedsValueForParameters=_forceNeedsValueForParameters;
+@property (readonly, nonatomic) unsigned long long forceNeedsValueForParametersCount;
 @property (nonatomic) BOOL hasBackgroundLaunch;
 @property (readonly, nonatomic) BOOL hasCategoryVerb;
 @property (nonatomic) BOOL hasConfirmed;
@@ -111,6 +114,7 @@
 @property (nonatomic) BOOL userConfirmationRequired; // @synthesize userConfirmationRequired=_userConfirmationRequired;
 @property (strong, nonatomic) _INPBString *userUtterance; // @synthesize userUtterance=_userUtterance;
 
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (Class)parameterImagesType;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -121,8 +125,10 @@
 - (int)StringAsTriggerMethod:(id)arg1;
 - (void)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
+- (void)addForceNeedsValueForParameter:(id)arg1;
 - (void)addParameterImages:(id)arg1;
 - (void)addRequiredEntitlement:(int)arg1;
+- (void)clearForceNeedsValueForParameters;
 - (void)clearParameterImages;
 - (void)clearRequiredEntitlements;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -130,6 +136,7 @@
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)executionContextAsString:(int)arg1;
+- (id)forceNeedsValueForParameterAtIndex:(unsigned long long)arg1;
 - (id)idiomAsString:(int)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)intentCategoryAsString:(int)arg1;

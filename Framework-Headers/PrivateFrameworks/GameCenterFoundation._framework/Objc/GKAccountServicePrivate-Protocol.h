@@ -19,7 +19,6 @@
 - (oneway void)isICloudAvailableWithHandler:(void (^)(BOOL, NSError *))arg1;
 - (oneway void)setLoginStatus:(unsigned long long)arg1 handler:(void (^)(NSError *))arg2;
 - (oneway void)setupAccountForParameters:(NSDictionary *)arg1 handler:(void (^)(NSError *))arg2;
-- (oneway void)signOutPlayerWithHandler:(void (^)(NSError *))arg1;
 - (oneway void)validateAccountWithUsername:(NSString *)arg1 password:(NSString *)arg2 handler:(void (^)(GKAuthenticateResponse *, NSError *))arg3;
 @end
 

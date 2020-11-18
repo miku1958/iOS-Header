@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)init;
 - (id)initWithParent:(id)arg1;
-- (void)removeFromParent;
+- (void)removeFromParent:(unsigned long long)arg1;
 - (void)setParent:(id)arg1;
 
 @end

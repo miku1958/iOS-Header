@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <OnBoardingKit/OBBaseWelcomeController.h>
+#import <UIKitCore/UIViewController.h>
 
 #import <SIMSetupSupport/AVCaptureMetadataOutputObjectsDelegate-Protocol.h>
 #import <SIMSetupSupport/TSSetupFlowItem-Protocol.h>
@@ -13,7 +13,7 @@
 @class CAShapeLayer, NSDate, NSString, TSCellularPlanQRCodeScannerView, UIButton, UILabel, UIView;
 @protocol TSSIMSetupFlowDelegate;
 
-@interface TSCellularPlanScanViewController : OBBaseWelcomeController <AVCaptureMetadataOutputObjectsDelegate, UINavigationControllerDelegate, TSSetupFlowItem>
+@interface TSCellularPlanScanViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate, UINavigationControllerDelegate, TSSetupFlowItem>
 {
     BOOL _preinstallCompleted;
     NSDate *_nextTimeToAcceptScan;

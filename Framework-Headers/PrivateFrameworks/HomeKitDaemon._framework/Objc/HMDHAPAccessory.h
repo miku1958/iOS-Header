@@ -145,6 +145,7 @@
 - (void)_addHAPAccessory:(id)arg1;
 - (void)_addService:(id)arg1;
 - (void)_autoConfigureTargetController;
+- (void)_cancelPowerOn;
 - (void)_configureTargetControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_containsSecureCharacteristic;
 - (unsigned long long)_currentRelayAccessoryState;
@@ -221,6 +222,7 @@
 - (BOOL)_shouldTrackAccessoryWithPriority:(BOOL *)arg1;
 - (void)_startSystemTimeWriteTimeInformationTimer;
 - (void)_startWriteTimeInformationTimer;
+- (void)_stopScan;
 - (void)_stopSystemTimeWriteTimeInformationTimer;
 - (void)_stopWriteTimeInformationTimer;
 - (BOOL)_supportsMediaAccessControl;
@@ -234,6 +236,7 @@
 - (void)_updateRelayEnabled:(BOOL)arg1 notifyRelayManager:(BOOL)arg2;
 - (void)_updateSiriAudioFormat:(id)arg1;
 - (void)_updateStateForTrackedAccessory:(id)arg1 stateNumber:(id)arg2;
+- (void)_wirelessPowerOn:(CDUnknownBlockType)arg1;
 - (void)_writeCharacteristicValues:(id)arg1 hapAccessory:(id)arg2 source:(unsigned long long)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_writeCharacteristicValues:(id)arg1 localOperationRequired:(BOOL)arg2 source:(unsigned long long)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5 errorBlock:(CDUnknownBlockType)arg6;
 - (void)_writeTimeInformationCharacteristicsForAccessory;
@@ -311,6 +314,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTransaction:(id)arg1 home:(id)arg2;
+- (void)initializeBTLEScan;
 - (BOOL)initiateScan:(CDUnknownBlockType)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isNonClientNotificationEnabled;

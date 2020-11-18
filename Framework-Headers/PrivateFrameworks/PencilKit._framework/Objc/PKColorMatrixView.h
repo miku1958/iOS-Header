@@ -16,13 +16,17 @@
 {
     UIColor *selectedColor;
     id<_PKColorPickerImplementationDelegate> _colorPickerDelegate;
+    long long _colorUserInterfaceStyle;
     NSArray *_colorMatrix;
+    NSArray *_darkColorMatrix;
     NSArray *_colorButtons;
 }
 
 @property (strong, nonatomic) NSArray *colorButtons; // @synthesize colorButtons=_colorButtons;
 @property (strong, nonatomic) NSArray *colorMatrix; // @synthesize colorMatrix=_colorMatrix;
 @property (weak, nonatomic) id<_PKColorPickerImplementationDelegate> colorPickerDelegate; // @synthesize colorPickerDelegate=_colorPickerDelegate;
+@property (nonatomic) long long colorUserInterfaceStyle; // @synthesize colorUserInterfaceStyle=_colorUserInterfaceStyle;
+@property (strong, nonatomic) NSArray *darkColorMatrix; // @synthesize darkColorMatrix=_darkColorMatrix;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -31,6 +35,7 @@
 
 + (id)_representableColorForColor:(id)arg1;
 + (id)defaultColorMatrix;
++ (id)flippedColorMatrix:(id)arg1;
 - (void).cxx_destruct;
 - (id)_boundedPointForPoint:(id)arg1;
 - (id)_colorForPoint:(id)arg1;
@@ -38,6 +43,7 @@
 - (id)_pointForCGPoint:(struct CGPoint)arg1;
 - (id)_pointForColor:(id)arg1;
 - (id)_pointFromButton:(id)arg1;
+- (long long)_uiColorUserInterfaceStyle;
 - (id)colorForColorPickerCrosshairView:(id)arg1 frame:(struct CGRect)arg2;
 - (void)colorPickerCrosshairViewShouldUpdateColor:(id)arg1 point:(struct CGPoint)arg2;
 - (void)colorPickerCrosshairViewShouldUpdateWithColor:(id)arg1;
@@ -47,6 +53,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (id)representableColorForColor:(id)arg1;
+- (id)uiColorMatrix;
 
 @end
 

@@ -23,15 +23,13 @@
     SBHomeGrabberRotationView *_grabberRotationView;
     SBFHomeGrabberSettings *_grabberSettings;
     long long _lastStableOverlayOrientation;
-    long long _rotationStartOrientation;
-    long long _rotationEndOrientation;
     SBDeviceApplicationSceneClassicAccessoryView *_classicAccessoryView;
     UIView *_classicWrapperView;
     UIView *_classicPositioningView;
     UIView<UIScenePresentation> *_wrappedHostView;
     BOOL _active;
     BOOL _visible;
-    BOOL _sceneOverlayNeedsCounterRotation;
+    BOOL _counterRotationViewTransformUpdatesPaused;
     double _statusBarAlpha;
     UIView *_appOverlayView;
 }
@@ -41,6 +39,7 @@
 @property (strong, nonatomic) UIView<SBApplicationSceneBackgroundView> *backgroundView; // @dynamic backgroundView;
 @property (readonly, nonatomic) BOOL contentRequiresGroupOpacity;
 @property (nonatomic) double cornerRadius;
+@property (nonatomic) BOOL counterRotationViewTransformUpdatesPaused; // @synthesize counterRotationViewTransformUpdatesPaused=_counterRotationViewTransformUpdatesPaused;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -51,7 +50,6 @@
 @property (readonly, nonatomic) SBHomeGrabberView *homeGrabberView;
 @property (nonatomic) long long orientation;
 @property (readonly, nonatomic) SBDeviceApplicationSceneHandle *sceneHandle; // @dynamic sceneHandle;
-@property (nonatomic) BOOL sceneOverlayNeedsCounterRotation; // @synthesize sceneOverlayNeedsCounterRotation=_sceneOverlayNeedsCounterRotation;
 @property (nonatomic) double statusBarAlpha; // @synthesize statusBarAlpha=_statusBarAlpha;
 @property (strong, nonatomic) SBApplicationSceneViewStatusBarDescriptor *statusBarDescriptor; // @synthesize statusBarDescriptor=_statusBarDescriptor;
 @property (readonly) Class superclass;
@@ -64,9 +62,9 @@
 - (void)_createClassicWrapperViewIfNecessaryForHostView:(id)arg1;
 - (void)_createHostCounterRotationViewIfNecessary;
 - (struct CGRect)_effectiveSceneBounds;
+- (void)_invalidateSceneLiveHostView:(id)arg1;
 - (void)_layoutLiveHostView:(id)arg1;
 - (void)_maybeStartTrackingRotationForOverlay;
-- (void)_noteRotationAnimationCompleted;
 - (void)_refresh;
 - (BOOL)_representsTranslucentContent;
 - (BOOL)_sceneDrivesOwnRotation;

@@ -9,7 +9,7 @@
 #import <NewsCore/FCUserInfoObserving-Protocol.h>
 
 @class FCCommandQueue, FCUserInfo, NSString;
-@protocol FCBundleSubscriptionManagerType, FCCoreConfigurationManager;
+@protocol FCCoreConfigurationManager;
 
 @interface FCNotificationController : NSObject <FCUserInfoObserving>
 {
@@ -20,11 +20,9 @@
     FCUserInfo *_userInfo;
     FCCommandQueue *_commandQueue;
     id<FCCoreConfigurationManager> _configurationManager;
-    id<FCBundleSubscriptionManagerType> _bundleSubscriptionManager;
 }
 
 @property (nonatomic) BOOL appleNewsNotificationsAllowed; // @synthesize appleNewsNotificationsAllowed=_appleNewsNotificationsAllowed;
-@property (strong, nonatomic) id<FCBundleSubscriptionManagerType> bundleSubscriptionManager; // @synthesize bundleSubscriptionManager=_bundleSubscriptionManager;
 @property (strong, nonatomic) FCCommandQueue *commandQueue; // @synthesize commandQueue=_commandQueue;
 @property (strong, nonatomic) id<FCCoreConfigurationManager> configurationManager; // @synthesize configurationManager=_configurationManager;
 @property (readonly, copy) NSString *debugDescription;
@@ -37,12 +35,11 @@
 @property (strong, nonatomic) FCUserInfo *userInfo; // @synthesize userInfo=_userInfo;
 
 - (void).cxx_destruct;
-- (unsigned long long)_bundleSubscriptionState;
 - (void)_registerDeviceToken:(id)arg1;
 - (id)appendBreakingNewsIfNeededToChannelIDs:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (id)initWithUserInfo:(id)arg1 commandQueue:(id)arg2 configurationManager:(id)arg3 bundleSubscriptionManager:(id)arg4 publisherNotificationsAllowed:(BOOL)arg5 appleNewsNotificationsAllowed:(BOOL)arg6;
+- (id)initWithUserInfo:(id)arg1 commandQueue:(id)arg2 configurationManager:(id)arg3 publisherNotificationsAllowed:(BOOL)arg4 appleNewsNotificationsAllowed:(BOOL)arg5;
 - (BOOL)refreshNotificationsForChannelIDs:(id)arg1 paidChannelIDs:(id)arg2;
 - (void)refreshNotificationsFromAppleNews;
 - (void)registerDeviceToken:(id)arg1;

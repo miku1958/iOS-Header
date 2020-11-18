@@ -51,6 +51,7 @@
         unsigned int isProcessingUpdateResponseBlocks:1;
         unsigned int readyForSuspend:1;
         unsigned int isMediaParticipant:1;
+        unsigned int isInDetachDeferringAction:1;
     } _sceneFlags;
     NSDate *_suspensionTimeMark;
     BOOL _respondingToLifecycleEvent;
@@ -143,8 +144,10 @@
 - (void)_initializeSceneComponents;
 - (void)_invalidate;
 - (void)_makeKeyAndVisibleIfNeeded;
+- (BOOL)_needsMakeKeyAndVisible;
 - (void)_openURL:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_performBackgroundSceneDetach:(id)arg1;
+- (void)_performBlockAfterCACommitPhaseDelayingBackgroundDetach:(CDUnknownBlockType)arg1;
 - (void)_performSystemSnapshotWithActions:(CDUnknownBlockType)arg1;
 - (void)_prepareForResume;
 - (void)_prepareForSuspend;
@@ -159,6 +162,7 @@
 - (id)_sceneComponentForKey:(id)arg1;
 - (void)_scheduleBackgroundSceneDetach;
 - (id)_shortDescription;
+- (BOOL)_shouldAllowFencing;
 - (void)_synchronizeDrawingWithFence:(id)arg1;
 - (id)_topVisibleWindowPassingTest:(CDUnknownBlockType)arg1;
 - (void)_unregisterSceneActionsHandlerArray:(id)arg1;

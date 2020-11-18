@@ -35,6 +35,7 @@
     SBApplicationController *_applicationController;
     SBOrientationLockManager *_orientationLockManager;
     BOOL _cachingEnabled;
+    BOOL _reloadsSnapshotsForActiveInterfaceOrientationChange;
     id<SBAppSwitcherSnapshotImageCacheDelegate> _delegate;
     NSString *_debugName;
     unsigned long long _atomicNumberOfAppLayoutsToCache;
@@ -47,6 +48,7 @@
 @property (weak, nonatomic) id<SBAppSwitcherSnapshotImageCacheDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL reloadsSnapshotsForActiveInterfaceOrientationChange; // @synthesize reloadsSnapshotsForActiveInterfaceOrientationChange=_reloadsSnapshotsForActiveInterfaceOrientationChange;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -93,6 +95,7 @@
 - (void)_snapshotChanged:(id)arg1;
 - (void)_snapshotImage:(id)arg1 finishedLoadingForRequest:(id)arg2;
 - (id)_uiImageForCGImage:(struct CGImage *)arg1 forSnapshotRequest:(id)arg2;
+- (void)_updateActiveOrientationObservingIfNeeded;
 - (void)_updateAppLayoutPriorityList;
 - (void)_updateCacheForDisplayItem:(id)arg1;
 - (void)_updateObserversForDisplayItem:(id)arg1 withCacheEntry:(id)arg2;

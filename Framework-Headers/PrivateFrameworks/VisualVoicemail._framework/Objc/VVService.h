@@ -36,6 +36,7 @@
     BOOL _SMSReady;
     BOOL _WiFiNetworkReachable;
     BOOL _WiFiNetworkSupported;
+    BOOL _mailboxUsageUpdated;
     struct os_unfair_lock_s _accessorLock;
     NSString *_isoCountryCode;
     NSMutableDictionary *_stateRequestAttemptCount;
@@ -62,6 +63,7 @@
 @property (nonatomic, getter=isCellularNetworkAvailable) BOOL cellularNetworkAvailable; // @synthesize cellularNetworkAvailable=_cellularNetworkAvailable;
 @property (readonly, copy, nonatomic) NSString *isoCountryCode; // @synthesize isoCountryCode=_isoCountryCode;
 @property (nonatomic) struct __CFString *lastConnectionTypeUsed; // @synthesize lastConnectionTypeUsed=_lastConnectionTypeUsed;
+@property (nonatomic, getter=isMailboxUsageUpdated) BOOL mailboxUsageUpdated; // @synthesize mailboxUsageUpdated=_mailboxUsageUpdated;
 @property (nonatomic) unsigned long long numFailedAttemptsToSyncOverWifi; // @synthesize numFailedAttemptsToSyncOverWifi=_numFailedAttemptsToSyncOverWifi;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serialDispatchQueue; // @synthesize serialDispatchQueue=_serialDispatchQueue;
 @property (copy, nonatomic) NSString *serviceDestinationID; // @synthesize serviceDestinationID=_serviceDestinationID;

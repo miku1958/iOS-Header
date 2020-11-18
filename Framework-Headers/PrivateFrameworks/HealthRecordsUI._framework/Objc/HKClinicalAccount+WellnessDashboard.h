@@ -12,6 +12,7 @@
 
 @property (nonatomic, readonly) NSString *displayableStatus;
 @property (nonatomic, readonly) BOOL hasLogo;
+@property (nonatomic, readonly) BOOL needsLogin;
 
 - (void)beginReloginSessionWithClinicalSourcesDataProvider:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @end

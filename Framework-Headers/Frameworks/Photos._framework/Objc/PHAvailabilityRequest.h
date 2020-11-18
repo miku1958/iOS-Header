@@ -25,6 +25,7 @@
 @property (copy, nonatomic) NSString *taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
 
 - (void).cxx_destruct;
+- (void)abortClientSide;
 - (void)cancel;
 - (id)description;
 - (id)initWithAssetObjectID:(id)arg1;

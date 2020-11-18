@@ -8,16 +8,22 @@
 
 #import <PhotosUI/PUEditingExtensionVendor-Protocol.h>
 
-@class PUEditingInitialPayload;
+@class NSUndoManager, PUEditingExtensionUndoAdapter, PUEditingInitialPayload;
 
 @interface PHEditingExtensionContext : NSExtensionContext <PUEditingExtensionVendor>
 {
     long long _fullSizeImageExtensionHandle;
     long long _videoPathExtensionHandle;
+    BOOL _attemptUndoManagerAutoSetup;
     PUEditingInitialPayload *__initialPayload;
+    PUEditingExtensionUndoAdapter *_undoAdapter;
+    NSUndoManager *_undoManagerForBarButtons;
 }
 
 @property (readonly) PUEditingInitialPayload *_initialPayload; // @synthesize _initialPayload=__initialPayload;
+@property (nonatomic) BOOL attemptUndoManagerAutoSetup; // @synthesize attemptUndoManagerAutoSetup=_attemptUndoManagerAutoSetup;
+@property (strong, nonatomic) PUEditingExtensionUndoAdapter *undoAdapter; // @synthesize undoAdapter=_undoAdapter;
+@property (strong, nonatomic) NSUndoManager *undoManagerForBarButtons; // @synthesize undoManagerForBarButtons=_undoManagerForBarButtons;
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
@@ -31,6 +37,7 @@
 - (void)queryHandlingCapabilityForAdjustmentData:(id)arg1 withResponseHandler:(CDUnknownBlockType)arg2;
 - (void)querySDKVersionWithResponseHandler:(CDUnknownBlockType)arg1;
 - (void)queryShouldShowCancelConfirmationWithResponseHandler:(CDUnknownBlockType)arg1;
+- (void)setupUndoProxyWithXPCListenerEndpoint:(id)arg1 attemptUndoManagerAutoSetup:(BOOL)arg2;
 
 @end
 

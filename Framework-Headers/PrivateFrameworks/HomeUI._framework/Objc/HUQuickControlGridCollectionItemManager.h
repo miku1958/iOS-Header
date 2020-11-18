@@ -37,7 +37,7 @@
 @property (readonly, nonatomic) HFItemProvider *supplementaryItemProvider; // @synthesize supplementaryItemProvider=_supplementaryItemProvider;
 
 + (BOOL)isPrimaryOrBinaryStateControlItem:(id)arg1;
-+ (unsigned long long)preferredControlForControlItem:(id)arg1 allControlItems:(id)arg2;
++ (unsigned long long)preferredControlForControlItem:(id)arg1 allControlItems:(id)arg2 isSupplementary:(BOOL)arg3;
 + (CDUnknownBlockType)serviceItemComparator;
 + (unsigned long long)specialCaseSectionSortingForControlItem:(id)arg1 viewController:(id)arg2 fromControlItems:(id)arg3 primaryServiceType:(id)arg4;
 - (void).cxx_destruct;

@@ -66,6 +66,7 @@
 - (void)getDelegationUUIDsForUserIdentity:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getPropertiesForActiveICloudAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getPropertiesForUserIdentity:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getUserIdentitiesForAuthenticatedAccountsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getVerificationContextForUserIdentity:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithCoder:(id)arg1;
 - (void)insertPropertiesForUserIdentity:(id)arg1 andPostAccountChangeNotification:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -82,6 +83,7 @@
 - (void)synchronizeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)updatePropertiesForUserIdentity:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)updatePropertiesForUserIdentity:(id)arg1 usingBlock:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)userIdentitiesForAuthenticatedAccountsWithError:(id *)arg1;
 - (void)userIdentityStoreBackendDidChange:(id)arg1;
 
 @end

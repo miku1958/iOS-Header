@@ -47,6 +47,7 @@
 @property (readonly) PLPersistentContainer *persistentContainer;
 @property (readonly) PLPersonInfoManager *personInfoManager;
 @property (readonly) PLPhotoAnalysisServiceClient *photoAnalysisServiceClient;
+@property (readonly, copy) NSError *shutdownReason;
 @property (readonly) PLManagedObjectLookupItemCache *uniformTypeIdentiferCache;
 @property (readonly) PLPhotoKitVariationCache *variationCache;
 

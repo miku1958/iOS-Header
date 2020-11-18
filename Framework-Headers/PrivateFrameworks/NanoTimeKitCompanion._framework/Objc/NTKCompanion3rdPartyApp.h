@@ -11,16 +11,18 @@
 @interface NTKCompanion3rdPartyApp : NTKCompanionApp
 {
     BOOL _installed;
+    BOOL _galleryBundlesLoaded;
     NSString *_complicationClientIdentifier;
-    NSURL *_urlToComplicationBundle;
     NSURL *_urlToWatchKitBundle;
     NRDevice *_device;
+    NSURL *_urlToComplicationBundle;
     NSArray *_supportedFamilies;
     NSString *_uniqueID;
 }
 
 @property (strong, nonatomic) NSString *complicationClientIdentifier; // @synthesize complicationClientIdentifier=_complicationClientIdentifier;
 @property (strong, nonatomic) NRDevice *device; // @synthesize device=_device;
+@property (nonatomic) BOOL galleryBundlesLoaded; // @synthesize galleryBundlesLoaded=_galleryBundlesLoaded;
 @property (nonatomic, getter=isInstalled) BOOL installed; // @synthesize installed=_installed;
 @property (strong, nonatomic) NSArray *supportedFamilies; // @synthesize supportedFamilies=_supportedFamilies;
 @property (strong, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;

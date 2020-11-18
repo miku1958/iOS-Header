@@ -6,14 +6,13 @@
 
 #import <FrontBoard/FBTransaction.h>
 
-#import <FrontBoard/FBSceneManagerObserver-Protocol.h>
 #import <FrontBoard/FBSceneObserver-Protocol.h>
 #import <FrontBoard/FBSynchronizedTransaction-Protocol.h>
 
 @class FBSSceneDefinition, FBSSceneParameters, FBSSceneSettings, FBSSceneSpecification, FBSSceneTransitionContext, FBScene, FBSceneManager, FBWaitForSceneDestructionTransaction, NSString;
 @protocol FBSynchronizedTransactionDelegate;
 
-@interface FBUpdateSceneTransaction : FBTransaction <FBSceneManagerObserver, FBSceneObserver, FBSynchronizedTransaction>
+@interface FBUpdateSceneTransaction : FBTransaction <FBSceneObserver, FBSynchronizedTransaction>
 {
     FBSceneManager *_sceneManager;
     NSString *_sceneID;
@@ -52,9 +51,11 @@
 - (void)_createScene;
 - (id)_customizedDescriptionProperties;
 - (void)_didComplete;
-- (void)_didInterruptWithReason:(id)arg1;
-- (void)_enumerateUpdateSceneObserversWithBlock:(CDUnknownBlockType)arg1;
 - (id)_initWithSceneDefinition:(id)arg1 parameters:(id)arg2 transitionContext:(id)arg3;
+- (void)_noteDidCommit:(BOOL)arg1;
+- (void)_noteDidCreate;
+- (void)_noteWillCommit;
+- (void)_noteWillUpdate;
 - (void)_performCommit;
 - (void)_updateScene;
 - (void)addObserver:(id)arg1;
@@ -65,13 +66,7 @@
 - (BOOL)isReadyForSynchronizedCommit;
 - (void)performSynchronizedCommit;
 - (void)removeObserver:(id)arg1;
-- (void)scene:(id)arg1 didApplyUpdateWithContext:(id)arg2;
-- (void)scene:(id)arg1 didCompleteUpdateWithContext:(id)arg2 error:(id)arg3;
-- (void)scene:(id)arg1 didPrepareUpdateWithContext:(id)arg2;
 - (void)sceneDidInvalidate:(id)arg1;
-- (void)sceneManager:(id)arg1 didCreateScene:(id)arg2;
-- (void)sceneManager:(id)arg1 didDestroyScene:(id)arg2;
-- (void)sceneManager:(id)arg1 willDestroyScene:(id)arg2;
 
 @end
 

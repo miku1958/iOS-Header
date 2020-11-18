@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
 - (id)UUID;
 - (BOOL)_applyChanges:(id)arg1 error:(id *)arg2;
 - (BOOL)_applyChangesToSaveRequest:(id)arg1 error:(id *)arg2;
+- (id)_copyToNewList:(id)arg1 error:(id *)arg2;
+- (void)_fixAlarmUUIDsForClone:(id)arg1 from:(id)arg2;
 - (id)_reminder;
 - (id)action;
 - (id)alarms;

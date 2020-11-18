@@ -26,6 +26,7 @@
     BOOL _contentOffsetChanged;
     BOOL _isInEditModeChanged;
     BOOL _toggleCTMChanged;
+    BOOL _flippingFullSizeRenderStateChanged;
     PUBrowsingVideoPlayerChange *_videoPlayerChange;
     PUBrowsingIrisPlayerChange *_irisPlayerChange;
     PUBrowsingAnimatedImagePlayerChange *_animatedImageChange;
@@ -36,6 +37,7 @@
 @property (nonatomic, setter=_setAssetChanged:) BOOL assetChanged; // @synthesize assetChanged=_assetChanged;
 @property (nonatomic, setter=_setBadgeInfoChanged:) BOOL badgeInfoChanged; // @synthesize badgeInfoChanged=_badgeInfoChanged;
 @property (nonatomic, setter=_setContentOffsetChanged:) BOOL contentOffsetChanged; // @synthesize contentOffsetChanged=_contentOffsetChanged;
+@property (nonatomic, setter=_setFlippingFullSizeRenderStateChanged:) BOOL flippingFullSizeRenderStateChanged; // @synthesize flippingFullSizeRenderStateChanged=_flippingFullSizeRenderStateChanged;
 @property (nonatomic, setter=_setFocusValueChanged:) BOOL focusValueChanged; // @synthesize focusValueChanged=_focusValueChanged;
 @property (nonatomic, setter=_setForceBadgesVisibleChanged:) BOOL forceBadgesVisibleChanged; // @synthesize forceBadgesVisibleChanged=_forceBadgesVisibleChanged;
 @property (nonatomic, setter=_setImportStateChanged:) BOOL importStateChanged; // @synthesize importStateChanged=_importStateChanged;

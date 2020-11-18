@@ -57,7 +57,6 @@
 - (id)init;
 - (BOOL)isCommandFinished;
 - (id)operationWithClient:(id)arg1 arguments:(id)arg2;
-- (BOOL)pluckFlag:(id)arg1 fromArguments:(id)arg2;
 - (void)remoteTaskDidFinish:(id)arg1;
 - (void)remoteTaskDidProgress:(id)arg1;
 - (id)requestWithArguments:(id)arg1;

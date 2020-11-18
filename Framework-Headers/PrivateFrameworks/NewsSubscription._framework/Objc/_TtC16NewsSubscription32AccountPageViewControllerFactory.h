@@ -10,7 +10,7 @@
 
 @interface _TtC16NewsSubscription32AccountPageViewControllerFactory : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *bridgedAccountPageViewControllerFactory;
+    MISSING_TYPE *accountPageViewControllerFactory;
 }
 
 @end

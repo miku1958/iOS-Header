@@ -28,7 +28,7 @@
 + (id)_objectWithPredicate:(id)arg1 encodingOptions:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)_primitiveInsertDataObject:(id)arg1 insertionContext:(id)arg2 entityClass:(Class)arg3 provenanceEntityID:(long long)arg4 profile:(id)arg5 database:(id)arg6 error:(id *)arg7;
 + (BOOL)_removeObjectWithPersistentID:(long long)arg1 database:(id)arg2 error:(id *)arg3;
-+ (BOOL)_shouldReplaceExistingObject:(id)arg1 withObject:(id)arg2;
++ (BOOL)_shouldReplaceExistingObject:(id)arg1 withObject:(id)arg2 dataEntityClass:(Class)arg3;
 + (id)_sourceBundleIdentifierForSourceEntities:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (BOOL)_validateObjectsToInsert:(id)arg1 insertionContext:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (BOOL)acceptsObject:(id)arg1;
@@ -38,6 +38,7 @@
 + (id)codableObjectsFromObjectCollection:(id)arg1;
 + (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
 + (id)columnNamesForTimeOffset;
++ (long long)compareForReplacmentWithObject:(id)arg1 existingObject:(id)arg2;
 + (long long)countOfObjectsWithPredicate:(id)arg1 healthDatabase:(id)arg2 error:(id *)arg3;
 + (id)dataEntityForObject:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)databaseTable;
@@ -69,6 +70,7 @@
 + (long long)preferredEntityType;
 + (id)propertyForSyncProvenance;
 + (long long)protectionClass;
++ (BOOL)replaceExistingObject:(id)arg1 existingObjectID:(id)arg2 replacementObject:(id)arg3 replacementObjectID:(id)arg4 profile:(id)arg5 database:(id)arg6 error:(id *)arg7;
 + (BOOL)requiresSampleTypePredicate;
 + (long long)shouldInsertObject:(id)arg1 sourceID:(id)arg2 profile:(id)arg3 database:(id)arg4 objectToReplace:(id *)arg5 objectID:(id *)arg6 error:(id *)arg7;
 + (id)sourceIDForObjectID:(id)arg1 type:(long long)arg2 profile:(id)arg3 errorOut:(id *)arg4;

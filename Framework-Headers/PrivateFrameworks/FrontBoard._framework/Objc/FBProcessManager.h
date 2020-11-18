@@ -8,7 +8,7 @@
 
 #import <FrontBoard/FBProcessDelegate-Protocol.h>
 
-@class BKSHIDEventDeferringToken, FBApplicationProcess, FBApplicationProcessWatchdogPolicy, NSHashTable, NSMutableDictionary, NSMutableSet, NSString, RBSProcessMonitor;
+@class BKSHIDEventDeferringToken, FBApplicationProcess, FBApplicationProcessWatchdogPolicy, FBProcess, NSHashTable, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString, RBSProcessMonitor;
 @protocol FBProcessManagerKeyboardFocusDelegate, OS_dispatch_queue;
 
 @interface FBProcessManager : NSObject <FBProcessDelegate>
@@ -20,8 +20,9 @@
     NSMutableDictionary *_processesLock_processesByIdentity;
     NSObject<OS_dispatch_queue> *_queue;
     NSHashTable *_queue_observers;
-    FBApplicationProcess *_queue_foregroundAppProcess;
-    FBApplicationProcess *_queue_preferredForegroundAppProcess;
+    NSMutableOrderedSet *_queue_foregroundRunningProcesses;
+    FBProcess *_queue_previouslySelectedForegroundProcess;
+    FBProcess *_queue_preferredForegroundAppProcess;
     BKSHIDEventDeferringToken *_queue_preferredForegroundToken;
     id<FBProcessManagerKeyboardFocusDelegate> _queue_keyboardFocusDelegate;
     RBSProcessMonitor *_queue_monitor;
@@ -41,10 +42,12 @@
 + (id)sharedInstanceIfExists;
 - (void).cxx_destruct;
 - (id)_createProcessWithExecutionContext:(id)arg1;
+- (void)_queue_addForegroundRunningProcess:(id)arg1;
 - (void)_queue_addProcess:(id)arg1;
 - (void)_queue_evaluateForegroundEventRouting;
 - (void)_queue_notifyObserversUsingBlock:(CDUnknownBlockType)arg1;
 - (id)_queue_reallyRegisterProcessForHandle:(id)arg1;
+- (void)_queue_removeForegroundRunningProcess:(id)arg1;
 - (void)_queue_removeProcess:(id)arg1 withPID:(int)arg2;
 - (id)_serviceClientAddedWithProcessHandle:(id)arg1;
 - (void)_setPreferredForegroundApplicationProcess:(id)arg1 deferringToken:(id)arg2;

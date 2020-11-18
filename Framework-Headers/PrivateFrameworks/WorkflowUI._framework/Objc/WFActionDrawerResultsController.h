@@ -10,8 +10,8 @@
 
 @interface WFActionDrawerResultsController : NSObject
 {
-    WFActionRegistry *_actionRegistry;
     HMHome *_home;
+    WFActionRegistry *_actionRegistry;
 }
 
 @property (readonly, nonatomic) WFActionRegistry *actionRegistry; // @synthesize actionRegistry=_actionRegistry;
@@ -23,12 +23,12 @@
 - (id)actionsForCategory:(id)arg1;
 - (BOOL)filteringForResidentCompatibleActions;
 - (void)getDeveloperSuggestedResultsForAppIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)getResultsForAppIdentifier:(id)arg1 shouldFilterForAppsViewController:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)getResultsForAppWithBundleIdentifier:(id)arg1 legacyIdentifier:(id)arg2 shouldFilterForAppsViewController:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)getSiriSuggestedGroupedResultsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)getSiriSuggestedResultsForAppIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getSiriSuggestedResultsForBundleIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)homeSectionsIncludingRelatedActions:(BOOL)arg1;
 - (id)initWithActionRegistry:(id)arg1;
-- (id)resultsForAppWithIdentifier:(id)arg1 shouldFilterForAppsViewController:(BOOL)arg2;
+- (id)resultsForAppWithBundleIdentifier:(id)arg1 legacyIdentifier:(id)arg2 shouldFilterForAppsViewController:(BOOL)arg3;
 - (id)resultsForCategory:(id)arg1;
 - (id)resultsForFavorites;
 - (void)resultsForSearchQuery:(id)arg1 includingSiriSuggestedResults:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

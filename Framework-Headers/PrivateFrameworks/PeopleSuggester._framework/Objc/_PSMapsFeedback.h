@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) NSArray *suggestions; // @synthesize suggestions=_suggestions;
 
 - (void).cxx_destruct;
+- (id)feedbackPayload;
 - (id)initWithFeedbackAction:(id)arg1 predictionContext:(id)arg2 suggestions:(id)arg3;
 - (id)knowledgeEvent;
 

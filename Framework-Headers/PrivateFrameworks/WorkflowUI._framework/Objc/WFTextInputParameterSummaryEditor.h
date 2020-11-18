@@ -38,6 +38,7 @@
 - (void)setVariableProvider:(id)arg1;
 - (void)setVariableUIDelegate:(id)arg1;
 - (void)showActionOutputPickerFromSourceResponder:(id)arg1 allowExtensionInput:(BOOL)arg2 variableProvider:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)sourceViewTintColorDidChange;
 - (id)stateByReplacingVariableFromInitialState:(id)arg1 withVariable:(id)arg2;
 - (void)textEntryDidFinish;
 - (void)textEntryTextDidChange:(id)arg1;

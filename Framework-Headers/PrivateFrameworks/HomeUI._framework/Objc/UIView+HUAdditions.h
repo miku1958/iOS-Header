@@ -31,6 +31,7 @@
 - (void)hu_autoSizeByConstrainingWidth:(double)arg1;
 - (struct CGPoint)hu_centerInGlobalCoordinateSpace;
 - (struct CGRect)hu_frameInGlobalCoordinateSpace;
+- (BOOL)hu_isDescendantOfPickerView;
 - (BOOL)hu_isHomeAffordancePresent;
 - (void)hu_setFramePreservingTransform:(struct CGRect)arg1;
 - (void)hu_traverseViewHierarchy:(CDUnknownBlockType)arg1;

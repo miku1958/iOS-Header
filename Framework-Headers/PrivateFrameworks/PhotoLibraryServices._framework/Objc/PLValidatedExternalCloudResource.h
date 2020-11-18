@@ -10,7 +10,6 @@
 
 @interface PLValidatedExternalCloudResource : PLValidatedExternalResource
 {
-    short _remoteAvailability;
     short _cloudLocalState;
     short _prefetchCount;
     unsigned long long _cplType;
@@ -30,7 +29,7 @@
 @property (strong, nonatomic) NSDate *masterDateCreated; // @synthesize masterDateCreated=_masterDateCreated;
 @property (nonatomic) short prefetchCount; // @synthesize prefetchCount=_prefetchCount;
 @property (strong, nonatomic) NSDate *prunedAt; // @synthesize prunedAt=_prunedAt;
-@property (nonatomic) short remoteAvailability; // @synthesize remoteAvailability=_remoteAvailability;
+@property (readonly, nonatomic) short remoteAvailability;
 @property (nonatomic) unsigned long long sourceCplType; // @synthesize sourceCplType=_sourceCplType;
 
 - (void).cxx_destruct;

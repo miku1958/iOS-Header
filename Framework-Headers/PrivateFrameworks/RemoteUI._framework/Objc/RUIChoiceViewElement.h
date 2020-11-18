@@ -34,6 +34,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_bigChoiceColor;
+- (id)_choiceColorForIndex:(int)arg1;
+- (id)_smallChoiceColor;
 - (void)addChoiceElement:(id)arg1;
 - (void)choiceView:(id)arg1 tappedChoiceAtIndex:(unsigned long long)arg2;
 - (void)choiceViewTappedHelpLink:(id)arg1;

@@ -13,7 +13,8 @@
 
 @interface VCVoiceShortcutClient : NSObject <INVCVoiceShortcutClient>
 {
-    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_xpcQueue;
+    NSObject<OS_dispatch_queue> *_internalStateQueue;
     NSHashTable *_errorHandlers;
     NSXPCConnection *_xpcConnection;
     CDUnknownBlockType _creationBlock;
@@ -24,9 +25,10 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSHashTable *errorHandlers; // @synthesize errorHandlers=_errorHandlers;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *internalStateQueue; // @synthesize internalStateQueue=_internalStateQueue;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *xpcQueue; // @synthesize xpcQueue=_xpcQueue;
 
 + (void)initialize;
 + (id)standardClient;
@@ -52,12 +54,15 @@
 - (void)getVoiceShortcutWithPhrase:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getVoiceShortcutsForAppWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getVoiceShortcutsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)handleXPCConnectionInterruption;
+- (void)handleXPCConnectionInvalidation;
 - (BOOL)hasRunEventsInTheLast30DaysWithError:(id *)arg1;
 - (id)initWithListenerEndpoint:(id)arg1;
 - (id)initWithMachServiceName:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithXPCConnection:(id)arg1;
 - (id)initWithXPCConnection:(id)arg1 XPCConnectionCreationBlock:(CDUnknownBlockType)arg2;
 - (id)initWithXPCConnectionCreationBlock:(CDUnknownBlockType)arg1;
+- (void)obliterateShortcuts:(CDUnknownBlockType)arg1;
 - (void)refreshTriggerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)requestDataMigration:(id *)arg1;
 - (void)requestSyncToWatchWithForceReset:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
@@ -66,11 +71,10 @@
 - (void)setInteger:(long long)arg1 forKey:(id)arg2 inDomain:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setShortcutSuggestions:(id)arg1 forAppWithBundleIdentifier:(id)arg2;
 - (id)shareSheetWorkflowsForExtensionMatchingDictionaries:(id)arg1 hostBundleIdentifier:(id)arg2 error:(id *)arg3;
+- (id)shareSheetWorkflowsForExtensionMatchingDictionaries:(id)arg1 resolvedActivityItems:(id)arg2 hostBundleIdentifier:(id)arg3 error:(id *)arg4;
 - (void)subscribeToVoiceShortcutDataUpdateNotifications;
 - (id)synchronousRemoteDataStoreWithErrorHandler:(CDUnknownBlockType)arg1;
-- (void)unsafeHandleXPCConnectionInterruption;
-- (void)unsafeHandleXPCConnectionInvalidation;
-- (void)unsafeRunConnectionErrorHandlersIsInvalidation:(BOOL)arg1;
+- (id)unsafePopConnectionErrorHandlers;
 - (void)unsafeSetupXPCConnection;
 - (void)unsubscribeFromVoiceShortcutDataUpdateNotifications;
 - (void)updateShortcutsVocabularyWithCompletion:(CDUnknownBlockType)arg1;

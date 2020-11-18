@@ -32,7 +32,7 @@
 
  class CryptoKitPrivate.Scrypt : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x21a0  @objc Scrypt.init <stripped>
+	0x30a0  @objc Scrypt.init <stripped>
  }
 
  struct CryptoKitPrivate.SecureBytes {

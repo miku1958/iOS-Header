@@ -81,7 +81,8 @@
 - (id)_itemsMutableCopy;
 - (long long)_numberOfItems;
 - (void)_receivedBatchWithUpdatedItems:(id)arg1 deletedItemsIdentifiers:(id)arg2;
-- (void)_receivedBatchWithUpdatedItems:(id)arg1 deletedItemsIdentifiers:(id)arg2 forceFlush:(BOOL)arg3;
+- (void)_receivedBatchWithUpdatedItems:(id)arg1 deletedItemsIdentifiers:(id)arg2 dropForReplacedPlaceholders:(BOOL)arg3;
+- (void)_receivedBatchWithUpdatedItems:(id)arg1 deletedItemsIdentifiers:(id)arg2 forceFlush:(BOOL)arg3 dropForReplacedPlaceholders:(BOOL)arg4;
 - (id)_reorderWithPlaceholdersLast:(id)arg1;
 - (void)_replaceContentsWithVendorItems:(id)arg1;
 - (void)_restartObservation;

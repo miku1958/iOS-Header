@@ -19,8 +19,10 @@
     long long _floatingConfiguration;
     long long _floatingSwitcherVisible;
     long long _dismissInlineAppExpose;
+    long long _animationDisabled;
 }
 
+@property (nonatomic) long long animationDisabled; // @synthesize animationDisabled=_animationDisabled;
 @property (strong, nonatomic) SBAppLayout *appLayout; // @synthesize appLayout=_appLayout;
 @property (nonatomic) long long appLayoutEnvironment; // @synthesize appLayoutEnvironment=_appLayoutEnvironment;
 @property (readonly, copy) NSString *debugDescription;

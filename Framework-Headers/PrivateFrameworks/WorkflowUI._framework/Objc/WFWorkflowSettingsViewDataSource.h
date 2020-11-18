@@ -14,6 +14,7 @@
 @interface WFWorkflowSettingsViewDataSource : NSObject <UITableViewDataSource>
 {
     id<WFWorkflowSettingsViewDataSourceDelegate> _delegate;
+    NSString *_tentativeWorkflowName;
     WFWorkflow *_workflow;
     WFDatabase *_database;
     NSArray *_accessResources;
@@ -28,26 +29,30 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSMapTable *switchToAccessResourceMapTable; // @synthesize switchToAccessResourceMapTable=_switchToAccessResourceMapTable;
+@property (copy, nonatomic) NSString *tentativeWorkflowName; // @synthesize tentativeWorkflowName=_tentativeWorkflowName;
 @property (weak, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
 
 - (void).cxx_destruct;
 - (long long)accessResourcesCellCount;
+- (long long)buttonCellTypeForRow:(long long)arg1;
+- (id)buttonCellTypes;
 - (long long)importQuestionsCellCount;
 - (id)initWithWorkflow:(id)arg1 database:(id)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)registerCellsForTableView:(id)arg1;
-- (long long)sectionWithOffsetForAddToHomeScreenSection:(long long)arg1;
+- (long long)sectionWithOffsetForButtonsSection:(long long)arg1;
 - (id)sections;
-- (id)setupAcceptedTypesCell:(id)arg1;
-- (id)setupImportQuestionsCell:(id)arg1;
-- (id)setupShowInShareSheetCell:(id)arg1;
-- (id)setupShowInWidgetCell:(id)arg1;
+- (id)setUpAcceptedTypesCell:(id)arg1;
+- (id)setUpImportQuestionsCell:(id)arg1;
+- (id)setUpShowInShareSheetCell:(id)arg1;
+- (id)setUpShowInWidgetCell:(id)arg1;
 - (BOOL)showAddToHomeScreen;
+- (BOOL)showCustomizeShortcut;
 - (long long)showInCellCount;
 - (id)tableView:(id)arg1 accessResourcesCellForRow:(long long)arg2;
+- (id)tableView:(id)arg1 buttonCellForRow:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 helpCellForRow:(long long)arg2;
-- (id)tableView:(id)arg1 homeScreenCellForRow:(long long)arg2;
 - (id)tableView:(id)arg1 importQuestionsCellForRow:(long long)arg2;
 - (id)tableView:(id)arg1 nameCellForRow:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;

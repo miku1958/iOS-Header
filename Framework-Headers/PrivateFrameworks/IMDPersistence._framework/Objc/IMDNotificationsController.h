@@ -54,6 +54,7 @@
 - (id)_generateNotificationRequestForFailedDelivery:(struct _IMDMessageRecordStruct *)arg1 isCarouselUITriggered:(BOOL)arg2;
 - (id)_generateNotificationRequestForMessageRecord:(struct _IMDMessageRecordStruct *)arg1 isUrgentMessage:(BOOL)arg2 downTimeEnabled:(BOOL)arg3 isCarouselUITriggered:(BOOL)arg4 isMostActive:(BOOL)arg5;
 - (unsigned long long)_getMessagesSpokenWhitelistLevel;
+- (unsigned long long)_getMessagesSpokenWhitelistLevelFromPreferences;
 - (id)_groupHashForHandles:(id)arg1 lastAddressedHandle:(id)arg2;
 - (BOOL)_handleIsSpokenMessageWhitelisted:(struct _IMDHandleRecordStruct *)arg1 chat:(id)arg2 message:(id)arg3;
 - (BOOL)_handleIsWhitelisted:(struct _IMDHandleRecordStruct *)arg1;
@@ -71,6 +72,7 @@
 - (id)_messageDictionaryForMessageRecord:(struct _IMDMessageRecordStruct *)arg1;
 - (BOOL)_messageIsFromFavorite:(id)arg1;
 - (BOOL)_messageIsFromKnownContact:(id)arg1;
+- (BOOL)_messageShouldBeSilentlyDeliveredForBusinessChat:(id)arg1;
 - (BOOL)_messageShouldBeSpoken:(id)arg1 chatDictionary:(id)arg2 isMostActive:(BOOL)arg3;
 - (id)_messages:(id)arg1 newerThanDate:(long long)arg2;
 - (id)_messagesSortedByDate:(id)arg1;
@@ -99,6 +101,7 @@
 - (void)_setContactInMessageDictionary:(struct _IMDHandleRecordStruct *)arg1 messageDictionary:(id)arg2;
 - (void)_setHasMigratedPreferenceTrue;
 - (void)_setLastPostedDateFromMigration:(id)arg1;
+- (void)_setMessagesSpokenWhitelistLevelInPreferences:(unsigned long long)arg1;
 - (void)_setUpNotificationCenter;
 - (void)_setUpSuggestionService;
 - (void)_setupBusinessNameManager;

@@ -43,6 +43,7 @@
 - (id)ui_bookmarkForExportWithError:(id *)arg1;
 - (BOOL)ui_canOpenInPlace;
 - (id)ui_downloadOperationForActivity:(id)arg1;
+- (id)ui_downloadOperationForActivity:(id)arg1 inScene:(id)arg2;
 - (BOOL)ui_hasReadSandboxExtended;
 - (BOOL)ui_hasSandboxExtendedForClass:(const char *)arg1;
 - (BOOL)ui_isContentManaged;

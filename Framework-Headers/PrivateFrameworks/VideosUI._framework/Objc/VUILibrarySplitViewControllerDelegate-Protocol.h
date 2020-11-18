@@ -6,10 +6,9 @@
 
 #import <VideosUI/NSObject-Protocol.h>
 
-@class NSError, VUILibrarySplitViewController, VUIMenuDataSource;
+@class VUILibrarySplitViewController;
 
 @protocol VUILibrarySplitViewControllerDelegate <NSObject>
-- (void)librarySplitViewControllerDidFinishLoading:(VUILibrarySplitViewController *)arg1 withCategories:(VUIMenuDataSource *)arg2 error:(NSError *)arg3;
 - (void)librarySplitViewControllerShouldDismiss:(VUILibrarySplitViewController *)arg1;
 @end
 

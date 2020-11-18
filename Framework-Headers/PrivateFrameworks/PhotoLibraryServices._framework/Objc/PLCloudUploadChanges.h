@@ -16,6 +16,7 @@
     NSMutableSet *_propertyChangedAssetUuids;
     NSMutableSet *_faceChangedAssetUuids;
     NSMutableArray *_updatedMasters;
+    NSMutableArray *_insertedResources;
     NSMutableArray *_updatedResources;
     NSMutableArray *_albumInserts;
     NSMutableArray *_albumChanges;
@@ -34,6 +35,7 @@
 @property (strong, nonatomic) NSMutableSet *faceChangedAssetUuids; // @synthesize faceChangedAssetUuids=_faceChangedAssetUuids;
 @property (strong, nonatomic) NSMutableArray *faceCropChanges; // @synthesize faceCropChanges=_faceCropChanges;
 @property (strong, nonatomic) NSMutableArray *insertedAssets; // @synthesize insertedAssets=_insertedAssets;
+@property (strong, nonatomic) NSMutableArray *insertedResources; // @synthesize insertedResources=_insertedResources;
 @property (strong, nonatomic) NSMutableArray *memoryChanges; // @synthesize memoryChanges=_memoryChanges;
 @property (strong, nonatomic) NSMutableArray *personChanges; // @synthesize personChanges=_personChanges;
 @property (strong, nonatomic) NSMutableSet *propertyChangedAssetUuids; // @synthesize propertyChangedAssetUuids=_propertyChangedAssetUuids;

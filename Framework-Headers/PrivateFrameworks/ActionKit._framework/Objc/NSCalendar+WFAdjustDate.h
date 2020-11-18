@@ -11,6 +11,7 @@
 - (id)wf_startOfHourForDate:(id)arg1;
 - (id)wf_startOfMinuteForDate:(id)arg1;
 - (id)wf_startOfMonthForDate:(id)arg1;
+- (id)wf_startOfWeekForDate:(id)arg1;
 - (id)wf_startOfYearForDate:(id)arg1;
 @end
 

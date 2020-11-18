@@ -6,17 +6,19 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <PhotosUI/PUEditingExtensionUndoButtonHost-Protocol.h>
 #import <PhotosUI/PXForcedDismissableViewController-Protocol.h>
 
-@class NSNumber, NSString, PUEditPlugin;
+@class NSNumber, NSString, PUEditPlugin, PUEditingExtensionUndoProxyHostSide, UIBarButtonItem;
 @protocol NSCopying, PUEditPluginHostViewControllerDataSource, PUEditPluginHostViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PUEditPluginHostViewController : UIViewController <PXForcedDismissableViewController>
+@interface PUEditPluginHostViewController : UIViewController <PXForcedDismissableViewController, PUEditingExtensionUndoButtonHost>
 {
     BOOL __extensionDidBeginContentEditing;
     BOOL __didHandleCancel;
     BOOL __didHandleDone;
+    BOOL _showUndoRedoButtons;
     PUEditPlugin *_plugin;
     id<PUEditPluginHostViewControllerDataSource> _dataSource;
     id<PUEditPluginHostViewControllerDelegate> _delegate;
@@ -24,6 +26,9 @@ __attribute__((visibility("hidden")))
     id<NSCopying> __request;
     id __disablingIdleTimerToken;
     NSNumber *__allowsFullScreen;
+    PUEditingExtensionUndoProxyHostSide *_undoProxy;
+    UIBarButtonItem *_undoBarButtonItem;
+    UIBarButtonItem *_redoBarButtonItem;
 }
 
 @property (strong, nonatomic, setter=_setAllowsFullScreen:) NSNumber *_allowsFullScreen; // @synthesize _allowsFullScreen=__allowsFullScreen;
@@ -39,7 +44,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PUEditPlugin *plugin; // @synthesize plugin=_plugin;
+@property (weak, nonatomic) UIBarButtonItem *redoBarButtonItem; // @synthesize redoBarButtonItem=_redoBarButtonItem;
+@property (nonatomic) BOOL showUndoRedoButtons; // @synthesize showUndoRedoButtons=_showUndoRedoButtons;
 @property (readonly) Class superclass;
+@property (weak, nonatomic) UIBarButtonItem *undoBarButtonItem; // @synthesize undoBarButtonItem=_undoBarButtonItem;
+@property (strong, nonatomic) PUEditingExtensionUndoProxyHostSide *undoProxy; // @synthesize undoProxy=_undoProxy;
 
 - (void).cxx_destruct;
 - (void)_addRemoteViewControllerIfNeededAllowingFullscreen:(BOOL)arg1;
@@ -55,13 +64,19 @@ __attribute__((visibility("hidden")))
 - (id)_hostContext;
 - (void)_queryAllowsFullScreen:(CDUnknownBlockType)arg1;
 - (void)_queryShouldShowCancelConfirmationWithResponseHandler:(CDUnknownBlockType)arg1 timeout:(double)arg2;
+- (void)_setupUndoProxy;
+- (void)_updateBarButtonsWithUndoRedoVisible:(BOOL)arg1;
 - (void)dealloc;
+- (void)handleRedoButton:(id)arg1;
+- (void)handleUndoButton:(id)arg1;
 - (id)initWithPlugin:(id)arg1;
 - (void)loadRemoteViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadView;
 - (BOOL)prefersStatusBarHidden;
 - (BOOL)prepareForDismissingForced:(BOOL)arg1;
 - (void)queryHandlingCapabilityForAdjustmentData:(id)arg1 withResponseHandler:(CDUnknownBlockType)arg2 timeout:(double)arg3;
+- (void)setShowUndoRedo:(BOOL)arg1;
+- (void)setUndoEnabled:(BOOL)arg1 redoEnabled:(BOOL)arg2;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 

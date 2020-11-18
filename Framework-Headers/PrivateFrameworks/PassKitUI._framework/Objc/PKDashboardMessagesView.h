@@ -50,7 +50,7 @@
 - (id)_messageForTableView:(id)arg1;
 - (void)_pageControlChanged:(id)arg1;
 - (unsigned long long)_primaryIndexAtOffset:(struct CGPoint)arg1;
-- (void)_reportCurrentMessageToDiscoveryService;
+- (void)_reportCurrentMessageViewed;
 - (double)_startOfItemAtIndex:(unsigned long long)arg1;
 - (void)_switchPrimaryIndexToIndex:(unsigned long long)arg1;
 - (void)_updateSizeCacheIfNecessary;

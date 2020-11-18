@@ -12,11 +12,15 @@
 
 @property (readonly, nonatomic) UIView *contentOverlayView;
 
+- (void)disableAsynchronousRenderingForNextCommit;
 - (void)noteKeyboardFocusDidChangeToSceneID:(NSString *)arg1;
 - (BOOL)rendersAsynchronously;
 - (void)setHomeGrabberHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setRendersAsynchronously:(BOOL)arg1 withMinificationFilterEnabled:(BOOL)arg2;
 - (void)setStatusBarHidden:(BOOL)arg1 nubViewHidden:(BOOL)arg2 animator:(void (^)(void (^)(void), void (^)(BOOL, BOOL)))arg3;
 - (void)setUsesBrightSceneViewBackgroundMaterial:(BOOL)arg1;
+
+@optional
+- (void)noteNeedsLayoutUpdateFor180DegreeRotation;
 @end
 

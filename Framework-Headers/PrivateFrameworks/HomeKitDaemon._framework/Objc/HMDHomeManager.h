@@ -37,7 +37,6 @@
     BOOL _companionReachable;
     BOOL _accountStatusIsAuthenticated;
     BOOL _homeDataLoadedFromArchive;
-    BOOL _watchPerformVersionCheck;
     BOOL _cloudkitAccountStatusDetermined;
     BOOL _needToCleanUpKeys;
     unsigned short _nextRequestTransactionIdentifier;
@@ -226,7 +225,6 @@
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) NSMutableArray *uuidsOfRemovedHomes; // @synthesize uuidsOfRemovedHomes=_uuidsOfRemovedHomes;
 @property (readonly, nonatomic) HMDWatchManager *watchManager; // @synthesize watchManager=_watchManager;
-@property (nonatomic) BOOL watchPerformVersionCheck; // @synthesize watchPerformVersionCheck=_watchPerformVersionCheck;
 @property (readonly, nonatomic) HMFTimer *watchPushDelayTimer; // @synthesize watchPushDelayTimer=_watchPushDelayTimer;
 @property (strong, nonatomic) NSMutableDictionary *watchSyncStateMap; // @synthesize watchSyncStateMap=_watchSyncStateMap;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
@@ -238,7 +236,6 @@
 + (id)deriveIntentGroupIdentifierFromBaseUUID:(id)arg1;
 + (BOOL)doesSaveReasonAffectHomeManager:(id)arg1;
 + (BOOL)doesSaveReasonAffectOnlyLocalData:(id)arg1;
-+ (BOOL)doesSaveReasonAffectWatchVersionCheck:(id)arg1;
 + (BOOL)doesSaveReasonNotAffectLocalData:(id)arg1;
 + (id)getCurrentAltDSID;
 + (id)getSPIClientIdentifierSalt;
@@ -464,13 +461,12 @@
 - (void)_saveWithReason:(id)arg1 information:(id)arg2 saveOptions:(unsigned long long)arg3;
 - (void)_saveWithReason:(id)arg1 postSyncNotification:(BOOL)arg2;
 - (void)_saveWithRequest:(id)arg1;
-- (void)_scheduleHomeRemoval:(id)arg1 message:(id)arg2 options:(id)arg3;
 - (void)_schedulePushChangesToAllUsersOfAllHomes;
 - (void)_scheduleSendHomeDataToAllWatches;
 - (void)_sendCurrentHomeToWatch:(id)arg1;
 - (void)_sendFragmentedMessage:(id)arg1 messageIndex:(unsigned long long)arg2 messageIdentity:(id)arg3 userID:(id)arg4 destination:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_sendHomeDataToAllWatches;
-- (void)_sendHomeDataToWatch:(id)arg1 performVersionCheck:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_sendHomeDataToWatch:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_sendKeysToWatch:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_sendUpdateRequestToAdminForInvitation:(id)arg1 homeUUID:(id)arg2 invitationState:(long long)arg3 authStatus:(id)arg4;
 - (void)_sendUserAdded:(id)arg1 destination:(id)arg2 toHome:(id)arg3;
@@ -629,10 +625,10 @@
 - (void)reprocessUserManagementModels;
 - (void)resetSiriSyncNotification;
 - (void)saveAccessoryCache:(id)arg1 forIdentifier:(id)arg2;
-- (void)saveToCurrentAccountWithRequest:(id)arg1;
 - (void)saveWithReason:(id)arg1 information:(id)arg2 postSyncNotification:(BOOL)arg3;
 - (void)saveWithReason:(id)arg1 information:(id)arg2 saveOptions:(unsigned long long)arg3;
 - (void)saveWithRequest:(id)arg1;
+- (void)scheduleRemovalForHome:(id)arg1 message:(id)arg2 options:(id)arg3;
 - (void)sendFragmentedMessageForData:(id)arg1 objectUUID:(id)arg2 withMessageName:(id)arg3 toUser:(id)arg4 destination:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)sendPairingIdentity:(id)arg1 includePrivateKey:(BOOL)arg2 requestMessage:(id)arg3;
 - (void)sendSecureMessage:(id)arg1 target:(id)arg2 userID:(id)arg3 destination:(id)arg4 responseQueue:(id)arg5 responseHandler:(CDUnknownBlockType)arg6;

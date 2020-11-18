@@ -14,10 +14,12 @@
     struct objc_ivar *_swiftIvar;
     BOOL _indexed;
     BOOL _optional;
+    BOOL _array;
     BOOL _isPrimary;
     NSString *_name;
     NSString *_objectClassName;
     NSString *_linkOriginPropertyName;
+    NSString *_columnName;
     unsigned long long _index;
     NSString *_getterName;
     NSString *_setterName;
@@ -25,6 +27,8 @@
     SEL _setterSel;
 }
 
+@property (readonly, nonatomic) BOOL array; // @synthesize array=_array;
+@property (strong, nonatomic) NSString *columnName; // @synthesize columnName=_columnName;
 @property (copy, nonatomic) NSString *getterName; // @synthesize getterName=_getterName;
 @property (nonatomic) SEL getterSel; // @synthesize getterSel=_getterSel;
 @property (nonatomic) unsigned long long index; // @synthesize index=_index;
@@ -45,15 +49,15 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)initSwiftLinkingObjectsPropertyWithName:(id)arg1 ivar:(struct objc_ivar *)arg2 objectClassName:(id)arg3 linkOriginPropertyName:(id)arg4;
-- (id)initSwiftListPropertyWithName:(id)arg1 ivar:(struct objc_ivar *)arg2 objectClassName:(id)arg3;
+- (id)initSwiftListPropertyWithName:(id)arg1 instance:(id)arg2;
 - (id)initSwiftOptionalPropertyWithName:(id)arg1 indexed:(BOOL)arg2 ivar:(struct objc_ivar *)arg3 propertyType:(int)arg4;
 - (id)initSwiftPropertyWithName:(id)arg1 indexed:(BOOL)arg2 linkPropertyDescriptor:(id)arg3 property:(struct objc_property *)arg4 instance:(id)arg5;
 - (id)initWithName:(id)arg1 indexed:(BOOL)arg2 linkPropertyDescriptor:(id)arg3 property:(struct objc_property *)arg4;
 - (id)initWithName:(id)arg1 type:(int)arg2 objectClassName:(id)arg3 linkOriginPropertyName:(id)arg4 indexed:(BOOL)arg5 optional:(BOOL)arg6;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToProperty:(id)arg1;
-- (struct Property)objectStoreCopy;
-- (void)parseObjcProperty:(struct objc_property *)arg1 readOnly:(BOOL *)arg2 rawType:(id *)arg3;
+- (struct Property)objectStoreCopy:(id)arg1;
+- (void)parseObjcProperty:(struct objc_property *)arg1 readOnly:(BOOL *)arg2 computed:(BOOL *)arg3 rawType:(id *)arg4;
 - (BOOL)setTypeFromRawType:(id)arg1;
 - (void)updateAccessors;
 

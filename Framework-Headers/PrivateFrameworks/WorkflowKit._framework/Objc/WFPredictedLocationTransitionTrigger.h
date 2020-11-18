@@ -22,7 +22,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasValidConfiguration;
 - (id)initWithCoder:(id)arg1;
-- (id)localizedTitleWithConfigurationSummary;
+- (id)localizedDescriptionWithConfigurationSummary;
+- (id)localizedPastTenseDescription;
 
 @end
 

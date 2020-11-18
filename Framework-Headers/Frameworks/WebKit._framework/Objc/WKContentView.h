@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<UILongPressGestureRecognizer> _longPressGestureRecognizer;
     struct RetainPtr<WKSyntheticTapGestureRecognizer> _doubleTapGestureRecognizer;
     struct RetainPtr<UITapGestureRecognizer> _nonBlockingDoubleTapGestureRecognizer;
+    struct RetainPtr<UITapGestureRecognizer> _doubleTapGestureRecognizerForDoubleClick;
     struct RetainPtr<UITapGestureRecognizer> _twoFingerDoubleTapGestureRecognizer;
     struct RetainPtr<UITapGestureRecognizer> _twoFingerSingleTapGestureRecognizer;
     struct RetainPtr<UITapGestureRecognizer> _stylusSingleTapGestureRecognizer;
@@ -120,6 +121,7 @@ __attribute__((visibility("hidden")))
     BOOL _waitingForEditDragSnapshot;
     BOOL _hasSetUpInteractions;
     unsigned long long _ignoreSelectionCommandFadeCount;
+    long long _suppressNonEditableSingleTapTextInteractionCount;
     CompletionHandler_2aa2525f _domPasteRequestHandler;
     struct BlockPtr<void (UIWKAutocorrectionContext *)> _pendingAutocorrectionContextHandler;
     struct DragDropInteractionState _dragDropInteractionState;
@@ -251,6 +253,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsImagePaste;
 @property (nonatomic) BOOL suppressReturnKeyStyling;
 @property (copy, nonatomic) NSString *textContentType;
 @property (readonly, nonatomic) NSString *textContentTypeForTesting;
@@ -359,9 +362,8 @@ __attribute__((visibility("hidden")))
 - (void)_disableInspectorNodeSearch;
 - (void)_doAfterReceivingEditDragSnapshotForTesting:(CDUnknownBlockType)arg1;
 - (void)_doubleTapDidFail:(id)arg1;
-- (double)_doubleTapForDoubleClickDelay;
-- (float)_doubleTapForDoubleClickRadius;
 - (void)_doubleTapRecognized:(id)arg1;
+- (void)_doubleTapRecognizedForDoubleClick:(id)arg1;
 - (unsigned long long)_dragDestinationActionForDropSession:(id)arg1;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (BOOL)_dragInteraction:(id)arg1 item:(id)arg2 shouldDelaySetDownAnimationWithCompletion:(CDUnknownBlockType)arg3;
@@ -375,7 +377,6 @@ __attribute__((visibility("hidden")))
 - (void)_enableInspectorNodeSearch;
 - (void)_endEditing;
 - (void)_endPotentialTapAndEnableDoubleTapGesturesIfNecessary;
-- (void)_ensureNonBlockingDoubleTapGestureRecognizer;
 - (void)_finishInteraction;
 - (id)_formInputSession;
 - (void)_handleAutocorrectionContext:(const struct WebAutocorrectionContext *)arg1;
@@ -525,6 +526,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateChangedSelection:(BOOL)arg1;
 - (void)_updateForScreen:(id)arg1;
 - (void)_updateInitialWritingDirectionIfNecessary;
+- (void)_updateInputContextAfterBlurringAndRefocusingElement;
 - (void)_updateInteractionTintColor;
 - (void)_updateSelectionAssistantSuppressionState;
 - (void)_updateTapHighlight;

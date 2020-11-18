@@ -48,8 +48,8 @@
 - (struct _NSRange)_brailleRangeForTextRange:(struct _NSRange)arg1 textPositions:(id)arg2 brailleLength:(unsigned long long)arg3;
 - (BOOL)_deleteBrailleCharSilently:(BOOL)arg1;
 - (BOOL)_forwardDeleteBrailleCharSilently:(BOOL)arg1;
-- (void)_generateBrailleBuffer:(BOOL)arg1;
-- (void)_generateBrailleBufferForDelete;
+- (BOOL)_generateBrailleBuffer:(BOOL)arg1;
+- (BOOL)_generateBrailleBufferForDelete;
 - (void)_generateBrailleBufferForInsert;
 - (BOOL)_selectionIsValidForDelete;
 - (BOOL)_selectionIsValidForInsert;

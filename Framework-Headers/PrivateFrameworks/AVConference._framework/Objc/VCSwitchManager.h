@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)setupLocalRateControlTestGroupSwitches;
 - (void)setupLocalSwitchesForTesting;
 - (void)setupLocalVideoTestGroupSwitches;
+- (void)updateDuplicationEnhancementSwitches;
 
 @end
 

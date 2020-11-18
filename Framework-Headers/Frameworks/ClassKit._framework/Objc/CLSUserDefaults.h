@@ -16,6 +16,7 @@
 + (int)_intValueForKey:(id)arg1 defaultValue:(int)arg2;
 + (BOOL)automatchClientPersona;
 + (BOOL)disableASMRosters;
++ (BOOL)enableStableObjectID;
 + (BOOL)isInternalOSVariant;
 + (BOOL)persistProgressData;
 

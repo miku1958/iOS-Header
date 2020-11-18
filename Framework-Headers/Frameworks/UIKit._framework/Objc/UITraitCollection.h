@@ -46,6 +46,9 @@
 
 + (id)_backgroundThreadFallbackTraitCollection;
 + (id)_currentTraitCollection;
++ (id)_currentTraitCollectionIfExists;
++ (id)_currentTraitCollectionWithFallback:(BOOL)arg1 markFallback:(BOOL)arg2;
++ (id)_currentTraitCollectionWithUnmarkedFallback;
 + (id)_defaultTraitCollection;
 + (id)_descriptionForChangeFromTraitCollection:(id)arg1 toTraitCollection:(id)arg2;
 + (id)_emptyTraitCollection;

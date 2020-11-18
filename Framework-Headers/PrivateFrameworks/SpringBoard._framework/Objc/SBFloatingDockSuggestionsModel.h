@@ -10,7 +10,7 @@
 #import <SpringBoard/SBRecentDisplayItemsControllerDelegate-Protocol.h>
 #import <SpringBoard/SBRecentDisplayItemsPersistenceDelegate-Protocol.h>
 
-@class NSMutableOrderedSet, NSOrderedSet, NSString, SBAppSuggestionManager, SBApplication, SBApplicationController, SBBestAppSuggestion, SBFAnalyticsClient, SBFloatingDockDefaults, SBIconController, SBIconListModel, SBIconModel, SBRecentDisplayItemsController, SBRecentDisplayItemsDataStore, SBRecentDisplayItemsDefaults;
+@class NSMutableOrderedSet, NSOrderedSet, NSString, PTSingleTestRecipe, SBAppSuggestionManager, SBApplication, SBApplicationController, SBBestAppSuggestion, SBFAnalyticsClient, SBFloatingDockDefaults, SBIconController, SBIconListModel, SBIconModel, SBRecentDisplayItemsController, SBRecentDisplayItemsDataStore, SBRecentDisplayItemsDefaults;
 @protocol SBFloatingDockSuggestionsModelDelegate;
 
 @interface SBFloatingDockSuggestionsModel : NSObject <SBRecentDisplayItemsPersistenceDelegate, SBRecentDisplayItemsControllerDelegate, SBIconListModelObserver>
@@ -36,6 +36,7 @@
     SBFAnalyticsClient *_analyticsClient;
     NSMutableOrderedSet *_currentRecentDisplayItems;
     NSMutableOrderedSet *_currentRecentDisplayItemsSortedByRecency;
+    PTSingleTestRecipe *_stressTestRecipe;
 }
 
 @property (strong, nonatomic) SBFAnalyticsClient *analyticsClient; // @synthesize analyticsClient=_analyticsClient;
@@ -60,6 +61,7 @@
 @property (readonly, nonatomic) SBRecentDisplayItemsDefaults *recentsDefaults; // @synthesize recentsDefaults=_recentsDefaults;
 @property (nonatomic) BOOL recentsEnabled; // @synthesize recentsEnabled=_recentsEnabled;
 @property (strong, nonatomic) SBApplication *requestedSuggestedApplication; // @synthesize requestedSuggestedApplication=_requestedSuggestedApplication;
+@property (readonly, nonatomic) PTSingleTestRecipe *stressTestRecipe; // @synthesize stressTestRecipe=_stressTestRecipe;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=_isSwitcherTransitioning) BOOL switcherTransitioning; // @synthesize switcherTransitioning=_switcherTransitioning;
 @property (strong, nonatomic) SBIconListModel *userDockListModel; // @synthesize userDockListModel=_userDockListModel;
@@ -83,6 +85,7 @@
 - (id)_oldestRecent;
 - (void)_performAppSuggestionChangedWithNewSuggestion:(id)arg1;
 - (void)_reloadRecentsAndSuggestions;
+- (void)_runStressTest;
 - (void)_setRecentsEnabled:(BOOL)arg1;
 - (BOOL)_shouldProcessAppSuggestion:(id)arg1;
 - (void)_updateCurrentDisplayItemsAfterContinuityChange:(BOOL)arg1 notifyDelegate:(BOOL)arg2;

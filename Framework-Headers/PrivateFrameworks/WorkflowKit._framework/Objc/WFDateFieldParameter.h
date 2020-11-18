@@ -15,16 +15,16 @@
     NSString *_hintDateMode;
 }
 
+@property (readonly, nonatomic) BOOL dateOnlyMode;
 @property (readonly, nonatomic) NSDateFormatter *hintDateFormatter; // @synthesize hintDateFormatter=_hintDateFormatter;
 @property (readonly, nonatomic) NSString *hintDateMode; // @synthesize hintDateMode=_hintDateMode;
 @property (readonly, nonatomic) NSString *reactiveParameterKey; // @synthesize reactiveParameterKey=_reactiveParameterKey;
+@property (readonly, nonatomic) BOOL timeOnlyMode;
 
 - (void).cxx_destruct;
-- (BOOL)dateOnlyMode;
 - (id)hintForState:(id)arg1;
 - (id)initWithDefinition:(id)arg1;
 - (id)localizedIncompleteHintString;
-- (BOOL)timeOnlyMode;
 
 @end
 

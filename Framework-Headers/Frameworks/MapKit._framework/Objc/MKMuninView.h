@@ -11,17 +11,18 @@
 #import <MapKit/VKMapViewCameraDelegate-Protocol.h>
 #import <MapKit/VKMapViewDelegate-Protocol.h>
 
-@class GEOMuninViewState, GEOStorefrontView, MKHapticEngine, MKMapItem, MKMuninBumpFlash, MKMuninGestureController, NSArray, NSDate, NSLayoutConstraint, NSString, NSURL, UIImageView, UITapGestureRecognizer, VKLabelMarker, VKMapView, VKMuninMarker, _MKCustomFeatureStore, _MKMuninLayerHostingView;
+@class GEOMuninViewState, GEOStorefrontView, MKCompassView, MKHapticEngine, MKMapItem, MKMuninBumpFlash, MKMuninGestureController, NSArray, NSDate, NSLayoutConstraint, NSString, NSURL, UIImageView, UITapGestureRecognizer, VKLabelMarker, VKMapView, VKMuninMarker, _MKMuninLayerHostingView;
 @protocol MKMapServiceTicket, MKMuninViewDelegate;
 
 @interface MKMuninView : UIView <MKMuninGestureControllerDelegate, VKMapViewCameraDelegate, VKMapViewDelegate, NSCoding>
 {
     _MKMuninLayerHostingView *_hostView;
     BOOL _changingViewSize;
+    BOOL _wantsCompassShown;
     UIImageView *_transitionStartImageview;
     UIImageView *_transitionEndImageview;
     UIImageView *_transitionGridImageview;
-    UIImageView *_compassView;
+    MKCompassView *_compassView;
     NSLayoutConstraint *_compassTopConstraint;
     NSLayoutConstraint *_compassTrailingConstraint;
     UITapGestureRecognizer *_compassTapGestureRecognizer;
@@ -41,7 +42,6 @@
     MKMapItem *_mapItem;
     MKMapItem *_revGeoMapItem;
     GEOStorefrontView *_requestedStorefrontView;
-    _MKCustomFeatureStore *_customFeatureStore;
     NSDate *_startTime;
     int _triggerAction;
     MKHapticEngine *_hapticEngine;
@@ -63,12 +63,11 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MKMuninViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) MKHapticEngine *hapticEngine; // @synthesize hapticEngine=_hapticEngine;
 @property (nonatomic) BOOL hasEnteredMunin; // @synthesize hasEnteredMunin=_hasEnteredMunin;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *imageResources;
 @property (readonly, nonatomic, getter=isLoading) BOOL loading;
-@property (strong, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
+@property (readonly, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property (readonly, nonatomic) VKMuninMarker *muninMarker;
 @property (strong, nonatomic) VKMapView *muninView; // @synthesize muninView=_muninView;
 @property (readonly, nonatomic) GEOMuninViewState *muninViewState; // @synthesize muninViewState=_muninViewState;
@@ -120,10 +119,9 @@
 - (void)mapLayerWillAnimateToLocation:(CDStruct_c3b9c2ee)arg1;
 - (void)moveToCloseUpView;
 - (void)moveToCloseUpViewAnimated:(BOOL)arg1;
-- (BOOL)moveToMapItem:(id)arg1 wantsCloseUpView:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)moveToMuninMarker:(id)arg1 withHeading:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)moveToStandOffUpView;
-- (void)moveToStandOffUpViewAnimated:(BOOL)arg1;
+- (BOOL)moveToMapItem:(id)arg1 wantsCloseUpView:(BOOL)arg2 orMuninMarker:(id)arg3 withHeading:(double)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)moveToStandOffView;
+- (void)moveToStandOffViewAnimated:(BOOL)arg1;
 - (void)muninGestureController:(id)arg1 didTapAtPoint:(struct CGPoint)arg2 areaAvailable:(BOOL)arg3;
 - (void)muninGestureController:(id)arg1 didTapLabelMarker:(id)arg2;
 - (void)muninGestureController:(id)arg1 didZoomWithDirection:(long long)arg2 type:(long long)arg3;
@@ -139,6 +137,7 @@
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setPresentationYaw:(double)arg1 animated:(BOOL)arg2;
 - (void)setPresentationYaw:(double)arg1 pitch:(double)arg2 animated:(BOOL)arg3;
+- (BOOL)tapAtPoint:(struct CGPoint)arg1;
 
 @end
 

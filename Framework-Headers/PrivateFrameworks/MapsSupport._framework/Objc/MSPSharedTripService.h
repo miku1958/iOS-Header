@@ -19,10 +19,12 @@
     GEOObserverHashTable *_receivingObservers;
     GEOObserverHashTable *_sendingObservers;
     NSMutableArray *_receivedTrips;
+    BOOL _sendingAccountAvailable;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasValidSharingAccount;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *receivedTrips;
 @property (readonly) Class superclass;
@@ -31,6 +33,10 @@
 - (void).cxx_destruct;
 - (void)_blockSharedTrip:(id)arg1;
 - (void)_checkin;
+- (void)_fetchAccountValidWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_fetchActiveHandlesOnQueue:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_fetchActiveHandlesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_fetchSendingIdentityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_fetchSharedTripsOnQueue:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_fetchSharedTripsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_insertOrUpdateTrip:(id)arg1;
@@ -45,6 +51,7 @@
 - (void)_stopSharingTripWithMessagesGroup:(id)arg1;
 - (void)_subscribeToSharedTripUpdatesWithIdentifier:(id)arg1;
 - (void)_unsubscribeFromSharedTripUpdatesWithIdentifier:(id)arg1;
+- (void)accountAvailabilityDidChange:(BOOL)arg1;
 - (void)addReceivingObserver:(id)arg1;
 - (void)addSendingObserver:(id)arg1;
 - (void)blockSharedTrip:(id)arg1;
@@ -52,9 +59,14 @@
 - (void)destinationDidUpdateForSharedTrip:(id)arg1;
 - (void)destinationReachedDidUpdateForSharedTrip:(id)arg1;
 - (void)etaDidUpdateForSharedTrip:(id)arg1;
+- (void)fetchAccountValidWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchActiveHandlesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchSendingIdentityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSharedTripsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)initializeAccountAvailability;
 - (void)initializeTrips;
+- (void)invalidateActiveHandles;
 - (void)removeReceivingObserver:(id)arg1;
 - (void)removeSendingObserver:(id)arg1;
 - (void)routeDidUpdateForSharedTrip:(id)arg1;

@@ -40,6 +40,7 @@
     double _mDarkening;
     double _bDarkening;
     double _maxDarkening;
+    double _tetheredInsertionRemovalInsetForDeterminingVisibility;
     long long _selectionHighlightStyle;
     double _highlightSquishyScale;
     double _highlightDimOpacity;
@@ -158,6 +159,7 @@
 @property double switcherCardShadowOpacity; // @synthesize switcherCardShadowOpacity=_switcherCardShadowOpacity;
 @property double switcherCardShadowRadius; // @synthesize switcherCardShadowRadius=_switcherCardShadowRadius;
 @property long long switcherStyle; // @synthesize switcherStyle=_switcherStyle;
+@property double tetheredInsertionRemovalInsetForDeterminingVisibility; // @synthesize tetheredInsertionRemovalInsetForDeterminingVisibility=_tetheredInsertionRemovalInsetForDeterminingVisibility;
 @property double titleOpacityACoeff; // @synthesize titleOpacityACoeff=_titleOpacityACoeff;
 @property double titleOpacityBCoeff; // @synthesize titleOpacityBCoeff=_titleOpacityBCoeff;
 @property double titleOpacityCCoeff; // @synthesize titleOpacityCCoeff=_titleOpacityCCoeff;

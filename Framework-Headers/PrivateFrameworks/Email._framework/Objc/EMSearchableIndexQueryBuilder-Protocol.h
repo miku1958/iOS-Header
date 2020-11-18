@@ -10,6 +10,7 @@
 
 @protocol EMSearchableIndexQueryBuilder <NSObject>
 
+@property (copy, nonatomic) NSString *bundleIdentifier;
 @property (copy, nonatomic) CDUnknownBlockType changedItemsBlock;
 @property (copy, nonatomic) CDUnknownBlockType completionBlock;
 @property (copy, nonatomic) CDUnknownBlockType countChangedBlock;

@@ -25,14 +25,14 @@
     id<PXGTextureConverter> _textureConverter;
     PXScrollViewController *_scrollViewController;
     struct CGRect _visibleRect;
-    CDStruct_04522d6a _interactionState;
+    CDStruct_93894d6c _interactionState;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGRendererDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) CDStruct_04522d6a interactionState; // @synthesize interactionState=_interactionState;
+@property (nonatomic) CDStruct_93894d6c interactionState; // @synthesize interactionState=_interactionState;
 @property (readonly, nonatomic) int presentationType;
 @property (strong, nonatomic) PXScrollViewController *scrollViewController; // @synthesize scrollViewController=_scrollViewController;
 @property (readonly) Class superclass;

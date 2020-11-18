@@ -68,6 +68,7 @@
 - (void)dealloc;
 - (void)delayedUpdateTimerDidFire:(id)arg1;
 - (int)forceLoadingAuthorizationStatus;
+- (void)forceLocationManagerAuthorization;
 - (void)forceLocationUpdate;
 - (BOOL)hasCrossedHourBoundary;
 - (id)init;

@@ -6,20 +6,22 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 #import <HomeKit/HMMutableApplicationData-Protocol.h>
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class CLLocation, HMApplicationData, HMCameraClipCollectionManager, HMFMessageDestination, HMFUnfairLock, HMHomeManager, HMMutableArray, HMRoom, HMSetupViewController, HMUser, NSArray, NSDate, NSOperationQueue, NSString, NSUUID, _HMContext;
+@class CLLocation, HMApplicationData, HMFMessageDestination, HMFUnfairLock, HMHomeManager, HMMutableArray, HMRoom, HMSetupViewController, HMUser, NSArray, NSDate, NSOperationQueue, NSString, NSUUID, _HMContext;
 @protocol HMHomeDelegate, HMSetupRemoteService, OS_dispatch_queue;
 
-@interface HMHome : NSObject <NSSecureCoding, HMFMessageReceiver, HMObjectMerge, HMMutableApplicationData>
+@interface HMHome : NSObject <HMFLogging, NSSecureCoding, HMFMessageReceiver, HMObjectMerge, HMMutableApplicationData>
 {
     BOOL _automaticSoftwareUpdateEnabled;
     long long _minimumMediaUserPrivilege;
     BOOL _mediaPeerToPeerEnabled;
     NSString *_mediaPassword;
+    long long _protectionMode;
     HMFUnfairLock *_lock;
     BOOL _primary;
     BOOL _notificationsEnabled;
@@ -36,8 +38,6 @@
     HMUser *_currentUser;
     HMApplicationData *_applicationData;
     NSDate *_notificationsUpdatedTime;
-    HMCameraClipCollectionManager *_cameraClipCollectionManager;
-    long long _protectionMode;
     long long _homeLocationStatus;
     unsigned long long _networkRouterSupport;
     unsigned long long _networkRouterSupportDisableReason;
@@ -54,6 +54,7 @@
     HMMutableArray *_currentResidentDevices;
     HMMutableArray *_currentOutgoingInvitations;
     NSOperationQueue *_shareWithHomeOwnerOperationQueue;
+    HMMutableArray *_currentAccessoryProtectionGroups;
     _HMContext *_context;
     HMHomeManager *_homeManager;
     NSUUID *_uuid;
@@ -64,15 +65,16 @@
 }
 
 @property (readonly, copy, nonatomic) NSArray *accessories;
+@property (readonly, copy) NSArray *accessoryProtectionGroups;
 @property (readonly, copy, nonatomic) NSArray *actionSets;
 @property (nonatomic, getter=isAdminUser) BOOL adminUser; // @synthesize adminUser=_adminUser;
 @property (readonly, nonatomic) HMApplicationData *applicationData;
 @property (readonly, copy) NSUUID *applicationDataIdentifier;
 @property (readonly, getter=isAutomaticSoftwareUpdateEnabled) BOOL automaticSoftwareUpdateEnabled;
 @property (getter=isAutomaticSoftwareUpdateEnabled) BOOL automaticSoftwareUpdateEnabled; // @dynamic automaticSoftwareUpdateEnabled;
-@property (readonly) HMCameraClipCollectionManager *cameraClipCollectionManager; // @synthesize cameraClipCollectionManager=_cameraClipCollectionManager;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) HMMutableArray *currentAccessories; // @synthesize currentAccessories=_currentAccessories;
+@property (strong, nonatomic) HMMutableArray *currentAccessoryProtectionGroups; // @synthesize currentAccessoryProtectionGroups=_currentAccessoryProtectionGroups;
 @property (strong, nonatomic) HMMutableArray *currentActionSets; // @synthesize currentActionSets=_currentActionSets;
 @property (strong, nonatomic) HMMutableArray *currentActions; // @synthesize currentActions=_currentActions;
 @property (strong, nonatomic) HMMutableArray *currentMediaSystems; // @synthesize currentMediaSystems=_currentMediaSystems;
@@ -135,6 +137,7 @@
 + (BOOL)accessorySupportsMediaAccessControl:(id)arg1;
 + (id)generateMediaPasswordWithError:(id *)arg1;
 + (BOOL)isValidMediaPassword:(id)arg1 error:(id *)arg2;
++ (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)__configureWithContext:(id)arg1 homeManager:(id)arg2;
@@ -159,6 +162,9 @@
 - (void)_configureOutgoingInvitiation:(id)arg1;
 - (void)_continuePairingForAccessoryWithUUID:(id)arg1 setupCode:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_createFailedAccessoriesListFromError:(id)arg1;
+- (void)_didAddAccessoryNetworkProtectionGroup:(id)arg1;
+- (void)_didRemoveAccessoryNetworkProtectionGroup:(id)arg1;
+- (void)_didUpdateAccessoryNetworkProtectionGroup:(id)arg1;
 - (void)_didUpdateNetworkRouterSupport;
 - (void)_enableMultiUserWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_enableNotification:(BOOL)arg1 forCharacteristics:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -170,6 +176,8 @@
 - (void)_handleAccessoryAddedNotification:(id)arg1;
 - (void)_handleAccessoryErrorNotification:(id)arg1;
 - (void)_handleAccessoryInfoUpdatedNotification:(id)arg1;
+- (void)_handleAccessoryNetworkProtectionGroupAddedNotification:(id)arg1;
+- (void)_handleAccessoryNetworkProtectionGroupRemovedNotification:(id)arg1;
 - (void)_handleAccessoryRemovedNotification:(id)arg1;
 - (void)_handleAccessoryReprovisionStateUpdate:(id)arg1;
 - (void)_handleAccessoryReprovisionedNotification:(id)arg1;
@@ -212,6 +220,7 @@
 - (void)_manageUsersWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (unsigned long long)_mergeAccessoriesForMergeCollection:(id)arg1 currentAccessories:(id)arg2;
 - (unsigned long long)_mergeCurrentHomeAccessoriesWithNewHomeAccessories:(id)arg1 operations:(id)arg2;
+- (unsigned long long)_mergeCurrentHomeAccessoryNetworkProtectionGroupsWithNewAccessoryNetworkProtectionGroups:(id)arg1 operations:(id)arg2;
 - (unsigned long long)_mergeCurrentHomeActionSetsWithNewHomeActionSets:(id)arg1 operations:(id)arg2;
 - (unsigned long long)_mergeCurrentHomeInvitationsWithNewHomeInvitations:(id)arg1 operations:(id)arg2;
 - (unsigned long long)_mergeCurrentHomeMediaSystemsWithNewMediaSystems:(id)arg1 operations:(id)arg2;
@@ -291,7 +300,6 @@
 - (id)administrator;
 - (void)assignAccessory:(id)arg1 toRoom:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)builtinActionSetOfType:(id)arg1;
-- (id)cameraProfileWithUniqueIdentifier:(id)arg1;
 - (void)cancelPairingForAccessoryWithDescription:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cancelPairingForAccessoryWithUUID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)continuePairingForAccessoryWithUUID:(id)arg1 setupCode:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -321,6 +329,7 @@
 - (void)inviteUsersWithInviteInformation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)isMultiUserEnabled;
 - (id)location;
+- (id)logIdentifier;
 - (void)manageUsersWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)mediaProfileWithProfileUUID:(id)arg1;
 - (id)mediaProfileWithUUID:(id)arg1;
@@ -358,6 +367,7 @@
 - (id)serviceGroupWithName:(id)arg1;
 - (id)serviceGroupWithUUID:(id)arg1;
 - (id)servicesWithTypes:(id)arg1;
+- (void)setAccessoryNetworkProtectionChangeSupportMinHomeKitVersion:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setApplicationData:(id)arg1;
 - (void)setHasAnyUserAcknowledgedCameraRecordingOnboardingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setNetworkRouterSupportMinimumHomeKitVersion:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -378,6 +388,7 @@
 - (void)updateAccessForUser:(id)arg1 administrator:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateAccessForUser:(id)arg1 camerasAccessLevel:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateAccessForUser:(id)arg1 remoteAccess:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)updateAccessoryNetworkProtectionGroup:(id)arg1 protectionMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateApplicationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateApplicationData:(id)arg1 forActionSet:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateApplicationData:(id)arg1 forAppDataContainer:(id)arg2 appDataContainerUUIDKeyName:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

@@ -25,7 +25,6 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) HMTrigger *trigger; // @synthesize trigger=_trigger;
 
-+ (id)iconDescriptorForTriggerType:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)init;

@@ -11,13 +11,12 @@
 
 @interface RPAppAudioCaptureManager : NSObject
 {
-    BOOL _recordingAppAudio;
     BOOL _resumed;
-    CDStruct_ad6583bf *_audioRecorderQueue;
     CDUnknownBlockType _appAudioOutputHandler;
     NSDate *_lastAudioDate;
     CDUnknownBlockType _appTapDidStartHandler;
     NSObject<OS_dispatch_queue> *_audioDispatchQueue;
+    CDStruct_f128470a *_audioRecorderQueue;
     struct AudioStreamBasicDescription _audioBasicDescription;
 }
 
@@ -25,13 +24,13 @@
 @property (copy, nonatomic) CDUnknownBlockType appTapDidStartHandler; // @synthesize appTapDidStartHandler=_appTapDidStartHandler;
 @property (nonatomic) struct AudioStreamBasicDescription audioBasicDescription; // @synthesize audioBasicDescription=_audioBasicDescription;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *audioDispatchQueue; // @synthesize audioDispatchQueue=_audioDispatchQueue;
-@property (nonatomic) CDStruct_ad6583bf *audioRecorderQueue; // @synthesize audioRecorderQueue=_audioRecorderQueue;
+@property (nonatomic) CDStruct_f128470a *audioRecorderQueue; // @synthesize audioRecorderQueue=_audioRecorderQueue;
 @property (strong, nonatomic) NSDate *lastAudioDate; // @synthesize lastAudioDate=_lastAudioDate;
-@property (nonatomic, getter=isRecordingAppAudio) BOOL recordingAppAudio; // @synthesize recordingAppAudio=_recordingAppAudio;
 @property (nonatomic) BOOL resumed; // @synthesize resumed=_resumed;
 
 - (void).cxx_destruct;
-- (id)initWithAudioStreamBasicDescription:(struct AudioStreamBasicDescription)arg1 audioQueue:(id)arg2;
+- (BOOL)handleStartAudioQueueFailed:(int)arg1 didFailHandler:(CDUnknownBlockType)arg2;
+- (id)initWithAudioStreamBasicDescription:(struct AudioStreamBasicDescription)arg1;
 - (void)resumeWithProcessID:(int)arg1;
 - (void)startWithProcessID:(int)arg1 outputHandler:(CDUnknownBlockType)arg2 didStartHandler:(CDUnknownBlockType)arg3;
 - (void)stop;

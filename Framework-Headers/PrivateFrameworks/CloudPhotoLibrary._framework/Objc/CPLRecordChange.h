@@ -144,6 +144,7 @@
 - (id)storedClassNameForCPLArchiver:(id)arg1;
 - (BOOL)supportsDeletion;
 - (BOOL)supportsDirectDeletion;
+- (BOOL)supportsResourceType:(unsigned long long)arg1;
 - (BOOL)supportsResources;
 - (unsigned long long)totalResourceSize;
 - (id)translateToClientChangeUsingIDMapping:(id)arg1 error:(id *)arg2;

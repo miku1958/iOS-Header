@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)_warnForInvalidAction;
 - (id)actionSheetActionsForAlertController:(id)arg1;
 - (id)actionSheetTitle;
+- (BOOL)canInvokeDefaultAction;
 - (id)contextMenuConfiguration;
 - (void)dealloc;
 - (void)highlight;

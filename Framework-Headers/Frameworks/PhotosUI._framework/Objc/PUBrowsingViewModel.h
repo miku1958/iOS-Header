@@ -10,7 +10,7 @@
 #import <PhotosUI/PUAssetViewModelChangeObserver-Protocol.h>
 #import <PhotosUI/PXAssetImportStatusObserver-Protocol.h>
 
-@class NSDate, NSMutableSet, NSString, PUAssetReference, PUAssetViewModel, PUAssetsDataSource, PUCachedMapTable, PUMediaProvider, PUReviewScreenBarsModel;
+@class NSDate, NSMutableSet, NSString, PUAssetActionManager, PUAssetReference, PUAssetViewModel, PUAssetsDataSource, PUCachedMapTable, PUMediaProvider, PUReviewScreenBarsModel;
 @protocol PXAssetImportStatusManager;
 
 @interface PUBrowsingViewModel : PUViewModel <PUAssetViewModelChangeObserver, PUAssetSharedViewModelChangeObserver, PXAssetImportStatusObserver>
@@ -48,6 +48,7 @@
     NSMutableSet *__animatingTransitionIdentifiers;
     NSMutableSet *__videoDisallowedReasons;
     PUMediaProvider *_mediaProvider;
+    PUAssetActionManager *_actionManager;
     id<PXAssetImportStatusManager> _importStatusManager;
     struct CGSize _secondScreenSize;
 }
@@ -57,6 +58,7 @@
 @property (nonatomic, setter=_setUserNavigationDistance:) long long _userNavigationDistance; // @synthesize _userNavigationDistance=__userNavigationDistance;
 @property (strong, nonatomic, setter=_setVideoDisallowedReasons:) NSMutableSet *_videoDisallowedReasons; // @synthesize _videoDisallowedReasons=__videoDisallowedReasons;
 @property (nonatomic) BOOL accessoryViewsDefaultVisibility; // @synthesize accessoryViewsDefaultVisibility=_accessoryViewsDefaultVisibility;
+@property (strong, nonatomic) PUAssetActionManager *actionManager; // @synthesize actionManager=_actionManager;
 @property (readonly, nonatomic) PUAssetViewModel *assetViewModelForCurrentAssetReference;
 @property (strong, nonatomic) PUAssetsDataSource *assetsDataSource; // @synthesize assetsDataSource=_assetsDataSource;
 @property (nonatomic, getter=isAutoplayVideoMuted) BOOL autoplayVideoMuted;
@@ -92,6 +94,7 @@
 - (void).cxx_destruct;
 - (id)_assetSharedViewModelForAsset:(id)arg1 createIfNeeded:(BOOL)arg2;
 - (id)_badgeInfoPromiseForAssetReference:(id)arg1;
+- (id)_filteredAllowedBadges:(id)arg1 forAssetReference:(id)arg2;
 - (double)_focusValueForAsset:(id)arg1;
 - (void)_handleAssetSharedViewModel:(id)arg1 didChange:(id)arg2;
 - (void)_handleAssetViewModel:(id)arg1 didChange:(id)arg2;

@@ -13,8 +13,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityLoadAccessibilityInformation;
-- (void)layoutSubviews;
+- (void)_axSubtitleText:(out id *)arg1 link:(out id *)arg2;
+- (BOOL)accessibilityActivate;
+- (id)accessibilityCustomActions;
+- (id)accessibilityLabel;
+- (unsigned long long)accessibilityTraits;
+- (BOOL)isAccessibilityElement;
 
 @end
 

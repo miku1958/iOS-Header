@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <PassKitCore/CLLocationManagerDelegate-Protocol.h>
+#import <PassKitCore/PKPaymentServiceDelegate-Protocol.h>
 #import <PassKitCore/PKPaymentWebServiceDelegate-Protocol.h>
 
-@class CLLocationManager, NSArray, NSHashTable, NSLock, NSMutableArray, NSMutableSet, NSSet, NSString, NSTimer, PKPaymentCredential, PKPaymentEligibilityResponse, PKPaymentPass, PKPaymentProvisioningControllerCredentialQueue, PKPaymentProvisioningResponse, PKPaymentRequirementsResponse, PKPaymentSetupMoreInfoItem, PKPaymentSetupProductModel, PKPaymentWebService;
+@class CLLocationManager, NSArray, NSHashTable, NSLock, NSMutableArray, NSMutableSet, NSSet, NSString, NSTimer, PKPaymentCredential, PKPaymentEligibilityResponse, PKPaymentPass, PKPaymentProvisioningControllerCredentialQueue, PKPaymentProvisioningResponse, PKPaymentRequirementsResponse, PKPaymentService, PKPaymentSetupMoreInfoItem, PKPaymentSetupProductModel, PKPaymentWebService;
 @protocol OS_dispatch_source;
 
-@interface PKPaymentProvisioningController : NSObject <CLLocationManagerDelegate, PKPaymentWebServiceDelegate>
+@interface PKPaymentProvisioningController : NSObject <CLLocationManagerDelegate, PKPaymentServiceDelegate, PKPaymentWebServiceDelegate>
 {
     BOOL _preflightCompleted;
     NSMutableSet *_tasks;
@@ -25,11 +26,13 @@
     NSHashTable *_delegates;
     NSLock *_delegateLock;
     NSSet *_supportedFeatureIdentifierStrings;
+    NSSet *_supportedFeatureIdentifierStringsForAccountProvisioning;
     unsigned long long _targetDeviceSupportsTypeF;
     PKPaymentSetupMoreInfoItem *_marketExpressInfoItem;
     CLLocationManager *_locationManager;
     NSObject<OS_dispatch_source> *_locationTimer;
     CDUnknownBlockType _locationCompletion;
+    PKPaymentService *_paymentService;
     NSString *_productIdentifier;
     NSString *_referrerIdentifier;
     PKPaymentWebService *_webService;
@@ -87,6 +90,7 @@
 - (void)_downloadMoreInfoItemURLs:(id)arg1 withMetadata:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_downloadRemoteAssetsForPaymentPass:(id)arg1 paymentCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_endRequiringUpgradedPasscodeIfNecessary;
+- (BOOL)_featureApplicationInValidStateToPresent:(id)arg1;
 - (id)_fetchOrCreateProductsForIdentifier:(unsigned long long)arg1;
 - (id)_filterPaymentSetupProducts:(id)arg1;
 - (void)_handleProvisioningError:(id)arg1 forRequest:(id)arg2;
@@ -111,6 +115,8 @@
 - (void)_setupAccountCredentialForProvisioning:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_startLocationSearchWithTimeout:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_startRequiringUpgradedPasscodeWithPasscodeMeetsPolicy:(BOOL)arg1;
+- (id)_supportedFeatureIdentifierStrings;
+- (id)_supportedFeatureIdentifierStringsForAccountProvisioning;
 - (void)_updateCredentialWithPaymentPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateCredentialWithPaymentPassAssets:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateLocalizedProgressAndInvalidateTimer;
@@ -124,6 +130,9 @@
 - (void)declineTerms;
 - (id)displayableErrorForError:(id)arg1;
 - (id)displayableErrorForProvisioningError:(id)arg1;
+- (void)featureApplicationAdded:(id)arg1;
+- (void)featureApplicationChanged:(id)arg1;
+- (void)featureApplicationRemoved:(id)arg1;
 - (BOOL)hasCreditPaymentPass;
 - (BOOL)hasDebitPaymentPass;
 - (BOOL)hasPaymentPass;
@@ -162,8 +171,6 @@
 - (void)setupAccountCredentialForProvisioning:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setupFeatures:(CDUnknownBlockType)arg1;
 - (void)setupProductForProvisioning:(id)arg1 includePurchases:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (void)skipPasscodeUpgrade;
-- (id)supportedFeatureIdentifierStrings;
 - (void)updatePaymentSetupProductModelWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)updateRemoteCredentials:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)validatePreconditions:(CDUnknownBlockType)arg1;

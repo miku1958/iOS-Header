@@ -16,6 +16,7 @@
 {
     NSString *_appIdentifier;
     long long _intentCategory;
+    NSString *_localizedName;
     NSString *_className;
     NSString *_bundleIdentifier;
     INSchema *_schema;
@@ -31,6 +32,7 @@
 @property (readonly, nonatomic) WFIntentDynamicResolver *dynamicResolver; // @synthesize dynamicResolver=_dynamicResolver;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) WFIntentDynamicResolutionRequest *lastDynamicResolutionRequest; // @synthesize lastDynamicResolutionRequest=_lastDynamicResolutionRequest;
+@property (copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property (readonly, copy, nonatomic) INSchema *schema; // @synthesize schema=_schema;
 @property (readonly) Class superclass;
 
@@ -62,6 +64,7 @@
 - (void)setUpResolverIfNeededForParameter:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)setupParameter:(id)arg1;
 - (id)slots;
+- (void)startExecutingIntent:(id)arg1;
 
 @end
 

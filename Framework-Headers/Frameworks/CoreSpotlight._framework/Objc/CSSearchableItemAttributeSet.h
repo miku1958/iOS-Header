@@ -14,6 +14,7 @@
 @interface CSSearchableItemAttributeSet : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _hasCodedCustomAttributes;
+    BOOL _hasKnownKeysDictionary;
     NSDictionary *_attributes;
     NSMutableDictionary *_mutableAttributes;
     NSMutableDictionary *_customAttributes;
@@ -25,6 +26,7 @@
     CDStruct_b7fac349 _contentObj;
 }
 
+@property (copy) NSString *FPFilename;
 @property (readonly) NSData *HTMLContentDataNoCopy;
 @property (copy) NSString *accountType;
 @property (copy) NSString *adamID;
@@ -59,6 +61,7 @@
 @property (copy) NSArray *fileProviderUserInfoValues;
 @property (copy) NSString *filename;
 @property (readonly, nonatomic) BOOL hasCodedCustomAttributes; // @synthesize hasCodedCustomAttributes=_hasCodedCustomAttributes;
+@property (readonly, nonatomic) BOOL hasKnownKeysDictionary; // @synthesize hasKnownKeysDictionary=_hasKnownKeysDictionary;
 @property (copy) NSData *intentData;
 @property (strong) NSNumber *isPlaceholder;
 @property (strong) NSNumber *isZombie;
@@ -255,6 +258,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDecoder:(id)arg1 obj:(CDStruct_b7fac349)arg2;
 - (id)initWithItemContentType:(id)arg1;
+- (id)initWithKnownKeysDictionary:(id)arg1;
 - (id)initWithMutableDictionary:(id)arg1;
 - (id)initWithSerializedAttributes:(id)arg1;
 - (id)instantMessageAddresses;

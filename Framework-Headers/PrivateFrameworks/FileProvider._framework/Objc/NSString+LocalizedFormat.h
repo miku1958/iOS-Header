@@ -17,6 +17,7 @@
 + (struct __CFStringTokenizer *)fp_wordTokenizer;
 + (id)fpfs_initWithFSEventsFlags:(unsigned int)arg1;
 + (void)setFp_defaultProviderDomainID:(id)arg1;
+- (id)_fp_escapedStringForSearchQuery;
 - (id)fp_alwaysObfuscatedFilename;
 - (id)fp_bouncedNameWithIndex:(long long)arg1;
 - (id)fp_displayNameFromFilenameWithHiddenPathExtension:(BOOL)arg1 isFolder:(BOOL)arg2;

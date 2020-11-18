@@ -105,6 +105,7 @@
 - (void)messageEntryRichTextView:(id)arg1 didTapMediaObject:(id)arg2;
 - (void)messageEntryRichTextView:(id)arg1 pastedURL:(id)arg2;
 - (BOOL)messageEntryRichTextView:(id)arg1 shouldPasteMediaObjects:(id)arg2;
+- (BOOL)messageEntryRichTextView:(id)arg1 shouldRecognizeGesture:(id)arg2;
 - (void)messageEntryRichTextViewDidTapHandwritingKey:(id)arg1;
 - (void)messageEntryRichTextViewWasTapped:(id)arg1 isLongPress:(BOOL)arg2;
 - (void)pluginPayloadWantsResize:(id)arg1;

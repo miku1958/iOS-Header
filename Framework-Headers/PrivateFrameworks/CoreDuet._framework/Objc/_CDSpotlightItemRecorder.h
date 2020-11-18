@@ -53,6 +53,7 @@
 - (void)addUserAction:(id)arg1 withItem:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)deleteAllInteractionsWithBundleID:(id)arg1 protectionClass:(id)arg2;
 - (void)deleteAllInteractionsWithBundleID:(id)arg1 protectionClass:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)deleteAllItemsWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deleteAllSearchableItemsWithBundleID:(id)arg1;
 - (void)deleteAllSearchableItemsWithBundleID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)deleteAllUserActivities:(id)arg1;

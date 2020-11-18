@@ -6,18 +6,18 @@
 
 #import <HomeKitDaemon/HMDAccessoryProfile.h>
 
-#import <HomeKitDaemon/HMDCameraBackingStoreDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDCameraClipManagerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDCameraProfileSettingsManagerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDCameraSettingProactiveReaderDelegate-Protocol.h>
 
-@class HMDCameraBackingStore, HMDCameraClipUserNotificationCenter, HMDCameraProfileSettingsManager, HMDCameraProfileSettingsModel, HMDCameraRecordingManager, HMDCameraResidentMessageHandler, HMDCameraSnapshotManager, HMDCameraStreamSnapshotHandler, HMDHAPAccessory, HMDPredicateUtilities, HMDService, HMFNetMonitor, NSMutableArray, NSSet, NSString, NSUUID;
+@class HMDCameraClipManager, HMDCameraClipUserNotificationCenter, HMDCameraProfileSettingsManager, HMDCameraProfileSettingsModel, HMDCameraRecordingManager, HMDCameraResidentMessageHandler, HMDCameraSnapshotManager, HMDCameraStreamSnapshotHandler, HMDHAPAccessory, HMDPredicateUtilities, HMDService, HMFNetMonitor, NSMutableArray, NSSet, NSString, NSUUID;
 
-@interface HMDCameraProfile : HMDAccessoryProfile <HMDCameraSettingProactiveReaderDelegate, HMDCameraProfileSettingsManagerDelegate, HMDCameraBackingStoreDelegate>
+@interface HMDCameraProfile : HMDAccessoryProfile <HMDCameraSettingProactiveReaderDelegate, HMDCameraProfileSettingsManagerDelegate, HMDCameraClipManagerDelegate>
 {
     BOOL _microphonePresent;
     BOOL _speakerPresent;
     NSUUID *_cloudZoneUUID;
-    HMDCameraBackingStore *_cameraBackingStore;
+    HMDCameraClipManager *_clipManager;
     HMDService *_recordingManagementService;
     HMDHAPAccessory *_hapAccessory;
     NSSet *_cameraStreamManagers;
@@ -32,12 +32,12 @@
     HMDPredicateUtilities *_predicateUtilities;
 }
 
-@property (readonly) HMDCameraBackingStore *cameraBackingStore; // @synthesize cameraBackingStore=_cameraBackingStore;
 @property (readonly, nonatomic) HMDCameraRecordingManager *cameraRecordingManager; // @synthesize cameraRecordingManager=_cameraRecordingManager;
 @property (readonly) HMDCameraProfileSettingsManager *cameraSettingsManager; // @synthesize cameraSettingsManager=_cameraSettingsManager;
 @property (readonly) NSSet *cameraStreamManagers; // @synthesize cameraStreamManagers=_cameraStreamManagers;
+@property (strong) HMDCameraClipManager *clipManager; // @synthesize clipManager=_clipManager;
 @property (strong) HMDCameraClipUserNotificationCenter *clipUserNotificationCenter; // @synthesize clipUserNotificationCenter=_clipUserNotificationCenter;
-@property (readonly) NSUUID *cloudZoneUUID; // @synthesize cloudZoneUUID=_cloudZoneUUID;
+@property (strong) NSUUID *cloudZoneUUID; // @synthesize cloudZoneUUID=_cloudZoneUUID;
 @property (readonly) HMDCameraProfileSettingsModel *currentSettingsModel;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -64,16 +64,15 @@
 - (void)_handleStreamControlRequest:(id)arg1;
 - (void)_setControlSupport;
 - (id)assistantObject;
-- (void)cameraBackingStore:(id)arg1 didAddClipSignificantEventNotification:(id)arg2;
-- (void)cameraBackingStore:(id)arg1 didAddSignificantEventNotification:(id)arg2;
-- (void)cameraBackingStore:(id)arg1 didDeleteClip:(id)arg2;
-- (void)cameraBackingStoreDidDisableCloudStorage:(id)arg1;
-- (void)cameraBackingStoreDidStart:(id)arg1;
-- (void)cameraBackingStoreDidStop:(id)arg1;
 - (void)cameraProfileSettingsManager:(id)arg1 canDisableRecordingWithCompletion:(CDUnknownBlockType)arg2;
 - (void)cameraProfileSettingsManager:(id)arg1 canEnableRecordingWithCompletion:(CDUnknownBlockType)arg2;
-- (void)cameraSettingProactiveReaderDidCompleteRead:(id)arg1 negotiateStreamMessageWasHandled:(BOOL)arg2;
+- (void)cameraSettingProactiveReaderDidCompleteRead:(id)arg1;
 - (BOOL)canPostSignificantEventNotification:(id)arg1;
+- (void)clipManager:(id)arg1 didAddSignificantEventNotification:(id)arg2;
+- (void)clipManager:(id)arg1 didDeleteClip:(id)arg2;
+- (void)clipManagerDidBecomeAvailable:(id)arg1;
+- (void)clipManagerDidBecomeUnavailable:(id)arg1;
+- (void)clipManagerDidDisableCloudStorage:(id)arg1;
 - (void)createCameraClipUserNotificationCenter;
 - (void)dealloc;
 - (id)dumpState;

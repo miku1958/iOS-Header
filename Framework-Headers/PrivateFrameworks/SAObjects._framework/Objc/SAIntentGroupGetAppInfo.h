@@ -13,6 +13,7 @@
 }
 
 @property (copy, nonatomic) NSArray *appIdentifyingInfo;
+@property (nonatomic) BOOL shouldSearchLocallyOnly;
 
 + (id)getAppInfo;
 + (id)getAppInfoWithDictionary:(id)arg1 context:(id)arg2;

@@ -46,7 +46,6 @@ __attribute__((visibility("hidden")))
 - (void)_invalidateBadgeView;
 - (BOOL)_needsUpdate;
 - (void)_setNeedsUpdate;
-- (void)_updateBadge;
 - (void)_updateBadgeInfoIfNeeded;
 - (void)_updateBadgeViewIfNeeded;
 - (void)_updateIfNeeded;
@@ -55,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)becomeReusable;
 - (id)loadView;
 - (void)prepareForReuse;
+- (void)toggleOverCaptureBadgeAppearance;
 - (void)viewDidLoad;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 

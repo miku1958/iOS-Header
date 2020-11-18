@@ -266,11 +266,13 @@
 + (void)preheatEditDependenciesIfNeeded;
 - (void).cxx_destruct;
 - (id)_allTools;
+- (BOOL)_canCompositionControllerBeReverted:(id)arg1;
 - (BOOL)_canShowWhileLocked;
 - (void)_cancelInProgressSaveRequest;
 - (void)_captureSnapshotOfBasePhotoWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_chooseInitialEditingTool;
 - (void)_clearBadgeConstraints;
+- (void)_clearToolbars;
 - (id)_composition;
 - (id)_createMediaView;
 - (void)_createPencilInteractionIfNeeded;
@@ -428,6 +430,7 @@
 - (BOOL)hasLoopingVideoAdjustment;
 - (id)imageProperties;
 - (id)initWithPhoto:(id)arg1 mediaProvider:(id)arg2 mediaDestination:(id)arg3;
+- (void)invalidateTrashedStateForOvercaptureResources;
 - (BOOL)isHighframeRateVideo;
 - (BOOL)isImageFrameReady;
 - (BOOL)isImageZooming;

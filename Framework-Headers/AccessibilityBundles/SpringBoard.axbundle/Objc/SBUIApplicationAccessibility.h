@@ -17,12 +17,16 @@
 - (id)_accessibilityCoverSheetViewController;
 - (BOOL)_accessibilityLeftOfHomeTodayViewIsVisible;
 - (BOOL)_accessibilityLeftOfLockTodayViewIsVisible;
+- (BOOL)_accessibilityOverlayTodayViewIsVisible;
 - (id)_accessibilityRootFolderController;
 - (id)_accessibilityRootFolderViewController;
+- (BOOL)_accessibilitySidebarTodayViewIsVisible;
+- (id)_accessibilitySidebarViewController;
 - (id)_accessibilitySpeakThisViewController;
 - (BOOL)_accessibilitySpotlightIsVisible;
 - (id)_accessibilitySpotlightMultiplexingViewController;
 - (id)_accessibilityTitleBarElement;
+- (id)_accessibilityTodayOverlayController;
 - (id)accessibilityLabel;
 
 @end

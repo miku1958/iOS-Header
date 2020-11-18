@@ -6,64 +6,48 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKit/HMFLogging-Protocol.h>
+#import <HomeKit/NSCopying-Protocol.h>
+#import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMCameraClipAssetContext, HMCameraClipVideoAssetContext, HMCameraClipVideoHLSPlaylistGenerator, HMCameraProfile, HMFUnfairLock, NSArray, NSData, NSDate, NSDictionary, NSMutableDictionary, NSSet, NSString, NSUUID, _HMCameraClip, _HMContext;
+@class HMCameraClipEncryptionContext, NSArray, NSData, NSDate, NSDictionary, NSSet, NSString, NSUUID;
 
-@interface HMCameraClip : NSObject <HMFLogging>
+@interface HMCameraClip : NSObject <NSCopying, NSSecureCoding>
 {
-    HMFUnfairLock *_lock;
-    BOOL _firstOfTheDay;
-    HMCameraClipAssetContext *_posterFramesAssetContext;
-    HMCameraClipAssetContext *_videoSegmentsAssetContext;
-    NSMutableDictionary *_assetTypeToActiveRequestMap;
-    HMCameraClipVideoHLSPlaylistGenerator *_hlsPlaylistGenerator;
-    HMCameraProfile *_cameraProfile;
-    NSArray *_eventNotifications;
-    _HMContext *_context;
-    _HMCameraClip *_internalClip;
-    NSUUID *_profileUniqueIdentifier;
-    CDUnknownBlockType _currentDateGenerator;
+    BOOL _complete;
+    NSUUID *_uniqueIdentifier;
+    NSDate *_startDate;
+    double _duration;
+    double _targetFragmentDuration;
+    NSArray *_posterFrames;
+    NSSet *_significantEvents;
+    NSString *_streamingAssetVersion;
+    HMCameraClipEncryptionContext *_encryptionContext;
+    NSArray *_videoSegments;
 }
 
-@property (readonly) NSMutableDictionary *assetTypeToActiveRequestMap; // @synthesize assetTypeToActiveRequestMap=_assetTypeToActiveRequestMap;
-@property (readonly, nonatomic) HMCameraProfile *cameraProfile; // @synthesize cameraProfile=_cameraProfile;
-@property (readonly, nonatomic, getter=isComplete) BOOL complete;
-@property (readonly) _HMContext *context; // @synthesize context=_context;
-@property (copy, nonatomic) CDUnknownBlockType currentDateGenerator; // @synthesize currentDateGenerator=_currentDateGenerator;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) double duration;
+@property (readonly, nonatomic, getter=isComplete) BOOL complete; // @synthesize complete=_complete;
+@property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
+@property (readonly, copy) HMCameraClipEncryptionContext *encryptionContext; // @synthesize encryptionContext=_encryptionContext;
 @property (readonly, copy) NSData *encryptionKey;
-@property (readonly, nonatomic) NSArray *eventNotifications; // @synthesize eventNotifications=_eventNotifications;
-@property (nonatomic, getter=isFirstOfTheDay) BOOL firstOfTheDay; // @synthesize firstOfTheDay=_firstOfTheDay;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSData *heroImageData;
-@property (strong, setter=setHLSPlaylistGenerator:) HMCameraClipVideoHLSPlaylistGenerator *hlsPlaylistGenerator; // @synthesize hlsPlaylistGenerator=_hlsPlaylistGenerator;
-@property (strong, nonatomic) _HMCameraClip *internalClip; // @synthesize internalClip=_internalClip;
-@property (readonly, nonatomic) NSArray *posterFrames;
-@property (strong) HMCameraClipAssetContext *posterFramesAssetContext; // @synthesize posterFramesAssetContext=_posterFramesAssetContext;
-@property (readonly, copy) NSUUID *profileUniqueIdentifier; // @synthesize profileUniqueIdentifier=_profileUniqueIdentifier;
-@property (readonly, nonatomic) NSSet *significantEvents;
-@property (readonly, nonatomic) NSDate *startDate;
-@property (readonly) Class superclass;
-@property (readonly, nonatomic) double targetFragmentDuration;
-@property (readonly, nonatomic) NSUUID *uniqueIdentifier;
-@property (readonly) HMCameraClipVideoAssetContext *videoAssetContext;
+@property (readonly, nonatomic) NSArray *posterFrames; // @synthesize posterFrames=_posterFrames;
+@property (readonly, nonatomic) NSSet *significantEvents; // @synthesize significantEvents=_significantEvents;
+@property (readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (readonly, copy) NSString *streamingAssetVersion; // @synthesize streamingAssetVersion=_streamingAssetVersion;
+@property (readonly, nonatomic) double targetFragmentDuration; // @synthesize targetFragmentDuration=_targetFragmentDuration;
+@property (readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, nonatomic) NSDictionary *videoAssetRequiredHTTPHeaders;
-@property (readonly, copy) NSArray *videoSegments;
-@property (strong) HMCameraClipAssetContext *videoSegmentsAssetContext; // @synthesize videoSegmentsAssetContext=_videoSegmentsAssetContext;
+@property (readonly, copy) NSArray *videoSegments; // @synthesize videoSegments=_videoSegments;
 
-+ (id)logCategory;
 + (id)requiredHTTPHeadersForStreamingAssetVersion:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_fetchAssetContext:(unsigned long long)arg1 currentAssetContext:(CDUnknownBlockType)arg2 buildFetchAssetMessage:(CDUnknownBlockType)arg3;
-- (long long)compare:(id)arg1;
-- (id)fetchPosterFramesAssetContext;
-- (id)fetchVideoAssetContext;
-- (id)initWithClip:(id)arg1 profileUniqueIdentifier:(id)arg2 context:(id)arg3;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithUniqueIdentifier:(id)arg1 startDate:(id)arg2 duration:(double)arg3 targetFragmentDuration:(double)arg4 isComplete:(BOOL)arg5 streamingAssetVersion:(id)arg6 encryptionContext:(id)arg7 posterFrames:(id)arg8 videoSegments:(id)arg9 significantEvents:(id)arg10;
 - (BOOL)isEqual:(id)arg1;
-- (void)updateWithClip:(id)arg1;
 
 @end
 

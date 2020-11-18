@@ -12,7 +12,6 @@
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *dataManager;
-    MISSING_TYPE *purchaseStarter;
     MISSING_TYPE *coordinator;
     MISSING_TYPE *configurationManager;
     MISSING_TYPE *purchaseSessionID;

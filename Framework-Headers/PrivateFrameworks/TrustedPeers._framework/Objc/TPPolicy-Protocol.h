@@ -14,6 +14,7 @@
 - (NSString *)mapKeyToView:(NSDictionary *)arg1;
 - (BOOL)peerInCategory:(NSString *)arg1 canAccessView:(NSString *)arg2;
 - (BOOL)trustedPeerInCategory:(NSString *)arg1 canIntroduceCategory:(NSString *)arg2;
+- (BOOL)unknownRedactions;
 - (unsigned long long)version;
 - (NSSet *)viewsForModel:(NSString *)arg1;
 @end

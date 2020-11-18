@@ -10,6 +10,5 @@
 - (Class)wf_objectClass;
 - (Class)wf_parameterClass;
 - (id)wf_parameterStateForIntentValue:(id)arg1 parameterDefinition:(id)arg2;
-- (void)wf_updateParameterDictionary:(id)arg1 forCodableAttribute:(id)arg2;
 @end
 

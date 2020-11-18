@@ -69,7 +69,7 @@
 - (void)enumerateIconsUsingBlock:(CDUnknownBlockType)arg1;
 - (unsigned long long)firstFreeSlotIndex;
 - (id)iconAtIndex:(unsigned long long)arg1;
-- (id)iconsOficonsOfClass:(Class)arg1;
+- (id)iconsOfClass:(Class)arg1;
 - (unsigned long long)indexForIcon:(id)arg1;
 - (id)indexPathsForContainedNodeIdentifier:(id)arg1 prefixPath:(id)arg2;
 - (id)init;

@@ -24,7 +24,7 @@
 - (id)_matchesInString:(id)arg1 forPattern:(id)arg2;
 - (id)initWithAlwaysFilteredPatterns:(id)arg1 sometimesFilteredPatterns:(id)arg2;
 - (void)reset;
-- (BOOL)shouldFilterString:(id)arg1 filterable:(BOOL *)arg2;
+- (BOOL)shouldFilterString:(id)arg1 coalescable:(BOOL *)arg2;
 
 @end
 

@@ -81,6 +81,8 @@
 @property (strong, nonatomic) id<SBRootFolderPageTransition> searchGestureTransition; // @synthesize searchGestureTransition=_searchGestureTransition;
 @property (readonly, nonatomic) UIView *searchableTodayWrapperView;
 @property (readonly, nonatomic) BOOL showsDoneButtonWhileEditing; // @synthesize showsDoneButtonWhileEditing=_showsDoneButtonWhileEditing;
+@property (readonly, nonatomic, getter=isSidebarEffectivelyVisible) BOOL sidebarEffectivelyVisible;
+@property (readonly, nonatomic) long long sidebarPageIndex;
 @property (nonatomic, getter=isSidebarPinned) BOOL sidebarPinned;
 @property (readonly, nonatomic) UIViewController<SBHSidebarProvider> *sidebarViewController; // @synthesize sidebarViewController=_sidebarViewController;
 @property (nonatomic) double sidebarVisibilityProgress;
@@ -160,6 +162,9 @@
 - (void)folderView:(id)arg1 willAnimateScrollToPageIndex:(long long)arg2;
 - (void)folderViewDidEndScrolling:(id)arg1;
 - (void)folderViewDidScroll:(id)arg1;
+- (void)folderViewWillBeginDragging:(id)arg1;
+- (void)folderViewWillBeginScrolling:(id)arg1;
+- (void)folderViewWillEndDragging:(id)arg1;
 - (void)folderViewWillUpdatePageDuringScrolling:(id)arg1;
 - (id)iconViewForIcon:(id)arg1 location:(id)arg2;
 - (id)initWithConfiguration:(id)arg1;
@@ -194,9 +199,7 @@
 - (void)rootFolderView:(id)arg1 didEndOverscrollOnFirstPageWithVelocity:(double)arg2;
 - (void)rootFolderView:(id)arg1 didOverscrollOnFirstPageByAmount:(double)arg2;
 - (void)rootFolderView:(id)arg1 wantsToAdjustTodayContentForEdgeBounceForScrollOffset:(struct CGPoint)arg2;
-- (void)rootFolderViewDidChangeSidebarPinned:(id)arg1;
 - (id)rootFolderViewIfLoaded;
-- (BOOL)rootFolderViewShouldAllowOverscrollOnFirstPage:(id)arg1;
 - (void)searchGesture:(id)arg1 changedPercentComplete:(double)arg2;
 - (void)searchGesture:(id)arg1 completedShowing:(BOOL)arg2;
 - (void)searchGesture:(id)arg1 resetAnimated:(BOOL)arg2;

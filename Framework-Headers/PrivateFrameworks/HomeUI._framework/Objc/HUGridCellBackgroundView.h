@@ -25,6 +25,7 @@
 @property (strong, nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
 @property (nonatomic, getter=isPressed) BOOL pressed; // @synthesize pressed=_pressed;
 
++ (id)_sharedBlurEffect;
 - (void).cxx_destruct;
 - (void)_createCCMaterialViewIfNecessary;
 - (void)_createEffectViewIfNecessary;

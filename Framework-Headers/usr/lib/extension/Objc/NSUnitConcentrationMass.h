@@ -14,6 +14,7 @@
 
 + (id)baseUnit;
 + (id)gramsPerLiter;
++ (void)initialize;
 + (id)milligramsPerDeciliter;
 + (id)millimolesPerLiterWithGramsPerMole:(double)arg1;
 

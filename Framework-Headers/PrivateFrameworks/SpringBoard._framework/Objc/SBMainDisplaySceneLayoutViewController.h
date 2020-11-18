@@ -12,7 +12,7 @@
 #import <SpringBoard/SBSceneHandleObserver-Protocol.h>
 #import <SpringBoard/TFBetaLaunchHandleActivationDelegate-Protocol.h>
 
-@class FBScene, NSArray, NSLayoutConstraint, NSMutableSet, NSObject, NSString, SBFHomeGrabberSettings, SBHomeGrabberRotationView, SBHomeGrabberView, SBMainDisplayLayoutState, SBMainDisplaySceneLayoutGestureManager, SBMainDisplaySceneLayoutStatusBarView, SBOrientationTransformWrapperView, SBSceneHandleBlockObserver, SBSeparatorView, SBUIKeyboardHomeAffordanceAssertion, UIApplicationSceneClientSettingsDiffInspector, UIView;
+@class FBScene, NSArray, NSLayoutConstraint, NSMutableSet, NSObject, NSString, SBFHomeGrabberSettings, SBHomeGrabberRotationView, SBHomeGrabberView, SBKeyboardHomeAffordanceAssertion, SBMainDisplayLayoutState, SBMainDisplaySceneLayoutGestureManager, SBMainDisplaySceneLayoutStatusBarView, SBOrientationTransformWrapperView, SBSceneHandleBlockObserver, SBSeparatorView, UIApplicationSceneClientSettingsDiffInspector, UIView;
 @protocol OS_dispatch_queue;
 
 @interface SBMainDisplaySceneLayoutViewController : SBSceneLayoutViewController <SBMainDisplaySceneLayoutStatusBarViewDataSource, PTSettingsKeyObserver, SBSceneHandleObserver, TFBetaLaunchHandleActivationDelegate, SBDeviceApplicationSceneStatusBarBreadcrumbProviderObserver>
@@ -32,7 +32,7 @@
     UIApplicationSceneClientSettingsDiffInspector *_clientSettingsInspector;
     BOOL _isKeyboardShowing;
     FBScene *_medusaKeyboardScene;
-    SBUIKeyboardHomeAffordanceAssertion *_keyboardHomeAffordanceAssertion;
+    SBKeyboardHomeAffordanceAssertion *_keyboardHomeAffordanceAssertion;
     NSMutableSet *_activeBetaLaunchHandles;
     NSObject<OS_dispatch_queue> *_betaLaunchUIActivationQueue;
     NSLayoutConstraint *_homeGrabberTopConstraint;

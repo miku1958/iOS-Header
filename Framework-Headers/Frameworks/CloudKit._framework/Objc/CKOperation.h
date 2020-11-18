@@ -17,6 +17,7 @@
     BOOL _isOutstandingOperation;
     BOOL _usesBackgroundSession;
     BOOL _runningDiscretionaryOperation;
+    BOOL _failedToScheduleDiscretionaryOperation;
     BOOL _isFinished;
     BOOL _isFinishingOnCallbackQueue;
     BOOL _clouddConnectionInterrupted;
@@ -62,6 +63,7 @@
 @property (nonatomic) unsigned long long discretionaryWhenBackgroundedState; // @synthesize discretionaryWhenBackgroundedState=_discretionaryWhenBackgroundedState;
 @property (nonatomic) unsigned long long duetPreClearedMode; // @synthesize duetPreClearedMode=_duetPreClearedMode;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
+@property (nonatomic) BOOL failedToScheduleDiscretionaryOperation; // @synthesize failedToScheduleDiscretionaryOperation=_failedToScheduleDiscretionaryOperation;
 @property (readonly, nonatomic) NSString *flowControlKey;
 @property (strong, nonatomic) CKOperationGroup *group; // @synthesize group=_group;
 @property (nonatomic) BOOL isExecuting;
@@ -98,11 +100,13 @@
 - (void).cxx_destruct;
 - (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
+- (void)_cancelDaemonOperation;
 - (id)_findBestThrottleError:(id)arg1;
 - (void)_finishInternalOnCallbackQueueWithError:(id)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleCheckpointCallback:(id)arg1;
 - (void)_handleCompletionCallback:(id)arg1;
+- (void)_handleDiscretionarySuspensionCallback;
 - (void)_handleProgressCallback:(id)arg1;
 - (void)_handleProgressCallback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleRemoteProxyFailureWithError:(id)arg1;

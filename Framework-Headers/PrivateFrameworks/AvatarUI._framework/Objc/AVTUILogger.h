@@ -173,7 +173,7 @@
 - (void)logRenderingModelPreset:(id)arg1;
 - (void)logRenderingRecord:(id)arg1 size:(struct CGSize)arg2;
 - (void)logRenderingStickerEnd:(id)arg1;
-- (void)logRenderingStickerStart:(id)arg1;
+- (void)logRenderingStickerStart:(id)arg1 forRecord:(id)arg2;
 - (void)logRequestingPreLoadingTask:(id)arg1 forIndex:(unsigned long long)arg2 section:(unsigned long long)arg3;
 - (void)logRequestingThumbnailForIndex:(unsigned long long)arg1 section:(id)arg2;
 - (void)logResetSyncReason:(unsigned long long)arg1;

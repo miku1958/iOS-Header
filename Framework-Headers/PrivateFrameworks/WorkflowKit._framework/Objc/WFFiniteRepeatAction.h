@@ -12,7 +12,7 @@
 }
 
 - (unsigned long long)numberOfLoops;
-- (id)outputVariableWithVariableProvider:(id)arg1;
+- (id)outputVariableWithVariableProvider:(id)arg1 UUIDProvider:(id)arg2;
 - (id)repeatCountVariableName;
 - (long long)repeatCountWithVariableSource:(id)arg1;
 - (id)repeatInputVariableName;

@@ -24,6 +24,7 @@
 @property (readonly, nonatomic, getter=isFingerOn) BOOL fingerOn;
 @property (readonly, nonatomic) BOOL hasBiometricAuthenticationCapabilityEnabled;
 @property (readonly, nonatomic) BOOL hasEnrolledIdentities;
+@property (readonly, nonatomic) BOOL hasMesaSupport;
 @property (readonly, nonatomic) BOOL hasPearlSupport;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isMatchingAllowed) BOOL matchingAllowed;

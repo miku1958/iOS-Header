@@ -125,6 +125,7 @@
 - (id)childAccountsWithAccountTypeIdentifier:(id)arg1;
 - (struct __SecIdentity *)copySecIdentity;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)correctPersonaScopedForAccount;
 - (id)credentialWithError:(id *)arg1;
 - (void)credentialsChanged:(id)arg1;
 - (void)dealloc;
@@ -136,6 +137,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithManagedAccount:(id)arg1;
 - (id)initWithManagedAccount:(id)arg1 accountStore:(id)arg2;
+- (BOOL)isDataSeparatedAccount;
 - (BOOL)isEnabledForDataclass:(id)arg1;
 - (BOOL)isEnabledToSyncDataclass:(id)arg1;
 - (BOOL)isPropertyDirty:(id)arg1;
@@ -143,6 +145,7 @@
 - (void)markAllPropertiesDirty;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (id)owningBundleID;
+- (id)personaIdentifier;
 - (id)portableCopy;
 - (id)propertiesForDataclass:(id)arg1;
 - (id)propertyForKey:(id)arg1;

@@ -17,11 +17,13 @@
     NSMutableOrderedSet *_selectedOptions;
     NSArray *_sections;
     NSString *_nameOfAnyOption;
+    NSString *_mainSectionTitle;
 }
 
 @property (strong, nonatomic) NSOrderedSet *allOptions; // @synthesize allOptions=_allOptions;
 @property (nonatomic) BOOL anyOption; // @synthesize anyOption=_anyOption;
 @property (weak, nonatomic) id<WFTriggerTableViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy, nonatomic) NSString *mainSectionTitle; // @synthesize mainSectionTitle=_mainSectionTitle;
 @property (readonly, copy, nonatomic) NSString *nameOfAnyOption; // @synthesize nameOfAnyOption=_nameOfAnyOption;
 @property (readonly, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property (strong, nonatomic) NSMutableOrderedSet *selectedOptions; // @synthesize selectedOptions=_selectedOptions;
@@ -30,11 +32,12 @@
 - (void)cancel:(id)arg1;
 - (void)done:(id)arg1;
 - (id)infoForSection:(long long)arg1;
-- (id)initWithOptions:(id)arg1 selectedOptions:(id)arg2 nameOfAnyOption:(id)arg3;
+- (id)initWithOptions:(id)arg1 selectedOptions:(id)arg2 nameOfAnyOption:(id)arg3 mainSectionTitle:(id)arg4;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)updateDoneButtonEnabledState;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

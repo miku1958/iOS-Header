@@ -6,36 +6,29 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <AppSSOUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <AppSSOUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class NSDictionary, NSString, UINavigationBar, UIView;
+@class NSString;
 @protocol SOUIAuthorizationViewControllerDelegate;
 
-@interface SOUIAuthorizationViewController : UIViewController <UIViewControllerTransitioningDelegate>
+@interface SOUIAuthorizationViewController : UIViewController <UIViewControllerTransitioningDelegate, UIGestureRecognizerDelegate>
 {
     UIViewController *_extensionViewController;
-    NSDictionary *_hints;
-    double _sheetHeight;
     id<SOUIAuthorizationViewControllerDelegate> _delegate;
-    UINavigationBar *_navigationBar;
-    UIView *_extensionViewContainer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<SOUIAuthorizationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (weak, nonatomic) UIView *extensionViewContainer; // @synthesize extensionViewContainer=_extensionViewContainer;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) UINavigationBar *navigationBar; // @synthesize navigationBar=_navigationBar;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_cancel;
-- (void)cancelButtonClicked:(id)arg1;
+- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)initWithExtensionViewController:(id)arg1 hints:(id)arg2;
 - (void)loadView;
-- (id)nibBundle;
-- (id)nibName;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidAppear:(BOOL)arg1;

@@ -36,6 +36,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long environment; // @synthesize environment=_environment;
+@property (readonly, nonatomic) NSString *galleryIdentifier;
 @property (readonly, nonatomic) WFActionGroupingCache *groupingCache; // @synthesize groupingCache=_groupingCache;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hiddenFromLibraryAndSync;
@@ -52,6 +53,7 @@
 @property (nonatomic) long long remoteQuarantineStatus;
 @property (readonly, nonatomic, getter=isResidentCompatible) BOOL residentCompatible;
 @property (nonatomic) BOOL saveDisabled; // @synthesize saveDisabled=_saveDisabled;
+@property (readonly, nonatomic) NSString *source;
 @property (readonly, nonatomic) id<WFRecordStorageProvider> storageProvider; // @synthesize storageProvider=_storageProvider;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) WFVariableAvailability *variableAvailability; // @synthesize variableAvailability=_variableAvailability;
@@ -68,6 +70,7 @@
 + (id)supportedInputClasses;
 + (BOOL)supportsSecureCoding;
 + (id)workflowWithReference:(id)arg1 storageProvider:(id)arg2 error:(id *)arg3;
++ (id)workflowWithReference:(id)arg1 storageProvider:(id)arg2 migrateIfNecessary:(BOOL)arg3 environment:(long long)arg4 error:(id *)arg5;
 - (void).cxx_destruct;
 - (void)action:(id)arg1 didChangeVariableName:(id)arg2 to:(id)arg3;
 - (void)action:(id)arg1 parameterStateDidChangeForKey:(id)arg2;

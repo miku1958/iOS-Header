@@ -132,7 +132,7 @@
 - (void)CSMediaPlayingMonitor:(id)arg1 didReceiveMediaPlayingChanged:(long long)arg2;
 - (void)CSTimerMonitor:(id)arg1 didReceiveTimerChanged:(long long)arg2;
 - (void)CSXPCClient:(id)arg1 didDisconnect:(BOOL)arg2;
-- (BOOL)_activateAudioSession:(id *)arg1;
+- (BOOL)_activateAudioSession:(id *)arg1 forRetry:(BOOL)arg2;
 - (BOOL)_activateAudioSessionWithDelay:(double)arg1 error:(id *)arg2;
 - (BOOL)_canPlayPhaticDuringMediaPlayback;
 - (void)_cancelPendingAudioSessionActivateForReason:(id)arg1;
@@ -225,6 +225,7 @@
 - (BOOL)setAlertSoundFromURL:(id)arg1 forType:(long long)arg2;
 - (BOOL)setCurrentContext:(id)arg1 error:(id *)arg2;
 - (void)setEndpointAnalyzerDelegate:(id)arg1;
+- (void)setLanguageDetectorInteractionID:(id)arg1;
 - (void)setMeteringEnabled:(BOOL)arg1;
 - (BOOL)setRecordBufferDuration:(double)arg1;
 - (void)setSynchronousCallbackEnabled:(BOOL)arg1;

@@ -33,6 +33,7 @@
 + (struct __CFArray *)legacyCityForCity:(id)arg1;
 + (id)newCitiesByIdentifierMap:(id)arg1;
 + (id)sharedManager;
+- (id)_cityForClassicIdentifier:(id)arg1 commaSearchOptions:(unsigned long long)arg2;
 - (id)_cityForTimeZone:(id)arg1 localeCode:(id)arg2;
 - (id)_defaultCityForTimeZone:(id)arg1 localeCode:(id)arg2;
 - (void)_whileDatabaseLocked_ensureGreenKeyValueCaches;

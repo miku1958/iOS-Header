@@ -84,7 +84,7 @@
 + (id)sharedInstanceIfExists;
 - (void).cxx_destruct;
 - (void)_acquireAssertion:(id)arg1;
-- (CDUnknownBlockType)_activateSwitcherValidatorWithEventLabel:(id)arg1;
+- (CDUnknownBlockType)_activateSwitcherValidatorWithEventLabel:(id)arg1 animated:(BOOL)arg2;
 - (void)_addAcquiredTransientOverlayViewController:(id)arg1 forAppLayout:(id)arg2;
 - (void)_addAppLayoutToFront:(id)arg1;
 - (void)_addAppLayoutToFront:(id)arg1 removeAppLayout:(id)arg2;
@@ -107,8 +107,8 @@
 - (void)_deleteAppLayout:(id)arg1 forReason:(long long)arg2;
 - (void)_destroyAppListCache;
 - (void)_destroyFloatingAppListCache;
-- (BOOL)_dismissSwitcherNoninteractivelyToAppLayout:(id)arg1 dismissFloatingSwitcher:(BOOL)arg2;
-- (CDUnknownBlockType)_dismissSwitcherValidatorToAppLayout:(id)arg1 dismissFloatingSwitcher:(BOOL)arg2 withEventLabel:(id)arg3;
+- (BOOL)_dismissSwitcherNoninteractivelyToAppLayout:(id)arg1 dismissFloatingSwitcher:(BOOL)arg2 animated:(BOOL)arg3;
+- (CDUnknownBlockType)_dismissSwitcherValidatorToAppLayout:(id)arg1 dismissFloatingSwitcher:(BOOL)arg2 withEventLabel:(id)arg3 animated:(BOOL)arg4;
 - (void)_doUglySiriActivationThingsIfNecessary:(id)arg1;
 - (id)_entityForDisplayItem:(id)arg1;
 - (void)_enumerateTransientOverlayViewControllersUsingBlock:(CDUnknownBlockType)arg1;
@@ -144,14 +144,14 @@
 - (void)_switcherModelChanged:(id)arg1;
 - (void)_switcherServiceAdded:(id)arg1;
 - (void)_switcherServiceRemoved:(id)arg1;
-- (CDUnknownBlockType)_toggleSwitcherTransitionValidator;
+- (CDUnknownBlockType)_toggleSwitcherTransitionValidatorAnimated:(BOOL)arg1;
 - (id)_transientOverlayPesentationManager;
 - (void)_updateAssertion:(id)arg1;
 - (void)_updateBestAppSuggestion;
 - (void)_updateContentViewInterfaceOrientation:(long long)arg1;
 - (void)_updateDisplayLayoutElementForLayoutState:(id)arg1;
 - (void)_warmAppInfoForAppsInList;
-- (BOOL)activateMainSwitcherNoninteractivelyWithSource:(long long)arg1;
+- (BOOL)activateMainSwitcherNoninteractivelyWithSource:(long long)arg1 animated:(BOOL)arg2;
 - (id)activeTransientOverlayPresentedAppLayoutForSwitcherContentController:(id)arg1;
 - (void)addAppLayoutForTransientOverlayViewController:(id)arg1;
 - (id)animationControllerForTransitionRequest:(id)arg1;
@@ -162,8 +162,8 @@
 - (void)cancelActiveGestureForSwitcherContentController:(id)arg1;
 - (id)createWorkspaceTransientOverlayForAppLayout:(id)arg1;
 - (void)dealloc;
-- (BOOL)dismissAllSwitchersNoninteractively;
-- (BOOL)dismissMainSwitcherNoninteractively;
+- (BOOL)dismissAllSwitchersNoninteractivelyAnimated:(BOOL)arg1;
+- (BOOL)dismissMainSwitcherNoninteractivelyAnimated:(BOOL)arg1;
 - (void)eventSource:(id)arg1 userTouchedApplication:(id)arg2;
 - (void)failMultitaskingGesturesForReason:(id)arg1;
 - (void)fluidSwitcherGestureManager:(id)arg1 didBeginDraggingWindowWithSceneIdentifier:(id)arg2;
@@ -228,12 +228,13 @@
 - (void)switcherContentControllerEndTethering:(id)arg1;
 - (void)switcherDemoFilteringControllerDidChangeHiddenApplicationBundleIDs:(id)arg1;
 - (long long)switcherInterfaceOrientationForContentController:(id)arg1;
-- (BOOL)toggleMainSwitcherNoninteractivelyWithSource:(long long)arg1;
+- (BOOL)toggleMainSwitcherNoninteractivelyWithSource:(long long)arg1 animated:(BOOL)arg2;
 - (void)updateUserInteractionEnabledForSwitcherContentController:(id)arg1;
 - (void)updateWindowVisibilityForSwitcherContentController:(id)arg1;
 - (id)viewControllerForTransientOverlayAppLayout:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (id)windowsToExcludeForCrossfadeSnapshotForSwitcherContentController:(id)arg1;
 
 @end
 

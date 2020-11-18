@@ -28,6 +28,7 @@
 - (BOOL)saveEvents:(id)arg1 error:(id *)arg2;
 - (BOOL)saveSyncedDownWindows:(id)arg1 peer:(id)arg2 transportName:(id)arg3 error:(id *)arg4;
 - (void)setLastSyncDownDeletionDate:(id)arg1 previousDate:(id)arg2 forPeer:(id)arg3 transportName:(id)arg4 error:(id *)arg5;
+- (id)sortedEventsFromSyncWindows:(id)arg1 streamNames:(id)arg2 compatibility:(id)arg3 limit:(unsigned long long)arg4 fetchOrder:(long long)arg5 error:(id *)arg6;
 - (id)sortedEventsFromSyncWindows:(id)arg1 streamNames:(id)arg2 limit:(unsigned long long)arg3 fetchOrder:(long long)arg4 error:(id *)arg5;
 - (id)sortedSyncDownWindowsOverlappingBetweenDate:(id)arg1 andDate:(id)arg2 peer:(id)arg3 error:(id *)arg4;
 - (id)syncHistoryForPeer:(id)arg1 streamName:(id)arg2 transportName:(id)arg3 type:(id)arg4 error:(id *)arg5;

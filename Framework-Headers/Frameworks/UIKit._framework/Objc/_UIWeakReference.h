@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 @property (weak, nonatomic) id object; // @synthesize object=_object;
 
++ (id)weakReferenceWrappingObject:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithObject:(id)arg1;

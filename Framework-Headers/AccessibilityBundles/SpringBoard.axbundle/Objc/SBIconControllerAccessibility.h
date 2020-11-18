@@ -29,6 +29,7 @@
 - (BOOL)_axIsShowingHomeScreenTodayView;
 - (BOOL)_axIsSidebarPinned;
 - (id)_axLabelForIcons:(id)arg1;
+- (BOOL)_axNeedsToDismissHomeScreenTodayView;
 - (id)_axRecipientIconView;
 - (BOOL)_axSetTodayViewVisible:(BOOL)arg1;
 - (BOOL)_axShowTodayView;

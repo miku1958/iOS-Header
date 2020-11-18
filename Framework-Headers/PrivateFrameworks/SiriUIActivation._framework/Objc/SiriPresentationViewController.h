@@ -126,6 +126,7 @@
 - (BOOL)_handleTapButtonBehavior:(long long)arg1;
 - (BOOL)_handleTapDismissal:(long long)arg1;
 - (BOOL)_hasTestingInput;
+- (void)_invalidateCarSiriButtonHoldToTalkTimer;
 - (BOOL)_isDelayingSessionEnd;
 - (BOOL)_isDeviceButton:(long long)arg1;
 - (void)_openURL:(id)arg1 bundleId:(id)arg2 delaySessionEndForTTS:(BOOL)arg3 punchoutStyle:(long long)arg4 completion:(CDUnknownBlockType)arg5;
@@ -220,6 +221,7 @@
 - (void)siriViewController:(id)arg1 didFinishTest:(id)arg2;
 - (void)siriViewController:(id)arg1 didHideStatusView:(BOOL)arg2;
 - (void)siriViewController:(id)arg1 didReadBulletinWithIdentifier:(id)arg2;
+- (void)siriViewController:(id)arg1 didUpdateAudioCategoriesDisablingVolumeHUD:(id)arg2;
 - (void)siriViewController:(id)arg1 failTest:(id)arg2 withReason:(id)arg3;
 - (void)siriViewController:(id)arg1 launchApplicationWithBundleIdentifier:(id)arg2 withURL:(id)arg3 launchOptions:(long long)arg4 replyHandler:(CDUnknownBlockType)arg5;
 - (BOOL)siriViewController:(id)arg1 openURL:(id)arg2 appBundleID:(id)arg3 allowSiriDismissal:(BOOL)arg4;
@@ -243,6 +245,7 @@
 - (void)stopActivationWatchdogTimerIfNeededThen:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
 - (unsigned long long)supportedInterfaceOrientations;
 - (oneway void)turnOnScreenAfterPocketStateFetch;
+- (oneway void)updateActiveInterfaceOrientation:(id)arg1 willAnimationWithDuration:(id)arg2;
 - (oneway void)updateCurrentLockState:(id)arg1;
 - (void)userRelevantEventDidOccurInSiriViewController:(id)arg1;
 - (void)viewWillLayoutSubviews;

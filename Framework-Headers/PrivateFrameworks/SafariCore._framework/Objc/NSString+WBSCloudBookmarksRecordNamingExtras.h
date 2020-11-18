@@ -37,6 +37,7 @@
 - (BOOL)safari_isVersionStringBetweenVersionString:(id)arg1 andVersionString:(id)arg2;
 - (BOOL)safari_isVersionStringGreaterThanVersionString:(id)arg1;
 - (long long)safari_localizedCompareSortingEmptyStringAndNumericPrefixToEnd:(id)arg1;
+- (BOOL)safari_looksLikeWillRedirectToURLStringAfterLogin:(id)arg1;
 - (id)safari_setOfAllSubstringsWithMinimumLength:(unsigned long long)arg1;
 - (id)safari_simplifiedSiteNameForCredentialLookup;
 - (id)safari_simplifiedUserVisibleURLString;

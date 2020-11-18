@@ -10,7 +10,6 @@
 
 @interface HLPHelpBookController : HLPRemoteDataController
 {
-    BOOL _supportsDarkMode;
     BOOL _hasSectionIcon;
     BOOL _fullBookView;
     long long _contentFormatVersion;
@@ -48,7 +47,6 @@
 @property (strong, nonatomic) HLPHelpSectionItem *rootSectionItem; // @synthesize rootSectionItem=_rootSectionItem;
 @property (readonly, nonatomic, getter=isSemanticHTML) BOOL semanticHTML; // @dynamic semanticHTML;
 @property (nonatomic) long long serverType; // @synthesize serverType=_serverType;
-@property (nonatomic) BOOL supportsDarkMode; // @synthesize supportsDarkMode=_supportsDarkMode;
 @property (strong, nonatomic) NSString *topicPathFormat; // @synthesize topicPathFormat=_topicPathFormat;
 @property (strong, nonatomic) NSString *welcomeTopicIdentifier; // @synthesize welcomeTopicIdentifier=_welcomeTopicIdentifier;
 

@@ -14,7 +14,7 @@
 - (id)itemVariableName;
 - (id)itemVariableNameWithScopeLevel:(unsigned long long)arg1;
 - (unsigned long long)numberOfLoops;
-- (id)outputVariableWithVariableProvider:(id)arg1;
+- (id)outputVariableWithVariableProvider:(id)arg1 UUIDProvider:(id)arg2;
 - (id)providedVariableNames;
 - (id)repeatCollectionWithVariableSource:(id)arg1;
 - (void)resetEvaluationCriteriaWithVariableSource:(id)arg1;

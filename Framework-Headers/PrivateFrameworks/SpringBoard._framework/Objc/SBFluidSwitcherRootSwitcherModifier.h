@@ -61,6 +61,8 @@
 - (struct CGPoint)scrollProvidingModifier:(id)arg1 contentOffsetVelocityConsideringNextContentOffset:(struct CGPoint)arg2;
 - (struct CGPoint)scrollProvidingModifier:(id)arg1 convertScrollViewPointToContainerViewCoordinateSpace:(struct CGPoint)arg2;
 - (void)setDelegate:(id)arg1;
+- (id)tetheredInsertionModifierFortetheredInsertionEvent:(id)arg1;
+- (id)tetheredRemovalModifierForTetheredRemovalEvent:(id)arg1;
 - (id)transitionModifierForInlineTransitionEvent:(id)arg1;
 - (id)transitionModifierForMainTransitionEvent:(id)arg1;
 

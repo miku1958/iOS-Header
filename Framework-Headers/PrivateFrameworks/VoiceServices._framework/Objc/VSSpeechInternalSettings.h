@@ -24,6 +24,7 @@
 @property (nonatomic) BOOL disableServerTTS;
 @property (nonatomic) BOOL enableAudioDump;
 @property (nonatomic) BOOL enableLocalVoices;
+@property (nonatomic) BOOL forceOsprey;
 @property (nonatomic) BOOL forceServerTTS;
 @property (readonly, nonatomic) BOOL internalBuild; // @synthesize internalBuild=_internalBuild;
 @property (strong, nonatomic) NSUserDefaults *internalDefaults; // @synthesize internalDefaults=_internalDefaults;

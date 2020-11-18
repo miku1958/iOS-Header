@@ -10,7 +10,7 @@
 #import <MapsSupport/MSPSenderMessageStrategyDelegate-Protocol.h>
 #import <MapsSupport/MSPSharedTripGroupSessionDelegate-Protocol.h>
 
-@class MSPGroupSessionStorage, MSPNavigationListener, MSPSenderLiveStrategy, MSPSenderMessageStrategy, MSPSenderMinimalStrategy, MSPSharedTripGroupSession, MSPSharedTripRelay, MSPSharedTripStorageController, NSMutableSet, NSString;
+@class MSPGroupSessionStorage, MSPNavigationListener, MSPSenderLiveStrategy, MSPSenderMessageStrategy, MSPSenderMinimalStrategy, MSPSharedTripGroupSession, MSPSharedTripRelay, MSPSharedTripStorageController, NSArray, NSMutableSet, NSString;
 @protocol MSPSenderETAControllerDelegate, OS_os_transaction;
 
 __attribute__((visibility("hidden")))
@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
     NSObject<MSPSenderETAControllerDelegate> *_delegate;
 }
 
+@property (readonly, nonatomic) NSArray *activeHandles;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) NSObject<MSPSenderETAControllerDelegate> *delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -38,12 +39,15 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_cleanObjects;
 - (void)_createGroupSessionIfNeededWithIdentifier:(id)arg1;
+- (void)_invalidateActiveHandles;
+- (void)_invalidateSharedTripWithError:(id)arg1;
 - (void)_restoreLastSession;
 - (void)_sendfinishedToIdentifiers:(id)arg1;
 - (void)_startNavigationListener;
 - (void)_startingGroupSession;
 - (void)_stopNavigationListener;
 - (void)_updateStorage;
+- (void)dealloc;
 - (void)groupSession:(id)arg1 participantDidJoin:(id)arg2;
 - (void)groupSession:(id)arg1 participantDidLeave:(id)arg2;
 - (void)groupSessionEnded:(id)arg1 withError:(id)arg2;

@@ -9,12 +9,13 @@
 #import <AssistantUI/SRSiriViewControllerHosting-Protocol.h>
 #import <AssistantUI/SiriUIPresentationRemoteControlling-Protocol.h>
 
-@class AFApplicationInfo, NSString, NSXPCConnection;
+@class AFApplicationInfo, NSArray, NSString, NSXPCConnection;
 @protocol AFUISiriRemoteSceneViewControllerDataSource, AFUISiriRemoteSceneViewControllerDelegate;
 
 @interface AFUISiriRemoteSceneViewController : AFUISceneHostingViewController <SRSiriViewControllerHosting, SiriUIPresentationRemoteControlling>
 {
     BOOL _connectionHasBeenResumed;
+    NSArray *_audioCategoriesDisablingVolumeHUD;
     id<AFUISiriRemoteSceneViewControllerDataSource> _dataSource;
     id<AFUISiriRemoteSceneViewControllerDelegate> _delegate;
     AFApplicationInfo *_viewServiceApplicationInfo;
@@ -33,6 +34,7 @@
 + (id)exportedInterface;
 + (id)remoteObjectInterface;
 - (void).cxx_destruct;
+- (void)_audioCategoriesDisablingVolumeHUDDidChangeTo:(id)arg1;
 - (id)_connection;
 - (void)_interrupted;
 - (void)_invalidate;
@@ -40,6 +42,7 @@
 - (void)applicationDidBecomeActive;
 - (void)applicationWillEnterForeground;
 - (void)applicationWillResignActive;
+- (void)dealloc;
 - (void)didReceiveBugButtonLongPress;
 - (void)didReceiveHelpAction;
 - (void)didReceiveReportBugAction;
@@ -122,9 +125,9 @@
 - (id)speechSynthesisDelegate;
 - (void)startHostingSceneForConfiguration:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)startRequestForText:(id)arg1;
+- (void)updateRemoteSceneWithFrontMostAppInterfaceOrientation:(long long)arg1;
 - (void)updateToPresentationWithIdentifier:(id)arg1 presentationProperties:(id)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)viewDidAppear:(BOOL)arg1;
-- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

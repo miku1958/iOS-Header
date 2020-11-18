@@ -11,6 +11,7 @@
 
 @interface HMDAccessoryTransaction : HMDBackingStoreModelObject
 {
+    NSString *_configuredNetworkProtectionGroupUUIDString;
     NSObject<OS_dispatch_group> *_configurationTracker;
 }
 
@@ -19,6 +20,7 @@
 @property (strong, nonatomic) NSString *configurationAppIdentifier; // @dynamic configurationAppIdentifier;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *configurationTracker; // @synthesize configurationTracker=_configurationTracker;
 @property (strong, nonatomic) NSString *configuredName; // @dynamic configuredName;
+@property (strong, nonatomic) NSString *configuredNetworkProtectionGroupUUIDString; // @synthesize configuredNetworkProtectionGroupUUIDString=_configuredNetworkProtectionGroupUUIDString;
 @property (strong, nonatomic) NSNumber *currentNetworkProtectionMode; // @dynamic currentNetworkProtectionMode;
 @property (strong, nonatomic) NSString *firmwareVersion; // @dynamic firmwareVersion;
 @property (strong, nonatomic) NSString *identifier; // @dynamic identifier;

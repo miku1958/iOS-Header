@@ -156,6 +156,7 @@
 - (id)_onWorkerQueue_initializeConnectionWithOptions:(unsigned int)arg1;
 - (id)_onWorkerQueue_loadDeviceInfo;
 - (id)_onWorkerQueue_openSecuritySession;
+- (id)_onWorkerQueue_reRegisterCustomOrigin;
 - (id)_onWorkerQueue_setupCustomOrigin;
 - (id)_onWorkerQueue_syncClientState;
 - (void)_transportDeviceInfoDidChangeNotification:(id)arg1;

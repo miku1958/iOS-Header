@@ -35,6 +35,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_editingDidEnd;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (double)_stopwatchCurrentTime;
 - (void)_updateDialProgress;

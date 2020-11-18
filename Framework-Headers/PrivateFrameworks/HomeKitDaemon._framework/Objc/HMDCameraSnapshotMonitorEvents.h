@@ -72,9 +72,7 @@
 - (void)_handleUpdatedProactiveSnapshotCharacteristics:(id)arg1;
 - (void)_removeBulletins:(id)arg1 sessionID:(id)arg2;
 - (void)_sendReleaseSnapshot:(id)arg1;
-- (void)_subscribeToNotifications;
 - (void)dealloc;
-- (void)handleAccessoryReachable:(id)arg1;
 - (void)handleBulletinNotificationEnableStateDidChange:(id)arg1;
 - (void)handleCameraSettingsDidUpdateNotification:(id)arg1;
 - (void)handleRemoteNotificationGenerated:(id)arg1;

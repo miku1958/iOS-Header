@@ -10,6 +10,7 @@
 
 @protocol SKUIClientProductPageViewController <NSObject>
 - (void)didFinish;
+- (void)didFinishDismissal;
 - (void)didFinishWithResult:(NSNumber *)arg1;
 - (void)didReceiveTitle:(NSString *)arg1;
 - (void)loadDidFinishWithResult:(NSNumber *)arg1 error:(NSError *)arg2;

@@ -23,6 +23,7 @@
 - (struct CGRect)containerViewBounds;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)handleGestureEvent:(id)arg1;
+- (id)handleMainTransitionEvent:(id)arg1;
 - (id)initWithGestureID:(id)arg1 initialFloatingConfiguration:(long long)arg2 interfaceOrientation:(long long)arg3;
 - (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (id)layoutSettings;

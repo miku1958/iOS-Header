@@ -16,6 +16,7 @@
 }
 
 @property (readonly, nonatomic) NSMutableSet *allItemClasses; // @synthesize allItemClasses=_allItemClasses;
+@property (readonly, nonatomic) NSSet *allOwnedTypes;
 @property (readonly, nonatomic) NSSet *contentItemClasses;
 @property (readonly, nonatomic) NSMutableDictionary *contentItemClassesByType; // @synthesize contentItemClassesByType=_contentItemClassesByType;
 @property (readonly, nonatomic) struct os_unfair_lock_s discoveryLock; // @synthesize discoveryLock=_discoveryLock;
@@ -24,6 +25,8 @@
 + (id)sharedRegistry;
 - (void).cxx_destruct;
 - (Class)contentItemClassForType:(id)arg1;
+- (id)contentItemClassesForShareSheetWithExtensionMatchingDictionaries:(id)arg1;
+- (id)contentItemClassesForShareSheetWithExtensionMatchingDictionaries:(id)arg1 hostBundleIdentifier:(id)arg2;
 - (id)contentItemClassesSupportingType:(id)arg1;
 - (id)init;
 - (void)rediscoverContentItemClassesIfNeeded;

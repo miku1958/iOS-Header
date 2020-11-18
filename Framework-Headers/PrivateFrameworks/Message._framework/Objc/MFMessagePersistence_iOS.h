@@ -8,8 +8,8 @@
 
 #import <Message/EFLoggable-Protocol.h>
 
-@class EDMailDropMetadataGeneratorFactory, MFMailMessageLibrary, MFMailMessageLibraryQueryTransformer, MFMessageTransformer, NSMutableDictionary, NSString;
-@protocol EFScheduler, MFMessageSummaryLoaderProvider;
+@class EDMailDropMetadataGeneratorFactory, MFMailMessageLibrary, MFMailMessageLibraryQueryTransformer, MFMessageTransformer, NSMutableDictionary, NSObject, NSString;
+@protocol EFScheduler, MFMessageSummaryLoaderProvider, OS_dispatch_queue;
 
 @interface MFMessagePersistence_iOS : EDMessagePersistence <EFLoggable>
 {
@@ -22,6 +22,7 @@
     MFMessageTransformer *_libraryMessageTransformer;
     id<EFScheduler> _networkContentLoadScheduler;
     id<EFScheduler> _offlineContentLoadScheduler;
+    NSObject<OS_dispatch_queue> *_requestSummaryQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -33,6 +34,7 @@
 @property (strong, nonatomic) id<EFScheduler> networkContentLoadScheduler; // @synthesize networkContentLoadScheduler=_networkContentLoadScheduler;
 @property (strong, nonatomic) id<EFScheduler> offlineContentLoadScheduler; // @synthesize offlineContentLoadScheduler=_offlineContentLoadScheduler;
 @property (strong, nonatomic) MFMailMessageLibraryQueryTransformer *queryTransformer; // @synthesize queryTransformer=_queryTransformer;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *requestSummaryQueue; // @synthesize requestSummaryQueue=_requestSummaryQueue;
 @property (strong, nonatomic) id<MFMessageSummaryLoaderProvider> summaryLoaderProvider; // @synthesize summaryLoaderProvider=_summaryLoaderProvider;
 @property (readonly) Class superclass;
 
@@ -44,6 +46,7 @@
 - (id)_requestSummaryForLibraryMessage:(id)arg1;
 - (long long)countOfMessagesMatchingQuery:(id)arg1;
 - (long long)countOfMessagesWithMessageIDHeaderHash:(id)arg1 matchingQuery:(id)arg2;
+- (id)enabledAccountMailboxesExpression;
 - (id)groupedMessagesCountByMailboxMatchingQuery:(unsigned long long)arg1 variable:(id)arg2;
 - (id)initWithConversationPersistence:(id)arg1 mailboxPersistence:(id)arg2 database:(id)arg3 vipManager:(id)arg4 library:(id)arg5 remoteSearchProvider:(id)arg6 blockedSenderManager:(id)arg7;
 - (void)iterateMessagesMatchingQuery:(id)arg1 batchSize:(long long)arg2 firstBatchSize:(long long)arg3 limit:(long long)arg4 cancelationToken:(id)arg5 handler:(CDUnknownBlockType)arg6;

@@ -18,9 +18,12 @@
 @property (copy, nonatomic) NSString *accessibilityValue;
 @property (readonly, nonatomic) double aspectRatio;
 @property (readonly, nonatomic) TMLRect *bounds;
+@property (readonly, nonatomic) double height;
 @property (readonly, nonatomic) double scale;
+@property (readonly, nonatomic) double width;
 
 - (UIColor *)colorPattern;
+- (UIImage *)cropImageToRect:(struct CGRect)arg1;
 - (UIImage *)resizableImage:(TMLInsets *)arg1:(long long)arg2;
 - (UIImage *)withRenderingMode:(long long)arg1;
 @end

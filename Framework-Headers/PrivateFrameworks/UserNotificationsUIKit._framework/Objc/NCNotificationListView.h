@@ -19,6 +19,7 @@
     BOOL _activeRevealTransitioning;
     BOOL _performingGroupingAnimation;
     BOOL _performingRevealAnimation;
+    BOOL _performingHeaderReloadAnimation;
     BOOL _performingVisibleRectAdjustment;
     BOOL _performedFirstLayout;
     BOOL _cachedSizeValid;
@@ -53,6 +54,7 @@
 @property (nonatomic, getter=hasPerformedFirstLayout) BOOL performedFirstLayout; // @synthesize performedFirstLayout=_performedFirstLayout;
 @property (nonatomic, getter=isPerformingContentRevealAnimation) BOOL performingContentRevealAnimation; // @synthesize performingContentRevealAnimation=_performingContentRevealAnimation;
 @property (nonatomic, getter=isPerformingGroupingAnimation) BOOL performingGroupingAnimation; // @synthesize performingGroupingAnimation=_performingGroupingAnimation;
+@property (nonatomic, getter=isPerformingHeaderReloadAnimation) BOOL performingHeaderReloadAnimation; // @synthesize performingHeaderReloadAnimation=_performingHeaderReloadAnimation;
 @property (nonatomic, getter=isPerformingRevealAnimation) BOOL performingRevealAnimation; // @synthesize performingRevealAnimation=_performingRevealAnimation;
 @property (nonatomic, getter=isPerformingVisibleRectAdjustment) BOOL performingVisibleRectAdjustment; // @synthesize performingVisibleRectAdjustment=_performingVisibleRectAdjustment;
 @property (strong, nonatomic) NSMutableSet *reloadedViewIndices; // @synthesize reloadedViewIndices=_reloadedViewIndices;

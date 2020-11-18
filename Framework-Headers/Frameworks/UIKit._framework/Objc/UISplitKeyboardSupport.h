@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)undock;
 - (void)updateProgress:(double)arg1 startHeight:(double)arg2 endHeight:(double)arg3;
 - (void)updatedControllerApplicator:(id)arg1;
+- (void)willPerformPlacementFrom:(id)arg1 to:(id)arg2 forController:(id)arg3;
 
 @end
 

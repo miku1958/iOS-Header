@@ -28,6 +28,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)setCurrentValue:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
+- (BOOL)validateParameterValue:(id)arg1 givenConstraint:(id)arg2;
 
 @end
 

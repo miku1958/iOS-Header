@@ -10,7 +10,7 @@
 #import <ChatKit/CKDetailsSearchResultsFooterCellDelegate-Protocol.h>
 #import <ChatKit/QLPreviewControllerDelegate-Protocol.h>
 
-@class CKConversation, CKDetailsSearchResultsFooterCell, CKDetailsSearchResultsTitleHeaderCell, CKQLPreviewController, NSArray, NSString;
+@class CKConversation, CKDetailsSearchResultsFooterCell, CKDetailsSearchResultsTitleHeaderCell, CKQLPreviewController, CKSearchIndexingFooterCell, NSArray, NSString;
 @protocol CKDetailsSearchControllerDelegate;
 
 @interface CKDetailsSearchViewController : CKSearchViewController <CKContainerSearchControllerDelegate, QLPreviewControllerDelegate, CKDetailsSearchResultsFooterCellDelegate>
@@ -22,6 +22,7 @@
     CKQLPreviewController *_previewController;
     CKDetailsSearchResultsTitleHeaderCell *_titleSizingCell;
     CKDetailsSearchResultsFooterCell *_footerSizingCell;
+    CKSearchIndexingFooterCell *_sizingIndexingFooterCell;
 }
 
 @property (strong, nonatomic) NSArray *chatGUIDs; // @synthesize chatGUIDs=_chatGUIDs;
@@ -33,10 +34,12 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CKQLPreviewController *previewController; // @synthesize previewController=_previewController;
 @property (nonatomic) BOOL searchComplete; // @synthesize searchComplete=_searchComplete;
+@property (strong, nonatomic) CKSearchIndexingFooterCell *sizingIndexingFooterCell; // @synthesize sizingIndexingFooterCell=_sizingIndexingFooterCell;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) CKDetailsSearchResultsTitleHeaderCell *titleSizingCell; // @synthesize titleSizingCell=_titleSizingCell;
 
 - (void).cxx_destruct;
+- (void)_configureIndexingCell:(id)arg1;
 - (id)_newSnapshotForCurrentControllerState;
 - (void)_registerCells;
 - (Class)_searchResultsHeaderClass;
@@ -45,6 +48,7 @@
 - (void)deleteMessageItem:(id)arg1;
 - (void)deleteTransferGUID:(id)arg1;
 - (id)footerBoundryItemsForController:(id)arg1 withEnvironment:(id)arg2;
+- (id)globalLayoutConfiguration;
 - (id)headerBoundryItemsForController:(id)arg1 withEnvironment:(id)arg2;
 - (id)initWithSearchControllerClasses:(id)arg1;
 - (void)loadView;

@@ -52,6 +52,7 @@
 - (void).cxx_destruct;
 - (BOOL)addKnownHostName:(id)arg1 port:(long long)arg2 toFile:(id)arg3 withSalt:(id)arg4;
 - (id)applicationSupportDirectory;
+- (BOOL)authenticateByInMemoryPublicKey:(id)arg1 privateKey:(id)arg2 andPassword:(id)arg3;
 - (BOOL)authenticateByKeyboardInteractive;
 - (BOOL)authenticateByKeyboardInteractiveUsingBlock:(CDUnknownBlockType)arg1;
 - (BOOL)authenticateByPassword:(id)arg1;

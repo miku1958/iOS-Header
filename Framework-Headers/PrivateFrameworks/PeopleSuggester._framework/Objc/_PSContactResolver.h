@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) NSArray *keysToFetch; // @synthesize keysToFetch=_keysToFetch;
 
 - (void).cxx_destruct;
+- (id)allEmailAndPhoneNumberHandlesForContact:(id)arg1;
 - (id)contactWithIdentifier:(id)arg1;
 - (id)initWithContactStore:(id)arg1 keysToFetch:(id)arg2;
 - (id)resolveContact:(id)arg1;

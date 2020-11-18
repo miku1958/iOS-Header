@@ -15,11 +15,8 @@
 @optional
 - (UITargetedPreview *)contextMenuInteraction:(UIContextMenuInteraction *)arg1 previewForDismissingMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;
 - (UITargetedPreview *)contextMenuInteraction:(UIContextMenuInteraction *)arg1 previewForHighlightingMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;
-- (void)contextMenuInteraction:(UIContextMenuInteraction *)arg1 willCommitWithAnimator:(id<UIContextMenuInteractionCommitAnimating>)arg2;
 - (void)contextMenuInteraction:(UIContextMenuInteraction *)arg1 willDisplayMenuForConfiguration:(UIContextMenuConfiguration *)arg2 animator:(id<UIContextMenuInteractionAnimating>)arg3;
 - (void)contextMenuInteraction:(UIContextMenuInteraction *)arg1 willEndForConfiguration:(UIContextMenuConfiguration *)arg2 animator:(id<UIContextMenuInteractionAnimating>)arg3;
 - (void)contextMenuInteraction:(UIContextMenuInteraction *)arg1 willPerformPreviewActionForMenuWithConfiguration:(UIContextMenuConfiguration *)arg2 animator:(id<UIContextMenuInteractionCommitAnimating>)arg3;
-- (void)contextMenuInteractionDidEnd:(UIContextMenuInteraction *)arg1;
-- (void)contextMenuInteractionWillPresent:(UIContextMenuInteraction *)arg1;
 @end
 

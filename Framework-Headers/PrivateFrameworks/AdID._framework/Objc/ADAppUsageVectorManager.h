@@ -31,6 +31,7 @@
 
 - (void).cxx_destruct;
 - (id)adamIDForBundleID:(id)arg1;
+- (id)appUsageEventsBetween:(id)arg1 and:(id)arg2 withLimit:(unsigned long long)arg3;
 - (id)appUsageEventsForLookbackPeriod:(double)arg1;
 - (void)buildBundleIDtoAdamIDCache:(id)arg1;
 - (id)bundleIdForAdamId:(id)arg1;

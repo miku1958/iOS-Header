@@ -39,12 +39,14 @@
     unsigned long long _configNumber;
     NSNumber *_networkClientIdentifier;
     NSUUID *_networkRouterUUID;
-    long long _targetNetworkProtectionMode;
+    long long _deprecatedTargetNetworkProtectionMode;
     long long _currentNetworkProtectionMode;
     long long _networkClientLAN;
     long long _wiFiCredentialType;
     NSArray *_allowedHosts;
     NSData *_wiFiUniquePreSharedKey;
+    NSUUID *_configuredNetworkProtectionGroupUUID;
+    NSUUID *_defaultNetworkProtectionGroupUUID;
     NSUUID *_uuid;
     HMAccessoryCategory *_category;
     HMDHome *_home;
@@ -67,6 +69,7 @@
 @property (nonatomic) unsigned long long configNumber; // @synthesize configNumber=_configNumber;
 @property (copy, nonatomic) NSString *configurationAppIdentifier; // @synthesize configurationAppIdentifier=_configurationAppIdentifier;
 @property (strong, nonatomic) NSString *configuredName; // @synthesize configuredName=_configuredName;
+@property (strong, nonatomic) NSUUID *configuredNetworkProtectionGroupUUID; // @synthesize configuredNetworkProtectionGroupUUID=_configuredNetworkProtectionGroupUUID;
 @property (readonly, copy, nonatomic) NSString *contextID;
 @property (readonly, copy, nonatomic) NSUUID *contextSPIUniqueIdentifier;
 @property (readonly, getter=isCurrentAccessory) BOOL currentAccessory;
@@ -74,6 +77,8 @@
 @property (nonatomic) BOOL custom1WoBLE; // @synthesize custom1WoBLE=_custom1WoBLE;
 @property (nonatomic) BOOL custom1WoWLAN; // @synthesize custom1WoWLAN=_custom1WoWLAN;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) NSUUID *defaultNetworkProtectionGroupUUID; // @synthesize defaultNetworkProtectionGroupUUID=_defaultNetworkProtectionGroupUUID;
+@property (nonatomic) long long deprecatedTargetNetworkProtectionMode; // @synthesize deprecatedTargetNetworkProtectionMode=_deprecatedTargetNetworkProtectionMode;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) HMDAccessoryVersion *firmwareVersion; // @synthesize firmwareVersion=_firmwareVersion;
 @property (readonly) unsigned long long hash;
@@ -109,7 +114,6 @@
 @property (readonly) BOOL supportsUserManagement;
 @property (nonatomic, getter=isSuspendCapable) BOOL suspendCapable; // @synthesize suspendCapable=_suspendCapable;
 @property (nonatomic, getter=isSuspended) BOOL suspended; // @synthesize suspended=_suspended;
-@property (nonatomic) long long targetNetworkProtectionMode; // @synthesize targetNetworkProtectionMode=_targetNetworkProtectionMode;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (readonly, copy, nonatomic) HMDVendorModelEntry *vendorInfo;
 @property (nonatomic) long long wiFiCredentialType; // @synthesize wiFiCredentialType=_wiFiCredentialType;
@@ -163,6 +167,7 @@
 - (id)logIdentifier;
 - (id)messageDestination;
 - (id)modelWithUpdatedRoom:(id)arg1;
+- (id)networkProtectionGroupUUID;
 - (id)networkProtectionReportForAWD;
 - (int)networkProtectionStatusForAWD;
 - (void)notifyAccessoryNameChanged:(BOOL)arg1;
@@ -191,6 +196,7 @@
 - (BOOL)supportsNetworkProtection;
 - (BOOL)supportsWiFiReconfiguration;
 - (void)takeOwnershipOfAppData:(id)arg1;
+- (long long)targetNetworkProtectionMode;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)transactionWithObjectChangeType:(unsigned long long)arg1;

@@ -16,7 +16,6 @@
     HMDTLVUnsignedNumberValue *_clientIdentifier;
     NSData *_macAddress;
     HMDNetworkRouterIPAddressList *_ipAddressList;
-    HMDTLVUnsignedNumberValue *_interfaceIdentifier;
     HMDTLVUnsignedNumberValue *_lanIdentifier;
     NSString *_name;
     HMDTLVSignedNumberValue *_rssi;
@@ -26,7 +25,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) HMDTLVUnsignedNumberValue *interfaceIdentifier; // @synthesize interfaceIdentifier=_interfaceIdentifier;
 @property (strong, nonatomic) HMDNetworkRouterIPAddressList *ipAddressList; // @synthesize ipAddressList=_ipAddressList;
 @property (strong, nonatomic) HMDTLVUnsignedNumberValue *lanIdentifier; // @synthesize lanIdentifier=_lanIdentifier;
 @property (strong, nonatomic) NSData *macAddress; // @synthesize macAddress=_macAddress;
@@ -38,7 +36,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (id)initWithClientIdentifier:(id)arg1 macAddress:(id)arg2 ipAddressList:(id)arg3 interfaceIdentifier:(id)arg4 lanIdentifier:(id)arg5 name:(id)arg6 rssi:(id)arg7;
+- (id)initWithClientIdentifier:(id)arg1 macAddress:(id)arg2 ipAddressList:(id)arg3 lanIdentifier:(id)arg4 name:(id)arg5 rssi:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)parseFromData:(id)arg1 error:(id *)arg2;
 - (id)serializeWithError:(id *)arg1;

@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) BOOL directDatabaseWriteAuthorized;
 @property (readonly, nonatomic) BOOL photoKitEntitled;
 @property (readonly, nonatomic) NSString *trustedCallerBundleID;
+@property (readonly, nonatomic) NSString *trustedCallerDisplayName;
 
 - (BOOL)photoKitEntitledFor:(NSString *)arg1;
 @end

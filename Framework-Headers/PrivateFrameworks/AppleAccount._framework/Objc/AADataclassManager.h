@@ -12,16 +12,15 @@
 
 + (id)appBundleIdentifierDictionary;
 + (id)sharedManager;
-- (id)_blackListedMacOSDataclasses;
 - (id)_filteredDataclassesForAccountClass:(id)arg1;
 - (BOOL)_hideDataclassWhenAppRemoved:(id)arg1;
-- (BOOL)_isApplicationSupportedForCurrentRegion:(id)arg1;
 - (BOOL)_isRestrictedForDataclass:(id)arg1;
 - (BOOL)_isRunningInStoreDemoMode;
 - (BOOL)_shouldProvisionNotesForAccount:(id)arg1;
 - (id)_userVisibleDataclasses;
 - (id)appBundleIdentifierForDataclass:(id)arg1;
 - (void)attemptToEnableDataclasses:(id)arg1 forAccount:(id)arg2 inStore:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)blackListedMacOSDataclasses;
 - (id)filteredServerProvidedFeatures:(id)arg1 forAccount:(id)arg2;
 - (BOOL)isSystemAppRestrictedOrRemovedForDataclass:(id)arg1;
 - (BOOL)shouldAutoEnableDataclass:(id)arg1 forAccount:(id)arg2;

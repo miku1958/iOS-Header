@@ -17,6 +17,7 @@
     BOOL _isPhotoIrisPlaceholder;
     BOOL _HDR;
     BOOL _representsBurst;
+    NSDate *_localCreationDate;
     NSString *_uuid;
     unsigned long long _mediaType;
     unsigned long long _mediaSubtypes;
@@ -53,7 +54,7 @@
 @property (readonly, nonatomic) BOOL isPhotoIrisPlaceholder; // @synthesize isPhotoIrisPlaceholder=_isPhotoIrisPlaceholder;
 @property (readonly, nonatomic) BOOL isTemporaryPlaceholder;
 @property (readonly, nonatomic, getter=isLivePhoto) BOOL livePhoto;
-@property (readonly, nonatomic) NSDate *localCreationDate;
+@property (readonly, nonatomic) NSDate *localCreationDate; // @synthesize localCreationDate=_localCreationDate;
 @property (readonly, nonatomic) NSString *localizedGeoDescription;
 @property (readonly, nonatomic) CLLocation *location;
 @property (readonly, nonatomic) unsigned long long mediaSubtypes; // @synthesize mediaSubtypes=_mediaSubtypes;
@@ -79,7 +80,6 @@
 - (void)_populateStillImageTransientAssetFromConvertible:(id)arg1;
 - (void)_populateVideoTransientAssetFromConvertible:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)creationDateUsingLocalTimeZone;
 - (id)init;
 - (id)initWithAsset:(id)arg1 convertible:(id)arg2;
 - (id)initWithAsset:(id)arg1 uuid:(id)arg2;

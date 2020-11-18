@@ -25,6 +25,7 @@
 
 + (id)sharedBabysitter;
 - (void).cxx_destruct;
+- (void)_diagnosticReportWithWaiterID:(id)arg1 failureCount:(int)arg2;
 - (void)_incrementRefreshCountForWaiterID:(id)arg1 operationName:(id)arg2;
 - (id)_init;
 - (void)_l_decrementRefreshCountForWaiter:(id)arg1 forOperationWithName:(id)arg2;
@@ -39,6 +40,7 @@
 - (void)giveAccountWithIDAnotherChance:(id)arg1;
 - (id)init;
 - (BOOL)registerAccount:(id)arg1 forOperationWithName:(id)arg2;
+- (id)tokenByRegisteringAccount:(id)arg1 forOperationWithName:(id)arg2;
 - (void)unregisterAccount:(id)arg1 forOperationWithName:(id)arg2;
 
 @end

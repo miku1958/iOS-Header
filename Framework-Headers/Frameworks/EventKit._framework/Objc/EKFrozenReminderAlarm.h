@@ -6,7 +6,7 @@
 
 #import <EventKit/EKFrozenReminderObject.h>
 
-@class NSArray, NSString, REMAlarm;
+@class EKFrozenReminderStructuredLocation, NSArray, NSString, REMAlarm;
 
 __attribute__((visibility("hidden")))
 @interface EKFrozenReminderAlarm : EKFrozenReminderObject
@@ -17,11 +17,14 @@ __attribute__((visibility("hidden")))
 
 @property (readonly) NSArray *alarms;
 @property (readonly) NSString *externalID;
+@property (readonly) EKFrozenReminderStructuredLocation *structuredLocation;
 @property (readonly) NSArray *triggers;
 
 + (long long)ekAlarmProximityToEKAlarmProximity:(long long)arg1;
 + (Class)meltedClass;
 + (long long)remAlarmProximityToEKAlarmProximity:(long long)arg1;
++ (id)semanticIdentifierFromDateComponents:(id)arg1;
++ (id)semanticIdentifierFromREMAlarm:(id)arg1;
 + (id)triggersFromAbsoluteDate:(id)arg1 relativeOffset:(double)arg2 timeValuesRelevant:(BOOL)arg3 structuredLocation:(id)arg4 proximity:(long long)arg5;
 + (id)uniqueIdentifierForREMObject:(id)arg1;
 - (void).cxx_destruct;
@@ -45,7 +48,6 @@ __attribute__((visibility("hidden")))
 - (double)relativeOffset;
 - (id)remObjectID;
 - (id)semanticIdentifier;
-- (id)structuredLocation;
 - (id)uniqueIdentifier;
 - (id)updatedAlarmWithLocation:(id)arg1;
 - (id)updatedFrozenObjectWithChanges:(id)arg1 updatedChildren:(id)arg2;

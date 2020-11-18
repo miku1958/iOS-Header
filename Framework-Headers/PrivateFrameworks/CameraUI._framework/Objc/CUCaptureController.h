@@ -9,7 +9,7 @@
 #import <CameraUI/CAMCaptureRequestIntervalometerDelegate-Protocol.h>
 #import <CameraUI/CAMCaptureService-Protocol.h>
 
-@class AVCaptureVideoPreviewLayer, CAMBurstController, CAMCaptureEngine, CAMCaptureRequestIntervalometer, CAMIrisVideoController, CAMKeyValueCoalescer, CAMLocationController, CAMMotionController, CAMPanoramaCaptureRequest, CAMPanoramaPreviewView, CAMPowerController, CAMProtectionController, CAMRemoteShutterController, CAMStillImageCaptureRequest, CAMThumbnailGenerator, CAMVideoCaptureRequest, NSCountedSet, NSMutableSet, NSString;
+@class AVCaptureVideoPreviewLayer, CAMBurstController, CAMCaptureEngine, CAMCaptureRequestIntervalometer, CAMIrisVideoController, CAMKeyValueCoalescer, CAMLocationController, CAMMotionController, CAMPanoramaCaptureRequest, CAMPanoramaPreviewView, CAMPowerController, CAMProtectionController, CAMRemoteShutterController, CAMStillImageCaptureRequest, CAMThumbnailGenerator, CAMVideoCaptureRequest, NSCountedSet, NSMutableDictionary, NSMutableSet, NSString;
 @protocol CAMAvailabilityDelegate, CAMBurstDelegate, CAMCaptureInterruptionDelegate, CAMCaptureRecoveryDelegate, CAMCaptureResultDelegate, CAMCaptureRunningDelegate, CAMConfigurationDelegate, CAMExposureDelegate, CAMFacesDelegate, CAMFocusDelegate, CAMMachineReadableCodeDelegate, CAMPanoramaChangeDelegate, CAMPreviewLayerOverCaptureStatusDelegate, CAMShallowDepthOfFieldStatusDelegate, CAMStillImageCapturingVideoDelegate, CAMSuggestionDelegate, CAMZoomDelegate, OS_dispatch_queue;
 
 @interface CUCaptureController : NSObject <CAMCaptureService, CAMCaptureRequestIntervalometerDelegate>
@@ -63,6 +63,8 @@
     long long __maximumNumberOfStillImageRequests;
     NSMutableSet *__identifiersForActiveLivePhotoVideoCaptures;
     NSMutableSet *__identifiersForActiveCTMVideoCaptures;
+    NSMutableDictionary *__persistenceUUIDToSignpostID;
+    unsigned long long __nextSignpostID;
     CAMLocationController *__locationController;
     CAMMotionController *__motionController;
     CAMBurstController *__burstController;
@@ -90,8 +92,10 @@
 @property (nonatomic, setter=_setMaximumNumberOfStillImageRequests:) long long _maximumNumberOfStillImageRequests; // @synthesize _maximumNumberOfStillImageRequests=__maximumNumberOfStillImageRequests;
 @property (readonly, nonatomic) CAMMotionController *_motionController; // @synthesize _motionController=__motionController;
 @property (nonatomic, setter=_setNeedsInitialPairedVideoUpdate:) BOOL _needsInitialPairedVideoUpdate; // @synthesize _needsInitialPairedVideoUpdate=__needsInitialPairedVideoUpdate;
+@property (nonatomic, setter=_setNextSignpostID:) unsigned long long _nextSignpostID; // @synthesize _nextSignpostID=__nextSignpostID;
 @property (readonly, nonatomic) NSCountedSet *_numberOfInflightRequestsByType; // @synthesize _numberOfInflightRequestsByType=__numberOfInflightRequestsByType;
 @property (strong, nonatomic, setter=_setPendingVideoCaptureRequest:) CAMVideoCaptureRequest *_pendingVideoCaptureRequest; // @synthesize _pendingVideoCaptureRequest=__pendingVideoCaptureRequest;
+@property (readonly, nonatomic) NSMutableDictionary *_persistenceUUIDToSignpostID; // @synthesize _persistenceUUIDToSignpostID=__persistenceUUIDToSignpostID;
 @property (readonly, nonatomic) CAMPowerController *_powerController; // @synthesize _powerController=__powerController;
 @property (readonly, nonatomic) CAMProtectionController *_protectionController; // @synthesize _protectionController=__protectionController;
 @property (readonly, nonatomic) CAMRemoteShutterController *_remoteShutterController; // @synthesize _remoteShutterController=__remoteShutterController;
@@ -157,6 +161,7 @@
 - (id)_commandForResetFocus:(BOOL)arg1 resetExposure:(BOOL)arg2 resetExposureTargetBias:(BOOL)arg3;
 - (double)_defaultZoomFactorForGraphConfiguration:(id)arg1;
 - (void)_didPlayBeginVideoRecordingSound;
+- (void)_endCaptureSignpostIntervalForPersistenceUUID:(id)arg1;
 - (void)_endTrackingCTMVideoRecordingForIdentifier:(id)arg1;
 - (void)_endTrackingLivePhotoVideoRecordingForIdentifier:(id)arg1;
 - (id)_exposureKVOKeyPaths;
@@ -193,6 +198,8 @@
 - (void)_setupSystemPressureStateMonitoring;
 - (void)_setupZoomMonitoring;
 - (BOOL)_shouldMonitorSystemPressureState;
+- (BOOL)_shouldTrackInflightCountForRequest:(id)arg1;
+- (void)_startCaptureSignpostIntervalForPersistenceUUID:(id)arg1;
 - (void)_subjectAreaDidChange:(id)arg1;
 - (id)_suggestionKeyPaths;
 - (void)_suggestionResultChangedForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3;

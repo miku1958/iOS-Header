@@ -18,6 +18,7 @@
 + (id)centigrams;
 + (id)decigrams;
 + (id)grams;
++ (void)initialize;
 + (id)kilograms;
 + (id)metricTons;
 + (id)micrograms;

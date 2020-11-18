@@ -17,6 +17,7 @@
 - (BOOL)_isActiveAppLayoutAtIndex:(unsigned long long)arg1;
 - (id)adjustedAppLayoutsForAppLayouts:(id)arg1;
 - (id)appExposeAccessoryButtonsBundleIdentifier;
+- (long long)appExposeAccessoryButtonsOverrideUserInterfaceStyle;
 - (id)appLayoutToScrollToBeforeTransitioning;
 - (id)appLayoutsForInsertionOrRemoval;
 - (double)backdropBlurProgress;
@@ -41,7 +42,7 @@
 - (unsigned long long)indexToScrollToAfterInsertingAtIndex:(unsigned long long)arg1;
 - (unsigned long long)indexToScrollToAfterRemovingIndex:(unsigned long long)arg1;
 - (id)initWithActiveAppLayout:(id)arg1;
-- (unsigned long long)insertionStyle;
+- (unsigned long long)insertionStyleForInsertingAppLayout:(id)arg1;
 - (BOOL)isContainerStatusBarVisible;
 - (BOOL)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
 - (BOOL)isHomeGrabberVisible;
@@ -65,6 +66,7 @@
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (id)opacitySettings;
 - (double)plusButtonAlpha;
+- (long long)plusButtonStyle;
 - (id)positionSettingsForIndex:(unsigned long long)arg1;
 - (long long)preferredSnapshotOrientation;
 - (double)reopenClosedWindowsButtonAlpha;
@@ -78,6 +80,7 @@
 - (BOOL)shouldBringCardToFrontDuringInsertionOrRemoval;
 - (BOOL)shouldConfigureInAppDockHiddenAssertion;
 - (BOOL)shouldFireTransitionCompletionInDefaultRunLoopMode;
+- (BOOL)shouldPerformCrossfadeForReduceMotion;
 - (BOOL)shouldPerformRotationAnimationForOrientationChange;
 - (BOOL)shouldRubberbandHomeGrabberView;
 - (BOOL)shouldTruncateAnimationsUponTransitionCompletion;

@@ -112,7 +112,7 @@
 - (void)_resultQueue_forceCompletionIfPossibleForRequest:(id)arg1;
 - (id)_resultQueue_getOrCreateStillImageResultCoordinatorForRequest:(id)arg1 captureTimeExpectedResultSpecifiers:(id)arg2 isExpectingPairedVideo:(BOOL)arg3 isDisablingMultipleCaptures:(BOOL)arg4 isGeneratingFilteredMedia:(BOOL)arg5;
 - (id)_resultQueue_getStillImageResultCoordinatorForRequest:(id)arg1;
-- (void)_resultQueue_removeStillImageResultCoordinatorForRequest:(id)arg1;
+- (void)_resultQueue_removeStillImageResultCoordinatorForIdentifier:(id)arg1;
 - (unsigned long long)_viewfinderPersistenceBehaviorForCapturePersistenceBehavior:(unsigned long long)arg1;
 - (void)captureController:(id)arg1 didGenerateStillImageCaptureResult:(id)arg2 fromRequest:(id)arg3;
 - (BOOL)capturePhoto;
@@ -139,6 +139,7 @@
 - (void)setMessagesTransitionState:(long long)arg1 animated:(BOOL)arg2;
 - (BOOL)startRecording;
 - (void)stillImagePersistenceCoordinator:(id)arg1 requestsDispatchForResultSpecifiers:(unsigned long long)arg2 photoProperties:(id)arg3 videoProperties:(id)arg4 unfilteredPhotoProperties:(id)arg5 unfilteredVideoProperties:(id)arg6 assetAdjustments:(id)arg7 error:(id)arg8;
+- (void)stillImagePersistenceCoordinatorDidCompleteAllDispatches:(id)arg1;
 - (BOOL)stopRecording;
 - (void)suspendCameraSession;
 - (void)viewDidDisappear:(BOOL)arg1;

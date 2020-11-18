@@ -86,6 +86,11 @@
 - (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
 - (id)parallelRenderCommandEncoderWithDescriptor:(id)arg1;
 - (void)popDebugGroup;
+- (void)postCompletionHandlers;
+- (void)postScheduledHandlers;
+- (void)preCommit;
+- (void)preCompletionHandlers;
+- (void)preScheduledHandlers;
 - (void)presentDrawable:(id)arg1;
 - (void)presentDrawable:(id)arg1 afterMinimumDuration:(double)arg2;
 - (void)presentDrawable:(id)arg1 atTime:(double)arg2;

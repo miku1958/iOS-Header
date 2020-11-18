@@ -12,6 +12,7 @@
 {
 }
 
+@property (nonatomic) long long animationDisabled; // @dynamic animationDisabled;
 @property (strong, nonatomic) SBAppLayout *appLayout; // @dynamic appLayout;
 @property (nonatomic) long long appLayoutEnvironment; // @dynamic appLayoutEnvironment;
 @property (nonatomic) long long dismissInlineAppExpose; // @dynamic dismissInlineAppExpose;

@@ -63,14 +63,17 @@
 @property (readonly, nonatomic) BOOL hf_isMediaAccessory;
 @property (readonly, nonatomic) BOOL hf_isMultiServiceAccessory;
 @property (readonly, nonatomic) BOOL hf_isNetworkRouter;
+@property (readonly, nonatomic) BOOL hf_isNetworkRouterSatellite;
 @property (readonly, nonatomic) BOOL hf_isNonServiceBasedAccessory;
 @property (readonly, nonatomic) BOOL hf_isNotificationSupportedCamera;
+@property (readonly, nonatomic) BOOL hf_isPowerStrip;
 @property (readonly, nonatomic) BOOL hf_isProgrammableSwitch;
 @property (readonly, nonatomic) BOOL hf_isRemoteControl;
 @property (readonly, nonatomic) BOOL hf_isSingleServiceAccessory;
 @property (readonly, nonatomic) BOOL hf_isTelevision;
 @property (readonly, nonatomic) BOOL hf_isVisibleAccessory;
 @property (readonly, nonatomic) BOOL hf_isVisibleAsBridge;
+@property (readonly, nonatomic) BOOL hf_isVisibleAsBridgedAccessory;
 @property (readonly, nonatomic) HMResidentDevice *hf_linkedResidentDevice;
 @property (readonly, nonatomic) unsigned long long hf_mediaAccessControlCapabilities;
 @property (readonly, nonatomic) BOOL hf_needsReprovisioningCheck;
@@ -84,6 +87,7 @@
 @property (readonly, nonatomic) BOOL hf_requiresFirmwareUpdate;
 @property (readonly, nonatomic) HFServiceNameComponents *hf_serviceNameComponents;
 @property (readonly, nonatomic) NSSet *hf_servicesBehindBridge;
+@property (readonly, nonatomic) BOOL hf_shouldSeparateAccessoryName;
 @property (readonly, nonatomic) BOOL hf_shouldShowInFavorites;
 @property (readonly, copy, nonatomic) NSSet *hf_standardServices;
 @property (readonly, copy, nonatomic) NSSet *hf_visibleServices;

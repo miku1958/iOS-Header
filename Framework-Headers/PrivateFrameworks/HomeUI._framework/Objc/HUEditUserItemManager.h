@@ -54,7 +54,6 @@
 - (BOOL)_hasPendingAccessories;
 - (BOOL)_hasPersonalRequestsDevice;
 - (BOOL)_hasResidentDevice;
-- (BOOL)_hasSupportedCameraWithRecording;
 - (BOOL)_hasTVViewingProfilesDevice;
 - (id)_homeFuture;
 - (BOOL)_isEditingAllowedForUser:(id)arg1;

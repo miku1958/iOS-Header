@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (double)_accessibilityIncreaseAmount:(BOOL)arg1;
+- (double)_accessibilityMaxValue;
 - (BOOL)_axIsLiveContent;
 - (struct CGPoint)accessibilityActivationPoint;
 - (void)accessibilityDecrement;

@@ -12,5 +12,6 @@
 - (long long)cd_interactionMechanism;
 - (id)cd_recipients;
 - (BOOL)cd_saveToPeopleStore;
+- (id)cd_sender;
 @end
 

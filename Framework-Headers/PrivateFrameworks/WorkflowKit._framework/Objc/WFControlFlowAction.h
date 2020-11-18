@@ -24,7 +24,6 @@
 - (id)inheritedOutputContentClassesInWorkflow:(id)arg1 context:(id)arg2;
 - (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3;
 - (BOOL)inputPassthrough;
-- (id)inputSourceInWorkflow:(id)arg1;
 - (BOOL)inputTypePassthrough;
 - (BOOL)isDeletable;
 - (id)outputContentClasses;

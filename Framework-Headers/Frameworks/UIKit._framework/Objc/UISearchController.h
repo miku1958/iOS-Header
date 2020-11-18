@@ -140,6 +140,7 @@
 - (void)_setCarPlayLimitedUIToken:(id)arg1;
 - (void)_setCarPlayLimitedUIViewController:(id)arg1;
 - (void)_setTransitioningOutWithoutDisappearing:(BOOL)arg1;
+- (void)_setupForCurrentTraitCollection;
 - (void)_sizeSearchViewToPresentingViewController:(id)arg1;
 - (void)_startManagingPalette:(id)arg1;
 - (void)_stopManagingPalette;

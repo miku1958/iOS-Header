@@ -34,6 +34,7 @@
 - (id)_sizeEntry:(id)arg1;
 - (void)_updateTotalSize;
 - (void)_writeCache;
+- (void)addItem:(id)arg1;
 - (id)createCacheEntryForPath:(id)arg1;
 - (void)dealloc;
 - (void)flushCacheToPref;

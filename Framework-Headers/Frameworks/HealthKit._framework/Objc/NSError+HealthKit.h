@@ -20,6 +20,7 @@
 + (BOOL)hk_assignError:(id *)arg1 code:(long long)arg2 description:(id)arg3;
 + (BOOL)hk_assignError:(id *)arg1 code:(long long)arg2 description:(id)arg3 underlyingError:(id)arg4;
 + (BOOL)hk_assignError:(id *)arg1 code:(long long)arg2 format:(id)arg3;
++ (id)hk_databaseInaccessibleBeforeFirstUnlockError;
 + (id)hk_error:(long long)arg1 description:(id)arg2;
 + (id)hk_error:(long long)arg1 description:(id)arg2 underlyingError:(id)arg3;
 + (id)hk_error:(long long)arg1 format:(id)arg2;

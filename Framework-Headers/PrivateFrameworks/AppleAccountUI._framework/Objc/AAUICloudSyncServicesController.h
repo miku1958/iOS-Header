@@ -30,7 +30,6 @@
 - (void)_presentMergeConfirmationForDataclasses:(id)arg1 account:(id)arg2;
 - (void)_validateMailAccount:(id)arg1;
 - (void)accountValidator:(id)arg1 finishedValidationOfAccount:(id)arg2 usedSSL:(BOOL)arg3;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (void)completeEnablingCloudServicesWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)setBackupEnabled:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;

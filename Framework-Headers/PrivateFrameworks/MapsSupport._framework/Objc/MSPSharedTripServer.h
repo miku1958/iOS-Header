@@ -8,13 +8,14 @@
 
 #import <MapsSupport/MSPReceiverETAControllerDelegate-Protocol.h>
 #import <MapsSupport/MSPSenderETAControllerDelegate-Protocol.h>
+#import <MapsSupport/MSPSharedTripAvailabiltyDelegate-Protocol.h>
 #import <MapsSupport/MSPSharedTripXPCServer-Protocol.h>
 #import <MapsSupport/NSXPCListenerDelegate-Protocol.h>
 
 @class MSPReceiverETAController, MSPSenderETAController, MSPSharedTripRelay, NSMutableSet, NSString, NSXPCListener;
 @protocol OS_dispatch_queue;
 
-@interface MSPSharedTripServer : NSObject <NSXPCListenerDelegate, MSPReceiverETAControllerDelegate, MSPSenderETAControllerDelegate, MSPSharedTripXPCServer>
+@interface MSPSharedTripServer : NSObject <NSXPCListenerDelegate, MSPReceiverETAControllerDelegate, MSPSenderETAControllerDelegate, MSPSharedTripAvailabiltyDelegate, MSPSharedTripXPCServer>
 {
     MSPSenderETAController *_sendingController;
     MSPReceiverETAController *_receivingController;
@@ -33,9 +34,11 @@
 - (void)_setNotificationCenter:(id)arg1;
 - (void)blockSharedTrip:(id)arg1;
 - (void)checkin;
+- (void)cleanConnections;
 - (id)connections;
 - (void)createControllers;
 - (void)createXPCListener;
+- (void)dealloc;
 - (void)etaController:(id)arg1 didUpdateDestinationForSharedTrip:(id)arg2;
 - (void)etaController:(id)arg1 didUpdateETAForSharedTrip:(id)arg2;
 - (void)etaController:(id)arg1 didUpdateReachedDestinationForSharedTrip:(id)arg2;
@@ -43,9 +46,14 @@
 - (void)etaController:(id)arg1 sharedTripDidBecomeAvailable:(id)arg2;
 - (void)etaController:(id)arg1 sharedTripDidBecomeUnavailable:(id)arg2;
 - (void)etaController:(id)arg1 sharedTripDidClose:(id)arg2;
+- (void)fetchAccountValidWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchActiveHandlesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchSendingIdentityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSharedTripsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)invalidateActiveHandlesForSenderController:(id)arg1;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (void)relay:(id)arg1 accountStatusChanged:(BOOL)arg2;
 - (void)senderController:(id)arg1 didInvalidateSharedTripWithError:(id)arg2;
 - (void)senderController:(id)arg1 sendMessage:(id)arg2 toGroup:(id)arg3;
 - (void)senderController:(id)arg1 sendMessage:(id)arg2 toParticipant:(id)arg3;

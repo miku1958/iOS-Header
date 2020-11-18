@@ -26,8 +26,11 @@
 - (id)menuButton;
 - (id)name;
 - (id)productCategory;
+- (void)setEnableTimeForHaptics:(BOOL)arg1;
+- (void)setHapticMotor:(int)arg1 frequency:(float)arg2;
 - (void)setPlayerIndex:(long long)arg1;
 - (void)toggleSuspendResume;
+- (void)triggerHapticsForDuration:(float)arg1;
 
 @end
 

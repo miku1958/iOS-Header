@@ -22,7 +22,7 @@
 @property (readonly, nonatomic) NSMutableSet *observerBlocks; // @synthesize observerBlocks=_observerBlocks;
 @property (readonly, nonatomic) double throttleInterval; // @synthesize throttleInterval=_throttleInterval;
 @property (strong, nonatomic) id<NAScheduler> updateScheduler; // @synthesize updateScheduler=_updateScheduler;
-@property (strong, nonatomic) id value; // @synthesize value=_value;
+@property (readonly, nonatomic) id value; // @synthesize value=_value;
 @property (strong, nonatomic) id<NACancelable> valueUpdateCancelationToken; // @synthesize valueUpdateCancelationToken=_valueUpdateCancelationToken;
 
 - (void).cxx_destruct;
@@ -34,6 +34,8 @@
 - (id)initWithThrottleInterval:(double)arg1;
 - (id)initWithThrottleInterval:(double)arg1 initialValue:(id)arg2;
 - (id)observeValueChangesWithBlock:(CDUnknownBlockType)arg1;
+- (void)setValue:(id)arg1;
+- (void)setValue:(id)arg1 notifyObservers:(BOOL)arg2;
 
 @end
 

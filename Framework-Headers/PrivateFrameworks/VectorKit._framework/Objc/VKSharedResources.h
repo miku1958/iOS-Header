@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class VKInternalIconManager, VKResourceManager;
+#import <VectorKit/GEOResourceManifestTileGroupObserver-Protocol.h>
+
+@class NSString, VKInternalIconManager, VKResourceManager;
 
 __attribute__((visibility("hidden")))
-@interface VKSharedResources : NSObject
+@interface VKSharedResources : NSObject <GEOResourceManifestTileGroupObserver>
 {
     struct _retain_ptr<VKInternalIconManager *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
         CDUnknownFunctionPointerType *_vptr$_retain_ptr;
@@ -35,18 +37,22 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) struct AlphaAtlas *alphaAtlas;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) struct FigPhotoDecompressionSession *defaultDecompressionSession;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) struct Device *device;
 @property (readonly, nonatomic) struct DistanceAtlas *distanceAtlas;
 @property (readonly, nonatomic) struct Device *gglDevice;
 @property (readonly, nonatomic) shared_ptr_76a6df1b grlFontManager;
 @property (readonly, nonatomic) struct IconManager *grlIconManager;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct IsoAlphaAtlas *highInflationAlphaAtlas;
 @property (readonly, nonatomic) VKInternalIconManager *iconManager;
 @property (readonly, nonatomic) struct IsoAlphaAtlas *isoAlphaAtlas;
 @property (readonly, nonatomic) VKResourceManager *resourceManager;
 @property (readonly, nonatomic) const struct StandardLibrary *shaderLibrary;
 @property (readonly, nonatomic) shared_ptr_dd2d1f5e stylesheetVendor; // @synthesize stylesheetVendor=_stylesheetVendor;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) shared_ptr_f2399894 textureManager;
 
 - (id).cxx_construct;
@@ -59,6 +65,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)purge;
 - (void)purgeDecompressSessionCachedBuffers;
+- (void)resourceManifestManagerDidChangeActiveTileGroup:(id)arg1;
+- (void)resourceManifestManagerWillChangeActiveTileGroup:(id)arg1;
 
 @end
 

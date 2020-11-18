@@ -52,7 +52,7 @@
 - (BOOL)_fetchTransactionWriteGenerationWithSQLConnection:(id)arg1 newGeneration:(long long *)arg2;
 - (BOOL)_finishTransactionWithSQLConnection:(id)arg1 afterSuccess:(BOOL)arg2 transactionError:(id *)arg3;
 - (void)_fixFilePermissionForPath:(const char *)arg1;
-- (BOOL)_startTransactionWithSQLConnection:(id)arg1 forWriting:(BOOL)arg2;
+- (BOOL)_startTransactionWithSQLConnection:(id)arg1 forWriting:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)_storeTransactionWriteGenerationWithSQLConnection:(id)arg1 newGeneration:(long long)arg2;
 - (BOOL)attachJournalDatabase:(id)arg1 withName:(id)arg2;
 - (BOOL)attachJournalDatabase:(id)arg1 withName:(id)arg2 error:(id *)arg3;
@@ -60,6 +60,7 @@
 - (BOOL)attachProtectedDatabaseWithName:(id)arg1 error:(id *)arg2;
 - (BOOL)attachProtectedDatabaseWithName:(id)arg1 url:(id)arg2 error:(id *)arg3;
 - (BOOL)checkForConnectionErrorWithMessage:(id)arg1;
+- (void)clearLastInsertedDatabaseID;
 - (void)close;
 - (BOOL)columnExists:(id)arg1 inTable:(id)arg2 database:(id)arg3 type:(unsigned long long *)arg4;
 - (BOOL)columnExists:(id)arg1 inTable:(id)arg2 type:(unsigned long long *)arg3;

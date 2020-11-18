@@ -25,6 +25,7 @@
     NSMutableDictionary *_initialIconPaths;
     NSMapTable *_bouncedIcons;
     NSMapTable *_appDragLocalContexts;
+    NSMapTable *_iconViewDropAssertions;
     BOOL _performedIconDrop;
     BOOL _cancelled;
     BOOL _notifiedDelegateForDropSession;
@@ -74,6 +75,7 @@
 - (void)addSourceIcons:(id)arg1;
 - (id)appDragLocalContextForDragItem:(id)arg1;
 - (id)bouncedIconForListModel:(id)arg1;
+- (void)clearDropAssertionForIconView:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)destinationFolderIconViewForIconWithIdentifier:(id)arg1;

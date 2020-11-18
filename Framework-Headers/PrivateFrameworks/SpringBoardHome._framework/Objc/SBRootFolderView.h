@@ -44,23 +44,27 @@
     BOOL _shiftsPullDownSearchForVisibility;
     BOOL _sidebarHiddenForOrientation;
     BOOL _sidebarSlideGestureActive;
-    BOOL _ignoresOverscrollOnFirstPage;
     BOOL _sidebarVisibleWhenScrollingBegan;
+    BOOL _allowsFreeScrollingUntilScrollingEnds;
+    BOOL _userAttemptedToOverscrollDuringCurrentGesture;
     unsigned long long _dockEdge;
     SBSearchGesture *_searchGesture;
     SBTitledHomeScreenButton *_doneButton;
     UIView *_portraitHeaderView;
     double _sidebarVisibilityProgress;
     double _sidebarPinned;
+    double _sidebarEffectivelyVisible;
     double _todayViewVisibilityProgress;
     double _pullDownSearchVisibilityProgress;
     unsigned long long _sidebarAllowedOrientations;
     id<SBIconListViewIconLocationTransitioning> _firstListViewIconLocationTransitionHandler;
     double _scrollingAdjustment;
     SBHRootFolderSettings *_folderSettings;
+    unsigned long long _ignoresOverscrollOnFirstPageOrientations;
 }
 
 @property (nonatomic) BOOL allowsAutoscrollToTodayView; // @synthesize allowsAutoscrollToTodayView=_allowsAutoscrollToTodayView;
+@property (nonatomic) BOOL allowsFreeScrollingUntilScrollingEnds; // @synthesize allowsFreeScrollingUntilScrollingEnds=_allowsFreeScrollingUntilScrollingEnds;
 @property (readonly, nonatomic) double currentDockOffscreenFraction;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SBRootFolderViewDelegate> delegate; // @dynamic delegate;
@@ -79,7 +83,7 @@
 @property (strong, nonatomic) SBHRootFolderSettings *folderSettings; // @synthesize folderSettings=_folderSettings;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL hidesOffscreenCustomPageViews;
-@property (readonly, nonatomic) BOOL ignoresOverscrollOnFirstPage; // @synthesize ignoresOverscrollOnFirstPage=_ignoresOverscrollOnFirstPage;
+@property (readonly, nonatomic) unsigned long long ignoresOverscrollOnFirstPageOrientations; // @synthesize ignoresOverscrollOnFirstPageOrientations=_ignoresOverscrollOnFirstPageOrientations;
 @property (readonly, nonatomic, getter=isOnTodayPage) BOOL onTodayPage;
 @property (readonly, nonatomic) SBFParallaxSettings *parallaxSettings; // @synthesize parallaxSettings=_parallaxSettings;
 @property (readonly, nonatomic) UIView *portraitHeaderView; // @synthesize portraitHeaderView=_portraitHeaderView;
@@ -95,7 +99,9 @@
 @property (readonly, nonatomic) BOOL shouldFadePageControlOutDuringTransitionToTodayView;
 @property (nonatomic) BOOL showsDoneButton; // @synthesize showsDoneButton=_showsDoneButton;
 @property (readonly, nonatomic) unsigned long long sidebarAllowedOrientations; // @synthesize sidebarAllowedOrientations=_sidebarAllowedOrientations;
+@property (nonatomic, getter=isSidebarEffectivelyVisible) double sidebarEffectivelyVisible; // @synthesize sidebarEffectivelyVisible=_sidebarEffectivelyVisible;
 @property (nonatomic, getter=isSidebarHiddenForOrientation) BOOL sidebarHiddenForOrientation; // @synthesize sidebarHiddenForOrientation=_sidebarHiddenForOrientation;
+@property (readonly, nonatomic) long long sidebarPageIndex;
 @property (nonatomic, getter=isSidebarPinned) double sidebarPinned; // @synthesize sidebarPinned=_sidebarPinned;
 @property (nonatomic, getter=isSidebarSlideGestureActive) BOOL sidebarSlideGestureActive; // @synthesize sidebarSlideGestureActive=_sidebarSlideGestureActive;
 @property (readonly, nonatomic) UIView *sidebarView;
@@ -108,6 +114,7 @@
 @property (readonly, nonatomic) long long todayViewPageIndex;
 @property (readonly, nonatomic) double todayViewPageScrollOffset;
 @property (nonatomic) double todayViewVisibilityProgress; // @synthesize todayViewVisibilityProgress=_todayViewVisibilityProgress;
+@property (nonatomic) BOOL userAttemptedToOverscrollDuringCurrentGesture; // @synthesize userAttemptedToOverscrollDuringCurrentGesture=_userAttemptedToOverscrollDuringCurrentGesture;
 
 + (id)defaultIconLocation;
 + (id)dockIconLocation;
@@ -120,8 +127,10 @@
 - (void)_animateViewsForScrollingToTodayView;
 - (void)_animateViewsForScrollingToTodayViewWithMetrics:(const struct SBRootFolderViewMetrics *)arg1;
 - (void)_captureInitialSearchScrollTrackingState;
+- (void)_cleanUpAfterOverscrollScrollGestureEnded:(id)arg1;
 - (void)_cleanUpAfterScrolling;
-- (void)_cleanupAfterSidebarSlideGestureCompleted;
+- (void)_cleanupAfterExtraScrollGesturesCompleted;
+- (void)_cleanupAfterSidebarSlideGestureCompleted:(id)arg1;
 - (void)_configureParallax;
 - (void)_currentPageIndexDidChange;
 - (void)_disableUserInteractionBeforeSignificantAnimation;
@@ -140,6 +149,7 @@
 - (void)_layoutSubviewsForTodayViewWithMetrics:(const struct SBRootFolderViewMetrics *)arg1;
 - (unsigned long long)_leadingCustomPageCount;
 - (double)_minimumHomeScreenScale;
+- (void)_overscrollScrollPanGestureRecognizerDidUpdate:(id)arg1;
 - (double)_pageWidth;
 - (void)_prepareSidebarViewForOrientationTransition;
 - (void)_removeParallax;
@@ -152,6 +162,8 @@
 - (void)_setupSearchBackdropViewIfNecessary;
 - (void)_setupStateDumper;
 - (BOOL)_shouldHideSidebarView;
+- (BOOL)_shouldIgnoreOverscrollOnFirstPageForCurrentOrientation;
+- (BOOL)_shouldIgnoreOverscrollOnFirstPageForOrientation:(long long)arg1;
 - (void)_sidebarScrollPanGestureRecognizerDidUpdate:(id)arg1;
 - (double)_sidebarVisibilityProgressForPanGestureRecognizer:(id)arg1 presenting:(BOOL)arg2;
 - (double)_spotlightFirstIconRowOffset;
@@ -186,6 +198,7 @@
 - (BOOL)iconScrollView:(id)arg1 shouldSetContentOffset:(struct CGPoint *)arg2 animated:(BOOL)arg3;
 - (void)iconScrollViewDidCancelTouchTracking:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
+- (BOOL)isOnSidebarPage;
 - (BOOL)isPageIndexCustomAndRightmost:(long long)arg1;
 - (void)layoutDockViewWithMetrics:(const struct SBRootFolderViewMetrics *)arg1;
 - (void)layoutIconLists:(double)arg1 animationType:(long long)arg2 forceRelayout:(BOOL)arg3;

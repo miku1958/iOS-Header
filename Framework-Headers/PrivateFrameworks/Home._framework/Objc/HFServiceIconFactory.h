@@ -10,21 +10,20 @@
 {
 }
 
-+ (id)_iconSetForServiceType:(id)arg1 serviceSubtype:(id)arg2 isCentered:(BOOL)arg3;
++ (id)_iconSetForServiceType:(id)arg1 serviceSubtype:(id)arg2;
 + (id)_multiSubtypeIconSetForServiceType:(id)arg1 serviceSubtype:(id)arg2;
++ (id)_replacementIdentifierForIconIdentifier:(id)arg1;
 + (id)allIconDescriptorsForService:(id)arg1;
 + (id)allIconDescriptorsForServiceType:(id)arg1 serviceSubtype:(id)arg2;
-+ (id)allIconDescriptorsForServiceType:(id)arg1 serviceSubtype:(id)arg2 isCentered:(BOOL)arg3;
 + (id)defaultIconDescriptorForService:(id)arg1;
 + (id)defaultIconDescriptorForServiceType:(id)arg1 serviceSubtype:(id)arg2;
++ (id)iconDescriptorForAccessory:(id)arg1;
 + (id)iconDescriptorForAccessoryCategory:(id)arg1;
 + (id)iconDescriptorForAccessoryCategoryType:(id)arg1;
 + (id)iconDescriptorWithIdentifier:(id)arg1 forService:(id)arg2;
 + (id)iconDescriptorWithIdentifier:(id)arg1 forServiceType:(id)arg2 serviceSubtype:(id)arg3;
-+ (id)shiftedIconDescriptorForService:(id)arg1;
-+ (id)shiftedIconDescriptorForServiceType:(id)arg1 serviceSubtype:(id)arg2;
-+ (id)shiftedIconDescriptorWithIdentifier:(id)arg1 forService:(id)arg2;
-+ (id)shiftedIconDescriptorWithIdentifier:(id)arg1 forServiceType:(id)arg2 serviceSubtype:(id)arg3;
++ (id)iconModifiersForService:(id)arg1;
++ (id)overrideIconDescriptorForMultiServiceAccessory:(id)arg1 iconDescriptor:(id)arg2;
 
 @end
 

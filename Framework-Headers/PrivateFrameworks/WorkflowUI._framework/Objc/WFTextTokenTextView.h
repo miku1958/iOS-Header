@@ -92,6 +92,7 @@
 - (void)beginConfiguringVariable:(id)arg1;
 - (void)beginEditingWithContext:(id)arg1;
 - (BOOL)canBecomeFirstResponder;
+- (void)configureAppearanceOfVariableAttachment:(id)arg1;
 - (void)copy:(id)arg1;
 - (void)cut:(id)arg1;
 - (void)dealloc;
@@ -106,11 +107,11 @@
 - (void)setTextContainerInset:(struct UIEdgeInsets)arg1;
 - (void)textAttachmentInteraction:(id)arg1 didTapTextAttachment:(id)arg2 inCharacterRange:(struct _NSRange)arg3;
 - (void)textUpdated;
+- (void)tintColorDidChange;
 - (void)updateAllowedVariableTypes;
+- (void)updateAppearanceOfAllVariableAttachments;
 - (void)updateDoneButtonPresence;
-- (void)updateFontOfVariableAttachments;
 - (void)updateVariableBlock;
-- (id)variableAttachmentFont;
 - (void)variableDidChange:(id)arg1;
 - (void)variableResponder:(id)arg1 didUpdateVariable:(id)arg2;
 - (void)variableResponder:(id)arg1 presentPromptWithTitle:(id)arg2 message:(id)arg3 fieldConfigurationHandler:(CDUnknownBlockType)arg4 commitHandler:(CDUnknownBlockType)arg5;

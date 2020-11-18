@@ -29,8 +29,10 @@
 + (BOOL)_shouldSupportStylusTouches;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (double)_bottomEdgeAngleWindow;
 - (double)_bottomEdgeRegionSize;
 - (double)_edgeRegionSize;
+- (void)_setBottomEdgeAngleWindow:(double)arg1;
 - (void)_setBottomEdgeRegionSize:(double)arg1;
 - (void)_setEdgeRegionSize:(double)arg1;
 - (void)_setHysteresis:(double)arg1;

@@ -12,11 +12,14 @@
 
 @interface MFCertificateTrustInformationKeychainManager : NSObject <EFLoggable>
 {
+    NSString *_addressForSaving;
     EMCertificateTrustInformation *_trustInformation;
     CertUITrustManager *_keychainManager;
 }
 
 @property (readonly, nonatomic) int action;
+@property (readonly, copy, nonatomic) NSString *addressForSaving; // @synthesize addressForSaving=_addressForSaving;
+@property (readonly, nonatomic) BOOL canSaveCertificateToKeychain;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasTrustException;

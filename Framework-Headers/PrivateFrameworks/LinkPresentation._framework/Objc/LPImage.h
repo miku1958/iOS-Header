@@ -23,6 +23,10 @@
     LPImage *_imageLoadedFromItemProvider;
     NSObject<OS_dispatch_group> *_itemProviderLoadGroup;
     NSObject<OS_dispatch_group> *_asynchronousLoadGroup;
+    struct CGSize _pixelSize;
+    BOOL _hasComputedPixelSize;
+    BOOL _hasTransparency;
+    BOOL _hasComputedHasTransparency;
     BOOL _fallbackIcon;
     NSArray *_remoteURLsForEmailCompatibleOutput;
     LPImage *_darkInterfaceAlternativeImage;
@@ -35,6 +39,7 @@
 @property (strong, nonatomic, setter=_setDarkInterfaceAlternativeImage:) LPImage *_darkInterfaceAlternativeImage; // @synthesize _darkInterfaceAlternativeImage;
 @property (readonly, nonatomic) unsigned long long _encodedSize;
 @property (nonatomic, getter=_isFallbackIcon) BOOL _fallbackIcon; // @synthesize _fallbackIcon;
+@property (readonly, nonatomic) BOOL _hasTransparency;
 @property (readonly, strong, nonatomic) NSItemProvider *_itemProvider;
 @property (readonly, nonatomic) struct CGSize _pixelSize;
 @property (strong, nonatomic) NSArray *_remoteURLsForEmailCompatibleOutput; // @synthesize _remoteURLsForEmailCompatibleOutput;

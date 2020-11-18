@@ -37,6 +37,7 @@
 
 + (id)sharedSizer;
 - (void).cxx_destruct;
+- (void)addProxy:(id)arg1;
 - (id)calcAppDynamicSize:(id)arg1;
 - (id)calcAppPurgeableSize:(id)arg1;
 - (id)calcAppStaticSize:(id)arg1;

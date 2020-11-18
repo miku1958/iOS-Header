@@ -12,6 +12,8 @@
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *isEnabled;
+    MISSING_TYPE *isTransitioning;
+    MISSING_TYPE *trackingPollTimer;
     MISSING_TYPE *scrollView;
     MISSING_TYPE *scrollLock;
 }

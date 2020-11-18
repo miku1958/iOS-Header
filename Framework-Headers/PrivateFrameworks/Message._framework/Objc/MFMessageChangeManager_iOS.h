@@ -30,10 +30,11 @@
 - (void)checkForNewActionsInMailboxID:(long long)arg1;
 - (id)copyMessages:(id)arg1 destinationMailboxURL:(id)arg2 userInitiated:(BOOL)arg3;
 - (void)deletePersistedMessages:(id)arg1;
+- (void)didFinishPersistenceDidAddMessages:(id)arg1;
 - (void)displayErrorForTransferAction:(id)arg1 withResults:(id)arg2;
 - (BOOL)haveCompleteMIMEForMessage:(id)arg1;
 - (id)initWithLibrary:(id)arg1 database:(id)arg2 localActionPersistence:(id)arg3 serverMessagePersistenceFactory:(id)arg4 hookResponder:(id)arg5;
-- (id)iterateMessagesInMailboxURL:(id)arg1 excludingMessages:(id)arg2 batchSize:(unsigned long long)arg3 handler:(CDUnknownBlockType)arg4;
+- (id)iterateMessagesInMailboxURLs:(id)arg1 excludingMessages:(id)arg2 batchSize:(unsigned long long)arg3 returnMessagesForFlagChange:(id)arg4 handler:(CDUnknownBlockType)arg5;
 - (long long)mailboxDatabaseIDForURL:(id)arg1;
 - (BOOL)mailboxIsAllMail:(id)arg1;
 - (BOOL)mailboxPartOfAllMail:(id)arg1;
@@ -46,6 +47,7 @@
 - (void)resetStatusCountsForMailboxWithURL:(id)arg1;
 - (void)setData:(id)arg1 onMessage:(id)arg2;
 - (void)setRemoteID:(id)arg1 onMessageWithDatabaseID:(long long)arg2;
+- (void)willStartPersistenceDidAddMessages:(id)arg1;
 
 @end
 

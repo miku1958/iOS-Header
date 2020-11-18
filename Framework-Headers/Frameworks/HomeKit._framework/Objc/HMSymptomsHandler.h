@@ -26,14 +26,12 @@
     HMMutableArray *_currentSymptoms;
 }
 
-@property (readonly) BOOL canInitiateFix;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, nonatomic) HMMutableArray *currentSymptoms; // @synthesize currentSymptoms=_currentSymptoms;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMSymptomsHandlerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSHashTable *fixSessions; // @synthesize fixSessions=_fixSessions;
-@property (readonly) long long fixState;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;

@@ -23,7 +23,7 @@
 
 + (id)defaultPreheatingStrategy;
 + (id)noPreheatingStrategy;
-- (struct CGRect)preheatingRectForLayout:(id)arg1 interactionState:(CDStruct_04522d6a)arg2;
+- (struct CGRect)preheatingRectForLayout:(id)arg1 interactionState:(CDStruct_93894d6c)arg2;
 
 @end
 

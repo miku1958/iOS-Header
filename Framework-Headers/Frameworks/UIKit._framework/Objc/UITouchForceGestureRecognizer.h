@@ -34,6 +34,7 @@
 @property (nonatomic) double automaticTouchForce; // @synthesize automaticTouchForce=_automaticTouchForce;
 @property (nonatomic) double automaticTouchForceDuration; // @synthesize automaticTouchForceDuration=_automaticTouchForceDuration;
 @property (copy, nonatomic) CDUnknownBlockType configurationBlock; // @synthesize configurationBlock=_configurationBlock;
+@property (readonly, nonatomic) BOOL hasExceededAllowableMovement;
 @property (nonatomic) unsigned long long maximumNumberOfTouches; // @synthesize maximumNumberOfTouches=_maximumNumberOfTouches;
 @property (nonatomic) double minimumRequiredTouchForce; // @synthesize minimumRequiredTouchForce=_minimumRequiredTouchForce;
 @property (nonatomic, getter=isSteady) BOOL steady; // @synthesize steady=_steady;

@@ -55,7 +55,7 @@
 - (void)_updateForWillRotate:(id)arg1;
 - (void)_updatePaletteTraitCollection:(id)arg1;
 - (void)_updatePaletteViewConstraints;
-- (void)_updatePaletteViewSize;
+- (void)_updateSceneBounds;
 - (id)_viewControllerForPalette;
 - (void)didMoveToView:(id)arg1;
 - (void)editingOverlayContainerDidChangeToSceneBounds:(struct CGRect)arg1;

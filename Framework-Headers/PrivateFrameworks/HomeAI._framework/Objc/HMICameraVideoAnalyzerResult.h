@@ -12,6 +12,7 @@
 
 @interface HMICameraVideoAnalyzerResult : NSObject <NSSecureCoding>
 {
+    float _analysisFPS;
     long long _events;
     NSDictionary *_annotationScores;
     NSArray *_posterFrames;
@@ -25,6 +26,7 @@
     CDStruct_1b6d18a9 _duration;
 }
 
+@property float analysisFPS; // @synthesize analysisFPS=_analysisFPS;
 @property (readonly) NSDictionary *annotationScores; // @synthesize annotationScores=_annotationScores;
 @property (strong) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property CDStruct_1b6d18a9 duration; // @synthesize duration=_duration;

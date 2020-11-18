@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CAGradientLayer, CLKDevice, UIImageView;
+@class CAGradientLayer, CLKDevice, NTKSiderealColorManager, UIImageView;
 
 @interface NTKSiderealSolarContainerView : UIView
 {
@@ -18,6 +18,7 @@
     UIView *_nightContainerView;
     CAGradientLayer *_nightDiskGnomon;
     double _orbitDiameter;
+    NTKSiderealColorManager *_colorManager;
     UIView *_dayDisk;
     UIView *_dayAccessoryContainerView;
     UIView *_nightDisk;

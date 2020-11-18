@@ -8,9 +8,11 @@
 
 @interface SBSnapshotWindow : UIWindow
 {
+    long long _orientation;
 }
 
 + (BOOL)_isSecure;
+- (id)initWithFrame:(struct CGRect)arg1 orientation:(long long)arg2;
 - (long long)interfaceOrientation;
 
 @end

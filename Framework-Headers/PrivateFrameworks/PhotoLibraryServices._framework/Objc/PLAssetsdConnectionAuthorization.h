@@ -25,6 +25,7 @@
     BOOL _photoKitEntitled;
     int _clientProcessIdentifier;
     NSString *_trustedCallerBundleID;
+    NSString *_trustedCallerDisplayName;
 }
 
 @property (readonly, nonatomic) CDStruct_4c969caf clientAuditToken;
@@ -36,6 +37,7 @@
 @property (readonly, nonatomic) BOOL photoKitEntitled; // @synthesize photoKitEntitled=_photoKitEntitled;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *trustedCallerBundleID; // @synthesize trustedCallerBundleID=_trustedCallerBundleID;
+@property (readonly, nonatomic) NSString *trustedCallerDisplayName; // @synthesize trustedCallerDisplayName=_trustedCallerDisplayName;
 
 - (void).cxx_destruct;
 - (void)_handleDuetReportIsForground:(BOOL)arg1;

@@ -76,6 +76,7 @@
 - (void)_finalizeHandlingOfIdentifier:(id)arg1;
 - (id)_identifierFromString:(id)arg1;
 - (void)_invalidateAssertion;
+- (BOOL)_isValidSubmissionKey:(id)arg1;
 - (BOOL)_needsToPurgeClipsOlderThanThirtyDays;
 - (void)_prepareQueuesForResumptionOfService;
 - (id)_previousFailureIdentifierForIdentifier:(id)arg1;

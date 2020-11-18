@@ -22,11 +22,14 @@
 + (id)fallbackFilenamePrefix;
 + (BOOL)isPreviewable;
 - (void).cxx_destruct;
+- (BOOL)_supportsPassbook;
+- (Class)balloonViewClassForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)generateThumbnailFillToSize:(struct CGSize)arg1 contentAlignmentInsets:(struct UIEdgeInsets)arg2;
 - (id)generateThumbnailForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)initWithTransfer:(id)arg1 isFromMe:(BOOL)arg2 suppressPreview:(BOOL)arg3 forceInlinePreview:(BOOL)arg4;
 - (int)mediaType;
 - (id)passView;
+- (id)previewForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (BOOL)shouldBeQuickLooked;
 - (BOOL)shouldShowDisclosure;
 - (BOOL)shouldShowViewer;

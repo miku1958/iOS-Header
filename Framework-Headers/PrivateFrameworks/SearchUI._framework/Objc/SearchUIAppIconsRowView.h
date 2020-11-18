@@ -42,7 +42,6 @@
 @property (readonly) Class superclass;
 
 + (struct SBIconImageInfo)appIconImageInfo;
-+ (id)appLabel;
 + (id)applicationShortcutService;
 + (id)imageCache;
 + (double)numberOfIcons;
@@ -54,7 +53,6 @@
 - (void)dealloc;
 - (void)fetchApplicationShortcutInfoForIcon:(id)arg1;
 - (void)fetchIconImageForIcon:(id)arg1 iconView:(id)arg2;
-- (double)gridArrangement:(id)arg1 heightOfRowAtIndex:(long long)arg2 spacingAfter:(double *)arg3;
 - (id)gridArrangement:(id)arg1 itemAtIndex:(long long)arg2 columns:(struct _NSRange *)arg3 rows:(struct _NSRange *)arg4 horizontalAlignment:(long long *)arg5 verticalAlignment:(long long *)arg6;
 - (id)icon:(id)arg1 displayNameForLocation:(id)arg2;
 - (id)icon:(id)arg1 imageWithInfo:(struct SBIconImageInfo)arg2;
@@ -62,6 +60,7 @@
 - (unsigned long long)iconImageGenerationCountForIconView:(id)arg1;
 - (void)iconTapped:(id)arg1;
 - (id)iconView:(id)arg1 applicationShortcutItemsWithProposedItems:(id)arg2;
+- (long long)iconView:(id)arg1 draggingStartLocationWithProposedStartLocation:(long long)arg2;
 - (BOOL)iconView:(id)arg1 shouldActivateApplicationShortcutItem:(id)arg2 atIndex:(unsigned long long)arg3;
 - (BOOL)iconViewCanBeginDrags:(id)arg1;
 - (BOOL)iconViewShouldBeginShortcutsPresentation:(id)arg1;

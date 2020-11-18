@@ -8,7 +8,8 @@
 
 #import <MapKit/MKOverlay-Protocol.h>
 
-@class GEOTileCache, NSString;
+@class GEOTileCache, NSString, geo_isolater;
+@protocol OS_dispatch_source;
 
 @interface MKTileOverlay : NSObject <MKOverlay>
 {
@@ -20,6 +21,11 @@
     BOOL _canReplaceMapContent;
     unsigned int _providerID;
     GEOTileCache *_tileCache;
+    GEOTileCache *_minimumLifetimeTileCache;
+    geo_isolater *_minimumLifetimeTileCacheEvictionTimerIsolation;
+    NSObject<OS_dispatch_source> *_minimumLifetimeTileCacheEvictionTimer;
+    NSObject<OS_dispatch_source> *_memoryNotificationEventSource;
+    BOOL _needsAdditionalMinimumLifetimeCleanup;
 }
 
 @property (readonly) NSString *URLTemplate; // @synthesize URLTemplate=_URLTemplate;
@@ -43,6 +49,9 @@
 - (void)_flushCaches;
 - (struct _GEOTileKey)_keyForPath:(CDStruct_cbb88d5e)arg1;
 - (void)_loadTile:(const struct _GEOTileKey *)arg1 result:(CDUnknownBlockType)arg2;
+- (void)_minLifetimeCacheCleanupFired;
+- (void)_receivedMemoryNotification;
+- (void)_scheduleMinLifetimeCacheCleanupIfNecessary;
 - (id)_tilesInMapRect:(CDStruct_02837cd9)arg1 zoomScale:(double)arg2 contentScale:(double)arg3;
 - (int)_zoomLevelForScale:(double)arg1;
 - (void)dealloc;

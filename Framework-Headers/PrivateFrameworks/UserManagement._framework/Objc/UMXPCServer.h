@@ -115,7 +115,10 @@ __attribute__((visibility("hidden")))
 - (void)deleteUserPersona:(id)arg1 passcodeData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)deviceLoginSessionStateDidUpdate;
 - (void)directSwitchToUser:(id)arg1 passcodeData:(id)arg2 context:(id)arg3 preferences:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)disableUserPersona:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchAsidMapwithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchBundleIdentifierForPersona:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchListOfAllUsersPersonasWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchListOfPersonasSynchronousWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchListOfPersonasWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchMultiPersonaBundleIdentifierWithcompletionHandler:(CDUnknownBlockType)arg1;

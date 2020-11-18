@@ -9,14 +9,13 @@
 #import <PencilKit/PKPalettePencilInteractionFeedbackHostViewDelegate-Protocol.h>
 #import <PencilKit/PKPaletteTransitionDelegate-Protocol.h>
 #import <PencilKit/PKPaletteViewInternalDelegate-Protocol.h>
-#import <PencilKit/PKPaletteWindowSceneListening-Protocol.h>
 #import <PencilKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <PencilKit/UIPopoverPresentationControllerDelegate-Protocol.h>
 
 @class NSLayoutConstraint, NSString, PKColorPicker, PKPalettePencilInteractionFeedbackHostView, PKPaletteTransition, PKPaletteView, UILongPressGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer;
 @protocol PKPaletteHostViewDelegate, PKPaletteHostingWindowScene;
 
-@interface PKPaletteHostView : UIView <UIGestureRecognizerDelegate, PKPaletteViewInternalDelegate, UIPopoverPresentationControllerDelegate, PKPalettePencilInteractionFeedbackHostViewDelegate, PKPaletteTransitionDelegate, PKPaletteWindowSceneListening>
+@interface PKPaletteHostView : UIView <UIGestureRecognizerDelegate, PKPaletteViewInternalDelegate, UIPopoverPresentationControllerDelegate, PKPalettePencilInteractionFeedbackHostViewDelegate, PKPaletteTransitionDelegate>
 {
     BOOL paletteDragging;
     BOOL paletteMinimized;
@@ -35,7 +34,6 @@
     UIPanGestureRecognizer *_panGestureRecognizer;
     UITapGestureRecognizer *_tapToExpandPaletteFromMinimizedGestureRecognizer;
     UILongPressGestureRecognizer *_touchDownFeedbackGestureRecognizer;
-    long long _dockingAppearance;
     long long _paletteDraggingBehavior;
     long long _paletteVisualState;
     long long _draggingPendingPaletteVisualState;
@@ -53,7 +51,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKPaletteHostViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) long long dockingAppearance; // @synthesize dockingAppearance=_dockingAppearance;
 @property (nonatomic) struct CGPoint draggingInitialPaletteCenterInSelf; // @synthesize draggingInitialPaletteCenterInSelf=_draggingInitialPaletteCenterInSelf;
 @property (nonatomic) long long draggingPendingPaletteVisualState; // @synthesize draggingPendingPaletteVisualState=_draggingPendingPaletteVisualState;
 @property (nonatomic, getter=isEffectivePaletteVisible) BOOL effectivePaletteVisible; // @synthesize effectivePaletteVisible=_effectivePaletteVisible;
@@ -99,7 +96,7 @@
 - (void)_paletteDidDockToEdge:(unsigned long long)arg1;
 - (struct CGSize)_paletteSizeForVisualState:(long long)arg1;
 - (void)_paletteWillDockToCorner:(unsigned long long)arg1;
-- (void)_paletteWillDockToEdge:(unsigned long long)arg1;
+- (void)_paletteWillDockToEdge:(unsigned long long)arg1 prepareForExpansion:(BOOL)arg2;
 - (void)_panGestureHandler:(id)arg1;
 - (void)_performAnimated:(BOOL)arg1 tracking:(BOOL)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_processPendingDraggingTransition;
@@ -112,16 +109,14 @@
 - (void)_updateConstraintsToDockPaletteToCorner:(unsigned long long)arg1;
 - (void)_updateConstraintsToDockPaletteToEdge:(unsigned long long)arg1;
 - (void)_updateConstraintsToFixToBottomEdge;
-- (void)_updateMinimizedPreviewRotationAnimated:(BOOL)arg1;
+- (void)_updatePaletteAppearance;
 - (void)_updatePaletteContentAlpha;
 - (void)_updatePaletteHeightConstraint;
 - (void)_updatePaletteScaleFactor;
 - (void)_updatePaletteSizeAnimated:(BOOL)arg1;
 - (void)_updatePaletteViewSizeConstraints;
-- (void)adaptAppearanceToDockToAnyCorner;
-- (void)adaptAppearanceToDockToAnyEdge;
-- (void)adaptAppearanceToExpandFromAnyCorner;
-- (void)adaptAppearanceToHorizontalCompactSize;
+- (void)_updateToolPreviewMinimizedStateAnimated:(BOOL)arg1;
+- (void)_updateToolPreviewRotationAnimated:(BOOL)arg1;
 - (void)animatePaletteToVisible:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)didMoveToWindow;
 - (unsigned long long)edgeToDockPaletteFromCurrentPaletteCorner;
@@ -150,7 +145,6 @@
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct CGSize)regularPaletteSize;
 - (void)safeAreaInsetsDidChange;
-- (void)setCommonPaletteViewProperties;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)transitionExpandedToCollapsedRatioDidChange:(id)arg1;
 - (void)transitionIntermediateVisualStateDidChange:(id)arg1;

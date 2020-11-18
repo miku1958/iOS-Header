@@ -23,8 +23,9 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)init:(int)arg1 confidence:(double)arg2 boundingBox:(struct CGRect)arg3;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithLabelIndex:(int)arg1 confidence:(double)arg2 boundingBox:(struct CGRect)arg3;
+- (id)initWithLabelIndex:(int)arg1 confidence:(double)arg2 unclampedBoundingBox:(struct CGRect)arg3;
 - (BOOL)isEqual:(id)arg1;
 
 @end

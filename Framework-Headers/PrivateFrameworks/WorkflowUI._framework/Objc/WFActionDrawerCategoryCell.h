@@ -6,24 +6,30 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class UIImageView, UILabel;
+@class NSArray, UIImageView, UILabel, WFActionDrawerCategoriesMetrics;
 
 @interface WFActionDrawerCategoryCell : UICollectionViewCell
 {
+    BOOL _shouldStackVertically;
     UIImageView *_iconImageView;
     UILabel *_titleLabel;
+    WFActionDrawerCategoriesMetrics *_metrics;
+    NSArray *_verticalStackConstraints;
+    NSArray *_horizontalStackConstraints;
 }
 
+@property (strong, nonatomic) NSArray *horizontalStackConstraints; // @synthesize horizontalStackConstraints=_horizontalStackConstraints;
 @property (weak, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
+@property (strong, nonatomic) WFActionDrawerCategoriesMetrics *metrics; // @synthesize metrics=_metrics;
+@property (nonatomic) BOOL shouldStackVertically; // @synthesize shouldStackVertically=_shouldStackVertically;
 @property (weak, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (strong, nonatomic) NSArray *verticalStackConstraints; // @synthesize verticalStackConstraints=_verticalStackConstraints;
 
 - (void).cxx_destruct;
-- (void)configureWithWorkflowCategoryTitle:(id)arg1 icon:(id)arg2;
-- (void)contentSizeCategoryDidChange;
-- (void)dealloc;
+- (void)adjustStackingStyle;
+- (void)configureWithWorkflowCategoryTitle:(id)arg1 icon:(id)arg2 shouldStackVertically:(BOOL)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)prepareForReuse;
-- (void)updateFontSizes;
 
 @end
 

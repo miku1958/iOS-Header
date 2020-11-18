@@ -27,11 +27,11 @@
 
 - (void).cxx_destruct;
 - (id)executeRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)executeRequest:(id)arg1 source:(id)arg2 resultsFactory:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (id)init;
 - (id)initWithEventStore:(id)arg1 operationFactory:(id)arg2;
 - (id)queryForFetchRequest:(id)arg1;
 - (CDUnknownBlockType)resultTransformWithFactory:(id)arg1;
-- (id)runQuery:(id)arg1 forSource:(id)arg2 resultsFactory:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

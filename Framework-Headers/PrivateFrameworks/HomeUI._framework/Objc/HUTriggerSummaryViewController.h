@@ -14,7 +14,7 @@
 #import <HomeUI/UITextViewDelegate-Protocol.h>
 #import <HomeUI/WFHomeComposeViewControllerDelegate-Protocol.h>
 
-@class HFTriggerBuilder, HUForwardingTriggerActionBuilderDelegate, HUTriggerSummaryActionGridViewController, HUTriggerSummaryItemManager, NSString;
+@class HFTriggerBuilder, HUForwardingTriggerActionBuilderDelegate, HUTriggerActionFlow, HUTriggerSummaryActionGridViewController, HUTriggerSummaryItemManager, NSString;
 @protocol HUTriggerEditorDelegate;
 
 @interface HUTriggerSummaryViewController : HUItemTableViewController <HUTriggerEditorDelegate, HUSwitchCellDelegate, HUTriggerSummaryActionGridViewControllerDelegate, HUTriggerDurationPickerDelegate, UITextViewDelegate, WFHomeComposeViewControllerDelegate, HUMediaSelectionViewControllerDelegate>
@@ -26,12 +26,14 @@
     HFTriggerBuilder *_triggerBuilder;
     id<HUTriggerEditorDelegate> _delegate;
     HUForwardingTriggerActionBuilderDelegate *_forwardingTriggerActionBuilderDelegate;
+    HUTriggerActionFlow *_flow;
 }
 
 @property (readonly, nonatomic) HUTriggerSummaryActionGridViewController *actionSetsGridViewController; // @synthesize actionSetsGridViewController=_actionSetsGridViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUTriggerEditorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) HUTriggerActionFlow *flow; // @synthesize flow=_flow;
 @property (strong, nonatomic) HUForwardingTriggerActionBuilderDelegate *forwardingTriggerActionBuilderDelegate; // @synthesize forwardingTriggerActionBuilderDelegate=_forwardingTriggerActionBuilderDelegate;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isEditingExistingTrigger; // @synthesize isEditingExistingTrigger=_isEditingExistingTrigger;
@@ -85,7 +87,9 @@
 - (void)triggerEditor:(id)arg1 didFinishWithTriggerBuilder:(id)arg2;
 - (void)triggerSummaryActionGridViewController:(id)arg1 didUpdateTriggerBuilder:(id)arg2;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;
+- (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

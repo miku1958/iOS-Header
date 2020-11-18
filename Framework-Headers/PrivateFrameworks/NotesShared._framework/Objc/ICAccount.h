@@ -51,6 +51,7 @@
 + (id)accountWithIdentifier:(id)arg1 context:(id)arg2;
 + (id)accountsMatchingPredicate:(id)arg1 context:(id)arg2;
 + (id)accountsWithAccountType:(int)arg1 context:(id)arg2;
++ (id)allAccountIdentifiersInContext:(id)arg1;
 + (id)allAccountsInContext:(id)arg1;
 + (id)allActiveAccountsInContext:(id)arg1;
 + (id)allActiveAccountsInContext:(id)arg1 sortDescriptors:(id)arg2 relationshipKeyPathsForPrefetching:(id)arg3;

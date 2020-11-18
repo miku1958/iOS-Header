@@ -16,17 +16,15 @@
     NSObject<OS_dispatch_queue> *workQueue;
     CBCentralManager *centralManager;
     NSMutableSet *delegates;
-    long long centralManagerState;
-    long long _state;
+    long long state;
 }
 
 @property (strong, nonatomic) CBCentralManager *centralManager; // @synthesize centralManager;
-@property long long centralManagerState; // @synthesize centralManagerState;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NSMutableSet *delegates; // @synthesize delegates;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) long long state; // @synthesize state=_state;
+@property long long state; // @synthesize state;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue;
 

@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL showsInlineDayView; // @synthesize showsInlineDayView=_showsInlineDayView;
 
 - (void).cxx_destruct;
+- (void)_createNewEventCopy;
 - (void)_datesForPreviewViewControllerWithStartDate:(id *)arg1 endDate:(id *)arg2;
 - (id)_dayPreviewViewController;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;

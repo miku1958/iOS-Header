@@ -66,6 +66,7 @@
 @property (readonly, nonatomic) unsigned long long reframeVariation;
 @property (readonly, nonatomic) NSURL *spatialOvercapturePairedVideoURL; // @synthesize spatialOvercapturePairedVideoURL=_spatialOvercapturePairedVideoURL;
 @property (readonly, nonatomic) NSURL *spatialOvercapturePhotoURL; // @synthesize spatialOvercapturePhotoURL=_spatialOvercapturePhotoURL;
+@property (nonatomic) BOOL spatialOvercaptureResourcesPurgeable;
 @property (readonly, nonatomic) NSURL *spatialOvercaptureVideoURL; // @synthesize spatialOvercaptureVideoURL=_spatialOvercaptureVideoURL;
 @property (readonly, nonatomic) unsigned short videoComplementVisibilityState;
 @property (readonly, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;

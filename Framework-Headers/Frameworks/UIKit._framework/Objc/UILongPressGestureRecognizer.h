@@ -21,6 +21,7 @@
     struct CGPoint _lastCentroidScreen;
     UIHeldAction *_enoughTimeElapsed;
     UIDelayedAction *_tooMuchTimeElapsed;
+    UIDelayedAction *_multitouchTimer;
     UITapRecognizer *_imp;
     NSObservation *_touchForceObservation;
     long long _impulseObservations;
@@ -35,20 +36,24 @@
     BOOL _requiresQuietImpulse;
     BOOL _requiresQuietImpulseForCurrentTouchSequence;
     BOOL __prefersToBeExclusiveWithCompetingLongPressGestureRecognizers;
+    BOOL __shouldAlwaysEnableMultitouchTimerAtTouchesBegin;
     long long _buttonType;
     UILongPressGestureVelocitySample *_velocitySample;
     UILongPressGestureVelocitySample *_previousVelocitySample;
+    double _allowableElapsedTimeForAllRequiredTouches;
     double _lastTouchTime;
     struct CGPoint _lastSceneReferenceLocation;
     struct CGPoint _lastUnadjustedSceneReferenceLocation;
 }
 
+@property (nonatomic, setter=_setAllowableElapsedTimeForAllRequiredTouches:) double _allowableElapsedTimeForAllRequiredTouches; // @synthesize _allowableElapsedTimeForAllRequiredTouches;
 @property (nonatomic, setter=_setButtonType:) long long _buttonType; // @synthesize _buttonType;
 @property (readonly, nonatomic) struct CGPoint _centroidScreen;
 @property (nonatomic) BOOL _prefersToBeExclusiveWithCompetingLongPressGestureRecognizers; // @synthesize _prefersToBeExclusiveWithCompetingLongPressGestureRecognizers=__prefersToBeExclusiveWithCompetingLongPressGestureRecognizers;
 @property (readonly, getter=_previousVelocitySample) UILongPressGestureVelocitySample *_previousVelocitySample; // @synthesize _previousVelocitySample;
 @property (nonatomic, setter=_setRequiresQuietImpulse:) BOOL _requiresQuietImpulse; // @synthesize _requiresQuietImpulse;
 @property (nonatomic, setter=_setRequiresQuietImpulseForCurrentTouchSequence:) BOOL _requiresQuietImpulseForCurrentTouchSequence; // @synthesize _requiresQuietImpulseForCurrentTouchSequence;
+@property (nonatomic, setter=_setShouldAlwaysEnableMultitouchTimerAtTouchesBegin:) BOOL _shouldAlwaysEnableMultitouchTimerAtTouchesBegin; // @synthesize _shouldAlwaysEnableMultitouchTimerAtTouchesBegin=__shouldAlwaysEnableMultitouchTimerAtTouchesBegin;
 @property (readonly, getter=_velocitySample) UILongPressGestureVelocitySample *_velocitySample; // @synthesize _velocitySample;
 @property (nonatomic) double allowableMovement; // @synthesize allowableMovement=_allowableMovement;
 @property (nonatomic) BOOL cancelPastAllowableMovement;
@@ -95,6 +100,7 @@
 - (struct CGPoint)_shiftPanLocationToNewSceneReferenceLocation:(struct CGPoint)arg1;
 - (BOOL)_shouldFailInResponseToPresses:(id)arg1 withEvent:(id)arg2;
 - (BOOL)_shouldReceivePress:(id)arg1;
+- (void)_startMultitouchTimer;
 - (struct CGPoint)_startPointInView:(id)arg1;
 - (void)_startTapFinishedTimer;
 - (double)_touchSloppinessFactor;

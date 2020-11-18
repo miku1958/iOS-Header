@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)initWithToken:(struct NotificationToken)arg1 realm:(id)arg2;
+- (void)invalidate;
 - (id)realm;
-- (void)stop;
 - (void)suppressNextNotification;
 
 @end

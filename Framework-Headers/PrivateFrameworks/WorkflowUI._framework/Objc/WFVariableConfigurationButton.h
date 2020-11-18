@@ -38,6 +38,7 @@
 - (void)hideVariableConfiguration;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)showVariableConfiguration;
+- (void)tintColorDidChange;
 - (void)updateVariableImage;
 - (void)variableDidChange:(id)arg1;
 - (void)variableResponder:(id)arg1 didUpdateVariable:(id)arg2;

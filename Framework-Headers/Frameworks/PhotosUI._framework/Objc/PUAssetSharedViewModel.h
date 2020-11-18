@@ -16,10 +16,12 @@ __attribute__((visibility("hidden")))
     PUOperationStatus *_loadingStatus;
     NSProgress *_saveProgress;
     long long _saveState;
+    long long _flippingFullSizeRenderState;
 }
 
 @property (readonly, nonatomic) id<PUDisplayAsset> asset; // @synthesize asset=_asset;
 @property (readonly, nonatomic) PUAssetSharedViewModelChange *currentChange;
+@property (nonatomic) long long flippingFullSizeRenderState; // @synthesize flippingFullSizeRenderState=_flippingFullSizeRenderState;
 @property (strong, nonatomic) PUOperationStatus *loadingStatus; // @synthesize loadingStatus=_loadingStatus;
 @property (strong, nonatomic) NSProgress *saveProgress; // @synthesize saveProgress=_saveProgress;
 @property (nonatomic) long long saveState; // @synthesize saveState=_saveState;

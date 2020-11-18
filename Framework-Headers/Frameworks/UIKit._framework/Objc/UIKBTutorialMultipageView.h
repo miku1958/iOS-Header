@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)configMediaView;
 - (id)initWithPageViews:(id)arg1 pagingInterval:(double)arg2;
 - (void)layoutSubviews;
+- (void)resetPageScrolling;
 - (void)scrollToNextPage;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;

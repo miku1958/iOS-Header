@@ -30,6 +30,7 @@
 - (void)dealloc;
 - (BOOL)enableScreenTimeForDSID:(id)arg1 error:(id *)arg2;
 - (id)init;
+- (void)isExplicitContentRestricted:(CDUnknownBlockType)arg1;
 - (void)isRestrictionsPasscodeSet:(CDUnknownBlockType)arg1;
 - (BOOL)performMigrationFromMCXSettings:(id)arg1 error:(id *)arg2;
 - (BOOL)permitWebFilterURL:(id)arg1 pageTitle:(id)arg2 error:(id *)arg3;
@@ -41,6 +42,7 @@
 - (BOOL)setScreenTimeEnabled:(BOOL)arg1 error:(id *)arg2;
 - (void)setScreenTimeSyncingEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)shouldAllowOneMoreMinuteForBundleIdentifier:(id)arg1 error:(id *)arg2;
+- (id)shouldAllowOneMoreMinuteForCategoryIdentifier:(id)arg1 error:(id *)arg2;
 - (id)shouldAllowOneMoreMinuteForWebsiteURL:(id)arg1 error:(id *)arg2;
 - (void)shouldRequestMoreTime:(CDUnknownBlockType)arg1;
 

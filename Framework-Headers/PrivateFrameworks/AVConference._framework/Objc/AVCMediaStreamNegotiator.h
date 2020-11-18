@@ -15,26 +15,24 @@
     long long _videoWidth;
     long long _dpiFactor;
     unsigned char _deviceRole;
-    NSData *_offer;
-    NSData *_answer;
-    VCMediaNegotiator *_mediaNegotiator;
     NSData *_mediaBlobCompressed;
     NSString *_dataSessionID;
     long long _mediaStreamMode;
+    VCMediaNegotiator *_mediaNegotiator;
+    NSData *_remoteCallInfoBlob;
+    NSData *_offer;
+    NSData *_answer;
 }
 
 @property (readonly, nonatomic) NSData *answer; // @synthesize answer=_answer;
-@property (readonly, nonatomic) NSString *dataSessionID; // @synthesize dataSessionID=_dataSessionID;
-@property unsigned char deviceRole; // @synthesize deviceRole=_deviceRole;
-@property (readonly, nonatomic) NSData *mediaBlobCompressed; // @synthesize mediaBlobCompressed=_mediaBlobCompressed;
-@property (readonly, nonatomic) VCMediaNegotiator *mediaNegotiator; // @synthesize mediaNegotiator=_mediaNegotiator;
-@property (readonly, nonatomic) long long mediaStreamMode; // @synthesize mediaStreamMode=_mediaStreamMode;
 @property (readonly, nonatomic) NSData *offer; // @synthesize offer=_offer;
 
 - (long long)AVCVideoStreamModeWithAVCMediaStreamMode:(long long)arg1;
 - (int)AVConferenceOperatingModeWithAVCMediaStreamMode:(long long)arg1;
 - (unsigned char)VCVideoFeatureListStringTypeWithAVCMediaStreamMode:(long long)arg1;
+- (BOOL)addLocalCallInfoBlobToOutgoingDictionary:(id)arg1;
 - (long long)clientCodecTypeWithCodecType:(long long)arg1;
+- (BOOL)createAnswer;
 - (BOOL)createOffer;
 - (void)dealloc;
 - (id)generateMediaStreamConfigurationWithError:(id *)arg1;
@@ -43,6 +41,7 @@
 - (id)initWithMode:(long long)arg1 error:(id *)arg2;
 - (id)initWithOffer:(id)arg1 error:(id *)arg2;
 - (id)initWithOffer:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (BOOL)processAnswerWithError:(id *)arg1 errorReason:(id *)arg2;
 - (BOOL)processInitOptions:(id)arg1 error:(id *)arg2 errorReason:(id *)arg3;
 - (BOOL)processOfferWithError:(id *)arg1 errorReason:(id *)arg2;
 - (void)refreshLoggingParameters;

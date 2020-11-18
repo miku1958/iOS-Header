@@ -10,11 +10,10 @@
 
 @interface HMICameraVideoAnalyzerRequest : HMFObject
 {
-    BOOL _skipAnalysis;
-    BOOL _failAnalysis;
     NSDate *_analysisSubmissionTime;
     NSDate *_analysisStartTime;
     double _maxAnalysisFPS;
+    double _analysisFPS;
     HMICameraVideoFragment *_fragment;
     HMICameraVideoResourceAttributes *_attributes;
     HMICameraVideoEncoderSession *_encoderSession;
@@ -27,8 +26,10 @@
     NSMutableArray *_videoFrameResults;
     HMICameraVideoAnalyzerRequestLog *_log;
     long long _phase;
+    long long _flags;
 }
 
+@property (readonly) double analysisFPS; // @synthesize analysisFPS=_analysisFPS;
 @property (readonly) NSDate *analysisStartTime; // @synthesize analysisStartTime=_analysisStartTime;
 @property (readonly) NSDate *analysisSubmissionTime; // @synthesize analysisSubmissionTime=_analysisSubmissionTime;
 @property (readonly) HMICameraVideoAnalyzer *analyzer; // @synthesize analyzer=_analyzer;
@@ -37,14 +38,15 @@
 @property (readonly) HMICameraVideoEncoderSession *encoderSession; // @synthesize encoderSession=_encoderSession;
 @property (readonly) long long eventTypes; // @synthesize eventTypes=_eventTypes;
 @property long long events; // @synthesize events=_events;
-@property (getter=shouldFailAnalysis) BOOL failAnalysis; // @synthesize failAnalysis=_failAnalysis;
+@property long long flags; // @synthesize flags=_flags;
 @property (readonly) HMICameraVideoFragment *fragment; // @synthesize fragment=_fragment;
 @property (readonly) HMICameraVideoFrameSelector *frameSelector; // @synthesize frameSelector=_frameSelector;
 @property (readonly) HMICameraVideoAnalyzerRequestLog *log; // @synthesize log=_log;
 @property (readonly) double maxAnalysisFPS; // @synthesize maxAnalysisFPS=_maxAnalysisFPS;
 @property long long phase; // @synthesize phase=_phase;
 @property (readonly) HMICameraVideoPosterFrameGenerator *posterFrameGenerator; // @synthesize posterFrameGenerator=_posterFrameGenerator;
-@property (getter=shouldSkipAnalysis) BOOL skipAnalysis; // @synthesize skipAnalysis=_skipAnalysis;
+@property (readonly) BOOL shouldFailAnalysis;
+@property (readonly) BOOL shouldSkipAnalysis;
 @property (readonly) double timeSinceAnalysisStart;
 @property (readonly) double timeSinceAnalysisSubmission;
 @property (strong) NSMutableArray *videoFrameResults; // @synthesize videoFrameResults=_videoFrameResults;

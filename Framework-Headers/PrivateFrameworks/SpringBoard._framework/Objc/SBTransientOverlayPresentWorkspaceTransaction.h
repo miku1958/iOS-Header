@@ -23,10 +23,12 @@
 
 - (void).cxx_destruct;
 - (void)_begin;
+- (BOOL)_canBeInterrupted;
 - (void)_didComplete;
 - (void)_performStandardPresentationAnimated:(BOOL)arg1;
 - (void)_willBegin;
 - (void)animationControllerDidFinishAnimation:(id)arg1;
+- (BOOL)canInterruptForTransitionRequest:(id)arg1;
 - (id)initWithTransitionRequest:(id)arg1;
 
 @end

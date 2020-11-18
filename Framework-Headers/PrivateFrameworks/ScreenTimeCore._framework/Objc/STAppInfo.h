@@ -10,6 +10,7 @@
 
 @interface STAppInfo : NSObject
 {
+    short _platform;
     long long _source;
     NSString *_bundleIdentifier;
     NSString *_displayName;
@@ -26,6 +27,7 @@
 @property (copy, nonatomic) NSString *developerName; // @synthesize developerName=_developerName;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (copy, nonatomic) NSURL *localURL; // @synthesize localURL=_localURL;
+@property (nonatomic) short platform; // @synthesize platform=_platform;
 @property (copy, nonatomic) NSString *ratingLabel; // @synthesize ratingLabel=_ratingLabel;
 @property (nonatomic) long long source; // @synthesize source=_source;
 

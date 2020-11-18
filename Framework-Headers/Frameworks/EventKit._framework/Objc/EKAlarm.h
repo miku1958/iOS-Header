@@ -52,6 +52,7 @@
 + (long long)maxPublicProximity;
 + (id)noneTriggerDate;
 - (void).cxx_destruct;
+- (BOOL)_reset;
 - (id)acknowledgedDate;
 - (void)addSnoozedAlarm:(id)arg1;
 - (long long)alarmType;

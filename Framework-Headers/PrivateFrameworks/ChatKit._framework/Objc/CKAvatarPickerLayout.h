@@ -6,11 +6,12 @@
 
 #import <UIKit/UICollectionViewLayout.h>
 
-@class NSArray, UICollectionViewLayoutAttributes;
+@class NSArray, NSValue, UICollectionViewLayoutAttributes;
 @protocol CKAvatarPickerLayoutDelegate;
 
 @interface CKAvatarPickerLayout : UICollectionViewLayout
 {
+    BOOL _isInEditingMode;
     unsigned long long _layoutMode;
     id<CKAvatarPickerLayoutDelegate> _delegate;
     UICollectionViewLayoutAttributes *_titleSupplementaryAttr;
@@ -19,11 +20,14 @@
     NSArray *_cutoutAttrCollection;
     UICollectionViewLayoutAttributes *_leftShadowDecorationAttr;
     UICollectionViewLayoutAttributes *_rightShadowDecorationAttr;
+    NSValue *_editingFrameValue;
 }
 
 @property (copy, nonatomic) NSArray *attrCollection; // @synthesize attrCollection=_attrCollection;
 @property (copy, nonatomic) NSArray *cutoutAttrCollection; // @synthesize cutoutAttrCollection=_cutoutAttrCollection;
 @property (weak, nonatomic) id<CKAvatarPickerLayoutDelegate> delegate; // @synthesize delegate=_delegate;
+@property (copy, nonatomic) NSValue *editingFrameValue; // @synthesize editingFrameValue=_editingFrameValue;
+@property (nonatomic) BOOL isInEditingMode; // @synthesize isInEditingMode=_isInEditingMode;
 @property (nonatomic) unsigned long long layoutMode; // @synthesize layoutMode=_layoutMode;
 @property (strong, nonatomic) UICollectionViewLayoutAttributes *leftShadowDecorationAttr; // @synthesize leftShadowDecorationAttr=_leftShadowDecorationAttr;
 @property (strong, nonatomic) UICollectionViewLayoutAttributes *rightShadowDecorationAttr; // @synthesize rightShadowDecorationAttr=_rightShadowDecorationAttr;

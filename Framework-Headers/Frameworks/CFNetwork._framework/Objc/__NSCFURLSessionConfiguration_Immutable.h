@@ -25,6 +25,7 @@
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (struct HTTPConnectionCacheLimits)getConnectionCacheLimits;
 - (id)initWithTarget:(id)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end
 

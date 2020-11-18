@@ -12,12 +12,13 @@
 #import <DocumentManager/DOCRemoteViewControllerDelegate-Protocol.h>
 #import <DocumentManager/DOCViewServiceErrorViewControllerDelegate-Protocol.h>
 #import <DocumentManager/NSCoding-Protocol.h>
+#import <DocumentManager/UIPresentationControllerDelegatePrivate-Protocol.h>
 #import <DocumentManager/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class DOCAppearance, DOCConfiguration, DOCDocBrowserVC_UIActivityViewController, NSArray, NSOperationQueue, NSString, UIColor, UIView, _UIRemoteViewController, _UIResilientRemoteViewContainerViewController;
+@class DOCAppearance, DOCConfiguration, DOCDocBrowserVC_UIActivityViewController, NSArray, NSOperationQueue, NSString, UIColor, UIPresentationController, UIView, _UIRemoteViewController, _UIResilientRemoteViewContainerViewController;
 @protocol DOCServiceDocumentBrowserViewControllerInterface, UIDocumentBrowserViewControllerDelegate;
 
-@interface UIDocumentBrowserViewController : UIViewController <DOCHostDocumentBrowserViewControllerInterface, DOCRemoteViewControllerDelegate, DOCViewServiceErrorViewControllerDelegate, DOCKeyCommandResponder, _UIRemoteViewControllerContaining, DOCAppearanceCustomization, NSCoding>
+@interface UIDocumentBrowserViewController : UIViewController <DOCHostDocumentBrowserViewControllerInterface, DOCViewServiceErrorViewControllerDelegate, UIPresentationControllerDelegatePrivate, _UIRemoteViewControllerContaining, DOCRemoteViewControllerDelegate, DOCKeyCommandResponder, DOCAppearanceCustomization, NSCoding>
 {
     BOOL _isDisplayingRemoteViewController;
     UIView *_trackingViewsContainer;
@@ -36,6 +37,7 @@
     NSArray *_remoteAdditionalTrailingNavigationBarButtonItems;
     _UIResilientRemoteViewContainerViewController *_remoteViewController;
     DOCDocBrowserVC_UIActivityViewController *_activityViewController;
+    UIPresentationController *_adaptivePresentationController;
     id<DOCServiceDocumentBrowserViewControllerInterface> _serviceProxy;
     NSOperationQueue *_serviceQueue;
     DOCConfiguration *_configuration;
@@ -50,6 +52,7 @@
 
 @property (readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 @property (weak, nonatomic) DOCDocBrowserVC_UIActivityViewController *activityViewController; // @synthesize activityViewController=_activityViewController;
+@property (weak, nonatomic) UIPresentationController *adaptivePresentationController; // @synthesize adaptivePresentationController=_adaptivePresentationController;
 @property (strong, nonatomic) NSArray *additionalLeadingNavigationBarButtonItems; // @synthesize additionalLeadingNavigationBarButtonItems=_additionalLeadingNavigationBarButtonItems;
 @property (strong, nonatomic) NSArray *additionalToolbarButtonItems; // @dynamic additionalToolbarButtonItems;
 @property (strong, nonatomic) NSArray *additionalTrailingNavigationBarButtonItems; // @synthesize additionalTrailingNavigationBarButtonItems=_additionalTrailingNavigationBarButtonItems;
@@ -106,6 +109,7 @@
 - (void)_failedToImportDocumentAtURL:(id)arg1 error:(id)arg2;
 - (void)_importDocumentAtURL:(id)arg1 neighbourURL:(id)arg2 mode:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_presentActivityViewControllerForItems:(id)arg1 withPopoverTracker:(id)arg2 isContentManaged:(BOOL)arg3 additionalActivities:(id)arg4 activityProxy:(id)arg5;
+- (void)_presentationController:(id)arg1 prepareAdaptivePresentationController:(id)arg2;
 - (void)_renameDocumentAtURL:(id)arg1 newName:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)_sandboxingURLWrapperForURL:(id)arg1 readonly:(BOOL)arg2 error:(id *)arg3;
 - (void)_showDocumentBrowserViewController:(BOOL)arg1;

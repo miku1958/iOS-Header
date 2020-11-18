@@ -18,6 +18,7 @@
 @property (readonly) NUImageGeometry *geometry;
 @property (readonly) long long orientation;
 @property (readonly) NUJSScale *scale;
+@property (readonly) struct CGSize scaledSize;
 @property (readonly) struct CGSize size;
 
 - (id)initWithGeometry:(id)arg1 context:(id)arg2;

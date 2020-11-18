@@ -71,6 +71,7 @@
 
 - (void).cxx_destruct;
 - (void)_applyProximityDetectionModeForEntity:(id)arg1;
+- (void)_applyWallpaperAnimationSuspensionAssertionForEntity:(id)arg1;
 - (double)_backgroundWindowLevelForEntity:(id)arg1;
 - (id)_buttonEventHandlingViewController;
 - (id)_currentExternalStatusBarSettings;

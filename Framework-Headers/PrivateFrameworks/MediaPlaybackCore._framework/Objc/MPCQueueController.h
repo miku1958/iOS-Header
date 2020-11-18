@@ -44,6 +44,7 @@
 @property (copy, nonatomic) NSString *deferredNextContentItemAnchorID; // @synthesize deferredNextContentItemAnchorID=_deferredNextContentItemAnchorID;
 @property (weak, nonatomic) id<MPAVQueueControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) long long displayCount;
 @property (readonly, nonatomic) BOOL hasUserMutations; // @synthesize hasUserMutations=_hasUserMutations;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MPShuffleableSectionedIdentifierList *identifierList; // @synthesize identifierList=_identifierList;
@@ -82,8 +83,7 @@
 - (id)debugDescriptionForSection:(id)arg1;
 - (void)didDequeueShuffledItemsInSectionedIdentifierList:(id)arg1;
 - (void)didRestoreVersion:(long long)arg1 forSegment:(id)arg2;
-- (unsigned long long)displayCountForItem:(id)arg1;
-- (unsigned long long)displayIndexForItem:(id)arg1;
+- (long long)displayIndexForContentItemID:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)finalizeStateRestorationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)firstContentItemIDForItemIntersectingIdentifierSet:(id)arg1;

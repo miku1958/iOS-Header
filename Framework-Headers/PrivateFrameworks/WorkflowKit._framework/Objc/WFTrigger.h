@@ -26,7 +26,8 @@
 - (BOOL)hasValidConfiguration;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)localizedTitleWithConfigurationSummary;
+- (id)localizedDescriptionWithConfigurationSummary;
+- (id)localizedPastTenseDescription;
 - (id)serializedData;
 
 @end

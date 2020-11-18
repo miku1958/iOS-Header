@@ -10,15 +10,17 @@
 #import <WorkflowUI/UICollectionViewDelegate-Protocol.h>
 #import <WorkflowUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 
-@class NSArray, NSString, UICollectionView;
+@class NSArray, NSString, UICollectionView, WFActionDrawerCategoriesMetrics;
 @protocol WFActionDrawerCategoriesCollectionViewManagerDelegate;
 
 @interface WFActionDrawerCategoriesCollectionViewManager : NSObject <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate>
 {
+    BOOL _shouldUseVerticalStacking;
     NSArray *_contentTypeCategories;
     id<WFActionDrawerCategoriesCollectionViewManagerDelegate> _delegate;
     UICollectionView *_collectionView;
     double _itemWidth;
+    WFActionDrawerCategoriesMetrics *_metrics;
 }
 
 @property (strong, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
@@ -28,6 +30,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double itemWidth; // @synthesize itemWidth=_itemWidth;
+@property (strong, nonatomic) WFActionDrawerCategoriesMetrics *metrics; // @synthesize metrics=_metrics;
+@property (nonatomic) BOOL shouldUseVerticalStacking; // @synthesize shouldUseVerticalStacking=_shouldUseVerticalStacking;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -35,11 +39,14 @@
 - (id)appsSectionTitle;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
+- (double)collectionView:(id)arg1 layout:(id)arg2 minimumInteritemSpacingForSectionAtIndex:(long long)arg3;
+- (double)collectionView:(id)arg1 layout:(id)arg2 minimumLineSpacingForSectionAtIndex:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (id)favoritesSectionTitle;
-- (id)initWithCollectionView:(id)arg1 contentTypeCategories:(id)arg2;
-- (double)preferredCollectionViewHeight;
+- (id)initWithCollectionView:(id)arg1 contentTypeCategories:(id)arg2 metrics:(id)arg3;
+- (id)localizedTitleForCategory:(id)arg1;
 - (id)scriptingSectionTitle;
 
 @end

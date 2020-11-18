@@ -224,7 +224,6 @@
 - (BOOL)isLoading;
 - (BOOL)isWebContentLoading;
 - (BOOL)isWebContentViewControllerParentPlacecardLoading:(id)arg1;
-- (id)logContextForLogMsgEvent:(id)arg1;
 - (int)mapTypeForETAProvider:(id)arg1;
 - (void)mapkitActivityViewController:(id)arg1 postCompletedActivityOfType:(id)arg2 completed:(BOOL)arg3;
 - (void)mapkitActivityViewController:(id)arg1 preCompletedActivityOfType:(id)arg2 completed:(BOOL)arg3;
@@ -293,6 +292,7 @@
 - (void)setShowFavoriteButtons:(BOOL)arg1;
 - (void)setUseCompactPhotosView:(BOOL)arg1;
 - (BOOL)shouldDisplayVenueBrowseVC;
+- (BOOL)shouldMoveMuninStorefrontViewForPlaceCardPhotosController:(id)arg1;
 - (void)showContentIfLoaded;
 - (BOOL)showFavoriteButtons;
 - (double)stackingViewController:(id)arg1 heightForSeparatorBetweenUpperViewController:(id)arg2 andLowerViewController:(id)arg3;
@@ -302,6 +302,7 @@
 - (void)stackingViewControllerDidLayoutViewControllers:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)transitAttributionVC;
+- (BOOL)transitDeparturesViewController:(id)arg1 canSelectDepartureSequence:(id)arg2 transitMapItem:(id)arg3 transitLine:(id)arg4 fromCell:(id)arg5;
 - (void)transitDeparturesViewController:(id)arg1 didSelectConnectionInformation:(id)arg2;
 - (void)transitDeparturesViewController:(id)arg1 didSelectDepartureSequence:(id)arg2 transitMapItem:(id)arg3 transitLine:(id)arg4 fromCell:(id)arg5;
 - (void)transitDeparturesViewController:(id)arg1 didSelectTransitLine:(id)arg2 fromCell:(id)arg3;

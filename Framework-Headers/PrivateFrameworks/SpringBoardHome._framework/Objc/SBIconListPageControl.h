@@ -6,7 +6,7 @@
 
 #import <UIKit/UIPageControl.h>
 
-@class SBIconPageIndicatorImageSetCache, SBIconPageIndicatorImageSetResult, _UILegibilitySettings;
+@class NSArray, SBIconPageIndicatorImageSetCache, SBIconPageIndicatorImageSetResult, _UILegibilitySettings;
 @protocol SBIconListPageControlDelegate;
 
 @interface SBIconListPageControl : UIPageControl
@@ -20,6 +20,7 @@
     _UILegibilitySettings *_legibilitySettings;
     id<SBIconListPageControlDelegate> _delegate;
     SBIconPageIndicatorImageSetCache *_imageSetCache;
+    NSArray *_touchIgnoreRects;
 }
 
 @property (readonly, nonatomic) double defaultHeight;
@@ -29,6 +30,7 @@
 @property (nonatomic, getter=isLegibilityEnabled) BOOL legibilityEnabled; // @synthesize legibilityEnabled=_legibilityEnabled;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (nonatomic) BOOL shouldShowSearchIndicator; // @synthesize shouldShowSearchIndicator=_shouldShowSearchIndicator;
+@property (copy, nonatomic) NSArray *touchIgnoreRects; // @synthesize touchIgnoreRects=_touchIgnoreRects;
 
 - (void).cxx_destruct;
 - (id)_iconListIndicatorImage:(BOOL)arg1;
@@ -37,6 +39,7 @@
 - (id)_searchIndicatorImage:(BOOL)arg1;
 - (void)_setIndicatorImage:(id)arg1 toEnabled:(BOOL)arg2 index:(long long)arg3;
 - (void)_transitionIndicator:(id)arg1 toEnabled:(BOOL)arg2 index:(long long)arg3;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;

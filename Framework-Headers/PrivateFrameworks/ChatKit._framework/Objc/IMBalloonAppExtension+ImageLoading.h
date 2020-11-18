@@ -24,6 +24,7 @@
 - (id)_generatePlaceholderImageForInterfaceStyle:(long long)arg1;
 - (id)_iconPathOnDisk:(id)arg1;
 - (void)_saveIconToURL:(id)arg1 toURL:(id)arg2;
+- (id)_validProxy;
 - (id)cacheKeyForInterfaceStyle:(long long)arg1;
 - (id)placeholderImageForInterfaceStyle:(long long)arg1;
 @end

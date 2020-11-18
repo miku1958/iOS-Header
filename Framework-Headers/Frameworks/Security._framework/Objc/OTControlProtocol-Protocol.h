@@ -41,5 +41,7 @@
 - (void)signOut:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)startOctagonStateMachine:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)status:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)tapToRadar:(NSString *)arg1 description:(NSString *)arg2 radar:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
+- (void)waitForOctagonUpgrade:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 @end
 

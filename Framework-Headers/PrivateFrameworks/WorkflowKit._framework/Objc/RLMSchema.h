@@ -22,6 +22,7 @@
 
 + (Class)classForString:(id)arg1;
 + (id)dynamicSchemaFromObjectStoreSchema:(const struct Schema *)arg1;
++ (id)partialPrivateSharedSchema;
 + (id)partialSharedSchema;
 + (id)schemaWithObjectClasses:(id)arg1;
 + (id)sharedSchema;

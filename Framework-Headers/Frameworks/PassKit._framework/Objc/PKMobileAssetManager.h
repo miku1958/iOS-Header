@@ -22,7 +22,7 @@
 - (id)_queriesForCityCodeStationProvider:(id)arg1;
 - (id)_queriesForEducationVideo;
 - (id)_queriesForMarketIdentifer:(id)arg1;
-- (void)_retrieveAssetWithQueries:(id)arg1 userInitiated:(BOOL)arg2 sortDescriptors:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_retrieveAssetWithQueries:(id)arg1 latestCompatibilityVersion:(unsigned long long)arg2 userInitiated:(BOOL)arg3 sortDescriptors:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_sortDescriptorWithPreferredFeatureKey:(id)arg1 isFeaturePreferred:(BOOL)arg2 keyPath:(id)arg3;
 - (void)fetchAssetsForMarketWithIdentifier:(id)arg1 userInitiated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchCityStationProviderAssetForBaseProvider:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

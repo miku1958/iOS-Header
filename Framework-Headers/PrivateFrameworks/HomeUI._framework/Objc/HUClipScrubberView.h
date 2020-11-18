@@ -43,7 +43,7 @@
 - (void)layoutSubviews;
 - (void)navigateToLivePosition;
 - (void)navigateToOffset:(double)arg1;
-- (id)playOrPauseImage;
+- (id)playOrPauseImageForEngineMode:(unsigned long long)arg1;
 - (void)updateDisplayMode:(unsigned long long)arg1;
 - (void)updateMode:(unsigned long long)arg1;
 - (void)updateTimeControlStatus:(unsigned long long)arg1 forEngineMode:(unsigned long long)arg2;

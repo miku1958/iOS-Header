@@ -11,17 +11,21 @@
 __attribute__((visibility("hidden")))
 @interface OBPrivacyLinkButton : UIButton
 {
+    BOOL _largeIcon;
     OBTintInheritingImageView *_iconView;
     UITextView *_textView;
     UIView *_containerView;
     NSString *_captionText;
     NSString *_buttonText;
+    struct CGSize _contentSize;
 }
 
 @property (readonly) NSString *buttonText; // @synthesize buttonText=_buttonText;
 @property (readonly) NSString *captionText; // @synthesize captionText=_captionText;
 @property (readonly) UIView *containerView; // @synthesize containerView=_containerView;
+@property struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property (readonly) OBTintInheritingImageView *iconView; // @synthesize iconView=_iconView;
+@property BOOL largeIcon; // @synthesize largeIcon=_largeIcon;
 @property (readonly) UITextView *textView; // @synthesize textView=_textView;
 
 - (void).cxx_destruct;
@@ -29,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)_textViewFont;
 - (void)_updateButtonColorWithColor:(id)arg1;
 - (id)initWithCaption:(id)arg1 buttonText:(id)arg2 image:(id)arg3 imageSize:(struct CGSize)arg4 useLargeIcon:(BOOL)arg5;
+- (struct CGSize)intrinsicContentSize;
 - (id)labelText;
 - (void)layoutSubviews;
 - (void)setEnabled:(BOOL)arg1;

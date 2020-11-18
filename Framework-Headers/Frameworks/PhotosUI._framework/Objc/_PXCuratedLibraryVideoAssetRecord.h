@@ -38,6 +38,7 @@
 - (void)dealloc;
 - (long long)desiredPlayState;
 - (id)initWithDisplayAsset:(id)arg1 mediaProvider:(id)arg2 spriteReference:(id)arg3;
+- (BOOL)isPlaying;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)prepareForInvisible;
 - (void)prepareForVisible;

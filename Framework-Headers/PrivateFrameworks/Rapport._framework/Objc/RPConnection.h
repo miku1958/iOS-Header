@@ -8,7 +8,7 @@
 
 #import <Rapport/RPAuthenticatable-Protocol.h>
 
-@class CUBLEConnection, CUBluetoothScalablePipe, CUBonjourDevice, CUHomeKitManager, CUNetLinkManager, CUPairingSession, CUPairingStream, CUTCPConnection, NSData, NSDictionary, NSError, NSString, NSUUID, RPCloudDaemon, RPCloudSession, RPCompanionLinkDevice, RPIdentity, RPIdentityDaemon;
+@class CUBLEConnection, CUBluetoothScalablePipe, CUBonjourDevice, CUHomeKitManager, CUNetLinkManager, CUPairingSession, CUPairingStream, CUTCPConnection, NSData, NSDictionary, NSError, NSString, NSUUID, RPCompanionLinkDevice, RPIdentity, RPIdentityDaemon;
 @protocol CUReadWriteRequestable, OS_dispatch_queue, OS_dispatch_source;
 
 @interface RPConnection : NSObject <RPAuthenticatable>
@@ -77,10 +77,6 @@
     CUBonjourDevice *_bonjourPeerDevice;
     CUBluetoothScalablePipe *_btPipe;
     id _client;
-    RPCloudDaemon *_cloudDaemon;
-    NSString *_cloudDeviceIdentifier;
-    NSString *_cloudServiceID;
-    RPCloudSession *_cloudSession;
     unsigned long long _controlFlags;
     NSString *_destinationString;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
@@ -119,10 +115,6 @@
 @property (strong, nonatomic) CUBluetoothScalablePipe *btPipe; // @synthesize btPipe=_btPipe;
 @property (strong, nonatomic) id client; // @synthesize client=_client;
 @property (nonatomic) BOOL clientMode; // @synthesize clientMode=_clientMode;
-@property (strong, nonatomic) RPCloudDaemon *cloudDaemon; // @synthesize cloudDaemon=_cloudDaemon;
-@property (copy, nonatomic) NSString *cloudDeviceIdentifier; // @synthesize cloudDeviceIdentifier=_cloudDeviceIdentifier;
-@property (copy, nonatomic) NSString *cloudServiceID; // @synthesize cloudServiceID=_cloudServiceID;
-@property (strong, nonatomic) RPCloudSession *cloudSession; // @synthesize cloudSession=_cloudSession;
 @property (nonatomic) unsigned long long controlFlags; // @synthesize controlFlags=_controlFlags;
 @property (copy, nonatomic) NSString *destinationString; // @synthesize destinationString=_destinationString;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
@@ -175,7 +167,6 @@
 - (void)_clientConnectStart;
 - (void)_clientConnectStartBLE;
 - (void)_clientConnectStartBTPipe;
-- (void)_clientConnectStartCloud;
 - (void)_clientConnectStartTCP;
 - (BOOL)_clientError:(id)arg1;
 - (void)_clientNetworkError:(id)arg1 label:(const char *)arg2;
@@ -228,7 +219,6 @@
 - (void)_serverAccept;
 - (void)_serverAcceptBLE;
 - (void)_serverAcceptBTPipe;
-- (void)_serverAcceptCloud;
 - (void)_serverAcceptTCP;
 - (id)_serverAllowMACAddresses;
 - (void)_serverError:(id)arg1;

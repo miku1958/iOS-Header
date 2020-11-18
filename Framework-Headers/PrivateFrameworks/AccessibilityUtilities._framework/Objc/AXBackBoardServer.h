@@ -23,6 +23,7 @@
 - (void).cxx_destruct;
 - (void)_didConnectToServer;
 - (id)_handleEventListener:(id)arg1;
+- (void)_sendRequestGuidedAccessSessionMessage:(id)arg1 numberOfRetryAttempts:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_serviceName;
 - (BOOL)_shouldDispatchLocally;
 - (id)_springboardParametersForGuidedAccessAvailability;

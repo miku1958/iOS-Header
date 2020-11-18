@@ -75,7 +75,6 @@
 - (id)preferredAssetResourceForType:(id)arg1;
 - (void)retrieveAssetResource:(id)arg1 withNetworkAccess:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)retrieveFileWithImageManager:(CDUnknownBlockType)arg1 forType:(id)arg2;
-- (void)retrieveLivePhotoAssetResource:(CDUnknownBlockType)arg1 forType:(id)arg2;
 - (struct CGSize)size;
 - (id)width;
 

@@ -31,7 +31,6 @@
     BOOL _forSnapshot;
     BOOL _didFinishDismissing;
     STLockoutPolicyController *_policyController;
-    UIVisualEffectView *_backdropView;
     STHourglassView *_hourglassView;
     UILabel *_titleLabel;
     UILabel *_messageLabel;
@@ -41,7 +40,6 @@
     id<STLockoutViewControllerDelegate> _viewControllerDelegate;
 }
 
-@property (weak) UIVisualEffectView *backdropView; // @synthesize backdropView=_backdropView;
 @property (copy, nonatomic) NSString *bundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -58,7 +56,9 @@
 @property (strong, nonatomic) STLockoutPolicyController *policyController; // @synthesize policyController=_policyController;
 @property (readonly) Class superclass;
 @property (weak) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (strong, nonatomic) UIVisualEffectView *view;
 @property (weak, nonatomic) id<STLockoutViewControllerDelegate> viewControllerDelegate; // @synthesize viewControllerDelegate=_viewControllerDelegate;
+@property (readonly, nonatomic) UIVisualEffectView *viewIfLoaded;
 
 + (id)_applicationNameForBundleIdentifier:(id)arg1;
 + (id)_applicationNameForWebsiteURL:(id)arg1;

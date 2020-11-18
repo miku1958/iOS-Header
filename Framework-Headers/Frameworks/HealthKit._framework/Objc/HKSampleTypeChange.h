@@ -16,10 +16,12 @@
     HKSampleType *_sampleType;
     double _startTime;
     double _endTime;
+    long long _queryStrategy;
 }
 
 @property (readonly, copy, nonatomic) NSDateInterval *dateInterval;
 @property (readonly, nonatomic) double endTime; // @synthesize endTime=_endTime;
+@property (readonly, nonatomic) long long queryStrategy; // @synthesize queryStrategy=_queryStrategy;
 @property (readonly, copy, nonatomic) HKSampleType *sampleType; // @synthesize sampleType=_sampleType;
 @property (readonly, nonatomic) BOOL samplesWereDeleted; // @synthesize samplesWereDeleted=_samplesWereDeleted;
 @property (readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
@@ -28,7 +30,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_extendDateIntervalWithSample:(id)arg1;
-- (id)_initWithSampleType:(id)arg1 startTime:(double)arg2 endTime:(double)arg3 deletions:(BOOL)arg4;
+- (id)_initWithSampleType:(id)arg1 startTime:(double)arg2 endTime:(double)arg3 deletions:(BOOL)arg4 queryStrategy:(long long)arg5;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

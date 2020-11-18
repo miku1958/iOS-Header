@@ -101,6 +101,7 @@
 @property (strong, nonatomic) ICAttachment *titleSourceAttachment; // @dynamic titleSourceAttachment;
 
 + (id)allNotesInContext:(id)arg1;
++ (id)allPasswordProtectedNoteIdentifiersInContext:(id)arg1;
 + (BOOL)containsUndeletableNotes:(id)arg1;
 + (BOOL)containsUnmovableNotes:(id)arg1;
 + (unsigned long long)countOfAllNotesInContext:(id)arg1;
@@ -116,7 +117,6 @@
 + (id)keyPathsForValuesAffectingCloudAccount;
 + (id)keyPathsForValuesAffectingHasUnreadChanges;
 + (id)keyPathsForValuesAffectingIsEditable;
-+ (id)keyPathsForValuesAffectingIsSharedViaICloud;
 + (id)keyPathsForValuesAffectingPrefersLightBackground;
 + (unsigned long long)maxNoteAttachments;
 + (unsigned long long)maxNoteTextLength;
@@ -133,6 +133,7 @@
 + (id)newObjectWithIdentifier:(id)arg1 folder:(id)arg2;
 + (id)newPlaceholderObjectForRecordName:(id)arg1 account:(id)arg2;
 + (id)newPlaceholderObjectForRecordName:(id)arg1 accountID:(id)arg2 context:(id)arg3;
++ (id)noteIdentifiersMatchingPredicate:(id)arg1 context:(id)arg2;
 + (id)noteWithIdentifier:(id)arg1 accountID:(id)arg2 context:(id)arg3;
 + (id)noteWithIdentifier:(id)arg1 context:(id)arg2;
 + (id)noteWithIdentifier:(id)arg1 includeDeleted:(BOOL)arg2 accountID:(id)arg3 context:(id)arg4;
@@ -141,6 +142,7 @@
 + (id)noteWithUUID:(id)arg1 context:(id)arg2;
 + (BOOL)notes:(id)arg1 containSharedNotesNotSharedViaFolder:(id)arg2;
 + (id)notesMatchingPredicate:(id)arg1 context:(id)arg2;
++ (id)passwordProtectedNoteIdentifiersForAccount:(id)arg1;
 + (id)predicateForNote:(id)arg1;
 + (id)predicateForPinnedNotes;
 + (id)predicateForSearchableNotes;
@@ -233,7 +235,6 @@
 - (BOOL)isMovable;
 - (BOOL)isPinnable;
 - (BOOL)isSharable;
-- (BOOL)isSharedViaICloud;
 - (BOOL)isSharedViaICloudFolder;
 - (BOOL)isVisible;
 - (void)markForDeletion;
@@ -266,6 +267,7 @@
 - (id)parentEncryptableObject;
 - (BOOL)populateReplicaIDToUserIDDictIfNecessary;
 - (BOOL)prefersLightBackground;
+- (void)prepareForDeletion;
 - (id)quotedTitle;
 - (struct _NSRange)rangeForAttachment:(id)arg1;
 - (struct _NSRange)rangeForSnippet;

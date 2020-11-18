@@ -20,10 +20,11 @@
     struct atomic_flag _didStart;
     NSMutableSet *_noLongerMatchingMessages;
     struct os_unfair_lock_s _noLongerMatchingMessagesLock;
+    BOOL _shouldReconcileJournal;
     EFQuery *_query;
-    id<EFScheduler> _scheduler;
     EDMessagePersistence *_messagePersistence;
     EDPersistenceHookRegistry *_hookRegistry;
+    id<EFScheduler> _scheduler;
     id<EDMessageQueryHelperDelegate> _delegate;
     EDMessageQueryEvaluator *_queryEvaluator;
     EFCancelationToken *_cancelationToken;
@@ -45,6 +46,7 @@
 @property (readonly, nonatomic) EFQuery *query; // @synthesize query=_query;
 @property (strong, nonatomic) EDMessageQueryEvaluator *queryEvaluator; // @synthesize queryEvaluator=_queryEvaluator;
 @property (readonly, nonatomic) id<EFScheduler> scheduler; // @synthesize scheduler=_scheduler;
+@property (nonatomic) BOOL shouldReconcileJournal; // @synthesize shouldReconcileJournal=_shouldReconcileJournal;
 @property (readonly) Class superclass;
 
 + (id)log;
@@ -55,13 +57,13 @@
 - (id)_transformAndFilterMessages:(id)arg1 includeDeleted:(BOOL)arg2;
 - (void)cancel;
 - (void)dealloc;
-- (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 hookRegistry:(id)arg3 delegate:(id)arg4;
+- (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 hookRegistry:(id)arg3 scheduler:(id)arg4 delegate:(id)arg5 shouldReconcileJournal:(BOOL)arg6;
 - (id)messagesWithAdditionalPredicates:(id)arg1 limit:(long long)arg2;
 - (void)persistenceDidAddMessages:(id)arg1 generationWindow:(id)arg2;
 - (void)persistenceDidChangeConversationNotificationLevel:(long long)arg1 conversationID:(long long)arg2 generationWindow:(id)arg3;
 - (void)persistenceDidChangeFlags:(id)arg1 messages:(id)arg2 generationWindow:(id)arg3;
-- (void)persistenceDidChangeMessageIDHeaderHash:(id)arg1 message:(id)arg2 generationWindow:(id)arg3;
-- (void)persistenceDidDeleteMailboxesWithObjectIDs:(id)arg1 generationWindow:(id)arg2;
+- (void)persistenceDidChangeMessageIDHeaderHash:(id)arg1 oldConversationID:(long long)arg2 message:(id)arg3 generationWindow:(id)arg4;
+- (void)persistenceDidDeleteAllMessagesInMailboxesWithURLs:(id)arg1 generationWindow:(id)arg2;
 - (void)persistenceDidDeleteMessages:(id)arg1 generationWindow:(id)arg2;
 - (void)persistenceDidReconcileJournaledMessages:(id)arg1 generationWindow:(id)arg2;
 - (void)persistenceDidUpdateProperties:(id)arg1 message:(id)arg2 generationWindow:(id)arg3;

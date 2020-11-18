@@ -40,11 +40,11 @@
 - (void)choiceTapped:(id)arg1;
 - (id)init;
 - (void)layoutSubviews;
-- (void)setFirstChoiceTitle:(id)arg1;
+- (void)setFirstChoiceTitle:(id)arg1 withColor:(id)arg2;
 - (void)setHeaderTitle:(id)arg1;
 - (void)setHelpLinkTitle:(id)arg1;
 - (void)setImage:(id)arg1;
-- (void)setSecondChoiceTitle:(id)arg1;
+- (void)setSecondChoiceTitle:(id)arg1 withColor:(id)arg2;
 - (id)titleLabel;
 
 @end

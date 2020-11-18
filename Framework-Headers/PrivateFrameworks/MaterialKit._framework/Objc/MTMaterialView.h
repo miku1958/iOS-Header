@@ -9,7 +9,7 @@
 #import <MaterialKit/MTVisualStylingProviding-Protocol.h>
 #import <MaterialKit/NSCopying-Protocol.h>
 
-@class NSBundle, NSDictionary, NSHashTable, NSMutableDictionary, NSString, UIViewFloatAnimatableProperty;
+@class MTMaterialLayer, NSBundle, NSDictionary, NSHashTable, NSMutableDictionary, NSString, UIViewFloatAnimatableProperty;
 
 @interface MTMaterialView : UIView <NSCopying, MTVisualStylingProviding>
 {
@@ -42,6 +42,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (nonatomic) BOOL ignoresScreenClip;
+@property (readonly, nonatomic, getter=_materialLayer) MTMaterialLayer *materialLayer;
 @property (nonatomic) long long recipe; // @synthesize recipe=_recipe;
 @property (nonatomic, getter=isRecipeDynamic) BOOL recipeDynamic;
 @property (copy, nonatomic) NSString *recipeName;
@@ -61,14 +62,15 @@
 + (id)materialViewWithRecipeNamed:(id)arg1 inBundle:(id)arg2 configuration:(long long)arg3 initialWeighting:(double)arg4 scaleAdjustment:(CDUnknownBlockType)arg5;
 + (id)materialViewWithRecipeNamesByTraitCollection:(id)arg1 inBundle:(id)arg2 configuration:(long long)arg3 initialWeighting:(double)arg4 scaleAdjustment:(CDUnknownBlockType)arg5;
 + (id)newDefaultHighlightAnimator;
++ (id)staticMaterialViewWithRecipe:(long long)arg1 configuration:(long long)arg2;
 - (void).cxx_destruct;
 - (void)_addObserver:(id)arg1;
+- (id)_coreMaterialVisualStylingProviderForCategory:(id)arg1;
 - (id)_groupNameWithBase:(id)arg1;
 - (id)_initWithCoreMaterialRecipe:(id)arg1 fromBundle:(id)arg2 coreMaterialConfiguration:(id)arg3 initialWeighting:(double)arg4 scaleAdjustment:(CDUnknownBlockType)arg5;
 - (id)_initWithRecipe:(long long)arg1 configuration:(long long)arg2 initialWeighting:(double)arg3 scaleAdjustment:(CDUnknownBlockType)arg4;
 - (id)_initWithRecipeNamesByTraitCollection:(id)arg1 inBundle:(id)arg2 configuration:(long long)arg3 initialWeighting:(double)arg4 scaleAdjustment:(CDUnknownBlockType)arg5;
 - (void)_invalidateAlphaTransformer;
-- (id)_materialLayer;
 - (void)_notifyObserversWithBlock:(CDUnknownBlockType)arg1;
 - (id)_recipeNameForCurrentTraitCollection;
 - (void)_reduceMotionStatusDidChange;

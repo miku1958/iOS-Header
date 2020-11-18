@@ -190,6 +190,7 @@
         unsigned int skipAttributesApplication:1;
         unsigned int isApplyingDiffableUpdate:1;
         unsigned int isAnimatingInteractiveMovementCompletion:1;
+        unsigned int shouldResetInitialLayoutOnDataSourceChange:1;
     } _collectionViewFlags;
     struct CGPoint _lastLayoutOffset;
     NSIndexPath *_cancellingToIndexPath;
@@ -218,6 +219,7 @@
     _UICollectionViewMultiSelectController *_multiSelectController;
     UIContextMenuInteraction *_contextMenuInteraction;
     BOOL _prefetchingEnabled;
+    BOOL _searchFullPageOnFocusUpdate;
     BOOL _isMovingFocusFromHorizontalIndexTitleBarToContent;
     NSIndexPath *_focusedCellIndexPath;
     UICollectionReusableView *_focusedCell;
@@ -273,6 +275,7 @@
 @property (readonly, nonatomic, getter=_reorderedItems) NSArray *reorderedItems;
 @property (nonatomic) long long reorderingCadence;
 @property (readonly, nonatomic, getter=_reorderingTargetPosition) struct CGPoint reorderingTargetPosition;
+@property (nonatomic, getter=_searchFullPageOnFocusUpdate, setter=_setSearchFullPageOnFocusUpdate:) BOOL searchFullPageOnFocusUpdate; // @synthesize searchFullPageOnFocusUpdate=_searchFullPageOnFocusUpdate;
 @property (strong, nonatomic) _UIFocusFastScrollingIndexBarEntry *selectedIndexTitleEntry; // @synthesize selectedIndexTitleEntry=_selectedIndexTitleEntry;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *visibleCells;
@@ -389,6 +392,7 @@
 - (id)_focusFastScrollingDestinationItemForIndexEntry:(id)arg1;
 - (id)_focusFastScrollingIndexBarEntries;
 - (struct UIEdgeInsets)_focusFastScrollingIndexBarInsets;
+- (void)_focusMovementDidFailNotification:(id)arg1;
 - (void)_focusedItem:(id)arg1 isMinX:(BOOL *)arg2 isMaxX:(BOOL *)arg3 isMinY:(BOOL *)arg4 isMaxY:(BOOL *)arg5;
 - (id)_fulfillPromisedFocusRegionForCell:(id)arg1;
 - (void)_geometryChanges:(id)arg1 forAncestor:(id)arg2;
@@ -437,6 +441,7 @@
 - (BOOL)_isViewInReuseQueue:(id)arg1;
 - (BOOL)_itemIndexPathIsReordered:(id)arg1;
 - (id)_keysForObject:(id)arg1 inDictionary:(id)arg2;
+- (id)_layoutAttributesForFailedMovementWithHeading:(unsigned long long)arg1;
 - (void)_managedSubviewAdded:(id)arg1;
 - (id)_managedSubviewForView:(id)arg1;
 - (id)_managedViews;
@@ -538,6 +543,7 @@
 - (void)_setReorderingCadence:(long long)arg1;
 - (void)_setShouldDeriveVisibleBoundsFromContainingScrollView:(BOOL)arg1;
 - (void)_setShouldPrefetchCellsWhenPerformingReloadData:(BOOL)arg1;
+- (void)_setShouldResetInitialLayoutOnDataSourceChange:(BOOL)arg1;
 - (void)_setVisibleRectEdgeInsets:(struct UIEdgeInsets)arg1;
 - (void)_setVisibleView:(id)arg1 forLayoutAttributes:(id)arg2;
 - (void)_setupCellAnimations;
@@ -548,6 +554,7 @@
 - (BOOL)_shouldFadeCellsForBoundChangeWhileRotating;
 - (BOOL)_shouldPrefetchCells;
 - (BOOL)_shouldPrefetchCellsWhenPerformingReloadData;
+- (BOOL)_shouldResetInitialLayoutOnDataSourceChange;
 - (BOOL)_shouldScrollToContentBeginningInRightToLeft;
 - (BOOL)_shouldShowMenuForCell:(id)arg1;
 - (BOOL)_shouldSpringLoadItemAtIndexPath:(id)arg1 withContext:(id)arg2;

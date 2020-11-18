@@ -68,6 +68,7 @@
 - (BOOL)performChangesToContentKind:(long long)arg1 withLayout:(id)arg2 spriteIndex:(unsigned int)arg3 spriteGeometry:(CDStruct_3ab912e1)arg4;
 - (void)prepareForReuse;
 - (void)px_accessibilityAddChildElement:(id)arg1;
+- (void)px_accessibilityRemoveAllChildren;
 
 @end
 

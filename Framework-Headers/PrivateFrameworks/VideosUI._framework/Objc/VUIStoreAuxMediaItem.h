@@ -65,6 +65,7 @@
 - (id)_replacementErrorForPlaybackError:(id)arg1;
 - (id)_replacementErrorForSharedPurchasePlaybackError:(id)arg1;
 - (void)_scrubPlayerItemDidLoad:(id)arg1;
+- (id)_tvpRatingDomainFromUTSRatingDomain:(id)arg1;
 - (void)_userPlaybackSettingsDidChange:(id)arg1;
 - (void)cleanUpMediaItem;
 - (void)dealloc;

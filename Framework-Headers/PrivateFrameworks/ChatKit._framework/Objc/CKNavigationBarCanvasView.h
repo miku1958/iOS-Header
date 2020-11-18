@@ -14,9 +14,13 @@
     BOOL _enforceLeftItemViewsAlignmentToCenter;
     BOOL _keepTitleViewCentered;
     BOOL _isBusinessChat;
+    BOOL _shouldAnimateAvatarLayoutChanges;
+    BOOL _isInEditingMode;
     BOOL _isShowingControls;
     BOOL _multiwayAudioButtonHidden;
     BOOL _isTearingDownButtonViews;
+    BOOL _isAnimatingAvatars;
+    BOOL _ignoreNextWidthChange;
     id<CKNavigationBarCanvasViewDelegate> _delegate;
     UIView *_titleView;
     UIView *_leftItemView;
@@ -35,7 +39,10 @@
 @property (strong, nonatomic) CKNavigationButtonView *buttonViewInfo; // @synthesize buttonViewInfo=_buttonViewInfo;
 @property (weak, nonatomic) id<CKNavigationBarCanvasViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL enforceLeftItemViewsAlignmentToCenter; // @synthesize enforceLeftItemViewsAlignmentToCenter=_enforceLeftItemViewsAlignmentToCenter;
+@property (nonatomic) BOOL ignoreNextWidthChange; // @synthesize ignoreNextWidthChange=_ignoreNextWidthChange;
+@property (nonatomic) BOOL isAnimatingAvatars; // @synthesize isAnimatingAvatars=_isAnimatingAvatars;
 @property (nonatomic) BOOL isBusinessChat; // @synthesize isBusinessChat=_isBusinessChat;
+@property (nonatomic) BOOL isInEditingMode; // @synthesize isInEditingMode=_isInEditingMode;
 @property (nonatomic) BOOL isShowingControls; // @synthesize isShowingControls=_isShowingControls;
 @property (nonatomic) BOOL isTearingDownButtonViews; // @synthesize isTearingDownButtonViews=_isTearingDownButtonViews;
 @property (nonatomic) long long joinButtonStyle; // @synthesize joinButtonStyle=_joinButtonStyle;
@@ -44,6 +51,7 @@
 @property (nonatomic) BOOL multiwayAudioButtonHidden; // @synthesize multiwayAudioButtonHidden=_multiwayAudioButtonHidden;
 @property (nonatomic) double preferredHeight; // @synthesize preferredHeight=_preferredHeight;
 @property (strong, nonatomic) UIView *rightItemView; // @synthesize rightItemView=_rightItemView;
+@property (nonatomic) BOOL shouldAnimateAvatarLayoutChanges; // @synthesize shouldAnimateAvatarLayoutChanges=_shouldAnimateAvatarLayoutChanges;
 @property (strong, nonatomic) UIImageView *statusIndicatorImageView; // @synthesize statusIndicatorImageView=_statusIndicatorImageView;
 @property (nonatomic) long long statusIndicatorType; // @synthesize statusIndicatorType=_statusIndicatorType;
 @property (strong, nonatomic) UIView *titleView; // @synthesize titleView=_titleView;
@@ -68,7 +76,9 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 preferredHeight:(double)arg2;
 - (void)layoutSubviews;
+- (void)layoutTitleViewIfNeeded:(struct CGRect)arg1;
 - (struct UIEdgeInsets)safeAreaInsets;
+- (void)setFrame:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct UIEdgeInsets)systemMinimumLayoutMarginsFromDelegate;
 

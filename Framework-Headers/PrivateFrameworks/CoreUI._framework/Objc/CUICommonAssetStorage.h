@@ -108,6 +108,7 @@
 - (const struct _renditionkeytoken *)renditionKeyForName:(const char *)arg1 hotSpot:(struct CGPoint *)arg2;
 - (id)renditionNameForKeyBaseList:(struct _renditionkeytoken *)arg1;
 - (id)renditionNameForKeyList:(struct _renditionkeytoken *)arg1;
+- (id)renditionNamesWithKeys;
 - (unsigned int)schemaVersion;
 - (void)setExternalTags:(id)arg1;
 - (long long)storageTimestamp;

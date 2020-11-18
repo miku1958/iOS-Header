@@ -18,10 +18,10 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_handleAccountChange:(id)arg1;
-- (void)_handleConfigChange:(id)arg1;
 - (void)_handleLibraryChange:(id)arg1;
 - (void)_invalidateWithReason:(id)arg1;
 - (void)_setStoredConfiguration:(id)arg1;
+- (void)_updateConfiguration:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

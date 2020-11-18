@@ -24,7 +24,6 @@
     UIView *_contextualEditingView;
     id<PKPaletteViewStateObservable> _paletteViewState;
     UIStackView *_stackView;
-    PKPaletteToolPickerAndColorPickerView *_toolAndColorPickerContainerView;
     NSLayoutConstraint *_stackViewTopConstraint;
     NSLayoutConstraint *_stackViewBottomConstraint;
     NSLayoutConstraint *_stackViewLeftConstraint;
@@ -32,6 +31,9 @@
     NSLayoutConstraint *_stackViewCenterXConstraint;
     NSLayoutConstraint *_stackViewCompactLeftConstraint;
     NSLayoutConstraint *_stackViewCompactRightConstraint;
+    PKPaletteToolPickerAndColorPickerView *_toolAndColorPickerContainerView;
+    NSLayoutConstraint *_toolAndColorPickerContainerViewHeightConstraint;
+    NSLayoutConstraint *_toolAndColorPickerContainerViewWidthConstraint;
 }
 
 @property (readonly, nonatomic) PKPaletteAdditionalOptionsView *additionalOptionsView; // @synthesize additionalOptionsView=_additionalOptionsView;
@@ -54,6 +56,8 @@
 @property (strong, nonatomic) NSLayoutConstraint *stackViewTopConstraint; // @synthesize stackViewTopConstraint=_stackViewTopConstraint;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) PKPaletteToolPickerAndColorPickerView *toolAndColorPickerContainerView; // @synthesize toolAndColorPickerContainerView=_toolAndColorPickerContainerView;
+@property (strong, nonatomic) NSLayoutConstraint *toolAndColorPickerContainerViewHeightConstraint; // @synthesize toolAndColorPickerContainerViewHeightConstraint=_toolAndColorPickerContainerViewHeightConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *toolAndColorPickerContainerViewWidthConstraint; // @synthesize toolAndColorPickerContainerViewWidthConstraint=_toolAndColorPickerContainerViewWidthConstraint;
 @property (readonly, nonatomic) PKPaletteToolPickerView *toolPickerView;
 @property (readonly, nonatomic) PKPaletteUndoRedoView *undoRedoView; // @synthesize undoRedoView=_undoRedoView;
 @property (nonatomic, getter=isUsingSmallestSupportedWidth) BOOL usingSmallestSupportedWidth; // @synthesize usingSmallestSupportedWidth=_usingSmallestSupportedWidth;

@@ -18,6 +18,7 @@
     NSString *_toolIdentifier;
     UIViewController *_attributeViewController;
     NSDictionary *_toolProperties;
+    long long _colorUserInterfaceStyle;
     UIView *_toolLargeShadowView;
     NSLayoutConstraint *_imageViewTopAnchorConstraint;
     NSLayoutConstraint *_imageViewBottomAnchorConstraint;
@@ -29,6 +30,7 @@
 }
 
 @property (readonly, nonatomic) UIViewController *attributeViewController; // @synthesize attributeViewController=_attributeViewController;
+@property (nonatomic) long long colorUserInterfaceStyle; // @synthesize colorUserInterfaceStyle=_colorUserInterfaceStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long edgeLocation; // @synthesize edgeLocation=_edgeLocation;

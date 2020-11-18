@@ -52,7 +52,7 @@
 @property (readonly) Class superclass;
 
 + (id)bootDateForTurboLibraryRegistration;
-+ (void)registerEmptyBackgroundActivity;
++ (void)unregisterBackgroundActivities;
 - (void).cxx_destruct;
 - (void)_backgroundActivityDidBegin;
 - (void)_cleanupAfterBackgroundActivityFinishedForDefer:(BOOL)arg1 skipActivityStateCheck:(BOOL)arg2;

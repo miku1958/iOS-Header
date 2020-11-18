@@ -63,6 +63,7 @@
 - (void)_accessibilitySetVisibleContentInset:(struct UIEdgeInsets)arg1;
 - (BOOL)_accessibilityShouldAnimateScroll;
 - (BOOL)_accessibilityShouldAnimateScrollToVisible;
+- (BOOL)_accessibilityShouldUseFallbackForVisibleContentInset;
 - (id)_accessibilityStoredVisibleContentInset;
 - (id)_accessibilitySubviews;
 - (struct CGRect)_accessibilityUIViewAccessibilityFrame;

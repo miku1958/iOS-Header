@@ -37,6 +37,7 @@
 - (id)adjustedAppLayoutsForAppLayouts:(id)arg1;
 - (struct CGPoint)adjustedOffsetForOffset:(struct CGPoint)arg1 translation:(struct CGPoint)arg2 startPoint:(struct CGPoint)arg3 locationInView:(struct CGPoint)arg4 horizontalVelocity:(inout double *)arg5 verticalVelocity:(inout double *)arg6;
 - (id)appExposeAccessoryButtonsBundleIdentifier;
+- (long long)appExposeAccessoryButtonsOverrideUserInterfaceStyle;
 - (id)appLayoutToScrollToBeforeTransitioning;
 - (id)appLayoutsForInsertionOrRemoval;
 - (double)backdropBlurProgress;
@@ -48,7 +49,7 @@
 - (double)centerYOffsetWhenPresented;
 - (BOOL)clipsToUnobscuredMarginAtIndex:(unsigned long long)arg1;
 - (double)containerStatusBarAnimationDuration;
-- (struct CGPoint)contentOffsetForIndex:(unsigned long long)arg1;
+- (struct CGPoint)contentOffsetForIndex:(unsigned long long)arg1 centered:(BOOL)arg2;
 - (struct CGSize)contentSize;
 - (double)contentViewScale;
 - (id)cornerRadiusSettingsForIndex:(unsigned long long)arg1;
@@ -73,7 +74,7 @@
 - (double)homeScreenScale;
 - (unsigned long long)indexToScrollToAfterInsertingAtIndex:(unsigned long long)arg1;
 - (unsigned long long)indexToScrollToAfterRemovingIndex:(unsigned long long)arg1;
-- (unsigned long long)insertionStyle;
+- (unsigned long long)insertionStyleForInsertingAppLayout:(id)arg1;
 - (struct CGSize)interpageSpacingForPaging;
 - (BOOL)isContainerStatusBarVisible;
 - (BOOL)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
@@ -99,6 +100,7 @@
 - (id)opacitySettings;
 - (struct CGPoint)pagingOrigin;
 - (double)plusButtonAlpha;
+- (long long)plusButtonStyle;
 - (id)positionSettingsForIndex:(unsigned long long)arg1;
 - (long long)preferredSnapshotOrientation;
 - (double)reopenClosedWindowsButtonAlpha;
@@ -116,6 +118,7 @@
 - (BOOL)shouldBringCardToFrontDuringInsertionOrRemoval;
 - (BOOL)shouldConfigureInAppDockHiddenAssertion;
 - (BOOL)shouldFireTransitionCompletionInDefaultRunLoopMode;
+- (BOOL)shouldPerformCrossfadeForReduceMotion;
 - (BOOL)shouldPerformRotationAnimationForOrientationChange;
 - (BOOL)shouldRubberbandHomeGrabberView;
 - (BOOL)shouldTruncateAnimationsUponTransitionCompletion;

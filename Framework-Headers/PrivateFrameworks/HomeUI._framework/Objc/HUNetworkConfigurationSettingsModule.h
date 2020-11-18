@@ -6,26 +6,37 @@
 
 #import <Home/HFItemModule.h>
 
-@class HFNetworkConfigurationGroupItem, HUNetworkProtectionModeOptionItemProvider, NSSet;
+@class HFNetworkConfigurationGroupItem, HMAccessoryNetworkProtectionGroup, HUNetworkProtectionModeOptionItemProvider, NSTimer;
+@protocol HUNetworkConfigurationSettingsModuleDelegate;
 
 @interface HUNetworkConfigurationSettingsModule : HFItemModule
 {
-    NSSet *_networkConfigurationProfiles;
+    BOOL _isUpdatingProtectionMode;
+    id<HUNetworkConfigurationSettingsModuleDelegate> _networkConfigurationSettingsModuleDelegate;
+    HMAccessoryNetworkProtectionGroup *_group;
     HUNetworkProtectionModeOptionItemProvider *_networkProtectionModeOptionItemProvider;
+    NSTimer *_updateProtectionModeTimer;
 }
 
-@property (readonly, nonatomic) NSSet *networkConfigurationProfiles; // @synthesize networkConfigurationProfiles=_networkConfigurationProfiles;
+@property (readonly, nonatomic) HMAccessoryNetworkProtectionGroup *group; // @synthesize group=_group;
+@property (nonatomic) BOOL isUpdatingProtectionMode; // @synthesize isUpdatingProtectionMode=_isUpdatingProtectionMode;
+@property (weak, nonatomic) id<HUNetworkConfigurationSettingsModuleDelegate> networkConfigurationSettingsModuleDelegate; // @synthesize networkConfigurationSettingsModuleDelegate=_networkConfigurationSettingsModuleDelegate;
 @property (strong, nonatomic) HUNetworkProtectionModeOptionItemProvider *networkProtectionModeOptionItemProvider; // @synthesize networkProtectionModeOptionItemProvider=_networkProtectionModeOptionItemProvider;
 @property (readonly, nonatomic) HFNetworkConfigurationGroupItem *sourceItem;
+@property (strong, nonatomic) NSTimer *updateProtectionModeTimer; // @synthesize updateProtectionModeTimer=_updateProtectionModeTimer;
 
 + (id)_allowedHostDescriptionForHostGroup:(id)arg1;
++ (id)_attributedCheckmarkIcon;
++ (id)_attributedExclamationIcon;
++ (id)_attributedIconNamed:(id)arg1;
 - (void).cxx_destruct;
 - (id)_protectionModeOptionSectionFooter;
 - (id)buildSectionsWithDisplayedItems:(id)arg1;
 - (id)initWithItemUpdater:(id)arg1;
-- (id)initWithItemUpdater:(id)arg1 networkConfigurationProfiles:(id)arg2;
+- (id)initWithItemUpdater:(id)arg1 group:(id)arg2;
 - (BOOL)isItemNetworkProtectionModeOptionItem:(id)arg1;
 - (id)itemProviders;
+- (id)updateProtectionMode:(long long)arg1;
 
 @end
 

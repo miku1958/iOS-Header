@@ -15,8 +15,9 @@
 + (id)UTIForURL:(id)arg1 error:(id *)arg2;
 + (BOOL)UTIRequiresRasterizationDPI:(id)arg1;
 + (BOOL)canGenerateImageDerivativesFromUTI:(id)arg1;
-+ (BOOL)canLoadAssetAsRawWithImageProperties:(id)arg1;
++ (BOOL)canLoadAssetAsRawForInteractiveEditingWithImageProperties:(id)arg1;
 + (long long)defaultRasterizationDPI;
++ (id)imagePropertiesFromImageSource:(struct CGImageSource *)arg1;
 + (BOOL)isAudioUTI:(id)arg1;
 + (BOOL)isGifUTI:(id)arg1;
 + (BOOL)isHeifUTI:(id)arg1;
@@ -33,7 +34,8 @@
 + (id)mainVideoTrackForAsset:(id)arg1;
 + (struct CGSize)maximumImageSizeFromProperties:(id)arg1;
 + (id)preferredExtensionForUTI:(id)arg1;
-+ (long long)rawSourceMaximumPixelCount;
++ (long long)rawSourceMaximumPixelCountForBackgroundProcessing;
++ (long long)rawSourceMaximumPixelCountForInteractiveEditing;
 + (id)resourceModelUTIForExtension:(id)arg1;
 
 @end

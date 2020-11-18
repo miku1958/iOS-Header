@@ -14,5 +14,6 @@
 - (void)requestFonts:(NSString *)arg1 forClient:(NSXPCListenerEndpoint *)arg2 reply:(void (^)(BOOL))arg3;
 - (void)requestFonts:(NSArray *)arg1 reply:(void (^)(NSDictionary *))arg2;
 - (void)resumeAndShowAlertForSuspendedFontProviders:(void (^)(void))arg1;
+- (void)updatingUserFonts:(void (^)(void))arg1;
 @end
 

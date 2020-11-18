@@ -8,7 +8,7 @@
 #import <ChatKit/UITableViewFocusDelegateLegacy-Protocol.h>
 
 @class NSArray, NSIndexPath, NSString, UIColor, UITableView, UITableViewCell, UIView, _UITableViewCellActionButton;
-@protocol UISpringLoadedInteractionContext;
+@protocol UIContextMenuInteractionCommitAnimating, UISpringLoadedInteractionContext;
 
 @protocol UITableViewDelegatePrivate <UITableViewDelegate, UITableViewFocusDelegateLegacy>
 
@@ -45,6 +45,7 @@
 - (BOOL)tableView:(UITableView *)arg1 wantsHeaderForSection:(long long)arg2;
 - (void)tableView:(UITableView *)arg1 willBeginReorderingRowAtIndexPath:(NSIndexPath *)arg2;
 - (void)tableView:(UITableView *)arg1 willBeginSwipingRowAtIndexPath:(NSIndexPath *)arg2;
+- (void)tableView:(UITableView *)arg1 willCommitMenuWithAnimator:(id<UIContextMenuInteractionCommitAnimating>)arg2;
 - (void)tableViewDidFinishReload:(UITableView *)arg1;
 - (double)tableViewSpacingForExtraSeparators:(UITableView *)arg1;
 - (UIView *)viewForFooterInTableView:(UITableView *)arg1;

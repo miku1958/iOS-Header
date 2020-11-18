@@ -150,6 +150,7 @@
 @property (nonatomic) BOOL hasPlayedThisSession;
 @property (readonly, nonatomic) BOOL hasProtectedContent; // @synthesize hasProtectedContent=_hasProtectedContent;
 @property (readonly, nonatomic) BOOL hasStoreLyrics;
+@property (readonly, nonatomic) BOOL hasTimeSyncedLyrics;
 @property (nonatomic, getter=isInWishList) BOOL inWishList;
 @property (readonly, copy, nonatomic) NSNumber *initialPlaybackStartTime;
 @property (readonly, nonatomic) BOOL isAd;

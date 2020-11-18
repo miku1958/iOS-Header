@@ -14,8 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintViewController;
-    MISSING_TYPE *purchasingSpinnerViewControllerFactory;
-    MISSING_TYPE *$__lazy_storage_$_spinnerViewController;
+    MISSING_TYPE *purchasePresenter;
     MISSING_TYPE *modalHostStyle;
     MISSING_TYPE *pageIdentifierToDisplay;
 }

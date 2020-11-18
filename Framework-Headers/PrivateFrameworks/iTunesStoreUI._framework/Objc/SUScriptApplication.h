@@ -42,6 +42,7 @@
 - (void)beginDelayingTerminate;
 - (void)endDelayingTerminate;
 - (void)exitStoreWithReason:(id)arg1;
+- (id)hostIdentifier;
 - (void)returnToLibrary;
 - (id)scriptAttributeKeys;
 - (void)scrollIconToVisible:(id)arg1 shouldSuspend:(BOOL)arg2;

@@ -12,6 +12,7 @@
 {
     id _delegate;
     BOOL _wifiEnabled;
+    BOOL _airplaneModeEnabled;
     BOOL _bluetoothEnabled;
     BOOL _deviceSupportsWAPI;
     BOOL _firstCallbackCompleted;
@@ -20,6 +21,7 @@
     struct __SFOperation *_information;
 }
 
+@property (getter=isAirplaneModeEnabled) BOOL airplaneModeEnabled;
 @property (getter=isBluetoothEnabled) BOOL bluetoothEnabled;
 @property (weak) id<SFWirelessSettingsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly) BOOL deviceSupportsWAPI;

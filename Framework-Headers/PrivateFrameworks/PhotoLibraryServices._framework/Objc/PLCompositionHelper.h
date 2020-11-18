@@ -21,6 +21,7 @@
 + (BOOL)compositionController:(id)arg1 isPortraitIntensityEqualToCompositionController:(id)arg2;
 + (void)compositionController:(id)arg1 setEffectFilterName:(id)arg2 version:(long long)arg3;
 + (BOOL)compositionControllerHasAnyAutoEnhancement:(id)arg1;
++ (BOOL)compositionHasOvercaptureSourceSelection:(id)arg1;
 + (id)defaultValueForAdjustmentKey:(id)arg1 settingKey:(id)arg2;
 + (id)identityValueForAdjustmentKey:(id)arg1 settingKey:(id)arg2;
 + (BOOL)isIdentityCompositionController:(id)arg1;
@@ -30,7 +31,6 @@
 + (id)minValueForAdjustmentKey:(id)arg1 settingKey:(id)arg2;
 + (id)newIdentityCompositionController;
 + (id)photosSchema;
-+ (id)synchronousImagePropertiesForCompositionController:(id)arg1 priorityLevel:(long long)arg2;
 + (struct CGSize)synchronousInputSizeForCompositionController:(id)arg1;
 + (id)updateReframeStateForAdjustmentData:(id)arg1 formatIdentifier:(id)arg2 formatVersion:(id)arg3 outFormatIdentifier:(id *)arg4 outFormatVersion:(id *)arg5 isReframed:(BOOL)arg6;
 + (id)validatedCompositionCopyFor:(id)arg1;

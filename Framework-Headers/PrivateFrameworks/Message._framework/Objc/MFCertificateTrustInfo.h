@@ -12,32 +12,19 @@
 {
     struct __SecTrust *_unevaluatedTrust;
     ECSecureMIMETrustEvaluation *_trustEvaluation;
-    BOOL _forceNetworkAccessAllowed;
     NSString *_uncommentedSender;
     unsigned long long _certificateType;
     NSString *_sender;
 }
 
-@property (readonly, nonatomic) int action;
-@property (readonly, nonatomic) BOOL canSaveCertificateToKeychain;
-@property (readonly, nonatomic) struct __SecCertificate *certificate;
 @property (readonly, nonatomic) unsigned long long certificateType; // @synthesize certificateType=_certificateType;
-@property (readonly, copy, nonatomic) NSString *commonName;
-@property (readonly, copy, nonatomic) NSString *emailAddress;
-@property (readonly, nonatomic) BOOL hasTrustException;
-@property (readonly, nonatomic) unsigned long long keychainStatus;
 @property (readonly, copy, nonatomic) NSString *sender; // @synthesize sender=_sender;
 @property (readonly, nonatomic) struct __SecTrust *trust;
 @property (readonly, nonatomic) ECSecureMIMETrustEvaluation *trustEvaluation;
 
 - (void).cxx_destruct;
-- (void)addTrustException;
 - (void)dealloc;
 - (id)initWithCertificateType:(unsigned long long)arg1 trust:(struct __SecTrust *)arg2 sender:(id)arg3;
-- (void)reevaluateTrustWithNetworkAccessAllowed;
-- (void)removeCertificateFromKeychain;
-- (void)removeTrustException;
-- (void)saveCertificateToKeychain;
 
 @end
 

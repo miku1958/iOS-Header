@@ -30,7 +30,7 @@
 - (id)backingStore:(id)arg1 migrateDictionaryRepresentation:(id)arg2 fromVersionNumber:(unsigned long long)arg3 toVersionNumber:(unsigned long long)arg4;
 - (id)initWithUnderlyingBackingStore:(id)arg1;
 - (id)readRecordWithError:(id *)arg1;
-- (BOOL)writeRecord:(id)arg1 error:(id *)arg2;
+- (unsigned long long)writeRecord:(id)arg1 error:(id *)arg2;
 
 @end
 

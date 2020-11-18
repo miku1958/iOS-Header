@@ -27,7 +27,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_queue_donateCreateTimerIntent:(id)arg1;
+- (void)_queue_donateCreateTimerIntent:(id)arg1 source:(id)arg2;
 - (id)initWithStorage:(id)arg1;
 - (void)nextTimerDidChange:(id)arg1;
 - (void)source:(id)arg1 didAddTimers:(id)arg2;

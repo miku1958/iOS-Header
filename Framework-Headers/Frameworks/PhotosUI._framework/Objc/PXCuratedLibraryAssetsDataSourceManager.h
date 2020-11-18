@@ -76,12 +76,13 @@
 - (id)dataSourceForZoomLevel:(long long)arg1;
 - (id)dataSourceManagerForZoomLevel:(long long)arg1;
 - (void)didPerformChanges;
+- (void)ensureLastSectionHasContent;
 - (id)firstAssetCollectionReferenceInDataSourceForZoomLevel:(long long)arg1 withParent:(id)arg2;
 - (BOOL)forceAccurateAllSectionsIfNeeded;
-- (void)forceAccurateLastSection;
 - (BOOL)forceAccurateSection:(long long)arg1 andSectionsBeforeAndAfter:(long long)arg2;
 - (BOOL)forceAccurateSectionsIfNeeded:(id)arg1;
 - (BOOL)forceAccurateSectionsIfNeeded:(id)arg1 inZoomLevel:(long long)arg2;
+- (BOOL)forceAllPhotosAccurateIfNeeded;
 - (id)init;
 - (id)initWithConfiguration:(id)arg1;
 - (id)initWithPhotoLibrary:(id)arg1;

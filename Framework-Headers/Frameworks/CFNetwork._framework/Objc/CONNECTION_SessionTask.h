@@ -24,6 +24,8 @@
     Class _my_protocolForTask;
     BOOL __shouldSkipPreferredClientCertificateLookup;
     struct __CFDictionary *_atsStateCache;
+    BOOL _preventsAppSSO;
+    BOOL _appSSOFallback;
     __CFN_TaskMetrics *_metrics;
 }
 
@@ -127,10 +129,12 @@
 - (void)set_TCPConnectionMetadata:(id)arg1;
 - (void)set_TLSNegotiatedCipherSuite:(unsigned short)arg1;
 - (void)set_allowsQUIC:(BOOL)arg1;
+- (void)set_appSSOFallback:(BOOL)arg1;
 - (void)set_connectionIsCompanionLink:(BOOL)arg1;
 - (void)set_discretionaryOverride:(long long)arg1;
 - (void)set_expectedProgressTarget:(unsigned long long)arg1;
 - (void)set_preconnect:(BOOL)arg1;
+- (void)set_preventsAppSSO:(BOOL)arg1;
 - (void)set_protocolForTask:(id)arg1;
 - (void)set_trailers:(id)arg1;
 - (BOOL)shouldHandleCookiesAndSchemeIsAppropriate;

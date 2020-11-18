@@ -319,6 +319,9 @@
 - (void)_reloadTransactionSectionsAnimated:(BOOL)arg1 forceReload:(BOOL)arg2;
 - (void)_reloadTransactionsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_reloadView;
+- (void)_reportPassDetailsAnalyticsForTappedButtonTag:(id)arg1;
+- (void)_reportPassDetailsAnalyticsForTappedRowTag:(id)arg1;
+- (void)_reportPassDetailsAnalyticsForToggleTag:(id)arg1 toggleResult:(BOOL)arg2;
 - (long long)_rowIndexForExpressTransitSettingsCell;
 - (unsigned long long)_rowIndexForPeerPaymentBalanceActionRow:(unsigned long long)arg1;
 - (unsigned long long)_rowIndexForPrivacyTermsInfoRowType:(unsigned long long)arg1;
@@ -337,6 +340,7 @@
 - (BOOL)_shouldShowServiceMode;
 - (BOOL)_shouldShowServicingSection;
 - (BOOL)_shouldShowTermsCell;
+- (BOOL)_shouldShowTransactions;
 - (BOOL)_shouldShowTransferCell;
 - (BOOL)_shouldShowWidgets;
 - (BOOL)_showExpressDetails;
@@ -429,9 +433,12 @@
 - (void)postServiceModeNotification;
 - (void)presentBalanceDetails;
 - (void)presentBankAccounts;
+- (void)presentBillPayment;
 - (void)presentCardNumbers;
 - (void)presentContactIssuerSheet;
+- (void)presentIdentityVerification;
 - (void)presentSchedulePayments;
+- (void)presentTermsAcceptance;
 - (void)presentTermsAndConditions;
 - (void)presentTopUp;
 - (void)presentTransactionDetailsForTransaction:(id)arg1 animated:(BOOL)arg2;
@@ -449,6 +456,7 @@
 - (void)setShowDoneButton:(BOOL)arg1;
 - (BOOL)shouldAllowRefresh;
 - (BOOL)shouldMapSection:(unsigned long long)arg1;
+- (void)showStatementDetailsWithIdentifier:(id)arg1;
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
@@ -471,6 +479,7 @@
 - (void)transferToBank;
 - (void)updateActivationFooterViewContents;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

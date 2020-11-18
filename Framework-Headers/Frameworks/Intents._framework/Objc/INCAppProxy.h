@@ -20,7 +20,7 @@
 - (void).cxx_destruct;
 - (id)_initWithConnection:(id)arg1;
 - (void)launchAppInBackground:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)launchAppInBackground:(BOOL)arg1 userActivityIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)launchAppInBackground:(BOOL)arg1 restrictAppsToCarPlay:(BOOL)arg2 userActivityIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

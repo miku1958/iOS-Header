@@ -8,7 +8,7 @@
 
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
-@class CALayer, CAReplicatorLayer, CLKDevice, NSArray, NSCalendar, NSDate, NSString, NTKAnalogHandsView, NTKDigitalTimeLabel, NTKDigitalTimeLabelStyle;
+@class CALayer, CAReplicatorLayer, CLKDevice, CLKFont, NSArray, NSCalendar, NSDate, NSString, NTKAnalogHandsView, NTKDigitalTimeLabel, NTKDigitalTimeLabelStyle;
 
 @interface NTKDualTimeView : UIView <NTKTimeView>
 {
@@ -21,6 +21,7 @@
     CALayer *_digitalTicksContainer;
     NSArray *_digitalTicks;
     NTKDigitalTimeLabelStyle *_digitalStyle;
+    CLKFont *_digitalLabelFont;
     BOOL _frozen;
     BOOL _editing;
     BOOL _hideActiveTicks;

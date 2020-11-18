@@ -8,10 +8,11 @@
 
 #import <PhotosUICore/PXCuratedLibraryAllPhotosBodyLayout-Protocol.h>
 #import <PhotosUICore/PXGDiagnosticsProvider-Protocol.h>
+#import <PhotosUICore/PXGItemsGeometry-Protocol.h>
 
 @class NSString;
 
-@interface PXGGridLayout : PXGItemsLayout <PXCuratedLibraryAllPhotosBodyLayout, PXGDiagnosticsProvider>
+@interface PXGGridLayout : PXGItemsLayout <PXCuratedLibraryAllPhotosBodyLayout, PXGItemsGeometry, PXGDiagnosticsProvider>
 {
     CDStruct_d97c9657 _updateFlags;
     BOOL _isUpdating;
@@ -116,8 +117,12 @@
 - (struct CGRect)frameForItem:(long long)arg1 usingInterItemSpacing:(double)arg2;
 - (id)init;
 - (long long)itemClosestTo:(struct CGPoint)arg1;
+- (long long)itemClosestToItem:(long long)arg1 inDirection:(unsigned long long)arg2;
 - (struct _NSRange)itemRangeForSpriteIndexRange:(struct _PXGSpriteIndexRange)arg1;
 - (struct _NSRange)itemRangeInRect:(struct CGRect)arg1;
+- (id)itemsBetweenItem:(long long)arg1 andItem:(long long)arg2;
+- (id)itemsGeometry;
+- (id)itemsInRect:(struct CGRect)arg1 inLayout:(id)arg2;
 - (struct _NSRange)itemsToLoad;
 - (void)loadedItemsDidChange;
 - (void)referenceSizeDidChange;

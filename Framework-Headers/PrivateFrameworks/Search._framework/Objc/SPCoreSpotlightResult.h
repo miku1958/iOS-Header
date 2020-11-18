@@ -22,6 +22,7 @@
     long long *_outgoingCount;
     NSString *_relatedBundleID;
     NSString *_mailConversationIdentifier;
+    NSString *_stringForDedupe;
     NSArray *_launchDates;
     NSDate *_contentCreationDate;
     NSString *_bundleID;
@@ -43,6 +44,7 @@
 @property long long *outgoingCount; // @synthesize outgoingCount=_outgoingCount;
 @property (strong) NSString *relatedBundleID; // @synthesize relatedBundleID=_relatedBundleID;
 @property (strong) NSString *relatedUniqueIdentifier; // @synthesize relatedUniqueIdentifier=_relatedUniqueIdentifier;
+@property (strong) NSString *stringForDedupe; // @synthesize stringForDedupe=_stringForDedupe;
 @property int title_maxlines;
 
 - (void).cxx_destruct;

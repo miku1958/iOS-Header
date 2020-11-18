@@ -23,9 +23,11 @@
     id<FBSceneHost> _sceneHost;
     FBScene *_scene;
     id<BSInvalidatable> _predicateInvalidationHandler;
+    long long _currentOrientation;
 }
 
 @property (readonly, nonatomic) AFUISceneConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (nonatomic) long long currentOrientation; // @synthesize currentOrientation=_currentOrientation;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) long long deferralMode; // @synthesize deferralMode=_deferralMode;
 @property (readonly, copy) NSString *description;
@@ -41,6 +43,7 @@
 @property (strong, nonatomic) UIView *windowSceneHostingView; // @synthesize windowSceneHostingView=_windowSceneHostingView;
 
 - (void).cxx_destruct;
+- (void)_audioCategoriesDisablingVolumeHUDDidChangeTo:(id)arg1;
 - (void)_commonInit;
 - (BOOL)_hasScene;
 - (void)_noteSceneDidInvalidate;
@@ -61,8 +64,11 @@
 - (void)startHostingSceneForConfiguration:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)stopHostingScene;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateRemoteSceneWithFrontMostAppInterfaceOrientation:(long long)arg1;
 - (void)updateSceneWithConfiguration:(id)arg1;
+- (void)updateSettingsForInterfaceOrientationChange:(long long)arg1 willAnimationWithDuration:(double)arg2;
 - (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 

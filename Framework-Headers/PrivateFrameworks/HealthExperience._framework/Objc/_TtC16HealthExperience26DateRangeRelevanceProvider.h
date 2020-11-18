@@ -6,7 +6,7 @@
 
 #import <RelevanceEngine/RERelevanceProvider.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _TtC16HealthExperience26DateRangeRelevanceProvider : RERelevanceProvider
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *relevantDateInterval;
 }
 
+@property (nonatomic, readonly) NSString *description;
 @property (nonatomic, readonly) long long hash;
 
 - (void).cxx_destruct;

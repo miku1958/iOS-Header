@@ -10,6 +10,7 @@
 
 @protocol TUIButtonBarViewProvider <NSObject>
 - (void)configureButtonBarItemView:(TUIButtonBarItemView *)arg1 forItem:(UIBarButtonItem *)arg2 group:(UIBarButtonItemGroup *)arg3;
+- (void)preferredSizeDidChangeForButtonBarItem:(UIBarButtonItem *)arg1;
 - (struct CGSize)preferredSizeForButtonBarItem:(UIBarButtonItem *)arg1;
 @end
 

@@ -55,7 +55,7 @@
 - (id)initWithSourceIdentifier:(id)arg1 fileProviderItem:(id)arg2;
 - (id)initWithTags:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)navigationItemTitleForConfiguration:(id)arg1;
+- (id)navigationItemTitlesForConfiguration:(id)arg1;
 - (id)placeholderLocation;
 
 @end

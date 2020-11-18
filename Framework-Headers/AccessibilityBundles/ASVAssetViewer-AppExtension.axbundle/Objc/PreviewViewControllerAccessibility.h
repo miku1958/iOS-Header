@@ -23,9 +23,9 @@
 - (struct CGRect)_axBoundingRectForEntityController:(id)arg1;
 - (struct CGRect)_axBoundsForControls;
 - (void)_axCheckForAppearanceOfEntityControllerWithTimer:(id)arg1;
-- (id)_axControlForRotationWithDeltaYaw:(float)arg1 deltaPitch:(float)arg2 name:(id)arg3 hint:(id)arg4 shouldUseArrows:(BOOL)arg5 entityController:(id)arg6;
+- (id)_axControlForRotationWithDeltaYaw:(float)arg1 deltaPitch:(float)arg2 nameFormat:(id)arg3 hintFormat:(id)arg4 shouldUseArrows:(BOOL)arg5 entityController:(id)arg6;
 - (id)_axControlForScalingForEntityController:(id)arg1;
-- (id)_axControlForTranslationForLevitation:(BOOL)arg1 delta:(id)arg2 name:(id)arg3 entityController: /* Error: Ran out of types for this method. */;
+- (id)_axControlForTranslationForLevitation:(BOOL)arg1 delta:(id)arg2 nameFormat:(id)arg3 entityController: /* Error: Ran out of types for this method. */;
 - (id)_axControlsViewStack;
 - (id)_axCreateAssetElementForEntityController:(id)arg1;
 - (id)_axDescriptionForCurrentPitchForEntityController:(id)arg1;
@@ -61,6 +61,7 @@
 - (void)entityDidPlaceOnARAnchor;
 - (void)handleTapAtPointWithPoint:(struct CGPoint)arg1;
 - (void)placeModelOn:(id)arg1;
+- (void)setEntityControllers:(id)arg1;
 - (void)stageBackToHologram;
 - (void)transitionToARMode;
 - (void)transitionToObjectMode;

@@ -7,12 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <WeatherFoundation/NSCopying-Protocol.h>
+#import <WeatherFoundation/NSURLSessionTaskDelegate-Protocol.h>
 
 @class NSString, NSURL, NSURLSession, NWPathEvaluator, WFSettingsManager;
 
-@interface WFWeatherStoreServiceConfiguration : NSObject <NSCopying>
+@interface WFWeatherStoreServiceConfiguration : NSObject <NSURLSessionTaskDelegate, NSCopying>
 {
     struct os_unfair_lock_s _serviceConnectivityEvaluationURLLock;
+    struct os_unfair_lock_s _serviceConnectivityEvaluatorLock;
     NWPathEvaluator *_serviceConnectivityEvaluator;
     NSURL *_serviceConnectivityEvaluationURL;
     NSURLSession *_session;
@@ -24,24 +26,31 @@
 @property (readonly, nonatomic) NSString *apiVersion;
 @property (strong, nonatomic) Class cacheClass; // @synthesize cacheClass=_cacheClass;
 @property (copy, nonatomic) NSURL *cacheURL; // @synthesize cacheURL=_cacheURL;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isServiceAvailable;
 @property (readonly, nonatomic) BOOL isValid;
 @property (strong, nonatomic) NSURL *serviceConnectivityEvaluationURL; // @synthesize serviceConnectivityEvaluationURL=_serviceConnectivityEvaluationURL;
 @property (nonatomic) struct os_unfair_lock_s serviceConnectivityEvaluationURLLock; // @synthesize serviceConnectivityEvaluationURLLock=_serviceConnectivityEvaluationURLLock;
 @property (readonly, nonatomic) NWPathEvaluator *serviceConnectivityEvaluator; // @synthesize serviceConnectivityEvaluator=_serviceConnectivityEvaluator;
+@property (nonatomic) struct os_unfair_lock_s serviceConnectivityEvaluatorLock; // @synthesize serviceConnectivityEvaluatorLock=_serviceConnectivityEvaluatorLock;
 @property (strong, nonatomic) NSURLSession *session; // @synthesize session=_session;
 @property (strong, nonatomic) WFSettingsManager *settingsManager; // @synthesize settingsManager=_settingsManager;
+@property (readonly) Class superclass;
 
 + (id)defaultConfiguration;
 + (id)defaultConfigurationWithSourceBundleIdentifier:(id)arg1;
 + (id)generateUserAgent;
 - (void).cxx_destruct;
+- (void)URLSession:(id)arg1 task:(id)arg2 didFinishCollectingMetrics:(id)arg3;
 - (id)apiConfiguration;
 - (id)apiConfigurationForAPIVersion:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)forecastRequestForTypes:(unsigned long long)arg1 location:(id)arg2 date:(id)arg3 apiVersion:(id)arg4 error:(id *)arg5;
 - (id)forecastRequestForTypes:(unsigned long long)arg1 location:(id)arg2 date:(id)arg3 error:(id *)arg4;
 - (id)init;
+- (BOOL)isServiceAvailableSync;
 - (id)parseForecast:(unsigned long long)arg1 data:(id)arg2 location:(id)arg3 locale:(id)arg4 date:(id)arg5 apiVersion:(id)arg6 error:(id *)arg7;
 - (id)parseForecast:(unsigned long long)arg1 data:(id)arg2 location:(id)arg3 locale:(id)arg4 date:(id)arg5 error:(id *)arg6;
 

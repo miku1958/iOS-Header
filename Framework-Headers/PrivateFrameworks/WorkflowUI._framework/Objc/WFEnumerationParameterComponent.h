@@ -6,7 +6,7 @@
 
 #import <WorkflowUI/WFParameterComponent.h>
 
-@class UIColor, WFEnumerationParameter, WFEnumerationSegmentedControlComponent, WFVariableSubstitutableParameterState;
+@class WFEnumerationParameter, WFEnumerationSegmentedControlComponent, WFVariableSubstitutableParameterState;
 @protocol WFComponentNavigationContext, WFVariableProvider, WFVariableUIDelegate;
 
 @interface WFEnumerationParameterComponent : WFParameterComponent
@@ -19,7 +19,6 @@
     id<WFVariableProvider> _variableProvider;
     id<WFVariableUIDelegate> _variableUIDelegate;
     id<WFComponentNavigationContext> _navigationContext;
-    UIColor *_tintColor;
 }
 
 @property (readonly, nonatomic) id<WFComponentNavigationContext> navigationContext; // @synthesize navigationContext=_navigationContext;
@@ -27,7 +26,6 @@
 @property (readonly, nonatomic) BOOL processing; // @synthesize processing=_processing;
 @property (readonly, nonatomic) WFEnumerationSegmentedControlComponent *segmentedControlComponent; // @synthesize segmentedControlComponent=_segmentedControlComponent;
 @property (readonly, nonatomic) WFVariableSubstitutableParameterState *state; // @synthesize state=_state;
-@property (readonly, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property (readonly, weak, nonatomic) id<WFVariableProvider> variableProvider; // @synthesize variableProvider=_variableProvider;
 @property (readonly, weak, nonatomic) id<WFVariableUIDelegate> variableUIDelegate; // @synthesize variableUIDelegate=_variableUIDelegate;
 

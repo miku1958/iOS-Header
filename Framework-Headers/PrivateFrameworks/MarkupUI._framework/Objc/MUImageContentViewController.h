@@ -21,6 +21,7 @@
     BOOL _inDoubleTapZoom;
     BOOL _didSetup;
     BOOL _firstLoadZoomToFit;
+    BOOL _zoomToFitRestoreValue;
     UIImage *_tentativePlaceholderImage;
     double _maxImageDimension;
     unsigned long long _inkStyle;
@@ -66,6 +67,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIImage *tentativePlaceholderImage; // @synthesize tentativePlaceholderImage=_tentativePlaceholderImage;
 @property (nonatomic) BOOL usePlaceholderAsDisplayImageIfPossible; // @synthesize usePlaceholderAsDisplayImageIfPossible=_usePlaceholderAsDisplayImageIfPossible;
+@property (nonatomic) BOOL zoomToFitRestoreValue; // @synthesize zoomToFitRestoreValue=_zoomToFitRestoreValue;
 
 - (void).cxx_destruct;
 - (void)_adjustScrollViewForKeyboardNotification:(id)arg1;

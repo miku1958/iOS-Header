@@ -25,6 +25,7 @@
 - (id)debugDescription;
 - (BOOL)executeUsingBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (BOOL)executeWithIndexedBindings:(id)arg1 usingBlock:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (BOOL)executeWithNamedBindings:(id)arg1 rowsChanged:(unsigned long long *)arg2 error:(id *)arg3;
 - (BOOL)executeWithNamedBindings:(id)arg1 usingBlock:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (BOOL)finalizeWithError:(id *)arg1;
 - (id)initWithString:(id)arg1 connection:(id)arg2;

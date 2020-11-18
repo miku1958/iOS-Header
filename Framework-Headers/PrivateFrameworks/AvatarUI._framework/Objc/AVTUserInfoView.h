@@ -6,22 +6,22 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSString, UILabel, _UIBackdropView, _UIBackdropViewSettings;
+@class NSArray, NSString, UILabel, UIVisualEffectView;
 
 @interface AVTUserInfoView : UIView
 {
-    _UIBackdropViewSettings *_backdropSettings;
-    _UIBackdropView *_userInfoBackdropView;
+    BOOL _isRegisteredForCategorySizeChange;
+    UIVisualEffectView *_userInfoEffectView;
     UILabel *_userInfoLabel;
     NSArray *_activeConstraints;
     struct NSDirectionalEdgeInsets _textInsets;
 }
 
 @property (strong, nonatomic) NSArray *activeConstraints; // @synthesize activeConstraints=_activeConstraints;
-@property (strong, nonatomic) _UIBackdropViewSettings *backdropSettings; // @synthesize backdropSettings=_backdropSettings;
+@property (nonatomic) BOOL isRegisteredForCategorySizeChange; // @synthesize isRegisteredForCategorySizeChange=_isRegisteredForCategorySizeChange;
 @property (strong, nonatomic) NSString *text;
 @property (nonatomic) struct NSDirectionalEdgeInsets textInsets; // @synthesize textInsets=_textInsets;
-@property (strong, nonatomic) _UIBackdropView *userInfoBackdropView; // @synthesize userInfoBackdropView=_userInfoBackdropView;
+@property (strong, nonatomic) UIVisualEffectView *userInfoEffectView; // @synthesize userInfoEffectView=_userInfoEffectView;
 @property (strong, nonatomic) UILabel *userInfoLabel; // @synthesize userInfoLabel=_userInfoLabel;
 
 + (double)textVerticalPadding;

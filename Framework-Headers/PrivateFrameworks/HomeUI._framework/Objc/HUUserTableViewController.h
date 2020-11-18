@@ -39,6 +39,7 @@
 - (void)performRemovalAction:(id)arg1;
 - (void)setAMSiTunesAccount:(id)arg1 forHome:(id)arg2;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
+- (BOOL)shouldResizeHeaderWhenLayoutSubviews;
 - (id)userHandle;
 
 @end

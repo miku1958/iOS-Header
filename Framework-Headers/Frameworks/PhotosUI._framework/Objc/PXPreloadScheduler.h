@@ -29,8 +29,10 @@
 - (void)dealloc;
 - (id)init;
 - (void)scheduleBackgroundTask:(CDUnknownBlockType)arg1;
+- (void)scheduleDeferredBackgroundTask:(CDUnknownBlockType)arg1;
 - (void)scheduleMainQueueTask:(CDUnknownBlockType)arg1;
 - (void)scheduleMainQueueTaskAndWait:(CDUnknownBlockType)arg1;
+- (void)scheduleTaskAfterCATransactionCommits:(CDUnknownBlockType)arg1;
 
 @end
 

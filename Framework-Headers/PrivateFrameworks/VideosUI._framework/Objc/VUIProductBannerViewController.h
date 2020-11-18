@@ -6,17 +6,17 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <VideosUI/TVAppTemplateImpressionable-Protocol.h>
 #import <VideosUI/VUIProductUberBackgroundInterface-Protocol.h>
 
-@class IKViewElement, NSString, UIView, VUIProductBannerView, VUIProductUberBackgroundView;
+@class IKViewElement, NSString, VUIProductBannerView, VUIProductUberBackgroundView;
 
 __attribute__((visibility("hidden")))
-@interface VUIProductBannerViewController : UIViewController <VUIProductUberBackgroundInterface>
+@interface VUIProductBannerViewController : UIViewController <VUIProductUberBackgroundInterface, TVAppTemplateImpressionable>
 {
     VUIProductUberBackgroundView *_uberBackgroundView;
     IKViewElement *_viewElement;
     VUIProductBannerView *_bannerView;
-    UIView *_transitionBackgroundView;
 }
 
 @property (strong, nonatomic) VUIProductBannerView *bannerView; // @synthesize bannerView=_bannerView;
@@ -27,16 +27,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGSize size;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double topThreshold;
-@property (strong, nonatomic) UIView *transitionBackgroundView; // @synthesize transitionBackgroundView=_transitionBackgroundView;
 @property (strong, nonatomic) VUIProductUberBackgroundView *uberBackgroundView; // @synthesize uberBackgroundView=_uberBackgroundView;
 @property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 
 - (void).cxx_destruct;
 - (void)_configureViewSubviews;
+- (id)impressionableElementsContainedInDocument:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
 - (void)setBannerOpacity:(double)arg1;
-- (void)setTransitionBannerOpacity:(double)arg1;
 - (void)setUberImageOffset:(double)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

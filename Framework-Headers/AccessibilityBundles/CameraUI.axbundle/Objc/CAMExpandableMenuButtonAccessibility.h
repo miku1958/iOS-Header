@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)canBecomeFocused;
 - (BOOL)isAccessibilityElement;
+- (void)startCollapsingWithProposedFrame:(struct CGRect)arg1;
 
 @end
 

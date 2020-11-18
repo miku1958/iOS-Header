@@ -96,6 +96,7 @@
 - (id)contactIdentifiers;
 - (id)customObjectForKey:(id)arg1;
 - (BOOL)defaultAlarmWasDeleted;
+- (id)defaultAlarms;
 - (id)description;
 - (id)detachedItems;
 - (id)ekExceptionDates;

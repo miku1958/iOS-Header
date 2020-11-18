@@ -100,6 +100,7 @@
 - (void)_helpButtonTapped:(id)arg1;
 - (BOOL)_isTextInputEnabled;
 - (void)_layoutReportBugButton;
+- (void)_loadCarPlayAuraIfNeededWhenHidden:(BOOL)arg1;
 - (void)_loadReportBugButtonTemplateImageInBackgroundWithCompletion:(CDUnknownBlockType)arg1;
 - (struct CGRect)_lockViewFrame;
 - (void)_preferencesDidChange:(id)arg1;

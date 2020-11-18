@@ -36,6 +36,7 @@
 - (void)setText:(id)arg1 URL:(id)arg2 linkRange:(struct _NSRange)arg3;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)tintColorDidChange;
+- (void)updateLinkColor;
 
 @end
 

@@ -31,6 +31,7 @@
 + (struct UIColor *)ICLearnMoreButtonPressedColor;
 + (struct UIColor *)ICLearnMoreButtonUnpressedColor;
 + (struct UIColor *)ICListStatusIndicatorColor;
++ (struct UIColor *)ICListTitleTextColor;
 + (struct UIColor *)ICLockIconColor;
 + (struct UIColor *)ICLockIconColorList;
 + (struct UIColor *)ICMoveActionBackgroundColor;

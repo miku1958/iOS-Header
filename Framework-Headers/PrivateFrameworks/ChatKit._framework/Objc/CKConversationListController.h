@@ -175,6 +175,7 @@
 - (void)_updateConversationListNeedsResort:(BOOL)arg1;
 - (void)_updateFilteredConversationLists;
 - (void)_updateInsets;
+- (void)_updateNavbarLayoutIfNeeded;
 - (void)_updateNonPlaceholderConverationLists;
 - (void)_updateSyncProgressIfNeeded;
 - (void)_updateSyncProgressIfNeededWithProgressController:(id)arg1;
@@ -204,9 +205,11 @@
 - (void)doneButtonTapped:(id)arg1;
 - (void)endHoldingAllConversationListUpdatesForKey:(id)arg1;
 - (void)endHoldingConversationListUpdatesForKey:(id)arg1;
+- (long long)firstVisibleRowInTable;
 - (id)init;
 - (id)inputAccessoryView;
 - (void)invalidateCellLayout;
+- (long long)lastVisibleRowInTable;
 - (void)loadView;
 - (void)markAsReadButtonTapped:(id)arg1;
 - (void)markAsReadButtonTappedForIndexPath:(id)arg1;
@@ -247,6 +250,7 @@
 - (void)sharingSettingsViewController:(id)arg1 didUpdateWithSharingResult:(id)arg2;
 - (void)sharingSettingsViewControllerDidUpdateContact:(id)arg1;
 - (BOOL)shouldCleanupFilter;
+- (BOOL)shouldScrollTableAtCellSelection:(long long)arg1;
 - (void)showAccountMismatachAlertForNicknames;
 - (void)showMeCardViewController;
 - (void)showMeCardViewControllerWithNickname:(id)arg1;
@@ -292,6 +296,7 @@
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewDidUnload;
+- (void)viewLayoutMarginsDidChange;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

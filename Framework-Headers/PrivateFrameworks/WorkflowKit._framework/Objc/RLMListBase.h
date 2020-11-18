@@ -25,6 +25,7 @@
 - (id)initWithArray:(id)arg1;
 - (id)objectsAtIndexes:(id)arg1;
 - (id)valueForKey:(id)arg1;
+- (id)valueForKeyPath:(id)arg1;
 
 @end
 

@@ -6,11 +6,22 @@
 
 #import <AppleMediaServices/AMSURLProtocolHandler.h>
 
+#import <AppleMediaServices/AMSURLProtocolDelegate-Protocol.h>
+#import <AppleMediaServices/NSURLSessionDelegate-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface AMSCardEnrollmentProtocolHandler : AMSURLProtocolHandler
+@interface AMSCardEnrollmentProtocolHandler : AMSURLProtocolHandler <NSURLSessionDelegate, AMSURLProtocolDelegate>
 {
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
+- (void)AMSURLSession:(id)arg1 task:(id)arg2 handleAuthenticateRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)reconfigureNewRequest:(id)arg1 originalTask:(id)arg2 redirect:(BOOL)arg3 error:(id *)arg4;
 
 @end

@@ -71,8 +71,6 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToAccount:(id)arg1;
 - (BOOL)isRelatedToAccount:(id)arg1;
-- (id)locallyTrackedAccountHandleModelsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
-- (id)locallyTrackedDeviceModelsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)logIdentifier;
 - (BOOL)mergeObject:(id)arg1;
 - (id)modelBackedObjects;

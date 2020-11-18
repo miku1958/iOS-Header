@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CLLocation, NSArray, NSData, NSDictionary, NSString, NSUUID;
+@class NSArray, NSData, NSDictionary, NSString, NSUUID;
 
 @protocol CLLocationInternalServiceProtocol
 - (void)applyArchivedAuthorizationDecisions:(NSData *)arg1 withConfirmationToken:(NSUUID *)arg2 replyBlock:(void (^)(NSError *))arg3;
@@ -30,7 +30,7 @@
 - (void)getTechnologiesInUseWithReplyBlock:(void (^)(NSError *, NSArray *))arg1;
 - (void)gyroCalibrationDatabaseSupportsMiniCalibrationWithReplyBlock:(void (^)(NSError *, int))arg1;
 - (void)notifyPassKitPayment:(NSString *)arg1 transaction:(NSString *)arg2 info:(NSDictionary *)arg3;
-- (void)notifyWeatherForecast:(NSDictionary *)arg1 airQualityConditions:(NSDictionary *)arg2 hourlyForecasts:(NSArray *)arg3 dailyForecasts:(NSArray *)arg4 location:(CLLocation *)arg5;
+- (void)notifyWeatherForecast:(NSDictionary *)arg1 airQualityConditions:(NSDictionary *)arg2 hourlyForecasts:(NSArray *)arg3 dailyForecasts:(NSArray *)arg4 latitude:(double)arg5 longitude:(double)arg6;
 - (void)performMigrationWithReplyBlock:(void (^)(NSError *))arg1;
 - (void)pingDaemonWithReplyBlock:(void (^)(NSError *))arg1;
 - (void)resetAllClientsWithReplyBlock:(void (^)(NSError *))arg1;

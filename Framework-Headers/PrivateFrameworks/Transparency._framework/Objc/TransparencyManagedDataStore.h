@@ -42,7 +42,7 @@
 - (long long)currentSequenceId:(id *)arg1;
 - (void)deleteCompletedRequest:(id)arg1;
 - (void)deleteObject:(id)arg1;
-- (id)fetchCompletedRequests:(id)arg1 error:(id *)arg2;
+- (id)fetchCompletedRequests:(id)arg1 olderThan:(id)arg2 error:(id *)arg3;
 - (id)fetchPendingSMTsForUri:(id)arg1 uri:(id)arg2 accountId:(id)arg3 error:(id *)arg4;
 - (id)fetchRequestForUUID:(id)arg1 error:(id *)arg2;
 - (id)fetchRequestForUUID:(id)arg1 uri:(id)arg2 error:(id *)arg3;
@@ -50,12 +50,15 @@
 - (id)fetchRequestsWithPendingResponses:(id)arg1 error:(id *)arg2;
 - (id)fetchSMTsWithUnverifiedSignature:(id)arg1 error:(id *)arg2;
 - (id)fetchUrisWithPendingSMTs:(id)arg1 error:(id *)arg2;
+- (void)garbageCollectRequests:(id)arg1 olderThan:(id)arg2 error:(id *)arg3;
 - (id)init;
 - (BOOL)logMetricsForApplication:(id)arg1 error:(id *)arg2;
 - (BOOL)logRequestMetricsForApplication:(id)arg1 error:(id *)arg2;
 - (BOOL)logSMTMetricsForApplication:(id)arg1 error:(id *)arg2;
 - (BOOL)logSTHMetricsForApplication:(id)arg1 error:(id *)arg2;
+- (BOOL)persistAndRefaultObject:(id)arg1 error:(id *)arg2;
 - (BOOL)persistWithError:(id *)arg1;
+- (void)refaultObject:(id)arg1;
 - (id)requestFailures:(id *)arg1;
 - (id)requests:(id *)arg1;
 - (id)signedMutationTimestamps:(id *)arg1;

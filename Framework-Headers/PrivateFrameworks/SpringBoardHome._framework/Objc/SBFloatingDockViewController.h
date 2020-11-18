@@ -76,6 +76,7 @@
 @property (readonly, nonatomic) SBFolderController *presentedFolderController;
 @property (readonly, copy, nonatomic) NSSet *presentedIconLocations;
 @property (readonly, nonatomic, getter=isPresentingFolder) BOOL presentingFolder;
+@property (nonatomic) double requestedVerticalMargin;
 @property (strong, nonatomic) SBFTouchPassThroughView *scalingView; // @synthesize scalingView=_scalingView;
 @property (readonly, nonatomic) BOOL shouldAnimateLastTwoViewsAsOne;
 @property (nonatomic) BOOL shouldIndicateImpossibleDrop; // @synthesize shouldIndicateImpossibleDrop=_shouldIndicateImpossibleDrop;

@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class HFPosterFrameManager, HMCameraClip, UIImage;
+@class HFPosterFrameManager, HMCameraClip, HMCameraClipManager, UIImage;
 
 @protocol HFPosterFrameImageObserver
+
+@property (readonly, nonatomic) HMCameraClipManager *clipManager;
+
 - (void)manager:(HFPosterFrameManager *)arg1 didUpdateImage:(UIImage *)arg2 withTimeOffset:(double)arg3 fromClip:(HMCameraClip *)arg4;
 @end
 

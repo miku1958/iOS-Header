@@ -33,6 +33,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<PKSetupFlowControllerProtocol> parentFlowController; // @synthesize parentFlowController=_parentFlowController;
 @property (readonly, nonatomic) PKPaymentPass *paymentPass; // @synthesize paymentPass=_paymentPass;
+@property (readonly, nonatomic) BOOL physicalCardBlocked;
 @property (readonly, nonatomic) PKPhysicalCard *primaryPhysicalCard; // @synthesize primaryPhysicalCard=_primaryPhysicalCard;
 @property (readonly, nonatomic) BOOL primaryPhysicalCardEnabled;
 @property (weak, nonatomic) id<PKPaymentSetupViewControllerDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;

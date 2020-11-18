@@ -108,6 +108,7 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tintColorDidChange;
 - (double)topPadding;
+- (void)updateHourHeight;
 - (void)updateMarkerPosition;
 - (void)viewTintColorDidChangeForView:(id)arg1 toColor:(id)arg2;
 

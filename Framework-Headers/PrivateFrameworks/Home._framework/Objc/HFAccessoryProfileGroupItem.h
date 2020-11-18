@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Home/HFItem.h>
+#import <Home/HFItemGroupItem.h>
 
 #import <Home/HFAccessoryProfileVendor-Protocol.h>
 #import <Home/NSCopying-Protocol.h>
@@ -12,19 +12,17 @@
 @class NSNumber, NSSet, NSString;
 @protocol HFCharacteristicValueSource;
 
-@interface HFAccessoryProfileGroupItem : HFItem <HFAccessoryProfileVendor, NSCopying>
+@interface HFAccessoryProfileGroupItem : HFItemGroupItem <HFAccessoryProfileVendor, NSCopying>
 {
     NSSet *_profiles;
     NSNumber *_groupIdentifier;
     id<HFCharacteristicValueSource> _valueSource;
-    NSSet *_profileItems;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSNumber *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSSet *profileItems; // @synthesize profileItems=_profileItems;
 @property (readonly, nonatomic) NSSet *profiles; // @synthesize profiles=_profiles;
 @property (readonly, nonatomic) NSSet *services;
 @property (readonly) Class superclass;
@@ -32,7 +30,6 @@
 
 - (void).cxx_destruct;
 - (id)_buildProfileItems;
-- (id)_subclass_updateWithOptions:(id)arg1;
 - (id)accessories;
 - (id)copyWithValueSource:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

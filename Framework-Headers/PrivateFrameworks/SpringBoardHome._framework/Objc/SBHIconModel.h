@@ -66,6 +66,7 @@
 @property (readonly, copy, nonatomic) NSSet *visibleIconIdentifiers;
 @property (readonly, copy, nonatomic) NSSet *visibleIconTags; // @synthesize visibleIconTags=_visibleIconTags;
 
++ (id)migratedIdentifierForLeafIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (id)_adjustedDesiredIndexPathInRootFolder:(id)arg1 forIconWithIdentifier:(id)arg2;
 - (id)_adjustedIndexPathInRootFolder:(id)arg1 withinIconState:(id)arg2 forIconWithIdentifier:(id)arg3;
@@ -91,6 +92,7 @@
 - (id)desiredIndexPathForIconWithIdentifier:(id)arg1;
 - (void)didUnarchiveMetadata:(id)arg1;
 - (id)downloadingIconForBundleIdentifier:(id)arg1;
+- (void)enumerateDownloadingIconsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateLeafIconsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateMasqueradeLeafIdentifiersUsingBlock:(CDUnknownBlockType)arg1;
 - (void)folder:(id)arg1 didAddIcons:(id)arg2 removedIcons:(id)arg3;

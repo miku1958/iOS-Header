@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CTCellularPlanProvisioningRequest, CTDeviceIdentifier, CTPlan, CTRemotePlanIdentifier, CTRemotePlanIdentifierList, CTXPCServiceSubscriptionContext, CUMessageSession, NSArray, NSString;
+@class CTCellularPlanProvisioningRequest, CTDeviceIdentifier, CTPlan, CTRemotePlanIdentifier, CTRemotePlanIdentifierList, CTXPCServiceSubscriptionContext, CUMessageSession, NSArray, NSError, NSString;
 
 @protocol CTXPCServiceCellularPlanManagerInterface
 - (void)addPlanWith:(CTCellularPlanProvisioningRequest *)arg1 appName:(NSString *)arg2 appType:(unsigned long long)arg3 completionHandler:(void (^)(unsigned long long, NSError *))arg4;
 - (void)bootstrapPlanTransferForEndpoint:(unsigned long long)arg1 usingMessageSession:(CUMessageSession *)arg2 completion:(void (^)(NSError *))arg3;
+- (NSError *)cancelPlanTransfer:(CTRemotePlanIdentifier *)arg1 fromDevice:(CTDeviceIdentifier *)arg2;
 - (void)deleteTransferPlansForEid:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
 - (void)deleteZone:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
 - (void)endPlanTransferForEndPoint:(unsigned long long)arg1 completion:(void (^)(NSError *))arg2;

@@ -20,10 +20,12 @@ __attribute__((visibility("hidden")))
     NSString *_matchedDisplayNameLanguageCode;
     NSString *_matchedDisplayName;
     BOOL _isDefaultName;
+    BOOL _isLookAroundActionAllowed;
     BOOL _isProminentResult;
     BOOL _shouldSuppressDirectionsAction;
     struct {
         unsigned int has_isDefaultName:1;
+        unsigned int has_isLookAroundActionAllowed:1;
         unsigned int has_isProminentResult:1;
         unsigned int has_shouldSuppressDirectionsAction:1;
         unsigned int read_unknownFields:1;
@@ -35,6 +37,7 @@ __attribute__((visibility("hidden")))
         unsigned int wrote_matchedDisplayNameLanguageCode:1;
         unsigned int wrote_matchedDisplayName:1;
         unsigned int wrote_isDefaultName:1;
+        unsigned int wrote_isLookAroundActionAllowed:1;
         unsigned int wrote_isProminentResult:1;
         unsigned int wrote_shouldSuppressDirectionsAction:1;
     } _flags;
@@ -43,11 +46,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) int *clientizationFeatures;
 @property (readonly, nonatomic) unsigned long long clientizationFeaturesCount;
 @property (nonatomic) BOOL hasIsDefaultName;
+@property (nonatomic) BOOL hasIsLookAroundActionAllowed;
 @property (nonatomic) BOOL hasIsProminentResult;
 @property (readonly, nonatomic) BOOL hasMatchedDisplayName;
 @property (readonly, nonatomic) BOOL hasMatchedDisplayNameLanguageCode;
 @property (nonatomic) BOOL hasShouldSuppressDirectionsAction;
 @property (nonatomic) BOOL isDefaultName;
+@property (nonatomic) BOOL isLookAroundActionAllowed;
 @property (nonatomic) BOOL isProminentResult;
 @property (strong, nonatomic) NSString *matchedDisplayName;
 @property (strong, nonatomic) NSString *matchedDisplayNameLanguageCode;

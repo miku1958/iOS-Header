@@ -60,6 +60,7 @@
 - (id)_containerFromCollectionView;
 - (id)_dataSourceSnapshotter;
 - (void)_didPerformUpdateVisibleCellsPass;
+- (BOOL)_disallowsFadeCellsForBoundsChange;
 - (unsigned long long)_edgesForSafeAreaPropagationToDescendants;
 - (BOOL)_estimatesSizes;
 - (BOOL)_estimatesSupplementaryItems;

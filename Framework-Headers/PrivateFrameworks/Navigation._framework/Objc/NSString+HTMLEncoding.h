@@ -36,6 +36,9 @@
 + (id)_navigation_replacementForFormatToken:(id)arg1 options:(CDStruct_ef0b40be)arg2 overrideVariables:(id)arg3;
 + (id)_navigation_selectInstructionWithServerString:(id)arg1 isSpoken:(BOOL)arg2 clientBlock:(CDUnknownBlockType)arg3;
 + (id)_navigation_selectInstructionWithServerStringArray:(id)arg1 isSpoken:(BOOL)arg2 clientBlock:(CDUnknownBlockType)arg3;
++ (id)_navigation_spokenStringWithMinutes:(unsigned long long)arg1 andAbbreviationType:(unsigned long long)arg2;
++ (id)_navigation_spokenStringWithSeconds:(unsigned long long)arg1 abbreviated:(BOOL)arg2;
++ (id)_navigation_spokenStringWithSeconds:(unsigned long long)arg1 andAbbreviationType:(unsigned long long)arg2;
 + (id)_navigation_stringForDistance:(double)arg1 formatter:(id)arg2 locale:(id)arg3;
 + (id)_navigation_stringForExpectedTravelTime:(double)arg1 dateUnitStyle:(long long)arg2;
 + (id)_navigation_stringForServerFormattedString:(id)arg1;

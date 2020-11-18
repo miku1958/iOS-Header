@@ -12,10 +12,30 @@
 
 @interface RLMRealmConfiguration : NSObject <NSCopying>
 {
-    struct Config _config;
+    struct Config {
+        struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> path;
+        struct BinaryData realm_data;
+        struct vector<char, std::__1::allocator<char>> encryption_key;
+        struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> fifo_files_fallback_path;
+        BOOL in_memory;
+        unsigned char schema_mode;
+        struct Optional<realm::Schema> schema;
+        unsigned long long schema_version;
+        struct function<void (std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm>, realm::Schema &)> migration_function;
+        struct function<void (std::__1::shared_ptr<realm::Realm>)> initialization_function;
+        struct function<bool (unsigned long long, unsigned long long)> should_compact_on_launch_function;
+        BOOL cache;
+        BOOL disable_format_upgrade;
+        BOOL automatic_change_notifications;
+        struct Optional<unsigned long> execution_context;
+        struct shared_ptr<realm::SyncConfig> sync_config;
+        BOOL force_sync_history;
+        struct function<std::__1::shared_ptr<realm::AuditInterface>()> audit_factory;
+    } _config;
     BOOL _cache;
     BOOL _dynamic;
     CDUnknownBlockType _migrationBlock;
+    CDUnknownBlockType _shouldCompactOnLaunch;
     RLMSchema *_customSchema;
     NSString *_pathOnDisk;
 }
@@ -34,6 +54,7 @@
 @property (copy, nonatomic) NSString *pathOnDisk; // @synthesize pathOnDisk=_pathOnDisk;
 @property (nonatomic) BOOL readOnly;
 @property (nonatomic) unsigned long long schemaVersion;
+@property (copy, nonatomic) CDUnknownBlockType shouldCompactOnLaunch; // @synthesize shouldCompactOnLaunch=_shouldCompactOnLaunch;
 
 + (id)defaultConfiguration;
 + (id)rawDefaultConfiguration;
@@ -54,7 +75,9 @@
 - (id)description;
 - (id)init;
 - (unsigned char)schemaMode;
+- (void)setCustomSchemaWithoutCopying:(id)arg1;
 - (void)setSchemaMode:(unsigned char)arg1;
+- (id)syncConfiguration;
 
 @end
 

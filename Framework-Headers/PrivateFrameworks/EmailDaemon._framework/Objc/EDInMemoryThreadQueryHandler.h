@@ -11,7 +11,7 @@
 #import <EmailDaemon/EFLoggable-Protocol.h>
 
 @class EDMessageQueryHelper, EDUpdateThrottler, NSArray, NSMutableDictionary, NSMutableOrderedSet, NSObject, NSString;
-@protocol EMMessageListItemQueryResultsObserver, OS_dispatch_queue;
+@protocol EFScheduler, EMMessageListItemQueryResultsObserver, OS_dispatch_queue;
 
 @interface EDInMemoryThreadQueryHandler : EDThreadQueryHandler <EDMessageQueryHelperDelegate, EFLoggable, EFContentProtectionObserver>
 {
@@ -19,6 +19,7 @@
     NSMutableDictionary *_threadsByConversationID;
     NSMutableDictionary *_changesWhilePaused;
     NSMutableDictionary *_oldestThreadsByMailboxObjectIDs;
+    struct os_unfair_lock_s _threadsLock;
     BOOL _didCancel;
     BOOL _isInitialized;
     BOOL _isPaused;
@@ -27,6 +28,7 @@
     NSArray *_messageSortDescriptors;
     CDUnknownBlockType _comparator;
     EDUpdateThrottler *_updateThrottler;
+    id<EFScheduler> _scheduler;
     NSObject<OS_dispatch_queue> *_contentProtectionQueue;
     NSObject<OS_dispatch_queue> *_resultQueue;
 }
@@ -44,6 +46,7 @@
 @property (readonly, copy, nonatomic) NSArray *messageSortDescriptors; // @synthesize messageSortDescriptors=_messageSortDescriptors;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *resultQueue; // @synthesize resultQueue=_resultQueue;
 @property (readonly, nonatomic) id<EMMessageListItemQueryResultsObserver> resultsObserverIfNotPaused;
+@property (readonly, nonatomic) id<EFScheduler> scheduler; // @synthesize scheduler=_scheduler;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) EDUpdateThrottler *updateThrottler; // @synthesize updateThrottler=_updateThrottler;
 
@@ -52,7 +55,7 @@
 - (void)_blockedSendersDidChange:(id)arg1;
 - (void)_contentProtectionChangedToLocked;
 - (void)_contentProtectionChangedToUnlocked;
-- (void)_createHelper;
+- (void)_createHelperAndReconcileJournal:(BOOL)arg1;
 - (BOOL)_didMergeInThreads:(id)arg1;
 - (void)_didSendUpdates;
 - (id)_inMemoryThreadSortDescriptorsForThreadSortDescriptors:(id)arg1;
@@ -67,7 +70,7 @@
 - (void)_prepareToSendUpdates;
 - (BOOL)_queryHelperIsCurrent:(id)arg1;
 - (void)_refreshObserver;
-- (BOOL)_removeThreadsForInMemoryThreads:(id)arg1;
+- (BOOL)_removeThreadsForInMemoryThreads:(id)arg1 forMove:(BOOL)arg2;
 - (BOOL)_reportChanges:(id)arg1;
 - (BOOL)_reportDeletes:(id)arg1;
 - (void)_restartHelper;
@@ -87,7 +90,7 @@
 - (void)queryHelper:(id)arg1 didFindMessages:(id)arg2;
 - (void)queryHelper:(id)arg1 didUpdateMessages:(id)arg2 forKeyPaths:(id)arg3;
 - (void)queryHelper:(id)arg1 messageFlagsDidChangeForMessages:(id)arg2;
-- (void)queryHelper:(id)arg1 objectIDDidChangeForMessage:(id)arg2 oldObjectID:(id)arg3;
+- (void)queryHelper:(id)arg1 objectIDDidChangeForMessage:(id)arg2 oldObjectID:(id)arg3 oldConversationID:(long long)arg4;
 - (void)queryHelperDidFindAllMessages:(id)arg1;
 - (void)queryHelperDidFinishRemoteSearch:(id)arg1;
 - (void)queryHelperNeedsRestart:(id)arg1;

@@ -18,12 +18,10 @@
 @property (copy, nonatomic) NSDate *exitDeleteTime; // @synthesize exitDeleteTime=_exitDeleteTime;
 
 + (id)_purgeableResourceDirectoriesForPathManager:(id)arg1;
-+ (BOOL)_supportsCentralizedCacheDeleteDefault;
 + (BOOL)clearPurgeableFlagsForAllResourcesInPhotoLibraryURL:(id)arg1;
 + (BOOL)isPurgeableFile:(id)arg1 outIsPhotoType:(BOOL *)arg2 outUrgencyLevel:(long long *)arg3;
 + (id)purgeableStateDescriptionForFile:(id)arg1;
 + (void)registerNullHandler;
-+ (BOOL)supportsCentralizedCacheDeleteForPhotoLibraryAtURL:(id)arg1;
 - (void).cxx_destruct;
 - (void)_installPurgeObserverAndProcessAlreadyRemovedFiles;
 - (BOOL)_isFilePurgedForFileID:(id)arg1 purgedPath:(id)arg2;

@@ -6,6 +6,8 @@
 
 #import <UIKit/UIViewController.h>
 
+@class _UISheetPresentationController;
+
 @interface UIViewController (SafariServicesExtras)
 
 @property (readonly, nonatomic) struct CGRect _sf_bottomUnsafeAreaFrame;
@@ -13,8 +15,16 @@
 @property (readonly, nonatomic) BOOL _sf_isMFMailComposeViewController;
 @property (readonly, nonatomic) BOOL _sf_isPKAddPassesViewController;
 @property (readonly, nonatomic) UIViewController *_sf_viewControllerToPresentFrom;
+@property (readonly, nonatomic) BOOL safari_isPresentedByActivityViewController;
+@property (readonly, nonatomic) _UISheetPresentationController *safari_sheetPresentationController;
+@property (readonly, nonatomic) BOOL safari_wantsDoneButtonInModalBookmarksPanel;
+@property (readonly, nonatomic) BOOL safari_wantsTransparentApplicationBackground;
 
 - (void)_sf_animateAlongsideTransitionOrPerform:(CDUnknownBlockType)arg1;
 - (void)_sf_presentViewControllerOnTopOfPresentedViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)safari_isEventuallyPresentedByViewControllerClass:(Class)arg1;
+- (BOOL)safari_isHorizontallyConstrained;
+- (BOOL)safari_isHorizontallyConstrainedFallingBackToRootViewControllerIfNecessary;
+- (void)safari_updateApplicationBackgroundStyle;
 @end
 

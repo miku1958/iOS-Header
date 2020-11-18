@@ -13,6 +13,7 @@
 
 @interface TUIAssistantButtonBarView : UIView <TUIButtonBarViewProvider>
 {
+    BOOL _constrainedHorizontally;
     NSArray *_buttonGroups;
     _UIButtonBarButtonVisualProvider *_visualProvider;
     double _minimumInterItemSpace;
@@ -30,6 +31,7 @@
 @property (nonatomic) long long buttonAlignment; // @synthesize buttonAlignment=_buttonAlignment;
 @property (strong, nonatomic) UIView *buttonContainer; // @synthesize buttonContainer=_buttonContainer;
 @property (strong, nonatomic) NSArray *buttonGroups; // @synthesize buttonGroups=_buttonGroups;
+@property (nonatomic) BOOL constrainedHorizontally; // @synthesize constrainedHorizontally=_constrainedHorizontally;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<TUIAssistantButtonBarViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -48,8 +50,10 @@
 - (BOOL)_containsFlexibleGroupViews;
 - (void)_didTapButtonBarButton:(id)arg1 withEvent:(id)arg2;
 - (id)_groupViewForBarButtonItemGroup:(id)arg1;
+- (struct UIEdgeInsets)_insetsForHorizontalMargin;
 - (double)_interItemSpacingThatFits:(struct CGSize)arg1 forGroupSize:(struct CGSize)arg2;
 - (id)_itemViewForSender:(id)arg1;
+- (struct CGSize)_preferredTitleSizeForBarButtonItem:(id)arg1;
 - (struct CGSize)_totalGroupSizeThatFits:(struct CGSize)arg1;
 - (void)_uncollapseAllGroupsForNewSizeIfNecessary:(struct CGSize)arg1;
 - (id)_uncollapsedGroupViews;
@@ -60,6 +64,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (void)preferredSizeDidChangeForButtonBarItem:(id)arg1;
 - (struct CGSize)preferredSizeForButtonBarItem:(id)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;

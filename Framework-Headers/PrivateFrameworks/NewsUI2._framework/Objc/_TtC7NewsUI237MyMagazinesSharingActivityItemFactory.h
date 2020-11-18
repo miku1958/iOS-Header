@@ -11,6 +11,8 @@
 @interface _TtC7NewsUI237MyMagazinesSharingActivityItemFactory : _TtCs12_SwiftObject
 {
     MISSING_TYPE *sharingActivityItemFactory;
+    MISSING_TYPE *bundleSubscriptionManager;
+    MISSING_TYPE *issueSubscriptionController;
 }
 
 @end

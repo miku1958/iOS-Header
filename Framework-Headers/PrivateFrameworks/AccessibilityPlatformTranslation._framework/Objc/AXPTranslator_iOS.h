@@ -43,6 +43,7 @@
 - (id)_processAttributedStringForRangeAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processBoundsForRangeAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processChildrenAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
+- (id)_processClassNameAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processCustomActionsAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processCustomRotorData:(id)arg1;
 - (id)_processDirectAttributeRequest:(id)arg1 iosAttribute:(long long)arg2 axpAttribute:(unsigned long long)arg3 parameter:(id)arg4 error:(unsigned long long *)arg5;

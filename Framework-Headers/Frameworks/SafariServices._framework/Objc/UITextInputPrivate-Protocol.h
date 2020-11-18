@@ -17,6 +17,7 @@
 @property (nonatomic) long long _textInputSource;
 @property (readonly, nonatomic) UITextInteractionAssistant *interactionAssistant;
 @property (nonatomic) long long selectionGranularity;
+@property (readonly, nonatomic) BOOL supportsImagePaste;
 @property (readonly, nonatomic) id<UITextInputSuggestionDelegate> textInputSuggestionDelegate;
 
 - (BOOL)hasContent;

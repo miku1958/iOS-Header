@@ -10,9 +10,8 @@
 {
 }
 
-+ (id)getGenericListPropertyNames:(id)arg1;
-+ (id)getLinkingObjectsProperties:(id)arg1;
 + (id)getOptionalProperties:(id)arg1;
++ (id)getSwiftProperties:(id)arg1;
 + (id)ignoredPropertiesForClass:(Class)arg1;
 + (id)indexedPropertiesForClass:(Class)arg1;
 + (id)linkingObjectProperties:(id)arg1;

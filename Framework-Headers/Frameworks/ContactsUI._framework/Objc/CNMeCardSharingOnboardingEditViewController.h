@@ -92,6 +92,7 @@
 - (void)photoPickerDidCancel:(id)arg1;
 - (void)photoPickerVariantListController:(id)arg1 didSelectProviderItem:(id)arg2;
 - (void)photoPickerVariantListControllerDidCancel:(id)arg1;
+- (void)presentErrorAlertForEmptyPhotoIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)presentPhotoPickerVariantListFor:(id)arg1 FromViewController:(id)arg2;
 - (void)promptForSavingToMeCard;
 - (void)saveDraftContact;

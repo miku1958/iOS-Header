@@ -58,6 +58,7 @@
 + (BOOL)isMMSEnabled;
 + (BOOL)isSupportedAttachmentUTI:(id)arg1;
 + (BOOL)isiMessageEnabled;
++ (id)log;
 + (double)maxTrimDurationForAudio;
 + (double)maxTrimDurationForVideo;
 - (void).cxx_destruct;

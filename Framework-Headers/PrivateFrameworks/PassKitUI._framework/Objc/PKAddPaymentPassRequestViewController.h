@@ -78,6 +78,7 @@
 - (void)hostApplicationDidEnterBackground;
 - (id)initWithPaymentWebService:(id)arg1 configuration:(id)arg2;
 - (void)loadView;
+- (void)noteNavigationUserInterfaceDidDisappear;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

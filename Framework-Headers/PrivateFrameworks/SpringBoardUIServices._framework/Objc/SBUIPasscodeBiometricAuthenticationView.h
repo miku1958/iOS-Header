@@ -26,6 +26,7 @@
     SBUIButton *_emergencyCallButton;
     SBUIButton *_cancelButton;
     UIButton *_backgroundCancelButton;
+    UIButton *_invisibleUsePasscodeButton;
     UILabel *_touchIDReasonLabel;
     UILabel *_faceIDLabel;
     UILabel *_faceIDReasonLabel;
@@ -48,6 +49,7 @@
 @property (copy, nonatomic, setter=_setFaceIDReason2:) NSString *faceIDReasonLine2; // @synthesize faceIDReasonLine2=_faceIDReasonLine2;
 @property (strong, nonatomic) SBUIPasscodePillButton *faceIDUsePasscodeButton; // @synthesize faceIDUsePasscodeButton=_faceIDUsePasscodeButton;
 @property (nonatomic) BOOL faceIDUsePasscodeButtonVisible; // @synthesize faceIDUsePasscodeButtonVisible=_faceIDUsePasscodeButtonVisible;
+@property (strong, nonatomic) UIButton *invisibleUsePasscodeButton; // @synthesize invisibleUsePasscodeButton=_invisibleUsePasscodeButton;
 @property (weak, nonatomic) id<SBUIPasscodeBiometricAuthenticationViewLayoutDelegate> layoutDelegate; // @synthesize layoutDelegate=_layoutDelegate;
 @property (nonatomic) BOOL showsCancelButton;
 @property (nonatomic) BOOL showsEmergencyCallButton;

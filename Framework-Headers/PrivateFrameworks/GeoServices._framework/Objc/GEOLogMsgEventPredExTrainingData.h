@@ -8,20 +8,24 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class GEOLatLng;
+
 @interface GEOLogMsgEventPredExTrainingData : PBCodable <NSCopying>
 {
     double _chanceOfPrecipitation;
     double _chanceOfRain;
     double _chanceOfSnow;
+    double _dayOfWeek;
     double _endTime;
+    double _isTourist;
     double _secondsUntilEnd;
     double _secondsUntilStart;
     double _startTime;
     double _temperature;
     double _timeOfDay;
     double _timeSinceBackgrounded;
+    GEOLatLng *_userLocation;
     int _actualTransportMode;
-    unsigned int _dayOfWeek;
     int _distanceFromHereToHome;
     int _distanceFromHereToOrigin;
     int _distanceFromHereToParkedCar;
@@ -33,14 +37,15 @@
     int _predictedTransportMode;
     int _preferredTransportMode;
     BOOL _isInBasemode;
-    BOOL _isTourist;
     BOOL _isTransitPossible;
     BOOL _routePlanningScreenPresented;
     struct {
         unsigned int has_chanceOfPrecipitation:1;
         unsigned int has_chanceOfRain:1;
         unsigned int has_chanceOfSnow:1;
+        unsigned int has_dayOfWeek:1;
         unsigned int has_endTime:1;
+        unsigned int has_isTourist:1;
         unsigned int has_secondsUntilEnd:1;
         unsigned int has_secondsUntilStart:1;
         unsigned int has_startTime:1;
@@ -48,7 +53,6 @@
         unsigned int has_timeOfDay:1;
         unsigned int has_timeSinceBackgrounded:1;
         unsigned int has_actualTransportMode:1;
-        unsigned int has_dayOfWeek:1;
         unsigned int has_distanceFromHereToHome:1;
         unsigned int has_distanceFromHereToOrigin:1;
         unsigned int has_distanceFromHereToParkedCar:1;
@@ -60,7 +64,6 @@
         unsigned int has_predictedTransportMode:1;
         unsigned int has_preferredTransportMode:1;
         unsigned int has_isInBasemode:1;
-        unsigned int has_isTourist:1;
         unsigned int has_isTransitPossible:1;
         unsigned int has_routePlanningScreenPresented:1;
     } _flags;
@@ -70,7 +73,7 @@
 @property (nonatomic) double chanceOfPrecipitation;
 @property (nonatomic) double chanceOfRain;
 @property (nonatomic) double chanceOfSnow;
-@property (nonatomic) unsigned int dayOfWeek;
+@property (nonatomic) double dayOfWeek;
 @property (nonatomic) int distanceFromHere;
 @property (nonatomic) int distanceFromHereToHome;
 @property (nonatomic) int distanceFromHereToOrigin;
@@ -105,8 +108,9 @@
 @property (nonatomic) BOOL hasTemperature;
 @property (nonatomic) BOOL hasTimeOfDay;
 @property (nonatomic) BOOL hasTimeSinceBackgrounded;
+@property (readonly, nonatomic) BOOL hasUserLocation;
 @property (nonatomic) BOOL isInBasemode;
-@property (nonatomic) BOOL isTourist;
+@property (nonatomic) double isTourist;
 @property (nonatomic) BOOL isTransitPossible;
 @property (nonatomic) int mapType;
 @property (nonatomic) int predictedTransportMode;
@@ -118,8 +122,10 @@
 @property (nonatomic) double temperature;
 @property (nonatomic) double timeOfDay;
 @property (nonatomic) double timeSinceBackgrounded;
+@property (strong, nonatomic) GEOLatLng *userLocation;
 
 + (BOOL)isValid:(id)arg1;
+- (void).cxx_destruct;
 - (int)StringAsActualTransportMode:(id)arg1;
 - (int)StringAsDistanceFromHere:(id)arg1;
 - (int)StringAsDistanceFromHereToHome:(id)arg1;

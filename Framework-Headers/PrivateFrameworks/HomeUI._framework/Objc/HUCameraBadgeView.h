@@ -6,13 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSString, UILabel, UIVisualEffectView;
+@class HULegibilityLabel, NSArray, NSString, UIVisualEffectView, _UILegibilitySettings;
 
 @interface HUCameraBadgeView : UIView
 {
-    unsigned long long _style;
     unsigned long long _size;
-    UILabel *_label;
+    HULegibilityLabel *_label;
+    _UILegibilitySettings *_legibilitySettings;
     UIVisualEffectView *_blurEffectView;
     UIVisualEffectView *_vibrancyEffectView;
     NSArray *_staticConstraints;
@@ -20,17 +20,16 @@
 }
 
 @property (readonly, nonatomic) UIVisualEffectView *blurEffectView; // @synthesize blurEffectView=_blurEffectView;
-@property (readonly, nonatomic) UILabel *label; // @synthesize label=_label;
+@property (readonly, nonatomic) HULegibilityLabel *label; // @synthesize label=_label;
 @property (strong, nonatomic) NSArray *labelConstraints; // @synthesize labelConstraints=_labelConstraints;
 @property (copy, nonatomic) NSString *labelText;
+@property (readonly, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (readonly, nonatomic) unsigned long long size; // @synthesize size=_size;
 @property (strong, nonatomic) NSArray *staticConstraints; // @synthesize staticConstraints=_staticConstraints;
-@property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly, nonatomic) UIVisualEffectView *vibrancyEffectView; // @synthesize vibrancyEffectView=_vibrancyEffectView;
 
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
-- (void)_applyStyle;
 - (id)initWithSize:(unsigned long long)arg1;
 - (void)updateConstraints;
 

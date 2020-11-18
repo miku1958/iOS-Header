@@ -50,6 +50,7 @@
 - (UITextInputArrowKeyHistory *)_moveToStartOfParagraph:(BOOL)arg1 withHistory:(UITextInputArrowKeyHistory *)arg2;
 - (UITextInputArrowKeyHistory *)_moveToStartOfWord:(BOOL)arg1 withHistory:(UITextInputArrowKeyHistory *)arg2;
 - (UITextInputArrowKeyHistory *)_moveUp:(BOOL)arg1 withHistory:(UITextInputArrowKeyHistory *)arg2;
+- (NSString *)_normalizedStringForRangeComparison:(NSString *)arg1;
 - (struct _NSRange)_nsrangeForTextRange:(UITextRange *)arg1;
 - (UITextPosition *)_positionAtStartOfWords:(unsigned long long)arg1 beforePosition:(UITextPosition *)arg2;
 - (UITextPosition *)_positionFromPosition:(UITextPosition *)arg1 inDirection:(long long)arg2 offset:(long long)arg3 withAffinityDownstream:(BOOL)arg4;

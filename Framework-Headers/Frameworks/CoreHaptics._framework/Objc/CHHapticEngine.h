@@ -49,6 +49,7 @@
 - (void)dealloc;
 - (BOOL)doInit;
 - (double)getDurationForResource:(unsigned long long)arg1;
+- (id)getMetricsForPlayer:(id)arg1;
 - (id)init;
 - (id)initAndReturnError:(id *)arg1;
 - (id)initWithAudioSession:(id)arg1 error:(id *)arg2;
@@ -60,6 +61,7 @@
 - (void)prewarmWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (unsigned long long)registerAudioResource:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (BOOL)resourceIsRegistered:(unsigned long long)arg1;
+- (void)setMetricsTestModeEnabled:(BOOL)arg1;
 - (BOOL)startAndReturnError:(id *)arg1;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)stopPrewarm;

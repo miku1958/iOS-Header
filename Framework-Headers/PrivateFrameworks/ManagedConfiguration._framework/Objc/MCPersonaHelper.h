@@ -16,8 +16,10 @@
 + (id)createEnterprisePersona:(id *)arg1 passcode:(id)arg2;
 + (id)currentPersonaID;
 + (id)fetchDirtyPersonaIDs;
++ (BOOL)isCurrentPersonaEnterprise;
 + (id)managedAppleIDNameWithPersonaID:(id)arg1;
 + (id)performBlockUnderPersona:(id)arg1 block:(CDUnknownBlockType)arg2;
++ (id)performBlockUnderPersonalPersona:(CDUnknownBlockType)arg1;
 + (BOOL)personaWithUniqueIdentifierExists:(id)arg1;
 + (void)removeExistingEnterprisePersonaAndAccountsAsynchronously;
 + (void)removePersona:(id)arg1;

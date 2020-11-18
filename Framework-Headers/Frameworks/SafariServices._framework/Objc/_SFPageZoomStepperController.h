@@ -29,9 +29,10 @@ __attribute__((visibility("hidden")))
 - (void)_pageZoomChanged:(id)arg1;
 - (void)_updateButtonsEnabledOnMainQueueWithZoomFactor:(double)arg1;
 - (void)_updateButtonsEnabledWithZoomFactor:(double)arg1;
+- (void)dealloc;
 - (void)decrementValue:(id)arg1;
 - (void)incrementValue:(id)arg1;
-- (id)initWithDocument:(id)arg1;
+- (id)initWithDocument:(id)arg1 preferenceManager:(id)arg2;
 - (void)prepareStepper:(id)arg1;
 - (void)resetValue:(id)arg1;
 

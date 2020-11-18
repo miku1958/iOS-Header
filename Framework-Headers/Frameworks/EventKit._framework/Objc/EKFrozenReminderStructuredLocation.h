@@ -6,10 +6,14 @@
 
 #import <EventKit/EKFrozenReminderObject.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface EKFrozenReminderStructuredLocation : EKFrozenReminderObject
 {
 }
+
+@property (readonly) NSString *uniqueIdentifier;
 
 + (BOOL)canCommitSelf;
 + (Class)meltedClass;
@@ -24,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (id)remObjectID;
 - (void)setLatitudeAndLongitudeFromAlternateUniverseObject:(EKPersistentObject_556b3b22 *)arg1 inChangeSet:(id)arg2;
 - (id)title;
-- (id)uniqueIdentifier;
 - (id)updateParentToCommitSelf:(id)arg1;
 - (id)updatedStructuredLocation;
 - (id)uuid;

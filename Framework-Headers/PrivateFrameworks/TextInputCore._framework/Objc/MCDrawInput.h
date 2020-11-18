@@ -31,6 +31,7 @@
 - (BOOL)canComposeNew:(id)arg1;
 - (void)composeNew:(id)arg1;
 - (void)composeWith:(id)arg1;
+- (Vector_edffb8f6)copyLayoutKeys;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithKeyboardLayout:(const RefPtr_54d74a7c *)arg1;

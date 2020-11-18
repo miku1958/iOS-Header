@@ -6,11 +6,20 @@
 
 #import <SpringBoard/SBTransitionSwitcherModifier.h>
 
+@class SBAppLayout;
+
 @interface SBExternalInlineAppExposeTransitionSwitcherModifier : SBTransitionSwitcherModifier
 {
+    SBAppLayout *_fromAppLayout;
+    SBAppLayout *_toAppLayout;
 }
 
+- (void).cxx_destruct;
 - (BOOL)asynchronouslyRendersUntilDelay:(inout double *)arg1;
+- (struct CGRect)frameForIndex:(unsigned long long)arg1;
+- (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3;
+- (double)opacityForIndex:(unsigned long long)arg1;
+- (id)transitionWillBegin;
 - (BOOL)wantsAsynchronousRenderingAssertion;
 - (BOOL)wantsMinificationFilter;
 

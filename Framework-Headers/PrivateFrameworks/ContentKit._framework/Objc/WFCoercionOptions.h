@@ -25,9 +25,11 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;
+- (id)itemClassPrioritizationType;
 - (void)makeContactAccessResourceAvailableIfNeededWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)makeRemoteServerAccessResourceAvailableIfNeededWithURLs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)optionsByAddingContentsOfOptions:(id)arg1;
+- (id)preferredTypes;
 
 @end
 

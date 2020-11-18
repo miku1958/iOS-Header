@@ -52,6 +52,7 @@
 @property (readonly, copy, nonatomic) NSString *diagnosticDescription;
 @property (strong, nonatomic) id<PXGViewDiagnosticsSource> diagnosticsSource; // @synthesize diagnosticsSource=_diagnosticsSource;
 @property (readonly, nonatomic) PXGEngine *engine; // @synthesize engine=_engine;
+@property (readonly, nonatomic) BOOL hasExtendedColorDisplay;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct UIEdgeInsets hitTestPadding; // @synthesize hitTestPadding=_hitTestPadding;
@@ -73,7 +74,6 @@
 @property (readonly) Class superclass;
 
 + (BOOL)forceAccessibilityEnabled;
-+ (BOOL)hasExtendedColorDisplay;
 + (BOOL)isAvailable;
 + (long long)screenPixelCount;
 + (void)setForceAccessibilityEnabled:(BOOL)arg1;

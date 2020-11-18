@@ -19,6 +19,7 @@
     NSTimer *_subtitleTextUpdateTimer;
     UIActivityIndicatorView *_spinnerView;
     UIImageView *_smartAudioImageView;
+    UIImageView *_checkmarkImageView;
     BOOL _mirroringSwitchVisible;
     BOOL _pendingSelection;
     BOOL _isDisplayedAsPicked;
@@ -62,7 +63,7 @@
 - (id)_iconImageForRoute:(id)arg1;
 - (id)_pairedDeviceTextForRoute:(id)arg1;
 - (BOOL)_shouldShowSeparateBatteryPercentagesForBatteryLevel:(id)arg1;
-- (void)_updateSmartAudioAccessory;
+- (void)_updateAccessory;
 - (void)_updateSpinnerStyle;
 - (void)_updateSubtitleTextLabelForRouteItem:(id)arg1;
 - (void)dealloc;

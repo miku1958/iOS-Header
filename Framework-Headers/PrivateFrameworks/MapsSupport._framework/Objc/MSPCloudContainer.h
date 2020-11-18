@@ -13,6 +13,7 @@
 
 @interface MSPCloudContainer : NSObject <MSPCloudNotificationReceiver>
 {
+    BOOL _requiresRemoteFetch;
     BOOL _hasActiveSubscription;
     BOOL _useSecureContainer;
     MSPContainer *_container;
@@ -47,6 +48,7 @@
 - (id)description;
 - (void)didReceiveRemoteNotification:(id)arg1;
 - (void)fetchChangesWithGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)handleMergeError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithContainer:(id)arg1 accountID:(id)arg2;
 - (id)initWithContainer:(id)arg1 cache:(id)arg2;
 - (id)initWithContainer:(id)arg1 cache:(id)arg2 access:(id)arg3;
@@ -55,6 +57,7 @@
 - (void)mergeRemoteChanges:(id)arg1 withGroup:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)mergeWithGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)pushChanges:(id)arg1 withGroup:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)removeCloudContainerWithGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeObserver:(id)arg1;
 - (Class)replicaRecordClass;
 - (void)setupCloudContainerWithGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;

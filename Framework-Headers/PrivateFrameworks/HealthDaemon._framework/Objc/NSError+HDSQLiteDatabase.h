@@ -22,6 +22,7 @@
 - (id)hd_cloudKitErrorRequiringUserActionFromCKErrorDomain;
 - (BOOL)hd_isConstraintViolation;
 - (BOOL)hd_isDatabaseCorruptionError;
+- (BOOL)hd_isManateeIdentityLossError;
 - (BOOL)hd_isResponseTimeout;
 - (id)hd_persistentMessage;
 - (id)hd_underlyingSQLiteError;

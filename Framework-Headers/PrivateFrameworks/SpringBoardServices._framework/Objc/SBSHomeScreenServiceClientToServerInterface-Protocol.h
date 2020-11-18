@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class BSMachPortSendRight, NSArray, NSString;
+@class BSMachPortSendRight, NSArray, NSNumber, NSString;
 
 @protocol SBSHomeScreenServiceClientToServerInterface
+
+@property (copy, nonatomic) NSNumber *lowDensityIconLayoutEnabledValue;
+
 - (void)addWidgetToTodayViewWithBundleIdentifier:(NSString *)arg1;
 - (NSArray *)folderPathToIconWithBundleIdentifier:(NSString *)arg1;
 - (oneway void)requestSuggestedApplicationWithBundleIdentifier:(NSString *)arg1 assertionPort:(BSMachPortSendRight *)arg2 completion:(void (^)(NSError *))arg3;

@@ -11,6 +11,7 @@
 @protocol SKUIServiceProductPageViewController <NSObject>
 - (void)applicationDidEnterBackground;
 - (void)applicationWillEnterForeground;
+- (void)dismissViewController;
 - (void)finishImmediately;
 - (void)finishStarRatingPromptWithRating:(NSNumber *)arg1;
 - (void)loadProductWithPageDictionary:(NSDictionary *)arg1;

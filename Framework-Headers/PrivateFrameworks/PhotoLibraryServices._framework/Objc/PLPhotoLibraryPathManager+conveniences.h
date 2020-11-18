@@ -30,7 +30,7 @@
 - (void)setSqliteErrorAndExitIfNecessaryForDemoContentInstallation;
 - (void)setSqliteErrorAndExitIfNecessaryForSimulatedCorruption:(BOOL)arg1;
 - (id)sqliteErrorIndicatorFilePath;
-- (id)temporaryRenderContentURLForInternalRendersWithExtension:(id)arg1 createEmptyFile:(BOOL)arg2;
+- (id)temporaryRenderContentURLForInternalRendersWithExtension:(id)arg1;
 - (id)zeroKeywordStoreFilePath;
 @end
 

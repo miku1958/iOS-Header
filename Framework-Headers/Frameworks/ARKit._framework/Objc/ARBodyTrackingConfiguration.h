@@ -6,7 +6,7 @@
 
 #import <ARKit/ARConfiguration.h>
 
-@class ARWorldMap, NSSet;
+@class ARImageSensorSettings, ARWorldMap, NSSet;
 
 @interface ARBodyTrackingConfiguration : ARConfiguration
 {
@@ -25,6 +25,7 @@
 @property (nonatomic) BOOL automaticSkeletonScaleEstimationEnabled; // @synthesize automaticSkeletonScaleEstimationEnabled=_automaticSkeletonScaleEstimationEnabled;
 @property (copy, nonatomic) NSSet *detectionImages; // @synthesize detectionImages=_detectionImages;
 @property (nonatomic) long long environmentTexturing; // @synthesize environmentTexturing=_environmentTexturing;
+@property (readonly, nonatomic) ARImageSensorSettings *imageSensorSettingsForSuperWide;
 @property (strong, nonatomic) ARWorldMap *initialWorldMap; // @synthesize initialWorldMap=_initialWorldMap;
 @property (nonatomic) long long maximumNumberOfTrackedImages; // @synthesize maximumNumberOfTrackedImages=_maximumNumberOfTrackedImages;
 @property (nonatomic) unsigned long long planeDetection; // @synthesize planeDetection=_planeDetection;
@@ -33,14 +34,19 @@
 + (BOOL)isSupported;
 + (id)new;
 + (id)supportedVideoFormats;
++ (id)supportedVideoFormatsForSuperWide;
 + (BOOL)supportsFrameSemantics:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (id)_trackingOptions;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)createTechniquesWithParallelTechniques:(id)arg1 serialTechniques:(id)arg2;
 - (id)description;
 - (id)imageSensorSettings;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
+- (id)parentImageSensorSettings;
+- (BOOL)shouldEnableVisionDataForImageSensorSettings:(id)arg1;
+- (BOOL)shouldUseSuperWide;
 
 @end
 

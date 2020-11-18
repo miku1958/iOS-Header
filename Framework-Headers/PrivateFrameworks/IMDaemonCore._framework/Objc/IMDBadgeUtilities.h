@@ -48,6 +48,7 @@
 - (id)init;
 - (id)initWithMessageStore:(id)arg1;
 - (id)initWithMessageStore:(id)arg1 defaultsStore:(id)arg2;
+- (BOOL)isInAppleStoreDemoMode;
 - (void)updateBadgeForLastFailedMessageDateChangeIfNeeded:(long long)arg1;
 - (void)updateBadgeForUnreadCountChangeIfNeeded:(long long)arg1;
 

@@ -27,6 +27,7 @@
 - (id)menuButton;
 - (id)name;
 - (id)productCategory;
+- (void)setEnableTimeForHaptics:(BOOL)arg1;
 - (void)setHapticMotor:(int)arg1 frequency:(float)arg2;
 - (void)setLightbarColorWithRed:(float)arg1 green:(float)arg2 blue:(float)arg3;
 - (void)setPlayerIndex:(long long)arg1;

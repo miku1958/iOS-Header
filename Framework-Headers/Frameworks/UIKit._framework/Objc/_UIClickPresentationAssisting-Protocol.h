@@ -13,7 +13,7 @@
 @property (copy, nonatomic) CDUnknownBlockType dismissalCompletion;
 @property (strong, nonatomic) _UIClickPresentation *presentation;
 
-- (void)dismissWithStyle:(unsigned long long)arg1 alongsideActions:(void (^)(void))arg2 completion:(void (^)(void))arg3;
+- (void)dismissWithReason:(unsigned long long)arg1 alongsideActions:(void (^)(void))arg2 completion:(void (^)(void))arg3;
 - (id)initWithClickPresentation:(_UIClickPresentation *)arg1;
 - (void)presentFromViewController:(UIViewController *)arg1 sourcePreview:(UITargetedPreview *)arg2 dismissalCompletion:(void (^)(void))arg3;
 @end

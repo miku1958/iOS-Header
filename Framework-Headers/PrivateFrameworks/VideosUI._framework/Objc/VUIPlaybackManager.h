@@ -93,6 +93,7 @@
 - (void)_downloadRatingImageIfAvailable:(id)arg1;
 - (void)_externalPlaybackTypeDidChange:(id)arg1;
 - (void)_handleTapGesture:(id)arg1;
+- (void)_networkReachbilityDidChange:(id)arg1;
 - (void)_notifyAVPlayerViewControllerDisplaySize;
 - (void)_playbackErrorDidOccur:(id)arg1;
 - (void)_playbackStateDidChange:(id)arg1;

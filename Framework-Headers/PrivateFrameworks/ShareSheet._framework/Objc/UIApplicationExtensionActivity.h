@@ -9,7 +9,7 @@
 #import <ShareSheet/UIActivityExtensionItemDataSource-Protocol.h>
 #import <ShareSheet/UIActivityExtensionItemDataTarget-Protocol.h>
 
-@class NSDate, NSExtension, NSExtensionItem, NSString, UIViewController, _UIActivityBundleHelper;
+@class NSDate, NSExtension, NSExtensionItem, NSString, UISUIActivityExtensionItemDataRequest, UIViewController, _UIActivityBundleHelper;
 
 @interface UIApplicationExtensionActivity : UIActivity <UIActivityExtensionItemDataSource, UIActivityExtensionItemDataTarget>
 {
@@ -22,14 +22,17 @@
     _UIActivityBundleHelper *_activityBundleHelper;
     CDUnknownBlockType _extensionRequestCleanupCompletion;
     NSDate *_installationDate;
+    UISUIActivityExtensionItemDataRequest *_extensionItemDataRequest;
 }
 
 @property (strong, nonatomic) NSExtensionItem *_injectedExtensionItem; // @synthesize _injectedExtensionItem=__injectedExtensionItem;
 @property (strong, nonatomic) _UIActivityBundleHelper *activityBundleHelper; // @synthesize activityBundleHelper=_activityBundleHelper;
 @property (strong, nonatomic) NSExtension *applicationExtension; // @synthesize applicationExtension=_applicationExtension;
+@property (readonly, nonatomic) NSString *containingAppBundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) id extensionContextIdentifier; // @synthesize extensionContextIdentifier=_extensionContextIdentifier;
+@property (strong, nonatomic) UISUIActivityExtensionItemDataRequest *extensionItemDataRequest; // @synthesize extensionItemDataRequest=_extensionItemDataRequest;
 @property (copy, nonatomic) CDUnknownBlockType extensionRequestCleanupCompletion; // @synthesize extensionRequestCleanupCompletion=_extensionRequestCleanupCompletion;
 @property (strong, nonatomic) UIViewController *extensionViewController; // @synthesize extensionViewController=_extensionViewController;
 @property (readonly) unsigned long long hash;

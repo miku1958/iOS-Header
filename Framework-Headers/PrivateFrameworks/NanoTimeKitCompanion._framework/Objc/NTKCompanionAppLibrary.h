@@ -25,12 +25,14 @@
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSObject<OS_dispatch_queue> *_updateProcessingQueue;
     NSObject<OS_dispatch_queue> *_observerCallbackQueue;
+    NSObject<OS_dispatch_queue> *_appProcessingQueue;
     struct os_unfair_lock_s *_prewarmLock;
     NSMutableArray *_prewarmCallbacks;
     CLKDevice *_device;
 }
 
 @property (strong, nonatomic) NSArray *allApps; // @synthesize allApps=_allApps;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *appProcessingQueue; // @synthesize appProcessingQueue=_appProcessingQueue;
 @property (strong, nonatomic) NSHashTable *changeObservers; // @synthesize changeObservers=_changeObservers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

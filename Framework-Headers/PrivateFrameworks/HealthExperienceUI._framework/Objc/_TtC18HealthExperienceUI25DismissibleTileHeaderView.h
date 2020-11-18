@@ -18,6 +18,7 @@
     MISSING_TYPE *accessoryLabel;
     MISSING_TYPE *detailContainerView;
     MISSING_TYPE *accessorySeparator;
+    MISSING_TYPE *title;
     MISSING_TYPE *minimumViewHeight;
     MISSING_TYPE *titleToTop;
     MISSING_TYPE *titleToBottom;
@@ -33,11 +34,13 @@
 }
 
 - (void).cxx_destruct;
+- (void)didReceiveSignificantTimeChangeNotification:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

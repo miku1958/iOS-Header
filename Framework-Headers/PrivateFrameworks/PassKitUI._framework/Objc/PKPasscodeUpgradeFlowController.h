@@ -10,22 +10,26 @@
 #import <PassKitUI/PKNewDevicePasscodeViewControllerDelegate-Protocol.h>
 
 @class NSString, PKPaymentProvisioningController, UINavigationController;
-@protocol PKPaymentSetupViewControllerDelegate;
+@protocol PKPaymentSetupViewControllerDelegate, PKPaymentWebServiceTargetDeviceProtocol;
 
 @interface PKPasscodeUpgradeFlowController : NSObject <DevicePINControllerDelegate, PKNewDevicePasscodeViewControllerDelegate>
 {
     long long _context;
     PKPaymentProvisioningController *_provisioningController;
     UINavigationController *_navigationController;
-    id<PKPaymentSetupViewControllerDelegate> _setupDelegate;
     CDUnknownBlockType _completionHandler;
+    long long _presentedViewControllerCount;
     BOOL _upgradeRequiredToAddNewPass;
+    id<PKPaymentSetupViewControllerDelegate> _setupDelegate;
 }
 
+@property (readonly, nonatomic) long long context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, weak, nonatomic) id<PKPaymentSetupViewControllerDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) id<PKPaymentWebServiceTargetDeviceProtocol> targetDevice;
 @property (nonatomic) BOOL upgradeRequiredToAddNewPass; // @synthesize upgradeRequiredToAddNewPass=_upgradeRequiredToAddNewPass;
 
 - (void).cxx_destruct;
@@ -35,9 +39,11 @@
 - (void)_showCurrentDevicePasscodeViewController;
 - (void)_showNewDevicePasscodeViewControllerWithCurrentPasscode:(id)arg1;
 - (void)_showPasscodeUpgradeExplanation;
+- (void)beginShowingViewController;
 - (void)dealloc;
 - (void)didAcceptEnteredPIN:(id)arg1;
 - (void)dismissPasscodeUpgradeFlow;
+- (void)endedShowingViewController;
 - (id)init;
 - (id)initWithPaymentProvisioningController:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3 navigationController:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)newDevicePasscodeViewController:(id)arg1 didFinishSettingPasscode:(BOOL)arg2 withError:(id)arg3;

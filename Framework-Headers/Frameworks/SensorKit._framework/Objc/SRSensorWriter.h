@@ -23,6 +23,7 @@
     BOOL _authorized;
     BOOL _connectionDidInterrupt;
     BOOL _connectionDidInvalidate;
+    BOOL _retryGetMonitoring;
     NSString *_sensorIdentifier;
     NSDictionary *_nextDatastoreFiles;
     id<SRAuthorizationStore> _authorizationStore;
@@ -43,6 +44,7 @@
 @property (getter=isMonitoring) BOOL monitoring;
 @property (strong) NSDictionary *nextDatastoreFiles; // @synthesize nextDatastoreFiles=_nextDatastoreFiles;
 @property BOOL requestNewSegmentInFlight; // @synthesize requestNewSegmentInFlight=_requestNewSegmentInFlight;
+@property BOOL retryGetMonitoring; // @synthesize retryGetMonitoring=_retryGetMonitoring;
 @property (copy) NSString *sensorIdentifier; // @synthesize sensorIdentifier=_sensorIdentifier;
 @property (strong, nonatomic) NSDictionary *sensorInfo; // @synthesize sensorInfo=_sensorInfo;
 @property (readonly) Class superclass;

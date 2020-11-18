@@ -61,6 +61,7 @@
 - (void)_savePickedContact:(id)arg1 inPreference:(id)arg2;
 - (BOOL)_saveUpdatedContact:(id)arg1 contactKey:(id)arg2 preference:(id)arg3 atIndex:(long long)arg4;
 - (void)_setContactHandlersForPreference:(id)arg1;
+- (BOOL)_shouldUpdatePreferredContentSize;
 - (void)_showAddressEditorForContact:(id)arg1 title:(id)arg2 requiredKeys:(id)arg3 highlightedKeys:(id)arg4 errors:(id)arg5;
 - (void)_showAddressPickerForPreference:(id)arg1;
 - (void)_showContactsPickerForPreference:(id)arg1;

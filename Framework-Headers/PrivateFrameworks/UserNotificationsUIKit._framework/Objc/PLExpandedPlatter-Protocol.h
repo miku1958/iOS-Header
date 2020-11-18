@@ -23,6 +23,7 @@
 - (struct CGSize)actionsSizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)contentSizeExcludingActions;
 - (struct CGRect)frameForPlatterFrame:(struct CGRect)arg1;
+- (struct UIEdgeInsets)minimumScrollViewContentInsets;
 - (struct CGRect)platterFrameForFrame:(struct CGRect)arg1;
 - (struct CGRect)scrollViewFrame;
 - (struct CGSize)sizeExcludingActions;

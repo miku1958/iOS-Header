@@ -23,7 +23,6 @@
     UIColor *_warningSeparatorColor;
     UIColor *_parametersBackgroundColor;
     UIColor *_parametersHighlightedColor;
-    UIColor *_tintColor;
     UIColor *_headingButtonColor;
     struct CGSize _shadowOffset;
 }
@@ -42,12 +41,11 @@
 @property (readonly, nonatomic) struct CGSize shadowOffset; // @synthesize shadowOffset=_shadowOffset;
 @property (readonly, nonatomic) double shadowOpacity; // @synthesize shadowOpacity=_shadowOpacity;
 @property (readonly, nonatomic) double shadowRadius; // @synthesize shadowRadius=_shadowRadius;
-@property (readonly, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property (readonly, nonatomic) UIColor *warningSeparatorColor; // @synthesize warningSeparatorColor=_warningSeparatorColor;
 
 + (id)commentAppearance;
-+ (id)defaultAppearanceWithTintColor:(id)arg1;
-+ (id)lightAppearanceWithTintColor:(id)arg1;
++ (id)defaultAppearance;
++ (id)lightAppearance;
 - (void).cxx_destruct;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

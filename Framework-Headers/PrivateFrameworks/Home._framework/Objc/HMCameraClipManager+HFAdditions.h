@@ -18,6 +18,7 @@
 - (id)_internalClipIndexByClipUUID;
 - (id)_internalClips;
 - (id)_playableClipsFromArray:(id)arg1;
+- (void)_prepareInternalClipCache:(id)arg1;
 - (void)hf_deleteAllClipsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)hf_findClipForDate:(id)arg1;
 - (id)hf_findClipPositionForDate:(id)arg1;
@@ -25,6 +26,7 @@
 - (BOOL)hf_isFirstClipOfTheDay:(id)arg1;
 - (void)hf_prepareForDismissal;
 - (void)hf_reloadForUpdatedClips:(id)arg1 removedClipUUIDs:(id)arg2;
+- (void)hf_setDemoClipsForCameraProfile:(id)arg1;
 - (void)hmf_setClips:(id)arg1;
 @end
 

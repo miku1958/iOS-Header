@@ -19,6 +19,7 @@
     BOOL __encodeLegacyGloryData;
     _INPBFileDataAttachment *_file;
     _INPBURLValue *_fileURL;
+    _INPBURLValue *_speechDataURL;
     unsigned long long _whichDatasource;
 }
 
@@ -31,7 +32,9 @@
 @property (readonly, nonatomic) BOOL hasCurrentLocation;
 @property (readonly, nonatomic) BOOL hasFile;
 @property (readonly, nonatomic) BOOL hasFileURL;
+@property (readonly, nonatomic) BOOL hasSpeechDataURL;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) _INPBURLValue *speechDataURL; // @synthesize speechDataURL=_speechDataURL;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long whichDatasource; // @synthesize whichDatasource=_whichDatasource;
 

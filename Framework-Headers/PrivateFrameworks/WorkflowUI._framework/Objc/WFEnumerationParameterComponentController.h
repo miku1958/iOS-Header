@@ -17,6 +17,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)completeEditing;
 - (void)didUnmount;
 - (void)didUpdateComponent;
 - (void)loadDynamicEnumerationValuesWithCompletionHandler:(CDUnknownBlockType)arg1;

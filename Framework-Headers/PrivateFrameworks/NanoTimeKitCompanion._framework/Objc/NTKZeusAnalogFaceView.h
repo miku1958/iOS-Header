@@ -53,7 +53,6 @@
 - (void)_setStatusBarIconShadowNeeded:(BOOL)arg1;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (struct CGPoint)_timeTravelStatusModuleCenter;
-- (BOOL)_timeViewBehindContentForEditMode:(long long)arg1;
 - (void)_unloadSnapshotContentViews;
 - (void)_updateDateComplicationPositionIfNecessary;
 - (struct CGRect)_upperComplicationFrameForStyle:(unsigned long long)arg1;

@@ -6,30 +6,31 @@
 
 #import <TVMLKit/_TVStackTemplateController.h>
 
-@class CAGradientLayer, NSArray, UIView, _TVImageView;
+@class CAGradientLayer, NSArray, UIView, UIViewController;
 @protocol VUIProductUberBackgroundInterface;
 
 __attribute__((visibility("hidden")))
 @interface VUIProductShowcaseViewController : _TVStackTemplateController
 {
     BOOL _lightStatusBar;
-    _TVImageView *_heroImage;
-    id<VUIProductUberBackgroundInterface> _productBanner;
+    UIViewController<VUIProductUberBackgroundInterface> *_productBanner;
     UIView *_navBarGradientView;
     CAGradientLayer *_gradientLayer;
     NSArray *_navBarButtons;
+    UIView *_transitionBackgroundView;
 }
 
 @property (strong, nonatomic) CAGradientLayer *gradientLayer; // @synthesize gradientLayer=_gradientLayer;
-@property (strong, nonatomic) _TVImageView *heroImage; // @synthesize heroImage=_heroImage;
 @property (nonatomic) BOOL lightStatusBar; // @synthesize lightStatusBar=_lightStatusBar;
 @property (strong, nonatomic) NSArray *navBarButtons; // @synthesize navBarButtons=_navBarButtons;
 @property (strong, nonatomic) UIView *navBarGradientView; // @synthesize navBarGradientView=_navBarGradientView;
-@property (strong, nonatomic) id<VUIProductUberBackgroundInterface> productBanner; // @synthesize productBanner=_productBanner;
+@property (strong, nonatomic) UIViewController<VUIProductUberBackgroundInterface> *productBanner; // @synthesize productBanner=_productBanner;
+@property (strong, nonatomic) UIView *transitionBackgroundView; // @synthesize transitionBackgroundView=_transitionBackgroundView;
 
 - (void).cxx_destruct;
 - (void)_configureBannerView:(id)arg1;
 - (void)_configureNavigationBarGradient;
+- (void)_configureTransitionBackgroundView;
 - (id)_gradientLayer;
 - (long long)_overrideLargeTitleDisplayMode;
 - (void)_setupProductBanner;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateWithViewElement:(id)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

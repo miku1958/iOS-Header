@@ -42,6 +42,8 @@ __attribute__((visibility("hidden")))
 - (id)host;
 - (void)isPresentingEditingController:(BOOL)arg1;
 - (void)isPresentingFullscreen:(BOOL)arg1;
+- (void)performConfirmedCancel;
+- (void)presentCancelConfirmationAlert;
 - (void)setupWithOptions:(id)arg1 readyBlock:(CDUnknownBlockType)arg2;
 - (BOOL)shouldPerformDefaultActionForContact:(id)arg1 propertyKey:(id)arg2 propertyIdentifier:(id)arg3;
 - (void)toggleEditing;

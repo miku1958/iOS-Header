@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSMutableDictionary, NSMutableSet, NSSet;
+@class NSArray, NSData, NSMutableDictionary, NSMutableSet;
 @protocol TPDecrypter;
 
 @interface TPModel : NSObject
 {
-    NSSet *_allowedMachineIDs;
-    NSSet *_disallowedMachineIDs;
     NSMutableDictionary *_peersByID;
     NSMutableDictionary *_policiesByVersion;
     NSMutableSet *_uncheckedVouchers;
@@ -24,11 +22,9 @@
     NSArray *_cachedPartialViableBottles;
 }
 
-@property (strong, nonatomic) NSSet *allowedMachineIDs; // @synthesize allowedMachineIDs=_allowedMachineIDs;
 @property (strong, nonatomic) NSArray *cachedPartialViableBottles; // @synthesize cachedPartialViableBottles=_cachedPartialViableBottles;
 @property (strong, nonatomic) NSArray *cachedViableBottles; // @synthesize cachedViableBottles=_cachedViableBottles;
 @property (strong, nonatomic) id<TPDecrypter> decrypter; // @synthesize decrypter=_decrypter;
-@property (strong, nonatomic) NSSet *disallowedMachineIDs; // @synthesize disallowedMachineIDs=_disallowedMachineIDs;
 @property (strong, nonatomic) NSMutableDictionary *peersByID; // @synthesize peersByID=_peersByID;
 @property (strong, nonatomic) NSMutableDictionary *policiesByVersion; // @synthesize policiesByVersion=_policiesByVersion;
 @property (strong, nonatomic) NSData *recoveryEncryptionPubKey; // @synthesize recoveryEncryptionPubKey=_recoveryEncryptionPubKey;
@@ -39,29 +35,29 @@
 + (id)preapprovalsFromKeys:(id)arg1;
 - (void).cxx_destruct;
 - (id)actualPeerWithID:(id)arg1 error:(id *)arg2;
+- (id)allMachineIDs;
 - (id)allPeerIDs;
 - (id)allPeers;
 - (id)allVouchers;
-- (BOOL)anyUnknownMachineIDs;
 - (id)bestRecoveryKeyWithDynamicInfo:(id)arg1;
-- (id)calculateDynamicInfoForPeerWithID:(id)arg1 addingPeerIDs:(id)arg2 removingPeerIDs:(id)arg3 preapprovedKeys:(id)arg4 signingKeyPair:(id)arg5 error:(id *)arg6;
-- (id)calculateDynamicInfoFromModel:(id)arg1 peer:(id)arg2 peerPermanentInfo:(id)arg3 startingDynamicInfo:(id)arg4 addingPeerIDs:(id)arg5 removingPeerIDs:(id)arg6 preapprovedKeys:(id)arg7 signingKeyPair:(id)arg8 error:(id *)arg9;
+- (id)calculateDynamicInfoForPeerWithID:(id)arg1 addingPeerIDs:(id)arg2 removingPeerIDs:(id)arg3 preapprovedKeys:(id)arg4 signingKeyPair:(id)arg5 currentMachineIDs:(id)arg6 error:(id *)arg7;
+- (id)calculateDynamicInfoFromModel:(id)arg1 peer:(id)arg2 peerPermanentInfo:(id)arg3 peerStableInfo:(id)arg4 startingDynamicInfo:(id)arg5 addingPeerIDs:(id)arg6 removingPeerIDs:(id)arg7 preapprovedKeys:(id)arg8 signingKeyPair:(id)arg9 currentMachineIDs:(id)arg10 error:(id *)arg11;
 - (BOOL)canIntroduceCandidate:(id)arg1 withSponsor:(id)arg2 toEpoch:(unsigned long long)arg3 underPolicy:(id)arg4 disposition:(id)arg5;
 - (BOOL)canTrustCandidate:(id)arg1 inEpoch:(unsigned long long)arg2;
 - (BOOL)checkIntroductionForCandidate:(id)arg1 stableInfo:(id)arg2 withSponsorID:(id)arg3 error:(id *)arg4;
 - (void)checkVouchers;
 - (void)clearViableBottles;
-- (id)considerCandidateID:(id)arg1 withSponsorID:(id)arg2 sponsorPermanentInfo:(id)arg3 toExpandIncludedPeerIDs:(id)arg4 andExcludedPeerIDs:(id)arg5 dispositions:(id)arg6 forEpoch:(unsigned long long)arg7;
+- (id)considerCandidateID:(id)arg1 withSponsorID:(id)arg2 sponsorPermanentInfo:(id)arg3 toExpandIncludedPeerIDs:(id)arg4 andExcludedPeerIDs:(id)arg5 dispositions:(id)arg6 currentMachineIDs:(id)arg7 forEpoch:(unsigned long long)arg8;
 - (BOOL)considerPolicyFromPeerID:(id)arg1 stableInfo:(id)arg2 secrets:(id)arg3 newestPolicyDoc:(id *)arg4 error:(id *)arg5;
-- (void)considerVouchersSponsoredByPeerID:(id)arg1 sponsorPermanentInfo:(id)arg2 toReecursivelyExpandIncludedPeerIDs:(id)arg3 andExcludedPeerIDs:(id)arg4 dispositions:(id)arg5 forEpoch:(unsigned long long)arg6;
+- (void)considerVouchersSponsoredByPeerID:(id)arg1 sponsorPermanentInfo:(id)arg2 toReecursivelyExpandIncludedPeerIDs:(id)arg3 andExcludedPeerIDs:(id)arg4 dispositions:(id)arg5 currentMachineIDs:(id)arg6 forEpoch:(unsigned long long)arg7;
 - (id)createDynamicInfoWithIncludedPeerIDs:(id)arg1 excludedPeerIDs:(id)arg2 dispositions:(id)arg3 preapprovals:(id)arg4 signingKeyPair:(id)arg5 error:(id *)arg6;
 - (id)createStableInfoWithPolicyVersion:(unsigned long long)arg1 policyHash:(id)arg2 policySecrets:(id)arg3 deviceName:(id)arg4 serialNumber:(id)arg5 osVersion:(id)arg6 signingKeyPair:(id)arg7 recoverySigningPubKey:(id)arg8 recoveryEncryptionPubKey:(id)arg9 error:(id *)arg10;
 - (id)createVoucherForCandidate:(id)arg1 stableInfo:(id)arg2 withSponsorID:(id)arg3 reason:(unsigned long long)arg4 signingKeyPair:(id)arg5 error:(id *)arg6;
 - (id)currentCachedViableBottlesSet;
 - (void)deletePeerWithID:(id)arg1;
 - (BOOL)doesPeerRecoveryKeyMatchPeers:(id)arg1;
-- (id)dynamicInfoForJoiningPeerID:(id)arg1 peerPermanentInfo:(id)arg2 sponsorID:(id)arg3 preapprovedKeys:(id)arg4 signingKeyPair:(id)arg5 error:(id *)arg6;
-- (id)filterPeerListByMachineID:(id)arg1 dispositions:(id)arg2;
+- (id)dynamicInfoForJoiningPeerID:(id)arg1 peerPermanentInfo:(id)arg2 peerStableInfo:(id)arg3 sponsorID:(id)arg4 preapprovedKeys:(id)arg5 signingKeyPair:(id)arg6 currentMachineIDs:(id)arg7 error:(id *)arg8;
+- (id)filterPeerList:(id)arg1 byMachineIDs:(id)arg2 dispositions:(id)arg3;
 - (void)filterPreapprovals:(id)arg1 forExistingPeers:(id)arg2;
 - (id)getDynamicInfoForPeerWithID:(id)arg1;
 - (id)getPeerIDsTrustedByPeerWithDynamicInfo:(id)arg1 toAccessView:(id)arg2 error:(id *)arg3;
@@ -74,20 +70,20 @@
 - (BOOL)isRecoveryKeyEnrolled;
 - (unsigned long long)latestEpochAmongPeerIDs:(id)arg1;
 - (unsigned long long)maxClock;
+- (id)peerCountsByModelID;
 - (id)peerIDThatTrustsRecoveryKeys:(id)arg1;
 - (id)peerWithID:(id)arg1;
 - (id)peersWithMachineID:(id)arg1;
 - (id)policyForPeerIDs:(id)arg1 candidatePeerID:(id)arg2 candidateStableInfo:(id)arg3 error:(id *)arg4;
 - (id)policyForPeerIDs:(id)arg1 error:(id *)arg2;
 - (id)policyWithVersion:(unsigned long long)arg1;
-- (void)recursivelyExpandIncludedPeerIDs:(id)arg1 andExcludedPeerIDs:(id)arg2 dispositions:(id)arg3 withPeersTrustedBySponsorID:(id)arg4 forEpoch:(unsigned long long)arg5;
+- (void)recursivelyExpandIncludedPeerIDs:(id)arg1 andExcludedPeerIDs:(id)arg2 dispositions:(id)arg3 withPeersTrustedBySponsorID:(id)arg4 currentMachineIDs:(id)arg5 forEpoch:(unsigned long long)arg6;
 - (void)registerPeerWithPermanentInfo:(id)arg1;
 - (void)registerPolicyDocument:(id)arg1;
 - (void)registerVoucher:(id)arg1;
 - (void)setRecoveryKeys:(id)arg1;
 - (void)setViableBottles:(id)arg1;
 - (BOOL)setWrappedPrivateKeys:(id)arg1 forPeerWithID:(id)arg2 error:(id *)arg3;
-- (unsigned long long)statusOfMachineID:(id)arg1;
 - (unsigned long long)statusOfPeerWithID:(id)arg1;
 - (id)untrustedPeerIDs;
 - (BOOL)updateDynamicInfo:(id)arg1 forPeerWithID:(id)arg2 error:(id *)arg3;

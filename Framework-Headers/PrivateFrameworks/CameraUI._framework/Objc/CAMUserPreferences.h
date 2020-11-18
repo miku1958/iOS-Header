@@ -26,11 +26,11 @@
     BOOL _preserveEffectFilter;
     BOOL _preserveCaptureMode;
     BOOL _preserveLivePhoto;
-    BOOL _shouldDisableCameraSwitchingDuringVideoRecording;
     BOOL _lockAsShutterEnabled;
     BOOL _shouldDelayRemotePersistence;
     BOOL _burstFollowsEncoderSettings;
     BOOL __preferHEVCWhenAvailable;
+    BOOL __shouldDisableCameraSwitchingDuringVideoRecording;
     CAMCaptureConfiguration *_captureConfiguration;
     CAMConflictingControlConfiguration *_conflictingControlConfiguration;
     long long _videoConfiguration;
@@ -50,6 +50,7 @@
 @property (readonly, nonatomic) BOOL QRBannersEnabledInSettings; // @synthesize QRBannersEnabledInSettings=_QRBannersEnabledInSettings;
 @property (readonly, nonatomic) BOOL _preferHEVCWhenAvailable; // @synthesize _preferHEVCWhenAvailable=__preferHEVCWhenAvailable;
 @property (readonly, nonatomic) double _resetTimeoutOverride; // @synthesize _resetTimeoutOverride=__resetTimeoutOverride;
+@property (readonly, nonatomic) BOOL _shouldDisableCameraSwitchingDuringVideoRecording; // @synthesize _shouldDisableCameraSwitchingDuringVideoRecording=__shouldDisableCameraSwitchingDuringVideoRecording;
 @property (strong, nonatomic, getter=_underlyingUserDefaults, setter=_setUnderlyingUserDefaults:) NSUserDefaults *_underlyingUserDefaults; // @synthesize _underlyingUserDefaults=__underlyingUserDefaults;
 @property (readonly, nonatomic, getter=isAutoAdjustmentsEnabled) BOOL autoAdjustmentsEnabled; // @synthesize autoAdjustmentsEnabled=_autoAdjustmentsEnabled;
 @property (readonly, nonatomic, getter=isAutoLowLightVideoEnabled) BOOL autoLowLightVideoEnabled; // @synthesize autoLowLightVideoEnabled=_autoLowLightVideoEnabled;
@@ -75,7 +76,6 @@
 @property (strong, nonatomic, setter=_setResetTimeoutDate:) NSDate *resetTimeoutDate; // @synthesize resetTimeoutDate=_resetTimeoutDate;
 @property (readonly, nonatomic) BOOL shouldCaptureHDREV0; // @synthesize shouldCaptureHDREV0=_shouldCaptureHDREV0;
 @property (readonly, nonatomic) BOOL shouldDelayRemotePersistence; // @synthesize shouldDelayRemotePersistence=_shouldDelayRemotePersistence;
-@property (readonly, nonatomic) BOOL shouldDisableCameraSwitchingDuringVideoRecording; // @synthesize shouldDisableCameraSwitchingDuringVideoRecording=_shouldDisableCameraSwitchingDuringVideoRecording;
 @property (readonly, nonatomic) BOOL shouldForceMonoAudioRecording; // @synthesize shouldForceMonoAudioRecording=_shouldForceMonoAudioRecording;
 @property (readonly, nonatomic) BOOL shouldShowGridView; // @synthesize shouldShowGridView=_shouldShowGridView;
 @property (readonly, nonatomic) BOOL shouldShowQRBanners;
@@ -97,6 +97,7 @@
 - (BOOL)isOverCaptureEnabledForCTMCaptureType:(long long)arg1;
 - (long long)ppt_readPortraitLightingType;
 - (BOOL)readPreferencesWithOverrides:(id)arg1 emulationMode:(long long)arg2 callActive:(BOOL)arg3;
+- (BOOL)shouldDisableCameraSwitchingDuringVideoRecordingForMode:(long long)arg1;
 - (BOOL)shouldResetCaptureConfiguration;
 - (void)updateResetTimeoutDate;
 - (long long)videoEncodingBehaviorForConfiguration:(long long)arg1;

@@ -142,7 +142,6 @@
 - (void)accountsDidRevokeAccessToBundleID:(id)arg1 containerIdentifiers:(id)arg2;
 - (void)accountsWillDeleteAccount:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addOperation:(id)arg1;
-- (void)cancelOperationID:(id)arg1;
 - (void)cancelUploadRequests;
 - (void)clearContextFromMetadataCache;
 - (void)clearPCSCachesForKnownContextsWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -164,6 +163,7 @@
 - (void)discoverUserInfoWithEmailAddress:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)discoverUserInfoWithUserRecordID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)discretionaryDaemonWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)discretionarySuspensionForOperationID:(id)arg1;
 - (id)discretionaryXPCConnectionWithError:(id *)arg1;
 - (void)dumpAllClientsStatusReportToFileHandle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dumpDaemonStatusReport;

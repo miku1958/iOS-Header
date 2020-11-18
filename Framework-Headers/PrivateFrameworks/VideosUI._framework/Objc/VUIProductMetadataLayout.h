@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     UIColor *_darkHighlightedDescriptionText;
 }
 
+@property (readonly, nonatomic) double bottomPadding;
 @property (readonly, nonatomic) UIColor *darkHighlightedDescriptionText; // @synthesize darkHighlightedDescriptionText=_darkHighlightedDescriptionText;
 @property (readonly, nonatomic) UIColor *darkSeeMoreTextColor; // @synthesize darkSeeMoreTextColor=_darkSeeMoreTextColor;
 @property (readonly, nonatomic) double descriptionLineSpacing; // @synthesize descriptionLineSpacing=_descriptionLineSpacing;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isHorizontal;
 @property (readonly, nonatomic) BOOL isTVOS;
 @property (readonly, nonatomic) UIColor *seeMoreTextColor; // @synthesize seeMoreTextColor=_seeMoreTextColor;
+@property (readonly, nonatomic) double verticalSpacing;
 
 + (id)layoutWithLayout:(id)arg1 element:(id)arg2;
 - (void).cxx_destruct;

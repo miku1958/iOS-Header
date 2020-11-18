@@ -20,7 +20,6 @@
     NSString *_appMajorVersion;
     NSString *_appMinorVersion;
     NSString *_deviceCountryCode;
-    NSString *_deviceSku;
     NSMutableArray *_displayLanguages;
     NSString *_displayRegion;
     GEOFormattedStringClientCapabilities *_formattedStringClientCapabilities;
@@ -71,7 +70,6 @@
         unsigned int read_appMajorVersion:1;
         unsigned int read_appMinorVersion:1;
         unsigned int read_deviceCountryCode:1;
-        unsigned int read_deviceSku:1;
         unsigned int read_displayLanguages:1;
         unsigned int read_displayRegion:1;
         unsigned int read_formattedStringClientCapabilities:1;
@@ -85,7 +83,6 @@
         unsigned int wrote_appMajorVersion:1;
         unsigned int wrote_appMinorVersion:1;
         unsigned int wrote_deviceCountryCode:1;
-        unsigned int wrote_deviceSku:1;
         unsigned int wrote_displayLanguages:1;
         unsigned int wrote_displayRegion:1;
         unsigned int wrote_formattedStringClientCapabilities:1;
@@ -119,7 +116,6 @@
 @property (strong, nonatomic) NSString *appMinorVersion;
 @property (nonatomic) BOOL clusteredTransitRoutesSupported;
 @property (strong, nonatomic) NSString *deviceCountryCode;
-@property (strong, nonatomic) NSString *deviceSku;
 @property (strong, nonatomic) NSMutableArray *displayLanguages;
 @property (strong, nonatomic) NSString *displayRegion;
 @property (strong, nonatomic) GEOFormattedStringClientCapabilities *formattedStringClientCapabilities;
@@ -129,7 +125,6 @@
 @property (readonly, nonatomic) BOOL hasAppMinorVersion;
 @property (nonatomic) BOOL hasClusteredTransitRoutesSupported;
 @property (readonly, nonatomic) BOOL hasDeviceCountryCode;
-@property (readonly, nonatomic) BOOL hasDeviceSku;
 @property (readonly, nonatomic) BOOL hasDisplayRegion;
 @property (readonly, nonatomic) BOOL hasFormattedStringClientCapabilities;
 @property (readonly, nonatomic) BOOL hasHardwareModel;
@@ -189,7 +184,6 @@
 - (void)_readAppMajorVersion;
 - (void)_readAppMinorVersion;
 - (void)_readDeviceCountryCode;
-- (void)_readDeviceSku;
 - (void)_readDisplayLanguages;
 - (void)_readDisplayRegion;
 - (void)_readFormattedStringClientCapabilities;

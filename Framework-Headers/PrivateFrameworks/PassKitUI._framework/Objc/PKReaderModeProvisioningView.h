@@ -6,16 +6,21 @@
 
 #import <UIKit/UIView.h>
 
-@class PKReaderModeAnimationView, PKReaderModeHeaderView, UIProgressView;
+@class NSString, PKReaderModeAnimationView, PKReaderModeHeaderView, UIImage, UIProgressView;
 
 @interface PKReaderModeProvisioningView : UIView
 {
     PKReaderModeAnimationView *_animationView;
     PKReaderModeHeaderView *_headerView;
     UIProgressView *_progressView;
+    BOOL _isProvisioningToWatch;
+    NSString *_cardPlacement;
+    UIImage *_plasticCardImage;
+    UIImage *_digitalCardImage;
 }
 
 - (void).cxx_destruct;
+- (void)_loadAnimation;
 - (id)initWithContext:(long long)arg1 product:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 context:(long long)arg2 product:(id)arg3;
 - (id)initWithFrame:(struct CGRect)arg1 product:(id)arg2;
@@ -25,6 +30,7 @@
 - (void)setState:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)setTransferringProgress:(double)arg1 duration:(double)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

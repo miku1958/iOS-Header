@@ -164,6 +164,7 @@
 - (id)photosCTLDescription;
 - (id)photosCTLJSONDict;
 - (void)prepareForDeletion;
+- (id)referenceMediaFileURL;
 - (BOOL)repairResourceValidationErrors:(id)arg1 managedObjectContext:(id)arg2;
 - (void)setCloudAttributesWithExternalResource:(id)arg1;
 - (void)setQualitySortValueBasedOnAssetWidth:(unsigned long long)arg1 height:(unsigned long long)arg2;

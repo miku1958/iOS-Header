@@ -32,6 +32,7 @@
     NSArray *_airPlayRouteIds;
     NSString *_recordRoute;
     NSUUID *_recordDeviceUID;
+    NSString *_recordDeviceIdentifier;
     long long __preferredInteractionDirection;
 }
 
@@ -62,6 +63,7 @@
 @property (strong, nonatomic, setter=_setOriginatingDeviceRapportMediaSystemIdentifier:) NSString *_originatingDeviceRapportMediaSystemIdentifier;
 @property (strong, nonatomic, setter=_setParameterCombinations:) NSDictionary *_parameterCombinations; // @synthesize _parameterCombinations;
 @property (strong, nonatomic, setter=_setParameterContexts:) INParameterContexts *_parameterContexts; // @synthesize _parameterContexts;
+@property (copy, nonatomic, setter=_setParametersForcedToNeedsValue:) NSArray *_parametersForcedToNeedsValue;
 @property (readonly, nonatomic) long long _preferredInteractionDirection; // @synthesize _preferredInteractionDirection=__preferredInteractionDirection;
 @property (nonatomic, getter=_isPrimaryDisplayDisabled, setter=_setPrimaryDisplayDisabled:) BOOL _primaryDisplayDisabled;
 @property (readonly, nonatomic) NSDictionary *_resolvableParameterCombinations;
@@ -95,6 +97,7 @@
 @property (strong, nonatomic, setter=_setLaunchId:) NSString *launchId;
 @property (copy, nonatomic, getter=_parameterImages, setter=_setParameterImages:) NSArray *parameterImages;
 @property (copy, nonatomic) NSDictionary *parametersByName;
+@property (strong, nonatomic, setter=_setRecordDeviceIdentifier:) NSString *recordDeviceIdentifier; // @synthesize recordDeviceIdentifier=_recordDeviceIdentifier;
 @property (strong, nonatomic, setter=_setRecordDeviceUID:) NSUUID *recordDeviceUID; // @synthesize recordDeviceUID=_recordDeviceUID;
 @property (copy, nonatomic, setter=_setRecordRoute:) NSString *recordRoute; // @synthesize recordRoute=_recordRoute;
 @property (readonly, copy, nonatomic, getter=_sortedParameterImages) NSArray *sortedParameterImages;

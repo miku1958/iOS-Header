@@ -9,36 +9,39 @@
 #import <PassKitUI/PKExplanationViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupPresentationProtocol-Protocol.h>
 
-@class NSString;
+@class NSString, PKPasscodeUpgradeFlowController;
 @protocol PKPaymentSetupViewControllerDelegate;
 
 @interface PKPasscodeUpgradeExplanationViewController : PKExplanationViewController <PKExplanationViewControllerDelegate, PKPaymentSetupPresentationProtocol>
 {
     id<PKPaymentSetupViewControllerDelegate> _setupDelegate;
+    PKPasscodeUpgradeFlowController *_flowController;
     long long _context;
     BOOL _isForWatch;
+    BOOL _viewHasAppeared;
     BOOL _upgradeRequiredToAddNewPass;
     CDUnknownBlockType _continuationHandler;
-    CDUnknownBlockType _dismissalHandler;
+    CDUnknownBlockType _setupLaterHandler;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType continuationHandler; // @synthesize continuationHandler=_continuationHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (copy, nonatomic) CDUnknownBlockType dismissalHandler; // @synthesize dismissalHandler=_dismissalHandler;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) CDUnknownBlockType setupLaterHandler; // @synthesize setupLaterHandler=_setupLaterHandler;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL upgradeRequiredToAddNewPass; // @synthesize upgradeRequiredToAddNewPass=_upgradeRequiredToAddNewPass;
 
 - (void).cxx_destruct;
-- (void)_terminateSetupFlow;
+- (void)_showSpinner:(BOOL)arg1;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
-- (id)initWithContext:(long long)arg1 setupDelegate:(id)arg2 isForWatch:(BOOL)arg3;
+- (id)initWithPasscodeUpgradeFlowController:(id)arg1 isForWatch:(BOOL)arg2;
 - (id)paymentSetupMarker;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
-- (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 + (double)fuzzParkedCarTimestamp:(double)arg1;
 + (double)fuzzTime:(double)arg1 bySeconds:(unsigned int)arg2;
++ (id)twoDecimalLocation:(id)arg1;
 
 @end
 

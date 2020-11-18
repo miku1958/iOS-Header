@@ -8,12 +8,14 @@
 
 #import <PassKitUI/CNContactViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentDataProviderDelegate-Protocol.h>
+#import <PassKitUI/PKPaymentTransactionReportFraudConfirmationViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPeerPaymentContactResolverDelegate-Protocol.h>
+#import <PassKitUI/PKTransactionDetailQuestionCellDelegate-Protocol.h>
 
-@class NSArray, NSDateFormatter, NSString, NSTimeZone, PKPaymentPass, PKPaymentTransaction, PKPaymentTransactionCellController, PKPaymentTransactionDetailHeaderView, PKPeerPaymentContactResolver, PKPeerPaymentController, PKPeerPaymentStatusResponse, PKTransactionDetailBottomContainer, UIImage;
+@class NSArray, NSDateFormatter, NSString, NSTimeZone, PKBusinessChatController, PKPaymentPass, PKPaymentTransaction, PKPaymentTransactionCellController, PKPaymentTransactionDetailHeaderView, PKPeerPaymentContactResolver, PKPeerPaymentController, PKPeerPaymentStatusResponse, UIImage;
 @protocol PKPaymentDataProvider;
 
-@interface PKPaymentTransactionDetailViewController : PKSectionTableViewController <PKPeerPaymentContactResolverDelegate, PKPaymentDataProviderDelegate, CNContactViewControllerDelegate>
+@interface PKPaymentTransactionDetailViewController : PKSectionTableViewController <PKPeerPaymentContactResolverDelegate, PKPaymentDataProviderDelegate, CNContactViewControllerDelegate, PKTransactionDetailQuestionCellDelegate, PKPaymentTransactionReportFraudConfirmationViewControllerDelegate>
 {
     long long _detailViewStyle;
     BOOL _showRawName;
@@ -23,6 +25,8 @@
     PKPaymentTransaction *_associatedAdjustment;
     PKPaymentTransactionCellController *_transactionCellController;
     BOOL _allowTransactionLinks;
+    PKBusinessChatController *_businessChatController;
+    NSString *_submittingAnswer;
     BOOL _issuerAppDeepLinkingEnabled;
     BOOL _inBridge;
     PKPaymentTransaction *_transaction;
@@ -38,10 +42,8 @@
     NSDateFormatter *_transactionLocalTimeDateFormatter;
     NSDateFormatter *_productTimeZoneFormatter;
     NSTimeZone *_productTimeZone;
-    PKTransactionDetailBottomContainer *_bottomContainer;
 }
 
-@property (strong, nonatomic) PKTransactionDetailBottomContainer *bottomContainer; // @synthesize bottomContainer=_bottomContainer;
 @property (strong, nonatomic) PKPeerPaymentContactResolver *contactResolver; // @synthesize contactResolver=_contactResolver;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -69,6 +71,7 @@
 - (unsigned long long)_amountDetailsRowForIndex:(unsigned long long)arg1;
 - (BOOL)_amountDetailsRowIsEnabled:(unsigned long long)arg1;
 - (void)_applyAmountDetailSeparatorInsetForTableView:(id)arg1 cell:(id)arg2;
+- (void)_callIssuer;
 - (id)_debugDetailCellForTableView:(id)arg1 atIndexPath:(id)arg2;
 - (id)_fraudRiskCellForTableView:(id)arg1;
 - (void)_handlePeerPaymentDisplayableError:(id)arg1 withPeerPaymentController:(id)arg2;
@@ -78,10 +81,15 @@
 - (id)_merchantAddressCellForTableView:(id)arg1;
 - (long long)_numberOfActionRowsEnabled;
 - (unsigned long long)_numberOfAmountDetailsRows;
+- (void)_openBusinessChat;
 - (void)_openMessagesToPresentAction:(unsigned long long)arg1;
 - (void)_openTransactionInIssuerApp;
 - (void)_performPeerPaymentAction:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_presentCardNumberUpdatedAlert;
+- (void)_presentContactViewController;
+- (void)_presentPhysicalCardSuspendedAlert;
 - (void)_presentReportIssue;
+- (id)_questionCellForTableView:(id)arg1 atIndexPath:(id)arg2;
 - (void)_recomputeLineItems;
 - (void)_reloadTableHeaderView;
 - (long long)_rowIndexForActionRow:(unsigned long long)arg1;
@@ -103,6 +111,8 @@
 - (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
 - (BOOL)contactViewController:(id)arg1 shouldPerformDefaultActionForContactProperty:(id)arg2;
 - (void)contactsDidChangeForContactResolver:(id)arg1;
+- (void)didReportFraudInViewController:(id)arg1;
+- (void)explanationViewControllerDidSelectCancel:(id)arg1;
 - (id)formattedBalanceAdjustmentAmountWithTransitDescriptors;
 - (id)initWithTransaction:(id)arg1 paymentPass:(id)arg2 contactResolver:(id)arg3 peerPaymentController:(id)arg4 paymentServiceDataProvider:(id)arg5 detailViewStyle:(long long)arg6 allowTransactionLinks:(BOOL)arg7;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
@@ -110,6 +120,7 @@
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)setTransaction:(id)arg1;
 - (BOOL)shouldMapSection:(unsigned long long)arg1;
+- (void)submitAnswer:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;

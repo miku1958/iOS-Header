@@ -21,6 +21,7 @@
 - (void)setAccount:(ACAccount *)arg1;
 - (void)setLoadFromBridgedNavigation:(BOOL)arg1;
 - (void)setPresentationBounds:(struct CGRect)arg1;
+- (void)setReferrer:(NSString *)arg1;
 - (void)setType:(long long)arg1;
 @end
 

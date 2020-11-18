@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSData, NSString;
+@class NSData, NSString, UIColor;
 
 @protocol SBRendererServiceProtocol
 - (void)service_applyMaterialRecipe:(NSData *)arg1 recipeName:(NSString *)arg2 weighting:(double)arg3 downsampleFactor:(double)arg4 withReply:(void (^)(IOSurface *))arg5;
-- (void)service_applyWallpaperTreatment:(NSData *)arg1 needsLumaTreatment:(BOOL)arg2 needsDimmingTreatment:(BOOL)arg3 downsampleFactor:(double)arg4 withReply:(void (^)(IOSurface *))arg5;
+- (void)service_applyWallpaperTreatment:(NSData *)arg1 needsLumaTreatment:(BOOL)arg2 needsDimmingTreatment:(BOOL)arg3 downsampleFactor:(double)arg4 averageColor:(UIColor *)arg5 withReply:(void (^)(IOSurface *))arg6;
 @end
 

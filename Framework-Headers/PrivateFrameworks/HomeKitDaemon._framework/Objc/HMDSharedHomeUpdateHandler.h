@@ -9,23 +9,21 @@
 #import <HomeKitDaemon/HMDSharedHomeUpdateSessionDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDHome, HMDSharedHomeUpdateSession, NSMutableArray, NSObject, NSString;
+@class HMDHome, HMDSharedHomeUpdateSession, HMFUnfairLock, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDSharedHomeUpdateHandler : HMFObject <HMDSharedHomeUpdateSessionDelegate, HMFLogging, HMFDumpState, NSSecureCoding>
+@interface HMDSharedHomeUpdateHandler : HMFObject <HMDSharedHomeUpdateSessionDelegate, HMFLogging, HMFDumpState>
 {
-    BOOL _pendingRequestDataFromResident;
+    HMFUnfairLock *_lock;
     BOOL _firstFetchComplete;
+    BOOL _suspended;
+    BOOL _pendingRequestDataFromResident;
+    HMDSharedHomeUpdateSession *_pendingRequestDataFromResidentSession;
     HMDHome *_home;
     NSObject<OS_dispatch_queue> *_workQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    NSMutableArray *_currentResidentDevices;
-    HMDSharedHomeUpdateSession *_pendingRequestDataFromResidentSession;
 }
 
-@property (strong, nonatomic) NSMutableArray *currentResidentDevices; // @synthesize currentResidentDevices=_currentResidentDevices;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL firstFetchComplete; // @synthesize firstFetchComplete=_firstFetchComplete;
@@ -33,32 +31,26 @@
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (nonatomic) BOOL pendingRequestDataFromResident; // @synthesize pendingRequestDataFromResident=_pendingRequestDataFromResident;
 @property (strong, nonatomic) HMDSharedHomeUpdateSession *pendingRequestDataFromResidentSession; // @synthesize pendingRequestDataFromResidentSession=_pendingRequestDataFromResidentSession;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
+@property (getter=isSuspended) BOOL suspended; // @synthesize suspended=_suspended;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)logCategory;
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_evaluateNeedForSync;
 - (void)_receivedHomeDataFromSourceVersion:(id)arg1 forceUpdateVersion:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_requestDataFromResident:(id)arg1 currentUser:(id)arg2;
-- (void)_startRequestForDataSync;
-- (void)_updateResidents;
 - (void)configureWithHome:(id)arg1;
 - (void)didCompleteHomeUpdateSession:(id)arg1 withError:(id)arg2;
 - (id)dumpState;
-- (void)encodeWithCoder:(id)arg1;
 - (void)handleHomeCloudZoneReadyNotification:(id)arg1;
 - (id)init;
-- (id)initWithCoder:(id)arg1;
 - (id)logIdentifier;
-- (void)pendingRequestFromResidentChanged;
+- (void)pause;
 - (void)receivedHomeDataFromSourceVersion:(id)arg1 forceUpdateVersion:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)reevaluateNeedForSync;
 - (void)registerForMessages;
-- (void)requestDataSync;
+- (void)requestHomeDataSync;
 - (void)residentsChanged:(id)arg1;
+- (void)resume;
 
 @end
 

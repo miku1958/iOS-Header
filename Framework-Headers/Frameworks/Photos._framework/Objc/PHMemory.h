@@ -107,6 +107,7 @@
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
 - (BOOL)isTransient;
 - (id)localizedSubtitle;
+- (id)meaningLabels;
 - (id)moodKeywords;
 - (id)movieStateDataForAsset:(id)arg1;
 - (id)predicateForAllAssetsWithLibrary:(id)arg1;

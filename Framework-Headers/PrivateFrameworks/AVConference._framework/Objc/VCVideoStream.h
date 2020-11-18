@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
     VCRedundancyControllerVideo *_redundancyController;
     int _lastDisplayedFromImageQueueCount;
     int _lastDroppedFromImageQueueCount;
+    int _networkInterfaceType;
 }
 
 @property (readonly, nonatomic) NSArray *compoundStreamIDs; // @synthesize compoundStreamIDs=_compoundStreamIDs;
@@ -81,6 +82,7 @@ __attribute__((visibility("hidden")))
 - (void)cacheRemoteVideoFrame:(struct __CVBuffer *)arg1;
 - (void)cleanupBeforeReconfigure:(id)arg1;
 - (id)clientCaptureRule;
+- (void)collectChannelSequenceMetrics:(id)arg1;
 - (void)collectImageQueuePerformanceMetrics:(struct __CFDictionary *)arg1;
 - (void)collectRxChannelMetrics:(CDStruct_3ab08b48 *)arg1;
 - (void)collectRxChannelMetrics:(CDStruct_3ab08b48 *)arg1 interval:(float)arg2;
@@ -104,6 +106,9 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)initVideoTransmitter;
 - (id)initWithTransportSessionID:(unsigned int)arg1 ssrc:(unsigned int)arg2 streamToken:(long long)arg3;
+- (void)initializeInterfaceType;
+- (void)initializeInterfaceTypeForNWConnection;
+- (void)initializeInterfaceTypeForSocket;
 - (double)lastReceivedRTCPPacketTime;
 - (double)lastReceivedRTPPacketTime;
 - (id)newVideoTransmitterConfigWithVideoStreamConfig:(id)arg1;
@@ -118,11 +123,13 @@ __attribute__((visibility("hidden")))
 - (void)onSendRTCPPacket;
 - (void)onStartWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)onStopWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (int)operatingModeForVideoStreamType:(long long)arg1;
 - (void)overrideConfigWithDefaults;
 - (void)rateController:(void *)arg1 targetBitrateDidChange:(unsigned int)arg2 rateChangeCounter:(unsigned int)arg3;
 - (void)redundancyController:(id)arg1 redundancyIntervalDidChange:(double)arg2;
 - (void)redundancyController:(id)arg1 redundancyPercentageDidChange:(unsigned int)arg2;
 - (void)registerForVideoCapture;
+- (void)reportTransportInfo;
 - (void)reportingVideoStreamEvent:(unsigned short)arg1;
 - (void)reportingVideoStreamEvent:(unsigned short)arg1 newVideoAttributes:(id)arg2;
 - (void)reportingVideoStreamEvent:(unsigned short)arg1 newVideoAttributes:(id)arg2 currentStreamID:(id)arg3;

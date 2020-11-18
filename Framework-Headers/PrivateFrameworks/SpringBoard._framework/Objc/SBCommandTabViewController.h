@@ -8,12 +8,12 @@
 
 #import <SpringBoard/SBIconViewDelegate-Protocol.h>
 
-@class MTMaterialShadowView, NSLayoutConstraint, NSMutableArray, NSOrderedSet, NSString, SBIconController, SBIconModel, SBIconView, UILabel, UIPanGestureRecognizer, UIStackView, UIView;
+@class MTMaterialShadowView, NSLayoutConstraint, NSMutableArray, NSMutableOrderedSet, NSString, SBIconController, SBIconModel, SBIconView, UILabel, UIPanGestureRecognizer, UIStackView, UIView;
 @protocol SBCommandTabViewControllerDelegate;
 
 @interface SBCommandTabViewController : UIViewController <SBIconViewDelegate>
 {
-    NSOrderedSet *_recentDisplayItems;
+    NSMutableOrderedSet *_recentDisplayItems;
     unsigned long long _selectedIndex;
     SBIconController *_iconController;
     SBIconModel *_iconModel;
@@ -60,6 +60,7 @@
 - (id)initWithRecentDisplayItems:(id)arg1;
 - (void)next;
 - (void)previous;
+- (void)removeDisplayItem:(id)arg1;
 - (id)selectedApplicationDisplayItem;
 - (void)showCommandTabBar;
 - (void)traitCollectionDidChange:(id)arg1;

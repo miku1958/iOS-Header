@@ -43,6 +43,7 @@
 + (id)codedIdentifiers:(id)arg1;
 + (id)codedNSUAPersistentIdentifiers:(id)arg1;
 + (id)codedUniqueIdentifiers:(id)arg1;
++ (id)computePartialPathWithOID:(id)arg1 pathKeyIdx:(unsigned long long)arg2 pathDictionary:(id)arg3 attributeValues:(id)arg4 depth:(long long)arg5;
 + (id)defaultSearchableIndex;
 + (void)initialize;
 + (BOOL)isIndexingAvailable;
@@ -50,13 +51,16 @@
 + (id)mainBundleID;
 + (id)mainBundleLocalizedString;
 + (void)notifyIndexDelegates;
++ (id)partialPathAttributes;
 + (void)volumeMountedAtURL:(id)arg1 withOptions:(id)arg2;
 - (void).cxx_destruct;
+- (void)_bulkFetchPartialPathsForObjects:(id)arg1 protectionClass:(id)arg2 bundleID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_changeStateOfSearchableItemsWithUIDs:(id)arg1 toState:(long long)arg2 forUser:(unsigned int)arg3 forBundleID:(id)arg4 forUTIType:(id)arg5;
 - (void)_commonInit;
 - (void)_delegateCheckIn:(id)arg1;
 - (void)_deleleActionsWithIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_deleteActionsBeforeTime:(double)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_fetchAttributes:(id)arg1 protectionClass:(id)arg2 bundleID:(id)arg3 items:(id)arg4 includeParents:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_indexActivities:(id)arg1 flush:(BOOL)arg2;
 - (id)_initWithName:(id)arg1 protectionClass:(id)arg2 bundleIdentifier:(id)arg3 options:(long long)arg4;
 - (void)_issueCommand:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -65,7 +69,6 @@
 - (void)_makeActivityQueueIfNecessary;
 - (void)_setFPAttributes:(id)arg1;
 - (void)_setMailMessageAttributes:(id)arg1;
-- (void)_slowFetchAttributes:(id)arg1 protectionClass:(id)arg2 bundleID:(id)arg3 identifiers:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (long long)_standardizeItems:(id)arg1;
 - (BOOL)_supportsBatching;
 - (id)_validateClientState:(id)arg1;
@@ -76,6 +79,7 @@
 - (void)addInteraction:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)addInteraction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)beginIndexBatch;
+- (void)bulkFetchAttributes:(id)arg1 protectionClass:(id)arg2 bundleID:(id)arg3 objects:(id)arg4 attributeKeyIndex:(long long)arg5 includeParents:(BOOL)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)changeStateOfSearchableItemsWithUIDs:(id)arg1 toState:(long long)arg2;
 - (void)dealloc;
 - (void)deleteAllInteractionsWithBundleID:(id)arg1 protectionClass:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

@@ -22,7 +22,6 @@
     MISSING_TYPE *myLocationController;
     MISSING_TYPE *selectedFriend;
     MISSING_TYPE *isInitialized;
-    MISSING_TYPE *isBackgrounded;
 }
 
 @end

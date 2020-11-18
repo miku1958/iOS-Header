@@ -71,6 +71,7 @@
 - (id)_invalidRequestTypeInSingleAppModeError:(id)arg1;
 - (void)_inviteToProgramRequest:(id)arg1 assertion:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (BOOL)_isManagedApp:(id)arg1;
+- (BOOL)_isManagedAppFromManagementInformation:(id)arg1;
 - (BOOL)_isProfileIdentifierManaged:(id)arg1;
 - (BOOL)_isProvisioningProfileUUIDManaged:(id)arg1;
 - (id)_licenseNotFoundErrorWithBundleID:(id)arg1 underlyingError:(id)arg2;

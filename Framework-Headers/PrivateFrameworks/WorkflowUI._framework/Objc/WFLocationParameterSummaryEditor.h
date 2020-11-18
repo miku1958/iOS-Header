@@ -23,6 +23,7 @@
 @property (readonly) Class superclass;
 
 + (BOOL)supportsLongPressGestureForSlotWithIdentifier:(id)arg1;
++ (unsigned long long)variableResultTypeForParameter:(id)arg1;
 - (void).cxx_destruct;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)beginEditingSlotWithIdentifier:(id)arg1 fromLongPressGesture:(BOOL)arg2 sourceViewController:(id)arg3 sourceView:(id)arg4 sourceRect:(struct CGRect)arg5;
@@ -32,7 +33,6 @@
 - (void)presentationControllerDidDismiss:(id)arg1;
 - (id)stateByReplacingVariableFromInitialState:(id)arg1 withVariable:(id)arg2;
 - (id)stateForVariable:(id)arg1;
-- (unsigned long long)variableResultType;
 
 @end
 

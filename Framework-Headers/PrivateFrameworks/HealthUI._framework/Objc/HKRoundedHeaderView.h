@@ -10,7 +10,6 @@
 
 @interface HKRoundedHeaderView : UIView
 {
-    BOOL _textLabelTruncated;
     HKGradient *_gradient;
     UIColor *_color;
     UIImage *_image;
@@ -60,7 +59,6 @@
 @property (strong, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 @property (strong, nonatomic) NSLayoutConstraint *textLabelBottomConstraint; // @synthesize textLabelBottomConstraint=_textLabelBottomConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *textLabelFirstBaselineConstraint; // @synthesize textLabelFirstBaselineConstraint=_textLabelFirstBaselineConstraint;
-@property (nonatomic) BOOL textLabelTruncated; // @synthesize textLabelTruncated=_textLabelTruncated;
 @property (strong, nonatomic) NSLayoutConstraint *textLabelWidthConstraint; // @synthesize textLabelWidthConstraint=_textLabelWidthConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *textLeadingConstraintToImageView; // @synthesize textLeadingConstraintToImageView=_textLeadingConstraintToImageView;
 @property (strong, nonatomic) NSLayoutConstraint *textLeadingConstraintToView; // @synthesize textLeadingConstraintToView=_textLeadingConstraintToView;
@@ -84,7 +82,6 @@
 - (id)initWithColor:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithGradient:(id)arg1;
-- (void)layoutSubviews;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

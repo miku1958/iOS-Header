@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface _HMNetworkConfigurationProfile : _HMAccessoryProfile
 {
+    BOOL _networkAccessRestricted;
     BOOL _supportsWiFiReconfiguration;
     long long _targetProtectionMode;
     long long _currentProtectionMode;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) long long credentialType; // @synthesize credentialType=_credentialType;
 @property (readonly) long long currentProtectionMode; // @synthesize currentProtectionMode=_currentProtectionMode;
 @property (weak, nonatomic) id<_HMNetworkConfigurationProfileDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, getter=isNetworkAccessRestricted) BOOL networkAccessRestricted; // @synthesize networkAccessRestricted=_networkAccessRestricted;
 @property (readonly) BOOL supportsWiFiReconfiguration; // @synthesize supportsWiFiReconfiguration=_supportsWiFiReconfiguration;
 @property (readonly) long long targetProtectionMode; // @synthesize targetProtectionMode=_targetProtectionMode;
 
@@ -37,13 +39,14 @@ __attribute__((visibility("hidden")))
 - (void)_handleProtectionModeUpdated:(id)arg1;
 - (void)_handleWiFiReconfigurationUpdated:(id)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
+- (void)_notifyDelegateOfNetworkAccessModeChanged;
 - (void)_notifyDelegateOfUpdatedAccessViolation;
 - (void)_notifyDelegateOfUpdatedAllowedHosts;
-- (void)_notifyDelegateOfUpdatedProtectionModeWithAccessModeChanged:(BOOL)arg1;
+- (void)_notifyDelegateOfUpdatedProtectionMode;
 - (void)_notifyDelegateOfUpdatedWiFiCredentialType;
 - (void)_notifyDelegateOfUpdatedWiFiReconfigurationSupport;
 - (void)_registerNotificationHandlers;
-- (id)initWithAccessoryIdentifier:(id)arg1 targetProtection:(long long)arg2 currentProtection:(long long)arg3 allowedHosts:(id)arg4 accessViolation:(id)arg5 supportsWiFiReconfiguration:(BOOL)arg6 credentialType:(long long)arg7;
+- (id)initWithAccessoryIdentifier:(id)arg1 targetProtection:(long long)arg2 currentProtection:(long long)arg3 networkAccessRestricted:(BOOL)arg4 allowedHosts:(id)arg5 accessViolation:(id)arg6 supportsWiFiReconfiguration:(BOOL)arg7 credentialType:(long long)arg8;
 - (id)messageDestination;
 - (id)messageReceiveQueue;
 - (id)messageTargetUUID;
@@ -52,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)setAllowedHosts:(id)arg1;
 - (void)setCredentialType:(long long)arg1;
 - (void)setCurrentProtectionMode:(long long)arg1;
+- (void)setNetworkAccessRestricted:(BOOL)arg1;
 - (void)setSupportsWiFiReconfiguration:(BOOL)arg1;
 - (void)setTargetProtectionMode:(long long)arg1;
 - (void)updateProtectionMode:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -24,6 +24,7 @@
 
 @property (copy, nonatomic) NSString *DSID; // @synthesize DSID=_DSID;
 @property (readonly, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
+@property (readonly, nonatomic) ACAccount *activeiTunesAccount;
 @property (copy, nonatomic) NSString *contentStoreFrontID; // @synthesize contentStoreFrontID=_contentStoreFrontID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -48,7 +49,6 @@
 - (void)_accountStoreDidChange;
 - (void)_reloadAccountsFromAccountStore;
 - (void)_setStoreFrontDependentPropertiesWithStoreFrontLockingEnabled:(BOOL)arg1;
-- (id)activeiTunesAccount;
 - (void)checkAllDevicesRunningMinimumiOSVersion:(CDStruct_912cb5d2)arg1 macOSVersion:(CDStruct_912cb5d2)arg2 orInactiveForTimeInterval:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)checkAlliOSDevicesRunningMinimumOSVersion:(CDStruct_912cb5d2)arg1 orInactiveForTimeInterval:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)currentStoreFrontID;

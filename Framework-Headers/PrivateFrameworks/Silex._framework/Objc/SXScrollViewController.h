@@ -126,6 +126,7 @@
 @property (strong, nonatomic) NSOrderedSet *snapLines; // @synthesize snapLines=_snapLines;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) SXTangierController *tangierController; // @synthesize tangierController=_tangierController;
+@property (nonatomic) BOOL textSelectionEnabled;
 @property (readonly, nonatomic) id<SXTextSelectionManager> textSelectionManager; // @synthesize textSelectionManager=_textSelectionManager;
 @property (readonly, nonatomic) UITraitCollection *traitCollection;
 @property (readonly, nonatomic) id<SXTransitionDataSourceProvider> transitionDataSourceProvider; // @synthesize transitionDataSourceProvider=_transitionDataSourceProvider;

@@ -6,24 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class INCExtensionRequest, INCExtensionTransactionState, INIntent, INIntentResponse, NSMutableDictionary, NSUserActivity;
+@class INCExtensionRequest, INCExtensionTransactionState, INIntent, INIntentResponse, NSMutableDictionary, NSString, NSUserActivity;
 @protocol OS_dispatch_queue;
 
 @interface INCExtensionTransaction : NSObject
 {
     NSMutableDictionary *_userActivitiesByIdentifier;
     NSObject<OS_dispatch_queue> *_queue;
+    BOOL _donateInteraction;
     BOOL _shouldResetRequestAfterHandle;
     NSUserActivity *_currentUserActivity;
     INCExtensionRequest *_request;
     INIntent *_currentIntent;
     INIntentResponse *_currentIntentResponse;
+    NSString *_groupIdentifier;
     INCExtensionTransactionState *_state;
 }
 
 @property (strong, nonatomic, setter=_setCurrentIntent:) INIntent *currentIntent; // @synthesize currentIntent=_currentIntent;
 @property (strong, nonatomic, setter=_setCurrentIntentResponse:) INIntentResponse *currentIntentResponse; // @synthesize currentIntentResponse=_currentIntentResponse;
 @property (readonly, copy, nonatomic) NSUserActivity *currentUserActivity; // @synthesize currentUserActivity=_currentUserActivity;
+@property (readonly, nonatomic) BOOL donateInteraction; // @synthesize donateInteraction=_donateInteraction;
+@property (readonly, copy, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
 @property (readonly, nonatomic) INCExtensionRequest *request; // @synthesize request=_request;
 @property (nonatomic) BOOL shouldResetRequestAfterHandle; // @synthesize shouldResetRequestAfterHandle=_shouldResetRequestAfterHandle;
 @property (strong, nonatomic) INCExtensionTransactionState *state; // @synthesize state=_state;
@@ -33,7 +37,7 @@
 - (void)_addUserActivities:(id)arg1;
 - (void)_updateCurrentUserActivityForType:(long long)arg1 intent:(id)arg2 intentResponse:(id)arg3;
 - (id)description;
-- (id)initWithIntent:(id)arg1;
+- (id)initWithIntent:(id)arg1 donateInteraction:(BOOL)arg2 groupIdentifier:(id)arg3;
 - (id)userActivityWithIdentifier:(id)arg1;
 
 @end

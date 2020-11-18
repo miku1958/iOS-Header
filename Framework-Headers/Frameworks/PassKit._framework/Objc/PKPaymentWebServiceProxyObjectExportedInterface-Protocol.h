@@ -53,6 +53,7 @@
 - (void)signData:(NSData *)arg1 signatureEntanglementMode:(unsigned long long)arg2 withCompletion:(void (^)(NSData *, PKSecureElementSignatureInfo *, NSError *))arg3;
 - (void)startRequiringUpgradedPasscodeWithPasscodeMeetsPolicy:(BOOL)arg1;
 - (void)storePassOwnershipToken:(NSString *)arg1 withIdentifier:(NSString *)arg2;
+- (void)supportedFeatureIdentifiersForAccountProvisioningWithCompletion:(void (^)(NSSet *))arg1;
 - (void)supportedFeatureIdentifiersWithCompletion:(void (^)(NSSet *))arg1;
 - (void)supportsAccountsWithCompletion:(void (^)(BOOL))arg1;
 - (void)supportsPeerPaymentRegistrationWithCompletion:(void (^)(BOOL))arg1;

@@ -54,7 +54,6 @@
 - (UIView *)tableView:(UITableView *)arg1 viewForFooterInSection:(long long)arg2;
 - (UIView *)tableView:(UITableView *)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)tableView:(UITableView *)arg1 willBeginEditingRowAtIndexPath:(NSIndexPath *)arg2;
-- (void)tableView:(UITableView *)arg1 willCommitMenuWithAnimator:(id<UIContextMenuInteractionCommitAnimating>)arg2;
 - (NSIndexPath *)tableView:(UITableView *)arg1 willDeselectRowAtIndexPath:(NSIndexPath *)arg2;
 - (void)tableView:(UITableView *)arg1 willDisplayCell:(UITableViewCell *)arg2 forRowAtIndexPath:(NSIndexPath *)arg3;
 - (void)tableView:(UITableView *)arg1 willDisplayFooterView:(UIView *)arg2 forSection:(long long)arg3;

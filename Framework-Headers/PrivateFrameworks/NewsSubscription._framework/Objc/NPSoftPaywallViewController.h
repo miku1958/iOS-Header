@@ -18,7 +18,6 @@
     MISSING_TYPE *renderer;
     MISSING_TYPE *layoutAttributesFactory;
     MISSING_TYPE *purchasingSpinnerViewControllerFactory;
-    MISSING_TYPE *$__lazy_storage_$_purchasingSpinnerViewController;
     MISSING_TYPE *$__lazy_storage_$_verifyingSpinnerViewController;
     MISSING_TYPE *paywallApplicationStateMonitor;
     MISSING_TYPE *eventHandlerDelegate;

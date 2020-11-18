@@ -27,28 +27,16 @@
 @property (nonatomic) int logMessageType;
 @property (strong, nonatomic) NSMutableArray *logMsgEvents;
 
-+ (id)acceptedLogMsgEvents;
-+ (id)acceptedLogMsgEventsForLogMessageType:(int)arg1;
 + (BOOL)isValid:(id)arg1;
-+ (BOOL)logMessageType:(int)arg1 acceptsLogMsgEventType:(int)arg2;
-+ (id)logMessagesForEvent:(id)arg1;
 + (Class)logMsgEventType;
-+ (id)logMsgSettings;
 - (void).cxx_destruct;
 - (int)StringAsLogMessageType:(id)arg1;
-- (BOOL)acceptsLogMsgEvent:(id)arg1;
 - (void)addLogMsgEvent:(id)arg1;
-- (unsigned long long)allowedSessionType;
 - (void)clearLogMsgEvents;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (id)groupIdentifier;
-- (unsigned int)groupItemCount;
-- (unsigned int)groupItemIdHash;
-- (long long)groupItemQueuedTime;
-- (unsigned int)groupSequenceNumber;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (id)logMessageTypeAsString:(int)arg1;
@@ -57,7 +45,6 @@
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (void)removeUnsupportedStatesFromEvent;
 - (void)writeTo:(id)arg1;
 
 @end

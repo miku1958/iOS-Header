@@ -34,7 +34,7 @@
 + (id)_statisticsProperties;
 + (id)_statisticsWithHFDKey:(long long)arg1 statisticsCalculator:(id)arg2 transaction:(id)arg3 error:(id *)arg4;
 + (void)_triggerABCForNotFinalSeriesSampleInsert:(id)arg1 reason:(id)arg2;
-+ (BOOL)_updateFrozenEntityToMatchReplacedUnfrozenEntity:(id)arg1 unfrozenSeriesUUID:(id)arg2 unfrozenSeriesHFDKey:(long long)arg3 transaction:(id)arg4 error:(id *)arg5;
++ (BOOL)_updateFrozenEntityToMatchReplacedUnfrozenEntity:(id)arg1 unfrozenSeriesUUID:(id)arg2 unfrozenSeriesHFDKey:(long long)arg3 database:(id)arg4 error:(id *)arg5;
 + (id)_updatedSampleForSeries:(id)arg1 originalEntity:(id)arg2 HFDKey:(long long)arg3 newCount:(long long)arg4 transaction:(id)arg5 profile:(id)arg6 error:(id *)arg7;
 + (id)_updatedSampleUUIDForSeries:(id)arg1 originalEntity:(id)arg2 HFDKey:(long long)arg3 transaction:(id)arg4 profile:(id)arg5 error:(id *)arg6;
 + (id)additionalPredicateForEnumeration;
@@ -68,6 +68,7 @@
 + (id)quantitySampleSeriesEntitiesForAutoFreezeSQL;
 + (id)quantitySampleSeriesEntitiesForAutoFreezeWithTransaction:(id)arg1 error:(id *)arg2;
 + (id)removeValues:(id)arg1 fromQuantitySeriesSample:(id)arg2 profile:(id)arg3 error:(id *)arg4;
++ (BOOL)replaceExistingObject:(id)arg1 existingObjectID:(id)arg2 replacementObject:(id)arg3 replacementObjectID:(id)arg4 profile:(id)arg5 database:(id)arg6 error:(id *)arg7;
 + (BOOL)replaceObjectID:(id)arg1 replacementObjectID:(id)arg2 deleteOriginalHFDData:(BOOL)arg3 profile:(id)arg4 database:(id)arg5 error:(id *)arg6;
 + (BOOL)supportsObjectMerging;
 + (BOOL)unitTesting_insertValues:(id)arg1 quantitySample:(id)arg2 seriesVersion:(long long)arg3 profile:(id)arg4 error:(id *)arg5;
@@ -82,7 +83,7 @@
 - (BOOL)_insertValues:(id)arg1 database:(id)arg2 error:(id *)arg3;
 - (BOOL)_isSeriesInDatabase:(id)arg1;
 - (id)_mergeCodableSeriesDataFromQuantitySampleSeries:(id)arg1 profile:(id)arg2 database:(id)arg3 error:(id *)arg4;
-- (BOOL)_setHFDKey:(long long)arg1 transaction:(id)arg2 error:(id *)arg3;
+- (BOOL)_setHFDKey:(long long)arg1 database:(id)arg2 error:(id *)arg3;
 - (BOOL)_setInsertionEra:(long long)arg1 database:(id)arg2 error:(id *)arg3;
 - (id)_updatedSampleForQuantitySeriesSample:(id)arg1 HFDKey:(long long)arg2 endDate:(id)arg3 transaction:(id)arg4 error:(id *)arg5;
 - (id)countForSeriesWithTransaction:(id)arg1 error:(id *)arg2;

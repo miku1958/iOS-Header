@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 
 + (id)auxiliaryOutputContext;
 + (struct OpaqueFigEndpointPicker *)copySystemVideoPicker;
++ (id)defaultSharedOutputContextImpl;
 + (id)iTunesAudioContext;
 + (BOOL)outputContextExistsWithRemoteOutputDevice;
 + (id)outputContextImplForControllingOutputDeviceGroupWithID:(id)arg1 options:(id)arg2;

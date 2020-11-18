@@ -14,7 +14,7 @@
 #import <HealthRecordsUI/UISearchResultsUpdating-Protocol.h>
 #import <HealthRecordsUI/_TtP15HealthRecordsUI36FilterSettingsViewControllerDelegate_-Protocol.h>
 
-@class HKClinicalAccount, HKCloudSyncObserver, HKConcept, HKViewTableViewCell, HRContentStatusCell, HRContentStatusView, HROverlayRoomViewController, HRProfile, NSPredicate, NSSet, NSString, NSTimer, NSUUID, UIButton, UISearchController, WDMedicalRecordCategory, WDMedicalRecordDisplayItemProvider;
+@class HKClinicalAccount, HKCloudSyncObserver, HKConcept, HKViewTableViewCell, HRContentStatusCell, HRContentStatusView, HROverlayRoomViewController, HRProfile, NSPredicate, NSSet, NSString, NSTimer, NSUUID, UIButton, UIColor, UISearchController, WDMedicalRecordCategory, WDMedicalRecordDisplayItemProvider;
 @protocol HRRecordViewControllerFactory;
 
 __attribute__((visibility("hidden")))
@@ -49,6 +49,7 @@ __attribute__((visibility("hidden")))
     long long _ingestionState;
     unsigned long long _indexManagerState;
     HKCloudSyncObserver *_cloudSyncObserver;
+    UIColor *_previousNavigationBackgroundColor;
 }
 
 @property (strong, nonatomic) HKClinicalAccount *account; // @synthesize account=_account;
@@ -77,6 +78,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL loadingNextPage; // @synthesize loadingNextPage=_loadingNextPage;
 @property (strong, nonatomic) id medicalRecordSearchController; // @synthesize medicalRecordSearchController=_medicalRecordSearchController;
 @property (strong, nonatomic) UISearchController *navigationSearchController; // @synthesize navigationSearchController=_navigationSearchController;
+@property (strong, nonatomic) UIColor *previousNavigationBackgroundColor; // @synthesize previousNavigationBackgroundColor=_previousNavigationBackgroundColor;
 @property (strong, nonatomic) HRProfile *profile; // @synthesize profile=_profile;
 @property (nonatomic) BOOL queryReturned; // @synthesize queryReturned=_queryReturned;
 @property (strong, nonatomic) NSPredicate *searchPredicate; // @synthesize searchPredicate=_searchPredicate;
@@ -159,6 +161,7 @@ __attribute__((visibility("hidden")))
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

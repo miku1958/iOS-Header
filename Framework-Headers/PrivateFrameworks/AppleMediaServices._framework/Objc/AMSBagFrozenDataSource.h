@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *cookies; // @synthesize cookies=_cookies;
 @property (readonly, nonatomic) NSDictionary *data; // @synthesize data=_data;
 @property (copy, nonatomic) CDUnknownBlockType dataSourceChangedHandler;
+@property (copy, nonatomic) CDUnknownBlockType dataSourceDataInvalidatedHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;

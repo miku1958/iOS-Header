@@ -44,6 +44,7 @@
 - (void)dealloc;
 - (BOOL)deviceHasMultipleSubscriptions;
 - (BOOL)homogenizePreferredServiceForiMessage;
+- (BOOL)recipientIsiMessagable:(id)arg1;
 - (void)recipientSelectionControllerDidChange;
 - (void)reset;
 - (BOOL)shouldAtomizeToConversationName;

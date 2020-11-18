@@ -19,6 +19,7 @@
 - (id)_accessibilityParentCell;
 - (void)_accessibilityPerformLeadingAction;
 - (void)_accessibilityUpdateLeadingActionTitle:(id)arg1;
+- (long long)accessibilityNavigationStyle;
 - (void)layoutSubviews;
 
 @end

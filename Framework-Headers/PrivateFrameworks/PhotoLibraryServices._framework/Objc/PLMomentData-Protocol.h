@@ -7,7 +7,7 @@
 #import <PhotoLibraryServices/PLMomentProtocol-Protocol.h>
 #import <PhotoLibraryServices/PLMomentRefreshable-Protocol.h>
 
-@class CLLocation, NSArray, NSDate, NSObject, NSOrderedSet, NSString;
+@class CLLocation, NSArray, NSDate, NSObject, NSSet, NSString;
 @protocol NSCopying, PLMomentAssetData, PLMomentListData, PLPhotosHighlightData;
 
 @protocol PLMomentData <PLMomentRefreshable, PLMomentProtocol>
@@ -16,7 +16,7 @@
 @property (nonatomic) double approximateLatitude;
 @property (strong, nonatomic) CLLocation *approximateLocation;
 @property (nonatomic) double approximateLongitude;
-@property (strong, nonatomic) NSOrderedSet *assets;
+@property (strong, nonatomic) NSSet *assets;
 @property (readonly, strong, nonatomic) NSArray *batchedAssets;
 @property (nonatomic) int cachedCount;
 @property (nonatomic) int cachedPhotosCount;
@@ -37,9 +37,9 @@
 
 + (NSArray *)sortByTimeSortDescriptors;
 - (void)delete;
+- (void)insertAssetData:(id<PLMomentAssetData>)arg1;
 - (BOOL)isDeleted;
 - (void)removeAssetData:(id<PLMomentAssetData>)arg1;
-- (void)replaceAssetDataAtIndex:(unsigned long long)arg1 withAssetData:(id<PLMomentAssetData>)arg2;
 
 @optional
 @end

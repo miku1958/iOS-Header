@@ -79,6 +79,8 @@
 - (void)_performCleanupForConfigurationWithIdentifier:(id)arg1;
 - (void)_presentMenuAtLocation:(struct CGPoint)arg1;
 - (void)_previewPlatterPresentationController:(id)arg1 beginDragWithTouch:(id)arg2;
+- (void)_previewPlatterPresentationControllerDidBeginPanInteraction:(id)arg1;
+- (void)_previewPlatterPresentationControllerDidEndPanInteraction:(id)arg1;
 - (void)_previewPlatterPresentationControllerDidTapPreview:(id)arg1;
 - (void)_previewPlatterPresentationControllerWantsToBeDismissed:(id)arg1 withReason:(unsigned long long)arg2 alongsideActions:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_suggestedMenuForConfiguration:(id)arg1;

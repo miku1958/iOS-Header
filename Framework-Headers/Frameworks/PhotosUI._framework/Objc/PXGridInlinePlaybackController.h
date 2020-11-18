@@ -78,6 +78,7 @@
 - (id)init;
 - (void)invalidatePlaybackEnabled;
 - (void)invalidatePlayingRecords;
+- (BOOL)isPlayingDisplayAsset:(id)arg1;
 - (void)preferencesDidChange;
 - (void)setNeedsUpdate;
 - (void)visibleRectDidChange;

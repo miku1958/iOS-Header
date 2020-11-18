@@ -15,6 +15,7 @@
     BOOL _waitingForIdentityUpdate;
     BOOL _waitingForHSA2;
     BOOL _useUniqueActivityIdentifiers;
+    BOOL _skipRetryOnOperationError;
     BOOL _automaticSyncingDisabled;
     id<CKSyncEngineDataSource> _dataSource;
     CKDatabase *_database;
@@ -48,6 +49,7 @@
 @property (nonatomic) long long priorityForFetches; // @synthesize priorityForFetches=_priorityForFetches;
 @property (nonatomic) long long priorityForModifications; // @synthesize priorityForModifications=_priorityForModifications;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (nonatomic) BOOL skipRetryOnOperationError; // @synthesize skipRetryOnOperationError=_skipRetryOnOperationError;
 @property (nonatomic) BOOL useUniqueActivityIdentifiers; // @synthesize useUniqueActivityIdentifiers=_useUniqueActivityIdentifiers;
 @property (nonatomic, getter=isWaitingForHSA2) BOOL waitingForHSA2; // @synthesize waitingForHSA2=_waitingForHSA2;
 @property (nonatomic, getter=isWaitingForIdentityUpdate) BOOL waitingForIdentityUpdate; // @synthesize waitingForIdentityUpdate=_waitingForIdentityUpdate;

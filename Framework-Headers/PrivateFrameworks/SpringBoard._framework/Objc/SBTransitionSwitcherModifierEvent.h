@@ -17,14 +17,18 @@
     long long _fromEnvironmentMode;
     SBAppLayout *_toAppLayout;
     long long _toEnvironmentMode;
+    long long _fromInterfaceOrientation;
+    long long _toInterfaceOrientation;
 }
 
 @property (readonly, nonatomic, getter=isAnimated) BOOL animated; // @synthesize animated=_animated;
 @property (strong, nonatomic) SBAppLayout *fromAppLayout; // @synthesize fromAppLayout=_fromAppLayout;
 @property (nonatomic) long long fromEnvironmentMode; // @synthesize fromEnvironmentMode=_fromEnvironmentMode;
+@property (nonatomic) long long fromInterfaceOrientation; // @synthesize fromInterfaceOrientation=_fromInterfaceOrientation;
 @property (readonly, nonatomic) unsigned long long phase; // @synthesize phase=_phase;
 @property (strong, nonatomic) SBAppLayout *toAppLayout; // @synthesize toAppLayout=_toAppLayout;
 @property (nonatomic) long long toEnvironmentMode; // @synthesize toEnvironmentMode=_toEnvironmentMode;
+@property (nonatomic) long long toInterfaceOrientation; // @synthesize toInterfaceOrientation=_toInterfaceOrientation;
 @property (readonly, nonatomic) NSUUID *transitionID; // @synthesize transitionID=_transitionID;
 
 - (void).cxx_destruct;

@@ -6,7 +6,7 @@
 
 #import <SiriUIActivation/NSObject-Protocol.h>
 
-@class AFUISiriSession, AFUISiriViewController, NSError, NSString, NSURL, SASRequestOptions;
+@class AFUISiriSession, AFUISiriViewController, NSArray, NSError, NSString, NSURL, SASRequestOptions;
 
 @protocol AFUISiriViewControllerDelegate <NSObject>
 - (void)dismissSiriViewController:(AFUISiriViewController *)arg1 delayForTTS:(BOOL)arg2;
@@ -20,7 +20,6 @@
 - (void)siriViewController:(AFUISiriViewController *)arg1 siriIdleAndQuietStatusDidChange:(BOOL)arg2;
 - (SASRequestOptions *)siriViewController:(AFUISiriViewController *)arg1 willStartRequestWithOptions:(SASRequestOptions *)arg2;
 - (void)siriViewControllerDidChangeVisibility:(AFUISiriViewController *)arg1;
-- (void)siriViewControllerDidFinishDismissing:(AFUISiriViewController *)arg1;
 - (void)siriViewControllerSessionDidResetContext:(AFUISiriViewController *)arg1;
 - (BOOL)siriViewControllerShouldEndSession:(AFUISiriViewController *)arg1;
 - (BOOL)siriViewControllerShouldSupportTextInput:(AFUISiriViewController *)arg1;
@@ -34,11 +33,13 @@
 - (void)siriViewController:(AFUISiriViewController *)arg1 didCompleteRequestWithError:(NSError *)arg2;
 - (void)siriViewController:(AFUISiriViewController *)arg1 didEndSession:(AFUISiriSession *)arg2;
 - (void)siriViewController:(AFUISiriViewController *)arg1 didFinishTest:(NSString *)arg2;
+- (void)siriViewController:(AFUISiriViewController *)arg1 didUpdateAudioCategoriesDisablingVolumeHUD:(NSArray *)arg2;
 - (void)siriViewController:(AFUISiriViewController *)arg1 failTest:(NSString *)arg2 withReason:(NSString *)arg3;
 - (void)siriViewController:(AFUISiriViewController *)arg1 launchApplicationWithBundleIdentifier:(NSString *)arg2 withURL:(NSURL *)arg3 launchOptions:(long long)arg4 replyHandler:(void (^)(BOOL))arg5;
 - (void)siriViewController:(AFUISiriViewController *)arg1 presentedIntentWithBundleId:(NSString *)arg2;
 - (void)siriViewController:(AFUISiriViewController *)arg1 requestsDismissal:(void (^)(BOOL))arg2;
 - (void)siriViewController:(AFUISiriViewController *)arg1 requestsPresentation:(void (^)(BOOL))arg2;
 - (void)siriViewController:(AFUISiriViewController *)arg1 willStartTest:(NSString *)arg2;
+- (void)siriViewControllerDidFinishDismissing:(AFUISiriViewController *)arg1;
 @end
 

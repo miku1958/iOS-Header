@@ -45,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)actionsModel:(id)arg1 didAssignToContact:(id)arg2 atIndexPath:(id)arg3;
 - (void)actionsModel:(id)arg1 didDelete:(id)arg2 atIndexPath:(id)arg3;
-- (void)actionsModel:(id)arg1 didDuplicate:(id)arg2 atIndexPath:(id)arg3;
+- (void)actionsModel:(id)arg1 didDuplicate:(id)arg2 atIndexPath:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)actionsModel:(id)arg1 didEdit:(id)arg2 atIndexPath:(id)arg3;
 - (void)applyLayout:(id)arg1;
 - (double)deleteMoveInDelay;

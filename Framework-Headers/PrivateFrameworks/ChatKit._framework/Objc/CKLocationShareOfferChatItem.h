@@ -27,6 +27,7 @@
 - (id)_generatePlaceholderThumbnailFillToSize:(struct CGSize)arg1;
 - (id)_generateThumbnailFillToSize:(struct CGSize)arg1 contentAlignmentInsets:(struct UIEdgeInsets)arg2 withCoordinate:(struct CLLocationCoordinate2D)arg3 forState:(long long)arg4;
 - (void)_handleLocationDidChangeNotification:(id)arg1;
+- (id)_placeholderCacheKey;
 - (id)_previewCacheKey:(unsigned long long)arg1;
 - (Class)balloonViewClass;
 - (void)configureBalloonView:(id)arg1;

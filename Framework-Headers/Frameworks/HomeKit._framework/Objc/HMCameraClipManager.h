@@ -42,7 +42,6 @@
 - (void)addObserver:(id)arg1;
 - (id)assetContextForResponsePayload:(id)arg1;
 - (id)clipForResponsePayload:(id)arg1;
-- (id)clipUUIDsFromSerializedClipUUIDs:(id)arg1;
 - (id)clipsForMessage:(id)arg1 withKey:(id)arg2;
 - (void)configure;
 - (void)dealloc;
@@ -62,6 +61,7 @@
 - (void)handleDidChangeClipsMessage:(id)arg1;
 - (void)handleDidFetchClipsMessage:(id)arg1;
 - (void)handleFetchedClips:(id)arg1 forFetchUUID:(id)arg2;
+- (void)importClipsWithImportData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithContext:(id)arg1 profileUniqueIdentifier:(id)arg2;
 - (id)initWithContext:(id)arg1 profileUniqueIdentifier:(id)arg2 notificationCenter:(id)arg3;
 - (id)logIdentifier;

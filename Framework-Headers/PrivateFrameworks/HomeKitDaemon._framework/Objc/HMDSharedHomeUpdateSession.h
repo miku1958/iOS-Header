@@ -10,34 +10,31 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDMessageDispatcher, HMDRemoteDeviceMessageDestination, HMDResidentDevice, HMFTimer, NSDictionary, NSString, NSUUID;
+@class HMDHome, HMDMessageDispatcher, HMFTimer, NSDictionary, NSString, NSUUID;
 @protocol HMDSharedHomeUpdateSessionDelegate, OS_dispatch_queue;
 
 @interface HMDSharedHomeUpdateSession : NSObject <HMFLogging, HMFTimerDelegate, HMFDumpState>
 {
-    NSString *_homeIdentifier;
     NSUUID *_sessionID;
+    id<HMDSharedHomeUpdateSessionDelegate> _delegate;
+    NSObject<OS_dispatch_queue> *_workQueue;
+    HMDHome *_home;
     NSDictionary *_messagePayload;
     HMDMessageDispatcher *_remoteMessageDispatcher;
-    HMDRemoteDeviceMessageDestination *_destination;
-    HMDResidentDevice *_residentDevice;
     HMFTimer *_timer;
     unsigned long long _retryCount;
     double _currentTimerValue;
-    id<HMDSharedHomeUpdateSessionDelegate> _delegate;
-    NSObject<OS_dispatch_queue> *_workQueue;
 }
 
 @property (nonatomic) double currentTimerValue; // @synthesize currentTimerValue=_currentTimerValue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak, nonatomic) id<HMDSharedHomeUpdateSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) HMDRemoteDeviceMessageDestination *destination; // @synthesize destination=_destination;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *homeIdentifier; // @synthesize homeIdentifier=_homeIdentifier;
+@property (readonly, nonatomic) HMDHome *home; // @synthesize home=_home;
+@property (readonly, nonatomic) NSString *homeIdentifier;
 @property (readonly, nonatomic) NSDictionary *messagePayload; // @synthesize messagePayload=_messagePayload;
 @property (readonly, nonatomic) HMDMessageDispatcher *remoteMessageDispatcher; // @synthesize remoteMessageDispatcher=_remoteMessageDispatcher;
-@property (readonly, nonatomic) HMDResidentDevice *residentDevice; // @synthesize residentDevice=_residentDevice;
 @property (nonatomic) unsigned long long retryCount; // @synthesize retryCount=_retryCount;
 @property (readonly, nonatomic) NSUUID *sessionID; // @synthesize sessionID=_sessionID;
 @property (readonly) Class superclass;
@@ -48,9 +45,10 @@
 - (void).cxx_destruct;
 - (void)_callDelegate;
 - (void)_requestDataSync;
+- (id)_selectResident;
 - (void)dealloc;
 - (id)dumpState;
-- (id)initWithHomeIdentifier:(id)arg1 delegate:(id)arg2 workQueue:(id)arg3 destination:(id)arg4 residentDevice:(id)arg5 messagePayload:(id)arg6 remoteMessageDispatcher:(id)arg7;
+- (id)initWithHome:(id)arg1 delegate:(id)arg2 workQueue:(id)arg3 messagePayload:(id)arg4 remoteMessageDispatcher:(id)arg5;
 - (id)logIdentifier;
 - (void)requestDataSync;
 - (void)startTimer;

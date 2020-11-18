@@ -17,6 +17,8 @@
     BOOL _wacLegacy;
     BOOL _usedWiFiPPSK;
     BOOL _usedOwnershipProof;
+    BOOL _networkRouterAdd;
+    BOOL _networkRouterReplace;
     HMDAccessory *_pairedAccessory;
     long long _linkType;
     long long _certificationStatus;
@@ -33,6 +35,8 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) long long linkType; // @synthesize linkType=_linkType;
+@property (nonatomic, getter=isNetworkRouterAdd) BOOL networkRouterAdd; // @synthesize networkRouterAdd=_networkRouterAdd;
+@property (nonatomic, getter=isNetworkRouterReplace) BOOL networkRouterReplace; // @synthesize networkRouterReplace=_networkRouterReplace;
 @property (strong, nonatomic) HMDAccessory *pairedAccessory; // @synthesize pairedAccessory=_pairedAccessory;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isUsedOwnershipProof) BOOL usedOwnershipProof; // @synthesize usedOwnershipProof=_usedOwnershipProof;
@@ -40,14 +44,14 @@
 @property (nonatomic, getter=isWacLegacy) BOOL wacLegacy; // @synthesize wacLegacy=_wacLegacy;
 
 + (void)initialize;
-+ (id)pairingAccessory:(id)arg1;
-+ (id)pairingAccessoryWithDescription:(id)arg1;
++ (id)pairingAccessory:(id)arg1 home:(id)arg2;
++ (id)pairingAccessoryWithDescription:(id)arg1 home:(id)arg2;
 + (id)removingAccessory:(id)arg1 hapAccessory:(id)arg2;
 + (id)uuid;
 - (void).cxx_destruct;
 - (unsigned int)AWDMessageType;
-- (id)initWithAccessoryDescription:(id)arg1;
-- (id)initWithUnpairedAccessory:(id)arg1 pairedAccessory:(id)arg2 hapAccessory:(id)arg3 isAddOperation:(BOOL)arg4;
+- (id)initWithAccessoryDescription:(id)arg1 home:(id)arg2;
+- (id)initWithUnpairedAccessory:(id)arg1 pairedAccessory:(id)arg2 hapAccessory:(id)arg3 home:(id)arg4 isAddOperation:(BOOL)arg5;
 - (id)metricForAWD;
 - (void)pairedAccessory:(id)arg1;
 - (void)pairedToServer:(id)arg1 certificationStatus:(long long)arg2;

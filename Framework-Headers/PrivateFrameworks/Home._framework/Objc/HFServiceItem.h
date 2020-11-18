@@ -38,7 +38,6 @@
 - (id)_allRepresentedServices;
 - (id)_augmentedStandardResultsForUpdateResponse:(id)arg1 controlItems:(id)arg2;
 - (id)_descriptionBuilder;
-- (id)_iconDescriptorWithFallBackIfNecessary:(id)arg1 withIconPrimaryState:(long long)arg2;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)accessories;
 - (BOOL)actionsMayRequireDeviceUnlock;

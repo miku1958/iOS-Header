@@ -6,11 +6,14 @@
 
 #import <WebBookmarks/NSObject-Protocol.h>
 
-@class NSArray, NSString, WBBookmarksDatabaseHealthInformation;
+@class NSArray, NSString, WBBookmarksDatabaseHealthInformation, WebBookmark, WebBookmarkList;
 
 @protocol WBBookmarkProvider <NSObject>
+- (WebBookmark *)bookmarkWithID:(int)arg1;
+- (NSArray *)bookmarksMatchingString:(NSString *)arg1;
 - (WBBookmarksDatabaseHealthInformation *)databaseHealthInformation;
 - (void)enumerateBookmarks:(BOOL)arg1 andReadingListItems:(BOOL)arg2 matchingString:(NSString *)arg3 usingBlock:(void (^)(NSString *, NSString *, WebBookmark * (^)(void)))arg4;
 - (NSArray *)readingListBookmarksMatchingString:(NSString *)arg1 maxResults:(unsigned int)arg2 onlyArchivedBookmarks:(BOOL)arg3;
+- (WebBookmarkList *)readingListWithUnreadOnly:(BOOL)arg1 filteredUsingString:(NSString *)arg2;
 @end
 

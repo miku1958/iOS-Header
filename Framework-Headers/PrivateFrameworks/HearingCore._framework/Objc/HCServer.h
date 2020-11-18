@@ -29,13 +29,14 @@
 - (void)handleMessageError:(id)arg1 destructive:(BOOL)arg2;
 - (void)handleMessageWithPayload:(id)arg1 forIdentifier:(unsigned long long)arg2;
 - (void)handleReply:(id)arg1;
+- (id)init;
 - (void)resetConnection;
 - (void)sendMessageWithPayload:(id)arg1 andIdentifier:(unsigned long long)arg2;
 - (void)sendSynchronousMessageWithPayload:(id)arg1 andIdentifier:(unsigned long long)arg2;
 - (id)setupServerIfNecessary;
 - (BOOL)shouldRestartOnInterruption;
 - (void)startServerWithDelegate:(id)arg1;
-- (void)terminateConnection;
+- (void)terminateConnectionAndNotify:(BOOL)arg1;
 
 @end
 

@@ -58,11 +58,12 @@ __attribute__((visibility("hidden")))
 - (void)_cancelAllDeferredApperanceUpdates;
 - (void)_didReceiveNewScreenTimeApplicationPolicies:(id)arg1 error:(id)arg2;
 - (void)_didReceiveNewScreenTimeCategoryPolicy:(id)arg1 error:(id)arg2;
-- (void)_didReceiveNewScreenTimePolity:(long long)arg1;
+- (void)_didReceiveNewScreenTimePolicy:(long long)arg1;
 - (void)_hideScreenTimeViewControllerIfNeeded;
 - (void)_performLoadingCompletionHandlerWithError:(id)arg1;
 - (void)_performReadyBlockIfNedded;
 - (BOOL)_processIsEntitledToCheckScreenTimePolicy;
+- (BOOL)_processIsEntitledToConfigureScreenTime;
 - (void)_queryScreenTimeCategoryPolicy;
 - (void)_queryScreenTimePolicyForBundleIdentifier:(id)arg1;
 - (void)_setupScreenTimeApplicationHandling;

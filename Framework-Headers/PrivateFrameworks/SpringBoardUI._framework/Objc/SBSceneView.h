@@ -73,6 +73,7 @@
 - (void)_hotSwapLiveSnapshotView;
 - (void)_hotSwapPlaceholderContentView;
 - (void)_invalidateHostPresenter;
+- (void)_invalidateSceneLiveHostView:(id)arg1;
 - (void)_layoutLiveHostView:(id)arg1;
 - (void)_placeholderVisibilityChanged;
 - (void)_recheckLiveContentDependencies;

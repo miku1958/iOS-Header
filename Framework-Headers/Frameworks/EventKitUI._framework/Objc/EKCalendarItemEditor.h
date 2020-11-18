@@ -147,6 +147,7 @@ __attribute__((visibility("hidden")))
 - (void)refreshInvitees;
 - (void)refreshLocation;
 - (void)refreshStartAndEndDates;
+- (void)resignCurrentEditItemFirstResponder;
 - (long long)rowNumberForEditItem:(id)arg1;
 - (BOOL)saveCalendarItemWithSpan:(long long)arg1 error:(id *)arg2;
 - (BOOL)saveWithSpan:(long long)arg1 animated:(BOOL)arg2;

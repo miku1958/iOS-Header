@@ -17,6 +17,7 @@
     UIScrollView *_scrollView;
     unsigned long long _state;
     unsigned long long _stateOnRetry;
+    BOOL _startedInitialIngestion;
     PKContactlessCardIngester *_cardIngester;
     PKPaymentContactlessProductCredential *_paymentCredential;
     PKPaymentPass *_paymentPass;
@@ -88,8 +89,8 @@
 - (void)showProvisioningError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)showReaderModeError:(id)arg1 isRecoverable:(BOOL)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
-- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 
 @end

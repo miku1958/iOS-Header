@@ -18,6 +18,7 @@
 - (long long)overriddenInterfaceStyleForPlaceViewControllerSubviews:(_MKPlaceViewController *)arg1;
 - (void)placeViewController:(_MKPlaceViewController *)arg1 addPlaceItemToCollection:(id<_MKPlaceItem>)arg2 sourceView:(UIView *)arg3 result:(void (^)(NSError *))arg4;
 - (void)placeViewController:(_MKPlaceViewController *)arg1 addShortcutForPlaceItem:(id<_MKPlaceItem>)arg2 result:(void (^)(BOOL))arg3;
+- (BOOL)placeViewController:(_MKPlaceViewController *)arg1 canSelectDepartureSequence:(id<GEOTransitDepartureSequence>)arg2 mapItem:(MKMapItem *)arg3;
 - (void)placeViewController:(_MKPlaceViewController *)arg1 changeAddressForPlaceItem:(id<_MKPlaceItem>)arg2;
 - (NSDictionary *)placeViewController:(_MKPlaceViewController *)arg1 collectionViewsForPlaceItem:(id<_MKPlaceItem>)arg2;
 - (void)placeViewController:(_MKPlaceViewController *)arg1 didBecomeContact:(CNContact *)arg2;
@@ -59,6 +60,7 @@
 - (void)placeViewControllerDidUpdateHeight:(_MKPlaceViewController *)arg1;
 - (void)placeViewControllerLinkedServicesDidTapHeaderButton:(_MKPlaceViewController *)arg1;
 - (double)placeViewControllerPlaceCardHeaderTitleTrailingConstant:(_MKPlaceViewController *)arg1;
+- (BOOL)shouldMoveMuninStorefrontViewForPlaceViewController:(_MKPlaceViewController *)arg1;
 - (GEOMapServiceTraits *)traitsForPlaceViewController:(_MKPlaceViewController *)arg1;
 @end
 

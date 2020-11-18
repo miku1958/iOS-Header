@@ -12,9 +12,11 @@
 
 @interface INCodableObjectAttribute : INCodableAttribute <NSSecureCoding>
 {
+    NSString *_originalTypeName;
     NSString *_typeName;
 }
 
+@property (copy, nonatomic, setter=_setOriginalTypeName:) NSString *_originalTypeName; // @synthesize _originalTypeName;
 @property (readonly, copy, nonatomic) NSString *className;
 @property (copy, nonatomic) NSString *typeName; // @synthesize typeName=_typeName;
 @property (readonly, nonatomic) NSValueTransformer *valueTransformer;

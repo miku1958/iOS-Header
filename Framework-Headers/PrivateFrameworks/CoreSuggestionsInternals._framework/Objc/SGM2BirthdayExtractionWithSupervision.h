@@ -11,13 +11,17 @@
 @interface SGM2BirthdayExtractionWithSupervision : PBCodable <NSCopying>
 {
     BOOL _dateIsCorrect;
+    BOOL _isFromCongratulation;
     struct {
         unsigned int dateIsCorrect:1;
+        unsigned int isFromCongratulation:1;
     } _has;
 }
 
 @property (nonatomic) BOOL dateIsCorrect; // @synthesize dateIsCorrect=_dateIsCorrect;
 @property (nonatomic) BOOL hasDateIsCorrect;
+@property (nonatomic) BOOL hasIsFromCongratulation;
+@property (nonatomic) BOOL isFromCongratulation; // @synthesize isFromCongratulation=_isFromCongratulation;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

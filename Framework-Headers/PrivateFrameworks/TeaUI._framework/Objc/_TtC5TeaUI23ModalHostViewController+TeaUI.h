@@ -7,6 +7,9 @@
 #import <TeaUI/_TtC5TeaUI23ModalHostViewController.h>
 
 @interface _TtC5TeaUI23ModalHostViewController (TeaUI)
+
+@property (nonatomic, readonly) long long preferredStatusBarStyle;
+
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

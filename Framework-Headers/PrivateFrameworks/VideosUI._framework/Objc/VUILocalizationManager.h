@@ -18,7 +18,7 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)localizedStringForKey:(id)arg1;
-- (id)localizedStringForKey:(id)arg1 withCount:(id)arg2;
+- (id)localizedStringForKey:(id)arg1 withCounts:(id)arg2;
 - (void)updateWithJSDictionary:(id)arg1;
 
 @end

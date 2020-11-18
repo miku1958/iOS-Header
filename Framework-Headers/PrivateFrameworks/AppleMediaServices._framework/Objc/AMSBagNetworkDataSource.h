@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @interface AMSBagNetworkDataSource : NSObject <AMSBagDataSourceProtocol>
 {
     CDUnknownBlockType _dataSourceChangedHandler;
+    CDUnknownBlockType _dataSourceDataInvalidatedHandler;
     NSString *_profile;
     NSString *_profileVersion;
     NSDictionary *_cachedData;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *cachedStorefront; // @synthesize cachedStorefront=_cachedStorefront;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *cachedStorefrontAccessQueue; // @synthesize cachedStorefrontAccessQueue=_cachedStorefrontAccessQueue;
 @property (copy, nonatomic) CDUnknownBlockType dataSourceChangedHandler; // @synthesize dataSourceChangedHandler=_dataSourceChangedHandler;
+@property (copy, nonatomic) CDUnknownBlockType dataSourceDataInvalidatedHandler; // @synthesize dataSourceDataInvalidatedHandler=_dataSourceDataInvalidatedHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDate *expirationDate;

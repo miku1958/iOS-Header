@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateData:(id)arg1 forGroup:(id)arg2 fromID:(id)arg3;
 - (void)_updateDelegateWithUpdateState:(id)arg1 to:(id)arg2 freshAvailable:(BOOL)arg3;
 - (void)blockSharedTrip:(id)arg1;
+- (void)cleanTimer;
 - (void)dealloc;
 - (void)groupSession:(id)arg1 participantDidJoin:(id)arg2;
 - (void)groupSession:(id)arg1 participantDidLeave:(id)arg2;
@@ -53,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)storageController:(id)arg1 updatedSharedTripGroupStorage:(id)arg2;
 - (void)subscribeToUpdatesToSharedTrip:(id)arg1;
 - (void)unsubscribeFromUpdatesToSharedTrip:(id)arg1;
+- (void)updateContacts;
 
 @end
 

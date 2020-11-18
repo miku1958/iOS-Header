@@ -79,9 +79,9 @@ __attribute__((visibility("hidden")))
 
 + (id)fp_queryFetchAttributes;
 - (void).cxx_destruct;
-- (id)appContainerBundleIdentifier;
 - (id)containerSubitemCount;
 - (id)formerIdentifier;
+- (id)fp_appContainerBundleIdentifier;
 - (id)initWithSearchableItem:(id)arg1;
 - (BOOL)isDataless;
 - (BOOL)isInPinnedFolder;

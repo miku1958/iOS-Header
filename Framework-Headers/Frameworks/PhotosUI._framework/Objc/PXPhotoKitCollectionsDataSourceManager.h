@@ -54,6 +54,8 @@
 @property (readonly, nonatomic) long long numberOfPendingKeyAssetFetches;
 @property (readonly) Class superclass;
 
++ (id)sharedKeyAssetsFetchQueue;
++ (id)sharedSubCollectionsFetchQueue;
 - (void).cxx_destruct;
 - (id)_cachedKeyAssetFetchResultForSubCollection:(id)arg1;
 - (id)_changedSubCollectionIndexesBySections;

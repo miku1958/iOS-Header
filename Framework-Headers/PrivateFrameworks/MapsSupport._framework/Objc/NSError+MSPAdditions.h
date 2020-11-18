@@ -23,6 +23,7 @@
 + (id)MSPSyncErrorWithCode:(long long)arg1 description:(id)arg2;
 - (id)MSPJournalDescription;
 - (BOOL)_maps_isCloudKitErrorWithCode:(long long)arg1 partialErrorsPolicy:(long long)arg2;
+- (BOOL)_maps_isFoundationWriteError;
 - (BOOL)isMSPSyncErrorWithCode:(long long)arg1;
 @end
 

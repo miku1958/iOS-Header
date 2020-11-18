@@ -28,13 +28,15 @@
 - (id)_nextNonClosedTabAdjacentToIndex:(unsigned long long)arg1 inAscendingOrder:(BOOL)arg2;
 - (unsigned long long)_relationConsideringUserPreferenceForRelation:(unsigned long long)arg1 isBlankTab:(BOOL)arg2;
 - (BOOL)_tab:(id)arg1 isRelatedOrEqualToTab:(id)arg2;
+- (id)_tabInsertionHintForNewBlankTabWithRecommendedPosition:(unsigned long long)arg1;
 - (id)_tabInsertionHintForPosition:(unsigned long long)arg1 isBlankTab:(BOOL)arg2;
-- (unsigned long long)_userPreferredNewBlankTabPosition;
+- (unsigned long long)_userPreferredNewBlankTabPositionInCurrentContext:(BOOL)arg1;
 - (unsigned long long)_userPreferredNewSpawnedTabPosition;
 - (id)init;
 - (id)simplifiedIdentifierForDisplayInTabTitle:(id)arg1;
 - (BOOL)tab:(id)arg1 isInSameSetAsTab:(id)arg2;
 - (id)tabInsertionHintForNewBlankTab;
+- (id)tabInsertionHintForNewBlankTabInCurrentContext;
 - (id)tabInsertionHintForPosition:(unsigned long long)arg1;
 - (id)tabInsertionHintForSpawnedTab;
 - (id)tabToInsertNewBlankTabAfter;

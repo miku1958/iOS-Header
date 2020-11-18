@@ -29,7 +29,8 @@
 
 - (void).cxx_destruct;
 - (void)_completeFlowWithError:(id)arg1;
-- (id)_safeAcsDictionaryFromResult:(id)arg1;
+- (void)_completeWithACSPostRequestFromWebView:(id)arg1;
+- (id)_safeACSDictionaryFromResult:(id)arg1;
 - (id)_samlJavaScriptQuery;
 - (void)cancel;
 - (id)initWithConfiguration:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

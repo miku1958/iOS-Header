@@ -217,7 +217,7 @@
 - (int)_runBasicConfig;
 - (void)_runBasicConfigReceiveResponse:(id)arg1 error:(id)arg2;
 - (void)_runBasicConfigSendRequest;
-- (int)_runCDPSetup;
+- (int)_runCDPSetup:(BOOL)arg1;
 - (int)_runCheckAccount;
 - (void)_runFinishRequest;
 - (void)_runFinishResponse:(id)arg1 error:(id)arg2;

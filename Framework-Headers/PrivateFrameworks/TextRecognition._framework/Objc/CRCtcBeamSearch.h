@@ -6,32 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSLocale;
+@class CRLanguageResources, NSLocale;
 
 @interface CRCtcBeamSearch : NSObject
 {
-    void *_characterLanguageModel;
-    struct _LXLexicon *_staticLexicon;
     struct _LXLexicon *_dynamicLexicon;
-    void *_wordLanguageModel;
     NSLocale *_locale;
+    CRLanguageResources *_languageResources;
 }
 
-@property (nonatomic) void *characterLanguageModel; // @synthesize characterLanguageModel=_characterLanguageModel;
 @property (nonatomic) struct _LXLexicon *dynamicLexicon; // @synthesize dynamicLexicon=_dynamicLexicon;
+@property (readonly, nonatomic) CRLanguageResources *languageResources; // @synthesize languageResources=_languageResources;
 @property (readonly, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
-@property (nonatomic) struct _LXLexicon *staticLexicon; // @synthesize staticLexicon=_staticLexicon;
-@property (nonatomic) void *wordLanguageModel; // @synthesize wordLanguageModel=_wordLanguageModel;
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithOptions:(id)arg1;
-- (BOOL)isLanguageSupported:(id)arg1;
+- (id)initWithOptions:(id)arg1 languageResources:(id)arg2;
 - (id)kBestPathsForInput:(id)arg1 k:(unsigned long long)arg2 beamWidth:(unsigned long long)arg3 outputProbs:(id *)arg4 outputWhitespaceRanges:(id *)arg5;
-- (void)loadCharacterNgramModel:(id)arg1;
 - (void)loadDynamicLexicon:(id)arg1 forLocale:(id)arg2;
-- (void)loadStaticLexicon:(id)arg1;
-- (void)loadWordLanguageModel;
 - (struct _LXLexicon *)newDynamicLexiconForLocale:(id)arg1 error:(id *)arg2;
 
 @end

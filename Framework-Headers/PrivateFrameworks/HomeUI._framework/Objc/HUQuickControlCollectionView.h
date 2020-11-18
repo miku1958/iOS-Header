@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 collectionViewLayout:(id)arg2;
 - (BOOL)touchesShouldCancelInContentView:(id)arg1;
 

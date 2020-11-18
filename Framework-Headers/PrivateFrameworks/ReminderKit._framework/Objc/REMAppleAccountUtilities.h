@@ -20,6 +20,7 @@
 @property (nonatomic) BOOL primaryICloudACAccountIsValid; // @synthesize primaryICloudACAccountIsValid=_primaryICloudACAccountIsValid;
 @property (readonly) BOOL primaryICloudAccountEnabled;
 
++ (id)accountDescriptionWithACAccount:(id)arg1;
 + (id)getAppleIDSession;
 + (id)sharedInstance;
 - (void).cxx_destruct;

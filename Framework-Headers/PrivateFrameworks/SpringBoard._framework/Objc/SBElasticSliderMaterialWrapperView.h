@@ -20,13 +20,13 @@
 @property (readonly, nonatomic) MTMaterialShadowView *baseMaterialView; // @synthesize baseMaterialView=_baseMaterialView;
 @property (readonly, nonatomic) UIView *maskView; // @synthesize maskView=_maskView;
 @property (nonatomic) long long shadowMode; // @synthesize shadowMode=_shadowMode;
-@property (strong, nonatomic) SBElasticSliderView *sliderView; // @synthesize sliderView=_sliderView;
+@property (readonly, nonatomic) SBElasticSliderView *sliderView; // @synthesize sliderView=_sliderView;
 
 - (void).cxx_destruct;
 - (void)_setContinuousCornerRadius:(double)arg1;
 - (void)_updateShadowMode;
 - (id)init;
-- (void)setFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 
 @end
 

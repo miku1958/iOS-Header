@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <MediaPlaybackCore/_MPCStateDumpPropertyListTransformable-Protocol.h>
+
 @class MPCPlayerResponse, MPCPlayerResponseItem, MPSectionedCollection, NSIndexPath, NSString;
 
-@interface MPCPlayerResponseTracklist : NSObject
+@interface MPCPlayerResponseTracklist : NSObject <_MPCStateDumpPropertyListTransformable>
 {
     unsigned long long _changeItemSupport;
     NSString *_uniqueIdentifier;
@@ -23,7 +25,10 @@
     long long _globalItemCount;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long globalItemCount; // @synthesize globalItemCount=_globalItemCount;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) MPSectionedCollection *items; // @synthesize items=_items;
 @property (readonly, nonatomic) long long lastChangeDirection; // @synthesize lastChangeDirection=_lastChangeDirection;
 @property (readonly, nonatomic) MPCPlayerResponseItem *playingItem;
@@ -32,6 +37,7 @@
 @property (readonly, nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
 @property (readonly, weak, nonatomic) MPCPlayerResponse *response; // @synthesize response=_response;
 @property (readonly, nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, nonatomic) long long upNextItemCount; // @synthesize upNextItemCount=_upNextItemCount;
 
@@ -39,6 +45,7 @@
 + (id)resetCommandForPlayerPath:(id)arg1 devices:(id)arg2;
 - (void).cxx_destruct;
 - (unsigned long long)_determineChangeItemSupport;
+- (id)_stateDumpObject;
 - (id)changeItemCommand;
 - (id)disableModificationsCommand;
 - (id)initWithResponse:(id)arg1;

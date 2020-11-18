@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class RLMRealm;
+@class RLMFastEnumerator, RLMRealm;
 
 @protocol RLMFastEnumerable
 
@@ -12,7 +12,7 @@
 @property (readonly, nonatomic) struct RLMClassInfo *objectInfo;
 @property (readonly, nonatomic) RLMRealm *realm;
 
-- (unsigned long long)indexInSource:(unsigned long long)arg1;
+- (RLMFastEnumerator *)fastEnumerator;
 - (struct TableView)tableView;
 @end
 

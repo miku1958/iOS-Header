@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)_selectedDayDidChange:(id)arg1;
 - (void)_selectedSegmentIndexChanged:(id)arg1;
-- (void)_selectedUsageReportDidChange:(id)arg1;
 - (id)init;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setCoordinator:(id)arg1;

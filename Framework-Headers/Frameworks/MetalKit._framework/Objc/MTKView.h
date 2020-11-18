@@ -134,6 +134,7 @@
 - (void)setContentScaleFactor:(double)arg1;
 - (void)setDrawableAttachmentIndex:(unsigned long long)arg1;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)setNilValueForKey:(id)arg1;
 - (void)setNominalFramesPerSecond:(long long)arg1;
 - (double)startTime;
 

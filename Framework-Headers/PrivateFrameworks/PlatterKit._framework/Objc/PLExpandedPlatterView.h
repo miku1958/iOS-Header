@@ -100,7 +100,6 @@
 - (void)_layoutTopRubberbandingView;
 - (struct CGRect)_mainContentViewFrame;
 - (void)_reduceTransparencyDidChange:(id)arg1;
-- (struct UIEdgeInsets)_scrollViewContentInset;
 - (struct CGRect)_scrollViewContentViewFrame;
 - (struct CGSize)_sizeThatFitsContentExcludingActionsWithSize:(struct CGSize)arg1;
 - (void)_updateHeaderKeyLineAlphaIfNecessary;
@@ -113,6 +112,7 @@
 - (struct CGRect)frameForPlatterFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (struct UIEdgeInsets)minimumScrollViewContentInsets;
 - (struct CGRect)platterFrameForFrame:(struct CGRect)arg1;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)respondsToSelector:(SEL)arg1;

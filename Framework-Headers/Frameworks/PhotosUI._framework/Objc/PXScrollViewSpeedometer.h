@@ -45,8 +45,10 @@
 
 - (void).cxx_destruct;
 - (void)_handleScrollEvent:(id)arg1 didScrollingEnd:(BOOL)arg2;
+- (void)_handleScrubbingTimeout;
 - (void)_handleTimeoutTimer:(id)arg1;
 - (void)_rescheduleTimeout;
+- (void)_scheduleScrubbingTimeout;
 - (void)_setPreviousRegime:(long long)arg1;
 - (void)_setRegime:(long long)arg1;
 - (void)_updateScrollRegime;

@@ -30,6 +30,7 @@
     unsigned int _inRenderQueueForLayerBackedGLRendering:1;
     unsigned int _disableLinearRendering:1;
     unsigned int _isInLiveResize:1;
+    BOOL _isHidden;
     BOOL _didTriggerRedrawWhileRendering;
     id _delegate;
     SCNRenderer *_renderer;
@@ -202,6 +203,7 @@
 - (void)setDisplayLink:(id)arg1;
 - (void)setDrawableResizesAsynchronously:(BOOL)arg1;
 - (void)setEventHandler:(id)arg1;
+- (void)setHidden:(BOOL)arg1;
 - (void)setIbPreferredRenderingAPI:(int)arg1;
 - (void)setIbSceneName:(id)arg1;
 - (void)setIbWantsMultisampling:(BOOL)arg1;

@@ -65,6 +65,7 @@
 - (void)_didComplete;
 - (void)_evaluateTransitionCompletion;
 - (void)_mainDisplayUpdateAggregateDictionaryForLayoutRoleWithApplication:(id)arg1;
+- (long long)_orientationForFollowOnRotationIfNeeded;
 - (BOOL)_overrideInterfaceOrientationForOrientationMismatch:(long long *)arg1;
 - (void)_performTransition;
 - (void)_prepareLayoutTransition;
@@ -73,7 +74,7 @@
 - (BOOL)_sceneEntities:(id)arg1 hasEntityRepresentingSceneID:(id)arg2;
 - (void)_sendActivationResultWithSuccess:(BOOL)arg1;
 - (void)_updateAggregateDictionary;
-- (void)_updateKeyboardContextMaskStyleForEntities:(id)arg1;
+- (void)_updateKeyboardContextMaskStyles:(BOOL)arg1;
 - (void)_updateScenesForTransitionCompletion;
 - (void)_willBegin;
 - (void)_willFailWithReason:(id)arg1;
@@ -83,6 +84,7 @@
 - (id)initWithTransitionRequest:(id)arg1;
 - (BOOL)isReadyForSynchronizedCommit;
 - (void)performSynchronizedCommit;
+- (id)sceneManager;
 - (void)synchronizedTransaction:(id)arg1 didCommitSynchronizedTransactions:(id)arg2;
 - (void)synchronizedTransaction:(id)arg1 willCommitSynchronizedTransactions:(id)arg2;
 - (BOOL)synchronizedTransactionGroup:(id)arg1 shouldFailForSynchronizedTransaction:(id)arg2;

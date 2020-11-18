@@ -17,5 +17,6 @@
 - (oneway void)resetCredentialsWithHandler:(void (^)(NSError *))arg1;
 - (oneway void)setLastPersonalizationVersionDisplayedForSignedInPlayer:(NSString *)arg1;
 - (oneway void)setLastPrivacyNoticeVersionDisplayedForSignedInPlayer:(unsigned long long)arg1;
+- (oneway void)signOutPlayerWithHandler:(void (^)(NSError *))arg1;
 @end
 

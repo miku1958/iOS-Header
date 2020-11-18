@@ -50,6 +50,7 @@
 - (id)responsesForMessageWithLanguageDetection:(id)arg1 maximumResponses:(unsigned long long)arg2 forConversationHistory:(id)arg3 forContext:(id)arg4 withLanguage:(id *)arg5 options:(unsigned long long)arg6;
 - (void)responsesForMessageWithLanguageDetection:(id)arg1 maximumResponses:(unsigned long long)arg2 forConversationHistory:(id)arg3 forContext:(id)arg4 withLanguage:(id *)arg5 options:(unsigned long long)arg6 completionBlock:(CDUnknownBlockType)arg7;
 - (id)responsesForMessageWithLanguageDetectionImp:(id)arg1 maximumResponses:(unsigned long long)arg2 forRecipientID:(id)arg3 forConversationHistory:(id)arg4 forContext:(id)arg5 withLanguage:(id *)arg6 inputModes:(id)arg7 options:(unsigned long long)arg8;
+- (BOOL)usePersonalizedRanking;
 
 @end
 

@@ -12,6 +12,7 @@
 - (void)handleAskForInput:(WFAskForInputIntent *)arg1 completion:(void (^)(WFAskForInputIntentResponse *))arg2;
 - (void)resolveDateAndTimeAnswerForAskForInput:(WFAskForInputIntent *)arg1 withCompletion:(void (^)(INDateComponentsResolutionResult *))arg2;
 - (void)resolveDateAnswerForAskForInput:(WFAskForInputIntent *)arg1 withCompletion:(void (^)(INDateComponentsResolutionResult *))arg2;
+- (void)resolveDefaultURLAnswerForAskForInput:(WFAskForInputIntent *)arg1 withCompletion:(void (^)(INStringResolutionResult *))arg2;
 - (void)resolveNumberAnswerForAskForInput:(WFAskForInputIntent *)arg1 withCompletion:(void (^)(WFAskForInputNumberAnswerResolutionResult *))arg2;
 - (void)resolveQuestionForAskForInput:(WFAskForInputIntent *)arg1 withCompletion:(void (^)(INStringResolutionResult *))arg2;
 - (void)resolveStringAnswerForAskForInput:(WFAskForInputIntent *)arg1 withCompletion:(void (^)(INStringResolutionResult *))arg2;

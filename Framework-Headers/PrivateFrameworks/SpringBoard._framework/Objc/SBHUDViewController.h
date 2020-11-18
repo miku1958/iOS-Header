@@ -6,11 +6,12 @@
 
 #import <SpringBoardFoundation/SBFTouchPassThroughViewController.h>
 
+#import <SpringBoard/SBHUDViewControlling-Protocol.h>
 #import <SpringBoard/UIViewControllerTransitioningDelegate-Protocol.h>
 
 @class NSString, UIImage, UIImageView, UIView, _UIBackdropView;
 
-@interface SBHUDViewController : SBFTouchPassThroughViewController <UIViewControllerTransitioningDelegate>
+@interface SBHUDViewController : SBFTouchPassThroughViewController <UIViewControllerTransitioningDelegate, SBHUDViewControlling>
 {
     BOOL _showsProgress;
     UIImage *_image;
@@ -45,6 +46,8 @@
 - (void)_rotateToInterfaceOrientation:(long long)arg1;
 - (void)_updateBackdropMask;
 - (void)_updateBlockView;
+- (BOOL)definesAnimatedDismissal;
+- (void)dismissAnimatedWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)displaysLabel;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;

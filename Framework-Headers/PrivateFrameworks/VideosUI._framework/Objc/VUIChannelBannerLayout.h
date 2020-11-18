@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface VUIChannelBannerLayout : TVViewLayout
 {
     BOOL _isSubscribed;
+    BOOL _descriptionPreferredOnPhoneSizeClass;
     VUIAppleTVChannelLogoLayout *_channelLogoLayout;
     VUITextLayout *_descriptionTextLayout;
     VUITextLayout *_textLayout;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) VUIAppleTVChannelLogoLayout *channelLogoLayout; // @synthesize channelLogoLayout=_channelLogoLayout;
+@property (nonatomic) BOOL descriptionPreferredOnPhoneSizeClass; // @synthesize descriptionPreferredOnPhoneSizeClass=_descriptionPreferredOnPhoneSizeClass;
 @property (strong, nonatomic) VUITextLayout *descriptionTextLayout; // @synthesize descriptionTextLayout=_descriptionTextLayout;
 @property (strong, nonatomic) VUITextLayout *disclaimerTextLayout; // @synthesize disclaimerTextLayout=_disclaimerTextLayout;
 @property (nonatomic) BOOL isSubscribed; // @synthesize isSubscribed=_isSubscribed;

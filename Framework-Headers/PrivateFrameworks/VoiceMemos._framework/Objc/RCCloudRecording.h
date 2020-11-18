@@ -38,7 +38,7 @@
 @property (copy, nonatomic) NSString *path; // @dynamic path;
 @property (nonatomic) BOOL pendingRestore;
 @property (readonly, nonatomic) BOOL playable;
-@property (readonly, nonatomic) NSNumber *purgeableAudioFutureSize;
+@property (readonly, nonatomic) NSNumber *purgeableAudioFileSize;
 @property (nonatomic) BOOL recordedOnWatch;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL synced;
@@ -68,7 +68,7 @@
 - (void)awakeFromFetch;
 - (void)awakeFromInsert;
 - (id)name;
-- (id)purgeAudioFuture:(id *)arg1;
+- (id)purgeAudioFileWithModel:(id)arg1 error:(id *)arg2;
 - (id)searchableItem;
 - (void)setDownloading:(BOOL)arg1;
 - (void)setEditing:(BOOL)arg1;

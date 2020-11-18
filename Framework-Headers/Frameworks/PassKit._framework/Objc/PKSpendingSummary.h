@@ -24,15 +24,19 @@
     PKCurrencyAmount *_previousMaxAmount;
     PKPaymentTransactionGroup *_rewards;
     PKPaymentTransactionGroup *_interest;
+    PKPaymentTransactionGroup *_payments;
     PKPaymentTransactionGroup *_refunds;
+    PKPaymentTransactionGroup *_adjustments;
     NSArray *_spendingsPerCalendarUnit;
 }
 
+@property (strong, nonatomic) PKPaymentTransactionGroup *adjustments; // @synthesize adjustments=_adjustments;
 @property (strong, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property (strong, nonatomic) PKPaymentTransactionGroup *interest; // @synthesize interest=_interest;
 @property (nonatomic) BOOL isLoading; // @synthesize isLoading=_isLoading;
 @property (copy, nonatomic) NSArray *orderedSpendingCategories; // @synthesize orderedSpendingCategories=_orderedSpendingCategories;
 @property (copy, nonatomic) NSArray *orderedSpendingPerMerchants; // @synthesize orderedSpendingPerMerchants=_orderedSpendingPerMerchants;
+@property (strong, nonatomic) PKPaymentTransactionGroup *payments; // @synthesize payments=_payments;
 @property (strong, nonatomic) PKCurrencyAmount *previousMaxAmount; // @synthesize previousMaxAmount=_previousMaxAmount;
 @property (strong, nonatomic) PKCurrencyAmount *previousTotalSpending; // @synthesize previousTotalSpending=_previousTotalSpending;
 @property (strong, nonatomic) PKPaymentTransactionGroup *refunds; // @synthesize refunds=_refunds;

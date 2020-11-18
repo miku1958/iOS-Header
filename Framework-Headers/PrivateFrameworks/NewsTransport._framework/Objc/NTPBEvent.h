@@ -39,6 +39,7 @@
     NSData *_widgetSessionId;
     NSString *_widgetUserId;
     NSString *_windowFrameInScreen;
+    BOOL _isAmplifyUser;
     BOOL _isBundlePurchaser;
     BOOL _isPaidSubscriberDuringEvent;
     BOOL _isPaidSubscriberFromAppStoreDuringEvent;
@@ -56,6 +57,7 @@
         unsigned int gestureType:1;
         unsigned int interfaceOrientation:1;
         unsigned int reachabilityStatus:1;
+        unsigned int isAmplifyUser:1;
         unsigned int isBundlePurchaser:1;
         unsigned int isPaidSubscriberDuringEvent:1;
         unsigned int isPaidSubscriberFromAppStoreDuringEvent:1;
@@ -87,6 +89,7 @@
 @property (readonly, nonatomic) BOOL hasEventObject;
 @property (nonatomic) BOOL hasGestureType;
 @property (nonatomic) BOOL hasInterfaceOrientation;
+@property (nonatomic) BOOL hasIsAmplifyUser;
 @property (nonatomic) BOOL hasIsBundlePurchaser;
 @property (nonatomic) BOOL hasIsPaidSubscriberDuringEvent;
 @property (nonatomic) BOOL hasIsPaidSubscriberFromAppStoreDuringEvent;
@@ -107,6 +110,7 @@
 @property (readonly, nonatomic) BOOL hasWidgetUserId;
 @property (readonly, nonatomic) BOOL hasWindowFrameInScreen;
 @property (nonatomic) int interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
+@property (nonatomic) BOOL isAmplifyUser; // @synthesize isAmplifyUser=_isAmplifyUser;
 @property (nonatomic) BOOL isBundlePurchaser; // @synthesize isBundlePurchaser=_isBundlePurchaser;
 @property (nonatomic) BOOL isPaidSubscriberDuringEvent; // @synthesize isPaidSubscriberDuringEvent=_isPaidSubscriberDuringEvent;
 @property (nonatomic) BOOL isPaidSubscriberFromAppStoreDuringEvent; // @synthesize isPaidSubscriberFromAppStoreDuringEvent=_isPaidSubscriberFromAppStoreDuringEvent;

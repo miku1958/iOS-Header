@@ -19,6 +19,7 @@
 @property (nonatomic) BOOL allowsWebClips; // @synthesize allowsWebClips=_allowsWebClips;
 @property (readonly, nonatomic) id<SBIconModelApplicationDataSource> applicationDataSource; // @synthesize applicationDataSource=_applicationDataSource;
 
++ (id)migratedIdentifierForLeafIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (id)_applicationIcons;
 - (void)_noteApplicationIconImageChanged:(id)arg1;
@@ -44,7 +45,6 @@
 - (id)indexPathForIconInPlatformState:(id)arg1;
 - (id)initWithStore:(id)arg1 applicationDataSource:(id)arg2;
 - (BOOL)isIconVisible:(id)arg1;
-- (BOOL)isMasqueradedLeafIdentifier:(id)arg1;
 - (void)loadAllIcons;
 - (void)localeChanged;
 - (id)modernizeRootArchive:(id)arg1;

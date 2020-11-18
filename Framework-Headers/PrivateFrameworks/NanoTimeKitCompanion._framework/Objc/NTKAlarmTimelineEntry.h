@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSDate *fireDate; // @synthesize fireDate=_fireDate;
 @property (strong, nonatomic) NSDate *snoozeDate; // @synthesize snoozeDate=_snoozeDate;
 
++ (id)companionModel;
 - (void).cxx_destruct;
 - (id)_activeStateTimeRelativeDateTextProvider;
 - (id)_activeStateTimeTextProvider;

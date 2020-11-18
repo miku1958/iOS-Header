@@ -31,8 +31,10 @@
 - (void)accommodatePresentedSubitemDeletionAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)bindAssetsdService:(id)arg1 error:(id *)arg2;
 - (id)boundAssetsdServices;
+- (void)clearShutdownReason;
 - (void)close;
 - (id)initWithLibraryURL:(id)arg1 bundleController:(id)arg2 backgroundJobService:(id)arg3 libraryServicesDelegateClass:(Class)arg4;
+- (void)invalidateClientConnectionsWithReason:(id)arg1;
 - (id)newAssetsdClient;
 - (id)newBoundAssetsdServicesTable;
 - (id)newChangePublisher;

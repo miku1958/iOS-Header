@@ -8,10 +8,12 @@
 
 #import <PassKitUI/DevicePINControllerDelegate-Protocol.h>
 
-@class NSString;
+@class NSString, PKPasscodeUpgradeFlowController;
 
 @interface PKCurrentDevicePasscodeViewController : DevicePINController <DevicePINControllerDelegate>
 {
+    PKPasscodeUpgradeFlowController *_flowController;
+    BOOL _viewHasAppeared;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -19,11 +21,13 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)init;
+- (void).cxx_destruct;
+- (id)initWithPasscodeUpgradeFlowController:(id)arg1;
 - (id)pinInstructionsPrompt;
 - (BOOL)requiresKeyboard;
 - (id)stringsBundle;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

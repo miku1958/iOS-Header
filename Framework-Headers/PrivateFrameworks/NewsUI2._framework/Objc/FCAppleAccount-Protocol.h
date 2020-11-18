@@ -6,11 +6,12 @@
 
 #import <NewsUI2/NSObject-Protocol.h>
 
-@class NSString;
+@class ACAccount, NSString;
 
 @protocol FCAppleAccount <NSObject>
 
 @property (nonatomic, readonly) NSString *DSID;
+@property (nonatomic, readonly) ACAccount *activeiTunesAccount;
 @property (nonatomic, readonly) NSString *contentStoreFrontID;
 @property (nonatomic, readonly) NSString *endpointConnectionClientID;
 @property (nonatomic, readonly) BOOL isContentStoreFrontSupported;

@@ -11,12 +11,14 @@
 #import <EmailDaemon/EFLoggable-Protocol.h>
 
 @class EDMessageQueryHelper, EFCancelationToken, NSMutableDictionary, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@protocol EFScheduler, OS_dispatch_queue;
 
 @interface EDMessageQueryHandler : EDMessageRepositoryQueryHandler <EDMessageQueryHelperDelegate, EFLoggable, EFContentProtectionObserver>
 {
     BOOL _didCancel;
+    BOOL _isInitialized;
     EDMessageQueryHelper *_currentQueryHelper;
+    id<EFScheduler> _scheduler;
     NSObject<OS_dispatch_queue> *_contentProtectionQueue;
     NSObject<OS_dispatch_queue> *_resultQueue;
     NSMutableDictionary *_oldestMessageIDsByMailboxObjectIDs;
@@ -29,8 +31,10 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didCancel; // @synthesize didCancel=_didCancel;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isInitialized; // @synthesize isInitialized=_isInitialized;
 @property (readonly, copy, nonatomic) NSMutableDictionary *oldestMessageIDsByMailboxObjectIDs; // @synthesize oldestMessageIDsByMailboxObjectIDs=_oldestMessageIDsByMailboxObjectIDs;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *resultQueue; // @synthesize resultQueue=_resultQueue;
+@property (readonly, nonatomic) id<EFScheduler> scheduler; // @synthesize scheduler=_scheduler;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) EFCancelationToken *updateOldestMessagesCancelationToken; // @synthesize updateOldestMessagesCancelationToken=_updateOldestMessagesCancelationToken;
 
@@ -39,7 +43,7 @@
 - (void).cxx_destruct;
 - (void)_contentProtectionChangedToLocked;
 - (void)_contentProtectionChangedToUnlocked;
-- (void)_createHelper;
+- (void)_createHelperAndReconcileJournal:(BOOL)arg1;
 - (void)_initializeOldestMessagesByMailbox;
 - (id)_objectIDsAndUnreadObjectIDsFromMessages:(id)arg1 unreadObjectIDs:(id *)arg2;
 - (id)_oldestItemQueryForMailbox:(id)arg1;
@@ -60,7 +64,7 @@
 - (void)queryHelper:(id)arg1 didFindMessages:(id)arg2;
 - (void)queryHelper:(id)arg1 didUpdateMessages:(id)arg2 forKeyPaths:(id)arg3;
 - (void)queryHelper:(id)arg1 messageFlagsDidChangeForMessages:(id)arg2;
-- (void)queryHelper:(id)arg1 objectIDDidChangeForMessage:(id)arg2 oldObjectID:(id)arg3;
+- (void)queryHelper:(id)arg1 objectIDDidChangeForMessage:(id)arg2 oldObjectID:(id)arg3 oldConversationID:(long long)arg4;
 - (void)queryHelperDidFindAllMessages:(id)arg1;
 - (void)queryHelperDidFinishRemoteSearch:(id)arg1;
 - (void)queryHelperNeedsRestart:(id)arg1;

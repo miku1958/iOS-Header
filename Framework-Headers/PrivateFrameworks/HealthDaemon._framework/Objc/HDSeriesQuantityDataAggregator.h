@@ -12,6 +12,7 @@
 
 - (id)_codableDatumsFromData:(id)arg1;
 - (id)_startSeriesWithDatum:(id)arg1 device:(id)arg2;
+- (id)_validatedState:(id)arg1;
 - (void)addDatum:(id)arg1 toAccumulatedData:(id)arg2;
 - (id)aggregateForState:(id)arg1 collector:(id)arg2 device:(id)arg3 requestedAggregationDate:(id)arg4 mode:(long long)arg5 freezeSeries:(BOOL)arg6 error:(id *)arg7;
 - (id)initialAggregationState;

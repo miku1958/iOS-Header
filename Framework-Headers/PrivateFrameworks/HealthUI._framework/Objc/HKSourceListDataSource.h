@@ -14,6 +14,7 @@
     NSObject<OS_dispatch_queue> *_mainQueue;
     NSObject<OS_dispatch_queue> *_resultsQueue;
     NSMutableArray *_transformers;
+    NSMutableArray *_followupTransformers;
     HKSynchronousObserverSet *_observers;
     int _notifyToken;
     BOOL _hasInitiatedFetch;

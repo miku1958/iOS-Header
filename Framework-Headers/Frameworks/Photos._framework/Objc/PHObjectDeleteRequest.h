@@ -19,7 +19,7 @@
 }
 
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled; // @synthesize clientEntitled=_clientEntitled;
-@property (readonly, nonatomic) NSString *clientName;
+@property (readonly, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

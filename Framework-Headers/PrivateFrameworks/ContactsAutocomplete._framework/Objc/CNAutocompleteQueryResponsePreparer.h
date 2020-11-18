@@ -23,6 +23,8 @@
 @property (strong, nonatomic) id<CNPromise> matchingPriorityResultsPromise; // @synthesize matchingPriorityResultsPromise=_matchingPriorityResultsPromise;
 @property (strong, nonatomic) id<CNFuture> priorityResultsFuture; // @synthesize priorityResultsFuture=_priorityResultsFuture;
 
++ (id)bundleIdentifierOfCurrentProcess;
++ (id)makeBundleIdentifierOfCurrentProcess;
 - (void).cxx_destruct;
 - (id)addDiagnosticLog:(CDUnknownBlockType)arg1;
 - (id)applyPriorityResultsOrder:(id)arg1;

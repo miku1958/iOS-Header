@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <OnBoardingKit/OBBaseWelcomeController.h>
+#import <UIKitCore/UIViewController.h>
 
 #import <SIMSetupSupport/TSSetupFlowItem-Protocol.h>
 #import <SIMSetupSupport/UITableViewDataSource-Protocol.h>
@@ -14,7 +14,7 @@
 @class NSArray, NSLayoutConstraint, NSString, UIBarButtonItem, UILabel, UIScrollView, UITableView, UITextField;
 @protocol TSSIMSetupFlowDelegate;
 
-@interface TSCellularPlanCardInfoViewController : OBBaseWelcomeController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, TSSetupFlowItem>
+@interface TSCellularPlanCardInfoViewController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, TSSetupFlowItem>
 {
     NSString *_fauxCardData;
     NSArray *_tableData;

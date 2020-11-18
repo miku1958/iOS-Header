@@ -15,7 +15,7 @@
 #import <SpringBoard/UIInteractionProgressObserver-Protocol.h>
 #import <SpringBoard/UIWindowDelegate-Protocol.h>
 
-@class NSMutableSet, NSString, SBAppStatusBarSettingsAssertion, SBAppSwitcherSettings, SBDismissOnlyAlertItem, SBHUDController, SBHomeScreenBackdropViewBase, SBHomeScreenWindow, SBIconContentView, SBIconController, SBMainScreenActiveInterfaceOrientationWindow, SBVolumeControl, SBWallpaperEffectView, SBWindow, UIForceStageInteractionProgress, UIStatusBar, UIView;
+@class NSMutableDictionary, NSMutableSet, NSString, SBAppStatusBarSettingsAssertion, SBAppSwitcherSettings, SBDismissOnlyAlertItem, SBHUDController, SBHomeScreenBackdropViewBase, SBHomeScreenWindow, SBIconContentView, SBIconController, SBMainScreenActiveInterfaceOrientationWindow, SBVolumeControl, SBWallpaperEffectView, SBWindow, UIForceStageInteractionProgress, UIStatusBar, UIView;
 
 @interface SBUIController : NSObject <SBWallpaperObserver, PTSettingsKeyObserver, UIInteractionProgressObserver, SBWallpaperOrientationProvider, SBReachabilityObserver, SBHomeScreenBackdropViewBaseDelegate, UIWindowDelegate, CSPowerStatusProviding>
 {
@@ -42,13 +42,17 @@
     float _batteryCapacity;
     BOOL _supportsDetailedBatteryCapacity;
     BOOL _disableAppSwitchForcePressDueToHomeButtonForce;
+    int _powerStateUpdateToken;
+    NSMutableDictionary *_powerSourceHasChimed;
     int _batteryLoggingStartCapacity;
     SBDismissOnlyAlertItem *_unsupportedChargerAlert;
     SBAppSwitcherSettings *_switcherSettings;
     NSMutableSet *_contentRequiringReasons;
+    BOOL _chargingChimeEnabled;
     SBIconController *_iconController;
 }
 
+@property (nonatomic) BOOL chargingChimeEnabled; // @synthesize chargingChimeEnabled=_chargingChimeEnabled;
 @property (readonly, nonatomic, getter=isConnectedToExternalChargingSource) BOOL connectedToExternalChargingSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -75,9 +79,11 @@
 - (void)_closeOpenFolderIfNecessary;
 - (id)_currentHomeScreenLegibilitySettings;
 - (void)_deviceUILocked;
+- (void)_enumeratePowerSourcesWithBlock:(CDUnknownBlockType)arg1;
 - (id)_fakeSpringBoardStatusBar;
 - (void)_hideKeyboard;
 - (id)_legibilitySettings;
+- (BOOL)_powerSourceWantsToPlayChime;
 - (void)_reduceMotionStatusDidChange:(id)arg1;
 - (void)_removeReachabilityEffectViewIfNecessary;
 - (void)_setupHomeScreenContentBackdropView;
@@ -134,7 +140,7 @@
 - (void)launchIcon:(id)arg1 fromLocation:(id)arg2 context:(id)arg3 activationSettings:(id)arg4 actions:(id)arg5;
 - (void)noteStatusBarHeightChanged:(id)arg1;
 - (void)nudgeIconInterfaceOrientation:(long long)arg1 duration:(double)arg2;
-- (void)playConnectedToPowerSoundIfNecessary;
+- (void)playChargingChimeIfAppropriate;
 - (void)possiblyWakeForPowerStatusChangeWithUnlockSource:(int)arg1;
 - (void)removeFakeSpringBoardStatusBar;
 - (void)restoreContent;
@@ -152,10 +158,10 @@
 - (void)setIsConnectedToUnsupportedChargingAccessory:(BOOL)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)statusBarOverridesDidChange:(id)arg1;
-- (void)stopRestoringIconList;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (BOOL)supportsDetailedBatteryCapacity;
+- (void)suppressChimeForConnectedPowerSources;
 - (void)tearDownIconListAndBar;
 - (long long)transitionSourceForIconLocation:(id)arg1;
 - (void)updateBatteryState:(id)arg1;

@@ -37,7 +37,6 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_updateStyleManager;
-- (id)analyticsLogContextWithNavigationState;
 - (id)initWithTaskContext:(const shared_ptr_e963992e *)arg1;
 - (unsigned long long)navCameraMode;
 - (unsigned long long)navigationDestination;

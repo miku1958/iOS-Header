@@ -6,17 +6,15 @@
 
 #import <AvatarKit/AVTCompositor.h>
 
-@class NSMutableArray, NSMutableSet;
+@class NSMutableSet;
 
 @interface AVTCompositor_GPU : AVTCompositor
 {
     NSMutableSet *_textureProviders;
-    NSMutableArray *_cachedTexturesInvalidationTokens;
 }
 
 - (void).cxx_destruct;
 - (void)addClient:(id)arg1;
-- (id)cachedTexturesInvalidationTokens;
 - (void)componentDidChangeForType:(long long)arg1;
 - (id)init;
 - (void)removeClient:(id)arg1;

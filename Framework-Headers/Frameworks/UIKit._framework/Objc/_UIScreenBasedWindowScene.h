@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_referenceBounds;
 - (struct CGRect)_referenceBoundsForOrientation:(long long)arg1;
 - (void)_setKeepContextAssociationInBackground:(BOOL)arg1;
+- (BOOL)_shouldAllowFencing;
 - (id)_synthesizedSettings;
 - (void)_updateClientSettingsToInterfaceOrientation:(long long)arg1 withAnimationDuration:(double)arg2;
 - (id)initWithScreen:(id)arg1 session:(id)arg2 lookupKey:(id)arg3;

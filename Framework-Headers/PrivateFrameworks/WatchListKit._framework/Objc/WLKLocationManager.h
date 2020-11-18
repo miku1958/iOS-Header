@@ -8,7 +8,7 @@
 
 #import <WatchListKit/CLLocationManagerDelegate-Protocol.h>
 
-@class CLLocationManager, NSDictionary, NSString, NSXPCConnection;
+@class CLLocationManager, NSDictionary, NSString, NSUserDefaults, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface WLKLocationManager : NSObject <CLLocationManagerDelegate>
@@ -16,14 +16,16 @@
     int _didChangeNotificationToken;
     NSDictionary *_lastKnownLocation;
     NSObject<OS_dispatch_queue> *_accessQueue;
-    NSObject<OS_dispatch_queue> *_readWriteQueue;
+    NSObject<OS_dispatch_queue> *_clQueue;
     CDUnknownBlockType _locationUpdateBlock;
     CLLocationManager *_clLocationManager;
+    NSUserDefaults *_userDefaults;
     NSXPCConnection *_connection;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
 @property (strong, nonatomic) CLLocationManager *clLocationManager; // @synthesize clLocationManager=_clLocationManager;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *clQueue; // @synthesize clQueue=_clQueue;
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -31,8 +33,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSDictionary *lastKnownLocation; // @synthesize lastKnownLocation=_lastKnownLocation;
 @property (copy, nonatomic) CDUnknownBlockType locationUpdateBlock; // @synthesize locationUpdateBlock=_locationUpdateBlock;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *readWriteQueue; // @synthesize readWriteQueue=_readWriteQueue;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 
 + (id)defaultLocationManager;
 - (void).cxx_destruct;
@@ -41,31 +43,30 @@
 - (id)_createLocationObjFromLocationDictionary:(id)arg1;
 - (id)_dictionaryForCLLocation:(id)arg1;
 - (id)_dictionaryOnDisk;
-- (void)_dictionaryOnDisk:(CDUnknownBlockType)arg1;
+- (id)_dictionaryOnDisk:(BOOL)arg1;
 - (id)_dictionaryRepresentation;
 - (double)_getDistanceOfLastKnownLocationDictionary:(id)arg1 fromLocation:(id)arg2;
 - (BOOL)_isLastKnownLocation:(id)arg1 freshForMaxAge:(double)arg2 fromNewTimestamp:(double)arg3;
+- (BOOL)_isLastKnownLocation:(id)arg1 significantlyOlderThanNewLocation:(id)arg2;
 - (BOOL)_isLastKnownLocationFresh:(id)arg1;
+- (void)_locationAuthorizationStatus:(CDUnknownBlockType)arg1;
 - (BOOL)_locationServicesEnabled;
 - (void)_readFromDisk;
 - (void)_requestActiveLocationChangeUpdates;
 - (void)_requestCLLocationUpdates:(CDUnknownBlockType)arg1;
 - (void)_requestRecentCLLocation:(CDUnknownBlockType)arg1;
+- (void)_setLastKnownLocation:(id)arg1;
 - (BOOL)_shouldLastKnownLocation:(id)arg1 beUpdatedTo:(id)arg2;
 - (long long)_statusForCLAuthorizationStatus:(int)arg1;
-- (id)_supportPath;
-- (void)_writeToDisk;
-- (void)_writeToDisk:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_writeToDisk:(id)arg1;
 - (long long)authorizationStatus;
 - (void)dealloc;
 - (id)init;
-- (BOOL)isLastKnownLocation:(id)arg1 significantlyOlderThanNewLocation:(id)arg2;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (void)requestAuthorization;
 - (void)requestAuthorizationWithForcedPrompt:(BOOL)arg1;
-- (void)setLastKnownLocation:(id)arg1;
 - (void)updateLocationIfNeeded;
 
 @end

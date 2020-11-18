@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class AKAuthorizationCredentialStateRequest, AKAuthorizationUserResponse, AKCredentialRequestContext;
+@class AKAuthorizationCredentialStateRequest, AKAuthorizationUserResponse, AKCredentialRequestContext, NSXPCListenerEndpoint;
 
 @protocol AKAuthorizationDaemonProtocol
 - (void)continueFetchingIconForRequestContext:(AKCredentialRequestContext *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
+- (void)establishConnectionWithNotificationHandlerEndpoint:(NSXPCListenerEndpoint *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)fetchAppleIDAuthorizationURLSetWithCompletion:(void (^)(NSSet *, NSError *))arg1;
 - (void)fetchAppleIDAuthorizeHTMLResponseTemplateWithCompletion:(void (^)(NSString *, NSError *))arg1;
 - (void)fetchAppleOwnedDomainSetWithCompletion:(void (^)(NSSet *, NSError *))arg1;

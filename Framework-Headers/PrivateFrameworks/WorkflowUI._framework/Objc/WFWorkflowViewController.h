@@ -71,7 +71,7 @@
 @property (readonly, nonatomic) unsigned long long workflowViewStyle; // @synthesize workflowViewStyle=_workflowViewStyle;
 
 + (id)componentForModel:(id)arg1 context:(id)arg2;
-+ (id)moduleAppearanceForStyle:(unsigned long long)arg1 tintColor:(id)arg2;
++ (id)moduleAppearanceForStyle:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)cancelActionOutputPicking;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;

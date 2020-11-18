@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     BOOL __needsUpdateFullsizeImageMetadata;
     BOOL __needsUpdateFullsizeTiledLayer;
     BOOL __isDisplayingFullQualityImage;
+    BOOL _shouldUsePenultimateVersionForNextImageUpdate;
     BOOL _canUseFullsizeTiledLayer;
     PUAssetViewModel *_assetViewModel;
     id<PUDisplayAsset> _asset;
@@ -78,6 +79,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (copy, nonatomic) UIColor *placeholderColor; // @synthesize placeholderColor=_placeholderColor;
 @property (nonatomic) BOOL shouldUseFullsizeImageData; // @synthesize shouldUseFullsizeImageData=_shouldUseFullsizeImageData;
+@property (nonatomic, setter=_setShouldUsePenultimateVersionForNextImageUpdate:) BOOL shouldUsePenultimateVersionForNextImageUpdate; // @synthesize shouldUsePenultimateVersionForNextImageUpdate=_shouldUsePenultimateVersionForNextImageUpdate;
 @property (readonly) Class superclass;
 
 + (id)_supportedZoomImageFormats;
@@ -85,6 +87,7 @@ __attribute__((visibility("hidden")))
 - (void)_cancelAllImageRequests;
 - (void)_handleAssetViewModel:(id)arg1 didChange:(id)arg2;
 - (void)_handleShouldReloadAssetMediaNotification:(id)arg1;
+- (void)_invalidate;
 - (void)_invalidateFullsizeImageMetadata;
 - (void)_invalidateFullsizeTiledLayer;
 - (void)_invalidateImage;
@@ -92,6 +95,7 @@ __attribute__((visibility("hidden")))
 - (void)_invalidateImageLayerModulatorInput;
 - (void)_invalidateImageView;
 - (BOOL)_needsUpdate;
+- (void)_setAssetWithoutUpdateIfNeeded:(id)arg1;
 - (void)_setImage:(id)arg1 isFullQuality:(BOOL)arg2;
 - (void)_setNeedsUpdate;
 - (void)_updateAssetLoadingStage;

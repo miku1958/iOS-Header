@@ -15,6 +15,8 @@
 @interface RLMArray : NSObject <RLMThreadConfined_Private, RLMCollection, NSFastEnumeration>
 {
     NSString *_objectClassName;
+    int _type;
+    BOOL _optional;
     NSString *_key;
     RLMObjectBase *_parentObject;
     NSMutableArray *_backingArray;
@@ -27,8 +29,10 @@
 @property (readonly, nonatomic, getter=isInvalidated) BOOL invalidated;
 @property (readonly, copy, nonatomic) NSString *objectClassName; // @synthesize objectClassName=_objectClassName;
 @property (readonly, nonatomic) id objectiveCMetadata;
+@property (readonly, nonatomic, getter=isOptional) BOOL optional; // @synthesize optional=_optional;
 @property (readonly, nonatomic) RLMRealm *realm;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) int type; // @synthesize type=_type;
 
 + (id)objectWithThreadSafeReference:(unique_ptr_d0e912ad)arg1 metadata:(id)arg2 realm:(id)arg3;
 - (void).cxx_destruct;
@@ -37,6 +41,8 @@
 - (void)addObjects:(id)arg1;
 - (void)addObjectsFromArray:(id)arg1;
 - (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
+- (id)aggregateProperty:(id)arg1 operation:(id)arg2 method:(SEL)arg3;
+- (id)averageOfProperty:(id)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)descriptionWithMaxDepth:(unsigned long long)arg1;
 - (void)exchangeObjectAtIndex:(unsigned long long)arg1 withObjectAtIndex:(unsigned long long)arg2;
@@ -46,10 +52,13 @@
 - (unsigned long long)indexOfObjectWhere:(id)arg1 args:(struct __va_list_tag [1])arg2;
 - (unsigned long long)indexOfObjectWithPredicate:(id)arg1;
 - (id)initWithObjectClassName:(id)arg1;
+- (id)initWithObjectType:(int)arg1 optional:(BOOL)arg2;
 - (void)insertObject:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)insertObjects:(id)arg1 atIndexes:(id)arg2;
 - (id)lastObject;
 - (unique_ptr_d0e912ad)makeThreadSafeReference;
+- (id)maxOfProperty:(id)arg1;
+- (id)minOfProperty:(id)arg1;
 - (void)moveObjectAtIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
@@ -66,7 +75,8 @@
 - (void)setValue:(id)arg1 forKey:(id)arg2;
 - (id)sortedResultsUsingDescriptors:(id)arg1;
 - (id)sortedResultsUsingKeyPath:(id)arg1 ascending:(BOOL)arg2;
-- (id)sortedResultsUsingProperty:(id)arg1 ascending:(BOOL)arg2;
+- (id)sumOfProperty:(id)arg1;
+- (int)typeForProperty:(id)arg1;
 - (id)valueForKey:(id)arg1;
 - (id)valueForKeyPath:(id)arg1;
 

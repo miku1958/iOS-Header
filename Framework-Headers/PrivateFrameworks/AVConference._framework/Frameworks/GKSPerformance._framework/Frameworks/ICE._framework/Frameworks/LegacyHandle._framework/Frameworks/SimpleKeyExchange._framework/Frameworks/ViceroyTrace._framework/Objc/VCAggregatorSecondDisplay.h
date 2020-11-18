@@ -6,7 +6,7 @@
 
 #import <ViceroyTrace/VCAggregator.h>
 
-@class NSMutableDictionary, VCHistogram;
+@class NSMutableDictionary, NSString, VCHistogram;
 
 __attribute__((visibility("hidden")))
 @interface VCAggregatorSecondDisplay : VCAggregator
@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
     unsigned int _maxJitterQueueSize;
     unsigned int _averageRoundTripTime;
     unsigned int _maxRoundTripTime;
-    unsigned int _averageHIDEventLatencyReportCount;
+    unsigned int _averageHIDEventLatencySampleCount;
     unsigned int _averageHIDEventLatency;
     unsigned int _maxHIDEventLatency;
     unsigned int _minHIDEventLatency;
@@ -64,7 +64,17 @@ __attribute__((visibility("hidden")))
     VCHistogram *_RTT;
     VCHistogram *_HEL;
     NSMutableDictionary *_fecStatsDict;
+    NSString *_channelSequence;
+    CDStruct_f2f7ecfd _channelSequenceStats;
+    NSString *_previousChannelSequence;
+    CDStruct_f2f7ecfd _previousChannelSequenceStats;
+    NSString *_remoteOSBuildVersion;
+    NSString *_remoteFrameworkVersion;
+    NSString *_remoteDeviceModel;
 }
+
+@property (copy, nonatomic) NSString *channelSequence; // @synthesize channelSequence=_channelSequence;
+@property (strong, nonatomic) NSString *previousChannelSequence; // @synthesize previousChannelSequence=_previousChannelSequence;
 
 - (id)aggregatedCallReports;
 - (id)aggregatedSegmentQRReport;

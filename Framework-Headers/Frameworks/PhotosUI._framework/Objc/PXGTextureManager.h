@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXGTextureProviderDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSHashTable, NSIndexSet, NSMapTable, NSMutableDictionary, PXGTextureManagerPreheatingStrategy, PXGViewEnvironment;
+@class NSArray, NSDictionary, NSHashTable, NSIndexSet, NSMapTable, NSMutableDictionary, NSMutableSet, PXGTextureManagerPreheatingStrategy, PXGViewEnvironment;
 @protocol OS_dispatch_queue, PXGMutableSpriteTexture, PXGTextureConverter, PXGTextureManagerDelegate;
 
 @interface PXGTextureManager : NSObject <PXGTextureProviderDelegate>
@@ -23,6 +23,7 @@
     NSDictionary *_textureConverterByPresentationType;
     id<PXGTextureConverter> _atlasTextureConverter;
     int _atlasPresentationType;
+    BOOL _didSwitchTextureConverter;
     NSMutableDictionary *_textureProviderByMediaKind;
     NSMapTable *_textureProvidersDisplayLinkRegistrationState;
     struct unordered_map<int, unsigned int, std::__1::hash<int>, std::__1::equal_to<int>, std::__1::allocator<std::__1::pair<const int, unsigned int>>> _spriteIndexByRequestID;
@@ -33,6 +34,7 @@
     _Atomic unsigned char _isPerformingUpdateFromRequestQueue;
     unsigned long long _requestQueue_pendingSetNeedsUpdate;
     id<PXGMutableSpriteTexture> _emptyTexture;
+    NSMutableSet *_placeholderTextures;
     id<PXGTextureManagerDelegate> _delegate;
     PXGTextureManagerPreheatingStrategy *_preheatingStrategy;
     PXGViewEnvironment *_viewEnvironment;
@@ -50,7 +52,9 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_blockOnThumbnailsIfNeededWithGeometries:(CDStruct_3ab912e1 *)arg1 visibleRect:(struct CGRect)arg2 interactionState:(CDStruct_04522d6a)arg3 fences:(id)arg4;
+- (void)_blockOnThumbnailsIfNeededWithGeometries:(CDStruct_3ab912e1 *)arg1 visibleRect:(struct CGRect)arg2 interactionState:(CDStruct_93894d6c)arg3 fences:(id)arg4;
+- (void)_clearTexturesForPresentationType:(int)arg1;
+- (id)_createTextureForCGImage:(struct CGImage *)arg1 orientation:(unsigned int)arg2 fromTextureProvider:(id)arg3 withTextureConverter:(id)arg4;
 - (void)_enumerateSpriteTextures:(CDUnknownBlockType)arg1;
 - (id)_existingTextureForCGImage:(struct CGImage *)arg1 presentationType:(int)arg2;
 - (id)_existingTextureForKey:(id)arg1 presentationType:(int)arg2;
@@ -78,7 +82,7 @@
 - (void)registerTextureConverter:(id)arg1 forPresentationType:(int)arg2;
 - (void)registerTextureProvider:(id)arg1 forMediaKind:(int)arg2;
 - (void)simulateTextureLoad;
-- (void)streamTexturesForSpritesInDataStore:(id)arg1 presentationDataStore:(id)arg2 changeDetails:(id)arg3 layout:(id)arg4 interactionState:(CDStruct_04522d6a)arg5;
+- (void)streamTexturesForSpritesInDataStore:(id)arg1 presentationDataStore:(id)arg2 changeDetails:(id)arg3 layout:(id)arg4 interactionState:(CDStruct_93894d6c)arg5;
 - (BOOL)streamUpdatedTexturesForDisplayLinkIfNeeded:(id)arg1;
 - (void)textureProvider:(id)arg1 didProvideCGImage:(struct CGImage *)arg2 orientation:(unsigned int)arg3 forRequestID:(int)arg4;
 - (void)textureProvider:(id)arg1 didProvideImageData:(id)arg2 withSpecAtIndex:(long long)arg3 bytesPerRow:(unsigned long long)arg4 contentsRect:(struct CGRect)arg5 forRequestID:(int)arg6;

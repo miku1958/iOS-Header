@@ -14,8 +14,9 @@
     MISSING_TYPE *remoteParticipants;
     MISSING_TYPE *includeLocalParticipantInVisibleParticipants;
     MISSING_TYPE *audioFrequencyController;
-    MISSING_TYPE *momentsController;
     MISSING_TYPE *audioCallbackQueue;
+    MISSING_TYPE *$__lazy_storage_$_momentsController;
+    MISSING_TYPE *lastRegisteredMomentsProvider;
     MISSING_TYPE *recentPresentationContexts;
     MISSING_TYPE *scheduledIsChangingMirroredVideoResetDates;
     MISSING_TYPE *conversationState;

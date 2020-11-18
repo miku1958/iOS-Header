@@ -38,6 +38,7 @@
 - (void)addObserver:(id)arg1;
 - (void)configurePlayerItem:(id)arg1;
 - (void)dealloc;
+- (id)init;
 - (void)removeObserver:(id)arg1;
 - (void)reset;
 

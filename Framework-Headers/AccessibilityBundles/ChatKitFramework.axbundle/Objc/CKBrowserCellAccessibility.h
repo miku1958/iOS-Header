@@ -14,6 +14,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_axShinyStatusLabel;
+- (BOOL)accessibilityActivate;
+- (struct CGPoint)accessibilityActivationPoint;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

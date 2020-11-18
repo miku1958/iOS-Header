@@ -19,6 +19,7 @@
 - (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (long long)keyboardSuppressionMode;
 - (double)opacityForIndex:(unsigned long long)arg1;
+- (BOOL)shouldPerformCrossfadeForReduceMotion;
 - (id)transitionWillBegin;
 - (BOOL)wantsAsynchronousRenderingAssertion;
 - (BOOL)wantsResignActiveAssertion;

@@ -11,20 +11,17 @@
 __attribute__((visibility("hidden")))
 @interface DDEKDayViewController : EKDayViewController
 {
-    BOOL _observe;
     EKEvent *_dd_event;
 }
 
 @property (strong) EKEvent *dd_event; // @synthesize dd_event=_dd_event;
 
 - (void).cxx_destruct;
-- (BOOL)_dd_observe;
 - (void)dd_update_scroll;
 - (void)didMoveToParentViewController:(id)arg1;
 - (struct CGSize)preferredContentSize;
-- (void)updateViewConstraints;
 - (void)viewDidAppear:(BOOL)arg1;
-- (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

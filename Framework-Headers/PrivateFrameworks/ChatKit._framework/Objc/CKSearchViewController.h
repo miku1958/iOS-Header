@@ -12,7 +12,7 @@
 #import <ChatKit/UISearchResultsUpdating-Protocol.h>
 #import <ChatKit/_UIContextMenuInteractionDelegate-Protocol.h>
 
-@class CKSearchCollectionView, IMTimingCollection, NSArray, NSMutableSet, NSString, UICollectionViewCompositionalLayout, UICollectionViewCompositionalLayoutConfiguration, UICollectionViewDiffableDataSource, _UIContextMenuInteraction;
+@class CKSearchCollectionView, IMTimingCollection, NSArray, NSMutableSet, NSString, UICollectionViewCompositionalLayout, UICollectionViewDiffableDataSource, _UIContextMenuInteraction;
 @protocol CKContainerSearchControllerDelegate;
 
 @interface CKSearchViewController : CKScrollViewController <CKSearchResultsTitleHeaderCellDelegate, _UIContextMenuInteractionDelegate, UISearchResultsUpdating, UICollectionViewDelegate, CKSearchControllerDelegate>
@@ -28,7 +28,6 @@
     CDUnknownBlockType _performAfterInitialLoadBlock;
     NSMutableSet *_searchCompleteControllerSet;
     IMTimingCollection *_timingCollection;
-    UICollectionViewCompositionalLayoutConfiguration *_layoutConfiguration;
     _UIContextMenuInteraction *_contextMenuInteraction;
 }
 
@@ -41,7 +40,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isInitialLoad; // @synthesize isInitialLoad=_isInitialLoad;
-@property (strong, nonatomic) UICollectionViewCompositionalLayoutConfiguration *layoutConfiguration; // @synthesize layoutConfiguration=_layoutConfiguration;
 @property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property (copy, nonatomic) CDUnknownBlockType performAfterInitialLoadBlock; // @synthesize performAfterInitialLoadBlock=_performAfterInitialLoadBlock;
 @property (strong, nonatomic) NSMutableSet *searchCompleteControllerSet; // @synthesize searchCompleteControllerSet=_searchCompleteControllerSet;
@@ -54,7 +52,9 @@
 - (void)_configureIndexingCell:(id)arg1;
 - (BOOL)_currentModeIsDetails;
 - (id)_identifiersToAppendForResults:(id)arg1;
+- (BOOL)_isInternalInstall;
 - (id)_layoutSectionForController:(id)arg1 withEnvironment:(id)arg2;
+- (BOOL)_needsIndexing;
 - (id)_newSnapshotForCurrentControllerState;
 - (void)_registerCells;
 - (void)_searchImmediately;

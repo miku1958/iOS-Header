@@ -411,6 +411,7 @@
 - (void)_setFormDelegate:(id)arg1;
 - (void)_setHasCustomContentView:(BOOL)arg1 loadedMIMEType:(const struct String *)arg2;
 - (void)_setMaximumUnobscuredSizeOverride:(struct CGSize)arg1;
+- (void)_setOpaqueInternal:(BOOL)arg1;
 - (void)_setOverlaidAccessoryViewsInset:(struct CGSize)arg1;
 - (void)_setPageMuted:(unsigned long long)arg1;
 - (void)_setPageScale:(double)arg1 withOrigin:(struct CGPoint)arg2;

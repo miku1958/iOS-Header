@@ -14,12 +14,14 @@
     BOOL _rotating;
     BOOL _dismissing;
     BOOL _hasFinishedWindowInitialization;
+    BOOL _hasPreservedInputViews;
     double _baseWindowLevel;
     SBTransientOverlayViewController *_viewController;
     SBTransientOverlayBackgroundWindow *_backgroundWindow;
     SBTransientOverlayWindow *_window;
     id<BSInvalidatable> _disableAutoUnlockAssertion;
     id<BSInvalidatable> _proximityEnabledAssertion;
+    id<BSInvalidatable> _wallpaperAnimationSuspensionAssertion;
     SBFluidDismissalState *_fluidDismissalState;
     UIView *_fluidDismissalDimmingView;
     SBPresentationObservationToken *_bannerLongLookPresentationObservationToken;
@@ -41,11 +43,13 @@
 @property (strong, nonatomic) UIView *fluidDismissalDimmingView; // @synthesize fluidDismissalDimmingView=_fluidDismissalDimmingView;
 @property (strong, nonatomic) SBFluidDismissalState *fluidDismissalState; // @synthesize fluidDismissalState=_fluidDismissalState;
 @property (nonatomic) BOOL hasFinishedWindowInitialization; // @synthesize hasFinishedWindowInitialization=_hasFinishedWindowInitialization;
+@property (nonatomic) BOOL hasPreservedInputViews; // @synthesize hasPreservedInputViews=_hasPreservedInputViews;
 @property (strong, nonatomic) id<BSInvalidatable> proximityEnabledAssertion; // @synthesize proximityEnabledAssertion=_proximityEnabledAssertion;
 @property (nonatomic, getter=isRotating) BOOL rotating; // @synthesize rotating=_rotating;
 @property (strong, nonatomic) SBPresentationObservationToken *siriPresentationObservationToken; // @synthesize siriPresentationObservationToken=_siriPresentationObservationToken;
 @property (strong, nonatomic) id<BSInvalidatable> siriWindowLevelAssertion; // @synthesize siriWindowLevelAssertion=_siriWindowLevelAssertion;
 @property (readonly, nonatomic) SBTransientOverlayViewController *viewController; // @synthesize viewController=_viewController;
+@property (strong, nonatomic) id<BSInvalidatable> wallpaperAnimationSuspensionAssertion; // @synthesize wallpaperAnimationSuspensionAssertion=_wallpaperAnimationSuspensionAssertion;
 @property (readonly, nonatomic) SBTransientOverlayWindow *window; // @synthesize window=_window;
 
 - (void).cxx_destruct;

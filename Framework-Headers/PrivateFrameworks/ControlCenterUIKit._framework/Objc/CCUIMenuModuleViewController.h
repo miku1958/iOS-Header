@@ -109,7 +109,6 @@
 - (void)_updateMenuItemsTallness;
 - (void)_updatePreferredContentSize;
 - (void)_updateTitleFont;
-- (void)_updateTouchLocationToIgnore;
 - (void)addActionWithTitle:(id)arg1 glyph:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)addActionWithTitle:(id)arg1 subtitle:(id)arg2 glyph:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)contentModuleWillTransitionToExpandedContentMode:(BOOL)arg1;

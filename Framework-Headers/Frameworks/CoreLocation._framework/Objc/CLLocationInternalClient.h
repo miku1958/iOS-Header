@@ -39,7 +39,7 @@
 - (int)getStatusBarIconState;
 - (unsigned char)gyroCalibrationDatabaseSupportsMiniCalibration:(int *)arg1;
 - (void)notifyPassKitPayment:(id)arg1 transaction:(id)arg2 info:(id)arg3;
-- (void)notifyWeatherForecast:(id)arg1 airQualityConditions:(id)arg2 hourlyForecasts:(id)arg3 dailyForecasts:(id)arg4 location:(id)arg5;
+- (void)notifyWeatherForecast:(id)arg1 airQualityConditions:(id)arg2 hourlyForecasts:(id)arg3 dailyForecasts:(id)arg4 latitude:(double)arg5 longitude:(double)arg6;
 - (unsigned char)performMigration;
 - (unsigned char)pingDaemon;
 - (id)setAuthorizationPromptMapDisplayEnabled:(unsigned char)arg1;

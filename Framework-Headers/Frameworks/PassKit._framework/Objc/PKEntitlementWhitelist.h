@@ -11,6 +11,7 @@
 @interface PKEntitlementWhitelist : NSObject
 {
     BOOL _passesAllAccess;
+    BOOL _passesOverviewAccess;
     BOOL _passesAddSilently;
     BOOL _passPresentationSuppression;
     BOOL _paymentAllAccess;
@@ -19,6 +20,7 @@
     BOOL _applePayTrustAllAccess;
     BOOL _inAppPayments;
     BOOL _inAppPaymentsPrivate;
+    BOOL _manualPaymentPassProvisioning;
     BOOL _webPayments;
     BOOL _winterpegPayments;
     BOOL _cardOnFilePayments;
@@ -46,11 +48,13 @@
 @property (readonly) BOOL featuresAllAccess; // @synthesize featuresAllAccess=_featuresAllAccess;
 @property (readonly) BOOL inAppPayments; // @synthesize inAppPayments=_inAppPayments;
 @property (readonly) BOOL inAppPaymentsPrivate; // @synthesize inAppPaymentsPrivate=_inAppPaymentsPrivate;
+@property (readonly) BOOL manualPaymentPassProvisioning; // @synthesize manualPaymentPassProvisioning=_manualPaymentPassProvisioning;
 @property (readonly, copy) NSArray *merchantIdentifiers; // @synthesize merchantIdentifiers=_merchantIdentifiers;
 @property (readonly) BOOL passPresentationSuppression; // @synthesize passPresentationSuppression=_passPresentationSuppression;
 @property (copy) NSArray *passTypeIDs; // @synthesize passTypeIDs=_passTypeIDs;
 @property (readonly) BOOL passesAddSilently; // @synthesize passesAddSilently=_passesAddSilently;
 @property (readonly) BOOL passesAllAccess; // @synthesize passesAllAccess=_passesAllAccess;
+@property (readonly) BOOL passesOverviewAccess; // @synthesize passesOverviewAccess=_passesOverviewAccess;
 @property (readonly) BOOL paymentAllAccess; // @synthesize paymentAllAccess=_paymentAllAccess;
 @property (readonly) BOOL paymentConfiguration; // @synthesize paymentConfiguration=_paymentConfiguration;
 @property (readonly) BOOL paymentPresentation; // @synthesize paymentPresentation=_paymentPresentation;

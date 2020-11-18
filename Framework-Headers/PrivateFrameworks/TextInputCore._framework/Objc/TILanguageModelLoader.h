@@ -54,6 +54,7 @@
 - (void)clearDynamicLearningCaches;
 - (void)findRecordsMatchingRecipient:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)flushDynamicLearningCaches;
+- (BOOL)hasLanguageModelBundle;
 - (id)initWithInputMode:(id)arg1 staticResourcePaths:(id)arg2 dynamicResourcePath:(id)arg3 mobileAssets:(id)arg4 usesLinguisticContext:(BOOL)arg5;
 - (shared_ptr_e9f752ce)languageModelForAdaptationContext:(id)arg1;
 - (shared_ptr_e9f752ce)lightweightLanguageModel;

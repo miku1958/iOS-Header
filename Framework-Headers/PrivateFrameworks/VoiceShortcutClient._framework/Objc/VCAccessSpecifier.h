@@ -49,6 +49,7 @@
 - (BOOL)hasEntitlements:(long long)arg1;
 - (id)init;
 - (id)initWithBundleIdentifier:(id)arg1 associatedAppBundleIdentifier:(id)arg2 entitlements:(long long)arg3;
+- (BOOL)isRemovalService;
 - (BOOL)isSettingsApp;
 
 @end

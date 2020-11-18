@@ -17,7 +17,7 @@
     SBGridLayoutSwitcherModifier *_gridLayoutModifier;
     unsigned long long _initialNumberOfRows;
     double _initialCardScale;
-    BOOL _didPresentFromHomeScreen;
+    BOOL _hasForegroundMainApp;
     BOOL _isTethered;
     id<SBFluidSwitcherScrollProvidingDelegate> _scrollDelegate;
     SBSwitcherModifier<SBFluidSwitcherScrollProviding> *_multitaskingModifier;
@@ -57,7 +57,7 @@
 - (id)handleTetheredRemovalEvent:(id)arg1;
 - (id)initWithTetheredMode:(BOOL)arg1 multitaskingModifier:(id)arg2 appExposeBundleID:(id)arg3;
 - (id)initWithTetheredMode:(BOOL)arg1 multitaskingModifier:(id)arg2 appExposeBundleID:(id)arg3 initialNumberOfRows:(unsigned long long)arg4 initialCardScale:(double)arg5;
-- (unsigned long long)insertionStyle;
+- (unsigned long long)insertionStyleForInsertingAppLayout:(id)arg1;
 - (BOOL)isScrollEnabled;
 - (BOOL)isTetheredScrollingEnabled;
 - (double)leadingPadding;

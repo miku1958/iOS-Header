@@ -134,6 +134,7 @@
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (void)sessionDidConnect:(id)arg1;
 - (void)sessionDidDisconnect:(id)arg1;
+- (BOOL)shouldOverrideContentSizeCategory:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;

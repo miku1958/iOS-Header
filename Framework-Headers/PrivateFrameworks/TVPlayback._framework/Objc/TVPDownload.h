@@ -8,7 +8,7 @@
 
 #import <TVPlayback/AVAssetDownloadDelegate-Protocol.h>
 
-@class AVAggregateAssetDownloadTask, AVMediaSelection, NSError, NSMapTable, NSPointerArray, NSProgress, NSString, TVPDownloadSession, TVPMediaItemLoader, TVPStateMachine;
+@class AVAggregateAssetDownloadTask, AVMediaSelection, NSError, NSMapTable, NSPointerArray, NSProgress, NSString, TVPDownloadSession, TVPMediaItemLoader, TVPReportingSession, TVPStateMachine;
 @protocol TVPMediaItem;
 
 @interface TVPDownload : NSObject <AVAssetDownloadDelegate>
@@ -27,6 +27,7 @@
     NSMapTable *_mediaSelectionToProgressMap;
     unsigned long long _downloadInitiationBackgroundTask;
     unsigned long long _downloadTerminationBackgroundTask;
+    TVPReportingSession *_reportingSession;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -44,6 +45,7 @@
 @property (strong, nonatomic) TVPMediaItemLoader *mediaItemLoader; // @synthesize mediaItemLoader=_mediaItemLoader;
 @property (strong, nonatomic) NSMapTable *mediaSelectionToProgressMap; // @synthesize mediaSelectionToProgressMap=_mediaSelectionToProgressMap;
 @property (readonly, nonatomic) double progress;
+@property (strong, nonatomic) TVPReportingSession *reportingSession; // @synthesize reportingSession=_reportingSession;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (strong, nonatomic) TVPStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property (readonly) Class superclass;

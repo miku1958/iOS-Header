@@ -102,6 +102,12 @@ struct PXGDecorationSpriteInfo {
     double _field2;
 };
 
+struct PXGImageRequest {
+    unsigned int _field1;
+    int _field2;
+    void *_field3;
+};
+
 struct PXGItemsLayout {
     Class _field1;
 };
@@ -291,6 +297,7 @@ struct _PXGEngineScrollState {
     struct CGSize referenceSize;
     struct UIEdgeInsets contentInsets;
     struct CGRect visibleRect;
+    struct CGRect targetRect;
     struct CGRect constrainedVisibleRect;
     struct CGPoint lastScrollDirection;
 };
@@ -532,9 +539,10 @@ typedef struct {
 
 typedef struct {
     int _field1;
-    id _field2;
+    unsigned long long _field2;
     id _field3;
-} CDStruct_acc9a335;
+    id _field4;
+} CDStruct_39b4dbd3;
 
 typedef struct {
     int _field1;
@@ -560,15 +568,6 @@ typedef struct {
 typedef struct {
     int _field1;
 } CDStruct_fcaf9308;
-
-typedef struct {
-    long long scrollRegime;
-    BOOL isAnimatingScroll;
-    BOOL isAnimatingContent;
-    unsigned long long zoomBehavior;
-    BOOL isViewBoundsChanging;
-    BOOL isInitialLoad;
-} CDStruct_04522d6a;
 
 typedef struct {
     long long _field1;
@@ -727,6 +726,17 @@ typedef struct {
     double _field3;
     CDStruct_3ab912e1 _field4;
 } CDStruct_87acf924;
+
+typedef struct {
+    long long scrollRegime;
+    BOOL isAnimatingScroll;
+    BOOL isScrubbing;
+    BOOL isAnimatingContent;
+    unsigned long long zoomBehavior;
+    BOOL isViewBoundsChanging;
+    BOOL isInitialLoad;
+    struct CGRect targetRect;
+} CDStruct_93894d6c;
 
 typedef struct {
     struct CGRect layoutRect;

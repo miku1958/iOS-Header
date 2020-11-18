@@ -6,12 +6,15 @@
 
 #import <SpringBoard/SiriPresentationControllerDelegate-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 @protocol SiriPresentation;
 
 @protocol SiriPresentationSpringBoardMainScreenViewControllerDelegate <SiriPresentationControllerDelegate>
 - (void)screenWakeIdleTimerResetRequested;
 - (void)screenWakeRequested;
 - (BOOL)siriPresentation:(id<SiriPresentation>)arg1 requestsDeviceUnlockWithPassword:(NSString *)arg2;
+
+@optional
+- (void)siriPresentation:(id<SiriPresentation>)arg1 didUpdateAudioCategoriesDisablingVolumeHUD:(NSArray *)arg2;
 @end
 

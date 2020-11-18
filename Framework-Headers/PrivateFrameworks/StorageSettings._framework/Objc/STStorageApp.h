@@ -13,14 +13,17 @@
     long long _purgeableSize;
     BOOL _isDeleting;
     BOOL _isDemoting;
+    BOOL _isApple;
     BOOL _isUserApp;
     BOOL _isSystemApp;
     BOOL _isInternalApp;
     BOOL _isDocumentApp;
     BOOL _specialSizePending;
     BOOL _isPseudoApp;
-    LSApplicationProxy *_appProxy;
+    NSString *_appIdentifier;
     FPProviderDomain *_fpDomain;
+    NSString *_name;
+    NSString *_bundleIdentifier;
     PSUsageBundleApp *_usageBundleApp;
     NSArray *_mediaTypes;
     long long _externalDataSize;
@@ -29,9 +32,9 @@
     long long _coreMLDataSize;
 }
 
-@property (readonly) NSString *appIdentifier;
-@property (strong, nonatomic) LSApplicationProxy *appProxy; // @synthesize appProxy=_appProxy;
-@property (readonly) NSString *bundleIdentifier;
+@property (strong) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
+@property (readonly, nonatomic) LSApplicationProxy *appProxy;
+@property (strong) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly) NSString *bundleVersion;
 @property long long coreMLDataSize; // @synthesize coreMLDataSize=_coreMLDataSize;
 @property (readonly) long long dataSize;
@@ -52,7 +55,7 @@
 @property BOOL isUserApp; // @synthesize isUserApp=_isUserApp;
 @property (readonly) NSDate *lastUsedDate;
 @property (strong, nonatomic) NSArray *mediaTypes; // @synthesize mediaTypes=_mediaTypes;
-@property (readonly) NSString *name;
+@property (strong) NSString *name; // @synthesize name=_name;
 @property (readonly) long long purgeableSize;
 @property long long sharedDataSize; // @synthesize sharedDataSize=_sharedDataSize;
 @property long long specialSize; // @synthesize specialSize=_specialSize;
@@ -67,10 +70,10 @@
 + (void)notifyAppsUpdated;
 + (void)setLaunchDatesNeedUpdating;
 - (void).cxx_destruct;
+- (id)initWithApplicationIdentifier:(id)arg1;
 - (id)initWithApplicationProxy:(id)arg1;
 - (void)reloadProxy;
 - (void)updateSpecialSize;
-- (BOOL)valueForBooleanInfoKey:(id)arg1;
 
 @end
 

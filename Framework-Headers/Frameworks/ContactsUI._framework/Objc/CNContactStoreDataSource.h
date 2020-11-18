@@ -74,6 +74,7 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)preferredForNameMeContactIdentifier;
 - (id)preferredForNameMeContactWithKeysToFetch:(id)arg1;
+- (void)registerForRelevantChangeNotifications;
 - (void)reload;
 - (void)reloadAsynchronously;
 - (void)reset;

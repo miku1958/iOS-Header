@@ -24,5 +24,6 @@
 @property (nonatomic) BOOL visible;
 
 - (void)px_accessibilityAddChildElement:(PXGReusableAccessibilityContentInfo *)arg1;
+- (void)px_accessibilityRemoveAllChildren;
 @end
 

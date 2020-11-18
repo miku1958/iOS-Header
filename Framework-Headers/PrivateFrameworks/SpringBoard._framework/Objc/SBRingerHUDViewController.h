@@ -6,12 +6,13 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <SpringBoard/SBHUDViewControlling-Protocol.h>
 #import <SpringBoard/UIViewControllerTransitioningDelegate-Protocol.h>
 
 @class NSString, NSTimer, SBRingerPillView, UIViewFloatAnimatableProperty;
 @protocol SBRingerHUDViewControllerDelegate;
 
-@interface SBRingerHUDViewController : UIViewController <UIViewControllerTransitioningDelegate>
+@interface SBRingerHUDViewController : UIViewController <UIViewControllerTransitioningDelegate, SBHUDViewControlling>
 {
     BOOL _ringerSilent;
     BOOL _lastEventIsAVolumeChange;
@@ -49,6 +50,8 @@
 - (void)_updateStateAnimated:(BOOL)arg1 invert:(BOOL)arg2;
 - (void)_updateVolumeSliderAnimated:(BOOL)arg1;
 - (void)buttonReleased;
+- (BOOL)definesAnimatedDismissal;
+- (void)dismissAnimatedWithCompletion:(CDUnknownBlockType)arg1;
 - (void)loadView;
 - (void)noteVolumeDidChange:(float)arg1;
 - (void)noteVolumeDownWasHit:(BOOL)arg1;

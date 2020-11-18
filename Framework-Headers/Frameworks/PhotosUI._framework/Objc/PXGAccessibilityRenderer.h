@@ -24,7 +24,7 @@
     PXScrollViewController *_scrollViewController;
     id<PXGAccessibilityRendererDelegate> _accessibilityDelegate;
     struct CGRect _visibleRect;
-    CDStruct_04522d6a _interactionState;
+    CDStruct_93894d6c _interactionState;
 }
 
 @property (weak, nonatomic) id<PXGAccessibilityRendererDelegate> accessibilityDelegate; // @synthesize accessibilityDelegate=_accessibilityDelegate;
@@ -32,7 +32,7 @@
 @property (weak, nonatomic) id<PXGRendererDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) CDStruct_04522d6a interactionState; // @synthesize interactionState=_interactionState;
+@property (nonatomic) CDStruct_93894d6c interactionState; // @synthesize interactionState=_interactionState;
 @property (readonly, nonatomic) int presentationType;
 @property (strong, nonatomic) PXScrollViewController *scrollViewController; // @synthesize scrollViewController=_scrollViewController;
 @property (readonly) Class superclass;

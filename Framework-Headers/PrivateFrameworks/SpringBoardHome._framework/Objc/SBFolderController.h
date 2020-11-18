@@ -249,7 +249,9 @@
 - (void)folderViewShouldBeginEditing:(id)arg1;
 - (void)folderViewShouldClose:(id)arg1 withPinchGesture:(id)arg2;
 - (void)folderViewShouldEndEditing:(id)arg1;
+- (void)folderViewWillBeginDragging:(id)arg1;
 - (void)folderViewWillBeginScrolling:(id)arg1;
+- (void)folderViewWillEndDragging:(id)arg1;
 - (void)folderViewWillUpdatePageDuringScrolling:(id)arg1;
 - (void)iconListView:(id)arg1 concludeIconDrop:(id)arg2;
 - (void)iconListView:(id)arg1 iconDropSessionDidEnd:(id)arg2;

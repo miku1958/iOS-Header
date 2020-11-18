@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     long long _scrollStyle;
     CASpringAnimation *_scrollAnimation;
     UIView *_snapshotViewForWindow;
+    struct CGPoint _targetOffset;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (strong, nonatomic) UIView *snapshotViewForWindow; // @synthesize snapshotViewForWindow=_snapshotViewForWindow;
 @property (readonly) Class superclass;
+@property (nonatomic) struct CGPoint targetOffset; // @synthesize targetOffset=_targetOffset;
 @property (nonatomic) BOOL useCustomMaskForScrolling; // @synthesize useCustomMaskForScrolling=_useCustomMaskForScrolling;
 
 - (void).cxx_destruct;

@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (strong) NSMutableDictionary *PCSIdentityWrappersByServiceName; // @synthesize PCSIdentityWrappersByServiceName=_PCSIdentityWrappersByServiceName;
 @property (strong) CKDAccount *account; // @synthesize account=_account;
 @property (strong) NSString *cachedAccountDSID; // @synthesize cachedAccountDSID=_cachedAccountDSID;
+@property (readonly, nonatomic) BOOL currentServiceIsManatee;
 @property (nonatomic) struct _PCSIdentityData *debugIdentity; // @synthesize debugIdentity=_debugIdentity;
 @property (readonly, nonatomic) BOOL forceEnableReadOnlyManatee; // @synthesize forceEnableReadOnlyManatee=_forceEnableReadOnlyManatee;
 @property (readonly, nonatomic) BOOL isSiloed; // @synthesize isSiloed=_isSiloed;
@@ -60,6 +61,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithAccount:(id)arg1 serviceName:(id)arg2 isSiloed:(BOOL)arg3 forceEnableReadOnlyManatee:(BOOL)arg4;
 - (id)internalServicesToCombineWithLiverpoolKey;
 - (id)liverpoolPublicKey;
+- (BOOL)manateeIsAvailableWithError:(id *)arg1;
+- (BOOL)serviceIsManatee:(id)arg1;
 - (void)updateAccount:(id)arg1;
 
 @end

@@ -268,6 +268,7 @@
 - (void)locationBasedAlarmOccurrencesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)markChangedObjectIDsConsumedUpToToken:(long long)arg1;
 - (BOOL)markIndividualChangesConsumed:(id)arg1 error:(id *)arg2;
+- (BOOL)markResourceChangeAlertedAndSave:(id)arg1 error:(id *)arg2;
 - (id)notificationCollectionForSource:(id)arg1;
 - (BOOL)objectWithIDExists:(id)arg1;
 - (id)objectWithObjectID:(id)arg1;

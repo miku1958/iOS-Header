@@ -12,6 +12,8 @@
 
 + (void)clearNotificationForRecordID:(id)arg1;
 + (id)defaultsKeyForPreventingNotificationsForIdentifier:(id)arg1;
++ (id)displayableEditorNames:(id)arg1;
++ (id)notificationTitleForEditors:(id)arg1;
 + (id)participantsWithReplicaIDs:(id)arg1 inNote:(id)arg2;
 + (id)replicaIDsThatEditedTimestamp:(id)arg1 sinceTimestamp:(id)arg2;
 + (void)setShouldPreventNotifications:(BOOL)arg1 forRecordID:(id)arg2;

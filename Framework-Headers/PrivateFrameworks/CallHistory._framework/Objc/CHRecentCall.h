@@ -39,6 +39,7 @@
     NSString *_mobileCountryCode;
     NSString *_mobileNetworkCode;
     NSNumber *_disconnectedCause;
+    NSNumber *_filteredOutReason;
     NSString *_callerNetworkFirstName;
     NSString *_callerNetworkSecondName;
     unsigned long long _unreadCount;
@@ -88,6 +89,7 @@
 @property (copy) NSString *devicePhoneId; // @synthesize devicePhoneId=_devicePhoneId;
 @property (copy) NSNumber *disconnectedCause; // @synthesize disconnectedCause=_disconnectedCause;
 @property (nonatomic) double duration; // @synthesize duration=_duration;
+@property (copy) NSNumber *filteredOutReason; // @synthesize filteredOutReason=_filteredOutReason;
 @property (nonatomic) long long handleType; // @synthesize handleType=_handleType;
 @property (copy, nonatomic) NSString *isoCountryCode; // @synthesize isoCountryCode=_isoCountryCode;
 @property (strong, nonatomic) CHHandle *localParticipantHandle; // @synthesize localParticipantHandle=_localParticipantHandle;

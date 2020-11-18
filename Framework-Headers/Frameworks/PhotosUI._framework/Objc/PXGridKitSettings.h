@@ -22,6 +22,7 @@
     BOOL _colorCopiedImages;
     BOOL _requestThumbnailsOnly;
     BOOL _requestMasterThumbsOnly;
+    BOOL _disableLowResThumbnails;
     BOOL _allowBlockingDuringScrolling;
     BOOL _allowBlockingDueToFences;
     BOOL _wantsOrthogonalProjection;
@@ -43,6 +44,8 @@
     BOOL _shouldShowBoundariesOfTextTextures;
     BOOL _shouldIncludeSpecialCharactersInTextTextures;
     long long _sampleCount;
+    double _blockingWhileScrollingTimeout;
+    double _blockingWhileScrubbingTimeout;
     long long _blockOnMissingThumbnailsAtSpeedRegime;
     long long _videoAllowedAtOrBelowSpeed;
     long long _videoAllowedAtOrBelowSpeedForLowSpec;
@@ -56,12 +59,15 @@
 @property (nonatomic) BOOL allowBlockingDueToFences; // @synthesize allowBlockingDueToFences=_allowBlockingDueToFences;
 @property (nonatomic) BOOL allowBlockingDuringScrolling; // @synthesize allowBlockingDuringScrolling=_allowBlockingDuringScrolling;
 @property (nonatomic) long long blockOnMissingThumbnailsAtSpeedRegime; // @synthesize blockOnMissingThumbnailsAtSpeedRegime=_blockOnMissingThumbnailsAtSpeedRegime;
+@property (nonatomic) double blockingWhileScrollingTimeout; // @synthesize blockingWhileScrollingTimeout=_blockingWhileScrollingTimeout;
+@property (nonatomic) double blockingWhileScrubbingTimeout; // @synthesize blockingWhileScrubbingTimeout=_blockingWhileScrubbingTimeout;
 @property (nonatomic) double cameraZoomFactor; // @synthesize cameraZoomFactor=_cameraZoomFactor;
 @property (nonatomic) BOOL colorCopiedImages; // @synthesize colorCopiedImages=_colorCopiedImages;
 @property (nonatomic) BOOL debugColorTransform; // @synthesize debugColorTransform=_debugColorTransform;
 @property (nonatomic) BOOL debugExtendedColorRange; // @synthesize debugExtendedColorRange=_debugExtendedColorRange;
 @property (nonatomic) BOOL debugOpaque; // @synthesize debugOpaque=_debugOpaque;
 @property (nonatomic) BOOL debugResolution; // @synthesize debugResolution=_debugResolution;
+@property (nonatomic) BOOL disableLowResThumbnails; // @synthesize disableLowResThumbnails=_disableLowResThumbnails;
 @property (nonatomic) BOOL enableAccessibilityRenderer; // @synthesize enableAccessibilityRenderer=_enableAccessibilityRenderer;
 @property (nonatomic) BOOL enableAnchoringRectDiagnostics; // @synthesize enableAnchoringRectDiagnostics=_enableAnchoringRectDiagnostics;
 @property (nonatomic) BOOL enableAssetsRectDiagnostics; // @synthesize enableAssetsRectDiagnostics=_enableAssetsRectDiagnostics;

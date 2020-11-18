@@ -28,6 +28,7 @@
     CDUnknownBlockType redeemCompletionHandler;
     id<SKAccountPageViewControllerDelegate> _delegate;
     ACAccount *_account;
+    NSString *_referrer;
     long long _type;
     SKAccountPageViewController *_preWarmedViewController;
     SKAccountPageViewController *_presentingAccountPageViewController;
@@ -40,6 +41,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SKAccountPageViewController *preWarmedViewController; // @synthesize preWarmedViewController=_preWarmedViewController;
 @property (weak, nonatomic) SKAccountPageViewController *presentingAccountPageViewController; // @synthesize presentingAccountPageViewController=_presentingAccountPageViewController;
+@property (strong, nonatomic) NSString *referrer; // @synthesize referrer=_referrer;
 @property (readonly) Class superclass;
 @property (nonatomic) long long type; // @synthesize type=_type;
 

@@ -30,6 +30,7 @@
 - (int)defaultEngine;
 - (id)init;
 - (CDStruct_b527887c)networkInputParams;
+- (double)requiredTimeInterval;
 
 @end
 

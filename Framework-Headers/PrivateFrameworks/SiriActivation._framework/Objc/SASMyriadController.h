@@ -12,7 +12,6 @@
 @interface SASMyriadController : NSObject
 {
     NSObject<OS_dispatch_semaphore> *_myriadFinishedSemaphore;
-    BOOL _canceledByMyriad;
     CMMotionActivityManager *_activityManager;
     BOOL _isLifted;
     double _liftEndTime;
@@ -20,7 +19,10 @@
     SASLockStateMonitor *_lockStateMonitor;
     FBSDisplayLayoutMonitor *_displayMonitor;
     double _raiseToWakeTime;
+    BOOL _canceledByMyriad;
 }
+
+@property (nonatomic) BOOL canceledByMyriad; // @synthesize canceledByMyriad=_canceledByMyriad;
 
 + (id)currentController;
 - (void).cxx_destruct;

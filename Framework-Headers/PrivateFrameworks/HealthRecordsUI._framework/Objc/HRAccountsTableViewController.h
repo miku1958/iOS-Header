@@ -24,7 +24,6 @@
 
 - (void).cxx_destruct;
 - (void)_hideLoadingIndicator;
-- (void)_presentAlertIfAnyAccountNeedsRelogin;
 - (void)_reloadAccounts;
 - (void)_showLoadingIndicator;
 - (id)init;

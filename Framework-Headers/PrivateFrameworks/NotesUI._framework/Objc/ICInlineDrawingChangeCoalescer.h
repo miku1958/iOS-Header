@@ -35,7 +35,7 @@
 - (id)initWithAttachment:(id)arg1;
 - (void)mergeDrawingChanges;
 - (void)mergeDrawingWithDrawing:(id)arg1;
-- (void)processIndexableContent;
+- (void)processIndexableContentWithCompletion:(CDUnknownBlockType)arg1;
 - (id)retrieveAndClearLatestDrawingToMerge;
 - (void)updateNowIfNecessary;
 - (void)updateVersionIfNeededForAttachment:(id)arg1 withDrawing:(id)arg2;

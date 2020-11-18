@@ -6,17 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSString;
 
-__attribute__((visibility("hidden")))
 @interface _TtC16HealthExperience37FirstRestoreNotInProgressPrecondition : NSObject
 {
-    MISSING_TYPE *$__lazy_storage_$_cloudSyncObserver;
+    MISSING_TYPE *cloudSyncObserver;
     MISSING_TYPE *preconditionCompletion;
     MISSING_TYPE *healthStore;
+    MISSING_TYPE *waitUntilShouldProceed;
+    MISSING_TYPE *completionQueue;
 }
 
+@property (nonatomic, readonly) NSString *description;
+
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)init;
 
 @end

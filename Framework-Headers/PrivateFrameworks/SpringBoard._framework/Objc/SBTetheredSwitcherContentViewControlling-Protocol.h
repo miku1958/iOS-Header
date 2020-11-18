@@ -12,7 +12,6 @@
 @protocol SBTetheredSwitcherContentViewControlling <NSObject>
 - (void)beginTetheringWithViewController:(id<SBTetheredSwitcherContentViewControlling>)arg1 asTetheree:(BOOL)arg2;
 - (UIPanGestureRecognizer *)borrowScrollViewPanGestureRecognizer;
-- (struct CGPoint)contentOffsetForTetheredIndex:(unsigned long long)arg1;
 - (struct CGSize)contentSize;
 - (void)dispatchAndHandleTetheredRemovalEvent:(SBTetheredRemovalSwitcherModifierEvent *)arg1;
 - (double)distanceToLeadingEdgeOfLeadingCardFromTrailingEdgeOfScreen;

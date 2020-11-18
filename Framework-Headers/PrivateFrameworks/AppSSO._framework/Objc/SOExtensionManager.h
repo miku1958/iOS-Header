@@ -24,6 +24,7 @@
 + (id)internalExtensionsBundleIdentifiers;
 + (BOOL)isAppleConnectExtensionBundleIdentifier:(id)arg1;
 + (BOOL)isInternalExtensionBundleIdentifier:(id)arg1;
++ (BOOL)isTiburonExtensionBundleIdentifier:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_doBeginMatchingExtensions;

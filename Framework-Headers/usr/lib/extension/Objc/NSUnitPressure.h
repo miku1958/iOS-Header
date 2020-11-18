@@ -18,6 +18,7 @@
 + (id)gigapascals;
 + (id)hectopascals;
 + (id)inchesOfMercury;
++ (void)initialize;
 + (id)kilopascals;
 + (id)megapascals;
 + (id)millibars;

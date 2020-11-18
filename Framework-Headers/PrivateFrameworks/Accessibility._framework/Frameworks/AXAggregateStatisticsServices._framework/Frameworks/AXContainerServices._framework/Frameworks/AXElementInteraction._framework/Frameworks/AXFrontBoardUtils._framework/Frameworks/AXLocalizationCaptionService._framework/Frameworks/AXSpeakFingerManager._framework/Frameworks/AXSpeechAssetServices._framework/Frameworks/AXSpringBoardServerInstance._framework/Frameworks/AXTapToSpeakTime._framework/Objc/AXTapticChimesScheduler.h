@@ -44,10 +44,14 @@
 - (double)_preWakeTimeInterval;
 - (void)_previewChimes;
 - (void)_previewChimesForStartDate:(id)arg1 chimeDate:(id)arg2 frequency:(long long)arg3 soundType:(long long)arg4;
+- (void)_registerForNotifications;
 - (void)_releasePowerAssertionIfPossible:(unsigned int)arg1;
 - (void)_scheduleChimeTimer;
+- (void)_unregisterForNotifications;
 - (void)audioPlayerDidFinishPlaying:(id)arg1 successfully:(BOOL)arg2;
-- (BOOL)canActivateTapticChimes;
+- (BOOL)canPlayScheduledTapticChime;
+- (BOOL)canPlayTapticChime;
+- (BOOL)canScheduleTapticChimes;
 - (void)dealloc;
 - (id)nextChimeAssetForStartDate:(id)arg1 frequency:(long long)arg2 soundType:(long long)arg3 timeIntervalUntilChime:(double *)arg4;
 

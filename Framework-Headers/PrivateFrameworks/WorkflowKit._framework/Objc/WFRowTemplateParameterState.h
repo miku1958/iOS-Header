@@ -8,7 +8,7 @@
 
 #import <WorkflowKit/WFParameterState-Protocol.h>
 
-@class NSArray, NSString, WFBooleanSubstitutableState, WFByteCountUnitSubstitutableState, WFCalendarUnitSubstitutableState, WFContentProperty, WFDateSubstitutableState, WFNumberSubstitutableState, WFVariableStringParameterState, WFVariableSubstitutableParameterState;
+@class NSArray, NSString, WFBooleanSubstitutableState, WFByteCountUnitSubstitutableState, WFCalendarUnitSubstitutableState, WFContentProperty, WFDateSubstitutableState, WFNumberStringSubstitutableState, WFVariableStringParameterState, WFVariableSubstitutableParameterState;
 
 @interface WFRowTemplateParameterState : NSObject <WFParameterState>
 {
@@ -24,7 +24,7 @@
     WFVariableSubstitutableParameterState *_enumerationValue;
     WFVariableStringParameterState *_stringValue;
     WFBooleanSubstitutableState *_booleanValue;
-    WFNumberSubstitutableState *_numberValue;
+    WFNumberStringSubstitutableState *_numberValue;
     WFVariableStringParameterState *_phoneValue;
     WFVariableStringParameterState *_emailValue;
     WFCalendarUnitSubstitutableState *_calendarUnitValue;
@@ -50,7 +50,7 @@
 @property (readonly, copy, nonatomic) NSArray *filterableProperties;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL hidden; // @synthesize hidden=_hidden;
-@property (readonly, nonatomic) WFNumberSubstitutableState *numberValue; // @synthesize numberValue=_numberValue;
+@property (readonly, nonatomic) WFNumberStringSubstitutableState *numberValue; // @synthesize numberValue=_numberValue;
 @property (readonly, nonatomic) WFVariableStringParameterState *phoneValue; // @synthesize phoneValue=_phoneValue;
 @property (readonly, nonatomic) BOOL removable; // @synthesize removable=_removable;
 @property (readonly, nonatomic) WFVariableStringParameterState *stringValue; // @synthesize stringValue=_stringValue;

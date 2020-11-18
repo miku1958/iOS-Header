@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (void)adjustConstraintsForKeyboardAvoidance;
 - (void)applyChanges:(id)arg1;
+- (BOOL)isNotificationContentAppExtension;
 
 @end
 

@@ -11,12 +11,11 @@
 #import <NanoPassKit/PKPaymentWebServiceTargetDeviceProtocol-Protocol.h>
 
 @class IDSService, NPKCompanionAgentConnection, NPKTapToRadarManager, NPKTargetDeviceAssertionManager, NRActiveDeviceAssertion, NSMutableDictionary, NSString;
-@protocol NPKPaymentWebServiceCompanionTargetDeviceDelegate, NPKPaymentWebServiceCompanionTargetDevicePasscodeChangeDelegate, OS_dispatch_queue;
+@protocol NPKPasscodeChangeCoordinatorProtocol, NPKPaymentWebServiceCompanionTargetDeviceDelegate, OS_dispatch_queue;
 
 @interface NPKPaymentWebServiceCompanionTargetDevice : NSObject <IDSServiceDelegate, PKPaymentWebServiceTargetDeviceProtocol, PKPaymentWebServiceArchiver>
 {
     id<NPKPaymentWebServiceCompanionTargetDeviceDelegate> _delegate;
-    id<NPKPaymentWebServiceCompanionTargetDevicePasscodeChangeDelegate> _passcodeChangeDelegate;
     unsigned long long _context;
     IDSService *_provisioningService;
     NPKCompanionAgentConnection *_companionAgentConnection;
@@ -26,6 +25,8 @@
     NRActiveDeviceAssertion *_provisioningActiveDeviceAssertion;
     NPKTargetDeviceAssertionManager *_remoteDeviceAssertionManager;
     NPKTapToRadarManager *_manager;
+    id<NPKPasscodeChangeCoordinatorProtocol> _passcodeChangeCoordinator;
+    id _passcodeUpgradeFlowController;
 }
 
 @property (strong, nonatomic) NPKCompanionAgentConnection *companionAgentConnection; // @synthesize companionAgentConnection=_companionAgentConnection;
@@ -37,7 +38,8 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property (strong, nonatomic) NPKTapToRadarManager *manager; // @synthesize manager=_manager;
 @property (strong, nonatomic) NSMutableDictionary *outstandingRequests; // @synthesize outstandingRequests=_outstandingRequests;
-@property (weak, nonatomic) id<NPKPaymentWebServiceCompanionTargetDevicePasscodeChangeDelegate> passcodeChangeDelegate; // @synthesize passcodeChangeDelegate=_passcodeChangeDelegate;
+@property (strong, nonatomic) id<NPKPasscodeChangeCoordinatorProtocol> passcodeChangeCoordinator; // @synthesize passcodeChangeCoordinator=_passcodeChangeCoordinator;
+@property (weak, nonatomic) id passcodeUpgradeFlowController; // @synthesize passcodeUpgradeFlowController=_passcodeUpgradeFlowController;
 @property (strong, nonatomic) NRActiveDeviceAssertion *provisioningActiveDeviceAssertion; // @synthesize provisioningActiveDeviceAssertion=_provisioningActiveDeviceAssertion;
 @property (strong, nonatomic) IDSService *provisioningService; // @synthesize provisioningService=_provisioningService;
 @property (strong, nonatomic) NPKTargetDeviceAssertionManager *remoteDeviceAssertionManager; // @synthesize remoteDeviceAssertionManager=_remoteDeviceAssertionManager;
@@ -70,7 +72,6 @@
 - (id)_upgradeExpressAutomaticSelectionCriteriaRequestForPass:(id)arg1;
 - (id)_upgradeExpressAutomaticSelectionCriteriaRequestForPass:(id)arg1 deviceClass:(id)arg2 OSVersion:(id)arg3 SEID:(id)arg4;
 - (id)appleAccountInformation;
-- (void)applyPasscodeRestrictionsRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)applyPasscodeRestrictionsResponse:(id)arg1;
 - (void)archiveBackgroundContext:(id)arg1;
 - (void)archiveContext:(id)arg1;
@@ -113,6 +114,7 @@
 - (void)enableServiceModeResponse:(id)arg1;
 - (void)endRequiringUpgradedPasscodeIfNecessary;
 - (void)enforceUpgradedPasscodePolicyWithCompletion:(CDUnknownBlockType)arg1;
+- (void)exitPasscodeUpgradeForPasscodeUpgradeFlowController:(id)arg1 withShouldContinue:(BOOL)arg2 error:(id)arg3;
 - (BOOL)felicaSecureElementIsAvailable;
 - (void)getPairingInfoResponse:(id)arg1;
 - (void)handleBalanceChange:(id)arg1;
@@ -204,6 +206,7 @@
 - (void)removeExpressPassesWithCardType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeExpressPassesWithCardTypeResponse:(id)arg1;
 - (void)renewAppleAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)requestPasscodeUpgradeForPasscodeUpgradeFlowController:(id)arg1 withVisibleViewController:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)resetApplePayManateeViewResponse:(id)arg1;
 - (void)resetApplePayManateeViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)retrieveTransactionsForPassWithUniqueID:(id)arg1;
@@ -240,7 +243,6 @@
 - (void)updatePeerPaymentAccountResponse:(id)arg1;
 - (void)updatePeerPaymentAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updatePushToken:(id)arg1;
-- (void)updatedAccountsForProvisioningResponse:(id)arg1;
 - (void)updatedAccountsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

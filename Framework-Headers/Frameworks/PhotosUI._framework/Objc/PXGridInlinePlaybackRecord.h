@@ -35,6 +35,7 @@
 @property (nonatomic) double distanceToCenterScore; // @synthesize distanceToCenterScore=_distanceToCenterScore;
 @property (readonly, nonatomic) id geometryReference; // @synthesize geometryReference=_geometryReference;
 @property (nonatomic) BOOL isInvalid; // @synthesize isInvalid=_isInvalid;
+@property (readonly, nonatomic) BOOL isPlaying;
 @property (readonly, nonatomic) PXMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (readonly, nonatomic) float videoScore; // @synthesize videoScore=_videoScore;
 @property (nonatomic) long long visibilityScore; // @synthesize visibilityScore=_visibilityScore;

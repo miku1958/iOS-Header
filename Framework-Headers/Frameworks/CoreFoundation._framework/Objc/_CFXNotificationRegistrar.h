@@ -32,10 +32,11 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)initWithOptions:(unsigned long long)arg1;
 - (void)invalidate;
+- (id)invalidate:(unsigned long long)arg1;
 - (void)match:(struct __CFString *)arg1 object:(void *)arg2 observer:(void *)arg3 enumerator:(CDUnknownBlockType)arg4;
 - (id)registrar;
 - (void)remove:(unsigned long long)arg1;
-- (void)removeChild:(id)arg1;
+- (void)removeChild:(id)arg1 token:(unsigned long long)arg2;
 
 @end
 

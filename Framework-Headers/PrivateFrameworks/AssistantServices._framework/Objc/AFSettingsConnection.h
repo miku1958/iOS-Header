@@ -78,6 +78,8 @@
 - (void)getSharedUserIdForHomeUserId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getSiriOutputVolumeForAudioRoute:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getSiriOutputVolumeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getSpokenNotificationShouldAlwaysSpeakNotificationsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getSpokenNotificationShouldSkipTriggerlessRepliesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getSpokenNotificationTemporarilyDisabledEndDateForApp:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getSpokenNotificationTemporarilyDisabledEndDateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getStereoPairState:(CDUnknownBlockType)arg1;
@@ -118,6 +120,8 @@
 - (void)setOutputVoice:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)setSiriOutputVolume:(float)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setSiriOutputVolume:(float)arg1 forAudioRoute:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setSpokenNotificationShouldAlwaysSpeakNotifications:(BOOL)arg1;
+- (void)setSpokenNotificationShouldSkipTriggerlessReplies:(BOOL)arg1;
 - (void)setSpokenNotificationTemporarilyDisabledForApp:(id)arg1 until:(id)arg2;
 - (void)setSpokenNotificationTemporarilyDisabledUntil:(id)arg1;
 - (void)setSupplementalLanguageDictionary:(id)arg1 forProduct:(id)arg2 completion:(CDUnknownBlockType)arg3;

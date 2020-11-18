@@ -49,6 +49,7 @@
     BOOL _performedInitialVisualShift;
     long long _visuallyStableAnchorItem;
     long long _visuallyStableAnchorItemDesiredColumn;
+    BOOL _visuallyStableAnchorAllowedCloseToTop;
     unsigned long long _dataSourceIdentifierOfCachedRangeForSelectedItems;
     struct _NSRange _cachedRangeForSelectedItems;
     BOOL _shouldAnimateTowardsAnchor;
@@ -89,6 +90,7 @@
 - (void)_configureLayout:(struct PXGItemsLayout *)arg1;
 - (struct PXGItemsLayout *)_createLayoutWithNumberOfColumns:(long long)arg1;
 - (id)_displayAssetForItem:(long long)arg1;
+- (long long)_estimatedItemsPerScreenForLayout:(struct PXGItemsLayout *)arg1;
 - (double)_interItemSpacingForLayout:(struct PXGItemsLayout *)arg1;
 - (BOOL)_layoutHasIndividualItems:(struct PXGItemsLayout *)arg1;
 - (BOOL)_layoutIsAspectFit:(struct PXGItemsLayout *)arg1;
@@ -114,6 +116,7 @@
 - (struct UIColor *)colorAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
 - (void)containingScrollViewDidScroll:(struct CGPoint)arg1;
 - (CDUnknownBlockType)dateIntervalFutureForContentInRect:(struct CGRect)arg1;
+- (unsigned long long)desiredPlaceholderStyleInLayout:(id)arg1;
 - (id)displayAssetFetchResultForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 inLayout:(struct PXGItemsLayout *)arg2;
 - (id)displayAssetRequestObserverForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 inLayout:(id)arg2;
 - (void)enumerateVisibleAnchoringLayoutsUsingBlock:(CDUnknownBlockType)arg1;
@@ -132,7 +135,7 @@
 - (struct CGSize)minSpriteSizeForPresentationStyle:(unsigned long long)arg1;
 - (id)objectReferenceForSpriteIndex:(unsigned int)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
-- (struct _NSRange)rangeOfItemsToPreventUnloadingInItemsLayout:(id)arg1;
+- (id)presentedItemsGeometryForDataSource:(id)arg1;
 - (void)screenScaleDidChange;
 - (CDStruct_3fe57b01)spriteTransformForLevel:(unsigned long long)arg1;
 - (long long)sublayoutIndexForObjectReference:(id)arg1 options:(unsigned long long)arg2 updatedObjectReference:(out id *)arg3;

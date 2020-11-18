@@ -137,6 +137,7 @@
 @property (nonatomic) long long smartQuotesType;
 @property (nonatomic) long long spellCheckingType; // @dynamic spellCheckingType;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsImagePaste;
 @property (nonatomic) BOOL suppressReturnKeyStyling;
 @property (readonly, nonatomic, getter=_systemBackgroundView) UIView *systemBackgroundView;
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;

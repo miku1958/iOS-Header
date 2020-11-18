@@ -9,6 +9,7 @@
 @class MSPSenderETAController, NSError, NSString;
 
 @protocol MSPSenderETAControllerDelegate <NSObject>
+- (void)invalidateActiveHandlesForSenderController:(MSPSenderETAController *)arg1;
 - (void)senderController:(MSPSenderETAController *)arg1 didInvalidateSharedTripWithError:(NSError *)arg2;
 - (void)senderController:(MSPSenderETAController *)arg1 sendMessage:(NSString *)arg2 toGroup:(NSString *)arg3;
 - (void)senderController:(MSPSenderETAController *)arg1 sendMessage:(NSString *)arg2 toParticipant:(NSString *)arg3;

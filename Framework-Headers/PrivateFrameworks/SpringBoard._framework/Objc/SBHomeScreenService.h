@@ -9,7 +9,7 @@
 #import <SpringBoard/BSServiceConnectionListenerDelegate-Protocol.h>
 #import <SpringBoard/SBSHomeScreenServiceClientToServerInterface-Protocol.h>
 
-@class BSServiceConnectionListener, FBServiceClientAuthenticator, NSMutableSet, NSString, SBIconController;
+@class BSServiceConnectionListener, FBServiceClientAuthenticator, NSMutableSet, NSNumber, NSString, SBIconController;
 
 @interface SBHomeScreenService : NSObject <BSServiceConnectionListenerDelegate, SBSHomeScreenServiceClientToServerInterface>
 {
@@ -19,6 +19,7 @@
     FBServiceClientAuthenticator *_requestSuggestedAppAuthenticator;
     FBServiceClientAuthenticator *_iconFolderPathLookupAuthenticator;
     FBServiceClientAuthenticator *_addWidgetToTodayViewAuthenticator;
+    FBServiceClientAuthenticator *_lowDensityLayoutAuthenticator;
     NSMutableSet *_activeConnections;
     BSServiceConnectionListener *_connectionListener;
 }
@@ -31,6 +32,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) SBIconController *iconController; // @synthesize iconController=_iconController;
 @property (readonly, nonatomic) FBServiceClientAuthenticator *iconFolderPathLookupAuthenticator; // @synthesize iconFolderPathLookupAuthenticator=_iconFolderPathLookupAuthenticator;
+@property (copy, nonatomic) NSNumber *lowDensityIconLayoutEnabledValue;
+@property (readonly, nonatomic) FBServiceClientAuthenticator *lowDensityLayoutAuthenticator; // @synthesize lowDensityLayoutAuthenticator=_lowDensityLayoutAuthenticator;
 @property (readonly, nonatomic) FBServiceClientAuthenticator *requestSuggestedAppAuthenticator; // @synthesize requestSuggestedAppAuthenticator=_requestSuggestedAppAuthenticator;
 @property (readonly, nonatomic) FBServiceClientAuthenticator *resetHomeScreenLayoutAuthenticator; // @synthesize resetHomeScreenLayoutAuthenticator=_resetHomeScreenLayoutAuthenticator;
 @property (readonly) Class superclass;

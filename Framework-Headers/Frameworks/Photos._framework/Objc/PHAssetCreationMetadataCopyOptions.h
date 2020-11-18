@@ -17,6 +17,7 @@
 @property (nonatomic) BOOL shouldCopySpatialOverCaptureResources; // @synthesize shouldCopySpatialOverCaptureResources=_shouldCopySpatialOverCaptureResources;
 @property (nonatomic) BOOL shouldCopyTitleDescriptionAndKeywords; // @synthesize shouldCopyTitleDescriptionAndKeywords=_shouldCopyTitleDescriptionAndKeywords;
 
++ (id)metadataCopyOptionsForPublishingOriginals;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeToXPCDict:(id)arg1;

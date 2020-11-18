@@ -18,6 +18,7 @@
     NSXPCConnection *_tokenConnection;
 }
 
+@property (readonly, nonatomic) NSXPCListenerEndpoint *configurationEndpoint;
 @property (readonly, nonatomic) NSXPCListenerEndpoint *endpoint;
 @property (readonly, nonatomic) NSXPCConnection *serverConnection;
 @property (readonly, nonatomic) NSXPCConnection *tokenConnection; // @synthesize tokenConnection=_tokenConnection;

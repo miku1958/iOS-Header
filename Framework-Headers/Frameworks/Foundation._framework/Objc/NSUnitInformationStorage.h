@@ -23,6 +23,7 @@
 + (id)gibibytes;
 + (id)gigabits;
 + (id)gigabytes;
++ (void)initialize;
 + (id)kibibits;
 + (id)kibibytes;
 + (id)kilobits;

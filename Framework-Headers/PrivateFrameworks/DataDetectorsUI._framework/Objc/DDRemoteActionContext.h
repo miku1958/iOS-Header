@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     struct __DDResult *_result;
     NSDictionary *_context;
     NSArray *_associatedResults;
+    NSString *_hostApplicationIdentifier;
     NSString *_actionClass;
 }
 
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (strong) NSString *actionClass; // @synthesize actionClass=_actionClass;
 @property (strong) NSArray *associatedResults; // @synthesize associatedResults=_associatedResults;
 @property (strong) NSDictionary *context; // @synthesize context=_context;
+@property (copy) NSString *hostApplicationIdentifier; // @synthesize hostApplicationIdentifier=_hostApplicationIdentifier;
 @property struct __DDResult *result; // @synthesize result=_result;
 
 + (BOOL)isClassAllowedFromString:(id)arg1;

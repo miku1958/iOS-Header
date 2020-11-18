@@ -137,40 +137,30 @@ struct Column<long long> {
     struct BpTree<long long> m_tree;
 };
 
-struct Config {
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> path;
-    struct BinaryData realm_data;
-    struct vector<char, std::__1::allocator<char>> encryption_key;
-    BOOL in_memory;
-    unsigned char schema_mode;
-    struct Optional<realm::Schema> schema;
-    unsigned long long schema_version;
-    struct function<void (std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm>, realm::Schema &)> migration_function;
-    BOOL cache;
-    BOOL disable_format_upgrade;
-    BOOL automatic_change_notifications;
-    struct Optional<unsigned long> execution_context;
-    struct shared_ptr<realm::SyncConfig> sync_config;
-    BOOL force_sync_history;
-};
-
 struct Descriptor;
+
+struct DescriptorOrdering {
+    struct vector<std::__1::unique_ptr<realm::BaseDescriptor, std::__1::default_delete<realm::BaseDescriptor>>, std::__1::allocator<std::__1::unique_ptr<realm::BaseDescriptor, std::__1::default_delete<realm::BaseDescriptor>>>> m_descriptors;
+};
 
 struct Group {
     CDUnknownFunctionPointerType *_field1;
     struct SlabAlloc _field2;
-    struct Array _field3;
-    struct ArrayInteger _field4;
-    struct ArrayString _field5;
-    struct vector<realm::Table *, std::__1::allocator<realm::Table *>> _field6;
-    BOOL _field7;
+    int _field3;
+    struct Array _field4;
+    struct ArrayInteger _field5;
+    struct ArrayString _field6;
+    struct vector<realm::Table *, std::__1::allocator<realm::Table *>> _field7;
     BOOL _field8;
-    struct function<void (const realm::Group::CascadeNotification &)> _field9;
-    struct function<void ()> _field10;
+    BOOL _field9;
+    struct function<void (const realm::Group::CascadeNotification &)> _field10;
+    struct function<void ()> _field11;
+    struct shared_ptr<realm::metrics::Metrics> _field12;
+    unsigned long long _field13;
 };
 
-struct Handle<realm::_impl::ListNotifier> {
-    struct ListNotifier *__ptr_;
+struct Handle<realm::_impl::CollectionNotifier> {
+    struct CollectionNotifier *__ptr_;
     struct __shared_weak_count *__cntrl_;
 };
 
@@ -194,12 +184,13 @@ struct List {
     shared_ptr_130f66cc m_realm;
     struct ObjectSchema *m_object_schema;
     struct shared_ptr<realm::LinkView> m_link_view;
-    struct Handle<realm::_impl::ListNotifier> m_notifier;
+    struct BasicTableRef<realm::Table> m_table;
+    struct Handle<realm::_impl::CollectionNotifier> m_notifier;
 };
 
-struct ListNotifier;
-
 struct MappedFile;
+
+struct Metrics;
 
 struct Move;
 
@@ -242,14 +233,16 @@ struct Optional<unsigned long> {
     BOOL m_engaged;
 };
 
+struct OptionalBase;
+
 struct Property {
     struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field1;
-    unsigned char _field2;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field3;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field2;
+    unsigned char _field3;
     struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field4;
-    BOOL _field5;
-    BOOL _field6;
-    BOOL _field7;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field5;
+    struct TaggedBool<realm::IsPrimaryTag> _field6;
+    struct TaggedBool<realm::IsIndexedTag> _field7;
     unsigned long long _field8;
 };
 
@@ -289,6 +282,8 @@ struct RLMObservationInfo {
     id _field10;
 };
 
+struct RLMResultsSetInfo;
+
 struct RLMSchemaInfo {
     struct unordered_map<NSString *, RLMClassInfo, std::__1::hash<NSString *>, std::__1::equal_to<NSString *>, std::__1::allocator<std::__1::pair<NSString *const, RLMClassInfo>>> m_objects;
 };
@@ -304,8 +299,7 @@ struct Results {
     struct TableView m_table_view;
     struct shared_ptr<realm::LinkView> m_link_view;
     struct BasicTableRef<realm::Table> m_table;
-    struct SortDescriptor m_sort;
-    struct SortDescriptor m_distinct;
+    struct DescriptorOrdering m_descriptor_ordering;
     struct Handle<realm::_impl::ResultsNotifier> m_notifier;
     int m_mode;
     int m_update_policy;
@@ -343,32 +337,37 @@ struct SlabAlloc {
     CDUnknownFunctionPointerType *_field1;
     unsigned long long _field2;
     struct Replication *_field3;
-    int _field4;
-    unsigned long long _field5;
+    unsigned long long _field4;
+    struct atomic<unsigned long long> _field5;
     struct atomic<unsigned long long> _field6;
-    struct shared_ptr<realm::SlabAlloc::MappedFile> _field7;
-    struct unique_ptr<std::__1::shared_ptr<const realm::util::File::Map<char>>[], std::__1::default_delete<std::__1::shared_ptr<const realm::util::File::Map<char>>[]>> _field8;
-    unsigned long long _field9;
-    char *_field10;
+    struct Config {
+        BOOL _field1;
+        BOOL _field2;
+        BOOL _field3;
+        BOOL _field4;
+        BOOL _field5;
+        BOOL _field6;
+        BOOL _field7;
+        char *_field8;
+    } _field7;
+    struct map<int, realm::SlabAlloc::FreeBlock *, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, realm::SlabAlloc::FreeBlock *>>> _field8;
+    struct shared_ptr<realm::SlabAlloc::MappedFile> _field9;
+    struct unique_ptr<std::__1::shared_ptr<const realm::util::File::Map<char>>[], std::__1::default_delete<std::__1::shared_ptr<const realm::util::File::Map<char>>[]>> _field10;
     unsigned long long _field11;
-    unsigned long long _field12;
-    int _field13;
-    struct unique_ptr<unsigned long [], std::__1::default_delete<unsigned long []>> _field14;
-    unsigned long long _field15;
-    int _field16;
-    BOOL _field17;
+    char *_field12;
+    unsigned long long _field13;
+    unsigned long long _field14;
+    int _field15;
+    struct unique_ptr<unsigned long [], std::__1::default_delete<unsigned long []>> _field16;
+    unsigned long long _field17;
     int _field18;
-    struct vector<realm::SlabAlloc::Slab, std::__1::allocator<realm::SlabAlloc::Slab>> _field19;
-    struct vector<realm::SlabAlloc::Chunk, std::__1::allocator<realm::SlabAlloc::Chunk>> _field20;
-    struct vector<realm::SlabAlloc::Chunk, std::__1::allocator<realm::SlabAlloc::Chunk>> _field21;
-    BOOL _field22;
-    struct hash_entry _field23[256];
-    unsigned long long _field24;
-};
-
-struct SortDescriptor {
-    struct vector<std::__1::vector<const realm::ColumnBase *, std::__1::allocator<const realm::ColumnBase *>>, std::__1::allocator<std::__1::vector<const realm::ColumnBase *, std::__1::allocator<const realm::ColumnBase *>>>> m_columns;
-    struct vector<bool, std::__1::allocator<bool>> m_ascending;
+    int _field19;
+    struct vector<realm::SlabAlloc::Slab, std::__1::allocator<realm::SlabAlloc::Slab>> _field20;
+    struct map<unsigned long, unsigned long, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, unsigned long>>> _field21;
+    unsigned long long _field22;
+    BOOL _field23;
+    struct hash_entry _field24[256];
+    unsigned long long _field25;
 };
 
 struct StringIndex;
@@ -380,14 +379,14 @@ struct Table;
 struct TableView {
     CDUnknownFunctionPointerType *_vptr$RowIndexes;
     struct Column<long long> m_row_indexes;
+    unsigned long long m_limit_count;
     unsigned long long m_debug_cookie;
     struct BasicTableRef<realm::Table> m_table;
     struct BacklinkColumn *m_linked_column;
     struct BasicRow<const realm::Table> m_linked_row;
     struct shared_ptr<const realm::LinkView> m_linkview_source;
     unsigned long long m_distinct_column_source;
-    struct SortDescriptor m_distinct_predicate;
-    struct SortDescriptor m_sorting_predicate;
+    struct DescriptorOrdering m_descriptor_ordering;
     struct Query m_query;
     unsigned long long m_start;
     unsigned long long m_end;
@@ -397,6 +396,14 @@ struct TableView {
 };
 
 struct TableViewBase;
+
+struct TaggedBool<realm::IsIndexedTag> {
+    BOOL _field1;
+};
+
+struct TaggedBool<realm::IsPrimaryTag> {
+    BOOL _field1;
+};
 
 struct TailBuffer {
     unsigned long long value;
@@ -428,7 +435,15 @@ struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSStri
     struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, RLMClassInfo>, void *>*> *__next_;
 };
 
+struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, realm::IndexSet>, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, realm::IndexSet>, void *>*> *__next_;
+};
+
 struct __shared_weak_count;
+
+struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
+    struct __tree_node_base<void *> *_field1;
+};
 
 struct __va_list_tag {
     unsigned int _field1;
@@ -465,6 +480,20 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
     } __r_;
 };
 
+struct function<bool (unsigned long long, unsigned long long)> {
+    struct __value_func<bool (unsigned long long, unsigned long long)> {
+        struct type __buf_;
+        struct __base<bool (unsigned long long, unsigned long long)> *__f_;
+    } __f_;
+};
+
+struct function<std::__1::shared_ptr<realm::AuditInterface>()> {
+    struct __value_func<std::__1::shared_ptr<realm::AuditInterface>()> {
+        struct type __buf_;
+        struct __base<std::__1::shared_ptr<realm::AuditInterface>()> *__f_;
+    } __f_;
+};
+
 struct function<void ()> {
     struct __value_func<void ()> {
         struct type _field1;
@@ -479,6 +508,13 @@ struct function<void (const realm::Group::CascadeNotification &)> {
     } _field1;
 };
 
+struct function<void (std::__1::shared_ptr<realm::Realm>)> {
+    struct __value_func<void (std::__1::shared_ptr<realm::Realm>)> {
+        struct type __buf_;
+        struct __base<void (std::__1::shared_ptr<realm::Realm>)> *__f_;
+    } __f_;
+};
+
 struct function<void (std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm>, realm::Schema &)> {
     struct __value_func<void (std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm>, realm::Schema &)> {
         struct type __buf_;
@@ -490,6 +526,30 @@ struct hash_entry {
     unsigned long long _field1;
     char *_field2;
     unsigned long long _field3;
+};
+
+struct map<int, realm::SlabAlloc::FreeBlock *, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, realm::SlabAlloc::FreeBlock *>>> {
+    struct __tree<std::__1::__value_type<int, realm::SlabAlloc::FreeBlock *>, std::__1::__map_value_compare<int, std::__1::__value_type<int, realm::SlabAlloc::FreeBlock *>, std::__1::less<int>, true>, std::__1::allocator<std::__1::__value_type<int, realm::SlabAlloc::FreeBlock *>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<int, realm::SlabAlloc::FreeBlock *>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<int, std::__1::__value_type<int, realm::SlabAlloc::FreeBlock *>, std::__1::less<int>, true>> {
+            unsigned long long _field1;
+        } _field3;
+    } _field1;
+};
+
+struct map<unsigned long, unsigned long, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, unsigned long>>> {
+    struct __tree<std::__1::__value_type<unsigned long, unsigned long>, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, unsigned long>, std::__1::less<unsigned long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long, unsigned long>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long, unsigned long>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, unsigned long>, std::__1::less<unsigned long>, true>> {
+            unsigned long long _field1;
+        } _field3;
+    } _field1;
 };
 
 struct shared_ptr<const realm::Descriptor> {
@@ -529,13 +589,30 @@ struct shared_ptr<realm::_impl::CollectionNotifier> {
     struct __shared_weak_count *__cntrl_;
 };
 
+struct shared_ptr<realm::metrics::Metrics> {
+    struct Metrics *_field1;
+    struct __shared_weak_count *_field2;
+};
+
 struct type {
     unsigned char __lx[32];
+};
+
+struct unique_ptr<(anonymous namespace)::OptionalBase, std::__1::default_delete<(anonymous namespace)::OptionalBase>> {
+    struct __compressed_pair<(anonymous namespace)::OptionalBase *, std::__1::default_delete<(anonymous namespace)::OptionalBase>> {
+        struct OptionalBase *__value_;
+    } __ptr_;
 };
 
 struct unique_ptr<RLMObservationInfo, std::__1::default_delete<RLMObservationInfo>> {
     struct __compressed_pair<RLMObservationInfo *, std::__1::default_delete<RLMObservationInfo>> {
         struct RLMObservationInfo *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<RLMResultsSetInfo, std::__1::default_delete<RLMResultsSetInfo>> {
+    struct __compressed_pair<RLMResultsSetInfo *, std::__1::default_delete<RLMResultsSetInfo>> {
+        struct RLMResultsSetInfo *__value_;
     } __ptr_;
 };
 
@@ -550,6 +627,8 @@ struct unique_ptr<realm::Array, std::__1::default_delete<realm::Array>> {
         struct Array *__value_;
     } __ptr_;
 };
+
+struct unique_ptr<realm::BaseDescriptor, std::__1::default_delete<realm::BaseDescriptor>>;
 
 struct unique_ptr<realm::StringIndex, std::__1::default_delete<realm::StringIndex>> {
     struct __compressed_pair<realm::StringIndex *, std::__1::default_delete<realm::StringIndex>> {
@@ -574,6 +653,17 @@ struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__h
         struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, RLMClassInfo>, void *>*> **__value_;
         struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, RLMClassInfo>, void *>*>*>> {
             struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, RLMClassInfo>, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, realm::IndexSet>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, realm::IndexSet>, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, realm::IndexSet>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, realm::IndexSet>, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, realm::IndexSet>, void *>*> **__value_;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, realm::IndexSet>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, realm::IndexSet>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
@@ -607,6 +697,21 @@ struct unordered_map<NSString *, RLMClassInfo, std::__1::hash<NSString *>, std::
     } __table_;
 };
 
+struct unordered_map<NSString *, realm::IndexSet, std::__1::hash<NSString *>, std::__1::equal_to<NSString *>, std::__1::allocator<std::__1::pair<NSString *const, realm::IndexSet>>> {
+    struct __hash_table<std::__1::__hash_value_type<NSString *, realm::IndexSet>, std::__1::__unordered_map_hasher<NSString *, std::__1::__hash_value_type<NSString *, realm::IndexSet>, std::__1::hash<NSString *>, true>, std::__1::__unordered_map_equal<NSString *, std::__1::__hash_value_type<NSString *, realm::IndexSet>, std::__1::equal_to<NSString *>, true>, std::__1::allocator<std::__1::__hash_value_type<NSString *, realm::IndexSet>>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, realm::IndexSet>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, realm::IndexSet>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, realm::IndexSet>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, realm::IndexSet>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<NSString *, realm::IndexSet>, void *>*> __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<NSString *, std::__1::__hash_value_type<NSString *, realm::IndexSet>, std::__1::hash<NSString *>, true>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<NSString *, std::__1::__hash_value_type<NSString *, realm::IndexSet>, std::__1::equal_to<NSString *>, true>> {
+            float __value_;
+        } __p3_;
+    } __table_;
+};
+
 struct vector<RLMClassInfo *, std::__1::allocator<RLMClassInfo *>> {
     struct RLMClassInfo **_field1;
     struct RLMClassInfo **_field2;
@@ -623,14 +728,6 @@ struct vector<RLMObservationInfo *, std::__1::allocator<RLMObservationInfo *>> {
     } _field3;
 };
 
-struct vector<bool, std::__1::allocator<bool>> {
-    unsigned long long *__begin_;
-    unsigned long long __size_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<unsigned long>> {
-        unsigned long long __value_;
-    } __cap_alloc_;
-};
-
 struct vector<char, std::__1::allocator<char>> {
     char *__begin_;
     char *__end_;
@@ -638,8 +735,6 @@ struct vector<char, std::__1::allocator<char>> {
         char *__value_;
     } __end_cap_;
 };
-
-struct vector<const realm::ColumnBase *, std::__1::allocator<const realm::ColumnBase *>>;
 
 struct vector<realm::CollectionChangeSet::Move, std::__1::allocator<realm::CollectionChangeSet::Move>> {
     struct Move *__begin_;
@@ -673,14 +768,6 @@ struct vector<realm::QueryGroup, std::__1::allocator<realm::QueryGroup>> {
     } __end_cap_;
 };
 
-struct vector<realm::SlabAlloc::Chunk, std::__1::allocator<realm::SlabAlloc::Chunk>> {
-    struct Chunk *_field1;
-    struct Chunk *_field2;
-    struct __compressed_pair<realm::SlabAlloc::Chunk *, std::__1::allocator<realm::SlabAlloc::Chunk>> {
-        struct Chunk *_field1;
-    } _field3;
-};
-
 struct vector<realm::SlabAlloc::Slab, std::__1::allocator<realm::SlabAlloc::Slab>> {
     struct Slab *_field1;
     struct Slab *_field2;
@@ -705,11 +792,11 @@ struct vector<realm::_impl::ChunkedRangeVector::Chunk, std::__1::allocator<realm
     } __end_cap_;
 };
 
-struct vector<std::__1::vector<const realm::ColumnBase *, std::__1::allocator<const realm::ColumnBase *>>, std::__1::allocator<std::__1::vector<const realm::ColumnBase *, std::__1::allocator<const realm::ColumnBase *>>>> {
-    struct vector<const realm::ColumnBase *, std::__1::allocator<const realm::ColumnBase *>> *__begin_;
-    struct vector<const realm::ColumnBase *, std::__1::allocator<const realm::ColumnBase *>> *__end_;
-    struct __compressed_pair<std::__1::vector<const realm::ColumnBase *, std::__1::allocator<const realm::ColumnBase *>>*, std::__1::allocator<std::__1::vector<const realm::ColumnBase *, std::__1::allocator<const realm::ColumnBase *>>>> {
-        struct vector<const realm::ColumnBase *, std::__1::allocator<const realm::ColumnBase *>> *__value_;
+struct vector<std::__1::unique_ptr<realm::BaseDescriptor, std::__1::default_delete<realm::BaseDescriptor>>, std::__1::allocator<std::__1::unique_ptr<realm::BaseDescriptor, std::__1::default_delete<realm::BaseDescriptor>>>> {
+    struct unique_ptr<realm::BaseDescriptor, std::__1::default_delete<realm::BaseDescriptor>> *__begin_;
+    struct unique_ptr<realm::BaseDescriptor, std::__1::default_delete<realm::BaseDescriptor>> *__end_;
+    struct __compressed_pair<std::__1::unique_ptr<realm::BaseDescriptor, std::__1::default_delete<realm::BaseDescriptor>>*, std::__1::allocator<std::__1::unique_ptr<realm::BaseDescriptor, std::__1::default_delete<realm::BaseDescriptor>>>> {
+        struct unique_ptr<realm::BaseDescriptor, std::__1::default_delete<realm::BaseDescriptor>> *__value_;
     } __end_cap_;
 };
 

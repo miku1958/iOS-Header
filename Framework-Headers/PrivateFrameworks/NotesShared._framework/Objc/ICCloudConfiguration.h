@@ -17,12 +17,10 @@
     unsigned long long _maxSubAttachmentsPerAttachment;
     unsigned long long _resultsLimitPerSyncOperation;
     NSNumber *_maximumAttachmentSizeMB;
-    NSNumber *_backgroundFetchTimeInterval;
     NSString *_minimumClientVersion;
     NSTimer *_downloadTimer;
 }
 
-@property (strong, nonatomic) NSNumber *backgroundFetchTimeInterval; // @synthesize backgroundFetchTimeInterval=_backgroundFetchTimeInterval;
 @property (strong, nonatomic) NSTimer *downloadTimer; // @synthesize downloadTimer=_downloadTimer;
 @property (nonatomic) unsigned long long maxAttachmentsPerNote; // @synthesize maxAttachmentsPerNote=_maxAttachmentsPerNote;
 @property (nonatomic) unsigned long long maxInlineAssetSizeBytes; // @synthesize maxInlineAssetSizeBytes=_maxInlineAssetSizeBytes;

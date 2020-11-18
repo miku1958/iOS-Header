@@ -9,16 +9,15 @@
 #import <HomeAI/HMFLogging-Protocol.h>
 #import <HomeAI/NSSecureCoding-Protocol.h>
 
-@class HMICameraVideoFrameMotionAnalysisResult, NSData, NSString;
+@class NSArray, NSData, NSString;
 
 @interface HMICameraVideoFrame : HMFObject <NSSecureCoding, HMFLogging>
 {
     unsigned long long _frameId;
     unsigned long long _fragmentSequenceNumber;
     struct __CVBuffer *_pixelBuffer;
-    struct __CVBuffer *_regionOfInterestPixelBuffer;
     NSData *_jpegData;
-    HMICameraVideoFrameMotionAnalysisResult *_motionResult;
+    NSArray *_motionDetections;
     struct CGSize _size;
     CDStruct_1b6d18a9 _presentationTime;
 }
@@ -29,10 +28,9 @@
 @property (readonly) unsigned long long frameId; // @synthesize frameId=_frameId;
 @property (readonly) unsigned long long hash;
 @property (readonly) NSData *jpegData; // @synthesize jpegData=_jpegData;
-@property (strong) HMICameraVideoFrameMotionAnalysisResult *motionResult; // @synthesize motionResult=_motionResult;
+@property (strong) NSArray *motionDetections; // @synthesize motionDetections=_motionDetections;
 @property (readonly) struct __CVBuffer *pixelBuffer; // @synthesize pixelBuffer=_pixelBuffer;
 @property (readonly) CDStruct_1b6d18a9 presentationTime; // @synthesize presentationTime=_presentationTime;
-@property (readonly) struct __CVBuffer *regionOfInterestPixelBuffer; // @synthesize regionOfInterestPixelBuffer=_regionOfInterestPixelBuffer;
 @property (readonly) struct CGSize size; // @synthesize size=_size;
 @property (readonly) Class superclass;
 
@@ -40,7 +38,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)JPEGRepresentationWithDownscaleFactor:(float)arg1 outSize:(struct CGSize *)arg2;
-- (BOOL)convertToJPEGAndGenerateRegionOfInterestWithSize:(struct CGSize)arg1 error:(id *)arg2;
+- (BOOL)convertToJPEGWithError:(id *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

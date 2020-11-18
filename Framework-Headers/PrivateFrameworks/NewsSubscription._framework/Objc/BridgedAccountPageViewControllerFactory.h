@@ -6,10 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@interface BridgedAccountPageViewControllerFactory : NSObject
+#import <NewsSubscription/SKAccountPageViewControllerDelegate-Protocol.h>
+
+@class NSString;
+@protocol SKAccountPageViewControllerDelegate;
+
+@interface BridgedAccountPageViewControllerFactory : NSObject <SKAccountPageViewControllerDelegate>
 {
+    id<SKAccountPageViewControllerDelegate> _delegate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<SKAccountPageViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
+- (void).cxx_destruct;
 - (id)createAccountPageViewControllerFor:(id)arg1;
 
 @end

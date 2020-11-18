@@ -19,7 +19,7 @@
 - (id)_lineItemsForPurchaseTransaction:(id)arg1 pass:(id)arg2;
 - (id)_lineItemsForWithdrawalTransaction:(id)arg1 pass:(id)arg2;
 - (id)_primaryFundingSourceLineItemForTransaction:(id)arg1 pass:(id)arg2;
-- (id)_rewardsLineItemsForRewards:(id)arg1;
+- (id)_rewardsLineItemsForRewards:(id)arg1 currencyCode:(id)arg2;
 - (id)_secondaryFundingSourceLineItemForTransaction:(id)arg1;
 - (id)_subtotalLineItemForTransaction:(id)arg1;
 - (id)_totalPaidLineItemForTransaction:(id)arg1 isUnqualified:(BOOL)arg2;

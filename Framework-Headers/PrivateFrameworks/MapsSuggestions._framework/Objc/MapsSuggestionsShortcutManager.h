@@ -41,6 +41,7 @@
 - (BOOL)_mergeShortcutsToMeCardAndCallHandler:(CDUnknownBlockType)arg1;
 - (void)addMeCardObserver:(id)arg1;
 - (BOOL)addOrUpdateShortcuts:(struct NSArray *)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)initWithDefaults;
 - (id)initWithStorage:(id)arg1 suggestor:(id)arg2 contacts:(id)arg3 routine:(id)arg4;
 - (BOOL)loadAllShortcutsWithHandler:(CDUnknownBlockType)arg1;
 - (void)meCardReader:(id)arg1 didUpdateMeCard:(id)arg2;
@@ -53,6 +54,8 @@
 - (void)setChangeHandler:(CDUnknownBlockType)arg1;
 - (id)storage;
 - (id)suggestor;
+- (struct NSArray *)test_setUpPlaceholdersIfNeeded:(id)arg1 overlays:(struct NSArray *)arg2;
+- (void)test_sortMapsSuggestionsShortcuts:(struct NSMutableArray *)arg1;
 
 @end
 

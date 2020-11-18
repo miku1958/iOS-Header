@@ -32,7 +32,6 @@
     BOOL _showFeaturedPhotosBadges;
     BOOL _delayEditRenders;
     BOOL _useCachedEditRenders;
-    BOOL _allowSharingEditSuggestions;
     unsigned long long _maxSimultaneousVideoCount;
     double _minimumVisibilityForVideoPlayback;
     long long _sortingAlgorithm;
@@ -41,7 +40,6 @@
 
 @property (nonatomic) BOOL allowGIFPlayback; // @synthesize allowGIFPlayback=_allowGIFPlayback;
 @property (nonatomic) BOOL allowLoopPlayback; // @synthesize allowLoopPlayback=_allowLoopPlayback;
-@property (nonatomic) BOOL allowSharingEditSuggestions; // @synthesize allowSharingEditSuggestions=_allowSharingEditSuggestions;
 @property (nonatomic) BOOL allowVideoPlayback; // @synthesize allowVideoPlayback=_allowVideoPlayback;
 @property (nonatomic) BOOL delayEditRenders; // @synthesize delayEditRenders=_delayEditRenders;
 @property (nonatomic) BOOL disableSharedAlbumTopMargin; // @synthesize disableSharedAlbumTopMargin=_disableSharedAlbumTopMargin;

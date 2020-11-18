@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *delegateNotificationQueue;
     int _currentActiveRequestsCount;
     BOOL _isActive;
+    BOOL _isClientRegistered;
     VideoAttributes *_remoteScreenAttributes;
     NSMutableSet *_requests;
     BOOL _lastRequest;
@@ -38,9 +39,11 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (nonatomic) int videoCodec;
 
++ (unsigned long long)countForRequestType:(int)arg1;
 + (unsigned long long)deviceFreeDiskSpace;
 + (BOOL)deviceHasSufficientFreeSpace;
 + (unsigned long long)fileSize:(id)arg1;
++ (int)typeForRequest:(id)arg1;
 - (void)_generateRequest:(unsigned char)arg1 requestState:(unsigned char)arg2 transactionID:(id)arg3 timestamp:(unsigned int)arg4;
 - (void)addLocalAudioSample:(struct opaqueVCAudioBufferList *)arg1 timestamp:(unsigned int)arg2;
 - (void)addLocalVideoSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 cameraStatusBits:(unsigned char)arg2 timestamp:(unsigned int)arg3;

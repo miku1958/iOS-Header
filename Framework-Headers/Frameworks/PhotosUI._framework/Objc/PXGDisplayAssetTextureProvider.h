@@ -6,16 +6,18 @@
 
 #import <PhotosUICore/PXGTextureProvider.h>
 
-@class NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSObject, PXGAssetImageCache, PXGThumbnailRequestQueue, PXMediaProvider;
+#import <PhotosUICore/PXGImageRequestPerformer-Protocol.h>
+
+@class NSArray, NSMapTable, NSMutableDictionary, NSMutableIndexSet, NSObject, NSString, PXGAssetImageCache, PXGImageRequestQueue, PXGThumbnailRequestQueue, PXMediaProvider;
 @protocol OS_dispatch_queue, PXGDisplayAssetPixelBufferSourcesProvider;
 
-@interface PXGDisplayAssetTextureProvider : PXGTextureProvider
+@interface PXGDisplayAssetTextureProvider : PXGTextureProvider <PXGImageRequestPerformer>
 {
     NSObject<OS_dispatch_queue> *_videoSessionsRequestQueue;
     NSMapTable *_requestQueue_videoSessionsByAsset;
     NSMutableIndexSet *_requestQueue_textureRequestIDsWithDeliveredVideoFrames;
     PXGThumbnailRequestQueue *_requestQueue_thumbnailRequestQueue;
-    NSMutableArray *_requestQueue_imageRequestQueue;
+    PXGImageRequestQueue *_requestQueue_imageRequestQueue;
     NSMutableDictionary *_requestQueue_deferredImageRequestBlocksByTextureID;
     NSObject<OS_dispatch_queue> *_cancelationQueue;
     NSMutableDictionary *_cancelationQueue_mediaRequestIDByTextureID;
@@ -34,9 +36,14 @@
     double _displayLinkLastTargetTimestamp;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property double displayLinkLastTargetTimestamp; // @synthesize displayLinkLastTargetTimestamp=_displayLinkLastTargetTimestamp;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PXMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (strong, nonatomic) id<PXGDisplayAssetPixelBufferSourcesProvider> pixelBufferSourcesProvider; // @synthesize pixelBufferSourcesProvider=_pixelBufferSourcesProvider;
+@property (readonly, nonatomic) struct CGImage *placeholderImage;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL videoRequestsAllowed; // @synthesize videoRequestsAllowed=_videoRequestsAllowed;
 
 + (CDUnknownBlockType)defaultMediaVersionHandlerWithDataSourceBeforeChanges:(id)arg1 dataSourceAfterChanges:(id)arg2;
@@ -47,12 +54,10 @@
 - (void)_handleResult:(struct CGImage *)arg1 orientation:(long long)arg2 info:(id)arg3 targetSize:(struct CGSize)arg4 screenScale:(double)arg5 mediaRequest:(id)arg6 textureRequestID:(int)arg7;
 - (BOOL)_imageSizeSatisfiedByThumbnail:(struct CGSize)arg1;
 - (void)_performDeferredImageRequest:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5 textureRequestID:(int)arg6;
-- (struct CGImage *)_placeholderImage;
 - (void)_processDeferredImageRequests;
-- (void)_processImageRequests;
+- (void)_processImageRequestsWithAllowedIDs:(id)arg1;
 - (void)_processThumbnailRequests;
 - (void)_provideVideoFrameForVideoSession:(id)arg1;
-- (void)_requestImageTexturesForSpriteIndex:(unsigned int)arg1 fetchResult:(id)arg2 observer:(id)arg3 presentationStyles:(unsigned long long)arg4 targetSize:(struct CGSize)arg5 screenScale:(double)arg6 textureRequestID:(int)arg7;
 - (id)_requestOptionsForUseCase:(unsigned long long)arg1 forDrawing:(BOOL)arg2;
 - (void)_requestTexturesForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 observer:(id)arg2 textureRequestIDs:(struct _NSRange)arg3 displayAssetFetchResult:(id)arg4 presentationStyles:(unsigned long long)arg5 targetSize:(struct CGSize)arg6 screenScale:(double)arg7;
 - (void)_requestVideoTexturesForSpriteAtIndex:(unsigned int)arg1 spriteReference:(id)arg2 displayAsset:(id)arg3 textureRequestID:(int)arg4;
@@ -63,7 +68,8 @@
 - (void)didFinishRequestingTextures;
 - (id)init;
 - (id)initWithMediaProvider:(id)arg1;
-- (void)interactionStateDidChange:(CDStruct_04522d6a)arg1;
+- (void)interactionStateDidChange:(CDStruct_93894d6c)arg1;
+- (void)performRequestForSpriteIndex:(unsigned int)arg1 textureRequestID:(int)arg2 sharedState:(id)arg3;
 - (void)registerImageDataSpecs:(id)arg1;
 - (struct _NSRange)requestTexturesForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 geometries:(CDStruct_3ab912e1 *)arg2 styles:(CDStruct_506f5052 *)arg3 infos:(CDStruct_9d1ebe49 *)arg4 inLayout:(id)arg5;
 

@@ -99,6 +99,7 @@
 - (void)_performBillPaymentWithAmount:(id)arg1 billPaymentSuggestedAmountDataEvent:(id)arg2;
 - (void)_presentAddBankAccount;
 - (void)_presentAlertControllerForError:(id)arg1;
+- (void)_reportEventForPassIfNecessary:(id)arg1;
 - (void)_setAccount:(id)arg1;
 - (void)_setEnabled:(BOOL)arg1;
 - (void)_setPayButtonsEnabled:(BOOL)arg1;
@@ -121,7 +122,7 @@
 - (void)billPaymentAmountDescriptionViewHasTappedLearnMore:(id)arg1;
 - (id)billPaymentRingView:(id)arg1 bottomCurvedTextForSuggestedAmount:(id)arg2;
 - (id)billPaymentRingView:(id)arg1 interestTextForAmount:(id)arg2;
-- (void)billPaymentRingView:(id)arg1 selectedSuggestedAmount:(id)arg2 selectedSuggestedAmountIsTarget:(BOOL)arg3;
+- (void)billPaymentRingView:(id)arg1 selectedSuggestedAmount:(id)arg2 selectedSuggestedAmountIsTarget:(BOOL)arg3 userInitiatedChange:(BOOL)arg4;
 - (id)billPaymentRingView:(id)arg1 topCurvedTextForSuggestedAmount:(id)arg2;
 - (id)billPaymentRingViewZeroInterestText:(id)arg1;
 - (void)dealloc;

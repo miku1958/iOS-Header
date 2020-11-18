@@ -40,7 +40,6 @@
 - (id)fetchAssetContext;
 - (id)fetchImageData;
 - (void)finishWithImageData:(id)arg1;
-- (id)initWithClip:(id)arg1 posterFrame:(id)arg2;
 - (id)initWithClipManager:(id)arg1 clip:(id)arg2 posterFrame:(id)arg3;
 - (id)initWithClipManager:(id)arg1 clip:(id)arg2 posterFrame:(id)arg3 dataSource:(id)arg4;
 - (id)logIdentifier;

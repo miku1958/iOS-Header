@@ -15,7 +15,7 @@
 #import <SpringBoard/SBIdleTimerProviding-Protocol.h>
 #import <SpringBoard/SiriPresentationSpringBoardMainScreenViewControllerDelegate-Protocol.h>
 
-@class BSEventQueue, FBDisplayLayoutElement, NSHashTable, NSMutableArray, NSString, SBAssistantWindow, SBFAuthenticationAssertion, SBHomeGestureParticipant, SBSystemAnimationSettings, SiriPresentationSpringBoardMainScreenViewController, UIApplicationSceneDeactivationAssertion;
+@class BSEventQueue, FBDisplayLayoutElement, NSHashTable, NSMutableArray, NSSet, NSString, SBAssistantWindow, SBFAuthenticationAssertion, SBHomeGestureParticipant, SBSystemAnimationSettings, SiriPresentationSpringBoardMainScreenViewController, UIApplicationSceneDeactivationAssertion;
 @protocol BSInvalidatable, SBIdleTimer, SBIdleTimerCoordinating;
 
 @interface SBAssistantController : NSObject <CSExternalBehaviorProviding, SBFIdleTimerBehaviorProviding, PTSettingsKeyObserver, SBHomeGestureParticipantDelegate, SBFAuthenticationResponder, SiriPresentationSpringBoardMainScreenViewControllerDelegate, SBIdleTimerProviding, CSCoverSheetOverlaying>
@@ -35,6 +35,7 @@
     BOOL _visible;
     BOOL _dismissing;
     FBDisplayLayoutElement *_mainDisplayLayoutElement;
+    NSSet *_audioCategoriesDisablingVolumeHUD;
     id<BSInvalidatable> _hideApplicationModalAlertsAssertion;
     SBSystemAnimationSettings *_settings;
     id<SBIdleTimer> _idleTimer;
@@ -118,6 +119,8 @@
 - (void)screenWakeRequested;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (BOOL)shouldShowLockStatusBarTime;
+- (BOOL)shouldShowSystemVolumeHUDForCategory:(id)arg1;
+- (void)siriPresentation:(id)arg1 didUpdateAudioCategoriesDisablingVolumeHUD:(id)arg2;
 - (void)siriPresentation:(id)arg1 isEnabledDidChange:(BOOL)arg2;
 - (BOOL)siriPresentation:(id)arg1 requestsDeviceUnlockWithPassword:(id)arg2;
 - (void)siriPresentation:(id)arg1 requestsDismissalWithOptions:(id)arg2 withHandler:(CDUnknownBlockType)arg3;

@@ -23,6 +23,9 @@
 
 - (void).cxx_destruct;
 - (void)configureForAutomationType:(unsigned long long)arg1;
+- (id)homeAutomationIcon;
+- (id)homeButtonColor;
+- (id)homeExplanatoryText;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setButtonColor:(id)arg1;
 - (void)setButtonTarget:(id)arg1 action:(SEL)arg2;

@@ -52,6 +52,7 @@
 - (void)datePickerValueChanged;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)resignFirstResponder;
+- (void)tintColorDidChange;
 
 @end
 

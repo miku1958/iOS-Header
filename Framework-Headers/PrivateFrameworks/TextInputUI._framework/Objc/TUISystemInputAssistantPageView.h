@@ -21,6 +21,7 @@
     TUIPredictionCellButton *_expandButton;
     id<TUISystemInputAssistantPageViewDelegate> _pageViewDelegate;
     UIView *_clipView;
+    UIView *_primaryContainerView;
     UIScrollView *_scrollView;
 }
 
@@ -31,6 +32,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hidesExpandButton; // @synthesize hidesExpandButton=_hidesExpandButton;
 @property (weak, nonatomic) id<TUISystemInputAssistantPageViewDelegate> pageViewDelegate; // @synthesize pageViewDelegate=_pageViewDelegate;
+@property (strong, nonatomic) UIView *primaryContainerView; // @synthesize primaryContainerView=_primaryContainerView;
 @property (strong, nonatomic) UIView *primaryView; // @synthesize primaryView=_primaryView;
 @property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (strong, nonatomic) UIView *secondaryView; // @synthesize secondaryView=_secondaryView;

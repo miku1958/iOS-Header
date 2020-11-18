@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HMDDevicePreferenceDataSource-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class HMDHAPAccessory, HMDHome, HMDNetworkRouterController, HMFUnfairLock, NSNotificationCenter, NSString;
 @protocol HMDNetworkRouterFirewallRuleManager, OS_dispatch_queue;
 
-@interface HMDNetworkRouterClientManager : NSObject <HMFLogging>
+@interface HMDNetworkRouterClientManager : NSObject <HMFLogging, HMDDevicePreferenceDataSource>
 {
     BOOL _started;
     BOOL _initialConfigureNeeded;
@@ -51,7 +52,6 @@
 - (void)_createClientConfigurationForAccessory:(id)arg1 credential:(id)arg2;
 - (void)_createClientConfigurationWithSavedPSKForAccessory:(id)arg1;
 - (void)_deregisterForChangesToManagedAccessory:(id)arg1;
-- (void)_deregisterForTargetNetworkProtectionChangesToAccessory:(id)arg1;
 - (void)_disableHomeNetworkProtection;
 - (void)_enableHomeNetworkProtection;
 - (void)_evaluateManagement;
@@ -62,7 +62,7 @@
 - (void)_handleUnreachableAccessory:(id)arg1;
 - (void)_reconcileClientConfigurationForAccessory:(id)arg1 clientStatusList:(id)arg2 networkRouterUUID:(id)arg3;
 - (void)_registerForChangesToManagedAccessory:(id)arg1;
-- (void)_registerForTargetNetworkProtectionChangesToAccessory:(id)arg1;
+- (void)_registerForNetworkProtectionChangesToGroup:(id)arg1;
 - (void)_registerInterestForFirewallRulesForAccessory:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_replaceClientConfigurationForAccessory:(id)arg1 clientStatus:(id)arg2;
 - (void)_replaceNetworkClientIdentifierForAccessory:(id)arg1 networkClientIdentifier:(id)arg2 networkRouterUUID:(id)arg3;
@@ -72,6 +72,7 @@
 - (void)_stop;
 - (void)_stopManagingAccessory:(id)arg1;
 - (id)_transactionBlockForAccessoriesWithStaleClientIdentifier;
+- (void)_unregisterForNetworkProtectionChangesToGroup:(id)arg1;
 - (void)_unregisterInterestForFirewallRulesForAccessory:(id)arg1;
 - (void)_unregisterInterestForFirewallRulesForProductData:(id)arg1 firmwareVersion:(id)arg2;
 - (void)_updateClientConfigurationForAccessory:(id)arg1 protectionMode:(long long)arg2 clientIdentifier:(id)arg3;
@@ -83,12 +84,15 @@
 - (void)handleAccessoryFirmwareVersionUpdated:(id)arg1;
 - (void)handleAccessoryLocallyReachable:(id)arg1;
 - (void)handleAccessoryRemoved:(id)arg1;
-- (void)handleAccessoryTargetNetworkProtectionChanged:(id)arg1;
 - (void)handleFirewallRulesUpdated:(id)arg1;
 - (void)handleHomeNetworkProtectionChanged:(id)arg1;
+- (void)handleNetworkProtectionGroupActivated:(id)arg1;
+- (void)handleNetworkProtectionGroupDeactivated:(id)arg1;
+- (void)handleNetworkProtectionGroupProtectionChanged:(id)arg1;
 - (void)handleRouterAccessoryReachable:(id)arg1;
 - (id)initWithNetworkRouterAccessory:(id)arg1 workQueue:(id)arg2 firewallRuleManager:(id)arg3 notificationCenter:(id)arg4;
 - (void)replaceActiveNetworkRouterAccessory:(id)arg1;
+- (BOOL)supportsDeviceWithCapabilities:(id)arg1;
 
 @end
 

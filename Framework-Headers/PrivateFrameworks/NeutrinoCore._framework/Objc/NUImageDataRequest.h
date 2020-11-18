@@ -15,7 +15,7 @@
 }
 
 @property (copy) NSString *dataExtractor; // @synthesize dataExtractor=_dataExtractor;
-@property (readonly) NSDictionary *options; // @synthesize options=_options;
+@property (copy) NSDictionary *options; // @synthesize options=_options;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

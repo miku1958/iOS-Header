@@ -11,6 +11,7 @@
 - (BOOL)_accessibilitySpeakThisIgnoresAccessibilityElementStatus;
 - (id)_accessibilitySpeakThisString;
 - (id)_accessibilityTextRectsForSpeakThisStringRange:(struct _NSRange)arg1;
+- (BOOL)_isInPreviewPlatter;
 - (id)_speakThisElementStrings;
 - (id)_speakThisElements;
 @end

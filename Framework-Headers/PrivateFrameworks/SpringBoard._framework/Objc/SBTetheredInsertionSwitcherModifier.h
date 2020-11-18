@@ -11,6 +11,7 @@
 @interface SBTetheredInsertionSwitcherModifier : SBSwitcherModifier
 {
     NSUUID *_tetheredInsertionID;
+    BOOL _isFloating;
     unsigned long long _phase;
     BOOL _simulatingPreInsertionState;
     NSArray *_appLayoutsVisibleBeforeInsertion;
@@ -19,7 +20,7 @@
 - (void).cxx_destruct;
 - (void)_performBlockWhileSimulatingPreInsertionAppLayoutState:(CDUnknownBlockType)arg1;
 - (id)handleTetheredInsertionEvent:(id)arg1;
-- (id)initWithTetheredInsertionID:(id)arg1;
+- (id)initWithTetheredInsertionID:(id)arg1 floating:(BOOL)arg2;
 - (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (struct CGRect)switcherViewBounds;
 

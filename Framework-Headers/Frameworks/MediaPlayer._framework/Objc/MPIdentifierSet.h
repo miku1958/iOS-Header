@@ -13,11 +13,12 @@
 #import <MediaPlayer/MPMutableUniversalStoreIdentifiers-Protocol.h>
 #import <MediaPlayer/NSCopying-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
+#import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
 
 @class MPModelKind, NSArray, NSString;
 @protocol MPLocalLibraryIdentifiers, MPPersonalStoreIdentifiers, MPRadioIdentifiers, MPUniversalStoreIdentifiers;
 
-@interface MPIdentifierSet : NSObject <MPMutableLocalLibraryIdentifiers, MPMutablePersonalStoreIdentifiers, MPMutableUniversalStoreIdentifiers, MPMutableRadioIdentifiers, MPMutableIdentifierSet, NSCopying, NSSecureCoding>
+@interface MPIdentifierSet : NSObject <MPMutableLocalLibraryIdentifiers, MPMutablePersonalStoreIdentifiers, MPMutableUniversalStoreIdentifiers, MPMutableRadioIdentifiers, MPMutableIdentifierSet, _MPStateDumpPropertyListTransformable, NSCopying, NSSecureCoding>
 {
     BOOL _shouldExcludeFromShuffle;
     NSString *_databaseID;
@@ -103,6 +104,7 @@
 - (id)_initWithModelKind:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_setDefaultDatabaseIDIfNeeded;
 - (void)_setDefaultPersonIDIfNeeded;
+- (id)_stateDumpObject;
 - (id)copyWithBlock:(CDUnknownBlockType)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

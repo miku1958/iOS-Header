@@ -10,6 +10,7 @@
 
 @interface _TVShelfViewLayout : UICollectionViewLayout
 {
+    BOOL _shouldSnapContent;
     double _minimumInteritemSpacing;
     double _minimumLineSpacing;
     long long _rowCount;
@@ -34,14 +35,17 @@
 @property (nonatomic) long long rowCount; // @synthesize rowCount=_rowCount;
 @property (nonatomic) struct UIEdgeInsets sectionInset; // @synthesize sectionInset=_sectionInset;
 @property (strong, nonatomic) NSArray *shelfLayoutSections; // @synthesize shelfLayoutSections=_shelfLayoutSections;
+@property (nonatomic) BOOL shouldSnapContent; // @synthesize shouldSnapContent=_shouldSnapContent;
 
 + (double)defaultHeaderSelectionMargin;
 - (void).cxx_destruct;
 - (BOOL)_bumpHeaderForLayoutSection:(id)arg1 forIndexPath:(id)arg2;
+- (id)_indexPathForItemAtProposedContentOffset:(struct CGPoint)arg1;
 - (struct CGRect)boundingSelectionFrameForFrame:(struct CGRect)arg1;
 - (struct CGSize)collectionViewContentSize;
 - (double)computedContentHeight;
 - (long long)computedRowCount;
+- (id)indexPathForSnappedContent;
 - (id)init;
 - (void)invalidateLayoutWithContext:(id)arg1;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
@@ -49,6 +53,10 @@
 - (id)layoutAttributesForSupplementaryViewOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (void)prepareLayout;
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
+- (void)snapContent;
+- (void)snapContentToIndexPath:(id)arg1;
+- (struct CGPoint)targetContentOffsetForProposedContentOffset:(struct CGPoint)arg1;
+- (struct CGPoint)targetContentOffsetForProposedContentOffset:(struct CGPoint)arg1 withScrollingVelocity:(struct CGPoint)arg2;
 
 @end
 

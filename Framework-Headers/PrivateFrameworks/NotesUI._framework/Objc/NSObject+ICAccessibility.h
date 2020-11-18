@@ -9,5 +9,6 @@
 @interface NSObject (ICAccessibility)
 - (BOOL)icaxRespondsToSelector:(SEL)arg1 fromExtrasProtocol:(id)arg2;
 - (id)icaxValueForKey:(id)arg1;
+- (id)icaxValueForKeyPath:(id)arg1;
 @end
 

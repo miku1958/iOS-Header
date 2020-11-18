@@ -6,7 +6,7 @@
 
 #import <PhotoLibraryServices/PLContainerChangeNotification.h>
 
-@class NSDictionary, NSObject;
+@class NSDictionary, NSObject, PLManagedObject;
 @protocol PLAlbumProtocol, PLAssetContainer;
 
 @interface PLAssetContainerChangeNotification : PLContainerChangeNotification
@@ -17,7 +17,8 @@
 }
 
 @property (readonly, nonatomic) NSObject<PLAlbumProtocol> *album;
-@property (readonly, nonatomic) id<PLAssetContainer> container;
+@property (readonly, nonatomic) id<PLAssetContainer> assetContainer;
+@property (readonly, nonatomic) PLManagedObject *container;
 @property (readonly, nonatomic) BOOL keyAssetDidChange;
 @property (readonly, nonatomic) BOOL titleDidChange;
 
@@ -26,7 +27,6 @@
 - (void)_calculateDiffs;
 - (id)_contentRelationshipName;
 - (BOOL)_getOldSet:(id *)arg1 newSet:(id *)arg2;
-- (id)assetContainer;
 - (void)dealloc;
 - (id)description;
 - (BOOL)hasDeletes;

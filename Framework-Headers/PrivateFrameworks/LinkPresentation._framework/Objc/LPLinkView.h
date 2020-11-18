@@ -120,7 +120,6 @@
 - (id)_createTapToLoadView;
 - (void)_didScroll;
 - (unsigned long long)_edgesPropagatingSafeAreaInsetsToDescendants;
-- (struct UIEdgeInsets)_effectiveContentInset;
 - (void)_fetchMetadata;
 - (id)_fetchMetadataForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_highlightRecognized:(id)arg1;
@@ -143,6 +142,8 @@
 - (void)_setMultipleMetadata:(id)arg1;
 - (void)_setPresentationProperties:(id)arg1;
 - (void)_setupView;
+- (BOOL)_shouldApplyCornerRadius;
+- (BOOL)_shouldClipAnimationView;
 - (BOOL)_shouldUseAnimations;
 - (void)_tapRecognized:(id)arg1;
 - (void)_uninstallHighlightGestureRecognizers;
@@ -156,7 +157,7 @@
 - (void)animateOutAndRemoveViews;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
-- (void)contextMenuInteractionWillPresent:(id)arg1;
+- (void)contextMenuInteraction:(id)arg1 willDisplayMenuForConfiguration:(id)arg2 animator:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 canPreventGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
@@ -170,7 +171,6 @@
 - (id)initWithPresentationProperties:(id)arg1 URL:(id)arg2;
 - (id)initWithURL:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
-- (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 - (void)setSuppressMask:(BOOL)arg1;
 - (void)set_preferredSizeClass:(unsigned long long)arg1;

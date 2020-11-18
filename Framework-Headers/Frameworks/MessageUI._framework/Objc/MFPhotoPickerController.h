@@ -12,7 +12,7 @@
 #import <MessageUI/UIImagePickerControllerDelegate-Protocol.h>
 #import <MessageUI/UINavigationControllerDelegate-Protocol.h>
 
-@class NSMutableSet, NSSet, NSString, PHAssetCollection, PHCachingImageManager, PHFetchResult, UIImagePickerController;
+@class MFPhotoPickerProgressManager, NSMutableSet, NSSet, NSString, PHAssetCollection, PHCachingImageManager, PHFetchResult, UIImagePickerController;
 @protocol MFPhotoPickerControllerDelegate;
 
 @interface MFPhotoPickerController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, MFPreferredHeightProviding>
@@ -29,6 +29,7 @@
     PHCachingImageManager *_imageManager;
     double _availableWidth;
     UIImagePickerController *_systemImagePicker;
+    MFPhotoPickerProgressManager *_progressManager;
     struct CGSize _thumbnailSize;
 }
 
@@ -40,6 +41,7 @@
 @property (strong, nonatomic) PHAssetCollection *photosCollection; // @synthesize photosCollection=_photosCollection;
 @property (strong, nonatomic) PHFetchResult *photosFetchResult; // @synthesize photosFetchResult=_photosFetchResult;
 @property (weak, nonatomic) id<MFPhotoPickerControllerDelegate> pickerDelegate; // @synthesize pickerDelegate=_pickerDelegate;
+@property (strong, nonatomic) MFPhotoPickerProgressManager *progressManager; // @synthesize progressManager=_progressManager;
 @property (readonly, nonatomic) NSSet *selectedAssetIdentifiers;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIImagePickerController *systemImagePicker; // @synthesize systemImagePicker=_systemImagePicker;
@@ -47,6 +49,7 @@
 
 - (void).cxx_destruct;
 - (BOOL)_isPresentingInASheet;
+- (id)_visibleCellForIndexPath:(id)arg1 collectionView:(id)arg2;
 - (void)addSelectedAssetIdentifier:(id)arg1;
 - (void)addSelectedAssetIdentifiers:(id)arg1;
 - (void)close:(id)arg1;
@@ -57,7 +60,7 @@
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (void)imagePickerControllerDidCancel:(id)arg1;
-- (id)init;
+- (id)initWithPhotoPickerProgressManager:(id)arg1;
 - (void)loadView;
 - (double)preferredHeightForTraitCollection:(id)arg1;
 - (void)removeAllSelectedAssetIdentifiers;

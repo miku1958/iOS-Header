@@ -6,7 +6,7 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class NSNumber, NSSet, NSString, STCoreOrganization, STCoreOrganizationSettings, STFamilyOrganizationSettings, STLocalOrganizationSettings, STUserDeviceState, STiCloudOrganizationSettings;
+@class NSDate, NSNumber, NSSet, NSString, STCoreOrganization, STCoreOrganizationSettings, STFamilyOrganizationSettings, STLocalOrganizationSettings, STUserDeviceState, STiCloudOrganizationSettings;
 
 @interface STCoreUser : NSManagedObject
 {
@@ -20,6 +20,7 @@
 @property (copy, nonatomic) NSString *appleID; // @dynamic appleID;
 @property (readonly, copy) NSString *automaticDateTimeConfigurationIdentifier;
 @property (strong, nonatomic) NSSet *blueprints; // @dynamic blueprints;
+@property (readonly) BOOL canSetUpFamily;
 @property (strong, nonatomic) STiCloudOrganizationSettings *cloudSettings; // @dynamic cloudSettings;
 @property (readonly) long long communicationPolicy;
 @property (nonatomic) long long communicationPolicy;
@@ -35,7 +36,6 @@
 @property (copy, nonatomic) NSString *familyName; // @dynamic familyName;
 @property (strong, nonatomic) STFamilyOrganizationSettings *familySettings; // @dynamic familySettings;
 @property (copy, nonatomic) NSString *givenName; // @dynamic givenName;
-@property (readonly) BOOL hasiCloudFamily;
 @property (readonly, copy) NSString *iCloudLogoutConfigurationIdentifier;
 @property (nonatomic) BOOL isFamilyOrganizer; // @dynamic isFamilyOrganizer;
 @property (nonatomic) BOOL isParent; // @dynamic isParent;
@@ -46,7 +46,10 @@
 @property (readonly, copy) NSString *managedUserActivationIdentifier;
 @property (readonly, getter=isManaging) BOOL managing;
 @property (readonly) STCoreOrganization *managingOrganization; // @dynamic managingOrganization;
+@property (readonly) BOOL needsToSetPasscode;
 @property (readonly) NSString *organizationIdentifier;
+@property (nonatomic) long long passcodeEntryAttemptCount; // @dynamic passcodeEntryAttemptCount;
+@property (copy, nonatomic) NSDate *passcodeEntryTimeoutEndDate; // @dynamic passcodeEntryTimeoutEndDate;
 @property (readonly, copy, nonatomic) NSString *phoneticFamilyName; // @dynamic phoneticFamilyName;
 @property (readonly, copy, nonatomic) NSString *phoneticGivenName; // @dynamic phoneticGivenName;
 @property (readonly) BOOL screenTimeEnabled;
@@ -70,14 +73,15 @@
 + (id)fetchUserWithAppleID:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
 + (id)fetchUserWithDSID:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
 + (id)keyPathsForValuesAffectingAllLimitsEnabled;
++ (id)keyPathsForValuesAffectingCanSetUpFamily;
 + (id)keyPathsForValuesAffectingCommunicationPolicy;
 + (id)keyPathsForValuesAffectingCommunicationWhileLimitedPolicy;
 + (id)keyPathsForValuesAffectingContactManagementState;
 + (id)keyPathsForValuesAffectingEffectivePasscode;
-+ (id)keyPathsForValuesAffectingHasiCloudFamily;
 + (id)keyPathsForValuesAffectingLocalizedFullName;
 + (id)keyPathsForValuesAffectingManaged;
 + (id)keyPathsForValuesAffectingManaging;
++ (id)keyPathsForValuesAffectingNeedsToSetPasscode;
 + (id)keyPathsForValuesAffectingScreenTimeEnabled;
 + (id)keyPathsForValuesAffectingShareWebUsage;
 + (id)keyPathsForValuesAffectingSyncingEnabled;

@@ -162,8 +162,8 @@
 - (void)_syncEntityObjCModel;
 - (void)_syncObjCAnimations;
 - (void)_syncObjCModel;
+- (void)_updateFieldOfView;
 - (void)_updateFocalLength;
-- (void)_updateFov;
 - (void)addAnimation:(id)arg1;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
 - (void)addAnimationPlayer:(id)arg1 forKey:(id)arg2;

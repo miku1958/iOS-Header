@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSNumber, NSString;
+@class NSDictionary, NSNumber, NSString, WLKStoreOfferPeriod;
 
 @interface WLKStoreOffer : NSObject
 {
@@ -17,13 +17,17 @@
     unsigned long long _subscriptionType;
     NSString *_title;
     NSDictionary *_dictionary;
+    WLKStoreOfferPeriod *_renewalPeriod;
+    WLKStoreOfferPeriod *_freeTrialPeriod;
 }
 
 @property (readonly, nonatomic) NSString *buyParameters; // @synthesize buyParameters=_buyParameters;
 @property (readonly, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
 @property (readonly, nonatomic) NSString *formattedPrice; // @synthesize formattedPrice=_formattedPrice;
+@property (readonly, nonatomic) WLKStoreOfferPeriod *freeTrialPeriod; // @synthesize freeTrialPeriod=_freeTrialPeriod;
 @property (readonly, nonatomic) unsigned long long offerType; // @synthesize offerType=_offerType;
 @property (readonly, nonatomic) NSNumber *price; // @synthesize price=_price;
+@property (readonly, nonatomic) WLKStoreOfferPeriod *renewalPeriod; // @synthesize renewalPeriod=_renewalPeriod;
 @property (readonly, nonatomic) unsigned long long subscriptionType; // @synthesize subscriptionType=_subscriptionType;
 @property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
 

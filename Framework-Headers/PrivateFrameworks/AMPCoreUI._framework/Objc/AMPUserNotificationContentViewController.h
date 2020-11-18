@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class AMSUserNotification, AVPlayerViewController, UIImageView, UILabel;
+@class AMSUserNotification, AVPlayerViewController, NSString, UIImageView, UILabel;
 @protocol AMPUserNotificationContentDelegate;
 
 __attribute__((visibility("hidden")))
@@ -18,8 +18,12 @@ __attribute__((visibility("hidden")))
     UILabel *_textLabel;
     UIImageView *_imageView;
     AVPlayerViewController *_videoPlayerController;
+    NSString *_audioSessionCategory;
+    unsigned long long _audioSessionCategoryOptions;
 }
 
+@property (strong, nonatomic) NSString *audioSessionCategory; // @synthesize audioSessionCategory=_audioSessionCategory;
+@property (nonatomic) unsigned long long audioSessionCategoryOptions; // @synthesize audioSessionCategoryOptions=_audioSessionCategoryOptions;
 @property (weak, nonatomic) id<AMPUserNotificationContentDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) struct CGSize expectedContentSize;
 @property (readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;

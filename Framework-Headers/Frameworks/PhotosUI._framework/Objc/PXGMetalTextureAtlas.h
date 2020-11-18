@@ -91,7 +91,7 @@
 - (void)getSpriteIndexes:(unsigned int *)arg1 maxSpriteCount:(unsigned int)arg2;
 - (void)getTextureInfos:(CDStruct_183601bc *)arg1 forSpriteIndexes:(unsigned int *)arg2 geometries:(const CDStruct_3ab912e1 *)arg3 spriteStyles:(const CDStruct_506f5052 *)arg4 spriteInfos:(const CDStruct_9d1ebe49 *)arg5 screenScale:(double)arg6 count:(unsigned int)arg7;
 - (id)init;
-- (id)initWithThumbnailSize:(struct CGSize)arg1 pixelFormat:(unsigned long long)arg2 capacity:(unsigned int)arg3 device:(id)arg4;
+- (id)initWithThumbnailSize:(struct CGSize)arg1 pixelFormat:(unsigned long long)arg2 capacity:(unsigned int)arg3 colorProgram:(id)arg4 device:(id)arg5;
 - (void)prepareForRender:(long long)arg1;
 - (void)processPendingTextureRequestIDsWithHandler:(CDUnknownBlockType)arg1;
 - (void)processPendingThumbnailRequestIDsWithHandler:(CDUnknownBlockType)arg1;

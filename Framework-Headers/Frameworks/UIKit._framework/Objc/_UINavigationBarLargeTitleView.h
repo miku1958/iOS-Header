@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSString *__effectiveTitle;
     BOOL _providesExtraSpaceForExcessiveLineHeights;
     BOOL _alignAccessoryViewToTitleBaseline;
+    NSDictionary *_effectiveTitleAttributes;
     long long _titleType;
     NSString *_title;
     NSArray *_alternateTitles;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *alternateTitles; // @synthesize alternateTitles=_alternateTitles;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *effectiveTitleAttributes; // @synthesize effectiveTitleAttributes=_effectiveTitleAttributes;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) _UINavigationBarLargeTitleViewLayout *layout; // @synthesize layout=_layout;
 @property (nonatomic) BOOL providesExtraSpaceForExcessiveLineHeights; // @synthesize providesExtraSpaceForExcessiveLineHeights=_providesExtraSpaceForExcessiveLineHeights;

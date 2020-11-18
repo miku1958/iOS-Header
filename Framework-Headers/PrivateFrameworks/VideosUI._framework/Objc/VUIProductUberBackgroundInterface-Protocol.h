@@ -13,7 +13,6 @@
 @property (readonly, nonatomic) double topThreshold;
 
 - (void)setBannerOpacity:(double)arg1;
-- (void)setTransitionBannerOpacity:(double)arg1;
 - (void)setUberImageOffset:(double)arg1;
 @end
 

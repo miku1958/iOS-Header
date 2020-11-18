@@ -144,7 +144,9 @@
 @property (readonly, nonatomic, getter=isShowingSpotlightOrTodayView) BOOL showingSpotlightOrTodayView;
 @property (readonly, nonatomic, getter=isShowingTodayView) BOOL showingTodayView;
 @property (nonatomic) BOOL showsDoneButtonWhileEditing; // @synthesize showsDoneButtonWhileEditing=_showsDoneButtonWhileEditing;
+@property (readonly, nonatomic, getter=isSidebarEffectivelyVisible) BOOL sidebarEffectivelyVisible;
 @property (strong, nonatomic) UIViewController<SBHSidebarProvider> *sidebarViewController; // @synthesize sidebarViewController=_sidebarViewController;
+@property (readonly, nonatomic, getter=isSidebarVisible) BOOL sidebarVisible;
 @property (readonly, copy, nonatomic) NSString *statisticsSummary;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isTrackingScroll) BOOL trackingScroll;
@@ -415,7 +417,6 @@
 - (void)rootFolderController:(id)arg1 willUsePropertyAnimator:(id)arg2 toTransitionToState:(long long)arg3;
 - (void)rootFolderController:(id)arg1 willUseTransitionContext:(id)arg2 toTransitionToState:(long long)arg3;
 - (BOOL)rootFolderControllerCanUseSeparateWindowForRotation:(id)arg1;
-- (BOOL)rootFolderControllerShouldAllowOverscrollOnFirstPage:(id)arg1;
 - (void)rootFolderPageStateProvider:(id)arg1 didContinueTransitionToState:(long long)arg2 progress:(double)arg3;
 - (void)rootFolderPageStateProvider:(id)arg1 didEndTransitionFromState:(long long)arg2 toState:(long long)arg3 successfully:(BOOL)arg4;
 - (void)rootFolderPageStateProvider:(id)arg1 willBeginTransitionToState:(long long)arg2 animated:(BOOL)arg3 interactive:(BOOL)arg4;

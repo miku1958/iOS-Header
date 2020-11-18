@@ -53,7 +53,10 @@
 - (void)deleteUserPersonaWithType:(int)arg1 passcodeData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)directSwitchToUser:(id)arg1 passcodeData:(id)arg2 context:(id)arg3 preferences:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)disableUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)disableUserPersonaWithProfileInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchAllPersonasForAllUsersWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchAllPersonasWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)fetchAsidMapOfAllUsersWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchBundleIdentifierForPersonaWithIDString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchBundleIdentifierForPersonaWithPersonaUniqueString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchBundleIdentifierForType:(int)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -26,7 +26,5 @@
 - (void)rootFolderController:(SBRootFolderController *)arg1 willUsePropertyAnimator:(UIViewPropertyAnimator *)arg2 toTransitionToState:(long long)arg3;
 - (void)rootFolderController:(SBRootFolderController *)arg1 willUseTransitionContext:(SBViewControllerTransitionContext *)arg2 toTransitionToState:(long long)arg3;
 - (BOOL)rootFolderControllerCanUseSeparateWindowForRotation:(SBRootFolderController *)arg1;
-- (void)rootFolderControllerDidChangeSidebarPinned:(SBRootFolderController *)arg1;
-- (BOOL)rootFolderControllerShouldAllowOverscrollOnFirstPage:(SBRootFolderController *)arg1;
 @end
 

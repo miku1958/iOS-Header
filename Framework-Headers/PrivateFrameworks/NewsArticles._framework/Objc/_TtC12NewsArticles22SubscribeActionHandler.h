@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *configurationManager;
     MISSING_TYPE *router;
+    MISSING_TYPE *familySharingLandingPageLauncher;
 }
 
 - (void).cxx_destruct;

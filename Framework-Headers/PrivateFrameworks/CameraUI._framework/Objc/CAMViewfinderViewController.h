@@ -637,6 +637,7 @@
 - (void)_handleFlipButtonReleased:(id)arg1;
 - (void)_handleFlipButtonTouchDown:(id)arg1;
 - (void)_handleHDRButtonChangedHDRMode;
+- (void)_handleHDRIndicator;
 - (void)_handleImageWellPressed:(id)arg1;
 - (void)_handleImageWellReleased:(id)arg1;
 - (void)_handleIntensityButtonTapped:(id)arg1;
@@ -685,6 +686,7 @@
 - (BOOL)_isActiveZooming;
 - (BOOL)_isApplicationFullscreen;
 - (BOOL)_isCTMCaptureForType:(long long)arg1;
+- (BOOL)_isCTMVideoSupportedForGraphConfiguration:(id)arg1;
 - (BOOL)_isCapturingTimelapse;
 - (BOOL)_isFlashOrTorchSupportedForGraphConfiguration:(id)arg1;
 - (BOOL)_isFlashUnavailableForMode:(long long)arg1;
@@ -1074,7 +1076,7 @@
 - (void)dynamicShutterControlLogShortPress:(id)arg1;
 - (BOOL)dynamicShutterControlShouldBeginGesture:(id)arg1;
 - (void)fullscreenViewfinder:(id)arg1 didChangeControlDrawerVisibility:(BOOL)arg2;
-- (void)fullscreenViewfinder:(id)arg1 didChangeExpanded:(BOOL)arg2 forDrawerControlOfType:(long long)arg3;
+- (void)fullscreenViewfinder:(id)arg1 didChangeExpanded:(BOOL)arg2 forDrawerControlOfType:(long long)arg3 animated:(BOOL)arg4;
 - (void)fullscreenViewfinderDidCreateControlDrawer:(id)arg1;
 - (void)fullscreenViewfinderDidCreatePortraitControls:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;

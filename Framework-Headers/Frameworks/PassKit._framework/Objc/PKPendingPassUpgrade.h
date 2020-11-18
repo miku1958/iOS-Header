@@ -11,6 +11,7 @@
 @interface PKPendingPassUpgrade : NSObject
 {
     BOOL _appletDidUpgrade;
+    BOOL _webRequestFinished;
     BOOL _requiresAppletUpgrade;
     BOOL _passUpgradeInProgress;
     PKPassUpgradeRequest *_upgradeRequest;
@@ -27,6 +28,7 @@
 @property (copy, nonatomic) NSURL *upgradePassURL; // @synthesize upgradePassURL=_upgradePassURL;
 @property (readonly, nonatomic) PKPassUpgradeRequest *upgradeRequest; // @synthesize upgradeRequest=_upgradeRequest;
 @property (strong, nonatomic) PKPaymentPass *upgradedPass; // @synthesize upgradedPass=_upgradedPass;
+@property (nonatomic) BOOL webRequestFinished; // @synthesize webRequestFinished=_webRequestFinished;
 
 - (void).cxx_destruct;
 - (id)initWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

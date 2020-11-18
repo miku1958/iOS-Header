@@ -7,94 +7,34 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeAI/HMFLogging-Protocol.h>
+#import <HomeAI/HMICameraVideoFrameSamplerDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSString;
+@class HMICameraVideoFrameSampler, NSArray, NSMutableArray, NSString;
 
-@interface HMICameraVideoFrameSelector : HMFObject <HMFLogging>
+@interface HMICameraVideoFrameSelector : HMFObject <HMICameraVideoFrameSamplerDelegate, HMFLogging>
 {
-    BOOL _enableOpticalFlow;
-    int _maxOpticalFlowCalculations;
-    int _targetSelectionInterval;
-    int _referenceSelectionInterval;
-    float _numberFramesToAdvance;
-    float _nextFrameToSelectForAnalysis;
-    float _actualAnalysisFPS;
-    int _refFrameNumber;
-    int _targetFrameNumber;
-    int _numOpticalFlowCalculations;
-    NSArray *_frames;
-    NSString *_logIdentifier;
-    double _analysisFPS;
+    HMICameraVideoFrameSampler *_sampler;
     NSMutableArray *_framesInternal;
-    unsigned long long _totalNumberOfFramesInFragment;
-    unsigned long long _currentFrameNumber;
-    unsigned long long _numberFramesToSelect;
-    NSMutableDictionary *_minRows;
-    NSMutableDictionary *_maxRows;
-    NSMutableDictionary *_minCols;
-    NSMutableDictionary *_maxCols;
-    float *_flowArray;
-    NSMutableArray *_quantizedFrames;
-    NSMutableArray *_connectedComponentsMap;
-    NSMutableArray *_framesScore;
-    unsigned long long _frameWidth;
-    unsigned long long _frameHeight;
-    struct __CVBuffer *_opticalFlowReferenceImage;
+    long long _maxFrameCount;
+    CDStruct_1b6d18a9 _sampleRate;
 }
 
-@property float actualAnalysisFPS; // @synthesize actualAnalysisFPS=_actualAnalysisFPS;
-@property (readonly) double analysisFPS; // @synthesize analysisFPS=_analysisFPS;
-@property (strong) NSMutableArray *connectedComponentsMap; // @synthesize connectedComponentsMap=_connectedComponentsMap;
-@property unsigned long long currentFrameNumber; // @synthesize currentFrameNumber=_currentFrameNumber;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property BOOL enableOpticalFlow; // @synthesize enableOpticalFlow=_enableOpticalFlow;
-@property float *flowArray; // @synthesize flowArray=_flowArray;
-@property unsigned long long frameHeight; // @synthesize frameHeight=_frameHeight;
-@property unsigned long long frameWidth; // @synthesize frameWidth=_frameWidth;
-@property (readonly) NSArray *frames; // @synthesize frames=_frames;
-@property (strong) NSMutableArray *framesInternal; // @synthesize framesInternal=_framesInternal;
-@property (strong) NSMutableArray *framesScore; // @synthesize framesScore=_framesScore;
+@property (readonly) NSArray *frames;
+@property (readonly) NSMutableArray *framesInternal; // @synthesize framesInternal=_framesInternal;
 @property (readonly) unsigned long long hash;
-@property (readonly) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
-@property (strong) NSMutableDictionary *maxCols; // @synthesize maxCols=_maxCols;
-@property int maxOpticalFlowCalculations; // @synthesize maxOpticalFlowCalculations=_maxOpticalFlowCalculations;
-@property (strong) NSMutableDictionary *maxRows; // @synthesize maxRows=_maxRows;
-@property (strong) NSMutableDictionary *minCols; // @synthesize minCols=_minCols;
-@property (strong) NSMutableDictionary *minRows; // @synthesize minRows=_minRows;
-@property float nextFrameToSelectForAnalysis; // @synthesize nextFrameToSelectForAnalysis=_nextFrameToSelectForAnalysis;
-@property int numOpticalFlowCalculations; // @synthesize numOpticalFlowCalculations=_numOpticalFlowCalculations;
-@property float numberFramesToAdvance; // @synthesize numberFramesToAdvance=_numberFramesToAdvance;
-@property unsigned long long numberFramesToSelect; // @synthesize numberFramesToSelect=_numberFramesToSelect;
-@property struct __CVBuffer *opticalFlowReferenceImage; // @synthesize opticalFlowReferenceImage=_opticalFlowReferenceImage;
-@property (strong) NSMutableArray *quantizedFrames; // @synthesize quantizedFrames=_quantizedFrames;
-@property int refFrameNumber; // @synthesize refFrameNumber=_refFrameNumber;
-@property int referenceSelectionInterval; // @synthesize referenceSelectionInterval=_referenceSelectionInterval;
+@property (readonly) long long maxFrameCount; // @synthesize maxFrameCount=_maxFrameCount;
+@property (readonly) CDStruct_1b6d18a9 sampleRate; // @synthesize sampleRate=_sampleRate;
+@property (readonly) HMICameraVideoFrameSampler *sampler; // @synthesize sampler=_sampler;
 @property (readonly) Class superclass;
-@property int targetFrameNumber; // @synthesize targetFrameNumber=_targetFrameNumber;
-@property int targetSelectionInterval; // @synthesize targetSelectionInterval=_targetSelectionInterval;
-@property unsigned long long totalNumberOfFramesInFragment; // @synthesize totalNumberOfFramesInFragment=_totalNumberOfFramesInFragment;
 
 + (id)logCategory;
 - (void).cxx_destruct;
-- (struct CGRect)applyPaddingIndex:(id)arg1;
-- (int)calculateOpticalFlowInterval:(float)arg1;
-- (float)calculateReferenceFrameSelectionFactor;
-- (float)computeFlowMagnitudeMatrixFromOriginal:(struct __CVBuffer *)arg1 error:(id *)arg2;
-- (id)connectedComponents;
-- (void)dealloc;
-- (BOOL)getEnableOpticalFlowPreference;
-- (BOOL)getOpticalFlowBackgroundProcessingPreference;
-- (BOOL)getOpticalFlowLowPriorityPreference;
-- (float)getScaleFactorHeight;
-- (float)getScaleFactorWidth;
-- (long long)getScaledFrameHeight;
-- (long long)getScaledFrameWidth;
+- (void)finish;
 - (BOOL)handleVideoFrame:(id)arg1 error:(id *)arg2;
-- (id)initWithAnalysisFPS:(double)arg1 logIdentifier:(id)arg2;
-- (BOOL)quantizedAndBinarizeFrame:(unsigned long long)arg1 frame_height:(unsigned long long)arg2 error:(id *)arg3;
-- (void)startHandlingFramesFromVideoResource:(id)arg1 fragmentSequenceNumber:(unsigned long long)arg2 frameWidth:(unsigned long long)arg3 frameHeight:(unsigned long long)arg4;
-- (void)unionTheRegoins;
+- (id)initWithResourceAttributes:(id)arg1 sampleRate:(CDStruct_1b6d18a9)arg2;
+- (void)sampler:(id)arg1 didFindSample:(id)arg2 target:(id)arg3;
 - (BOOL)willHandleFrames;
 
 @end

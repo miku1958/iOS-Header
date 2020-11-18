@@ -6,15 +6,18 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreUI/NSLocking-Protocol.h>
+
 @class CUIRenditionKey, CUIThemeRendition, NSString;
 
-@interface CUINamedLookup : NSObject
+@interface CUINamedLookup : NSObject <NSLocking>
 {
     NSString *_name;
     CUIRenditionKey *_key;
     NSString *_signature;
     unsigned long long _storageRef;
     unsigned int _distilledInVersion;
+    struct os_unfair_lock_s _lock;
     unsigned int _odContent:1;
 }
 
@@ -45,7 +48,9 @@
 - (id)initWithName:(id)arg1 usingRenditionKey:(id)arg2 fromTheme:(unsigned long long)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isTintable;
+- (void)lock;
 - (void)setRepresentsOnDemandContent:(BOOL)arg1;
+- (void)unlock;
 
 @end
 

@@ -12,6 +12,7 @@
 
 - (id)initWithIdentifier:(id)arg1 type:(unsigned long long)arg2;
 - (BOOL)isBuiltIn;
+- (BOOL)submissionStringMeetsAllRequirements;
 
 @end
 

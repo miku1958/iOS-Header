@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithParent:(id)arg1;
 - (id)initWithParent:(id)arg1 childKeyCallbacks:(const CDStruct_90be15af *)arg2;
 - (void)invalidate;
-- (void)removeChild:(id)arg1;
+- (void)removeChild:(id)arg1 token:(unsigned long long)arg2;
 - (void)resetChildren;
 
 @end

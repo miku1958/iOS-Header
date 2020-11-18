@@ -12,14 +12,18 @@
 @interface WFSettingsManager : NSObject
 {
     BOOL _useFallback;
+    struct os_unfair_lock_s _useFallbackLock;
+    struct os_unfair_lock_s _settingsLock;
     id<WFSettings> _settings;
     NSObject<OS_dispatch_queue> *_requestSerialQueue;
 }
 
 @property (readonly, nonatomic) NSString *APIVersion;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *requestSerialQueue; // @synthesize requestSerialQueue=_requestSerialQueue;
-@property (strong, nonatomic) id<WFSettings> settings; // @synthesize settings=_settings;
-@property (nonatomic) BOOL useFallback; // @synthesize useFallback=_useFallback;
+@property (readonly, nonatomic) id<WFSettings> settings; // @synthesize settings=_settings;
+@property (nonatomic) struct os_unfair_lock_s settingsLock; // @synthesize settingsLock=_settingsLock;
+@property (readonly, nonatomic) BOOL useFallback; // @synthesize useFallback=_useFallback;
+@property (nonatomic) struct os_unfair_lock_s useFallbackLock; // @synthesize useFallbackLock=_useFallbackLock;
 
 + (id)userId;
 - (void).cxx_destruct;
@@ -34,6 +38,8 @@
 - (void)fetchAppConfigurationIfNeeded;
 - (void)fetchAppConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
+- (void)setSettings:(id)arg1;
+- (void)setUseFallback:(BOOL)arg1;
 
 @end
 

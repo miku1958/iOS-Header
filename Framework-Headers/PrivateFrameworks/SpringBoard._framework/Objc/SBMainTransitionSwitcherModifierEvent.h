@@ -19,8 +19,6 @@
     BOOL _breadcrumbTransition;
     BOOL _inlineAppExposeTransition;
     BOOL _morphToPiPTransition;
-    long long _fromInterfaceOrientation;
-    long long _toInterfaceOrientation;
     SBAppLayout *_fromFloatingAppLayout;
     long long _fromFloatingConfiguration;
     SBAppLayout *_toFloatingAppLayout;
@@ -40,7 +38,6 @@
 @property (nonatomic) long long fromFloatingConfiguration; // @synthesize fromFloatingConfiguration=_fromFloatingConfiguration;
 @property (nonatomic) BOOL fromFloatingSwitcherVisible; // @synthesize fromFloatingSwitcherVisible=_fromFloatingSwitcherVisible;
 @property (nonatomic) unsigned long long fromInlineAppExposeRoles; // @synthesize fromInlineAppExposeRoles=_fromInlineAppExposeRoles;
-@property (nonatomic) long long fromInterfaceOrientation; // @synthesize fromInterfaceOrientation=_fromInterfaceOrientation;
 @property (nonatomic, getter=isGestureInitiated) BOOL gestureInitiated; // @synthesize gestureInitiated=_gestureInitiated;
 @property (nonatomic, getter=isInlineAppExposeTransition) BOOL inlineAppExposeTransition; // @synthesize inlineAppExposeTransition=_inlineAppExposeTransition;
 @property (strong, nonatomic) SBApplicationSceneEntityDestructionIntent *intentForEntityRemoval; // @synthesize intentForEntityRemoval=_intentForEntityRemoval;
@@ -51,7 +48,6 @@
 @property (nonatomic) long long toFloatingConfiguration; // @synthesize toFloatingConfiguration=_toFloatingConfiguration;
 @property (nonatomic) BOOL toFloatingSwitcherVisible; // @synthesize toFloatingSwitcherVisible=_toFloatingSwitcherVisible;
 @property (nonatomic) unsigned long long toInlineAppExposeRoles; // @synthesize toInlineAppExposeRoles=_toInlineAppExposeRoles;
-@property (nonatomic) long long toInterfaceOrientation; // @synthesize toInterfaceOrientation=_toInterfaceOrientation;
 
 - (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

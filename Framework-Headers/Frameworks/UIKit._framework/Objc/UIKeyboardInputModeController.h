@@ -124,6 +124,7 @@
 - (id)filteredInputModesForSiriLanguageFromInputModes:(id)arg1;
 - (id)filteredPadInputModesFromInputModes:(id)arg1 withRules:(id)arg2;
 - (id)filteredTVInputModesFromInputModes:(id)arg1;
+- (id)getDictationSLSLanguagesEnabled;
 - (void)getHardwareKeyboardLanguage:(id *)arg1 countryCode:(id *)arg2;
 - (void)handleLastUsedInputMode:(id)arg1 withNewInputMode:(id)arg2;
 - (void)handleSpecificHardwareKeyboard;
@@ -154,6 +155,7 @@
 - (void)performWithoutExtensionInputModes:(CDUnknownBlockType)arg1;
 - (void)releaseAddKeyboardNotification;
 - (void)saveDeviceUnlockPasscodeInputModes;
+- (void)setDictationSLSLanguagesEnabled:(id)arg1;
 - (void)showAddKeyboardAlertForInputModeIdentifier:(id)arg1;
 - (void)startConnectionForFileAtURL:(id)arg1 forInputModeIdentifier:(id)arg2;
 - (void)startDictationConnectionForFileAtURL:(id)arg1 forInputModeIdentifier:(id)arg2;

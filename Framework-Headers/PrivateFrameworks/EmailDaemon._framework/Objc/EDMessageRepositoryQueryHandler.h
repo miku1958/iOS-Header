@@ -40,6 +40,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_distinctObjectIDs:(id)arg1 queryHandlerLog:(id)arg2;
 - (void)cancel;
 - (void)dealloc;
 - (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 hookRegistry:(id)arg3 observer:(id)arg4 observationIdentifier:(id)arg5;

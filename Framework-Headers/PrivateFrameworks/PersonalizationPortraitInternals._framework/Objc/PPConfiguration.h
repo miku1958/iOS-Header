@@ -38,6 +38,7 @@
 - (double)portraitAnalyticsSamplingRate;
 - (double)portraitAnalyticsTopicsSamplingRate;
 - (id)portraitMusicDataCollectionAMPBundleIds;
+- (BOOL)portraitMusicDataCollectionCollectNonAMPNowPlaying;
 - (int)portraitMusicDataCollectionMaximumRecordsPerType;
 - (double)portraitMusicDataCollectionSamplingRateForAMP;
 - (double)portraitMusicDataCollectionSamplingRateForCTS;

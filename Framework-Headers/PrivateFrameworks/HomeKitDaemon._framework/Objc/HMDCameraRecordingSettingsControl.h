@@ -86,6 +86,7 @@
 - (void)dealloc;
 - (void)handleAccessoryReachable:(id)arg1;
 - (void)handleAccessoryUnreachable:(id)arg1;
+- (void)handleCameraProfileSettingsDidWriteToAccessory:(id)arg1;
 - (void)handleCharacteristicValueUpdated:(id)arg1;
 - (void)handleCharacteristicsUpdated:(id)arg1;
 - (id)initWithWorkQueue:(id)arg1 accessory:(id)arg2 recordingManagementService:(id)arg3;

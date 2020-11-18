@@ -123,6 +123,7 @@
 - (id)initForInputFeedback;
 - (BOOL)isSpeaking;
 - (BOOL)isSystemSpeaking;
+- (void)killDaemon;
 - (float)maximumRate;
 - (float)minimumRate;
 - (BOOL)pauseSpeakingAtNextBoundary:(long long)arg1 error:(id *)arg2;

@@ -9,55 +9,56 @@
 #import <PencilKit/PKEdgeLocatable-Protocol.h>
 #import <PencilKit/PKPaletteViewSizeScaling-Protocol.h>
 
-@class NSLayoutConstraint, NSString, PKAccessoryView, UIStackView;
+@class NSLayoutConstraint, NSString, PKAccessoryView;
 
 @interface PKPaletteContainerView : UIView <PKEdgeLocatable, PKPaletteViewSizeScaling>
 {
     unsigned long long _edgeLocation;
     double _scalingFactor;
     UIView *_contentView;
-    UIStackView *_stackView;
-    NSLayoutConstraint *_stackViewBottomConstraint;
-    PKAccessoryView *_firstAccessoryView;
-    PKAccessoryView *_secondAccessoryView;
+    NSLayoutConstraint *_contentViewTopConstraint;
+    NSLayoutConstraint *_contentViewBottomConstraint;
+    NSLayoutConstraint *_contentViewLeftConstraint;
+    NSLayoutConstraint *_contentViewRightConstraint;
     NSLayoutConstraint *_contentViewHeightConstraint;
-    NSLayoutConstraint *_contentViewCompactHeightConstraint;
-    NSLayoutConstraint *_contentViewWidthConstraint;
-    NSLayoutConstraint *_firstAccessoryViewHeightAnchorConstraint;
-    NSLayoutConstraint *_firstAccessoryViewWidthAnchorConstraint;
-    NSLayoutConstraint *_secondAccessoryViewHeightAnchorConstraint;
-    NSLayoutConstraint *_secondAccessoryViewWidthAnchorConstraint;
+    PKAccessoryView *_accessoryView;
+    NSLayoutConstraint *_accessoryViewTopConstraint;
+    NSLayoutConstraint *_accessoryViewBottomConstraint;
+    NSLayoutConstraint *_accessoryViewLeftConstraint;
+    NSLayoutConstraint *_accessoryViewRightConstraint;
+    NSLayoutConstraint *_accessoryViewWidthConstraint;
+    NSLayoutConstraint *_accessoryViewHeightConstraint;
 }
 
+@property (strong, nonatomic) PKAccessoryView *accessoryView; // @synthesize accessoryView=_accessoryView;
+@property (strong, nonatomic) NSLayoutConstraint *accessoryViewBottomConstraint; // @synthesize accessoryViewBottomConstraint=_accessoryViewBottomConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *accessoryViewHeightConstraint; // @synthesize accessoryViewHeightConstraint=_accessoryViewHeightConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *accessoryViewLeftConstraint; // @synthesize accessoryViewLeftConstraint=_accessoryViewLeftConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *accessoryViewRightConstraint; // @synthesize accessoryViewRightConstraint=_accessoryViewRightConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *accessoryViewTopConstraint; // @synthesize accessoryViewTopConstraint=_accessoryViewTopConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *accessoryViewWidthConstraint; // @synthesize accessoryViewWidthConstraint=_accessoryViewWidthConstraint;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
-@property (strong, nonatomic) NSLayoutConstraint *contentViewCompactHeightConstraint; // @synthesize contentViewCompactHeightConstraint=_contentViewCompactHeightConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *contentViewBottomConstraint; // @synthesize contentViewBottomConstraint=_contentViewBottomConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *contentViewHeightConstraint; // @synthesize contentViewHeightConstraint=_contentViewHeightConstraint;
-@property (strong, nonatomic) NSLayoutConstraint *contentViewWidthConstraint; // @synthesize contentViewWidthConstraint=_contentViewWidthConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *contentViewLeftConstraint; // @synthesize contentViewLeftConstraint=_contentViewLeftConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *contentViewRightConstraint; // @synthesize contentViewRightConstraint=_contentViewRightConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *contentViewTopConstraint; // @synthesize contentViewTopConstraint=_contentViewTopConstraint;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long edgeLocation; // @synthesize edgeLocation=_edgeLocation;
-@property (strong, nonatomic) PKAccessoryView *firstAccessoryView; // @synthesize firstAccessoryView=_firstAccessoryView;
-@property (strong, nonatomic) NSLayoutConstraint *firstAccessoryViewHeightAnchorConstraint; // @synthesize firstAccessoryViewHeightAnchorConstraint=_firstAccessoryViewHeightAnchorConstraint;
-@property (strong, nonatomic) NSLayoutConstraint *firstAccessoryViewWidthAnchorConstraint; // @synthesize firstAccessoryViewWidthAnchorConstraint=_firstAccessoryViewWidthAnchorConstraint;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double scalingFactor; // @synthesize scalingFactor=_scalingFactor;
-@property (strong, nonatomic) PKAccessoryView *secondAccessoryView; // @synthesize secondAccessoryView=_secondAccessoryView;
-@property (strong, nonatomic) NSLayoutConstraint *secondAccessoryViewHeightAnchorConstraint; // @synthesize secondAccessoryViewHeightAnchorConstraint=_secondAccessoryViewHeightAnchorConstraint;
-@property (strong, nonatomic) NSLayoutConstraint *secondAccessoryViewWidthAnchorConstraint; // @synthesize secondAccessoryViewWidthAnchorConstraint=_secondAccessoryViewWidthAnchorConstraint;
-@property (strong, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
-@property (strong, nonatomic) NSLayoutConstraint *stackViewBottomConstraint; // @synthesize stackViewBottomConstraint=_stackViewBottomConstraint;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_installAccessoryView;
 - (void)_installContentView;
-- (void)_installIFirstAccessoryView;
-- (void)_installSecondAccessoryView;
-- (void)_installStackView;
 - (void)_updateUI;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateConstraints;
 
 @end
 

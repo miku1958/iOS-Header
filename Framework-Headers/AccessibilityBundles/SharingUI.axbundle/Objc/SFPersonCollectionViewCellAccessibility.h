@@ -16,6 +16,7 @@
 - (id)_accessibilityRoleDescription;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
+- (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
 
 @end

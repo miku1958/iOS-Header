@@ -110,7 +110,7 @@
 - (void)setupFetchAttributesForSearch;
 - (void)start;
 - (void)updateLiveOID:(long long)arg1 bundleID:(id)arg2 identifier:(id)arg3;
-- (void)updateUserFSLiveOID:(long long)arg1 identifier:(id)arg2;
+- (void)updateUserFSLiveOID:(long long)arg1 userFSDomain:(id)arg2 identifier:(id)arg3;
 - (void)userEngagedWithResult:(id)arg1 interactionType:(int)arg2;
 
 @end

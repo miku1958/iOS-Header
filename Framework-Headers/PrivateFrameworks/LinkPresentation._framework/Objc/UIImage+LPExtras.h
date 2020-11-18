@@ -9,6 +9,7 @@
 @interface UIImage (LPExtras)
 + (id)_lp_createImageWithCGImage:(struct CGImage *)arg1;
 - (struct CGImage *)_lp_CGImage;
+- (BOOL)_lp_hasTransparency;
 - (struct CGSize)_lp_pixelSize;
 @end
 

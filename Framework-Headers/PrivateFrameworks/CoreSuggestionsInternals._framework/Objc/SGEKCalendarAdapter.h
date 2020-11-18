@@ -33,6 +33,7 @@
 - (void)_removeEvent:(id)arg1 commit:(BOOL)arg2;
 - (BOOL)_updateEKEvent:(id)arg1 withEvent:(id)arg2 ekStore:(id)arg3 error:(id *)arg4;
 - (void)_updateEvent:(id)arg1 withValuesFrom:(id)arg2 ekStore:(id)arg3;
+- (void)_updateEventMetadataInModifiedEvent:(id)arg1 withExistingCheckInShortcutInOriginalEvent:(id)arg2 ifTeamIdentifierIsDifferentInStorageEvent:(id)arg3;
 - (void)addEvent:(id)arg1;
 - (void)addEvent:(id)arg1 commit:(BOOL)arg2;
 - (void)addEvents:(id)arg1;

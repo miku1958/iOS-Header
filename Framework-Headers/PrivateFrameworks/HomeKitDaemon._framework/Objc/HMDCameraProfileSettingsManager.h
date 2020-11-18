@@ -57,6 +57,7 @@
 @property (readonly) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property (readonly) HMDDatabaseZoneManager *zoneManager; // @synthesize zoneManager=_zoneManager;
+@property (readonly) NSString *zoneName;
 
 + (id)clientIdentifier;
 + (id)logCategory;
@@ -67,13 +68,16 @@
 - (void)_addNightVisionCharacteristicWriteRequestToArray:(id)arg1 nightVisionEnabled:(BOOL)arg2;
 - (void)_addOperatingModeIndicatorCharacteristicWriteRequestToArray:(id)arg1 accessModeIndicatorEnabled:(BOOL)arg2;
 - (void)_addPeriodicSnapshotsActiveCharacteristicWriteRequestToArray:(id)arg1 periodicSnapshotsAllowed:(BOOL)arg2;
+- (void)_addRecordingAudioEnabledWriteRequestToArray:(id)arg1 recordingAudioEnabled:(BOOL)arg2;
 - (void)_addSnapshotsActiveCharacteristicWriteRequestToArray:(id)arg1 snapshotsAllowed:(BOOL)arg2;
 - (void)_addWriteRequestToArray:(id)arg1 forCharacteristicWithType:(id)arg2 ofServiceWithType:(id)arg3 value:(id)arg4;
+- (void)_handleAccessModeChangeNotificationEnabled:(id)arg1;
 - (void)_handleAccessModeIndicatorEnabled:(id)arg1;
 - (void)_handleAccessoryDidBecomeReachable;
 - (void)_handleBulletinBoardNotificationCommit:(id)arg1;
 - (void)_handleCharacteristicWriteRequests:(id)arg1;
 - (void)_handleModelUpdate:(id)arg1 previousModel:(id)arg2;
+- (void)_handleRecordingAudioEnabled:(id)arg1;
 - (void)_handleUpdateAccessMode:(id)arg1;
 - (void)_handleUpdateNightVisionModeEnabled:(id)arg1;
 - (void)_handleUpdateRecordingTriggerEvents:(id)arg1;

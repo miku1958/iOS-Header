@@ -26,6 +26,7 @@
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (id)accessibilityPath;
+- (BOOL)accessibilityScrollToVisibleWithChild:(id)arg1;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 - (BOOL)shouldGroupAccessibilityChildren;

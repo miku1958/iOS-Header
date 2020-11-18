@@ -131,7 +131,6 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_clearAnalytics;
 - (void)_closeLoaderConnection:(BOOL)arg1;
 - (BOOL)_createDisplayLayer;
 - (void)_createGlobe;
@@ -142,7 +141,6 @@
 - (void)_postDelegateCallbackBlock:(CDUnknownBlockType)arg1;
 - (void)_runFlyoverTourStateChange:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_setFloorSwitcherZoomPadding:(float)arg1;
-- (void)_updateAnalytics:(BOOL)arg1;
 - (void)_updateBackgroundColor;
 - (void)_updateMapDisplayStyle;
 - (void)activateInternalSettings;
@@ -151,7 +149,6 @@
 - (void)addOverlay:(id)arg1;
 - (void)addPersistentRouteOverlay:(id)arg1;
 - (void)addRouteOverlay:(id)arg1;
-- (struct AnalyticsState)analyticsState;
 - (void)animateStylesWithDuration:(double)arg1 animations:(CDUnknownBlockType)arg2;
 - (CDUnknownBlockType)annotationCoordinateTest;
 - (CDUnknownBlockType)annotationRectTest;

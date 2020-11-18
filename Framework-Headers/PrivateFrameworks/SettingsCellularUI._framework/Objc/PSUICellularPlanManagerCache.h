@@ -13,7 +13,7 @@
     BOOL _cacheIsValid;
     NSArray *_planItems;
     NSArray *_danglingPlanItems;
-    NSArray *_cellularPlanPendingTransfer;
+    NSArray *_plansPendingTransfer;
     NSDictionary *_referenceMap;
     CTCellularPlanItem *_selectedPlanItem;
     BOOL _hasSubscriptions;
@@ -30,7 +30,6 @@
 @property (strong) NSArray *cachedCarrierItems; // @synthesize cachedCarrierItems=_cachedCarrierItems;
 @property (readonly, nonatomic) NSArray *carrierItems;
 @property BOOL carrierListFetchInProgress; // @synthesize carrierListFetchInProgress=_carrierListFetchInProgress;
-@property (readonly, nonatomic) NSArray *cellularPlansPendingTransfer;
 @property (readonly, nonatomic) NSArray *danglingPlanItems;
 @property (readonly, nonatomic) NSArray *embeddedPlanItems;
 @property (readonly, nonatomic) BOOL hasSubscriptions;
@@ -42,6 +41,7 @@
 @property (readonly, nonatomic) BOOL isSelectedPlanActivating;
 @property (readonly, nonatomic) BOOL isWebUIFlowSupported;
 @property (readonly, nonatomic) NSArray *planItems;
+@property (readonly, nonatomic) NSArray *plansPendingTransfer;
 @property (strong, nonatomic) CTCellularPlanItem *selectedPlanItem;
 @property (readonly, nonatomic) BOOL shouldShowAccountSetup;
 @property (readonly, nonatomic) BOOL shouldShowAddPlan;
@@ -62,6 +62,7 @@
 - (id)init;
 - (id)planFromReference:(id)arg1;
 - (id)planFromReferenceSafe:(id)arg1;
+- (id)planPendingTransferFromReference:(id)arg1;
 - (id)predefinedLabels;
 - (void)setLabel:(id)arg1 forPlan:(id)arg2;
 - (void)setSelectedPlanItemForData:(id)arg1;

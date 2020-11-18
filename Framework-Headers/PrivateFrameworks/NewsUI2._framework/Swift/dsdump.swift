@@ -1,5 +1,6 @@
- protocol NewsUI2.MagazineFeedRouterType // 2 requirements
+ protocol NewsUI2.MagazineFeedRouterType // 3 requirements
  {
+	// method
 	// method
 	// method
  }
@@ -11,12 +12,8 @@
 	// method
 	// method
  }
- protocol NewsUI2.MagazineGridBlueprintViewCellProviderDelegate // 6 requirements
+ protocol NewsUI2.MagazineGridBlueprintViewCellProviderDelegate // 2 requirements
  {
-	// method
-	// method
-	// method
-	// method
 	// method
 	// method
  }
@@ -47,18 +44,15 @@
 	// method
 	// method
  }
- protocol NewsUI2.MagazineFeedPaywallEventHandlerTypeDelegate // 3 requirements
+ protocol NewsUI2.MagazineFeedPaywallEventHandlerTypeDelegate // 1 requirements
  {
 	// method
-	// method
-	// method
  }
- protocol NewsUI2.ChannelIssuesInteractorType // 9 requirements
+ protocol NewsUI2.ChannelIssuesInteractorType // 8 requirements
  {
 	// getter
 	// setter
 	// modify coroutine
-	// method
 	// method
 	// method
 	// method
@@ -515,13 +509,11 @@
 	// method
 	// method
  }
- protocol NewsUI2.MyMagazinesEventHandlerType // 14 requirements
+ protocol NewsUI2.MyMagazinesEventHandlerType // 12 requirements
  {
 	// getter
 	// setter
 	// modify coroutine
-	// method
-	// method
 	// method
 	// method
 	// method
@@ -629,13 +621,11 @@
  {
 	// method
  }
- protocol NewsUI2.MagazineGridEventHandlerType // 15 requirements
+ protocol NewsUI2.MagazineGridEventHandlerType // 13 requirements
  {
 	// getter
 	// setter
 	// modify coroutine
-	// method
-	// method
 	// method
 	// method
 	// method
@@ -679,7 +669,7 @@
  {
 	// method
  }
- protocol NewsUI2.MagazineFeedInteractorType // 24 requirements
+ protocol NewsUI2.MagazineFeedInteractorType // 30 requirements
  {
 	// getter
 	// setter
@@ -705,9 +695,16 @@
 	// method
 	// method
 	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
  }
- protocol NewsUI2.MagazineFeedInteractorTypeDelegate // 11 requirements
+ protocol NewsUI2.MagazineFeedInteractorTypeDelegate // 12 requirements
  {
+	// method
 	// method
 	// method
 	// method
@@ -734,12 +731,11 @@
  {
 	// method
  }
- protocol NewsUI2.MagazineGridInteractorType // 12 requirements
+ protocol NewsUI2.MagazineGridInteractorType // 11 requirements
  {
 	// getter
 	// setter
 	// modify coroutine
-	// method
 	// method
 	// method
 	// method
@@ -809,12 +805,8 @@
 	// modify coroutine
 	// method
  }
- protocol NewsUI2.ChannelIssuesBlueprintViewCellProviderDelegate // 5 requirements
+ protocol NewsUI2.ChannelIssuesBlueprintViewCellProviderDelegate // 1 requirements
  {
-	// method
-	// method
-	// method
-	// method
 	// method
  }
  protocol NewsUI2.FollowingDataManagerType // 15 requirements
@@ -1162,10 +1154,8 @@
 	// method
 	// method
  }
- protocol NewsUI2.MagazineFeedPaywallInteractorTypeDelegate // 3 requirements
+ protocol NewsUI2.MagazineFeedPaywallInteractorTypeDelegate // 1 requirements
  {
-	// method
-	// method
 	// method
  }
  protocol NewsUI2.MagazineFeedPaywallStylerType // 1 requirements
@@ -1223,11 +1213,16 @@
  {
 	// method
  }
- protocol NewsUI2.MagazineFeedEventHandlerType // 26 requirements
+ protocol NewsUI2.MagazineFeedEventHandlerType // 31 requirements
  {
 	// getter
 	// setter
 	// modify coroutine
+	// method
+	// method
+	// method
+	// method
+	// method
 	// method
 	// method
 	// method
@@ -1586,8 +1581,9 @@
 	// method
 	// method
  }
- protocol NewsUI2.OfflineModelProviding // 4 requirements
+ protocol NewsUI2.OfflineModelProviding // 5 requirements
  {
+	// class getter
 	// class getter
 	// class getter
 	// class getter
@@ -1664,12 +1660,8 @@
  {
 	// class base protocol
  }
- protocol NewsUI2.MyMagazinesBlueprintViewCellProviderDelegate // 5 requirements
+ protocol NewsUI2.MyMagazinesBlueprintViewCellProviderDelegate // 1 requirements
  {
-	// method
-	// method
-	// method
-	// method
 	// method
  }
  protocol NewsUI2.MyMagazinesBlueprintModifierFactoryType // 5 requirements
@@ -2130,12 +2122,11 @@
  {
 	// getter
  }
- protocol NewsUI2.MyMagazinesInteractorType // 11 requirements
+ protocol NewsUI2.MyMagazinesInteractorType // 10 requirements
  {
 	// getter
 	// setter
 	// modify coroutine
-	// method
 	// method
 	// method
 	// method
@@ -2311,11 +2302,8 @@
  {
 	// method
  }
- protocol NewsUI2.MagazineFeedBlueprintViewCellProviderDelegate // 5 requirements
+ protocol NewsUI2.MagazineFeedBlueprintViewCellProviderDelegate // 2 requirements
  {
-	// method
-	// method
-	// method
 	// method
 	// method
  }
@@ -2459,13 +2447,11 @@
 	// method
 	// method
  }
- protocol NewsUI2.ChannelIssuesEventHandlerType // 11 requirements
+ protocol NewsUI2.ChannelIssuesEventHandlerType // 9 requirements
  {
 	// getter
 	// setter
 	// modify coroutine
-	// method
-	// method
 	// method
 	// method
 	// method
@@ -2538,11 +2524,13 @@
 	// method
 	// method
  }
- protocol NewsUI2.MagazineFeedDataManagerType // 14 requirements
+ protocol NewsUI2.MagazineFeedDataManagerType // 16 requirements
  {
 	// getter
 	// setter
 	// modify coroutine
+	// method
+	// method
 	// method
 	// method
 	// method
@@ -2722,7 +2710,7 @@
 
  class NewsUI2.FollowingNotificationsAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xd940  @objc FollowingNotificationsAssembly.init <stripped>
+	0xd9d0  @objc FollowingNotificationsAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -2733,19 +2721,19 @@
 	let contentViewController : UIViewController // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xea40  @objc SimpleContainerViewController.initWithCoder: <stripped>
-	0xea90  @objc SimpleContainerViewController.childViewControllerForStatusBarStyle <stripped>
-	0xea90  @objc SimpleContainerViewController.childViewControllerForStatusBarHidden <stripped>
-	0xeb80  @objc SimpleContainerViewController.initWithNibName:bundle: <stripped>
-	0xec00  @objc SimpleContainerViewController..cxx_destruct <stripped>
+	0xead0  @objc SimpleContainerViewController.initWithCoder: <stripped>
+	0xeb20  @objc SimpleContainerViewController.childViewControllerForStatusBarStyle <stripped>
+	0xeb20  @objc SimpleContainerViewController.childViewControllerForStatusBarHidden <stripped>
+	0xec10  @objc SimpleContainerViewController.initWithNibName:bundle: <stripped>
+	0xec90  @objc SimpleContainerViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xe8f0  class func SimpleContainerViewController.__allocating_init(contentViewController:) // init 
+	0xe980  class func SimpleContainerViewController.__allocating_init(contentViewController:) // init 
  }
 
  class NewsUI2.RendererAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x12b90  @objc RendererAssembly.init <stripped>
+	0x12c20  @objc RendererAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -2825,12 +2813,12 @@
 	let specialEventsOperationResultType : FCSpecialEventsOperationResultType // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1d710  @objc TopOfFeedHeadlineContext.position <stripped>
-	0x1d730  @objc TopOfFeedHeadlineContext.count <stripped>
-	0x1d750  @objc TopOfFeedHeadlineContext.moduleExposureID <stripped>
-	0x1d7b0  @objc TopOfFeedHeadlineContext.specialEventsOperationResultType <stripped>
-	0x1d7d0  @objc TopOfFeedHeadlineContext.init <stripped>
-	0x1d850  @objc TopOfFeedHeadlineContext..cxx_destruct <stripped>
+	0x1d7b0  @objc TopOfFeedHeadlineContext.position <stripped>
+	0x1d7d0  @objc TopOfFeedHeadlineContext.count <stripped>
+	0x1d7f0  @objc TopOfFeedHeadlineContext.moduleExposureID <stripped>
+	0x1d850  @objc TopOfFeedHeadlineContext.specialEventsOperationResultType <stripped>
+	0x1d870  @objc TopOfFeedHeadlineContext.init <stripped>
+	0x1d8f0  @objc TopOfFeedHeadlineContext..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -2841,13 +2829,13 @@
 	let newsActivity : NewsActivity // +0xfeedfacf (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x1d8a0  @objc BridgedNewsActivity.enumValue <stripped>
-	0x1e080  @objc BridgedNewsActivity.headlineData <stripped>
-	0x1e280  @objc BridgedNewsActivity.feedData <stripped>
-	0x1e4b0  @objc BridgedNewsActivity.videoData <stripped>
-	0x1e640  @objc BridgedNewsActivity.adPreviewIdentifier <stripped>
-	0x1e6d0  @objc BridgedNewsActivity.init <stripped>
-	0x1e740  @objc BridgedNewsActivity..cxx_destruct <stripped>
+	0x1d940  @objc BridgedNewsActivity.enumValue <stripped>
+	0x1e120  @objc BridgedNewsActivity.headlineData <stripped>
+	0x1e320  @objc BridgedNewsActivity.feedData <stripped>
+	0x1e550  @objc BridgedNewsActivity.videoData <stripped>
+	0x1e6e0  @objc BridgedNewsActivity.adPreviewIdentifier <stripped>
+	0x1e770  @objc BridgedNewsActivity.init <stripped>
+	0x1e7e0  @objc BridgedNewsActivity..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -2863,15 +2851,15 @@
 	let headline : FCHeadlineProviding?
 
 	// ObjC -> Swift bridged methods
-	0x1e760  @objc BridgedNewsActivityHeadlineData.articleID <stripped>
-	0x1e7e0  @objc BridgedNewsActivityHeadlineData.articleContext <stripped>
-	0x1e840  @objc BridgedNewsActivityHeadlineData.articlePresentationStyle <stripped>
-	0x1e880  @objc BridgedNewsActivityHeadlineData.showShareSheet <stripped>
-	0x1e8c0  @objc BridgedNewsActivityHeadlineData.forceArticleUpdate <stripped>
-	0x1e900  @objc BridgedNewsActivityHeadlineData.headline <stripped>
-	0x1eae0  @objc BridgedNewsActivityHeadlineData.presentationReason <stripped>
-	0x1eb40  @objc BridgedNewsActivityHeadlineData.init <stripped>
-	0x1eb90  @objc BridgedNewsActivityHeadlineData..cxx_destruct <stripped>
+	0x1e800  @objc BridgedNewsActivityHeadlineData.articleID <stripped>
+	0x1e880  @objc BridgedNewsActivityHeadlineData.articleContext <stripped>
+	0x1e8e0  @objc BridgedNewsActivityHeadlineData.articlePresentationStyle <stripped>
+	0x1e920  @objc BridgedNewsActivityHeadlineData.showShareSheet <stripped>
+	0x1e960  @objc BridgedNewsActivityHeadlineData.forceArticleUpdate <stripped>
+	0x1e9a0  @objc BridgedNewsActivityHeadlineData.headline <stripped>
+	0x1eb80  @objc BridgedNewsActivityHeadlineData.presentationReason <stripped>
+	0x1ebe0  @objc BridgedNewsActivityHeadlineData.init <stripped>
+	0x1ec30  @objc BridgedNewsActivityHeadlineData..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -2883,10 +2871,10 @@
 	let feedViewContext : FeedViewContext // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1ebe0  @objc BridgedNewsActivityFeedData.tag <stripped>
-	0x1ec30  @objc BridgedNewsActivityFeedData.feedViewContext <stripped>
-	0x1ecc0  @objc BridgedNewsActivityFeedData.init <stripped>
-	0x1ed10  @objc BridgedNewsActivityFeedData..cxx_destruct <stripped>
+	0x1ec80  @objc BridgedNewsActivityFeedData.tag <stripped>
+	0x1ecd0  @objc BridgedNewsActivityFeedData.feedViewContext <stripped>
+	0x1ed60  @objc BridgedNewsActivityFeedData.init <stripped>
+	0x1edb0  @objc BridgedNewsActivityFeedData..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -2899,11 +2887,11 @@
 	let analyticsReferral : AnalyticsReferral? // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1ed40  @objc BridgedNewsActivityVideoData.articleIDs <stripped>
-	0x1edb0  @objc BridgedNewsActivityVideoData.widgetPlaylist <stripped>
-	0x1ee10  @objc BridgedNewsActivityVideoData.analyticsReferral <stripped>
-	0x1eea0  @objc BridgedNewsActivityVideoData.init <stripped>
-	0x1ef30  @objc BridgedNewsActivityVideoData..cxx_destruct <stripped>
+	0x1ede0  @objc BridgedNewsActivityVideoData.articleIDs <stripped>
+	0x1ee50  @objc BridgedNewsActivityVideoData.widgetPlaylist <stripped>
+	0x1eeb0  @objc BridgedNewsActivityVideoData.analyticsReferral <stripped>
+	0x1ef40  @objc BridgedNewsActivityVideoData.init <stripped>
+	0x1efd0  @objc BridgedNewsActivityVideoData..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -2918,22 +2906,22 @@
 	let headlineModelFactory : HeadlineModelFactoryType
 
 	// ObjC -> Swift bridged methods
-	0x1f060  @objc BridgedNewsActivityFactory.forYouFeedWithFeedViewContext:articleViewContext:analyticsReferral: <stripped>
-	0x1f170  @objc BridgedNewsActivityFactory.feedWithTag:feedViewContext: <stripped>
-	0x1f600  @objc BridgedNewsActivityFactory.feedWithTagIdentifier:feedViewContext:completion: <stripped>
-	0x1f7f0  @objc BridgedNewsActivityFactory.headlineWithHeadlineProviding:articleContext:articlePresentationStyle:showShareSheet:forceArticleUpdate: <stripped>
-	0x1f980  @objc BridgedNewsActivityFactory.unrealizedHeadlineWithArticleID:articleContext:articlePresentationStyle:showShareSheet:forceArticleUpdate: <stripped>
-	0x1fb10  @objc BridgedNewsActivityFactory.editorialArticleWithIdentifier:articleViewContext: <stripped>
-	0x1fc60  @objc BridgedNewsActivityFactory.saved <stripped>
-	0x1fc70  @objc BridgedNewsActivityFactory.history <stripped>
-	0x1fc80  @objc BridgedNewsActivityFactory.videoPlayerWithWidgetPlaylist:analyticsReferral: <stripped>
-	0x1fda0  @objc BridgedNewsActivityFactory.videoPlayerWithArticleIDs:analyticsReferral: <stripped>
-	0x1fef0  @objc BridgedNewsActivityFactory.pickYourFavorites <stripped>
-	0x1ff00  @objc BridgedNewsActivityFactory.previewWithHeadline: <stripped>
-	0x1fff0  @objc BridgedNewsActivityFactory.notifications <stripped>
-	0x20000  @objc BridgedNewsActivityFactory.adPreviewWithIdentifier: <stripped>
-	0x20110  @objc BridgedNewsActivityFactory.manageSubscriptions <stripped>
-	0x201e0  @objc BridgedNewsActivityFactory.webLinkWithURL: <stripped>
+	0x1f100  @objc BridgedNewsActivityFactory.forYouFeedWithFeedViewContext:articleViewContext:analyticsReferral: <stripped>
+	0x1f210  @objc BridgedNewsActivityFactory.feedWithTag:feedViewContext: <stripped>
+	0x1f6a0  @objc BridgedNewsActivityFactory.feedWithTagIdentifier:feedViewContext:completion: <stripped>
+	0x1f890  @objc BridgedNewsActivityFactory.headlineWithHeadlineProviding:articleContext:articlePresentationStyle:showShareSheet:forceArticleUpdate: <stripped>
+	0x1fa20  @objc BridgedNewsActivityFactory.unrealizedHeadlineWithArticleID:articleContext:articlePresentationStyle:showShareSheet:forceArticleUpdate: <stripped>
+	0x1fbb0  @objc BridgedNewsActivityFactory.editorialArticleWithIdentifier:articleViewContext: <stripped>
+	0x1fd00  @objc BridgedNewsActivityFactory.saved <stripped>
+	0x1fd10  @objc BridgedNewsActivityFactory.history <stripped>
+	0x1fd20  @objc BridgedNewsActivityFactory.videoPlayerWithWidgetPlaylist:analyticsReferral: <stripped>
+	0x1fe40  @objc BridgedNewsActivityFactory.videoPlayerWithArticleIDs:analyticsReferral: <stripped>
+	0x1ff90  @objc BridgedNewsActivityFactory.pickYourFavorites <stripped>
+	0x1ffa0  @objc BridgedNewsActivityFactory.previewWithHeadline: <stripped>
+	0x20090  @objc BridgedNewsActivityFactory.notifications <stripped>
+	0x200a0  @objc BridgedNewsActivityFactory.adPreviewWithIdentifier: <stripped>
+	0x201b0  @objc BridgedNewsActivityFactory.manageSubscriptions <stripped>
+	0x20280  @objc BridgedNewsActivityFactory.webLinkWithURL: <stripped>
 
 	// Swift methods
  }
@@ -2970,16 +2958,16 @@
 	let object : Swift.AnyObject? // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2c740  @objc BridgedNewsActivityData.activity <stripped>
-	0x2c780  @objc BridgedNewsActivityData.identifier <stripped>
-	0x2c800  @objc BridgedNewsActivityData.object <stripped>
-	0x2c920  @objc BridgedNewsActivityData.initWithActivity:identifier: <stripped>
-	0x2cb50  @objc BridgedNewsActivityData.initWithActivity:identifier:object: <stripped>
-	0x2cc80  @objc BridgedNewsActivityData.init <stripped>
-	0x2cd00  @objc BridgedNewsActivityData..cxx_destruct <stripped>
+	0x2c4d0  @objc BridgedNewsActivityData.activity <stripped>
+	0x2c510  @objc BridgedNewsActivityData.identifier <stripped>
+	0x2c590  @objc BridgedNewsActivityData.object <stripped>
+	0x2c6b0  @objc BridgedNewsActivityData.initWithActivity:identifier: <stripped>
+	0x2c8e0  @objc BridgedNewsActivityData.initWithActivity:identifier:object: <stripped>
+	0x2ca10  @objc BridgedNewsActivityData.init <stripped>
+	0x2ca90  @objc BridgedNewsActivityData..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2c9b0  class func BridgedNewsActivityData.__allocating_init(activity:identifier:object:) // init 
+	0x2c740  class func BridgedNewsActivityData.__allocating_init(activity:identifier:object:) // init 
  }
 
  class NewsUI2.DislikeButtonRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, DislikeButtonRendererType {
@@ -2994,7 +2982,7 @@
 
  class NewsUI2.VideoPlayerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x2d520  @objc VideoPlayerAssembly.init <stripped>
+	0x2d2b0  @objc VideoPlayerAssembly.init <stripped>
  }
 
  class NewsUI2.FollowingDislikedModifierFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FollowingDislikedModifierFactoryType {
@@ -3007,7 +2995,7 @@
 
  class NewsUI2.SoftPaywallAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x2dea0  @objc SoftPaywallAssembly.init <stripped>
+	0x2dc30  @objc SoftPaywallAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -3058,14 +3046,14 @@
 
  class NewsUI2.SearchMoreAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3d370  @objc SearchMoreAssembly.init <stripped>
+	0x3ca00  @objc SearchMoreAssembly.init <stripped>
 
 	// Swift methods
  }
 
  class NewsUI2.ArticleAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3f2c0  @objc ArticleAssembly.init <stripped>
+	0x3e950  @objc ArticleAssembly.init <stripped>
  }
 
  struct NewsUI2.TrendingMagazineFeedGroupEmitter {
@@ -3090,12 +3078,12 @@
 	let dismissalTransitionFactory : (_:)
 
 	// ObjC -> Swift bridged methods
-	0x46da0  @objc BridgedNewsActivitySender.initWithViewController:presentationTransitionFactory:dismissalTransitionFactory: <stripped>
-	0x46fa0  @objc BridgedNewsActivitySender.init <stripped>
-	0x47020  @objc BridgedNewsActivitySender..cxx_destruct <stripped>
+	0x46460  @objc BridgedNewsActivitySender.initWithViewController:presentationTransitionFactory:dismissalTransitionFactory: <stripped>
+	0x46660  @objc BridgedNewsActivitySender.init <stripped>
+	0x466e0  @objc BridgedNewsActivitySender..cxx_destruct <stripped>
 
 	// Swift methods
-	0x46bd0  class func BridgedNewsActivitySender.__allocating_init(viewController:presentationTransitionFactory:dismissalTransitionFactory:) // init 
+	0x46290  class func BridgedNewsActivitySender.__allocating_init(viewController:presentationTransitionFactory:dismissalTransitionFactory:) // init 
  }
 
  class NewsUI2.Factory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3155,16 +3143,17 @@
 	var pluggableDelegate : weak TUPluggableDelegate? // +0x45545f5f (0x8)
 	let purchasingSpinnerViewControllerFactory : PurchasingSpinnerViewControllerFactoryType // +0x0 (0x28)
 	var $__lazy_storage_$_spinnerViewController : PurchasingSpinnerViewController? // +0x0 (0x8)
+	let purchasePresenter : PurchasePresenterType // +0x0 (0x28)
 	var renderToken : String // +0x0 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x4d0a0  @objc MagazineFeedPaywallViewController.isBeingUsedAsPlugin <stripped>
-	0x4d0c0  @objc MagazineFeedPaywallViewController.setIsBeingUsedAsPlugin: <stripped>
-	0x4d100  @objc MagazineFeedPaywallViewController.pluggableDelegate <stripped>
-	0x4d120  @objc MagazineFeedPaywallViewController.setPluggableDelegate: <stripped>
-	0x4d930  @objc MagazineFeedPaywallViewController.initWithCoder: <stripped>
-	0x4d950  @objc MagazineFeedPaywallViewController.initWithNibName:bundle: <stripped>
-	0x4d9c0  @objc MagazineFeedPaywallViewController..cxx_destruct <stripped>
+	0x4c760  @objc MagazineFeedPaywallViewController.isBeingUsedAsPlugin <stripped>
+	0x4c780  @objc MagazineFeedPaywallViewController.setIsBeingUsedAsPlugin: <stripped>
+	0x4c7c0  @objc MagazineFeedPaywallViewController.pluggableDelegate <stripped>
+	0x4c7e0  @objc MagazineFeedPaywallViewController.setPluggableDelegate: <stripped>
+	0x4ced0  @objc MagazineFeedPaywallViewController.initWithCoder: <stripped>
+	0x4cef0  @objc MagazineFeedPaywallViewController.initWithNibName:bundle: <stripped>
+	0x4cf60  @objc MagazineFeedPaywallViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3182,9 +3171,9 @@
 	let label : UILabel // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x51b00  @objc SpecialEventsWebEmbedErrorView.initWithFrame: <stripped>
-	0x51b30  @objc SpecialEventsWebEmbedErrorView.initWithCoder: <stripped>
-	0x51bd0  @objc SpecialEventsWebEmbedErrorView..cxx_destruct <stripped>
+	0x50ea0  @objc SpecialEventsWebEmbedErrorView.initWithFrame: <stripped>
+	0x50ed0  @objc SpecialEventsWebEmbedErrorView.initWithCoder: <stripped>
+	0x50f70  @objc SpecialEventsWebEmbedErrorView..cxx_destruct <stripped>
  }
 
  struct NewsUI2.Options { }
@@ -3347,11 +3336,11 @@
 	let footer : Footer
 
 	// ObjC -> Swift bridged methods
-	0x65a90  @objc WelcomeView.accessibilityViewIsModal <stripped>
-	0x65ab0  @objc WelcomeView.setAccessibilityViewIsModal: <stripped>
-	0x65e40  @objc WelcomeView.initWithFrame: <stripped>
-	0x65e60  @objc WelcomeView.initWithCoder: <stripped>
-	0x66b50  @objc WelcomeView..cxx_destruct <stripped>
+	0x65310  @objc WelcomeView.accessibilityViewIsModal <stripped>
+	0x65330  @objc WelcomeView.setAccessibilityViewIsModal: <stripped>
+	0x656c0  @objc WelcomeView.initWithFrame: <stripped>
+	0x656e0  @objc WelcomeView.initWithCoder: <stripped>
+	0x663d0  @objc WelcomeView..cxx_destruct <stripped>
  }
 
  class NewsUI2.TitleGroup : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3362,9 +3351,9 @@
 	let welcomeSubTitleLabel : UILabel
 
 	// ObjC -> Swift bridged methods
-	0x662e0  @objc TitleGroup.initWithFrame: <stripped>
-	0x66300  @objc TitleGroup.initWithCoder: <stripped>
-	0x66340  @objc TitleGroup..cxx_destruct <stripped>
+	0x65b60  @objc TitleGroup.initWithFrame: <stripped>
+	0x65b80  @objc TitleGroup.initWithCoder: <stripped>
+	0x65bc0  @objc TitleGroup..cxx_destruct <stripped>
  }
 
  class NewsUI2.SiriGroup : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3374,9 +3363,9 @@
 	let textLabel : UILabel
 
 	// ObjC -> Swift bridged methods
-	0x66500  @objc SiriGroup.initWithFrame: <stripped>
-	0x66520  @objc SiriGroup.initWithCoder: <stripped>
-	0x66650  @objc SiriGroup..cxx_destruct <stripped>
+	0x65d80  @objc SiriGroup.initWithFrame: <stripped>
+	0x65da0  @objc SiriGroup.initWithCoder: <stripped>
+	0x65ed0  @objc SiriGroup..cxx_destruct <stripped>
  }
 
  class NewsUI2.Footer : UIVisualEffectView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3388,9 +3377,9 @@
 	let privacyLink : UIButton
 
 	// ObjC -> Swift bridged methods
-	0x66690  @objc Footer.initWithEffect: <stripped>
-	0x666d0  @objc Footer.initWithCoder: <stripped>
-	0x66710  @objc Footer..cxx_destruct <stripped>
+	0x65f10  @objc Footer.initWithEffect: <stripped>
+	0x65f50  @objc Footer.initWithCoder: <stripped>
+	0x65f90  @objc Footer..cxx_destruct <stripped>
  }
 
  class NewsUI2.ContinueButton : UIButton /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3399,11 +3388,11 @@
 	let onTap : Action<()>
 
 	// ObjC -> Swift bridged methods
-	0x66740  @objc ContinueButton.isHighlighted <stripped>
-	0x667a0  @objc ContinueButton.setHighlighted: <stripped>
-	0x669d0  @objc ContinueButton.initWithFrame: <stripped>
-	0x66a20  @objc ContinueButton.initWithCoder: <stripped>
-	0x66ad0  @objc ContinueButton..cxx_destruct <stripped>
+	0x65fc0  @objc ContinueButton.isHighlighted <stripped>
+	0x66020  @objc ContinueButton.setHighlighted: <stripped>
+	0x66250  @objc ContinueButton.initWithFrame: <stripped>
+	0x662a0  @objc ContinueButton.initWithCoder: <stripped>
+	0x66350  @objc ContinueButton..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3416,9 +3405,9 @@
 	let rightArrow : RightArrow // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x68e20  @objc SpecialEventsTitleView.initWithFrame: <stripped>
-	0x68e50  @objc SpecialEventsTitleView.initWithCoder: <stripped>
-	0x68ec0  @objc SpecialEventsTitleView..cxx_destruct <stripped>
+	0x68540  @objc SpecialEventsTitleView.initWithFrame: <stripped>
+	0x68570  @objc SpecialEventsTitleView.initWithCoder: <stripped>
+	0x685e0  @objc SpecialEventsTitleView..cxx_destruct <stripped>
  }
 
  enum NewsUI2.FeedViewReferrer {
@@ -3450,7 +3439,7 @@
 
  class NewsUI2.BootstrapAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x6ab60  @objc BootstrapAssembly.init <stripped>
+	0x6a280  @objc BootstrapAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -3475,8 +3464,8 @@
 	var registeredWorkers : [BackgroundFetchWorker] // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x6c140  @objc PaidBundleBackgroundWorkerManager.init <stripped>
-	0x6c1c0  @objc PaidBundleBackgroundWorkerManager..cxx_destruct <stripped>
+	0x6b860  @objc PaidBundleBackgroundWorkerManager.init <stripped>
+	0x6b8e0  @objc PaidBundleBackgroundWorkerManager..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3495,9 +3484,9 @@
 	let notificationService : NotificationServiceType // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x6d030  @objc DeliveredNotificationsRemover.removeDeliveredNotificationFor: <stripped>
-	0x6d1b0  @objc DeliveredNotificationsRemover.init <stripped>
-	0x6d230  @objc DeliveredNotificationsRemover..cxx_destruct <stripped>
+	0x6c750  @objc DeliveredNotificationsRemover.removeDeliveredNotificationFor: <stripped>
+	0x6c8d0  @objc DeliveredNotificationsRemover.init <stripped>
+	0x6c950  @objc DeliveredNotificationsRemover..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3513,9 +3502,9 @@
 	var userActionStateAXDescription : String? // +0x30 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x6d800  @objc HeadlineViewFooterView.initWithFrame: <stripped>
-	0x6d830  @objc HeadlineViewFooterView.initWithCoder: <stripped>
-	0x6d8e0  @objc HeadlineViewFooterView..cxx_destruct <stripped>
+	0x6cf20  @objc HeadlineViewFooterView.initWithFrame: <stripped>
+	0x6cf50  @objc HeadlineViewFooterView.initWithCoder: <stripped>
+	0x6d000  @objc HeadlineViewFooterView..cxx_destruct <stripped>
  }
 
  struct NewsUI2.Sharing { }
@@ -3541,9 +3530,9 @@
 	let dislikeButton : DislikeButton // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x6efc0  @objc ForYouTitleView.initWithFrame: <stripped>
-	0x6eff0  @objc ForYouTitleView.initWithCoder: <stripped>
-	0x6f060  @objc ForYouTitleView..cxx_destruct <stripped>
+	0x6e5c0  @objc ForYouTitleView.initWithFrame: <stripped>
+	0x6e5f0  @objc ForYouTitleView.initWithCoder: <stripped>
+	0x6e660  @objc ForYouTitleView..cxx_destruct <stripped>
  }
 
  class NewsUI2.FollowingNotificationsViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3557,9 +3546,9 @@
 	var followingNotificationsPrewarm : FollowingNotificationsPrewarm // +0x78 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x6f6d0  @objc FollowingNotificationsViewController.initWithCoder: <stripped>
-	0x6f790  @objc FollowingNotificationsViewController.initWithNibName:bundle: <stripped>
-	0x6f810  @objc FollowingNotificationsViewController..cxx_destruct <stripped>
+	0x6eab0  @objc FollowingNotificationsViewController.initWithCoder: <stripped>
+	0x6eb70  @objc FollowingNotificationsViewController.initWithNibName:bundle: <stripped>
+	0x6ebf0  @objc FollowingNotificationsViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3631,25 +3620,25 @@
 	let messageLabel : UILabel // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x7a430  @objc MagazineFeedRefreshControl.initWithFrame: <stripped>
-	0x7a450  @objc MagazineFeedRefreshControl.initWithCoder: <stripped>
-	0x7a7a0  @objc MagazineFeedRefreshControl.layoutSubviews <stripped>
-	0x7a7d0  @objc MagazineFeedRefreshControl.handleRefresh <stripped>
-	0x7a7f0  @objc MagazineFeedRefreshControl.init <stripped>
-	0x7a870  @objc MagazineFeedRefreshControl..cxx_destruct <stripped>
+	0x79810  @objc MagazineFeedRefreshControl.initWithFrame: <stripped>
+	0x79830  @objc MagazineFeedRefreshControl.initWithCoder: <stripped>
+	0x79b80  @objc MagazineFeedRefreshControl.layoutSubviews <stripped>
+	0x79bb0  @objc MagazineFeedRefreshControl.handleRefresh <stripped>
+	0x79bd0  @objc MagazineFeedRefreshControl.init <stripped>
+	0x79c50  @objc MagazineFeedRefreshControl..cxx_destruct <stripped>
  }
 
  class NewsUI2.MenuAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x80c70  @objc MenuAssembly.init <stripped>
+	0x80050  @objc MenuAssembly.init <stripped>
 
 	// Swift methods
  }
 
  class NewsUI2.VideoPlayerModule : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-	0x81cf0  @objc VideoPlayerModule.createViewControllerWithArticleIDs:referral: <stripped>
-	0x81d90  @objc VideoPlayerModule.createViewControllerWithWidgetVideoPlaylist:referral: <stripped>
+	0x810d0  @objc VideoPlayerModule.createViewControllerWithArticleIDs:referral: <stripped>
+	0x81170  @objc VideoPlayerModule.createViewControllerWithWidgetVideoPlaylist:referral: <stripped>
 
 	// Swift methods
  }
@@ -3785,11 +3774,11 @@
 	let router : EmailSignupRouterType // +0x28 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0xa1320  @objc EmailSignupEventHandler.delegate <stripped>
-	0xa1340  @objc EmailSignupEventHandler.setDelegate: <stripped>
-	0xa1360  @objc EmailSignupEventHandler.emailSignUpViewControllerSignUpButtonTapped <stripped>
-	0xa1380  @objc EmailSignupEventHandler.emailSignUpViewControllerNotNowButtonTapped <stripped>
-	0xa1490  @objc EmailSignupEventHandler.viewAppeared <stripped>
+	0xa0620  @objc EmailSignupEventHandler.delegate <stripped>
+	0xa0640  @objc EmailSignupEventHandler.setDelegate: <stripped>
+	0xa0660  @objc EmailSignupEventHandler.emailSignUpViewControllerSignUpButtonTapped <stripped>
+	0xa0680  @objc EmailSignupEventHandler.emailSignUpViewControllerNotNowButtonTapped <stripped>
+	0xa0790  @objc EmailSignupEventHandler.viewAppeared <stripped>
 
 	// Swift methods
  }
@@ -3899,8 +3888,8 @@
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x50 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xa8990  @objc MagazinesBadgingCoordinator.init <stripped>
-	0xa8a10  @objc MagazinesBadgingCoordinator..cxx_destruct <stripped>
+	0xa7c90  @objc MagazinesBadgingCoordinator.init <stripped>
+	0xa7d10  @objc MagazinesBadgingCoordinator..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3953,8 +3942,8 @@
  class NewsUI2.SpecialEventsWebEmbedConfigurationProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SpecialEventsWebEmbedConfigurationProviderType {
 
 	// Properties
-	let locale : Locale // +0x73635f5f (0x0)
-	let storeFront : String? // +0x67 (0x10)
+	let locale : Locale // +0x0 (0x0)
+	let storeFront : String? // +0x2 (0x10)
 
 	// Swift methods
  }
@@ -4101,8 +4090,8 @@
 	let triggerDeduper : PromiseDeduper<String, ()> // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xd4360  @objc OfflineIssueAutoDownloader.init <stripped>
-	0xd43e0  @objc OfflineIssueAutoDownloader..cxx_destruct <stripped>
+	0xd3690  @objc OfflineIssueAutoDownloader.init <stripped>
+	0xd3710  @objc OfflineIssueAutoDownloader..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -4389,9 +4378,9 @@
 	let tracker : Tracker // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xedd50  @objc ChannelIssuesModule.createPluginFactoryForParentView: <stripped>
-	0xede00  @objc ChannelIssuesModule.init <stripped>
-	0xede80  @objc ChannelIssuesModule..cxx_destruct <stripped>
+	0xed0e0  @objc ChannelIssuesModule.createPluginFactoryForParentView: <stripped>
+	0xed190  @objc ChannelIssuesModule.init <stripped>
+	0xed210  @objc ChannelIssuesModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -4400,7 +4389,7 @@
 
  class NewsUI2.TopVideosAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xf13f0  @objc TopVideosAssembly.init <stripped>
+	0xf0780  @objc TopVideosAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -4542,8 +4531,8 @@
 	var onObservation : (_:)? // +0x8 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0xfdc30  @objc SpecialEventsNavigationObserver.init <stripped>
-	0xfdce0  @objc SpecialEventsNavigationObserver..cxx_destruct <stripped>
+	0xfcfc0  @objc SpecialEventsNavigationObserver.init <stripped>
+	0xfd070  @objc SpecialEventsNavigationObserver..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -4557,9 +4546,9 @@
 	let activityFactory : NUArticleActivityFactory // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xfe090  @objc SavedViewController.initWithCoder: <stripped>
-	0xfe0e0  @objc SavedViewController.initWithNibName:bundle: <stripped>
-	0xfe160  @objc SavedViewController..cxx_destruct <stripped>
+	0xfd420  @objc SavedViewController.initWithCoder: <stripped>
+	0xfd470  @objc SavedViewController.initWithNibName:bundle: <stripped>
+	0xfd4f0  @objc SavedViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -4580,10 +4569,10 @@
 	var keyCommandBlocks : [KeyCommandBlock] // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xff260  @objc FollowingRowView.initWithFrame: <stripped>
-	0xff290  @objc FollowingRowView.initWithCoder: <stripped>
-	0xff2b0  @objc FollowingRowView.title <stripped>
-	0xff480  @objc FollowingRowView..cxx_destruct <stripped>
+	0xfe420  @objc FollowingRowView.initWithFrame: <stripped>
+	0xfe450  @objc FollowingRowView.initWithCoder: <stripped>
+	0xfe470  @objc FollowingRowView.title <stripped>
+	0xfe640  @objc FollowingRowView..cxx_destruct <stripped>
  }
 
  struct NewsUI2.AdDataModel: AdDataModelType {
@@ -4612,15 +4601,15 @@
 	// Properties
 	let articleID : String // +0x8 (0x10)
 	let title : String? // +0x18 (0x10)
-	let displayDate : Date? // +0x32218 (0x0)
-	let storyType : String? // +0x617260 (0x10)
+	let displayDate : Date? // +0x45545f5f (0x0)
+	let storyType : String? // +0x0 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x102210  @objc MagazineFeedArticle.title <stripped>
-	0x102230  @objc MagazineFeedArticle.displayDate <stripped>
-	0x1022c0  @objc MagazineFeedArticle.storyType <stripped>
-	0x102d00  @objc MagazineFeedArticle.init <stripped>
-	0x102d70  @objc MagazineFeedArticle..cxx_destruct <stripped>
+	0x101510  @objc MagazineFeedArticle.title <stripped>
+	0x101530  @objc MagazineFeedArticle.displayDate <stripped>
+	0x1015c0  @objc MagazineFeedArticle.storyType <stripped>
+	0x102000  @objc MagazineFeedArticle.init <stripped>
+	0x102070  @objc MagazineFeedArticle..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -4725,13 +4714,13 @@
 	var pluggableDelegate : weak TUPluggableDelegate? // +0xd0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x14ff50  @objc MagazineFeedViewController.isBeingUsedAsPlugin <stripped>
-	0x14ff70  @objc MagazineFeedViewController.setIsBeingUsedAsPlugin: <stripped>
-	0x150090  @objc MagazineFeedViewController.pluggableDelegate <stripped>
-	0x1500b0  @objc MagazineFeedViewController.setPluggableDelegate: <stripped>
-	0x1502c0  @objc MagazineFeedViewController.initWithCoder: <stripped>
-	0x1502e0  @objc MagazineFeedViewController.initWithNibName:bundle: <stripped>
-	0x150360  @objc MagazineFeedViewController..cxx_destruct <stripped>
+	0x14f2c0  @objc MagazineFeedViewController.isBeingUsedAsPlugin <stripped>
+	0x14f2e0  @objc MagazineFeedViewController.setIsBeingUsedAsPlugin: <stripped>
+	0x14f400  @objc MagazineFeedViewController.pluggableDelegate <stripped>
+	0x14f420  @objc MagazineFeedViewController.setPluggableDelegate: <stripped>
+	0x14f630  @objc MagazineFeedViewController.initWithCoder: <stripped>
+	0x14f650  @objc MagazineFeedViewController.initWithNibName:bundle: <stripped>
+	0x14f6d0  @objc MagazineFeedViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -4742,9 +4731,9 @@
 	let onTap : Action<()> // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x155f00  @objc AdMarkerButton.initWithFrame: <stripped>
-	0x155fd0  @objc AdMarkerButton.initWithCoder: <stripped>
-	0x1560f0  @objc AdMarkerButton..cxx_destruct <stripped>
+	0x155740  @objc AdMarkerButton.initWithFrame: <stripped>
+	0x155810  @objc AdMarkerButton.initWithCoder: <stripped>
+	0x155930  @objc AdMarkerButton..cxx_destruct <stripped>
  }
 
  class NewsUI2.TopVideosModule : NSObject /usr/lib/libobjc.A.dylib {
@@ -4753,9 +4742,9 @@
 	let resolver : ResolverType // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x156310  @objc TopVideosModule.createPluginFactoryForParentView: <stripped>
-	0x1563c0  @objc TopVideosModule.init <stripped>
-	0x156440  @objc TopVideosModule..cxx_destruct <stripped>
+	0x155b50  @objc TopVideosModule.createPluginFactoryForParentView: <stripped>
+	0x155c00  @objc TopVideosModule.init <stripped>
+	0x155c80  @objc TopVideosModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -4771,10 +4760,10 @@
 	var lock : UnfairLock
 
 	// ObjC -> Swift bridged methods
-	0x1565a0  @objc ForYouMagazineFeedManager.cursorForTopOfFeed <stripped>
-	0x158480  @objc ForYouMagazineFeedManager.fetchNextGroupFromCursor:completion: <stripped>
-	0x1584f0  @objc ForYouMagazineFeedManager.knownCursorForIdentifier: <stripped>
-	0x158590  @objc ForYouMagazineFeedManager.knownGroupForIdentifier: <stripped>
+	0x155de0  @objc ForYouMagazineFeedManager.cursorForTopOfFeed <stripped>
+	0x157cc0  @objc ForYouMagazineFeedManager.fetchNextGroupFromCursor:completion: <stripped>
+	0x157d30  @objc ForYouMagazineFeedManager.knownCursorForIdentifier: <stripped>
+	0x157dd0  @objc ForYouMagazineFeedManager.knownGroupForIdentifier: <stripped>
 
 	// Swift methods
  }
@@ -4786,9 +4775,9 @@
 	let identifier : String
 
 	// ObjC -> Swift bridged methods
-	0x159500  @objc ForYouMagazineFeedGroup.identifier <stripped>
-	0x159520  @objc ForYouMagazineFeedGroup.init <stripped>
-	0x159570  @objc ForYouMagazineFeedGroup..cxx_destruct <stripped>
+	0x158d40  @objc ForYouMagazineFeedGroup.identifier <stripped>
+	0x158d60  @objc ForYouMagazineFeedGroup.init <stripped>
+	0x158db0  @objc ForYouMagazineFeedGroup..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -4800,9 +4789,9 @@
 	let identifier : String
 
 	// ObjC -> Swift bridged methods
-	0x159650  @objc ForYouMagazineFeedLocationCursor.identifier <stripped>
-	0x159670  @objc ForYouMagazineFeedLocationCursor.init <stripped>
-	0x159700  @objc ForYouMagazineFeedLocationCursor..cxx_destruct <stripped>
+	0x158e90  @objc ForYouMagazineFeedLocationCursor.identifier <stripped>
+	0x158eb0  @objc ForYouMagazineFeedLocationCursor.init <stripped>
+	0x158f40  @objc ForYouMagazineFeedLocationCursor..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -4814,9 +4803,9 @@
 	let identifier : String
 
 	// ObjC -> Swift bridged methods
-	0x159850  @objc ForYouMagazineFeedGroupsCursor.identifier <stripped>
-	0x1598b0  @objc ForYouMagazineFeedGroupsCursor.init <stripped>
-	0x159930  @objc ForYouMagazineFeedGroupsCursor..cxx_destruct <stripped>
+	0x159090  @objc ForYouMagazineFeedGroupsCursor.identifier <stripped>
+	0x1590f0  @objc ForYouMagazineFeedGroupsCursor.init <stripped>
+	0x159170  @objc ForYouMagazineFeedGroupsCursor..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -4913,11 +4902,11 @@
 	var maximumTimer : NSTimer? // +0x0 (0x8)
 	var emailSignupDetectionManager : EmailSignupDetectionManagerType // +0x0 (0x10)
 	let appActivityMonitor : FCAppActivityMonitor // +0x0 (0x8)
-	let networkReachability : FCNetworkReachabilityType? // +0x0 (0x8)
+	let networkReachability : FCNetworkReachabilityType // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x167ba0  @objc WelcomeInteractor.init <stripped>
-	0x167c10  @objc WelcomeInteractor..cxx_destruct <stripped>
+	0x1672a0  @objc WelcomeInteractor.init <stripped>
+	0x167310  @objc WelcomeInteractor..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -4926,7 +4915,7 @@
 
  class NewsUI2.ArticleRecirculationConfigFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ArticleRecirculationSpecifiedSectionDataProviderFactoryType {
 	// Swift methods
-	0x169b00  func <stripped> // method 
+	0x169250  func <stripped> // method 
  }
 
  enum NewsUI2.CombinedArticleRecirculationSectionError {
@@ -5089,14 +5078,14 @@
 	let statusBarFrame : CGRect
 
 	// ObjC -> Swift bridged methods
-	0x184390  @objc BridgedMastheadViewLayoutOptions.layoutMargins <stripped>
-	0x1843e0  @objc BridgedMastheadViewLayoutOptions.traitCollection <stripped>
-	0x1846a0  @objc BridgedMastheadViewLayoutOptions.initWithBounds:layoutMargins:traitCollection:statusBarFrame: <stripped>
-	0x184780  @objc BridgedMastheadViewLayoutOptions.init <stripped>
-	0x1847d0  @objc BridgedMastheadViewLayoutOptions..cxx_destruct <stripped>
+	0x184350  @objc BridgedMastheadViewLayoutOptions.layoutMargins <stripped>
+	0x1843a0  @objc BridgedMastheadViewLayoutOptions.traitCollection <stripped>
+	0x184660  @objc BridgedMastheadViewLayoutOptions.initWithBounds:layoutMargins:traitCollection:statusBarFrame: <stripped>
+	0x184740  @objc BridgedMastheadViewLayoutOptions.init <stripped>
+	0x184790  @objc BridgedMastheadViewLayoutOptions..cxx_destruct <stripped>
 
 	// Swift methods
-	0x184470  class func BridgedMastheadViewLayoutOptions.__allocating_init(bounds:layoutMargins:traitCollection:statusBarFrame:) // init 
+	0x184430  class func BridgedMastheadViewLayoutOptions.__allocating_init(bounds:layoutMargins:traitCollection:statusBarFrame:) // init 
  }
 
  enum NewsUI2.MastheadModelType { }
@@ -5107,15 +5096,15 @@
 	let mastheadModel : MastheadModel // +0x8 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x1848c0  @objc BridgedMastheadModel.appName <stripped>
-	0x1849e0  @objc BridgedMastheadModel.formattedDate <stripped>
-	0x184b50  @objc BridgedMastheadModel.initWithType: <stripped>
-	0x184c20  @objc BridgedMastheadModel.init <stripped>
+	0x184880  @objc BridgedMastheadModel.appName <stripped>
+	0x1849a0  @objc BridgedMastheadModel.formattedDate <stripped>
+	0x184b10  @objc BridgedMastheadModel.initWithType: <stripped>
+	0x184be0  @objc BridgedMastheadModel.init <stripped>
 
 	// Swift methods
-	0x184960  func BridgedMastheadModel.appName.getter // getter 
-	0x184a20  func BridgedMastheadModel.formattedDate.getter // getter 
-	0x184a40  class func BridgedMastheadModel.__allocating_init(type:) // init 
+	0x184920  func BridgedMastheadModel.appName.getter // getter 
+	0x1849e0  func BridgedMastheadModel.formattedDate.getter // getter 
+	0x184a00  class func BridgedMastheadModel.__allocating_init(type:) // init 
  }
 
  class NewsUI2.BridgedMastheadViewProviderFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -5125,7 +5114,7 @@
 	let layoutAttributesFactory : MastheadViewLayoutAttributesFactoryType
 
 	// ObjC -> Swift bridged methods
-	0x185240  @objc BridgedMastheadViewProviderFactory.createMastheadViewProviderForModel: <stripped>
+	0x185200  @objc BridgedMastheadViewProviderFactory.createMastheadViewProviderForModel: <stripped>
 
 	// Swift methods
  }
@@ -5136,8 +5125,8 @@
 	let baseStyler : BaseStylerType
 
 	// ObjC -> Swift bridged methods
-	0x1852b0  @objc BridgedMastheadTheme.mastheadHeadingColor <stripped>
-	0x185340  @objc BridgedMastheadTheme.mastheadSubheadingColor <stripped>
+	0x185270  @objc BridgedMastheadTheme.mastheadHeadingColor <stripped>
+	0x185300  @objc BridgedMastheadTheme.mastheadSubheadingColor <stripped>
 
 	// Swift methods
  }
@@ -5149,13 +5138,13 @@
 	let topToText : CGFloat // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1853f0  @objc BridgedMastheadViewLayoutAttributes.height <stripped>
-	0x185430  @objc BridgedMastheadViewLayoutAttributes.topToText <stripped>
-	0x185560  @objc BridgedMastheadViewLayoutAttributes.initWithHeight:topToText: <stripped>
-	0x185600  @objc BridgedMastheadViewLayoutAttributes.init <stripped>
+	0x1853b0  @objc BridgedMastheadViewLayoutAttributes.height <stripped>
+	0x1853f0  @objc BridgedMastheadViewLayoutAttributes.topToText <stripped>
+	0x185520  @objc BridgedMastheadViewLayoutAttributes.initWithHeight:topToText: <stripped>
+	0x1855c0  @objc BridgedMastheadViewLayoutAttributes.init <stripped>
 
 	// Swift methods
-	0x185470  class func BridgedMastheadViewLayoutAttributes.__allocating_init(height:topToText:) // init 
+	0x185430  class func BridgedMastheadViewLayoutAttributes.__allocating_init(height:topToText:) // init 
  }
 
  class NewsUI2.BridgedMastheadViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -5164,7 +5153,7 @@
 	let layoutAttributesFactory : MastheadViewLayoutAttributesFactoryType
 
 	// ObjC -> Swift bridged methods
-	0x1859f0  @objc BridgedMastheadViewLayoutAttributesFactory.makeLayoutAttributesForModelType:withOptions: <stripped>
+	0x1859b0  @objc BridgedMastheadViewLayoutAttributesFactory.makeLayoutAttributesForModelType:withOptions: <stripped>
 
 	// Swift methods
  }
@@ -5482,17 +5471,17 @@
 	let tracker : Tracker // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x195140  @objc MagazineFeedModule.createViewController <stripped>
-	0x195260  @objc MagazineFeedModule.createPluggableViewController <stripped>
-	0x195350  @objc MagazineFeedModule.init <stripped>
-	0x195400  @objc MagazineFeedModule..cxx_destruct <stripped>
+	0x195100  @objc MagazineFeedModule.createViewController <stripped>
+	0x195220  @objc MagazineFeedModule.createPluggableViewController <stripped>
+	0x195310  @objc MagazineFeedModule.init <stripped>
+	0x1953c0  @objc MagazineFeedModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
  class NewsUI2.TopOfFeedAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x195d00  @objc TopOfFeedAssembly.init <stripped>
+	0x195cc0  @objc TopOfFeedAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -5516,23 +5505,23 @@
 	var viewControllersLock : UnfairLock // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x197240  @objc BlockingPluginManager.pluginManager <stripped>
-	0x197430  @objc BlockingPluginManager.init <stripped>
-	0x197460  @objc BlockingPluginManager.containsPluginForIdentifier: <stripped>
-	0x197750  @objc BlockingPluginManager.registerAndInitializePlugin: <stripped>
-	0x197b90  @objc BlockingPluginManager.relayoutAll <stripped>
-	0x197c10  @objc BlockingPluginManager.waitForSizeForIdentifier: <stripped>
-	0x197de0  @objc BlockingPluginManager.viewControllerForIdentifier: <stripped>
-	0x197fd0  @objc BlockingPluginManager.removeAll <stripped>
-	0x198050  @objc BlockingPluginManager..cxx_destruct <stripped>
+	0x197200  @objc BlockingPluginManager.pluginManager <stripped>
+	0x1973f0  @objc BlockingPluginManager.init <stripped>
+	0x197420  @objc BlockingPluginManager.containsPluginForIdentifier: <stripped>
+	0x197710  @objc BlockingPluginManager.registerAndInitializePlugin: <stripped>
+	0x197b50  @objc BlockingPluginManager.relayoutAll <stripped>
+	0x197bd0  @objc BlockingPluginManager.waitForSizeForIdentifier: <stripped>
+	0x197da0  @objc BlockingPluginManager.viewControllerForIdentifier: <stripped>
+	0x197f90  @objc BlockingPluginManager.removeAll <stripped>
+	0x198010  @objc BlockingPluginManager..cxx_destruct <stripped>
 
 	// Swift methods
-	0x197450  func BlockingPluginManager.containsPlugin(for:) // method 
-	0x1974e0  func BlockingPluginManager.registerAndInitialize(plugin:) // method 
-	0x1977a0  func BlockingPluginManager.relayoutAll() // method 
-	0x197bc0  func BlockingPluginManager.waitForSize(for:) // method 
-	0x197cd0  func BlockingPluginManager.viewController(for:) // method 
-	0x197e60  func BlockingPluginManager.removeAll() // method 
+	0x197410  func BlockingPluginManager.containsPlugin(for:) // method 
+	0x1974a0  func BlockingPluginManager.registerAndInitialize(plugin:) // method 
+	0x197760  func BlockingPluginManager.relayoutAll() // method 
+	0x197b80  func BlockingPluginManager.waitForSize(for:) // method 
+	0x197c90  func BlockingPluginManager.viewController(for:) // method 
+	0x197e20  func BlockingPluginManager.removeAll() // method 
  }
 
  class NewsUI2.MagazineGridEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineGridEventHandlerType {
@@ -5551,8 +5540,8 @@
 	let notificationService : NotificationServiceType // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x19b1d0  @objc NotificationAuthorizationRequester.init <stripped>
-	0x19b250  @objc NotificationAuthorizationRequester..cxx_destruct <stripped>
+	0x19b190  @objc NotificationAuthorizationRequester.init <stripped>
+	0x19b210  @objc NotificationAuthorizationRequester..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -5565,12 +5554,12 @@
 	let layoutOptionsProvider : PluginLayoutOptionsProvider // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x19ba90  @objc ForYouMagazinesPluginFactory.createPluginWithIdentifier:group: <stripped>
-	0x19bb80  @objc ForYouMagazinesPluginFactory.init <stripped>
-	0x19bc00  @objc ForYouMagazinesPluginFactory..cxx_destruct <stripped>
+	0x19ba50  @objc ForYouMagazinesPluginFactory.createPluginWithIdentifier:group: <stripped>
+	0x19bb40  @objc ForYouMagazinesPluginFactory.init <stripped>
+	0x19bbc0  @objc ForYouMagazinesPluginFactory..cxx_destruct <stripped>
 
 	// Swift methods
-	0x19b4d0  class func ForYouMagazinesPluginFactory.__allocating_init(resolver:tracker:layoutOptionsProvider:) // init 
+	0x19b490  class func ForYouMagazinesPluginFactory.__allocating_init(resolver:tracker:layoutOptionsProvider:) // init 
  }
 
  class NewsUI2.FollowingBrowseButtonViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -5621,7 +5610,7 @@
 
  class NewsUI2.FeedAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1a17a0  @objc FeedAssembly.init <stripped>
+	0x1a1760  @objc FeedAssembly.init <stripped>
  }
 
  enum NewsUI2.EmailSignupAnalyticEvent {
@@ -5638,9 +5627,9 @@
 	let layoutInvalidator : SXLayoutInvalidator // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1a1f80  @objc ArticleRecirculationComponentView.presentComponentWithChanges: <stripped>
-	0x1a1fd0  @objc ArticleRecirculationComponentView.initWithDOMObjectProvider:viewport:presentationDelegate:componentStyleRendererFactory: <stripped>
-	0x1a2080  @objc ArticleRecirculationComponentView..cxx_destruct <stripped>
+	0x1a1f40  @objc ArticleRecirculationComponentView.presentComponentWithChanges: <stripped>
+	0x1a1f90  @objc ArticleRecirculationComponentView.initWithDOMObjectProvider:viewport:presentationDelegate:componentStyleRendererFactory: <stripped>
+	0x1a2040  @objc ArticleRecirculationComponentView..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -5731,20 +5720,20 @@
 	var thumbnailViewForAnimator : UIImageView? // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1be360  @objc HeadlineViewAnimatedViewProperties.thumbnailImageViewFrame <stripped>
-	0x1be400  @objc HeadlineViewAnimatedViewProperties.setThumbnailImageViewFrame: <stripped>
-	0x1be520  @objc HeadlineViewAnimatedViewProperties.thumbnailViewForAnimator <stripped>
-	0x1be5b0  @objc HeadlineViewAnimatedViewProperties.setThumbnailViewForAnimator: <stripped>
-	0x1be6f0  @objc HeadlineViewAnimatedViewProperties.init <stripped>
-	0x1be7a0  @objc HeadlineViewAnimatedViewProperties..cxx_destruct <stripped>
+	0x1bee10  @objc HeadlineViewAnimatedViewProperties.thumbnailImageViewFrame <stripped>
+	0x1beeb0  @objc HeadlineViewAnimatedViewProperties.setThumbnailImageViewFrame: <stripped>
+	0x1befd0  @objc HeadlineViewAnimatedViewProperties.thumbnailViewForAnimator <stripped>
+	0x1bf060  @objc HeadlineViewAnimatedViewProperties.setThumbnailViewForAnimator: <stripped>
+	0x1bf1a0  @objc HeadlineViewAnimatedViewProperties.init <stripped>
+	0x1bf250  @objc HeadlineViewAnimatedViewProperties..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1be3b0  func HeadlineViewAnimatedViewProperties.thumbnailImageViewFrame.getter // getter 
-	0x1be460  func HeadlineViewAnimatedViewProperties.thumbnailImageViewFrame.setter // setter 
-	0x1be4d0  func HeadlineViewAnimatedViewProperties.thumbnailImageViewFrame.modify // modifyCoroutine 
-	0x1be570  func HeadlineViewAnimatedViewProperties.thumbnailViewForAnimator.getter // getter 
-	0x1be610  func HeadlineViewAnimatedViewProperties.thumbnailViewForAnimator.setter // setter 
-	0x1be660  func HeadlineViewAnimatedViewProperties.thumbnailViewForAnimator.modify // modifyCoroutine 
+	0x1bee60  func HeadlineViewAnimatedViewProperties.thumbnailImageViewFrame.getter // getter 
+	0x1bef10  func HeadlineViewAnimatedViewProperties.thumbnailImageViewFrame.setter // setter 
+	0x1bef80  func HeadlineViewAnimatedViewProperties.thumbnailImageViewFrame.modify // modifyCoroutine 
+	0x1bf020  func HeadlineViewAnimatedViewProperties.thumbnailViewForAnimator.getter // getter 
+	0x1bf0c0  func HeadlineViewAnimatedViewProperties.thumbnailViewForAnimator.setter // setter 
+	0x1bf110  func HeadlineViewAnimatedViewProperties.thumbnailViewForAnimator.modify // modifyCoroutine 
  }
 
  enum NewsUI2.HeadlineViewRequestType {
@@ -5771,13 +5760,13 @@
 	var role : SXComponentRole // +0x18 (0x4)
 
 	// ObjC -> Swift bridged methods
-	0x1bef70  @objc ArticleRecirculationComponentSizerFactory.init <stripped>
-	0x1bf000  @objc ArticleRecirculationComponentSizerFactory.sizerForComponent:componentLayout:layoutOptions:DOMObjectProvider: <stripped>
-	0x1bf120  @objc ArticleRecirculationComponentSizerFactory.type <stripped>
-	0x1bf170  @objc ArticleRecirculationComponentSizerFactory.setType: <stripped>
-	0x1bf1b0  @objc ArticleRecirculationComponentSizerFactory.role <stripped>
-	0x1bf1c0  @objc ArticleRecirculationComponentSizerFactory.setRole: <stripped>
-	0x1bf220  @objc ArticleRecirculationComponentSizerFactory..cxx_destruct <stripped>
+	0x1bfa20  @objc ArticleRecirculationComponentSizerFactory.init <stripped>
+	0x1bfab0  @objc ArticleRecirculationComponentSizerFactory.sizerForComponent:componentLayout:layoutOptions:DOMObjectProvider: <stripped>
+	0x1bfbd0  @objc ArticleRecirculationComponentSizerFactory.type <stripped>
+	0x1bfc20  @objc ArticleRecirculationComponentSizerFactory.setType: <stripped>
+	0x1bfc60  @objc ArticleRecirculationComponentSizerFactory.role <stripped>
+	0x1bfc70  @objc ArticleRecirculationComponentSizerFactory.setRole: <stripped>
+	0x1bfcd0  @objc ArticleRecirculationComponentSizerFactory..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -5807,7 +5796,6 @@
 	let resolver : ResolverType // +0x18 (0x28)
 	let tracker : Tracker // +0x40 (0x8)
 	let navigator : StackNavigator<NewsActivity2> // +0x48 (0x8)
-	let moreActionsSheetProvider : MoreActionsSheetActivityViewControllerProviderType // +0x50 (0x28)
 
 	// Swift methods
  }
@@ -5935,11 +5923,11 @@
 	let sauceView : UIImageView // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1d0880  @objc MastheadView.initWithFrame: <stripped>
-	0x1d08b0  @objc MastheadView.initWithCoder: <stripped>
-	0x1d0970  @objc MastheadView.willMoveToWindow: <stripped>
-	0x1d09c0  @objc MastheadView.layoutSubviews <stripped>
-	0x1d0a90  @objc MastheadView..cxx_destruct <stripped>
+	0x1d0860  @objc MastheadView.initWithFrame: <stripped>
+	0x1d0890  @objc MastheadView.initWithCoder: <stripped>
+	0x1d0950  @objc MastheadView.willMoveToWindow: <stripped>
+	0x1d09a0  @objc MastheadView.layoutSubviews <stripped>
+	0x1d0a70  @objc MastheadView..cxx_destruct <stripped>
  }
 
  struct NewsUI2.SpecialEventsEmbedViewLayoutAttributes {
@@ -6051,11 +6039,11 @@
 	let title : String // +0x20 (0x10)
 	let subtitle : String? // +0x30 (0x10)
 	let subtitleColor : UIColor? // +0x40 (0x8)
-	let actionURL : URL? // +0x1225c (0x0)
-	let attributes : EditorialAttributes // +0x6b6450 (0x8)
+	let actionURL : URL? // +0x6569665f (0x0)
+	let attributes : EditorialAttributes // +0x45545f5f (0x8)
 	let thumbnailImageSource : EditorialThumbnailImageSource // +0x0 (0x19)
-	let tagModel : FollowingTagModel? // +0x0 (0x8)
-	let headline : FCHeadlineProviding? // +0x0 (0x8)
+	let tagModel : FollowingTagModel? // +0x6cd63c (0x8)
+	let headline : FCHeadlineProviding? // +0x13f38 (0x8)
 
 	// Swift methods
  }
@@ -6120,6 +6108,7 @@
 	let title : String
 	let excerpt : String?
 	let accessoryText : String?
+	let sponsoredBy : String?
 	let publisherName : String
 	let attributes : HeadlineViewModelAttributes
 	let shareable : HeadlineViewModelShareable
@@ -6175,14 +6164,14 @@
 
  class NewsUI2.SubscriptionsFoundAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1f3300  @objc SubscriptionsFoundAssembly.init <stripped>
+	0x1f3440  @objc SubscriptionsFoundAssembly.init <stripped>
 
 	// Swift methods
  }
 
  class NewsUI2.CommandAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1f4800  @objc CommandAssembly.init <stripped>
+	0x1f4bc0  @objc CommandAssembly.init <stripped>
  }
 
  class NewsUI2.AnalyticTracker {
@@ -6197,27 +6186,27 @@
 	let producer : AnalyticEventProducer // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1f5460  @objc AnalyticEvent.producer <stripped>
-	0x1f5550  @objc AnalyticEvent.stringForKey: <stripped>
-	0x1f56a0  @objc AnalyticEvent.boolForKey: <stripped>
-	0x1f57c0  @objc AnalyticEvent.integerForKey: <stripped>
-	0x1f5910  @objc AnalyticEvent.tagForKey: <stripped>
-	0x1f5a70  @objc AnalyticEvent.dateForKey: <stripped>
-	0x1f5c20  @objc AnalyticEvent.rectForKey: <stripped>
-	0x1f5db0  @objc AnalyticEvent.headlineForKey: <stripped>
-	0x1f5f10  @objc AnalyticEvent.identifiersForKey: <stripped>
-	0x1f6000  @objc AnalyticEvent.init <stripped>
-	0x1f6080  @objc AnalyticEvent..cxx_destruct <stripped>
+	0x1f5820  @objc AnalyticEvent.producer <stripped>
+	0x1f5910  @objc AnalyticEvent.stringForKey: <stripped>
+	0x1f5a60  @objc AnalyticEvent.boolForKey: <stripped>
+	0x1f5b80  @objc AnalyticEvent.integerForKey: <stripped>
+	0x1f5cd0  @objc AnalyticEvent.tagForKey: <stripped>
+	0x1f5e30  @objc AnalyticEvent.dateForKey: <stripped>
+	0x1f5fe0  @objc AnalyticEvent.rectForKey: <stripped>
+	0x1f6170  @objc AnalyticEvent.headlineForKey: <stripped>
+	0x1f62d0  @objc AnalyticEvent.identifiersForKey: <stripped>
+	0x1f63c0  @objc AnalyticEvent.init <stripped>
+	0x1f6440  @objc AnalyticEvent..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1f54a0  func AnalyticEvent.string(for:) // method 
-	0x1f5600  func AnalyticEvent.bool(for:) // method 
-	0x1f5720  func AnalyticEvent.int(for:) // method 
-	0x1f5840  func AnalyticEvent.tag(for:) // method 
-	0x1f5930  func AnalyticEvent.date(for:) // method 
-	0x1f5b60  func AnalyticEvent.rect(for:) // method 
-	0x1f5ce0  func AnalyticEvent.headline(for:) // method 
-	0x1f5e50  func AnalyticEvent.identifiers(for:) // method 
+	0x1f5860  func AnalyticEvent.string(for:) // method 
+	0x1f59c0  func AnalyticEvent.bool(for:) // method 
+	0x1f5ae0  func AnalyticEvent.int(for:) // method 
+	0x1f5c00  func AnalyticEvent.tag(for:) // method 
+	0x1f5cf0  func AnalyticEvent.date(for:) // method 
+	0x1f5f20  func AnalyticEvent.rect(for:) // method 
+	0x1f60a0  func AnalyticEvent.headline(for:) // method 
+	0x1f6210  func AnalyticEvent.identifiers(for:) // method 
  }
 
  struct NewsUI2.EmptyMetadata { }
@@ -6345,9 +6334,9 @@
 	// Properties
 	let minimumHeight : CGFloat // +0x10 (0x8)
 	let accessoryOptions : AccessoryOptions // +0x18 (0x8)
-	let layoutOptions : BlueprintLayoutOptions // +0x77735f5f (0x0)
-	let width : CGFloat // +0x6569665f (0x8)
-	let allowSuggestedDescription : Bool // +0x45545f5f (0x1)
+	let layoutOptions : BlueprintLayoutOptions // +0x6cd63c (0x0)
+	let width : CGFloat // +0x0 (0x8)
+	let allowSuggestedDescription : Bool // +0x0 (0x1)
 
 	// Swift methods
  }
@@ -6418,8 +6407,8 @@
 	let appleAccount : FCAppleAccount // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x203630  @objc EmailSignupDetectionManager.init <stripped>
-	0x2036b0  @objc EmailSignupDetectionManager..cxx_destruct <stripped>
+	0x203850  @objc EmailSignupDetectionManager.init <stripped>
+	0x2038d0  @objc EmailSignupDetectionManager..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -6440,7 +6429,7 @@
 
  class NewsUI2.FactoryAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x207480  @objc FactoryAssembly.init <stripped>
+	0x2076d0  @objc FactoryAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -6468,7 +6457,7 @@
  class NewsUI2.SeeMoreButton {
  class NewsUI2.ArticleRecirculationAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x20ef80  @objc ArticleRecirculationAssembly.init <stripped>
+	0x20f210  @objc ArticleRecirculationAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -6492,8 +6481,8 @@
 	let headlineService : HeadlineServiceType
 
 	// ObjC -> Swift bridged methods
-	0x210310  @objc SavedService.init <stripped>
-	0x210390  @objc SavedService..cxx_destruct <stripped>
+	0x2105a0  @objc SavedService.init <stripped>
+	0x210620  @objc SavedService..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -6555,19 +6544,19 @@
 	var pluggableDelegate : weak TUPluggableDelegate? // +0xa8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x213a30  @objc TopVideosViewController.routableDelegate <stripped>
-	0x213a50  @objc TopVideosViewController.setRoutableDelegate: <stripped>
-	0x213a70  @objc TopVideosViewController.groupRankProvider <stripped>
-	0x213a90  @objc TopVideosViewController.setGroupRankProvider: <stripped>
-	0x213ab0  @objc TopVideosViewController.feedViewExposureID <stripped>
-	0x213b10  @objc TopVideosViewController.setFeedViewExposureID: <stripped>
-	0x213b50  @objc TopVideosViewController.isBeingUsedAsPlugin <stripped>
-	0x213b70  @objc TopVideosViewController.setIsBeingUsedAsPlugin: <stripped>
-	0x213bb0  @objc TopVideosViewController.pluggableDelegate <stripped>
-	0x213bd0  @objc TopVideosViewController.setPluggableDelegate: <stripped>
-	0x213db0  @objc TopVideosViewController.initWithCoder: <stripped>
-	0x213dd0  @objc TopVideosViewController.initWithNibName:bundle: <stripped>
-	0x213e50  @objc TopVideosViewController..cxx_destruct <stripped>
+	0x213cc0  @objc TopVideosViewController.routableDelegate <stripped>
+	0x213ce0  @objc TopVideosViewController.setRoutableDelegate: <stripped>
+	0x213d00  @objc TopVideosViewController.groupRankProvider <stripped>
+	0x213d20  @objc TopVideosViewController.setGroupRankProvider: <stripped>
+	0x213d40  @objc TopVideosViewController.feedViewExposureID <stripped>
+	0x213da0  @objc TopVideosViewController.setFeedViewExposureID: <stripped>
+	0x213de0  @objc TopVideosViewController.isBeingUsedAsPlugin <stripped>
+	0x213e00  @objc TopVideosViewController.setIsBeingUsedAsPlugin: <stripped>
+	0x213e40  @objc TopVideosViewController.pluggableDelegate <stripped>
+	0x213e60  @objc TopVideosViewController.setPluggableDelegate: <stripped>
+	0x214040  @objc TopVideosViewController.initWithCoder: <stripped>
+	0x214060  @objc TopVideosViewController.initWithNibName:bundle: <stripped>
+	0x2140e0  @objc TopVideosViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -6605,7 +6594,7 @@
 
  class NewsUI2.LegacyArticleViewerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x216ef0  @objc LegacyArticleViewerAssembly.init <stripped>
+	0x217180  @objc LegacyArticleViewerAssembly.init <stripped>
  }
 
  class NewsUI2.ContentPrefetchManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ContentPrefetchManagerType {
@@ -6650,9 +6639,9 @@
 	let layoutOptionsProvider : PluginLayoutOptionsProvider // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x220b70  @objc MoreVideosPluginFactory.createPluginWithIdentifier:usingConfig: <stripped>
-	0x220c60  @objc MoreVideosPluginFactory.init <stripped>
-	0x220ce0  @objc MoreVideosPluginFactory..cxx_destruct <stripped>
+	0x220e00  @objc MoreVideosPluginFactory.createPluginWithIdentifier:usingConfig: <stripped>
+	0x220ef0  @objc MoreVideosPluginFactory.init <stripped>
+	0x220f70  @objc MoreVideosPluginFactory..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -6671,8 +6660,8 @@
 	let resolver : ResolverType // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x221cf0  @objc SubscriptionsFoundModule.init <stripped>
-	0x221da0  @objc SubscriptionsFoundModule..cxx_destruct <stripped>
+	0x222090  @objc SubscriptionsFoundModule.init <stripped>
+	0x222140  @objc SubscriptionsFoundModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -6699,19 +6688,19 @@
 	let resolver : ResolverType // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x222500  @objc MoreVideosModule.createPluginFactoryForParentView: <stripped>
-	0x2225b0  @objc MoreVideosModule.init <stripped>
-	0x222660  @objc MoreVideosModule..cxx_destruct <stripped>
+	0x2228a0  @objc MoreVideosModule.createPluginFactoryForParentView: <stripped>
+	0x222950  @objc MoreVideosModule.init <stripped>
+	0x222a00  @objc MoreVideosModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
  class NewsUI2.MagazineFeedAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x228d60  @objc MagazineFeedAssembly.init <stripped>
+	0x229600  @objc MagazineFeedAssembly.init <stripped>
 
 	// Swift methods
-	0x2228f0  func <stripped> // method 
+	0x222c90  func <stripped> // method 
  }
 
  class NewsUI2.NoContentView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -6723,10 +6712,10 @@
 	let subtitleFontMetrics : UIFontMetrics // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x22a390  @objc NoContentView.initWithCoder: <stripped>
-	0x22a8a0  @objc NoContentView.layoutSubviews <stripped>
-	0x22a8d0  @objc NoContentView.initWithFrame: <stripped>
-	0x22a950  @objc NoContentView..cxx_destruct <stripped>
+	0x22ac30  @objc NoContentView.initWithCoder: <stripped>
+	0x22b140  @objc NoContentView.layoutSubviews <stripped>
+	0x22b170  @objc NoContentView.initWithFrame: <stripped>
+	0x22b1f0  @objc NoContentView..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -6775,21 +6764,21 @@
 	let blueprintLayoutOptionsProvider : BlueprintLayoutOptionsProviderType // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x22e260  @objc PluginLayoutOptionsProvider.init <stripped>
-	0x22e310  @objc PluginLayoutOptionsProvider..cxx_destruct <stripped>
+	0x22ee40  @objc PluginLayoutOptionsProvider.init <stripped>
+	0x22eef0  @objc PluginLayoutOptionsProvider..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
  class NewsUI2.FeedNavImageProcessor : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x22e890  @objc FeedNavImageProcessor.process: <stripped>
-	0x22e930  @objc FeedNavImageProcessor.init <stripped>
+	0x22f470  @objc FeedNavImageProcessor.process: <stripped>
+	0x22f510  @objc FeedNavImageProcessor.init <stripped>
  }
 
  class NewsUI2.MagazineFeedPaywallAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x230280  @objc MagazineFeedPaywallAssembly.init <stripped>
+	0x230e80  @objc MagazineFeedPaywallAssembly.init <stripped>
  }
 
  class NewsUI2.StubMagazineFeedGroupEmitterFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -6803,11 +6792,11 @@
 	var headerPadding : UIEdgeInsets // +0x10 (0x20)
 
 	// ObjC -> Swift bridged methods
-	0x230e70  @objc FollowingTableHeaderView.initWithFrame: <stripped>
-	0x230ea0  @objc FollowingTableHeaderView.initWithCoder: <stripped>
-	0x2311e0  @objc FollowingTableHeaderView.layoutSubviews <stripped>
-	0x231210  @objc FollowingTableHeaderView.sizeThatFits: <stripped>
-	0x2315c0  @objc FollowingTableHeaderView..cxx_destruct <stripped>
+	0x231a70  @objc FollowingTableHeaderView.initWithFrame: <stripped>
+	0x231aa0  @objc FollowingTableHeaderView.initWithCoder: <stripped>
+	0x231de0  @objc FollowingTableHeaderView.layoutSubviews <stripped>
+	0x231e10  @objc FollowingTableHeaderView.sizeThatFits: <stripped>
+	0x2321c0  @objc FollowingTableHeaderView..cxx_destruct <stripped>
  }
 
  class NewsUI2.DownloadIssueCommandHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -6815,6 +6804,9 @@
 	// Properties
 	let offlineIssueManager : OfflineIssueManagerType // +0x10 (0x10)
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x20 (0x8)
+	let offlineAlertControllerFactory : OfflineAlertControllerFactoryType // +0x28 (0x28)
+	let tracker : Tracker // +0x50 (0x8)
+	let channelDataFactory : AnalyticsChannelDataFactoryType // +0x58 (0x28)
 
 	// Swift methods
  }
@@ -6886,9 +6878,9 @@
 	let assemblies : [NFAssembly] // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x23dcd0  @objc Assembly.assemblies <stripped>
-	0x23de20  @objc Assembly.init <stripped>
-	0x23ded0  @objc Assembly..cxx_destruct <stripped>
+	0x23f6f0  @objc Assembly.assemblies <stripped>
+	0x23f840  @objc Assembly.init <stripped>
+	0x23f8f0  @objc Assembly..cxx_destruct <stripped>
  }
 
  class NewsUI2.MagazineFeedJournalDetailViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -6898,17 +6890,17 @@
 	let journalGroup : MagazineFeedJournalGroup // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x23def0  @objc MagazineFeedJournalDetailViewController.initWithCoder: <stripped>
-	0x23dfb0  @objc MagazineFeedJournalDetailViewController.initWithNibName:bundle: <stripped>
-	0x23e020  @objc MagazineFeedJournalDetailViewController..cxx_destruct <stripped>
+	0x23f910  @objc MagazineFeedJournalDetailViewController.initWithCoder: <stripped>
+	0x23f9d0  @objc MagazineFeedJournalDetailViewController.initWithNibName:bundle: <stripped>
+	0x23fa40  @objc MagazineFeedJournalDetailViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
  class NewsUI2.MagazineFeedJournalDetailTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x23eb80  @objc MagazineFeedJournalDetailTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x23ec30  @objc MagazineFeedJournalDetailTableViewCell.initWithCoder: <stripped>
+	0x2405a0  @objc MagazineFeedJournalDetailTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x240650  @objc MagazineFeedJournalDetailTableViewCell.initWithCoder: <stripped>
  }
 
  struct NewsUI2.Modules { }
@@ -6924,13 +6916,13 @@
 	var cellStyle : ArticleRecirculationCellStyle? // +0x18 (0x9)
 
 	// ObjC -> Swift bridged methods
-	0x23f4d0  @objc ArticleRecirculationCellStyleProvider.onNextCellStyle: <stripped>
-	0x23f6a0  @objc ArticleRecirculationCellStyleProvider.init <stripped>
-	0x23f760  @objc ArticleRecirculationCellStyleProvider..cxx_destruct <stripped>
+	0x240ef0  @objc ArticleRecirculationCellStyleProvider.onNextCellStyle: <stripped>
+	0x2410c0  @objc ArticleRecirculationCellStyleProvider.init <stripped>
+	0x241180  @objc ArticleRecirculationCellStyleProvider..cxx_destruct <stripped>
 
 	// Swift methods
-	0x23f470  func ArticleRecirculationCellStyleProvider.onNextCellStyle(block:) // method 
-	0x23f580  func <stripped> // setter 
+	0x240e90  func ArticleRecirculationCellStyleProvider.onNextCellStyle(block:) // method 
+	0x240fa0  func <stripped> // setter 
  }
 
  enum NewsUI2.MoreVideosLayoutSectionDescriptor {
@@ -7093,7 +7085,7 @@
 	let margins : BlueprintLayoutMargins // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x24e8f0  @objc MastheadViewProvider.view <stripped>
+	0x250400  @objc MastheadViewProvider.view <stripped>
 
 	// Swift methods
  }
@@ -7109,12 +7101,12 @@
 	let channelID : String // +0x48 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x24f180  @objc HeadlineGroupConfig.initWithHeadlines:groupID:groupTitle:groupSubtitle:backgroundColorGradient:channelID: <stripped>
-	0x24f2d0  @objc HeadlineGroupConfig.init <stripped>
-	0x24f350  @objc HeadlineGroupConfig..cxx_destruct <stripped>
+	0x250c90  @objc HeadlineGroupConfig.initWithHeadlines:groupID:groupTitle:groupSubtitle:backgroundColorGradient:channelID: <stripped>
+	0x250de0  @objc HeadlineGroupConfig.init <stripped>
+	0x250e60  @objc HeadlineGroupConfig..cxx_destruct <stripped>
 
 	// Swift methods
-	0x24ef60  class func HeadlineGroupConfig.__allocating_init(headlines:groupID:groupTitle:groupSubtitle:backgroundColorGradient:channelID:) // init 
+	0x250a70  class func HeadlineGroupConfig.__allocating_init(headlines:groupID:groupTitle:groupSubtitle:backgroundColorGradient:channelID:) // init 
  }
 
  enum NewsUI2.FooterViewType {
@@ -7182,7 +7174,7 @@
 	var localCompletion : (_:)? // +0x0 (0x10)
 
 	// Swift methods
-	0x250520  func <stripped> // method 
+	0x252030  func <stripped> // method 
  }
 
  enum NewsUI2.HistoryDeleteHeadlineModifierError {
@@ -7209,63 +7201,63 @@
 	var subtitle : String? // +0x28 (0x10)
 	var subtitleColor : String? // +0x38 (0x10)
 	var attributes : [Int] // +0x48 (0x8)
-	var actionURL : URL? // +0x7079745f (0x0)
-	var thumbnailImage : UIImage? // +0x45545f5f (0x8)
+	var actionURL : URL? // +0x0 (0x0)
+	var thumbnailImage : UIImage? // +0x0 (0x8)
 	var backingTag : FCTagProviding? // +0x0 (0x8)
-	var headline : FCHeadlineProviding? // +0x6e10f4 (0x8)
+	var headline : FCHeadlineProviding? // +0x77735f5f (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x253730  @objc EditorialItem.identifier <stripped>
-	0x253770  @objc EditorialItem.setIdentifier: <stripped>
-	0x2537f0  @objc EditorialItem.title <stripped>
-	0x2538e0  @objc EditorialItem.setTitle: <stripped>
-	0x253a10  @objc EditorialItem.subtitle <stripped>
-	0x253a50  @objc EditorialItem.setSubtitle: <stripped>
-	0x253ad0  @objc EditorialItem.subtitleColor <stripped>
-	0x253bd0  @objc EditorialItem.setSubtitleColor: <stripped>
-	0x253d20  @objc EditorialItem.attributes <stripped>
-	0x253dc0  @objc EditorialItem.setAttributes: <stripped>
-	0x253ec0  @objc EditorialItem.actionURL <stripped>
-	0x253fa0  @objc EditorialItem.setActionURL: <stripped>
-	0x2541c0  @objc EditorialItem.thumbnailImage <stripped>
-	0x254250  @objc EditorialItem.setThumbnailImage: <stripped>
-	0x254340  @objc EditorialItem.backingTag <stripped>
-	0x254380  @objc EditorialItem.setBackingTag: <stripped>
-	0x254400  @objc EditorialItem.headline <stripped>
-	0x2544c0  @objc EditorialItem.setHeadline: <stripped>
-	0x254a70  @objc EditorialItem.initWithIdentifier:title:subtitle:subtitleColor:attributes:actionURL:thumbnailImage:backingTag:headline: <stripped>
-	0x254c80  @objc EditorialItem.init <stripped>
-	0x254cf0  @objc EditorialItem..cxx_destruct <stripped>
+	0x255240  @objc EditorialItem.identifier <stripped>
+	0x255280  @objc EditorialItem.setIdentifier: <stripped>
+	0x255300  @objc EditorialItem.title <stripped>
+	0x2553f0  @objc EditorialItem.setTitle: <stripped>
+	0x255520  @objc EditorialItem.subtitle <stripped>
+	0x255560  @objc EditorialItem.setSubtitle: <stripped>
+	0x2555e0  @objc EditorialItem.subtitleColor <stripped>
+	0x2556e0  @objc EditorialItem.setSubtitleColor: <stripped>
+	0x255830  @objc EditorialItem.attributes <stripped>
+	0x2558d0  @objc EditorialItem.setAttributes: <stripped>
+	0x2559d0  @objc EditorialItem.actionURL <stripped>
+	0x255ab0  @objc EditorialItem.setActionURL: <stripped>
+	0x255cd0  @objc EditorialItem.thumbnailImage <stripped>
+	0x255d60  @objc EditorialItem.setThumbnailImage: <stripped>
+	0x255e50  @objc EditorialItem.backingTag <stripped>
+	0x255e90  @objc EditorialItem.setBackingTag: <stripped>
+	0x255f10  @objc EditorialItem.headline <stripped>
+	0x255fd0  @objc EditorialItem.setHeadline: <stripped>
+	0x256580  @objc EditorialItem.initWithIdentifier:title:subtitle:subtitleColor:attributes:actionURL:thumbnailImage:backingTag:headline: <stripped>
+	0x256790  @objc EditorialItem.init <stripped>
+	0x256800  @objc EditorialItem..cxx_destruct <stripped>
 
 	// Swift methods
-	0x253750  func EditorialItem.identifier.getter // getter 
-	0x253790  func EditorialItem.identifier.setter // setter 
-	0x2537b0  func EditorialItem.identifier.modify // modifyCoroutine 
-	0x253870  func EditorialItem.title.getter // getter 
-	0x253960  func EditorialItem.title.setter // setter 
-	0x2539d0  func EditorialItem.title.modify // modifyCoroutine 
-	0x253a30  func EditorialItem.subtitle.getter // getter 
-	0x253a70  func EditorialItem.subtitle.setter // setter 
-	0x253a90  func EditorialItem.subtitle.modify // modifyCoroutine 
-	0x253b60  func EditorialItem.subtitleColor.getter // getter 
-	0x253c70  func EditorialItem.subtitleColor.setter // setter 
-	0x253ce0  func EditorialItem.subtitleColor.modify // modifyCoroutine 
-	0x253d80  func EditorialItem.attributes.getter // getter 
-	0x253e20  func EditorialItem.attributes.setter // setter 
-	0x253e70  func EditorialItem.attributes.modify // modifyCoroutine 
-	0x253f60  func EditorialItem.actionURL.getter // getter 
-	0x254070  func EditorialItem.actionURL.setter // setter 
-	0x254180  func EditorialItem.actionURL.modify // modifyCoroutine 
-	0x254210  func EditorialItem.thumbnailImage.getter // getter 
-	0x2542b0  func EditorialItem.thumbnailImage.setter // setter 
-	0x254300  func EditorialItem.thumbnailImage.modify // modifyCoroutine 
-	0x254360  func EditorialItem.backingTag.getter // getter 
-	0x2543a0  func EditorialItem.backingTag.setter // setter 
-	0x2543c0  func EditorialItem.backingTag.modify // modifyCoroutine 
-	0x254460  func EditorialItem.headline.getter // getter 
-	0x254540  func EditorialItem.headline.setter // setter 
-	0x2545a0  func EditorialItem.headline.modify // modifyCoroutine 
-	0x2545e0  class func EditorialItem.__allocating_init(identifier:title:subtitle:subtitleColor:attributes:actionURL:thumbnailImage:backingTag:headline:) // init 
+	0x255260  func EditorialItem.identifier.getter // getter 
+	0x2552a0  func EditorialItem.identifier.setter // setter 
+	0x2552c0  func EditorialItem.identifier.modify // modifyCoroutine 
+	0x255380  func EditorialItem.title.getter // getter 
+	0x255470  func EditorialItem.title.setter // setter 
+	0x2554e0  func EditorialItem.title.modify // modifyCoroutine 
+	0x255540  func EditorialItem.subtitle.getter // getter 
+	0x255580  func EditorialItem.subtitle.setter // setter 
+	0x2555a0  func EditorialItem.subtitle.modify // modifyCoroutine 
+	0x255670  func EditorialItem.subtitleColor.getter // getter 
+	0x255780  func EditorialItem.subtitleColor.setter // setter 
+	0x2557f0  func EditorialItem.subtitleColor.modify // modifyCoroutine 
+	0x255890  func EditorialItem.attributes.getter // getter 
+	0x255930  func EditorialItem.attributes.setter // setter 
+	0x255980  func EditorialItem.attributes.modify // modifyCoroutine 
+	0x255a70  func EditorialItem.actionURL.getter // getter 
+	0x255b80  func EditorialItem.actionURL.setter // setter 
+	0x255c90  func EditorialItem.actionURL.modify // modifyCoroutine 
+	0x255d20  func EditorialItem.thumbnailImage.getter // getter 
+	0x255dc0  func EditorialItem.thumbnailImage.setter // setter 
+	0x255e10  func EditorialItem.thumbnailImage.modify // modifyCoroutine 
+	0x255e70  func EditorialItem.backingTag.getter // getter 
+	0x255eb0  func EditorialItem.backingTag.setter // setter 
+	0x255ed0  func EditorialItem.backingTag.modify // modifyCoroutine 
+	0x255f70  func EditorialItem.headline.getter // getter 
+	0x256050  func EditorialItem.headline.setter // setter 
+	0x2560b0  func EditorialItem.headline.modify // modifyCoroutine 
+	0x2560f0  class func EditorialItem.__allocating_init(identifier:title:subtitle:subtitleColor:attributes:actionURL:thumbnailImage:backingTag:headline:) // init 
  }
 
  enum NewsUI2.SpecialEventsLayoutSectionDescriptor {
@@ -7301,9 +7293,9 @@
 	var delegate : ReportConcernViewPresenterDelegate // +0x8 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x2599c0  @objc ReportConcernViewPresenter.presentReportConcernViewForHeadline: <stripped>
-	0x259a60  @objc ReportConcernViewPresenter.init <stripped>
-	0x259ae0  @objc ReportConcernViewPresenter..cxx_destruct <stripped>
+	0x25b4d0  @objc ReportConcernViewPresenter.presentReportConcernViewForHeadline: <stripped>
+	0x25b570  @objc ReportConcernViewPresenter.init <stripped>
+	0x25b5f0  @objc ReportConcernViewPresenter..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -7322,7 +7314,7 @@
 
  class NewsUI2.DatabaseAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x25ac50  @objc DatabaseAssembly.init <stripped>
+	0x25c760  @objc DatabaseAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -7338,18 +7330,18 @@
 	let onboardingVersion : FCOnboardingVersionNumber // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x25ae60  @objc NewsReferralItemWidgetVideoPlaylist.widgetArticleList <stripped>
-	0x25aea0  @objc NewsReferralItemWidgetVideoPlaylist.preferredMuteState <stripped>
-	0x25aee0  @objc NewsReferralItemWidgetVideoPlaylist.videoGroupsConfig <stripped>
-	0x25af20  @objc NewsReferralItemWidgetVideoPlaylist.discoverMoreVideosInfo <stripped>
-	0x25af60  @objc NewsReferralItemWidgetVideoPlaylist.prerollLoadingTimeout <stripped>
-	0x25afa0  @objc NewsReferralItemWidgetVideoPlaylist.onboardingVersion <stripped>
-	0x25b180  @objc NewsReferralItemWidgetVideoPlaylist.initWithWidgetArticleList:preferredMuteState:videoGroupsConfig:discoverMoreVideosInfo:prerollLoadingTimeout:onboardingVersion: <stripped>
-	0x25b250  @objc NewsReferralItemWidgetVideoPlaylist.init <stripped>
-	0x25b2d0  @objc NewsReferralItemWidgetVideoPlaylist..cxx_destruct <stripped>
+	0x25c970  @objc NewsReferralItemWidgetVideoPlaylist.widgetArticleList <stripped>
+	0x25c9b0  @objc NewsReferralItemWidgetVideoPlaylist.preferredMuteState <stripped>
+	0x25c9f0  @objc NewsReferralItemWidgetVideoPlaylist.videoGroupsConfig <stripped>
+	0x25ca30  @objc NewsReferralItemWidgetVideoPlaylist.discoverMoreVideosInfo <stripped>
+	0x25ca70  @objc NewsReferralItemWidgetVideoPlaylist.prerollLoadingTimeout <stripped>
+	0x25cab0  @objc NewsReferralItemWidgetVideoPlaylist.onboardingVersion <stripped>
+	0x25cc90  @objc NewsReferralItemWidgetVideoPlaylist.initWithWidgetArticleList:preferredMuteState:videoGroupsConfig:discoverMoreVideosInfo:prerollLoadingTimeout:onboardingVersion: <stripped>
+	0x25cd60  @objc NewsReferralItemWidgetVideoPlaylist.init <stripped>
+	0x25cde0  @objc NewsReferralItemWidgetVideoPlaylist..cxx_destruct <stripped>
 
 	// Swift methods
-	0x25afe0  class func NewsReferralItemWidgetVideoPlaylist.__allocating_init(widgetArticleList:preferredMuteState:videoGroupsConfig:discoverMoreVideosInfo:prerollLoadingTimeout:onboardingVersion:) // init 
+	0x25caf0  class func NewsReferralItemWidgetVideoPlaylist.__allocating_init(widgetArticleList:preferredMuteState:videoGroupsConfig:discoverMoreVideosInfo:prerollLoadingTimeout:onboardingVersion:) // init 
  }
 
  enum NewsUI2.MagazineFeedEmitterOutput {
@@ -7374,10 +7366,10 @@
 	let purchaseController : FCPurchaseController // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x26a800  @objc SubscriptionDetectionManager.purchasesDiscoveredWithNotification: <stripped>
+	0x26c350  @objc SubscriptionDetectionManager.purchasesDiscoveredWithNotification: <stripped>
 
 	// Swift methods
-	0x26a2c0  func <stripped> // method 
+	0x26be10  func <stripped> // method 
  }
 
  class NewsUI2.MagazineCategoryViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineCategoryViewLayoutAttributesFactoryType {
@@ -7474,7 +7466,7 @@
 
  class NewsUI2.MagazineGridAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x274ec0  @objc MagazineGridAssembly.init <stripped>
+	0x276c90  @objc MagazineGridAssembly.init <stripped>
  }
 
  class NewsUI2.WelcomeViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, WelcomeViewStylerType {
@@ -7528,9 +7520,9 @@
 	let titleLabel : UILabel // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2782c0  @objc ArticleRecirculationTitleView.initWithFrame: <stripped>
-	0x2782f0  @objc ArticleRecirculationTitleView.initWithCoder: <stripped>
-	0x278400  @objc ArticleRecirculationTitleView..cxx_destruct <stripped>
+	0x27a090  @objc ArticleRecirculationTitleView.initWithFrame: <stripped>
+	0x27a0c0  @objc ArticleRecirculationTitleView.initWithCoder: <stripped>
+	0x27a1d0  @objc ArticleRecirculationTitleView..cxx_destruct <stripped>
  }
 
  class NewsUI2.MagazineFeedBlueprintLayoutBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -7589,9 +7581,9 @@
 	var axElement : AXElement
 
 	// ObjC -> Swift bridged methods
-	0x284db0  @objc ImageHeadlineView.initWithFrame: <stripped>
-	0x284e80  @objc ImageHeadlineView.initWithCoder: <stripped>
-	0x2853b0  @objc ImageHeadlineView..cxx_destruct <stripped>
+	0x286b80  @objc ImageHeadlineView.initWithFrame: <stripped>
+	0x286c50  @objc ImageHeadlineView.initWithCoder: <stripped>
+	0x287180  @objc ImageHeadlineView..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -7602,20 +7594,20 @@
 	var representedView : ImageHeadlineView
 
 	// ObjC -> Swift bridged methods
-	0x284ee0  @objc AXElement.accessibilityFrame <stripped>
-	0x284f80  @objc AXElement.setAccessibilityFrame: <stripped>
-	0x284f90  @objc AXElement.accessibilityValue <stripped>
-	0x285260  @objc AXElement.setAccessibilityValue: <stripped>
-	0x285270  @objc AXElement.initWithAccessibilityContainer: <stripped>
-	0x2852c0  @objc AXElement.init <stripped>
-	0x285310  @objc AXElement..cxx_destruct <stripped>
+	0x286cb0  @objc AXElement.accessibilityFrame <stripped>
+	0x286d50  @objc AXElement.setAccessibilityFrame: <stripped>
+	0x286d60  @objc AXElement.accessibilityValue <stripped>
+	0x287030  @objc AXElement.setAccessibilityValue: <stripped>
+	0x287040  @objc AXElement.initWithAccessibilityContainer: <stripped>
+	0x287090  @objc AXElement.init <stripped>
+	0x2870e0  @objc AXElement..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
  class NewsUI2.WelcomeAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x2874a0  @objc WelcomeAssembly.init <stripped>
+	0x289270  @objc WelcomeAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -7626,9 +7618,9 @@
 	let resolver : ResolverType // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x2877e0  @objc SavedModule.createViewController <stripped>
-	0x287880  @objc SavedModule.init <stripped>
-	0x287930  @objc SavedModule..cxx_destruct <stripped>
+	0x2895b0  @objc SavedModule.createViewController <stripped>
+	0x289650  @objc SavedModule.init <stripped>
+	0x289700  @objc SavedModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -7675,42 +7667,42 @@
  class NewsUI2.ArticleContext : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let url : URL? // +0x6e10f4 (0x0)
+	let url : URL? // +0x45545f5f (0x0)
 	let sourceApplication : String? // +0x0 (0x10)
-	let previousArticleID : String? // +0x0 (0x10)
-	let previousArticleVersion : String? // +0x0 (0x10)
-	let adPreviewSessionID : String? // +0x77735f5f (0x10)
-	let adPreviewID : String? // +0x7061635f (0x10)
-	let maximumAdRequestsForCurrentAdPreviewID : Int // +0x45545f5f (0x8)
+	let previousArticleID : String? // +0x6e77c0 (0x10)
+	let previousArticleVersion : String? // +0x597c (0x10)
+	let adPreviewSessionID : String? // +0x6e77c0 (0x10)
+	let adPreviewID : String? // +0x0 (0x10)
+	let maximumAdRequestsForCurrentAdPreviewID : Int // +0x0 (0x8)
 	let userActionDate : Date? // +0x0 (0x0)
-	let presentationReason : ArticleContextPresentationReason // +0x6e272c (0x8)
-	let notificationID : String? // +0x5a60 (0x10)
-	let notificationSenderChannelID : String? // +0x6e272c (0x10)
+	let presentationReason : ArticleContextPresentationReason // +0x77735f5f (0x8)
+	let notificationID : String? // +0x6f72705f (0x10)
+	let notificationSenderChannelID : String? // +0x45545f5f (0x10)
 	var referral : AnalyticsReferral? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x28e730  @objc ArticleContext.url <stripped>
-	0x28e780  @objc ArticleContext.sourceApplication <stripped>
-	0x28e7c0  @objc ArticleContext.previousArticleID <stripped>
-	0x28e800  @objc ArticleContext.previousArticleVersion <stripped>
-	0x28e840  @objc ArticleContext.adPreviewSessionID <stripped>
-	0x28e880  @objc ArticleContext.adPreviewID <stripped>
-	0x28e8c0  @objc ArticleContext.maximumAdRequestsForCurrentAdPreviewID <stripped>
-	0x28e900  @objc ArticleContext.userActionDate <stripped>
-	0x28e9f0  @objc ArticleContext.presentationReason <stripped>
-	0x28ea30  @objc ArticleContext.notificationID <stripped>
-	0x28ea70  @objc ArticleContext.notificationSenderChannelID <stripped>
-	0x28eb40  @objc ArticleContext.referral <stripped>
-	0x28ebd0  @objc ArticleContext.setReferral: <stripped>
-	0x28f010  @objc ArticleContext.initWithUrl:sourceApplication:previousArticleID:previousArticleVersion:adPreviewSessionID:adPreviewID:maximumAdRequestsForCurrentAdPreviewID:userActionDate:presentationReason:notificationID:notificationSenderChannelID:referral: <stripped>
-	0x28f390  @objc ArticleContext.init <stripped>
-	0x28f400  @objc ArticleContext..cxx_destruct <stripped>
+	0x290500  @objc ArticleContext.url <stripped>
+	0x290550  @objc ArticleContext.sourceApplication <stripped>
+	0x290590  @objc ArticleContext.previousArticleID <stripped>
+	0x2905d0  @objc ArticleContext.previousArticleVersion <stripped>
+	0x290610  @objc ArticleContext.adPreviewSessionID <stripped>
+	0x290650  @objc ArticleContext.adPreviewID <stripped>
+	0x290690  @objc ArticleContext.maximumAdRequestsForCurrentAdPreviewID <stripped>
+	0x2906d0  @objc ArticleContext.userActionDate <stripped>
+	0x2907c0  @objc ArticleContext.presentationReason <stripped>
+	0x290800  @objc ArticleContext.notificationID <stripped>
+	0x290840  @objc ArticleContext.notificationSenderChannelID <stripped>
+	0x290910  @objc ArticleContext.referral <stripped>
+	0x2909a0  @objc ArticleContext.setReferral: <stripped>
+	0x290de0  @objc ArticleContext.initWithUrl:sourceApplication:previousArticleID:previousArticleVersion:adPreviewSessionID:adPreviewID:maximumAdRequestsForCurrentAdPreviewID:userActionDate:presentationReason:notificationID:notificationSenderChannelID:referral: <stripped>
+	0x291160  @objc ArticleContext.init <stripped>
+	0x2911d0  @objc ArticleContext..cxx_destruct <stripped>
 
 	// Swift methods
-	0x28eb90  func ArticleContext.referral.getter // getter 
-	0x28ec30  func ArticleContext.referral.setter // setter 
-	0x28ec80  func ArticleContext.referral.modify // modifyCoroutine 
-	0x28ecd0  class func ArticleContext.__allocating_init(url:sourceApplication:previousArticleID:previousArticleVersion:adPreviewSessionID:adPreviewID:maximumAdRequestsForCurrentAdPreviewID:userActionDate:presentationReason:notificationID:notificationSenderChannelID:referral:) // init 
+	0x290960  func ArticleContext.referral.getter // getter 
+	0x290a00  func ArticleContext.referral.setter // setter 
+	0x290a50  func ArticleContext.referral.modify // modifyCoroutine 
+	0x290aa0  class func ArticleContext.__allocating_init(url:sourceApplication:previousArticleID:previousArticleVersion:adPreviewSessionID:adPreviewID:maximumAdRequestsForCurrentAdPreviewID:userActionDate:presentationReason:notificationID:notificationSenderChannelID:referral:) // init 
  }
 
  class NewsUI2.StubFeaturedIssueArticleMagazineFeedGroupEmitter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -7728,16 +7720,16 @@
 	var isEnabled : Bool // +0x18 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x290580  @objc ShareButtonWindowToolbarItemHandler.isEnabled <stripped>
-	0x2905f0  @objc ShareButtonWindowToolbarItemHandler.setIsEnabled: <stripped>
-	0x2908c0  @objc ShareButtonWindowToolbarItemHandler.initWithShareAction: <stripped>
-	0x290ab0  @objc ShareButtonWindowToolbarItemHandler.installHandler <stripped>
-	0x290c10  @objc ShareButtonWindowToolbarItemHandler.uninstallHandler <stripped>
-	0x290e30  @objc ShareButtonWindowToolbarItemHandler.init <stripped>
-	0x290eb0  @objc ShareButtonWindowToolbarItemHandler..cxx_destruct <stripped>
+	0x292350  @objc ShareButtonWindowToolbarItemHandler.isEnabled <stripped>
+	0x2923c0  @objc ShareButtonWindowToolbarItemHandler.setIsEnabled: <stripped>
+	0x292690  @objc ShareButtonWindowToolbarItemHandler.initWithShareAction: <stripped>
+	0x292880  @objc ShareButtonWindowToolbarItemHandler.installHandler <stripped>
+	0x2929e0  @objc ShareButtonWindowToolbarItemHandler.uninstallHandler <stripped>
+	0x292c00  @objc ShareButtonWindowToolbarItemHandler.init <stripped>
+	0x292c80  @objc ShareButtonWindowToolbarItemHandler..cxx_destruct <stripped>
 
 	// Swift methods
-	0x290760  class func ShareButtonWindowToolbarItemHandler.__allocating_init(shareAction:) // init 
+	0x292530  class func ShareButtonWindowToolbarItemHandler.__allocating_init(shareAction:) // init 
  }
 
  class NewsUI2.MoreVideosStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MoreVideosStylerType {
@@ -7778,16 +7770,16 @@
 	var inserted : Bool
 
 	// ObjC -> Swift bridged methods
-	0x298860  @objc ArticleRecirculationComponentInserter.componentTraits <stripped>
-	0x298880  @objc ArticleRecirculationComponentInserter.setComponentTraits: <stripped>
-	0x2988a0  @objc ArticleRecirculationComponentInserter.conditionEngine <stripped>
-	0x2988d0  @objc ArticleRecirculationComponentInserter.setConditionEngine: <stripped>
-	0x298900  @objc ArticleRecirculationComponentInserter.conditionsForDOMObjectProvider: <stripped>
-	0x2989b0  @objc ArticleRecirculationComponentInserter.validateMarker:DOMObjectProvider:layoutProvider: <stripped>
-	0x299650  @objc ArticleRecirculationComponentInserter.componentInsertForMarker:DOMObjectProvider:layoutProvider: <stripped>
-	0x2996e0  @objc ArticleRecirculationComponentInserter.componentInsertionCompleted <stripped>
-	0x299750  @objc ArticleRecirculationComponentInserter.init <stripped>
-	0x2997a0  @objc ArticleRecirculationComponentInserter..cxx_destruct <stripped>
+	0x29a640  @objc ArticleRecirculationComponentInserter.componentTraits <stripped>
+	0x29a660  @objc ArticleRecirculationComponentInserter.setComponentTraits: <stripped>
+	0x29a680  @objc ArticleRecirculationComponentInserter.conditionEngine <stripped>
+	0x29a6b0  @objc ArticleRecirculationComponentInserter.setConditionEngine: <stripped>
+	0x29a6e0  @objc ArticleRecirculationComponentInserter.conditionsForDOMObjectProvider: <stripped>
+	0x29a790  @objc ArticleRecirculationComponentInserter.validateMarker:DOMObjectProvider:layoutProvider: <stripped>
+	0x29b430  @objc ArticleRecirculationComponentInserter.componentInsertForMarker:DOMObjectProvider:layoutProvider: <stripped>
+	0x29b4c0  @objc ArticleRecirculationComponentInserter.componentInsertionCompleted <stripped>
+	0x29b530  @objc ArticleRecirculationComponentInserter.init <stripped>
+	0x29b580  @objc ArticleRecirculationComponentInserter..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -7801,11 +7793,11 @@
 	let bottom : _SXConvertibleValue
 
 	// ObjC -> Swift bridged methods
-	0x299810  @objc EdgeSpacing.left <stripped>
-	0x299830  @objc EdgeSpacing.right <stripped>
-	0x299850  @objc EdgeSpacing.top <stripped>
-	0x299870  @objc EdgeSpacing.bottom <stripped>
-	0x299890  @objc EdgeSpacing.init <stripped>
+	0x29b5f0  @objc EdgeSpacing.left <stripped>
+	0x29b610  @objc EdgeSpacing.right <stripped>
+	0x29b630  @objc EdgeSpacing.top <stripped>
+	0x29b650  @objc EdgeSpacing.bottom <stripped>
+	0x29b670  @objc EdgeSpacing.init <stripped>
 
 	// Swift methods
  }
@@ -7816,9 +7808,9 @@
 	let separator : SeparatorView // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x29b790  @objc SeparatorViewContainerView.initWithFrame: <stripped>
-	0x29b890  @objc SeparatorViewContainerView.initWithCoder: <stripped>
-	0x29b9a0  @objc SeparatorViewContainerView..cxx_destruct <stripped>
+	0x29d570  @objc SeparatorViewContainerView.initWithFrame: <stripped>
+	0x29d670  @objc SeparatorViewContainerView.initWithCoder: <stripped>
+	0x29d780  @objc SeparatorViewContainerView..cxx_destruct <stripped>
  }
 
  struct NewsUI2.OrderedArticleListMagazineFeedGroup {
@@ -7841,7 +7833,7 @@
 	let showingBadge : Bool // +0x10 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x29c080  @objc EditorialAttributesProvider.showingBadge <stripped>
+	0x29de60  @objc EditorialAttributesProvider.showingBadge <stripped>
 
 	// Swift methods
  }
@@ -7852,14 +7844,14 @@
 	let type : NewsActivityType // +0x8 (0x1)
 	let identifier : String // +0x10 (0x10)
 	let title : String // +0x20 (0x10)
-	let url : URL? // +0x0 (0x0)
+	let url : URL? // +0x6ed13c (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x29c0e0  @objc NewsActivityInfo.init <stripped>
-	0x29c150  @objc NewsActivityInfo..cxx_destruct <stripped>
+	0x29dec0  @objc NewsActivityInfo.init <stripped>
+	0x29df30  @objc NewsActivityInfo..cxx_destruct <stripped>
 
 	// Swift methods
-	0x29c610  func <stripped> // method 
+	0x29e3f0  func <stripped> // method 
  }
 
  enum NewsUI2.CodingKeys {
@@ -7969,9 +7961,9 @@
 	var debugFeedAction : Action<()>? // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2a3390  @objc MagazineFeedGroupTitleView.initWithFrame: <stripped>
-	0x2a33c0  @objc MagazineFeedGroupTitleView.initWithCoder: <stripped>
-	0x2a3430  @objc MagazineFeedGroupTitleView..cxx_destruct <stripped>
+	0x2a5020  @objc MagazineFeedGroupTitleView.initWithFrame: <stripped>
+	0x2a5050  @objc MagazineFeedGroupTitleView.initWithCoder: <stripped>
+	0x2a50c0  @objc MagazineFeedGroupTitleView..cxx_destruct <stripped>
  }
 
  struct NewsUI2.FollowingNotificationsToggleModifier {
@@ -8176,7 +8168,7 @@
 
  class NewsUI2.KeyCommandAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x2af500  @objc KeyCommandAssembly.init <stripped>
+	0x2b1040  @objc KeyCommandAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -8194,11 +8186,10 @@
 	// Properties
 	var delegate : MagazineFeedPaywallInteractorTypeDelegate // +0x10 (0x10)
 	let dataManager : MagazineFeedPaywallDataManagerType // +0x20 (0x10)
-	let purchaseStarter : PurchaseStarter // +0x30 (0x8)
-	var coordinator : PaywallCoordinatorType? // +0x38 (0x28)
-	let configurationManager : FCCoreConfigurationManager // +0x60 (0x8)
-	var purchaseSessionID : String // +0x68 (0x10)
-	let purchaseID : String // +0x78 (0x10)
+	var coordinator : PaywallCoordinatorType? // +0x30 (0x28)
+	let configurationManager : FCCoreConfigurationManager // +0x58 (0x8)
+	var purchaseSessionID : String // +0x60 (0x10)
+	let purchaseID : String // +0x70 (0x10)
 
 	// Swift methods
  }
@@ -8217,9 +8208,9 @@
 	let resolver : ResolverType // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x2b2df0  @objc SpecialEventsModule.createViewController <stripped>
-	0x2b2ed0  @objc SpecialEventsModule.init <stripped>
-	0x2b2f80  @objc SpecialEventsModule..cxx_destruct <stripped>
+	0x2b3d90  @objc SpecialEventsModule.createViewController <stripped>
+	0x2b3e70  @objc SpecialEventsModule.init <stripped>
+	0x2b3f20  @objc SpecialEventsModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -8352,8 +8343,8 @@
 	let tracker : Tracker // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2c6bf0  @objc FollowingDislikedModule.init <stripped>
-	0x2c6c70  @objc FollowingDislikedModule..cxx_destruct <stripped>
+	0x2c7bf0  @objc FollowingDislikedModule.init <stripped>
+	0x2c7c70  @objc FollowingDislikedModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -8400,10 +8391,10 @@
 	var styler : SidebarTableViewCellStyler? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2cb2d0  @objc SidebarTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x2cb330  @objc SidebarTableViewCell.initWithCoder: <stripped>
-	0x2cb5e0  @objc SidebarTableViewCell.layoutSubviews <stripped>
-	0x2cb660  @objc SidebarTableViewCell..cxx_destruct <stripped>
+	0x2cc2d0  @objc SidebarTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x2cc330  @objc SidebarTableViewCell.initWithCoder: <stripped>
+	0x2cc5e0  @objc SidebarTableViewCell.layoutSubviews <stripped>
+	0x2cc660  @objc SidebarTableViewCell..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -8418,32 +8409,32 @@
 	var $__lazy_storage_$_menuManager : MenuManagerType? // +0x68 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x2cb970  @objc AppDelegate.window <stripped>
-	0x2cb9e0  @objc AppDelegate.setWindow: <stripped>
-	0x2cbf70  @objc AppDelegate.bootstrapWithApplication: <stripped>
-	0x2cbfd0  @objc AppDelegate.bootstrapWithContainer:application: <stripped>
-	0x2cc000  @objc AppDelegate.bootstrapWithWindow:application: <stripped>
-	0x2cc1e0  @objc AppDelegate.init <stripped>
-	0x2cc250  @objc AppDelegate..cxx_destruct <stripped>
+	0x2cc970  @objc AppDelegate.window <stripped>
+	0x2cc9e0  @objc AppDelegate.setWindow: <stripped>
+	0x2ccf70  @objc AppDelegate.bootstrapWithApplication: <stripped>
+	0x2ccfd0  @objc AppDelegate.bootstrapWithContainer:application: <stripped>
+	0x2cd000  @objc AppDelegate.bootstrapWithWindow:application: <stripped>
+	0x2cd1e0  @objc AppDelegate.init <stripped>
+	0x2cd250  @objc AppDelegate..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2cb7f0  func AppDelegate.resolver.getter // getter 
-	0x2cb890  func AppDelegate.resolver.setter // setter 
-	0x2cb930  func AppDelegate.resolver.modify // modifyCoroutine 
-	0x2cb9c0  func AppDelegate.window.getter // getter 
-	0x2cba40  func AppDelegate.window.setter // setter 
-	0x2cba60  func AppDelegate.window.modify // modifyCoroutine 
-	0x2cbaa0  func AppDelegate.sessionObserver.getter // getter 
-	0x2cbb00  func AppDelegate.sessionObserver.setter // setter 
-	0x2cbb60  func AppDelegate.sessionObserver.modify // modifyCoroutine 
-	0x2cbbb0  func AppDelegate.bootstrap(application:) // method 
-	0x2cbfc0  func AppDelegate.bootstrap(container:application:) // method 
-	0x2cbff0  func AppDelegate.bootstrap(window:application:) // method 
+	0x2cc7f0  func AppDelegate.resolver.getter // getter 
+	0x2cc890  func AppDelegate.resolver.setter // setter 
+	0x2cc930  func AppDelegate.resolver.modify // modifyCoroutine 
+	0x2cc9c0  func AppDelegate.window.getter // getter 
+	0x2cca40  func AppDelegate.window.setter // setter 
+	0x2cca60  func AppDelegate.window.modify // modifyCoroutine 
+	0x2ccaa0  func AppDelegate.sessionObserver.getter // getter 
+	0x2ccb00  func AppDelegate.sessionObserver.setter // setter 
+	0x2ccb60  func AppDelegate.sessionObserver.modify // modifyCoroutine 
+	0x2ccbb0  func AppDelegate.bootstrap(application:) // method 
+	0x2ccfc0  func AppDelegate.bootstrap(container:application:) // method 
+	0x2ccff0  func AppDelegate.bootstrap(window:application:) // method 
  }
 
  class NewsUI2.ForYouMagazineFeedAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x2cda60  @objc ForYouMagazineFeedAssembly.init <stripped>
+	0x2cea60  @objc ForYouMagazineFeedAssembly.init <stripped>
  }
 
  enum NewsUI2.ArticleRecirculationModel {
@@ -8620,14 +8611,14 @@
 	let titleLabel : UILabel // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2d6720  @objc ChannelIssuesGroupTitleView.initWithFrame: <stripped>
-	0x2d6830  @objc ChannelIssuesGroupTitleView.initWithCoder: <stripped>
-	0x2d6940  @objc ChannelIssuesGroupTitleView..cxx_destruct <stripped>
+	0x2d7720  @objc ChannelIssuesGroupTitleView.initWithFrame: <stripped>
+	0x2d7830  @objc ChannelIssuesGroupTitleView.initWithCoder: <stripped>
+	0x2d7940  @objc ChannelIssuesGroupTitleView..cxx_destruct <stripped>
  }
 
  class NewsUI2.SpecialEventsAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x2dbe90  @objc SpecialEventsAssembly.init <stripped>
+	0x2dce90  @objc SpecialEventsAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -8678,9 +8669,9 @@
 	let tracker : Tracker // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2dfd40  @objc ForYouMagazinesModule.createPluginFactoryForParentView: <stripped>
-	0x2dfdf0  @objc ForYouMagazinesModule.init <stripped>
-	0x2dfea0  @objc ForYouMagazinesModule..cxx_destruct <stripped>
+	0x2e0d40  @objc ForYouMagazinesModule.createPluginFactoryForParentView: <stripped>
+	0x2e0df0  @objc ForYouMagazinesModule.init <stripped>
+	0x2e0ea0  @objc ForYouMagazinesModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -8813,7 +8804,7 @@
 
  class NewsUI2.FollowingAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x2f38c0  @objc FollowingAssembly.init <stripped>
+	0x2f48e0  @objc FollowingAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -8857,9 +8848,9 @@
 	let dislikeButton : DislikeButton // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2f5cc0  @objc TagView.initWithFrame: <stripped>
-	0x2f5cf0  @objc TagView.initWithCoder: <stripped>
-	0x2f5d60  @objc TagView..cxx_destruct <stripped>
+	0x2f6b70  @objc TagView.initWithFrame: <stripped>
+	0x2f6ba0  @objc TagView.initWithCoder: <stripped>
+	0x2f6c10  @objc TagView..cxx_destruct <stripped>
  }
 
  class NewsUI2.HeadlineViewImageOnSideRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -9022,12 +9013,12 @@
 	let layoutOptionsProvider : PluginLayoutOptionsProvider // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3014f0  @objc TopVideosPluginFactory.createPluginWithIdentifier:usingConfig: <stripped>
-	0x3015e0  @objc TopVideosPluginFactory.init <stripped>
-	0x301660  @objc TopVideosPluginFactory..cxx_destruct <stripped>
+	0x302200  @objc TopVideosPluginFactory.createPluginWithIdentifier:usingConfig: <stripped>
+	0x3022f0  @objc TopVideosPluginFactory.init <stripped>
+	0x302370  @objc TopVideosPluginFactory..cxx_destruct <stripped>
 
 	// Swift methods
-	0x301270  class func TopVideosPluginFactory.__allocating_init(resolver:layoutOptionsProvider:) // init 
+	0x301f80  class func TopVideosPluginFactory.__allocating_init(resolver:layoutOptionsProvider:) // init 
  }
 
  class NewsUI2.MagazineFeedDataPrewarmer : NSObject /usr/lib/libobjc.A.dylib, MagazineFeedDataPrewarmerType {
@@ -9036,8 +9027,8 @@
 	let session : Session // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x302870  @objc MagazineFeedDataPrewarmer.init <stripped>
-	0x3028f0  @objc MagazineFeedDataPrewarmer..cxx_destruct <stripped>
+	0x303580  @objc MagazineFeedDataPrewarmer.init <stripped>
+	0x303600  @objc MagazineFeedDataPrewarmer..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -9093,15 +9084,15 @@
 
  class NewsUI2.StylerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3136a0  @objc StylerAssembly.init <stripped>
+	0x314410  @objc StylerAssembly.init <stripped>
 
 	// Swift methods
  }
 
  class NewsUI2.Images : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x315b30  @objc Images.init <stripped>
-	0x315bd0  @objc Images..cxx_destruct <stripped>
+	0x3168a0  @objc Images.init <stripped>
+	0x316940  @objc Images..cxx_destruct <stripped>
  }
 
  struct NewsUI2.MagazineFeedRefreshBlueprintModifier {
@@ -9113,7 +9104,7 @@
 
  class NewsUI2.EmailSignupAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x324dd0  @objc EmailSignupAssembly.init <stripped>
+	0x325b40  @objc EmailSignupAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -9200,9 +9191,9 @@
 	let userNotificationCenter : UNUserNotificationCenter // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x32a190  @objc FollowingNotificationsDataManager.determineSystemNotificationSettingsStatus <stripped>
-	0x32a270  @objc FollowingNotificationsDataManager.init <stripped>
-	0x32a2f0  @objc FollowingNotificationsDataManager..cxx_destruct <stripped>
+	0x32af20  @objc FollowingNotificationsDataManager.determineSystemNotificationSettingsStatus <stripped>
+	0x32b000  @objc FollowingNotificationsDataManager.init <stripped>
+	0x32b080  @objc FollowingNotificationsDataManager..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -9392,7 +9383,7 @@
 
  class NewsUI2.HardPaywallAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x337ba0  @objc HardPaywallAssembly.init <stripped>
+	0x338a50  @objc HardPaywallAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -9473,8 +9464,8 @@
 	let categories : [MagazineCategory]
 
 	// ObjC -> Swift bridged methods
-	0x340f70  @objc MagazineCategoriesConfig.init <stripped>
-	0x340fe0  @objc MagazineCategoriesConfig..cxx_destruct <stripped>
+	0x341ed0  @objc MagazineCategoriesConfig.init <stripped>
+	0x341f40  @objc MagazineCategoriesConfig..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -9486,9 +9477,9 @@
 	let tracker : Tracker
 
 	// ObjC -> Swift bridged methods
-	0x3411c0  @objc MagazineCategoriesModule.createPluginWithIdentifier:layoutOptionsProvider:config: <stripped>
-	0x3412b0  @objc MagazineCategoriesModule.init <stripped>
-	0x341340  @objc MagazineCategoriesModule..cxx_destruct <stripped>
+	0x342120  @objc MagazineCategoriesModule.createPluginWithIdentifier:layoutOptionsProvider:config: <stripped>
+	0x342210  @objc MagazineCategoriesModule.init <stripped>
+	0x3422a0  @objc MagazineCategoriesModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -9581,9 +9572,9 @@
 	let showAnywayButton : ShowAnywayButton // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x34ff60  @objc OffensiveView.initWithFrame: <stripped>
-	0x34ff90  @objc OffensiveView.initWithCoder: <stripped>
-	0x3500a0  @objc OffensiveView..cxx_destruct <stripped>
+	0x351140  @objc OffensiveView.initWithFrame: <stripped>
+	0x351170  @objc OffensiveView.initWithCoder: <stripped>
+	0x351280  @objc OffensiveView..cxx_destruct <stripped>
  }
 
  class NewsUI2.MagazineCategoryGridModelLoader : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -9641,20 +9632,20 @@
 	let feedNavImageStyler : NEFeedNavImageStylerType // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x35d6c0  @objc FeedNavImageAssetHandle.filePath <stripped>
-	0x35d780  @objc FeedNavImageAssetHandle.setFilePath: <stripped>
-	0x35d890  @objc FeedNavImageAssetHandle.fallbackImage <stripped>
-	0x35d920  @objc FeedNavImageAssetHandle.setFallbackImage: <stripped>
-	0x35da20  @objc FeedNavImageAssetHandle.uniqueKey <stripped>
-	0x35dc10  @objc FeedNavImageAssetHandle.initWithIdentifier:feedNavImage:feedNavImageSize:feedNavImageStyler: <stripped>
-	0x35dde0  @objc FeedNavImageAssetHandle.initWithTag:feedNavImageSize:feedNavImageStyler: <stripped>
-	0x35e3f0  @objc FeedNavImageAssetHandle.downloadWithGroup: <stripped>
-	0x35e490  @objc FeedNavImageAssetHandle.init <stripped>
-	0x35e510  @objc FeedNavImageAssetHandle..cxx_destruct <stripped>
+	0x35e8a0  @objc FeedNavImageAssetHandle.filePath <stripped>
+	0x35e960  @objc FeedNavImageAssetHandle.setFilePath: <stripped>
+	0x35ea70  @objc FeedNavImageAssetHandle.fallbackImage <stripped>
+	0x35eb00  @objc FeedNavImageAssetHandle.setFallbackImage: <stripped>
+	0x35ec00  @objc FeedNavImageAssetHandle.uniqueKey <stripped>
+	0x35edf0  @objc FeedNavImageAssetHandle.initWithIdentifier:feedNavImage:feedNavImageSize:feedNavImageStyler: <stripped>
+	0x35efc0  @objc FeedNavImageAssetHandle.initWithTag:feedNavImageSize:feedNavImageStyler: <stripped>
+	0x35f5d0  @objc FeedNavImageAssetHandle.downloadWithGroup: <stripped>
+	0x35f670  @objc FeedNavImageAssetHandle.init <stripped>
+	0x35f6f0  @objc FeedNavImageAssetHandle..cxx_destruct <stripped>
 
 	// Swift methods
-	0x35cc70  class func FeedNavImageAssetHandle.__allocating_init(identifier:feedNavImage:feedNavImageSize:feedNavImageStyler:) // init 
-	0x35ce00  class func FeedNavImageAssetHandle.__allocating_init(tag:feedNavImageSize:feedNavImageStyler:) // init 
+	0x35de50  class func FeedNavImageAssetHandle.__allocating_init(identifier:feedNavImage:feedNavImageSize:feedNavImageStyler:) // init 
+	0x35dfe0  class func FeedNavImageAssetHandle.__allocating_init(tag:feedNavImageSize:feedNavImageStyler:) // init 
  }
 
  struct NewsUI2.MyMagazinesSectionHeaderSeparatorViewLayoutAttributes {
@@ -9837,7 +9828,7 @@
 	var localCompletion : (_:)? // +0x0 (0x10)
 
 	// Swift methods
-	0x3694e0  func <stripped> // method 
+	0x36a6c0  func <stripped> // method 
  }
 
  class NewsUI2.StubMagazineFeedPoolManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -9900,10 +9891,10 @@
 	let blueprintViewController : HistoryViewController // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x370ac0  @objc HistoryViewController.initWithCoder: <stripped>
-	0x370b10  @objc HistoryViewController.clearButtonPressedWithSender: <stripped>
-	0x370ba0  @objc HistoryViewController.initWithNibName:bundle: <stripped>
-	0x370c20  @objc HistoryViewController..cxx_destruct <stripped>
+	0x371ca0  @objc HistoryViewController.initWithCoder: <stripped>
+	0x371cf0  @objc HistoryViewController.clearButtonPressedWithSender: <stripped>
+	0x371d80  @objc HistoryViewController.initWithNibName:bundle: <stripped>
+	0x371e00  @objc HistoryViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -10003,9 +9994,9 @@
 	let onTap : Action<()> // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x380860  @objc ShowAnywayButton.initWithFrame: <stripped>
-	0x380930  @objc ShowAnywayButton.initWithCoder: <stripped>
-	0x380a50  @objc ShowAnywayButton..cxx_destruct <stripped>
+	0x381ca0  @objc ShowAnywayButton.initWithFrame: <stripped>
+	0x381d70  @objc ShowAnywayButton.initWithCoder: <stripped>
+	0x381e90  @objc ShowAnywayButton..cxx_destruct <stripped>
  }
 
  class NewsUI2.MagazineCategoriesInteractor {
@@ -10017,9 +10008,9 @@
 	let isEditing : When<Bool> // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3811d0  @objc FollowingSettingsButtonView.initWithFrame: <stripped>
-	0x381200  @objc FollowingSettingsButtonView.initWithCoder: <stripped>
-	0x381270  @objc FollowingSettingsButtonView..cxx_destruct <stripped>
+	0x382610  @objc FollowingSettingsButtonView.initWithFrame: <stripped>
+	0x382640  @objc FollowingSettingsButtonView.initWithCoder: <stripped>
+	0x3826b0  @objc FollowingSettingsButtonView..cxx_destruct <stripped>
  }
 
  struct NewsUI2.MagazineFeedExpandResult {
@@ -10043,9 +10034,9 @@
 	var axElement : AXElement
 
 	// ObjC -> Swift bridged methods
-	0x38f260  @objc ArticleRecirculationPublisherView.initWithFrame: <stripped>
-	0x38f290  @objc ArticleRecirculationPublisherView.initWithCoder: <stripped>
-	0x38f480  @objc ArticleRecirculationPublisherView..cxx_destruct <stripped>
+	0x3906a0  @objc ArticleRecirculationPublisherView.initWithFrame: <stripped>
+	0x3906d0  @objc ArticleRecirculationPublisherView.initWithCoder: <stripped>
+	0x3908c0  @objc ArticleRecirculationPublisherView..cxx_destruct <stripped>
  }
 
  class NewsUI2.AXElement : UIAccessibilityElement /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -10054,11 +10045,11 @@
 	var containerView : ArticleRecirculationPublisherView
 
 	// ObjC -> Swift bridged methods
-	0x38f2b0  @objc AXElement.accessibilityFrame <stripped>
-	0x38f350  @objc AXElement.setAccessibilityFrame: <stripped>
-	0x38f360  @objc AXElement.initWithAccessibilityContainer: <stripped>
-	0x38f3b0  @objc AXElement.init <stripped>
-	0x38f400  @objc AXElement..cxx_destruct <stripped>
+	0x3906f0  @objc AXElement.accessibilityFrame <stripped>
+	0x390790  @objc AXElement.setAccessibilityFrame: <stripped>
+	0x3907a0  @objc AXElement.initWithAccessibilityContainer: <stripped>
+	0x3907f0  @objc AXElement.init <stripped>
+	0x390840  @objc AXElement..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -10099,7 +10090,7 @@
 
  class NewsUI2.ServiceAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3973f0  @objc ServiceAssembly.init <stripped>
+	0x398830  @objc ServiceAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -10143,7 +10134,7 @@
 
  class NewsUI2.PDFReplicaAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x39a390  @objc PDFReplicaAssembly.init <stripped>
+	0x39b7d0  @objc PDFReplicaAssembly.init <stripped>
  }
 
  class NewsUI2.HistoryServiceObserverProxy : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HistoryServiceObserver {
@@ -10166,8 +10157,8 @@
 	let headlineService : HeadlineServiceType
 
 	// ObjC -> Swift bridged methods
-	0x39ab80  @objc HistoryService.init <stripped>
-	0x39ac00  @objc HistoryService..cxx_destruct <stripped>
+	0x39bfc0  @objc HistoryService.init <stripped>
+	0x39c040  @objc HistoryService..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -10371,7 +10362,7 @@
 
  class NewsUI2.DeferredHardPaywallAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3c9480  @objc DeferredHardPaywallAssembly.init <stripped>
+	0x3cab10  @objc DeferredHardPaywallAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -10430,39 +10421,39 @@
 	let hidden : Bool // +0xa0 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x3ca370  @objc ArticleRecirculationComponent.identifier <stripped>
-	0x3ca390  @objc ArticleRecirculationComponent.setIdentifier: <stripped>
-	0x3ca3b0  @objc ArticleRecirculationComponent.type <stripped>
-	0x3ca410  @objc ArticleRecirculationComponent.setType: <stripped>
-	0x3ca460  @objc ArticleRecirculationComponent.layout <stripped>
-	0x3ca480  @objc ArticleRecirculationComponent.setLayout: <stripped>
-	0x3ca4a0  @objc ArticleRecirculationComponent.style <stripped>
-	0x3ca520  @objc ArticleRecirculationComponent.setStyle: <stripped>
-	0x3ca580  @objc ArticleRecirculationComponent.role <stripped>
-	0x3ca590  @objc ArticleRecirculationComponent.setRole: <stripped>
-	0x3ca5a0  @objc ArticleRecirculationComponent.anchor <stripped>
-	0x3ca5d0  @objc ArticleRecirculationComponent.setAnchor: <stripped>
-	0x3ca600  @objc ArticleRecirculationComponent.behaviors <stripped>
-	0x3ca630  @objc ArticleRecirculationComponent.setBehaviors: <stripped>
-	0x3ca660  @objc ArticleRecirculationComponent.animation <stripped>
-	0x3ca690  @objc ArticleRecirculationComponent.setAnimation: <stripped>
-	0x3ca6b0  @objc ArticleRecirculationComponent.classification <stripped>
-	0x3ca6e0  @objc ArticleRecirculationComponent.setClassification: <stripped>
-	0x3ca700  @objc ArticleRecirculationComponent.additions <stripped>
-	0x3ca730  @objc ArticleRecirculationComponent.setAdditions: <stripped>
-	0x3ca760  @objc ArticleRecirculationComponent.analytics <stripped>
-	0x3ca790  @objc ArticleRecirculationComponent.setAnalytics: <stripped>
-	0x3ca7c0  @objc ArticleRecirculationComponent.conditions <stripped>
-	0x3ca7f0  @objc ArticleRecirculationComponent.setConditions: <stripped>
-	0x3ca840  @objc ArticleRecirculationComponent.contentRelevance <stripped>
-	0x3ca860  @objc ArticleRecirculationComponent.setContentRelevance: <stripped>
-	0x3ca880  @objc ArticleRecirculationComponent.traits <stripped>
-	0x3ca8a0  @objc ArticleRecirculationComponent.setTraits: <stripped>
-	0x3ca8c0  @objc ArticleRecirculationComponent.conditional <stripped>
-	0x3ca8f0  @objc ArticleRecirculationComponent.setConditional: <stripped>
-	0x3ca920  @objc ArticleRecirculationComponent.hidden <stripped>
-	0x3caa90  @objc ArticleRecirculationComponent.init <stripped>
-	0x3cab10  @objc ArticleRecirculationComponent..cxx_destruct <stripped>
+	0x3cbb50  @objc ArticleRecirculationComponent.identifier <stripped>
+	0x3cbb70  @objc ArticleRecirculationComponent.setIdentifier: <stripped>
+	0x3cbb90  @objc ArticleRecirculationComponent.type <stripped>
+	0x3cbbf0  @objc ArticleRecirculationComponent.setType: <stripped>
+	0x3cbc40  @objc ArticleRecirculationComponent.layout <stripped>
+	0x3cbc60  @objc ArticleRecirculationComponent.setLayout: <stripped>
+	0x3cbc80  @objc ArticleRecirculationComponent.style <stripped>
+	0x3cbd00  @objc ArticleRecirculationComponent.setStyle: <stripped>
+	0x3cbd60  @objc ArticleRecirculationComponent.role <stripped>
+	0x3cbd70  @objc ArticleRecirculationComponent.setRole: <stripped>
+	0x3cbd80  @objc ArticleRecirculationComponent.anchor <stripped>
+	0x3cbdb0  @objc ArticleRecirculationComponent.setAnchor: <stripped>
+	0x3cbde0  @objc ArticleRecirculationComponent.behaviors <stripped>
+	0x3cbe10  @objc ArticleRecirculationComponent.setBehaviors: <stripped>
+	0x3cbe40  @objc ArticleRecirculationComponent.animation <stripped>
+	0x3cbe70  @objc ArticleRecirculationComponent.setAnimation: <stripped>
+	0x3cbe90  @objc ArticleRecirculationComponent.classification <stripped>
+	0x3cbec0  @objc ArticleRecirculationComponent.setClassification: <stripped>
+	0x3cbee0  @objc ArticleRecirculationComponent.additions <stripped>
+	0x3cbf10  @objc ArticleRecirculationComponent.setAdditions: <stripped>
+	0x3cbf40  @objc ArticleRecirculationComponent.analytics <stripped>
+	0x3cbf70  @objc ArticleRecirculationComponent.setAnalytics: <stripped>
+	0x3cbfa0  @objc ArticleRecirculationComponent.conditions <stripped>
+	0x3cbfd0  @objc ArticleRecirculationComponent.setConditions: <stripped>
+	0x3cc020  @objc ArticleRecirculationComponent.contentRelevance <stripped>
+	0x3cc040  @objc ArticleRecirculationComponent.setContentRelevance: <stripped>
+	0x3cc060  @objc ArticleRecirculationComponent.traits <stripped>
+	0x3cc080  @objc ArticleRecirculationComponent.setTraits: <stripped>
+	0x3cc0a0  @objc ArticleRecirculationComponent.conditional <stripped>
+	0x3cc0d0  @objc ArticleRecirculationComponent.setConditional: <stripped>
+	0x3cc100  @objc ArticleRecirculationComponent.hidden <stripped>
+	0x3cc270  @objc ArticleRecirculationComponent.init <stripped>
+	0x3cc2f0  @objc ArticleRecirculationComponent..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -10593,7 +10584,7 @@
 
  class NewsUI2.IssueAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3dbf40  @objc IssueAssembly.init <stripped>
+	0x3dd690  @objc IssueAssembly.init <stripped>
  }
 
  enum NewsUI2.MoreVideosModel {
@@ -10608,12 +10599,12 @@
 	let viewData : ViewData
 
 	// ObjC -> Swift bridged methods
-	0x3dcf20  @objc PaywallViewData.initWithViewSessionID:viewType:viewAction: <stripped>
-	0x3dcfe0  @objc PaywallViewData.init <stripped>
-	0x3dd030  @objc PaywallViewData..cxx_destruct <stripped>
+	0x3de670  @objc PaywallViewData.initWithViewSessionID:viewType:viewAction: <stripped>
+	0x3de730  @objc PaywallViewData.init <stripped>
+	0x3de780  @objc PaywallViewData..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3dce70  class func PaywallViewData.__allocating_init(viewSessionID:viewType:viewAction:) // init 
+	0x3de5c0  class func PaywallViewData.__allocating_init(viewSessionID:viewType:viewAction:) // init 
  }
 
  class NewsUI2.PaywallGroupData : NSObject /usr/lib/libobjc.A.dylib {
@@ -10622,12 +10613,12 @@
 	let groupData : GroupData // +0x8 (0x30)
 
 	// ObjC -> Swift bridged methods
-	0x3dd2b0  @objc PaywallGroupData.initWithGroupType:groupID:groupCount:groupPosition:groupedArticleIDs:groupedIssueIDs: <stripped>
-	0x3dd460  @objc PaywallGroupData.init <stripped>
-	0x3dd4b0  @objc PaywallGroupData..cxx_destruct <stripped>
+	0x3dea00  @objc PaywallGroupData.initWithGroupType:groupID:groupCount:groupPosition:groupedArticleIDs:groupedIssueIDs: <stripped>
+	0x3debb0  @objc PaywallGroupData.init <stripped>
+	0x3dec00  @objc PaywallGroupData..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3dd050  class func PaywallGroupData.__allocating_init(groupType:groupID:groupCount:groupPosition:groupedArticleIDs:groupedIssueIDs:) // init 
+	0x3de7a0  class func PaywallGroupData.__allocating_init(groupType:groupID:groupCount:groupPosition:groupedArticleIDs:groupedIssueIDs:) // init 
  }
 
  class NewsUI2.PaywallEventData : NSObject /usr/lib/libobjc.A.dylib {
@@ -10640,12 +10631,12 @@
 	let groupData : GroupData?
 
 	// ObjC -> Swift bridged methods
-	0x3dd850  @objc PaywallEventData.initWithPaywallViewData:headline:channel:feed:paywallGroupData: <stripped>
-	0x3dd8f0  @objc PaywallEventData.init <stripped>
-	0x3dd980  @objc PaywallEventData..cxx_destruct <stripped>
+	0x3defa0  @objc PaywallEventData.initWithPaywallViewData:headline:channel:feed:paywallGroupData: <stripped>
+	0x3df040  @objc PaywallEventData.init <stripped>
+	0x3df0d0  @objc PaywallEventData..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3dd4f0  class func PaywallEventData.__allocating_init(paywallViewData:headline:channel:feed:paywallGroupData:) // init 
+	0x3dec40  class func PaywallEventData.__allocating_init(paywallViewData:headline:channel:feed:paywallGroupData:) // init 
  }
 
  class NewsUI2.MainModule : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MainModuleType {
@@ -10664,9 +10655,9 @@
 	let label : UILabel // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3df490  @objc MyMagazinesSectionHeaderView.initWithFrame: <stripped>
-	0x3df580  @objc MyMagazinesSectionHeaderView.initWithCoder: <stripped>
-	0x3df690  @objc MyMagazinesSectionHeaderView..cxx_destruct <stripped>
+	0x3e0be0  @objc MyMagazinesSectionHeaderView.initWithFrame: <stripped>
+	0x3e0cd0  @objc MyMagazinesSectionHeaderView.initWithCoder: <stripped>
+	0x3e0de0  @objc MyMagazinesSectionHeaderView..cxx_destruct <stripped>
  }
 
  class NewsUI2.HeadlineViewTextViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -10727,12 +10718,12 @@
 	var observableViewController : SyncObservable<UIViewController & TSArticleRecirculationViewControllerType?> // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3e3510  @objc ArticleRecirculationInArticleViewControllerProvider.nextViewController: <stripped>
-	0x3e3650  @objc ArticleRecirculationInArticleViewControllerProvider.init <stripped>
-	0x3e3730  @objc ArticleRecirculationInArticleViewControllerProvider..cxx_destruct <stripped>
+	0x3e4950  @objc ArticleRecirculationInArticleViewControllerProvider.nextViewController: <stripped>
+	0x3e4a90  @objc ArticleRecirculationInArticleViewControllerProvider.init <stripped>
+	0x3e4b70  @objc ArticleRecirculationInArticleViewControllerProvider..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3e34d0  func ArticleRecirculationInArticleViewControllerProvider.next(viewController:) // method 
+	0x3e4910  func ArticleRecirculationInArticleViewControllerProvider.next(viewController:) // method 
  }
 
  class NewsUI2.EmailSignupDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, EmailSignupDataManagerType {
@@ -10764,13 +10755,13 @@
 	let eventManager : Event // +0x90 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3e3900  @objc MyMagazinesViewController.isBeingUsedAsPlugin <stripped>
-	0x3e3920  @objc MyMagazinesViewController.setIsBeingUsedAsPlugin: <stripped>
-	0x3e3960  @objc MyMagazinesViewController.pluggableDelegate <stripped>
-	0x3e3980  @objc MyMagazinesViewController.setPluggableDelegate: <stripped>
-	0x3e3c10  @objc MyMagazinesViewController.initWithCoder: <stripped>
-	0x3e3c30  @objc MyMagazinesViewController.initWithNibName:bundle: <stripped>
-	0x3e3cb0  @objc MyMagazinesViewController..cxx_destruct <stripped>
+	0x3e4d40  @objc MyMagazinesViewController.isBeingUsedAsPlugin <stripped>
+	0x3e4d60  @objc MyMagazinesViewController.setIsBeingUsedAsPlugin: <stripped>
+	0x3e4da0  @objc MyMagazinesViewController.pluggableDelegate <stripped>
+	0x3e4dc0  @objc MyMagazinesViewController.setPluggableDelegate: <stripped>
+	0x3e5050  @objc MyMagazinesViewController.initWithCoder: <stripped>
+	0x3e5070  @objc MyMagazinesViewController.initWithNibName:bundle: <stripped>
+	0x3e50f0  @objc MyMagazinesViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -10881,14 +10872,14 @@
 	let flintDocumentURLAssetHandlesByRemoteURL : [URL : FCAssetHandle] // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3eabb0  @objc NewsReferralItemWidgetArticleList.JSONArray <stripped>
-	0x3eac20  @objc NewsReferralItemWidgetArticleList.flintDocumentURLAssetHandlesByRemoteURL <stripped>
-	0x3eae60  @objc NewsReferralItemWidgetArticleList.initWithJSONArray:flintDocumentURLAssetHandlesByRemoteURL: <stripped>
-	0x3eb010  @objc NewsReferralItemWidgetArticleList.init <stripped>
-	0x3eb090  @objc NewsReferralItemWidgetArticleList..cxx_destruct <stripped>
+	0x3ebff0  @objc NewsReferralItemWidgetArticleList.JSONArray <stripped>
+	0x3ec060  @objc NewsReferralItemWidgetArticleList.flintDocumentURLAssetHandlesByRemoteURL <stripped>
+	0x3ec2a0  @objc NewsReferralItemWidgetArticleList.initWithJSONArray:flintDocumentURLAssetHandlesByRemoteURL: <stripped>
+	0x3ec450  @objc NewsReferralItemWidgetArticleList.init <stripped>
+	0x3ec4d0  @objc NewsReferralItemWidgetArticleList..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3eacf0  class func NewsReferralItemWidgetArticleList.__allocating_init(JSONArray:flintDocumentURLAssetHandlesByRemoteURL:) // init 
+	0x3ec130  class func NewsReferralItemWidgetArticleList.__allocating_init(JSONArray:flintDocumentURLAssetHandlesByRemoteURL:) // init 
  }
 
  struct NewsUI2.TrendingMagazineFeedGroup {
@@ -10945,12 +10936,12 @@
 	let title : String // +0x18 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x3ec8b0  @objc ChannelIssuesGroupConfig.initWithIssueIDs:channel:title: <stripped>
-	0x3eca30  @objc ChannelIssuesGroupConfig.init <stripped>
-	0x3ecab0  @objc ChannelIssuesGroupConfig..cxx_destruct <stripped>
+	0x3edcf0  @objc ChannelIssuesGroupConfig.initWithIssueIDs:channel:title: <stripped>
+	0x3ede70  @objc ChannelIssuesGroupConfig.init <stripped>
+	0x3edef0  @objc ChannelIssuesGroupConfig..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3ec6f0  class func ChannelIssuesGroupConfig.__allocating_init(issueIDs:channel:title:) // init 
+	0x3edb30  class func ChannelIssuesGroupConfig.__allocating_init(issueIDs:channel:title:) // init 
  }
 
  class NewsUI2.FollowingNotificationsViewCellProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -10972,7 +10963,7 @@
 
  class NewsUI2.MoreVideosAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3f0be0  @objc MoreVideosAssembly.init <stripped>
+	0x3f2020  @objc MoreVideosAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -11010,13 +11001,13 @@
 	var isPublisherHeaderVisible : Bool
 
 	// ObjC -> Swift bridged methods
-	0x3f4320  @objc ArticleRecirculationViewController.delegate <stripped>
-	0x3f4340  @objc ArticleRecirculationViewController.setDelegate: <stripped>
-	0x3f4360  @objc ArticleRecirculationViewController.routableDelegate <stripped>
-	0x3f4380  @objc ArticleRecirculationViewController.setRoutableDelegate: <stripped>
-	0x3f4cb0  @objc ArticleRecirculationViewController.initWithCoder: <stripped>
-	0x3f4cd0  @objc ArticleRecirculationViewController.initWithNibName:bundle: <stripped>
-	0x3f4d10  @objc ArticleRecirculationViewController..cxx_destruct <stripped>
+	0x3f5760  @objc ArticleRecirculationViewController.delegate <stripped>
+	0x3f5780  @objc ArticleRecirculationViewController.setDelegate: <stripped>
+	0x3f57a0  @objc ArticleRecirculationViewController.routableDelegate <stripped>
+	0x3f57c0  @objc ArticleRecirculationViewController.setRoutableDelegate: <stripped>
+	0x3f60f0  @objc ArticleRecirculationViewController.initWithCoder: <stripped>
+	0x3f6110  @objc ArticleRecirculationViewController.initWithNibName:bundle: <stripped>
+	0x3f6150  @objc ArticleRecirculationViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -11027,15 +11018,15 @@
 	let childViewController : ArticleRecirculationViewController
 
 	// ObjC -> Swift bridged methods
-	0x3fc1c0  @objc ArticleRecirculationGutterViewController.loadView <stripped>
-	0x3fc2b0  @objc ArticleRecirculationGutterViewController.initWithCoder: <stripped>
-	0x3fc310  @objc ArticleRecirculationGutterViewController.viewDidLoad <stripped>
-	0x3fc3f0  @objc ArticleRecirculationGutterViewController.navigationItem <stripped>
-	0x3fc420  @objc ArticleRecirculationGutterViewController.childViewControllerForStatusBarHidden <stripped>
-	0x3fc420  @objc ArticleRecirculationGutterViewController.childViewControllerForStatusBarStyle <stripped>
-	0x3fc420  @objc ArticleRecirculationGutterViewController.childViewControllerForHomeIndicatorAutoHidden <stripped>
-	0x3fc440  @objc ArticleRecirculationGutterViewController.initWithNibName:bundle: <stripped>
-	0x3fc500  @objc ArticleRecirculationGutterViewController..cxx_destruct <stripped>
+	0x3fd560  @objc ArticleRecirculationGutterViewController.loadView <stripped>
+	0x3fd650  @objc ArticleRecirculationGutterViewController.initWithCoder: <stripped>
+	0x3fd6b0  @objc ArticleRecirculationGutterViewController.viewDidLoad <stripped>
+	0x3fd790  @objc ArticleRecirculationGutterViewController.navigationItem <stripped>
+	0x3fd7c0  @objc ArticleRecirculationGutterViewController.childViewControllerForStatusBarHidden <stripped>
+	0x3fd7c0  @objc ArticleRecirculationGutterViewController.childViewControllerForStatusBarStyle <stripped>
+	0x3fd7c0  @objc ArticleRecirculationGutterViewController.childViewControllerForHomeIndicatorAutoHidden <stripped>
+	0x3fd7e0  @objc ArticleRecirculationGutterViewController.initWithNibName:bundle: <stripped>
+	0x3fd8a0  @objc ArticleRecirculationGutterViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -11049,10 +11040,10 @@
 	let gutters : Gutters // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x3fb8f0  @objc GutterView.initWithCoder: <stripped>
-	0x3fbd50  @objc GutterView.layoutSubviews <stripped>
-	0x3fbd80  @objc GutterView.initWithFrame: <stripped>
-	0x3fbdf0  @objc GutterView..cxx_destruct <stripped>
+	0x3fcc90  @objc GutterView.initWithCoder: <stripped>
+	0x3fd0f0  @objc GutterView.layoutSubviews <stripped>
+	0x3fd120  @objc GutterView.initWithFrame: <stripped>
+	0x3fd190  @objc GutterView..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -11083,9 +11074,9 @@
 	let action : Action<()> // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4012e0  @objc TitleView.initWithFrame: <stripped>
-	0x401310  @objc TitleView.initWithCoder: <stripped>
-	0x401380  @objc TitleView..cxx_destruct <stripped>
+	0x402840  @objc TitleView.initWithFrame: <stripped>
+	0x402870  @objc TitleView.initWithCoder: <stripped>
+	0x4028e0  @objc TitleView..cxx_destruct <stripped>
  }
 
  struct NewsUI2.ArticleRecirculationChangeHeadlineModifier {
@@ -11118,10 +11109,10 @@
 	let preFlushGroup : OS_dispatch_group // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4029c0  @objc CacheFlushingManager.addPreFlushTask: <stripped>
-	0x402b20  @objc CacheFlushingManager.enableFlushing <stripped>
-	0x402c60  @objc CacheFlushingManager.init <stripped>
-	0x402d10  @objc CacheFlushingManager..cxx_destruct <stripped>
+	0x403f30  @objc CacheFlushingManager.addPreFlushTask: <stripped>
+	0x404090  @objc CacheFlushingManager.enableFlushing <stripped>
+	0x4041d0  @objc CacheFlushingManager.init <stripped>
+	0x404280  @objc CacheFlushingManager..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -11158,9 +11149,9 @@
 	let resolver : ResolverType // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x4044c0  @objc HistoryModule.createViewController <stripped>
-	0x404560  @objc HistoryModule.init <stripped>
-	0x404610  @objc HistoryModule..cxx_destruct <stripped>
+	0x405a70  @objc HistoryModule.createViewController <stripped>
+	0x405b10  @objc HistoryModule.init <stripped>
+	0x405bc0  @objc HistoryModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -11226,23 +11217,23 @@
 	let appSessionStartNotificationType : Int // +0x90 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4092f0  @objc AnalyticsReferral.userActivityType <stripped>
-	0x409330  @objc AnalyticsReferral.creativeID <stripped>
-	0x409370  @objc AnalyticsReferral.campaignID <stripped>
-	0x4093b0  @objc AnalyticsReferral.campaignType <stripped>
-	0x4093f0  @objc AnalyticsReferral.referringApplication <stripped>
-	0x409430  @objc AnalyticsReferral.referringURL <stripped>
-	0x409470  @objc AnalyticsReferral.widgetModeGroupID <stripped>
-	0x409520  @objc AnalyticsReferral.widgetEngagement <stripped>
-	0x409560  @objc AnalyticsReferral.appOpenedByUserActivity <stripped>
-	0x4095a0  @objc AnalyticsReferral.appSessionStartMethod <stripped>
-	0x4095e0  @objc AnalyticsReferral.appSessionStartNotificationType <stripped>
-	0x4098d0  @objc AnalyticsReferral.initWithUserActivityType:creativeID:campaignID:campaignType:referringApplication:referringURL:widgetModeGroupID:widgetEngagement:appOpenedByUserActivity:appSessionStartMethod:appSessionStartNotificationType: <stripped>
-	0x409af0  @objc AnalyticsReferral.init <stripped>
-	0x409b70  @objc AnalyticsReferral..cxx_destruct <stripped>
+	0x40aa40  @objc AnalyticsReferral.userActivityType <stripped>
+	0x40aa80  @objc AnalyticsReferral.creativeID <stripped>
+	0x40aac0  @objc AnalyticsReferral.campaignID <stripped>
+	0x40ab00  @objc AnalyticsReferral.campaignType <stripped>
+	0x40ab40  @objc AnalyticsReferral.referringApplication <stripped>
+	0x40ab80  @objc AnalyticsReferral.referringURL <stripped>
+	0x40abc0  @objc AnalyticsReferral.widgetModeGroupID <stripped>
+	0x40ac70  @objc AnalyticsReferral.widgetEngagement <stripped>
+	0x40acb0  @objc AnalyticsReferral.appOpenedByUserActivity <stripped>
+	0x40acf0  @objc AnalyticsReferral.appSessionStartMethod <stripped>
+	0x40ad30  @objc AnalyticsReferral.appSessionStartNotificationType <stripped>
+	0x40b020  @objc AnalyticsReferral.initWithUserActivityType:creativeID:campaignID:campaignType:referringApplication:referringURL:widgetModeGroupID:widgetEngagement:appOpenedByUserActivity:appSessionStartMethod:appSessionStartNotificationType: <stripped>
+	0x40b240  @objc AnalyticsReferral.init <stripped>
+	0x40b2c0  @objc AnalyticsReferral..cxx_destruct <stripped>
 
 	// Swift methods
-	0x409620  class func AnalyticsReferral.__allocating_init(userActivityType:creativeID:campaignID:campaignType:referringApplication:referringURL:widgetModeGroupID:widgetEngagement:appOpenedByUserActivity:appSessionStartMethod:appSessionStartNotificationType:) // init 
+	0x40ad70  class func AnalyticsReferral.__allocating_init(userActivityType:creativeID:campaignID:campaignType:referringApplication:referringURL:widgetModeGroupID:widgetEngagement:appOpenedByUserActivity:appSessionStartMethod:appSessionStartNotificationType:) // init 
  }
 
  class NewsUI2.ChannelIssuesBlueprintModifierFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ChannelIssuesBlueprintModifierFactoryType {
@@ -11338,11 +11329,12 @@
 	let subscribeButton : PillButton // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4251c0  @objc MagazineFeedPaywallView.initWithFrame: <stripped>
-	0x4251f0  @objc MagazineFeedPaywallView.initWithCoder: <stripped>
-	0x425260  @objc MagazineFeedPaywallView..cxx_destruct <stripped>
+	0x426a40  @objc MagazineFeedPaywallView.initWithFrame: <stripped>
+	0x426a70  @objc MagazineFeedPaywallView.initWithCoder: <stripped>
+	0x426ae0  @objc MagazineFeedPaywallView..cxx_destruct <stripped>
  }
 
+ class NewsUI2.MagazineFeedOfflineIssueIndicationUpdater {
  class NewsUI2.AnalyticsScienceDataFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AnalyticsScienceDataFactoryType {
 
 	// Properties
@@ -11380,13 +11372,13 @@
 	var pluggableDelegate : weak TUPluggableDelegate? // +0x80 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4267a0  @objc ChannelIssuesViewController.isBeingUsedAsPlugin <stripped>
-	0x4267c0  @objc ChannelIssuesViewController.setIsBeingUsedAsPlugin: <stripped>
-	0x426800  @objc ChannelIssuesViewController.pluggableDelegate <stripped>
-	0x426820  @objc ChannelIssuesViewController.setPluggableDelegate: <stripped>
-	0x4269d0  @objc ChannelIssuesViewController.initWithCoder: <stripped>
-	0x4269f0  @objc ChannelIssuesViewController.initWithNibName:bundle: <stripped>
-	0x426a70  @objc ChannelIssuesViewController..cxx_destruct <stripped>
+	0x428920  @objc ChannelIssuesViewController.isBeingUsedAsPlugin <stripped>
+	0x428940  @objc ChannelIssuesViewController.setIsBeingUsedAsPlugin: <stripped>
+	0x428980  @objc ChannelIssuesViewController.pluggableDelegate <stripped>
+	0x4289a0  @objc ChannelIssuesViewController.setPluggableDelegate: <stripped>
+	0x428b50  @objc ChannelIssuesViewController.initWithCoder: <stripped>
+	0x428b70  @objc ChannelIssuesViewController.initWithNibName:bundle: <stripped>
+	0x428bf0  @objc ChannelIssuesViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -11399,8 +11391,8 @@
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4281b0  @objc FamilySharingDetectionManager.init <stripped>
-	0x428230  @objc FamilySharingDetectionManager..cxx_destruct <stripped>
+	0x429f70  @objc FamilySharingDetectionManager.init <stripped>
+	0x429ff0  @objc FamilySharingDetectionManager..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -11453,8 +11445,8 @@
 	let resolver : ResolverType // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x42d1f0  @objc WelcomeModule.init <stripped>
-	0x42d300  @objc WelcomeModule..cxx_destruct <stripped>
+	0x42efb0  @objc WelcomeModule.init <stripped>
+	0x42f0c0  @objc WelcomeModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -11479,8 +11471,8 @@
 	let firstFullRefresh : DeferredPromise<()> // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x42e8a0  @objc MyMagazinesStore.init <stripped>
-	0x42e910  @objc MyMagazinesStore..cxx_destruct <stripped>
+	0x4306b0  @objc MyMagazinesStore.init <stripped>
+	0x430720  @objc MyMagazinesStore..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -11574,10 +11566,10 @@
 	let onButtonTap : Action<()> // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x444090  @objc FollowingNotificationsDisabledView.initWithFrame: <stripped>
-	0x4440c0  @objc FollowingNotificationsDisabledView.initWithCoder: <stripped>
-	0x444500  @objc FollowingNotificationsDisabledView.layoutSubviews <stripped>
-	0x444580  @objc FollowingNotificationsDisabledView..cxx_destruct <stripped>
+	0x445ea0  @objc FollowingNotificationsDisabledView.initWithFrame: <stripped>
+	0x445ed0  @objc FollowingNotificationsDisabledView.initWithCoder: <stripped>
+	0x446310  @objc FollowingNotificationsDisabledView.layoutSubviews <stripped>
+	0x446390  @objc FollowingNotificationsDisabledView..cxx_destruct <stripped>
  }
 
  class NewsUI2.HeadlineViewVideoOnTopRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -11602,8 +11594,8 @@
 	let purchaseProvider : FCPurchaseProviderType // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4461a0  @objc PaidBundleChangeNotificationModifier.init <stripped>
-	0x446220  @objc PaidBundleChangeNotificationModifier..cxx_destruct <stripped>
+	0x447fb0  @objc PaidBundleChangeNotificationModifier.init <stripped>
+	0x448030  @objc PaidBundleChangeNotificationModifier..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -11612,12 +11604,12 @@
 
 	// Properties
 	let onValueChanged : Action<()> // +0x8 (0x8)
-	var toggleState : ToggleState // +0x41445f5f (0x0)
+	var toggleState : ToggleState // +0x7 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x446420  @objc NotificationSwitch.initWithCoder: <stripped>
-	0x446460  @objc NotificationSwitch.initWithFrame: <stripped>
-	0x446b00  @objc NotificationSwitch..cxx_destruct <stripped>
+	0x448230  @objc NotificationSwitch.initWithCoder: <stripped>
+	0x448270  @objc NotificationSwitch.initWithFrame: <stripped>
+	0x448910  @objc NotificationSwitch..cxx_destruct <stripped>
  }
 
  class NewsUI2.HeadlineViewTextViewPropertiesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -11661,16 +11653,16 @@
 	var controller : weak UIViewController?
 
 	// ObjC -> Swift bridged methods
-	0x447e10  @objc BridgedKeyCommand.initWithKey:flags:title:controller:selector: <stripped>
-	0x447f70  @objc BridgedKeyCommand.init <stripped>
-	0x447fc0  @objc BridgedKeyCommand..cxx_destruct <stripped>
+	0x449c20  @objc BridgedKeyCommand.initWithKey:flags:title:controller:selector: <stripped>
+	0x449d80  @objc BridgedKeyCommand.init <stripped>
+	0x449dd0  @objc BridgedKeyCommand..cxx_destruct <stripped>
 
 	// Swift methods
-	0x447bb0  func BridgedKeyCommand.invalidator.getter // getter 
-	0x447bf0  func BridgedKeyCommand.invalidator.setter // setter 
-	0x447c70  func BridgedKeyCommand.invalidator.modify // modifyCoroutine 
-	0x447d60  class func BridgedKeyCommand.__allocating_init(key:flags:title:controller:selector:) // init 
-	0x447ea0  func BridgedKeyCommand.performFunctionForController() // method 
+	0x4499c0  func BridgedKeyCommand.invalidator.getter // getter 
+	0x449a00  func BridgedKeyCommand.invalidator.setter // setter 
+	0x449a80  func BridgedKeyCommand.invalidator.modify // modifyCoroutine 
+	0x449b70  class func BridgedKeyCommand.__allocating_init(key:flags:title:controller:selector:) // init 
+	0x449cb0  func BridgedKeyCommand.performFunctionForController() // method 
  }
 
  class NewsUI2.BridgedKeyCommandManager : NSObject /usr/lib/libobjc.A.dylib {
@@ -11679,13 +11671,13 @@
 	var keyCommandManager : KeyCommandManager
 
 	// ObjC -> Swift bridged methods
-	0x4485f0  @objc BridgedKeyCommandManager.init <stripped>
-	0x448700  @objc BridgedKeyCommandManager.registerController:withSelector: <stripped>
-	0x448960  @objc BridgedKeyCommandManager.registerKeys: <stripped>
-	0x448a40  @objc BridgedKeyCommandManager.invalidate <stripped>
-	0x448b10  @objc BridgedKeyCommandManager.handleKeyPress: <stripped>
-	0x448c30  @objc BridgedKeyCommandManager.registerProviderWithScrollView: <stripped>
-	0x448d60  @objc BridgedKeyCommandManager..cxx_destruct <stripped>
+	0x44a400  @objc BridgedKeyCommandManager.init <stripped>
+	0x44a510  @objc BridgedKeyCommandManager.registerController:withSelector: <stripped>
+	0x44a770  @objc BridgedKeyCommandManager.registerKeys: <stripped>
+	0x44a850  @objc BridgedKeyCommandManager.invalidate <stripped>
+	0x44a920  @objc BridgedKeyCommandManager.handleKeyPress: <stripped>
+	0x44aa40  @objc BridgedKeyCommandManager.registerProviderWithScrollView: <stripped>
+	0x44ab70  @objc BridgedKeyCommandManager..cxx_destruct <stripped>
  }
 
  class NewsUI2.MyMagazinesBlueprintLayoutBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -11768,71 +11760,71 @@
 	var presentationReason : NSNumber? // +0x8 (0x8)
 	var feedPickerSection : NSNumber? // +0x10 (0x8)
 	var feedPickerType : NSNumber? // +0x18 (0x8)
-	var sourceURL : URL? // +0x3ef8 (0x0)
-	var sourceApplication : String? // +0x70c520 (0x10)
-	var userActivityType : String? // +0x0 (0x10)
-	var sourceSearchText : String? // +0x7 (0x10)
-	var adPreviewID : String? // +0x0 (0x10)
-	var adPreviewSessionID : String? // +0x6f635f5f (0x10)
+	var sourceURL : URL? // +0x0 (0x0)
+	var sourceApplication : String? // +0x41445f5f (0x10)
+	var userActivityType : String? // +0x54534e4f (0x10)
+	var sourceSearchText : String? // +0x7153f8 (0x10)
+	var adPreviewID : String? // +0x24210 (0x10)
+	var adPreviewSessionID : String? // +0x7153f8 (0x10)
 	var maximumAdRequestsForCurrentAdPreviewID : NSNumber? // +0x0 (0x8)
-	var displayRank : NSNumber? // +0x54534e4f (0x8)
-	var externalAnalyticsFeedReferrer : NSNumber? // +0x70c520 (0x8)
-	var referral : AnalyticsReferral? // +0x41445f5f (0x8)
-	var previousArticleID : String? // +0x54534e4f (0x10)
-	var previousArticleVersion : NSNumber? // +0x710418 (0x8)
-	var showSubscribedAlert : Bool // +0x24350 (0x1)
+	var displayRank : NSNumber? // +0x0 (0x8)
+	var externalAnalyticsFeedReferrer : NSNumber? // +0x6f635f5f (0x8)
+	var referral : AnalyticsReferral? // +0x0 (0x8)
+	var previousArticleID : String? // +0x0 (0x10)
+	var previousArticleVersion : NSNumber? // +0x66635f5f (0x8)
+	var showSubscribedAlert : Bool // +0x676e (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x455760  @objc FeedViewContext.presentationReason <stripped>
-	0x4557a0  @objc FeedViewContext.setPresentationReason: <stripped>
-	0x4557c0  @objc FeedViewContext.feedPickerSection <stripped>
-	0x455800  @objc FeedViewContext.setFeedPickerSection: <stripped>
-	0x455820  @objc FeedViewContext.feedPickerType <stripped>
-	0x455860  @objc FeedViewContext.setFeedPickerType: <stripped>
-	0x455880  @objc FeedViewContext.sourceURL <stripped>
-	0x455960  @objc FeedViewContext.setSourceURL: <stripped>
-	0x455a30  @objc FeedViewContext.sourceApplication <stripped>
-	0x455a70  @objc FeedViewContext.setSourceApplication: <stripped>
-	0x455a90  @objc FeedViewContext.userActivityType <stripped>
-	0x455ad0  @objc FeedViewContext.setUserActivityType: <stripped>
-	0x455af0  @objc FeedViewContext.sourceSearchText <stripped>
-	0x455b30  @objc FeedViewContext.setSourceSearchText: <stripped>
-	0x455b50  @objc FeedViewContext.adPreviewID <stripped>
-	0x455b90  @objc FeedViewContext.setAdPreviewID: <stripped>
-	0x455bb0  @objc FeedViewContext.adPreviewSessionID <stripped>
-	0x455bf0  @objc FeedViewContext.setAdPreviewSessionID: <stripped>
-	0x455c10  @objc FeedViewContext.maximumAdRequestsForCurrentAdPreviewID <stripped>
-	0x455c50  @objc FeedViewContext.setMaximumAdRequestsForCurrentAdPreviewID: <stripped>
-	0x455c70  @objc FeedViewContext.displayRank <stripped>
-	0x455cb0  @objc FeedViewContext.setDisplayRank: <stripped>
-	0x455cd0  @objc FeedViewContext.externalAnalyticsFeedReferrer <stripped>
-	0x455d10  @objc FeedViewContext.setExternalAnalyticsFeedReferrer: <stripped>
-	0x455d30  @objc FeedViewContext.referral <stripped>
-	0x455d70  @objc FeedViewContext.setReferral: <stripped>
-	0x455d90  @objc FeedViewContext.previousArticleID <stripped>
-	0x455e90  @objc FeedViewContext.setPreviousArticleID: <stripped>
-	0x455f30  @objc FeedViewContext.previousArticleVersion <stripped>
-	0x455ff0  @objc FeedViewContext.setPreviousArticleVersion: <stripped>
-	0x456070  @objc FeedViewContext.showSubscribedAlert <stripped>
-	0x4560e0  @objc FeedViewContext.setShowSubscribedAlert: <stripped>
-	0x456160  @objc FeedViewContext.setWithPresentationReason: <stripped>
-	0x4561a0  @objc FeedViewContext.setWithFeedPickerSection: <stripped>
-	0x456250  @objc FeedViewContext.setWithFeedPickerType: <stripped>
-	0x456440  @objc FeedViewContext.setWithSourceURL: <stripped>
-	0x456570  @objc FeedViewContext.setWithSourceApplication: <stripped>
-	0x4565b0  @objc FeedViewContext.setWithUserActivityType: <stripped>
-	0x4565f0  @objc FeedViewContext.setWithSourceSearchText: <stripped>
-	0x456630  @objc FeedViewContext.setWithAdPreviewID: <stripped>
-	0x456670  @objc FeedViewContext.setWithAdPreviewSessionID: <stripped>
-	0x4566b0  @objc FeedViewContext.setWithMaximumAdRequestsForCurrentAdPreviewID: <stripped>
-	0x4566d0  @objc FeedViewContext.setWithDisplayRank: <stripped>
-	0x456710  @objc FeedViewContext.setWithExternalAnalyticsFeedReferrer: <stripped>
-	0x456790  @objc FeedViewContext.setWithReferral: <stripped>
-	0x456880  @objc FeedViewContext.setWithPreviousArticleID: <stripped>
-	0x4569a0  @objc FeedViewContext.setWithPreviousArticleVersion: <stripped>
-	0x456a90  @objc FeedViewContext.setWithShowSubscribedAlert: <stripped>
-	0x456e30  @objc FeedViewContext.init <stripped>
-	0x456e90  @objc FeedViewContext..cxx_destruct <stripped>
+	0x457570  @objc FeedViewContext.presentationReason <stripped>
+	0x4575b0  @objc FeedViewContext.setPresentationReason: <stripped>
+	0x4575d0  @objc FeedViewContext.feedPickerSection <stripped>
+	0x457610  @objc FeedViewContext.setFeedPickerSection: <stripped>
+	0x457630  @objc FeedViewContext.feedPickerType <stripped>
+	0x457670  @objc FeedViewContext.setFeedPickerType: <stripped>
+	0x457690  @objc FeedViewContext.sourceURL <stripped>
+	0x457770  @objc FeedViewContext.setSourceURL: <stripped>
+	0x457840  @objc FeedViewContext.sourceApplication <stripped>
+	0x457880  @objc FeedViewContext.setSourceApplication: <stripped>
+	0x4578a0  @objc FeedViewContext.userActivityType <stripped>
+	0x4578e0  @objc FeedViewContext.setUserActivityType: <stripped>
+	0x457900  @objc FeedViewContext.sourceSearchText <stripped>
+	0x457940  @objc FeedViewContext.setSourceSearchText: <stripped>
+	0x457960  @objc FeedViewContext.adPreviewID <stripped>
+	0x4579a0  @objc FeedViewContext.setAdPreviewID: <stripped>
+	0x4579c0  @objc FeedViewContext.adPreviewSessionID <stripped>
+	0x457a00  @objc FeedViewContext.setAdPreviewSessionID: <stripped>
+	0x457a20  @objc FeedViewContext.maximumAdRequestsForCurrentAdPreviewID <stripped>
+	0x457a60  @objc FeedViewContext.setMaximumAdRequestsForCurrentAdPreviewID: <stripped>
+	0x457a80  @objc FeedViewContext.displayRank <stripped>
+	0x457ac0  @objc FeedViewContext.setDisplayRank: <stripped>
+	0x457ae0  @objc FeedViewContext.externalAnalyticsFeedReferrer <stripped>
+	0x457b20  @objc FeedViewContext.setExternalAnalyticsFeedReferrer: <stripped>
+	0x457b40  @objc FeedViewContext.referral <stripped>
+	0x457b80  @objc FeedViewContext.setReferral: <stripped>
+	0x457ba0  @objc FeedViewContext.previousArticleID <stripped>
+	0x457ca0  @objc FeedViewContext.setPreviousArticleID: <stripped>
+	0x457d40  @objc FeedViewContext.previousArticleVersion <stripped>
+	0x457e00  @objc FeedViewContext.setPreviousArticleVersion: <stripped>
+	0x457e80  @objc FeedViewContext.showSubscribedAlert <stripped>
+	0x457ef0  @objc FeedViewContext.setShowSubscribedAlert: <stripped>
+	0x457f70  @objc FeedViewContext.setWithPresentationReason: <stripped>
+	0x457fb0  @objc FeedViewContext.setWithFeedPickerSection: <stripped>
+	0x458060  @objc FeedViewContext.setWithFeedPickerType: <stripped>
+	0x458250  @objc FeedViewContext.setWithSourceURL: <stripped>
+	0x458380  @objc FeedViewContext.setWithSourceApplication: <stripped>
+	0x4583c0  @objc FeedViewContext.setWithUserActivityType: <stripped>
+	0x458400  @objc FeedViewContext.setWithSourceSearchText: <stripped>
+	0x458440  @objc FeedViewContext.setWithAdPreviewID: <stripped>
+	0x458480  @objc FeedViewContext.setWithAdPreviewSessionID: <stripped>
+	0x4584c0  @objc FeedViewContext.setWithMaximumAdRequestsForCurrentAdPreviewID: <stripped>
+	0x4584e0  @objc FeedViewContext.setWithDisplayRank: <stripped>
+	0x458520  @objc FeedViewContext.setWithExternalAnalyticsFeedReferrer: <stripped>
+	0x4585a0  @objc FeedViewContext.setWithReferral: <stripped>
+	0x458690  @objc FeedViewContext.setWithPreviousArticleID: <stripped>
+	0x4587b0  @objc FeedViewContext.setWithPreviousArticleVersion: <stripped>
+	0x4588a0  @objc FeedViewContext.setWithShowSubscribedAlert: <stripped>
+	0x458c40  @objc FeedViewContext.init <stripped>
+	0x458ca0  @objc FeedViewContext..cxx_destruct <stripped>
  }
 
  class NewsUI2.PPTRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -11841,8 +11833,8 @@
 	let navigator : StackNavigator<NewsActivity2> // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4570f0  @objc PPTRouter.routeToHeadlineForAritlceID: <stripped>
-	0x457340  @objc PPTRouter.routeToFeedWithTag: <stripped>
+	0x458f00  @objc PPTRouter.routeToHeadlineForAritlceID: <stripped>
+	0x459150  @objc PPTRouter.routeToFeedWithTag: <stripped>
 
 	// Swift methods
  }
@@ -11860,8 +11852,8 @@
 	let payload : [AnyHashable : Any]?
 
 	// ObjC -> Swift bridged methods
-	0x459490  @objc UserNotification.init <stripped>
-	0x459520  @objc UserNotification..cxx_destruct <stripped>
+	0x45b2a0  @objc UserNotification.init <stripped>
+	0x45b330  @objc UserNotification..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -12031,9 +12023,9 @@
 	let bottomHairline : SeparatorView // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x467ea0  @objc FollowingFooterView.initWithFrame: <stripped>
-	0x467ed0  @objc FollowingFooterView.initWithCoder: <stripped>
-	0x467f70  @objc FollowingFooterView..cxx_destruct <stripped>
+	0x469cb0  @objc FollowingFooterView.initWithFrame: <stripped>
+	0x469ce0  @objc FollowingFooterView.initWithCoder: <stripped>
+	0x469d80  @objc FollowingFooterView..cxx_destruct <stripped>
  }
 
  enum NewsUI2.MagazineFeedGroupKind {
@@ -12107,11 +12099,11 @@
 	let extraMargin : UIView // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x46ae50  @objc ArticleRecirculationBottomMarginViewController.initWithCoder: <stripped>
-	0x46ae70  @objc ArticleRecirculationBottomMarginViewController.viewDidLoad <stripped>
-	0x46af50  @objc ArticleRecirculationBottomMarginViewController.viewWillLayoutSubviews <stripped>
-	0x46b0a0  @objc ArticleRecirculationBottomMarginViewController.initWithNibName:bundle: <stripped>
-	0x46b120  @objc ArticleRecirculationBottomMarginViewController..cxx_destruct <stripped>
+	0x46cc60  @objc ArticleRecirculationBottomMarginViewController.initWithCoder: <stripped>
+	0x46cc80  @objc ArticleRecirculationBottomMarginViewController.viewDidLoad <stripped>
+	0x46cd60  @objc ArticleRecirculationBottomMarginViewController.viewWillLayoutSubviews <stripped>
+	0x46ceb0  @objc ArticleRecirculationBottomMarginViewController.initWithNibName:bundle: <stripped>
+	0x46cf30  @objc ArticleRecirculationBottomMarginViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -12133,12 +12125,12 @@
 	var delegate : weak TSArticleRecirculationRoutableFeedDelegate & TSArticleRecirculationViewControllerDelegate?
 
 	// ObjC -> Swift bridged methods
-	0x46b4e0  @objc ArticleRecirculationViewControllersProvider.bottomMarginViewController <stripped>
-	0x46b4f0  @objc ArticleRecirculationViewControllersProvider.primaryViewController <stripped>
-	0x46b520  @objc ArticleRecirculationViewControllersProvider.secondaryViewController <stripped>
-	0x46b550  @objc ArticleRecirculationViewControllersProvider.inArticleViewController <stripped>
-	0x46b580  @objc ArticleRecirculationViewControllersProvider.delegate <stripped>
-	0x46b5a0  @objc ArticleRecirculationViewControllersProvider.setDelegate: <stripped>
+	0x46d2f0  @objc ArticleRecirculationViewControllersProvider.bottomMarginViewController <stripped>
+	0x46d300  @objc ArticleRecirculationViewControllersProvider.primaryViewController <stripped>
+	0x46d330  @objc ArticleRecirculationViewControllersProvider.secondaryViewController <stripped>
+	0x46d360  @objc ArticleRecirculationViewControllersProvider.inArticleViewController <stripped>
+	0x46d390  @objc ArticleRecirculationViewControllersProvider.delegate <stripped>
+	0x46d3b0  @objc ArticleRecirculationViewControllersProvider.setDelegate: <stripped>
 
 	// Swift methods
  }
@@ -12150,9 +12142,9 @@
 	let tracker : Tracker
 
 	// ObjC -> Swift bridged methods
-	0x46be50  @objc ArticleRecirculationModule.createViewControllersWithHeadline:data:nativeAdCellDataProvider: <stripped>
-	0x46bf30  @objc ArticleRecirculationModule.init <stripped>
-	0x46c000  @objc ArticleRecirculationModule..cxx_destruct <stripped>
+	0x46dc60  @objc ArticleRecirculationModule.createViewControllersWithHeadline:data:nativeAdCellDataProvider: <stripped>
+	0x46dd40  @objc ArticleRecirculationModule.init <stripped>
+	0x46de10  @objc ArticleRecirculationModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -12187,9 +12179,9 @@
 	let tracker : Tracker // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x46e5f0  @objc FollowingNotificationsModule.createViewController <stripped>
-	0x46e690  @objc FollowingNotificationsModule.init <stripped>
-	0x46e710  @objc FollowingNotificationsModule..cxx_destruct <stripped>
+	0x470400  @objc FollowingNotificationsModule.createViewController <stripped>
+	0x4704a0  @objc FollowingNotificationsModule.init <stripped>
+	0x470520  @objc FollowingNotificationsModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -12260,9 +12252,9 @@
 	let resolver : ResolverType // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x476780  @objc EmailSignupModule.createViewController <stripped>
-	0x476890  @objc EmailSignupModule.init <stripped>
-	0x476940  @objc EmailSignupModule..cxx_destruct <stripped>
+	0x478590  @objc EmailSignupModule.createViewController <stripped>
+	0x4786a0  @objc EmailSignupModule.init <stripped>
+	0x478750  @objc EmailSignupModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -12314,9 +12306,9 @@
 	let footerView : HeadlineViewFooterView // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4783a0  @objc PlayButtonHeadlineView.initWithFrame: <stripped>
-	0x478460  @objc PlayButtonHeadlineView.initWithCoder: <stripped>
-	0x478530  @objc PlayButtonHeadlineView..cxx_destruct <stripped>
+	0x47a3e0  @objc PlayButtonHeadlineView.initWithFrame: <stripped>
+	0x47a4a0  @objc PlayButtonHeadlineView.initWithCoder: <stripped>
+	0x47a570  @objc PlayButtonHeadlineView..cxx_destruct <stripped>
  }
 
  struct NewsUI2.CategoriesMagazineFeedGroupConfig {
@@ -12351,15 +12343,15 @@
 
 	// Properties
 	let title : String? // +0x8 (0x10)
-	let actionURL : URL // +0x0 (0x0)
+	let actionURL : URL // +0x41445f5f (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x47ae10  @objc SpecialEventsAction.initWithActionURL:title: <stripped>
-	0x47af50  @objc SpecialEventsAction.init <stripped>
-	0x47afc0  @objc SpecialEventsAction..cxx_destruct <stripped>
+	0x47ce50  @objc SpecialEventsAction.initWithActionURL:title: <stripped>
+	0x47cf90  @objc SpecialEventsAction.init <stripped>
+	0x47d000  @objc SpecialEventsAction..cxx_destruct <stripped>
 
 	// Swift methods
-	0x47acc0  class func SpecialEventsAction.__allocating_init(actionURL:title:) // init 
+	0x47cd00  class func SpecialEventsAction.__allocating_init(actionURL:title:) // init 
  }
 
  class NewsUI2.RecordIDURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -12377,8 +12369,8 @@
 	let result : ArticleRecirculationResult
 
 	// ObjC -> Swift bridged methods
-	0x47b980  @objc ArticleRecirculationData.init <stripped>
-	0x47b9f0  @objc ArticleRecirculationData..cxx_destruct <stripped>
+	0x47d9c0  @objc ArticleRecirculationData.init <stripped>
+	0x47da30  @objc ArticleRecirculationData..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -12389,9 +12381,9 @@
 	var service : ArticleRecirculationServiceType
 
 	// ObjC -> Swift bridged methods
-	0x47bbb0  @objc ArticleRecirculationBridgedService.fetchDataForHeadline:context:cellStyle:subscriptionAdContext:completion: <stripped>
-	0x47bce0  @objc ArticleRecirculationBridgedService.init <stripped>
-	0x47bd70  @objc ArticleRecirculationBridgedService..cxx_destruct <stripped>
+	0x47dbf0  @objc ArticleRecirculationBridgedService.fetchDataForHeadline:context:cellStyle:subscriptionAdContext:completion: <stripped>
+	0x47dd20  @objc ArticleRecirculationBridgedService.init <stripped>
+	0x47ddb0  @objc ArticleRecirculationBridgedService..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -12452,10 +12444,10 @@
 	let userInfo : FCUserInfo // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x480f60  @objc SiriSuggestionStatusProvider.isOptedInToSiriSuggestions <stripped>
+	0x4831f0  @objc SiriSuggestionStatusProvider.isOptedInToSiriSuggestions <stripped>
 
 	// Swift methods
-	0x480f90  func SiriSuggestionStatusProvider.isOptedInToSiriSuggestions.getter // getter 
+	0x483220  func SiriSuggestionStatusProvider.isOptedInToSiriSuggestions.getter // getter 
  }
 
  class NewsUI2.FollowingViewHeaderFooterProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -12550,9 +12542,9 @@
 	let alertPresenter : OverlayAlertPresenterType // +0x70 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x490020  @objc MagazineGridViewController.initWithCoder: <stripped>
-	0x490070  @objc MagazineGridViewController.initWithNibName:bundle: <stripped>
-	0x4900f0  @objc MagazineGridViewController..cxx_destruct <stripped>
+	0x4922e0  @objc MagazineGridViewController.initWithCoder: <stripped>
+	0x492330  @objc MagazineGridViewController.initWithNibName:bundle: <stripped>
+	0x4923b0  @objc MagazineGridViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -12563,9 +12555,9 @@
 	let resolver : ResolverType // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x492450  @objc SearchMoreModule.createViewControllerFor:channelStreamingResults:topicStreamingResults:articleStreamingResults: <stripped>
-	0x492540  @objc SearchMoreModule.init <stripped>
-	0x4925f0  @objc SearchMoreModule..cxx_destruct <stripped>
+	0x4943e0  @objc SearchMoreModule.createViewControllerFor:channelStreamingResults:topicStreamingResults:articleStreamingResults: <stripped>
+	0x4944d0  @objc SearchMoreModule.init <stripped>
+	0x494580  @objc SearchMoreModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -12595,14 +12587,14 @@
 
  class NewsUI2.MainAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4961e0  @objc MainAssembly.init <stripped>
+	0x4981a0  @objc MainAssembly.init <stripped>
 
 	// Swift methods
  }
 
  class NewsUI2.SavedAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x499660  @objc SavedAssembly.init <stripped>
+	0x49b620  @objc SavedAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -12622,15 +12614,15 @@
 	let cornerRadius : CGFloat // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x49a7e0  @objc FeedNavImageProcessorRequest.assetHandles <stripped>
-	0x49a8c0  @objc FeedNavImageProcessorRequest.setAssetHandles: <stripped>
-	0x49ac70  @objc FeedNavImageProcessorRequest.initWithFeedNavImageAssetHandle:feedNavImageSize:feedNavImageStyler:scale: <stripped>
-	0x49acd0  @objc FeedNavImageProcessorRequest.cacheIdentifier <stripped>
-	0x49afa0  @objc FeedNavImageProcessorRequest.init <stripped>
-	0x49b020  @objc FeedNavImageProcessorRequest..cxx_destruct <stripped>
+	0x49c7a0  @objc FeedNavImageProcessorRequest.assetHandles <stripped>
+	0x49c880  @objc FeedNavImageProcessorRequest.setAssetHandles: <stripped>
+	0x49cc30  @objc FeedNavImageProcessorRequest.initWithFeedNavImageAssetHandle:feedNavImageSize:feedNavImageStyler:scale: <stripped>
+	0x49cc90  @objc FeedNavImageProcessorRequest.cacheIdentifier <stripped>
+	0x49cf60  @objc FeedNavImageProcessorRequest.init <stripped>
+	0x49cfe0  @objc FeedNavImageProcessorRequest..cxx_destruct <stripped>
 
 	// Swift methods
-	0x49a660  class func FeedNavImageProcessorRequest.__allocating_init(feedNavImageAssetHandle:feedNavImageSize:feedNavImageStyler:scale:) // init 
+	0x49c620  class func FeedNavImageProcessorRequest.__allocating_init(feedNavImageAssetHandle:feedNavImageSize:feedNavImageStyler:scale:) // init 
  }
 
  struct NewsUI2.ChannelIssuesGroupTitleViewLayoutAttributes {
@@ -12645,7 +12637,7 @@
 	// Properties
 	let url : URL // +0x41445f5f (0x0)
 	let title : String? // +0x0 (0x10)
-	let action : SpecialEventsAction? // +0x809000 (0x8)
+	let action : SpecialEventsAction? // +0x810970 (0x8)
 
 	// Swift methods
  }
@@ -12687,10 +12679,10 @@
 	let topicColorProvider : TSTopicColorProviderType
 
 	// ObjC -> Swift bridged methods
-	0x49d8a0  @objc FeedNavImageStyler.tagTitleFont <stripped>
-	0x49d8f0  @objc FeedNavImageStyler.tagColorFor: <stripped>
-	0x49d990  @objc FeedNavImageStyler.cornerRadius <stripped>
-	0x49d9a0  @objc FeedNavImageStyler.padding <stripped>
+	0x49f860  @objc FeedNavImageStyler.tagTitleFont <stripped>
+	0x49f8b0  @objc FeedNavImageStyler.tagColorFor: <stripped>
+	0x49f950  @objc FeedNavImageStyler.cornerRadius <stripped>
+	0x49f960  @objc FeedNavImageStyler.padding <stripped>
 
 	// Swift methods
  }
@@ -12702,10 +12694,10 @@
 	let feedNavImageStyler : NEFeedNavImageStylerType
 
 	// ObjC -> Swift bridged methods
-	0x49d9f0  @objc TopicColorFeedNavImageStyler.tagTitleFont <stripped>
-	0x49da20  @objc TopicColorFeedNavImageStyler.tagColorFor: <stripped>
-	0x49da30  @objc TopicColorFeedNavImageStyler.cornerRadius <stripped>
-	0x49da50  @objc TopicColorFeedNavImageStyler.padding <stripped>
+	0x49f9b0  @objc TopicColorFeedNavImageStyler.tagTitleFont <stripped>
+	0x49f9e0  @objc TopicColorFeedNavImageStyler.tagColorFor: <stripped>
+	0x49f9f0  @objc TopicColorFeedNavImageStyler.cornerRadius <stripped>
+	0x49fa10  @objc TopicColorFeedNavImageStyler.padding <stripped>
 
 	// Swift methods
  }
@@ -12724,12 +12716,12 @@
 	let bridgedNewsActivityFactory : TSBridgedNewsActivityFactoryType // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4a03e0  @objc NewsActivityInfoDeserializer.deserializeWithActivityType:from:error:completion: <stripped>
-	0x4a0570  @objc NewsActivityInfoDeserializer.init <stripped>
-	0x4a05f0  @objc NewsActivityInfoDeserializer..cxx_destruct <stripped>
+	0x4a24e0  @objc NewsActivityInfoDeserializer.deserializeWithActivityType:from:error:completion: <stripped>
+	0x4a2670  @objc NewsActivityInfoDeserializer.init <stripped>
+	0x4a26f0  @objc NewsActivityInfoDeserializer..cxx_destruct <stripped>
 
 	// Swift methods
-	0x49ed70  func NewsActivityInfoDeserializer.deserialize(activityType:from:completion:) // method 
+	0x4a0e70  func NewsActivityInfoDeserializer.deserialize(activityType:from:completion:) // method 
  }
 
  enum NewsUI2.DeserializationError {
@@ -12748,19 +12740,19 @@
 	var entitlementsOverrideProvider : FCEntitlementsOverrideProviderType? // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4a1e70  @objc StubBundleSubscriptionManager.cachedSubscription <stripped>
-	0x4a1e80  @objc StubBundleSubscriptionManager.bundleSubscription <stripped>
-	0x4a1e90  @objc StubBundleSubscriptionManager.entitlementsOverrideProvider <stripped>
-	0x4a1eb0  @objc StubBundleSubscriptionManager.setEntitlementsOverrideProvider: <stripped>
-	0x4a1ee0  @objc StubBundleSubscriptionManager.refreshBundleSubscriptionWithCachePolicy:completion: <stripped>
-	0x4a1f40  @objc StubBundleSubscriptionManager.addObserver: <stripped>
-	0x4a1f40  @objc StubBundleSubscriptionManager.removeObserver: <stripped>
-	0x4a1f00  @objc StubBundleSubscriptionManager.bundleSubscriptionLookupEntry <stripped>
-	0x4a1f40  @objc StubBundleSubscriptionManager.renewalNoticeShownWithPurchaseID: <stripped>
-	0x4a1f30  @objc StubBundleSubscriptionManager.forceExpireBundleSubscriptionBasedOnInternalSettings <stripped>
-	0x4a1f40  @objc StubBundleSubscriptionManager.prewarmBundleTagIDsWithPurchaseID: <stripped>
-	0x4a1f30  @objc StubBundleSubscriptionManager.clearBundleSubscription <stripped>
-	0x4a1f50  @objc StubBundleSubscriptionManager.prepareForUseWithCompletion: <stripped>
+	0x4a3f70  @objc StubBundleSubscriptionManager.cachedSubscription <stripped>
+	0x4a3f80  @objc StubBundleSubscriptionManager.bundleSubscription <stripped>
+	0x4a3f90  @objc StubBundleSubscriptionManager.entitlementsOverrideProvider <stripped>
+	0x4a3fb0  @objc StubBundleSubscriptionManager.setEntitlementsOverrideProvider: <stripped>
+	0x4a3fe0  @objc StubBundleSubscriptionManager.refreshBundleSubscriptionWithCachePolicy:completion: <stripped>
+	0x4a4040  @objc StubBundleSubscriptionManager.addObserver: <stripped>
+	0x4a4040  @objc StubBundleSubscriptionManager.removeObserver: <stripped>
+	0x4a4000  @objc StubBundleSubscriptionManager.bundleSubscriptionLookupEntry <stripped>
+	0x4a4040  @objc StubBundleSubscriptionManager.renewalNoticeShownWithPurchaseID: <stripped>
+	0x4a4030  @objc StubBundleSubscriptionManager.forceExpireBundleSubscriptionBasedOnInternalSettings <stripped>
+	0x4a4040  @objc StubBundleSubscriptionManager.prewarmBundleTagIDsWithPurchaseID: <stripped>
+	0x4a4030  @objc StubBundleSubscriptionManager.clearBundleSubscription <stripped>
+	0x4a4050  @objc StubBundleSubscriptionManager.prepareForUseWithCompletion: <stripped>
 
 	// Swift methods
  }
@@ -12800,13 +12792,13 @@
 	let activityIndicatorView : UIActivityIndicatorView // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4a3620  @objc SpinnerView.initWithFrame: <stripped>
-	0x4a37e0  @objc SpinnerView.initWithCoder: <stripped>
-	0x4a3930  @objc SpinnerView.layoutSubviews <stripped>
-	0x4a3ac0  @objc SpinnerView..cxx_destruct <stripped>
+	0x4a5720  @objc SpinnerView.initWithFrame: <stripped>
+	0x4a58e0  @objc SpinnerView.initWithCoder: <stripped>
+	0x4a5a30  @objc SpinnerView.layoutSubviews <stripped>
+	0x4a5bc0  @objc SpinnerView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x4a3a00  func SpinnerView.prepareForReuse() // method 
+	0x4a5b00  func SpinnerView.prepareForReuse() // method 
  }
 
  struct NewsUI2.TitleViewStyler: TitleViewStylerType {
@@ -12854,9 +12846,9 @@
 	let publisherLabel : UILabel // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4a5370  @objc HeadlineViewTextView.initWithFrame: <stripped>
-	0x4a53a0  @objc HeadlineViewTextView.initWithCoder: <stripped>
-	0x4a5440  @objc HeadlineViewTextView..cxx_destruct <stripped>
+	0x4a7470  @objc HeadlineViewTextView.initWithFrame: <stripped>
+	0x4a74a0  @objc HeadlineViewTextView.initWithCoder: <stripped>
+	0x4a7540  @objc HeadlineViewTextView..cxx_destruct <stripped>
  }
 
  struct NewsUI2.OrderedArticleListMagazineFeedGroupKnobs {
@@ -12925,8 +12917,8 @@
 	let resolver : ResolverType // +0x38 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x4a9e10  @objc BridgedPaywallFactory.init <stripped>
-	0x4a9ec0  @objc BridgedPaywallFactory..cxx_destruct <stripped>
+	0x4abf10  @objc BridgedPaywallFactory.init <stripped>
+	0x4abfc0  @objc BridgedPaywallFactory..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -13055,19 +13047,19 @@
 	var pluggableDelegate : weak TUPluggableDelegate? // +0xa8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4b68a0  @objc MoreVideosViewController.routableDelegate <stripped>
-	0x4b68c0  @objc MoreVideosViewController.setRoutableDelegate: <stripped>
-	0x4b68e0  @objc MoreVideosViewController.groupRankProvider <stripped>
-	0x4b6900  @objc MoreVideosViewController.setGroupRankProvider: <stripped>
-	0x4b6920  @objc MoreVideosViewController.feedViewExposureID <stripped>
-	0x4b6980  @objc MoreVideosViewController.setFeedViewExposureID: <stripped>
-	0x4b69c0  @objc MoreVideosViewController.isBeingUsedAsPlugin <stripped>
-	0x4b69e0  @objc MoreVideosViewController.setIsBeingUsedAsPlugin: <stripped>
-	0x4b6a20  @objc MoreVideosViewController.pluggableDelegate <stripped>
-	0x4b6a40  @objc MoreVideosViewController.setPluggableDelegate: <stripped>
-	0x4b6c40  @objc MoreVideosViewController.initWithCoder: <stripped>
-	0x4b6c60  @objc MoreVideosViewController.initWithNibName:bundle: <stripped>
-	0x4b6ce0  @objc MoreVideosViewController..cxx_destruct <stripped>
+	0x4b89c0  @objc MoreVideosViewController.routableDelegate <stripped>
+	0x4b89e0  @objc MoreVideosViewController.setRoutableDelegate: <stripped>
+	0x4b8a00  @objc MoreVideosViewController.groupRankProvider <stripped>
+	0x4b8a20  @objc MoreVideosViewController.setGroupRankProvider: <stripped>
+	0x4b8a40  @objc MoreVideosViewController.feedViewExposureID <stripped>
+	0x4b8aa0  @objc MoreVideosViewController.setFeedViewExposureID: <stripped>
+	0x4b8ae0  @objc MoreVideosViewController.isBeingUsedAsPlugin <stripped>
+	0x4b8b00  @objc MoreVideosViewController.setIsBeingUsedAsPlugin: <stripped>
+	0x4b8b40  @objc MoreVideosViewController.pluggableDelegate <stripped>
+	0x4b8b60  @objc MoreVideosViewController.setPluggableDelegate: <stripped>
+	0x4b8d60  @objc MoreVideosViewController.initWithCoder: <stripped>
+	0x4b8d80  @objc MoreVideosViewController.initWithNibName:bundle: <stripped>
+	0x4b8e00  @objc MoreVideosViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -13082,7 +13074,7 @@
 
  class NewsUI2.SharingAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4b9ec0  @objc SharingAssembly.init <stripped>
+	0x4bc0b0  @objc SharingAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -13098,8 +13090,8 @@
 
  class NewsUI2.StubNativeAdDataProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-	0x4baa50  @objc StubNativeAdDataProvider.requestNativeAdCellDataValidatingAgainst:completion: <stripped>
-	0x4baab0  @objc StubNativeAdDataProvider.requestNativeSubscriptionAdWithCompletion: <stripped>
+	0x4bcc40  @objc StubNativeAdDataProvider.requestNativeAdCellDataValidatingAgainst:completion: <stripped>
+	0x4bcca0  @objc StubNativeAdDataProvider.requestNativeSubscriptionAdWithCompletion: <stripped>
 
 	// Swift methods
  }
@@ -13169,9 +13161,9 @@
 	let titleLabel : UILabel // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4c8c90  @objc MagazineCategoryView.initWithFrame: <stripped>
-	0x4c8cc0  @objc MagazineCategoryView.initWithCoder: <stripped>
-	0x4c8d60  @objc MagazineCategoryView..cxx_destruct <stripped>
+	0x4cae90  @objc MagazineCategoryView.initWithFrame: <stripped>
+	0x4caec0  @objc MagazineCategoryView.initWithCoder: <stripped>
+	0x4caf60  @objc MagazineCategoryView..cxx_destruct <stripped>
  }
 
  class NewsUI2.MagazineCategoriesViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -13185,13 +13177,13 @@
 	var pluggableDelegate : weak TUPluggableDelegate? // +0x58 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4c8f70  @objc MagazineCategoriesViewController.isBeingUsedAsPlugin <stripped>
-	0x4c8f90  @objc MagazineCategoriesViewController.setIsBeingUsedAsPlugin: <stripped>
-	0x4c8fd0  @objc MagazineCategoriesViewController.pluggableDelegate <stripped>
-	0x4c8ff0  @objc MagazineCategoriesViewController.setPluggableDelegate: <stripped>
-	0x4c9180  @objc MagazineCategoriesViewController.initWithCoder: <stripped>
-	0x4c91f0  @objc MagazineCategoriesViewController.initWithNibName:bundle: <stripped>
-	0x4c9270  @objc MagazineCategoriesViewController..cxx_destruct <stripped>
+	0x4cb170  @objc MagazineCategoriesViewController.isBeingUsedAsPlugin <stripped>
+	0x4cb190  @objc MagazineCategoriesViewController.setIsBeingUsedAsPlugin: <stripped>
+	0x4cb1d0  @objc MagazineCategoriesViewController.pluggableDelegate <stripped>
+	0x4cb1f0  @objc MagazineCategoriesViewController.setPluggableDelegate: <stripped>
+	0x4cb380  @objc MagazineCategoriesViewController.initWithCoder: <stripped>
+	0x4cb3f0  @objc MagazineCategoriesViewController.initWithNibName:bundle: <stripped>
+	0x4cb470  @objc MagazineCategoriesViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -13206,13 +13198,13 @@
 	var routableDelegate : weak TSTopOfFeedRoutableFeedDelegate? // +0x50 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4ca6a0  @objc TopOfFeedViewController.delegate <stripped>
-	0x4ca6c0  @objc TopOfFeedViewController.setDelegate: <stripped>
-	0x4ca6e0  @objc TopOfFeedViewController.routableDelegate <stripped>
-	0x4ca700  @objc TopOfFeedViewController.setRoutableDelegate: <stripped>
-	0x4ca720  @objc TopOfFeedViewController.initWithCoder: <stripped>
-	0x4ca740  @objc TopOfFeedViewController.initWithNibName:bundle: <stripped>
-	0x4ca7c0  @objc TopOfFeedViewController..cxx_destruct <stripped>
+	0x4cc8a0  @objc TopOfFeedViewController.delegate <stripped>
+	0x4cc8c0  @objc TopOfFeedViewController.setDelegate: <stripped>
+	0x4cc8e0  @objc TopOfFeedViewController.routableDelegate <stripped>
+	0x4cc900  @objc TopOfFeedViewController.setRoutableDelegate: <stripped>
+	0x4cc920  @objc TopOfFeedViewController.initWithCoder: <stripped>
+	0x4cc940  @objc TopOfFeedViewController.initWithNibName:bundle: <stripped>
+	0x4cc9c0  @objc TopOfFeedViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -13261,6 +13253,7 @@
 	let issueService : IssueServiceType // +0x58 (0x28)
 	let issueModelFactory : IssueModelFactoryType // +0x80 (0x28)
 	let tagService : TagServiceType // +0xa8 (0x10)
+	var $__lazy_storage_$_lazyInitializingPromise : Promise<StoreState<MyMagazinesState>>? // +0xb8 (0x8)
 
 	// Swift methods
  }
@@ -13295,8 +13288,8 @@
 	let userInfo : FCUserInfo // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4d7690  @objc FollowingBadgingCoordinator.init <stripped>
-	0x4d7710  @objc FollowingBadgingCoordinator..cxx_destruct <stripped>
+	0x4d9960  @objc FollowingBadgingCoordinator.init <stripped>
+	0x4d99e0  @objc FollowingBadgingCoordinator..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -13332,14 +13325,14 @@
 	let showBanners : Bool // +0x14 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x4dab50  @objc NotificationSettings.authorizationStatus <stripped>
-	0x4dab90  @objc NotificationSettings.sound <stripped>
-	0x4dabd0  @objc NotificationSettings.badge <stripped>
-	0x4dac10  @objc NotificationSettings.showOnLockScreen <stripped>
-	0x4dac50  @objc NotificationSettings.showInNotificationCenter <stripped>
-	0x4dac90  @objc NotificationSettings.showBanners <stripped>
-	0x4dacd0  @objc NotificationSettings.initWithSystemSettings: <stripped>
-	0x4dad60  @objc NotificationSettings.init <stripped>
+	0x4dce20  @objc NotificationSettings.authorizationStatus <stripped>
+	0x4dce60  @objc NotificationSettings.sound <stripped>
+	0x4dcea0  @objc NotificationSettings.badge <stripped>
+	0x4dcee0  @objc NotificationSettings.showOnLockScreen <stripped>
+	0x4dcf20  @objc NotificationSettings.showInNotificationCenter <stripped>
+	0x4dcf60  @objc NotificationSettings.showBanners <stripped>
+	0x4dcfa0  @objc NotificationSettings.initWithSystemSettings: <stripped>
+	0x4dd030  @objc NotificationSettings.init <stripped>
 
 	// Swift methods
  }
@@ -13350,8 +13343,8 @@
 	let kOptions : UNAuthorizationOptions
 
 	// ObjC -> Swift bridged methods
-	0x4dae10  @objc NotificationService.fetchNotificationSettingsWith: <stripped>
-	0x4dccc0  @objc NotificationService.init <stripped>
+	0x4dd0e0  @objc NotificationService.fetchNotificationSettingsWith: <stripped>
+	0x4def90  @objc NotificationService.init <stripped>
  }
 
  enum NewsUI2.SearchMoreAnalyticEvent {
@@ -13386,8 +13379,8 @@
 
  class NewsUI2.LegacyArticleViewerModule : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4e01c0  @objc LegacyArticleViewerModule.createViewControllerForArticleID:headline:articleContext:articlePresentationStyle:showShareSheet:forceArticleUpdate: <stripped>
-	0x4e02d0  @objc LegacyArticleViewerModule.init <stripped>
+	0x4e2490  @objc LegacyArticleViewerModule.createViewControllerForArticleID:headline:articleContext:articlePresentationStyle:showShareSheet:forceArticleUpdate: <stripped>
+	0x4e25a0  @objc LegacyArticleViewerModule.init <stripped>
  }
 
  class NewsUI2.LegacyArticleProxyModule : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LegacyArticleProxyModuleType {
@@ -13406,7 +13399,7 @@
 
  class NewsUI2.MagazineCategoriesAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4e37a0  @objc MagazineCategoriesAssembly.init <stripped>
+	0x4e5d00  @objc MagazineCategoriesAssembly.init <stripped>
  }
 
  enum NewsUI2.MagazineFeedGroupKnobsRules {
@@ -13432,6 +13425,7 @@
 	let issueReadingHistory : FCIssueReadingHistoryType // +0x28 (0x8)
 	let isiCloudPrivateDataSyncingEnabled : Bool // +0x30 (0x1)
 	let store : MyMagazinesStoreType // +0x38 (0x28)
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x60 (0x8)
 
 	// Swift methods
  }
@@ -13444,7 +13438,7 @@
 
  class NewsUI2.AppAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4e72b0  @objc AppAssembly.init <stripped>
+	0x4e99c0  @objc AppAssembly.init <stripped>
  }
 
  struct NewsUI2.MyMagazinesMagazineFeedGroupKnobs {
@@ -13491,7 +13485,7 @@
 	let offlineReason : FCOfflineReason // +0x10 (0x8)
 
 	// Swift methods
-	0x4ebf90  class func StubOfflineProvider.__allocating_init(offlineReason:) // init 
+	0x4ee610  class func StubOfflineProvider.__allocating_init(offlineReason:) // init 
  }
 
  struct NewsUI2.MyMagazinesMagazineFeedGroup {
@@ -13603,30 +13597,30 @@
 
  class NewsUI2.StubFCIssueReadingHistoryType : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-	0x4f4840  @objc StubFCIssueReadingHistoryType.markIssueWithID:asVisitedWithBookmark: <stripped>
-	0x4f48c0  @objc StubFCIssueReadingHistoryType.markIssueAsBadgedWithID: <stripped>
-	0x4f48c0  @objc StubFCIssueReadingHistoryType.markIssueAsEngagedWithID: <stripped>
-	0x4f48c0  @objc StubFCIssueReadingHistoryType.markIssueAsRemovedFromMyMagazinesWithID: <stripped>
-	0x4f4850  @objc StubFCIssueReadingHistoryType.hasIssueWithIDBeenVisited: <stripped>
-	0x4f4850  @objc StubFCIssueReadingHistoryType.hasIssueWithIDBeenBadged: <stripped>
-	0x4f4850  @objc StubFCIssueReadingHistoryType.hasIssueWithIDBeenEngaged: <stripped>
-	0x4f4860  @objc StubFCIssueReadingHistoryType.bookmarkForLastVisitToIssueWithID: <stripped>
-	0x4f4860  @objc StubFCIssueReadingHistoryType.lastVisitedDateForIssueWithID: <stripped>
-	0x4f4860  @objc StubFCIssueReadingHistoryType.lastEngagedDateForIssueWithID: <stripped>
-	0x4f4860  @objc StubFCIssueReadingHistoryType.lastRemovedFromMyMagazinesDateForIssueWithID: <stripped>
-	0x4f4870  @objc StubFCIssueReadingHistoryType.mostRecentlyVisitedIssueID <stripped>
-	0x4f4880  @objc StubFCIssueReadingHistoryType.recentlyVisitedIssueIDs <stripped>
-	0x4f4880  @objc StubFCIssueReadingHistoryType.recentlyEngagedIssueIDs <stripped>
-	0x4f4880  @objc StubFCIssueReadingHistoryType.allEngagedIssueIDs <stripped>
-	0x4f48c0  @objc StubFCIssueReadingHistoryType.addObserver: <stripped>
-	0x4f48c0  @objc StubFCIssueReadingHistoryType.removeObserver: <stripped>
+	0x4f6ee0  @objc StubFCIssueReadingHistoryType.markIssueWithID:asVisitedWithBookmark: <stripped>
+	0x4f6f60  @objc StubFCIssueReadingHistoryType.markIssueAsBadgedWithID: <stripped>
+	0x4f6f60  @objc StubFCIssueReadingHistoryType.markIssueAsEngagedWithID: <stripped>
+	0x4f6f60  @objc StubFCIssueReadingHistoryType.markIssueAsRemovedFromMyMagazinesWithID: <stripped>
+	0x4f6ef0  @objc StubFCIssueReadingHistoryType.hasIssueWithIDBeenVisited: <stripped>
+	0x4f6ef0  @objc StubFCIssueReadingHistoryType.hasIssueWithIDBeenBadged: <stripped>
+	0x4f6ef0  @objc StubFCIssueReadingHistoryType.hasIssueWithIDBeenEngaged: <stripped>
+	0x4f6f00  @objc StubFCIssueReadingHistoryType.bookmarkForLastVisitToIssueWithID: <stripped>
+	0x4f6f00  @objc StubFCIssueReadingHistoryType.lastVisitedDateForIssueWithID: <stripped>
+	0x4f6f00  @objc StubFCIssueReadingHistoryType.lastEngagedDateForIssueWithID: <stripped>
+	0x4f6f00  @objc StubFCIssueReadingHistoryType.lastRemovedFromMyMagazinesDateForIssueWithID: <stripped>
+	0x4f6f10  @objc StubFCIssueReadingHistoryType.mostRecentlyVisitedIssueID <stripped>
+	0x4f6f20  @objc StubFCIssueReadingHistoryType.recentlyVisitedIssueIDs <stripped>
+	0x4f6f20  @objc StubFCIssueReadingHistoryType.recentlyEngagedIssueIDs <stripped>
+	0x4f6f20  @objc StubFCIssueReadingHistoryType.allEngagedIssueIDs <stripped>
+	0x4f6f60  @objc StubFCIssueReadingHistoryType.addObserver: <stripped>
+	0x4f6f60  @objc StubFCIssueReadingHistoryType.removeObserver: <stripped>
 
 	// Swift methods
  }
 
  class NewsUI2.URLHandlerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4f5ae0  @objc URLHandlerAssembly.init <stripped>
+	0x4f8180  @objc URLHandlerAssembly.init <stripped>
  }
 
  class NewsUI2.SavedBlueprintModifierFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SavedBlueprintModifierFactoryType {
@@ -13655,7 +13649,7 @@
 
  class NewsUI2.PPTAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4f7050  @objc PPTAssembly.init <stripped>
+	0x4f96f0  @objc PPTAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -13728,17 +13722,28 @@
 	// Swift methods
  }
 
+ enum NewsUI2.MoreActionsSheetLocation {
+
+	// Properties
+	case channelFeed  
+	case grid  
+	case magazineFeed  
+	case myMagazines  
+ }
+
  class NewsUI2.MyMagazinesSharingActivityItemFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MyMagazinesSharingActivityItemFactoryType {
 
 	// Properties
 	let sharingActivityItemFactory : SharingActivityItemFactoryType // +0x10 (0x28)
+	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x38 (0x8)
+	let issueSubscriptionController : FCSubscriptionController // +0x40 (0x8)
 
 	// Swift methods
  }
 
  class NewsUI2.ToolbarAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4fece0  @objc ToolbarAssembly.init <stripped>
+	0x501900  @objc ToolbarAssembly.init <stripped>
  }
 
  struct NewsUI2.IssuesMagazineFeedGroupConfig {
@@ -13789,14 +13794,14 @@
 	let purchaseController : FCPurchaseController // +0x60 (0x8)
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x68 (0x8)
 	let alertPresenter : OverlayAlertPresenterType // +0x70 (0x28)
-	var previousSelectedIndexPath : IndexPath? // +0x548 (0x0)
+	var previousSelectedIndexPath : IndexPath? // +0x262c8 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x501090  @objc FollowingViewController.initWithCoder: <stripped>
-	0x501720  @objc FollowingViewController.delete: <stripped>
-	0x501980  @objc FollowingViewController.canPerformAction:withSender: <stripped>
-	0x501a20  @objc FollowingViewController.initWithNibName:bundle: <stripped>
-	0x501a90  @objc FollowingViewController..cxx_destruct <stripped>
+	0x503cb0  @objc FollowingViewController.initWithCoder: <stripped>
+	0x504340  @objc FollowingViewController.delete: <stripped>
+	0x5045a0  @objc FollowingViewController.canPerformAction:withSender: <stripped>
+	0x504640  @objc FollowingViewController.initWithNibName:bundle: <stripped>
+	0x5046b0  @objc FollowingViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -13832,7 +13837,7 @@
 
  class NewsUI2.ManagerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x50b710  @objc ManagerAssembly.init <stripped>
+	0x50e900  @objc ManagerAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -13878,8 +13883,8 @@
 	let issueIDsAvailableOffline : AsyncObservable<Set<String>> // +0x88 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x514ba0  @objc OfflineIssueManager.init <stripped>
-	0x514c20  @objc OfflineIssueManager..cxx_destruct <stripped>
+	0x517fb0  @objc OfflineIssueManager.init <stripped>
+	0x518030  @objc OfflineIssueManager..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -13952,8 +13957,8 @@
 	var editorialItemProvider : TSEditorialItemProvider // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x51b240  @objc EditorialService.init <stripped>
-	0x51b2c0  @objc EditorialService..cxx_destruct <stripped>
+	0x51e310  @objc EditorialService.init <stripped>
+	0x51e390  @objc EditorialService..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -14017,7 +14022,7 @@
 
  class NewsUI2.HistoryAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x526ed0  @objc HistoryAssembly.init <stripped>
+	0x529fc0  @objc HistoryAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -14121,7 +14126,7 @@
 
  class NewsUI2.MyMagazinesAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x53c990  @objc MyMagazinesAssembly.init <stripped>
+	0x53fee0  @objc MyMagazinesAssembly.init <stripped>
  }
 
  enum NewsUI2.SpecialEventsLayoutModel {
@@ -14169,14 +14174,13 @@
 	let resolver : ResolverType // +0x18 (0x28)
 	let tracker : Tracker // +0x40 (0x8)
 	let navigator : StackNavigator<NewsActivity2> // +0x48 (0x8)
-	let moreActionsSheetProvider : MoreActionsSheetActivityViewControllerProviderType // +0x50 (0x28)
 
 	// Swift methods
  }
 
  class NewsUI2.SubscriptionsAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x548300  @objc SubscriptionsAssembly.init <stripped>
+	0x54b910  @objc SubscriptionsAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -14189,9 +14193,9 @@
 	let tracker : Tracker // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x549580  @objc BridgedNewsActivityNavigator.navigateWithActivityData: <stripped>
-	0x5498f0  @objc BridgedNewsActivityNavigator.init <stripped>
-	0x549970  @objc BridgedNewsActivityNavigator..cxx_destruct <stripped>
+	0x54cb90  @objc BridgedNewsActivityNavigator.navigateWithActivityData: <stripped>
+	0x54cf00  @objc BridgedNewsActivityNavigator.init <stripped>
+	0x54cf80  @objc BridgedNewsActivityNavigator..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -14213,16 +14217,16 @@
 	let issueReadingHistory : FCIssueReadingHistoryType // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x54e730  @objc NewIssueLocalNotificationScheduler.init <stripped>
-	0x54e7a0  @objc NewIssueLocalNotificationScheduler..cxx_destruct <stripped>
+	0x551d40  @objc NewIssueLocalNotificationScheduler.init <stripped>
+	0x551db0  @objc NewIssueLocalNotificationScheduler..cxx_destruct <stripped>
 
 	// Swift methods
-	0x54b690  class func NewIssueLocalNotificationScheduler.__allocating_init(notificationService:secondsPastMidnightToDeliverNotification:calendar:issueReadingHistory:) // init 
+	0x54eca0  class func NewIssueLocalNotificationScheduler.__allocating_init(notificationService:secondsPastMidnightToDeliverNotification:calendar:issueReadingHistory:) // init 
  }
 
  class NewsUI2.ArticleViewerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x550330  @objc ArticleViewerAssembly.init <stripped>
+	0x553940  @objc ArticleViewerAssembly.init <stripped>
  }
 
  class NewsUI2.TopOfFeedDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TopOfFeedDataManagerType {
@@ -14237,12 +14241,13 @@
 	let viewProvider : WelcomeViewProviderType // +0x40 (0x28)
 	let viewAnimator : WelcomeViewAnimatorType // +0x68 (0x28)
 	var keyFrame : WelcomeViewKeyFrame // +0x90 (0x10)
+	var startedFirstAnimation : Bool // +0xa0 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x550950  @objc WelcomeViewController.initWithCoder: <stripped>
-	0x5509b0  @objc WelcomeViewController.showPrivacyText <stripped>
-	0x5509c0  @objc WelcomeViewController.initWithNibName:bundle: <stripped>
-	0x550a40  @objc WelcomeViewController..cxx_destruct <stripped>
+	0x553f70  @objc WelcomeViewController.initWithCoder: <stripped>
+	0x553fe0  @objc WelcomeViewController.showPrivacyText <stripped>
+	0x553ff0  @objc WelcomeViewController.initWithNibName:bundle: <stripped>
+	0x554070  @objc WelcomeViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -14262,20 +14267,20 @@
 	let closeButton : CloseButton // +0x100 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x552000  @objc SpecialEventsViewController.delegate <stripped>
-	0x552020  @objc SpecialEventsViewController.setDelegate: <stripped>
-	0x552040  @objc SpecialEventsViewController.routableDelegate <stripped>
-	0x552060  @objc SpecialEventsViewController.setRoutableDelegate: <stripped>
-	0x552260  @objc SpecialEventsViewController.initWithCoder: <stripped>
-	0x552280  @objc SpecialEventsViewController.initWithNibName:bundle: <stripped>
-	0x552300  @objc SpecialEventsViewController..cxx_destruct <stripped>
+	0x555630  @objc SpecialEventsViewController.delegate <stripped>
+	0x555650  @objc SpecialEventsViewController.setDelegate: <stripped>
+	0x555670  @objc SpecialEventsViewController.routableDelegate <stripped>
+	0x555690  @objc SpecialEventsViewController.setRoutableDelegate: <stripped>
+	0x555890  @objc SpecialEventsViewController.initWithCoder: <stripped>
+	0x5558b0  @objc SpecialEventsViewController.initWithNibName:bundle: <stripped>
+	0x555930  @objc SpecialEventsViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
  class NewsUI2.FollowingDislikedAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x558d50  @objc FollowingDislikedAssembly.init <stripped>
+	0x55c380  @objc FollowingDislikedAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -14318,6 +14323,8 @@
 	// Properties
 	let offlineIssueManager : OfflineIssueManagerType // +0x10 (0x10)
 	let offlineIssueList : FCOfflineIssueList // +0x20 (0x8)
+	let tracker : Tracker // +0x28 (0x8)
+	let channelDataFactory : AnalyticsChannelDataFactoryType // +0x30 (0x28)
 
 	// Swift methods
  }
@@ -14415,17 +14422,17 @@
 	let alert : AlertArticleUnavailable // +0x8 (0x9)
 
 	// ObjC -> Swift bridged methods
-	0x5604e0  @objc BridgedAlertArticleUnavailable.initWithBlockedReason: <stripped>
-	0x560650  @objc BridgedAlertArticleUnavailable.initWithType: <stripped>
-	0x5606d0  @objc BridgedAlertArticleUnavailable.title <stripped>
-	0x560710  @objc BridgedAlertArticleUnavailable.message <stripped>
-	0x560820  @objc BridgedAlertArticleUnavailable.init <stripped>
+	0x564400  @objc BridgedAlertArticleUnavailable.initWithBlockedReason: <stripped>
+	0x564570  @objc BridgedAlertArticleUnavailable.initWithType: <stripped>
+	0x5645f0  @objc BridgedAlertArticleUnavailable.title <stripped>
+	0x564630  @objc BridgedAlertArticleUnavailable.message <stripped>
+	0x564740  @objc BridgedAlertArticleUnavailable.init <stripped>
 
 	// Swift methods
-	0x5603e0  class func BridgedAlertArticleUnavailable.__allocating_init(blockedReason:) // init 
-	0x560540  class func BridgedAlertArticleUnavailable.__allocating_init(type:) // init 
-	0x5606f0  func BridgedAlertArticleUnavailable.title.getter // getter 
-	0x560790  func BridgedAlertArticleUnavailable.message.getter // getter 
+	0x564300  class func BridgedAlertArticleUnavailable.__allocating_init(blockedReason:) // init 
+	0x564460  class func BridgedAlertArticleUnavailable.__allocating_init(type:) // init 
+	0x564610  func BridgedAlertArticleUnavailable.title.getter // getter 
+	0x5646b0  func BridgedAlertArticleUnavailable.message.getter // getter 
  }
 
  class NewsUI2.MagazineFeedPaywallViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MagazineFeedPaywallViewRendererType {
@@ -14455,9 +14462,9 @@
 	let footerView : HeadlineViewFooterView // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x562850  @objc NoImageHeadlineView.initWithFrame: <stripped>
-	0x562910  @objc NoImageHeadlineView.initWithCoder: <stripped>
-	0x5629e0  @objc NoImageHeadlineView..cxx_destruct <stripped>
+	0x5667a0  @objc NoImageHeadlineView.initWithFrame: <stripped>
+	0x566860  @objc NoImageHeadlineView.initWithCoder: <stripped>
+	0x566930  @objc NoImageHeadlineView..cxx_destruct <stripped>
  }
 
  enum NewsUI2.ChannelIssuesModel {
@@ -14585,10 +14592,10 @@
 
  class NewsUI2.MagazineFeedJournalNavigationController : UINavigationController /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x56a0a0  @objc MagazineFeedJournalNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
-	0x56a140  @objc MagazineFeedJournalNavigationController.initWithRootViewController: <stripped>
-	0x56a1a0  @objc MagazineFeedJournalNavigationController.initWithNibName:bundle: <stripped>
-	0x56a280  @objc MagazineFeedJournalNavigationController.initWithCoder: <stripped>
+	0x56dff0  @objc MagazineFeedJournalNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
+	0x56e090  @objc MagazineFeedJournalNavigationController.initWithRootViewController: <stripped>
+	0x56e0f0  @objc MagazineFeedJournalNavigationController.initWithNibName:bundle: <stripped>
+	0x56e1d0  @objc MagazineFeedJournalNavigationController.initWithCoder: <stripped>
  }
 
  class NewsUI2.MagazineFeedJournalViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -14598,17 +14605,17 @@
 	let magazineFeedJournal : MagazineFeedJournal
 
 	// ObjC -> Swift bridged methods
-	0x56a340  @objc MagazineFeedJournalViewController.initWithCoder: <stripped>
-	0x56a400  @objc MagazineFeedJournalViewController.initWithNibName:bundle: <stripped>
-	0x56a450  @objc MagazineFeedJournalViewController..cxx_destruct <stripped>
+	0x56e290  @objc MagazineFeedJournalViewController.initWithCoder: <stripped>
+	0x56e350  @objc MagazineFeedJournalViewController.initWithNibName:bundle: <stripped>
+	0x56e3a0  @objc MagazineFeedJournalViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
  class NewsUI2.MagazineFeedJournalTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x56b150  @objc MagazineFeedJournalTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x56b200  @objc MagazineFeedJournalTableViewCell.initWithCoder: <stripped>
+	0x56f0a0  @objc MagazineFeedJournalTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x56f150  @objc MagazineFeedJournalTableViewCell.initWithCoder: <stripped>
  }
 
  class NewsUI2.SpecialEventsRefreshBlueprintAnimator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -14639,7 +14646,6 @@
 	let resolver : ResolverType // +0x18 (0x28)
 	let tracker : Tracker // +0x40 (0x8)
 	let navigator : StackNavigator<NewsActivity2> // +0x48 (0x8)
-	let moreActionsSheetProvider : MoreActionsSheetActivityViewControllerProviderType // +0x50 (0x28)
 
 	// Swift methods
  }
@@ -14774,6 +14780,7 @@
 	// Properties
 	let rules : MagazineFeedRules
 	let forceRefresh : Bool
+	let persistPublishDate : Bool
 	let magazineConfig : MagazineConfig
 	let paidBundleConfig : FCPaidBundleConfiguration
 	let magazineFeedPoolCachePolicy : MagazineFeedPoolCachePolicy
@@ -14812,11 +14819,11 @@
 	let navigator : StackNavigator<NewsActivity2> // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x57e500  @objc UserNotificationDelegate.userNotificationCenter:willPresentNotification:withCompletionHandler: <stripped>
-	0x57e590  @objc UserNotificationDelegate.userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler: <stripped>
-	0x57e630  @objc UserNotificationDelegate.userNotificationCenter:openSettingsForNotification: <stripped>
-	0x57e6b0  @objc UserNotificationDelegate.init <stripped>
-	0x57e730  @objc UserNotificationDelegate..cxx_destruct <stripped>
+	0x582470  @objc UserNotificationDelegate.userNotificationCenter:willPresentNotification:withCompletionHandler: <stripped>
+	0x582500  @objc UserNotificationDelegate.userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler: <stripped>
+	0x5825a0  @objc UserNotificationDelegate.userNotificationCenter:openSettingsForNotification: <stripped>
+	0x582620  @objc UserNotificationDelegate.init <stripped>
+	0x5826a0  @objc UserNotificationDelegate..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -14944,12 +14951,12 @@
 	let layoutOptionsProvider : PluginLayoutOptionsProvider // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x584110  @objc ChannelIssuesPluginFactory.createPluginWithIdentifier:usingConfig: <stripped>
-	0x584200  @objc ChannelIssuesPluginFactory.init <stripped>
-	0x584280  @objc ChannelIssuesPluginFactory..cxx_destruct <stripped>
+	0x588080  @objc ChannelIssuesPluginFactory.createPluginWithIdentifier:usingConfig: <stripped>
+	0x588170  @objc ChannelIssuesPluginFactory.init <stripped>
+	0x5881f0  @objc ChannelIssuesPluginFactory..cxx_destruct <stripped>
 
 	// Swift methods
-	0x583de0  class func ChannelIssuesPluginFactory.__allocating_init(resolver:tracker:layoutOptionsProvider:) // init 
+	0x587d50  class func ChannelIssuesPluginFactory.__allocating_init(resolver:tracker:layoutOptionsProvider:) // init 
  }
 
  struct NewsUI2.TopVideosPrewarmBlueprintModifier {
@@ -14988,8 +14995,8 @@
 	let purchaseController : FCPurchaseController
 
 	// ObjC -> Swift bridged methods
-	0x58e420  @objc SubscriptionService.init <stripped>
-	0x58e4a0  @objc SubscriptionService..cxx_destruct <stripped>
+	0x592c50  @objc SubscriptionService.init <stripped>
+	0x592cd0  @objc SubscriptionService..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -15120,9 +15127,9 @@
 	var articleStreamingResults : FCArticleStreamingResults<FCArticleSearchResult>? // +0x60 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x59f290  @objc SearchMoreViewController.initWithCoder: <stripped>
-	0x59f310  @objc SearchMoreViewController.initWithNibName:bundle: <stripped>
-	0x59f390  @objc SearchMoreViewController..cxx_destruct <stripped>
+	0x5a3740  @objc SearchMoreViewController.initWithCoder: <stripped>
+	0x5a37c0  @objc SearchMoreViewController.initWithNibName:bundle: <stripped>
+	0x5a3840  @objc SearchMoreViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -15145,11 +15152,11 @@
 	let inArticleViewControllerProvider : ArticleRecirculationInArticleViewControllerProvider // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5a2a30  @objc ArticleRecirculationComponentViewFactory.componentViewForComponent: <stripped>
-	0x5a2ae0  @objc ArticleRecirculationComponentViewFactory.type <stripped>
-	0x5a2b10  @objc ArticleRecirculationComponentViewFactory.role <stripped>
-	0x5a2b20  @objc ArticleRecirculationComponentViewFactory.init <stripped>
-	0x5a2ba0  @objc ArticleRecirculationComponentViewFactory..cxx_destruct <stripped>
+	0x5a6ee0  @objc ArticleRecirculationComponentViewFactory.componentViewForComponent: <stripped>
+	0x5a6f90  @objc ArticleRecirculationComponentViewFactory.type <stripped>
+	0x5a6fc0  @objc ArticleRecirculationComponentViewFactory.role <stripped>
+	0x5a6fd0  @objc ArticleRecirculationComponentViewFactory.init <stripped>
+	0x5a7050  @objc ArticleRecirculationComponentViewFactory..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -15176,7 +15183,7 @@
 
  class NewsUI2.UserNotificationsAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x5ac190  @objc UserNotificationsAssembly.init <stripped>
+	0x5b0680  @objc UserNotificationsAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -15330,8 +15337,8 @@
 
  class NewsUI2.ArticleRecirculationComponentSizer : SXComponentSizer /System/Library/PrivateFrameworks/Silex.framework/Silex {
 	// ObjC -> Swift bridged methods
-	0x5c6a40  @objc ArticleRecirculationComponentSizer.calculateHeightForWidth:layoutContext: <stripped>
-	0x5c6a60  @objc ArticleRecirculationComponentSizer.initWithComponent:componentLayout:componentStyle:DOMObjectProvider:layoutOptions: <stripped>
+	0x5cb0e0  @objc ArticleRecirculationComponentSizer.calculateHeightForWidth:layoutContext: <stripped>
+	0x5cb100  @objc ArticleRecirculationComponentSizer.initWithComponent:componentLayout:componentStyle:DOMObjectProvider:layoutOptions: <stripped>
  }
 
  struct NewsUI2.HistoryChangeHeadlineModifier {
@@ -15489,9 +15496,9 @@
 	let resolver : ResolverType // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x5eb450  @objc TopOfFeedModule.createViewController <stripped>
-	0x5eb4e0  @objc TopOfFeedModule.init <stripped>
-	0x5eb590  @objc TopOfFeedModule..cxx_destruct <stripped>
+	0x5efb50  @objc TopOfFeedModule.createViewController <stripped>
+	0x5efbe0  @objc TopOfFeedModule.init <stripped>
+	0x5efc90  @objc TopOfFeedModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -15506,7 +15513,7 @@
 
  class NewsUI2.ActivityAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x5ec270  @objc ActivityAssembly.init <stripped>
+	0x5f0970  @objc ActivityAssembly.init <stripped>
  }
 
  class NewsUI2.FollowingSettingsButtonViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -15570,10 +15577,10 @@
 	var newsUserActivityManager : UserActivityManager<NewsActivity, NewsActivitySerializer> // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5eff40  @objc NewsActivityManager.init <stripped>
-	0x5f0000  @objc NewsActivityManager.registerCurrentActivity: <stripped>
-	0x5f0090  @objc NewsActivityManager.deregisterActivity: <stripped>
-	0x5f0180  @objc NewsActivityManager..cxx_destruct <stripped>
+	0x5f4640  @objc NewsActivityManager.init <stripped>
+	0x5f4700  @objc NewsActivityManager.registerCurrentActivity: <stripped>
+	0x5f4790  @objc NewsActivityManager.deregisterActivity: <stripped>
+	0x5f4880  @objc NewsActivityManager..cxx_destruct <stripped>
  }
 
  class NewsUI2.ArticleRecirculationBlueprintViewCellProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -15731,9 +15738,9 @@
 	var initialFollowingTags : [FollowingTagModel]? // +0x50 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x6095e0  @objc FollowingDislikedViewController.initWithCoder: <stripped>
-	0x6096b0  @objc FollowingDislikedViewController.initWithNibName:bundle: <stripped>
-	0x609730  @objc FollowingDislikedViewController..cxx_destruct <stripped>
+	0x60df20  @objc FollowingDislikedViewController.initWithCoder: <stripped>
+	0x60dff0  @objc FollowingDislikedViewController.initWithNibName:bundle: <stripped>
+	0x60e070  @objc FollowingDislikedViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -15746,7 +15753,7 @@
 
  class NewsUI2.ChannelIssuesAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x60e520  @objc ChannelIssuesAssembly.init <stripped>
+	0x612de0  @objc ChannelIssuesAssembly.init <stripped>
 
 	// Swift methods
  }

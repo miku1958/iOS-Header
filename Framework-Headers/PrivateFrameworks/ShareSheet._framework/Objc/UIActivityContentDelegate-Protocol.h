@@ -6,10 +6,11 @@
 
 #import <ShareSheet/NSObject-Protocol.h>
 
-@class NSArray, NSNumber, NSURL, NSUUID;
+@class NSArray, NSNumber, NSString, NSURL, NSUUID;
 
 @protocol UIActivityContentDelegate <NSObject>
 - (void)_editActionsTapped;
+- (NSString *)_titleForActivity:(NSString *)arg1;
 - (void)closeButtonTapped;
 - (NSURL *)fallbackURLForLinkPresentation;
 - (void)nextButtonTappedWithPeopleProxies:(NSArray *)arg1 shareProxies:(NSArray *)arg2 actionProxies:(NSArray *)arg3 nearbyCountSlotID:(NSNumber *)arg4;

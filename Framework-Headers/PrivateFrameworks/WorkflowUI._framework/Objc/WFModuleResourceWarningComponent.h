@@ -16,7 +16,6 @@
 }
 
 + (id)newWithResourceError:(id)arg1 navigationContext:(id)arg2 useImportStyle:(BOOL)arg3 importButtonGradient:(id)arg4;
-+ (id)newWithResourceError:(id)arg1 navigationContext:(id)arg2 useImportStyle:(BOOL)arg3 importButtonGradient:(id)arg4 tintColor:(id)arg5;
 - (void).cxx_destruct;
 - (void)recoverFromWarning:(id)arg1 buttonIndex:(unsigned long long)arg2;
 

@@ -42,8 +42,7 @@
 - (id)_annotationView;
 - (void)_callCompletionHandler;
 - (CDStruct_c3b9c2ee)_clampCoordinateSpan:(CDStruct_c3b9c2ee)arg1;
-- (void)_cropImage;
-- (id)_deriveSnapshotOptions:(BOOL)arg1 isReload:(BOOL)arg2;
+- (id)_deriveSnapshotOptions:(BOOL)arg1;
 - (void)_fetchMuninViewforMapItem:(id)arg1;
 - (void)_getParentItem;
 - (void)_handleTapOnMuninView:(id)arg1;

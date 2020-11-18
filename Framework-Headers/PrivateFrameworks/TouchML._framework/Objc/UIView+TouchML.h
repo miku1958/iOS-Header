@@ -23,6 +23,8 @@
 - (void)_tmlEnsureContext:(CDUnknownBlockType)arg1;
 - (void)_tmlUnloadContext;
 - (BOOL)tmlAccessibilityActivate;
+- (void)tmlAccessibilityDecrement;
+- (void)tmlAccessibilityIncrement;
 - (void)tmlDidMoveToWindow;
 - (void)tmlLoadReusableView:(id)arg1;
 - (void)tmlLoadView;

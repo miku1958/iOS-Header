@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVOutputContext, NSArray, NSDictionary, NSHashTable, NSMutableDictionary, NSNotificationCenter, NSString;
+@class AVOutputContext, BSAtomicSignal, NSArray, NSDictionary, NSHashTable, NSMutableDictionary, NSNotificationCenter, NSString;
 @protocol OS_dispatch_queue, SBAVSystemControllerDataProviding;
 
 @interface SBAVSystemControllerCache : NSObject
@@ -14,13 +14,13 @@
     NSObject<OS_dispatch_queue> *_callOutQueue;
     NSNotificationCenter *_notificationCenter;
     CDUnknownBlockType _dataProviderInitializer;
-    struct os_unfair_lock_s _lock;
-    NSHashTable *_lock_observers;
     NSObject<OS_dispatch_queue> *_queue;
+    NSHashTable *_queue_observers;
     AVOutputContext *_queue_outputContext;
     id<SBAVSystemControllerDataProviding> _queue_dataProvider;
     NSMutableDictionary *_notificationToHandlerMap;
     BOOL _queue_initialized;
+    BSAtomicSignal *_queue_serverDeathSignal;
     BOOL _queue_fullyMuted;
     float _queue_volumeLimit;
     BOOL _queue_volumeLimitEnforced;
@@ -31,6 +31,7 @@
     NSArray *_queue_activeOutputDevices;
     BOOL _outputContextSupportsMultipleOutputDevices;
     BOOL _queue_airplayDisplayActive;
+    NSObject<OS_dispatch_queue> *_backgroundQueryQueue;
 }
 
 @property (readonly, copy, nonatomic) NSString *activeAudioRoute; // @dynamic activeAudioRoute;
@@ -45,17 +46,17 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_enumerateObserversWithBlock:(CDUnknownBlockType)arg1;
+- (id)_queryActiveOutputDevicesFromContext:(id)arg1;
+- (void)_queue_notifyObserversWithBlock:(CDUnknownBlockType)arg1;
 - (void)_queue_rebuildCache;
-- (void)_queue_updateActiveAudioRouteFromNotification:(id)arg1;
-- (void)_queue_updateActiveOutputDevices;
-- (void)_queue_updateActiveOutputDevicesFromNotification:(id)arg1;
-- (void)_queue_updateAirplayDisplayActiveFromNotification:(id)arg1;
-- (void)_queue_updateFullyMutedFromNotification:(id)arg1;
-- (void)_queue_updatePickableRoutesFromNotification:(id)arg1;
-- (void)_queue_updateRecordingPIDFromNotification:(id)arg1;
-- (void)_queue_updateVolumeLimitEnforcedFromNotification:(id)arg1;
-- (void)_queue_updateVolumeLimitFromNotification:(id)arg1;
+- (void)_queue_updateActiveAudioRouteFromNotification:(id)arg1 serverDeathSignal:(id)arg2;
+- (void)_queue_updateActiveOutputDevicesFromNotification:(id)arg1 serverDeathSignal:(id)arg2;
+- (void)_queue_updateAirplayDisplayActiveFromNotification:(id)arg1 serverDeathSignal:(id)arg2;
+- (void)_queue_updateFullyMutedFromNotification:(id)arg1 serverDeathSignal:(id)arg2;
+- (void)_queue_updatePickableRoutesFromNotification:(id)arg1 serverDeathSignal:(id)arg2;
+- (void)_queue_updateRecordingPIDFromNotification:(id)arg1 serverDeathSignal:(id)arg2;
+- (void)_queue_updateVolumeLimitEnforcedFromNotification:(id)arg1 serverDeathSignal:(id)arg2;
+- (void)_queue_updateVolumeLimitFromNotification:(id)arg1 serverDeathSignal:(id)arg2;
 - (void)_receiveUpdatedValueFromNotification:(id)arg1;
 - (void)_serverDied:(id)arg1;
 - (void)addObserver:(id)arg1;

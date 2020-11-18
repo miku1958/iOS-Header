@@ -30,6 +30,7 @@
 - (BOOL)_axSkipNextFocusOnMessage;
 - (void)_scrollToReferenceMessage;
 - (void)_shrinkMessagesToBarButton:(id)arg1 withInteraction:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_updateFooterViewFrameForCell:(id)arg1 atIndexPath:(id)arg2;
 - (id)accessibilityCustomRotors;
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (id)arrowControlsView;

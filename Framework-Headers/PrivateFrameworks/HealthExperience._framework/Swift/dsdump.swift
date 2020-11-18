@@ -324,7 +324,7 @@
 
  class HealthExperience.EncodedFeatureTag : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-	0xa840  @objc EncodedFeatureTag.initWithEntity:insertIntoManagedObjectContext: <stripped>
+	0xaa00  @objc EncodedFeatureTag.initWithEntity:insertIntoManagedObjectContext: <stripped>
  }
 
  class HealthExperience.SignalListener : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -333,7 +333,7 @@
 	let stateDumpSignalSource : OS_dispatch_source_signal // +0x10 (0x8)
 
 	// Swift methods
-	0xac60  func SignalListener.sourceNotification() // method 
+	0xae20  func SignalListener.sourceNotification() // method 
  }
 
  class HealthExperience.BasicPluginInfo : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PluginInfo {
@@ -343,10 +343,10 @@
 	var bundleIdentifier : String
 
 	// Swift methods
-	0xd280  func BasicPluginInfo.bundleIdentifier.getter // getter 
-	0xd2c0  func BasicPluginInfo.bundleIdentifier.setter // setter 
-	0xd300  func BasicPluginInfo.bundleIdentifier.modify // modifyCoroutine 
-	0xd340  class func BasicPluginInfo.__allocating_init(bundle:) // init 
+	0xd440  func BasicPluginInfo.bundleIdentifier.getter // getter 
+	0xd480  func BasicPluginInfo.bundleIdentifier.setter // setter 
+	0xd4c0  func BasicPluginInfo.bundleIdentifier.modify // modifyCoroutine 
+	0xd500  class func BasicPluginInfo.__allocating_init(bundle:) // init 
  }
 
  class HealthExperience.FoundationPluginBundleProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -384,14 +384,14 @@
 	var callback : (_:_:)? // +0x8 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x139d0  @objc RelevanceEngineMetricsBlockRecorder.recordTrainingMetrics:forInteraction: <stripped>
-	0x13ac0  @objc RelevanceEngineMetricsBlockRecorder.recordPredictionMetrics:forInteraction: <stripped>
-	0x13ac0  @objc RelevanceEngineMetricsBlockRecorder.recordCallibrationCurveMetrics:forInteraction: <stripped>
-	0x13ad0  @objc RelevanceEngineMetricsBlockRecorder.init <stripped>
-	0x13b80  @objc RelevanceEngineMetricsBlockRecorder..cxx_destruct <stripped>
+	0x13b90  @objc RelevanceEngineMetricsBlockRecorder.recordTrainingMetrics:forInteraction: <stripped>
+	0x13c80  @objc RelevanceEngineMetricsBlockRecorder.recordPredictionMetrics:forInteraction: <stripped>
+	0x13c80  @objc RelevanceEngineMetricsBlockRecorder.recordCallibrationCurveMetrics:forInteraction: <stripped>
+	0x13c90  @objc RelevanceEngineMetricsBlockRecorder.init <stripped>
+	0x13d40  @objc RelevanceEngineMetricsBlockRecorder..cxx_destruct <stripped>
 
 	// Swift methods
-	0x137a0  func <stripped> // method 
+	0x13960  func <stripped> // method 
  }
 
  class HealthExperience.HKHealthSourceDataSource : MutableArrayDataSource {
@@ -401,9 +401,9 @@
 	var objectType : HKObjectType // +0x58 (0x8)
 
 	// Swift methods
-	0x13bf0  func <stripped> // method 
-	0x13e90  func <stripped> // method 
-	0x14070  func <stripped> // method 
+	0x13db0  func <stripped> // method 
+	0x14050  func <stripped> // method 
+	0x14230  func <stripped> // method 
  }
 
  class HealthExperience.MemoryHealthExperienceStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -415,23 +415,23 @@
 	var $__lazy_storage_$_persistentContainer : NSPersistentContainer? // +0x28 (0x8)
 
 	// Swift methods
-	0x149e0  func MemoryHealthExperienceStore.viewContext.getter // getter 
-	0x14aa0  func MemoryHealthExperienceStore.viewContext.setter // setter 
-	0x14ac0  func MemoryHealthExperienceStore.viewContext.modify // modifyCoroutine 
-	0x14bc0  func MemoryHealthExperienceStore.sharedBackgroundContext.getter // getter 
-	0x14cc0  func MemoryHealthExperienceStore.sharedBackgroundContext.setter // setter 
-	0x14ce0  func MemoryHealthExperienceStore.sharedBackgroundContext.modify // modifyCoroutine 
-	0x14d30  class func MemoryHealthExperienceStore.__allocating_init() // init 
-	0x15010  func MemoryHealthExperienceStore.persistentStoreDescription.getter // getter 
-	0x15040  func MemoryHealthExperienceStore.persistentStoreDescription.setter // setter 
-	0x15080  func MemoryHealthExperienceStore.persistentStoreDescription.modify // modifyCoroutine 
-	0x150c0  func MemoryHealthExperienceStore.persistentStoreCoordinator.getter // getter 
-	0x15140  func MemoryHealthExperienceStore.initPersistentContainer() // method 
-	0x15170  func MemoryHealthExperienceStore.persistentContainer.getter // getter 
-	0x151d0  func MemoryHealthExperienceStore.persistentContainer.setter // setter 
-	0x151f0  func MemoryHealthExperienceStore.persistentContainer.modify // modifyCoroutine 
-	0x15280  func <stripped> // method 
-	0x156f0  func MemoryHealthExperienceStore.deleteAllFeedItems() // method 
+	0x14ba0  func MemoryHealthExperienceStore.viewContext.getter // getter 
+	0x14c60  func MemoryHealthExperienceStore.viewContext.setter // setter 
+	0x14c80  func MemoryHealthExperienceStore.viewContext.modify // modifyCoroutine 
+	0x14d80  func MemoryHealthExperienceStore.sharedBackgroundContext.getter // getter 
+	0x14e80  func MemoryHealthExperienceStore.sharedBackgroundContext.setter // setter 
+	0x14ea0  func MemoryHealthExperienceStore.sharedBackgroundContext.modify // modifyCoroutine 
+	0x14ef0  class func MemoryHealthExperienceStore.__allocating_init() // init 
+	0x151d0  func MemoryHealthExperienceStore.persistentStoreDescription.getter // getter 
+	0x15200  func MemoryHealthExperienceStore.persistentStoreDescription.setter // setter 
+	0x15240  func MemoryHealthExperienceStore.persistentStoreDescription.modify // modifyCoroutine 
+	0x15280  func MemoryHealthExperienceStore.persistentStoreCoordinator.getter // getter 
+	0x15300  func MemoryHealthExperienceStore.initPersistentContainer() // method 
+	0x15330  func MemoryHealthExperienceStore.persistentContainer.getter // getter 
+	0x15390  func MemoryHealthExperienceStore.persistentContainer.setter // setter 
+	0x153b0  func MemoryHealthExperienceStore.persistentContainer.modify // modifyCoroutine 
+	0x15440  func <stripped> // method 
+	0x158b0  func MemoryHealthExperienceStore.deleteAllFeedItems() // method 
  }
 
  class HealthExperience.PluginBundleProviderPrecacheOperation : NSOperation /System/Library/Frameworks/Foundation.framework/Foundation {
@@ -440,12 +440,12 @@
 	let pluginsToCache : [BasicPluginInfo] // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x16870  @objc PluginBundleProviderPrecacheOperation.main <stripped>
-	0x168f0  @objc PluginBundleProviderPrecacheOperation.init <stripped>
-	0x16970  @objc PluginBundleProviderPrecacheOperation..cxx_destruct <stripped>
+	0x16a30  @objc PluginBundleProviderPrecacheOperation.main <stripped>
+	0x16ab0  @objc PluginBundleProviderPrecacheOperation.init <stripped>
+	0x16b30  @objc PluginBundleProviderPrecacheOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x161b0  class func PluginBundleProviderPrecacheOperation.__allocating_init(pluginsToCache:) // init 
+	0x16370  class func PluginBundleProviderPrecacheOperation.__allocating_init(pluginsToCache:) // init 
  }
 
  class HealthExperience.HKCorrelationQueryDataSource {
@@ -462,12 +462,12 @@
 	let store : HealthExperienceStore // +0x30 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x1b820  @objc HealthExperienceStoreCoreSpotlightOperation.main <stripped>
-	0x1b8b0  @objc HealthExperienceStoreCoreSpotlightOperation.init <stripped>
-	0x1b950  @objc HealthExperienceStoreCoreSpotlightOperation..cxx_destruct <stripped>
+	0x1b9e0  @objc HealthExperienceStoreCoreSpotlightOperation.main <stripped>
+	0x1ba70  @objc HealthExperienceStoreCoreSpotlightOperation.init <stripped>
+	0x1bb10  @objc HealthExperienceStoreCoreSpotlightOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1b460  class func HealthExperienceStoreCoreSpotlightOperation.__allocating_init(store:) // init 
+	0x1b620  class func HealthExperienceStoreCoreSpotlightOperation.__allocating_init(store:) // init 
  }
 
  enum HealthExperience.DataVisualizationKind {
@@ -497,23 +497,23 @@
 	var progress : NSProgress? // +0x6100085 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1cd00  @objc AsynchronousProgressOperation.main <stripped>
-	0x1de60  @objc AsynchronousProgressOperation.init <stripped>
-	0x1df00  @objc AsynchronousProgressOperation..cxx_destruct <stripped>
+	0x1cec0  @objc AsynchronousProgressOperation.main <stripped>
+	0x1e020  @objc AsynchronousProgressOperation.init <stripped>
+	0x1e0c0  @objc AsynchronousProgressOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1c8b0  func AsynchronousProgressOperation.timeout.getter // getter 
-	0x1c900  func AsynchronousProgressOperation.timeout.setter // setter 
-	0x1c960  func AsynchronousProgressOperation.timeout.modify // modifyCoroutine 
-	0x1c9a0  func AsynchronousProgressOperation.operationTimedOut.getter // getter 
-	0x1c9d0  func AsynchronousProgressOperation.operationTimedOut.setter // setter 
-	0x1ca10  func AsynchronousProgressOperation.operationTimedOut.modify // modifyCoroutine 
-	0x1ca60  func AsynchronousProgressOperation.progress.getter // getter 
-	0x1caa0  func AsynchronousProgressOperation.progress.setter // setter 
-	0x1cb10  func AsynchronousProgressOperation.progress.modify // modifyCoroutine 
-	0x1cc10  func AsynchronousProgressOperation.beginWork() // method 
-	0x1cc20  func AsynchronousProgressOperation.timeoutOccured() // method 
-	0x1d300  func AsynchronousProgressOperation.interceptCancellationHandler() // method 
+	0x1ca70  func AsynchronousProgressOperation.timeout.getter // getter 
+	0x1cac0  func AsynchronousProgressOperation.timeout.setter // setter 
+	0x1cb20  func AsynchronousProgressOperation.timeout.modify // modifyCoroutine 
+	0x1cb60  func AsynchronousProgressOperation.operationTimedOut.getter // getter 
+	0x1cb90  func AsynchronousProgressOperation.operationTimedOut.setter // setter 
+	0x1cbd0  func AsynchronousProgressOperation.operationTimedOut.modify // modifyCoroutine 
+	0x1cc20  func AsynchronousProgressOperation.progress.getter // getter 
+	0x1cc60  func AsynchronousProgressOperation.progress.setter // setter 
+	0x1ccd0  func AsynchronousProgressOperation.progress.modify // modifyCoroutine 
+	0x1cdd0  func AsynchronousProgressOperation.beginWork() // method 
+	0x1cde0  func AsynchronousProgressOperation.timeoutOccured() // method 
+	0x1d4c0  func AsynchronousProgressOperation.interceptCancellationHandler() // method 
  }
 
  struct HealthExperience.TypeLister { }
@@ -527,27 +527,27 @@
 	var didBeginWork : ()? // +0x20 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x209f0  @objc AsynchronousOperation.isAsynchronous <stripped>
-	0x20a20  @objc AsynchronousOperation.isCancelled <stripped>
-	0x20a40  @objc AsynchronousOperation.isExecuting <stripped>
-	0x20b40  @objc AsynchronousOperation.isFinished <stripped>
-	0x20ed0  @objc AsynchronousOperation.start <stripped>
-	0x20f00  @objc AsynchronousOperation.cancel <stripped>
-	0x20f60  @objc AsynchronousOperation.main <stripped>
-	0x20fc0  @objc AsynchronousOperation.description <stripped>
-	0x21300  @objc AsynchronousOperation.init <stripped>
-	0x21370  @objc AsynchronousOperation..cxx_destruct <stripped>
+	0x20bb0  @objc AsynchronousOperation.isAsynchronous <stripped>
+	0x20be0  @objc AsynchronousOperation.isCancelled <stripped>
+	0x20c00  @objc AsynchronousOperation.isExecuting <stripped>
+	0x20d00  @objc AsynchronousOperation.isFinished <stripped>
+	0x21090  @objc AsynchronousOperation.start <stripped>
+	0x210c0  @objc AsynchronousOperation.cancel <stripped>
+	0x21120  @objc AsynchronousOperation.main <stripped>
+	0x21180  @objc AsynchronousOperation.description <stripped>
+	0x214c0  @objc AsynchronousOperation.init <stripped>
+	0x21530  @objc AsynchronousOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1f8f0  func AsynchronousOperation.autoFinishesOnCancel.getter // getter 
-	0x1f920  func AsynchronousOperation.autoFinishesOnCancel.setter // setter 
-	0x1f960  func AsynchronousOperation.autoFinishesOnCancel.modify // modifyCoroutine 
-	0x1f9a0  func AsynchronousOperation.performWithExclusiveAccess(_:) // method 
-	0x1f9e0  func AsynchronousOperation.performWithExclusiveAccessThenFinish(_:) // method 
-	0x20f90  func AsynchronousOperation.cleanUp() // method 
-	0x1fb60  func AsynchronousOperation.didBeginWork.getter // getter 
-	0x1fbb0  func AsynchronousOperation.didBeginWork.setter // setter 
-	0x1fc10  func AsynchronousOperation.didBeginWork.modify // modifyCoroutine 
+	0x1fab0  func AsynchronousOperation.autoFinishesOnCancel.getter // getter 
+	0x1fae0  func AsynchronousOperation.autoFinishesOnCancel.setter // setter 
+	0x1fb20  func AsynchronousOperation.autoFinishesOnCancel.modify // modifyCoroutine 
+	0x1fb60  func AsynchronousOperation.performWithExclusiveAccess(_:) // method 
+	0x1fba0  func AsynchronousOperation.performWithExclusiveAccessThenFinish(_:) // method 
+	0x21150  func AsynchronousOperation.cleanUp() // method 
+	0x1fd20  func AsynchronousOperation.didBeginWork.getter // getter 
+	0x1fd70  func AsynchronousOperation.didBeginWork.setter // setter 
+	0x1fdd0  func AsynchronousOperation.didBeginWork.modify // modifyCoroutine 
  }
 
  enum HealthExperience.ExecutionState {
@@ -572,9 +572,9 @@
 	let predicate : NSPredicate? // +0x58 (0x8)
 	let options : HKStatisticsOptions // +0x60 (0x8)
 	let anchorDate : Date // +0x0 (0x0)
-	let intervalComponents : DateComponents // +0x176000 (0x0)
+	let intervalComponents : DateComponents // +0x17a000 (0x0)
 	var statisticsLock : UnfairLock // +0x0 (0x8)
-	let systolicType : HKQuantityType // +0x176000 (0x8)
+	let systolicType : HKQuantityType // +0x17a000 (0x8)
 	let diastolicType : HKQuantityType // +0x5 (0x8)
 	var systolicQuery : HKStatisticsCollectionQuery? // +0x14 (0x8)
 	var diastolicQuery : HKStatisticsCollectionQuery? // +0x65745f5f (0x8)
@@ -582,10 +582,10 @@
 	var diastolicStatisticsCollection : HKStatisticsCollection? // +0x45545f5f (0x8)
 
 	// Swift methods
-	0x21a20  func <stripped> // method 
-	0x21a80  func <stripped> // method 
-	0x22740  func <stripped> // method 
-	0x22fc0  func <stripped> // method 
+	0x21be0  func <stripped> // method 
+	0x21c40  func <stripped> // method 
+	0x22900  func <stripped> // method 
+	0x23180  func <stripped> // method 
  }
 
  class HealthExperience.UnfairLock : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -594,27 +594,27 @@
 	var underlyingLock : UnsafeMutablePointer<os_unfair_lock_s> // +0x10 (0x8)
 
 	// Swift methods
-	0x25120  class func UnfairLock.__allocating_init() // init 
-	0x25230  func UnfairLock.lock() // method 
-	0x25240  func UnfairLock.unlock() // method 
-	0x25250  func UnfairLock.assertOwner() // method 
+	0x252e0  class func UnfairLock.__allocating_init() // init 
+	0x253f0  func UnfairLock.lock() // method 
+	0x25400  func UnfairLock.unlock() // method 
+	0x25410  func UnfairLock.assertOwner() // method 
  }
 
  class HealthExperience.FeedSection : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-	0x253a0  @objc FeedSection.initWithEntity:insertIntoManagedObjectContext: <stripped>
+	0x25560  @objc FeedSection.initWithEntity:insertIntoManagedObjectContext: <stripped>
  }
 
  class HealthExperience.HealthExperienceStoreCoreSpotlightDelegate : NSCoreDataCoreSpotlightDelegate /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-	0x25670  @objc HealthExperienceStoreCoreSpotlightDelegate.usePrivateIndex <stripped>
-	0x256c0  @objc HealthExperienceStoreCoreSpotlightDelegate.bundleIdentifier <stripped>
-	0x25720  @objc HealthExperienceStoreCoreSpotlightDelegate.domainIdentifier <stripped>
-	0x25780  @objc HealthExperienceStoreCoreSpotlightDelegate.indexName <stripped>
-	0x25800  @objc HealthExperienceStoreCoreSpotlightDelegate.protectionClass <stripped>
-	0x25be0  @objc HealthExperienceStoreCoreSpotlightDelegate.attributeSetForObject: <stripped>
-	0x25f50  @objc HealthExperienceStoreCoreSpotlightDelegate.initForStoreWithDescription:model: <stripped>
-	0x26040  @objc HealthExperienceStoreCoreSpotlightDelegate..cxx_destruct <stripped>
+	0x25830  @objc HealthExperienceStoreCoreSpotlightDelegate.usePrivateIndex <stripped>
+	0x25880  @objc HealthExperienceStoreCoreSpotlightDelegate.bundleIdentifier <stripped>
+	0x258e0  @objc HealthExperienceStoreCoreSpotlightDelegate.domainIdentifier <stripped>
+	0x25940  @objc HealthExperienceStoreCoreSpotlightDelegate.indexName <stripped>
+	0x259c0  @objc HealthExperienceStoreCoreSpotlightDelegate.protectionClass <stripped>
+	0x25da0  @objc HealthExperienceStoreCoreSpotlightDelegate.attributeSetForObject: <stripped>
+	0x26110  @objc HealthExperienceStoreCoreSpotlightDelegate.initForStoreWithDescription:model: <stripped>
+	0x26200  @objc HealthExperienceStoreCoreSpotlightDelegate..cxx_destruct <stripped>
  }
 
  class HealthExperience.MedicalIDFetchOperation : AsyncOperation {
@@ -625,12 +625,12 @@
 	let healthStore : HKHealthStore // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x26740  @objc MedicalIDFetchOperation.main <stripped>
-	0x26990  @objc MedicalIDFetchOperation.init <stripped>
-	0x26a60  @objc MedicalIDFetchOperation..cxx_destruct <stripped>
+	0x26900  @objc MedicalIDFetchOperation.main <stripped>
+	0x26b50  @objc MedicalIDFetchOperation.init <stripped>
+	0x26c20  @objc MedicalIDFetchOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x26770  func <stripped> // method 
+	0x26930  func <stripped> // method 
  }
 
  class HealthExperience.DebouncedDispatchItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -642,18 +642,18 @@
 	var workItem : Atomic<DispatchWorkItem?> // +0x30 (0x8)
 
 	// Swift methods
-	0x26b60  func DebouncedDispatchItem.block.getter // getter 
-	0x26ba0  func DebouncedDispatchItem.block.setter // setter 
-	0x26be0  func DebouncedDispatchItem.block.modify // modifyCoroutine 
-	0x26c10  func DebouncedDispatchItem.queue.getter // getter 
-	0x26c40  func DebouncedDispatchItem.queue.setter // setter 
-	0x26c80  func DebouncedDispatchItem.queue.modify // modifyCoroutine 
-	0x26cb0  func DebouncedDispatchItem.debounceInterval.getter // getter 
-	0x26ce0  func DebouncedDispatchItem.debounceInterval.setter // setter 
-	0x26d20  func DebouncedDispatchItem.debounceInterval.modify // modifyCoroutine 
-	0x26d60  func DebouncedDispatchItem.cancel() // method 
-	0x26e20  func DebouncedDispatchItem.dispatch() // method 
-	0x27370  class func DebouncedDispatchItem.__allocating_init(queue:debounceLength:block:) // init 
+	0x26d20  func DebouncedDispatchItem.block.getter // getter 
+	0x26d60  func DebouncedDispatchItem.block.setter // setter 
+	0x26da0  func DebouncedDispatchItem.block.modify // modifyCoroutine 
+	0x26dd0  func DebouncedDispatchItem.queue.getter // getter 
+	0x26e00  func DebouncedDispatchItem.queue.setter // setter 
+	0x26e40  func DebouncedDispatchItem.queue.modify // modifyCoroutine 
+	0x26e70  func DebouncedDispatchItem.debounceInterval.getter // getter 
+	0x26ea0  func DebouncedDispatchItem.debounceInterval.setter // setter 
+	0x26ee0  func DebouncedDispatchItem.debounceInterval.modify // modifyCoroutine 
+	0x26f20  func DebouncedDispatchItem.cancel() // method 
+	0x26fe0  func DebouncedDispatchItem.dispatch() // method 
+	0x27530  class func DebouncedDispatchItem.__allocating_init(queue:debounceLength:block:) // init 
  }
 
  class HealthExperience.ModelTrainingScenarioExecutor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -663,9 +663,9 @@
 	let store : HealthExperienceStore // +0x18 (0x28)
 
 	// Swift methods
-	0x27740  class func ModelTrainingScenarioExecutor.__allocating_init(coordinator:store:) // init 
-	0x27800  func ModelTrainingScenarioExecutor.saveModelToDisk(completion:) // method 
-	0x27820  func ModelTrainingScenarioExecutor.execute(scenario:completion:) // method 
+	0x27950  class func ModelTrainingScenarioExecutor.__allocating_init(coordinator:store:) // init 
+	0x27a10  func ModelTrainingScenarioExecutor.saveModelToDisk(completion:) // method 
+	0x27a30  func ModelTrainingScenarioExecutor.execute(scenario:completion:) // method 
  }
 
  enum HealthExperience.Kind {
@@ -697,16 +697,16 @@
 	let healthStore : HKHealthStore // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2f930  @objc MedicalIDCache.init <stripped>
-	0x2f9b0  @objc MedicalIDCache..cxx_destruct <stripped>
+	0x2fb40  @objc MedicalIDCache.init <stripped>
+	0x2fbc0  @objc MedicalIDCache..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2e910  func MedicalIDCache.medicalIDDataResult.getter // getter 
-	0x2e7a0  class func MedicalIDCache.__allocating_init(healthStore:) // init 
-	0x2e980  func <stripped> // method 
-	0x2f070  func MedicalIDCache.enqueueMedicalIDFetch() // method 
-	0x2f220  func <stripped> // method 
-	0x2f770  func <stripped> // method 
+	0x2eb20  func MedicalIDCache.medicalIDDataResult.getter // getter 
+	0x2e9b0  class func MedicalIDCache.__allocating_init(healthStore:) // init 
+	0x2eb90  func <stripped> // method 
+	0x2f280  func MedicalIDCache.enqueueMedicalIDFetch() // method 
+	0x2f430  func <stripped> // method 
+	0x2f980  func <stripped> // method 
  }
 
  struct HealthExperience.SuggestedAction {
@@ -724,8 +724,8 @@
 
  class HealthExperience.GroupConfigurationLoader : REBundleConfiguration /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine {
 	// ObjC -> Swift bridged methods
-	0x308b0  @objc GroupConfigurationLoader.elementGroupWithIdentifier: <stripped>
-	0x30970  @objc GroupConfigurationLoader.init <stripped>
+	0x30ac0  @objc GroupConfigurationLoader.elementGroupWithIdentifier: <stripped>
+	0x30b80  @objc GroupConfigurationLoader.init <stripped>
  }
 
  class HealthExperience.HealthExperienceStoreCleanupOperation : NSOperation /System/Library/Frameworks/Foundation.framework/Foundation {
@@ -734,13 +734,13 @@
 	let context : NSManagedObjectContext // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x32bf0  @objc HealthExperienceStoreCleanupOperation.start <stripped>
-	0x32c20  @objc HealthExperienceStoreCleanupOperation.description <stripped>
-	0x32da0  @objc HealthExperienceStoreCleanupOperation.init <stripped>
-	0x32e20  @objc HealthExperienceStoreCleanupOperation..cxx_destruct <stripped>
+	0x32e20  @objc HealthExperienceStoreCleanupOperation.start <stripped>
+	0x32e50  @objc HealthExperienceStoreCleanupOperation.description <stripped>
+	0x32fd0  @objc HealthExperienceStoreCleanupOperation.init <stripped>
+	0x33050  @objc HealthExperienceStoreCleanupOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x31e90  class func HealthExperienceStoreCleanupOperation.__allocating_init(context:) // init 
+	0x320c0  class func HealthExperienceStoreCleanupOperation.__allocating_init(context:) // init 
  }
 
  class HealthExperience.Matcher : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MatcherProtocol {
@@ -749,34 +749,34 @@
 	var constraintPredicates : [NSPredicate] // +0x10 (0x8)
 
 	// Swift methods
-	0x34d70  func Matcher.constraintPredicates.getter // getter 
-	0x34d60  func Matcher.constraintPredicates.setter // setter 
-	0x32f10  func Matcher.constraintPredicates.modify // modifyCoroutine 
-	0x32f40  class func Matcher.__allocating_init() // init 
+	0x34fa0  func Matcher.constraintPredicates.getter // getter 
+	0x34f90  func Matcher.constraintPredicates.setter // setter 
+	0x33140  func Matcher.constraintPredicates.modify // modifyCoroutine 
+	0x33170  class func Matcher.__allocating_init() // init 
  }
 
  class HealthExperience.AggregateMatcher : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AggregateMatcherProtocol,  MatcherProtocol {
 
 	// Properties
 	var constraintPredicates : [NSPredicate] // +0x10 (0x8)
-	var aggregateIntervalComponents : DateComponents? // +0x80000400 (0x0)
-	var aggregateStatisticsOptions : HKStatisticsOptions // +0x0 (0x8)
-	var anchorDate : Date // +0x74735f5f (0x0)
+	var aggregateIntervalComponents : DateComponents? // +0x0 (0x0)
+	var aggregateStatisticsOptions : HKStatisticsOptions // +0x74735f5f (0x8)
+	var anchorDate : Date // +0x0 (0x0)
 
 	// Swift methods
-	0x33260  func AggregateMatcher.constraintPredicates.getter // getter 
-	0x33290  func AggregateMatcher.constraintPredicates.setter // setter 
-	0x332d0  func AggregateMatcher.constraintPredicates.modify // modifyCoroutine 
-	0x33300  func AggregateMatcher.aggregateIntervalComponents.getter // getter 
-	0x33340  func AggregateMatcher.aggregateIntervalComponents.setter // setter 
-	0x33390  func AggregateMatcher.aggregateIntervalComponents.modify // modifyCoroutine 
-	0x333d0  func AggregateMatcher.aggregateStatisticsOptions.getter // getter 
-	0x33400  func AggregateMatcher.aggregateStatisticsOptions.setter // setter 
-	0x33440  func AggregateMatcher.aggregateStatisticsOptions.modify // modifyCoroutine 
-	0x33480  func AggregateMatcher.anchorDate.getter // getter 
-	0x334d0  func AggregateMatcher.anchorDate.setter // setter 
-	0x33530  func AggregateMatcher.anchorDate.modify // modifyCoroutine 
-	0x33580  class func AggregateMatcher.__allocating_init() // init 
+	0x33490  func AggregateMatcher.constraintPredicates.getter // getter 
+	0x334c0  func AggregateMatcher.constraintPredicates.setter // setter 
+	0x33500  func AggregateMatcher.constraintPredicates.modify // modifyCoroutine 
+	0x33530  func AggregateMatcher.aggregateIntervalComponents.getter // getter 
+	0x33570  func AggregateMatcher.aggregateIntervalComponents.setter // setter 
+	0x335c0  func AggregateMatcher.aggregateIntervalComponents.modify // modifyCoroutine 
+	0x33600  func AggregateMatcher.aggregateStatisticsOptions.getter // getter 
+	0x33630  func AggregateMatcher.aggregateStatisticsOptions.setter // setter 
+	0x33670  func AggregateMatcher.aggregateStatisticsOptions.modify // modifyCoroutine 
+	0x336b0  func AggregateMatcher.anchorDate.getter // getter 
+	0x33700  func AggregateMatcher.anchorDate.setter // setter 
+	0x33760  func AggregateMatcher.anchorDate.modify // modifyCoroutine 
+	0x337b0  class func AggregateMatcher.__allocating_init() // init 
  }
 
  class HealthExperience.FetchedResultsControllerDataSource {
@@ -792,34 +792,34 @@
 	let modelVersion : UInt // +0x40 (0x8)
 	let modelDirectoryName : String // +0x48 (0x10)
 	var $__lazy_storage_$_modelPath : URL? // +0x0 (0x0)
-	let pretrainedModelURL : URL? // +0xbd0 (0x0)
+	let pretrainedModelURL : URL? // +0x13e5a8 (0x0)
 	let dataSources : [REElementDataSource] // +0x0 (0x8)
 	var $__lazy_storage_$_trainingContext : RETrainingContext? // +0x0 (0x8)
 	var $__lazy_storage_$_metricsRecorder : RelevanceEngineMetricsBlockRecorder? // +0x0 (0x8)
 	var $__lazy_storage_$_relevanceEngine : RERelevanceEngine? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4b510  @objc RelevanceEngineCoordinator.init <stripped>
-	0x4b580  @objc RelevanceEngineCoordinator..cxx_destruct <stripped>
+	0x4ba10  @objc RelevanceEngineCoordinator.init <stripped>
+	0x4ba80  @objc RelevanceEngineCoordinator..cxx_destruct <stripped>
 
 	// Swift methods
-	0x48260  class func RelevanceEngineCoordinator.__allocating_init(dataSources:engineName:modelDirectoryName:pretrainedModelURL:) // init 
-	0x48750  func RelevanceEngineCoordinator.resumeEngineIfNeeded(completion:) // method 
-	0x488c0  func RelevanceEngineCoordinator.makeResumeEngineOperation() // method 
-	0x48960  func RelevanceEngineCoordinator.modelPath.getter // getter 
-	0x48dd0  func RelevanceEngineCoordinator.modelPath.setter // setter 
-	0x48e90  func RelevanceEngineCoordinator.modelPath.modify // modifyCoroutine 
-	0x48fe0  func RelevanceEngineCoordinator.trainingContext.getter // getter 
-	0x490f0  func RelevanceEngineCoordinator.trainingContext.setter // setter 
-	0x49110  func RelevanceEngineCoordinator.trainingContext.modify // modifyCoroutine 
-	0x49170  func <stripped> // method 
-	0x499e0  func RelevanceEngineCoordinator.element(for:in:) // method 
-	0x49d00  func RelevanceEngineCoordinator.submitTraining(trainingEvents:store:completion:) // method 
-	0x49f40  func <stripped> // method 
-	0x4a9d0  func RelevanceEngineCoordinator.collectDiagnosticLogs(completion:) // method 
-	0x4ac20  func RelevanceEngineCoordinator.gatherMetrics(completion:) // method 
-	0x4ad90  func RelevanceEngineCoordinator.clearEngineAndModel(completion:) // method 
-	0x4b130  func RelevanceEngineCoordinator.saveModelToDisk(completion:) // method 
+	0x48490  class func RelevanceEngineCoordinator.__allocating_init(dataSources:engineName:modelDirectoryName:pretrainedModelURL:) // init 
+	0x48980  func RelevanceEngineCoordinator.resumeEngineIfNeeded(completion:) // method 
+	0x48af0  func RelevanceEngineCoordinator.makeResumeEngineOperation() // method 
+	0x48b90  func RelevanceEngineCoordinator.modelPath.getter // getter 
+	0x49000  func RelevanceEngineCoordinator.modelPath.setter // setter 
+	0x490c0  func RelevanceEngineCoordinator.modelPath.modify // modifyCoroutine 
+	0x49210  func RelevanceEngineCoordinator.trainingContext.getter // getter 
+	0x49320  func RelevanceEngineCoordinator.trainingContext.setter // setter 
+	0x49340  func RelevanceEngineCoordinator.trainingContext.modify // modifyCoroutine 
+	0x493a0  func <stripped> // method 
+	0x49c10  func RelevanceEngineCoordinator.element(for:in:) // method 
+	0x49f30  func RelevanceEngineCoordinator.submitTraining(trainingEvents:store:completion:) // method 
+	0x4a170  func <stripped> // method 
+	0x4aed0  func RelevanceEngineCoordinator.collectDiagnosticLogs(completion:) // method 
+	0x4b120  func RelevanceEngineCoordinator.gatherMetrics(completion:) // method 
+	0x4b290  func RelevanceEngineCoordinator.clearEngineAndModel(completion:) // method 
+	0x4b630  func RelevanceEngineCoordinator.saveModelToDisk(completion:) // method 
  }
 
  struct HealthExperience.SectionedDataSourceSectionIdentifier: SectionedDataSourceIdentifying {
@@ -857,31 +857,31 @@
 	var lock : UnfairLock // +0x48 (0x8)
 
 	// Swift methods
-	0x56f70  func MutableArrayDataSource.eventHandler.getter // getter 
-	0x56fa0  func MutableArrayDataSource.eventHandler.setter // setter 
-	0x56ff0  func MutableArrayDataSource.eventHandler.modify // modifyCoroutine 
-	0x570d0  func MutableArrayDataSource.promise.getter // getter 
-	0x57100  func MutableArrayDataSource.arrangedSections.getter // getter 
-	0x57130  func MutableArrayDataSource.arrangedSections.setter // setter 
-	0x57170  func MutableArrayDataSource.arrangedSections.modify // modifyCoroutine 
-	0x571b0  func MutableArrayDataSource.identifier.getter // getter 
-	0x57230  func MutableArrayDataSource.identifier.setter // setter 
-	0x57250  func MutableArrayDataSource.identifier.modify // modifyCoroutine 
-	0x57360  func MutableArrayDataSource.sectionIdentifiers.getter // getter 
-	0x58310  class func MutableArrayDataSource.__allocating_init(arrangedSections:) // init 
-	0x57750  func MutableArrayDataSource.replaceAllSections(with:) // method 
-	0x57840  func MutableArrayDataSource.insert(section:index:) // method 
-	0x57870  func MutableArrayDataSource.removeSection(at:) // method 
-	0x57a80  func MutableArrayDataSource.insert(item:at:) // method 
-	0x57af0  func MutableArrayDataSource.removeItemAt(indexPath:) // method 
-	0x57b60  func MutableArrayDataSource.reload(item:at:) // method 
-	0x57bd0  func MutableArrayDataSource.send(_:) // method 
+	0x57150  func MutableArrayDataSource.eventHandler.getter // getter 
+	0x57180  func MutableArrayDataSource.eventHandler.setter // setter 
+	0x571d0  func MutableArrayDataSource.eventHandler.modify // modifyCoroutine 
+	0x572b0  func MutableArrayDataSource.promise.getter // getter 
+	0x572e0  func MutableArrayDataSource.arrangedSections.getter // getter 
+	0x57310  func MutableArrayDataSource.arrangedSections.setter // setter 
+	0x57350  func MutableArrayDataSource.arrangedSections.modify // modifyCoroutine 
+	0x57390  func MutableArrayDataSource.identifier.getter // getter 
+	0x57410  func MutableArrayDataSource.identifier.setter // setter 
+	0x57430  func MutableArrayDataSource.identifier.modify // modifyCoroutine 
+	0x57540  func MutableArrayDataSource.sectionIdentifiers.getter // getter 
+	0x584f0  class func MutableArrayDataSource.__allocating_init(arrangedSections:) // init 
+	0x57930  func MutableArrayDataSource.replaceAllSections(with:) // method 
+	0x57a20  func MutableArrayDataSource.insert(section:index:) // method 
+	0x57a50  func MutableArrayDataSource.removeSection(at:) // method 
+	0x57c60  func MutableArrayDataSource.insert(item:at:) // method 
+	0x57cd0  func MutableArrayDataSource.removeItemAt(indexPath:) // method 
+	0x57d40  func MutableArrayDataSource.reload(item:at:) // method 
+	0x57db0  func MutableArrayDataSource.send(_:) // method 
  }
 
  class HealthExperience.FeedItem : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-	0x5da20  @objc FeedItem.initWithEntity:insertIntoManagedObjectContext: <stripped>
-	0x5db10  @objc FeedItem..cxx_construct <stripped>
+	0x5dc00  @objc FeedItem.initWithEntity:insertIntoManagedObjectContext: <stripped>
+	0x5dcf0  @objc FeedItem..cxx_construct <stripped>
  }
 
  class HealthExperience.USR1SignalDebuggingResponderListener : SignalListener {
@@ -890,7 +890,7 @@
 	let notificationCenter : NSNotificationCenter // +0x18 (0x8)
 
 	// Swift methods
-	0x5e330  class func USR1SignalDebuggingResponderListener.__allocating_init() // init 
+	0x5e6f0  class func USR1SignalDebuggingResponderListener.__allocating_init() // init 
  }
 
  struct HealthExperience.DefaultFavoritablesProvider: FavoritablesProvider {
@@ -906,13 +906,13 @@
 	let store : HealthExperienceStore // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x5fda0  @objc FeedItemREElementDataSource.supportedSections <stripped>
-	0x60a10  @objc FeedItemREElementDataSource.getElementsInSection:withHandler: <stripped>
-	0x60bb0  @objc FeedItemREElementDataSource.init <stripped>
-	0x60c30  @objc FeedItemREElementDataSource..cxx_destruct <stripped>
+	0x60160  @objc FeedItemREElementDataSource.supportedSections <stripped>
+	0x60dd0  @objc FeedItemREElementDataSource.getElementsInSection:withHandler: <stripped>
+	0x60f70  @objc FeedItemREElementDataSource.init <stripped>
+	0x60ff0  @objc FeedItemREElementDataSource..cxx_destruct <stripped>
 
 	// Swift methods
-	0x5fc10  class func FeedItemREElementDataSource.__allocating_init(store:) // init 
+	0x5ffd0  class func FeedItemREElementDataSource.__allocating_init(store:) // init 
  }
 
  enum HealthExperience.RelevanceFeatureTagCoreDataError {
@@ -958,17 +958,17 @@
 	let nonspecificUpdatesDisabled : Atomic<Bool> // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x65a40  @objc FavoritesProvider.dealloc <stripped>
-	0x662a0  @objc FavoritesProvider.favoritesChangedRemotely: <stripped>
-	0x66390  @objc FavoritesProvider.init <stripped>
-	0x65af0  @objc FavoritesProvider..cxx_destruct <stripped>
+	0x65e00  @objc FavoritesProvider.dealloc <stripped>
+	0x66660  @objc FavoritesProvider.favoritesChangedRemotely: <stripped>
+	0x66750  @objc FavoritesProvider.init <stripped>
+	0x65eb0  @objc FavoritesProvider..cxx_destruct <stripped>
 
 	// Swift methods
-	0x655b0  func FavoritesProvider.favorites.getter // getter 
-	0x65840  class func FavoritesProvider.__allocating_init(controller:) // init 
-	0x65b40  func FavoritesProvider.addObserver(_:) // method 
-	0x65be0  func FavoritesProvider.removeObserver(_:) // method 
-	0x65c00  func <stripped> // method 
+	0x65970  func FavoritesProvider.favorites.getter // getter 
+	0x65c00  class func FavoritesProvider.__allocating_init(controller:) // init 
+	0x65f00  func FavoritesProvider.addObserver(_:) // method 
+	0x65fa0  func FavoritesProvider.removeObserver(_:) // method 
+	0x65fc0  func <stripped> // method 
  }
 
  class HealthExperience.HideableDataSource {
@@ -989,20 +989,20 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0x6aaf0  func HKActiveEnergySample.debugDescription.getter // getter 
-	0x6ade0  func HKActiveEnergySample.debugDescription.setter // setter 
-	0x6ae00  func HKActiveEnergySample.debugDescription.modify // modifyCoroutine 
-	0x6aea0  func HKActiveEnergySample.shortUnitString.getter // getter 
-	0x6aee0  func HKActiveEnergySample.shortUnitString.setter // setter 
-	0x6af20  func HKActiveEnergySample.shortUnitString.modify // modifyCoroutine 
-	0x6af50  func HKActiveEnergySample.longUnitString.getter // getter 
-	0x6af90  func HKActiveEnergySample.longUnitString.setter // setter 
-	0x6afd0  func HKActiveEnergySample.longUnitString.modify // modifyCoroutine 
-	0x6b6c0  func HKActiveEnergySample.dateRange.getter // getter 
-	0x6b710  func HKActiveEnergySample.dateRange.setter // setter 
-	0x6b770  func HKActiveEnergySample.dateRange.modify // modifyCoroutine 
-	0x6b7b0  class func HKActiveEnergySample.__allocating_init(statistics:) // init 
-	0x6b800  class func HKActiveEnergySample.__allocating_init(sample:) // init 
+	0x6aeb0  func HKActiveEnergySample.debugDescription.getter // getter 
+	0x6b1a0  func HKActiveEnergySample.debugDescription.setter // setter 
+	0x6b1c0  func HKActiveEnergySample.debugDescription.modify // modifyCoroutine 
+	0x6b260  func HKActiveEnergySample.shortUnitString.getter // getter 
+	0x6b2a0  func HKActiveEnergySample.shortUnitString.setter // setter 
+	0x6b2e0  func HKActiveEnergySample.shortUnitString.modify // modifyCoroutine 
+	0x6b310  func HKActiveEnergySample.longUnitString.getter // getter 
+	0x6b350  func HKActiveEnergySample.longUnitString.setter // setter 
+	0x6b390  func HKActiveEnergySample.longUnitString.modify // modifyCoroutine 
+	0x6ba80  func HKActiveEnergySample.dateRange.getter // getter 
+	0x6bad0  func HKActiveEnergySample.dateRange.setter // setter 
+	0x6bb30  func HKActiveEnergySample.dateRange.modify // modifyCoroutine 
+	0x6bb70  class func HKActiveEnergySample.__allocating_init(statistics:) // init 
+	0x6bbc0  class func HKActiveEnergySample.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKActiveEnergyMatcher {
@@ -1017,15 +1017,15 @@
 	var timeoutWork : DispatchWorkItem? // +0x98 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x6d130  @objc SetDefaultFavoritesOperation.main <stripped>
-	0x6d7b0  @objc SetDefaultFavoritesOperation.init <stripped>
-	0x6d890  @objc SetDefaultFavoritesOperation..cxx_destruct <stripped>
+	0x6d520  @objc SetDefaultFavoritesOperation.main <stripped>
+	0x6dba0  @objc SetDefaultFavoritesOperation.init <stripped>
+	0x6dc80  @objc SetDefaultFavoritesOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x6c970  func <stripped> // getter 
-	0x6ca90  func <stripped> // getter 
-	0x6ce70  class func SetDefaultFavoritesOperation.__allocating_init(favoritesProvider:healthStore:precondition:timeout:) // init 
-	0x6d160  func <stripped> // method 
+	0x6cd30  func <stripped> // getter 
+	0x6ce50  func <stripped> // getter 
+	0x6d260  class func SetDefaultFavoritesOperation.__allocating_init(favoritesProvider:healthStore:precondition:timeout:) // init 
+	0x6d550  func <stripped> // method 
  }
 
  class HealthExperience.HKAnchoredObjectQueryDataSource {
@@ -1054,12 +1054,14 @@
 	var trainingAnalyticsCache : Atomic<[ModelTrainingEvent]>
 
 	// Swift methods
-	0x73fc0  func FeedPopulationManager.relevanceEngineCoordinator.getter // getter 
-	0x73ff0  class func FeedPopulationManager.__allocating_init(healthExperienceStore:) // init 
-	0x745e0  func FeedPopulationManager.populateFeed(feedKinds:for:completion:) // method 
-	0x755b0  func FeedPopulationManager.submitTraining(trainingEvents:store:completion:) // method 
-	0x75d90  func <stripped> // method 
-	0x76b20  func FeedPopulationManager.feedItemSubmissionOccurred(_:) // method 
+	0x75130  func <stripped> // method 
+	0x75550  func FeedPopulationManager.relevanceEngineCoordinator.getter // getter 
+	0x75580  class func FeedPopulationManager.__allocating_init(healthExperienceStore:) // init 
+	0x75ca0  func FeedPopulationManager.populateFeed(feedKinds:for:completion:) // method 
+	0x76eb0  func FeedPopulationManager.deleteFeed(feedKinds:completion:) // method 
+	0x77e70  func FeedPopulationManager.submitTraining(trainingEvents:store:completion:) // method 
+	0x78790  func <stripped> // method 
+	0x79520  func FeedPopulationManager.feedItemSubmissionOccurred(_:) // method 
  }
 
  class HealthExperience.PopulationOperation : AsynchronousOperation {
@@ -1069,15 +1071,13 @@
 	let populationManager : FeedPopulationManager
 
 	// ObjC -> Swift bridged methods
-	0x777a0  @objc PopulationOperation.main <stripped>
-	0x777e0  @objc PopulationOperation.init <stripped>
-	0x77890  @objc PopulationOperation..cxx_destruct <stripped>
+	0x7a1a0  @objc PopulationOperation.main <stripped>
+	0x7a1e0  @objc PopulationOperation.init <stripped>
+	0x7a290  @objc PopulationOperation..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
- class HealthExperience.SkipWhileDataSource {
- class HealthExperience.SkipWhileEventHandler {
  enum HealthExperience.HealthExperienceStoreCreationError {
 
 	// Properties
@@ -1095,21 +1095,22 @@
 	var healthStore : HKHealthStore // +0x10 (0x8)
 	var favoritesProvider : FavoritesProvider // +0x18 (0x8)
 	var environment : FeedItemContextEnvironment // +0x20 (0x20)
-	var boundingRange : DateInterval // +0x13c8c0 (0x0)
-	let storageContext : NSManagedObjectContext // +0x13c8c0 (0x8)
-	let pluginInfo : PluginInfo // +0x0 (0x28)
-	var hasOperationCompleted : Bool? // +0x1144d (0x1)
+	var boundingRange : DateInterval // +0x11a3d (0x0)
+	let storageContext : NSManagedObjectContext // +0x0 (0x8)
+	let pluginInfo : PluginInfo // +0x2 (0x28)
+	var hasOperationCompleted : Bool? // +0x140540 (0x1)
 
 	// Swift methods
-	0x7fcb0  func HealthExperienceStoreFeedItemContext.healthStore.getter // getter 
-	0x7fd70  func HealthExperienceStoreFeedItemContext.favoritesProvider.getter // getter 
-	0x7fe90  func HealthExperienceStoreFeedItemContext.environment.getter // getter 
-	0x80030  func HealthExperienceStoreFeedItemContext.boundingRange.getter // getter 
-	0x80080  class func HealthExperienceStoreFeedItemContext.__allocating_init(storageContext:pluginInfo:healthStore:environment:favoritesProvider:dateRange:) // init 
-	0x80320  func HealthExperienceStoreFeedItemContext.pluginData.getter // getter 
-	0x80800  func HealthExperienceStoreFeedItemContext.commit(_:) // method 
-	0x81640  func <stripped> // method 
-	0x839d0  func <stripped> // method 
+	0x81960  func HealthExperienceStoreFeedItemContext.healthStore.getter // getter 
+	0x81a20  func HealthExperienceStoreFeedItemContext.favoritesProvider.getter // getter 
+	0x81b40  func HealthExperienceStoreFeedItemContext.environment.getter // getter 
+	0x81ce0  func HealthExperienceStoreFeedItemContext.boundingRange.getter // getter 
+	0x81d30  class func HealthExperienceStoreFeedItemContext.__allocating_init(storageContext:pluginInfo:healthStore:environment:favoritesProvider:dateRange:) // init 
+	0x81fd0  func HealthExperienceStoreFeedItemContext.pluginData.getter // getter 
+	0x824b0  func HealthExperienceStoreFeedItemContext.commit(_:) // method 
+	0x83790  func <stripped> // method 
+	0x85650  func <stripped> // method 
+	0x85fb0  func <stripped> // method 
  }
 
  struct HealthExperience.ArrayDataSourceSection {
@@ -1148,31 +1149,31 @@
 	var $__lazy_storage_$_diastolic : Double?
 
 	// Swift methods
-	0x883f0  func HKBloodPressureSample.shortUnitString.getter // getter 
-	0x88430  func HKBloodPressureSample.shortUnitString.setter // setter 
-	0x88470  func HKBloodPressureSample.shortUnitString.modify // modifyCoroutine 
-	0x884a0  func HKBloodPressureSample.longUnitString.getter // getter 
-	0x884e0  func HKBloodPressureSample.longUnitString.setter // setter 
-	0x88520  func HKBloodPressureSample.longUnitString.modify // modifyCoroutine 
-	0x88a80  func HKBloodPressureSample.dateRange.getter // getter 
-	0x88ad0  func HKBloodPressureSample.dateRange.setter // setter 
-	0x88b30  func HKBloodPressureSample.dateRange.modify // modifyCoroutine 
-	0x88b70  func HKBloodPressureSample.systolic.getter // getter 
-	0x88d20  func HKBloodPressureSample.systolic.setter // setter 
-	0x88d40  func HKBloodPressureSample.systolic.modify // modifyCoroutine 
-	0x88dc0  func HKBloodPressureSample.diastolic.getter // getter 
-	0x88fb0  func HKBloodPressureSample.diastolic.setter // setter 
-	0x88fd0  func HKBloodPressureSample.diastolic.modify // modifyCoroutine 
-	0x89030  class func HKBloodPressureSample.__allocating_init(sample:) // init 
-	0x89060  class func HKBloodPressureSample.__allocating_init(statistics:) // init 
-	0x88350  class func HKBloodPressureSample.__allocating_init(systolic:diastolic:) // init 
-	0x8b700  func HKBloodPressureSample.smallDescriptionString() // method 
-	0x890f0  func HKBloodPressureSample.longDescriptionString() // method 
+	0x8b0c0  func HKBloodPressureSample.shortUnitString.getter // getter 
+	0x8b100  func HKBloodPressureSample.shortUnitString.setter // setter 
+	0x8b140  func HKBloodPressureSample.shortUnitString.modify // modifyCoroutine 
+	0x8b170  func HKBloodPressureSample.longUnitString.getter // getter 
+	0x8b1b0  func HKBloodPressureSample.longUnitString.setter // setter 
+	0x8b1f0  func HKBloodPressureSample.longUnitString.modify // modifyCoroutine 
+	0x8b750  func HKBloodPressureSample.dateRange.getter // getter 
+	0x8b7a0  func HKBloodPressureSample.dateRange.setter // setter 
+	0x8b800  func HKBloodPressureSample.dateRange.modify // modifyCoroutine 
+	0x8b840  func HKBloodPressureSample.systolic.getter // getter 
+	0x8b9f0  func HKBloodPressureSample.systolic.setter // setter 
+	0x8ba10  func HKBloodPressureSample.systolic.modify // modifyCoroutine 
+	0x8ba90  func HKBloodPressureSample.diastolic.getter // getter 
+	0x8bc80  func HKBloodPressureSample.diastolic.setter // setter 
+	0x8bca0  func HKBloodPressureSample.diastolic.modify // modifyCoroutine 
+	0x8bd00  class func HKBloodPressureSample.__allocating_init(sample:) // init 
+	0x8bd30  class func HKBloodPressureSample.__allocating_init(statistics:) // init 
+	0x8b020  class func HKBloodPressureSample.__allocating_init(systolic:diastolic:) // init 
+	0x8e3d0  func HKBloodPressureSample.smallDescriptionString() // method 
+	0x8bdc0  func HKBloodPressureSample.longDescriptionString() // method 
  }
 
  class HealthExperience.HKBloodPressureSampleMatcher : AggregateMatcher {
 	// Swift methods
-	0x89820  func HKBloodPressureSampleMatcher.dataSource(healthStore:) // method 
+	0x8c4f0  func HKBloodPressureSampleMatcher.dataSource(healthStore:) // method 
  }
 
  struct HealthExperience.DateRangeFeatureTag {
@@ -1217,12 +1218,12 @@
 	let context : NSManagedObjectContext // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x92070  @objc SaveManagedObjectContextOperation.main <stripped>
-	0x921a0  @objc SaveManagedObjectContextOperation.init <stripped>
-	0x92240  @objc SaveManagedObjectContextOperation..cxx_destruct <stripped>
+	0x94d40  @objc SaveManagedObjectContextOperation.main <stripped>
+	0x94e70  @objc SaveManagedObjectContextOperation.init <stripped>
+	0x94f10  @objc SaveManagedObjectContextOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x91b80  class func SaveManagedObjectContextOperation.__allocating_init(context:) // init 
+	0x94850  class func SaveManagedObjectContextOperation.__allocating_init(context:) // init 
  }
 
  class HealthExperience.HKStatisticsCollectionQueryDataSource {
@@ -1237,14 +1238,16 @@
 
 	// Properties
 	let workBlock : AsynchronousBlockOperation // +0x30 (0x10)
+	let debugIdentifier : String? // +0x40 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x95890  @objc AsynchronousBlockOperation.main <stripped>
-	0x95940  @objc AsynchronousBlockOperation.init <stripped>
-	0x959e0  @objc AsynchronousBlockOperation..cxx_destruct <stripped>
+	0x98660  @objc AsynchronousBlockOperation.main <stripped>
+	0x986c0  @objc AsynchronousBlockOperation.debugDescription <stripped>
+	0x98930  @objc AsynchronousBlockOperation.init <stripped>
+	0x989e0  @objc AsynchronousBlockOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x95750  class func AsynchronousBlockOperation.__allocating_init(_:) // init 
+	0x98420  class func AsynchronousBlockOperation.__allocating_init(debugIdentifier:_:) // init 
  }
 
  struct HealthExperience.PluginFeedItem {
@@ -1301,7 +1304,7 @@
 	let evaluate : (_:)
 
 	// Swift methods
-	0x9ccc0  func <stripped> // method 
+	0x9fce0  func <stripped> // method 
  }
 
  class HealthExperience.HasUpgradedFavoritesPrecondition : UserDefaultsQueryPrecondition {
@@ -1319,22 +1322,7 @@
 	var preconditionCompletion : (_:)?
 
 	// Swift methods
-	0x9d5d0  func <stripped> // method 
- }
-
- class HealthExperience.FirstRestoreNotInProgressPrecondition : NSObject /usr/lib/libobjc.A.dylib {
-
-	// Properties
-	var $__lazy_storage_$_cloudSyncObserver : HKCloudSyncObserver?
-	var preconditionCompletion : (_:)?
-	let healthStore : HKHealthStore
-
-	// ObjC -> Swift bridged methods
-	0x9d820  @objc FirstRestoreNotInProgressPrecondition.init <stripped>
-	0x9d8a0  @objc FirstRestoreNotInProgressPrecondition..cxx_destruct <stripped>
-
-	// Swift methods
-	0x9d750  func <stripped> // method 
+	0xa05f0  func <stripped> // method 
  }
 
  struct HealthExperience.ModelTrainingScenario {
@@ -1422,17 +1410,17 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xbc6b0  func HKBloodGlucoseSample.shortUnitString.getter // getter 
-	0xbd3f0  func HKBloodGlucoseSample.shortUnitString.setter // setter 
-	0xa5df0  func HKBloodGlucoseSample.shortUnitString.modify // modifyCoroutine 
-	0xbc6c0  func HKBloodGlucoseSample.longUnitString.getter // getter 
-	0xbd400  func HKBloodGlucoseSample.longUnitString.setter // setter 
-	0xa5e20  func HKBloodGlucoseSample.longUnitString.modify // modifyCoroutine 
-	0xa62d0  func HKBloodGlucoseSample.dateRange.getter // getter 
-	0xa62f0  func HKBloodGlucoseSample.dateRange.setter // setter 
-	0xa6310  func HKBloodGlucoseSample.dateRange.modify // modifyCoroutine 
-	0xa6350  class func HKBloodGlucoseSample.__allocating_init(statistics:) // init 
-	0xa63c0  class func HKBloodGlucoseSample.__allocating_init(sample:) // init 
+	0xbf0d0  func HKBloodGlucoseSample.shortUnitString.getter // getter 
+	0xbfe10  func HKBloodGlucoseSample.shortUnitString.setter // setter 
+	0xa8810  func HKBloodGlucoseSample.shortUnitString.modify // modifyCoroutine 
+	0xbf0e0  func HKBloodGlucoseSample.longUnitString.getter // getter 
+	0xbfe20  func HKBloodGlucoseSample.longUnitString.setter // setter 
+	0xa8840  func HKBloodGlucoseSample.longUnitString.modify // modifyCoroutine 
+	0xa8cf0  func HKBloodGlucoseSample.dateRange.getter // getter 
+	0xa8d10  func HKBloodGlucoseSample.dateRange.setter // setter 
+	0xa8d30  func HKBloodGlucoseSample.dateRange.modify // modifyCoroutine 
+	0xa8d70  class func HKBloodGlucoseSample.__allocating_init(statistics:) // init 
+	0xa8de0  class func HKBloodGlucoseSample.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKBodyMassIndex : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1444,17 +1432,17 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xbc6f0  func HKBodyMassIndex.shortUnitString.getter // getter 
-	0xbd430  func HKBodyMassIndex.shortUnitString.setter // setter 
-	0xa67f0  func HKBodyMassIndex.shortUnitString.modify // modifyCoroutine 
-	0xbc700  func HKBodyMassIndex.longUnitString.getter // getter 
-	0xbd440  func HKBodyMassIndex.longUnitString.setter // setter 
-	0xa6820  func HKBodyMassIndex.longUnitString.modify // modifyCoroutine 
-	0xa6cd0  func HKBodyMassIndex.dateRange.getter // getter 
-	0xa6cf0  func HKBodyMassIndex.dateRange.setter // setter 
-	0xa6d10  func HKBodyMassIndex.dateRange.modify // modifyCoroutine 
-	0xa6d50  class func HKBodyMassIndex.__allocating_init(statistics:) // init 
-	0xa6da0  class func HKBodyMassIndex.__allocating_init(sample:) // init 
+	0xbf110  func HKBodyMassIndex.shortUnitString.getter // getter 
+	0xbfe50  func HKBodyMassIndex.shortUnitString.setter // setter 
+	0xa9210  func HKBodyMassIndex.shortUnitString.modify // modifyCoroutine 
+	0xbf120  func HKBodyMassIndex.longUnitString.getter // getter 
+	0xbfe60  func HKBodyMassIndex.longUnitString.setter // setter 
+	0xa9240  func HKBodyMassIndex.longUnitString.modify // modifyCoroutine 
+	0xa96f0  func HKBodyMassIndex.dateRange.getter // getter 
+	0xa9710  func HKBodyMassIndex.dateRange.setter // setter 
+	0xa9730  func HKBodyMassIndex.dateRange.modify // modifyCoroutine 
+	0xa9770  class func HKBodyMassIndex.__allocating_init(statistics:) // init 
+	0xa97c0  class func HKBodyMassIndex.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKBodyFatPercentage : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1466,17 +1454,17 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xbc6d0  func HKBodyFatPercentage.shortUnitString.getter // getter 
-	0xbd410  func HKBodyFatPercentage.shortUnitString.setter // setter 
-	0xa70f0  func HKBodyFatPercentage.shortUnitString.modify // modifyCoroutine 
-	0xbc6e0  func HKBodyFatPercentage.longUnitString.getter // getter 
-	0xbd420  func HKBodyFatPercentage.longUnitString.setter // setter 
-	0xa7120  func HKBodyFatPercentage.longUnitString.modify // modifyCoroutine 
-	0xa75d0  func HKBodyFatPercentage.dateRange.getter // getter 
-	0xa75f0  func HKBodyFatPercentage.dateRange.setter // setter 
-	0xa7610  func HKBodyFatPercentage.dateRange.modify // modifyCoroutine 
-	0xa7650  class func HKBodyFatPercentage.__allocating_init(statistics:) // init 
-	0xa76a0  class func HKBodyFatPercentage.__allocating_init(sample:) // init 
+	0xbf0f0  func HKBodyFatPercentage.shortUnitString.getter // getter 
+	0xbfe30  func HKBodyFatPercentage.shortUnitString.setter // setter 
+	0xa9b10  func HKBodyFatPercentage.shortUnitString.modify // modifyCoroutine 
+	0xbf100  func HKBodyFatPercentage.longUnitString.getter // getter 
+	0xbfe40  func HKBodyFatPercentage.longUnitString.setter // setter 
+	0xa9b40  func HKBodyFatPercentage.longUnitString.modify // modifyCoroutine 
+	0xa9ff0  func HKBodyFatPercentage.dateRange.getter // getter 
+	0xaa010  func HKBodyFatPercentage.dateRange.setter // setter 
+	0xaa030  func HKBodyFatPercentage.dateRange.modify // modifyCoroutine 
+	0xaa070  class func HKBodyFatPercentage.__allocating_init(statistics:) // init 
+	0xaa0c0  class func HKBodyFatPercentage.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKBodyHeight : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1488,17 +1476,17 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xbc770  func HKBodyHeight.shortUnitString.getter // getter 
-	0xbd4b0  func HKBodyHeight.shortUnitString.setter // setter 
-	0xa7a10  func HKBodyHeight.shortUnitString.modify // modifyCoroutine 
-	0xbc780  func HKBodyHeight.longUnitString.getter // getter 
-	0xbd4c0  func HKBodyHeight.longUnitString.setter // setter 
-	0xa7a40  func HKBodyHeight.longUnitString.modify // modifyCoroutine 
-	0xa7ed0  func HKBodyHeight.dateRange.getter // getter 
-	0xa7ef0  func HKBodyHeight.dateRange.setter // setter 
-	0xa7f10  func HKBodyHeight.dateRange.modify // modifyCoroutine 
-	0xa7f50  class func HKBodyHeight.__allocating_init(statistics:) // init 
-	0xa7fa0  class func HKBodyHeight.__allocating_init(sample:) // init 
+	0xbf190  func HKBodyHeight.shortUnitString.getter // getter 
+	0xbfed0  func HKBodyHeight.shortUnitString.setter // setter 
+	0xaa430  func HKBodyHeight.shortUnitString.modify // modifyCoroutine 
+	0xbf1a0  func HKBodyHeight.longUnitString.getter // getter 
+	0xbfee0  func HKBodyHeight.longUnitString.setter // setter 
+	0xaa460  func HKBodyHeight.longUnitString.modify // modifyCoroutine 
+	0xaa8f0  func HKBodyHeight.dateRange.getter // getter 
+	0xaa910  func HKBodyHeight.dateRange.setter // setter 
+	0xaa930  func HKBodyHeight.dateRange.modify // modifyCoroutine 
+	0xaa970  class func HKBodyHeight.__allocating_init(statistics:) // init 
+	0xaa9c0  class func HKBodyHeight.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKWaistCircumference : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1510,17 +1498,17 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xbc710  func HKWaistCircumference.shortUnitString.getter // getter 
-	0xbd450  func HKWaistCircumference.shortUnitString.setter // setter 
-	0xa82f0  func HKWaistCircumference.shortUnitString.modify // modifyCoroutine 
-	0xbc720  func HKWaistCircumference.longUnitString.getter // getter 
-	0xbd460  func HKWaistCircumference.longUnitString.setter // setter 
-	0xa8320  func HKWaistCircumference.longUnitString.modify // modifyCoroutine 
-	0xa87b0  func HKWaistCircumference.dateRange.getter // getter 
-	0xa87d0  func HKWaistCircumference.dateRange.setter // setter 
-	0xa87f0  func HKWaistCircumference.dateRange.modify // modifyCoroutine 
-	0xa8830  class func HKWaistCircumference.__allocating_init(statistics:) // init 
-	0xa8880  class func HKWaistCircumference.__allocating_init(sample:) // init 
+	0xbf130  func HKWaistCircumference.shortUnitString.getter // getter 
+	0xbfe70  func HKWaistCircumference.shortUnitString.setter // setter 
+	0xaad10  func HKWaistCircumference.shortUnitString.modify // modifyCoroutine 
+	0xbf140  func HKWaistCircumference.longUnitString.getter // getter 
+	0xbfe80  func HKWaistCircumference.longUnitString.setter // setter 
+	0xaad40  func HKWaistCircumference.longUnitString.modify // modifyCoroutine 
+	0xab1d0  func HKWaistCircumference.dateRange.getter // getter 
+	0xab1f0  func HKWaistCircumference.dateRange.setter // setter 
+	0xab210  func HKWaistCircumference.dateRange.modify // modifyCoroutine 
+	0xab250  class func HKWaistCircumference.__allocating_init(statistics:) // init 
+	0xab2a0  class func HKWaistCircumference.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKVO2Max : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1532,17 +1520,17 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xbc730  func HKVO2Max.shortUnitString.getter // getter 
-	0xbd470  func HKVO2Max.shortUnitString.setter // setter 
-	0xa8bf0  func HKVO2Max.shortUnitString.modify // modifyCoroutine 
-	0xbc740  func HKVO2Max.longUnitString.getter // getter 
-	0xbd480  func HKVO2Max.longUnitString.setter // setter 
-	0xa8c20  func HKVO2Max.longUnitString.modify // modifyCoroutine 
-	0xa90d0  func HKVO2Max.dateRange.getter // getter 
-	0xa90f0  func HKVO2Max.dateRange.setter // setter 
-	0xa9110  func HKVO2Max.dateRange.modify // modifyCoroutine 
-	0xa9150  class func HKVO2Max.__allocating_init(statistics:) // init 
-	0xa91a0  class func HKVO2Max.__allocating_init(sample:) // init 
+	0xbf150  func HKVO2Max.shortUnitString.getter // getter 
+	0xbfe90  func HKVO2Max.shortUnitString.setter // setter 
+	0xab610  func HKVO2Max.shortUnitString.modify // modifyCoroutine 
+	0xbf160  func HKVO2Max.longUnitString.getter // getter 
+	0xbfea0  func HKVO2Max.longUnitString.setter // setter 
+	0xab640  func HKVO2Max.longUnitString.modify // modifyCoroutine 
+	0xabaf0  func HKVO2Max.dateRange.getter // getter 
+	0xabb10  func HKVO2Max.dateRange.setter // setter 
+	0xabb30  func HKVO2Max.dateRange.modify // modifyCoroutine 
+	0xabb70  class func HKVO2Max.__allocating_init(statistics:) // init 
+	0xabbc0  class func HKVO2Max.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKLeanBodyMass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1554,17 +1542,17 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xbc750  func HKLeanBodyMass.shortUnitString.getter // getter 
-	0xbd490  func HKLeanBodyMass.shortUnitString.setter // setter 
-	0xa94f0  func HKLeanBodyMass.shortUnitString.modify // modifyCoroutine 
-	0xbc760  func HKLeanBodyMass.longUnitString.getter // getter 
-	0xbd4a0  func HKLeanBodyMass.longUnitString.setter // setter 
-	0xa9520  func HKLeanBodyMass.longUnitString.modify // modifyCoroutine 
-	0xa99b0  func HKLeanBodyMass.dateRange.getter // getter 
-	0xa99d0  func HKLeanBodyMass.dateRange.setter // setter 
-	0xa99f0  func HKLeanBodyMass.dateRange.modify // modifyCoroutine 
-	0xa9a30  class func HKLeanBodyMass.__allocating_init(statistics:) // init 
-	0xa9a80  class func HKLeanBodyMass.__allocating_init(sample:) // init 
+	0xbf170  func HKLeanBodyMass.shortUnitString.getter // getter 
+	0xbfeb0  func HKLeanBodyMass.shortUnitString.setter // setter 
+	0xabf10  func HKLeanBodyMass.shortUnitString.modify // modifyCoroutine 
+	0xbf180  func HKLeanBodyMass.longUnitString.getter // getter 
+	0xbfec0  func HKLeanBodyMass.longUnitString.setter // setter 
+	0xabf40  func HKLeanBodyMass.longUnitString.modify // modifyCoroutine 
+	0xac3d0  func HKLeanBodyMass.dateRange.getter // getter 
+	0xac3f0  func HKLeanBodyMass.dateRange.setter // setter 
+	0xac410  func HKLeanBodyMass.dateRange.modify // modifyCoroutine 
+	0xac450  class func HKLeanBodyMass.__allocating_init(statistics:) // init 
+	0xac4a0  class func HKLeanBodyMass.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKHeartRate : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1576,17 +1564,17 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xa9dd0  func HKHeartRate.shortUnitString.getter // getter 
-	0xa9e10  func HKHeartRate.shortUnitString.setter // setter 
-	0xa9e50  func HKHeartRate.shortUnitString.modify // modifyCoroutine 
-	0xa9e80  func HKHeartRate.longUnitString.getter // getter 
-	0xa9ec0  func HKHeartRate.longUnitString.setter // setter 
-	0xa9f00  func HKHeartRate.longUnitString.modify // modifyCoroutine 
-	0xaa3f0  func HKHeartRate.dateRange.getter // getter 
-	0xaa410  func HKHeartRate.dateRange.setter // setter 
-	0xaa430  func HKHeartRate.dateRange.modify // modifyCoroutine 
-	0xaa470  class func HKHeartRate.__allocating_init(statistics:) // init 
-	0xaa4c0  class func HKHeartRate.__allocating_init(sample:) // init 
+	0xac7f0  func HKHeartRate.shortUnitString.getter // getter 
+	0xac830  func HKHeartRate.shortUnitString.setter // setter 
+	0xac870  func HKHeartRate.shortUnitString.modify // modifyCoroutine 
+	0xac8a0  func HKHeartRate.longUnitString.getter // getter 
+	0xac8e0  func HKHeartRate.longUnitString.setter // setter 
+	0xac920  func HKHeartRate.longUnitString.modify // modifyCoroutine 
+	0xace10  func HKHeartRate.dateRange.getter // getter 
+	0xace30  func HKHeartRate.dateRange.setter // setter 
+	0xace50  func HKHeartRate.dateRange.modify // modifyCoroutine 
+	0xace90  class func HKHeartRate.__allocating_init(statistics:) // init 
+	0xacee0  class func HKHeartRate.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKDistanceWalkingRunning : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1598,17 +1586,17 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xbc790  func HKDistanceWalkingRunning.shortUnitString.getter // getter 
-	0xbd4d0  func HKDistanceWalkingRunning.shortUnitString.setter // setter 
-	0xaa8c0  func HKDistanceWalkingRunning.shortUnitString.modify // modifyCoroutine 
-	0xbc7a0  func HKDistanceWalkingRunning.longUnitString.getter // getter 
-	0xbd4e0  func HKDistanceWalkingRunning.longUnitString.setter // setter 
-	0xaa8f0  func HKDistanceWalkingRunning.longUnitString.modify // modifyCoroutine 
-	0xaad80  func HKDistanceWalkingRunning.dateRange.getter // getter 
-	0xaada0  func HKDistanceWalkingRunning.dateRange.setter // setter 
-	0xaadc0  func HKDistanceWalkingRunning.dateRange.modify // modifyCoroutine 
-	0xaae00  class func HKDistanceWalkingRunning.__allocating_init(statistics:) // init 
-	0xaae50  class func HKDistanceWalkingRunning.__allocating_init(sample:) // init 
+	0xbf1b0  func HKDistanceWalkingRunning.shortUnitString.getter // getter 
+	0xbfef0  func HKDistanceWalkingRunning.shortUnitString.setter // setter 
+	0xad2e0  func HKDistanceWalkingRunning.shortUnitString.modify // modifyCoroutine 
+	0xbf1c0  func HKDistanceWalkingRunning.longUnitString.getter // getter 
+	0xbff00  func HKDistanceWalkingRunning.longUnitString.setter // setter 
+	0xad310  func HKDistanceWalkingRunning.longUnitString.modify // modifyCoroutine 
+	0xad7a0  func HKDistanceWalkingRunning.dateRange.getter // getter 
+	0xad7c0  func HKDistanceWalkingRunning.dateRange.setter // setter 
+	0xad7e0  func HKDistanceWalkingRunning.dateRange.modify // modifyCoroutine 
+	0xad820  class func HKDistanceWalkingRunning.__allocating_init(statistics:) // init 
+	0xad870  class func HKDistanceWalkingRunning.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKFlightsClimbed : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1620,17 +1608,17 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xbc7b0  func HKFlightsClimbed.shortUnitString.getter // getter 
-	0xbd4f0  func HKFlightsClimbed.shortUnitString.setter // setter 
-	0xab1c0  func HKFlightsClimbed.shortUnitString.modify // modifyCoroutine 
-	0xbc7c0  func HKFlightsClimbed.longUnitString.getter // getter 
-	0xbd500  func HKFlightsClimbed.longUnitString.setter // setter 
-	0xab1f0  func HKFlightsClimbed.longUnitString.modify // modifyCoroutine 
-	0xab6a0  func HKFlightsClimbed.dateRange.getter // getter 
-	0xab6c0  func HKFlightsClimbed.dateRange.setter // setter 
-	0xab6e0  func HKFlightsClimbed.dateRange.modify // modifyCoroutine 
-	0xab720  class func HKFlightsClimbed.__allocating_init(statistics:) // init 
-	0xab770  class func HKFlightsClimbed.__allocating_init(sample:) // init 
+	0xbf1d0  func HKFlightsClimbed.shortUnitString.getter // getter 
+	0xbff10  func HKFlightsClimbed.shortUnitString.setter // setter 
+	0xadbe0  func HKFlightsClimbed.shortUnitString.modify // modifyCoroutine 
+	0xbf1e0  func HKFlightsClimbed.longUnitString.getter // getter 
+	0xbff20  func HKFlightsClimbed.longUnitString.setter // setter 
+	0xadc10  func HKFlightsClimbed.longUnitString.modify // modifyCoroutine 
+	0xae0c0  func HKFlightsClimbed.dateRange.getter // getter 
+	0xae0e0  func HKFlightsClimbed.dateRange.setter // setter 
+	0xae100  func HKFlightsClimbed.dateRange.modify // modifyCoroutine 
+	0xae140  class func HKFlightsClimbed.__allocating_init(statistics:) // init 
+	0xae190  class func HKFlightsClimbed.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKOxygenSaturation : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1642,17 +1630,17 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xbc7d0  func HKOxygenSaturation.shortUnitString.getter // getter 
-	0xbd510  func HKOxygenSaturation.shortUnitString.setter // setter 
-	0xabae0  func HKOxygenSaturation.shortUnitString.modify // modifyCoroutine 
-	0xbc7e0  func HKOxygenSaturation.longUnitString.getter // getter 
-	0xbd520  func HKOxygenSaturation.longUnitString.setter // setter 
-	0xabb10  func HKOxygenSaturation.longUnitString.modify // modifyCoroutine 
-	0xabfa0  func HKOxygenSaturation.dateRange.getter // getter 
-	0xabfc0  func HKOxygenSaturation.dateRange.setter // setter 
-	0xabfe0  func HKOxygenSaturation.dateRange.modify // modifyCoroutine 
-	0xac020  class func HKOxygenSaturation.__allocating_init(statistics:) // init 
-	0xac070  class func HKOxygenSaturation.__allocating_init(sample:) // init 
+	0xbf1f0  func HKOxygenSaturation.shortUnitString.getter // getter 
+	0xbff30  func HKOxygenSaturation.shortUnitString.setter // setter 
+	0xae500  func HKOxygenSaturation.shortUnitString.modify // modifyCoroutine 
+	0xbf200  func HKOxygenSaturation.longUnitString.getter // getter 
+	0xbff40  func HKOxygenSaturation.longUnitString.setter // setter 
+	0xae530  func HKOxygenSaturation.longUnitString.modify // modifyCoroutine 
+	0xae9c0  func HKOxygenSaturation.dateRange.getter // getter 
+	0xae9e0  func HKOxygenSaturation.dateRange.setter // setter 
+	0xaea00  func HKOxygenSaturation.dateRange.modify // modifyCoroutine 
+	0xaea40  class func HKOxygenSaturation.__allocating_init(statistics:) // init 
+	0xaea90  class func HKOxygenSaturation.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKBloodAlcoholContent : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1664,17 +1652,17 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xbc7f0  func HKBloodAlcoholContent.shortUnitString.getter // getter 
-	0xbd530  func HKBloodAlcoholContent.shortUnitString.setter // setter 
-	0xac3e0  func HKBloodAlcoholContent.shortUnitString.modify // modifyCoroutine 
-	0xbc800  func HKBloodAlcoholContent.longUnitString.getter // getter 
-	0xbd540  func HKBloodAlcoholContent.longUnitString.setter // setter 
-	0xac410  func HKBloodAlcoholContent.longUnitString.modify // modifyCoroutine 
-	0xac8a0  func HKBloodAlcoholContent.dateRange.getter // getter 
-	0xac8c0  func HKBloodAlcoholContent.dateRange.setter // setter 
-	0xac8e0  func HKBloodAlcoholContent.dateRange.modify // modifyCoroutine 
-	0xac920  class func HKBloodAlcoholContent.__allocating_init(statistics:) // init 
-	0xac970  class func HKBloodAlcoholContent.__allocating_init(sample:) // init 
+	0xbf210  func HKBloodAlcoholContent.shortUnitString.getter // getter 
+	0xbff50  func HKBloodAlcoholContent.shortUnitString.setter // setter 
+	0xaee00  func HKBloodAlcoholContent.shortUnitString.modify // modifyCoroutine 
+	0xbf220  func HKBloodAlcoholContent.longUnitString.getter // getter 
+	0xbff60  func HKBloodAlcoholContent.longUnitString.setter // setter 
+	0xaee30  func HKBloodAlcoholContent.longUnitString.modify // modifyCoroutine 
+	0xaf2c0  func HKBloodAlcoholContent.dateRange.getter // getter 
+	0xaf2e0  func HKBloodAlcoholContent.dateRange.setter // setter 
+	0xaf300  func HKBloodAlcoholContent.dateRange.modify // modifyCoroutine 
+	0xaf340  class func HKBloodAlcoholContent.__allocating_init(statistics:) // init 
+	0xaf390  class func HKBloodAlcoholContent.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKForcedVitalCapacity : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1686,17 +1674,17 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xbc810  func HKForcedVitalCapacity.shortUnitString.getter // getter 
-	0xbd550  func HKForcedVitalCapacity.shortUnitString.setter // setter 
-	0xacce0  func HKForcedVitalCapacity.shortUnitString.modify // modifyCoroutine 
-	0xbc820  func HKForcedVitalCapacity.longUnitString.getter // getter 
-	0xbd560  func HKForcedVitalCapacity.longUnitString.setter // setter 
-	0xacd10  func HKForcedVitalCapacity.longUnitString.modify // modifyCoroutine 
-	0xad1a0  func HKForcedVitalCapacity.dateRange.getter // getter 
-	0xad1c0  func HKForcedVitalCapacity.dateRange.setter // setter 
-	0xad1e0  func HKForcedVitalCapacity.dateRange.modify // modifyCoroutine 
-	0xad220  class func HKForcedVitalCapacity.__allocating_init(statistics:) // init 
-	0xad270  class func HKForcedVitalCapacity.__allocating_init(sample:) // init 
+	0xbf230  func HKForcedVitalCapacity.shortUnitString.getter // getter 
+	0xbff70  func HKForcedVitalCapacity.shortUnitString.setter // setter 
+	0xaf700  func HKForcedVitalCapacity.shortUnitString.modify // modifyCoroutine 
+	0xbf240  func HKForcedVitalCapacity.longUnitString.getter // getter 
+	0xbff80  func HKForcedVitalCapacity.longUnitString.setter // setter 
+	0xaf730  func HKForcedVitalCapacity.longUnitString.modify // modifyCoroutine 
+	0xafbc0  func HKForcedVitalCapacity.dateRange.getter // getter 
+	0xafbe0  func HKForcedVitalCapacity.dateRange.setter // setter 
+	0xafc00  func HKForcedVitalCapacity.dateRange.modify // modifyCoroutine 
+	0xafc40  class func HKForcedVitalCapacity.__allocating_init(statistics:) // init 
+	0xafc90  class func HKForcedVitalCapacity.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKForcedExpiratoryVolume : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1708,17 +1696,17 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xbc830  func HKForcedExpiratoryVolume.shortUnitString.getter // getter 
-	0xbd570  func HKForcedExpiratoryVolume.shortUnitString.setter // setter 
-	0xad5e0  func HKForcedExpiratoryVolume.shortUnitString.modify // modifyCoroutine 
-	0xbc840  func HKForcedExpiratoryVolume.longUnitString.getter // getter 
-	0xbd580  func HKForcedExpiratoryVolume.longUnitString.setter // setter 
-	0xad610  func HKForcedExpiratoryVolume.longUnitString.modify // modifyCoroutine 
-	0xadaa0  func HKForcedExpiratoryVolume.dateRange.getter // getter 
-	0xadac0  func HKForcedExpiratoryVolume.dateRange.setter // setter 
-	0xadae0  func HKForcedExpiratoryVolume.dateRange.modify // modifyCoroutine 
-	0xadb20  class func HKForcedExpiratoryVolume.__allocating_init(statistics:) // init 
-	0xadb70  class func HKForcedExpiratoryVolume.__allocating_init(sample:) // init 
+	0xbf250  func HKForcedExpiratoryVolume.shortUnitString.getter // getter 
+	0xbff90  func HKForcedExpiratoryVolume.shortUnitString.setter // setter 
+	0xb0000  func HKForcedExpiratoryVolume.shortUnitString.modify // modifyCoroutine 
+	0xbf260  func HKForcedExpiratoryVolume.longUnitString.getter // getter 
+	0xbffa0  func HKForcedExpiratoryVolume.longUnitString.setter // setter 
+	0xb0030  func HKForcedExpiratoryVolume.longUnitString.modify // modifyCoroutine 
+	0xb04c0  func HKForcedExpiratoryVolume.dateRange.getter // getter 
+	0xb04e0  func HKForcedExpiratoryVolume.dateRange.setter // setter 
+	0xb0500  func HKForcedExpiratoryVolume.dateRange.modify // modifyCoroutine 
+	0xb0540  class func HKForcedExpiratoryVolume.__allocating_init(statistics:) // init 
+	0xb0590  class func HKForcedExpiratoryVolume.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKPeakExpiratoryFlowRate : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1730,17 +1718,17 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xbc850  func HKPeakExpiratoryFlowRate.shortUnitString.getter // getter 
-	0xbd590  func HKPeakExpiratoryFlowRate.shortUnitString.setter // setter 
-	0xadee0  func HKPeakExpiratoryFlowRate.shortUnitString.modify // modifyCoroutine 
-	0xbc860  func HKPeakExpiratoryFlowRate.longUnitString.getter // getter 
-	0xbd5a0  func HKPeakExpiratoryFlowRate.longUnitString.setter // setter 
-	0xadf10  func HKPeakExpiratoryFlowRate.longUnitString.modify // modifyCoroutine 
-	0xae3c0  func HKPeakExpiratoryFlowRate.dateRange.getter // getter 
-	0xae3e0  func HKPeakExpiratoryFlowRate.dateRange.setter // setter 
-	0xae400  func HKPeakExpiratoryFlowRate.dateRange.modify // modifyCoroutine 
-	0xae440  class func HKPeakExpiratoryFlowRate.__allocating_init(statistics:) // init 
-	0xae490  class func HKPeakExpiratoryFlowRate.__allocating_init(sample:) // init 
+	0xbf270  func HKPeakExpiratoryFlowRate.shortUnitString.getter // getter 
+	0xbffb0  func HKPeakExpiratoryFlowRate.shortUnitString.setter // setter 
+	0xb0900  func HKPeakExpiratoryFlowRate.shortUnitString.modify // modifyCoroutine 
+	0xbf280  func HKPeakExpiratoryFlowRate.longUnitString.getter // getter 
+	0xbffc0  func HKPeakExpiratoryFlowRate.longUnitString.setter // setter 
+	0xb0930  func HKPeakExpiratoryFlowRate.longUnitString.modify // modifyCoroutine 
+	0xb0de0  func HKPeakExpiratoryFlowRate.dateRange.getter // getter 
+	0xb0e00  func HKPeakExpiratoryFlowRate.dateRange.setter // setter 
+	0xb0e20  func HKPeakExpiratoryFlowRate.dateRange.modify // modifyCoroutine 
+	0xb0e60  class func HKPeakExpiratoryFlowRate.__allocating_init(statistics:) // init 
+	0xb0eb0  class func HKPeakExpiratoryFlowRate.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKPeripheralPerfusionIndex : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1752,17 +1740,17 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xbc870  func HKPeripheralPerfusionIndex.shortUnitString.getter // getter 
-	0xbd5b0  func HKPeripheralPerfusionIndex.shortUnitString.setter // setter 
-	0xae800  func HKPeripheralPerfusionIndex.shortUnitString.modify // modifyCoroutine 
-	0xbc880  func HKPeripheralPerfusionIndex.longUnitString.getter // getter 
-	0xbd5c0  func HKPeripheralPerfusionIndex.longUnitString.setter // setter 
-	0xae830  func HKPeripheralPerfusionIndex.longUnitString.modify // modifyCoroutine 
-	0xaecc0  func HKPeripheralPerfusionIndex.dateRange.getter // getter 
-	0xaece0  func HKPeripheralPerfusionIndex.dateRange.setter // setter 
-	0xaed00  func HKPeripheralPerfusionIndex.dateRange.modify // modifyCoroutine 
-	0xaed40  class func HKPeripheralPerfusionIndex.__allocating_init(statistics:) // init 
-	0xaed90  class func HKPeripheralPerfusionIndex.__allocating_init(sample:) // init 
+	0xbf290  func HKPeripheralPerfusionIndex.shortUnitString.getter // getter 
+	0xbffd0  func HKPeripheralPerfusionIndex.shortUnitString.setter // setter 
+	0xb1220  func HKPeripheralPerfusionIndex.shortUnitString.modify // modifyCoroutine 
+	0xbf2a0  func HKPeripheralPerfusionIndex.longUnitString.getter // getter 
+	0xbffe0  func HKPeripheralPerfusionIndex.longUnitString.setter // setter 
+	0xb1250  func HKPeripheralPerfusionIndex.longUnitString.modify // modifyCoroutine 
+	0xb16e0  func HKPeripheralPerfusionIndex.dateRange.getter // getter 
+	0xb1700  func HKPeripheralPerfusionIndex.dateRange.setter // setter 
+	0xb1720  func HKPeripheralPerfusionIndex.dateRange.modify // modifyCoroutine 
+	0xb1760  class func HKPeripheralPerfusionIndex.__allocating_init(statistics:) // init 
+	0xb17b0  class func HKPeripheralPerfusionIndex.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKDietaryFatTotal : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1774,17 +1762,17 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xbc890  func HKDietaryFatTotal.shortUnitString.getter // getter 
-	0xbd5d0  func HKDietaryFatTotal.shortUnitString.setter // setter 
-	0xaf100  func HKDietaryFatTotal.shortUnitString.modify // modifyCoroutine 
-	0xbc8a0  func HKDietaryFatTotal.longUnitString.getter // getter 
-	0xbd5e0  func HKDietaryFatTotal.longUnitString.setter // setter 
-	0xaf130  func HKDietaryFatTotal.longUnitString.modify // modifyCoroutine 
-	0xaf5c0  func HKDietaryFatTotal.dateRange.getter // getter 
-	0xaf5e0  func HKDietaryFatTotal.dateRange.setter // setter 
-	0xaf600  func HKDietaryFatTotal.dateRange.modify // modifyCoroutine 
-	0xaf640  class func HKDietaryFatTotal.__allocating_init(statistics:) // init 
-	0xaf690  class func HKDietaryFatTotal.__allocating_init(sample:) // init 
+	0xbf2b0  func HKDietaryFatTotal.shortUnitString.getter // getter 
+	0xbfff0  func HKDietaryFatTotal.shortUnitString.setter // setter 
+	0xb1b20  func HKDietaryFatTotal.shortUnitString.modify // modifyCoroutine 
+	0xbf2c0  func HKDietaryFatTotal.longUnitString.getter // getter 
+	0xc0000  func HKDietaryFatTotal.longUnitString.setter // setter 
+	0xb1b50  func HKDietaryFatTotal.longUnitString.modify // modifyCoroutine 
+	0xb1fe0  func HKDietaryFatTotal.dateRange.getter // getter 
+	0xb2000  func HKDietaryFatTotal.dateRange.setter // setter 
+	0xb2020  func HKDietaryFatTotal.dateRange.modify // modifyCoroutine 
+	0xb2060  class func HKDietaryFatTotal.__allocating_init(statistics:) // init 
+	0xb20b0  class func HKDietaryFatTotal.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKDietaryFatPolyunsaturated : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1796,17 +1784,17 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xbc8b0  func HKDietaryFatPolyunsaturated.shortUnitString.getter // getter 
-	0xbd5f0  func HKDietaryFatPolyunsaturated.shortUnitString.setter // setter 
-	0xafa00  func HKDietaryFatPolyunsaturated.shortUnitString.modify // modifyCoroutine 
-	0xbc8c0  func HKDietaryFatPolyunsaturated.longUnitString.getter // getter 
-	0xbd600  func HKDietaryFatPolyunsaturated.longUnitString.setter // setter 
-	0xafa30  func HKDietaryFatPolyunsaturated.longUnitString.modify // modifyCoroutine 
-	0xafec0  func HKDietaryFatPolyunsaturated.dateRange.getter // getter 
-	0xafee0  func HKDietaryFatPolyunsaturated.dateRange.setter // setter 
-	0xaff00  func HKDietaryFatPolyunsaturated.dateRange.modify // modifyCoroutine 
-	0xaff40  class func HKDietaryFatPolyunsaturated.__allocating_init(statistics:) // init 
-	0xaff90  class func HKDietaryFatPolyunsaturated.__allocating_init(sample:) // init 
+	0xbf2d0  func HKDietaryFatPolyunsaturated.shortUnitString.getter // getter 
+	0xc0010  func HKDietaryFatPolyunsaturated.shortUnitString.setter // setter 
+	0xb2420  func HKDietaryFatPolyunsaturated.shortUnitString.modify // modifyCoroutine 
+	0xbf2e0  func HKDietaryFatPolyunsaturated.longUnitString.getter // getter 
+	0xc0020  func HKDietaryFatPolyunsaturated.longUnitString.setter // setter 
+	0xb2450  func HKDietaryFatPolyunsaturated.longUnitString.modify // modifyCoroutine 
+	0xb28e0  func HKDietaryFatPolyunsaturated.dateRange.getter // getter 
+	0xb2900  func HKDietaryFatPolyunsaturated.dateRange.setter // setter 
+	0xb2920  func HKDietaryFatPolyunsaturated.dateRange.modify // modifyCoroutine 
+	0xb2960  class func HKDietaryFatPolyunsaturated.__allocating_init(statistics:) // init 
+	0xb29b0  class func HKDietaryFatPolyunsaturated.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKDietaryFatMonounsaturated : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1818,17 +1806,17 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xbc8d0  func HKDietaryFatMonounsaturated.shortUnitString.getter // getter 
-	0xbd610  func HKDietaryFatMonounsaturated.shortUnitString.setter // setter 
-	0xb0300  func HKDietaryFatMonounsaturated.shortUnitString.modify // modifyCoroutine 
-	0xbc8e0  func HKDietaryFatMonounsaturated.longUnitString.getter // getter 
-	0xbd620  func HKDietaryFatMonounsaturated.longUnitString.setter // setter 
-	0xb0330  func HKDietaryFatMonounsaturated.longUnitString.modify // modifyCoroutine 
-	0xb07c0  func HKDietaryFatMonounsaturated.dateRange.getter // getter 
-	0xb07e0  func HKDietaryFatMonounsaturated.dateRange.setter // setter 
-	0xb0800  func HKDietaryFatMonounsaturated.dateRange.modify // modifyCoroutine 
-	0xb0840  class func HKDietaryFatMonounsaturated.__allocating_init(statistics:) // init 
-	0xb0890  class func HKDietaryFatMonounsaturated.__allocating_init(sample:) // init 
+	0xbf2f0  func HKDietaryFatMonounsaturated.shortUnitString.getter // getter 
+	0xc0030  func HKDietaryFatMonounsaturated.shortUnitString.setter // setter 
+	0xb2d20  func HKDietaryFatMonounsaturated.shortUnitString.modify // modifyCoroutine 
+	0xbf300  func HKDietaryFatMonounsaturated.longUnitString.getter // getter 
+	0xc0040  func HKDietaryFatMonounsaturated.longUnitString.setter // setter 
+	0xb2d50  func HKDietaryFatMonounsaturated.longUnitString.modify // modifyCoroutine 
+	0xb31e0  func HKDietaryFatMonounsaturated.dateRange.getter // getter 
+	0xb3200  func HKDietaryFatMonounsaturated.dateRange.setter // setter 
+	0xb3220  func HKDietaryFatMonounsaturated.dateRange.modify // modifyCoroutine 
+	0xb3260  class func HKDietaryFatMonounsaturated.__allocating_init(statistics:) // init 
+	0xb32b0  class func HKDietaryFatMonounsaturated.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKDietaryFatSaturated : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1840,17 +1828,17 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xbc8f0  func HKDietaryFatSaturated.shortUnitString.getter // getter 
-	0xbd630  func HKDietaryFatSaturated.shortUnitString.setter // setter 
-	0xb0c00  func HKDietaryFatSaturated.shortUnitString.modify // modifyCoroutine 
-	0xbc900  func HKDietaryFatSaturated.longUnitString.getter // getter 
-	0xbd640  func HKDietaryFatSaturated.longUnitString.setter // setter 
-	0xb0c30  func HKDietaryFatSaturated.longUnitString.modify // modifyCoroutine 
-	0xb10c0  func HKDietaryFatSaturated.dateRange.getter // getter 
-	0xb10e0  func HKDietaryFatSaturated.dateRange.setter // setter 
-	0xb1100  func HKDietaryFatSaturated.dateRange.modify // modifyCoroutine 
-	0xb1140  class func HKDietaryFatSaturated.__allocating_init(statistics:) // init 
-	0xb1190  class func HKDietaryFatSaturated.__allocating_init(sample:) // init 
+	0xbf310  func HKDietaryFatSaturated.shortUnitString.getter // getter 
+	0xc0050  func HKDietaryFatSaturated.shortUnitString.setter // setter 
+	0xb3620  func HKDietaryFatSaturated.shortUnitString.modify // modifyCoroutine 
+	0xbf320  func HKDietaryFatSaturated.longUnitString.getter // getter 
+	0xc0060  func HKDietaryFatSaturated.longUnitString.setter // setter 
+	0xb3650  func HKDietaryFatSaturated.longUnitString.modify // modifyCoroutine 
+	0xb3ae0  func HKDietaryFatSaturated.dateRange.getter // getter 
+	0xb3b00  func HKDietaryFatSaturated.dateRange.setter // setter 
+	0xb3b20  func HKDietaryFatSaturated.dateRange.modify // modifyCoroutine 
+	0xb3b60  class func HKDietaryFatSaturated.__allocating_init(statistics:) // init 
+	0xb3bb0  class func HKDietaryFatSaturated.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKDietaryCholesterol : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1862,17 +1850,17 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xbc910  func HKDietaryCholesterol.shortUnitString.getter // getter 
-	0xbd650  func HKDietaryCholesterol.shortUnitString.setter // setter 
-	0xb1500  func HKDietaryCholesterol.shortUnitString.modify // modifyCoroutine 
-	0xbc920  func HKDietaryCholesterol.longUnitString.getter // getter 
-	0xbd660  func HKDietaryCholesterol.longUnitString.setter // setter 
-	0xb1530  func HKDietaryCholesterol.longUnitString.modify // modifyCoroutine 
-	0xb1cc0  func HKDietaryCholesterol.dateRange.getter // getter 
-	0xb1ce0  func HKDietaryCholesterol.dateRange.setter // setter 
-	0xb1d00  func HKDietaryCholesterol.dateRange.modify // modifyCoroutine 
-	0xb1d40  class func HKDietaryCholesterol.__allocating_init(statistics:) // init 
-	0xb1d90  class func HKDietaryCholesterol.__allocating_init(sample:) // init 
+	0xbf330  func HKDietaryCholesterol.shortUnitString.getter // getter 
+	0xc0070  func HKDietaryCholesterol.shortUnitString.setter // setter 
+	0xb3f20  func HKDietaryCholesterol.shortUnitString.modify // modifyCoroutine 
+	0xbf340  func HKDietaryCholesterol.longUnitString.getter // getter 
+	0xc0080  func HKDietaryCholesterol.longUnitString.setter // setter 
+	0xb3f50  func HKDietaryCholesterol.longUnitString.modify // modifyCoroutine 
+	0xb46e0  func HKDietaryCholesterol.dateRange.getter // getter 
+	0xb4700  func HKDietaryCholesterol.dateRange.setter // setter 
+	0xb4720  func HKDietaryCholesterol.dateRange.modify // modifyCoroutine 
+	0xb4760  class func HKDietaryCholesterol.__allocating_init(statistics:) // init 
+	0xb47b0  class func HKDietaryCholesterol.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKOvulationTestResultSample : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1882,16 +1870,16 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xbc400  func HKOvulationTestResultSample.value.getter // getter 
-	0xbc420  func HKOvulationTestResultSample.value.setter // setter 
-	0xb22c0  func HKOvulationTestResultSample.value.modify // modifyCoroutine 
-	0xb24c0  func HKOvulationTestResultSample.dateRange.getter // getter 
-	0xb24e0  func HKOvulationTestResultSample.dateRange.setter // setter 
-	0xb2500  func HKOvulationTestResultSample.dateRange.modify // modifyCoroutine 
-	0xb2540  class func HKOvulationTestResultSample.__allocating_init(sample:) // init 
-	0xb2580  class func HKOvulationTestResultSample.__allocating_init(categorySample:) // init 
-	0xb25c0  func HKOvulationTestResultSample.smallDescriptionString() // method 
-	0xb2680  func HKOvulationTestResultSample.longDescriptionString() // method 
+	0xbee20  func HKOvulationTestResultSample.value.getter // getter 
+	0xbee40  func HKOvulationTestResultSample.value.setter // setter 
+	0xb4ce0  func HKOvulationTestResultSample.value.modify // modifyCoroutine 
+	0xb4ee0  func HKOvulationTestResultSample.dateRange.getter // getter 
+	0xb4f00  func HKOvulationTestResultSample.dateRange.setter // setter 
+	0xb4f20  func HKOvulationTestResultSample.dateRange.modify // modifyCoroutine 
+	0xb4f60  class func HKOvulationTestResultSample.__allocating_init(sample:) // init 
+	0xb4fa0  class func HKOvulationTestResultSample.__allocating_init(categorySample:) // init 
+	0xb4fe0  func HKOvulationTestResultSample.smallDescriptionString() // method 
+	0xb50a0  func HKOvulationTestResultSample.longDescriptionString() // method 
  }
 
  class HealthExperience.HKMenstrualFlowSample : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1901,16 +1889,16 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0xb29a0  func HKMenstrualFlowSample.value.getter // getter 
-	0xb29d0  func HKMenstrualFlowSample.value.setter // setter 
-	0xb2a00  func HKMenstrualFlowSample.value.modify // modifyCoroutine 
-	0xb2ba0  func HKMenstrualFlowSample.dateRange.getter // getter 
-	0xb2c10  func HKMenstrualFlowSample.dateRange.setter // setter 
-	0xb2c90  func HKMenstrualFlowSample.dateRange.modify // modifyCoroutine 
-	0xb2cd0  class func HKMenstrualFlowSample.__allocating_init(sample:) // init 
-	0xb2d10  class func HKMenstrualFlowSample.__allocating_init(categorySample:) // init 
-	0xb30b0  func HKMenstrualFlowSample.smallDescriptionString() // method 
-	0xb3180  func HKMenstrualFlowSample.longDescriptionString() // method 
+	0xb53c0  func HKMenstrualFlowSample.value.getter // getter 
+	0xb53f0  func HKMenstrualFlowSample.value.setter // setter 
+	0xb5420  func HKMenstrualFlowSample.value.modify // modifyCoroutine 
+	0xb55c0  func HKMenstrualFlowSample.dateRange.getter // getter 
+	0xb5630  func HKMenstrualFlowSample.dateRange.setter // setter 
+	0xb56b0  func HKMenstrualFlowSample.dateRange.modify // modifyCoroutine 
+	0xb56f0  class func HKMenstrualFlowSample.__allocating_init(sample:) // init 
+	0xb5730  class func HKMenstrualFlowSample.__allocating_init(categorySample:) // init 
+	0xb5ad0  func HKMenstrualFlowSample.smallDescriptionString() // method 
+	0xb5ba0  func HKMenstrualFlowSample.longDescriptionString() // method 
  }
 
  enum HealthExperience.SectionedDataSourceChangeset {
@@ -1934,18 +1922,18 @@
 	var currentOperations : Set<NSOperation> // +0x20 (0x8)
 
 	// Swift methods
-	0xbef30  class func OperationQueueObserver.__allocating_init(queue:) // init 
-	0xbf000  func OperationQueueObserver.addOperation(_:) // method 
-	0xbf0a0  func OperationQueueObserver.addOperations(_:waitUntilFinished:) // method 
-	0xbf780  func OperationQueueObserver.currentOperationsCopy.getter // getter 
-	0xbf8a0  func OperationQueueObserver.operationCount.getter // getter 
-	0xbf930  func OperationQueueObserver.clearObserving() // method 
-	0xbf9a0  func OperationQueueObserver.didComplete(_:) // method 
+	0xc1950  class func OperationQueueObserver.__allocating_init(queue:) // init 
+	0xc1a20  func OperationQueueObserver.addOperation(_:) // method 
+	0xc1ac0  func OperationQueueObserver.addOperations(_:waitUntilFinished:) // method 
+	0xc21a0  func OperationQueueObserver.currentOperationsCopy.getter // getter 
+	0xc22c0  func OperationQueueObserver.operationCount.getter // getter 
+	0xc2350  func OperationQueueObserver.clearObserving() // method 
+	0xc23c0  func OperationQueueObserver.didComplete(_:) // method 
  }
 
  class HealthExperience.Feed : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-	0xc1d90  @objc Feed.initWithEntity:insertIntoManagedObjectContext: <stripped>
+	0xc4b90  @objc Feed.initWithEntity:insertIntoManagedObjectContext: <stripped>
  }
 
  struct HealthExperience.Observable {
@@ -1965,26 +1953,26 @@
 	let arrangedSections : [ArrayDataSourceSection] // +0x40 (0x8)
 
 	// Swift methods
-	0xc3a90  func ArrayDataSource.eventHandler.getter // getter 
-	0xc3ac0  func ArrayDataSource.eventHandler.setter // setter 
-	0xc3b10  func ArrayDataSource.eventHandler.modify // modifyCoroutine 
-	0xc3bf0  func ArrayDataSource.debugDescription.getter // getter 
-	0xc3de0  func ArrayDataSource.debugDescription.setter // setter 
-	0xc3e00  func ArrayDataSource.debugDescription.modify // modifyCoroutine 
-	0xc3ea0  func ArrayDataSource.identifier.getter // getter 
-	0xc4050  func ArrayDataSource.identifier.setter // setter 
-	0xc4070  func ArrayDataSource.identifier.modify // modifyCoroutine 
-	0xc4180  func ArrayDataSource.numberOfSections.getter // getter 
-	0xc4190  func ArrayDataSource.titleForHeader(in:) // method 
-	0xc39c0  class func ArrayDataSource.__allocating_init(arrangedSections:) // init 
-	0xc4230  func ArrayDataSource.sections.getter // getter 
-	0xc4240  func ArrayDataSource.sectionIdentifiers.getter // getter 
-	0xc4610  func ArrayDataSource.numberOfItems(in:) // method 
-	0xc4680  func ArrayDataSource.item(at:) // method 
-	0xc4890  func ArrayDataSource.reuseIdentifierForItem(at:) // method 
-	0xc48f0  func ArrayDataSource.item(for:) // method 
-	0xc4bc0  func ArrayDataSource.reuseIdentifierForItem(with:) // method 
-	0xc4c40  func ArrayDataSource.itemIdentifiers(in:) // method 
+	0xc6890  func ArrayDataSource.eventHandler.getter // getter 
+	0xc68c0  func ArrayDataSource.eventHandler.setter // setter 
+	0xc6910  func ArrayDataSource.eventHandler.modify // modifyCoroutine 
+	0xc69f0  func ArrayDataSource.debugDescription.getter // getter 
+	0xc6be0  func ArrayDataSource.debugDescription.setter // setter 
+	0xc6c00  func ArrayDataSource.debugDescription.modify // modifyCoroutine 
+	0xc6ca0  func ArrayDataSource.identifier.getter // getter 
+	0xc6e50  func ArrayDataSource.identifier.setter // setter 
+	0xc6e70  func ArrayDataSource.identifier.modify // modifyCoroutine 
+	0xc6f80  func ArrayDataSource.numberOfSections.getter // getter 
+	0xc6f90  func ArrayDataSource.titleForHeader(in:) // method 
+	0xc67c0  class func ArrayDataSource.__allocating_init(arrangedSections:) // init 
+	0xc7030  func ArrayDataSource.sections.getter // getter 
+	0xc7040  func ArrayDataSource.sectionIdentifiers.getter // getter 
+	0xc7410  func ArrayDataSource.numberOfItems(in:) // method 
+	0xc7480  func ArrayDataSource.item(at:) // method 
+	0xc7690  func ArrayDataSource.reuseIdentifierForItem(at:) // method 
+	0xc76f0  func ArrayDataSource.item(for:) // method 
+	0xc79c0  func ArrayDataSource.reuseIdentifierForItem(with:) // method 
+	0xc7a40  func ArrayDataSource.itemIdentifiers(in:) // method 
  }
 
  struct HealthExperience.SecondaryProfileContextFactory { }
@@ -1996,24 +1984,44 @@
 	var dateRange : DateInterval // +0x0 (0x0)
 
 	// Swift methods
-	0xc8650  func HKCervicalMucusQualitySample.value.getter // getter 
-	0xc8680  func HKCervicalMucusQualitySample.value.setter // setter 
-	0xc86b0  func HKCervicalMucusQualitySample.value.modify // modifyCoroutine 
-	0xc88c0  func HKCervicalMucusQualitySample.dateRange.getter // getter 
-	0xc8910  func HKCervicalMucusQualitySample.dateRange.setter // setter 
-	0xc8970  func HKCervicalMucusQualitySample.dateRange.modify // modifyCoroutine 
-	0xc89b0  class func HKCervicalMucusQualitySample.__allocating_init(sample:) // init 
-	0xc89e0  class func HKCervicalMucusQualitySample.__allocating_init(categorySample:) // init 
-	0xc8d40  func HKCervicalMucusQualitySample.smallDescriptionString() // method 
-	0xc8e00  func HKCervicalMucusQualitySample.longDescriptionString() // method 
+	0xcb450  func HKCervicalMucusQualitySample.value.getter // getter 
+	0xcb480  func HKCervicalMucusQualitySample.value.setter // setter 
+	0xcb4b0  func HKCervicalMucusQualitySample.value.modify // modifyCoroutine 
+	0xcb6c0  func HKCervicalMucusQualitySample.dateRange.getter // getter 
+	0xcb710  func HKCervicalMucusQualitySample.dateRange.setter // setter 
+	0xcb770  func HKCervicalMucusQualitySample.dateRange.modify // modifyCoroutine 
+	0xcb7b0  class func HKCervicalMucusQualitySample.__allocating_init(sample:) // init 
+	0xcb7e0  class func HKCervicalMucusQualitySample.__allocating_init(categorySample:) // init 
+	0xcbb40  func HKCervicalMucusQualitySample.smallDescriptionString() // method 
+	0xcbc00  func HKCervicalMucusQualitySample.longDescriptionString() // method 
  }
 
  class HealthExperience.HKCervicalMucusQualitySampleMatcher : Matcher {
 	// Swift methods
-	0xc95d0  func HKCervicalMucusQualitySampleMatcher.dataSource(healthStore:) // method 
+	0xcc3d0  func HKCervicalMucusQualitySampleMatcher.dataSource(healthStore:) // method 
  }
 
  class HealthExperience.SampleQuery {
+ class HealthExperience.FirstRestoreNotInProgressPrecondition : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+	var cloudSyncObserver : HKCloudSyncObserver? // +0x8 (0x8)
+	var preconditionCompletion : (_:)? // +0x10 (0x10)
+	let healthStore : HKHealthStore // +0x20 (0x8)
+	let waitUntilShouldProceed : Bool // +0x28 (0x1)
+	var completionQueue : OS_dispatch_queue? // +0x30 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0xcd710  @objc FirstRestoreNotInProgressPrecondition.dealloc <stripped>
+	0xcd840  @objc FirstRestoreNotInProgressPrecondition.description <stripped>
+	0xcda30  @objc FirstRestoreNotInProgressPrecondition.init <stripped>
+	0xcd730  @objc FirstRestoreNotInProgressPrecondition..cxx_destruct <stripped>
+
+	// Swift methods
+	0xcd460  class func FirstRestoreNotInProgressPrecondition.__allocating_init(healthStore:waitUntilShouldProceed:completionQueue:) // init 
+	0xcd790  func FirstRestoreNotInProgressPrecondition.evaluate(_:) // method 
+ }
+
  enum HealthExperience.ForYouSectionKind {
 
 	// Properties
@@ -2050,7 +2058,7 @@
  class HealthExperience.CategorySampleMatcher {
  class HealthExperience.Plugin : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-	0xcf9d0  @objc Plugin.initWithEntity:insertIntoManagedObjectContext: <stripped>
+	0xd3150  @objc Plugin.initWithEntity:insertIntoManagedObjectContext: <stripped>
  }
 
  enum HealthExperience.FocusConstraint {
@@ -2065,13 +2073,14 @@
  class HealthExperience.DateRangeRelevanceProvider : RERelevanceProvider /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine {
 
 	// Properties
-	let relevantDateInterval : RelevantDateInterval // +0x0 (0x0)
+	let relevantDateInterval : RelevantDateInterval // +0x45545f5f (0x0)
 
 	// ObjC -> Swift bridged methods
-	0xd40f0  @objc DateRangeRelevanceProvider.init <stripped>
-	0xd4310  @objc DateRangeRelevanceProvider.isEqual: <stripped>
-	0xd43b0  @objc DateRangeRelevanceProvider.hash <stripped>
-	0xd4490  @objc DateRangeRelevanceProvider..cxx_destruct <stripped>
+	0xd7980  @objc DateRangeRelevanceProvider.init <stripped>
+	0xd7ba0  @objc DateRangeRelevanceProvider.isEqual: <stripped>
+	0xd7c40  @objc DateRangeRelevanceProvider.hash <stripped>
+	0xd7ce0  @objc DateRangeRelevanceProvider.description <stripped>
+	0xd7f70  @objc DateRangeRelevanceProvider..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -2086,20 +2095,20 @@
 	var lock : UnfairLock // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xd4e30  @objc ComposableAsyncOperation.start <stripped>
-	0xd5850  @objc ComposableAsyncOperation.cancel <stripped>
-	0xd59b0  @objc ComposableAsyncOperation.init <stripped>
-	0xd5a60  @objc ComposableAsyncOperation..cxx_destruct <stripped>
+	0xd8910  @objc ComposableAsyncOperation.start <stripped>
+	0xd9330  @objc ComposableAsyncOperation.cancel <stripped>
+	0xd9490  @objc ComposableAsyncOperation.init <stripped>
+	0xd9540  @objc ComposableAsyncOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0xd4980  func ComposableAsyncOperation.automaticallyDispatchFinishOperation.getter // getter 
-	0xd49b0  func ComposableAsyncOperation.automaticallyDispatchFinishOperation.setter // setter 
-	0xd49f0  func ComposableAsyncOperation.automaticallyDispatchFinishOperation.modify // modifyCoroutine 
-	0xd4a40  func ComposableAsyncOperation.childOperations.getter // getter 
-	0xd4a80  func ComposableAsyncOperation.childOperations.setter // setter 
-	0xd4ad0  func ComposableAsyncOperation.childOperations.modify // modifyCoroutine 
-	0xd4b10  func ComposableAsyncOperation.addChild(_:) // method 
-	0xd4e60  func ComposableAsyncOperation.dispatchChildOperations() // method 
+	0xd8460  func ComposableAsyncOperation.automaticallyDispatchFinishOperation.getter // getter 
+	0xd8490  func ComposableAsyncOperation.automaticallyDispatchFinishOperation.setter // setter 
+	0xd84d0  func ComposableAsyncOperation.automaticallyDispatchFinishOperation.modify // modifyCoroutine 
+	0xd8520  func ComposableAsyncOperation.childOperations.getter // getter 
+	0xd8560  func ComposableAsyncOperation.childOperations.setter // setter 
+	0xd85b0  func ComposableAsyncOperation.childOperations.modify // modifyCoroutine 
+	0xd85f0  func ComposableAsyncOperation.addChild(_:) // method 
+	0xd8940  func ComposableAsyncOperation.dispatchChildOperations() // method 
  }
 
  class HealthExperience.DisplayType : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2646,19 +2655,19 @@
 	var lock : UnfairLock // +0x68 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xda8b0  @objc HealthExperienceStoreOracle.init <stripped>
-	0xdb930  @objc HealthExperienceStoreOracle..cxx_destruct <stripped>
+	0xde3e0  @objc HealthExperienceStoreOracle.init <stripped>
+	0xdf460  @objc HealthExperienceStoreOracle..cxx_destruct <stripped>
 
 	// Swift methods
-	0xd9ff0  func HealthExperienceStoreOracle.readyHealthExperienceStore.getter // getter 
-	0xda090  func HealthExperienceStoreOracle.readyHealthExperienceStore.setter // setter 
-	0xda130  func HealthExperienceStoreOracle.readyHealthExperienceStore.modify // modifyCoroutine 
-	0xda180  func HealthExperienceStoreOracle.healthExperienceStore.getter // getter 
-	0xda2a0  func HealthExperienceStoreOracle.register(observer:) // method 
-	0xda8d0  func HealthExperienceStoreOracle.attemptToInitilizeStore(shouldListen:) // method 
-	0xdb520  func HealthExperienceStoreOracle.beginListeningToDataAccessChanges() // method 
-	0xdb6f0  func HealthExperienceStoreOracle.handleUnrecoverableError() // method 
-	0xdb890  func HealthExperienceStoreOracle.makeHealthExperienceStore() // method 
+	0xddb20  func HealthExperienceStoreOracle.readyHealthExperienceStore.getter // getter 
+	0xddbc0  func HealthExperienceStoreOracle.readyHealthExperienceStore.setter // setter 
+	0xddc60  func HealthExperienceStoreOracle.readyHealthExperienceStore.modify // modifyCoroutine 
+	0xddcb0  func HealthExperienceStoreOracle.healthExperienceStore.getter // getter 
+	0xdddd0  func HealthExperienceStoreOracle.register(observer:) // method 
+	0xde400  func HealthExperienceStoreOracle.attemptToInitilizeStore(shouldListen:) // method 
+	0xdf050  func HealthExperienceStoreOracle.beginListeningToDataAccessChanges() // method 
+	0xdf220  func HealthExperienceStoreOracle.handleUnrecoverableError() // method 
+	0xdf3c0  func HealthExperienceStoreOracle.makeHealthExperienceStore() // method 
  }
 
  enum HealthExperience.UnderlyingKitType {
@@ -2692,18 +2701,18 @@
 	var identifier : String
 
 	// Swift methods
-	0xdd110  func CompoundSectionedDataSource.childDataSources.getter // getter 
-	0xdd140  func CompoundSectionedDataSource.eventHandler.getter // getter 
-	0xdd170  func CompoundSectionedDataSource.eventHandler.setter // setter 
-	0xdd1c0  func CompoundSectionedDataSource.eventHandler.modify // modifyCoroutine 
-	0xdd340  func CompoundSectionedDataSource.promise.getter // getter 
-	0xdd370  func CompoundSectionedDataSource.identifier.getter // getter 
-	0xdd3b0  func CompoundSectionedDataSource.identifier.setter // setter 
-	0xdd3f0  func CompoundSectionedDataSource.identifier.modify // modifyCoroutine 
-	0xdd430  func CompoundSectionedDataSource.sectionIdentifiers.getter // getter 
-	0xdd810  class func CompoundSectionedDataSource.__allocating_init(_:) // init 
-	0xdd8b0  func CompoundSectionedDataSource.determineSectionOffset(for:) // method 
-	0xddbb0  func CompoundSectionedDataSource.handle(change:for:) // method 
+	0xe0c40  func CompoundSectionedDataSource.childDataSources.getter // getter 
+	0xe0c70  func CompoundSectionedDataSource.eventHandler.getter // getter 
+	0xe0ca0  func CompoundSectionedDataSource.eventHandler.setter // setter 
+	0xe0cf0  func CompoundSectionedDataSource.eventHandler.modify // modifyCoroutine 
+	0xe0e70  func CompoundSectionedDataSource.promise.getter // getter 
+	0xe0ea0  func CompoundSectionedDataSource.identifier.getter // getter 
+	0xe0ee0  func CompoundSectionedDataSource.identifier.setter // setter 
+	0xe0f20  func CompoundSectionedDataSource.identifier.modify // modifyCoroutine 
+	0xe0f60  func CompoundSectionedDataSource.sectionIdentifiers.getter // getter 
+	0xe1340  class func CompoundSectionedDataSource.__allocating_init(_:) // init 
+	0xe13e0  func CompoundSectionedDataSource.determineSectionOffset(for:) // method 
+	0xe16e0  func CompoundSectionedDataSource.handle(change:for:) // method 
  }
 
  struct HealthExperience.FakeHeaderItem {
@@ -2719,7 +2728,7 @@
 	let bundleIdentifier : String
 
 	// Swift methods
-	0xe5eb0  class func HKHealthSource.__allocating_init(name:bundleIdentifier:) // init 
+	0xe99e0  class func HKHealthSource.__allocating_init(name:bundleIdentifier:) // init 
  }
 
  class HealthExperience.HKHealthSourceMatcher : Matcher {
@@ -2728,8 +2737,8 @@
 	var objectType : HKObjectType?
 
 	// Swift methods
-	0xe61c0  func HKHealthSourceMatcher.dataSource(healthStore:) // method 
-	0xe62d0  func HKHealthSourceMatcher.addConstraint(sourcesFor:) // method 
+	0xe9cf0  func HKHealthSourceMatcher.dataSource(healthStore:) // method 
+	0xe9e00  func HKHealthSourceMatcher.addConstraint(sourcesFor:) // method 
  }
 
  struct HealthExperience.HKTypesFeatureTag {
@@ -2745,17 +2754,17 @@
 	var list : [NSProgress] // +0x18 (0x8)
 
 	// Swift methods
-	0xe69a0  class func CancellableProgressList.__allocating_init() // init 
-	0xe6b00  func CancellableProgressList.add(_:uuid:) // method 
-	0xe74a0  func CancellableProgressList.clearProgress(for:) // method 
-	0xe8230  func CancellableProgressList.cancelAll() // method 
+	0xea4d0  class func CancellableProgressList.__allocating_init() // init 
+	0xea630  func CancellableProgressList.add(_:uuid:) // method 
+	0xeafd0  func CancellableProgressList.clearProgress(for:) // method 
+	0xebd60  func CancellableProgressList.cancelAll() // method 
  }
 
  class HealthExperience.DateRangeRelevanceProviderManager : RERelevanceProviderManager /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine {
 	// ObjC -> Swift bridged methods
-	0xea9f0  @objc DateRangeRelevanceProviderManager._valueForProvider:context:feature: <stripped>
-	0xeaa80  @objc DateRangeRelevanceProviderManager._valueForProvider:feature: <stripped>
-	0xeaab0  @objc DateRangeRelevanceProviderManager.initWithQueue: <stripped>
+	0xee520  @objc DateRangeRelevanceProviderManager._valueForProvider:context:feature: <stripped>
+	0xee5b0  @objc DateRangeRelevanceProviderManager._valueForProvider:feature: <stripped>
+	0xee5e0  @objc DateRangeRelevanceProviderManager.initWithQueue: <stripped>
  }
 
  enum HealthExperience.ContentKind {
@@ -2810,22 +2819,22 @@
 	var $__lazy_storage_$_principalClass : Swift.AnyObject.Type??
 
 	// Swift methods
-	0xed6c0  func BundleFeedItemGenerationPluginInfo.bundle.getter // getter 
-	0xed6f0  func BundleFeedItemGenerationPluginInfo.bundle.setter // setter 
-	0xed730  func BundleFeedItemGenerationPluginInfo.bundle.modify // modifyCoroutine 
-	0xed760  func BundleFeedItemGenerationPluginInfo.bundleIdentifier.getter // getter 
-	0xed7a0  func BundleFeedItemGenerationPluginInfo.bundleIdentifier.setter // setter 
-	0xed7e0  func BundleFeedItemGenerationPluginInfo.bundleIdentifier.modify // modifyCoroutine 
-	0xed810  func BundleFeedItemGenerationPluginInfo.principalClass.getter // getter 
-	0xeda10  func BundleFeedItemGenerationPluginInfo.principalClass.setter // setter 
-	0xeda20  func BundleFeedItemGenerationPluginInfo.principalClass.modify // modifyCoroutine 
-	0xeda70  func BundleFeedItemGenerationPluginInfo.makeFeedItemGenerator(context:) // method 
-	0xedea0  class func BundleFeedItemGenerationPluginInfo.__allocating_init(bundle:) // init 
+	0xf11f0  func BundleFeedItemGenerationPluginInfo.bundle.getter // getter 
+	0xf1220  func BundleFeedItemGenerationPluginInfo.bundle.setter // setter 
+	0xf1260  func BundleFeedItemGenerationPluginInfo.bundle.modify // modifyCoroutine 
+	0xf1290  func BundleFeedItemGenerationPluginInfo.bundleIdentifier.getter // getter 
+	0xf12d0  func BundleFeedItemGenerationPluginInfo.bundleIdentifier.setter // setter 
+	0xf1310  func BundleFeedItemGenerationPluginInfo.bundleIdentifier.modify // modifyCoroutine 
+	0xf1340  func BundleFeedItemGenerationPluginInfo.principalClass.getter // getter 
+	0xf1540  func BundleFeedItemGenerationPluginInfo.principalClass.setter // setter 
+	0xf1550  func BundleFeedItemGenerationPluginInfo.principalClass.modify // modifyCoroutine 
+	0xf15a0  func BundleFeedItemGenerationPluginInfo.makeFeedItemGenerator(context:) // method 
+	0xf19d0  class func BundleFeedItemGenerationPluginInfo.__allocating_init(bundle:) // init 
  }
 
  class HealthExperience.Keyword : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-	0xee990  @objc Keyword.initWithEntity:insertIntoManagedObjectContext: <stripped>
+	0xf24c0  @objc Keyword.initWithEntity:insertIntoManagedObjectContext: <stripped>
  }
 
  enum HealthExperience.SectionedDataSourceTransaction {
@@ -2837,10 +2846,10 @@
 
  class HealthExperience.ManagedProfileConnection : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xfed90  func ManagedProfileConnection.isImproveHealthDataAllowed.getter // getter 
-	0xfedb0  func ManagedProfileConnection.isImproveWheelchairDataAllowed.getter // getter 
-	0xfee80  func ManagedProfileConnection.setImproveHealthData(value:) // method 
-	0xfeea0  func ManagedProfileConnection.setImproveWheelchairData(value:) // method 
+	0x1029c0  func ManagedProfileConnection.isImproveHealthDataAllowed.getter // getter 
+	0x1029e0  func ManagedProfileConnection.isImproveWheelchairDataAllowed.getter // getter 
+	0x102ab0  func ManagedProfileConnection.setImproveHealthData(value:) // method 
+	0x102ad0  func ManagedProfileConnection.setImproveWheelchairData(value:) // method 
  }
 
  struct HealthExperience.HostingCellReusePolicy {
@@ -2889,20 +2898,20 @@
 	var dateRange : DateInterval
 
 	// Swift methods
-	0x102580  func HKStepsSample.shortUnitString.getter // getter 
-	0x1025c0  func HKStepsSample.shortUnitString.setter // setter 
-	0x102600  func HKStepsSample.shortUnitString.modify // modifyCoroutine 
-	0x102630  func HKStepsSample.longUnitString.getter // getter 
-	0x102670  func HKStepsSample.longUnitString.setter // setter 
-	0x1026b0  func HKStepsSample.longUnitString.modify // modifyCoroutine 
-	0x1026e0  func HKStepsSample.underlyingType.getter // getter 
-	0x102720  func HKStepsSample.underlyingType.setter // setter 
-	0x102760  func HKStepsSample.underlyingType.modify // modifyCoroutine 
-	0x102e00  func HKStepsSample.dateRange.getter // getter 
-	0x102e50  func HKStepsSample.dateRange.setter // setter 
-	0x102eb0  func HKStepsSample.dateRange.modify // modifyCoroutine 
-	0x102ef0  class func HKStepsSample.__allocating_init(statistics:) // init 
-	0x102f60  class func HKStepsSample.__allocating_init(sample:) // init 
+	0x1061b0  func HKStepsSample.shortUnitString.getter // getter 
+	0x1061f0  func HKStepsSample.shortUnitString.setter // setter 
+	0x106230  func HKStepsSample.shortUnitString.modify // modifyCoroutine 
+	0x106260  func HKStepsSample.longUnitString.getter // getter 
+	0x1062a0  func HKStepsSample.longUnitString.setter // setter 
+	0x1062e0  func HKStepsSample.longUnitString.modify // modifyCoroutine 
+	0x106310  func HKStepsSample.underlyingType.getter // getter 
+	0x106350  func HKStepsSample.underlyingType.setter // setter 
+	0x106390  func HKStepsSample.underlyingType.modify // modifyCoroutine 
+	0x106a30  func HKStepsSample.dateRange.getter // getter 
+	0x106a80  func HKStepsSample.dateRange.setter // setter 
+	0x106ae0  func HKStepsSample.dateRange.modify // modifyCoroutine 
+	0x106b20  class func HKStepsSample.__allocating_init(statistics:) // init 
+	0x106b90  class func HKStepsSample.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKStepsSampleMatcher {
@@ -2911,25 +2920,25 @@
 	// Properties
 	let context : NSManagedObjectContext // +0x18 (0x8)
 	let feedKind : Feed.Kind // +0x20 (0x1)
-	let dateRange : DateInterval // +0x3 (0x0)
-	var engineCoordinator : RelevanceEngineCoordinator // +0x1a000 (0x8)
+	let dateRange : DateInterval // +0x41445f5f (0x0)
+	var engineCoordinator : RelevanceEngineCoordinator // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x107590  @objc PopulateFeedFromRelevanceEngineOperation.main <stripped>
-	0x10a7a0  @objc PopulateFeedFromRelevanceEngineOperation.init <stripped>
-	0x10a860  @objc PopulateFeedFromRelevanceEngineOperation..cxx_destruct <stripped>
+	0x10b1c0  @objc PopulateFeedFromRelevanceEngineOperation.main <stripped>
+	0x10e3d0  @objc PopulateFeedFromRelevanceEngineOperation.init <stripped>
+	0x10e490  @objc PopulateFeedFromRelevanceEngineOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1069a0  class func PopulateFeedFromRelevanceEngineOperation.__allocating_init(context:engineCoordinator:feedKind:dateRange:) // init 
-	0x1075c0  func <stripped> // method 
-	0x109290  func <stripped> // method 
+	0x10a5d0  class func PopulateFeedFromRelevanceEngineOperation.__allocating_init(context:engineCoordinator:feedKind:dateRange:) // init 
+	0x10b1f0  func <stripped> // method 
+	0x10cec0  func <stripped> // method 
  }
 
  struct HealthExperience.ShowAllHighlightsDataSourceItem { }
 
  class HealthExperience.DataType : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-	0x116c40  @objc DataType.initWithEntity:insertIntoManagedObjectContext: <stripped>
+	0x11a870  @objc DataType.initWithEntity:insertIntoManagedObjectContext: <stripped>
  }
 
  class HealthExperience.ResumeRelevanceEngineIfNeededOperation : AsyncOperation {
@@ -2938,27 +2947,27 @@
 	let relevanceEngine : RERelevanceEngine // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x117430  @objc ResumeRelevanceEngineIfNeededOperation.main <stripped>
-	0x1174f0  @objc ResumeRelevanceEngineIfNeededOperation.relevanceEngineDidFinishUpdatingRelevance: <stripped>
-	0x117600  @objc ResumeRelevanceEngineIfNeededOperation.relevanceEngineDidBeginUpdatingRelevance: <stripped>
-	0x117690  @objc ResumeRelevanceEngineIfNeededOperation.relevanceEngine:performBatchUpdateBlock:completion: <stripped>
-	0x117740  @objc ResumeRelevanceEngineIfNeededOperation.relevanceEngine:didReloadElement:atPath: <stripped>
-	0x117740  @objc ResumeRelevanceEngineIfNeededOperation.relevanceEngine:didRemoveElement:atPath: <stripped>
-	0x117740  @objc ResumeRelevanceEngineIfNeededOperation.relevanceEngine:didInsertElement:atPath: <stripped>
-	0x117760  @objc ResumeRelevanceEngineIfNeededOperation.relevanceEngine:didMoveElement:fromPath:toPath: <stripped>
-	0x117780  @objc ResumeRelevanceEngineIfNeededOperation.relevanceEngine:isElementAtPathVisible: <stripped>
-	0x1177f0  @objc ResumeRelevanceEngineIfNeededOperation.init <stripped>
-	0x117890  @objc ResumeRelevanceEngineIfNeededOperation..cxx_destruct <stripped>
+	0x11b060  @objc ResumeRelevanceEngineIfNeededOperation.main <stripped>
+	0x11b120  @objc ResumeRelevanceEngineIfNeededOperation.relevanceEngineDidFinishUpdatingRelevance: <stripped>
+	0x11b230  @objc ResumeRelevanceEngineIfNeededOperation.relevanceEngineDidBeginUpdatingRelevance: <stripped>
+	0x11b2c0  @objc ResumeRelevanceEngineIfNeededOperation.relevanceEngine:performBatchUpdateBlock:completion: <stripped>
+	0x11b370  @objc ResumeRelevanceEngineIfNeededOperation.relevanceEngine:didReloadElement:atPath: <stripped>
+	0x11b370  @objc ResumeRelevanceEngineIfNeededOperation.relevanceEngine:didRemoveElement:atPath: <stripped>
+	0x11b370  @objc ResumeRelevanceEngineIfNeededOperation.relevanceEngine:didInsertElement:atPath: <stripped>
+	0x11b390  @objc ResumeRelevanceEngineIfNeededOperation.relevanceEngine:didMoveElement:fromPath:toPath: <stripped>
+	0x11b3b0  @objc ResumeRelevanceEngineIfNeededOperation.relevanceEngine:isElementAtPathVisible: <stripped>
+	0x11b420  @objc ResumeRelevanceEngineIfNeededOperation.init <stripped>
+	0x11b4c0  @objc ResumeRelevanceEngineIfNeededOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x117460  func ResumeRelevanceEngineIfNeededOperation.relevanceEngineDidFinishUpdatingRelevance(_:) // method 
-	0x1175b0  func ResumeRelevanceEngineIfNeededOperation.relevanceEngineDidBeginUpdatingRelevance(_:) // method 
-	0x117680  func ResumeRelevanceEngineIfNeededOperation.relevanceEngine(_:performBatchUpdate:completion:) // method 
-	0x117710  func ResumeRelevanceEngineIfNeededOperation.relevanceEngine(_:didReload:at:) // method 
-	0x117720  func ResumeRelevanceEngineIfNeededOperation.relevanceEngine(_:didRemove:at:) // method 
-	0x117730  func ResumeRelevanceEngineIfNeededOperation.relevanceEngine(_:didInsert:at:) // method 
-	0x117750  func ResumeRelevanceEngineIfNeededOperation.relevanceEngine(_:didMove:from:to:) // method 
-	0x117770  func ResumeRelevanceEngineIfNeededOperation.relevanceEngine(_:isElementAtPathVisible:) // method 
+	0x11b090  func ResumeRelevanceEngineIfNeededOperation.relevanceEngineDidFinishUpdatingRelevance(_:) // method 
+	0x11b1e0  func ResumeRelevanceEngineIfNeededOperation.relevanceEngineDidBeginUpdatingRelevance(_:) // method 
+	0x11b2b0  func ResumeRelevanceEngineIfNeededOperation.relevanceEngine(_:performBatchUpdate:completion:) // method 
+	0x11b340  func ResumeRelevanceEngineIfNeededOperation.relevanceEngine(_:didReload:at:) // method 
+	0x11b350  func ResumeRelevanceEngineIfNeededOperation.relevanceEngine(_:didRemove:at:) // method 
+	0x11b360  func ResumeRelevanceEngineIfNeededOperation.relevanceEngine(_:didInsert:at:) // method 
+	0x11b380  func ResumeRelevanceEngineIfNeededOperation.relevanceEngine(_:didMove:from:to:) // method 
+	0x11b3a0  func ResumeRelevanceEngineIfNeededOperation.relevanceEngine(_:isElementAtPathVisible:) // method 
  }
 
  enum HealthExperience.SummarySectionIdentifier {
@@ -3005,9 +3014,9 @@
 	let favoritesProvider : FavoritesProvider // +0x48 (0x8)
 
 	// Swift methods
-	0x11d620  class func FeedItemGeneratorManager.__allocating_init(availablePlugins:store:healthStore:) // init 
-	0x11d8d0  func FeedItemGeneratorManager.run(dateRange:completion:) // method 
-	0x11ede0  func FeedItemGeneratorManager.startInteractiveGeneration(plugins:cancellationCompletion:) // method 
+	0x121250  class func FeedItemGeneratorManager.__allocating_init(availablePlugins:store:healthStore:) // init 
+	0x121500  func FeedItemGeneratorManager.run(dateRange:completion:) // method 
+	0x122a10  func FeedItemGeneratorManager.startInteractiveGeneration(plugins:cancellationCompletion:) // method 
  }
 
  class HealthExperience.DiskHealthExperienceStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3025,30 +3034,30 @@
 	var $__lazy_storage_$_persistentContainer : NSPersistentContainer? // +0x68 (0x8)
 
 	// Swift methods
-	0x121030  func DiskHealthExperienceStore.isRunningInApplicationProcess.getter // getter 
-	0x1211e0  func DiskHealthExperienceStore.viewContext.getter // getter 
-	0x1213b0  func DiskHealthExperienceStore.sharedBackgroundContext.getter // getter 
-	0x1214b0  func DiskHealthExperienceStore.sharedBackgroundContext.setter // setter 
-	0x1214d0  func DiskHealthExperienceStore.sharedBackgroundContext.modify // modifyCoroutine 
-	0x121520  func DiskHealthExperienceStore.allEntities.getter // getter 
-	0x121630  func DiskHealthExperienceStore.allEntities.setter // setter 
-	0x121650  func DiskHealthExperienceStore.allEntities.modify // modifyCoroutine 
-	0x120e90  class func DiskHealthExperienceStore.__allocating_init() // init 
-	0x121b80  func DiskHealthExperienceStore.makeStoreLocation() // method 
-	0x121d80  class func static DiskHealthExperienceStore.storeFileURL.getter // getter 
-	0x121ec0  func DiskHealthExperienceStore.persistentStoreDescription.getter // getter 
-	0x1221a0  func DiskHealthExperienceStore.persistentStoreCoordinator.getter // getter 
-	0x122220  func DiskHealthExperienceStore.initPersistentContainer() // method 
-	0x122390  func DiskHealthExperienceStore.persistentContainer.getter // getter 
-	0x122570  func DiskHealthExperienceStore.persistentContainer.setter // setter 
-	0x122590  func DiskHealthExperienceStore.persistentContainer.modify // modifyCoroutine 
-	0x122620  func DiskHealthExperienceStore.destroyStoreIfNeededAndMakePersistentContainer() // method 
-	0x122860  func DiskHealthExperienceStore.deleteAllObjects() // method 
-	0x1228a0  func DiskHealthExperienceStore.delete(_:from:) // method 
-	0x123450  func DiskHealthExperienceStore.makePersistentContainer(retryOnFailure:) // method 
-	0x1234f0  func DiskHealthExperienceStore.updateStoreMetadataWithLatestVersion(_:) // method 
-	0x123f20  func DiskHealthExperienceStore.unsafeMakePersistentContainer(retryOnFailure:) // method 
-	0x125b80  func DiskHealthExperienceStore.getStoreState() // method 
+	0x124c60  func DiskHealthExperienceStore.isRunningInApplicationProcess.getter // getter 
+	0x124e10  func DiskHealthExperienceStore.viewContext.getter // getter 
+	0x124fe0  func DiskHealthExperienceStore.sharedBackgroundContext.getter // getter 
+	0x1250e0  func DiskHealthExperienceStore.sharedBackgroundContext.setter // setter 
+	0x125100  func DiskHealthExperienceStore.sharedBackgroundContext.modify // modifyCoroutine 
+	0x125150  func DiskHealthExperienceStore.allEntities.getter // getter 
+	0x125260  func DiskHealthExperienceStore.allEntities.setter // setter 
+	0x125280  func DiskHealthExperienceStore.allEntities.modify // modifyCoroutine 
+	0x124ac0  class func DiskHealthExperienceStore.__allocating_init() // init 
+	0x1257b0  func DiskHealthExperienceStore.makeStoreLocation() // method 
+	0x1259b0  class func static DiskHealthExperienceStore.storeFileURL.getter // getter 
+	0x125af0  func DiskHealthExperienceStore.persistentStoreDescription.getter // getter 
+	0x125dd0  func DiskHealthExperienceStore.persistentStoreCoordinator.getter // getter 
+	0x125e50  func DiskHealthExperienceStore.initPersistentContainer() // method 
+	0x125fc0  func DiskHealthExperienceStore.persistentContainer.getter // getter 
+	0x1261a0  func DiskHealthExperienceStore.persistentContainer.setter // setter 
+	0x1261c0  func DiskHealthExperienceStore.persistentContainer.modify // modifyCoroutine 
+	0x126250  func DiskHealthExperienceStore.destroyStoreIfNeededAndMakePersistentContainer() // method 
+	0x126490  func DiskHealthExperienceStore.deleteAllObjects() // method 
+	0x1264d0  func DiskHealthExperienceStore.delete(_:from:) // method 
+	0x127080  func DiskHealthExperienceStore.makePersistentContainer(retryOnFailure:) // method 
+	0x127120  func DiskHealthExperienceStore.updateStoreMetadataWithLatestVersion(_:) // method 
+	0x127b50  func DiskHealthExperienceStore.unsafeMakePersistentContainer(retryOnFailure:) // method 
+	0x1297b0  func DiskHealthExperienceStore.getStoreState() // method 
  }
 
  enum HealthExperience.State {
@@ -3073,19 +3082,19 @@
 	var stateLock : UnfairLock // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x134280  @objc AsyncOperation.isExecuting <stripped>
-	0x134310  @objc AsyncOperation.isFinished <stripped>
-	0x1343e0  @objc AsyncOperation.isAsynchronous <stripped>
-	0x134450  @objc AsyncOperation.start <stripped>
-	0x1344d0  @objc AsyncOperation.main <stripped>
-	0x1345a0  @objc AsyncOperation.init <stripped>
-	0x134610  @objc AsyncOperation..cxx_destruct <stripped>
+	0x137ea0  @objc AsyncOperation.isExecuting <stripped>
+	0x137f30  @objc AsyncOperation.isFinished <stripped>
+	0x138000  @objc AsyncOperation.isAsynchronous <stripped>
+	0x138070  @objc AsyncOperation.start <stripped>
+	0x1380f0  @objc AsyncOperation.main <stripped>
+	0x1381c0  @objc AsyncOperation.init <stripped>
+	0x138230  @objc AsyncOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x133de0  func AsyncOperation.state.getter // getter 
-	0x133e50  func AsyncOperation.state.setter // setter 
-	0x1340a0  func AsyncOperation.state.modify // modifyCoroutine 
-	0x134150  func AsyncOperation.finish() // method 
+	0x137a00  func AsyncOperation.state.getter // getter 
+	0x137a70  func AsyncOperation.state.setter // setter 
+	0x137cc0  func AsyncOperation.state.modify // modifyCoroutine 
+	0x137d70  func AsyncOperation.finish() // method 
  }
 
  enum HealthExperience.State {

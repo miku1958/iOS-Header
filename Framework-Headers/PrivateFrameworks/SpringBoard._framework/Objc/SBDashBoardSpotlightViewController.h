@@ -10,12 +10,13 @@
 #import <SpringBoard/SBSystemGestureRecognizerDelegate-Protocol.h>
 #import <SpringBoard/SBViewControllerTransitionContextDelegate-Protocol.h>
 
-@class FBDisplayLayoutTransition, NSString, SBHomeGesturePanGestureRecognizer, SBHomeGestureParticipant, SBSearchBackdropView, UIViewController, _SBDashBoardSpotlightViewController;
+@class FBDisplayLayoutTransition, NSString, SBHomeGesturePanGestureRecognizer, SBHomeGestureParticipant, SBSearchBackdropView, UIViewController, _SBDashBoardSpotlightViewController, _UILegibilitySettings;
 @protocol SBUISpotlightInitiating, SPUIRemoteSearchViewDelegate;
 
 @interface SBDashBoardSpotlightViewController : CSCoverSheetViewControllerBase <SBHomeGestureParticipantDelegate, SBSystemGestureRecognizerDelegate, SBViewControllerTransitionContextDelegate>
 {
     SBSearchBackdropView *_backdropView;
+    _UILegibilitySettings *_spotlightLegibilitySettings;
     UIViewController<SBUISpotlightInitiating> *_initiatingViewController;
     _SBDashBoardSpotlightViewController *_spotlightViewController;
     SBHomeGesturePanGestureRecognizer *_bottomEdgeRecognizer;
@@ -31,6 +32,7 @@
 @property (strong, nonatomic) SBHomeGestureParticipant *homeGestureParticipant; // @synthesize homeGestureParticipant=_homeGestureParticipant;
 @property (strong, nonatomic) UIViewController<SBUISpotlightInitiating> *initiatingViewController; // @synthesize initiatingViewController=_initiatingViewController;
 @property (weak, nonatomic) id<SPUIRemoteSearchViewDelegate> spotlightDelegate;
+@property (strong, nonatomic) _UILegibilitySettings *spotlightLegibilitySettings; // @synthesize spotlightLegibilitySettings=_spotlightLegibilitySettings;
 @property (strong, nonatomic) _SBDashBoardSpotlightViewController *spotlightViewController; // @synthesize spotlightViewController=_spotlightViewController;
 @property (readonly) Class superclass;
 
@@ -68,6 +70,7 @@
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (id)viewForSystemGestureRecognizer:(id)arg1;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 - (BOOL)wouldHandleButtonEvent:(id)arg1;

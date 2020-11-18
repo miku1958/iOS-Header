@@ -31,6 +31,7 @@
 @property (copy, nonatomic) NSNumber *supportsWholeHouseAudio; // @dynamic supportsWholeHouseAudio;
 
 + (id)properties;
++ (id)schemaHashRoot;
 
 @end
 

@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     BOOL _playerIsSeeking;
     BOOL _playerDidPlayToEnd;
     BOOL _placeholderVisible;
+    BOOL _currentImageIsPlaceholder;
     int __currentImageRequestID;
     PUAssetViewModel *_assetViewModel;
     PUMediaProvider *_mediaProvider;
@@ -49,6 +50,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setAsset:) id<PUDisplayAsset> asset; // @synthesize asset=_asset;
 @property (strong, nonatomic) PUAssetViewModel *assetViewModel; // @synthesize assetViewModel=_assetViewModel;
 @property (nonatomic) BOOL canPlayVideo; // @synthesize canPlayVideo=_canPlayVideo;
+@property (nonatomic) BOOL currentImageIsPlaceholder; // @synthesize currentImageIsPlaceholder=_currentImageIsPlaceholder;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

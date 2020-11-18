@@ -28,6 +28,7 @@
 
 - (void).cxx_destruct;
 - (void)dealloc;
+- (void)disableAsynchronousRenderingForNextCommit;
 - (id)initWithDeviceApplicationSceneViewController:(id)arg1;
 - (void)noteKeyboardFocusDidChangeToSceneID:(id)arg1;
 - (BOOL)rendersAsynchronously;

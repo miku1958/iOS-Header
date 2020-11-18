@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSNumber *previewFrameHeight;
 @property (readonly, nonatomic) NSString *previewFrameURLFormat;
 @property (readonly, nonatomic) NSNumber *previewFrameWidth;
+@property (readonly, nonatomic) NSString *ratingDomain;
 @property (readonly, nonatomic) NSString *ratingName;
 @property (readonly, nonatomic) NSString *ratingSystem;
 @property (readonly, nonatomic) NSNumber *ratingValue;

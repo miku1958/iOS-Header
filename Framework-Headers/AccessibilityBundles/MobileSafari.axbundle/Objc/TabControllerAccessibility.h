@@ -19,7 +19,7 @@
 - (void)tabCollectionView:(id)arg1 closeItem:(id)arg2;
 - (void)tabCollectionView:(id)arg1 didSelectItem:(id)arg2;
 - (id)tiltedTabViewToolbarItems;
-- (void)updateTiltedTabViewToolbarItems;
+- (void)updateTiltedTabViewToolbarItems:(BOOL)arg1;
 
 @end
 

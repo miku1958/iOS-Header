@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 + (id)baseRules;
 + (id)ruleDictionaryForStyle:(id)arg1;
++ (id)ruleDictionaryForStyleWithDarkInterface:(id)arg1;
 + (id)styleSet;
 - (void).cxx_destruct;
 - (void)buildComponents;

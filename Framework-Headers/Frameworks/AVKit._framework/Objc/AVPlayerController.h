@@ -6,7 +6,7 @@
 
 #import <UIKit/UIResponder.h>
 
-@class AVAsset, AVAssetTrack, AVMediaSelectionOption, AVObservationController, AVPlayer, AVTimecodeController, AVValueTiming, NSArray, NSDate, NSDictionary, NSError, NSNumber, NSObject;
+@class AVAsset, AVAssetTrack, AVMediaSelectionOption, AVObservationController, AVPlayer, AVTimecodeController, AVValueTiming, NSArray, NSDate, NSDictionary, NSError, NSNumber, NSObject, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface AVPlayerController : UIResponder
@@ -18,8 +18,8 @@
     NSArray *_legibleMediaSelectionOptions;
     AVMediaSelectionOption *_cachedSelectedAudioMediaSelectionOption;
     AVMediaSelectionOption *_cachedSelectedLegibleMediaSelectionOption;
-    long long _savedCaptionAppearanceDisplayType;
-    BOOL _alwaysWantsAutomaticMediaOptionSelection;
+    AVMediaSelectionOption *_cachedSelectedLegibleMediaSelectionOptionAccordingToAVFoundation;
+    NSString *_lastKnownPersistedExtendedLanguageTag;
     float _rate;
     BOOL _isResumed;
     NSObject<OS_dispatch_source> *_seekTimer;
@@ -141,6 +141,7 @@
 @property (nonatomic) BOOL touchBarRequiresLinearPlayback; // @synthesize touchBarRequiresLinearPlayback=_touchBarRequiresLinearPlayback;
 @property (readonly, nonatomic) BOOL usesExternalPlaybackWhileExternalScreenIsActive;
 
++ (id)canonicalLanguageIdentifierFromString:(id)arg1;
 + (void)initialize;
 + (id)keyPathsForValuesAffectingAllowsExternalPlayback;
 + (id)keyPathsForValuesAffectingCanPause;
@@ -201,10 +202,12 @@
 - (void)_cancelPendingSeeksIfNeeded;
 - (void)_disableLegibleMediaSelectionOptions:(id)arg1;
 - (void)_enableAutoMediaSelection:(id)arg1;
-- (void)_enableAutoMediaSelection:(id)arg1 shouldUpdateUserPreference:(BOOL)arg2;
+- (void)_ensureUserCaptionDisplayType:(long long)arg1;
 - (void)_handleSeekTimerEvent;
+- (BOOL)_mediaSelectionCriteriaCanBeAppliedAutomaticallyToLegibleMediaSelectionGroup;
 - (void)_observeValueForKeyPath:(id)arg1 oldValue:(id)arg2 newValue:(id)arg3;
 - (id)_optionsForGroup:(id)arg1;
+- (void)_performAutomaticMediaSelectionForUserCaptionDisplayType:(long long)arg1;
 - (void)_prepareAssetForInspectionIfNeeded;
 - (id)_queuePlayer;
 - (void)_retryPlayImmediatelyIfNeeded;
@@ -252,7 +255,6 @@
 - (double)currentTimeWithinEndTimes;
 - (void)dealloc;
 - (void)decreaseVolume:(id)arg1;
-- (void)enableAutomaticCaptionDisplayTypeIfNeeded;
 - (void)endScanningBackward:(id)arg1;
 - (void)endScanningForward:(id)arg1;
 - (void)endScrubbing;
@@ -307,8 +309,9 @@
 - (void)reloadAudioOptions;
 - (void)reloadLegibleOptions;
 - (void)reloadOptions;
+- (void)reloadOptionsAndCurrentSelections;
+- (void)reloadOptionsAssumingMediaOptionsMayHaveChanged:(BOOL)arg1;
 - (CDStruct_1b6d18a9)reversePlaybackEndTime;
-- (long long)savedCaptionAppearanceDisplayType;
 - (void)scanBackward:(id)arg1;
 - (void)scanForward:(id)arg1;
 - (id)scanningDelays;
@@ -329,6 +332,7 @@
 - (void)seekToTimecode:(id)arg1;
 - (id)seekableTimeRanges;
 - (void)selectedMediaOptionMayHaveChanged;
+- (void)selectedMediaOptionMayHaveChanged:(BOOL)arg1;
 - (void)setAllowsExternalPlayback:(BOOL)arg1;
 - (void)setAudioMediaSelectionOptions:(id)arg1;
 - (void)setCanUseNetworkResourcesForLiveStreamingWhilePaused:(BOOL)arg1;
@@ -337,6 +341,7 @@
 - (void)setForwardPlaybackEndTime:(CDStruct_1b6d18a9)arg1;
 - (void)setInspectionSuspended:(BOOL)arg1;
 - (void)setLegibleMediaSelectionOptions:(id)arg1;
+- (void)setLegibleMediaSelectionOptions:(id)arg1 audioMediaSelectionOptions:(id)arg2 assumeMediaOptionMayHaveChanged:(BOOL)arg3;
 - (void)setLooping:(BOOL)arg1;
 - (void)setMaxTime:(double)arg1;
 - (void)setMinTime:(double)arg1;
@@ -347,7 +352,6 @@
 - (void)setRate:(double)arg1;
 - (void)setRateWithForce:(double)arg1;
 - (void)setReversePlaybackEndTime:(CDStruct_1b6d18a9)arg1;
-- (void)setSavedCaptionAppearanceDisplayType:(long long)arg1;
 - (void)setVolume:(double)arg1;
 - (void)skipBackwardThirtySeconds:(id)arg1;
 - (BOOL)startGeneratingTimecodesUsingBlock:(CDUnknownBlockType)arg1;
@@ -360,7 +364,6 @@
 - (long long)timeControlStatus;
 - (id)timecodeForCurrentTime;
 - (double)timecodeObservationInterval;
-- (void)toggleCaptions;
 - (void)toggleMuted:(id)arg1;
 - (void)togglePictureInPicture:(id)arg1;
 - (void)togglePlayback:(id)arg1;

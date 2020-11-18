@@ -13,13 +13,16 @@
 {
     PKDiscoveryCallToAction *_callToAction;
     PKDiscoveryMedia *_media;
-    UILabel *_titleLabel;
-    UILabel *_editorialDescriptionLabel;
     UIImageView *_iconImageView;
     PKContinuousButton *_button;
+    UILabel *_titleLabel;
+    UILabel *_editorialDescriptionLabel;
+    UILabel *_expandedTitleLabel;
+    UILabel *_expandedEditorialDescriptionLabel;
     long long _displayType;
     BOOL _hasIcon;
     BOOL _hasButton;
+    BOOL _useAccessibilityLayout;
     CDUnknownBlockType _callToActionTappedOverride;
     BOOL _showActivityIndicator;
     id<PKDiscoveryCardViewDelegate> _delegate;
@@ -31,13 +34,17 @@
 
 - (void).cxx_destruct;
 - (void)_buttonPressed:(id)arg1;
+- (struct CGSize)_buttonSizeForBounds:(struct CGRect)arg1;
+- (double)_buttonWidthForLabelWidth:(double)arg1;
 - (id)_descriptionLabelColor;
+- (id)_descriptionLabelWithLocalizedDescription:(id)arg1;
 - (id)_editorialDescriptionLabelFont;
 - (struct CGSize)_iconSize;
+- (void)_layoutLabelsForBounds:(struct CGRect)arg1;
 - (void)_loadImageData;
-- (double)_maxButtonWidth;
 - (id)_titleLabelColor;
 - (id)_titleLabelFont;
+- (id)_titleLabelWithLocalizedTitle:(id)arg1;
 - (id)initWithCallToAction:(id)arg1 displayType:(long long)arg2;
 - (void)layoutSubviews;
 - (void)setCallToActionTappedOverride:(CDUnknownBlockType)arg1;

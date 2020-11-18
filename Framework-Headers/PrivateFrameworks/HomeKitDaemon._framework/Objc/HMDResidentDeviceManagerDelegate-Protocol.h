@@ -11,5 +11,6 @@
 @protocol HMDResidentDeviceManagerDelegate <NSObject>
 - (void)residentDeviceManager:(HMDResidentDeviceManager *)arg1 didUpdatePrimaryResident:(HMDResidentDevice *)arg2;
 - (void)residentDeviceManager:(HMDResidentDeviceManager *)arg1 didUpdateResidentAvailable:(BOOL)arg2;
+- (void)residentDeviceManagerDidUpdateResidents:(HMDResidentDeviceManager *)arg1;
 @end
 

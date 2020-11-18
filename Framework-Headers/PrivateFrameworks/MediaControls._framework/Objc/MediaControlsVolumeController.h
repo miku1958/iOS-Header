@@ -41,7 +41,6 @@
 
 - (void).cxx_destruct;
 - (void)_notifyVolumeChangedForVolumeController:(id)arg1 volumeControlAvailable:(BOOL)arg2 effectiveVolume:(float)arg3;
-- (void)_resetRouteType:(unsigned long long)arg1;
 - (unsigned long long)_routeForVolumeController:(id)arg1;
 - (BOOL)_setupOutputDevicesAndVolumeControllersIfNeeded;
 - (void)addObserver:(id)arg1;

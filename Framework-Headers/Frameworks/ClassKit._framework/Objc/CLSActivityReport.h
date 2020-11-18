@@ -21,10 +21,12 @@
     CLSAggregatedValue *_progress;
     CLSActivityReportItem *_primaryReportItem;
     NSArray *_additionalReportItems;
+    NSString *_contextStableObjectID;
 }
 
 @property (copy, nonatomic) NSArray *additionalReportItems; // @synthesize additionalReportItems=_additionalReportItems;
 @property (copy, nonatomic) NSString *contextID; // @synthesize contextID=_contextID;
+@property (copy, nonatomic) NSString *contextStableObjectID; // @synthesize contextStableObjectID=_contextStableObjectID;
 @property (copy, nonatomic) NSString *contextTitle; // @synthesize contextTitle=_contextTitle;
 @property (copy, nonatomic) NSString *contextTopic; // @synthesize contextTopic=_contextTopic;
 @property (nonatomic) long long contextType; // @synthesize contextType=_contextType;

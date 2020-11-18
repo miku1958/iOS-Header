@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _UIPlatterTransformView : UIView
 {
     BOOL _hidesSourceView;
+    BOOL _forwardsHitTestingToSourceView;
     BOOL _matchesAlpha;
     BOOL _appliesMinificationFilter;
     BOOL _allowsUserInteraction;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) BOOL allowsUserInteraction; // @synthesize allowsUserInteraction=_allowsUserInteraction;
 @property (nonatomic) BOOL appliesMinificationFilter; // @synthesize appliesMinificationFilter=_appliesMinificationFilter;
+@property (nonatomic) BOOL forwardsHitTestingToSourceView; // @synthesize forwardsHitTestingToSourceView=_forwardsHitTestingToSourceView;
 @property (nonatomic) BOOL hidesSourceView; // @synthesize hidesSourceView=_hidesSourceView;
 @property (nonatomic) BOOL matchesAlpha; // @synthesize matchesAlpha=_matchesAlpha;
 @property (strong, nonatomic) _UIPortalView *portalView; // @synthesize portalView=_portalView;

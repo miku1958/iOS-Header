@@ -16,25 +16,30 @@
     BOOL _isManagedAppsCloudSyncDisallowed;
     BOOL _hasOpenInRestrictions;
     BOOL _isUSBAccessAllowed;
+    BOOL _isNetworkDriveAccessInFilesAllowed;
     BOOL _didLoadSharedConnectionValues;
     NSString *_hostIdentifier;
     unsigned long long _hostAccountDataOwnerState;
     NSCache *_cache;
+    NSCache *_appContainerIDCache;
     ACAccountStore *_accountStore;
 }
 
 @property (strong, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
+@property (strong, nonatomic) NSCache *appContainerIDCache; // @synthesize appContainerIDCache=_appContainerIDCache;
 @property (strong, nonatomic) NSCache *cache; // @synthesize cache=_cache;
 @property (readonly, nonatomic) BOOL hasOpenInRestrictions;
 @property (nonatomic) unsigned long long hostAccountDataOwnerState; // @synthesize hostAccountDataOwnerState=_hostAccountDataOwnerState;
 @property (strong, nonatomic) NSString *hostIdentifier; // @synthesize hostIdentifier=_hostIdentifier;
 @property (readonly, nonatomic) BOOL isInEducationMode;
+@property (readonly, nonatomic) BOOL isNetworkDriveAllowed;
 @property (readonly, nonatomic) BOOL isUSBAccessAllowed;
 
 + (id)defaultPermission;
 - (void).cxx_destruct;
 - (void)_loadSharedConnectionValues;
 - (id)allowedFileProviderBundleIdentifiersForHostBundleIdentifier:(id)arg1;
+- (id)appContainerBundleIDForFPItem:(id)arg1;
 - (BOOL)canAppWithBundleIdentifier:(id)arg1 performAction:(unsigned long long)arg2 accountIdentifier:(id)arg3;
 - (BOOL)canAppWithBundleIdentifier:(id)arg1 performAction:(unsigned long long)arg2 bundleIdentifier:(id)arg3;
 - (BOOL)canAppWithDataOwnerState:(unsigned long long)arg1 performAction:(unsigned long long)arg2 dataOwnerState:(unsigned long long)arg3;
@@ -48,6 +53,7 @@
 - (BOOL)canHostAppPerformAction:(unsigned long long)arg1 legacyPickerExtension:(id)arg2;
 - (BOOL)canHostAppPerformAction:(unsigned long long)arg1 targetItem:(id)arg2;
 - (BOOL)canItem:(id)arg1 performAction:(unsigned long long)arg2 item:(id)arg3;
+- (void)cleanAppContainerBundleIDCache;
 - (unsigned long long)dataOwnerStateForAccountIdentifier:(id)arg1;
 - (unsigned long long)dataOwnerStateForBundleIdentifier:(id)arg1;
 - (unsigned long long)dataOwnerStateForItem:(id)arg1;

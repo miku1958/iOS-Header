@@ -29,7 +29,6 @@
 @property (readonly, nonatomic) NSString *uniqueName;
 
 + (id)defaultCachePath;
-+ (void)load;
 - (void).cxx_destruct;
 - (void)addAdditionalFilter:(id)arg1 forSink:(id)arg2;
 - (void)attachSink:(id)arg1;

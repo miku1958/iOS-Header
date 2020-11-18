@@ -61,7 +61,7 @@
 @property (strong, nonatomic) WFSlotTemplateTypingTextView *typingTextView; // @synthesize typingTextView=_typingTextView;
 @property (strong, nonatomic) UIFont *unpopulatedFont;
 
-+ (double)heightForWidth:(double)arg1 withContents:(id)arg2 font:(id)arg3 unpopulatedFont:(id)arg4 paragraphStyle:(id)arg5;
++ (double)heightForWidth:(double)arg1 withContents:(id)arg2 horizontalPadding:(double)arg3 font:(id)arg4 unpopulatedFont:(id)arg5 paragraphStyle:(id)arg6;
 - (void).cxx_destruct;
 - (void)_deselectSlotAndNotifyDelegate:(BOOL)arg1;
 - (void)_selectSlot:(id)arg1 notifyDelegate:(BOOL)arg2;
@@ -107,7 +107,7 @@
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (id)typingParagraphStyleForParagraphStyle:(id)arg1;
 - (void)updateAccessibilityElements;
-- (void)updateEnabledStateInTextStorage;
+- (void)updateTintColorInTextStorage;
 
 @end
 

@@ -58,7 +58,6 @@
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;
 - (id)userHandle;
-- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 
 @end

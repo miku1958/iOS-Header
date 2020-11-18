@@ -4,27 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WorkflowKit/WFAccessResource.h>
+#import <WorkflowKit/WFGranularAccessResource.h>
 
-@class NSArray, NSSet, WFRemoteServerPermissionState;
+@class NSArray;
 
-@interface WFRemoteServerAccessResource : WFAccessResource
+@interface WFRemoteServerAccessResource : WFGranularAccessResource
 {
     NSArray *_requestedURLs;
-    WFRemoteServerPermissionState *_stateForRequestedURLs;
-    WFRemoteServerPermissionState *_combinedState;
 }
 
-@property (strong, nonatomic) WFRemoteServerPermissionState *combinedState; // @synthesize combinedState=_combinedState;
-@property (readonly, nonatomic) WFRemoteServerPermissionState *currentState;
-@property (readonly, nonatomic) NSSet *domainsWithNotDeterminedAccess;
 @property (copy, nonatomic) NSArray *requestedURLs; // @synthesize requestedURLs=_requestedURLs;
-@property (strong, nonatomic) WFRemoteServerPermissionState *stateForRequestedURLs; // @synthesize stateForRequestedURLs=_stateForRequestedURLs;
 
 + (BOOL)isSystemResource;
-+ (Class)permissionStateClass;
++ (Class)perWorkflowStateClass;
 - (void).cxx_destruct;
-- (id)domainsWithDeniedAccess;
 - (unsigned long long)globalLevelStatus;
 - (id)icon;
 - (id)localizedWorkflowLevelDeniedStatusMessage;
@@ -32,10 +25,7 @@
 - (id)localizedWorkflowLevelNotDeterminedStatusMessage;
 - (id)localizedWorkflowLevelPromptTemplate;
 - (id)name;
-- (void)setCurrentPermissionState:(id)arg1;
-- (void)updateInternalStates;
-- (id)updatedPermissionStateForPermissionGranted:(BOOL)arg1 overridingPreviouslyDeterminedAuthorizations:(BOOL)arg2;
-- (unsigned long long)workflowLevelStatus;
+- (id)requestedEntries;
 
 @end
 

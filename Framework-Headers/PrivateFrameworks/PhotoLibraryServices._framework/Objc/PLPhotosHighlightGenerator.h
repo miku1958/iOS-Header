@@ -81,7 +81,7 @@
 - (void)resetPreviousRecentHighlightCurationForHighlight:(id)arg1;
 - (BOOL)setDefaultVisibilityStateForHighlight:(id)arg1 withHighlightCluster:(id)arg2;
 - (void)updateCurationForHighlight:(id)arg1 withAssetsBelongingToCuration:(id)arg2;
-- (void)updateElectedEventForUpdatedMonths:(id)arg1;
+- (id)updateElectedEventForUpdatedMonths:(id)arg1;
 - (void)updateHighlightNeedingNewKeyAssetsWithAsset:(id)arg1;
 - (void)updateHighlightTitles;
 - (void)updateRecentHighlightCurationForHighlight:(id)arg1;

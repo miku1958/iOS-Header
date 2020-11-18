@@ -64,16 +64,20 @@ __attribute__((visibility("hidden")))
 - (id)_activeFeatures;
 - (void)_addObservedToken:(id)arg1 forFeature:(id)arg2;
 - (void)_addTimeObservingForFeature:(id)arg1 withStartTime:(double)arg2 andHandler:(CDUnknownBlockType)arg3;
+- (void)_applicationDidEnterBackground:(id)arg1;
+- (void)_applicationWillEnterForeground:(id)arg1;
 - (void)_cancelTimerForFeature:(id)arg1;
 - (void)_cleanUpEverything;
 - (void)_cleanupFeature:(id)arg1;
 - (void)_deactivateFeature:(id)arg1 animated:(BOOL)arg2;
+- (void)_expireTimerFeaturesIfNeeded;
 - (BOOL)_hasActiveFeaturesInArray:(id)arg1;
 - (BOOL)_hasAnyActiveFeature;
 - (BOOL)_isElapsedTimeWithinFeatureTimeWindow:(id)arg1;
 - (BOOL)_isHybridFeature:(id)arg1;
 - (BOOL)_isTVAdvisoryFeature:(id)arg1;
 - (BOOL)_isTimeBoundFeature:(id)arg1;
+- (BOOL)_isTimerFeatureExpired:(id)arg1;
 - (BOOL)_isTimerTriggeredFeature:(id)arg1;
 - (BOOL)_isUserTriggeredFeature:(id)arg1;
 - (BOOL)_needsUIForFeature:(id)arg1;
@@ -91,6 +95,7 @@ __attribute__((visibility("hidden")))
 - (void)_removeAllObservedTokensForFeature:(id)arg1;
 - (void)_removeTimeObservingForFeature:(id)arg1 withStartTime:(double)arg2;
 - (void)_scheduleDeactivationOfTimeBoundFeature:(id)arg1;
+- (void)_setupTimerFeatureExpiration;
 - (BOOL)_shouldActivateTimeBoundFeatureInitially:(id)arg1;
 - (BOOL)_shouldAnimateFeature:(id)arg1;
 - (void)_startObservingElapsedTime;

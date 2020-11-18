@@ -411,7 +411,7 @@
 - (void)_updateEmailTransportButtonsForItems:(id)arg1;
 - (id)_updateExistingContactAction;
 - (void)_updateIMessageTransportButtonsForItems:(id)arg1;
-- (void)_updateItemsInGroup:(id)arg1 forTableView:(id)arg2;
+- (void)_updateItemsInGroup:(id)arg1 forTableView:(id)arg2 deletedIndexPath:(id)arg3;
 - (void)_updateLabelWidthForCell:(id)arg1;
 - (void)_updateLabelWidthForCellsInGroup:(id)arg1 forTableView:(id)arg2 reset:(BOOL)arg3;
 - (void)_updateLabelWidthsForAllVisibleCells;
@@ -443,7 +443,6 @@
 - (id)cardGroupForProperty:(id)arg1;
 - (void)cleanupRecentImageMetadata;
 - (void)clearMapsDataIfEdited;
-- (id)confirmCancelAlertControllerAnchoredAtButtonItem:(id)arg1;
 - (void)contactDidAppear;
 - (void)contactGroupPickerDidCancel:(id)arg1;
 - (void)contactGroupPickerDidFinish:(id)arg1 withGroup:(id)arg2;
@@ -484,6 +483,7 @@
 - (id)indexPathOfDisplayedPropertyItem:(id)arg1;
 - (id)indexPathOfEditingPropertyItem:(id)arg1;
 - (id)indexPathOfPropertyItem:(id)arg1 editing:(BOOL)arg2;
+- (id)indexPathsOfEditingItemsInGroup:(id)arg1 withSectionIndex:(unsigned long long)arg2;
 - (id)initWithContact:(id)arg1;
 - (id)initWithContact:(id)arg1 prohibitedPropertyKeys:(id)arg2;
 - (id)initWithEnvironment:(id)arg1;
@@ -505,11 +505,10 @@
 - (BOOL)needsReload;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)performAuthorizedSetEditing:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)performConfirmedCancel:(id)arg1;
+- (void)performConfirmedCancel;
 - (BOOL)performSave;
 - (void)prepareCell:(id)arg1;
 - (void)presentConfirmCancelAlertController;
-- (void)presentConfirmCancelAlertControllerAnchoredAtButtonItem:(id)arg1;
 - (void)presentViewController:(id)arg1 sourceView:(id)arg2;
 - (void)presentationControllerWillDismiss:(id)arg1;
 - (void)propertyCell:(id)arg1 didDeleteLabel:(id)arg2 forGroup:(id)arg3;
@@ -521,6 +520,7 @@
 - (void)reloadCardGroup:(id)arg1 forTableView:(id)arg2;
 - (BOOL)reloadDataIfNeeded;
 - (void)reloadDataPreservingChanges:(BOOL)arg1;
+- (void)reloadRowsAndRestoreFirstResponderAtIndexPaths:(id)arg1 ofTableView:(id)arg2;
 - (void)reloadUnifiedContact;
 - (void)removeActionWithTarget:(id)arg1 selector:(SEL)arg2 inGroup:(id)arg3;
 - (void)removeEditingItem:(id)arg1 atIndexPath:(id)arg2 forTableView:(id)arg3;

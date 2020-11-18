@@ -21,6 +21,8 @@
     NSDate *_startTime;
     NSDate *_endTime;
     NSUUID *_metricUUID;
+    NSString *_inferredSourceApplicationBundleIdentifier;
+    NSString *_inferredSourceApplicationSecondaryIdentifier;
     NSMutableDictionary *_attributes;
     NSMutableDictionary *_associatedOperations;
     NSMutableDictionary *_associatedOperationGroups;
@@ -34,6 +36,8 @@
 @property (nonatomic) BOOL hasBeenSubmitted; // @synthesize hasBeenSubmitted=_hasBeenSubmitted;
 @property (nonatomic) BOOL inferredAllowsCellular; // @synthesize inferredAllowsCellular=_inferredAllowsCellular;
 @property (nonatomic) BOOL inferredPreferAnonymousRequests; // @synthesize inferredPreferAnonymousRequests=_inferredPreferAnonymousRequests;
+@property (nonatomic) NSString *inferredSourceApplicationBundleIdentifier; // @synthesize inferredSourceApplicationBundleIdentifier=_inferredSourceApplicationBundleIdentifier;
+@property (nonatomic) NSString *inferredSourceApplicationSecondaryIdentifier; // @synthesize inferredSourceApplicationSecondaryIdentifier=_inferredSourceApplicationSecondaryIdentifier;
 @property (nonatomic) BOOL isCKInternalMetric; // @synthesize isCKInternalMetric=_isCKInternalMetric;
 @property (nonatomic) BOOL isPushTriggerFired; // @synthesize isPushTriggerFired=_isPushTriggerFired;
 @property (readonly, nonatomic) NSUUID *metricUUID; // @synthesize metricUUID=_metricUUID;

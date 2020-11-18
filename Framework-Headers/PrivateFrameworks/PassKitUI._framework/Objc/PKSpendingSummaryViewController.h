@@ -73,6 +73,7 @@
 - (id)_recoverUnusedVC;
 - (void)_reloadDataForVCAtIndex:(unsigned long long)arg1 swap:(BOOL)arg2;
 - (void)_reloadPendingVCs;
+- (void)_reportTappedButtonWithTag:(id)arg1;
 - (void)_retireVCForIndex:(unsigned long long)arg1;
 - (void)_scrollViewStoppedScrolling;
 - (double)_startOfItemAtIndex:(unsigned long long)arg1;
@@ -95,6 +96,8 @@
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)spendingSingleSummaryViewController:(id)arg1 changedSelection:(unsigned long long)arg2;
 - (void)spendingSingleSummaryViewController:(id)arg1 scrollViewDidScroll:(id)arg2;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 

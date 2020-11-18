@@ -18,6 +18,7 @@
 @property (readonly) Class superclass;
 
 + (Class)wf_contentItemClass;
++ (id)wf_fileWithFileRepresentation:(id)arg1;
 - (id)wf_contentItemWithCodableAttribute:(id)arg1;
 - (id)wf_fileRepresentation;
 - (void)wf_transformUsingCodableAttribute:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

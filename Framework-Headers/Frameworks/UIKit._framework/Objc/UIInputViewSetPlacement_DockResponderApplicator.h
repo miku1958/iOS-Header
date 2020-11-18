@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (struct UIEdgeInsets)contentInsets;
 - (id)draggableView;
 - (void)invalidate;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isGesture:(id)arg1 inDraggableView:(struct CGPoint)arg2;
 - (struct CGRect)popoverFrame;
 - (BOOL)preBeginGesture:(id)arg1 shouldBegin:(BOOL *)arg2;

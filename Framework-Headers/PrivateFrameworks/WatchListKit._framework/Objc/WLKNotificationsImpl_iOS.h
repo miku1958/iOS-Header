@@ -34,6 +34,7 @@
 - (void)_initializeTopics;
 - (void)_networkReachabilityDidChangeNotification:(id)arg1;
 - (id)_notificationCenter;
+- (void)_storeFrontChangedNotification:(id)arg1;
 - (id)_topicIdentifierForCategory:(long long)arg1;
 - (void)dealloc;
 - (id)init;

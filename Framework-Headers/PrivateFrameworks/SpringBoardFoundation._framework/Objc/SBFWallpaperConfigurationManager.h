@@ -110,7 +110,7 @@
 - (BOOL)setVideoURL:(id)arg1 forVariant:(long long)arg2 shoudCrop:(BOOL)arg3 relativeCropRect:(struct CGRect)arg4 wallpaperMode:(long long)arg5;
 - (BOOL)setWallpaperColor:(id)arg1 forVariants:(long long)arg2;
 - (BOOL)setWallpaperColorName:(id)arg1 forVariants:(long long)arg2;
-- (BOOL)setWallpaperConfigurationFromDefaultWallpaperConfiguration:(id)arg1 forVariants:(long long)arg2 wallpaperMode:(long long)arg3;
+- (BOOL)setWallpaperConfigurationFromDefaultWallpaperConfiguration:(id)arg1 forVariants:(long long)arg2 wallpaperMode:(long long)arg3 name:(id)arg4;
 - (BOOL)setWallpaperConfigurationFromDefaultWallpaperConfigurationSet:(id)arg1;
 - (BOOL)setWallpaperGradient:(id)arg1 forVariants:(long long)arg2;
 - (BOOL)setWallpaperImage:(id)arg1 originalImage:(id)arg2 forVariants:(long long)arg3 options:(unsigned long long)arg4;

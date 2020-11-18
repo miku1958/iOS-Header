@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) BOOL hf_hasSetFavorite;
 @property (readonly, nonatomic) id<HFIconDescriptor> hf_iconDescriptor;
 @property (readonly, nonatomic) BOOL hf_isFavorite;
+@property (readonly, nonatomic) BOOL hf_offersAutomation;
 @property (readonly, nonatomic) BOOL hf_shouldShowInFavorites;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;

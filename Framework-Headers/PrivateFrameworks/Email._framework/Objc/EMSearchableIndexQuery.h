@@ -23,6 +23,7 @@
     BOOL _counting;
     BOOL _live;
     BOOL _queryDidMoveToFinishedState;
+    NSString *_bundleIdentifier;
     CDUnknownBlockType _resultsBlock;
     CDUnknownBlockType _completionBlock;
     CDUnknownBlockType _failureBlock;
@@ -42,6 +43,7 @@
     CSSearchQuery *_query;
 }
 
+@property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) CDUnknownBlockType changedItemsBlock; // @synthesize changedItemsBlock=_changedItemsBlock;
 @property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (nonatomic) long long count; // @synthesize count=_count;
@@ -54,6 +56,7 @@
 @property (copy, nonatomic) NSArray *fetchAttributes; // @synthesize fetchAttributes=_fetchAttributes;
 @property (copy, nonatomic) CDUnknownBlockType gatheredBlock; // @synthesize gatheredBlock=_gatheredBlock;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isFinished;
 @property (nonatomic) BOOL live; // @synthesize live=_live;
 @property (copy, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property (copy, nonatomic) NSString *logPrefixString; // @synthesize logPrefixString=_logPrefixString;

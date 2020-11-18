@@ -8,7 +8,7 @@
 #import <GameCenterUI/UICollectionViewFocusDelegate_Legacy-Protocol.h>
 
 @class NSIndexPath, NSString, UICollectionView, UICollectionViewCell, _UIFocusFastScrollingIndexBarEntry, _UIHorizontalIndexTitleBar;
-@protocol UISpringLoadedInteractionContext;
+@protocol UIContextMenuInteractionCommitAnimating, UISpringLoadedInteractionContext;
 
 @protocol UICollectionViewDelegate_Private <UICollectionViewDelegate, UICollectionViewFocusDelegate_Legacy>
 
@@ -21,5 +21,6 @@
 - (UICollectionViewCell *)_collectionView:(UICollectionView *)arg1 templateLayoutCellForCellsWithReuseIdentifier:(NSString *)arg2;
 - (void)_collectionView:(UICollectionView *)arg1 willLayoutCell:(UICollectionViewCell *)arg2 usingTemplateLayoutCell:(UICollectionViewCell *)arg3 forItemAtIndexPath:(NSIndexPath *)arg4;
 - (NSIndexPath *)_indexPathOfReferenceItemForLayoutTransitionInCollectionView:(UICollectionView *)arg1;
+- (void)collectionView:(UICollectionView *)arg1 willCommitMenuWithAnimator:(id<UIContextMenuInteractionCommitAnimating>)arg2;
 @end
 

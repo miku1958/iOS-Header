@@ -36,6 +36,7 @@
 + (void)initializeJSContext:(id)arg1;
 - (id)CGRectValue;
 - (id)applyAffineTransform:(id)arg1;
+- (id)applyScale:(double)arg1;
 - (id)atOrigin:(id)arg1;
 - (id)atOriginX:(double)arg1 y:(double)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -13,6 +13,7 @@
     BOOL _preferAspectFitContentMode;
     BOOL _useSaliency;
     BOOL _allowsAspectFit;
+    long long _defaultNumberOfColumns;
     long long _initialNumberOfColumns;
     long long _maxColumnsForIndividualItems;
     double _interitemSpacing;
@@ -27,6 +28,7 @@
 @property (readonly, nonatomic) BOOL allowsAspectFit; // @synthesize allowsAspectFit=_allowsAspectFit;
 @property (readonly, nonatomic) struct UIEdgeInsets aspectFitEdgeMargins; // @synthesize aspectFitEdgeMargins=_aspectFitEdgeMargins;
 @property (readonly, nonatomic) double aspectFitInteritemSpacing; // @synthesize aspectFitInteritemSpacing=_aspectFitInteritemSpacing;
+@property (readonly, nonatomic) long long defaultNumberOfColumns; // @synthesize defaultNumberOfColumns=_defaultNumberOfColumns;
 @property (readonly, nonatomic) long long initialNumberOfColumns; // @synthesize initialNumberOfColumns=_initialNumberOfColumns;
 @property (readonly, nonatomic) PXCuratedLibraryInlineHeadersLayoutSpec *inlineHeadersSpec; // @synthesize inlineHeadersSpec=_inlineHeadersSpec;
 @property (readonly, nonatomic) double interitemSpacing; // @synthesize interitemSpacing=_interitemSpacing;

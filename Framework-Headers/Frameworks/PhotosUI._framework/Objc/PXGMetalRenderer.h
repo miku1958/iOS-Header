@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <PhotosUICore/MTKViewDelegate-Protocol.h>
+#import <PhotosUICore/PXGMetalTextureConverterDelegate-Protocol.h>
 #import <PhotosUICore/PXGRenderer-Protocol.h>
 
-@class MTKView, NSMutableArray, NSString, PXGMetalRenderTextureStore;
+@class MTKView, NSMutableArray, NSString, PXGMetalRenderTextureStore, PXGMetalTextureConverter;
 @protocol MTLBuffer, MTLCommandQueue, MTLDepthStencilState, MTLDevice, MTLLibrary, MTLSamplerState, MTLTexture, OS_dispatch_queue, OS_dispatch_semaphore, PXGRendererDelegate, PXGTextureConverter;
 
-@interface PXGMetalRenderer : NSObject <MTKViewDelegate, PXGRenderer>
+@interface PXGMetalRenderer : NSObject <MTKViewDelegate, PXGMetalTextureConverterDelegate, PXGRenderer>
 {
     id<MTLDevice> _device;
     MTKView *_metalView;
@@ -26,7 +27,8 @@
     id<MTLSamplerState> _mirrorRepeatSampler;
     id<MTLSamplerState> _clampToZeroSampler;
     id<MTLDepthStencilState> _depthStencil;
-    CDStruct_acc9a335 *_pipelines;
+    struct os_unfair_lock_s _pipelinesLock;
+    CDStruct_39b4dbd3 *_pipelines;
     long long _pipelinesCount;
     long long _pipelinesCapacity;
     NSObject<OS_dispatch_queue> *_compilationQueue;
@@ -36,50 +38,53 @@
     double _lastTime;
     PXGMetalRenderTextureStore *_opaqueTextures;
     PXGMetalRenderTextureStore *_translucentTextures;
+    PXGMetalTextureConverter *_textureConverter;
     BOOL _isInvertColorsEnabled;
     CDUnknownBlockType _test_renderSnapshotHandler;
     id<PXGRendererDelegate> _delegate;
-    id<PXGTextureConverter> _textureConverter;
     struct CGRect _visibleRect;
-    CDStruct_04522d6a _interactionState;
+    CDStruct_93894d6c _interactionState;
 }
 
 @property (readonly, nonatomic) CDStruct_183601bc camera;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGRendererDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long destinationColorSpaceName;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) CDStruct_04522d6a interactionState; // @synthesize interactionState=_interactionState;
+@property (nonatomic) CDStruct_93894d6c interactionState; // @synthesize interactionState=_interactionState;
 @property (nonatomic) BOOL isInvertColorsEnabled; // @synthesize isInvertColorsEnabled=_isInvertColorsEnabled;
 @property (readonly, nonatomic) MTKView *metalView; // @synthesize metalView=_metalView;
 @property (readonly, nonatomic) int presentationType;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType test_renderSnapshotHandler; // @synthesize test_renderSnapshotHandler=_test_renderSnapshotHandler;
-@property (readonly, nonatomic) id<PXGTextureConverter> textureConverter; // @synthesize textureConverter=_textureConverter;
+@property (readonly, nonatomic) id<PXGTextureConverter> textureConverter;
 @property (nonatomic) struct CGRect visibleRect; // @synthesize visibleRect=_visibleRect;
 @property (readonly, nonatomic) struct CGRect visibleRectInRenderCoordinates;
 
 - (void).cxx_destruct;
 - (void)_checkinRenderState:(id)arg1;
 - (id)_checkoutRenderState;
+- (void)_clearPipelines;
 - (void)_configureCaptureSpriteTextures:(id)arg1 renderState:(id)arg2 withOffscreenTexture:(id)arg3;
 - (void)_configureMatricesInUniforms:(CDStruct_b1513b2e *)arg1;
-- (id)_createPipelineStateForColorProgram:(id)arg1 shaderFlags:(int)arg2;
+- (id)_createPipelineStateForColorProgram:(id)arg1 shaderFlags:(int)arg2 colorPixelFormat:(unsigned long long)arg3;
 - (id)_currentOffscreenTexture;
 - (long long)_drawRenderTexture:(CDStruct_dcc83465 *)arg1 withCommandEncoder:(id)arg2;
 - (void)_drawSpriteTextures:(id)arg1 renderState:(id)arg2 withCommandEncoder:(id)arg3 passingTest:(CDUnknownBlockType)arg4;
-- (void)_handleCompiledRenderPipelineSate:(id)arg1 forPipeline:(CDStruct_acc9a335 *)arg2;
+- (void)_handleCompiledRenderPipelineSate:(id)arg1 forPipeline:(CDStruct_39b4dbd3 *)arg2;
 - (void)_loadOffscreenTexture:(BOOL)arg1;
 - (void)_parseSpriteTextures:(id)arg1 willPerformOffscreenPass:(BOOL)arg2 renderState:(id)arg3;
-- (CDStruct_acc9a335 *)_pipelineForRenderTexture:(CDStruct_dcc83465 *)arg1;
+- (CDStruct_39b4dbd3 *)_pipelineForRenderTexture:(const CDStruct_dcc83465 *)arg1 waitForCompilation:(BOOL)arg2;
+- (void)_pipelinesLock_resizePipelinesStorageIfNeeded;
 - (void)_render:(id)arg1 withCompletionCompletion:(CDUnknownBlockType)arg2;
-- (void)_resizePipelinesStorageIfNeeded;
 - (double)_screenScale;
 - (void)_setupBuffers;
-- (void)_setupMetal;
+- (void)_setupMetalIfNeeded;
 - (void)dealloc;
 - (void)drawInMTKView:(id)arg1;
 - (id)init;
+- (void)metalTextureConverter:(id)arg1 didCreateTexture:(id)arg2;
 - (void)mtkView:(id)arg1 drawableSizeWillChange:(struct CGSize)arg2;
 - (void)renderSpritesWithTextures:(id)arg1 dataStore:(id)arg2 presentationDataStore:(id)arg3 presentationMetadataStore:(id)arg4 layout:(id)arg5;
 - (void)setNeedsRender;

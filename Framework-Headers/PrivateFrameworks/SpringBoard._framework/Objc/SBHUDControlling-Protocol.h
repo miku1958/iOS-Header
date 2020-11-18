@@ -7,10 +7,11 @@
 #import <SpringBoard/NSObject-Protocol.h>
 
 @class NSString, UIViewController;
+@protocol SBHUDViewControlling;
 
 @protocol SBHUDControlling <NSObject>
 
-@property (readonly, nonatomic) UIViewController *HUDViewController;
+@property (readonly, nonatomic) UIViewController<SBHUDViewControlling> *HUDViewController;
 @property (readonly, nonatomic, getter=isDismissalScheduled) BOOL dismissalScheduled;
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) BOOL isDismissed;

@@ -33,6 +33,7 @@
 - (id)_accessibilityScrollStatus;
 - (BOOL)_accessibilityScrollToVisible;
 - (BOOL)_accessibilityUpdatesSwitchMenu;
+- (BOOL)_axIsAppActive;
 - (BOOL)accessibilityActivate;
 - (id)accessibilityCustomActions;
 - (struct CGRect)accessibilityFrame;

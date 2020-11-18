@@ -45,6 +45,7 @@
 
 + (id)_lmQueues;
 + (void)calculateTargetOutputSize:(struct CGSize *)arg1 andAdjustedInputScale:(double *)arg2 andPaddedSize:(struct CGSize *)arg3 forImageSize:(struct CGSize)arg4 withMaximumSize:(struct CGSize)arg5;
++ (id)defaultOptions;
 + (id)descriptionForErrorCode:(int)arg1;
 + (id)errorWithErrorCode:(int)arg1;
 + (id)languageSetFromOptionsDictionary:(id)arg1;
@@ -66,7 +67,6 @@
 - (struct __CVBuffer *)createCroppedRegion:(struct CGRect)arg1 fromPixelBuffer:(struct __CVBuffer *)arg2;
 - (struct __CVBuffer *)createScaledBufferOfSize:(struct CGSize)arg1 fromPixelBuffer:(struct __CVBuffer *)arg2;
 - (struct __CVBuffer *)cvPixelBufferForImageAtPath:(id)arg1 withScale:(float)arg2;
-- (id)defaultOptions;
 - (id)detectCRTextFeaturesInImage:(id)arg1 logIntermediateDetectorResult:(id *)arg2 options:(id)arg3 error:(id *)arg4;
 - (void)enumerateInputsForFeatures:(id)arg1 widthIndex:(long long)arg2 inImage:(id)arg3 options:(id)arg4 usingBlock:(CDUnknownBlockType)arg5;
 - (void)extractGeomap:(id)arg1 toImages:(struct vImage_Buffer *[5])arg2 targetSize:(struct CGSize)arg3;

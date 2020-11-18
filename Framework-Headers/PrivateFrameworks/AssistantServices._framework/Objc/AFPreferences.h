@@ -74,6 +74,8 @@
 - (BOOL)enableNonFullScreenAppearance;
 - (BOOL)fileLoggingIsEnabled;
 - (void)getOfflineDictationStatusWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getSpokenNotificationShouldAlwaysSpeakNotificationsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getSpokenNotificationShouldSkipTriggerlessRepliesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getSpokenNotificationTemporarilyDisabledEndDateForApp:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getSpokenNotificationTemporarilyDisabledEndDateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getSpokenNotificationTemporarilyDisabledForApp:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -197,6 +199,8 @@
 - (void)setShowsHoldToTalkIndicator:(BOOL)arg1;
 - (void)setSiriDebugUIEnabled:(BOOL)arg1;
 - (void)setSiriSpeakerGradingDebugUIEnabled:(BOOL)arg1;
+- (void)setSpokenNotificationShouldAlwaysSpeakNotifications:(BOOL)arg1;
+- (void)setSpokenNotificationShouldSkipTriggerlessReplies:(BOOL)arg1;
 - (void)setSpokenNotificationSkipTriggerlessReplyConfirmation:(BOOL)arg1;
 - (void)setSpokenNotificationTemporarilyDisabledForApp:(id)arg1 until:(id)arg2;
 - (void)setSpokenNotificationTemporarilyDisabledUntil:(id)arg1;

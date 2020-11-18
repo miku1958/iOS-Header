@@ -17,6 +17,8 @@
     NSObject<OS_dispatch_queue> *_connectionQueue;
 }
 
+@property (nonatomic, getter=isLowDensityIconLayoutEnabled) BOOL lowDensityIconLayoutEnabled;
+
 - (void).cxx_destruct;
 - (void)addWidgetToTodayViewWithBundleIdentifier:(id)arg1;
 - (void)dealloc;

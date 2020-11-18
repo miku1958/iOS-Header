@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSession:(id)arg1 tag:(id)arg2 startupConfig:(long long)arg3;
-- (BOOL)isMatchingSession:(id)arg1;
+- (BOOL)isMatchingSession:(id)arg1 outError:(id *)arg2;
 - (void)queryNDEFStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)readNDEFWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)writeLockWithCompletionHandler:(CDUnknownBlockType)arg1;

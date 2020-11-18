@@ -8,6 +8,7 @@
 
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDBulletinIdentifiers-Protocol.h>
+#import <HomeKitDaemon/HMDDevicePreferenceDataSource-Protocol.h>
 #import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
@@ -16,7 +17,7 @@
 @class HMDDevice, HMDHome, HMDUser, HMFMessageDispatcher, NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDTrigger : HMFObject <HMDBulletinIdentifiers, HMDHomeMessageReceiver, NSSecureCoding, HMFDumpState, HMFLogging, HMDBackingStoreObjectProtocol>
+@interface HMDTrigger : HMFObject <HMDBulletinIdentifiers, HMDHomeMessageReceiver, NSSecureCoding, HMFDumpState, HMFLogging, HMDDevicePreferenceDataSource, HMDBackingStoreObjectProtocol>
 {
     BOOL _active;
     NSString *_name;
@@ -68,6 +69,7 @@
 - (void)_activate:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_activateTriggerRequest:(id)arg1;
 - (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_addActionSet:(id)arg1;
 - (void)_executeActionSets:(id)arg1 captureCurrentState:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_executeActionSetsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_fillBaseObjectChangeModel:(id)arg1;
@@ -93,6 +95,7 @@
 - (void)checkForNoActions;
 - (BOOL)compatible:(id)arg1 user:(id)arg2;
 - (void)configure:(id)arg1 messageDispatcher:(id)arg2 queue:(id)arg3;
+- (void)confirmResident;
 - (void)dealloc;
 - (id)dumpState;
 - (id)emptyModelObject;
@@ -109,6 +112,7 @@
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(id)arg2;
 - (void)reEvaluate;
+- (void)registerWithResidentDeviceManager;
 - (void)removeAccessory:(id)arg1;
 - (void)removeActionSet:(id)arg1 postUpdate:(BOOL)arg2;
 - (void)removeCharacteristic:(id)arg1;
@@ -117,6 +121,7 @@
 - (void)setEnabled:(BOOL)arg1 message:(id)arg2;
 - (BOOL)shouldActivateOnLocalDevice;
 - (BOOL)shouldEncodeLastFireDate:(id)arg1;
+- (BOOL)supportsDeviceWithCapabilities:(id)arg1;
 - (void)timerFired:(id)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;

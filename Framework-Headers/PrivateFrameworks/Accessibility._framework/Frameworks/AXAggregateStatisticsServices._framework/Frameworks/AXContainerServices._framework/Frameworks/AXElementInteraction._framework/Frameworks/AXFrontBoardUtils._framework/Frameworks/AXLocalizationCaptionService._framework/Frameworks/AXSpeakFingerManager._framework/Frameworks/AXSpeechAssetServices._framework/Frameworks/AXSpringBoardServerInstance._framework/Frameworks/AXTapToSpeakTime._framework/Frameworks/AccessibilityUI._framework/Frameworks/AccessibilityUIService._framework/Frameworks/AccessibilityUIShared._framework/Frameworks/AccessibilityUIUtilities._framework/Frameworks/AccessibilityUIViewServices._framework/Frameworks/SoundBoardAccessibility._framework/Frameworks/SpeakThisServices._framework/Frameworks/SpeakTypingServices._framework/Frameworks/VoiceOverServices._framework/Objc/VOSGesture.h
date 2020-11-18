@@ -76,6 +76,7 @@
 + (id)gestureWithStringValue:(id)arg1;
 + (id)horizontalMirrorGestureForGesture:(id)arg1;
 + (id)oneFingerGestures;
++ (id)rtlGestureForGesture:(id)arg1;
 + (BOOL)supportsSecureCoding;
 + (id)threeFingerGestures;
 + (id)twoFingerGestures;

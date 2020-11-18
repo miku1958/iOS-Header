@@ -8,7 +8,7 @@
 
 #import <WorkflowKit/WFRecordStorage-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSSet, NSString, RLMArray, RLMLinkingObjects, WFRealmWorkflowIcon, WFRealmWorkflowQuarantine, WFWorkflowIcon, WFWorkflowQuarantine, WFWorkflowTrustedResources;
+@class NSArray, NSData, NSDate, NSNumber, NSSet, NSString, RLMArray, RLMLinkingObjects, WFRealmWorkflowIcon, WFRealmWorkflowQuarantine, WFWorkflowIcon, WFWorkflowQuarantine, WFWorkflowTrustedResources;
 @protocol WFWorkflowInputClass, WFWorkflowType;
 
 @interface WFRealmWorkflow : RLMObject <WFRecordStorage>
@@ -33,6 +33,8 @@
     NSString *_workflowSubtitle;
     NSString *_actionsDescription;
     NSString *_associatedAppBundleIdentifier;
+    NSString *_galleryIdentifier;
+    NSString *_source;
     WFRealmWorkflow *_conflictOf;
     RLMLinkingObjects *_conflictingWorkflows;
     NSString *_lastSavedOnDeviceName;
@@ -41,17 +43,19 @@
     long long _remoteQuarantineStatus;
 }
 
-@property (copy, nonatomic) NSSet *accessResourcePermissionStates;
+@property (copy, nonatomic) NSSet *accessResourcePerWorkflowStates;
 @property (copy, nonatomic) NSArray *actions;
 @property (copy) NSData *actionsData; // @synthesize actionsData=_actionsData;
 @property (copy) NSString *actionsDescription; // @synthesize actionsDescription=_actionsDescription;
 @property (copy) NSString *associatedAppBundleIdentifier; // @synthesize associatedAppBundleIdentifier=_associatedAppBundleIdentifier;
 @property (strong) WFRealmWorkflow *conflictOf; // @synthesize conflictOf=_conflictOf;
+@property (readonly, nonatomic, getter=isConflictOfOtherWorkflow) BOOL conflictOfOtherWorkflow;
 @property (readonly) RLMLinkingObjects *conflictingWorkflows; // @synthesize conflictingWorkflows=_conflictingWorkflows;
 @property (strong) NSDate *createdAt; // @synthesize createdAt=_createdAt;
 @property (readonly, copy) NSString *debugDescription;
 @property BOOL deleted; // @synthesize deleted=_deleted;
 @property (readonly, copy) NSString *description;
+@property (copy) NSString *galleryIdentifier; // @synthesize galleryIdentifier=_galleryIdentifier;
 @property (readonly) unsigned long long hash;
 @property BOOL hiddenFromLibraryAndSync; // @synthesize hiddenFromLibraryAndSync=_hiddenFromLibraryAndSync;
 @property (getter=isHiddenInComplication) BOOL hiddenInComplication; // @synthesize hiddenInComplication=_hiddenInComplication;
@@ -64,12 +68,14 @@
 @property (copy) NSString *lastSavedOnDeviceName; // @synthesize lastSavedOnDeviceName=_lastSavedOnDeviceName;
 @property long long lastSyncedHash; // @synthesize lastSyncedHash=_lastSyncedHash;
 @property (copy) NSString *legacyName; // @synthesize legacyName=_legacyName;
+@property (readonly, nonatomic) NSNumber *location;
 @property (copy) NSString *minimumClientVersion; // @synthesize minimumClientVersion=_minimumClientVersion;
 @property (strong) NSDate *modifiedAt; // @synthesize modifiedAt=_modifiedAt;
 @property (copy) NSString *name; // @synthesize name=_name;
 @property (strong) WFRealmWorkflowQuarantine *quarantine; // @synthesize quarantine=_quarantine;
 @property long long remoteQuarantineStatus; // @synthesize remoteQuarantineStatus=_remoteQuarantineStatus;
 @property long long sortOrdering; // @synthesize sortOrdering=_sortOrdering;
+@property (copy) NSString *source; // @synthesize source=_source;
 @property (readonly) Class superclass;
 @property (strong) WFWorkflowTrustedResources *trustedResources; // @synthesize trustedResources=_trustedResources;
 @property (copy) NSString *workflowID; // @synthesize workflowID=_workflowID;

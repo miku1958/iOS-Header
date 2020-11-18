@@ -23,6 +23,7 @@
     unsigned int _systemPairState;
     unsigned int _wifiDeviceIEFlags;
     NSString *_accountID;
+    NSData *_bleAuthTag;
     NSString *_contactID;
     NSString *_identifier;
     NSString *_idsDeviceIdentifier;
@@ -53,6 +54,7 @@
 @property (readonly, nonatomic) int activityLevel; // @synthesize activityLevel=_activityLevel;
 @property (readonly, copy, nonatomic) NSData *authTag; // @synthesize authTag=_authTag;
 @property (readonly, copy, nonatomic) NSData *bleAdvertisementData; // @synthesize bleAdvertisementData=_bleAdvertisementData;
+@property (readonly, copy, nonatomic) NSData *bleAuthTag; // @synthesize bleAuthTag=_bleAuthTag;
 @property (strong, nonatomic) SFDevice *bleDevice; // @synthesize bleDevice=_bleDevice;
 @property (readonly, copy, nonatomic) NSData *bleDeviceAddress; // @synthesize bleDeviceAddress=_bleDeviceAddress;
 @property (readonly, nonatomic) unsigned int blePairState; // @synthesize blePairState=_blePairState;

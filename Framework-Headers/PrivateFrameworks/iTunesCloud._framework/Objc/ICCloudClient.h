@@ -15,12 +15,12 @@
 @interface ICCloudClient : NSObject <ICCloudServerListenerEndpointProvider, ICCloudAvailability>
 {
     BOOL _active;
+    ICConnectionConfiguration *_configuration;
     CDUnknownBlockType _updateSagaInProgressChangedHandler;
     CDUnknownBlockType _updateJaliscoInProgressChangedHandler;
     NSXPCConnection *_xpcConnection;
     NSXPCConnection *_xpcListenerEndpointProviderConnection;
     NSObject<OS_dispatch_queue> *_serialAccessQueue;
-    ICConnectionConfiguration *_configuration;
     long long _preferredVideoQuality;
     ICCloudClientAvailabilityService *_availabilityService;
     ICCloudClientCloudService *_cloudService;
@@ -29,7 +29,7 @@
 @property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
 @property (readonly, nonatomic) ICCloudClientAvailabilityService *availabilityService; // @synthesize availabilityService=_availabilityService;
 @property (readonly, nonatomic) ICCloudClientCloudService *cloudService; // @synthesize cloudService=_cloudService;
-@property (strong, nonatomic) ICConnectionConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (readonly, nonatomic) ICConnectionConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -42,6 +42,8 @@
 @property (readonly, nonatomic) NSXPCConnection *xpcListenerEndpointProviderConnection; // @synthesize xpcListenerEndpointProviderConnection=_xpcListenerEndpointProviderConnection;
 
 - (void).cxx_destruct;
+- (void)_deauthenticateAndDisableActiveLockerAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_enableCloudLibraryWithPolicy:(long long)arg1 startinitialImport:(BOOL)arg2 isExplicitUserAction:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_sendConfigurationToDaemon;
 - (void)_serverDidLaunch;
 - (void)_serverJaliscoUpdateInProgressDidChange;
@@ -54,7 +56,6 @@
 - (void)addStoreItemWithAdamID:(long long)arg1 referral:(id)arg2 toPlaylistWithPersistentID:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)addStorePlaylistWithGlobalID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)authenticateAndStartInitialImport:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)authenticateAndStartInitialImport:(BOOL)arg1 mergeWithCloudLibrary:(BOOL)arg2 isExplicitUserAction:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)authenticateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)becomeActive;
 - (BOOL)canSetItemProperty:(id)arg1;
@@ -66,7 +67,6 @@
 - (long long)cloudAddToPlaylistBehavior;
 - (void)createPlaylistWithPersistentID:(long long)arg1 properties:(id)arg2 trackList:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)dealloc;
-- (void)deauthenticateAndDisableActiveLockerAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)deauthenticateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)deprioritizeAlbumArtistHeroImageForPersistentID:(long long)arg1;
 - (void)deprioritizeArtistHeroImageForPersistentID:(long long)arg1;
@@ -78,7 +78,9 @@
 - (void)deprioritizeSubscriptionContainerArtworkForPersistentID:(long long)arg1;
 - (void)deprioritizeSubscriptionItemArtworkForPersistentID:(long long)arg1;
 - (void)deprioritizeSubscriptionScreenshotForPersistentID:(long long)arg1;
+- (void)disableCloudLibraryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)disableJaliscoGeniusWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)enableCloudLibraryWithPolicy:(long long)arg1 startInitialImport:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)enableJaliscoGeniusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)hasProperNetworkConditionsToPlayMedia;
 - (BOOL)hasProperNetworkConditionsToShowCloudMedia;

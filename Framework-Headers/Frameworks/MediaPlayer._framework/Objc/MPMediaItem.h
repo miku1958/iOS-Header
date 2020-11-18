@@ -75,6 +75,7 @@
 + (BOOL)canFilterByProperty:(id)arg1;
 + (id)dynamicProperties;
 + (id)fallbackTitlePropertyForGroupingType:(long long)arg1;
++ (id)itemFromSong:(id)arg1;
 + (id)persistentIDPropertyForGroupingType:(long long)arg1;
 + (id)screenshotArtworkCatalogCacheProperties;
 + (BOOL)supportsSecureCoding;

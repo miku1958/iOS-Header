@@ -218,6 +218,7 @@ __attribute__((visibility("hidden")))
 - (double)_defaultYawAngle;
 - (struct CGVector)_deltaMaskForHandle:(unsigned long long)arg1;
 - (void)_flipButtonTapped:(id)arg1;
+- (BOOL)_forceOvercaptureSourceForCrop;
 - (void)_gridButtonTapped:(id)arg1;
 - (void)_handleCropHandlePan:(id)arg1;
 - (void)_handleDidCreateEditedImage:(id)arg1 inputExtent:(struct CGRect)arg2;
@@ -239,6 +240,7 @@ __attribute__((visibility("hidden")))
 - (void)_loadPerspectiveSuggestionIfNeeded;
 - (void)_loadStateFromModel;
 - (BOOL)_needsRecomposeCropRect;
+- (BOOL)_overcaptureSourceUsed;
 - (void)_performGeometryChange:(CDUnknownBlockType)arg1 animated:(BOOL)arg2;
 - (void)_performLocalCropModelChanges:(CDUnknownBlockType)arg1;
 - (void)_performLocalModelChanges:(CDUnknownBlockType)arg1;
@@ -301,7 +303,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)handlesMediaViewInsets;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (BOOL)installTogglePreviewGestureRecognizer:(id)arg1;
-- (void)invalidateTrashedStateForOvercaptureResources;
 - (id)leadingToolbarViews;
 - (void)leavingEditWithCancel;
 - (id)localizedName;

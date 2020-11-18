@@ -162,7 +162,7 @@
 - (id)_visibleInstructionLabel;
 - (void)animator:(id)arg1 didUpdateValuesForKeys:(id)arg2;
 - (void)badgeViewDidChangeIntrinsicContentSize:(id)arg1;
-- (void)controlDrawer:(id)arg1 didChangeExpanded:(BOOL)arg2 forControlType:(long long)arg3;
+- (void)controlDrawer:(id)arg1 didChangeExpanded:(BOOL)arg2 forControlType:(long long)arg3 animated:(BOOL)arg4;
 - (void)dismissModalControlDrawerIfNeeded;
 - (id)initWithMetalContext:(id)arg1 useCreativeCameraControls:(BOOL)arg2;
 - (void)instructionLabelDidChangeIntrinsicContentSize:(id)arg1;

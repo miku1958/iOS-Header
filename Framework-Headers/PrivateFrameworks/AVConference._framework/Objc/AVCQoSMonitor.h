@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVConferenceXPCClient, NSArray, NSMutableArray;
+@class AVConferenceXPCClient, NSArray, NSMutableArray, NSMutableDictionary;
 @protocol AVCQoSMonitorDelegate, OS_dispatch_queue;
 
 @interface AVCQoSMonitor : NSObject
@@ -15,6 +15,7 @@
     id<AVCQoSMonitorDelegate> _delegate;
     AVConferenceXPCClient *_connection;
     NSMutableArray *_registeredStreamTokens;
+    NSMutableDictionary *_reportingIntervals;
 }
 
 @property (weak, nonatomic) id<AVCQoSMonitorDelegate> delegate;
@@ -26,6 +27,7 @@
 - (id)initWithStreamToken:(long long)arg1 queue:(id)arg2 error:(id *)arg3;
 - (void)registerBlocksForNotifications;
 - (id)registerStreamToken:(long long)arg1;
+- (long long)reportingIntervalForStreamToken:(long long)arg1;
 - (void)requestQoSReport;
 - (void)terminateConnection;
 

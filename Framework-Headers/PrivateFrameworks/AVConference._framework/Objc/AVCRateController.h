@@ -60,6 +60,7 @@ __attribute__((visibility("hidden")))
     double _lastTimeTargetBitrateOvershootRecorded;
     BOOL _isUnexpectedLowTargetBitrateReported;
     double _lastTimeUnexpectedLowTargetBitrateRecorded;
+    BOOL _isUnexpectedHighRTTReported;
 }
 
 @property (strong, nonatomic) AVCBasebandCongestionDetector *basebandCongestionDetector; // @synthesize basebandCongestionDetector=_basebandCongestionDetector;

@@ -9,12 +9,13 @@
 #import <AVConference/VCConnectionHealthMonitorDelegate-Protocol.h>
 #import <AVConference/VCWifiAssistManagerDelegate-Protocol.h>
 
-@class NSString, VCConnectionHealthMonitor, VCStatsRecorder, VCWifiAssistManager;
+@class NSMutableArray, NSString, VCConnectionHealthMonitor, VCStatsRecorder, VCWifiAssistManager;
 @protocol OS_dispatch_queue, VCConnectionManagerDelegate, VCConnectionProtocol;
 
 __attribute__((visibility("hidden")))
 @interface VCConnectionManager : NSObject <VCConnectionHealthMonitorDelegate, VCWifiAssistManagerDelegate>
 {
+    BOOL _isStarted;
     unsigned int _callID;
     int _connectionSelectionVersion;
     int _relayServerProvider;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
     id<VCConnectionProtocol> _secondaryConnection;
     id<VCConnectionProtocol> _connectionForDuplication;
     id<VCConnectionProtocol> _lastPrimaryConnectionInUse;
+    NSMutableArray *_connectionArray;
     struct opaqueRTCReporting *_reportingAgent;
     BOOL _isInitialConnectionEstablished;
     unsigned int _mediaExcessiveCellularTxBytes;
@@ -74,6 +76,8 @@ __attribute__((visibility("hidden")))
     BOOL _fastMediaDuplicationEnabled;
     BOOL _cellPrimaryInterfaceChangeEnabled;
     BOOL _duplicateImportantPktsEnabled;
+    BOOL _lowNetworkModeEnabled;
+    BOOL _duplicationEnhancementEnabled;
     double _noRemoteDuplicationThresholdFast;
 }
 
@@ -87,6 +91,7 @@ __attribute__((visibility("hidden")))
 @property id<VCConnectionManagerDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property BOOL duplicateImportantPktsEnabled; // @synthesize duplicateImportantPktsEnabled=_duplicateImportantPktsEnabled;
+@property BOOL duplicationEnhancementEnabled; // @synthesize duplicationEnhancementEnabled=_duplicationEnhancementEnabled;
 @property BOOL fastMediaDuplicationEnabled; // @synthesize fastMediaDuplicationEnabled=_fastMediaDuplicationEnabled;
 @property (readonly) unsigned long long hash;
 @property BOOL isAudioOnly; // @synthesize isAudioOnly=_isAudioOnly;
@@ -94,6 +99,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL isLocalCellularInterfaceUsed;
 @property (readonly) BOOL isPreWarmStateEnabled; // @synthesize isPreWarmStateEnabled=_isPreWarmStateEnabled;
 @property (strong, nonatomic) id<VCConnectionProtocol> lastPrimaryConnectionInUse; // @synthesize lastPrimaryConnectionInUse=_lastPrimaryConnectionInUse;
+@property BOOL lowNetworkModeEnabled; // @synthesize lowNetworkModeEnabled=_lowNetworkModeEnabled;
 @property (readonly) unsigned long long mediaCellularRxBytes; // @synthesize mediaCellularRxBytes=_mediaCellularRxBytes;
 @property (readonly) unsigned long long mediaCellularTxBytes; // @synthesize mediaCellularTxBytes=_mediaCellularTxBytes;
 @property (readonly) unsigned int mediaExcessiveCellularRxBytes; // @synthesize mediaExcessiveCellularRxBytes=_mediaExcessiveCellularRxBytes;
@@ -114,6 +120,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property BOOL supportDuplication; // @synthesize supportDuplication=_supportDuplication;
 
+- (id)activeConnectionRegistry;
 - (int)addConnection:(id)arg1;
 - (void)checkiRATSuggestion;
 - (void)checkiRATSuggestionDefaultValue;
@@ -137,6 +144,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)isBetterConnection:(id)arg1 asPrimary:(BOOL)arg2;
 - (BOOL)isConnectedOnIPv6ForActiveConnectionWithQuality:(int)arg1;
 - (BOOL)isConnectedOnRelayForActiveConnectionWithQuality:(int)arg1;
+- (BOOL)isConnection:(id)arg1 betterPrimaryThanConnection:(id)arg2;
+- (BOOL)isConnection:(id)arg1 betterSecondaryThanConnection:(id)arg2;
 - (BOOL)isInterfaceConstrainedForActiveConnectionWithQuality:(int)arg1 forLocalInterface:(BOOL)arg2;
 - (BOOL)isInterfaceOnCellularForActiveConnectionWithQuality:(int)arg1 forLocalInterface:(BOOL)arg2;
 - (BOOL)isOptimalConnection:(id)arg1 asPrimary:(BOOL)arg2 interfaceMask:(int)arg3;
@@ -164,6 +173,7 @@ __attribute__((visibility("hidden")))
 - (void)sourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 isSourceOnCellular:(BOOL *)arg2 isSourceIPv6:(BOOL *)arg3;
 - (void)start;
 - (void)stop;
+- (id)suggestedLinkTypeCombo;
 - (void)synchronizeParticipantGenerationCounter:(unsigned char)arg1;
 - (void)updateCellularExcessiveBytesWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 bytes:(int)arg2 isMediaData:(BOOL)arg3 isOutgoing:(BOOL)arg4;
 - (void)updateCellularMTU:(int)arg1;

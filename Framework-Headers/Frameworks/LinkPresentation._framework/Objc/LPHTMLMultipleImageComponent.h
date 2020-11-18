@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 + (id)additionalRulesForStyle:(id)arg1;
 + (id)baseRules;
 + (id)ruleDictionaryForStyle:(id)arg1;
++ (id)ruleDictionaryForStyleWithDarkInterface:(id)arg1;
 + (id)styleSet;
 - (void).cxx_destruct;
 - (void)_computeRowAndColumnSpecificationsForImages:(id)arg1;

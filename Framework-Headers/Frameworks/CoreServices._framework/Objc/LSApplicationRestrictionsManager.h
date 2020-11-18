@@ -11,12 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface LSApplicationRestrictionsManager : NSObject
 {
+    NSSet *_removedSystemApplicationIdentifiers;
 }
 
 @property (readonly, getter=isAdTrackingEnabled) BOOL adTrackingEnabled; // @dynamic adTrackingEnabled;
 @property (readonly) NSSet *blacklistedBundleIDs;
 @property (readonly) NSNumber *maximumRating;
 @property (readonly, getter=isOpenInRestrictionInEffect) BOOL openInRestrictionInEffect;
+@property (copy, nonatomic) NSSet *removedSystemApplicationIdentifiers; // @synthesize removedSystemApplicationIdentifiers=_removedSystemApplicationIdentifiers;
 @property (readonly) NSSet *restrictedBundleIDs;
 @property (readonly, getter=isSystemAppDeletionEnabled) BOOL systemAppDeletionEnabled;
 @property (readonly, getter=isWhitelistEnabled) BOOL whitelistEnabled;
@@ -24,6 +26,7 @@ __attribute__((visibility("hidden")))
 
 + (id)activeRestrictionIdentifiers;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)allowedOpenInAppBundleIDsAfterApplyingFilterToAppBundleIDs:(id)arg1 originatingAppBundleID:(id)arg2 originatingAccountIsManaged:(BOOL)arg3;
 - (void)beginListeningForChanges;
 - (BOOL)cleanRemovedSystemApplicationsList;

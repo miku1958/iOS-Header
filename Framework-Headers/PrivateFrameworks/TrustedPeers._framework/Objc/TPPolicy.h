@@ -13,6 +13,7 @@
 
 @interface TPPolicy : NSObject <TPPolicy, NSSecureCoding>
 {
+    BOOL _unknownRedactions;
     NSArray *_modelToCategory;
     NSDictionary *_categoriesByView;
     NSDictionary *_introducersByCategory;
@@ -28,9 +29,10 @@
 @property (strong, nonatomic) NSArray *keyViewMapping; // @synthesize keyViewMapping=_keyViewMapping;
 @property (strong, nonatomic) NSArray *modelToCategory; // @synthesize modelToCategory=_modelToCategory;
 @property (readonly) Class superclass;
+@property BOOL unknownRedactions; // @synthesize unknownRedactions=_unknownRedactions;
 @property (nonatomic) unsigned long long version; // @synthesize version=_version;
 
-+ (id)policyWithModelToCategory:(id)arg1 categoriesByView:(id)arg2 introducersByCategory:(id)arg3 keyViewMapping:(id)arg4 version:(unsigned long long)arg5;
++ (id)policyWithModelToCategory:(id)arg1 categoriesByView:(id)arg2 introducersByCategory:(id)arg3 keyViewMapping:(id)arg4 unknownRedactions:(BOOL)arg5 version:(unsigned long long)arg6;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)categoryForModel:(id)arg1;

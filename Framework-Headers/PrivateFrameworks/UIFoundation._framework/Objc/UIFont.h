@@ -30,7 +30,8 @@
 @property (readonly, nonatomic) double xHeight;
 
 + (void)_evictAllItemsFromFontAndFontDescriptorCaches;
-+ (id)_fontWithDescriptor:(id)arg1 size:(double)arg2 textStyleForScaling:(id)arg3 pointSizeForScaling:(double)arg4 maximumPointSizeAfterScaling:(double)arg5 forIB:(BOOL)arg6;
++ (id)_fontWithDescriptor:(id)arg1 size:(double)arg2 textStyleForScaling:(id)arg3 pointSizeForScaling:(double)arg4 maximumPointSizeAfterScaling:(double)arg5 forIB:(BOOL)arg6 legibilityWeight:(long long)arg7;
++ (id)_fontWithName:(id)arg1 size:(double)arg2;
 + (BOOL)_isSupportedDynamicFontTextStyle:(id)arg1;
 + (id)_lightSystemFontOfSize:(double)arg1;
 + (id)_opticalBoldSystemFontOfSize:(double)arg1;
@@ -41,6 +42,7 @@
 + (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 variant:(long long)arg3 compatibleWithTraitCollection:(id)arg4;
 + (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 variant:(long long)arg3 maximumContentSizeCategory:(id)arg4 compatibleWithTraitCollection:(id)arg5;
 + (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 variant:(long long)arg3 maximumContentSizeCategory:(id)arg4 compatibleWithTraitCollection:(id)arg5 pointSize:(double)arg6 pointSizeForScaling:(double)arg7;
++ (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 weight:(id)arg3 symbolicTraits:(unsigned int)arg4 maximumContentSizeCategory:(id)arg5 compatibleWithTraitCollection:(id)arg6 pointSize:(double)arg7 pointSizeForScaling:(double)arg8;
 + (id)_preferredFontForTextStyle:(id)arg1 maximumContentSizeCategory:(id)arg2;
 + (id)_preferredFontForTextStyle:(id)arg1 maximumContentSizeCategory:(id)arg2 compatibleWithTraitCollection:(id)arg3;
 + (id)_preferredFontForTextStyle:(id)arg1 maximumPointSize:(double)arg2 compatibleWithTraitCollection:(id)arg3;
@@ -111,7 +113,6 @@
 - (id)bestMatchingFontForCharacters:(const unsigned short *)arg1 length:(unsigned long long)arg2 attributes:(id)arg3 actualCoveredLength:(unsigned long long *)arg4;
 - (struct CGRect)boundingRectForFont;
 - (Class)classForCoder;
-- (Class)classForKeyedArchiver;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)coveredCharacterSet;
 - (id)description;

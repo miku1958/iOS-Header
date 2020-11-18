@@ -33,6 +33,7 @@
     } _delegateImplements;
     BOOL _unableToClick;
     long long _statsPresentation;
+    BOOL _activatedFeedbackGeneratorForClick;
     BOOL _allowSimultaneousRecognition;
     id<_UIClickPresentationInteractionDelegate> _delegate;
     UIView *_view;
@@ -48,6 +49,7 @@
     UIDragInteraction *_latentAssociatedDragInteraction;
     UIDragInteraction *_associatedDragInteraction;
     NSString *_debugIdentifier;
+    NSString *_presentationTypeDebugString;
     struct CGPoint _initialLocation;
 }
 
@@ -67,6 +69,7 @@
 @property (strong, nonatomic) UIDragInteraction *latentAssociatedDragInteraction; // @synthesize latentAssociatedDragInteraction=_latentAssociatedDragInteraction;
 @property (strong, nonatomic) _UIClickPresentation *pendingPresentation; // @synthesize pendingPresentation=_pendingPresentation;
 @property (strong, nonatomic) id<_UIClickPresentationAssisting> presentationAssistant; // @synthesize presentationAssistant=_presentationAssistant;
+@property (copy, nonatomic) NSString *presentationTypeDebugString; // @synthesize presentationTypeDebugString=_presentationTypeDebugString;
 @property (strong, nonatomic) _UIClickInteraction *previewClickInteraction; // @synthesize previewClickInteraction=_previewClickInteraction;
 @property (readonly, nonatomic, getter=_reachedForceThreshold) BOOL reachedForceThreshold;
 @property (readonly, nonatomic) NSMutableArray *stateBreadCrumbs; // @synthesize stateBreadCrumbs=_stateBreadCrumbs;
@@ -113,13 +116,14 @@
 - (void)_setDelegate:(id)arg1;
 - (BOOL)_supportsRapidRestart;
 - (void)beginDragWithTouch:(id)arg1 previewProvider:(CDUnknownBlockType)arg2 fenceHandler:(CDUnknownBlockType)arg3;
+- (void)beginPanInteraction;
 - (void)cancelInteraction;
 - (void)clickInteractionDidClickDown:(id)arg1;
 - (void)clickInteractionDidClickUp:(id)arg1;
 - (void)clickInteractionDidEnd:(id)arg1;
-- (BOOL)clickInteractionShouldBegin:(id)arg1;
 - (void)dealloc;
 - (void)didMoveToView:(id)arg1;
+- (void)endPanInteraction;
 - (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)highlightEffectForClickInteraction:(id)arg1;

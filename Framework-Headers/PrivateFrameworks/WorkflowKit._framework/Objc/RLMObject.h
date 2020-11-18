@@ -29,6 +29,8 @@
 + (id)createInRealm:(id)arg1 withValue:(id)arg2;
 + (id)createOrUpdateInDefaultRealmWithValue:(id)arg1;
 + (id)createOrUpdateInRealm:(id)arg1 withValue:(id)arg2;
++ (id)createOrUpdateModifiedInDefaultRealmWithValue:(id)arg1;
++ (id)createOrUpdateModifiedInRealm:(id)arg1 withValue:(id)arg2;
 + (id)defaultPropertyValues;
 + (id)ignoredProperties;
 + (id)indexedProperties;

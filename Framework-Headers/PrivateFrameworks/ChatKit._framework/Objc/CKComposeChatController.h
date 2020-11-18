@@ -68,10 +68,12 @@
 - (void)businessInfoView:(id)arg1 infoButtonTapped:(id)arg2;
 - (void)cancelButtonTapped:(id)arg1;
 - (void)cancelCompose;
+- (id)chatForIMHandle:(id)arg1;
 - (void)chatInputWillUpdateInputViewShowingBrowser;
 - (void)conversationLeft;
 - (void)dealloc;
 - (void)handleAddressBookChange:(id)arg1;
+- (id)handleForRecipientNormalizedAddress:(id)arg1;
 - (BOOL)hasFailedRecipients;
 - (BOOL)hasUnreachableEmergencyRecipient;
 - (id)initWithRecipientAddresses:(id)arg1 composition:(id)arg2 bizIntent:(id)arg3;
@@ -90,7 +92,7 @@
 - (void)parentControllerDidResume:(BOOL)arg1 animating:(BOOL)arg2;
 - (void)prepareForSuspend;
 - (void)recipientSelectionController:(id)arg1 didFinishAvailaiblityLookupForRecipient:(id)arg2;
-- (void)recipientSelectionController:(id)arg1 didSelectConversation:(id)arg2;
+- (void)recipientSelectionController:(id)arg1 didSelectConversation:(id)arg2 isiMessagable:(BOOL)arg3;
 - (void)recipientSelectionController:(id)arg1 textDidChange:(id)arg2;
 - (void)recipientSelectionControllerDidBecomeFirstResponder:(id)arg1;
 - (void)recipientSelectionControllerDidChangeSize:(id)arg1;
@@ -102,6 +104,7 @@
 - (void)sendAnimationManagerWillStartAnimation:(id)arg1 context:(id)arg2;
 - (void)sendComposition:(id)arg1;
 - (void)setBusinessInfoViewInfoIfNecessary;
+- (BOOL)shouldForceToSMSForConversation:(id)arg1 forRecipient:(id)arg2;
 - (BOOL)shouldShowEntryView;
 - (BOOL)shouldUseNavigationBarCanvasView;
 - (id)textViewOnscreenWithEntryView;

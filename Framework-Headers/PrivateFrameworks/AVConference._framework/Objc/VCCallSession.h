@@ -244,6 +244,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL isAudioRunning; // @synthesize isAudioRunning;
 @property (readonly, nonatomic) BOOL isCaller;
 @property (readonly) BOOL isCurrentPayloadTypeValid;
+@property BOOL isGKVoiceChat;
 @property (nonatomic) BOOL isRTCPFBEnabled; // @synthesize isRTCPFBEnabled;
 @property (readonly) BOOL isRemoteMediaStalled; // @synthesize isRemoteMediaStalled;
 @property (readonly) BOOL isSKEOptimizationEnabled;
@@ -395,7 +396,6 @@ __attribute__((visibility("hidden")))
 - (id)inviteDataForParticipantID:(id)arg1 callID:(unsigned int *)arg2 remoteInviteData:(id)arg3 nonCellularCandidateTimeout:(double)arg4 error:(id *)arg5;
 - (BOOL)isBetterForSIPInviteWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 thanSession:(id)arg2;
 - (BOOL)isCallOngoing;
-- (BOOL)isGKVoiceChat;
 - (BOOL)isLocalOrRemoteOnCellular;
 - (BOOL)isLowBitrateCodecPreferred:(id)arg1;
 - (BOOL)isSIPEnabled;
@@ -478,7 +478,6 @@ __attribute__((visibility("hidden")))
 - (double)sessionTransmittingBitrate;
 - (double)sessionTransmittingFramerate;
 - (void)setDuplicationFlag:(BOOL)arg1 withPreferredLocalLinkTypeForDuplication:(int)arg2 notifyPeer:(BOOL)arg3;
-- (void)setIsGKVoiceChat:(BOOL)arg1;
 - (void)setLocalIdentityForKeyExchange;
 - (BOOL)setMatchedFeaturesString:(char *)arg1 localFeaturesString:(id)arg2 remoteFeaturesString:(id)arg3;
 - (BOOL)setMediaQueueStreamSettings;
@@ -568,8 +567,8 @@ __attribute__((visibility("hidden")))
 - (void)updateCachedConnectionState;
 - (void)updateDeviceRole:(int)arg1;
 - (void)updateLastReceivedAudioTime;
-- (void)updateLastReceivedPacket:(BOOL)arg1;
-- (void)updateLastReceivedPacketWithTimestamp:(double)arg1;
+- (void)updateLastReceivedPacket:(BOOL)arg1 packetType:(int)arg2;
+- (void)updateLastReceivedPacketWithTimestamp:(double)arg1 packetType:(int)arg2;
 - (void)updateMaxPktLength;
 - (void)updateNetworkCheckHint:(double)arg1;
 - (void)updateRemoteMediaStallState:(double)arg1;

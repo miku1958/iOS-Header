@@ -21,10 +21,13 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)bookmarkWithID:(int)arg1;
+- (id)bookmarksMatchingString:(id)arg1;
 - (id)databaseHealthInformation;
 - (void)enumerateBookmarks:(BOOL)arg1 andReadingListItems:(BOOL)arg2 matchingString:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (id)initReadonlySafariBookmarkCollection;
 - (id)readingListBookmarksMatchingString:(id)arg1 maxResults:(unsigned int)arg2 onlyArchivedBookmarks:(BOOL)arg3;
+- (id)readingListWithUnreadOnly:(BOOL)arg1 filteredUsingString:(id)arg2;
 
 @end
 

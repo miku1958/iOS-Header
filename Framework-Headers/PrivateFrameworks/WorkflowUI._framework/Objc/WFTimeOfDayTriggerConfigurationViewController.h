@@ -37,6 +37,7 @@
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)timeOffsetPickerViewController:(id)arg1 didSelectOffset:(unsigned long long)arg2;
 - (void)timeOffsetPickerViewControllerDidCancel:(id)arg1;
 - (void)timePickerUpdated:(id)arg1;

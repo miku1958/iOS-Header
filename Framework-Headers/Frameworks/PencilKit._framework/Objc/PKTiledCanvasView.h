@@ -10,7 +10,7 @@
 #import <PencilKit/PKDrawingGestureRecognizerDelegate-Protocol.h>
 #import <PencilKit/PKDrawingGestureTarget-Protocol.h>
 
-@class CADisplayLink, NSArray, NSMutableArray, NSMutableSet, NSObject, NSString, PKController, PKDrawing, PKDrawingPowerSavingController, PKInk, PKMetalRendererController, PKMetalView, PKRulerController, PKSelectionController, UIColor, UIGestureRecognizer, UIImage;
+@class CADisplayLink, NSArray, NSMutableArray, NSMutableSet, NSObject, NSString, PKController, PKDrawing, PKDrawingPowerSavingController, PKInk, PKMetalRendererController, PKMetalView, PKRulerController, PKSelectionController, PKToolPicker, UIColor, UIGestureRecognizer, UIImage;
 @protocol OS_dispatch_queue, PKDrawingGestureRecognizerProtocol, PKTiledCanvasViewDelegate;
 
 @interface PKTiledCanvasView : UIView <PKDrawingGestureRecognizerDelegate, PKControllerDelegate, PKDrawingGestureTarget>
@@ -71,6 +71,7 @@
     double _liveAnimationStartTime;
     NSMutableArray *_fadeOutStrokeAnimations;
     NSMutableSet *_strokeUUIDsAboutToBeRemoved;
+    PKToolPicker *_toolPickerToRestoreBackgroundMaterialUpdatingState;
     struct CGSize __fixedPixelSize;
     struct CGPoint __oldEraseLocation;
     struct CGPoint __drawingBeganLocation;
@@ -130,6 +131,7 @@
 @property (copy, nonatomic) NSArray *strokesAnimatingToDestination; // @synthesize strokesAnimatingToDestination=_strokesAnimatingToDestination;
 @property (strong, nonatomic) NSMutableArray *strokesToErase; // @synthesize strokesToErase=_strokesToErase;
 @property (readonly) Class superclass;
+@property (weak, nonatomic) PKToolPicker *toolPickerToRestoreBackgroundMaterialUpdatingState; // @synthesize toolPickerToRestoreBackgroundMaterialUpdatingState=_toolPickerToRestoreBackgroundMaterialUpdatingState;
 @property (nonatomic) BOOL usePrivateResourceHandler; // @synthesize usePrivateResourceHandler=_usePrivateResourceHandler;
 @property (nonatomic) struct CGRect viewScissor; // @synthesize viewScissor=_viewScissor;
 

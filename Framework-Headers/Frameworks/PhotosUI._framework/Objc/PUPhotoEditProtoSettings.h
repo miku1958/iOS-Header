@@ -17,6 +17,7 @@
     BOOL _showLevelIndicator;
     BOOL _showResetToolButton;
     BOOL _allowAnyPlugin;
+    BOOL _attemptEditExtensionUndoAutoSetup;
     BOOL _cropMaskBlurred;
     BOOL _autoCropEnabled;
     BOOL _perspectiveViewDebugCropEnabled;
@@ -69,6 +70,7 @@
 @property (nonatomic) BOOL alwaysAllowKeyPhotoEditing; // @synthesize alwaysAllowKeyPhotoEditing=_alwaysAllowKeyPhotoEditing;
 @property (nonatomic) BOOL alwaysShowPortraitV2; // @synthesize alwaysShowPortraitV2=_alwaysShowPortraitV2;
 @property (nonatomic) BOOL alwaysShowValueWhenAdjustmentIsSelected; // @synthesize alwaysShowValueWhenAdjustmentIsSelected=_alwaysShowValueWhenAdjustmentIsSelected;
+@property (nonatomic) BOOL attemptEditExtensionUndoAutoSetup; // @synthesize attemptEditExtensionUndoAutoSetup=_attemptEditExtensionUndoAutoSetup;
 @property (nonatomic) BOOL autoCropEnabled; // @synthesize autoCropEnabled=_autoCropEnabled;
 @property (nonatomic) BOOL autoPerspectiveDisableOnFrontFacingCameraImages; // @synthesize autoPerspectiveDisableOnFrontFacingCameraImages=_autoPerspectiveDisableOnFrontFacingCameraImages;
 @property (nonatomic) BOOL autoPerspectiveDisableOnPanos; // @synthesize autoPerspectiveDisableOnPanos=_autoPerspectiveDisableOnPanos;

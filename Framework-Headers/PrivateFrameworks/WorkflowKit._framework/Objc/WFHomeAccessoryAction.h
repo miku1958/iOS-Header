@@ -19,6 +19,7 @@
 - (id)homeName;
 - (id)localizedAttribution;
 - (id)localizedDescriptionSummary;
+- (id)localizedFooter;
 - (id)localizedName;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 

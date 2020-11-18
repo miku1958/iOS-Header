@@ -37,6 +37,7 @@
 - (void)blockEmailAddress:(id)arg1;
 - (void)blockEmailAddresses:(id)arg1;
 - (void)blockTokenAddress:(id)arg1;
+- (void)dealloc;
 - (id)init;
 - (BOOL)isContactBlocked:(id)arg1;
 - (BOOL)isEmailAddressBlocked:(id)arg1;

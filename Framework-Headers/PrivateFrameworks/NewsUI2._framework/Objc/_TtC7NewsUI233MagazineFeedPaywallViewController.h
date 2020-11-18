@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *pluggableDelegate;
     MISSING_TYPE *purchasingSpinnerViewControllerFactory;
     MISSING_TYPE *$__lazy_storage_$_spinnerViewController;
+    MISSING_TYPE *purchasePresenter;
     MISSING_TYPE *renderToken;
 }
 

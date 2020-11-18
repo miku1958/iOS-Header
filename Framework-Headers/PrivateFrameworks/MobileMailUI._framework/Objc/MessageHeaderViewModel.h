@@ -52,10 +52,12 @@
 @property (copy, nonatomic) NSArray *toList; // @synthesize toList=_toList;
 
 - (void).cxx_destruct;
+- (BOOL)_flagsChangedInModel:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithBuilder:(CDUnknownBlockType)arg1;
 - (id)initWithItemBuilder:(CDUnknownBlockType)arg1;
 - (id)updatedFlagsModelWithBuilder:(CDUnknownBlockType)arg1;
+- (id)updatedModelWithMessage:(id)arg1;
 
 @end
 

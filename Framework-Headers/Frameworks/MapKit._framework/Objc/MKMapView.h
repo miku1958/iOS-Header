@@ -694,7 +694,6 @@
 - (BOOL)locationManagerShouldPauseLocationUpdates:(id)arg1;
 - (void)locationManagerUpdatedHeading:(id)arg1;
 - (void)locationManagerUpdatedLocation:(id)arg1;
-- (id)logContextForLogMsgEvent:(id)arg1;
 - (id)mapAttributionWithStringAttributes:(id)arg1;
 - (id)mapAttributionWithStringAttributes:(id)arg1 allowMultiLine:(BOOL)arg2;
 - (void)mapLayer:(id)arg1 arSessionWasInterrupted:(unsigned long long)arg2;

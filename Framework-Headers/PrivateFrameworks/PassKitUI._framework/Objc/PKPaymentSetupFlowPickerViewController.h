@@ -43,7 +43,7 @@
 + (BOOL)_localCredentials:(id)arg1 containProduct:(id)arg2;
 + (id)paymentSetupFlowPickerWithSetupDelegate:(id)arg1 context:(long long)arg2 provisioningController:(id)arg3;
 - (void).cxx_destruct;
-- (void)_didSelectProducts:(id)arg1;
+- (void)_didSelectProducts:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_prepareViewControllerForProvsioningFlow:(id)arg1;
 - (void)_setNavigationBarEnabled:(BOOL)arg1;
 - (void)_setupLater:(id)arg1;

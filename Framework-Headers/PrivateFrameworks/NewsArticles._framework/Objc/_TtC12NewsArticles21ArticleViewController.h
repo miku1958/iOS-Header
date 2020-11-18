@@ -29,6 +29,7 @@
     MISSING_TYPE *deferredHardPaywallIsVisible;
     MISSING_TYPE *deferredHardPaywallHeightProvider;
     MISSING_TYPE *destinationViewSize;
+    MISSING_TYPE *headline;
 }
 
 - (void).cxx_destruct;

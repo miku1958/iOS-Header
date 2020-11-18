@@ -10,14 +10,14 @@
 
 @interface _TtC17HealthEducationUI29HealthEducationViewController : UIViewController
 {
-    MISSING_TYPE *dataSource;
-    MISSING_TYPE *$__lazy_storage_$_collectionView;
+    MISSING_TYPE *components;
+    MISSING_TYPE *$__lazy_storage_$_componentViews;
+    MISSING_TYPE *$__lazy_storage_$_contentView;
 }
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
 
 @end

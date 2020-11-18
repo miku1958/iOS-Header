@@ -39,11 +39,12 @@
     NSArray *_sortedYears;
     NSDateFormatter *_monthYearFormatter;
     NSDateFormatter *_dateFormatter;
-    PKDashboardTitleHeaderView *_sampleView;
+    PKDashboardTitleHeaderView *_sampleHeaderView;
     PKDashboardFooterTextView *_sampleFooterView;
     NSArray *_sectionMap;
     unsigned long long _numberOfStaticSections;
     long long _style;
+    NSString *_pageTagForAnalyticsReporting;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -58,6 +59,7 @@
 - (BOOL)_hasFooterForSectionIndex:(unsigned long long)arg1;
 - (BOOL)_hasHeaderForSectionIndex:(unsigned long long)arg1;
 - (void)_reloadData;
+- (void)_reportEventForPassIfNecessary:(id)arg1;
 - (unsigned long long)_sectionForIndex:(unsigned long long)arg1;
 - (BOOL)_shouldInset;
 - (void)_sortStatementsForPresentation;
@@ -76,8 +78,11 @@
 - (id)initWithStyle:(long long)arg1 paymentPass:(id)arg2 webService:(id)arg3 account:(id)arg4 statement:(id)arg5 previousStatements:(id)arg6;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)showStatement:(id)arg1 style:(long long)arg2;
 - (void)statementsChangedForAccountIdentifier:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

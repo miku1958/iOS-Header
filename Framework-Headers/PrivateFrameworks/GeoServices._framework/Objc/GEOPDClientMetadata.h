@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
     GEOLocation *_deviceExtendedLocation;
     NSMutableArray *_deviceHistoricalLocations;
     NSString *_deviceKeyboardLanguage;
-    NSString *_deviceSku;
     NSString *_deviceSpokenLanguage;
     GEOLocalizationCapabilities *_localizationCapabilities;
     int _clientRevision;
@@ -57,7 +56,6 @@ __attribute__((visibility("hidden")))
         unsigned int read_deviceExtendedLocation:1;
         unsigned int read_deviceHistoricalLocations:1;
         unsigned int read_deviceKeyboardLanguage:1;
-        unsigned int read_deviceSku:1;
         unsigned int read_deviceSpokenLanguage:1;
         unsigned int read_localizationCapabilities:1;
         unsigned int wrote_unknownFields:1;
@@ -72,7 +70,6 @@ __attribute__((visibility("hidden")))
         unsigned int wrote_deviceExtendedLocation:1;
         unsigned int wrote_deviceHistoricalLocations:1;
         unsigned int wrote_deviceKeyboardLanguage:1;
-        unsigned int wrote_deviceSku:1;
         unsigned int wrote_deviceSpokenLanguage:1;
         unsigned int wrote_localizationCapabilities:1;
         unsigned int wrote_clientRevision:1;
@@ -96,7 +93,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) GEOLocation *deviceExtendedLocation;
 @property (strong, nonatomic) NSMutableArray *deviceHistoricalLocations;
 @property (strong, nonatomic) NSString *deviceKeyboardLanguage;
-@property (strong, nonatomic) NSString *deviceSku;
 @property (strong, nonatomic) NSString *deviceSpokenLanguage;
 @property (nonatomic) BOOL enablePreflightVenues;
 @property (readonly, nonatomic) BOOL hasAbClientMetadata;
@@ -108,7 +104,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasDeviceDisplayLanguage;
 @property (readonly, nonatomic) BOOL hasDeviceExtendedLocation;
 @property (readonly, nonatomic) BOOL hasDeviceKeyboardLanguage;
-@property (readonly, nonatomic) BOOL hasDeviceSku;
 @property (readonly, nonatomic) BOOL hasDeviceSpokenLanguage;
 @property (nonatomic) BOOL hasEnablePreflightVenues;
 @property (nonatomic) BOOL hasHourOfDay;
@@ -149,7 +144,6 @@ __attribute__((visibility("hidden")))
 - (void)_readDeviceExtendedLocation;
 - (void)_readDeviceHistoricalLocations;
 - (void)_readDeviceKeyboardLanguage;
-- (void)_readDeviceSku;
 - (void)_readDeviceSpokenLanguage;
 - (void)_readKnownClientResolvedTypeDeprecateds;
 - (void)_readKnownClientResolvedTypes;

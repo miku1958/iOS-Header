@@ -13,24 +13,26 @@
 
 @interface HMDNetworkRouterLANFirewallRuleList : NSObject <NSCopying, HMDTLVProtocol>
 {
-    NSMutableArray *_multicastBridgingRule;
-    NSMutableArray *_staticPortRule;
-    NSMutableArray *_dynamicPortRule;
+    NSMutableArray *_multicastBridgingRules;
+    NSMutableArray *_staticPortRules;
+    NSMutableArray *_dynamicPortRules;
+    NSMutableArray *_staticICMPRules;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSMutableArray *dynamicPortRule; // @synthesize dynamicPortRule=_dynamicPortRule;
+@property (strong, nonatomic) NSMutableArray *dynamicPortRules; // @synthesize dynamicPortRules=_dynamicPortRules;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSMutableArray *multicastBridgingRule; // @synthesize multicastBridgingRule=_multicastBridgingRule;
-@property (strong, nonatomic) NSMutableArray *staticPortRule; // @synthesize staticPortRule=_staticPortRule;
+@property (strong, nonatomic) NSMutableArray *multicastBridgingRules; // @synthesize multicastBridgingRules=_multicastBridgingRules;
+@property (strong, nonatomic) NSMutableArray *staticICMPRules; // @synthesize staticICMPRules=_staticICMPRules;
+@property (strong, nonatomic) NSMutableArray *staticPortRules; // @synthesize staticPortRules=_staticPortRules;
 @property (readonly) Class superclass;
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (id)initWithMulticastBridgingRule:(id)arg1 staticPortRule:(id)arg2 dynamicPortRule:(id)arg3;
+- (id)initWithMulticastBridgingRules:(id)arg1 staticPortRules:(id)arg2 dynamicPortRules:(id)arg3 staticICMPRules:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)parseFromData:(id)arg1 error:(id *)arg2;
 - (id)serializeWithError:(id *)arg1;

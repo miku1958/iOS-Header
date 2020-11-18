@@ -25,7 +25,9 @@
 
 + (id)ephemeralSavedState;
 + (void)setSharedBrowserSavedState:(id)arg1;
++ (void)setShouldMergeAllWindowsIfNeeded:(BOOL)arg1;
 + (id)sharedBrowserSavedState;
++ (BOOL)shouldMergeAllWindowsIfNeeded;
 - (void).cxx_destruct;
 - (void)_checkPointWriteAheadLogIfNeeded;
 - (void)_historyItemsWereRemoved:(id)arg1;

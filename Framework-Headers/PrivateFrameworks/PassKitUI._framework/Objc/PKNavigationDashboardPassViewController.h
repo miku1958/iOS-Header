@@ -102,12 +102,15 @@
 - (id)_cardIndexPath;
 - (void)_dismissIfPossible;
 - (id)_dynamicAnimationForUpperBoundaryWithStart:(double)arg1 upperBoundary:(double)arg2 lowerBoundary:(double)arg3 initialVelocity:(double)arg4;
+- (void)_endReportingSessionForPassIfNecessary;
 - (void)_ensureCardPresence;
 - (long long)_footerStateForPassView:(id)arg1;
 - (void)_handlePanGroupGesture:(id)arg1;
 - (void)_handleScrollViewPanGroupGesture:(id)arg1;
 - (id)_paymentPassDetailsViewControllerForPaymentPass:(id)arg1;
+- (void)_reportEventForPassIfNecessary:(id)arg1;
 - (void)_showPassFooterView:(BOOL)arg1 forPassView:(id)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_startReportingSessionForPassIfNecessary;
 - (void)_updateNavigationBarWithPassAppeared:(BOOL)arg1;
 - (void)_updatePassFooterViewAnimated:(BOOL)arg1;
 - (void)_updatePassFooterViewIfNecessaryAnimated:(BOOL)arg1;
@@ -165,6 +168,7 @@
 - (void)secureElementDidLeaveRestrictedMode:(id)arg1;
 - (void)setTransitionDuration:(double)arg1;
 - (BOOL)shouldOverrideContentOffset;
+- (void)showStatement:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)summaryTypeDidChange;
 - (unsigned long long)suppressedContentForPassFooter:(id)arg1;
 - (void)trailingHeaderViewInterstitialIsAvailable:(id)arg1;

@@ -20,7 +20,7 @@
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUICore/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSString, PXBasicUIViewTileAnimator, PXMemoriesDataSourceManager, PXMemoriesFeedViewControllerHelper, PXMemoriesSpec, PXMemoriesSpecManager, PXMemoriesUITileSource, PXSectionedLayoutEngine, PXSectionedObjectReference, PXTilingController, PXTouchingUIGestureRecognizer, PXUIScrollViewController, PXUITapGestureRecognizer;
+@class NSString, PXBasicUIViewTileAnimator, PXMemoriesDataSourceManager, PXMemoriesFeedViewControllerHelper, PXMemoriesSpec, PXMemoriesSpecManager, PXMemoriesUITileSource, PXPhotosDetailsContext, PXSectionedLayoutEngine, PXSectionedObjectReference, PXTilingController, PXTouchingUIGestureRecognizer, PXUIScrollViewController, PXUITapGestureRecognizer;
 
 @interface PXMemoriesUIViewController : UIViewController <UIContextMenuInteractionDelegate, PXChangeObserver, PXAssetCollectionActionPerformerDelegate, PXSectionedDataSourceManagerObserver, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, PXUIViewControllerZoomTransitionEndPoint, PXTilingControllerZoomAnimationCoordinatorDelegate, PXTilingControllerScrollDelegate, PXTilingControllerTransitionDelegate, PXScrollViewControllerObserver, PXMemoriesUITileSourceDelegate, PXUserInterfaceFeatureViewController>
 {
@@ -39,6 +39,7 @@
     PXSectionedObjectReference *__highlightedMemoryReference;
     PXSectionedObjectReference *__actionPresentationMemoryReference;
     PXSectionedObjectReference *__activatedMemoryReference;
+    PXPhotosDetailsContext *__selectedItemDetailsContext;
     PXBasicUIViewTileAnimator *__tileAnimator;
     PXMemoriesSpec *__spec;
     unsigned long long __memoriesStyle;
@@ -57,6 +58,7 @@
 @property (readonly, nonatomic) PXSectionedLayoutEngine *_layoutEngine; // @synthesize _layoutEngine=__layoutEngine;
 @property (readonly, nonatomic) unsigned long long _memoriesStyle; // @synthesize _memoriesStyle=__memoriesStyle;
 @property (nonatomic, setter=_setPerformNextTransitionWithoutAnimation:) BOOL _performNextTransitionWithoutAnimation; // @synthesize _performNextTransitionWithoutAnimation=__performNextTransitionWithoutAnimation;
+@property (strong, nonatomic, setter=_setSelectedItemDetailsContext:) PXPhotosDetailsContext *_selectedItemDetailsContext; // @synthesize _selectedItemDetailsContext=__selectedItemDetailsContext;
 @property (strong, nonatomic, setter=_setSpec:) PXMemoriesSpec *_spec; // @synthesize _spec=__spec;
 @property (readonly, nonatomic) PXMemoriesSpecManager *_specManager; // @synthesize _specManager=__specManager;
 @property (readonly, nonatomic) PXUITapGestureRecognizer *_tapRecognizer; // @synthesize _tapRecognizer=__tapRecognizer;

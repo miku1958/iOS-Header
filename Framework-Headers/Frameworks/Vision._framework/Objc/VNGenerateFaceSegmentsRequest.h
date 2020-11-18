@@ -22,6 +22,7 @@
 @property (readonly) Class superclass;
 
 + (Class)configurationClass;
++ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 - (void)_determineFacesToProcessFrom:(id)arg1 outputFacesThatNeedNoProcessing:(id)arg2 outputFacesThatNeedAlignment:(id)arg3 outputfacesThatNeedSegments:(id)arg4;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;

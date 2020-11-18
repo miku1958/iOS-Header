@@ -75,6 +75,7 @@
 - (void)paste:(id)arg1;
 - (BOOL)resignFirstResponder;
 - (void)textDidChange:(id)arg1;
+- (void)tintColorDidChange;
 - (void)updateAllowedVariableTypes;
 - (void)updateDoneButtonPresence;
 - (void)updateTextAttachments;

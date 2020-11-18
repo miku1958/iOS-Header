@@ -26,7 +26,7 @@
 #import <MessageUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <MessageUI/VNDocumentCameraViewControllerDelegate-Protocol.h>
 
-@class CNComposeRecipient, CNComposeRecipientAtom, CNContactPickerViewController, CNContactViewController, CNRecentComposeRecipient, EFFuture, EMMailboxObjectID, EMMessageObjectID, MFAddressPickerReformatter, MFAttachment, MFComposeActivityHandoffOperation, MFComposeDisplayMetrics, MFComposeImageSizeView, MFComposeSubjectView, MFLANHandoffAgent, MFLock, MFMailComposeRecipientTextView, MFMailComposeToField, MFMailPopoverManager, MFMailSignatureController, MFMessageContentProgressLayer, MFMutableMessageHeaders, MFOutgoingMessageDelivery, MFPhotoPickerController, MFSecureMIMECompositionManager, MSAutosaveSession, NSArray, NSDate, NSDictionary, NSMutableSet, NSObject, NSString, NSTimer, QLPreviewController, UIAlertController, UIBarButtonItem, UIButton, UIImagePickerController, UIKeyCommand, UIProgressView, UIResponder, UIView, VNDocumentCameraViewController, _MFMailCompositionContext;
+@class CNComposeRecipient, CNComposeRecipientAtom, CNContactPickerViewController, CNContactViewController, CNRecentComposeRecipient, EFFuture, EMMailboxObjectID, EMMessageObjectID, MFAddressPickerReformatter, MFAttachment, MFComposeActivityHandoffOperation, MFComposeDisplayMetrics, MFComposeImageSizeView, MFComposeSubjectView, MFLANHandoffAgent, MFLock, MFMailComposeRecipientTextView, MFMailComposeToField, MFMailPopoverManager, MFMailSignatureController, MFMessageContentProgressLayer, MFMutableMessageHeaders, MFOutgoingMessageDelivery, MFPhotoPickerController, MFPhotoPickerProgressManager, MFSecureMIMECompositionManager, MSAutosaveSession, NSArray, NSDate, NSDictionary, NSMutableSet, NSObject, NSString, NSTimer, QLPreviewController, UIAlertController, UIBarButtonItem, UIButton, UIImagePickerController, UIKeyCommand, UIProgressView, UIResponder, UIView, VNDocumentCameraViewController, _MFMailCompositionContext;
 @protocol EFScheduler, MFComposeBodyField, MFMailAccountProxyGenerator, OS_dispatch_group;
 
 @interface MFMailComposeController : UIViewController <UINavigationControllerDelegate, CNContactContentViewControllerDelegate, MFMailComposeToFieldDelegate, NSUserActivityDelegate, MFComposeActivityHandoffOperationDelegate, MFPhotoPickerControllerDelegate, QLPreviewControllerDelegate, VNDocumentCameraViewControllerDelegate, MFMailComposeViewDelegate, CNComposeHeaderViewDelegate, MFComposeSubjectViewDelegate, MFComposeImageSizeViewDelegate, MFSecureMIMECompositionManagerDelegate, MFComposeTypeFactoryDelegate, MFMailComposeRecipientTextViewDelegate, UIImagePickerControllerDelegate, UIPopoverPresentationControllerDelegate, CNAutocompleteGroupDetailViewControllerDelegate, CNContactPickerDelegate>
@@ -142,6 +142,7 @@
     MSAutosaveSession *_autosaveSession;
     VNDocumentCameraViewController *_documentCameraViewController;
     MFComposeDisplayMetrics *_displayMetrics;
+    MFPhotoPickerProgressManager *_photoPickerProgressManager;
 }
 
 @property (strong, nonatomic) id<MFMailAccountProxyGenerator> accountProxyGenerator; // @synthesize accountProxyGenerator=_accountProxyGenerator;
@@ -175,6 +176,7 @@
 @property (nonatomic) unsigned long long markupReplyAttachmentLoadingProgress; // @synthesize markupReplyAttachmentLoadingProgress=_markupReplyAttachmentLoadingProgress;
 @property (copy, nonatomic) NSString *originatingBundleID; // @synthesize originatingBundleID=_originatingBundleID;
 @property (strong, nonatomic) CNContactPickerViewController *peoplePicker; // @synthesize peoplePicker=_peoplePicker;
+@property (strong, nonatomic) MFPhotoPickerProgressManager *photoPickerProgressManager; // @synthesize photoPickerProgressManager=_photoPickerProgressManager;
 @property (strong, nonatomic) UIAlertController *popoverAlert; // @synthesize popoverAlert=_popoverAlert;
 @property (weak, nonatomic) QLPreviewController *previewController; // @synthesize previewController=_previewController;
 @property (strong, nonatomic) MFAttachment *previewingAttachment; // @synthesize previewingAttachment=_previewingAttachment;
@@ -208,6 +210,7 @@
 - (void)_bodyTextChanged;
 - (void)_checkForCanSendMailWithContinuation:(CDUnknownBlockType)arg1;
 - (void)_checkForEmptySubjectWithContinuation:(CDUnknownBlockType)arg1;
+- (void)_checkForInFlightAssetDownloadsWithContinuation:(CDUnknownBlockType)arg1;
 - (void)_checkForInvalidAddressesWithContinuation:(CDUnknownBlockType)arg1;
 - (void)_checkForReplyAndForwardRestriction;
 - (void)_checkForUnencryptedWithContinuation:(CDUnknownBlockType)arg1;

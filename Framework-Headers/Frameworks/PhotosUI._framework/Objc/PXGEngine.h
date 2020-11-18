@@ -8,14 +8,14 @@
 
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXGLayoutUpdateDelegate-Protocol.h>
-#import <PhotosUICore/PXGRendererDelegate-Protocol.h>
+#import <PhotosUICore/PXGMetalRendererDelegate-Protocol.h>
 #import <PhotosUICore/PXGTextureManagerDelegate-Protocol.h>
 #import <PhotosUICore/PXTilingScrollControllerUpdateDelegate-Protocol.h>
 
 @class NSArray, NSString, PXDisplayLink, PXGAccessibilityContentInfoManager, PXGAccessibilityRenderer, PXGAnimator, PXGChangeDetails, PXGLayout, PXGMetalRenderer, PXGSpriteDataStore, PXGSpriteMetadataStore, PXGTextureManager, PXGViewEnvironment, PXGViewRenderer, PXScrollViewController, PXScrollViewSpeedometer;
 @protocol PXGEngineDelegate;
 
-@interface PXGEngine : NSObject <PXGRendererDelegate, PXGLayoutUpdateDelegate, PXGTextureManagerDelegate, PXTilingScrollControllerUpdateDelegate, PXChangeObserver>
+@interface PXGEngine : NSObject <PXGMetalRendererDelegate, PXGLayoutUpdateDelegate, PXGTextureManagerDelegate, PXTilingScrollControllerUpdateDelegate, PXChangeObserver>
 {
     PXGAnimator *_animator;
     PXGSpriteDataStore *_layoutSpriteDataStore;
@@ -29,7 +29,7 @@
     PXGSpriteMetadataStore *_presentationSpriteMetadaStore;
     CDStruct_d97c9657 _updateFlags;
     unsigned long long _previousUpdateEntities;
-    CDStruct_04522d6a _previousInteractionState;
+    CDStruct_93894d6c _previousInteractionState;
     unsigned long long _pendingUpdateEntities;
     BOOL _keepDisplayLinkAlive;
     double _renderForTargetTimestamp;
@@ -60,7 +60,7 @@
     PXDisplayLink *_displayLink;
     PXGAccessibilityRenderer *_accessibilityRenderer;
     PXGAccessibilityContentInfoManager *_contentInfoManager;
-    CDStruct_04522d6a _interactionState;
+    CDStruct_93894d6c _interactionState;
     struct _PXGEngineScrollState _scrollState;
 }
 
@@ -78,7 +78,8 @@
 @property (nonatomic) BOOL expectingScrollEvents; // @synthesize expectingScrollEvents=_expectingScrollEvents;
 @property (nonatomic) BOOL gotScrollEventThisFrame; // @synthesize gotScrollEventThisFrame=_gotScrollEventThisFrame;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) CDStruct_04522d6a interactionState; // @synthesize interactionState=_interactionState;
+@property (nonatomic) CDStruct_93894d6c interactionState; // @synthesize interactionState=_interactionState;
+@property (nonatomic) BOOL isInitialLoad; // @synthesize isInitialLoad=_isInitialLoad;
 @property (nonatomic) double lastScrollEventTime; // @synthesize lastScrollEventTime=_lastScrollEventTime;
 @property (strong, nonatomic) PXGLayout *layout; // @synthesize layout=_layout;
 @property (readonly, nonatomic) PXGMetalRenderer *metalRenderer; // @synthesize metalRenderer=_metalRenderer;
@@ -125,6 +126,7 @@
 - (id)init;
 - (id)initWithAnimator:(id)arg1 textureManager:(id)arg2 metalRenderer:(id)arg3 viewRenderer:(id)arg4 displayLinkClass:(Class)arg5;
 - (void)layoutNeedsUpdate:(id)arg1;
+- (void)metalRendererDidChangeTextureConverter:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)renderer:(id)arg1 viewportSizeWillChange:(struct CGSize)arg2;
 - (void)rendererNeedsUpdate:(id)arg1;

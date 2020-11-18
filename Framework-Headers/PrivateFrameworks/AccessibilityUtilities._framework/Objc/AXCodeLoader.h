@@ -49,7 +49,7 @@
 + (id)defaultLoader;
 - (void).cxx_destruct;
 - (id)_accessibilityBundleMapURLs;
-- (id)_accessibilityCodeItemMatchingName:(id)arg1 type:(long long)arg2;
+- (id)_accessibilityCodeItemMatchingName:(id)arg1 type:(long long)arg2 path:(id)arg3;
 - (void)_addTrackedCodeItem:(id)arg1;
 - (void)_associateAccessibilityCodeItemWithLoadedCodeItem:(id)arg1;
 - (void)_associateAccessibilityCodeItemsWithAllTrackedCodeItems;

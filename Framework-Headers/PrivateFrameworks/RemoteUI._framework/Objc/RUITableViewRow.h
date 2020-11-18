@@ -99,12 +99,14 @@
 - (BOOL)rowSupportsLoadingIndicator;
 - (id)selectOptions;
 - (void)setAttributes:(id)arg1;
+- (void)setDetailAndPlaceholderText;
 - (void)setEditableTextFieldValue:(id)arg1;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setImage:(id)arg1;
 - (void)setImageSize:(struct CGSize)arg1;
 - (BOOL)setSelectPageRowValue:(id)arg1;
 - (void)setSelectRowValue:(id)arg1;
+- (void)setSelectedRowTextColor;
 - (void)setValueFromString:(id)arg1;
 - (void)setValueFromString:(id)arg1 notify:(BOOL)arg2;
 - (id)sourceURL;

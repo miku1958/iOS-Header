@@ -47,7 +47,7 @@
 
 + (BOOL)isSupported;
 + (id)metadataIdentifierForARRecordableResultsClass:(Class)arg1;
-+ (id)metadataIdentifierForARSensorDataClass:(Class)arg1;
++ (id)metadataIdentifierForARSensorDataClass:(Class)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (void)_fail:(id)arg1;
 - (void)_finish:(id)arg1;

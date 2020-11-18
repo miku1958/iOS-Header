@@ -7,14 +7,17 @@
 #import <objc/NSObject.h>
 
 #import <SpringBoard/CSSpotlightPresenting-Protocol.h>
+#import <SpringBoard/SBFLegibilitySettingsProviderDelegate-Protocol.h>
 #import <SpringBoard/SPUIRemoteSearchViewDelegate-Protocol.h>
 
 @class CSCoverSheetViewController, CSPageViewController, NSString, SBDashBoardSpotlightViewController;
+@protocol SBFLegibilitySettingsProvider;
 
-@interface SBDashBoardSpotlightPresenter : NSObject <SPUIRemoteSearchViewDelegate, CSSpotlightPresenting>
+@interface SBDashBoardSpotlightPresenter : NSObject <SPUIRemoteSearchViewDelegate, SBFLegibilitySettingsProviderDelegate, CSSpotlightPresenting>
 {
     CSCoverSheetViewController *_coverSheetViewController;
     SBDashBoardSpotlightViewController *_spotlightViewController;
+    id<SBFLegibilitySettingsProvider> _spotlightLegibilitySettingsProvider;
     CSPageViewController *_todayPageViewController;
 }
 
@@ -32,6 +35,7 @@
 - (id)initWithCoverSheetViewController:(id)arg1;
 - (void)launchSpotlightForSourceViewController:(id)arg1 interactive:(BOOL)arg2;
 - (void)launchSpotlightForSourceViewController:(id)arg1 interactive:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)providerLegibilitySettingsChanged:(id)arg1;
 
 @end
 

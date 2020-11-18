@@ -39,14 +39,14 @@
     UIImage *_cellContentBackground;
     UIView *_timeLabelPlatter;
     UIView *_scalableView;
-    BOOL _needsUpdatesWhileSuppressed;
+    BOOL _needsReloadedContent;
     BOOL _isInflightScroll;
     BOOL _cancelInflightScroll;
     BOOL _isProgramaticScrollEvent;
     BOOL _crownInverted;
-    BOOL _suppressBatchUpdates;
     BOOL _suppressCrownEvents;
-    BOOL _inBatchUpdate;
+    BOOL _inUpdate;
+    BOOL _inReload;
     BOOL _isBacklightOn;
     NSMutableSet *_batchReloadIdentifiers;
     NSOrderedSet *_currentApplicationIdentifiers;
@@ -124,6 +124,8 @@
 - (void)_loadEngineController;
 - (void)_loadLayoutRules;
 - (void)_loadSnapshotContentViews;
+- (void)_logContent:(id)arg1 withIdentifier:(id)arg2;
+- (void)_logDataSourceSnapshot:(id)arg1 withName:(id)arg2;
 - (BOOL)_needsForegroundContainerView;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (long long)_numberOfItemsInCollectionViewSection:(long long)arg1;

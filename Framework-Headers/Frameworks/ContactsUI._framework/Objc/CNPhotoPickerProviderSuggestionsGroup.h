@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 - (long long)addProviderItem:(id)arg1;
 - (id)addSymbolImageName;
 - (id)dedupedSuggestionItemsGroupedByProvider;
+- (id)defaultMonogramItem;
 - (long long)indexForDefaultMonogram;
 - (id)initWithProviders:(id)arg1 environment:(id)arg2 allowAddItem:(BOOL)arg3;
 - (unsigned long long)maxRecentsAndMonogramsCount;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)providerItems:(id)arg1 withMaxRecentsAndMonogramsCount:(unsigned long long)arg2;
 - (id)providerOfClass:(Class)arg1;
 - (id)removeDuplicateItemsFrom:(id)arg1 withMaxRecentsAndMonogramsCount:(unsigned long long)arg2;
+- (long long)removeProviderItem:(id)arg1;
 
 @end
 

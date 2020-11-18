@@ -18,6 +18,7 @@
 + (BOOL)shouldUseWorldwideAssetForLanguage:(id)arg1 feature:(long long)arg2;
 + (BOOL)shouldUseWorldwideAssetForPreferredLanguages:(id)arg1 language:(id)arg2 feature:(long long)arg3;
 - (id)assetFeatureValueForFeature:(long long)arg1;
+- (id)assetQueryForFeature:(long long)arg1 language:(id)arg2 useWorldwide:(BOOL)arg3 useCatalog:(BOOL)arg4;
 - (id)assetTypeForCurrentDevice;
 - (void)downloadAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)featureKey;
@@ -32,6 +33,7 @@
 - (void)retrieveMovieForFeature:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)retrieveMovieForFeature:(long long)arg1 language:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)retrieveMovieForFeature:(long long)arg1 language:(id)arg2 useWorldwide:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)retriveAssetForFeature:(long long)arg1 language:(id)arg2 useWorldwide:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

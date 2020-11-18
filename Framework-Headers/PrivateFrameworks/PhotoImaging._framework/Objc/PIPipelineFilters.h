@@ -14,6 +14,7 @@
 + (id)autoCropFilter;
 + (id)autoloopStabilizedVideoFilter;
 + (id)exifOrientationAndCropStraightenOnly;
++ (id)inputToCropFilter;
 + (id)iosCropToolFilter;
 + (id)noCropFilter;
 + (id)noGeometryFilter;

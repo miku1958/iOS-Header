@@ -55,6 +55,7 @@
 - (void)dealloc;
 - (void)didSelectRecipient:(id)arg1 atIndex:(unsigned long long)arg2;
 - (BOOL)hasSearchResults;
+- (long long)idsStatusForAddress:(id)arg1;
 - (id)initWithStyle:(long long)arg1;
 - (void)invalidateOutstandingIDStatusRequests;
 - (void)invalidateSearchManager;

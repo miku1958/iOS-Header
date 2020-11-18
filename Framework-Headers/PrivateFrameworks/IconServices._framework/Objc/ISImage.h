@@ -28,6 +28,7 @@
 - (void).cxx_destruct;
 - (id)_init;
 - (id)debugDescription;
+- (id)description;
 - (id)digest;
 - (id)initWithCGImage:(struct CGImage *)arg1 scale:(double)arg2;
 - (id)initWithCGImage:(struct CGImage *)arg1 scale:(double)arg2 minimumSize:(struct CGSize)arg3 placeholder:(BOOL)arg4;

@@ -9,9 +9,11 @@
 @class GEOSharedNavState, NSError, NSString;
 
 @protocol MSPSharedTripXPCClient <NSObject>
+- (void)accountAvailabilityDidChange:(BOOL)arg1;
 - (void)destinationDidUpdateForSharedTrip:(GEOSharedNavState *)arg1;
 - (void)destinationReachedDidUpdateForSharedTrip:(GEOSharedNavState *)arg1;
 - (void)etaDidUpdateForSharedTrip:(GEOSharedNavState *)arg1;
+- (void)invalidateActiveHandles;
 - (void)routeDidUpdateForSharedTrip:(GEOSharedNavState *)arg1;
 - (void)sendMessage:(NSString *)arg1 toGroup:(NSString *)arg2;
 - (void)sendMessage:(NSString *)arg1 toParticipant:(NSString *)arg2;

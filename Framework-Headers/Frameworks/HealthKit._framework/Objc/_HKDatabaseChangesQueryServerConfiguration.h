@@ -14,9 +14,13 @@ __attribute__((visibility("hidden")))
     BOOL _includeChangeDetails;
     NSSet *_sampleTypes;
     HKQueryAnchor *_anchor;
+    long long _changeDetailsQueryStrategy;
+    long long _anchorStrategyChangeCountLimit;
 }
 
 @property (copy, nonatomic) HKQueryAnchor *anchor; // @synthesize anchor=_anchor;
+@property (nonatomic) long long anchorStrategyChangeCountLimit; // @synthesize anchorStrategyChangeCountLimit=_anchorStrategyChangeCountLimit;
+@property (nonatomic) long long changeDetailsQueryStrategy; // @synthesize changeDetailsQueryStrategy=_changeDetailsQueryStrategy;
 @property (nonatomic) BOOL includeChangeDetails; // @synthesize includeChangeDetails=_includeChangeDetails;
 @property (copy, nonatomic) NSSet *sampleTypes; // @synthesize sampleTypes=_sampleTypes;
 

@@ -17,6 +17,7 @@
 @property (readonly, nonatomic) struct PXAssetBadgeInfo badgeInfo; // @synthesize badgeInfo=_badgeInfo;
 
 - (void).cxx_destruct;
+- (id)badgeInfoPromiseWithAdjustedBadges:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (id)initWithBadgeInfo:(struct PXAssetBadgeInfo)arg1;

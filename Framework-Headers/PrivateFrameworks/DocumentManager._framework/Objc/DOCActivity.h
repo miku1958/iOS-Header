@@ -6,7 +6,7 @@
 
 #import <ShareSheet/UIActivity.h>
 
-@class NSArray, NSString, UIImage;
+@class NSArray, NSString;
 @protocol DOCItemActivityPerformer;
 
 @interface DOCActivity : UIActivity
@@ -14,22 +14,22 @@
     id<DOCItemActivityPerformer> _actionPerformerProxy;
     NSArray *_items;
     NSString *_identifier;
-    UIImage *_icon;
+    NSString *_imageName;
     NSString *_localizedTitle;
 }
 
 @property (readonly) id<DOCItemActivityPerformer> actionPerformerProxy; // @synthesize actionPerformerProxy=_actionPerformerProxy;
-@property (copy, nonatomic) UIImage *icon; // @synthesize icon=_icon;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
 @property (copy, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 
-+ (id)_imageForActivityIdentifier:(id)arg1;
++ (id)_imageNameForActivityIdentifier:(id)arg1;
 + (id)_titleForActivityIdentifier:(id)arg1;
 + (long long)activityCategory;
 + (id)activityWithIdentifier:(id)arg1 actionPerformerProxy:(id)arg2;
 - (void).cxx_destruct;
-- (id)activityImage;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 - (BOOL)canPerformWithActivityItems:(id)arg1;

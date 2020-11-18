@@ -17,8 +17,10 @@
     BOOL _inWirelessSplitterSession;
     BOOL _inWirelessSplitterSessionStateValid;
     BOOL _routeAvailableForSpokenMessages;
+    BOOL _lastKnownEligibilityState;
     AFSettingsConnection *_settingsConnection;
     AFNotifyObserver *_wirelessSplitterSessionObserver;
+    AFNotifyObserver *_forcedUpdateObserver;
     NSHashTable *_observers;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_group> *_group;
@@ -45,6 +47,7 @@
 - (void)fetchWirelessSplitterSessionInfoAndStartObservingSync;
 - (BOOL)hasEligibleSetup;
 - (void)notifyObserver:(id)arg1 didChangeStateFrom:(unsigned long long)arg2 to:(unsigned long long)arg3;
+- (void)notifyObserver:(id)arg1 didReceiveNotificationWithToken:(int)arg2;
 - (void)notifyObserversOfCurrentEligibleSetupState:(BOOL)arg1;
 - (void)notifyObserversOfCurrentRequestCanBeHandledState;
 - (void)pairedDevicesChanged:(id)arg1;

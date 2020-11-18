@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 + (id)entitlements;
 + (id)favorites;
 + (id)locationAuthorizationChanged;
++ (id)locationRetrieved;
 + (id)playActivity;
 + (id)playHistoryUpdated;
 + (id)preferredVideoFormat;

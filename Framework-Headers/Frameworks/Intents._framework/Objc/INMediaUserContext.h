@@ -18,9 +18,13 @@
 @property (nonatomic) long long subscriptionStatus; // @synthesize subscriptionStatus=_subscriptionStatus;
 
 + (id)_sharedFormatter;
++ (long long)_type;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_contextDictionary;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
+- (id)safeLibraryItems;
 
 @end
 

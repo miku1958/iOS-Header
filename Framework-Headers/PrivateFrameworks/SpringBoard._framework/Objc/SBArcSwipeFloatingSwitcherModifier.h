@@ -26,9 +26,9 @@
 - (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (long long)keyboardSuppressionMode;
 - (id)layoutSettings;
-- (long long)layoutUpdateMode;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (double)scaleForIndex:(unsigned long long)arg1;
+- (BOOL)shouldPerformCrossfadeForReduceMotion;
 - (id)topMostAppLayouts;
 - (id)transitionWillBegin;
 - (id)transitionWillUpdate;

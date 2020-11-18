@@ -26,6 +26,7 @@
 - (void)explodeKeys:(id)arg1 currentKeyIndex:(unsigned long long)arg2 possibleValuesPerKey:(id)arg3 currentCombination:(id)arg4 results:(id)arg5;
 - (id)explodedKeysWithPossibleValuesInAction:(id)arg1;
 - (id)initWithKey:(id)arg1 summaryString:(id)arg2;
+- (id)mapPossibleValuesToKeys:(id)arg1;
 - (BOOL)matchesVisibleParameterKeys:(id)arg1 checkingRequiredValuesInAction:(id)arg2;
 
 @end

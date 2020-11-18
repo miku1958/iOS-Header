@@ -14,7 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_listButton;
-- (void)_setFullScreen:(BOOL)arg1 animated:(BOOL)arg2 force:(BOOL)arg3;
 - (void)updateOverlayAnimated:(BOOL)arg1 animatedButtons:(BOOL)arg2 forceRefresh:(BOOL)arg3 withTraitCollection:(id)arg4;
 
 @end

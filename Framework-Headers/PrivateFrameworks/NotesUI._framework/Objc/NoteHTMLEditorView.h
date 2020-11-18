@@ -72,6 +72,7 @@
 - (void)_webView:(id)arg1 contextMenuDidEndForElement:(id)arg2;
 - (long long)_webView:(id)arg1 dataOwnerForDragSession:(id)arg2;
 - (long long)_webView:(id)arg1 dataOwnerForDropSession:(id)arg2;
+- (void)_webView:(id)arg1 didInsertAttachment:(id)arg2 withSource:(id)arg3;
 - (void)_webView:(id)arg1 didStartInputSession:(id)arg2;
 - (BOOL)_webView:(id)arg1 focusShouldStartInputSession:(id)arg2;
 - (BOOL)_webView:(id)arg1 performDataInteractionOperationWithItemProviders:(id)arg2;
@@ -108,6 +109,7 @@
 - (void)setupWebView;
 - (void)startEditing;
 - (void)stopEditing;
+- (void)stopEditingWithCompletion:(CDUnknownBlockType)arg1;
 - (id)targetForAction:(SEL)arg1 withSender:(id)arg2;
 - (void)undoablyRemoveAttachmentPresentations:(id)arg1 undoManager:(id)arg2;
 - (void)undoablyReplaceSelectionWithAttachmentPresentations:(id)arg1 undoManager:(id)arg2;

@@ -7,10 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <CoreMotion/NSSecureCoding-Protocol.h>
+#import <CoreMotion/SRSampleExporting-Protocol.h>
+#import <CoreMotion/SRSampling-Protocol.h>
 
-@class NSData;
+@class NSData, NSString;
 
-@interface CMFallStats : NSObject <NSSecureCoding>
+@interface CMFallStats : NSObject <SRSampling, SRSampleExporting, NSSecureCoding>
 {
     NSData *_data;
     BOOL _isNearFall;
@@ -18,15 +20,22 @@
     double _iOStime;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) int fallType; // @synthesize fallType=_fallType;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double iOStime; // @synthesize iOStime=_iOStime;
 @property (readonly, nonatomic) BOOL isNearFall; // @synthesize isNearFall=_isNearFall;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void)_decodeMeta;
 - (id)binarySampleRepresentation;
 - (void)dealloc;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithBinarySampleRepresentation:(id)arg1 metadata:(id)arg2 timestamp:(double)arg3;
 - (id)initWithBufferAndLength:(char *)arg1 length:(unsigned long long)arg2;

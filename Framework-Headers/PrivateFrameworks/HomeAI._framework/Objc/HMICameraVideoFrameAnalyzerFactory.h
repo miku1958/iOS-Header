@@ -32,7 +32,7 @@
 + (id)logCategory;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)analyze:(id)arg1 error:(id *)arg2;
+- (id)analyze:(id)arg1 targetEventTypes:(long long)arg2 error:(id *)arg3;
 - (id)getConfidenceThresholdPreferenceForKey:(id)arg1 defaultConfidenceThreshold:(double)arg2;
 - (id)init;
 - (double)modelTimeoutPreference;

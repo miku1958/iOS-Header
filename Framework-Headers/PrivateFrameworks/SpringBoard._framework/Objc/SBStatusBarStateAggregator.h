@@ -159,7 +159,6 @@
 - (void)setShowsSyncActivityIndicator:(BOOL)arg1;
 - (void)setUserNameOverride:(id)arg1;
 - (void)stateService:(id)arg1 didReceiveDoNotDisturbStateUpdate:(id)arg2;
-- (void)updateBackgroundActivityStartTimeForApplication:(id)arg1;
 - (void)updateStatusBarItem:(int)arg1;
 
 @end

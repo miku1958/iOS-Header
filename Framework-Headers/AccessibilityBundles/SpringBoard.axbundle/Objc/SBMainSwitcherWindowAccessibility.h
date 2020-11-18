@@ -17,6 +17,8 @@
 - (long long)_accessibilityInterfaceOrientationForScreenCoordinates;
 - (BOOL)_accessibilityUseWindowBoundsForOutOfBoundsChecking;
 - (BOOL)_accessibilityWindowVisible;
+- (BOOL)_axFloatingAppHasInlineSwitcher;
+- (BOOL)_axIsControlCenterVisible;
 - (BOOL)_axIsVisible;
 - (BOOL)accessibilityElementsHidden;
 

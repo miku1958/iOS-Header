@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (void)_endFaceLibraryControllerPresentation;
 - (void)_showLibraryViewControllerAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 

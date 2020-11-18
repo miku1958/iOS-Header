@@ -52,6 +52,7 @@
 @property (readonly, nonatomic) id<CALNTravelEngine> travelEngine; // @synthesize travelEngine=_travelEngine;
 @property (readonly, nonatomic) id<CALNTTLEventTracker> ttlEventTracker; // @synthesize ttlEventTracker=_ttlEventTracker;
 
++ (id)_alarmDateForAlarm:(id)arg1 eventStartDate:(id)arg2;
 + (id)_alarmForEvent:(id)arg1 withAlarmID:(id)arg2;
 + (id)_sourceClientIdentifierForAlertInfo:(id)arg1;
 + (double)snoozeInterval;

@@ -68,12 +68,23 @@
 	// getter
 	// method
  }
+ protocol TeaUI.KeyCommandTraversalObservableProvider // 1 requirements
+ {
+	// getter
+ }
+ protocol TeaUI.KeyCommandTraversalObserver // 3 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+ }
  protocol TeaUI.KeyCommandTraversable // 1 requirements
  {
 	// method
  }
- protocol TeaUI.KeyCommandParentTraversable // 1 requirements
+ protocol TeaUI.KeyCommandParentTraversable // 2 requirements
  {
+	// method
 	// method
  }
  protocol TeaUI.KeyCommandTraversableItem // 3 requirements
@@ -87,15 +98,12 @@
 	// getter
 	// method
  }
- protocol TeaUI.KeyCommandTraversableCollection // 13 requirements
+ protocol TeaUI.KeyCommandTraversableCollection // 10 requirements
  {
 	// getter
 	// method
 	// getter
 	// getter
-	// method
-	// method
-	// method
 	// method
 	// method
 	// method
@@ -103,9 +111,10 @@
 	// method
 	// method
  }
- protocol TeaUI.KeyCommandTraversableCollectionProviderType // 1 requirements
+ protocol TeaUI.KeyCommandTraversableCollectionProviderType // 2 requirements
  {
 	// getter
+	// method
  }
  protocol TeaUI.OverlayAlertLayoutAttributesFactoryType // 1 requirements
  {
@@ -185,6 +194,10 @@
  protocol TeaUI.BlueprintInfiniteScrollBuilderType // 2 requirements
  {
 	// method
+	// method
+ }
+ protocol TeaUI.KeyCommandScrollProviderDelegate // 1 requirements
+ {
 	// method
  }
  protocol TeaUI.TabBarable // 2 requirements
@@ -399,8 +412,9 @@
 	// method
 	// method
  }
- protocol TeaUI.KeyCommandTraverseProviderDelegate // 3 requirements
+ protocol TeaUI.KeyCommandTraverseProviderDelegate // 4 requirements
  {
+	// method
 	// method
 	// method
 	// method
@@ -529,6 +543,10 @@
  {
 	// method
  }
+ protocol TeaUI.KeyCommandScrollExclusionProviderDelegate // 1 requirements
+ {
+	// method
+ }
  protocol TeaUI.DynamicColorPaletteProviding // 2 requirements
  {
 	// getter
@@ -566,9 +584,10 @@
 	// class associated type access function
 	// method
  }
- protocol TeaUI.BlueprintDiffType // 11 requirements
+ protocol TeaUI.BlueprintDiffType // 12 requirements
  {
 	// class base protocol
+	// getter
 	// getter
 	// getter
 	// getter
@@ -1072,10 +1091,11 @@
  protocol TeaUI.LayerType // 0 requirements
  {
  }
- protocol TeaUI.BlueprintViewDataSourceType // 3 requirements
+ protocol TeaUI.BlueprintViewDataSourceType // 4 requirements
  {
 	// class base protocol
 	// class associated type access function
+	// method
 	// method
  }
  protocol TeaUI.FullscreenTransitionCoverable // 1 requirements
@@ -1349,9 +1369,9 @@
 
  class TeaUI.StatusBarView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0xff70  @objc StatusBarView.initWithFrame: <stripped>
-	0x100a0  @objc StatusBarView.initWithCoder: <stripped>
-	0x10240  @objc StatusBarView.layoutSubviews <stripped>
+	0x10070  @objc StatusBarView.initWithFrame: <stripped>
+	0x101a0  @objc StatusBarView.initWithCoder: <stripped>
+	0x10340  @objc StatusBarView.layoutSubviews <stripped>
  }
 
  class TeaUI.BlurStatusBarView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1360,10 +1380,10 @@
 	let barView : BarView
 
 	// ObjC -> Swift bridged methods
-	0x102c0  @objc BlurStatusBarView.initWithFrame: <stripped>
-	0x10370  @objc BlurStatusBarView.initWithCoder: <stripped>
-	0x104f0  @objc BlurStatusBarView.layoutSubviews <stripped>
-	0x10640  @objc BlurStatusBarView..cxx_destruct <stripped>
+	0x103c0  @objc BlurStatusBarView.initWithFrame: <stripped>
+	0x10470  @objc BlurStatusBarView.initWithCoder: <stripped>
+	0x105f0  @objc BlurStatusBarView.layoutSubviews <stripped>
+	0x10740  @objc BlurStatusBarView..cxx_destruct <stripped>
  }
 
  class TeaUI.ShortcutItemHandlerManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1388,19 +1408,19 @@
 	let accessor : TSMemoryCacheAccessorType // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x15980  @objc MemoryImageCache.initWithMaxSize:accessor: <stripped>
-	0x15c90  @objc MemoryImageCache.imageForKey: <stripped>
-	0x16120  @objc MemoryImageCache.cacheImage:forKey:expires: <stripped>
-	0x16460  @objc MemoryImageCache.init <stripped>
-	0x164e0  @objc MemoryImageCache..cxx_destruct <stripped>
+	0x15af0  @objc MemoryImageCache.initWithMaxSize:accessor: <stripped>
+	0x15e00  @objc MemoryImageCache.imageForKey: <stripped>
+	0x16290  @objc MemoryImageCache.cacheImage:forKey:expires: <stripped>
+	0x165d0  @objc MemoryImageCache.init <stripped>
+	0x16650  @objc MemoryImageCache..cxx_destruct <stripped>
 
 	// Swift methods
-	0x15760  class func MemoryImageCache.__allocating_init(maxSize:accessor:) // init 
+	0x158d0  class func MemoryImageCache.__allocating_init(maxSize:accessor:) // init 
  }
 
  class TeaUI.SettingsAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x172a0  @objc SettingsAssembly.init <stripped>
+	0x17410  @objc SettingsAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -1414,17 +1434,17 @@
 	var selector : Selector?
 
 	// Swift methods
-	0x18320  class func KeyCommandRegistry.__allocating_init(provider:) // init 
-	0x184d0  func <stripped> // method 
-	0x18520  func <stripped> // method 
-	0x187e0  func <stripped> // method 
+	0x18490  class func KeyCommandRegistry.__allocating_init(provider:) // init 
+	0x18640  func <stripped> // method 
+	0x18690  func <stripped> // method 
+	0x18950  func <stripped> // method 
  }
 
  class TeaUI.KeyCommandHandlerRegistry : KeyCommandRegistry { }
 
  class TeaUI.ContainerEnviromentProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x1a5e0  class func ContainerEnviromentProvider.__allocating_init() // init 
+	0x1aa90  class func ContainerEnviromentProvider.__allocating_init() // init 
  }
 
  class TeaUI.WindowToolbar2Item {
@@ -1437,16 +1457,16 @@
 	var visibleRectAccessor : ()? // +0x28 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x1be20  @objc BlueprintManualImpressionUpdateProvider.setVisibileViewAccessor:visibleRectAccessor: <stripped>
-	0x1c0a0  @objc BlueprintManualImpressionUpdateProvider.updateImpressionsForView:withVisibleRect: <stripped>
-	0x1c1c0  @objc BlueprintManualImpressionUpdateProvider.endImpressions <stripped>
-	0x1c2e0  @objc BlueprintManualImpressionUpdateProvider.init <stripped>
-	0x1c350  @objc BlueprintManualImpressionUpdateProvider..cxx_destruct <stripped>
+	0x1c2d0  @objc BlueprintManualImpressionUpdateProvider.setVisibileViewAccessor:visibleRectAccessor: <stripped>
+	0x1c550  @objc BlueprintManualImpressionUpdateProvider.updateImpressionsForView:withVisibleRect: <stripped>
+	0x1c670  @objc BlueprintManualImpressionUpdateProvider.endImpressions <stripped>
+	0x1c790  @objc BlueprintManualImpressionUpdateProvider.init <stripped>
+	0x1c800  @objc BlueprintManualImpressionUpdateProvider..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1bd80  func <stripped> // method 
-	0x1bf80  func <stripped> // method 
-	0x1c130  func <stripped> // method 
+	0x1c230  func <stripped> // method 
+	0x1c430  func <stripped> // method 
+	0x1c5e0  func <stripped> // method 
  }
 
  enum TeaUI.ContextMenuOptions {
@@ -1498,7 +1518,7 @@
 	var provider : weak KeyCommandRegistrationProviderType? // +0x20 (0x10)
 
 	// Swift methods
-	0x1f4b0  class func KeyCommandUnownedProvider.__allocating_init(provider:) // init 
+	0x1f960  class func KeyCommandUnownedProvider.__allocating_init(provider:) // init 
  }
 
  class TeaUI.BlueprintViewContextMenuInteractor {
@@ -1509,13 +1529,13 @@
 	var triggeringViewController : weak UIViewController? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x206b0  @objc PreviewViewController.initWithCoder: <stripped>
-	0x20810  @objc PreviewViewController.viewDidLoad <stripped>
-	0x20840  @objc PreviewViewController.viewDidDisappear: <stripped>
-	0x208f0  @objc PreviewViewController.viewWillAppear: <stripped>
-	0x20cb0  @objc PreviewViewController.viewWillLayoutSubviews <stripped>
-	0x20ce0  @objc PreviewViewController.initWithNibName:bundle: <stripped>
-	0x20d60  @objc PreviewViewController..cxx_destruct <stripped>
+	0x20970  @objc PreviewViewController.initWithCoder: <stripped>
+	0x20ad0  @objc PreviewViewController.viewDidLoad <stripped>
+	0x20b00  @objc PreviewViewController.viewDidDisappear: <stripped>
+	0x20bb0  @objc PreviewViewController.viewWillAppear: <stripped>
+	0x20f70  @objc PreviewViewController.viewWillLayoutSubviews <stripped>
+	0x20fa0  @objc PreviewViewController.initWithNibName:bundle: <stripped>
+	0x21020  @objc PreviewViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1558,15 +1578,15 @@
 	var currentAsset : Asset // +0x18 (0x9)
 
 	// ObjC -> Swift bridged methods
-	0x22460  @objc PatternSectionDecorationView.initWithFrame: <stripped>
-	0x22490  @objc PatternSectionDecorationView.initWithCoder: <stripped>
-	0x22610  @objc PatternSectionDecorationView.layoutSubviews <stripped>
-	0x226d0  @objc PatternSectionDecorationView.willMoveToSuperview: <stripped>
-	0x22840  @objc PatternSectionDecorationView.didMoveToSuperview <stripped>
-	0x233a0  @objc PatternSectionDecorationView.applyLayoutAttributes: <stripped>
-	0x23570  @objc PatternSectionDecorationView.traitCollectionDidChange: <stripped>
-	0x235e0  @objc PatternSectionDecorationView.gutterViewBoundsDidChange <stripped>
-	0x23650  @objc PatternSectionDecorationView..cxx_destruct <stripped>
+	0x228b0  @objc PatternSectionDecorationView.initWithFrame: <stripped>
+	0x228e0  @objc PatternSectionDecorationView.initWithCoder: <stripped>
+	0x22a60  @objc PatternSectionDecorationView.layoutSubviews <stripped>
+	0x22b20  @objc PatternSectionDecorationView.willMoveToSuperview: <stripped>
+	0x22c90  @objc PatternSectionDecorationView.didMoveToSuperview <stripped>
+	0x237f0  @objc PatternSectionDecorationView.applyLayoutAttributes: <stripped>
+	0x239c0  @objc PatternSectionDecorationView.traitCollectionDidChange: <stripped>
+	0x23a30  @objc PatternSectionDecorationView.gutterViewBoundsDidChange <stripped>
+	0x23aa0  @objc PatternSectionDecorationView..cxx_destruct <stripped>
  }
 
  class TeaUI.PluginManager : NSObject /usr/lib/libobjc.A.dylib {
@@ -1577,15 +1597,15 @@
 	var pluginViewControllers : [UInt : Plugin] // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x246e0  @objc PluginManager.pluginContainerController <stripped>
-	0x24760  @objc PluginManager.setPluginContainerController: <stripped>
-	0x24bf0  @objc PluginManager.addPlugin: <stripped>
-	0x24e70  @objc PluginManager.removePlugin: <stripped>
-	0x25120  @objc PluginManager.removeAll <stripped>
-	0x25250  @objc PluginManager.containsPluginForViewController: <stripped>
-	0x253d0  @objc PluginManager.stashViewController: <stripped>
-	0x25970  @objc PluginManager.init <stripped>
-	0x25a90  @objc PluginManager..cxx_destruct <stripped>
+	0x24b30  @objc PluginManager.pluginContainerController <stripped>
+	0x24bb0  @objc PluginManager.setPluginContainerController: <stripped>
+	0x25040  @objc PluginManager.addPlugin: <stripped>
+	0x252c0  @objc PluginManager.removePlugin: <stripped>
+	0x25570  @objc PluginManager.removeAll <stripped>
+	0x256a0  @objc PluginManager.containsPluginForViewController: <stripped>
+	0x25820  @objc PluginManager.stashViewController: <stripped>
+	0x25dc0  @objc PluginManager.init <stripped>
+	0x25ee0  @objc PluginManager..cxx_destruct <stripped>
  }
 
  class TeaUI.ScrollTracker : NSObject /usr/lib/libobjc.A.dylib {
@@ -1594,8 +1614,8 @@
 	var callbacks : Callback // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x295f0  @objc ScrollTracker.init <stripped>
-	0x296c0  @objc ScrollTracker..cxx_destruct <stripped>
+	0x29a40  @objc ScrollTracker.init <stripped>
+	0x29b10  @objc ScrollTracker..cxx_destruct <stripped>
  }
 
  enum TeaUI.Result {
@@ -1614,10 +1634,10 @@
 
  class TeaUI.ForwardingTouchToolbar : UIToolbar /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x2a840  @objc ForwardingTouchToolbar.hitTest:withEvent: <stripped>
-	0x2ac00  @objc ForwardingTouchToolbar.pointInside:withEvent: <stripped>
-	0x2ada0  @objc ForwardingTouchToolbar.initWithFrame: <stripped>
-	0x2aec0  @objc ForwardingTouchToolbar.initWithCoder: <stripped>
+	0x2ac90  @objc ForwardingTouchToolbar.hitTest:withEvent: <stripped>
+	0x2b050  @objc ForwardingTouchToolbar.pointInside:withEvent: <stripped>
+	0x2b1f0  @objc ForwardingTouchToolbar.initWithFrame: <stripped>
+	0x2b310  @objc ForwardingTouchToolbar.initWithCoder: <stripped>
  }
 
  class TeaUI.DebugCollector {
@@ -1630,16 +1650,16 @@
 	let viewController : UIViewController // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2b440  @objc PluginModel.identifier <stripped>
-	0x2b4c0  @objc PluginModel.revision <stripped>
-	0x2b500  @objc PluginModel.size <stripped>
-	0x2b540  @objc PluginModel.viewController <stripped>
-	0x2b6e0  @objc PluginModel.hash <stripped>
-	0x2b890  @objc PluginModel.init <stripped>
-	0x2b910  @objc PluginModel..cxx_destruct <stripped>
+	0x2b890  @objc PluginModel.identifier <stripped>
+	0x2b910  @objc PluginModel.revision <stripped>
+	0x2b950  @objc PluginModel.size <stripped>
+	0x2b990  @objc PluginModel.viewController <stripped>
+	0x2bb30  @objc PluginModel.hash <stripped>
+	0x2bce0  @objc PluginModel.init <stripped>
+	0x2bd60  @objc PluginModel..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2b580  func <stripped> // getter 
+	0x2b9d0  func <stripped> // getter 
  }
 
  struct TeaUI.SizeLayoutAttributes: BlueprintLayoutSizeAttributesType {
@@ -1680,11 +1700,11 @@
 	var onChange : PageSheetPresentationChange // +0x20 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x2cde0  @objc PageSheetPresentationObserver.presentationTransitionDidEndWithNotification: <stripped>
-	0x2d000  @objc PageSheetPresentationObserver.dismissalTransitionDidEndWithNotification: <stripped>
+	0x2d250  @objc PageSheetPresentationObserver.presentationTransitionDidEndWithNotification: <stripped>
+	0x2d470  @objc PageSheetPresentationObserver.dismissalTransitionDidEndWithNotification: <stripped>
 
 	// Swift methods
-	0x2cb90  class func PageSheetPresentationObserver.__allocating_init(viewController:) // init 
+	0x2d000  class func PageSheetPresentationObserver.__allocating_init(viewController:) // init 
  }
 
  class TeaUI.PageBlueprintProvider {
@@ -1695,12 +1715,12 @@
 	var currentView : UIView? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2d700  @objc SwappableView.initWithCoder: <stripped>
-	0x2dc00  @objc SwappableView.initWithFrame: <stripped>
-	0x2dc80  @objc SwappableView..cxx_destruct <stripped>
+	0x2db70  @objc SwappableView.initWithCoder: <stripped>
+	0x2e070  @objc SwappableView.initWithFrame: <stripped>
+	0x2e0f0  @objc SwappableView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2d780  class func SwappableView.__allocating_init(defaultView:) // init 
+	0x2dbf0  class func SwappableView.__allocating_init(defaultView:) // init 
  }
 
  class TeaUI.PromiseViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1712,17 +1732,17 @@
 	let navigationItemStyle : SyncObservable<NavigationItemStyle> // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2f090  @objc PromiseViewController.childViewControllerForHomeIndicatorAutoHidden <stripped>
-	0x2e210  @objc PromiseViewController.initWithCoder: <stripped>
-	0x2ef50  @objc PromiseViewController.viewDidLoad <stripped>
-	0x2eff0  @objc PromiseViewController.traitCollectionDidChange: <stripped>
-	0x2f090  @objc PromiseViewController.childViewControllerForStatusBarStyle <stripped>
-	0x2f090  @objc PromiseViewController.childViewControllerForStatusBarHidden <stripped>
-	0x2f190  @objc PromiseViewController.initWithNibName:bundle: <stripped>
-	0x2f210  @objc PromiseViewController..cxx_destruct <stripped>
+	0x2f500  @objc PromiseViewController.childViewControllerForHomeIndicatorAutoHidden <stripped>
+	0x2e680  @objc PromiseViewController.initWithCoder: <stripped>
+	0x2f3c0  @objc PromiseViewController.viewDidLoad <stripped>
+	0x2f460  @objc PromiseViewController.traitCollectionDidChange: <stripped>
+	0x2f500  @objc PromiseViewController.childViewControllerForStatusBarStyle <stripped>
+	0x2f500  @objc PromiseViewController.childViewControllerForStatusBarHidden <stripped>
+	0x2f600  @objc PromiseViewController.initWithNibName:bundle: <stripped>
+	0x2f680  @objc PromiseViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2df40  class func PromiseViewController.__allocating_init(_:) // init 
+	0x2e3b0  class func PromiseViewController.__allocating_init(_:) // init 
  }
 
  enum TeaUI.Errors {
@@ -1787,8 +1807,8 @@
 	let runOptions : BlueprintPipelineRunOptions // +0x50 (0x2)
 
 	// Swift methods
-	0x33aa0  func <stripped> // method 
-	0x347d0  func <stripped> // method 
+	0x34a10  func <stripped> // method 
+	0x35740  func <stripped> // method 
  }
 
  enum TeaUI.Signpost {
@@ -1853,9 +1873,9 @@
 	let onButtonTap : Action<()> // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x37bc0  @objc SectionFooterView.initWithFrame: <stripped>
-	0x37bf0  @objc SectionFooterView.initWithCoder: <stripped>
-	0x37c90  @objc SectionFooterView..cxx_destruct <stripped>
+	0x38b30  @objc SectionFooterView.initWithFrame: <stripped>
+	0x38b60  @objc SectionFooterView.initWithCoder: <stripped>
+	0x38c00  @objc SectionFooterView..cxx_destruct <stripped>
  }
 
  class TeaUI.BridgedGutterViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1864,24 +1884,24 @@
 	let gutterViewController : GutterViewController<UIViewController> // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x388a0  @objc BridgedGutterViewController.initWithChildViewController:childScrollViewProducer:gutterBreakpoints: <stripped>
-	0x389f0  @objc BridgedGutterViewController.initWithCoder: <stripped>
-	0x38a40  @objc BridgedGutterViewController.viewDidLoad <stripped>
-	0x38b20  @objc BridgedGutterViewController.viewWillLayoutSubviews <stripped>
-	0x38c30  @objc BridgedGutterViewController.navigationItem <stripped>
-	0x38c60  @objc BridgedGutterViewController.childViewControllerForStatusBarHidden <stripped>
-	0x38c60  @objc BridgedGutterViewController.childViewControllerForStatusBarStyle <stripped>
-	0x38c60  @objc BridgedGutterViewController.childViewControllerForHomeIndicatorAutoHidden <stripped>
-	0x38d20  @objc BridgedGutterViewController.initWithNibName:bundle: <stripped>
-	0x38da0  @objc BridgedGutterViewController..cxx_destruct <stripped>
+	0x39810  @objc BridgedGutterViewController.initWithChildViewController:childScrollViewProducer:gutterBreakpoints: <stripped>
+	0x39960  @objc BridgedGutterViewController.initWithCoder: <stripped>
+	0x399b0  @objc BridgedGutterViewController.viewDidLoad <stripped>
+	0x39a90  @objc BridgedGutterViewController.viewWillLayoutSubviews <stripped>
+	0x39ba0  @objc BridgedGutterViewController.navigationItem <stripped>
+	0x39bd0  @objc BridgedGutterViewController.childViewControllerForStatusBarHidden <stripped>
+	0x39bd0  @objc BridgedGutterViewController.childViewControllerForStatusBarStyle <stripped>
+	0x39bd0  @objc BridgedGutterViewController.childViewControllerForHomeIndicatorAutoHidden <stripped>
+	0x39c90  @objc BridgedGutterViewController.initWithNibName:bundle: <stripped>
+	0x39d10  @objc BridgedGutterViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x383e0  class func BridgedGutterViewController.__allocating_init(childViewController:childScrollViewProducer:gutterBreakpoints:) // init 
+	0x39350  class func BridgedGutterViewController.__allocating_init(childViewController:childScrollViewProducer:gutterBreakpoints:) // init 
  }
 
  class TeaUI.CopyLinkCommandHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x396e0  class func CopyLinkCommandHandler.__allocating_init() // init 
+	0x3a650  class func CopyLinkCommandHandler.__allocating_init() // init 
  }
 
  class TeaUI.ContextMenuGroup : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1893,8 +1913,8 @@
 	let items : [ContextMenuGroupable?] // +0x30 (0x8)
 
 	// Swift methods
-	0x39950  class func ContextMenuGroup.__allocating_init(title:image:style:items:) // init 
-	0x39e70  class func ContextMenuGroup.__allocating_init(title:image:style:items:) // init 
+	0x3a8c0  class func ContextMenuGroup.__allocating_init(title:image:style:items:) // init 
+	0x3ade0  class func ContextMenuGroup.__allocating_init(title:image:style:items:) // init 
  }
 
  class TeaUI.BouncingButton : UIButton /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1903,17 +1923,17 @@
 	let onTap : Action<()> // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3afd0  @objc BouncingButton.initWithFrame: <stripped>
-	0x3b0f0  @objc BouncingButton.initWithCoder: <stripped>
-	0x3b1b0  @objc BouncingButton.touchesBegan:withEvent: <stripped>
-	0x3b1d0  @objc BouncingButton.touchesEnded:withEvent: <stripped>
-	0x3b1f0  @objc BouncingButton.touchesCancelled:withEvent: <stripped>
-	0x3b990  @objc BouncingButton..cxx_destruct <stripped>
+	0x3bed0  @objc BouncingButton.initWithFrame: <stripped>
+	0x3bff0  @objc BouncingButton.initWithCoder: <stripped>
+	0x3c0b0  @objc BouncingButton.touchesBegan:withEvent: <stripped>
+	0x3c0d0  @objc BouncingButton.touchesEnded:withEvent: <stripped>
+	0x3c0f0  @objc BouncingButton.touchesCancelled:withEvent: <stripped>
+	0x3c890  @objc BouncingButton..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3b380  func <stripped> // method 
-	0x3b5d0  func <stripped> // method 
-	0x3b900  func <stripped> // method 
+	0x3c280  func <stripped> // method 
+	0x3c4d0  func <stripped> // method 
+	0x3c800  func <stripped> // method 
  }
 
  class TeaUI.TransitionContainerViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1928,14 +1948,14 @@
 	let transition : Transition // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3beb0  @objc TransitionContainerViewController.initWithRootViewController:identifier: <stripped>
-	0x3c4d0  @objc TransitionContainerViewController.initWithCoder: <stripped>
-	0x3c4f0  @objc TransitionContainerViewController.description <stripped>
-	0x3c700  @objc TransitionContainerViewController.initWithNibName:bundle: <stripped>
-	0x3c780  @objc TransitionContainerViewController..cxx_destruct <stripped>
+	0x3cdb0  @objc TransitionContainerViewController.initWithRootViewController:identifier: <stripped>
+	0x3d3d0  @objc TransitionContainerViewController.initWithCoder: <stripped>
+	0x3d3f0  @objc TransitionContainerViewController.description <stripped>
+	0x3d600  @objc TransitionContainerViewController.initWithNibName:bundle: <stripped>
+	0x3d680  @objc TransitionContainerViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3bef0  class func TransitionContainerViewController.__allocating_init(rootViewController:identifier:transition:) // init 
+	0x3cdf0  class func TransitionContainerViewController.__allocating_init(rootViewController:identifier:transition:) // init 
  }
 
  class TeaUI.BlueprintTableViewDragDelegate {
@@ -1954,7 +1974,7 @@
 	let observableBlueprintLayoutCollection : SyncObservable<BlueprintLayoutCollection> // +0x10 (0x8)
 
 	// Swift methods
-	0x41bf0  class func BlueprintLayoutCollectionProvider.__allocating_init() // init 
+	0x42af0  class func BlueprintLayoutCollectionProvider.__allocating_init() // init 
  }
 
  class TeaUI.BridgedCommandCenter : NSObject /usr/lib/libobjc.A.dylib {
@@ -1963,23 +1983,23 @@
 	let commandCenter : CommandCenter // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x42a10  @objc BridgedCommandCenter.executeCommand: <stripped>
-	0x42c60  @objc BridgedCommandCenter.canExecuteCommand: <stripped>
-	0x43460  @objc BridgedCommandCenter.addContextProvider:forCommand:completion: <stripped>
-	0x43a60  @objc BridgedCommandCenter.removeContextProvider: <stripped>
-	0x43ed0  @objc BridgedCommandCenter.removeContextProvider:forCommand: <stripped>
-	0x441d0  @objc BridgedCommandCenter.stateForCommand: <stripped>
-	0x44270  @objc BridgedCommandCenter.init <stripped>
-	0x442f0  @objc BridgedCommandCenter..cxx_destruct <stripped>
+	0x43910  @objc BridgedCommandCenter.executeCommand: <stripped>
+	0x43b60  @objc BridgedCommandCenter.canExecuteCommand: <stripped>
+	0x44360  @objc BridgedCommandCenter.addContextProvider:forCommand:completion: <stripped>
+	0x44960  @objc BridgedCommandCenter.removeContextProvider: <stripped>
+	0x44dd0  @objc BridgedCommandCenter.removeContextProvider:forCommand: <stripped>
+	0x450d0  @objc BridgedCommandCenter.stateForCommand: <stripped>
+	0x45170  @objc BridgedCommandCenter.init <stripped>
+	0x451f0  @objc BridgedCommandCenter..cxx_destruct <stripped>
 
 	// Swift methods
-	0x42080  class func BridgedCommandCenter.__allocating_init(commandCenter:) // init 
-	0x42350  func <stripped> // method 
-	0x42a30  func <stripped> // method 
-	0x42cc0  func <stripped> // method 
-	0x43540  func <stripped> // method 
-	0x43ad0  func <stripped> // method 
-	0x43f30  func <stripped> // method 
+	0x42f80  class func BridgedCommandCenter.__allocating_init(commandCenter:) // init 
+	0x43250  func <stripped> // method 
+	0x43930  func <stripped> // method 
+	0x43bc0  func <stripped> // method 
+	0x44440  func <stripped> // method 
+	0x449d0  func <stripped> // method 
+	0x44e30  func <stripped> // method 
  }
 
  struct TeaUI.PageBlueprintPrewarmerOptions {
@@ -2030,16 +2050,16 @@
 	let styler : NavigationControllerStyler // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x46fc0  @objc NavigationController.pushViewController:animated: <stripped>
-	0x47030  @objc NavigationController.popViewControllerAnimated: <stripped>
-	0x47310  @objc NavigationController.popToViewController:animated: <stripped>
-	0x475f0  @objc NavigationController.popToRootViewControllerAnimated: <stripped>
-	0x47680  @objc NavigationController.accessibilityPerformEscape <stripped>
-	0x478c0  @objc NavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
-	0x47a50  @objc NavigationController.initWithRootViewController: <stripped>
-	0x47c20  @objc NavigationController.initWithNibName:bundle: <stripped>
-	0x47e20  @objc NavigationController.initWithCoder: <stripped>
-	0x47f10  @objc NavigationController..cxx_destruct <stripped>
+	0x47e90  @objc NavigationController.pushViewController:animated: <stripped>
+	0x47f00  @objc NavigationController.popViewControllerAnimated: <stripped>
+	0x481e0  @objc NavigationController.popToViewController:animated: <stripped>
+	0x484c0  @objc NavigationController.popToRootViewControllerAnimated: <stripped>
+	0x48550  @objc NavigationController.accessibilityPerformEscape <stripped>
+	0x48790  @objc NavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
+	0x48920  @objc NavigationController.initWithRootViewController: <stripped>
+	0x48af0  @objc NavigationController.initWithNibName:bundle: <stripped>
+	0x48cf0  @objc NavigationController.initWithCoder: <stripped>
+	0x48de0  @objc NavigationController..cxx_destruct <stripped>
  }
 
  class TeaUI.NavigationControllerStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2059,17 +2079,17 @@
 	var shineOptions : ShineOptions? // +0x50 (0x48)
 
 	// ObjC -> Swift bridged methods
-	0x4a2d0  @objc ShineView.initWithFrame: <stripped>
-	0x4a350  @objc ShineView.initWithCoder: <stripped>
-	0x4a430  @objc ShineView..cxx_destruct <stripped>
+	0x4b1a0  @objc ShineView.initWithFrame: <stripped>
+	0x4b220  @objc ShineView.initWithCoder: <stripped>
+	0x4b300  @objc ShineView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x496f0  func <stripped> // getter 
-	0x49720  func <stripped> // setter 
-	0x497e0  func <stripped> // modifyCoroutine 
-	0x499a0  func <stripped> // getter 
-	0x499d0  func <stripped> // setter 
-	0x49a40  func <stripped> // modifyCoroutine 
+	0x4a5c0  func <stripped> // getter 
+	0x4a5f0  func <stripped> // setter 
+	0x4a6b0  func <stripped> // modifyCoroutine 
+	0x4a870  func <stripped> // getter 
+	0x4a8a0  func <stripped> // setter 
+	0x4a910  func <stripped> // modifyCoroutine 
  }
 
  class TeaUI.SegmentedControl {
@@ -2096,13 +2116,13 @@
 	let keyboardObserver : KeyboardObserver // +0x70 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x511b0  @objc ErrorView.initWithCoder: <stripped>
-	0x51ac0  @objc ErrorView.layoutSubviews <stripped>
-	0x51ba0  @objc ErrorView.initWithFrame: <stripped>
-	0x51c20  @objc ErrorView..cxx_destruct <stripped>
+	0x52080  @objc ErrorView.initWithCoder: <stripped>
+	0x52990  @objc ErrorView.layoutSubviews <stripped>
+	0x52a70  @objc ErrorView.initWithFrame: <stripped>
+	0x52af0  @objc ErrorView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x50d20  class func ErrorView.__allocating_init(model:styler:) // init 
+	0x51bf0  class func ErrorView.__allocating_init(model:styler:) // init 
  }
 
  struct TeaUI.BlueprintSection {
@@ -2176,42 +2196,42 @@
 	let eventManager : Event // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5ba10  @objc CardContainerController.childViewControllerForStatusBarStyle <stripped>
-	0x5ba10  @objc CardContainerController.childViewControllerForStatusBarHidden <stripped>
-	0x5bed0  @objc CardContainerController.initWithCoder: <stripped>
-	0x5dfc0  @objc CardContainerController.initWithNibName:bundle: <stripped>
-	0x5e030  @objc CardContainerController..cxx_destruct <stripped>
+	0x5ccb0  @objc CardContainerController.childViewControllerForStatusBarStyle <stripped>
+	0x5ccb0  @objc CardContainerController.childViewControllerForStatusBarHidden <stripped>
+	0x5d170  @objc CardContainerController.initWithCoder: <stripped>
+	0x5f260  @objc CardContainerController.initWithNibName:bundle: <stripped>
+	0x5f2d0  @objc CardContainerController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x59d10  func <stripped> // getter 
-	0x59d50  func <stripped> // setter 
-	0x59dd0  func <stripped> // modifyCoroutine 
-	0x59f70  func <stripped> // getter 
-	0x59fb0  func <stripped> // setter 
-	0x5a000  func <stripped> // modifyCoroutine 
-	0x5a540  func <stripped> // getter 
-	0x5a590  func <stripped> // setter 
-	0x5a640  func <stripped> // modifyCoroutine 
-	0x5a7d0  func <stripped> // getter 
-	0x5ab10  func <stripped> // getter 
-	0x5ac00  func <stripped> // getter 
-	0x5ad30  func <stripped> // getter 
-	0x5b100  func <stripped> // getter 
-	0x5b140  func <stripped> // setter 
-	0x5b160  func <stripped> // modifyCoroutine 
-	0x5b2f0  func <stripped> // getter 
-	0x5b320  func <stripped> // setter 
-	0x5b4e0  func <stripped> // modifyCoroutine 
-	0x5b800  func <stripped> // method 
-	0x5bb00  class func CardContainerController.__allocating_init(rootViewController:) // init 
-	0x5bef0  func <stripped> // method 
-	0x5bf70  func <stripped> // method 
-	0x5bff0  func <stripped> // method 
-	0x5d170  func <stripped> // method 
-	0x5d7f0  func <stripped> // method 
-	0x5d880  func <stripped> // method 
-	0x5de00  func <stripped> // method 
-	0x5de90  func <stripped> // method 
+	0x5afb0  func <stripped> // getter 
+	0x5aff0  func <stripped> // setter 
+	0x5b070  func <stripped> // modifyCoroutine 
+	0x5b210  func <stripped> // getter 
+	0x5b250  func <stripped> // setter 
+	0x5b2a0  func <stripped> // modifyCoroutine 
+	0x5b7e0  func <stripped> // getter 
+	0x5b830  func <stripped> // setter 
+	0x5b8e0  func <stripped> // modifyCoroutine 
+	0x5ba70  func <stripped> // getter 
+	0x5bdb0  func <stripped> // getter 
+	0x5bea0  func <stripped> // getter 
+	0x5bfd0  func <stripped> // getter 
+	0x5c3a0  func <stripped> // getter 
+	0x5c3e0  func <stripped> // setter 
+	0x5c400  func <stripped> // modifyCoroutine 
+	0x5c590  func <stripped> // getter 
+	0x5c5c0  func <stripped> // setter 
+	0x5c780  func <stripped> // modifyCoroutine 
+	0x5caa0  func <stripped> // method 
+	0x5cda0  class func CardContainerController.__allocating_init(rootViewController:) // init 
+	0x5d190  func <stripped> // method 
+	0x5d210  func <stripped> // method 
+	0x5d290  func <stripped> // method 
+	0x5e410  func <stripped> // method 
+	0x5ea90  func <stripped> // method 
+	0x5eb20  func <stripped> // method 
+	0x5f0a0  func <stripped> // method 
+	0x5f130  func <stripped> // method 
  }
 
  class TeaUI.CardItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2263,14 +2283,14 @@
 	let mainLRU : MemoryImageCache
 
 	// ObjC -> Swift bridged methods
-	0x6e2c0  @objc ImageCache.initWithUnderlyingCache:processor:downloader: <stripped>
-	0x6e370  @objc ImageCache.dealloc <stripped>
-	0x6e430  @objc ImageCache.didReceiveMemoryWarning: <stripped>
-	0x6e530  @objc ImageCache.init <stripped>
-	0x6e3d0  @objc ImageCache..cxx_destruct <stripped>
+	0x6f610  @objc ImageCache.initWithUnderlyingCache:processor:downloader: <stripped>
+	0x6f6c0  @objc ImageCache.dealloc <stripped>
+	0x6f780  @objc ImageCache.didReceiveMemoryWarning: <stripped>
+	0x6f880  @objc ImageCache.init <stripped>
+	0x6f720  @objc ImageCache..cxx_destruct <stripped>
 
 	// Swift methods
-	0x6df10  class func ImageCache.__allocating_init(underlyingCache:processor:downloader:) // init 
+	0x6f260  class func ImageCache.__allocating_init(underlyingCache:processor:downloader:) // init 
  }
 
  enum TeaUI.ImageCacheError { }
@@ -2288,9 +2308,9 @@
 	var canceled : Bool
 
 	// ObjC -> Swift bridged methods
-	0x70450  @objc ImageCacheOperation.main <stripped>
-	0x70480  @objc ImageCacheOperation.init <stripped>
-	0x70500  @objc ImageCacheOperation..cxx_destruct <stripped>
+	0x717a0  @objc ImageCacheOperation.main <stripped>
+	0x717d0  @objc ImageCacheOperation.init <stripped>
+	0x71850  @objc ImageCacheOperation..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -2302,7 +2322,7 @@
 	let trigger : Trigger // +0x38 (0x11)
 
 	// Swift methods
-	0x70d80  class func BlueprintInfiniteScrollBuilder.__allocating_init(infiniteScrollProvider:trigger:) // init 
+	0x720d0  class func BlueprintInfiniteScrollBuilder.__allocating_init(infiniteScrollProvider:trigger:) // init 
  }
 
  enum TeaUI.Trigger {
@@ -2319,8 +2339,8 @@
 	let optionsBlock : Options // +0x10 (0x10)
 
 	// Swift methods
-	0x74590  class func ViewTransitionThroughColorAnimator.__allocating_init(optionsBlock:) // init 
-	0x74810  func <stripped> // method 
+	0x758e0  class func ViewTransitionThroughColorAnimator.__allocating_init(optionsBlock:) // init 
+	0x75b60  func <stripped> // method 
  }
 
  struct TeaUI.Options {
@@ -2336,9 +2356,10 @@
 	// Properties
 	var invalidator : weak Invalidatable? // +0x10 (0x10)
 	var scrollView : weak UIScrollView? // +0x20 (0x8)
+	var delegate : KeyCommandScrollProviderDelegate // +0x28 (0x10)
 
 	// Swift methods
-	0x755b0  class func KeyCommandScrollProvider.__allocating_init(scrollView:) // init 
+	0x76b00  class func KeyCommandScrollProvider.__allocating_init(scrollView:) // init 
  }
 
  class TeaUI.ConfigurableSingleton : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2365,28 +2386,28 @@
 	var hasPerformedInitialLayout : Bool // +0x48 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x79da0  @objc TabBarSplitViewController.initWithCoder: <stripped>
-	0x79ed0  @objc TabBarSplitViewController.loadView <stripped>
-	0x79f00  @objc TabBarSplitViewController.childViewControllerForStatusBarStyle <stripped>
-	0x7a1b0  @objc TabBarSplitViewController.childViewControllerForStatusBarHidden <stripped>
-	0x7a1b0  @objc TabBarSplitViewController.childViewControllerForHomeIndicatorAutoHidden <stripped>
-	0x7a1f0  @objc TabBarSplitViewController.viewControllers <stripped>
-	0x7a2d0  @objc TabBarSplitViewController.setViewControllers: <stripped>
-	0x7bd80  @objc TabBarSplitViewController.traitCollectionDidChange: <stripped>
-	0x7bdd0  @objc TabBarSplitViewController.viewDidLoad <stripped>
-	0x7be20  @objc TabBarSplitViewController.viewWillAppear: <stripped>
-	0x7c0f0  @objc TabBarSplitViewController.viewDidAppear: <stripped>
-	0x7c130  @objc TabBarSplitViewController.viewDidLayoutSubviews <stripped>
-	0x7c1b0  @objc TabBarSplitViewController.viewWillTransitionToSize:withTransitionCoordinator: <stripped>
-	0x7c270  @objc TabBarSplitViewController.didReceiveMemoryWarning <stripped>
-	0x7c3a0  @objc TabBarSplitViewController.initWithNibName:bundle: <stripped>
-	0x7c440  @objc TabBarSplitViewController..cxx_destruct <stripped>
+	0x7b630  @objc TabBarSplitViewController.initWithCoder: <stripped>
+	0x7b760  @objc TabBarSplitViewController.loadView <stripped>
+	0x7b790  @objc TabBarSplitViewController.childViewControllerForStatusBarStyle <stripped>
+	0x7ba40  @objc TabBarSplitViewController.childViewControllerForStatusBarHidden <stripped>
+	0x7ba40  @objc TabBarSplitViewController.childViewControllerForHomeIndicatorAutoHidden <stripped>
+	0x7ba80  @objc TabBarSplitViewController.viewControllers <stripped>
+	0x7bb60  @objc TabBarSplitViewController.setViewControllers: <stripped>
+	0x7dd80  @objc TabBarSplitViewController.traitCollectionDidChange: <stripped>
+	0x7ddd0  @objc TabBarSplitViewController.viewDidLoad <stripped>
+	0x7de20  @objc TabBarSplitViewController.viewWillAppear: <stripped>
+	0x7e0f0  @objc TabBarSplitViewController.viewDidAppear: <stripped>
+	0x7e130  @objc TabBarSplitViewController.viewDidLayoutSubviews <stripped>
+	0x7e1b0  @objc TabBarSplitViewController.viewWillTransitionToSize:withTransitionCoordinator: <stripped>
+	0x7e270  @objc TabBarSplitViewController.didReceiveMemoryWarning <stripped>
+	0x7e3a0  @objc TabBarSplitViewController.initWithNibName:bundle: <stripped>
+	0x7e440  @objc TabBarSplitViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x79220  func <stripped> // getter 
-	0x79260  func <stripped> // setter 
-	0x792e0  func <stripped> // modifyCoroutine 
-	0x793d0  class func TabBarSplitViewController.__allocating_init(tabBarController:options:) // init 
+	0x7aab0  func <stripped> // getter 
+	0x7aaf0  func <stripped> // setter 
+	0x7ab70  func <stripped> // modifyCoroutine 
+	0x7ac60  class func TabBarSplitViewController.__allocating_init(tabBarController:options:) // init 
  }
 
  struct TeaUI.Options {
@@ -2408,8 +2429,8 @@
 	var layouts : [WindowToolbar2Layout] // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x87420  @objc WindowToolbar2Manager.init <stripped>
-	0x874f0  @objc WindowToolbar2Manager..cxx_destruct <stripped>
+	0x89d40  @objc WindowToolbar2Manager.init <stripped>
+	0x89e10  @objc WindowToolbar2Manager..cxx_destruct <stripped>
  }
 
  enum TeaUI.BlueprintLayoutCollectionPinTrait {
@@ -2468,11 +2489,11 @@
 	let contentView : UIView // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x8b6c0  @objc CardViewTitleView.initWithFrame: <stripped>
-	0x8b740  @objc CardViewTitleView.initWithCoder: <stripped>
-	0x8c130  @objc CardViewTitleView.layoutSubviews <stripped>
-	0x8c230  @objc CardViewTitleView.hitTest:withEvent: <stripped>
-	0x8c300  @objc CardViewTitleView..cxx_destruct <stripped>
+	0x8dfe0  @objc CardViewTitleView.initWithFrame: <stripped>
+	0x8e060  @objc CardViewTitleView.initWithCoder: <stripped>
+	0x8ea50  @objc CardViewTitleView.layoutSubviews <stripped>
+	0x8eb50  @objc CardViewTitleView.hitTest:withEvent: <stripped>
+	0x8ec20  @objc CardViewTitleView..cxx_destruct <stripped>
  }
 
  class TeaUI.BlueprintGutterViewManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2484,7 +2505,7 @@
 	var viewController : weak UIViewController? // +0x28 (0x8)
 
 	// Swift methods
-	0x8c570  class func BlueprintGutterViewManager.__allocating_init() // init 
+	0x8ee90  class func BlueprintGutterViewManager.__allocating_init() // init 
  }
 
  struct TeaUI.URLHandlerMatch {
@@ -2515,11 +2536,11 @@
 	var shineImageLayer : NonAnimatingLayer? // +0x78 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x8eb00  @objc ShineImageLayer.init <stripped>
-	0x8ed50  @objc ShineImageLayer.initWithLayer: <stripped>
-	0x8eda0  @objc ShineImageLayer.initWithCoder: <stripped>
-	0x8f720  @objc ShineImageLayer.layoutSublayers <stripped>
-	0x8f7f0  @objc ShineImageLayer..cxx_destruct <stripped>
+	0x91420  @objc ShineImageLayer.init <stripped>
+	0x91670  @objc ShineImageLayer.initWithLayer: <stripped>
+	0x916c0  @objc ShineImageLayer.initWithCoder: <stripped>
+	0x92040  @objc ShineImageLayer.layoutSublayers <stripped>
+	0x92110  @objc ShineImageLayer..cxx_destruct <stripped>
  }
 
  class TeaUI.BlueprintTableViewDelegate {
@@ -2573,12 +2594,12 @@
 	var scrollDebounce : Debounce<()>? // +0xb0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xa4560  @objc BarCompressionManager.voiceOverStatusDidChange <stripped>
-	0xa4a40  @objc BarCompressionManager.init <stripped>
-	0xa4ac0  @objc BarCompressionManager..cxx_destruct <stripped>
+	0xa6e30  @objc BarCompressionManager.voiceOverStatusDidChange <stripped>
+	0xa7310  @objc BarCompressionManager.init <stripped>
+	0xa7390  @objc BarCompressionManager..cxx_destruct <stripped>
 
 	// Swift methods
-	0xa30f0  class func BarCompressionManager.__allocating_init(applicationStateManager:) // init 
+	0xa59c0  class func BarCompressionManager.__allocating_init(applicationStateManager:) // init 
  }
 
  enum TeaUI.State {
@@ -2607,9 +2628,9 @@
 
  class TeaUI.EditingHeaderFooterTableView : TSTableView {
 	// ObjC -> Swift bridged methods
-	0xa6760  @objc EditingHeaderFooterTableView.setEditing:animated: <stripped>
-	0xa68f0  @objc EditingHeaderFooterTableView.initWithFrame:style: <stripped>
-	0xa6a20  @objc EditingHeaderFooterTableView.initWithCoder: <stripped>
+	0xa9030  @objc EditingHeaderFooterTableView.setEditing:animated: <stripped>
+	0xa91c0  @objc EditingHeaderFooterTableView.initWithFrame:style: <stripped>
+	0xa92f0  @objc EditingHeaderFooterTableView.initWithCoder: <stripped>
  }
 
  enum TeaUI.BlueprintViewAction {
@@ -2706,14 +2727,14 @@
 	let application : UIApplication
 
 	// ObjC -> Swift bridged methods
-	0xaf0c0  @objc ApplicationBackgroundFetchScheduler.initWithApplication: <stripped>
-	0xaf150  @objc ApplicationBackgroundFetchScheduler.setMinimumBackgroundFetchInterval: <stripped>
-	0xaf180  @objc ApplicationBackgroundFetchScheduler.prepareForUseWithApplicationDelegate: <stripped>
-	0xaf1c0  @objc ApplicationBackgroundFetchScheduler.init <stripped>
-	0xaf210  @objc ApplicationBackgroundFetchScheduler..cxx_destruct <stripped>
+	0xb1990  @objc ApplicationBackgroundFetchScheduler.initWithApplication: <stripped>
+	0xb1a20  @objc ApplicationBackgroundFetchScheduler.setMinimumBackgroundFetchInterval: <stripped>
+	0xb1a50  @objc ApplicationBackgroundFetchScheduler.prepareForUseWithApplicationDelegate: <stripped>
+	0xb1a90  @objc ApplicationBackgroundFetchScheduler.init <stripped>
+	0xb1ae0  @objc ApplicationBackgroundFetchScheduler..cxx_destruct <stripped>
 
 	// Swift methods
-	0xaefd0  class func ApplicationBackgroundFetchScheduler.__allocating_init(application:) // init 
+	0xb18a0  class func ApplicationBackgroundFetchScheduler.__allocating_init(application:) // init 
  }
 
  class TeaUI.BackgroundTasksBackgroundFetchScheduler : NSObject /usr/lib/libobjc.A.dylib {
@@ -2724,14 +2745,14 @@
 	var minimumBackgroundFetchInterval : Double
 
 	// ObjC -> Swift bridged methods
-	0xaf400  @objc BackgroundTasksBackgroundFetchScheduler.initWithApplication:taskIdentifier: <stripped>
-	0xafa30  @objc BackgroundTasksBackgroundFetchScheduler.setMinimumBackgroundFetchInterval: <stripped>
-	0xafe50  @objc BackgroundTasksBackgroundFetchScheduler.prepareForUseWithApplicationDelegate: <stripped>
-	0xafef0  @objc BackgroundTasksBackgroundFetchScheduler.init <stripped>
-	0xaffb0  @objc BackgroundTasksBackgroundFetchScheduler..cxx_destruct <stripped>
+	0xb1cd0  @objc BackgroundTasksBackgroundFetchScheduler.initWithApplication:taskIdentifier: <stripped>
+	0xb2300  @objc BackgroundTasksBackgroundFetchScheduler.setMinimumBackgroundFetchInterval: <stripped>
+	0xb2720  @objc BackgroundTasksBackgroundFetchScheduler.prepareForUseWithApplicationDelegate: <stripped>
+	0xb27c0  @objc BackgroundTasksBackgroundFetchScheduler.init <stripped>
+	0xb2880  @objc BackgroundTasksBackgroundFetchScheduler..cxx_destruct <stripped>
 
 	// Swift methods
-	0xaf230  class func BackgroundTasksBackgroundFetchScheduler.__allocating_init(application:taskIdentifier:) // init 
+	0xb1b00  class func BackgroundTasksBackgroundFetchScheduler.__allocating_init(application:taskIdentifier:) // init 
  }
 
  class TeaUI.Command {
@@ -2796,18 +2817,18 @@
 	var previousSizeLock : UnfairLock // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xb2ec0  @objc Plugin.initializeWithCompletion: <stripped>
-	0xb32a0  @objc Plugin.relayoutWithCompletion: <stripped>
-	0xb3390  @objc Plugin.init <stripped>
-	0xb3410  @objc Plugin..cxx_destruct <stripped>
+	0xb5790  @objc Plugin.initializeWithCompletion: <stripped>
+	0xb5b70  @objc Plugin.relayoutWithCompletion: <stripped>
+	0xb5c60  @objc Plugin.init <stripped>
+	0xb5ce0  @objc Plugin..cxx_destruct <stripped>
 
 	// Swift methods
-	0xb27f0  func <stripped> // getter 
-	0xb2830  func <stripped> // setter 
-	0xb2880  func <stripped> // modifyCoroutine 
-	0xb2960  class func Plugin.__allocating_init(identifier:viewController:) // init 
-	0xb2a30  func <stripped> // method 
-	0xb2ee0  func <stripped> // method 
+	0xb50c0  func <stripped> // getter 
+	0xb5100  func <stripped> // setter 
+	0xb5150  func <stripped> // modifyCoroutine 
+	0xb5230  class func Plugin.__allocating_init(identifier:viewController:) // init 
+	0xb5300  func <stripped> // method 
+	0xb57b0  func <stripped> // method 
  }
 
  struct TeaUI.BlueprintImpressionManagerOptions {
@@ -2864,27 +2885,27 @@
 	var _backgroundColor : UIColor? // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xbefb0  @objc PillButton.initWithFrame: <stripped>
-	0xbf030  @objc PillButton.initWithCoder: <stripped>
-	0xbf1f0  @objc PillButton.layoutSubviews <stripped>
-	0xbf220  @objc PillButton.sizeThatFits: <stripped>
-	0xbf2e0  @objc PillButton.backgroundColor <stripped>
-	0xbf3c0  @objc PillButton.setBackgroundColor: <stripped>
-	0xbf490  @objc PillButton.isHighlighted <stripped>
-	0xbf4b0  @objc PillButton.setHighlighted: <stripped>
-	0xbf650  @objc PillButton.isEnabled <stripped>
-	0xbf6d0  @objc PillButton.setEnabled: <stripped>
-	0xbf8d0  @objc PillButton..cxx_destruct <stripped>
+	0xc1880  @objc PillButton.initWithFrame: <stripped>
+	0xc1900  @objc PillButton.initWithCoder: <stripped>
+	0xc1ac0  @objc PillButton.layoutSubviews <stripped>
+	0xc1af0  @objc PillButton.sizeThatFits: <stripped>
+	0xc1bb0  @objc PillButton.backgroundColor <stripped>
+	0xc1c90  @objc PillButton.setBackgroundColor: <stripped>
+	0xc1d60  @objc PillButton.isHighlighted <stripped>
+	0xc1d80  @objc PillButton.setHighlighted: <stripped>
+	0xc1f20  @objc PillButton.isEnabled <stripped>
+	0xc1fa0  @objc PillButton.setEnabled: <stripped>
+	0xc21a0  @objc PillButton..cxx_destruct <stripped>
 
 	// Swift methods
-	0xbebf0  func <stripped> // getter 
-	0xbec30  func <stripped> // setter 
-	0xbec80  func <stripped> // modifyCoroutine 
+	0xc14c0  func <stripped> // getter 
+	0xc1500  func <stripped> // setter 
+	0xc1550  func <stripped> // modifyCoroutine 
  }
 
  class TeaUI.BlueprintLayoutVisualRankBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib, BlueprintLayoutVisualRankBuilderType {
 	// Swift methods
-	0xbfa60  class func BlueprintLayoutVisualRankBuilder.__allocating_init() // init 
+	0xc2330  class func BlueprintLayoutVisualRankBuilder.__allocating_init() // init 
  }
 
  class TeaUI.CardSplitViewController : UISplitViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2895,22 +2916,22 @@
 	let eventManager : Event // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xc0ed0  @objc CardSplitViewController.initWithCoder: <stripped>
-	0xc0fa0  @objc CardSplitViewController.loadView <stripped>
-	0xc1080  @objc CardSplitViewController.viewDidLoad <stripped>
-	0xc10d0  @objc CardSplitViewController.viewWillAppear: <stripped>
-	0xc11c0  @objc CardSplitViewController.viewDidAppear: <stripped>
-	0xc1250  @objc CardSplitViewController.viewControllers <stripped>
-	0xc1330  @objc CardSplitViewController.setViewControllers: <stripped>
-	0xc1f50  @objc CardSplitViewController.traitCollectionDidChange: <stripped>
-	0xc2080  @objc CardSplitViewController.childViewControllerForStatusBarStyle <stripped>
-	0xc2330  @objc CardSplitViewController.childViewControllerForStatusBarHidden <stripped>
-	0xc2370  @objc CardSplitViewController.viewDidLayoutSubviews <stripped>
-	0xc2490  @objc CardSplitViewController.initWithNibName:bundle: <stripped>
-	0xc2530  @objc CardSplitViewController..cxx_destruct <stripped>
+	0xc37a0  @objc CardSplitViewController.initWithCoder: <stripped>
+	0xc3870  @objc CardSplitViewController.loadView <stripped>
+	0xc3950  @objc CardSplitViewController.viewDidLoad <stripped>
+	0xc39a0  @objc CardSplitViewController.viewWillAppear: <stripped>
+	0xc3a90  @objc CardSplitViewController.viewDidAppear: <stripped>
+	0xc3b20  @objc CardSplitViewController.viewControllers <stripped>
+	0xc3c00  @objc CardSplitViewController.setViewControllers: <stripped>
+	0xc4820  @objc CardSplitViewController.traitCollectionDidChange: <stripped>
+	0xc4950  @objc CardSplitViewController.childViewControllerForStatusBarStyle <stripped>
+	0xc4c00  @objc CardSplitViewController.childViewControllerForStatusBarHidden <stripped>
+	0xc4c40  @objc CardSplitViewController.viewDidLayoutSubviews <stripped>
+	0xc4d60  @objc CardSplitViewController.initWithNibName:bundle: <stripped>
+	0xc4e00  @objc CardSplitViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xc0aa0  class func CardSplitViewController.__allocating_init(cardContainerController:) // init 
+	0xc3370  class func CardSplitViewController.__allocating_init(cardContainerController:) // init 
  }
 
  enum TeaUI.Event {
@@ -2953,17 +2974,17 @@
 	let onTap : Action<()> // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xcafc0  @objc TappableLabel.initWithFrame: <stripped>
-	0xcb180  @objc TappableLabel.initWithCoder: <stripped>
-	0xcb230  @objc TappableLabel..cxx_destruct <stripped>
+	0xcd890  @objc TappableLabel.initWithFrame: <stripped>
+	0xcda50  @objc TappableLabel.initWithCoder: <stripped>
+	0xcdb00  @objc TappableLabel..cxx_destruct <stripped>
  }
 
  class TeaUI.SettingsNavigationController : UINavigationController /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0xcb8f0  @objc SettingsNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
-	0xcb9f0  @objc SettingsNavigationController.initWithRootViewController: <stripped>
-	0xcbb10  @objc SettingsNavigationController.initWithNibName:bundle: <stripped>
-	0xcbc50  @objc SettingsNavigationController.initWithCoder: <stripped>
+	0xce1c0  @objc SettingsNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
+	0xce2c0  @objc SettingsNavigationController.initWithRootViewController: <stripped>
+	0xce3e0  @objc SettingsNavigationController.initWithNibName:bundle: <stripped>
+	0xce520  @objc SettingsNavigationController.initWithCoder: <stripped>
  }
 
  class TeaUI.SettingsViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2974,17 +2995,17 @@
 	let tableView : UITableView
 
 	// ObjC -> Swift bridged methods
-	0xcbe10  @objc SettingsViewController.initWithCoder: <stripped>
-	0xcc3c0  @objc SettingsViewController.viewDidLoad <stripped>
-	0xcc3f0  @objc SettingsViewController.viewWillAppear: <stripped>
-	0xcc480  @objc SettingsViewController.viewWillDisappear: <stripped>
-	0xcc510  @objc SettingsViewController.viewDidLayoutSubviews <stripped>
-	0xcc610  @objc SettingsViewController.doDone <stripped>
-	0xcc760  @objc SettingsViewController.initWithNibName:bundle: <stripped>
-	0xcc7f0  @objc SettingsViewController..cxx_destruct <stripped>
+	0xce6e0  @objc SettingsViewController.initWithCoder: <stripped>
+	0xcec90  @objc SettingsViewController.viewDidLoad <stripped>
+	0xcecc0  @objc SettingsViewController.viewWillAppear: <stripped>
+	0xced50  @objc SettingsViewController.viewWillDisappear: <stripped>
+	0xcede0  @objc SettingsViewController.viewDidLayoutSubviews <stripped>
+	0xceee0  @objc SettingsViewController.doDone <stripped>
+	0xcf030  @objc SettingsViewController.initWithNibName:bundle: <stripped>
+	0xcf0c0  @objc SettingsViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xcb790  class func SettingsViewController.__allocating_init(layout:actionHandler:) // init 
+	0xce060  class func SettingsViewController.__allocating_init(layout:actionHandler:) // init 
  }
 
  enum TeaUI.Scaling {
@@ -3009,12 +3030,12 @@
 	var $__lazy_storage_$_backing : UIVisualEffectView? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xd7f20  @objc CloseButton.init <stripped>
-	0xd7f40  @objc CloseButton.initWithCoder: <stripped>
-	0xd8000  @objc CloseButton.intrinsicContentSize <stripped>
-	0xd80f0  @objc CloseButton.sizeThatFits: <stripped>
-	0xd8210  @objc CloseButton.initWithFrame: <stripped>
-	0xd8290  @objc CloseButton..cxx_destruct <stripped>
+	0xda7f0  @objc CloseButton.init <stripped>
+	0xda810  @objc CloseButton.initWithCoder: <stripped>
+	0xda8d0  @objc CloseButton.intrinsicContentSize <stripped>
+	0xda9c0  @objc CloseButton.sizeThatFits: <stripped>
+	0xdaae0  @objc CloseButton.initWithFrame: <stripped>
+	0xdab60  @objc CloseButton..cxx_destruct <stripped>
  }
 
  enum TeaUI.Style {
@@ -3030,10 +3051,10 @@
 	var gradientDescriptor : GradientDescriptor? // +0x8 (0x31)
 
 	// ObjC -> Swift bridged methods
-	0xd9060  @objc GradientView.traitCollectionDidChange: <stripped>
-	0xd91d0  @objc GradientView.initWithFrame: <stripped>
-	0xd9380  @objc GradientView.initWithCoder: <stripped>
-	0xd9490  @objc GradientView..cxx_destruct <stripped>
+	0xdb930  @objc GradientView.traitCollectionDidChange: <stripped>
+	0xdbaa0  @objc GradientView.initWithFrame: <stripped>
+	0xdbc50  @objc GradientView.initWithCoder: <stripped>
+	0xdbd60  @objc GradientView..cxx_destruct <stripped>
  }
 
  struct TeaUI.Menu {
@@ -3061,14 +3082,14 @@
 	var gradientDescriptor : GradientDescriptor? // +0x8 (0x31)
 
 	// ObjC -> Swift bridged methods
-	0xda250  @objc GradientSectionDecorationView.willMoveToSuperview: <stripped>
-	0xda3c0  @objc GradientSectionDecorationView.didMoveToSuperview <stripped>
-	0xdac90  @objc GradientSectionDecorationView.applyLayoutAttributes: <stripped>
-	0xdad40  @objc GradientSectionDecorationView.traitCollectionDidChange: <stripped>
-	0xdadf0  @objc GradientSectionDecorationView.gutterViewBoundsDidChange <stripped>
-	0xdaf70  @objc GradientSectionDecorationView.initWithFrame: <stripped>
-	0xdb120  @objc GradientSectionDecorationView.initWithCoder: <stripped>
-	0xdb4c0  @objc GradientSectionDecorationView..cxx_destruct <stripped>
+	0xdcb20  @objc GradientSectionDecorationView.willMoveToSuperview: <stripped>
+	0xdcc90  @objc GradientSectionDecorationView.didMoveToSuperview <stripped>
+	0xdd560  @objc GradientSectionDecorationView.applyLayoutAttributes: <stripped>
+	0xdd610  @objc GradientSectionDecorationView.traitCollectionDidChange: <stripped>
+	0xdd6c0  @objc GradientSectionDecorationView.gutterViewBoundsDidChange <stripped>
+	0xdd840  @objc GradientSectionDecorationView.initWithFrame: <stripped>
+	0xdd9f0  @objc GradientSectionDecorationView.initWithCoder: <stripped>
+	0xddd90  @objc GradientSectionDecorationView..cxx_destruct <stripped>
  }
 
  struct TeaUI.BlueprintPipelineProcessingResult {
@@ -3098,7 +3119,7 @@
 	var onDidHideBlock : (_:)? // +0x60 (0x10)
 
 	// Swift methods
-	0xf1ed0  class func KeyboardObserver.__allocating_init() // init 
+	0xf50b0  class func KeyboardObserver.__allocating_init() // init 
  }
 
  class TeaUI.SettingActionHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SettingActionHandlerType {
@@ -3107,7 +3128,7 @@
 	var actions : UniqueCollection<SettingAction> // +0x0 (0x0)
 
 	// Swift methods
-	0xf3020  class func SettingActionHandler.__allocating_init() // init 
+	0xf6200  class func SettingActionHandler.__allocating_init() // init 
  }
 
  class TeaUI.TouchInsetsButton : UIButton /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3116,15 +3137,15 @@
 	var touchInsets : UIEdgeInsets // +0x8 (0x20)
 
 	// ObjC -> Swift bridged methods
-	0xf50a0  @objc TouchInsetsButton.pointInside:withEvent: <stripped>
-	0xf5350  @objc TouchInsetsButton.layoutSubviews <stripped>
-	0xf5450  @objc TouchInsetsButton.initWithFrame: <stripped>
-	0xf55e0  @objc TouchInsetsButton.initWithCoder: <stripped>
+	0xf8280  @objc TouchInsetsButton.pointInside:withEvent: <stripped>
+	0xf8530  @objc TouchInsetsButton.layoutSubviews <stripped>
+	0xf8630  @objc TouchInsetsButton.initWithFrame: <stripped>
+	0xf87c0  @objc TouchInsetsButton.initWithCoder: <stripped>
 
 	// Swift methods
-	0xf4f30  func <stripped> // getter 
-	0xf4f80  func <stripped> // setter 
-	0xf4ff0  func <stripped> // modifyCoroutine 
+	0xf8110  func <stripped> // getter 
+	0xf8160  func <stripped> // setter 
+	0xf81d0  func <stripped> // modifyCoroutine 
  }
 
  class TeaUI.Debounce {
@@ -3155,11 +3176,11 @@
 	var _backgroundColor : UIColor?
 
 	// ObjC -> Swift bridged methods
-	0xf8120  @objc ImageView.backgroundColor <stripped>
-	0xf81d0  @objc ImageView.setBackgroundColor: <stripped>
-	0xf8790  @objc ImageView.initWithFrame: <stripped>
-	0xf87c0  @objc ImageView.initWithCoder: <stripped>
-	0xf8800  @objc ImageView..cxx_destruct <stripped>
+	0xfb300  @objc ImageView.backgroundColor <stripped>
+	0xfb3b0  @objc ImageView.setBackgroundColor: <stripped>
+	0xfb970  @objc ImageView.initWithFrame: <stripped>
+	0xfb9a0  @objc ImageView.initWithCoder: <stripped>
+	0xfb9e0  @objc ImageView..cxx_destruct <stripped>
  }
 
  class TeaUI.ImageViewLayer : CALayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
@@ -3168,24 +3189,24 @@
 	var coordinateWithLayer : CALayer?
 
 	// ObjC -> Swift bridged methods
-	0xf9d90  @objc ImageViewLayer.cornerRadius <stripped>
-	0xf9db0  @objc ImageViewLayer.setCornerRadius: <stripped>
-	0xf9eb0  @objc ImageViewLayer.maskedCorners <stripped>
-	0xf9f00  @objc ImageViewLayer.setMaskedCorners: <stripped>
-	0xfa000  @objc ImageViewLayer.shadowPath <stripped>
-	0xfa020  @objc ImageViewLayer.setShadowPath: <stripped>
-	0xfa050  @objc ImageViewLayer.shadowOffset <stripped>
-	0xfa0a0  @objc ImageViewLayer.setShadowOffset: <stripped>
-	0xfa130  @objc ImageViewLayer.shadowOpacity <stripped>
-	0xfa180  @objc ImageViewLayer.setShadowOpacity: <stripped>
-	0xfa210  @objc ImageViewLayer.shadowColor <stripped>
-	0xfa2a0  @objc ImageViewLayer.setShadowColor: <stripped>
-	0xfa390  @objc ImageViewLayer.shadowRadius <stripped>
-	0xfa400  @objc ImageViewLayer.setShadowRadius: <stripped>
-	0xfa490  @objc ImageViewLayer.init <stripped>
-	0xfa4f0  @objc ImageViewLayer.initWithLayer: <stripped>
-	0xfa5c0  @objc ImageViewLayer.initWithCoder: <stripped>
-	0xfa6b0  @objc ImageViewLayer..cxx_destruct <stripped>
+	0xfcf70  @objc ImageViewLayer.cornerRadius <stripped>
+	0xfcf90  @objc ImageViewLayer.setCornerRadius: <stripped>
+	0xfd090  @objc ImageViewLayer.maskedCorners <stripped>
+	0xfd0e0  @objc ImageViewLayer.setMaskedCorners: <stripped>
+	0xfd1e0  @objc ImageViewLayer.shadowPath <stripped>
+	0xfd200  @objc ImageViewLayer.setShadowPath: <stripped>
+	0xfd230  @objc ImageViewLayer.shadowOffset <stripped>
+	0xfd280  @objc ImageViewLayer.setShadowOffset: <stripped>
+	0xfd310  @objc ImageViewLayer.shadowOpacity <stripped>
+	0xfd360  @objc ImageViewLayer.setShadowOpacity: <stripped>
+	0xfd3f0  @objc ImageViewLayer.shadowColor <stripped>
+	0xfd480  @objc ImageViewLayer.setShadowColor: <stripped>
+	0xfd570  @objc ImageViewLayer.shadowRadius <stripped>
+	0xfd5e0  @objc ImageViewLayer.setShadowRadius: <stripped>
+	0xfd670  @objc ImageViewLayer.init <stripped>
+	0xfd6d0  @objc ImageViewLayer.initWithLayer: <stripped>
+	0xfd7a0  @objc ImageViewLayer.initWithCoder: <stripped>
+	0xfd890  @objc ImageViewLayer..cxx_destruct <stripped>
  }
 
  class TeaUI.ButtonWindowToolbar2ItemHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ButtonWindowToolbar2ItemHandlerType {
@@ -3222,17 +3243,17 @@
 	let eventManager : Trigger // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xfbf00  @objc LazyViewController.initWithCoder: <stripped>
-	0xfc010  @objc LazyViewController.viewDidLoad <stripped>
-	0xfc100  @objc LazyViewController.viewWillAppear: <stripped>
-	0xfc2a0  @objc LazyViewController.viewWillLayoutSubviews <stripped>
-	0xfc2d0  @objc LazyViewController.childViewControllerForStatusBarHidden <stripped>
-	0xfc2d0  @objc LazyViewController.childViewControllerForStatusBarStyle <stripped>
-	0xfc3d0  @objc LazyViewController.initWithNibName:bundle: <stripped>
-	0xfc450  @objc LazyViewController..cxx_destruct <stripped>
+	0xff0e0  @objc LazyViewController.initWithCoder: <stripped>
+	0xff1f0  @objc LazyViewController.viewDidLoad <stripped>
+	0xff2e0  @objc LazyViewController.viewWillAppear: <stripped>
+	0xff480  @objc LazyViewController.viewWillLayoutSubviews <stripped>
+	0xff4b0  @objc LazyViewController.childViewControllerForStatusBarHidden <stripped>
+	0xff4b0  @objc LazyViewController.childViewControllerForStatusBarStyle <stripped>
+	0xff5b0  @objc LazyViewController.initWithNibName:bundle: <stripped>
+	0xff630  @objc LazyViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xfbcc0  class func LazyViewController.__allocating_init(identifier:trigger:_:) // init 
+	0xfeea0  class func LazyViewController.__allocating_init(identifier:trigger:_:) // init 
  }
 
  enum TeaUI.Trigger {
@@ -3251,10 +3272,10 @@
 	var styling : Styling // +0x30 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0xfddf0  @objc SelectedBackgroundView.initWithFrame: <stripped>
-	0xfde70  @objc SelectedBackgroundView.layoutSubviews <stripped>
-	0xfdf30  @objc SelectedBackgroundView.initWithCoder: <stripped>
-	0xfdfb0  @objc SelectedBackgroundView.traitCollectionDidChange: <stripped>
+	0x100fd0  @objc SelectedBackgroundView.initWithFrame: <stripped>
+	0x101050  @objc SelectedBackgroundView.layoutSubviews <stripped>
+	0x101110  @objc SelectedBackgroundView.initWithCoder: <stripped>
+	0x101190  @objc SelectedBackgroundView.traitCollectionDidChange: <stripped>
  }
 
  enum TeaUI.Styling {
@@ -3293,13 +3314,13 @@
 	let textField : UITextField // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xfeaf0  @objc TextFieldTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0xfeb40  @objc TextFieldTableViewCell.initWithCoder: <stripped>
-	0xfec70  @objc TextFieldTableViewCell.textFieldDidEndEditing: <stripped>
-	0xfed10  @objc TextFieldTableViewCell..cxx_destruct <stripped>
+	0x101cd0  @objc TextFieldTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x101d20  @objc TextFieldTableViewCell.initWithCoder: <stripped>
+	0x101e50  @objc TextFieldTableViewCell.textFieldDidEndEditing: <stripped>
+	0x101ef0  @objc TextFieldTableViewCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0xfebe0  func <stripped> // method 
+	0x101dc0  func <stripped> // method 
  }
 
  class TeaUI.BootstrapperViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3309,9 +3330,9 @@
 	var onboardingViewController : UIViewController? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xfef00  @objc BootstrapperViewController.initWithCoder: <stripped>
-	0xfef60  @objc BootstrapperViewController.initWithNibName:bundle: <stripped>
-	0xfefe0  @objc BootstrapperViewController..cxx_destruct <stripped>
+	0x1020e0  @objc BootstrapperViewController.initWithCoder: <stripped>
+	0x102140  @objc BootstrapperViewController.initWithNibName:bundle: <stripped>
+	0x1021c0  @objc BootstrapperViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3378,7 +3399,7 @@
 	let memoryCache : MemoryImageCache // +0x10 (0x8)
 
 	// Swift methods
-	0x113dd0  class func SharedImageCache.__allocating_init() // init 
+	0x1173b0  class func SharedImageCache.__allocating_init() // init 
  }
 
  enum TeaUI.ErrorPosition {
@@ -3395,15 +3416,17 @@
 	// Properties
 	var delegate : weak CardViewScrollViewCoordinatorDelegate? // +0x8 (0x10)
 	var isEnabled : Bool // +0x18 (0x1)
-	var scrollView : UIScrollView // +0x20 (0x8)
-	var scrollLock : ScrollLock // +0x28 (0x31)
+	var isTransitioning : Bool // +0x19 (0x1)
+	var trackingPollTimer : NSTimer? // +0x20 (0x8)
+	var scrollView : UIScrollView // +0x28 (0x8)
+	var scrollLock : ScrollLock // +0x30 (0x31)
 
 	// ObjC -> Swift bridged methods
-	0x115190  @objc CardViewScrollViewCoordinator.init <stripped>
-	0x115210  @objc CardViewScrollViewCoordinator..cxx_destruct <stripped>
+	0x1187a0  @objc CardViewScrollViewCoordinator.init <stripped>
+	0x118820  @objc CardViewScrollViewCoordinator..cxx_destruct <stripped>
 
 	// Swift methods
-	0x114be0  class func CardViewScrollViewCoordinator.__allocating_init(scrollView:) // init 
+	0x1181c0  class func CardViewScrollViewCoordinator.__allocating_init(scrollView:) // init 
  }
 
  enum TeaUI.ScrollLock {
@@ -3426,8 +3449,8 @@
 	let source : Source // +0x88 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x116aa0  @objc MotionData.init <stripped>
-	0x116b20  @objc MotionData..cxx_destruct <stripped>
+	0x11a440  @objc MotionData.init <stripped>
+	0x11a4c0  @objc MotionData..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3472,22 +3495,22 @@
 	var isMotionEnabled : Bool // +0x8 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x1183d0  @objc MotionContainerView.layoutSubviews <stripped>
-	0x118400  @objc MotionContainerView.transformWithMotionData: <stripped>
-	0x118490  @objc MotionContainerView.isMotionEnabled <stripped>
-	0x1184d0  @objc MotionContainerView.setIsMotionEnabled: <stripped>
-	0x118790  @objc MotionContainerView.initWithFrame: <stripped>
-	0x118910  @objc MotionContainerView.initWithCoder: <stripped>
+	0x11bd70  @objc MotionContainerView.layoutSubviews <stripped>
+	0x11bda0  @objc MotionContainerView.transformWithMotionData: <stripped>
+	0x11be30  @objc MotionContainerView.isMotionEnabled <stripped>
+	0x11be70  @objc MotionContainerView.setIsMotionEnabled: <stripped>
+	0x11c130  @objc MotionContainerView.initWithFrame: <stripped>
+	0x11c2b0  @objc MotionContainerView.initWithCoder: <stripped>
 
 	// Swift methods
-	0x117440  func <stripped> // method 
-	0x117490  func <stripped> // getter 
-	0x1174c0  func <stripped> // setter 
-	0x117540  func <stripped> // modifyCoroutine 
-	0x1175f0  func <stripped> // method 
-	0x117850  func <stripped> // method 
-	0x117a90  func <stripped> // method 
-	0x117d00  func <stripped> // method 
+	0x11ade0  func <stripped> // method 
+	0x11ae30  func <stripped> // getter 
+	0x11ae60  func <stripped> // setter 
+	0x11aee0  func <stripped> // modifyCoroutine 
+	0x11af90  func <stripped> // method 
+	0x11b1f0  func <stripped> // method 
+	0x11b430  func <stripped> // method 
+	0x11b6a0  func <stripped> // method 
  }
 
  class TeaUI.RightArrow : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3496,10 +3519,10 @@
 	var arrowColor : UIColor? // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x118e30  @objc RightArrow.initWithFrame: <stripped>
-	0x118fb0  @objc RightArrow.initWithCoder: <stripped>
-	0x1193f0  @objc RightArrow.drawRect: <stripped>
-	0x1194b0  @objc RightArrow..cxx_destruct <stripped>
+	0x11c7b0  @objc RightArrow.initWithFrame: <stripped>
+	0x11c930  @objc RightArrow.initWithCoder: <stripped>
+	0x11cd70  @objc RightArrow.drawRect: <stripped>
+	0x11ce30  @objc RightArrow..cxx_destruct <stripped>
  }
 
  class TeaUI.BarView : UIVisualEffectView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3511,10 +3534,10 @@
 	let separatorView : UIView // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x119a90  @objc BarView.initWithEffect: <stripped>
-	0x119ad0  @objc BarView.initWithCoder: <stripped>
-	0x119e40  @objc BarView.layoutSubviews <stripped>
-	0x119ec0  @objc BarView..cxx_destruct <stripped>
+	0x11d410  @objc BarView.initWithEffect: <stripped>
+	0x11d450  @objc BarView.initWithCoder: <stripped>
+	0x11d7c0  @objc BarView.layoutSubviews <stripped>
+	0x11d840  @objc BarView..cxx_destruct <stripped>
  }
 
  enum TeaUI.BlueprintPipelineError {
@@ -3552,7 +3575,7 @@
 	var coverView : UIView? // +0x68 (0x8)
 
 	// Swift methods
-	0x132460  class func CoverViewManager.__allocating_init() // init 
+	0x136580  class func CoverViewManager.__allocating_init() // init 
  }
 
  struct TeaUI.BlueprintLayoutSection {
@@ -3590,8 +3613,8 @@
  class TeaUI.BlueprintCollectionViewDataSource {
  class TeaUI.HiddenView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x136c70  @objc HiddenView.initWithFrame: <stripped>
-	0x136cf0  @objc HiddenView.initWithCoder: <stripped>
+	0x13b090  @objc HiddenView.initWithFrame: <stripped>
+	0x13b110  @objc HiddenView.initWithCoder: <stripped>
  }
 
  struct TeaUI.BlueprintLayoutOptions {
@@ -3642,7 +3665,7 @@
 	let appTraitEnvironmentProvider : () // +0x40 (0x10)
 
 	// Swift methods
-	0x1396d0  class func BlueprintLayoutOptionsProvider.__allocating_init(view:contentSizeCategoryProvider:appTraitEnvironmentProvider:) // init 
+	0x13dbd0  class func BlueprintLayoutOptionsProvider.__allocating_init(view:contentSizeCategoryProvider:appTraitEnvironmentProvider:) // init 
  }
 
  struct TeaUI.BlueprintLayoutCollectionPinAdjuster {
@@ -3706,13 +3729,13 @@
 	var deferringGroup : OS_dispatch_group // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1415a0  @objc Bootstrapper.startBootstrappingWithWindow:shouldOnboard: <stripped>
-	0x141ae0  @objc Bootstrapper.afterBootstrapOnQueue:runBootstrapCallbackBlock: <stripped>
-	0x141ce0  @objc Bootstrapper.init <stripped>
-	0x141d70  @objc Bootstrapper..cxx_destruct <stripped>
+	0x145aa0  @objc Bootstrapper.startBootstrappingWithWindow:shouldOnboard: <stripped>
+	0x145fe0  @objc Bootstrapper.afterBootstrapOnQueue:runBootstrapCallbackBlock: <stripped>
+	0x1461e0  @objc Bootstrapper.init <stripped>
+	0x146270  @objc Bootstrapper..cxx_destruct <stripped>
 
 	// Swift methods
-	0x140da0  class func Bootstrapper.__allocating_init(mainViewControllerFactory:onboardingViewControllerFactory:onboardingViewDismissalAnimator:) // init 
+	0x1452a0  class func Bootstrapper.__allocating_init(mainViewControllerFactory:onboardingViewControllerFactory:onboardingViewDismissalAnimator:) // init 
  }
 
  enum TeaUI.BlueprintImpressionTrigger {
@@ -3784,18 +3807,18 @@
 	var direction : SegmentedColorViewDirection // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x145140  @objc SegmentedColorView.startColor <stripped>
-	0x145180  @objc SegmentedColorView.setStartColor: <stripped>
-	0x1452f0  @objc SegmentedColorView.endColor <stripped>
-	0x1453a0  @objc SegmentedColorView.setEndColor: <stripped>
-	0x1456d0  @objc SegmentedColorView.numberOfSegments <stripped>
-	0x145710  @objc SegmentedColorView.setNumberOfSegments: <stripped>
-	0x1458f0  @objc SegmentedColorView.direction <stripped>
-	0x145990  @objc SegmentedColorView.setDirection: <stripped>
-	0x145d80  @objc SegmentedColorView.initWithFrame: <stripped>
-	0x145db0  @objc SegmentedColorView.initWithCoder: <stripped>
-	0x146400  @objc SegmentedColorView.drawRect: <stripped>
-	0x1464c0  @objc SegmentedColorView..cxx_destruct <stripped>
+	0x149640  @objc SegmentedColorView.startColor <stripped>
+	0x149680  @objc SegmentedColorView.setStartColor: <stripped>
+	0x1497f0  @objc SegmentedColorView.endColor <stripped>
+	0x1498a0  @objc SegmentedColorView.setEndColor: <stripped>
+	0x149bd0  @objc SegmentedColorView.numberOfSegments <stripped>
+	0x149c10  @objc SegmentedColorView.setNumberOfSegments: <stripped>
+	0x149df0  @objc SegmentedColorView.direction <stripped>
+	0x149e90  @objc SegmentedColorView.setDirection: <stripped>
+	0x14a280  @objc SegmentedColorView.initWithFrame: <stripped>
+	0x14a2b0  @objc SegmentedColorView.initWithCoder: <stripped>
+	0x14a900  @objc SegmentedColorView.drawRect: <stripped>
+	0x14a9c0  @objc SegmentedColorView..cxx_destruct <stripped>
  }
 
  class TeaUI.BlueprintCollectionViewLayout {
@@ -3819,7 +3842,7 @@
 
  class TeaUI.RendererAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x14a3f0  @objc RendererAssembly.init <stripped>
+	0x14e8f0  @objc RendererAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -3830,8 +3853,8 @@
 	var delegate : weak TUMotionManagerObserver? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x14a8b0  @objc MotionManagerObserverProxy.motionManager:didUpdateMotionData: <stripped>
-	0x14a960  @objc MotionManagerObserverProxy.motionManager:motionEnabled: <stripped>
+	0x14edb0  @objc MotionManagerObserverProxy.motionManager:didUpdateMotionData: <stripped>
+	0x14ee60  @objc MotionManagerObserverProxy.motionManager:motionEnabled: <stripped>
 
 	// Swift methods
  }
@@ -3877,9 +3900,9 @@
 	var environment : AppEnvironment
 
 	// Swift methods
-	0x14bc60  func <stripped> // getter 
-	0x14bc90  class func App.__allocating_init(application:monitor:environment:) // init 
-	0x14bd50  func <stripped> // getter 
+	0x150160  func <stripped> // getter 
+	0x150190  class func App.__allocating_init(application:monitor:environment:) // init 
+	0x150250  func <stripped> // getter 
  }
 
  enum TeaUI.AppMonitorEvent { }
@@ -3892,21 +3915,21 @@
 	var onWindowWillBecomeForegroundBlock : ()?
 
 	// ObjC -> Swift bridged methods
-	0x14bfe0  @objc AppMonitor.isActive <stripped>
-	0x14c050  @objc AppMonitor.setIsActive: <stripped>
-	0x14c1e0  @objc AppMonitor.onWindowDidBecomeBackgroundWithBlock: <stripped>
-	0x14c270  @objc AppMonitor.onWindowWillBecomeForegroundWithBlock: <stripped>
-	0x14c3c0  @objc AppMonitor.triggerWithEvent: <stripped>
-	0x14c4b0  @objc AppMonitor.init <stripped>
-	0x14c590  @objc AppMonitor..cxx_destruct <stripped>
+	0x1504e0  @objc AppMonitor.isActive <stripped>
+	0x150550  @objc AppMonitor.setIsActive: <stripped>
+	0x1506e0  @objc AppMonitor.onWindowDidBecomeBackgroundWithBlock: <stripped>
+	0x150770  @objc AppMonitor.onWindowWillBecomeForegroundWithBlock: <stripped>
+	0x1508c0  @objc AppMonitor.triggerWithEvent: <stripped>
+	0x1509b0  @objc AppMonitor.init <stripped>
+	0x150a90  @objc AppMonitor..cxx_destruct <stripped>
 
 	// Swift methods
-	0x14c020  func <stripped> // getter 
-	0x14c0b0  func <stripped> // setter 
-	0x14c170  func <stripped> // modifyCoroutine 
-	0x14c1c0  func <stripped> // method 
-	0x14c200  func <stripped> // method 
-	0x14c320  func <stripped> // method 
+	0x150520  func <stripped> // getter 
+	0x1505b0  func <stripped> // setter 
+	0x150670  func <stripped> // modifyCoroutine 
+	0x1506c0  func <stripped> // method 
+	0x150700  func <stripped> // method 
+	0x150820  func <stripped> // method 
  }
 
  class TeaUI.CachedFont : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3916,10 +3939,10 @@
 	var cachedFont : UIFont? // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x14cd90  @objc CachedFont.contentSizeCategoryDidChange: <stripped>
+	0x151290  @objc CachedFont.contentSizeCategoryDidChange: <stripped>
 
 	// Swift methods
-	0x14cbf0  class func CachedFont.__allocating_init(_:) // init 
+	0x1510f0  class func CachedFont.__allocating_init(_:) // init 
  }
 
  class TeaUI.DebugDataSource : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3928,9 +3951,9 @@
 	var sections : UniqueCollection<DebugSection> // +0x0 (0x0)
 
 	// Swift methods
-	0x14cf20  class func DebugDataSource.__allocating_init() // init 
-	0x14d280  func <stripped> // method 
-	0x14d290  func <stripped> // method 
+	0x151420  class func DebugDataSource.__allocating_init() // init 
+	0x151780  func <stripped> // method 
+	0x151790  func <stripped> // method 
  }
 
  enum TeaUI.CommandState {
@@ -3951,11 +3974,11 @@
 	let imageRenderingMode : UIImageRenderingMode // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1510c0  @objc ProcessedImageRequest.assetHandles <stripped>
-	0x151160  @objc ProcessedImageRequest.cacheIdentifier <stripped>
+	0x1555c0  @objc ProcessedImageRequest.assetHandles <stripped>
+	0x155660  @objc ProcessedImageRequest.cacheIdentifier <stripped>
 
 	// Swift methods
-	0x151200  class func ProcessedImageRequest.__allocating_init(assetHandle:size:imageRenderingMode:) // init 
+	0x155700  class func ProcessedImageRequest.__allocating_init(assetHandle:size:imageRenderingMode:) // init 
  }
 
  struct TeaUI.MastheadViewMiniLayoutAttributes {
@@ -3964,18 +3987,28 @@
 	let height : CGFloat // +0x0
  }
 
+ class TeaUI.KeyCommandScrollExclusionProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var invalidator : weak Invalidatable? // +0x10 (0x10)
+	var delegate : KeyCommandScrollExclusionProviderDelegate // +0x20 (0x10)
+
+	// Swift methods
+	0x1563d0  class func KeyCommandScrollExclusionProvider.__allocating_init() // init 
+ }
+
  class TeaUI.ShineImageRendererPipelineProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 	let rendererEnvironment : RendererEnvironmentType // +0x10 (0x28)
 
 	// Swift methods
-	0x151d30  class func ShineImageRendererPipelineProcessor.__allocating_init(rendererEnvironment:) // init 
+	0x1582a0  class func ShineImageRendererPipelineProcessor.__allocating_init(rendererEnvironment:) // init 
  }
 
  class TeaUI.WindowToolbar2Items : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x157ed0  @objc WindowToolbar2Items.init <stripped>
+	0x15e440  @objc WindowToolbar2Items.init <stripped>
  }
 
  struct TeaUI.ShortcutItemHandlerPattern {
@@ -4019,11 +4052,11 @@
 	let context : Shine.Context // +0xa1 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x15a160  @objc ShineImageRequest.init <stripped>
-	0x15a1e0  @objc ShineImageRequest..cxx_destruct <stripped>
+	0x1606d0  @objc ShineImageRequest.init <stripped>
+	0x160750  @objc ShineImageRequest..cxx_destruct <stripped>
 
 	// Swift methods
-	0x159a80  class func ShineImageRequest.__allocating_init(shineOptions:shineColor:bounds:offset:whenStatic:) // init 
+	0x15fff0  class func ShineImageRequest.__allocating_init(shineOptions:shineColor:bounds:offset:whenStatic:) // init 
  }
 
  enum TeaUI.StaticModel {
@@ -4056,14 +4089,14 @@
 	var touchInsets : UIEdgeInsets // +0x8 (0x20)
 
 	// ObjC -> Swift bridged methods
-	0x15b520  @objc TouchInsetsLabel.pointInside:withEvent: <stripped>
-	0x15b7f0  @objc TouchInsetsLabel.initWithFrame: <stripped>
-	0x15b980  @objc TouchInsetsLabel.initWithCoder: <stripped>
+	0x161a90  @objc TouchInsetsLabel.pointInside:withEvent: <stripped>
+	0x161d60  @objc TouchInsetsLabel.initWithFrame: <stripped>
+	0x161ef0  @objc TouchInsetsLabel.initWithCoder: <stripped>
 
 	// Swift methods
-	0x15b300  func <stripped> // getter 
-	0x15b350  func <stripped> // setter 
-	0x15b3c0  func <stripped> // modifyCoroutine 
+	0x161870  func <stripped> // getter 
+	0x1618c0  func <stripped> // setter 
+	0x161930  func <stripped> // modifyCoroutine 
  }
 
  class TeaUI.BlockBarButtonItem : UIBarButtonItem /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -4074,17 +4107,17 @@
 	var customContentView : UIView? // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x15c180  @objc BlockBarButtonItem.barButtonItemPressedWithSender: <stripped>
-	0x15c210  @objc BlockBarButtonItem.accessibilityLabel <stripped>
-	0x15c3a0  @objc BlockBarButtonItem.setAccessibilityLabel: <stripped>
-	0x15c570  @objc BlockBarButtonItem.init <stripped>
-	0x15c600  @objc BlockBarButtonItem.initWithCoder: <stripped>
-	0x15c690  @objc BlockBarButtonItem..cxx_destruct <stripped>
+	0x1626f0  @objc BlockBarButtonItem.barButtonItemPressedWithSender: <stripped>
+	0x162780  @objc BlockBarButtonItem.accessibilityLabel <stripped>
+	0x162910  @objc BlockBarButtonItem.setAccessibilityLabel: <stripped>
+	0x162ae0  @objc BlockBarButtonItem.init <stripped>
+	0x162b70  @objc BlockBarButtonItem.initWithCoder: <stripped>
+	0x162c00  @objc BlockBarButtonItem..cxx_destruct <stripped>
 
 	// Swift methods
-	0x15bbc0  func <stripped> // getter 
-	0x15bc10  func <stripped> // setter 
-	0x15bc60  func <stripped> // modifyCoroutine 
+	0x162130  func <stripped> // getter 
+	0x162180  func <stripped> // setter 
+	0x1621d0  func <stripped> // modifyCoroutine 
  }
 
  struct TeaUI.CardViewLayoutOptions {
@@ -4115,13 +4148,13 @@
 	var _backgroundColor : UIColor? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x15d790  @objc SeparatorView.isHidden <stripped>
-	0x15d840  @objc SeparatorView.setHidden: <stripped>
-	0x15d9f0  @objc SeparatorView.backgroundColor <stripped>
-	0x15daa0  @objc SeparatorView.setBackgroundColor: <stripped>
-	0x15dde0  @objc SeparatorView.initWithFrame: <stripped>
-	0x15de60  @objc SeparatorView.initWithCoder: <stripped>
-	0x15e090  @objc SeparatorView..cxx_destruct <stripped>
+	0x163d00  @objc SeparatorView.isHidden <stripped>
+	0x163db0  @objc SeparatorView.setHidden: <stripped>
+	0x163f60  @objc SeparatorView.backgroundColor <stripped>
+	0x164010  @objc SeparatorView.setBackgroundColor: <stripped>
+	0x164350  @objc SeparatorView.initWithFrame: <stripped>
+	0x1643d0  @objc SeparatorView.initWithCoder: <stripped>
+	0x164600  @objc SeparatorView..cxx_destruct <stripped>
  }
 
  enum TeaUI.VisibilityStyle {
@@ -4175,9 +4208,9 @@
 	let label : UILabel // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x161be0  @objc LabelBarButtonItem.init <stripped>
-	0x161d60  @objc LabelBarButtonItem.initWithCoder: <stripped>
-	0x161e30  @objc LabelBarButtonItem..cxx_destruct <stripped>
+	0x168150  @objc LabelBarButtonItem.init <stripped>
+	0x1682d0  @objc LabelBarButtonItem.initWithCoder: <stripped>
+	0x1683a0  @objc LabelBarButtonItem..cxx_destruct <stripped>
  }
 
  struct TeaUI.Move {
@@ -4193,6 +4226,7 @@
 	var deletedIndices : IndexSet
 	var insertedIndices : IndexSet
 	var updatedIndices : IndexSet
+	var updatedSectionDescriptorIndices : IndexSet
 	var movedIndices : Move
 	var deletedIndexPaths : [IndexPath]
 	var insertedIndexPaths : [IndexPath]
@@ -4230,7 +4264,7 @@
 	let queryParamValues : URLHandlerMatch.Values // +0x0 (0x8)
 
 	// Swift methods
-	0x16f830  class func URLHandlerMatcher.__allocating_init(url:) // init 
+	0x1763d0  class func URLHandlerMatcher.__allocating_init(url:) // init 
  }
 
  enum TeaUI.Errors {
@@ -4252,13 +4286,13 @@
 	var pinTrait : BlueprintLayoutCollectionPinTrait // +0x8 (0x9)
 	var rubberbandEdge : RubberbandEdge // +0x11 (0x1)
 	var model : Any? // +0x18 (0x20)
-	var source : CollectionViewSupplementaryKind.Source? // +0x2c9000 (0x0)
+	var source : CollectionViewSupplementaryKind.Source? // +0x2d3000 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x1768a0  @objc BlueprintLayoutCollectionLayoutAttributes.copyWithZone: <stripped>
-	0x176c80  @objc BlueprintLayoutCollectionLayoutAttributes.isEqual: <stripped>
-	0x177090  @objc BlueprintLayoutCollectionLayoutAttributes.init <stripped>
-	0x1770f0  @objc BlueprintLayoutCollectionLayoutAttributes..cxx_destruct <stripped>
+	0x17d440  @objc BlueprintLayoutCollectionLayoutAttributes.copyWithZone: <stripped>
+	0x17d820  @objc BlueprintLayoutCollectionLayoutAttributes.isEqual: <stripped>
+	0x17dc30  @objc BlueprintLayoutCollectionLayoutAttributes.init <stripped>
+	0x17dc90  @objc BlueprintLayoutCollectionLayoutAttributes..cxx_destruct <stripped>
  }
 
  enum TeaUI.RubberbandEdge {
@@ -4304,7 +4338,7 @@
 	var states : State // +0x10 (0x8)
 
 	// Swift methods
-	0x179620  class func ViewControllerTransitionManager.__allocating_init() // init 
+	0x1801c0  class func ViewControllerTransitionManager.__allocating_init() // init 
  }
 
  enum TeaUI.Transition {
@@ -4330,6 +4364,7 @@
 	let toolbar : BarStyle // +0x18
 	let statusBarStyle : UIStatusBarStyle // +0x30
 	let trailingStatusBarStyle : UIStatusBarStyle // +0x38
+	let shouldUseMultiColorStatusBar : Bool // +0x40
  }
 
  enum TeaUI.BarStyle {
@@ -4343,7 +4378,7 @@
 
  class TeaUI.OverlayAlertAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x17ce20  @objc OverlayAlertAssembly.init <stripped>
+	0x1839c0  @objc OverlayAlertAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -4359,10 +4394,10 @@
 
  class TeaUI.ImageProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-	0x17d820  @objc ImageProcessor.process: <stripped>
+	0x1843c0  @objc ImageProcessor.process: <stripped>
 
 	// Swift methods
-	0x17d790  class func ImageProcessor.__allocating_init() // init 
+	0x184330  class func ImageProcessor.__allocating_init() // init 
  }
 
  class TeaUI.BlueprintLayoutCollectionPipelineProcessor {
@@ -4375,7 +4410,7 @@
 
  class TeaUI.ManagerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x180930  @objc ManagerAssembly.init <stripped>
+	0x1874d0  @objc ManagerAssembly.init <stripped>
  }
 
  struct TeaUI.Accessibility { }
@@ -4433,17 +4468,17 @@
 	var session : Session
 
 	// ObjC -> Swift bridged methods
-	0x186170  @objc CardViewAnimationCoordinator.handleWithRecognizer: <stripped>
-	0x187730  @objc CardViewAnimationCoordinator.init <stripped>
-	0x1877b0  @objc CardViewAnimationCoordinator..cxx_destruct <stripped>
+	0x18cd10  @objc CardViewAnimationCoordinator.handleWithRecognizer: <stripped>
+	0x18e2d0  @objc CardViewAnimationCoordinator.init <stripped>
+	0x18e350  @objc CardViewAnimationCoordinator..cxx_destruct <stripped>
 
 	// Swift methods
-	0x184ab0  func <stripped> // getter 
-	0x184b00  func <stripped> // getter 
-	0x184b40  func <stripped> // method 
-	0x186220  func <stripped> // method 
-	0x186ce0  func <stripped> // method 
-	0x187580  func <stripped> // method 
+	0x18b650  func <stripped> // getter 
+	0x18b6a0  func <stripped> // getter 
+	0x18b6e0  func <stripped> // method 
+	0x18cdc0  func <stripped> // method 
+	0x18d880  func <stripped> // method 
+	0x18e120  func <stripped> // method 
  }
 
  class TeaUI.CoordinatingCoordinator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4498,14 +4533,14 @@
 	var canExecute : (_:) // +0x68 (0x10)
 
 	// Swift methods
-	0x18dbe0  class func ContextMenuItem.__allocating_init(title:image:style:options:) // init 
-	0x18dad0  class func ContextMenuItem.__allocating_init<A>(command:context:title:image:style:options:) // init 
-	0x18e2f0  class func ContextMenuItem.__allocating_init(command:title:image:style:options:) // init 
-	0x18e540  class func ContextMenuItem.__allocating_init<A, B>(command:context:title:image:style:options:) // init 
-	0x18e670  class func ContextMenuItem.__allocating_init<A, B>(command:context:title:image:style:options:) // init 
-	0x18edc0  class func ContextMenuItem.__allocating_init<A>(command:title:image:style:options:) // init 
-	0x18eea0  class func ContextMenuItem.__allocating_init<A, B>(command:context:title:image:style:options:) // init 
-	0x18f2b0  class func ContextMenuItem.__allocating_init<A>(command:title:image:style:options:) // init 
+	0x1947d0  class func ContextMenuItem.__allocating_init(title:image:style:options:) // init 
+	0x1946c0  class func ContextMenuItem.__allocating_init<A>(command:context:title:image:style:options:) // init 
+	0x194ee0  class func ContextMenuItem.__allocating_init(command:title:image:style:options:) // init 
+	0x195130  class func ContextMenuItem.__allocating_init<A, B>(command:context:title:image:style:options:) // init 
+	0x195260  class func ContextMenuItem.__allocating_init<A, B>(command:context:title:image:style:options:) // init 
+	0x1959b0  class func ContextMenuItem.__allocating_init<A>(command:title:image:style:options:) // init 
+	0x195a90  class func ContextMenuItem.__allocating_init<A, B>(command:context:title:image:style:options:) // init 
+	0x195ea0  class func ContextMenuItem.__allocating_init<A>(command:title:image:style:options:) // init 
  }
 
  enum TeaUI.SelectionStyle {
@@ -4571,15 +4606,15 @@
 	let tableViewSource : DebugTableViewSource // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x197000  @objc DebugSubViewController.initWithCoder: <stripped>
-	0x1972d0  @objc DebugSubViewController.viewDidLoad <stripped>
-	0x1973f0  @objc DebugSubViewController.viewWillLayoutSubviews <stripped>
-	0x1974f0  @objc DebugSubViewController.doDone <stripped>
-	0x1975b0  @objc DebugSubViewController.initWithNibName:bundle: <stripped>
-	0x197630  @objc DebugSubViewController..cxx_destruct <stripped>
+	0x19dd40  @objc DebugSubViewController.initWithCoder: <stripped>
+	0x19e010  @objc DebugSubViewController.viewDidLoad <stripped>
+	0x19e130  @objc DebugSubViewController.viewWillLayoutSubviews <stripped>
+	0x19e230  @objc DebugSubViewController.doDone <stripped>
+	0x19e2f0  @objc DebugSubViewController.initWithNibName:bundle: <stripped>
+	0x19e370  @objc DebugSubViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x196e70  class func DebugSubViewController.__allocating_init(dataSource:title:) // init 
+	0x19dbb0  class func DebugSubViewController.__allocating_init(dataSource:title:) // init 
  }
 
  struct TeaUI.RendererState {
@@ -4605,13 +4640,13 @@
 	var isLiveResizing : Bool // +0x11 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x198850  @objc RendererEnvironment.didStartLiveResizing: <stripped>
-	0x198860  @objc RendererEnvironment.didEndLiveResizing: <stripped>
-	0x198980  @objc RendererEnvironment.init <stripped>
-	0x198a00  @objc RendererEnvironment..cxx_destruct <stripped>
+	0x19f590  @objc RendererEnvironment.didStartLiveResizing: <stripped>
+	0x19f5a0  @objc RendererEnvironment.didEndLiveResizing: <stripped>
+	0x19f6c0  @objc RendererEnvironment.init <stripped>
+	0x19f740  @objc RendererEnvironment..cxx_destruct <stripped>
 
 	// Swift methods
-	0x197de0  class func RendererEnvironment.__allocating_init(scrollView:testing:) // init 
+	0x19eb20  class func RendererEnvironment.__allocating_init(scrollView:testing:) // init 
  }
 
  class TeaUI.BlueprintTraversalCollectionProvider {
@@ -4626,7 +4661,7 @@
 	var selector : Selector? // +0x50 (0x8)
 
 	// Swift methods
-	0x19c180  class func KeyCommandManager.__allocating_init(providers:) // init 
+	0x1a2f50  class func KeyCommandManager.__allocating_init(providers:) // init 
  }
 
  class TeaUI.OverlayAlertView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -4638,16 +4673,16 @@
 	let subtitleLabel : UILabel // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x19d5d0  @objc OverlayAlertView.initWithCoder: <stripped>
-	0x19d8a0  @objc OverlayAlertView.init <stripped>
-	0x19d8c0  @objc OverlayAlertView.initWithFrame: <stripped>
-	0x19d940  @objc OverlayAlertView..cxx_destruct <stripped>
+	0x1a45b0  @objc OverlayAlertView.initWithCoder: <stripped>
+	0x1a4880  @objc OverlayAlertView.init <stripped>
+	0x1a48a0  @objc OverlayAlertView.initWithFrame: <stripped>
+	0x1a4920  @objc OverlayAlertView..cxx_destruct <stripped>
  }
 
  class TeaUI.Images : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x19e0d0  @objc Images.init <stripped>
-	0x19e170  @objc Images..cxx_destruct <stripped>
+	0x1a50b0  @objc Images.init <stripped>
+	0x1a5150  @objc Images..cxx_destruct <stripped>
  }
 
  enum TeaUI.BarViewSeparator {
@@ -4664,10 +4699,10 @@
 
  class TeaUI.DebugNavigationController : UINavigationController /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x19e490  @objc DebugNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
-	0x19e530  @objc DebugNavigationController.initWithRootViewController: <stripped>
-	0x19e590  @objc DebugNavigationController.initWithNibName:bundle: <stripped>
-	0x19e670  @objc DebugNavigationController.initWithCoder: <stripped>
+	0x1a5470  @objc DebugNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
+	0x1a5510  @objc DebugNavigationController.initWithRootViewController: <stripped>
+	0x1a5570  @objc DebugNavigationController.initWithNibName:bundle: <stripped>
+	0x1a5650  @objc DebugNavigationController.initWithCoder: <stripped>
  }
 
  class TeaUI.DebugViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -4679,28 +4714,28 @@
 	let tableViewSource : DebugTableViewSource
 
 	// ObjC -> Swift bridged methods
-	0x19e810  @objc DebugViewController.initWithCoder: <stripped>
-	0x19f630  @objc DebugViewController.viewDidLoad <stripped>
-	0x19f750  @objc DebugViewController.viewWillLayoutSubviews <stripped>
-	0x19f850  @objc DebugViewController.doDone <stripped>
-	0x19f870  @objc DebugViewController.doSettings <stripped>
-	0x19f980  @objc DebugViewController.initWithNibName:bundle: <stripped>
-	0x19f9d0  @objc DebugViewController..cxx_destruct <stripped>
+	0x1a57f0  @objc DebugViewController.initWithCoder: <stripped>
+	0x1a6610  @objc DebugViewController.viewDidLoad <stripped>
+	0x1a6730  @objc DebugViewController.viewWillLayoutSubviews <stripped>
+	0x1a6830  @objc DebugViewController.doDone <stripped>
+	0x1a6850  @objc DebugViewController.doSettings <stripped>
+	0x1a6960  @objc DebugViewController.initWithNibName:bundle: <stripped>
+	0x1a69b0  @objc DebugViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x19e710  class func DebugViewController.__allocating_init(dataSource:settingsPresentable:) // init 
+	0x1a56f0  class func DebugViewController.__allocating_init(dataSource:settingsPresentable:) // init 
  }
 
  class TeaUI.DebugInfoTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x19fab0  @objc DebugInfoTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x19fae0  @objc DebugInfoTableViewCell.initWithCoder: <stripped>
+	0x1a6a90  @objc DebugInfoTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x1a6ac0  @objc DebugInfoTableViewCell.initWithCoder: <stripped>
  }
 
  class TeaUI.DebugSubtitleTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x19fb50  @objc DebugSubtitleTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x19fc30  @objc DebugSubtitleTableViewCell.initWithCoder: <stripped>
+	0x1a6b30  @objc DebugSubtitleTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x1a6c10  @objc DebugSubtitleTableViewCell.initWithCoder: <stripped>
  }
 
  enum TeaUI.TableViewCellViewLayout {
@@ -4773,13 +4808,13 @@
 	let cellHeight : CGFloat // +0x50 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1a95d0  @objc AccessoryContainerView.initWithCoder: <stripped>
-	0x1a9960  @objc AccessoryContainerView.layoutSubviews <stripped>
-	0x1a9a80  @objc AccessoryContainerView.pointInside:withEvent: <stripped>
-	0x1a9cb0  @objc AccessoryContainerView.initWithFrame: <stripped>
+	0x1b05c0  @objc AccessoryContainerView.initWithCoder: <stripped>
+	0x1b0950  @objc AccessoryContainerView.layoutSubviews <stripped>
+	0x1b0a70  @objc AccessoryContainerView.pointInside:withEvent: <stripped>
+	0x1b0ca0  @objc AccessoryContainerView.initWithFrame: <stripped>
 
 	// Swift methods
-	0x1a8310  class func AccessoryContainerView.__allocating_init(height:views:) // init 
+	0x1af300  class func AccessoryContainerView.__allocating_init(height:views:) // init 
  }
 
  enum TeaUI.AccessoryType {
@@ -4805,7 +4840,7 @@
 
  class TeaUI.ImageDeserializer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x1ac800  class func ImageDeserializer.__allocating_init() // init 
+	0x1b37f0  class func ImageDeserializer.__allocating_init() // init 
  }
 
  enum TeaUI.ImageError {
@@ -4867,10 +4902,10 @@
 	let switchControl : UISwitch // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1b0640  @objc SwitchTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x1b0690  @objc SwitchTableViewCell.initWithCoder: <stripped>
-	0x1b0760  @objc SwitchTableViewCell.valueChanged <stripped>
-	0x1b0830  @objc SwitchTableViewCell..cxx_destruct <stripped>
+	0x1b7630  @objc SwitchTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x1b7680  @objc SwitchTableViewCell.initWithCoder: <stripped>
+	0x1b7750  @objc SwitchTableViewCell.valueChanged <stripped>
+	0x1b7820  @objc SwitchTableViewCell..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -4884,7 +4919,7 @@
 
  class TeaUI.Previewing : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1b82e0  @objc Previewing.init <stripped>
+	0x1bf2d0  @objc Previewing.init <stripped>
  }
 
  struct TeaUI.BlueprintTraversalCollection {
@@ -4921,15 +4956,15 @@
 	var rangeCache : IndexSet // +0x0 (0x0)
 
 	// Swift methods
-	0x1bc560  class func BlueprintInfiniteScrollManager.__allocating_init(infiniteScroll:) // init 
+	0x1c3650  class func BlueprintInfiniteScrollManager.__allocating_init(infiniteScroll:) // init 
  }
 
  struct TeaUI.Rec709Luma { }
 
  class TeaUI.OptionTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x1beed0  @objc OptionTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x1bef80  @objc OptionTableViewCell.initWithCoder: <stripped>
+	0x1c5fc0  @objc OptionTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x1c6070  @objc OptionTableViewCell.initWithCoder: <stripped>
  }
 
  class TeaUI.TabBarNavigationController : NavigationController {
@@ -4940,16 +4975,16 @@
 	var viewControllerDepth : Int // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1bf520  @objc TabBarNavigationController.initWithRootViewController: <stripped>
-	0x1bf560  @objc TabBarNavigationController.initWithCoder: <stripped>
-	0x1bf5d0  @objc TabBarNavigationController.viewControllers <stripped>
-	0x1bf6b0  @objc TabBarNavigationController.setViewControllers: <stripped>
-	0x1bfaa0  @objc TabBarNavigationController.tabBarItem <stripped>
-	0x1bfb40  @objc TabBarNavigationController.setTabBarItem: <stripped>
-	0x1bfbd0  @objc TabBarNavigationController.description <stripped>
-	0x1bff30  @objc TabBarNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
-	0x1c0000  @objc TabBarNavigationController.initWithNibName:bundle: <stripped>
-	0x1c00c0  @objc TabBarNavigationController..cxx_destruct <stripped>
+	0x1c6610  @objc TabBarNavigationController.initWithRootViewController: <stripped>
+	0x1c6650  @objc TabBarNavigationController.initWithCoder: <stripped>
+	0x1c66c0  @objc TabBarNavigationController.viewControllers <stripped>
+	0x1c67a0  @objc TabBarNavigationController.setViewControllers: <stripped>
+	0x1c6b90  @objc TabBarNavigationController.tabBarItem <stripped>
+	0x1c6c30  @objc TabBarNavigationController.setTabBarItem: <stripped>
+	0x1c6cc0  @objc TabBarNavigationController.description <stripped>
+	0x1c7020  @objc TabBarNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
+	0x1c70f0  @objc TabBarNavigationController.initWithNibName:bundle: <stripped>
+	0x1c71b0  @objc TabBarNavigationController..cxx_destruct <stripped>
  }
 
  class TeaUI.BlueprintViewportMonitor : NSObject /usr/lib/libobjc.A.dylib {
@@ -4959,11 +4994,11 @@
 	let options : Options // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1c3ce0  @objc BlueprintViewportMonitor.init <stripped>
-	0x1c3d60  @objc BlueprintViewportMonitor..cxx_destruct <stripped>
+	0x1cadd0  @objc BlueprintViewportMonitor.init <stripped>
+	0x1cae50  @objc BlueprintViewportMonitor..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1c35d0  class func BlueprintViewportMonitor.__allocating_init(options:) // init 
+	0x1ca6c0  class func BlueprintViewportMonitor.__allocating_init(options:) // init 
  }
 
  struct TeaUI.Options {
@@ -4974,8 +5009,8 @@
 
  class TeaUI.RadialGradientView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x1c5ec0  @objc RadialGradientView.initWithFrame: <stripped>
-	0x1c5fe0  @objc RadialGradientView.initWithCoder: <stripped>
+	0x1ccfb0  @objc RadialGradientView.initWithFrame: <stripped>
+	0x1cd0d0  @objc RadialGradientView.initWithCoder: <stripped>
  }
 
  class TeaUI.RadialGradientLayer : CAGradientLayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
@@ -4984,11 +5019,11 @@
 	var gradientDescriptor : GradientDescriptor?
 
 	// ObjC -> Swift bridged methods
-	0x1c6400  @objc RadialGradientLayer.init <stripped>
-	0x1c66d0  @objc RadialGradientLayer.initWithLayer: <stripped>
-	0x1c6800  @objc RadialGradientLayer.initWithCoder: <stripped>
-	0x1c6be0  @objc RadialGradientLayer.drawInContext: <stripped>
-	0x1c6c90  @objc RadialGradientLayer..cxx_destruct <stripped>
+	0x1cd4f0  @objc RadialGradientLayer.init <stripped>
+	0x1cd7c0  @objc RadialGradientLayer.initWithLayer: <stripped>
+	0x1cd8f0  @objc RadialGradientLayer.initWithCoder: <stripped>
+	0x1cdcd0  @objc RadialGradientLayer.drawInContext: <stripped>
+	0x1cdd80  @objc RadialGradientLayer..cxx_destruct <stripped>
  }
 
  class TeaUI.BlueprintInfiniteScrollRequest : _SwiftObject /usr/lib/swift/libswiftCore.dylib, BlueprintInfiniteScrollRequestType {
@@ -5025,7 +5060,7 @@
 	var sessions : [String : PageViewSession] // +0x10 (0x8)
 
 	// Swift methods
-	0x1c7c50  class func PageSessionManager.__allocating_init() // init 
+	0x1ced40  class func PageSessionManager.__allocating_init() // init 
  }
 
  class TeaUI.MotionView {
@@ -5047,15 +5082,15 @@
 	let styler : TabBarStylerType? // +0x38 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x1d0a10  @objc TabBarController.initWithCoder: <stripped>
-	0x1d0aa0  @objc TabBarController.viewControllers <stripped>
-	0x1d0b90  @objc TabBarController.setViewControllers: <stripped>
-	0x1d1580  @objc TabBarController.viewDidLoad <stripped>
-	0x1d1740  @objc TabBarController.initWithNibName:bundle: <stripped>
-	0x1d17c0  @objc TabBarController..cxx_destruct <stripped>
+	0x1d7b20  @objc TabBarController.initWithCoder: <stripped>
+	0x1d7bb0  @objc TabBarController.viewControllers <stripped>
+	0x1d7ca0  @objc TabBarController.setViewControllers: <stripped>
+	0x1d8690  @objc TabBarController.viewDidLoad <stripped>
+	0x1d8850  @objc TabBarController.initWithNibName:bundle: <stripped>
+	0x1d88d0  @objc TabBarController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1d05d0  class func TabBarController.__allocating_init(tabBarNavigationControllers:primaryTabBarItemIndex:styler:useCustomBarView:) // init 
+	0x1d76e0  class func TabBarController.__allocating_init(tabBarNavigationControllers:primaryTabBarItemIndex:styler:useCustomBarView:) // init 
  }
 
  class TeaUI.Commands : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -5091,7 +5126,7 @@
 	let fallbackTransition : Transition // +0x38 (0x8)
 
 	// Swift methods
-	0x1d7490  class func TransitionFactory.__allocating_init(factory:fallbackTransition:) // init 
+	0x1de5a0  class func TransitionFactory.__allocating_init(factory:fallbackTransition:) // init 
  }
 
  class TeaUI.BlueprintViewController {
@@ -5117,9 +5152,9 @@
 	let style : Style // +0x10 (0x8)
 
 	// Swift methods
-	0x1e3b90  func <stripped> // getter 
-	0x1e3ba0  func <stripped> // getter 
-	0x1e3c30  func <stripped> // getter 
+	0x1ebad0  func <stripped> // getter 
+	0x1ebae0  func <stripped> // getter 
+	0x1ebb70  func <stripped> // getter 
  }
 
  enum TeaUI.Style {
@@ -5154,8 +5189,8 @@
 	let backgroundImage : UIImage? // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1e55f0  @objc ShineImage.init <stripped>
-	0x1e56a0  @objc ShineImage..cxx_destruct <stripped>
+	0x1ed530  @objc ShineImage.init <stripped>
+	0x1ed5e0  @objc ShineImage..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -5179,39 +5214,39 @@
 	var isFullscreen : Bool
 
 	// ObjC -> Swift bridged methods
-	0x1e6740  @objc CardView.initWithCoder: <stripped>
-	0x1e6de0  @objc CardView.layoutSubviews <stripped>
-	0x1e6e30  @objc CardView.toggleExpansion <stripped>
-	0x1e6e60  @objc CardView.accessibilityLabel <stripped>
-	0x1e6ff0  @objc CardView.setAccessibilityLabel: <stripped>
-	0x1e7110  @objc CardView.initWithFrame: <stripped>
-	0x1e71a0  @objc CardView..cxx_destruct <stripped>
+	0x1ee680  @objc CardView.initWithCoder: <stripped>
+	0x1eed20  @objc CardView.layoutSubviews <stripped>
+	0x1eed70  @objc CardView.toggleExpansion <stripped>
+	0x1eeda0  @objc CardView.accessibilityLabel <stripped>
+	0x1eef30  @objc CardView.setAccessibilityLabel: <stripped>
+	0x1ef050  @objc CardView.initWithFrame: <stripped>
+	0x1ef0e0  @objc CardView..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
  class TeaUI.GrabberView : _UIGrabber /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x1e6430  @objc GrabberView.initWithFrame: <stripped>
-	0x1e6460  @objc GrabberView.initWithCoder: <stripped>
+	0x1ee370  @objc GrabberView.initWithFrame: <stripped>
+	0x1ee3a0  @objc GrabberView.initWithCoder: <stripped>
  }
 
  class TeaUI.ContentOverlayButtonView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x1e64d0  @objc ContentOverlayButtonView.initWithFrame: <stripped>
-	0x1e64f0  @objc ContentOverlayButtonView.initWithCoder: <stripped>
+	0x1ee410  @objc ContentOverlayButtonView.initWithFrame: <stripped>
+	0x1ee430  @objc ContentOverlayButtonView.initWithCoder: <stripped>
  }
 
  class TeaUI.BarView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x1e6530  @objc BarView.initWithFrame: <stripped>
-	0x1e6550  @objc BarView.initWithCoder: <stripped>
+	0x1ee470  @objc BarView.initWithFrame: <stripped>
+	0x1ee490  @objc BarView.initWithCoder: <stripped>
  }
 
  class TeaUI.ClippingView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x1e6590  @objc ClippingView.initWithFrame: <stripped>
-	0x1e6630  @objc ClippingView.initWithCoder: <stripped>
+	0x1ee4d0  @objc ClippingView.initWithFrame: <stripped>
+	0x1ee570  @objc ClippingView.initWithCoder: <stripped>
  }
 
  struct TeaUI.Layout {
@@ -5241,14 +5276,14 @@
 	var downloadStateDisposable : Disposable? // +0xc0 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x1e95d0  @objc DownloadButton.init <stripped>
-	0x1e9e90  @objc DownloadButton.initWithFrame: <stripped>
-	0x1e9ec0  @objc DownloadButton.initWithCoder: <stripped>
-	0x1e9ef0  @objc DownloadButton.accessibilityActivate <stripped>
-	0x1ea2f0  @objc DownloadButton.layoutSubviews <stripped>
-	0x1ea370  @objc DownloadButton.tintColorDidChange <stripped>
-	0x1ea3e0  @objc DownloadButton.startingButtonTappedWithSender: <stripped>
-	0x1ea540  @objc DownloadButton..cxx_destruct <stripped>
+	0x1f1510  @objc DownloadButton.init <stripped>
+	0x1f1dd0  @objc DownloadButton.initWithFrame: <stripped>
+	0x1f1e00  @objc DownloadButton.initWithCoder: <stripped>
+	0x1f1e30  @objc DownloadButton.accessibilityActivate <stripped>
+	0x1f2230  @objc DownloadButton.layoutSubviews <stripped>
+	0x1f22b0  @objc DownloadButton.tintColorDidChange <stripped>
+	0x1f2320  @objc DownloadButton.startingButtonTappedWithSender: <stripped>
+	0x1f2480  @objc DownloadButton..cxx_destruct <stripped>
  }
 
  enum TeaUI.DownloadState {
@@ -5285,11 +5320,11 @@
 	let presentationControllerFactory : (_:_:_:)? // +0x30 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x1eca50  @objc Transition.init <stripped>
-	0x1ecad0  @objc Transition..cxx_destruct <stripped>
+	0x1f4970  @objc Transition.init <stripped>
+	0x1f49f0  @objc Transition..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1ec7b0  class func Transition.__allocating_init(presentationTransitionFactory:dismissalTransitionFactory:presentationControllerFactory:) // init 
+	0x1f46d0  class func Transition.__allocating_init(presentationTransitionFactory:dismissalTransitionFactory:presentationControllerFactory:) // init 
  }
 
  class TeaUI.ModalHostViewControllerFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ModalHostViewControllerFactoryType {
@@ -5298,7 +5333,7 @@
 	let applicationStateManager : ApplicationStateManagerType // +0x10 (0x28)
 
 	// Swift methods
-	0x1ed0a0  class func ModalHostViewControllerFactory.__allocating_init(applicationStateManager:) // init 
+	0x1f4fc0  class func ModalHostViewControllerFactory.__allocating_init(applicationStateManager:) // init 
  }
 
  class TeaUI.BlueprintPipelineQueues : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -5324,11 +5359,11 @@
 	var inflightRequests : [String : [(_:)]] // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1f0390  @objc ShineImageFactory.init <stripped>
-	0x1f03b0  @objc ShineImageFactory.didReceiveMemoryWarning <stripped>
-	0x1f0a10  @objc ShineImageFactory.shineImageForRequest:completion: <stripped>
-	0x1f0b90  @objc ShineImageFactory.syncShineImageForRequest: <stripped>
-	0x1f1e60  @objc ShineImageFactory..cxx_destruct <stripped>
+	0x1f82b0  @objc ShineImageFactory.init <stripped>
+	0x1f82d0  @objc ShineImageFactory.didReceiveMemoryWarning <stripped>
+	0x1f8930  @objc ShineImageFactory.shineImageForRequest:completion: <stripped>
+	0x1f8ab0  @objc ShineImageFactory.syncShineImageForRequest: <stripped>
+	0x1f9d80  @objc ShineImageFactory..cxx_destruct <stripped>
  }
 
  class TeaUI.SectionFooterViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SectionFooterViewLayoutAttributesFactoryType {
@@ -5392,7 +5427,7 @@
 	let bounds : CGRect // +0x38 (0x20)
 
 	// Swift methods
-	0x1f9550  class func RTLAdjuster.__allocating_init(locale:bounds:) // init 
+	0x201470  class func RTLAdjuster.__allocating_init(locale:bounds:) // init 
  }
 
  enum TeaUI.Alignment {
@@ -5404,8 +5439,8 @@
 
  class TeaUI.BlankReusableView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x1f9ba0  @objc BlankReusableView.initWithFrame: <stripped>
-	0x1f9c80  @objc BlankReusableView.initWithCoder: <stripped>
+	0x201ac0  @objc BlankReusableView.initWithFrame: <stripped>
+	0x201ba0  @objc BlankReusableView.initWithCoder: <stripped>
  }
 
  class TeaUI.TableViewHeaderFooterView {
@@ -5481,13 +5516,13 @@
 	let slider : UISlider // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1fd1e0  @objc SliderTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x1fd230  @objc SliderTableViewCell.initWithCoder: <stripped>
-	0x1fd460  @objc SliderTableViewCell.valueChanged <stripped>
-	0x1fd4e0  @objc SliderTableViewCell..cxx_destruct <stripped>
+	0x205100  @objc SliderTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x205150  @objc SliderTableViewCell.initWithCoder: <stripped>
+	0x205380  @objc SliderTableViewCell.valueChanged <stripped>
+	0x205400  @objc SliderTableViewCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1fd250  func <stripped> // method 
+	0x205170  func <stripped> // method 
  }
 
  enum TeaUI.TabBarSplitViewFocus { }
@@ -5498,9 +5533,9 @@
 	let assemblies : [NFAssembly] // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1fe080  @objc Assembly.assemblies <stripped>
-	0x1fe310  @objc Assembly.init <stripped>
-	0x1fe380  @objc Assembly..cxx_destruct <stripped>
+	0x205fa0  @objc Assembly.assemblies <stripped>
+	0x206230  @objc Assembly.init <stripped>
+	0x2062a0  @objc Assembly..cxx_destruct <stripped>
  }
 
  struct TeaUI.SectionFooterViewLayoutOptions {
@@ -5565,8 +5600,8 @@
 	let groups : [ContextMenuGroupable] // +0x10 (0x8)
 
 	// Swift methods
-	0x202e60  class func ContextMenu.__allocating_init(groups:) // init 
-	0x202ec0  class func ContextMenu.__allocating_init(groups:) // init 
+	0x20b070  class func ContextMenu.__allocating_init(groups:) // init 
+	0x20b0d0  class func ContextMenu.__allocating_init(groups:) // init 
  }
 
  struct TeaUI.BlueprintLayoutCollection {
@@ -5592,14 +5627,14 @@
 	let manualImpressionUpdateProvider : BlueprintManualImpressionUpdateProvider // +0x80 (0x8)
 
 	// Swift methods
-	0x209800  func <stripped> // getter 
-	0x209830  func <stripped> // setter 
-	0x2098a0  func <stripped> // modifyCoroutine 
-	0x209a20  func <stripped> // getter 
-	0x209a50  func <stripped> // setter 
-	0x209aa0  func <stripped> // modifyCoroutine 
-	0x209b80  class func BlueprintManualImpressionManager.__allocating_init(impressionManager:manualImpressionUpdateProvider:app:) // init 
-	0x20a2b0  func <stripped> // method 
+	0x211a10  func <stripped> // getter 
+	0x211a40  func <stripped> // setter 
+	0x211ab0  func <stripped> // modifyCoroutine 
+	0x211c30  func <stripped> // getter 
+	0x211c60  func <stripped> // setter 
+	0x211cb0  func <stripped> // modifyCoroutine 
+	0x211d90  class func BlueprintManualImpressionManager.__allocating_init(impressionManager:manualImpressionUpdateProvider:app:) // init 
+	0x2124c0  func <stripped> // method 
  }
 
  enum TeaUI.TabBarNavigationBarVisiblity {
@@ -5672,7 +5707,7 @@
 
  class TeaUI.AppAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x2213c0  @objc AppAssembly.init <stripped>
+	0x229850  @objc AppAssembly.init <stripped>
  }
 
  class TeaUI.GutterViewController {
@@ -5683,18 +5718,18 @@
 	let labelBackgroundView : UIView // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x222da0  @objc MotionDebugView.initWithFrame: <stripped>
-	0x222dd0  @objc MotionDebugView.initWithCoder: <stripped>
-	0x223300  @objc MotionDebugView.didMoveToWindow <stripped>
-	0x223530  @objc MotionDebugView.layoutSubviews <stripped>
-	0x2235d0  @objc MotionDebugView.safeAreaInsetsDidChange <stripped>
-	0x2236a0  @objc MotionDebugView..cxx_destruct <stripped>
+	0x22b230  @objc MotionDebugView.initWithFrame: <stripped>
+	0x22b260  @objc MotionDebugView.initWithCoder: <stripped>
+	0x22b790  @objc MotionDebugView.didMoveToWindow <stripped>
+	0x22b9c0  @objc MotionDebugView.layoutSubviews <stripped>
+	0x22ba60  @objc MotionDebugView.safeAreaInsetsDidChange <stripped>
+	0x22bb30  @objc MotionDebugView..cxx_destruct <stripped>
  }
 
  class TeaUI.ApplicationContentSizeCategoryProvider : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x224500  @objc ApplicationContentSizeCategoryProvider.currentContentSizeCategory <stripped>
-	0x224670  @objc ApplicationContentSizeCategoryProvider.init <stripped>
+	0x22c990  @objc ApplicationContentSizeCategoryProvider.currentContentSizeCategory <stripped>
+	0x22cb00  @objc ApplicationContentSizeCategoryProvider.init <stripped>
  }
 
  class TeaUI.DebugSchedule : UIWindow /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -5706,14 +5741,14 @@
 	var timer : NSTimer? // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x224af0  @objc DebugSchedule.initWithCoder: <stripped>
-	0x224d90  @objc DebugSchedule.layoutSubviews <stripped>
-	0x225030  @objc DebugSchedule.initWithWindowScene: <stripped>
-	0x225110  @objc DebugSchedule.initWithFrame: <stripped>
-	0x225190  @objc DebugSchedule..cxx_destruct <stripped>
+	0x22cf80  @objc DebugSchedule.initWithCoder: <stripped>
+	0x22d220  @objc DebugSchedule.layoutSubviews <stripped>
+	0x22d4c0  @objc DebugSchedule.initWithWindowScene: <stripped>
+	0x22d5a0  @objc DebugSchedule.initWithFrame: <stripped>
+	0x22d620  @objc DebugSchedule..cxx_destruct <stripped>
 
 	// Swift methods
-	0x224710  class func DebugSchedule.__allocating_init(after:block:) // init 
+	0x22cba0  class func DebugSchedule.__allocating_init(after:block:) // init 
  }
 
  class TeaUI.StepperTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -5725,13 +5760,13 @@
 	let stepper : UIStepper // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x225700  @objc StepperTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x225760  @objc StepperTableViewCell.initWithCoder: <stripped>
-	0x225930  @objc StepperTableViewCell.valueChanged <stripped>
-	0x2259b0  @objc StepperTableViewCell..cxx_destruct <stripped>
+	0x22db90  @objc StepperTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x22dbf0  @objc StepperTableViewCell.initWithCoder: <stripped>
+	0x22ddc0  @objc StepperTableViewCell.valueChanged <stripped>
+	0x22de40  @objc StepperTableViewCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0x225780  func <stripped> // method 
+	0x22dc10  func <stripped> // method 
  }
 
  enum TeaUI.BlueprintModifierTrait {
@@ -5783,8 +5818,8 @@
 	let alternate : CommandMenuItem // +0xa0 (0x8)
 
 	// Swift methods
-	0x2279b0  class func <stripped> // init 
-	0x227b00  class func <stripped> // init 
+	0x22fe70  class func <stripped> // init 
+	0x22ffc0  class func <stripped> // init 
  }
 
  enum TeaUI.Item {
@@ -5800,15 +5835,15 @@
 	var view : weak UIView? // +0x10 (0x8)
 
 	// Swift methods
-	0x2289f0  class func WeakView.__allocating_init(view:) // init 
+	0x230eb0  class func WeakView.__allocating_init(view:) // init 
  }
 
  class TeaUI.ImageDownloader : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-	0x228d60  @objc ImageDownloader.downloadImageAndStoreFilePathInAssetHandle:usingDispatchGroup: <stripped>
+	0x231220  @objc ImageDownloader.downloadImageAndStoreFilePathInAssetHandle:usingDispatchGroup: <stripped>
 
 	// Swift methods
-	0x228cc0  class func ImageDownloader.__allocating_init() // init 
+	0x231180  class func ImageDownloader.__allocating_init() // init 
  }
 
  struct TeaUI.CommandContextProvider {
@@ -5824,7 +5859,7 @@
 	var items : [DebugItem] // +0x18 (0x8)
 
 	// Swift methods
-	0x229260  func <stripped> // method 
+	0x231720  func <stripped> // method 
  }
 
  enum TeaUI.Section {
@@ -5842,9 +5877,9 @@
 	let onTap : Action<()> // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x229b60  @objc SegmentedControlButton.initWithCoder: <stripped>
-	0x229e70  @objc SegmentedControlButton.initWithFrame: <stripped>
-	0x229ef0  @objc SegmentedControlButton..cxx_destruct <stripped>
+	0x232020  @objc SegmentedControlButton.initWithCoder: <stripped>
+	0x232330  @objc SegmentedControlButton.initWithFrame: <stripped>
+	0x2323b0  @objc SegmentedControlButton..cxx_destruct <stripped>
  }
 
  struct TeaUI.CoverViewOptions {
@@ -5861,13 +5896,13 @@
 	let label : UILabel // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x22a570  @objc ActivityIndicatorLoadingView.initWithCoder: <stripped>
-	0x22a700  @objc ActivityIndicatorLoadingView.layoutSubviews <stripped>
-	0x22a820  @objc ActivityIndicatorLoadingView.initWithFrame: <stripped>
-	0x22a8a0  @objc ActivityIndicatorLoadingView..cxx_destruct <stripped>
+	0x232a30  @objc ActivityIndicatorLoadingView.initWithCoder: <stripped>
+	0x232bc0  @objc ActivityIndicatorLoadingView.layoutSubviews <stripped>
+	0x232ce0  @objc ActivityIndicatorLoadingView.initWithFrame: <stripped>
+	0x232d60  @objc ActivityIndicatorLoadingView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x22a100  class func ActivityIndicatorLoadingView.__allocating_init(style:color:backgroundColor:activityText:) // init 
+	0x2325c0  class func ActivityIndicatorLoadingView.__allocating_init(style:color:backgroundColor:activityText:) // init 
  }
 
  struct TeaUI.FrameLayoutAttributes: BlueprintLayoutFrameAttributesType {
@@ -5890,14 +5925,14 @@
 	let rootViewController : TabBarController // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x22b0d0  @objc TabBarContainerController.initWithCoder: <stripped>
-	0x22b2c0  @objc TabBarContainerController.viewDidLoad <stripped>
-	0x22b2f0  @objc TabBarContainerController.viewWillLayoutSubviews <stripped>
-	0x22b400  @objc TabBarContainerController.childViewControllerForStatusBarHidden <stripped>
-	0x22b400  @objc TabBarContainerController.childViewControllerForStatusBarStyle <stripped>
-	0x22b400  @objc TabBarContainerController.childViewControllerForHomeIndicatorAutoHidden <stripped>
-	0x22b420  @objc TabBarContainerController.initWithNibName:bundle: <stripped>
-	0x22b4a0  @objc TabBarContainerController..cxx_destruct <stripped>
+	0x233590  @objc TabBarContainerController.initWithCoder: <stripped>
+	0x233780  @objc TabBarContainerController.viewDidLoad <stripped>
+	0x2337b0  @objc TabBarContainerController.viewWillLayoutSubviews <stripped>
+	0x2338c0  @objc TabBarContainerController.childViewControllerForStatusBarHidden <stripped>
+	0x2338c0  @objc TabBarContainerController.childViewControllerForStatusBarStyle <stripped>
+	0x2338c0  @objc TabBarContainerController.childViewControllerForHomeIndicatorAutoHidden <stripped>
+	0x2338e0  @objc TabBarContainerController.initWithNibName:bundle: <stripped>
+	0x233960  @objc TabBarContainerController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -5925,13 +5960,13 @@
 	let coreMotionManager : CMMotionManager // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x22cb00  @objc MotionManager.init <stripped>
-	0x22cd70  @objc MotionManager.addObserver: <stripped>
-	0x22cd90  @objc MotionManager.removeObserver: <stripped>
-	0x22dbc0  @objc MotionManager.handleReduceMotionChanged <stripped>
-	0x22dbf0  @objc MotionManager.applicationDidEnterBackground <stripped>
-	0x22dd70  @objc MotionManager.applicationDidBecomeActive <stripped>
-	0x22ddf0  @objc MotionManager..cxx_destruct <stripped>
+	0x234fc0  @objc MotionManager.init <stripped>
+	0x235230  @objc MotionManager.addObserver: <stripped>
+	0x235250  @objc MotionManager.removeObserver: <stripped>
+	0x236080  @objc MotionManager.handleReduceMotionChanged <stripped>
+	0x2360f0  @objc MotionManager.applicationDidEnterBackground <stripped>
+	0x236270  @objc MotionManager.applicationDidBecomeActive <stripped>
+	0x2362f0  @objc MotionManager..cxx_destruct <stripped>
  }
 
  class TeaUI.GutterView : UIScrollView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -5944,18 +5979,18 @@
 	var boundsObservers : NSHashTable<TUGutterViewBoundsObserver> // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x22ffd0  @objc GutterView.initWithCoder: <stripped>
-	0x230110  @objc GutterView.layoutMarginsDidChange <stripped>
-	0x2305a0  @objc GutterView.layoutSubviews <stripped>
-	0x2305d0  @objc GutterView.contentOffset <stripped>
-	0x230620  @objc GutterView.setContentOffset: <stripped>
-	0x2308b0  @objc GutterView.addGutterViewBoundsObserver: <stripped>
-	0x2308d0  @objc GutterView.removeGutterViewBoundsObserver: <stripped>
-	0x2309a0  @objc GutterView.initWithFrame: <stripped>
-	0x230a20  @objc GutterView..cxx_destruct <stripped>
+	0x238510  @objc GutterView.initWithCoder: <stripped>
+	0x238650  @objc GutterView.layoutMarginsDidChange <stripped>
+	0x238ae0  @objc GutterView.layoutSubviews <stripped>
+	0x238b10  @objc GutterView.contentOffset <stripped>
+	0x238b60  @objc GutterView.setContentOffset: <stripped>
+	0x238df0  @objc GutterView.addGutterViewBoundsObserver: <stripped>
+	0x238e10  @objc GutterView.removeGutterViewBoundsObserver: <stripped>
+	0x238ee0  @objc GutterView.initWithFrame: <stripped>
+	0x238f60  @objc GutterView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x22ed50  class func GutterView.__allocating_init(contentView:childScrollView:gutters:) // init 
+	0x237290  class func GutterView.__allocating_init(contentView:childScrollView:gutters:) // init 
  }
 
  struct TeaUI.ShortcutItemHandlerMatch {
@@ -5971,19 +6006,19 @@
 	var preventTouches : Bool // +0x8 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x2314e0  @objc CardDimmingView.hitTest:withEvent: <stripped>
-	0x231580  @objc CardDimmingView.initWithFrame: <stripped>
-	0x231610  @objc CardDimmingView.initWithCoder: <stripped>
+	0x239a20  @objc CardDimmingView.hitTest:withEvent: <stripped>
+	0x239ac0  @objc CardDimmingView.initWithFrame: <stripped>
+	0x239b50  @objc CardDimmingView.initWithCoder: <stripped>
  }
 
  class TeaUI.CardNavigationController : NavigationController {
 	// ObjC -> Swift bridged methods
-	0x2317f0  @objc CardNavigationController.viewDidLoad <stripped>
-	0x231910  @objc CardNavigationController.viewWillAppear: <stripped>
-	0x231ab0  @objc CardNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
-	0x231bb0  @objc CardNavigationController.initWithRootViewController: <stripped>
-	0x231d40  @objc CardNavigationController.initWithNibName:bundle: <stripped>
-	0x231ec0  @objc CardNavigationController.initWithCoder: <stripped>
+	0x239d30  @objc CardNavigationController.viewDidLoad <stripped>
+	0x239e50  @objc CardNavigationController.viewWillAppear: <stripped>
+	0x239ff0  @objc CardNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
+	0x23a0f0  @objc CardNavigationController.initWithRootViewController: <stripped>
+	0x23a280  @objc CardNavigationController.initWithNibName:bundle: <stripped>
+	0x23a400  @objc CardNavigationController.initWithCoder: <stripped>
  }
 
  class TeaUI.BlueprintCachePipelineProcessor {
@@ -6030,14 +6065,14 @@
 	let accessQueue : OS_dispatch_queue
 
 	// ObjC -> Swift bridged methods
-	0x235d00  @objc MemoryCacheAccessQueue.accessWithBlock: <stripped>
-	0x235fe0  @objc MemoryCacheAccessQueue.accessValueWithBlock: <stripped>
-	0x2363b0  @objc MemoryCacheAccessQueue.init <stripped>
-	0x2363f0  @objc MemoryCacheAccessQueue..cxx_destruct <stripped>
+	0x23e250  @objc MemoryCacheAccessQueue.accessWithBlock: <stripped>
+	0x23e530  @objc MemoryCacheAccessQueue.accessValueWithBlock: <stripped>
+	0x23e900  @objc MemoryCacheAccessQueue.init <stripped>
+	0x23e940  @objc MemoryCacheAccessQueue..cxx_destruct <stripped>
 
 	// Swift methods
-	0x235b20  func <stripped> // method 
-	0x235ec0  func <stripped> // method 
+	0x23e070  func <stripped> // method 
+	0x23e410  func <stripped> // method 
  }
 
  class TeaUI.MemoryCacheAccessMainWriter : NSObject /usr/lib/libobjc.A.dylib {
@@ -6046,25 +6081,25 @@
 	let lock : UnfairLock
 
 	// ObjC -> Swift bridged methods
-	0x236460  @objc MemoryCacheAccessMainWriter.accessWithBlock: <stripped>
-	0x236590  @objc MemoryCacheAccessMainWriter.accessValueWithBlock: <stripped>
-	0x236750  @objc MemoryCacheAccessMainWriter.init <stripped>
-	0x236820  @objc MemoryCacheAccessMainWriter..cxx_destruct <stripped>
+	0x23e9b0  @objc MemoryCacheAccessMainWriter.accessWithBlock: <stripped>
+	0x23eae0  @objc MemoryCacheAccessMainWriter.accessValueWithBlock: <stripped>
+	0x23eca0  @objc MemoryCacheAccessMainWriter.init <stripped>
+	0x23ed70  @objc MemoryCacheAccessMainWriter..cxx_destruct <stripped>
 
 	// Swift methods
-	0x236410  func <stripped> // method 
-	0x2364d0  func <stripped> // method 
+	0x23e960  func <stripped> // method 
+	0x23ea20  func <stripped> // method 
  }
 
  class TeaUI.MemoryCacheAccessMain : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x236860  @objc MemoryCacheAccessMain.accessWithBlock: <stripped>
-	0x2368e0  @objc MemoryCacheAccessMain.accessValueWithBlock: <stripped>
-	0x236a00  @objc MemoryCacheAccessMain.init <stripped>
+	0x23edb0  @objc MemoryCacheAccessMain.accessWithBlock: <stripped>
+	0x23ee30  @objc MemoryCacheAccessMain.accessValueWithBlock: <stripped>
+	0x23ef50  @objc MemoryCacheAccessMain.init <stripped>
 
 	// Swift methods
-	0x236840  func <stripped> // method 
-	0x2368b0  func <stripped> // method 
+	0x23ed90  func <stripped> // method 
+	0x23ee00  func <stripped> // method 
  }
 
  struct TeaUI.WebViewSession {
@@ -6106,7 +6141,7 @@
 	var transitioning : Bool // +0x28 (0x1)
 
 	// Swift methods
-	0x2376e0  class func FullscreenTransitionCoverManager.__allocating_init(_:) // init 
+	0x23fc30  class func FullscreenTransitionCoverManager.__allocating_init(_:) // init 
  }
 
  class TeaUI.PinningBlueprintCollectionViewLayout {
@@ -6146,13 +6181,13 @@
 	var currentBackgroundColorHighlighted : CGColorRef? // +0x68 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x23f350  @objc TwoLabelButton.initWithFrame: <stripped>
-	0x23f3d0  @objc TwoLabelButton.initWithCoder: <stripped>
-	0x23f980  @objc TwoLabelButton.layoutSubviews <stripped>
-	0x23feb0  @objc TwoLabelButton.touchesBegan:withEvent: <stripped>
-	0x240490  @objc TwoLabelButton.touchesCancelled:withEvent: <stripped>
-	0x240a90  @objc TwoLabelButton.touchesEnded:withEvent: <stripped>
-	0x241950  @objc TwoLabelButton..cxx_destruct <stripped>
+	0x2478b0  @objc TwoLabelButton.initWithFrame: <stripped>
+	0x247930  @objc TwoLabelButton.initWithCoder: <stripped>
+	0x247ee0  @objc TwoLabelButton.layoutSubviews <stripped>
+	0x248410  @objc TwoLabelButton.touchesBegan:withEvent: <stripped>
+	0x2489f0  @objc TwoLabelButton.touchesCancelled:withEvent: <stripped>
+	0x248ff0  @objc TwoLabelButton.touchesEnded:withEvent: <stripped>
+	0x249eb0  @objc TwoLabelButton..cxx_destruct <stripped>
  }
 
  enum TeaUI.AnimationTrigger {
@@ -6191,13 +6226,13 @@
 	let closeButton : CloseButton // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x242c20  @objc ModalHostViewController.initWithCoder: <stripped>
-	0x242cc0  @objc ModalHostViewController.closeButtonPressedWithSender: <stripped>
-	0x242ec0  @objc ModalHostViewController.initWithNibName:bundle: <stripped>
-	0x242f40  @objc ModalHostViewController..cxx_destruct <stripped>
+	0x24b180  @objc ModalHostViewController.initWithCoder: <stripped>
+	0x24b220  @objc ModalHostViewController.closeButtonPressedWithSender: <stripped>
+	0x24b680  @objc ModalHostViewController.initWithNibName:bundle: <stripped>
+	0x24b700  @objc ModalHostViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x242980  class func ModalHostViewController.__allocating_init(viewController:style:) // init 
+	0x24aee0  class func ModalHostViewController.__allocating_init(viewController:style:) // init 
  }
 
  class TeaUI.DebugTableViewSource : NSObject /usr/lib/libobjc.A.dylib {
@@ -6207,8 +6242,8 @@
 	var controller : weak UIViewController? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x244410  @objc DebugTableViewSource.init <stripped>
-	0x244490  @objc DebugTableViewSource..cxx_destruct <stripped>
+	0x24d8a0  @objc DebugTableViewSource.init <stripped>
+	0x24d920  @objc DebugTableViewSource..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -6219,7 +6254,7 @@
 	var animators : [String : BlueprintAnimatorType] // +0x10 (0x8)
 
 	// Swift methods
-	0x248790  class func BlueprintAnimatorManager.__allocating_init() // init 
+	0x251cc0  class func BlueprintAnimatorManager.__allocating_init() // init 
  }
 
  class TeaUI.ButtonWindowToolbar2Item {
@@ -6235,6 +6270,7 @@
  enum TeaUI.Navigation {
 
 	// Properties
+	case pushAfterPop : (identifier: String)
 	case popToRoot  
 	case push  
 	case pushWithPopDedupe  
@@ -6289,7 +6325,7 @@
 	var alertController : UIAlertController? // +0x40 (0x8)
 
 	// Swift methods
-	0x252340  class func Alert.__allocating_init(type:) // init 
+	0x25b930  class func Alert.__allocating_init(type:) // init 
  }
 
  class TeaUI.ModernPageViewController {
@@ -6326,23 +6362,23 @@
 	let nonAnimatingDelegate : NonAnimatingDelegate
 
 	// ObjC -> Swift bridged methods
-	0x254cf0  @objc NonAnimatingLayer.init <stripped>
-	0x254f00  @objc NonAnimatingLayer.initWithLayer: <stripped>
-	0x2550d0  @objc NonAnimatingLayer.initWithCoder: <stripped>
-	0x2552d0  @objc NonAnimatingLayer..cxx_destruct <stripped>
+	0x25e2e0  @objc NonAnimatingLayer.init <stripped>
+	0x25e4f0  @objc NonAnimatingLayer.initWithLayer: <stripped>
+	0x25e6c0  @objc NonAnimatingLayer.initWithCoder: <stripped>
+	0x25e8c0  @objc NonAnimatingLayer..cxx_destruct <stripped>
  }
 
  class TeaUI.NonAnimatingDelegate : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x255170  @objc NonAnimatingDelegate.actionForLayer:forKey: <stripped>
-	0x255200  @objc NonAnimatingDelegate.init <stripped>
+	0x25e760  @objc NonAnimatingDelegate.actionForLayer:forKey: <stripped>
+	0x25e7f0  @objc NonAnimatingDelegate.init <stripped>
 
 	// Swift methods
  }
 
  class TeaUI.DebugAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x255660  @objc DebugAssembly.init <stripped>
+	0x25ec50  @objc DebugAssembly.init <stripped>
  }
 
  enum TeaUI.BlueprintBookmark {
@@ -6370,14 +6406,14 @@
 	var isPresenting : Bool // +0x31 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x2575d0  @objc DebugWindow.initWithFrame: <stripped>
-	0x257910  @objc DebugWindow.initWithCoder: <stripped>
-	0x258050  @objc DebugWindow.motionBegan:withEvent: <stripped>
-	0x258120  @objc DebugWindow.initWithWindowScene: <stripped>
-	0x2581a0  @objc DebugWindow..cxx_destruct <stripped>
+	0x260bc0  @objc DebugWindow.initWithFrame: <stripped>
+	0x260f00  @objc DebugWindow.initWithCoder: <stripped>
+	0x261640  @objc DebugWindow.motionBegan:withEvent: <stripped>
+	0x261710  @objc DebugWindow.initWithWindowScene: <stripped>
+	0x261790  @objc DebugWindow..cxx_destruct <stripped>
 
 	// Swift methods
-	0x256e40  class func DebugWindow.__allocating_init(frame:resolver:) // init 
+	0x260430  class func DebugWindow.__allocating_init(frame:resolver:) // init 
  }
 
  class TeaUI.MenuManager : UIResponder /System/Library/Frameworks/UIKit.framework/UIKit, MenuManagerType {
@@ -6389,14 +6425,14 @@
 	var alternateMenuItems : MenuItemContainer // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x25a830  @objc MenuManager.buildMenuWithBuilder: <stripped>
-	0x25aba0  @objc MenuManager.validateCommand: <stripped>
-	0x25ac30  @objc MenuManager.canPerformAction:withSender: <stripped>
-	0x25ad30  @objc MenuManager.init <stripped>
-	0x25adb0  @objc MenuManager..cxx_destruct <stripped>
+	0x263f90  @objc MenuManager.buildMenuWithBuilder: <stripped>
+	0x264300  @objc MenuManager.validateCommand: <stripped>
+	0x264390  @objc MenuManager.canPerformAction:withSender: <stripped>
+	0x264490  @objc MenuManager.init <stripped>
+	0x264510  @objc MenuManager..cxx_destruct <stripped>
 
 	// Swift methods
-	0x259650  class func MenuManager.__allocating_init(menu:commandCenter:) // init 
+	0x262c40  class func MenuManager.__allocating_init(menu:commandCenter:) // init 
  }
 
  enum TeaUI.MenuItemContainer {
@@ -6422,7 +6458,7 @@
 	let block : () // +0x38 (0x10)
 
 	// Swift methods
-	0x25df10  class func KeyCommandBlock.__allocating_init(key:flags:title:block:) // init 
+	0x267580  class func KeyCommandBlock.__allocating_init(key:flags:title:block:) // init 
  }
 
  enum TeaUI.ShineColor {

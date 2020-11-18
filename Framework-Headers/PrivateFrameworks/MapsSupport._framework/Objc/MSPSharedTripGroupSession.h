@@ -50,9 +50,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)leaveLiveModeIfNeeded;
 - (void)participantDidJoin:(id)arg1;
 - (void)participantDidLeave:(id)arg1;
-- (BOOL)removeSharingWith:(id)arg1;
 - (void)sendChunkedMessage:(id)arg1 to:(id)arg2;
 - (void)sendCommand:(id)arg1 fromHandle:(id)arg2 fromAccountID:(id)arg3;
+- (BOOL)sessionIsAliveAfterRemovingSharingIdentifiers:(id)arg1;
 
 @end
 

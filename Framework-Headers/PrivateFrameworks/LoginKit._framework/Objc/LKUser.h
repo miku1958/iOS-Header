@@ -61,6 +61,7 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToLKUser:(id)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (void)setDiffUMUserPropertiesFromUMUser:(id)arg1;
 
 @end

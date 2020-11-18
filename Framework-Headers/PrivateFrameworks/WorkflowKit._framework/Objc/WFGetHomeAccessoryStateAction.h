@@ -18,6 +18,7 @@
 - (id)localizedAttribution;
 - (id)localizedDefaultOutputName;
 - (id)localizedDescriptionSummary;
+- (id)localizedFooter;
 - (id)localizedName;
 - (id)outputContentClasses;
 - (id)outputMeasurementUnit;

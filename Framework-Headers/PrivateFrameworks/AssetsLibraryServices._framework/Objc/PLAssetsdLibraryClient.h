@@ -11,6 +11,7 @@
 @interface PLAssetsdLibraryClient : PLAssetsdBaseClient
 {
     NSMutableDictionary *_securityScopedURLs;
+    _Atomic BOOL _isOpen;
 }
 
 - (void).cxx_destruct;
@@ -25,6 +26,7 @@
 - (void)importFileSystemAssetsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)launchAssetsd;
 - (BOOL)openPhotoLibraryDatabaseWithPostOpenProgress:(id *)arg1 error:(id *)arg2;
+- (BOOL)openPhotoLibraryDatabaseWithoutProgressIfNeeded:(id *)arg1;
 - (void)pendingEventsForRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)publishRemoteChangeEvent:(id)arg1 delayedSaveActionsDetail:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)recoverFromCrashIfNeeded;

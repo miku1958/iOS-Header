@@ -4,15 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Home/HFAccessoryProfileGroupItemProvider.h>
+#import <Home/HFItemProvider.h>
 
-@interface HFNetworkConfigurationGroupItemProvider : HFAccessoryProfileGroupItemProvider
+@class HMHome, NSMutableSet;
+
+@interface HFNetworkConfigurationGroupItemProvider : HFItemProvider
 {
+    HMHome *_home;
+    NSMutableSet *_groupItems;
 }
 
-- (id)_profileGroupItemForProfiles:(id)arg1 groupIdentifier:(id)arg2;
-- (id)_supportedProfileClasses;
+@property (strong, nonatomic) NSMutableSet *groupItems; // @synthesize groupItems=_groupItems;
+@property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
+
+- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
 - (id)initWithHome:(id)arg1;
+- (id)invalidationReasons;
+- (id)items;
+- (id)reloadItems;
 
 @end
 

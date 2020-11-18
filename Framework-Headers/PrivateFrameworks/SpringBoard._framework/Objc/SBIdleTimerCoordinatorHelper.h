@@ -25,6 +25,7 @@
 - (id)_updateProviderInfo:(id)arg1 behavior:(id)arg2 reason:(id)arg3;
 - (void)bindProvider:(id)arg1 toSourceTimer:(id)arg2 behavior:(id)arg3 forReason:(id)arg4;
 - (BOOL)hasProvider:(id)arg1;
+- (id)idleTimerProxyForProvider:(id)arg1;
 - (id)init;
 - (id)initWithSourceProvider:(id)arg1;
 - (id)proposeIdleTimerBehavior:(id)arg1 fromProvider:(id)arg2 reason:(id)arg3;

@@ -49,6 +49,7 @@
 @property (copy) NSURL *referrerURL; // @dynamic referrerURL;
 @property (copy) NSSet *requiredUserInfoKeys;
 @property BOOL supportsContinuationStreams; // @dynamic supportsContinuationStreams;
+@property (copy) NSString *targetContentIdentifier;
 @property (copy) NSString *title; // @dynamic title;
 @property (copy) NSDictionary *userInfo; // @dynamic userInfo;
 @property (copy) NSURL *webpageURL; // @dynamic webpageURL;

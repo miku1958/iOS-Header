@@ -22,6 +22,7 @@
 + (id)dataSourceWithAsset:(id)arg1;
 - (void).cxx_destruct;
 - (id)_fastKeyCuratedAssetForAssetCollection:(id)arg1;
+- (BOOL)areAllSectionsConsideredAccurate;
 - (id)assetCollectionReferenceNearestToObjectReference:(id)arg1;
 - (id)assetCollectionReferencesWithParentAssetCollectionReference:(id)arg1;
 - (id)assetCollectionReferencesWithParentAssetCollectionReference:(id)arg1 assetCollectionReferenceWithSameKeyAssetAsParent:(id *)arg2;

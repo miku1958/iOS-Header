@@ -13,38 +13,20 @@
 @interface MKMapService : NSObject <GEOLogContextDelegate>
 {
     int _deviceOrientation;
-    CDUnknownBlockType _getLogContextForEventBlock;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property int deviceOrientation; // @synthesize deviceOrientation=_deviceOrientation;
-@property (copy, nonatomic) CDUnknownBlockType getLogContextForEventBlock; // @synthesize getLogContextForEventBlock=_getLogContextForEventBlock;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 + (id)sharedService;
-- (void).cxx_destruct;
 - (void)_mapItemsForResponseData:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)_mk_ticketForSearchQuery:(id)arg1 completionItem:(id)arg2 traits:(id)arg3 filters:(id)arg4;
 - (id)_ticketForReverseGeocodeCoordinate:(struct CLLocationCoordinate2D)arg1 floorOrdinal:(int)arg2 includeEntryPoints:(BOOL)arg3 preserveOriginalLocation:(BOOL)arg4 traits:(id)arg5;
 - (id)_ticketForReverseGeocodeCoordinate:(struct CLLocationCoordinate2D)arg1 includeEntryPoints:(BOOL)arg2 preserveOriginalLocation:(BOOL)arg3 traits:(id)arg4;
 - (id)_ticketForReverseGeocodeDroppedPinCoordinate:(struct CLLocationCoordinate2D)arg1 floorOrdinal:(id)arg2 traits:(id)arg3;
-- (void)captureExtensionStateWithIsRideBookingAppsInstalled:(BOOL)arg1 isRideBookingAppsEnabled:(BOOL)arg2;
-- (void)captureExtensionStateWithIsTableBookingAppsInstalled:(BOOL)arg1 isTableBookingAppsEnabled:(BOOL)arg2;
-- (void)captureMapSettingsWithAvoidHighways:(BOOL)arg1;
-- (void)captureMapSettingsWithAvoidTolls:(BOOL)arg1;
-- (void)captureMapSettingsWithFindMyCarEnabled:(BOOL)arg1;
-- (void)captureMapSettingsWithLabelEnabled:(BOOL)arg1;
-- (void)captureMapSettingsWithNavVoiceVolume:(int)arg1;
-- (void)captureMapSettingsWithPauseSpokenAudioEnabled:(BOOL)arg1;
-- (void)captureMapSettingsWithPreferredTransportMode:(int)arg1;
-- (void)captureMapSettingsWithTrafficEnabled:(BOOL)arg1;
-- (void)captureMapUIStateWithIsAirQualityShown:(BOOL)arg1 isWeatherShown:(BOOL)arg2;
-- (void)captureMapUIStateWithLayoutInfo:(int)arg1 layoutStyle:(int)arg2;
-- (void)captureMapUIStateWithLayoutInfo:(int)arg1 layoutStyle:(int)arg2 numberOfTabs:(unsigned int)arg3 currentTabIndex:(unsigned int)arg4;
-- (void)captureMapsSettingsWithPreferredTransportMode:(int)arg1 avoidTolls:(BOOL)arg2 avoidHighways:(BOOL)arg3 navVoiceVolume:(int)arg4 pauseSpokenAudioEnabled:(BOOL)arg5 findMyCarEnabled:(BOOL)arg6 trafficEnabled:(BOOL)arg7 labelEnabled:(BOOL)arg8;
-- (void)capturePairedDeviceStateWithDeviceType:(int)arg1 isConnected:(BOOL)arg2 deviceOSVersion:(id)arg3 deviceHwIdentifier:(id)arg4;
 - (void)capturePlaceCardUserAction:(int)arg1 onTarget:(int)arg2 eventValue:(id)arg3 mapItem:(id)arg4 timestamp:(double)arg5 placeCardType:(int)arg6 categoriesDisplayed:(id)arg7 categorySelected:(id)arg8;
 - (void)capturePlaceCardUserAction:(int)arg1 onTarget:(int)arg2 eventValue:(id)arg3 mapItem:(id)arg4 timestamp:(double)arg5 resultIndex:(int)arg6 targetID:(unsigned long long)arg7 providerID:(id)arg8 animationID:(unsigned long long)arg9 actionURL:(id)arg10 photoID:(id)arg11 placeCardType:(int)arg12 localizedMapItemCategory:(id)arg13 availableActions:(id)arg14 unactionableUIElements:(id)arg15;
 - (void)captureTransitPlaceCardUserAction:(int)arg1 onTarget:(int)arg2 eventValue:(id)arg3 mapItem:(id)arg4 timestamp:(double)arg5 resultIndex:(int)arg6 targetID:(unsigned long long)arg7 providerID:(id)arg8 animationID:(unsigned long long)arg9 transitCardCategory:(int)arg10 transitSystem:(id)arg11 transitDepartureSequence:(id)arg12 transitIncident:(id)arg13;
@@ -65,7 +47,6 @@
 - (id)feedbackTicketForWalletRAPReport:(id)arg1;
 - (void)incrementAGGDInteractedWithPlaceCardKeyWithType:(unsigned long long)arg1 incrementValue:(long long)arg2;
 - (void)incrementAGGDOpenPlaceCardKeyWithType:(unsigned long long)arg1 incrementValue:(long long)arg2;
-- (id)logContextForLogMsgEvent:(id)arg1;
 - (id)mapItemsForPlacesInDetails:(id)arg1;
 - (id)problemTicketForWalletRAPReport:(id)arg1;
 - (void)siriAnalyticsDonation:(int)arg1 target:(int)arg2 resultIndex:(int)arg3 mapItem:(id)arg4 searchCategory:(id)arg5 searchQueryString:(id)arg6;

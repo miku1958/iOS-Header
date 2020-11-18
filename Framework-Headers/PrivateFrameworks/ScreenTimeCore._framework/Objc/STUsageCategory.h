@@ -17,8 +17,8 @@
 @property (strong, nonatomic) NSSet *timedItems; // @dynamic timedItems;
 @property (nonatomic) long long totalTimeInSeconds; // @dynamic totalTimeInSeconds;
 
-+ (id)appDetailItemsForUsageCategories:(id)arg1;
-+ (id)categoryDetailItemsForUsageCategories:(id)arg1;
++ (id)applicationAndWebItemsExcludingSystemHiddenApplications:(id)arg1;
++ (id)categoryItemsExcludingSystemCategories:(id)arg1;
 
 @end
 

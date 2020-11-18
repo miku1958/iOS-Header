@@ -13,7 +13,6 @@
 @interface HFAlbumIconDescriptor : NSObject <HFIconDescriptor>
 {
     BOOL _shouldForceLTR;
-    NSString *_imageIdentifier;
     NSData *_imageData;
 }
 
@@ -22,7 +21,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
-@property (readonly, nonatomic) NSString *imageIdentifier; // @synthesize imageIdentifier=_imageIdentifier;
 @property (readonly, nonatomic) BOOL shouldForceLTR; // @synthesize shouldForceLTR=_shouldForceLTR;
 @property (readonly) Class superclass;
 

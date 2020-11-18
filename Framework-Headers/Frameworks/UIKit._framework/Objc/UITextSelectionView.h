@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
     BOOL m_isSuspended;
     int m_showingCommandsCounterForRotate;
     BOOL m_forceRangeView;
+    BOOL m_isInstalledInSelectionContainerView;
     BOOL _isIndirectFloatingCaret;
     struct CGRect _stashedCaretRect;
     struct CGRect _previousGhostCaretRect;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL forceRangeView; // @synthesize forceRangeView=m_forceRangeView;
 @property (readonly, weak, nonatomic) UITextInteractionAssistant *interactionAssistant; // @synthesize interactionAssistant=m_interactionAssistant;
 @property (nonatomic) BOOL isIndirectFloatingCaret; // @synthesize isIndirectFloatingCaret=_isIndirectFloatingCaret;
+@property (readonly, nonatomic) BOOL isInstalledInSelectionContainerView; // @synthesize isInstalledInSelectionContainerView=m_isInstalledInSelectionContainerView;
 @property (nonatomic) struct CGRect previousGhostCaretRect; // @synthesize previousGhostCaretRect=_previousGhostCaretRect;
 @property (readonly, nonatomic) UITextRangeView *rangeView;
 @property (strong, nonatomic) NSArray *replacements; // @synthesize replacements=m_replacements;
@@ -57,7 +59,8 @@ __attribute__((visibility("hidden")))
 - (void)_hideCaret:(int)arg1;
 - (BOOL)_shouldUseIndirectFloatingCaret;
 - (void)_showCaret:(int)arg1;
-- (void)_showCommandsWithReplacements:(id)arg1 isForContextMenu:(BOOL)arg2 rectsToEvade:(id)arg3;
+- (void)_showCommandsWithReplacements:(id)arg1 forDictation:(BOOL)arg2 afterDelay:(double)arg3;
+- (void)_showCommandsWithReplacements:(id)arg1 isForContextMenu:(BOOL)arg2 forDictation:(BOOL)arg3 rectsToEvade:(id)arg4;
 - (void)_showSelectionCommandsForContextMenu:(BOOL)arg1;
 - (void)activate;
 - (BOOL)affectedByScrollerNotification:(id)arg1;
@@ -69,7 +72,7 @@ __attribute__((visibility("hidden")))
 - (void)appearOrFadeIfNecessary;
 - (void)beginFloatingCaretView;
 - (void)beginFloatingCursorAtPoint:(struct CGPoint)arg1;
-- (void)calculateAndShowReplacements:(id)arg1;
+- (void)calculateReplacementsWithGenerator:(id)arg1 andShowAfterDelay:(double)arg2;
 - (void)cancelDelayedCommandRequests;
 - (void)caretBlinkTimerFired:(id)arg1;
 - (id)caretViewColor;
@@ -81,6 +84,7 @@ __attribute__((visibility("hidden")))
 - (void)configureForReplacementMode;
 - (void)configureForSelectionMode;
 - (void)deactivate;
+- (void)deactivateAndCollapseSelection:(BOOL)arg1;
 - (void)dealloc;
 - (void)deferredUpdateSelectionCommands;
 - (void)deferredUpdateSelectionRects;

@@ -37,6 +37,7 @@
 - (void).cxx_destruct;
 - (void)_addNoFlagsArtworkIndex:(unsigned int)arg1;
 - (void)_addNoFlagsArtworkItem:(id)arg1;
+- (id)_maps_artworkIndicesAsString;
 - (void)_readArtworkIndexs;
 - (void)_readArtworkItems;
 - (void)addArtworkIndex:(unsigned int)arg1;

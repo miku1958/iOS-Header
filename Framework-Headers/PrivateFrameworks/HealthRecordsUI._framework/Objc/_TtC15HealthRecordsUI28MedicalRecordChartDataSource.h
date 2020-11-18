@@ -19,7 +19,7 @@
     MISSING_TYPE *unit;
     MISSING_TYPE *preferredColors;
     MISSING_TYPE *chartableXRange;
-    MISSING_TYPE *minimumAxisSpace;
+    MISSING_TYPE *chartableYRange;
 }
 
 @property (nonatomic, readonly) NSString *displayName;

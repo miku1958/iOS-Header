@@ -20,7 +20,7 @@
 - (void).cxx_destruct;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
-- (void)setConflictedWorkflow:(id)arg1 fromDevice:(id)arg2;
+- (void)setConflictedWorkflow:(id)arg1 fromDevice:(id)arg2 isRemote:(BOOL)arg3;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateImages;

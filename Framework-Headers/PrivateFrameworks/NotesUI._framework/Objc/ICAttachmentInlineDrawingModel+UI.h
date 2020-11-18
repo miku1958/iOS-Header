@@ -34,6 +34,7 @@
 - (BOOL)needToGeneratePreviews;
 - (id)newDrawingFromMergeableData;
 - (void)setHandwritingRecognitionDrawing:(id)arg1;
+- (void)setHandwritingRecognitionDrawingQueue:(id)arg1;
 - (void)setTitleQuery:(id)arg1;
 - (id)titleQuery;
 - (void)titleQuery:(id)arg1 didUpdateWithItem:(id)arg2;

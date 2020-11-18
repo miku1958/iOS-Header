@@ -127,7 +127,7 @@
 - (BOOL)canRunGivenAvailabilityState:(unsigned long long)arg1;
 - (BOOL)canUsePackagesWithError:(id *)arg1;
 - (void)cancelAllOperations;
-- (void)cancelOperationWithIdentifier:(id)arg1;
+- (void)cancelOperationWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)clearAssetCacheWithSetupInfo:(id)arg1 databaseScope:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)clearAuthTokensWithSetupInfo:(id)arg1 recordID:(id)arg2 databaseScope:(long long)arg3;
 - (void)clearCachesForRecordWithSetupInfo:(id)arg1 recordID:(id)arg2 databaseScope:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;

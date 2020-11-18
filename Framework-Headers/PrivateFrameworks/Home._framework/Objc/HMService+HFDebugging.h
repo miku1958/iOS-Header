@@ -82,6 +82,7 @@
 - (id)hf_effectiveServiceSubtype;
 - (id)hf_effectiveServiceType;
 - (id)hf_iconDescriptor;
+- (BOOL)hf_isChildService;
 - (BOOL)hf_isInGroup;
 - (BOOL)hf_isLegacyService;
 - (BOOL)hf_isTelevision;
@@ -90,7 +91,6 @@
 - (id)hf_parentService;
 - (id)hf_requiredCharacteristicTypesForDisplayMetadata;
 - (id)hf_serviceDescriptor;
-- (id)hf_shiftedIconDescriptor;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (BOOL)hf_supportsGroups;
 - (id)hf_updateDateAdded:(id)arg1;

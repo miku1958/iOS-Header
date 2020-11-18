@@ -19,6 +19,7 @@
 - (void)dumpMomentsMetadataToPath:(NSString *)arg1 reply:(void (^)(NSDictionary *))arg2;
 - (void)getCPLStateWithReply:(void (^)(NSString *))arg1;
 - (void)getXPCTransactionStatusWithReply:(void (^)(NSString *))arg1;
+- (void)identifyAssetsWithInconsistentCloudState;
 - (void)invalidateHighlightSubtitlesAndRegenerateHighlightTitlesWithCompletionBlock:(void (^)(void))arg1;
 - (void)momentGenerationStatusWithReply:(void (^)(NSString *))arg1;
 - (void)prefetchResourcesForHighlights:(NSArray *)arg1 reply:(void (^)(void))arg2;

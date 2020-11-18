@@ -23,7 +23,6 @@
     id<WFWorkflowSettingsViewControllerDelegate> _delegate;
     WFWorkflow *_workflow;
     WFDatabase *_database;
-    NSString *_stagedWorkflowNameForUpdate;
     WFAddToHomeScreenActivity *_homeScreenActivity;
     UINavigationController *_cardPresentationNavigationController;
     WFWorkflowSettingsViewDataSource *_dataSource;
@@ -38,7 +37,6 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) WFAddToHomeScreenActivity *homeScreenActivity; // @synthesize homeScreenActivity=_homeScreenActivity;
 @property (readonly, nonatomic) WFWorkflowSettingsLayoutMetrics *layoutMetrics; // @synthesize layoutMetrics=_layoutMetrics;
-@property (strong, nonatomic) NSString *stagedWorkflowNameForUpdate; // @synthesize stagedWorkflowNameForUpdate=_stagedWorkflowNameForUpdate;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
 
@@ -47,8 +45,8 @@
 - (void)contentClassesViewController:(id)arg1 didChangeSelectedClasses:(id)arg2;
 - (void)contentSizeCategoryDidChange;
 - (void)dealloc;
+- (void)didSelectSettingsSectionButtonsAtRow:(long long)arg1;
 - (void)didSelectSettingsSectionHelpAtRow:(long long)arg1;
-- (void)didSelectSettingsSectionHomeScreenAtRow:(long long)arg1;
 - (void)didSelectSettingsSectionImportQuestionsAtRow:(long long)arg1;
 - (void)didSelectSettingsSectionShowInAtRow:(long long)arg1;
 - (void)dismissIconViewController;

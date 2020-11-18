@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *paywallModel;
     MISSING_TYPE *purchaseSessionID;
     MISSING_TYPE *dataManager;
-    MISSING_TYPE *purchaseStarter;
     MISSING_TYPE *webAccessAuthenticatorFactory;
     MISSING_TYPE *webAccessAuthenticator;
     MISSING_TYPE *purchaseConversionLocation;

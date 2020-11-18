@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class SBAppExposeSwitcherModifierEvent, SBGestureSwitcherModifierEvent, SBInlineTransitionSwitcherModifierEvent, SBInsertionSwitcherModifierEvent, SBMainTransitionSwitcherModifierEvent, SBReduceMotionChangedSwitcherModifierEvent, SBSwitcherModifier, SBSwitcherModifierEvent, SBTransitionSwitcherModifierEvent;
+@class SBAppExposeSwitcherModifierEvent, SBGestureSwitcherModifierEvent, SBInlineTransitionSwitcherModifierEvent, SBInsertionSwitcherModifierEvent, SBMainTransitionSwitcherModifierEvent, SBReduceMotionChangedSwitcherModifierEvent, SBSwitcherModifier, SBSwitcherModifierEvent, SBTetheredInsertionSwitcherModifierEvent, SBTetheredRemovalSwitcherModifierEvent, SBTransitionSwitcherModifierEvent;
 @protocol SBFluidSwitcherScrollProviding;
 
 @protocol SBFluidSwitcherModifierProviding
@@ -16,6 +16,8 @@
 - (SBSwitcherModifier<SBFluidSwitcherScrollProviding> *)multitaskingModifierForEvent:(SBSwitcherModifierEvent *)arg1;
 - (SBSwitcherModifier<SBFluidSwitcherScrollProviding> *)newMultitaskingModifierFromMultitaskingModifier:(SBSwitcherModifier<SBFluidSwitcherScrollProviding> *)arg1;
 - (SBSwitcherModifier *)reduceMotionModifierForReduceMotionChangedEvent:(SBReduceMotionChangedSwitcherModifierEvent *)arg1;
+- (SBSwitcherModifier *)tetheredInsertionModifierFortetheredInsertionEvent:(SBTetheredInsertionSwitcherModifierEvent *)arg1;
+- (SBSwitcherModifier *)tetheredRemovalModifierForTetheredRemovalEvent:(SBTetheredRemovalSwitcherModifierEvent *)arg1;
 - (SBSwitcherModifier *)transitionModifierForInlineTransitionEvent:(SBInlineTransitionSwitcherModifierEvent *)arg1;
 - (SBSwitcherModifier *)transitionModifierForMainTransitionEvent:(SBMainTransitionSwitcherModifierEvent *)arg1;
 @end

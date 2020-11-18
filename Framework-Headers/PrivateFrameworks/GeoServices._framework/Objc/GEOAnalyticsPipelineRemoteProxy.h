@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_reportLogMsgType:(int)arg1 eventType:(int)arg2 logMsg:(id)arg3 completion:(CDUnknownBlockType)arg4 completionQueue:(id)arg5;
 - (void)_reportMapKitCountType:(int)arg1 appId:(id)arg2 completion:(CDUnknownBlockType)arg3 completionQueue:(id)arg4;
 - (void)flushEvalData;
+- (id)getEvalStatus;
 - (id)init;
 - (void)initiateUploadOfType:(int)arg1;
 - (void)reportLogMsgType:(int)arg1 eventType:(int)arg2 logMsg:(id)arg3 completion:(CDUnknownBlockType)arg4 completionQueue:(id)arg5;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)setEvalMode:(BOOL)arg1;
 - (void)setShortSessionValues:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)shortSessionValuesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)showEvalDataWithPredicate:(id)arg1 visitorBlock:(CDUnknownBlockType)arg2 summaryBlock:(CDUnknownBlockType)arg3;
 
 @end
 

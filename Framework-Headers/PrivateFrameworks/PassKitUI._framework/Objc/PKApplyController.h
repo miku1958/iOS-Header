@@ -76,6 +76,8 @@
 - (void)_queueTerminalStateFlowWithPage:(id)arg1;
 - (void)_reset;
 - (void)_startCoreIDVSessionWithStepInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_startPaymentServiceListener;
+- (void)_stopPaymentServiceListener;
 - (id)applicationUpdatedAlertControllerWithHandler:(CDUnknownBlockType)arg1;
 - (void)applyFlowDidAppear;
 - (void)dealloc;
@@ -88,7 +90,7 @@
 - (void)submitDocumentPage:(id)arg1 selectedDocument:(id)arg2 frontImage:(id)arg3 backImage:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)submitFieldsPage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)termsAccepted:(BOOL)arg1 identifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)termsDataForFeatureWithFormat:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)termsDataForFeatureWithIdentifier:(id)arg1 format:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)termsDataForIdentifier:(id)arg1 format:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)termsShownWithIdentifier:(id)arg1;
 - (void)withdrawApplicationWithCompletion:(CDUnknownBlockType)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <IntentsCore/NSObject-Protocol.h>
+#import <Intents/NSObject-Protocol.h>
 
 @class INImage;
 @protocol INKeyImageProducing;

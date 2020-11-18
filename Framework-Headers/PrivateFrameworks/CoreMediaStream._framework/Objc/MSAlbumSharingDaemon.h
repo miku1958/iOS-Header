@@ -51,7 +51,7 @@
 - (int)assetsInDownloadQueueCountForPersonID:(id)arg1;
 - (id)boundStateMachineForPersonID:(id)arg1;
 - (void)cancelActivitiesForPersonID:(id)arg1;
-- (void)deleteAlbumWithGUID:(id)arg1;
+- (void)deleteAlbumWithGUID:(id)arg1 inviterAddress:(id)arg2;
 - (void)deleteAlbumWithGUID:(id)arg1 personID:(id)arg2;
 - (void)deleteAlbumWithGUID:(id)arg1 personID:(id)arg2 info:(id)arg3;
 - (void)deleteAssetCollectionWithGUID:(id)arg1 personID:(id)arg2;

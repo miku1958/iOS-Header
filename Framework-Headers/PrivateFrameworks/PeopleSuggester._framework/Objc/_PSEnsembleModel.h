@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PeopleSuggester/_PSModel-Protocol.h>
-
 @class CNContactStore, NSArray, NSSet, NSUserDefaults, _CDInteractionCache, _CDInteractionStore, _PSHeuristics, _PSInteractionAndContactMonitor, _PSKNNModel, _PSRuleMiningModel;
 @protocol _DKKnowledgeQuerying><_DKKnowledgeSaving;
 
-@interface _PSEnsembleModel : NSObject <_PSModel>
+@interface _PSEnsembleModel : NSObject
 {
     struct os_unfair_lock_s _lock;
     _CDInteractionStore *_interactionStore;
@@ -20,9 +18,10 @@
     _CDInteractionCache *_shareInteractionCache;
     NSUserDefaults *_peopleSuggesterDefaults;
     CNContactStore *_contactStore;
-    NSArray *_contactKeysToFetch;
+    NSArray *_defaultContactKeysToFetch;
     _PSRuleMiningModel *_ruleMiningModel;
     _PSKNNModel *_knnModel;
+    _PSKNNModel *_knnMapsModel;
     _PSKNNModel *_knnZkwModel;
     _PSKNNModel *_knnNameOrContactRankerModel;
     _PSHeuristics *_heuristics;
@@ -31,11 +30,12 @@
 }
 
 @property (strong, nonatomic) NSSet *cachedSupportedBundleIDs; // @synthesize cachedSupportedBundleIDs=_cachedSupportedBundleIDs;
-@property (strong, nonatomic) NSArray *contactKeysToFetch; // @synthesize contactKeysToFetch=_contactKeysToFetch;
 @property (strong, nonatomic) _PSInteractionAndContactMonitor *contactMonitor; // @synthesize contactMonitor=_contactMonitor;
 @property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
+@property (strong, nonatomic) NSArray *defaultContactKeysToFetch; // @synthesize defaultContactKeysToFetch=_defaultContactKeysToFetch;
 @property (strong, nonatomic) _PSHeuristics *heuristics; // @synthesize heuristics=_heuristics;
 @property (strong, nonatomic) _CDInteractionStore *interactionStore; // @synthesize interactionStore=_interactionStore;
+@property (strong, nonatomic) _PSKNNModel *knnMapsModel; // @synthesize knnMapsModel=_knnMapsModel;
 @property (strong, nonatomic) _PSKNNModel *knnModel; // @synthesize knnModel=_knnModel;
 @property (strong, nonatomic) _PSKNNModel *knnNameOrContactRankerModel; // @synthesize knnNameOrContactRankerModel=_knnNameOrContactRankerModel;
 @property (strong, nonatomic) _PSKNNModel *knnZkwModel; // @synthesize knnZkwModel=_knnZkwModel;
@@ -54,11 +54,12 @@
 - (void)populateCachesWithSupportedBundleIDs:(id)arg1;
 - (id)predictWithMapsPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2;
 - (id)predictWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2;
+- (id)predictWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2 contactKeysToFetch:(id)arg3;
 - (id)rankedAutocompleteSuggestionsFromContext:(id)arg1 candidates:(id)arg2;
 - (id)rankedContactSuggestionsWithPredictionContext:(id)arg1 contactsOnly:(BOOL)arg2 maxSuggestions:(unsigned long long)arg3;
 - (id)rankedNameSuggestionsWithPredictionContext:(id)arg1 name:(id)arg2;
 - (id)suggestZKWMessagesSuggestionsWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2;
-- (id)suggestionsFromSuggestionProxies:(id)arg1 supportedBundleIDs:(id)arg2;
+- (id)suggestionsFromSuggestionProxies:(id)arg1 supportedBundleIDs:(id)arg2 contactKeysToFetch:(id)arg3 meContactIdentifier:(id)arg4 maxSuggestions:(unsigned long long)arg5;
 
 @end
 

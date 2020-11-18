@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDSettingTransactionReceiverProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDSettingsControllerProtocol-Protocol.h>
@@ -14,7 +14,7 @@
 @class NSArray, NSMapTable, NSString;
 @protocol HMDSettingGroupOwnerProtocol, HMDSettingsControllerDelegate, HMDSettingsControllerDependency, HMDSettingsMessageHandlerProtocol;
 
-@interface HMDSettingsController : NSObject <HMFLogging, HMDSettingsControllerProtocol, HMDSettingsMessageController, HMDSettingTransactionReceiverProtocol>
+@interface HMDSettingsController : HMFObject <HMFLogging, HMDSettingsControllerProtocol, HMDSettingsMessageController, HMDSettingTransactionReceiverProtocol>
 {
     id<HMDSettingsMessageHandlerProtocol> _messageHandler;
     id<HMDSettingsControllerDependency> _dependency;
@@ -25,6 +25,7 @@
 }
 
 @property (readonly) NSArray *allObjectIdentifiers;
+@property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak) id<HMDSettingsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly) id<HMDSettingsControllerDependency> dependency; // @synthesize dependency=_dependency;
@@ -32,12 +33,16 @@
 @property (strong) NSMapTable *groupsMap; // @synthesize groupsMap=_groupsMap;
 @property (readonly) unsigned long long hash;
 @property (readonly) id<HMDSettingsMessageHandlerProtocol> messageHandler; // @synthesize messageHandler=_messageHandler;
+@property (readonly, copy) NSString *privateDescription;
+@property (readonly, copy) NSString *propertyDescription;
 @property (strong) id<HMDSettingGroupOwnerProtocol> rootGroup; // @synthesize rootGroup=_rootGroup;
 @property (strong) NSMapTable *settingsMap; // @synthesize settingsMap=_settingsMap;
+@property (readonly, copy) NSString *shortDescription;
 @property (readonly) Class superclass;
 
 + (id)logCategory;
 - (void).cxx_destruct;
+- (id)_flattenedSettingControllerRoot:(id)arg1 withCurrentPath:(id)arg2 andReturnDictionary:(id)arg3;
 - (void)_handleAddedRootGroup:(id)arg1;
 - (id)_keyPathsFromGroup:(id)arg1 currentPath:(id)arg2;
 - (id)_keyPathsToModelInModelIDToModelLookup:(id)arg1 parentIDToModelIDsLookup:(id)arg2 currentID:(id)arg3 currentPath:(id)arg4;
@@ -61,6 +66,7 @@
 - (void)resetupMessageHandlersWithAddedGroups:(id)arg1 removedGroups:(id)arg2 addedSettings:(id)arg3 removedSettings:(id)arg4;
 - (id)settingForIdentifier:(id)arg1;
 - (id)settingGroupForIdentifier:(id)arg1;
+- (id)settingValuesByKeyPathWithPrefix:(id)arg1;
 - (void)settingsHierarchyDidChange;
 - (void)transactionSettingConstraintModelRemoved:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)transactionSettingConstraintModelUpdated:(id)arg1 previousModel:(id)arg2 completion:(CDUnknownBlockType)arg3;

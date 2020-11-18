@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <OnBoardingKit/OBWelcomeController.h>
+#import <HomeUI/HUImageOBWelcomeController.h>
 
 #import <HomeUI/HFItemManagerDelegate-Protocol.h>
 #import <HomeUI/HUConfigurationViewController-Protocol.h>
@@ -14,7 +14,7 @@
 @class HULocationDevice, HUPersonalRequestsDevicesModuleController, HUPersonalRequestsEditorItemManager, NSString, OBLinkTrayButton, OBTrayButton;
 @protocol HUConfigurationViewControllerDelegate;
 
-@interface HUPersonalRequestsSetupViewController : OBWelcomeController <HFItemManagerDelegate, HUItemTableModuleControllerHosting, HUConfigurationViewController, HUPreloadableViewController>
+@interface HUPersonalRequestsSetupViewController : HUImageOBWelcomeController <HFItemManagerDelegate, HUItemTableModuleControllerHosting, HUConfigurationViewController, HUPreloadableViewController>
 {
     id<HUConfigurationViewControllerDelegate> _delegate;
     OBTrayButton *_usePRButton;

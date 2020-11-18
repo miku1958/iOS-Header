@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDSettingsMessageHandlerProtocol-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDUserMessagePolicy, HMFMessageDispatcher, NSMapTable, NSString;
+@class HMDUserMessagePolicy, HMFMessageDispatcher, NSMapTable, NSObject, NSString;
 @protocol HMDSettingsMessageController, OS_dispatch_queue;
 
-@interface HMDSettingsMessageHandler : NSObject <HMDSettingsMessageHandlerProtocol>
+@interface HMDSettingsMessageHandler : HMFObject <HMDSettingsMessageHandlerProtocol, HMFLogging>
 {
     BOOL _isCurrentUser;
     NSMapTable *_settingMessageMap;
@@ -34,6 +35,7 @@
 @property (strong) NSMapTable *settingMessageMap; // @synthesize settingMessageMap=_settingMessageMap;
 @property (readonly) Class superclass;
 
++ (id)logCategory;
 - (void).cxx_destruct;
 - (BOOL)_applyOnlyCurrentUserAllowedPolicy:(id)arg1;
 - (id)_checkIsCurrentUser:(id)arg1;

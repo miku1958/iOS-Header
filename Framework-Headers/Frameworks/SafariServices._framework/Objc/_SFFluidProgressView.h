@@ -8,12 +8,12 @@
 
 #import <SafariServices/WBSFluidProgressControllerDelegate-Protocol.h>
 
-@class NSString, UIColor, UIImageView, WBSFluidProgressState;
+@class NSString, UIColor, WBSFluidProgressState;
 @protocol _SFFluidProgressViewDelegate;
 
 @interface _SFFluidProgressView : UIView <WBSFluidProgressControllerDelegate>
 {
-    UIImageView *_progressBar;
+    UIView *_progressBar;
     UIView *_clippingView;
     WBSFluidProgressState *_state;
     BOOL _progressAnimationSuppressed;
@@ -37,7 +37,6 @@
 - (void)_animateUsingDefaultTiming:(BOOL)arg1 stepAnimationTime:(double)arg2 options:(unsigned long long)arg3 animations:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_finishProgressBarWithDuration:(double)arg1;
 - (struct CGRect)_progressBarBoundsForValue:(double)arg1;
-- (void)_updateProgressBarImage;
 - (void)fluidProgressController:(id)arg1 setProgressToCurrentPosition:(id)arg2;
 - (void)fluidProgressController:(id)arg1 startFluidProgressBar:(id)arg2 animateFillFade:(BOOL)arg3;
 - (void)fluidProgressController:(id)arg1 updateFluidProgressBar:(id)arg2;

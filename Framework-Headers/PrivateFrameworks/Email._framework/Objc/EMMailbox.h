@@ -46,7 +46,7 @@
 @property (weak, nonatomic) EMMailbox *parent; // @synthesize parent=_parent;
 @property (readonly, nonatomic) EMMailboxObjectID *parentID; // @synthesize parentID=_parentID;
 @property (readonly, copy, nonatomic) NSString *redactedName; // @synthesize redactedName=_redactedName;
-@property (readonly, nonatomic) EMMailboxRepository *repository;
+@property (strong, nonatomic) EMMailboxRepository *repository;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsSelectAll;
 @property (nonatomic) long long type; // @synthesize type=_type;
@@ -79,7 +79,6 @@
 - (id)initWithObjectID:(id)arg1 name:(id)arg2 accountIdentifier:(id)arg3 type:(long long)arg4 builder:(CDUnknownBlockType)arg5;
 - (id)initWithObjectID:(id)arg1 repository:(id)arg2 name:(id)arg3 accountIdentifier:(id)arg4 type:(long long)arg5 builder:(CDUnknownBlockType)arg6;
 - (void)setParentFromMailboxes:(id)arg1;
-- (void)setRepository:(id)arg1;
 
 @end
 

@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <PassKitCore/PDScheduledActivityClient-Protocol.h>
+@class CKContainer, NSArray, NSError, NSMutableDictionary, NSMutableSet;
+@protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source, PDCloudStoreContainerDelegate, PDCloudStoreDataSource;
 
-@class CKContainer, NSArray, NSError, NSMutableDictionary, NSMutableSet, NSString;
-@protocol OS_dispatch_group, OS_dispatch_queue, PDCloudStoreContainerDelegate, PDCloudStoreDataSource;
-
-@interface PDCloudStoreContainer : NSObject <PDScheduledActivityClient>
+@interface PDCloudStoreContainer : NSObject
 {
     NSMutableSet *_initializationCompletionHandlers;
     NSObject<OS_dispatch_queue> *_backgroundQueue;
     NSObject<OS_dispatch_group> *_batchUpdateGroup;
     BOOL _shouldInvalidateCloudStore;
     BOOL _shouldCancelAllTasks;
+    NSObject<OS_dispatch_source> *_timeoutTimer;
     BOOL _accountChangedNotificationReceived;
     BOOL _cloudContainerSetupInProgress;
     BOOL _resettingCloudContainer;
@@ -41,16 +40,12 @@
 @property (readonly, nonatomic) NSMutableDictionary *completedFetchTimestampByZoneID; // @synthesize completedFetchTimestampByZoneID=_completedFetchTimestampByZoneID;
 @property (strong, nonatomic) CKContainer *container; // @synthesize container=_container;
 @property (readonly, weak, nonatomic) id<PDCloudStoreDataSource> dataSource; // @synthesize dataSource=_dataSource;
-@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PDCloudStoreContainerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long nextExpectedState; // @synthesize nextExpectedState=_nextExpectedState;
 @property (strong, nonatomic) NSError *operationError; // @synthesize operationError=_operationError;
 @property (nonatomic) BOOL resettingCloudContainer; // @synthesize resettingCloudContainer=_resettingCloudContainer;
 @property (strong, nonatomic) NSArray *subscriptionIdentifiers; // @synthesize subscriptionIdentifiers=_subscriptionIdentifiers;
 @property (readonly, nonatomic) NSMutableDictionary *subscriptionsByIdentifier; // @synthesize subscriptionsByIdentifier=_subscriptionsByIdentifier;
-@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property (strong, nonatomic) NSArray *zoneNames; // @synthesize zoneNames=_zoneNames;
 @property (readonly, nonatomic) NSMutableDictionary *zonesByName; // @synthesize zonesByName=_zonesByName;
@@ -61,6 +56,7 @@
 - (void)_cancelAllOperations;
 - (void)_cancelCloudStoreInitializationTimer;
 - (id)_cannotPerformActionErrorWithFailureReason:(id)arg1;
+- (void)_cloudStoreInitializationTimerFired;
 - (void)_deleteAllZoneSubscriptionsWithOperationGroupNameSuffix:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_deleteAllZonesWithOperationGroupNameSuffix:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchAllSubscriptionsWithOperationGroupNameSuffix:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -89,6 +85,7 @@
 - (void)createZoneSubscriptions:(id)arg1 operationGroupNameSuffix:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)createZones:(id)arg1 operationGroupNameSuffix:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)createZones:(id)arg1 operationGroupNameSuffix:(id)arg2 userInfo:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)description;
 - (void)detachFromContainerWithState:(unsigned long long)arg1;
 - (BOOL)ensureContainerState:(unsigned long long)arg1;
 - (id)errorWithCode:(long long)arg1 description:(id)arg2;
@@ -97,17 +94,16 @@
 - (void)fetchAndStoreChanges:(BOOL)arg1 forceFetch:(BOOL)arg2 operationGroupName:(id)arg3 operationGroupNameSuffix:(id)arg4 userInfo:(id)arg5 proccessedCloudStoreRecords:(id)arg6 processedDeletedRecords:(id)arg7 serverChangeToken:(id)arg8 completion:(CDUnknownBlockType)arg9;
 - (void)fetchRecordsWithQuery:(id)arg1 operationGroupName:(id)arg2 zone:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)fetchRecordsWithRecordIDs:(id)arg1 operationGroupName:(id)arg2 operationGroupNameSuffix:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)fetchRecordsWithRecordIDs:(id)arg1 operationGroupName:(id)arg2 operationGroupNameSuffix:(id)arg3 qualityOfService:(long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)initWithDataSource:(id)arg1;
 - (void)initialCloudDatabaseSetupWithCompletion:(CDUnknownBlockType)arg1;
 - (void)initialCloudDatabaseSetupWithOperationGroupNameSuffix:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)invalidateCloudStoreIfPossible;
-- (void)invalidateCloudStoreIfPossibleWithOperationGroupNameSuffix:(id)arg1;
-- (void)invalidateCloudStoreWithCompletion:(CDUnknownBlockType)arg1;
-- (void)invalidateCloudStoreWithOperationGroupNameSuffix:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)invalidateCloudStoreAndClearCache:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)invalidateCloudStoreIfPossibleWithOperationGroupNameSuffix:(id)arg1 clearCache:(BOOL)arg2;
+- (void)invalidateCloudStoreWithOperationGroupNameSuffix:(id)arg1 clearCache:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)isSetup;
-- (void)itemOfItemType:(unsigned long long)arg1 recordName:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)itemOfItemType:(unsigned long long)arg1 recordName:(id)arg2 qualityOfService:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)lastFetchDateForZoneWithName:(id)arg1;
-- (void)performScheduledActivityWithIdentifier:(id)arg1 activityCriteria:(id)arg2;
 - (void)processFetchedCloudStoreDataWithModifiedRecords:(id)arg1 deletedRecords:(id)arg2 operationGroupName:(id)arg3 operationGroupNameSuffix:(id)arg4 shouldUpdateLocalDatabase:(BOOL)arg5 userInfo:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)processResultWithError:(id)arg1 nextExpectedState:(unsigned long long)arg2 operationGroupNameSuffix:(id)arg3 retryCount:(unsigned long long)arg4 shouldRetry:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)readCachedContainerValues;

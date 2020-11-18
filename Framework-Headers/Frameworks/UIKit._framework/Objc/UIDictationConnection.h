@@ -14,8 +14,11 @@
 __attribute__((visibility("hidden")))
 @interface UIDictationConnection : NSObject <AFDictationDelegate>
 {
+    BOOL _receivedMultilingualResultsCommand;
     BOOL _offlineOnly;
     BOOL _lowConfidenceAboutLanguageDetection;
+    unsigned int _charBeforeInsertionPointOnDictationStart;
+    unsigned int _charAfterInsertionPointOnDictationStart;
     id<UIDictationConnectionDelegate> _delegate;
     id<UIDictationConnectionTokenFilterProtocol> _tokenFilter;
     AFDictationOptions *_dictationOptions;
@@ -27,6 +30,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *analyticsQueue; // @synthesize analyticsQueue=_analyticsQueue;
+@property (nonatomic) unsigned int charAfterInsertionPointOnDictationStart; // @synthesize charAfterInsertionPointOnDictationStart=_charAfterInsertionPointOnDictationStart;
+@property (nonatomic) unsigned int charBeforeInsertionPointOnDictationStart; // @synthesize charBeforeInsertionPointOnDictationStart=_charBeforeInsertionPointOnDictationStart;
 @property (strong, nonatomic) AFDictationConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UIDictationConnectionDelegate> delegate; // @synthesize delegate=_delegate;
@@ -38,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *lastUsedTopLanguages; // @synthesize lastUsedTopLanguages=_lastUsedTopLanguages;
 @property (nonatomic) BOOL lowConfidenceAboutLanguageDetection; // @synthesize lowConfidenceAboutLanguageDetection=_lowConfidenceAboutLanguageDetection;
 @property (nonatomic) BOOL offlineOnly; // @synthesize offlineOnly=_offlineOnly;
+@property (nonatomic) BOOL receivedMultilingualResultsCommand; // @synthesize receivedMultilingualResultsCommand=_receivedMultilingualResultsCommand;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<UIDictationConnectionTokenFilterProtocol> tokenFilter; // @synthesize tokenFilter=_tokenFilter;
 
@@ -88,7 +94,6 @@ __attribute__((visibility("hidden")))
 - (void)start;
 - (void)startForFileAtURL:(id)arg1 forLanguage:(id)arg2;
 - (void)stopSpeech:(id)arg1 activationType:(unsigned long long)arg2 result:(id)arg3 suppressAlert:(BOOL)arg4;
-- (id)userContextLanguageCodeForKeyboardLanguage:(id)arg1;
 
 @end
 

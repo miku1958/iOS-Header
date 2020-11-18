@@ -9,25 +9,30 @@
 #import <PhotosUICore/PXGTextureConverter-Protocol.h>
 
 @class NSString, PXGColorProgramLibrary, PXGImageTexture;
-@protocol MTLDeviceSPI, OS_dispatch_queue;
+@protocol MTLDeviceSPI, OS_dispatch_queue, PXGMetalTextureConverterDelegate;
 
 @interface PXGMetalTextureConverter : NSObject <PXGTextureConverter>
 {
     long long _screenPixelCount;
-    BOOL _hasExtendedColorDisplay;
+    BOOL _hasExtendedColorTarget;
     NSObject<OS_dispatch_queue> *_requestQueue;
     NSObject<OS_dispatch_queue> *_processingQueue;
     PXGImageTexture *_transparentTexture;
     id<MTLDeviceSPI> _device;
+    unsigned long long _destinationColorSpaceName;
+    id<PXGMetalTextureConverterDelegate> _delegate;
+    struct CGColorSpace *_destinationColorSpace;
     PXGColorProgramLibrary *_colorProgramLibrary;
 }
 
 @property (readonly, nonatomic) PXGColorProgramLibrary *colorProgramLibrary; // @synthesize colorProgramLibrary=_colorProgramLibrary;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<PXGMetalTextureConverterDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) struct CGColorSpace *destinationColorSpace;
-@property (readonly, nonatomic) id<MTLDeviceSPI> device; // @synthesize device=_device;
-@property (readonly, nonatomic) BOOL hasExtendedColorDisplay; // @synthesize hasExtendedColorDisplay=_hasExtendedColorDisplay;
+@property (readonly, nonatomic) struct CGColorSpace *destinationColorSpace; // @synthesize destinationColorSpace=_destinationColorSpace;
+@property (readonly, nonatomic) unsigned long long destinationColorSpaceName; // @synthesize destinationColorSpaceName=_destinationColorSpaceName;
+@property (strong, nonatomic) id<MTLDeviceSPI> device; // @synthesize device=_device;
+@property (readonly, nonatomic) BOOL hasExtendedColorTarget; // @synthesize hasExtendedColorTarget=_hasExtendedColorTarget;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) int presentationType;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
@@ -43,7 +48,7 @@
 - (id)createTextureFromCGImage:(struct CGImage *)arg1 orientation:(unsigned int)arg2;
 - (id)createTextureFromCVPixelBuffer:(struct __CVBuffer *)arg1 transform:(struct CGAffineTransform)arg2;
 - (id)init;
-- (id)initWithDevice:(id)arg1;
+- (id)initWithDevice:(id)arg1 destinationColorspaceName:(unsigned long long)arg2;
 
 @end
 

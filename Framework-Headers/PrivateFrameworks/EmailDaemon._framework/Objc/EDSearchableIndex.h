@@ -13,7 +13,7 @@
 #import <EmailDaemon/EFSignpostable-Protocol.h>
 #import <EmailDaemon/EMSearchableIndexInterface-Protocol.h>
 
-@class CSSearchableIndex, EFCancelationToken, EFLazyCache, EFObservable, NSMutableArray, NSMutableSet, NSString, _EMSearchableIndexPendingRemovals;
+@class CSSearchableIndex, EFCancelationToken, EFLazyCache, EFObservable, NSArray, NSMutableArray, NSMutableSet, NSString, _EMSearchableIndexPendingRemovals;
 @protocol EDSearchableIndexDataSource, EDSearchableIndexReasonProvider, EDSearchableIndexSchedulableDelegate, EFScheduler, OS_dispatch_queue, OS_dispatch_source, OS_os_activity;
 
 @interface EDSearchableIndex : NSObject <CSSearchableIndexDelegate, EDSearchableIndexVerifierDataSource, EFLoggable, EFSignpostable, EDSearchableIndexSchedulable, EMSearchableIndexInterface>
@@ -30,6 +30,7 @@
     NSObject<OS_os_activity> *_batchIndexingActivity;
     NSMutableArray *_pendingItems;
     NSMutableArray *_preprocessingItems;
+    NSArray *_processingItems;
     NSMutableSet *_pendingDomainRemovals;
     _EMSearchableIndexPendingRemovals *_pendingIdentifierRemovals;
     NSObject<OS_dispatch_queue> *_indexingQueue;
@@ -147,6 +148,7 @@
 - (void)applicationWillResume;
 - (void)applicationWillSuspend;
 - (void)beginUpdatesAffectingDataSourceAndIndex;
+- (id)bundleIdentifierForSearchableIndexVerifier:(id)arg1;
 - (id)currentReasons;
 - (id)dataSamplesForSearchableIndexVerifier:(id)arg1 searchableIndex:(id)arg2;
 - (id)dataSourceRefreshReasons;

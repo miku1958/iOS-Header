@@ -13,7 +13,15 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axRowColAnnouncementTimer;
+- (unsigned long long)_axRowColScheduledCol;
+- (unsigned long long)_axRowColScheduledRow;
+- (void)_axScheduleAnnouncementForRow:(unsigned long long)arg1 col:(unsigned long long)arg2;
+- (void)_axSetRowColAnnouncementTimer:(id)arg1;
+- (void)_axSetRowColScheduledCol:(unsigned long long)arg1;
+- (void)_axSetRowColScheduledRow:(unsigned long long)arg1;
 - (void)iconDropSessionDidEnd:(id)arg1 identifier:(id)arg2 draggedIconIdentifiers:(id)arg3;
+- (id)iconDropSessionDidUpdate:(id)arg1 inIconListView:(id)arg2;
 
 @end
 

@@ -40,7 +40,6 @@
 - (id)_displayLayoutElementIdentifier;
 - (void)_fadeViewsForChargingViewVisible:(BOOL)arg1;
 - (void)_handleBacklightFadeEnded;
-- (void)_hideStatusBarForReason:(id)arg1;
 - (id)_hostedAppBundleID;
 - (id)_hostedAppView;
 - (id)_hostedSceneIdentifier;
@@ -52,7 +51,6 @@
 - (void)_setupLoginAppHosting;
 - (void)_setupLoginScene;
 - (void)_showOrHideThermalTrapUIAnimated:(BOOL)arg1;
-- (void)_showStatusBarForReason:(id)arg1;
 - (id)_statusBarSettingsAssertion;
 - (void)_updateBatteryChargingViewAnimated:(BOOL)arg1;
 - (void)_updateLegibility;
@@ -85,6 +83,7 @@
 - (void)sceneUpdatedIdleTimerMode:(long long)arg1;
 - (void)sceneUpdatedRotationMode:(long long)arg1;
 - (void)sceneUpdatedStatusBarUserName:(id)arg1;
+- (void)sceneUpdatedWallpaperMode:(unsigned long long)arg1;
 - (BOOL)shouldAutoUnlockForSource:(int)arg1;
 - (BOOL)shouldDisableALS;
 - (BOOL)shouldShowLockStatusBarTime;

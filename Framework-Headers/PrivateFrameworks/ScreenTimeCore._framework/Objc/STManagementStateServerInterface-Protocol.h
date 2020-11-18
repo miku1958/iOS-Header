@@ -19,6 +19,7 @@
 - (void)deleteWebHistoryForDomain:(NSString *)arg1 webApplication:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)deleteWebHistoryForURL:(NSURL *)arg1 webApplication:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)enableScreenTimeForDSID:(NSNumber *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)isExplicitContentRestrictedWithCompletionHandler:(void (^)(BOOL, NSError *))arg1;
 - (void)isRestrictionsPasscodeSetWithCompletionHandler:(void (^)(BOOL, NSError *))arg1;
 - (void)performMigrationFromMCXSettings:(NSDictionary *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)permitWebFilterURL:(NSURL *)arg1 pageTitle:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
@@ -28,6 +29,7 @@
 - (void)setScreenTimeEnabled:(BOOL)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)setScreenTimeSyncingEnabled:(BOOL)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)shouldAllowOneMoreMinuteForBundleIdentifier:(NSString *)arg1 replyHandler:(void (^)(NSNumber *, NSError *))arg2;
+- (void)shouldAllowOneMoreMinuteForCategoryIdentifier:(NSString *)arg1 replyHandler:(void (^)(NSNumber *, NSError *))arg2;
 - (void)shouldAllowOneMoreMinuteForWebsiteURL:(NSURL *)arg1 replyHandler:(void (^)(NSNumber *, NSError *))arg2;
 - (void)shouldRequestMoreTimeWithCompletionHandler:(void (^)(BOOL, NSError *))arg1;
 @end

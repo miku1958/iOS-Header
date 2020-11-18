@@ -25,13 +25,19 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityAppLayoutAtCurrentContentOffset;
+- (BOOL)_accessibilityAppQuitNotificationsRegistered;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityOnlyComparesByXAxis;
+- (void)_accessibilityRegisterAppQuitNotifications;
 - (BOOL)_accessibilityServesAsContainingParentForOrdering;
+- (void)_accessibilitySetAppQuitNotificationsRegistered:(BOOL)arg1;
+- (void)_accessibilityUnregisterAppQuitNotifications;
 - (void)_addVisibleItemContainerForAppLayout:(id)arg1;
 - (unsigned long long)_axAdjustedIndex:(unsigned long long)arg1 forScrollDirection:(long long)arg2;
 - (id)_axAppLayoutForAppIdentifier:(id)arg1;
 - (id)_axAppLayouts;
+- (id)_axCollectedAppLayouts;
+- (id)_axCollectedVisibleItemContainers;
 - (id)_axContentView;
 - (void)_axCreateAppElements;
 - (void)_axCreateAppElementsForLayouts:(id)arg1 visibleItemContainers:(id)arg2;
@@ -39,6 +45,8 @@
 - (unsigned long long)_axCurrentAppLayoutIndex;
 - (void)_axDidQuitApp:(id)arg1;
 - (long long)_axEnvironmentMode;
+- (BOOL)_axHasInlineSwitcherElements;
+- (BOOL)_axHasInlineSwitcherLayoutClass;
 - (BOOL)_axHasMultirowLayout;
 - (id)_axIdentifierOfAppInLayoutState:(id)arg1;
 - (BOOL)_axIsFloatingSwitcherVisible;
@@ -50,7 +58,10 @@
 - (BOOL)_axPerformScrollToIndex:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_axScrollStatusForIndex:(unsigned long long)arg1;
 - (void)_axScrollToAppLayout:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_axSetTetheredViewController:(id)arg1;
+- (BOOL)_axShouldReverseElements;
 - (id)_axSortedElementArray:(id)arg1;
+- (id)_axTetheredViewController;
 - (id)_axVisibleAppLayouts;
 - (BOOL)_removeVisibleItemContainerForAppLayout:(id)arg1;
 - (void)_setupContentAndTransientViews;
@@ -58,6 +69,9 @@
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (BOOL)appElementIsAccessibilityElement:(id)arg1;
+- (void)beginTetheringWithViewController:(id)arg1 asTetheree:(BOOL)arg2;
+- (void)dealloc;
+- (void)endTetheringWithViewController:(id)arg1;
 - (void)performTransitionWithContext:(id)arg1 animated:(BOOL)arg2 alongsideAnimationController:(id)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end

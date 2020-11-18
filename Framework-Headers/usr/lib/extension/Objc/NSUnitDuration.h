@@ -15,6 +15,7 @@
 + (id)_measurementWithNaturalScale:(id)arg1 system:(unsigned long long)arg2;
 + (id)baseUnit;
 + (id)hours;
++ (void)initialize;
 + (id)microseconds;
 + (id)milliseconds;
 + (id)minutes;

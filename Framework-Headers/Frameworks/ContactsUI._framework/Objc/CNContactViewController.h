@@ -121,6 +121,7 @@
 - (BOOL)_shouldBeOutOfProcess;
 - (void)_viewWillBePresented;
 - (void)configureNavigationItem:(id)arg1;
+- (id)confirmCancelAlertControllerAnchoredAtButtonItem:(id)arg1;
 - (void)dealloc;
 - (void)didChangePreferredContentSize:(struct CGSize)arg1;
 - (void)didCompleteWithContact:(id)arg1;
@@ -140,6 +141,8 @@
 - (void)isPresentingFullscreen:(BOOL)arg1;
 - (void)loadView;
 - (id)navigationItemController;
+- (void)presentCancelConfirmationAlert;
+- (void)presentConfirmCancelAlertControllerAnchoredAtButtonItem:(id)arg1;
 - (void)presentationControllerDidAttemptToDismiss:(id)arg1;
 - (BOOL)presentationControllerShouldDismiss:(id)arg1;
 - (void)setContact:(id)arg1 additionalContact:(id)arg2 mode:(long long)arg3;

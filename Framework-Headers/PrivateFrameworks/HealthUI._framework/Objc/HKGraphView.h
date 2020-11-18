@@ -72,6 +72,7 @@
     HKValueRange *_effectiveVisibleRangeActive;
     long long _minimumDateZoom;
     long long _maximumDateZoom;
+    long long _scrollingOptions;
     HKMultiTouchPressGestureRecognizer *_multiTouchGestureRecognizer;
     double _zoomScale;
     UIView *_detailView;
@@ -139,6 +140,7 @@
 @property (strong, nonatomic) NSMapTable *overlayInteractiveViews; // @synthesize overlayInteractiveViews=_overlayInteractiveViews;
 @property (strong, nonatomic) _HKGraphViewOverlayView *overlayView; // @synthesize overlayView=_overlayView;
 @property (nonatomic) long long previousOverlayType; // @synthesize previousOverlayType=_previousOverlayType;
+@property (nonatomic) long long scrollingOptions; // @synthesize scrollingOptions=_scrollingOptions;
 @property (strong, nonatomic) HKGraphViewSelectionStyle *selectionStyle; // @synthesize selectionStyle=_selectionStyle;
 @property (nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property (strong, nonatomic) NSTimer *startupTimer; // @synthesize startupTimer=_startupTimer;

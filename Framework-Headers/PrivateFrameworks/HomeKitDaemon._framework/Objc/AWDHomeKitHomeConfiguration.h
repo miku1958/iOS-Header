@@ -13,6 +13,7 @@
 @interface AWDHomeKitHomeConfiguration : PBCodable <NSCopying>
 {
     NSMutableArray *_eventTriggers;
+    NSMutableArray *_homeKitMultiUserSettings;
     int _networkProtectionStatus;
     unsigned int _numAccessories;
     unsigned int _numAccessoriesNetworkProtectionAutoFullAccess;
@@ -141,6 +142,7 @@
 @property (nonatomic) BOOL hasNumWholeHouseAudioAccessories;
 @property (nonatomic) BOOL hasNumZones;
 @property (nonatomic) BOOL hasPrimaryReportingDevice;
+@property (strong, nonatomic) NSMutableArray *homeKitMultiUserSettings; // @synthesize homeKitMultiUserSettings=_homeKitMultiUserSettings;
 @property (nonatomic) BOOL isOwner; // @synthesize isOwner=_isOwner;
 @property (nonatomic) BOOL isPrimaryResident; // @synthesize isPrimaryResident=_isPrimaryResident;
 @property (nonatomic) BOOL isResidentAvailable; // @synthesize isResidentAvailable=_isResidentAvailable;
@@ -184,10 +186,13 @@
 @property (nonatomic) BOOL primaryReportingDevice; // @synthesize primaryReportingDevice=_primaryReportingDevice;
 
 + (Class)eventTriggersType;
++ (Class)homeKitMultiUserSettingsType;
 - (void).cxx_destruct;
 - (int)StringAsNetworkProtectionStatus:(id)arg1;
 - (void)addEventTriggers:(id)arg1;
+- (void)addHomeKitMultiUserSettings:(id)arg1;
 - (void)clearEventTriggers;
+- (void)clearHomeKitMultiUserSettings;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -195,6 +200,8 @@
 - (id)eventTriggersAtIndex:(unsigned long long)arg1;
 - (unsigned long long)eventTriggersCount;
 - (unsigned long long)hash;
+- (id)homeKitMultiUserSettingsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)homeKitMultiUserSettingsCount;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)networkProtectionStatusAsString:(int)arg1;

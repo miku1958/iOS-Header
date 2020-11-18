@@ -35,15 +35,16 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_animateDismissalWithStyle:(unsigned long long)arg1 actions:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_animateDismissalWithReason:(unsigned long long)arg1 actions:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_animateUsingFluidSpringWithType:(unsigned long long)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_applyStashedParentViewControllerIfNecessary;
-- (void)_nonAnimatedDismissalWithActions:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_performPresentationAnimations;
+- (void)_nonAnimatedDismissalWithReason:(unsigned long long)arg1 actions:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_performPresentationAnimationsFromViewController:(id)arg1;
+- (void)_restoreInputViewWithReason:(unsigned long long)arg1 forPresentation:(id)arg2;
 - (void)_stashParentViewControllerIfNecessary;
 - (void)animateTransition:(id)arg1;
 - (id)animationControllerForDismissedController:(id)arg1;
-- (void)dismissWithStyle:(unsigned long long)arg1 alongsideActions:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)dismissWithReason:(unsigned long long)arg1 alongsideActions:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithClickPresentation:(id)arg1;
 - (void)presentFromViewController:(id)arg1 sourcePreview:(id)arg2 dismissalCompletion:(CDUnknownBlockType)arg3;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;

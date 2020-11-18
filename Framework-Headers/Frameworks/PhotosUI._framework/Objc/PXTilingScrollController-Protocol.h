@@ -17,6 +17,7 @@
 @property (readonly, nonatomic) struct UIEdgeInsets contentInset;
 @property (readonly, nonatomic) struct CGSize referenceSize;
 @property (copy, nonatomic) PXTilingScrollInfo *scrollInfo;
+@property (readonly, nonatomic) struct CGRect targetRect;
 @property (weak, nonatomic) id<PXTilingScrollControllerUpdateDelegate> updateDelegate;
 @property (readonly, nonatomic) struct CGRect visibleRect;
 

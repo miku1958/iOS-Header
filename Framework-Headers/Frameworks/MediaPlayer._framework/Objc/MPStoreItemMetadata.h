@@ -62,6 +62,7 @@
 @property (readonly, nonatomic) BOOL hasLyrics;
 @property (readonly, nonatomic) BOOL hasSocialPosts;
 @property (readonly, nonatomic) BOOL hasSubscriptionOffer;
+@property (readonly, nonatomic) BOOL hasTimeSyncedLyrics;
 @property (readonly, copy, nonatomic) NSString *iTunesBrandType;
 @property (readonly, nonatomic) BOOL isChart;
 @property (readonly, nonatomic) BOOL isPreorder;

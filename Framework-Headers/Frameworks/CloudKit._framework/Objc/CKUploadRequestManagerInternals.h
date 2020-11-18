@@ -9,7 +9,7 @@
 #import <CloudKit/CKAssetRepairSchedulerDelegate-Protocol.h>
 #import <CloudKit/CKSyncEngineDataSource-Protocol.h>
 
-@class CKAssetRepairScheduler, CKContainer, CKSchedulerActivity, CKSyncEngine, CKUploadRequestConfiguration, CKUploadRequestManagerStateMachine, CKUploadRequestPersistentStore, NSMutableDictionary, NSString;
+@class CKAssetRepairScheduler, CKContainer, CKSchedulerActivity, CKSyncEngine, CKUploadRequestConfiguration, CKUploadRequestManagerResponseActionThrottler, CKUploadRequestManagerStateMachine, CKUploadRequestPersistentStore, NSMutableDictionary, NSString;
 @protocol NSObject, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _scheduledAccountStatusCheck;
     CDUnknownBlockType _repairActivityHandler;
     CKSchedulerActivity *_observedRepairActivity;
+    CKUploadRequestManagerResponseActionThrottler *_responseActionThrottler;
     NSObject<OS_dispatch_queue> *_stateMachineQueue;
     NSObject<OS_dispatch_queue> *_stateQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
@@ -49,7 +50,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *cachesDirectory; // @synthesize cachesDirectory=_cachesDirectory;
 @property (strong, nonatomic) NSMutableDictionary *callbackForOverridePoint; // @synthesize callbackForOverridePoint=_callbackForOverridePoint;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
-@property (weak, nonatomic) CKContainer *container; // @synthesize container=_container;
+@property (strong, nonatomic) CKContainer *container; // @synthesize container=_container;
 @property (strong, nonatomic) CKUploadRequestPersistentStore *database; // @synthesize database=_database;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -67,6 +68,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKUploadRequestConfiguration *repairContainerOverrides; // @synthesize repairContainerOverrides=_repairContainerOverrides;
 @property (strong, nonatomic) CKAssetRepairScheduler *repairProcessor; // @synthesize repairProcessor=_repairProcessor;
 @property (strong, nonatomic) CKSyncEngine *repairZoneSyncEngine; // @synthesize repairZoneSyncEngine=_repairZoneSyncEngine;
+@property (strong, nonatomic) CKUploadRequestManagerResponseActionThrottler *responseActionThrottler; // @synthesize responseActionThrottler=_responseActionThrottler;
 @property (copy, nonatomic) CDUnknownBlockType scheduledAccountStatusCheck; // @synthesize scheduledAccountStatusCheck=_scheduledAccountStatusCheck;
 @property (strong, nonatomic) CKUploadRequestManagerStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *stateMachineQueue; // @synthesize stateMachineQueue=_stateMachineQueue;

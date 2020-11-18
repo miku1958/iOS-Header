@@ -12,7 +12,7 @@
 @class ECSecureMIMETrustEvaluation, NSString;
 @protocol ECEmailAddressConvertible;
 
-@interface EMCertificateTrustInformation : NSObject <NSSecureCoding, EFLoggable>
+@interface EMCertificateTrustInformation : NSObject <EFLoggable, NSSecureCoding>
 {
     BOOL __forceNetworkAccessAllowed;
     struct __SecTrust *_trust;
@@ -22,7 +22,6 @@
 }
 
 @property (nonatomic) BOOL _forceNetworkAccessAllowed; // @synthesize _forceNetworkAccessAllowed=__forceNetworkAccessAllowed;
-@property (readonly, nonatomic) BOOL canSaveCertificateToKeychain;
 @property (readonly, nonatomic) struct __SecCertificate *certificate;
 @property (nonatomic) unsigned long long certificateType; // @synthesize certificateType=_certificateType;
 @property (readonly, copy, nonatomic) NSString *commonName;
@@ -40,9 +39,9 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
-- (void)evaluateTrustWithOptions:(unsigned long long)arg1 signerEmailAddress:(id)arg2;
+- (void)evaluateTrustWithOptions:(unsigned long long)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithTrust:(struct __SecTrust *)arg1 certificateType:(unsigned long long)arg2 sender:(id)arg3 commonName:(id)arg4;
+- (id)initWithTrust:(struct __SecTrust *)arg1 certificateType:(unsigned long long)arg2 sender:(id)arg3;
 - (void)reevaluateTrustWithNetworkAccessAllowed;
 
 @end

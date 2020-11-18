@@ -23,7 +23,8 @@
     FCContextConfiguration *_contextConfiguration;
     id<FCFeldsparIDProvider> _feldsparIDProvider;
     NSObject<OS_dispatch_queue> *_accessQueue;
-    FCAsyncSerialQueue *_requestSerialQueue;
+    NSObject<OS_dispatch_queue> *_appConfigFetchQueue;
+    FCAsyncSerialQueue *_remoteConfigManagerSerialQueue;
     FCKeyValueStore *_localStore;
     FCNewsAppConfig *_currentAppConfiguration;
     NSArray *_treatmentIDs;
@@ -36,6 +37,7 @@
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *appConfigFetchQueue; // @synthesize appConfigFetchQueue=_appConfigFetchQueue;
 @property (strong, nonatomic) NSHashTable *appConfigObservers; // @synthesize appConfigObservers=_appConfigObservers;
 @property (readonly, nonatomic) id<FCNewsAppConfiguration> appConfiguration;
 @property (nonatomic) BOOL attemptedAppConfigFetch; // @synthesize attemptedAppConfigFetch=_attemptedAppConfigFetch;
@@ -55,8 +57,8 @@
 @property (strong, nonatomic) FCKeyValueStore *localStore; // @synthesize localStore=_localStore;
 @property (readonly, nonatomic) NSData *magazinesConfigurationData;
 @property (readonly, nonatomic) id<FCNewsAppConfiguration> possiblyUnfetchedAppConfiguration;
+@property (readonly, nonatomic) FCAsyncSerialQueue *remoteConfigManagerSerialQueue; // @synthesize remoteConfigManagerSerialQueue=_remoteConfigManagerSerialQueue;
 @property (readonly, nonatomic) RCConfigurationManager *remoteConfigurationManager; // @synthesize remoteConfigurationManager=_remoteConfigurationManager;
-@property (readonly, nonatomic) FCAsyncSerialQueue *requestSerialQueue; // @synthesize requestSerialQueue=_requestSerialQueue;
 @property (nonatomic, getter=isRunningUnitTests) BOOL runningUnitTests; // @synthesize runningUnitTests=_runningUnitTests;
 @property (copy, nonatomic) NSArray *segmentSetIDs; // @synthesize segmentSetIDs=_segmentSetIDs;
 @property (nonatomic) BOOL shouldIgnoreCache; // @synthesize shouldIgnoreCache=_shouldIgnoreCache;
@@ -75,15 +77,15 @@
 - (id)_configurationSettingsWithRequestInfos:(id)arg1 feldsparID:(id)arg2 storefrontID:(id)arg3 contextConfiguration:(id)arg4 useBackgroundRefreshRate:(BOOL)arg5;
 - (unsigned long long)_configurationSourceForSourceName:(id)arg1;
 - (id)_deserializeChangeTags:(id)arg1;
-- (void)_fetchAppConfigurationIfNeededWithCompletionQueue:(id)arg1 shouldRefresh:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_fetchAppConfigurationWithConfigurationSettings:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_fetchAppWidgetConfigurationIfNeededUseBackgroundRefreshRate:(BOOL)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_fetchMagazinesConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_fetchAppConfigurationIfNeededWithCompletionQueue:(id)arg1 forceRefresh:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_fetchRemoteAppWidgetConfigurationIfNeededUseBackgroundRefreshRate:(BOOL)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_fetchRemoteMagazinesConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_loadConfigurationFromStore:(id)arg1;
 - (id)_mergeCachedDataWithWidgetConfigurationData:(id)arg1;
 - (id)_mergeRecords:(id)arg1 withCachedRecords:(id)arg2;
 - (id)_permanentURLForRequestKey:(id)arg1 storefrontID:(id)arg2;
 - (id)_recordIDForRequestKey:(id)arg1 storefrontID:(id)arg2;
+- (void)_refreshAppConfigurationWithConfigurationSettings:(id)arg1 force:(BOOL)arg2 completionQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (unsigned long long)_remoteConfigurationEnvironmentForContextIdentifier:(long long)arg1;
 - (id)_requestInfoForRequestKey:(id)arg1 storefrontID:(id)arg2 additionalChangeTags:(id)arg3;
 - (id)_responseKeyForRequestKey:(id)arg1;

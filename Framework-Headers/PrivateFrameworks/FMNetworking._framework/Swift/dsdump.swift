@@ -96,22 +96,22 @@
 	var accountType : FMNAccountType // +0x40 (0x1)
 
 	// Swift methods
-	0x96f0  func FMNAuthenticationCredential.authToken.getter // getter 
-	0x9730  func FMNAuthenticationCredential.authToken.setter // setter 
-	0x9770  func FMNAuthenticationCredential.authToken.modify // modifyCoroutine 
-	0x97a0  func FMNAuthenticationCredential.personId.getter // getter 
-	0x97e0  func FMNAuthenticationCredential.personId.setter // setter 
-	0x9820  func FMNAuthenticationCredential.personId.modify // modifyCoroutine 
-	0x9850  func FMNAuthenticationCredential.hostName.getter // getter 
-	0x9890  func FMNAuthenticationCredential.hostName.setter // setter 
-	0x98d0  func FMNAuthenticationCredential.hostName.modify // modifyCoroutine 
-	0x9900  func FMNAuthenticationCredential.accountType.getter // getter 
-	0x9930  func FMNAuthenticationCredential.accountType.setter // setter 
-	0x9960  func FMNAuthenticationCredential.accountType.modify // modifyCoroutine 
-	0xa0c0  func FMNAuthenticationCredential.authHeaders.getter // getter 
-	0xa600  class func FMNAuthenticationCredential.__allocating_init(accountType:authToken:personId:hostName:) // init 
-	0xa7a0  class func FMNAuthenticationCredential.__allocating_init(from:) // init 
-	0xabb0  func FMNAuthenticationCredential.encode(to:) // method 
+	0x8f00  func FMNAuthenticationCredential.authToken.getter // getter 
+	0x8f40  func FMNAuthenticationCredential.authToken.setter // setter 
+	0x8f80  func FMNAuthenticationCredential.authToken.modify // modifyCoroutine 
+	0x8fb0  func FMNAuthenticationCredential.personId.getter // getter 
+	0x8ff0  func FMNAuthenticationCredential.personId.setter // setter 
+	0x9030  func FMNAuthenticationCredential.personId.modify // modifyCoroutine 
+	0x9060  func FMNAuthenticationCredential.hostName.getter // getter 
+	0x90a0  func FMNAuthenticationCredential.hostName.setter // setter 
+	0x90e0  func FMNAuthenticationCredential.hostName.modify // modifyCoroutine 
+	0x9110  func FMNAuthenticationCredential.accountType.getter // getter 
+	0x9140  func FMNAuthenticationCredential.accountType.setter // setter 
+	0x9170  func FMNAuthenticationCredential.accountType.modify // modifyCoroutine 
+	0x98d0  func FMNAuthenticationCredential.authHeaders.getter // getter 
+	0x9e10  class func FMNAuthenticationCredential.__allocating_init(accountType:authToken:personId:hostName:) // init 
+	0x9fb0  class func FMNAuthenticationCredential.__allocating_init(from:) // init 
+	0xa3c0  func FMNAuthenticationCredential.encode(to:) // method 
  }
 
  enum FMNetworking.FMNAuthenticationCredentialError {
@@ -162,6 +162,7 @@
 	case autoRenewalLimitReached  
 	case managedAccount  
 	case cannotReadBundleId  
+	case unsupportedSecurityLevel  
  }
 
  enum FMNetworking.FMNAuthenticationOverride {
@@ -181,16 +182,16 @@
 	var credential : FMNAuthenticationCredential? // +0x38 (0x8)
 
 	// Swift methods
-	0x100c0  func FMNAuthenticationProvider.autoRenewalLimit.getter // getter 
-	0x100f0  func FMNAuthenticationProvider.autoRenewalLimit.setter // setter 
-	0x10120  func FMNAuthenticationProvider.autoRenewalLimit.modify // modifyCoroutine 
-	0x10160  func FMNAuthenticationProvider.bundleId.getter // getter 
-	0x101a0  func FMNAuthenticationProvider.bundleId.setter // setter 
-	0x101f0  func FMNAuthenticationProvider.bundleId.modify // modifyCoroutine 
-	0x10220  class func FMNAuthenticationProvider.__allocating_init() // init 
-	0x105d0  func FMNAuthenticationProvider.credential(accountType:completion:) // method 
-	0x11010  func FMNAuthenticationProvider.credentialDidFail(credential:error:completion:) // method 
-	0x128b0  func <stripped> // method 
+	0xf8d0  func FMNAuthenticationProvider.autoRenewalLimit.getter // getter 
+	0xf900  func FMNAuthenticationProvider.autoRenewalLimit.setter // setter 
+	0xf930  func FMNAuthenticationProvider.autoRenewalLimit.modify // modifyCoroutine 
+	0xf970  func FMNAuthenticationProvider.bundleId.getter // getter 
+	0xf9b0  func FMNAuthenticationProvider.bundleId.setter // setter 
+	0xfa00  func FMNAuthenticationProvider.bundleId.modify // modifyCoroutine 
+	0xfa30  class func FMNAuthenticationProvider.__allocating_init() // init 
+	0xfde0  func FMNAuthenticationProvider.credential(accountType:completion:) // method 
+	0x10820  func FMNAuthenticationProvider.credentialDidFail(credential:error:completion:) // method 
+	0x12500  func <stripped> // method 
  }
 
  struct FMNetworking.FMNHTTPArchiveReader {
@@ -297,9 +298,9 @@
 	let preferences : FMNMockingPreferences? // +0x20 (0x20)
 
 	// Swift methods
-	0x229c0  class func FMNURLSessionFactory.__allocating_init(mockSessionCreationBlock:preferences:) // init 
-	0x22aa0  func FMNURLSessionFactory.session(_:_:) // method 
-	0x23010  func FMNURLSessionFactory.fileServer(fileURL:) // method 
+	0x21a40  class func FMNURLSessionFactory.__allocating_init(mockSessionCreationBlock:preferences:) // init 
+	0x21b20  func FMNURLSessionFactory.session(_:_:) // method 
+	0x22090  func FMNURLSessionFactory.fileServer(fileURL:) // method 
  }
 
  enum FMNetworking.URLSessionFactoryError {
@@ -314,9 +315,9 @@
 	let executionBlock : () // +0x8 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x234e0  @objc MockURLDataTask.resume <stripped>
-	0x23530  @objc MockURLDataTask.init <stripped>
-	0x235b0  @objc MockURLDataTask..cxx_destruct <stripped>
+	0x22560  @objc MockURLDataTask.resume <stripped>
+	0x225b0  @objc MockURLDataTask.init <stripped>
+	0x22630  @objc MockURLDataTask..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -329,13 +330,13 @@
 	let urlSessionFactory : FMNURLSessionFactory // +0x40 (0x8)
 
 	// Swift methods
-	0x23b40  class func FMNServerInteractionController.__allocating_init(authenticationProvider:mockingPreferences:urlSessionFactory:) // init 
-	0x23d80  func FMNServerInteractionController.upload(endpoint:content:source:responseHandler:) // method 
-	0x23da0  func FMNServerInteractionController.retryUpload(consolidatedContent:redirectedHostStore:responseHandler:retryCount:) // method 
-	0x23e50  func FMNServerInteractionController.sendRequest(endpoint:content:source:responseHandler:) // method 
-	0x23ed0  func FMNServerInteractionController.sendRequest(endpoint:content:source:responseHandler:) // method 
-	0x23ef0  func FMNServerInteractionController.retryRequest(consolidatedContent:redirectedHostStore:responseHandler:retryCount:) // method 
-	0x23fe0  func FMNServerInteractionController.retryRequest(consolidatedContent:redirectedHostStore:responseHandler:retryCount:) // method 
+	0x22bc0  class func FMNServerInteractionController.__allocating_init(authenticationProvider:mockingPreferences:urlSessionFactory:) // init 
+	0x22e00  func FMNServerInteractionController.upload(endpoint:content:source:responseHandler:) // method 
+	0x22e20  func FMNServerInteractionController.retryUpload(consolidatedContent:redirectedHostStore:responseHandler:retryCount:) // method 
+	0x22ed0  func FMNServerInteractionController.sendRequest(endpoint:content:source:responseHandler:) // method 
+	0x22f50  func FMNServerInteractionController.sendRequest(endpoint:content:source:responseHandler:) // method 
+	0x22f70  func FMNServerInteractionController.retryRequest(consolidatedContent:redirectedHostStore:responseHandler:retryCount:) // method 
+	0x23060  func FMNServerInteractionController.retryRequest(consolidatedContent:redirectedHostStore:responseHandler:retryCount:) // method 
  }
 
  enum FMNetworking.FMNServerInteractionError {
@@ -358,18 +359,18 @@
 	var urlComponents : URLComponents // +0x0 (0x0)
 
 	// Swift methods
-	0x24e40  func FMNHTTPRequest.credential.getter // getter 
-	0x24e80  func FMNHTTPRequest.credential.setter // setter 
-	0x24f20  func FMNHTTPRequest.credential.modify // modifyCoroutine 
-	0x24f60  func FMNHTTPRequest.accountType.getter // getter 
-	0x24f90  func FMNHTTPRequest.accountType.setter // setter 
-	0x24fc0  func FMNHTTPRequest.accountType.modify // modifyCoroutine 
-	0x24ff0  func FMNHTTPRequest.urlComponents.getter // getter 
-	0x25040  func FMNHTTPRequest.urlComponents.setter // setter 
-	0x250a0  func FMNHTTPRequest.urlComponents.modify // modifyCoroutine 
-	0x250e0  class func FMNHTTPRequest.__allocating_init(hostName:scheme:path:) // init 
-	0x251f0  func FMNHTTPRequest.redirect(host:) // method 
-	0x25250  func FMNHTTPRequest.debugDescription.getter // getter 
+	0x23ec0  func FMNHTTPRequest.credential.getter // getter 
+	0x23f00  func FMNHTTPRequest.credential.setter // setter 
+	0x23fa0  func FMNHTTPRequest.credential.modify // modifyCoroutine 
+	0x23fe0  func FMNHTTPRequest.accountType.getter // getter 
+	0x24010  func FMNHTTPRequest.accountType.setter // setter 
+	0x24040  func FMNHTTPRequest.accountType.modify // modifyCoroutine 
+	0x24070  func FMNHTTPRequest.urlComponents.getter // getter 
+	0x240c0  func FMNHTTPRequest.urlComponents.setter // setter 
+	0x24120  func FMNHTTPRequest.urlComponents.modify // modifyCoroutine 
+	0x24160  class func FMNHTTPRequest.__allocating_init(hostName:scheme:path:) // init 
+	0x24270  func FMNHTTPRequest.redirect(host:) // method 
+	0x242d0  func FMNHTTPRequest.debugDescription.getter // getter 
  }
 
  class FMNetworking.FMNHttpClient : NSObject /usr/lib/libobjc.A.dylib {
@@ -387,26 +388,26 @@
 	var session : FMNetworkingURLSession? // +0x0 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x29530  @objc FMNHttpClient.init <stripped>
-	0x295a0  @objc FMNHttpClient..cxx_destruct <stripped>
+	0x285b0  @objc FMNHttpClient.init <stripped>
+	0x28620  @objc FMNHttpClient..cxx_destruct <stripped>
 
 	// Swift methods
-	0x26050  func FMNHttpClient.authenticationChallengeHandler.getter // getter 
-	0x260a0  func FMNHttpClient.authenticationChallengeHandler.setter // setter 
-	0x26100  func FMNHttpClient.authenticationChallengeHandler.modify // modifyCoroutine 
-	0x26140  func FMNHttpClient.bundleIdentifierFallback.getter // getter 
-	0x26190  func FMNHttpClient.bundleIdentifierFallback.setter // setter 
-	0x261e0  func FMNHttpClient.bundleIdentifierFallback.modify // modifyCoroutine 
-	0x25920  class func FMNHttpClient.__allocating_init(urlComponents:credential:urlSessionFactory:) // init 
-	0x265f0  func FMNHttpClient.registerHandler(for:handler:) // method 
-	0x26980  func <stripped> // method 
-	0x26bf0  func FMNHttpClient.invalidate() // method 
-	0x26cd0  func FMNHttpClient.upload(requestContent:completionHandler:) // method 
-	0x27200  func FMNHttpClient.fetch(requestContent:completionHandler:) // method 
-	0x28600  func <stripped> // method 
-	0x286e0  func <stripped> // method 
-	0x28bc0  func <stripped> // method 
-	0x28d60  func <stripped> // method 
+	0x250d0  func FMNHttpClient.authenticationChallengeHandler.getter // getter 
+	0x25120  func FMNHttpClient.authenticationChallengeHandler.setter // setter 
+	0x25180  func FMNHttpClient.authenticationChallengeHandler.modify // modifyCoroutine 
+	0x251c0  func FMNHttpClient.bundleIdentifierFallback.getter // getter 
+	0x25210  func FMNHttpClient.bundleIdentifierFallback.setter // setter 
+	0x25260  func FMNHttpClient.bundleIdentifierFallback.modify // modifyCoroutine 
+	0x249a0  class func FMNHttpClient.__allocating_init(urlComponents:credential:urlSessionFactory:) // init 
+	0x25670  func FMNHttpClient.registerHandler(for:handler:) // method 
+	0x25a00  func <stripped> // method 
+	0x25c70  func FMNHttpClient.invalidate() // method 
+	0x25d50  func FMNHttpClient.upload(requestContent:completionHandler:) // method 
+	0x26280  func FMNHttpClient.fetch(requestContent:completionHandler:) // method 
+	0x27680  func <stripped> // method 
+	0x27760  func <stripped> // method 
+	0x27c40  func <stripped> // method 
+	0x27de0  func <stripped> // method 
  }
 
  enum FMNetworking.ErrorCode { }
@@ -595,13 +596,13 @@
 	var $__lazy_storage_$_apsConnection : APSConnection?? // +0x50 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x377b0  @objc FMNPushNotificatonHandler.dealloc <stripped>
-	0x38330  @objc FMNPushNotificatonHandler.init <stripped>
-	0x377d0  @objc FMNPushNotificatonHandler..cxx_destruct <stripped>
+	0x36830  @objc FMNPushNotificatonHandler.dealloc <stripped>
+	0x373b0  @objc FMNPushNotificatonHandler.init <stripped>
+	0x36850  @objc FMNPushNotificatonHandler..cxx_destruct <stripped>
 
 	// Swift methods
-	0x37860  func <stripped> // method 
-	0x37f90  func <stripped> // method 
+	0x368e0  func <stripped> // method 
+	0x37010  func <stripped> // method 
  }
 
  class FMNetworking.FMNMockClientURLSession : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -612,12 +613,12 @@
 	var urlResponseByURL : [URL : FMNMockClientURLResponse]? // +0x0 (0x8)
 
 	// Swift methods
-	0x3b890  class func FMNMockClientURLSession.__allocating_init(httpArchiveFileURL:) // init 
-	0x3c130  func FMNMockClientURLSession.uploadTask(with:fromFile:completionHandler:) // method 
-	0x3c1d0  func FMNMockClientURLSession.dataTask(with:completionHandler:) // method 
-	0x3c690  func FMNMockClientURLSession.finishTasksAndInvalidate() // method 
-	0x3cbe0  func <stripped> // method 
-	0x3d3a0  func <stripped> // method 
+	0x3a910  class func FMNMockClientURLSession.__allocating_init(httpArchiveFileURL:) // init 
+	0x3b1b0  func FMNMockClientURLSession.uploadTask(with:fromFile:completionHandler:) // method 
+	0x3b250  func FMNMockClientURLSession.dataTask(with:completionHandler:) // method 
+	0x3b710  func FMNMockClientURLSession.finishTasksAndInvalidate() // method 
+	0x3bc60  func <stripped> // method 
+	0x3c420  func <stripped> // method 
  }
 
  enum FMNetworking.FMNClientError {
@@ -631,7 +632,7 @@
 
  class FMNetworking.FMNHTTPArchiveWriter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x3f940  class func FMNHTTPArchiveWriter.__allocating_init() // init 
-	0x3f9c0  func FMNHTTPArchiveWriter.encodeResponses(mockResponses:) // method 
-	0x40400  func FMNHTTPArchiveWriter.saveResponses(mockResponses:fileURL:) // method 
+	0x3e9c0  class func FMNHTTPArchiveWriter.__allocating_init() // init 
+	0x3ea40  func FMNHTTPArchiveWriter.encodeResponses(mockResponses:) // method 
+	0x3f480  func FMNHTTPArchiveWriter.saveResponses(mockResponses:fileURL:) // method 
  }

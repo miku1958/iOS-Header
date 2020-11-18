@@ -24,8 +24,8 @@
     long long _duration;
     CLLocation *_location;
     NSArray *_keywords;
-    NSString *_mediaMetaDataType;
-    NSData *_mediaMetaData;
+    NSString *_adjustedMediaMetaDataType;
+    NSData *_adjustedMediaMetaData;
     NSString *_timeZoneName;
     NSNumber *_timeZoneOffset;
     NSString *_momentIdentifier;
@@ -56,6 +56,8 @@
 }
 
 @property (copy, nonatomic) NSDate *addedDate; // @synthesize addedDate=_addedDate;
+@property (strong, nonatomic) NSData *adjustedMediaMetaData; // @synthesize adjustedMediaMetaData=_adjustedMediaMetaData;
+@property (copy, nonatomic) NSString *adjustedMediaMetaDataType; // @synthesize adjustedMediaMetaDataType=_adjustedMediaMetaDataType;
 @property (strong, nonatomic) CPLAdjustments *adjustments; // @synthesize adjustments=_adjustments;
 @property (copy, nonatomic) NSDate *assetDate; // @synthesize assetDate=_assetDate;
 @property (nonatomic) unsigned long long assetHDRType; // @synthesize assetHDRType=_assetHDRType;
@@ -79,8 +81,6 @@
 @property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (copy, nonatomic) NSString *masterIdentifier; // @synthesize masterIdentifier=_masterIdentifier;
 @property (copy, nonatomic) NSString *mediaGroupIdentifier; // @synthesize mediaGroupIdentifier=_mediaGroupIdentifier;
-@property (strong, nonatomic) NSData *mediaMetaData; // @synthesize mediaMetaData=_mediaMetaData;
-@property (copy, nonatomic) NSString *mediaMetaDataType; // @synthesize mediaMetaDataType=_mediaMetaDataType;
 @property (copy, nonatomic) NSString *momentIdentifier; // @synthesize momentIdentifier=_momentIdentifier;
 @property (copy, nonatomic) NSString *momentName; // @synthesize momentName=_momentName;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
@@ -126,6 +126,7 @@
 - (void)setMasterScopedIdentifier:(id)arg1;
 - (void)setRelatedIdentifier:(id)arg1;
 - (BOOL)supportsDeletion;
+- (BOOL)supportsResourceType:(unsigned long long)arg1;
 - (BOOL)supportsResources;
 - (id)translateToClientChangeUsingIDMapping:(id)arg1 error:(id *)arg2;
 - (id)translateToCloudChangeUsingIDMapping:(id)arg1 error:(id *)arg2;

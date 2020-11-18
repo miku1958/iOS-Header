@@ -19,10 +19,14 @@ __attribute__((visibility("hidden")))
     double _capline;
     CDStruct_3c058996 _alignmentRectInsets;
     BOOL _isAlignmentRect;
+    struct CGSize _canvasSize;
+    struct os_unfair_lock_s _lock;
 }
 
 - (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
 - (void)_initalizeMetadataFromCSIData:(const struct _csiheader *)arg1;
+- (struct CGSVGDocument *)_nts_svgDocument;
+- (struct CGSize)canvasSize;
 - (void)dealloc;
 - (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
 - (id)metrics;

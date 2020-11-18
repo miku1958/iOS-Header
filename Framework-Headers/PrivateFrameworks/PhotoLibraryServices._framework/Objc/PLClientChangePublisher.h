@@ -8,11 +8,11 @@
 
 #import <PhotoLibraryServices/PLChangePublisher-Protocol.h>
 
-@class NSString, PLAssetsdLibraryClient;
+@class NSString, PLAssetsdClient;
 
 @interface PLClientChangePublisher : NSObject <PLChangePublisher>
 {
-    PLAssetsdLibraryClient *_libraryClient;
+    PLAssetsdClient *_assetsdClient;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -21,7 +21,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithLibraryClient:(id)arg1;
+- (id)initWithAssetsdClient:(id)arg1;
 - (void)pauseLaunchEventNotifications;
 - (id)publishChangeEvent:(id)arg1 delayedSaveActionsDetail:(id)arg2 transaction:(id)arg3;
 - (void)unpauseLaunchEventNotifications;

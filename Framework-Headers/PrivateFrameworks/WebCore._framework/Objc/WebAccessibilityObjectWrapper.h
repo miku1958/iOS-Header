@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (struct WebAccessibilityObjectWrapper *)_accessibilityFieldsetAncestor;
 - (struct WebAccessibilityObjectWrapper *)_accessibilityFrameAncestor;
 - (BOOL)_accessibilityHasTouchEventListener;
+- (BOOL)_accessibilityIsInTableCell;
 - (BOOL)_accessibilityIsLandmarkRole:(int)arg1;
 - (BOOL)_accessibilityIsStrongPasswordField;
 - (struct WebAccessibilityObjectWrapper *)_accessibilityLandmarkAncestor;

@@ -24,7 +24,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_revokeAuthorizationForClienID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_revokeAuthorizationForClientID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)processElement:(id)arg1 attributes:(id)arg2 objectModel:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)processObjectModel:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)shouldMatchElement:(id)arg1;

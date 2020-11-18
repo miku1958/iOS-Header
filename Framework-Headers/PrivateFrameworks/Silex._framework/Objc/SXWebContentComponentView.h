@@ -79,6 +79,7 @@
 - (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
 - (void)reachabilityChanged:(BOOL)arg1;
 - (void)reloadWebContent;
+- (BOOL)useLightForegroundColor;
 - (void)viewport:(id)arg1 appearStateChangedFromState:(unsigned long long)arg2;
 
 @end

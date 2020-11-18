@@ -25,6 +25,7 @@
     _Atomic BOOL _isStarted;
     _Atomic BOOL _isPaused;
     BOOL _firstTimeInit;
+    BOOL _firstTimeApplyChanges;
     NSCondition *_renderPausedCondition;
     NSTimer *_longPressTimer;
     id<MTLDevice> _metalDevice;
@@ -35,7 +36,7 @@
     unsigned long long _eyeCount;
     ARSession *_session;
     id<MTLCaptureScope> _compositorScope;
-    id<MTLCaptureScope> _renderScope;
+    id<MTLCaptureScope> _presentCaptureScope;
     ARPresentationOverrides *_overrides;
     CADisplayLink *_compositorDisplayLink;
     ARRunLoop *_compositorRunLoop;
@@ -77,6 +78,9 @@
     double _lastNewPresentationFrameCallTime;
     ARPredictionStats *_predictionStats;
     BOOL _isSceneKitBasedView;
+    double _lastPresentedTime;
+    long long _preferredFramesPerSecond;
+    long long _actualFramesPerSecond;
     BOOL _willUpdateSettings;
     BOOL _updatingSettings;
     BOOL _isARSessionStateIgnored;
@@ -94,6 +98,7 @@
 
 @property (readonly, copy, nonatomic) ARPresentationDescriptor *activeDescriptor;
 @property (readonly, copy, nonatomic) ARPresentationDisplay *activeDisplay;
+@property (nonatomic) long long actualFramesPerSecond; // @synthesize actualFramesPerSecond=_actualFramesPerSecond;
 @property (readonly, nonatomic) ARBoardController *boardController; // @synthesize boardController=_boardController;
 @property (nonatomic, getter=isCameraCompositingDisabled) BOOL cameraCompositingDisabled; // @synthesize cameraCompositingDisabled=_cameraCompositingDisabled;
 @property (strong) ARPresentationFrame *currentPresentationFrame; // @synthesize currentPresentationFrame=_currentPresentationFrame;
@@ -109,6 +114,7 @@
 @property BOOL isARSessionStateIgnored; // @synthesize isARSessionStateIgnored=_isARSessionStateIgnored;
 @property (weak, nonatomic) id<ARPresentationInternalObserver> observer; // @synthesize observer=_observer;
 @property (readonly, nonatomic) ARPresentationOverrides *overrides;
+@property (nonatomic) long long preferredFramesPerSecond; // @synthesize preferredFramesPerSecond=_preferredFramesPerSecond;
 @property (nonatomic) long long presentationMode;
 @property (readonly, nonatomic) NSThread *renderThread; // @synthesize renderThread=_renderThread;
 @property (weak, nonatomic) ARSession *session;
@@ -120,6 +126,7 @@
 
 + (BOOL)_ARDeviceHeldModeSupported;
 + (BOOL)compositorForceDisabled;
++ (BOOL)compositorPlistKeysEnabled;
 + (BOOL)isCompositorEnabled;
 + (BOOL)isSupportedOnOSVersion;
 + (BOOL)isWornModeSupported;

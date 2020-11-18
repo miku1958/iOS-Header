@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 + (id)configureViewWithItems:(id)arg1 existingView:(id)arg2;
 - (void).cxx_destruct;
+- (struct CGSize)_layoutSubviewsWithSize:(struct CGSize)arg1 computationOnly:(BOOL)arg2;
 - (void)_updateTextColor;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

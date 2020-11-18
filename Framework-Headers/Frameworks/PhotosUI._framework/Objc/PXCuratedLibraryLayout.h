@@ -110,6 +110,7 @@
 - (CDUnknownBlockType)locationNamesFutureForContentInRect:(struct CGRect)arg1;
 - (id)mostDominantModelObject;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (id)presentedItemsGeometryForDataSource:(id)arg1;
 - (void)safeAreaInsetsDidChange;
 - (void)screenScaleDidChange;
 - (struct CGRect)sectionBoundariesForAssetCollectionReference:(id)arg1;

@@ -12,6 +12,8 @@
 - (id)_if_firstObjectMatchingPredicate:(id)arg1;
 - (id)_inf_flatMap:(CDUnknownBlockType)arg1;
 - (id)_inf_objectsPassingTest:(CDUnknownBlockType)arg1;
+- (id)if_arrayByRemovingObject:(id)arg1;
+- (id)if_arrayByRemovingObjectsInArray:(id)arg1;
 - (id)if_compactMap:(CDUnknownBlockType)arg1;
 - (void)if_enumerateAsynchronously:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)if_enumerateAsynchronouslyInSequence:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;

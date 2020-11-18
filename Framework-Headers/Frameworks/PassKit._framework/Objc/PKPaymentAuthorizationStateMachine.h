@@ -9,7 +9,7 @@
 #import <PassKitCore/CBCentralManagerDelegate-Protocol.h>
 #import <PassKitCore/PKContinuityPaymentCoordinatorDelegate-Protocol.h>
 
-@class CBCentralManager, NSMutableArray, NSString, PKContinuityPaymentCoordinator, PKContinuityPaymentService, PKInAppPaymentSession, PKPaymentAuthorizationClientCallbackStateParam, PKPaymentAuthorizationDataModel, PKPaymentService, PKPaymentWebService, PKPeerPaymentSession;
+@class CBCentralManager, NSArray, NSMutableArray, NSString, PKContinuityPaymentCoordinator, PKContinuityPaymentService, PKInAppPaymentSession, PKPaymentAuthorizationClientCallbackStateParam, PKPaymentAuthorizationDataModel, PKPaymentService, PKPaymentWebService, PKPeerPaymentSession;
 @protocol OS_dispatch_group, OS_dispatch_source, PKAggregateDictionaryProtocol, PKPaymentAuthorizationStateMachineDelegate;
 
 @interface PKPaymentAuthorizationStateMachine : NSObject <PKContinuityPaymentCoordinatorDelegate, CBCentralManagerDelegate>
@@ -37,6 +37,7 @@
     NSString *_instanceIdentifier;
     unsigned long long _prepareTransactionDetailsCounter;
     NSObject<OS_dispatch_group> *_delayAuthorizedStateGroup;
+    NSArray *_remoteDevicesToUpdate;
 }
 
 @property (strong, nonatomic) id<PKAggregateDictionaryProtocol> aggregateDictionary; // @synthesize aggregateDictionary=_aggregateDictionary;
@@ -63,6 +64,7 @@
 @property (strong, nonatomic) PKPaymentWebService *paymentWebService; // @synthesize paymentWebService=_paymentWebService;
 @property (strong, nonatomic) PKPeerPaymentSession *peerPaymentSession; // @synthesize peerPaymentSession=_peerPaymentSession;
 @property (nonatomic) unsigned long long prepareTransactionDetailsCounter; // @synthesize prepareTransactionDetailsCounter=_prepareTransactionDetailsCounter;
+@property (strong, nonatomic) NSArray *remoteDevicesToUpdate; // @synthesize remoteDevicesToUpdate=_remoteDevicesToUpdate;
 @property (nonatomic, setter=_setState:) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (nonatomic) double updatePaymentDeviceTimeout; // @synthesize updatePaymentDeviceTimeout=_updatePaymentDeviceTimeout;
@@ -81,7 +83,7 @@
 - (void)_clientCallbackTimedOut;
 - (id)_createNewRemotePaymentRequest;
 - (id)_dequeuePendingCallbackParam;
-- (void)_deviceUpdateDidTimeout;
+- (void)_deviceUpdateDidFailWithNoEiligbleRemoteDevices:(id)arg1;
 - (void)_dispatchNextCallbackParam;
 - (void)_enqeueDidAuthorizePurchaseWithParam:(id)arg1;
 - (void)_enqueueCallbackOfKind:(long long)arg1 withObject:(id)arg2;
@@ -130,6 +132,7 @@
 - (id)_transactionWithPaymentToken:(id)arg1;
 - (id)_transactionWithPurchase:(id)arg1 paymentHash:(id)arg2;
 - (void)_unregisterForNotifications;
+- (void)_updateModelWithRemoteDevices:(id)arg1;
 - (void)_updateModelWithShippingMethods:(id)arg1 paymentSummaryItems:(id)arg2;
 - (void)beginDelayingAuthorizedState;
 - (BOOL)canSelectPaymentOptions;

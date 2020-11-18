@@ -69,6 +69,7 @@
     BOOL _canChangeBackgroundStyle;
     BOOL _allowNonDefaultBackgroundStyle;
     BOOL _supportsDirectToAirplay;
+    BOOL _alwaysReceivesOpenURLSource;
     BOOL _ocelotApplication;
     BOOL _shouldLaunchWithLiveContentASAP;
     BOOL _cloudDemoted;
@@ -78,6 +79,7 @@
 }
 
 @property (readonly, nonatomic) unsigned long long allowedNKNotificationsPerDay; // @synthesize allowedNKNotificationsPerDay=_allowedNKNotificationsPerDay;
+@property (readonly, nonatomic) BOOL alwaysReceivesOpenURLSource; // @synthesize alwaysReceivesOpenURLSource=_alwaysReceivesOpenURLSource;
 @property (readonly, nonatomic, getter=isAppleApplication) BOOL appleApplication;
 @property (readonly, copy, nonatomic) NSString *applicationShortcutWidgetBundleIdentifier; // @synthesize applicationShortcutWidgetBundleIdentifier=_applicationShortcutWidgetBundleIdentifier;
 @property (readonly, nonatomic) unsigned long long applicationSizeInBytes; // @synthesize applicationSizeInBytes=_applicationSizeInBytes;

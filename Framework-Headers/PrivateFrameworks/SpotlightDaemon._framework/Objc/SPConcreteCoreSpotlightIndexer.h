@@ -90,8 +90,8 @@
 - (void)dumpAllRankingDiagnosticInformationForQuery:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)ensureOpenIndexFiles;
 - (void)fetchAllCompletedBundleIDsForIndexerTask:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchAttributes:(id)arg1 bundleID:(id)arg2 identifiers:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)fetchAttributes:(id)arg1 bundleID:(id)arg2 identifiers:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)fetchAttributes:(id)arg1 bundleID:(id)arg2 identifiers:(id)arg3 includeParents:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)fetchAttributes:(id)arg1 bundleID:(id)arg2 identifiers:(id)arg3 includeParents:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)fetchLastClientStateForBundleID:(id)arg1 clientStateName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)finishReindexAll;
 - (void)fixupPathTimeouts;

@@ -70,6 +70,7 @@
 @property (nonatomic) BOOL preventScrollViewDidScrollReentrance; // @synthesize preventScrollViewDidScrollReentrance=_preventScrollViewDidScrollReentrance;
 @property (nonatomic) BOOL rebuildFlows; // @synthesize rebuildFlows=_rebuildFlows;
 @property (strong, nonatomic) STScrollView *scrollView; // @synthesize scrollView=_scrollView;
+@property (nonatomic) BOOL selectionEnabled;
 @property (readonly, nonatomic) BOOL shouldClipToScrollViewBoundsInVisibleBounds;
 @property (readonly, nonatomic) BOOL shouldPopKnobsOutsideEnclosingScrollView;
 @property (readonly, nonatomic) BOOL shouldResizeCanvasToScrollView;

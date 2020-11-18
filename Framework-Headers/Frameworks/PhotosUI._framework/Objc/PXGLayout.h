@@ -102,6 +102,7 @@
 @property (readonly, nonatomic) CDStruct_3fe57b01 orientedContentTransform;
 @property (readonly, nonatomic) NSArray *pendingAnimations;
 @property (readonly, nonatomic) NSArray *pendingFences;
+@property (readonly, nonatomic) NSString *recursiveDescription;
 @property (nonatomic) unsigned short referenceOptions; // @synthesize referenceOptions=_referenceOptions;
 @property (nonatomic) struct CGSize referenceSize; // @synthesize referenceSize=_referenceSize;
 @property (readonly, nonatomic) PXGLayout *rootLayout;
@@ -195,7 +196,7 @@
 - (id)createAnchorForSpriteAtIndex:(unsigned int)arg1;
 - (id)createAnchorForSpriteReferences:(id)arg1;
 - (id)createAnchorForVisibleArea;
-- (id)createAnchorForVisibleAreaIgnoringEdges:(BOOL)arg1;
+- (id)createAnchorForVisibleAreaIgnoringEdges:(unsigned long long)arg1;
 - (id)createAnchorFromSuperlayoutWithSublayoutIndex:(long long)arg1 sublayoutPositionEdges:(unsigned long long)arg2 ignoringScrollingAnimationAnchors:(BOOL)arg3;
 - (id)createAnchorWithAnchor:(id)arg1;
 - (id)createAnchorWithConstraints:(CDUnknownBlockType)arg1;
@@ -244,7 +245,6 @@
 - (void)moveSpritesInRange:(struct _PXGSpriteIndexRange)arg1 toRange:(struct _PXGSpriteIndexRange)arg2;
 - (id)objectReferenceForSpriteIndex:(unsigned int)arg1;
 - (void)performChangesWithLocalUpdate:(CDUnknownBlockType)arg1;
-- (id)recursiveDescription;
 - (void)referenceOptionsDidChange;
 - (void)referenceSizeDidChange;
 - (void)removeAllAnimations;

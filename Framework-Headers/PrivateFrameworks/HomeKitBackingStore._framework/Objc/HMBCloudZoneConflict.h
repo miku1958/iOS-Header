@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) CKRecord *server; // @synthesize server=_server;
 
 - (void).cxx_destruct;
+- (id)initWithClientRecord:(id)arg1 serverRecord:(id)arg2 ancestorRecord:(id)arg3;
 - (id)initWithError:(id)arg1;
 
 @end

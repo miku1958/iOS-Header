@@ -46,16 +46,20 @@
 @property (readonly, nonatomic) unsigned long long networkSwitchExpirationTimeInSeconds; // @synthesize networkSwitchExpirationTimeInSeconds=_networkSwitchExpirationTimeInSeconds;
 @property (readonly) Class superclass;
 
-+ (id)configurationWithData:(id)arg1 bundleID:(id)arg2 country:(id)arg3 userID:(id)arg4 error:(id *)arg5;
++ (id)bundleIDsListFor:(id)arg1 useInternalBundleID:(BOOL)arg2 useSeedBundleID:(BOOL)arg3;
++ (id)configurationWithData:(id)arg1 bundleIDs:(id)arg2 country:(id)arg3 userID:(id)arg4 error:(id *)arg5;
 + (id)configurationWithData:(id)arg1 userID:(id)arg2 error:(id *)arg3;
 + (BOOL)useInternalBundleID;
 + (BOOL)wfInternalBuild;
++ (BOOL)wfSeedBuild;
 - (void).cxx_destruct;
 - (BOOL)aqiEnabledForCountryCode:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)getAPIVersionFromDictionary:(id)arg1 userID:(id)arg2;
-- (id)getEnvironmentSpecificConfigDictionaryFromDictionary:(id)arg1 bundleID:(id)arg2 country:(id)arg3;
+- (id)getEnvironmentSpecificConfigDictionaryFromDictionary:(id)arg1 bundleIDs:(id)arg2 country:(id)arg3;
+- (id)getSpecificConfigFromConfigs:(id)arg1 configSpecifiers:(id)arg2 specifierKey:(id)arg3;
 - (id)init;
-- (id)initWithConfigDictionary:(id)arg1 bundleID:(id)arg2 country:(id)arg3 userID:(id)arg4;
+- (id)initWithConfigDictionary:(id)arg1 bundleIDs:(id)arg2 country:(id)arg3 userID:(id)arg4;
 - (BOOL)shouldUseAPIVersionFromDictionary:(id)arg1 userID:(id)arg2;
 
 @end

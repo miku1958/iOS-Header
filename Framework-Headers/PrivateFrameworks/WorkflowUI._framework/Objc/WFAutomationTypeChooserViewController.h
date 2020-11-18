@@ -18,6 +18,7 @@
 @property (weak, nonatomic) id<WFAutomationTypeChooserViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) WFHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 
++ (unsigned long long)automationTypeForHomeManager:(id)arg1;
 - (void).cxx_destruct;
 - (void)chooseHomeAutomation:(id)arg1;
 - (void)choosePersonalAutomation:(id)arg1;

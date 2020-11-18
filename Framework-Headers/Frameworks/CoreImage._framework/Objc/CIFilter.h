@@ -251,6 +251,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)customAttributes;
 - (void)dealloc;
+- (id)debugDescription;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)finalize;

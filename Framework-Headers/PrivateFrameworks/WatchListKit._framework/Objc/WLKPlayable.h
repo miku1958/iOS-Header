@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSDictionary, NSNumber, NSString, NSURL, SSLookupItem, SSLookupItemOffer, WLKBasicContentMetadata, WLKChannelDetails, WLKLocale, WLKPlayEvent, WLKStoreOffer;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSString, NSURL, SSLookupItem, SSLookupItemOffer, WLKBasicContentMetadata, WLKChannelDetails, WLKComingSoonInfo, WLKLocale, WLKPlayEvent, WLKStoreOffer;
 
 @interface WLKPlayable : NSObject
 {
@@ -15,7 +15,6 @@
     BOOL _appInstalled;
     BOOL _itunes;
     BOOL _subtitled;
-    NSDictionary *_dictionary;
     NSString *_playableID;
     NSString *_canonicalID;
     NSString *_channelID;
@@ -35,11 +34,13 @@
     NSString *_externalServiceID;
     NSArray *_subtitledLocales;
     NSString *_videoQuality;
+    NSString *_videoColorRange;
     NSDate *_endAirTime;
     NSDate *_startAirTime;
     WLKPlayEvent *_playEvent;
     NSURL *_tvAppDeeplinkURL;
     NSDictionary *_punchoutUrls;
+    WLKComingSoonInfo *_comingSoonInfo;
     NSArray *_movieClips;
     NSArray *_storeOffers;
     NSArray *_subscriptionOffers;
@@ -65,10 +66,10 @@
 @property (readonly, copy, nonatomic) WLKChannelDetails *channelDetails; // @synthesize channelDetails=_channelDetails;
 @property (readonly, copy, nonatomic) NSString *channelID; // @synthesize channelID=_channelID;
 @property (readonly, copy, nonatomic) NSArray *closedCaptionLocales; // @synthesize closedCaptionLocales=_closedCaptionLocales;
+@property (readonly, copy, nonatomic) WLKComingSoonInfo *comingSoonInfo; // @synthesize comingSoonInfo=_comingSoonInfo;
 @property (readonly, nonatomic) WLKBasicContentMetadata *content; // @synthesize content=_content;
 @property (readonly, copy, nonatomic) NSString *contentID; // @synthesize contentID=_contentID;
 @property (readonly, nonatomic) long long contentSourceType; // @synthesize contentSourceType=_contentSourceType;
-@property (readonly, copy, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
 @property (readonly, nonatomic) NSNumber *duration; // @synthesize duration=_duration;
 @property (readonly, copy, nonatomic) NSDate *endAirTime; // @synthesize endAirTime=_endAirTime;
 @property (readonly, nonatomic, getter=isEntitled) BOOL entitled; // @synthesize entitled=_entitled;
@@ -90,6 +91,7 @@
 @property (readonly, nonatomic, getter=isSubtitled) BOOL subtitled; // @synthesize subtitled=_subtitled;
 @property (readonly, copy, nonatomic) NSArray *subtitledLocales; // @synthesize subtitledLocales=_subtitledLocales;
 @property (readonly, copy, nonatomic) NSURL *tvAppDeeplinkURL; // @synthesize tvAppDeeplinkURL=_tvAppDeeplinkURL;
+@property (readonly, copy, nonatomic) NSString *videoColorRange; // @synthesize videoColorRange=_videoColorRange;
 @property (readonly, copy, nonatomic) NSString *videoQuality; // @synthesize videoQuality=_videoQuality;
 
 + (id)playablesWithDictionaries:(id)arg1 context:(id)arg2;

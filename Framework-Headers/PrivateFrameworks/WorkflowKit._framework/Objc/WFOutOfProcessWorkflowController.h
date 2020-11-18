@@ -13,13 +13,13 @@
 
 @interface WFOutOfProcessWorkflowController : NSObject <WFOutOfProcessWorkflowControllerHost>
 {
-    BOOL _running;
     WFContentCollection *_input;
     WFContentCollection *_output;
     id<WFOutOfProcessWorkflowControllerDelegate> _delegate;
     NSString *_debugIdentifier;
     NSData *_workflowData;
     long long _environment;
+    double _timeoutSeconds;
     WFWorkflowReference *_workflowReference;
     NSExtension *_extension;
     NSUUID *_extensionRequestIdentifier;
@@ -40,9 +40,10 @@
 @property (strong, nonatomic) WFContentCollection *input; // @synthesize input=_input;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *internalSerialQueue; // @synthesize internalSerialQueue=_internalSerialQueue;
 @property (readonly, nonatomic) WFContentCollection *output; // @synthesize output=_output;
-@property (readonly, nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
+@property (readonly, nonatomic, getter=isRunning) BOOL running;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) double timeoutSeconds; // @synthesize timeoutSeconds=_timeoutSeconds;
 @property (readonly, nonatomic) NSData *workflowData; // @synthesize workflowData=_workflowData;
 @property (readonly, nonatomic) WFWorkflowReference *workflowReference; // @synthesize workflowReference=_workflowReference;
 
@@ -60,7 +61,7 @@
 - (void)restartTimeoutTimer;
 - (BOOL)runWithInput:(id)arg1 error:(out id *)arg2;
 - (void)stop;
-- (void)stopExtensionForcefully:(BOOL)arg1;
+- (void)stopExtension;
 - (void)workflowDidFinishRunningWithError:(id)arg1 cancelled:(BOOL)arg2;
 - (void)workflowDidStart;
 

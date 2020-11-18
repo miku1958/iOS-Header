@@ -17,6 +17,7 @@
     BOOL _disableCompactVoiceFallback;
     BOOL _forceServerTTS;
     BOOL _canUseServerTTS;
+    BOOL _retryDeviceOnNetworkStall;
     BOOL _useCustomVoice;
     BOOL _audioSessionIDIsValid;
     BOOL _maintainsInput;
@@ -65,6 +66,7 @@
 @property (nonatomic) unsigned long long requestCreatedTimestamp; // @synthesize requestCreatedTimestamp=_requestCreatedTimestamp;
 @property (copy, nonatomic) NSURL *resourceListURL; // @synthesize resourceListURL=_resourceListURL;
 @property (copy, nonatomic) NSURL *resourceSearchPathURL; // @synthesize resourceSearchPathURL=_resourceSearchPathURL;
+@property (nonatomic) BOOL retryDeviceOnNetworkStall; // @synthesize retryDeviceOnNetworkStall=_retryDeviceOnNetworkStall;
 @property (nonatomic) BOOL shouldCache; // @synthesize shouldCache=_shouldCache;
 @property (copy, nonatomic) CDUnknownBlockType stopHandler; // @synthesize stopHandler=_stopHandler;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;

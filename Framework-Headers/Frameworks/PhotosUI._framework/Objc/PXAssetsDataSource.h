@@ -12,6 +12,7 @@
 {
 }
 
+@property (readonly, nonatomic) BOOL areAllSectionsConsideredAccurate;
 @property (readonly, nonatomic) id<PXDisplayAssetCollection> firstAssetCollection;
 @property (readonly, nonatomic) id<PXDisplayAssetCollection> lastAssetCollection;
 

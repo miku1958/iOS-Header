@@ -32,7 +32,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) BOOL isRecovering;
 @property (readonly, nonatomic) id<EFScheduler> observerScheduler; // @synthesize observerScheduler=_observerScheduler;
 @property (readonly, nonatomic) EFQuery *query; // @synthesize query=_query;
 @property (readonly, nonatomic) id<EFScheduler> queryScheduler; // @synthesize queryScheduler=_queryScheduler;
@@ -60,6 +59,7 @@
 - (id)initWithQuery:(id)arg1 repository:(id)arg2;
 - (void)insertItemIDs:(id)arg1 after:(id)arg2;
 - (void)insertItemIDs:(id)arg1 before:(id)arg2;
+- (BOOL)isRecovering;
 - (id)itemIDForObjectID:(id)arg1;
 - (id)iterateItemIDsStartingAtItemID:(id)arg1 inReverse:(BOOL)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)notifyChangeObserverAboutAddedItemIDs:(id)arg1 after:(id)arg2 extraInfo:(id)arg3;

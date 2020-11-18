@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axApplyProgressViewLabel:(id)arg1;
+- (id)accessibilityValue;
 - (id)newProgressBar;
 
 @end

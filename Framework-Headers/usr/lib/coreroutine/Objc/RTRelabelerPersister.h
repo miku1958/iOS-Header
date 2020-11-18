@@ -55,6 +55,7 @@
 - (void)logLocalStoreWithReason:(id)arg1;
 - (BOOL)performBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (BOOL)resnapVisitsWithError:(id *)arg1;
+- (BOOL)restoreToOldCandidate:(struct RTPair *)arg1 error:(id *)arg2;
 - (BOOL)restoreVisit:(id)arg1 transitions:(id)arg2 toOldCandidate:(struct RTPair *)arg3 error:(id *)arg4;
 - (id)rollLOIIdentifier:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (id)rollUUIDGivenUUID:(id)arg1;

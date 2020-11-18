@@ -49,6 +49,7 @@
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (BOOL)_accessibilityIsTableCell;
 - (id)_accessibilityLineNumberAndColumnForPoint:(struct CGPoint)arg1;
+- (void)_accessibilityMarkElementForVisiblePointHitTest:(BOOL)arg1;
 - (struct CGPoint)_accessibilityMaxScrubberPosition;
 - (struct CGPoint)_accessibilityMinScrubberPosition;
 - (void)_accessibilityPaste;

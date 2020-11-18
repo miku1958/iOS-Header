@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CLKUIAlmanacTransitInfo, CLLocation, NSArray, NSDate, NSOrderedSet;
+@class CLKUIAlmanacTransitInfo, CLLocation, NSArray, NSCalendar, NSDate, NSOrderedSet;
 @protocol NTKSiderealDataSourceDelegate;
 
 @interface NTKSiderealDataSource : NSObject
@@ -16,6 +16,10 @@
     NSDate *_endOfDayForReferenceDate;
     NSOrderedSet *_daytimeEvents;
     struct NSString *_locationManagerToken;
+    NSCalendar *_currentCalendar;
+    NSDate *_cachedDate;
+    NSDate *_cachedStartOfDay;
+    NSDate *_cachedStartOfNextDay;
     BOOL _isConstantSunUpOrDown;
     id<NTKSiderealDataSourceDelegate> _delegate;
     CLKUIAlmanacTransitInfo *_sunriseSunsetInfo;
@@ -35,11 +39,11 @@
 @property (strong, nonatomic) CLKUIAlmanacTransitInfo *sunriseSunsetInfo; // @synthesize sunriseSunsetInfo=_sunriseSunsetInfo;
 @property (strong, nonatomic) NSArray *waypoints; // @synthesize waypoints=_waypoints;
 
-+ (double)reverseInterpolateBetweenCalendricalMidnights:(id)arg1;
 - (void).cxx_destruct;
 - (id)_allAvailableSolarEvents;
 - (BOOL)_didLocationChangeSignificantlyFromOldLocation:(id)arg1 toNewLocation:(id)arg2;
 - (long long)_endOfDayEventFollowingSolarEvent:(long long)arg1;
+- (id)_eventWithType:(long long)arg1 time:(id)arg2;
 - (CDStruct_c3b9c2ee)_geoLocationForReferenceLocation;
 - (void)_loadStartEndDates;
 - (void)_locationManagerUpdatedLocation:(id)arg1 error:(id)arg2;
@@ -59,6 +63,7 @@
 - (id)init;
 - (id)interpolateBetweenCalendricalMidnights:(double)arg1;
 - (BOOL)isDateInReferenceDate:(id)arg1;
+- (double)reverseInterpolateBetweenCalendricalMidnights:(id)arg1;
 - (void)startLocationUpdates;
 - (void)stopLocationUpdates;
 - (void)updateForSignificantTimeChange;

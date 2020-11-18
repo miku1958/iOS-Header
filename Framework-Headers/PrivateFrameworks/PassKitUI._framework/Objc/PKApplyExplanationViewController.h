@@ -48,6 +48,7 @@
 - (void)_learnMore;
 - (void)_performActionForBlock:(CDUnknownBlockType)arg1;
 - (void)_performDoneAction:(BOOL)arg1;
+- (void)_performLearnMoreAction;
 - (id)currentPage;
 - (void)handleNextStep;
 - (void)handleNextViewController:(id)arg1 displayableError:(id)arg2;

@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
     id<_UIRemoteKeyboardControllerDelegate> _controllerDelegate;
     UIInputSetHostView *_hostView;
     id<UIInputViewSetPlacementApplicator> _applicator;
+    UIView *_floatingKeyboardMaskView;
 }
 
 @property (strong, nonatomic, setter=setInputAccessoryBackdropView:) UIKBInputBackdropView *_inputAccessoryBackdropView; // @synthesize _inputAccessoryBackdropView;
@@ -60,6 +61,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) UIView *dockView;
 @property (nonatomic) BOOL dontDismissReachability;
+@property (strong, nonatomic) UIView *floatingKeyboardMaskView; // @synthesize floatingKeyboardMaskView=_floatingKeyboardMaskView;
 @property (readonly) unsigned long long hash;
 @property BOOL hideInputViewBackdrops;
 @property (strong, nonatomic) UIInputSetHostView *hostView; // @synthesize hostView=_hostView;
@@ -114,6 +116,7 @@ __attribute__((visibility("hidden")))
 - (id)inputViewController;
 - (void)placementNeedsUpdate:(id)arg1;
 - (void)prepareForSplitTransition;
+- (void)prepareTranslationFromPlacement:(id)arg1 to:(id)arg2;
 - (void)rebuildConstraints:(id)arg1 forView:(id)arg2 toMatchView:(id)arg3 tracker:(id)arg4;
 - (void)refreshApplicator;
 - (void)resetBackdropHeight;

@@ -9,18 +9,16 @@
 #import <VectorKit/VKMapViewCameraDelegate-Protocol.h>
 
 @class NSString;
-@protocol AnalyticsProvider, VKMapViewCameraDelegate;
+@protocol VKMapViewCameraDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VKCameraDelegateMediator : NSObject <VKMapViewCameraDelegate>
 {
-    id<AnalyticsProvider> _analyticsProvider;
     id<VKMapViewCameraDelegate> _cameraDelegate;
     BOOL _isChangingMapType;
     unsigned long long _regionChangeCount;
 }
 
-@property (nonatomic) id<AnalyticsProvider> analyticsProvider; // @synthesize analyticsProvider=_analyticsProvider;
 @property (nonatomic) id<VKMapViewCameraDelegate> cameraDelegate; // @synthesize cameraDelegate=_cameraDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

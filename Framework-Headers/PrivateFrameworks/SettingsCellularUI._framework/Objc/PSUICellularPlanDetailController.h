@@ -6,20 +6,14 @@
 
 #import <Preferences/PSListController.h>
 
-@class PSSpecifier, PSUIPlanPendingTransferMenusGroup, PSUISubscriptionContextMenusGroup;
+@class PSUISubscriptionContextMenusGroup;
 
 __attribute__((visibility("hidden")))
 @interface PSUICellularPlanDetailController : PSListController
 {
     PSUISubscriptionContextMenusGroup *_subscriptionContextMenus;
-    PSUIPlanPendingTransferMenusGroup *_planPendingTransferMenus;
-    PSSpecifier *_planPendingTransferGroupSpecifier;
-    PSSpecifier *_subscriptionContextGroupSpecifier;
 }
 
-@property (strong, nonatomic) PSSpecifier *planPendingTransferGroupSpecifier; // @synthesize planPendingTransferGroupSpecifier=_planPendingTransferGroupSpecifier;
-@property (strong, nonatomic) PSUIPlanPendingTransferMenusGroup *planPendingTransferMenus; // @synthesize planPendingTransferMenus=_planPendingTransferMenus;
-@property (strong, nonatomic) PSSpecifier *subscriptionContextGroupSpecifier; // @synthesize subscriptionContextGroupSpecifier=_subscriptionContextGroupSpecifier;
 @property (strong, nonatomic) PSUISubscriptionContextMenusGroup *subscriptionContextMenus; // @synthesize subscriptionContextMenus=_subscriptionContextMenus;
 
 - (void).cxx_destruct;

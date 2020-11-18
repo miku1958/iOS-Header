@@ -14,7 +14,6 @@
 {
     BOOL _shouldForceLTR;
     NSString *_identifier;
-    NSString *_imageIdentifier;
     NSNumber *_incrementalState;
 }
 
@@ -22,14 +21,12 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) NSString *imageIdentifier; // @synthesize imageIdentifier=_imageIdentifier;
 @property (readonly, nonatomic) NSNumber *incrementalState; // @synthesize incrementalState=_incrementalState;
 @property (readonly, nonatomic) BOOL shouldForceLTR; // @synthesize shouldForceLTR=_shouldForceLTR;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)iconDescriptorByMergingWithIconDescriptor:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 imageIdentifier:(id)arg2 incrementalState:(id)arg3;
 - (id)initWithIdentifier:(id)arg1 incrementalState:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 

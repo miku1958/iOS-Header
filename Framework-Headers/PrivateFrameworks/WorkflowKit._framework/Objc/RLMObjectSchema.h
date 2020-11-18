@@ -36,7 +36,7 @@
 @property (readonly, nonatomic) NSArray *swiftGenericProperties;
 @property (nonatomic) Class unmanagedClass; // @synthesize unmanagedClass=_unmanagedClass;
 
-+ (id)baseNameForLazySwiftProperty:(id)arg1;
++ (void)addSwiftProperties:(id)arg1 objectUtil:(Class)arg2 instance:(id)arg3 indexed:(id)arg4 nameMap:(id)arg5;
 + (id)objectSchemaForObjectStoreSchema:(const struct ObjectSchema *)arg1;
 + (id)propertiesForClass:(Class)arg1 isSwift:(BOOL)arg2;
 + (id)schemaForObjectClass:(Class)arg1;
@@ -47,7 +47,7 @@
 - (id)initWithClassName:(id)arg1 objectClass:(Class)arg2 properties:(id)arg3;
 - (BOOL)isEqualToObjectSchema:(id)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
-- (struct ObjectSchema)objectStoreCopy;
+- (struct ObjectSchema)objectStoreCopy:(id)arg1;
 
 @end
 

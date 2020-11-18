@@ -16,6 +16,9 @@
 - (void)createPersona:(NSDictionary *)arg1 passcodeData:(NSData *)arg2 forPid:(int)arg3 completionHandler:(void (^)(NSDictionary *, NSError *))arg4;
 - (void)deletePersona:(NSDictionary *)arg1 forPid:(int)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)directSwitchToUser:(NSDictionary *)arg1 passcodeData:(NSData *)arg2 context:(NSData *)arg3 preferences:(NSDictionary *)arg4 pid:(int)arg5 completionHandler:(void (^)(NSError *))arg6;
+- (void)disablePersona:(NSDictionary *)arg1 forPid:(int)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)fetchAllUsersPersonaListforPid:(int)arg1 withCompletionHandler:(void (^)(NSArray *, NSError *))arg2;
+- (void)fetchAsidMapforPid:(int)arg1 withCompletionHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)fetchBundleIdentifiersForPersona:(NSDictionary *)arg1 forPid:(int)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchMultiPersonaBundleIdentifiersforPid:(int)arg1 withCompletionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)fetchPersona:(NSDictionary *)arg1 forPid:(int)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;

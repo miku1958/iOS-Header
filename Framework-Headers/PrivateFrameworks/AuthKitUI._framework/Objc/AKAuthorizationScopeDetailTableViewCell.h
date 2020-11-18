@@ -16,6 +16,8 @@
     UILabel *_mainDetailLabel;
     UIImageView *_leadingCheckmarkView;
     UILayoutGuide *_mainGuide;
+    UILayoutGuide *_mainLabelFirstLineGuide;
+    UILayoutGuide *_scopeLabelFirstLineGuide;
     NSLayoutConstraint *_minimumHeightConstraint;
     NSLayoutConstraint *_mainLabelLeadingConstraint;
     unsigned long long _internalCheckmarkStyle;
@@ -29,10 +31,12 @@
 @property (readonly, nonatomic) UILabel *mainDetailLabel; // @synthesize mainDetailLabel=_mainDetailLabel;
 @property (readonly, nonatomic) UILayoutGuide *mainGuide; // @synthesize mainGuide=_mainGuide;
 @property (readonly, nonatomic) UILabel *mainLabel; // @synthesize mainLabel=_mainLabel;
+@property (readonly, nonatomic) UILayoutGuide *mainLabelFirstLineGuide; // @synthesize mainLabelFirstLineGuide=_mainLabelFirstLineGuide;
 @property (readonly, nonatomic) NSLayoutConstraint *mainLabelLeadingConstraint; // @synthesize mainLabelLeadingConstraint=_mainLabelLeadingConstraint;
 @property (nonatomic) double minimumHeight;
 @property (readonly, nonatomic) NSLayoutConstraint *minimumHeightConstraint; // @synthesize minimumHeightConstraint=_minimumHeightConstraint;
 @property (readonly, nonatomic) UILabel *scopeLabel; // @synthesize scopeLabel=_scopeLabel;
+@property (readonly, nonatomic) UILayoutGuide *scopeLabelFirstLineGuide; // @synthesize scopeLabelFirstLineGuide=_scopeLabelFirstLineGuide;
 
 - (void).cxx_destruct;
 - (id)_checkmarkCircleImage;

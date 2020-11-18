@@ -17,7 +17,6 @@
 @property (strong, nonatomic) HFNetworkConfigurationItemProvider *networkConfigurationItemProvider; // @synthesize networkConfigurationItemProvider=_networkConfigurationItemProvider;
 @property (readonly, nonatomic) HMHome *overrideHome; // @synthesize overrideHome=_overrideHome;
 
-+ (CDUnknownBlockType)_networkConfigurationItemComparator;
 - (void).cxx_destruct;
 - (id)_buildItemProvidersForHome:(id)arg1;
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;

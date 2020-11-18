@@ -16,7 +16,7 @@
 - (double)cardCornerRadiusInSwitcher;
 - (BOOL)cardsNeedBackgroundWallpaperTreatment;
 - (double)centerYOffsetWhenPresented;
-- (struct CGPoint)contentOffsetForIndex:(unsigned long long)arg1;
+- (struct CGPoint)contentOffsetForIndex:(unsigned long long)arg1 centered:(BOOL)arg2;
 - (struct CGSize)contentSize;
 - (double)decelerationRate;
 - (double)distanceToLeadingEdgeOfLeadingCardFromTrailingEdgeOfScreenWithVisibleIndexToStartSearch:(unsigned long long)arg1;

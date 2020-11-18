@@ -21,6 +21,8 @@
 - (id)multitaskingModifierForEvent:(id)arg1;
 - (id)newMultitaskingModifierFromMultitaskingModifier:(id)arg1;
 - (id)reduceMotionModifierForReduceMotionChangedEvent:(id)arg1;
+- (id)tetheredInsertionModifierFortetheredInsertionEvent:(id)arg1;
+- (id)tetheredRemovalModifierForTetheredRemovalEvent:(id)arg1;
 - (id)transitionModifierForMainTransitionEvent:(id)arg1;
 
 @end

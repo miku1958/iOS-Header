@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <AuthenticationServices/AKAuthorizationNotificationHandler-Protocol.h>
 #import <AuthenticationServices/ASAuthorizationProvider-Protocol.h>
 
 @class NSString;
 
-@interface ASAuthorizationAppleIDProvider : NSObject <ASAuthorizationProvider>
+@interface ASAuthorizationAppleIDProvider : NSObject <AKAuthorizationNotificationHandler, ASAuthorizationProvider>
 {
 }
 
@@ -19,7 +20,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)initialize;
 - (id)createRequest;
+- (void)credentialStateDidChange:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getCredentialStateForUserID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

@@ -7,14 +7,16 @@
 #import <UIKit/UINavigationController.h>
 
 #import <AppleAccountUI/AAUISignInViewControllerInternalDelegate-Protocol.h>
+#import <AppleAccountUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
 
 @class NSDictionary, NSString;
 @protocol AAUISignInControllerDelegate, AIDAServiceOwnerProtocol;
 
-@interface AAUISignInController : UINavigationController <AAUISignInViewControllerInternalDelegate>
+@interface AAUISignInController : UINavigationController <AAUISignInViewControllerInternalDelegate, UIAdaptivePresentationControllerDelegate>
 {
     NSDictionary *_authenticationResults;
     id<AIDAServiceOwnerProtocol> _serviceOwnersManager;
+    long long _aidaOperationUIPermissions;
     long long _currentStyle;
     BOOL _canEditUsername;
     BOOL __shouldForceOperation;
@@ -58,6 +60,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)prepareInViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (void)signInViewController:(id)arg1 didCompleteWithAuthenticationResults:(id)arg2;
 - (void)signInViewControllerDidCancel:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;

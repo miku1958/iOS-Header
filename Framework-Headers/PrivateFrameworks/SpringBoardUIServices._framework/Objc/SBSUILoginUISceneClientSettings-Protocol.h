@@ -13,6 +13,7 @@
 @property (readonly, nonatomic) long long idleTimerMode;
 @property (readonly, nonatomic) long long rotationMode;
 @property (readonly, copy, nonatomic) NSString *statusBarUserNameOverride;
+@property (readonly, nonatomic) unsigned long long wallpaperMode;
 
 @end
 

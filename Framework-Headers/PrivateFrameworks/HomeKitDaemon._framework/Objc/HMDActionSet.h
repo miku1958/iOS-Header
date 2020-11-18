@@ -13,12 +13,11 @@
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDApplicationData, HMDHome, HMFMessageDispatcher, HMFTimer, NSArray, NSDate, NSMutableArray, NSObject, NSSet, NSString, NSUUID;
+@class HMDApplicationData, HMDHome, HMFMessage, HMFMessageDispatcher, HMFTimer, NSArray, NSDate, NSDictionary, NSMutableArray, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDActionSet : HMFObject <HMFLogging, HMFTimerDelegate, HMDHomeMessageReceiver, NSSecureCoding, HMFDumpState, HMDBackingStoreObjectProtocol>
 {
-    BOOL _executionInProgress;
     NSString *_name;
     NSString *_type;
     NSUUID *_uuid;
@@ -28,16 +27,22 @@
     HMFMessageDispatcher *_msgDispatcher;
     NSMutableArray *_currentActions;
     HMFTimer *_executionTimeout;
+    NSDate *_executionStart;
+    HMFMessage *_executionMessage;
+    NSDictionary *_executionInitialStates;
     HMDApplicationData *_appData;
 }
 
 @property (readonly, nonatomic) NSArray *actions;
 @property (strong, nonatomic) HMDApplicationData *appData; // @synthesize appData=_appData;
 @property (readonly, nonatomic) BOOL containsMediaPlaybackActions;
+@property (readonly, nonatomic) BOOL containsShortcutActions;
 @property (strong, nonatomic) NSMutableArray *currentActions; // @synthesize currentActions=_currentActions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL executionInProgress; // @synthesize executionInProgress=_executionInProgress;
+@property (strong, nonatomic) NSDictionary *executionInitialStates; // @synthesize executionInitialStates=_executionInitialStates;
+@property (strong, nonatomic) HMFMessage *executionMessage; // @synthesize executionMessage=_executionMessage;
+@property (strong, nonatomic) NSDate *executionStart; // @synthesize executionStart=_executionStart;
 @property (strong, nonatomic) HMFTimer *executionTimeout; // @synthesize executionTimeout=_executionTimeout;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
@@ -63,6 +68,7 @@
 - (id)_addCharacteristicWriteActionModelWithUUID:(id)arg1 message:(id)arg2;
 - (id)_addMediaPlaybackActionModelWithUUID:(id)arg1 message:(id)arg2;
 - (void)_execute:(id)arg1 captureCurrentState:(BOOL)arg2 writeRequestTuples:(id)arg3;
+- (void)_executeGenericActions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_executeMediaPlaybackActions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_fixupActions;
 - (id)_generateOverallError:(id)arg1 forSource:(unsigned long long)arg2;
@@ -80,8 +86,8 @@
 - (void)_handleRenameRequest:(id)arg1;
 - (void)_handleUpdateActionRequest:(id)arg1;
 - (void)_handleUpdateAppDataModel:(id)arg1 message:(id)arg2;
-- (void)_issueReadRequests:(id)arg1;
-- (void)_issueWriteRequests:(id)arg1 readResponse:(id)arg2 message:(id)arg3;
+- (void)_issueReadRequests;
+- (void)_issueWriteRequests:(id)arg1;
 - (void)_logDuetEvent:(id)arg1 endDate:(id)arg2 message:(id)arg3;
 - (void)_logDuetRoomEvent;
 - (id)_logExecuteAction:(id)arg1;
@@ -103,7 +109,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)execute:(id)arg1;
 - (void)executeWithTriggerSource:(id)arg1 captureCurrentState:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)handleExecutionCompleted:(id)arg1 startDate:(id)arg2 error:(id)arg3 readResponse:(id)arg4 response:(id)arg5;
+- (void)handleExecutionCompletedWithOverallError:(id)arg1 response:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 uuid:(id)arg2 type:(id)arg3 home:(id)arg4 queue:(id)arg5;
 - (void)invalidate;

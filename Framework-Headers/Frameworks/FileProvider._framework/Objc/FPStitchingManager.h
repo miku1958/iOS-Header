@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) NSArray *allPlaceholderItems;
+@property (readonly, nonatomic) NSArray *allPlaceholderReplacementsIDs;
 @property (readonly, nonatomic) NSDictionary *stitchedFieldsAndItemsByItemIDs;
 
 + (id)sharedInstance;

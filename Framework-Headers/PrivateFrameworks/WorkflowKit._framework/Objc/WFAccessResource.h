@@ -9,12 +9,12 @@
 #import <WorkflowKit/WFWorkflowReferencingResource-Protocol.h>
 
 @class NSError, NSString, UIImage, WFDatabase, WFWorkflow;
-@protocol NSObject, WFAccessResourcePermissionState;
+@protocol NSObject, WFAccessResourcePerWorkflowState;
 
 @interface WFAccessResource : WFResource <WFWorkflowReferencingResource>
 {
     WFWorkflow *_workflow;
-    id<WFAccessResourcePermissionState> _currentPermissionState;
+    id<WFAccessResourcePerWorkflowState> _currentPerWorkflowState;
     NSString *_persistentIdentifier;
     id<NSObject> _resourceAvailabilityChangedNotificationObserver;
 }
@@ -23,7 +23,7 @@
 @property (readonly, nonatomic) NSString *attemptRecoveryFromGlobalLevelErrorMessage;
 @property (readonly, nonatomic) BOOL canLogOut;
 @property (readonly, nonatomic) NSError *computedAvailabilityError;
-@property (strong, nonatomic) id<WFAccessResourcePermissionState> currentPermissionState; // @synthesize currentPermissionState=_currentPermissionState;
+@property (strong, nonatomic) id<WFAccessResourcePerWorkflowState> currentPerWorkflowState; // @synthesize currentPerWorkflowState=_currentPerWorkflowState;
 @property (readonly, nonatomic) WFDatabase *database;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -54,7 +54,7 @@
 
 + (id)accessResourceFromDatabaseState:(id)arg1;
 + (BOOL)isSystemResource;
-+ (Class)permissionStateClass;
++ (Class)perWorkflowStateClass;
 - (void).cxx_destruct;
 - (void)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2 userInterface:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)attemptRecoveryFromGlobalLevelErrorWithOptionIndex:(unsigned long long)arg1 userInterface:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -68,8 +68,7 @@
 - (id)initWithDefinition:(id)arg1 persistentIdentifier:(id)arg2;
 - (id)initWithPersistentIdentifier:(id)arg1;
 - (BOOL)isEquivalentToAccessResource:(id)arg1;
-- (id)loadPersistedPermissionState;
-- (id)loadPersistedPermissionStateForReference:(id)arg1 inDatabase:(id)arg2;
+- (id)loadPersistedPerWorkflowStateForReference:(id)arg1 inDatabase:(id)arg2;
 - (id)localizedAttemptRecoveryFromErrorMessage;
 - (id)localizedErrorReasonForGlobalLevelStatus:(unsigned long long)arg1;
 - (id)localizedImportErrorReasonForGlobalLevelStatus:(unsigned long long)arg1;
@@ -77,16 +76,15 @@
 - (void)makeAvailableAtGlobalLevelWithUserInterface:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)makeAvailableAtLevel:(unsigned long long)arg1 withUserInterface:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)makeAvailableAtWorkflowLevelWithUserInterface:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)persistPermissionState:(id)arg1;
-- (void)persistPermissionState:(id)arg1 forReference:(id)arg2 inDatabase:(id)arg3;
+- (void)persistPerWorkflowState:(id)arg1 forReference:(id)arg2 inDatabase:(id)arg3;
 - (void)refreshAvailability;
 - (void)refreshAvailabilityWithNotification:(BOOL)arg1;
-- (void)refreshCurrentPermissionState;
-- (void)refreshCurrentPermissionStateForReference:(id)arg1 inDatabase:(id)arg2;
+- (void)refreshCurrentPerWorkflowState;
+- (void)refreshCurrentPerWorkflowStateForReference:(id)arg1 inDatabase:(id)arg2;
 - (void)setAuthorizedAtWorkflowLevel:(BOOL)arg1 forReference:(id)arg2 inDatabase:(id)arg3 overridingPreviouslyDeterminedAuthorizations:(BOOL)arg4;
 - (void)setAuthorizedAtWorkflowLevel:(BOOL)arg1 overridingPreviouslyDeterminedAuthorizations:(BOOL)arg2;
 - (unsigned long long)statusAtLevel:(unsigned long long)arg1;
-- (id)updatedPermissionStateForPermissionGranted:(BOOL)arg1 overridingPreviouslyDeterminedAuthorizations:(BOOL)arg2;
+- (id)updatedPerWorkflowStateForAuthorizationChoice:(BOOL)arg1 overridingPreviouslyDeterminedAuthorizations:(BOOL)arg2;
 
 @end
 

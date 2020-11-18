@@ -55,7 +55,7 @@
 - (id)rankedNameSuggestionsWithPredictionContext:(id)arg1 forName:(id)arg2;
 - (id)rankedZkwSuggestionsWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2;
 - (id)sliceStart:(unsigned long long)arg1 end:(unsigned long long)arg2 ofArray:(id)arg3;
-- (id)splitShareLabels:(id)arg1 filterOnRecency:(unsigned long long)arg2 suggestionDate:(id)arg3;
+- (id)splitShareLabels:(id)arg1 suggestionDate:(id)arg2 contextBundleId:(id)arg3;
 - (long long)suggestionExists:(id)arg1 withValue:(id)arg2 inArray:(id)arg3;
 - (id)suggestionProxiesWithPredictionContext:(id)arg1;
 - (id)targetBundleIdsForFilterBundlesIds:(id)arg1;

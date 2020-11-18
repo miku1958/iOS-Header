@@ -19,6 +19,7 @@
 - (void)addNewRemotePlan:(BOOL)arg1 withCSN:(NSString *)arg2 withContext:(CTXPCServiceSubscriptionContext *)arg3 userConsent:(long long)arg4 completion:(void (^)(NSError *))arg5;
 - (void)addNewRemotePlanWithAddress:(NSString *)arg1 matchingId:(NSString *)arg2 oid:(NSString *)arg3 confirmationCode:(NSString *)arg4 isPairing:(BOOL)arg5 withCSN:(NSString *)arg6 withContext:(CTXPCServiceSubscriptionContext *)arg7 userConsent:(long long)arg8 completion:(void (^)(NSError *))arg9;
 - (void)addNewRemotePlanWithCardData:(NSString *)arg1 confirmationCode:(NSString *)arg2 isPairing:(BOOL)arg3 withCSN:(NSString *)arg4 withContext:(CTXPCServiceSubscriptionContext *)arg5 userConsent:(long long)arg6 completion:(void (^)(NSError *))arg7;
+- (void)cancelPlanActivation:(CTCellularPlanPendingTransfer *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)carrierHandoffToken:(void (^)(NSString *, NSString *, NSError *))arg1;
 - (void)carrierItemsShouldUpdate:(BOOL)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)danglingPlanItemsShouldUpdate:(BOOL)arg1 completion:(void (^)(NSArray *, NSError *))arg2;

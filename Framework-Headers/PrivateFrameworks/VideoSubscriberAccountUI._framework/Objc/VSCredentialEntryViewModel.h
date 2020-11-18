@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)_bindField:(id)arg1;
 - (void)_unbindField:(id)arg1;
 - (void)buttonTappedAtIndex:(unsigned long long)arg1;
+- (void)clearFieldsAfterUsername;
 - (void)configureWithRequest:(id)arg1;
 - (void)pickerDidSelectRow:(unsigned long long)arg1;
 - (void)validateCredentialEntryFields;

@@ -50,12 +50,13 @@
 - (void)createSceneIfNeededWithPriority:(long long)arg1;
 - (void)createSceneWithPriority:(long long)arg1;
 - (void)didInvalidateSceneWhenForeground;
-- (struct CGRect)hostViewRectForRect:(struct CGRect)arg1;
 - (id)initWithSceneIdentifier:(id)arg1;
 - (struct CGSize)initialFittingSize;
 - (void)sceneDidInvalidate:(id)arg1;
+- (struct CGRect)sceneSettingsFrameFromRect:(struct CGRect)arg1;
 - (id)sceneSpecification;
 - (void)setForeground:(BOOL)arg1;
+- (BOOL)setSceneFrameOnRotation;
 - (void)transaction:(id)arg1 didCreateScene:(id)arg2;
 - (void)updateSafeAreasOnSettings:(id)arg1;
 - (void)updateTraitCollection;

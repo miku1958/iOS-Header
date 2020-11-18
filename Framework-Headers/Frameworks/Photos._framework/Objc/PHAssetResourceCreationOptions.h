@@ -14,12 +14,14 @@
 {
     BOOL _shouldMoveFile;
     BOOL _shouldIngestInPlace;
+    int _burstPickType;
     NSDate *_alternateImportImageDate;
     NSString *_originalFilename;
     NSString *_uniformTypeIdentifier;
 }
 
 @property (strong, nonatomic) NSDate *alternateImportImageDate; // @synthesize alternateImportImageDate=_alternateImportImageDate;
+@property (nonatomic) int burstPickType; // @synthesize burstPickType=_burstPickType;
 @property (copy, nonatomic) NSString *originalFilename; // @synthesize originalFilename=_originalFilename;
 @property (nonatomic) BOOL shouldIngestInPlace; // @synthesize shouldIngestInPlace=_shouldIngestInPlace;
 @property (nonatomic) BOOL shouldMoveFile; // @synthesize shouldMoveFile=_shouldMoveFile;

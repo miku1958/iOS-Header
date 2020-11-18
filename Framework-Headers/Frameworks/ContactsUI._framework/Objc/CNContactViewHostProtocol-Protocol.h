@@ -16,6 +16,7 @@
 - (void)didExecuteDeleteFromDowntimeWhitelistAction;
 - (void)isPresentingEditingController:(BOOL)arg1;
 - (void)isPresentingFullscreen:(BOOL)arg1;
+- (void)presentCancelConfirmationAlert;
 - (BOOL)shouldPerformDefaultActionForContact:(CNContact *)arg1 propertyKey:(NSString *)arg2 propertyIdentifier:(NSString *)arg3;
 - (void)updateEditing:(BOOL)arg1 doneButtonEnabled:(BOOL)arg2 doneButtonText:(NSString *)arg3;
 - (void)viewDidAppear;

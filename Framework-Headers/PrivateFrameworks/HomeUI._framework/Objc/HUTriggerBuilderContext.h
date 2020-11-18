@@ -17,6 +17,7 @@
     BOOL _showActionSetsInstructions;
     BOOL _showConditionTriggers;
     BOOL _allowDurationEditing;
+    BOOL _filtersEmptyActionSets;
     NSString *_testActionsInstructionDescription;
     NSString *_serviceActionsInstructionDescription;
     NSString *_deleteInstructionDescription;
@@ -34,6 +35,7 @@
 @property (copy, nonatomic) NSString *deleteConfirmationAlertTitle; // @synthesize deleteConfirmationAlertTitle=_deleteConfirmationAlertTitle;
 @property (copy, nonatomic) NSString *deleteInstructionDescription; // @synthesize deleteInstructionDescription=_deleteInstructionDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL filtersEmptyActionSets; // @synthesize filtersEmptyActionSets=_filtersEmptyActionSets;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *serviceActionsInstructionDescription; // @synthesize serviceActionsInstructionDescription=_serviceActionsInstructionDescription;
 @property (nonatomic) BOOL showActionSetsInstructions; // @synthesize showActionSetsInstructions=_showActionSetsInstructions;

@@ -28,10 +28,18 @@
 @property (strong, nonatomic) _UIButtonBarButtonVisualProvider *visualProvider; // @synthesize visualProvider=_visualProvider;
 
 - (void).cxx_destruct;
+- (id)_buttonBarItemViewForBarButtonItem:(id)arg1;
 - (BOOL)_canBeCollapsed;
 - (void)_ensureVisibleButtonsForVisibleItems;
+- (void)_itemCustomViewDidChange:(id)arg1 fromView:(id)arg2;
+- (void)_itemDidChangeEnabledState:(id)arg1;
+- (void)_itemDidChangeHiddenState:(id)arg1;
+- (void)_itemDidChangeSelectionState:(id)arg1;
+- (void)_itemDidChangeWidth:(id)arg1;
+- (void)_itemStandardViewNeedsUpdate:(id)arg1;
 - (struct CGSize)_preferredSizeForItems:(id)arg1 fittingWidth:(double)arg2;
 - (id)_visibleItems;
+- (id)_visibleItemsAllowingCollapse:(BOOL)arg1;
 - (id)initWithBarButtonItemGroup:(id)arg1 visualProvider:(id)arg2 buttonProvider:(id)arg3;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;

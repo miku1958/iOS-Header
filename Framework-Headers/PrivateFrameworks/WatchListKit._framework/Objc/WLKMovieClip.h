@@ -13,9 +13,11 @@
     NSString *_title;
     WLKMovieClipPreviewArtwork *_previewArtwork;
     NSArray *_assets;
+    NSString *_hlsUrl;
 }
 
 @property (readonly, copy, nonatomic) NSArray *assets; // @synthesize assets=_assets;
+@property (readonly, copy, nonatomic) NSString *hlsUrl; // @synthesize hlsUrl=_hlsUrl;
 @property (readonly, nonatomic) WLKMovieClipAsset *preferredAsset;
 @property (readonly, nonatomic) WLKMovieClipPreviewArtwork *previewArtwork; // @synthesize previewArtwork=_previewArtwork;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
@@ -26,6 +28,7 @@
 - (BOOL)_supportHD;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;
+- (id)preferredURL;
 
 @end
 

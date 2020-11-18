@@ -29,7 +29,6 @@
 - (BOOL)isPhotosTCCAccessAllowed;
 - (BOOL)isPhotosTCCAccessNotAllowed;
 - (BOOL)isPhotosTCCAccessRestricted;
-- (void)photoAccessPowersActive;
 - (int)photosTCCAccessStatus;
 
 @end

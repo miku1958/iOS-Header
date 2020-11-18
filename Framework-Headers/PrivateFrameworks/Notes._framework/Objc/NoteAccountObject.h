@@ -32,6 +32,7 @@
 - (id)basicAccountIdentifier;
 - (id)collectionInfo;
 - (void)didTurnIntoFault;
+- (BOOL)isAllNotesContainer;
 - (id)noteVisibilityTestingForSearchingAccount;
 - (id)predicateForNotes;
 - (BOOL)shouldMarkNotesAsDeleted;

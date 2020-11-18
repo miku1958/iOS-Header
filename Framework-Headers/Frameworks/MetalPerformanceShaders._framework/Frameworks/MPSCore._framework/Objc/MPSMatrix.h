@@ -27,6 +27,7 @@
 @property (readonly, strong, nonatomic) id<MTLDevice> device;
 @property (readonly, nonatomic) unsigned long long matrices; // @synthesize matrices=_matrices;
 @property (readonly, nonatomic) unsigned long long matrixBytes; // @synthesize matrixBytes=_matrixBytes;
+@property (readonly, nonatomic) unsigned long long offset; // @synthesize offset=_offset;
 @property (readonly, nonatomic) unsigned long long rowBytes; // @synthesize rowBytes=_rowBytes;
 @property (readonly, nonatomic) unsigned long long rows; // @synthesize rows=_rows;
 

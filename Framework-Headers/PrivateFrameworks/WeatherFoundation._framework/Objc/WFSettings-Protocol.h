@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <WeatherFoundation/NSCopying-Protocol.h>
 #import <WeatherFoundation/NSObject-Protocol.h>
 
 @class NSSet, NSString;
 
-@protocol WFSettings <NSObject>
+@protocol WFSettings <NSObject, NSCopying>
 
 @property (readonly, nonatomic) NSString *apiVersion;
 @property (readonly, nonatomic) NSString *apiVersionFallback;

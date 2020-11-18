@@ -16,10 +16,12 @@ __attribute__((visibility("hidden")))
     AVPlayerLayer *_sourcePlayerLayer;
     UILabel *_debugLabel;
     AVSecondScreenPlayerLayerView *_playerLayerView;
+    struct CGRect _initialScreenBoundsHint;
 }
 
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, nonatomic) UILabel *debugLabel; // @synthesize debugLabel=_debugLabel;
+@property (nonatomic) struct CGRect initialScreenBoundsHint; // @synthesize initialScreenBoundsHint=_initialScreenBoundsHint;
 @property (strong, nonatomic) AVSecondScreenPlayerLayerView *playerLayerView; // @synthesize playerLayerView=_playerLayerView;
 @property (nonatomic, getter=isPlayingOnSecondScreen) BOOL playingOnSecondScreen; // @synthesize playingOnSecondScreen=_playingOnSecondScreen;
 @property (weak, nonatomic) AVPlayerLayer *sourcePlayerLayer; // @synthesize sourcePlayerLayer=_sourcePlayerLayer;
@@ -31,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)debugText;
 - (void)loadPlayerLayerViewIfNeeded;
+- (void)loadView;
 - (void)setDebugText:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

@@ -211,6 +211,7 @@
 - (void)presentPeerPaymentSetupWithCurrencyAmount:(id)arg1 flowState:(unsigned long long)arg2 senderAddress:(id)arg3;
 - (void)presentPeerPaymentTermsAcceptance;
 - (void)presentPeerPaymentTopUp;
+- (void)presentPeerPaymentVerifyIdentity;
 - (void)presentPileOffscreen;
 - (void)presentSpendingSummaryForPassUniqueIdentifier:(id)arg1 type:(unsigned long long)arg2 unit:(unsigned long long)arg3 animated:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)presentTransactionDetailsForTransactionWithIdentifier:(id)arg1;
@@ -227,6 +228,7 @@
 - (void)setTableModalPresentationEnabled:(BOOL)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldAutorotate;
 - (void)shouldUpdateSectionSubheaderView:(id)arg1;
+- (void)showStatementForIdentifier:(id)arg1 passUniqueIdentifier:(id)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)startPaymentPreflight:(id)arg1 withPaymentSetupMode:(long long)arg2 referrerIdentifier:(id)arg3 paymentNetwork:(id)arg4 transitNetworkIdentifier:(id)arg5 allowedFeatureIdentifiers:(id)arg6;
 - (unsigned long long)supportedInterfaceOrientations;
 - (BOOL)supportsExternalPresentation;

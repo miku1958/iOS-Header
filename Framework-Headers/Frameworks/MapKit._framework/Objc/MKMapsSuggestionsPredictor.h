@@ -9,21 +9,23 @@
 #import <MapKit/MKMapsSuggestionsPredictor-Protocol.h>
 
 @class NSString, NSXPCConnection;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol MKMapsSuggestionsSignalPackCacheInterface, OS_dispatch_queue, OS_dispatch_source;
 
-__attribute__((visibility("hidden")))
 @interface MKMapsSuggestionsPredictor : NSObject <MKMapsSuggestionsPredictor>
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_source> *_closeTimer;
+    id<MKMapsSuggestionsSignalPackCacheInterface> _signalPackCacheInterface;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) id<MKMapsSuggestionsSignalPackCacheInterface> signalPackCacheInterface; // @synthesize signalPackCacheInterface=_signalPackCacheInterface;
 @property (readonly) Class superclass;
 
++ (id)sharedPredictor;
 - (void).cxx_destruct;
 - (id)NSDataToMKMapsSuggestionsTransportModes:(id)arg1 error:(id *)arg2;
 - (void)_closeConnection;

@@ -14,16 +14,14 @@ __attribute__((visibility("hidden")))
     NSString *_identifier;
     UIImage *_image;
     NSString *_title;
-    NSString *_selectedTitle;
-    NSString *_selectedSubtitle;
+    NSString *_subtitle;
     UIColor *_selectedBackgroundColor;
 }
 
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (strong, nonatomic) UIColor *selectedBackgroundColor; // @synthesize selectedBackgroundColor=_selectedBackgroundColor;
-@property (strong, nonatomic) NSString *selectedSubtitle; // @synthesize selectedSubtitle=_selectedSubtitle;
-@property (strong, nonatomic) NSString *selectedTitle; // @synthesize selectedTitle=_selectedTitle;
+@property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;

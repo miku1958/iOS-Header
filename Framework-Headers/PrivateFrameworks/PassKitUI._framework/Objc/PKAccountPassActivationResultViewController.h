@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKAccountFlowControllerDelegate-Protocol.h>
 
-@class CLLocationManager, NSString, PKAccountFlowController, UINotificationFeedbackGenerator, UIView, UIViewController;
+@class CLInUseAssertion, CLLocationManager, NSString, PKAccountFlowController, UINotificationFeedbackGenerator, UIViewController;
 @protocol PKPaymentSetupViewControllerDelegate;
 
 @interface PKAccountPassActivationResultViewController : PKExplanationViewController <PKAccountFlowControllerDelegate>
@@ -18,9 +18,9 @@
     unsigned long long _featureIdentifier;
     long long _setupContext;
     UIViewController *_nextViewController;
+    CLInUseAssertion *_inUseAssertion;
     UINotificationFeedbackGenerator *_cardAddedFeedbackGenerator;
     CLLocationManager *_locationManager;
-    UIView *_topBackgroundView;
     BOOL _didAddToAmp;
     BOOL _didMakeAccountPassDefault;
     BOOL _showingLoadingIndicator;
@@ -53,7 +53,8 @@
 - (id)initWithAccountFlowController:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3;
 - (void)loadView;
 - (void)viewDidLoad;
-- (void)viewWillLayoutSubviews;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (struct CGRect)_accessibilityBoundsOfCellsToLoad;
+- (BOOL)_accessibilityShouldUseFallbackForVisibleContentInset;
 - (long long)_axHeightOfCellsToLoad;
 - (void)_axSetHeightOfCellsToLoad:(long long)arg1;
 

@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, VSCredentialEntryViewModel;
 
 __attribute__((visibility("hidden")))
 @interface VSCredentialEntryButton : NSObject
 {
+    VSCredentialEntryViewModel *_owningViewModel;
     NSString *_title;
 }
 
+@property (weak, nonatomic) VSCredentialEntryViewModel *owningViewModel; // @synthesize owningViewModel=_owningViewModel;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;

@@ -31,6 +31,8 @@
 @property (readonly, nonatomic) NSDate *representativeDate; // @synthesize representativeDate=_representativeDate;
 @property (readonly, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly, nonatomic) int timeZoneOffset; // @synthesize timeZoneOffset=_timeZoneOffset;
+@property (readonly, nonatomic) NSDate *universalEndDate;
+@property (readonly, nonatomic) NSDate *universalStartDate;
 
 + (id)_fetchMomentUUIDByAssetUUIDForAssetUUIDs:(id)arg1 photoLibrary:(id)arg2;
 + (id)entityKeyMap;

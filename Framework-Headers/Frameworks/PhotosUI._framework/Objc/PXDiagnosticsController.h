@@ -31,14 +31,14 @@
 - (id)_currentRootViewController;
 - (void)_executeService:(id)arg1;
 - (void)_handleGestureRecognizer:(id)arg1;
-- (void)_handleShowContextualDiagnostics;
 - (void)_loadDiagnosticsServicesClasses;
-- (void)_presentContextualViewControllerFromPoint:(struct CGPoint)arg1;
+- (void)_presentContextualViewControllerFromPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (void)_updateGestureRecognizer;
 - (id)consoleDescriptionForServices:(id)arg1;
 - (id)currentItemProviders;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
+- (void)presentContextualDiagnostics;
 - (void)presentContextualViewControllerForServices:(id)arg1;
 - (id)servicesWithItemProviders:(id)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;

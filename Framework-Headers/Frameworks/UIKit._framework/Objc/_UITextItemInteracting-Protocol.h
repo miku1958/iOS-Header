@@ -12,7 +12,7 @@
 @protocol _UITextItemInteracting <UITextInput, _UITextContent>
 - (BOOL)_allowInteraction:(long long)arg1 forTextInteractableItem:(_UITextInteractableItem *)arg2;
 - (BOOL)_mightHaveInteractableItems;
-- (UITargetedPreview *)_targetedPreviewForTextInteractableItem:(_UITextInteractableItem *)arg1;
+- (UITargetedPreview *)_targetedPreviewForTextInteractableItem:(_UITextInteractableItem *)arg1 dismissing:(BOOL)arg2;
 - (_UITextInteractableItem *)_textInteractableItemAtPoint:(struct CGPoint)arg1;
 
 @optional

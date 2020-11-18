@@ -28,7 +28,7 @@
 - (id)_predicateForBlacklist:(id)arg1;
 - (id)_simulatorResponse;
 - (id)_syncProxy;
-- (id)appPredictionsForConsumerSubType:(unsigned char)arg1 blackList:(id)arg2 limit:(int)arg3;
+- (id)appPredictionsForConsumerSubType:(unsigned char)arg1 blackList:(id)arg2 limit:(int)arg3 runningDiagnostics:(BOOL)arg4;
 - (id)appPredictionsForConsumerSubType:(unsigned char)arg1 limit:(int)arg2;
 - (void)dealloc;
 - (BOOL)forceCacheUpdateForConsumerSubType:(unsigned char)arg1 intent:(id)arg2 candidateBundleIdentifiers:(id)arg3 candidateIntentTypeIdentifiers:(id)arg4;

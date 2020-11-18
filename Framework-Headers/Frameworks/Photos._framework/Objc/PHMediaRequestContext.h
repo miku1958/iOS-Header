@@ -48,7 +48,7 @@
 @property (strong, nonatomic) PHImageResourceChooser *imageResourceChooser; // @synthesize imageResourceChooser=_imageResourceChooser;
 @property (readonly, nonatomic) unsigned long long managerID; // @synthesize managerID=_managerID;
 @property (readonly, nonatomic) int requestID; // @synthesize requestID=_requestID;
-@property (copy, nonatomic) CDUnknownBlockType resultHandler; // @synthesize resultHandler=_resultHandler;
+@property (readonly, copy, nonatomic) CDUnknownBlockType resultHandler; // @synthesize resultHandler=_resultHandler;
 @property (nonatomic) unsigned long long signpostID; // @synthesize signpostID=_signpostID;
 @property (nonatomic) unsigned long long signpostLayoutID; // @synthesize signpostLayoutID=_signpostLayoutID;
 @property (readonly) Class superclass;
@@ -61,7 +61,7 @@
 + (long long)type;
 + (id)videoRequestContextWithRequestID:(int)arg1 managerID:(unsigned long long)arg2 asset:(id)arg3 videoRequestOptions:(id)arg4 intent:(long long)arg5 resultHandler:(CDUnknownBlockType)arg6;
 - (void).cxx_destruct;
-- (void)_makeAvailabilityRequest:(id)arg1 forResource:(id)arg2;
+- (BOOL)_makeAvailabilityRequest:(id)arg1 forResource:(id)arg2;
 - (id)_produceChildRequestsForRequest:(id)arg1 reportingIsLocallyAvailable:(BOOL)arg2 isDegraded:(BOOL)arg3;
 - (id)_produceChildRequestsForRequest:(id)arg1 withResult:(id)arg2;
 - (void)_registerAndStartRequests:(id)arg1;
@@ -79,7 +79,7 @@
 - (BOOL)isSynchronous;
 - (void)mediaRequest:(id)arg1 didFindLocallyAvailableResult:(BOOL)arg2 isDegraded:(BOOL)arg3;
 - (void)mediaRequest:(id)arg1 didFinishWithResult:(id)arg2;
-- (void)mediaRequest:(id)arg1 isRequestingLocalAvailabilityChangeForResource:(id)arg2;
+- (BOOL)mediaRequest:(id)arg1 didStartLocalAvailabilityChangeRequestForResource:(id)arg2;
 - (unsigned long long)nextRequestIndex;
 - (void)processMediaResult:(id)arg1 forRequest:(id)arg2;
 - (id)produceChildRequestsForRequest:(id)arg1 reportingIsLocallyAvailable:(BOOL)arg2 isDegraded:(BOOL)arg3 result:(id)arg4;
@@ -97,7 +97,7 @@
 - (double)totalProgressFraction;
 - (void)videoChoosingAndAvailabilityRequest:(id)arg1 didFinishWithVideoURL:(id)arg2 info:(id)arg3 error:(id)arg4;
 - (void)videoChoosingAndAvailabilityRequest:(id)arg1 didReportProgress:(double)arg2 completed:(BOOL)arg3 error:(id)arg4;
-- (void)videoRequest:(id)arg1 isRequestingVideoChoosingForSize:(struct CGSize)arg2;
+- (BOOL)videoRequest:(id)arg1 didStartVideoChoosingRequestForSize:(struct CGSize)arg2;
 
 @end
 

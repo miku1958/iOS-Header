@@ -12,15 +12,17 @@
 #import <NotesUI/UIScrollViewDelegate-Protocol.h>
 
 @class NSArray, NSString, NoteDateLabel, NoteHTMLEditorView;
-@protocol NoteContentLayerDelegate, NotesTextureScrolling;
+@protocol NoteContentLayerAttachmentPresentationDelegate, NoteContentLayerDelegate, NotesTextureScrolling;
 
 @interface NoteContentLayer : UIView <NoteHTMLEditorViewDelegate, NoteHTMLEditorViewActionDelegate, NoteHTMLEditorViewLayoutDelegate, UIScrollViewDelegate>
 {
     BOOL _containsCJK;
     BOOL _tracksMaximumContentLength;
     BOOL _allowsAttachments;
+    BOOL _showsDateLabel;
     BOOL _updatedTitleRange;
     id<NoteContentLayerDelegate> _delegate;
+    id<NoteContentLayerAttachmentPresentationDelegate> _attachmentPresentationDelegate;
     id<NotesTextureScrolling> _textureScrollingDelegate;
     NoteHTMLEditorView *_noteHTMLEditorView;
     NSArray *_horizontalConstraints;
@@ -28,6 +30,7 @@
 }
 
 @property (nonatomic) BOOL allowsAttachments; // @synthesize allowsAttachments=_allowsAttachments;
+@property (weak, nonatomic) id<NoteContentLayerAttachmentPresentationDelegate> attachmentPresentationDelegate; // @synthesize attachmentPresentationDelegate=_attachmentPresentationDelegate;
 @property (nonatomic) BOOL containsCJK; // @synthesize containsCJK=_containsCJK;
 @property (readonly, nonatomic) BOOL contentContainsValuableContent;
 @property (nonatomic) struct CGPoint contentOffset;
@@ -41,6 +44,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *horizontalConstraints; // @synthesize horizontalConstraints=_horizontalConstraints;
 @property (strong, nonatomic) NoteHTMLEditorView *noteHTMLEditorView; // @synthesize noteHTMLEditorView=_noteHTMLEditorView;
+@property (nonatomic) BOOL showsDateLabel; // @synthesize showsDateLabel=_showsDateLabel;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<NotesTextureScrolling> textureScrollingDelegate; // @synthesize textureScrollingDelegate=_textureScrollingDelegate;
 @property (readonly, nonatomic) NSString *title;

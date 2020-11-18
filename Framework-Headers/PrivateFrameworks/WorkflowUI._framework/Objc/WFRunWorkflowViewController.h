@@ -18,7 +18,7 @@
 #import <WorkflowUI/WFRunWorkflowToolbarDelegate-Protocol.h>
 #import <WorkflowUI/WFWorkflowControllerDelegate-Protocol.h>
 
-@class NSIndexPath, NSString, UIView, WFAction, WFContentCollection, WFDatabase, WFModulesQuickLookView, WFRunWorkflowFooterView, WFRunWorkflowToolbar, WFWorkflow, WFWorkflowController, WFWorkflowViewController;
+@class NSIndexPath, NSString, WFAction, WFContentCollection, WFDatabase, WFModulesQuickLookView, WFRunWorkflowFooterView, WFRunWorkflowToolbar, WFWorkflow, WFWorkflowController, WFWorkflowRunEvent, WFWorkflowViewController;
 @protocol WFRunWorkflowViewControllerDelegate;
 
 @interface WFRunWorkflowViewController : UIViewController <WFModuleModelProvider, WFWorkflowControllerDelegate, WFParameterInputViewControllerDelegate, WFActionParameterInputProvider, WFModulesSupplementaryViewDataSource, WFModulesQuickLookViewDelegate, QLPreviewControllerDelegate, UIScrollViewDelegate, UIDropInteractionDelegate, WFRunWorkflowFooterViewDelegate, WFRunWorkflowToolbarDelegate>
@@ -38,9 +38,9 @@
     WFAction *_lastRunningAction;
     WFModulesQuickLookView *_quickLookView;
     WFRunWorkflowFooterView *_footerView;
-    UIView *_inputDropZoneView;
     CDUnknownBlockType _prepareToRunCompletion;
     NSIndexPath *_prepareToRunIndexPath;
+    WFWorkflowRunEvent *_runEvent;
     WFAction *_currentlyRunningAction;
     WFWorkflowViewController *_workflowViewController;
 }
@@ -57,12 +57,12 @@
 @property (weak, nonatomic) WFRunWorkflowFooterView *footerView; // @synthesize footerView=_footerView;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL indicatesLoadingBeforeRunning; // @synthesize indicatesLoadingBeforeRunning=_indicatesLoadingBeforeRunning;
-@property (readonly, weak, nonatomic) UIView *inputDropZoneView; // @synthesize inputDropZoneView=_inputDropZoneView;
 @property (strong, nonatomic) WFAction *lastRunningAction; // @synthesize lastRunningAction=_lastRunningAction;
 @property (copy, nonatomic) CDUnknownBlockType parameterInputHandler; // @synthesize parameterInputHandler=_parameterInputHandler;
 @property (copy, nonatomic) CDUnknownBlockType prepareToRunCompletion; // @synthesize prepareToRunCompletion=_prepareToRunCompletion;
 @property (strong, nonatomic) NSIndexPath *prepareToRunIndexPath; // @synthesize prepareToRunIndexPath=_prepareToRunIndexPath;
 @property (weak, nonatomic) WFModulesQuickLookView *quickLookView; // @synthesize quickLookView=_quickLookView;
+@property (strong, nonatomic) WFWorkflowRunEvent *runEvent; // @synthesize runEvent=_runEvent;
 @property (nonatomic) BOOL runningFromOtherWorkflow; // @synthesize runningFromOtherWorkflow=_runningFromOtherWorkflow;
 @property (readonly) Class superclass;
 @property (readonly, weak, nonatomic) WFRunWorkflowToolbar *toolbar;
@@ -76,7 +76,6 @@
 - (BOOL)accessibilityPerformMagicTap;
 - (BOOL)action:(id)arg1 canProvideInputForParameter:(id)arg2;
 - (void)action:(id)arg1 provideInputForParameters:(id)arg2 withDefaultStates:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (BOOL)actionShouldHideConfiguration:(id)arg1;
 - (void)checkModulePreparationScrollState;
 - (void)clearQuickLook;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForFooterInSection:(long long)arg3;

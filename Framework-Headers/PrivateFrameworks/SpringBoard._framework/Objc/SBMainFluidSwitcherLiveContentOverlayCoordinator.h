@@ -8,7 +8,7 @@
 
 #import <SpringBoard/SBSwitcherLiveContentOverlayCoordinating-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, SBMainDisplaySceneLayoutViewController, SBSceneLayoutLiveContentOverlay;
+@class NSMutableDictionary, NSString, SBMainDisplaySceneLayoutViewController, SBSceneLayoutLiveContentOverlay;
 @protocol SBSwitcherLiveContentOverlayCoordinatorDelegate;
 
 @interface SBMainFluidSwitcherLiveContentOverlayCoordinator : NSObject <SBSwitcherLiveContentOverlayCoordinating>
@@ -31,7 +31,6 @@
 @property (strong, nonatomic) SBSceneLayoutLiveContentOverlay *sceneLayoutLiveContentOverlay; // @synthesize sceneLayoutLiveContentOverlay=_sceneLayoutLiveContentOverlay;
 @property (readonly, weak, nonatomic) SBMainDisplaySceneLayoutViewController *sceneLayoutViewController; // @synthesize sceneLayoutViewController=_sceneLayoutViewController;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSArray *windowsToExcludeForCrossfadeSnapshot;
 
 - (void).cxx_destruct;
 - (BOOL)_layoutStateContainsElementBlockedForScreenTimeExpiration:(id)arg1;

@@ -87,6 +87,8 @@
 - (void)finishUpdatingSourceDeviceIdentifiersWithZoneIDsBySourceDeviceID:(id)arg1 orError:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)hasAdditionsFlagForPeer:(id)arg1;
 - (BOOL)hasDeletionsFlagForPeer:(id)arg1;
+- (BOOL)hasZoneAdditionChangesForZone:(id)arg1;
+- (BOOL)hasZoneDeletionChangesForZone:(id)arg1;
 - (id)init;
 - (id)name;
 - (void)performUpdateSourceDeviceIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
@@ -99,6 +101,8 @@
 - (void)setFetchDelegate:(id)arg1;
 - (void)setHasAdditionsFlag:(BOOL)arg1 forPeer:(id)arg2;
 - (void)setHasDeletionsFlag:(BOOL)arg1 forPeer:(id)arg2;
+- (void)setHasZoneAdditionChanges:(BOOL)arg1 forZone:(id)arg2;
+- (void)setHasZoneDeletionChanges:(BOOL)arg1 forZone:(id)arg2;
 - (void)setPrewarmedFlag;
 - (void)setZoneIDsBySourceDeviceID:(id)arg1;
 - (void)start;

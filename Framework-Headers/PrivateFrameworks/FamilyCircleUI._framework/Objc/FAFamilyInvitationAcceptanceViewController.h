@@ -36,7 +36,6 @@
 - (void)_loadiTunesLinkingRemoteUI;
 - (void)_sendUserToiTunesSettings;
 - (void)_showErrorAlert;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (void)confirmIdentityViewController:(id)arg1 didCompleteWithSuccess:(BOOL)arg2;
 - (id)initWithInvite:(id)arg1 appleAccount:(id)arg2 grandSlamSigner:(id)arg3;
 - (void)remoteUIController:(id)arg1 didReceiveHTTPResponse:(id)arg2;

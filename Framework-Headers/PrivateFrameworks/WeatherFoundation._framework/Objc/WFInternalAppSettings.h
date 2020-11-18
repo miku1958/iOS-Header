@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) unsigned long long networkSwitchExpirationTimeInSeconds;
 @property (readonly) Class superclass;
 
+- (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end
 

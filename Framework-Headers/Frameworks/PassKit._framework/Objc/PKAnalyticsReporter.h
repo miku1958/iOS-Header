@@ -20,10 +20,13 @@
 + (void)beginSubjectReporting:(id)arg1;
 + (void)beginSubjectReporting:(id)arg1 withArchivedParent:(id)arg2;
 + (void)endSubjectReporting:(id)arg1;
++ (void)reportDashboardEventIfNecessary:(id)arg1 forPass:(id)arg2;
 + (id)reporterForSubject:(id)arg1;
 + (void)sendSingularEvent:(id)arg1;
 + (void)subject:(id)arg1 sendEvent:(id)arg2;
 + (id)subjectDictionary;
++ (id)subjectToReportDashboardAnalyticsForAccount:(id)arg1;
++ (id)subjectToReportDashboardAnalyticsForPass:(id)arg1;
 + (void)subjects:(id)arg1 sendEvent:(id)arg2;
 - (void).cxx_destruct;
 - (id)archivedSessionToken;

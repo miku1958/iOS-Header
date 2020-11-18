@@ -6,13 +6,14 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class _SFPerSitePreferencesVendor;
+@class _SFPageZoomPreferenceManager, _SFPerSitePreferencesVendor;
 @protocol _SFBrowserDocument;
 
 @protocol _SFBrowserContentController <NSObject>
 
 @property (readonly, nonatomic) id<_SFBrowserDocument> activeDocument;
 @property (nonatomic) BOOL keepBarsMinimized;
+@property (readonly, nonatomic) _SFPageZoomPreferenceManager *pageZoomManager;
 @property (readonly, nonatomic) _SFPerSitePreferencesVendor *perSitePreferencesVendor;
 @property (readonly, nonatomic, getter=isShowingReader) BOOL showingReader;
 

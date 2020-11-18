@@ -23,6 +23,7 @@
 - (double)_accessibilityMaxValue;
 - (struct CGPoint)_accessibilityMinScrubberPosition;
 - (double)_accessibilityMinValue;
+- (double)_accessibilityNumberValue;
 - (void)_accessibilitySetValue:(id)arg1;
 - (void)_axFKADecrement;
 - (void)_axFKAIncrement;

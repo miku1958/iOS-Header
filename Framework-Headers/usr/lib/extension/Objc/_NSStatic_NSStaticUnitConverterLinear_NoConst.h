@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (Class)classForCoder;
 - (double)constant;
 - (void)dealloc;
 - (oneway void)release;

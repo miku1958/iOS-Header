@@ -10,12 +10,11 @@
 
 @interface SBIconDotLabelAccessoryView : SBIconLabelAccessoryView
 {
-    UIImageView *_plusLView;
-    UIImageView *_plusDView;
+    UIImageView *_imageView;
 }
 
-+ (id)_dotPlusDColor;
-+ (id)_dotPlusLColor;
++ (id)_dotColor;
++ (struct CAColorMatrix)_vibrantColorMatrixInput;
 + (id)labelAccessorySystemImageName;
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;

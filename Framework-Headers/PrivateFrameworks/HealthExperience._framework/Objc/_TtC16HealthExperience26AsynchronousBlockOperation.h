@@ -6,12 +6,15 @@
 
 #import <HealthExperience/_TtC16HealthExperience21AsynchronousOperation.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSString;
 
 @interface _TtC16HealthExperience26AsynchronousBlockOperation : _TtC16HealthExperience21AsynchronousOperation
 {
     MISSING_TYPE *workBlock;
+    MISSING_TYPE *debugIdentifier;
 }
+
+@property (nonatomic, readonly) NSString *debugDescription;
 
 - (void).cxx_destruct;
 - (id)init;

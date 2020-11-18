@@ -168,6 +168,7 @@
 - (id)genre;
 - (unsigned long long)genrePersistentID;
 - (BOOL)hasStoreLyrics;
+- (BOOL)hasTimeSyncedLyrics;
 - (id)initWithGenericObject:(id)arg1 itemProperties:(id)arg2 playbackRequestEnvironment:(id)arg3 identityPropertySet:(id)arg4;
 - (BOOL)isAlwaysLive;
 - (BOOL)isAssetURLValid;

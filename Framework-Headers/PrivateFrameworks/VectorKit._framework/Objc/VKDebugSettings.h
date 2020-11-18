@@ -96,6 +96,8 @@
     BOOL _showNavCameraDebugLegend;
     float _ribbonCrispness;
     BOOL _useGeoResourceLib;
+    int _debugOverlayOffsetX;
+    int _debugOverlayOffsetY;
     float _altitudeLodScale;
     float _altitudeTileQualityThreshold;
     float _altitudeHideMeshTime;
@@ -253,6 +255,8 @@
 @property (nonatomic) float arVirtualPlaneHeight; // @synthesize arVirtualPlaneHeight=_arVirtualPlaneHeight;
 @property (nonatomic) BOOL constantlyChangeTileGroup; // @synthesize constantlyChangeTileGroup=_constantlyChangeTileGroup;
 @property (nonatomic) double constantlyChangeTileGroupInterval; // @synthesize constantlyChangeTileGroupInterval=_constantlyChangeTileGroupInterval;
+@property (nonatomic) int debugOverlayOffsetX; // @synthesize debugOverlayOffsetX=_debugOverlayOffsetX;
+@property (nonatomic) int debugOverlayOffsetY; // @synthesize debugOverlayOffsetY=_debugOverlayOffsetY;
 @property (nonatomic) shared_ptr_a3c46825 debugStyleManager; // @synthesize debugStyleManager=_debugStyleManager;
 @property (nonatomic) BOOL decodeStyleNames;
 @property (nonatomic) float defaultFovLandscape; // @synthesize defaultFovLandscape=_defaultFovLandscape;

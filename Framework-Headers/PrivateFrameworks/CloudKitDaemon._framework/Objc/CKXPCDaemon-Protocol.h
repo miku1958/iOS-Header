@@ -15,7 +15,7 @@
 - (void)accountsDidGrantAccessToBundleID:(NSString *)arg1 containerIdentifiers:(NSArray *)arg2;
 - (void)accountsDidRevokeAccessToBundleID:(NSString *)arg1 sourceApplicationBundleID:(NSString *)arg2 containerIdentifiers:(NSArray *)arg3;
 - (void)accountsWillDeleteAccount:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
-- (void)cancelOperationWithIdentifier:(NSString *)arg1;
+- (void)cancelOperationWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)clearAssetCacheWithSetupInfo:(CKContainerSetupInfo *)arg1 databaseScope:(long long)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)clearAuthTokensWithSetupInfo:(CKContainerSetupInfo *)arg1 recordID:(CKRecordID *)arg2 databaseScope:(long long)arg3;
 - (void)clearCachesForRecordWithSetupInfo:(CKContainerSetupInfo *)arg1 recordID:(CKRecordID *)arg2 databaseScope:(long long)arg3 completionHandler:(void (^)(NSError *))arg4;

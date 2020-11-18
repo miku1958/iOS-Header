@@ -15,6 +15,7 @@
     UIFont *_font;
     UIFont *_unpopulatedFont;
     UIColor *_textColor;
+    UIColor *_tintColor;
     NSParagraphStyle *_paragraphStyle;
     NSArray *_contents;
     long long _contentsTextAlignment;
@@ -39,6 +40,7 @@
 @property (readonly, nonatomic) NSSet *selectedSlots;
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property (readonly, nonatomic) NSTextStorage *textStorage; // @synthesize textStorage=_textStorage;
+@property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property (readonly, nonatomic) NSSet *typingSlots;
 @property (strong, nonatomic) UIFont *unpopulatedFont; // @synthesize unpopulatedFont=_unpopulatedFont;
 
@@ -63,7 +65,7 @@
 - (void)replaceAttributeInInanimateText:(id)arg1 value:(id)arg2;
 - (void)replaceCharactersInRange:(struct _NSRange)arg1 withString:(id)arg2;
 - (void)setAttributes:(id)arg1 range:(struct _NSRange)arg2;
-- (id)slotAtCharacterIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
+- (id)slotAtCharacterIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2 effectiveContentRange:(struct _NSRange *)arg3;
 - (unsigned long long)slotSpacingOpportunityAtCharacterIndex:(unsigned long long)arg1;
 - (id)string;
 - (id)stringForSlotSpacingOpportunity:(unsigned long long)arg1;

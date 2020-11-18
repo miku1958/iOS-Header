@@ -19,8 +19,8 @@
 @property (copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 
 - (void).cxx_destruct;
-- (void)_finishWithCloudLibraryUpdateForPlaylist:(id)arg1;
 - (BOOL)_isCloudLibraryEnabled;
+- (void)_updateCloudLibraryForPlaylist:(id)arg1;
 - (void)execute;
 
 @end

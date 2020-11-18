@@ -19,7 +19,6 @@
     } delegateCallbacks;
     NSCountedSet *_activities;
     NSMapTable *_activitiesByObject;
-    NSMapTable *_completedActivitiesByObject;
     id<REActivityTrackerDelegate> _delegate;
 }
 
@@ -30,7 +29,6 @@
 - (void)beginActivity:(id)arg1 forObject:(id)arg2;
 - (void)endActivity:(id)arg1 forObject:(id)arg2;
 - (id)initWithDelegate:(id)arg1;
-- (unsigned long long)numberOfCompletedActivities:(id)arg1 forObject:(id)arg2;
 - (id)outstandingActivitiesForObject:(id)arg1;
 - (void)trackObject:(id)arg1;
 - (BOOL)trackingObject:(id)arg1;

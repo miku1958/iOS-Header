@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 
-@class NSArray, NSDictionary, NSHashTable, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSPredicate, NSSet, NSString, PHAsset, PHFetchResult, PHPhotoLibrary, PXLIFOQueue, PXPhotosDataSourceSectionCache;
+@class NSArray, NSDictionary, NSHashTable, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSPredicate, NSSet, NSString, PHAsset, PHFetchResult, PHPhotoLibrary, PXBackgroundFetchToken, PXLIFOQueue, PXPhotosDataSourceSectionCache;
 @protocol OS_dispatch_queue;
 
 @interface PXPhotosDataSource : NSObject <PXPhotoLibraryUIChangeObserver>
@@ -24,9 +24,11 @@
     NSMutableDictionary *_resultRecordByAssetCollection;
     NSMutableSet *__inaccurateAssetCollections;
     BOOL _inaccurateAssetCollectionsNeedsUpdate;
+    NSMutableDictionary *_preparedChangeDetailsByAssetCollection;
     NSMutableDictionary *_infoForAssetCollection;
     BOOL _backgroundFetchOriginSectionChanged;
     BOOL _needToStartBackgroundFetch;
+    PXBackgroundFetchToken *_backgroundFetchToken;
     BOOL _interruptBackgroundFetch;
     BOOL _pauseBackgroundFetchResultsDelivery;
     NSMutableSet *_pauseLibraryChangeDeliveryTokens;
@@ -76,7 +78,7 @@
 @property (nonatomic) unsigned long long fetchLimit; // @synthesize fetchLimit=_fetchLimit;
 @property (strong, nonatomic) NSPredicate *filterPredicate; // @synthesize filterPredicate=_filterPredicate;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isBackgroundFetching; // @synthesize isBackgroundFetching=_isBackgroundFetching;
+@property (nonatomic) BOOL isBackgroundFetching; // @synthesize isBackgroundFetching=_isBackgroundFetching;
 @property (readonly, nonatomic) BOOL isEmpty;
 @property (readonly, nonatomic) BOOL isImmutable;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
@@ -91,11 +93,14 @@
 
 + (id)_curationSharedBackgroundQueue;
 + (id)_sharedPrefetchQueue;
++ (id)backgroundFetchingGroup;
++ (void)waitForAllBackgroundFetchingToFinish;
 - (void).cxx_destruct;
 - (void)_addResultTuple:(id)arg1 forAssetCollection:(id)arg2 toMutableResultRecord:(id)arg3;
 - (BOOL)_allSectionsConsideredAccurate;
 - (id)_allowedUUIDsForAssetCollection:(id)arg1;
 - (BOOL)_areFiltersDisabledForAssetCollection:(id)arg1;
+- (unsigned long long)_assetCollectionFetchStatus:(id)arg1;
 - (id)_assetOidsByAssetCollectionForAssetsAtIndexPaths:(id)arg1;
 - (id)_assetsForAssetCollection:(id)arg1;
 - (unsigned long long)_cachedSectionForAssetCollection:(id)arg1;
@@ -107,15 +112,15 @@
 - (void)_enumerateChangeObserversWithBlock:(CDUnknownBlockType)arg1;
 - (id)_fetchAssetsStartingAtIndexPath:(id)arg1;
 - (void)_fetchRemainingCollectionsBackgroundLoop;
-- (id)_fetchTupleForAssetCollection:(id)arg1 calledOnMainQueue:(BOOL)arg2;
+- (id)_fetchTupleForAssetCollection:(id)arg1 calledOnMainQueue:(BOOL)arg2 isLimitedInitialFetch:(BOOL)arg3;
 - (id)_fetcher;
 - (id)_filterPredicateForAssetCollection:(id)arg1;
 - (id)_finalFilterPredicateForAssetCollection:(id)arg1;
+- (void)_getFetchLimit:(unsigned long long *)arg1 fetchWithReverseSortOrder:(BOOL *)arg2 forAssetCollection:(id)arg3 isLimitedInitialFetch:(BOOL)arg4;
 - (id)_inaccurateAssetCollections;
 - (id)_inclusionPredicateForAssetCollection:(id)arg1;
 - (void)_incrementVersionIdentifier;
 - (void)_interruptBackgroundFetch;
-- (BOOL)_isAssetCollectionAccurate:(id)arg1;
 - (BOOL)_isCurationEnabled;
 - (id)_keyAssetsForAssetCollection:(id)arg1;
 - (id)_mutableResultRecordForAssetCollection:(id)arg1;
@@ -124,7 +129,9 @@
 - (void)_performManualChangesForAssetCollections:(id)arg1 changeBlock:(CDUnknownBlockType)arg2;
 - (void)_performManualChangesForAssetCollections:(id)arg1 collectionsToDiff:(id)arg2 changeBlock:(CDUnknownBlockType)arg3;
 - (void)_performManualReloadWithChangeBlock:(CDUnknownBlockType)arg1;
+- (void)_performProcessAndPublishSelectorInDefaultRunLoopMode;
 - (void)_prefetchIndexesByFetchResult:(id)arg1 onlyThumbnails:(BOOL)arg2;
+- (void)_prepareDiffsForPendingResultsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_processAndPublishPendingCollectionFetchResults;
 - (void)_processAndPublishPendingCollectionFetchResultsWhenAppropriate;
 - (void)_publishChange:(id)arg1;

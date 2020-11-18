@@ -28,6 +28,7 @@
 - (id)init;
 - (id)processEspressoTensor:(id)arg1;
 - (unsigned long long)requiredSensorDataTypes;
+- (double)requiredTimeInterval;
 
 @end
 

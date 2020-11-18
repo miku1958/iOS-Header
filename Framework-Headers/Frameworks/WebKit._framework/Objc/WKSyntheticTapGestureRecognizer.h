@@ -6,7 +6,7 @@
 
 #import <UIKit/UITapGestureRecognizer.h>
 
-@class NSNumber, UIWebTouchEventsGestureRecognizer;
+@class NSNumber, UIScrollView, UIWebTouchEventsGestureRecognizer;
 
 __attribute__((visibility("hidden")))
 @interface WKSyntheticTapGestureRecognizer : UITapGestureRecognizer
@@ -18,10 +18,12 @@ __attribute__((visibility("hidden")))
     id _resetTarget;
     SEL _resetAction;
     struct RetainPtr<NSNumber> _lastActiveTouchIdentifier;
+    struct WeakObjCPtr<UIScrollView> _lastTouchedScrollView;
     UIWebTouchEventsGestureRecognizer *_supportingWebTouchEventsGestureRecognizer;
 }
 
 @property (readonly, nonatomic) NSNumber *lastActiveTouchIdentifier;
+@property (readonly, weak, nonatomic) UIScrollView *lastTouchedScrollView;
 @property (weak, nonatomic) UIWebTouchEventsGestureRecognizer *supportingWebTouchEventsGestureRecognizer; // @synthesize supportingWebTouchEventsGestureRecognizer=_supportingWebTouchEventsGestureRecognizer;
 
 - (id).cxx_construct;
@@ -31,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)setGestureIdentifiedTarget:(id)arg1 action:(SEL)arg2;
 - (void)setResetTarget:(id)arg1 action:(SEL)arg2;
 - (void)setState:(long long)arg1;
+- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 
 @end

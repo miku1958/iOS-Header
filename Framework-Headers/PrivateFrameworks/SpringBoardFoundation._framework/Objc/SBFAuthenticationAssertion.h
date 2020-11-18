@@ -30,7 +30,6 @@
 
 - (void).cxx_destruct;
 - (void)activate;
-- (void)deactivate;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

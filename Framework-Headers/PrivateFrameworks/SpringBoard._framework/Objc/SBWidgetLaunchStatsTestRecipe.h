@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)load;
 - (void)handleVolumeDecrease;
 - (void)handleVolumeIncrease;
 - (id)title;

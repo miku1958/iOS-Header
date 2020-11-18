@@ -30,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)setBannerOpacity:(double)arg1;
-- (void)setTransitionBannerOpacity:(double)arg1;
 - (void)setUberImageOffset:(double)arg1;
 - (void)setWhiteBannerOpacity:(double)arg1;
 

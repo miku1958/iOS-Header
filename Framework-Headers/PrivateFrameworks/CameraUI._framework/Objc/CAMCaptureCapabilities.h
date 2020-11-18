@@ -99,6 +99,7 @@
     BOOL _allowHaptics;
     BOOL _allowHapticsOnConfigurationTaps;
     BOOL _topBarInvertedForModernPhone;
+    BOOL __forceAllowTripleCamera;
     BOOL _hasFilteringEntitlement;
     BOOL _ctmSupportSuppressed;
     BOOL _deviceSupportsCTM;
@@ -143,6 +144,7 @@
 @property (readonly, nonatomic) double _backTripleCameraVideoModeMaximumZoomFactor; // @synthesize _backTripleCameraVideoModeMaximumZoomFactor=__backTripleCameraVideoModeMaximumZoomFactor;
 @property (readonly, nonatomic) double _backVideoModeMaximumZoomFactor; // @synthesize _backVideoModeMaximumZoomFactor=__backVideoModeMaximumZoomFactor;
 @property (readonly, nonatomic) double _backWideDualCameraSwitchOverZoomFactor; // @synthesize _backWideDualCameraSwitchOverZoomFactor=__backWideDualCameraSwitchOverZoomFactor;
+@property (readonly, nonatomic) BOOL _forceAllowTripleCamera; // @synthesize _forceAllowTripleCamera=__forceAllowTripleCamera;
 @property (readonly, nonatomic) long long _forcedBackCamera; // @synthesize _forcedBackCamera=__forcedBackCamera;
 @property (readonly, nonatomic) double _frontCaptureInterval; // @synthesize _frontCaptureInterval=__frontCaptureInterval;
 @property (readonly, nonatomic) double _frontDualCameraSwitchOverZoomFactor; // @synthesize _frontDualCameraSwitchOverZoomFactor=__frontDualCameraSwitchOverZoomFactor;
@@ -268,10 +270,6 @@
 
 + (id)capabilities;
 - (BOOL)_isSpatialOverCaptureSupportedForMode:(long long)arg1;
-- (BOOL)_isSuperWideSupportedForMode:(long long)arg1 devicePosition:(long long)arg2 videoConfiguration:(long long)arg3;
-- (BOOL)_isTelephotoSupportedForMode:(long long)arg1 devicePosition:(long long)arg2 videoConfiguration:(long long)arg3;
-- (BOOL)_isWideSupportedForDevicePosition:(long long)arg1;
-- (BOOL)_isWideSupportedForMode:(long long)arg1 devicePosition:(long long)arg2 videoConfiguration:(long long)arg3;
 - (BOOL)_shouldUseTripleCameraForMode:(long long)arg1 device:(long long)arg2 videoConfiguration:(long long)arg3;
 - (double)captureIntervalForDevice:(long long)arg1;
 - (double)defaultDepthEffectApertureForDevice:(long long)arg1;
@@ -286,6 +284,7 @@
 - (BOOL)is4k30VideoSupportedForDevice:(long long)arg1;
 - (BOOL)is4k60VideoSupportedForDevice:(long long)arg1;
 - (BOOL)is720p240SupportedForDevice:(long long)arg1;
+- (BOOL)isAspectRatioCropSupportedForMode:(long long)arg1;
 - (BOOL)isAutoLowLightVideoSupportedForMode:(long long)arg1 videoConfiguration:(long long)arg2;
 - (BOOL)isAutomaticHDRSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isBurstSupportedForMode:(long long)arg1 device:(long long)arg2;
@@ -314,10 +313,12 @@
 - (BOOL)isSpatialOverCaptureSupportedForMode:(long long)arg1 device:(long long)arg2 photoEncodingBehavior:(long long)arg3;
 - (BOOL)isStereoAudioRecordingSupportedForMode:(long long)arg1;
 - (BOOL)isSuperWideSupportedForDevicePosition:(long long)arg1;
+- (BOOL)isSuperWideSupportedForMode:(long long)arg1 devicePosition:(long long)arg2 videoConfiguration:(long long)arg3;
 - (BOOL)isSupportedMode:(long long)arg1 withDevice:(long long)arg2;
 - (BOOL)isSupportedVideoConfiguration:(long long)arg1 forMode:(long long)arg2 device:(long long)arg3;
 - (BOOL)isSupportedVideoConfiguration:(long long)arg1 forVideoEncodingBehavior:(long long)arg2;
 - (BOOL)isTelephotoSupportedForDevicePosition:(long long)arg1;
+- (BOOL)isTelephotoSupportedForMode:(long long)arg1 devicePosition:(long long)arg2 videoConfiguration:(long long)arg3;
 - (BOOL)isTimelapseSupportedForDevice:(long long)arg1;
 - (BOOL)isTorchPatternSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isTorchSupportedForDevicePosition:(long long)arg1;
@@ -325,6 +326,8 @@
 - (BOOL)isTripleCameraSupportedForMode:(long long)arg1 devicePosition:(long long)arg2 videoConfiguration:(long long)arg3;
 - (BOOL)isWideDualSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isWideDualSupportedForMode:(long long)arg1 devicePosition:(long long)arg2 videoConfiguration:(long long)arg3;
+- (BOOL)isWideSupportedForDevicePosition:(long long)arg1;
+- (BOOL)isWideSupportedForMode:(long long)arg1 devicePosition:(long long)arg2 videoConfiguration:(long long)arg3;
 - (BOOL)isZoomAllowedForMode:(long long)arg1 device:(long long)arg2 videoConfiguration:(long long)arg3;
 - (long long)maxSupportedPhotoQualityPrioritizationForMode:(long long)arg1;
 - (double)maximumDepthEffectApertureForDevicePosition:(long long)arg1;

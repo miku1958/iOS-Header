@@ -12,7 +12,7 @@
 #import <HomeUI/HUFeedbackConsentViewControllerDelegate-Protocol.h>
 #import <HomeUI/NSURLSessionDelegate-Protocol.h>
 
-@class CADisplayLink, HFCameraPlaybackEngine, HUClipScrubberDataSource, HUClipScrubberScrollDelegate, HUClipScrubberView, HULegibilityLabel, NSLayoutConstraint, NSString, NSTimer, UIButton, UIView;
+@class CADisplayLink, HFCameraPlaybackEngine, HUClipScrubberDataSource, HUClipScrubberScrollDelegate, HUClipScrubberView, NSLayoutConstraint, NSString, UIButton, UIView;
 
 @interface HUClipScrubberViewController : UIViewController <NSURLSessionDelegate, HUFeedbackConsentViewControllerDelegate, HUCameraPlayerScrubbing, HFCameraClipFeedbackObserving, HFCameraPlaybackEngineObserver>
 {
@@ -22,8 +22,6 @@
     CDUnknownBlockType _endEditingHandler;
     CDUnknownBlockType _deletionHandler;
     HFCameraPlaybackEngine *_playbackEngine;
-    HULegibilityLabel *_dayLabel;
-    HULegibilityLabel *_timeLabel;
     HUClipScrubberView *_scrubberView;
     UIButton *_selectionButton;
     UIButton *_nearbyAccessoriesButton;
@@ -38,8 +36,8 @@
     NSLayoutConstraint *_feedbackPlatterTopAnchorConstraint;
     NSLayoutConstraint *_nearbyAccessoriesPlatterTopAnchorConstraint;
     NSLayoutConstraint *_selectionPlatterTopAnchorConstraint;
-    NSTimer *_liveTimer;
     CADisplayLink *_scrubberUpdateDisplayLink;
+    unsigned long long _lastEngineMode;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType accessoryButtonHandler; // @synthesize accessoryButtonHandler=_accessoryButtonHandler;
@@ -47,7 +45,6 @@
 @property (strong, nonatomic) HUClipScrubberScrollDelegate *clipScrollDelegate; // @synthesize clipScrollDelegate=_clipScrollDelegate;
 @property (readonly, nonatomic) double currentScrubberResolution;
 @property (strong, nonatomic) HUClipScrubberDataSource *dataSource; // @synthesize dataSource=_dataSource;
-@property (strong, nonatomic) HULegibilityLabel *dayLabel; // @synthesize dayLabel=_dayLabel;
 @property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) CDUnknownBlockType deletionHandler; // @synthesize deletionHandler=_deletionHandler;
 @property (readonly, copy) NSString *description;
@@ -57,7 +54,7 @@
 @property (strong, nonatomic) NSLayoutConstraint *feedbackPlatterTopAnchorConstraint; // @synthesize feedbackPlatterTopAnchorConstraint=_feedbackPlatterTopAnchorConstraint;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isVisible; // @synthesize isVisible=_isVisible;
-@property (strong, nonatomic) NSTimer *liveTimer; // @synthesize liveTimer=_liveTimer;
+@property (nonatomic) unsigned long long lastEngineMode; // @synthesize lastEngineMode=_lastEngineMode;
 @property (strong, nonatomic) UIButton *nearbyAccessoriesButton; // @synthesize nearbyAccessoriesButton=_nearbyAccessoriesButton;
 @property (strong, nonatomic) UIView *nearbyAccessoriesPlatter; // @synthesize nearbyAccessoriesPlatter=_nearbyAccessoriesPlatter;
 @property (strong, nonatomic) NSLayoutConstraint *nearbyAccessoriesPlatterTopAnchorConstraint; // @synthesize nearbyAccessoriesPlatterTopAnchorConstraint=_nearbyAccessoriesPlatterTopAnchorConstraint;
@@ -70,9 +67,7 @@
 @property (strong, nonatomic) UIView *selectionPlatter; // @synthesize selectionPlatter=_selectionPlatter;
 @property (strong, nonatomic) NSLayoutConstraint *selectionPlatterTopAnchorConstraint; // @synthesize selectionPlatterTopAnchorConstraint=_selectionPlatterTopAnchorConstraint;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) HULegibilityLabel *timeLabel; // @synthesize timeLabel=_timeLabel;
 
-+ (id)_legibilityLabelFactory;
 - (void).cxx_destruct;
 - (void)_addConstraints;
 - (BOOL)_cellBoundsContainsPlayhead:(id)arg1;
@@ -82,8 +77,6 @@
 - (void)_scrubberDisplayLinkTick:(id)arg1;
 - (void)_updatePlaybackPosition:(id)arg1 animated:(BOOL)arg2;
 - (void)_updateScrubberDisplayLinkState;
-- (void)_updateTimeLabel;
-- (void)cancelLiveTimer;
 - (void)changeToLiveMode;
 - (void)consentController:(id)arg1 didFinishConsentWithAnswer:(BOOL)arg2;
 - (void)dealloc;
@@ -116,7 +109,6 @@
 - (void)showAssociatedAccessories;
 - (void)showDeleteInterface;
 - (void)showEditInterface;
-- (void)startLiveTimer;
 - (void)submitAllUnsubmittedClips;
 - (void)submitCurrentClip;
 - (void)togglePlayPause;

@@ -35,6 +35,7 @@
 - (void)internalInvalidatePrimaryICloudACAccount;
 - (void)invalidatePrimaryICloudACAccount;
 - (void)performBlockInPersonaContextIfNecessary:(CDUnknownBlockType)arg1 forAccountIdentifier:(id)arg2;
+- (id)temporaryDirectoryURLForAccountIdentifier:(id)arg1;
 - (void)updateICloudACAccountFromStore;
 
 @end

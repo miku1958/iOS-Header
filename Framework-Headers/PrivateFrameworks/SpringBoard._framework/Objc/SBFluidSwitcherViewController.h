@@ -193,7 +193,6 @@
 - (void)_performModifierScrollToAppLayoutAction:(id)arg1;
 - (void)_performModifierTimerEventAction:(id)arg1;
 - (void)_performModifierUpdateLayoutAction:(id)arg1;
-- (void)_performModifierUpdateScrollViewSizeAndSpacingAction:(id)arg1;
 - (void)_performWithoutNotifyingTetheredViewController:(CDUnknownBlockType)arg1;
 - (void)_prepareForCrossfadeIfNeeded;
 - (void)_rebuildCachedAdjustedAppLayouts;
@@ -208,7 +207,6 @@
 - (void)_setupContentAndTransientViews;
 - (void)_setupLiveContentOverlayForAppLayout:(id)arg1 itemContainer:(id)arg2 overlay:(id)arg3;
 - (void)_setupMorphToPiPIfNeededForTransitionContext:(id)arg1;
-- (BOOL)_shouldAnimateCrossfade;
 - (BOOL)_shouldInterruptPresentationAndDismiss;
 - (BOOL)_shouldItemContainersUseDarkLabels;
 - (void)_temporarilyHideMatchMovedZoomDownAnimationViewAnimated:(BOOL)arg1;
@@ -240,6 +238,7 @@
 - (void)_updateResignActiveAssertion;
 - (void)_updateScrollViewScrollEnabled;
 - (void)_updateScrollViewSizeAndSpacing;
+- (void)_updateSnapshotCacheReloadingForActiveInterfaceOrientationChange;
 - (void)_updateSpringBoardStatusBarAssertionAnimated:(BOOL)arg1;
 - (void)_updateStatusBarAndHomeGrabberVisibilityForAppLayout:(id)arg1 animated:(BOOL)arg2;
 - (void)_updateStyleWithBehaviorMode:(long long)arg1 completion:(CDUnknownBlockType)arg2;
@@ -261,7 +260,6 @@
 - (BOOL)canSelectContainer:(id)arg1 numberOfTaps:(long long)arg2;
 - (struct CGRect)containerViewBounds;
 - (id)containerViewControllerForPageViewFromProvider:(id)arg1;
-- (struct CGPoint)contentOffsetForTetheredIndex:(unsigned long long)arg1;
 - (struct CGSize)contentSize;
 - (void)dealloc;
 - (id)defaultAppLayoutsForImageCache:(id)arg1;
@@ -271,7 +269,8 @@
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)didSelectContainer:(id)arg1;
 - (void)dispatchAndHandleTetheredRemovalEvent:(id)arg1;
-- (id)dispatchAndReturnTetheredInsertionEventIfNeededWithID:(id)arg1 phase:(unsigned long long)arg2 animated:(BOOL)arg3;
+- (id)dispatchAndReturnTetheredInsertionEventIfNeededWithID:(id)arg1 phase:(unsigned long long)arg2;
+- (id)dispatchAndReturnTetheredRemovalEventIfNeededWithID:(id)arg1 phase:(unsigned long long)arg2;
 - (double)displayCornerRadius;
 - (double)distanceToLeadingEdgeOfLeadingCardFromTrailingEdgeOfScreen;
 - (double)distanceToTetheredLeadingEdgeOfLeadingCardFromTrailingEdgeOfScreen;
@@ -341,6 +340,7 @@
 - (void)noteAppLayoutsDidChange;
 - (void)noteKeyboardFocusDidChangeToSceneID:(id)arg1;
 - (id)noteModelDidMutateForInsertionOfAppLayouts:(id)arg1 atIndexes:(id)arg2;
+- (id)noteModelDidMutateForRemovalOfAppLayout:(id)arg1 forReason:(long long)arg2 animated:(BOOL)arg3;
 - (unsigned long long)numberOfAppLayouts;
 - (long long)numberOfHiddenAppLayoutsForBundleIdentifier:(id)arg1;
 - (unsigned long long)numberOfTetheredAppLayouts;
@@ -348,12 +348,13 @@
 - (long long)orientationForPageViewFromProvider:(id)arg1;
 - (long long)orientationForSnapshotOfAppLayout:(id)arg1 inImageCache:(id)arg2;
 - (id)parentViewControllerForContentOverlay;
-- (void)performInsertionOfAppLayouts:(id)arg1 atIndexes:(id)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)performAnimatedInsertionOfAppLayouts:(id)arg1 atIndexes:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)performAnimatedRemovalOfAppLayout:(id)arg1 forReason:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)performTransitionWithContext:(id)arg1 animated:(BOOL)arg2 alongsideAnimationController:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)prepareInsertionOfAppLayouts:(id)arg1 atIndexes:(id)arg2 shouldAnimate:(inout BOOL *)arg3;
+- (id)prepareAnimatedInsertionOfAppLayouts:(id)arg1 atIndexes:(id)arg2;
+- (id)prepareAnimatedRemovalOfAppLayout:(id)arg1 forReason:(long long)arg2;
 - (void)reduceMotionStatusDidChange:(id)arg1;
 - (void)relinquishTransientOverlayViewController:(id)arg1;
-- (void)removeAppLayout:(id)arg1 forReason:(long long)arg2 modelMutationBlock:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)removeLiveContentOverlayForAppLayout:(id)arg1 animated:(BOOL)arg2;
 - (void)respondToInAppStatusBarRequestedHiddenUpdate;
 - (void)returnScrollViewPanGestureRecognizer:(id)arg1;
@@ -374,6 +375,8 @@
 - (void)settings:(id)arg1 changedValueForKeyPath:(id)arg2;
 - (BOOL)shouldAcceleratedHomeButtonPressBegin;
 - (BOOL)shouldAddAppLayoutToFront:(id)arg1 forTransitionWithContext:(id)arg2 transitionCompleted:(BOOL)arg3;
+- (BOOL)shouldAnimateInsertionOfAppLayouts:(id)arg1 atIndexes:(id)arg2;
+- (BOOL)shouldAnimateRemovalOfAppLayout:(id)arg1 forReason:(long long)arg2;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (BOOL)shouldMorphToPiPForTransitionContext:(id)arg1;
 - (BOOL)shouldRubberbandHomeGrabberView;

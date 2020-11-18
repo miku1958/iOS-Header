@@ -141,7 +141,7 @@
 @property (copy, nonatomic) CDUnknownBlockType searchGestureCompletionHandler; // @synthesize searchGestureCompletionHandler=_searchGestureCompletionHandler;
 @property (readonly, nonatomic, getter=isShowingSidebar) BOOL showingSidebar;
 @property (readonly, nonatomic, getter=isShowingTodayOverlay) BOOL showingTodayOverlay;
-@property (nonatomic, getter=isSidebarPinned) BOOL sidebarPinned;
+@property (readonly, nonatomic, getter=isSidebarPinned) BOOL sidebarPinned;
 @property (strong, nonatomic) SBHomeScreenSpotlightViewController *spotlightViewController; // @synthesize spotlightViewController=_spotlightViewController;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) SBHIconImageCache *tableUIIconImageCache;
@@ -289,7 +289,6 @@
 - (void)iconManager:(id)arg1 rootFolderController:(id)arg2 didOverscrollOnFirstPageByAmount:(double)arg3;
 - (void)iconManager:(id)arg1 rootFolderController:(id)arg2 willUsePropertyAnimator:(id)arg3 toTransitionToState:(long long)arg4;
 - (void)iconManager:(id)arg1 rootFolderController:(id)arg2 willUseTransitionContext:(id)arg3 toTransitionToState:(long long)arg4;
-- (BOOL)iconManager:(id)arg1 rootFolderControllerShouldAllowOverscrollOnFirstPage:(id)arg2;
 - (BOOL)iconManager:(id)arg1 shouldActivateApplicationShortcutItem:(id)arg2 atIndex:(unsigned long long)arg3 forIconView:(id)arg4;
 - (BOOL)iconManager:(id)arg1 shouldContinueToUseBackgroundView:(id)arg2 forComponentsOfIconView:(id)arg3;
 - (struct UIEdgeInsets)iconManager:(id)arg1 statusBarEdgeInsetsForFolderController:(id)arg2;
@@ -360,7 +359,6 @@
 - (void)rootFolderController:(id)arg1 transitionWillBegin:(id)arg2;
 - (void)rootFolderController:(id)arg1 transitionWillFinish:(id)arg2;
 - (void)rootFolderController:(id)arg1 transitionWillReverse:(id)arg2;
-- (void)rootFolderControllerDidChangeSidebarPinned:(id)arg1;
 - (void)rootFolderPageStateProvider:(id)arg1 didContinueTransitionToState:(long long)arg2 progress:(double)arg3;
 - (void)rootFolderPageStateProvider:(id)arg1 didEndTransitionFromState:(long long)arg2 toState:(long long)arg3 successfully:(BOOL)arg4;
 - (void)rootFolderPageStateProvider:(id)arg1 willBeginTransitionToState:(long long)arg2 animated:(BOOL)arg3 interactive:(BOOL)arg4;

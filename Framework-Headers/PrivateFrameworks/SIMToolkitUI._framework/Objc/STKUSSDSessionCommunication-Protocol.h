@@ -9,6 +9,7 @@
 @class NSDictionary, NSString;
 
 @protocol STKUSSDSessionCommunication <NSObject>
+- (void)dismissCoalescingSession;
 - (void)sessionDidReceiveErrorCode:(long long)arg1 string:(NSString *)arg2;
 - (void)sessionDidReceiveString:(NSString *)arg1;
 - (void)sessionDidReceiveSupplementaryServicesEvent:(NSDictionary *)arg1;

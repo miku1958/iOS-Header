@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)_storingPath;
 - (id)_storingSenderPath;
 - (void)addNewSession:(id)arg1 originator:(id)arg2 receivingHandle:(id)arg3 receivingAccountIdentifier:(id)arg4;
+- (void)dealloc;
 - (id)groupSessionInfoForKey:(id)arg1;
 - (id)init;
 - (id)receivingRulesForIdentifier:(id)arg1;

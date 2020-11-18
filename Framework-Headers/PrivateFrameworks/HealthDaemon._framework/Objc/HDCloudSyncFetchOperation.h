@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/NSProgressReporting-Protocol.h>
 
-@class CKShareParticipant, HDCloudSyncOperationConfiguration, HDCloudSyncZone, NSDate, NSMutableArray, NSMutableDictionary, NSProgress, NSSet, NSString, NSUUID;
+@class CKShareParticipant, HDCloudSyncOperationConfiguration, HDCloudSyncZone, NSDate, NSMutableArray, NSMutableDictionary, NSMutableSet, NSProgress, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HDCloudSyncFetchOperation : NSObject <NSProgressReporting>
@@ -27,6 +27,7 @@
     CKShareParticipant *_sourceParticipant;
     NSMutableDictionary *_zonesByIdentifier;
     NSMutableArray *_zonesPendingDeletion;
+    NSMutableSet *_zonesRequiringRemoval;
     HDCloudSyncZone *_primaryPushZone;
     NSMutableArray *_pendingFetchDatabaseChangesOperations;
     NSMutableArray *_pendingFetchRecordsOperations;
@@ -56,6 +57,7 @@
 - (void)_queue_checkForZoneFetchCompletion;
 - (void)_queue_deleteZonesForLostManateeIdentitiesForPartialError:(id)arg1 container:(id)arg2;
 - (void)_queue_discardInvalidSharedZones;
+- (void)_queue_discardRemovedZones;
 - (void)_queue_fetchHeaderRecords;
 - (void)_queue_fetchHeaderRecordsByZoneForZones:(id)arg1 container:(id)arg2 scope:(long long)arg3;
 - (void)_queue_fetchSyncZones;

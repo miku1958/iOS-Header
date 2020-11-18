@@ -164,9 +164,10 @@
 	// method
 	// method
  }
- protocol NewsFeed.CoverIssueViewStylerType // 19 requirements
+ protocol NewsFeed.CoverIssueViewStylerType // 20 requirements
  {
 	// class base protocol
+	// getter
 	// getter
 	// getter
 	// getter
@@ -461,7 +462,7 @@
 	let json : String // +0x20 (0x10)
 
 	// Swift methods
-	0x2ec0  class func LayeredMediaParser.__allocating_init(identifier:json:) // init 
+	0x2fa0  class func LayeredMediaParser.__allocating_init(identifier:json:) // init 
  }
 
  enum NewsFeed.Errors {
@@ -476,12 +477,12 @@
 	let layerRenderer : LayeredMediaLayerRenderer // +0x10 (0x8)
 
 	// Swift methods
-	0x4e50  class func LayeredMediaViewRenderer.__allocating_init(layerRenderer:) // init 
+	0x4f30  class func LayeredMediaViewRenderer.__allocating_init(layerRenderer:) // init 
  }
 
  class NewsFeed.RendererAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xb0f0  @objc RendererAssembly.init <stripped>
+	0xb1d0  @objc RendererAssembly.init <stripped>
  }
 
  struct NewsFeed.IssueCoverViewStyle {
@@ -700,6 +701,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -708,6 +710,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -716,6 +719,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -724,6 +728,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.A18_V8 {
@@ -837,19 +842,19 @@
 	let nonAnimatingDelegate : NonAnimatingDelegate
 
 	// ObjC -> Swift bridged methods
-	0x3bae0  @objc PlayerLayer.playerLayer <stripped>
-	0x3bc30  @objc PlayerLayer.initWithCoder: <stripped>
-	0x3c0a0  @objc PlayerLayer.layoutSublayers <stripped>
-	0x3c520  @objc PlayerLayer.dealloc <stripped>
-	0x3c5a0  @objc PlayerLayer.applicationDidEnterBackground <stripped>
-	0x3c620  @objc PlayerLayer.applicationWillEnterForeground <stripped>
-	0x3c720  @objc PlayerLayer.reduceMotionStatusDidChange <stripped>
-	0x3c7a0  @objc PlayerLayer.init <stripped>
-	0x3c870  @objc PlayerLayer.initWithLayer: <stripped>
-	0x3c540  @objc PlayerLayer..cxx_destruct <stripped>
+	0x3c230  @objc PlayerLayer.playerLayer <stripped>
+	0x3c380  @objc PlayerLayer.initWithCoder: <stripped>
+	0x3c7f0  @objc PlayerLayer.layoutSublayers <stripped>
+	0x3cc70  @objc PlayerLayer.dealloc <stripped>
+	0x3ccf0  @objc PlayerLayer.applicationDidEnterBackground <stripped>
+	0x3cd70  @objc PlayerLayer.applicationWillEnterForeground <stripped>
+	0x3ce70  @objc PlayerLayer.reduceMotionStatusDidChange <stripped>
+	0x3cef0  @objc PlayerLayer.init <stripped>
+	0x3cfc0  @objc PlayerLayer.initWithLayer: <stripped>
+	0x3cc90  @objc PlayerLayer..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3bc50  class func PlayerLayer.__allocating_init(loopBehavior:) // init 
+	0x3c3a0  class func PlayerLayer.__allocating_init(loopBehavior:) // init 
  }
 
  enum NewsFeed.LoopBehavior {
@@ -868,8 +873,8 @@
 
  class NewsFeed.NonAnimatingDelegate : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3bb00  @objc NonAnimatingDelegate.actionForLayer:forKey: <stripped>
-	0x3bb90  @objc NonAnimatingDelegate.init <stripped>
+	0x3c250  @objc NonAnimatingDelegate.actionForLayer:forKey: <stripped>
+	0x3c2e0  @objc NonAnimatingDelegate.init <stripped>
 
 	// Swift methods
  }
@@ -897,6 +902,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -905,6 +911,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -913,6 +920,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -921,6 +929,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.B18_V1 {
@@ -946,6 +955,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -954,6 +964,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -962,6 +973,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -970,6 +982,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.C12_V6 {
@@ -995,6 +1008,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -1003,6 +1017,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -1011,6 +1026,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -1019,6 +1035,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.B18_V2 {
@@ -1044,6 +1061,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : ImageHeadlineViewLayout.Attributes // +0x178
+	let spacerFrame : CGRect // +0x270
  }
 
  struct NewsFeed.Layout {
@@ -1052,6 +1070,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItem<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -1060,6 +1079,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -1068,6 +1088,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.HeadlineFontBook {
@@ -1188,6 +1209,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -1196,6 +1218,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -1204,6 +1227,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -1212,6 +1236,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.Fonts { }
@@ -1249,6 +1274,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -1257,6 +1283,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -1265,6 +1292,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -1273,6 +1301,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.GapFontBook {
@@ -1310,9 +1339,9 @@
 	let cardView : CardView // +0x58 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x86c40  @objc FeaturedIssueHeadlineView.initWithFrame: <stripped>
-	0x86cc0  @objc FeaturedIssueHeadlineView.initWithCoder: <stripped>
-	0x86d30  @objc FeaturedIssueHeadlineView..cxx_destruct <stripped>
+	0x8a060  @objc FeaturedIssueHeadlineView.initWithFrame: <stripped>
+	0x8a0e0  @objc FeaturedIssueHeadlineView.initWithCoder: <stripped>
+	0x8a150  @objc FeaturedIssueHeadlineView..cxx_destruct <stripped>
  }
 
  class NewsFeed.ThumbnailProcessorRequest : NSObject /usr/lib/libobjc.A.dylib {
@@ -1326,14 +1355,14 @@
 	let cornerRadius : CGFloat // +0x60 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x875d0  @objc ThumbnailProcessorRequest.assetHandles <stripped>
-	0x878a0  @objc ThumbnailProcessorRequest.initWithThumbnailAssetHandle:thumbnailFrame:focalFrame:scale:byRoundingCorners:cornerRadius: <stripped>
-	0x87980  @objc ThumbnailProcessorRequest.cacheIdentifier <stripped>
-	0x87cf0  @objc ThumbnailProcessorRequest.init <stripped>
-	0x87d70  @objc ThumbnailProcessorRequest..cxx_destruct <stripped>
+	0x8a9f0  @objc ThumbnailProcessorRequest.assetHandles <stripped>
+	0x8acc0  @objc ThumbnailProcessorRequest.initWithThumbnailAssetHandle:thumbnailFrame:focalFrame:scale:byRoundingCorners:cornerRadius: <stripped>
+	0x8ada0  @objc ThumbnailProcessorRequest.cacheIdentifier <stripped>
+	0x8b110  @objc ThumbnailProcessorRequest.init <stripped>
+	0x8b190  @objc ThumbnailProcessorRequest..cxx_destruct <stripped>
 
 	// Swift methods
-	0x87750  class func ThumbnailProcessorRequest.__allocating_init(thumbnailAssetHandle:thumbnailFrame:focalFrame:scale:byRoundingCorners:cornerRadius:) // init 
+	0x8ab70  class func ThumbnailProcessorRequest.__allocating_init(thumbnailAssetHandle:thumbnailFrame:focalFrame:scale:byRoundingCorners:cornerRadius:) // init 
  }
 
  class NewsFeed.ImageHeadlineView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1349,9 +1378,9 @@
 	let debugButton : DebugButton // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x88680  @objc ImageHeadlineView.initWithFrame: <stripped>
-	0x88700  @objc ImageHeadlineView.initWithCoder: <stripped>
-	0x88770  @objc ImageHeadlineView..cxx_destruct <stripped>
+	0x8baa0  @objc ImageHeadlineView.initWithFrame: <stripped>
+	0x8bb20  @objc ImageHeadlineView.initWithCoder: <stripped>
+	0x8bb90  @objc ImageHeadlineView..cxx_destruct <stripped>
  }
 
  struct NewsFeed.C12_V4 {
@@ -1378,6 +1407,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -1386,6 +1416,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -1394,6 +1425,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -1402,6 +1434,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.FeedGroupKind {
@@ -1523,9 +1556,9 @@
 	let offlineLabel : UILabel // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x9e000  @objc GapOfflineView.initWithFrame: <stripped>
-	0x9e110  @objc GapOfflineView.initWithCoder: <stripped>
-	0x9e250  @objc GapOfflineView..cxx_destruct <stripped>
+	0xa1bf0  @objc GapOfflineView.initWithFrame: <stripped>
+	0xa1d00  @objc GapOfflineView.initWithCoder: <stripped>
+	0xa1e40  @objc GapOfflineView..cxx_destruct <stripped>
  }
 
  struct NewsFeed.A8_V9 {
@@ -1587,10 +1620,10 @@
 	let image : UIImage // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xa9610  @objc PremiumBadgeMask.image <stripped>
-	0xa9650  @objc PremiumBadgeMask.size <stripped>
-	0xa96c0  @objc PremiumBadgeMask.init <stripped>
-	0xa9770  @objc PremiumBadgeMask..cxx_destruct <stripped>
+	0xad220  @objc PremiumBadgeMask.image <stripped>
+	0xad260  @objc PremiumBadgeMask.size <stripped>
+	0xad2d0  @objc PremiumBadgeMask.init <stripped>
+	0xad380  @objc PremiumBadgeMask..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1605,9 +1638,9 @@
 	let layoutAttributesFactoryProvider : FeedLayoutAttributesFactoryProvider // +0x60 (0x8)
 
 	// Swift methods
-	0xa9910  class func FeedLayoutContextFactory.__allocating_init(fontBookFactory:colorPaletteProvider:layoutAttributesFactoryProvider:) // init 
-	0xa99e0  func <stripped> // method 
-	0xa9a30  func <stripped> // method 
+	0xad520  class func FeedLayoutContextFactory.__allocating_init(fontBookFactory:colorPaletteProvider:layoutAttributesFactoryProvider:) // init 
+	0xad5f0  func <stripped> // method 
+	0xad640  func <stripped> // method 
  }
 
  struct NewsFeed.A12_V17 {
@@ -1841,11 +1874,11 @@
 	var downloadProgressDisposable : Disposable? // +0x80 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0xc90f0  @objc CoverIssueView.initWithFrame: <stripped>
-	0xc9170  @objc CoverIssueView.initWithCoder: <stripped>
-	0xc9190  @objc CoverIssueView.accessibilityValue <stripped>
-	0xc97e0  @objc CoverIssueView.setAccessibilityValue: <stripped>
-	0xc9b30  @objc CoverIssueView..cxx_destruct <stripped>
+	0xccb50  @objc CoverIssueView.initWithFrame: <stripped>
+	0xccbd0  @objc CoverIssueView.initWithCoder: <stripped>
+	0xccbf0  @objc CoverIssueView.accessibilityValue <stripped>
+	0xcd240  @objc CoverIssueView.setAccessibilityValue: <stripped>
+	0xcd590  @objc CoverIssueView..cxx_destruct <stripped>
  }
 
  class NewsFeed.FeedItemSorter {
@@ -2182,10 +2215,10 @@
 	let identifier : String
 
 	// ObjC -> Swift bridged methods
-	0xfb8e0  @objc StubAssetHandle.dataProvider <stripped>
-	0xfba20  @objc StubAssetHandle.uniqueKey <stripped>
-	0xfbbd0  @objc StubAssetHandle.init <stripped>
-	0xfbce0  @objc StubAssetHandle..cxx_destruct <stripped>
+	0xff3a0  @objc StubAssetHandle.dataProvider <stripped>
+	0xff4e0  @objc StubAssetHandle.uniqueKey <stripped>
+	0xff690  @objc StubAssetHandle.init <stripped>
+	0xff7a0  @objc StubAssetHandle..cxx_destruct <stripped>
  }
 
  class NewsFeed.StubAssetDataProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2196,9 +2229,9 @@
 	let isRawFileConsumable : Bool
 
 	// ObjC -> Swift bridged methods
-	0xfb7d0  @objc StubAssetDataProvider.data <stripped>
-	0xfb830  @objc StubAssetDataProvider.filePath <stripped>
-	0xfb880  @objc StubAssetDataProvider.isRawFileConsumable <stripped>
+	0xff290  @objc StubAssetDataProvider.data <stripped>
+	0xff2f0  @objc StubAssetDataProvider.filePath <stripped>
+	0xff340  @objc StubAssetDataProvider.isRawFileConsumable <stripped>
 
 	// Swift methods
  }
@@ -2420,6 +2453,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -2428,6 +2462,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -2436,6 +2471,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -2444,12 +2480,13 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  class NewsFeed.ThumbnailProcessor : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x127ea0  @objc ThumbnailProcessor.process: <stripped>
-	0x127f40  @objc ThumbnailProcessor.init <stripped>
+	0x12c160  @objc ThumbnailProcessor.process: <stripped>
+	0x12c200  @objc ThumbnailProcessor.init <stripped>
  }
 
  class NewsFeed.Localized : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2543,6 +2580,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -2551,6 +2589,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -2559,6 +2598,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -2567,6 +2607,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.FeaturedHeadlineViewLayout {
@@ -2706,6 +2747,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -2714,6 +2756,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -2722,6 +2765,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -2730,6 +2774,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.C8_V3 {
@@ -2755,6 +2800,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -2763,6 +2809,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -2771,6 +2818,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -2779,6 +2827,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.HMultiLayoutItem {
@@ -2820,10 +2869,10 @@
 
  class NewsFeed.LayeredMediaLayerProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-	0x157790  @objc LayeredMediaLayerProcessor.process: <stripped>
+	0x15d1f0  @objc LayeredMediaLayerProcessor.process: <stripped>
 
 	// Swift methods
-	0x157700  class func LayeredMediaLayerProcessor.__allocating_init() // init 
+	0x15d160  class func LayeredMediaLayerProcessor.__allocating_init() // init 
  }
 
  class NewsFeed.LayeredMediaLoader : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LayeredMediaLoaderType {
@@ -2944,6 +2993,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -2952,6 +3002,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -2960,6 +3011,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -2968,6 +3020,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.FeaturedIssueHeadlineViewLayout {
@@ -3104,6 +3157,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -3112,6 +3166,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -3120,6 +3175,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -3128,6 +3184,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.DebugViewItem {
@@ -3230,6 +3287,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -3238,6 +3296,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -3246,6 +3305,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -3254,6 +3314,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  class NewsFeed.FeaturedHeadlineViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeaturedHeadlineViewStylerType {
@@ -3334,6 +3395,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -3342,6 +3404,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -3350,6 +3413,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -3358,6 +3422,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  class NewsFeed.ImageHeadlineViewRendererPipelineProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3504,8 +3569,8 @@
 
  class NewsFeed.PremiumBadgeMaskGenerator : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1ab210  @objc PremiumBadgeMaskGenerator.init <stripped>
-	0x1ab2b0  @objc PremiumBadgeMaskGenerator..cxx_destruct <stripped>
+	0x1b2930  @objc PremiumBadgeMaskGenerator.init <stripped>
+	0x1b29d0  @objc PremiumBadgeMaskGenerator..cxx_destruct <stripped>
  }
 
  enum NewsFeed.FeedItem {
@@ -3666,8 +3731,8 @@
 
  class NewsFeed.StubImageDownloader : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1bd9b0  @objc StubImageDownloader.downloadImageAndStoreFilePathInAssetHandle:usingDispatchGroup: <stripped>
-	0x1bda40  @objc StubImageDownloader.init <stripped>
+	0x1c5040  @objc StubImageDownloader.downloadImageAndStoreFilePathInAssetHandle:usingDispatchGroup: <stripped>
+	0x1c50d0  @objc StubImageDownloader.init <stripped>
  }
 
  class NewsFeed.FeaturedIssueSupplementViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeaturedIssueSupplementViewStylerType {
@@ -3687,6 +3752,7 @@
 	// Properties
 	case separator : CGRect
 	case supplementaryText : (FeaturedIssueSupplementaryLayout.Context, FeaturedIssueSupplementaryLayout.Attributes)
+	case spacer : CGRect
  }
 
  class NewsFeed.IssueCoverViewButton : UIButton /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3696,16 +3762,16 @@
 	let coverView : IssueCoverView // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1c3680  @objc IssueCoverViewButton.isHighlighted <stripped>
-	0x1c3760  @objc IssueCoverViewButton.setHighlighted: <stripped>
-	0x1c3ad0  @objc IssueCoverViewButton.frame <stripped>
-	0x1c3ba0  @objc IssueCoverViewButton.setFrame: <stripped>
-	0x1c43a0  @objc IssueCoverViewButton.initWithCoder: <stripped>
-	0x1c44e0  @objc IssueCoverViewButton.initWithFrame: <stripped>
-	0x1c4560  @objc IssueCoverViewButton..cxx_destruct <stripped>
+	0x1cad20  @objc IssueCoverViewButton.isHighlighted <stripped>
+	0x1cae00  @objc IssueCoverViewButton.setHighlighted: <stripped>
+	0x1cb170  @objc IssueCoverViewButton.frame <stripped>
+	0x1cb240  @objc IssueCoverViewButton.setFrame: <stripped>
+	0x1cba40  @objc IssueCoverViewButton.initWithCoder: <stripped>
+	0x1cbb80  @objc IssueCoverViewButton.initWithFrame: <stripped>
+	0x1cbc00  @objc IssueCoverViewButton..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1c4190  class func IssueCoverViewButton.__allocating_init(coverView:) // init 
+	0x1cb830  class func IssueCoverViewButton.__allocating_init(coverView:) // init 
  }
 
  struct NewsFeed.C12_V1 {
@@ -3732,6 +3798,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -3740,6 +3807,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -3748,6 +3816,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -3756,6 +3825,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.A8_V21 {
@@ -3854,10 +3924,10 @@
 	let columnDebugView : ColumnDebugView // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1d7ba0  @objc DebugViewLayoutView.initWithCoder: <stripped>
-	0x1d7ea0  @objc DebugViewLayoutView.layoutSubviews <stripped>
-	0x1d7ed0  @objc DebugViewLayoutView.initWithFrame: <stripped>
-	0x1d7f50  @objc DebugViewLayoutView..cxx_destruct <stripped>
+	0x1dfa30  @objc DebugViewLayoutView.initWithCoder: <stripped>
+	0x1dfd30  @objc DebugViewLayoutView.layoutSubviews <stripped>
+	0x1dfd60  @objc DebugViewLayoutView.initWithFrame: <stripped>
+	0x1dfde0  @objc DebugViewLayoutView..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3869,7 +3939,7 @@
 	let layoutAttributesFactoryProvider : FeedLayoutAttributesFactoryProvider // +0x18 (0x8)
 
 	// Swift methods
-	0x1d7fc0  class func FeedLayoutContext.__allocating_init(stylerFactory:layoutAttributesFactoryProvider:) // init 
+	0x1dfe50  class func FeedLayoutContext.__allocating_init(stylerFactory:layoutAttributesFactoryProvider:) // init 
  }
 
  struct NewsFeed.C12_V11 {
@@ -3895,6 +3965,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -3903,6 +3974,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -3911,6 +3983,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -3919,6 +3992,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  class NewsFeed.LayeredMediaLayerRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4093,7 +4167,7 @@
 	let layerRenderableProvider : LayeredMediaLayerRenderableProvider // +0x10 (0x8)
 
 	// Swift methods
-	0x1f3f00  class func LayeredMediaViewProvider.__allocating_init(layerRenderableProvider:) // init 
+	0x1fc5b0  class func LayeredMediaViewProvider.__allocating_init(layerRenderableProvider:) // init 
  }
 
  struct NewsFeed.B8_V6 {
@@ -4119,6 +4193,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -4127,6 +4202,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -4135,6 +4211,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -4143,6 +4220,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  class NewsFeed.LayeredMediaImageVariantSelector : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LayeredMediaImageVariantSelectorType {
@@ -4243,13 +4321,13 @@
 	var breakpoint : CGFloat? // +0x0 (0x9)
 
 	// Swift methods
-	0x207bd0  func <stripped> // method 
-	0x208180  func <stripped> // method 
-	0x208920  func <stripped> // method 
-	0x208a60  func <stripped> // method 
-	0x208ba0  func <stripped> // method 
-	0x208c20  func <stripped> // method 
-	0x2094c0  func <stripped> // method 
+	0x210a50  func <stripped> // method 
+	0x211000  func <stripped> // method 
+	0x2117a0  func <stripped> // method 
+	0x2118e0  func <stripped> // method 
+	0x211a20  func <stripped> // method 
+	0x211aa0  func <stripped> // method 
+	0x212340  func <stripped> // method 
  }
 
  struct NewsFeed.GapOffline {
@@ -4351,6 +4429,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -4359,6 +4438,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -4367,6 +4447,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -4375,6 +4456,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.C18_V1 {
@@ -4400,6 +4482,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -4408,6 +4491,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -4416,6 +4500,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -4424,6 +4509,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.B18_V8 {
@@ -4449,6 +4535,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -4457,6 +4544,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -4465,6 +4553,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -4473,6 +4562,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  class NewsFeed.CoverViewFollowSwitch : UIControl /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -4484,10 +4574,10 @@
 	var toggleState : ToggleState // +0x6100085 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x22aa80  @objc CoverViewFollowSwitch.initWithFrame: <stripped>
-	0x22aab0  @objc CoverViewFollowSwitch.initWithCoder: <stripped>
-	0x22ae50  @objc CoverViewFollowSwitch.traitCollectionDidChange: <stripped>
-	0x22af10  @objc CoverViewFollowSwitch..cxx_destruct <stripped>
+	0x234ed0  @objc CoverViewFollowSwitch.initWithFrame: <stripped>
+	0x234f00  @objc CoverViewFollowSwitch.initWithCoder: <stripped>
+	0x2352a0  @objc CoverViewFollowSwitch.traitCollectionDidChange: <stripped>
+	0x235360  @objc CoverViewFollowSwitch..cxx_destruct <stripped>
  }
 
  struct NewsFeed.C12_V3 {
@@ -4513,6 +4603,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -4521,6 +4612,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -4529,6 +4621,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -4537,6 +4630,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.A8_V20 {
@@ -4684,6 +4778,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -4692,6 +4787,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -4700,6 +4796,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -4708,6 +4805,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.IssueCoverColorPalette {
@@ -4758,6 +4856,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -4766,6 +4865,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -4774,6 +4874,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -4782,6 +4883,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.OrderedHeadlineColorPalette {
@@ -4824,6 +4926,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -4832,6 +4935,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -4840,6 +4944,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -4848,6 +4953,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.GroupLayoutContentSizeCategory {
@@ -4885,9 +4991,9 @@
 	let assemblies : [NFAssembly] // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x261440  @objc Assembly.assemblies <stripped>
-	0x261660  @objc Assembly.init <stripped>
-	0x2616d0  @objc Assembly..cxx_destruct <stripped>
+	0x26d570  @objc Assembly.assemblies <stripped>
+	0x26d790  @objc Assembly.init <stripped>
+	0x26d800  @objc Assembly..cxx_destruct <stripped>
  }
 
  class NewsFeed.ImageHeadlineViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ImageHeadlineViewStylerType {
@@ -4924,6 +5030,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -4932,6 +5039,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -4940,6 +5048,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -4948,6 +5057,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.A8_V10 {
@@ -5194,6 +5304,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -5202,6 +5313,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -5210,6 +5322,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -5218,6 +5331,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  class NewsFeed.FeaturedHeadlineViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeaturedHeadlineViewRendererType {
@@ -5506,6 +5620,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -5514,6 +5629,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -5522,6 +5638,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -5530,14 +5647,15 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  class NewsFeed.DebugNavigationController : UINavigationController /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x2b47e0  @objc DebugNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
-	0x2b4880  @objc DebugNavigationController.initWithRootViewController: <stripped>
-	0x2b48e0  @objc DebugNavigationController.initWithNibName:bundle: <stripped>
-	0x2b49c0  @objc DebugNavigationController.initWithCoder: <stripped>
+	0x2c1ed0  @objc DebugNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
+	0x2c1f70  @objc DebugNavigationController.initWithRootViewController: <stripped>
+	0x2c1fd0  @objc DebugNavigationController.initWithNibName:bundle: <stripped>
+	0x2c20b0  @objc DebugNavigationController.initWithCoder: <stripped>
  }
 
  class NewsFeed.DebugViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -5550,35 +5668,35 @@
 	let tableView : UITableView // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2b4ba0  @objc DebugViewController.initWithCoder: <stripped>
-	0x2b4c60  @objc DebugViewController.initWithNibName:bundle: <stripped>
-	0x2b4cd0  @objc DebugViewController..cxx_destruct <stripped>
+	0x2c2290  @objc DebugViewController.initWithCoder: <stripped>
+	0x2c2350  @objc DebugViewController.initWithNibName:bundle: <stripped>
+	0x2c23c0  @objc DebugViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
  class NewsFeed.KeyValueTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x2b9990  @objc KeyValueTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x2b99c0  @objc KeyValueTableViewCell.initWithCoder: <stripped>
+	0x2c7080  @objc KeyValueTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x2c70b0  @objc KeyValueTableViewCell.initWithCoder: <stripped>
  }
 
  class NewsFeed.RequirementTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x2b9a60  @objc RequirementTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x2b9a90  @objc RequirementTableViewCell.initWithCoder: <stripped>
+	0x2c7150  @objc RequirementTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x2c7180  @objc RequirementTableViewCell.initWithCoder: <stripped>
  }
 
  class NewsFeed.FeedItemTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x2b9b30  @objc FeedItemTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x2b9b60  @objc FeedItemTableViewCell.initWithCoder: <stripped>
+	0x2c7220  @objc FeedItemTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x2c7250  @objc FeedItemTableViewCell.initWithCoder: <stripped>
  }
 
  class NewsFeed.LayoutTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x2b9c00  @objc LayoutTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x2b9ce0  @objc LayoutTableViewCell.initWithCoder: <stripped>
+	0x2c72f0  @objc LayoutTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x2c73d0  @objc LayoutTableViewCell.initWithCoder: <stripped>
  }
 
  struct NewsFeed.G_V1 {
@@ -5741,6 +5859,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -5749,6 +5868,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -5757,6 +5877,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -5765,6 +5886,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.A12_V15 {
@@ -5893,6 +6015,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -5901,6 +6024,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -5909,6 +6033,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -5917,6 +6042,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.D12_V1 {
@@ -5978,16 +6104,16 @@
 	let mask : PremiumBadgeMask // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2ec930  @objc PremiumBadgeRequest.style <stripped>
-	0x2ec970  @objc PremiumBadgeRequest.shineImageRequest <stripped>
-	0x2ec9b0  @objc PremiumBadgeRequest.mask <stripped>
-	0x2ed1e0  @objc PremiumBadgeRequest.initWithStyle:color:bounds:mask:traitCollection: <stripped>
-	0x2ed560  @objc PremiumBadgeRequest.initWithStyle:color:bounds:mask:offset:traitCollection: <stripped>
-	0x2ed700  @objc PremiumBadgeRequest.init <stripped>
-	0x2ed780  @objc PremiumBadgeRequest..cxx_destruct <stripped>
+	0x2fafe0  @objc PremiumBadgeRequest.style <stripped>
+	0x2fb020  @objc PremiumBadgeRequest.shineImageRequest <stripped>
+	0x2fb060  @objc PremiumBadgeRequest.mask <stripped>
+	0x2fb890  @objc PremiumBadgeRequest.initWithStyle:color:bounds:mask:traitCollection: <stripped>
+	0x2fbc10  @objc PremiumBadgeRequest.initWithStyle:color:bounds:mask:offset:traitCollection: <stripped>
+	0x2fbdb0  @objc PremiumBadgeRequest.init <stripped>
+	0x2fbe30  @objc PremiumBadgeRequest..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2ec860  class func PremiumBadgeRequest.__allocating_init(style:bounds:mask:offset:traitCollection:) // init 
+	0x2faf10  class func PremiumBadgeRequest.__allocating_init(style:bounds:mask:offset:traitCollection:) // init 
  }
 
  enum NewsFeed.Style {
@@ -6240,6 +6366,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -6248,6 +6375,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -6256,6 +6384,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -6264,6 +6393,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.J18_V1 {
@@ -6318,7 +6448,7 @@
 	let scaleFactor : CGFloat // +0x60 (0x8)
 
 	// Swift methods
-	0x30bf70  class func FeedLayoutStylerFactory.__allocating_init(fontBookProvider:colorPaletteProvider:scaleFactor:) // init 
+	0x31adc0  class func FeedLayoutStylerFactory.__allocating_init(fontBookProvider:colorPaletteProvider:scaleFactor:) // init 
  }
 
  struct NewsFeed.Options {
@@ -6370,6 +6500,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -6378,6 +6509,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -6386,6 +6518,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -6394,6 +6527,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.B18_V3 {
@@ -6419,6 +6553,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -6427,6 +6562,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -6435,6 +6571,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -6443,6 +6580,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.A8_V15 {
@@ -6491,8 +6629,8 @@
 
  class NewsFeed.StubIssueCoverImageProcessor : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3231f0  @objc StubIssueCoverImageProcessor.process: <stripped>
-	0x323290  @objc StubIssueCoverImageProcessor.init <stripped>
+	0x332fd0  @objc StubIssueCoverImageProcessor.process: <stripped>
+	0x333070  @objc StubIssueCoverImageProcessor.init <stripped>
  }
 
  struct NewsFeed.C12_V8 {
@@ -6518,6 +6656,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -6526,6 +6665,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -6534,6 +6674,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -6542,6 +6683,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  class NewsFeed.IssueViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, IssueViewStylerType {
@@ -6628,6 +6770,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -6636,6 +6779,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -6644,6 +6788,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -6652,6 +6797,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.LayeredMediaEffects {
@@ -6717,6 +6863,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -6725,6 +6872,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -6733,6 +6881,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -6741,6 +6890,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  class NewsFeed.IssueView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -6757,9 +6907,9 @@
 	let debugButton : DebugButton // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x345220  @objc IssueView.initWithFrame: <stripped>
-	0x3452a0  @objc IssueView.initWithCoder: <stripped>
-	0x345310  @objc IssueView..cxx_destruct <stripped>
+	0x3567c0  @objc IssueView.initWithFrame: <stripped>
+	0x356840  @objc IssueView.initWithCoder: <stripped>
+	0x3568b0  @objc IssueView..cxx_destruct <stripped>
  }
 
  class NewsFeed.FeaturedIssueHeadlineViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeaturedIssueHeadlineViewStylerType {
@@ -6775,8 +6925,8 @@
 
  class NewsFeed.PublisherLogoProcessor : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x347a60  @objc PublisherLogoProcessor.process: <stripped>
-	0x347b00  @objc PublisherLogoProcessor.init <stripped>
+	0x358e20  @objc PublisherLogoProcessor.process: <stripped>
+	0x358ec0  @objc PublisherLogoProcessor.init <stripped>
  }
 
  struct NewsFeed.E18_V2 {
@@ -6860,6 +7010,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -6868,6 +7019,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -6876,6 +7028,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -6884,6 +7037,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.A12_V19 {
@@ -6975,12 +7129,12 @@
 	let corners : Corners // +0x30 (0x11)
 
 	// ObjC -> Swift bridged methods
-	0x3641f0  @objc IssueCoverImageProcessorRequest.assetHandles <stripped>
-	0x3642c0  @objc IssueCoverImageProcessorRequest.setAssetHandles: <stripped>
-	0x3643d0  @objc IssueCoverImageProcessorRequest.cacheIdentifier <stripped>
+	0x375d40  @objc IssueCoverImageProcessorRequest.assetHandles <stripped>
+	0x375e10  @objc IssueCoverImageProcessorRequest.setAssetHandles: <stripped>
+	0x375f20  @objc IssueCoverImageProcessorRequest.cacheIdentifier <stripped>
 
 	// Swift methods
-	0x364020  class func IssueCoverImageProcessorRequest.__allocating_init(assetHandle:size:scale:corners:) // init 
+	0x375b70  class func IssueCoverImageProcessorRequest.__allocating_init(assetHandle:size:scale:corners:) // init 
  }
 
  enum NewsFeed.Corners {
@@ -7013,6 +7167,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -7021,6 +7176,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -7029,6 +7185,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -7037,6 +7194,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.A6_V4 {
@@ -7096,10 +7254,10 @@
 
  class NewsFeed.IssueCoverImageProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-	0x376370  @objc IssueCoverImageProcessor.process: <stripped>
+	0x388710  @objc IssueCoverImageProcessor.process: <stripped>
 
 	// Swift methods
-	0x3762e0  class func IssueCoverImageProcessor.__allocating_init() // init 
+	0x388680  class func IssueCoverImageProcessor.__allocating_init() // init 
  }
 
  struct NewsFeed.E6_V3 {
@@ -7225,7 +7383,7 @@
 	var cache : FeedLayoutCacheItem // +0x10 (0x8)
 
 	// Swift methods
-	0x384170  class func FeedLayoutCache.__allocating_init() // init 
+	0x396510  class func FeedLayoutCache.__allocating_init() // init 
  }
 
  class NewsFeed.IssueCoverView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -7241,12 +7399,12 @@
 	var identifier : String? // +0x40 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x3861e0  @objc IssueCoverView.initWithFrame: <stripped>
-	0x386260  @objc IssueCoverView.initWithCoder: <stripped>
-	0x3864d0  @objc IssueCoverView.layoutSubviews <stripped>
-	0x3866b0  @objc IssueCoverView.didMoveToSuperview <stripped>
-	0x3867b0  @objc IssueCoverView.removeFromSuperview <stripped>
-	0x386830  @objc IssueCoverView..cxx_destruct <stripped>
+	0x398580  @objc IssueCoverView.initWithFrame: <stripped>
+	0x398600  @objc IssueCoverView.initWithCoder: <stripped>
+	0x398870  @objc IssueCoverView.layoutSubviews <stripped>
+	0x398a50  @objc IssueCoverView.didMoveToSuperview <stripped>
+	0x398b50  @objc IssueCoverView.removeFromSuperview <stripped>
+	0x398bd0  @objc IssueCoverView..cxx_destruct <stripped>
  }
 
  class NewsFeed.DebugButton : UIButton /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -7255,9 +7413,9 @@
 	let onTap : Action<()> // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x387a90  @objc DebugButton.initWithFrame: <stripped>
-	0x387b90  @objc DebugButton.initWithCoder: <stripped>
-	0x387c70  @objc DebugButton..cxx_destruct <stripped>
+	0x399e30  @objc DebugButton.initWithFrame: <stripped>
+	0x399f30  @objc DebugButton.initWithCoder: <stripped>
+	0x39a010  @objc DebugButton..cxx_destruct <stripped>
  }
 
  class NewsFeed.AssetHandleFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AssetHandleFactoryType {
@@ -7325,10 +7483,10 @@
 	var identifier : String? // +0x10 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x38b520  @objc ImageLayer.init <stripped>
-	0x38b6b0  @objc ImageLayer.initWithLayer: <stripped>
-	0x38b850  @objc ImageLayer.initWithCoder: <stripped>
-	0x38b930  @objc ImageLayer..cxx_destruct <stripped>
+	0x3a01a0  @objc ImageLayer.init <stripped>
+	0x3a0330  @objc ImageLayer.initWithLayer: <stripped>
+	0x3a04d0  @objc ImageLayer.initWithCoder: <stripped>
+	0x3a05b0  @objc ImageLayer..cxx_destruct <stripped>
  }
 
  struct NewsFeed.C8_V2 {
@@ -7354,6 +7512,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -7362,6 +7521,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -7370,6 +7530,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -7378,6 +7539,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.H6_V1 {
@@ -7479,9 +7641,9 @@
 	let debugButton : DebugButton // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x39eb10  @objc CoverChannelView.initWithFrame: <stripped>
-	0x39eb90  @objc CoverChannelView.initWithCoder: <stripped>
-	0x39ec00  @objc CoverChannelView..cxx_destruct <stripped>
+	0x3b3f70  @objc CoverChannelView.initWithFrame: <stripped>
+	0x3b3ff0  @objc CoverChannelView.initWithCoder: <stripped>
+	0x3b4060  @objc CoverChannelView..cxx_destruct <stripped>
  }
 
  struct NewsFeed.C18_V5 {
@@ -7507,6 +7669,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -7515,6 +7678,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -7523,6 +7687,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -7531,6 +7696,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.C12_V10 {
@@ -7556,6 +7722,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -7564,6 +7731,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -7572,6 +7740,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -7580,12 +7749,13 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  class NewsFeed.Images : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3ae430  @objc Images.init <stripped>
-	0x3ae4d0  @objc Images..cxx_destruct <stripped>
+	0x3c4880  @objc Images.init <stripped>
+	0x3c4920  @objc Images..cxx_destruct <stripped>
  }
 
  struct NewsFeed.E12_V3 {
@@ -7660,12 +7830,12 @@
 	let shadowMotionLayer : MotionLayer<NonAnimatingLayer> // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3b8160  @objc CardView.initWithFrame: <stripped>
-	0x3b8190  @objc CardView.initWithCoder: <stripped>
-	0x3b8470  @objc CardView.layoutSubviews <stripped>
-	0x3b84a0  @objc CardView.backgroundColor <stripped>
-	0x3b8550  @objc CardView.setBackgroundColor: <stripped>
-	0x3b88b0  @objc CardView..cxx_destruct <stripped>
+	0x3ce5b0  @objc CardView.initWithFrame: <stripped>
+	0x3ce5e0  @objc CardView.initWithCoder: <stripped>
+	0x3ce8c0  @objc CardView.layoutSubviews <stripped>
+	0x3ce8f0  @objc CardView.backgroundColor <stripped>
+	0x3ce9a0  @objc CardView.setBackgroundColor: <stripped>
+	0x3ced00  @objc CardView..cxx_destruct <stripped>
  }
 
  class NewsFeed.CoverViewActionButton : UIButton /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -7676,12 +7846,12 @@
 	var tintColorForNormalState : UIColor // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3b90a0  @objc CoverViewActionButton.isHighlighted <stripped>
-	0x3b9130  @objc CoverViewActionButton.setHighlighted: <stripped>
-	0x3b9340  @objc CoverViewActionButton.initWithFrame: <stripped>
-	0x3b93c0  @objc CoverViewActionButton.initWithCoder: <stripped>
-	0x3b93e0  @objc CoverViewActionButton.pointInside:withEvent: <stripped>
-	0x3b9550  @objc CoverViewActionButton..cxx_destruct <stripped>
+	0x3cf4f0  @objc CoverViewActionButton.isHighlighted <stripped>
+	0x3cf580  @objc CoverViewActionButton.setHighlighted: <stripped>
+	0x3cf790  @objc CoverViewActionButton.initWithFrame: <stripped>
+	0x3cf810  @objc CoverViewActionButton.initWithCoder: <stripped>
+	0x3cf830  @objc CoverViewActionButton.pointInside:withEvent: <stripped>
+	0x3cf9a0  @objc CoverViewActionButton..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -7709,6 +7879,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -7717,6 +7888,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -7725,6 +7897,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -7733,6 +7906,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  class NewsFeed.Asset {
@@ -7776,6 +7950,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -7784,6 +7959,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -7792,6 +7968,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -7800,6 +7977,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  class NewsFeed.OrderedHeadlineView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -7814,9 +7992,9 @@
 	let debugButton : DebugButton // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3cab50  @objc OrderedHeadlineView.initWithFrame: <stripped>
-	0x3cabd0  @objc OrderedHeadlineView.initWithCoder: <stripped>
-	0x3cac40  @objc OrderedHeadlineView..cxx_destruct <stripped>
+	0x3e1f60  @objc OrderedHeadlineView.initWithFrame: <stripped>
+	0x3e1fe0  @objc OrderedHeadlineView.initWithCoder: <stripped>
+	0x3e2050  @objc OrderedHeadlineView..cxx_destruct <stripped>
  }
 
  class NewsFeed.IssueViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, IssueViewRendererType {
@@ -7853,6 +8031,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -7861,6 +8040,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -7869,6 +8049,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -7877,6 +8058,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.B8_V3 {
@@ -7902,6 +8084,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -7910,6 +8093,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -7918,6 +8102,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -7926,6 +8111,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  class NewsFeed.FeaturedIssueSupplementViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeaturedIssueSupplementViewRendererType {
@@ -8030,10 +8216,10 @@
 
 	// Properties
 	let frame : CGRect // +0x10 (0x20)
-	let kind : CollectionViewSupplementaryKind // +0x5e7000 (0x0)
+	let kind : CollectionViewSupplementaryKind // +0x607000 (0x0)
 
 	// Swift methods
-	0x3eb090  class func EmptyViewSupplementaryLayoutAttributes.__allocating_init(kind:frame:) // init 
+	0x4034d0  class func EmptyViewSupplementaryLayoutAttributes.__allocating_init(kind:frame:) // init 
  }
 
  enum NewsFeed.FeedLayoutDirection {
@@ -8066,6 +8252,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -8074,6 +8261,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -8082,6 +8270,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -8090,6 +8279,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  class NewsFeed.GapViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, GapViewRendererType {
@@ -8182,6 +8372,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -8190,6 +8381,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -8198,6 +8390,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -8206,6 +8399,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.A12_V20 {
@@ -8275,6 +8469,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -8283,6 +8478,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -8291,6 +8487,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -8299,6 +8496,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.B12_V10 {
@@ -8324,6 +8522,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -8332,6 +8531,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -8340,6 +8540,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -8348,6 +8549,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.PublisherLogoTheme { }
@@ -8361,15 +8563,15 @@
 	let theme : PublisherLogoTheme // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x41d190  @objc PublisherLogoProcessorRequest.assetHandles <stripped>
-	0x41d270  @objc PublisherLogoProcessorRequest.setAssetHandles: <stripped>
-	0x41d5f0  @objc PublisherLogoProcessorRequest.initWithPublisherLogoAssetHandle:publisherLogoImageSize:scale:theme: <stripped>
-	0x41d650  @objc PublisherLogoProcessorRequest.cacheIdentifier <stripped>
-	0x41d960  @objc PublisherLogoProcessorRequest.init <stripped>
-	0x41d9e0  @objc PublisherLogoProcessorRequest..cxx_destruct <stripped>
+	0x437320  @objc PublisherLogoProcessorRequest.assetHandles <stripped>
+	0x437400  @objc PublisherLogoProcessorRequest.setAssetHandles: <stripped>
+	0x437780  @objc PublisherLogoProcessorRequest.initWithPublisherLogoAssetHandle:publisherLogoImageSize:scale:theme: <stripped>
+	0x4377e0  @objc PublisherLogoProcessorRequest.cacheIdentifier <stripped>
+	0x437af0  @objc PublisherLogoProcessorRequest.init <stripped>
+	0x437b70  @objc PublisherLogoProcessorRequest..cxx_destruct <stripped>
 
 	// Swift methods
-	0x41d3b0  class func PublisherLogoProcessorRequest.__allocating_init(publisherLogoAssetHandle:publisherLogoImageSize:scale:theme:) // init 
+	0x437540  class func PublisherLogoProcessorRequest.__allocating_init(publisherLogoAssetHandle:publisherLogoImageSize:scale:theme:) // init 
  }
 
  struct NewsFeed.CoverIssueViewLayout {
@@ -8469,26 +8671,26 @@
 
  class NewsFeed.RandomTag : FCTag /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore {
 	// ObjC -> Swift bridged methods
-	0x42a9f0  @objc RandomTag.currentIssueIDs <stripped>
-	0x42aad0  @objc RandomTag.initForTestingWithTagType:identifier:name: <stripped>
-	0x42ab10  @objc RandomTag.initChannelForTestingWithIdentifier:name:defaultSection:publisherAuthorizationURL:publisherVerificationURL: <stripped>
-	0x42ab40  @objc RandomTag.initChannelForTestingWithIdentifier:name:publisherPaidBundlePurchaseIDs: <stripped>
-	0x42ab70  @objc RandomTag.initWithData:context: <stripped>
-	0x42aba0  @objc RandomTag.initWithTagType:identifier:name: <stripped>
-	0x42ac80  @objc RandomTag.initChannelFromNotificationWithIdentifier:name:nameImageAssetHandle:nameImageMaskAssetHandle: <stripped>
-	0x42acb0  @objc RandomTag.init <stripped>
+	0x444b80  @objc RandomTag.currentIssueIDs <stripped>
+	0x444c60  @objc RandomTag.initForTestingWithTagType:identifier:name: <stripped>
+	0x444ca0  @objc RandomTag.initChannelForTestingWithIdentifier:name:defaultSection:publisherAuthorizationURL:publisherVerificationURL: <stripped>
+	0x444cd0  @objc RandomTag.initChannelForTestingWithIdentifier:name:publisherPaidBundlePurchaseIDs: <stripped>
+	0x444d00  @objc RandomTag.initWithData:context: <stripped>
+	0x444d30  @objc RandomTag.initWithTagType:identifier:name: <stripped>
+	0x444e10  @objc RandomTag.initChannelFromNotificationWithIdentifier:name:nameImageAssetHandle:nameImageMaskAssetHandle: <stripped>
+	0x444e40  @objc RandomTag.init <stripped>
  }
 
  class NewsFeed.RandomTag : FCTag /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore {
 	// ObjC -> Swift bridged methods
-	0x42a9f0  @objc RandomTag.currentIssueIDs <stripped>
-	0x42acf0  @objc RandomTag.initForTestingWithTagType:identifier:name: <stripped>
-	0x42af90  @objc RandomTag.initChannelForTestingWithIdentifier:name:defaultSection:publisherAuthorizationURL:publisherVerificationURL: <stripped>
-	0x42b2a0  @objc RandomTag.initChannelForTestingWithIdentifier:name:publisherPaidBundlePurchaseIDs: <stripped>
-	0x42b460  @objc RandomTag.initWithData:context: <stripped>
-	0x42b660  @objc RandomTag.initWithTagType:identifier:name: <stripped>
-	0x42b7f0  @objc RandomTag.initChannelFromNotificationWithIdentifier:name:nameImageAssetHandle:nameImageMaskAssetHandle: <stripped>
-	0x42b8d0  @objc RandomTag.init <stripped>
+	0x444b80  @objc RandomTag.currentIssueIDs <stripped>
+	0x444e80  @objc RandomTag.initForTestingWithTagType:identifier:name: <stripped>
+	0x445120  @objc RandomTag.initChannelForTestingWithIdentifier:name:defaultSection:publisherAuthorizationURL:publisherVerificationURL: <stripped>
+	0x445430  @objc RandomTag.initChannelForTestingWithIdentifier:name:publisherPaidBundlePurchaseIDs: <stripped>
+	0x4455f0  @objc RandomTag.initWithData:context: <stripped>
+	0x4457f0  @objc RandomTag.initWithTagType:identifier:name: <stripped>
+	0x445980  @objc RandomTag.initChannelFromNotificationWithIdentifier:name:nameImageAssetHandle:nameImageMaskAssetHandle: <stripped>
+	0x445a60  @objc RandomTag.init <stripped>
  }
 
  class NewsFeed.LayeredMediaLayerProcessorRequest : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -8499,12 +8701,12 @@
 	let scale : CGFloat // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x42c610  @objc LayeredMediaLayerProcessorRequest.assetHandles <stripped>
-	0x42c6e0  @objc LayeredMediaLayerProcessorRequest.setAssetHandles: <stripped>
-	0x42c7f0  @objc LayeredMediaLayerProcessorRequest.cacheIdentifier <stripped>
+	0x4467a0  @objc LayeredMediaLayerProcessorRequest.assetHandles <stripped>
+	0x446870  @objc LayeredMediaLayerProcessorRequest.setAssetHandles: <stripped>
+	0x446980  @objc LayeredMediaLayerProcessorRequest.cacheIdentifier <stripped>
 
 	// Swift methods
-	0x42c450  class func LayeredMediaLayerProcessorRequest.__allocating_init(assetHandle:size:scale:) // init 
+	0x4465e0  class func LayeredMediaLayerProcessorRequest.__allocating_init(assetHandle:size:scale:) // init 
  }
 
  class NewsFeed.LayeredMediaConditionValidator : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LayeredMediaConditionValidatorType {
@@ -8626,6 +8828,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -8634,6 +8837,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -8642,6 +8846,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -8650,6 +8855,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.PremiumBadgeStyle { }
@@ -8726,7 +8932,7 @@
 
  class NewsFeed.FontBookFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FontBookFactoryType {
 	// Swift methods
-	0x447130  class func FontBookFactory.__allocating_init() // init 
+	0x461af0  class func FontBookFactory.__allocating_init() // init 
  }
 
  struct NewsFeed.LayeredMediaImageVariant {
@@ -8796,9 +9002,9 @@
 	let debugButton : DebugButton // +0x50 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x44df40  @objc FeaturedHeadlineView.initWithFrame: <stripped>
-	0x44dfc0  @objc FeaturedHeadlineView.initWithCoder: <stripped>
-	0x44e030  @objc FeaturedHeadlineView..cxx_destruct <stripped>
+	0x468900  @objc FeaturedHeadlineView.initWithFrame: <stripped>
+	0x468980  @objc FeaturedHeadlineView.initWithCoder: <stripped>
+	0x4689f0  @objc FeaturedHeadlineView..cxx_destruct <stripped>
  }
 
  enum NewsFeed.DebugViewResult {
@@ -8819,7 +9025,7 @@
  class NewsFeed.LayeredMediaView {
  class NewsFeed.LayoutAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x451870  @objc LayoutAssembly.init <stripped>
+	0x46c230  @objc LayoutAssembly.init <stripped>
  }
 
  struct NewsFeed.A18_V12 {
@@ -8926,8 +9132,8 @@
 
  class NewsFeed.EmptyView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x45ef10  @objc EmptyView.initWithFrame: <stripped>
-	0x45f030  @objc EmptyView.initWithCoder: <stripped>
+	0x4798d0  @objc EmptyView.initWithFrame: <stripped>
+	0x4799f0  @objc EmptyView.initWithCoder: <stripped>
  }
 
  struct NewsFeed.E6_V1 {
@@ -9233,6 +9439,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -9241,6 +9448,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -9249,6 +9457,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -9257,6 +9466,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.J12_V1 {
@@ -9326,6 +9536,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -9334,6 +9545,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -9342,6 +9554,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -9350,6 +9563,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.A8_V7 {
@@ -9453,6 +9667,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : ImageHeadlineViewLayout.Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x298
  }
 
  struct NewsFeed.Layout {
@@ -9461,6 +9676,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItem<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -9469,6 +9685,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -9477,6 +9694,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  class NewsFeed.GapViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, GapViewStylerType {
@@ -9611,7 +9829,7 @@
 
  class NewsFeed.FactoryAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4bab10  @objc FactoryAssembly.init <stripped>
+	0x4d6ca0  @objc FactoryAssembly.init <stripped>
  }
 
  struct NewsFeed.A12_V9 {
@@ -9682,15 +9900,15 @@
 	let context : Shine.Context // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x4c1430  @objc PremiumBadgeView.premiumBadgeMask <stripped>
-	0x4c14c0  @objc PremiumBadgeView.setPremiumBadgeMask: <stripped>
-	0x4c1720  @objc PremiumBadgeView.isMotionEnabled <stripped>
-	0x4c1790  @objc PremiumBadgeView.setIsMotionEnabled: <stripped>
-	0x4c1a00  @objc PremiumBadgeView.shineView <stripped>
-	0x4c1d50  @objc PremiumBadgeView.initWithFrame: <stripped>
-	0x4c1d80  @objc PremiumBadgeView.initWithCoder: <stripped>
-	0x4c2070  @objc PremiumBadgeView.layoutSubviews <stripped>
-	0x4c20e0  @objc PremiumBadgeView..cxx_destruct <stripped>
+	0x4dd5c0  @objc PremiumBadgeView.premiumBadgeMask <stripped>
+	0x4dd650  @objc PremiumBadgeView.setPremiumBadgeMask: <stripped>
+	0x4dd8b0  @objc PremiumBadgeView.isMotionEnabled <stripped>
+	0x4dd920  @objc PremiumBadgeView.setIsMotionEnabled: <stripped>
+	0x4ddb90  @objc PremiumBadgeView.shineView <stripped>
+	0x4ddee0  @objc PremiumBadgeView.initWithFrame: <stripped>
+	0x4ddf10  @objc PremiumBadgeView.initWithCoder: <stripped>
+	0x4de200  @objc PremiumBadgeView.layoutSubviews <stripped>
+	0x4de270  @objc PremiumBadgeView..cxx_destruct <stripped>
  }
 
  struct NewsFeed.B18_V11 {
@@ -9716,6 +9934,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x178
+	let spacerFrame : CGRect? // +0x180
  }
 
  struct NewsFeed.Layout {
@@ -9724,6 +9943,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -9732,6 +9952,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -9740,6 +9961,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.E18_V4 {
@@ -9991,6 +10213,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -9999,6 +10222,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -10007,6 +10231,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -10015,6 +10240,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.A8_V16 {
@@ -10235,6 +10461,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -10243,6 +10470,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -10251,6 +10479,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -10259,6 +10488,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.F18_V2 {
@@ -10321,9 +10551,9 @@
 	let debugButton : DebugButton // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x519270  @objc FeaturedIssueSupplementView.initWithFrame: <stripped>
-	0x5192f0  @objc FeaturedIssueSupplementView.initWithCoder: <stripped>
-	0x519360  @objc FeaturedIssueSupplementView..cxx_destruct <stripped>
+	0x536c70  @objc FeaturedIssueSupplementView.initWithFrame: <stripped>
+	0x536cf0  @objc FeaturedIssueSupplementView.initWithCoder: <stripped>
+	0x536d60  @objc FeaturedIssueSupplementView..cxx_destruct <stripped>
  }
 
  struct NewsFeed.F12_V2 {
@@ -10499,15 +10729,15 @@
 	let activityIndicatorView : UIActivityIndicatorView // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x52d980  @objc GapView.initWithFrame: <stripped>
-	0x52db10  @objc GapView.initWithCoder: <stripped>
-	0x52dc00  @objc GapView..cxx_destruct <stripped>
+	0x54b380  @objc GapView.initWithFrame: <stripped>
+	0x54b510  @objc GapView.initWithCoder: <stripped>
+	0x54b600  @objc GapView..cxx_destruct <stripped>
  }
 
  class NewsFeed.StubThumbnailProcessor : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x52df60  @objc StubThumbnailProcessor.process: <stripped>
-	0x52e000  @objc StubThumbnailProcessor.init <stripped>
+	0x54b960  @objc StubThumbnailProcessor.process: <stripped>
+	0x54ba00  @objc StubThumbnailProcessor.init <stripped>
  }
 
  struct NewsFeed.A18_V6 {
@@ -10577,6 +10807,7 @@
 	let frame : CGRect // +0x0
 	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
 	let headlineLayoutAttributes : [ImageHeadlineViewLayout.Attributes] // +0x1a0
+	let spacerFrame : CGRect? // +0x1a8
  }
 
  struct NewsFeed.Layout {
@@ -10585,6 +10816,7 @@
 	let frame : LayoutItem<CGRect> // +0x0
 	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
 	let headlineLayoutAttributes : LayoutItemList<ImageHeadlineViewLayout.Attributes> // +0x10
+	let spacerFrame : LayoutItem<CGRect> // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -10593,6 +10825,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  enum NewsFeed.CodingKeys {
@@ -10601,6 +10834,7 @@
 	case frame  
 	case featuredHeadlineLayoutAttributes  
 	case headlineLayoutAttributes  
+	case spacerFrame  
  }
 
  struct NewsFeed.A8_V13 {
@@ -10649,6 +10883,6 @@
 
  class NewsFeed.StubImageProcessor : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x542ca0  @objc StubImageProcessor.process: <stripped>
-	0x542d40  @objc StubImageProcessor.init <stripped>
+	0x560cd0  @objc StubImageProcessor.process: <stripped>
+	0x560d70  @objc StubImageProcessor.init <stripped>
  }

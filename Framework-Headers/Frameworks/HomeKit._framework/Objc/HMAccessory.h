@@ -63,6 +63,7 @@
     HMFWiFiNetworkInfo *_wifiNetworkInfo;
     NSArray *_controlTargetUUIDs;
     HMSymptomsHandler *_symptomsHandler;
+    NSUUID *_networkProtectionGroupUUID;
     _HMContext *_context;
     long long _reachableTransports;
     HMMutableArray *_currentServices;
@@ -110,6 +111,7 @@
 @property (copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) HMNetworkConfigurationProfile *networkConfigurationProfile;
+@property (readonly) NSUUID *networkProtectionGroupUUID; // @synthesize networkProtectionGroupUUID=_networkProtectionGroupUUID;
 @property (nonatomic) BOOL paired; // @synthesize paired=_paired;
 @property (readonly, copy) HMFPairingIdentity *pairingIdentity; // @synthesize pairingIdentity=_pairingIdentity;
 @property (readonly, copy) NSArray *profiles;
@@ -235,6 +237,7 @@
 - (void)setControllable:(BOOL)arg1;
 - (void)setCurrentAccessory:(BOOL)arg1;
 - (void)setDevice:(id)arg1;
+- (void)setNetworkProtectionGroupUUID:(id)arg1;
 - (void)setSettings:(id)arg1;
 - (void)setSoftwareUpdateController:(id)arg1;
 - (void)setSupportsIdentify:(BOOL)arg1;

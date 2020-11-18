@@ -39,6 +39,7 @@
 - (id)inputContentClasses;
 - (BOOL)inputPassthrough;
 - (BOOL)inputRequired;
+- (id)inputSourceInWorkflow:(id)arg1;
 - (BOOL)isDeletable;
 - (void)loadPossibleStatesForEnumeration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)measurementForQuantityValue:(id)arg1;

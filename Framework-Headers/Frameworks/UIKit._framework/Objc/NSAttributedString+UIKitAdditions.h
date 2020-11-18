@@ -19,8 +19,9 @@
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSArray *writableTypeIdentifiersForItemProvider;
 
++ (id)_objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 userInfo:(id)arg3 error:(id *)arg4;
 + (id)_objectWithItemProviderFileURL:(id)arg1 typeIdentifier:(id)arg2 isInPlace:(BOOL)arg3 error:(id *)arg4;
-+ (id)_objectWithRTFDAtURL:(id)arg1 error:(id *)arg2;
++ (id)_objectWithRTFDAtURL:(id)arg1 userInfo:(id)arg2 error:(id *)arg3;
 + (long long)_preferredRepresentationForItemProviderReadableTypeIdentifier:(id)arg1;
 + (long long)_preferredRepresentationForItemProviderWritableTypeIdentifier:(id)arg1;
 + (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
@@ -35,6 +36,8 @@
 - (long long)_ui_resolvedTextAlignmentForUserInterfaceLayoutDirection:(long long)arg1;
 - (long long)_ui_resolvedWritingDirection;
 - (long long)_ui_resolvedWritingDirectionForUserInterfaceLayoutDirection:(long long)arg1;
+- (id)_ui_rtfDataError:(id *)arg1;
+- (id)_ui_rtfdFileWrapperError:(id *)arg1;
 - (id)_ui_synthesizeAttributedSubstringFromRange:(struct _NSRange)arg1 usingDefaultAttributes:(id)arg2;
 - (id)initWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
 - (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;

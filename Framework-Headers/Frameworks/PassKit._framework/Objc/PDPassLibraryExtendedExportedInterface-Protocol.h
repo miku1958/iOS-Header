@@ -32,6 +32,7 @@
 - (void)openDigitalIssuanceUIForIdentifier:(NSString *)arg1 withCompletion:(void (^)(BOOL))arg2;
 - (void)openPaymentUIWithCompletion:(void (^)(BOOL))arg1;
 - (void)openWalletUIWithRelevantPass:(NSString *)arg1;
+- (void)paymentPassWithAssociatedAccountIdentifier:(NSString *)arg1 completion:(void (^)(PKPaymentPass *))arg2;
 - (void)paymentSetupFeaturesForConfiguration:(PKPaymentSetupConfiguration *)arg1 completion:(void (^)(NSArray *))arg2;
 - (void)pendingUserNotificationsWithCompletion:(void (^)(NSArray *))arg1;
 - (void)personalizePassWithUniqueIdentifier:(NSString *)arg1 contact:(PKContact *)arg2 personalizationToken:(NSString *)arg3 requiredPersonalizationFields:(unsigned long long)arg4 personalizationSource:(unsigned long long)arg5 handler:(void (^)(BOOL))arg6;

@@ -8,10 +8,11 @@
 
 #import <MapKit/MKActivityItemLinkPresentationSource-Protocol.h>
 
-@class NSString;
+@class LPLinkMetadata, NSString;
 
 @interface MKMuninLinkPresentationActivityProvider : MKPlaceActivityProvider <MKActivityItemLinkPresentationSource>
 {
+    LPLinkMetadata *_cachedMetadata;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -19,6 +20,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)activityViewControllerLinkPresentationMetadata:(id)arg1;
 - (id)mapMetadataSpecialization;
 

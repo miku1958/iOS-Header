@@ -43,7 +43,6 @@
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setupKeyboardHandler;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (double)topAndBottomPadding;
 - (void)updateExpanded:(BOOL)arg1;
 - (void)updateWithRowModel:(id)arg1;
 - (id)visibleResults;

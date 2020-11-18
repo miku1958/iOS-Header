@@ -7,12 +7,13 @@
 #import <UIKit/UIViewController.h>
 
 #import <SpringBoard/PTSettingsKeyObserver-Protocol.h>
+#import <SpringBoard/SBHUDViewControlling-Protocol.h>
 #import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSDate, NSMutableArray, NSMutableOrderedSet, NSString, NSTimer, SBElasticSliderMaterialWrapperView, SBElasticSliderView, SBFTouchPassThroughView, SBUIViewFloatSpringProperty, SBVolumeHUDSettings, UIButton, UILabel, UILongPressGestureRecognizer, UIPanGestureRecognizer, UISegmentedControl, UISlider, UISwitch, UIView, _UIEdgeFeedbackGenerator, _UIFeedback, _UIFeedbackEngine, _UILegibilityLabel;
+@class CCUICAPackageDescription, NSArray, NSDate, NSMutableArray, NSMutableOrderedSet, NSString, NSTimer, SBElasticSliderMaterialWrapperView, SBElasticSliderView, SBFTouchPassThroughView, SBUIViewFloatSpringProperty, SBVolumeHUDSettings, UIButton, UILabel, UILongPressGestureRecognizer, UIPanGestureRecognizer, UISegmentedControl, UISlider, UISwitch, UIView, _UIEdgeFeedbackGenerator, _UIFeedback, _UIFeedbackEngine, _UILegibilityLabel;
 @protocol SBElasticAudioDataSource, SBElasticAudioVolumeViewControllerDelegate;
 
-@interface SBElasticVolumeViewController : UIViewController <UIGestureRecognizerDelegate, PTSettingsKeyObserver>
+@interface SBElasticVolumeViewController : UIViewController <UIGestureRecognizerDelegate, PTSettingsKeyObserver, SBHUDViewControlling>
 {
     SBFTouchPassThroughView *_sliderContainerView;
     SBElasticSliderMaterialWrapperView *_sliderWrapperView;
@@ -50,6 +51,10 @@
     UISlider *_debugHeightSlider;
     UISlider *_debugPortraitYOriginSlider;
     UIButton *_debugDumpButton;
+    UIButton *_debugNextAudioRouteButton;
+    UIButton *_debugResetAudioRouteButton;
+    unsigned long long _debugOverrideAudioRouteCount;
+    long long _debugOverrideAudioRouteType;
     NSDate *_volumeUpLastHitDate;
     NSDate *_volumeDownLastHitDate;
     NSMutableArray *_runningListOfVolumesUpdates;
@@ -61,6 +66,10 @@
     NSString *_volumeString;
     NSString *_highVolumeString;
     NSString *_audioRouteString;
+    int _anyCallActive;
+    unsigned long long _audioRouteCount;
+    long long _audioRouteType;
+    CCUICAPackageDescription *_audioRoutePackage;
     NSArray *_debugAutolayoutConstraints;
     SBUIViewFloatSpringProperty *_positionXSpring;
     SBUIViewFloatSpringProperty *_positionYSpring;
@@ -90,13 +99,15 @@
 @property (readonly, nonatomic) BOOL volumeUpButtonIsDown; // @synthesize volumeUpButtonIsDown=_volumeUpButtonIsDown;
 
 - (void).cxx_destruct;
+- (void)_activeCallStatusStateChanged:(id)arg1;
 - (void)_actuallyDismiss;
 - (void)_animateFromState:(long long)arg1 toState:(long long)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)_anyCallActive;
 - (void)_beginTrackingWithGestureRecognizer:(id)arg1;
 - (BOOL)_canShowWhileLocked;
 - (BOOL)_changeVolumeLevel:(double)arg1;
 - (void)_clearLastHitDates;
-- (void)_computeCachedAudioRouteDisplayString;
+- (BOOL)_computeCachedAudioRouteDisplayInformation;
 - (void)_continueTrackingWithGestureRecognizer:(id)arg1;
 - (void)_createHapticFeedbackEngines;
 - (void)_createSprings;
@@ -105,6 +116,8 @@
 - (void)_debugDimensionSliderValueDidChange:(id)arg1;
 - (void)_debugDump:(id)arg1;
 - (void)_debugLockStateSwitchValueChanged:(id)arg1;
+- (void)_debugNextAudioRoute:(id)arg1;
+- (void)_debugResetAudioRoute:(id)arg1;
 - (void)_destroySprings;
 - (void)_dismissalTimerFired:(id)arg1;
 - (void)_endTrackingWithGestureRecognizer:(id)arg1;
@@ -119,26 +132,27 @@
 - (void)_noteSliderViewDidEndTracking;
 - (void)_playMaximumVolumeHaptic;
 - (void)_playMinimumVolumeHaptic;
-- (void)_playSteppedVolumeHaptic;
+- (void)_playTickHapticForSteppedVolume:(double)arg1;
 - (void)_reduceMotionStatusDidChange;
 - (void)_refreshDebugUI:(BOOL)arg1;
 - (void)_reloadData;
+- (void)_resetInputForMajorAxisSpring;
 - (void)_scheduleDismissal:(id)arg1;
-- (BOOL)_shouldStretchVolumeSliderLengthForVolumeUpdate;
-- (BOOL)_shouldStretchVolumeSliderThicknessForVolumeUpdate;
-- (void)_stretchVolumeSliderLengthForButtonChangesIfNeeded;
-- (void)_stretchVolumeSliderThicknessForButtonChangesIfNeeded;
+- (void)_setScaleSpringActiveForVolumeButtonUpdateIfNeeded;
+- (void)_stretchVolumeSliderForMaximumVolumeUpdateIfNeeded;
+- (void)_stretchVolumeSliderForMinimumVolumeUpdateIfNeeded;
+- (BOOL)_updateAnyCallActive;
 - (void)_updateDebugString:(id)arg1;
 - (void)_updateDebugUIPositions;
 - (void)_updateDimmingVisible:(BOOL)arg1;
 - (void)_updateEdgeFeedbackParametersForMaxVolume:(BOOL)arg1;
 - (void)_updateForAxisChange:(int)arg1;
+- (void)_updateGlyphStateIfNecessaryForVolumeLevel:(float *)arg1;
 - (void)_updateLabelsForAxis:(int)arg1 containerViewSize:(struct CGSize)arg2 state:(long long)arg3 animated:(BOOL)arg4;
 - (void)_updateSliderTracking;
 - (void)_updateSliderViewMetricsForState:(long long)arg1 bounds:(struct CGRect)arg2 integralized:(BOOL)arg3 useSizeSpringData:(BOOL)arg4 useCenterSpringData:(BOOL)arg5;
 - (void)_updateSliderViewMetricsForState:(long long)arg1 bounds:(struct CGRect)arg2 integralized:(BOOL)arg3 useSpringData:(BOOL)arg4;
 - (void)_updateSliderViewToCenter:(struct CGPoint)arg1 size:(struct CGSize)arg2 integralized:(BOOL)arg3 continuousCornerRadius:(double *)arg4;
-- (void)_updateSliderViewVerticalLayoutSize;
 - (void)_updateTouchTrackingView;
 - (void)_updateValueForPanGestureRecognizer:(id)arg1;
 - (void)_updateViewsWithSpringData;
@@ -152,17 +166,19 @@
 - (double)cornerRadiusForState:(long long)arg1 useSpringData:(BOOL)arg2;
 - (float)currentVolume;
 - (void)dealloc;
+- (BOOL)definesAnimatedDismissal;
+- (void)dismissAnimatedWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (double)glyphScaleForState:(long long)arg1;
 - (long long)hudPresentationOrientation;
 - (id)init;
 - (void)loadView;
 - (struct CGSize)maximumSizeForSlider;
 - (void)noteVolumeDownWasHit:(BOOL)arg1;
 - (void)noteVolumeUpWasHit:(BOOL)arg1;
-- (void)noteVolumeWillDeltaStepForRepeatedPress;
+- (void)noteVolumeWillDeltaStepToVolume:(double)arg1;
 - (void)reloadData;
-- (double)scaleForState:(long long)arg1;
 - (void)setVolumeDownButtonIsDown:(BOOL)arg1;
 - (void)setVolumeUpButtonIsDown:(BOOL)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
@@ -170,6 +186,7 @@
 - (BOOL)shouldShowHighVolumeWarningForCurrentVolume;
 - (struct CGSize)sizeForState:(long long)arg1 useSpringData:(BOOL)arg2;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)transitionStateContextuallyForVolumeChangeEvent;
 - (void)transitionToState:(long long)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateVolumeLevel:(float)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

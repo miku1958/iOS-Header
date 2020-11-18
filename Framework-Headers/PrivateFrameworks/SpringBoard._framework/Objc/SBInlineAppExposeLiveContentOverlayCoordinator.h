@@ -8,7 +8,7 @@
 
 #import <SpringBoard/SBSwitcherLiveContentOverlayCoordinating-Protocol.h>
 
-@class NSArray, NSString, SBAppLayout, SBDeviceApplicationSceneViewController, SBInlineAppExposeLiveContentOverlayView;
+@class NSString, SBAppLayout, SBDeviceApplicationSceneViewController, SBInlineAppExposeLiveContentOverlayView;
 @protocol SBSwitcherLiveContentOverlayCoordinatorDelegate;
 
 @interface SBInlineAppExposeLiveContentOverlayCoordinator : NSObject <SBSwitcherLiveContentOverlayCoordinating>
@@ -31,7 +31,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=areLiveContentOverlayUpdatesSuspended) BOOL liveContentOverlayUpdatesSuspended; // @synthesize liveContentOverlayUpdatesSuspended=_liveContentOverlayUpdatesSuspended;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSArray *windowsToExcludeForCrossfadeSnapshot;
 
 - (void).cxx_destruct;
 - (void)_addLiveContentOverlay:(id)arg1 forAppLayout:(id)arg2 animated:(BOOL)arg3;

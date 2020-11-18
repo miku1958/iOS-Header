@@ -6,28 +6,17 @@
 
 #import <MediaControls/MediaControlsVolumeSliderView.h>
 
-@class CCUICAPackageDescription, MTMaterialView;
-
 @interface SBElasticSliderView : MediaControlsVolumeSliderView
 {
-    MTMaterialView *_darkMaterialView;
-    CCUICAPackageDescription *_packageDescription;
     double _additiveGlyphScaleFactor;
-    struct CGSize _expandedMetricsForGlyphLayout;
 }
 
 @property (nonatomic) double additiveGlyphScaleFactor; // @synthesize additiveGlyphScaleFactor=_additiveGlyphScaleFactor;
-@property (nonatomic) struct CGSize expandedMetricsForGlyphLayout; // @synthesize expandedMetricsForGlyphLayout=_expandedMetricsForGlyphLayout;
 
-- (void).cxx_destruct;
-- (void)_configureForContentModuleGroupRenderingIfNecessary;
-- (void)_setupDarkMaterialView;
+- (void)_updateGlyphScaleForAdditiveScaleOrAxisUpdate;
 - (struct CGPoint)glyphCenter;
-- (id)glyphPackageDescription;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithGlyphPackageDescription:(id)arg1;
-- (void)layoutSubviews;
-- (void)setContinuousSliderCornerRadius:(double)arg1;
+- (void)setAxis:(int)arg1;
 - (void)stopGlyphAnimations;
 
 @end

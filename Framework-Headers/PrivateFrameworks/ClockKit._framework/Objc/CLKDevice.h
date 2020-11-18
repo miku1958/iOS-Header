@@ -21,6 +21,7 @@
     BOOL _supportsUrsa;
     int _pairedDeviceCapabilitiesChangeNotificationToken;
     struct os_unfair_lock_s _capabilitiesLock;
+    unsigned long long _version;
     unsigned long long _sizeClass;
     double _screenScale;
     double _screenCornerRadius;
@@ -52,7 +53,9 @@
 @property (readonly, nonatomic) BOOL supportsTritium; // @synthesize supportsTritium=_supportsTritium;
 @property (nonatomic) BOOL supportsUrsa; // @synthesize supportsUrsa=_supportsUrsa;
 @property (readonly, nonatomic) BOOL unlockedSinceBoot;
+@property (readonly, nonatomic) unsigned long long version; // @synthesize version=_version;
 
++ (id)_cachedDeviceForUUID:(id)arg1;
 + (void)_deviceDidBecomeActive;
 + (void)_resetCurrentDevice;
 + (id)activeNRDevice;

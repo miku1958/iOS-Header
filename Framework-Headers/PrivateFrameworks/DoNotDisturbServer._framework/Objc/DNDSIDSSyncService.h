@@ -29,9 +29,10 @@
 - (void)_queue_handleIncomingMessage:(id)arg1 deviceIdentifier:(id)arg2;
 - (void)_queue_resume;
 - (BOOL)_queue_sendMessage:(id)arg1 withVersionNumber:(unsigned long long)arg2 error:(id *)arg3;
-- (id)init;
+- (id)initWithIDSService:(id)arg1;
 - (void)resume;
 - (void)sendMessage:(id)arg1 withVersionNumber:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(BOOL)arg4 error:(id)arg5;
 - (void)service:(id)arg1 account:(id)arg2 incomingMessage:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 
 @end

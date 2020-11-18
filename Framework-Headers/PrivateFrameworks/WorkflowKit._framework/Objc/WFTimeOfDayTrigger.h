@@ -24,9 +24,10 @@
 @property (nonatomic) unsigned long long timeOffset; // @synthesize timeOffset=_timeOffset;
 
 + (id)dateFormatter;
-+ (id)descriptionForTriggerEvent:(unsigned long long)arg1 timeOffset:(unsigned long long)arg2;
 + (id)localizedDisplayExplanation;
 + (id)localizedDisplayName;
++ (id)localizedRecurrenceDescriptionForDaysOfWeek:(id)arg1;
++ (id)localizedSunriseSunsetDescriptionForTriggerEvent:(unsigned long long)arg1 timeOffset:(unsigned long long)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -34,7 +35,8 @@
 - (BOOL)hasValidConfiguration;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)localizedTitleWithConfigurationSummary;
+- (id)localizedDescriptionWithConfigurationSummary;
+- (id)localizedPastTenseDescription;
 
 @end
 

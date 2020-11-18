@@ -10,7 +10,7 @@
 
 @protocol WFActionDrawerSuggestionsViewControllerDelegate <NSObject>
 - (void)suggestionsViewController:(WFActionDrawerSiriSuggestionsViewController *)arg1 didSelectAction:(WFAction *)arg2;
-- (void)suggestionsViewController:(WFActionDrawerSiriSuggestionsViewController *)arg1 didSelectCategoryForContentType:(NSString *)arg2;
+- (void)suggestionsViewController:(WFActionDrawerSiriSuggestionsViewController *)arg1 didSelectCategoryForContentType:(NSString *)arg2 title:(NSString *)arg3;
 - (void)suggestionsViewController:(WFActionDrawerSiriSuggestionsViewController *)arg1 didSelectDocumentationForAction:(WFAction *)arg2 fromView:(UIView *)arg3;
 - (void)suggestionsViewControllerDidSelectCategoryApps:(WFActionDrawerSiriSuggestionsViewController *)arg1 title:(NSString *)arg2;
 - (void)suggestionsViewControllerDidSelectCategoryFavorites:(WFActionDrawerSiriSuggestionsViewController *)arg1 title:(NSString *)arg2;

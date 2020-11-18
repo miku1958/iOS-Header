@@ -34,6 +34,7 @@
 - (void)_createModernPropertiesIfNecessary;
 - (id)_initForPaymentPass:(id)arg1 configuration:(id)arg2;
 - (id)criteriaForPaymentApplicationIdentifier:(id)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateCriteriaWithHandler:(CDUnknownBlockType)arg1;
 - (unsigned long long)hash;

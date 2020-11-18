@@ -70,6 +70,7 @@
 - (void)navigationServiceDidHideSecondaryStep:(MNNavigationService *)arg1;
 - (void)navigationServiceDidPauseTrace:(MNNavigationService *)arg1;
 - (void)navigationServiceDidResumeTrace:(MNNavigationService *)arg1;
+- (void)navigationServiceDidSynchronize:(MNNavigationService *)arg1;
 - (void)navigationServiceEndGuidanceUpdate:(MNNavigationService *)arg1;
 - (void)navigationServicePredictingDidArrive:(MNNavigationService *)arg1;
 - (void)navigationServiceWillPause:(MNNavigationService *)arg1;

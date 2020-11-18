@@ -11,6 +11,7 @@
 }
 
 @property (nonatomic) double initialInterstitialDelay;
+@property (nonatomic) double initialInterstitialDelayForCarPlay;
 @property (nonatomic) double initialInterstitialDelayForVoiceTriggerOneShotWithoutAudioDucking;
 
 + (id)deviceConfiguration;

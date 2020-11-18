@@ -12,7 +12,7 @@
 #import <VideosUI/VUILibraryCategoryMenuViewModelDelegate-Protocol.h>
 #import <VideosUI/VUILibraryGridCollectionViewControllerDelegate-Protocol.h>
 
-@class NSIndexPath, NSSet, NSString, UINavigationController, VUICategoryMenuViewController, VUILibraryAlertView, VUILibraryCategoryMenuViewModel, VUILibraryGridCollectionViewController, VUIMediaLibrary;
+@class NSIndexPath, NSString, UINavigationController, VUICategoryMenuViewController, VUILibraryAlertView, VUILibraryCategoryMenuViewModel, VUILibraryGridCollectionViewController, VUIMediaLibrary;
 @protocol VUILibrarySplitViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -21,14 +21,13 @@ __attribute__((visibility("hidden")))
     BOOL _shouldShowBackButton;
     BOOL _hasLoaded;
     id<VUILibrarySplitViewControllerDelegate> _librarySplitViewControllerDelegate;
+    VUICategoryMenuViewController *_menuViewController;
     VUIMediaLibrary *_mediaLibrary;
     UINavigationController *_masterNavigationController;
     UINavigationController *_detailNavigationController;
     VUILibraryCategoryMenuViewModel *_categoryViewModel;
-    VUICategoryMenuViewController *_menuViewController;
     VUILibraryGridCollectionViewController *_currentGridCollectionViewController;
     NSIndexPath *_currentlySelectedIndexPath;
-    NSSet *_validCategories;
     VUILibraryAlertView *_alertView;
     VUIMediaLibrary *_currentHomeShareMediaLibrary;
 }
@@ -49,7 +48,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VUICategoryMenuViewController *menuViewController; // @synthesize menuViewController=_menuViewController;
 @property (nonatomic) BOOL shouldShowBackButton; // @synthesize shouldShowBackButton=_shouldShowBackButton;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSSet *validCategories; // @synthesize validCategories=_validCategories;
 
 - (void).cxx_destruct;
 - (void)_addMediaLibraryNotificationObservers;
@@ -68,9 +66,8 @@ __attribute__((visibility("hidden")))
 - (id)_viewControllerForIndexPath:(id)arg1;
 - (void)categoryMenuViewController:(id)arg1 didSelectMenuItemAtIndexPath:(id)arg2;
 - (void)categoryMenuViewControllerShouldDismiss:(id)arg1;
-- (void)categoryViewModel:(id)arg1 categoriesDidChange:(id)arg2;
-- (void)categoryViewModel:(id)arg1 fetchDidCompleteWithCategories:(id)arg2 error:(id)arg3;
 - (void)dealloc;
+- (void)fetchDidCompleteForViewModel:(id)arg1;
 - (void)gridCollectionViewController:(id)arg1 didSelectMediaEntity:(id)arg2;
 - (void)homeShareViewController:(id)arg1 didSelectHomeShare:(id)arg2;
 - (id)initWithMediaLibrary:(id)arg1;
@@ -79,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)showDetailViewController:(id)arg1 sender:(id)arg2;
 - (BOOL)splitViewController:(id)arg1 collapseSecondaryViewController:(id)arg2 ontoPrimaryViewController:(id)arg3;
 - (id)splitViewController:(id)arg1 separateSecondaryViewControllerFromPrimaryViewController:(id)arg2;
+- (void)updateForViewModel:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

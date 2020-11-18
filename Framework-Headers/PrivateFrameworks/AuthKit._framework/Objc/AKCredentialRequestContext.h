@@ -31,6 +31,7 @@
     NSString *_proxiedClientAppID;
     NSString *_proxiedClientTeamID;
     NSArray *_proxiedAssociatedDomains;
+    NSString *_callerBundleID;
     NSString *_proxiedDeviceName;
     NSString *_proxiedDeviceClass;
     NSUUID *_requestIdentifier;
@@ -38,6 +39,7 @@
     AKPasswordRequest *_passwordRequest;
 }
 
+@property (strong, nonatomic) NSString *_callerBundleID; // @synthesize _callerBundleID;
 @property (copy, nonatomic) NSData *_iconData; // @synthesize _iconData;
 @property (copy, nonatomic) NSString *_iconName; // @synthesize _iconName;
 @property (copy, nonatomic) NSNumber *_iconScale; // @synthesize _iconScale;

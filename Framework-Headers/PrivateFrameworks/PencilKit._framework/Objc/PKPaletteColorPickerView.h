@@ -25,6 +25,7 @@
     unsigned long long _edgeLocation;
     double _scalingFactor;
     id<PKPalettePopoverPresenting><PKPaletteColorPickerViewDelegate> _delegate;
+    long long _colorUserInterfaceStyle;
     long long _colorPickerMode;
     UICollectionView *_collectionView;
     NSArray *_swatches;
@@ -36,6 +37,7 @@
 @property (strong, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property (nonatomic) long long colorPickerMode; // @synthesize colorPickerMode=_colorPickerMode;
 @property (strong, nonatomic) PKColorPicker *colorPickerPopover; // @synthesize colorPickerPopover=_colorPickerPopover;
+@property (nonatomic) long long colorUserInterfaceStyle; // @synthesize colorUserInterfaceStyle=_colorUserInterfaceStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKPalettePopoverPresenting><PKPaletteColorPickerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -50,12 +52,17 @@
 
 + (id)collectionViewFlowLayoutWithItemSize:(struct CGSize)arg1 minimumLineSpacing:(double)arg2 minimumInteritemSpacing:(double)arg3;
 - (void).cxx_destruct;
+- (BOOL)_colorPickerAllowsColorSelection;
 - (void)_enableOrDisableLongPressGesture;
+- (BOOL)_isSwatchMulticolorSwatch:(id)arg1;
 - (id)_multicolorSwatch;
+- (struct CGRect)_popoverPresentingSourceRect;
+- (id)_popoverPresentingSourceview;
 - (void)_reloadSwatchColorsForTraitCollection:(id)arg1;
 - (id)_selectedSwatch;
+- (BOOL)_shouldDisplayExtendedColorPickerPopoverFromColorSwatch:(id)arg1;
 - (void)_showColorSelectionPopover;
-- (id)_swatchColorsForTraitCollection:(id)arg1 userInterfaceStyle:(long long)arg2;
+- (id)_swatchColorsForTraitCollection:(id)arg1;
 - (void)_swatchLongPressHandler:(id)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
@@ -72,8 +79,6 @@
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
-- (struct CGRect)popoverPresentingSourceRect;
-- (id)popoverPresentingSourceview;
 - (void)reloadColorsForCurrentColorPickerMode;
 - (struct CGSize)swatchSize;
 - (id)swatchWithColor:(id)arg1;

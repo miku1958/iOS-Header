@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSError, NSMutableArray, NSString, UIColor, UIView, WFAlertButton, WFAlertPresentationSource;
+@class NSArray, NSError, NSMutableArray, NSString, UIView, WFAlertButton, WFAlertPresentationSource;
 @protocol WFPresentedAlert;
 
 @interface WFAlert : NSObject
@@ -14,7 +14,6 @@
     NSString *_title;
     NSString *_message;
     long long _preferredStyle;
-    UIColor *_tintColor;
     id<WFPresentedAlert> _presentedAlert;
     NSMutableArray *_mutableButtons;
     NSMutableArray *_mutableTextFieldConfigurationHandlers;
@@ -35,7 +34,6 @@
 @property (strong, nonatomic) WFAlertPresentationSource *presentationSource;
 @property (weak, nonatomic) id<WFPresentedAlert> presentedAlert; // @synthesize presentedAlert=_presentedAlert;
 @property (readonly, nonatomic) NSArray *textFieldConfigurationHandlers;
-@property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (id)alertWithError:(id)arg1;

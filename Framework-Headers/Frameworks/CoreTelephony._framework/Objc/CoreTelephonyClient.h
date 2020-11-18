@@ -30,6 +30,7 @@
 - (id)billingCycleEndDatesForLastPeriods:(unsigned long long)arg1 error:(id *)arg2;
 - (id)bootstrapPlanTransferForEndpoint:(unsigned long long)arg1;
 - (id)bootstrapPlanTransferForEndpoint:(unsigned long long)arg1 usingMessageSession:(id)arg2;
+- (id)cancelPlanTransfer:(id)arg1 fromDevice:(id)arg2;
 - (void)changePIN:(id)arg1 oldPin:(id)arg2 newPin:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)changePIN:(id)arg1 oldPin:(id)arg2 newPin:(id)arg3 error:(id *)arg4;
 - (void)checkRadioBootHealth:(CDUnknownBlockType)arg1;

@@ -13,6 +13,7 @@
 
 + (BOOL)_photoStreamsEnabled;
 + (BOOL)canInitiateDistributedPhotoStreamDeletionForAssetUUID:(id)arg1;
++ (void)deletePhotoStreamAssetsWithLibraryServiceManager:(id)arg1 withReason:(id)arg2 jobStreamID:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (id)iCloudServiceAccount;
 + (BOOL)photoStreamsEnabledForPhotoLibraryURL:(id)arg1;
 + (id)sharedPhotoStreamsHelper;
@@ -49,7 +50,6 @@
 - (id)psHashAsString:(id)arg1;
 - (id)psHashForData:(id)arg1;
 - (BOOL)removeBreadcrumbsForHashString:(id)arg1;
-- (void)resetMstreamdStateForPersonID:(id)arg1;
 - (void)resetServerState;
 - (void)resume_mstreamd:(id)arg1;
 - (void)savePhotoStreamMetadata:(id)arg1 forAsset:(id)arg2;

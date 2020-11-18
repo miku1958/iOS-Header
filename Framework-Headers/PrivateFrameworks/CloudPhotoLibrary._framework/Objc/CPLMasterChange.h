@@ -62,6 +62,7 @@
 - (id)resourceForType:(unsigned long long)arg1;
 - (void)setName:(id)arg1;
 - (BOOL)supportsDeletion;
+- (BOOL)supportsResourceType:(unsigned long long)arg1;
 - (BOOL)supportsResources;
 - (BOOL)validateRecordForTracker:(id)arg1;
 

@@ -43,6 +43,7 @@
 - (id)ams_iCloudAccountForAccount:(id)arg1;
 - (id)ams_iTunesAccountForAccount:(id)arg1;
 - (id)ams_iTunesAccountForHomeWithIdentifier:(id)arg1;
+- (id)ams_iTunesAccountForHomeWithIdentifier:(id)arg1 error:(id *)arg2;
 - (id)ams_iTunesAccountWithAltDSID:(id)arg1;
 - (id)ams_iTunesAccountWithAltDSID:(id)arg1 DSID:(id)arg2 username:(id)arg3;
 - (id)ams_iTunesAccountWithDSID:(id)arg1;

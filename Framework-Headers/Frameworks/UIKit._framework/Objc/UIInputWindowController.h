@@ -108,7 +108,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_canShowWhileLocked;
 - (struct CGPoint)_centerForOrientation:(long long)arg1;
 - (unsigned long long)_clipCornersOfView:(id)arg1;
-- (struct CGRect)_convertRectFromContainerCoordinateSpaceToScreenSpace:(struct CGRect)arg1;
 - (struct CGRect)_defaultInitialViewFrame;
 - (void)_didChangeDeepestUnambiguousResponder;
 - (void)_forcePreLayoutHostViewFrame;
@@ -131,6 +130,7 @@ __attribute__((visibility("hidden")))
 - (void)changeChild:(unsigned long long)arg1 toAppearState:(int)arg2 animated:(BOOL)arg3;
 - (unsigned long long)changeToInputViewSet:(id)arg1;
 - (void)checkPlaceholdersForRemoteKeyboardsAndForceConstraintsUpdate:(BOOL)arg1 layoutSubviews:(BOOL)arg2;
+- (struct CGRect)convertRectFromContainerCoordinateSpaceToScreenSpace:(struct CGRect)arg1;
 - (id)currentPresentationPlacement;
 - (void)dealloc;
 - (void)didEndTransitionWithController:(id)arg1;
@@ -180,6 +180,8 @@ __attribute__((visibility("hidden")))
 - (void)postEndNotifications:(unsigned long long)arg1 withInfo:(id)arg2;
 - (void)postStartNotifications:(unsigned long long)arg1 withInfo:(id)arg2;
 - (void)postTransitionEndNotification;
+- (void)postValidatedEndNotifications:(unsigned long long)arg1 withInfo:(id)arg2;
+- (void)postValidatedStartNotifications:(unsigned long long)arg1 withInfo:(id)arg2;
 - (void)prepareForSplitTransition;
 - (void)prepareKeyboardHeightChangeWithDelta:(double)arg1 duration:(double)arg2;
 - (void)presentViewController:(id)arg1;
@@ -212,6 +214,7 @@ __attribute__((visibility("hidden")))
 - (void)updateInputAssistantView:(id)arg1;
 - (void)updateInputAssistantViewForInputViewSet:(id)arg1;
 - (void)updateKeyboardDockViewVisibility;
+- (void)updateKeyboardSizeClass;
 - (void)updateRootViewConstraintsForSceneFrame:(struct CGRect)arg1 bounds:(struct CGRect)arg2;
 - (void)updateSupportsDockViewController;
 - (void)updateToPlacement:(id)arg1 withNormalAnimationsAndNotifications:(BOOL)arg2;

@@ -69,6 +69,7 @@
 - (void)pausePreview;
 - (void)registerBlocksForDelegateNotifications;
 - (oneway void)release;
+- (void)resetLocalCameraAfterServerDisconnect;
 - (id)retain;
 - (unsigned long long)retainCount;
 - (void)setAnimoji:(id)arg1;

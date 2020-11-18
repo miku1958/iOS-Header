@@ -17,7 +17,7 @@
 - (id)pk_decimalNumberForKey:(id)arg1;
 - (id)pk_description;
 - (id)pk_dictionaryForKey:(id)arg1;
-- (id)pk_encryptedArrayForKey:(id)arg1;
+- (id)pk_encryptedArrayOfClasses:(id)arg1 forKey:(id)arg2;
 - (BOOL)pk_encryptedBoolForKey:(id)arg1;
 - (id)pk_encryptedDataForKey:(id)arg1;
 - (id)pk_encryptedDateForKey:(id)arg1;

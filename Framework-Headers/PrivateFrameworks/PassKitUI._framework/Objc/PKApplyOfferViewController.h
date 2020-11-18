@@ -12,7 +12,6 @@
 
 @interface PKApplyOfferViewController : PKApplyExplanationViewController <PKApplyFlowControllerProtocol>
 {
-    UIView *_topBackgroundView;
     PKAccountFlowController *_accountController;
     PKApplyOfferCreditCardView *_offerView;
     NSString *_offerTermsIdentifier;
@@ -37,7 +36,6 @@
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;
-- (void)viewWillLayoutSubviews;
 
 @end
 

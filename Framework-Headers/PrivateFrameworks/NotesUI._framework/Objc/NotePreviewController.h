@@ -7,17 +7,20 @@
 #import <UIKit/UIViewController.h>
 
 #import <NotesUI/ICNotePreviewing-Protocol.h>
+#import <NotesUI/NoteContentLayerAttachmentPresentationDelegate-Protocol.h>
 #import <NotesUI/UITextViewDelegate-Protocol.h>
 
-@class ICSearchResult, NSString, NoteContentLayer, NoteObject, NotesBackgroundView;
+@class ICSearchResult, NSArray, NSString, NoteContentLayer, NoteObject, NotesBackgroundView;
 
-@interface NotePreviewController : UIViewController <UITextViewDelegate, ICNotePreviewing>
+@interface NotePreviewController : UIViewController <UITextViewDelegate, NoteContentLayerAttachmentPresentationDelegate, ICNotePreviewing>
 {
     NoteContentLayer *_contentLayer;
     NoteObject *_note;
     ICSearchResult *_searchResult;
+    NSArray *_attachmentPresentations;
 }
 
+@property (strong, nonatomic) NSArray *attachmentPresentations; // @synthesize attachmentPresentations=_attachmentPresentations;
 @property (readonly, nonatomic) NotesBackgroundView *backgroundView;
 @property (strong, nonatomic) NoteContentLayer *contentLayer; // @synthesize contentLayer=_contentLayer;
 @property (readonly, copy) NSString *debugDescription;
@@ -30,9 +33,12 @@
 - (void).cxx_destruct;
 - (void)applicationDidBecomeActive:(id)arg1;
 - (id)attachmentContentIDs;
+- (id)attachmentPresentationForContentID:(id)arg1;
 - (void)dealloc;
 - (id)initWithNote:(id)arg1;
 - (id)initWithNote:(id)arg1 searchResult:(id)arg2;
+- (id)noteContentLayer:(id)arg1 attachmentPresentationForContentID:(id)arg2;
+- (id)noteContentLayer:(id)arg1 fileURLForAttachmentWithContentID:(id)arg2;
 - (void)setupPreview;
 - (void)setupPreviewWithInitialFrame:(struct CGRect)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

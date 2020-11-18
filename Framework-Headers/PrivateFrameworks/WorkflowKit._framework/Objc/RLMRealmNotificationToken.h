@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (void)stop;
+- (void)invalidate;
 - (void)suppressNextNotification;
 
 @end

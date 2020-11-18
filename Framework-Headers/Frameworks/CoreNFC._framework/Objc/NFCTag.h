@@ -59,7 +59,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSession:(id)arg1 tag:(id)arg2 startupConfig:(long long)arg3;
 - (BOOL)isEqualToNFTag:(id)arg1;
-- (BOOL)isMatchingSession:(id)arg1;
+- (BOOL)isMatchingSession:(id)arg1 outError:(id *)arg2;
 - (BOOL)isNDEFFormatted;
 - (BOOL)isReadOnly;
 - (BOOL)proprietaryApplicationDataCoding;

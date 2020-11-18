@@ -6,7 +6,7 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSString, SBAppLayout, SBBestAppSuggestion, SBLayoutStateTransitionContext, SBSwitcherTransitionRequest;
+@class NSArray, NSString, SBAppLayout, SBBestAppSuggestion, SBLayoutStateTransitionContext, SBSwitcherTransitionRequest;
 @protocol SBSwitcherContentViewControlling;
 
 @protocol SBSwitcherContentViewControllerDelegate <NSObject>
@@ -34,5 +34,6 @@
 - (void)switcherContentControllerEndTethering:(id<SBSwitcherContentViewControlling>)arg1;
 - (void)updateUserInteractionEnabledForSwitcherContentController:(id<SBSwitcherContentViewControlling>)arg1;
 - (void)updateWindowVisibilityForSwitcherContentController:(id<SBSwitcherContentViewControlling>)arg1;
+- (NSArray *)windowsToExcludeForCrossfadeSnapshotForSwitcherContentController:(id<SBSwitcherContentViewControlling>)arg1;
 @end
 

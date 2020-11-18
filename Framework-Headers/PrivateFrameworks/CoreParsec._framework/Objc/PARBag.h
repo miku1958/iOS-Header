@@ -40,6 +40,7 @@
 @property (readonly, copy, nonatomic) NSString *firstUseLearnMoreText;
 @property (readonly, copy, nonatomic) NSString *firstUseLearnMoreURL;
 @property (readonly, nonatomic) NSURL *flightURL;
+@property (readonly, nonatomic) BOOL imageTimingFeedbackEnabled;
 @property (readonly, nonatomic) unsigned long long maximumCachedQueriesToSend;
 @property (readonly, nonatomic) unsigned long long maximumCachedResultsToSend;
 @property (readonly, nonatomic) NSDictionary *maximumCustomFeedbackSizes;

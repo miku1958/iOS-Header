@@ -14,7 +14,6 @@
     MISSING_TYPE *resolver;
     MISSING_TYPE *tracker;
     MISSING_TYPE *navigator;
-    MISSING_TYPE *moreActionsSheetProvider;
 }
 
 @end

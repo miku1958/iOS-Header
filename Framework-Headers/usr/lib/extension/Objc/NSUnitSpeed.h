@@ -13,6 +13,7 @@
 }
 
 + (id)baseUnit;
++ (void)initialize;
 + (id)kilometersPerHour;
 + (id)knots;
 + (id)metersPerSecond;

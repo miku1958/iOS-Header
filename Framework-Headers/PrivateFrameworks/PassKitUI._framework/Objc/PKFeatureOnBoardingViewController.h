@@ -10,7 +10,7 @@
 #import <PassKitUI/PKPaymentSetupPresentationProtocol-Protocol.h>
 #import <PassKitUI/PKViewControllerPreflightable-Protocol.h>
 
-@class NSString, PKApplyController, PKDynamicProvisioningPageContent, PKPaymentProvisioningController, PKPaymentSetupProduct, UIImage, UIView;
+@class NSString, PKApplyController, PKDynamicProvisioningPageContent, PKPaymentProvisioningController, PKPaymentSetupProduct, UIImage;
 @protocol PKPaymentSetupViewControllerDelegate, PKSetupFlowControllerProtocol;
 
 @interface PKFeatureOnBoardingViewController : PKExplanationViewController <PKPaymentSetupPresentationProtocol, PKExplanationViewControllerDelegate, PKViewControllerPreflightable>
@@ -24,7 +24,6 @@
     UIImage *_heroImage;
     PKDynamicProvisioningPageContent *_currentPage;
     BOOL _isMainFeatureOnboardingPage;
-    UIView *_topBackgroundView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -48,7 +47,6 @@
 - (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
 - (void)terminateSetupFlow;
 - (void)viewDidLoad;
-- (void)viewWillLayoutSubviews;
 
 @end
 

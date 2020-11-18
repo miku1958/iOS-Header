@@ -67,7 +67,7 @@
 - (id)generateHardLinkURLIfNecessaryForURL:(id)arg1;
 - (id)generateHardLinkURLIfNecessaryForURL:(id)arg1 withFileName:(id)arg2;
 - (id)generateTemporaryURLWithExtension:(id)arg1;
-- (id)hardLinkFolderPath;
+- (id)hardLinkFolderURL;
 - (id)initWithAttachment:(id)arg1;
 - (BOOL)isReadyToPresent;
 - (id)localizedFallbackSubtitleIOS;

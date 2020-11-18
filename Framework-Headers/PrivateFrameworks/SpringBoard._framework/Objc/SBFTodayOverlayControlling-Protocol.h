@@ -13,8 +13,10 @@
 @property (readonly, nonatomic, getter=isPresented) BOOL presented;
 
 - (void)addTodayOverlayObserver:(id<SBFTodayOverlayObserving>)arg1;
+- (void)dismissAnimated:(BOOL)arg1;
 - (double)finalPresentationProgressForPresentationProgress:(double)arg1 gestureVelocity:(double)arg2;
+- (void)presentAnimated:(BOOL)arg1;
 - (void)removeTodayOverlayObserver:(id<SBFTodayOverlayObserving>)arg1;
-- (void)setPresentationProgress:(double)arg1 animated:(BOOL)arg2 completionHandler:(void (^)(BOOL))arg3;
+- (void)setPresentationProgress:(double)arg1 interactive:(BOOL)arg2 animated:(BOOL)arg3 completionHandler:(void (^)(BOOL))arg4;
 @end
 

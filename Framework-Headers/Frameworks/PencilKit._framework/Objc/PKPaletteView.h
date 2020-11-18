@@ -31,6 +31,7 @@
     BOOL _isEditingOpacity;
     BOOL _supportsOpacityEditing;
     BOOL _wantsClearBackgroundColorInCompactSize;
+    BOOL _toolPreviewMinimized;
     unsigned long long _autoHideCorner;
     double _scalingFactor;
     UIViewController *_presentationController;
@@ -115,6 +116,7 @@
 @property (strong, nonatomic) NSLayoutConstraint *toolPreviewCenterXConstraint; // @synthesize toolPreviewCenterXConstraint=_toolPreviewCenterXConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *toolPreviewCenterYConstraint; // @synthesize toolPreviewCenterYConstraint=_toolPreviewCenterYConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *toolPreviewHeightConstraint; // @synthesize toolPreviewHeightConstraint=_toolPreviewHeightConstraint;
+@property (nonatomic, getter=isToolPreviewMinimized) BOOL toolPreviewMinimized; // @synthesize toolPreviewMinimized=_toolPreviewMinimized;
 @property (strong, nonatomic) NSLayoutConstraint *toolPreviewWidthConstraint; // @synthesize toolPreviewWidthConstraint=_toolPreviewWidthConstraint;
 @property (strong, nonatomic) PKPaletteUndoRedoView *undoRedoCompactView; // @synthesize undoRedoCompactView=_undoRedoCompactView;
 @property (readonly, nonatomic) BOOL useCompactSize;
@@ -145,6 +147,7 @@
 - (void)_updateContainerSizeConstraintsForEdge:(unsigned long long)arg1;
 - (void)_updateToolPreview;
 - (void)_updateToolPreviewForEdge:(unsigned long long)arg1;
+- (void)_updateToolPreviewScalingAnimated:(BOOL)arg1;
 - (void)_updateToolPreviewVisibility;
 - (void)_updateUIForAnnotationSupportIfNeeded;
 - (void)additionalOptionsView:(id)arg1 didToggleAutoHideOption:(BOOL)arg2;
@@ -162,7 +165,7 @@
 - (void)hostView:(id)arg1 didDockPaletteToCorner:(unsigned long long)arg2;
 - (void)hostView:(id)arg1 didDockPaletteToEdge:(unsigned long long)arg2;
 - (void)hostView:(id)arg1 willDockPaletteToCorner:(unsigned long long)arg2;
-- (void)hostView:(id)arg1 willDockPaletteToEdge:(unsigned long long)arg2;
+- (void)hostView:(id)arg1 willDockPaletteToEdge:(unsigned long long)arg2 prepareForExpansion:(BOOL)arg3;
 - (id)initWithInternalDelegate:(id)arg1;
 - (BOOL)isPalettePresentingPopover;
 - (BOOL)isToolDictionary:(id)arg1 ofTypeIdentifier:(id)arg2;
@@ -179,6 +182,7 @@
 - (void)safeAreaInsetsDidChange;
 - (void)saveOptionsIfNecessary;
 - (void)setSelectedAnnotationType:(long long)arg1;
+- (void)setToolPreviewMinimized:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setUndoManager:(id)arg1;
 - (void)shapesViewController:(id)arg1 didSelectShapeWithType:(long long)arg2;
 - (BOOL)shouldPalettePresentPopover;
@@ -188,7 +192,7 @@
 - (void)toolPickerDidChangeSelectedToolInk:(id)arg1;
 - (void)toolPickerDidToggleRulerTool:(id)arg1;
 - (void)toolPreviewDidChangeToolColor:(id)arg1;
-- (id)toolPreviewForMinimized;
+- (id)toolPreviewView;
 - (id)toolsArray;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)undoManager;

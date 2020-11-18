@@ -41,7 +41,7 @@
 - (void)_appendCommonDescriptionItemsToBuilder:(id)arg1;
 - (void)_applyMutableSettings:(id)arg1 toScene:(id)arg2 withTransitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_beginSynchronizationBlock;
-- (id)_createSceneWithDefinition:(id)arg1 initialParameters:(id)arg2 clientProvider:(id)arg3 transitionContext:(id)arg4;
+- (id)_createSceneWithDefinition:(id)arg1 initialParameters:(id)arg2 clientProvider:(id)arg3 transitionContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_destroyScene:(id)arg1 withTransitionContext:(id)arg2;
 - (void)_endSynchronizationBlock;
 - (void)_enqueueEventForScene:(id)arg1 withName:(id)arg2 block:(CDUnknownBlockType)arg3;

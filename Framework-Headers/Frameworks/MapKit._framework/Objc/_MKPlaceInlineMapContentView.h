@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)intrinsicContentSize;
 - (double)mapViewHeight;
 - (double)titleHeight;
+- (BOOL)useImageView;
 
 @end
 

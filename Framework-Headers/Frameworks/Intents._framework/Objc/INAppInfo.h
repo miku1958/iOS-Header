@@ -14,6 +14,7 @@
 {
     NSString *_applicationIdentifier;
     NSString *_companionApplicationIdentifier;
+    NSString *_developmentRegion;
     NSSet *_supportedActions;
     NSSet *_supportedActionsByExtensions;
     NSSet *_actionsRestrictedWhileLocked;
@@ -28,6 +29,7 @@
 @property (copy, nonatomic) NSString *companionApplicationIdentifier; // @synthesize companionApplicationIdentifier=_companionApplicationIdentifier;
 @property (readonly, copy, nonatomic) NSData *data;
 @property (copy, nonatomic) NSSet *definedIntents; // @synthesize definedIntents=_definedIntents;
+@property (copy, nonatomic) NSString *developmentRegion; // @synthesize developmentRegion=_developmentRegion;
 @property (copy, nonatomic) NSSet *supportedActions; // @synthesize supportedActions=_supportedActions;
 @property (copy, nonatomic) NSSet *supportedActionsByExtensions; // @synthesize supportedActionsByExtensions=_supportedActionsByExtensions;
 @property (copy, nonatomic) NSSet *supportedMediaCategories; // @synthesize supportedMediaCategories=_supportedMediaCategories;

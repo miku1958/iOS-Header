@@ -45,6 +45,7 @@
 - (id)_newDisplayLayoutElementForEntity:(id)arg1;
 - (void)_updateDisplayLayoutElementVisibility;
 - (void)_updateDisplayLayoutElementWithBuilder:(CDUnknownBlockType)arg1;
+- (id)animationControllerForTransitionRequest:(id)arg1;
 - (void)configureWithWorkspaceEntity:(id)arg1 forLayoutElement:(id)arg2 layoutState:(id)arg3 referenceFrame:(struct CGRect)arg4;
 - (id)containerViewForBlurContentView;
 - (void)dealloc;

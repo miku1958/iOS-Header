@@ -29,7 +29,6 @@
 + (id)aggregateRecords:(id)arg1 scoringDate:(id)arg2 perRecordDecayRate:(float)arg3 decayRate:(float)arg4;
 + (void)calibrate:(id)arg1;
 + (id)defaultStore;
-+ (id)getScoredTopicsFeaturesWithTopicId:(id)arg1 excludingSourceBundleId:(id)arg2 decayRate:(double)arg3 error:(id *)arg4 strictFiltering:(BOOL)arg5 scoreInterpreter:(id)arg6;
 + (id)ppFeedbackItemToPPPBFeedbackItem:(id)arg1;
 + (id)recordsForTopics:(id)arg1 source:(id)arg2 algorithm:(unsigned long long)arg3;
 + (float)resolvedPerRecordDecayRateForRecord:(id)arg1 perRecordDecayRate:(float)arg2;
@@ -60,6 +59,7 @@
 - (void)disableSyncForBundleIds:(id)arg1;
 - (BOOL)donateTopics:(id)arg1 source:(id)arg2 algorithm:(unsigned long long)arg3 cloudSync:(BOOL)arg4 sentimentScore:(double)arg5 error:(id *)arg6;
 - (BOOL)flushDonationsWithError:(id *)arg1;
+- (id)getScoredTopicsFeaturesWithTopicId:(id)arg1 excludingSourceBundleId:(id)arg2 decayRate:(double)arg3 error:(id *)arg4 strictFiltering:(BOOL)arg5 scoreInterpreter:(id)arg6;
 - (id)init;
 - (id)initWithStorage:(id)arg1;
 - (BOOL)iterScoresForTopicMapping:(id)arg1 query:(id)arg2 error:(id *)arg3 block:(CDUnknownBlockType)arg4;

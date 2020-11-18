@@ -27,6 +27,7 @@
 @property (nonatomic) BOOL shouldBakeInIfPortraitDepthEffectEnabled; // @synthesize shouldBakeInIfPortraitDepthEffectEnabled=_shouldBakeInIfPortraitDepthEffectEnabled;
 @property (nonatomic) BOOL shouldBakeInIfTimelineTrimmed; // @synthesize shouldBakeInIfTimelineTrimmed=_shouldBakeInIfTimelineTrimmed;
 
++ (id)adjustmentBakeInOptionsForPublishingOriginals;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeToXPCDict:(id)arg1;

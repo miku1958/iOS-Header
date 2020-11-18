@@ -32,11 +32,10 @@
 - (BOOL)_hasInstalledApplicationWithBundleID:(id)arg1;
 - (id)_iconWithImage:(id)arg1;
 - (id)_imageWithBundleID:(id)arg1 size:(struct CGSize)arg2 masked:(BOOL)arg3;
+- (id)_imageWithData:(id)arg1 scale:(double)arg2 masked:(BOOL)arg3;
 - (id)_imageWithIcon:(id)arg1 size:(struct CGSize)arg2 masked:(BOOL)arg3;
 - (id)_imageWithName:(id)arg1 size:(struct CGSize)arg2 masked:(BOOL)arg3;
-- (id)_maskedImageWithData:(id)arg1 scale:(double)arg2;
 - (BOOL)_shouldMaskImage;
-- (id)_unmaskedImageWithData:(id)arg1 scale:(double)arg2;
 - (id)automaskedImage;
 - (id)automaskedImageData;
 - (unsigned long long)iconType;

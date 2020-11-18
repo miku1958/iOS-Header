@@ -17,6 +17,7 @@
 + (void)compositionController:(id)arg1 setLivePhotoTrimEndTime:(CDStruct_1b6d18a9)arg2;
 + (void)compositionController:(id)arg1 setLivePhotoTrimStartTime:(CDStruct_1b6d18a9)arg2;
 + (void)compositionController:(id)arg1 setVideoPosterFrameTime:(CDStruct_1b6d18a9)arg2;
++ (id)compositionControllerImageSourceURL:(id)arg1;
 + (BOOL)hasDepthEditsForCompositionController:(id)arg1;
 + (BOOL)isAdjustedBeyondDepthForCompositionController:(id)arg1;
 + (BOOL)isSlomoOnlyAdjustmentForCompositionController:(id)arg1;

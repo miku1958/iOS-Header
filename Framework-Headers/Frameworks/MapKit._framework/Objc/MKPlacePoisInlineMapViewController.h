@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)fetchPoisForBrand;
 - (id)geoCamera;
 - (void)loadView;
+- (long long)preferredUserInterfaceStyle;
 - (void)viewDidLoad;
 - (id)visibleMapItems;
 

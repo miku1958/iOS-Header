@@ -10,7 +10,7 @@
 #import <SpringBoard/SBIdleTimerProviding-Protocol.h>
 #import <SpringBoard/SBSuspendedUnderLockManagerDelegate-Protocol.h>
 
-@class FBSSceneClientSettingsDiffInspector, NSArray, NSHashTable, NSMutableSet, NSString, SBFaceContactExpectationManager, SBMainDisplayLayoutState, SBMainDisplayLayoutStateManager, SBMainDisplayPolicyAggregator, SBMainDisplaySceneLayoutViewController, SBMedusaHostedKeyboardWindow, SBSuspendedUnderLockManager, UIApplicationSceneClientSettingsDiffInspector;
+@class FBSSceneClientSettingsDiffInspector, NSArray, NSHashTable, NSMutableSet, NSString, SBFaceContactExpectationManager, SBMainDisplayLayoutState, SBMainDisplayLayoutStateManager, SBMainDisplayPolicyAggregator, SBMainDisplaySceneLayoutViewController, SBMedusaHostedKeyboardWindow, SBSuspendedUnderLockManager, UIApplicationSceneClientSettingsDiffInspector, UIWindow;
 @protocol SBIdleTimerCoordinating;
 
 @interface SBMainDisplaySceneManager : SBSceneManager <SBIdleTimerCoordinating, SBSuspendedUnderLockManagerDelegate, SBIdleTimerProviding>
@@ -28,10 +28,13 @@
     BOOL _didAddSceneLayoutViewControllerWindowContextIdentifier;
     SBSuspendedUnderLockManager *_lazy_suspendedUnderLockManager;
     NSHashTable *_preventAdditionalMedusaSnapshotsAssertions;
+    BOOL _isUsingMedusaHostedKeyboardWindow;
     id<SBIdleTimerCoordinating> _idleTimerCoordinator;
 }
 
+@property (readonly, nonatomic, getter=_isUsingMedusaHostedKeyboardWindow) BOOL _isUsingMedusaHostedKeyboardWindow; // @synthesize _isUsingMedusaHostedKeyboardWindow;
 @property (readonly, nonatomic) SBMainDisplayLayoutStateManager *_layoutStateManager; // @dynamic _layoutStateManager;
+@property (readonly, nonatomic) UIWindow *_medusaHostedKeyboardWindow; // @synthesize _medusaHostedKeyboardWindow;
 @property (readonly, nonatomic) NSArray *_requiredContextIdentifiersForMedusaDraggingDestination;
 @property (readonly, nonatomic) SBMainDisplayLayoutState *currentLayoutState; // @dynamic currentLayoutState;
 @property (readonly, copy) NSString *debugDescription;
@@ -51,6 +54,7 @@
 - (BOOL)_animateGeometryChangesForExternalForegroundApplicationScenes;
 - (id)_appClientSettingsDiffInspector;
 - (void)_application:(id)arg1 initiatedChangefromInterfaceOrientation:(long long)arg2 toInterfaceOrientation:(long long)arg3 scene:(id)arg4 sceneSettings:(id)arg5 transitionContext:(id)arg6;
+- (void)_attemptAutorotationOfExternalForegroundApplicationScenesToInterfaceOrientation:(long long)arg1;
 - (id)_createRootWindowScenePresentationBinder;
 - (void)_deviceOrientationChanged:(id)arg1;
 - (id)_externalClientSettingsDiffInspector;
@@ -68,6 +72,7 @@
 - (void)_scene:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 oldClientSettings:(id)arg3 transitionContext:(id)arg4;
 - (void)_scene:(id)arg1 interceptUpdateWithNewSettings:(id)arg2;
 - (void)_scene:(id)arg1 willUpdateWithSettings:(id)arg2 transitionContext:(id)arg3;
+- (id)_sceneIdentifierForApplication:(id)arg1 uniqueIdentifier:(id)arg2;
 - (id)_sceneIdentityForApplication:(id)arg1 createPrimaryIfRequired:(BOOL)arg2;
 - (id)_sceneIdentityForApplication:(id)arg1 uniqueIdentifier:(id)arg2 targetContentIdentifier:(id)arg3 allowCanMatches:(BOOL)arg4 preferNewScene:(BOOL)arg5 visibleIdentifiers:(id)arg6 excludingIdentifiers:(id)arg7;
 - (BOOL)_shouldAutoHostScene:(id)arg1;

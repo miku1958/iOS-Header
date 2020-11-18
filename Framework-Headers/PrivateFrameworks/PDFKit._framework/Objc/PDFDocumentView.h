@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)_reAddPageOverlaysStartingAtIndex:(unsigned long long)arg1;
 - (void)_removePageOverlaysStartingAtIndex:(unsigned long long)arg1;
 - (void)_shiftPagesAtIndex:(unsigned long long)arg1 downwards:(BOOL)arg2;
+- (void)_updateVisibility;
 - (void)_updateVisibilityDelegateForVisiblePageView:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)backgroundImageForPage:(id)arg1 withQuality:(int *)arg2;
 - (void)changedBoundsForBoxNotification:(id)arg1;

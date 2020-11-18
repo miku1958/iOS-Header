@@ -181,6 +181,7 @@
 - (void)extendCurrentTTSRequested;
 - (void)handlePasscodeUnlockAndCancelRequest:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)handlePasscodeUnlockWithCompletion:(CDUnknownBlockType)arg1;
+- (void)handlePunchoutCommand:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleViewFullyRevealed;
 - (void)hasQueuedTTS:(CDUnknownBlockType)arg1;
 - (id)initWithConnection:(id)arg1 configuration:(id)arg2;
@@ -216,6 +217,7 @@
 - (void)shortTapAction;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (BOOL)shouldAutorotate;
+- (BOOL)shouldNonLocalDelegateHandlePunchouts;
 - (void)showPasscodeUnlockScreenThen:(CDUnknownBlockType)arg1;
 - (void)showPresentationWithIdentifier:(id)arg1 properties:(id)arg2 lockState:(unsigned long long)arg3;
 - (void)siriDidActivateFromSource:(long long)arg1;
@@ -230,6 +232,7 @@
 - (void)siriRemoteViewController:(id)arg1 didRequestCurrentTextInputWithReplyHandler:(CDUnknownBlockType)arg2;
 - (void)siriRemoteViewController:(id)arg1 didRequestKeyboard:(BOOL)arg2;
 - (void)siriRemoteViewController:(id)arg1 didRequestKeyboard:(BOOL)arg2 minimized:(BOOL)arg3;
+- (void)siriRemoteViewController:(id)arg1 didUpdateAudioCategoriesDisablingVolumeHUD:(id)arg2;
 - (void)siriRemoteViewController:(id)arg1 failTest:(id)arg2 withReason:(id)arg3;
 - (void)siriRemoteViewController:(id)arg1 handlePasscodeUnlockWithCompletion:(CDUnknownBlockType)arg2;
 - (void)siriRemoteViewController:(id)arg1 launchApplicationWithBundleIdentifier:(id)arg2 withURL:(id)arg3 launchOptions:(long long)arg4 replyHandler:(CDUnknownBlockType)arg5;
@@ -306,6 +309,7 @@
 - (id)underlyingConnection;
 - (void)updateContexts:(long long)arg1;
 - (void)updateRequestOptions:(id)arg1;
+- (void)updateSettingsOnRemoteSceneForInterfaceOrientationChange:(long long)arg1 willAnimationWithDuration:(double)arg2;
 - (void)updateToPresentationWithIdentifier:(id)arg1 presentationProperties:(id)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)updateViewForPercentageRevealed:(double)arg1;
 - (long long)userAccountCountForSiriView:(id)arg1;
@@ -315,7 +319,6 @@
 - (void)viewSafeAreaInsetsDidChange;
 - (id)viewServiceApplicationInfo;
 - (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillAppearFinishedForSiriRemoteViewController:(id)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

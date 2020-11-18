@@ -24,8 +24,6 @@
 - (void)_accessibilityTimeAnnouncementDidFinish;
 - (id)_accessibilityTimeTravelDate;
 - (BOOL)_accessibilityTimeTravelEnabled;
-- (void)_axAnnotateComplications;
-- (void)_axApplyAnnotationsToComplicationControllers:(id)arg1;
 - (BOOL)_axIsDoneAnnouncing;
 - (BOOL)_axIsWaitingToAnnounce;
 - (void)_axSetIsDoneAnnouncing:(BOOL)arg1;

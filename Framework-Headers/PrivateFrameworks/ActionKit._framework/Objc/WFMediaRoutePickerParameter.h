@@ -27,6 +27,7 @@
 - (id)accessoryIconForPossibleState:(id)arg1;
 - (id)defaultSerializedRepresentationForEnumeration:(id)arg1;
 - (id)enumeration:(id)arg1 localizedLabelForPossibleState:(id)arg2;
+- (BOOL)hidesAccessoryIconInEditor;
 - (id)initWithDefinition:(id)arg1;
 - (void)loadPossibleStatesForEnumeration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)localizedLabelForPossibleState:(id)arg1;
@@ -37,7 +38,9 @@
 - (Class)singleStateClass;
 - (id)sortedStatesForAvailableRoutes:(id)arg1;
 - (void)startDiscoveringRoutes;
+- (void)startUpdatingPossibleValues;
 - (void)stopDiscoveringRoutes;
+- (void)stopUpdatingPossibleValues;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <AssistantUI/AFUISiriSessionListener-Protocol.h>
 
-@class AFUISiriSession, NSString, SAUIDelayedActionCancelCommand, SAUIDelayedActionCommand;
+@class AFUISiriSession, NSString, SAUIAppPunchOut, SAUIDelayedActionCancelCommand, SAUIDelayedActionCommand;
 
 @protocol AFUISiriSessionLocalDelegate <AFUISiriSessionListener>
 - (void)siriSession:(AFUISiriSession *)arg1 didChangeToState:(long long)arg2;
@@ -21,5 +21,9 @@
 - (void)siriSessionShouldEndExtendAudioSessionForImminentPhoneCall;
 - (void)siriSessionShouldExtendAudioSessionForImminentPhoneCall;
 - (void)siriSessionWillEnd:(AFUISiriSession *)arg1;
+
+@optional
+- (void)handlePunchoutCommand:(SAUIAppPunchOut *)arg1 completion:(void (^)(BOOL))arg2;
+- (BOOL)shouldNonLocalDelegateHandlePunchouts;
 @end
 

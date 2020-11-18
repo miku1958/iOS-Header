@@ -14,6 +14,7 @@
 + (BOOL)wants2DOverlayControlsHidden;
 + (BOOL)wantsAnimationDisabled;
 + (BOOL)wantsDebugVisualizationEnabled;
++ (BOOL)wantsObjectPlacedWithoutPlane;
 + (BOOL)wantsRayTracedAmbientOcclusionEnabled;
 + (BOOL)wantsSTAREnabled;
 + (BOOL)wantsStatisticsShown;

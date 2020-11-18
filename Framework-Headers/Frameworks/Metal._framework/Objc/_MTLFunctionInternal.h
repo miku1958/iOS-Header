@@ -39,8 +39,8 @@ __attribute__((visibility("hidden")))
 - (long long)lineNumber;
 - (BOOL)needsFunctionConstantValues;
 - (id)newFunctionWithPluginData:(id)arg1 bitcodeType:(unsigned char)arg2;
-- (id)newSpecializedFunctionWithRequestType:(int)arg1 llvmTargetVersion:(unsigned int)arg2 constants:(id)arg3 functionCache:(id)arg4 error:(id *)arg5;
-- (void)newSpecializedFunctionWithRequestType:(int)arg1 llvmTargetVersion:(unsigned int)arg2 constants:(id)arg3 functionCache:(id)arg4 sync:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (id)newSpecializedFunctionWithRequestType:(int)arg1 llvmTargetVersion:(unsigned int)arg2 constants:(id)arg3 functionCache:(id)arg4 options:(unsigned int)arg5 error:(id *)arg6;
+- (void)newSpecializedFunctionWithRequestType:(int)arg1 llvmTargetVersion:(unsigned int)arg2 constants:(id)arg3 functionCache:(id)arg4 options:(unsigned int)arg5 sync:(BOOL)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (long long)patchControlPointCount;
 - (unsigned long long)patchType;
 - (id)pluginData;

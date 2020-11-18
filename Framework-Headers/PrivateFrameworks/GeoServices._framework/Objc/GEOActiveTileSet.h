@@ -20,7 +20,6 @@
     unsigned long long _availableTilesSpace;
     NSString *_baseURL;
     NSMutableArray *_countryRegionWhitelists;
-    NSMutableArray *_deviceSKUWhitelists;
     NSString *_localizationURL;
     NSMutableArray *_sentinelTiles;
     NSMutableArray *_supportedLanguages;
@@ -43,7 +42,6 @@
         unsigned int read_availableTiles:1;
         unsigned int read_baseURL:1;
         unsigned int read_countryRegionWhitelists:1;
-        unsigned int read_deviceSKUWhitelists:1;
         unsigned int read_localizationURL:1;
         unsigned int read_sentinelTiles:1;
         unsigned int read_supportedLanguages:1;
@@ -51,7 +49,6 @@
         unsigned int wrote_availableTiles:1;
         unsigned int wrote_baseURL:1;
         unsigned int wrote_countryRegionWhitelists:1;
-        unsigned int wrote_deviceSKUWhitelists:1;
         unsigned int wrote_localizationURL:1;
         unsigned int wrote_sentinelTiles:1;
         unsigned int wrote_supportedLanguages:1;
@@ -72,7 +69,6 @@
 @property (strong, nonatomic) NSString *baseURL;
 @property (nonatomic) int checksumType;
 @property (strong, nonatomic) NSMutableArray *countryRegionWhitelists;
-@property (strong, nonatomic) NSMutableArray *deviceSKUWhitelists;
 @property (readonly, nonatomic) BOOL hasBaseURL;
 @property (nonatomic) BOOL hasChecksumType;
 @property (readonly, nonatomic) BOOL hasLocalizationURL;
@@ -95,7 +91,6 @@
 
 + (id)buildDisputedBordersQueryItemsForCountry:(id)arg1 region:(id)arg2;
 + (Class)countryRegionWhitelistType;
-+ (Class)deviceSKUWhitelistType;
 + (BOOL)isValid:(id)arg1;
 + (Class)sentinelTileType;
 + (Class)supportedLanguageType;
@@ -108,21 +103,18 @@
 - (int)StringAsUpdateBehavior:(id)arg1;
 - (void)_addNoFlagsAvailableTiles:(struct GEOTileSetRegion)arg1;
 - (void)_addNoFlagsCountryRegionWhitelist:(id)arg1;
-- (void)_addNoFlagsDeviceSKUWhitelist:(id)arg1;
 - (void)_addNoFlagsSentinelTile:(id)arg1;
 - (void)_addNoFlagsSupportedLanguage:(id)arg1;
 - (id)_bestCountryRegionWhitelistMatchForCountry:(id)arg1 region:(id)arg2;
 - (void)_readAvailableTiles;
 - (void)_readBaseURL;
 - (void)_readCountryRegionWhitelists;
-- (void)_readDeviceSKUWhitelists;
 - (void)_readLocalizationURL;
 - (void)_readSentinelTiles;
 - (void)_readSupportedLanguages;
 - (void)_resetBestLanguage;
 - (void)addAvailableTiles:(struct GEOTileSetRegion)arg1;
 - (void)addCountryRegionWhitelist:(id)arg1;
-- (void)addDeviceSKUWhitelist:(id)arg1;
 - (void)addSentinelTile:(id)arg1;
 - (void)addSupportedLanguage:(id)arg1;
 - (struct GEOTileSetRegion)availableTilesAtIndex:(unsigned long long)arg1;
@@ -130,7 +122,6 @@
 - (id)checksumTypeAsString:(int)arg1;
 - (void)clearAvailableTiles;
 - (void)clearCountryRegionWhitelists;
-- (void)clearDeviceSKUWhitelists;
 - (void)clearSentinelTiles;
 - (void)clearSupportedLanguages;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -141,8 +132,6 @@
 - (id)dataForGenericTileType:(int)arg1 configuration:(id)arg2;
 - (void)dealloc;
 - (id)description;
-- (id)deviceSKUWhitelistAtIndex:(unsigned long long)arg1;
-- (unsigned long long)deviceSKUWhitelistsCount;
 - (id)dictionaryRepresentation;
 - (id)disputedBordersQueryItemsForCountry:(id)arg1 region:(id)arg2;
 - (unsigned long long)hash;

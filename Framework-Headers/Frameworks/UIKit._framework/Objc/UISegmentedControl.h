@@ -131,6 +131,7 @@
 - (void)_setEnabled:(BOOL)arg1 forcePropagateToSegments:(BOOL)arg2;
 - (void)_setHighlightedSegmentHighlighted:(BOOL)arg1;
 - (void)_setNeedsAppearanceUpdate;
+- (void)_setNeedsBackgroundAndContentViewUpdate;
 - (void)_setSegmentedControlAppearance:(CDStruct_41b0f204 *)arg1;
 - (void)_setSelected:(BOOL)arg1 forSegmentAtIndex:(int)arg2 forceInfoDisplay:(BOOL)arg3;
 - (void)_setSelected:(BOOL)arg1 highlighted:(BOOL)arg2 forSegmentAtIndex:(int)arg3 forceInfoDisplay:(BOOL)arg4;

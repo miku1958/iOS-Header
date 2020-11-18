@@ -46,6 +46,8 @@
 - (oneway void)getSharedUserID:(void (^)(NSString *, NSString *, NSError *))arg1;
 - (oneway void)getSharedUserIdForHomeUserId:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (oneway void)getSiriOutputVolumeForAudioRoute:(NSString *)arg1 completion:(void (^)(float, NSError *))arg2;
+- (oneway void)getSpokenNotificationShouldAlwaysSpeakNotificationsWithCompletion:(void (^)(BOOL))arg1;
+- (oneway void)getSpokenNotificationShouldSkipTriggerlessRepliesWithCompletion:(void (^)(BOOL))arg1;
 - (oneway void)getSpokenNotificationTemporarilyDisabledEndDateForApp:(NSString *)arg1 completion:(void (^)(NSDate *))arg2;
 - (oneway void)getSpokenNotificationTemporarilyDisabledEndDateWithCompletion:(void (^)(NSDate *))arg1;
 - (oneway void)getStereoPairState:(void (^)(BOOL, NSError *))arg1;
@@ -80,6 +82,8 @@
 - (oneway void)setOfflineDictationProfileOverridePath:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)setOutputVoice:(AFVoiceInfo *)arg1 withCompletion:(void (^)(void))arg2;
 - (oneway void)setSiriOutputVolume:(float)arg1 forAudioRoute:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (oneway void)setSpokenNotificationShouldAlwaysSpeakNotifications:(BOOL)arg1;
+- (oneway void)setSpokenNotificationShouldSkipTriggerlessReplies:(BOOL)arg1;
 - (oneway void)setSpokenNotificationTemporarilyDisabledForApp:(NSString *)arg1 until:(NSDate *)arg2;
 - (oneway void)setSpokenNotificationTemporarilyDisabledUntil:(NSDate *)arg1;
 - (oneway void)setSupplementalLanguageDictionary:(NSDictionary *)arg1 forProduct:(NSString *)arg2 completion:(void (^)(NSError *))arg3;

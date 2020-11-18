@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_continueHandlingFetchedShareMetadata:(id)arg1 shareURL:(id)arg2;
+- (void)_continueSharePCSPrepForShareMetadata:(id)arg1 shareURL:(id)arg2;
 - (BOOL)_currentUserIsOONForShareMetadata:(id)arg1;
 - (id)_decodeProtectedFullToken:(id)arg1 tokenMetadata:(id)arg2;
 - (void)_decryptRootRecordsForShareURL:(id)arg1 withMetadata:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleTokenResolveWithLookupInfo:(id)arg1 shareMetadata:(id)arg2 responseCode:(id)arg3 urlByShortTokenLookupInfos:(id)arg4 tokensToFetchByURL:(id)arg5;
 - (void)_performCallbackForURL:(id)arg1 withMetadata:(id)arg2 error:(id)arg3;
+- (void)_prepPPPCSDataForDugongShareMetadata:(id)arg1 withInvitationToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_prepareShortTokens;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;

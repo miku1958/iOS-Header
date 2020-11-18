@@ -63,6 +63,7 @@
 - (void)dealloc;
 - (id)initWithQueue:(id)arg1 msgDispatcher:(id)arg2;
 - (void)removeResponses:(id)arg1;
+- (void)reportOperationStartedForAccessory:(id)arg1;
 - (void)timeoutAndReportResults;
 
 @end

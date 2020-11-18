@@ -80,6 +80,7 @@
 - (id)importRemindersFromICSData:(id)arg1 insertIntoListChangeItem:(id)arg2 error:(id *)arg3;
 - (id)initWithStore:(id)arg1;
 - (void)performPreSaveActions;
+- (id)performRecurrenceClone;
 - (BOOL)saveSynchronouslyWithError:(id *)arg1;
 - (void)saveWithQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)updateAccount:(id)arg1;

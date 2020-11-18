@@ -54,6 +54,7 @@
 - (id)_prepareVoiceProfileWithSiriProfileId:(id)arg1 withUploadBlock:(CDUnknownBlockType)arg2;
 - (void)_stageVoiceProfileWithSiriProfileId:(id)arg1 fromPath:(id)arg2 withForceUpload:(BOOL)arg3;
 - (id)baseDir;
+- (id)cleanupInvalidCloudProfilesForLocale:(id)arg1 dryRun:(BOOL)arg2;
 - (id)devicesWithVoiceProfileIniCloudForLanguage:(id)arg1;
 - (void)discardAllSATEnrollment;
 - (void)discardSATEnrollmentForLanguageCode:(id)arg1;

@@ -407,6 +407,7 @@
 - (void)dismissPresentedViewController:(id)arg1;
 - (void)dismissVideoMessageRecordingViewController;
 - (void)dismissViewController:(id)arg1;
+- (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)dragControllerTranscriptDelegate;
 - (id)dragInteraction:(id)arg1 itemsForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
@@ -508,7 +509,9 @@
 - (void)presentPhotosApp;
 - (void)presentTrimControllerForMediaObject:(id)arg1;
 - (void)presentViewController:(id)arg1;
+- (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentationController:(id)arg1 willPresentWithAdaptiveStyle:(long long)arg2 transitionCoordinator:(id)arg3;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (id)presentedControllerDoneButtonItem;
 - (id)presentingViewControllerForOnboardingController:(id)arg1;
 - (id)previewActionsForPreviewController:(id)arg1;
@@ -647,6 +650,7 @@
 - (void)viewDidAppearDeferredSetup;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)viewDidLoad;
 - (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;
 - (id)viewForDragAndChatInputDropTarget;
 - (void)viewWillAppear:(BOOL)arg1;

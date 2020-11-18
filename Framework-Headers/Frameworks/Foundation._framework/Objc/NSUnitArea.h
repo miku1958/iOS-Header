@@ -17,6 +17,7 @@
 + (id)ares;
 + (id)baseUnit;
 + (id)hectares;
++ (void)initialize;
 + (id)squareCentimeters;
 + (id)squareFeet;
 + (id)squareInches;

@@ -24,7 +24,7 @@
 + (id)singleByteTokens;
 + (id)utf16Tokens;
 - (void).cxx_destruct;
-- (void)_applyNextStringInEncoding:(unsigned long long)arg1 quotedPrintable:(BOOL)arg2 stopTokens:(int)arg3 trim:(BOOL)arg4 maximumValueLength:(unsigned long long)arg5 intoString:(id)arg6;
+- (BOOL)_applyNextStringInEncoding:(unsigned long long)arg1 quotedPrintable:(BOOL)arg2 stopTokens:(int)arg3 trim:(BOOL)arg4 maximumValueLength:(unsigned long long)arg5 intoString:(id)arg6;
 - (BOOL)advancePastEOL;
 - (BOOL)advancePastEOLSingle;
 - (BOOL)advancePastEOLUnicode;
@@ -64,6 +64,7 @@
 - (int)nextTokenPeekUnicode:(BOOL)arg1 length:(long long)arg2;
 - (id)nextUnicodeBase64Line:(BOOL *)arg1;
 - (id)nextUnicodeStringStopTokens:(int)arg1 quotedPrintable:(BOOL)arg2 trim:(BOOL)arg3 maximumValueLength:(unsigned long long)arg4;
+- (id)os_log;
 - (int)peekAtNextToken;
 - (struct _NSRange)rangeWithLength:(unsigned long long)arg1 lTrim:(unsigned long long)arg2 rTrim:(unsigned long long)arg3;
 - (int)readNextToken;

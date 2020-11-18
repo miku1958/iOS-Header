@@ -10,12 +10,13 @@
 #import <WorkflowUI/WFNonViewResponderDelegate-Protocol.h>
 #import <WorkflowUI/WFVariableUIDelegate-Protocol.h>
 
-@class NSString, UIDatePicker, UIViewController, WFNonViewResponder, WFVariableInputCoordinator;
+@class NSString, UIDatePicker, UIView, UIViewController, WFNonViewResponder, WFVariableInputCoordinator;
 
 @interface WFDatePickerParameterSummaryEditor : WFModuleSummaryEditor <UIPopoverPresentationControllerDelegate, WFNonViewResponderDelegate, WFVariableUIDelegate>
 {
     BOOL _isPickingMagicVariable;
     UIViewController *_presentedViewController;
+    UIView *_sourceView;
     UIDatePicker *_datePicker;
     WFNonViewResponder *_datePickerResponder;
     WFVariableInputCoordinator *_variableCoordinator;
@@ -28,6 +29,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isPickingMagicVariable; // @synthesize isPickingMagicVariable=_isPickingMagicVariable;
 @property (weak, nonatomic) UIViewController *presentedViewController; // @synthesize presentedViewController=_presentedViewController;
+@property (weak, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) WFVariableInputCoordinator *variableCoordinator; // @synthesize variableCoordinator=_variableCoordinator;
 
@@ -43,6 +45,7 @@
 - (void)setVariableProvider:(id)arg1;
 - (void)setVariableUIDelegate:(id)arg1;
 - (void)showActionOutputPickerFromSourceResponder:(id)arg1 allowExtensionInput:(BOOL)arg2 variableProvider:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)sourceViewTintColorDidChange;
 - (id)stateByReplacingVariableFromInitialState:(id)arg1 withVariable:(id)arg2;
 
 @end

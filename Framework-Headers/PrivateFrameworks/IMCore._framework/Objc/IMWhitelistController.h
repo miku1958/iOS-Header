@@ -35,8 +35,10 @@
 - (void).cxx_destruct;
 - (BOOL)allowedToShowConversationWithHandleIDs:(id)arg1;
 - (BOOL)allowedToShowConversationWithHandles:(id)arg1;
+- (id)init;
 - (void)providersChangedForProviderManager:(id)arg1;
 - (void)registerForScreenTimeNotifications;
+- (void)reloadEmergencyNumbersSet;
 
 @end
 

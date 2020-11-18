@@ -12,6 +12,7 @@
 
 @optional
 - (double)playButtonTileViewController:(PUPlayButtonTileViewController *)arg1 delayForButtonAnimation:(BOOL)arg2;
-- (void)playButtonTileViewController:(PUPlayButtonTileViewController *)arg1 didTapButton:(BOOL)arg2;
+- (void)playButtonTileViewControllerDidTapButton:(PUPlayButtonTileViewController *)arg1;
+- (BOOL)playButtonTileViewControllerShouldShowPauseButton:(PUPlayButtonTileViewController *)arg1;
 @end
 

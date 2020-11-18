@@ -7,22 +7,29 @@
 #import <HomeKit/HMTrigger.h>
 
 #import <Home/HFStateDumpBuildable-Protocol.h>
+#import <Home/HFTriggerProtocol-Protocol.h>
 
 @class NSString;
 
-@interface HMTrigger (HFDebugging) <HFStateDumpBuildable>
+@interface HMTrigger (HFDebugging) <HFStateDumpBuildable, HFTriggerProtocol>
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL hf_isShortcutOwned;
 @property (readonly, nonatomic) BOOL hf_requiresConfirmationToRun;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 + (id)hf_localizedStringForSignficantEvent:(id)arg1 offset:(id)arg2;
 + (id)hf_sanitizeTriggerName:(id)arg1 home:(id)arg2;
 - (id)hf_forceDisableReasons;
+- (id)hf_naturalLanguageNameWithHome:(id)arg1 type:(unsigned long long)arg2;
 - (BOOL)hf_shouldDisplayTrigger;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (unsigned long long)hf_triggerType;
 @end
 

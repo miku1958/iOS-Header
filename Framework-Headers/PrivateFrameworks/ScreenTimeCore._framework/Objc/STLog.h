@@ -14,6 +14,7 @@
 + (id)appInfo;
 + (id)appMonitor;
 + (id)ask;
++ (id)awd;
 + (id)blueprint;
 + (id)checkpoint;
 + (id)cloudkit;

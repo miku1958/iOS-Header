@@ -50,6 +50,7 @@
 
 + (BOOL)supportsEditingTextAttachment:(id)arg1 inSlotWithIdentifier:(id)arg2;
 + (BOOL)supportsLongPressGestureForSlotWithIdentifier:(id)arg1;
++ (unsigned long long)variableResultTypeForParameter:(id)arg1;
 - (void).cxx_destruct;
 - (void)_beginEditingVariableAttachment:(id)arg1 withParentView:(id)arg2;
 - (void)beginEditingNewArrayElementFromSourceViewController:(id)arg1 sourceView:(id)arg2 sourceRect:(struct CGRect)arg3;
@@ -63,6 +64,7 @@
 - (id)initWithParameter:(id)arg1 initialState:(id)arg2 initialArrayState:(id)arg3 arrayIndex:(unsigned long long)arg4 processing:(BOOL)arg5;
 - (void)presentVariablePickerWithCurrentState:(id)arg1 fromViewController:(id)arg2 sourceView:(id)arg3 sourceRect:(struct CGRect)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)requestTextEntry;
+- (void)sourceViewTintColorDidChange;
 - (void)stageState:(id)arg1;
 - (id)stateByReplacingVariableFromInitialState:(id)arg1 withVariable:(id)arg2;
 - (void)textEntryDidFinish;
@@ -76,7 +78,6 @@
 - (void)variableResponderDidReturnToKeyboard:(id)arg1;
 - (void)variableResponderDidRevealAction:(id)arg1;
 - (BOOL)variableResponderHasText:(id)arg1;
-- (unsigned long long)variableResultType;
 
 @end
 

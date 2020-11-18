@@ -13,6 +13,7 @@
 @interface AMSUserNotification : NSObject <AMSBagConsumer>
 {
     BOOL _explicitContent;
+    BOOL _shouldSuppressDefaultAction;
     ACAccount *_account;
     NSURL *_artworkUrl;
     NSURL *_videoUrl;
@@ -46,6 +47,7 @@
 @property (nonatomic) long long intent; // @synthesize intent=_intent;
 @property (strong, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
 @property (strong, nonatomic) NSDictionary *metricsEvent; // @synthesize metricsEvent=_metricsEvent;
+@property (nonatomic) BOOL shouldSuppressDefaultAction; // @synthesize shouldSuppressDefaultAction=_shouldSuppressDefaultAction;
 @property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *threadIdentifier; // @synthesize threadIdentifier=_threadIdentifier;
@@ -60,6 +62,7 @@
 + (id)bagKeySet;
 + (id)bagSubProfile;
 + (id)bagSubProfileVersion;
++ (long long)explicitEnabledForCenterBundleID:(id)arg1;
 + (id)handleNotificationResponse:(id)arg1 bag:(id)arg2;
 + (id)handleNotificationResponse:(id)arg1 bagContract:(id)arg2;
 + (void)handleServiceExtensionNotificationRequest:(id)arg1 bag:(id)arg2 withContentHandler:(CDUnknownBlockType)arg3;

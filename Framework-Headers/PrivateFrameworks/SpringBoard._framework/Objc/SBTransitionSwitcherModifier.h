@@ -34,6 +34,7 @@
 - (long long)keyboardSuppressionMode;
 - (long long)layoutUpdateMode;
 - (long long)sceneDeactivationReason;
+- (BOOL)shouldPerformCrossfadeForReduceMotion;
 - (id)transitionDidEnd;
 - (id)transitionWillBegin;
 - (id)transitionWillUpdate;

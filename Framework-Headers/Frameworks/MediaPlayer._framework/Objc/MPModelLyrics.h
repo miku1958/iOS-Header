@@ -14,10 +14,12 @@
 
 @property (copy, nonatomic) NSString *TTML; // @dynamic TTML;
 @property (nonatomic) BOOL hasStoreLyrics; // @dynamic hasStoreLyrics;
+@property (nonatomic) BOOL hasTimeSyncedLyrics; // @dynamic hasTimeSyncedLyrics;
 @property (copy, nonatomic) NSString *text; // @dynamic text;
 
 + (id)__TTML_KEY;
 + (id)__hasStoreLyrics_KEY;
++ (id)__hasTimeSyncedLyrics_KEY;
 + (id)__text_KEY;
 
 @end

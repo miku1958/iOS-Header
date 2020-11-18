@@ -8,7 +8,7 @@
 
 #import <ScreenTimeUI/STAllowanceDetailListControllerDelegate-Protocol.h>
 
-@class NSArray, NSObject, NSString, PSSpecifier;
+@class NSArray, NSDictionary, NSObject, NSString, PSSpecifier;
 @protocol STRootViewModelCoordinator;
 
 __attribute__((visibility("hidden")))
@@ -17,9 +17,11 @@ __attribute__((visibility("hidden")))
     NSObject<STRootViewModelCoordinator> *_coordinator;
     NSArray *_allowanceSpecifiers;
     PSSpecifier *_enableAllAllowancesSpecifier;
+    NSDictionary *_allowanceSpecifiersByBundleIdentifier;
 }
 
 @property (copy) NSArray *allowanceSpecifiers; // @synthesize allowanceSpecifiers=_allowanceSpecifiers;
+@property (copy) NSDictionary *allowanceSpecifiersByBundleIdentifier; // @synthesize allowanceSpecifiersByBundleIdentifier=_allowanceSpecifiersByBundleIdentifier;
 @property (strong, nonatomic) NSObject<STRootViewModelCoordinator> *coordinator; // @synthesize coordinator=_coordinator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -32,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)_adjustCellHeightForAllowanceSpecifier:(id)arg1;
 - (id)_allAllowancesEnabled:(id)arg1;
 - (void)_allowancesDidChange;
+- (void)_didFetchAppInfo:(id)arg1;
 - (void)_setAllAllowancesEnabled:(id)arg1 specifier:(id)arg2;
 - (void)_showAllowanceDetailController:(id)arg1;
 - (void)_showConfirmDeletionView:(id)arg1;

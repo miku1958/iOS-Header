@@ -67,7 +67,7 @@
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
-- (void)dismiss;
+- (void)dismissAnimated:(BOOL)arg1;
 - (void)dismissScrollGestureUpdated:(id)arg1;
 - (void)dismissTapGestureUpdated:(id)arg1;
 - (void)enumerateTodayOverlayObserversUsingBlock:(CDUnknownBlockType)arg1;
@@ -78,9 +78,10 @@
 - (void)homeGesturePerformedForBarSwipeAffordanceView:(id)arg1;
 - (id)init;
 - (id)initWithWindowLevel:(double)arg1 homeGestureParticipantIdentifier:(long long)arg2 systemGestureType:(unsigned long long)arg3 secure:(BOOL)arg4;
+- (void)presentAnimated:(BOOL)arg1;
 - (void)removeTodayOverlayObserver:(id)arg1;
 - (void)setDisplayLayoutElementActive:(BOOL)arg1;
-- (void)setPresentationProgress:(double)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)setPresentationProgress:(double)arg1 interactive:(BOOL)arg2 animated:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (id)testScrollView;

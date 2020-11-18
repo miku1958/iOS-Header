@@ -19,6 +19,7 @@
 
 + (Class)homeKitRepresentationClass;
 - (void).cxx_destruct;
+- (id)_commitSetDiff:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)_failureFutureWithReason:(id)arg1;
 - (id)commitItem;
 - (id)commitItemBuilderSetDiff:(id)arg1 addBlock:(CDUnknownBlockType)arg2 deleteBlock:(CDUnknownBlockType)arg3;

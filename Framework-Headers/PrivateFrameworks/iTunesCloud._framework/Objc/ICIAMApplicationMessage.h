@@ -14,6 +14,7 @@
 {
     double _endDate;
     double _startDate;
+    int _assetPrefetchStrategy;
     NSMutableArray *_contentPages;
     int _globalPresentationPolicyGroup;
     NSString *_identifier;
@@ -30,6 +31,7 @@
     struct {
         unsigned int endDate:1;
         unsigned int startDate:1;
+        unsigned int assetPrefetchStrategy:1;
         unsigned int globalPresentationPolicyGroup:1;
         unsigned int maximumDisplays:1;
         unsigned int messageType:1;
@@ -40,10 +42,12 @@
     } _has;
 }
 
+@property (nonatomic) int assetPrefetchStrategy; // @synthesize assetPrefetchStrategy=_assetPrefetchStrategy;
 @property (nonatomic) BOOL carousel; // @synthesize carousel=_carousel;
 @property (strong, nonatomic) NSMutableArray *contentPages; // @synthesize contentPages=_contentPages;
 @property (nonatomic) double endDate; // @synthesize endDate=_endDate;
 @property (nonatomic) int globalPresentationPolicyGroup; // @synthesize globalPresentationPolicyGroup=_globalPresentationPolicyGroup;
+@property (nonatomic) BOOL hasAssetPrefetchStrategy;
 @property (nonatomic) BOOL hasCarousel;
 @property (nonatomic) BOOL hasCloseButton; // @synthesize hasCloseButton=_hasCloseButton;
 @property (nonatomic) BOOL hasEndDate;
@@ -72,11 +76,13 @@
 + (Class)contentPagesType;
 + (Class)targetType;
 - (void).cxx_destruct;
+- (int)StringAsAssetPrefetchStrategy:(id)arg1;
 - (int)StringAsGlobalPresentationPolicyGroup:(id)arg1;
 - (int)StringAsMessageType:(id)arg1;
 - (int)StringAsModalPresentationStyle:(id)arg1;
 - (void)addContentPages:(id)arg1;
 - (void)addTarget:(id)arg1;
+- (id)assetPrefetchStrategyAsString:(int)arg1;
 - (void)clearContentPages;
 - (void)clearTargets;
 - (id)contentPagesAtIndex:(unsigned long long)arg1;

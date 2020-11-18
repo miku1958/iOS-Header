@@ -31,7 +31,9 @@
 @property (strong, nonatomic) HMHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property (readonly, nonatomic) NSArray *homes; // @synthesize homes=_homes;
 @property (readonly, nonatomic) NSArray *homesToWhichWeCanAddHomeAutomations;
+@property (readonly, nonatomic) NSArray *homesToWhichWeHaveAdminAccess;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *loadHomesGroup; // @synthesize loadHomesGroup=_loadHomesGroup;
+@property (readonly, nonatomic) unsigned long long status;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSMutableArray *updateHomesCompletionHandlers; // @synthesize updateHomesCompletionHandlers=_updateHomesCompletionHandlers;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *updatesHomesQueue; // @synthesize updatesHomesQueue=_updatesHomesQueue;

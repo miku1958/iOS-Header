@@ -48,6 +48,7 @@
 - (void)invalidate;
 - (void)loadView;
 - (void)operation:(id)arg1 presenceStateChanged:(BOOL)arg2;
+- (void)showStatement:(id)arg1 account:(id)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewSafeAreaInsetsDidChange;

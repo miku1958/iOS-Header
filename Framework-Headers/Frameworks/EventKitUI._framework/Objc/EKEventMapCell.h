@@ -23,6 +23,7 @@
 - (void)_drawContentInRect:(struct CGRect)arg1 selected:(BOOL)arg2;
 - (void)_drawSeparatorInRect:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

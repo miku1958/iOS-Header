@@ -9,7 +9,7 @@
 #import <Proximity/PRBeaconDelegate-Protocol.h>
 #import <Proximity/PRProximityEstimatorDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSSet, NSSortDescriptor, NSString, PRBeacon, PRProximityEstimator;
+@class NSArray, NSData, NSMutableDictionary, NSSet, NSSortDescriptor, NSString, PRBeacon, PRProximityEstimator;
 @protocol OS_dispatch_queue, OS_os_log, PRSharingSessionDelegate;
 
 @interface PRSharingSession : NSObject <PRProximityEstimatorDelegate, PRBeaconDelegate>
@@ -25,6 +25,8 @@
     BOOL _needToRestart;
     NSMutableDictionary *_scores;
     double _lastScoreReportMachContinuousTime;
+    double _lastBigHeadFirstReportTime;
+    NSData *_lastBigHeadMacAddress;
     NSArray *_lastReportedScores;
     struct SharingImportanceMeasurements _measurements;
     BOOL _useRegionBasedEstimator;

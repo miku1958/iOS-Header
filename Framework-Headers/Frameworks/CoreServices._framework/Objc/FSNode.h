@@ -107,6 +107,7 @@ __attribute__((visibility("hidden")))
 - (id)pathWithError:(id *)arg1;
 - (void)prepareForReuse;
 - (id)redactedDescription;
+- (void)removeCachedResourceValueForKey:(id)arg1;
 - (id)resolvedNodeWithFlags:(unsigned int)arg1 error:(id *)arg2;
 - (BOOL)setExtendedAttribute:(id)arg1 name:(id)arg2 options:(int)arg3 error:(id *)arg4;
 - (BOOL)setFinderInfo:(const CDUnion_739f5cf2 *)arg1 error:(id *)arg2;

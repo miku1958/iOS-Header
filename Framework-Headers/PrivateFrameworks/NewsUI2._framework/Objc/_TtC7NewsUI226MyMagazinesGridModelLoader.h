@@ -16,6 +16,7 @@
     MISSING_TYPE *issueService;
     MISSING_TYPE *issueModelFactory;
     MISSING_TYPE *tagService;
+    MISSING_TYPE *$__lazy_storage_$_lazyInitializingPromise;
 }
 
 @end

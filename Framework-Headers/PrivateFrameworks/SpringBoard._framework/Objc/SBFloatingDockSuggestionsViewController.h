@@ -12,12 +12,12 @@
 #import <SpringBoard/SBIconViewQuerying-Protocol.h>
 #import <SpringBoard/SBLayoutStateTransitionObserver-Protocol.h>
 
-@class NSMapTable, NSMutableArray, NSSet, NSString, SBAppSuggestionManager, SBApplicationController, SBDockIconListView, SBFloatingDockSuggestionsModel, SBFloatingDockViewController, SBIconController, SBIconListModel, SBLayoutStateTransitionCoordinator, SBRecentDisplayItemsDataStore, SBRecentDisplayItemsDefaults;
+@class NSMutableArray, NSMutableDictionary, NSSet, NSString, SBAppSuggestionManager, SBApplicationController, SBDockIconListView, SBFloatingDockSuggestionsModel, SBFloatingDockViewController, SBIconController, SBIconListModel, SBLayoutStateTransitionCoordinator, SBRecentDisplayItemsDataStore, SBRecentDisplayItemsDefaults;
 @protocol SBFloatingDockSuggestionsViewControllerDelegate, SBIconViewProviding;
 
 @interface SBFloatingDockSuggestionsViewController : UIViewController <SBFloatingDockSuggestionsModelDelegate, SBLayoutStateTransitionObserver, SBIconViewProviding, SBFloatingDockSuggestionsViewProviding, SBIconViewQuerying>
 {
-    NSMapTable *_icons;
+    NSMutableDictionary *_icons;
     BOOL _visible;
     SBFloatingDockViewController *_floatingDockViewController;
     id<SBFloatingDockSuggestionsViewControllerDelegate> _delegate;

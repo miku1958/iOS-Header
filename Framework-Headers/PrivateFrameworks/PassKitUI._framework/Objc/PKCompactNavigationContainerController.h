@@ -7,17 +7,22 @@
 #import <UIKit/UIViewController.h>
 
 #import <PassKitUI/PKContentContainerObserver-Protocol.h>
+#import <PassKitUI/PKViewWindowObserver-Protocol.h>
 #import <PassKitUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PassKitUI/UINavigationControllerDelegate-Protocol.h>
 #import <PassKitUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class NSString, PKCompactNavigationContainedNavigationController, UITapGestureRecognizer;
+@class NSString, PKCompactNavigationContainedNavigationController, UITapGestureRecognizer, UIView;
 @protocol PKCompactNavigationContainerControllerDelegate, UICoordinateSpace;
 
-@interface PKCompactNavigationContainerController : UIViewController <UIViewControllerTransitioningDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate, PKContentContainerObserver>
+@interface PKCompactNavigationContainerController : UIViewController <UIViewControllerTransitioningDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate, PKContentContainerObserver, PKViewWindowObserver>
 {
+    BOOL _centeredCard;
     BOOL _hasExplicitlyDefinedSupportedInterfaceOrientations;
     unsigned long long _explicitlyDefinedSupportedInterfaceOrientations;
+    BOOL _requiresMasking;
+    UIView *_maskingContainerView;
+    struct CGRect _maximumModalPresentationFrame;
     UIViewController *_presentationContextVC;
     CDStruct_47050b7f _topVCInfo;
     struct CGRect _statusBarFrame;
@@ -26,6 +31,11 @@
     unsigned long long _pendingTopVCIdentifier;
     unsigned long long _updateChildViewControllerSizeCounter;
     UITapGestureRecognizer *_tapGestureRecognizer;
+    unsigned char _visibility;
+    BOOL _keyboardVisible;
+    struct CGRect _keyboardFrame;
+    struct CGRect _lastKeyboardFrame;
+    BOOL _didMoveToWindowDirtiesLayout;
     BOOL _presentingNavigationController;
     PKCompactNavigationContainedNavigationController *_containedNavigationController;
     unsigned long long _style;
@@ -38,6 +48,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKCompactNavigationContainerControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL didMoveToWindowDirtiesLayout; // @synthesize didMoveToWindowDirtiesLayout=_didMoveToWindowDirtiesLayout;
 @property (readonly, nonatomic) id<UICoordinateSpace> exclusionCoordinateSpace; // @synthesize exclusionCoordinateSpace=_exclusionCoordinateSpace;
 @property (readonly, nonatomic) struct CGRect exclusionRect; // @synthesize exclusionRect=_exclusionRect;
 @property (readonly) unsigned long long hash;
@@ -52,6 +63,9 @@
 - (CDStruct_47050b7f)_infoForViewController:(id)arg1;
 - (struct CGSize)_navigationControllerSizeForChildViewControllerInfo:(CDStruct_47050b7f)arg1 withCurrentInfo:(CDStruct_47050b7f)arg2;
 - (struct CGRect)_targetNavigationControllerFrameForInfo:(CDStruct_47050b7f)arg1;
+- (void)_updateForKeyboardIfNecessary;
+- (void)_updateLayoutForKeyboardAction:(CDUnknownBlockType)arg1;
+- (void)_updateStatusBarFrame;
 - (void)_updateTopViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)_updateTopViewControllerAsync:(id)arg1 animated:(BOOL)arg2;
 - (id)animationControllerForDismissedController:(id)arg1;
@@ -71,20 +85,30 @@
 - (id)initWithNavigationController:(id)arg1;
 - (id)initWithNavigationController:(id)arg1 style:(unsigned long long)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)insertBackgroundLevelView:(id)arg1;
+- (void)keyboardWillChange:(id)arg1;
+- (void)keyboardWillHide:(id)arg1;
+- (void)keyboardWillShow:(id)arg1;
 - (void)loadView;
 - (struct CGSize)modalPresentationSize;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (struct CGSize)navigationControllerSizeForChildViewControllerPreferredContentSize:(struct CGSize)arg1 isRoot:(BOOL)arg2;
+- (void)observedView:(id)arg1 didMoveToWindow:(id)arg2;
 - (long long)preferredUserInterfaceStyle;
+- (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
 - (void)setExclusionRect:(struct CGRect)arg1 withCoordinateSpace:(id)arg2;
 - (void)setSupportedInterfaceOrientations:(unsigned long long)arg1;
-- (void)statusBarFrameWillChange:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)tapGestureRecognized:(id)arg1;
 - (BOOL)updateChildViewControllerSizeAnimated:(BOOL)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

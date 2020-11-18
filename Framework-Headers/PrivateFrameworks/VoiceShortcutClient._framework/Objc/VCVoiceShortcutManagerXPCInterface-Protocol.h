@@ -18,7 +18,7 @@
 - (void)generateSingleUseTokenForWorkflowIdentifier:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)getConfiguredTriggerDescriptionsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)getNumberOfVoiceShortcutsWithCompletion:(void (^)(unsigned long long, NSError *))arg1;
-- (void)getShareSheetWorkflowsForTypeIdentifiers:(NSArray *)arg1 hostBundleIdentifier:(NSString *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (void)getShareSheetWorkflowsForExtensionMatchingDictionaries:(NSArray *)arg1 hostBundleIdentifier:(NSString *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)getShortcutSuggestionsForAllAppsWithLimit:(unsigned long long)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)getShortcutSuggestionsForAppWithBundleIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)getSiriPodcastsDatabaseURLWithCompletion:(void (^)(NSSecurityScopedURLWrapper *, NSError *))arg1;
@@ -27,6 +27,7 @@
 - (void)getVoiceShortcutsForAppWithBundleIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)getVoiceShortcutsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)hasRunEventsInTheLast30DaysWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)obliterateShortcuts:(void (^)(NSError *))arg1;
 - (void)refreshTriggerWithIdentifier:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)requestDataMigration:(void (^)(BOOL, NSError *))arg1;
 - (void)requestSyncToWatchWithForceReset:(BOOL)arg1 completion:(void (^)(BOOL, NSError *))arg2;

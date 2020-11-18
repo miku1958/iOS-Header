@@ -31,6 +31,7 @@
 - (id)layoutSettings;
 - (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (double)opacityForIndex:(unsigned long long)arg1;
+- (id)opacitySettings;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (id)topMostAppLayouts;
 - (id)transitionDidEnd;

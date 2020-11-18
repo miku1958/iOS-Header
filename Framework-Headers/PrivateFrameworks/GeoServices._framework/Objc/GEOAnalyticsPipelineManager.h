@@ -30,6 +30,7 @@
 - (BOOL)PlatformDiagAndUsage;
 - (BOOL)PlatformDiagAndUsageOrAppleInternal;
 - (void)flushEvalData;
+- (id)getEvalStatus;
 - (id)init;
 - (void)initiateUploadOfType:(int)arg1;
 - (void)logToDiagAndUsageUnderBugId:(id)arg1 filePrefix:(id)arg2 logData:(id)arg3;
@@ -39,6 +40,7 @@
 - (void)setEvalMode:(BOOL)arg1;
 - (void)setShortSessionValues:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)shortSessionValuesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)showEvalDataWithPredicate:(id)arg1 visitorBlock:(CDUnknownBlockType)arg2 summaryBlock:(CDUnknownBlockType)arg3;
 
 @end
 

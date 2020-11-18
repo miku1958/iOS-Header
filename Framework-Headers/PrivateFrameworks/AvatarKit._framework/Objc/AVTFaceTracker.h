@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ARFrame, ARSession, AVTFaceTrackingInfo, NSLock, NSMutableArray, NSURL;
+@class ARFrame, ARSession, AVTFaceTrackingInfo, MISSING_TYPE, NSLock, NSMutableArray, NSURL;
 @protocol OS_dispatch_semaphore;
 
 @interface AVTFaceTracker : NSObject
@@ -53,6 +53,7 @@
 @property (readonly) AVTFaceTrackingInfo *faceTrackingInfo; // @synthesize faceTrackingInfo=_trackingInfo;
 @property (nonatomic, getter=faceTrackingIsPaused) BOOL faceTrackingPaused; // @synthesize faceTrackingPaused=_faceTrackingPaused;
 @property (copy) NSURL *faceTrackingRecordingURL;
+@property (readonly) float fieldOfView;
 @property (nonatomic) long long interfaceOrientation;
 @property (readonly) unsigned long long lastTrackingCaptureTimestamp; // @synthesize lastTrackingCaptureTimestamp=_lastTrackingCaptureTimestamp;
 @property (readonly) double lastTrackingDate; // @synthesize lastTrackingDate=_lastTrackingDate;
@@ -63,6 +64,8 @@
 @property (nonatomic) BOOL shouldConstraintHeadPose; // @synthesize shouldConstraintHeadPose=_shouldConstraintHeadPose;
 @property (nonatomic) BOOL shouldUseAudioData;
 @property (nonatomic) BOOL skipUpdates; // @synthesize skipUpdates=_skipUpdates;
+@property (readonly) float videoAspectRatio;
+@property (readonly) MISSING_TYPE *videoDimensions;
 
 + (void)setUsesInternalTrackingPipeline:(BOOL)arg1;
 + (BOOL)usesInternalTrackingPipeline;

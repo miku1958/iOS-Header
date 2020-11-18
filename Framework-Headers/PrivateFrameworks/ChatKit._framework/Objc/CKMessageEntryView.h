@@ -28,7 +28,6 @@
     BOOL _shouldShowCharacterCount;
     BOOL _shouldKnockoutCoverView;
     BOOL _keyboardVisible;
-    BOOL _useWindowBottomSafeAreaInsetOverride;
     BOOL _entryFieldCollapsed;
     BOOL _extendAppStripBlurToKeyplaneTop;
     BOOL _disablePluginButtons;
@@ -42,6 +41,7 @@
     BOOL _shouldConfigureForFullscreenAppView;
     BOOL _performingActionMenuSend;
     BOOL _animatingLayoutChange;
+    BOOL _isTransitioningForBrowserSwitcher;
     BOOL _entryFieldUpdaterCollapsedValue;
     BOOL _entryFieldUpdaterAnimatedValue;
     NSArray *_keyCommands;
@@ -141,6 +141,7 @@
 @property (strong, nonatomic) UIInputContextHistory *inputContextHistory; // @synthesize inputContextHistory=_inputContextHistory;
 @property (weak, nonatomic) id<CKMessageEntryViewInputDelegate> inputDelegate; // @synthesize inputDelegate=_inputDelegate;
 @property (readonly, nonatomic) BOOL isAudioActionMenuVisible;
+@property (nonatomic) BOOL isTransitioningForBrowserSwitcher; // @synthesize isTransitioningForBrowserSwitcher=_isTransitioningForBrowserSwitcher;
 @property (copy, nonatomic) NSArray *keyCommands; // @synthesize keyCommands=_keyCommands;
 @property (nonatomic, getter=isKeyboardVisible) BOOL keyboardVisible; // @synthesize keyboardVisible=_keyboardVisible;
 @property (strong, nonatomic) UIView *knockoutCoverView; // @synthesize knockoutCoverView=_knockoutCoverView;
@@ -174,7 +175,6 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UISwipeGestureRecognizer *swipeGestureRecognizer; // @synthesize swipeGestureRecognizer=_swipeGestureRecognizer;
 @property (nonatomic, getter=hasUnreachableEmergencyRecipient) BOOL unreachableEmergencyRecipient; // @synthesize unreachableEmergencyRecipient=_unreachableEmergencyRecipient;
-@property (nonatomic) BOOL useWindowBottomSafeAreaInsetOverride; // @synthesize useWindowBottomSafeAreaInsetOverride=_useWindowBottomSafeAreaInsetOverride;
 @property (strong, nonatomic) CKMessageEntryWaveformView *waveformView; // @synthesize waveformView=_waveformView;
 @property (nonatomic) struct CGSize waveformViewSize; // @synthesize waveformViewSize=_waveformViewSize;
 
@@ -241,7 +241,7 @@
 - (void)dismissAudioActionMenuAnimated:(BOOL)arg1;
 - (void)endDeferringEntryFieldCollapsedStateChanges;
 - (void)expandGestureRecongnized;
-- (void)finishSmallBrowserSwitcherTransition;
+- (void)finishBrowserSwitcherCompactTransition;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)handleContentViewChangeWithCompletion:(CDUnknownBlockType)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -278,7 +278,7 @@
 - (double)placeholderHeight;
 - (void)playMenuItemAction:(id)arg1;
 - (BOOL)pluginButtonsEnabled;
-- (void)prepareForSmallBrowserSwitcherTransition;
+- (void)prepareForBrowserSwitcherCompactTransitionIsSnapshotting:(BOOL)arg1;
 - (void)presentAudioActionMenu;
 - (struct UIEdgeInsets)safeAreaInsets;
 - (void)safeAreaInsetsDidChange;
@@ -298,6 +298,7 @@
 - (void)stopRecordingForRaiseGestureWithFailure:(BOOL)arg1;
 - (void)switcherView:(id)arg1 didMagnify:(BOOL)arg2;
 - (void)switcherView:(id)arg1 didSelectPluginAtIndex:(id)arg2;
+- (void)textEffectsWindowOffsetDidChange:(id)arg1;
 - (void)touchUpInsideDeleteAudioRecordingButton:(id)arg1;
 - (void)touchUpInsideSendButton:(id)arg1;
 - (void)updateAppStripFrame;

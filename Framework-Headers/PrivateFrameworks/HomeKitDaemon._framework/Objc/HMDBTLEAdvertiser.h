@@ -39,6 +39,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue;
 
++ (id)initializeAdvertiser;
 + (id)sharedAdvertiser;
 - (void).cxx_destruct;
 - (void)_advertisementTimeout;

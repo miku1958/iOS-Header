@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (id)_storeMediaItemFromMPMediaItem:(id)arg1;
 - (id)_storeMediaItemsFromVideosPlayable:(id)arg1 andStoreDictionary:(id)arg2;
 - (id)_tvpMediaTypeFromPlayableType:(id)arg1 isRental:(BOOL)arg2;
+- (id)_tvpRatingDomainFromUTSRatingDomain:(id)arg1;
 - (void)_updatePlaybackStartReason;
 - (long long)_videoDynamimcRangeFromMPColorCapability:(long long)arg1;
 - (long long)_videoResolutionFromMPVideoQuality:(long long)arg1;

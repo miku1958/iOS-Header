@@ -14,6 +14,7 @@
 - (void)observeIdleTimerModeWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeRotationModeWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeStatusBarUserNameOverrideWithBlock:(CDUnknownBlockType)arg1;
+- (void)observeWallpaperModeWithBlock:(CDUnknownBlockType)arg1;
 
 @end
 

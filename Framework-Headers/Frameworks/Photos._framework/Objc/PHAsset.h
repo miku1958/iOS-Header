@@ -225,7 +225,6 @@
 + (void)_inq_recordRequestID:(long long)arg1;
 + (void)_inq_trimToMostRecentImageManagerMessages;
 + (BOOL)_isLivePhotoWithPhotoIris:(BOOL)arg1 hasAdjustments:(BOOL)arg2 videoCpDuration:(long long)arg3 videoCPVisibility:(unsigned short)arg4 sourceType:(unsigned long long)arg5;
-+ (id)_requestResultInfoForImageInfo:(id)arg1 videoInfo:(id)arg2 adjustmentInfo:(id)arg3 renderingError:(id)arg4;
 + (id)_transformMediaSubtypeReferences:(id)arg1 inComparisonPredicate:(id)arg2 options:(id)arg3;
 + (id)_unfetchedPropertySetsForAssets:(id)arg1 fromPropertySets:(id)arg2;
 + (id)corePropertiesToFetch;
@@ -371,6 +370,7 @@
 - (id)managedAssetForPhotoLibrary:(id)arg1;
 - (id)mediaAnalysisProperties;
 - (id)messagesForRecentImageManagerRequests;
+- (BOOL)needsDeferredProcessing;
 - (id)objectReference;
 - (int)orientation;
 - (id)originalAVAssetCommonMetadata;

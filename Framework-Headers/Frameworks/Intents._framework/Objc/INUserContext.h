@@ -6,15 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@interface INUserContext : NSObject
+#import <Intents/NSSecureCoding-Protocol.h>
+
+@class INUserContextStore;
+
+@interface INUserContext : NSObject <NSSecureCoding>
 {
-    long long _vocabularyType;
+    INUserContextStore *_store;
 }
 
-- (void)_becomeCurrent:(id)arg1;
-- (id)_contextDictionary;
-- (id)_initWithVocabularyType:(long long)arg1;
++ (long long)_type;
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (void)_becomeCurrentNoHelper;
+- (id)_init;
+- (void)_setStore:(id)arg1;
 - (void)becomeCurrent;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

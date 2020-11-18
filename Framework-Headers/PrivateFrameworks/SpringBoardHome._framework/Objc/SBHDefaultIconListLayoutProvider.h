@@ -28,7 +28,7 @@
 + (unsigned long long)currentDeviceScreenType;
 - (void).cxx_destruct;
 - (void)configureClockIconConfiguration:(id)arg1 forScreenType:(unsigned long long)arg2 layoutOptions:(unsigned long long)arg3;
-- (void)configureFloatyFolderConfiguration:(id)arg1 forScreenType:(unsigned long long)arg2;
+- (void)configureFloatyFolderConfiguration:(id)arg1 forScreenType:(unsigned long long)arg2 layoutOptions:(unsigned long long)arg3;
 - (void)configureFolderIconConfiguration:(id)arg1 forScreenType:(unsigned long long)arg2 layoutOptions:(unsigned long long)arg3;
 - (void)configureIconAccessoryConfiguration:(id)arg1 forScreenType:(unsigned long long)arg2 layoutOptions:(unsigned long long)arg3;
 - (void)configureLabelConfigurations:(id)arg1 forScreenType:(unsigned long long)arg2;

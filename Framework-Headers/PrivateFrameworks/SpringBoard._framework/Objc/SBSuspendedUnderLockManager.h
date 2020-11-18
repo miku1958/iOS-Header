@@ -18,7 +18,7 @@
 @property (nonatomic, getter=isSuspendedUnderLock) BOOL suspendedUnderLock; // @synthesize suspendedUnderLock=_suspendedUnderLock;
 
 - (void).cxx_destruct;
-- (BOOL)_sceneShouldBeBackgroundUnderLock:(id)arg1 sceneSettings:(id)arg2;
+- (BOOL)_sceneShouldBeBackgroundUnderLockWithSceneSettings:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
 - (void)interceptUpdateForScene:(id)arg1 withNewSettings:(id)arg2;
 

@@ -18,6 +18,7 @@
 - (BOOL)_accessibilityEndUndoableTextInsertion;
 - (BOOL)_accessibilityHandleDefaultActionForNativeFocusedElement;
 - (BOOL)_accessibilityHandlesRemoteFocusMovement;
+- (id)_accessibilityHandwritingElement;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_accessibilityIncreaseSelection:(id)arg1;
 - (BOOL)_accessibilityIsScrollAncestor;

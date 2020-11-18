@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class SBFloatingDockViewController, SBRootFolderController, SBWallpaperController;
+@class SBFloatingDockViewController, SBRootFolderController, SBWallpaperController, _SBHomeScreenFolderDelegate;
 
 @interface SBHomeScreenPreviewView : UIView
 {
@@ -14,6 +14,7 @@
     UIView *_floatingDock;
     UIView *_statusBar;
     SBRootFolderController *_rootFolderController;
+    _SBHomeScreenFolderDelegate *_folderDelegate;
     SBWallpaperController *_wallpaperController;
     SBFloatingDockViewController *_floatingDockViewController;
 }

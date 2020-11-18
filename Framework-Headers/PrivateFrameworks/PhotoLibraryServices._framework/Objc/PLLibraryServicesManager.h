@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSError, NSMutableArray, NSMutableDictionary, NSProgress, NSString, NSURL, PLAssetsdCrashRecoverySupport, PLBackgroundJobService, PLChangeHandlingContainer, PLClientServerTransaction, PLCloudPhotoLibraryManager, PLDatabaseContext, PLDupeManager, PLImageWriter, PLJournalManager, PLKeywordManager, PLLazyObject, PLLibraryServicesStateNode, PLModelMigrator, PLMomentGenerationDataManager, PLPairing, PLPhotoLibrary, PLPhotoLibraryBundle, PLPhotoLibraryPathManager, PLQuickActionManager, PLReframeService, PLRelationshipOrderKeyManager, PLSearchIndexManager;
-@protocol OS_dispatch_queue, PLLibraryServicesDelegate;
+@protocol OS_dispatch_queue, PLLibraryServicesDelegate, PLMigrationServiceProtocol;
 
 @interface PLLibraryServicesManager : NSObject
 {
@@ -42,6 +42,7 @@
     NSProgress *_preRunningProgress;
     NSProgress *_postRunningProgress;
     NSString *_upgradeClient;
+    id<PLMigrationServiceProtocol> _migrationServiceProxy;
     PLLibraryServicesStateNode *_currentStateNode;
     id _operationCountObservee;
     NSMutableArray *_mutablePendingOperations;
@@ -68,6 +69,7 @@
 @property (readonly, weak) PLPhotoLibraryBundle *libraryBundle; // @synthesize libraryBundle=_libraryBundle;
 @property (strong) id<PLLibraryServicesDelegate> libraryServicesDelegate; // @synthesize libraryServicesDelegate=_libraryServicesDelegate;
 @property (readonly, copy) NSURL *libraryURL;
+@property (weak) id<PLMigrationServiceProtocol> migrationServiceProxy; // @synthesize migrationServiceProxy=_migrationServiceProxy;
 @property (readonly) PLModelMigrator *modelMigrator;
 @property (readonly) PLMomentGenerationDataManager *momentGenerationDataManager;
 @property (readonly, nonatomic) NSMutableArray *mutablePendingOperations; // @synthesize mutablePendingOperations=_mutablePendingOperations;
@@ -103,6 +105,7 @@
 - (BOOL)_enqueueOperation:(id)arg1 error:(id *)arg2;
 - (void)_handleLibraryStateCompletedAllOperations;
 - (void)_increaseStateQueueQoSIfNeeded;
+- (void)_initSystemPhotoLibrarySpecificServices;
 - (void)_invalidate;
 - (void)_invalidateAlbumCountCoalescer;
 - (void)_invalidateBackgroundJobService;
@@ -121,6 +124,7 @@
 - (void)_invalidateReframeService;
 - (void)_invalidateRelationshipOrderKeyManager;
 - (void)_invalidateSearchIndexManager;
+- (void)_invalidateSystemPhotoLibrarySpecificServices;
 - (BOOL)_isSystemPhotoLibrary;
 - (id)_libraryServicesStateNodeWithState:(long long)arg1;
 - (void)_resetStateQueueQoS;
@@ -136,6 +140,7 @@
 - (BOOL)awaitLibraryState:(long long)arg1 error:(id *)arg2;
 - (void)currentLocaleDidChange:(id)arg1;
 - (void)deactivateWithInvalidationError:(id)arg1;
+- (void)didBecomeNonSystemPhotoLibrary;
 - (BOOL)enqueueOperation:(id)arg1 error:(id *)arg2;
 - (BOOL)finalize:(id *)arg1;
 - (BOOL)hasCompletedDataMigratorPrerequisitesForTrackingRestoreFromCloud;

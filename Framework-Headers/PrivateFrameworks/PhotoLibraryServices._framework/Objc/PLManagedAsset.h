@@ -375,12 +375,12 @@
 + (long long)_locationDataFormat:(id)arg1;
 + (id)_newPathAndDateDictionariesByAssetUUIDFromFetchResults:(id)arg1 photoLibrary:(id)arg2;
 + (id)_notPushedAssetsToUploadInitiallyInManagedObjectContext:(id)arg1 withSavedAssetTypePredicate:(id)arg2 shouldSort:(BOOL)arg3 limit:(unsigned long long)arg4;
-+ (id)_persistedResourcesForManagedAsset:(id)arg1 resourceIdentity:(id)arg2 fetchConfigurationBlock:(CDUnknownBlockType)arg3 error:(id *)arg4;
 + (id)_placeAnnotationFromAnnotationData:(id)arg1;
 + (id)_ptpCalendar;
 + (id)_ptpEventInfoIsolationQueue;
 + (void)_rm_copyResourceFileFrom:(id)arg1 to:(id)arg2 forCloudMaster:(id)arg3 andAsset:(id)arg4;
 + (void)_setGroupingStateForPrimaryAsset:(id)arg1 secondaryAssets:(id)arg2 secondaryVisible:(BOOL)arg3;
++ (void)_setPhotoGroupingVisibilityEnabled:(BOOL)arg1;
 + (void)_setVisibility:(BOOL)arg1 forNonPrimaryAssetsWithGroupingUUID:(id)arg2 inLibrary:(id)arg3;
 + (id)_syncablePredicate;
 + (long long)adjustmentBaseVersionFromPFAdjustmentsBaseVersion:(long long)arg1;
@@ -566,7 +566,7 @@
 - (id)_createImageResourceForResourceType:(unsigned long long)arg1 withPreviewImagePath:(id)arg2 scopedIdentifier:(id)arg3 forMaster:(BOOL)arg4;
 - (id)_createJPEGResourcesFromFullSizePath:(id)arg1 withScopedIdentifier:(id)arg2 forMaster:(BOOL)arg3;
 - (id)_createJPEGResourcesFromFullSizePath:(id)arg1 withScopedIdentifier:(id)arg2 forMaster:(BOOL)arg3 forResourceTypes:(id)arg4;
-- (void)_createPhotoResourcesForMaster:(id)arg1 withOriginalResource:(id)arg2 intoMasterResources:(id)arg3 shouldGenerateDerivatives:(BOOL)arg4;
+- (void)_createPhotoResourcesForMaster:(id)arg1 withOriginalResource:(id)arg2 intoMasterResources:(id)arg3 shouldGenerateDerivatives:(BOOL)arg4 inPhotoLibrary:(id)arg5;
 - (id)_createVideoResourceFromVideoURL:(id)arg1 withResourceType:(unsigned long long)arg2 scopedIdentifier:(id)arg3 applyVideoAdjustments:(BOOL)arg4 forMaster:(BOOL)arg5 forPhotoIris:(BOOL)arg6;
 - (void)_createVideoResourcesForMaster:(id)arg1 intoMasterResources:(id)arg2 shouldGenerateDerivatives:(BOOL)arg3;
 - (void)_debugPrintAdjustmentState;
@@ -608,6 +608,7 @@
 - (BOOL)_migrateLegacySLMAdjustments;
 - (void)_migrateResourcePathForMaster:(id)arg1;
 - (id)_pathForSidecarResource:(id)arg1;
+- (id)_persistedResourcesForResourceIdentity:(id)arg1 fetchConfigurationBlock:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (long long)_plAdjustmentBaseVersionFromCPLAdjustmentSourceType:(unsigned long long)arg1;
 - (unsigned short)_playbackVariationWithAdjustmentRenderTypes:(unsigned int)arg1;
 - (long long)_prepareFileSystemResourcesForAdjustmentsWithCurrentAdjustmentBaseVersion:(long long)arg1 pathForFullsizeRenderFile:(id)arg2 penultimateRenderedJPEGData:(id)arg3 penultimateRenderedVideoContentURL:(id)arg4 renderedVideoComplementContentURL:(id)arg5 penultimateRenderedVideoComplementContentURL:(id)arg6 fileIngestionType:(long long)arg7;
@@ -659,6 +660,7 @@
 - (id)addedDateData;
 - (id)adjustedFileURLs;
 - (id)adjustedPathForCPLResourceType:(unsigned long long)arg1;
+- (id)adjustmentDataResource;
 - (id)adjustmentsXMPRepresentation;
 - (id)allAssetCPLResources;
 - (id)allFileExtensions;
@@ -851,6 +853,7 @@
 - (unsigned long long)originalResourceChoice;
 - (id)originalUniformTypeIdentifier;
 - (id)originalVideoComplementUniformTypeIdentifier;
+- (id)overflowAdjustmentDataResource;
 - (id)pasteBoardRepresentation;
 - (id)pathForAdjustedFullsizeImageFile;
 - (id)pathForAdjustedLargeSizeImageFile;

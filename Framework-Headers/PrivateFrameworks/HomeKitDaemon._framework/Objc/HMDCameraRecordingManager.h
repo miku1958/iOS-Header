@@ -6,10 +6,11 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeKitDaemon/HMDCameraBackingStoreDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDCameraClipManagerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDCameraRecordingSessionDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDCameraRecordingSessionNotificationTriggerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDCameraRecordingSettingsControlDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDDevicePreferenceDataSource-Protocol.h>
 #import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
@@ -17,7 +18,7 @@
 @class HMDCameraProfile, HMDCameraRecordingBulkSendDataReadEvent, HMDCameraRecordingBulkSendSessionInitiator, HMDCameraRecordingManagerFactory, HMDCameraRecordingResidentElector, HMDCameraRecordingSession, HMDCameraRecordingSessionNotificationTrigger, HMDCameraRecordingSettingsControl, HMDHAPAccessory, HMDStreamDataChunkAssembler, HMFMessageDispatcher, HMFTimer, NSDictionary, NSMutableSet, NSObject, NSSet, NSString, NSUUID;
 @protocol HMDDataStreamBulkSendSession, OS_dispatch_queue;
 
-@interface HMDCameraRecordingManager : HMFObject <HMDCameraRecordingSessionNotificationTriggerDelegate, HMDCameraRecordingSettingsControlDelegate, HMFLogging, HMDCameraRecordingSessionDelegate, HMDHomeMessageReceiver, HMDCameraBackingStoreDelegate, HMFTimerDelegate>
+@interface HMDCameraRecordingManager : HMFObject <HMDCameraRecordingSessionNotificationTriggerDelegate, HMDCameraRecordingSettingsControlDelegate, HMDDevicePreferenceDataSource, HMFLogging, HMDCameraRecordingSessionDelegate, HMDHomeMessageReceiver, HMDCameraClipManagerDelegate, HMFTimerDelegate>
 {
     BOOL _motionActive;
     NSString *_logIdentifier;
@@ -88,16 +89,18 @@
 - (void)_startCameraRecordingSessionForTrigger:(unsigned long long)arg1;
 - (void)_startRecordingSessionForTrigger:(unsigned long long)arg1 presenceByPairingIdentity:(id)arg2 completionCallback:(CDUnknownBlockType)arg3;
 - (void)_submitReadEventWithStatus:(unsigned short)arg1;
-- (void)cameraBackingStoreDidStart:(id)arg1;
-- (void)cameraBackingStoreDidStop:(id)arg1;
+- (void)clipManagerDidBecomeAvailable:(id)arg1;
+- (void)clipManagerDidBecomeUnavailable:(id)arg1;
 - (void)closeSession:(id)arg1 withError:(id)arg2;
 - (void)dealloc;
 - (void)handleCameraSettingsDidChangeNotification:(id)arg1;
 - (void)handleStartRecordingSessionRequest:(id)arg1;
+- (id)initWithCamera:(id)arg1 recordingManagementService:(id)arg2;
 - (id)initWithCamera:(id)arg1 recordingManagementService:(id)arg2 factory:(id)arg3;
 - (void)notificationTrigger:(id)arg1 didObserveTriggerType:(unsigned long long)arg2 changeToActive:(BOOL)arg3;
 - (void)recordingSettingsControlDidConfigure:(id)arg1;
 - (void)start;
+- (BOOL)supportsDeviceWithCapabilities:(id)arg1;
 - (void)timerDidFire:(id)arg1;
 
 @end

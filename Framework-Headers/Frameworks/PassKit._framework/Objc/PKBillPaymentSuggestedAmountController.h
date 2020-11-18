@@ -58,6 +58,7 @@
 - (void)_generateAmountSuggestionListUsingTransactionHistoryForList:(id)arg1;
 - (id)_messageForSuggestion:(id)arg1;
 - (void)_minimumMerchcantCategoriesAboveMinimumAmount:(id)arg1 minMerchantCategory1:(long long *)arg2 minMerchantCategory2:(long long *)arg3 minMerchantCategorySum1:(id *)arg4 minMerchantCategorySum2:(id *)arg5;
+- (id)_planCompletionTitleString;
 - (void)_populatePriorityValuesForList:(id)arg1;
 - (void)_populateStringValuesForList:(id)arg1;
 - (id)_remainingStatementBalanceGapDescriptionText;

@@ -10,7 +10,7 @@
 #import <WorkflowUI/WFParameterInputViewControllerDelegate-Protocol.h>
 #import <WorkflowUI/WFWorkflowControllerDelegate-Protocol.h>
 
-@class NSHashTable, NSString, WFAction, WFDatabase, WFParameterInputViewController, WFWorkflowController, WFWorkflowReference;
+@class NSHashTable, NSString, WFAction, WFDatabase, WFParameterInputViewController, WFWorkflowController, WFWorkflowReference, WFWorkflowRunEvent;
 @protocol WFLibraryRunCoordinatorDelegate;
 
 @interface WFLibraryRunCoordinator : NSObject <WFParameterInputViewControllerDelegate, WFActionParameterInputProvider, WFWorkflowControllerDelegate>
@@ -27,6 +27,7 @@
     CDUnknownBlockType _completionHandler;
     WFParameterInputViewController *_runningInputViewController;
     id<WFLibraryRunCoordinatorDelegate> _delegateOverride;
+    WFWorkflowRunEvent *_runEvent;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
@@ -43,6 +44,7 @@
 @property (readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (copy, nonatomic) CDUnknownBlockType parameterInputHandler; // @synthesize parameterInputHandler=_parameterInputHandler;
 @property (readonly, nonatomic) float progress;
+@property (strong, nonatomic) WFWorkflowRunEvent *runEvent; // @synthesize runEvent=_runEvent;
 @property (weak, nonatomic) WFParameterInputViewController *runningInputViewController; // @synthesize runningInputViewController=_runningInputViewController;
 @property (readonly, nonatomic) WFWorkflowReference *runningWorkflow;
 @property (readonly, copy, nonatomic) NSString *source; // @synthesize source=_source;

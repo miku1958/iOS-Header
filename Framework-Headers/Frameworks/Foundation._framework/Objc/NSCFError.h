@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (long long)code;
 - (id)domain;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (oneway void)release;
 - (id)retain;

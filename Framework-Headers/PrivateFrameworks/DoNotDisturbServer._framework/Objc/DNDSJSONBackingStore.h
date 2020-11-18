@@ -7,15 +7,17 @@
 #import <objc/NSObject.h>
 
 #import <DoNotDisturbServer/DNDSBackingStore-Protocol.h>
+#import <DoNotDisturbServer/DNDSSysdiagnoseDataProvider-Protocol.h>
 
 @class NSString, NSURL;
 @protocol DNDSBackingStoreDelegate;
 
-@interface DNDSJSONBackingStore : NSObject <DNDSBackingStore>
+@interface DNDSJSONBackingStore : NSObject <DNDSSysdiagnoseDataProvider, DNDSBackingStore>
 {
     Class _recordClass;
     NSURL *_fileURL;
     unsigned long long _versionNumber;
+    BOOL _deviceOutOfSpace;
     id<DNDSBackingStoreDelegate> _delegate;
 }
 
@@ -24,11 +26,14 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *sysdiagnoseDataIdentifier; // @dynamic sysdiagnoseDataIdentifier;
 
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)initWithRecordClass:(Class)arg1 fileURL:(id)arg2 versionNumber:(unsigned long long)arg3;
 - (id)readRecordWithError:(id *)arg1;
-- (BOOL)writeRecord:(id)arg1 error:(id *)arg2;
+- (id)sysdiagnoseDataForDate:(id)arg1;
+- (unsigned long long)writeRecord:(id)arg1 error:(id *)arg2;
 
 @end
 

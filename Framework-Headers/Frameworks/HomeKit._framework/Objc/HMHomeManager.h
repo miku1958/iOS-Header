@@ -7,13 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <HomeKit/HMApplicationData-Protocol.h>
+#import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 #import <HomeKit/HMMutableApplicationData-Protocol.h>
 
 @class HMAccessory, HMApplicationData, HMFUnfairLock, HMHome, HMHomeManagerConfiguration, HMMutableArray, HMNetworkRouterFirewallRuleManager, HMUserCloudShareManager, NSArray, NSNumber, NSOperationQueue, NSSet, NSString, NSUUID, _HMContext;
 @protocol HMHomeManagerDelegate, OS_dispatch_queue;
 
-@interface HMHomeManager : NSObject <HMFMessageReceiver, HMMutableApplicationData, HMApplicationData>
+@interface HMHomeManager : NSObject <HMFLogging, HMFMessageReceiver, HMMutableApplicationData, HMApplicationData>
 {
     HMFUnfairLock *_lock;
     HMAccessory *_currentAccessory;
@@ -99,6 +100,7 @@
 @property (nonatomic, getter=isViewServiceActive) BOOL viewServiceActive; // @synthesize viewServiceActive=_viewServiceActive;
 
 + (BOOL)dataSyncInProgressFromDataSyncState:(unsigned long long)arg1;
++ (id)logCategory;
 - (void).cxx_destruct;
 - (void)__handleHomeManagerState:(id)arg1;
 - (void)__processSyncResponse:(id)arg1 refreshRequested:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;

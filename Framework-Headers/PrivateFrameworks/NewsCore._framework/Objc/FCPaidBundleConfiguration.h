@@ -49,13 +49,13 @@
 @property (readonly, nonatomic, getter=isFreeBadgeEnabledForSubscribers) BOOL freeBadgeEnabledForSubscribers;
 @property (readonly, nonatomic) NSString *freeBadgeTitle;
 @property (readonly, nonatomic) NSArray *groupWhitelistedTagIds;
-@property (readonly, nonatomic) long long hideSuggestedIssuesMinFollowedIssuesCompactCount;
-@property (readonly, nonatomic) long long hideSuggestedIssuesMinFollowedIssuesRegularCount;
 @property (readonly, copy, nonatomic) NSString *localizedStorefrontID; // @synthesize localizedStorefrontID=_localizedStorefrontID;
 @property (readonly, nonatomic) long long lowStorageAutomaticIssueDownloadTTL;
 @property (readonly, nonatomic) long long lowStorageManualIssueDownloadTTL;
 @property (strong, nonatomic) NSDictionary *magazineGenresByGenre; // @synthesize magazineGenresByGenre=_magazineGenresByGenre;
 @property (readonly, nonatomic, getter=areMagazinesEnabled) BOOL magazinesEnabled;
+@property (readonly, nonatomic) long long minFollowedMagazinesToHideSuggestionsCompact;
+@property (readonly, nonatomic) long long minFollowedMagazinesToHideSuggestionsRegular;
 @property (readonly, nonatomic) long long minimumArticlesInANFIssueBeforeRead;
 @property (readonly, nonatomic) long long minimumPagesInPDFIssueBeforeRead;
 @property (readonly, nonatomic) long long minimumReadIssuesInMyMagazines;

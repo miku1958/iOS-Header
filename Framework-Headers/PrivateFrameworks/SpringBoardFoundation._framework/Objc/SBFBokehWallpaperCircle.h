@@ -18,6 +18,7 @@
     BOOL _isPulsating;
     long long _direction;
     double _velocity;
+    struct CGRect _originalFrame;
     BOOL _fadingOut;
     struct CGRect _superviewBounds;
 }
@@ -27,15 +28,16 @@
 
 - (void).cxx_destruct;
 - (void)_animateInNewCircle;
+- (void)_pauseAnimations;
+- (void)_resumeAnimations;
 - (void)_startPulsatingCircle;
 - (void)_timerFired;
 - (double)desiredOpacity;
 - (struct CGPoint)desiredPositionDeltaForX:(double)arg1 y:(double)arg2 lockScreen:(BOOL)arg3;
 - (id)initWithFrame:(struct CGRect)arg1 fillColor:(long long)arg2;
-- (void)pauseAnimations;
 - (void)prepareForReuse;
 - (double)randomOpacity;
-- (void)resumeAnimations;
+- (void)setAnimationsEnabled:(BOOL)arg1;
 - (void)setCircleColor:(long long)arg1;
 
 @end

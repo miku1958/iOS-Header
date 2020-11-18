@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)_isSystemWindow;
+- (double)_adjustedWindowLevelFromLevel:(double)arg1;
 - (BOOL)_alwaysGetsContexts;
 - (BOOL)_canActAsKeyWindowForScreen:(id)arg1;
 - (BOOL)_canBecomeKeyWindow;

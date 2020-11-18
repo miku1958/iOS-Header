@@ -9,11 +9,12 @@
 #import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class HMDNetworkRouterIPAddress, HMDTLVUnsignedNumberValue, NSString;
+@class HMDNetworkRouterIPAddress, HMDTLVUnsignedNumberValue, NSData, NSString;
 
 @interface HMDNetworkRouterClientStatusIdentifier : NSObject <NSCopying, HMDTLVProtocol>
 {
     HMDTLVUnsignedNumberValue *_clientIdentifier;
+    NSData *_macAddress;
     HMDNetworkRouterIPAddress *_ipAddress;
 }
 
@@ -22,13 +23,14 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMDNetworkRouterIPAddress *ipAddress; // @synthesize ipAddress=_ipAddress;
+@property (strong, nonatomic) NSData *macAddress; // @synthesize macAddress=_macAddress;
 @property (readonly) Class superclass;
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (id)initWithClientIdentifier:(id)arg1 ipAddress:(id)arg2;
+- (id)initWithClientIdentifier:(id)arg1 macAddress:(id)arg2 ipAddress:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)parseFromData:(id)arg1 error:(id *)arg2;
 - (id)serializeWithError:(id *)arg1;

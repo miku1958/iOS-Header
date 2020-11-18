@@ -14,6 +14,7 @@
 @property (nonatomic) BOOL allowsQueueModifications;
 @property (readonly, nonatomic) MPAVItem *currentItem;
 @property (weak, nonatomic) id<MPAVQueueControllerDelegate> delegate;
+@property (readonly, nonatomic) long long displayCount;
 @property (readonly, nonatomic) BOOL hasUserMutations;
 @property (strong, nonatomic) id<MPAVQueueCoordinating> queueCoordinator;
 @property (nonatomic) long long repeatType;
@@ -27,8 +28,7 @@
 - (void)addPlaybackContext:(MPPlaybackContext *)arg1 atPosition:(long long)arg2 jumpToIt:(BOOL)arg3 completion:(void (^)(NSError *))arg4;
 - (BOOL)canSkipItem:(MPAVItem *)arg1;
 - (NSString *)contentItemIDWithCurrentItemOffset:(long long)arg1 mode:(long long)arg2 didReachEnd:(BOOL *)arg3;
-- (unsigned long long)displayCountForItem:(MPAVItem *)arg1;
-- (unsigned long long)displayIndexForItem:(MPAVItem *)arg1;
+- (long long)displayIndexForContentItemID:(NSString *)arg1;
 - (void)finalizeStateRestorationWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)handlePlaybackFailureForItem:(MPAVItem *)arg1;
 - (BOOL)isPlaceholderItemForContentItemID:(NSString *)arg1;

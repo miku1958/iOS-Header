@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AKActionController, AKAttributeController, AKFormFeatureDetectorController, AKHighlightAnnotationController, AKLegacyDoodleController, AKMainEventHandler, AKModelController, AKPageController, AKPageControllerArray, AKPeripheralAvailabilityManager_iOS, AKSidecarController, AKSignatureModelController, AKStatistics, AKTextEditorController, AKToolController, AKToolbarView, AKToolbarViewController, AKUndoController, NSMapTable, NSString, UIView;
+@class AKActionController, AKAttributeController, AKFormFeatureDetectorController, AKHighlightAnnotationController, AKLegacyDoodleController, AKMainEventHandler, AKModelController, AKPageController, AKPeripheralAvailabilityManager_iOS, AKSidecarController, AKSignatureModelController, AKSparseMutableControllerArray, AKStatistics, AKTextEditorController, AKToolController, AKToolbarView, AKToolbarViewController, AKUndoController, NSMapTable, NSString, UIView;
 @protocol AKControllerDelegateProtocol, PKRulerHostingDelegate;
 
 @interface AKController : NSObject
@@ -31,7 +31,7 @@
     unsigned long long _currentPageIndex;
     id<PKRulerHostingDelegate> _rulerHostingDelegate;
     NSString *_author;
-    AKPageControllerArray *_pageControllers;
+    AKSparseMutableControllerArray *_pageControllers;
     NSMapTable *_pageModelControllersToPageControllers;
     AKActionController *_actionController;
     AKToolController *_toolController;
@@ -81,7 +81,7 @@
 @property (weak, nonatomic) AKToolbarView *modernToolbarView; // @synthesize modernToolbarView=_modernToolbarView;
 @property (readonly, nonatomic) BOOL onlyDrawWithApplePencil;
 @property (nonatomic) BOOL overlayShouldPixelate; // @synthesize overlayShouldPixelate;
-@property (strong) AKPageControllerArray *pageControllers; // @synthesize pageControllers=_pageControllers;
+@property (strong) AKSparseMutableControllerArray *pageControllers; // @synthesize pageControllers=_pageControllers;
 @property (strong) NSMapTable *pageModelControllersToPageControllers; // @synthesize pageModelControllersToPageControllers=_pageModelControllersToPageControllers;
 @property unsigned long long pasteCascadingMultiplier; // @synthesize pasteCascadingMultiplier=_pasteCascadingMultiplier;
 @property (nonatomic) BOOL pencilAlwaysDraws; // @synthesize pencilAlwaysDraws=_pencilAlwaysDraws;
@@ -115,6 +115,7 @@
 - (void)_didReceiveMemoryWarning:(id)arg1;
 - (void)_pageModelControllerSelectedAnnotationsChangedNotification:(id)arg1;
 - (struct CGRect)_popoverAnchorFrameInModelForAnnotations:(id)arg1;
+- (void)_setupPageModelController:(id)arg1;
 - (id)_toolpicker_color;
 - (id)_toolpicker_inkIdentifier;
 - (void)_toolpicker_setColor:(id)arg1;

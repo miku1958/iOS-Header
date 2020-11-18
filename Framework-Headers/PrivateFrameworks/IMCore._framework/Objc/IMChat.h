@@ -207,6 +207,7 @@
 - (void)_engroupParticipantsUpdated;
 - (void)_fixItemForSendingMessageTime:(id)arg1;
 - (void)_fixSendingItemDateAndSortID:(id)arg1;
+- (id)_generatePersonCentricID;
 - (id)_getDeleteChatItemMap:(id)arg1;
 - (id)_getMessageChatItemMap:(id)arg1 withDeleteMap:(id)arg2 andAllChatItems:(id)arg3;
 - (void)_handleAddressBookChangeForRecipientUID:(id)arg1;

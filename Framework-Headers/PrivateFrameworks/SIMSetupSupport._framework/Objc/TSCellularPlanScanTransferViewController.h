@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <OnBoardingKit/OBBaseWelcomeController.h>
+#import <UIKitCore/UIViewController.h>
 
 #import <SIMSetupSupport/AVCaptureMetadataOutputObjectsDelegate-Protocol.h>
 #import <SIMSetupSupport/TSSetupFlowItem-Protocol.h>
@@ -12,10 +12,10 @@
 #import <SIMSetupSupport/UITableViewDataSource-Protocol.h>
 #import <SIMSetupSupport/UITableViewDelegate-Protocol.h>
 
-@class CAShapeLayer, CTDisplayPlanList, NSArray, NSDate, NSDictionary, NSString, TSCellularPlanQRCodeScannerView, UIActivityIndicatorView, UIButton, UILabel, UITableView, UIView;
+@class CAShapeLayer, CTDisplayPlanList, NSArray, NSDate, NSString, TSCellularPlanQRCodeScannerView, UIActivityIndicatorView, UIButton, UILabel, UITableView, UIView;
 @protocol TSSIMSetupFlowDelegate;
 
-@interface TSCellularPlanScanTransferViewController : OBBaseWelcomeController <AVCaptureMetadataOutputObjectsDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, TSSetupFlowItem>
+@interface TSCellularPlanScanTransferViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, TSSetupFlowItem>
 {
     BOOL _receivedPendingInstallItems;
     BOOL _receivedTransferItems;
@@ -29,14 +29,11 @@
     UIActivityIndicatorView *_activityView;
     BOOL _confirmationCodeRequired;
     BOOL _manualCardInfoEntry;
-    BOOL _isOneClickSupported;
-    BOOL _transferError;
+    BOOL _transferring;
     id<TSSIMSetupFlowDelegate> _delegate;
     NSString *_fauxCardData;
     UIView *_scanView;
     UIView *_cutoutView;
-    NSDictionary *_postdata;
-    NSString *_URL;
     UIActivityIndicatorView *_checkingAvailablePlansSpinner;
     UILabel *_checkingAvailablePlansLabel;
     UIButton *_enterDetailsManuallyButton;
@@ -45,7 +42,6 @@
     UITableView *_pendingPlansListTableView;
 }
 
-@property (readonly) NSString *URL; // @synthesize URL=_URL;
 @property (weak, nonatomic) UILabel *checkingAvailablePlansLabel; // @synthesize checkingAvailablePlansLabel=_checkingAvailablePlansLabel;
 @property (weak, nonatomic) UIActivityIndicatorView *checkingAvailablePlansSpinner; // @synthesize checkingAvailablePlansSpinner=_checkingAvailablePlansSpinner;
 @property (readonly) BOOL confirmationCodeRequired; // @synthesize confirmationCodeRequired=_confirmationCodeRequired;
@@ -56,15 +52,13 @@
 @property (weak, nonatomic) UIButton *enterDetailsManuallyButton; // @synthesize enterDetailsManuallyButton=_enterDetailsManuallyButton;
 @property (readonly) NSString *fauxCardData; // @synthesize fauxCardData=_fauxCardData;
 @property (readonly) unsigned long long hash;
-@property (readonly) BOOL isOneClickSupported; // @synthesize isOneClickSupported=_isOneClickSupported;
 @property (readonly) BOOL manualCardInfoEntry; // @synthesize manualCardInfoEntry=_manualCardInfoEntry;
 @property (weak, nonatomic) UITableView *pendingPlansListTableView; // @synthesize pendingPlansListTableView=_pendingPlansListTableView;
 @property (weak, nonatomic) UILabel *positionQRCodeLabel; // @synthesize positionQRCodeLabel=_positionQRCodeLabel;
-@property (readonly) NSDictionary *postdata; // @synthesize postdata=_postdata;
 @property (weak, nonatomic) UILabel *scanQRCodeLabel; // @synthesize scanQRCodeLabel=_scanQRCodeLabel;
 @property (weak, nonatomic) UIView *scanView; // @synthesize scanView=_scanView;
 @property (readonly) Class superclass;
-@property (readonly) BOOL transferError; // @synthesize transferError=_transferError;
+@property (readonly) BOOL transferring; // @synthesize transferring=_transferring;
 
 - (void).cxx_destruct;
 - (void)_addNewPlanWithCardData:(id)arg1 confirmationCode:(id)arg2;

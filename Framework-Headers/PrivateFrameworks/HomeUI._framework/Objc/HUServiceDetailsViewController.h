@@ -26,7 +26,7 @@
 #import <HomeUI/HUTriggerEditorDelegate-Protocol.h>
 #import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class HFItem, HFNamingComponents, HMHome, HUAccessorySettingsItemModuleController, HUAssociatedSceneAndTriggerModuleController, HUCameraSettingsModuleController, HUChildServiceItemModuleController, HUControlPanelController, HUNameItemModuleController, HUQuickControlSummaryNavigationBarTitleView, HUServiceDetailsItemManager, HUServiceDetailsTextViewDelegate, HUSoftwareUpdateItemModuleController, HUTelevisionSettingsItemModuleController, NSHashTable, NSString, UILongPressGestureRecognizer;
+@class HFItem, HFNamingComponents, HMHome, HUAccessorySettingsItemModuleController, HUAssociatedSceneAndTriggerModuleController, HUCameraSettingsModuleController, HUChildServiceItemModuleController, HUControlPanelController, HUNameItemModuleController, HUQuickControlSummaryNavigationBarTitleView, HUServiceDetailsItemManager, HUServiceDetailsTextViewDelegate, HUSoftwareUpdateItemModuleController, HUTelevisionSettingsItemModuleController, NSHashTable, NSString, UIButton, UILongPressGestureRecognizer;
 @protocol HFServiceLikeItem, HUPresentationDelegate;
 
 @interface HUServiceDetailsViewController : HUItemTableViewController <HUControlPanelControllerDelegate, HUPresentationDelegate, HUServiceDetailsItemManagerDelegate, HUSwitchCellDelegate, HUServiceGroupEditorViewControllerDelegate, HUContainedServiceGridViewControllerDelegate, HUEditRoomViewControllerPresentationDelegate, HUTriggerEditorDelegate, HFAccessoryObserver, UIGestureRecognizerDelegate, HUAccessorySettingsItemModuleControllerDelegate, HUSoftwareUpdateItemModuleControllerDelegate, HUMediaSystemEditorViewControllerDelegate, HUContainedMediaAccessoriesGridViewControllerDelegate, HUChildServiceModuleControllerDelegate, HFHomeObserver, HUPickerCellDelegate, HUDetailsPresentationDelegateHost, HUServiceLikeItemDetailsViewControllerProtocol>
@@ -55,11 +55,13 @@
     HUServiceDetailsTextViewDelegate *_textViewDelegate;
     HFNamingComponents *_namingComponent;
     HUQuickControlSummaryNavigationBarTitleView *_navigationBarTitleView;
+    UIButton *_closeButton;
 }
 
 @property (strong, nonatomic) HUChildServiceItemModuleController *accessoryServicesEditorItemModuleController; // @synthesize accessoryServicesEditorItemModuleController=_accessoryServicesEditorItemModuleController;
 @property (strong, nonatomic) HUAccessorySettingsItemModuleController *accessorySettingsItemModuleController; // @synthesize accessorySettingsItemModuleController=_accessorySettingsItemModuleController;
 @property (strong, nonatomic) HUCameraSettingsModuleController *cameraSettingsModuleController; // @synthesize cameraSettingsModuleController=_cameraSettingsModuleController;
+@property (strong, nonatomic) UIButton *closeButton; // @synthesize closeButton=_closeButton;
 @property (readonly, nonatomic) HUControlPanelController *controlPanelController; // @synthesize controlPanelController=_controlPanelController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

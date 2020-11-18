@@ -11,7 +11,7 @@
 #import <AnnotationKit/UITableViewDataSource-Protocol.h>
 #import <AnnotationKit/UITableViewDelegate-Protocol.h>
 
-@class AKController, NSArray, NSString, UIColor, UINavigationBar, UITableView;
+@class AKController, NSArray, NSString, UIColor, UINavigationBar, UIResponder, UITableView;
 @protocol AKSignaturesViewControllerDelegate;
 
 @interface AKSignaturesViewController_iOS : UIViewController <UITableViewDataSource, UITableViewDelegate, UINavigationBarDelegate, AKSignatureCreationControllerDelegate>
@@ -28,6 +28,7 @@
     NSArray *_rightBarItems;
     NSArray *_editingLeftBarItems;
     NSArray *_leftBarItems;
+    UIResponder *_responderToRestore;
 }
 
 @property (nonatomic) BOOL allowsEdits; // @synthesize allowsEdits=_allowsEdits;
@@ -41,6 +42,7 @@
 @property (strong, nonatomic) NSArray *leftBarItems; // @synthesize leftBarItems=_leftBarItems;
 @property (strong, nonatomic) UINavigationBar *navBar; // @synthesize navBar=_navBar;
 @property (nonatomic) BOOL presentedInAlert; // @synthesize presentedInAlert=_presentedInAlert;
+@property (weak, nonatomic) UIResponder *responderToRestore; // @synthesize responderToRestore=_responderToRestore;
 @property (strong, nonatomic) NSArray *rightBarItems; // @synthesize rightBarItems=_rightBarItems;
 @property (nonatomic) BOOL showAddEditButtonRow; // @synthesize showAddEditButtonRow=_showAddEditButtonRow;
 @property (nonatomic) BOOL showsNavigationBar; // @synthesize showsNavigationBar=_showsNavigationBar;
@@ -55,6 +57,8 @@
 - (void)_continueToCreateSignature:(id)arg1;
 - (void)_deleteSignature:(id)arg1;
 - (id)_signatures;
+- (BOOL)becomeFirstResponder;
+- (BOOL)canBecomeFirstResponder;
 - (id)initWithController:(id)arg1;
 - (long long)positionForBar:(id)arg1;
 - (struct CGSize)preferredContentSize;
@@ -66,6 +70,8 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 

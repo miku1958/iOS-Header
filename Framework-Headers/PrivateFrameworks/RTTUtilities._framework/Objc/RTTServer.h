@@ -43,6 +43,7 @@
 - (void)resetConnection;
 - (void)sendString:(id)arg1 forCallUID:(id)arg2;
 - (void)setShouldSuppressIncomingNotification:(BOOL)arg1;
+- (void)setSystemOutputAudioMuted:(BOOL)arg1 withCallID:(id)arg2;
 - (void)setTTYDictionaryAvailability:(BOOL)arg1;
 - (id)valueForTTYSetting:(id)arg1;
 

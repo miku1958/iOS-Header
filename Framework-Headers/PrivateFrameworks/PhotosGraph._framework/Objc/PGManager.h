@@ -82,6 +82,7 @@
 + (id)_summaryClusteringForDuration:(unsigned long long)arg1 andPrecision:(unsigned long long)arg2;
 + (id)allRecomputedTripMomentsInGraph:(id)arg1;
 + (id)assetPropertySetsForCuration;
++ (BOOL)categoryIsUsableWithConditionalKeywordsForMemory:(id)arg1;
 + (BOOL)clientIsPhotoAnalysis;
 + (double)contentScoreForAssets:(id)arg1;
 + (id)dedupedAssetsWithAssets:(id)arg1 precision:(unsigned long long)arg2;
@@ -89,10 +90,15 @@
 + (id)exportableDictionaryFromKeywords:(id)arg1;
 + (BOOL)geoServiceProviderDidChangeForGraph:(id)arg1;
 + (void)initialize;
++ (id)m5IncompatibleKeywords;
++ (id)m5IncompatibleMeaningLabels;
++ (id)m5IncompatibleMoods;
++ (id)m5TimeConditionalKeywords;
 + (id)matchingWeightToDictionary;
 + (id)meaningsForSurvey;
 + (BOOL)memoriesAreWorthNotifying:(id)arg1;
 + (unsigned long long)numberOfExistingMemoriesToKeepForOverlapCheckWithBeta:(double)arg1;
++ (id)placeKeywords;
 + (id)representativeAssetsForAssetCollection:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 + (BOOL)shouldInvalidateConstructionGraph:(id)arg1;
 + (BOOL)shouldInvalidatePersistentGraph:(id)arg1;
@@ -250,6 +256,7 @@
 - (id)bestOfPastMemoryFromLocalDate:(id)arg1 toLocalDate:(id)arg2 duration:(unsigned long long)arg3;
 - (id)blacklistedFeatures;
 - (id)businessItemsForAllMoments;
+- (BOOL)canAddM5KeywordToMemory:(id)arg1 currentKeywords:(id)arg2;
 - (BOOL)canProceedWithFullGraphRebuildStamp:(_Atomic unsigned long long)arg1;
 - (void)cancelAllCurationPrefetches;
 - (void)cancelLibraryAnalysisWithCompletionBlock:(CDUnknownBlockType)arg1;

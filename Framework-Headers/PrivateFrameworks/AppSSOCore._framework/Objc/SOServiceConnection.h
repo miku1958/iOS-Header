@@ -30,6 +30,7 @@
 - (void)beginAuthorizationWithRequestParameters:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)cancelAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)configurationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)dealloc;
 - (void)debugHintsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getAuthorizationHintsWithURL:(id)arg1 responseCode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithQueue:(id)arg1;

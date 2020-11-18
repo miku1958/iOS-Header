@@ -27,6 +27,8 @@
 @property (strong, nonatomic) ACAccountStore *store; // @synthesize store=_accountStore;
 
 + (BOOL)isAccountsFrameworkAvailable;
++ (void)performWithinPersonaForAccount:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
++ (id)personaIDIfCurrentPersonaIsEnterprise;
 + (id)sharedInstance;
 + (id)stringRepresentationForService:(long long)arg1;
 - (void).cxx_destruct;
@@ -53,6 +55,7 @@
 - (BOOL)authorizationUsedForAccount:(id)arg1;
 - (id)continuationTokenForAccount:(id)arg1;
 - (id)continuationTokenForAccount:(id)arg1 error:(id *)arg2;
+- (BOOL)deviceTrustRevokedForAccount:(id)arg1;
 - (id)familyNameForAccount:(id)arg1;
 - (id)formattedUsernameForAccount:(id)arg1;
 - (id)forwardingEmailForAccount:(id)arg1;
@@ -95,6 +98,7 @@
 - (void)setAuthenticationMode:(unsigned long long)arg1 forAccount:(id)arg2;
 - (void)setAuthorizationUsed:(BOOL)arg1 forAccount:(id)arg2;
 - (void)setDSID:(id)arg1 forAccount:(id)arg2;
+- (void)setDeviceTrustRevoked:(BOOL)arg1 forAccount:(id)arg2;
 - (void)setFamilyName:(id)arg1 forAccount:(id)arg2;
 - (void)setForwardingEmail:(id)arg1 forAccount:(id)arg2;
 - (void)setGivenName:(id)arg1 forAccount:(id)arg2;

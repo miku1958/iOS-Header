@@ -22,6 +22,7 @@
     BOOL _supportsDynamicGrouping;
     BOOL _historySection;
     BOOL _notificationListViewRevealed;
+    BOOL _headerViewHeightValid;
     BOOL _performingDynamicGrouping;
     BOOL _dynamicGroupingActive;
     NSString *_logDescription;
@@ -35,6 +36,7 @@
     NCNotificationListView *_sectionListView;
     NCNotificationListSectionHeaderView *_headerView;
     NCNotificationListSectionRevealHintView *_revealHintView;
+    double _headerViewHeight;
     unsigned long long _dynamicGroupingThreshold;
 }
 
@@ -51,6 +53,8 @@
 @property (strong, nonatomic) NSMutableDictionary *filteredNotificationRequests; // @synthesize filteredNotificationRequests=_filteredNotificationRequests;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NCNotificationListSectionHeaderView *headerView; // @synthesize headerView=_headerView;
+@property (nonatomic) double headerViewHeight; // @synthesize headerViewHeight=_headerViewHeight;
+@property (nonatomic, getter=isHeaderViewHeightValid) BOOL headerViewHeightValid; // @synthesize headerViewHeightValid=_headerViewHeightValid;
 @property (strong, nonatomic) NSMutableSet *hiddenNotificationGroups; // @synthesize hiddenNotificationGroups=_hiddenNotificationGroups;
 @property (strong, nonatomic) NSMutableSet *hiddenNotificationRequests; // @synthesize hiddenNotificationRequests=_hiddenNotificationRequests;
 @property (nonatomic, getter=isHistorySection) BOOL historySection; // @synthesize historySection=_historySection;

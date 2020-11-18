@@ -13,8 +13,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned long long)_accessibilityDownloadState;
 - (id)_accessibilityEnclosingVUICardCollectionViewCell;
+- (BOOL)_downloadButtonPressed:(id)arg1;
 - (id)accessibilityAttributedValue;
+- (id)accessibilityCustomActions;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;

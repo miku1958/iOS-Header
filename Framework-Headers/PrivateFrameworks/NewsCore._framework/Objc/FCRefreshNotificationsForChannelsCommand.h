@@ -15,10 +15,8 @@
     NSString *_userID;
     NSString *_deviceToken;
     NSString *_storefrontID;
-    unsigned long long _bundleSubscriptionState;
 }
 
-@property (readonly, nonatomic) unsigned long long bundleSubscriptionState; // @synthesize bundleSubscriptionState=_bundleSubscriptionState;
 @property (copy, nonatomic) NSArray *channelIDs; // @synthesize channelIDs=_channelIDs;
 @property (copy, nonatomic) NSString *deviceToken; // @synthesize deviceToken=_deviceToken;
 @property (copy, nonatomic) NSArray *paidChannelIDs; // @synthesize paidChannelIDs=_paidChannelIDs;
@@ -29,7 +27,7 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (void)executeWithContext:(id)arg1 delegate:(id)arg2 qualityOfService:(long long)arg3;
-- (id)initWithChannelIDs:(id)arg1 paidChannelIDs:(id)arg2 userID:(id)arg3 deviceToken:(id)arg4 storefrontID:(id)arg5 bundleSubscriptionState:(unsigned long long)arg6;
+- (id)initWithChannelIDs:(id)arg1 paidChannelIDs:(id)arg2 userID:(id)arg3 deviceToken:(id)arg4 storefrontID:(id)arg5;
 - (id)initWithCoder:(id)arg1;
 
 @end

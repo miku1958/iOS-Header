@@ -100,7 +100,7 @@
 - (void)_constructUnpauseTimerFrom:(id)arg1 to:(id)arg2;
 - (void)_createDeletionRecordsIfNecessary;
 - (id)_debugNameForMode:(unsigned long long)arg1;
-- (void)_disableiCPL;
+- (void)_disableiCPLWithReason:(id)arg1;
 - (void)_doPause;
 - (void)_doResetSync:(long long)arg1;
 - (void)_doUnpause;
@@ -138,6 +138,7 @@
 - (void)_processUploadBatchWithStartupFailureCount:(unsigned long long)arg1;
 - (void)_promptForCameraCaptureSettingChangeWithReason:(int)arg1;
 - (void)_reportOptimizeSettingChangeWithCompltionhandler:(CDUnknownBlockType)arg1;
+- (void)_repushMasterWithMissingMediaMetadata;
 - (void)_repushVideoAssetsMetadata;
 - (void)_resetCPLLibrary;
 - (void)_resetCacheDeleteSupport;
@@ -173,6 +174,7 @@
 - (id)cplStatus;
 - (void)dealloc;
 - (void)deleteResources:(id)arg1 checkServerIfNecessary:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)disableiCPLSyncWithReason:(id)arg1;
 - (void)disableiCPLWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)downloadAsset:(id)arg1 resourceType:(unsigned long long)arg2 masterResourceOnly:(BOOL)arg3 highPriority:(BOOL)arg4 clientBundleID:(id)arg5 proposedTaskIdentifier:(id)arg6 taskDidBeginHandler:(CDUnknownBlockType)arg7 progressBlock:(CDUnknownBlockType)arg8 completionHandler:(CDUnknownBlockType)arg9;
 - (void)downloadResource:(id)arg1 highPriority:(BOOL)arg2 clientBundleID:(id)arg3 proposedTaskIdentifier:(id)arg4 taskDidBeginHandler:(CDUnknownBlockType)arg5 progressBlock:(CDUnknownBlockType)arg6 completionHandler:(CDUnknownBlockType)arg7;
@@ -190,7 +192,6 @@
 - (void)getStreamingURLForAsset:(id)arg1 resourceType:(unsigned long long)arg2 intent:(unsigned long long)arg3 hints:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)getSystemBudgetsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithLibraryServicesManager:(id)arg1;
-- (void)invalidate;
 - (BOOL)isConnectedToChangeTracker;
 - (BOOL)isResourceTransferTaskAliveWithTaskWithIdentifier:(id)arg1;
 - (id)lastKnownCloudVersionFromDisk;

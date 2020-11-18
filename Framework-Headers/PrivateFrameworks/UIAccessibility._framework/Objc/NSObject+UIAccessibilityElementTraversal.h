@@ -272,7 +272,6 @@
 - (BOOL)_accessibilityHandlePublicScroll:(long long)arg1;
 - (BOOL)_accessibilityHandlesRemoteFocusMovement;
 - (BOOL)_accessibilityHandlesTabKey;
-- (id)_accessibilityHandwritingAncestor;
 - (BOOL)_accessibilityHandwritingAttributeAcceptsContractedBraille;
 - (unsigned long long)_accessibilityHandwritingAttributeAllowedCharacterSets;
 - (unsigned long long)_accessibilityHandwritingAttributeAllowedCharacterSetsForKeyboardType:(long long)arg1;
@@ -282,6 +281,7 @@
 - (BOOL)_accessibilityHandwritingAttributeShouldEchoCharacter;
 - (BOOL)_accessibilityHandwritingAttributeShouldPlayKeyboardSecureClickSound;
 - (id)_accessibilityHandwritingAttributes;
+- (id)_accessibilityHandwritingElement;
 - (BOOL)_accessibilityHandwritingSendCarriageReturn;
 - (BOOL)_accessibilityHasActionBlockForKey:(unsigned int)arg1;
 - (BOOL)_accessibilityHasBadge;
@@ -311,6 +311,7 @@
 - (BOOL)_accessibilityIgnoreDelegate;
 - (void)_accessibilityIgnoreNextNotification:(unsigned int)arg1;
 - (void)_accessibilityIgnoreNextPostPasteboardTextOperation:(id)arg1;
+- (BOOL)_accessibilityIgnoresStatusBarFrame;
 - (id)_accessibilityImageData;
 - (BOOL)_accessibilityIncludeDuringContentReading;
 - (void)_accessibilityIncreaseAutoscrollSpeed;
@@ -434,6 +435,7 @@
 - (BOOL)_accessibilityMapsExplorationIsActive;
 - (BOOL)_accessibilityMapsExplorationIsPending;
 - (void)_accessibilityMapsExplorationRecordTouchpoint:(struct CGPoint)arg1;
+- (void)_accessibilityMarkElementForVisiblePointHitTest:(BOOL)arg1;
 - (id)_accessibilityMarkerForPoint:(struct CGPoint)arg1;
 - (id)_accessibilityMarkerLineEndsForMarkers:(id)arg1;
 - (id)_accessibilityMarkersForPoints:(id)arg1;
@@ -459,11 +461,13 @@
 - (id)_accessibilityNativeFocusableElements:(id)arg1 matchingBlock:(CDUnknownBlockType)arg2;
 - (id)_accessibilityNativeFocusableElements:(id)arg1 withQueryString:(id)arg2;
 - (unsigned long long)_accessibilityNativeTraits;
+- (struct UIEdgeInsets)_accessibilityNavigationControllerInset;
 - (id)_accessibilityNextElementsForSpeakThis;
 - (id)_accessibilityNextMarker:(id)arg1;
 - (id)_accessibilityNextTextRangeUsingTextStyling:(id)arg1 attributeMatch:(CDUnknownBlockType)arg2;
 - (unsigned long long)_accessibilityNotificationCount;
 - (id)_accessibilityNotificationSummary:(unsigned long long)arg1;
+- (double)_accessibilityNumberValue;
 - (id)_accessibilityObjectForTextMarker:(id)arg1;
 - (id)_accessibilityObscuredScreenAllowedViews;
 - (struct CGPoint)_accessibilityOffsetForOpaqueElementDirection:(long long)arg1;
@@ -692,6 +696,7 @@
 - (BOOL)_accessibilityShouldIgnoreOpaqueElementProviders;
 - (BOOL)_accessibilityShouldIgnoreSoundForFailedMoveAttempt;
 - (BOOL)_accessibilityShouldIncludeArrowKeyCommandsForDirectionalFocusMovement;
+- (BOOL)_accessibilityShouldIncludeMediaDescriptionsRotor;
 - (BOOL)_accessibilityShouldIncludeRowRangeInElementDescription;
 - (BOOL)_accessibilityShouldInheritTraits;
 - (BOOL)_accessibilityShouldPerformIncrementOrDecrement;
@@ -703,6 +708,7 @@
 - (BOOL)_accessibilityShouldSpeakMathEquationTrait;
 - (BOOL)_accessibilityShouldSpeakScrollStatusOnEntry;
 - (BOOL)_accessibilityShouldSuppressCustomActionsHint;
+- (BOOL)_accessibilityShouldUseFallbackForVisibleContentInset;
 - (BOOL)_accessibilityShouldUseSupplementaryViews;
 - (BOOL)_accessibilityShouldUseViewHierarchyForFindingScrollParent;
 - (BOOL)_accessibilityShowContextMenu;

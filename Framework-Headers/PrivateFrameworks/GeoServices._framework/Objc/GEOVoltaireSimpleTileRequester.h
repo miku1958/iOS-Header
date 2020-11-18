@@ -23,7 +23,6 @@
 
 + (unsigned long long)expiringTilesetsCount;
 + (CDStruct_e4886f83 *)newExpiringTilesets;
-- (id)_deviceRegionSKUQueryItemForTileSet:(id)arg1;
 - (id)_localizationURLForTileKey:(const struct _GEOTileKey *)arg1;
 - (id)activeTileSetForKey:(const struct _GEOTileKey *)arg1;
 - (int)checksumMethodForIncomingTileDataWithKey:(const struct _GEOTileKey *)arg1;

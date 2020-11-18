@@ -27,7 +27,9 @@
 + (id)classHierarchyMap;
 + (id)logCategory;
 - (void).cxx_destruct;
-- (id)classify:(id)arg1 error:(id *)arg2;
+- (void)_addSimulatedDetectionForEventType:(long long)arg1 targetEventTypes:(long long)arg2 events:(long long *)arg3 annotationScores:(id)arg4 detections:(id)arg5;
+- (double)_confidenceScoreOverrideForEventType:(long long)arg1;
+- (id)classify:(id)arg1 targetEventTypes:(long long)arg2 error:(id *)arg3;
 - (id)initWithConfidenceThresholds:(struct NSDictionary *)arg1 nmsThreshold:(double)arg2 error:(id *)arg3;
 
 @end

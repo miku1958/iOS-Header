@@ -15,6 +15,7 @@
     BOOL _selected;
     BOOL _showsSelectionHighlight;
     PKSwatchColor *_swatchColor;
+    long long _colorUserInterfaceStyle;
     UIView *_colorBackgroundView;
     CAShapeLayer *_selectionRingMaskLayer;
     UIView *_colorBulletView;
@@ -22,6 +23,7 @@
 
 @property (strong, nonatomic) UIView *colorBackgroundView; // @synthesize colorBackgroundView=_colorBackgroundView;
 @property (strong, nonatomic) UIView *colorBulletView; // @synthesize colorBulletView=_colorBulletView;
+@property (nonatomic) long long colorUserInterfaceStyle; // @synthesize colorUserInterfaceStyle=_colorUserInterfaceStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -32,12 +34,16 @@
 @property (strong, nonatomic) PKSwatchColor *swatchColor; // @synthesize swatchColor=_swatchColor;
 
 - (void).cxx_destruct;
+- (id)_uiColor;
+- (long long)_uiColorUserInterfaceStyle;
 - (void)_updateBackgroundView;
 - (void)_updateColorBulletView;
 - (void)_updateSelectionHighlight;
+- (void)_updateUI;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (id)newColorBackgroundView;
+- (void)traitCollectionDidChange:(id)arg1;
 - (BOOL)wantsBackgroundViewColor;
 - (BOOL)wantsColorBulletVisible;
 

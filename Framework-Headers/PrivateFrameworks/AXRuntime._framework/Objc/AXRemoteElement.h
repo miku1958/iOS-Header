@@ -42,6 +42,7 @@
 - (id)_accessibilityActiveKeyboard;
 - (unsigned long long)_accessibilityAutomationType;
 - (id)_accessibilityFirstElement;
+- (id)_accessibilityHandwritingElement;
 - (void)_accessibilityIncreaseSelection:(id)arg1;
 - (id)_accessibilityLastElement;
 - (id)_accessibilityResponderElement;

@@ -35,7 +35,7 @@
 - (double)_contrastInContentViewRect:(struct CGRect)arg1 contrastWithinBoxes:(double *)arg2 contrastBetweenBoxes:(double *)arg3;
 - (id)_createColorBoxes;
 - (void)_displayImage:(id)arg1;
-- (void)_generateImageForImage:(id)arg1 cacheKey:(id)arg2 options:(unsigned long long)arg3 downsampleFactor:(double)arg4 needsDimmingTreatment:(BOOL)arg5 generationHandler:(CDUnknownBlockType)arg6;
+- (void)_generateImageForImage:(id)arg1 cacheKey:(id)arg2 options:(unsigned long long)arg3 downsampleFactor:(double)arg4 needsDimmingTreatment:(BOOL)arg5 averageColor:(id)arg6 generationHandler:(CDUnknownBlockType)arg7;
 - (struct CGSize)_imageSize;
 - (void)_setUpStaticImageContentView:(id)arg1;
 - (void)_setupContentViewWithOptions:(unsigned long long)arg1;

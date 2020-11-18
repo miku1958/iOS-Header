@@ -16,9 +16,9 @@
     unsigned long long _colorPixelFormat;
     unsigned long long _depthPixelFormat;
     MISSING_TYPE *_depthRange;
-    long long _HUDOption;
     long long _layout;
     long long _multisampleCount;
+    long long _HUDOption;
     long long _presentationWarp;
     unsigned long long _drawablePixelFormat;
     unsigned long long _drawableCount;

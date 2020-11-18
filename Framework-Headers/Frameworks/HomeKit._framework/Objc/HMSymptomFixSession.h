@@ -25,6 +25,7 @@
     HMFTimer *_symptomDisappearanceTimer;
     UIViewController *_presentingViewController;
     _HMContext *_context;
+    NSString *_logIdentifier;
     HMSymptom *_symptom;
     NSUUID *_deviceIdentifier;
 }
@@ -40,6 +41,7 @@
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (nonatomic) BOOL hasSymptomDisappeared; // @synthesize hasSymptomDisappeared=_hasSymptomDisappeared;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property (strong, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;

@@ -40,6 +40,7 @@
 - (BOOL)_isAccountEventAssociatedObjectFromRecordType:(id)arg1;
 - (BOOL)_isAccountEventFromRecordType:(id)arg1;
 - (BOOL)_isTransactionItemFromRecordType:(id)arg1;
+- (id)_originDeviceID;
 - (id)_originDeviceIDForCloudStoreRecord:(id)arg1;
 - (void)_parseAccountEventsFromRecords:(id)arg1 shouldUpdateLocalDatabase:(BOOL)arg2 updateReasons:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_parseTransactionRecords:(id)arg1 counterpartRecords:(id)arg2 shouldUpdateLocalDatabase:(BOOL)arg3 userInfo:(id)arg4 updateReasons:(unsigned long long)arg5;
@@ -71,7 +72,7 @@
 - (void)fetchAndStoreRecordsForPaymentPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)generateRandomTransactionForPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithDataSource:(id)arg1 transactionProcessor:(id)arg2 paymentWebServiceCoordinator:(id)arg3 accountManager:(id)arg4;
-- (void)invalidateCloudStoreIfPossibleWithOperationGroupNameSuffix:(id)arg1;
+- (void)invalidateCloudStoreIfPossibleWithOperationGroupNameSuffix:(id)arg1 clearCache:(BOOL)arg2;
 - (void)passDidDisappear:(id)arg1;
 - (void)populateEvents:(id)arg1 forAccountIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)processFetchedCloudStoreDataWithModifiedRecords:(id)arg1 deletedRecords:(id)arg2 operationGroupName:(id)arg3 operationGroupNameSuffix:(id)arg4 shouldUpdateLocalDatabase:(BOOL)arg5 userInfo:(id)arg6 completion:(CDUnknownBlockType)arg7;

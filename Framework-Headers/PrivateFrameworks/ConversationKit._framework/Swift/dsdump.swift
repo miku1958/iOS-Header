@@ -373,15 +373,15 @@
 	let tapGestureRecognizer : UITapGestureRecognizer // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xa7e0  @objc TapInteraction.view <stripped>
-	0xa860  @objc TapInteraction.setView: <stripped>
-	0xaa40  @objc TapInteraction.numberOfTapsRequired <stripped>
-	0xaaa0  @objc TapInteraction.setNumberOfTapsRequired: <stripped>
-	0xad20  @objc TapInteraction.init <stripped>
-	0xad70  @objc TapInteraction.willMoveToView: <stripped>
-	0xadf0  @objc TapInteraction.didMoveToView: <stripped>
-	0xaf10  @objc TapInteraction.handleRecognizer: <stripped>
-	0xb660  @objc TapInteraction..cxx_destruct <stripped>
+	0xa290  @objc TapInteraction.view <stripped>
+	0xa310  @objc TapInteraction.setView: <stripped>
+	0xa4f0  @objc TapInteraction.numberOfTapsRequired <stripped>
+	0xa550  @objc TapInteraction.setNumberOfTapsRequired: <stripped>
+	0xa7d0  @objc TapInteraction.init <stripped>
+	0xa820  @objc TapInteraction.willMoveToView: <stripped>
+	0xa8a0  @objc TapInteraction.didMoveToView: <stripped>
+	0xa9c0  @objc TapInteraction.handleRecognizer: <stripped>
+	0xb110  @objc TapInteraction..cxx_destruct <stripped>
  }
 
  class ConversationKit.InCallControlsViewConstraintManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -397,12 +397,12 @@
 	var type : InCallControlsLayoutType // +0x48 (0x9)
 
 	// Swift methods
-	0xd640  func InCallControlsViewConstraintManager.type.getter // getter 
-	0xd670  func InCallControlsViewConstraintManager.type.setter // setter 
-	0xd6b0  func InCallControlsViewConstraintManager.type.modify // modifyCoroutine 
-	0xd730  class func InCallControlsViewConstraintManager.__allocating_init(containingGuide:containingView:controlsView:type:) // init 
-	0xda90  func InCallControlsViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
-	0xdb80  func InCallControlsViewConstraintManager.updateConstraints() // method 
+	0xd0f0  func InCallControlsViewConstraintManager.type.getter // getter 
+	0xd120  func InCallControlsViewConstraintManager.type.setter // setter 
+	0xd160  func InCallControlsViewConstraintManager.type.modify // modifyCoroutine 
+	0xd1e0  class func InCallControlsViewConstraintManager.__allocating_init(containingGuide:containingView:controlsView:type:) // init 
+	0xd540  func InCallControlsViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
+	0xd630  func InCallControlsViewConstraintManager.updateConstraints() // method 
  }
 
  enum ConversationKit.InCallControlsLayoutType {
@@ -416,7 +416,7 @@
 
  class ConversationKit.SpringBoardUtilities : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xe730  class func SpringBoardUtilities.__allocating_init() // init 
+	0xe1e0  class func SpringBoardUtilities.__allocating_init() // init 
  }
 
  class ConversationKit.RemoteParticipantVideoProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ParticipantVideoProvider {
@@ -425,14 +425,14 @@
 	let avcRemoteVideoClient : AVCRemoteVideoClient? // +0x10 (0x8)
 
 	// Swift methods
-	0xe7d0  func RemoteParticipantVideoProvider.token.getter // getter 
-	0xe800  func RemoteParticipantVideoProvider.hasReceivedVideoFrames.getter // getter 
-	0xe820  func RemoteParticipantVideoProvider.isVideoMirrored.getter // getter 
-	0xe830  func RemoteParticipantVideoProvider.videoAttributeOrientation.getter // getter 
-	0xe850  func RemoteParticipantVideoProvider.videoAttributeCamera.getter // getter 
-	0xe8e0  class func RemoteParticipantVideoProvider.__allocating_init(avcRemoteVideoClient:) // init 
-	0xeb00  func RemoteParticipantVideoProvider.setLayer(_:for:) // method 
-	0xecf0  func RemoteParticipantVideoProvider.isEqual(to:) // method 
+	0xe280  func RemoteParticipantVideoProvider.token.getter // getter 
+	0xe2b0  func RemoteParticipantVideoProvider.hasReceivedVideoFrames.getter // getter 
+	0xe2d0  func RemoteParticipantVideoProvider.isVideoMirrored.getter // getter 
+	0xe2e0  func RemoteParticipantVideoProvider.videoAttributeOrientation.getter // getter 
+	0xe300  func RemoteParticipantVideoProvider.videoAttributeCamera.getter // getter 
+	0xe390  class func RemoteParticipantVideoProvider.__allocating_init(avcRemoteVideoClient:) // init 
+	0xe5b0  func RemoteParticipantVideoProvider.setLayer(_:for:) // method 
+	0xe7a0  func RemoteParticipantVideoProvider.isEqual(to:) // method 
  }
 
  struct ConversationKit.Colors { }
@@ -464,13 +464,13 @@
 	var initialZoomFactor : Float // +0x14 (0x4)
 
 	// ObjC -> Swift bridged methods
-	0x12bb0  @objc PipZoomControl.init <stripped>
+	0x12660  @objc PipZoomControl.init <stripped>
 
 	// Swift methods
-	0x12bd0  func PipZoomControl.zoomToFactor(zoomFactor:) // method 
-	0x12c80  func PipZoomControl.addControl(to:withControlFrame:) // method 
-	0x12c90  func PipZoomControl.removeControl(from:) // method 
-	0x12ca0  func PipZoomControl.isZoomControlSupported.getter // getter 
+	0x12680  func PipZoomControl.zoomToFactor(zoomFactor:) // method 
+	0x12730  func PipZoomControl.addControl(to:withControlFrame:) // method 
+	0x12740  func PipZoomControl.removeControl(from:) // method 
+	0x12750  func PipZoomControl.isZoomControlSupported.getter // getter 
  }
 
  class ConversationKit.InCallControlsAddParticipantTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -485,12 +485,12 @@
 	var isEnabled : Bool // +0x40 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x12da0  @objc InCallControlsAddParticipantTableViewCell.button <stripped>
-	0x13f40  @objc InCallControlsAddParticipantTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x14120  @objc InCallControlsAddParticipantTableViewCell.initWithCoder: <stripped>
-	0x141b0  @objc InCallControlsAddParticipantTableViewCell.didTapButton: <stripped>
-	0x144b0  @objc InCallControlsAddParticipantTableViewCell.traitCollectionDidChange: <stripped>
-	0x14530  @objc InCallControlsAddParticipantTableViewCell..cxx_destruct <stripped>
+	0x12850  @objc InCallControlsAddParticipantTableViewCell.button <stripped>
+	0x139f0  @objc InCallControlsAddParticipantTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x13bd0  @objc InCallControlsAddParticipantTableViewCell.initWithCoder: <stripped>
+	0x13c60  @objc InCallControlsAddParticipantTableViewCell.didTapButton: <stripped>
+	0x13f60  @objc InCallControlsAddParticipantTableViewCell.traitCollectionDidChange: <stripped>
+	0x13fe0  @objc InCallControlsAddParticipantTableViewCell..cxx_destruct <stripped>
  }
 
  class ConversationKit.AudioVisualizationView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -500,22 +500,22 @@
 	var gradient : [UIColor] // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x14900  @objc AudioVisualizationView.init <stripped>
-	0x14a10  @objc AudioVisualizationView.initWithFrame: <stripped>
-	0x14ae0  @objc AudioVisualizationView.initWithCoder: <stripped>
-	0x15080  @objc AudioVisualizationView..cxx_destruct <stripped>
+	0x143b0  @objc AudioVisualizationView.init <stripped>
+	0x144c0  @objc AudioVisualizationView.initWithFrame: <stripped>
+	0x14590  @objc AudioVisualizationView.initWithCoder: <stripped>
+	0x14b30  @objc AudioVisualizationView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x14660  func AudioVisualizationView.audioVisualizationLayer.getter // getter 
-	0x14700  class func AudioVisualizationView.__allocating_init(colorStyle:) // init 
-	0x14ba0  func AudioVisualizationView.scale.getter // getter 
-	0x14bf0  func AudioVisualizationView.scale.setter // setter 
-	0x14c50  func AudioVisualizationView.scale.modify // modifyCoroutine 
-	0x14de0  func AudioVisualizationView.gradient.getter // getter 
-	0x14e20  func AudioVisualizationView.gradient.setter // setter 
-	0x14e80  func AudioVisualizationView.gradient.modify // modifyCoroutine 
-	0x14f20  func AudioVisualizationView.startAnimation() // method 
-	0x14f40  func AudioVisualizationView.stopAnimation() // method 
+	0x14110  func AudioVisualizationView.audioVisualizationLayer.getter // getter 
+	0x141b0  class func AudioVisualizationView.__allocating_init(colorStyle:) // init 
+	0x14650  func AudioVisualizationView.scale.getter // getter 
+	0x146a0  func AudioVisualizationView.scale.setter // setter 
+	0x14700  func AudioVisualizationView.scale.modify // modifyCoroutine 
+	0x14890  func AudioVisualizationView.gradient.getter // getter 
+	0x148d0  func AudioVisualizationView.gradient.setter // setter 
+	0x14930  func AudioVisualizationView.gradient.modify // modifyCoroutine 
+	0x149d0  func AudioVisualizationView.startAnimation() // method 
+	0x149f0  func AudioVisualizationView.stopAnimation() // method 
  }
 
  class ConversationKit.AudioVisualizationLayer : CALayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
@@ -528,14 +528,14 @@
 	var color : UIColor? // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x15f20  @objc AudioVisualizationLayer.init <stripped>
-	0x16380  @objc AudioVisualizationLayer.initWithLayer: <stripped>
-	0x164c0  @objc AudioVisualizationLayer.initWithCoder: <stripped>
-	0x16510  @objc AudioVisualizationLayer.dealloc <stripped>
-	0x16570  @objc AudioVisualizationLayer.bounds <stripped>
-	0x16640  @objc AudioVisualizationLayer.setBounds: <stripped>
-	0x16c30  @objc AudioVisualizationLayer.addAnimation:forKey: <stripped>
-	0x16530  @objc AudioVisualizationLayer..cxx_destruct <stripped>
+	0x159d0  @objc AudioVisualizationLayer.init <stripped>
+	0x15e30  @objc AudioVisualizationLayer.initWithLayer: <stripped>
+	0x15f70  @objc AudioVisualizationLayer.initWithCoder: <stripped>
+	0x15fc0  @objc AudioVisualizationLayer.dealloc <stripped>
+	0x16020  @objc AudioVisualizationLayer.bounds <stripped>
+	0x160f0  @objc AudioVisualizationLayer.setBounds: <stripped>
+	0x166e0  @objc AudioVisualizationLayer.addAnimation:forKey: <stripped>
+	0x15fe0  @objc AudioVisualizationLayer..cxx_destruct <stripped>
  }
 
  class ConversationKit.LocalParticipantViewConstraintManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -554,12 +554,12 @@
 	var type : LocalParticipantLayoutType // +0x60 (0x11)
 
 	// Swift methods
-	0x17840  func LocalParticipantViewConstraintManager.type.getter // getter 
-	0x17870  func LocalParticipantViewConstraintManager.type.setter // setter 
-	0x178c0  func LocalParticipantViewConstraintManager.type.modify // modifyCoroutine 
-	0x17940  class func LocalParticipantViewConstraintManager.__allocating_init(containingGuide:containingView:localPIPView:controlsView:type:) // init 
-	0x18b60  func LocalParticipantViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
-	0x18bf0  func LocalParticipantViewConstraintManager.updateConstraints() // method 
+	0x172f0  func LocalParticipantViewConstraintManager.type.getter // getter 
+	0x17320  func LocalParticipantViewConstraintManager.type.setter // setter 
+	0x17370  func LocalParticipantViewConstraintManager.type.modify // modifyCoroutine 
+	0x173f0  class func LocalParticipantViewConstraintManager.__allocating_init(containingGuide:containingView:localPIPView:controlsView:type:) // init 
+	0x18610  func LocalParticipantViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
+	0x186a0  func LocalParticipantViewConstraintManager.updateConstraints() // method 
  }
 
  enum ConversationKit.LocalParticipantLayoutType {
@@ -595,14 +595,14 @@
 	var calculatedContentSize : CGSize // +0x28 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x1a070  @objc ParticipantListLayout.init <stripped>
-	0x1a1c0  @objc ParticipantListLayout.initWithCoder: <stripped>
-	0x1b0e0  @objc ParticipantListLayout.prepareLayout <stripped>
-	0x1b110  @objc ParticipantListLayout.collectionViewContentSize <stripped>
-	0x1b1d0  @objc ParticipantListLayout.shouldInvalidateLayoutForBoundsChange: <stripped>
-	0x1b2c0  @objc ParticipantListLayout.layoutAttributesForItemAtIndexPath: <stripped>
-	0x1b830  @objc ParticipantListLayout.layoutAttributesForElementsInRect: <stripped>
-	0x1bac0  @objc ParticipantListLayout..cxx_destruct <stripped>
+	0x19b20  @objc ParticipantListLayout.init <stripped>
+	0x19c70  @objc ParticipantListLayout.initWithCoder: <stripped>
+	0x1ab90  @objc ParticipantListLayout.prepareLayout <stripped>
+	0x1abc0  @objc ParticipantListLayout.collectionViewContentSize <stripped>
+	0x1ac80  @objc ParticipantListLayout.shouldInvalidateLayoutForBoundsChange: <stripped>
+	0x1ad70  @objc ParticipantListLayout.layoutAttributesForItemAtIndexPath: <stripped>
+	0x1b2e0  @objc ParticipantListLayout.layoutAttributesForElementsInRect: <stripped>
+	0x1b570  @objc ParticipantListLayout..cxx_destruct <stripped>
  }
 
  class ConversationKit.GridViewConstraintManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -611,8 +611,8 @@
 	let constraints : [NSLayoutConstraint] // +0x10 (0x8)
 
 	// Swift methods
-	0x1ca90  class func GridViewConstraintManager.__allocating_init(containingGuide:gridView:) // init 
-	0x1cd60  func GridViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
+	0x1c540  class func GridViewConstraintManager.__allocating_init(containingGuide:gridView:) // init 
+	0x1c810  func GridViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
  }
 
  enum ConversationKit.ParticipantViewModel {
@@ -642,24 +642,24 @@
 	var currentDeviceOrientation : DeviceOrientation // +0x40 (0x8)
 
 	// Swift methods
-	0x23c20  class func LargeStagingAreaViewControllerLayout.__allocating_init(containingView:controlsViewController:inCallControlsState:effectsView:effectsBrowserView:deviceOrientation:) // init 
+	0x236d0  class func LargeStagingAreaViewControllerLayout.__allocating_init(containingView:controlsViewController:inCallControlsState:effectsView:effectsBrowserView:deviceOrientation:) // init 
  }
 
  class ConversationKit.ParticipantCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var participantIdentifier : UUID? // +0x128800 (0x0)
+	var participantIdentifier : UUID? // +0x1286c0 (0x0)
 	let participantView : ParticipantView // +0x0 (0x8)
 	var accessibilityDisplayName : String // +0x0 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x25050  @objc ParticipantCell.participantView <stripped>
-	0x25630  @objc ParticipantCell.initWithFrame: <stripped>
-	0x257c0  @objc ParticipantCell.initWithCoder: <stripped>
-	0x25940  @objc ParticipantCell.prepareForReuse <stripped>
-	0x25b20  @objc ParticipantCell.accessibilityDisplayName <stripped>
-	0x25bb0  @objc ParticipantCell.setAccessibilityDisplayName: <stripped>
-	0x25c80  @objc ParticipantCell..cxx_destruct <stripped>
+	0x24b00  @objc ParticipantCell.participantView <stripped>
+	0x250e0  @objc ParticipantCell.initWithFrame: <stripped>
+	0x25270  @objc ParticipantCell.initWithCoder: <stripped>
+	0x253f0  @objc ParticipantCell.prepareForReuse <stripped>
+	0x255d0  @objc ParticipantCell.accessibilityDisplayName <stripped>
+	0x25660  @objc ParticipantCell.setAccessibilityDisplayName: <stripped>
+	0x25730  @objc ParticipantCell..cxx_destruct <stripped>
  }
 
  class ConversationKit.InCallControlsTitleCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -680,13 +680,13 @@
 	var delegate : weak InCallControlsTitleCellDelegate? // +0x68 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x25e60  @objc InCallControlsTitleCell.messagesButton <stripped>
-	0x26850  @objc InCallControlsTitleCell.init <stripped>
-	0x27680  @objc InCallControlsTitleCell.initWithStyle:reuseIdentifier: <stripped>
-	0x278a0  @objc InCallControlsTitleCell.initWithCoder: <stripped>
-	0x281a0  @objc InCallControlsTitleCell.traitCollectionDidChange: <stripped>
-	0x28260  @objc InCallControlsTitleCell.didTapMessagesButton: <stripped>
-	0x282e0  @objc InCallControlsTitleCell..cxx_destruct <stripped>
+	0x25910  @objc InCallControlsTitleCell.messagesButton <stripped>
+	0x26300  @objc InCallControlsTitleCell.init <stripped>
+	0x27130  @objc InCallControlsTitleCell.initWithStyle:reuseIdentifier: <stripped>
+	0x27350  @objc InCallControlsTitleCell.initWithCoder: <stripped>
+	0x27c50  @objc InCallControlsTitleCell.traitCollectionDidChange: <stripped>
+	0x27d10  @objc InCallControlsTitleCell.didTapMessagesButton: <stripped>
+	0x27d90  @objc InCallControlsTitleCell..cxx_destruct <stripped>
  }
 
  enum ConversationKit.Command { }
@@ -707,7 +707,7 @@
 	let cache : BoxedDetails
 
 	// Swift methods
-	0x29d20  class func ParticipantContactDetailsCache.__allocating_init(contactStore:) // init 
+	0x297d0  class func ParticipantContactDetailsCache.__allocating_init(contactStore:) // init 
  }
 
  class ConversationKit.BoxedDetails : NSObject /usr/lib/libobjc.A.dylib {
@@ -716,8 +716,8 @@
 	let details : ParticipantContactDetails
 
 	// ObjC -> Swift bridged methods
-	0x29db0  @objc BoxedDetails.init <stripped>
-	0x29e00  @objc BoxedDetails..cxx_destruct <stripped>
+	0x29860  @objc BoxedDetails.init <stripped>
+	0x298b0  @objc BoxedDetails..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -732,17 +732,17 @@
 	var colorConfiguration : ElementColors // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2b160  @objc ParticipantViewButton.isSelected <stripped>
-	0x2b1d0  @objc ParticipantViewButton.setSelected: <stripped>
-	0x2b290  @objc ParticipantViewButton.isHighlighted <stripped>
-	0x2b340  @objc ParticipantViewButton.setHighlighted: <stripped>
-	0x2c130  @objc ParticipantViewButton.initWithCoder: <stripped>
-	0x2c290  @objc ParticipantViewButton.layoutSubviews <stripped>
-	0x2c370  @objc ParticipantViewButton.initWithFrame: <stripped>
-	0x2c3b0  @objc ParticipantViewButton..cxx_destruct <stripped>
+	0x2ac10  @objc ParticipantViewButton.isSelected <stripped>
+	0x2ac80  @objc ParticipantViewButton.setSelected: <stripped>
+	0x2ad40  @objc ParticipantViewButton.isHighlighted <stripped>
+	0x2adf0  @objc ParticipantViewButton.setHighlighted: <stripped>
+	0x2bbe0  @objc ParticipantViewButton.initWithCoder: <stripped>
+	0x2bd40  @objc ParticipantViewButton.layoutSubviews <stripped>
+	0x2be20  @objc ParticipantViewButton.initWithFrame: <stripped>
+	0x2be60  @objc ParticipantViewButton..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2b640  class func ParticipantViewButton.__allocating_init(imageName:) // init 
+	0x2b0f0  class func ParticipantViewButton.__allocating_init(imageName:) // init 
  }
 
  struct ConversationKit.ElementColors {
@@ -769,17 +769,17 @@
 	let lookupManager : IDSLookupManager // +0x30 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x2e870  @objc IDSCapabilitiesChecker.handleLookupManagerDidChangeNotification: <stripped>
+	0x2e320  @objc IDSCapabilitiesChecker.handleLookupManagerDidChangeNotification: <stripped>
 
 	// Swift methods
-	0x2d140  func IDSCapabilitiesChecker.participantCapabilities.getter // getter 
-	0x2d200  func IDSCapabilitiesChecker.delegate.getter // getter 
-	0x2d230  func IDSCapabilitiesChecker.delegate.setter // setter 
-	0x2d2a0  func IDSCapabilitiesChecker.delegate.modify // modifyCoroutine 
-	0x2d380  class func IDSCapabilitiesChecker.__allocating_init(participants:lookupManager:) // init 
-	0x2d5c0  func IDSCapabilitiesChecker.update(withParticipants:) // method 
-	0x2d5d0  func IDSCapabilitiesChecker.updateCapabilities(withParticipants:) // method 
-	0x2e270  func IDSCapabilitiesChecker.handleLookupManagerDidChangeNotification(_:) // method 
+	0x2cbf0  func IDSCapabilitiesChecker.participantCapabilities.getter // getter 
+	0x2ccb0  func IDSCapabilitiesChecker.delegate.getter // getter 
+	0x2cce0  func IDSCapabilitiesChecker.delegate.setter // setter 
+	0x2cd50  func IDSCapabilitiesChecker.delegate.modify // modifyCoroutine 
+	0x2ce30  class func IDSCapabilitiesChecker.__allocating_init(participants:lookupManager:) // init 
+	0x2d070  func IDSCapabilitiesChecker.update(withParticipants:) // method 
+	0x2d080  func IDSCapabilitiesChecker.updateCapabilities(withParticipants:) // method 
+	0x2dd20  func IDSCapabilitiesChecker.handleLookupManagerDidChangeNotification(_:) // method 
  }
 
  enum ConversationKit.Capabilities {
@@ -802,10 +802,10 @@
 	var colors : [UIColor] // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x31240  @objc GradientView.init <stripped>
-	0x313f0  @objc GradientView.initWithFrame: <stripped>
-	0x314e0  @objc GradientView.initWithCoder: <stripped>
-	0x31590  @objc GradientView..cxx_destruct <stripped>
+	0x30cf0  @objc GradientView.init <stripped>
+	0x30ea0  @objc GradientView.initWithFrame: <stripped>
+	0x30f90  @objc GradientView.initWithCoder: <stripped>
+	0x31040  @objc GradientView..cxx_destruct <stripped>
  }
 
  class ConversationKit.LargeMultiwayControllerLayout : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -819,7 +819,7 @@
 	var currentDeviceOrientation : DeviceOrientation // +0x40 (0x8)
 
 	// Swift methods
-	0x321a0  class func LargeMultiwayControllerLayout.__allocating_init(containingView:participantListView:gridView:controlsView:localParticipantView:effectsView:effectsBrowserView:deviceOrientation:) // init 
+	0x31c50  class func LargeMultiwayControllerLayout.__allocating_init(containingView:participantListView:gridView:controlsView:localParticipantView:effectsView:effectsBrowserView:deviceOrientation:) // init 
  }
 
  class ConversationKit.InCallControlsReportAProblemTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -833,10 +833,10 @@
 	var enabled : Bool // +0x30 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x33de0  @objc InCallControlsReportAProblemTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x33fa0  @objc InCallControlsReportAProblemTableViewCell.initWithCoder: <stripped>
-	0x34270  @objc InCallControlsReportAProblemTableViewCell.traitCollectionDidChange: <stripped>
-	0x342f0  @objc InCallControlsReportAProblemTableViewCell..cxx_destruct <stripped>
+	0x33890  @objc InCallControlsReportAProblemTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x33a50  @objc InCallControlsReportAProblemTableViewCell.initWithCoder: <stripped>
+	0x33d20  @objc InCallControlsReportAProblemTableViewCell.traitCollectionDidChange: <stripped>
+	0x33da0  @objc InCallControlsReportAProblemTableViewCell..cxx_destruct <stripped>
  }
 
  class ConversationKit.ParticipantGridView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -850,11 +850,11 @@
 	var delegate : ParticipantGridViewDelegate
 
 	// ObjC -> Swift bridged methods
-	0x35ae0  @objc ParticipantGridView.init <stripped>
-	0x35ca0  @objc ParticipantGridView.initWithCoder: <stripped>
-	0x35ea0  @objc ParticipantGridView.initWithFrame: <stripped>
-	0x36690  @objc ParticipantGridView.layoutSubviews <stripped>
-	0x3cdf0  @objc ParticipantGridView..cxx_destruct <stripped>
+	0x35590  @objc ParticipantGridView.init <stripped>
+	0x35750  @objc ParticipantGridView.initWithCoder: <stripped>
+	0x35950  @objc ParticipantGridView.initWithFrame: <stripped>
+	0x36140  @objc ParticipantGridView.layoutSubviews <stripped>
+	0x3c8a0  @objc ParticipantGridView..cxx_destruct <stripped>
  }
 
  enum ConversationKit.AnimationStyle {
@@ -880,13 +880,13 @@
 	var isInRoster : Bool // +0x10 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x40510  @objc LocalParticipantView.initWithCoder: <stripped>
-	0x40640  @objc LocalParticipantView.initWithFrame: <stripped>
-	0x407b0  @objc LocalParticipantView.layoutSubviews <stripped>
-	0x40b90  @objc LocalParticipantView..cxx_destruct <stripped>
+	0x3ffc0  @objc LocalParticipantView.initWithCoder: <stripped>
+	0x400f0  @objc LocalParticipantView.initWithFrame: <stripped>
+	0x40260  @objc LocalParticipantView.layoutSubviews <stripped>
+	0x40640  @objc LocalParticipantView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x40270  class func LocalParticipantView.__allocating_init(isInRoster:) // init 
+	0x3fd20  class func LocalParticipantView.__allocating_init(isInRoster:) // init 
  }
 
  class ConversationKit.InCallControlsView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -903,13 +903,13 @@
 	let buttonLabelWidthConstraints : [NSLayoutConstraint] // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x47540  @objc InCallControlsView.initWithCoder: <stripped>
-	0x477a0  @objc InCallControlsView.layoutSubviews <stripped>
-	0x47880  @objc InCallControlsView.initWithFrame: <stripped>
-	0x478c0  @objc InCallControlsView..cxx_destruct <stripped>
+	0x46ff0  @objc InCallControlsView.initWithCoder: <stripped>
+	0x47250  @objc InCallControlsView.layoutSubviews <stripped>
+	0x47330  @objc InCallControlsView.initWithFrame: <stripped>
+	0x47370  @objc InCallControlsView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x42880  class func InCallControlsView.__allocating_init(frame:capabilities:) // init 
+	0x42330  class func InCallControlsView.__allocating_init(frame:capabilities:) // init 
  }
 
  enum ConversationKit.JoinLeaveConfiguration {
@@ -939,12 +939,12 @@
 	var type : ParticipantListLayoutType // +0x40 (0x9)
 
 	// Swift methods
-	0x4a1b0  func ParticipantListViewConstraintManager.type.getter // getter 
-	0x4a1e0  func ParticipantListViewConstraintManager.type.setter // setter 
-	0x4a220  func ParticipantListViewConstraintManager.type.modify // modifyCoroutine 
-	0x4a080  class func ParticipantListViewConstraintManager.__allocating_init(containingGuide:rosterView:controlsView:type:) // init 
-	0x4a560  func ParticipantListViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
-	0x4a570  func ParticipantListViewConstraintManager.updateConstraints() // method 
+	0x49c60  func ParticipantListViewConstraintManager.type.getter // getter 
+	0x49c90  func ParticipantListViewConstraintManager.type.setter // setter 
+	0x49cd0  func ParticipantListViewConstraintManager.type.modify // modifyCoroutine 
+	0x49b30  class func ParticipantListViewConstraintManager.__allocating_init(containingGuide:rosterView:controlsView:type:) // init 
+	0x4a010  func ParticipantListViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
+	0x4a020  func ParticipantListViewConstraintManager.updateConstraints() // method 
  }
 
  enum ConversationKit.ParticipantListLayoutType {
@@ -972,38 +972,42 @@
 	let expandButton : ParticipantViewButton // +0x20 (0x8)
 	var isSmall : Bool // +0x28 (0x1)
 	var isExpanded : Bool // +0x29 (0x1)
-	var isMomentsAvailable : Bool // +0x2a (0x1)
-	var delegate : ParticipantInfoViewDelegate // +0x30 (0x10)
+	var customCornerRadius : CGFloat // +0x30 (0x8)
+	var isMomentsAvailable : Bool // +0x38 (0x1)
+	var delegate : ParticipantInfoViewDelegate // +0x40 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x4a900  @objc ParticipantInfoView.nameLabel <stripped>
-	0x4ae70  @objc ParticipantInfoView.isMomentsAvailable <stripped>
-	0x4af00  @objc ParticipantInfoView.setIsMomentsAvailable: <stripped>
-	0x4ba70  @objc ParticipantInfoView.init <stripped>
-	0x4bca0  @objc ParticipantInfoView.initWithCoder: <stripped>
-	0x4be30  @objc ParticipantInfoView.layoutSubviews <stripped>
-	0x4c3b0  @objc ParticipantInfoView.didTapExpandButton <stripped>
-	0x4c460  @objc ParticipantInfoView.didTapShutterButton <stripped>
-	0x4c540  @objc ParticipantInfoView.initWithFrame: <stripped>
-	0x4c580  @objc ParticipantInfoView..cxx_destruct <stripped>
+	0x4a3b0  @objc ParticipantInfoView.nameLabel <stripped>
+	0x4ab00  @objc ParticipantInfoView.isMomentsAvailable <stripped>
+	0x4ab90  @objc ParticipantInfoView.setIsMomentsAvailable: <stripped>
+	0x4b780  @objc ParticipantInfoView.init <stripped>
+	0x4b9d0  @objc ParticipantInfoView.initWithCoder: <stripped>
+	0x4bb60  @objc ParticipantInfoView.layoutSubviews <stripped>
+	0x4c0e0  @objc ParticipantInfoView.didTapExpandButton <stripped>
+	0x4c190  @objc ParticipantInfoView.didTapShutterButton <stripped>
+	0x4c270  @objc ParticipantInfoView.initWithFrame: <stripped>
+	0x4c2b0  @objc ParticipantInfoView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x4ab50  func ParticipantInfoView.isSmall.getter // getter 
-	0x4ab70  func ParticipantInfoView.isSmall.setter // setter 
-	0x4ab90  func ParticipantInfoView.isSmall.modify // modifyCoroutine 
-	0x4adc0  func ParticipantInfoView.isExpanded.getter // getter 
-	0x4ade0  func ParticipantInfoView.isExpanded.setter // setter 
-	0x4ae00  func ParticipantInfoView.isExpanded.modify // modifyCoroutine 
-	0x4aeb0  func ParticipantInfoView.isMomentsAvailable.getter // getter 
-	0x4af40  func ParticipantInfoView.isMomentsAvailable.setter // setter 
-	0x4b0f0  func ParticipantInfoView.isMomentsAvailable.modify // modifyCoroutine 
-	0x4b220  func ParticipantInfoView.delegate.getter // getter 
-	0x4b260  func ParticipantInfoView.delegate.setter // setter 
-	0x4b2e0  func ParticipantInfoView.delegate.modify // modifyCoroutine 
-	0x4bcc0  func ParticipantInfoView.configure(with:isMomentsAvailable:shouldHideShutterButton:) // method 
-	0x4be60  func ParticipantInfoView._layout() // method 
-	0x4c360  func ParticipantInfoView.didTapExpandButton() // method 
-	0x4c3e0  func ParticipantInfoView.didTapShutterButton() // method 
+	0x4a600  func ParticipantInfoView.isSmall.getter // getter 
+	0x4a620  func ParticipantInfoView.isSmall.setter // setter 
+	0x4a640  func ParticipantInfoView.isSmall.modify // modifyCoroutine 
+	0x4a870  func ParticipantInfoView.isExpanded.getter // getter 
+	0x4a890  func ParticipantInfoView.isExpanded.setter // setter 
+	0x4a8b0  func ParticipantInfoView.isExpanded.modify // modifyCoroutine 
+	0x4aa10  func ParticipantInfoView.customCornerRadius.getter // getter 
+	0x4aa40  func ParticipantInfoView.customCornerRadius.setter // setter 
+	0x4aa90  func ParticipantInfoView.customCornerRadius.modify // modifyCoroutine 
+	0x4ab40  func ParticipantInfoView.isMomentsAvailable.getter // getter 
+	0x4abd0  func ParticipantInfoView.isMomentsAvailable.setter // setter 
+	0x4ad80  func ParticipantInfoView.isMomentsAvailable.modify // modifyCoroutine 
+	0x4aeb0  func ParticipantInfoView.delegate.getter // getter 
+	0x4aef0  func ParticipantInfoView.delegate.setter // setter 
+	0x4af70  func ParticipantInfoView.delegate.modify // modifyCoroutine 
+	0x4b9f0  func ParticipantInfoView.configure(with:isMomentsAvailable:shouldHideShutterButton:) // method 
+	0x4bb90  func ParticipantInfoView._layout() // method 
+	0x4c090  func ParticipantInfoView.didTapExpandButton() // method 
+	0x4c110  func ParticipantInfoView.didTapShutterButton() // method 
  }
 
  class ConversationKit.ParticipantVideoView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1013,11 +1017,11 @@
 	let backFacingCameraView : ParticipantVideoCameraView // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4c960  @objc ParticipantVideoView.init <stripped>
-	0x4ca70  @objc ParticipantVideoView.initWithCoder: <stripped>
-	0x4cbc0  @objc ParticipantVideoView.initWithFrame: <stripped>
-	0x4ce40  @objc ParticipantVideoView.layoutSubviews <stripped>
-	0x4d100  @objc ParticipantVideoView..cxx_destruct <stripped>
+	0x4c690  @objc ParticipantVideoView.init <stripped>
+	0x4c7a0  @objc ParticipantVideoView.initWithCoder: <stripped>
+	0x4c8f0  @objc ParticipantVideoView.initWithFrame: <stripped>
+	0x4cb70  @objc ParticipantVideoView.layoutSubviews <stripped>
+	0x4ce30  @objc ParticipantVideoView..cxx_destruct <stripped>
  }
 
  struct ConversationKit.ViewModel {
@@ -1055,9 +1059,9 @@
 
  class ConversationKit.BuzzedAnimator : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4e800  @objc BuzzedAnimator.transitionDuration: <stripped>
-	0x4f450  @objc BuzzedAnimator.animateTransition: <stripped>
-	0x4f4e0  @objc BuzzedAnimator.init <stripped>
+	0x4e530  @objc BuzzedAnimator.transitionDuration: <stripped>
+	0x4f180  @objc BuzzedAnimator.animateTransition: <stripped>
+	0x4f210  @objc BuzzedAnimator.init <stripped>
  }
 
  struct ConversationKit.DefaultParticipantMediaProviderCreator: ParticipantMediaProviderCreator {
@@ -1072,17 +1076,17 @@
 	let opacityMultiple : Float // +0x8 (0x4)
 
 	// ObjC -> Swift bridged methods
-	0x4feb0  @objc AudioVisualizationRingLayer.initWithLayer: <stripped>
-	0x4ffa0  @objc AudioVisualizationRingLayer.initWithCoder: <stripped>
-	0x4ffb0  @objc AudioVisualizationRingLayer.opacity <stripped>
-	0x50030  @objc AudioVisualizationRingLayer.setOpacity: <stripped>
-	0x500c0  @objc AudioVisualizationRingLayer.bounds <stripped>
-	0x50190  @objc AudioVisualizationRingLayer.setBounds: <stripped>
-	0x50ab0  @objc AudioVisualizationRingLayer.init <stripped>
+	0x4fbe0  @objc AudioVisualizationRingLayer.initWithLayer: <stripped>
+	0x4fcd0  @objc AudioVisualizationRingLayer.initWithCoder: <stripped>
+	0x4fce0  @objc AudioVisualizationRingLayer.opacity <stripped>
+	0x4fd60  @objc AudioVisualizationRingLayer.setOpacity: <stripped>
+	0x4fdf0  @objc AudioVisualizationRingLayer.bounds <stripped>
+	0x4fec0  @objc AudioVisualizationRingLayer.setBounds: <stripped>
+	0x507e0  @objc AudioVisualizationRingLayer.init <stripped>
 
 	// Swift methods
-	0x4fc60  class func AudioVisualizationRingLayer.__allocating_init(opacityMultiple:) // init 
-	0x50420  func AudioVisualizationRingLayer.addBoundsSizeAnimation(_:forKey:) // method 
+	0x4f990  class func AudioVisualizationRingLayer.__allocating_init(opacityMultiple:) // init 
+	0x50150  func AudioVisualizationRingLayer.addBoundsSizeAnimation(_:forKey:) // method 
  }
 
  struct ConversationKit.ImageNames { }
@@ -1153,7 +1157,7 @@
 	case powerbeats  
 	case beatsX  
 	case beatsStudio  
-	case powerbeats2  
+	case powerbeatsPro  
 	case homePod  
 	case homePodStereoPair  
 	case iPod  
@@ -1175,7 +1179,7 @@
 	var currentConstraints : [NSLayoutConstraint] // +0x30 (0x8)
 
 	// Swift methods
-	0x52ef0  class func SmallMultiwayControllerLayout.__allocating_init(containingView:participantListView:participantListState:gridView:controlsViewController:inCallControlsState:localParticipantView:localParticipantState:effectsView:effectsBrowserViewController:) // init 
+	0x52c20  class func SmallMultiwayControllerLayout.__allocating_init(containingView:participantListView:participantListState:gridView:controlsViewController:inCallControlsState:localParticipantView:localParticipantState:effectsView:effectsBrowserViewController:) // init 
  }
 
  class ConversationKit.ParticipantGridViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1192,22 +1196,22 @@
 	var participantGridViewControllerDelegate : ParticipantGridViewControllerDelegate // +0x45545f5f (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x5e3b0  @objc ParticipantGridViewController.initWithCoder: <stripped>
-	0x5e440  @objc ParticipantGridViewController.loadView <stripped>
-	0x5e890  @objc ParticipantGridViewController.viewDidLoad <stripped>
-	0x5e8d0  @objc ParticipantGridViewController._canShowWhileLocked <stripped>
-	0x5eaa0  @objc ParticipantGridViewController.forceBumpPriority <stripped>
-	0x611a0  @objc ParticipantGridViewController.initWithNibName:bundle: <stripped>
-	0x61200  @objc ParticipantGridViewController..cxx_destruct <stripped>
+	0x5e0e0  @objc ParticipantGridViewController.initWithCoder: <stripped>
+	0x5e170  @objc ParticipantGridViewController.loadView <stripped>
+	0x5e5c0  @objc ParticipantGridViewController.viewDidLoad <stripped>
+	0x5e600  @objc ParticipantGridViewController._canShowWhileLocked <stripped>
+	0x5e7d0  @objc ParticipantGridViewController.forceBumpPriority <stripped>
+	0x60ed0  @objc ParticipantGridViewController.initWithNibName:bundle: <stripped>
+	0x60f30  @objc ParticipantGridViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x5d740  class func ParticipantGridViewController.__allocating_init(participants:) // init 
+	0x5d470  class func ParticipantGridViewController.__allocating_init(participants:) // init 
  }
 
  class ConversationKit.ParticipantVideoCameraView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x657a0  @objc ParticipantVideoCameraView.initWithFrame: <stripped>
-	0x65870  @objc ParticipantVideoCameraView.initWithCoder: <stripped>
+	0x654d0  @objc ParticipantVideoCameraView.initWithFrame: <stripped>
+	0x655a0  @objc ParticipantVideoCameraView.initWithCoder: <stripped>
  }
 
  class ConversationKit.MostActiveParticipantsController {
@@ -1237,14 +1241,14 @@
 	var contentAlpha : CGFloat // +0x50 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x73ff0  @objc InCallControlButton.isSelected <stripped>
-	0x74030  @objc InCallControlButton.setSelected: <stripped>
-	0x740f0  @objc InCallControlButton.isHighlighted <stripped>
-	0x741a0  @objc InCallControlButton.setHighlighted: <stripped>
-	0x78eb0  @objc InCallControlButton.initWithCoder: <stripped>
-	0x78fb0  @objc InCallControlButton.layoutSubviews <stripped>
-	0x792b0  @objc InCallControlButton.initWithFrame: <stripped>
-	0x792f0  @objc InCallControlButton..cxx_destruct <stripped>
+	0x73d20  @objc InCallControlButton.isSelected <stripped>
+	0x73d60  @objc InCallControlButton.setSelected: <stripped>
+	0x73e20  @objc InCallControlButton.isHighlighted <stripped>
+	0x73ed0  @objc InCallControlButton.setHighlighted: <stripped>
+	0x78be0  @objc InCallControlButton.initWithCoder: <stripped>
+	0x78ce0  @objc InCallControlButton.layoutSubviews <stripped>
+	0x78fe0  @objc InCallControlButton.initWithFrame: <stripped>
+	0x79020  @objc InCallControlButton..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1294,11 +1298,11 @@
 	var delegate : weak CallCenterProviderDelegate? // +0x10 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x7c340  @objc CallCenter.init <stripped>
-	0x7c380  @objc CallCenter..cxx_destruct <stripped>
+	0x7c070  @objc CallCenter.init <stripped>
+	0x7c0b0  @objc CallCenter..cxx_destruct <stripped>
 
 	// Swift methods
-	0x7aa30  class func CallCenter.__allocating_init(callCenter:) // init 
+	0x7a760  class func CallCenter.__allocating_init(callCenter:) // init 
  }
 
  class ConversationKit.MonogramView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1310,14 +1314,14 @@
 	var text : String // +0x30 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x7dd70  @objc MonogramView.init <stripped>
-	0x7deb0  @objc MonogramView.initWithFrame: <stripped>
-	0x7dfb0  @objc MonogramView.initWithCoder: <stripped>
-	0x7e4e0  @objc MonogramView.drawRect: <stripped>
-	0x7e580  @objc MonogramView..cxx_destruct <stripped>
+	0x7daa0  @objc MonogramView.init <stripped>
+	0x7dbe0  @objc MonogramView.initWithFrame: <stripped>
+	0x7dce0  @objc MonogramView.initWithCoder: <stripped>
+	0x7e210  @objc MonogramView.drawRect: <stripped>
+	0x7e2b0  @objc MonogramView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x7da90  class func MonogramView.__allocating_init(colorStyle:) // init 
+	0x7d7c0  class func MonogramView.__allocating_init(colorStyle:) // init 
  }
 
  class ConversationKit.InCallControlsViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1343,58 +1347,58 @@
 	var participantsViewControllerDelegate : weak ParticipantsViewControllerDelegate?
 
 	// ObjC -> Swift bridged methods
-	0x7f960  @objc InCallControlsViewController.isExpanded <stripped>
-	0x7f9a0  @objc InCallControlsViewController.setIsExpanded: <stripped>
-	0x7fda0  @objc InCallControlsViewController.audioIsEnabled <stripped>
-	0x7fe20  @objc InCallControlsViewController.setAudioIsEnabled: <stripped>
-	0x7ff30  @objc InCallControlsViewController.videoIsEnabled <stripped>
-	0x7ff70  @objc InCallControlsViewController.setVideoIsEnabled: <stripped>
-	0x80980  @objc InCallControlsViewController.effectsAreAvailable <stripped>
-	0x809c0  @objc InCallControlsViewController.setEffectsAreAvailable: <stripped>
-	0x80a50  @objc InCallControlsViewController.effectsAreEnabled <stripped>
-	0x80a90  @objc InCallControlsViewController.setEffectsAreEnabled: <stripped>
-	0x80b40  @objc InCallControlsViewController.shouldShowJoinButton <stripped>
-	0x80bb0  @objc InCallControlsViewController.setShouldShowJoinButton: <stripped>
-	0x80e70  @objc InCallControlsViewController.audioButton <stripped>
-	0x80f10  @objc InCallControlsViewController.delegate <stripped>
-	0x80f90  @objc InCallControlsViewController.setDelegate: <stripped>
-	0x814a0  @objc InCallControlsViewController.description <stripped>
-	0x821e0  @objc InCallControlsViewController.initWithActiveCall: <stripped>
-	0x824f0  @objc InCallControlsViewController.initWithCoder: <stripped>
-	0x826c0  @objc InCallControlsViewController.embedEffectsBrowserViewController: <stripped>
-	0x82840  @objc InCallControlsViewController.loadView <stripped>
-	0x84560  @objc InCallControlsViewController.viewDidLoad <stripped>
-	0x85da0  @objc InCallControlsViewController.viewDidAppear: <stripped>
-	0x85e70  @objc InCallControlsViewController.willMoveToParentViewController: <stripped>
-	0x85f60  @objc InCallControlsViewController.traitCollectionDidChange: <stripped>
-	0x85fc0  @objc InCallControlsViewController.viewDidLayoutSubviews <stripped>
-	0x86000  @objc InCallControlsViewController._canShowWhileLocked <stripped>
-	0x86290  @objc InCallControlsViewController.didTapEffectsButton: <stripped>
-	0x862e0  @objc InCallControlsViewController.didTapFlipCameraButton: <stripped>
-	0x86470  @objc InCallControlsViewController.didTapJoinLeaveButton: <stripped>
-	0x864c0  @objc InCallControlsViewController.didTapToggleCameraButton: <stripped>
-	0x86520  @objc InCallControlsViewController.didTapMuteButton: <stripped>
-	0x86640  @objc InCallControlsViewController.didTapAudioRouteButton: <stripped>
-	0x866a0  @objc InCallControlsViewController.updateControlsVisibilityForExpandedState: <stripped>
-	0x86dc0  @objc InCallControlsViewController.updateAudioRouteButtonFor: <stripped>
-	0x86e40  @objc InCallControlsViewController.updateToRepresentLegacyCall: <stripped>
-	0x86ed0  @objc InCallControlsViewController.accessibilityHotdog <stripped>
-	0x86f10  @objc InCallControlsViewController.accessibilityJoinLeaveButton <stripped>
-	0x86f50  @objc InCallControlsViewController.accessibilityEffectsButton <stripped>
-	0x86f90  @objc InCallControlsViewController.accessibilityEffectsLabel <stripped>
-	0x86fd0  @objc InCallControlsViewController.accessibilityCameraButton <stripped>
-	0x87010  @objc InCallControlsViewController.accessibilityCameraLabel <stripped>
-	0x87050  @objc InCallControlsViewController.accessibilityMuteAudioButton <stripped>
-	0x87090  @objc InCallControlsViewController.accessibilityMuteAudioLabel <stripped>
-	0x870d0  @objc InCallControlsViewController.accessibilityRouteButton <stripped>
-	0x87110  @objc InCallControlsViewController.accessibilityRouteLabel <stripped>
-	0x871b0  @objc InCallControlsViewController.accessibilityDisableVideoButton <stripped>
-	0x87270  @objc InCallControlsViewController.accessibilityDisableVideoLabel <stripped>
-	0x87350  @objc InCallControlsViewController.initWithNibName:bundle: <stripped>
-	0x873b0  @objc InCallControlsViewController..cxx_destruct <stripped>
+	0x7f690  @objc InCallControlsViewController.isExpanded <stripped>
+	0x7f6d0  @objc InCallControlsViewController.setIsExpanded: <stripped>
+	0x7fad0  @objc InCallControlsViewController.audioIsEnabled <stripped>
+	0x7fb50  @objc InCallControlsViewController.setAudioIsEnabled: <stripped>
+	0x7fc60  @objc InCallControlsViewController.videoIsEnabled <stripped>
+	0x7fca0  @objc InCallControlsViewController.setVideoIsEnabled: <stripped>
+	0x806b0  @objc InCallControlsViewController.effectsAreAvailable <stripped>
+	0x806f0  @objc InCallControlsViewController.setEffectsAreAvailable: <stripped>
+	0x80780  @objc InCallControlsViewController.effectsAreEnabled <stripped>
+	0x807c0  @objc InCallControlsViewController.setEffectsAreEnabled: <stripped>
+	0x80870  @objc InCallControlsViewController.shouldShowJoinButton <stripped>
+	0x808e0  @objc InCallControlsViewController.setShouldShowJoinButton: <stripped>
+	0x80ba0  @objc InCallControlsViewController.audioButton <stripped>
+	0x80c40  @objc InCallControlsViewController.delegate <stripped>
+	0x80cc0  @objc InCallControlsViewController.setDelegate: <stripped>
+	0x811d0  @objc InCallControlsViewController.description <stripped>
+	0x81f10  @objc InCallControlsViewController.initWithActiveCall: <stripped>
+	0x82220  @objc InCallControlsViewController.initWithCoder: <stripped>
+	0x823f0  @objc InCallControlsViewController.embedEffectsBrowserViewController: <stripped>
+	0x82570  @objc InCallControlsViewController.loadView <stripped>
+	0x84290  @objc InCallControlsViewController.viewDidLoad <stripped>
+	0x85ad0  @objc InCallControlsViewController.viewDidAppear: <stripped>
+	0x85ba0  @objc InCallControlsViewController.willMoveToParentViewController: <stripped>
+	0x85c90  @objc InCallControlsViewController.traitCollectionDidChange: <stripped>
+	0x85cf0  @objc InCallControlsViewController.viewDidLayoutSubviews <stripped>
+	0x85d30  @objc InCallControlsViewController._canShowWhileLocked <stripped>
+	0x85fc0  @objc InCallControlsViewController.didTapEffectsButton: <stripped>
+	0x86010  @objc InCallControlsViewController.didTapFlipCameraButton: <stripped>
+	0x861a0  @objc InCallControlsViewController.didTapJoinLeaveButton: <stripped>
+	0x861f0  @objc InCallControlsViewController.didTapToggleCameraButton: <stripped>
+	0x86250  @objc InCallControlsViewController.didTapMuteButton: <stripped>
+	0x86370  @objc InCallControlsViewController.didTapAudioRouteButton: <stripped>
+	0x863d0  @objc InCallControlsViewController.updateControlsVisibilityForExpandedState: <stripped>
+	0x86af0  @objc InCallControlsViewController.updateAudioRouteButtonFor: <stripped>
+	0x86b70  @objc InCallControlsViewController.updateToRepresentLegacyCall: <stripped>
+	0x86c00  @objc InCallControlsViewController.accessibilityHotdog <stripped>
+	0x86c40  @objc InCallControlsViewController.accessibilityJoinLeaveButton <stripped>
+	0x86c80  @objc InCallControlsViewController.accessibilityEffectsButton <stripped>
+	0x86cc0  @objc InCallControlsViewController.accessibilityEffectsLabel <stripped>
+	0x86d00  @objc InCallControlsViewController.accessibilityCameraButton <stripped>
+	0x86d40  @objc InCallControlsViewController.accessibilityCameraLabel <stripped>
+	0x86d80  @objc InCallControlsViewController.accessibilityMuteAudioButton <stripped>
+	0x86dc0  @objc InCallControlsViewController.accessibilityMuteAudioLabel <stripped>
+	0x86e00  @objc InCallControlsViewController.accessibilityRouteButton <stripped>
+	0x86e40  @objc InCallControlsViewController.accessibilityRouteLabel <stripped>
+	0x86ee0  @objc InCallControlsViewController.accessibilityDisableVideoButton <stripped>
+	0x86fa0  @objc InCallControlsViewController.accessibilityDisableVideoLabel <stripped>
+	0x87080  @objc InCallControlsViewController.initWithNibName:bundle: <stripped>
+	0x870e0  @objc InCallControlsViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x817a0  class func InCallControlsViewController.__allocating_init(localParticipant:remoteParticipants:mode:representedLegacyCallIdentifier:) // init 
+	0x814d0  class func InCallControlsViewController.__allocating_init(localParticipant:remoteParticipants:mode:representedLegacyCallIdentifier:) // init 
  }
 
  struct ConversationKit.ViewContent {
@@ -1429,16 +1433,16 @@
 	var isInRoster : Bool // +0x38 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x8d5c0  @objc ParticipantMonogramView.titleLabelContainer <stripped>
-	0x8d600  @objc ParticipantMonogramView.subtitleLabelContainer <stripped>
-	0x8de60  @objc ParticipantMonogramView.init <stripped>
-	0x8df80  @objc ParticipantMonogramView.initWithCoder: <stripped>
-	0x8e0f0  @objc ParticipantMonogramView.initWithFrame: <stripped>
-	0x8e300  @objc ParticipantMonogramView.layoutSubviews <stripped>
-	0x8e790  @objc ParticipantMonogramView..cxx_destruct <stripped>
+	0x8d2f0  @objc ParticipantMonogramView.titleLabelContainer <stripped>
+	0x8d330  @objc ParticipantMonogramView.subtitleLabelContainer <stripped>
+	0x8db90  @objc ParticipantMonogramView.init <stripped>
+	0x8dcb0  @objc ParticipantMonogramView.initWithCoder: <stripped>
+	0x8de20  @objc ParticipantMonogramView.initWithFrame: <stripped>
+	0x8e030  @objc ParticipantMonogramView.layoutSubviews <stripped>
+	0x8e4c0  @objc ParticipantMonogramView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x8d7a0  class func ParticipantMonogramView.__allocating_init(colorStyle:) // init 
+	0x8d4d0  class func ParticipantMonogramView.__allocating_init(colorStyle:) // init 
  }
 
  struct ConversationKit.ViewModel {
@@ -1460,7 +1464,7 @@
 	let subtitleView : ParticipantViewLabelContainerView // +0x30 (0x8)
 
 	// Swift methods
-	0x8f380  class func ParticipantMonogramViewLayout.__allocating_init(audioVisualizer:contactView:titleView:subtitleView:glowView:) // init 
+	0x8f0b0  class func ParticipantMonogramViewLayout.__allocating_init(audioVisualizer:contactView:titleView:subtitleView:glowView:) // init 
  }
 
  class ConversationKit.InCallControlsParticipantsTableViewController : UITableViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1475,21 +1479,21 @@
 	var inCallControlsParticipantsTableViewControllerDelegate : InCallControlsParticipantsTableViewControllerDelegate // +0x48 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x92960  @objc InCallControlsParticipantsTableViewController.handleContentSizeCategoryDidChange: <stripped>
-	0x92b60  @objc InCallControlsParticipantsTableViewController.initWithCoder: <stripped>
-	0x93030  @objc InCallControlsParticipantsTableViewController.viewDidLoad <stripped>
-	0x93070  @objc InCallControlsParticipantsTableViewController._canShowWhileLocked <stripped>
-	0x930f0  @objc InCallControlsParticipantsTableViewController.numberOfSectionsInTableView: <stripped>
-	0x932d0  @objc InCallControlsParticipantsTableViewController.tableView:numberOfRowsInSection: <stripped>
-	0x93e60  @objc InCallControlsParticipantsTableViewController.tableView:cellForRowAtIndexPath: <stripped>
-	0x942b0  @objc InCallControlsParticipantsTableViewController.tableView:didSelectRowAtIndexPath: <stripped>
-	0x94520  @objc InCallControlsParticipantsTableViewController.tableView:heightForRowAtIndexPath: <stripped>
-	0x94640  @objc InCallControlsParticipantsTableViewController.initWithStyle: <stripped>
-	0x946f0  @objc InCallControlsParticipantsTableViewController.initWithNibName:bundle: <stripped>
-	0x94750  @objc InCallControlsParticipantsTableViewController..cxx_destruct <stripped>
+	0x92690  @objc InCallControlsParticipantsTableViewController.handleContentSizeCategoryDidChange: <stripped>
+	0x92890  @objc InCallControlsParticipantsTableViewController.initWithCoder: <stripped>
+	0x92d60  @objc InCallControlsParticipantsTableViewController.viewDidLoad <stripped>
+	0x92da0  @objc InCallControlsParticipantsTableViewController._canShowWhileLocked <stripped>
+	0x92e20  @objc InCallControlsParticipantsTableViewController.numberOfSectionsInTableView: <stripped>
+	0x93000  @objc InCallControlsParticipantsTableViewController.tableView:numberOfRowsInSection: <stripped>
+	0x93b90  @objc InCallControlsParticipantsTableViewController.tableView:cellForRowAtIndexPath: <stripped>
+	0x93fe0  @objc InCallControlsParticipantsTableViewController.tableView:didSelectRowAtIndexPath: <stripped>
+	0x94250  @objc InCallControlsParticipantsTableViewController.tableView:heightForRowAtIndexPath: <stripped>
+	0x94370  @objc InCallControlsParticipantsTableViewController.initWithStyle: <stripped>
+	0x94420  @objc InCallControlsParticipantsTableViewController.initWithNibName:bundle: <stripped>
+	0x94480  @objc InCallControlsParticipantsTableViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x90220  class func InCallControlsParticipantsTableViewController.__allocating_init(participants:mode:isLegacy:groupName:) // init 
+	0x8ff50  class func InCallControlsParticipantsTableViewController.__allocating_init(participants:mode:isLegacy:groupName:) // init 
  }
 
  enum ConversationKit.TableViewSection {
@@ -1522,12 +1526,12 @@
 	var delegate : weak InCallControlsParticipantTableViewCellDelegate? // +0x40 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x97360  @objc InCallControlsParticipantTableViewCell.ringButton <stripped>
-	0x97d40  @objc InCallControlsParticipantTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x98010  @objc InCallControlsParticipantTableViewCell.initWithCoder: <stripped>
-	0x99370  @objc InCallControlsParticipantTableViewCell.layoutSubviews <stripped>
-	0x99400  @objc InCallControlsParticipantTableViewCell.didTapRing: <stripped>
-	0x99480  @objc InCallControlsParticipantTableViewCell..cxx_destruct <stripped>
+	0x97090  @objc InCallControlsParticipantTableViewCell.ringButton <stripped>
+	0x97a70  @objc InCallControlsParticipantTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x97d40  @objc InCallControlsParticipantTableViewCell.initWithCoder: <stripped>
+	0x990a0  @objc InCallControlsParticipantTableViewCell.layoutSubviews <stripped>
+	0x99130  @objc InCallControlsParticipantTableViewCell.didTapRing: <stripped>
+	0x991b0  @objc InCallControlsParticipantTableViewCell..cxx_destruct <stripped>
  }
 
  struct ConversationKit.NotifyDispatchName {
@@ -1555,18 +1559,18 @@
 	let activityIndicator : UIActivityIndicatorView
 
 	// ObjC -> Swift bridged methods
-	0xa1700  @objc ReportAProblemContractViewController.initWithCoder: <stripped>
-	0xa1f30  @objc ReportAProblemContractViewController.viewDidLoad <stripped>
-	0xa1f80  @objc ReportAProblemContractViewController.didTapCancel: <stripped>
-	0xa29e0  @objc ReportAProblemContractViewController.initWithNibName:bundle: <stripped>
-	0xa2a30  @objc ReportAProblemContractViewController..cxx_destruct <stripped>
+	0xa1430  @objc ReportAProblemContractViewController.initWithCoder: <stripped>
+	0xa1c60  @objc ReportAProblemContractViewController.viewDidLoad <stripped>
+	0xa1cb0  @objc ReportAProblemContractViewController.didTapCancel: <stripped>
+	0xa2710  @objc ReportAProblemContractViewController.initWithNibName:bundle: <stripped>
+	0xa2760  @objc ReportAProblemContractViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xa14a0  class func ReportAProblemContractViewController.__allocating_init(call:conversation:) // init 
-	0xa1f60  func ReportAProblemContractViewController.didTapCancel(_:) // method 
-	0xa2000  func ReportAProblemContractViewController.didTapButton() // method 
-	0xa2440  func ReportAProblemContractViewController.handleRadarIdentifierRequest(_:) // method 
-	0xa2510  func ReportAProblemContractViewController.handleFailedToGetRadarIdentifier() // method 
+	0xa11d0  class func ReportAProblemContractViewController.__allocating_init(call:conversation:) // init 
+	0xa1c90  func ReportAProblemContractViewController.didTapCancel(_:) // method 
+	0xa1d30  func ReportAProblemContractViewController.didTapButton() // method 
+	0xa2170  func ReportAProblemContractViewController.handleRadarIdentifierRequest(_:) // method 
+	0xa2240  func ReportAProblemContractViewController.handleFailedToGetRadarIdentifier() // method 
  }
 
  class ConversationKit.ReportAProblemSymptomsViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1579,18 +1583,18 @@
 	var textViewBottomConstraint : NSLayoutConstraint?
 
 	// ObjC -> Swift bridged methods
-	0xa2d90  @objc ReportAProblemSymptomsViewController.initWithCoder: <stripped>
-	0xa3600  @objc ReportAProblemSymptomsViewController.viewDidLoad <stripped>
-	0xa3680  @objc ReportAProblemSymptomsViewController.viewWillAppear: <stripped>
-	0xa3e40  @objc ReportAProblemSymptomsViewController.didTapNext: <stripped>
-	0xa4220  @objc ReportAProblemSymptomsViewController.handleKeyboardChangeNotification: <stripped>
-	0xa42f0  @objc ReportAProblemSymptomsViewController.initWithNibName:bundle: <stripped>
-	0xa4360  @objc ReportAProblemSymptomsViewController..cxx_destruct <stripped>
+	0xa2ac0  @objc ReportAProblemSymptomsViewController.initWithCoder: <stripped>
+	0xa3330  @objc ReportAProblemSymptomsViewController.viewDidLoad <stripped>
+	0xa33b0  @objc ReportAProblemSymptomsViewController.viewWillAppear: <stripped>
+	0xa3b70  @objc ReportAProblemSymptomsViewController.didTapNext: <stripped>
+	0xa3f50  @objc ReportAProblemSymptomsViewController.handleKeyboardChangeNotification: <stripped>
+	0xa4020  @objc ReportAProblemSymptomsViewController.initWithNibName:bundle: <stripped>
+	0xa4090  @objc ReportAProblemSymptomsViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xa2a90  func <stripped> // setter 
-	0xa36c0  func <stripped> // method 
-	0xa3e60  func <stripped> // method 
+	0xa27c0  func <stripped> // setter 
+	0xa33f0  func <stripped> // method 
+	0xa3b90  func <stripped> // method 
  }
 
  class ConversationKit.ReportAProblemAcknowledgmentViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1601,16 +1605,16 @@
 	let reportAProblemView : ReportAProblemView
 
 	// ObjC -> Swift bridged methods
-	0xa44e0  @objc ReportAProblemAcknowledgmentViewController.initWithCoder: <stripped>
-	0xa49e0  @objc ReportAProblemAcknowledgmentViewController.viewDidLoad <stripped>
-	0xa4a10  @objc ReportAProblemAcknowledgmentViewController.preferredStatusBarStyle <stripped>
-	0xa5030  @objc ReportAProblemAcknowledgmentViewController.didTapDone: <stripped>
-	0xa50b0  @objc ReportAProblemAcknowledgmentViewController.initWithNibName:bundle: <stripped>
-	0xa5150  @objc ReportAProblemAcknowledgmentViewController..cxx_destruct <stripped>
+	0xa4210  @objc ReportAProblemAcknowledgmentViewController.initWithCoder: <stripped>
+	0xa4710  @objc ReportAProblemAcknowledgmentViewController.viewDidLoad <stripped>
+	0xa4740  @objc ReportAProblemAcknowledgmentViewController.preferredStatusBarStyle <stripped>
+	0xa4d60  @objc ReportAProblemAcknowledgmentViewController.didTapDone: <stripped>
+	0xa4de0  @objc ReportAProblemAcknowledgmentViewController.initWithNibName:bundle: <stripped>
+	0xa4e80  @objc ReportAProblemAcknowledgmentViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xa4a40  func <stripped> // method 
-	0xa5010  func <stripped> // method 
+	0xa4770  func <stripped> // method 
+	0xa4d40  func <stripped> // method 
  }
 
  class ConversationKit.ReportAProblemView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1622,17 +1626,17 @@
 	var didTapButton : ()?
 
 	// ObjC -> Swift bridged methods
-	0xa53f0  @objc ReportAProblemView.init <stripped>
-	0xa60c0  @objc ReportAProblemView.initWithFrame: <stripped>
-	0xa61e0  @objc ReportAProblemView.initWithCoder: <stripped>
-	0xa6330  @objc ReportAProblemView.didMoveToSuperview <stripped>
-	0xa66a0  @objc ReportAProblemView.didTapButton: <stripped>
-	0xa6770  @objc ReportAProblemView..cxx_destruct <stripped>
+	0xa5120  @objc ReportAProblemView.init <stripped>
+	0xa5df0  @objc ReportAProblemView.initWithFrame: <stripped>
+	0xa5f10  @objc ReportAProblemView.initWithCoder: <stripped>
+	0xa6060  @objc ReportAProblemView.didMoveToSuperview <stripped>
+	0xa63d0  @objc ReportAProblemView.didTapButton: <stripped>
+	0xa64a0  @objc ReportAProblemView..cxx_destruct <stripped>
 
 	// Swift methods
-	0xa5380  func <stripped> // setter 
-	0xa6360  func <stripped> // method 
-	0xa6660  func <stripped> // method 
+	0xa50b0  func <stripped> // setter 
+	0xa6090  func <stripped> // method 
+	0xa6390  func <stripped> // method 
  }
 
  class ConversationKit.StagingAreaViewControllerLayout : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1643,7 +1647,7 @@
 	var currentConstraints : [NSLayoutConstraint] // +0x20 (0x8)
 
 	// Swift methods
-	0xa7100  class func StagingAreaViewControllerLayout.__allocating_init(containingView:controlsViewController:inCallControlsState:effectsView:effectsBrowserView:) // init 
+	0xa6e30  class func StagingAreaViewControllerLayout.__allocating_init(containingView:controlsViewController:inCallControlsState:effectsView:effectsBrowserView:) // init 
  }
 
  class ConversationKit.EffectsBrowserViewConstraintManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1653,8 +1657,8 @@
 	let effectsBrowserViewTopAnchor : NSLayoutConstraint // +0x18 (0x8)
 
 	// Swift methods
-	0xa8150  class func EffectsBrowserViewConstraintManager.__allocating_init(containingGuide:effectsBrowserView:controlsView:) // init 
-	0xa8430  func EffectsBrowserViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
+	0xa7e80  class func EffectsBrowserViewConstraintManager.__allocating_init(containingGuide:effectsBrowserView:controlsView:) // init 
+	0xa8160  func EffectsBrowserViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
  }
 
  class ConversationKit.RadarSession : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1666,11 +1670,11 @@
 	let decoder : JSONDecoder // +0x28 (0x8)
 
 	// Swift methods
-	0xa8770  func RadarSession.encoder.getter // getter 
-	0xa8600  class func RadarSession.__allocating_init() // init 
-	0xa8f30  func RadarSession.requestRadarIdentifier(withRequest:completion:) // method 
-	0xa9640  func RadarSession.addSymptom(withRequest:) // method 
-	0xa9a30  func RadarSession.cancel() // method 
+	0xa84a0  func RadarSession.encoder.getter // getter 
+	0xa8330  class func RadarSession.__allocating_init() // init 
+	0xa8c60  func RadarSession.requestRadarIdentifier(withRequest:completion:) // method 
+	0xa9370  func RadarSession.addSymptom(withRequest:) // method 
+	0xa9760  func RadarSession.cancel() // method 
  }
 
  enum ConversationKit.CameraPosition {
@@ -1692,17 +1696,17 @@
 	var disabledScrollViews : [UIScrollView] // +0x68 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xaa180  @objc InCallControlsDragController.delegate <stripped>
-	0xaa200  @objc InCallControlsDragController.setDelegate: <stripped>
-	0xaa360  @objc InCallControlsDragController.isDragging <stripped>
-	0xaa610  @objc InCallControlsDragController.initInCallControlsView:constraintsController: <stripped>
-	0xaa650  @objc InCallControlsDragController.resetGestureRecognizer <stripped>
-	0xab900  @objc InCallControlsDragController.handlePanGestureRecognizer: <stripped>
-	0xac340  @objc InCallControlsDragController.init <stripped>
-	0xac380  @objc InCallControlsDragController..cxx_destruct <stripped>
+	0xa9eb0  @objc InCallControlsDragController.delegate <stripped>
+	0xa9f30  @objc InCallControlsDragController.setDelegate: <stripped>
+	0xaa090  @objc InCallControlsDragController.isDragging <stripped>
+	0xaa340  @objc InCallControlsDragController.initInCallControlsView:constraintsController: <stripped>
+	0xaa380  @objc InCallControlsDragController.resetGestureRecognizer <stripped>
+	0xab630  @objc InCallControlsDragController.handlePanGestureRecognizer: <stripped>
+	0xac070  @objc InCallControlsDragController.init <stripped>
+	0xac0b0  @objc InCallControlsDragController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xaa3c0  class func InCallControlsDragController.__allocating_init(inCallControlsView:constraintsController:) // init 
+	0xaa0f0  class func InCallControlsDragController.__allocating_init(inCallControlsView:constraintsController:) // init 
  }
 
  struct ConversationKit.DragAnimation {
@@ -1752,9 +1756,9 @@
 
  class ConversationKit.CrossFadeAnimator : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xafc10  @objc CrossFadeAnimator.transitionDuration: <stripped>
-	0xafe30  @objc CrossFadeAnimator.animateTransition: <stripped>
-	0xafec0  @objc CrossFadeAnimator.init <stripped>
+	0xaf940  @objc CrossFadeAnimator.transitionDuration: <stripped>
+	0xafb60  @objc CrossFadeAnimator.animateTransition: <stripped>
+	0xafbf0  @objc CrossFadeAnimator.init <stripped>
  }
 
  struct ConversationKit.Participant: HasSortableHandle {
@@ -1829,19 +1833,19 @@
 	var isCentered : Bool
 
 	// ObjC -> Swift bridged methods
-	0xb7940  @objc ParticipantViewLabelContainerView.label <stripped>
-	0xb87b0  @objc ParticipantViewLabelContainerView.initWithFrame: <stripped>
-	0xb87e0  @objc ParticipantViewLabelContainerView.intrinsicContentSize <stripped>
-	0xb8950  @objc ParticipantViewLabelContainerView.initWithCoder: <stripped>
-	0xb8a30  @objc ParticipantViewLabelContainerView..cxx_destruct <stripped>
+	0xb7670  @objc ParticipantViewLabelContainerView.label <stripped>
+	0xb84e0  @objc ParticipantViewLabelContainerView.initWithFrame: <stripped>
+	0xb8510  @objc ParticipantViewLabelContainerView.intrinsicContentSize <stripped>
+	0xb8680  @objc ParticipantViewLabelContainerView.initWithCoder: <stripped>
+	0xb8760  @objc ParticipantViewLabelContainerView..cxx_destruct <stripped>
  }
 
  class ConversationKit.ParticipantViewLabelContainerViewLayer : CALayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
 	// ObjC -> Swift bridged methods
-	0xb8c00  @objc ParticipantViewLabelContainerViewLayer.init <stripped>
-	0xb8d00  @objc ParticipantViewLabelContainerViewLayer.initWithLayer: <stripped>
-	0xb8db0  @objc ParticipantViewLabelContainerViewLayer.initWithCoder: <stripped>
-	0xb8ec0  @objc ParticipantViewLabelContainerViewLayer.layoutSublayers <stripped>
+	0xb8930  @objc ParticipantViewLabelContainerViewLayer.init <stripped>
+	0xb8a30  @objc ParticipantViewLabelContainerViewLayer.initWithLayer: <stripped>
+	0xb8ae0  @objc ParticipantViewLabelContainerViewLayer.initWithCoder: <stripped>
+	0xb8bf0  @objc ParticipantViewLabelContainerViewLayer.layoutSublayers <stripped>
  }
 
  class ConversationKit.DisplayLinkCallbackWrapper : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1850,10 +1854,10 @@
 	var callback : (_:)?
 
 	// ObjC -> Swift bridged methods
-	0xbab70  @objc DisplayLinkCallbackWrapper.displayLinkCallback: <stripped>
+	0xba8a0  @objc DisplayLinkCallbackWrapper.displayLinkCallback: <stripped>
 
 	// Swift methods
-	0xbabb0  class func <stripped> // init 
+	0xba8e0  class func <stripped> // init 
  }
 
  class ConversationKit.PlatformDisplayLink : PlatformDisplayLinkBase {
@@ -1870,10 +1874,10 @@
 	var $__lazy_storage_$_displayLink : CADisplayLink?
 
 	// Swift methods
-	0xbb080  func PlatformDisplayLinkBase.displayLink.getter // getter 
-	0xbb0e0  func PlatformDisplayLinkBase.start() // method 
-	0xbb100  func PlatformDisplayLinkBase.cancel() // method 
-	0xbb290  class func PlatformDisplayLinkBase.__allocating_init() // init 
+	0xbadb0  func PlatformDisplayLinkBase.displayLink.getter // getter 
+	0xbae10  func PlatformDisplayLinkBase.start() // method 
+	0xbae30  func PlatformDisplayLinkBase.cancel() // method 
+	0xbafc0  class func PlatformDisplayLinkBase.__allocating_init() // init 
  }
 
  struct ConversationKit.WeakPlatformDisplayLinkObserver {
@@ -1923,12 +1927,12 @@
 	var containingViewController : weak UIViewController? // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xbd520  @objc EffectsLayoutController.initWithContainingViewController: <stripped>
-	0xbd5a0  @objc EffectsLayoutController.init <stripped>
-	0xbd5e0  @objc EffectsLayoutController..cxx_destruct <stripped>
+	0xbd250  @objc EffectsLayoutController.initWithContainingViewController: <stripped>
+	0xbd2d0  @objc EffectsLayoutController.init <stripped>
+	0xbd310  @objc EffectsLayoutController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xbd450  class func EffectsLayoutController.__allocating_init(containingViewController:) // init 
+	0xbd180  class func EffectsLayoutController.__allocating_init(containingViewController:) // init 
  }
 
  class ConversationKit.ParticipantContactView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1940,14 +1944,14 @@
 	var contactDetails : ParticipantContactDetails? // +0x20 (0x38)
 
 	// ObjC -> Swift bridged methods
-	0xbe5f0  @objc ParticipantContactView.init <stripped>
-	0xbe730  @objc ParticipantContactView.initWithCoder: <stripped>
-	0xbe8c0  @objc ParticipantContactView.initWithFrame: <stripped>
-	0xbec60  @objc ParticipantContactView.layoutSubviews <stripped>
-	0xbecc0  @objc ParticipantContactView..cxx_destruct <stripped>
+	0xbe320  @objc ParticipantContactView.init <stripped>
+	0xbe460  @objc ParticipantContactView.initWithCoder: <stripped>
+	0xbe5f0  @objc ParticipantContactView.initWithFrame: <stripped>
+	0xbe990  @objc ParticipantContactView.layoutSubviews <stripped>
+	0xbe9f0  @objc ParticipantContactView..cxx_destruct <stripped>
 
 	// Swift methods
-	0xbd600  class func ParticipantContactView.__allocating_init(colorStyle:) // init 
+	0xbd330  class func ParticipantContactView.__allocating_init(colorStyle:) // init 
  }
 
  class ConversationKit.ParticipantsCollectionViewDataSource : NSObject /usr/lib/libobjc.A.dylib {
@@ -1959,11 +1963,11 @@
 	var didCreateCellForParticipant : (_:_:)? // +0x28 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0xc3fd0  @objc ParticipantsCollectionViewDataSource.init <stripped>
-	0xc4010  @objc ParticipantsCollectionViewDataSource..cxx_destruct <stripped>
+	0xc3d00  @objc ParticipantsCollectionViewDataSource.init <stripped>
+	0xc3d40  @objc ParticipantsCollectionViewDataSource..cxx_destruct <stripped>
 
 	// Swift methods
-	0xbfe10  class func ParticipantsCollectionViewDataSource.__allocating_init(participants:participantIsShownInGrid:) // init 
+	0xbfb40  class func ParticipantsCollectionViewDataSource.__allocating_init(participants:participantIsShownInGrid:) // init 
  }
 
  enum ConversationKit.SectionType {
@@ -1975,37 +1979,37 @@
 
  class ConversationKit.Defaults : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xc5670  func Defaults.enableAudioVisualization.getter // getter 
-	0xc5680  func Defaults.enableAudioVisualizationLogging.getter // getter 
-	0xc5690  func Defaults.forceVideoLayerVisible.getter // getter 
-	0xc56b0  func Defaults.shouldIngorePoorConnection.getter // getter 
-	0xc56c0  func Defaults.showsForceAudioPriorityButton.getter // getter 
-	0xc56d0  func Defaults.startUplinkMuted.getter // getter 
-	0xc56e0  func Defaults.shouldEnableEffectsRendering.getter // getter 
-	0xc5700  func Defaults.supportsVideo.getter // getter 
-	0xc5730  func Defaults.supportsEffects.getter // getter 
-	0xc5770  func Defaults.useFlattenedUI.getter // getter 
-	0xc5790  func Defaults.activelyCommunicatingAudioThreshold.getter // getter 
-	0xc57c0  func Defaults.activelyCommunicatingVideoThreshold.getter // getter 
-	0xc57f0  func Defaults.mimimumActiveDuration.getter // getter 
-	0xc5820  func Defaults.mostActiveParticipantChangeInterval.getter // getter 
-	0xc5850  func Defaults.shouldShowProminenceDebuggingLabels.getter // getter 
-	0xc5860  func Defaults.organicSashFontSize.getter // getter 
-	0xc5880  func Defaults.organicCellCornerRadius.getter // getter 
-	0xc58a0  func Defaults.organicCellGlowSizeMultiplier.getter // getter 
-	0xc58c0  func Defaults.emaTimeScale.getter // getter 
-	0xc58f0  func Defaults.emaTimerFrequency.getter // getter 
-	0xc5920  func Defaults.emaProminenceWeight1.getter // getter 
-	0xc5950  func Defaults.emaProminenceWeight2.getter // getter 
-	0xc5980  func Defaults.emaProminenceWeight3.getter // getter 
-	0xc59b0  func Defaults.emaProminenceWeight4.getter // getter 
-	0xc59e0  func Defaults.emaMinUIUpdateInterval.getter // getter 
-	0xc5a10  func Defaults.emaLowerBoundTreshold.getter // getter 
-	0xc5a40  func Defaults.shouldCenterRoster.getter // getter 
-	0xc5d50  func Defaults.bool(for:default:) // method 
-	0xc5eb0  func Defaults.float(for:default:) // method 
-	0xc6010  func Defaults.double(for:default:) // method 
-	0xc5600  class func Defaults.__allocating_init() // init 
+	0xc53a0  func Defaults.enableAudioVisualization.getter // getter 
+	0xc53b0  func Defaults.enableAudioVisualizationLogging.getter // getter 
+	0xc53c0  func Defaults.forceVideoLayerVisible.getter // getter 
+	0xc53e0  func Defaults.shouldIngorePoorConnection.getter // getter 
+	0xc53f0  func Defaults.showsForceAudioPriorityButton.getter // getter 
+	0xc5400  func Defaults.startUplinkMuted.getter // getter 
+	0xc5410  func Defaults.shouldEnableEffectsRendering.getter // getter 
+	0xc5430  func Defaults.supportsVideo.getter // getter 
+	0xc5460  func Defaults.supportsEffects.getter // getter 
+	0xc54a0  func Defaults.useFlattenedUI.getter // getter 
+	0xc54c0  func Defaults.activelyCommunicatingAudioThreshold.getter // getter 
+	0xc54f0  func Defaults.activelyCommunicatingVideoThreshold.getter // getter 
+	0xc5520  func Defaults.mimimumActiveDuration.getter // getter 
+	0xc5550  func Defaults.mostActiveParticipantChangeInterval.getter // getter 
+	0xc5580  func Defaults.shouldShowProminenceDebuggingLabels.getter // getter 
+	0xc5590  func Defaults.organicSashFontSize.getter // getter 
+	0xc55b0  func Defaults.organicCellCornerRadius.getter // getter 
+	0xc55d0  func Defaults.organicCellGlowSizeMultiplier.getter // getter 
+	0xc55f0  func Defaults.emaTimeScale.getter // getter 
+	0xc5620  func Defaults.emaTimerFrequency.getter // getter 
+	0xc5650  func Defaults.emaProminenceWeight1.getter // getter 
+	0xc5680  func Defaults.emaProminenceWeight2.getter // getter 
+	0xc56b0  func Defaults.emaProminenceWeight3.getter // getter 
+	0xc56e0  func Defaults.emaProminenceWeight4.getter // getter 
+	0xc5710  func Defaults.emaMinUIUpdateInterval.getter // getter 
+	0xc5740  func Defaults.emaLowerBoundTreshold.getter // getter 
+	0xc5770  func Defaults.shouldCenterRoster.getter // getter 
+	0xc5a80  func Defaults.bool(for:default:) // method 
+	0xc5be0  func Defaults.float(for:default:) // method 
+	0xc5d40  func Defaults.double(for:default:) // method 
+	0xc5330  class func Defaults.__allocating_init() // init 
  }
 
  class ConversationKit.BoxedValue : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2018,9 +2022,9 @@
 
  class ConversationKit.StagingAreaAnimator : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xc6440  @objc StagingAreaAnimator.transitionDuration: <stripped>
-	0xc76d0  @objc StagingAreaAnimator.animateTransition: <stripped>
-	0xc7760  @objc StagingAreaAnimator.init <stripped>
+	0xc6170  @objc StagingAreaAnimator.transitionDuration: <stripped>
+	0xc7400  @objc StagingAreaAnimator.animateTransition: <stripped>
+	0xc7490  @objc StagingAreaAnimator.init <stripped>
  }
 
  struct ConversationKit.OrganicLayout {
@@ -2065,17 +2069,17 @@
 	var focusedParticipant : Participant? // +0x6665725f (0x0)
 	var participantsViewControllerDelegate : weak ParticipantsViewControllerDelegate? // +0x45545f5f (0x10)
 	let participantView : ParticipantView // +0x0 (0x8)
-	var widthConstraint : NSLayoutConstraint? // +0x142bd0 (0x8)
+	var widthConstraint : NSLayoutConstraint? // +0x142ac0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xcb990  @objc MostActiveParticipantViewController.initWithCoder: <stripped>
-	0xcbb30  @objc MostActiveParticipantViewController.viewDidLayoutSubviews <stripped>
-	0xcc010  @objc MostActiveParticipantViewController.viewDidLoad <stripped>
-	0xcc0e0  @objc MostActiveParticipantViewController.initWithNibName:bundle: <stripped>
-	0xcc140  @objc MostActiveParticipantViewController..cxx_destruct <stripped>
+	0xcb6c0  @objc MostActiveParticipantViewController.initWithCoder: <stripped>
+	0xcb860  @objc MostActiveParticipantViewController.viewDidLayoutSubviews <stripped>
+	0xcbd40  @objc MostActiveParticipantViewController.viewDidLoad <stripped>
+	0xcbe10  @objc MostActiveParticipantViewController.initWithNibName:bundle: <stripped>
+	0xcbe70  @objc MostActiveParticipantViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xcb250  class func MostActiveParticipantViewController.__allocating_init(participants:) // init 
+	0xcaf80  class func MostActiveParticipantViewController.__allocating_init(participants:) // init 
  }
 
  class ConversationKit.ParticipantListViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2085,18 +2089,19 @@
 	var viewContent : ViewContent // +0x10 (0x8)
 	var lastLayedOutViewSize : CGSize? // +0x18 (0x11)
 	var participantsViewControllerDelegate : weak ParticipantsViewControllerDelegate? // +0x30 (0x10)
+	var recentlyVisibleParticipantIdentifiers : Set<UUID> // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xcdea0  @objc ParticipantListViewController.initWithCoder: <stripped>
-	0xce160  @objc ParticipantListViewController.viewDidLoad <stripped>
-	0xce410  @objc ParticipantListViewController.viewDidAppear: <stripped>
-	0xce5a0  @objc ParticipantListViewController.viewDidLayoutSubviews <stripped>
-	0xce5e0  @objc ParticipantListViewController._canShowWhileLocked <stripped>
-	0xcedd0  @objc ParticipantListViewController.initWithNibName:bundle: <stripped>
-	0xcee30  @objc ParticipantListViewController..cxx_destruct <stripped>
+	0xcdcf0  @objc ParticipantListViewController.initWithCoder: <stripped>
+	0xcdfb0  @objc ParticipantListViewController.viewDidLoad <stripped>
+	0xce260  @objc ParticipantListViewController.viewDidAppear: <stripped>
+	0xce3f0  @objc ParticipantListViewController.viewDidLayoutSubviews <stripped>
+	0xce430  @objc ParticipantListViewController._canShowWhileLocked <stripped>
+	0xcec20  @objc ParticipantListViewController.initWithNibName:bundle: <stripped>
+	0xcec80  @objc ParticipantListViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xcdc40  class func ParticipantListViewController.__allocating_init(localParticipant:remoteParticipants:participantIsShownInGrid:) // init 
+	0xcda30  class func ParticipantListViewController.__allocating_init(localParticipant:remoteParticipants:participantIsShownInGrid:) // init 
  }
 
  struct ConversationKit.ViewContent {
@@ -2111,8 +2116,8 @@
 	let constraints : [NSLayoutConstraint] // +0x10 (0x8)
 
 	// Swift methods
-	0xd1880  class func EffectsViewConstraintManager.__allocating_init(containingGuide:effectsView:) // init 
-	0xd1b30  func EffectsViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
+	0xd16e0  class func EffectsViewConstraintManager.__allocating_init(containingGuide:effectsView:) // init 
+	0xd1990  func EffectsViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
  }
 
  class ConversationKit.ParticipantAlertView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2122,10 +2127,10 @@
 	let titleLabel : UILabel // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xd2380  @objc ParticipantAlertView.init <stripped>
-	0xd2490  @objc ParticipantAlertView.initWithCoder: <stripped>
-	0xd25e0  @objc ParticipantAlertView.initWithFrame: <stripped>
-	0xd2660  @objc ParticipantAlertView..cxx_destruct <stripped>
+	0xd21e0  @objc ParticipantAlertView.init <stripped>
+	0xd22f0  @objc ParticipantAlertView.initWithCoder: <stripped>
+	0xd2440  @objc ParticipantAlertView.initWithFrame: <stripped>
+	0xd24c0  @objc ParticipantAlertView..cxx_destruct <stripped>
  }
 
  struct ConversationKit.ViewModel {
@@ -2153,43 +2158,43 @@
 	var isPipped : Bool // +0xf1 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0xd4340  @objc MultiwayViewController.inCallControlsDismissTimer <stripped>
-	0xd43b0  @objc MultiwayViewController.setInCallControlsDismissTimer: <stripped>
-	0xd4410  @objc MultiwayViewController.call <stripped>
-	0xdb440  @objc MultiwayViewController.wantsApplicationDismissalStyle <stripped>
-	0xd4470  @objc MultiwayViewController.deviceOrientation <stripped>
-	0xd44e0  @objc MultiwayViewController.setDeviceOrientation: <stripped>
-	0xd5320  @objc MultiwayViewController.delegate <stripped>
-	0xd53a0  @objc MultiwayViewController.setDelegate: <stripped>
-	0xd5500  @objc MultiwayViewController.effectsEnabled <stripped>
-	0xd5550  @objc MultiwayViewController.setEffectsEnabled: <stripped>
-	0xd55e0  @objc MultiwayViewController.pipViewController <stripped>
-	0xd57e0  @objc MultiwayViewController.initWithActiveCall:stagingAreaViewController: <stripped>
-	0xd59a0  @objc MultiwayViewController.initWithActiveCall: <stripped>
-	0xd9730  @objc MultiwayViewController.initWithCoder: <stripped>
-	0xd98e0  @objc MultiwayViewController.dealloc <stripped>
-	0xdaa40  @objc MultiwayViewController.viewDidLoad <stripped>
-	0xdacc0  @objc MultiwayViewController.viewWillAppear: <stripped>
-	0xdaf50  @objc MultiwayViewController.viewDidAppear: <stripped>
-	0xdb230  @objc MultiwayViewController.viewDidDisappear: <stripped>
-	0xdb300  @objc MultiwayViewController.viewDidLayoutSubviews <stripped>
-	0xdb3e0  @objc MultiwayViewController.willMoveToParentViewController: <stripped>
-	0xdb440  @objc MultiwayViewController._canShowWhileLocked <stripped>
-	0xdb510  @objc MultiwayViewController.updateViewConstraints <stripped>
-	0xdc170  @objc MultiwayViewController.restartAutoHideInCallControlsDrawerTimer <stripped>
-	0xdc880  @objc MultiwayViewController.toggleAudioMute <stripped>
-	0xdc8d0  @objc MultiwayViewController.toggleVideoMute <stripped>
-	0xdc920  @objc MultiwayViewController.muteVideo <stripped>
-	0xdca20  @objc MultiwayViewController.openMessagesConversation <stripped>
-	0xdcd80  @objc MultiwayViewController.viewWillTransitionToSize:withTransitionCoordinator: <stripped>
-	0xdce80  @objc MultiwayViewController.hideEffectsBrowser <stripped>
-	0xdd480  @objc MultiwayViewController.setControllerIsPipped: <stripped>
-	0xdd530  @objc MultiwayViewController.accessibilityConstraintController <stripped>
-	0xdd610  @objc MultiwayViewController.initWithNibName:bundle: <stripped>
-	0xd9900  @objc MultiwayViewController..cxx_destruct <stripped>
+	0xd41a0  @objc MultiwayViewController.inCallControlsDismissTimer <stripped>
+	0xd4210  @objc MultiwayViewController.setInCallControlsDismissTimer: <stripped>
+	0xd4270  @objc MultiwayViewController.call <stripped>
+	0xdb2a0  @objc MultiwayViewController.wantsApplicationDismissalStyle <stripped>
+	0xd42d0  @objc MultiwayViewController.deviceOrientation <stripped>
+	0xd4340  @objc MultiwayViewController.setDeviceOrientation: <stripped>
+	0xd5180  @objc MultiwayViewController.delegate <stripped>
+	0xd5200  @objc MultiwayViewController.setDelegate: <stripped>
+	0xd5360  @objc MultiwayViewController.effectsEnabled <stripped>
+	0xd53b0  @objc MultiwayViewController.setEffectsEnabled: <stripped>
+	0xd5440  @objc MultiwayViewController.pipViewController <stripped>
+	0xd5640  @objc MultiwayViewController.initWithActiveCall:stagingAreaViewController: <stripped>
+	0xd5800  @objc MultiwayViewController.initWithActiveCall: <stripped>
+	0xd9590  @objc MultiwayViewController.initWithCoder: <stripped>
+	0xd9740  @objc MultiwayViewController.dealloc <stripped>
+	0xda8a0  @objc MultiwayViewController.viewDidLoad <stripped>
+	0xdab20  @objc MultiwayViewController.viewWillAppear: <stripped>
+	0xdadb0  @objc MultiwayViewController.viewDidAppear: <stripped>
+	0xdb090  @objc MultiwayViewController.viewDidDisappear: <stripped>
+	0xdb160  @objc MultiwayViewController.viewDidLayoutSubviews <stripped>
+	0xdb240  @objc MultiwayViewController.willMoveToParentViewController: <stripped>
+	0xdb2a0  @objc MultiwayViewController._canShowWhileLocked <stripped>
+	0xdb370  @objc MultiwayViewController.updateViewConstraints <stripped>
+	0xdbfd0  @objc MultiwayViewController.restartAutoHideInCallControlsDrawerTimer <stripped>
+	0xdc6e0  @objc MultiwayViewController.toggleAudioMute <stripped>
+	0xdc730  @objc MultiwayViewController.toggleVideoMute <stripped>
+	0xdc780  @objc MultiwayViewController.muteVideo <stripped>
+	0xdc880  @objc MultiwayViewController.openMessagesConversation <stripped>
+	0xdcbe0  @objc MultiwayViewController.viewWillTransitionToSize:withTransitionCoordinator: <stripped>
+	0xdcce0  @objc MultiwayViewController.hideEffectsBrowser <stripped>
+	0xdd2e0  @objc MultiwayViewController.setControllerIsPipped: <stripped>
+	0xdd390  @objc MultiwayViewController.accessibilityConstraintController <stripped>
+	0xdd470  @objc MultiwayViewController.initWithNibName:bundle: <stripped>
+	0xd9760  @objc MultiwayViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xd59d0  class func MultiwayViewController.__allocating_init(activeCall:conversationController:) // init 
+	0xd5830  class func MultiwayViewController.__allocating_init(activeCall:conversationController:) // init 
  }
 
  struct ConversationKit.ViewContent {
@@ -2218,22 +2223,23 @@
  class ConversationKit.ConversationController : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var localParticipant : Participant // +0x142bd0 (0x0)
+	var localParticipant : Participant // +0x142ac0 (0x0)
 	var remoteParticipants : [Participant] // +0x0 (0x8)
 	let includeLocalParticipantInVisibleParticipants : Bool // +0x0 (0x1)
 	var audioFrequencyController : TUAudioFrequencyController? // +0x0 (0x8)
-	var momentsController : TUMomentsController? // +0x0 (0x8)
 	var audioCallbackQueue : OS_dispatch_queue // +0x0 (0x8)
+	var $__lazy_storage_$_momentsController : TUMomentsController? // +0x0 (0x8)
+	var lastRegisteredMomentsProvider : TUMomentsProvider? // +0x0 (0x8)
 	var recentPresentationContexts : [UInt : ParticipantPresentationContext] // +0x0 (0x8)
 	var scheduledIsChangingMirroredVideoResetDates : [UUID : Date] // +0x0 (0x8)
 	var conversationState : TUConversationState // +0x6569665f (0x8)
-	var deviceOrientation : DeviceOrientation // +0x338e (0x8)
+	var deviceOrientation : DeviceOrientation // +0x341e (0x8)
 	var broadcastingState : BroadcastingState // +0x0 (0x10)
 	var didAddVisibleParticipant : (_:_:)? // +0x45545f5f (0x10)
 	var didRemoveVisibleParticipant : (_:_:)? // +0x0 (0x10)
-	var didUpdateVisibleParticipant : (_:_:)? // +0x145f60 (0x10)
-	var visibleParticipantDidBecomeActive : (_:_:)? // +0x30ac (0x10)
-	var didStartVideoForVisibleParticipant : (_:_:)? // +0x145f60 (0x10)
+	var didUpdateVisibleParticipant : (_:_:)? // +0x145ee0 (0x10)
+	var visibleParticipantDidBecomeActive : (_:_:)? // +0x30d0 (0x10)
+	var didStartVideoForVisibleParticipant : (_:_:)? // +0x145ee0 (0x10)
 	var participantsMediaPrioritiesDidChange : (_:)? // +0x0 (0x10)
 	var participantAudioPowerDidChange : (_:_:)? // +0x0 (0x10)
 	var audioRouteDidChange : (_:)? // +0x0 (0x10)
@@ -2241,7 +2247,7 @@
 	var carPlayConnectedDidChange : (_:)? // +0x6975625f (0x10)
 	var didUpdateLocalParticipant : (_:_:)? // +0x45545f5f (0x10)
 	var didStartVideoForLocalParticipant : (_:_:)? // +0x0 (0x10)
-	var conversationStateDidChange : (_:)? // +0x14900c (0x10)
+	var conversationStateDidChange : (_:)? // +0x148fb0 (0x10)
 	var enableVideoOnJoin : Bool // +0x0 (0x1)
 	var participantMediaProviderCreator : ParticipantMediaProviderCreator // +0x244 (0x28)
 	var callCenter : CallCenterProvider // +0x0 (0x28)
@@ -2249,13 +2255,13 @@
 	var conversationUUID : UUID? // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0xefad0  @objc ConversationController.description <stripped>
-	0xf18d0  @objc ConversationController.dealloc <stripped>
-	0xfa220  @objc ConversationController.init <stripped>
-	0xf18f0  @objc ConversationController..cxx_destruct <stripped>
+	0xef980  @objc ConversationController.description <stripped>
+	0xf1840  @objc ConversationController.dealloc <stripped>
+	0xfa070  @objc ConversationController.init <stripped>
+	0xf1860  @objc ConversationController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xe8b50  class func ConversationController.__allocating_init(activeCall:callCenter:participantMediaProviderCreator:includeLocalParticipantInVisibleParticipants:) // init 
+	0xe89b0  class func ConversationController.__allocating_init(activeCall:callCenter:participantMediaProviderCreator:includeLocalParticipantInVisibleParticipants:) // init 
  }
 
  struct ConversationKit.InCallControlsTitleCellModel {
@@ -2349,38 +2355,38 @@
 	var deviceOrientation : DeviceOrientation // +0xf8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x10c580  @objc StagingAreaViewController.effectsEnabled <stripped>
-	0x10c5f0  @objc StagingAreaViewController.setEffectsEnabled: <stripped>
-	0x10c840  @objc StagingAreaViewController.hasJoined <stripped>
-	0x10c8a0  @objc StagingAreaViewController.setHasJoined: <stripped>
-	0x10c900  @objc StagingAreaViewController.delegate <stripped>
-	0x10c960  @objc StagingAreaViewController.setDelegate: <stripped>
-	0x10ca00  @objc StagingAreaViewController.stagingAreaDelegate <stripped>
-	0x10ca90  @objc StagingAreaViewController.setStagingAreaDelegate: <stripped>
-	0x10cc20  @objc StagingAreaViewController.call <stripped>
-	0x10cca0  @objc StagingAreaViewController.setCall: <stripped>
-	0x10cde0  @objc StagingAreaViewController.deviceOrientation <stripped>
-	0x10ce50  @objc StagingAreaViewController.setDeviceOrientation: <stripped>
-	0x10d180  @objc StagingAreaViewController.initWithActiveCall: <stripped>
-	0x10e110  @objc StagingAreaViewController.initWithActiveCall:hasJoined: <stripped>
-	0x10e3f0  @objc StagingAreaViewController.initWithCoder: <stripped>
-	0x111000  @objc StagingAreaViewController.viewDidLoad <stripped>
-	0x1113a0  @objc StagingAreaViewController.viewWillAppear: <stripped>
-	0x111630  @objc StagingAreaViewController.viewWillDisappear: <stripped>
-	0x111740  @objc StagingAreaViewController.viewDidLayoutSubviews <stripped>
-	0x111770  @objc StagingAreaViewController.updateViewConstraints <stripped>
-	0x1117b0  @objc StagingAreaViewController._canShowWhileLocked <stripped>
-	0x111f70  @objc StagingAreaViewController.didTapJoinButton <stripped>
-	0x112020  @objc StagingAreaViewController.didTapLeaveButton <stripped>
-	0x112100  @objc StagingAreaViewController.toggleVideoMute <stripped>
-	0x1121c0  @objc StagingAreaViewController.didTapSwapLocalParticipantCamera <stripped>
-	0x1124e0  @objc StagingAreaViewController.hideEffectsBrowser <stripped>
-	0x112920  @objc StagingAreaViewController.viewWillTransitionToSize:withTransitionCoordinator: <stripped>
-	0x112a20  @objc StagingAreaViewController.initWithNibName:bundle: <stripped>
-	0x112a80  @objc StagingAreaViewController..cxx_destruct <stripped>
+	0x10c3f0  @objc StagingAreaViewController.effectsEnabled <stripped>
+	0x10c460  @objc StagingAreaViewController.setEffectsEnabled: <stripped>
+	0x10c6b0  @objc StagingAreaViewController.hasJoined <stripped>
+	0x10c710  @objc StagingAreaViewController.setHasJoined: <stripped>
+	0x10c770  @objc StagingAreaViewController.delegate <stripped>
+	0x10c7d0  @objc StagingAreaViewController.setDelegate: <stripped>
+	0x10c870  @objc StagingAreaViewController.stagingAreaDelegate <stripped>
+	0x10c900  @objc StagingAreaViewController.setStagingAreaDelegate: <stripped>
+	0x10ca90  @objc StagingAreaViewController.call <stripped>
+	0x10cb10  @objc StagingAreaViewController.setCall: <stripped>
+	0x10cc50  @objc StagingAreaViewController.deviceOrientation <stripped>
+	0x10ccc0  @objc StagingAreaViewController.setDeviceOrientation: <stripped>
+	0x10cff0  @objc StagingAreaViewController.initWithActiveCall: <stripped>
+	0x10df80  @objc StagingAreaViewController.initWithActiveCall:hasJoined: <stripped>
+	0x10e260  @objc StagingAreaViewController.initWithCoder: <stripped>
+	0x110e70  @objc StagingAreaViewController.viewDidLoad <stripped>
+	0x111210  @objc StagingAreaViewController.viewWillAppear: <stripped>
+	0x1114a0  @objc StagingAreaViewController.viewWillDisappear: <stripped>
+	0x1115b0  @objc StagingAreaViewController.viewDidLayoutSubviews <stripped>
+	0x1115e0  @objc StagingAreaViewController.updateViewConstraints <stripped>
+	0x111620  @objc StagingAreaViewController._canShowWhileLocked <stripped>
+	0x111de0  @objc StagingAreaViewController.didTapJoinButton <stripped>
+	0x111e90  @objc StagingAreaViewController.didTapLeaveButton <stripped>
+	0x111f70  @objc StagingAreaViewController.toggleVideoMute <stripped>
+	0x112030  @objc StagingAreaViewController.didTapSwapLocalParticipantCamera <stripped>
+	0x112350  @objc StagingAreaViewController.hideEffectsBrowser <stripped>
+	0x112790  @objc StagingAreaViewController.viewWillTransitionToSize:withTransitionCoordinator: <stripped>
+	0x112890  @objc StagingAreaViewController.initWithNibName:bundle: <stripped>
+	0x1128f0  @objc StagingAreaViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x10d1b0  class func StagingAreaViewController.__allocating_init(activeCall:hasJoined:) // init 
+	0x10d020  class func StagingAreaViewController.__allocating_init(activeCall:hasJoined:) // init 
  }
 
  struct ConversationKit.EffectsCaptureInfo {
@@ -2419,7 +2425,7 @@
 	var inCallControlsViewFrames : InCallControlsViewFrames // +0x10 (0x30)
 
 	// Swift methods
-	0x116f30  class func InCallControlsFramesCache.__allocating_init() // init 
+	0x116da0  class func InCallControlsFramesCache.__allocating_init() // init 
  }
 
  struct ConversationKit.InCallControlsViewFrames {
@@ -2451,16 +2457,16 @@
 	var isExpanded : Bool // +0x666e695f (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x119200  @objc ParticipantView.bottomBar <stripped>
-	0x1194d0  @objc ParticipantView.isInRoster <stripped>
-	0x119510  @objc ParticipantView.setIsInRoster: <stripped>
-	0x119a70  @objc ParticipantView.isExpanded <stripped>
-	0x119b20  @objc ParticipantView.setIsExpanded: <stripped>
-	0x11a700  @objc ParticipantView.initWithFrame: <stripped>
-	0x11aa50  @objc ParticipantView.initWithCoder: <stripped>
-	0x11aae0  @objc ParticipantView.dealloc <stripped>
-	0x11b030  @objc ParticipantView.layoutSubviews <stripped>
-	0x11ab00  @objc ParticipantView..cxx_destruct <stripped>
+	0x119070  @objc ParticipantView.bottomBar <stripped>
+	0x119340  @objc ParticipantView.isInRoster <stripped>
+	0x119380  @objc ParticipantView.setIsInRoster: <stripped>
+	0x119930  @objc ParticipantView.isExpanded <stripped>
+	0x1199e0  @objc ParticipantView.setIsExpanded: <stripped>
+	0x11a5c0  @objc ParticipantView.initWithFrame: <stripped>
+	0x11a910  @objc ParticipantView.initWithCoder: <stripped>
+	0x11a9a0  @objc ParticipantView.dealloc <stripped>
+	0x11aef0  @objc ParticipantView.layoutSubviews <stripped>
+	0x11a9c0  @objc ParticipantView..cxx_destruct <stripped>
  }
 
  struct ConversationKit.InCallControlsParticipantTableViewCellModel {
@@ -2486,11 +2492,11 @@
 	let monogramView : ParticipantMonogramView // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x120c20  @objc ParticipantVideoOverlayView.init <stripped>
-	0x120d50  @objc ParticipantVideoOverlayView.initWithCoder: <stripped>
-	0x120ec0  @objc ParticipantVideoOverlayView.initWithFrame: <stripped>
-	0x1212d0  @objc ParticipantVideoOverlayView.layoutSubviews <stripped>
-	0x121330  @objc ParticipantVideoOverlayView..cxx_destruct <stripped>
+	0x120ae0  @objc ParticipantVideoOverlayView.init <stripped>
+	0x120c10  @objc ParticipantVideoOverlayView.initWithCoder: <stripped>
+	0x120d80  @objc ParticipantVideoOverlayView.initWithFrame: <stripped>
+	0x121190  @objc ParticipantVideoOverlayView.layoutSubviews <stripped>
+	0x1211f0  @objc ParticipantVideoOverlayView..cxx_destruct <stripped>
  }
 
  enum ConversationKit.ViewModel {
@@ -2530,21 +2536,21 @@
 	let inCallControlsFramesCache : InCallControlsFramesCache // +0x58 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x122e40  @objc MultiwayViewConstraintsController.localParticipantState <stripped>
-	0x122ea0  @objc MultiwayViewConstraintsController.setLocalParticipantState: <stripped>
-	0x123240  @objc MultiwayViewConstraintsController.inCallControlsState <stripped>
-	0x1232d0  @objc MultiwayViewConstraintsController.setInCallControlsState: <stripped>
-	0x1254a0  @objc MultiwayViewConstraintsController.initWithContainingView:controlsViewController:inCallControlsState:deviceOrientation: <stripped>
-	0x125c70  @objc MultiwayViewConstraintsController.inCallControlsViewFrameFor:state: <stripped>
-	0x125d20  @objc MultiwayViewConstraintsController.updateFor:deviceOrientation: <stripped>
-	0x125da0  @objc MultiwayViewConstraintsController.removeEffectsConstraints <stripped>
-	0x125de0  @objc MultiwayViewConstraintsController.updateConstraintsWith:controlsViewController:effectsView:effectsBrowserViewController: <stripped>
-	0x125f10  @objc MultiwayViewConstraintsController.init <stripped>
-	0x125f50  @objc MultiwayViewConstraintsController..cxx_destruct <stripped>
+	0x122d00  @objc MultiwayViewConstraintsController.localParticipantState <stripped>
+	0x122d60  @objc MultiwayViewConstraintsController.setLocalParticipantState: <stripped>
+	0x123100  @objc MultiwayViewConstraintsController.inCallControlsState <stripped>
+	0x123190  @objc MultiwayViewConstraintsController.setInCallControlsState: <stripped>
+	0x125360  @objc MultiwayViewConstraintsController.initWithContainingView:controlsViewController:inCallControlsState:deviceOrientation: <stripped>
+	0x125b30  @objc MultiwayViewConstraintsController.inCallControlsViewFrameFor:state: <stripped>
+	0x125be0  @objc MultiwayViewConstraintsController.updateFor:deviceOrientation: <stripped>
+	0x125c60  @objc MultiwayViewConstraintsController.removeEffectsConstraints <stripped>
+	0x125ca0  @objc MultiwayViewConstraintsController.updateConstraintsWith:controlsViewController:effectsView:effectsBrowserViewController: <stripped>
+	0x125dd0  @objc MultiwayViewConstraintsController.init <stripped>
+	0x125e10  @objc MultiwayViewConstraintsController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x122510  class func MultiwayViewConstraintsController.__allocating_init(containingView:participantListView:participantListState:gridView:controlsViewController:inCallControlsState:localParticipantView:localParticipantState:effectsView:effectsBrowserViewController:floatingControlsState:floatingControlsView:deviceOrientation:) // init 
-	0x122770  class func MultiwayViewConstraintsController.__allocating_init(containingView:controlsViewController:inCallControlsState:effectsView:effectsBrowserViewController:deviceOrientation:) // init 
+	0x1223d0  class func MultiwayViewConstraintsController.__allocating_init(containingView:participantListView:participantListState:gridView:controlsViewController:inCallControlsState:localParticipantView:localParticipantState:effectsView:effectsBrowserViewController:floatingControlsState:floatingControlsView:deviceOrientation:) // init 
+	0x122630  class func MultiwayViewConstraintsController.__allocating_init(containingView:controlsViewController:inCallControlsState:effectsView:effectsBrowserViewController:deviceOrientation:) // init 
  }
 
  enum ConversationKit.ParticipantListState {

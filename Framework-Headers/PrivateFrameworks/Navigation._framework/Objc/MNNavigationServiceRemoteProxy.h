@@ -9,7 +9,7 @@
 #import <Navigation/MNNavigationServiceProxy-Protocol.h>
 
 @class MNSettings, NSHashTable, NSMutableArray, NSString, NSXPCConnection;
-@protocol MNNavigationServiceClientInterface;
+@protocol MNNavigationServiceClientInterface, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface MNNavigationServiceRemoteProxy : NSObject <MNNavigationServiceProxy>
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_interruptionDates;
     BOOL _isReconnecting;
     CDUnknownBlockType _predictionHandler;
+    NSObject<OS_dispatch_queue> *_serialQueue;
     long long _sandboxHandle;
     id<MNNavigationServiceClientInterface> _delegate;
 }
@@ -51,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)closeForClient:(id)arg1;
 - (void)dealloc;
 - (void)forwardInvocation:(id)arg1;
+- (id)init;
 - (void)interfaceHashesWithHandler:(CDUnknownBlockType)arg1;
 - (BOOL)isOpenForClient:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;

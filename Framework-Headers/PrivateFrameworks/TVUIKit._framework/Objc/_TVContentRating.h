@@ -28,11 +28,13 @@
 + (id)new;
 - (void).cxx_destruct;
 - (id)description;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithRatingSystem:(long long)arg1 explicitContent:(BOOL)arg2;
 - (id)initWithRatingSystem:(long long)arg1 ratingLabel:(id)arg2 rank:(unsigned long long)arg3 ratingDescription:(id)arg4;
 - (id)initWithRatingSystemString:(id)arg1 ratingLabel:(id)arg2 rank:(unsigned long long)arg3 ratingDescription:(id)arg4;
 - (id)initWithStringRepresentation:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

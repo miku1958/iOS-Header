@@ -31,6 +31,7 @@
 - (id)tentativeAngledStripeBackground;
 - (id)timeLabelsFont;
 - (id)topTimeColor;
+- (id)traitCollection;
 
 @end
 

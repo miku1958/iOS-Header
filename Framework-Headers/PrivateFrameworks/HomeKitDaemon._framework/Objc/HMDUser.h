@@ -17,7 +17,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class AVOutputDeviceAuthorizedPeer, HAPPairingIdentity, HMBShareUserID, HMDAccountHandle, HMDAccountIdentifier, HMDAssistantAccessControl, HMDCloudShareMessenger, HMDCloudShareTrustManager, HMDHome, HMDSettingsControllerDependency, HMDUserDataController, HMDUserSettingsBackingStoreController, HMUserPresenceAuthorization, NSMutableArray, NSNumber, NSObject, NSSet, NSString, NSUUID;
+@class AVOutputDeviceAuthorizedPeer, HAPPairingIdentity, HMBShareUserID, HMDAccountHandle, HMDAccountIdentifier, HMDAssistantAccessControl, HMDCloudShareMessenger, HMDCloudShareTrustManager, HMDHome, HMDSettingsControllerDependency, HMDUserDataController, HMDUserSettingsBackingStoreController, HMUserPresenceAuthorization, NAFuture, NSMutableArray, NSNumber, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDUser : HMFObject <HMDSettingsControllerDelegate, HMDCloudShareTrustManagerDataSource, HMDCloudShareTrustManagerDelegate, HMDUserDataControllerDelegate, HMDUserSettingsBackingStoreControllerDelegate, HMFLogging, HMFDumpState, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver, NSSecureCoding>
@@ -37,6 +37,7 @@
     NSString *_displayName;
     HMDAssistantAccessControl *_assistantAccessControl;
     HMBShareUserID *_cloudShareID;
+    NAFuture *_cloudShareIDFuture;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     HMDSettingsControllerDependency *_sharedSettingsControllerDependency;
@@ -56,6 +57,7 @@
 @property (strong, nonatomic) NSNumber *camerasAccessLevelValue; // @synthesize camerasAccessLevelValue=_camerasAccessLevelValue;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (strong) HMBShareUserID *cloudShareID; // @synthesize cloudShareID=_cloudShareID;
+@property (readonly) NAFuture *cloudShareIDFuture; // @synthesize cloudShareIDFuture=_cloudShareIDFuture;
 @property (strong) HMDCloudShareTrustManager *cloudShareTrustManager; // @synthesize cloudShareTrustManager=_cloudShareTrustManager;
 @property (readonly, getter=isCurrentUser) BOOL currentUser;
 @property (readonly, copy) NSString *debugDescription;
@@ -122,6 +124,7 @@
 - (id)backingStoreObjects:(long long)arg1;
 - (unsigned long long)camerasAccessLevel;
 - (void)cloudShareTrustManager:(id)arg1 didFetchOwnerCloudShareID:(id)arg2;
+- (void)cloudShareTrustManager:(id)arg1 didRemoveUserWithUUID:(id)arg2;
 - (BOOL)cloudShareTrustManager:(id)arg1 shouldShareTrustWithUser:(id)arg2;
 - (void)configureCloudShareTrustManager;
 - (void)configureWithHome:(id)arg1;
@@ -131,6 +134,7 @@
 - (void)deregisterIdentity;
 - (id)dictionaryEncoding;
 - (void)didFinishConfiguringForCloudShareTrustManager:(id)arg1;
+- (void)didRemoveTrustZoneInCloudShareTrustManager:(id)arg1;
 - (void)didStartBackingStoreController:(id)arg1;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
@@ -143,6 +147,7 @@
 - (void)initializeUserSettingsWithHome:(id)arg1;
 - (BOOL)isCurrentUserAndOwner;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isOwnerCapableForTrustManager:(id)arg1;
 - (id)logIdentifier;
 - (id)messageDestination;
 - (id)messageDispatcher;
@@ -152,6 +157,7 @@
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)ownerForCloudShareTrustManager:(id)arg1;
 - (id)pairingUsername;
+- (id)privateSettingValuesByKeyPathForAWD;
 - (id)privateZoneControllerForUserDataController:(id)arg1;
 - (id)publicKey;
 - (BOOL)refreshDisplayName;
@@ -160,12 +166,13 @@
 - (id)relayAccessTokenForAccessory:(id)arg1;
 - (id)relayAccessTokens;
 - (void)removeAccessoriesFromAssistantAccessControlList:(id)arg1;
+- (void)removeCloudData;
 - (void)removeRelayAccessToken:(id)arg1;
-- (void)removeUserData;
 - (BOOL)requiresMakoSupport;
 - (void)setAccountHandle:(id)arg1;
 - (void)setDisplayName:(id)arg1;
 - (void)settingsController:(id)arg1 didUpdateWithCompletion:(CDUnknownBlockType)arg2;
+- (id)sharedSettingValuesByKeyPathForAWD;
 - (id)sharedZoneControllerForUserDataController:(id)arg1;
 - (id)shortDescription;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;

@@ -16,9 +16,13 @@
     CDUnknownBlockType _resultsHandler;
     NSArray *_sampleTypes;
     HKQueryAnchor *_anchor;
+    long long _changeDetailsQueryStrategy;
+    long long _anchorStrategyChangeCountLimit;
 }
 
 @property (readonly, copy, nonatomic) HKQueryAnchor *anchor; // @synthesize anchor=_anchor;
+@property (nonatomic) long long anchorStrategyChangeCountLimit; // @synthesize anchorStrategyChangeCountLimit=_anchorStrategyChangeCountLimit;
+@property (nonatomic) long long changeDetailsQueryStrategy; // @synthesize changeDetailsQueryStrategy=_changeDetailsQueryStrategy;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

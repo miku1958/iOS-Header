@@ -88,8 +88,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (BOOL)initialUserIntentAssumptionForPass:(id)arg1 context:(id)arg2 paymentService:(id)arg3;
-+ (BOOL)shouldAutomaticallyAuthorizeForPassType:(unsigned long long)arg1 withContext:(id)arg2;
++ (BOOL)initialUserIntentRequiredAssumptionForPass:(id)arg1 context:(id)arg2 paymentService:(id)arg3;
++ (BOOL)shouldAutomaticallyAuthorizeForPass:(id)arg1 withContext:(id)arg2;
++ (BOOL)userIntentPotentiallyRequiredForPass:(id)arg1;
 - (void).cxx_destruct;
 - (void)_activateForPayment;
 - (void)_activateForPaymentWithApplication:(id)arg1;

@@ -12,7 +12,8 @@
 - (void)connectionInterrupted;
 - (void)dataSourceUpdatedWithSessionConfiguration:(UISDShareSheetSessionConfiguration *)arg1;
 - (void)performActivityInHostWithUUID:(NSUUID *)arg1;
-- (void)performExtensionActivityInHostWithBundleID:(NSString *)arg1;
+- (void)performAirDropActivityInHostWithUUID:(NSUUID *)arg1 noContentView:(BOOL)arg2;
+- (void)performExtensionActivityInHostWithBundleID:(NSString *)arg1 request:(UISUIActivityExtensionItemDataRequest *)arg2;
 - (void)performShortcutActivityInHostWithBundleID:(NSString *)arg1 singleUseToken:(NSString *)arg2;
 - (void)performUserDefaultsWithFavoritesProxies:(NSArray *)arg1 suggestionProxies:(NSArray *)arg2 orderedUUIDs:(NSArray *)arg3 activityCategory:(long long)arg4;
 - (void)setProgress:(NSNumber *)arg1 withTopText:(NSNumber *)arg2 bottomText:(NSNumber *)arg3 forNodeWithIdentifier:(NSUUID *)arg4 shouldPulse:(NSNumber *)arg5 animated:(BOOL)arg6;

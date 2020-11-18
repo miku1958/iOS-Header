@@ -14,9 +14,7 @@
     MISSING_TYPE *eventBindingManager;
     MISSING_TYPE *needsRootViewUpdate;
     MISSING_TYPE *needsEnvironmentUpdate;
-    MISSING_TYPE *updateDepth;
     MISSING_TYPE *isRendering;
-    MISSING_TYPE *postUpdateActions;
     MISSING_TYPE *currentTimestamp;
 }
 

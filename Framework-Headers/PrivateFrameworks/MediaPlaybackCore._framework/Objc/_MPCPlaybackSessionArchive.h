@@ -23,6 +23,7 @@
 
 + (id)packageTypeIdentifier;
 - (void).cxx_destruct;
+- (id)description;
 - (unsigned long long)hash;
 - (id)initWithURL:(id)arg1;
 - (id)initWithURL:(id)arg1 identifier:(id)arg2;

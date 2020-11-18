@@ -14,7 +14,7 @@
 - (void)cloudStoreStatusForContainer:(NSString *)arg1 completion:(void (^)(CKAccountInfo *, BOOL, NSError *))arg2;
 - (void)fetchAndStoreRecordsForPaymentPassWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(PKCloudRecordArray *, NSError *))arg2;
 - (void)generateRandomTransactionForPassWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(PKCloudRecordArray *, NSError *))arg2;
-- (void)itemOfItemType:(unsigned long long)arg1 recordName:(NSString *)arg2 completion:(void (^)(PKCloudRecordObject *, NSError *))arg3;
+- (void)itemOfItemType:(unsigned long long)arg1 recordName:(NSString *)arg2 qualityOfService:(long long)arg3 completion:(void (^)(PKCloudRecordObject *, NSError *))arg4;
 - (void)noteAccountDeletedWithHandler:(void (^)(void))arg1;
 - (void)noteCloudSyncPassesSwitchChangedWithHandler:(void (^)(void))arg1;
 - (void)populateEvents:(NSArray *)arg1 forAccountIdentifier:(NSString *)arg2 completion:(void (^)(PKCloudRecordArray *, NSError *))arg3;

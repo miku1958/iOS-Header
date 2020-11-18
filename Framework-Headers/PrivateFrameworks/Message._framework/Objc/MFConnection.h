@@ -30,8 +30,10 @@
     unsigned int _isFetching:1;
     unsigned int _allowFallbacks:1;
     unsigned int _compressionEnabled:1;
+    NSString *_accountLogString;
 }
 
+@property (readonly, nonatomic) NSString *accountLogString; // @synthesize accountLogString=_accountLogString;
 @property (readonly, nonatomic) NSArray *authenticationMechanisms;
 @property (readonly, nonatomic) NSArray *capabilities;
 @property (readonly, copy) NSString *debugDescription;

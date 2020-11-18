@@ -91,6 +91,7 @@
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)photoPicker:(id)arg1 didUpdatePhotoForContact:(id)arg2 withContactImage:(id)arg3;
 - (void)photoPickerDidCancel:(id)arg1;
+- (void)presentErrorAlertForEmptyPhotoIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)presentPhotoPickerControllerForContact:(id)arg1;
 - (void)processSelectionForTableView:(id)arg1 indexPath:(id)arg2;
 - (void)promptForSavingToMeCard;

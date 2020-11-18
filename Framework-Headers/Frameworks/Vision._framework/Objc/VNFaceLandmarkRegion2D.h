@@ -11,6 +11,7 @@
 @interface VNFaceLandmarkRegion2D : VNFaceLandmarkRegion
 {
     NSMutableDictionary *_sizedPointsCache;
+    struct os_unfair_lock_s _pointsCalculatorLock;
     MISSING_TYPE **_points;
     NSArray *_precisionEstimatesPerPoint;
     NSArray *_occlusionFlagsPerPoint;
@@ -23,6 +24,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_initLocks;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

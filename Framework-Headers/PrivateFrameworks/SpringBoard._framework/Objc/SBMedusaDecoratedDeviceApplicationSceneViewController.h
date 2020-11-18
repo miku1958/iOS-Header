@@ -72,6 +72,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)SB_conformsToMedusaDecoratedDeviceApplicationSceneViewControlling;
 - (void)_addSceneViewMatchMoveAnimation;
 - (void)_beginRequiringSceneViewMatchMoveAnimationForReason:(id)arg1;
 - (id)_blurContentView;

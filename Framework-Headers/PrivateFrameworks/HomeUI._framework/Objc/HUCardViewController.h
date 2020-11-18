@@ -11,7 +11,7 @@
 #import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <HomeUI/UIScrollViewDelegate-Protocol.h>
 
-@class HFItem, HUQuickControlContainerViewController, HUQuickControlSummaryNavigationBarTitleView, HUQuickControlViewControllerCoordinator, NSMutableArray, NSString, UIColor, UILayoutGuide, UIPanGestureRecognizer, UIScrollView;
+@class HFItem, HUQuickControlContainerViewController, HUQuickControlSummaryNavigationBarTitleView, HUQuickControlViewControllerCoordinator, NSMutableArray, NSString, UIButton, UIColor, UILayoutGuide, UIPanGestureRecognizer, UIScrollView;
 @protocol HUCardViewControllerDelegate;
 
 @interface HUCardViewController : UIViewController <HFItemManagerDelegate, UIGestureRecognizerDelegate, HUQuickControlViewControllerCoordinatorDelegate, UIScrollViewDelegate>
@@ -29,12 +29,14 @@
     UIScrollView *_scrollView;
     HUQuickControlSummaryNavigationBarTitleView *_navigationBarTitleView;
     HUQuickControlViewControllerCoordinator *_viewControllerCoordinator;
+    UIButton *_closeButton;
     NSMutableArray *_constraints;
     UIPanGestureRecognizer *_panGestureRecognizer;
     UILayoutGuide *_quickControlLayoutGuide;
 }
 
 @property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property (strong, nonatomic) UIButton *closeButton; // @synthesize closeButton=_closeButton;
 @property (strong, nonatomic) NSMutableArray *constraints; // @synthesize constraints=_constraints;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUCardViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -84,7 +86,7 @@
 - (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;
 - (id)keyCommands;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (struct CGSize)preferredContentSize;
+- (struct CGSize)overridingContentSizeForPresentedViewController:(id)arg1;
 - (void)scrollToDetailsViewAnimated:(BOOL)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;

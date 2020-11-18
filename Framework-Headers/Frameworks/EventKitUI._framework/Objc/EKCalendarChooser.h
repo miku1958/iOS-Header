@@ -22,6 +22,7 @@
     BOOL _disableCalendarEditing;
     BOOL _showsDeclinedEventsSetting;
     BOOL _showAccountStatus;
+    BOOL _onlyShowUnmanagedAccounts;
     BOOL _showDetailAccessories;
     BOOL _allowsEdit;
     CDStruct_424d6339 _flags;
@@ -66,6 +67,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long lastAuthorizationStatus; // @synthesize lastAuthorizationStatus=_lastAuthorizationStatus;
 @property (strong, nonatomic) EKSource *limitedToSource; // @synthesize limitedToSource=_limitedToSource;
+@property (nonatomic) BOOL onlyShowUnmanagedAccounts; // @synthesize onlyShowUnmanagedAccounts=_onlyShowUnmanagedAccounts;
 @property (strong, nonatomic) EKCalendarEditor *presentedEditor; // @synthesize presentedEditor=_presentedEditor;
 @property (strong, nonatomic) UIRefreshControl *refreshControl; // @synthesize refreshControl=_refreshControl;
 @property (strong, nonatomic) EKCalendar *selectedCalendar;

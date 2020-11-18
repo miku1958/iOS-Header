@@ -6,7 +6,7 @@
 
 #import <EventKitUI/EKUITableViewCellWithPrimaryAndSecondaryFonts.h>
 
-@class ColorBarView, EKCalendarDate, EKUIOccurrenceTableViewCellLabel, NSArray, NSDate, NSDictionary, NSLayoutConstraint, NSObject, NSString, UIColor, UIImageView, UIView, UIVisualEffect, UIVisualEffectView;
+@class ColorBarView, ColoredBackgroundView, EKCalendarDate, EKUIOccurrenceTableViewCellLabel, NSArray, NSDate, NSDictionary, NSLayoutConstraint, NSObject, NSString, UIColor, UIImageView, UIVisualEffect, UIVisualEffectView;
 @protocol OS_dispatch_source;
 
 @interface EKUIOccurrenceTableViewCell : EKUITableViewCellWithPrimaryAndSecondaryFonts
@@ -20,6 +20,7 @@
     EKUIOccurrenceTableViewCellLabel *_countdownLabel;
     ColorBarView *_colorBarView;
     ColorBarView *_travelTimeColorBarView;
+    ColoredBackgroundView *_coloredBackgroundView;
     UIImageView *_angleStripeBackgroundView;
     UIImageView *_accessoryImageView;
     NSArray *_ekUIOccurrenceTableViewCellConstraints;
@@ -76,13 +77,11 @@
     BOOL _isTemplateCell;
     BOOL _isFakeInvitation;
     UIColor *_eventCalendarColor;
-    UIView *_coloredBackgroundView;
     EKCalendarDate *_eventStartDate;
     UIVisualEffect *_primaryVisualEffect;
     UIVisualEffect *_secondaryVisualEffect;
 }
 
-@property (strong, nonatomic) UIView *coloredBackgroundView; // @synthesize coloredBackgroundView=_coloredBackgroundView;
 @property (nonatomic) BOOL doesNotUseTemplate; // @synthesize doesNotUseTemplate=_doesNotUseTemplate;
 @property (strong, nonatomic) UIColor *eventCalendarColor; // @synthesize eventCalendarColor=_eventCalendarColor;
 @property (readonly, nonatomic) EKCalendarDate *eventStartDate; // @synthesize eventStartDate=_eventStartDate;
@@ -115,7 +114,6 @@
 + (BOOL)vibrant;
 - (void).cxx_destruct;
 - (id)_birthdayIcon;
-- (id)_coloredBackgroundViewLayer;
 - (void)_countdownTimerFired;
 - (id)_createParentVisualEffectViewWithVisualEffect:(id)arg1;
 - (void)_createViewsForReuseIdentifier:(id)arg1;

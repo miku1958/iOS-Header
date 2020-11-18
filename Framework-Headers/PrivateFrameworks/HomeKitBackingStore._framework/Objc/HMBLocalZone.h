@@ -57,7 +57,6 @@
 - (id)externalDataForModelID:(id)arg1 error:(id *)arg2;
 - (id)externalIDForModelID:(id)arg1 error:(id *)arg2;
 - (id)fetchAllModelsWithError:(id *)arg1;
-- (id)fetchItemsInBlock:(id)arg1 after:(id)arg2 limit:(unsigned long long)arg3 error:(id *)arg4;
 - (id)fetchItemsInBlock:(id)arg1 error:(id *)arg2;
 - (id)fetchModelWithModelID:(id)arg1 error:(id *)arg2;
 - (id)fetchModelWithModelID:(id)arg1 ofType:(Class)arg2 error:(id *)arg3;
@@ -90,6 +89,7 @@
 - (id)notifyReplicationWithToken:(id)arg1 updates:(id)arg2;
 - (id)objectFromData:(id)arg1 encoding:(unsigned long long)arg2 storageLocation:(unsigned long long)arg3 recordRowID:(unsigned long long)arg4 error:(id *)arg5;
 - (id)observersForModelWithID:(id)arg1;
+- (id)queryAllRowRecordsReturning:(unsigned long long)arg1;
 - (id)queryModelsOfType:(Class)arg1 filter:(CDUnknownBlockType)arg2;
 - (id)queryModelsOfType:(Class)arg1 predicate:(id)arg2;
 - (id)queryModelsOfType:(Class)arg1 properties:(id)arg2 filter:(CDUnknownBlockType)arg3;
@@ -97,6 +97,7 @@
 - (id)remove:(id)arg1;
 - (id)remove:(id)arg1 options:(id)arg2;
 - (id)removeAllModelsOfTypes:(id)arg1 options:(id)arg2;
+- (BOOL)removeAllRecordsWithError:(id *)arg1;
 - (BOOL)removeBlockWithRow:(unsigned long long)arg1 error:(id *)arg2;
 - (id)removeModelsAndChildModelsWithIDs:(id)arg1 options:(id)arg2;
 - (void)removeObserver:(id)arg1 forModelWithID:(id)arg2;
@@ -104,6 +105,7 @@
 - (id)replicationToken;
 - (id)setExternalData:(id)arg1 forExternalID:(id)arg2;
 - (id)setExternalData:(id)arg1 forModelID:(id)arg2;
+- (id)setExternalID:(id)arg1 externalData:(id)arg2 forRecordRow:(unsigned long long)arg3;
 - (BOOL)shouldLogPrivateInformation;
 - (id)shutdown;
 - (void)startUp;

@@ -26,6 +26,7 @@
 @property (copy, nonatomic) NSString *title;
 
 + (BOOL)isSuppressingChangeNotifications;
++ (void)performChangeImmediately:(CDUnknownBlockType)arg1;
 + (void)performSuppressingChangeNotifications:(CDUnknownBlockType)arg1;
 + (BOOL)shouldPushArtworkData;
 - (void).cxx_destruct;

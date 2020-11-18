@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (struct CGRect)_accessibilityMediaAnalysisFrame;
 - (unsigned int)_accessibilityMediaAnalysisOptions;
+- (id)_axBalloonViewCustomActions;
 - (void)_axClear;
 - (id)_axHandwritingDescriptionForDataSource:(id)arg1;
 - (BOOL)_axIsAttachedHandwritingPlugin;
@@ -23,7 +24,6 @@
 - (BOOL)_axIsURL;
 - (BOOL)accessibilityActivate;
 - (long long)accessibilityContainerType;
-- (id)accessibilityCustomActions;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HMDNetworkRouterLANRule-Protocol.h>
 #import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class HMDNetworkRouterAdvertisementProtocol, HMDNetworkRouterDynamicPortRuleDirection, HMDNetworkRouterLANIdentifierList, HMDNetworkRouterProtocol, HMDNetworkRouterServiceType, HMDTLVUnsignedNumberValue, NSString;
+@class HMDNetworkRouterAdvertisementProtocol, HMDNetworkRouterLANIdentifierList, HMDNetworkRouterProtocol, HMDNetworkRouterRuleDirection, HMDNetworkRouterServiceType, HMDTLVUnsignedNumberValue, NSString;
 
-@interface HMDNetworkRouterDynamicPortRule : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterDynamicPortRule : NSObject <HMDNetworkRouterLANRule, NSCopying, HMDTLVProtocol>
 {
-    HMDNetworkRouterDynamicPortRuleDirection *_direction;
+    HMDNetworkRouterRuleDirection *_direction;
     HMDNetworkRouterLANIdentifierList *_lanIdentifierList;
     HMDNetworkRouterProtocol *_protocol;
     HMDNetworkRouterAdvertisementProtocol *_advertisementProtocol;
@@ -23,18 +24,23 @@
 
 @property (strong, nonatomic) HMDNetworkRouterAdvertisementProtocol *advertisementProtocol; // @synthesize advertisementProtocol=_advertisementProtocol;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) HMDNetworkRouterDynamicPortRuleDirection *direction; // @synthesize direction=_direction;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) HMDNetworkRouterRuleDirection *direction; // @synthesize direction=_direction;
 @property (strong, nonatomic) HMDTLVUnsignedNumberValue *flags; // @synthesize flags=_flags;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMDNetworkRouterLANIdentifierList *lanIdentifierList; // @synthesize lanIdentifierList=_lanIdentifierList;
 @property (strong, nonatomic) HMDNetworkRouterProtocol *protocol; // @synthesize protocol=_protocol;
 @property (strong, nonatomic) HMDNetworkRouterServiceType *serviceType; // @synthesize serviceType=_serviceType;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
 + (id)ruleFromFirewallRuleLAN:(id)arg1;
 - (void).cxx_destruct;
+- (void)addTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithDirection:(id)arg1 lanIdentifierList:(id)arg2 protocol:(id)arg3 advertisementProtocol:(id)arg4 flags:(id)arg5 serviceType:(id)arg6;

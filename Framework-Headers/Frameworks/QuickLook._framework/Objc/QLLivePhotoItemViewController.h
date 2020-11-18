@@ -9,7 +9,7 @@
 #import <QuickLook/PHLivePhotoViewDelegate-Protocol.h>
 #import <QuickLook/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSLayoutConstraint, NSString, PHLivePhotoView, UIImageView;
+@class NSDate, NSLayoutConstraint, NSString, PHLivePhotoView, UIImageView;
 
 __attribute__((visibility("hidden")))
 @interface QLLivePhotoItemViewController : QLScrollableContentItemViewController <PHLivePhotoViewDelegate, UIGestureRecognizerDelegate>
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     UIImageView *_livePhotoBadge;
     NSLayoutConstraint *_livePhotoBadgeLeftConstraint;
     NSLayoutConstraint *_livePhotoBadgeTopConstraint;
+    NSDate *_didEndPlayingTimestamp;
     BOOL _isPlaying;
     BOOL _livePhotoBadgeVisible;
     BOOL _isFullScreen;
@@ -34,7 +35,9 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_updateLivePhotoBadgeAnimated:(BOOL)arg1;
+- (BOOL)_wasJustPlaying;
 - (BOOL)canEnterFullScreen;
+- (BOOL)canToggleFullScreen;
 - (void)didEndZoomingAtScale:(double)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (struct CGSize)imageSize;

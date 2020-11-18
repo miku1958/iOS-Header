@@ -17,6 +17,7 @@
     BOOL _springBoardReady;
     BOOL _triedToShowLensBeofreSBReady;
     BOOL _registeredForZoomListener;
+    BOOL _shouldRegisterForZoomListeners;
     AXUIClient *_zoomWindowClient;
 }
 
@@ -24,6 +25,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL registeredForZoomListener; // @synthesize registeredForZoomListener=_registeredForZoomListener;
+@property (nonatomic) BOOL shouldRegisterForZoomListeners; // @synthesize shouldRegisterForZoomListeners=_shouldRegisterForZoomListeners;
 @property (readonly, nonatomic, getter=isShowingZoomLens) BOOL showingZoomLens;
 @property (nonatomic, getter=isShowingZoomLens) BOOL showingZoomLens; // @synthesize showingZoomLens=_showingZoomLens;
 @property (nonatomic) BOOL springBoardReady; // @synthesize springBoardReady=_springBoardReady;
@@ -34,6 +36,7 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_applicationWillSuspend:(id)arg1;
 - (void)_checkSpringBoardStarted;
 - (void)_handleChangedAttributes:(id)arg1;
 - (BOOL)_isAllowedMagnifierClient;

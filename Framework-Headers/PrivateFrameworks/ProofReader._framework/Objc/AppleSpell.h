@@ -182,6 +182,7 @@
 - (void)resetDataBundlesForLanguage:(id)arg1;
 - (void)resetTimer;
 - (id)sentenceCorrectionsDictionaryForLanguage:(id)arg1;
+- (id)sentenceTerminatorCharacterSet;
 - (void)setUpdateBundleURL:(id)arg1;
 - (BOOL)shouldBlockWord:(id)arg1 language:(id)arg2 encoding:(unsigned int)arg3;
 - (BOOL)spellServer:(id)arg1 _canChangeCaseOfFirstLetterInString:(id)arg2 toUpperCase:(BOOL)arg3 language:(id)arg4;

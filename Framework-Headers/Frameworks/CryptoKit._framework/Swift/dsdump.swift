@@ -8,6 +8,14 @@
 	// class associated type access function
 	// method
  }
+ protocol CryptoKit.Zeroization // 1 requirements
+ {
+	// method
+ }
+ protocol CryptoKit.CorecryptoSupportedNISTCurve // 1 requirements
+ {
+	// class getter
+ }
  protocol CryptoKit.ECPublicKey // 2 requirements
  {
 	// class init
@@ -26,15 +34,12 @@
 	// getter
 	// getter
  }
- protocol CryptoKit.NISTECPrivateKey // 3 requirements
+ protocol CryptoKit.NISTECPrivateKey // 4 requirements
  {
 	// class base protocol
+	// class associated conformance access function
 	// class init
 	// getter
- }
- protocol CryptoKit.CorecryptoSupportedNISTCurve // 1 requirements
- {
-	// class getter
  }
  protocol CryptoKit.Digest // 5 requirements
  {
@@ -147,91 +152,91 @@
 	// getter
  }
 
- enum CryptoKit.Signing { }
-
- struct CryptoKit.PublicKey {
-
-	// Properties
-	var impl : CoreCryptoNISTCurvePublicKeyImpl<P256.CurveDetails> // +0x0
- }
-
- struct CryptoKit.PrivateKey {
-
-	// Properties
-	let impl : CoreCryptoNISTCurvePrivateKeyImpl<P256.CurveDetails> // +0x0
- }
-
- enum CryptoKit.KeyAgreement { }
-
- struct CryptoKit.PublicKey {
-
-	// Properties
-	var impl : CoreCryptoNISTCurvePublicKeyImpl<P256.CurveDetails> // +0x0
- }
-
- struct CryptoKit.PrivateKey {
-
-	// Properties
-	let impl : CoreCryptoNISTCurvePrivateKeyImpl<P256.CurveDetails> // +0x0
- }
-
- enum CryptoKit.Signing { }
-
- struct CryptoKit.PublicKey {
-
-	// Properties
-	var impl : CoreCryptoNISTCurvePublicKeyImpl<P384.CurveDetails> // +0x0
- }
-
- struct CryptoKit.PrivateKey {
-
-	// Properties
-	let impl : CoreCryptoNISTCurvePrivateKeyImpl<P384.CurveDetails> // +0x0
- }
-
- enum CryptoKit.KeyAgreement { }
-
- struct CryptoKit.PublicKey {
-
-	// Properties
-	var impl : CoreCryptoNISTCurvePublicKeyImpl<P384.CurveDetails> // +0x0
- }
-
- struct CryptoKit.PrivateKey {
-
-	// Properties
-	let impl : CoreCryptoNISTCurvePrivateKeyImpl<P384.CurveDetails> // +0x0
- }
-
- enum CryptoKit.Signing { }
-
- struct CryptoKit.PublicKey {
-
-	// Properties
-	var impl : CoreCryptoNISTCurvePublicKeyImpl<P521.CurveDetails> // +0x0
- }
-
- struct CryptoKit.PrivateKey {
-
-	// Properties
-	let impl : CoreCryptoNISTCurvePrivateKeyImpl<P521.CurveDetails> // +0x0
- }
-
- enum CryptoKit.KeyAgreement { }
-
- struct CryptoKit.PublicKey {
-
-	// Properties
-	var impl : CoreCryptoNISTCurvePublicKeyImpl<P521.CurveDetails> // +0x0
- }
-
- struct CryptoKit.PrivateKey {
-
-	// Properties
-	let impl : CoreCryptoNISTCurvePrivateKeyImpl<P521.CurveDetails> // +0x0
- }
-
  enum CryptoKit.Curve25519 { }
+
+ enum CryptoKit.Signing { }
+
+ struct CryptoKit.PublicKey {
+
+	// Properties
+	var impl : CoreCryptoNISTCurvePublicKeyImpl<P256.CurveDetails> // +0x0
+ }
+
+ struct CryptoKit.PrivateKey {
+
+	// Properties
+	let impl : CoreCryptoNISTCurvePrivateKeyImpl<P256.CurveDetails> // +0x0
+ }
+
+ enum CryptoKit.KeyAgreement { }
+
+ struct CryptoKit.PublicKey {
+
+	// Properties
+	var impl : CoreCryptoNISTCurvePublicKeyImpl<P256.CurveDetails> // +0x0
+ }
+
+ struct CryptoKit.PrivateKey {
+
+	// Properties
+	let impl : CoreCryptoNISTCurvePrivateKeyImpl<P256.CurveDetails> // +0x0
+ }
+
+ enum CryptoKit.Signing { }
+
+ struct CryptoKit.PublicKey {
+
+	// Properties
+	var impl : CoreCryptoNISTCurvePublicKeyImpl<P384.CurveDetails> // +0x0
+ }
+
+ struct CryptoKit.PrivateKey {
+
+	// Properties
+	let impl : CoreCryptoNISTCurvePrivateKeyImpl<P384.CurveDetails> // +0x0
+ }
+
+ enum CryptoKit.KeyAgreement { }
+
+ struct CryptoKit.PublicKey {
+
+	// Properties
+	var impl : CoreCryptoNISTCurvePublicKeyImpl<P384.CurveDetails> // +0x0
+ }
+
+ struct CryptoKit.PrivateKey {
+
+	// Properties
+	let impl : CoreCryptoNISTCurvePrivateKeyImpl<P384.CurveDetails> // +0x0
+ }
+
+ enum CryptoKit.Signing { }
+
+ struct CryptoKit.PublicKey {
+
+	// Properties
+	var impl : CoreCryptoNISTCurvePublicKeyImpl<P521.CurveDetails> // +0x0
+ }
+
+ struct CryptoKit.PrivateKey {
+
+	// Properties
+	let impl : CoreCryptoNISTCurvePrivateKeyImpl<P521.CurveDetails> // +0x0
+ }
+
+ enum CryptoKit.KeyAgreement { }
+
+ struct CryptoKit.PublicKey {
+
+	// Properties
+	var impl : CoreCryptoNISTCurvePublicKeyImpl<P521.CurveDetails> // +0x0
+ }
+
+ struct CryptoKit.PrivateKey {
+
+	// Properties
+	let impl : CoreCryptoNISTCurvePrivateKeyImpl<P521.CurveDetails> // +0x0
+ }
 
  struct CryptoKit.HMAC {
 
@@ -246,12 +251,6 @@
 	// Properties
 	let digest : A.HashFunction.Digest
  }
-
- enum CryptoKit.P256 { }
-
- enum CryptoKit.P384 { }
-
- enum CryptoKit.P521 { }
 
  struct CryptoKit.CoreCryptoNISTCurvePrivateKeyImpl {
 
@@ -270,6 +269,12 @@
  struct CryptoKit.CurveDetails: CorecryptoSupportedNISTCurve { }
 
  struct CryptoKit.CurveDetails: CorecryptoSupportedNISTCurve { }
+
+ enum CryptoKit.P256 { }
+
+ enum CryptoKit.P384 { }
+
+ enum CryptoKit.P521 { }
 
  struct CryptoKit.SHA256Digest {
 
@@ -298,7 +303,7 @@
  struct CryptoKit.MD5Digest {
 
 	// Properties
-	let bytes : (UInt64, UInt64, UInt64) // +0x0
+	let bytes : (UInt64, UInt64) // +0x0
  }
 
  enum CryptoKit.SecureEnclave { }
@@ -398,24 +403,6 @@
 	let sb : SecureBytes // +0x0
  }
 
- struct CryptoKit.ECDSASignature: NISTECDSASignature {
-
-	// Properties
-	var rawRepresentation : Data // +0x0
- }
-
- struct CryptoKit.ECDSASignature: NISTECDSASignature {
-
-	// Properties
-	var rawRepresentation : Data // +0x0
- }
-
- struct CryptoKit.ECDSASignature: NISTECDSASignature {
-
-	// Properties
-	var rawRepresentation : Data // +0x0
- }
-
  enum CryptoKit.GCM { }
 
  struct CryptoKit.SealedBox {
@@ -423,6 +410,24 @@
 	// Properties
 	let combinedRepresentation : Data // +0x0
 	let nonceByteCount : Int // +0x10
+ }
+
+ struct CryptoKit.ECDSASignature: NISTECDSASignature {
+
+	// Properties
+	var rawRepresentation : Data // +0x0
+ }
+
+ struct CryptoKit.ECDSASignature: NISTECDSASignature {
+
+	// Properties
+	var rawRepresentation : Data // +0x0
+ }
+
+ struct CryptoKit.ECDSASignature: NISTECDSASignature {
+
+	// Properties
+	var rawRepresentation : Data // +0x0
  }
 
  struct CryptoKit.SharedSecret {
@@ -443,13 +448,11 @@
 	var impl : MD5 // +0x0
  }
 
+ class CryptoKit.CoreCryptoDigestBuffer {
  struct CryptoKit.CoreCryptoDigestImpl {
 
 	// Properties
-	let outputLength : Int
-	let digestInfo : UnsafePointer<ccdigest_info>
-	var digestData : [UInt8]
-	let type : Typ
+	var digestBuffer : CoreCryptoDigestBuffer
  }
 
  struct CryptoKit.CCDigestInfo {
@@ -488,13 +491,13 @@
  struct CryptoKit.PublicKey {
 
 	// Properties
-	var keyBytes : [UInt8] // +0x0
+	var baseKey : KeyAgreement // +0x0
  }
 
  struct CryptoKit.PrivateKey {
 
 	// Properties
-	var key : SecureBytes // +0x0
+	var baseKey : KeyAgreement // +0x0
  }
 
  enum CryptoKit.Signing { }
@@ -502,13 +505,56 @@
  struct CryptoKit.PrivateKey {
 
 	// Properties
-	var key : SecureBytes // +0x0
+	var baseKey : Signing // +0x0
  }
 
  struct CryptoKit.PublicKey {
 
 	// Properties
+	var baseKey : Signing // +0x0
+ }
+
+ struct CryptoKit.CoreCryptoCurve25519PublicKeyImpl {
+
+	// Properties
 	var keyBytes : [UInt8] // +0x0
+ }
+
+ struct CryptoKit.CoreCryptoCurve25519PrivateKeyImpl {
+
+	// Properties
+	var key : SecureBytes // +0x0
+ }
+
+ struct CryptoKit.CoreCryptoCurve25519PrivateKeyImpl {
+
+	// Properties
+	var key : SecureBytes // +0x0
+ }
+
+ struct CryptoKit.CoreCryptoCurve25519PublicKeyImpl {
+
+	// Properties
+	var keyBytes : [UInt8] // +0x0
+ }
+
+ struct __C.ccdigest_ctx {
+
+	// Properties
+	var state : ccdigest_ctx.__Unnamed_union_state
+ }
+
+ struct __C.ccdigest_info {
+
+	// Properties
+	var output_size : Int
+	var state_size : Int
+	var block_size : Int
+	var oid_size : Int
+	var oid : UnsafePointer<UInt8>?
+	var initial_state : UnsafeRawPointer?
+	var compress : @convention(c) (_:_:_:)?
+	var final : @convention(c) (_:_:_:)?
  }
 
  struct __C.ccec_pub_ctx {
@@ -536,17 +582,12 @@
 	var state : UInt8
  }
 
- struct __C.ccdigest_info {
+ struct __C.__Unnamed_union_state { }
+
+ struct __C.ccdigest_state {
 
 	// Properties
-	var output_size : Int
-	var state_size : Int
-	var block_size : Int
-	var oid_size : Int
-	var oid : UnsafePointer<UInt8>?
-	var initial_state : UnsafeRawPointer?
-	var compress : @convention(c) (_:_:_:)?
-	var final : @convention(c) (_:_:_:)?
+	var state : ccdigest_state.__Unnamed_union_state
  }
 
  struct __C.ccec_cp {
@@ -587,17 +628,7 @@
 	var leftover : Int
  }
 
- struct __C.ccdigest_ctx {
-
-	// Properties
-	var state : ccdigest_ctx.__Unnamed_union_state
- }
-
- struct __C.ccdigest_state {
-
-	// Properties
-	var state : ccdigest_state.__Unnamed_union_state
- }
+ struct __C.__Unnamed_union_state { }
 
  struct __C.cczp {
 
@@ -613,7 +644,3 @@
 	var start : UnsafeMutablePointer<UInt64>?
 	var end : UnsafeMutablePointer<UInt64>?
  }
-
- struct __C.__Unnamed_union_state { }
-
- struct __C.__Unnamed_union_state { }

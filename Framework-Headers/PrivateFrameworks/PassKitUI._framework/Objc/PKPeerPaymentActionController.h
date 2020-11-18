@@ -29,7 +29,7 @@
 @property (readonly, nonatomic) PKBankAccountInformation *bankInformation; // @synthesize bankInformation=_bankInformation;
 @property (nonatomic) unsigned long long controllerAction; // @synthesize controllerAction=_controllerAction;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic) id<PKPeerPaymentActionControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, weak, nonatomic) id<PKPeerPaymentActionControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;

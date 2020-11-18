@@ -19,7 +19,7 @@
 @property (readonly, nonatomic) unsigned long long indexOfSelectedOption;
 @property (readonly, nonatomic) NSString *localizedTitle;
 @property (readonly, nonatomic) unsigned long long numberOfOptions;
-@property (strong, nonatomic) NSArray *options; // @synthesize options=_options;
+@property (readonly, nonatomic) NSArray *options; // @synthesize options=_options;
 @property (readonly, weak, nonatomic) MPCPlayerResponse *response; // @synthesize response=_response;
 
 - (void).cxx_destruct;

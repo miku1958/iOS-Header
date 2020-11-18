@@ -11,8 +11,8 @@
 #import <SpringBoard/UIDragInteractionDelegate_Private-Protocol.h>
 #import <SpringBoard/UIDropInteractionDelegate-Protocol.h>
 
-@class CADisplayLink, NSMutableDictionary, NSMutableSet, NSString, NSUUID, SBAppPlatterDragPreview, SBApplicationDropSession, SBApplicationSceneUpdateTransaction, SBDeviceApplicationSceneHandle, SBFluidSwitcherGesture, SBFluidSwitcherViewController, SBLayoutElement, SBMainDisplayLayoutState, SBMainDisplaySceneLayoutViewController, SBMainWorkspaceTransitionRequest, SBMedusaSettings, SBToAppsWorkspaceTransaction, SBTouchHistory, UIViewFloatAnimatableProperty;
-@protocol BSInvalidatable, SBDragAndDropAppActivationWorkspaceTransactionDelegate;
+@class CADisplayLink, NSMutableDictionary, NSMutableSet, NSString, NSUUID, SBAppPlatterDragPreview, SBApplicationDropSession, SBApplicationSceneUpdateTransaction, SBDeviceApplicationSceneHandle, SBFluidSwitcherGesture, SBFluidSwitcherViewController, SBLayoutElement, SBMainDisplayLayoutState, SBMainDisplaySceneLayoutViewController, SBMainWorkspaceTransitionRequest, SBMedusaSettings, SBToAppsWorkspaceTransaction, SBTouchHistory, UIView, UIViewFloatAnimatableProperty;
+@protocol BSInvalidatable, SBAppPlatterDragSourceViewProviding, SBDragAndDropAppActivationWorkspaceTransactionDelegate;
 
 @interface SBDragAndDropAppActivationWorkspaceTransaction : SBMainWorkspaceTransaction <SBWorkspaceApplicationSceneTransitionContextDelegate, SBSceneLayoutWorkspaceTransactionObserver, UIDragInteractionDelegate_Private, UIDropInteractionDelegate>
 {
@@ -35,7 +35,6 @@
     BOOL _dropAnimationCompleted;
     BOOL _layoutStateTransitionCompleted;
     BOOL _dragExitedDropZone;
-    BOOL _cleanUpTransactionReentrancyGuard;
     struct CGSize _cachedSizeForFloatingApplication;
     SBLayoutElement *_layoutElementForWindowDrag;
     BOOL _windowDragEnteredPlatterZone;
@@ -49,6 +48,10 @@
     UIViewFloatAnimatableProperty *_resizeAnimatableProperty;
     NSMutableSet *_pendingSceneUpdatesTransactions;
     SBAppPlatterDragPreview *_activePlatterPreview;
+    id<SBAppPlatterDragSourceViewProviding> _activeSourceViewProvider;
+    unsigned long long _numberOfAttemptsRequestingVisibleItems;
+    UIView *_contentDragPreview;
+    long long _animatingPlatterPreview;
     id<BSInvalidatable> _deferOrientationUpdatesForDragAndDropAssertion;
     SBTouchHistory *_touchHistory;
     SBMedusaSettings *_medusaSettings;
@@ -73,19 +76,21 @@
 + (double)prototypeSettingsWindowTearOffDraggingSideActivationWidth;
 + (BOOL)shouldTrackLocationOfDropSession:(id)arg1 inSceneLayoutViewController:(id)arg2;
 + (BOOL)shouldTrackLocationOfDropSession:(id)arg1 inSceneLayoutViewController:(id)arg2 isCurrentlyTracking:(BOOL)arg3;
++ (struct CGRect)sourceSceneInterfaceOrientedBoundsForDropSession:(id)arg1 inSceneLayoutViewController:(id)arg2;
 - (void).cxx_destruct;
 - (void)_acquireStatusBarAssertions;
 - (void)_addChildWorkspaceTransaction:(id)arg1;
 - (BOOL)_areLayoutElementViewControllersBlurred;
 - (BOOL)_areLayoutElementViewControllersCorrectlySizedForDropAction:(long long)arg1 proposedDropLayoutState:(id)arg2;
 - (void)_begin;
+- (void)_beginRequiringSceneViewMatchMoveAnimation;
 - (BOOL)_canBeInterrupted;
 - (BOOL)_canInterruptForCurrentDropAction;
 - (void)_childTransactionDidComplete:(id)arg1;
 - (void)_cleanUpAndCompleteTransactionIfNecessary;
 - (void)_configurePlatterPreview:(id)arg1 forSceneHandle:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_cornerRadiusConfigurationForDropAction:(long long)arg1 proposedDropLayoutState:(id)arg2 setDown:(BOOL)arg3 mode:(unsigned long long)arg4;
-- (id)_createPlatterPreviewForApplication:(id)arg1 withSourceViewProvider:(id)arg2 dropSession:(id)arg3;
+- (id)_createPlatterPreviewForApplication:(id)arg1 withSourceView:(id)arg2 dropSession:(id)arg3;
 - (id)_currentGestureEventForGesture:(id)arg1;
 - (void)_didComplete;
 - (void)_didInterruptWithReason:(id)arg1;
@@ -93,6 +98,7 @@
 - (void)_dragInteractionDidCancelLiftWithoutDragging:(id)arg1;
 - (id)_dragPreviewForDroppingItem:(id)arg1 withDefault:(id)arg2;
 - (void)_endDragAndDropFluidGesture;
+- (void)_endRequiringSceneViewMatchMoveAnimation;
 - (void)_fadeOutPreviousLayoutElementViewControllersIfNecessary;
 - (unsigned long long)_gestureModifierPhaseForGestureState:(long long)arg1;
 - (long long)_gestureType;
@@ -103,6 +109,7 @@
 - (void)_handleSessionDidPerformDrop:(id)arg1;
 - (BOOL)_handleSessionDidUpdate:(id)arg1;
 - (void)_handleWillAnimateDropWithAnimator:(id)arg1;
+- (void)_interruptForDragExitedDropZoneIfNecessary;
 - (void)_invalidateStatusBarAssertions;
 - (long long)_layoutRoleForDropAction:(long long)arg1;
 - (struct CGRect)_platterFrameInSwitcherView;
@@ -112,6 +119,7 @@
 - (id)_primaryLayoutElementViewController;
 - (void)_runFinalLayoutStateTransaction;
 - (void)_setStatusBarsHidden:(BOOL)arg1;
+- (void)_setupPlatterPreviewForContentDrag;
 - (void)_setupResizeAnimatableProperty;
 - (BOOL)_shouldComplete;
 - (BOOL)_shouldFailLayoutStateTransitionForWindowDrag;
@@ -121,6 +129,8 @@
 - (id)_sideLayoutElementViewController;
 - (struct CGSize)_sizeForFloatingApplication;
 - (id)_transitionRequestForDropAction:(long long)arg1;
+- (void)_uncommandeerContentDrag;
+- (void)_updateActiveSourceViewProviderWithDragState:(unsigned long long)arg1;
 - (void)_updateAnchorPointForPlatterPreview:(id)arg1 dragPreview:(id)arg2 withSourceViewBounds:(struct CGRect)arg3 location:(struct CGPoint)arg4;
 - (void)_updateCurrentDropActionForSession:(id)arg1;
 - (void)_updateCurrentDropActionProposedLayoutState;

@@ -25,7 +25,7 @@
 + (id)_validatedExternalResourcesFromLocalImageOrVideoAsset:(id)arg1 referencedResourceURLs:(id)arg2;
 + (id)_validatedExternalResourcesFromSharedStreamAsset:(id)arg1;
 + (BOOL)createInternalResourcesForExistingAssetsWithNoExistingResourcesInStore:(id)arg1 migrator:(id)arg2;
-+ (unsigned long long)derivativeCPLTypeFromRecipeID:(unsigned int)arg1;
++ (unsigned long long)derivativeCPLTypeFromRecipeID:(unsigned int)arg1 version:(unsigned int)arg2;
 + (id)externalResourcesForExistingAsset:(id)arg1 referencedResourceURLs:(id)arg2;
 + (id)generateAdjustedFullSizeRenderResourceForFilePath:(id)arg1 requireFileToBePresent:(BOOL)arg2 basedOnFullSizeWidth:(long long)arg3 andHeight:(long long)arg4 context:(id)arg5;
 + (id)generateExternalResourceFromCPLResource:(id)arg1 asset:(id)arg2 fromAdjustedSet:(BOOL)arg3;
@@ -41,9 +41,12 @@
 + (void)onDemand_installAdjustedFullSizeRenderResourceAtFilePath:(id)arg1 forAsset:(id)arg2;
 + (id)onDemand_installAdjustedFullSizeVideoComplementResourceIfPresentForAsset:(id)arg1;
 + (id)onDemand_installOriginalAdjustmentResourceIfPresentForAsset:(id)arg1;
-+ (id)onDemand_installOriginalSOCImagePresentForAsset:(id)arg1;
++ (id)onDemand_installOriginalSOCImagePresentForAsset:(id)arg1 referencedResourceURLs:(id)arg2;
++ (id)onDemand_installOriginalSOCVideoComplementPresentForAsset:(id)arg1 referencedResourceURLs:(id)arg2;
++ (id)onDemand_installOriginalSOCVideoPresentForAsset:(id)arg1 referencedResourceURLs:(id)arg2;
 + (id)onDemand_installOriginalVideoComplementResourceIfPresentForAsset:(id)arg1;
 + (id)onDemand_installPrimaryImageResourceWithRecipe:(id)arg1 version:(unsigned int)arg2 forAsset:(id)arg3;
++ (id)onDemand_installPrimaryMovieResourceWithRecipe:(id)arg1 version:(unsigned int)arg2 forAsset:(id)arg3;
 + (unsigned int)recipeIDFromCPLResourceType:(unsigned long long)arg1 assetType:(short)arg2 fromAdjustedSet:(BOOL)arg3;
 + (BOOL)reconsiderSavedAssetTypeInStore:(id)arg1 migrator:(id)arg2;
 + (BOOL)recoverSupplementalResourcesForAsset:(id)arg1 usingSidecarFinder:(id)arg2 outResourcesStoreCount:(unsigned long long *)arg3 error:(id *)arg4;

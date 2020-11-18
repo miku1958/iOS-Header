@@ -21,7 +21,7 @@
 
 @property (nonatomic) CDStruct_4c969caf auditToken; // @synthesize auditToken=_auditToken;
 @property (nonatomic) int processIdentifier; // @synthesize processIdentifier=_processIdentifier;
-@property (strong, nonatomic) NSString *sceneIdentifier; // @synthesize sceneIdentifier=_sceneIdentifier;
+@property (copy, nonatomic) NSString *sceneIdentifier; // @synthesize sceneIdentifier=_sceneIdentifier;
 @property (nonatomic) unsigned int sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property (nonatomic) BOOL supportsSystemDrag; // @synthesize supportsSystemDrag=_supportsSystemDrag;
 

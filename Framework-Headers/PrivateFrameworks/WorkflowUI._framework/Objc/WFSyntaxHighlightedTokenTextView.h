@@ -23,6 +23,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (unsigned long long)currentSyntaxHighlightingAppearance;
 - (id)init;
 - (struct _NSRange)lineRangeForCharacterRange:(struct _NSRange)arg1;
 - (void)setAttributedText:(id)arg1;

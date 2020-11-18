@@ -54,6 +54,7 @@
 - (long long)_numberOfRecurringPaymentDetailsRows;
 - (id)_paymentAmountToDisplay;
 - (long long)_recurringPaymentDetailsRowTypeForRowAtIndex:(long long)arg1;
+- (void)_reportEventForPassIfNecessary:(id)arg1;
 - (id)_reuseIdentifierForSection:(unsigned long long)arg1;
 - (BOOL)_showRecurringDay;
 - (BOOL)_showRecurringDetailsAmount;
@@ -73,6 +74,8 @@
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 

@@ -6,6 +6,10 @@
  {
 	// method
  }
+ protocol NewsAnalytics.BlockLocationEventTranslator // 1 requirements
+ {
+	// method
+ }
 
  struct __C.NSKeyValueChangeKey {
 
@@ -588,9 +592,9 @@
 	let assemblies : [NFAssembly] // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x48070  @objc Assembly.assemblies <stripped>
-	0x48270  @objc Assembly.init <stripped>
-	0x483e0  @objc Assembly..cxx_destruct <stripped>
+	0x48bb0  @objc Assembly.assemblies <stripped>
+	0x48db0  @objc Assembly.init <stripped>
+	0x48f20  @objc Assembly..cxx_destruct <stripped>
  }
 
  class NewsAnalytics.MediaEngageCompleteEventTranslator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -710,7 +714,7 @@
 
  class NewsAnalytics.TrackerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x542a0  @objc TrackerAssembly.init <stripped>
+	0x54e90  @objc TrackerAssembly.init <stripped>
  }
 
  class NewsAnalytics.SessionAccess : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -719,7 +723,7 @@
 	let accessorQueue : OS_dispatch_queue // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x55bf0  @objc SessionAccess.accessorQueue <stripped>
+	0x567e0  @objc SessionAccess.accessorQueue <stripped>
 
 	// Swift methods
  }
@@ -778,6 +782,7 @@
 	let bundleSubscriptionStatus : BundleSubscriptionStatus // +0x0
 	let bundleSubscriptionPurchaseID : String? // +0x8
 	let isBundleSubscriptionPurchaser : Bool // +0x18
+	let isAmplifyUser : Bool // +0x19
  }
 
  enum NewsAnalytics.CodingKeys {
@@ -786,6 +791,7 @@
 	case bundleSubscriptionStatus  
 	case bundleSubscriptionPurchaseID  
 	case isBundleSubscriptionPurchaser  
+	case isAmplifyUser  
  }
 
  class NewsAnalytics.SubscribeButtonTapEventTranslator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -851,6 +857,36 @@
 	// Properties
 	case pageIndices  
 	case pageCount  
+ }
+
+ struct NewsAnalytics.UnblockTagEvent {
+
+	// Properties
+	let eventData : EventProperty<EventData>
+	let channelData : EventProperty<ChannelData>
+	let groupData : EventProperty<GroupData>
+	let feedData : EventProperty<FeedData>
+	let articleData : EventProperty<ArticleData>
+ }
+
+ struct NewsAnalytics.Model {
+
+	// Properties
+	let eventData : EventData
+	let channelData : ChannelData
+	let groupData : GroupData?
+	let feedData : FeedData?
+	let articleData : ArticleData?
+ }
+
+ enum NewsAnalytics.CodingKeys {
+
+	// Properties
+	case eventData  
+	case channelData  
+	case groupData  
+	case feedData  
+	case articleData  
  }
 
  enum NewsAnalytics.DownloadLocation {
@@ -1026,6 +1062,10 @@
 	case userBundleSubscriptionContextData  
 	case channelData  
 	case adData  
+ }
+
+ class NewsAnalytics.BlockTagEventTranslator : _SwiftObject /usr/lib/swift/libswiftCore.dylib, BlockLocationEventTranslator {
+	// Swift methods
  }
 
  enum NewsAnalytics.BundleSubscriptionStatus {
@@ -1290,7 +1330,7 @@
 
  class NewsAnalytics.DebugAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x99810  @objc DebugAssembly.init <stripped>
+	0x9ef60  @objc DebugAssembly.init <stripped>
  }
 
  class NewsAnalytics.ANFComponentExposureEventTranslator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1408,16 +1448,16 @@
 	var window : UIWindow? // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xeef50  @objc SessionObserver.userInfoDidChangeFeldsparID:fromCloud: <stripped>
-	0xee1c0  @objc SessionObserver.pushSessionData <stripped>
-	0xebdb0  @objc SessionObserver.pushUserSubscriptionContextData <stripped>
-	0x75580  @objc SessionObserver.observeValueForKeyPath:ofObject:change:context: <stripped>
-	0x5f750  @objc SessionObserver.pushOrientationData <stripped>
-	0x1c8f0  @objc SessionObserver.bundleSubscriptionDidExpire: <stripped>
-	0x1c8f0  @objc SessionObserver.bundleSubscriptionDidSubscribe: <stripped>
-	0xad7a0  @objc SessionObserver.dealloc <stripped>
-	0xadad0  @objc SessionObserver.init <stripped>
-	0xad7c0  @objc SessionObserver..cxx_destruct <stripped>
+	0xf4e20  @objc SessionObserver.userInfoDidChangeFeldsparID:fromCloud: <stripped>
+	0xf4090  @objc SessionObserver.pushSessionData <stripped>
+	0xf1c80  @objc SessionObserver.pushUserSubscriptionContextData <stripped>
+	0x7a740  @objc SessionObserver.observeValueForKeyPath:ofObject:change:context: <stripped>
+	0x604a0  @objc SessionObserver.pushOrientationData <stripped>
+	0x1d320  @objc SessionObserver.bundleSubscriptionDidExpire: <stripped>
+	0x1d320  @objc SessionObserver.bundleSubscriptionDidSubscribe: <stripped>
+	0xb3000  @objc SessionObserver.dealloc <stripped>
+	0xb3330  @objc SessionObserver.init <stripped>
+	0xb3020  @objc SessionObserver..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1622,6 +1662,10 @@
 	case pause  
 	case resume  
 	case failed  
+ }
+
+ class NewsAnalytics.UnblockTagEventTranslator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
  }
 
  struct NewsAnalytics.MediaData {
@@ -2251,6 +2295,36 @@
 	case channelData  
 	case groupData  
 	case feedData  
+ }
+
+ struct NewsAnalytics.BlockTagEvent {
+
+	// Properties
+	let eventData : EventProperty<EventData>
+	let channelData : EventProperty<ChannelData>
+	let groupData : EventProperty<GroupData>
+	let feedData : EventProperty<FeedData>
+	let articleData : EventProperty<ArticleData>
+ }
+
+ struct NewsAnalytics.Model {
+
+	// Properties
+	let eventData : EventData
+	let channelData : ChannelData
+	let groupData : GroupData?
+	let feedData : FeedData?
+	let articleData : ArticleData?
+ }
+
+ enum NewsAnalytics.CodingKeys {
+
+	// Properties
+	case eventData  
+	case channelData  
+	case groupData  
+	case feedData  
+	case articleData  
  }
 
  struct NewsAnalytics.IssueData {

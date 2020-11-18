@@ -30,6 +30,7 @@
 - (void).cxx_destruct;
 - (void)_homescreenSidebarVisibilityDidChange:(id)arg1;
 - (void)_reloadWidgetPreferences;
+- (BOOL)_shouldUsePinnedWidgets;
 - (void)_updateFavoriteWidgetLearning;
 - (BOOL)areWidgetsPinnedForWidgetDiscoveryController:(id)arg1;
 - (BOOL)didPurgeNonASTCSnapshotsForWidgetDiscoveryController:(id)arg1;

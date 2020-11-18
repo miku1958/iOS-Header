@@ -4,15 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Home/HFAccessoryProfileGroupItem.h>
+#import <Home/HFItemGroupItem.h>
 
-@interface HFNetworkConfigurationGroupItem : HFAccessoryProfileGroupItem
+#import <Home/HFHomeKitItemProtocol-Protocol.h>
+
+@class HMAccessoryNetworkProtectionGroup, NSSet, NSString;
+@protocol HFCharacteristicValueSource, HFHomeKitObject;
+
+@interface HFNetworkConfigurationGroupItem : HFItemGroupItem <HFHomeKitItemProtocol>
 {
+    HMAccessoryNetworkProtectionGroup *_group;
+    id<HFCharacteristicValueSource> _valueSource;
 }
 
-+ (long long)_groupCurrentProtectionModeForProfiles:(id)arg1;
-- (id)_buildProfileItems;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) HMAccessoryNetworkProtectionGroup *group; // @synthesize group=_group;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
+@property (readonly, nonatomic) NSSet *profiles;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
+
+- (void).cxx_destruct;
 - (id)_subclass_updateWithOptions:(id)arg1;
+- (id)copyWithValueSource:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
+- (id)initWithGroup:(id)arg1 valueSource:(id)arg2;
 
 @end
 

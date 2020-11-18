@@ -16,6 +16,8 @@
 
 @property unsigned long long accessModeAtHome;
 @property (copy) NSNumber *accessModeAtHomeField; // @dynamic accessModeAtHomeField;
+@property BOOL accessModeChangeNotificationEnabled;
+@property (copy) NSNumber *accessModeChangeNotificationEnabledField; // @dynamic accessModeChangeNotificationEnabledField;
 @property BOOL accessModeIndicatorEnabled;
 @property (copy) NSNumber *accessModeIndicatorEnabledField; // @dynamic accessModeIndicatorEnabledField;
 @property unsigned long long accessModeNotAtHome;
@@ -26,6 +28,8 @@
 @property (copy) NSNumber *nightVisionModeEnabledField; // @dynamic nightVisionModeEnabledField;
 @property BOOL periodicSnapshotsAllowed;
 @property (copy) NSNumber *periodicSnapshotsAllowedField; // @dynamic periodicSnapshotsAllowedField;
+@property BOOL recordingAudioEnabled;
+@property (copy) NSNumber *recordingAudioEnabledField; // @dynamic recordingAudioEnabledField;
 @property unsigned long long recordingEventTriggers;
 @property (copy) NSNumber *recordingEventTriggersField; // @dynamic recordingEventTriggersField;
 @property (strong) HMDBulletinBoardNotification *smartBulletinBoardNotification;

@@ -18,6 +18,7 @@
     id<HMDCloudShareMessengerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMFMessageDispatcher *_messageDispatcher;
+    CDUnknownBlockType _shareInvitationRetryHandler;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,12 +27,14 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
-@property (readonly, nonatomic) NSUUID *messageTargetUUID; // @synthesize messageTargetUUID=_messageTargetUUID;
+@property (readonly) NSUUID *messageTargetUUID; // @synthesize messageTargetUUID=_messageTargetUUID;
+@property (copy) CDUnknownBlockType shareInvitationRetryHandler; // @synthesize shareInvitationRetryHandler=_shareInvitationRetryHandler;
 @property (readonly) Class superclass;
 @property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)logCategory;
 - (void).cxx_destruct;
+- (void)_sendShareInvitationData:(id)arg1 toUser:(id)arg2 minimumHomeKitVersion:(id)arg3 retryCount:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)configureWithHome:(id)arg1;
 - (void)handleInviteMessage:(id)arg1;
 - (void)handleRequestInviteMessage:(id)arg1;

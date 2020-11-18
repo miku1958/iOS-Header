@@ -18,6 +18,7 @@
     unsigned long long _controlSize;
     CAShapeLayer *_primaryGrabberShadowLayer;
     CAShapeLayer *_secondaryGrabberShadowLayer;
+    UIView *_topBorder;
 }
 
 @property (nonatomic) unsigned long long controlSize; // @synthesize controlSize=_controlSize;
@@ -29,6 +30,7 @@
 @property (strong, nonatomic) CAShapeLayer *primaryGrabberShadowLayer; // @synthesize primaryGrabberShadowLayer=_primaryGrabberShadowLayer;
 @property (weak, nonatomic) CAShapeLayer *secondaryGrabberShadowLayer; // @synthesize secondaryGrabberShadowLayer=_secondaryGrabberShadowLayer;
 @property (nonatomic) BOOL showGrabbers; // @synthesize showGrabbers=_showGrabbers;
+@property (strong, nonatomic) UIView *topBorder; // @synthesize topBorder=_topBorder;
 
 + (Class)layerClass;
 - (void).cxx_destruct;

@@ -10,6 +10,7 @@
 
 @interface VUIOpenURLHandler : NSObject
 {
+    BOOL _openedByDeeplink;
     CDUnknownBlockType _completionHandler;
     NSURL *_deferredOpenURL;
     CDUnknownBlockType _deferredOpenURLCompletion;
@@ -18,6 +19,7 @@
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (strong, nonatomic) NSURL *deferredOpenURL; // @synthesize deferredOpenURL=_deferredOpenURL;
 @property (copy, nonatomic) CDUnknownBlockType deferredOpenURLCompletion; // @synthesize deferredOpenURLCompletion=_deferredOpenURLCompletion;
+@property (nonatomic) BOOL openedByDeeplink; // @synthesize openedByDeeplink=_openedByDeeplink;
 
 + (id)_getIDfromURLQueryParameters:(id)arg1 idKeyName:(id)arg2;
 + (void)_handleDeeplinkAction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

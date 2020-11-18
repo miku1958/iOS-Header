@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotosGraph/PGMemoryCore-Protocol.h>
 #import <PhotosGraph/PGMemoryProtocol-Protocol.h>
 
 @class CLLocation, NSArray, NSDate, NSDictionary, NSMutableSet, NSSet, NSString, PGMemoryDebug, PHAsset, PHAssetCollection;
 
-@interface PGMemory : NSObject <PGMemoryProtocol>
+@interface PGMemory : NSObject <PGMemoryProtocol, PGMemoryCore>
 {
     NSDate *_creationDate;
     PHAssetCollection *_assetCollection;
@@ -58,11 +59,14 @@
 @property (nonatomic) unsigned short curationAlgorithmsVersion;
 @property (strong, nonatomic) PGMemoryDebug *debug; // @synthesize debug=_debug;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long duration; // @synthesize duration=_duration;
 @property (strong, nonatomic) PHAssetCollection *extendedCuratedAssetCollection; // @synthesize extendedCuratedAssetCollection=_extendedCuratedAssetCollection;
 @property (strong, nonatomic) NSSet *features; // @synthesize features=_features;
 @property (nonatomic) unsigned short graphSchemaVersion;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSDate *localEndDate; // @synthesize localEndDate=_localEndDate;
 @property (strong, nonatomic) NSDate *localStartDate; // @synthesize localStartDate=_localStartDate;
@@ -72,8 +76,10 @@
 @property (strong, nonatomic) NSSet *matchedPeople; // @synthesize matchedPeople=_matchedPeople;
 @property (nonatomic) unsigned long long matchedTypes; // @synthesize matchedTypes=_matchedTypes;
 @property (strong, nonatomic) NSString *meUUID; // @synthesize meUUID=_meUUID;
+@property (readonly, nonatomic) NSArray *meaningLabels;
 @property (nonatomic) unsigned short memoriesAlgorithmsVersion;
 @property (strong, nonatomic) NSSet *momentIDs; // @synthesize momentIDs=_momentIDs;
+@property (readonly, nonatomic) NSArray *moodKeywords;
 @property (copy, nonatomic) NSDictionary *musicGenreDistribution; // @synthesize musicGenreDistribution=_musicGenreDistribution;
 @property (nonatomic) long long notificationQuality; // @synthesize notificationQuality=_notificationQuality;
 @property (strong, nonatomic) NSDictionary *numberOfAssetsByMomentIDs; // @synthesize numberOfAssetsByMomentIDs=_numberOfAssetsByMomentIDs;
@@ -85,6 +91,8 @@
 @property (nonatomic) long long sourceType; // @synthesize sourceType=_sourceType;
 @property (nonatomic) unsigned long long subcategory; // @synthesize subcategory=_subcategory;
 @property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property (readonly, nonatomic) unsigned long long suggestedMood;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) long long titleCategory; // @synthesize titleCategory=_titleCategory;

@@ -30,6 +30,7 @@
 + (id)quantitySampleWithType:(id)arg1 quantity:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 metadata:(id)arg5;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (long long)_compareFreezeStateWithSample:(id)arg1;
 - (id)_init;
 - (void)_setCount:(long long)arg1;
 - (void)_setFreezing;

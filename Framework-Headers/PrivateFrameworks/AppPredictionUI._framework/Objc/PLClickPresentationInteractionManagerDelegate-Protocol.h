@@ -15,7 +15,7 @@
 @optional
 - (void)clickPresentationInteractionManager:(PLClickPresentationInteractionManager *)arg1 declinedDismissingPresentedContentWithTrigger:(long long)arg2;
 - (BOOL)clickPresentationInteractionManager:(PLClickPresentationInteractionManager *)arg1 shouldBeginInteractionWithTouchAtLocation:(struct CGPoint)arg2;
-- (void)clickPresentationInteractionManager:(PLClickPresentationInteractionManager *)arg1 shouldFinishInteractionWithCompletionBlock:(void (^)(BOOL))arg2;
+- (void)clickPresentationInteractionManager:(PLClickPresentationInteractionManager *)arg1 shouldFinishInteractionThatReachedForceThreshold:(BOOL)arg2 withCompletionBlock:(void (^)(BOOL))arg3;
 - (void)clickPresentationInteractionManager:(PLClickPresentationInteractionManager *)arg1 willDismissPresentedContentWithTrigger:(long long)arg2;
 - (void)clickPresentationInteractionManagerDidEndUserInteraction:(PLClickPresentationInteractionManager *)arg1;
 - (BOOL)clickPresentationInteractionManagerShouldAllowLongPressGesture:(PLClickPresentationInteractionManager *)arg1;

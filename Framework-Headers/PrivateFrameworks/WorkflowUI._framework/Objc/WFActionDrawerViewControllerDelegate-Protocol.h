@@ -10,7 +10,7 @@
 
 @protocol WFActionDrawerViewControllerDelegate <NSObject>
 - (void)actionDrawerViewController:(WFActionDrawerViewController *)arg1 didSelectAction:(WFAction *)arg2;
-- (void)actionDrawerViewController:(WFActionDrawerViewController *)arg1 didSelectCategoryForContentType:(NSString *)arg2;
+- (void)actionDrawerViewController:(WFActionDrawerViewController *)arg1 didSelectCategoryForContentType:(NSString *)arg2 title:(NSString *)arg3;
 - (void)actionDrawerViewController:(WFActionDrawerViewController *)arg1 didSelectDocumentationForAction:(WFAction *)arg2 fromView:(UIView *)arg3;
 - (void)actionDrawerViewController:(WFActionDrawerViewController *)arg1 didSelectSection:(WFActionDrawerSection *)arg2;
 - (void)actionDrawerViewControllerDidSelectCategoryApps:(WFActionDrawerViewController *)arg1 title:(NSString *)arg2;

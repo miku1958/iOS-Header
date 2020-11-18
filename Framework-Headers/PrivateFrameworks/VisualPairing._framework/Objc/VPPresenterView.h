@@ -17,9 +17,11 @@
     NSArray *_watermarkPixelBuffers;
     unsigned long long _watermarkStepIndex;
     NSObject<OS_dispatch_source> *_watermarkStepTimer;
+    unsigned int _flags;
     NSString *_verificationCode;
 }
 
+@property (nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property (copy, nonatomic) NSString *verificationCode; // @synthesize verificationCode=_verificationCode;
 
 - (void).cxx_destruct;

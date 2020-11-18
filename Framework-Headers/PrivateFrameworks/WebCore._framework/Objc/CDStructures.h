@@ -394,11 +394,12 @@ struct ContentSecurityPolicyResponseHeaders {
 };
 
 struct CookieStorageObserver {
-    struct atomic<unsigned int> _field1;
-    struct RetainPtr<NSHTTPCookieStorage> _field2;
-    BOOL _field3;
-    struct RetainPtr<WebCookieObserverAdapter> _field4;
-    Function_15535652 _field5;
+    struct WeakPtrFactory<WebCore::CookieStorageObserver> _field1;
+    struct WeakPtr<WebCore::CookieStorageObserver> _field2;
+    struct RetainPtr<NSHTTPCookieStorage> _field3;
+    BOOL _field4;
+    struct RetainPtr<WebCookieObserverAdapter> _field5;
+    Function_15535652 _field6;
 };
 
 struct CoreAudioCaptureSourceFactoryIOS {
@@ -3203,6 +3204,10 @@ struct WeakPtr<WebCore::CDMInstanceSessionClient> {
     struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl>> _field1;
 };
 
+struct WeakPtr<WebCore::CookieStorageObserver> {
+    struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl>> _field1;
+};
+
 struct WeakPtr<WebCore::MediaPlayerPrivateAVFoundationObjC> {
     struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl>> m_impl;
 };
@@ -3234,6 +3239,10 @@ struct WeakPtrFactory<WebCore::CaptureDeviceManager> {
 };
 
 struct WeakPtrFactory<WebCore::ContainerNode> {
+    struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl>> _field1;
+};
+
+struct WeakPtrFactory<WebCore::CookieStorageObserver> {
     struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl>> _field1;
 };
 

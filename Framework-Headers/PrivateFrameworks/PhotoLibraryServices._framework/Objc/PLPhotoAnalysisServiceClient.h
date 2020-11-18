@@ -93,6 +93,7 @@
 - (BOOL)requestInvalidatePersistentCaches:(id *)arg1;
 - (BOOL)requestInvalidateTransientCaches:(id *)arg1;
 - (id)requestLocalizedSceneAncestryInformationWithError:(id *)arg1;
+- (id)requestM5CompatibleMemoriesReturningError:(id *)arg1;
 - (id)requestMemoryDebugInformationForMemoryWithLocalIdentifier:(id)arg1 error:(id *)arg2;
 - (id)requestMemoryInfosWithOptions:(id)arg1 error:(id *)arg2;
 - (id)requestMemoryTreeDebugInformationWithOptions:(id)arg1 error:(id *)arg2;

@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic) NSString *sf_bundleID;
 @property (readonly, nonatomic) NSString *sf_error;
+@property (nonatomic) unsigned int sf_initiator;
 @property (readonly, nonatomic) NSString *sf_personRealName;
 @property (readonly, nonatomic) NSString *sf_publishingKey;
 @property (readonly, nonatomic) NSString *sf_sessionID;

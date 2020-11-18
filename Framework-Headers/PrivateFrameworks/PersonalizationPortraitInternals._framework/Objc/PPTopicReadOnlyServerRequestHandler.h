@@ -22,6 +22,9 @@
 @property (strong, nonatomic) _PASBundleIdResolver *bundleIdResolver; // @synthesize bundleIdResolver=_bundleIdResolver;
 @property (copy, nonatomic) NSString *clientProcessName; // @synthesize clientProcessName=_clientProcessName;
 
++ (id)filterQIDDictionary:(id)arg1 withWhitelistOfProcess:(id)arg2;
++ (id)filterScoredTopicsNotInWhitelist:(id)arg1 withWhitelistOfProcess:(id)arg2;
++ (id)filterTopicRecordsNotInWhitelist:(id)arg1 withWhitelistOfProcess:(id)arg2;
 - (void).cxx_destruct;
 - (id)init;
 - (void)rankedTopicsWithQuery:(id)arg1 queryId:(unsigned long long)arg2;

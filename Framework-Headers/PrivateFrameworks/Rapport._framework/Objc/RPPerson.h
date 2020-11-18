@@ -31,7 +31,7 @@
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) int proximity; // @synthesize proximity=_proximity;
-@property (readonly) CURangingMeasurement *relativeLocation; // @synthesize relativeLocation=_relativeLocation;
+@property (strong) CURangingMeasurement *relativeLocation; // @synthesize relativeLocation=_relativeLocation;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

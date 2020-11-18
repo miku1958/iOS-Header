@@ -22,14 +22,14 @@
 - (BOOL)conformsToClass:(Class)arg1;
 - (BOOL)conformsToType:(id)arg1;
 - (BOOL)conformsToTypes:(id)arg1;
-- (BOOL)conformsToUTType:(struct __CFString *)arg1;
+- (BOOL)conformsToUTType:(const struct __CFString *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqualToClass:(Class)arg1;
 - (BOOL)isEqualToType:(id)arg1;
-- (BOOL)isEqualToUTType:(struct __CFString *)arg1;
+- (BOOL)isEqualToUTType:(const struct __CFString *)arg1;
 
 @end
 

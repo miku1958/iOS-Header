@@ -70,7 +70,6 @@
 - (void)iconManager:(SBHIconManager *)arg1 rootFolderController:(SBRootFolderController *)arg2 didOverscrollOnFirstPageByAmount:(double)arg3;
 - (void)iconManager:(SBHIconManager *)arg1 rootFolderController:(SBRootFolderController *)arg2 willUsePropertyAnimator:(UIViewPropertyAnimator *)arg3 toTransitionToState:(long long)arg4;
 - (void)iconManager:(SBHIconManager *)arg1 rootFolderController:(SBRootFolderController *)arg2 willUseTransitionContext:(SBViewControllerTransitionContext *)arg3 toTransitionToState:(long long)arg4;
-- (BOOL)iconManager:(SBHIconManager *)arg1 rootFolderControllerShouldAllowOverscrollOnFirstPage:(SBRootFolderController *)arg2;
 - (BOOL)iconManager:(SBHIconManager *)arg1 shouldActivateApplicationShortcutItem:(SBSApplicationShortcutItem *)arg2 atIndex:(unsigned long long)arg3 forIconView:(SBIconView *)arg4;
 - (BOOL)iconManager:(SBHIconManager *)arg1 shouldAvoidPlacingIconOnFirstPage:(SBLeafIcon *)arg2;
 - (BOOL)iconManager:(SBHIconManager *)arg1 shouldContinueToUseBackgroundView:(UIView *)arg2 forComponentsOfIconView:(SBIconView *)arg3;

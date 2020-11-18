@@ -35,11 +35,14 @@
 
 - (void).cxx_destruct;
 - (id)_customerAgreementAttributedString;
+- (void)_reportEventForPassIfNecessary:(id)arg1;
 - (void)doneButtonTapped;
 - (id)initWithAccount:(id)arg1;
 - (void)loadView;
 - (void)scrollViewDidScroll:(id)arg1;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 
 @end

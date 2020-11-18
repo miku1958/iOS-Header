@@ -30,6 +30,7 @@
 @property (nonatomic) unsigned long long visibilityState; // @synthesize visibilityState=_visibilityState;
 @property (copy, nonatomic) CDUnknownBlockType visibilityStateChangeHandler; // @synthesize visibilityStateChangeHandler=_visibilityStateChangeHandler;
 
++ (void)initialize;
 - (void).cxx_destruct;
 - (void)_queryHomeAppInstallStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_reloadVisibilityStateIncludingInstallState:(BOOL)arg1;

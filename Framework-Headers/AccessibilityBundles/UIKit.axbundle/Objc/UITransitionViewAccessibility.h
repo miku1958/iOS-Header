@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityDimmingView;
 - (id)_accessibilityHitTestingObscuredScreenAllowedViews;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilityRetrieveDelegate;
 - (void)_didCompleteTransition:(BOOL)arg1;
 - (BOOL)accessibilityPerformEscape;

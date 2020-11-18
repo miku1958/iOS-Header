@@ -36,6 +36,7 @@
 + (id)_assetUUIDFromIncomingFilename:(id)arg1;
 + (BOOL)_hasPrimaryAssetAndAdjustmentsFilesWithType:(short)arg1 inIncomingFilenames:(id)arg2 forAssetUUID:(id)arg3;
 + (id)_pathsByAssetUUIDFromIncomingCrashRecoveryPaths:(id)arg1;
++ (BOOL)_requiresAssetUUIDForJobType:(id)arg1;
 + (BOOL)_requiresIndicatorFileForJobType:(id)arg1;
 + (id)assetAdjustmentsFromCameraAdjustmentData:(id)arg1 exportProperties:(id)arg2;
 + (id)assetAdjustmentsFromCameraAdjustments:(id)arg1 exportProperties:(id)arg2;

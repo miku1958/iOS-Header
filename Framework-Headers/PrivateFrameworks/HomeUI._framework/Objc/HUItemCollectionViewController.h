@@ -73,6 +73,7 @@
 - (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;
 - (id)itemManager:(id)arg1 futureToUpdateItems:(id)arg2 itemUpdateOptions:(id)arg3;
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
+- (void)itemManagerDidFinishUpdate:(id)arg1;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)performBatchCollectionViewUpdatesForUpdateRequest:(id)arg1 reloadOnly:(BOOL)arg2;
 - (struct CGSize)preferredContentSizeForCollectionViewContentSize:(struct CGSize)arg1;

@@ -13,6 +13,7 @@
 
 @interface ARWorldTrackingOptions : NSObject <NSCopying>
 {
+    NSMutableDictionary *_activeVideoFormatsMap;
     NSObject<OS_dispatch_semaphore> *_activeVideoFormatsSemaphore;
     BOOL _relocalizationEnabled;
     BOOL _deterministicMode;
@@ -26,10 +27,9 @@
     NSString *_slamConfiguration;
     unsigned long long _planeDetection;
     double _minVergenceAngle;
-    NSMutableDictionary *_activeVideoFormatsMap;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *activeVideoFormatsMap; // @synthesize activeVideoFormatsMap=_activeVideoFormatsMap;
+@property (readonly, nonatomic) NSDictionary *activeVideoFormatsMap;
 @property (nonatomic, getter=isCollaborationEnabled) BOOL collaborationEnabled; // @synthesize collaborationEnabled=_collaborationEnabled;
 @property (nonatomic) BOOL deliverRawSceneUnderstandingResults; // @synthesize deliverRawSceneUnderstandingResults=_deliverRawSceneUnderstandingResults;
 @property (nonatomic) BOOL deterministicMode; // @synthesize deterministicMode=_deterministicMode;

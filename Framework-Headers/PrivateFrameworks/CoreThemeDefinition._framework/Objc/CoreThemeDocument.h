@@ -122,6 +122,7 @@
 - (id)_themeBitSourceForReferencedFilesAtURLs:(id)arg1 createIfNecessary:(BOOL)arg2;
 - (void)_tidyUpLayerStacks;
 - (void)_tidyUpRecognitionImages;
+- (void)_updateDeviceTraits;
 - (void)_updateKeyFormatWithContext:(id)arg1;
 - (BOOL)_updateRenditionPackings:(id)arg1 error:(id *)arg2;
 - (id)addAssetsAtFileURLs:(id)arg1;

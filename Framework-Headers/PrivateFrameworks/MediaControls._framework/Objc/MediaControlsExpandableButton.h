@@ -6,7 +6,7 @@
 
 #import <UIKit/UIControl.h>
 
-@class MTVisualStylingProvider, MediaControlsExpandableButtonOption, NSArray, NSMutableArray, UIView;
+@class MTVisualStylingProvider, MediaControlsExpandableButtonOption, NSArray, NSMutableArray, NSString, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
 @interface MediaControlsExpandableButton : UIControl
@@ -15,23 +15,33 @@ __attribute__((visibility("hidden")))
     BOOL _toggleEnabled;
     NSArray *_options;
     MediaControlsExpandableButtonOption *_selectedOption;
+    NSString *_title;
     long long _axis;
     MTVisualStylingProvider *_visualStylingProvider;
     NSMutableArray *_buttons;
     UIView *_materialView;
+    UILabel *_titleLabel;
+    UILabel *_subtitleLabel;
+    struct CGSize _maximumExpandedSize;
 }
 
 @property (nonatomic) long long axis; // @synthesize axis=_axis;
 @property (strong, nonatomic) NSMutableArray *buttons; // @synthesize buttons=_buttons;
 @property (nonatomic, getter=isExpanded) BOOL expanded; // @synthesize expanded=_expanded;
 @property (strong, nonatomic) UIView *materialView; // @synthesize materialView=_materialView;
+@property (nonatomic) struct CGSize maximumExpandedSize; // @synthesize maximumExpandedSize=_maximumExpandedSize;
 @property (strong, nonatomic) NSArray *options; // @synthesize options=_options;
 @property (strong, nonatomic) MediaControlsExpandableButtonOption *selectedOption; // @synthesize selectedOption=_selectedOption;
+@property (strong, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
+@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (nonatomic) BOOL toggleEnabled; // @synthesize toggleEnabled=_toggleEnabled;
 @property (strong, nonatomic) MTVisualStylingProvider *visualStylingProvider; // @synthesize visualStylingProvider=_visualStylingProvider;
 
 - (void).cxx_destruct;
 - (long long)_buttonLayoutAxis;
+- (void)_contentSizeCategoryDidChange;
+- (void)_layoutLabels;
 - (void)_updateSelection;
 - (void)_updateVisiblity;
 - (void)didMoveToWindow;

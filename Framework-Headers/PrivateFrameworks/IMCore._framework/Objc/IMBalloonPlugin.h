@@ -70,6 +70,7 @@
 - (void)moveController:(id)arg1 toReusePoolFromChatItem:(id)arg2;
 - (void)removeController:(id)arg1 forChatItem:(id)arg2;
 - (void)setIdentifier:(id)arg1;
+- (BOOL)shouldShowForRecipients:(id)arg1;
 - (BOOL)supportsControllerReuse;
 - (void)unloadBundle;
 

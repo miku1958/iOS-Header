@@ -38,9 +38,11 @@
 - (void)_handleAccessoryAdded:(id)arg1;
 - (void)_handleDeregisterRequest:(id)arg1;
 - (void)_handleEnableMultiUserChangedNotification:(id)arg1;
+- (void)_handleLocalHomeDataRemovedNotification:(id *)arg1;
 - (void)_handleRegisterRequest:(id)arg1;
 - (void)_handleUserSettingsUpdatedNotification:(id)arg1;
 - (void)_handleXPCConnectionInvalidated:(id)arg1;
+- (void)_postMultiUserStatusChangedNotification;
 - (void)configureWithMessageDispatcher:(id)arg1;
 - (id)currentDateForUserCloudShareController:(id)arg1;
 - (void)handleHomeChangedNotification:(id)arg1;

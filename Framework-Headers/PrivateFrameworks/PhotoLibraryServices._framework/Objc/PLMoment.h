@@ -6,13 +6,13 @@
 
 #import <PhotoLibraryServices/PLManagedObject.h>
 
-#import <PhotoLibraryServices/PLAssetContainer-Protocol.h>
+#import <PhotoLibraryServices/PLDiagnosticsProvider-Protocol.h>
 #import <PhotoLibraryServices/PLMomentData-Protocol.h>
 
-@class CLLocation, NSArray, NSDate, NSObject, NSOrderedSet, NSString, PLManagedAsset, PLMomentList;
+@class CLLocation, NSArray, NSDate, NSObject, NSSet, NSString, PLMomentList;
 @protocol NSCopying, PLPhotosHighlightData;
 
-@interface PLMoment : PLManagedObject <PLAssetContainer, PLMomentData>
+@interface PLMoment : PLManagedObject <PLMomentData, PLDiagnosticsProvider>
 {
     BOOL _loadedNameInfo;
     CLLocation *_cachedApproximateLocation;
@@ -24,34 +24,26 @@
 }
 
 @property (nonatomic) float aggregationScore; // @dynamic aggregationScore;
-@property (readonly, nonatomic) unsigned long long approximateCount;
 @property (nonatomic) double approximateLatitude; // @dynamic approximateLatitude;
 @property (strong, nonatomic) CLLocation *approximateLocation;
 @property (nonatomic) double approximateLongitude; // @dynamic approximateLongitude;
-@property (strong, nonatomic) NSOrderedSet *assets; // @dynamic assets;
-@property (readonly, nonatomic) unsigned long long assetsCount;
+@property (strong, nonatomic) NSSet *assets; // @dynamic assets;
 @property (readonly, strong, nonatomic) NSArray *batchedAssets;
 @property (nonatomic) int cachedCount; // @dynamic cachedCount;
 @property (nonatomic) int cachedPhotosCount; // @dynamic cachedPhotosCount;
 @property (nonatomic) int cachedVideosCount; // @dynamic cachedVideosCount;
-@property (readonly, nonatomic) BOOL canShowAvalancheStacks;
-@property (readonly, nonatomic) BOOL canShowComments;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didRegisteredWithUserInterfaceContext; // @synthesize didRegisteredWithUserInterfaceContext;
 @property (strong, nonatomic) NSDate *endDate; // @dynamic endDate;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<PLPhotosHighlightData> highlight; // @dynamic highlight;
-@property (readonly, nonatomic) BOOL isEmpty;
 @property (nonatomic) BOOL isRegisteredForChanges; // @synthesize isRegisteredForChanges;
-@property (strong, nonatomic) PLManagedAsset *keyAsset;
 @property (readonly, nonatomic) NSDate *localEndDate;
 @property (readonly, nonatomic) NSDate *localStartDate;
 @property (readonly, copy, nonatomic) NSArray *localizedLocationNames; // @dynamic localizedLocationNames;
-@property (readonly, copy, nonatomic) NSString *localizedTitle;
 @property (strong, nonatomic) PLMomentList *megaMomentList; // @dynamic megaMomentList;
 @property (strong, nonatomic) NSDate *modificationDate; // @dynamic modificationDate;
-@property (readonly, nonatomic) unsigned long long photosCount;
 @property (readonly, nonatomic) struct CLLocationCoordinate2D pl_coordinate;
 @property (readonly, nonatomic) NSDate *pl_endDate;
 @property (readonly, nonatomic) CLLocation *pl_location;
@@ -59,16 +51,13 @@
 @property (readonly, nonatomic) NSDate *pl_startDate;
 @property (nonatomic) unsigned short processedLocation; // @dynamic processedLocation;
 @property (strong, nonatomic) NSDate *representativeDate; // @dynamic representativeDate;
-@property (strong, nonatomic) PLManagedAsset *secondaryKeyAsset;
 @property (strong, nonatomic) NSDate *startDate; // @dynamic startDate;
 @property (strong, nonatomic) NSString *subtitle; // @dynamic subtitle;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) PLManagedAsset *tertiaryKeyAsset;
 @property (nonatomic) int timeZoneOffset; // @dynamic timeZoneOffset;
 @property (strong, nonatomic) NSString *title; // @dynamic title;
 @property (readonly, strong, nonatomic) NSObject<NSCopying> *uniqueObjectID;
 @property (strong, nonatomic) NSString *uuid; // @dynamic uuid;
-@property (readonly, nonatomic) unsigned long long videosCount;
 @property (strong, nonatomic) PLMomentList *yearMomentList; // @dynamic yearMomentList;
 
 + (id)allAssetsInManagedObjectContext:(id)arg1 predicate:(id)arg2 IDsOnly:(BOOL)arg3 error:(id *)arg4;
@@ -113,7 +102,6 @@
 - (void)awakeFromFetch;
 - (void)awakeFromInsert;
 - (id)bestAsset;
-- (BOOL)canPerformEditOperation:(unsigned long long)arg1;
 - (unsigned long long)countForAssetsOfKind:(short)arg1;
 - (void)dealloc;
 - (void)delete;
@@ -123,14 +111,14 @@
 - (unsigned long long)fetchedAssetsCount;
 - (void)getSearchIndexContentsForCollection:(id)arg1 fromDictionary:(id)arg2 withDateFormatter:(id)arg3 synonymsDictionaries:(id)arg4 sceneTaxonomyProxy:(id)arg5;
 - (id)groupURL;
+- (void)insertAssetData:(id)arg1;
 - (BOOL)isCloudSharedAlbum;
 - (id)mutableAssets;
 - (struct CGImage *)posterImage;
 - (void)registerForChanges;
 - (void)removeAssetData:(id)arg1;
 - (void)removeAssetsObject:(id)arg1;
-- (void)replaceAssetDataAtIndex:(unsigned long long)arg1 withAssetData:(id)arg2;
-- (void)replaceObjectInAssetsAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
+- (void)replaceObjectInAssets:(id)arg1 withObject:(id)arg2;
 - (BOOL)supportsDiagnosticInformation;
 - (void)unregisterForChanges;
 - (void)willSave;

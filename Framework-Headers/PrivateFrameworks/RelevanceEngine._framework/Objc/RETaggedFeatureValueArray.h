@@ -11,10 +11,13 @@
 @interface RETaggedFeatureValueArray : NSObject <NSCopying>
 {
     struct __CFArray *_array;
+    struct os_unfair_lock_s _lock;
 }
 
 @property (readonly) unsigned long long count;
 
+- (unsigned long long)_locked_count;
+- (unsigned long long)_locked_featureValueAtIndex:(unsigned long long)arg1;
 - (void)addFeatureValue:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

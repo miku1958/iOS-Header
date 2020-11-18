@@ -35,6 +35,7 @@
 + (void)setMessagesActionHandler:(CDUnknownBlockType)arg1;
 + (id)sharedController;
 + (id)tapAndHoldSchemes;
++ (id)updateContext:(id)arg1 forResult:(struct __DDResult *)arg2 atIndex:(unsigned long long)arg3 ofStorage:(id)arg4;
 - (void).cxx_destruct;
 - (id)_URLForLinkAttributeValue:(id)arg1;
 - (id)_applyBlock:(CDUnknownBlockType)arg1 withResultsAtIndex:(unsigned long long)arg2 ofStorage:(id)arg3 context:(id)arg4;

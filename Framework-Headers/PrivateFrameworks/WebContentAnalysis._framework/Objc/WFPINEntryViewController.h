@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 
 + (Class)remoteViewControllerClass;
 + (id)serviceViewControllerClassName;
+- (void).cxx_destruct;
 - (unsigned long long)_supportedInterfaceOrientationsForRootViewController;
 - (void)dealloc;
 - (id)delegate;

@@ -15,6 +15,7 @@
 @property (copy, nonatomic) HMDAccountIdentifier *identifier; // @dynamic identifier;
 
 + (id)properties;
++ (id)schemaHashRoot;
 
 @end
 

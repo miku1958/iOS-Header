@@ -15,9 +15,8 @@
 
 @property (readonly, nonatomic) WFDatabase *database; // @synthesize database=_database;
 
++ (void)fetchMigrationFlagWithCompletion:(CDUnknownBlockType)arg1;
 + (void)migrateFromCloudKitIntoDatabaseIfNecessary:(id)arg1;
-+ (BOOL)migrationDidRun;
-+ (void)setMigrationDidRun:(BOOL)arg1;
 - (void).cxx_destruct;
 - (id)initWithDatabase:(id)arg1;
 - (BOOL)migrateFromManagedObjectContext:(id)arg1 error:(id *)arg2;

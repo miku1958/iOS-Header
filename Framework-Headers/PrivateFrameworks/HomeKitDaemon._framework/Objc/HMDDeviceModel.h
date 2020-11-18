@@ -21,6 +21,7 @@
 @property (copy, nonatomic) HMDHomeKitVersion *version; // @dynamic version;
 
 + (id)properties;
++ (id)schemaHashRoot;
 - (BOOL)diff:(id)arg1 differingFields:(id *)arg2;
 
 @end

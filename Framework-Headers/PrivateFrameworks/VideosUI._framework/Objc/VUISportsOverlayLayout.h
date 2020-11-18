@@ -13,9 +13,11 @@ __attribute__((visibility("hidden")))
 {
     VUIScoreboardLayout *_scoreboardLayout;
     VUITextBadgeLayout *_textBadgeLayout;
+    TVImageLayout *_appImageLayout;
     TVImageLayout *_logoImageLayout;
 }
 
+@property (strong, nonatomic) TVImageLayout *appImageLayout; // @synthesize appImageLayout=_appImageLayout;
 @property (strong, nonatomic) TVImageLayout *logoImageLayout; // @synthesize logoImageLayout=_logoImageLayout;
 @property (strong, nonatomic) VUIScoreboardLayout *scoreboardLayout; // @synthesize scoreboardLayout=_scoreboardLayout;
 @property (strong, nonatomic) VUITextBadgeLayout *textBadgeLayout; // @synthesize textBadgeLayout=_textBadgeLayout;

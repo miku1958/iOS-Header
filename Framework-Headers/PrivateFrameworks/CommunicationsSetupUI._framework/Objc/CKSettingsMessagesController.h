@@ -7,13 +7,14 @@
 #import <CommunicationsSetupUI/CNFRegListController.h>
 
 #import <CommunicationsSetupUI/AKAppleIDAuthenticationDelegate-Protocol.h>
+#import <CommunicationsSetupUI/CKOnboardingControllerDelegate-Protocol.h>
 #import <CommunicationsSetupUI/CNFRegWizardControllerDelegate-Protocol.h>
 #import <CommunicationsSetupUI/CNMeCardSharingSettingsViewControllerDelegate-Protocol.h>
 #import <CommunicationsSetupUI/IMCloudKitEventHandler-Protocol.h>
 
-@class CKFilteringListController, CKMultipleCTSubscriptionsController, CKNSExtension, IMCTXPCServiceSubscriptionInfo, NSString;
+@class CKFilteringListController, CKMultipleCTSubscriptionsController, CKNSExtension, CKOnboardingController, IMCTXPCServiceSubscriptionInfo, NSString;
 
-@interface CKSettingsMessagesController : CNFRegListController <CNFRegWizardControllerDelegate, AKAppleIDAuthenticationDelegate, IMCloudKitEventHandler, CNMeCardSharingSettingsViewControllerDelegate>
+@interface CKSettingsMessagesController : CNFRegListController <CNFRegWizardControllerDelegate, AKAppleIDAuthenticationDelegate, IMCloudKitEventHandler, CNMeCardSharingSettingsViewControllerDelegate, CKOnboardingControllerDelegate>
 {
     BOOL _showingChildViewController;
     int _profileToken;
@@ -22,6 +23,7 @@
     CKMultipleCTSubscriptionsController *_mmsMessagingController;
     CKMultipleCTSubscriptionsController *_mmsAllowsGroupMessagingController;
     IMCTXPCServiceSubscriptionInfo *_ctSubscriptionInfo;
+    CKOnboardingController *_onboardingController;
     CKNSExtension *_ckExtension;
 }
 
@@ -34,6 +36,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CKMultipleCTSubscriptionsController *mmsAllowsGroupMessagingController; // @synthesize mmsAllowsGroupMessagingController=_mmsAllowsGroupMessagingController;
 @property (strong, nonatomic) CKMultipleCTSubscriptionsController *mmsMessagingController; // @synthesize mmsMessagingController=_mmsMessagingController;
+@property (strong, nonatomic) CKOnboardingController *onboardingController; // @synthesize onboardingController=_onboardingController;
 @property (readonly) Class superclass;
 
 + (id)currentKeepMessages;
@@ -111,6 +114,8 @@
 - (id)nameAndPhotoSharingSpecifiers;
 - (void)newCarrierNotification;
 - (void)notifyThatConversationFilteringChanged;
+- (void)onboardingControllerDidFinish:(id)arg1;
+- (id)presentingViewControllerForOnboardingController:(id)arg1;
 - (id)raiseToListenSpecifierIdentifiers;
 - (id)readReceiptSpecifierIdentifiers;
 - (id)sendAsSMSIdentifiers;
@@ -150,6 +155,7 @@
 - (void)showAccountsMismatchedAlertForNicknames;
 - (void)showMeCardViewControllerWithNickname:(id)arg1;
 - (void)showMultiplePhoneNumbersAlerForNicknames;
+- (void)showNicknameOnboardingController;
 - (id)siriSettingsIdentifiers;
 - (id)smsRelaySettingsSpecifierIdentifiers;
 - (id)spamFilteringSpecifierIdentifiers;

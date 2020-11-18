@@ -12,13 +12,14 @@
 #import <Intents/INImageProxyInjecting-Protocol.h>
 #import <Intents/INIntentResponseExport-Protocol.h>
 #import <Intents/INIntentSlotComposing-Protocol.h>
+#import <Intents/INKeyImageProducing-Protocol.h>
 #import <Intents/INRuntimeObject-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INCodableDescription, INIntentResponseCodableCode, INIntentResponseDescription, NSDictionary, NSString, NSUserActivity, PBCodable, _INPBIntentResponse;
+@class INCodableDescription, INImage, INIntentResponseCodableCode, INIntentResponseDescription, NSDictionary, NSString, NSUserActivity, PBCodable, _INPBIntentResponse;
 
-@interface INIntentResponse : NSObject <INImageProxyInjecting, INIntentSlotComposing, INFileURLEnumerable, INCacheableContainer, INIntentResponseExport, INGenericIntentResponse, INRuntimeObject, NSCopying, NSSecureCoding>
+@interface INIntentResponse : NSObject <INImageProxyInjecting, INIntentSlotComposing, INFileURLEnumerable, INCacheableContainer, INKeyImageProducing, INIntentResponseExport, INGenericIntentResponse, INRuntimeObject, NSCopying, NSSecureCoding>
 {
     BOOL __userConfirmationRequired;
     long long _code;
@@ -36,6 +37,7 @@
 @property (readonly, nonatomic) INIntentResponseCodableCode *_intentResponseCodableCode;
 @property (readonly, nonatomic) long long _intentResponseCode;
 @property (readonly) long long _intents_toggleState;
+@property (readonly) INImage *_keyImage;
 @property (strong, nonatomic, setter=_setPayloadResponseTypeName:) NSString *_payloadResponseTypeName;
 @property (nonatomic, setter=_setRequiresAuthentication:) BOOL _requiresAuthentication;
 @property (nonatomic, setter=_setRequiresProtectedData:) BOOL _requiresProtectedData;
@@ -51,15 +53,19 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSDictionary *propertiesByName;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
@@ -81,6 +87,7 @@
 - (long long)_code;
 - (long long)_codeWithName:(id)arg1;
 - (BOOL)_commonInit;
+- (long long)_compareSubProducerOne:(id)arg1 subProducerTwo:(id)arg2;
 - (id)_dictionaryRepresentation;
 - (void)_enumerateFileURLsWithMutatingBlock:(CDUnknownBlockType)arg1;
 - (id)_inCodable;

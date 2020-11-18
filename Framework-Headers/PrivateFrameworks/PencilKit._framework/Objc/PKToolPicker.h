@@ -43,9 +43,6 @@
 + (id)activeToolPickerForWindow:(id)arg1;
 + (id)sharedToolPickerForWindow:(id)arg1;
 - (void).cxx_destruct;
-- (id)_colorPickerPopoverPresentationSourceView:(id)arg1;
-- (long long)_colorUserInterfaceStyle;
-- (id)_convertTool:(id)arg1 from:(long long)arg2 to:(long long)arg3;
 - (id)_currentFirstResponder;
 - (BOOL)_currentFirstResponderWantsToolPickerVisible;
 - (void)_forceSetVisible:(BOOL)arg1;
@@ -63,6 +60,7 @@
 - (void)inputResponderController:(id)arg1 inputViewSetVisibilityDidChange:(BOOL)arg2 includedReset:(BOOL)arg3;
 - (void)paletteView:(id)arg1 didChangeColor:(id)arg2;
 - (struct CGRect)paletteViewColorPickerPopoverPresentationSourceRect:(id)arg1;
+- (id)paletteViewColorPickerPopoverPresentationSourceView:(id)arg1;
 - (void)paletteViewDidChangePosition:(id)arg1;
 - (void)paletteViewDidToggleRuler:(id)arg1;
 - (void)paletteViewSelectedToolInkDidChange:(id)arg1;

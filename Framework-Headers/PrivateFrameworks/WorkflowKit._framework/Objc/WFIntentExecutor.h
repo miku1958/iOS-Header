@@ -44,7 +44,7 @@
 - (void)getDynamicOptionsForParameterNamed:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleIntent:(id)arg1 inBackgroundAppWithBundleIdentifier:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)handleIntent:(id)arg1 withExtensionProxy:(id)arg2;
-- (id)initWithIntent:(id)arg1;
+- (id)initWithIntent:(id)arg1 donateInteraction:(BOOL)arg2 groupIdentifier:(id)arg3;
 - (void)resolveIntent:(id)arg1 withExtensionProxy:(id)arg2;
 - (void)retainSelf;
 - (void)showConfirmationForInteraction:(id)arg1 confirmationRequired:(BOOL)arg2 authenticationRequired:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;

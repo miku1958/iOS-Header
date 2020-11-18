@@ -468,6 +468,7 @@
 - (BOOL)_openURL:(id)arg1;
 - (void)_openURL:(id)arg1 options:(id)arg2 openApplicationEndpoint:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_openURL:(id)arg1 originatingView:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_openURL:(id)arg1 originatingView:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)_overridesDynamicCaret;
 - (id)_pencilEventForWindow:(id)arg1;
 - (void)_performBlockAfterCATransactionCommitSynchronizes:(CDUnknownBlockType)arg1;
@@ -510,6 +511,7 @@
 - (void)_removeDocument:(id)arg1 forUserActivity:(id)arg2;
 - (void)_removeHIDEventObserver;
 - (void)_removeHIDGameControllerEventObserver;
+- (id)_removePrivateOptionsFromOptions:(id)arg1;
 - (void)_removeResponder:(id)arg1 forUserActivity:(id)arg2;
 - (void)_removeSessionFromSessionSet:(id)arg1;
 - (void)_reportMainSceneUpdateFinished:(CDUnknownBlockType)arg1;

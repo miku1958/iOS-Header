@@ -153,6 +153,7 @@
 - (BOOL)resetSizes:(id)arg1 error:(id *)arg2;
 - (BOOL)resetSizesNoAutoRelease:(id)arg1 error:(id *)arg2;
 - (BOOL)resetSizesWithEspressoConfigurations:(id)arg1 error:(id *)arg2;
+- (BOOL)sequenceConcatConsumesOptionalInputNamed:(id)arg1;
 - (int)sequenceNamed:(id)arg1;
 - (id)sortBatchByShape:(id)arg1 withMap:(id *)arg2 error:(id *)arg3;
 - (BOOL)unlockCVPixelBuffers:(id)arg1 error:(id *)arg2;

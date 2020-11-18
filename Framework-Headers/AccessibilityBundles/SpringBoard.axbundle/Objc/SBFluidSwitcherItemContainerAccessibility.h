@@ -30,7 +30,6 @@
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (BOOL)accessibilityScroll:(long long)arg1;
-- (id)accessibilityValue;
 
 @end
 

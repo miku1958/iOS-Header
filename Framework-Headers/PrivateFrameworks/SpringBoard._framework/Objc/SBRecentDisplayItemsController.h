@@ -62,6 +62,7 @@
 - (void)eventSource:(id)arg1 userTouchedApplication:(id)arg2;
 - (id)init;
 - (id)initWithRemovalPersonality:(long long)arg1 movePersonality:(long long)arg2 transitionFromSources:(id)arg3 maxDisplayItems:(unsigned long long)arg4 eventSource:(id)arg5 applicationController:(id)arg6;
+- (void)removeDisplayItem:(id)arg1;
 - (void)reset;
 
 @end

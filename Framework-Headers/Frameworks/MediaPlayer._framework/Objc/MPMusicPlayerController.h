@@ -61,7 +61,6 @@
 + (id)systemMusicPlayer;
 - (void).cxx_destruct;
 - (id)_initWithClientIdentifier:(id)arg1;
-- (id)_mediaItemFromSong:(id)arg1;
 - (void)_preflightRequestIfNeeded;
 - (void)_queueDidChangeWithResponse:(id)arg1;
 - (void)adjustLoadedQueueRangeToReverseCount:(long long)arg1 forwardCount:(long long)arg2;

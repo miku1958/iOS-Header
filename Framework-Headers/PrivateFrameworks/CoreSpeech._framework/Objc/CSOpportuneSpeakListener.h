@@ -10,7 +10,7 @@
 #import <CoreSpeech/CSMediaPlayingMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSSPGEndpointAnalyzerDelegate-Protocol.h>
 
-@class CSAudioRecordContext, CSAudioStream, CSSPGEndpointAnalyzer, NSString;
+@class CSAudioRecordContext, CSAudioStream, CSSPGEndpointAnalyzer, NSMutableArray, NSString;
 @protocol CSAudioSessionProviding, CSAudioStreamProviding, CSOpportuneSpeakListenerDelegate;
 
 @interface CSOpportuneSpeakListener : NSObject <CSAudioStreamProvidingDelegate, CSSPGEndpointAnalyzerDelegate, CSMediaPlayingMonitorDelegate>
@@ -23,6 +23,8 @@
     id<CSAudioStreamProviding> _audioStreamProvider;
     id<CSAudioSessionProviding> _audioSessionProvider;
     CSAudioRecordContext *_latestContext;
+    NSMutableArray *_remoteVADAlignBuffer;
+    unsigned long long _remoteVADAlignCount;
 }
 
 @property (strong, nonatomic) id<CSAudioSessionProviding> audioSessionProvider; // @synthesize audioSessionProvider=_audioSessionProvider;
@@ -34,6 +36,8 @@
 @property (readonly) unsigned long long hash;
 @property BOOL isMediaPlayingNow; // @synthesize isMediaPlayingNow=_isMediaPlayingNow;
 @property (strong, nonatomic) CSAudioRecordContext *latestContext; // @synthesize latestContext=_latestContext;
+@property (strong, nonatomic) NSMutableArray *remoteVADAlignBuffer; // @synthesize remoteVADAlignBuffer=_remoteVADAlignBuffer;
+@property (nonatomic) unsigned long long remoteVADAlignCount; // @synthesize remoteVADAlignCount=_remoteVADAlignCount;
 @property (nonatomic) int remoteVADSPGRatio; // @synthesize remoteVADSPGRatio=_remoteVADSPGRatio;
 @property (strong, nonatomic) CSSPGEndpointAnalyzer *spgEndpointAnalyzer; // @synthesize spgEndpointAnalyzer=_spgEndpointAnalyzer;
 @property (readonly) Class superclass;
@@ -45,7 +49,7 @@
 - (void)audioStreamProvider:(id)arg1 audioChunkForTVAvailable:(id)arg2;
 - (void)audioStreamProvider:(id)arg1 didStopStreamUnexpectly:(long long)arg2;
 - (id)init;
-- (void)spgEndpointAnalyzer:(id)arg1 hasSilenceScoreEstimate:(float)arg2;
+- (void)spgEndpointAnalyzer:(id)arg1 hasSilenceScoreEstimate:(double)arg2;
 - (void)startListenWithOption:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)stopListenWithCompletion:(CDUnknownBlockType)arg1;
 - (void)stopListenWithStateReset:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;

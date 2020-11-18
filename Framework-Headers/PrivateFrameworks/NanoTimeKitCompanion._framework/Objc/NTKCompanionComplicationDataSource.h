@@ -17,7 +17,6 @@
 + (BOOL)acceptsClassicComplicationType:(unsigned long long)arg1 withFamily:(long long)arg2;
 + (BOOL)acceptsComplicationType:(unsigned long long)arg1 withFamily:(long long)arg2 forDevice:(id)arg3;
 - (void).cxx_destruct;
-- (id)_alarmBaseTemplateWithDate:(id)arg1 utilitarianSmallImageProviderBlock:(CDUnknownBlockType)arg2 modularSmallImageProviderBlock:(CDUnknownBlockType)arg3 extraLargeImageProviderBlock:(CDUnknownBlockType)arg4 familyModularLargeTextFormat:(id)arg5 utilitarianLargeImageProviderBlock:(CDUnknownBlockType)arg6 familyGraphicCornerImageProviderBlock:(CDUnknownBlockType)arg7 familyGraphicCornerImageTintColor:(id)arg8 familyGraphicCornerTextFormat:(id)arg9;
 - (id)_alarmTemplate;
 - (id)_astronomyTemplateFromVista:(unsigned long long)arg1;
 - (id)_batteryTemplate;

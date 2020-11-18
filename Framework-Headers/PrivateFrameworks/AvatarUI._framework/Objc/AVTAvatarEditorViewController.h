@@ -54,6 +54,7 @@
 + (id)viewControllerForEditingAvatar:(id)arg1 store:(id)arg2;
 - (void).cxx_destruct;
 - (void)applyLayout:(id)arg1;
+- (id)appropriatePresentationController;
 - (void)attributeEditorDidMakeFirstSelection:(id)arg1;
 - (void)cancel:(id)arg1;
 - (void)configureNavigationItems;

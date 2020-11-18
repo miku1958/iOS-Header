@@ -12,7 +12,7 @@
 @protocol PXGRenderer <NSObject>
 
 @property (weak, nonatomic) id<PXGRendererDelegate> delegate;
-@property (nonatomic) CDStruct_04522d6a interactionState;
+@property (nonatomic) CDStruct_93894d6c interactionState;
 @property (readonly, nonatomic) int presentationType;
 @property (copy, nonatomic) CDUnknownBlockType test_renderSnapshotHandler;
 @property (readonly, nonatomic) id<PXGTextureConverter> textureConverter;

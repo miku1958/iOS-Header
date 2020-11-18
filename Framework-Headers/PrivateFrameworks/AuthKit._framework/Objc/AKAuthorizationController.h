@@ -6,18 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <AuthKit/AKAuthorizationClientProtocol-Protocol.h>
-
-@class AKAuthorizationDaemonConnection;
+@class AKAuthorizationClientImpl, AKAuthorizationDaemonConnection;
 @protocol AKAuthorizationUIProvider;
 
-@interface AKAuthorizationController : NSObject <AKAuthorizationClientProtocol>
+@interface AKAuthorizationController : NSObject
 {
+    AKAuthorizationClientImpl *_clientImpl;
     AKAuthorizationDaemonConnection *_daemonConnection;
-    id<AKAuthorizationUIProvider> _uiProvider;
 }
 
-@property (strong) id<AKAuthorizationUIProvider> uiProvider; // @synthesize uiProvider=_uiProvider;
+@property (strong) id<AKAuthorizationUIProvider> uiProvider;
 
 + (id)appleOwnedDomains;
 + (BOOL)canPerformAuthorization;
@@ -29,6 +27,7 @@
 - (id)_appleOwnedDomains;
 - (void)continueFetchingIconForRequestContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
+- (void)establishConnectionWithNotificationHandlerEndpoint:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchAppleIDAuthorizeHTMLResponseTemplateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getCredentialStateForRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getPresentationContextForRequestContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -36,7 +35,6 @@
 - (id)initWithDaemonXPCEndpoint:(id)arg1;
 - (void)performAuthorizationWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performAuthorizationWithContext:(id)arg1 withUserProvidedInformation:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)presentAuthorizationUIForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

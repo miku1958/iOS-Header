@@ -23,6 +23,8 @@
 
 + (id)_labelTokenIndexesForOutputName:(id)arg1 label:(id)arg2 modelOutput:(id)arg3;
 + (id)allDayDateComponentsFromDate:(id)arg1;
++ (id)blacklist;
++ (BOOL)blacklistedContent:(id)arg1;
 + (id)detectedTitleInModelOutput:(id)arg1 enrichedTaggedCharacterRanges:(id)arg2 textContent:(id)arg3;
 + (BOOL)enrichedTaggedCharacterRangesContainsProfanity:(id)arg1;
 + (id)regexFromJoinedArray:(id)arg1;

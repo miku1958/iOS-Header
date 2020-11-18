@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface PUImageRequester : NSObject
 {
+    BOOL _shouldRequestPenultimateVersion;
     BOOL _networkAccessAllowed;
     BOOL _imageIsFullQuality;
     BOOL _imageIsPlaceholder;
@@ -53,6 +54,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (nonatomic, getter=isNetworkAccessAllowed) BOOL networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
 @property (strong, nonatomic) NSArray *requestFullSizeImageDataUTTypes; // @synthesize requestFullSizeImageDataUTTypes=_requestFullSizeImageDataUTTypes;
+@property (nonatomic) BOOL shouldRequestPenultimateVersion; // @synthesize shouldRequestPenultimateVersion=_shouldRequestPenultimateVersion;
 @property (nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
 
 - (void).cxx_destruct;

@@ -11,11 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface _UIPortalView : UIView
 {
+    BOOL _forwardsClientHitTestingToSourceView;
     UIView *_sourceView;
 }
 
 @property (nonatomic) BOOL allowsBackdropGroups; // @dynamic allowsBackdropGroups;
-@property (nonatomic) BOOL allowsHitTesting;
+@property (nonatomic) BOOL allowsHitTesting; // @dynamic allowsHitTesting;
+@property (nonatomic) BOOL forwardsClientHitTestingToSourceView; // @synthesize forwardsClientHitTestingToSourceView=_forwardsClientHitTestingToSourceView;
 @property (nonatomic) BOOL hidesSourceView; // @dynamic hidesSourceView;
 @property (nonatomic) BOOL matchesAlpha; // @dynamic matchesAlpha;
 @property (nonatomic) BOOL matchesPosition; // @dynamic matchesPosition;
@@ -26,7 +28,9 @@ __attribute__((visibility("hidden")))
 + (Class)layerClass;
 - (void).cxx_destruct;
 - (id)description;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 
 @end
 

@@ -29,7 +29,7 @@
 - (id)_createSourceEntityForLocalDeviceWithError:(id *)arg1;
 - (id)_createSourceEntityForSpartanDeviceWithError:(id *)arg1;
 - (BOOL)_createSourcesWithCodables:(id)arg1 provenance:(long long)arg2 sourceUUIDSToDelete:(id)arg3 deleteSamples:(BOOL)arg4 database:(id)arg5 error:(id *)arg6;
-- (void)_deleteSourceIfNoSampleFoundWithBundleIdentifier:(id)arg1;
+- (BOOL)_deleteSourceIfNoSampleFound:(id)arg1;
 - (BOOL)_deleteSourcesWithUUIDs:(id)arg1 localSourceEntityCacheKey:(id)arg2 deleteSamples:(BOOL)arg3 database:(id)arg4 error:(id *)arg5;
 - (id)_fetchClientSourceForPersistentID:(id)arg1 error:(id *)arg2;
 - (id)_localSourcesForBundleIDs:(id)arg1 database:(id)arg2 error:(id *)arg3;

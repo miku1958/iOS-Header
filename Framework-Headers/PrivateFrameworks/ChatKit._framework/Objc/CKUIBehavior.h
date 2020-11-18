@@ -132,6 +132,7 @@
 @property (readonly, nonatomic) NSDictionary *conversationCellSummaryBoldIconTextAttributes;
 @property (readonly, nonatomic) NSDictionary *conversationCellSummaryPreviewTextAttributes;
 @property (readonly, nonatomic) UIFont *conversationListBoldSummaryFont;
+@property (readonly, nonatomic) double conversationListButtonToTitleSpacing;
 @property (readonly, nonatomic) double conversationListCellBackgroundPadding;
 @property (readonly, nonatomic) double conversationListCellLargeTextLeftMargin;
 @property (readonly, nonatomic) double conversationListCellLeftMargin;
@@ -147,6 +148,8 @@
 @property (readonly, nonatomic) struct UIEdgeInsets conversationListFilterSegmentInset;
 @property (readonly, nonatomic) UIFont *conversationListGroupCountFont;
 @property (readonly, nonatomic) UIFont *conversationListGroupSenderFont;
+@property (readonly, nonatomic) UIFont *conversationListLargeTitleReducedFont;
+@property (readonly, nonatomic) UIFont *conversationListLargeTitleStandardFont;
 @property (readonly, nonatomic) double conversationListMinimumWidthForHiddenContactImage;
 @property (readonly, nonatomic) double conversationListMultipleContactsImageDiameter;
 @property (readonly, nonatomic) Class conversationListNavigationControllerClass;
@@ -367,6 +370,7 @@
 @property (readonly, nonatomic) double searchHeaderHeight;
 @property (readonly, nonatomic) UIFont *searchIndexingSubtitleFont;
 @property (readonly, nonatomic) UIFont *searchIndexingTitleFont;
+@property (readonly, nonatomic) double searchLinkThumbnailWidth;
 @property (readonly, nonatomic) double searchMessageCellHeight;
 @property (readonly, nonatomic) double searchPhotoThumbnailWidth;
 @property (readonly, nonatomic) UIFont *searchResultLabelBoldFont;
@@ -542,7 +546,6 @@
 - (id)_rightStatusTranscriptBoldTextAttributes;
 - (id)_rightStatusTranscriptTextAttributes;
 - (double)_transcriptAnimationScaleFactor;
-- (double)adjustedLeadingMargin:(double)arg1 isRTL:(BOOL)arg2;
 - (struct UIEdgeInsets)attachmentBalloonAlignmentRectInsets;
 - (struct UIEdgeInsets)attachmentBalloonAlignmentRectInsetsWithTailShape:(BOOL)arg1;
 - (double)audioBalloonTimeWidthForDuration:(double)arg1;

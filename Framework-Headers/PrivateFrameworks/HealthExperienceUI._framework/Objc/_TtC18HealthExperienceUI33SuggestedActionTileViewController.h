@@ -31,7 +31,6 @@
 
 @property (nonatomic, weak) UIButton *actionButton; // @synthesize actionButton;
 @property (nonatomic, strong) NSLayoutConstraint *actionButtonHeightConstraint; // @synthesize actionButtonHeightConstraint;
-@property (nonatomic, strong) NSLayoutConstraint *actionButtonTopSpacingConstraint; // @synthesize actionButtonTopSpacingConstraint;
 @property (nonatomic, weak) UILabel *bodyLabel; // @synthesize bodyLabel;
 @property (nonatomic, weak) UIView *containerView; // @synthesize containerView;
 @property (nonatomic, strong) NSLayoutConstraint *containerViewBottomConstraint; // @synthesize containerViewBottomConstraint;
@@ -40,9 +39,6 @@
 @property (nonatomic, strong) NSLayoutConstraint *imageBackgroundViewContainerViewBottomConstraint; // @synthesize imageBackgroundViewContainerViewBottomConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *imageBackgroundViewContainerViewTopConstraint; // @synthesize imageBackgroundViewContainerViewTopConstraint;
 @property (nonatomic, weak) UIImageView *imageView; // @synthesize imageView;
-@property (nonatomic, weak) UIButton *linkButton; // @synthesize linkButton;
-@property (nonatomic, strong) NSLayoutConstraint *linkButtonHeightConstraint; // @synthesize linkButtonHeightConstraint;
-@property (nonatomic, strong) NSLayoutConstraint *linkButtonTopSpacingConstraint; // @synthesize linkButtonTopSpacingConstraint;
 @property (nonatomic, weak) UILabel *titleLabel; // @synthesize titleLabel;
 
 - (void).cxx_destruct;

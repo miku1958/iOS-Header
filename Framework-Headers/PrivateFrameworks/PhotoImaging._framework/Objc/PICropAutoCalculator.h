@@ -41,6 +41,9 @@
 @property (readonly) Class superclass;
 @property (nonatomic) CDStruct_1b6d18a9 time;
 
++ (struct CGRect)overcaptureRectForStitchedOvercaptureSize:(CDStruct_912cb5d2)arg1 overcaptureVideoComplementSize:(CDStruct_912cb5d2)arg2 primarySize:(CDStruct_912cb5d2)arg3 autoLoopStabilizedCropRect:(struct CGRect)arg4;
++ (BOOL)stitchedOvercaptureRect:(struct CGRect *)arg1 primaryRect:(struct CGRect *)arg2 forComposition:(id)arg3 error:(out id *)arg4;
++ (id)updateCropAdjustment:(id)arg1 after:(id)arg2 error:(out id *)arg3;
 - (void).cxx_destruct;
 - (id)imageProperties:(out id *)arg1;
 - (id)initWithComposition:(id)arg1;

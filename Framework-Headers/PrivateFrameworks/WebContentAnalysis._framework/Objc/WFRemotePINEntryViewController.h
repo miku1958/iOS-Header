@@ -22,7 +22,9 @@ __attribute__((visibility("hidden")))
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
 - (void)dealloc;
+- (void)getIsPINPresentWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)isNumericPIN;
+- (void)permitURLWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)requiresKeyboard;
 - (void)setPageTitle:(id)arg1;
 - (void)setURL:(id)arg1;

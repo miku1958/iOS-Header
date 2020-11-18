@@ -7,24 +7,30 @@
 #import <objc/NSObject.h>
 
 @class CKDatabase;
+@protocol OS_dispatch_queue;
 
 @interface VCCKVoiceShortcutFetcher : NSObject
 {
+    BOOL _completed;
+    NSObject<OS_dispatch_queue> *_queue;
     CKDatabase *_database;
     long long _qualityOfService;
     CDUnknownBlockType _recordHandler;
     CDUnknownBlockType _completionHandler;
 }
 
+@property (nonatomic) BOOL completed; // @synthesize completed=_completed;
 @property (readonly, copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (readonly, nonatomic) CKDatabase *database; // @synthesize database=_database;
 @property (readonly, nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly, copy, nonatomic) CDUnknownBlockType recordHandler; // @synthesize recordHandler=_recordHandler;
 
-+ (void)fetchVoiceShortcutsWithHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (void)addOperation:(id)arg1;
+- (void)fetchRecordZones;
 - (void)fetchRecordsFromZone:(id)arg1;
+- (void)finishWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (id)initWithRecordHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)start;
 

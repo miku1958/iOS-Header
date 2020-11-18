@@ -13,6 +13,6 @@
 @property (weak, nonatomic) id<DNDSBackingStoreDelegate> delegate;
 
 - (id)readRecordWithError:(id *)arg1;
-- (BOOL)writeRecord:(id<DNDSBackingStoreRecord>)arg1 error:(id *)arg2;
+- (unsigned long long)writeRecord:(id<DNDSBackingStoreRecord>)arg1 error:(id *)arg2;
 @end
 

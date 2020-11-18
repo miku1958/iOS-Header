@@ -43,7 +43,7 @@
 - (void)loadMessage:(id)arg1 withWebArchiveURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)unregisterExportedObjectInterface;
 - (void)webProcessJSODidCallClose;
-- (void)webProcessJSODidCallOpen:(id)arg1;
+- (void)webProcessJSODidCallOpen:(id)arg1 options:(id)arg2;
 - (void)webProcessJSODidCallPerformAction:(id)arg1;
 - (void)webProcessJSODidReportEvent:(id)arg1;
 - (void)webProcessPlugInBrowserContextControllerGlobalObjectIsAvailableForFrame;

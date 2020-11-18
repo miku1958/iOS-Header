@@ -96,6 +96,7 @@ __attribute__((visibility("hidden")))
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateBackgroundMask;
 - (void)updateLabelAvoidance;
+- (void)updateSliderConstraint;
 - (void)viewDidMoveToSuperview;
 
 @end

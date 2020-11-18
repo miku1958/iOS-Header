@@ -47,7 +47,7 @@
 - (void)_configureViewController:(id)arg1;
 - (id)_deviceApplicationSceneHandle;
 - (id)_newDisplayLayoutElementForEntity:(id)arg1;
-- (long long)_overrideStatusBarOrientation;
+- (long long)_overrideStatusBarOrientationGivenFallbackOrientation:(long long)arg1;
 - (void)_updateDisplayLayoutElementForSceneExistence:(id)arg1;
 - (void)applicationSceneViewController:(id)arg1 didUpdateStatusBarSettings:(id)arg2;
 - (void)configureWithWorkspaceEntity:(id)arg1 forLayoutElement:(id)arg2 layoutState:(id)arg3 referenceFrame:(struct CGRect)arg4;

@@ -299,8 +299,7 @@ struct WFParameterComponentOptions {
     BOOL _field3;
     id _field4;
     id _field5;
-    id _field6;
-    BOOL _field7;
+    BOOL _field6;
 };
 
 struct WFParameterLayoutComponentAccessibility {
@@ -316,12 +315,6 @@ struct WFParameterLayoutComponentStyle {
     UIColor *highlightedBackgroundColor;
     UIFont *labelFont;
     UIColor *labelColor;
-};
-
-struct WFRowTemplateItemComponentOptions {
-    BOOL _field1;
-    id _field2;
-    id _field3;
 };
 
 struct WFRowTemplateItemDateFieldOptions {
@@ -345,6 +338,12 @@ struct WFRowTemplateItemEnumerationComponentOptions {
     id _field4;
     id _field5;
     BOOL _field6;
+};
+
+struct WFRowTemplateItemLabelComponentOptions {
+    BOOL _field1;
+    id _field2;
+    id _field3;
 };
 
 struct WFRowTemplateItemNumberFieldOptions {
@@ -379,11 +378,10 @@ struct WFRowTemplateParameterComponentOptions {
     BOOL _field1;
     BOOL _field2;
     BOOL _field3;
-    id _field4;
+    BOOL _field4;
     BOOL _field5;
-    BOOL _field6;
+    id _field6;
     id _field7;
-    id _field8;
 };
 
 struct WFTagFieldAttributes {

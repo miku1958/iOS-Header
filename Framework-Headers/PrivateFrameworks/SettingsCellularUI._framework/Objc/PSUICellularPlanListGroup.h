@@ -20,10 +20,10 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)cellularPlanPendingTransferSpecifierDetailText:(id)arg1;
 - (void)danglingPlanPressed:(id)arg1;
 - (id)danglingPlanSpecifierDetailText:(id)arg1;
 - (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2;
+- (id)planPendingTransferSpecifierDetailText:(id)arg1;
 - (id)planSpecifierDetailText:(id)arg1;
 - (id)specifiers;
 

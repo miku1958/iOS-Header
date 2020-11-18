@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIImageView *shareImageView; // @synthesize shareImageView=_shareImageView;
 
 - (void).cxx_destruct;
+- (id)_holdImageForPID:(unsigned int)arg1 colorCode:(unsigned int)arg2;
 - (void)_updateDeviceVisual:(id)arg1;
 - (void)eventCancel:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;

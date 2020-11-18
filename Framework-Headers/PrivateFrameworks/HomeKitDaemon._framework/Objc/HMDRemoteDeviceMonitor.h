@@ -47,7 +47,7 @@
 - (void)_handleGlobalReachabilityChange;
 - (void)_sendPingToDevice:(id)arg1;
 - (void)_startActivelyMonitoringDevice:(id)arg1;
-- (void)_startMonitoringDevice:(id)arg1;
+- (id)_startMonitoringDevice:(id)arg1;
 - (void)_stopActivelyMonitoringDevice:(id)arg1;
 - (void)confirmDevice:(id)arg1 timeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;

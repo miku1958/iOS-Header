@@ -71,6 +71,7 @@
 - (void)_updateWithXML:(id)arg1;
 - (id)_viewElementForNodeID:(unsigned long long)arg1;
 - (void)dealloc;
+- (void)dispatchDocumentCallback:(id)arg1 eventType:(unsigned long long)arg2;
 - (BOOL)evaluateStyleMediaQueryList:(id)arg1;
 - (id)impressionsMatching:(id)arg1 reset:(BOOL)arg2;
 - (id)initWithAppContext:(id)arg1 document:(id)arg2 owner:(id)arg3;

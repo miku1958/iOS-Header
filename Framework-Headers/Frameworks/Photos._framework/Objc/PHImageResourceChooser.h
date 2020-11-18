@@ -21,6 +21,7 @@
     long long _policy;
     unsigned long long _loadingOptions;
     long long _requestVersion;
+    double _minimumTableThumbnailLongSide;
     id _context;
     NSString *_loggingPrefix;
     CDUnknownBlockType _resourceHandler;
@@ -34,6 +35,7 @@
 @property (nonatomic) BOOL isCloudSharedMode; // @synthesize isCloudSharedMode=_isCloudSharedMode;
 @property (nonatomic) unsigned long long loadingOptions; // @synthesize loadingOptions=_loadingOptions;
 @property (strong, nonatomic) NSString *loggingPrefix; // @synthesize loggingPrefix=_loggingPrefix;
+@property (nonatomic) double minimumTableThumbnailLongSide; // @synthesize minimumTableThumbnailLongSide=_minimumTableThumbnailLongSide;
 @property (nonatomic) BOOL onlyUseFetchedAssetPropertiesDuringChoosing; // @synthesize onlyUseFetchedAssetPropertiesDuringChoosing=_onlyUseFetchedAssetPropertiesDuringChoosing;
 @property (nonatomic) long long policy; // @synthesize policy=_policy;
 @property (nonatomic) long long requestVersion; // @synthesize requestVersion=_requestVersion;

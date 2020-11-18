@@ -27,6 +27,7 @@
 - (void)_hardwareButtonPressed:(id)arg1;
 - (BOOL)_isDeviceUILocked;
 - (void)_killSounds;
+- (void)_lockStateChanged:(id)arg1;
 - (BOOL)canPlaySoundForNotificationRequest:(id)arg1;
 - (id)init;
 - (id)initWithLockScreenManager:(id)arg1 lockStateAggregator:(id)arg2;

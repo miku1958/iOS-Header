@@ -8,12 +8,13 @@
 
 #import <SpringBoard/SBElasticAudioDataSource-Protocol.h>
 #import <SpringBoard/SBElasticAudioVolumeViewControllerDelegate-Protocol.h>
+#import <SpringBoard/SBHUDViewControlling-Protocol.h>
 #import <SpringBoard/UIViewControllerTransitioningDelegate-Protocol.h>
 
 @class NSString, SBElasticVolumeViewController;
 @protocol SBVolumeHUDViewControllerDelegate;
 
-@interface SBVolumeHUDViewController : SBFTouchPassThroughViewController <UIViewControllerTransitioningDelegate, SBElasticAudioDataSource, SBElasticAudioVolumeViewControllerDelegate>
+@interface SBVolumeHUDViewController : SBFTouchPassThroughViewController <UIViewControllerTransitioningDelegate, SBElasticAudioDataSource, SBElasticAudioVolumeViewControllerDelegate, SBHUDViewControlling>
 {
     id<SBVolumeHUDViewControllerDelegate> _delegate;
     SBElasticVolumeViewController *_elasticAudioViewController;
@@ -32,6 +33,8 @@
 - (unsigned long long)_volumeHUDPresentationEdge;
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
+- (BOOL)definesAnimatedDismissal;
+- (void)dismissAnimatedWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)elasticAudioViewController:(id)arg1 updateCurrentVolumeToLevel:(float)arg2;
 - (id)elasticAudioViewControllerActiveAudioCategory:(id)arg1;
 - (id)elasticAudioViewControllerActiveAudioRouteTypes:(id)arg1;
@@ -43,7 +46,7 @@
 - (void)noteVolumeDidChange:(float)arg1;
 - (void)noteVolumeDownWasHit:(BOOL)arg1;
 - (void)noteVolumeUpWasHit:(BOOL)arg1;
-- (void)noteVolumeWillDeltaStepForRepeatedPress;
+- (void)noteVolumeWillDeltaStepToVolume:(double)arg1;
 - (void)refreshAudioUI;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidLayoutSubviews;

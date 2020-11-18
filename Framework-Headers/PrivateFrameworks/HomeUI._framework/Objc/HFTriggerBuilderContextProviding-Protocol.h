@@ -15,6 +15,7 @@
 @property (readonly, copy, nonatomic) NSString *deleteConfirmationAlertMessage;
 @property (readonly, copy, nonatomic) NSString *deleteConfirmationAlertTitle;
 @property (readonly, copy, nonatomic) NSString *deleteInstructionDescription;
+@property (readonly, nonatomic) BOOL filtersEmptyActionSets;
 @property (readonly, copy, nonatomic) NSString *serviceActionsInstructionDescription;
 @property (readonly, nonatomic) BOOL showActionSetsInstructions;
 @property (readonly, nonatomic) BOOL showConditionTriggers;

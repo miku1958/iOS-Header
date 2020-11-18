@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (BOOL)_hasEntitlementForAuthorizationExemption;
 + (id)sharedInstance;
 + (void)validatePermissionsExpiryWithCompletion:(CDUnknownBlockType)arg1;
 - (long long)authorizationStatus;

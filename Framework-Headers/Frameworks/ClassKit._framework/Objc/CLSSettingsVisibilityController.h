@@ -18,6 +18,7 @@
 
 + (id)shared;
 - (void).cxx_destruct;
+- (id)cachedCurrentUserAppleID;
 - (id)currentUser;
 - (void)currentUserChanged;
 - (void)dealloc;

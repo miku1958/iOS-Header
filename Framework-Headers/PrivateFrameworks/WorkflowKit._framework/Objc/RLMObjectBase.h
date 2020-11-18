@@ -28,9 +28,11 @@
 @property (readonly, nonatomic) RLMRealm *realm;
 @property (readonly) Class superclass;
 
++ (id)_realmColumnNames;
 + (id)_realmObjectName;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)className;
++ (void)initializeLinkedObjectSchemas;
 + (Class)objectUtilClass:(BOOL)arg1;
 + (id)objectWithThreadSafeReference:(unique_ptr_d0e912ad)arg1 metadata:(id)arg2 realm:(id)arg3;
 + (id)sharedSchema;

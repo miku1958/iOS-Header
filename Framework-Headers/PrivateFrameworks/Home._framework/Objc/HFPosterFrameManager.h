@@ -14,8 +14,10 @@
     NSOperationQueue *_posterFrameQueue;
     HFPosterFrameImageCache *_imageCache;
     NSMutableDictionary *_posterFrameObservers;
+    NSMutableDictionary *_generationObservers;
 }
 
+@property (strong, nonatomic) NSMutableDictionary *generationObservers; // @synthesize generationObservers=_generationObservers;
 @property (strong, nonatomic) HFPosterFrameImageCache *imageCache; // @synthesize imageCache=_imageCache;
 @property (weak, nonatomic) HFCameraPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property (strong, nonatomic) NSMutableDictionary *posterFrameObservers; // @synthesize posterFrameObservers=_posterFrameObservers;
@@ -37,7 +39,9 @@
 - (void)cacheDemoPosterFramesForAsset:(id)arg1 forClip:(id)arg2;
 - (id)cachedPosterFrameImageForClip:(id)arg1 offset:(double)arg2;
 - (void)dealloc;
+- (id)demoPosterFramesForClip:(id)arg1 forLength:(double)arg2 minimumWidth:(double)arg3;
 - (id)init;
+- (id)keyForClip:(id)arg1;
 - (id)keyForClip:(id)arg1 posterFrame:(id)arg2;
 - (id)placeholderImageForClip:(id)arg1 offset:(double)arg2;
 - (id)posterFrameImagesForObserver:(id)arg1 fromClip:(id)arg2 clipManager:(id)arg3 forLength:(double)arg4 minimumWidth:(double)arg5;

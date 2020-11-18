@@ -17,10 +17,10 @@ __attribute__((visibility("hidden")))
 {
     BOOL _shouldShowBackButton;
     id<VUICategoryMenuViewControllerDelegate> _delegate;
+    VUIMenuDataSource *_categories;
     VUICollectionView *_menuCollectionView;
     VUILibraryMenuItemViewCell *_sizingCell;
     VUIMenuSectionHeaderCollectionViewCell *_sectionHeaderSizingCell;
-    VUIMenuDataSource *_categories;
 }
 
 @property (strong, nonatomic) VUIMenuDataSource *categories; // @synthesize categories=_categories;

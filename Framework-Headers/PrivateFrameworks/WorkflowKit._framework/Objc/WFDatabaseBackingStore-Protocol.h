@@ -19,7 +19,7 @@
 - (WFWorkflowReference *)conflictingReferenceForReference:(WFWorkflowReference *)arg1;
 - (WFConfiguredTrigger *)createTriggerWithRecord:(WFConfiguredTriggerRecord *)arg1 workflow:(WFWorkflowReference *)arg2 error:(id *)arg3;
 - (WFWorkflowReference *)createWorkflowWithOptions:(WFWorkflowCreationOptions *)arg1 error:(id *)arg2;
-- (NSData *)currentStateDataForAccessResourceWithIdentifier:(NSString *)arg1 forReference:(WFWorkflowReference *)arg2;
+- (NSData *)currentPerWorkflowStateDataForAccessResourceWithIdentifier:(NSString *)arg1 forReference:(WFWorkflowReference *)arg2;
 - (void)deleteAllAccessResourceStateDataForReference:(WFWorkflowReference *)arg1;
 - (BOOL)deleteReference:(WFDatabaseObjectDescriptor *)arg1 tombstone:(BOOL)arg2 error:(id *)arg3;
 - (WFDatabaseResult *)deletedWorkflows;
@@ -34,7 +34,7 @@
 - (void)refresh;
 - (void)setConflictingReference:(WFWorkflowReference *)arg1 forReference:(WFWorkflowReference *)arg2;
 - (void)setOutcome:(long long)arg1 forRunEvent:(WFWorkflowRunEvent *)arg2;
-- (void)setStateData:(NSData *)arg1 forAccessResourceWithIdentifier:(NSString *)arg2 forReference:(WFWorkflowReference *)arg3;
+- (void)setPerWorkflowStateData:(NSData *)arg1 forAccessResourceWithIdentifier:(NSString *)arg2 forReference:(WFWorkflowReference *)arg3;
 - (void)setSyncToken:(WFCloudKitSyncToken *)arg1;
 - (void)setTrustedToRunScripts:(BOOL)arg1 forReference:(WFWorkflowReference *)arg2 onDomain:(NSString *)arg3;
 - (void)setWorkflowOrdering:(NSOrderedSet *)arg1;
@@ -44,6 +44,7 @@
 - (WFDatabaseResult *)sortedVisibleWorkflowsByName;
 - (WFDatabaseResult *)sortedVisibleWorkflowsWithAssociatedAppBundleIdentifier:(NSString *)arg1;
 - (WFDatabaseResult *)sortedVisibleWorkflowsWithType:(NSString *)arg1;
+- (WFDatabaseResult *)sortedWorkflowsIncludingTombstonesAndConflicts;
 - (BOOL)startObservingChangesForResult:(WFDatabaseResult *)arg1;
 - (WFCloudKitSyncToken *)syncToken;
 - (WFWorkflowReference *)workflowReferenceWithName:(NSString *)arg1;

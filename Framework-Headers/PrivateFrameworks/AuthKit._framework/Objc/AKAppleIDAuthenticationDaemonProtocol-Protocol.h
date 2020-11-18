@@ -6,7 +6,7 @@
 
 #import <AuthKit/NSObject-Protocol.h>
 
-@class AKAccountRecoveryContext, AKAppleIDAuthenticationContext, AKCircleRequestContext, AKDeviceListRequestContext, AKFollowUpTearDownContext, NSArray, NSDictionary, NSHTTPURLResponse, NSNumber, NSString;
+@class AKAccountRecoveryContext, AKAppleIDAuthenticationContext, AKCircleRequestContext, AKDeviceListRequestContext, AKFollowUpTearDownContext, AKUserInformation, NSArray, NSDictionary, NSHTTPURLResponse, NSNumber, NSString;
 @protocol NSSecureCoding;
 
 @protocol AKAppleIDAuthenticationDaemonProtocol <NSObject>
@@ -42,6 +42,7 @@
 - (void)teardownFollowUpWithContext:(AKFollowUpTearDownContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)updateStateWithExternalAuthenticationResponse:(NSHTTPURLResponse *)arg1 forAppleID:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)updateStateWithExternalAuthenticationResponse:(NSHTTPURLResponse *)arg1 forContext:(AKAppleIDAuthenticationContext *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)updateUserInformationForAltDSID:(NSString *)arg1 userInformation:(AKUserInformation *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)validateLoginCode:(unsigned long long)arg1 forAppleID:(NSString *)arg2 withCompletion:(void (^)(BOOL, NSError *))arg3;
 - (void)validateVettingToken:(NSString *)arg1 forAltDSID:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)verifyMasterKey:(NSString *)arg1 withContext:(AKAccountRecoveryContext *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;

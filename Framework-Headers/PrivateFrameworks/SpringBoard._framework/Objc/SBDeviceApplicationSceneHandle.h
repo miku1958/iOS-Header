@@ -77,12 +77,14 @@
 - (void)_noteMainSceneBackgroundStyleChanged;
 - (void)_noteSceneTitleChanged;
 - (BOOL)_overriddenStatusBarStyleForApp:(id)arg1 style:(out long long *)arg2;
+- (void)_populateSettingsWithDefaultStatusBarHeight:(id)arg1;
 - (id)_potentiallyJailedDisplayConfiguration;
 - (long long)_resumingInterfaceOrientationForOrientation:(long long)arg1;
 - (id)_sceneCornerRadiusConfigurationFromRequestContext:(id)arg1 forEntity:(id)arg2;
 - (id)_sceneDataStoreCreatingIfNecessary:(BOOL)arg1;
 - (long long)_statusBarStyleWithActivationSettings:(id)arg1;
 - (void)_updateIdleTimerForReason:(id)arg1;
+- (void)_updateSceneHostingInfoForSnapshottingWithView:(id)arg1;
 - (long long)activationInterfaceOrientationForCurrentOrientation;
 - (long long)activationInterfaceOrientationForOrientation:(long long)arg1;
 - (void)addObserver:(id)arg1;

@@ -60,6 +60,7 @@
     struct sqlite3_stmt *selectRecordsOfType;
     struct sqlite3_stmt *selectRecordsOfTypeOrderedByID;
     struct sqlite3_stmt *selectRecords;
+    struct sqlite3_stmt *selectRecordAllIterator;
     struct sqlite3_stmt *deleteQueryableStore;
     struct sqlite3_stmt *deleteQueryableRecord;
     struct sqlite3_stmt *updateQueryable;
@@ -136,6 +137,7 @@
 - (long long)migrateFromSchemaVersion:(long long)arg1 error:(id *)arg2;
 - (long long)migrateToSchema01WithError:(id *)arg1;
 - (id)prepare;
+- (id)selectAllRecordsWithZoneRow:(unsigned long long)arg1 returning:(unsigned long long)arg2;
 - (id)sqlBlockWithActivity:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (BOOL)sqlBlockWithActivity:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (id)sqlTransactionWithActivity:(id)arg1 block:(CDUnknownBlockType)arg2;

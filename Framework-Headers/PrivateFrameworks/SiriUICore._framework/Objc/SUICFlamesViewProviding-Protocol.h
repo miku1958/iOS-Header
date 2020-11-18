@@ -15,12 +15,12 @@
 @property (nonatomic) struct CGRect activeFrame;
 @property (strong, nonatomic) UIColor *dictationColor;
 @property (weak, nonatomic) id<SUICFlamesViewProvidingDelegate> flamesDelegate;
+@property (nonatomic) BOOL flamesPaused;
 @property (nonatomic) BOOL freezesAura;
 @property (nonatomic) double horizontalScaleFactor;
 @property (readonly, nonatomic) BOOL isRenderingEnabled;
 @property (nonatomic) long long mode;
 @property (strong, nonatomic) UIImage *overlayImage;
-@property (nonatomic) BOOL paused;
 @property (nonatomic) BOOL reduceFrameRate;
 @property (nonatomic) BOOL reduceThinkingFramerate;
 @property (nonatomic) BOOL renderInBackground;

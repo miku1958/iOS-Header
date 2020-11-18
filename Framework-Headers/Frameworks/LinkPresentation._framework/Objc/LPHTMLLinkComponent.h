@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 + (id)additionalRulesForStyle:(id)arg1;
 + (id)baseRules;
 + (id)ruleDictionaryForStyle:(id)arg1;
++ (id)ruleDictionaryForStyleWithDarkInterface:(id)arg1;
 + (id)styleSet;
 - (void)handleEvent:(id)arg1;
 - (id)initWithURL:(id)arg1 generator:(id)arg2;

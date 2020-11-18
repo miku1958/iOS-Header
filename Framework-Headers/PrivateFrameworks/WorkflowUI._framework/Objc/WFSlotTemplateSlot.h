@@ -9,22 +9,20 @@
 #import <WorkflowUI/NSCopying-Protocol.h>
 #import <WorkflowUI/WFSlotTemplateContent-Protocol.h>
 
-@class NSAttributedString, NSMutableDictionary, NSString, WFSlotIdentifier;
+@class NSAttributedString, NSString, WFSlotIdentifier;
 
 @interface WFSlotTemplateSlot : NSObject <WFSlotTemplateContent, NSCopying>
 {
     BOOL _enabled;
     BOOL _prefersNoWrapping;
     BOOL _standaloneTextAttachment;
+    BOOL _usesErrorAppearance;
     WFSlotIdentifier *_identifier;
     NSString *_placeholder;
     NSAttributedString *_contentAttributedString;
     long long _userInputInsertionIndex;
-    NSMutableDictionary *_titleColorsByState;
-    NSMutableDictionary *_backgroundColorsByState;
 }
 
-@property (readonly, nonatomic) NSMutableDictionary *backgroundColorsByState; // @synthesize backgroundColorsByState=_backgroundColorsByState;
 @property (copy, nonatomic) NSAttributedString *contentAttributedString; // @synthesize contentAttributedString=_contentAttributedString;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -36,14 +34,13 @@
 @property (nonatomic) BOOL prefersNoWrapping; // @synthesize prefersNoWrapping=_prefersNoWrapping;
 @property (nonatomic) BOOL standaloneTextAttachment; // @synthesize standaloneTextAttachment=_standaloneTextAttachment;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSMutableDictionary *titleColorsByState; // @synthesize titleColorsByState=_titleColorsByState;
 @property (nonatomic) long long userInputInsertionIndex; // @synthesize userInputInsertionIndex=_userInputInsertionIndex;
+@property (nonatomic) BOOL usesErrorAppearance; // @synthesize usesErrorAppearance=_usesErrorAppearance;
 
 + (id)addingSlotWithKey:(id)arg1;
 + (id)slotWithPlaceholder:(id)arg1 key:(id)arg2;
 - (void).cxx_destruct;
-- (void)applyErrorColors;
-- (id)backgroundColorForControlState:(unsigned long long)arg1;
+- (id)backgroundColorForControlState:(unsigned long long)arg1 withTintColor:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithPlaceholder:(id)arg1 identifier:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
@@ -51,9 +48,7 @@
 - (void)populateWithString:(id)arg1;
 - (void)populateWithVariable:(id)arg1;
 - (void)populateWithVariableString:(id)arg1;
-- (void)setBackgroundColor:(id)arg1 forControlState:(unsigned long long)arg2;
-- (void)setTitleColor:(id)arg1 forControlState:(unsigned long long)arg2;
-- (id)titleColorForControlState:(unsigned long long)arg1;
+- (id)titleColorForControlState:(unsigned long long)arg1 withTintColor:(id)arg2;
 
 @end
 

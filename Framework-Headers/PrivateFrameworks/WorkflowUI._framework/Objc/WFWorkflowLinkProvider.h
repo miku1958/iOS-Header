@@ -29,6 +29,7 @@
 - (void).cxx_destruct;
 - (id)activityViewController:(id)arg1 subjectForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 thumbnailImageForActivityType:(id)arg2 suggestedSize:(struct CGSize)arg3;
+- (id)activityViewControllerLinkMetadata:(id)arg1;
 - (id)initWithPlaceholderItem:(id)arg1 workflow:(id)arg2 userInterface:(id)arg3;
 - (id)item;
 

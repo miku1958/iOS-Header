@@ -26,6 +26,7 @@
 @property (readonly, copy) NSNumber *familyID;
 @property (readonly, copy) NSNumber *inAppAdamID;
 @property (readonly, copy) NSString *inAppVersion;
+@property (readonly) BOOL isOfferPeriod;
 @property (readonly) BOOL isPurchaser;
 @property (readonly) BOOL isTrialPeriod;
 @property (readonly, getter=isNewsAppPurchase) BOOL newsAppPurchase;

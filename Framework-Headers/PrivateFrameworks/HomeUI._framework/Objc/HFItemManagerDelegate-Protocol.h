@@ -24,5 +24,6 @@
 - (void)itemManager:(HFItemManager *)arg1 didUpdateResultsForSourceItem:(HFItem *)arg2;
 - (NAFuture *)itemManager:(HFItemManager *)arg1 futureToUpdateItems:(NSSet *)arg2 itemUpdateOptions:(NSDictionary *)arg3;
 - (void)itemManager:(HFItemManager *)arg1 performUpdateRequest:(HFItemManagerDelegateUpdateRequest *)arg2;
+- (void)itemManagerDidFinishUpdate:(HFItemManager *)arg1;
 @end
 

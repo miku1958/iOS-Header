@@ -36,7 +36,7 @@
 - (void)cancel;
 - (long long)compareDate:(id)arg1 withDate:(id)arg2;
 - (void)finalizeLog;
-- (id)groupSectionsByCategory:(id)arg1 genreMap:(id)arg2;
+- (id)groupSectionsByCategory:(id)arg1 genreMap:(id)arg2 topSections:(id)arg3;
 - (id)initWithQuery:(id)arg1;
 - (id)keyForSection:(id)arg1;
 - (id)makeTopHitSectionUsingSections:(id)arg1 withItemRanker:(id)arg2 sectionHeader:(id)arg3 shortcutResult:(id)arg4;

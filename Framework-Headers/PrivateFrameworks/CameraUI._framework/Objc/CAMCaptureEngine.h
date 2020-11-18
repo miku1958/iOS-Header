@@ -151,7 +151,7 @@
 - (BOOL)_updatePanoramaSubgraphForEnteringBackground:(BOOL)arg1;
 - (void)_updateVideoThumbnailSubgraph;
 - (void)_validateSessionRecovery;
-- (id)_validateVideoAtURL:(id)arg1 withCaptureError:(id)arg2 isVideoComplement:(BOOL)arg3 stillImageDisplayTime:(CDStruct_1b6d18a9)arg4 reportedDuration:(CDStruct_1b6d18a9)arg5 outActualDuration:(CDStruct_1b6d18a9 *)arg6 outVideoRecordingStoppedReason:(long long *)arg7;
+- (id)_validateVideoAtURL:(id)arg1 withCaptureID:(long long)arg2 withCaptureError:(id)arg3 isVideoComplement:(BOOL)arg4 stillImageDisplayTime:(CDStruct_1b6d18a9)arg5 reportedDuration:(CDStruct_1b6d18a9)arg6 outActualDuration:(CDStruct_1b6d18a9 *)arg7 outVideoRecordingStoppedReason:(long long *)arg8;
 - (id)_videoDeviceInputFromSession:(id)arg1;
 - (id)audioCaptureDevice;
 - (id)audioCaptureDeviceInput;

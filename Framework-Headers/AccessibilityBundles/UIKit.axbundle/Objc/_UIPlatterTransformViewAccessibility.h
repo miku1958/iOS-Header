@@ -12,13 +12,16 @@
 
 @property (nonatomic, setter=_accessibilitySetIsExpandedTransformView:) BOOL _accessibilityIsExpandedTransformView;
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_axCachedPlatterElements;
 - (void)_axSetCachedPlatterElements:(id)arg1;
+- (BOOL)_axShowsSourceViewDirectly;
 - (long long)accessibilityContainerType;
 - (id)accessibilityElements;
 - (id)accessibilityLabel;
+- (BOOL)isAccessibilityElement;
 
 @end
 

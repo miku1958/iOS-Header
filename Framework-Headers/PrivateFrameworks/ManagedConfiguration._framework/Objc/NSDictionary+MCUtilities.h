@@ -7,6 +7,7 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (MCUtilities)
++ (id)MCDictionaryFromFile:(id)arg1;
 + (id)MCShortenedArray:(id)arg1;
 + (id)MCShortenedData:(id)arg1;
 + (id)MCShortenedDictionary:(id)arg1;
@@ -20,6 +21,6 @@
 - (id)MCRetainRequiredNonZeroLengthStringKey:(id)arg1 errorDomain:(id)arg2 missingDataCode:(long long)arg3 missingDataErrorString:(id)arg4 invalidDataCode:(long long)arg5 invalidDataErrorString:(id)arg6 outError:(id *)arg7;
 - (id)MCRetainRequiredObjectKey:(id)arg1 type:(Class)arg2 errorDomain:(id)arg3 missingDataCode:(long long)arg4 missingDataErrorString:(id)arg5 invalidDataCode:(long long)arg6 invalidDataErrorString:(id)arg7 outError:(id *)arg8;
 - (id)MCShortenedPlistDescription;
-- (BOOL)writeToBinaryFile:(id)arg1 atomically:(BOOL)arg2;
+- (BOOL)MCWriteToBinaryFile:(id)arg1 atomically:(BOOL)arg2;
 @end
 

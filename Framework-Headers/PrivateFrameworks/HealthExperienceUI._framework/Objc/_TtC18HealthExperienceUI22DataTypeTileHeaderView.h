@@ -28,8 +28,11 @@
 }
 
 - (void).cxx_destruct;
+- (void)didReceiveSignificantTimeChangeNotification:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateTitleText;
 
 @end
 

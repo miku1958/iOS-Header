@@ -36,6 +36,7 @@
 - (void)_dispatchResponsesForAppIconForIdentifier:(id)arg1 appImage:(id)arg2;
 - (void)_enqueueRequestForAppIconForIdentifier:(id)arg1;
 - (BOOL)_fetchIconFromLaunchServicesWithIdentifier:(id)arg1 onCompletion:(CDUnknownBlockType)arg2;
+- (void)cacheAppIcon:(id)arg1 forIdentifier:(id)arg2;
 - (void)cancelLoadAppImageAtURL:(id)arg1;
 - (void)clearImageCache;
 - (id)defaultAppIcon;

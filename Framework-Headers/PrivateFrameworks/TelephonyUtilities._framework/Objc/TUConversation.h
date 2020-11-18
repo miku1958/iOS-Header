@@ -16,6 +16,7 @@
     BOOL _audioEnabled;
     BOOL _videoEnabled;
     BOOL _locallyCreated;
+    BOOL _hasJoined;
     TUContactsDataProvider *_contactsDataProvider;
     NSUUID *_UUID;
     NSUUID *_groupUUID;
@@ -41,6 +42,7 @@
 @property (nonatomic) long long avcSessionToken; // @synthesize avcSessionToken=_avcSessionToken;
 @property (readonly, nonatomic) TUContactsDataProvider *contactsDataProvider; // @synthesize contactsDataProvider=_contactsDataProvider;
 @property (readonly, nonatomic) NSUUID *groupUUID; // @synthesize groupUUID=_groupUUID;
+@property (nonatomic, getter=hasJoined) BOOL hasJoined; // @synthesize hasJoined=_hasJoined;
 @property (strong, nonatomic) TUHandle *initiator; // @synthesize initiator=_initiator;
 @property (strong, nonatomic) TUConversationMember *localMember; // @synthesize localMember=_localMember;
 @property (nonatomic, getter=isLocallyCreated) BOOL locallyCreated; // @synthesize locallyCreated=_locallyCreated;

@@ -6,7 +6,7 @@
 
 #import <SpringBoardFoundation/SBFWallpaperView.h>
 
-@class CADisplayLink, NSDictionary, NSMutableArray, SBFMotionManager, UIImage;
+@class CADisplayLink, CAGradientLayer, NSDictionary, NSMutableArray, NSTimer, SBFMotionManager, UIImage;
 
 @interface SBFBokehWallpaperView : SBFWallpaperView
 {
@@ -20,7 +20,10 @@
     BOOL _hasSingleVariant;
     UIImage *_cachedSnapshotImage;
     UIImage *_cachedFolderBlurImage;
+    NSTimer *_lowPowerModeSnapshotTimer;
 }
+
+@property (readonly, nonatomic) CAGradientLayer *layer;
 
 + (BOOL)_allowsParallax;
 + (id)blueGradient;
@@ -35,15 +38,20 @@
 + (id)yellowGradient;
 - (void).cxx_destruct;
 - (void)_addBokehCircles:(long long)arg1;
-- (id)_averageColor;
+- (id)_computeAverageColor;
 - (void)_correctGyroValues:(inout double *)arg1 y:(inout double *)arg2;
 - (void)_destroyDisplayLink;
+- (void)_destroyLowPowerModeTimer;
+- (id)_folderBlurImage;
 - (void)_handleVariantChange;
 - (id)_imageForBackdropParameters:(CDStruct_d8f0d129)arg1 includeTint:(BOOL)arg2 overrideTraitCollection:(id)arg3;
 - (id)_imageFromColor:(id)arg1;
 - (void)_initDisplayLink;
+- (void)_initLowPowerModeTimer;
 - (BOOL)_layerIsOutOfBounds:(id)arg1;
 - (BOOL)_lowPowerModeIsEnabled;
+- (void)_lowPowerModeStateDidChange:(id)arg1;
+- (BOOL)_needsFallbackImageForBackdropGeneratedImage:(id)arg1;
 - (void)_screenDidUpdate;
 - (void)_screenDimmed:(id)arg1;
 - (void)_screenUndimmed:(id)arg1;
@@ -61,7 +69,6 @@
 - (id)initWithFrame:(struct CGRect)arg1 configuration:(id)arg2 variant:(long long)arg3 cacheGroup:(id)arg4 delegate:(id)arg5 options:(unsigned long long)arg6;
 - (void)invalidate;
 - (BOOL)isDisplayingWallpaperWithConfiguration:(id)arg1 forVariant:(long long)arg2;
-- (id)layer;
 - (void)setWallpaperAnimationEnabled:(BOOL)arg1;
 - (id)snapshotImage;
 - (long long)userInterfaceStyle;

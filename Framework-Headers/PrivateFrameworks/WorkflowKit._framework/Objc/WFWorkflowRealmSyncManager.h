@@ -10,13 +10,14 @@
 #import <WorkflowKit/WFDatabaseResultObserver-Protocol.h>
 
 @class NSLock, NSMutableArray, WFDatabase, WFDatabaseResult;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue, OS_dispatch_source, WFUserInterface;
 
 @interface WFWorkflowRealmSyncManager : NSObject <WFApplicationStateObserver, WFDatabaseResultObserver>
 {
     BOOL _pendingResume;
     BOOL _syncPending;
     long long _accountStatus;
+    id<WFUserInterface> _userInterface;
     WFDatabase *_database;
     WFDatabaseResult *_databaseResultForObservation;
     unsigned long long _pauseCount;
@@ -40,6 +41,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *syncSessionQueue; // @synthesize syncSessionQueue=_syncSessionQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *timer; // @synthesize timer=_timer;
 @property (readonly, nonatomic) NSLock *timerLock; // @synthesize timerLock=_timerLock;
+@property (strong, nonatomic) id<WFUserInterface> userInterface; // @synthesize userInterface=_userInterface;
 
 + (id)defaultManager;
 + (void)setDefaultManager:(id)arg1;
@@ -49,6 +51,7 @@
 - (void)databaseResult:(id)arg1 didUpdateObjects:(id)arg2 inserted:(id)arg3 removed:(id)arg4;
 - (void)dealloc;
 - (void)handleAccountChangedNotification:(id)arg1;
+- (void)handleUserDeletedZoneErrorIfNeededWithSuccess:(BOOL)arg1 changes:(BOOL)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)initWithDatabase:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pauseAutomaticUpdates;

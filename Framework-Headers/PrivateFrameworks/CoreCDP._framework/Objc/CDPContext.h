@@ -22,6 +22,7 @@
     BOOL _supportsSkipSignIn;
     BOOL __useSecureBackupCachedPassphrase;
     BOOL __alwaysCreateEscrowRecord;
+    BOOL __ignoreLockAssertErrors;
     BOOL _idmsRecovery;
     BOOL _idmsMasterKeyRecovery;
     NSDictionary *_authenticationResults;
@@ -43,6 +44,7 @@
 
 @property (nonatomic) BOOL _alwaysCreateEscrowRecord; // @synthesize _alwaysCreateEscrowRecord=__alwaysCreateEscrowRecord;
 @property (strong, nonatomic) id<CDPAuthProviderInternal> _authProvider; // @synthesize _authProvider=__authProvider;
+@property (nonatomic) BOOL _ignoreLockAssertErrors; // @synthesize _ignoreLockAssertErrors=__ignoreLockAssertErrors;
 @property (copy, nonatomic) NSString *_recoveryToken; // @synthesize _recoveryToken=__recoveryToken;
 @property (nonatomic) BOOL _useSecureBackupCachedPassphrase; // @synthesize _useSecureBackupCachedPassphrase=__useSecureBackupCachedPassphrase;
 @property (copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;

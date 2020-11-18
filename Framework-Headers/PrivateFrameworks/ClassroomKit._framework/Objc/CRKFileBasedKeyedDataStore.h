@@ -29,6 +29,7 @@
 - (id)init;
 - (id)initWithDirectoryURL:(id)arg1;
 - (BOOL)isKeyValid:(id)arg1;
+- (BOOL)removeAllDataWithError:(id *)arg1;
 - (BOOL)removeDataForKey:(id)arg1 error:(id *)arg2;
 - (BOOL)setData:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 

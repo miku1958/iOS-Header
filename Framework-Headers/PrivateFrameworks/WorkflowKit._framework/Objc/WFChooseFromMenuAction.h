@@ -36,6 +36,7 @@
 - (void)initializeParameters;
 - (BOOL)inputPassthrough;
 - (BOOL)inputRequired;
+- (id)inputSourceInWorkflow:(id)arg1;
 - (id)intermediaryActions;
 - (id)localizedName;
 - (id)name;

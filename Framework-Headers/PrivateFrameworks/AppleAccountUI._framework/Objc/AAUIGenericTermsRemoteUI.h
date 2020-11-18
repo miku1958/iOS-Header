@@ -54,6 +54,7 @@
 - (void)presentFromViewController:(id)arg1 modal:(BOOL)arg2;
 - (id)sessionConfigurationForLoader:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientationsForObjectModel:(id)arg1 page:(id)arg2;
+- (id)viewControllerForAlertPresentation;
 
 @end
 

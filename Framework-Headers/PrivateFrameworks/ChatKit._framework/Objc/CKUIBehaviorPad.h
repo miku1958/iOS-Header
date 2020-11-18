@@ -33,6 +33,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)presentsFullscreenInViewService;
 - (BOOL)presentsQuickLookController;
 - (double)resumeToConversationListTimeInterval;
+- (double)searchLinkThumbnailWidth;
+- (double)searchPhotoThumbnailWidth;
 - (BOOL)shouldAlignRecipientGlyphsWithMargins;
 - (BOOL)shouldOnlyResumeToConversationListAfterTimeout;
 - (BOOL)shouldPopoverSuggestionsBanner;

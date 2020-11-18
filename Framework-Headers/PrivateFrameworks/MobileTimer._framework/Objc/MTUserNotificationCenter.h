@@ -25,6 +25,7 @@
 
 + (id)_allIdentifiersForAlarm:(id)arg1;
 + (id)_allIdentifiersForAlarm:(id)arg1 includeMainIdentifier:(BOOL)arg2;
++ (id)_allIdentifiersForAlarm:(id)arg1 includeMainIdentifier:(BOOL)arg2 includeSnooze:(BOOL)arg3;
 + (id)_durationComponentsFormatter;
 + (id)_goToBedIdentifier:(id)arg1;
 + (id)_mutableContentForScheduledAlarmWithCommonSettings:(id)arg1;
@@ -54,6 +55,8 @@
 - (void)dismissNotificationsForAlarm:(id)arg1;
 - (void)dismissNotificationsForAlarm:(id)arg1 dismissAction:(unsigned long long)arg2;
 - (void)dismissNotificationsForAlarm:(id)arg1 includeMainIdentifier:(BOOL)arg2;
+- (void)dismissNotificationsForAlarm:(id)arg1 includeMainIdentifier:(BOOL)arg2 includeSnooze:(BOOL)arg3;
+- (void)dismissNotificationsForAlarm:(id)arg1 includeSnooze:(BOOL)arg2;
 - (void)dismissNotificationsForTimer:(id)arg1;
 - (void)dismissNotificationsWithIdentifiers:(id)arg1;
 - (void)dismissRelatedNotificationsForScheduledAlarm:(id)arg1;

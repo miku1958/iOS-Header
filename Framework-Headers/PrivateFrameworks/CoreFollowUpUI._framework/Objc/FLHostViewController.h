@@ -7,13 +7,15 @@
 #import <UIKit/_UIRemoteViewController.h>
 
 #import <CoreFollowUpUI/FLExtensionHostInterface-Protocol.h>
+#import <CoreFollowUpUI/_UIRemoteViewControllerContaining-Protocol.h>
 
 @class NSString;
 
-@interface FLHostViewController : _UIRemoteViewController <FLExtensionHostInterface>
+@interface FLHostViewController : _UIRemoteViewController <_UIRemoteViewControllerContaining, FLExtensionHostInterface>
 {
 }
 
+@property (readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

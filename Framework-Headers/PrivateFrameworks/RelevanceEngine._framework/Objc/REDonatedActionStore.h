@@ -25,7 +25,6 @@
 - (void)_notified_distributeRecentDeletedActions:(id)arg1;
 - (void)_notified_distributeRecentDonatedActions:(id)arg1;
 - (void)_notified_removeThenDistributeAllActions:(id)arg1;
-- (void)_queue_autoreleased_distributeAllDonatedActions;
 - (void)_queue_distributeAllDonatedActions;
 - (void)_queue_distributeRecentDeletedActions;
 - (void)_queue_distributeRecentDonatedActions;

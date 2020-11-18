@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) UIViewController *wrappedViewController; // @synthesize wrappedViewController=_wrappedViewController;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)childViewControllerForHomeIndicatorAutoHidden;
 - (id)childViewControllerForScreenEdgesDeferringSystemGestures;
 - (id)childViewControllerForStatusBarHidden;

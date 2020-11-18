@@ -82,7 +82,7 @@
 - (void)startSearching;
 - (void)subscribeForActionRegistryFilledNotifications;
 - (void)suggestionsViewController:(id)arg1 didSelectAction:(id)arg2;
-- (void)suggestionsViewController:(id)arg1 didSelectCategoryForContentType:(id)arg2;
+- (void)suggestionsViewController:(id)arg1 didSelectCategoryForContentType:(id)arg2 title:(id)arg3;
 - (void)suggestionsViewController:(id)arg1 didSelectDocumentationForAction:(id)arg2 fromView:(id)arg3;
 - (void)suggestionsViewControllerDidSelectCategoryApps:(id)arg1 title:(id)arg2;
 - (void)suggestionsViewControllerDidSelectCategoryFavorites:(id)arg1 title:(id)arg2;

@@ -68,6 +68,7 @@
 - (long long)countOfMessagesMatchingQuery:(id)arg1;
 - (long long)countOfMessagesWithMessageIDHeaderHash:(id)arg1 matchingQuery:(id)arg2;
 - (id)databaseIDsDictionaryForMessageObjectIDs:(id)arg1;
+- (id)enabledAccountMailboxesExpression;
 - (id)groupedMessagesCountByMailboxMatchingQuery:(unsigned long long)arg1 variable:(id)arg2;
 - (id)initWithConversationPersistence:(id)arg1 mailboxPersistence:(id)arg2 database:(id)arg3 vipManager:(id)arg4 remoteSearchProvider:(id)arg5 blockedSenderManager:(id)arg6;
 - (void)iterateMessagesMatchingQuery:(id)arg1 batchSize:(long long)arg2 firstBatchSize:(long long)arg3 limit:(long long)arg4 cancelationToken:(id)arg5 handler:(CDUnknownBlockType)arg6;
@@ -86,6 +87,7 @@
 - (id)persistedMessagesForObjectIDs:(id)arg1 requireProtectedData:(BOOL)arg2;
 - (id)persistedMessagesMatchingQuery:(id)arg1 limit:(long long)arg2;
 - (id)queryWithExpandedMailboxesFromQuery:(id)arg1;
+- (void)reconcileJournalWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)requestContentForMessageObjectID:(id)arg1 requestID:(unsigned long long)arg2 options:(id)arg3 delegate:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)requestSummaryForMessageObjectID:(id)arg1;
 - (void)setCachedMetadataJSON:(id)arg1 forKey:(id)arg2 messageID:(id)arg3;

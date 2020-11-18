@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXGTextureAtlasManager-Protocol.h>
 
-@class NSArray, NSIndexSet, NSString;
+@class NSArray, NSIndexSet, NSString, PXGColorProgram;
 @protocol MTLDevice, OS_dispatch_queue;
 
 @interface PXGMetalTextureAtlasManager : NSObject <PXGTextureAtlasManager>
@@ -19,11 +19,13 @@
     unsigned int _capacityPerAtlas;
     unsigned long long _pixelFormat;
     NSIndexSet *_skipRenderSpriteIndexes;
+    PXGColorProgram *_colorProgram;
     NSArray *_atlasTextures;
     struct CGSize _thumbnailSize;
 }
 
 @property (copy) NSArray *atlasTextures; // @synthesize atlasTextures=_atlasTextures;
+@property (readonly, nonatomic) PXGColorProgram *colorProgram; // @synthesize colorProgram=_colorProgram;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -40,7 +42,7 @@
 - (unsigned int)addSpriteWithTextureRequestID:(int)arg1 thumbnailData:(id)arg2 bytesPerRow:(unsigned long long)arg3 contentsRect:(struct CGRect)arg4;
 - (void)applyChangeDetails:(id)arg1;
 - (id)init;
-- (id)initWithThumbnailSize:(struct CGSize)arg1 pixelFormat:(unsigned long long)arg2 capacityPerAtlas:(unsigned int)arg3 requestQueue:(id)arg4 device:(id)arg5;
+- (id)initWithThumbnailSize:(struct CGSize)arg1 pixelFormat:(unsigned long long)arg2 capacityPerAtlas:(unsigned int)arg3 requestQueue:(id)arg4 colorProgram:(id)arg5 device:(id)arg6;
 - (void)processPendingThumbnailRequestIDsWithHandler:(CDUnknownBlockType)arg1;
 - (void)pruneUnusedTextures;
 - (void)removeSpriteIndex:(unsigned int)arg1 atThumbnailIndex:(unsigned int)arg2;

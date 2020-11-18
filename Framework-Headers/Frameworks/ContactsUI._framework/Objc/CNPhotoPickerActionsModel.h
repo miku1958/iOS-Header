@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 @interface CNPhotoPickerActionsModel : NSObject
 {
     BOOL _canDelete;
+    BOOL _buttonsDisabled;
     id<CNPhotoPickerActionsDelegate> _delegate;
     CNPhotoPickerProviderItem *_providerItem;
     NSArray *_currentInlineActionButtons;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) NSString *assignActionTitleOverride; // @synthesize assignActionTitleOverride=_assignActionTitleOverride;
+@property (nonatomic) BOOL buttonsDisabled; // @synthesize buttonsDisabled=_buttonsDisabled;
 @property (nonatomic) BOOL canDelete; // @synthesize canDelete=_canDelete;
 @property (strong, nonatomic) NSArray *currentInlineActionButtons; // @synthesize currentInlineActionButtons=_currentInlineActionButtons;
 @property (weak, nonatomic) id<CNPhotoPickerActionsDelegate> delegate; // @synthesize delegate=_delegate;

@@ -122,6 +122,7 @@
 - (void)removeExpressPassesWithCardType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeMapsDataForTransactionWithIdentifier:(id)arg1 forPassUniqueIdentifier:(id)arg2 issueReportIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)removeProductsCache;
+- (void)requiresUpgradedPasscodeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)sanitizeExpressPasses;
 - (void)scheduleAutomaticPresentationAvailableNotificationForPassWithUniqueIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)scheduleDeviceCheckInWithStartTimeOffset:(double)arg1;

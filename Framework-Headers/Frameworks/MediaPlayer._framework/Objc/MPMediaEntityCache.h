@@ -17,7 +17,8 @@
         long long __sig;
         char __opaque[192];
     } _rwlock;
-    NSObject<OS_dispatch_queue> *_queue;
+    struct os_unfair_lock_s _entityCacheMapLock;
+    NSObject<OS_dispatch_queue> *_deallocLaterQueue;
     struct __CFDictionary *_concreteEntitiesByDataProviderEntityClass;
     NSMutableArray *_entityTemporaryReferences;
 }
@@ -29,7 +30,6 @@
 - (void)_performWithExclusiveAccessForDataProviderEntityClass:(Class)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_performWithSharedAccessForDataProviderEntityClass:(Class)arg1 block:(CDUnknownBlockType)arg2;
 - (id)collectionWithIdentifier:(long long)arg1 grouping:(long long)arg2 loadEntityBlock:(CDUnknownBlockType)arg3;
-- (id)init;
 - (id)initWithMediaLibraryDataProvider:(id)arg1;
 - (id)itemWithIdentifier:(long long)arg1;
 - (id)itemWithIdentifier:(long long)arg1 loadEntityBlock:(CDUnknownBlockType)arg2;

@@ -7,13 +7,14 @@
 #import <VideoSubscriberAccountUI/VSAppDocumentController.h>
 
 #import <VideoSubscriberAccountUI/VSCredentialEntryViewModelDelegate-Protocol.h>
+#import <VideoSubscriberAccountUI/VSIKItemGroupDelegate-Protocol.h>
 
-@class IKViewElement, NSArray, NSString;
+@class NSArray, NSString, VSIKItemGroupElement;
 
 __attribute__((visibility("hidden")))
-@interface VSCredentialEntryAppDocumentController : VSAppDocumentController <VSCredentialEntryViewModelDelegate>
+@interface VSCredentialEntryAppDocumentController : VSAppDocumentController <VSCredentialEntryViewModelDelegate, VSIKItemGroupDelegate>
 {
-    IKViewElement *_pickerElement;
+    VSIKItemGroupElement *_pickerElement;
     NSArray *_buttonElements;
 }
 
@@ -21,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) IKViewElement *pickerElement; // @synthesize pickerElement=_pickerElement;
+@property (strong, nonatomic) VSIKItemGroupElement *pickerElement; // @synthesize pickerElement=_pickerElement;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_updateCredentialEntryViewModel:(id)arg1 error:(id *)arg2;
 - (BOOL)_updateCredentialEntryViewModel:(id)arg1 withTemplate:(id)arg2 error:(id *)arg3;
 - (BOOL)_updateViewModel:(id)arg1 error:(id *)arg2;
+- (void)itemGroup:(id)arg1 selectedItemIndexDidChange:(long long)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)viewModel:(id)arg1 buttonTappedAtIndex:(unsigned long long)arg2;
 - (void)viewModel:(id)arg1 pickerDidSelectRow:(unsigned long long)arg2;

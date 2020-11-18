@@ -63,7 +63,7 @@
 @property (copy, nonatomic, setter=_setPassthroughViews:) NSArray *_passthroughViews;
 @property (nonatomic, setter=_setPresentsAtStandardHalfHeight:) BOOL _presentsAtStandardHalfHeight; // @synthesize _presentsAtStandardHalfHeight=__presentsAtStandardHalfHeight;
 @property (strong, nonatomic) UIViewPropertyAnimator *_remoteDismissalPropertyAnimator; // @synthesize _remoteDismissalPropertyAnimator=__remoteDismissalPropertyAnimator;
-@property (nonatomic) BOOL _remoteDismissing; // @synthesize _remoteDismissing=__remoteDismissing;
+@property (nonatomic, getter=_isRemoteDismissing, setter=_setRemoteDismissing:) BOOL _remoteDismissing; // @synthesize _remoteDismissing=__remoteDismissing;
 @property (readonly, nonatomic) _UISheetInteraction *_sheetInteraction; // @synthesize _sheetInteraction=__sheetInteraction;
 @property (nonatomic, setter=_setShouldPresentedViewControllerControlStatusBarAppearance:) BOOL _shouldPresentedViewControllerControlStatusBarAppearance; // @synthesize _shouldPresentedViewControllerControlStatusBarAppearance=__shouldPresentedViewControllerControlStatusBarAppearance;
 @property (nonatomic, setter=_setShouldScaleDownBehindDescendantSheets:) BOOL _shouldScaleDownBehindDescendantSheets;
@@ -103,6 +103,7 @@
 - (id)_preferredAnimationControllerForDismissal;
 - (id)_preferredInteractionControllerForDismissal:(id)arg1;
 - (void)_realSourceViewGeometryDidChange;
+- (void)_resetRemoteDismissing;
 - (void)_sheetLayoutInfoDidInvalidateOutput:(id)arg1;
 - (void)_sheetLayoutInfoLayout:(id)arg1;
 - (void)_sheetLayoutInfoPrelayout:(id)arg1;
@@ -123,9 +124,12 @@
 - (void)dimmingViewWasTapped:(id)arg1;
 - (void)dismissalTransitionDidEnd:(BOOL)arg1;
 - (void)dismissalTransitionWillBegin;
+- (void)dragInteraction:(id)arg1 item:(id)arg2 willAnimateCancelWithAnimator:(id)arg3;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
 - (BOOL)dragInteraction:(id)arg1 prefersFullSizePreviewsForSession:(id)arg2;
+- (id)dragInteraction:(id)arg1 previewForCancellingItem:(id)arg2 withDefault:(id)arg3;
 - (id)dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
+- (void)dragInteraction:(id)arg1 session:(id)arg2 didEndWithOperation:(unsigned long long)arg3;
 - (void)dragInteraction:(id)arg1 sessionWillBegin:(id)arg2;
 - (id)initWithPresentedViewController:(id)arg1 presentingViewController:(id)arg2;
 - (struct CGPoint)offsetForInterruptedAnimationInSheetInteraction:(id)arg1;

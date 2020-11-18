@@ -125,6 +125,7 @@
 
 - (void).cxx_destruct;
 - (id)_defaultSelectedPaymentApplicationForPaymentApplications:(id)arg1;
+- (void)_didSetItemForClass:(Class)arg1;
 - (long long)_displayOrderForDataType:(long long)arg1;
 - (void)_ensureItemForClass:(Class)arg1;
 - (void)_ensureItems;

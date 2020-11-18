@@ -7,5 +7,9 @@
 @protocol WFPINEntryViewControllerProtocol
 - (void)userDidCancel;
 - (void)userEnteredCorrectPIN;
+
+@optional
+- (void)getIsPINPresentWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)permitURLWithCompletion:(void (^)(NSError *))arg1;
 @end
 

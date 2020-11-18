@@ -6,12 +6,13 @@
 
 #import <AssetsLibraryServices/NSObject-Protocol.h>
 
-@class NSArray, NSString, NSURL, PLPhotoLibraryFileIdentifier;
+@class NSArray, NSString, NSURL, PLFileSystemCapabilities, PLPhotoLibraryFileIdentifier;
 
 @protocol PLPhotoLibraryPathManagerCore <NSObject>
 
 @property (readonly, copy) NSString *assetUUIDRecoveryMappingPath;
 @property (readonly, copy) NSString *baseDirectory;
+@property (readonly, nonatomic) PLFileSystemCapabilities *capabilities;
 @property (readonly, copy) NSURL *libraryURL;
 
 + (BOOL)isSystemLibraryURLDefined;

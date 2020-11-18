@@ -17,6 +17,7 @@
 {
     PKTableHeaderView *_headerView;
     BOOL _hasScrolledToShowFields;
+    BOOL _cellsAreEnabled;
     PKPaymentSetupFieldsModel *_fieldsModel;
     NSMapTable *_fieldIdentifierToCellMap;
     id _currentNextActionBlock;
@@ -26,6 +27,7 @@
     BOOL _rightBarButtonItemsEnabled;
     BOOL _hidesBackButton;
     BOOL _showingActivitySpinner;
+    BOOL _performingNextActionLoop;
     id<PKPaymentSetupViewControllerDelegate> _setupDelegate;
     PKPaymentWebService *_webService;
 }
@@ -35,6 +37,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) PKPaymentSetupFieldsModel *fieldsModel; // @synthesize fieldsModel=_fieldsModel;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isPerformingNextActionLoop) BOOL performingNextActionLoop; // @synthesize performingNextActionLoop=_performingNextActionLoop;
 @property (weak, nonatomic) id<PKPaymentSetupViewControllerDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
 @property (readonly, nonatomic, getter=isShowingActivitySpinner) BOOL showingActivitySpinner; // @synthesize showingActivitySpinner=_showingActivitySpinner;
 @property (readonly) Class superclass;
@@ -42,8 +45,10 @@
 
 - (void).cxx_destruct;
 - (id)_contextSpecificStringForAggDKey:(id)arg1;
+- (void)_continueNextActionLoop:(BOOL)arg1;
 - (void)_destroyNavigationBarButtonItemsAnimated:(BOOL)arg1;
 - (void)_handleNextButtonTapped:(id)arg1;
+- (void)_setCellsEnabled:(BOOL)arg1;
 - (void)_setIdleTimerDisabled:(BOOL)arg1 title:(id)arg2 subtitle:(id)arg3;
 - (void)_setLeftBarButtonItems:(id)arg1 animated:(BOOL)arg2;
 - (void)_setNavigationBarEnabled:(BOOL)arg1 animated:(BOOL)arg2;

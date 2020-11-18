@@ -50,6 +50,7 @@
 - (void).cxx_destruct;
 - (void)_cancelScheduledRouteStatus;
 - (void)_cancelScheduledRouteUpdates;
+- (void)_handleNavigationServiceStopped;
 - (BOOL)_isInvalidated;
 - (void)_markCurrentHapticsAsTriggered;
 - (void)_reloadRouteFromNavigationService:(id)arg1;
@@ -92,6 +93,7 @@
 - (void)navigationService:(id)arg1 triggerHaptics:(int)arg2;
 - (void)navigationService:(id)arg1 willAnnounce:(unsigned long long)arg2 inSeconds:(double)arg3;
 - (void)navigationServiceDidCancelReroute:(id)arg1;
+- (void)navigationServiceDidSynchronize:(id)arg1;
 - (void)navigationServiceWillReroute:(id)arg1;
 - (void)navigationSession:(id)arg1 currentStepIndex:(unsigned long long)arg2 didUpdateDistanceUntilManeuver:(double)arg3 timeUntilManeuver:(double)arg4;
 - (void)navigationSession:(id)arg1 didChangeNavigationState:(int)arg2;

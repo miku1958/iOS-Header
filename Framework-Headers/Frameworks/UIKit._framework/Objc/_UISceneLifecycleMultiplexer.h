@@ -27,9 +27,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL suspendedEventsOnly;
 @property (readonly, nonatomic) BOOL suspendedUnderLock;
 
-+ (id)_mostActiveSceneWithTest:(CDUnknownBlockType)arg1;
 + (void)configureInitialDeactivationReasons:(unsigned long long)arg1;
 + (id)mostActiveScene;
++ (id)mostActiveSceneWithTest:(CDUnknownBlockType)arg1;
 + (id)mostActiveWindowSceneOnScreen:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;

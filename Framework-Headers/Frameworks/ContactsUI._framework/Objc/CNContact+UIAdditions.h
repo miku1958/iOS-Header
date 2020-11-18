@@ -24,6 +24,7 @@
 + (BOOL)downtimeWhitelistUIEnabled;
 + (BOOL)geminiEnabled;
 + (id)multiValuePropertiesSupportingPredicateValidation;
++ (BOOL)nameAndPhotoSharingDebugUIEnabled;
 + (BOOL)quickActionsEnabled;
 + (unsigned long long)rawImageTypeForIdentifier:(id)arg1;
 + (BOOL)settableMeCardEnabled;

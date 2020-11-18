@@ -10,6 +10,7 @@
 #import <SpringBoard/_SBHUDHostViewControllerDelegate-Protocol.h>
 
 @class NSString, NSTimer, SBHUDController, UIViewController;
+@protocol SBHUDViewControlling;
 
 @interface _SBHUDModel : NSObject <_SBHUDHostViewControllerDelegate, SBHUDControlling>
 {
@@ -18,14 +19,14 @@
     BOOL _dismissing;
     BOOL _presenting;
     BOOL _presented;
-    UIViewController *_HUDViewController;
+    UIViewController<SBHUDViewControlling> *_HUDViewController;
     SBHUDController *_HUDController;
     double _dismissalInterval;
     NSString *_identifier;
 }
 
 @property (readonly, nonatomic) SBHUDController *HUDController; // @synthesize HUDController=_HUDController;
-@property (readonly, nonatomic) UIViewController *HUDViewController; // @synthesize HUDViewController=_HUDViewController;
+@property (readonly, nonatomic) UIViewController<SBHUDViewControlling> *HUDViewController; // @synthesize HUDViewController=_HUDViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double dismissalInterval; // @synthesize dismissalInterval=_dismissalInterval;

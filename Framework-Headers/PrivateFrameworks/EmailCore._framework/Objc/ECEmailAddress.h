@@ -19,7 +19,6 @@
     ECEmailAddressComponents *_components;
 }
 
-@property (readonly, copy) NSString *address; // @dynamic address;
 @property (readonly, copy, nonatomic) ECEmailAddressComponents *components; // @synthesize components=_components;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -31,6 +30,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSString *idnaAddress; // @dynamic idnaAddress;
 @property (readonly, copy) NSString *localPart; // @dynamic localPart;
+@property (readonly, copy) NSString *simpleAddress; // @dynamic simpleAddress;
 @property (readonly) NSString *stringValue;
 @property (readonly) Class superclass;
 

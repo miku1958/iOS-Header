@@ -21,7 +21,6 @@
 - (BOOL)_axDayShowsDayIndicator;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
-- (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
 
 @end

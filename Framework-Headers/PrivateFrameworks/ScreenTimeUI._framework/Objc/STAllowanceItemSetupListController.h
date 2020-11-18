@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_addCustomWebDomain:(id)arg1 specifier:(id)arg2;
 - (void)_addWebsiteButtonPressed:(id)arg1;
+- (id)_applicationSpecifierForBundleIdentifier:(id)arg1 categoryIdentifier:(id)arg2;
 - (id)_categoryDetailText:(id)arg1;
 - (id)_categorySpecifierForIdentifier:(id)arg1;
 - (void)_cleanUpRetainCycles;

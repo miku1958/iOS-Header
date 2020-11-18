@@ -35,6 +35,7 @@
 - (void)addNewRemotePlan:(BOOL)arg1 withCSN:(id)arg2 withContext:(id)arg3 userConsent:(long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)addNewRemotePlanWithAddress:(id)arg1 matchingId:(id)arg2 oid:(id)arg3 confirmationCode:(id)arg4 isPairing:(BOOL)arg5 withCSN:(id)arg6 withContext:(id)arg7 userConsent:(long long)arg8 completion:(CDUnknownBlockType)arg9;
 - (void)addNewRemotePlanWithCardData:(id)arg1 confirmationCode:(id)arg2 isPairing:(BOOL)arg3 withCSN:(id)arg4 withContext:(id)arg5 userConsent:(long long)arg6 completion:(CDUnknownBlockType)arg7;
+- (id)cancelPlanActivation:(id)arg1;
 - (void)carrierHandoffToken:(CDUnknownBlockType)arg1;
 - (void)carrierItemsShouldUpdate:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)connectionSettings:(CDUnknownBlockType)arg1;

@@ -8,11 +8,12 @@
 
 #import <MediaPlayer/MPRequestCancellationToken-Protocol.h>
 #import <MediaPlayer/NSCopying-Protocol.h>
+#import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
 
 @class NSArray, NSError, NSOperationQueue, NSString;
 @protocol OS_dispatch_queue;
 
-@interface MPRequest : NSObject <MPRequestCancellationToken, NSCopying>
+@interface MPRequest : NSObject <MPRequestCancellationToken, _MPStateDumpPropertyListTransformable, NSCopying>
 {
     NSString *_label;
     long long _qualityOfService;
@@ -41,6 +42,7 @@
 + (Class)responseClass;
 - (void).cxx_destruct;
 - (void)_performWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_stateDumpObject;
 - (void)cancel;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;

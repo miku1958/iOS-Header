@@ -20,7 +20,7 @@
 }
 
 - (void).cxx_destruct;
-- (void)compositeTexture:(id)arg1 forMemoji:(id)arg2 considerSkin:(BOOL)arg3 componentsToConsider:(long long)arg4 computeCommandHandler:(CDUnknownBlockType)arg5 blitCommandHandler:(CDUnknownBlockType)arg6 helper:(id)arg7 invalidationTokens:(id)arg8;
+- (void)compositeTexture:(id)arg1 forMemoji:(id)arg2 considerSkin:(BOOL)arg3 componentsToConsider:(long long)arg4 computeCommandHandler:(CDUnknownBlockType)arg5 blitCommandHandler:(CDUnknownBlockType)arg6 helper:(id)arg7 helperTokens:(id)arg8;
 - (id)initWithFunction:(id)arg1;
 
 @end

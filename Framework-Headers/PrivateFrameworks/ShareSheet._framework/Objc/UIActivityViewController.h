@@ -17,7 +17,7 @@
 #import <ShareSheet/_UIActivityHelperDelegate-Protocol.h>
 #import <ShareSheet/_UIActivityUserDefaultsViewControllerDelegate-Protocol.h>
 
-@class LPLinkMetadata, NSArray, NSDictionary, NSLayoutConstraint, NSMutableDictionary, NSOperationQueue, NSSet, NSString, NSUserDefaults, ObjectManipulationViewController, SFAirDropViewController, SFShareSheetSlotManager, UIActivity, UIActivityContentViewController, UIAlertAction, UIAlertController, UINavigationController, UISUIActivityViewControllerConfiguration, UIView, _UIActivityHelper, _UICollectionViewDiffableDataSource;
+@class LPLinkMetadata, NSArray, NSDictionary, NSLayoutConstraint, NSMutableDictionary, NSOperationQueue, NSSet, NSString, NSUserDefaults, ObjectManipulationViewController, SFAirDropViewController, SFShareSheetSlotManager, UIActivity, UIActivityContentViewController, UIAlertAction, UIAlertController, UINavigationController, UISUIActivityViewControllerConfiguration, UIView, _UIActivityHelper, _UIActivityNavigationController, _UICollectionViewDiffableDataSource;
 @protocol UIActivityViewControllerAirDropDelegate, UIActivityViewControllerObjectManipulationDelegate, UIActivityViewControllerPhotosDelegate;
 
 @interface UIActivityViewController : UIViewController <UIViewControllerRestoration, _UIActivityHelperDelegate, SFAirDropViewControllerDelegate, SFShareSheetSlotManagerDelegate, _UIActivityUserDefaultsViewControllerDelegate, ObjectManipulationDelegate, UICollectionViewDelegate, UIActivityContentDelegate, UIViewControllerTransitioningDelegate, LPLinkViewDelegate>
@@ -77,7 +77,7 @@
     ObjectManipulationViewController *_customizationViewController;
     NSLayoutConstraint *_blurViewHeightConstraint;
     UINavigationController *_contentNavigationController;
-    UINavigationController *_secondaryContentNavigationController;
+    _UIActivityNavigationController *_secondaryContentNavigationController;
     UIActivityContentViewController *_contentViewController;
     UIActivityContentViewController *_secondaryContentViewController;
     _UICollectionViewDiffableDataSource *_dataSource;
@@ -168,7 +168,7 @@
 @property (nonatomic, getter=_readyToInteractTimestamp, setter=_setReadyToInteractTimestamp:) unsigned long long readyToInteractTimestamp; // @synthesize readyToInteractTimestamp=_readyToInteractTimestamp;
 @property (nonatomic) BOOL receivedInitialConfiguration; // @synthesize receivedInitialConfiguration=_receivedInitialConfiguration;
 @property (readonly, nonatomic) NSArray *resolvedActivityItemsForCurrentActivity; // @synthesize resolvedActivityItemsForCurrentActivity=_resolvedActivityItemsForCurrentActivity;
-@property (strong, nonatomic) UINavigationController *secondaryContentNavigationController; // @synthesize secondaryContentNavigationController=_secondaryContentNavigationController;
+@property (strong, nonatomic) _UIActivityNavigationController *secondaryContentNavigationController; // @synthesize secondaryContentNavigationController=_secondaryContentNavigationController;
 @property (strong, nonatomic) UIActivityContentViewController *secondaryContentViewController; // @synthesize secondaryContentViewController=_secondaryContentViewController;
 @property (copy, nonatomic, getter=_selectedAssetIdentifiers, setter=_setSelectedAssetIdentifiers:) NSArray *selectedAssetIdentifiers; // @synthesize selectedAssetIdentifiers=_selectedAssetIdentifiers;
 @property (strong, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
@@ -262,7 +262,7 @@
 - (void)completedInitialLayoutPass;
 - (void)configureActivityViewControllerWithActivityItems:(id)arg1 applicationActivities:(id)arg2;
 - (void)configureContentViewIfNeeded;
-- (void)connectAirDrop;
+- (void)connectAirDropWithNoContentView:(BOOL)arg1;
 - (void)connectToDaemonOnceWithPriming:(BOOL)arg1;
 - (void)connectionInterrupted;
 - (void)dataSourceUpdatedWithSessionConfiguration:(id)arg1;
@@ -282,7 +282,8 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)optionsButtonTapped;
 - (void)performActivityInHostWithUUID:(id)arg1;
-- (void)performExtensionActivityInHostWithBundleID:(id)arg1;
+- (void)performAirDropActivityInHostWithUUID:(id)arg1 noContentView:(BOOL)arg2;
+- (void)performExtensionActivityInHostWithBundleID:(id)arg1 request:(id)arg2;
 - (void)performShortcutActivityInHostWithBundleID:(id)arg1 singleUseToken:(id)arg2;
 - (void)performUserDefaultsWithFavoritesProxies:(id)arg1 suggestionProxies:(id)arg2 orderedUUIDs:(id)arg3 activityCategory:(long long)arg4;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;

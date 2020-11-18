@@ -22,6 +22,7 @@
 @property (copy, nonatomic) NSURL *url;
 @property (nonatomic) BOOL userDriven;
 @property (copy, nonatomic) NSString *utsId;
+@property (copy, nonatomic) NSURL *utsSearchUrl;
 
 + (id)contentDetailPage;
 + (id)contentDetailPageWithDictionary:(id)arg1 context:(id)arg2;

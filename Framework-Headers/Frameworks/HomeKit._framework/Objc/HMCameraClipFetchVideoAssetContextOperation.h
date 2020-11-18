@@ -37,7 +37,6 @@
 - (id)downloadVideoSegment:(id)arg1 forDataTask:(id)arg2 andAppendToOutputStream:(id)arg3;
 - (id)fetchVideoAssetContext;
 - (void)finishWithVideoAssetContext:(id)arg1;
-- (id)initWithClip:(id)arg1;
 - (id)initWithClipManager:(id)arg1 clip:(id)arg2;
 - (id)initWithClipManager:(id)arg1 clip:(id)arg2 dataSource:(id)arg3;
 - (id)logIdentifier;

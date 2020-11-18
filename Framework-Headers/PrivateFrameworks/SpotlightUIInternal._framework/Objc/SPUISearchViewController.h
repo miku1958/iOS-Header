@@ -67,6 +67,7 @@
 - (id)activeViewController;
 - (BOOL)allowInternet;
 - (void)cancelButtonPressed;
+- (void)checkClearTimer;
 - (void)clearSearchResults;
 - (void)clearTimerExpired;
 - (id)contentScrollView;

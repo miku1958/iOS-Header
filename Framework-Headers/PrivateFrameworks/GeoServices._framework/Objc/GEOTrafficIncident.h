@@ -24,10 +24,12 @@ __attribute__((visibility("hidden")))
     NSString *_incidentId;
     NSMutableArray *_laneMessages;
     GEOLatLng *_location;
+    NSString *_name;
     NSMutableArray *_paths;
     NSString *_primaryStreetName;
     unsigned long long _startTime;
     unsigned long long _updateTime;
+    int _advisoryType;
     int _color;
     unsigned int _delaySeconds;
     unsigned int _laneClosureCount;
@@ -44,6 +46,7 @@ __attribute__((visibility("hidden")))
         unsigned int has_durationSeconds:1;
         unsigned int has_startTime:1;
         unsigned int has_updateTime:1;
+        unsigned int has_advisoryType:1;
         unsigned int has_color:1;
         unsigned int has_delaySeconds:1;
         unsigned int has_laneClosureCount:1;
@@ -64,6 +67,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_incidentId:1;
         unsigned int read_laneMessages:1;
         unsigned int read_location:1;
+        unsigned int read_name:1;
         unsigned int read_paths:1;
         unsigned int read_primaryStreetName:1;
         unsigned int wrote_alertCCodes:1;
@@ -75,10 +79,12 @@ __attribute__((visibility("hidden")))
         unsigned int wrote_incidentId:1;
         unsigned int wrote_laneMessages:1;
         unsigned int wrote_location:1;
+        unsigned int wrote_name:1;
         unsigned int wrote_paths:1;
         unsigned int wrote_primaryStreetName:1;
         unsigned int wrote_startTime:1;
         unsigned int wrote_updateTime:1;
+        unsigned int wrote_advisoryType:1;
         unsigned int wrote_color:1;
         unsigned int wrote_delaySeconds:1;
         unsigned int wrote_laneClosureCount:1;
@@ -94,6 +100,7 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
+@property (nonatomic) int advisoryType;
 @property (readonly, nonatomic) unsigned int *alertCCodes;
 @property (readonly, nonatomic) unsigned long long alertCCodesCount;
 @property (strong, nonatomic) NSString *area;
@@ -102,6 +109,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL curated;
 @property (nonatomic) unsigned int delaySeconds;
 @property (nonatomic) unsigned long long durationSeconds;
+@property (nonatomic) BOOL hasAdvisoryType;
 @property (readonly, nonatomic) BOOL hasArea;
 @property (nonatomic) BOOL hasColor;
 @property (readonly, nonatomic) BOOL hasCrossStreetName;
@@ -116,6 +124,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasLocation;
 @property (nonatomic) BOOL hasMaxZoom;
 @property (nonatomic) BOOL hasMinZoom;
+@property (readonly, nonatomic) BOOL hasName;
 @property (nonatomic) BOOL hasNavigationAlert;
 @property (readonly, nonatomic) BOOL hasPrimaryStreetName;
 @property (nonatomic) BOOL hasSpeedKph;
@@ -132,6 +141,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) GEOLatLng *location;
 @property (nonatomic) unsigned int maxZoom;
 @property (nonatomic) unsigned int minZoom;
+@property (strong, nonatomic) NSString *name;
 @property (nonatomic) BOOL navigationAlert;
 @property (strong, nonatomic) NSMutableArray *paths;
 @property (strong, nonatomic) NSString *primaryStreetName;
@@ -147,6 +157,7 @@ __attribute__((visibility("hidden")))
 + (Class)laneMessagesType;
 + (Class)pathType;
 - (void).cxx_destruct;
+- (int)StringAsAdvisoryType:(id)arg1;
 - (int)StringAsColor:(id)arg1;
 - (int)StringAsLaneClosureType:(id)arg1;
 - (int)StringAsTypes:(id)arg1;
@@ -163,6 +174,7 @@ __attribute__((visibility("hidden")))
 - (void)_readIncidentId;
 - (void)_readLaneMessages;
 - (void)_readLocation;
+- (void)_readName;
 - (void)_readPaths;
 - (void)_readPrimaryStreetName;
 - (void)_readTypes;
@@ -171,6 +183,7 @@ __attribute__((visibility("hidden")))
 - (void)addLaneMessages:(id)arg1;
 - (void)addPath:(id)arg1;
 - (void)addType:(int)arg1;
+- (id)advisoryTypeAsString:(int)arg1;
 - (unsigned int)alertCCodeAtIndex:(unsigned long long)arg1;
 - (void)clearAlertCCodes;
 - (void)clearIncidentDescriptions;

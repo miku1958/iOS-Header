@@ -28,6 +28,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)hasIconImage;
 - (void).cxx_destruct;
 - (void)_adjustForIconsAdded:(id)arg1 removed:(id)arg2;
 - (void)_containedIconAccessoriesDidUpdate:(id)arg1;

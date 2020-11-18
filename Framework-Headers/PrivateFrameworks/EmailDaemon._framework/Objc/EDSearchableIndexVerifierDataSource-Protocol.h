@@ -6,9 +6,10 @@
 
 #import <EmailDaemon/NSObject-Protocol.h>
 
-@class EDSearchableIndex, EDSearchableIndexVerifier, NSDictionary;
+@class EDSearchableIndex, EDSearchableIndexVerifier, NSDictionary, NSString;
 
 @protocol EDSearchableIndexVerifierDataSource <NSObject>
+- (NSString *)bundleIdentifierForSearchableIndexVerifier:(EDSearchableIndexVerifier *)arg1;
 - (NSDictionary *)dataSamplesForSearchableIndexVerifier:(EDSearchableIndexVerifier *)arg1 searchableIndex:(EDSearchableIndex *)arg2;
 - (EDSearchableIndex *)searchableIndexForSearchableIndexVerifier:(EDSearchableIndexVerifier *)arg1;
 @end

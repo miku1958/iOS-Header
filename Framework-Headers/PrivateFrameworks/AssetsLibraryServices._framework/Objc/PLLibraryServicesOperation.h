@@ -23,7 +23,7 @@
 @property (nonatomic) long long progressPercentOfTotal; // @synthesize progressPercentOfTotal=_progressPercentOfTotal;
 @property (nonatomic) long long requiredState; // @synthesize requiredState=_requiredState;
 
-+ (id)operationWithName:(id)arg1 requiredState:(long long)arg2 parentProgress:(id)arg3 progressPercentOfTotal:(long long)arg4 execution:(CDUnknownBlockType)arg5;
++ (id)operationWithName:(id)arg1 requiredState:(long long)arg2 parentProgress:(id)arg3 execution:(CDUnknownBlockType)arg4;
 + (void)setShouldSuppressLogging:(BOOL)arg1;
 + (BOOL)shouldSuppressLogging;
 - (void).cxx_destruct;

@@ -12,24 +12,27 @@
 {
     BOOL _forceExecutionOnPhone;
     INIntent *_intent;
+    NSString *_groupIdentifier;
     NSString *_title;
     NSString *_subtitle;
 }
 
 @property (readonly, nonatomic) BOOL forceExecutionOnPhone; // @synthesize forceExecutionOnPhone=_forceExecutionOnPhone;
+@property (readonly, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
 @property (strong, nonatomic) INIntent *intent; // @synthesize intent=_intent;
 @property (readonly, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
 
-+ (id)intentActionWithShortcut:(id)arg1 forceExecutionOnPhone:(BOOL)arg2 error:(id *)arg3;
++ (id)intentActionWithShortcut:(id)arg1 forceExecutionOnPhone:(BOOL)arg2 groupIdentifier:(id)arg3 error:(id *)arg4;
 - (void).cxx_destruct;
 - (id)appIdentifier;
 - (void)continueInAppWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)executorWithIntent:(id)arg1;
+- (id)executorWithIntent:(id)arg1 groupIdentifier:(id)arg2;
 - (id)generatedIntentWithInput:(id)arg1 error:(id *)arg2;
 - (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3;
 - (id)initWithIntent:(id)arg1;
 - (id)initWithIntent:(id)arg1 forceExecutionOnPhone:(BOOL)arg2;
+- (id)initWithInteraction:(id)arg1 forceExecutionOnPhone:(BOOL)arg2;
 - (void)initializeParameters;
 - (long long)intentCategory;
 - (id)intentDescription;

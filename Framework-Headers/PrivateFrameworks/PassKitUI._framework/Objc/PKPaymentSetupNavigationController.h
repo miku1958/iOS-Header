@@ -36,6 +36,7 @@
 + (id)viewControllerForPresentingPaymentError:(id)arg1;
 - (void).cxx_destruct;
 - (void)_dirtyConfigurationAndReloadIfNeeded;
+- (long long)_preferredModalPresentationStyle;
 - (void)_reconfigureRootViewController;
 - (void)cancel:(id)arg1;
 - (id)init;
@@ -46,7 +47,10 @@
 - (void)setCustomFormSheetPresentationStyleForiPad;
 - (BOOL)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)viewController:(id)arg1 didExitPasscodeUpgradeForPasscodeUpgradeFlowController:(id)arg2 withShouldContinue:(BOOL)arg3 error:(id)arg4;
+- (void)viewController:(id)arg1 didExitPasscodeUpgradeWithShouldContinue:(BOOL)arg2 error:(id)arg3;
 - (void)viewController:(id)arg1 didShowProvisioningError:(id)arg2;
+- (void)viewController:(id)arg1 requestPasscodeUpgradeForPasscodeUpgradeFlowController:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)viewController:(id)arg1 requestPasscodeUpgradeWithCompletion:(CDUnknownBlockType)arg2;
 - (void)viewControllerDidCancelSetupFlow:(id)arg1;
 - (void)viewControllerDidShowEligibilityIssue:(id)arg1;

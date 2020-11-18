@@ -6,7 +6,7 @@
 
 #import <CoverSheet/CSPageViewController.h>
 
-#import <SpringBoard/SBApplicationHosting-Protocol.h>
+#import <SpringBoard/CSApplicationHosting-Protocol.h>
 #import <SpringBoard/SBDashBoardDelegatingScreenEdgePanGestureRecognizerDelegate-Protocol.h>
 #import <SpringBoard/SBDashBoardHostedAppViewControllerDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
@@ -15,7 +15,7 @@
 
 @class NSSet, NSString, SBDashBoardDelegatingScreenEdgePanGestureRecognizer, SBDashBoardHostedAppViewController, SBFFluidBehaviorSettings, SBHomeGestureParticipant, UIView, UIViewFloatAnimatableProperty;
 
-@interface SBDashBoardCameraPageViewController : CSPageViewController <SBDashBoardHostedAppViewControllerDelegate, SBSceneHandleObserver, SBSystemGestureRecognizerDelegate, SBDashBoardDelegatingScreenEdgePanGestureRecognizerDelegate, SBHomeGestureParticipantDelegate, SBApplicationHosting>
+@interface SBDashBoardCameraPageViewController : CSPageViewController <SBDashBoardHostedAppViewControllerDelegate, SBSceneHandleObserver, SBSystemGestureRecognizerDelegate, SBDashBoardDelegatingScreenEdgePanGestureRecognizerDelegate, SBHomeGestureParticipantDelegate, CSApplicationHosting>
 {
     UIView *_maskView;
     UIView *_tintView;
@@ -83,6 +83,7 @@
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (BOOL)handleEvent:(id)arg1;
+- (BOOL)handlesRotationIndependentOfCoverSheet;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
 - (id)hostedAppSceneHandle;
 - (id)hostedAppSceneHandles;

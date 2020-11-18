@@ -28,8 +28,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSDate *hf_dateAdded;
 @property (readonly, copy, nonatomic) NSString *hf_displayName;
+@property (readonly, nonatomic) BOOL hf_hasAutomatableProfiles;
+@property (readonly, nonatomic) BOOL hf_hasAutomatableServices;
 @property (readonly, nonatomic) BOOL hf_isAbleToAddTrigger;
-@property (readonly, nonatomic) BOOL hf_userIsAllowedToCreateTrigger;
 @property (readonly, copy, nonatomic) NSArray *hf_userNotificationServiceTopics;
 @property (readonly, nonatomic) UIImage *hf_wallpaperImage;
 @property (strong, nonatomic) NSNumber *homepodLanguageSettingSyncCompleteCheckCount; // @dynamic homepodLanguageSettingSyncCompleteCheckCount;
@@ -85,9 +86,10 @@
 - (unsigned long long)hf_favoriteServiceLikeObjectCountExcludingHomeKitObjects:(id)arg1;
 - (id)hf_handleForUser:(id)arg1;
 - (BOOL)hf_hasAcceptedTermsAndConditionsForHomePodVersion:(id)arg1;
+- (BOOL)hf_hasAnyVisibleTriggers;
 - (BOOL)hf_hasAppleTVs;
-- (BOOL)hf_hasAutomatableServices;
 - (BOOL)hf_hasCameraRecordingResident;
+- (BOOL)hf_hasEnabledResident;
 - (BOOL)hf_hasHomePods;
 - (BOOL)hf_hasMediaAccessories;
 - (BOOL)hf_hasSecureRecordingCameras;
@@ -95,6 +97,7 @@
 - (BOOL)hf_homeHasMigratedIntoHomeApp;
 - (BOOL)hf_homeHasMigratedServicesToAccessories;
 - (id)hf_homePods;
+- (BOOL)hf_isAutomatable;
 - (BOOL)hf_isCurrentLocationHome;
 - (BOOL)hf_isMediaAccessoryProfileValid:(id)arg1;
 - (BOOL)hf_isNetworkProtectionEnabled;
@@ -148,6 +151,7 @@
 - (id)hf_updateWallpaperImage:(id)arg1;
 - (BOOL)hf_userCanCreateTrigger;
 - (id)hf_userForHandle:(id)arg1;
+- (BOOL)hf_userIsAllowedToCreateTrigger;
 - (id)hf_userNotificationTopicForCameraProfile:(id)arg1;
 - (id)hf_userNotificationTopicForObject:(id)arg1;
 - (id)hf_userNotificationTopicForService:(id)arg1;

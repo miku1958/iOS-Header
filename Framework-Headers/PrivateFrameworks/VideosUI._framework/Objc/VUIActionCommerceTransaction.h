@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 + (id)_skuDownloadKind:(long long)arg1;
 + (BOOL)isTransactionInProgressForBuyParams:(id)arg1;
 - (void).cxx_destruct;
-- (void)_displayConfirmationForChannelName:(id)arg1;
+- (void)_displayConfirmationNotificationWithTitle:(id)arg1 andBody:(id)arg2 forChannelName:(id)arg3;
 - (void)_postPurchaseNotification:(id)arg1 error:(id)arg2;
 - (void)_postSubscriptionNotificationWithChannelName:(id)arg1 buyParams:(id)arg2 error:(id)arg3;
 - (void)_postTransactionDidStartNotificationWithBuyParams:(id)arg1;

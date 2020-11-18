@@ -16,7 +16,6 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_updateToolbarItems;
 - (id)composeButton;
-- (void)loadView;
 - (id)optionsButtonItem;
 - (void)viewDidAppear:(BOOL)arg1;
 

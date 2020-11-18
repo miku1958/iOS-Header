@@ -32,6 +32,7 @@
 - (void)dumpMomentsMetadataToPath:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getCPLStateWithReply:(CDUnknownBlockType)arg1;
 - (void)getXPCTransactionStatusWithReply:(CDUnknownBlockType)arg1;
+- (void)identifyAssetsWithInconsistentCloudState;
 - (id)initWithLibraryServicesManager:(id)arg1 resourceDownloader:(id)arg2 bundleController:(id)arg3;
 - (void)invalidateHighlightSubtitlesAndRegenerateHighlightTitlesWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)momentGenerationStatusWithReply:(CDUnknownBlockType)arg1;

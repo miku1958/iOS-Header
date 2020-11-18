@@ -24,6 +24,7 @@
 - (void)requestFonts:(id)arg1 forClient:(id)arg2;
 - (void)requestFonts:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)resumeAndShowAlertForSuspendedFontProviders;
+- (void)updatingUserFonts:(CDUnknownBlockType)arg1;
 
 @end
 

@@ -29,8 +29,8 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) PDFView *pdfView;
 @property (readonly) Class superclass;
 
-+ (BOOL)requirePasswordsUIEnabledForThisThread;
-+ (void)setRequirePasswordsUIEnabledForThisThread:(BOOL)arg1;
++ (BOOL)isHandlingEditDetected;
++ (void)setIsHandlingEditDetected:(BOOL)arg1;
 - (void).cxx_destruct;
 - (struct CGAffineTransform)_compensatingAffineTransformForPage:(id)arg1;
 - (void)_delayedModelBaseScaleFactorCalculation;
@@ -63,9 +63,9 @@ __attribute__((visibility("hidden")))
 - (id)newContentSnapshotPDFDataIncludingAdornments:(BOOL)arg1 atScale:(double)arg2 inRect:(struct CGRect)arg3 onOverlayAtPageIndex:(unsigned long long)arg4 forAnnotationController:(id)arg5;
 - (void)pdfDocument:(id)arg1 didExchangePage:(id)arg2 atIndex:(unsigned long long)arg3 withPage:(id)arg4 atIndex:(unsigned long long)arg5;
 - (void)pdfDocument:(id)arg1 didInsertPage:(id)arg2 atIndex:(unsigned long long)arg3;
-- (void)pdfDocument:(id)arg1 didInsertPagePlaceholder:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)pdfDocument:(id)arg1 didRemovePage:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)pdfDocument:(id)arg1 didReplacePagePlaceholder:(id)arg2 atIndex:(unsigned long long)arg3 withPage:(id)arg4;
+- (void)pdfDocumentDidRemoveAllPagesOrPlaceholders;
 - (void)penStrokeCompletedForAnnotationController:(id)arg1;
 - (id)popoverPresentingViewControllerForAnnotationController:(id)arg1;
 - (void)positionSketchOverlay:(id)arg1 forAnnotationController:(id)arg2;

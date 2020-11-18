@@ -31,6 +31,7 @@
     MISSING_TYPE *mediumGradientHeight;
     MISSING_TYPE *smallGradientHeight;
     MISSING_TYPE *footerImageExtraHeight;
+    MISSING_TYPE *minimumBaseFooterImageHeight;
 }
 
 @end

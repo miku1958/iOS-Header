@@ -30,9 +30,9 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType finalCompletionHandler; // @synthesize finalCompletionHandler=_finalCompletionHandler;
 @property (readonly) unsigned long long hash;
-@property (readonly, getter=isPeerAvailable) BOOL peerAvailable;
 @property (readonly) Class superclass;
 
++ (BOOL)isPeerAvailable;
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)__deviceAddedToAccount:(id)arg1;

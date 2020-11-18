@@ -76,6 +76,7 @@
 - (void).cxx_destruct;
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityPerformMagicTap;
+- (void)adjustLargeTitleSize;
 - (void)beginEditing;
 - (BOOL)canBecomeFirstResponder;
 - (id)cancelBarButtonItem;
@@ -110,9 +111,11 @@
 - (void)setActionsHidden:(BOOL)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setEditingState:(unsigned long long)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setupDrawerIfNeeded;
+- (BOOL)shouldUseOverlaidDrawer;
 - (void)showActionOutputPickerFromSourceResponder:(id)arg1 allowExtensionInput:(BOOL)arg2 variableProvider:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (void)stopWorkflow;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)undoLastWorkflowEdit;
 - (void)updateBottomContentInsetForVisibility:(unsigned long long)arg1;
 - (void)updateDrawerVisibility;

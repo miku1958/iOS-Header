@@ -8,7 +8,7 @@
 
 #import <ARKit/ARTechniqueBusyState-Protocol.h>
 
-@class NSArray, NSObject, NSString;
+@class AREspressoInputBuffer, NSArray, NSObject, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface ARMLImageProcessingTechnique : ARImageBasedTechnique <ARTechniqueBusyState>
@@ -16,6 +16,8 @@
     NSObject<OS_dispatch_queue> *_processingQueue;
     NSObject<OS_dispatch_semaphore> *_processingSemaphore;
     struct os_unfair_lock_s _prepLock;
+    AREspressoInputBuffer *_espressoInputBuffer_t;
+    struct os_unfair_lock_s _espressoInputBufferLock;
     void *_espressoContext;
     void *_espressoPlan;
     CDStruct_2bc666a5 _espressoNetwork;
@@ -53,8 +55,10 @@
 - (void)_endMLCreateResultSignpostWithTimestamp:(double)arg1;
 - (void)_endMLProcessingSignpostWithTimestamp:(double)arg1;
 - (void)_endMLRunNetworkSignpostWithTimestamp:(double)arg1;
+- (id)_getAREspressoInputBuffer;
 - (long long)_getDeviceOrientation;
 - (id)_resampleImage:(id)arg1 rotationOfResultTensor:(long long)arg2 networkInputSize:(struct CGSize)arg3;
+- (void)_runNeuralNetworkAndPushResult:(id)arg1 originalImageData:(id)arg2 regionOfInterest:(struct CGSize)arg3 rotationOfResultTensor:(long long)arg4;
 - (void)_startLoadingMLModelSignpost;
 - (void)_startMLCreateResultSignpostWithTimestamp:(double)arg1 orientation:(long long)arg2 outputSize:(struct CGSize)arg3;
 - (void)_startMLProcessingSignpostWithTimestamp:(double)arg1;

@@ -16,6 +16,8 @@
     UILabel *_placeLabel;
     UIVisualEffectView *_blurEffectView;
     CKSpotlightQueryResult *_result;
+    NSString *_searchText;
+    unsigned long long _mode;
     struct UIEdgeInsets marginInsets;
 }
 
@@ -25,8 +27,10 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;
+@property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) UILabel *placeLabel; // @synthesize placeLabel=_placeLabel;
 @property (strong, nonatomic) CKSpotlightQueryResult *result; // @synthesize result=_result;
+@property (strong, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;
 @property (readonly) Class superclass;
 
 + (id)reuseIdentifier;
@@ -39,6 +43,7 @@
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)refreshForSearchTextIfNeeded:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

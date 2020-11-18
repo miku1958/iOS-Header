@@ -34,6 +34,7 @@
     long long _audioStartTimestampDiffs;
     double _audioDuration;
     long long _promptCount;
+    long long _errorCode;
     long long _sourceOfTTS;
     long long _synthesisToSpeechTimeGap;
     long long _waitForSynthesisToFinishTimeDelay;
@@ -44,6 +45,7 @@
 @property long long audioStartTimestampDiffs; // @synthesize audioStartTimestampDiffs=_audioStartTimestampDiffs;
 @property BOOL canUseServerTTS; // @synthesize canUseServerTTS=_canUseServerTTS;
 @property long long eagerRequestCreatedTimeStampDiffs; // @synthesize eagerRequestCreatedTimeStampDiffs=_eagerRequestCreatedTimeStampDiffs;
+@property long long errorCode; // @synthesize errorCode=_errorCode;
 @property BOOL isCacheHitFromDisk; // @synthesize isCacheHitFromDisk=_isCacheHitFromDisk;
 @property BOOL isCacheHitFromMemory; // @synthesize isCacheHitFromMemory=_isCacheHitFromMemory;
 @property BOOL isServerStreamTTS; // @synthesize isServerStreamTTS=_isServerStreamTTS;

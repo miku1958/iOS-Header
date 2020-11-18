@@ -11,7 +11,6 @@
 }
 
 - (id)_buttonBarGroupSetForApplicationAssistantItem:(id)arg1 withSystemInputAssistantItem:(id)arg2;
-- (void)_setNonTransformedFrame:(struct CGRect)arg1 forSubview:(id)arg2;
 - (void)configureButtonBarsInViewSet:(id)arg1 forApplicationAssistantItem:(id)arg2 withSystemAssistantItem:(id)arg3 withAssistantView:(id)arg4;
 - (void)layoutViewSet:(id)arg1 inBounds:(struct CGRect)arg2 forAssistantView:(id)arg3;
 - (BOOL)usesUnifiedButtonBar;

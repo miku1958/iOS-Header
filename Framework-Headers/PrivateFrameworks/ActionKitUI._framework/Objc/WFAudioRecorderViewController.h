@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface WFAudioRecorderViewController : WFAudioInputViewController <WFAudioRecorderDelegate>
 {
     BOOL _startImmediately;
+    BOOL _isFinishing;
     CDUnknownBlockType _completionHandler;
     double _recordingDuration;
     WFAudioRecorder *_audioRecorder;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) UIButton *inputButton; // @synthesize inputButton=_inputButton;
+@property (nonatomic) BOOL isFinishing; // @synthesize isFinishing=_isFinishing;
 @property (nonatomic) double recordingDuration; // @synthesize recordingDuration=_recordingDuration;
 @property (nonatomic) BOOL startImmediately; // @synthesize startImmediately=_startImmediately;
 @property (readonly) Class superclass;

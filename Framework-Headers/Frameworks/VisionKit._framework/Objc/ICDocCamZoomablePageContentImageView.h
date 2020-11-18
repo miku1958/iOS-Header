@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_accessibilityScrollAncestorForSelector:(SEL)arg1;
-- (BOOL)_canShowWhileLocked;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 
 @end

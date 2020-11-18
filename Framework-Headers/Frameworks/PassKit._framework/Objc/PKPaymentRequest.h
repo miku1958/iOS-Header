@@ -139,6 +139,7 @@
 - (unsigned long long)_contactFieldsToAddressFields:(id)arg1;
 - (id)_transactionAmount;
 - (void)dealloc;
+- (id)description;
 - (id)disbursementPaymentRequest;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

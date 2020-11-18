@@ -59,6 +59,7 @@
 - (double)offScreenContentScrollDistance;
 - (void)performExpansion:(BOOL)arg1 withSectionIndex:(unsigned long long)arg2;
 - (void)purgeAndResetTable;
+- (void)purgeMemory;
 - (void)replaceResult:(id)arg1 withResult:(id)arg2;
 - (void)scrollSectionToTop:(unsigned long long)arg1 animate:(BOOL)arg2;
 - (void)scrollTableToTop;

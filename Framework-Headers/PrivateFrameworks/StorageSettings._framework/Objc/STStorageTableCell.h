@@ -38,6 +38,7 @@
 - (void)createLargeFontConstraints;
 - (void)createNormalFontConstraints;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
+- (void)setEnabled:(BOOL)arg1;
 - (void)setupTitleAndInfoConstraints;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;

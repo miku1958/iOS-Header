@@ -70,6 +70,7 @@
 + (id)simpleStrategy;
 - (void).cxx_destruct;
 - (id)build;
+- (id)init;
 - (id)withDedupers:(id)arg1;
 - (id)withFavorites;
 - (id)withImprovers:(id)arg1;

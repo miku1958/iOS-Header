@@ -27,6 +27,7 @@
     UIBarButtonItem *_backBarButtonItem;
     UIBarButtonItem *_forwardBarButtonItem;
     NSLayoutConstraint *_loadingViewTopConstraint;
+    BOOL _supportsDarkMode;
     BOOL _displayHelpTopicsOnly;
     BOOL _hideDoneButton;
     BOOL _showTopicNameAsTitle;
@@ -58,6 +59,7 @@
 @property (strong, nonatomic) NSArray *searchTerms; // @synthesize searchTerms=_searchTerms;
 @property (nonatomic) BOOL showTopicNameAsTitle; // @synthesize showTopicNameAsTitle=_showTopicNameAsTitle;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL supportsDarkMode; // @synthesize supportsDarkMode=_supportsDarkMode;
 @property (strong, nonatomic) NSCache *topicCache; // @synthesize topicCache=_topicCache;
 @property (strong, nonatomic) HLPHelpUsageController *usageController; // @synthesize usageController=_usageController;
 @property (strong, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
@@ -83,6 +85,7 @@
 - (void)showHelpBookInfo:(id)arg1;
 - (void)showTableOfContent;
 - (void)showWebViewDelay;
+- (void)updateBackgroundColor;
 - (void)updateDoneButton;
 - (void)updateHTMLStringPath:(id)arg1 tag:(id)arg2 attribute:(id)arg3;
 - (void)updateNavigationButtons;

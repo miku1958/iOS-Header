@@ -58,7 +58,6 @@
 - (void)_endNicknameUpload;
 - (void)_evaluateIfAccountHasMultiplePhoneNumbers;
 - (void)_handleSaveNicknameError:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
-- (void)_incrementMeCardVersion;
 - (BOOL)_isNicknamesSharingEnabled;
 - (BOOL)_isUnderScrutiny;
 - (void)_loadAllInfoFromDiskIfAble;

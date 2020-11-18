@@ -20,6 +20,7 @@
 + (id)contentCategories;
 + (id)countDescription;
 + (id)outputTypes;
++ (id)ownedPasteboardTypes;
 + (id)ownedTypes;
 + (id)pluralTypeDescription;
 + (id)propertyBuilders;

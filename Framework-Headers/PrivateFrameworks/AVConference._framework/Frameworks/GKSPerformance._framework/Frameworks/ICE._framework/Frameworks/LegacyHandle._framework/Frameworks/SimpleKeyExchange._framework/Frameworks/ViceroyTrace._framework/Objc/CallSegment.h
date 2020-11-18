@@ -115,6 +115,8 @@
     int _frequency;
     NSString *_segmentName;
     NSString *_previousSegmentName;
+    NSString *_activeConnectionRegistry;
+    NSString *_suggestedLinkTypeCombo;
     id<VCAdaptiveLearningDelegate> _delegate;
     unsigned int _videoFrameNonFECTotalCounter;
     unsigned int _videoFrameNonFECCompleteCounter;
@@ -136,6 +138,7 @@
 @property (readonly) VCHistogram *SBR; // @synthesize SBR=_SBR;
 @property (readonly) VCHistogram *TBR; // @synthesize TBR=_TBR;
 @property (readonly) VCHistogram *VPLR; // @synthesize VPLR=_VPLR;
+@property (copy) NSString *activeConnectionRegistry; // @synthesize activeConnectionRegistry=_activeConnectionRegistry;
 @property int adjustedDuration; // @synthesize adjustedDuration=_adjustedDuration;
 @property (readonly) VCHistogram *audioErasures; // @synthesize audioErasures=_audioErasures;
 @property unsigned long long audioFlushPacketCount; // @synthesize audioFlushPacketCount=_audioFlushPacketCount;
@@ -183,6 +186,7 @@
 @property unsigned int significantOOOPacketCount; // @synthesize significantOOOPacketCount=_significantOOOPacketCount;
 @property double speechErasureTotalTime; // @synthesize speechErasureTotalTime=_speechErasureTotalTime;
 @property (readonly) VCHistogram *speechErasures; // @synthesize speechErasures=_speechErasures;
+@property (copy) NSString *suggestedLinkTypeCombo; // @synthesize suggestedLinkTypeCombo=_suggestedLinkTypeCombo;
 @property double totalAudioStallTime; // @synthesize totalAudioStallTime=_totalAudioStallTime;
 @property unsigned int totalCellDupRxDataBytes; // @synthesize totalCellDupRxDataBytes=_totalCellDupRxDataBytes;
 @property unsigned int totalCellDupTxDataBytes; // @synthesize totalCellDupTxDataBytes=_totalCellDupTxDataBytes;
@@ -214,6 +218,8 @@
 @property unsigned long long videoSentPacketCount; // @synthesize videoSentPacketCount=_videoSentPacketCount;
 @property (readonly) VCHistogram *videoStall; // @synthesize videoStall=_videoStall;
 
++ (id)connectionCategoryForType:(id)arg1;
++ (id)interfaceCategoryForType:(id)arg1;
 + (id)newSegmentNameWithComponents:(id)arg1 remoteInterface:(id)arg2 connectionType:(id)arg3 duplicationIndicator:(id)arg4;
 - (unsigned int)RTPeriod;
 - (void)changeDuplicationWithType:(unsigned short)arg1 payload:(id)arg2;

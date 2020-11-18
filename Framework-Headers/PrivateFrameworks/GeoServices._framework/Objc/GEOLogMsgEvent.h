@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLogMsgEventBatchTrafficProbe, GEOLogMsgEventClientACSuggestions, GEOLogMsgEventCommuteWindow, GEOLogMsgEventDirections, GEOLogMsgEventDisplayAnalytic, GEOLogMsgEventFullNavTrace, GEOLogMsgEventGenericAppError, GEOLogMsgEventGridDuration, GEOLogMsgEventListInteractionSession, GEOLogMsgEventLogFramework, GEOLogMsgEventMapKitCounts, GEOLogMsgEventMapLaunch, GEOLogMsgEventMapsWidgetsInteractionSession, GEOLogMsgEventMarcoLiteUsage, GEOLogMsgEventNetwork, GEOLogMsgEventParkedCar, GEOLogMsgEventPlaceDataCache, GEOLogMsgEventPredExTrainingData, GEOLogMsgEventProactiveSuggestionInteractionSession, GEOLogMsgEventRealtimeTrafficProbe, GEOLogMsgEventRefineSearchSession, GEOLogMsgEventStateTiming, GEOLogMsgEventTelemetric, GEOLogMsgEventThrottle, GEOLogMsgEventTileCacheAnalytic, GEOLogMsgEventTileSetState, GEOLogMsgEventTimeToLeaveHypothesis, GEOLogMsgEventTimeToLeaveInitialTravelTime, GEOLogMsgEventTransitAppLaunch, GEOLogMsgEventUserAction, GEOLogMsgEventWifiConnectionQualityProbe, LOGMSGEVENTLogMsgEventRideBookedSession, LOGMSGEVENTLogMsgEventRideBookingSession, LOGMSGEVENTLogMsgEventTableBookedSession, LOGMSGEVENTLogMsgEventTableBookingSession, NSMutableArray, PBDataReader;
+@class GEOLogMsgEventBatchTrafficProbe, GEOLogMsgEventClientACSuggestions, GEOLogMsgEventCommuteWindow, GEOLogMsgEventDirections, GEOLogMsgEventDisplayAnalytic, GEOLogMsgEventFullNavTrace, GEOLogMsgEventGenericAppError, GEOLogMsgEventGridDuration, GEOLogMsgEventListInteractionSession, GEOLogMsgEventLogFramework, GEOLogMsgEventMapKitCounts, GEOLogMsgEventMapLaunch, GEOLogMsgEventMapsWidgetsInteractionSession, GEOLogMsgEventMarcoLiteUsage, GEOLogMsgEventNetwork, GEOLogMsgEventParkedCar, GEOLogMsgEventPlaceDataCache, GEOLogMsgEventPredExTrainingData, GEOLogMsgEventProactiveSuggestionInteractionSession, GEOLogMsgEventRealtimeTrafficProbe, GEOLogMsgEventRefineSearchSession, GEOLogMsgEventStateTiming, GEOLogMsgEventTelemetric, GEOLogMsgEventThrottle, GEOLogMsgEventTileCacheAnalytic, GEOLogMsgEventTileSetState, GEOLogMsgEventTimeToLeaveHypothesis, GEOLogMsgEventTimeToLeaveInitialTravelTime, GEOLogMsgEventTransitAppLaunch, GEOLogMsgEventTripDepartureFeedback, GEOLogMsgEventUserAction, GEOLogMsgEventWifiConnectionQualityProbe, LOGMSGEVENTLogMsgEventRideBookedSession, LOGMSGEVENTLogMsgEventRideBookingSession, LOGMSGEVENTLogMsgEventTableBookedSession, LOGMSGEVENTLogMsgEventTableBookingSession, NSMutableArray, PBDataReader;
 
 @interface GEOLogMsgEvent : PBCodable <NSCopying>
 {
@@ -48,6 +48,7 @@
     GEOLogMsgEventTimeToLeaveHypothesis *_timeToLeaveHypothesisEvent;
     GEOLogMsgEventTimeToLeaveInitialTravelTime *_timeToLeaveInitialTravelTimeEvent;
     GEOLogMsgEventTransitAppLaunch *_transitAppLaunchEvent;
+    GEOLogMsgEventTripDepartureFeedback *_tripDepartureFeedback;
     double _usageEventTime;
     GEOLogMsgEventUserAction *_userActionEvent;
     GEOLogMsgEventWifiConnectionQualityProbe *_wifiConnectionQualityProbeEvent;
@@ -89,6 +90,7 @@
         unsigned int read_timeToLeaveHypothesisEvent:1;
         unsigned int read_timeToLeaveInitialTravelTimeEvent:1;
         unsigned int read_transitAppLaunchEvent:1;
+        unsigned int read_tripDepartureFeedback:1;
         unsigned int read_userActionEvent:1;
         unsigned int read_wifiConnectionQualityProbeEvent:1;
         unsigned int wrote_batchTrafficProbeCollection:1;
@@ -125,6 +127,7 @@
         unsigned int wrote_timeToLeaveHypothesisEvent:1;
         unsigned int wrote_timeToLeaveInitialTravelTimeEvent:1;
         unsigned int wrote_transitAppLaunchEvent:1;
+        unsigned int wrote_tripDepartureFeedback:1;
         unsigned int wrote_usageEventTime:1;
         unsigned int wrote_userActionEvent:1;
         unsigned int wrote_wifiConnectionQualityProbeEvent:1;
@@ -175,6 +178,7 @@
 @property (readonly, nonatomic) BOOL hasTimeToLeaveHypothesisEvent;
 @property (readonly, nonatomic) BOOL hasTimeToLeaveInitialTravelTimeEvent;
 @property (readonly, nonatomic) BOOL hasTransitAppLaunchEvent;
+@property (readonly, nonatomic) BOOL hasTripDepartureFeedback;
 @property (nonatomic) BOOL hasUsageEventTime;
 @property (readonly, nonatomic) BOOL hasUserActionEvent;
 @property (readonly, nonatomic) BOOL hasWifiConnectionQualityProbeEvent;
@@ -204,16 +208,12 @@
 @property (strong, nonatomic) GEOLogMsgEventTimeToLeaveHypothesis *timeToLeaveHypothesisEvent;
 @property (strong, nonatomic) GEOLogMsgEventTimeToLeaveInitialTravelTime *timeToLeaveInitialTravelTimeEvent;
 @property (strong, nonatomic) GEOLogMsgEventTransitAppLaunch *transitAppLaunchEvent;
+@property (strong, nonatomic) GEOLogMsgEventTripDepartureFeedback *tripDepartureFeedback;
 @property (nonatomic) double usageEventTime;
 @property (strong, nonatomic) GEOLogMsgEventUserAction *userActionEvent;
 @property (strong, nonatomic) GEOLogMsgEventWifiConnectionQualityProbe *wifiConnectionQualityProbeEvent;
 
-+ (void)_initializeAcceptedLogMsgStateTypes;
-+ (id)acceptedLogMsgStates;
-+ (id)acceptedLogMsgStatesForLogMsgEventType:(int)arg1;
 + (BOOL)isValid:(id)arg1;
-+ (id)logMsgEventSettings;
-+ (BOOL)logMsgEventType:(int)arg1 acceptsLogMsgStateType:(int)arg2;
 + (Class)logMsgStateType;
 - (void).cxx_destruct;
 - (int)StringAsEventType:(id)arg1;
@@ -252,38 +252,23 @@
 - (void)_readTimeToLeaveHypothesisEvent;
 - (void)_readTimeToLeaveInitialTravelTimeEvent;
 - (void)_readTransitAppLaunchEvent;
+- (void)_readTripDepartureFeedback;
 - (void)_readUserActionEvent;
 - (void)_readWifiConnectionQualityProbeEvent;
-- (BOOL)acceptsLogMsgStateType:(int)arg1;
 - (void)addLogMsgState:(id)arg1;
 - (void)clearLogMsgStates;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (BOOL)disallowedStateWithStateType:(int)arg1 logMessage:(id)arg2;
-- (id)disallowedStatesForLogMessage:(id)arg1;
 - (id)eventTypeAsString:(int)arg1;
 - (unsigned long long)hash;
-- (BOOL)isApplicationStatesAllowed;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isFullCarPlayStateAllowed;
-- (BOOL)isFullExperimentsStateAllowed;
-- (BOOL)isLogMsgEventSettingsAllowed:(id)arg1 defaultValue:(BOOL)arg2;
-- (BOOL)isNavigationSessionAllowed;
-- (BOOL)isSessionlessEvent;
 - (id)logMsgStateAtIndex:(unsigned long long)arg1;
-- (id)logMsgStateOfType:(int)arg1;
-- (id)logMsgStateOfType:(int)arg1 stateOrigin:(id)arg2;
 - (unsigned long long)logMsgStatesCount;
 - (void)mergeFrom:(id)arg1;
-- (unsigned long long)numberOfLogMsgStatesOfType:(int)arg1;
-- (unsigned long long)numberOfLogMsgStatesOfType:(int)arg1 stateOrigin:(id)arg2;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (BOOL)supportsCohortSession;
-- (void)unregisterLogMsgStateOfType:(int)arg1;
-- (void)unregisterLogMsgStatesOfTypes:(id)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

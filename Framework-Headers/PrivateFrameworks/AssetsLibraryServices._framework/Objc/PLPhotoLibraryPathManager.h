@@ -8,7 +8,7 @@
 
 #import <AssetsLibraryServices/PLPhotoLibraryPathManager-Protocol.h>
 
-@class NSString, NSURL, PLPhotoLibraryPathManagerCore;
+@class NSString, NSURL, PLFileSystemCapabilities, PLPhotoLibraryPathManagerCore;
 
 @interface PLPhotoLibraryPathManager : NSObject <PLPhotoLibraryPathManager>
 {
@@ -18,6 +18,7 @@
 
 @property (readonly, copy) NSString *assetUUIDRecoveryMappingPath;
 @property (readonly, copy) NSString *baseDirectory;
+@property (readonly, nonatomic) PLFileSystemCapabilities *capabilities;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

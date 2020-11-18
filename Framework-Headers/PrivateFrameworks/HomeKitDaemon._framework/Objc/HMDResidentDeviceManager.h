@@ -43,6 +43,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=hasFirstHomeZoneFetch) BOOL firstHomeZoneFetch; // @synthesize firstHomeZoneFetch=_firstHomeZoneFetch;
 @property (nonatomic, getter=hasFirstLegacyFetch) BOOL firstLegacyFetch; // @synthesize firstLegacyFetch=_firstLegacyFetch;
+@property (readonly, nonatomic) BOOL hasTrustZoneCapableResident;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (nonatomic) long long lastAtHomeLevel; // @synthesize lastAtHomeLevel=_lastAtHomeLevel;
@@ -51,7 +52,7 @@
 @property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly, weak, nonatomic) HMDResidentDevice *primaryResidentDevice;
-@property (strong, nonatomic) NSUUID *primaryResidentUUID; // @synthesize primaryResidentUUID=_primaryResidentUUID;
+@property (readonly, nonatomic) NSUUID *primaryResidentUUID; // @synthesize primaryResidentUUID=_primaryResidentUUID;
 @property (readonly, nonatomic, getter=isResidentAvailable) BOOL residentAvailable; // @synthesize residentAvailable=_residentAvailable;
 @property (readonly, copy, nonatomic) NSArray *residentDevices;
 @property (strong) HMFTimer *residentMonitorTimer; // @synthesize residentMonitorTimer=_residentMonitorTimer;
@@ -95,10 +96,10 @@
 - (void)addDataSource:(id)arg1;
 - (void)atHomeLevelChanged:(long long)arg1;
 - (long long)compareResidentDeviceA:(id)arg1 electionParametersA:(id)arg2 residentDeviceB:(id)arg3 electionParametersB:(id)arg4;
-- (void)conditionallyConfirmOnBoot;
 - (void)configureWithHome:(id)arg1;
 - (void)confirmAsResident;
 - (void)confirmOnAvailability;
+- (void)confirmPrimaryResident;
 - (void)confirmWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)descriptionWithPointer:(BOOL)arg1;
@@ -128,7 +129,7 @@
 - (void)timerDidFire:(id)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
-- (void)updatePrimaryResidentWithUUID:(id)arg1;
+- (void)updatePrimaryResidentWithUUID:(id)arg1 actions:(id)arg2;
 - (void)updateResidentAvailability;
 
 @end

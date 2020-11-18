@@ -6,11 +6,12 @@
 
 #import <WatchListKit/WLKAsyncOperation.h>
 
-@class AMSURLRequestEncoder, AMSURLSession, NSData, NSDate, NSError, NSHTTPURLResponse, NSString, NSURLRequest, NSURLSessionDataTask;
+@class AMSURLRequestEncoder, AMSURLSession, NSData, NSDate, NSError, NSHTTPURLResponse, NSNumber, NSString, NSURLRequest, NSURLSessionDataTask;
 
 @interface WLKNetworkRequestOperation : WLKAsyncOperation
 {
     NSString *_identifier;
+    NSNumber *_DSID;
     NSURLRequest *_request;
     long long _options;
     NSHTTPURLResponse *_httpResponse;
@@ -24,6 +25,7 @@
     unsigned long long _signpostIdentifier;
 }
 
+@property (copy, nonatomic) NSNumber *DSID; // @synthesize DSID=_DSID;
 @property (strong, nonatomic) NSData *data; // @synthesize data=_data;
 @property (strong, nonatomic) AMSURLRequestEncoder *encoder; // @synthesize encoder=_encoder;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;

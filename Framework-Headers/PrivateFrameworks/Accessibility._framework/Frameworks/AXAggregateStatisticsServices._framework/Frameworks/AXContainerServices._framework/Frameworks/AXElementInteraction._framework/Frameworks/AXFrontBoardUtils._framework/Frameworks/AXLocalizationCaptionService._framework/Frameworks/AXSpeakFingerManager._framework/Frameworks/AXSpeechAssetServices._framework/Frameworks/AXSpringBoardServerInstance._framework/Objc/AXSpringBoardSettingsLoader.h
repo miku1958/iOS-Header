@@ -52,6 +52,7 @@
 + (void)checkScreenContrast;
 + (void)initialize;
 - (void).cxx_destruct;
+- (void)_bootstrapUltron;
 - (void)_handleGuidedAccessManagedConfigurationDidChange:(id)arg1;
 - (void)_hideVoiceOverEnabler;
 - (void)_initializeRemoteSettingsListener;
@@ -64,9 +65,12 @@
 - (void)_remoteAccessibilitySettingsChanged:(id)arg1;
 - (void)_showSwipeDetectionEnablerView;
 - (void)_showVibrationVoiceOverEnablerView;
+- (void)_startupUltronUIServer;
+- (void)_turnOnControlCenterModule;
 - (void)_updateAXSettings;
 - (void)_updateRemoteAccessibilitySettings;
 - (void)_voiceOverEnabled:(id)arg1;
+- (void)connectionWithServiceWasInterruptedForUserInterfaceClient:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)swipeDetectorCanceled;

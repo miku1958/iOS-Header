@@ -35,7 +35,7 @@
 - (id)conflictingReferenceForReference:(id)arg1;
 - (id)createTriggerWithRecord:(id)arg1 workflow:(id)arg2 error:(id *)arg3;
 - (id)createWorkflowWithOptions:(id)arg1 error:(id *)arg2;
-- (id)currentStateDataForAccessResourceWithIdentifier:(id)arg1 forReference:(id)arg2;
+- (id)currentPerWorkflowStateDataForAccessResourceWithIdentifier:(id)arg1 forReference:(id)arg2;
 - (void)deleteAllAccessResourceStateDataForReference:(id)arg1;
 - (BOOL)deleteReference:(id)arg1 tombstone:(BOOL)arg2 error:(id *)arg3;
 - (id)deletedWorkflows;
@@ -55,7 +55,7 @@
 - (BOOL)saveIfNecessary:(id *)arg1;
 - (void)setConflictingReference:(id)arg1 forReference:(id)arg2;
 - (void)setOutcome:(long long)arg1 forRunEvent:(id)arg2;
-- (void)setStateData:(id)arg1 forAccessResourceWithIdentifier:(id)arg2 forReference:(id)arg3;
+- (void)setPerWorkflowStateData:(id)arg1 forAccessResourceWithIdentifier:(id)arg2 forReference:(id)arg3;
 - (void)setSyncToken:(id)arg1;
 - (void)setTrustedToRunScripts:(BOOL)arg1 forReference:(id)arg2 onDomain:(id)arg3;
 - (void)setWorkflowOrdering:(id)arg1;
@@ -65,6 +65,7 @@
 - (id)sortedVisibleWorkflowsByName;
 - (id)sortedVisibleWorkflowsWithAssociatedAppBundleIdentifier:(id)arg1;
 - (id)sortedVisibleWorkflowsWithType:(id)arg1;
+- (id)sortedWorkflowsIncludingTombstonesAndConflicts;
 - (BOOL)startObservingChangesForResult:(id)arg1;
 - (id)syncToken;
 - (id)visiblePredicate;

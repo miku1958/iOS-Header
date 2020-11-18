@@ -6,25 +6,18 @@
 
 #import <WorkflowKit/WFEnumerationParameter.h>
 
-@class NSArray, NSDictionary;
+@class NSArray;
 
 @interface WFSpeakTextLanguagePickerParameter : WFEnumerationParameter
 {
     NSArray *_possibleStates;
-    NSDictionary *_languageCodesForLanguageLocaleNames;
-    NSDictionary *_languageCodesForCurrentLocaleNames;
 }
 
-@property (readonly, nonatomic) NSDictionary *languageCodesForCurrentLocaleNames; // @synthesize languageCodesForCurrentLocaleNames=_languageCodesForCurrentLocaleNames;
-@property (readonly, nonatomic) NSDictionary *languageCodesForLanguageLocaleNames; // @synthesize languageCodesForLanguageLocaleNames=_languageCodesForLanguageLocaleNames;
-
 - (void).cxx_destruct;
+- (id)availableLanguageCodes;
 - (id)defaultLanguageCode;
 - (id)defaultSerializedRepresentation;
-- (id)languageCodeForParameterValue:(id)arg1;
-- (id)languageLocaleLanguageNameForLanguageCode:(id)arg1;
 - (id)localizedLabelForPossibleState:(id)arg1;
-- (void)populateCodesForLanguagesDictionaries;
 - (id)possibleStates;
 
 @end

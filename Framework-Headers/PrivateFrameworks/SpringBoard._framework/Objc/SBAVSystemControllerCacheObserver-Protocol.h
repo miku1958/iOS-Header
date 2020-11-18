@@ -17,6 +17,7 @@
 - (void)cache:(SBAVSystemControllerCache *)arg1 didUpdateAirplayDisplayActive:(BOOL)arg2;
 - (void)cache:(SBAVSystemControllerCache *)arg1 didUpdatePickableRoutes:(NSArray *)arg2;
 - (void)cache:(SBAVSystemControllerCache *)arg1 didUpdateRecordingPID:(int)arg2;
+- (void)cache:(SBAVSystemControllerCache *)arg1 didUpdateVolumeLimitEnforced:(BOOL)arg2;
 - (void)cacheDidRebuildAfterServerDeath:(SBAVSystemControllerCache *)arg1;
 @end
 

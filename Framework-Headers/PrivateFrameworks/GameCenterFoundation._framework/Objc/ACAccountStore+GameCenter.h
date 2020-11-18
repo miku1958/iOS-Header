@@ -7,6 +7,7 @@
 #import <Accounts/ACAccountStore.h>
 
 @interface ACAccountStore (GameCenter)
+- (void)_getAltDSIDFromIDMSForCredential:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_gkAccountForAppleID:(id)arg1;
 - (id)_gkAllCredentials;
 - (id)_gkAllCredentialsForEnvironment:(long long)arg1;

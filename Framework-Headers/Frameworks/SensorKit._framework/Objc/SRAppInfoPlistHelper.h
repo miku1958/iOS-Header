@@ -28,6 +28,7 @@
 + (id)_usageDescriptionWithInfoDictionary:(id)arg1;
 + (id)appName:(id)arg1;
 + (id)infoDictionaryForBundle:(id)arg1;
++ (void)initialize;
 + (BOOL)isValidString:(id)arg1;
 + (id)privacyLink:(id)arg1;
 + (id)usageDescription:(id)arg1;

@@ -7,19 +7,24 @@
 #import <objc/NSObject.h>
 
 @class NSXPCConnection;
+@protocol OS_dispatch_queue;
 
 @interface MCUserMDMClient : NSObject
 {
     NSXPCConnection *_xpcConnection;
+    NSObject<OS_dispatch_queue> *_xpcConnectionSyncQueue;
 }
 
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *xpcConnectionSyncQueue; // @synthesize xpcConnectionSyncQueue=_xpcConnectionSyncQueue;
 
 + (id)sharedClient;
 - (void).cxx_destruct;
-- (void)_createAndStartMDMXPCConnection;
+- (void)_destroyXPCConnectionAndInvalidate:(BOOL)arg1;
+- (void)_queue_createAndStartMDMXPCConnection;
 - (void)dealloc;
 - (void)getAssertionDescriptionsWithCompletion:(CDUnknownBlockType)arg1;
+- (id)init;
 - (void)processUserRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)processUserRequest:(id)arg1 outError:(id *)arg2;
 - (id)pushToken;

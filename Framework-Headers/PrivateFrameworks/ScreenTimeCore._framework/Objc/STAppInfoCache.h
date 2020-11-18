@@ -29,9 +29,9 @@
 + (id)sharedCache;
 - (void).cxx_destruct;
 - (id)_appInfoForBundleIdentifier:(id)arg1;
-- (void)_fetchAppInfoAndNotifyWithBundleIdentifiers:(id)arg1;
-- (void)_fetchAppInfoAndNotifyWithBundleIdentifiers:(id)arg1 timeoutInterval:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_fetchAppInfoFromLaunchServicesWithBundleIdentifier:(id)arg1;
+- (void)_fetchAppStoreInfoAndNotifyWithBundleIdentifiers:(id)arg1;
+- (void)_fetchAppStoreInfoAndNotifyWithBundleIdentifiers:(id)arg1 timeoutInterval:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_fetchSyncedInstalledAppInfoForBundleIdentifier:(id)arg1;
 - (void)_finishedFetchingAppInfoByBundleIdentifier:(id)arg1;
 - (void)_handleiTunesResponseForBundleIdentifiers:(id)arg1 response:(id)arg2 data:(id)arg3 error:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;

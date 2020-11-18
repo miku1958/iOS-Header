@@ -13,7 +13,7 @@
 
 @interface PKDiscoveryEngagementMessage : PKDiscoveryObject <NSSecureCoding, NSCopying>
 {
-    BOOL _reportIdentifier;
+    BOOL _reportIdentifierToAggd;
     long long _type;
     long long _passQualifier;
     NSString *_titleKey;
@@ -30,7 +30,7 @@
 @property (readonly, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 @property (strong, nonatomic) NSString *messageKey; // @synthesize messageKey=_messageKey;
 @property (nonatomic) long long passQualifier; // @synthesize passQualifier=_passQualifier;
-@property (nonatomic, getter=canReportIdentifier) BOOL reportIdentifier; // @synthesize reportIdentifier=_reportIdentifier;
+@property (nonatomic, getter=canReportIdentifierToAggd) BOOL reportIdentifierToAggd; // @synthesize reportIdentifierToAggd=_reportIdentifierToAggd;
 @property (strong, nonatomic) NSString *titleKey; // @synthesize titleKey=_titleKey;
 @property (nonatomic) long long type; // @synthesize type=_type;
 

@@ -38,7 +38,7 @@
 - (struct CGSize)preferredContentSize;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidAppear:(BOOL)arg1;
-- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;
 
 @end

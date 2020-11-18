@@ -50,6 +50,7 @@
     HFItem *_resetItem;
     HFItem *_accessoryItem;
     HFItem *_audioSettingsItem;
+    HFItem *_cameraStatusLightItem;
     HFItem *_cameraNightModeItem;
     HFItem *_internalDebuggingItem;
     HFItem *_restartItem;
@@ -65,6 +66,7 @@
     NSArray *_inputSourceEditorSections;
     NSArray *_televisionSettingsSections;
     NSArray *_cameraRecordingSettingSections;
+    NSArray *_cameraStatusLightSections;
     NSArray *_cameraNightModeSections;
     HFAssociatedServiceTypeOptionItemProvider *_associatedServiceTypeOptionItemProvider;
     HFStaticItemProvider *_staticItemProvider;
@@ -88,6 +90,8 @@
 @property (strong, nonatomic) NSArray *cameraNightModeSections; // @synthesize cameraNightModeSections=_cameraNightModeSections;
 @property (strong, nonatomic) HUCameraRecordingSettingsModule *cameraRecordingItemModule; // @synthesize cameraRecordingItemModule=_cameraRecordingItemModule;
 @property (strong, nonatomic) NSArray *cameraRecordingSettingSections; // @synthesize cameraRecordingSettingSections=_cameraRecordingSettingSections;
+@property (strong, nonatomic) HFItem *cameraStatusLightItem; // @synthesize cameraStatusLightItem=_cameraStatusLightItem;
+@property (strong, nonatomic) NSArray *cameraStatusLightSections; // @synthesize cameraStatusLightSections=_cameraStatusLightSections;
 @property (strong, nonatomic) NSArray *characteristicSections; // @synthesize characteristicSections=_characteristicSections;
 @property (strong, nonatomic) HFItem *createNewRoomItem; // @synthesize createNewRoomItem=_createNewRoomItem;
 @property (readonly, nonatomic) HUAccessoryDebugModule *debugAccessoryItemModule; // @synthesize debugAccessoryItemModule=_debugAccessoryItemModule;
@@ -184,7 +188,8 @@
 - (BOOL)sourceItemIsSingleServiceAccessory;
 - (void)toggleAccessoryInfoItem:(id)arg1;
 - (void)unregisterKVO;
-- (void)updateCameraNightModeOn:(BOOL)arg1;
+- (void)updateCameraNightMode:(BOOL)arg1;
+- (void)updateCameraStatusLight:(BOOL)arg1;
 
 @end
 

@@ -36,6 +36,7 @@
 + (id)imperialQuarts;
 + (id)imperialTablespoons;
 + (id)imperialTeaspoons;
++ (void)initialize;
 + (id)kiloliters;
 + (id)liters;
 + (id)megaliters;

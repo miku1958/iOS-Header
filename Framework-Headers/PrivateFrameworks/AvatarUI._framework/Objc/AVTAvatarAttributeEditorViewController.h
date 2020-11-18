@@ -27,6 +27,7 @@
     BOOL _hasMadeAnySelection;
     BOOL _isAnimatingHighlight;
     BOOL _allowFacetracking;
+    BOOL _collectionViewIsPerformingBatchUpdates;
     id<AVTAvatarAttributeEditorViewControllerDelegate> _delegate;
     id<AVTAvatarAttributeEditorLayout> _currentLayout;
     AVTAvatarAttributeEditorModelManager *_modelManager;
@@ -54,6 +55,7 @@
     CDUnknownBlockType _pendingUnhighlightBlock;
     _AVTAvatarRecordImageProvider *_headerPreviewImageRenderer;
     id<AVTTaskScheduler> _headerPreviewScheduler;
+    CDUnknownBlockType _pendingCollectionViewReloadDataBlock;
 }
 
 @property (nonatomic) BOOL allowFacetracking; // @synthesize allowFacetracking=_allowFacetracking;
@@ -65,6 +67,7 @@
 @property (readonly, nonatomic) AVTViewSessionProvider *avtViewSessionProvider; // @synthesize avtViewSessionProvider=_avtViewSessionProvider;
 @property (strong, nonatomic) AVTViewThrottler *avtViewThrottler; // @synthesize avtViewThrottler=_avtViewThrottler;
 @property (strong, nonatomic) AVTCollapsibleHeaderController *collapsibleHeaderController; // @synthesize collapsibleHeaderController=_collapsibleHeaderController;
+@property (nonatomic) BOOL collectionViewIsPerformingBatchUpdates; // @synthesize collectionViewIsPerformingBatchUpdates=_collectionViewIsPerformingBatchUpdates;
 @property (strong, nonatomic) id<AVTAvatarAttributeEditorLayout> currentLayout; // @synthesize currentLayout=_currentLayout;
 @property (strong, nonatomic) AVTTransition *currentTransition; // @synthesize currentTransition=_currentTransition;
 @property (strong, nonatomic) AVTAvatarAttributeEditorDataSource *dataSource; // @synthesize dataSource=_dataSource;
@@ -85,6 +88,7 @@
 @property (readonly, nonatomic) BOOL isCreating; // @synthesize isCreating=_isCreating;
 @property (strong, nonatomic) NSDate *lastPosedAvatarImageRenderingTime; // @synthesize lastPosedAvatarImageRenderingTime=_lastPosedAvatarImageRenderingTime;
 @property (readonly, nonatomic) AVTAvatarAttributeEditorModelManager *modelManager; // @synthesize modelManager=_modelManager;
+@property (copy, nonatomic) CDUnknownBlockType pendingCollectionViewReloadDataBlock; // @synthesize pendingCollectionViewReloadDataBlock=_pendingCollectionViewReloadDataBlock;
 @property (copy, nonatomic) CDUnknownBlockType pendingUnhighlightBlock; // @synthesize pendingUnhighlightBlock=_pendingUnhighlightBlock;
 @property (copy, nonatomic) CDUnknownBlockType postSessionDidBecomeActiveHandler; // @synthesize postSessionDidBecomeActiveHandler=_postSessionDidBecomeActiveHandler;
 @property (strong, nonatomic) AVTShadowView *shadowView; // @synthesize shadowView=_shadowView;
@@ -145,6 +149,8 @@
 - (void)presentActionSheetForSelection:(id)arg1 sender:(id)arg2;
 - (id)presetSectionItemForIndexPath:(id)arg1;
 - (void)rebuildUIModelAfterSelectionInSection:(id)arg1 senderRect:(struct CGRect)arg2;
+- (void)reloadCollectionViewDataWithCompletion:(CDUnknownBlockType)arg1;
+- (void)resetAllSectionControllersStateToDefault;
 - (void)sectionHeaderView:(id)arg1 didTapAccessorySelection:(id)arg2 sender:(id)arg3;
 - (void)selectCategory:(id)arg1 withCompletionDelay:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)selectedItemInSection:(id)arg1;

@@ -16,19 +16,28 @@
     UIView *__topMaskingView;
     UIView *__bottomMaskingView;
     UIImageView *__viewportBorderView;
+    UIImageView *__topLeftCornerView;
+    UIImageView *__topRightCornerView;
+    UIImageView *__bottomLeftCornerView;
+    UIImageView *__bottomRightCornerView;
 }
 
+@property (readonly, nonatomic) UIImageView *_bottomLeftCornerView; // @synthesize _bottomLeftCornerView=__bottomLeftCornerView;
 @property (readonly, nonatomic) UIView *_bottomMaskingView; // @synthesize _bottomMaskingView=__bottomMaskingView;
+@property (readonly, nonatomic) UIImageView *_bottomRightCornerView; // @synthesize _bottomRightCornerView=__bottomRightCornerView;
+@property (readonly, nonatomic) UIImageView *_topLeftCornerView; // @synthesize _topLeftCornerView=__topLeftCornerView;
 @property (readonly, nonatomic) UIView *_topMaskingView; // @synthesize _topMaskingView=__topMaskingView;
+@property (readonly, nonatomic) UIImageView *_topRightCornerView; // @synthesize _topRightCornerView=__topRightCornerView;
 @property (readonly, nonatomic) UIImageView *_viewportBorderView; // @synthesize _viewportBorderView=__viewportBorderView;
 @property (nonatomic) long long maskingStyle; // @synthesize maskingStyle=_maskingStyle;
 @property (readonly, nonatomic) double viewportBottomInset; // @synthesize viewportBottomInset=_viewportBottomInset;
 @property (readonly, nonatomic) double viewportTopInset; // @synthesize viewportTopInset=_viewportTopInset;
 
 - (void).cxx_destruct;
+- (id)_newViewportCornerImage;
+- (id)_newViewportTemplateImage;
 - (double)_opacityForMaskingStyle:(long long)arg1;
 - (void)_updateMaskingOpacityWithDuration:(double)arg1;
-- (id)_viewportTemplateImage;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;

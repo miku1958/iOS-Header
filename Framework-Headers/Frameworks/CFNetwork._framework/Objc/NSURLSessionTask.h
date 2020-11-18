@@ -146,10 +146,12 @@
 - (const struct __CFDictionary *)_copySocketStreamProperties;
 - (const struct XCookieStorage *)_createXCookieStorage;
 - (const struct XCredentialStorage *)_createXCredentialStorage;
+- (void)_didSendMetrics;
 - (void)_finishProgressReporting;
 - (void)_getAuthenticationHeadersForResponse:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (const struct __CFSet *)_getAuthenticatorStatusCodes;
 - (void)_logUnimplemented:(SEL)arg1;
+- (BOOL)_needSendingMetrics;
 - (void)_onSessionQueue_cleanupAndBreakCycles;
 - (void)_onqueue_adjustBytesPerSecondLimit:(long long)arg1;
 - (void)_onqueue_adjustPriorityHint:(float)arg1;

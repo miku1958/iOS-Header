@@ -14,6 +14,7 @@
 
 @property (readonly, nonatomic) NSString *readableSampleType;
 
+- (id)accessResourcesToBeAuthorizedImplicitlyForUpdatedParameterState:(id)arg1 forParameter:(id)arg2;
 - (id)configurationData;
 - (id)createStateForParameter:(id)arg1 fromSerializedRepresentation:(id)arg2;
 - (void)finishRunningWithError:(id)arg1;

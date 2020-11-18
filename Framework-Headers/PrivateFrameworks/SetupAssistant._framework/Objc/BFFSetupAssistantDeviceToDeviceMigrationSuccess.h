@@ -22,17 +22,20 @@ __attribute__((visibility("hidden")))
     NSString *_sourceDeviceProductVersion;
     NSString *_targetDeviceModel;
     NSString *_targetDeviceProductVersion;
+    BOOL _inAppleStore;
     struct {
         unsigned int restoreDuration:1;
         unsigned int size:1;
         unsigned int timestamp:1;
         unsigned int transferDuration:1;
         unsigned int connectionType:1;
+        unsigned int inAppleStore:1;
     } _has;
 }
 
 @property (nonatomic) int connectionType; // @synthesize connectionType=_connectionType;
 @property (nonatomic) BOOL hasConnectionType;
+@property (nonatomic) BOOL hasInAppleStore;
 @property (nonatomic) BOOL hasRestoreDuration;
 @property (nonatomic) BOOL hasSize;
 @property (readonly, nonatomic) BOOL hasSourceDeviceModel;
@@ -41,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasTargetDeviceProductVersion;
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic) BOOL hasTransferDuration;
+@property (nonatomic) BOOL inAppleStore; // @synthesize inAppleStore=_inAppleStore;
 @property (nonatomic) unsigned long long restoreDuration; // @synthesize restoreDuration=_restoreDuration;
 @property (nonatomic) unsigned long long size; // @synthesize size=_size;
 @property (strong, nonatomic) NSString *sourceDeviceModel; // @synthesize sourceDeviceModel=_sourceDeviceModel;

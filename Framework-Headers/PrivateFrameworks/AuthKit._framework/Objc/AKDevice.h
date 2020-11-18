@@ -77,7 +77,6 @@
 + (long long)currentDeviceAuthenticationMode;
 + (id)deviceSpecificLocalizedStringWithKey:(id)arg1;
 + (id)deviceWithSerializedData:(id)arg1;
-+ (id)personaIDIfCurrentPersonaIsEnterprise;
 + (BOOL)supportsSecureCoding;
 + (id)systemContainerCacheURL;
 + (id)systemContainerURL;

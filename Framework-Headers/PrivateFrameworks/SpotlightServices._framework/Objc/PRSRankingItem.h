@@ -90,9 +90,9 @@
 - (void).cxx_destruct;
 - (long long)compare:(id)arg1 currentTime:(double)arg2;
 - (long long)compareWithDates:(id)arg1 currentTime:(double)arg2;
+- (long long)compareWithTypes:(id)arg1;
 - (id)dataCollectionBundle;
 - (void)dealloc;
-- (id)dedupeIdentifier;
 - (BOOL)didMatchRankingDescriptor:(id)arg1;
 - (id)displayName;
 - (void)inferDateBinsFromDates:(id)arg1 intoBins:(int *)arg2;

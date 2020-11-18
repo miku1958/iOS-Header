@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)_queryForDateRanges;
 - (void)_queryForSamplesOfType:(id)arg1 batchHandler:(CDUnknownBlockType)arg2;
 - (void)_writeActivitySummaries;
+- (void)_writeAudiogramType;
 - (void)_writeCDAEntryWithValue:(id)arg1 type:(id)arg2 sourceName:(id)arg3 sourceVersion:(id)arg4 device:(id)arg5 unit:(id)arg6 metadata:(id)arg7 startDate:(id)arg8 endDate:(id)arg9;
 - (void)_writeCDAHeaderWithName:(id)arg1 birthData:(id)arg2 biologicalSex:(long long)arg3;
 - (void)_writeCDAOrganizerEnd;
@@ -65,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (void)_writeCategoryType:(id)arg1;
 - (void)_writeCorrelationType:(id)arg1;
 - (void)_writeDataForActivitySummaries;
+- (void)_writeDataForAudiogramType;
 - (void)_writeDataForCategoryType:(id)arg1;
 - (void)_writeDataForCorrelationType:(id)arg1;
 - (void)_writeDataForHRVAndTachograms;
@@ -79,6 +81,9 @@ __attribute__((visibility("hidden")))
 - (void)_writeWorkoutRouteForWorkout:(id)arg1 semaphore:(id)arg2;
 - (void)_writeWorkoutType;
 - (void)_writeXMLActivitySummary:(id)arg1 activeEnergyBurnedUnit:(id)arg2;
+- (void)_writeXMLAudiogramEnd;
+- (void)_writeXMLAudiogramSensitivityPoint:(id)arg1;
+- (void)_writeXMLAudiogramStartWithAudiogram:(id)arg1;
 - (void)_writeXMLCorrelationEnd;
 - (void)_writeXMLCorrelationStartWithType:(id)arg1 sourceName:(id)arg2 sourceVersion:(id)arg3 device:(id)arg4 metadata:(id)arg5 creationDate:(id)arg6 startDate:(id)arg7 endDate:(id)arg8;
 - (void)_writeXMLMedicalRecordWithType:(id)arg1 identifier:(id)arg2 sourceName:(id)arg3 sourceURL:(id)arg4 fhirVersion:(id)arg5 receivedDate:(id)arg6 jsonFilePath:(id)arg7;

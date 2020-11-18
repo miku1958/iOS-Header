@@ -11,7 +11,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMFTimer, HMFUnfairLock, NSArray, NSMutableSet, NSString, NSUUID;
+@class HMFTimer, HMFUnfairLock, NSArray, NSDictionary, NSMutableSet, NSString, NSUUID;
 @protocol HMDSettingsControllerProtocol, HMDUserDataControllerDelegate, HMDUserDataControllerTimerCreator, OS_dispatch_queue;
 
 @interface HMDUserDataController : NSObject <HMDAssistantAccessControlModelUpdateReceiver, HMDMediaContentProfileAccessControlModelUpdateReceiver, HMFLogging, HMFTimerDelegate>
@@ -51,9 +51,11 @@
 @property (strong) NSMutableSet *mediaContentProfileAccessControlAccessories; // @synthesize mediaContentProfileAccessControlAccessories=_mediaContentProfileAccessControlAccessories;
 @property (readonly, copy) NSArray *mediaContentProfileAccessControlAccessoriesToEncode;
 @property (strong) NSUUID *mediaContentProfileAccessControlModelUUID; // @synthesize mediaContentProfileAccessControlModelUUID=_mediaContentProfileAccessControlModelUUID;
+@property (readonly, copy) NSDictionary *privateSettingValuesByKeyPathForAWD;
 @property (readonly) id<HMDSettingsControllerProtocol> privateSettingsController; // @synthesize privateSettingsController=_privateSettingsController;
 @property (strong) NSUUID *privateSettingsRootUUID; // @synthesize privateSettingsRootUUID=_privateSettingsRootUUID;
 @property (strong, nonatomic) HMFTimer *privateZoneFirstLoadTimer; // @synthesize privateZoneFirstLoadTimer=_privateZoneFirstLoadTimer;
+@property (readonly, copy) NSDictionary *sharedSettingValuesByKeyPathForAWD;
 @property (readonly) id<HMDSettingsControllerProtocol> sharedSettingsController; // @synthesize sharedSettingsController=_sharedSettingsController;
 @property (strong) NSUUID *sharedSettingsRootUUID; // @synthesize sharedSettingsRootUUID=_sharedSettingsRootUUID;
 @property (strong, nonatomic) HMFTimer *sharedZoneFirstLoadTimer; // @synthesize sharedZoneFirstLoadTimer=_sharedZoneFirstLoadTimer;

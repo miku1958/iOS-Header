@@ -18,21 +18,30 @@
     id<SBFluidSwitcherModifierProviding> _modifierProvider;
     SBSwitcherModifier *_outgoingTransitionModifier;
     BOOL _isFloating;
+    long long _numberOfHiddenAppLayouts;
 }
 
 - (void).cxx_destruct;
 - (BOOL)_shouldFilteringIncludeAppLayout:(id)arg1;
 - (id)adjustedAppLayoutsForAppLayouts:(id)arg1;
 - (id)appExposeAccessoryButtonsBundleIdentifier;
+- (long long)appExposeAccessoryButtonsOverrideUserInterfaceStyle;
 - (id)appLayoutToScrollToBeforeTransitioning;
 - (id)appLayoutsForInsertionOrRemoval;
+- (void)didMoveToParentModifier:(id)arg1;
 - (id)handleAppExposeEvent:(id)arg1;
 - (id)handleEvent:(id)arg1;
+- (id)handleInsertionEvent:(id)arg1;
 - (id)handleMainTransitionEvent:(id)arg1;
+- (id)handleRemovalEvent:(id)arg1;
+- (id)handleTetheredInsertionEvent:(id)arg1;
+- (id)handleTetheredRemovalEvent:(id)arg1;
 - (id)initWithBundleIdentifier:(id)arg1 modifierProvider:(id)arg2 floating:(BOOL)arg3;
 - (BOOL)isTetheredScrollingEnabled;
 - (double)plusButtonAlpha;
+- (long long)plusButtonStyle;
 - (double)reopenClosedWindowsButtonAlpha;
+- (BOOL)wantsAsynchronousRenderingAssertion;
 
 @end
 

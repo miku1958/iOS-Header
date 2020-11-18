@@ -9,19 +9,22 @@
 #import <HomeUI/HFCameraPlaybackEngineObserver-Protocol.h>
 #import <HomeUI/HFPosterFrameImageObserver-Protocol.h>
 
-@class HFCameraPlaybackEngine, NSString, UIImageView;
+@class HFCameraPlaybackEngine, HMCameraClip, HMCameraClipManager, NSString, UIImageView;
 
 @interface HUCameraPlayerPlaceholderContentViewController : UIViewController <HFCameraPlaybackEngineObserver, HFPosterFrameImageObserver>
 {
     BOOL _cameraPlayerHasContentToShow;
     HFCameraPlaybackEngine *_playbackEngine;
     UIImageView *_placeholderImageView;
+    HMCameraClip *_lastRequestedClip;
 }
 
 @property (nonatomic) BOOL cameraPlayerHasContentToShow; // @synthesize cameraPlayerHasContentToShow=_cameraPlayerHasContentToShow;
+@property (readonly, nonatomic) HMCameraClipManager *clipManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HMCameraClip *lastRequestedClip; // @synthesize lastRequestedClip=_lastRequestedClip;
 @property (strong, nonatomic) UIImageView *placeholderImageView; // @synthesize placeholderImageView=_placeholderImageView;
 @property (weak, nonatomic) HFCameraPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property (readonly) Class superclass;

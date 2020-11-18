@@ -24,8 +24,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)cancelOperationID:(id)arg1;
 - (void)consumeSandboxExtensions:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)discretionarySuspensionForOperationID:(id)arg1;
 - (void)getFileMetadataWithFileHandle:(id)arg1 openInfo:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)handleOperationCheckpoint:(id)arg1 forOperationWithID:(id)arg2;
 - (void)handleOperationCompletion:(id)arg1 forOperationWithID:(id)arg2;

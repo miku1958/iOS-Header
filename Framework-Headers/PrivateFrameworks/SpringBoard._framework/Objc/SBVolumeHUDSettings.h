@@ -11,8 +11,11 @@
     BOOL _showDebugUI;
     BOOL _autoDismiss;
     BOOL _forceEUVolumeMode;
+    BOOL _rampTickHapticIntensity;
     float _EUVolumeLimit;
     float _volumeStepDelta;
+    float _minimumTickHapticIntensity;
+    float _maximumTickHapticIntensity;
     double _minMaxXScaleSpringRetargetImpulse;
     double _minMaxXScaleSpringDampingRatio;
     double _minMaxXScaleSpringResponse;
@@ -32,14 +35,11 @@
     double _scaleSpringRetargetImpulse;
     double _scaleSpringDampingRatio;
     double _scaleSpringResponse;
-    double _scaleSpringVolumeToMin;
-    double _scaleSpringVolumeToMax;
     double _scaleSpringBase;
     double _scaleSpringTracking;
     double _dimmingAlpha;
     double _dismissalInterval;
     double _legibilityStrength;
-    double _initialState1ToState2TransitionInterval;
     double _labelMargin;
     double _onscreenTopMargin;
     double _onscreenLeadingMargin;
@@ -77,7 +77,6 @@
 @property (nonatomic) double dimmingAlpha; // @synthesize dimmingAlpha=_dimmingAlpha;
 @property (nonatomic) double dismissalInterval; // @synthesize dismissalInterval=_dismissalInterval;
 @property (nonatomic) BOOL forceEUVolumeMode; // @synthesize forceEUVolumeMode=_forceEUVolumeMode;
-@property (nonatomic) double initialState1ToState2TransitionInterval; // @synthesize initialState1ToState2TransitionInterval=_initialState1ToState2TransitionInterval;
 @property (nonatomic) double labelMargin; // @synthesize labelMargin=_labelMargin;
 @property (nonatomic) double landscapeScaleSpringVolumeDownInput; // @synthesize landscapeScaleSpringVolumeDownInput=_landscapeScaleSpringVolumeDownInput;
 @property (nonatomic) double landscapeScaleSpringVolumeUpInput; // @synthesize landscapeScaleSpringVolumeUpInput=_landscapeScaleSpringVolumeUpInput;
@@ -92,6 +91,7 @@
 @property (nonatomic) double landscapeState3Width; // @synthesize landscapeState3Width=_landscapeState3Width;
 @property (nonatomic) double landscapeStateBaseCornerRadius; // @synthesize landscapeStateBaseCornerRadius=_landscapeStateBaseCornerRadius;
 @property (nonatomic) double legibilityStrength; // @synthesize legibilityStrength=_legibilityStrength;
+@property (nonatomic) float maximumTickHapticIntensity; // @synthesize maximumTickHapticIntensity=_maximumTickHapticIntensity;
 @property (nonatomic) double minMaxXScaleSpringDampingRatio; // @synthesize minMaxXScaleSpringDampingRatio=_minMaxXScaleSpringDampingRatio;
 @property (nonatomic) double minMaxXScaleSpringResponse; // @synthesize minMaxXScaleSpringResponse=_minMaxXScaleSpringResponse;
 @property (nonatomic) double minMaxXScaleSpringRetargetImpulse; // @synthesize minMaxXScaleSpringRetargetImpulse=_minMaxXScaleSpringRetargetImpulse;
@@ -102,6 +102,7 @@
 @property (nonatomic) double minMaxYScaleSpringRetargetImpulse; // @synthesize minMaxYScaleSpringRetargetImpulse=_minMaxYScaleSpringRetargetImpulse;
 @property (nonatomic) double minMaxYScaleSpringVolumeToMax; // @synthesize minMaxYScaleSpringVolumeToMax=_minMaxYScaleSpringVolumeToMax;
 @property (nonatomic) double minMaxYScaleSpringVolumeToMin; // @synthesize minMaxYScaleSpringVolumeToMin=_minMaxYScaleSpringVolumeToMin;
+@property (nonatomic) float minimumTickHapticIntensity; // @synthesize minimumTickHapticIntensity=_minimumTickHapticIntensity;
 @property (nonatomic) double offscreenLeadingMargin; // @synthesize offscreenLeadingMargin=_offscreenLeadingMargin;
 @property (nonatomic) double offscreenTopMargin; // @synthesize offscreenTopMargin=_offscreenTopMargin;
 @property (nonatomic) double onscreenLeadingMargin; // @synthesize onscreenLeadingMargin=_onscreenLeadingMargin;
@@ -124,13 +125,12 @@
 @property (nonatomic) double positionYSpringDampingRatio; // @synthesize positionYSpringDampingRatio=_positionYSpringDampingRatio;
 @property (nonatomic) double positionYSpringResponse; // @synthesize positionYSpringResponse=_positionYSpringResponse;
 @property (nonatomic) double positionYSpringRetargetImpulse; // @synthesize positionYSpringRetargetImpulse=_positionYSpringRetargetImpulse;
+@property (nonatomic) BOOL rampTickHapticIntensity; // @synthesize rampTickHapticIntensity=_rampTickHapticIntensity;
 @property (nonatomic) double scaleSpringBase; // @synthesize scaleSpringBase=_scaleSpringBase;
 @property (nonatomic) double scaleSpringDampingRatio; // @synthesize scaleSpringDampingRatio=_scaleSpringDampingRatio;
 @property (nonatomic) double scaleSpringResponse; // @synthesize scaleSpringResponse=_scaleSpringResponse;
 @property (nonatomic) double scaleSpringRetargetImpulse; // @synthesize scaleSpringRetargetImpulse=_scaleSpringRetargetImpulse;
 @property (nonatomic) double scaleSpringTracking; // @synthesize scaleSpringTracking=_scaleSpringTracking;
-@property (nonatomic) double scaleSpringVolumeToMax; // @synthesize scaleSpringVolumeToMax=_scaleSpringVolumeToMax;
-@property (nonatomic) double scaleSpringVolumeToMin; // @synthesize scaleSpringVolumeToMin=_scaleSpringVolumeToMin;
 @property (nonatomic) BOOL showDebugUI; // @synthesize showDebugUI=_showDebugUI;
 @property (nonatomic) double volumeButtonsCenterY; // @synthesize volumeButtonsCenterY=_volumeButtonsCenterY;
 @property (nonatomic) float volumeStepDelta; // @synthesize volumeStepDelta=_volumeStepDelta;

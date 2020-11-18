@@ -14,6 +14,7 @@
 
 + (id)_measurementWithNaturalScale:(id)arg1 system:(unsigned long long)arg2;
 + (id)baseUnit;
++ (void)initialize;
 + (id)kilovolts;
 + (id)megavolts;
 + (id)microvolts;

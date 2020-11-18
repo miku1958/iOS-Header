@@ -111,6 +111,7 @@ __attribute__((visibility("hidden")))
 - (void)_enrichLayoutAttributes:(id)arg1 inSection:(id)arg2;
 - (struct CGPoint)_firstBookmarkOffset;
 - (struct CGRect)_globalFrameForSolutionFrame:(struct CGRect)arg1 bookmark:(id)arg2;
+- (struct CGPoint)_globalSupplementaryFrameOffset;
 - (void)_invalidateAllAttributes;
 - (void)_invalidateAttributes:(id)arg1;
 - (void)_layoutAttributesForElementsInRect:(struct CGRect)arg1 handler:(CDUnknownBlockType)arg2;

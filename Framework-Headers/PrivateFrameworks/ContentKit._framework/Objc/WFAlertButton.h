@@ -24,11 +24,11 @@
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (id)buttonWithTitle:(id)arg1 style:(long long)arg2 handler:(CDUnknownBlockType)arg3;
++ (id)buttonWithTitle:(id)arg1 style:(long long)arg2 preferred:(BOOL)arg3 handler:(CDUnknownBlockType)arg4;
 + (id)cancelButtonWithHandler:(CDUnknownBlockType)arg1;
 + (id)cancelButtonWithTarget:(id)arg1 action:(SEL)arg2;
 + (id)okButtonWithHandler:(CDUnknownBlockType)arg1;
 + (id)okButtonWithTarget:(id)arg1 action:(SEL)arg2;
-+ (id)preferredButtonWithTitle:(id)arg1 style:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (id)initWithTitle:(id)arg1 style:(long long)arg2 handler:(CDUnknownBlockType)arg3 preferred:(BOOL)arg4;
 

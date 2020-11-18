@@ -9,7 +9,7 @@
 #import <SpringBoardHome/SBFolderIconImageCacheObserver-Protocol.h>
 #import <SpringBoardHome/SBFolderIconObserver-Protocol.h>
 
-@class NSMutableArray, NSString, SBFloatyFolderView, UIView, _SBIconGridWrapperView;
+@class NSHashTable, NSMutableArray, NSString, SBFloatyFolderView, UIView, _SBIconGridWrapperView;
 
 @interface SBFolderIconImageView : SBIconImageView <SBFolderIconObserver, SBFolderIconImageCacheObserver>
 {
@@ -23,7 +23,7 @@
     SBFloatyFolderView *_crossfadeFolderView;
     UIView *_crossfadeScalingView;
     BOOL _animating;
-    unsigned long long _imageUpdatesDisableCount;
+    NSHashTable *_imageUpdateDisableAssertions;
     unsigned long long _transitionToken;
     BOOL _hasCustomBackgroundView;
     unsigned long long _backgroundStyle;
@@ -64,8 +64,7 @@
 - (id)contentsImage;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (void)disableImageUpdates;
-- (void)enableImageUpdates;
+- (id)disableImageUpdatesForReason:(id)arg1;
 - (unsigned long long)firstVisibleMiniIconIndex;
 - (void)folderIconImageCache:(id)arg1 didUpdateImagesForFolderIcon:(id)arg2;
 - (struct CGRect)frameForMiniIconAtIndex:(unsigned long long)arg1;
@@ -74,6 +73,7 @@
 - (void)iconViewFolderIconImageCacheDidChange;
 - (void)iconViewLegibilitySettingsDidChange;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)invalidateImageUpdatesAssertion:(id)arg1;
 - (unsigned long long)lastVisibleMiniIconIndex;
 - (void)layoutSubviews;
 - (void)prepareForReuse;

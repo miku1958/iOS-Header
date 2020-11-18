@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class PHAdjustmentData;
+@class NSXPCListenerEndpoint, PHAdjustmentData;
 
 @protocol PUEditingExtensionVendor
 - (void)beginContentEditingWithCompletionHandler:(void (^)(NSError *))arg1;
@@ -13,5 +13,6 @@
 - (void)queryHandlingCapabilityForAdjustmentData:(PHAdjustmentData *)arg1 withResponseHandler:(void (^)(BOOL))arg2;
 - (void)querySDKVersionWithResponseHandler:(void (^)(unsigned int))arg1;
 - (void)queryShouldShowCancelConfirmationWithResponseHandler:(void (^)(BOOL))arg1;
+- (void)setupUndoProxyWithXPCListenerEndpoint:(NSXPCListenerEndpoint *)arg1 attemptUndoManagerAutoSetup:(BOOL)arg2;
 @end
 

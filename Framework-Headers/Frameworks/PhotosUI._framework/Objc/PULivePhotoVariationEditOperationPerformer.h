@@ -6,15 +6,18 @@
 
 #import <PhotosUICore/PXAssetEditOperationPerformer.h>
 
-#import <PhotosUI/PXChangeObserver-Protocol.h>
+#import <PhotosUI/PUPhotoEditResourceLoaderDelegate-Protocol.h>
 
-@class NSString, PHAsset;
+@class NSString, PHAsset, PUPhotoEditResourceLoadResult, PUPhotoEditResourceLoader, PUPhotoKitPhotoEditMediaDestination;
 
 __attribute__((visibility("hidden")))
-@interface PULivePhotoVariationEditOperationPerformer : PXAssetEditOperationPerformer <PXChangeObserver>
+@interface PULivePhotoVariationEditOperationPerformer : PXAssetEditOperationPerformer <PUPhotoEditResourceLoaderDelegate>
 {
     CDUnknownBlockType _completionHandler;
     BOOL _didSave;
+    PUPhotoEditResourceLoader *_resourceLoader;
+    PUPhotoEditResourceLoadResult *_loadResult;
+    PUPhotoKitPhotoEditMediaDestination *_mediaDestination;
 }
 
 @property (readonly, nonatomic) PHAsset *asset;
@@ -24,10 +27,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_calculateAnalysisResult;
 - (void)_completeWithSuccess:(BOOL)arg1 error:(id)arg2;
-- (void)_performSaveIfReady;
-- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)_handleAnalysisCalculatorResponse:(id)arg1;
+- (void)_handleAnalysisResult:(id)arg1;
+- (void)_handleDidFinishSavingEditsForAsset:(id)arg1 error:(id)arg2;
 - (void)performEditOperationWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)photoEditResourceLoadRequest:(id)arg1 didCompleteWithResult:(id)arg2;
+- (void)photoEditResourceLoadRequest:(id)arg1 mediaLoadDidFailWithError:(id)arg2;
 
 @end
 

@@ -71,6 +71,8 @@
 @property (nonatomic) long long flagged; // @synthesize flagged=_flagged;
 @property (nonatomic) unsigned long long icsDisplayOrder; // @synthesize icsDisplayOrder=_icsDisplayOrder;
 @property (strong, nonatomic) NSData *importedICSData; // @synthesize importedICSData=_importedICSData;
+@property (readonly, nonatomic) BOOL isOverdue;
+@property (readonly, nonatomic) BOOL isRecurrent;
 @property (copy, nonatomic) NSDate *lastBannerPresentationDate; // @synthesize lastBannerPresentationDate=_lastBannerPresentationDate;
 @property (copy, nonatomic) NSDate *lastModifiedDate; // @synthesize lastModifiedDate=_lastModifiedDate;
 @property (readonly, copy, nonatomic) NSString *legacyNotificationIdentifier;
@@ -106,7 +108,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithObjectID:(id)arg1 listID:(id)arg2 accountID:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isOverdue;
 - (id)notesReplicaIDSource;
 - (void)setStoreGenerationIfNeeded:(unsigned long long)arg1;
 - (unsigned long long)storeGeneration;

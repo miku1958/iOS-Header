@@ -13,7 +13,7 @@
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
 #import <PassKitUI/SBSHardwareButtonEventConsuming-Protocol.h>
 
-@class LAUIHorizontalArrowView, LAUIPhysicalButtonView, NSString, NSXPCConnection, PKAssertion, PKCompactNavigationContainerController, PKInAppPaymentService, PKPaymentAuthorizationRemoteAlertViewControllerExportedObject, PKPaymentAuthorizationServiceNavigationController, PKPaymentProvisioningController, PKPaymentRequest, PKPaymentSetupNavigationController, PKPeerPaymentAccount;
+@class NSString, NSXPCConnection, PKAssertion, PKInAppPaymentService, PKPaymentAuthorizationRemoteAlertViewControllerExportedObject, PKPaymentAuthorizationServiceCompactNavigationContainerController, PKPaymentAuthorizationServiceNavigationController, PKPaymentProvisioningController, PKPaymentRequest, PKPaymentSetupNavigationController, PKPeerPaymentAccount;
 @protocol BSInvalidatable;
 
 @interface PKPaymentAuthorizationRemoteAlertViewController : SBUIRemoteAlertServiceViewController <PKCompactNavigationContainerControllerDelegate, PKPaymentAuthorizationServiceViewControllerDelegate, PKPaymentAuthorizationHostProtocol, PKPaymentSetupDelegate, SBSHardwareButtonEventConsuming, PKPaymentSetupViewControllerDelegate>
@@ -30,11 +30,8 @@
     NSString *_hostLocalizedAppName;
     PKPaymentRequest *_paymentRequest;
     BOOL _paymentAuthorizationPresented;
-    PKCompactNavigationContainerController *_navigationContainer;
+    PKPaymentAuthorizationServiceCompactNavigationContainerController *_navigationContainer;
     PKPaymentAuthorizationServiceNavigationController *_navigationController;
-    BOOL _pearlViewsInserted;
-    LAUIPhysicalButtonView *_physicalButtonView;
-    LAUIHorizontalArrowView *_cameraArrowView;
     long long _coachingState;
     PKPaymentProvisioningController *_paymentProvisioningController;
     PKPaymentSetupNavigationController *_paymentSetupNavigationController;
@@ -123,7 +120,6 @@
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

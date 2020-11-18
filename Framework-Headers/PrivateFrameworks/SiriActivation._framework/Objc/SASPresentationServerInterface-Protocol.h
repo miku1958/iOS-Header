@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class AFUISiriLockStateTransport, SASActivationRequest, SASButtonIdentifierTransport, SASRequestOptions, SASTimeIntervalTransport, SiriDismissalOptions, SiriPresentationActivationCancelReasonTransport, SiriPresentationOptions;
+@class AFUISiriLockStateTransport, NSNumber, SASActivationRequest, SASButtonIdentifierTransport, SASRequestOptions, SASTimeIntervalTransport, SiriDismissalOptions, SiriPresentationActivationCancelReasonTransport, SiriPresentationOptions;
 
 @protocol SASPresentationServerInterface
 - (oneway void)bulletinManagerDidChangeBulletins;
@@ -22,6 +22,7 @@
 - (oneway void)presentationRequestedWithPresentationOptions:(SiriPresentationOptions *)arg1 requestOptions:(SASRequestOptions *)arg2;
 - (BOOL)presentationisIdleAndQuiet;
 - (oneway void)turnOnScreenAfterPocketStateFetch;
+- (oneway void)updateActiveInterfaceOrientation:(NSNumber *)arg1 willAnimationWithDuration:(SASTimeIntervalTransport *)arg2;
 - (oneway void)updateCurrentLockState:(AFUISiriLockStateTransport *)arg1;
 @end
 

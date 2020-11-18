@@ -134,9 +134,17 @@
 	var _cancel : ()? // +0x10 (0x10)
 
 	// Swift methods
-	0x46c0  class func AnyCancellable.__allocating_init(_:) // init 
-	0x4760  class func AnyCancellable.__allocating_init<A>(_:) // init 
-	0x4a70  func AnyCancellable.hashValue.getter // getter 
+	0x5760  class func AnyCancellable.__allocating_init(_:) // init 
+	0x5800  class func AnyCancellable.__allocating_init<A>(_:) // init 
+	0x5b10  func AnyCancellable.hashValue.getter // getter 
+ }
+
+ enum Combine.SubscriptionStatus {
+
+	// Properties
+	case subscribed : Subscription
+	case awaitingSubscription  
+	case terminal  
  }
 
  struct Combine._EmptySubscription: Cancellable,  Subscription {
@@ -452,7 +460,7 @@
 	let subject : PassthroughSubject<(), Never> // +0x10 (0x8)
 
 	// Swift methods
-	0x37c90  class func ObservableObjectPublisher.__allocating_init() // init 
+	0x39370  class func ObservableObjectPublisher.__allocating_init() // init 
  }
 
  struct Combine.PrefixWhile {
@@ -973,6 +981,14 @@
  }
 
  class Combine.Inner {
+ enum Combine.State {
+
+	// Properties
+	case ready : (Publishers.Throttle<A, B>, A1)
+	case subscribed : (Publishers.Throttle<A, B>, A1, Subscription, Subscribers.Completion<A1.Subscriber.Failure>?)
+	case terminal  
+ }
+
  class Combine.Share {
  struct Combine.Comparison {
 

@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) long long rotationMode;
 @property (readonly, copy, nonatomic) NSString *statusBarUserNameOverride;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long wallpaperMode;
 
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

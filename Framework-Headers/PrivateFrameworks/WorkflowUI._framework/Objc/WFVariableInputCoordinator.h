@@ -11,7 +11,7 @@
 #import <WorkflowUI/WFVariableShortcutsTrayDelegate-Protocol.h>
 #import <WorkflowUI/WFVariableSuggesterDelegate-Protocol.h>
 
-@class NSSet, NSString, UIResponder, UIView, WFVariableShortcutsBar, WFVariableShortcutsTray, WFVariableSuggester;
+@class NSSet, NSString, UIColor, UIResponder, UIView, WFVariableShortcutsBar, WFVariableShortcutsTray, WFVariableSuggester;
 @protocol WFInputViewMutable, WFVariableProvider, WFVariableTypingContext, WFVariableUIDelegate;
 
 @interface WFVariableInputCoordinator : NSObject <WFVariableShortcutsBarDelegate, WFVariableShortcutsTrayDelegate, WFVariableSuggesterDelegate, WFVariableObserver>
@@ -25,6 +25,7 @@
     NSSet *_allowedVariableTypes;
     NSString *_customButtonTitle;
     UIView *_inputViewWhenTrayCollapsed;
+    UIColor *_tintColor;
     CDUnknownBlockType _variableBlock;
     CDUnknownBlockType _customButtonBlock;
     WFVariableShortcutsBar *_shortcutsBar;
@@ -46,6 +47,7 @@
 @property (strong, nonatomic) WFVariableShortcutsTray *shortcutsTray; // @synthesize shortcutsTray=_shortcutsTray;
 @property (nonatomic) BOOL showsDoneButton; // @synthesize showsDoneButton=_showsDoneButton;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property (nonatomic) BOOL undocked; // @synthesize undocked=_undocked;
 @property (copy, nonatomic) CDUnknownBlockType variableBlock; // @synthesize variableBlock=_variableBlock;
 @property (weak, nonatomic) id<WFVariableProvider> variableProvider; // @synthesize variableProvider=_variableProvider;

@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithContact:(id)arg1 avatarRecord:(id)arg2 logger:(id)arg3;
 - (id)itemsForNoAnimojiAndNoPhoto;
 - (id)monogramImageItemWithContact:(id)arg1;
+- (void)notifyDelegateOfUpdateToCenterMostItem;
 - (void)reloadForUpdatedContactPhoto;
 - (void)reloadForUpdatedMonogram;
 - (void)scrollToItemAtIndex:(unsigned long long)arg1 animated:(BOOL)arg2;

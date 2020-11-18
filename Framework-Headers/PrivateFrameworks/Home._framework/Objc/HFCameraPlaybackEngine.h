@@ -23,7 +23,6 @@
     BOOL _scrubbing;
     HMCameraProfile *_cameraProfile;
     HMCameraClipManager *_clipManager;
-    NSArray *_clips;
     HMCameraSource *_liveCameraSource;
     unsigned long long _timelineState;
     NSDate *_currentEngineDate;
@@ -47,7 +46,6 @@
 @property (readonly, nonatomic) id<HFCameraClipPlaying> clipPlayer; // @synthesize clipPlayer=_clipPlayer;
 @property (readonly, copy, nonatomic) CDUnknownBlockType clipPlayerBuilder; // @synthesize clipPlayerBuilder=_clipPlayerBuilder;
 @property (readonly, nonatomic) id<HFCameraClipScrubbing> clipScrubber; // @synthesize clipScrubber=_clipScrubber;
-@property (strong, nonatomic) NSArray *clips; // @synthesize clips=_clips;
 @property (readonly, nonatomic) HMCameraClip *currentClip;
 @property (strong, nonatomic) NSDate *currentEngineDate; // @synthesize currentEngineDate=_currentEngineDate;
 @property (readonly, copy) NSString *debugDescription;

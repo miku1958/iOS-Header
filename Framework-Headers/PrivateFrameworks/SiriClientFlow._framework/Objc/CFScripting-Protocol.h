@@ -15,6 +15,7 @@
 - (void)runBootMaintenanceWithCompletion:(void (^)(BOOL))arg1;
 - (void)scriptCachePathWithCompletion:(void (^)(NSString *))arg1;
 - (void)scriptCheckSumDictionaryWithCompletion:(void (^)(NSDictionary *))arg1;
+- (void)sendClientFlowState;
 - (void)updateScriptArchiveAtPath:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
 - (void)updateScriptCacheForFlowScript:(SACFClientFlowScript *)arg1 completion:(void (^)(BOOL))arg2;
 - (void)warmUpWithSignal:(SACFSignal *)arg1 completion:(void (^)(BOOL))arg2;

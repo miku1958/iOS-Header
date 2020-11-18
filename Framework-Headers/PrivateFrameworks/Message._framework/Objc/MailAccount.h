@@ -199,6 +199,7 @@
 - (id)_uidNameForPathComponent:(id)arg1;
 - (void)_writeCustomInfoToMailboxCache:(id)arg1;
 - (void)_writeMailboxCacheWithPrejudice:(BOOL)arg1;
+- (void)_writeMailboxCacheWithPrejudice:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)accountDidLoad;
 - (void)addNewAction:(id)arg1;
 - (void)addUserFocusMailbox:(id)arg1;

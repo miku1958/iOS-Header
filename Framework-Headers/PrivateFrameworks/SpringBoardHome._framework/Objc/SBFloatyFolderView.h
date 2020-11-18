@@ -64,6 +64,7 @@
 - (void)_removeIconListView:(id)arg1;
 - (double)_rubberBandIntervalForOverscroll;
 - (struct CGPoint)_scrollView:(id)arg1 adjustedOffsetForOffset:(struct CGPoint)arg2 translation:(struct CGPoint)arg3 startPoint:(struct CGPoint)arg4 locationInView:(struct CGPoint)arg5 horizontalVelocity:(inout double *)arg6 verticalVelocity:(inout double *)arg7;
+- (void)_setScrollViewNeedsToClipCorners:(BOOL)arg1;
 - (BOOL)_shouldConvertToMultipleIconListsInLandscapeOrientation;
 - (BOOL)_showsTitle;
 - (BOOL)_tapToCloseGestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;

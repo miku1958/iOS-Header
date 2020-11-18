@@ -8,8 +8,7 @@
 
 #import <ChatKit/CKAppInstallationWatcherObserver-Protocol.h>
 
-@class CKPreviewDispatchCache, IMBalloonPlugin, NSArray, NSCache, NSDictionary, NSMutableArray, NSMutableDictionary, NSSet, NSString;
-@protocol CKExtensionConsumer;
+@class CKPreviewDispatchCache, IMBalloonPlugin, NSArray, NSCache, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 
 @interface CKBalloonPluginManager : NSObject <CKAppInstallationWatcherObserver>
 {
@@ -25,11 +24,11 @@
     BOOL _keepingEmptySections;
     BOOL _isAppInstallationObserver;
     NSString *_lastLaunchedIdentifier;
-    id<CKExtensionConsumer> _currentExtensionConsumer;
     IMBalloonPlugin *_lastViewedPlugin;
     NSArray *_visiblePlugins;
     NSArray *_cachedPotentiallyVisiblePlugins;
     NSArray *_favoriteAppStripPlugins;
+    NSMutableSet *_currentExtensionConsumers;
     NSDictionary *_pluginVersionMap;
     NSDictionary *_pluginSeenMap;
     NSDictionary *_pluginIndexPathMap;
@@ -51,7 +50,7 @@
 @property (strong, nonatomic) NSArray *allPlugins; // @synthesize allPlugins=_allPlugins;
 @property (nonatomic, getter=isAppStoreAutoEnableToggled) BOOL appStoreAutoEnableToggled; // @synthesize appStoreAutoEnableToggled=_appStoreAutoEnableToggled;
 @property (strong, nonatomic) NSArray *cachedPotentiallyVisiblePlugins; // @synthesize cachedPotentiallyVisiblePlugins=_cachedPotentiallyVisiblePlugins;
-@property (weak, nonatomic) id<CKExtensionConsumer> currentExtensionConsumer; // @synthesize currentExtensionConsumer=_currentExtensionConsumer;
+@property (strong, nonatomic) NSMutableSet *currentExtensionConsumers; // @synthesize currentExtensionConsumers=_currentExtensionConsumers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *disabledPlugins;
@@ -107,6 +106,7 @@
 - (BOOL)_shouldShowSURF;
 - (BOOL)_shouldUninstallContainingBundle:(id)arg1;
 - (void)_updateHistoricalPluginIndexPathMap;
+- (void)addExtensionConsumer:(id)arg1;
 - (id)allPluginsPassingTest:(CDUnknownBlockType)arg1;
 - (id)allPotentiallyVisiblePlugins;
 - (void)appInstallationWatcher:(id)arg1 addedAppInstallation:(id)arg2;
@@ -114,6 +114,7 @@
 - (unsigned long long)badgeValueForPlugin:(id)arg1;
 - (id)balloonPluginIdentifierForAppExtensionBundleIdentifier:(id)arg1;
 - (id)browserSnapshotForKey:(id)arg1;
+- (id)bundleIdentifiersForCurrentExtensionConsumers;
 - (id)candidateAppStripPlugins;
 - (void)cleanSeenMap;
 - (void)clearBalloonPluginCache;
@@ -161,6 +162,7 @@
 - (void)regeneratePluginIndexPaths;
 - (void)reloadInstalledApps:(id)arg1;
 - (void)removeAppWithIdentifier:(id)arg1;
+- (void)removeExtensionConsumer:(id)arg1;
 - (void)removeVisibleInstallationWithID:(id)arg1;
 - (void)saveWithNotification:(BOOL)arg1;
 - (void)setEnabled:(BOOL)arg1 forPlugin:(id)arg2;

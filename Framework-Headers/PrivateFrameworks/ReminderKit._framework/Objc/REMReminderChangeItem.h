@@ -45,6 +45,7 @@
 @property (nonatomic) unsigned long long icsDisplayOrder; // @dynamic icsDisplayOrder;
 @property (strong, nonatomic) NSData *importedICSData; // @dynamic importedICSData;
 @property (readonly, nonatomic) BOOL isOverdue; // @dynamic isOverdue;
+@property (readonly, nonatomic) BOOL isRecurrent; // @dynamic isRecurrent;
 @property (copy, nonatomic) NSDate *lastBannerPresentationDate; // @dynamic lastBannerPresentationDate;
 @property (copy, nonatomic) NSDate *lastModifiedDate; // @dynamic lastModifiedDate;
 @property (readonly, copy, nonatomic) NSString *legacyNotificationIdentifier; // @dynamic legacyNotificationIdentifier;
@@ -90,7 +91,7 @@
 - (id)changedKeys;
 - (id)confirmForSiriFoundInAppsAppendingToList:(id)arg1;
 - (void)copyInto:(id)arg1;
-- (id)duplicateForRecurrence;
+- (id)duplicateForRecurrenceUsingReminderID:(id)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithObjectID:(id)arg1 title:(id)arg2 insertIntoListChangeItem:(id)arg3;
 - (id)initWithObjectID:(id)arg1 title:(id)arg2 insertIntoParentReminderSubtaskContextChangeItem:(id)arg3;

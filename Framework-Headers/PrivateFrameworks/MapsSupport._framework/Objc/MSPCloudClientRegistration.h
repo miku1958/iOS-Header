@@ -36,6 +36,7 @@
 - (void)fetchClientRegistrationRecordsWithGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithAccountIdentifier:(id)arg1 clientIdentifier:(id)arg2;
 - (void)pushClientRegistrationRecord:(id)arg1 group:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)removeCloudRegistrationContainerWithGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setupCloudContainerWithGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateClientRegistrationRecordWithGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
 

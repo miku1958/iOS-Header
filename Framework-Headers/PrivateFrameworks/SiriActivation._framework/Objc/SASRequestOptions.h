@@ -96,6 +96,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRequestSource:(long long)arg1;
 - (id)initWithRequestSource:(long long)arg1 uiPresentationIdentifier:(id)arg2;
+- (BOOL)isB288Activation;
 - (BOOL)isHTTRequestSource;
 
 @end

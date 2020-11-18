@@ -16,6 +16,7 @@
 @optional
 - (UIColor *)separatorColorForTransitDeparturesDataSource:(MKTransitDeparturesDataSource *)arg1;
 - (struct UIEdgeInsets)separatorInsetsForTransitDeparturesDataSource:(MKTransitDeparturesDataSource *)arg1;
+- (BOOL)transitDeparturesDataSource:(MKTransitDeparturesDataSource *)arg1 canSelectDepartureSequence:(id<GEOTransitDepartureSequence>)arg2 transitStationMapItem:(MKMapItem *)arg3 transitLine:(id<MKTransitLineMarker>)arg4 fromCell:(MKTableViewCell *)arg5;
 - (void)transitDeparturesDataSource:(MKTransitDeparturesDataSource *)arg1 didSelectConnectionInformation:(id<GEOTransitConnectionInfo>)arg2;
 - (void)transitDeparturesDataSource:(MKTransitDeparturesDataSource *)arg1 didSelectDepartureSequence:(id<GEOTransitDepartureSequence>)arg2 transitStationMapItem:(MKMapItem *)arg3 transitLine:(id<MKTransitLineMarker>)arg4 fromCell:(MKTableViewCell *)arg5;
 - (void)transitDeparturesDataSource:(MKTransitDeparturesDataSource *)arg1 didSelectTransitLine:(id<MKTransitLineMarker>)arg2 fromCell:(MKTableViewCell *)arg3;

@@ -45,6 +45,7 @@
 + (id)getExplicitOnlyEnrollmentUtterancesFromDirectory:(id)arg1;
 + (id)getFixedHighPrioritySerialQueueWithLabel:(id)arg1;
 + (id)getFixedPrioritySerialQueueWithLabel:(id)arg1 fixedPriority:(int)arg2;
++ (id)getHomeUserIdForVoiceProfile:(id)arg1;
 + (double)getHostClockFrequency;
 + (id)getImplicitEnrollmentUtterancesFromDirectory:(id)arg1;
 + (id)getImplicitEnrollmentUtterancesPriorTo:(id)arg1 forType:(unsigned long long)arg2 forLanguageCode:(id)arg3 forProfileID:(id)arg4;

@@ -47,7 +47,6 @@
 - (id)_collectAllChildItems;
 - (id)_mostCommonValueForResultsKey:(id)arg1 inServiceItems:(id)arg2;
 - (id)_mostCommonValueInServiceItems:(id)arg1 valueProvider:(CDUnknownBlockType)arg2;
-- (id)_multiSensorIconDescriptor;
 - (id)_sortDescriptorsForServiceItems;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)_unanimousValueForResultsKey:(id)arg1 inServiceItems:(id)arg2;

@@ -13,6 +13,8 @@
 
 @interface HMICameraVideoAnalyzer : HMFObject <HMFLogging>
 {
+    int _flagCounts[6];
+    int _outcomeCounts[3];
     BOOL _skipSequentialMediaIntegrityCheck;
     BOOL _analysisInProgress;
     BOOL _inErrorState;
@@ -24,9 +26,6 @@
     NSUUID *_identifier;
     HMFUnfairLock *_lock;
     NSMutableArray *_internalPendingRequests;
-    unsigned long long _didAnalyzeCount;
-    unsigned long long _didNotAnalyzeCount;
-    unsigned long long _didFailCount;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMICameraVideoAnalyzerScheduler *_scheduler;
     unsigned long long _mediaIntegritySequenceNumber;
@@ -39,9 +38,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMICameraVideoAnalyzerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property unsigned long long didAnalyzeCount; // @synthesize didAnalyzeCount=_didAnalyzeCount;
-@property unsigned long long didFailCount; // @synthesize didFailCount=_didFailCount;
-@property unsigned long long didNotAnalyzeCount; // @synthesize didNotAnalyzeCount=_didNotAnalyzeCount;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property BOOL inBypassMode; // @synthesize inBypassMode=_inBypassMode;
@@ -63,7 +59,7 @@
 + (id)logCategory;
 + (id)queryVersionInformation;
 - (void).cxx_destruct;
-- (id)_analyzeFrame:(id)arg1 error:(id *)arg2;
+- (id)_analyzeFrame:(id)arg1 request:(id)arg2 error:(id *)arg3;
 - (void)_analyzeRequest:(id)arg1;
 - (BOOL)_analyzeRequestFrames:(id)arg1;
 - (void)_analyzeRequestFramesLocally:(id)arg1;
@@ -71,28 +67,27 @@
 - (void)_analyzeRequestRemotely:(id)arg1 retryOnConnectionInterruption:(BOOL)arg2;
 - (BOOL)_analyzeVideoFrame:(id)arg1 request:(id)arg2 result:(id *)arg3 error:(id *)arg4;
 - (BOOL)_checkRequest:(id)arg1;
-- (void)_didAnalyzeRequest:(id)arg1 withResult:(id)arg2;
-- (void)_didFailAnalysisForRequest:(id)arg1 withError:(id)arg2;
-- (void)_didNotAnalyzeRequest:(id)arg1 withResult:(id)arg2;
 - (void)_enterErrorState;
-- (void)_failPendingRequests;
+- (id)_flagCountsAsString;
 - (void)_handleDidAnalyzeRequest:(id)arg1;
 - (void)_handleDidAnalyzeRequest:(id)arg1 withResult:(id)arg2;
 - (void)_handleDidNotAnalyzeRequest:(id)arg1 resultCode:(long long)arg2;
-- (void)_handleDidNotAnalyzeRequest:(id)arg1 resultCode:(long long)arg2 description:(id)arg3;
-- (void)_handleDidNotAnalyzeRequest:(id)arg1 withResult:(id)arg2;
+- (void)_handleDidNotAnalyzeRequest:(id)arg1 resultCode:(long long)arg2 error:(id)arg3;
+- (void)_handleDidNotAnalyzeRequest:(id)arg1 withResult:(id)arg2 error:(id)arg3;
 - (void)_handleError:(long long)arg1 request:(id)arg2;
 - (void)_handleError:(long long)arg1 request:(id)arg2 description:(id)arg3;
 - (void)_handleError:(long long)arg1 request:(id)arg2 description:(id)arg3 underlyingError:(id)arg4;
 - (void)_handleError:(long long)arg1 request:(id)arg2 underlyingError:(id)arg3;
+- (void)_markPendingRequestsWithFlag:(long long)arg1;
+- (void)_notifyDidAnalyzeRequest:(id)arg1 withResult:(id)arg2;
+- (void)_notifyDidFailAnalysisForRequest:(id)arg1 withError:(id)arg2;
+- (void)_notifyDidNotAnalyzeRequest:(id)arg1 withResult:(id)arg2;
+- (id)_outcomeCountsAsString;
 - (void)_requestDidEnd:(id)arg1 outcome:(long long)arg2;
-- (long long)_resetFrameEvents:(long long)arg1;
 - (BOOL)_saveVideoFrame:(id)arg1 videoFragment:(id)arg2 error:(id *)arg3;
 - (void)_scheduleRequest:(id)arg1;
-- (void)_sendAnalyticsEventForRequest:(id)arg1 error:(id)arg2;
-- (void)_sendAnalyticsEventForRequest:(id)arg1 result:(id)arg2;
+- (void)_sendAnalyticsEventForRequest:(id)arg1 outcome:(long long)arg2 result:(id)arg3 error:(id)arg4;
 - (BOOL)_shouldContinueAnalyzingRequest:(id)arg1 resultCode:(long long *)arg2;
-- (void)_skipPendingRequests;
 - (void)_willAnalyzeRequest:(id)arg1;
 - (void)analyzeFragment:(id)arg1;
 - (void)clearPendingFragments;

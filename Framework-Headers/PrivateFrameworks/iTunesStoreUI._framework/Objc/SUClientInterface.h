@@ -31,6 +31,8 @@
     BOOL _wasLaunchedFromLibrary;
     BOOL _ignoreDefaultKeyboardNotifications;
     BOOL inAskToBuyApprovalFlow;
+    BOOL _financeInterruption;
+    NSString *_hostApplicationIdentifier;
 }
 
 @property (getter=_ignoresExpectedClientsProtocol, setter=_setIgnoresExpectedClientsProtocol:) BOOL _ignoresExpectedClientsProtocol;
@@ -41,6 +43,8 @@
 @property (copy) NSString *clientIdentifier;
 @property (copy, nonatomic) UIColor *darkKeyColor; // @synthesize darkKeyColor=_darkKeyColor;
 @property (nonatomic) id<SUClientInterfaceDelegate> delegate; // @synthesize delegate=_delegate;
+@property (getter=isFinanceInterruption) BOOL financeInterruption; // @synthesize financeInterruption=_financeInterruption;
+@property (copy) NSString *hostApplicationIdentifier; // @synthesize hostApplicationIdentifier=_hostApplicationIdentifier;
 @property BOOL ignoreDefaultKeyboardNotifications; // @synthesize ignoreDefaultKeyboardNotifications=_ignoreDefaultKeyboardNotifications;
 @property BOOL inAskToBuyApprovalFlow; // @synthesize inAskToBuyApprovalFlow;
 @property (copy, nonatomic) UIColor *lightKeyColor; // @synthesize lightKeyColor=_lightKeyColor;

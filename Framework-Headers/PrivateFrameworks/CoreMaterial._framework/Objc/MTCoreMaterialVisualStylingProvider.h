@@ -19,6 +19,7 @@
 @property (strong, nonatomic, getter=_visualStyleSet, setter=_setVisualStyleSet:) id<MTVisualStyleSetProviding> visualStyleSet; // @synthesize visualStyleSet=_visualStyleSet;
 @property (readonly, copy, nonatomic) NSString *visualStyleSetName;
 
++ (BOOL)canGenerateVisualStyleSetFromRecipe:(id)arg1;
 + (id)coreMaterialVisualStylingProviderForRecipe:(id)arg1 andCategory:(id)arg2;
 + (id)coreMaterialVisualStylingProviderForStyleSetNamed:(id)arg1 inBundle:(id)arg2;
 - (void).cxx_destruct;
@@ -26,6 +27,8 @@
 - (void)addObserver:(id)arg1;
 - (id)description;
 - (void)removeObserver:(id)arg1;
+- (void)updateVisualStyleSetFromRecipe:(id)arg1 andCategory:(id)arg2;
+- (void)updateVisualStyleSetGeneratedFromRecipe:(id)arg1;
 - (id)visualStylingForStyle:(id)arg1;
 
 @end

@@ -48,6 +48,7 @@
 + (id)contactContentType;
 + (id)contactsBundle;
 + (id)conversionBundle;
++ (id)coreSuggestionsBundle;
 + (id)dictionaryBundle;
 + (id)documentsAppBundle;
 + (id)filesBundle;
@@ -60,6 +61,8 @@
 + (id)messagesContentType;
 + (id)musicBundle;
 + (id)notesBundle;
++ (id)phoneFavoritesCopy;
++ (id)podcastsBundle;
 + (id)relatedSearchesBundle;
 + (id)remindersBundle;
 + (id)remindersContentType;

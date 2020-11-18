@@ -25,6 +25,7 @@
 @property (nonatomic) BOOL shouldSkipUserConfirmation; // @synthesize shouldSkipUserConfirmation=_shouldSkipUserConfirmation;
 
 + (BOOL)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2 person:(id)arg3;
++ (BOOL)canPerformOnSubsetOfSelection;
 + (BOOL)canPerformWithActionManager:(id)arg1;
 + (id)createAlertActionWithTitle:(id)arg1 handler:(CDUnknownBlockType)arg2;
 + (id)createBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2;

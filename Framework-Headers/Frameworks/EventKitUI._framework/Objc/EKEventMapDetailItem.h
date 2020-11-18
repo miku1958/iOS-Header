@@ -33,6 +33,7 @@
 - (void)eventViewController:(id)arg1 tableViewDidScroll:(id)arg2;
 - (void)reset;
 - (void)setupMapView;
+- (void)updateViewColors;
 
 @end
 

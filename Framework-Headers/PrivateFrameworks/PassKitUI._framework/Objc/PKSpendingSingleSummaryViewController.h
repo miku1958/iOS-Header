@@ -75,6 +75,9 @@
 - (void)_configureHeaderView:(id)arg1 inSection:(unsigned long long)arg2;
 - (BOOL)_hasFooterForSection:(unsigned long long)arg1;
 - (BOOL)_hasHeaderForSection:(unsigned long long)arg1;
+- (id)_nonSpendingTransactionGroupForType:(unsigned long long)arg1;
+- (unsigned long long)_nonSpendingTransactionTypeForRow:(long long)arg1;
+- (long long)_numberOfNonSpendingTransactionTypeRowsEnabled;
 - (void)accountServiceAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)buttonTappedInFooterView:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;

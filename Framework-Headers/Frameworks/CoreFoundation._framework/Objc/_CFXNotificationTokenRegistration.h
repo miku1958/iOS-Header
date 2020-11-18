@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithToken:(unsigned long long)arg1 options:(unsigned long long)arg2 queue:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)invalidate;
 - (void *)key;
-- (void)removeFromParent;
+- (void)removeFromParent:(unsigned long long)arg1;
 
 @end
 

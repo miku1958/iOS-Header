@@ -43,7 +43,10 @@
 + (id)masterKeysByAccountIdentifier;
 + (id)newWrappedKeyForObject:(id)arg1;
 + (void)refaultAllPasswordProtectedObjects;
++ (void)removeAccountFromBiometricID:(id)arg1 andRemoveNotes:(BOOL)arg2;
++ (void)removeAllFromBiometricID;
 + (void)removeItemFromBiometricID:(id)arg1;
++ (void)removeNoteFromBiometricID:(id)arg1;
 + (void)removePassphraseForAccount:(id)arg1;
 + (void)removePassphraseForNotesInAccount:(id)arg1;
 + (void)rewrapAndDivergeKeyForObject:(id)arg1 usingPassphrase:(id)arg2;

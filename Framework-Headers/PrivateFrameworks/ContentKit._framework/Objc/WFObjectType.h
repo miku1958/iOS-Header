@@ -19,6 +19,7 @@
 + (BOOL)supportsSecureCoding;
 + (id)typeWithClass:(Class)arg1;
 + (id)typesWithClasses:(id)arg1;
+- (void).cxx_destruct;
 - (BOOL)conformsToClass:(Class)arg1;
 - (BOOL)conformsToType:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

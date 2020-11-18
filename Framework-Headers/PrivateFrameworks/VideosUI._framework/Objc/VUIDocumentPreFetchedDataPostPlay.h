@@ -6,7 +6,7 @@
 
 #import <VideosUI/VUIDocumentPreFetchedData.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface VUIDocumentPreFetchedDataPostPlay : VUIDocumentPreFetchedData
 {
@@ -15,9 +15,11 @@
     NSString *_host;
     NSString *_productID;
     NSString *_showID;
+    NSArray *_excludedCanonicals;
 }
 
 @property (nonatomic) BOOL canAutoPlay; // @synthesize canAutoPlay=_canAutoPlay;
+@property (copy, nonatomic) NSArray *excludedCanonicals; // @synthesize excludedCanonicals=_excludedCanonicals;
 @property (copy, nonatomic) NSString *host; // @synthesize host=_host;
 @property (copy, nonatomic) NSString *productID; // @synthesize productID=_productID;
 @property (copy, nonatomic) NSString *showID; // @synthesize showID=_showID;

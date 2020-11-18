@@ -18,6 +18,7 @@
 @interface NUArticleViewController : UIViewController <SXScrollViewControllerDelegate, SXAnalyticsReporting, NUANFDebugSettingsObserver, NULoadable, NUBarCompressible>
 {
     BOOL _articleIsPresentingFullscreen;
+    BOOL _isShowingDeferredHardPayall;
     id<NULoadingDelegate> _loadingDelegate;
     NSString *_contentSizeCategory;
     long long _contentScale;
@@ -53,6 +54,7 @@
 @property (readonly, nonatomic) id<NUEndOfArticleDataProvider> endOfArticleDataProvider; // @synthesize endOfArticleDataProvider=_endOfArticleDataProvider;
 @property (readonly, nonatomic) NFEventManager *eventManager; // @synthesize eventManager=_eventManager;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isShowingDeferredHardPayall; // @synthesize isShowingDeferredHardPayall=_isShowingDeferredHardPayall;
 @property (readonly, nonatomic) id<NUArticleKeyCommandManager> keyCommandManager; // @synthesize keyCommandManager=_keyCommandManager;
 @property (weak, nonatomic) id<NULoadingDelegate> loadingDelegate; // @synthesize loadingDelegate=_loadingDelegate;
 @property (readonly, nonatomic) NSHashTable *loadingListeners; // @synthesize loadingListeners=_loadingListeners;
@@ -68,6 +70,7 @@
 - (BOOL)canBecomeFirstResponder;
 - (id)currentPresentationAttributes;
 - (id)initWithArticleDataProvider:(id)arg1 scrollViewController:(id)arg2 articleAdManager:(id)arg3 appStateMonitor:(id)arg4 keyCommandManager:(id)arg5 loadingListeners:(id)arg6 headerBlueprintProvider:(id)arg7 debugSettingsProvider:(id)arg8;
+- (BOOL)isPreviewingOrShowingHardPaywall;
 - (double)navigationBarHeightForScrollViewController:(id)arg1;
 - (long long)preferredStatusBarStyle;
 - (BOOL)prefersStatusBarHidden;
@@ -86,6 +89,7 @@
 - (void)updateScrollViewControllerWithContentOverlayBlueprint:(id)arg1 topOffset:(double)arg2;
 - (void)updateScrollViewControllerWithFooterBlueprint:(id)arg1;
 - (void)updateScrollViewControllerWithHeaderBlueprint:(id)arg1;
+- (void)updateTextSelectionForPaywallPresentation;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

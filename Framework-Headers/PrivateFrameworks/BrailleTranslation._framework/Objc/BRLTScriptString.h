@@ -25,6 +25,7 @@
 
 - (void).cxx_destruct;
 - (void)_addSelectionRange:(struct _NSRange)arg1;
+- (struct _NSRange)_backwardEditingAtomForCursorLocation:(unsigned long long)arg1 isBreak:(BOOL *)arg2;
 - (struct _NSRange)_backwardEditingAtomForSelection:(struct _NSRange)arg1 isBreak:(BOOL *)arg2;
 - (void)addString:(id)arg1 selection:(struct _NSRange)arg2 focus:(struct _NSRange)arg3 token:(unsigned long long)arg4;
 - (struct _NSRange)backwardEditingAtom;
@@ -32,6 +33,7 @@
 - (struct _NSRange)deleteMergeAtom;
 - (id)description;
 - (struct _NSRange)forwardEditingAtom;
+- (struct _NSRange)forwardEditingAtomForCursorLocation:(unsigned long long)arg1;
 - (id)init;
 - (id)initWithString:(id)arg1 selection:(struct _NSRange)arg2;
 - (id)initWithString:(id)arg1 selection:(struct _NSRange)arg2 focus:(struct _NSRange)arg3 token:(unsigned long long)arg4;

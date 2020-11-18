@@ -19,6 +19,7 @@
     BOOL _isDecelerating;
     BOOL _isDragging;
     BOOL _isTracking;
+    BOOL _isScrubbing;
     BOOL _isManuallyChanging;
     BOOL _deferContentOffsetUpdates;
     id<PXTilingScrollControllerUpdateDelegate> _updateDelegate;
@@ -47,6 +48,7 @@
 @property (readonly, nonatomic) BOOL isDecelerating; // @synthesize isDecelerating=_isDecelerating;
 @property (readonly, nonatomic) BOOL isDragging; // @synthesize isDragging=_isDragging;
 @property (readonly, nonatomic) BOOL isManuallyChanging; // @synthesize isManuallyChanging=_isManuallyChanging;
+@property (readonly, nonatomic) BOOL isScrubbing; // @synthesize isScrubbing=_isScrubbing;
 @property (readonly, nonatomic) BOOL isTracking; // @synthesize isTracking=_isTracking;
 @property (readonly, nonatomic) struct CGSize referenceSize;
 @property (copy, nonatomic) PXTilingScrollInfo *scrollInfo; // @synthesize scrollInfo=_scrollInfo;
@@ -56,8 +58,10 @@
 @property (nonatomic) struct CGRect scrollViewContentBounds;
 @property (readonly, nonatomic) struct CGSize scrollViewContentSize; // @synthesize scrollViewContentSize=_scrollViewContentSize;
 @property (readonly, nonatomic) struct CGSize scrollViewReferenceSize;
+@property (readonly, nonatomic) struct CGRect scrollViewTargetRect;
 @property (readonly, nonatomic) struct CGRect scrollViewVisibleRect;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) struct CGRect targetRect;
 @property (weak, nonatomic) id<PXTilingScrollControllerUpdateDelegate> updateDelegate; // @synthesize updateDelegate=_updateDelegate;
 @property (nonatomic) struct CGPoint visibleOrigin;
 @property (readonly, nonatomic) struct CGRect visibleRect;

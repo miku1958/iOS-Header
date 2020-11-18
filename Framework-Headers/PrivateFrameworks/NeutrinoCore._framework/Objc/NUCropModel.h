@@ -20,9 +20,9 @@
     double _fovRadians;
     BOOL _isAutoCrop;
     unsigned long long _hitVertexID;
-    struct CGSize _masterImageSize;
-    struct CGSize _stitchedImageSize;
     CDStruct_d58201db _aspectRatio;
+    struct CGRect _masterImageRect;
+    struct CGRect _stitchedImageRect;
 }
 
 @property (nonatomic) CDStruct_912cb5d2 aspectRatio; // @synthesize aspectRatio=_aspectRatio;
@@ -33,14 +33,14 @@
 @property (readonly, nonatomic) BOOL hasOvercapture;
 @property (readonly) unsigned long long hitVertexID; // @synthesize hitVertexID=_hitVertexID;
 @property (nonatomic) BOOL isAutoCrop; // @synthesize isAutoCrop=_isAutoCrop;
-@property (readonly, nonatomic) struct CGRect masterImageRect;
-@property (readonly, nonatomic) struct CGSize masterImageSize; // @synthesize masterImageSize=_masterImageSize;
+@property (readonly, nonatomic) struct CGRect masterImageRect; // @synthesize masterImageRect=_masterImageRect;
+@property (readonly, nonatomic) struct CGSize masterImageSize;
 @property (readonly, nonatomic) double pitchDegreeUI;
 @property (nonatomic) double pitchRadians;
 @property (readonly, nonatomic) double rollDegreeUI;
 @property (nonatomic) double rollRadians;
-@property (readonly, nonatomic) struct CGRect stitchedImageRect;
-@property (readonly, nonatomic) struct CGSize stitchedImageSize; // @synthesize stitchedImageSize=_stitchedImageSize;
+@property (readonly, nonatomic) struct CGRect stitchedImageRect; // @synthesize stitchedImageRect=_stitchedImageRect;
+@property (readonly, nonatomic) struct CGSize stitchedImageSize;
 @property (readonly, nonatomic) double yawDegreeUI;
 @property (nonatomic) double yawRadians;
 
@@ -82,6 +82,8 @@
 - (struct CGRect)getCropRectThatCompletelyContainsMasterImageForPitch:(double)arg1 yaw:(double)arg2 roll:(double)arg3;
 - (BOOL)imageContainsRect:(struct CGRect)arg1 withTol:(double)arg2;
 - (id)init;
+- (id)initWithMasterImageRect:(struct CGRect)arg1;
+- (id)initWithMasterImageRect:(struct CGRect)arg1 stitchedImageRect:(struct CGRect)arg2;
 - (id)initWithMasterImageSize:(struct CGSize)arg1;
 - (id)initWithMasterImageSize:(struct CGSize)arg1 fovRadians:(double)arg2;
 - (id)initWithMasterImageSize:(struct CGSize)arg1 stitchedImageSize:(struct CGSize)arg2;

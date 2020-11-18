@@ -46,15 +46,17 @@
 
 - (void).cxx_destruct;
 - (struct PXSimpleIndexPath)_indexPathClosestToIndexPath:(struct PXSimpleIndexPath)arg1 fromDataSource:(id)arg2 inDirection:(unsigned long long)arg3;
+- (id)_itemsGeometryForDataSource:(id)arg1;
 - (void)_stopLibraryViewScrolling;
 - (id)additionalRectDiagnosticsProvidersForView:(id)arg1;
 - (BOOL)canSelectObjectAtIndexPath:(struct PXSimpleIndexPath)arg1 inDataSource:(id)arg2;
 - (id)hitTestResultControlsForCurrentZoomLevel;
+- (id)indexPathsForItemsInRect:(struct CGRect)arg1 coordinateSpace:(id)arg2;
 - (id)indexPathsFromIndexPath:(struct PXSimpleIndexPath)arg1 toIndexPath:(struct PXSimpleIndexPath)arg2 inDataSource:(id)arg3;
 - (id)init;
 - (id)initWithPhotoLibrary:(id)arg1 extendedTraitCollection:(id)arg2;
 - (void)scrollLibraryViewToAssetReference:(id)arg1 scrollPosition:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)scrollLibraryViewToObjectReference:(id)arg1 scrollPosition:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)scrollLibraryViewToObjectReference:(id)arg1 scrollPosition:(unsigned long long)arg2 padding:(struct UIEdgeInsets)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (struct PXSimpleIndexPath)selectableIndexPathClosestToIndexPath:(struct PXSimpleIndexPath)arg1 fromDataSource:(id)arg2 inDirection:(unsigned long long)arg3;
 
 @end

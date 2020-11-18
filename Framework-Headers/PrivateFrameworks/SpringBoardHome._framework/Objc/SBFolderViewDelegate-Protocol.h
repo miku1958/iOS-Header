@@ -30,7 +30,9 @@
 - (void)folderViewShouldBeginEditing:(SBFolderView *)arg1;
 - (void)folderViewShouldClose:(SBFolderView *)arg1 withPinchGesture:(UIPinchGestureRecognizer *)arg2;
 - (void)folderViewShouldEndEditing:(SBFolderView *)arg1;
+- (void)folderViewWillBeginDragging:(SBFolderView *)arg1;
 - (void)folderViewWillBeginScrolling:(SBFolderView *)arg1;
+- (void)folderViewWillEndDragging:(SBFolderView *)arg1;
 - (void)folderViewWillUpdatePageDuringScrolling:(SBFolderView *)arg1;
 - (Class)iconListViewClassForFolderView:(SBFolderView *)arg1;
 - (NSString *)iconLocationForFolderView:(SBFolderView *)arg1;

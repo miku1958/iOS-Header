@@ -6,13 +6,15 @@
 
 #import <HealthDaemon/HDQueryServer.h>
 
-@class HKQueryAnchor, NSMutableDictionary, _HKDatabaseChangesQueryServerConfiguration;
+@class HKQueryAnchor, NSMutableDictionary, NSString, _HKDatabaseChangesQueryServerConfiguration;
 
 @interface HDDatabaseChangesQueryServer : HDQueryServer
 {
     NSMutableDictionary *_pendingSampleTypeChanges;
     HKQueryAnchor *_anchor;
     BOOL _hasDeliveredInitialResults;
+    NSString *_detailsQueryDateIndexSQL;
+    NSString *_detailsQueryAnchorIndexSQL;
 }
 
 @property (readonly, copy, nonatomic) _HKDatabaseChangesQueryServerConfiguration *databaseChangesQueryConfiguration;
@@ -20,10 +22,13 @@
 + (Class)queryClass;
 - (void).cxx_destruct;
 - (id)_authorizedObjectTypes;
-- (id)_changesByTypeWithDatabase:(id)arg1 sinceAnchor:(id)arg2 error:(id *)arg3;
 - (void)_queue_addPendingChangesForSample:(id)arg1;
+- (id)_queue_changesByTypeWithDatabase:(id)arg1 sinceAnchor:(long long)arg2 error:(id *)arg3;
 - (void)_queue_deliverError:(id)arg1;
 - (void)_queue_deliverQueryAnchor:(id)arg1 sampleTypeChanges:(id)arg2;
+- (id)_queue_detailedChangeUsingAnchorIndexStrategyForType:(id)arg1 sinceAnchor:(long long)arg2 database:(id)arg3 error:(id *)arg4;
+- (id)_queue_detailedChangeUsingDateIndexStrategyForType:(id)arg1 sinceAnchor:(long long)arg2 database:(id)arg3 error:(id *)arg4;
+- (long long)_queue_queryStrategyForType:(id)arg1 sinceAnchor:(long long)arg2 currentAnchor:(long long)arg3;
 - (void)_queue_start;
 - (BOOL)_shouldListenForUpdates;
 - (void)didAddSamplesOfTypes:(id)arg1 anchor:(id)arg2;

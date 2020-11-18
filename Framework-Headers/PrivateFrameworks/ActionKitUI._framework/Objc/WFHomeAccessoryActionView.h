@@ -4,23 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <WorkflowUI/WFActionCustomView.h>
 
-@class UIStackView, WFHFTriggerActionSetsBuilderParameterState;
+#import <ActionKitUI/WFActionEventObserver-Protocol.h>
+
+@class NSString, UIStackView;
 
 __attribute__((visibility("hidden")))
-@interface WFHomeAccessoryActionView : UIView
+@interface WFHomeAccessoryActionView : WFActionCustomView <WFActionEventObserver>
 {
-    WFHFTriggerActionSetsBuilderParameterState *_parameterState;
     UIStackView *_iconsStackView;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIStackView *iconsStackView; // @synthesize iconsStackView=_iconsStackView;
-@property (copy, nonatomic) WFHFTriggerActionSetsBuilderParameterState *parameterState; // @synthesize parameterState=_parameterState;
+@property (readonly) Class superclass;
 
-+ (double)preferredHeightForParameterState:(id)arg1;
++ (double)preferredHeightForAction:(id)arg1;
 - (void).cxx_destruct;
+- (void)action:(id)arg1 parameterStateDidChangeForKey:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setAction:(id)arg1;
 - (void)updateIcons;
 
 @end

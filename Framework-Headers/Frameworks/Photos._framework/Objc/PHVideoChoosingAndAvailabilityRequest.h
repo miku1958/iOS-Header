@@ -28,6 +28,7 @@
 - (void)_cplDownloadStatusNotification:(id)arg1;
 - (void)_loadAdjustmentInfoFromPath:(id)arg1 intoAdditionalInfo:(id)arg2;
 - (void)_resourceURLReceivedNotification:(id)arg1;
+- (void)abortClientSide;
 - (void)cancel;
 - (id)initWithAssetObjectID:(id)arg1 size:(struct CGSize)arg2 behaviorSpec:(id)arg3;
 - (id)initWithPlistDictionary:(id)arg1 photoLibrary:(id)arg2;

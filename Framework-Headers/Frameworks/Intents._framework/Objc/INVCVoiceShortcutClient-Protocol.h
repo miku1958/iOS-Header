@@ -9,7 +9,7 @@
 @class NSArray, NSString;
 
 @protocol INVCVoiceShortcutClient <NSObject>
-- (void)getVoiceShortcutWithIdentifier:(NSString *)arg1 completion:(void (^)(id<INVCVoiceShortcut>, NSError *))arg2;
+- (void)getVoiceShortcutWithIdentifier:(NSString *)arg1 completion:(void (^)(VCVoiceShortcut *, NSError *))arg2;
 - (void)getVoiceShortcutsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)setInteger:(long long)arg1 forKey:(NSString *)arg2 inDomain:(NSString *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
 - (void)setShortcutSuggestions:(NSArray *)arg1 forAppWithBundleIdentifier:(NSString *)arg2;

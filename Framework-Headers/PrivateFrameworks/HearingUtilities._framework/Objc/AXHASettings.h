@@ -6,7 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccountStore, NSDictionary, NSMutableDictionary, NSMutableSet;
+@class ACAccountStore, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet;
+@protocol OS_dispatch_queue;
 
 @interface AXHASettings : NSObject
 {
@@ -14,12 +15,15 @@
     NSMutableSet *_registeredNotifications;
     NSMutableSet *_synchronizePreferences;
     NSMutableDictionary *_updateBlocks;
+    NSObject<OS_dispatch_queue> *_icloudInitializationQueue;
 }
 
 @property (nonatomic) BOOL allowHearingAidControlOnLockScreen;
 @property (nonatomic) long long callAudioRoute;
 @property (nonatomic) long long complicationPreferredDisplayMode;
+@property (strong, nonatomic) NSArray *detectableUltronTypes;
 @property (nonatomic) BOOL exportsLiveListenToFile;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *icloudInitializationQueue; // @synthesize icloudInitializationQueue=_icloudInitializationQueue;
 @property (nonatomic) BOOL independentHearingAidSettings;
 @property (nonatomic) long long mediaAudioRoute;
 @property (nonatomic) BOOL multideviceAudioEnabled;
@@ -29,6 +33,8 @@
 @property (nonatomic) BOOL shouldStreamToLeftAid;
 @property (nonatomic) BOOL shouldStreamToRightAid;
 @property (strong, nonatomic) NSMutableSet *synchronizePreferences; // @synthesize synchronizePreferences=_synchronizePreferences;
+@property (nonatomic) BOOL ultronIsRunning;
+@property (nonatomic) BOOL ultronSupportEnabled;
 @property (strong, nonatomic) NSMutableDictionary *updateBlocks; // @synthesize updateBlocks=_updateBlocks;
 
 + (void)initialize;

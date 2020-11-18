@@ -48,9 +48,6 @@
 - (void).cxx_destruct;
 - (void)_delayedUpdatePreview;
 - (void)_didSettleOnItemAtIndexPath:(id)arg1;
-- (void)_ensureScrollViewSnaps;
-- (id)_findSnappingItemFromContentOffset:(inout struct CGPoint *)arg1 withVelocity:(struct CGPoint)arg2;
-- (void)_snapTargetContentOffset:(inout struct CGPoint *)arg1 toItemIndexPath:(id)arg2 atItemOffset:(struct CGPoint)arg3;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
@@ -64,7 +61,6 @@
 - (id)makeCollectionViewWithFrame:(struct CGRect)arg1;
 - (id)preferredFocusEnvironments;
 - (unsigned long long)preferredScrollPosition;
-- (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)updateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)updateViewLayoutAnimated:(BOOL)arg1 relayout:(BOOL)arg2;
 - (void)updateWithViewElement:(id)arg1;

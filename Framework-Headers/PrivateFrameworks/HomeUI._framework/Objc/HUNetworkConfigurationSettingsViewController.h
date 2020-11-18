@@ -20,8 +20,7 @@
 - (id)buildItemModuleControllerForModule:(id)arg1;
 - (id)initWithItemManager:(id)arg1 tableViewStyle:(long long)arg2;
 - (id)initWithNetworkConfigurationGroupItem:(id)arg1;
-- (void)itemManager:(id)arg1 didChangeSourceItem:(id)arg2;
-- (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;
+- (void)itemManagerDidFinishUpdate:(id)arg1;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)updateNetworkConfigurationSettingsModuleFooter;
 

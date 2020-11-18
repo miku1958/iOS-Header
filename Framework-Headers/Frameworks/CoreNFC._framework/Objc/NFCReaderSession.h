@@ -56,6 +56,7 @@
 - (id)_convertMessageToInternal:(id)arg1;
 - (void)_invalidateSessionWithCode:(long long)arg1 callbackOnQueue:(BOOL)arg2;
 - (void)_invalidateSessionWithCode:(long long)arg1 message:(id)arg2 finalUIState:(long long)arg3 callbackOnQueue:(BOOL)arg4;
+- (void)_restartPollingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_startPollingWithMethod:(unsigned long long)arg1 sessionConfig:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_stopPollingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)beginSession;

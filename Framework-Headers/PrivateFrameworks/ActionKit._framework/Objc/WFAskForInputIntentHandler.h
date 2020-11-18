@@ -24,6 +24,7 @@
 - (void)handleAskForInput:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resolveDateAndTimeAnswerForAskForInput:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)resolveDateAnswerForAskForInput:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)resolveDefaultURLAnswerForAskForInput:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)resolveNumberAnswerForAskForInput:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)resolveQuestionForAskForInput:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)resolveStringAnswerForAskForInput:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

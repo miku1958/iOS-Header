@@ -12,6 +12,7 @@
 {
     SBDockIconListView *_userIconListView;
     SBDockIconListView *_recentIconListView;
+    double _platterVerticalMargin;
     unsigned long long _minimumUserIconSpaces;
     SBFloatingDockPlatterView *_mainPlatterView;
     UIView *_dividerView;
@@ -35,13 +36,14 @@
 @property (nonatomic) struct UIEdgeInsets paddingEdgeInsets; // @synthesize paddingEdgeInsets=_paddingEdgeInsets;
 @property (readonly, nonatomic) struct CGRect platterFrame;
 @property (readonly, nonatomic) struct UIEdgeInsets platterShadowOutsets;
+@property (nonatomic) double platterVerticalMargin; // @synthesize platterVerticalMargin=_platterVerticalMargin;
 @property (strong, nonatomic) SBDockIconListView *recentIconListView; // @synthesize recentIconListView=_recentIconListView;
 @property (strong, nonatomic) UIView *touchReceivingView; // @synthesize touchReceivingView=_touchReceivingView;
 @property (strong, nonatomic) SBDockIconListView *userIconListView; // @synthesize userIconListView=_userIconListView;
 
 + (double)_referenceInterIconSpacingWithIconImageInfo:(struct SBIconImageInfo)arg1;
 + (double)contentHeightForBounds:(struct CGRect)arg1 mainPlatterViewFrame:(struct CGRect)arg2;
-+ (void)getMetrics:(CDStruct_c0971cc5 *)arg1 forBounds:(struct CGRect)arg2 numberOfUserIcons:(unsigned long long)arg3 numberOfRecentIcons:(unsigned long long)arg4 paddingEdgeInsets:(struct UIEdgeInsets)arg5 referenceIconSize:(struct CGSize)arg6 maximumIconSize:(struct CGSize)arg7 referenceInterIconSpacing:(double)arg8 maximumInterIconSpacing:(double)arg9;
++ (void)getMetrics:(CDStruct_c0971cc5 *)arg1 forBounds:(struct CGRect)arg2 numberOfUserIcons:(unsigned long long)arg3 numberOfRecentIcons:(unsigned long long)arg4 paddingEdgeInsets:(struct UIEdgeInsets)arg5 referenceIconSize:(struct CGSize)arg6 maximumIconSize:(struct CGSize)arg7 referenceInterIconSpacing:(double)arg8 maximumInterIconSpacing:(double)arg9 platterVerticalMargin:(double)arg10;
 + (double)maximumDockContinuousCornerRadiusWithIconImageInfo:(struct SBIconImageInfo)arg1;
 + (struct CGSize)maximumIconSizeWithIconImageInfo:(struct SBIconImageInfo)arg1;
 + (double)maximumInterIconSpacingWithIconImageInfo:(struct SBIconImageInfo)arg1;

@@ -84,6 +84,7 @@
 + (id)daAccountSubclassWithBackingAccountInfo:(id)arg1;
 + (id)oneshotListOfAccountIDs;
 + (void)reacquireClientRestrictions:(id)arg1;
++ (BOOL)shouldCreateAccountForBackingAccountInfo:(id)arg1;
 - (void).cxx_destruct;
 - (void)_dequeueQuery;
 - (BOOL)_isIdentityManagedByProfile;

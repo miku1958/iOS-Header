@@ -26,6 +26,7 @@
 - (id)acknowledgePrivacy;
 - (id)initWithPrivacyIdentifier:(id)arg1;
 - (id)initWithPrivacyIdentifier:(id)arg1 account:(id)arg2;
+- (id)initWithPrivacyIdentifiers:(id)arg1;
 - (id)initWithPrivacyIdentifiers:(id)arg1 account:(id)arg2;
 
 @end

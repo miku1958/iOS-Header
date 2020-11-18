@@ -10,16 +10,19 @@
 
 @interface WFWorkflowCopyActivity : UIActivity
 {
+    NSURL *_excludedURL;
     NSURL *_URL;
 }
 
 @property (strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+@property (readonly, nonatomic) NSURL *excludedURL; // @synthesize excludedURL=_excludedURL;
 
 - (void).cxx_destruct;
 - (id)activityImage;
 - (id)activityTitle;
 - (id)activityType;
 - (BOOL)canPerformWithActivityItems:(id)arg1;
+- (id)initWithExcludedURL:(id)arg1;
 - (void)performActivity;
 - (void)prepareWithActivityItems:(id)arg1;
 

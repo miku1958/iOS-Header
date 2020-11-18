@@ -88,6 +88,7 @@
 - (void)_updateAlertSuppressionContext;
 - (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (BOOL)becomeFirstResponder;
+- (void)cancelAndDestroyCompositionWithoutDismiss;
 - (void)cancelNewMessageComposition;
 - (void)chatController:(id)arg1 didReportSpamForConversation:(id)arg2;
 - (void)chatController:(id)arg1 didSendCompositionInConversation:(id)arg2;

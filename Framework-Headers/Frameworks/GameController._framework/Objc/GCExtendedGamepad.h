@@ -81,6 +81,7 @@
 - (void)setController:(id)arg1;
 - (void)setControllerForElements;
 - (void)setDpad:(id)arg1 x:(double)arg2 y:(double)arg3;
+- (void)setEnableTimeForHaptics:(BOOL)arg1;
 - (void)setHapticMotor:(int)arg1 frequency:(float)arg2;
 - (void)setLightbarColorWithRed:(float)arg1 green:(float)arg2 blue:(float)arg3;
 - (void)setPlayerIndex:(long long)arg1;

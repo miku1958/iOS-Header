@@ -24,11 +24,12 @@
 
 + (id)templateForInPhoneCallHeuristicWithContactId:(id)arg1 handle:(id)arg2;
 - (void).cxx_destruct;
+- (id)backFillProxiesByRecencyUsingMessagesCache:(id)arg1 startIndex:(unsigned long long)arg2;
 - (id)hourOfDayProbabilitiesToInteractWithContacts:(id)arg1;
 - (id)hyperRecentHeuristicSuggestionProxiesWithReferenceDate:(id)arg1 predictionContextBundleId:(id)arg2;
 - (id)inPhoneCallHeuristicSuggestionProxies;
 - (id)initWithKnowledgeStore:(id)arg1 interactionStore:(id)arg2 contactResolver:(id)arg3;
-- (id)maximalIntersectionGroupChatSuggestionProxyWithSeedContactIdentifiers:(id)arg1 bundleIds:(id)arg2;
+- (id)maximalIntersectionGroupChatSuggestionProxyWithSeedContactIdentifiers:(id)arg1 bundleIds:(id)arg2 meContactIdentifier:(id)arg3;
 - (id)photoSuggestionProxiesPartitionedByPresenceInAttachments:(id)arg1 photoSuggestedPeople:(id)arg2 contactIDsInAssets:(id)arg3;
 - (void)prepareRecencyCache;
 - (id)proximityBoostingHeuristicWithProximityBooster:(id)arg1 existingSuggestions:(id)arg2;

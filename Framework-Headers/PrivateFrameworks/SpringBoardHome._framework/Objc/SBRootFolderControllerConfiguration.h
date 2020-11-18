@@ -17,18 +17,18 @@
     BOOL _showsDoneButtonWhileEditing;
     BOOL _sidebarVisible;
     BOOL _sidebarPinned;
-    BOOL _ignoresOverscrollOnFirstPage;
     UIViewController *_pullDownSearchViewController;
     UIViewController<SBHLegibility> *_todayViewController;
     UIViewController<SBHSidebarProvider> *_sidebarViewController;
     unsigned long long _sidebarAllowedOrientations;
+    unsigned long long _ignoresOverscrollOnFirstPageOrientations;
     UIViewController<SBHLegibility> *_portraitHeaderViewController;
 }
 
 @property (nonatomic, getter=isDockExternal) BOOL dockExternal; // @synthesize dockExternal=_dockExternal;
 @property (nonatomic, getter=isDockPinnedForRotation) BOOL dockPinnedForRotation; // @synthesize dockPinnedForRotation=_dockPinnedForRotation;
 @property (nonatomic, getter=isForSnapshot) BOOL forSnapshot; // @synthesize forSnapshot=_forSnapshot;
-@property (nonatomic) BOOL ignoresOverscrollOnFirstPage; // @synthesize ignoresOverscrollOnFirstPage=_ignoresOverscrollOnFirstPage;
+@property (nonatomic) unsigned long long ignoresOverscrollOnFirstPageOrientations; // @synthesize ignoresOverscrollOnFirstPageOrientations=_ignoresOverscrollOnFirstPageOrientations;
 @property (strong, nonatomic) UIViewController<SBHLegibility> *portraitHeaderViewController; // @synthesize portraitHeaderViewController=_portraitHeaderViewController;
 @property (strong, nonatomic) UIViewController *pullDownSearchViewController; // @synthesize pullDownSearchViewController=_pullDownSearchViewController;
 @property (nonatomic) BOOL showsDoneButtonWhileEditing; // @synthesize showsDoneButtonWhileEditing=_showsDoneButtonWhileEditing;

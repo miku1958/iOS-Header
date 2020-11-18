@@ -15,7 +15,6 @@
 
 @property (readonly, nonatomic) WFDatabase *database; // @synthesize database=_database;
 
-+ (BOOL)automationsAreEnabled;
 - (void).cxx_destruct;
 - (id)allConfiguredTriggers;
 - (id)configuredTriggerWithID:(id)arg1;

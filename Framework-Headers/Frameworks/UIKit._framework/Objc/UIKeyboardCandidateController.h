@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
     UIKeyboardCandidateViewState *_extendedScrolledBarState;
     UIKeyboardCandidateViewState *_inlineViewState;
     UIKeyboardCandidateViewState *_extendedInlineViewState;
+    double _additionalExtendedBarBackdropOffset;
     TIKeyboardCandidate *_currentCandidate;
     NSDictionary *_opacities;
     UIPanGestureRecognizer *_panGestureRecognizer;
@@ -51,6 +52,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long activeCandidateViewType; // @synthesize activeCandidateViewType=_activeCandidateViewType;
 @property (readonly, nonatomic) NSArray *activeCandidateViews;
 @property (strong, nonatomic) NSMutableArray *activeViews; // @synthesize activeViews=_activeViews;
+@property (nonatomic) double additionalExtendedBarBackdropOffset; // @synthesize additionalExtendedBarBackdropOffset=_additionalExtendedBarBackdropOffset;
 @property (nonatomic) BOOL adjustForLeftHandBias; // @synthesize adjustForLeftHandBias=_adjustForLeftHandBias;
 @property (strong, nonatomic) UIViewPropertyAnimator *animator; // @synthesize animator=_animator;
 @property (strong, nonatomic) TUICandidateView *bar; // @synthesize bar=_bar;
@@ -116,6 +118,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)currentIndex;
 - (void)dealloc;
 - (void)dimKeys:(id)arg1;
+- (void)extendKeyboardBackdropHeight:(double)arg1;
 - (id)firstNonEmptyActiveCandidateView;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;

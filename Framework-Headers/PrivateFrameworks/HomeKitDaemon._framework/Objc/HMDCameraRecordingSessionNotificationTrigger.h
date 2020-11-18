@@ -19,6 +19,7 @@
     HMDHAPAccessory *_cameraAccessory;
     HMDCameraNotificationCharacteristicsAvailabilityListener *_availabilityListener;
     NSNotificationCenter *_notificationCenter;
+    NSString *_logIdentifier;
 }
 
 @property (readonly) HMDCameraNotificationCharacteristicsAvailabilityListener *availabilityListener; // @synthesize availabilityListener=_availabilityListener;
@@ -27,6 +28,7 @@
 @property (weak) id<HMDCameraRecordingSessionNotificationTriggerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property (readonly) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property (readonly) Class superclass;
 @property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;

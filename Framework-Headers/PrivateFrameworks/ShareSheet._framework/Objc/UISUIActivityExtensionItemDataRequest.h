@@ -16,6 +16,7 @@
     BOOL _wantsAttachmentURLItemData;
     BOOL _isAirDropActivity;
     BOOL _activitySupportsPromiseURLs;
+    BOOL _sourceAppIsManaged;
     Class _classForPreparingExtensionItemData;
     NSUUID *_activityUUID;
     NSString *_activityType;
@@ -35,12 +36,14 @@
 @property (nonatomic) NSString *extensionIdentifier; // @synthesize extensionIdentifier=_extensionIdentifier;
 @property (nonatomic) BOOL isAirDropActivity; // @synthesize isAirDropActivity=_isAirDropActivity;
 @property (nonatomic) long long maxPreviews; // @synthesize maxPreviews=_maxPreviews;
+@property (nonatomic) BOOL sourceAppIsManaged; // @synthesize sourceAppIsManaged=_sourceAppIsManaged;
 @property (nonatomic) struct CGSize thumbnailSize; // @synthesize thumbnailSize=_thumbnailSize;
 @property (nonatomic) BOOL wantsAttachmentURLItemData; // @synthesize wantsAttachmentURLItemData=_wantsAttachmentURLItemData;
 @property (nonatomic) BOOL wantsThumbnailItemData; // @synthesize wantsThumbnailItemData=_wantsThumbnailItemData;
 
 + (id)requestForActivity:(id)arg1 activityType:(id)arg2;
 + (id)requestForActivity:(id)arg1 activityType:(id)arg2 activitySpecificMetadata:(id)arg3;
++ (id)requestForActivity:(id)arg1 activityType:(id)arg2 sourceAppIsManaged:(BOOL)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_initWithClassForPreparingExtensionItemData:(Class)arg1;

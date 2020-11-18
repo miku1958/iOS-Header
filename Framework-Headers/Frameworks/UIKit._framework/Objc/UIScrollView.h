@@ -107,7 +107,8 @@
     BOOL _deferredUpdateTargetIsValid;
     struct CGPoint _deferredUpdateTargetContentOffset;
     struct CGSize _deferredUpdateTargetContentSize;
-    NSTimer *_scrollIndicatorHideDelayTimer;
+    NSTimer *_verticalScrollIndicatorHideDelayTimer;
+    NSTimer *_horizontalScrollIndicatorHideDelayTimer;
     _UIScrollViewScrollIndicator *_verticalScrollIndicator;
     _UIScrollViewScrollIndicator *_horizontalScrollIndicator;
     double _knobLastFadeTime;
@@ -662,6 +663,7 @@
 - (double)_shadowHeightOffset;
 - (BOOL)_shouldAutoScroll;
 - (BOOL)_shouldContentOffsetMaintainRelativeDistanceFromSafeArea;
+- (BOOL)_shouldReverseLayoutDirectionConsideringFlippedHorizontalAxis;
 - (BOOL)_shouldScrollToContentBeginningInRightToLeft;
 - (BOOL)_shouldTrackImmediatelyWhileDecelerating;
 - (void)_showFocusFastScrollingIndexBar:(id)arg1;

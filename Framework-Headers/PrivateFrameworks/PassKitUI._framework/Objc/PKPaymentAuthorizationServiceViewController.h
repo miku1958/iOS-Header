@@ -44,6 +44,10 @@
     BOOL _visible;
     BOOL _authenticating;
     BOOL _allowCompactProcessing;
+    unsigned char _visibility;
+    BOOL _keyboardVisible;
+    struct CGRect _keyboardFrame;
+    struct CGRect _lastKeyboardFrame;
     long long _internalPearlState;
     unsigned int _pearlCameraEdge;
     long long _internalCoachingState;
@@ -53,7 +57,6 @@
     BOOL _hostApplicationEnteredBackground;
     BOOL _treatingHostAsBackgrounded;
     BOOL _bypassAuthenticator;
-    double _keyboardHeight;
     BOOL _isPad;
     BOOL _isAMPPayment;
     BOOL _needsFinalCallback;
@@ -90,6 +93,7 @@
 
 - (void).cxx_destruct;
 - (void)_abandonActiveEnrollmentAttempts;
+- (void)_abandonPSD2StyleAMPBuy;
 - (void)_addPassphraseViewControllerToHierarchy:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (long long)_authenticatorPolicy;
 - (id)_availabilityStringForPass:(id)arg1;
@@ -117,6 +121,7 @@
 - (void)_setPasscodeViewController:(id)arg1;
 - (void)_setPassphraseViewController:(id)arg1;
 - (void)_setUserIntentRequired:(BOOL)arg1 shouldIgnorePhysicalButton:(BOOL)arg2;
+- (void)_setVisibility:(unsigned char)arg1;
 - (void)_setVisible:(BOOL)arg1;
 - (void)_setupBankAccounts;
 - (void)_setupPaymentPassAndBillingAddress;
@@ -138,6 +143,7 @@
 - (void)_updateCancelButtonEnabledForState:(unsigned long long)arg1 param:(id)arg2;
 - (void)_updateCoachingInstruction;
 - (void)_updateFooterStateForBiometricMatchMissIfNecessary;
+- (void)_updateLayoutForKeyboardAction:(CDUnknownBlockType)arg1;
 - (void)_updatePendingTransaction:(id)arg1 withAuthorizationStateParam:(id)arg2;
 - (void)_updatePhysicalButtonInstruction;
 - (void)_updatePreferencesWithErrors:(id)arg1;
@@ -180,6 +186,7 @@
 - (id)handlePaymentRequest:(id)arg1 fromAppWithLocalizedName:(id)arg2 applicationIdentifier:(id)arg3 bundleIdentifier:(id)arg4 teamIdentifier:(id)arg5;
 - (id)initWithLayout:(id)arg1;
 - (void)invalidate;
+- (void)keyboardWillChange:(id)arg1;
 - (void)keyboardWillHide:(id)arg1;
 - (void)keyboardWillShow:(id)arg1;
 - (BOOL)paymentAuthorizationStateMachine:(id)arg1 didTransitionFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3 withParam:(id)arg4;
@@ -204,6 +211,7 @@
 - (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

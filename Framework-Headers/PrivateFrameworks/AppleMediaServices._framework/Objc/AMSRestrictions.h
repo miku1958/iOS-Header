@@ -11,6 +11,7 @@
 }
 
 + (BOOL)allowAccountModifications;
++ (BOOL)eroticaAllowed;
 + (BOOL)explicitContentAllowed;
 + (BOOL)onDeviceDiagnosticsAllowed;
 

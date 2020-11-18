@@ -8,15 +8,16 @@
 
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSObject, NSString, UIButton;
-@protocol OS_dispatch_group, PKPaymentSetupViewControllerDelegate;
+@class NSArray, NSMutableArray, NSString, UIButton;
+@protocol PKPaymentSetupViewControllerDelegate;
 
 @interface PKPaymentSetupAssistantRegistrationViewController : PKPaymentSetupHeroViewController <PKPaymentSetupViewControllerDelegate>
 {
     UIButton *_skipButton;
     id<PKPaymentSetupViewControllerDelegate> _externalDelegate;
-    NSObject<OS_dispatch_group> *_preflightGroup;
-    BOOL _preflightResult;
+    BOOL _isPreflighting;
+    NSMutableArray *_preflightCompletionHandlers;
+    unsigned long long _preflightResult;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -37,7 +38,10 @@
 - (id)initWithPaymentWebService:(id)arg1 context:(long long)arg2 delegate:(id)arg3;
 - (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)viewController:(id)arg1 didExitPasscodeUpgradeForPasscodeUpgradeFlowController:(id)arg2 withShouldContinue:(BOOL)arg3 error:(id)arg4;
+- (void)viewController:(id)arg1 didExitPasscodeUpgradeWithShouldContinue:(BOOL)arg2 error:(id)arg3;
 - (void)viewController:(id)arg1 didShowProvisioningError:(id)arg2;
+- (void)viewController:(id)arg1 requestPasscodeUpgradeForPasscodeUpgradeFlowController:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)viewController:(id)arg1 requestPasscodeUpgradeWithCompletion:(CDUnknownBlockType)arg2;
 - (void)viewControllerDidFailToChangePasscodeComplex:(id)arg1;
 - (void)viewControllerDidFinishChangingPasscodeComplex:(id)arg1;

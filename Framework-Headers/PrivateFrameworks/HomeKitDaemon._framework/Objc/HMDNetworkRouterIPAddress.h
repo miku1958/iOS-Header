@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSData *v6; // @synthesize v6=_v6;
 
 + (id)ipAddressFromNetAddress:(id)arg1 error:(id *)arg2;
++ (id)ipAddressFromRuleAddress:(id)arg1 allowWildcard:(BOOL)arg2;
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

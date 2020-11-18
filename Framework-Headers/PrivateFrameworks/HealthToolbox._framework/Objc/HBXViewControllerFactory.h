@@ -28,12 +28,14 @@
 - (id)createAppSourcesViewControllerUsingInsetStyling:(BOOL)arg1;
 - (id)createBuddyViewController;
 - (id)createChartForTypeIdentifier:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 minimumSize:(struct CGSize)arg4 disableXAxis:(BOOL)arg5;
+- (id)createContactConsolidationControllerInViewController:(id)arg1;
 - (id)createDataSourcesTableViewController:(id)arg1;
 - (id)createDeletedSourceMessageViewControllerForSource:(id)arg1;
 - (id)createDetailViewControllerForType:(id)arg1;
 - (id)createDetailViewControllerForType:(id)arg1 displayDate:(id)arg2;
 - (id)createDeviceSourcesViewControllerUsingInsetStyling:(BOOL)arg1;
-- (id)createElectrocardiogramDataMetadataViewControllerWithElectrocardiogram:(id)arg1;
+- (id)createElectrocardiogramDataMetadataViewControllerWithElectrocardiogram:(id)arg1 dataProvider:(id)arg2;
+- (id)createElectrocardiogramListDataProvider;
 - (id)createFavoritesController;
 - (id)createHKUnitPreferenceController;
 - (id)createHeartRoomViewControllerWithDisplayDate:(id)arg1;

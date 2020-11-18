@@ -43,6 +43,7 @@
 - (void)endInterruptionWithFlags:(id)arg1;
 - (void)finalize;
 - (void)finishedPlaying:(id)arg1;
+- (void)handleInterruption:(id)arg1;
 - (id)impl;
 - (id)initBase;
 - (id)initWithContentsOfURL:(id)arg1 error:(id *)arg2;
@@ -55,6 +56,7 @@
 - (BOOL)play;
 - (BOOL)playAtTime:(double)arg1;
 - (BOOL)prepareToPlay;
+- (void)privRemoveSessionListener;
 - (void)setAudioSession:(id)arg1;
 - (void)setMixToUplink:(BOOL)arg1;
 - (void)setVolume:(float)arg1 fadeDuration:(double)arg2;

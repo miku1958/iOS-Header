@@ -118,7 +118,6 @@
 - (void)autocompleteResultsController:(id)arg1 didRequestInfoAboutRecipient:(id)arg2;
 - (void)autocompleteResultsController:(id)arg1 didSelectRecipient:(id)arg2 atIndex:(unsigned long long)arg3;
 - (id)autocompleteResultsController:(id)arg1 preferredRecipientForRecipients:(id)arg2;
-- (void)autocompleteResultsController:(id)arg1 preferredRecipientForRecipients:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)autocompleteResultsController:(id)arg1 tintColorForRecipient:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)chatForIMHandle:(id)arg1;
 - (void)colorTypeForRecipient:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -20,6 +20,7 @@
     WGPlatterHeaderContentView *_headerContentView;
     double _cornerRadius;
     BOOL _adjustsFontForContentSizeCategory;
+    BOOL _contentViewHitTestingDisabled;
     BOOL _backgroundHidden;
     BOOL _showingMoreContent;
     NSString *_materialGroupNameBase;
@@ -39,6 +40,7 @@
 @property (nonatomic) long long buttonMode; // @synthesize buttonMode=_buttonMode;
 @property (nonatomic) unsigned long long clippingEdge; // @synthesize clippingEdge=_clippingEdge;
 @property (strong, nonatomic, setter=_setContentView:) UIView *contentView; // @synthesize contentView=_contentView;
+@property (nonatomic, getter=isContentViewHitTestingDisabled) BOOL contentViewHitTestingDisabled; // @synthesize contentViewHitTestingDisabled=_contentViewHitTestingDisabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

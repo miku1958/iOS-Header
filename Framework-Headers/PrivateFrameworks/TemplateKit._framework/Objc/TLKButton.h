@@ -20,10 +20,12 @@
     CAShapeLayer *_innerProgressLayer;
     double _progress;
     TLKImageView *_imageView;
+    struct CGSize _fixedSize;
 }
 
 @property (strong, nonatomic) TLKTapContainerButton *button; // @synthesize button=_button;
 @property (weak, nonatomic) UIView *containerView;
+@property (nonatomic) struct CGSize fixedSize; // @synthesize fixedSize=_fixedSize;
 @property (readonly) UIView *hitView;
 @property (readonly) UIImage *imageOnImageView;
 @property (strong, nonatomic) TLKImageView *imageView; // @synthesize imageView=_imageView;

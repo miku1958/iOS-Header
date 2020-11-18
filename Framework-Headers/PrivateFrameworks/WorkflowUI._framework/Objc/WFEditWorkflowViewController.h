@@ -16,7 +16,7 @@
 #import <WorkflowUI/WFWorkflowEmptyStateViewDelegate-Protocol.h>
 #import <WorkflowUI/WFWorkflowSettingsViewControllerDelegate-Protocol.h>
 
-@class NSAttributedString, NSHashTable, NSIndexPath, NSString, NSUndoManager, UIButton, UIResponder, UIView, WFActionDragFeedbackGenerator, WFWorkflowEmptyStateView;
+@class NSAttributedString, NSHashTable, NSIndexPath, NSString, NSUndoManager, UIButton, UIResponder, UIView, WFActionDragFeedbackGenerator, WFEditShortcutEvent, WFWorkflowEmptyStateView;
 @protocol WFEditWorkflowViewControllerDelegate, WFVariableUIDelegate;
 
 @interface WFEditWorkflowViewController : WFRunWorkflowViewController <WFDragControllerDelegate, WFModulesCollectionViewDelegate, WFWorkflowSettingsViewControllerDelegate, WFWorkflowEmptyStateViewDelegate, WFContentClassesToolbarDelegate, WFContentClassesViewControllerDelegate, WFModuleIndentationProvider, UIGestureRecognizerDelegate, WFWorkflowEditingDelegate>
@@ -37,6 +37,7 @@
     UIButton *_endRevealButton;
     NSIndexPath *_actionRevealFromIndexPath;
     NSIndexPath *_actionRevealToIndexPath;
+    WFEditShortcutEvent *_editShortcutEvent;
     struct CGPoint _actionRevealInitialOffset;
 }
 
@@ -50,6 +51,7 @@
 @property (weak, nonatomic) id<WFEditWorkflowViewControllerDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) WFActionDragFeedbackGenerator *dragFeedbackGenerator; // @synthesize dragFeedbackGenerator=_dragFeedbackGenerator;
+@property (strong, nonatomic) WFEditShortcutEvent *editShortcutEvent; // @synthesize editShortcutEvent=_editShortcutEvent;
 @property (copy, nonatomic) NSAttributedString *emptyStateInstructionText; // @synthesize emptyStateInstructionText=_emptyStateInstructionText;
 @property (readonly, weak, nonatomic) WFWorkflowEmptyStateView *emptyStateView; // @synthesize emptyStateView=_emptyStateView;
 @property (strong, nonatomic) UIButton *endRevealButton; // @synthesize endRevealButton=_endRevealButton;
@@ -102,6 +104,7 @@
 - (id)keyCommands;
 - (void)keyboardWillChangeFrame:(id)arg1;
 - (void)loadView;
+- (void)logEditEventIfNeccesary;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)presentSettingsViewController;
 - (void)removeActionPressed:(id)arg1 forAction:(id)arg2;
@@ -126,6 +129,7 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateBorderWidth;
 - (void)updateContentInset;
+- (void)updateEditEvent;
 - (void)updateEditingStateAnimated:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateEmptyStateViewVisibilityAnimated:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)viewDidAppear:(BOOL)arg1;

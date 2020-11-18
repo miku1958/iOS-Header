@@ -21,12 +21,14 @@
     UIColor *_secureTextColor;
     UIColor *_warningTextColor;
     UIColor *_annotationTextColor;
+    UIColor *_progressBarTintColor;
     UIColor *_platterTextColor;
     UIColor *_platterSecureTextColor;
     UIColor *_platterWarningTextColor;
     UIColor *_platterAnnotationTextColor;
     UIColor *_platterPlaceholderTextColor;
     UIColor *_platterSelectionColor;
+    UIColor *_platterProgressBarTintColor;
 }
 
 @property (readonly, nonatomic) UIColor *annotationTextColor; // @synthesize annotationTextColor=_annotationTextColor;
@@ -38,11 +40,13 @@
 @property (readonly, nonatomic) long long platterKeyboardOverrideAppearance; // @synthesize platterKeyboardOverrideAppearance=_platterKeyboardOverrideAppearance;
 @property (readonly, nonatomic) long long platterOverrideUserInterfaceStyle; // @synthesize platterOverrideUserInterfaceStyle=_platterOverrideUserInterfaceStyle;
 @property (readonly, nonatomic) UIColor *platterPlaceholderTextColor; // @synthesize platterPlaceholderTextColor=_platterPlaceholderTextColor;
+@property (readonly, nonatomic) UIColor *platterProgressBarTintColor; // @synthesize platterProgressBarTintColor=_platterProgressBarTintColor;
 @property (readonly, nonatomic) UIColor *platterSecureTextColor; // @synthesize platterSecureTextColor=_platterSecureTextColor;
 @property (readonly, nonatomic) UIColor *platterSelectionColor; // @synthesize platterSelectionColor=_platterSelectionColor;
 @property (readonly, nonatomic) UIColor *platterTextColor; // @synthesize platterTextColor=_platterTextColor;
 @property (readonly, nonatomic) long long platterTextFieldOverrideUserInterfaceStyle; // @synthesize platterTextFieldOverrideUserInterfaceStyle=_platterTextFieldOverrideUserInterfaceStyle;
 @property (readonly, nonatomic) UIColor *platterWarningTextColor; // @synthesize platterWarningTextColor=_platterWarningTextColor;
+@property (readonly, nonatomic) UIColor *progressBarTintColor; // @synthesize progressBarTintColor=_progressBarTintColor;
 @property (readonly, nonatomic) UIColor *secureTextColor; // @synthesize secureTextColor=_secureTextColor;
 @property (readonly, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property (readonly, nonatomic) UIColor *warningTextColor; // @synthesize warningTextColor=_warningTextColor;

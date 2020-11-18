@@ -21,6 +21,7 @@
 - (void)didMoveToParentViewController:(id)arg1;
 - (id)initWithWrappedViewController:(id)arg1;
 - (id)initWithWrappedViewController:(id)arg1 type:(long long)arg2;
+- (void)loadView;
 - (void)viewWillLayoutSubviews;
 
 @end

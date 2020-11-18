@@ -14,30 +14,34 @@
 #import <WorkflowUI/WFActionDrawerStateConfigurable-Protocol.h>
 #import <WorkflowUI/WFActionDrawerStateRepresentable-Protocol.h>
 
-@class NSArray, NSString, WFActionDrawerResultsController, WFActionDrawerState;
+@class NSArray, NSString, WFActionDrawerCategoriesMetrics, WFActionDrawerResultsController, WFActionDrawerState;
 @protocol NSObject, WFActionDrawerSuggestionsViewControllerDelegate;
 
 @interface WFActionDrawerSiriSuggestionsViewController : WFActionDrawerCompositeResultsViewController <UITableViewDelegate, UITableViewDataSource, WFActionDrawerSiriSuggestionsTableViewCellDelegate, WFActionDrawerCategoriesTableViewCellDelegate, WFActionDrawerActionTableViewCellDelegate, WFActionDrawerStateRepresentable, WFActionDrawerStateConfigurable>
 {
+    BOOL _shouldDisplayCategoriesVertically;
     id<WFActionDrawerSuggestionsViewControllerDelegate> _delegate;
     WFActionDrawerResultsController *_actionDrawerResultsController;
     id<NSObject> _actionRegistryFilledNotificationObserver;
+    WFActionDrawerCategoriesMetrics *_categoriesMetrics;
 }
 
 @property (readonly, nonatomic) WFActionDrawerResultsController *actionDrawerResultsController; // @synthesize actionDrawerResultsController=_actionDrawerResultsController;
 @property (strong, nonatomic) id<NSObject> actionRegistryFilledNotificationObserver; // @synthesize actionRegistryFilledNotificationObserver=_actionRegistryFilledNotificationObserver;
+@property (strong, nonatomic) WFActionDrawerCategoriesMetrics *categoriesMetrics; // @synthesize categoriesMetrics=_categoriesMetrics;
 @property (readonly, nonatomic) NSArray *contentTypeCategories;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WFActionDrawerSuggestionsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL scrollsToTop;
+@property (nonatomic) BOOL shouldDisplayCategoriesVertically; // @synthesize shouldDisplayCategoriesVertically=_shouldDisplayCategoriesVertically;
 @property (readonly, nonatomic) WFActionDrawerState *state;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)actionCell:(id)arg1 infoButtonTappedForAction:(id)arg2;
-- (void)categoriesTableViewCell:(id)arg1 didSelectCategoryForContentType:(id)arg2;
+- (void)categoriesTableViewCell:(id)arg1 didSelectCategoryForContentType:(id)arg2 title:(id)arg3;
 - (void)categoriesTableViewCellDidSelectCategoryApps:(id)arg1 title:(id)arg2;
 - (void)categoriesTableViewCellDidSelectCategoryFavorites:(id)arg1 title:(id)arg2;
 - (void)categoriesTableViewCellDidSelectCategoryScripting:(id)arg1 title:(id)arg2;
@@ -57,8 +61,9 @@
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
-- (void)viewDidAppear:(BOOL)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
 
 @end
 

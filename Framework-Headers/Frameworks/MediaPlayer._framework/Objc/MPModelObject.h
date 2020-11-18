@@ -8,10 +8,11 @@
 
 #import <MediaPlayer/NSCopying-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
+#import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
 
 @class MPIdentifierSet, NSMutableDictionary, NSString;
 
-@interface MPModelObject : NSObject <NSCopying, NSSecureCoding>
+@interface MPModelObject : NSObject <_MPStateDumpPropertyListTransformable, NSCopying, NSSecureCoding>
 {
     MPModelObject *_originalObject;
     NSMutableDictionary *_storage;
@@ -19,11 +20,15 @@
     MPIdentifierSet *_identifiers;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *humanDescription;
 @property (readonly, copy, nonatomic) MPIdentifierSet *identifiers; // @synthesize identifiers=_identifiers;
 @property (readonly, nonatomic) struct MPLibraryAddStatusObserverConfiguration libraryAddStatusObserverConfiguration;
 @property (readonly, nonatomic) long long libraryRemovalSupportedOptions;
 @property (readonly, nonatomic) MPIdentifierSet *originalIdentifierSet;
+@property (readonly) Class superclass;
 
 + (void)_indexProperties;
 + (BOOL)_lookupPropertyForSelector:(SEL)arg1 result:(CDUnknownBlockType)arg2;
@@ -42,10 +47,10 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_isModelKey:(id)arg1;
+- (id)_stateDumpObject;
 - (id)contentItemCollectionInfo;
 - (id)copyWithIdentifiers:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasLoadedValueForKey:(id)arg1;
 - (BOOL)hasLoadedValuesForPropertySet:(id)arg1;

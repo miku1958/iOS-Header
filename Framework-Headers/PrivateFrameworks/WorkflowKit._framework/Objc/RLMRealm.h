@@ -12,6 +12,7 @@
 {
     shared_ptr_130f66cc _realm;
     struct RLMSchemaInfo _info;
+    struct unique_ptr<RLMResultsSetInfo, std::__1::default_delete<RLMResultsSetInfo>> _resultsSetInfo;
     NSHashTable *_collectionEnumerators;
     BOOL _sendingNotifications;
     BOOL _dynamic;
@@ -28,22 +29,23 @@
 @property (strong, nonatomic) NSHashTable *notificationHandlers; // @synthesize notificationHandlers=_notificationHandlers;
 @property (strong, nonatomic) RLMSchema *schema; // @synthesize schema=_schema;
 
++ (id)asyncOpenWithConfiguration:(id)arg1 callbackQueue:(id)arg2 callback:(CDUnknownBlockType)arg3;
 + (id)defaultRealm;
 + (BOOL)isCoreDebug;
-+ (id)migrateRealm:(id)arg1;
 + (BOOL)performMigrationForConfiguration:(id)arg1 error:(id *)arg2;
 + (id)realmWithConfiguration:(id)arg1 error:(id *)arg2;
 + (id)realmWithSharedRealm:(shared_ptr_130f66cc)arg1 schema:(id)arg2;
 + (id)realmWithURL:(id)arg1;
 + (void)resetRealmState;
 + (unsigned long long)schemaVersionAtURL:(id)arg1 encryptionKey:(id)arg2 error:(id *)arg3;
++ (id)uncachedSchemalessRealmWithConfiguration:(id)arg1 error:(id *)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)addNotificationBlock:(CDUnknownBlockType)arg1;
 - (void)addObject:(id)arg1;
 - (void)addObjects:(id)arg1;
 - (void)addOrUpdateObject:(id)arg1;
-- (void)addOrUpdateObjectsFromArray:(id)arg1;
+- (void)addOrUpdateObjects:(id)arg1;
 - (id)allObjects:(id)arg1;
 - (void)beginWriteTransaction;
 - (void)cancelWriteTransaction;
@@ -70,7 +72,7 @@
 - (void)transactionWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)transactionWithBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (void)unregisterEnumerator:(id)arg1;
-- (void)verifyNotificationsAreSupported;
+- (void)verifyNotificationsAreSupported:(BOOL)arg1;
 - (void)verifyThread;
 - (BOOL)writeCopyToURL:(id)arg1 encryptionKey:(id)arg2 error:(id *)arg3;
 

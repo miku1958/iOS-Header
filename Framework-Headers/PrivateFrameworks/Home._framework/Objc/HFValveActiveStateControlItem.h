@@ -10,8 +10,7 @@
 {
 }
 
-- (id)_faucetValveSubtypeToActiveIconIdentifierMap;
-- (id)_faucetValveSubtypeToInactiveIconIdentifierMap;
+- (id)_faucetValveSubtypeToIconIdentifierMap;
 - (id)_iconDescriptorForServiceSubtype:(id)arg1 inUse:(BOOL)arg2 active:(BOOL)arg3 hasFaucetAsParentService:(BOOL)arg4;
 - (id)copyWithCharacteristicOptions:(id)arg1 valueSource:(id)arg2;
 - (id)initWithValueSource:(id)arg1 auxiliaryTargetValueTuples:(id)arg2 additionalCharacteristicOptions:(id)arg3 displayResults:(id)arg4;

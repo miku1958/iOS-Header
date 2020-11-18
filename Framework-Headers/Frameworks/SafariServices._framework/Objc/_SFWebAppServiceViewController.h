@@ -38,12 +38,12 @@
 - (void)_hideDigitalHealthOverlay;
 - (void)_hostApplicationDidEnterBackground;
 - (void)_initialLoadFinishedWithSuccess:(BOOL)arg1;
+- (BOOL)_isURLOutOfLegacyScope:(id)arg1 withLoginURLExempted:(BOOL)arg2;
 - (BOOL)_isURLOutOfManifestScope:(id)arg1;
-- (BOOL)_isURLOutOfScope:(id)arg1;
+- (BOOL)_isURLOutOfScope:(id)arg1 withLoginURLExempted:(BOOL)arg2;
 - (void)_loadNextFallbackURL;
 - (void)_loadWebClipPageURL:(id)arg1;
 - (unsigned long long)_persona;
-- (BOOL)_shouldCacheWebViewController;
 - (void)_showDigitalHealthOverlay;
 - (void)_updateDigitalHealthTracking;
 - (void)_updateDisplayMode;

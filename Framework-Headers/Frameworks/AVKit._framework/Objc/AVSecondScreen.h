@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=isTVOutScreen) BOOL TVOutScreen; // @synthesize TVOutScreen=_TVOutScreen;
 @property (strong, nonatomic) CADisplay *debugInfoDisplay; // @synthesize debugInfoDisplay=_debugInfoDisplay;
 @property (readonly, nonatomic) AVObservationController *observationController; // @synthesize observationController=_observationController;
+@property (readonly, nonatomic) struct CGRect sceneBounds;
 @property (readonly, weak, nonatomic) UIScreen *screen; // @synthesize screen=_screen;
 @property (strong, nonatomic) AVSecondScreenConnection *secondScreenConnection; // @synthesize secondScreenConnection=_secondScreenConnection;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;

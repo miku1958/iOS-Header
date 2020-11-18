@@ -51,6 +51,7 @@
 - (BOOL)_revealSectionHasContent;
 - (double)_settlingYPositionForReveal;
 - (BOOL)_shouldAllowNotificationListReveal;
+- (id)_stringForRevealState:(int)arg1;
 - (id)_topView;
 - (double)_updateRevealPercentageForNotificationListView:(id)arg1;
 - (void)notificationListDidScroll:(id)arg1;

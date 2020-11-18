@@ -53,6 +53,7 @@
 - (void)sendString:(id)arg1;
 - (void)start;
 - (void)stop;
+- (void)toggleSystemOutputMute:(BOOL)arg1;
 
 @end
 

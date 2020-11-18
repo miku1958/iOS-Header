@@ -10,8 +10,9 @@
 {
 }
 
-+ (void)addDelayedOperation:(double)arg1 block:(CDUnknownBlockType)arg2;
++ (CDUnknownBlockType)addDelayedOperation:(double)arg1 block:(CDUnknownBlockType)arg2;
 + (void)addOperation:(CDUnknownBlockType)arg1;
++ (void)cancelDelayedOperation:(CDUnknownBlockType)arg1;
 + (void)initialize;
 + (id)primaryQueue;
 

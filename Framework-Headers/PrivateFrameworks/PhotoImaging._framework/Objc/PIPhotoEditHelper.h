@@ -42,6 +42,7 @@
 + (id)pipelineFiltersForShowingOriginalWithGeometry;
 + (void)preheatEditDependencies;
 + (id)priorityWithLevel:(long long)arg1;
++ (id)updateCropAdjustmentController:(id)arg1 after:(id)arg2 error:(out id *)arg3;
 + (id)validatedCompositionCopyForComposition:(id)arg1 mediaType:(long long)arg2;
 + (id)videoPropertiesRequestWithComposition:(id)arg1;
 + (id)videoRenderRequestWithComposition:(id)arg1 fitInSize:(struct CGSize)arg2 wideGamut:(BOOL)arg3;

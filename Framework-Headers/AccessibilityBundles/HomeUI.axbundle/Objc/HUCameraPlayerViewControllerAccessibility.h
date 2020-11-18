@@ -14,6 +14,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)_axLoadAccessibilityInformationForDayOrTimeLabel:(id)arg1;
+- (BOOL)accessibilityPerformEscape;
+- (id)nextControlItem;
 - (void)viewDidLoad;
 
 @end

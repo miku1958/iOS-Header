@@ -10,7 +10,8 @@
 
 @interface SFDeviceAssetQuery : NSObject
 {
-    BOOL _legacyFormats;
+    BOOL _legacyAsset;
+    BOOL _h264;
     struct LogCategory *_ucat;
     NSString *_assetType;
     unsigned long long _version;
@@ -24,7 +25,8 @@
 @property (readonly, nonatomic) NSString *assetType; // @synthesize assetType=_assetType;
 @property (readonly, nonatomic) NSString *color; // @synthesize color=_color;
 @property (readonly, nonatomic) NSString *effectiveProductType;
-@property (readonly, nonatomic) BOOL legacyFormats; // @synthesize legacyFormats=_legacyFormats;
+@property (readonly, nonatomic) BOOL h264; // @synthesize h264=_h264;
+@property (nonatomic) BOOL legacyAsset; // @synthesize legacyAsset=_legacyAsset;
 @property (strong, nonatomic) NSString *mappedProductType; // @synthesize mappedProductType=_mappedProductType;
 @property (readonly, nonatomic) NSString *productType; // @synthesize productType=_productType;
 @property (readonly, nonatomic) NSString *stringIdentifier;
@@ -32,7 +34,7 @@
 @property (readonly, nonatomic) NSString *variantIdentifier;
 @property (readonly, nonatomic) unsigned long long version; // @synthesize version=_version;
 
-+ (BOOL)deviceWantsLegacyFormats;
++ (BOOL)deviceWantsH264;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;

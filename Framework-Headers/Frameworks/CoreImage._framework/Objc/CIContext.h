@@ -53,7 +53,7 @@
 - (struct CGColorSpace *)_outputColorSpace;
 - (id)_pdfDataRepresentation;
 - (void)_performFaceDetection:(id)arg1 image:(id)arg2 orientation:(int)arg3 filter:(id)arg4;
-- (id)_startTaskToRender:(id)arg1 toDestination:(id)arg2 forPrepareRender:(BOOL)arg3 error:(id *)arg4;
+- (id)_startTaskToRender:(id)arg1 toDestination:(id)arg2 forPrepareRender:(BOOL)arg3 forClear:(BOOL)arg4 error:(id *)arg5;
 - (void)abort;
 - (struct CGRect)bounds;
 - (void)clearCaches;

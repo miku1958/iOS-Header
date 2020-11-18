@@ -42,6 +42,7 @@
 - (void)retrieveImageWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)serviceProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)storeImage:(id)arg1 scaled:(BOOL)arg2 qualityOfService:(unsigned int)arg3 storeType:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
+- (oneway void)storeUserContext:(id)arg1 forBundleIdentifier:(id)arg2;
 - (id)synchronousServiceProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 
 @end

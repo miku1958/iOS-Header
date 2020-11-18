@@ -6,7 +6,7 @@
 
 #import <Message/NSObject-Protocol.h>
 
-@class ECLocalMessageAction, ECMessageFlagChange, ECTransferMessageAction, ECTransferMessageActionResults, NSArray, NSData, NSMutableDictionary, NSSet, NSString, NSURL;
+@class ECLocalMessageAction, ECMessageFlagChange, ECTransferMessageAction, ECTransferMessageActionResults, NSArray, NSData, NSDictionary, NSMutableDictionary, NSSet, NSString, NSURL;
 @protocol ECMessage, EDReceivingAccount;
 
 @protocol EDMessageChangeManagerSubClassMethods <NSObject>
@@ -18,7 +18,7 @@
 - (void)deletePersistedMessages:(NSArray *)arg1;
 - (void)displayErrorForTransferAction:(ECTransferMessageAction *)arg1 withResults:(ECTransferMessageActionResults *)arg2;
 - (BOOL)haveCompleteMIMEForMessage:(id<ECMessage>)arg1;
-- (NSString *)iterateMessagesInMailboxURL:(NSURL *)arg1 excludingMessages:(NSArray *)arg2 batchSize:(unsigned long long)arg3 handler:(void (^)(NSArray *))arg4;
+- (NSDictionary *)iterateMessagesInMailboxURLs:(NSArray *)arg1 excludingMessages:(NSArray *)arg2 batchSize:(unsigned long long)arg3 returnMessagesForFlagChange:(ECMessageFlagChange *)arg4 handler:(void (^)(NSArray *))arg5;
 - (long long)mailboxDatabaseIDForURL:(NSURL *)arg1;
 - (BOOL)mailboxIsAllMail:(NSURL *)arg1;
 - (BOOL)mailboxPartOfAllMail:(NSURL *)arg1;

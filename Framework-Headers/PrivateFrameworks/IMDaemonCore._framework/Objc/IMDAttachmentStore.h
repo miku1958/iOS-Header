@@ -20,6 +20,7 @@
 - (BOOL)deleteAttachmentDataForTransfer:(id)arg1;
 - (BOOL)deleteAttachmentWithGUID:(id)arg1;
 - (BOOL)deleteAttachmentsWithGUIDs:(id)arg1;
+- (id)fileTransferWithAttachmentRecordRef:(struct _IMDAttachmentRecordStruct *)arg1;
 - (id)getAuxVideoPath:(id)arg1;
 - (BOOL)isSafeToDeleteAttachmentAtPath:(id)arg1;
 - (void)markAllAttachmentsAsNeedingCloudKitSync;

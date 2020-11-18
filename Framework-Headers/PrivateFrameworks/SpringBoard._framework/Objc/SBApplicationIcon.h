@@ -6,12 +6,11 @@
 
 #import <SpringBoardHome/SBLeafIcon.h>
 
-@class NSString, SBApplication;
+@class SBApplication;
 
 @interface SBApplicationIcon : SBLeafIcon
 {
     SBApplication *_application;
-    NSString *_masqueradeIdentifier;
 }
 
 + (BOOL)canGenerateIconsInBackground;
@@ -27,7 +26,6 @@
 - (id)iconFileSizeDescription;
 - (id)initWithApplication:(id)arg1;
 - (BOOL)isApplicationIcon;
-- (id)masqueradeIdentifier;
 - (void)possibleUserTapBeganWithAbsoluteTime:(unsigned long long)arg1 andContinuousTime:(unsigned long long)arg2;
 - (void)possibleUserTapDidCancel;
 - (void)setBadge:(id)arg1;

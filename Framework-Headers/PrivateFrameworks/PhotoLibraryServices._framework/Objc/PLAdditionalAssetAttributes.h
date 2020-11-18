@@ -8,7 +8,7 @@
 
 #import <PhotoLibraryServices/PLPTPTransferableAdditionalAssetAttributes-Protocol.h>
 
-@class CLLocation, NSData, NSDate, NSManagedObject, NSNumber, NSSet, NSString, PLAssetDescription, PLManagedAsset, PLSceneprint, PLSpatialOverCaptureInformation, PLUnmanagedAdjustment;
+@class CLLocation, NSData, NSDate, NSManagedObject, NSNumber, NSSet, NSString, PLAssetDescription, PLEditedIPTCAttributes, PLManagedAsset, PLSceneprint, PLSpatialOverCaptureInformation, PLUnmanagedAdjustment;
 
 @interface PLAdditionalAssetAttributes : PLManagedObject <PLPTPTransferableAdditionalAssetAttributes>
 {
@@ -32,6 +32,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) short destinationAssetCopyState; // @dynamic destinationAssetCopyState;
 @property (strong, nonatomic) NSData *distanceIdentity; // @dynamic distanceIdentity;
+@property (strong, nonatomic) PLEditedIPTCAttributes *editedIPTCAttributes; // @dynamic editedIPTCAttributes;
 @property (strong, nonatomic) NSString *editorBundleID; // @dynamic editorBundleID;
 @property (readonly, strong, nonatomic) NSNumber *embeddedThumbnailHeight;
 @property (strong, nonatomic) NSNumber *embeddedThumbnailHeight; // @dynamic embeddedThumbnailHeight;

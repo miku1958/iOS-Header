@@ -16,7 +16,7 @@
     unsigned long long _integerLastMigratedClientVersion;
     unsigned long long _integerMinimumClientVersion;
     double _modificationDate;
-    NSData *_accessResourcePermissionStateData;
+    NSData *_accessResourcePerWorkflowStateData;
     NSData *_actionsData;
     unsigned int _iconColor;
     unsigned int _iconGlyph;
@@ -38,10 +38,10 @@
     } _has;
 }
 
-@property (strong, nonatomic) NSData *accessResourcePermissionStateData; // @synthesize accessResourcePermissionStateData=_accessResourcePermissionStateData;
+@property (strong, nonatomic) NSData *accessResourcePerWorkflowStateData; // @synthesize accessResourcePerWorkflowStateData=_accessResourcePerWorkflowStateData;
 @property (strong, nonatomic) NSData *actionsData; // @synthesize actionsData=_actionsData;
 @property (nonatomic) double creationDate; // @synthesize creationDate=_creationDate;
-@property (readonly, nonatomic) BOOL hasAccessResourcePermissionStateData;
+@property (readonly, nonatomic) BOOL hasAccessResourcePerWorkflowStateData;
 @property (readonly, nonatomic) BOOL hasActionsData;
 @property (nonatomic) BOOL hasCreationDate;
 @property (nonatomic) BOOL hasIconColor;

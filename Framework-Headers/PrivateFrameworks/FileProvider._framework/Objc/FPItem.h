@@ -67,7 +67,7 @@
     NSURL *_fileURL;
     NSArray *_decorations;
     NSString *_filename;
-    NSString *_appContainerBundleIdentifier;
+    NSString *_fp_appContainerBundleIdentifier;
     NSString *_preformattedOwnerName;
     NSString *_preformattedMostRecentEditorName;
     NSString *_formerIdentifier;
@@ -87,7 +87,7 @@
 }
 
 @property (readonly, nonatomic, getter=isActionable) BOOL actionable;
-@property (copy, nonatomic) NSString *appContainerBundleIdentifier; // @synthesize appContainerBundleIdentifier=_appContainerBundleIdentifier;
+@property (readonly, copy, nonatomic) NSString *appContainerBundleIdentifier;
 @property (nonatomic) unsigned long long capabilities; // @synthesize capabilities=_capabilities;
 @property (copy, nonatomic) NSNumber *childItemCount; // @synthesize childItemCount=_childItemCount;
 @property (copy, nonatomic) NSString *cloudContainerIdentifier; // @synthesize cloudContainerIdentifier=_cloudContainerIdentifier;
@@ -124,6 +124,7 @@
 @property (readonly, nonatomic, getter=fp_isAddedByCurrentUser) BOOL fp_addedByCurrentUser;
 @property (readonly, nonatomic) NSPersonNameComponents *fp_addedByNameComponents;
 @property (readonly, nonatomic) NSPersonNameComponents *fp_addedByNameComponents;
+@property (copy, nonatomic) NSString *fp_appContainerBundleIdentifier; // @synthesize fp_appContainerBundleIdentifier=_fp_appContainerBundleIdentifier;
 @property (readonly, copy) NSSet *fp_cloudContainerClientBundleIdentifiers;
 @property (readonly, copy) NSString *fp_cloudContainerIdentifier;
 @property (copy, nonatomic) NSString *fp_displayName;
@@ -208,6 +209,7 @@
 + (id)placeholderWithName:(id)arg1 typeIdentifier:(id)arg2 contentAccessDate:(id)arg3 underParent:(id)arg4 inProviderDomainID:(id)arg5;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void *)_coreSpotlightAttributeForKey:(id)arg1;
 - (id)_downloadingStatus;
 - (id)_sharedByDecorationType;
 - (id)copyAsPending;

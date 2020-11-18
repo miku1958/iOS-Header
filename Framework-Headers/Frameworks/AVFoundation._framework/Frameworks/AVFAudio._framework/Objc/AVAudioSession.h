@@ -38,6 +38,7 @@
 - (void)activateWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)activeSessionDisplayIDs;
 - (BOOL)allowAllBuiltInDataSources;
+- (BOOL)allowMixableAudioWhileRecording;
 - (id)audioClockDevice;
 - (long long)audioFormat;
 - (id)audioFormats;
@@ -139,6 +140,7 @@
 - (BOOL)setAggregatedIOPreference:(unsigned long long)arg1 error:(id *)arg2;
 - (void)setAllowAllBuiltInDataSources:(BOOL)arg1;
 - (BOOL)setAllowHapticsAndSystemSoundsDuringRecording:(BOOL)arg1 error:(id *)arg2;
+- (BOOL)setAllowMixableAudioWhileRecording:(BOOL)arg1 error:(id *)arg2;
 - (BOOL)setAudioClockDevice:(id)arg1 error:(id *)arg2;
 - (BOOL)setAudioHardwareControlFlags:(unsigned long long)arg1 error:(id *)arg2;
 - (BOOL)setBypassRingerSwitchPolicy:(BOOL)arg1 error:(id *)arg2;

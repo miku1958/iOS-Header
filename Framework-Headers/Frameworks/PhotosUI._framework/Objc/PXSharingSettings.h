@@ -29,6 +29,7 @@
     BOOL _simulateMaxFilesizeLimitForGIFsInSharedAlbumsError;
     BOOL _simulatePhotoRemakingError;
     BOOL _simulateLivePhotoBundlingError;
+    BOOL _simulateCPLNotReadyError;
     BOOL _simulateMismatchedExportCounts;
     BOOL _showSingleVideoDurationInShareSheetHeader;
     BOOL _showLivePhotoCountInShareSheetHeader;
@@ -100,6 +101,7 @@
 @property (nonatomic) BOOL showSendAsOriginalsForCMM; // @synthesize showSendAsOriginalsForCMM=_showSendAsOriginalsForCMM;
 @property (nonatomic) BOOL showSendAsOriginalsForIndividualItems; // @synthesize showSendAsOriginalsForIndividualItems=_showSendAsOriginalsForIndividualItems;
 @property (nonatomic) BOOL showSingleVideoDurationInShareSheetHeader; // @synthesize showSingleVideoDurationInShareSheetHeader=_showSingleVideoDurationInShareSheetHeader;
+@property (nonatomic) BOOL simulateCPLNotReadyError; // @synthesize simulateCPLNotReadyError=_simulateCPLNotReadyError;
 @property (nonatomic) BOOL simulateDownloadFailure; // @synthesize simulateDownloadFailure=_simulateDownloadFailure;
 @property (nonatomic) BOOL simulateLivePhotoBundlingError; // @synthesize simulateLivePhotoBundlingError=_simulateLivePhotoBundlingError;
 @property (nonatomic) BOOL simulateMaxFilesizeLimitForGIFsInSharedAlbumsError; // @synthesize simulateMaxFilesizeLimitForGIFsInSharedAlbumsError=_simulateMaxFilesizeLimitForGIFsInSharedAlbumsError;

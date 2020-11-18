@@ -31,6 +31,7 @@
 @property (strong, nonatomic) ICInAppMessageEntry *webMessageEntry; // @synthesize webMessageEntry=_webMessageEntry;
 
 - (void).cxx_destruct;
+- (void)_handleOpenURL:(id)arg1;
 - (void)_handleWebMessageClose;
 - (id)initWithWebMessageEntry:(id)arg1 webArchiveURL:(id)arg2;
 - (void)load;
@@ -40,7 +41,7 @@
 - (void)webMessageControllerWebViewDidReportEvent:(id)arg1 event:(id)arg2;
 - (void)webMessageControllerWebViewDidRequestAction:(id)arg1 actionConfiguration:(id)arg2;
 - (void)webMessageControllerWebViewDidRequestClose:(id)arg1;
-- (void)webMessageControllerWebViewDidRequestOpenURL:(id)arg1 url:(id)arg2;
+- (void)webMessageControllerWebViewDidRequestOpenURL:(id)arg1 url:(id)arg2 options:(id)arg3;
 
 @end
 

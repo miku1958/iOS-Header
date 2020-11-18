@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)REMColorFromEKHexColorString:(id)arg1;
 - (id)UUID;
+- (id)_account;
 - (BOOL)_applyChanges:(id)arg1 error:(id *)arg2;
 - (BOOL)_applyChangesToSaveRequest:(id)arg1 error:(id *)arg2;
 - (id)_list;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)hexColorStringFromREMColor:(id)arg1;
 - (id)initNewListInStore:(id)arg1;
 - (BOOL)isColorDisplayOnly;
+- (BOOL)isPublished;
 - (id)publishedURL;
 - (id)remObjectID;
 - (id)sharees;

@@ -16,7 +16,10 @@
 - (void)deleteUserPersonaWithPersonaUniqueString:(NSString *)arg1 passcodeData:(NSData *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)deleteUserPersonaWithProfileInfo:(NSDictionary *)arg1 passcodeData:(NSData *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)deleteUserPersonaWithType:(int)arg1 passcodeData:(NSData *)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)disableUserPersonaWithProfileInfo:(NSDictionary *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)fetchAllPersonasForAllUsersWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)fetchAllPersonasWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
+- (void)fetchAsidMapOfAllUsersWithCompletionHandler:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)fetchBundleIdentifierForPersonaWithIDString:(NSString *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)fetchBundleIdentifierForPersonaWithPersonaUniqueString:(NSString *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)fetchBundleIdentifierForType:(int)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;

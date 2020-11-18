@@ -58,6 +58,7 @@
 @property (copy, nonatomic) NSArray *filterQueries; // @synthesize filterQueries=_filterQueries;
 @property (strong, nonatomic) NSString *filterQuery; // @synthesize filterQuery=_filterQuery;
 @property (nonatomic) unsigned char flags; // @synthesize flags=_flags;
+@property (nonatomic) BOOL fsOnly;
 @property (nonatomic) MISSING_TYPE *fuzzyMask; // @synthesize fuzzyMask=_fuzzyMask;
 @property (nonatomic) MISSING_TYPE *fuzzyMatch; // @synthesize fuzzyMatch=_fuzzyMatch;
 @property (nonatomic) BOOL grouped;

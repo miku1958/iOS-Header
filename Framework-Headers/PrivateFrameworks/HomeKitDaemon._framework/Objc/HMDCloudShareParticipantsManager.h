@@ -33,12 +33,13 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
+- (id)_untrustedInvitationContextForUser:(id)arg1 shouldGrantWriteAccess:(BOOL)arg2;
 - (void)configure;
+- (id)fetchInvitationContextForUser:(id)arg1 shouldGrantWriteAccess:(BOOL)arg2;
 - (id)fetchInvitationToUser:(id)arg1 shouldGrantWriteAccess:(BOOL)arg2;
 - (void)handleHomeUserAddedNotification:(id)arg1;
 - (void)handleHomeUserRemovedNotification:(id)arg1;
 - (id)initWithQueue:(id)arg1 cloudZone:(id)arg2 home:(id)arg3;
-- (id)invitationContextForUser:(id)arg1 shouldGrantWriteAccess:(BOOL)arg2;
 - (id)logIdentifier;
 - (void)updateShareParticipants;
 

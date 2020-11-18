@@ -73,11 +73,15 @@
 - (id)appleIDsForStore:(id)arg1;
 - (BOOL)backupPersistenceStore:(id)arg1 error:(id *)arg2;
 - (void)cleanupOlderPersistentStores;
+- (id)cloudManagedObjectWithEntityDescription:(id)arg1 predicate:(id)arg2 sortDescriptors:(id)arg3 context:(id)arg4 error:(id *)arg5;
+- (unsigned long long)countOfCloudManagedObjectWithEntityDescription:(id)arg1 predicate:(id)arg2 context:(id)arg3 error:(id *)arg4;
 - (void)dealloc;
+- (id)earliestCloudManagedObjectWithEntityDescription:(id)arg1 predicate:(id)arg2 context:(id)arg3 error:(id *)arg4;
 - (void)evaluateTransactions;
 - (BOOL)importSourceStore:(id)arg1 sourceCoordinator:(id)arg2 destinationStore:(id)arg3 destinationCoordinator:(id)arg4 managedObjectModel:(id)arg5 configuration:(id)arg6 error:(id *)arg7;
 - (id)init;
 - (id)initWithPersistenceManager:(id)arg1 dataProtectionManager:(id)arg2 accountManager:(id)arg3 platform:(id)arg4 keychainManager:(id)arg5 defaultsManager:(id)arg6 lifecycleManager:(id)arg7;
+- (id)latestCloudManagedObjectWithEntityDescription:(id)arg1 predicate:(id)arg2 context:(id)arg3 error:(id *)arg4;
 - (id)mirroringOptionsForStoreWithType:(unsigned long long)arg1;
 - (void)onAccountChange:(id)arg1;
 - (void)onCloudSyncAuthorizationChange:(id)arg1;

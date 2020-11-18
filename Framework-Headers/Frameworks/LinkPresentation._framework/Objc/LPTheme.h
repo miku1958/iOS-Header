@@ -47,6 +47,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double widthFractionForTallMedia; // @synthesize widthFractionForTallMedia=_widthFractionForTallMedia;
 
 + (void)addClient:(id)arg1;
++ (id)iconPlatterCornerRadius;
++ (id)iconPlatterPaddingForReason:(long long)arg1;
 + (void)invalidateThemeCache;
 + (double)largestIconSizeInPoints;
 + (id)primaryLabelColor;

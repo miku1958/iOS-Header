@@ -7,13 +7,15 @@
 #import <objc/NSObject.h>
 
 #import <Message/EDMailboxProvider-Protocol.h>
+#import <Message/EFLoggable-Protocol.h>
 
 @class MFMailboxUidTransformer, NSArray, NSMapTable, NSString;
 @protocol EDAccountsProvider, EDMailboxProviderDelegate, EFScheduler, OS_dispatch_queue;
 
-@interface MFMailboxProvider : NSObject <EDMailboxProvider>
+@interface MFMailboxProvider : NSObject <EFLoggable, EDMailboxProvider>
 {
-    _Atomic int _suppressingInvalidationCount;
+    _Atomic int _deferringInvalidationCount;
+    BOOL _needsToInvalidate;
     id<EDMailboxProviderDelegate> delegate;
     id<EDAccountsProvider> _accountsProvider;
     MFMailboxUidTransformer *_mailboxUidTransformer;
@@ -37,14 +39,18 @@
 @property (readonly) Class superclass;
 @property (strong) NSMapTable *uidToMailboxMap; // @synthesize uidToMailboxMap=_uidToMailboxMap;
 
++ (id)log;
 - (void).cxx_destruct;
-- (void)_beginSuppressingInvalidation;
+- (void)_beginDeferringInvalidation;
 - (void)_didChangeMailboxList:(id)arg1;
+- (void)_didFetchMailboxList:(id)arg1;
 - (void)_didReloadMailboxList:(id)arg1;
-- (void)_endSuppressingInvalidation;
-- (BOOL)_isSuppressingInvalidation;
+- (void)_endDeferringInvalidation;
+- (void)_invalidateCache;
+- (BOOL)_isDeferringInvalidation;
 - (void)_mailboxInvalidated:(id)arg1;
 - (void)_populateCache;
+- (void)_willFetchMailboxList:(id)arg1;
 - (void)_willReloadMailboxList:(id)arg1;
 - (id)allMailboxes;
 - (void)enumerateAccountsWithBlock:(CDUnknownBlockType)arg1;

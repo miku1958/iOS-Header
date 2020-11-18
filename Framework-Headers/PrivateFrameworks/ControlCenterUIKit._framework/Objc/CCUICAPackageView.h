@@ -11,6 +11,7 @@
 @interface CCUICAPackageView : UIView
 {
     CAStateController *_stateController;
+    UIView *_packageContentView;
     CALayer *_packageLayer;
     CAPackage *_package;
     CCUICAPackageDescription *_packageDescription;
@@ -22,6 +23,7 @@
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 
 - (void).cxx_destruct;
+- (void)_setPackage:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setStateName:(id)arg1;

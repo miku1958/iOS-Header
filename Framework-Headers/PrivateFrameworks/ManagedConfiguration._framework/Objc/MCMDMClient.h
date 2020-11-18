@@ -7,23 +7,28 @@
 #import <objc/NSObject.h>
 
 @class NSXPCConnection;
+@protocol OS_dispatch_queue;
 
 @interface MCMDMClient : NSObject
 {
     NSXPCConnection *_xpcConnection;
+    NSObject<OS_dispatch_queue> *_xpcConnectionSyncQueue;
 }
 
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *xpcConnectionSyncQueue; // @synthesize xpcConnectionSyncQueue=_xpcConnectionSyncQueue;
 
 + (id)sharedClient;
 - (void).cxx_destruct;
-- (void)_createAndStartMDMXPCConnection;
+- (void)_destroyXPCConnectionAndInvalidate:(BOOL)arg1;
+- (void)_queue_createAndStartMDMXPCConnection;
 - (int)accessRights;
 - (BOOL)authenticateWithCheckInURL:(id)arg1 identity:(struct __SecIdentity *)arg2 topic:(id)arg3 useDevelopmentAPNS:(BOOL)arg4 signMessage:(BOOL)arg5 isUserEnrollment:(BOOL)arg6 enrollmentID:(id)arg7 outError:(id *)arg8;
 - (BOOL)checkOutCheckInURL:(id)arg1 identity:(struct __SecIdentity *)arg2 topic:(id)arg3 signMessage:(BOOL)arg4 isUserEnrollment:(BOOL)arg5 enrollmentID:(id)arg6 outError:(id *)arg7;
 - (void)dealloc;
 - (id)deviceEnrollmentAuthenticationDict;
 - (void)getAssertionDescriptionsWithCompletion:(CDUnknownBlockType)arg1;
+- (id)init;
 - (BOOL)isActivationLockAllowedWhileSupervised;
 - (BOOL)isManagedByMDM;
 - (void)migrateMDMWithContext:(int)arg1 completion:(CDUnknownBlockType)arg2;

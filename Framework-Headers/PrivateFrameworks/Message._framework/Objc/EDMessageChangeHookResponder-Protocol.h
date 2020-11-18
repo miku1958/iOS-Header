@@ -16,7 +16,7 @@
 - (void)persistenceDidAddMessages:(NSArray *)arg1 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg2;
 - (void)persistenceDidChangeConversationNotificationLevel:(long long)arg1 conversationID:(long long)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
 - (void)persistenceDidChangeFlags:(ECMessageFlagChange *)arg1 messages:(NSArray *)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
-- (void)persistenceDidChangeMessageIDHeaderHash:(ECAngleBracketIDHash *)arg1 message:(id<ECMessage>)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
+- (void)persistenceDidChangeMessageIDHeaderHash:(ECAngleBracketIDHash *)arg1 oldConversationID:(long long)arg2 message:(id<ECMessage>)arg3 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg4;
 - (void)persistenceDidDeleteAllMessagesInMailboxesWithURLs:(NSArray *)arg1 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg2;
 - (void)persistenceDidDeleteMessages:(NSArray *)arg1 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg2;
 - (void)persistenceDidFinishUpdates;

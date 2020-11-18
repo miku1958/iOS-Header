@@ -25,7 +25,6 @@
 - (BOOL)isContentStatusBarVisible;
 - (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (id)layoutSettings;
-- (long long)layoutUpdateMode;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (double)shadowOpacityForIndex:(unsigned long long)arg1;

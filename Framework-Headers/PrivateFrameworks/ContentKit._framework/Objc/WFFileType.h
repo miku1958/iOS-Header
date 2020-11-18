@@ -11,7 +11,7 @@
 @interface WFFileType : WFType
 {
     NSString *_string;
-    struct __CFString *_utType;
+    const struct __CFString *_utType;
     NSString *_pboardType;
     NSString *_OSType;
 }
@@ -29,38 +29,39 @@
 @property (readonly, nonatomic) NSDictionary *typeDeclaration;
 @property (readonly, nonatomic) NSString *typeDescription;
 @property (readonly, nonatomic) NSArray *typesConformedTo;
-@property (readonly, nonatomic) struct __CFString *utType;
+@property (readonly, nonatomic) const struct __CFString *utType; // @synthesize utType=_utType;
 
-+ (id)cachedFileTypeForUTType:(struct __CFString *)arg1;
++ (id)cachedFileTypeForUTType:(const struct __CFString *)arg1;
 + (BOOL)supportsSecureCoding;
-+ (id)typeForTagClass:(struct __CFString *)arg1 tag:(struct __CFString *)arg2;
++ (id)typeForTagClass:(const struct __CFString *)arg1 tag:(const struct __CFString *)arg2;
 + (id)typeFromFileExtension:(id)arg1;
 + (id)typeFromFilename:(id)arg1;
 + (id)typeFromMIMEType:(id)arg1;
 + (id)typeFromPasteboardType:(id)arg1;
 + (id)typeWithString:(id)arg1;
-+ (id)typeWithUTType:(struct __CFString *)arg1;
-+ (id)typeWithUTType:(struct __CFString *)arg1 string:(id)arg2;
-+ (id)typesForTagClass:(struct __CFString *)arg1 tag:(struct __CFString *)arg2 conformingToType:(struct __CFString *)arg3;
++ (id)typeWithUTType:(const struct __CFString *)arg1;
++ (id)typeWithUTType:(const struct __CFString *)arg1 string:(id)arg2;
++ (id)typesForTagClass:(const struct __CFString *)arg1 tag:(const struct __CFString *)arg2 conformingToType:(const struct __CFString *)arg3;
 + (id)typesFromUTTypes:(id)arg1;
 + (id)typesFromUTTypes:(id)arg1 excludingType:(id)arg2;
+- (void).cxx_destruct;
 - (id)conformingTypesWithFileExtension:(id)arg1;
 - (id)conformingTypesWithMIMEType:(id)arg1;
-- (id)conformingTypesWithTagClass:(struct __CFString *)arg1 tag:(id)arg2;
+- (id)conformingTypesWithTagClass:(const struct __CFString *)arg1 tag:(id)arg2;
 - (BOOL)conformsToType:(id)arg1;
-- (BOOL)conformsToUTType:(struct __CFString *)arg1;
+- (BOOL)conformsToUTType:(const struct __CFString *)arg1;
 - (BOOL)conformsToUTTypes:(id)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithUTType:(struct __CFString *)arg1;
-- (id)initWithUTType:(struct __CFString *)arg1 string:(id)arg2;
+- (id)initWithUTType:(const struct __CFString *)arg1;
+- (id)initWithUTType:(const struct __CFString *)arg1 string:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToString:(id)arg1;
 - (BOOL)isEqualToType:(id)arg1;
-- (BOOL)isEqualToUTType:(struct __CFString *)arg1;
-- (id)preferredTagWithClass:(struct __CFString *)arg1;
+- (BOOL)isEqualToUTType:(const struct __CFString *)arg1;
+- (id)preferredTagWithClass:(const struct __CFString *)arg1;
 
 @end
 

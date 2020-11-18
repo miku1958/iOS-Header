@@ -61,7 +61,7 @@
 @property (strong, nonatomic) NSHashTable *variablesBeingObserved; // @synthesize variablesBeingObserved=_variablesBeingObserved;
 
 + (void)enumerateVariableAttachmentsInContents:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
-+ (double)heightForWidth:(double)arg1 withSummaryFormatString:(id)arg2 parameters:(id)arg3 editableParameters:(id)arg4 parameterStates:(id)arg5 stagedParameterStates:(id)arg6 font:(id)arg7 unpopulatedFont:(id)arg8 textAlignment:(long long)arg9;
++ (double)heightForWidth:(double)arg1 withSummaryFormatString:(id)arg2 parameters:(id)arg3 editableParameters:(id)arg4 parameterStates:(id)arg5 stagedParameterStates:(id)arg6 horizontalPadding:(double)arg7 font:(id)arg8 unpopulatedFont:(id)arg9 textAlignment:(long long)arg10;
 + (id)paragraphStyleWithAlignment:(long long)arg1;
 + (id)parameterStatesByApplyingStaging:(id)arg1 toOriginal:(id)arg2;
 - (void).cxx_destruct;
@@ -93,9 +93,10 @@
 - (void)summaryEditor:(id)arg1 willUpdateVariable:(id)arg2;
 - (void)summaryEditorDidFinish:(id)arg1 returnToKeyboard:(BOOL)arg2;
 - (void)summaryEditorDidRequestTextEntry:(id)arg1;
+- (void)tintColorDidChange;
 - (id)transformParameterStateForSerialization:(id)arg1 inEditor:(id)arg2;
 - (void)updateTemplateContentsAnimated:(BOOL)arg1;
-- (void)updateVariableAttachmentFontsInContents:(id)arg1;
+- (void)updateVariableAttachmentAppearanceInContents:(id)arg1;
 - (void)updateVariableObservationsWithContents:(id)arg1;
 - (void)variableDidChange:(id)arg1;
 

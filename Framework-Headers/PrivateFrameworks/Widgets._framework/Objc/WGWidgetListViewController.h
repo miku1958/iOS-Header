@@ -63,6 +63,8 @@
 - (void)_configureScrollView;
 - (void)_configureStackView;
 - (void)_didUpdateStackViewArrangedSubviews;
+- (void)_disableTouchesOnAllWidgets;
+- (void)_enableTouchesOnAllWidgets;
 - (CDUnknownBlockType)_insert:(BOOL)arg1 listItem:(id)arg2 withOrderedIdentifiers:(id)arg3 animated:(BOOL)arg4;
 - (unsigned long long)_insertionIndexofListItem:(id)arg1 intoWidgetViews:(id)arg2 withOrderedIdentifiers:(id)arg3;
 - (void)_invalidateAllAlternateCaptureOnlyMaterialViews;

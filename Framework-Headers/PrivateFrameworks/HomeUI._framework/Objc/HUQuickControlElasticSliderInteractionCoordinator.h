@@ -6,14 +6,13 @@
 
 #import <HomeUI/HUQuickControlInteractionCoordinator.h>
 
-#import <HomeUI/CAAnimationDelegate-Protocol.h>
 #import <HomeUI/HUQuickControlSliderGestureTransformerDelegate-Protocol.h>
 #import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 
 @class HUDisplayLinkApplier, HUElasticApplier, HUQuickControlSliderGestureTransformer, HUQuickControlViewProfile, NSDate, NSString, UILongPressGestureRecognizer, UITapGestureRecognizer;
 @protocol HUQuickControlIncrementalConvertibleProfile;
 
-@interface HUQuickControlElasticSliderInteractionCoordinator : HUQuickControlInteractionCoordinator <HUQuickControlSliderGestureTransformerDelegate, UIGestureRecognizerDelegate, CAAnimationDelegate>
+@interface HUQuickControlElasticSliderInteractionCoordinator : HUQuickControlInteractionCoordinator <HUQuickControlSliderGestureTransformerDelegate, UIGestureRecognizerDelegate>
 {
     BOOL _userInteractionActive;
     BOOL _hasSecondaryValue;
@@ -53,14 +52,11 @@
 
 - (void).cxx_destruct;
 - (id)_allAppliers;
-- (void)_animateToEnlargeView;
-- (void)_animateToShrinkView;
 - (void)_beginReceivingTouchesWithGestureRecognizer:(id)arg1 isTouchContinuation:(BOOL)arg2;
 - (unsigned long long)_findClosestValueFromTouchLocation:(struct CGPoint)arg1;
 - (void)_handleControlPanGesture:(id)arg1;
 - (void)_handleControlTapGesture:(id)arg1;
 - (CDStruct_c3b9c2ee)_rawViewValueRange;
-- (id)_resizingAnimationWithFromValue:(double)arg1 toValue:(double)arg2;
 - (double)_rubberBandedStretchProgress;
 - (id)_rubberBandingValueNormalizer;
 - (void)_setupAllValueAppliersIfNecessary;
@@ -71,7 +67,6 @@
 - (void)_updateModelValue:(CDStruct_c3b9c2ee)arg1 roundValue:(BOOL)arg2 notifyDelegate:(BOOL)arg3;
 - (void)_updatePropertiesForControlValueSmoothingApplier:(id)arg1 ofType:(unsigned long long)arg2;
 - (id)_valueNormalizerWithOptions:(id)arg1;
-- (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
 - (void)dealloc;
 - (void)gestureDidEndForGestureTransformer:(id)arg1;

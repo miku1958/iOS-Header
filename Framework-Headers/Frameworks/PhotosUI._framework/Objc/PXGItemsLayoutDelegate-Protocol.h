@@ -15,6 +15,5 @@
 - (struct CGRect)itemsLayout:(PXGItemsLayout *)arg1 bestCropRectForItem:(long long)arg2 withAspectRatio:(double)arg3;
 - (long long)itemsLayout:(PXGItemsLayout *)arg1 itemForObjectReference:(id)arg2;
 - (void)itemsLayout:(PXGItemsLayout *)arg1 updateTagsInSpriteInfos:(CDStruct_9d1ebe49 *)arg2 forItemsInRange:(struct _NSRange)arg3;
-- (struct _NSRange)rangeOfItemsToPreventUnloadingInItemsLayout:(PXGItemsLayout *)arg1;
 @end
 

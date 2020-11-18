@@ -15,6 +15,7 @@
     double _delay;
     long long _curve;
     id<_UIBasicAnimationFactory> _animationFactory;
+    BOOL _skipFencing;
     double _startTime;
 }
 
@@ -23,6 +24,7 @@
 @property (nonatomic) long long curve; // @synthesize curve=_curve;
 @property (nonatomic) double delay; // @synthesize delay=_delay;
 @property (nonatomic) double duration; // @synthesize duration=_duration;
+@property (nonatomic) BOOL skipFencing; // @synthesize skipFencing=_skipFencing;
 @property (nonatomic) double startTime; // @synthesize startTime=_startTime;
 
 + (void)animateWithParameters:(id)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;

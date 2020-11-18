@@ -62,14 +62,18 @@
 - (void)copyFigSampleBufferAudioRenderer:(struct OpaqueFigSampleBufferAudioRenderer **)arg1;
 - (void)dealloc;
 - (void)enqueueSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
+- (void)expectMinimumUpcomingSampleBufferPresentationTime:(CDStruct_1b6d18a9)arg1;
+- (void)expectMonotonicallyIncreasingUpcomingSampleBufferPresentationTimes;
 - (void)flush;
 - (void)flushAndRemoveImage;
 - (void)flushWithRemovalOfDisplayedImage:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)prerollDecodeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)requestMediaDataWhenReadyOnQueue:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)resetUpcomingSampleBufferPresentationTimeExpectations;
 - (void)setBounds:(struct CGRect)arg1;
 - (BOOL)setRenderSynchronizer:(id)arg1 error:(id *)arg2;
+- (BOOL)setUpcomingPresentationTimeExpectations:(int)arg1 minimumPresentationTime:(CDStruct_1b6d18a9)arg2;
 - (void)stopRequestingMediaData;
 - (id)videoPerformanceMetrics;
 

@@ -86,7 +86,6 @@
 - (void)paymentAuthorizationCoordinatorDidFinish:(id)arg1;
 - (void)performAction:(id)arg1 withPaymentIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)performQuote:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)performQuoteOrientation;
 - (void)performQuoteWithCompletion:(CDUnknownBlockType)arg1;
 - (void)quoteWithAmount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)quoteWithAmount:(id)arg1 requestToken:(id)arg2 alternateFundingSource:(id)arg3 completion:(CDUnknownBlockType)arg4;

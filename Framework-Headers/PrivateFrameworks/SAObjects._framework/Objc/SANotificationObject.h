@@ -20,6 +20,7 @@
 @property (copy, nonatomic) NSNumber *previewRestricted;
 @property (copy, nonatomic) NSString *priority;
 @property (copy, nonatomic) NSDate *recencyDate;
+@property (copy, nonatomic) NSString *source;
 @property (copy, nonatomic) NSString *threadIdentifier;
 @property (copy, nonatomic) NSString *timeZoneId;
 @property (copy, nonatomic) NSString *type;

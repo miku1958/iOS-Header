@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSURLSession *_session;
     NSURLSessionDataTask *_task;
     NSError *_error;
+    NSString *_networkTaskDescription;
 }
 
 @property (strong) NSMutableURLRequest *URLRequest; // @synthesize URLRequest=_URLRequest;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property BOOL done; // @synthesize done=_done;
 @property (strong) NSError *error; // @synthesize error=_error;
 @property (readonly) unsigned long long hash;
+@property (strong) NSString *networkTaskDescription; // @synthesize networkTaskDescription=_networkTaskDescription;
 @property (strong) NSObject<OS_dispatch_semaphore> *sema; // @synthesize sema=_sema;
 @property (strong) NSURLSession *session; // @synthesize session=_session;
 @property BOOL success; // @synthesize success=_success;

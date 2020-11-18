@@ -44,6 +44,7 @@
 - (void)_deleteObjectIDsToMigrate:(id)arg1;
 - (void)_failMigration;
 - (void)_performMigration;
+- (void)_resetMigration;
 - (void)_resumeMigration;
 - (void)_scheduleCleanupForBatchedObjectIDs:(id)arg1;
 - (void)cancel;

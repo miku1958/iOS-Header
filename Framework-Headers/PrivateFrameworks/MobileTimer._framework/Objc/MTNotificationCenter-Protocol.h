@@ -16,6 +16,7 @@
 
 @optional
 - (void)dismissNotificationsForAlarm:(MTAlarm *)arg1 dismissAction:(unsigned long long)arg2;
+- (void)dismissNotificationsForAlarm:(MTAlarm *)arg1 includeSnooze:(BOOL)arg2;
 - (void)dismissNotificationsWithIdentifiers:(NSArray *)arg1;
 - (void)dismissRelatedNotificationsForScheduledAlarm:(MTScheduledObject *)arg1;
 - (void)removeAllDeliveredNotifications;

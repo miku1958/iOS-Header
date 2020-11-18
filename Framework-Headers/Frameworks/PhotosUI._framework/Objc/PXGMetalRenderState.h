@@ -11,10 +11,10 @@
 
 @interface PXGMetalRenderState : NSObject
 {
-    id<MTLDevice> _device;
     CDStruct_b1513b2e _uniforms;
     long long _shaderFlagsByEffectIdCount;
     long long _shaderFlagsByEffectIdCapacity;
+    id<MTLDevice> _device;
     const CDStruct_9d1ebe49 *_spriteInfos;
     const CDStruct_3ab912e1 *_originalSpriteGeometries;
     int *_shaderFlagsByEffectId;
@@ -29,6 +29,7 @@
 
 @property (strong, nonatomic) NSArray *captureSpriteTextures; // @synthesize captureSpriteTextures=_captureSpriteTextures;
 @property (readonly, nonatomic) PXGMetalRenderPassState *currentRenderPassState; // @synthesize currentRenderPassState=_currentRenderPassState;
+@property (readonly, nonatomic) id<MTLDevice> device; // @synthesize device=_device;
 @property (readonly, nonatomic) id<MTLBuffer> effectDataBuffer; // @synthesize effectDataBuffer=_effectDataBuffer;
 @property (nonatomic) const CDStruct_3ab912e1 *originalSpriteGeometries; // @synthesize originalSpriteGeometries=_originalSpriteGeometries;
 @property (readonly, nonatomic) id<MTLBuffer> resizableCapInsetsBuffer; // @synthesize resizableCapInsetsBuffer=_resizableCapInsetsBuffer;

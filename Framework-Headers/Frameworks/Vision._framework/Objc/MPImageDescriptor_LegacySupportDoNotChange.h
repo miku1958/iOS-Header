@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)serializeStateIntoData:(id)arg1 startingAtByteOffset:(unsigned long long)arg2 error:(id *)arg3;

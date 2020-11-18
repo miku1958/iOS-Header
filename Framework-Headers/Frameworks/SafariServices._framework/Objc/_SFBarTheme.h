@@ -14,7 +14,6 @@
     BOOL _backdropIsDark;
     unsigned long long _tintStyle;
     UIColor *_controlsTintColor;
-    UIColor *_preferredProgressBarTintColor;
     UIColor *_preferredBarTintColor;
     long long _overrideUserInterfaceStyle;
     UIBlurEffect *_backdropEffect;
@@ -28,7 +27,6 @@
 @property (readonly, nonatomic) _SFBarTheme *fallbackTheme;
 @property (readonly, nonatomic) long long overrideUserInterfaceStyle; // @synthesize overrideUserInterfaceStyle=_overrideUserInterfaceStyle;
 @property (readonly, nonatomic) UIColor *preferredBarTintColor; // @synthesize preferredBarTintColor=_preferredBarTintColor;
-@property (readonly, nonatomic) UIColor *preferredProgressBarTintColor; // @synthesize preferredProgressBarTintColor=_preferredProgressBarTintColor;
 @property (readonly, nonatomic) unsigned long long tintStyle; // @synthesize tintStyle=_tintStyle;
 
 + (id)themeWithBarTintStyle:(unsigned long long)arg1;

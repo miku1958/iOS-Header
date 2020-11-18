@@ -208,7 +208,6 @@
 - (void)_triggerWebViewLoadWithoutShowingContentRepresentation;
 - (void)_updateFileWrapperForAttachment:(id)arg1 contentID:(id)arg2;
 - (void)_updateMinimumFontSize;
-- (void)_updateSMIMEInfo:(id)arg1 error:(id)arg2;
 - (void)_updateWebViewPaddingConstants;
 - (double)_viewportWidth;
 - (id)_webView:(id)arg1 adjustedDataInteractionItemProvidersForItemProvider:(id)arg2 representingObjects:(id)arg3 additionalData:(id)arg4;

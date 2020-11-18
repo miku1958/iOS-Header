@@ -22,6 +22,7 @@
     unsigned long long _edgeLocation;
     double _scalingFactor;
     id<PKPalettePopoverPresenting><PKPaletteToolPickerViewDelegate> _delegate;
+    long long _colorUserInterfaceStyle;
     id<PKPaletteViewStateObservable> _paletteViewState;
     UIScrollView *_scrollView;
     UIStackView *_stackView;
@@ -35,6 +36,7 @@
     UIViewController *_presentedAttributePickerPopover;
 }
 
+@property (nonatomic) long long colorUserInterfaceStyle; // @synthesize colorUserInterfaceStyle=_colorUserInterfaceStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKPalettePopoverPresenting><PKPaletteToolPickerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

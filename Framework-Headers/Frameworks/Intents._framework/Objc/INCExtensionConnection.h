@@ -45,6 +45,7 @@
 - (double)_timeoutIntervalForTransactionState:(id)arg1;
 - (id)initWithIntent:(id)arg1;
 - (id)initWithIntent:(id)arg1 remoteProxyProvider:(CDUnknownBlockType)arg2;
+- (id)initWithIntent:(id)arg1 supportedExtensionTypes:(long long)arg2 donateInteraction:(BOOL)arg3 groupIdentifier:(id)arg4 remoteProxyProvider:(CDUnknownBlockType)arg5;
 - (id)initWithIntent:(id)arg1 supportedExtensionTypes:(long long)arg2 remoteProxyProvider:(CDUnknownBlockType)arg3;
 - (void)reset;
 - (void)resumeWithCompletionHandler:(CDUnknownBlockType)arg1;

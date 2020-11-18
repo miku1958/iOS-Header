@@ -18,7 +18,6 @@
 @property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 
 - (void).cxx_destruct;
-- (BOOL)_hasAnyVisibleTriggers;
 - (BOOL)_itemisHidden;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)initWithHome:(id)arg1 mode:(unsigned long long)arg2;

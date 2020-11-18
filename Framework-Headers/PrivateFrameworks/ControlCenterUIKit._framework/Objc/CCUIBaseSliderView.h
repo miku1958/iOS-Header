@@ -49,6 +49,7 @@
 - (void)_configureCompensatingGlyphPackageView:(id)arg1;
 - (void)_configureGlyphPackageView:(id)arg1;
 - (id)_newGlyphPackageView;
+- (void)_setGlyphState:(id)arg1;
 - (void)_updateGlyphImageViewVisualStyling;
 - (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -10,7 +10,10 @@
 {
 }
 
++ (unsigned long long)accountLevel:(id)arg1;
++ (long long)accountLevelErrorCodeForLevel:(unsigned long long)arg1;
 + (id)authToken:(id *)arg1;
++ (id)createAuthToken:(id)arg1 authToken:(id)arg2;
 + (id)createAuthkitSession;
 + (id)sharedAccountStore;
 

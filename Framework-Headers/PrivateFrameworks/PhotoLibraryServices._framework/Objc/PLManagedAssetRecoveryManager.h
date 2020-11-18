@@ -13,6 +13,7 @@
 {
     int _assetsDownloadsCount;
     PLPhotoLibrary *_photoLibrary;
+    PLPhotoLibrary *_syncablePhotoLibrary;
     NSObject<OS_dispatch_queue> *_resourceDownloadIsolationQueue;
     NSObject<OS_dispatch_queue> *_workQueue;
     long long _state;
@@ -22,13 +23,14 @@
 @property (strong, nonatomic) PLPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *resourceDownloadIsolationQueue; // @synthesize resourceDownloadIsolationQueue=_resourceDownloadIsolationQueue;
 @property (nonatomic) long long state; // @synthesize state=_state;
+@property (strong, nonatomic) PLPhotoLibrary *syncablePhotoLibrary; // @synthesize syncablePhotoLibrary=_syncablePhotoLibrary;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)_imagesWithZeroWidthHeightPredicate;
 + (id)_irisesWithZeroVideoCpDuration;
 + (id)_jpegImagesPredicate;
++ (id)_predicateForAdjustedAssetsFailedDeferredRendering;
 + (id)_predicateForAdjustedAssetsWithMissingResources;
-+ (id)_predicateForSupportedAssetTypesForUpload;
 - (void).cxx_destruct;
 - (id)_assetKindsAllowedForDownloading;
 - (BOOL)_canUnderstandAdjustmentForAsset:(id)arg1;
@@ -42,8 +44,8 @@
 - (void)_performAssetRecoveryTaskForInconsistentState:(id)arg1 state:(unsigned long long)arg2 usingCloudPhotoLibraryManager:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)_recoverAsset:(id)arg1 usingCloudPhotoLibraryManager:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_setCloudRecoveryState:(unsigned long long)arg1 forAssetsWithFetchRequestPredicate:(id)arg2 resultsFilterPredicate:(id)arg3;
-- (void)identifyAssetsInInconsistentCloudState;
-- (id)initWithPhotoLibrary:(id)arg1;
+- (void)identifyAssetsWithInconsistentCloudState;
+- (id)initWithLibraryServicesManager:(id)arg1;
 - (void)startRecoveryOfAssetsInInconsistentCloudStateUsingCloudPhotoLibraryManager:(id)arg1;
 
 @end
