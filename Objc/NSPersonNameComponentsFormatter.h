@@ -40,13 +40,17 @@
 + (id)__longestComponentFromComponents:(id)arg1;
 + (id)__naiveDelimiterForCombinedNameString:(id)arg1;
 + (long long)__nameOrderForLocale:(id)arg1 usingNativeOrdering:(BOOL)arg2;
++ (id)__preferredLanguages;
 + (void)__registerDefaults;
 + (id)__scriptIdentifierFromIndex:(unsigned long long)arg1;
 + (long long)__shortNameFormatForLocale:(id)arg1;
 + (BOOL)__shortStyle:(long long)arg1 isRestrictedForLocale:(id)arg2;
 + (BOOL)__shortStyle:(long long)arg1 isRestrictedForScript:(unsigned long long)arg2;
 + (BOOL)__shortStyleRestrictionExistsForComponents:(id)arg1 shortStyle:(long long)arg2;
++ (BOOL)__shouldCacheFallbackToGivenNameInitialForAbbreviatedNameFormatFamilyNameOnly;
++ (BOOL)__shouldFallbackToGivenNameInitialForAbbreviatedNameFormatFamilyNameOnly;
 + (BOOL)__shouldReturnEmptyString;
++ (id)__stringByStrippingNonInitialPunctuationFromString:(id)arg1;
 + (id)__stringValueForShortStyle:(long long)arg1;
 + (id)__stringValueForStyle:(long long)arg1;
 + (BOOL)__style:(long long)arg1 isRestrictedForLocale:(id)arg2;
