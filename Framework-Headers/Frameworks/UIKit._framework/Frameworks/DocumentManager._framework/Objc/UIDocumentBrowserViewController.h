@@ -87,13 +87,14 @@
 - (void)_didRequestDocumentCreationWithHandler:(CDUnknownBlockType)arg1;
 - (void)_didTriggerActionWithIdentifier:(id)arg1 onItems:(id)arg2;
 - (void)_didTriggerBarButtonWithUUID:(id)arg1;
-- (void)_displayActivityControllerWithItems:(id)arg1 popoverTracker:(id)arg2 barButtonItem:(id)arg3;
+- (void)_displayActivityControllerWithItems:(id)arg1 popoverTracker:(id)arg2 barButtonItem:(id)arg3 sourceIsManaged:(BOOL)arg4;
 - (void)_displayRemoteControllerIfNeeded;
 - (void)_embedDocumentBrowserViewController;
 - (void)_embedViewController:(id)arg1;
 - (void)_failedToImportDocumentAtURL:(id)arg1 error:(id)arg2;
 - (void)_importDocumentAtURL:(id)arg1 neighbourURL:(id)arg2 mode:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_presentActivityViewControllerForItems:(id)arg1 withPopoverTracker:(id)arg2;
+- (void)_presentActivityViewControllerForItems:(id)arg1 withPopoverTracker:(id)arg2 sourceIsManaged:(BOOL)arg3;
+- (void)_renameDocumentAtURL:(id)arg1 newName:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)_sandboxingURLWrapperForURL:(id)arg1 readonly:(BOOL)arg2 error:(id *)arg3;
 - (void)_showDocumentBrowserViewController:(BOOL)arg1;
 - (void)_showErrorViewController;

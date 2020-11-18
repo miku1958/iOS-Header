@@ -20,11 +20,13 @@
     MFComposeRecipientView *_recipientView;
     SKUIGiftContactSearchController *_searchController;
     UIView *_topBorderView;
+    BOOL _didLayoutSubviews;
 }
 
 @property (copy, nonatomic) NSAttributedString *attributedPlaceholder;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL didLayoutSubviews; // @synthesize didLayoutSubviews=_didLayoutSubviews;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *label;
 @property (copy, nonatomic) NSArray *recipientAddresses;

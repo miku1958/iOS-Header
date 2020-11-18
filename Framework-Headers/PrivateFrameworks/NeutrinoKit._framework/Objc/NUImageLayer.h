@@ -13,12 +13,15 @@
 {
     NUGLPipeline *_pipeline;
     NUGLVertexArray *_vertices;
+    BOOL _debugTextureDrawing;
+    struct CGColor *_debugColor;
     id<NUTextureImage> __image;
     NUImageGeometry *__geometry;
 }
 
 @property (strong) NUImageGeometry *_geometry; // @synthesize _geometry=__geometry;
 @property (strong) id<NUTextureImage> _image; // @synthesize _image=__image;
+@property struct CGColor *debugColor; // @synthesize debugColor=_debugColor;
 @property (strong) NUImageGeometry *geometry;
 @property (strong) id<NUTextureImage> image;
 

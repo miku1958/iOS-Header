@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSMutableSet, NSOrderedSet, VMClientWrapper, VMVoicemailCapabilities;
+@class NSArray, NSMutableSet, NSOrderedSet, NSProgress, VMClientWrapper, VMVoicemailCapabilities;
 @protocol OS_dispatch_queue;
 
 @interface VMVoicemailManager : NSObject
@@ -15,10 +15,12 @@
     BOOL _online;
     BOOL _subscribed;
     BOOL _syncInProgress;
+    BOOL _transcribing;
     BOOL _transcriptionEnabled;
     int _token;
     NSObject<OS_dispatch_queue> *_completionQueue;
     unsigned long long _storageUsage;
+    NSProgress *_transcriptionProgress;
     NSOrderedSet *_voicemails;
     VMClientWrapper *_client;
     VMVoicemailCapabilities *_capabilities;
@@ -44,8 +46,10 @@
 @property (nonatomic, getter=isSubscribed) BOOL subscribed; // @synthesize subscribed=_subscribed;
 @property (nonatomic, getter=isSyncInProgress) BOOL syncInProgress; // @synthesize syncInProgress=_syncInProgress;
 @property (nonatomic) int token; // @synthesize token=_token;
+@property (nonatomic, getter=isTranscribing) BOOL transcribing; // @synthesize transcribing=_transcribing;
 @property (readonly, nonatomic, getter=isTranscriptionEnabled) BOOL transcriptionEnabled;
 @property (readonly, nonatomic, getter=isTranscriptionEnabled) BOOL transcriptionEnabled; // @synthesize transcriptionEnabled=_transcriptionEnabled;
+@property (readonly, nonatomic) NSProgress *transcriptionProgress; // @synthesize transcriptionProgress=_transcriptionProgress;
 @property (strong, nonatomic) NSMutableSet *trashedMessages; // @synthesize trashedMessages=_trashedMessages;
 @property (readonly, nonatomic) long long unreadCount;
 @property (copy, nonatomic) NSOrderedSet *voicemails; // @synthesize voicemails=_voicemails;

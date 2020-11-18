@@ -65,6 +65,7 @@
 - (BOOL)_navigationControllerShouldUseBuiltinInteractionController:(id)arg1;
 - (id)_newNavigationControllerWithRootController:(id)arg1;
 - (id)_nextCloudFeedNavigatingObject;
+- (void)_setTabBarItemForController:(id)arg1 contentMode:(int)arg2;
 - (id)_snapBackRootViewControllerInNavigationController:(id)arg1;
 - (id)_tabRootViewControllerInNavigationController:(id)arg1;
 - (void)_updateSharedStreamsTabBadge;

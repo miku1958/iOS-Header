@@ -14,6 +14,7 @@
 + (id)columnsDefinition;
 + (id)databaseTable;
 + (BOOL)persistState:(id)arg1 storeUUID:(id)arg2 shouldReplace:(BOOL)arg3 healthDatabase:(id)arg4 error:(id *)arg5;
++ (id)persistedStateForStoreUUID:(id)arg1 database:(id)arg2 error:(id *)arg3;
 + (id)persistedStateForStoreUUID:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (long long)protectionClass;
 + (BOOL)rebaseRequiredByDate:(id)arg1 profile:(id)arg2 error:(id *)arg3;

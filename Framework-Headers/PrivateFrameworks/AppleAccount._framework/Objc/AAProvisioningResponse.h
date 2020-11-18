@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) NSString *lastName;
 @property (readonly, nonatomic, getter=isManagedAppleID) BOOL managedAppleID;
 @property (readonly, nonatomic, getter=isNotesMigrated) BOOL notesMigrated;
+@property (readonly, nonatomic, getter=hasOptionalTerms) BOOL optionalTerms;
 @property (readonly, nonatomic) NSString *primaryEmail;
 @property (readonly, nonatomic) NSNumber *primaryEmailVerified;
 @property (readonly, nonatomic) NSArray *provisionedDataclasses;

@@ -91,6 +91,7 @@
 - (struct CGRect)graphViewFrameForMode:(id)arg1;
 - (BOOL)hadError;
 - (void)hideLabelsAxesAndGraphs;
+- (void)hideOtherGraphViews;
 - (double)horizontalPadding;
 - (id)initWithInitialDisplayMode:(id)arg1 preferredChartInterval:(long long)arg2 stockChartViewDelegate:(id)arg3;
 - (BOOL)isCurrentChart;

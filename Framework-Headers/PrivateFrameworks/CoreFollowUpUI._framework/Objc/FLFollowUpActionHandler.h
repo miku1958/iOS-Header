@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CoreFollowUp/FLHeadlessActionHandler.h>
 
 #import <CoreFollowUpUI/FLExtensionHostContextInterface-Protocol.h>
 
-@class FLExtensionWrapper, FLFollowUpItem, NSString, UIViewController;
+@class FLViewExtensionLoader, NSString, UIViewController;
 
-@interface FLFollowUpActionHandler : NSObject <FLExtensionHostContextInterface>
+@interface FLFollowUpActionHandler : FLHeadlessActionHandler <FLExtensionHostContextInterface>
 {
-    FLFollowUpItem *_followUpItem;
-    FLExtensionWrapper *_extensionLoader;
+    FLViewExtensionLoader *_extensionLoader;
     UIViewController *_remoteViewController;
-    CDUnknownBlockType _handlerCompletion;
+    CDUnknownBlockType _completionHandler;
     CDUnknownBlockType _extensionRequestedViewControllerPresentation;
 }
 
@@ -25,16 +24,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)handlerWithItem:(id)arg1;
 - (void).cxx_destruct;
-- (void)_loadUrlForAction:(id)arg1;
-- (void)_processFollowUpAction:(id)arg1;
-- (void)dealloc;
+- (id)_extensionLoader;
 - (void)extensionDidFinish;
 - (void)extensionDidFinishWithError:(id)arg1;
-- (id)extensionLoader;
-- (void)handleAction:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)silentHandleAction:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)handleExtensionBasedAction:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

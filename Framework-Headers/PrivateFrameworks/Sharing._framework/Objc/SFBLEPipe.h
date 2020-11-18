@@ -6,10 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <Sharing/CBCentralManagerDelegate-Protocol.h>
+#import <Sharing/CBScalablePipeManagerDelegate-Protocol.h>
+
 @class CBCentralManager, CBScalablePipe, CBScalablePipeManager, NSData, NSMutableData, NSString, SFBLEData;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface SFBLEPipe : NSObject
+@interface SFBLEPipe : NSObject <CBCentralManagerDelegate, CBScalablePipeManagerDelegate>
 {
     BOOL _activateCalled;
     CBCentralManager *_btCentral;
@@ -51,19 +54,27 @@
 @property (copy, nonatomic) CDUnknownBlockType bluetoothStateChangedHandler; // @synthesize bluetoothStateChangedHandler=_bluetoothStateChangedHandler;
 @property (readonly, nonatomic) long long connectionState;
 @property (copy, nonatomic) CDUnknownBlockType connectionStateChangedHandler; // @synthesize connectionStateChangedHandler=_connectionStateChangedHandler;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) CDUnknownBlockType frameHandler; // @synthesize frameHandler=_frameHandler;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (nonatomic) BOOL manualConnect; // @synthesize manualConnect=_manualConnect;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_activate;
 - (id)_defaultPairedDeviceBluetoothIdentifier;
 - (void)_frameHandler:(unsigned char)arg1 data:(id)arg2;
 - (void)_invalidate;
+- (void)_readHandler;
 - (void)_sendFrameType:(unsigned char)arg1 payload:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_setupIfNeeded;
+- (void)_setupPipe:(id)arg1;
+- (void)_tearDownPipe;
+- (void)_writeHandler;
 - (void)activate;
 - (void)addFrameHandlerForType:(unsigned char)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)centralManager:(id)arg1 didConnectPeripheral:(id)arg2;
@@ -71,10 +82,14 @@
 - (void)centralManager:(id)arg1 didFailToConnectPeripheral:(id)arg2 error:(id)arg3;
 - (void)centralManagerDidUpdateState:(id)arg1;
 - (void)dealloc;
-- (id)description;
 - (id)init;
 - (void)invalidate;
 - (void)removeFrameHandlerForType:(unsigned char)arg1;
+- (void)scalablePipeManager:(id)arg1 didRegisterEndpoint:(id)arg2 error:(id)arg3;
+- (void)scalablePipeManager:(id)arg1 didUnregisterEndpoint:(id)arg2;
+- (void)scalablePipeManager:(id)arg1 pipeDidConnect:(id)arg2;
+- (void)scalablePipeManager:(id)arg1 pipeDidDisconnect:(id)arg2 error:(id)arg3;
+- (void)scalablePipeManagerDidUpdateState:(id)arg1;
 - (void)sendFrameType:(unsigned char)arg1 payload:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

@@ -17,6 +17,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL hf_hasSetVisibleInHomeStatus;
 @property (readonly, nonatomic) BOOL hf_isVisibleInHomeStatus;
+@property (readonly, nonatomic) BOOL hf_supportsHomeStatus;
 @property (readonly) Class superclass;
 
 - (id)hf_updateIsVisibleInHomeStatus:(BOOL)arg1;

@@ -18,6 +18,7 @@
     unsigned long long _playActivitySessionToken;
     ICRadioGetTracksRequest *_request;
     ICRadioGetTracksResponse *_response;
+    ICRadioGetTracksResponse *_siriAssetInfoGetTracksResponse;
     unsigned long long _playActitySessionToken;
 }
 
@@ -29,12 +30,13 @@
 @property (readonly, copy, nonatomic) SSVPlayActivityController *playActivityController; // @synthesize playActivityController=_playActivityController;
 @property (readonly, copy, nonatomic) ICRadioGetTracksRequest *request; // @synthesize request=_request;
 @property (readonly, copy, nonatomic) ICRadioGetTracksResponse *response; // @synthesize response=_response;
+@property (readonly, nonatomic) ICRadioGetTracksResponse *siriAssetInfoGetTracksResponse; // @synthesize siriAssetInfoGetTracksResponse=_siriAssetInfoGetTracksResponse;
 
 - (void).cxx_destruct;
 - (void)_fireAndForgetServerDialog:(id)arg1;
 - (void)_performDefaultHandlingForButtonAction:(id)arg1;
 - (void)_presentServerDialog:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)initWithGetTracksRequest:(id)arg1 playActivityController:(id)arg2;
+- (id)initWithGetTracksRequest:(id)arg1 siriAssetInfo:(id)arg2 playActivityController:(id)arg3;
 - (id)initWithPreviousStep:(id)arg1;
 - (id)nextStepWithError:(id)arg1;
 - (void)performWithCompletionHandler:(CDUnknownBlockType)arg1;

@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSString;
+@class CUNetLinkManager, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CUTCPServer : NSObject
@@ -23,18 +23,22 @@
     int _tcpListeningPort;
     CDUnknownBlockType _connectionStartedHandler;
     CDUnknownBlockType _connectionEndedHandler;
+    CDUnknownBlockType _connectionPrepareHandler;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _invalidationHandler;
     NSString *_label;
+    CUNetLinkManager *_netLinkManager;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType connectionEndedHandler; // @synthesize connectionEndedHandler=_connectionEndedHandler;
+@property (copy, nonatomic) CDUnknownBlockType connectionPrepareHandler; // @synthesize connectionPrepareHandler=_connectionPrepareHandler;
 @property (copy, nonatomic) CDUnknownBlockType connectionStartedHandler; // @synthesize connectionStartedHandler=_connectionStartedHandler;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (nonatomic) unsigned int maxConnectionCount; // @synthesize maxConnectionCount=_maxConnectionCount;
+@property (strong, nonatomic) CUNetLinkManager *netLinkManager; // @synthesize netLinkManager=_netLinkManager;
 @property (nonatomic) int tcpListenPort; // @synthesize tcpListenPort=_tcpListenPort;
 @property (nonatomic) int tcpListeningPort; // @synthesize tcpListeningPort=_tcpListeningPort;
 

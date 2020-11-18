@@ -17,6 +17,7 @@
     BOOL _currentDevice;
     NSUUID *_uniqueIdentifier;
     NSString *_name;
+    NSUUID *_idsIdentifier;
     NSUUID *_uuid;
     NSObject<OS_dispatch_queue> *_propertyQueue;
 }
@@ -25,6 +26,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy) NSUUID *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
 @property (copy) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
@@ -33,9 +35,12 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)IDSDeviceForIDSService:(id)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

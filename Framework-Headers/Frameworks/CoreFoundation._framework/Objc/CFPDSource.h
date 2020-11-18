@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     const char *_pathToTemporaryFileToWriteTo;
     NSObject<OS_dispatch_group> *_inProgressWriteGroup;
     struct __CFSet *_observingConnections;
+    struct os_unfair_lock_s _observingConnectionsLock;
     struct os_unfair_lock_s _lock;
     unsigned int _lastEuid;
     unsigned int _lastEgid;
@@ -84,6 +85,7 @@ __attribute__((visibility("hidden")))
 - (void)lockedSync:(CDUnknownBlockType)arg1;
 - (BOOL)managed;
 - (void)markNeedsToReloadFromDiskDueToFailedWrite;
+- (void)observingConnectionsLockedSync:(CDUnknownBlockType)arg1;
 - (int)owner;
 - (void)removeOwner;
 - (void)respondToFileWrittenToBehindOurBack;

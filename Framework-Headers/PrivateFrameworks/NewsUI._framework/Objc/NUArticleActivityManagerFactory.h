@@ -9,17 +9,17 @@
 #import <NewsUI/NUArticleActivityFactory-Protocol.h>
 
 @class FCReadingHistory, FCReadingList, FCSubscriptionList, NSString;
-@protocol NUURLHandler;
+@protocol NUURLHandling;
 
 @interface NUArticleActivityManagerFactory : NSObject <NUArticleActivityFactory>
 {
     FCReadingHistory *_readingHistory;
     FCReadingList *_readingList;
     FCSubscriptionList *_subscriptionList;
-    id<NUURLHandler> _URLHandler;
+    id<NUURLHandling> _URLHandler;
 }
 
-@property (readonly, nonatomic) id<NUURLHandler> URLHandler; // @synthesize URLHandler=_URLHandler;
+@property (readonly, nonatomic) id<NUURLHandling> URLHandler; // @synthesize URLHandler=_URLHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -29,7 +29,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)activityProviderForHeadline:(id)arg1;
+- (id)activityProviderForHeadline:(id)arg1 reportConcernViewPresenter:(id)arg2;
 - (id)initWithReadingHistory:(id)arg1 readingList:(id)arg2 subscriptionList:(id)arg3 URLHandler:(id)arg4;
 
 @end

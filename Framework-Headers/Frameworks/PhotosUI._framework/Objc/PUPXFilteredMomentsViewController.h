@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)getEmptyPlaceholderViewTitle:(id *)arg1 message:(id *)arg2;
+- (void)getEmptyPlaceholderViewTitle:(id *)arg1 message:(id *)arg2 buttonTitle:(id *)arg3 buttonAction:(CDUnknownBlockType *)arg4;
 - (BOOL)isInPlaces:(id)arg1;
 - (void)loadView;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;

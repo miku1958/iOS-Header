@@ -6,7 +6,7 @@
 
 #import <MediaRemote/_MRContentItemMetadataProtobuf.h>
 
-@class NSDate, NSDictionary, NSObject, NSURL;
+@class NSArray, NSDate, NSDictionary, NSObject, NSURL;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -20,9 +20,11 @@ __attribute__((visibility("hidden")))
     NSDictionary *_collectionInfo;
     NSDate *_currentPlaybackDate;
     NSDictionary *_deviceSpecificUserInfo;
+    NSArray *_artworkURLTemplates;
 }
 
 @property (copy, nonatomic) NSDictionary *appMetrics;
+@property (copy, nonatomic) NSArray *artworkURLTemplates;
 @property (copy, nonatomic) NSURL *assetURL;
 @property (copy, nonatomic) NSDictionary *collectionInfo;
 @property (copy, nonatomic) NSDate *currentPlaybackDate;

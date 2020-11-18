@@ -60,6 +60,7 @@
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 inputViewStyle:(long long)arg2;
+- (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (BOOL)resignFirstResponder;
 - (void)safeAreaInsetsDidChange;

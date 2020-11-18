@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSDictionary, NSMutableDictionary, WBSDeviceEligibilityInformation;
+@class NSArray, NSDate, NSDictionary, NSMutableDictionary, WBSDeviceEligibilityInformation;
 @protocol OS_dispatch_queue, WBSLogger;
 
 @interface WBSCloudBookmarksMigrationReadinessDecider : NSObject
@@ -18,6 +18,7 @@
     NSDate *_dateOfDeviceEligibilityUpdate;
     NSMutableDictionary *_nonMigratableDeviceIdentifiersToLastModifiedDates;
     WBSDeviceEligibilityInformation *_deviceEligibilityInformation;
+    NSArray *_eligibleOperatingSystemVersionRanges;
     BOOL _readyToMigrate;
     BOOL _lastCloudTabDevicesSyncRequestWasSuccessful;
     id<WBSLogger> _keyActionsLogger;
@@ -25,12 +26,15 @@
 
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, nonatomic) NSDate *earliestPossibleDateOfMigration;
+@property (copy, nonatomic) NSArray *eligibleOperatingSystemVersionRanges;
 @property (strong, nonatomic) id<WBSLogger> keyActionsLogger; // @synthesize keyActionsLogger=_keyActionsLogger;
 @property (readonly, nonatomic, getter=isReadyToMigrate) BOOL readyToMigrate;
 
++ (id)_deviceEligibilityInformationFromDictionaryRepresentation:(id)arg1;
 - (void).cxx_destruct;
 - (double)_deviceEligibilityUpdateInterval;
 - (void)_fetchDeviceEligibilityInformationWithCloudTabDeviceProvider:(id)arg1 deviceEligibilityFetcher:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)_hasValidDeviceEligibilityInformation;
 - (BOOL)_isCloudTabDeviceDataPastExpiration;
 - (BOOL)_isDateInGracePeriod:(id)arg1;
 - (BOOL)_isInternalInstall;

@@ -17,7 +17,6 @@
     BOOL _shouldSuppressRingtone;
     BOOL _wantsHoldMusic;
     BOOL _wasDialAssisted;
-    BOOL _hasBegunAudioInterruption;
     BOOL _hasUpdatedAudio;
     BOOL _expectedEndpointOnPairedClientDevice;
     BOOL _ringtoneSuppressedRemotely;
@@ -41,7 +40,6 @@
     TUVideoCallAttributes *_videoCallAttributes;
     long long _provisionalHoldStatus;
     NSString *_isoCountryCode;
-    NSString *_prematurelySelectedAudioRouteUID;
     long long _soundRegion;
     NSDictionary *_providerContext;
     double _hostCreationTime;
@@ -105,7 +103,6 @@
 @property (copy, nonatomic) NSString *hardPauseDigits; // @synthesize hardPauseDigits=_hardPauseDigits;
 @property (readonly, nonatomic) NSString *hardPauseDigitsDisplayString;
 @property (nonatomic) int hardPauseDigitsState; // @synthesize hardPauseDigitsState=_hardPauseDigitsState;
-@property (nonatomic) BOOL hasBegunAudioInterruption; // @synthesize hasBegunAudioInterruption=_hasBegunAudioInterruption;
 @property (readonly, nonatomic) BOOL hasSentInvitation;
 @property (nonatomic) BOOL hasUpdatedAudio; // @synthesize hasUpdatedAudio=_hasUpdatedAudio;
 @property (nonatomic) double hostCreationTime; // @synthesize hostCreationTime=_hostCreationTime;
@@ -125,7 +122,6 @@
 @property (readonly, nonatomic) BOOL needsManualInCallSounds;
 @property (readonly, nonatomic, getter=isOutgoing) BOOL outgoing;
 @property (readonly, nonatomic) BOOL prefersExclusiveAccessToCellularNetwork;
-@property (strong, nonatomic) NSString *prematurelySelectedAudioRouteUID; // @synthesize prematurelySelectedAudioRouteUID=_prematurelySelectedAudioRouteUID;
 @property (readonly, nonatomic) TUCallProvider *provider;
 @property (readonly, nonatomic) NSDictionary *providerContext; // @synthesize providerContext=_providerContext;
 @property (nonatomic) long long provisionalHoldStatus; // @synthesize provisionalHoldStatus=_provisionalHoldStatus;
@@ -141,6 +137,7 @@
 @property (readonly, nonatomic) struct CGRect remoteVideoContentRect;
 @property (nonatomic) BOOL requiresRemoteVideo;
 @property (nonatomic) BOOL ringtoneSuppressedRemotely; // @synthesize ringtoneSuppressedRemotely=_ringtoneSuppressedRemotely;
+@property (readonly, nonatomic, getter=isRTT) BOOL rtt;
 @property (readonly, nonatomic) int service;
 @property (readonly, nonatomic) BOOL shouldDisplayLocationIfAvailable;
 @property (readonly, nonatomic) BOOL shouldPlayDTMFTone;

@@ -14,7 +14,6 @@
     NUPurgeableImageAccessGuard *_accessRegionGuard;
     NUPurgeableStoragePool *_storagePool;
     id<NUPurgeableStorage> _renderDestination;
-    int _renderer;
     NURegion *_regionToRender;
     NURegion *_renderedRegion;
     id<NUPurgeableImage> _renderedImage;
@@ -30,7 +29,7 @@
 - (void).cxx_destruct;
 - (void)cleanUp;
 - (BOOL)complete:(out id *)arg1;
-- (BOOL)copyStorage:(id)arg1 region:(id)arg2 toImage:(id)arg3 atPoint:(CDStruct_912cb5d2)arg4;
+- (BOOL)copyStorage:(id)arg1 fromRect:(CDStruct_996ac03c)arg2 toImage:(id)arg3 atPoint:(CDStruct_912cb5d2)arg4;
 - (id)extentPolicy;
 - (id)imageAccumulationNodeWithSize:(CDStruct_912cb5d2)arg1 format:(id)arg2 colorSpace:(id)arg3;
 - (id)imageRequest;

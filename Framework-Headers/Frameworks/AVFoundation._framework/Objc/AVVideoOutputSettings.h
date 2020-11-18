@@ -24,7 +24,7 @@
 @property (readonly, nonatomic) NSDictionary *videoSettingsDictionary;
 @property (readonly, nonatomic) int width;
 
-+ (id)_outputSettingsWithOutputSettingsDictionary:(id)arg1 exceptionReason:(id *)arg2;
++ (id)_outputSettingsWithOutputSettingsDictionary:(id)arg1 mediaType:(id)arg2 exceptionReason:(id *)arg3;
 + (id)_validValuesForScalingMode;
 + (id)_videoOutputSettingsWithVideoSettingsDictionary:(id)arg1 exceptionReason:(id *)arg2;
 + (id)defaultVideoOutputSettings;

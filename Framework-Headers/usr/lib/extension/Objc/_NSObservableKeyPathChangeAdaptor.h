@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSObservableKeyPath.h>
+#import <Foundation/NSObservableKeyPath.h>
 
 __attribute__((visibility("hidden")))
 @interface _NSObservableKeyPathChangeAdaptor : NSObservableKeyPath

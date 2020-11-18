@@ -8,7 +8,7 @@
 
 #import <FrontBoard/BKSProcessDelegate-Protocol.h>
 
-@class BKSProcess, BKSProcessAssertion, BSMachPortSendRight, FBApplicationInfo, FBApplicationProcessExitContext, FBProcessCPUStatistics, FBProcessExecutionContext, FBProcessWatchdog, FBSProcessWatchdogPolicy, NSMutableArray, NSMutableSet, NSString;
+@class BKSProcess, BKSProcessAssertion, BSMachPortSendRight, FBApplicationInfo, FBApplicationProcessExitContext, FBProcessCPUStatistics, FBProcessExecutionContext, FBProcessState, FBProcessWatchdog, FBProcessWatchdogEventContext, FBSProcessTerminationRequest, FBSProcessWatchdogPolicy, NSMutableArray, NSMutableSet, NSString;
 @protocol FBApplicationProcessDelegate;
 
 @interface FBApplicationProcess : FBProcess <BKSProcessDelegate>
@@ -16,6 +16,9 @@
     FBApplicationInfo *_applicationInfo;
     FBApplicationProcessExitContext *_exitContext;
     FBProcessExecutionContext *_executionContext;
+    FBSProcessTerminationRequest *_terminationRequest;
+    FBProcessWatchdogEventContext *_terminationWatchdogContext;
+    FBProcessState *_terminationState;
     NSMutableSet *_allowedLockedFilePaths;
     NSMutableArray *_queuedSceneBlocksToExecuteAfterLaunch;
     NSMutableArray *_queue_terminateRequestCompletionBlocks;
@@ -68,6 +71,8 @@
 - (BOOL)_queue_bootstrapAndExecWithContext:(id)arg1;
 - (void)_queue_callExitObservers;
 - (void)_queue_cancelWatchdogTimer;
+- (id)_queue_composeContextWithValue:(id)arg1 key:(id)arg2;
+- (id)_queue_crashReportThermalsInfo;
 - (void)_queue_doGracefulKillWithDeliveryConfirmation:(CDUnknownBlockType)arg1;
 - (void)_queue_dropContinuousProcessAssertion;
 - (void)_queue_dropLaunchProcessAssertion;
@@ -89,7 +94,6 @@
 - (unsigned long long)_queue_noteExitedForForceQuit:(BOOL)arg1;
 - (int)_queue_ourTaskStateForBKSTaskState:(long long)arg1;
 - (void)_queue_processDidExit;
-- (void)_queue_processReallyDidExit;
 - (void)_queue_sceneNeedsGracefulExit:(id)arg1 withDeliveryConfirmation:(CDUnknownBlockType)arg2;
 - (void)_queue_setTaskState:(int)arg1;
 - (void)_queue_setVisibility:(int)arg1;

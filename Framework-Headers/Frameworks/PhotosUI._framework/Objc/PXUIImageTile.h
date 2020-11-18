@@ -10,7 +10,7 @@
 #import <PhotosUICore/PXReusableObject-Protocol.h>
 #import <PhotosUICore/PXUIViewBasicTile-Protocol.h>
 
-@class NSString, PXImageRequester, PXImageViewSpec, PXUIImageView, UIView, UIVisualEffectView;
+@class NSString, PXImageRequester, PXImageUIView, PXImageViewSpec, UIView, UIVisualEffectView;
 
 @interface PXUIImageTile : NSObject <PXChangeObserver, PXUIViewBasicTile, PXReusableObject>
 {
@@ -22,7 +22,7 @@
         BOOL image;
         BOOL blurEffectView;
     } _needsUpdateFlags;
-    PXUIImageView *_imageView;
+    PXImageUIView *_imageView;
     unsigned long long _animationFlags;
     BOOL _applyBlurEffect;
     PXImageRequester *_imageRequester;

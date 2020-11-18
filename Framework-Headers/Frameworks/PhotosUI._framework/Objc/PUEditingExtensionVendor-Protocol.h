@@ -11,6 +11,7 @@
 - (void)cancelContentEditing;
 - (void)finishContentEditing;
 - (void)queryHandlingCapabilityForAdjustmentData:(PHAdjustmentData *)arg1 withResponseHandler:(void (^)(BOOL))arg2;
+- (void)querySDKVersionWithResponseHandler:(void (^)(unsigned int))arg1;
 - (void)queryShouldShowCancelConfirmationWithResponseHandler:(void (^)(BOOL))arg1;
 @end
 

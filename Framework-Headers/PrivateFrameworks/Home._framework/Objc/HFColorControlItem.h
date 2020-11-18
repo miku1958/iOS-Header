@@ -17,10 +17,10 @@
 
 + (id)colorCharacteristicTypes;
 + (Class)valueClass;
-- (BOOL)canCopyWithCharacteristicTypeSubset:(id)arg1;
+- (BOOL)canCopyWithCharacteristicOptions:(id)arg1;
 - (id)characteristicValuesForValue:(id)arg1;
-- (id)copyWithCharacteristicTypes:(id)arg1 valueSource:(id)arg2;
-- (id)initWithValueSource:(id)arg1 characteristicTypes:(id)arg2 displayResults:(id)arg3;
+- (id)copyWithCharacteristicOptions:(id)arg1 valueSource:(id)arg2;
+- (id)initWithValueSource:(id)arg1 characteristicOptions:(id)arg2 displayResults:(id)arg3;
 - (id)initWithValueSource:(id)arg1 displayResults:(id)arg2;
 - (BOOL)supportsItemRepresentingServices:(id)arg1;
 - (id)valueForCharacteristicType:(id)arg1 inBatchReadResponse:(id)arg2;

@@ -21,12 +21,15 @@
 @property (readonly, nonatomic) long long upNextItemCount;
 
 + (Class)playlistManagerClass;
++ (BOOL)prefersApplicationAudioSession;
 - (void).cxx_destruct;
+- (void)_configureAudioSession;
 - (void)_connectAVPlayer;
 - (void)_contentsChanged;
 - (id)_expectedAssetTypesForPlaybackMode:(long long)arg1;
 - (void)_itemDidChange:(id)arg1;
 - (void)_itemWillChange:(id)arg1;
+- (void)_networkPolicyItemCellularRestrictedNotification:(id)arg1;
 - (void)_playbackErrorNotification:(id)arg1;
 - (void)_playbackUserDefaultsEQPresetDidChangeNotification:(id)arg1;
 - (void)_setState:(long long)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/_NSFileWatcherFileHandleInfo.h>
+#import <Foundation/_NSFileWatcherFileHandleInfo.h>
 
 __attribute__((visibility("hidden")))
 @interface _NSFileWatcherDirectoryFileHandleInfo : _NSFileWatcherFileHandleInfo

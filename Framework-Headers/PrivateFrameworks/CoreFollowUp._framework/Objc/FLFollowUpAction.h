@@ -18,10 +18,12 @@
     NSDictionary *_userInfo;
     NSURL *_launchActionURL;
     NSData *_launchActionArguments;
+    unsigned long long _eventSource;
     unsigned long long _sqlID;
 }
 
 @property (strong, nonatomic) NSData *_userInfoData;
+@property (nonatomic) unsigned long long eventSource; // @synthesize eventSource=_eventSource;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy) NSString *label; // @synthesize label=_label;
 @property (copy, nonatomic) NSData *launchActionArguments; // @synthesize launchActionArguments=_launchActionArguments;

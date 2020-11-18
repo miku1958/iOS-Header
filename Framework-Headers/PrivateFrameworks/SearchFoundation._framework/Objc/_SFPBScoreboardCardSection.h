@@ -28,6 +28,7 @@
     _SFPBSportsTeam *_team1;
     _SFPBSportsTeam *_team2;
     NSString *_accessibilityDescription;
+    NSString *_eventStatus;
 }
 
 @property (copy, nonatomic) NSString *accessibilityDescription; // @synthesize accessibilityDescription=_accessibilityDescription;
@@ -35,10 +36,12 @@
 @property (nonatomic) BOOL canBeHidden; // @synthesize canBeHidden=_canBeHidden;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *eventStatus; // @synthesize eventStatus=_eventStatus;
 @property (readonly, nonatomic) BOOL hasAccessibilityDescription;
 @property (readonly, nonatomic) BOOL hasBackgroundColor;
 @property (nonatomic) BOOL hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
 @property (readonly, nonatomic) BOOL hasCanBeHidden;
+@property (readonly, nonatomic) BOOL hasEventStatus;
 @property (readonly, nonatomic) BOOL hasHasBottomPadding;
 @property (readonly, nonatomic) BOOL hasHasTopPadding;
 @property (readonly, nonatomic) BOOL hasPunchoutPickerDismissText;

@@ -6,32 +6,27 @@
 
 #import <HomeKit/_HMAccessoryProfile.h>
 
-@class HMAccessorySettings, HMMediaSession, _HMAccessorySettingGroup;
+@class HMMediaSession, NSString;
 @protocol _HMMediaProfileDelegate;
 
 @interface _HMMediaProfile : _HMAccessoryProfile
 {
-    HMAccessorySettings *_accessorySettings;
-    _HMAccessorySettingGroup *_rootGroup;
     HMMediaSession *_mediaSession;
+    NSString *_routeUID;
     id<_HMMediaProfileDelegate> _delegate;
 }
 
-@property (weak) HMAccessorySettings *accessorySettings; // @synthesize accessorySettings=_accessorySettings;
 @property (weak) id<_HMMediaProfileDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong) HMMediaSession *mediaSession; // @synthesize mediaSession=_mediaSession;
-@property (readonly) _HMAccessorySettingGroup *rootGroup; // @synthesize rootGroup=_rootGroup;
+@property (readonly) NSString *routeUID; // @synthesize routeUID=_routeUID;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_handleRootSettingsUpdated:(id)arg1;
 - (void)_notifyDelegateOfUpdatedMediaSession:(id)arg1;
-- (void)_registerNotificationHandlers;
 - (void)configureWithAccessory:(id)arg1 home:(id)arg2 context:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)notifyDelegateOfUpdatedRootGroup:(id)arg1;
-- (void)setRootGroup:(id)arg1;
+- (void)setRouteUID:(id)arg1;
 
 @end
 

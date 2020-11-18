@@ -21,8 +21,9 @@
 - (id)_accessibilityResponderElement;
 - (BOOL)_accessibilityServesAsFirstResponder;
 - (void)_accessibilitySetRemoteElementArray:(id)arg1;
-- (void)_accessibilitySetRemoteElementIfNecessary;
+- (void)_accessibilitySetRemoteElementIfNecessaryWithContextId:(unsigned int)arg1;
 - (void)_accessibilitySetRetainedValue:(id)arg1 forKey:(id)arg2;
+- (unsigned int)_axContextIdForLayer;
 - (id)accessibilityElements;
 - (id)accessibilityIdentifier;
 - (void)dealloc;

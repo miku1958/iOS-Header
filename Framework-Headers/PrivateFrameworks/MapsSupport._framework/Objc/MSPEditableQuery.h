@@ -21,6 +21,7 @@
 - (void)_performEditWithStateTransformation:(CDUnknownBlockType)arg1 containerEdit:(CDUnknownBlockType)arg2;
 - (id)_visibleState;
 - (void)deleteContentsObjectAtIndex:(unsigned long long)arg1;
+- (void)deleteContentsObjectAtIndexes:(id)arg1;
 - (void)moveContentsObjectAtIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 
 @end

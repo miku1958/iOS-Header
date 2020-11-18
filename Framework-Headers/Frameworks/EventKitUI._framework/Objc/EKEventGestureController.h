@@ -59,6 +59,7 @@
     _UIFeedbackDragSnappingBehavior *_dragSnappingFeedback;
     UIDropInteraction *_dropInteraction;
     UIDragInteraction *_dragInteraction;
+    long long _currentDropDataOwnerCache;
     BOOL _usesXDragOffsetInCancelRegion;
     BOOL _usesHorizontalDragLocking;
     BOOL _commitBlocked;
@@ -98,6 +99,7 @@
 - (BOOL)_beginEditingSessionAtPoint:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_beginNewDragFromOffStateWithPoint:(struct CGPoint)arg1;
 - (struct CGRect)_calculateFrameForDraggingViewIncludingTravelTime:(BOOL)arg1;
+- (BOOL)_calendarCanAcceptManagedData:(id)arg1;
 - (void)_cancel;
 - (double)_capOccurrenceViewYOrigin:(double)arg1;
 - (id)_captureImageOfDraggingView;
@@ -116,13 +118,17 @@
 - (void)_disableSystemPreviewForDrag:(id)arg1;
 - (void)_dismissCurrentICSPreviewControllerAnimated:(BOOL)arg1;
 - (void)_dragFailedToStart;
+- (long long)_dragInteraction:(id)arg1 dataOwnerForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
+- (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (void)_dragInteractionDidCancelLiftWithoutDragging:(id)arg1;
 - (int)_draggingState;
+- (long long)_dropInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (unsigned long long)_dropOperationGivenDropSession:(id)arg1;
 - (BOOL)_dropSessionRequiresExternalDataExtraction:(id)arg1;
 - (void)_enableSystemPreviewForDrag:(id)arg1;
 - (struct CGPoint)_estimateFinalDropOriginForTimedDelegate;
 - (id)_eventToUseAtInteractionStart:(struct CGPoint)arg1;
+- (id)_findFirstCalendar:(id)arg1;
 - (id)_findLocalDragItemInSession:(id)arg1;
 - (BOOL)_flingOrCancelDraggingViewIfNeeded;
 - (id)_getEventUsingDropSession:(id)arg1;
@@ -143,6 +149,8 @@
 - (void)_returnDraggingViewToLastCommittedPositionFromTouchPoint:(struct CGPoint)arg1;
 - (void)_scrollTimerFired:(id)arg1;
 - (BOOL)_setDraggingState:(int)arg1 withPoint:(struct CGPoint)arg2 event:(id)arg3;
+- (BOOL)_setDraggingState:(int)arg1 withPoint:(struct CGPoint)arg2 event:(id)arg3 context:(id)arg4;
+- (void)_setEventCalendar:(id)arg1 useManagedCalendar:(BOOL)arg2;
 - (void)_setLocalDraggingViewHidden:(BOOL)arg1;
 - (void)_setToLocalDraggingImageForDrag:(id)arg1;
 - (void)_setToSystemDraggingImageForDrag:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @protocol MTLBuffer, MTLDevice;
 
@@ -30,6 +30,7 @@
 - (id)init;
 - (id)initWithBuffer:(id)arg1 descriptor:(id)arg2;
 - (id)initWithBuffer:(id)arg1 length:(unsigned long long)arg2 dataType:(unsigned int)arg3;
+- (id)initWithDescriptor:(id)arg1 device:(struct MPSDevice *)arg2;
 
 @end
 

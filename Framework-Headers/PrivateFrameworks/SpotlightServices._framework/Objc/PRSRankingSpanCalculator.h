@@ -8,18 +8,18 @@
 
 @interface PRSRankingSpanCalculator : NSObject
 {
-    double _unordered;
-    double _ordered;
+    float _unordered;
+    float _ordered;
+    float _normCount;
+    float _pairDist;
     unsigned long long _firstTermPosition;
-    double _normCount;
-    double _pairDist;
 }
 
 @property (nonatomic) unsigned long long firstTermPosition; // @synthesize firstTermPosition=_firstTermPosition;
-@property (nonatomic) double normCount; // @synthesize normCount=_normCount;
-@property (nonatomic) double ordered; // @synthesize ordered=_ordered;
-@property (nonatomic) double pairDist; // @synthesize pairDist=_pairDist;
-@property (nonatomic) double unordered; // @synthesize unordered=_unordered;
+@property (nonatomic) float normCount; // @synthesize normCount=_normCount;
+@property (nonatomic) float ordered; // @synthesize ordered=_ordered;
+@property (nonatomic) float pairDist; // @synthesize pairDist=_pairDist;
+@property (nonatomic) float unordered; // @synthesize unordered=_unordered;
 
 + (BOOL)doesOrderedSpanExistWithStartingIndex:(unsigned long long)arg1 nextArray:(id)arg2 arrayOfIndexArrays:(id)arg3 level:(unsigned long long)arg4 currentOrderedSpan:(long long *)arg5;
 + (void)minimumAnyOrderSpanWithStartingIndex:(long long)arg1 nextArray:(id)arg2 arrayOfIndexArrays:(id)arg3 level:(unsigned long long)arg4 currentAnyOrderSpan:(long long)arg5 minimumSpan:(long long *)arg6 minimumDistancePair:(long long *)arg7 currentMinimumIndex:(long long)arg8 currentMaximumIndex:(long long)arg9;

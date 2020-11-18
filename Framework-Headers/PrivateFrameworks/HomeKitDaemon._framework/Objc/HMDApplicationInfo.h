@@ -6,9 +6,11 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
+
 @class NSMutableDictionary, NSString;
 
-@interface HMDApplicationInfo : HMFObject
+@interface HMDApplicationInfo : HMFObject <HMFLogging>
 {
     BOOL _spiClient;
     NSString *_teamIdentifier;
@@ -20,14 +22,18 @@
 @property (readonly, nonatomic) NSMutableDictionary *activeProcesses; // @synthesize activeProcesses=_activeProcesses;
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, copy, nonatomic) NSString *companionAppBundleIdentifier; // @synthesize companionAppBundleIdentifier=_companionAppBundleIdentifier;
-@property (readonly, nonatomic, getter=isFrontMostApp) BOOL frontMostApp;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isSPIClient) BOOL spiClient; // @synthesize spiClient=_spiClient;
+@property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *teamIdentifier; // @synthesize teamIdentifier=_teamIdentifier;
 
++ (id)logCategory;
 - (void).cxx_destruct;
-- (id)description;
 - (id)init;
 - (id)initWithBundleIdentifier:(id)arg1 teamIdentifier:(id)arg2 companionAppBundleIdentifier:(id)arg3 spiClient:(BOOL)arg4;
+- (id)logIdentifier;
 
 @end
 

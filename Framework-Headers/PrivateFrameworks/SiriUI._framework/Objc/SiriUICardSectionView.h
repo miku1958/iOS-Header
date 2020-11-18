@@ -14,6 +14,7 @@
 @interface SiriUICardSectionView : UIView <CRKCardSectionView>
 {
     UIView<CRKComposableView> *_composedSuperview;
+    NSString *_cardSectionViewIdentifier;
     UIView<SiriUIReusableView> *_headerView;
     UIView *_contentView;
     UIView<SiriUIReusableView> *_footerView;
@@ -22,7 +23,7 @@
     struct CGSize _contentSize;
 }
 
-@property (copy, nonatomic) NSString *cardSectionViewIdentifier;
+@property (copy, nonatomic) NSString *cardSectionViewIdentifier; // @synthesize cardSectionViewIdentifier=_cardSectionViewIdentifier;
 @property (weak, nonatomic) UIView<CRKComposableView> *composedSuperview; // @synthesize composedSuperview=_composedSuperview;
 @property (nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
@@ -37,6 +38,7 @@
 
 + (struct CGSize)sizeThatFitsCardSection:(id)arg1 boundingSize:(struct CGSize)arg2;
 - (void).cxx_destruct;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)removeFromComposedSuperview;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

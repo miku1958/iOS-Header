@@ -17,6 +17,7 @@
 
 @property (readonly, nonatomic) unsigned long long vibratorState;
 
++ (BOOL)f24eF45EGWHwq1245odi1235hqw231ifqwQQFR;
 - (void).cxx_destruct;
 - (unsigned int)_previewVibrationSystemSoundID;
 - (void)_turnOffIfAppropriate;
@@ -24,7 +25,7 @@
 - (void)dealloc;
 - (id)init;
 - (void)turnOff;
-- (void)turnOnWithVibrationPattern:(id)arg1;
+- (void)turnOnWithVibrationPattern:(id)arg1 forVibratorFeedbackKind:(unsigned long long)arg2;
 
 @end
 

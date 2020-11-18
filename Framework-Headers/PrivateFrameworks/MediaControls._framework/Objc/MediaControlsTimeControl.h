@@ -27,7 +27,6 @@
     BOOL _empty;
     BOOL _timeControlOnScreen;
     BOOL _currentlyTracking;
-    BOOL _live;
     long long _style;
     MPCPlayerResponse *_response;
     UIView *_elapsedTrack;
@@ -51,7 +50,6 @@
 @property (nonatomic, getter=isEmpty) BOOL empty; // @synthesize empty=_empty;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *knobView; // @synthesize knobView=_knobView;
-@property (nonatomic, getter=isLive) BOOL live; // @synthesize live=_live;
 @property (strong, nonatomic) UIImageView *liveBackground; // @synthesize liveBackground=_liveBackground;
 @property (strong, nonatomic) UILabel *liveLabel; // @synthesize liveLabel=_liveLabel;
 @property (strong, nonatomic) UILabel *remainingTimeLabel; // @synthesize remainingTimeLabel=_remainingTimeLabel;
@@ -75,11 +73,12 @@
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
-- (void)dealloc;
+- (void)createDisplayLinkIfNeeded;
 - (void)didMoveToWindow;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)invalidateDisplayLinkIfNeeded;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setEnabled:(BOOL)arg1;

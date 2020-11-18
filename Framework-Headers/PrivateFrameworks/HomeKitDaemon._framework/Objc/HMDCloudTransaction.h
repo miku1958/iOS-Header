@@ -61,6 +61,7 @@
 - (void)addChangeWithObjectChange:(id)arg1;
 - (void)addChangeWithRecord:(id)arg1;
 - (id)cachedCloudRecordWithObjectID:(id)arg1;
+- (void)cachedCloudRecordWithObjectID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)changeWithObjectID:(id)arg1;
 - (id)changeWithRecordName:(id)arg1;
 - (id)description;
@@ -73,6 +74,7 @@
 - (BOOL)moreChangesToProcess;
 - (void)removeChangeWithObjectID:(id)arg1;
 - (id)replayTransaction:(id)arg1 stagedTransaction:(id)arg2;
+- (void)resetRecordWithRecordID:(id)arg1;
 - (void)setAllChangedAsProcessed;
 - (void)setDeleteAsProcessedWithRecordID:(id)arg1;
 - (void)setSaveAsProcessedWithRecord:(id)arg1;

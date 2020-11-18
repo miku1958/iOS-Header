@@ -10,7 +10,6 @@
 
 @interface FBSceneMonitorBehaviors : NSObject <NSCopying>
 {
-    BOOL _monitorsCommits;
     BOOL _monitorsSettings;
     BOOL _monitorsPairingStatus;
     BOOL _monitorsClientSettings;
@@ -18,7 +17,6 @@
 }
 
 @property (nonatomic) BOOL monitorsClientSettings; // @synthesize monitorsClientSettings=_monitorsClientSettings;
-@property (nonatomic) BOOL monitorsCommits; // @synthesize monitorsCommits=_monitorsCommits;
 @property (nonatomic) BOOL monitorsEffectiveSettings; // @synthesize monitorsEffectiveSettings=_monitorsEffectiveSettings;
 @property (nonatomic) BOOL monitorsPairingStatus; // @synthesize monitorsPairingStatus=_monitorsPairingStatus;
 @property (nonatomic) BOOL monitorsSettings; // @synthesize monitorsSettings=_monitorsSettings;

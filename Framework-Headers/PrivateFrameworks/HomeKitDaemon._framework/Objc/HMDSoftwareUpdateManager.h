@@ -44,6 +44,7 @@
 - (id)messageDestination;
 - (void)registerForMessages;
 - (void)startUpdate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateAvailableUpdate:(id)arg1;
 
 @end
 

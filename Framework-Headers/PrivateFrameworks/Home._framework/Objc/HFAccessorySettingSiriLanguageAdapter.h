@@ -8,13 +8,12 @@
 
 #import <Home/HFAccessorySettingAdapterDisplayArbitrating-Protocol.h>
 
-@class HFSiriLanguageOption, HMAccessorySelectionSetting, NSHashTable, NSSet, NSString;
+@class HFSiriLanguageOption, NAFuture, NSHashTable, NSSet, NSString;
 
 @interface HFAccessorySettingSiriLanguageAdapter : HFAccessorySettingAdapter <HFAccessorySettingAdapterDisplayArbitrating>
 {
     NSSet *_availableLanguageOptions;
     HFSiriLanguageOption *_selectedLanguageOption;
-    unsigned long long _mode;
     NSHashTable *_observers;
 }
 
@@ -22,18 +21,20 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) HMAccessorySelectionSetting *languageSetting;
-@property (readonly, nonatomic) unsigned long long mode; // @synthesize mode=_mode;
+@property (readonly, nonatomic) NAFuture *languageSettingFuture;
 @property (readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (strong, nonatomic) HFSiriLanguageOption *selectedLanguageOption; // @synthesize selectedLanguageOption=_selectedLanguageOption;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_reloadLanguagesFromHomeKitNotifyingObservers:(BOOL)arg1;
+- (id)_beginMonitoringSettingsKeyPath:(id)arg1;
+- (void)_dumpAvailableLanguageOptionsWithReason:(id)arg1;
+- (id)_reloadLanguagesFromHomeKitNotifyingObservers:(BOOL)arg1;
 - (void)accessorySettingWasUpdated:(id)arg1 value:(id)arg2;
 - (void)addObserver:(id)arg1;
-- (id)initWithAccessoryProfile:(id)arg1 keyPaths:(id)arg2 updateHandler:(CDUnknownBlockType)arg3;
-- (id)initWithAccessoryProfile:(id)arg1 mode:(unsigned long long)arg2;
+- (id)initWithMediaProfileContainer:(id)arg1 keyPaths:(id)arg2 mode:(unsigned long long)arg3 updateHandler:(CDUnknownBlockType)arg4;
+- (id)initWithMediaProfileContainer:(id)arg1 keyPaths:(id)arg2 updateHandler:(CDUnknownBlockType)arg3;
+- (id)initWithMediaProfileContainer:(id)arg1 mode:(unsigned long long)arg2;
 - (id)preferredOutputVoiceAccentOptionsForSelectedOption:(id)arg1;
 - (id)preferredOutputVoiceGenderOptionsForSelectedOption:(id)arg1;
 - (id)preferredRecognitionLanguageOptions;

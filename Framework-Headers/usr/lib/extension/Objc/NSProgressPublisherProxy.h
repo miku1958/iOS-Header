@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSProgressPublisher-Protocol.h>
+#import <Foundation/NSProgressPublisher-Protocol.h>
 
 @class NSFileAccessNode, NSProgressValues, NSString, NSXPCConnection;
 @protocol NSProgressPublisher;
@@ -36,7 +36,8 @@ __attribute__((visibility("hidden")))
 - (id)descriptionWithIndenting:(id)arg1;
 - (id)initWithForwarder:(id)arg1 onConnection:(id)arg2 publisherID:(id)arg3 values:(id)arg4;
 - (BOOL)isFromConnection:(id)arg1;
-- (void)observeValue:(id)arg1 forKey:(id)arg2 inUserInfo:(BOOL)arg3;
+- (void)observeUserInfoValue:(id)arg1 forKey:(id)arg2;
+- (void)observeValues:(id)arg1 forKeys:(id)arg2;
 - (oneway void)pause;
 - (oneway void)prioritize;
 - (id)publisherID;

@@ -135,7 +135,7 @@
 - (void)_setDoNotTrackActivites:(BOOL)arg1;
 - (void)_setFallbackTimezone;
 - (void)_setIncludeSensitive:(BOOL)arg1;
-- (BOOL)_setLogEvent:(CDStruct_c6d697a1 *)arg1;
+- (BOOL)_setLogEvent:(CDStruct_c6d697a1 *)arg1 rangeUUIDIndex:(unsigned long long)arg2 machTimebase:(struct mach_timebase_info *)arg3;
 - (void)_setTimesyncDatabase:(struct _os_timesync_db_s *)arg1;
 - (void)_setUUIDDBFileDescriptor:(int)arg1;
 - (oneway void)_unmake;

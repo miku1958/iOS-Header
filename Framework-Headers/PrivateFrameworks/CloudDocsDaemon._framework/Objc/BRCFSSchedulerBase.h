@@ -51,9 +51,10 @@ __attribute__((visibility("hidden")))
 - (void)describeInBuffer:(id)arg1 aggregateOfJobsMatching:(id)arg2 context:(id)arg3;
 - (id)descriptionForJobsMatching:(id)arg1 context:(id)arg2;
 - (id)descriptionForJobsMatching:(id)arg1 ordering:(id)arg2 additionalColumns:(id)arg3 additionalValuesHandler:(CDUnknownBlockType)arg4 context:(id)arg5;
-- (BOOL)haveIdleJobsMatching:(id)arg1;
+- (BOOL)haveActiveJobsMatching:(id)arg1;
 - (id)initWithSession:(id)arg1 name:(id)arg2 tableName:(id)arg3;
 - (struct brc_job_update)insertOrUpdateJobID:(id)arg1 throttle:(id)arg2 withState:(int)arg3 insertedSQLColumn:(id)arg4 insertedSQLValues:(id)arg5 updatedSQLValues:(id)arg6;
+- (int)jobStateFor:(id)arg1;
 - (void)performFirstSchedulingAfterStartupInDB:(id)arg1;
 - (void)postponeJobID:(id)arg1 withThrottle:(id)arg2;
 - (void)rescheduleSuspendedJobsMatching:(id)arg1 inState:(int)arg2;

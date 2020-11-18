@@ -52,7 +52,6 @@
 - (id)allAssetsToBeIncludedInMomentsWithError:(id *)arg1;
 - (id)allMomentListsForLevel:(short)arg1;
 - (id)allMomentListsWithInvalidReverseLocationDataForLevel:(short)arg1;
-- (id)allMomentsInLibrary;
 - (id)allMomentsWithError:(id *)arg1;
 - (id)allMomentsWithInvalidReverseLocationData;
 - (id)analysisMetadata;
@@ -71,7 +70,6 @@
 - (BOOL)hasLocationsOfInterestInformation;
 - (id)homeAddressDictionary;
 - (id)initWithManagedObjectContextForLightweightMigration:(id)arg1;
-- (void)insertMomentIntoAllMoments:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)insertNewMoment;
 - (id)insertNewMomentListForGranularityLevel:(short)arg1;
 - (id)insertedObjects;
@@ -101,7 +99,6 @@
 - (void)refreshAllObjects;
 - (void)refreshObject:(id)arg1 mergeChanges:(BOOL)arg2;
 - (void)reloadGenerationOptions;
-- (void)removeMomentFromAllMoments:(id)arg1;
 - (id)replayLogPath;
 - (void)resetOnFailure;
 - (BOOL)save:(id *)arg1;

@@ -86,6 +86,8 @@
 - (id)isDeliveryReportsEnabled:(id)arg1;
 - (id)isMMSEnabled:(id)arg1;
 - (id)isMadridEnabled:(id)arg1;
+- (BOOL)isPersonalCompanionEnabled;
+- (id)isSiriToneNotificationEnabled:(id)arg1;
 - (id)lastSyncDateStringForSpecifier:(id)arg1;
 - (id)logName;
 - (id)madridAccountsSpecifierIdentifiers;
@@ -108,6 +110,7 @@
 - (void)setPreviewTranscodingEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setRaiseToListenEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setReadReceiptsEnabled:(id)arg1 specifier:(id)arg2;
+- (void)setSiriToneNotificationEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setSpecifierLoading:(id)arg1 loading:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)setWillSendGroupMMS:(id)arg1 specifier:(id)arg2;
 - (BOOL)shouldReloadSpecifiersOnResume;
@@ -124,8 +127,10 @@
 - (BOOL)shouldShowReadReceipts;
 - (BOOL)shouldShowSMSRelaySettings;
 - (BOOL)shouldShowSendAsSMS;
+- (BOOL)shouldShowSiriSettings;
 - (BOOL)shouldShowiCloudSettings;
 - (BOOL)shouldShowiMessageFilteringSettings:(id)arg1;
+- (id)siriSettingsIdentifiers;
 - (id)smsRelaySettingsSpecifierIdentifiers;
 - (id)spamFilteringSpecifierIdentifiers;
 - (id)specifiers;

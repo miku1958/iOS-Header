@@ -22,6 +22,7 @@
         BOOL imageModulationIntensity;
         BOOL requestedEDRHeadroomFactor;
         BOOL finalRequestedEDRHeadroomFactor;
+        BOOL desiredDynamicRange;
         BOOL imageLayerModulators;
     } _needsUpdateFlags;
     double _lastRequestedEDRHeadroomChangeTime;
@@ -65,6 +66,7 @@
 - (void)_applicationDidBecomeActive:(id)arg1;
 - (void)_applicationDidResignActive:(id)arg1;
 - (void)_invalidateActive;
+- (void)_invalidateDesiredDynamicRange;
 - (void)_invalidateEnabled;
 - (void)_invalidateFinalRequestedEDRHeadroomFactor;
 - (void)_invalidateHDRFocus;
@@ -77,6 +79,7 @@
 - (void)_setNeedsUpdate;
 - (void)_updateActiveIfNeeded;
 - (void)_updateCoreAnimationContext;
+- (void)_updateDesiredDynamicRangeIfNeeded;
 - (void)_updateEnabledIfNeeded;
 - (void)_updateFinalRequestedEDRHeadroomFactorIfNeeded;
 - (void)_updateHDRFocusIfNeeded;

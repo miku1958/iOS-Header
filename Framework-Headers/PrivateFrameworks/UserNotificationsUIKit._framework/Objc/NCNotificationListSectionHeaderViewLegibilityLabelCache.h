@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 - (id)_createLegibilityLabelWithTitle:(id)arg1 font:(id)arg2;
 - (id)_stringDescriptorForFont:(id)arg1;
+- (void)clearAll;
 - (id)init;
 - (id)legibilityLabelForTitle:(id)arg1 font:(id)arg2;
 

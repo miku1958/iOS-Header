@@ -6,8 +6,8 @@
 
 #import <Foundation/NSURL.h>
 
-#import <extension/NSItemProviderReading-Protocol.h>
-#import <extension/NSItemProviderWriting-Protocol.h>
+#import <Foundation/NSItemProviderReading-Protocol.h>
+#import <Foundation/NSItemProviderWriting-Protocol.h>
 
 @class NSArray, NSString;
 

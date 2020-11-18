@@ -19,9 +19,11 @@
 @property (strong, nonatomic) IXPromisedTransferToPathSeed *seed; // @dynamic seed;
 @property (nonatomic) BOOL shouldCopy; // @dynamic shouldCopy;
 @property (strong, nonatomic) NSURL *transferPath; // @dynamic transferPath;
+@property (nonatomic) BOOL tryDeltaCopy; // @dynamic tryDeltaCopy;
 
 + (BOOL)supportsSecureCoding;
 - (BOOL)_doInit;
+- (BOOL)_performDeltaCopyFrom:(id)arg1 toDestination:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 client:(unsigned long long)arg2 diskSpaceNeeded:(unsigned long long)arg3;

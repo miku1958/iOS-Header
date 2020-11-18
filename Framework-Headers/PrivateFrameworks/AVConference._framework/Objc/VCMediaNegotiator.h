@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class VCMediaNegotiatorAudioResults, VCMediaNegotiatorCaptionsResults, VCMediaNegotiatorLocalConfiguration, VCMediaNegotiatorMomentsResults, VCMediaNegotiatorResults, VCMediaNegotiatorVideoResults;
 
@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)getPreferredVideoPayloadList:(id)arg1;
 - (id)initWithLocalSettings:(id)arg1;
 - (BOOL)isCellular16x9EncodeCapable;
+- (void)negotateAudioUseSBR:(id)arg1 audioRuleCollection:(id)arg2;
 - (void)negotiateAudioAllowRecording:(id)arg1;
 - (BOOL)negotiateAudioDTXPayload:(id)arg1;
 - (BOOL)negotiateAudioPrimaryPayload:(id)arg1;

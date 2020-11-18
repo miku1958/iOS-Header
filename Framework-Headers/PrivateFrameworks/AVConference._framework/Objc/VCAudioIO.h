@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCAudioIOControllerDelegate-Protocol.h>
 #import <AVConference/VCAudioIOSink-Protocol.h>
@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isMuted) BOOL muted; // @synthesize muted=_isMuted;
 @property (nonatomic, getter=isOutputMeteringEnabled) BOOL outputMeteringEnabled;
 @property (readonly, nonatomic) unsigned int samplesPerFrame; // @synthesize samplesPerFrame=_clientSamplesPerFrame;
+@property (readonly, nonatomic) unsigned int state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 
 + (id)controllerForDeviceRole:(int)arg1;

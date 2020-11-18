@@ -8,11 +8,12 @@
 
 #import <CoreUtils/NSXPCListenerDelegate-Protocol.h>
 
-@class NSString, NSXPCListener, NSXPCListenerEndpoint;
+@class CUHomeKitManager, NSString, NSXPCListener, NSXPCListenerEndpoint;
 @protocol OS_dispatch_queue;
 
 @interface CUPairingDaemon : NSObject <NSXPCListenerDelegate>
 {
+    CUHomeKitManager *_homeKitManager;
     unsigned long long _stateHandle;
     struct NSMutableSet *_xpcConnections;
     NSXPCListener *_xpcListener;
@@ -32,11 +33,13 @@
 - (void).cxx_destruct;
 - (void)_activate;
 - (void)_connectionInvalidated:(id)arg1;
+- (id)_copyHomeKitExWithOptions:(unsigned long long)arg1 error:(int *)arg2;
 - (id)_copyHomeKitWithOptions:(unsigned long long)arg1 error:(int *)arg2;
 - (id)_copyIdentityWithOptions:(unsigned long long)arg1 error:(int *)arg2;
 - (id)_copyOrCreateWithOptions:(unsigned long long)arg1 error:(int *)arg2;
 - (id)_copyPairedPeersWithOptions:(unsigned long long)arg1 error:(int *)arg2;
 - (int)_deleteIdentityWithOptions:(unsigned long long)arg1;
+- (id)_findHomeKitExPairedPeer:(id)arg1 options:(unsigned long long)arg2 error:(int *)arg3;
 - (id)_findHomeKitPairedPeer:(id)arg1 options:(unsigned long long)arg2 error:(int *)arg3;
 - (id)_findPairedPeer:(id)arg1 options:(unsigned long long)arg2 error:(int *)arg3;
 - (void)_invalidate;

@@ -32,7 +32,7 @@ struct MPSDevice {
     unsigned int _field10;
     int _field11;
     struct MPSGPUInfo _field12;
-    struct atomic<MPSLibrary *> _field13[44];
+    struct atomic<MPSLibrary *> _field13[48];
 };
 
 struct MPSDeviceFreeList;

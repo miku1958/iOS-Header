@@ -11,7 +11,6 @@
 @class AVAsset, AVVideoComposition, ISWrappedAVPlayer, NSArray, NSString, PUFilmstripView, PULivePhotoTrimScrubberLoupeView, UIImage, UIImageView, UIImpactFeedbackGenerator, UIPanGestureRecognizer, UITapGestureRecognizer;
 @protocol PULivePhotoTrimScrubberDelegate;
 
-__attribute__((visibility("hidden")))
 @interface PULivePhotoTrimScrubber : UIView <UIGestureRecognizerDelegate>
 {
     UIImageView *_trimStartHandle;

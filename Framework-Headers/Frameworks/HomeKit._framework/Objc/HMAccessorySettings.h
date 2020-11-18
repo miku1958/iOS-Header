@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <HomeKit/HMFLogging-Protocol.h>
+#import <HomeKit/HMObjectMerge-Protocol.h>
 
-@class HMAccessory, HMAccessorySettingGroup, NSString;
-@protocol HMAccessorySettingsDelegate, OS_dispatch_queue;
+@class HMAccessory, HMAccessorySettingGroup, NSString, NSUUID;
+@protocol HMAccessorySettingsContainer, HMAccessorySettingsDelegate, OS_dispatch_queue;
 
-@interface HMAccessorySettings : NSObject <HMFLogging>
+@interface HMAccessorySettings : NSObject <HMFLogging, HMObjectMerge>
 {
     HMAccessory *_accessory;
     id<HMAccessorySettingsDelegate> _delegate;
@@ -20,19 +21,24 @@
 }
 
 @property (weak) HMAccessory *accessory; // @synthesize accessory=_accessory;
+@property (readonly, getter=isControllable) BOOL controllable;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMAccessorySettingsDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) HMAccessorySettingGroup *rootGroup; // @synthesize rootGroup=_rootGroup;
+@property (readonly, weak) id<HMAccessorySettingsContainer> settingsContainer;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSUUID *uniqueIdentifier;
 
 + (id)localizationKeyForKeyPath:(id)arg1;
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)__notifyDelegateSettingsDidUpdate;
 - (void)__notifyDelegateSettingsWillUpdateWithCompletionHanlder:(CDUnknownBlockType)arg1;
+- (void)_configureWithContext:(id)arg1;
+- (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_updateSettingsWithBlock:(CDUnknownBlockType)arg1;
 - (id)initWithAccessory:(id)arg1 rootGroup:(id)arg2;
 

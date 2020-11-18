@@ -46,9 +46,10 @@
 @property (strong, nonatomic) UILabel *updateNameLabel; // @synthesize updateNameLabel=_updateNameLabel;
 
 - (void).cxx_destruct;
-- (id)_gearBackgroundImage;
+- (void)_updateReleaseNotesHeightIfNeeded;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)inlineWebContainerViewDidFinishLoadingContent:(id)arg1;
+- (void)layoutSubviews;
 - (void)updateConstraints;
 - (void)updateUIWithAnimation:(BOOL)arg1;
 

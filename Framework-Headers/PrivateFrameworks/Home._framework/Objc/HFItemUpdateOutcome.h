@@ -9,7 +9,7 @@
 #import <Home/NSCopying-Protocol.h>
 #import <Home/NSMutableCopying-Protocol.h>
 
-@class NSDictionary;
+@class NSArray, NSDictionary;
 
 @interface HFItemUpdateOutcome : NSObject <NSCopying, NSMutableCopying>
 {
@@ -17,6 +17,7 @@
     unsigned long long _outcomeType;
 }
 
+@property (readonly, nonatomic) NSArray *allKeys;
 @property (nonatomic) unsigned long long outcomeType; // @synthesize outcomeType=_outcomeType;
 @property (readonly, nonatomic) NSDictionary *results; // @synthesize results=_results;
 

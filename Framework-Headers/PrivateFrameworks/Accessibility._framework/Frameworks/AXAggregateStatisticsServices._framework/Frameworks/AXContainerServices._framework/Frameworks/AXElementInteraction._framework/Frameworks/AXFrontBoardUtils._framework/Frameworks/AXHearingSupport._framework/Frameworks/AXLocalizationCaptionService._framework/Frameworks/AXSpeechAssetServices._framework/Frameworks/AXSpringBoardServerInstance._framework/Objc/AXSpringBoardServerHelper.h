@@ -8,7 +8,7 @@
 
 #import <AXSpringBoardServerInstance/AXSpringBoardServerInstanceDelegate-Protocol.h>
 
-@class AXAssertion, AXSpringBoardServerSideAppManager, NSMutableArray, NSString, UIAlertController, UIWindow;
+@class AXAssertion, AXSpringBoardServerAlertManager, AXSpringBoardServerSideAppManager, NSMutableArray, NSString, UIAlertController, UIWindow;
 
 @interface AXSpringBoardServerHelper : NSObject <AXSpringBoardServerInstanceDelegate>
 {
@@ -18,6 +18,7 @@
     BOOL _shouldOverrideInterfaceOrientation;
     NSMutableArray *_notificationObservers;
     AXSpringBoardServerSideAppManager *_sideAppManager;
+    AXSpringBoardServerAlertManager *_alertManager;
     UIAlertController *_alertControllerToDismissAfterPresentation;
     AXAssertion *_disableSystemGesturesAssertionForAlert;
     UIAlertController *_zoomConflictController;
@@ -32,6 +33,7 @@
 }
 
 @property (strong, nonatomic) UIAlertController *alertControllerToDismissAfterPresentation; // @synthesize alertControllerToDismissAfterPresentation=_alertControllerToDismissAfterPresentation;
+@property (strong, nonatomic) AXSpringBoardServerAlertManager *alertManager; // @synthesize alertManager=_alertManager;
 @property (strong, nonatomic) UIAlertController *brokenHomeButtonAlertController; // @synthesize brokenHomeButtonAlertController=_brokenHomeButtonAlertController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -163,12 +165,14 @@
 - (void)openVoiceControlWithServerInstance:(id)arg1;
 - (int)purpleBuddyPIDWithServerInstance:(id)arg1;
 - (double)reachabilityOffsetWithServerInstance:(id)arg1;
+- (void)reactivateInCallServiceWithServerInstance:(id)arg1;
 - (void)rebootDeviceWithServerInstance:(id)arg1;
 - (void)resetDimTimerWithServerInstance:(id)arg1;
 - (void)revealSpotlightWithServerInstance:(id)arg1;
 - (id)runningAppPIDsWithServerInstance:(id)arg1;
 - (id)runningAppProcessesWithServerInstance:(id)arg1;
 - (id)serverInstance:(id)arg1 appWithIdentifier:(id)arg2;
+- (void)serverInstance:(id)arg1 hideRemoteViewType:(long long)arg2 withData:(id)arg3;
 - (void)serverInstance:(id)arg1 pauseMedia:(BOOL)arg2 forBundleId:(id)arg3;
 - (BOOL)serverInstance:(id)arg1 performMedusaGesture:(unsigned long long)arg2;
 - (void)serverInstance:(id)arg1 setOrientationLocked:(BOOL)arg2;
@@ -176,6 +180,7 @@
 - (void)serverInstance:(id)arg1 showAlertType:(long long)arg2 withHandler:(CDUnknownBlockType)arg3 withData:(id)arg4;
 - (void)serverInstance:(id)arg1 showControlCenter:(BOOL)arg2;
 - (BOOL)serverInstance:(id)arg1 showNotificationCenter:(BOOL)arg2;
+- (void)serverInstance:(id)arg1 showRemoteViewType:(long long)arg2 withData:(id)arg3;
 - (void)serverInstance:(id)arg1 showSpeechPlaybackControls:(BOOL)arg2;
 - (id)serverInstance:(id)arg1 springBoardSystemInfoQuery:(unsigned long long)arg2;
 - (void)setDashBoardSystemGesturesEnabled:(BOOL)arg1 withServerInstance:(id)arg2;

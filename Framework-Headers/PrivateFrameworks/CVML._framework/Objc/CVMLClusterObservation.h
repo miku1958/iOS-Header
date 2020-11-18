@@ -18,8 +18,10 @@
     NSNumber *_distance;
     NSDictionary *_distances;
     NSDictionary *_distancesById;
+    NSArray *_clusterCacheFileNames;
 }
 
+@property (strong) NSArray *clusterCacheFileNames; // @synthesize clusterCacheFileNames=_clusterCacheFileNames;
 @property (strong) NSData *clusterState; // @synthesize clusterState=_clusterState;
 @property (strong) NSSet *clusteredFaceIds; // @synthesize clusteredFaceIds=_clusteredFaceIds;
 @property (strong) NSArray *clusters; // @synthesize clusters=_clusters;

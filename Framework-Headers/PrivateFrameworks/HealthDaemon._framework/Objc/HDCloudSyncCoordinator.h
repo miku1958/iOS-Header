@@ -44,27 +44,33 @@
 - (void)_checkiCloudAccountStatus;
 - (void)_considerMigratingHealthAccountDataclassState;
 - (id)_fetchDescriptionForProfile:(id)arg1 options:(unsigned long long)arg2 reason:(long long)arg3 taskTree:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
+- (id)_lastLongTimeWithoutSuccessfulCloudSyncReportDateKeyWithError:(id *)arg1;
 - (void)_mergeCloudSyncJournalsForProfile:(id)arg1 progress:(id)arg2 taskTree:(id)arg3;
 - (void)_mergeCloudSyncJournalsWithTaskTree:(id)arg1 progress:(id)arg2;
+- (void)_persistPeriodicSyncError:(id)arg1;
 - (void)_queue_addCloudSyncProgressCompletion:(CDUnknownBlockType)arg1;
 - (void)_queue_checkLastSyncDate;
 - (long long)_queue_cloudSyncWaitStatusWithError:(id *)arg1;
 - (id)_queue_disableAndDeleteCloudSyncDataWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_queue_fetchCloudDescriptionWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_queue_finishCloudSyncTaskProgressWithResult:(long long)arg1 error:(id)arg2;
+- (id)_queue_getPersistedAccountInfo;
 - (BOOL)_queue_hasTooManyPendingTaskGroupsWithError:(id *)arg1;
 - (id)_queue_resetAllProfilesWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_queue_setWaitTimeoutDateIfNecessaryWithError:(id *)arg1;
 - (void)_queue_startNextTaskGroup;
 - (id)_queue_syncAllProfilesWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_queue_triggerSyncForiCloudLogin;
-- (id)_queue_waitOnHealthCloudSyncWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_queue_waitOnHealthCloudSyncWithUUID:(id)arg1 startHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_resetPersistedPeriodicSyncErrors;
 - (id)_resetProfile:(id)arg1 options:(unsigned long long)arg2 reason:(long long)arg3 taskTree:(id)arg4;
 - (void)_respondToACAccountStoreDidChange;
 - (void)_setHealthAccountDataclassEnabled:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_setupPeriodicActivity;
+- (BOOL)_shouldPerformLastSyncDateCheckInternalSetting;
 - (id)_syncProfile:(id)arg1 options:(unsigned long long)arg2 reason:(long long)arg3 taskTree:(id)arg4;
 - (BOOL)_unitTest_shouldSyncProfile:(id)arg1;
+- (void)_updateAggdKeysForPeriodicSyncError:(id)arg1;
 - (void)_updateCachedLastSyncDatesWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)createShareWithRecipient:(id)arg1 sampleTypes:(id)arg2 maxSampleAge:(id)arg3 profile:(id)arg4 error:(id *)arg5;
 - (void)daemonReady:(id)arg1;
@@ -80,7 +86,7 @@
 - (BOOL)periodicActivityRequiresProtectedData:(id)arg1;
 - (id)resetAllProfilesWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)syncAllProfilesWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)waitOnHealthCloudSyncWithCompletion:(CDUnknownBlockType)arg1;
+- (id)waitOnHealthCloudSyncWithUUID:(id)arg1 startHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

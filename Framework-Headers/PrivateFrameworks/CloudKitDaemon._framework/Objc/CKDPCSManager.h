@@ -90,7 +90,7 @@ __attribute__((visibility("hidden")))
 - (id)_internalServicesToCombineWithLiverpoolKey;
 - (BOOL)_isValidIdentitySet:(struct _PCSIdentitySetData *)arg1 forServiceName:(id)arg2;
 - (void)_lockedBoundaryKeyDataWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_lockedSynchronizeUserKeyRegistryForServiceType:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_lockedSynchronizeUserKeyRegistryForServiceType:(unsigned long long)arg1 shouldThrottle:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_locked_createZonePCSFromData:(id)arg1 usingServiceIdentityWithType:(unsigned long long)arg2 withSyncKeyRegistryRetry:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_locked_createZonePCSWithSyncKeyRegistryRetry:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_locked_preflightIdentitiesForService:(unsigned long long)arg1 withSyncKeyRegistryRetry:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -165,12 +165,13 @@ __attribute__((visibility("hidden")))
 - (id)repairZonePCSData:(id)arg1 error:(id *)arg2;
 - (id)rollMasterKeyForRecordPCS:(struct _OpaquePCSShareProtection *)arg1;
 - (id)sharingIdentityDataFromPCS:(struct _OpaquePCSShareProtection *)arg1 error:(id *)arg2;
-- (void)synchronizeUserKeyRegistryForServiceType:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)synchronizeUserKeyRegistryForServiceType:(unsigned long long)arg1 shouldThrottle:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)unwrapAssetKey:(id)arg1 withRecordPCS:(struct _OpaquePCSShareProtection *)arg2 inContext:(id)arg3 withError:(id *)arg4;
 - (id)unwrapEncryptedData:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2 inContext:(id)arg3;
 - (id)unwrapEncryptedData:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2 withContextString:(id)arg3;
 - (id)updateIdentityAndRollKeyForZonePCS:(struct _OpaquePCSShareProtection *)arg1 usingServiceIdentityWithType:(unsigned long long)arg2;
 - (id)updateServiceIdentityOnZonePCS:(struct _OpaquePCSShareProtection *)arg1;
+- (id)updateZoneIdentityForPCS:(struct _OpaquePCSShareProtection *)arg1 usingZonePCS:(struct _OpaquePCSShareProtection *)arg2;
 - (id)wrapAssetKey:(id)arg1 withRecordPCS:(struct _OpaquePCSShareProtection *)arg2 inContext:(id)arg3 withError:(id *)arg4;
 - (id)wrapEncryptedData:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2 inContext:(id)arg3;
 - (id)wrapEncryptedData:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2 withContextString:(id)arg3;

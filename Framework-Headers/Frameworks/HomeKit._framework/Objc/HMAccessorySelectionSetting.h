@@ -20,7 +20,7 @@
 @property (readonly, copy) NSArray *items;
 @property (readonly) Class superclass;
 
-- (void)_setting:(id)arg1 didAddConstriant:(id)arg2;
+- (void)_setting:(id)arg1 didAddConstraint:(id)arg2;
 - (void)addItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithInternal:(id)arg1;
 - (id)initWithKey:(id)arg1 properties:(unsigned long long)arg2 value:(id)arg3;

@@ -24,7 +24,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_startUpdateOnAccessory:(id)arg1;
+- (void)_startUpdateOnAccessories:(id)arg1;
 - (BOOL)canSelectItem:(id)arg1;
 - (Class)cellClassForItem:(id)arg1;
 - (unsigned long long)didSelectItem:(id)arg1;

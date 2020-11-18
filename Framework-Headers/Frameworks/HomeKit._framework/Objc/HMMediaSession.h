@@ -18,6 +18,7 @@
     NSUUID *_uuid;
     long long _playbackState;
     HMAudioControl *_audioControl;
+    NSString *_routeUID;
     id<HMMediaSessionDelegate> _delegate;
     _HMMediaSession *_mediaSession;
     HMMediaProfile *_mediaProfile;
@@ -31,6 +32,7 @@
 @property (weak) HMMediaProfile *mediaProfile; // @synthesize mediaProfile=_mediaProfile;
 @property (strong, nonatomic) _HMMediaSession *mediaSession; // @synthesize mediaSession=_mediaSession;
 @property (readonly) long long playbackState; // @synthesize playbackState=_playbackState;
+@property (readonly, nonatomic) NSString *routeUID; // @synthesize routeUID=_routeUID;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
@@ -41,12 +43,14 @@
 - (void)configure:(id)arg1 messageTargetUUID:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithUUID:(id)arg1 playbackState:(long long)arg2;
+- (id)initWithUUID:(id)arg1 routeUID:(id)arg2 playbackState:(long long)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (void)mediaSession:(id)arg1 didUpdatePlaybackState:(long long)arg2;
+- (void)mediaSession:(id)arg1 didUpdateRouteUID:(id)arg2;
 - (id)messageTargetUUID;
 - (void)pauseWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)playbackStateDescription;
+- (void)refreshPlaybackStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)resumeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)updatePlaybackState:(id)arg1;
 

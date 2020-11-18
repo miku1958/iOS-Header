@@ -34,6 +34,7 @@
     NSString *_idsIdentifier;
     NSString *_model;
     NSString *_name;
+    unsigned long long _problemFlags;
     NSString *_requestSSID;
     SFProximityEstimator *_setupProximityEstimator;
 }
@@ -57,6 +58,7 @@
 @property (nonatomic) BOOL needsSetup; // @synthesize needsSetup=_needsSetup;
 @property (nonatomic) unsigned char osVersion; // @synthesize osVersion=_osVersion;
 @property (nonatomic) BOOL paired; // @synthesize paired=_paired;
+@property (readonly, nonatomic) unsigned long long problemFlags; // @synthesize problemFlags=_problemFlags;
 @property (copy, nonatomic) NSString *requestSSID; // @synthesize requestSSID=_requestSSID;
 @property (strong, nonatomic) SFProximityEstimator *setupProximityEstimator; // @synthesize setupProximityEstimator=_setupProximityEstimator;
 @property (nonatomic) unsigned int systemPairState; // @synthesize systemPairState=_systemPairState;

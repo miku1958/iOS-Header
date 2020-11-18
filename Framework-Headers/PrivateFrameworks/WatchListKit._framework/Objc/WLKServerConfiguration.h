@@ -68,6 +68,7 @@
 - (void)fetchConfiguration:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initOffline;
+- (BOOL)isTVEnabled;
 - (id)serverRouteForKey:(id)arg1;
 
 @end

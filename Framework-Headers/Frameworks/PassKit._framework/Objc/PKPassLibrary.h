@@ -90,6 +90,7 @@
 - (void)fetchCurrentRelevantPassInfo:(CDUnknownBlockType)arg1;
 - (void)fetchHasCandidatePasses:(CDUnknownBlockType)arg1;
 - (void)fetchImageSetForUniqueID:(id)arg1 ofType:(long long)arg2 displayProfile:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (void)forceImmediateRevocationCheck;
 - (void)getContainmentStatusAndSettingsForPass:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getPassUniqueIdentifiersForFieldProperties:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getPassesAndCatalog:(BOOL)arg1 synchronously:(BOOL)arg2 withHandler:(CDUnknownBlockType)arg3;

@@ -194,6 +194,7 @@
 - (void)setupGestures;
 - (void)slideAnnotationIntoViewIfNeeded:(id)arg1;
 - (void)synchronize;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateAccordingToUserTrackingMode;
 - (void)updateAnnotationPositionAfterPreview:(id)arg1;
 - (void)updateAnnotationStyle:(id)arg1;

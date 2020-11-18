@@ -11,6 +11,7 @@
 
 @interface AXUISettingsEditableTableCellWithStepper : AXUISettingsEditableTextCell
 {
+    BOOL _specifierVersion;
     UIStepper *_stepper;
     id<AXUISettingsEditableTableCellWithStepperDelegate> _delegate;
     UILabel *_secondsLabel;
@@ -33,6 +34,7 @@
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
 - (void)initializeView;
 - (void)layoutSubviews;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)textFieldDidEndEditing:(id)arg1;
 
 @end

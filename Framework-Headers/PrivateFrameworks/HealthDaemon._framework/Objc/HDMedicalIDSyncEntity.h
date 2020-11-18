@@ -28,6 +28,7 @@
 + (long long)_getCurrentSyncAnchorWithProfile:(id)arg1 error:(id *)arg2;
 + (id)_medicalIDFromCodable:(id)arg1;
 + (BOOL)_setSyncAnchor:(long long)arg1 profile:(id)arg2 error:(id *)arg3;
++ (BOOL)_touchSyncAnchorWithProfile:(id)arg1 shouldIncrement:(BOOL)arg2 error:(id *)arg3;
 + (BOOL)companionDidChangeForProfile:(id)arg1 error:(id *)arg2;
 + (id)decodeSyncObjectWithData:(id)arg1;
 + (BOOL)generateSyncObjectsForSession:(id)arg1 predicate:(id)arg2 syncAnchorRange:(struct HDSyncAnchorRange)arg3 maxEncodedBytesPerMessage:(long long)arg4 profile:(id)arg5 error:(id *)arg6 handler:(CDUnknownBlockType)arg7;
@@ -38,6 +39,7 @@
 + (unsigned long long)supportedNanoSyncDirectionsForProtocolVersion:(int)arg1;
 + (id)syncEntityDependenciesForSyncProtocolVersion:(int)arg1;
 + (long long)syncEntityType;
++ (BOOL)touchSyncAnchorIfNecessaryWithProfile:(id)arg1 error:(id *)arg2;
 
 @end
 

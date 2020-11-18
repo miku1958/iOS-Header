@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iAd/ADAdSheetConnectionDelegate-Protocol.h>
 #import <iAd/ADAdSheetProxyDelegate-Protocol.h>
@@ -39,6 +39,7 @@
 @property (readonly, nonatomic) id<ADSSession_RPC> rpcProxy;
 @property (readonly) Class superclass;
 
++ (BOOL)adShouldCreateADSession;
 + (id)sharedInstance;
 - (id)_adSpaceForIdentifier:(id)arg1;
 - (void)_appDidBecomeActive;

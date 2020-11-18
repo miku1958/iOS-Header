@@ -13,6 +13,7 @@
 @interface GEOPDClientMetadata : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    CDStruct_95bda58d _knownClientResolvedTypeDeprecateds;
     CDStruct_95bda58d _knownClientResolvedTypes;
     GEOABSecondPartyPlaceRequestClientMetaData *_abClientMetadata;
     GEOAdditionalEnabledMarkets *_additionalEnabledMarkets;
@@ -65,6 +66,8 @@
 @property (nonatomic) BOOL hasResultListAttributionSupport;
 @property (nonatomic) BOOL hasTimeSinceMapEnteredForeground;
 @property (nonatomic) unsigned int hourOfDay; // @synthesize hourOfDay=_hourOfDay;
+@property (readonly, nonatomic) int *knownClientResolvedTypeDeprecateds;
+@property (readonly, nonatomic) unsigned long long knownClientResolvedTypeDeprecatedsCount;
 @property (readonly, nonatomic) int *knownClientResolvedTypes;
 @property (readonly, nonatomic) unsigned long long knownClientResolvedTypesCount;
 @property (nonatomic) int requiredVersion; // @synthesize requiredVersion=_requiredVersion;
@@ -74,12 +77,15 @@
 
 + (Class)deviceHistoricalLocationType;
 - (void).cxx_destruct;
+- (int)StringAsKnownClientResolvedTypeDeprecateds:(id)arg1;
 - (int)StringAsKnownClientResolvedTypes:(id)arg1;
 - (int)StringAsRequiredVersion:(id)arg1;
 - (int)StringAsResultListAttributionSupport:(id)arg1;
 - (void)addDeviceHistoricalLocation:(id)arg1;
 - (void)addKnownClientResolvedType:(int)arg1;
+- (void)addKnownClientResolvedTypeDeprecated:(int)arg1;
 - (void)clearDeviceHistoricalLocations;
+- (void)clearKnownClientResolvedTypeDeprecateds;
 - (void)clearKnownClientResolvedTypes;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -92,11 +98,14 @@
 - (id)initWithTraits:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (int)knownClientResolvedTypeAtIndex:(unsigned long long)arg1;
+- (int)knownClientResolvedTypeDeprecatedAtIndex:(unsigned long long)arg1;
+- (id)knownClientResolvedTypeDeprecatedsAsString:(int)arg1;
 - (id)knownClientResolvedTypesAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)requiredVersionAsString:(int)arg1;
 - (id)resultListAttributionSupportAsString:(int)arg1;
+- (void)setKnownClientResolvedTypeDeprecateds:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setKnownClientResolvedTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
 

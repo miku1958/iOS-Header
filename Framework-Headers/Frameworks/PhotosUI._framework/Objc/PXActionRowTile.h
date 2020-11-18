@@ -47,6 +47,7 @@
 - (void)handleButtonTap:(id)arg1 forEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)prepareForReuse;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tintColorDidChange;
 - (void)widgetFooterView:(id)arg1 didSelectDisclosure:(id)arg2;
 

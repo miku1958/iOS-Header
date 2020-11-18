@@ -14,6 +14,7 @@
     UIColor *_activeTintColor;
     UIButton *_routePickerButton;
     UIButton *_customButton;
+    struct CGSize _oldSize;
     BOOL _airPlayActive;
     AVMicaPackage *_routePickerButtonMicaPackage;
     MPMediaControlsViewController *_routePickerViewController;
@@ -36,12 +37,12 @@
 - (id)customButton;
 - (void)dealloc;
 - (void)didMoveToWindow;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isAirPlayActive;
 - (void)layoutSubviews;
 - (void)setAirPlayActive:(BOOL)arg1;
-- (void)setBounds:(struct CGRect)arg1;
 - (void)setCustomButton:(id)arg1;
 - (void)tintColorDidChange;
 - (void)updateButtonAppearance;

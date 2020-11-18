@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <VectorKit/GEOResourceManifestTileGroupObserver-Protocol.h>
 #import <VectorKit/LabelManagerDelegate-Protocol.h>
@@ -26,8 +26,8 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)reloadOnStylesheetChange;
 - (id)initWithLayer:(struct CLabelLayer *)arg1;
+- (void)labelManager:(struct LabelManager *)arg1 labelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)labelManager:(struct LabelManager *)arg1 pendingArtworkIsReady:(BOOL)arg2;
-- (void)labelManager:(struct LabelManager *)arg1 selectedLabelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)labelManager:(struct LabelManager *)arg1 selectedLabelMarkerWillDisappear:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)labelManager:(struct LabelManager *)arg1 setNeedsDisplay:(BOOL)arg2;
 - (void)labelManager:(struct LabelManager *)arg1 setNeedsLayout:(BOOL)arg2;

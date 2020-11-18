@@ -67,8 +67,10 @@
 - (id)_getDocumentAKController;
 - (void)_goToPage:(id)arg1 animated:(BOOL)arg2 withBackgroundUpdate:(BOOL)arg3;
 - (BOOL)_hasDraggableSelectionAtLocation:(struct CGPoint)arg1;
+- (BOOL)_isOverWidgetAnnotation:(struct CGPoint)arg1;
 - (void)_releaseDocument;
 - (void)_setupPageViewController;
+- (BOOL)_shouldHandleAnnotationAtLocation:(struct CGPoint)arg1;
 - (void)_syncPageIndexToScrollView;
 - (struct CGAffineTransform)_transformFromPageToPageView:(id)arg1;
 - (struct CGAffineTransform)_transformFromPageViewToPage:(id)arg1;
@@ -92,6 +94,7 @@
 - (double)autoScaleFactorForPage:(id)arg1;
 - (double)autoScaleFactorForPageWithSize:(struct CGSize)arg1;
 - (BOOL)automaticallyHandleGutter;
+- (void)beginPDFViewRotation;
 - (void)callPageVisibilityDelegateMethod:(int)arg1 forPageView:(id)arg2 atPageIndex:(unsigned long long)arg3;
 - (void)callPageVisibilityDelegateMethodForOverlayAdaptorOnly:(int)arg1 forPageView:(id)arg2 atPageIndex:(unsigned long long)arg3;
 - (BOOL)canBecomeFirstResponder;
@@ -133,6 +136,7 @@
 - (void)enableTextSelectionHandles;
 - (void)encodeWithCoder:(id)arg1;
 - (void)endEditingAnnotation;
+- (void)endPDFViewRotation;
 - (struct CGRect)extendedRootViewBounds;
 - (void)findVisiblePages;
 - (BOOL)flipsTileContents;
@@ -168,7 +172,6 @@
 - (BOOL)isDrawingAccessibilityNodeType:(int)arg1;
 - (BOOL)isForcingWebKitMainThread;
 - (BOOL)isOverLinkAnnotation:(struct CGPoint)arg1;
-- (BOOL)isOverWidgetAnnotation:(struct CGPoint)arg1;
 - (BOOL)isRectVisible:(struct CGRect)arg1 onPage:(id)arg2;
 - (unsigned long long)lastPageIndex;
 - (void)layoutDocumentView;
@@ -192,6 +195,7 @@
 - (id)previousPage;
 - (void)pushDestination:(id)arg1;
 - (void)reflectNewPageOn;
+- (void)removeActiveAnnotation;
 - (void)removeFromSuperview;
 - (void)removePasswordUI;
 - (id)renderingProperties;

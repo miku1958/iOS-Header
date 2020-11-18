@@ -10,7 +10,7 @@
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDCharacteristicMetadata, HMDHAPAccessory, HMDService, NSData, NSDate, NSDictionary, NSMutableSet, NSNumber, NSString, NSUUID;
+@class HMDCharacteristicMetadata, HMDHAPAccessory, HMDService, NSData, NSDate, NSDictionary, NSMutableSet, NSNumber, NSSet, NSString, NSUUID;
 
 @interface HMDCharacteristic : HMFObject <HMDBulletinIdentifiers, NSSecureCoding, HMFDumpState>
 {
@@ -20,7 +20,7 @@
     HMDService *_service;
     NSNumber *_stateNumber;
     NSData *_authorizationData;
-    NSMutableSet *_hapCharacteristicTuples;
+    NSSet *_hapCharacteristicTuples;
     NSString *_characteristicType;
     id _lastKnownValue;
     NSDate *_lastKnownValueUpdateTime;
@@ -43,7 +43,7 @@
 @property (readonly, copy, nonatomic) NSUUID *contextSPIUniqueIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSMutableSet *hapCharacteristicTuples; // @synthesize hapCharacteristicTuples=_hapCharacteristicTuples;
+@property (strong, nonatomic) NSSet *hapCharacteristicTuples; // @synthesize hapCharacteristicTuples=_hapCharacteristicTuples;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSNumber *instanceID;
 @property (strong, nonatomic) id lastKnownValue; // @synthesize lastKnownValue=_lastKnownValue;
@@ -61,9 +61,9 @@
 @property (readonly, copy, nonatomic) id value;
 
 + (BOOL)supportsSecureCoding;
++ (BOOL)value:(id)arg1 differentThan:(id)arg2;
 - (void).cxx_destruct;
 - (id)characteristicForHAPAccessory:(id)arg1;
-- (id)characteristicForServerIdentifier:(id)arg1 linkType:(long long)arg2;
 - (id)characteristicTypeDescription;
 - (void)configureWithCharacteristic:(id)arg1;
 - (BOOL)deregisterNotificationForClientIdentifier:(id)arg1;
@@ -85,7 +85,6 @@
 - (BOOL)supportsNotification;
 - (BOOL)supportsRead;
 - (void)unconfigure;
-- (void)unconfigureAll;
 - (void)unconfigureForServerIdentifier:(id)arg1 linkType:(long long)arg2;
 - (void)updateLastKnownValue;
 - (void)updateService:(id)arg1 accessory:(id)arg2;
@@ -94,7 +93,6 @@
 - (id)validateValue:(id)arg1 outValue:(id *)arg2;
 - (id)validateValueForNotify:(id)arg1 outValue:(id *)arg2;
 - (id)validateValueForWrite:(id)arg1 outValue:(id *)arg2;
-- (BOOL)value:(id)arg1 differentThan:(id)arg2;
 
 @end
 

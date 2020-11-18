@@ -67,6 +67,7 @@
 - (long long)_accessibilityOrientationForCompareGeometry;
 - (BOOL)_accessibilityOverrideStartStopExtraExtras;
 - (id)_accessibilityPreviewWindow;
+- (id)_accessibilityRealtimeElements;
 - (void)_accessibilityRegisterForDictationLifecycleNotifications;
 - (id)_accessibilityResponderElement;
 - (id)_accessibilityResponderElement:(BOOL)arg1;
@@ -91,7 +92,7 @@
 - (id)_accessibilityValidatedResponderForExistingGoodResponder:(id)arg1 forFocus:(BOOL)arg2;
 - (id)_accessibilityWindows;
 - (id)_axAllSubviews;
-- (id)_axAuditCheckDynamicTextSupport:(BOOL)arg1 andClippingIssues:(BOOL)arg2;
+- (id)_axAuditCheckDynamicTextSupport:(BOOL)arg1 andClippingIssues:(BOOL)arg2 spinRunloop:(BOOL)arg3;
 - (id)_axSubviews;
 - (id)_findContainerAccessibleElement:(id)arg1 first:(BOOL)arg2 focus:(BOOL)arg3 allowScrolling:(BOOL)arg4;
 - (void)_finishButtonEvent:(id)arg1;

@@ -14,10 +14,12 @@
     NSData *_paymentData;
     NSDictionary *_certificates;
     NSString *_recipientPhoneOrEmail;
+    NSString *_pushToken;
 }
 
 @property (copy, nonatomic) NSDictionary *certificates; // @synthesize certificates=_certificates;
 @property (copy, nonatomic) NSData *paymentData; // @synthesize paymentData=_paymentData;
+@property (copy, nonatomic) NSString *pushToken; // @synthesize pushToken=_pushToken;
 @property (copy, nonatomic) NSString *quoteIdentifier; // @synthesize quoteIdentifier=_quoteIdentifier;
 @property (copy, nonatomic) NSString *recipientPhoneOrEmail; // @synthesize recipientPhoneOrEmail=_recipientPhoneOrEmail;
 

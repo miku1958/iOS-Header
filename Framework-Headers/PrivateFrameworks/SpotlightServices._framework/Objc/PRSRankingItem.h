@@ -13,12 +13,13 @@
 @interface PRSRankingItem : NSObject <SSDataCollectible>
 {
     BOOL _eligibleForDemotion;
+    BOOL _needsDemotion;
     BOOL _isPrepared;
+    float _rawScore;
+    float _feedbackScore;
+    float _score;
+    float _quality_score;
     NSString *_identifier;
-    double _rawScore;
-    double _feedbackScore;
-    double _score;
-    double _quality_score;
     NSString *_sectionBundleIdentifier;
     PRSL2FeatureVector *_L2FeatureVector;
     PRSL3FeatureVector *_L3FeatureVector;
@@ -31,9 +32,9 @@
     NSMutableArray *_matchedVipSenders;
     NSMutableArray *_matchedRecipients;
     NSArray *_emailAddresses;
-    unsigned long long _playCount;
     unsigned long long _importantPropertiesPrefixMatched;
     unsigned long long _importantPropertiesWordMatched;
+    unsigned long long _playCount;
     struct ranking_index_score_t _indexScore;
     MISSING_TYPE *_inputToModelScore;
 }
@@ -46,7 +47,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL eligibleForDemotion; // @synthesize eligibleForDemotion=_eligibleForDemotion;
 @property (strong, nonatomic) NSArray *emailAddresses; // @synthesize emailAddresses=_emailAddresses;
-@property (nonatomic) double feedbackScore; // @synthesize feedbackScore=_feedbackScore;
+@property (nonatomic) float feedbackScore; // @synthesize feedbackScore=_feedbackScore;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) unsigned long long importantPropertiesPrefixMatched; // @synthesize importantPropertiesPrefixMatched=_importantPropertiesPrefixMatched;
@@ -58,10 +59,11 @@
 @property (strong, nonatomic) NSMutableArray *matchedSenders; // @synthesize matchedSenders=_matchedSenders;
 @property (strong, nonatomic) NSMutableArray *matchedVipSenders; // @synthesize matchedVipSenders=_matchedVipSenders;
 @property (nonatomic) double mostRecentUsedDate; // @synthesize mostRecentUsedDate=_mostRecentUsedDate;
+@property (nonatomic) BOOL needsDemotion; // @synthesize needsDemotion=_needsDemotion;
 @property (nonatomic) unsigned long long playCount; // @synthesize playCount=_playCount;
-@property (nonatomic) double quality_score; // @synthesize quality_score=_quality_score;
-@property (nonatomic) double rawScore; // @synthesize rawScore=_rawScore;
-@property (nonatomic) double score; // @synthesize score=_score;
+@property (nonatomic) float quality_score; // @synthesize quality_score=_quality_score;
+@property (nonatomic) float rawScore; // @synthesize rawScore=_rawScore;
+@property (nonatomic) float score; // @synthesize score=_score;
 @property (strong, nonatomic) NSString *sectionBundleIdentifier; // @synthesize sectionBundleIdentifier=_sectionBundleIdentifier;
 @property (strong, nonatomic) NSDictionary *serverFeatures; // @synthesize serverFeatures=_serverFeatures;
 @property (strong, nonatomic) PRSRankingSpanCalculator *spanCalculator; // @synthesize spanCalculator=_spanCalculator;
@@ -86,7 +88,6 @@
 - (void)dealloc;
 - (id)dedupeIdentifier;
 - (BOOL)didMatchRankingDescriptor:(id)arg1;
-- (void)hackPlayCounts;
 - (void)inferDateBinsFromDates:(id)arg1 intoBins:(int *)arg2;
 - (id)initWithAttributes:(id)arg1;
 - (id)interestingDate;
@@ -95,15 +96,14 @@
 - (void)populateBundleSpecificFeatures;
 - (void)populateContactFeatures;
 - (void)populateCrossAttributeDerivedFeaturesWithContext:(struct prs_feature_population_ctx_t *)arg1;
-- (void)populateFeature:(unsigned long long)arg1 value:(double)arg2;
-- (void)populateFeaturesWithEvaluator:(id)arg1 updatingBundleFeatures:(double *)arg2 withContext:(struct prs_feature_population_ctx_t *)arg3;
+- (void)populateFeaturesWithEvaluator:(id)arg1 updatingBundleFeatures:(float *)arg2 withContext:(struct prs_feature_population_ctx_t *)arg3 fuzzyEvaluator:(id)arg4;
 - (void)populateMailFeatures;
 - (void)populateOtherFeatures;
-- (void)populateTextFeatureValuesForProperty:(id)arg1 updatingBundleFeatureValues:(id)arg2 withEvaluator:(id)arg3 withContext:(struct prs_feature_population_ctx_t *)arg4;
-- (void)updateAccumulatedBundleFeatures:(double *)arg1 values:(id)arg2 feature:(unsigned long long)arg3;
-- (void)updateBundleFeatures:(double *)arg1 withArrValues:(id)arg2;
-- (void)updateNumScoreDescriptorBundleFeatures:(double *)arg1 values:(id)arg2 feature:(unsigned long long)arg3;
-- (void)updateScoreDescriptorBundleFeatures:(double *)arg1 values:(id)arg2 feature:(unsigned long long)arg3;
+- (void)populateTextFeatureValuesForProperty:(id)arg1 updatingBundleFeatureValues:(id)arg2 withEvaluator:(id)arg3 withContext:(struct prs_feature_population_ctx_t *)arg4 fuzzyEvaluator:(id)arg5 propertyCanFuzzyMatch:(BOOL)arg6;
+- (void)updateAccumulatedBundleFeatures:(float *)arg1 values:(id)arg2 feature:(unsigned long long)arg3;
+- (void)updateBundleFeatures:(float *)arg1 withArrValues:(id)arg2;
+- (void)updateNumScoreDescriptorBundleFeatures:(float *)arg1 values:(id)arg2 feature:(unsigned long long)arg3;
+- (void)updateScoreDescriptorBundleFeatures:(float *)arg1 values:(id)arg2 feature:(unsigned long long)arg3;
 
 @end
 

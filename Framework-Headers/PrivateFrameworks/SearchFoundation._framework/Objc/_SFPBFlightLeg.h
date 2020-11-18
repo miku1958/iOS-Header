@@ -28,19 +28,25 @@
     _SFPBAirport *_divertedAirport;
     NSString *_title;
     NSString *_baggageClaim;
+    _SFPBDate *_departureGateClosedTime;
+    _SFPBDate *_departureRunwayTime;
+    _SFPBDate *_arrivalRunwayTime;
 }
 
 @property (strong, nonatomic) _SFPBDate *arrivalActualTime; // @synthesize arrivalActualTime=_arrivalActualTime;
 @property (strong, nonatomic) _SFPBAirport *arrivalAirport; // @synthesize arrivalAirport=_arrivalAirport;
 @property (copy, nonatomic) NSString *arrivalGate; // @synthesize arrivalGate=_arrivalGate;
 @property (strong, nonatomic) _SFPBDate *arrivalPublishedTime; // @synthesize arrivalPublishedTime=_arrivalPublishedTime;
+@property (strong, nonatomic) _SFPBDate *arrivalRunwayTime; // @synthesize arrivalRunwayTime=_arrivalRunwayTime;
 @property (copy, nonatomic) NSString *arrivalTerminal; // @synthesize arrivalTerminal=_arrivalTerminal;
 @property (copy, nonatomic) NSString *baggageClaim; // @synthesize baggageClaim=_baggageClaim;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) _SFPBDate *departureActualTime; // @synthesize departureActualTime=_departureActualTime;
 @property (strong, nonatomic) _SFPBAirport *departureAirport; // @synthesize departureAirport=_departureAirport;
 @property (copy, nonatomic) NSString *departureGate; // @synthesize departureGate=_departureGate;
+@property (strong, nonatomic) _SFPBDate *departureGateClosedTime; // @synthesize departureGateClosedTime=_departureGateClosedTime;
 @property (strong, nonatomic) _SFPBDate *departurePublishedTime; // @synthesize departurePublishedTime=_departurePublishedTime;
+@property (strong, nonatomic) _SFPBDate *departureRunwayTime; // @synthesize departureRunwayTime=_departureRunwayTime;
 @property (copy, nonatomic) NSString *departureTerminal; // @synthesize departureTerminal=_departureTerminal;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _SFPBAirport *divertedAirport; // @synthesize divertedAirport=_divertedAirport;
@@ -48,12 +54,15 @@
 @property (readonly, nonatomic) BOOL hasArrivalAirport;
 @property (readonly, nonatomic) BOOL hasArrivalGate;
 @property (readonly, nonatomic) BOOL hasArrivalPublishedTime;
+@property (readonly, nonatomic) BOOL hasArrivalRunwayTime;
 @property (readonly, nonatomic) BOOL hasArrivalTerminal;
 @property (readonly, nonatomic) BOOL hasBaggageClaim;
 @property (readonly, nonatomic) BOOL hasDepartureActualTime;
 @property (readonly, nonatomic) BOOL hasDepartureAirport;
 @property (readonly, nonatomic) BOOL hasDepartureGate;
+@property (readonly, nonatomic) BOOL hasDepartureGateClosedTime;
 @property (readonly, nonatomic) BOOL hasDeparturePublishedTime;
+@property (readonly, nonatomic) BOOL hasDepartureRunwayTime;
 @property (readonly, nonatomic) BOOL hasDepartureTerminal;
 @property (readonly, nonatomic) BOOL hasDivertedAirport;
 @property (readonly, nonatomic) BOOL hasStatus;

@@ -6,12 +6,13 @@
 
 #import <SearchUI/SearchUITableViewCell.h>
 
-@class NSArray, NSLayoutConstraint, SearchUIIconViewContainer;
+@class NSArray, NSLayoutConstraint, SearchUIIconViewContainer, TLKAuxilliaryTextView;
 
 @interface SearchUIMultiResultTableViewCell : SearchUITableViewCell
 {
     SearchUIIconViewContainer *_topContainer;
     SearchUIIconViewContainer *_bottomContainer;
+    TLKAuxilliaryTextView *_folderLabelView;
     NSLayoutConstraint *_singleRowConstraint;
     NSLayoutConstraint *_doubleRowConstraint;
     NSArray *_results;
@@ -20,6 +21,7 @@
 
 @property (strong) SearchUIIconViewContainer *bottomContainer; // @synthesize bottomContainer=_bottomContainer;
 @property (strong) NSLayoutConstraint *doubleRowConstraint; // @synthesize doubleRowConstraint=_doubleRowConstraint;
+@property (strong) TLKAuxilliaryTextView *folderLabelView; // @synthesize folderLabelView=_folderLabelView;
 @property (nonatomic) long long indexOfSelectedKeyboardIcon; // @synthesize indexOfSelectedKeyboardIcon=_indexOfSelectedKeyboardIcon;
 @property (strong) NSArray *results; // @synthesize results=_results;
 @property (strong) NSLayoutConstraint *singleRowConstraint; // @synthesize singleRowConstraint=_singleRowConstraint;

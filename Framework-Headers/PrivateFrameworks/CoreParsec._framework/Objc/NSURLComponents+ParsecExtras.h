@@ -7,6 +7,9 @@
 #import <Foundation/NSURLComponents.h>
 
 @interface NSURLComponents (ParsecExtras)
++ (id)parsec_componentsWithString:(id)arg1;
++ (id)parsec_componentsWithURL:(id)arg1 resolvingAgainstBaseURL:(BOOL)arg2;
+- (id)parsec_componentsForEmbeddedAMPURL;
 - (id)parsec_normalizedURLStringForDeepLinkIngest;
 - (id)parsec_normalizedURLStringForDeepLinkWhitelist;
 - (id)parsec_normalizedURLStringForLDAModel;

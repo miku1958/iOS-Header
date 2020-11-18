@@ -61,12 +61,14 @@
 - (void)_displayAudioRoutePicker;
 - (void)_getDefaultVolumeSliderFrame:(struct CGRect *)arg1 routeButtonFrame:(struct CGRect *)arg2 forBounds:(struct CGRect)arg3;
 - (void)_initWithStyle:(long long)arg1;
+- (void)_loadAudioRoutePickerIfNeeded;
 - (id)_routeButton;
 - (void)_routingControllerDidUpdateVolumeControlState:(id)arg1;
 - (void)_setRouteDiscoveryEnabled:(BOOL)arg1;
 - (void)_setShowsRouteButton:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_setShowsVolumeSlider:(BOOL)arg1;
-- (void)_setVolumeAudioCategory:(id)arg1;
+- (void)_startPrewarmingAudioRoutePicker;
+- (void)_stopPrewarmingAudioRoutePicker;
 - (void)_updateWirelessRouteStatus;
 - (void)dealloc;
 - (void)didMoveToSuperview;

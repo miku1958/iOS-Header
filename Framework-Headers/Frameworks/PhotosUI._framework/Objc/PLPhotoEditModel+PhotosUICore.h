@@ -13,7 +13,7 @@
 - (id)px_clearedDepthCopy;
 - (id)px_clearedDepthCopyIncludingGeometry:(BOOL)arg1;
 - (BOOL)px_hasDepthEdits;
-- (BOOL)px_isAdjustedBeyondDepth;
+- (BOOL)px_isAdjustedBeyondDepthAndStatistics;
 - (id)px_photoEditModelByApplyingAssetVariation:(unsigned int)arg1 withRecipe:(id)arg2;
 @end
 

@@ -38,6 +38,7 @@
     NSDictionary *_messageSummaryInfo;
     NSDictionary *_bizIntent;
     NSString *_locale;
+    NSString *_notificationIDSTokenURI;
 }
 
 @property (nonatomic) BOOL backwardsCompatibleVersion; // @synthesize backwardsCompatibleVersion=_backwardsCompatibleVersion;
@@ -70,6 +71,7 @@
 @property (readonly, nonatomic) BOOL isTypingMessage;
 @property (strong, nonatomic) NSString *locale; // @synthesize locale=_locale;
 @property (strong, nonatomic) NSDictionary *messageSummaryInfo; // @synthesize messageSummaryInfo=_messageSummaryInfo;
+@property (strong, nonatomic) NSString *notificationIDSTokenURI; // @synthesize notificationIDSTokenURI=_notificationIDSTokenURI;
 @property (strong, nonatomic) NSData *payloadData; // @synthesize payloadData=_payloadData;
 @property (strong, nonatomic) NSString *plainBody; // @synthesize plainBody=_plainBody;
 @property (nonatomic) long long replaceID; // @synthesize replaceID=_replaceID;

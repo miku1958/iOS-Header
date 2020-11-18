@@ -16,6 +16,7 @@
     unsigned char _rssiCount;
     unsigned char _rssiIndex;
     BOOL _paired;
+    unsigned int _connectedServices;
     NSData *_advertisementData;
     NSDictionary *_advertisementFields;
     NSData *_bluetoothAddress;
@@ -36,6 +37,7 @@
 @property (copy, nonatomic) NSData *advertisementData; // @synthesize advertisementData=_advertisementData;
 @property (copy, nonatomic) NSDictionary *advertisementFields; // @synthesize advertisementFields=_advertisementFields;
 @property (copy, nonatomic) NSData *bluetoothAddress; // @synthesize bluetoothAddress=_bluetoothAddress;
+@property (nonatomic) unsigned int connectedServices; // @synthesize connectedServices=_connectedServices;
 @property (copy, nonatomic) NSUUID *counterpartIdentifier; // @synthesize counterpartIdentifier=_counterpartIdentifier;
 @property (nonatomic) long long distance; // @synthesize distance=_distance;
 @property (nonatomic) unsigned long long foundTicks; // @synthesize foundTicks=_foundTicks;

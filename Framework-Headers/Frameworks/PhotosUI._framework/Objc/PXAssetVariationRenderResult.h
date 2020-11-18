@@ -22,12 +22,10 @@
     NSURL *_videoURL;
     AVAsset *_videoAsset;
     AVVideoComposition *_videoComposition;
-    long long _baseVersion;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *analysisResult; // @synthesize analysisResult=_analysisResult;
 @property (readonly, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
-@property (readonly, nonatomic) long long baseVersion; // @synthesize baseVersion=_baseVersion;
 @property (readonly, copy, nonatomic) PLPhotoEditModel *editModel; // @synthesize editModel=_editModel;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (nonatomic, getter=isFullsizeRender) BOOL fullsizeRender; // @synthesize fullsizeRender=_fullsizeRender;
@@ -42,7 +40,7 @@
 - (void).cxx_destruct;
 - (id)description;
 - (id)init;
-- (id)initWithAsset:(id)arg1 variationType:(long long)arg2 imageURL:(id)arg3 videoURL:(id)arg4 analysisResult:(id)arg5 editModel:(id)arg6 baseVersion:(long long)arg7 success:(BOOL)arg8 error:(id)arg9;
+- (id)initWithAsset:(id)arg1 variationType:(long long)arg2 imageURL:(id)arg3 videoURL:(id)arg4 analysisResult:(id)arg5 editModel:(id)arg6 success:(BOOL)arg7 error:(id)arg8;
 
 @end
 

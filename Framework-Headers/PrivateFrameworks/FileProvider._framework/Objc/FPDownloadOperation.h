@@ -6,11 +6,14 @@
 
 #import <FileProvider/FPActionOperation.h>
 
-@class NSArray, NSFileCoordinator;
+@class NSArray, NSFileCoordinator, NSMutableSet, NSObject;
+@protocol OS_dispatch_source;
 
 @interface FPDownloadOperation : FPActionOperation
 {
     NSArray *_items;
+    NSMutableSet *_itemsPendingCoordination;
+    NSObject<OS_dispatch_source> *_stitchingTimer;
     NSFileCoordinator *_fileCoordinator;
     CDUnknownBlockType _downloadCompletionBlock;
 }
@@ -23,6 +26,7 @@
 - (id)initWithItems:(id)arg1;
 - (void)main;
 - (void)presendNotifications;
+- (void)showItemsAsDownloadingEvenIfDownloaded:(BOOL)arg1;
 
 @end
 

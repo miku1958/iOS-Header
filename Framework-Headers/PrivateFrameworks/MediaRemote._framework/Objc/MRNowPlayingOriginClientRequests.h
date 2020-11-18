@@ -15,10 +15,12 @@
 {
     void *_origin;
     NSObject<OS_dispatch_queue> *_serialQueue;
+    void *_activePlayerPath;
     NSMutableArray *_nowPlayingClients;
     NSMutableDictionary *_transactionCallbacks;
 }
 
+@property (nonatomic) void *activePlayerPath;
 @property (readonly, nonatomic) void *origin; // @synthesize origin=_origin;
 
 - (void)dealloc;

@@ -33,10 +33,12 @@
 
 - (void).cxx_destruct;
 - (BOOL)_updateName;
+- (id)analyticsDescription;
 - (void)beginWiredBluetoothPairing:(CDUnknownBlockType)arg1;
 - (id)description;
 - (id)displayName;
 - (BOOL)isBluetoothConnected;
+- (id)radarDescription;
 - (void)requestWiFiCredentials;
 - (void)sendDeviceTransportIdentifiers;
 

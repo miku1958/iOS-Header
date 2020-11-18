@@ -12,7 +12,6 @@
 
 @interface HMDRemoteMessageTransport : HMFMessageTransport <HMFLogging>
 {
-    BOOL _secure;
     HMDAccountRegistry *_accountRegistry;
     long long _qualityOfService;
 }
@@ -22,7 +21,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
-@property (readonly, nonatomic, getter=isSecure) BOOL secure; // @synthesize secure=_secure;
+@property (readonly, nonatomic, getter=isSecure) BOOL secure;
 @property (readonly) Class superclass;
 
 + (id)logCategory;

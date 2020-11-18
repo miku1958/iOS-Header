@@ -12,5 +12,8 @@
 
 @property (strong, nonatomic) MPMediaControlsConfiguration *configuration;
 
+- (void)startPrewarming;
+- (void)stopPrewarming;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1;
 @end
 

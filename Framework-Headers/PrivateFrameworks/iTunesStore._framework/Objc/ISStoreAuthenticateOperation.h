@@ -25,6 +25,7 @@
 @property (strong) id parentViewController; // @synthesize parentViewController;
 @property (readonly) Class superclass;
 
++ (BOOL)_copyErrorForAuthenticateResponse:(id)arg1 error:(id *)arg2;
 - (void)_handleAuthenticateResponse:(id)arg1;
 - (id)authenticatedAccountDSID;
 - (void)dealloc;

@@ -19,6 +19,7 @@
     BOOL _isCharging;
     BOOL _isRemoteServerLikelyReachable;
     BOOL _isWiFiActive;
+    BOOL _currentNetworkLinkHighQuality;
     NSString *_telephonyOperatorName;
     NSString *_telephonyRegistrationStatus;
     NSString *_telephonyStatusIndicator;
@@ -27,6 +28,7 @@
 }
 
 @property (readonly, nonatomic, getter=isCharging) BOOL charging; // @synthesize charging=_isCharging;
+@property (readonly, nonatomic, getter=isCurrentNetworkLinkHighQuality) BOOL currentNetworkLinkHighQuality; // @synthesize currentNetworkLinkHighQuality=_currentNetworkLinkHighQuality;
 @property (readonly, nonatomic) long long lastKnownNetworkType; // @synthesize lastKnownNetworkType=_lastKnownNetworkType;
 @property (readonly, nonatomic) long long networkType; // @synthesize networkType=_networkType;
 @property (readonly, nonatomic, getter=isRemoteServerLikelyReachable) BOOL remoteServerLikelyReachable; // @synthesize remoteServerLikelyReachable=_isRemoteServerLikelyReachable;
@@ -39,9 +41,10 @@
 - (void).cxx_destruct;
 - (long long)_currentNetworkType;
 - (void)_handleApplicationDidEnterForegroundNotification:(id)arg1;
+- (void)_handleCTServerConnectionNotification:(id)arg1 userInfo:(id)arg2;
+- (long long)_networkTypeFromTelephonyStatusIndicator:(id)arg1;
 - (void)_updateNetworkReachabilityAndNotifyObservers:(BOOL)arg1;
-- (void)_updateTelephonyPropertiesForCTServerNotification:(id)arg1 userInfo:(id)arg2;
-- (void)_updateTelephonyState;
+- (void)_updateTelephonyStateAndNotifyObservers:(BOOL)arg1;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)init;

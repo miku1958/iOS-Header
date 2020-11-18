@@ -127,6 +127,7 @@
 - (void)_noteDeviceHasBeenUnlockedOnceSinceBoot:(BOOL)arg1;
 - (void)_noteScreenBrightnessDidChange;
 - (void)_notifyDelegatePasscodeEnteredViaMesa;
+- (double)_numberPadOffsetFromTopOfScreen:(id)arg1;
 - (long long)_orientation;
 - (void)_overrideBiometricMatchingEnabled:(BOOL)arg1 forReason:(id)arg2;
 - (void)_playAuthenticationFeedbackForSuccess:(BOOL)arg1 jiggleLock:(BOOL)arg2;

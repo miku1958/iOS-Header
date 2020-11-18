@@ -17,6 +17,7 @@
 
 @property (readonly, nonatomic) BOOL devicePresenceDetected; // @synthesize devicePresenceDetected=_devicePresenceDetected;
 @property (nonatomic) long long discoveryMode; // @synthesize discoveryMode=_discoveryMode;
+@property (readonly, nonatomic) BOOL supportsMultipleSelection;
 
 - (void).cxx_destruct;
 - (void)_activeAudioRouteDidChangeNotification:(id)arg1;
@@ -29,6 +30,7 @@
 - (void)getPickedRouteHasVolumeControlWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getRoutesForCategory:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)init;
+- (BOOL)routeIsLeaderOfEndpoint:(id)arg1;
 - (void)setPickedRoute:(id)arg1 withPassword:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)unpickAirPlayAVRoutesWithCompletion:(CDUnknownBlockType)arg1;
 

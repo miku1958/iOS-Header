@@ -17,6 +17,7 @@
 
 @property (nonatomic) BOOL disableAssetCleaning;
 @property (nonatomic) BOOL disableCache;
+@property (nonatomic) BOOL enableHomePodSimulation;
 @property (nonatomic) BOOL enableLocalVoices;
 @property (readonly, nonatomic) BOOL internalBuild; // @synthesize internalBuild=_internalBuild;
 @property (strong, nonatomic) NSUserDefaults *internalDefaults; // @synthesize internalDefaults=_internalDefaults;

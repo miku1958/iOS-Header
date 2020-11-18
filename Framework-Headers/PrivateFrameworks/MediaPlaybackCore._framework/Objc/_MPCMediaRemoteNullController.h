@@ -10,20 +10,22 @@
 
 @interface _MPCMediaRemoteNullController : MPCMediaRemoteController
 {
-    MPCFuture *_playQueueIdentifiersForRangeFuture;
+    MPCFuture *_playQueueIdentifiersFuture;
     MPCFuture *_contentItemForIdentifierFuture;
     MPCFuture *_contentItemArtworkForIdentifierFuture;
 }
 
++ (BOOL)_shouldRegisterForNotifications;
 - (void).cxx_destruct;
 - (id)_init;
 - (long long)contentItemArtworkCacheStateForIdentifier:(id)arg1 size:(struct CGSize)arg2;
-- (id)contentItemArtworkForIdentifier:(id)arg1 size:(struct CGSize)arg2;
+- (id)contentItemArtworkForContentItemIdentifier:(id)arg1 artworkIdentifier:(id)arg2 size:(struct CGSize)arg3;
 - (long long)contentItemCacheStateForIdentifier:(id)arg1;
 - (id)contentItemForIdentifier:(id)arg1;
 - (void)invalidateAllTokens;
 - (long long)playQueueIdentifiersCacheStateForRange:(struct _MSVSignedRange)arg1;
 - (id)playQueueIdentifiersForRange:(struct _MSVSignedRange)arg1;
+- (id)playQueueIdentifiersForRequest:(void *)arg1;
 - (id)playbackState;
 - (long long)playbackStateCacheState;
 - (id)playingIdentifier;

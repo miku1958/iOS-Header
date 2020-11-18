@@ -105,6 +105,8 @@
     NSNotification *_delayedPlaybackStateNotification;
     NSObject<OS_dispatch_source> *_stallTimerSource;
     BOOL _isConnectingPlayer;
+    BOOL _hasProvidedAudibleLikelyToKeepUp;
+    BOOL _hasProvidedAudiblePlay;
     MPAVControllerToAggregateDCommunicator *_aggregateDCommunicator;
     double _itemInitialBookmarkTime;
     float _rateBeforeResignActive;
@@ -124,6 +126,7 @@
     BOOL _limitsBandwidthForCellularAccess;
     BOOL _wantsPictureInPicture;
     float _rawRate;
+    NSString *_identifier;
     AVPictureInPictureController *_pictureInPictureController;
 }
 
@@ -154,6 +157,7 @@
 @property (readonly, nonatomic) MPQueueFeeder *feeder;
 @property (readonly, nonatomic) BOOL hasVolumeControl;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isCurrentItemReady;
 @property (readonly, nonatomic) BOOL isExternalPlaybackActive;
 @property (nonatomic) BOOL limitsBandwidthForCellularAccess; // @synthesize limitsBandwidthForCellularAccess=_limitsBandwidthForCellularAccess;
@@ -199,6 +203,7 @@
 + (id)keyPathsForValuesAffectingCurrentItem;
 + (BOOL)outputSupportsAC3;
 + (Class)playlistManagerClass;
++ (BOOL)prefersApplicationAudioSession;
 - (void).cxx_destruct;
 - (void)_addObserverInfo:(id)arg1 forCoreMediaObserver:(id)arg2 forInitialCreation:(BOOL)arg3;
 - (void)_applicationDidEnterBackgroundNotification:(id)arg1;
@@ -209,6 +214,7 @@
 - (void)_applyAirPlayMusicModeForItem:(id)arg1 shouldIgnorePlaybackQueueTransactions:(BOOL)arg2;
 - (void)_applyCellularAccessSettings;
 - (void)_attemptAutoPlay;
+- (void)_audioSessionMediaServicesWereResetNotification:(id)arg1;
 - (BOOL)_canPlayItem:(id)arg1;
 - (void)_cancelStallTimer;
 - (void)_cancelUpdateCurrentItemBookkeepingTimer;
@@ -219,6 +225,7 @@
 - (void)_clearSeekingIntervalsForStreaming;
 - (void)_clearVideoLayer:(BOOL)arg1;
 - (void)_configureAVPlaylistManager;
+- (void)_configureAudioSession;
 - (void)_configureUpdateCurrentItemBookkeepingTimer;
 - (void)_connectAVPlayer;
 - (void)_contentsChanged;
@@ -292,6 +299,7 @@
 - (void)_setState:(long long)arg1;
 - (void)_setValid:(BOOL)arg1;
 - (void)_setVideoLayerAttachedToPlayer:(BOOL)arg1 force:(BOOL)arg2 pauseIfNecessary:(BOOL)arg3;
+- (BOOL)_shouldProvideAudiblePlaybackPerformance;
 - (BOOL)_showsPlayingWhenInState:(long long)arg1;
 - (void)_sizeDidChange:(id)arg1;
 - (void)_streamBufferFull:(id)arg1;

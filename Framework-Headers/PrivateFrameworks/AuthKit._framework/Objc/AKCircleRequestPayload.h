@@ -29,7 +29,6 @@
 @property (strong, nonatomic) NSDictionary *responseInfo; // @synthesize responseInfo=_responseInfo;
 @property (strong, nonatomic) AKPushMessage *responseMessage; // @synthesize responseMessage=_responseMessage;
 @property (strong, nonatomic) NSString *serverInfo; // @synthesize serverInfo=_serverInfo;
-@property (readonly, nonatomic) NSString *serverMachineId;
 @property (strong, nonatomic) NSString *transactionId; // @synthesize transactionId=_transactionId;
 
 + (id)payloadWithMessage:(id)arg1;

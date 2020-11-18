@@ -16,7 +16,6 @@
 
 @property (copy, nonatomic) NSString *aceId; // @dynamic aceId;
 @property (copy, nonatomic) NSNumber *currentGuideTag;
-@property (copy, nonatomic) NSNumber *currentSuggestedUtterancesTag;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

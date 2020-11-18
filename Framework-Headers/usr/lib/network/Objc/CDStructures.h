@@ -48,7 +48,7 @@ struct netcore_stats_tcp_report {
         struct {
             struct netcore_stats_tcp_statistics_report _field1;
             struct netcore_stats_tcp_cell_fallback_report _field2;
-            struct netcore_stats_tcp_statistics_report _field3[10];
+            struct netcore_stats_tcp_statistics_report _field3[8];
             int _field4;
             unsigned int _field5;
         } _field1;
@@ -173,7 +173,8 @@ struct nw_connection_report_s {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
-    unsigned int :5;
+    unsigned int :1;
+    unsigned int :4;
     unsigned char _field44[3];
 };
 

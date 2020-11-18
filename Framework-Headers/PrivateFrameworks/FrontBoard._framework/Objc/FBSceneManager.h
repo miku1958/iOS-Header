@@ -40,7 +40,7 @@
 + (id)sharedInstance;
 + (void)synchronizeChanges:(CDUnknownBlockType)arg1;
 - (void)_appendCommonDescriptionItemsToBuilder:(id)arg1;
-- (void)_applyMutableSettings:(id)arg1 toScene:(id)arg2 asUpdate:(BOOL)arg3 withTransitionContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_applyMutableSettings:(id)arg1 toScene:(id)arg2 withTransitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_beginSynchronizationBlock;
 - (id)_createSceneWithDefinition:(id)arg1 initialParameters:(id)arg2 clientProvider:(id)arg3 transitionContext:(id)arg4;
 - (void)_destroyScene:(id)arg1 withTransitionContext:(id)arg2;

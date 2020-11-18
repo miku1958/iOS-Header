@@ -21,7 +21,7 @@
 + (id)concatPointClouds:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)_hitTestFromOrigin:withDirection: /* Error: Ran out of types for this method. */;
+- (id)_hitTestPointFromOrigin:(float)arg1 withDirection:maximumAngle: /* Error: Ran out of types for this method. */;
 - (id)description;
 - (id)initWithPointsVector:(const struct vector<float __attribute__((ext_vector_type(3))), std::__1::allocator<float __attribute__((ext_vector_type(3)))>> *)arg1 identifiersVector:(const vector_7dcb3552 *)arg2;
 - (id)pointCloudByApplyingTransform:(CDStruct_14d5dc5e)arg1;

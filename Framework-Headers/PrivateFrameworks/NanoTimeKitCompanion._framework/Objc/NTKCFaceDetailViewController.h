@@ -11,7 +11,6 @@
 #import <NanoTimeKitCompanion/NTKCFaceDetailDataSourcesSectionDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKCFaceDetailDescriptionSectionDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKCFaceDetailEditOptionSectionDelegate-Protocol.h>
-#import <NanoTimeKitCompanion/NTKCFaceDetailOtherFacesWithAppSectionDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKCFaceDetailOtherSectionDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKCFaceDetailPhotosSectionDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKFaceCollectionObserver-Protocol.h>
@@ -19,20 +18,18 @@
 #import <NanoTimeKitCompanion/UITableViewDataSource-Protocol.h>
 #import <NanoTimeKitCompanion/UITableViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, NTKCFaceContainerView, NTKCFaceDetailDescriptionSectionController, NTKCFaceDetailKaleidoscopeContentSectionController, NTKCFaceDetailKaleidoscopeStyleSectionController, NTKCFaceDetailOtherSectionController, NTKCFaceDetailPhotosSectionController, NTKCIconView, NTKCompanionApp, NTKCompanionFaceViewController, NTKFace, NTKFaceCollection, UIActivityIndicatorView, UILabel, UITableView, UITableViewCell, UIView, _NTKCDetailActionButton, _NTKCDetailHeaderView;
+@class NSArray, NSMutableArray, NSString, NTKCFaceContainerView, NTKCFaceDetailDescriptionSectionController, NTKCFaceDetailKaleidoscopeContentSectionController, NTKCFaceDetailKaleidoscopeStyleSectionController, NTKCFaceDetailOtherSectionController, NTKCFaceDetailPhotosSectionController, NTKCompanionFaceViewController, NTKFace, NTKFaceCollection, UIActivityIndicatorView, UILabel, UITableView, UITableViewCell, UIView, _NTKCDetailActionButton, _NTKCDetailHeaderView;
 @protocol NTKCFaceDetailViewControllerDelegate;
 
-@interface NTKCFaceDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NTKFaceObserver, NTKFaceCollectionObserver, NTKCFaceDetailDescriptionSectionDelegate, NTKCFaceDetailEditOptionSectionDelegate, NTKCFaceDetailPhotosSectionDelegate, NTKCFaceDetailComplicationSectionDelegate, NTKCFaceDetailOtherSectionDelegate, NTKCFaceDetailActionSectionDelegate, NTKCFaceDetailOtherFacesWithAppSectionDelegate, NTKCFaceDetailDataSourcesSectionDelegate>
+@interface NTKCFaceDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NTKFaceObserver, NTKFaceCollectionObserver, NTKCFaceDetailDescriptionSectionDelegate, NTKCFaceDetailEditOptionSectionDelegate, NTKCFaceDetailPhotosSectionDelegate, NTKCFaceDetailComplicationSectionDelegate, NTKCFaceDetailOtherSectionDelegate, NTKCFaceDetailActionSectionDelegate, NTKCFaceDetailDataSourcesSectionDelegate>
 {
     BOOL _shared;
     BOOL _inGallery;
-    BOOL _appExistsOnFace;
     BOOL _faceHasBeenEdited;
     NTKFace *_face;
     id<NTKCFaceDetailViewControllerDelegate> _delegate;
     NTKFaceCollection *_library;
     NTKCompanionFaceViewController *_faceVC;
-    NTKCompanionApp *_app;
     NSArray *_externalAssets;
     double _intrinsicHeaderHeight;
     _NTKCDetailHeaderView *_headerView;
@@ -40,11 +37,6 @@
     UILabel *_faceName;
     _NTKCDetailActionButton *_addButton;
     UIActivityIndicatorView *_addSpinner;
-    UIView *_featuredContainer;
-    UIView *_featuredAnimationContainer;
-    UILabel *_featured;
-    NTKCIconView *_appIcon;
-    UILabel *_appName;
     UIView *_headerSeparator;
     UITableView *_tableView;
     NSMutableArray *_currentSections;
@@ -61,10 +53,6 @@
 
 @property (strong, nonatomic) _NTKCDetailActionButton *addButton; // @synthesize addButton=_addButton;
 @property (strong, nonatomic) UIActivityIndicatorView *addSpinner; // @synthesize addSpinner=_addSpinner;
-@property (strong, nonatomic) NTKCompanionApp *app; // @synthesize app=_app;
-@property (nonatomic) BOOL appExistsOnFace; // @synthesize appExistsOnFace=_appExistsOnFace;
-@property (strong, nonatomic) NTKCIconView *appIcon; // @synthesize appIcon=_appIcon;
-@property (strong, nonatomic) UILabel *appName; // @synthesize appName=_appName;
 @property (strong, nonatomic) NSMutableArray *currentSections; // @synthesize currentSections=_currentSections;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<NTKCFaceDetailViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -78,9 +66,6 @@
 @property (readonly, nonatomic) BOOL faceHasBeenEdited; // @synthesize faceHasBeenEdited=_faceHasBeenEdited;
 @property (strong, nonatomic) UILabel *faceName; // @synthesize faceName=_faceName;
 @property (strong, nonatomic) NTKCompanionFaceViewController *faceVC; // @synthesize faceVC=_faceVC;
-@property (strong, nonatomic) UILabel *featured; // @synthesize featured=_featured;
-@property (strong, nonatomic) UIView *featuredAnimationContainer; // @synthesize featuredAnimationContainer=_featuredAnimationContainer;
-@property (strong, nonatomic) UIView *featuredContainer; // @synthesize featuredContainer=_featuredContainer;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGSize headerFaceSize; // @synthesize headerFaceSize=_headerFaceSize;
 @property (strong, nonatomic) UIView *headerSeparator; // @synthesize headerSeparator=_headerSeparator;
@@ -102,7 +87,6 @@
 - (void)_addFace;
 - (void)_addFaceEndedForFace:(id)arg1;
 - (void)_addTapped;
-- (BOOL)_appExistsOnFace;
 - (BOOL)_cellIsHiddenBehindHeader:(id)arg1;
 - (void)_ensureOtherSection;
 - (void)_faceChangedOptionsForEditMode:(long long)arg1;
@@ -137,10 +121,9 @@
 - (void)faceResourceDirectoryDidChange:(id)arg1;
 - (id)initWithFace:(id)arg1;
 - (id)initWithFace:(id)arg1 externalAssets:(id)arg2;
-- (id)initWithFace:(id)arg1 inGallery:(BOOL)arg2 app:(id)arg3;
-- (id)initWithFace:(id)arg1 inGallery:(BOOL)arg2 app:(id)arg3 externalAssets:(id)arg4;
+- (id)initWithFace:(id)arg1 inGallery:(BOOL)arg2;
+- (id)initWithFace:(id)arg1 inGallery:(BOOL)arg2 externalAssets:(id)arg3;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (void)otherFacesWithAppSection:(id)arg1 didSelectFace:(id)arg2 finishedSelectionHandler:(CDUnknownBlockType)arg3;
 - (void)otherSection:(id)arg1 didChangeShowSeconds:(id)arg2 forMode:(long long)arg3;
 - (void)otherSection:(id)arg1 didToggleMonogram:(id)arg2 forSlot:(id)arg3;
 - (void)otherSectionDidSelectMonogramEdit:(id)arg1;

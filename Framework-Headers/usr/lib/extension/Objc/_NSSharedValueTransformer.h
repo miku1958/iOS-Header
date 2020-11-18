@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSValueTransformer.h>
+#import <Foundation/NSValueTransformer.h>
 
 @interface _NSSharedValueTransformer : NSValueTransformer
 {

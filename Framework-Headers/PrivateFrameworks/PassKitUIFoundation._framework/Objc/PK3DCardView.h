@@ -19,6 +19,7 @@
     int _design;
     MISSING_TYPE *_lastRollPitch;
     BOOL _renderedOnce;
+    BOOL _motionEnabled;
     id<PK3DLiveCardViewDelegate> _delegate;
 }
 
@@ -30,6 +31,7 @@
 
 + (id)_sharedMotionManager;
 - (void).cxx_destruct;
+- (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)renderSceneWithTextures:(id)arg1 shaders:(id)arg2;

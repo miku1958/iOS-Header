@@ -34,6 +34,8 @@
     BOOL _disableAppDemotion;
     BOOL _disableIntallTonight;
     BOOL _rampEnabled;
+    BOOL _criticalOutOfBoxOnly;
+    NSString *_setupCritical;
     NSDictionary *_systemPartitionPadding;
     NSData *_sepDigest;
     NSData *_rsepDigest;
@@ -41,9 +43,12 @@
     unsigned long long _mdmDelayInterval;
     BOOL _downloadableOverCellular;
     BOOL _streamingZipCapable;
+    NSString *_criticalDownloadPolicy;
 }
 
 @property (nonatomic) BOOL autoDownloadAllowableForCellular; // @synthesize autoDownloadAllowableForCellular=_autoDownloadAllowableForCellular;
+@property (strong, nonatomic) NSString *criticalDownloadPolicy; // @synthesize criticalDownloadPolicy=_criticalDownloadPolicy;
+@property (nonatomic) BOOL criticalOutOfBoxOnly; // @synthesize criticalOutOfBoxOnly=_criticalOutOfBoxOnly;
 @property (nonatomic, getter=appDemotionDisabled, setter=_setDisableAppDemotion:) BOOL disableAppDemotion; // @synthesize disableAppDemotion=_disableAppDemotion;
 @property (nonatomic, getter=cdLevel4Disabled, setter=_setDisableCDLevel4:) BOOL disableCDLevel4; // @synthesize disableCDLevel4=_disableCDLevel4;
 @property (nonatomic, getter=installTonightDisabled, setter=_setDisableInstallTonight:) BOOL disableInstallTonight; // @synthesize disableInstallTonight=_disableIntallTonight;
@@ -65,6 +70,7 @@
 @property (strong, nonatomic) NSString *releaseType; // @synthesize releaseType=_releaseType;
 @property (strong, nonatomic, setter=setRSEPDigest:) NSData *rsepDigest; // @synthesize rsepDigest=_rsepDigest;
 @property (strong, nonatomic, setter=setSEPDigest:) NSData *sepDigest; // @synthesize sepDigest=_sepDigest;
+@property (strong, nonatomic) NSString *setupCritical; // @synthesize setupCritical=_setupCritical;
 @property (nonatomic, getter=_isStreamingZipCapable, setter=_setStreamingZipCapable:) BOOL streamingZipCapable; // @synthesize streamingZipCapable=_streamingZipCapable;
 @property (strong, nonatomic) NSDictionary *systemPartitionPadding; // @synthesize systemPartitionPadding=_systemPartitionPadding;
 @property (nonatomic, getter=_unarchiveSize, setter=_setUnarchiveSize:) unsigned long long unarchiveSize; // @synthesize unarchiveSize=_unarchiveSize;
@@ -81,6 +87,7 @@
 - (id)humanReadableUpdateName;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEmergencyOrCritical;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValidDescriptor;
 - (unsigned long long)preparationSize;

@@ -20,8 +20,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) Class headlineResultsFetchDescriptorClass;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) Class todayResultsFetchDescriptorClass;
 
 - (void).cxx_destruct;
 - (id)init;

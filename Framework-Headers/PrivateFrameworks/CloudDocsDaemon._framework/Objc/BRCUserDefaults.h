@@ -27,6 +27,7 @@
 @property (readonly, nonatomic) NSDictionary *appLibraryAliasRemovalThrottleParams;
 @property (readonly, nonatomic) NSDictionary *appLibraryResetThrottleParams;
 @property (readonly, nonatomic) NSDictionary *appLibraryScanThrottleParams;
+@property (readonly, nonatomic) unsigned long long applyCountToSignalFaultsLive;
 @property (readonly, nonatomic) NSDictionary *applyThrottleParams;
 @property (readonly, nonatomic) double appsFetchPacerDelay;
 @property (readonly, nonatomic) NSSet *autoEvictableUTIs;

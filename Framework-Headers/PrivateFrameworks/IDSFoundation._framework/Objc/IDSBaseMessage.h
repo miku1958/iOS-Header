@@ -8,7 +8,8 @@
 
 #import <IDSFoundation/NSCopying-Protocol.h>
 
-@class IDSValidationSession, NSArray, NSData, NSDate, NSDictionary, NSMutableArray, NSNumber, NSString, NSURL;
+@class NSArray, NSData, NSDate, NSDictionary, NSMutableArray, NSNumber, NSString, NSURL;
+@protocol IDSBaseMessageSigningSession;
 
 @interface IDSBaseMessage : NSObject <NSCopying>
 {
@@ -45,7 +46,7 @@
     long long _importanceLevel;
     long long _deliveryMechanism;
     NSString *_underlyingService;
-    IDSValidationSession *_validationSession;
+    id<IDSBaseMessageSigningSession> _signingSession;
     NSURL *_URLOverride;
     unsigned long long _sentByteCount;
     unsigned long long _receivedByteCount;
@@ -107,6 +108,7 @@
 @property (copy, nonatomic) NSNumber *serverTimestampReceivedDate;
 @property (copy) NSString *service; // @synthesize service=_service;
 @property (copy) NSData *serviceData; // @synthesize serviceData=_serviceData;
+@property (strong, nonatomic) id<IDSBaseMessageSigningSession> signingSession; // @synthesize signingSession=_signingSession;
 @property (copy) NSString *subService; // @synthesize subService=_subService;
 @property double timeSent; // @synthesize timeSent=_timeSent;
 @property double timeout; // @synthesize timeout=_timeout;
@@ -118,7 +120,6 @@
 @property (readonly) NSString *userAgentHeaderString;
 @property (copy, nonatomic) NSMutableArray *userIDArray;
 @property (copy) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
-@property (strong, nonatomic) IDSValidationSession *validationSession; // @synthesize validationSession=_validationSession;
 @property (readonly) BOOL wantsAPSRetries;
 @property (readonly) BOOL wantsAnisetteHeaders;
 @property (readonly) BOOL wantsBagKey;

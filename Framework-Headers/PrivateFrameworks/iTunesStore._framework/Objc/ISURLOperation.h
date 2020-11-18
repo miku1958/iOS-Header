@@ -31,7 +31,6 @@
     BOOL _loadsHTTPFailures;
     BOOL _uploadProgressRequested;
     NSArray *_passThroughErrors;
-    NSNumber *_convertAccountDSID;
 }
 
 @property (readonly) SSHTTPArchive *HTTPArchive;
@@ -43,7 +42,6 @@
 @property (readonly, copy) NSURLRequest *activeURLRequest; // @synthesize activeURLRequest=_activeURLRequest;
 @property (strong) SSAuthenticationContext *authenticationContext; // @synthesize authenticationContext=_authenticationContext;
 @property (readonly, nonatomic) SSBag *bag;
-@property (copy, nonatomic) NSNumber *convertAccountDSID; // @synthesize convertAccountDSID=_convertAccountDSID;
 @property (strong) ISDataProvider *dataProvider; // @synthesize dataProvider=_dataProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<ISURLOperationDelegate> delegate; // @dynamic delegate;
@@ -55,6 +53,7 @@
 @property (readonly, nonatomic) NSNumber *metricsLoadURLSessionDuration;
 @property (strong, nonatomic) NSArray *passThroughErrors; // @synthesize passThroughErrors=_passThroughErrors;
 @property (readonly) ISURLRequestPerformance *performanceMetrics;
+@property (readonly, nonatomic) NSData *rawResponseData;
 @property (copy) SSURLRequestProperties *requestProperties;
 @property (strong) NSURLResponse *response; // @synthesize response=_response;
 @property (readonly, nonatomic) BOOL shouldDisableCellular;
@@ -82,7 +81,6 @@
 - (id)_accountIdentifier;
 - (id)_activeURL;
 - (id)_activeURLRequest;
-- (id)_copyAcceptLanguageString;
 - (id)_copyAuthenticationContext;
 - (id)_copyConnectionPropertiesWithDataConnectionServiceType:(struct __CFString *)arg1;
 - (id)_copyQueryStringDictionaryForRedirect:(id)arg1;

@@ -9,7 +9,7 @@
 #import <TemplateKit/NUIContainerStackViewDelegate-Protocol.h>
 #import <TemplateKit/TLKObservable-Protocol.h>
 
-@class NSString, TLKEmojiableVibrantLabel, TLKIconsView, TLKObserver, TLKRichText, TLKRoundedCornerLabels, TLKStarsView;
+@class NSString, TLKEmojiableVibrantLabel, TLKIconsView, TLKObserver, TLKRichText, TLKRoundedCornerLabels, TLKStarsView, UIFont;
 
 @interface TLKRichTextField : TLKStackView <TLKObservable, NUIContainerStackViewDelegate>
 {
@@ -23,6 +23,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong) UIFont *font;
 @property (readonly) unsigned long long hash;
 @property (strong) TLKIconsView *iconView; // @synthesize iconView=_iconView;
 @property (strong) TLKRichText *richText; // @synthesize richText=_richText;
@@ -32,7 +33,6 @@
 @property (readonly) Class superclass;
 @property (strong) TLKEmojiableVibrantLabel *textLabel; // @synthesize textLabel=_textLabel;
 
-+ (id)font;
 - (void).cxx_destruct;
 - (id)attributedString;
 - (struct UIEdgeInsets)containerStackView:(id)arg1 minimumSpacingAdjecentToArrangedSubview:(id)arg2;
@@ -43,7 +43,6 @@
 - (id)init;
 - (void)makeTertiary;
 - (id)observableProperties;
-- (void)setFont:(id)arg1;
 - (void)setStyle:(unsigned long long)arg1;
 - (void)updateIcons:(id)arg1;
 - (void)updateRoundedCornerLabels:(id)arg1;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     _UIKeyboardTextSelectionGestureController *_owner;
     NSMapTable *_weakMap;
+    id _deallocToken;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -73,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (void)oneFingerForcePan:(id)arg1;
 - (void)oneFingerForcePress:(id)arg1;
 - (id)owner;
+- (void)registerOwner:(id)arg1;
 - (id)selectionController;
 - (void)selfHide;
 - (void)twoFingerLongPressGestureWithState:(long long)arg1 withTranslation:(struct CGPoint)arg2;

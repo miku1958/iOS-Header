@@ -13,6 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axAttrTitle;
+- (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;
 

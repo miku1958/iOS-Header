@@ -6,19 +6,19 @@
 
 #import <UIKit/UIView.h>
 
-@class SFDetailedRowCardSection, SFSearchResult, SearchUIImageView;
+@class SFDetailedRowCardSection, SFSearchResult, SearchUIButton, SearchUIImageView;
 
 @interface SearchUIThumbnailView : UIView
 {
     SFSearchResult *_result;
     SFDetailedRowCardSection *_detailedCardSection;
     SearchUIImageView *_imageView;
-    UIView *_overlayPlayButton;
+    SearchUIButton *_overlayPlayButton;
 }
 
 @property (strong) SFDetailedRowCardSection *detailedCardSection; // @synthesize detailedCardSection=_detailedCardSection;
 @property (strong) SearchUIImageView *imageView; // @synthesize imageView=_imageView;
-@property (strong) UIView *overlayPlayButton; // @synthesize overlayPlayButton=_overlayPlayButton;
+@property (strong) SearchUIButton *overlayPlayButton; // @synthesize overlayPlayButton=_overlayPlayButton;
 @property (strong) SFSearchResult *result; // @synthesize result=_result;
 
 + (id)thumbnailForResult:(id)arg1;
@@ -30,8 +30,8 @@
 - (void)layoutSubviews;
 - (BOOL)preventThumbnailScaling;
 - (BOOL)shouldVerticallyCenter;
+- (void)showOverlayPlayButton;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)updateOverlayPlayButtonForThumbnail:(id)arg1 overlayButton:(BOOL)arg2;
 - (void)updateWithCardSection:(id)arg1;
 - (void)updateWithResult:(id)arg1;
 

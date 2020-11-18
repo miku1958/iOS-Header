@@ -13,10 +13,12 @@
     NSURL *_URL;
     MFIMAPConnection *_cachedConnection;
     NSRecursiveLock *_flagChangesLock;
+    BOOL _managed;
     DeliveryAccount *_deliveryAccount;
 }
 
 @property (strong, nonatomic) DeliveryAccount *deliveryAccount; // @synthesize deliveryAccount=_deliveryAccount;
+@property (nonatomic, getter=isManaged) BOOL managed; // @synthesize managed=_managed;
 
 - (void).cxx_destruct;
 - (id)URLString;

@@ -11,5 +11,6 @@
 + (id)fp_sortDescriptorByHierarchyPath;
 + (id)fp_sortDescriptorByModifiedDateDescending;
 - (id)fp_map:(CDUnknownBlockType)arg1;
+- (id)fp_pickItemsFromArray:(id)arg1 correspondingToIndexesOfItemsInArray:(id)arg2;
 @end
 

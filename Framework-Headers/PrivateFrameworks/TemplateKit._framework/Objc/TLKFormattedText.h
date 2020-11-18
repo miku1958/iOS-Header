@@ -28,6 +28,7 @@
 + (id)formattedTextWithString:(id)arg1;
 - (void).cxx_destruct;
 - (id)description;
+- (BOOL)hasContent;
 - (id)observableProperties;
 
 @end

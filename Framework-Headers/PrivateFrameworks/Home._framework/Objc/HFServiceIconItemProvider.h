@@ -11,18 +11,20 @@
 @interface HFServiceIconItemProvider : HFItemProvider
 {
     NSString *_serviceType;
+    NSString *_serviceSubtype;
     HMHome *_home;
     NSSet *_iconItems;
 }
 
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (copy, nonatomic) NSSet *iconItems; // @synthesize iconItems=_iconItems;
+@property (copy, nonatomic) NSString *serviceSubtype; // @synthesize serviceSubtype=_serviceSubtype;
 @property (copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (id)initWithServiceType:(id)arg1 home:(id)arg2;
+- (id)initWithServiceType:(id)arg1 serviceSubtype:(id)arg2 home:(id)arg3;
 - (id)items;
 - (id)reloadItems;
 

@@ -25,6 +25,7 @@
     NSArray *_completedURLs;
     unsigned long long _userResponse;
     unsigned long long _transferState;
+    unsigned long long _failureReason;
     NSURL *_customDestinationURL;
     id _progressToken;
 }
@@ -35,6 +36,7 @@
 @property (copy, nonatomic) NSString *contentsTitle; // @synthesize contentsTitle=_contentsTitle;
 @property (copy, nonatomic) NSURL *customDestinationURL; // @synthesize customDestinationURL=_customDestinationURL;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
+@property (nonatomic) unsigned long long failureReason; // @synthesize failureReason=_failureReason;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) SFAirDropTransferMetaData *metaData; // @synthesize metaData=_metaData;
 @property (readonly, nonatomic) BOOL needsAction;
@@ -45,6 +47,7 @@
 @property (nonatomic) unsigned long long transferState; // @synthesize transferState=_transferState;
 @property (nonatomic) unsigned long long userResponse; // @synthesize userResponse=_userResponse;
 
++ (BOOL)automaticallyNotifiesObserversOfFailureReason;
 + (BOOL)automaticallyNotifiesObserversOfTransferState;
 + (BOOL)automaticallyNotifiesObserversOfUserResponse;
 + (id)keyPathsForValuesAffectingNeedsAction;

@@ -18,15 +18,17 @@
     BOOL _isAutoMeCapable;
     NSString *_deviceId;
     NSString *_deviceName;
+    NSString *_idsDeviceId;
 }
 
 @property (copy, nonatomic) NSString *deviceId; // @synthesize deviceId=_deviceId;
 @property (copy, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
+@property (copy, nonatomic) NSString *idsDeviceId; // @synthesize idsDeviceId=_idsDeviceId;
 @property (nonatomic) BOOL isActiveDevice; // @synthesize isActiveDevice=_isActiveDevice;
 @property (nonatomic) BOOL isAutoMeCapable; // @synthesize isAutoMeCapable=_isAutoMeCapable;
 @property (nonatomic) BOOL isThisDevice; // @synthesize isThisDevice=_isThisDevice;
 
-+ (id)deviceWithId:(id)arg1 name:(id)arg2 isActive:(BOOL)arg3 isThisDevice:(BOOL)arg4 isAutoMeCapable:(BOOL)arg5;
++ (id)deviceWithId:(id)arg1 name:(id)arg2 idsDeviceId:(id)arg3 isActive:(BOOL)arg4 isThisDevice:(BOOL)arg5 isAutoMeCapable:(BOOL)arg6;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

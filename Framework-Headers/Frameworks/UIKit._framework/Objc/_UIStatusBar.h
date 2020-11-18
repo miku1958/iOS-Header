@@ -37,6 +37,7 @@
 @property (strong, nonatomic) UIAccessibilityHUDGestureManager *accessibilityHUDGestureManager; // @synthesize accessibilityHUDGestureManager=_accessibilityHUDGestureManager;
 @property (strong, nonatomic) _UIStatusBarAction *action; // @synthesize action=_action;
 @property (readonly, nonatomic) UIGestureRecognizer *actionGestureRecognizer; // @synthesize actionGestureRecognizer=_actionGestureRecognizer;
+@property (readonly, nonatomic, getter=areAnimationsEnabled) BOOL animationsEnabled;
 @property (readonly, nonatomic) UIView *containerView;
 @property (readonly, nonatomic) _UIStatusBarData *currentAggregatedData; // @synthesize currentAggregatedData=_currentAggregatedData;
 @property (readonly, nonatomic) _UIStatusBarData *currentData; // @synthesize currentData=_currentData;

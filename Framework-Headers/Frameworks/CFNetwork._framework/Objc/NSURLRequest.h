@@ -48,12 +48,15 @@
 - (BOOL)_URLHasScheme:(id)arg1;
 - (id)_allHTTPHeaderFieldsAsArrays;
 - (id)_copyReplacingURLWithURL:(id)arg1;
+- (BOOL)_ignoreHSTS;
 - (id)_initWithCFURLRequest:(struct _CFURLRequest *)arg1;
 - (BOOL)_isSafeRequestForBackgroundDownload;
 - (double)_payloadTransmissionTimeout;
+- (BOOL)_preventHSTSStorage;
 - (id)_propertyForKey:(id)arg1;
 - (void)_removePropertyForKey:(id)arg1;
 - (BOOL)_requiresShortConnectionTimeout;
+- (BOOL)_schemeWasUpgradedDueToDynamicHSTS;
 - (void)_setProperty:(id)arg1 forKey:(id)arg2;
 - (id)_startTimeoutDate;
 - (double)_timeWindowDelay;

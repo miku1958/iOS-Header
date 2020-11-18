@@ -9,6 +9,9 @@
 @interface HMHome (Additions)
 + (id)_hf_appDataKeyForColorPaletteOfType:(unsigned long long)arg1;
 - (id)hf_accessControlDescriptor;
+- (id)hf_accessoriesMatchingCategoryType:(id)arg1;
+- (id)hf_accessoriesSupportingSoftwareUpdate;
+- (id)hf_accessoryForSymptomsHandler:(id)arg1;
 - (id)hf_accessoryWithIdentifier:(id)arg1;
 - (id)hf_actionSetWithUUID:(id)arg1;
 - (id)hf_allBridgeAccessories;
@@ -26,13 +29,18 @@
 - (id)hf_colorPaletteOfType:(unsigned long long)arg1;
 - (BOOL)hf_currentUserIsAdministrator;
 - (BOOL)hf_currentUserIsOwner;
+- (BOOL)hf_hasAcceptedTermsAndConditionsForHomePodVersion:(id)arg1;
 - (BOOL)hf_hasMediaAccessories;
 - (BOOL)hf_homeHasOnboarded;
 - (BOOL)hf_isCurrentLocationHome;
+- (BOOL)hf_isMediaAccessoryProfileValid:(id)arg1;
 - (BOOL)hf_isPresenceAuthorizedForUser:(id)arg1;
 - (BOOL)hf_isUserAtHome;
+- (id)hf_markTermsAndConditionsAsAcceptedForHomePodWithLicenseAgreementVersion:(id)arg1;
 - (id)hf_mediaAccessories;
+- (id)hf_mediaSystemForAccessory:(id)arg1;
 - (id)hf_notesApplicationData;
+- (id)hf_personalRequestAccessories;
 - (id)hf_primaryResidentDevice;
 - (unsigned long long)hf_remoteAccessState;
 - (id)hf_reorderableActionSetsList;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSDistantObject.h>
+#import <Foundation/NSDistantObject.h>
 
 __attribute__((visibility("hidden")))
 @interface NSMutableStringProxy : NSDistantObject

@@ -9,7 +9,7 @@
 #import <PhotoLibraryServices/PLAssetContainer-Protocol.h>
 #import <PhotoLibraryServices/PLMomentData_Private-Protocol.h>
 
-@class CLLocation, NSArray, NSData, NSDate, NSObject, NSOrderedSet, NSString, PLManagedAsset, PLMomentLibrary, PLMomentList, PLMomentNameInfo;
+@class CLLocation, NSArray, NSData, NSDate, NSObject, NSOrderedSet, NSString, PLManagedAsset, PLMomentList, PLMomentNameInfo;
 @protocol NSCopying;
 
 @interface PLMoment : PLManagedObject <PLAssetContainer, PLMomentData_Private>
@@ -43,7 +43,6 @@
 @property (readonly, copy, nonatomic) NSString *localizedTitle;
 @property (strong, nonatomic) PLMomentList *megaMomentList; // @dynamic megaMomentList;
 @property (strong, nonatomic) NSDate *modificationDate; // @dynamic modificationDate;
-@property (strong, nonatomic) PLMomentLibrary *momentLibrary; // @dynamic momentLibrary;
 @property (readonly, nonatomic) unsigned long long photosCount;
 @property (strong, nonatomic) NSDate *representativeDate; // @dynamic representativeDate;
 @property (strong, nonatomic) NSData *reverseLocationData; // @dynamic reverseLocationData;
@@ -65,7 +64,6 @@
 
 + (id)allAssetsIncludedInMomentsInLibrary:(id)arg1;
 + (id)allAssetsIncludedInMomentsInManagedObjectContext:(id)arg1 IDsOnly:(BOOL)arg2 error:(id *)arg3;
-+ (id)allMomentsInLibrary:(id)arg1;
 + (id)allMomentsInManagedObjectContext:(id)arg1 error:(id *)arg2;
 + (id)allMomentsRequiringAnalysisInManagedObjectContext:(id)arg1 error:(id *)arg2;
 + (id)entityInManagedObjectContext:(id)arg1;

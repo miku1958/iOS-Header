@@ -21,9 +21,11 @@
     UILabel *_detailTextLabel;
     UILabel *_subLabel;
     double _flexibleHeight;
+    double _customTopPadding;
 }
 
 @property (strong, nonatomic) UIColor *bottomLineColor;
+@property (nonatomic) double customTopPadding; // @synthesize customTopPadding=_customTopPadding;
 @property (readonly, nonatomic) UILabel *detailTextLabel; // @synthesize detailTextLabel=_detailTextLabel;
 @property (nonatomic) double flexibleHeight; // @synthesize flexibleHeight=_flexibleHeight;
 @property (strong, nonatomic) UIImage *icon; // @synthesize icon=_icon;

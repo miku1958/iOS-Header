@@ -16,6 +16,7 @@
     id<TTSSpeechRequestDelegate> _delegate;
     TTSSpeechChannel *_speechChannel;
     BOOL _maintainsInput;
+    BOOL _supportsAccurateWordCallbacks;
     BOOL _audioSessionIDIsValid;
     BOOL _useVoiceBooster;
     BOOL _useMonarchStyleRate;
@@ -61,6 +62,7 @@
 @property (nonatomic) double rate; // @synthesize rate=_rate;
 @property (strong, nonatomic) NSMutableArray *replacedWords; // @synthesize replacedWords=_replacedWords;
 @property (strong, nonatomic) TTSSpeechChannel *speechChannel; // @synthesize speechChannel=_speechChannel;
+@property (nonatomic) BOOL supportsAccurateWordCallbacks; // @synthesize supportsAccurateWordCallbacks=_supportsAccurateWordCallbacks;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property (nonatomic) BOOL useMonarchStyleRate; // @synthesize useMonarchStyleRate=_useMonarchStyleRate;
 @property (nonatomic) BOOL useVoiceBooster; // @synthesize useVoiceBooster=_useVoiceBooster;

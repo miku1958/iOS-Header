@@ -117,7 +117,7 @@ __attribute__((visibility("hidden")))
     NSString *_watchExtensionBundleIdentifier;
     unsigned long long _forcedNetworkServiceType;
     NSDictionary *_overriddenDelegateOptions;
-    NSArray *_suppressedHTTPHeaders;
+    NSSet *_suppressedAutoAddedHTTPHeaders;
 }
 
 + (BOOL)supportsSecureCoding;
@@ -200,7 +200,7 @@ __attribute__((visibility("hidden")))
 - (id)_sourceApplicationBundleIdentifier;
 - (id)_sourceApplicationSecondaryIdentifier;
 - (BOOL)_supportsAVAssetDownloads;
-- (id)_suppressedHTTPHeaders;
+- (id)_suppressedAutoAddedHTTPHeaders;
 - (id)_tcpConnectionPoolName;
 - (long long)_timingDataOptions;
 - (id)_tlsTrustPinningPolicyName;
@@ -332,7 +332,7 @@ __attribute__((visibility("hidden")))
 - (void)set_sourceApplicationBundleIdentifier:(id)arg1;
 - (void)set_sourceApplicationSecondaryIdentifier:(id)arg1;
 - (void)set_supportsAVAssetDownloads:(BOOL)arg1;
-- (void)set_suppressedHTTPHeaders:(id)arg1;
+- (void)set_suppressedAutoAddedHTTPHeaders:(id)arg1;
 - (void)set_tcpConnectionPoolName:(id)arg1;
 - (void)set_timingDataOptions:(long long)arg1;
 - (void)set_tlsTrustPinningPolicyName:(id)arg1;

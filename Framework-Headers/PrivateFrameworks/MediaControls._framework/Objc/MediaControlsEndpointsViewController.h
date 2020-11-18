@@ -8,42 +8,89 @@
 
 #import <MediaControls/CCUIContentModuleContentViewController-Protocol.h>
 #import <MediaControls/MPAVRoutingViewControllerDelegate-Protocol.h>
+#import <MediaControls/MediaControlsCollectionViewDataSource-Protocol.h>
+#import <MediaControls/MediaControlsCollectionViewDelegate-Protocol.h>
+#import <MediaControls/MediaControlsEndpointsManagerDelegate-Protocol.h>
 #import <MediaControls/MediaControlsPanelViewControllerDelegate-Protocol.h>
 
-@class MPMediaControlsConfiguration, NSString, _MediaControlsEndpointsDataSource;
+@class MPAVEndpointRoute, MPAVOutputDeviceRoutingDataSource, MPAVRoutingViewController, MPMediaControlsConfiguration, MediaControlsEndpointsManager, NSObject, NSString;
+@protocol OS_dispatch_group;
 
-@interface MediaControlsEndpointsViewController : MediaControlsCollectionViewController <MPAVRoutingViewControllerDelegate, MediaControlsPanelViewControllerDelegate, CCUIContentModuleContentViewController>
+@interface MediaControlsEndpointsViewController : MediaControlsCollectionViewController <MPAVRoutingViewControllerDelegate, MediaControlsPanelViewControllerDelegate, MediaControlsCollectionViewDataSource, MediaControlsCollectionViewDelegate, MediaControlsEndpointsManagerDelegate, CCUIContentModuleContentViewController>
 {
+    MPAVOutputDeviceRoutingDataSource *_outputDeviceRoutingDataSource;
+    long long _lastSelectedModeForActivePanelViewController;
+    NSObject<OS_dispatch_group> *_routeSelectionNotificationGroup;
+    BOOL _didRetrieveActiveRouteOnce;
+    BOOL _hasSentSelectedIndex;
+    BOOL _prewarming;
+    BOOL _shouldTransitionToVisibleWhenReady;
+    long long _pendingSelectCount;
     BOOL _dismissing;
+    BOOL _onScreen;
     MPMediaControlsConfiguration *_configuration;
     CDUnknownBlockType _launchNowPlayingAppBlock;
     CDUnknownBlockType _routingCornerViewTappedBlock;
-    _MediaControlsEndpointsDataSource *_pickerDataSource;
+    MediaControlsEndpointsManager *_endpointsManager;
+    MPAVRoutingViewController *_routingViewController;
+    MPAVEndpointRoute *_selectedRoute;
+    NSString *_routingContextUID;
 }
 
 @property (strong, nonatomic) MPMediaControlsConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isDismissing) BOOL dismissing; // @synthesize dismissing=_dismissing;
+@property (strong, nonatomic) MediaControlsEndpointsManager *endpointsManager; // @synthesize endpointsManager=_endpointsManager;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType launchNowPlayingAppBlock; // @synthesize launchNowPlayingAppBlock=_launchNowPlayingAppBlock;
-@property (strong, nonatomic) _MediaControlsEndpointsDataSource *pickerDataSource; // @synthesize pickerDataSource=_pickerDataSource;
+@property (nonatomic, getter=isOnScreen) BOOL onScreen; // @synthesize onScreen=_onScreen;
 @property (readonly, nonatomic) double preferredExpandedContentHeight;
 @property (readonly, nonatomic) double preferredExpandedContentWidth;
 @property (readonly, nonatomic) BOOL providesOwnPlatter;
+@property (copy, nonatomic) NSString *routingContextUID; // @synthesize routingContextUID=_routingContextUID;
 @property (copy, nonatomic) CDUnknownBlockType routingCornerViewTappedBlock; // @synthesize routingCornerViewTappedBlock=_routingCornerViewTappedBlock;
+@property (strong, nonatomic) MPAVRoutingViewController *routingViewController; // @synthesize routingViewController=_routingViewController;
+@property (strong, nonatomic) MPAVEndpointRoute *selectedRoute; // @synthesize selectedRoute=_selectedRoute;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_createOrReuseViewController;
-- (void)_didSelectRoute;
-- (id)dataSource;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)_assignRouteViewControllerToSelectedPanelViewController;
+- (BOOL)_isReadyForAppearanceTransition;
+- (BOOL)_isSelectedRouteInRoutes;
+- (void)_setSelectedRoute:(id)arg1 isUserSelected:(BOOL)arg2;
+- (void)_setupEndpointsManager;
+- (void)_setupRoutingViewController;
+- (void)_transitionToVisible:(BOOL)arg1;
+- (void)_transitionToVisibleIfNeeded;
+- (void)_updateDiscoveryMode;
+- (void)_updateEndpointRouteForOutputDeviceDataSource:(id)arg1;
+- (void)_updateModesForSelectedMediaControlsPanelViewController;
+- (void)dealloc;
+- (long long)defaultSelectedItemIndexForCollectionViewController:(id)arg1;
+- (void)didDismissMediaControlsPanelViewController:(id)arg1;
+- (void)didSelectRoute:(id)arg1;
+- (void)endpointsManager:(id)arg1 activeSystemRouteDidChange:(id)arg2;
+- (void)endpointsManager:(id)arg1 willUpdateRoutes:(id)arg2 defersRoutesReplacement:(CDUnknownBlockType)arg3;
+- (void)homeObserverDidUpdateKnownUIDs:(id)arg1;
 - (void)launchNowPlayingApp:(id)arg1;
+- (BOOL)mediaControlsCollectionViewController:(id)arg1 canSelectItemAtIndex:(long long)arg2;
+- (void)mediaControlsCollectionViewController:(id)arg1 didDisplayViewController:(id)arg2 forItemAtIndex:(long long)arg3;
+- (void)mediaControlsCollectionViewController:(id)arg1 didEndDisplayingViewController:(id)arg2 forItemAtIndex:(long long)arg3;
+- (void)mediaControlsCollectionViewController:(id)arg1 didSelectItemAtIndex:(long long)arg2;
+- (id)mediaControlsCollectionViewController:(id)arg1 viewControllerForItemAtIndex:(long long)arg2;
+- (void)mediaControlsCollectionViewController:(id)arg1 willDisplayViewController:(id)arg2 forItemAtIndex:(long long)arg3;
+- (void)mediaControlsCollectionViewController:(id)arg1 willSelectItemAtIndex:(long long)arg2;
 - (void)mediaControlsPanelViewController:(id)arg1 didToggleRoutingPicker:(BOOL)arg2;
+- (long long)numberOfItemsInCollectionViewController:(id)arg1;
+- (void)reloadData;
 - (void)routingViewController:(id)arg1 didPickRoute:(id)arg2;
+- (void)setDisplayMode:(long long)arg1;
+- (void)startPrewarming;
+- (void)stopPrewarming;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 

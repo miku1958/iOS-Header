@@ -7,6 +7,7 @@
 #import <Foundation/NSFileManager.h>
 
 @interface NSFileManager (NSFileManagerAdditions)
++ (id)mf_defaultVolumeMountPoint;
 - (BOOL)mf_canWriteToDirectoryAtPath:(id)arg1;
 - (void)mf_deleteFilesInSortedArray:(id)arg1 matchingPrefix:(id)arg2 fromDirectory:(id)arg3;
 - (id)mf_fileModificationDateAtPath:(id)arg1 traverseLink:(BOOL)arg2;

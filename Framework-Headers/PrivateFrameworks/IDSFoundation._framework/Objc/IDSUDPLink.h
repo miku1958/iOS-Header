@@ -88,6 +88,7 @@
 - (unsigned long long)sendPacketBuffer:(CDStruct_3b17df7f *)arg1 toDeviceUniqueID:(id)arg2 cbuuid:(id)arg3;
 - (BOOL)setDestinationAddress:(id)arg1 isFixedDestination:(BOOL)arg2 fromAddress:(id)arg3;
 - (BOOL)setDestinationAddressToDeviceIDMap:(id)arg1;
+- (BOOL)setTrafficClass:(int)arg1;
 
 @end
 

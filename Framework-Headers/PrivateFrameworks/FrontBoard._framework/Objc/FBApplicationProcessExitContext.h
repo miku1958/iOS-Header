@@ -6,29 +6,42 @@
 
 #import <Foundation/NSObject.h>
 
-@class FBProcessState;
+#import <FrontBoard/BSDescriptionProviding-Protocol.h>
 
-@interface FBApplicationProcessExitContext : NSObject
+@class FBProcessState, FBProcessWatchdogEventContext, FBSProcessTerminationRequest, NSString;
+
+@interface FBApplicationProcessExitContext : NSObject <BSDescriptionProviding>
 {
     FBProcessState *_stateBeforeExiting;
     unsigned long long _exitReason;
     long long _terminationReason;
+    FBSProcessTerminationRequest *_terminationRequest;
+    FBProcessWatchdogEventContext *_watchdogContext;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) int exitCode;
 @property (readonly, nonatomic) unsigned long long exitReason; // @synthesize exitReason=_exitReason;
 @property (readonly, nonatomic) long long exitStatus;
 @property (readonly, nonatomic) BOOL exitedNormally;
-@property (readonly, copy, nonatomic) FBProcessState *stateBeforeExiting; // @synthesize stateBeforeExiting=_stateBeforeExiting;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) FBProcessState *stateBeforeExiting; // @synthesize stateBeforeExiting=_stateBeforeExiting;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) long long terminationReason; // @synthesize terminationReason=_terminationReason;
+@property (strong, nonatomic) FBSProcessTerminationRequest *terminationRequest; // @synthesize terminationRequest=_terminationRequest;
 @property (readonly, nonatomic) int terminationSignal;
+@property (strong, nonatomic) FBProcessWatchdogEventContext *watchdogContext; // @synthesize watchdogContext=_watchdogContext;
 
 + (id)descriptionForExitReason:(unsigned long long)arg1;
 - (BOOL)consideredJetsam;
 - (void)dealloc;
-- (id)description;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
 - (BOOL)fairPlayFailure;
-- (id)initWithExitReason:(unsigned long long)arg1 terminationReason:(long long)arg2 state:(id)arg3;
+- (id)initWithExitReason:(unsigned long long)arg1 terminationReason:(long long)arg2;
+- (id)succinctDescription;
+- (id)succinctDescriptionBuilder;
 
 @end
 

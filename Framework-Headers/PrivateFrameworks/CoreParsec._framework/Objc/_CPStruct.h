@@ -14,7 +14,8 @@
 
 @interface _CPStruct : PBCodable <_CPFeedbackJSONObject, _CPStruct, NSSecureCoding>
 {
-    NSDictionary *_fields;
+    NSDictionary *_stringKeyFields;
+    NSDictionary *_intKeyFields;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,22 +24,25 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, nonatomic) id feedbackJSON;
-@property (copy, nonatomic) NSDictionary *fields; // @synthesize fields=_fields;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSDictionary *intKeyFields; // @synthesize intKeyFields=_intKeyFields;
 @property (readonly, nonatomic) NSData *jsonData;
+@property (copy, nonatomic) NSDictionary *stringKeyFields; // @synthesize stringKeyFields=_stringKeyFields;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)getFields:(id *)arg1 forKey:(id)arg2;
+- (BOOL)getIntKeyFields:(id *)arg1 forKey:(int)arg2;
+- (BOOL)getStringKeyFields:(id *)arg1 forKey:(id)arg2;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithFacade:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (BOOL)requiresQueryId;
-- (void)setFields:(id)arg1 forKey:(id)arg2;
+- (void)setIntKeyFields:(id)arg1 forKey:(int)arg2;
+- (void)setStringKeyFields:(id)arg1 forKey:(id)arg2;
 - (void)writeTo:(id)arg1;
 
 @end

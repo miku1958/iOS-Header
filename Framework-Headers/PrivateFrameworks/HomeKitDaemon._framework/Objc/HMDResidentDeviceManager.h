@@ -84,6 +84,7 @@
 - (void)_registerForMessages;
 - (void)_removeResidentDevice:(id)arg1;
 - (void)_removeResidentDeviceWithModel:(id)arg1 message:(id)arg2;
+- (void)_run;
 - (void)_setupSessionWithPrimaryResidentDevice;
 - (void)_startMonitoringResident;
 - (void)_stopMonitoringResident;

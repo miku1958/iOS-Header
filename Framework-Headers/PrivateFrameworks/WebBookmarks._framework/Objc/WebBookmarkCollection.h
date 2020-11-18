@@ -21,6 +21,7 @@
     BOOL _dirty;
     SafariFetcherServerProxy *_safariFetcherServerProxy;
     BOOL _readonly;
+    BOOL _skipExternalNotifications;
     long long _mergeMode;
     WBDatabaseLockAcquisitor *_databaseLockAcquisitor;
     long long _lastObservedLocalMigrationState;
@@ -298,11 +299,12 @@
 - (unsigned long long)indexOfReadingListBookmark:(id)arg1 countingOnlyUnread:(BOOL)arg2;
 - (id)initReadonlySafariBookmarkCollection;
 - (id)initSafariBookmarkCollectionCheckingIntegrity:(BOOL)arg1;
-- (id)initSafariBookmarkCollectionCheckingIntegrity:(BOOL)arg1 readonlyCollection:(BOOL)arg2;
+- (id)initSafariBookmarkCollectionCheckingIntegrity:(BOOL)arg1 readonlyCollection:(BOOL)arg2 skipExternalNotifications:(BOOL)arg3;
+- (id)initSafariBookmarkCollectionCheckingIntegrity:(BOOL)arg1 skipExternalNotifications:(BOOL)arg2;
 - (id)initWithPath:(id)arg1;
 - (id)initWithPath:(id)arg1 checkIntegrity:(BOOL)arg2;
 - (id)initWithPath:(id)arg1 migratingBookmarksPlist:(id)arg2 syncAnchorPlist:(id)arg3;
-- (id)initWithPath:(id)arg1 migratingBookmarksPlist:(id)arg2 syncAnchorPlist:(id)arg3 checkIntegrity:(BOOL)arg4 readonlyCollection:(BOOL)arg5;
+- (id)initWithPath:(id)arg1 migratingBookmarksPlist:(id)arg2 syncAnchorPlist:(id)arg3 checkIntegrity:(BOOL)arg4 readonlyCollection:(BOOL)arg5 skipExternalNotifications:(BOOL)arg6;
 - (BOOL)isEmpty;
 - (id)listWithID:(int)arg1;
 - (id)listWithID:(int)arg1 skipOffset:(unsigned int)arg2;

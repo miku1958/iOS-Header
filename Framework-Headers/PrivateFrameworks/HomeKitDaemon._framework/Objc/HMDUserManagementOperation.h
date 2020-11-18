@@ -70,10 +70,10 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (long long)_accessoryInvitationState;
-- (void)_addPairingToAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_addPairingToHAPAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_endBackoffTimer;
 - (BOOL)_isFinished;
-- (void)_removePairingFromAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_removePairingFromHAPAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setupExpirationTimer;
 - (void)_startBackoffTimer;
 - (void)addDependency:(id)arg1;

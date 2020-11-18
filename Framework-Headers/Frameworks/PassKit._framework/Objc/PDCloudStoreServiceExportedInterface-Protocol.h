@@ -12,8 +12,11 @@
 - (void)allTransactionsAndStoreLocally:(BOOL)arg1 completion:(void (^)(PKCloudRecordArray *, NSError *))arg2;
 - (void)fetchAndStoreRecordsForPaymentPassWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(PKCloudRecordArray *, NSError *))arg2;
 - (void)removeTransactionsWithRecordNames:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)resetContainerWithCompletion:(void (^)(BOOL))arg1;
+- (void)resetContainerWithHandler:(void (^)(BOOL, NSError *))arg1;
 - (void)simulateCloudStorePushWithCompletion:(void (^)(PKCloudRecordArray *, NSArray *, NSError *))arg1;
 - (void)updateCloudStoreWithLocalItems:(NSArray *)arg1 recordSpecificKeys:(NSArray *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+
+@optional
+- (void)resetContainerWithCompletion:(void (^)(BOOL))arg1;
 @end
 

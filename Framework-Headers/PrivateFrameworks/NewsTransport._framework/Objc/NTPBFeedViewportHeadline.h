@@ -12,6 +12,7 @@
 
 @interface NTPBFeedViewportHeadline : PBCodable <NSCopying>
 {
+    CDStruct_95bda58d _surfacedByTagIDsRefs;
     double _tileProminenceScore;
     NSString *_articleID;
     NSString *_clusterID;
@@ -53,11 +54,15 @@
 @property (nonatomic) int surfacedByBinIDRef; // @synthesize surfacedByBinIDRef=_surfacedByBinIDRef;
 @property (nonatomic) int surfacedByChannelIDRef; // @synthesize surfacedByChannelIDRef=_surfacedByChannelIDRef;
 @property (nonatomic) int surfacedBySectionIDRef; // @synthesize surfacedBySectionIDRef=_surfacedBySectionIDRef;
+@property (readonly, nonatomic) int *surfacedByTagIDsRefs;
+@property (readonly, nonatomic) unsigned long long surfacedByTagIDsRefsCount;
 @property (nonatomic) int surfacedByTopicIDRef; // @synthesize surfacedByTopicIDRef=_surfacedByTopicIDRef;
 @property (nonatomic) double tileProminenceScore; // @synthesize tileProminenceScore=_tileProminenceScore;
 @property (nonatomic) int topStoryType; // @synthesize topStoryType=_topStoryType;
 @property (nonatomic) BOOL usesImageOnTopLayout; // @synthesize usesImageOnTopLayout=_usesImageOnTopLayout;
 
+- (void)addSurfacedByTagIDsRefs:(int)arg1;
+- (void)clearSurfacedByTagIDsRefs;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
@@ -66,6 +71,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (void)setSurfacedByTagIDsRefs:(int *)arg1 count:(unsigned long long)arg2;
+- (int)surfacedByTagIDsRefsAtIndex:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

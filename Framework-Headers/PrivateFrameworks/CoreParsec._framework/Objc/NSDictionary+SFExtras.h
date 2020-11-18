@@ -43,6 +43,8 @@
 - (id)sf_asTitleCardSection:(id)arg1;
 - (id)sf_asTrack:(id)arg1;
 - (id)sf_asTrackListCardSection:(id)arg1;
+- (id)sf_asWatchListCardSection:(id)arg1;
+- (id)sf_asWatchListItem:(id)arg1;
 - (id)sf_asWebCardSection:(id)arg1;
 - (void)sf_baseCardSection:(id)arg1 reply:(id)arg2;
 - (id)sf_imageForKey:(id)arg1 reply:(id)arg2;

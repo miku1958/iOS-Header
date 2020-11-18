@@ -46,17 +46,19 @@
         unsigned int channelOfDestinationAP;
     } _easyConfigPostConfigMetrics;
     int _finishState;
-    NSString *_configuration;
+    NSDictionary *_configuration;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSString *_label;
     CDUnknownBlockType _progressHandler;
+    CDUnknownBlockType _promptForSetupCodeHandler;
     CUWiFiDevice *_wacDevice;
 }
 
-@property (copy, nonatomic) NSString *configuration; // @synthesize configuration=_configuration;
+@property (copy, nonatomic) NSDictionary *configuration; // @synthesize configuration=_configuration;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
+@property (copy, nonatomic) CDUnknownBlockType promptForSetupCodeHandler; // @synthesize promptForSetupCodeHandler=_promptForSetupCodeHandler;
 @property (strong, nonatomic) CUWiFiDevice *wacDevice; // @synthesize wacDevice=_wacDevice;
 
 - (void).cxx_destruct;
@@ -80,6 +82,7 @@
 - (void)dealloc;
 - (id)init;
 - (void)invalidate;
+- (void)trySetupCode:(id)arg1;
 
 @end
 

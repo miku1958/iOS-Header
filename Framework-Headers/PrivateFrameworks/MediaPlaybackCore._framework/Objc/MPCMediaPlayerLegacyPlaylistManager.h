@@ -129,6 +129,7 @@
 - (void)setRepeatMode:(long long)arg1;
 - (BOOL)supportsAddToQueue;
 - (long long)upNextItemCount;
+- (void)updateLocationDependentPropertiesForItem:(id)arg1;
 
 @end
 

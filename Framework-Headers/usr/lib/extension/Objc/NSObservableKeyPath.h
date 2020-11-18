@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSBoundKeyPath.h>
+#import <Foundation/NSBoundKeyPath.h>
 
-#import <extension/NSObservable-Protocol.h>
+#import <Foundation/NSObservable-Protocol.h>
 
 @class NSString;
 @protocol NSObservable;

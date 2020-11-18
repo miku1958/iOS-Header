@@ -14,9 +14,12 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (BOOL)_accessibilityOnlyComparesByXAxis;
+- (void)buttonPressed:(id)arg1;
 - (void)layoutSubviews;
 - (void)refreshCustomizedActionTypeTitles;
 - (void)setCurrentState:(long long)arg1 animated:(BOOL)arg2 animationCompletionBlock:(CDUnknownBlockType)arg3;
+- (BOOL)shouldGroupAccessibilityChildren;
 
 @end
 

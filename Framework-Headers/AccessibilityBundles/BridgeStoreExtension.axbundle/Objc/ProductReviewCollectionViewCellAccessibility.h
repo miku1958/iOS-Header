@@ -15,9 +15,9 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityProductReviewCollectionViewCellElements;
 - (void)_setAccessibilityProductReviewCollectionViewCellElements:(id)arg1;
-- (id)accessibilityElements;
+- (id)accessibilityLabel;
+- (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
-- (void)layoutSubviews;
 
 @end
 

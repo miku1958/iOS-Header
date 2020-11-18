@@ -67,6 +67,7 @@
     id _duetContextRegistration;
     BOOL _powerOptimizationsForExpensiveNetworkingDisabled;
     CUTWeakReference *_weakConnectionManager;
+    double _nonCellularEarlyFireConstantInterval;
 }
 
 @property (nonatomic) BOOL alwaysWantsInterfaceChangeCallbacks; // @synthesize alwaysWantsInterfaceChangeCallbacks=_alwaysWantsInterfaceChangeCallbacks;
@@ -86,6 +87,7 @@
 @property double maximumKeepAliveInterval;
 @property (nonatomic) BOOL minimumIntervalFallbackEnabled; // @synthesize minimumIntervalFallbackEnabled=_minimumIntervalFallbackEnabled;
 @property (nonatomic) double minimumKeepAliveInterval;
+@property (nonatomic) double nonCellularEarlyFireConstantInterval; // @synthesize nonCellularEarlyFireConstantInterval=_nonCellularEarlyFireConstantInterval;
 @property (readonly, nonatomic) double pollingInterval;
 @property (nonatomic) BOOL powerOptimizationsForExpensiveNetworkingDisabled; // @synthesize powerOptimizationsForExpensiveNetworkingDisabled=_powerOptimizationsForExpensiveNetworkingDisabled;
 @property (readonly) Class superclass;

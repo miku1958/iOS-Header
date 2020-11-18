@@ -13,8 +13,9 @@
 
 @property BOOL sectionHasHeader; // @synthesize sectionHasHeader=_sectionHasHeader;
 
+- (BOOL)_insetsBackground;
+- (BOOL)_isUsingOldStyleMultiselection;
 - (void)_setShouldHaveFullLengthBottomSeparator:(BOOL)arg1;
-- (BOOL)_shouldHideSeparator;
 - (BOOL)_showSeparatorAtTopOfSection;
 - (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
 

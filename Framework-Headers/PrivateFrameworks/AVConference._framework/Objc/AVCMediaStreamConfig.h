@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class AVCAudioStreamConfig, AVCNetworkAddress, AVCVideoStreamConfig, NSData, NSString;
+@class AVCAudioStreamConfig, AVCNetworkAddress, AVCTextStreamConfig, AVCVideoStreamConfig, NSData, NSString;
 
 @interface AVCMediaStreamConfig : NSObject
 {
@@ -33,6 +33,7 @@
     long long _SRTCPCipherSuite;
     AVCAudioStreamConfig *_audio;
     AVCVideoStreamConfig *_video;
+    AVCTextStreamConfig *_text;
 }
 
 @property (nonatomic) long long SRTCPCipherSuite; // @synthesize SRTCPCipherSuite=_SRTCPCipherSuite;
@@ -56,6 +57,7 @@
 @property (nonatomic) double rtpTimeOutInterval; // @synthesize rtpTimeOutInterval=_rtpTimeOutInterval;
 @property (nonatomic) unsigned long long rxPayloadType; // @synthesize rxPayloadType=_rxPayloadType;
 @property (strong, nonatomic) NSData *sendMasterKey; // @synthesize sendMasterKey=_sendMasterKey;
+@property (strong, nonatomic) AVCTextStreamConfig *text; // @synthesize text=_text;
 @property (nonatomic) unsigned long long txPayloadType; // @synthesize txPayloadType=_txPayloadType;
 @property (strong, nonatomic) AVCVideoStreamConfig *video; // @synthesize video=_video;
 
@@ -70,6 +72,7 @@
 - (id)init;
 - (BOOL)isAudioCodecValid;
 - (BOOL)isValidAudioConfig;
+- (BOOL)isValidTextConfig;
 - (BOOL)isValidVideoConfig;
 - (void)setUpWithDictionary:(id)arg1;
 

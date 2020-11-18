@@ -60,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)_invalidateAccessoryViewContainer;
 - (void)_invalidateAccessoryViewTopOutset;
 - (void)_invalidateContainedToolbar;
+- (void)_invalidateSize;
 - (void)_invalidateToolbarItems;
 - (BOOL)_needsUpdate;
 - (void)_performChanges:(CDUnknownBlockType)arg1;

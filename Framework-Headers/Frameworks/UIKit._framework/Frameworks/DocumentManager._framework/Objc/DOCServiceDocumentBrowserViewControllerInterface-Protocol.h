@@ -12,6 +12,7 @@
 - (void)_dismissAllPresentedViewControllers:(BOOL)arg1 completion:(void (^)(void))arg2;
 - (void)_importDocumentAtURLWrapper:(FPSandboxingURLWrapper *)arg1 mode:(unsigned long long)arg2 toCurrentBrowserLocationWithCompletion:(void (^)(DOCItem *, NSError *))arg3;
 - (void)_importDocumentAtURLWrapper:(FPSandboxingURLWrapper *)arg1 nextToDocumentAtURLWrapper:(FPSandboxingURLWrapper *)arg2 mode:(unsigned long long)arg3 completionHandler:(void (^)(DOCItem *, NSError *))arg4;
+- (void)_renameDocumentAtURL:(FPSandboxingURLWrapper *)arg1 newName:(NSString *)arg2 completion:(void (^)(FPSandboxingURLWrapper *, NSError *))arg3;
 - (void)_revealDocumentAtURL:(FPSandboxingURLWrapper *)arg1 importIfNeeded:(BOOL)arg2 completion:(void (^)(DOCItem *, NSError *))arg3;
 - (void)_setAdditionalLeadingNavigationBarButtonItems:(NSArray *)arg1;
 - (void)_setAdditionalTrailingNavigationBarButtonItems:(NSArray *)arg1;

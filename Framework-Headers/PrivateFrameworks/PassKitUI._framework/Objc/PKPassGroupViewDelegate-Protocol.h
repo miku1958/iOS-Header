@@ -13,8 +13,8 @@
 @optional
 - (BOOL)groupView:(PKPassGroupView *)arg1 deleteButtonEnabledForPass:(PKPass *)arg2;
 - (void)groupView:(PKPassGroupView *)arg1 deleteButtonPressedForPass:(PKPass *)arg2;
-- (void)groupView:(PKPassGroupView *)arg1 didScrollToPassView:(PKPassView *)arg2;
 - (void)groupView:(PKPassGroupView *)arg1 didUpdatePassView:(PKPassView *)arg2;
+- (void)groupView:(PKPassGroupView *)arg1 frontmostPassViewDidChange:(PKPassView *)arg2;
 - (void)groupView:(PKPassGroupView *)arg1 panned:(struct CGPoint)arg2 withVelocity:(struct CGPoint)arg3;
 - (void)groupView:(PKPassGroupView *)arg1 resizeButtonPressedForPass:(PKPass *)arg2 withBarcode:(BOOL)arg3;
 - (struct CGRect)groupView:(PKPassGroupView *)arg1 targetPageControlFrameForProposedFrame:(struct CGRect)arg2;

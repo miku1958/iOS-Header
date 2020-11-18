@@ -39,7 +39,6 @@
 @property (strong, nonatomic) HFItem *usersItem; // @synthesize usersItem=_usersItem;
 @property (strong, nonatomic) HFItem *wallpaperThumbnailItem; // @synthesize wallpaperThumbnailItem=_wallpaperThumbnailItem;
 
-+ (BOOL)_isICloudEnabled;
 + (CDUnknownBlockType)residentDeviceItemComparator;
 - (void).cxx_destruct;
 - (id)_buildItemProvidersForHome:(id)arg1;

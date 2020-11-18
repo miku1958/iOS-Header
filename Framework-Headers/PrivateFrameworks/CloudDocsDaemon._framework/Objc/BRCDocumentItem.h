@@ -30,6 +30,7 @@
 @property (readonly, nonatomic) BOOL hasLocalContent;
 @property (readonly, nonatomic) BOOL isAutomaticallyEvictable;
 @property (readonly, nonatomic) BOOL isDownloadRequested;
+@property (readonly, nonatomic) BOOL isDownloadRequestedForThumbnail;
 @property (readonly, nonatomic) BOOL isEvictable;
 @property (readonly, nonatomic) BOOL isVisibleIniCloudDrive;
 @property (strong, nonatomic) NSSet *liveConflictLoserEtags; // @synthesize liveConflictLoserEtags=_liveConflictLoserEtags;
@@ -97,7 +98,7 @@
 - (void)markForceNeedsSyncUp;
 - (void)markForceUpload;
 - (void)markItemForgottenByServer;
-- (void)markLatestRequestAcknowledgedInZone:(id)arg1;
+- (BOOL)markLatestRequestAcknowledgedInZone:(id)arg1;
 - (void)markLatestSyncRequestRejectedInZone:(id)arg1;
 - (void)markLiveFromStageWithPath:(id)arg1;
 - (void)markNeedsReading;

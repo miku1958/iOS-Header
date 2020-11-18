@@ -6,9 +6,9 @@
 
 #import <NewsUI/NSObject-Protocol.h>
 
-@protocol FCHeadlineProviding, NUActivityProvider;
+@protocol FCHeadlineProviding, NUActivityProvider, NUReportConcernViewPresenter;
 
 @protocol NUArticleActivityFactory <NSObject>
-- (id<NUActivityProvider>)activityProviderForHeadline:(id<FCHeadlineProviding>)arg1;
+- (id<NUActivityProvider>)activityProviderForHeadline:(id<FCHeadlineProviding>)arg1 reportConcernViewPresenter:(id<NUReportConcernViewPresenter>)arg2;
 @end
 

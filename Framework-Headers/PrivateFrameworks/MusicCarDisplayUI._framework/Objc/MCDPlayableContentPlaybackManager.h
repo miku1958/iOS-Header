@@ -74,6 +74,7 @@
 - (CDStruct_fce57115)durationSnapshotForNowPlayingViewController:(id)arg1;
 - (void)endRequestObservation;
 - (id)initWithDelegate:(id)arg1 model:(id)arg2;
+- (void)modelResponseDidInvalidate:(id)arg1;
 - (BOOL)nowPlayingViewController:(id)arg1 buttonShouldBeActive:(long long)arg2;
 - (void)nowPlayingViewController:(id)arg1 didSendAction:(long long)arg2 state:(long long)arg3;
 - (BOOL)nowPlayingViewController:(id)arg1 shouldDisplayButton:(long long)arg2 withImage:(out id *)arg3 existingIdentifier:(id)arg4 tinted:(out BOOL *)arg5;

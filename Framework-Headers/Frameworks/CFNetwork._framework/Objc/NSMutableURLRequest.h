@@ -25,7 +25,9 @@
 @property unsigned long long networkServiceType;
 @property double timeoutInterval;
 
+- (void)_setIgnoreHSTS:(BOOL)arg1;
 - (void)_setPayloadTransmissionTimeout:(double)arg1;
+- (void)_setPreventHSTSStorage:(BOOL)arg1;
 - (void)_setRequiresShortConnectionTimeout:(BOOL)arg1;
 - (void)_setStartTimeoutDate:(id)arg1;
 - (void)_setTimeWindowDelay:(double)arg1;

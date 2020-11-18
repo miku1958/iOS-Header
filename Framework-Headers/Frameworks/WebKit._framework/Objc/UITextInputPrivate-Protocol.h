@@ -8,7 +8,7 @@
 #import <WebKit/UITextInputTokenizer-Protocol.h>
 #import <WebKit/UITextInputTraits_Private-Protocol.h>
 
-@class NSArray, NSAttributedString, NSString, UIColor, UIDictationSerializableResults, UIFont, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UITextSuggestion, UIView, WebEvent;
+@class NSArray, NSAttributedString, NSDictionary, NSString, UIColor, UIDictationSerializableResults, UIFont, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UITextSuggestion, UIView, WebEvent;
 @protocol UISelectionInteractionAssistant, UITextInputSuggestionDelegate;
 
 @protocol UITextInputPrivate <UITextInput, UITextInputTokenizer, UITextInputTraits_Private>
@@ -25,6 +25,7 @@
 - (UITextInputTraits *)textInputTraits;
 
 @optional
+- (NSDictionary *)_autofillContext;
 - (double)_delayUntilRepeatInsertText:(NSString *)arg1;
 - (void)_didHideCorrections;
 - (void)_insertAttributedTextWithoutClosingTyping:(NSAttributedString *)arg1;

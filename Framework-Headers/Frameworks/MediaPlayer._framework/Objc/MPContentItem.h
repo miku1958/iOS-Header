@@ -7,13 +7,9 @@
 #import <Foundation/NSObject.h>
 
 @class MPMediaItemArtwork, NSString;
-@protocol OS_dispatch_queue;
 
 @interface MPContentItem : NSObject
 {
-    void *_mediaRemoteDeltaContentItem;
-    NSObject<OS_dispatch_queue> *_notificationQueue;
-    BOOL _hasChanges;
     void *_mediaRemoteContentItem;
     MPMediaItemArtwork *_artwork;
 }
@@ -33,15 +29,16 @@
 + (void)performSuppressingChangeNotifications:(CDUnknownBlockType)arg1;
 + (BOOL)shouldPushArtworkData;
 - (void).cxx_destruct;
-- (void)_applyDeferredNotification;
-- (id)_changeDictionary;
 - (id)_initWithMediaRemoteContentItem:(void *)arg1;
 - (void)_loadArtwork:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_postItemChangedNotificationWithDeltaBlock:(CDUnknownBlockType)arg1;
+- (id)createExternalRepresentation;
 - (void)dealloc;
 - (id)description;
 - (id)init;
+- (id)initWithExternalRepresentation:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

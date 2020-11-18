@@ -33,8 +33,6 @@
 - (void)_addXORAddressAttribute:(long long)arg1 value:(struct sockaddr *)arg2;
 - (BOOL)addAttribute:(struct IDSStunAttribute *)arg1;
 - (BOOL)allocationRequestWithDictionaryToBuffer:(id)arg1 outputBuffer:(char *)arg2 outputLength:(int *)arg3 lifeTime:(int)arg4;
-- (BOOL)bindingRequestToBuffer:(char *)arg1 outputLength:(int *)arg2 transactionID:(char *)arg3 nominateCount:(int)arg4 userName:(char *)arg5 usernameLen:(int)arg6 sendTime:(unsigned short)arg7 keyData:(id)arg8;
-- (BOOL)bindingResponseToBuffer:(char *)arg1 outputLength:(int *)arg2 transactionID:(id)arg3 nominateCount:(int)arg4 echoTime:(unsigned short)arg5 delay:(unsigned short)arg6 keyData:(id)arg7;
 - (BOOL)channelBindRequestWithDictionaryToBuffer:(id)arg1 outputBuffer:(char *)arg2 outputLength:(int *)arg3 channelNumber:(unsigned short)arg4;
 - (BOOL)dataIndicationToBuffer:(char *)arg1 outputLength:(int *)arg2 data:(char *)arg3 dataLen:(int)arg4 keyData:(id)arg5;
 - (id)description;
@@ -47,6 +45,8 @@
 - (BOOL)read:(char *)arg1 inputLength:(int)arg2 internal:(BOOL)arg3;
 - (BOOL)refreshRequestToBuffer:(char *)arg1 outputLength:(int *)arg2 lifeTime:(int)arg3;
 - (BOOL)setTransactionID:(id)arg1 attributes:(id)arg2;
+- (BOOL)stunRequestToBuffer:(char *)arg1 outputLength:(int *)arg2 transactionID:(char *)arg3 reqCount:(int)arg4 userName:(char *)arg5 usernameLen:(int)arg6 sendTime:(unsigned short)arg7 keyData:(id)arg8;
+- (BOOL)stunResponseToBuffer:(char *)arg1 outputLength:(int *)arg2 transactionID:(id)arg3 reqCount:(int)arg4 echoTime:(unsigned short)arg5 delay:(unsigned short)arg6 keyData:(id)arg7;
 - (BOOL)verifyMessageIntegrityWithKey:(id)arg1 inputBuffer:(char *)arg2 inputLength:(int)arg3;
 - (BOOL)write:(char *)arg1 outputLength:(int *)arg2;
 - (BOOL)write:(char *)arg1 outputLength:(int *)arg2 internal:(BOOL)arg3;

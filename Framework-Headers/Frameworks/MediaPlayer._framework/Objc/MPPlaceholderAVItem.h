@@ -27,6 +27,7 @@
 @property (strong, nonatomic) NSString *mainTitle; // @synthesize mainTitle=_mainTitle;
 @property (nonatomic) BOOL supportsLikedState; // @synthesize supportsLikedState=_supportsLikedState;
 
++ (BOOL)isPlaceholder;
 - (void).cxx_destruct;
 - (BOOL)isValidPlayerSubstituteForItem:(id)arg1;
 - (void)loadAssetAndPlayerItem;

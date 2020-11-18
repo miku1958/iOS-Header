@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
     NSIndexPath *_dragStartNextPageIndexPath;
     NSIndexPath *_dragStartPreviousPageIndexPath;
     NSDictionary *_opacities;
+    struct CGSize _lastLayoutSize;
     struct CGPoint _dragStartOffset;
 }
 
@@ -56,6 +57,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL forceReloadInitiallyHiddenCandidates; // @synthesize forceReloadInitiallyHiddenCandidates=_forceReloadInitiallyHiddenCandidates;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *inlineText; // @synthesize inlineText=_inlineText;
+@property (nonatomic) struct CGSize lastLayoutSize; // @synthesize lastLayoutSize=_lastLayoutSize;
 @property (strong, nonatomic) UIKeyboardCandidatePocketShadow *leftBorder; // @synthesize leftBorder=_leftBorder;
 @property (strong, nonatomic) NSDictionary *opacities; // @synthesize opacities=_opacities;
 @property (strong, nonatomic) UIKeyboardCandidatePocketShadow *rightBorder; // @synthesize rightBorder=_rightBorder;

@@ -19,10 +19,14 @@
     NSObject<OS_dispatch_queue> *_workQueue;
     MPUQueryDataSource *_queryDataSource;
     WLKUIOrderedItemsMap *_orderedItemsMap;
+    NSOperationQueue *_fetchOperationQueue;
+    NSOperationQueue *_fetchCompletionOperationQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSOperationQueue *fetchCompletionOperationQueue; // @synthesize fetchCompletionOperationQueue=_fetchCompletionOperationQueue;
+@property (strong, nonatomic) NSOperationQueue *fetchOperationQueue; // @synthesize fetchOperationQueue=_fetchOperationQueue;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) WLKUIOrderedItemsMap *orderedItemsMap; // @synthesize orderedItemsMap=_orderedItemsMap;
 @property (strong, nonatomic) MPUQueryDataSource *queryDataSource; // @synthesize queryDataSource=_queryDataSource;
@@ -37,6 +41,7 @@
 - (id)_dateFromConfigurationObject:(id)arg1;
 - (id)_getItem:(id)arg1 includeChildren:(BOOL)arg2 additionalProperties:(id)arg3;
 - (id)_identifierForMediaItem:(id)arg1 withProperty:(id)arg2;
+- (id)_logObject;
 - (id)_mediaItemForIdentifier:(id)arg1;
 - (void)_mediaLibraryChanged:(id)arg1;
 - (id)_numberForString:(id)arg1;
@@ -44,6 +49,7 @@
 - (void)_onSyncGenerationChangedNotification:(id)arg1;
 - (id)_stringForNumber:(id)arg1;
 - (void)dealloc;
+- (void)fetchMediaEntitiesWithOptions:(id)arg1:(id)arg2;
 - (id)findItemByPersistentIdentifier:(id)arg1:(id)arg2;
 - (id)findItemByStoreIdentifier:(id)arg1:(id)arg2;
 - (void)getImageForItem:(id)arg1:(id)arg2:(id)arg3;
@@ -56,6 +62,7 @@
 - (id)getShowIdentifierForStoreIdentifier:(id)arg1;
 - (void)getUpdateProgress:(id)arg1;
 - (id)initWithAppContext:(id)arg1;
+- (BOOL)isHDRCapable;
 - (void)itemsMapAddedKeys:(id)arg1 andRemovedKeys:(id)arg2;
 - (BOOL)libraryHasMedia;
 - (long long)queryHasItemCount:(id)arg1;

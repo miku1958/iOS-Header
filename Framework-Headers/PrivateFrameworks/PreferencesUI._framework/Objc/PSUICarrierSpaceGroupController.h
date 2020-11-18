@@ -40,6 +40,7 @@
 - (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2;
 - (void)newCarrierNotification;
 - (void)openURLWithSpecifier:(id)arg1;
+- (void)remoteUIController:(id)arg1 didReceiveHTTPResponse:(id)arg2;
 - (void)remoteUIController:(id)arg1 willPresentModalNavigationController:(id)arg2;
 - (void)showConsentFlow:(id)arg1;
 - (void)showTermsAndConditions:(id)arg1 consentFlowInfo:(id)arg2;

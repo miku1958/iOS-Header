@@ -19,8 +19,6 @@
 @property (strong, nonatomic) NSArray *searchResults; // @synthesize searchResults=_searchResults;
 
 - (void).cxx_destruct;
-- (void)contentSizeCategoryDidChange:(id)arg1;
-- (void)dealloc;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)updateWithSearchText:(id)arg1 searchResults:(id)arg2;

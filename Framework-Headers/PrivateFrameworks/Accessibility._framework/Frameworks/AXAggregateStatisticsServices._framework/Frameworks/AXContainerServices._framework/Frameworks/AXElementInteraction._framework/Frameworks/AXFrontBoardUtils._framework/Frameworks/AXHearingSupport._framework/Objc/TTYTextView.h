@@ -38,6 +38,7 @@
 @property (strong, nonatomic) NSArray *ttyAbbreviations; // @synthesize ttyAbbreviations=_ttyAbbreviations;
 
 - (void).cxx_destruct;
+- (BOOL)_accessibilityIsRealtimeElement;
 - (void)_didPanPredictions:(id)arg1;
 - (void)_didSwipeLeft:(id)arg1;
 - (void)_insertWhitespaceIfNeeded;
@@ -61,7 +62,6 @@
 - (id)inputAccessoryView;
 - (id)keyCommands;
 - (long long)keyboardAppearance;
-- (long long)keyboardType;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)overrideTTYPredictionsHidden:(BOOL)arg1;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;

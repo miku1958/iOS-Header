@@ -9,7 +9,7 @@
 #import <FMF/FMFXPCInternalClientProtocol-Protocol.h>
 
 @class NSMutableDictionary, NSMutableSet, NSOperationQueue, NSSet, NSString, NSXPCConnection;
-@protocol FMFSessionDelegate;
+@protocol FMFSessionDelegate, OS_dispatch_queue;
 
 @interface FMFSession : NSObject <FMFXPCInternalClientProtocol>
 {
@@ -23,6 +23,7 @@
     NSMutableDictionary *_cachedLocationForHandleByHandle;
     NSMutableDictionary *_cachedOfferExpirationForHandleByHandle;
     NSMutableDictionary *_cachedCanShareLocationWithHandleByHandle;
+    NSObject<OS_dispatch_queue> *_connectionQueue;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *cachedCanShareLocationWithHandleByHandle; // @synthesize cachedCanShareLocationWithHandleByHandle=_cachedCanShareLocationWithHandleByHandle;
@@ -31,6 +32,7 @@
 @property (strong, nonatomic) NSMutableDictionary *cachedLocationForHandleByHandle; // @synthesize cachedLocationForHandleByHandle=_cachedLocationForHandleByHandle;
 @property (strong, nonatomic) NSMutableDictionary *cachedOfferExpirationForHandleByHandle; // @synthesize cachedOfferExpirationForHandleByHandle=_cachedOfferExpirationForHandleByHandle;
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *connectionQueue; // @synthesize connectionQueue=_connectionQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<FMFSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSOperationQueue *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
@@ -46,7 +48,9 @@
 + (BOOL)isProvisionedForLocationSharing;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)__connection;
 - (void)_checkAndDisplayMeDeviceSwitchAlert;
+- (void)_daemonDidLaunch;
 - (BOOL)_isNoMappingPacketReturnedError:(id)arg1;
 - (void)_registerForFMFDLaunchedNotification;
 - (void)_sendAutoSwitchMeDevice;
@@ -144,7 +148,6 @@
 - (oneway void)sendMappingPacket:(id)arg1 toHandle:(id)arg2;
 - (id)serverProxy;
 - (void)sessionHandleReport:(CDUnknownBlockType)arg1;
-- (void)sessionWasCreatedRefresh;
 - (void)setActiveDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setExpiredInitTimestamp;
 - (void)setHideMyLocationEnabled:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;

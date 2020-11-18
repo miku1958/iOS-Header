@@ -8,21 +8,22 @@
 
 #import <Search/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSMutableArray, NSNumber, NSString, PRSL2FeatureVector, PRSL3FeatureVector, PRSRankingItem;
+@class NSArray, NSData, NSDate, NSMutableArray, NSNumber, NSString, PRSL2FeatureVector, PRSL3FeatureVector, PRSRankingItem, SFPunchout;
 
 @interface SFSearchResult_SpotlightExtras : SFSearchResult <NSSecureCoding>
 {
+    SFPunchout *_cachedPunchout;
     BOOL _coreSpotlightSourced;
     BOOL _isParsecResult;
     BOOL _hasAssociatedUserActivity;
+    float _l3score;
+    float _l2score;
     NSString *_queryString;
     NSString *_protectionClass;
     NSNumber *_fileIdentifier;
     NSNumber *_parentFileIdentifier;
     NSString *_filename;
     NSNumber *_documentIdentifier;
-    double _l3score;
-    double _l2score;
     NSString *_launchString;
     NSArray *_launchDates;
     PRSL2FeatureVector *_L2FeatureVector;
@@ -55,8 +56,8 @@
 @property (strong, nonatomic) NSString *filename; // @synthesize filename=_filename;
 @property (nonatomic) BOOL hasAssociatedUserActivity; // @synthesize hasAssociatedUserActivity=_hasAssociatedUserActivity;
 @property (nonatomic) BOOL isParsecResult; // @synthesize isParsecResult=_isParsecResult;
-@property (nonatomic) double l2score; // @synthesize l2score=_l2score;
-@property (nonatomic) double l3score; // @synthesize l3score=_l3score;
+@property (nonatomic) float l2score; // @synthesize l2score=_l2score;
+@property (nonatomic) float l3score; // @synthesize l3score=_l3score;
 @property (strong) NSDate *lastUsedDate; // @synthesize lastUsedDate=_lastUsedDate;
 @property (strong, nonatomic) NSArray *launchDates; // @synthesize launchDates=_launchDates;
 @property (strong, nonatomic) NSString *launchString; // @synthesize launchString=_launchString;
@@ -82,6 +83,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)objectForFeedback;
+- (id)punchout;
 - (void)setUrl:(id)arg1;
 
 @end

@@ -14,6 +14,7 @@
 {
     struct GEOSessionID _sessionID;
     struct GEOTimepoint _clientTimepoint;
+    double _sessionRelativeTimestamp;
     GEOPDABClientDatasetMetadata *_abClientMetadata;
     GEOAdditionalEnabledMarkets *_additionalEnabledMarkets;
     GEOClientCapabilities *_clientCapabilities;
@@ -38,6 +39,7 @@
     struct {
         unsigned int sessionID:1;
         unsigned int clientTimepoint:1;
+        unsigned int sessionRelativeTimestamp:1;
         unsigned int maxAlternateRouteCount:1;
         unsigned int previouslyRejectedRerouteSavings:1;
         unsigned int rerouteStatus:1;
@@ -71,6 +73,7 @@
 @property (nonatomic) BOOL hasRerouteStatus;
 @property (readonly, nonatomic) BOOL hasRouteAttributes;
 @property (nonatomic) BOOL hasSessionID;
+@property (nonatomic) BOOL hasSessionRelativeTimestamp;
 @property (readonly, nonatomic) BOOL hasSessionState;
 @property (readonly, nonatomic) BOOL hasTrafficSnapshot;
 @property (readonly, nonatomic) BOOL hasTripID;
@@ -86,6 +89,7 @@
 @property (strong, nonatomic) NSMutableArray *routes; // @synthesize routes=_routes;
 @property (strong, nonatomic) NSMutableArray *serviceTags; // @synthesize serviceTags=_serviceTags;
 @property (nonatomic) struct GEOSessionID sessionID; // @synthesize sessionID=_sessionID;
+@property (nonatomic) double sessionRelativeTimestamp; // @synthesize sessionRelativeTimestamp=_sessionRelativeTimestamp;
 @property (strong, nonatomic) NSData *sessionState; // @synthesize sessionState=_sessionState;
 @property (strong, nonatomic) GEOTFTrafficSnapshot *trafficSnapshot;
 @property (strong, nonatomic) NSData *tripID; // @synthesize tripID=_tripID;

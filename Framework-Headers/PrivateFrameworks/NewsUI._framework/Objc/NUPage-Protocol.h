@@ -9,7 +9,7 @@
 #import <NewsUI/NUPageStyling-Protocol.h>
 
 @class NSString, UIViewController;
-@protocol NUPagable;
+@protocol NUPageable;
 
 @protocol NUPage <NUPageStyling, NUPageNextActionable, NUAdContextProvider>
 
@@ -19,6 +19,6 @@
 - (void)activityProvider:(void (^)(id<NUActivityProvider>))arg1;
 - (void)prepare;
 - (void)unprepare;
-- (UIViewController<NUPagable> *)viewController;
+- (UIViewController<NUPageable> *)viewController;
 @end
 

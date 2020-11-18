@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOMapServiceSearchTicket-Protocol.h>
 
-@class GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEORelatedSearchSuggestion, NSArray, NSDictionary, NSString;
+@class GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEORelatedSearchSuggestion, GEOResolvedItem, NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _GEOPlaceSearchRequestTicket : _GEOPlaceRequestTicket <GEOMapServiceSearchTicket>
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long cachePolicy;
 @property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
 @property (readonly, nonatomic, getter=isChainResultSet) BOOL chainResultSet;
+@property (readonly, nonatomic) GEOResolvedItem *clientResolvedResult;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) GEORelatedSearchSuggestion *defaultRelatedSuggestion;
 @property (readonly, copy) NSString *description;

@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (struct __CFString *)domainIdentifier;
+- (void)forEachObserver:(CDUnknownBlockType)arg1;
 - (void)fullCloudSynchronizeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (long long)generationCount;
 - (void)handleRemoteChangeNotificationForDomainIdentifier:(struct __CFString *)arg1;

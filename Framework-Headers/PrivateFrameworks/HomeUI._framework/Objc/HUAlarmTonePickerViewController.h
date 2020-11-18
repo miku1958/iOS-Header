@@ -48,7 +48,7 @@
 - (id)_titleForItemAtIndexPath:(id)arg1;
 - (id)_toneIdentifierForIndexPath:(id)arg1;
 - (void)_updateWithToneIdentifier:(id)arg1 mediaIdentifier:(id)arg2 notifyDelegate:(BOOL)arg3;
-- (void)addMediaItems:(id)arg1;
+- (void)addMediaItemsWithIdentifiers:(id)arg1;
 - (void)dealloc;
 - (id)initWithLoggedInAppleMusicAccountDSID:(id)arg1;
 - (void)mediaPicker:(id)arg1 didPickMediaItems:(id)arg2;

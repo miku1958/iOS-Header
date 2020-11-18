@@ -14,6 +14,7 @@
 @optional
 - (void)alertWithIdentifierDidAppear:(NSString *)arg1;
 - (void)alertWithIdentifierDidDisappear:(NSString *)arg1;
+- (void)alertWithIdentifierWasActivated:(NSString *)arg1;
 - (void)alertWithIdentifierWasEnqueued:(NSString *)arg1;
 - (double)delayForDequeuingAlertWithIdentifier:(NSString *)arg1;
 - (double)desiredWindowLevelForAlertWithIdentifier:(NSString *)arg1;

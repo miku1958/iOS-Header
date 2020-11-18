@@ -6,7 +6,7 @@
 
 #import <Foundation/NSProgress.h>
 
-@class NSObject;
+@class NSObject, NSURL;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
 {
     id _subscriber;
     NSObject<OS_dispatch_queue> *_queue;
+    NSURL *_fileURL;
+    BOOL _shouldStopAccessingURL;
 }
 
 - (void).cxx_destruct;

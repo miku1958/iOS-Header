@@ -6,16 +6,24 @@
 
 #import <objc/NSObject.h>
 
+#import <AssistantServices/NSCopying-Protocol.h>
+#import <AssistantServices/NSSecureCoding-Protocol.h>
+
 @class NSDate, NSDictionary, NSString;
 
-@interface AFAccount : NSObject
+@interface AFAccount : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _peerSiriEnabled;
     BOOL _isActive;
     NSString *_identifier;
     NSString *_label;
     NSString *_assistantIdentifier;
     NSString *_speechIdentifier;
     NSString *_hostname;
+    NSString *_peerAssistantIdentifier;
+    NSString *_peerSpeechIdentifier;
+    NSString *_peerUserAgentString;
+    NSString *_peerLanguageCode;
     NSString *_predefinedServer;
     NSString *_aceHost;
     NSDictionary *_connectionPolicy;
@@ -34,16 +42,26 @@
 @property (copy, nonatomic) NSString *group; // @synthesize group=_group;
 @property (copy, nonatomic) NSString *hostname; // @synthesize hostname=_hostname;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) BOOL isActive; // @synthesize isActive=_isActive;
+@property (nonatomic) BOOL isActive; // @synthesize isActive=_isActive;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (copy, nonatomic) NSDictionary *lastSyncDates; // @synthesize lastSyncDates=_lastSyncDates;
 @property (copy, nonatomic) NSString *localeIdentifier; // @synthesize localeIdentifier=_localeIdentifier;
+@property (copy, nonatomic) NSString *peerAssistantIdentifier; // @synthesize peerAssistantIdentifier=_peerAssistantIdentifier;
+@property (copy, nonatomic) NSString *peerLanguageCode; // @synthesize peerLanguageCode=_peerLanguageCode;
+@property (nonatomic) BOOL peerSiriEnabled; // @synthesize peerSiriEnabled=_peerSiriEnabled;
+@property (copy, nonatomic) NSString *peerSpeechIdentifier; // @synthesize peerSpeechIdentifier=_peerSpeechIdentifier;
+@property (copy, nonatomic) NSString *peerUserAgentString; // @synthesize peerUserAgentString=_peerUserAgentString;
 @property (copy, nonatomic) NSString *predefinedServer; // @synthesize predefinedServer=_predefinedServer;
 @property (copy, nonatomic) NSString *speechIdentifier; // @synthesize speechIdentifier=_speechIdentifier;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithMessageDictionary:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (id)messageDictionary;
 
 @end

@@ -12,7 +12,7 @@
 #import <PassKitUI/PKPerformActionView-Protocol.h>
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
-@class NSDecimalNumber, NSNumberFormatter, NSString, PKEnterCurrencyAmountView, PKEnterValueNewBalanceView, PKFelicaPassProperties, PKNumberPadSuggestionsView, PKNumericSuggestionLastInput, PKNumericSuggestionsEnterValueAlgorithm, PKPass, PKPaymentPassAction, PKPeerPaymentAccount, PKPeerPaymentService, UITextField;
+@class NSDecimalNumber, NSString, PKEnterCurrencyAmountView, PKEnterValueNewBalanceView, PKFelicaPassProperties, PKNumberPadSuggestionsView, PKNumericSuggestionLastInput, PKNumericSuggestionsEnterValueAlgorithm, PKPass, PKPaymentPassAction, PKPeerPaymentAccount, PKPeerPaymentService, UITextField;
 @protocol PKPaymentDataProvider, PKPerformActionViewDelegate;
 
 @interface PKPerformActionEnterValueView : UIView <PKNumberPadSuggestionsViewDelegate, UITextFieldDelegate, PKPaymentDataProviderDelegate, PKEnterCurrencyAmountViewDelegate, PKPerformActionView>
@@ -26,7 +26,6 @@
     PKNumericSuggestionLastInput *_lastInput;
     PKFelicaPassProperties *_felicaProperties;
     NSDecimalNumber *_currentAmount;
-    NSNumberFormatter *_currentAmountFormatter;
     id<PKPerformActionViewDelegate> _delegate;
     id<PKPaymentDataProvider> _paymentServiceDataProvider;
     PKPeerPaymentService *_peerPaymentService;

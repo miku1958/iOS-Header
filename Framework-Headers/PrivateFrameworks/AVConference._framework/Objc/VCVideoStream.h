@@ -48,12 +48,12 @@ __attribute__((visibility("hidden")))
 - (void)initVideoTransmitter:(id)arg1;
 - (void)onCallIDChanged;
 - (BOOL)onConfigureStreamWithConfiguration:(id)arg1 error:(id *)arg2;
-- (void)onPause;
-- (void)onResume;
+- (void)onPauseWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)onResumeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)onRtcpEnabledChanged;
 - (void)onRtcpSendIntervalChanged;
-- (void)onStart;
-- (void)onStop;
+- (void)onStartWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)onStopWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)overrideConfigWithDefaults;
 - (void)reportRTCPPackets:(struct _RTCPPacketList *)arg1;
 - (void)reportingVideoStreamEvent:(unsigned short)arg1;

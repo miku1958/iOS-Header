@@ -24,6 +24,7 @@
 @property (copy, nonatomic) NSString *storefrontIdentifier; // @dynamic storefrontIdentifier;
 @property (copy, nonatomic) NSString *username; // @dynamic username;
 
+- (void)replaceValuesWithValuesFromProperties:(id)arg1;
 - (void)setCloudBackupEnabled:(BOOL)arg1;
 - (void)setICloudPersonID:(id)arg1;
 

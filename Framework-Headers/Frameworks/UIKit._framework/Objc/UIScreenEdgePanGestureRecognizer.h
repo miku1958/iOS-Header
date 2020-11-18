@@ -45,6 +45,7 @@
 - (BOOL)isRequiringLongPress;
 - (BOOL)recognizeAlongEdge;
 - (BOOL)recognizeImmediatelyFromEdgeLocked;
+- (id)recognizerTouchesToIgnoreForEvent:(id)arg1;
 - (void)reset;
 - (void)screenEdgePanRecognizingStateDidChange:(id)arg1;
 - (void)setRecognizeAlongEdge:(BOOL)arg1;

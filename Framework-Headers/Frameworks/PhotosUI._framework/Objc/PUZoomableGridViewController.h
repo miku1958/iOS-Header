@@ -15,6 +15,7 @@
 @interface PUZoomableGridViewController : PUPhotosGridViewController <PXCPLServiceUIDelegate, PUCloudQuotaControllerDelegate, PUMagnfiedViewControllerDelegate>
 {
     BOOL _isDisplayingGlobalFooterView;
+    BOOL _isDisplayingEmptyPlaceholderView;
     PXCPLServiceUI *_cplServiceUI;
     PUCloudQuotaController *_cloudQuotaController;
     BOOL _globalFooterDidAutoScroll;
@@ -65,7 +66,7 @@
 - (id)_beginInteractiveTransitionWithReferenceItemPath:(id)arg1 zoomingOut:(BOOL)arg2;
 - (BOOL)_collectionView:(id)arg1 shouldApplyTransitionContentOffset:(struct CGPoint)arg2 contentSize:(struct CGSize)arg3;
 - (void)_conditionallyRevealPhotosGlobalFooterView;
-- (void)_conditionallyRevealPhotosGlobalFooterViewWithContentOffset:(struct CGPoint)arg1;
+- (void)_conditionallyRevealPhotosGlobalFooterViewWithLastUserScrollTime:(double)arg1;
 - (void)_configureGlobalFooterImportantInformationUpdatesTimer;
 - (void)_configureMagnifiedImageViewController:(id)arg1 forIndexPath:(id)arg2 gestureLocationInWindow:(struct CGPoint)arg3;
 - (void)_didEndDisplayingGlobalFooterView;
@@ -81,6 +82,7 @@
 - (id)_indexPathOfReferenceItemForLayoutTransitionInCollectionView:(id)arg1;
 - (void)_invalidateSyncProgressAlbums;
 - (id)_itemPathForLocationInGesture:(id)arg1;
+- (void)_needsCPLInformationDidChange;
 - (void)_reclaimCollectionView;
 - (BOOL)_shouldRevealPhotosGlobalFooterView;
 - (BOOL)_shouldShowCPLInformationInGlobalFooter;
@@ -102,16 +104,17 @@
 - (BOOL)collectionViewPointInSectionHeader:(struct CGPoint)arg1;
 - (void)configureGlobalFooterView:(id)arg1;
 - (void)configureGridCell:(id)arg1 forItemAtIndexPath:(id)arg2;
-- (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3 animated:(BOOL)arg4;
+- (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3;
 - (struct CGPoint)contentOffsetForPreheating;
 - (struct CGSize)contentSizeForPreheating;
 - (unsigned long long)dateRangeFormatterPreset;
 - (void)dealloc;
 - (void)didDismissPreviewViewController:(id)arg1 committing:(BOOL)arg2;
+- (void)didEndDisplayingEmptyPlaceholderView;
 - (void)didReceiveMemoryWarning;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
-- (void)getEmptyPlaceholderViewTitle:(id *)arg1 message:(id *)arg2;
+- (void)getEmptyPlaceholderViewTitle:(id *)arg1 message:(id *)arg2 buttonTitle:(id *)arg3 buttonAction:(CDUnknownBlockType *)arg4;
 - (void)getTitle:(out id *)arg1 prompt:(out id *)arg2 shouldHideBackButton:(out BOOL *)arg3 leftBarButtonItems:(out id *)arg4 rightBarButtonItems:(out id *)arg5;
 - (void)gridSettings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)gridZoomTransitionDidFinish:(BOOL)arg1;
@@ -161,6 +164,8 @@
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (BOOL)wantsGlobalFooter;
+- (BOOL)wantsPlaceholderView;
+- (void)willDisplayEmptyPlaceholderView;
 - (void)willPresentPreviewViewController:(id)arg1 forLocation:(struct CGPoint)arg2 inSourceView:(id)arg3;
 - (BOOL)zoomTransition:(id)arg1 getFrame:(struct CGRect *)arg2 contentMode:(long long *)arg3 cropInsets:(struct UIEdgeInsets *)arg4 forPhotoToken:(id)arg5 operation:(long long)arg6;
 

@@ -506,6 +506,7 @@
 - (id)_existingView;
 - (id)_extensionContextUUID;
 - (id)_firstResponder;
+- (BOOL)_formSheetObeysContentContainerSize;
 - (struct CGSize)_formSheetSizeForWindowWithSize:(struct CGSize)arg1;
 - (BOOL)_forwardAppearanceMethods;
 - (BOOL)_forwardRotationMethods;
@@ -783,6 +784,7 @@
 - (id)_viewControllersWhoseOrientationsMustCoincide;
 - (id)_viewForContentInPopover;
 - (id)_viewForModalPresentationInPopover;
+- (struct CGRect)_viewFrameInWindowForContentOverlayInsetsCalculation;
 - (BOOL)_viewHostsLayoutEngine;
 - (void)_viewSubtreeDidGainScrollView:(id)arg1 enclosingViewController:(id)arg2;
 - (id)_viewsWithDisabledInteractionGivenTransitionContext:(id)arg1;

@@ -13,6 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityLeftButtonLabelString;
+- (id)_accessibilityLeftbuttonValueString;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilityPlayPauseButtonString;
 - (void)_axAudioRouteNameCommandChanged:(id)arg1;
@@ -20,8 +22,6 @@
 - (void)_axLikedStateCommandChanged:(id)arg1;
 - (void)_axMediaRemoteCommandChanged:(id)arg1;
 - (id)_axPlayerPath;
-- (id)_axRepeatButtonValue;
-- (id)_axShuffleButtonValue;
 - (id)_axTrackList;
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)axAudioRouteNotificationRegistered;

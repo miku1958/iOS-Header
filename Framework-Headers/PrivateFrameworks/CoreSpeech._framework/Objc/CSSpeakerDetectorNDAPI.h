@@ -6,15 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class CSSpeakerModel, NSString;
+@class CSSpeakerModel;
 @protocol CSSpeakerDetectorNDAPIDelegate;
 
 @interface CSSpeakerDetectorNDAPI : NSObject
 {
     float _threshold;
-    NSString *_languageCode;
     CSSpeakerModel *_spkModel;
-    float _retrainTriggerThreshold;
     id<CSSpeakerDetectorNDAPIDelegate> _delegate;
 }
 
@@ -27,7 +25,7 @@
 - (BOOL)addLastTriggerToProfile;
 - (id)analyzeWavForEnrollment:(id)arg1 numSamples:(unsigned long long)arg2;
 - (void)dealloc;
-- (id)initWithAsset:(id)arg1 languageCode:(id)arg2 speakerModel:(id)arg3;
+- (id)initWithAsset:(id)arg1 speakerModel:(id)arg2;
 - (void)processSuperVector:(id)arg1 withResult:(id)arg2;
 - (void)reset;
 

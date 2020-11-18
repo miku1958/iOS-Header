@@ -27,11 +27,13 @@
     PCSimpleTimer *_simpleTimer;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_os_log> *_logObject;
+    double _earlyFireConstantInterval;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disableSystemWaking; // @synthesize disableSystemWaking=_disableSystemWaking;
+@property (nonatomic) double earlyFireConstantInterval; // @synthesize earlyFireConstantInterval=_earlyFireConstantInterval;
 @property (readonly, nonatomic) double fireTime;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double minimumEarlyFireProportion; // @synthesize minimumEarlyFireProportion=_minimumEarlyFireProportion;

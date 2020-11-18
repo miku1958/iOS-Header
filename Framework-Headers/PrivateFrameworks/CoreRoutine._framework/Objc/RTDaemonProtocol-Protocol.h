@@ -19,6 +19,7 @@
 - (void)fetchAllRoutesForSettingsWithReply:(void (^)(NSArray *, NSError *))arg1;
 - (void)fetchAutomaticVehicleEventDetectionSupportedWithReply:(void (^)(BOOL, NSError *))arg1;
 - (void)fetchCloudSyncAuthorizationState:(void (^)(long long, NSError *))arg1;
+- (void)fetchCurrentPredictedLocationsOfInterestLookingBack:(double)arg1 lookingAhead:(double)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchLastVehicleEventsWithHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)fetchLocationOfInterestAtLocation:(CLLocation *)arg1 withReply:(void (^)(RTLocationOfInterest *, NSError *))arg2;
 - (void)fetchLocationOfInterestWithIdentifier:(NSUUID *)arg1 withReply:(void (^)(RTLocationOfInterest *, NSError *))arg2;
@@ -40,6 +41,7 @@
 - (void)fetchPredictedLocationsOfInterestOnDate:(NSDate *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
 - (void)fetchRoutineEnabledWithReply:(void (^)(BOOL))arg1;
 - (void)fetchRoutineModeFromLocation:(CLLocation *)arg1 withReply:(void (^)(long long, NSError *))arg2;
+- (void)performBluePOIQueryLookingBack:(double)arg1 lookingAhead:(double)arg2 reply:(void (^)(NSArray *, NSArray *, NSArray *, NSError *))arg3;
 - (void)provideFeedbackForAction:(RTAction *)arg1 engagementResult:(long long)arg2 reply:(void (^)(NSError *))arg3;
 - (void)removeLocationOfInterestWithIdentifier:(NSUUID *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)removeVisitWithIdentifier:(NSUUID *)arg1 reply:(void (^)(NSError *))arg2;

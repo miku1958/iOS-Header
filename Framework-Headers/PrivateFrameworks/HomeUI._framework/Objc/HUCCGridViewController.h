@@ -9,7 +9,7 @@
 #import <HomeUI/HUPrototypeLayoutOptionsEditorViewControllerDelegate-Protocol.h>
 
 @class HUCCGridItemManager, HUGridFlowLayout, HUGridLayoutOptions, NSMapTable, NSString;
-@protocol HUCCGridViewControllerDelegate;
+@protocol HUCCGridViewControllerDelegate, HUOpenURLHandling;
 
 @interface HUCCGridViewController : HUControllableItemCollectionViewController <HUPrototypeLayoutOptionsEditorViewControllerDelegate>
 {
@@ -19,9 +19,11 @@
     unsigned long long _itemType;
     unsigned long long _designType;
     id<HUCCGridViewControllerDelegate> _delegate;
+    id<HUOpenURLHandling> _URLHandler;
     NSMapTable *_overrideCellLayoutOptionsByItem;
 }
 
+@property (strong, nonatomic) id<HUOpenURLHandling> URLHandler; // @synthesize URLHandler=_URLHandler;
 @property (readonly, nonatomic) HUGridFlowLayout *collectionViewLayout; // @dynamic collectionViewLayout;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUCCGridViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -49,7 +51,10 @@
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
+- (id)detailViewURLHandlerForPresentationCoordinator:(id)arg1;
+- (id)detailsViewControllerForPresentationCoordinator:(id)arg1 item:(id)arg2;
 - (id)dismissQuickControlAnimated:(BOOL)arg1 wasDismissed:(BOOL *)arg2;
+- (BOOL)hasDetailsActionForPresentationCoordinator:(id)arg1 item:(id)arg2;
 - (id)initWithItemType:(unsigned long long)arg1 designType:(unsigned long long)arg2 delegate:(id)arg3;
 - (id)itemManager:(id)arg1 futureToUpdateItems:(id)arg2 itemUpdateOptions:(id)arg3;
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;

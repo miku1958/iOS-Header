@@ -10,9 +10,9 @@
 {
 }
 
-@property (readonly, nonatomic) BOOL volumeControlAvailable;
+@property (readonly, nonatomic) int capabilities;
 
-- (id)initWithAvailableFlag:(BOOL)arg1;
+- (id)initWithCapabilities:(int)arg1;
 - (unsigned long long)type;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/RTCPReportProvider-Protocol.h>
 #import <AVConference/VCMediaStreamProtocol-Protocol.h>
@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) id<VCMomentsCollectorDelegate> momentsCollectorDelegate; // @synthesize momentsCollectorDelegate=_momentsCollectorDelegate;
 @property (nonatomic) id<VCMediaStreamNotification> notificationDelegate;
 @property (nonatomic) id<RTCPReportProvider> rtcpReportProvider;
-@property (nonatomic) int state; // @synthesize state=_state;
+@property (readonly, nonatomic) int state; // @synthesize state=_state;
 @property (strong, nonatomic) VCMediaStreamConfig *streamConfig; // @synthesize streamConfig=_streamConfig;
 @property (readonly) Class superclass;
 
@@ -64,12 +64,12 @@ __attribute__((visibility("hidden")))
 - (void)lock;
 - (void)onCallIDChanged;
 - (BOOL)onConfigureStreamWithConfiguration:(id)arg1 error:(id *)arg2;
-- (void)onPause;
-- (void)onResume;
+- (void)onPauseWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)onResumeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)onRtcpEnabledChanged;
 - (void)onRtcpSendIntervalChanged;
-- (void)onStart;
-- (void)onStop;
+- (void)onStartWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)onStopWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)registerRTPPayloadMappings;
 - (id)rxNetworkPayloads;
 - (void)sendControlPacket;

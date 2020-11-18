@@ -13,6 +13,7 @@
 - (BOOL)parsec_boolForKey:(id)arg1;
 - (id)parsec_dataForKey:(id)arg1;
 - (id)parsec_dateForKey:(id)arg1;
+- (id)parsec_dictionaryByMappingKeysUsingBlock:(CDUnknownBlockType)arg1;
 - (id)parsec_dictionaryForKey:(id)arg1;
 - (id)parsec_numberForKey:(id)arg1;
 - (id)parsec_stringForKey:(id)arg1;

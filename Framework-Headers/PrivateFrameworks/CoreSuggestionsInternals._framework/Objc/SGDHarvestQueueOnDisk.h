@@ -20,6 +20,7 @@
     SGDHarvestQueueFileReader *_reader;
     long long _idCounter;
     _Atomic unsigned long long _count;
+    _Atomic unsigned long long _countHighPriority;
     _Atomic unsigned long long _maxQueueItems;
     id _lockStateChangeToken;
 }

@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (int)reportNoPackets;
 - (int)reportNoRelayResponseWithOptionalDictionary:(id)arg1;
 - (int)reportNoSNATMAPResponseWithOptionalDictionary:(id)arg1;
+- (int)reportQRATKNTokenError;
 - (int)reportRateTargetMismatch;
 - (int)reportSignalingFailed;
 - (void)reportSymptom:(unsigned int)arg1 optionalDictionary:(id)arg2;

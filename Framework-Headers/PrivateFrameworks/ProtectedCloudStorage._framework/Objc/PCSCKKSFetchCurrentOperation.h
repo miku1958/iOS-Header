@@ -16,9 +16,13 @@
 @property (strong) PCSCKKSItemModifyContext *context; // @synthesize context=_context;
 
 - (void).cxx_destruct;
-- (void)fetchCurrentItem:(id)arg1 complete:(CDUnknownBlockType)arg2;
-- (void)fetchPersistentRef:(id)arg1;
+- (void)fetchAlternate;
+- (void)fetchComplete:(struct __CFData *)arg1 point:(id)arg2 alternate:(BOOL)arg3 error:(struct __CFError *)arg4;
+- (void)fetchCurrentItem:(id)arg1 viewhint:(id)arg2 complete:(CDUnknownBlockType)arg3;
+- (void)fetchPersistentRef:(id)arg1 alternate:(BOOL)arg2;
+- (BOOL)haveAlternate;
 - (id)initWithItemModifyContext:(id)arg1;
+- (BOOL)shouldRelocate;
 - (void)start;
 
 @end

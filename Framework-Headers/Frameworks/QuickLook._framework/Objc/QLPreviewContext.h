@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSString *_previewTitle;
     NSString *_contentType;
     NSURL *_editedFileURL;
+    unsigned long long _editedFileBehavior;
     NSString *_password;
     unsigned long long _previewItemType;
     UIColor *_backgroundColor;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (strong) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property BOOL canBeEdited; // @synthesize canBeEdited=_canBeEdited;
 @property (strong) NSString *contentType; // @synthesize contentType=_contentType;
+@property unsigned long long editedFileBehavior; // @synthesize editedFileBehavior=_editedFileBehavior;
 @property (strong) NSURL *editedFileURL; // @synthesize editedFileURL=_editedFileURL;
 @property (strong) QLItem *item; // @synthesize item=_item;
 @property (strong) NSNumber *itemSize; // @synthesize itemSize=_itemSize;

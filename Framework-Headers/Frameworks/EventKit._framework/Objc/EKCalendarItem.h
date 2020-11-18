@@ -204,6 +204,7 @@
 - (id)uniqueId;
 - (void)updateWithAppLink:(id)arg1 usedSelectedText:(BOOL *)arg2;
 - (BOOL)validate:(id *)arg1;
+- (void)willSave;
 
 @end
 

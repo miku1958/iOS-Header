@@ -6,9 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSCoding-Protocol.h>
-#import <extension/NSISVariableDelegate-Protocol.h>
-#import <extension/NSLayoutItem-Protocol.h>
+#import <Foundation/NSCoding-Protocol.h>
+#import <Foundation/NSISVariableDelegate-Protocol.h>
+#import <Foundation/NSLayoutItem-Protocol.h>
 
 @class NSISVariable, NSString;
 @protocol NSLayoutItem;

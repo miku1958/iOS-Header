@@ -77,6 +77,7 @@
 - (void)_reloadTones;
 - (void)_reloadTonesAfterExternalChange;
 - (void)_removeAllSyncedData;
+- (BOOL)_removeAllTones;
 - (long long)_removeOrphanedManifestEntriesReturningFilePathsForFoundOrphans:(id *)arg1;
 - (id)_removeOrphanedPlistEntriesInManifestAtPath:(id)arg1 mediaDirectory:(id)arg2;
 - (BOOL)_removeToneFromManifestAtPath:(id)arg1 fileName:(id)arg2;

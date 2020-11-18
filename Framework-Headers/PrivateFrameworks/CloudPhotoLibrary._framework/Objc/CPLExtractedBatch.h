@@ -16,8 +16,10 @@
     NSMutableDictionary *_mutableUploadIdentifiers;
     NSSet *_untrustableIdentifiers;
     NSMutableSet *_mutableUntrustableIndentifiers;
+    BOOL _resourceSizeIsCalculated;
     BOOL _full;
     BOOL _batchCanLowerQuota;
+    unsigned long long _resourceSize;
     CPLChangeBatch *_batch;
     NSString *_clientCacheIdentifier;
 }
@@ -26,6 +28,7 @@
 @property (readonly, nonatomic) BOOL batchCanLowerQuota; // @synthesize batchCanLowerQuota=_batchCanLowerQuota;
 @property (copy, nonatomic) NSString *clientCacheIdentifier; // @synthesize clientCacheIdentifier=_clientCacheIdentifier;
 @property (nonatomic, getter=isFull) BOOL full; // @synthesize full=_full;
+@property (readonly, nonatomic) unsigned long long resourceSize; // @synthesize resourceSize=_resourceSize;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

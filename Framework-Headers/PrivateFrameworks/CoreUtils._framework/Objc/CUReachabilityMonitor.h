@@ -36,6 +36,7 @@
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)_activate;
 - (void)_complete:(id)arg1;
+- (void)_startDownload;
 - (void)activate;
 - (id)init;
 - (void)invalidate;

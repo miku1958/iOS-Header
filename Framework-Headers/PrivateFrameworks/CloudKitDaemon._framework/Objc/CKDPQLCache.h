@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class CKDClientContext, NSArray, NSString, PQLConnection;
+@class NSArray, NSHashTable, NSString, PQLConnection;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface CKDPQLCache : NSObject
 {
     PQLConnection *_pdb;
-    CKDClientContext *_context;
+    NSHashTable *_contexts;
     NSObject<OS_dispatch_queue> *_dbQueue;
     unsigned long long _openHandles;
 }
 
-@property (readonly, weak, nonatomic) CKDClientContext *context; // @synthesize context=_context;
+@property (readonly, nonatomic) NSHashTable *contexts; // @synthesize contexts=_contexts;
 @property (readonly, nonatomic) NSArray *createInitialTablesSQL;
 @property (readonly, nonatomic) PQLConnection *database; // @synthesize database=_pdb;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dbQueue; // @synthesize dbQueue=_dbQueue;

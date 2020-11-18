@@ -22,12 +22,14 @@
     BOOL _showsEmergencyCallButton;
     BOOL _showsCancelButton;
     id<SBUIPasscodeLockNumberPadDelegate> _delegate;
+    double _ancillaryButtonOffset;
     UIControl<SBUIPasscodeNumberPadButton> *_downButton;
     SBUIButton *_emergencyCallButton;
     SBUIButton *_backspaceButton;
     SBUIButton *_cancelButton;
 }
 
+@property (nonatomic) double ancillaryButtonOffset; // @synthesize ancillaryButtonOffset=_ancillaryButtonOffset;
 @property (readonly, nonatomic) SBUIButton *backspaceButton; // @synthesize backspaceButton=_backspaceButton;
 @property (readonly, weak, nonatomic) NSArray *buttons;
 @property (readonly, nonatomic) SBUIButton *cancelButton; // @synthesize cancelButton=_cancelButton;

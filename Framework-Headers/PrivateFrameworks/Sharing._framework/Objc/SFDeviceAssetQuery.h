@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface SFDeviceAssetQuery : NSObject
 {
@@ -19,8 +19,10 @@
     NSString *_colorHousing;
     NSString *_colorCoverGlass;
     unsigned long long _version;
+    NSDictionary *_additionalQueryParameters;
 }
 
+@property (readonly, nonatomic) NSDictionary *additionalQueryParameters; // @synthesize additionalQueryParameters=_additionalQueryParameters;
 @property (readonly, nonatomic) NSString *color; // @synthesize color=_color;
 @property (readonly, nonatomic) NSString *colorCoverGlass; // @synthesize colorCoverGlass=_colorCoverGlass;
 @property (readonly, nonatomic) NSString *colorHousing; // @synthesize colorHousing=_colorHousing;
@@ -36,8 +38,10 @@
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithBluetoothProductIdentifier:(unsigned long long)arg1 color:(unsigned long long)arg2 engagement:(BOOL)arg3;
+- (id)initWithHomePodColor:(unsigned long long)arg1;
 - (id)initWithPhoneProductType:(id)arg1 colorHousing:(id)arg2 colorCoverGlass:(id)arg3;
 - (id)initWithProductType:(id)arg1;
+- (id)initWithProductType:(id)arg1 additionalQueryParameters:(id)arg2;
 - (id)initWithWatchProductType:(id)arg1 marketingProductNumber:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)loggingProductType;

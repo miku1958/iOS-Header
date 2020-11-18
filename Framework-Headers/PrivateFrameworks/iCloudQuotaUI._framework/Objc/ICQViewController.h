@@ -8,15 +8,17 @@
 
 #import <iCloudQuotaUI/ICQPageDelegate-Protocol.h>
 
-@class NSString, _ICQPageSpecification;
+@class NSString, UIColor, _ICQPageSpecification;
 @protocol ICQPageDelegate;
 
 @interface ICQViewController : UIViewController <ICQPageDelegate>
 {
     _ICQPageSpecification *_pageSpecification;
+    UIColor *_buttonTintColor;
     id<ICQPageDelegate> _delegate;
 }
 
+@property (copy, nonatomic) UIColor *buttonTintColor; // @synthesize buttonTintColor=_buttonTintColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<ICQPageDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -31,7 +33,6 @@
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithPageSpecification:(id)arg1;
 - (void)sender:(id)arg1 action:(long long)arg2 parameters:(id)arg3;
-- (double)senderGetTopMargin:(id)arg1;
 
 @end
 

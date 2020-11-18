@@ -12,26 +12,22 @@
 @interface _MPCPlayerPathCache : NSObject
 {
     NSMutableDictionary *_playerPathResolutions;
-    NSMutableDictionary *_invalidatablePlayerPaths;
+    NSMutableDictionary *_observers;
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_calloutQueue;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *calloutQueue; // @synthesize calloutQueue=_calloutQueue;
-@property (readonly, nonatomic) NSMutableDictionary *invalidatablePlayerPaths; // @synthesize invalidatablePlayerPaths=_invalidatablePlayerPaths;
+@property (readonly, nonatomic) NSMutableDictionary *observers; // @synthesize observers=_observers;
 @property (readonly, nonatomic) NSMutableDictionary *playerPathResolutions; // @synthesize playerPathResolutions=_playerPathResolutions;
 
 + (id)sharedCache;
 - (void).cxx_destruct;
 - (id)_init;
-- (void)_onQueue_invalidateForNotificationName:(id)arg1;
-- (void)activeOriginDidChangeNotification:(id)arg1;
+- (void)_onQueue_registerForInvalidationWithUnresolvedPlayerPath:(id)arg1 invalidationPlayerPath:(void *)arg2;
 - (void)dealloc;
-- (void)nowPlayingApplicationDidChangeNotification:(id)arg1;
-- (void)nowPlayingPlayerDidChangeNotification:(id)arg1;
 - (id)resolvedPlayerPathForPlayerPath:(id)arg1;
-- (void)routeConnectionDidInvalidateNotification:(id)arg1;
 
 @end
 

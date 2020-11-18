@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSMutableSet, NSURL, WBSCacheRetainReleasePolicy;
+@class NSMutableDictionary, NSMutableSet, NSURL, WBSCacheRetainReleasePolicy, WBSCoalescedAsynchronousWriter;
 @protocol OS_dispatch_queue, WBSSiteMetadataImageCacheDelegate;
 
 @interface WBSSiteMetadataImageCache : NSObject
@@ -18,7 +18,7 @@
     NSMutableSet *_missingImageKeyStrings;
     WBSCacheRetainReleasePolicy *_cachePolicy;
     NSMutableDictionary *_cacheSettings;
-    struct unique_ptr<SafariShared::CoalescedAsynchronousWriter, std::__1::default_delete<SafariShared::CoalescedAsynchronousWriter>> _cacheSettingsWriter;
+    WBSCoalescedAsynchronousWriter *_cacheSettingsWriter;
     BOOL _terminating;
     NSURL *_imageDirectoryURL;
     long long _imageType;
@@ -30,7 +30,6 @@
 @property (readonly, nonatomic) long long imageType; // @synthesize imageType=_imageType;
 @property (readonly, nonatomic, getter=isTerminating) BOOL terminating; // @synthesize terminating=_terminating;
 
-- (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)_cacheSettingsFileURL;
 - (void)_didLoadImage:(id)arg1 forKeyString:(id)arg2 fromDisk:(BOOL)arg3;

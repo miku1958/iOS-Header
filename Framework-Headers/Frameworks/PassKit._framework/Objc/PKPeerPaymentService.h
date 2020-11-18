@@ -28,12 +28,14 @@
 - (id)_synchronousRemoteObjectProxyForSelector:(SEL)arg1;
 - (void)accountWithCompletion:(CDUnknownBlockType)arg1;
 - (void)balanceForPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)checkTLKsMissingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cloudStoreStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)deleteAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (void)downloadPassIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)initalizeCloudStoreIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)initalizeCloudStoreIfNecessaryWithHandler:(CDUnknownBlockType)arg1;
 - (id)lastUsedAlternateFundingSourcePassUniqueIdentifier;
 - (void)noteAccountDeleted;
 - (void)presentIdentityVerificationFlowWithResponse:(id)arg1 orientation:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -42,6 +44,7 @@
 - (void)presentRegistrationFlowWithAccount:(id)arg1 orientation:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)registerDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)registrationStatusWithCompletion:(CDUnknownBlockType)arg1;
+- (void)resetApplePayManateeViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resumeAccountChangedNotifications;
 - (void)setLastUsedAlternateFundingSourcePassUniqueIdentifier:(id)arg1;
 - (void)sharedPeerPaymentWebServiceContextWithCompletion:(CDUnknownBlockType)arg1;

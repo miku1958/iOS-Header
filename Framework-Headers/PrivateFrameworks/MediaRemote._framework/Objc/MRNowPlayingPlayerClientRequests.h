@@ -8,35 +8,48 @@
 
 #import <MediaRemote/MRNowPlayingClientState-Protocol.h>
 
-@class MRPlaybackQueuePlayerClient, NSMutableDictionary;
+@class MRPlaybackQueuePlayerClient, NSMutableDictionary, NSOperationQueue;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface MRNowPlayingPlayerClientRequests : NSObject <MRNowPlayingClientState>
 {
     void *_playerPath;
+    void *_playbackQueue;
     NSObject<OS_dispatch_queue> *_serialQueue;
+    NSObject<OS_dispatch_queue> *_responseQueue;
     NSMutableDictionary *_transactionCallbacks;
     NSMutableDictionary *_playbackQueueCompletions;
     NSMutableDictionary *_transactions;
+    NSOperationQueue *_enquedNowPlayingInfoRequests;
+    NSOperationQueue *_enquedNowPlayingInfoAssetRequests;
+    unsigned int _playbackState;
     MRPlaybackQueuePlayerClient *_playbackQueueClient;
 }
 
+@property (nonatomic) void *playbackQueue;
 @property (readonly, nonatomic) MRPlaybackQueuePlayerClient *playbackQueueClient; // @synthesize playbackQueueClient=_playbackQueueClient;
+@property (readonly, nonatomic) unsigned int playbackState; // @synthesize playbackState=_playbackState;
 @property (readonly, nonatomic) void *playerPath; // @synthesize playerPath=_playerPath;
 
+- (void)_handleContentItemArtworkDidChangeNotification:(id)arg1;
+- (void)_handleContentItemsDidChangeNotification:(id)arg1;
+- (void)_handleEnqueuedPlaybackQueueRequest:(void *)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handlePlaybackQueueDidChangeNotification:(id)arg1;
+- (void)_handlePlaybackStateDidChangeNotification:(id)arg1;
 - (void)_handleTransactionPackets:(id)arg1 packets:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_registerDefaultCallbacks;
 - (id)_transactionDestintationForName:(unsigned long long)arg1;
 - (void)addPlaybackQueueCompletion:(CDUnknownBlockType)arg1 forRequest:(void *)arg2;
 - (void)addTransactionCallback:(CDUnknownBlockType)arg1 forName:(unsigned long long)arg2;
-- (BOOL)augmentCommandOptions:(id)arg1 forCommand:(unsigned int)arg2;
 - (void)dealloc;
+- (void)enqueuePlaybackQueueRequest:(void *)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithPlayerPath:(void *)arg1;
 - (void)receiveTransaction:(unsigned long long)arg1 fromMessage:(id)arg2;
 - (void)removePlaybackQueueCompletionForRequest:(void *)arg1;
 - (void)restoreNowPlayingClientState;
 - (id)transactionCallbacksForName:(unsigned long long)arg1;
+- (BOOL)verifyCommandOptions:(id)arg1 forCommand:(unsigned int)arg2;
 
 @end
 

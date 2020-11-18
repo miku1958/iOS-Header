@@ -6,22 +6,30 @@
 
 #import <Foundation/NSOperation.h>
 
-@class NSObject;
+#import <CloudDocs/BROperationClient-Protocol.h>
+
+@class NSObject, NSString;
 @protocol BRCancellable, OS_dispatch_queue;
 
-@interface BROperation : NSOperation
+@interface BROperation : NSOperation <BROperationClient>
 {
     id _remoteOperation;
     NSObject<OS_dispatch_queue> *_queue;
     unsigned char _uuid[16];
     id _executionTransation;
     BOOL _finished;
+    BOOL _waitForRemoteToBeCancelled;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_queue;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, getter=isExecuting) BOOL executing;
 @property (readonly, getter=isFinished) BOOL finished; // @synthesize finished=_finished;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSObject<BRCancellable> *remoteOperation; // @synthesize remoteOperation=_remoteOperation;
+@property (readonly) Class superclass;
+@property (nonatomic) BOOL waitForRemoteToBeCancelled; // @synthesize waitForRemoteToBeCancelled=_waitForRemoteToBeCancelled;
 
 - (void).cxx_destruct;
 - (BOOL)_finishIfCancelled;
@@ -31,7 +39,6 @@
 - (void)cancel;
 - (void)completedWithResult:(id)arg1 error:(id)arg2;
 - (void)dealloc;
-- (id)description;
 - (BOOL)finishIfCancelled;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)init;

@@ -23,11 +23,11 @@
     NSString *_name;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
-    HMDAccessory *_accessory;
     HMFMessageDispatcher *_messageDispatcher;
+    HMDAccessory *_accessory;
 }
 
-@property (strong, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
+@property (weak, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -35,10 +35,12 @@
 @property (readonly, copy) NSArray *groups;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly) NSString *keyPath;
 @property (strong, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly) HMDAccessorySettingGroupModel *model;
+@property (readonly, copy) NSArray *models;
 @property (readonly, copy) NSString *name; // @synthesize name=_name;
 @property (readonly) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, copy) NSArray *settings;

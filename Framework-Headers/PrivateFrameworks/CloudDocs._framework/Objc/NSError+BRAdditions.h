@@ -48,5 +48,6 @@
 - (BOOL)br_isCloudDocsErrorCode:(long long)arg1;
 - (BOOL)br_isCocoaErrorCode:(long long)arg1;
 - (BOOL)br_isPOSIXErrorCode:(long long)arg1;
+- (id)br_underlyingPOSIXError;
 @end
 

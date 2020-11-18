@@ -46,7 +46,6 @@
 @property (strong, nonatomic) HFColorPaletteColor *selectedColor; // @synthesize selectedColor=_selectedColor;
 @property (readonly, nonatomic, getter=isSelectedColorInPalette) BOOL selectedColorInPalette;
 @property (nonatomic) BOOL showPickerModeControl; // @synthesize showPickerModeControl=_showPickerModeControl;
-@property (nonatomic) long long sizeSubclass;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) HUQuickControlCircleButton *switchButton; // @synthesize switchButton=_switchButton;
 @property (strong, nonatomic) NSLayoutConstraint *switchButtonHeightConstraint; // @synthesize switchButtonHeightConstraint=_switchButtonHeightConstraint;
@@ -71,6 +70,7 @@
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithProfile:(id)arg1;
 - (id)initWithProfile:(id)arg1 colorPalette:(id)arg2;
+- (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;
 - (void)layoutSubviews;
 - (void)traitCollectionDidChange:(id)arg1;
 

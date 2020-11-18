@@ -22,6 +22,8 @@
     BOOL _shouldCancelOnDisconnect;
     BOOL _discretionary;
     BOOL _mayBeDemotedToDiscretionary;
+    BOOL __hasSZExtractor;
+    BOOL __doesSZExtractorConsumeExtractedData;
     BOOL _initializedWithAVAsset;
     unsigned long long _identifier;
     unsigned long long _taskKind;
@@ -78,7 +80,9 @@
 @property (strong) NSURLSessionTaskMetrics *_backgroundTaskMetrics; // @synthesize _backgroundTaskMetrics=__backgroundTaskMetrics;
 @property (copy) NSDictionary *_backgroundTaskTimingData; // @synthesize _backgroundTaskTimingData=__backgroundTaskTimingData;
 @property (strong) NSDictionary *_backgroundTrailers; // @synthesize _backgroundTrailers=__backgroundTrailers;
+@property (nonatomic) BOOL _doesSZExtractorConsumeExtractedData; // @synthesize _doesSZExtractorConsumeExtractedData=__doesSZExtractorConsumeExtractedData;
 @property (strong, nonatomic) id<SZExtractor> _extractor; // @synthesize _extractor=__extractor;
+@property (nonatomic) BOOL _hasSZExtractor; // @synthesize _hasSZExtractor=__hasSZExtractor;
 @property (copy) NSDictionary *additionalProperties; // @synthesize additionalProperties=_additionalProperties;
 @property (copy) NSData *assetArtworkData; // @synthesize assetArtworkData=_assetArtworkData;
 @property (copy) NSString *assetTitle; // @synthesize assetTitle=_assetTitle;

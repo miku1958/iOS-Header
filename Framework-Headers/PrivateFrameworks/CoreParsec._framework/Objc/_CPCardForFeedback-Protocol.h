@@ -6,11 +6,13 @@
 
 #import <CoreParsec/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, _CPCardSectionForFeedback;
+@class NSArray, NSData, NSDictionary, NSString, _CPCardSectionForFeedback;
 
 @protocol _CPCardForFeedback <NSObject>
 
 @property (copy, nonatomic) NSArray *cardSections;
+@property (copy, nonatomic) NSString *fbr;
+@property (readonly, nonatomic) BOOL hasFbr;
 @property (readonly, nonatomic) NSData *jsonData;
 
 - (void)addCardSections:(_CPCardSectionForFeedback *)arg1;

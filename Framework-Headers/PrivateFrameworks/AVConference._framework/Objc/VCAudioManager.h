@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCAudioIOControllerControl-Protocol.h>
 #import <AVConference/VCAudioIOSink-Protocol.h>
@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isMicrophoneMuted) BOOL microphoneMuted; // @synthesize microphoneMuted=_isMicrophoneMuted;
 @property (nonatomic, getter=isSpeakerPhoneEnabled) BOOL speakerPhoneEnabled; // @synthesize speakerPhoneEnabled=_isSpeakerPhoneEnabled;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSDictionary *vpOperatingModeToAudioSessionMediaFormatMapping;
 
 + (id)sharedInstance;
 - (void)_cleanupDeadClients;
@@ -62,7 +63,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)addClient:(id)arg1;
 - (void)addSinkClient:(id)arg1;
 - (void)addSourceClient:(id)arg1;
-- (void)computeHardwarePreferences;
 - (void)dealloc;
 - (void)flushEventQueue:(struct AudioEventQueue_t *)arg1;
 - (void)getPreferredFormat:(struct AudioStreamBasicDescription *)arg1 blockSize:(double *)arg2 vpOperatingMode:(unsigned int *)arg3 forOperatingMode:(int)arg4 deviceRole:(int)arg5 suggestedFormat:(struct AudioStreamBasicDescription *)arg6;

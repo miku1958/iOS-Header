@@ -17,6 +17,7 @@
 - (BOOL)_accessibilityDescendantElementAtIndexPathIsValid:(id)arg1;
 - (void)_accessibilityEnsureViewsAroundAreLoaded;
 - (id)_accessibilityFuzzyHitTest:(struct CGPoint *)arg1 withEvent:(id)arg2;
+- (id)_accessibilityGroupIdentifier;
 - (BOOL)_accessibilityHasOrderedChildren;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityIndexPathOfDirectSubviewForDescendantElement:(id)arg1 withElementKind:(id *)arg2;

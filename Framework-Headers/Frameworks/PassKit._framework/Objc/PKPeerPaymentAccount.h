@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDecimalNumber, NSDictionary, NSString, NSURL, PKCurrencyAmount;
+@class NSArray, NSDate, NSDecimalNumber, NSDictionary, NSString, NSURL, PKCurrencyAmount;
 
 @interface PKPeerPaymentAccount : NSObject <NSSecureCoding>
 {
@@ -20,6 +20,8 @@
     NSString *_countryCode;
     PKCurrencyAmount *_currentBalance;
     NSDecimalNumber *_maximumBalance;
+    NSDate *_lastUpdated;
+    double _proactiveFetchPeriod;
     NSString *_termsIdentifier;
     NSURL *_termsURL;
     NSURL *_associatedPassURL;
@@ -36,9 +38,11 @@
 @property (copy, nonatomic) PKCurrencyAmount *currentBalance; // @synthesize currentBalance=_currentBalance;
 @property (readonly, copy, nonatomic) NSArray *defaultSuggestions;
 @property (nonatomic) BOOL identityVerificationRequired; // @synthesize identityVerificationRequired=_identityVerificationRequired;
+@property (strong, nonatomic) NSDate *lastUpdated; // @synthesize lastUpdated=_lastUpdated;
 @property (copy, nonatomic) NSDecimalNumber *maximumBalance; // @synthesize maximumBalance=_maximumBalance;
 @property (readonly, nonatomic) NSDictionary *maximumTransferAmounts;
 @property (readonly, nonatomic) NSDictionary *minimumTransferAmounts;
+@property (nonatomic) double proactiveFetchPeriod; // @synthesize proactiveFetchPeriod=_proactiveFetchPeriod;
 @property (nonatomic) unsigned long long stage; // @synthesize stage=_stage;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (copy, nonatomic) NSArray *supportedFeatureDescriptors; // @synthesize supportedFeatureDescriptors=_supportedFeatureDescriptors;
@@ -55,6 +59,8 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (id)initWithDictionary:(id)arg1 lastUpdated:(id)arg2;
+- (BOOL)isAccountOutOfDate;
 - (BOOL)isEqual:(id)arg1;
 - (id)loadFromCardFeatureDescriptor;
 - (id)requestFromUserFeatureDescriptor;

@@ -6,12 +6,14 @@
 
 #import <Foundation/NSObject.h>
 
-@class APReceiverMediaRemoteCommunicationChannelInternal;
+@class APReceiverMediaRemoteCommunicationChannelInternal, NSString;
 
 @interface APReceiverMediaRemoteCommunicationChannel : NSObject
 {
     APReceiverMediaRemoteCommunicationChannelInternal *_commChannel;
 }
+
+@property (readonly, nonatomic) NSString *uuid;
 
 - (void)dealloc;
 - (id)initWithDictionary:(id)arg1;

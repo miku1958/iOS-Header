@@ -9,7 +9,9 @@
 @class FLFollowUpAction, FLFollowUpItem;
 
 @protocol FLExtensionRemoteInterface <NSObject>
-- (void)followUpPerformUpdateWithCompletionHandler:(void (^)(unsigned long long))arg1;
 - (void)processFollowUpItem:(FLFollowUpItem *)arg1 selectedAction:(FLFollowUpAction *)arg2 completion:(void (^)(BOOL))arg3;
+
+@optional
+- (void)followUpPerformUpdateWithCompletionHandler:(void (^)(unsigned long long))arg1;
 @end
 

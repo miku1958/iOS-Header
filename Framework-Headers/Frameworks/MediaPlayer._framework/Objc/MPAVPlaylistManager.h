@@ -126,6 +126,7 @@
 - (BOOL)setMusicPlayerControllerQueue:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)setPlaylistFeeder:(id)arg1 startIndex:(long long)arg2 keepPlaying:(BOOL)arg3;
 - (void)updateForSoundCheckDefaultsChange;
+- (void)updateLocationDependentPropertiesForItem:(id)arg1;
 
 @end
 

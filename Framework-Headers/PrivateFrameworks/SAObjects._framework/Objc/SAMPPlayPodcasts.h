@@ -14,6 +14,7 @@
 
 @property (copy, nonatomic) NSString *episodePlaybackOrder;
 @property (copy, nonatomic) NSArray *hashedRouteUIDs;
+@property (nonatomic) BOOL startPlaying;
 
 + (id)playPodcasts;
 + (id)playPodcastsWithDictionary:(id)arg1 context:(id)arg2;

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/_HMAccesorySettingGroupDelegate-Protocol.h>
 
 @class NSArray, NSMutableSet, NSString, _HMAccessorySettingGroup;
 @protocol OS_dispatch_queue;
 
-@interface HMAccessorySettingGroup : NSObject <_HMAccesorySettingGroupDelegate>
+@interface HMAccessorySettingGroup : NSObject <_HMAccesorySettingGroupDelegate, HMFLogging>
 {
     NSMutableSet *_settings;
     NSMutableSet *_groups;
@@ -32,7 +33,12 @@
 @property (readonly, copy) NSArray *settings;
 @property (readonly) Class superclass;
 
++ (id)logCategory;
 - (void).cxx_destruct;
+- (void)_notifyClientOfAddedGroup:(id)arg1;
+- (void)_notifyClientOfAddedSetting:(id)arg1;
+- (void)_notifyClientOfRemovedGroup:(id)arg1;
+- (void)_notifyClientOfRemovedSetting:(id)arg1;
 - (void)_settingGroup:(id)arg1 didAddSetting:(id)arg2;
 - (void)_settingGroup:(id)arg1 didAddSettingGroup:(id)arg2;
 - (void)_settingGroup:(id)arg1 didRemoveSetting:(id)arg2;
@@ -45,6 +51,7 @@
 - (id)initWithInternal:(id)arg1;
 - (id)initWithKeyPath:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)logIdentifier;
 - (void)removeGroup:(id)arg1;
 - (void)removeGroup:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeSetting:(id)arg1;

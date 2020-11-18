@@ -34,7 +34,6 @@
     int _contentType;
     NSString *_contentURL;
     NSString *_coverArt;
-    NSString *_displayTopicTagID;
     NSString *_excerptURL;
     NSString *_flintDocumentURL;
     NSMutableArray *_flintFontResourceIDs;
@@ -64,6 +63,7 @@
     NSString *_thumbnailWidgetTaggedURL;
     NSString *_thumbnailWidgetURL;
     NSString *_title;
+    NSString *_titleCompact;
     NSMutableArray *_topics;
     NSString *_videoURL;
     BOOL _isDraft;
@@ -104,7 +104,6 @@
 @property (nonatomic) int contentType; // @synthesize contentType=_contentType;
 @property (strong, nonatomic) NSString *contentURL; // @synthesize contentURL=_contentURL;
 @property (strong, nonatomic) NSString *coverArt; // @synthesize coverArt=_coverArt;
-@property (strong, nonatomic) NSString *displayTopicTagID; // @synthesize displayTopicTagID=_displayTopicTagID;
 @property (strong, nonatomic) NSString *excerptURL; // @synthesize excerptURL=_excerptURL;
 @property (strong, nonatomic) NSString *flintDocumentURL; // @synthesize flintDocumentURL=_flintDocumentURL;
 @property (strong, nonatomic) NSMutableArray *flintFontResourceIDs; // @synthesize flintFontResourceIDs=_flintFontResourceIDs;
@@ -117,7 +116,6 @@
 @property (nonatomic) BOOL hasContentType;
 @property (readonly, nonatomic) BOOL hasContentURL;
 @property (readonly, nonatomic) BOOL hasCoverArt;
-@property (readonly, nonatomic) BOOL hasDisplayTopicTagID;
 @property (readonly, nonatomic) BOOL hasExcerptURL;
 @property (readonly, nonatomic) BOOL hasFlintDocumentURL;
 @property (readonly, nonatomic) BOOL hasGlobalCohort;
@@ -156,6 +154,7 @@
 @property (readonly, nonatomic) BOOL hasThumbnailWidgetTaggedURL;
 @property (readonly, nonatomic) BOOL hasThumbnailWidgetURL;
 @property (readonly, nonatomic) BOOL hasTitle;
+@property (readonly, nonatomic) BOOL hasTitleCompact;
 @property (nonatomic) BOOL hasVideoDuration;
 @property (readonly, nonatomic) BOOL hasVideoURL;
 @property (strong, nonatomic) NSMutableArray *iAdCategories; // @synthesize iAdCategories=_iAdCategories;
@@ -198,6 +197,7 @@
 @property (strong, nonatomic) NSString *thumbnailWidgetTaggedURL; // @synthesize thumbnailWidgetTaggedURL=_thumbnailWidgetTaggedURL;
 @property (strong, nonatomic) NSString *thumbnailWidgetURL; // @synthesize thumbnailWidgetURL=_thumbnailWidgetURL;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
+@property (strong, nonatomic) NSString *titleCompact; // @synthesize titleCompact=_titleCompact;
 @property (strong, nonatomic) NSMutableArray *topics; // @synthesize topics=_topics;
 @property (nonatomic) double videoDuration; // @synthesize videoDuration=_videoDuration;
 @property (strong, nonatomic) NSString *videoURL; // @synthesize videoURL=_videoURL;

@@ -15,17 +15,20 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityLoadPuppets;
+- (void)_accessibilityUpdateCollectionViewAccessibilityForPresentationStyle:(unsigned long long)arg1;
 - (void)_accessibilityUpdateRecordButtonLabel;
 - (id)_axTapGestureRecognizer;
 - (void)_setAXTapGestureRecognizer:(id)arg1;
 - (void)handleRecordTap:(id)arg1;
 - (void)loadPuppets;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)puppetView:(id)arg1 previewDidChangeStatus:(long long)arg2;
 - (void)recordingDidFinish;
 - (void)selectAVTPuppetAtIndex:(long long)arg1 animated:(BOOL)arg2 setPuppetState:(BOOL)arg3;
 - (void)showUserInfoLabelWithText:(id)arg1;
 - (void)updateUIState:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)viewDidLoad;
+- (void)willTransitionToPresentationStyle:(unsigned long long)arg1;
 
 @end
 

@@ -6,11 +6,16 @@
 
 #import <MediaPlaybackCore/NSObject-Protocol.h>
 
+@class MPSectionedCollection, NSArray;
+
 @protocol MPCModelPlaybackRequesting <NSObject>
 
-@property (nonatomic) BOOL shouldExcludeNonShuffleItems;
+@property (readonly, nonatomic) MPSectionedCollection *playbackSourceModelObjects;
 
 
 @optional
+- (void)setAllowsPlaybackResponseBatching:(BOOL)arg1;
+- (void)setPlaybackPrioritizedIndexPaths:(NSArray *)arg1;
+- (void)setShouldExcludeNonShuffleItems:(BOOL)arg1;
 @end
 

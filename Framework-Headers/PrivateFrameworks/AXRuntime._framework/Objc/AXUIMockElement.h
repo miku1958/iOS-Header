@@ -35,6 +35,7 @@
 - (id)description;
 - (void)disableCache;
 - (void)enableCache:(BOOL)arg1;
+- (id)endLoggingActions;
 - (void)fillStaticCache;
 - (float)floatWithAXAttribute:(long long)arg1;
 - (unsigned long long)hash;
@@ -76,6 +77,7 @@
 - (void)setValue:(id)arg1 forAXParameterizedAttribute:(long long)arg2;
 - (void)setWritable:(BOOL)arg1 forAXAttribute:(long long)arg2;
 - (struct CGSize)sizeWithAXAttribute:(long long)arg1;
+- (void)startLoggingActions;
 - (id)stringWithAXAttribute:(long long)arg1;
 - (id)uiElementArrayForAXAttribute:(long long)arg1;
 - (id)uiElementWithAXAttribute:(long long)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @interface CNArchiver : NSObject
 {
@@ -12,6 +12,7 @@
 
 + (id)decodeObjectOfClass:(Class)arg1 data:(id)arg2 error:(id *)arg3;
 + (id)encodeObject:(id)arg1 error:(id *)arg2;
++ (id)os_log;
 
 @end
 

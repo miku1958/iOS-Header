@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSNumber, NSString, NSUserDefaults;
+@class NSDate, NSDictionary, NSNumber, NSString, NSUserDefaults;
 
 @interface ICDefaults : NSObject
 {
     NSUserDefaults *_userDefaults;
 }
 
+@property (copy, nonatomic) NSString *authServiceClientToken;
+@property (copy, nonatomic) NSNumber *authServiceClientTokenDSID;
+@property (copy, nonatomic) NSDate *authServiceClientTokenExpiration;
 @property (copy, nonatomic) NSDictionary *cachedSubscriptionStatus;
-@property (nonatomic, getter=isCachedSubscriptionStatusValid) BOOL cachedSubscriptionStatusValid;
 @property (copy, nonatomic) NSString *cloudMediaLibraryUID;
 @property (copy, nonatomic) NSString *defaultStoreFront;
 @property (readonly, copy, nonatomic) NSNumber *deviceClassOverride;
@@ -33,6 +35,7 @@
 - (void)_setOrRemoveObject:(id)arg1 forKey:(id)arg2;
 - (BOOL)_shouldSpoofIPhoneRequestProperties;
 - (id)init;
+- (void)synchronize;
 
 @end
 

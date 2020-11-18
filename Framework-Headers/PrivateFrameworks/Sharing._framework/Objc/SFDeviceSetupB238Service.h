@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVAudioPlayer, AVAudioSession, HMDeviceSetupOperationHandler, NSDate, NSString, SFClient, SFDeviceOperationHandlerWiFiSetup, SFService, SFSession, SFSiriClient;
+@class CUAudioPlayer, HMDeviceSetupOperationHandler, NSDate, NSString, SFClient, SFDeviceOperationHandlerWiFiSetup, SFService, SFSession, SFSiriClient, SFSiriDeviceSetupGreetingDetails, SFSiriWordTimingPlayer;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SFDeviceSetupB238Service : NSObject
@@ -15,6 +15,7 @@
     BOOL _advertiseFast;
     BOOL _finished;
     BOOL _finished2;
+    BOOL _finishedEventSent;
     BOOL _finishSessionEnded;
     NSObject<OS_dispatch_source> *_finishTimer;
     BOOL _invalidateCalled;
@@ -23,15 +24,17 @@
     SFService *_sfService;
     SFSession *_sfSession;
     SFSiriClient *_siriClient;
+    SFSiriDeviceSetupGreetingDetails *_siriGreetingDetails;
+    BOOL _siriHeardWhatCanYouDo;
+    SFSiriWordTimingPlayer *_siriWordPlayer;
     BOOL _wifiSetupEnabled;
     HMDeviceSetupOperationHandler *_homeKitSetupHandler;
     SFDeviceOperationHandlerWiFiSetup *_wifiSetupHandler;
-    AVAudioSession *_audioSession;
-    AVAudioPlayer *_audioPlayerStart;
-    AVAudioPlayer *_audioPlayerStep;
+    CUAudioPlayer *_audioPlayer;
     NSString *_languageCode;
     NSString *_localeIdentifier;
     NSString *_temperatureUnit;
+    BOOL _siriDisabled;
     NSString *_siriListenLanguage;
     long long _siriVoiceGender;
     NSString *_siriVoiceLanguage;
@@ -55,8 +58,9 @@
 - (void)_handleAuthActionSiriStart:(id)arg1 response:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (int)_handleBasicConfigRequest:(id)arg1;
 - (void)_handleBasicConfigResponse:(id)arg1;
-- (void)_handleFinishDone:(unsigned int)arg1;
-- (int)_handleFinishRequest:(id)arg1;
+- (void)_handleFinishApply:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
+- (void)_handleFinishDone:(unsigned int)arg1 responseHandler:(CDUnknownBlockType)arg2;
+- (void)_handleFinishRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (void)_handlePlaySoundRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (void)_handlePreAuthRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (void)_handleRawRequest:(id)arg1 flags:(unsigned int)arg2 responseHandler:(CDUnknownBlockType)arg3;
@@ -64,12 +68,17 @@
 - (void)_handleSessionStarted:(id)arg1;
 - (void)_handleSiriDialogIdentifier:(id)arg1;
 - (void)_invalidate;
-- (BOOL)_playSoundID:(int)arg1 error:(id *)arg2;
-- (void)_runSiriDialogA;
-- (void)_runSiriDialogB;
 - (void)_setSiriLanguageInfo;
 - (void)_setSystemName:(id)arg1 hostname:(id)arg2;
 - (void)_sfServiceStart;
+- (void)_siriGreetingDialogA;
+- (void)_siriGreetingDialogBPhrase:(id)arg1 error:(id)arg2;
+- (void)_siriGreetingDialogBStart;
+- (void)_siriGreetingDialogCPhrase:(id)arg1 error:(id)arg2;
+- (void)_siriGreetingDialogCStart;
+- (void)_siriGreetingIntroPhrase:(id)arg1 error:(id)arg2;
+- (void)_siriGreetingIntroStart;
+- (void)_siriGreetingStart:(CDUnknownBlockType)arg1;
 - (void)_speakLocalizedKey:(id)arg1 event:(unsigned int)arg2;
 - (void)activate;
 - (void)dealloc;

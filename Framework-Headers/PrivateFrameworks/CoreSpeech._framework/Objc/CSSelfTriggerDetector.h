@@ -44,6 +44,7 @@
 - (void)speechManagerDidStopForwarding:(id)arg1 forReason:(long long)arg2;
 - (void)speechManagerLPCMRecordBufferAvailable:(id)arg1 chunk:(id)arg2;
 - (void)speechManagerRecordBufferAvailable:(id)arg1 buffer:(id)arg2;
+- (void)start;
 
 @end
 

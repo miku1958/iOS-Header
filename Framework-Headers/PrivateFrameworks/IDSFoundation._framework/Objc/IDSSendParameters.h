@@ -53,6 +53,7 @@
 @property (strong, nonatomic) NSString *identifier;
 @property (strong, nonatomic) NSArray *interestingRegistrationProperties;
 @property (nonatomic) BOOL isProxiedOutgoingMessage;
+@property (nonatomic) BOOL liveMessageDelivery;
 @property (nonatomic) BOOL localDelivery;
 @property (strong, nonatomic) NSString *localDestinationDeviceUUID;
 @property (strong, nonatomic) NSString *mainAccountUUID;
@@ -70,6 +71,7 @@
 @property (strong, nonatomic) NSArray *requireAllRegistrationProperties;
 @property (nonatomic) BOOL requireBluetooth;
 @property (strong, nonatomic) NSArray *requireLackOfRegistrationProperties;
+@property (nonatomic) BOOL requireLocalWiFi;
 @property (strong, nonatomic) NSDictionary *resourceMetadata;
 @property (strong, nonatomic) NSString *resourcePath;
 @property (strong, nonatomic) NSString *sessionID;

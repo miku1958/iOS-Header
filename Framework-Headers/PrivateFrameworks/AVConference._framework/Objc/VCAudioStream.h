@@ -103,12 +103,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)isFrequencyMeteringEnabled:(int)arg1;
 - (void)onCallIDChanged;
 - (BOOL)onConfigureStreamWithConfiguration:(id)arg1 error:(id *)arg2;
-- (void)onPause;
-- (void)onResume;
+- (void)onPauseWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)onResumeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)onRtcpEnabledChanged;
 - (void)onRtcpSendIntervalChanged;
-- (void)onStart;
-- (void)onStop;
+- (void)onStartWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)onStopWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (int)operatingModeForAudioStreamMode:(long long)arg1;
 - (unsigned int)preferredAudioBitrateForPayload:(int)arg1;
 - (void)prepareAudio;

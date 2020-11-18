@@ -11,12 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface VKVenueFeatureMarker : VKFeatureMarker
 {
+    BOOL _localize;
 }
 
 @property (readonly, nonatomic) NSArray *buildings;
 @property (readonly, nonatomic) unsigned long long businessID;
 
-- (id)initWithVenue:(const struct Venue *)arg1;
+- (id)initWithVenue:(const struct Venue *)arg1 localize:(BOOL)arg2;
 - (id)name;
 - (const shared_ptr_c500bfa8 *)venueFeatureMarker;
 

@@ -63,6 +63,7 @@
     SFImage *_imageOverlay;
     SFActionItem *_playAction;
     NSArray *_offers;
+    NSString *_footnote;
 }
 
 @property (copy, nonatomic) NSNumber *auxiliaryAlignment; // @synthesize auxiliaryAlignment=_auxiliaryAlignment;
@@ -79,6 +80,7 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *descriptionText; // @synthesize descriptionText=_descriptionText;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (copy, nonatomic) NSString *footnote; // @synthesize footnote=_footnote;
 @property (nonatomic) BOOL hasBottomPadding;
 @property (nonatomic) BOOL hasTopPadding;
 @property (readonly) unsigned long long hash;

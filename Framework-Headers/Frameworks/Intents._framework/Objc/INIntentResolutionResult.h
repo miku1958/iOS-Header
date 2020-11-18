@@ -64,7 +64,7 @@
 - (id)_vocabularyValueForObject:(id)arg1 slotDescription:(id)arg2;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (id)dictionaryRepresentation;
-- (id)resolutionResultDataForIntent:(id)arg1 intentSlotDescription:(id)arg2;
+- (id)resolutionResultDataForIntent:(id)arg1 intentSlotDescription:(id)arg2 error:(id *)arg3;
 
 @end
 

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSUnit.h>
+#import <Foundation/NSUnit.h>
 
-#import <extension/NSSecureCoding-Protocol.h>
+#import <Foundation/NSSecureCoding-Protocol.h>
 
 @class NSUnitConverter;
 

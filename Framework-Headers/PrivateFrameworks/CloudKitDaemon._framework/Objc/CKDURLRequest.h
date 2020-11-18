@@ -11,7 +11,7 @@
 #import <CloudKitDaemon/CKDProtobufMessageSigningDelegate-Protocol.h>
 #import <CloudKitDaemon/CKDZoneGatekeeperWaiter-Protocol.h>
 
-@class C2RequestOptions, CKDClientContext, CKDOperation, CKDOperationMetrics, CKDProtobufStreamWriter, CKDProtocolTranslator, CKDResponseBodyParser, CKDTrafficLogger, CKTimeLogger, NSArray, NSData, NSDate, NSDictionary, NSError, NSHTTPURLResponse, NSInputStream, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSString, NSURL, NSURLRequest, NSURLSession, NSURLSessionDataTask;
+@class C2RequestOptions, CKDClientContext, CKDOperation, CKDOperationMetrics, CKDProtobufStreamWriter, CKDProtocolTranslator, CKDResponseBodyParser, CKDTapToRadarRequest, CKDTrafficLogger, CKTimeLogger, NSArray, NSData, NSDate, NSDictionary, NSError, NSHTTPURLResponse, NSInputStream, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSString, NSURL, NSURLRequest, NSURLSession, NSURLSessionDataTask;
 @protocol CKDAccountInfoProvider, CKDURLRequestAuthRetryDelegate, CKDURLRequestMetricsDelegate, OS_dispatch_queue, OS_os_activity, OS_voucher;
 
 __attribute__((visibility("hidden")))
@@ -73,6 +73,7 @@ __attribute__((visibility("hidden")))
     NSString *_cloudKitAuthToken;
     NSString *_iCloudAuthToken;
     NSString *_serverProvidedAutoBugCaptureReason;
+    CKDTapToRadarRequest *_serverProvidedTapToRadarRequest;
     NSMutableDictionary *_countsByRequestOperationType;
     NSMutableDictionary *_overriddenHeaders;
     NSMutableArray *_redirectHistory;
@@ -155,6 +156,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long responseStatusCode; // @synthesize responseStatusCode=_responseStatusCode;
 @property (readonly, nonatomic) NSString *sectionID;
 @property (copy, nonatomic) NSString *serverProvidedAutoBugCaptureReason; // @synthesize serverProvidedAutoBugCaptureReason=_serverProvidedAutoBugCaptureReason;
+@property (strong, nonatomic) CKDTapToRadarRequest *serverProvidedTapToRadarRequest; // @synthesize serverProvidedTapToRadarRequest=_serverProvidedTapToRadarRequest;
 @property (readonly, nonatomic) long long serverType;
 @property (readonly, nonatomic) BOOL shouldCompressBody;
 @property (readonly, nonatomic) BOOL shouldSendKeyIDs;

@@ -23,7 +23,6 @@
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) VSPresynthesizedAudioRequest *presynthesizedAudioRequest;
 @property (readonly, nonatomic) VSSpeechRequest *request;
-@property (readonly, nonatomic) VSSpeechRequest *synthesisRequest;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *threadSafeQueue; // @synthesize threadSafeQueue=_threadSafeQueue;
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
@@ -34,6 +33,7 @@
 - (id)availableFootprintsForVoice:(id)arg1 languageCode:(id)arg2;
 - (id)availableVoicesForLanguageCode:(id)arg1;
 - (oneway void)cleanUnusedAssets:(CDUnknownBlockType)arg1;
+- (id)concurrentSynthesisRequests;
 - (void)continueCurrentSpeechRequest;
 - (void)dealloc;
 - (void)getAutoDownloadedVoiceAssets:(CDUnknownBlockType)arg1;
@@ -51,7 +51,6 @@
 - (void)setLogToFile:(BOOL)arg1;
 - (void)setPresynthesizedAudioRequest:(id)arg1;
 - (void)setRequest:(id)arg1;
-- (void)setSynthesisRequest:(id)arg1;
 - (void)startPresynthesizedAudioRequest:(id)arg1;
 - (void)startSpeechRequest:(id)arg1;
 - (void)startSynthesisRequest:(id)arg1;

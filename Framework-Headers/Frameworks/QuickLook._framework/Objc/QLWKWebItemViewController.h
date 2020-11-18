@@ -63,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)_webViewDidRequestPasswordForQuickLookDocument:(id)arg1;
 - (BOOL)automaticallyUpdateScrollViewContentInset;
 - (BOOL)automaticallyUpdateScrollViewContentOffset;
+- (BOOL)automaticallyUpdateScrollViewIndicatorInset;
 - (BOOL)canPinchToDismiss;
 - (BOOL)canSwipeToDismiss;
 - (unsigned long long)currentPageNumber;

@@ -56,6 +56,7 @@
 - (BOOL)isOneWayArrow;
 - (BOOL)isRouteEta;
 - (BOOL)isSelectable;
+- (BOOL)isSelected;
 - (BOOL)isTextVisible;
 - (BOOL)isTrafficCamera;
 - (BOOL)isTrafficIncident;
@@ -72,6 +73,7 @@
 - (struct CGRect)screenCollisionBounds;
 - (struct CGPoint)screenPointToScrollRelativeToWithCanvasSize:(struct CGSize)arg1 canvasScale:(double)arg2;
 - (int)selectionType;
+- (void)setIsPickedIconDrawnExternally:(BOOL)arg1;
 - (void)setLabelPressed:(BOOL)arg1;
 - (int)sortKey;
 - (id)subtext;

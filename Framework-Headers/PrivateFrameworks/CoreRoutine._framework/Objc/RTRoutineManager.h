@@ -67,6 +67,7 @@
 - (void)fetchAllRoutesForSettingsWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchAutomaticVehicleEventDetectionSupportedWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchCloudSyncAuthorizationState:(CDUnknownBlockType)arg1;
+- (void)fetchCurrentPredictedLocationsOfInterestLookingBack:(double)arg1 lookingAhead:(double)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchLastVehicleEventsWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchLocationOfInterestAtLocation:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)fetchLocationOfInterestWithIdentifier:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
@@ -105,6 +106,7 @@
 - (void)onScenarioTrigger:(id)arg1 withError:(id)arg2;
 - (void)onVehicleEvents:(id)arg1 error:(id)arg2;
 - (void)onVisit:(id)arg1 withError:(id)arg2;
+- (void)performBluePOIQueryLookingBack:(double)arg1 lookingAhead:(double)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)provideFeedbackForAction:(id)arg1 engagementResult:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)removeLocationOfInterest:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)removeLocationOfInterestWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;

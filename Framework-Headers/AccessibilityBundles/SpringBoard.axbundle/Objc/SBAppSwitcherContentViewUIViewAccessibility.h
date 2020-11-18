@@ -28,7 +28,9 @@
 - (void)_axRemoveVisibleItemContainerForAppLayout:(id)arg1;
 - (BOOL)_axScrollToAppElement:(id)arg1;
 - (void)_axSetElementsArray:(id)arg1 dictionary:(id)arg2;
+- (id)_axSortedElementArray:(id)arg1;
 - (id)_axSwitcherViewController;
+- (void)_axUpdateElementOrderingIfNecessary;
 - (void)_setAXIsAppSwitcherContentView:(BOOL)arg1;
 - (void)_setAXIsControlCenterView:(BOOL)arg1;
 - (id)accessibilityElements;

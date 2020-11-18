@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSXPCCoder.h>
+#import <Foundation/NSXPCCoder.h>
 
 @class NSObject, NSXPCConnection;
 @protocol NSXPCEncoderDelegate, OS_xpc_object;

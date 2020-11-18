@@ -53,6 +53,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)initWithResponseDictionary:(id)arg1;
+- (BOOL)isEqualToStatus:(id)arg1;
 
 @end
 

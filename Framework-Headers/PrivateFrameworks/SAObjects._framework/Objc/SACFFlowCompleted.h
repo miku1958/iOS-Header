@@ -6,12 +6,13 @@
 
 #import <SAObjects/SACFAbstractClientCommandCompleted.h>
 
-@class SACFProvideContext;
+@class NSString, SACFProvideContext;
 
 @interface SACFFlowCompleted : SACFAbstractClientCommandCompleted
 {
 }
 
+@property (copy, nonatomic) NSString *domain;
 @property (strong, nonatomic) SACFProvideContext *updateContext;
 
 + (id)flowCompleted;

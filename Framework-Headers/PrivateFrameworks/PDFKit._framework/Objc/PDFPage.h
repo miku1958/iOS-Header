@@ -66,6 +66,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)createAttributedStringCP;
 - (void)dealloc;
+- (id)debugQuickLookObject;
 - (id)description;
 - (BOOL)didChangeBounds;
 - (void)drawBurnedInAnnotationsWithBox:(long long)arg1 inContext:(struct CGContext *)arg2;

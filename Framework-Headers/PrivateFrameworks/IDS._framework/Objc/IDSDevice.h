@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSDate, NSString, NSUUID, _IDSDevice;
+@class IDSDestination, NSArray, NSData, NSDate, NSString, NSUUID, _IDSDevice;
 
 @interface IDSDevice : NSObject
 {
@@ -14,6 +14,7 @@
 }
 
 @property (readonly, nonatomic, getter=isConnected) BOOL connected;
+@property (readonly, nonatomic) IDSDestination *destination;
 @property (readonly, nonatomic) NSString *deviceColor;
 @property (readonly, nonatomic) NSString *enclosureColor;
 @property (readonly, nonatomic) NSArray *identities;

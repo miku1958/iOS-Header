@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     int _largeTitleTransitionType;
     BOOL _isRTL;
     BOOL _allowLargeTitles;
+    BOOL _twoPart;
     BOOL _beginWithLargeTitle;
     BOOL _endWithLargeTitle;
     NSMutableSet *_clippingViews;
@@ -46,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UINavigationBarContentViewLayout *toContentLayout; // @synthesize toContentLayout=_toContentLayout;
 @property (strong, nonatomic) _UINavigationBarLargeTitleViewLayout *toLargeTitleLayout; // @synthesize toLargeTitleLayout=_toLargeTitleLayout;
 @property (readonly, nonatomic) int transition; // @dynamic transition;
+@property (nonatomic) BOOL twoPart; // @synthesize twoPart=_twoPart;
 @property (readonly, nonatomic) UIView *viewFadingInFromCustomAlpha;
 @property (readonly, nonatomic) UIView *viewUsingEaseInCurve;
 @property (readonly, nonatomic) UIView *viewUsingEaseOutCurve;

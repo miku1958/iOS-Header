@@ -22,12 +22,14 @@
     BOOL _needsAuthentication;
     BOOL _needsURLBag;
     SSVFairPlaySAPSession *_sapSession;
+    BOOL _shouldAppendAuthKitHeaders;
     BOOL _shouldAppendStorefrontToURL;
     BOOL _shouldSendXTokenHeader;
     BOOL _urlKnownToBeTrusted;
     BOOL _useUserSpecificURLBag;
     BOOL _needsTermsAndConditionsAcceptance;
     BOOL _shouldSuppressUserInfo;
+    BOOL _shouldSendAKClientInfoHeaders;
     BOOL _shouldSendDSIDHeader;
     SSBiometricAuthenticationContext *_biometricAuthenticationContext;
     id<ISBiometricSessionDelegate> _biometricSessionDelegate;
@@ -52,7 +54,9 @@
 @property BOOL needsTermsAndConditionsAcceptance; // @synthesize needsTermsAndConditionsAcceptance=_needsTermsAndConditionsAcceptance;
 @property BOOL needsURLBag; // @synthesize needsURLBag=_needsURLBag;
 @property BOOL performsMachineDataActions;
+@property (nonatomic) BOOL shouldAppendAuthKitHeaders; // @synthesize shouldAppendAuthKitHeaders=_shouldAppendAuthKitHeaders;
 @property (nonatomic) BOOL shouldAppendStorefrontToURL; // @synthesize shouldAppendStorefrontToURL=_shouldAppendStorefrontToURL;
+@property BOOL shouldSendAKClientInfoHeaders; // @synthesize shouldSendAKClientInfoHeaders=_shouldSendAKClientInfoHeaders;
 @property BOOL shouldSendDSIDHeader; // @synthesize shouldSendDSIDHeader=_shouldSendDSIDHeader;
 @property BOOL shouldSendXTokenHeader;
 @property BOOL shouldSuppressUserInfo; // @synthesize shouldSuppressUserInfo=_shouldSuppressUserInfo;
@@ -62,11 +66,11 @@
 
 + (void)_addAccountDSID:(id)arg1 toRequest:(id)arg2;
 + (void)_addPrimaryiCloudDSIDToRequest:(id)arg1;
-+ (void)_addiTunesStoreHeadersToRequest:(id)arg1 withAccount:(id)arg2 appendStorefrontToURL:(BOOL)arg3 clientBundleIdentifier:(id)arg4 extraHeaders:(id)arg5 storefrontSuffix:(id)arg6;
-+ (void)_addiTunesStoreHeadersToRequest:(id)arg1 withSSBag:(id)arg2 account:(id)arg3 appendStorefrontToURL:(BOOL)arg4 clientBundleIdentifier:(id)arg5;
-+ (void)_addiTunesStoreHeadersToRequest:(id)arg1 withSSBag:(id)arg2 accountIdentifier:(id)arg3 appendStorefrontToURL:(BOOL)arg4 clientBundleIdentifier:(id)arg5;
-+ (void)_addiTunesStoreHeadersToRequest:(id)arg1 withURLBag:(id)arg2 account:(id)arg3 appendStorefrontToURL:(BOOL)arg4 clientBundleIdentifier:(id)arg5;
-+ (void)_addiTunesStoreHeadersToRequest:(id)arg1 withURLBag:(id)arg2 accountIdentifier:(id)arg3 appendStorefrontToURL:(BOOL)arg4 clientBundleIdentifier:(id)arg5;
++ (void)_addiTunesStoreHeadersToRequest:(id)arg1 withAccount:(id)arg2 appendAuthKitHeaders:(BOOL)arg3 appendStorefrontToURL:(BOOL)arg4 clientBundleIdentifier:(id)arg5 extraHeaders:(id)arg6 storefrontSuffix:(id)arg7;
++ (void)_addiTunesStoreHeadersToRequest:(id)arg1 withSSBag:(id)arg2 account:(id)arg3 appendAuthKitHeaders:(BOOL)arg4 appendStorefrontToURL:(BOOL)arg5 clientBundleIdentifier:(id)arg6;
++ (void)_addiTunesStoreHeadersToRequest:(id)arg1 withSSBag:(id)arg2 accountIdentifier:(id)arg3 appendAuthKitHeaders:(BOOL)arg4 appendStorefrontToURL:(BOOL)arg5 clientBundleIdentifier:(id)arg6;
++ (void)_addiTunesStoreHeadersToRequest:(id)arg1 withURLBag:(id)arg2 account:(id)arg3 appendAuthKitHeaders:(BOOL)arg4 appendStorefrontToURL:(BOOL)arg5 clientBundleIdentifier:(id)arg6;
++ (void)_addiTunesStoreHeadersToRequest:(id)arg1 withURLBag:(id)arg2 accountIdentifier:(id)arg3 appendAuthKitHeaders:(BOOL)arg4 appendStorefrontToURL:(BOOL)arg5 clientBundleIdentifier:(id)arg6;
 + (void)_appendStorefront:(id)arg1 toRequestURL:(id)arg2;
 + (id)_authKitSession;
 + (void)_handleResponseHeaders:(id)arg1 response:(id)arg2 request:(id)arg3 account:(id)arg4 performsMachineDataActions:(BOOL)arg5 shouldRetry:(BOOL *)arg6;

@@ -33,7 +33,7 @@
 + (id)usualStrategyWithStorage:(id)arg1;
 - (void).cxx_destruct;
 - (void)_computeNextStep;
-- (BOOL)extractBatch:(out id *)arg1 error:(id *)arg2;
+- (BOOL)extractBatch:(out id *)arg1 maximumResourceSize:(unsigned long long)arg2 error:(id *)arg3;
 - (id)initWithName:(id)arg1 storage:(id)arg2 steps:(id)arg3;
 - (void)reset;
 - (void)resetConditionallyFromNewIncomingChange:(id)arg1;

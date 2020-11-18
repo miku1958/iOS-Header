@@ -7,15 +7,20 @@
 #import <objc/NSObject.h>
 
 #import <NewsUI/FCAppActivityMonitor-Protocol.h>
+#import <NewsUI/SXAppStateMonitor-Protocol.h>
 
-@class NSHashTable, NSNotificationCenter, NSString;
+@class NSHashTable, NSMutableSet, NSNotificationCenter, NSString;
 
-@interface NUExtensionAppActivityMonitor : NSObject <FCAppActivityMonitor>
+@interface NUExtensionAppActivityMonitor : NSObject <FCAppActivityMonitor, SXAppStateMonitor>
 {
     NSNotificationCenter *_notificationCenter;
     NSHashTable *_observers;
+    NSMutableSet *_activeObserverBlocks;
+    NSMutableSet *_backgroundObserverBlocks;
 }
 
+@property (readonly, nonatomic) NSMutableSet *activeObserverBlocks; // @synthesize activeObserverBlocks=_activeObserverBlocks;
+@property (readonly, nonatomic) NSMutableSet *backgroundObserverBlocks; // @synthesize backgroundObserverBlocks=_backgroundObserverBlocks;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -29,6 +34,8 @@
 - (void)applicationDidEnterBackgroundNotification:(id)arg1;
 - (void)dealloc;
 - (id)initWithNotificationCenter:(id)arg1;
+- (void)performOnApplicationDidBecomeActive:(CDUnknownBlockType)arg1;
+- (void)performOnApplicationDidEnterBackground:(CDUnknownBlockType)arg1;
 
 @end
 

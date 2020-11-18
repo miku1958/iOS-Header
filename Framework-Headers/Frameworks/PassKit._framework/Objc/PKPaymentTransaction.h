@@ -22,7 +22,6 @@
     BOOL _processedForStations;
     BOOL _hasAssociatedPaymentApplication;
     BOOL _hasNotificationServiceData;
-    BOOL _isFromCloudStore;
     NSString *_identifier;
     NSString *_serviceIdentifier;
     NSString *_paymentHash;
@@ -69,6 +68,7 @@
     long long _transactionType;
     long long _technologyType;
     unsigned long long _transactionSource;
+    unsigned long long _updateReasons;
 }
 
 @property (nonatomic) long long adjustmentType; // @synthesize adjustmentType=_adjustmentType;
@@ -93,7 +93,6 @@
 @property (readonly, nonatomic) BOOL hasTransactionSource;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL isCloudKitArchived; // @synthesize isCloudKitArchived=_isCloudKitArchived;
-@property (nonatomic) BOOL isFromCloudStore; // @synthesize isFromCloudStore=_isFromCloudStore;
 @property (strong, nonatomic) NSString *locality; // @synthesize locality=_locality;
 @property (strong, nonatomic) CLLocation *location;
 @property (nonatomic) double locationAltitude; // @synthesize locationAltitude=_locationAltitude;
@@ -138,6 +137,7 @@
 @property (nonatomic) long long transactionType; // @synthesize transactionType=_transactionType;
 @property (nonatomic) unsigned long long transitModifiers; // @synthesize transitModifiers=_transitModifiers;
 @property (nonatomic) long long transitType; // @synthesize transitType=_transitType;
+@property (readonly, nonatomic) unsigned long long updateReasons; // @synthesize updateReasons=_updateReasons;
 
 + (id)cloudStoreTransactionDeviceDataRecordTypeRecordNamePrefix;
 + (id)paymentTransactionFromSource:(unsigned long long)arg1;
@@ -148,6 +148,7 @@
 - (id)_formatBalanceAdjustmentAmount:(id)arg1;
 - (id)_transactionSourceString;
 - (id)_transactionTypeString;
+- (void)addUpdateReasons:(unsigned long long)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCloudStoreCoder:(id)arg1;
@@ -161,6 +162,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToPaymentTransaction:(id)arg1;
 - (id)recordTypesAndNames;
+- (id)updateReasonsDescription;
 
 @end
 

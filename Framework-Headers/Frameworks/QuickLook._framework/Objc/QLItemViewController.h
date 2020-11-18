@@ -61,12 +61,14 @@
 - (void)_scrollScrollViewWithKeyCommand:(id)arg1;
 - (BOOL)automaticallyUpdateScrollViewContentInset;
 - (BOOL)automaticallyUpdateScrollViewContentOffset;
+- (BOOL)automaticallyUpdateScrollViewIndicatorInset;
 - (void)buttonPressedWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)canEnterFullScreen;
 - (BOOL)canPerformFirstTimeAppearanceActions:(unsigned long long)arg1;
 - (BOOL)canPinchToDismiss;
 - (BOOL)canShowToolBar;
 - (BOOL)canSwipeToDismiss;
+- (BOOL)canToggleFullScreen;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
 - (id)draggableView;
 - (id)excludedToolbarButtonIdentifiersForTraitCollection:(id)arg1;

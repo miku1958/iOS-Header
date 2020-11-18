@@ -10,6 +10,9 @@
 {
 }
 
++ (void)clearTriggerCount;
++ (id)getCoreSpeechServiceConnection;
++ (unsigned long long)getTriggerCount;
 + (void)setDelayInterstitialSounds:(id)arg1 level:(long long)arg2;
 
 @end

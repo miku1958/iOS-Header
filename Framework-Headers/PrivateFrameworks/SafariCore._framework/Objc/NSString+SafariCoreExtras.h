@@ -7,6 +7,10 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (SafariCoreExtras)
+
+@property (readonly, copy, nonatomic) NSString *safari_stringByNormalizingVersionString;
+@property (readonly, copy, nonatomic) NSString *safari_userVisibleSafariBundleVersionFromFullVersion;
+
 + (void)safari_reverseEnumerateComponents:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (BOOL)safari_containsInteriorWhitespace;
 - (BOOL)safari_containsPeriodOrHomoglyphForPeriod;

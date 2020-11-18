@@ -12,6 +12,8 @@
 
 @interface NTPBSectionDisplayDescriptor : PBCodable <NSCopying>
 {
+    NSString *_actionTitle;
+    NSString *_actionURLString;
     NSString *_backgroundGradientColor;
     NSString *_discoverMoreVideosSubtitle;
     NSString *_discoverMoreVideosTitle;
@@ -19,18 +21,24 @@
     NSString *_name;
     NSString *_nameColor;
     BOOL _displaysAsVideoPlaylist;
+    BOOL _useNameColorInWidget;
     BOOL _videoPlaysMutedByDefault;
     struct {
         unsigned int displaysAsVideoPlaylist:1;
+        unsigned int useNameColorInWidget:1;
         unsigned int videoPlaysMutedByDefault:1;
     } _has;
 }
 
+@property (strong, nonatomic) NSString *actionTitle; // @synthesize actionTitle=_actionTitle;
+@property (strong, nonatomic) NSString *actionURLString; // @synthesize actionURLString=_actionURLString;
 @property (strong, nonatomic) NSString *backgroundGradientColor; // @synthesize backgroundGradientColor=_backgroundGradientColor;
 @property (strong, nonatomic) NSString *discoverMoreVideosSubtitle; // @synthesize discoverMoreVideosSubtitle=_discoverMoreVideosSubtitle;
 @property (strong, nonatomic) NSString *discoverMoreVideosTitle; // @synthesize discoverMoreVideosTitle=_discoverMoreVideosTitle;
 @property (strong, nonatomic) NSString *discoverMoreVideosURLString; // @synthesize discoverMoreVideosURLString=_discoverMoreVideosURLString;
 @property (nonatomic) BOOL displaysAsVideoPlaylist; // @synthesize displaysAsVideoPlaylist=_displaysAsVideoPlaylist;
+@property (readonly, nonatomic) BOOL hasActionTitle;
+@property (readonly, nonatomic) BOOL hasActionURLString;
 @property (readonly, nonatomic) BOOL hasBackgroundGradientColor;
 @property (readonly, nonatomic) BOOL hasDiscoverMoreVideosSubtitle;
 @property (readonly, nonatomic) BOOL hasDiscoverMoreVideosTitle;
@@ -38,9 +46,11 @@
 @property (nonatomic) BOOL hasDisplaysAsVideoPlaylist;
 @property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasNameColor;
+@property (nonatomic) BOOL hasUseNameColorInWidget;
 @property (nonatomic) BOOL hasVideoPlaysMutedByDefault;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSString *nameColor; // @synthesize nameColor=_nameColor;
+@property (nonatomic) BOOL useNameColorInWidget; // @synthesize useNameColorInWidget=_useNameColorInWidget;
 @property (nonatomic) BOOL videoPlaysMutedByDefault; // @synthesize videoPlaysMutedByDefault=_videoPlaysMutedByDefault;
 
 - (void).cxx_destruct;

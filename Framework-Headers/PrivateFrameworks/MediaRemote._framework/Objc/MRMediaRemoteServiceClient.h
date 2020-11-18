@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class MRAVRoutingClientController, MRNotificationClient, NSArray, NSMutableArray, NSString;
+@class MRAVRoutingClientController, MRNotificationClient, NSArray, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     void *_activePlayerPath;
     int _notifyRestoreClientStateForLaunch;
     NSString *_preparedBundleID;
+    NSMutableDictionary *_playerPathInvalidationHandlers;
     struct MRMediaRemoteService *_service;
     MRNotificationClient *_notificationClient;
 }
@@ -33,11 +34,22 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workerSerialQueue;
 
 + (id)sharedServiceClient;
+- (void)_callInvalidationHandler:(id)arg1;
+- (void)_onQueue_processPlayerPathInvalidationHandlersWithBlock:(CDUnknownBlockType)arg1;
 - (void)_onQueue_setActivePlayerPath:(void *)arg1;
+- (void)_processPlayerPathInvalidationHandlersWithBlock:(CDUnknownBlockType)arg1;
+- (BOOL)_shouldPostNotifications;
+- (void *)addPlayerPathInvalidationHandler:(id)arg1;
 - (void)dealloc;
 - (void)fetchPickableRoutesWithCategory:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
+- (void)notificationFired:(id)arg1 originNotification:(id)arg2 nowPlayingNotification:(id)arg3;
+- (void)notificationFired:(id)arg1 playerPathNotifcation:(id)arg2 originNotification:(id)arg3 nowPlayingNotification:(id)arg4;
+- (void)processPlayerPathInvalidationHandlersWithBlock:(CDUnknownBlockType)arg1;
+- (void)processPlayerPathInvalidationHandlersWithInvalidOrigin:(void *)arg1;
+- (void)registerCallbacks;
 - (void)registerOrigin:(void *)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)removeInvalidationHandler:(void *)arg1;
 - (void)unregisterAllOriginsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)unregisterOrigin:(void *)arg1 withCompletion:(CDUnknownBlockType)arg2;
 

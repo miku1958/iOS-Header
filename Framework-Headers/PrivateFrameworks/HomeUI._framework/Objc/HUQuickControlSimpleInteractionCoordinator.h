@@ -8,16 +8,18 @@
 
 #import <HomeUI/HUQuickControlViewInteractionDelegate-Protocol.h>
 
-@class NSString, UIView;
-@protocol HUQuickControlInteractiveView;
+@class NSString, UIView, UIViewController;
+@protocol HUQuickControlInteractiveView, HUQuickControlInteractiveViewController;
 
 @interface HUQuickControlSimpleInteractionCoordinator : HUQuickControlInteractionCoordinator <HUQuickControlViewInteractionDelegate>
 {
     BOOL _shouldDismissAutomatically;
     BOOL _hasStartedSecondTouch;
     id _value;
+    UIViewController<HUQuickControlInteractiveViewController> *_contraptionViewController;
 }
 
+@property (readonly, nonatomic) UIViewController<HUQuickControlInteractiveViewController> *contraptionViewController; // @synthesize contraptionViewController=_contraptionViewController;
 @property (readonly, nonatomic) UIView<HUQuickControlInteractiveView> *controlView; // @dynamic controlView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -32,6 +34,7 @@
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
 - (void)controlView:(id)arg1 interactionStateDidChange:(BOOL)arg2 forFirstTouch:(BOOL)arg3;
 - (void)controlView:(id)arg1 valueDidChange:(id)arg2;
+- (id)initWithContraptionViewController:(id)arg1 delegate:(id)arg2;
 - (id)initWithControlView:(id)arg1 delegate:(id)arg2;
 - (BOOL)isUserInteractionActive;
 - (BOOL)isUserInteractionEnabled;

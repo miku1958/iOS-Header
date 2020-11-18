@@ -29,6 +29,7 @@
     int _neuronType;
     float _neuronA;
     float _neuronB;
+    float _neuronC;
     BOOL _depthWiseConvolution;
     NSData *_perChannelNeuronA;
     MPSCNNNeuron *_neuron_deprecated;
@@ -61,14 +62,17 @@
 - (struct NeuronInfo)neuronInfo;
 - (float)neuronParameterA;
 - (float)neuronParameterB;
+- (float)neuronParameterC;
 - (int)neuronType;
 - (id)newDescriptorWithNeuronInfo:(struct NeuronInfo)arg1;
 - (void)setBatchNormalizationParametersForInferenceWithMean:(const float *)arg1 variance:(const float *)arg2 gamma:(const float *)arg3 beta:(const float *)arg4 epsilon:(float)arg5;
 - (void)setNeuronParameterA:(float)arg1;
 - (void)setNeuronParameterB:(float)arg1;
+- (void)setNeuronParameterC:(float)arg1;
 - (void)setNeuronToPReLUWithParametersA:(id)arg1;
 - (void)setNeuronType:(int)arg1;
 - (void)setNeuronType:(int)arg1 parameterA:(float)arg2 parameterB:(float)arg3;
+- (void)setNeuronType:(int)arg1 parameterA:(float)arg2 parameterB:(float)arg3 parameterC:(float)arg4;
 
 @end
 

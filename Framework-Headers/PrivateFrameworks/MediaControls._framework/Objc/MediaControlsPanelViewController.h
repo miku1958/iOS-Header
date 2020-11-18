@@ -6,102 +6,107 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MediaControls/CCUIContentModuleContentViewController-Protocol.h>
-#import <MediaControls/MPAVRoutingControllerDelegate-Protocol.h>
 #import <MediaControls/MPAVRoutingViewControllerThemeDelegate-Protocol.h>
 #import <MediaControls/MPMediaControlsViewControllerDelegate-Protocol.h>
-#import <MediaControls/MPRequestResponseControllerDelegate-Protocol.h>
 #import <MediaControls/MediaControlsCollectionItemViewController-Protocol.h>
+#import <MediaControls/MediaControlsEndpointControllerDelegate-Protocol.h>
 #import <MediaControls/MediaControlsRatingActionSheet-Protocol.h>
 
-@class MPAVRoutingController, MPAVRoutingViewController, MPCPlayerPath, MPCPlayerResponse, MPMediaControlsViewController, MPRequestResponseController, MediaControlsHeaderView, MediaControlsParentContainerView, MediaControlsRoutingCornerView, MediaControlsVolumeContainerView, NSMutableArray, NSString, UIView;
+@class MPAVRoutingViewController, MPArtworkCatalog, MPMediaControlsViewController, MediaControlsEndpointController, MediaControlsHeaderView, MediaControlsParentContainerView, MediaControlsRoutingCornerView, MediaControlsVolumeContainerView, NSMutableArray, NSString, UIView;
 @protocol MediaControlsPanelViewControllerDelegate;
 
-@interface MediaControlsPanelViewController : UIViewController <MPRequestResponseControllerDelegate, MediaControlsRatingActionSheet, MPAVRoutingControllerDelegate, MPAVRoutingViewControllerThemeDelegate, MPMediaControlsViewControllerDelegate, CCUIContentModuleContentViewController, MediaControlsCollectionItemViewController>
+@interface MediaControlsPanelViewController : UIViewController <MediaControlsEndpointControllerDelegate, MediaControlsRatingActionSheet, MPAVRoutingViewControllerThemeDelegate, MPMediaControlsViewControllerDelegate, MediaControlsCollectionItemViewController>
 {
+    struct CGSize _lastKnownSize;
+    BOOL _selected;
     BOOL _transitioning;
-    BOOL _dismissing;
     BOOL _coverSheetRoutingViewControllerShouldBePresented;
     BOOL _onScreen;
-    BOOL _showingRoutingPicker;
-    BOOL _onlyShowsRoutingPicker;
-    MPCPlayerPath *_playerPath;
+    BOOL _isListeningForResponse;
+    BOOL _allowDoneButton;
+    UIView *_contentView;
     UIView *_backgroundView;
     MPAVRoutingViewController *_routingViewController;
     id<MediaControlsPanelViewControllerDelegate> _delegate;
-    MPCPlayerResponse *_response;
     long long _style;
-    long long _mediaControlsPlayerState;
     MediaControlsHeaderView *_headerView;
     MediaControlsRoutingCornerView *_routingCornerView;
     MediaControlsParentContainerView *_parentContainerView;
     MediaControlsVolumeContainerView *_volumeContainerView;
-    MPRequestResponseController *_requestController;
     UIView *_topDividerView;
     UIView *_bottomDividerView;
     NSMutableArray *_secondaryStringComponents;
     MPMediaControlsViewController *_coverSheetRoutingViewController;
-    MPAVRoutingController *_routingController;
+    MPArtworkCatalog *_artworkCatalog;
+    unsigned long long _supportedModes;
+    long long _selectedMode;
+    MediaControlsEndpointController *_endpointController;
     CDUnknownBlockType _launchNowPlayingAppBlock;
     CDUnknownBlockType _routingCornerViewTappedBlock;
 }
 
+@property (nonatomic, getter=isAllowingDoneButton) BOOL allowDoneButton; // @synthesize allowDoneButton=_allowDoneButton;
+@property (strong, nonatomic) MPArtworkCatalog *artworkCatalog; // @synthesize artworkCatalog=_artworkCatalog;
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (strong, nonatomic) UIView *bottomDividerView; // @synthesize bottomDividerView=_bottomDividerView;
+@property (readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (strong, nonatomic) MPMediaControlsViewController *coverSheetRoutingViewController; // @synthesize coverSheetRoutingViewController=_coverSheetRoutingViewController;
 @property (nonatomic) BOOL coverSheetRoutingViewControllerShouldBePresented; // @synthesize coverSheetRoutingViewControllerShouldBePresented=_coverSheetRoutingViewControllerShouldBePresented;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MediaControlsPanelViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, getter=isDismissing) BOOL dismissing; // @synthesize dismissing=_dismissing;
+@property (strong, nonatomic) MediaControlsEndpointController *endpointController; // @synthesize endpointController=_endpointController;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MediaControlsHeaderView *headerView; // @synthesize headerView=_headerView;
+@property (nonatomic) BOOL isListeningForResponse; // @synthesize isListeningForResponse=_isListeningForResponse;
+@property (copy, nonatomic) NSString *label;
 @property (copy, nonatomic) CDUnknownBlockType launchNowPlayingAppBlock; // @synthesize launchNowPlayingAppBlock=_launchNowPlayingAppBlock;
-@property (nonatomic) long long mediaControlsPlayerState; // @synthesize mediaControlsPlayerState=_mediaControlsPlayerState;
 @property (nonatomic, getter=isOnScreen) BOOL onScreen; // @synthesize onScreen=_onScreen;
-@property (nonatomic) BOOL onlyShowsRoutingPicker; // @synthesize onlyShowsRoutingPicker=_onlyShowsRoutingPicker;
 @property (strong, nonatomic) MediaControlsParentContainerView *parentContainerView; // @synthesize parentContainerView=_parentContainerView;
-@property (copy, nonatomic) MPCPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
-@property (readonly, nonatomic) double preferredExpandedContentHeight;
-@property (readonly, nonatomic) double preferredExpandedContentWidth;
-@property (readonly, nonatomic) BOOL providesOwnPlatter;
-@property (strong, nonatomic) MPRequestResponseController *requestController; // @synthesize requestController=_requestController;
-@property (strong, nonatomic) MPCPlayerResponse *response; // @synthesize response=_response;
-@property (strong, nonatomic) MPAVRoutingController *routingController; // @synthesize routingController=_routingController;
 @property (strong, nonatomic) MediaControlsRoutingCornerView *routingCornerView; // @synthesize routingCornerView=_routingCornerView;
 @property (copy, nonatomic) CDUnknownBlockType routingCornerViewTappedBlock; // @synthesize routingCornerViewTappedBlock=_routingCornerViewTappedBlock;
 @property (strong, nonatomic) MPAVRoutingViewController *routingViewController; // @synthesize routingViewController=_routingViewController;
 @property (strong, nonatomic) NSMutableArray *secondaryStringComponents; // @synthesize secondaryStringComponents=_secondaryStringComponents;
-@property (nonatomic, getter=isShowingRoutingPicker) BOOL showingRoutingPicker; // @synthesize showingRoutingPicker=_showingRoutingPicker;
+@property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
+@property (nonatomic) long long selectedMode; // @synthesize selectedMode=_selectedMode;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
+@property (nonatomic) unsigned long long supportedModes; // @synthesize supportedModes=_supportedModes;
 @property (strong, nonatomic) UIView *topDividerView; // @synthesize topDividerView=_topDividerView;
 @property (nonatomic, getter=isTransitioning) BOOL transitioning; // @synthesize transitioning=_transitioning;
 @property (strong, nonatomic) MediaControlsVolumeContainerView *volumeContainerView; // @synthesize volumeContainerView=_volumeContainerView;
 
 + (id)panelViewControllerForCoverSheet;
 - (void).cxx_destruct;
+- (id)_bundleID;
 - (void)_dismissRoutingViewControllerFromCoverSheetIfNeeded;
 - (void)_mediaControlsPanelViewControllerReceivedInteraction:(id)arg1;
 - (void)_presentRoutingViewControllerFromCoverSheet;
+- (id)_route;
 - (void)_routingCornerViewReceivedTap:(id)arg1;
+- (void)_setRoutingPickerVisible:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)_updateConfiguration;
 - (void)_updateControlCenterMetadata:(id)arg1;
+- (void)_updateHeaderUI;
 - (void)_updateOnScreenForStyle:(long long)arg1;
-- (void)_updatePickedRoute:(id)arg1;
-- (void)_updateRoutingState;
+- (void)_updatePlaceholderArtwork;
+- (void)_updateRouteNameLabel;
+- (void)_updateRoutingCornerView;
 - (void)_updateSecondaryStringFormat;
+- (void)_updateShouldForceVolumeControlDisabled;
 - (void)_updateStyle;
 - (struct UIEdgeInsets)contentInsetsForRoutingViewController:(id)arg1;
-- (void)controller:(id)arg1 defersResponseReplacement:(CDUnknownBlockType)arg2;
+- (void)endpointController:(id)arg1 didLoadNewResponse:(id)arg2;
+- (void)endpointControllerDidChangeState:(id)arg1;
+- (void)endpointControllerDidUpdateRoutingAvailability:(id)arg1;
+- (void)endpointControllerRouteDidUpdate:(id)arg1;
 - (void)headerViewButtonPressed:(id)arg1;
 - (void)headerViewLaunchNowPlayingAppButtonPressed:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)mediaControlsViewControllerDidReceiveInteraction:(id)arg1;
 - (void)presentRatingActionSheet:(id)arg1;
-- (void)routingController:(id)arg1 pickedRouteDidChange:(id)arg2;
-- (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (void)routingViewController:(id)arg1 willDisplayCell:(id)arg2;
-- (void)setRoutingView:(id)arg1;
+- (void)setSelectedMode:(long long)arg1 animated:(BOOL)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

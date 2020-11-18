@@ -16,11 +16,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *addingOutputDeviceUIDs;
 @property (readonly, nonatomic) unsigned int contextType;
 @property (readonly, nonatomic) NSArray *removingOutputDeviceUIDs;
+@property (readonly, nonatomic) NSArray *settingOutputDeviceUIDs;
 
 + (id)addDevicesRequestMessageWithContextType:(unsigned int)arg1 outputDeviceUIDs:(id)arg2;
 + (id)removeDevicesRequestMessageWithContextType:(unsigned int)arg1 outputDeviceUIDs:(id)arg2;
++ (id)setDevicesRequestMessageWithContextType:(unsigned int)arg1 outputDeviceUIDs:(id)arg2;
 - (id)description;
-- (id)initWithContextType:(unsigned int)arg1 addingDeviceUIDs:(id)arg2 removingDeviceUIDs:(id)arg3;
+- (id)initWithContextType:(unsigned int)arg1 addingDeviceUIDs:(id)arg2 removingDeviceUIDs:(id)arg3 settingDeviceUIDs:(id)arg4;
 - (unsigned long long)type;
 
 @end

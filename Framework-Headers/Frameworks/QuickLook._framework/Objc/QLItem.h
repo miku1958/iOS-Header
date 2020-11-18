@@ -50,6 +50,7 @@
     unsigned long long _previewItemType;
     unsigned long long _thumbnailItemType;
     long long _processIdentifier;
+    unsigned long long _editedFileBehavior;
 }
 
 @property (readonly) NSString *MIMEType;
@@ -61,6 +62,7 @@
 @property (nonatomic) BOOL canBeShared; // @synthesize canBeShared=_canBeShared;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) unsigned long long editedFileBehavior; // @synthesize editedFileBehavior=_editedFileBehavior;
 @property (strong, nonatomic) NSURL *editedFileURL; // @synthesize editedFileURL=_editedFileURL;
 @property (strong, nonatomic) QLItemFetcher *fetcher; // @synthesize fetcher=_fetcher;
 @property (strong) FPItem *fpItem; // @synthesize fpItem=_fpItem;

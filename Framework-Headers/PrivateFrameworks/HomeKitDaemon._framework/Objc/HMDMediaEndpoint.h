@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 @class NSArray, NSString;
 
-@interface HMDMediaEndpoint : NSObject
+@interface HMDMediaEndpoint : HMFObject
 {
     void *_endpoint;
     NSString *_uniqueIdentifier;
@@ -30,6 +30,7 @@
 - (unsigned long long)hash;
 - (id)initWithEndpoint:(void *)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (void)updateWithEndpoint:(void *)arg1;
 
 @end
 

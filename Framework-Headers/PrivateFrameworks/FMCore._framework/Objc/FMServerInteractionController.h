@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <FMCore/NSURLSessionDelegate-Protocol.h>
-#import <FMCore/NSURLSessionTaskDelegate-Protocol.h>
 
 @class NSMutableSet, NSOperationQueue, NSString, NSURLSession, NSURLSessionConfiguration;
 @protocol OS_dispatch_queue;
 
-@interface FMServerInteractionController : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegate>
+@interface FMServerInteractionController : NSObject <NSURLSessionDelegate>
 {
     NSObject<OS_dispatch_queue> *dq_inFlightCommands;
     NSMutableSet *inFlightCommands;
@@ -30,6 +29,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
 - (double)_simulatedLatency;
 - (void)cancelAllCommands;
 - (void)cancelCommand:(id)arg1;

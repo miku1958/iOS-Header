@@ -14,6 +14,7 @@
 {
     _MPCProtoDelegateInfo *_accountInfo;
     _MPCProtoRadioContentReference *_nowPlayingContentReference;
+    NSString *_playActivityFeatureName;
     NSString *_radioStationID;
     NSString *_radioStationURLString;
     _MPCProtoRadioContentReference *_seedContentReference;
@@ -22,10 +23,12 @@
 @property (strong, nonatomic) _MPCProtoDelegateInfo *accountInfo; // @synthesize accountInfo=_accountInfo;
 @property (readonly, nonatomic) BOOL hasAccountInfo;
 @property (readonly, nonatomic) BOOL hasNowPlayingContentReference;
+@property (readonly, nonatomic) BOOL hasPlayActivityFeatureName;
 @property (readonly, nonatomic) BOOL hasRadioStationID;
 @property (readonly, nonatomic) BOOL hasRadioStationURLString;
 @property (readonly, nonatomic) BOOL hasSeedContentReference;
 @property (strong, nonatomic) _MPCProtoRadioContentReference *nowPlayingContentReference; // @synthesize nowPlayingContentReference=_nowPlayingContentReference;
+@property (strong, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
 @property (strong, nonatomic) NSString *radioStationID; // @synthesize radioStationID=_radioStationID;
 @property (strong, nonatomic) NSString *radioStationURLString; // @synthesize radioStationURLString=_radioStationURLString;
 @property (strong, nonatomic) _MPCProtoRadioContentReference *seedContentReference; // @synthesize seedContentReference=_seedContentReference;

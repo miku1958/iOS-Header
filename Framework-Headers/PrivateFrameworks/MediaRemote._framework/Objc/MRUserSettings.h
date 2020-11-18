@@ -14,7 +14,6 @@
     BOOL _externalDevicePairingAllowed;
 }
 
-@property (readonly, nonatomic, getter=isAirPlay2Enabled) BOOL airPlay2Enabled;
 @property (readonly, nonatomic) double airPlayOutputContextInitTimeoutDuration;
 @property (readonly, nonatomic) double bluetoothDeviceResumeDuration;
 @property (readonly, nonatomic) double broadcastCommandWaitDuration;
@@ -30,6 +29,8 @@
 @property (readonly, nonatomic) double externalDeviceTimeoutDuration;
 @property (readonly, nonatomic) BOOL hasExternalDeviceSocketQOSLevelSet;
 @property (readonly, nonatomic) long long maxTransactionMemorySize;
+@property (readonly, nonatomic) BOOL remoteControllableOutputDevicesEnabled;
+@property (readonly, nonatomic) BOOL shouldInitializeGenericBonjourService;
 @property (readonly, nonatomic) BOOL shouldInitializeTelevisionBonjourService;
 @property (readonly, nonatomic) BOOL shouldLogPairingSetupCode;
 @property (readonly, nonatomic) double transactionWaitDurationOnNetworkSend;
@@ -37,6 +38,7 @@
 @property (readonly, nonatomic) double transactionWaitDurationOnXpcSend;
 @property (readonly, nonatomic) BOOL useDebugAVRouteWithoutVolumeControl;
 @property (readonly, nonatomic) BOOL useExternalDeviceSystemPairing;
+@property (readonly, nonatomic) BOOL useGenericTransportForHostedEndpoints;
 @property (readonly, nonatomic) BOOL useNoDelayOptionForExternalDeviceSockets;
 @property (readonly, nonatomic) BOOL usePeerToPeerExternalDeviceConnections;
 @property (readonly, nonatomic) BOOL useSystemAudioContextForAirPlayTransport;

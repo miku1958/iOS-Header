@@ -9,10 +9,11 @@
 #import <HomeUI/HUSoftwareUpdateItemModuleControllerDelegate-Protocol.h>
 #import <HomeUI/HUSwitchCellDelegate-Protocol.h>
 
-@class HUSoftwareUpdateItemModuleController, HUSoftwareUpdateStandaloneItemManager, NAFuture, NSString;
+@class HUSoftwareUpdateItemModuleController, HUSoftwareUpdateStandaloneItemManager, NAFuture, NSString, UNUserNotificationCenter;
 
 @interface HUSoftwareUpdateStandaloneViewController : HUItemTableViewController <HUSoftwareUpdateItemModuleControllerDelegate, HUSwitchCellDelegate>
 {
+    UNUserNotificationCenter *_userNotificationCenter;
     HUSoftwareUpdateItemModuleController *_softwareUpdateModule;
     NAFuture *_softwareUpdateFetchFuture;
 }
@@ -24,13 +25,20 @@
 @property (strong, nonatomic) NAFuture *softwareUpdateFetchFuture; // @synthesize softwareUpdateFetchFuture=_softwareUpdateFetchFuture;
 @property (strong, nonatomic) HUSoftwareUpdateItemModuleController *softwareUpdateModule; // @synthesize softwareUpdateModule=_softwareUpdateModule;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) UNUserNotificationCenter *userNotificationCenter; // @synthesize userNotificationCenter=_userNotificationCenter;
 
 - (void).cxx_destruct;
+- (void)_kickoffSoftwareUpdate;
+- (void)_setupRefreshControl;
+- (void)_triggerRefresh:(id)arg1;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
-- (id)init;
+- (id)initWithHome:(id)arg1;
+- (id)initWithItemManager:(id)arg1 tableViewStyle:(long long)arg2;
+- (void)itemManager:(id)arg1 didUpdateResultsForItem:(id)arg2 atIndexPath:(id)arg3;
 - (id)itemModuleControllers;
 - (BOOL)shouldHideSeparatorsForCell:(id)arg1 indexPath:(id)arg2;
 - (id)softwareUpdateModuleController:(id)arg1 dismissViewController:(id)arg2;
+- (id)softwareUpdateModuleController:(id)arg1 navigateToViewController:(id)arg2;
 - (id)softwareUpdateModuleController:(id)arg1 presentViewController:(id)arg2;
 - (void)switchCell:(id)arg1 didTurnOn:(BOOL)arg2;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;

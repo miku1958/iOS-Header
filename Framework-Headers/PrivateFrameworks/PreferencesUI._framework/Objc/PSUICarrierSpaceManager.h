@@ -21,6 +21,7 @@
     PSUIAppInstallController *_carrierAppInstallController;
     NSNumber *_hasUserConsent;
     CTCarrierSpaceUserConsentFlowInfo *_userConsentFlowInfo;
+    NSNumber *_userConsentResponse;
     struct __CTServerConnection *_serverConnection;
     CTCarrierSpaceClient *_carrierSpaceClient;
 }
@@ -59,6 +60,7 @@
 - (BOOL)supportsSweetgum;
 - (void)usageDidChange;
 - (id)usageInfo;
+- (void)userConsentAcknowledged:(BOOL)arg1;
 - (id)userConsentFlowInfo;
 - (void)userConsentFlowInfoDidChange;
 

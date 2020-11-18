@@ -34,6 +34,7 @@
         unsigned int willUseInput:1;
     } _synthesizerFlags;
     NSArray *_outputChannels;
+    BOOL _supportsAccurateWordCallbacks;
     BOOL _ignoreSubstitutions;
     float _rate;
     float _pitch;
@@ -54,6 +55,7 @@
 @property (nonatomic) float rate; // @synthesize rate=_rate;
 @property (readonly, nonatomic) NSString *resolvedVoiceIdentifier;
 @property (nonatomic) void *speakingRequestClientContext; // @synthesize speakingRequestClientContext=_speakingRequestClientContext;
+@property (nonatomic) BOOL supportsAccurateWordCallbacks; // @synthesize supportsAccurateWordCallbacks=_supportsAccurateWordCallbacks;
 @property (copy, nonatomic) NSArray *userSubstitutions; // @synthesize userSubstitutions=_userSubstitutions;
 @property (strong, nonatomic) NSString *voiceIdentifier; // @synthesize voiceIdentifier=_voiceIdentifier;
 @property (nonatomic) float volume; // @synthesize volume=_volume;

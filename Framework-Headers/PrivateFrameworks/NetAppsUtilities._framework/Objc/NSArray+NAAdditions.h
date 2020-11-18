@@ -13,6 +13,7 @@
 - (BOOL)na_any:(CDUnknownBlockType)arg1;
 - (id)na_arrayByFlattening;
 - (id)na_arrayWithResultsOfBlock:(CDUnknownBlockType)arg1;
+- (id)na_dictionaryByBucketingObjectsUsingKeyGenerator:(CDUnknownBlockType)arg1;
 - (id)na_dictionaryWithKeyGenerator:(CDUnknownBlockType)arg1;
 - (void)na_each:(CDUnknownBlockType)arg1;
 - (id)na_filter:(CDUnknownBlockType)arg1;

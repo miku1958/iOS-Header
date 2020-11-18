@@ -53,6 +53,7 @@
 - (id)_getNearestOutline:(id)arg1 forDestination:(id)arg2;
 - (BOOL)_isCommonlyMappedToNothing:(id)arg1;
 - (BOOL)_isNonAsciiSpace:(id)arg1;
+- (id)_namedDestination:(id)arg1 forNameDictionary:(struct CGPDFDictionary *)arg2;
 - (void)_notifyAKAdaptorPagePlaceholder:(id)arg1 wasReplacedWithPage:(id)arg2 atIndex:(unsigned long long)arg3;
 - (id)_rawPageAtIndex:(unsigned long long)arg1;
 - (BOOL)_verifyAnnotationArray:(id)arg1;
@@ -81,7 +82,6 @@
 - (void)didMatchString:(id)arg1;
 - (id)documentCatalogMetadataForRootPath:(id)arg1 withKeys:(id)arg2;
 - (BOOL)documentChanged;
-- (int)documentId;
 - (void)enableDocumentMRUMode:(BOOL)arg1;
 - (void)enableLimitedSearch;
 - (void)endSaveVisualizer;
@@ -97,11 +97,10 @@
 - (struct __CFDictionary *)gcCreateInfoDictionary;
 - (unsigned long long)indexForPage:(id)arg1;
 - (id)init;
-- (id)initWithCGPDFDocument:(struct CGPDFDocument *)arg1;
 - (id)initWithData:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (void)insertPage:(id)arg1 atIndex:(unsigned long long)arg2;
-- (BOOL)isAccessibilityUsingTaggedPDF;
+- (id)namedDestination:(id)arg1;
 - (struct __CFData *)newXMPFromData:(id)arg1 preserveExistingXMPMetadata:(BOOL)arg2;
 - (void)normalizeFindOptions:(unsigned long long)arg1;
 - (id)outlineItemForSelection:(id)arg1;
@@ -118,10 +117,10 @@
 - (id)selectionFromPage:(id)arg1 atCharacterIndex:(unsigned long long)arg2 toPage:(id)arg3 atCharacterIndex:(unsigned long long)arg4;
 - (id)selectionFromPage:(id)arg1 atPoint:(struct CGPoint)arg2 toPage:(id)arg3 atPoint:(struct CGPoint)arg4;
 - (id)selectionFromPage:(id)arg1 atPoint:(struct CGPoint)arg2 toPage:(id)arg3 atPoint:(struct CGPoint)arg4 type:(int)arg5;
-- (void)setAccessibilityUsingTaggedPDF:(BOOL)arg1;
 - (void)setBookmarked:(BOOL)arg1 atPageIndex:(unsigned long long)arg2;
 - (void)setDocument:(struct CGPDFDocument *)arg1;
 - (void)setDocumentCatalogMetadata:(id)arg1 withNSpace:(id)arg2 prefix:(id)arg3 rootPath:(id)arg4;
+- (void)setDocumentHasBurnInAnnotations:(BOOL)arg1;
 - (void)setFormData:(id)arg1;
 - (void)setPDFAKControllerDelegate:(id)arg1;
 - (void)setPageChangeDelegate:(id)arg1;

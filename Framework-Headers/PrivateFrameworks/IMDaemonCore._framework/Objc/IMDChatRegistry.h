@@ -33,6 +33,7 @@
 - (id)_allHandles;
 - (BOOL)_chat:(id)arg1 isDuplicateOfChat:(id)arg2;
 - (id)_chatInfoForConnection;
+- (id)_chatInfoForNumberOfChats:(long long)arg1;
 - (id)_chatInfoForSaving;
 - (id)_chatInfoInRange:(struct _NSRange)arg1;
 - (struct NSArray *)_createGroupChatsArray;

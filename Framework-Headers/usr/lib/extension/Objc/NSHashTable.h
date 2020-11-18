@@ -6,9 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSCoding-Protocol.h>
-#import <extension/NSCopying-Protocol.h>
-#import <extension/NSFastEnumeration-Protocol.h>
+#import <Foundation/NSCoding-Protocol.h>
+#import <Foundation/NSCopying-Protocol.h>
+#import <Foundation/NSFastEnumeration-Protocol.h>
 
 @class NSArray, NSPointerFunctions, NSSet;
 

@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAddress, GEOPDAddressObject, GEOPDAmenities, GEOPDAssociatedApp, GEOPDBounds, GEOPDBrowseCategories, GEOPDBusinessClaim, GEOPDCaptionedPhoto, GEOPDContainedPlace, GEOPDETA, GEOPDEntity, GEOPDExternalAction, GEOPDFactoid, GEOPDFlyover, GEOPDHours, GEOPDIcon, GEOPDLocationEvent, GEOPDMessageLink, GEOPDPhoto, GEOPDPlaceInfo, GEOPDPlacecardURL, GEOPDPriceDescription, GEOPDQuickLink, GEOPDRap, GEOPDRating, GEOPDRawAttribute, GEOPDRestaurantReservationLink, GEOPDResultSnippet, GEOPDReview, GEOPDRoadAccessInfo, GEOPDSimpleRestaurantMenuText, GEOPDSpatialLookupResult, GEOPDTextBlock, GEOPDTip, GEOPDTransitAttribution, GEOPDTransitIncident, GEOPDTransitInfo, GEOPDTransitInfoSnippet, GEOPDTransitSchedule, GEOPDVenueInfo, GEOPDWifiFingerprint, GEOStyleAttributes, PBUnknownFields;
+@class GEONonComponentPlaceData, GEOPDAddress, GEOPDAddressObject, GEOPDAmenities, GEOPDAssociatedApp, GEOPDBounds, GEOPDBrowseCategories, GEOPDBusinessClaim, GEOPDCaptionedPhoto, GEOPDContainedPlace, GEOPDETA, GEOPDEntity, GEOPDExternalAction, GEOPDFactoid, GEOPDFlyover, GEOPDHours, GEOPDIcon, GEOPDLocationEvent, GEOPDMessageLink, GEOPDPhoto, GEOPDPlaceInfo, GEOPDPlacecardURL, GEOPDPriceDescription, GEOPDQuickLink, GEOPDRap, GEOPDRating, GEOPDRawAttribute, GEOPDRestaurantReservationLink, GEOPDResultSnippet, GEOPDReview, GEOPDRoadAccessInfo, GEOPDSimpleRestaurantMenuText, GEOPDSpatialLookupResult, GEOPDTextBlock, GEOPDTip, GEOPDTransitAttribution, GEOPDTransitIncident, GEOPDTransitInfo, GEOPDTransitInfoSnippet, GEOPDTransitSchedule, GEOPDVenueInfo, GEOPDWifiFingerprint, GEOStyleAttributes, PBUnknownFields;
 
 @interface GEOPDComponentValue : PBCodable <NSCopying>
 {
@@ -22,6 +22,7 @@
     GEOPDBrowseCategories *_browseCategories;
     GEOPDBusinessClaim *_businessClaim;
     GEOPDCaptionedPhoto *_captionedPhoto;
+    GEONonComponentPlaceData *_clientExtNonComponentData;
     GEOPDContainedPlace *_containedPlace;
     GEOPDEntity *_entity;
     GEOPDETA *_eta;
@@ -66,6 +67,7 @@
 @property (strong, nonatomic) GEOPDBrowseCategories *browseCategories; // @synthesize browseCategories=_browseCategories;
 @property (strong, nonatomic) GEOPDBusinessClaim *businessClaim; // @synthesize businessClaim=_businessClaim;
 @property (strong, nonatomic) GEOPDCaptionedPhoto *captionedPhoto; // @synthesize captionedPhoto=_captionedPhoto;
+@property (strong, nonatomic) GEONonComponentPlaceData *clientExtNonComponentData;
 @property (strong, nonatomic) GEOPDContainedPlace *containedPlace; // @synthesize containedPlace=_containedPlace;
 @property (strong, nonatomic) GEOPDEntity *entity; // @synthesize entity=_entity;
 @property (strong, nonatomic) GEOPDETA *eta; // @synthesize eta=_eta;
@@ -81,6 +83,7 @@
 @property (readonly, nonatomic) BOOL hasBrowseCategories;
 @property (readonly, nonatomic) BOOL hasBusinessClaim;
 @property (readonly, nonatomic) BOOL hasCaptionedPhoto;
+@property (readonly, nonatomic) BOOL hasClientExtNonComponentData;
 @property (readonly, nonatomic) BOOL hasContainedPlace;
 @property (readonly, nonatomic) BOOL hasEntity;
 @property (readonly, nonatomic) BOOL hasEta;

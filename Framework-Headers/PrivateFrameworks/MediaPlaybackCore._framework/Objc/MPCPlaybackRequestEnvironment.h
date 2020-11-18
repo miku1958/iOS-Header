@@ -10,22 +10,23 @@
 #import <MediaPlaybackCore/NSMutableCopying-Protocol.h>
 #import <MediaPlaybackCore/NSSecureCoding-Protocol.h>
 
-@class MPCPlaybackDelegationProperties, NSString;
+@class ICUserIdentity, MPCPlaybackDelegationProperties, MPCPrivateListeningStateSource, NSString;
 
 @interface MPCPlaybackRequestEnvironment : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
     NSString *_clientIdentifier;
     NSString *_clientVersion;
     MPCPlaybackDelegationProperties *_delegationProperties;
-    NSString *_householdIdentifier;
     NSString *_requestingBundleIdentifier;
     NSString *_requestingBundleVersion;
+    MPCPrivateListeningStateSource *_privateListeningStateSource;
+    ICUserIdentity *_userIdentity;
 }
 
 @property (readonly, copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (readonly, copy, nonatomic) NSString *clientVersion; // @synthesize clientVersion=_clientVersion;
 @property (readonly, copy, nonatomic) MPCPlaybackDelegationProperties *delegationProperties; // @synthesize delegationProperties=_delegationProperties;
-@property (readonly, copy, nonatomic) NSString *householdIdentifier; // @synthesize householdIdentifier=_householdIdentifier;
+@property (readonly, copy, nonatomic) MPCPrivateListeningStateSource *privateListeningStateSource; // @synthesize privateListeningStateSource=_privateListeningStateSource;
 @property (readonly, copy, nonatomic) NSString *requestingBundleIdentifier; // @synthesize requestingBundleIdentifier=_requestingBundleIdentifier;
 @property (readonly, copy, nonatomic) NSString *requestingBundleVersion; // @synthesize requestingBundleVersion=_requestingBundleVersion;
 

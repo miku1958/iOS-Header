@@ -39,6 +39,7 @@
     NSDictionary *_messageSummaryInfo;
     NSString *_associatedBalloonBundleID;
     NSData *_customTypingIndicatorIcon;
+    NSString *_notificationIDSTokenURI;
     struct _NSRange _associatedMessageRange;
 }
 
@@ -84,6 +85,7 @@
 @property (readonly, nonatomic) NSAttributedString *messageSubject; // @synthesize messageSubject=_messageSubject;
 @property (readonly, copy, nonatomic) NSDictionary *messageSummaryInfo;
 @property (copy, nonatomic, setter=_messageSummaryInfo:) NSDictionary *messageSummaryInfo; // @synthesize messageSummaryInfo=_messageSummaryInfo;
+@property (strong, nonatomic) NSString *notificationIDSTokenURI; // @synthesize notificationIDSTokenURI=_notificationIDSTokenURI;
 @property (strong, nonatomic) NSData *payloadData; // @synthesize payloadData=_payloadData;
 @property (readonly, nonatomic) NSString *plainBody;
 @property (strong, nonatomic, setter=_updateSender:) IMHandle *sender; // @synthesize sender=_sender;

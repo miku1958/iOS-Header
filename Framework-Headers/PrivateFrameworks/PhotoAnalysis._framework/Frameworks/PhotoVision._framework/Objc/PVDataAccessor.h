@@ -45,7 +45,6 @@
 - (BOOL)removeAlgorithmicallyGroupedFacesWithLocalIdentifiers:(id)arg1 error:(id *)arg2;
 - (BOOL)resetClusterSequenceNumberOfFacesWithLocalIdentifiers:(id)arg1 error:(id *)arg2;
 - (BOOL)resetLibraryClustersWithCanceler:(id)arg1 error:(id *)arg2;
-- (BOOL)unclusterFaces:(id)arg1 canceler:(id)arg2 error:(id *)arg3;
 - (id)unclusteredClusteringEligibleFaceLocalIdentifiers:(id *)arg1;
 - (id)unverifiedVisibleFacesFromFaceGroupContainingFacesWithClusterSequenceNumbers:(id)arg1 withFaceprintVersion:(unsigned int)arg2;
 

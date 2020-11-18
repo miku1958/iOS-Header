@@ -11,9 +11,11 @@
 @interface HFResidentDeviceStatusDetailsItemProvider : HFItemProvider
 {
     HMHome *_home;
+    CDUnknownBlockType _filter;
     NSMutableSet *_residentDeviceItems;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) NSMutableSet *residentDeviceItems; // @synthesize residentDeviceItems=_residentDeviceItems;
 

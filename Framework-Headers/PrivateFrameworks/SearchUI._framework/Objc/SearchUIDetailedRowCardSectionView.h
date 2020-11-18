@@ -40,10 +40,9 @@
 - (BOOL)arrangedViewMustCenter:(id)arg1;
 - (void)buttonPressed;
 - (long long)containerStackView:(id)arg1 alignmentForArrangedSubview:(id)arg2;
-- (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
 - (id)setupContentView;
 - (void)updateChevronVisible:(BOOL)arg1 leaveSpaceForChevron:(BOOL)arg2;
-- (void)updateWithCardSection:(id)arg1;
+- (void)updateWithRowModel:(id)arg1;
 
 @end
 

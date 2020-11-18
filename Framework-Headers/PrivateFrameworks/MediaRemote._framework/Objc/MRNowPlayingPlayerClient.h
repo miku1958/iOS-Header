@@ -29,6 +29,7 @@
     double _invalidatationTimestamp;
     NSMutableDictionary *_coelscingTransactionPackets;
     NSMutableArray *_transactionSources;
+    NSMutableDictionary *_cachedContentItemUpdates;
     MRPlaybackQueuePlayerClient *_playbackQueueClient;
     MRNowPlayingPlayerClientCallbacks *_clientCallbacks;
 }
@@ -47,7 +48,11 @@
 
 - (void *)_onQueue_nowPlayingContentItem;
 - (void)_onQueue_sendTransaction:(unsigned long long)arg1 withPackets:(id)arg2;
+- (void)_registerCallbacks;
+- (void)addPendingRequest:(void *)arg1;
 - (void)beginSendingTransactions;
+- (void)cacheContentItemUpdates:(struct __CFArray *)arg1;
+- (void)clearCachedContentItemArtworkForItems:(struct __CFArray *)arg1;
 - (void)contentItemsUpdatedNotification:(id)arg1;
 - (void)dealloc;
 - (id)description;
@@ -57,6 +62,7 @@
 - (void)preProcessCommand:(unsigned int)arg1 options:(struct __CFDictionary *)arg2;
 - (void)restoreNowPlayingClientState;
 - (void)sendTransaction:(unsigned long long)arg1 withPackets:(id)arg2;
+- (void)startCachingContentItemUpdatesForItem:(void *)arg1 forPendingRequest:(void *)arg2;
 - (BOOL)testAndSetCoalescingInvalidations;
 - (BOOL)testAndSetCoalescingRequests;
 - (void)transactionDidEnd:(id)arg1;
@@ -64,6 +70,7 @@
 - (BOOL)unsetCoalescingRequests;
 - (void)updateCacheWithItem:(void *)arg1;
 - (void)updateCacheWithPlaybackQueue:(void *)arg1;
+- (void)updatePlaybackQueueWithCachedUpdates:(void *)arg1 forPendingRequest:(void *)arg2;
 
 @end
 

@@ -18,7 +18,7 @@
 - (id)accessibilityMediaRoute;
 - (id)accessibilityValue;
 - (void)setAccessibilityMediaRoute:(id)arg1;
-- (void)updateForRoute:(id)arg1 inferLocalizedModelName:(BOOL)arg2;
+- (void)updateForEndpoint:(id)arg1 route:(id)arg2 inferLocalizedModelName:(BOOL)arg3;
 
 @end
 

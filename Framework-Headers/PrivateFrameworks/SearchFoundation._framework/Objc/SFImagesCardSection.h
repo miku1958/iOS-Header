@@ -14,10 +14,11 @@
 
 @interface SFImagesCardSection : SFCardSection <SFImagesCardSection, NSSecureCoding, NSCopying>
 {
-    CDStruct_5ff9a38c _has;
+    CDStruct_9c7542df _has;
     BOOL _canBeHidden;
     BOOL _hasTopPadding;
     BOOL _hasBottomPadding;
+    BOOL _borderless;
     int _separatorStyle;
     NSArray *_punchoutOptions;
     NSString *_punchoutPickerTitle;
@@ -28,6 +29,7 @@
 }
 
 @property (strong, nonatomic) SFColor *backgroundColor;
+@property (nonatomic) BOOL borderless; // @synthesize borderless=_borderless;
 @property (nonatomic) BOOL canBeHidden;
 @property (copy, nonatomic) NSString *cardSectionId;
 @property (copy, nonatomic) NSArray *commands;
@@ -54,6 +56,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasBorderless;
 - (BOOL)hasCanBeHidden;
 - (BOOL)hasHasBottomPadding;
 - (BOOL)hasHasTopPadding;

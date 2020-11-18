@@ -6,43 +6,52 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMDApplicationInfo, NSArray, NSHashTable, NSObject;
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
+
+@class HMDApplicationInfo, NSArray, NSHashTable, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDProcessInfo : HMFObject
+@interface HMDProcessInfo : HMFObject <HMFLogging>
 {
     BOOL _viewService;
     int _pid;
     unsigned long long _state;
     HMDApplicationInfo *_appInfo;
     NSArray *_runningReasons;
-    NSObject<OS_dispatch_queue> *_clientQueue;
+    NSObject<OS_dispatch_queue> *_xpcQueue;
+    NSObject<OS_dispatch_queue> *_propertyQueue;
     NSHashTable *_connectionProxies;
 }
 
 @property (readonly, weak, nonatomic) HMDApplicationInfo *appInfo; // @synthesize appInfo=_appInfo;
 @property (readonly, nonatomic, getter=isBackgrounded) BOOL background;
 @property (readonly, nonatomic, getter=isBackgroundUpgradedToForeground) BOOL backgroundUpgradedToForeground;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, nonatomic) NSHashTable *connectionProxies; // @synthesize connectionProxies=_connectionProxies;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isForegrounded) BOOL foreground;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) int pid; // @synthesize pid=_pid;
-@property (readonly, nonatomic) unsigned long long proxyCount;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (strong, nonatomic) NSArray *runningReasons; // @synthesize runningReasons=_runningReasons;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isSuspended) BOOL suspended;
 @property (readonly, nonatomic, getter=isTerminated) BOOL terminated;
 @property (readonly, nonatomic, getter=isViewService) BOOL viewService; // @synthesize viewService=_viewService;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *xpcQueue; // @synthesize xpcQueue=_xpcQueue;
 
++ (id)logCategory;
 - (void).cxx_destruct;
+- (id)_activeRequestIdentifiers;
 - (void)activate;
-- (id)activeRequestIdentifiers;
 - (void)addConnectionProxy:(id)arg1;
 - (void)deactivate;
-- (id)description;
 - (id)init;
-- (id)initWithConnectionProxy:(id)arg1 application:(id)arg2 processId:(int)arg3;
+- (id)initWithConnectionProxy:(id)arg1 application:(id)arg2 processId:(int)arg3 xpcQueue:(id)arg4;
 - (void)initiateRefresh;
+- (id)logIdentifier;
+- (unsigned long long)proxyCount;
 - (void)removeConnectionProxy:(id)arg1;
 
 @end

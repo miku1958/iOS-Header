@@ -20,6 +20,7 @@
     BOOL _speechEnabled;
     BOOL isPaused;
     BOOL _showControlCenterControls;
+    BOOL _supportsAccurateWordCallbacks;
     CDUnknownBlockType _requestWillStart;
     NSNumber *_originalSpeechRateForJobOverride;
 }
@@ -36,6 +37,7 @@
 @property (readonly, nonatomic) BOOL showControlCenterControls; // @synthesize showControlCenterControls=_showControlCenterControls;
 @property (nonatomic) BOOL speechEnabled; // @synthesize speechEnabled=_speechEnabled;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL supportsAccurateWordCallbacks; // @synthesize supportsAccurateWordCallbacks=_supportsAccurateWordCallbacks;
 
 + (id)_resetAvailableVoices;
 + (id)availableLanguageCodes;

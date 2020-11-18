@@ -16,6 +16,7 @@
     NSArray *_itemIdentifiers;
     NSNumber *_timeoutInterval;
     NSString *_platform;
+    double _retryDelay;
     NSString *_clientIdentifier;
     long long _personalizationStyle;
     ICClientInfo *_clientInfo;
@@ -35,6 +36,7 @@
 @property (nonatomic) unsigned long long reason; // @synthesize reason=_reason;
 @property (copy, nonatomic) NSString *requestingBundleIdentifier;
 @property (copy, nonatomic) NSString *requestingBundleVersion;
+@property (nonatomic) double retryDelay; // @synthesize retryDelay=_retryDelay;
 @property (nonatomic) BOOL shouldIgnoreCache; // @synthesize shouldIgnoreCache=_shouldIgnoreCache;
 @property (readonly, copy, nonatomic) ICStorePlatformRequest *storePlatformRequest;
 @property (copy, nonatomic) NSNumber *timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
@@ -43,6 +45,7 @@
 
 + (id)itemIdentifiersForModelObjects:(id)arg1;
 - (void).cxx_destruct;
+- (id)init;
 
 @end
 

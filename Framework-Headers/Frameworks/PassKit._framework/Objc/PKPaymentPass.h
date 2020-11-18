@@ -108,6 +108,7 @@
 - (id)sanitizedDeviceAccountNumber;
 - (id)sortedPaymentApplications:(id)arg1 ascending:(BOOL)arg2;
 - (BOOL)supportsWebPaymentMode:(long long)arg1 withExclusionList:(id)arg2;
+- (BOOL)supportsWebPaymentMode:(long long)arg1 withExclusionList:(id)arg2 clientOSVersion:(id)arg3;
 - (void)updateDevicePaymentApplicationsWithSecureElementIdentifiers:(id)arg1;
 
 @end

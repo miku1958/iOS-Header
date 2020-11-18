@@ -20,8 +20,12 @@
 - (void).cxx_destruct;
 - (void)addResultsFromDictionary:(id)arg1;
 - (void)addResultsFromOutcome:(id)arg1;
+- (id)allKeys;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithResults:(id)arg1 type:(unsigned long long)arg2;
+- (void)removeObjectForKey:(id)arg1;
+- (void)removeObjectsForKeys:(id)arg1;
+- (void)safeSetObject:(id)arg1 forKey:(id)arg2;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 
 @end

@@ -11,6 +11,7 @@
 @protocol SFImagesCardSection <SFCardSection>
 
 @property (strong, nonatomic) SFColor *backgroundColor;
+@property (nonatomic) BOOL borderless;
 @property (nonatomic) BOOL canBeHidden;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (nonatomic) BOOL hasBottomPadding;

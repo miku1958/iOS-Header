@@ -6,7 +6,7 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class NFLBatchContext, NFLFeedSettings, NSArray, NSObject;
+@class NFLBatchContext, NFLFeedSettings, NSArray;
 @protocol NFLFeedLayoutSearchConfiguration, NFLFontManager;
 
 @interface NFLFeedLayoutOperation : FCOperation
@@ -14,7 +14,7 @@
     CDUnknownBlockType _layoutCompletion;
     NSArray *_tileInfos;
     NFLFeedSettings *_feedSettings;
-    NSObject<NFLFeedLayoutSearchConfiguration> *_feedLayoutSearchConfiguration;
+    id<NFLFeedLayoutSearchConfiguration> _feedLayoutSearchConfiguration;
     id<NFLFontManager> _fontManager;
     double _tileProminenceScoreBalanceValue;
     NFLBatchContext *_previousBatchContext;
@@ -22,7 +22,7 @@
     NSArray *_result;
 }
 
-@property (copy, nonatomic) NSObject<NFLFeedLayoutSearchConfiguration> *feedLayoutSearchConfiguration; // @synthesize feedLayoutSearchConfiguration=_feedLayoutSearchConfiguration;
+@property (copy, nonatomic) id<NFLFeedLayoutSearchConfiguration> feedLayoutSearchConfiguration; // @synthesize feedLayoutSearchConfiguration=_feedLayoutSearchConfiguration;
 @property (copy, nonatomic) NFLFeedSettings *feedSettings; // @synthesize feedSettings=_feedSettings;
 @property (strong, nonatomic) id<NFLFontManager> fontManager; // @synthesize fontManager=_fontManager;
 @property (copy) CDUnknownBlockType layoutCompletion; // @synthesize layoutCompletion=_layoutCompletion;

@@ -12,9 +12,11 @@
 {
 }
 
+@property (copy, nonatomic) NSString *assetInfo;
 @property (copy, nonatomic) NSString *episodePlaybackOrder;
 @property (copy, nonatomic) NSArray *hashedRouteUIDs;
 @property (strong, nonatomic) SAMPPodcastCollection *podcastCollection;
+@property (nonatomic) BOOL startPlaying;
 
 + (id)playPodcastCollection;
 + (id)playPodcastCollectionWithDictionary:(id)arg1 context:(id)arg2;

@@ -23,6 +23,7 @@
     NSNumber *_currentAverageRTT;
     NSNumber *_isDeviceBlackedOut;
     NSNumber *_localMessageState;
+    NSString *_wpConnectionErrorDomain;
     NSNumber *_wpConnectionErrorCode;
     NSDictionary *_wpConnectionErrorUserInfo;
 }
@@ -41,6 +42,7 @@
 @property (copy, nonatomic) NSNumber *responseTimeStamp; // @synthesize responseTimeStamp=_responseTimeStamp;
 @property (copy, nonatomic) NSData *responseToken; // @synthesize responseToken=_responseToken;
 @property (copy, nonatomic) NSNumber *wpConnectionErrorCode; // @synthesize wpConnectionErrorCode=_wpConnectionErrorCode;
+@property (copy, nonatomic) NSString *wpConnectionErrorDomain; // @synthesize wpConnectionErrorDomain=_wpConnectionErrorDomain;
 @property (copy, nonatomic) NSDictionary *wpConnectionErrorUserInfo; // @synthesize wpConnectionErrorUserInfo=_wpConnectionErrorUserInfo;
 
 - (void).cxx_destruct;

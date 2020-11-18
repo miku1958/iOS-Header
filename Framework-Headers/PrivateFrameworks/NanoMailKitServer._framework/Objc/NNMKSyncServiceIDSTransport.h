@@ -17,6 +17,7 @@
     IDSService *_idsService;
     unsigned long long _connectivityState;
     id<NNMKSyncServiceTransportDelegate> _delegate;
+    NSString *_serviceName;
 }
 
 @property (nonatomic) unsigned long long connectivityState; // @synthesize connectivityState=_connectivityState;
@@ -26,6 +27,7 @@
 @property (nonatomic) BOOL forceFailureForAllRequests;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) IDSService *idsService; // @synthesize idsService=_idsService;
+@property (strong, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property (nonatomic) BOOL simulateCloudConnectedOnly;
 @property (readonly) Class superclass;
 

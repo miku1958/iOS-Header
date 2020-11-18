@@ -101,6 +101,7 @@
 - (void)ping;
 - (void)pingWithCallback:(CDUnknownBlockType)arg1;
 - (void)pong;
+- (id)prettyDescription;
 - (BOOL)readyToCancel;
 - (BOOL)readyToFinish;
 - (void)removeAttachment:(id)arg1;

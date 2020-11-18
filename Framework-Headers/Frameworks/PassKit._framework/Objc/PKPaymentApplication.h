@@ -82,6 +82,7 @@
 - (id)protobuf;
 - (BOOL)supportsExpressMode:(id)arg1;
 - (BOOL)supportsWebPaymentMode:(long long)arg1 withExclusionList:(id)arg2;
+- (BOOL)supportsWebPaymentMode:(long long)arg1 withExclusionList:(id)arg2 clientOSVersion:(id)arg3;
 
 @end
 

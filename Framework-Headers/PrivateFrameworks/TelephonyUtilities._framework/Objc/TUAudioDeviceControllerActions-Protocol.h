@@ -4,12 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <TelephonyUtilities/NSObject-Protocol.h>
+#import <TelephonyUtilities/TUAudioDeviceControllerXPCServer-Protocol.h>
 
-@class NSString;
-
-@protocol TUAudioDeviceControllerActions <NSObject>
-- (oneway void)setCurrentAudioInputDeviceToDeviceWithUID:(NSString *)arg1;
-- (oneway void)setCurrentAudioOutputDeviceToDeviceWithUID:(NSString *)arg1;
+@protocol TUAudioDeviceControllerActions <TUAudioDeviceControllerXPCServer>
 @end
 

@@ -63,6 +63,7 @@
 - (id)manualEndpointingThreshold;
 - (BOOL)myriadCoordinationEnabled;
 - (id)myriadDeviceGroup;
+- (BOOL)myriadDuckingEnabled;
 - (BOOL)offlineDictationOverride;
 - (id)offlineDictationProfileOverridePath;
 - (id)outputVoice;
@@ -86,10 +87,12 @@
 - (void)setManualEndpointingThreshold:(id)arg1;
 - (void)setMyriadCoordinationEnabled:(BOOL)arg1;
 - (void)setMyriadDeviceGroup:(id)arg1;
+- (void)setMyriadDuckingEnabled:(BOOL)arg1;
 - (void)setOfflineDictationOverride:(BOOL)arg1;
 - (void)setOfflineDictationProfileOverridePath:(id)arg1;
 - (void)setOutputVoice:(id)arg1;
 - (void)setRespectsSystemMute:(BOOL)arg1;
+- (void)setShowServerOnUI:(BOOL)arg1;
 - (void)setShowsHoldToTalkIndicator:(BOOL)arg1;
 - (void)setSiriDebugUIEnabled:(BOOL)arg1;
 - (void)setSiriKitEnabledForNativeCalling:(BOOL)arg1;
@@ -101,6 +104,8 @@
 - (void)setUseDeviceSpeakerForTTS:(long long)arg1;
 - (void)setUseSASAutoSelectionFeature:(BOOL)arg1;
 - (void)setValue:(id)arg1 forSessionContextKey:(id)arg2;
+- (BOOL)shouldLogForQA;
+- (BOOL)showServerOnUI;
 - (BOOL)showsHoldToTalkIndicator;
 - (BOOL)siriDebugUIEnabled;
 - (BOOL)siriKitEnabledForNativeCalling;

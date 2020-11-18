@@ -21,11 +21,11 @@
 
 + (BOOL)deviceScoringSupported;
 - (void).cxx_destruct;
-- (void)_getScoreWithNonce:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)deviceScoreWithNonce:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_getScoreWithNonce:(id)arg1 cryptogram:(id)arg2 challengeResponse:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)deviceScoreWithCryptogram:(id)arg1 challengeResponse:(id)arg2 nonce:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)init;
 - (id)initWithContext:(id)arg1;
-- (void)peerPaymentDeviceScoreWithCompletion:(CDUnknownBlockType)arg1;
+- (void)peerPaymentDeviceScoreWithCryptogram:(id)arg1 challengeResponse:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

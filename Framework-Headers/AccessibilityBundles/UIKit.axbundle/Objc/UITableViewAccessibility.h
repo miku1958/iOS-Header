@@ -20,6 +20,7 @@
 - (id)_accessibilityFirstVisibleItem;
 - (id)_accessibilityFooterElement;
 - (id)_accessibilityFuzzyHitTest:(struct CGPoint *)arg1 withEvent:(id)arg2;
+- (id)_accessibilityGroupIdentifier;
 - (BOOL)_accessibilityHasAccessibleOrContainerSubview;
 - (BOOL)_accessibilityHasAccessibleOrContainerSubviewWithSubviewTree:(id)arg1;
 - (id)_accessibilityHeaderElement;

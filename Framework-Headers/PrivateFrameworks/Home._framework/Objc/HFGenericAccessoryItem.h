@@ -29,13 +29,9 @@
 - (void).cxx_destruct;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)accessories;
-- (id)allControlItems;
-- (id)controlPanelItems;
 - (id)copyWithValueSource:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)incrementalStateControlItem;
 - (id)initWithAccessory:(id)arg1 valueSource:(id)arg2;
-- (id)primaryStateControlItem;
 - (id)serviceLikeBuilderInHome:(id)arg1;
 - (id)services;
 

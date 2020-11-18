@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) double lastNetworkChangedTime;
 @property (readonly, nonatomic) NSString *networkType;
 @property (readonly, nonatomic) NSNumber *pixelRatio;
+@property (readonly, nonatomic) BOOL runningAnInternalBuild;
 @property (readonly, nonatomic) NSString *vendorID;
 
 - (NSNumber *)capacity:(NSString *)arg1;

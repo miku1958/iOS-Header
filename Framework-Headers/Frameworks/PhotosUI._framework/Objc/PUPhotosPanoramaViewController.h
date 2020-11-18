@@ -25,7 +25,7 @@
 - (long long)cellFillMode;
 - (void)configureGlobalFooterView:(id)arg1;
 - (void)configureGridCell:(id)arg1 forItemAtIndexPath:(id)arg2;
-- (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3 animated:(BOOL)arg4;
+- (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3;
 - (id)imageRequestOptionsForAsset:(id)arg1 pixelSize:(inout struct CGSize *)arg2;
 - (id)initWithSpec:(id)arg1;
 - (id)newGridLayout;

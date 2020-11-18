@@ -30,6 +30,7 @@
 @property (readonly, weak, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
 @property (readonly, nonatomic) HMRemoteLoginAnisetteDataProvider *anisetteDataProvider; // @synthesize anisetteDataProvider=_anisetteDataProvider;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property (readonly, getter=isControllable) BOOL controllable;
 @property (strong, nonatomic) NSString *currentSessionID; // @synthesize currentSessionID=_currentSessionID;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;

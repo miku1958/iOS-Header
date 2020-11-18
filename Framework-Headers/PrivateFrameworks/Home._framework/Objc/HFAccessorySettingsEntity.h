@@ -18,21 +18,25 @@
     NSString *_sortKey;
     NSString *_localizedHeader;
     NSString *_localizedFooter;
+    NSString *_overrideLocalizedTitleKey;
     NSArray *_booleanKeyPathDependencies;
     NSDictionary *_userInfo;
     long long _interfaceModality;
     NSString *_previewValueKeyPath;
     NSFormatter *_previewValueFormatter;
+    NSFormatter *_footerTitleFormatter;
     NSString *_adapterIdentifier;
 }
 
 @property (readonly, copy, nonatomic) NSString *adapterIdentifier; // @synthesize adapterIdentifier=_adapterIdentifier;
 @property (readonly, nonatomic) BOOL alwaysShowGroup; // @synthesize alwaysShowGroup=_alwaysShowGroup;
 @property (readonly, copy, nonatomic) NSArray *booleanKeyPathDependencies; // @synthesize booleanKeyPathDependencies=_booleanKeyPathDependencies;
+@property (readonly, copy, nonatomic) NSFormatter *footerTitleFormatter; // @synthesize footerTitleFormatter=_footerTitleFormatter;
 @property (readonly, nonatomic) long long interfaceModality; // @synthesize interfaceModality=_interfaceModality;
 @property (readonly, copy, nonatomic) NSString *keyPath; // @synthesize keyPath=_keyPath;
 @property (readonly, copy, nonatomic) NSString *localizedFooter; // @synthesize localizedFooter=_localizedFooter;
 @property (readonly, copy, nonatomic) NSString *localizedHeader; // @synthesize localizedHeader=_localizedHeader;
+@property (readonly, copy, nonatomic) NSString *overrideLocalizedTitleKey; // @synthesize overrideLocalizedTitleKey=_overrideLocalizedTitleKey;
 @property (readonly, nonatomic) BOOL previewAccessory; // @synthesize previewAccessory=_previewAccessory;
 @property (readonly, copy, nonatomic) NSFormatter *previewValueFormatter; // @synthesize previewValueFormatter=_previewValueFormatter;
 @property (readonly, copy, nonatomic) NSString *previewValueKeyPath; // @synthesize previewValueKeyPath=_previewValueKeyPath;

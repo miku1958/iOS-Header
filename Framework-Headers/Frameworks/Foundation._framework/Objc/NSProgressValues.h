@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_userInfo;
     _NSProgressFraction *_selfFraction;
     _NSProgressFraction *_childFraction;
+    double _remoteFractionCompleted;
     NSString *_localizedDescription;
     NSString *_localizedAdditionalDescription;
     BOOL _isCancellable;
@@ -28,7 +29,6 @@ __attribute__((visibility("hidden")))
     long long _portionOfParent;
 }
 
-+ (id)_derivedKeys;
 + (id)_importantKeys;
 + (id)decodableClasses;
 + (BOOL)supportsSecureCoding;

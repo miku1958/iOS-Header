@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithContainerContents:(id)arg1;
 - (id)initWithContents:(id)arg1 identifiers:(id)arg2;
 - (id)stateByDeletingObjectAtIndex:(unsigned long long)arg1;
+- (id)stateByDeletingObjectsAtIndexes:(id)arg1;
 - (id)stateByInvokingPreprocessingBlock:(CDUnknownBlockType)arg1 mappingBlock:(CDUnknownBlockType)arg2;
 - (id)stateByMovingObjectAtIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 

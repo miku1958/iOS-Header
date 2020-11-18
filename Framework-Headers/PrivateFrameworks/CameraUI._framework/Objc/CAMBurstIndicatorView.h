@@ -6,11 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class UILabel;
+@class NSString, UILabel;
 
 @interface CAMBurstIndicatorView : UIView
 {
     long long _layoutStyle;
+    NSString *_contentSizeCategory;
     UIView *__backgroundView;
     UILabel *__countLabel;
     long long __numberOfPhotos;
@@ -19,13 +20,14 @@
 @property (readonly, nonatomic) UIView *_backgroundView; // @synthesize _backgroundView=__backgroundView;
 @property (readonly, nonatomic) UILabel *_countLabel; // @synthesize _countLabel=__countLabel;
 @property (readonly, nonatomic) long long _numberOfPhotos; // @synthesize _numberOfPhotos=__numberOfPhotos;
+@property (copy, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
 @property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 
 - (void).cxx_destruct;
 - (void)_commonCAMAvalancheIndicatorViewInitializationWithLayoutStyle:(long long)arg1;
 - (void)_performCaptureAnimation;
+- (void)_updateAttributes;
 - (void)_updateCountLabelWithNumberOfPhotos;
-- (void)_updateForLayoutStyle;
 - (void)finishIncrementingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (long long)incrementWithCaptureAnimation:(BOOL)arg1;
 - (id)initWithCoder:(id)arg1;

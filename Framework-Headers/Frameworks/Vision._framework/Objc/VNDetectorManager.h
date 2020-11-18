@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class VNFaceBBoxAligner, VNFaceDetector, VNFaceExpressionDetector, VNFaceLandmarkDetector, VNFaceprintGenerator, VNHumanDetector, VNImageprintGenerator, VNJunkIdentifier, VNSceneClassifier;
+@class VNFaceBBoxAligner, VNFaceDetector, VNFaceExpressionDetector, VNFaceLandmarkDetector, VNFaceprintGenerator, VNHumanDetector, VNImageprintGenerator, VNJunkIdentifier, VNSceneClassifier, VNSmartCamClassifier;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     VNHumanDetector *_humanDetector;
     VNJunkIdentifier *_junkIdentifier;
     VNSceneClassifier *_sceneClassifier;
+    VNSmartCamClassifier *_smartCamClassifier;
     VNImageprintGenerator *_imageprintGenerator;
     NSObject<OS_dispatch_queue> *_faceDetectorAccurateSerialQueue;
     NSObject<OS_dispatch_queue> *_faceDetectorBalancedSerialQueue;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_humanDetectorSerialQueue;
     NSObject<OS_dispatch_queue> *_junkIdentifierSerialQueue;
     NSObject<OS_dispatch_queue> *_sceneClassifierSerialQueue;
+    NSObject<OS_dispatch_queue> *_smartCamClassifierSerialQueue;
     NSObject<OS_dispatch_queue> *_imageprintGeneratorSerialQueue;
 }
 
@@ -44,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)forcedCleanupFacePipelineWithLevel:(id)arg1;
 - (void)forcedCleanupJunkPipelineWithLevel:(id)arg1;
 - (void)forcedCleanupScenePipelineWithLevel:(id)arg1;
+- (void)forcedCleanupSmartCamPipelineWithLevel:(id)arg1;
 - (void)forcedCleanupWithOptions:(id)arg1;
 - (id)getSerialDispatchQueueFaceBoxAligner;
 - (id)getSerialDispatchQueueFaceDetectorAccurate;
@@ -56,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (id)getSerialDispatchQueueImageprintGenerator;
 - (id)getSerialDispatchQueueJunkDetector;
 - (id)getSerialDispatchQueueSceneDetector;
+- (id)getSerialDispatchQueueSmartCamDetector;
 - (id)init;
 
 @end

@@ -7,11 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <Home/HFHomeManagerObserver-Protocol.h>
+#import <Home/HFHomeObserver-Protocol.h>
 
 @class HMHome, NSDate, NSMutableSet, NSString;
 
-@interface HFCharacteristicNotificationManager : NSObject <HFHomeManagerObserver>
+@interface HFCharacteristicNotificationManager : NSObject <HFHomeManagerObserver, HFHomeObserver>
 {
+    BOOL _hasRegisteredForMediaAccessoryControl;
     NSDate *_lastNotificationsEnableRequestDate;
     NSMutableSet *_notificationsEnabledReasons;
     HMHome *_notificationsEnabledHome;
@@ -19,6 +21,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasRegisteredForMediaAccessoryControl; // @synthesize hasRegisteredForMediaAccessoryControl=_hasRegisteredForMediaAccessoryControl;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSDate *lastNotificationsEnableRequestDate; // @synthesize lastNotificationsEnableRequestDate=_lastNotificationsEnableRequestDate;
 @property (readonly, nonatomic) BOOL notificationsEnabled;
@@ -31,6 +34,8 @@
 - (void)_updateNotificationsEnabled;
 - (void)disableNotificationsForSelectedHomeWithReason:(id)arg1;
 - (void)enableNotificationsForSelectedHomeWithReason:(id)arg1;
+- (void)home:(id)arg1 didAddAccessory:(id)arg2;
+- (void)home:(id)arg1 didRemoveAccessory:(id)arg2;
 - (void)homeKitDispatcher:(id)arg1 manager:(id)arg2 didChangeHome:(id)arg3;
 - (void)homeManagerDidFinishInitialDatabaseLoad:(id)arg1;
 - (id)init;

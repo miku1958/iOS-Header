@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _videoThumbnailsCallback;
     CDUnknownBlockType _audioAmplitudeSamplesCallback;
     NSMutableDictionary *_commandHandlerBlocks;
-    void *_context;
 }
 
 @property (readonly, nonatomic) NSArray *artworkCallbacks;
@@ -36,9 +35,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType beginLyricsEventCallback;
 @property (readonly, nonatomic) void *capabilities;
 @property (readonly, copy, nonatomic) NSArray *commandHandlerBlocks;
-@property (readonly, nonatomic) void *context; // @synthesize context=_context;
 @property (readonly, nonatomic) CDUnknownBlockType createChildItemCallback;
-@property (readonly, nonatomic) CDUnknownBlockType createItemForIdentifierCallback;
 @property (readonly, nonatomic) CDUnknownBlockType createItemForOffsetCallback;
 @property (readonly, nonatomic) CDUnknownBlockType createPlaybackQueueForRequestCallback;
 @property (copy, nonatomic) CDUnknownBlockType endLyricsEventCallback;
@@ -56,7 +53,6 @@ __attribute__((visibility("hidden")))
 - (void *)addArtworkCallback:(CDUnknownBlockType)arg1 prepend:(BOOL)arg2;
 - (void)addCommandHandlerBlock:(CDUnknownBlockType)arg1 forKey:(id)arg2;
 - (void *)addCreateChildItemCallback:(CDUnknownBlockType)arg1 prepend:(BOOL)arg2;
-- (void *)addCreateItemForIdentifierCallback:(CDUnknownBlockType)arg1 prepend:(BOOL)arg2;
 - (void *)addCreateItemForOffsetCallback:(CDUnknownBlockType)arg1 prepend:(BOOL)arg2;
 - (void *)addCreatePlaybackQueueForRequestCallback:(CDUnknownBlockType)arg1 prepend:(BOOL)arg2;
 - (void *)addInfoCallback:(CDUnknownBlockType)arg1 prepend:(BOOL)arg2;
@@ -64,6 +60,8 @@ __attribute__((visibility("hidden")))
 - (void *)addLyricsCallback:(CDUnknownBlockType)arg1 prepend:(BOOL)arg2;
 - (void *)addMetadataCallback:(CDUnknownBlockType)arg1 prepend:(BOOL)arg2;
 - (void)dealloc;
+- (id)fallbackArtworkAssetCallbacks;
+- (id)fallbackAssetCallbacks;
 - (id)initWithPlayerPath:(void *)arg1 queue:(id)arg2;
 - (BOOL)removeCallback:(void *)arg1;
 - (void)removeCommandHandlerBlockForKey:(id)arg1;

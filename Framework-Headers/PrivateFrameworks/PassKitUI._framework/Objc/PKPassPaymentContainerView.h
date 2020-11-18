@@ -41,6 +41,7 @@
     NSString *_pendingPayStateTextOverride;
     unsigned long long _payStateTransitionCounter;
     long long _pendingPayState;
+    BOOL _pendingPayStateAnimated;
     long long _currentPayState;
     unsigned long long _authenticatorState;
     BOOL _authenticating;
@@ -54,13 +55,13 @@
     long long _transactionSubstate;
     BOOL _holdingTerminalSubstate;
     NSObject<OS_dispatch_source> *_transactionResolutionTimer;
+    NSObject<OS_dispatch_source> *_transactionTerminalResponseTimer;
     BOOL _presentingPasscode;
     BOOL _requiresPasscodeDismissal;
     UIViewController *_passcodePresenterVC;
     BOOL _inBackground;
     unsigned long long _deactivationReasons;
     BOOL _isVisible;
-    BOOL _shouldShowApplications;
     BOOL _valueAddedServiceInfoViewHidden;
     BOOL _waitingForPasses;
     double _lastFieldExitTime;
@@ -69,6 +70,7 @@
     double _lastTransactionTime;
     NSObject<OS_dispatch_source> *_summaryAuthenticationTimer;
     long long _style;
+    BOOL _encounteredTerminalFailure;
     NSMutableArray *_valueAddedPasses;
 }
 
@@ -97,6 +99,7 @@
 - (void)_beginPaymentAuthorization;
 - (void)_beginPaymentAuthorizationWithImmediatePasscode:(BOOL)arg1;
 - (void)_beginSummaryAuthenticationIfNecessary;
+- (void)_beginTerminalResponseTimeout;
 - (id)_buttonForState:(long long)arg1;
 - (id)_buttonWithTitle:(id)arg1 alignment:(long long)arg2 action:(SEL)arg3;
 - (BOOL)_canAuthenticateWithBiometrics;
@@ -104,6 +107,7 @@
 - (void)_cancelBiometricRecognitionAndPromptUserAction:(long long)arg1;
 - (void)_cancelHoldingTerminalTransactionSubstateIfNecessary;
 - (void)_cancelSummaryAuthenticationTimer;
+- (void)_cancelTerminalResponseTimeout;
 - (void)_configureForPaymentWithPaymentPass:(id)arg1 context:(id)arg2;
 - (void)_configureForStyle:(long long)arg1 context:(id)arg2;
 - (void)_configureForValueAddedServiceWithPass:(id)arg1 context:(id)arg2;
@@ -195,6 +199,7 @@
 - (void)contactlessInterfaceSessionDidReceiveActivityTimeout:(id)arg1;
 - (void)contactlessInterfaceSessionDidSelectPayment:(id)arg1;
 - (void)contactlessInterfaceSessionDidStartTransaction:(id)arg1;
+- (void)contactlessInterfaceSessionDidTerminate:(id)arg1;
 - (void)contactlessInterfaceSessionDidTimeout:(id)arg1 forPaymentApplication:(id)arg2 paymentPass:(id)arg3 valueAddedServicePasses:(id)arg4;
 - (void)contactlessInterfaceSessionHasPendingServerRequest:(id)arg1;
 - (void)dealloc;
@@ -202,6 +207,7 @@
 - (void)didBecomeVisibleAnimated:(BOOL)arg1;
 - (void)dismissPasscodeViewController;
 - (id)initWithStyle:(long long)arg1 pass:(id)arg2 context:(id)arg3 paymentSession:(id)arg4 paymentService:(id)arg5;
+- (void)invalidate;
 - (BOOL)isPassAuthorized;
 - (void)layoutSubviews;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

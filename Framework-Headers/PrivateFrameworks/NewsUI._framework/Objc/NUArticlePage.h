@@ -9,7 +9,7 @@
 #import <NewsUI/NUPage-Protocol.h>
 
 @class FCArticle, FCAsyncOnceOperation, NSString, NUPageStyle, UIViewController;
-@protocol FCOperationCanceling, NUActivityProvider, NUArticleActivityFactory, NUArticleHostViewControllerFactory, NUPagable;
+@protocol FCOperationCanceling, NUActivityProvider, NUArticleActivityFactory, NUArticleHostViewControllerFactory, NUPageable;
 
 @interface NUArticlePage : NSObject <NUPage>
 {
@@ -20,7 +20,7 @@
     id<NUActivityProvider> _activityProvider;
     FCAsyncOnceOperation *_asyncOnceOperation;
     id<FCOperationCanceling> _asyncOnceCancelHandler;
-    UIViewController<NUPagable> *_articleViewController;
+    UIViewController<NUPageable> *_articleViewController;
     unsigned long long _pageNextAction;
 }
 
@@ -29,7 +29,7 @@
 @property (readonly, nonatomic) FCArticle *article; // @synthesize article=_article;
 @property (readonly, nonatomic) id<NUArticleActivityFactory> articleActivityFactory; // @synthesize articleActivityFactory=_articleActivityFactory;
 @property (readonly, nonatomic) id<NUArticleHostViewControllerFactory> articleHostViewControllerFactory; // @synthesize articleHostViewControllerFactory=_articleHostViewControllerFactory;
-@property (strong, nonatomic) UIViewController<NUPagable> *articleViewController; // @synthesize articleViewController=_articleViewController;
+@property (strong, nonatomic) UIViewController<NUPageable> *articleViewController; // @synthesize articleViewController=_articleViewController;
 @property (strong, nonatomic) id<FCOperationCanceling> asyncOnceCancelHandler; // @synthesize asyncOnceCancelHandler=_asyncOnceCancelHandler;
 @property (strong, nonatomic) FCAsyncOnceOperation *asyncOnceOperation; // @synthesize asyncOnceOperation=_asyncOnceOperation;
 @property (readonly, copy) NSString *debugDescription;

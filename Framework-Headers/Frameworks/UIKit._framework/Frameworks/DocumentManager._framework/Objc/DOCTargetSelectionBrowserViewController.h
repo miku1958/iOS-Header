@@ -43,6 +43,7 @@
 - (void)notifyDelegateOfCancellation;
 - (id)remoteInterface;
 - (id)remoteViewController;
+- (void)setURLs:(id)arg1;
 - (void)updateAppearance:(id)arg1;
 - (void)viewDidLoad;
 

@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class SFDevice, SFDeviceOperationHomeKitSetup, SFDeviceOperationWiFiSetup, SFSession;
+@class NSMutableArray, SFDevice, SFDeviceOperationHomeKitSetup, SFDeviceOperationWiFiSetup, SFSession, TROperationQueue, TRSession, UIViewController;
 @protocol OS_dispatch_queue;
 
 @interface SFDeviceRepairSession : NSObject
 {
     BOOL _activateCalled;
     BOOL _invalidateCalled;
+    unsigned long long _startTicks;
     int _preflightWiFiState;
     SFSession *_sfSession;
     int _sfSessionState;
@@ -25,15 +26,26 @@
     SFDeviceOperationWiFiSetup *_wifiSetupOperation;
     int _wifiSetupState;
     double _wifiSetupSecs;
+    int _trSessionState;
+    TRSession *_trSession;
+    NSMutableArray *_trOperations;
+    TROperationQueue *_trOperationQueue;
+    int _trAuthenticationState;
+    unsigned long long _trAuthenticationStartTicks;
+    double _trAuthenticationSecs;
     int _finishState;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     SFDevice *_peerDevice;
+    UIViewController *_presentingViewController;
     CDUnknownBlockType _progressHandler;
+    unsigned long long _triggerMs;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (strong, nonatomic) SFDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
+@property (strong, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
+@property (nonatomic) unsigned long long triggerMs; // @synthesize triggerMs=_triggerMs;
 
 - (void).cxx_destruct;
 - (void)_cleanup;
@@ -45,6 +57,8 @@
 - (int)_runPairVerify;
 - (int)_runPreflightWiFi;
 - (int)_runSFSessionStart;
+- (int)_runTRAuthentication;
+- (int)_runTRSessionStart;
 - (int)_runWiFiSetup;
 - (void)activate;
 - (void)dealloc;

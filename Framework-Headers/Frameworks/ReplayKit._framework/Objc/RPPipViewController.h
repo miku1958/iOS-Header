@@ -15,11 +15,17 @@
     AVCaptureDevice *_videoDevice;
     AVCaptureDeviceInput *_videoInput;
     long long _initialOrientation;
+    long long _previousOrientation;
+    double _previousOrientationWidth;
+    double _previousOrientationHeight;
 }
 
 @property (nonatomic) long long cameraPosition; // @synthesize cameraPosition=_cameraPosition;
 @property (nonatomic) long long initialOrientation; // @synthesize initialOrientation=_initialOrientation;
 @property (strong, nonatomic) AVCaptureSession *pipSession; // @synthesize pipSession=_pipSession;
+@property (nonatomic) long long previousOrientation; // @synthesize previousOrientation=_previousOrientation;
+@property (nonatomic) double previousOrientationHeight; // @synthesize previousOrientationHeight=_previousOrientationHeight;
+@property (nonatomic) double previousOrientationWidth; // @synthesize previousOrientationWidth=_previousOrientationWidth;
 @property (strong, nonatomic) AVCaptureDevice *videoDevice; // @synthesize videoDevice=_videoDevice;
 @property (strong, nonatomic) AVCaptureDeviceInput *videoInput; // @synthesize videoInput=_videoInput;
 

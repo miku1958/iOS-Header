@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary, NSMutableSet;
+@class NSMutableDictionary, NSMutableSet;
 @protocol OS_dispatch_queue;
 
 @interface MRPlaybackQueuePlayerClient : NSObject
@@ -14,40 +14,33 @@
     NSMutableDictionary *_cache;
     NSMutableDictionary *_offsets;
     NSMutableSet *_requests;
-    void *_context;
     void *_playerPath;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property (nonatomic) void *context;
-@property (readonly, nonatomic) NSDictionary *lookup;
 @property (readonly, nonatomic) void *playerPath;
 
-- (void)_OnQueue_setContext:(void *)arg1;
-- (void)_invalidate;
+- (void)_onQueue_invalidate;
 - (id)_onQueue_writeData;
-- (void)addPlaybackQueue:(void *)arg1 forRequest:(void *)arg2;
 - (void)addRequest:(void *)arg1;
-- (BOOL)augmentCommandOptions:(id)arg1 forCommand:(unsigned int)arg2;
 - (void *)contentItemForOffset:(long long)arg1;
 - (void)dealloc;
 - (id)description;
 - (BOOL)hasRequest:(id)arg1;
 - (id)initWithPlayerPath:(void *)arg1 queue:(id)arg2;
 - (void)invalidate;
-- (void)invalidateWithContext:(void *)arg1;
 - (void *)nowPlayingItem;
-- (long long)offsetForContentItem:(void *)arg1;
-- (id)offsetForQueueIdentifier:(void *)arg1;
-- (id)offsetsForContentItem:(void *)arg1;
+- (id)offsetForIdentifier:(id)arg1;
 - (void)readData:(id)arg1;
 - (void)removeRequest:(id)arg1;
 - (void *)requestForContentItem:(void *)arg1;
 - (void *)requestForIdentifer:(id)arg1;
+- (void)subscribeToPlaybackQueue:(void *)arg1 forRequest:(void *)arg2;
 - (id)subscribedContentItemRequests:(id)arg1;
 - (id)subscribedContentItems:(id)arg1;
 - (id)subscribedContentItems:(id)arg1 forRequest:(void *)arg2;
 - (id)subscribedContentItemsIdentifiers:(id)arg1 forRequest:(void *)arg2;
+- (BOOL)verifyCommandOptions:(id)arg1 forCommand:(unsigned int)arg2;
 
 @end
 

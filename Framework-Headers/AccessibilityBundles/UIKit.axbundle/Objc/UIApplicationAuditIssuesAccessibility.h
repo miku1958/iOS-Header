@@ -28,6 +28,7 @@
 + (id)_axAuditGetAllFontSizes;
 + (id)_axAuditGetAllTableAndCollectionViewsForHierarchy:(id)arg1;
 + (id)_axAuditGetCellReferenceMapTable;
++ (id)_axAuditGetFontAttrFromAttributedString:(id)arg1;
 + (id)_axAuditGetFontForElement:(id)arg1;
 + (id)_axAuditGetIndexPathsDictionaryForCaptureActionForView:(id)arg1;
 + (id)_axAuditGetIndexPathsDictionaryForUpdateActionForView:(id)arg1;
@@ -39,6 +40,7 @@
 + (void)_axAuditRemoveUnsupportedCategories:(id)arg1;
 + (BOOL)_axAuditSetSwizzledImp:(CDUnknownFunctionPointerType)arg1 orOrigImp:(CDUnknownFunctionPointerType)arg2 forMethod:(struct objc_method *)arg3 withSwizzling:(BOOL)arg4;
 + (BOOL)_axAuditShouldElementBeCheckedForClipping:(id)arg1;
++ (void)_axAuditSpinRunloopForDuration:(double)arg1;
 + (void)_axAuditStoreClippedElementsIntoSet:(id)arg1 forReferenceMatches:(id)arg2;
 + (void)_axAuditStoreFontForElement:(id)arg1 intoDictionary:(id)arg2 forCurrentFont:(id)arg3;
 + (void)_axAuditStoreFontsIntoDictionary:(id)arg1 forReferenceMatches:(id)arg2;

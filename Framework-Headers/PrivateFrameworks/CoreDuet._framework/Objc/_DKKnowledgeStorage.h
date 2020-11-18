@@ -12,7 +12,7 @@
 #import <CoreDuet/_DKKnowledgeQuerying-Protocol.h>
 #import <CoreDuet/_DKKnowledgeSaving-Protocol.h>
 
-@class NSString, NSURL, NSUUID, _DKCoreDataStorage, _DKPreferences;
+@class NSHashTable, NSString, NSURL, NSUUID, _DKCoreDataStorage, _DKPreferences;
 @protocol OS_dispatch_queue;
 
 @interface _DKKnowledgeStorage : NSObject <_DKCoreDataStorageDelegate, _DKKnowledgeEventStreamDeleting, _DKKnowledgeSaving, _DKKnowledgeDeleting, _DKKnowledgeQuerying>
@@ -21,6 +21,7 @@
     NSObject<OS_dispatch_queue> *_defaultResponseQueue;
     NSString *_directory;
     NSURL *_modelURL;
+    NSHashTable *_knowledgeStorageEventNotificationDelegates;
     unsigned long long _insertsAndDeletesObserverCount;
     NSUUID *_deviceUUID;
     BOOL _localOnly;
@@ -43,7 +44,7 @@
 - (id)_requestForChangeSinceDate:(id)arg1;
 - (void)_sendEventsNotificationName:(id)arg1 withObjects:(id)arg2;
 - (void)_sendInsertEventsNotificationWithObjects:(id)arg1;
-- (void)_sendInsertsAndDeletesNotificationWithNotification:(id)arg1;
+- (void)addKnowledgeStorageEventNotificationDelegate:(id)arg1;
 - (void)closeStorage;
 - (void)closeSyncStorage;
 - (BOOL)copyValueToManagedObject:(id)arg1;
@@ -80,6 +81,7 @@
 - (id)lastChangeSetWithEntityName:(id)arg1 error:(id *)arg2;
 - (unsigned long long)lastSequenceNumberForChangeSetWithEntityName:(id)arg1 error:(id *)arg2;
 - (id)removeBadObjects:(id)arg1;
+- (void)removeKnowledgeStorageEventNotificationDelegate:(id)arg1;
 - (BOOL)saveChangeSetsForSync:(id)arg1 error:(id *)arg2;
 - (void)saveHistogram:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (BOOL)saveObjects:(id)arg1 error:(id *)arg2;

@@ -11,6 +11,7 @@
 }
 
 + (id)authenticationActionForProvider:(id)arg1;
++ (id)extensionForProvider:(id)arg1;
 + (BOOL)isAction:(id)arg1 eligibleForItems:(id)arg2;
 + (id)uiActionsForProvider:(id)arg1;
 + (id)uiExtensionPluginForProvider:(id)arg1;

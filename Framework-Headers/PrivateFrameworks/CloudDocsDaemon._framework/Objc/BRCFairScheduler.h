@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _maxRegistedSourceBit;
     unsigned long long _lastVisitedBit;
     NSMutableDictionary *_sourceForBitIndex;
+    BOOL _resumed;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)addSource:(id)arg1;
 - (void)cancel;
 - (void)close;
+- (void)dealloc;
 - (id)initWithQueue:(id)arg1 name:(id)arg2;
 - (void)resume;
 - (void)schedule;

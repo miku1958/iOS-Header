@@ -13,7 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (struct CGRect)_accessibilityFrameForTouchpadView;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)didTransitionToExpandedContentMode:(BOOL)arg1;
 - (void)viewDidLoad;
 
 @end

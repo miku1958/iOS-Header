@@ -9,7 +9,7 @@
 #import <CoreSpotlight/NSCopying-Protocol.h>
 #import <CoreSpotlight/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class MISSING_TYPE, NSArray, NSDictionary, NSString;
 
 @interface CSSearchQueryContext : NSObject <NSSecureCoding, NSCopying>
 {
@@ -34,6 +34,8 @@
     long long _queryID;
     NSString *_completionString;
     NSArray *_completionAttributes;
+    MISSING_TYPE *_fuzzyMask;
+    MISSING_TYPE *_fuzzyMatch;
 }
 
 @property (nonatomic) BOOL attribute;
@@ -49,6 +51,8 @@
 @property (strong, nonatomic) NSArray *fetchAttributes; // @synthesize fetchAttributes=_fetchAttributes;
 @property (strong, nonatomic) NSString *filterQuery; // @synthesize filterQuery=_filterQuery;
 @property (nonatomic) unsigned char flags; // @synthesize flags=_flags;
+@property (nonatomic) MISSING_TYPE *fuzzyMask; // @synthesize fuzzyMask=_fuzzyMask;
+@property (nonatomic) MISSING_TYPE *fuzzyMatch; // @synthesize fuzzyMatch=_fuzzyMatch;
 @property (nonatomic) BOOL grouped;
 @property (nonatomic) BOOL internal;
 @property (strong, nonatomic) NSString *keyboardLanguage; // @synthesize keyboardLanguage=_keyboardLanguage;

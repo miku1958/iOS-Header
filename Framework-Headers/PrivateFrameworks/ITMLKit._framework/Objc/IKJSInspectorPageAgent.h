@@ -13,8 +13,8 @@
 
 @interface IKJSInspectorPageAgent : NSObject <IKNetworkRequestLoader, RWIProtocolPageDomainHandler>
 {
-    IKJSInspectorController *_controller;
     RWIProtocolPageFrameResourceTree *_resourceTree;
+    IKJSInspectorController *_controller;
     NSString *_currentFrameIdentifier;
 }
 

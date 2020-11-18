@@ -11,11 +11,13 @@
 @interface TRAuthenticationOperation : TROperation
 {
     BOOL _shouldIgnoreAuthFailures;
+    BOOL _shouldForceInteractiveAuth;
     NSSet *_targetedServices;
     UIViewController *_presentingViewController;
 }
 
 @property (strong, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
+@property (nonatomic) BOOL shouldForceInteractiveAuth; // @synthesize shouldForceInteractiveAuth=_shouldForceInteractiveAuth;
 @property (nonatomic) BOOL shouldIgnoreAuthFailures; // @synthesize shouldIgnoreAuthFailures=_shouldIgnoreAuthFailures;
 @property (strong, nonatomic) NSSet *targetedServices; // @synthesize targetedServices=_targetedServices;
 

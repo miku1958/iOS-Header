@@ -19,7 +19,6 @@
     CDUnknownBlockType _willBeginExecutionHandler;
     ICStoreRequestContext *_requestContext;
     CDUnknownBlockType _responseHandler;
-    NSString *_householdID;
     unsigned long long _storeCloudID;
     long long _storeSubscriptionAdamID;
     long long _storePurchasedAdamID;
@@ -29,7 +28,6 @@
 @property (copy, nonatomic) NSString *assetSourceStorefrontID; // @synthesize assetSourceStorefrontID=_assetSourceStorefrontID;
 @property (copy, nonatomic) NSString *cloudUniversalLibraryID; // @synthesize cloudUniversalLibraryID=_cloudUniversalLibraryID;
 @property (nonatomic, getter=isDelegatedPlayback) BOOL delegatedPlayback; // @synthesize delegatedPlayback=_delegatedPlayback;
-@property (copy, nonatomic) NSString *householdID; // @synthesize householdID=_householdID;
 @property (copy, nonatomic) ICStoreRequestContext *requestContext; // @synthesize requestContext=_requestContext;
 @property (nonatomic) long long requestType; // @synthesize requestType=_requestType;
 @property (copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;

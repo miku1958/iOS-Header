@@ -12,6 +12,7 @@
 
 @property (nonatomic, getter=isRemoteGatewayCapable) BOOL remoteGatewayCapable; // @dynamic remoteGatewayCapable;
 @property (nonatomic, getter=isResidentCapable) BOOL residentCapable; // @dynamic residentCapable;
+@property (nonatomic) BOOL supportsAssistantAccessControl; // @dynamic supportsAssistantAccessControl;
 @property (nonatomic) BOOL supportsCloudDataSync; // @dynamic supportsCloudDataSync;
 @property (nonatomic) BOOL supportsDeviceSetup; // @dynamic supportsDeviceSetup;
 @property (nonatomic) BOOL supportsKeyTransferClient; // @dynamic supportsKeyTransferClient;

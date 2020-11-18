@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (struct CGSize)collectionViewContentSize;
+- (BOOL)flipsHorizontallyInOppositeLayoutDirection;
 - (id)init;
 - (id)initWithProvider:(id)arg1;
 - (void)invalidateLayoutCache;

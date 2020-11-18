@@ -10,6 +10,7 @@
 
 @protocol MPCPlayerPlaybackRateCommand <MPCPlayerCommand>
 
+@property (readonly, nonatomic) float preferredPlaybackRate;
 @property (readonly, copy, nonatomic) NSArray *supportedPlaybackRates;
 
 - (MPCPlayerCommandRequest *)setPlaybackRate:(float)arg1;

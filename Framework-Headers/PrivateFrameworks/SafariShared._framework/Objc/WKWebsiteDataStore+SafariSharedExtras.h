@@ -8,5 +8,6 @@
 
 @interface WKWebsiteDataStore (SafariSharedExtras)
 + (id)safari_allDataTypes;
++ (void)safari_clearHSTSSuperCookies;
 @end
 

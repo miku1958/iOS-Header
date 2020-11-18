@@ -23,21 +23,32 @@
 @property (readonly) HMDMediaProfile *mediaProfile; // @synthesize mediaProfile=_mediaProfile;
 @property (readonly) Class superclass;
 
++ (id)computedNameForCategoryType:(id)arg1 inRoom:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_hashRouteID:(id)arg1;
+- (void)_registerForMessages;
 - (void)addAdvertisement:(id)arg1;
+- (id)assistantObject;
 - (void)configure:(id)arg1 msgDispatcher:(id)arg2 accessoryConfigureGroup:(id)arg3;
 - (id)dumpSimpleState;
 - (id)dumpState;
+- (void)handleRoomNameChanged:(id)arg1;
 - (void)handleUpdatedAdvertisement:(id)arg1;
+- (void)handleUpdatedMinimumUserPriviledge:(long long)arg1;
 - (void)handleUpdatedPassword:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTransaction:(id)arg1 home:(id)arg2;
+- (id)name;
+- (void)notifyConnectivityChangedWithReachabilityState:(BOOL)arg1;
+- (long long)reachableTransports;
 - (void)removeAdvertisement:(id)arg1;
 - (void)setAdvertisement:(id)arg1;
+- (void)setRemotelyReachable:(BOOL)arg1;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)transactionWithObjectChangeType:(unsigned long long)arg1;
+- (id)url;
 
 @end
 

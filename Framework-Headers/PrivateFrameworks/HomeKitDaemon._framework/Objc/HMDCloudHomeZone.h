@@ -25,9 +25,14 @@
 + (id)zoneSubscriptionName:(id)arg1;
 - (void).cxx_destruct;
 - (void)addCloudRecord:(id)arg1 ownerID:(id)arg2;
+- (void)cloudRecordWithObjectID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)cloudRecordWithObjectIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)cloudRecordsForParentID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)createCloudZoneChangeTemporaryCache:(BOOL)arg1;
 - (id)description;
+- (void)fetchMigratedObjects:(CDUnknownBlockType)arg1;
 - (BOOL)isRootRecord:(id)arg1;
+- (void)markMigratedObjectsAsMigrated;
 - (void)setServerChangeToken:(id)arg1;
 
 @end

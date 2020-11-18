@@ -21,11 +21,13 @@
 @property (readonly, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
 
++ (void)startCatalogDownload:(id)arg1 options:(id)arg2 then:(CDUnknownBlockType)arg3;
 + (void)startCatalogDownload:(id)arg1 then:(CDUnknownBlockType)arg2;
 - (id)assetProperty:(id)arg1;
 - (void)attachProgressCallBack:(CDUnknownBlockType)arg1;
+- (long long)calculateTimeout;
 - (void)cancelDownload:(CDUnknownBlockType)arg1;
-- (void)commonAssetDownload:(id)arg1 then:(CDUnknownBlockType)arg2;
+- (void)commonAssetDownload:(id)arg1 options:(id)arg2 then:(CDUnknownBlockType)arg3;
 - (id)createExtractor;
 - (void)dealloc;
 - (id)getLocalFileUrl;
@@ -36,6 +38,7 @@
 - (void)purge:(CDUnknownBlockType)arg1;
 - (BOOL)refreshState;
 - (void)startDownload:(CDUnknownBlockType)arg1;
+- (void)startDownload:(id)arg1 then:(CDUnknownBlockType)arg2;
 - (void)startDownloadWithExtractor:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

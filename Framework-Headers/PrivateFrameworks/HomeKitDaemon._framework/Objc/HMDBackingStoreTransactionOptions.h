@@ -32,6 +32,7 @@
 @property (readonly, nonatomic) unsigned long long source; // @synthesize source=_source;
 @property (readonly) Class superclass;
 
++ (id)cloudRequiresPushOptions;
 + (id)defaultCloudOptions;
 + (id)defaultIDSOptions;
 + (id)defaultLegacyCloudOptions;

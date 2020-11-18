@@ -45,7 +45,6 @@
 - (long long)_layoutModeForSize:(struct CGSize)arg1;
 - (void)_loadWidgetListViewController;
 - (id)_scrollViewForListViewController:(id)arg1;
-- (struct UIEdgeInsets)contentOccludingInsetForWidgetListViewController:(id)arg1;
 - (void)editViewDidAppear:(id)arg1;
 - (void)editViewDidDisappear:(id)arg1;
 - (void)editViewWillAppear:(id)arg1;
@@ -73,7 +72,8 @@
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)widgetDiscoveryController:(id)arg1 widgetWithIdentifier:(id)arg2 shouldBecomeHiddenInGroup:(id)arg3;
 - (void)widgetDiscoveryController:(id)arg1 widgetWithIdentifier:(id)arg2 shouldBecomeVisibleInGroup:(id)arg3;
-- (id)widgetListViewController:(id)arg1 newCustomBackgroundViewForItemInList:(id)arg2;
+- (struct UIEdgeInsets)widgetListViewController:(id)arg1 contentOccludingInsetsForInterfaceOrientation:(long long)arg2;
+- (struct CGSize)widgetListViewController:(id)arg1 sizeForInterfaceOrientation:(long long)arg2;
 
 @end
 

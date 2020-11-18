@@ -38,7 +38,6 @@
 
 + (id)font;
 + (id)localMediaItemForStoreIdentifiers:(id)arg1;
-+ (id)playButton;
 + (BOOL)supportsResult:(id)arg1;
 - (void).cxx_destruct;
 - (void)buttonPressed;

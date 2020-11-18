@@ -6,7 +6,7 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOApplicationAuditToken, GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEORPCorrectedSearch, GEORPPlaceInfo, GEORelatedSearchSuggestion, NSArray, NSDictionary, NSObject, NSString;
+@class GEOApplicationAuditToken, GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEORPCorrectedSearch, GEORPPlaceInfo, GEORelatedSearchSuggestion, GEOResolvedItem, NSArray, NSDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @protocol GEOMapServiceTicket <NSObject>
@@ -15,6 +15,7 @@
 @property (nonatomic) unsigned long long cachePolicy;
 @property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
 @property (readonly, nonatomic, getter=isChainResultSet) BOOL chainResultSet;
+@property (readonly, nonatomic) GEOResolvedItem *clientResolvedResult;
 @property (readonly, nonatomic) GEORelatedSearchSuggestion *defaultRelatedSuggestion;
 @property (readonly, nonatomic) GEODirectionIntent *directionIntent;
 @property (readonly, nonatomic) NSArray *displayHeaderSubstitutes;

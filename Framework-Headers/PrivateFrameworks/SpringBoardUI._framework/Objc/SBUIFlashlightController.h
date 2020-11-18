@@ -33,7 +33,7 @@
 - (void)_storeFlashlightLevel:(unsigned long long)arg1;
 - (void)_turnPowerOff;
 - (void)_turnPowerOn;
-- (void)_updateState;
+- (void)_updateStateWithAvailable:(BOOL)arg1 level:(unsigned long long)arg2 overheated:(BOOL)arg3;
 - (void)addObserver:(id)arg1;
 - (void)coolDown;
 - (id)init;

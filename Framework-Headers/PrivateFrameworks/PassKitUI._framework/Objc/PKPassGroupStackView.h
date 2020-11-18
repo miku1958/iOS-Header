@@ -50,6 +50,7 @@
         unsigned int isContinuingModalPresentation:1;
         unsigned int forceSubheaderUpdate:1;
         unsigned int forceFooterUpdate:1;
+        unsigned int preventFooterLayout:1;
         unsigned int mutatingForcePileOffscreen:1;
     } _layoutState;
     struct CGSize _lastBoundsSize;
@@ -85,6 +86,7 @@
     PKPaymentService *_paymentService;
     PKPassFooterView *_passFooterView;
     BOOL _showingFooter;
+    BOOL _invalidated;
     PKPassthroughView *_headerContainerView;
     PKPassthroughView *_subheaderContainerView;
     PKPassthroughView *_passContainerView;
@@ -268,8 +270,8 @@
 - (void)gotoBaseTestState;
 - (BOOL)groupView:(id)arg1 deleteButtonEnabledForPass:(id)arg2;
 - (void)groupView:(id)arg1 deleteButtonPressedForPass:(id)arg2;
-- (void)groupView:(id)arg1 didScrollToPassView:(id)arg2;
 - (void)groupView:(id)arg1 didUpdatePassView:(id)arg2;
+- (void)groupView:(id)arg1 frontmostPassViewDidChange:(id)arg2;
 - (void)groupView:(id)arg1 panned:(struct CGPoint)arg2 withVelocity:(struct CGPoint)arg3;
 - (void)groupView:(id)arg1 resizeButtonPressedForPass:(id)arg2 withBarcode:(BOOL)arg3;
 - (struct CGRect)groupView:(id)arg1 targetPageControlFrameForProposedFrame:(struct CGRect)arg2;
@@ -288,6 +290,7 @@
 - (id)headerForPassType:(unsigned long long)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)invalidate;
 - (void)layoutContentForCurrentPresentationState:(BOOL)arg1;
 - (void)layoutHeaderFootersAnimated:(BOOL)arg1;
 - (void)layoutSubviews;

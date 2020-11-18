@@ -23,6 +23,7 @@
 - (BOOL)hasAssociatedPeerPaymentAccount;
 - (BOOL)isValidWithError:(id *)arg1;
 - (id)peerPaymentAccountBalance;
+- (unsigned long long)peerPaymentAccountState;
 
 @end
 

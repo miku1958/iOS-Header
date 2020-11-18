@@ -25,9 +25,12 @@
 - (void).cxx_destruct;
 - (void)addEntity:(id)arg1 isDurable:(BOOL)arg2;
 - (void)addEntry:(id)arg1 tokenizedNewEntity:(id)arg2;
+- (BOOL)areStringCharactersWhitelisted:(id)arg1;
+- (struct USet *)exemplarSetForSupportedLocales;
 - (id)filterWord:(id)arg1;
 - (id)init;
 - (BOOL)isFirstCandidateBetter:(id)arg1 than:(id)arg2;
+- (BOOL)isValidNamedEntity:(id)arg1 explanation:(id *)arg2;
 - (void)reloadRecents;
 - (void)removeAllEntries;
 - (void)removeEntry:(id)arg1 tokenizedNewEntity:(id)arg2;

@@ -14,12 +14,16 @@
 {
     NSMutableDictionary *_itemIdentifierToStoreItemMetadata;
     BOOL _finalResponse;
+    NSArray *_lastBatchItemIdentifiers;
+    NSArray *_requestItemIdentifiers;
 }
 
 @property (readonly, copy, nonatomic) NSDate *earliestExpirationDate;
 @property (readonly, nonatomic, getter=isExpired) BOOL expired;
 @property (nonatomic, getter=isFinalResponse) BOOL finalResponse; // @synthesize finalResponse=_finalResponse;
 @property (readonly, copy, nonatomic) NSArray *itemIdentifiers;
+@property (copy, nonatomic) NSArray *lastBatchItemIdentifiers; // @synthesize lastBatchItemIdentifiers=_lastBatchItemIdentifiers;
+@property (copy, nonatomic) NSArray *requestItemIdentifiers; // @synthesize requestItemIdentifiers=_requestItemIdentifiers;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

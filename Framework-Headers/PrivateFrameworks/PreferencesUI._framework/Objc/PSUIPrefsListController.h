@@ -57,6 +57,7 @@
     AIDAServiceOwnersManager *_serviceOwnersManager;
     AAUIProfilePictureStore *_profilePictureStore;
     PSSpecifier *_specifierToSelect;
+    NSObject<OS_dispatch_queue> *_loadAllSpecifiersQueue;
     BOOL _skipSelectingGeneralOnLaunch;
     NSString *_wifiString;
     NSString *_bluetoothString;
@@ -135,11 +136,11 @@
 - (id)dndGlobalState:(id)arg1;
 - (id)generalViewController;
 - (id)getAirplaneMode:(id)arg1;
+- (id)getAllSpecifiers;
 - (id)getTetheringStatus:(id)arg1;
 - (BOOL)handlePendingURL;
 - (void)iMessageSupportMayHaveChanged;
 - (id)identifierForSelectedIndex;
-- (void)indexIfNeeded;
 - (id)init;
 - (void)insertMovedThirdPartySpecifiersAnimated:(BOOL)arg1;
 - (void)insertOrderedSpecifier:(id)arg1 animated:(BOOL)arg2;

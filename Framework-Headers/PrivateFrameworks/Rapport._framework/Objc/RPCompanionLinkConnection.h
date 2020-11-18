@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class CUBonjourDevice, CUPairingSession, CUPairingStream, CUTCPConnection, NSError, NSString, RPCompanionLinkDevice;
+@class CUBonjourDevice, CUNetLinkManager, CUPairingSession, CUPairingStream, CUTCPConnection, NSError, NSString, RPCompanionLinkClient, RPCompanionLinkDevice;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface RPCompanionLinkConnection : NSObject
@@ -21,33 +21,45 @@
     NSError *_stepError;
     CDStruct_798ebea5 _frameHeader;
     CUPairingStream *_mainStream;
+    CUPairingSession *_pairSetupSession;
     CUPairingSession *_pairVerifySession;
     BOOL _receivingHeader;
     struct NSMutableDictionary *_requests;
+    struct NSMutableArray *_sendArray;
     unsigned int _xidLast;
+    BOOL _invalidationHandled;
     BOOL _present;
+    unsigned int _flags;
     unsigned int _state;
     CUBonjourDevice *_bonjourPeerDevice;
+    RPCompanionLinkClient *_client;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _invalidationHandler;
+    RPCompanionLinkDevice *_localDeviceInfo;
+    CUNetLinkManager *_netLinkManager;
+    NSString *_password;
     RPCompanionLinkDevice *_peerDeviceInfo;
     NSString *_peerIdentifier;
     CDUnknownBlockType _receivedEventHandler;
     CDUnknownBlockType _receivedRequestHandler;
-    NSString *_selfIdentifier;
     CDUnknownBlockType _stateChangedHandler;
     CUTCPConnection *_tcpConnection;
 }
 
 @property (strong, nonatomic) CUBonjourDevice *bonjourPeerDevice; // @synthesize bonjourPeerDevice=_bonjourPeerDevice;
+@property (strong, nonatomic) RPCompanionLinkClient *client; // @synthesize client=_client;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property (nonatomic) unsigned int flags; // @synthesize flags=_flags;
+@property (nonatomic) BOOL invalidationHandled; // @synthesize invalidationHandled=_invalidationHandled;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
+@property (strong, nonatomic) RPCompanionLinkDevice *localDeviceInfo; // @synthesize localDeviceInfo=_localDeviceInfo;
+@property (strong, nonatomic) CUNetLinkManager *netLinkManager; // @synthesize netLinkManager=_netLinkManager;
+@property (copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property (readonly, nonatomic) RPCompanionLinkDevice *peerDeviceInfo; // @synthesize peerDeviceInfo=_peerDeviceInfo;
 @property (copy, nonatomic) NSString *peerIdentifier; // @synthesize peerIdentifier=_peerIdentifier;
 @property (nonatomic) BOOL present; // @synthesize present=_present;
 @property (copy, nonatomic) CDUnknownBlockType receivedEventHandler; // @synthesize receivedEventHandler=_receivedEventHandler;
 @property (copy, nonatomic) CDUnknownBlockType receivedRequestHandler; // @synthesize receivedRequestHandler=_receivedRequestHandler;
-@property (copy, nonatomic) NSString *selfIdentifier; // @synthesize selfIdentifier=_selfIdentifier;
 @property (nonatomic) unsigned int state; // @synthesize state=_state;
 @property (copy, nonatomic) CDUnknownBlockType stateChangedHandler; // @synthesize stateChangedHandler=_stateChangedHandler;
 @property (strong, nonatomic) CUTCPConnection *tcpConnection; // @synthesize tcpConnection=_tcpConnection;
@@ -56,6 +68,9 @@
 - (void)_clientConnectCompleted:(id)arg1;
 - (void)_clientConnectStart;
 - (BOOL)_clientError:(id)arg1;
+- (void)_clientPairSetupCompleted:(id)arg1;
+- (void)_clientPairSetupStart;
+- (void)_clientPairSetupWithData:(id)arg1;
 - (void)_clientPairVerifyCompleted:(id)arg1;
 - (void)_clientPairVerifyStart;
 - (void)_clientPairVerifyWithData:(id)arg1;
@@ -63,9 +78,12 @@
 - (void)_clientRetryStart;
 - (void)_clientRun;
 - (void)_clientStartSession;
+- (void)_clientTCPError:(id)arg1;
 - (void)_invalidate;
 - (void)_invalidated;
+- (void)_pairSetupInvalidate;
 - (void)_pairVerifyInvalidate;
+- (void)_processSends;
 - (void)_receiveCompletion:(id)arg1;
 - (void)_receiveStart:(id)arg1;
 - (void)_receivedEvent:(id)arg1;
@@ -76,21 +94,28 @@
 - (void)_receivedResponse:(id)arg1;
 - (void)_receivedSystemInfo:(id)arg1 xid:(id)arg2;
 - (void)_run;
+- (void)_sendEncryptedData:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_sendEncryptedRequestID:(id)arg1 request:(id)arg2 xpcID:(unsigned int)arg3 responseHandler:(CDUnknownBlockType)arg4;
 - (void)_sendEncryptedResponse:(id)arg1 error:(id)arg2 xid:(id)arg3;
 - (void)_sendFrameType:(unsigned char)arg1 body:(id)arg2;
 - (void)_sendFrameType:(unsigned char)arg1 unencryptedObject:(id)arg2;
 - (void)_serverAccept;
+- (void)_serverPairSetupCompleted:(id)arg1;
+- (void)_serverPairSetupWithData:(id)arg1 start:(BOOL)arg2;
 - (void)_serverPairVerifyCompleted:(id)arg1;
 - (void)_serverPairVerifyWithData:(id)arg1 start:(BOOL)arg2;
 - (void)_serverRun;
+- (void)_serverStarted;
+- (void)_serverTCPError:(id)arg1;
 - (id)_systeminfo;
 - (void)_updateExternalState;
 - (void)activate;
 - (id)description;
+- (id)descriptionWithLevel:(int)arg1;
 - (id)init;
 - (void)invalidate;
-- (BOOL)sendEncryptedData:(id)arg1 error:(id *)arg2;
-- (BOOL)sendEncryptedRequestID:(id)arg1 request:(id)arg2 xpcID:(unsigned int)arg3 error:(id *)arg4 responseHandler:(CDUnknownBlockType)arg5;
+- (void)sendEncryptedData:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)sendEncryptedRequestID:(id)arg1 request:(id)arg2 xpcID:(unsigned int)arg3 responseHandler:(CDUnknownBlockType)arg4;
 
 @end
 

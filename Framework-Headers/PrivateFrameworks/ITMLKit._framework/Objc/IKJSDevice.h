@@ -37,6 +37,7 @@
 @property (readonly, nonatomic) NSString *networkType;
 @property (readonly, nonatomic) NSNumber *pixelRatio;
 @property (readonly, nonatomic) NSString *productType;
+@property (readonly, nonatomic) BOOL runningAnInternalBuild;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *systemVersion;
 @property (readonly, nonatomic) NSString *vendorID;

@@ -50,6 +50,8 @@
 - (oneway void)speechRecordingStartpointDetected;
 - (oneway void)speechRecordingWillBeginRecognitionUpdateForTask:(NSString *)arg1;
 - (oneway void)speechRecordingWillBeginWithInputAudioPowerXPCWrapper:(AFXPCWrapper *)arg1;
+- (oneway void)startPlaybackDidFail:(long long)arg1;
 - (oneway void)startUIRequestWithText:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
+- (oneway void)willProcessStartPlayback:(long long)arg1;
 @end
 

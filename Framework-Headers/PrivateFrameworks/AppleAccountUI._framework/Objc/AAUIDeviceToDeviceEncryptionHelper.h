@@ -26,6 +26,7 @@
 - (id)_encryptionErrorFromError:(id)arg1;
 - (BOOL)_hasPasscode;
 - (BOOL)_isHSA2AvailableForAuthenticationContext:(id)arg1;
+- (void)_presentCDPUpgradeSpinnerViewControllerForAuthContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_validateCDPStateForAuthResults:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_validatePasscodeWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithPresentingViewController:(id)arg1;

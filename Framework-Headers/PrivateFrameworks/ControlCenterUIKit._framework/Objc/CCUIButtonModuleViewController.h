@@ -34,6 +34,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_buttonTapped:(id)arg1 forEvent:(id)arg2;
 - (void)buttonTapped:(id)arg1 forEvent:(id)arg2;
 - (void)viewDidLoad;
 - (void)willTransitionToExpandedContentMode:(BOOL)arg1;

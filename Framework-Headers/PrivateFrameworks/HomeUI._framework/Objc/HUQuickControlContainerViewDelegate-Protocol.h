@@ -6,14 +6,10 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
-@class HUQuickControlContainerView, NSString, UIView;
-@protocol HUQuickControlPresentableView;
+@class HUQuickControlContainerView;
 
 @protocol HUQuickControlContainerViewDelegate <NSObject>
-- (UIView<HUQuickControlPresentableView> *)containerView:(HUQuickControlContainerView *)arg1 createControlViewForControlType:(unsigned long long)arg2;
-- (void)containerView:(HUQuickControlContainerView *)arg1 didSelectControlType:(unsigned long long)arg2;
-- (BOOL)containerView:(HUQuickControlContainerView *)arg1 hasControlOfType:(unsigned long long)arg2;
-- (NSString *)containerView:(HUQuickControlContainerView *)arg1 titleForControlType:(unsigned long long)arg2;
+- (void)alternateControlButtonPressedInContainerView:(HUQuickControlContainerView *)arg1;
 - (void)detailsButtonPressedInContainerView:(HUQuickControlContainerView *)arg1;
 @end
 

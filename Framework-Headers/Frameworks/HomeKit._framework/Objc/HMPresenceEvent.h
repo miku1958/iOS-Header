@@ -49,6 +49,8 @@
 - (id)initWithPresenceType:(id)arg1;
 - (id)initWithPresenceType:(id)arg1 users:(id)arg2;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+- (void)setPresenceEventType:(unsigned long long)arg1;
+- (void)setPresenceUserType:(unsigned long long)arg1;
 - (void)updatePresenceType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateUsers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)users;

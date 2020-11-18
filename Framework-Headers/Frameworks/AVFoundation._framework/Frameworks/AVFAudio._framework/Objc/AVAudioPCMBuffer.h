@@ -22,12 +22,15 @@
 @property (readonly, nonatomic) unsigned long long stride;
 
 - (void)_initChannelPtrs;
+- (BOOL)appendDataFromBuffer:(id)arg1;
+- (BOOL)appendDataFromBuffer:(id)arg1 channel:(long long)arg2;
 - (id)calculatePower:(unsigned long long)arg1;
 - (float)calculatePower:(unsigned long long)arg1 forFloatData:(float *)arg2 stride:(long long)arg3 frameLength:(unsigned int)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithPCMFormat:(id)arg1 frameCapacity:(unsigned int)arg2;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (void)setByteLength:(unsigned int)arg1;
+- (id)splitIntoSingleChannelBuffers;
 
 @end
 

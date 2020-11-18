@@ -15,7 +15,6 @@
 
 @interface HLPHelpTableOfContentViewController : UITableViewController <UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate>
 {
-    BOOL _searching;
     UILabel *_copyrightFooterLabel;
     UIButton *_footerViewOverlayButton;
     NSMutableArray *_openSections;
@@ -57,7 +56,6 @@
 - (long long)numberOfVisibleHelpItemForSectionItem:(id)arg1;
 - (void)openHelpItem:(id)arg1 animated:(BOOL)arg2;
 - (void)scrollToHelpItem:(id)arg1 deselectImmediately:(BOOL)arg2 animated:(BOOL)arg3;
-- (void)searchBarSearchButtonClicked:(id)arg1;
 - (void)showHelpBookInfo;
 - (void)showTopicItem:(id)arg1 fromTableView:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

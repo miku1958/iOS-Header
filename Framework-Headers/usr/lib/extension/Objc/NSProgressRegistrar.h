@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSProgressRegistrar-Protocol.h>
-#import <extension/NSXPCListenerDelegate-Protocol.h>
+#import <Foundation/NSProgressRegistrar-Protocol.h>
+#import <Foundation/NSXPCListenerDelegate-Protocol.h>
 
 @class NSFileAccessNode, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
@@ -35,7 +35,8 @@
 - (void)dealloc;
 - (id)initWithQueue:(id)arg1 rootFileAccessNode:(id)arg2;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
-- (oneway void)observePublisherForID:(id)arg1 value:(id)arg2 forKey:(id)arg3 inUserInfo:(BOOL)arg4;
+- (oneway void)observePublisherForID:(id)arg1 values:(id)arg2 forKeys:(id)arg3;
+- (oneway void)observePublisherUserInfoForID:(id)arg1 value:(id)arg2 forKey:(id)arg3;
 - (oneway void)removePublisherForID:(id)arg1;
 - (oneway void)removeSubscriberForID:(id)arg1;
 

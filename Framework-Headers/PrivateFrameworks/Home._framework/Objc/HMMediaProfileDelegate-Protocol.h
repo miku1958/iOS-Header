@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Home/NSObject-Protocol.h>
+#import <Home/HMMediaObjectDelegate-Protocol.h>
 
 @class HMAccessorySettings, HMMediaProfile, HMMediaSession;
 
-@protocol HMMediaProfileDelegate <NSObject>
+@protocol HMMediaProfileDelegate <HMMediaObjectDelegate>
 
 @optional
 - (void)mediaProfile:(HMMediaProfile *)arg1 didUpdateMediaSession:(HMMediaSession *)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iAd/NSURLSessionDataDelegate-Protocol.h>
 
@@ -13,6 +13,7 @@
 
 @interface ADNSURLSessionDemultiplexer : NSObject <NSURLSessionDataDelegate>
 {
+    BOOL _sessionMarkedInvalid;
     NSString *_identifier;
     long long _requestCount;
     NSMutableDictionary *_taskInfoByTaskIdentifier;
@@ -33,6 +34,7 @@
 @property (nonatomic) long long requestCount; // @synthesize requestCount=_requestCount;
 @property (strong) NSURLSession *session; // @synthesize session=_session;
 @property (copy, nonatomic) CDUnknownBlockType sessionInvalidated; // @synthesize sessionInvalidated=_sessionInvalidated;
+@property (nonatomic) BOOL sessionMarkedInvalid; // @synthesize sessionMarkedInvalid=_sessionMarkedInvalid;
 @property (readonly) Class superclass;
 @property (strong) NSMutableDictionary *taskInfoByTaskIdentifier; // @synthesize taskInfoByTaskIdentifier=_taskInfoByTaskIdentifier;
 

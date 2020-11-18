@@ -19,6 +19,7 @@
     BOOL _activated;
     NSXPCConnection *_xpcConnection;
     HMDProcessInfo *_processInfo;
+    unsigned long long _entitlements;
     NSString *_clientName;
     HMFMessageDispatcher *_recvDispatcher;
     HMDXPCRequestTracker *_requestTracker;
@@ -43,6 +44,7 @@
 @property (readonly, nonatomic, getter=isEntitledForAPIAccess) BOOL entitledForAPIAccess; // @synthesize entitledForAPIAccess=_entitledForAPIAccess;
 @property (readonly, nonatomic, getter=isEntitledForBackgroundMode) BOOL entitledForBackgroundMode; // @synthesize entitledForBackgroundMode=_entitledForBackgroundMode;
 @property (readonly, nonatomic, getter=isEntitledForSPIAccess) BOOL entitledForSPIAccess; // @synthesize entitledForSPIAccess=_entitledForSPIAccess;
+@property (readonly) unsigned long long entitlements; // @synthesize entitlements=_entitlements;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *name;
 @property (strong, nonatomic) NSDictionary *privateAccessEntitlement; // @synthesize privateAccessEntitlement=_privateAccessEntitlement;
@@ -55,6 +57,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property (weak, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
++ (unsigned long long)entitlementsForConnection:(id)arg1;
 - (void).cxx_destruct;
 - (id)_displayName;
 - (void)_notifyOfNewIncomingClientMessage;

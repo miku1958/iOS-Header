@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSCountedSet, NSMutableArray, NSMutableDictionary, NSMutableSet, UIApplication, UIPhysicalKeyboardEvent, UIPressesEvent, UITouch, UITouchesEvent, UIWheelEvent, _UIGameControllerEvent;
+@class NSCountedSet, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, UIApplication, UIPhysicalKeyboardEvent, UIPressesEvent, UITouch, UITouchesEvent, UIWheelEvent, _UIGameControllerEvent;
 
 __attribute__((visibility("hidden")))
 @interface UIEventEnvironment : NSObject
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_exclusiveTouchWindows;
     double _commitTimeForTouchEvents;
     NSMutableArray *_afterNewTouchDownActions;
+    NSMutableSet *_windowsWithActiveTouchMaps;
     BOOL _hasSeenAnyStylusEvents;
     long long _disableTouchCoalescingCount;
     NSMutableDictionary *_estimatedTouchRecordsByContextIDAndEstimationIndex;
@@ -35,10 +36,12 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) UIApplication *application; // @synthesize application=_application;
 @property (strong, nonatomic) NSMutableArray *eventQueue; // @synthesize eventQueue=_eventQueue;
+@property (readonly, nonatomic) NSSet *windowsWithActiveTouchMaps; // @synthesize windowsWithActiveTouchMaps=_windowsWithActiveTouchMaps;
 
 - (void).cxx_destruct;
 - (id)UIKitEventForHIDEvent:(struct __IOHIDEvent *)arg1;
 - (void)_addAfterNewTouchDownAction:(CDUnknownBlockType)arg1;
+- (void)_clearTouchesForView:(id)arg1;
 - (void)_disableTouchCoalescingWithCount:(long long)arg1;
 - (void)_dispatchAndRemoveStaleEstimationUpdateRecordsWithEventTime:(double)arg1 upToRecord:(id)arg2;
 - (id)_dragEventForHIDEvent:(struct __IOHIDEvent *)arg1;
@@ -47,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)_enqueueHIDEvent:(struct __IOHIDEvent *)arg1;
 - (id)_estimatedTouchRecordForContextID:(id)arg1 estimationIndex:(id)arg2;
 - (BOOL)_isTouchCoalescingDisabled;
+- (BOOL)_isTrackingAnyTouch;
 - (void)_performAfterNewTouchDownActions;
 - (id)_pressForType:(long long)arg1;
 - (void)_registerContextIDsForAdditionalDragEvents:(id)arg1 forSession:(unsigned int)arg2;
@@ -54,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)_removeDragEvent:(id)arg1;
 - (void)_removeEstimatedTouchRecord:(id)arg1;
 - (void)_setPress:(id)arg1 forType:(long long)arg2;
+- (void)_setTouchMap:(struct __CFDictionary *)arg1 forWindow:(id)arg2;
 - (void)_unregisterContextIDsForAdditionalDragEvents:(id)arg1 forSession:(unsigned int)arg2;
 - (BOOL)eventWantsLowLatency:(id)arg1;
 - (id)initWithApplication:(id)arg1;

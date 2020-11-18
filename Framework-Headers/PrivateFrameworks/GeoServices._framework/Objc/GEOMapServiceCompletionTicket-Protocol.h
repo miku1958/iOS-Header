@@ -16,8 +16,11 @@
 - (void)applyToSuggestionEntry:(GEORPSuggestionEntry *)arg1 withAutocompleteSearchResultIdentifier:(GEOMapItemIdentifier *)arg2;
 - (void)applyToSuggestionList:(GEORPSuggestionList *)arg1;
 - (void)cancel;
+- (BOOL)hasShouldDisplayNoResults;
 - (BOOL)isRapEnabled;
 - (BOOL)matchesFragment:(NSString *)arg1;
+- (double)retainSearchTime;
+- (BOOL)shouldDisplayNoResults;
 - (void)submitWithAutoCompletionHandler:(void (^)(id<GEOCompletion>, NSError *))arg1 networkActivity:(void (^)(BOOL))arg2;
 @end
 

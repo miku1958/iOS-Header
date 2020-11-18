@@ -6,12 +6,13 @@
 
 #import <SAObjects/SAUITemplateBaseItem.h>
 
-@class SAUITemplateAttributedString;
+@class NSDictionary, SAUITemplateAttributedString;
 
 @interface SAUITemplateLabel : SAUITemplateBaseItem
 {
 }
 
+@property (copy, nonatomic) NSDictionary *attributedTexts;
 @property (strong, nonatomic) SAUITemplateAttributedString *text;
 
 + (id)label;

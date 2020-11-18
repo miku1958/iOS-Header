@@ -9,7 +9,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/_SFPBCardSectionValue-Protocol.h>
 
-@class NSData, NSString, _SFPBActivityIndicatorCardSection, _SFPBAppLinkCardSection, _SFPBAudioPlaybackCardSection, _SFPBDescriptionCardSection, _SFPBDetailedRowCardSection, _SFPBFlightCardSection, _SFPBImagesCardSection, _SFPBKeyValueDataCardSection, _SFPBMapCardSection, _SFPBMediaInfoCardSection, _SFPBMediaPlayerCardSection, _SFPBMessageCardSection, _SFPBMetaInfoCardSection, _SFPBNowPlayingCardSection, _SFPBRichTitleCardSection, _SFPBRowCardSection, _SFPBScoreboardCardSection, _SFPBSectionHeaderCardSection, _SFPBSelectableGridCardSection, _SFPBSocialMediaPostCardSection, _SFPBStockChartCardSection, _SFPBSuggestionCardSection, _SFPBTableHeaderRowCardSection, _SFPBTableRowCardSection, _SFPBTextColumnsCardSection, _SFPBTitleCardSection, _SFPBTrackListCardSection, _SFPBWebCardSection;
+@class NSData, NSString, _SFPBActivityIndicatorCardSection, _SFPBAppLinkCardSection, _SFPBAudioPlaybackCardSection, _SFPBDescriptionCardSection, _SFPBDetailedRowCardSection, _SFPBFlightCardSection, _SFPBImagesCardSection, _SFPBKeyValueDataCardSection, _SFPBMapCardSection, _SFPBMediaInfoCardSection, _SFPBMediaPlayerCardSection, _SFPBMessageCardSection, _SFPBMetaInfoCardSection, _SFPBNowPlayingCardSection, _SFPBRichTitleCardSection, _SFPBRowCardSection, _SFPBScoreboardCardSection, _SFPBSectionHeaderCardSection, _SFPBSelectableGridCardSection, _SFPBSocialMediaPostCardSection, _SFPBStockChartCardSection, _SFPBSuggestionCardSection, _SFPBTableHeaderRowCardSection, _SFPBTableRowCardSection, _SFPBTextColumnsCardSection, _SFPBTitleCardSection, _SFPBTrackListCardSection, _SFPBWatchListCardSection, _SFPBWebCardSection;
 
 @interface _SFPBCardSectionValue : PBCodable <_SFPBCardSectionValue, NSSecureCoding>
 {
@@ -41,6 +41,7 @@
     _SFPBSelectableGridCardSection *_selectableGridCardSection;
     _SFPBSectionHeaderCardSection *_sectionHeaderCardSection;
     _SFPBMetaInfoCardSection *_metaInfoCardSection;
+    _SFPBWatchListCardSection *_watchListCardSection;
 }
 
 @property (strong, nonatomic) _SFPBActivityIndicatorCardSection *activityIndicatorCardSection; // @synthesize activityIndicatorCardSection=_activityIndicatorCardSection;
@@ -78,6 +79,7 @@
 @property (readonly, nonatomic) BOOL hasTextColumnsCardSection;
 @property (readonly, nonatomic) BOOL hasTitleCardSection;
 @property (readonly, nonatomic) BOOL hasTrackListCardSection;
+@property (readonly, nonatomic) BOOL hasWatchListCardSection;
 @property (readonly, nonatomic) BOOL hasWebCardSection;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _SFPBImagesCardSection *imagesCardSection; // @synthesize imagesCardSection=_imagesCardSection;
@@ -103,6 +105,7 @@
 @property (strong, nonatomic) _SFPBTextColumnsCardSection *textColumnsCardSection; // @synthesize textColumnsCardSection=_textColumnsCardSection;
 @property (strong, nonatomic) _SFPBTitleCardSection *titleCardSection; // @synthesize titleCardSection=_titleCardSection;
 @property (strong, nonatomic) _SFPBTrackListCardSection *trackListCardSection; // @synthesize trackListCardSection=_trackListCardSection;
+@property (strong, nonatomic) _SFPBWatchListCardSection *watchListCardSection; // @synthesize watchListCardSection=_watchListCardSection;
 @property (strong, nonatomic) _SFPBWebCardSection *webCardSection; // @synthesize webCardSection=_webCardSection;
 
 - (void).cxx_destruct;

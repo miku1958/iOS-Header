@@ -48,6 +48,7 @@
 - (id)init;
 - (BOOL)isFingerOn;
 - (unsigned long long)lockoutState;
+- (void)matchOperation:(id)arg1 failedWithReason:(long long)arg2;
 - (void)matchOperation:(id)arg1 matchedWithResult:(id)arg2;
 - (void)operation:(id)arg1 finishedWithReason:(long long)arg2;
 - (void)operation:(id)arg1 presenceStateChanged:(BOOL)arg2;

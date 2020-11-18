@@ -30,6 +30,11 @@
 
 + (double)heightForUtterance:(id)arg1 andWidth:(double)arg2;
 - (void).cxx_destruct;
+- (void)_accessibilityHandleATFocused:(BOOL)arg1 assistiveTech:(id)arg2;
+- (BOOL)_accessibilityIsUnread;
+- (BOOL)_accessibilityRealtimeCompleted;
+- (BOOL)_accessibilityRealtimeHasUnread;
+- (void)_accessibilitySetIsUnread:(BOOL)arg1;
 - (id)accessibilityLabel;
 - (void)adjustTextViewSize;
 - (void)dealloc;

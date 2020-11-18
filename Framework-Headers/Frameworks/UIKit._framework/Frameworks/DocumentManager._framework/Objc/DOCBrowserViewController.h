@@ -68,7 +68,7 @@
 - (void)builtinActionsDidChange:(id)arg1;
 - (void)callViewControllerCompletionHandlersWithError:(id)arg1;
 - (void)createNewFile;
-- (void)createNewFolder;
+- (void)createNewFolderWithMaxThumbnailSize:(struct CGSize)arg1;
 - (void)didCommitPreviewOfDocument:(id)arg1;
 - (void)didPickItem:(id)arg1;
 - (void)didPickLocation:(id)arg1 forceReplaceLocation:(BOOL)arg2;

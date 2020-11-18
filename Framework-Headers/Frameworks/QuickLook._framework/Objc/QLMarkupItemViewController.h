@@ -9,7 +9,7 @@
 #import <QuickLook/MarkupViewControllerDelegate-Protocol.h>
 #import <QuickLook/PDFViewDelegate-Protocol.h>
 
-@class NSString, QLDelegateProxy, QLMUViewController;
+@class NSNumber, NSString, QLDelegateProxy, QLMUViewController;
 
 __attribute__((visibility("hidden")))
 @interface QLMarkupItemViewController : QLItemViewController <MarkupViewControllerDelegate, PDFViewDelegate>
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     BOOL _hasChangesToUndo;
     BOOL _hasChangesToRedo;
     QLMUViewController *_markupViewController;
+    NSNumber *_shouldAllowEditingContents;
     double _topInset;
     QLDelegateProxy *_pdfDocumentDelegateProxy;
 }
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) QLMUViewController *markupViewController; // @synthesize markupViewController=_markupViewController;
 @property (strong, nonatomic) QLDelegateProxy *pdfDocumentDelegateProxy; // @synthesize pdfDocumentDelegateProxy=_pdfDocumentDelegateProxy;
+@property (strong, nonatomic) NSNumber *shouldAllowEditingContents; // @synthesize shouldAllowEditingContents=_shouldAllowEditingContents;
 @property (readonly) Class superclass;
 @property double topInset; // @synthesize topInset=_topInset;
 

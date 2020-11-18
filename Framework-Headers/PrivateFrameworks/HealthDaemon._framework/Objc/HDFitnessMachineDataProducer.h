@@ -45,6 +45,7 @@
 - (void)quantitiesAddedToWorkout:(id)arg1;
 - (void)quantitiesResetForWorkout:(id)arg1;
 - (void)resumeCurrentSession;
+- (void)sendInitialValues;
 
 @end
 

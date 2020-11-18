@@ -6,14 +6,16 @@
 
 #import <SAObjects/SADomainCommand.h>
 
-@class NSArray, SAMPPodcast;
+@class NSArray, NSString, SAMPPodcast;
 
 @interface SAMPPlayPodcastEpisode : SADomainCommand
 {
 }
 
+@property (copy, nonatomic) NSString *assetInfo;
 @property (copy, nonatomic) NSArray *hashedRouteUIDs;
 @property (strong, nonatomic) SAMPPodcast *podcastEpisode;
+@property (nonatomic) BOOL startPlaying;
 
 + (id)playPodcastEpisode;
 + (id)playPodcastEpisodeWithDictionary:(id)arg1 context:(id)arg2;

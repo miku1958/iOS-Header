@@ -10,7 +10,7 @@
 #import <BulletinDistributorCompanion/BLTSectionConfigurationDelegate-Protocol.h>
 #import <BulletinDistributorCompanion/BLTSectionInfoListDelegate-Protocol.h>
 
-@class BBObserver, BLTSectionInfoList, BLTSectionInfoListBridgeProvider, BLTSectionInfoSyncCoordinator, BLTSettingSyncSendQueue, NSObject, NSString;
+@class BBObserver, BLTSectionInfoList, BLTSectionInfoListBridgeProvider, BLTSectionInfoSyncCoordinator, BLTSettingSyncSendQueue, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface BLTSettingSync : BLTSettingSyncInternal <BBObserverDelegate, BLTSectionInfoListDelegate, BLTSectionConfigurationDelegate>
@@ -22,6 +22,8 @@
     NSObject<OS_dispatch_queue> *_sectionInfoSyncCoordinatorQueue;
     BOOL _initialSyncPerformed;
     BLTSectionInfoListBridgeProvider *_bridgeProvider;
+    NSMutableDictionary *_reloadBBCompletions;
+    unsigned long long _stateHandler;
     BBObserver *_observer;
 }
 
@@ -32,7 +34,10 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_addReloadBBCompletion:(CDUnknownBlockType)arg1 sectionID:(id)arg2;
 - (id)_alertingSectionIDs;
+- (void)_callAndRemoveReloadBBCompletion:(CDUnknownBlockType)arg1 sectionID:(id)arg2;
+- (void)_callReloadBBCompletionsForSectionID:(id)arg1;
 - (unsigned long long)_fetchSettingSyncMaxCountOverride;
 - (unsigned long long)_fetchSyncState;
 - (void)_initSettingSyncSendQueueMaxConcurrentSendCount;
@@ -42,6 +47,7 @@
 - (void)_sendSpooledSyncWithCompletion:(CDUnknownBlockType)arg1 withProgress:(CDUnknownBlockType)arg2;
 - (void)_setupSectionInfoListWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_spoolInitialSync;
+- (id)_stateDescription;
 - (void)_storeSyncState:(unsigned long long)arg1;
 - (void)_updateAllBBSectionsWithCompletion:(CDUnknownBlockType)arg1 withProgress:(CDUnknownBlockType)arg2 spoolToFile:(BOOL)arg3;
 - (BOOL)_willSectionIDAlert:(id)arg1;

@@ -45,8 +45,11 @@
 - (void)controlViewDidEndUserInteraction:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
 - (void)removeItem:(id)arg1;
+- (id)sectionFooterForItem:(id)arg1 forSourceItem:(id)arg2;
+- (id)sectionTitleForItem:(id)arg1 forSourceItem:(id)arg2;
 - (void)setupCell:(id)arg1 forItem:(id)arg2;
 - (BOOL)shouldDisplayItem:(id)arg1;
+- (BOOL)shouldShowSectionFooterForItem:(id)arg1;
 - (BOOL)shouldShowSectionTitleForItem:(id)arg1;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 animated:(BOOL)arg3;
 

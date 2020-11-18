@@ -10,7 +10,7 @@
 #import <AssistantServices/NSXPCListenerDelegate-Protocol.h>
 
 @class AFAudioPowerUpdater, AFClientConfiguration, AFOneArgumentSafetyBlock, NSArray, NSError, NSMutableDictionary, NSString, NSUUID, NSXPCConnection;
-@protocol AFAssistantUIService, AFSpeechDelegate, OS_dispatch_group, OS_dispatch_queue;
+@protocol AFAssistantUIService, AFSpeechDelegate, OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source;
 
 @interface AFConnection : NSObject <NSXPCListenerDelegate, AFAudioPowerUpdaterDelegate>
 {
@@ -21,7 +21,7 @@
     NSUUID *_activeRequestUUID;
     long long _activeRequestType;
     long long _activeRequestUsefulUserResultType;
-    BOOL _hasActiveTimeout;
+    NSObject<OS_dispatch_source> *_requestTimeoutTimer;
     AFOneArgumentSafetyBlock *_requestCompletion;
     NSMutableDictionary *_replyHandlerForAceId;
     unsigned int _stateInSync:1;
@@ -87,6 +87,7 @@
 - (void)_setShouldSpeak:(BOOL)arg1;
 - (void)_speechRecordingDidFailWithError:(id)arg1;
 - (BOOL)_startInputAudioPowerUpdatesWithXPCWrapper:(id)arg1;
+- (void)_startRequestWithAceCommand:(id)arg1 suppressAlert:(BOOL)arg2;
 - (void)_startRequestWithInfo:(id)arg1;
 - (void)_startUIRequestWithText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_stopInputAudioPowerUpdates;
@@ -107,6 +108,8 @@
 - (void)_tellDelegateRequestWillStart;
 - (void)_tellDelegateSetUserActivityInfo:(id)arg1 webpageURL:(id)arg2;
 - (void)_tellDelegateShouldSpeakChanged:(BOOL)arg1;
+- (void)_tellDelegateStartPlaybackDidFail:(long long)arg1;
+- (void)_tellDelegateWillProcessStartPlayback:(long long)arg1;
 - (void)_tellDelegateWillStartAcousticIDRequest;
 - (void)_tellSpeechDelegateDidRecognizePhrases:(id)arg1 utterances:(id)arg2;
 - (void)_tellSpeechDelegateRecognitionDidFail:(id)arg1;
@@ -149,8 +152,9 @@
 - (void)endUpdateOutputAudioPower;
 - (void)failRequestWithError:(id)arg1;
 - (void)forceAudioSessionActive;
-- (void)forceAudioSessionActiveWithCompletion:(CDUnknownBlockType)arg1;
+- (void)forceAudioSessionActiveWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)forceAudioSessionInactive;
+- (void)forceAudioSessionInactiveWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getCachedObjectsWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getDeferredObjectsWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
@@ -177,11 +181,13 @@
 - (void)setConfiguration:(id)arg1;
 - (void)setIsStark:(BOOL)arg1;
 - (void)setLockState:(BOOL)arg1 screenLocked:(BOOL)arg2;
+- (void)setMyriadDecisionResult:(BOOL)arg1;
 - (void)setOverriddenApplicationContext:(id)arg1 withContext:(id)arg2;
+- (void)setShouldWaitForMyriad:(BOOL)arg1;
 - (void)setVoiceOverIsActive:(BOOL)arg1;
 - (BOOL)shouldSpeak;
 - (void)startAcousticIDRequestWithOptions:(id)arg1;
-- (void)startAudioPlaybackRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)startAudioPlaybackRequest:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)startContinuationRequestWithUserInfo:(id)arg1;
 - (void)startDirectActionRequestWithString:(id)arg1;
 - (CDUnknownBlockType)startRecordingAndGetContinueBlockForPendingSpeechRequestWithOptions:(id)arg1;

@@ -15,10 +15,12 @@
     NSString *_playerDeviceGUID;
     NSArray *_tokenRequests;
     NSData *_playerAnisetteMID;
+    NSString *_playerUserAgent;
 }
 
 @property (copy, nonatomic) NSData *playerAnisetteMID; // @synthesize playerAnisetteMID=_playerAnisetteMID;
 @property (copy, nonatomic) NSString *playerDeviceGUID; // @synthesize playerDeviceGUID=_playerDeviceGUID;
+@property (copy, nonatomic) NSString *playerUserAgent; // @synthesize playerUserAgent=_playerUserAgent;
 @property (readonly, copy, nonatomic) NSMutableDictionary *propertyListRepresentation;
 @property (copy, nonatomic) NSArray *tokenRequests; // @synthesize tokenRequests=_tokenRequests;
 

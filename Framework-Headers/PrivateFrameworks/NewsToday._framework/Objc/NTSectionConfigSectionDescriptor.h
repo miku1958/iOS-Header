@@ -14,6 +14,7 @@
 @interface NTSectionConfigSectionDescriptor : NSObject <NTSectionDescriptor>
 {
     BOOL _displaysAsVideoPlaylist;
+    BOOL _useNameColorInWidget;
     BOOL _videoPlaysMutedByDefault;
     int _readArticlesFilterMethod;
     int _seenArticlesFilterMethod;
@@ -35,9 +36,13 @@
     NSString *_discoverMoreVideosSubtitle;
     NSURL *_discoverMoreVideosURL;
     NSString *_backgroundGradientColor;
+    NSString *_actionTitle;
+    NSURL *_actionURL;
     NSObject<NTSectionFetchDescriptor> *_fetchDescriptor;
 }
 
+@property (readonly, copy, nonatomic) NSString *actionTitle; // @synthesize actionTitle=_actionTitle;
+@property (readonly, copy, nonatomic) NSURL *actionURL; // @synthesize actionURL=_actionURL;
 @property (readonly, copy, nonatomic) NSString *backgroundGradientColor; // @synthesize backgroundGradientColor=_backgroundGradientColor;
 @property (readonly, nonatomic) unsigned long long cachedResultCutoffTime; // @synthesize cachedResultCutoffTime=_cachedResultCutoffTime;
 @property (readonly, copy, nonatomic) NSString *compactName; // @synthesize compactName=_compactName;
@@ -64,12 +69,13 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long supplementalInterSectionFilterOptions; // @synthesize supplementalInterSectionFilterOptions=_supplementalInterSectionFilterOptions;
 @property (readonly, nonatomic) long long supplementalIntraSectionFilterOptions; // @synthesize supplementalIntraSectionFilterOptions=_supplementalIntraSectionFilterOptions;
+@property (readonly, nonatomic) BOOL useNameColorInWidget; // @synthesize useNameColorInWidget=_useNameColorInWidget;
 @property (readonly, nonatomic) BOOL videoPlaysMutedByDefault; // @synthesize videoPlaysMutedByDefault=_videoPlaysMutedByDefault;
 
 - (void).cxx_destruct;
+- (id)assembleResultsWithCatchUpOperation:(id)arg1;
 - (void)configureCatchUpOperationWithFetchRequest:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)extractResultsFromCatchUpOperation:(id)arg1;
 - (id)incrementalLimitTransformationWithFeedPersonalizer:(id)arg1 limit:(unsigned long long)arg2 priorFeedItems:(id)arg3;
 - (id)incrementalSortTransformationWithFeedPersonalizer:(id)arg1;
 - (id)init;

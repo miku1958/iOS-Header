@@ -10,19 +10,16 @@
 #import <NewsUI/NUEndOfArticleDataProviderDelegate-Protocol.h>
 #import <NewsUI/NULoadable-Protocol.h>
 #import <NewsUI/SXAnalyticsReporting-Protocol.h>
-#import <NewsUI/SXLinkActionHandlerDelegate-Protocol.h>
 #import <NewsUI/SXScrollViewControllerDelegate-Protocol.h>
 
 @class FCObservable, NSString, NUArticleAdManager, NUEventManager, NUMultiDelegate, SXScrollViewController, SXVideoPlayerViewControllerManager;
-@protocol NUArticleDataProvider, NUDynamicTypeProviding, NUEndOfArticleDataProvider, NULinkPreviewing, NULoadingDelegate, NUScrollViewKeyCommandHandler, NUURLHandler, SXAnalyticsReporting;
+@protocol NUArticleDataProvider, NUDynamicTypeProviding, NUEndOfArticleDataProvider, NULoadingDelegate, NUScrollViewKeyCommandHandler, SXAnalyticsReporting;
 
-@interface NUArticleViewController : UIViewController <SXScrollViewControllerDelegate, SXLinkActionHandlerDelegate, SXAnalyticsReporting, NUEndOfArticleDataProviderDelegate, NUDynamicTypeObserving, NULoadable>
+@interface NUArticleViewController : UIViewController <SXScrollViewControllerDelegate, SXAnalyticsReporting, NUEndOfArticleDataProviderDelegate, NUDynamicTypeObserving, NULoadable>
 {
     BOOL _articleIsPresentingFullscreen;
     id<NULoadingDelegate> _loadingDelegate;
-    id<NULinkPreviewing> _linkPreviewing;
     id<SXAnalyticsReporting> _analyticsReporting;
-    id<NUURLHandler> _URLHandler;
     FCObservable *_articleViewStyler;
     NUMultiDelegate *_multiScrollViewDelegate;
     NSString *_anchorFragment;
@@ -37,7 +34,6 @@
     struct UIEdgeInsets _contentInsets;
 }
 
-@property (weak, nonatomic) id<NUURLHandler> URLHandler; // @synthesize URLHandler=_URLHandler;
 @property (readonly, nonatomic) NUArticleAdManager *adManager; // @synthesize adManager=_adManager;
 @property (weak, nonatomic) id<SXAnalyticsReporting> analyticsReporting; // @synthesize analyticsReporting=_analyticsReporting;
 @property (copy, nonatomic) NSString *anchorFragment; // @synthesize anchorFragment=_anchorFragment;
@@ -52,7 +48,6 @@
 @property (readonly, nonatomic) NUEventManager *eventManager; // @synthesize eventManager=_eventManager;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<NUScrollViewKeyCommandHandler> keyCommandHandler; // @synthesize keyCommandHandler=_keyCommandHandler;
-@property (weak, nonatomic) id<NULinkPreviewing> linkPreviewing; // @synthesize linkPreviewing=_linkPreviewing;
 @property (weak, nonatomic) id<NULoadingDelegate> loadingDelegate; // @synthesize loadingDelegate=_loadingDelegate;
 @property (readonly, nonatomic) NUMultiDelegate *multiScrollViewDelegate; // @synthesize multiScrollViewDelegate=_multiScrollViewDelegate;
 @property (readonly, nonatomic) SXScrollViewController *scrollViewController; // @synthesize scrollViewController=_scrollViewController;
@@ -67,20 +62,14 @@
 - (void)endOfArticleDataProviderDidChangeContent:(id)arg1;
 - (void)endOfArticleDataProviderDidLoadContent:(id)arg1;
 - (void)handleScrollKeyCommand:(id)arg1;
-- (id)initWithArticleDataProvider:(id)arg1 endOfArticleDataProvider:(id)arg2 articleAdManager:(id)arg3 dynamicTypeProviding:(id)arg4 linkPreviewing:(id)arg5 appStateMonitor:(id)arg6 keyCommandHandler:(id)arg7;
-- (BOOL)linkActionHandler:(id)arg1 allowOpeningOfURLInSafari:(id)arg2;
-- (id)linkActionHandler:(id)arg1 presentableURLForURL:(id)arg2;
-- (void)linkActionHandlerWantsToOpenInAppURL:(id)arg1;
+- (id)initWithArticleDataProvider:(id)arg1 endOfArticleDataProvider:(id)arg2 scrollViewController:(id)arg3 articleAdManager:(id)arg4 dynamicTypeProviding:(id)arg5 appStateMonitor:(id)arg6 keyCommandHandler:(id)arg7;
 - (double)navigationBarHeightForScrollViewController:(id)arg1;
 - (long long)preferredStatusBarStyle;
 - (BOOL)prefersStatusBarHidden;
 - (void)reportEvent:(id)arg1;
 - (void)restoreScrollPositionIfNeeded;
 - (void)scrollToTopAnimated:(BOOL)arg1;
-- (void)scrollViewController:(id)arg1 commitPreviewController:(id)arg2 forAction:(id)arg3;
 - (void)scrollViewController:(id)arg1 enableNavigation:(BOOL)arg2;
-- (id)scrollViewController:(id)arg1 previewViewControllerForAction:(id)arg2;
-- (void)scrollViewController:(id)arg1 triggerAction:(id)arg2;
 - (void)scrollViewControllerDidLayoutContent:(id)arg1;
 - (void)scrollViewControllerDidScroll:(id)arg1;
 - (void)scrollViewControllerDismissFullscreen:(id)arg1;

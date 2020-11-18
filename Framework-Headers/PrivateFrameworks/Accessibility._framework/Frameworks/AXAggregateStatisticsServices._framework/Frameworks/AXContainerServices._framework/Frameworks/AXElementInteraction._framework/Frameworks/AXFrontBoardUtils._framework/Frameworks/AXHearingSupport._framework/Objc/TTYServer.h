@@ -21,6 +21,7 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_managerAXPIDState:(BOOL)arg1;
 - (void)cancelCallPromptDisplay;
 - (BOOL)contactIsTTYContact:(id)arg1;
 - (void)dealloc;
@@ -34,6 +35,7 @@
 - (void)registerResponseBlock:(CDUnknownBlockType)arg1 forUUID:(id)arg2;
 - (void)resetConnection;
 - (void)sendCharacter:(unsigned short)arg1 forCallUID:(id)arg2;
+- (void)setShouldSuppressIncomingNotification:(BOOL)arg1;
 - (void)setTTYDictionaryAvailability:(BOOL)arg1;
 - (id)valueForTTYSetting:(id)arg1;
 

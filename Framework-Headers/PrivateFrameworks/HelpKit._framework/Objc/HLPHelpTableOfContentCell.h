@@ -16,6 +16,7 @@
     NSLayoutConstraint *_sectionImageWidthConstraint;
     NSLayoutConstraint *_sectionImageLeadingConstraint;
     BOOL _showFirstLevelIcon;
+    BOOL _ignoreLevels;
     BOOL _closed;
     BOOL _RTL;
     HLPHelpItem *_helpItem;
@@ -28,6 +29,7 @@
 @property (strong, nonatomic) UIImageView *arrowImageView; // @synthesize arrowImageView=_arrowImageView;
 @property (nonatomic) BOOL closed; // @synthesize closed=_closed;
 @property (strong, nonatomic) HLPHelpItem *helpItem; // @synthesize helpItem=_helpItem;
+@property (nonatomic) BOOL ignoreLevels; // @synthesize ignoreLevels=_ignoreLevels;
 @property (strong, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
 @property (strong, nonatomic) UIImageView *sectionImageView; // @synthesize sectionImageView=_sectionImageView;
 @property (nonatomic) BOOL showFirstLevelIcon; // @synthesize showFirstLevelIcon=_showFirstLevelIcon;
@@ -36,11 +38,11 @@
 - (id)accessibilityLabel;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (long long)itemLevel;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)toggle;
 - (void)updateConstraints;
-- (void)updateFonts;
 - (void)updateToggleImageAnimated:(BOOL)arg1;
 
 @end

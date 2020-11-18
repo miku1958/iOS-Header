@@ -24,6 +24,7 @@
     int _topStoryMandatoryArticleCount;
     int _topStoryOptionalArticleCount;
     BOOL _isSubscribedToGroupFeed;
+    BOOL _reachedEndOfGroup;
     struct {
         unsigned int feedAutoSubscribeType:1;
         unsigned int groupArticleCountInForYou:1;
@@ -34,6 +35,7 @@
         unsigned int topStoryMandatoryArticleCount:1;
         unsigned int topStoryOptionalArticleCount:1;
         unsigned int isSubscribedToGroupFeed:1;
+        unsigned int reachedEndOfGroup:1;
     } _has;
 }
 
@@ -55,9 +57,11 @@
 @property (nonatomic) BOOL hasGroupPresentationReason;
 @property (nonatomic) BOOL hasGroupType;
 @property (nonatomic) BOOL hasIsSubscribedToGroupFeed;
+@property (nonatomic) BOOL hasReachedEndOfGroup;
 @property (nonatomic) BOOL hasTopStoryMandatoryArticleCount;
 @property (nonatomic) BOOL hasTopStoryOptionalArticleCount;
 @property (nonatomic) BOOL isSubscribedToGroupFeed; // @synthesize isSubscribedToGroupFeed=_isSubscribedToGroupFeed;
+@property (nonatomic) BOOL reachedEndOfGroup; // @synthesize reachedEndOfGroup=_reachedEndOfGroup;
 @property (nonatomic) int topStoryMandatoryArticleCount; // @synthesize topStoryMandatoryArticleCount=_topStoryMandatoryArticleCount;
 @property (nonatomic) int topStoryOptionalArticleCount; // @synthesize topStoryOptionalArticleCount=_topStoryOptionalArticleCount;
 

@@ -4,28 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class AVOutputDevice, NSString;
+@class NSString;
 
-@interface HMDMediaOutputDevice : NSObject
+@interface HMDMediaOutputDevice : HMFObject
 {
-    BOOL _groupable;
-    unsigned int _type;
     void *_outputDevice;
     NSString *_uniqueIdentifier;
-    NSString *_groupIdentifier;
     NSString *_name;
     NSString *_modelID;
 }
 
-@property (readonly) AVOutputDevice *av_OutputDevice;
-@property (readonly, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
-@property (readonly, nonatomic, getter=isGroupable) BOOL groupable; // @synthesize groupable=_groupable;
+@property (readonly, nonatomic) unsigned int deviceType;
+@property (readonly, nonatomic, getter=isGroupable) BOOL groupable;
 @property (readonly, nonatomic) NSString *modelID; // @synthesize modelID=_modelID;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) void *outputDevice; // @synthesize outputDevice=_outputDevice;
-@property (readonly, nonatomic) unsigned int type; // @synthesize type=_type;
+@property (readonly, nonatomic, getter=isRemoteControllable) BOOL remoteControllable;
 @property (readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
 - (void).cxx_destruct;
@@ -35,7 +31,6 @@
 - (id)initWithOutputDevice:(void *)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)shouldCreateAppleMediaAccessory;
-- (BOOL)shouldCreateWHAAccessory;
 
 @end
 

@@ -141,7 +141,8 @@
 - (id)description;
 - (id)descriptionInDepth;
 - (void)encodeWithCoder:(id)arg1;
-- (void)fetchAndSetContactsValuesSync;
+- (void)fetchAndSetContactIdentifierSync;
+- (void)fetchAndSetFullContactSync;
 - (void)fixCallTypeInfo;
 - (id)getLocalizedStringSync:(id)arg1;
 - (long long)handleTypeSync;

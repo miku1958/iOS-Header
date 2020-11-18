@@ -6,12 +6,23 @@
 
 #import <UIKit/UITextView.h>
 
+@class NSArray, NSDictionary, NSString;
+
 @interface _ICQTextView : UITextView
 {
+    NSString *_format;
+    NSArray *_links;
+    NSDictionary *_attributes;
 }
 
+@property (strong, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
+@property (strong, nonatomic) NSString *format; // @synthesize format=_format;
+@property (strong, nonatomic) NSArray *links; // @synthesize links=_links;
+
+- (void).cxx_destruct;
 - (BOOL)canBecomeFirstResponder;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setAttributedText;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <Sharing/AVAudioPlayerDelegate-Protocol.h>
 
-@class AVAudioPlayer, AVAudioSession, HMAccessory, NSArray, NSDictionary, NSMutableArray, NSSet, NSString, SFDevice, SFDeviceOperationHomeKitSetup, SFDeviceOperationWiFiSetup, SFSession, TROperationQueue, TRSession, UIViewController;
+@class AVAudioPlayer, AVAudioSession, HMAccessory, HMHome, NSArray, NSDictionary, NSMutableArray, NSSet, NSString, SFDevice, SFDeviceOperationHomeKitSetup, SFDeviceOperationWiFiSetup, SFSession, SSAccount, TROperationQueue, TRSession, UIViewController;
 @protocol OS_dispatch_queue;
 
 @interface SFDeviceSetupB238Session : NSObject <AVAudioPlayerDelegate>
@@ -24,12 +24,21 @@
     BOOL _preflightEnabled;
     int _preflightWiFiState;
     int _preflightiCloudState;
+    BOOL _preventAppleWiFi;
     NSString *_iCloudUserID;
+    BOOL _homeiCloudEnabled;
     int _preflightiTunesState;
+    SSAccount *_iTunesAccount;
     BOOL _iTunesSignInSkip;
     NSString *_iTunesUserID;
     BOOL _appleMusicEnabled;
+    int _appleMusicEligibleState;
+    BOOL _appleMusicForce;
     int _preflightAppleMusicState;
+    int _preflightMiscState;
+    BOOL _locationEnabled;
+    BOOL _locationDecided;
+    BOOL _siriEnabled;
     BOOL _prefStereoPairEnabled;
     HMAccessory *_stereoCounterpartAccessory;
     int _stereoPairUserInputState;
@@ -39,11 +48,12 @@
     BOOL _sfSessionSecured;
     int _sfSessionState;
     unsigned long long _peerFeatureFlags;
-    BOOL _preAuthEnabled;
     int _preAuthState;
+    BOOL _preAuthStartedProgress;
     unsigned int _siriFlags;
     NSArray *_siriLanguageCodes;
     long long _siriLanguageIndex;
+    BOOL _siriLanguagePicked;
     int _siriLanguageState;
     NSString *_siriPreferredLanguage;
     BOOL _siriPasscodeEnabled;
@@ -53,8 +63,8 @@
     unsigned int _pairSetupFlags;
     int _pairSetupState;
     double _pairSetupSecs;
-    int _personalSiriState;
-    int _personalSiriChoice;
+    int _personalRequestsState;
+    int _personalRequestsChoice;
     int _termsState;
     BOOL _termsAgreed;
     int _shareSettingsState;
@@ -63,6 +73,7 @@
     unsigned long long _basicConfigStartTicks;
     double _basicConfigSecs;
     NSString *_deviceGUID;
+    NSString *_deviceSerialNumber;
     BOOL _wifiSetupEnabled;
     SFDeviceOperationWiFiSetup *_wifiSetupOperation;
     int _wifiSetupState;
@@ -89,10 +100,13 @@
     int _homeKitSetupState;
     double _homeKitSetupSecs;
     NSString *_homeKitSelectedRoomName;
+    BOOL _hasExistingHomePod;
     int _finishState;
     unsigned long long _finishStartTicks;
     double _finishSecs;
     double _totalSecs;
+    BOOL _prefForceSiriGreeting;
+    BOOL _liveOn;
     BOOL _touchRemoteEnabled;
     unsigned int _testFlags;
     NSDictionary *_additionalMetrics;
@@ -102,10 +116,13 @@
     CDUnknownBlockType _progressHandler;
     CDUnknownBlockType _promptForAppleMusicHandler;
     CDUnknownBlockType _promptForHomeHandler;
+    CDUnknownBlockType _promptForHomeiCloudHandler;
     CDUnknownBlockType _promptForiTunesSignInHandler;
-    CDUnknownBlockType _promptForPersonalSiriHandler;
+    CDUnknownBlockType _promptForLocationEnableHandler;
+    CDUnknownBlockType _promptForPersonalRequestsHandler;
     CDUnknownBlockType _promptForPINHandler;
     CDUnknownBlockType _promptForRoomHandler;
+    CDUnknownBlockType _promptForSiriEnableHandler;
     CDUnknownBlockType _promptForTermsHandler;
     CDUnknownBlockType _promptToInstallHomeAppHandler;
     CDUnknownBlockType _promptToShareSettingsHandler;
@@ -118,20 +135,25 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL liveOn; // @synthesize liveOn=_liveOn;
 @property (strong, nonatomic) SFDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
 @property (strong, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptForAppleMusicHandler; // @synthesize promptForAppleMusicHandler=_promptForAppleMusicHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptForHomeHandler; // @synthesize promptForHomeHandler=_promptForHomeHandler;
+@property (copy, nonatomic) CDUnknownBlockType promptForHomeiCloudHandler; // @synthesize promptForHomeiCloudHandler=_promptForHomeiCloudHandler;
+@property (copy, nonatomic) CDUnknownBlockType promptForLocationEnableHandler; // @synthesize promptForLocationEnableHandler=_promptForLocationEnableHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptForPINHandler; // @synthesize promptForPINHandler=_promptForPINHandler;
-@property (copy, nonatomic) CDUnknownBlockType promptForPersonalSiriHandler; // @synthesize promptForPersonalSiriHandler=_promptForPersonalSiriHandler;
+@property (copy, nonatomic) CDUnknownBlockType promptForPersonalRequestsHandler; // @synthesize promptForPersonalRequestsHandler=_promptForPersonalRequestsHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptForRoomHandler; // @synthesize promptForRoomHandler=_promptForRoomHandler;
+@property (copy, nonatomic) CDUnknownBlockType promptForSiriEnableHandler; // @synthesize promptForSiriEnableHandler=_promptForSiriEnableHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptForSiriLanguageHandler; // @synthesize promptForSiriLanguageHandler=_promptForSiriLanguageHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptForStereoRoleHandler; // @synthesize promptForStereoRoleHandler=_promptForStereoRoleHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptForTermsHandler; // @synthesize promptForTermsHandler=_promptForTermsHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptForiTunesSignInHandler; // @synthesize promptForiTunesSignInHandler=_promptForiTunesSignInHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptToInstallHomeAppHandler; // @synthesize promptToInstallHomeAppHandler=_promptToInstallHomeAppHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptToShareSettingsHandler; // @synthesize promptToShareSettingsHandler=_promptToShareSettingsHandler;
+@property (readonly, nonatomic) HMHome *selectedHome;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned int testFlags; // @synthesize testFlags=_testFlags;
 @property (nonatomic) BOOL touchRemoteEnabled; // @synthesize touchRemoteEnabled=_touchRemoteEnabled;
@@ -141,10 +163,12 @@
 - (void)_cleanup;
 - (void)_cleanupSession;
 - (void)_handlePeerEvent:(id)arg1 flags:(unsigned int)arg2;
+- (void)_homeKitUpdateiCloudSwitchState:(BOOL)arg1;
 - (void)_invalidate;
 - (void)_logMetrics;
 - (void)_playLocalSoundID:(int)arg1 remoteSoundID:(int)arg2;
 - (void)_playLocalSoundID:(int)arg1 remoteSoundID:(int)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_preflightAppleMusic;
 - (void)_promptForPINWithFlags:(unsigned int)arg1 throttleSeconds:(int)arg2;
 - (void)_reportError:(id)arg1 label:(id)arg2;
 - (void)_run;
@@ -157,10 +181,11 @@
 - (int)_runHomeKitSetup;
 - (int)_runHomeKitUserInput;
 - (int)_runPairSetup;
-- (int)_runPersonalSiri;
+- (int)_runPersonalRequests;
 - (int)_runPreAuth;
 - (void)_runPreAuthRequest;
 - (void)_runPreAuthResponse:(id)arg1 error:(id)arg2;
+- (int)_runPreflightMisc;
 - (int)_runPreflightWiFi;
 - (int)_runPreflightiCloud;
 - (int)_runPreflightiTunes;
@@ -189,14 +214,19 @@
 - (void)dealloc;
 - (void)disconnect;
 - (void)homeAppInstallChoice:(BOOL)arg1;
+- (void)homeKitReselectHome;
 - (void)homeKitSelectHome:(id)arg1;
 - (void)homeKitSelectRoom:(id)arg1;
+- (void)homeiCloudEnable;
 - (id)init;
 - (void)invalidate;
+- (void)locationEnable:(BOOL)arg1;
 - (void)pairSetupTryPIN:(id)arg1;
-- (void)personalSiriEnabled:(BOOL)arg1;
+- (void)personalRequestsEnabled:(BOOL)arg1;
 - (void)playAudioPasscodeAgain;
+- (void)preflight;
 - (void)shareSettingsAgreed;
+- (void)siriEnable;
 - (void)siriLanguagePicked:(long long)arg1;
 - (void)skipAudioPasscode;
 - (void)skipiTunesSignIn;

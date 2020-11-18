@@ -32,16 +32,18 @@
 @property (nonatomic) double secondarySliderValue; // @synthesize secondarySliderValue=_secondarySliderValue;
 @property (strong, nonatomic) id secondaryValue;
 @property (nonatomic) BOOL showOffState; // @synthesize showOffState=_showOffState;
-@property (nonatomic) long long sizeSubclass;
 @property (nonatomic) double sliderValue; // @synthesize sliderValue=_sliderValue;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) id value;
 @property (strong, nonatomic) HUQuickControlSliderValueOverlayView *valueOverlayView; // @synthesize valueOverlayView=_valueOverlayView;
 
++ (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 - (CDStruct_c3b9c2ee)_permittedValueRange;
+- (void)_updateOffState;
 - (id)initWithProfile:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;
 - (void)layoutSubviews;
 
 @end

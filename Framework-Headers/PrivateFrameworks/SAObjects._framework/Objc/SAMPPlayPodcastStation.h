@@ -13,6 +13,7 @@
 }
 
 @property (copy, nonatomic) NSArray *hashedRouteUIDs;
+@property (nonatomic) BOOL startPlaying;
 @property (strong, nonatomic) SAMPPodcastStation *station;
 
 + (id)playPodcastStation;

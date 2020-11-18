@@ -46,6 +46,7 @@
 - (unsigned long long)formatArgumentsCount;
 - (id)formatStringAtIndex:(unsigned long long)arg1;
 - (unsigned long long)formatStringsCount;
+- (id)initWithString:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

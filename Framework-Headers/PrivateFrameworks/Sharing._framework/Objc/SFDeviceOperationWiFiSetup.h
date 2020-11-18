@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class SFSession;
+@class CUReachabilityMonitor, SFSession;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SFDeviceOperationWiFiSetup : NSObject
 {
     BOOL _invalidateCalled;
+    CUReachabilityMonitor *_reachabilityMonitor;
     unsigned long long _startTicks;
     NSObject<OS_dispatch_source> *_timeoutTimer;
     CDUnknownBlockType _completionHandler;
@@ -27,6 +28,7 @@
 
 - (void).cxx_destruct;
 - (void)_activate;
+- (void)_activate2;
 - (void)_complete:(id)arg1;
 - (void)activate;
 - (id)init;

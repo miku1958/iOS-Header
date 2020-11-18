@@ -10,11 +10,13 @@
 {
 }
 
-@property (nonatomic) BOOL followUpExtensionSupportEnabled;
+@property (readonly, nonatomic) BOOL followUpExtensionSupportEnabled;
+@property (readonly, nonatomic) BOOL followUpZeroActionsForTheWorld;
 
 + (id)currentEnvironment;
 - (BOOL)isInternal;
 - (BOOL)isUnlocked;
+- (void)setFollowUpExtensionSupportEnabled:(BOOL)arg1;
 - (BOOL)shouldHideAllFollowUps;
 
 @end

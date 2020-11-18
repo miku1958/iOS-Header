@@ -6,17 +6,24 @@
 
 #import <VideoSubscriberAccountUI/VSCredentialEntryField.h>
 
-@class IKViewElement;
+#import <VideoSubscriberAccountUI/IKAppKeyboardDelegate-Protocol.h>
+
+@class IKTextFieldElement, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VSITMLCredentialEntryField : VSCredentialEntryField
+@interface VSITMLCredentialEntryField : VSCredentialEntryField <IKAppKeyboardDelegate>
 {
-    IKViewElement *_associatedViewElement;
+    IKTextFieldElement *_associatedTextFieldElement;
 }
 
-@property (strong, nonatomic) IKViewElement *associatedViewElement; // @synthesize associatedViewElement=_associatedViewElement;
+@property (strong, nonatomic) IKTextFieldElement *associatedTextFieldElement; // @synthesize associatedTextFieldElement=_associatedTextFieldElement;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)textDidChangeForKeyboard:(id)arg1;
 
 @end
 

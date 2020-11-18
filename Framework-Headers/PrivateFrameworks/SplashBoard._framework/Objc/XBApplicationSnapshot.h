@@ -73,7 +73,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSDate *expirationDate; // @dynamic expirationDate;
 @property (readonly, nonatomic, getter=isExpired) BOOL expired;
-@property (copy, nonatomic) NSDictionary *extendedData; // @synthesize extendedData=_extendedData;
+@property (copy) NSDictionary *extendedData; // @synthesize extendedData=_extendedData;
 @property (readonly, nonatomic) BOOL fileExists;
 @property (readonly, nonatomic) long long fileFormat; // @synthesize fileFormat=_fileFormat;
 @property (nonatomic) long long fileLocation; // @synthesize fileLocation=_fileLocation;

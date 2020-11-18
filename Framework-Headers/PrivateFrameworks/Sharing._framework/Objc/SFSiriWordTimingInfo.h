@@ -6,17 +6,22 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 @interface SFSiriWordTimingInfo : NSObject
 {
     double _timeOffset;
+    NSString *_wordID;
     struct _NSRange _textRange;
 }
 
 @property (nonatomic) struct _NSRange textRange; // @synthesize textRange=_textRange;
 @property (nonatomic) double timeOffset; // @synthesize timeOffset=_timeOffset;
+@property (copy, nonatomic) NSString *wordID; // @synthesize wordID=_wordID;
 
 + (id)serializableArrayWithTimingInfoArray:(id)arg1;
 + (id)timingInfoArrayWithSerializableArray:(id)arg1;
+- (void).cxx_destruct;
 - (id)dictionary;
 - (id)initWithDictionary:(id)arg1;
 

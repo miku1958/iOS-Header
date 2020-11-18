@@ -25,6 +25,7 @@
 - (id)fp_moveToTempFolderWithFilename:(id)arg1 error:(id *)arg2;
 - (long long)fp_relationshipToItemAtURL:(id)arg1;
 - (id)fp_relativePathOf:(id)arg1;
+- (id)fp_scopeDescription;
 - (id)fp_shortDescription;
 @end
 

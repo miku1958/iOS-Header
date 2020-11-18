@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSKeyValueAccessor.h>
+#import <Foundation/NSKeyValueAccessor.h>
 
 @interface NSKeyValueGetter : NSKeyValueAccessor
 {

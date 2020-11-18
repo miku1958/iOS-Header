@@ -19,13 +19,14 @@
     BOOL _supportsStandaloneMode;
     BOOL _supportsCloudDataSync;
     BOOL _supportsWholeHouseAudio;
-    BOOL _supportsSharedEventTriggerActivation;
+    BOOL _supportsAssistantAccessControl;
     BOOL _residentCapable;
     BOOL _remoteGatewayCapable;
 }
 
 @property (readonly, nonatomic, getter=isRemoteGatewayCapable) BOOL remoteGatewayCapable; // @synthesize remoteGatewayCapable=_remoteGatewayCapable;
 @property (readonly, nonatomic, getter=isResidentCapable) BOOL residentCapable; // @synthesize residentCapable=_residentCapable;
+@property (readonly, nonatomic) BOOL supportsAssistantAccessControl; // @synthesize supportsAssistantAccessControl=_supportsAssistantAccessControl;
 @property (readonly, nonatomic) BOOL supportsCloudDataSync; // @synthesize supportsCloudDataSync=_supportsCloudDataSync;
 @property (readonly, nonatomic) BOOL supportsDeviceSetup; // @synthesize supportsDeviceSetup=_supportsDeviceSetup;
 @property (readonly, nonatomic) BOOL supportsKeyTransferClient; // @synthesize supportsKeyTransferClient=_supportsKeyTransferClient;
@@ -35,7 +36,10 @@
 @property (readonly, nonatomic) BOOL supportsWholeHouseAudio; // @synthesize supportsWholeHouseAudio=_supportsWholeHouseAudio;
 
 + (id)deviceCapabilities;
++ (BOOL)isAppleMediaAccessory;
 + (id)shortDescription;
++ (BOOL)supportsHomeApp;
++ (BOOL)supportsLocalization;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;

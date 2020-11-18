@@ -13,8 +13,10 @@
     id _observedObject;
     CDUnknownBlockType _deallocationBlock;
     NSUUID *_identifier;
+    unsigned long long _cachedHash;
 }
 
+@property (readonly) unsigned long long cachedHash; // @synthesize cachedHash=_cachedHash;
 @property (copy, nonatomic) CDUnknownBlockType deallocationBlock; // @synthesize deallocationBlock=_deallocationBlock;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, weak) id observedObject; // @synthesize observedObject=_observedObject;
@@ -23,8 +25,10 @@
 - (void)_startObserving;
 - (void)_stopObserving;
 - (void)dealloc;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithObservedObject:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (id)observerKey;
 
 @end

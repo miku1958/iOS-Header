@@ -30,6 +30,7 @@
     int _groupType;
     NSString *_iadNativeAd;
     NSString *_iadNativeCampaign;
+    NSString *_iadNativeCampaignAd;
     NSString *_iadNativeLine;
     NSString *_language;
     NSMutableArray *_namedEntities;
@@ -119,6 +120,7 @@
 @property (nonatomic) BOOL hasGroupType;
 @property (readonly, nonatomic) BOOL hasIadNativeAd;
 @property (readonly, nonatomic) BOOL hasIadNativeCampaign;
+@property (readonly, nonatomic) BOOL hasIadNativeCampaignAd;
 @property (readonly, nonatomic) BOOL hasIadNativeLine;
 @property (nonatomic) BOOL hasIsBreakingNewsArticle;
 @property (nonatomic) BOOL hasIsCoverArticle;
@@ -152,6 +154,7 @@
 @property (nonatomic) BOOL hasUserAction;
 @property (strong, nonatomic) NSString *iadNativeAd; // @synthesize iadNativeAd=_iadNativeAd;
 @property (strong, nonatomic) NSString *iadNativeCampaign; // @synthesize iadNativeCampaign=_iadNativeCampaign;
+@property (strong, nonatomic) NSString *iadNativeCampaignAd; // @synthesize iadNativeCampaignAd=_iadNativeCampaignAd;
 @property (strong, nonatomic) NSString *iadNativeLine; // @synthesize iadNativeLine=_iadNativeLine;
 @property (nonatomic) BOOL isBreakingNewsArticle; // @synthesize isBreakingNewsArticle=_isBreakingNewsArticle;
 @property (nonatomic) BOOL isCoverArticle; // @synthesize isCoverArticle=_isCoverArticle;

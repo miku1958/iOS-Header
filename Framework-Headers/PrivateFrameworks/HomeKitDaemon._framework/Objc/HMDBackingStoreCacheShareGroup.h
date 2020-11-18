@@ -26,8 +26,12 @@
 @property (readonly) NSArray *users; // @synthesize users=_users;
 
 - (void).cxx_destruct;
+- (void)_fetchObjects:(BOOL)arg1 migration:(BOOL)arg2 result:(CDUnknownBlockType)arg3;
 - (id)dumpDebug;
+- (void)fetchAllObjects:(CDUnknownBlockType)arg1;
+- (void)fetchMigratedObjects:(CDUnknownBlockType)arg1;
 - (id)initWithShareID:(long long)arg1 group:(id)arg2 rootRecord:(id)arg3 targetOwner:(id)arg4 share:(id)arg5 users:(id)arg6;
+- (void)markAsMigrated:(CDUnknownBlockType)arg1;
 
 @end
 

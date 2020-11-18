@@ -28,7 +28,8 @@ __attribute__((visibility("hidden")))
 - (oneway void)addPublisher:(id)arg1 forID:(id)arg2 withValues:(id)arg3 isOld:(BOOL)arg4;
 - (void)dealloc;
 - (id)initWithPublishingHandler:(CDUnknownBlockType)arg1;
-- (oneway void)observePublisherForID:(id)arg1 value:(id)arg2 forKey:(id)arg3 inUserInfo:(BOOL)arg4;
+- (oneway void)observePublisherForID:(id)arg1 values:(id)arg2 forKeys:(id)arg3;
+- (oneway void)observePublisherUserInfoForID:(id)arg1 value:(id)arg2 forKey:(id)arg3;
 - (oneway void)removePublisherForID:(id)arg1;
 - (void)startForCategory:(id)arg1;
 - (void)startForFileURL:(id)arg1;

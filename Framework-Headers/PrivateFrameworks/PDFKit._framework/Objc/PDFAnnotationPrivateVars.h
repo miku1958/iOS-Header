@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSLock, NSMutableDictionary, NSString, PDFAKAnnotationAdaptor, PDFAccessibilityNode, PDFAnnotation, PDFPage;
+@class NSDictionary, NSLock, NSMutableDictionary, NSString, NSUUID, PDFAKAnnotationAdaptor, PDFAccessibilityNode, PDFAnnotation, PDFPage, UIColor;
 @protocol NSCopying;
 
 __attribute__((visibility("hidden")))
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     PDFPage *page;
     struct CGPDFDictionary *sourceDictionary;
     struct __CFDictionary *dictionaryRef;
-    NSString *pdfAnnotationUUID;
+    NSUUID *pdfAnnotationUUID;
     struct CGPDFAnnotation *cgAnnotation;
     NSMutableDictionary *PDFAnnotationDictionary;
     NSDictionary *PDFAnnotationKeyMapping;
@@ -41,7 +41,7 @@ __attribute__((visibility("hidden")))
     BOOL shouldBurnIn;
     NSString *widgetOnStateString;
     id control;
-    BOOL editingTextWidget;
+    UIColor *mouseHoverBackgroundColor;
     PDFAccessibilityNode *accessibilityNode;
     double scaleFactor;
     BOOL isFullyConstructed;

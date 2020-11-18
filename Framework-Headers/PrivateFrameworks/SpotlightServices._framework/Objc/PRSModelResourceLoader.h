@@ -6,22 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
+@class NSMutableSet;
 @protocol OS_dispatch_queue;
 
 @interface PRSModelResourceLoader : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
-    NSMutableArray *_pendingUpdates;
+    NSMutableSet *_pendingUpdates;
 }
 
-@property (strong, nonatomic) NSMutableArray *pendingUpdates; // @synthesize pendingUpdates=_pendingUpdates;
+@property (strong, nonatomic) NSMutableSet *pendingUpdates; // @synthesize pendingUpdates=_pendingUpdates;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 + (id)resourceDirectoryPathForType:(unsigned long long)arg1 forUpdate:(BOOL)arg2;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (BOOL)_loadArchivedResources:(id)arg1 parentPath:(id)arg2 existingVersion:(id)arg3;
+- (BOOL)_loadArchivedResources:(id)arg1 parentPath:(id)arg2;
 - (int)checkHeader:(struct prs_model_resource_header *)arg1;
 - (BOOL)hasPendingUpdates;
 - (id)init;
@@ -29,6 +29,7 @@
 - (void)markResourcesAsRemovable:(unsigned long long)arg1 group:(id)arg2;
 - (id)metadataForResourceType:(unsigned long long)arg1;
 - (void)moveNewlyPackagedResources:(id)arg1;
+- (void)removeDeprecatedResources;
 - (void)removeResourcesForType:(unsigned long long)arg1;
 - (void)removeResourcesForType:(unsigned long long)arg1 group:(id)arg2;
 - (int)unpackageLZMATarData:(void *)arg1 size:(unsigned long long)arg2 parentDir:(const char *)arg3;

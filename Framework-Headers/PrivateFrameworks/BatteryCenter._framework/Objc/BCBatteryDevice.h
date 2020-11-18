@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <BatteryCenter/NSCoding-Protocol.h>
 #import <BatteryCenter/NSCopying-Protocol.h>
+#import <BatteryCenter/NSSecureCoding-Protocol.h>
 
 @class NSString, UIImage;
 
-@interface BCBatteryDevice : NSObject <NSCopying, NSCoding>
+@interface BCBatteryDevice : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_identifier;
     NSString *_matchIdentifier;
@@ -59,6 +59,7 @@
 @property (readonly, nonatomic) long long vendor; // @synthesize vendor=_vendor;
 
 + (id)batteryDeviceWithIdentifier:(id)arg1 vendor:(long long)arg2 productIdentifier:(long long)arg3 parts:(unsigned long long)arg4 matchIdentifier:(id)arg5;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_lazyGlyph;
 - (id)copyWithZone:(struct _NSZone *)arg1;

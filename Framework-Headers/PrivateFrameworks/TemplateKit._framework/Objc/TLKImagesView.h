@@ -12,6 +12,7 @@
 
 @interface TLKImagesView : TLKView <NUIContainerStackViewDelegate>
 {
+    BOOL _paddingDisabled;
     NSArray *_images;
     NSMutableArray *_imageViews;
     NUIContainerStackView *_stackView;
@@ -22,15 +23,18 @@
 @property (readonly) unsigned long long hash;
 @property (strong) NSMutableArray *imageViews; // @synthesize imageViews=_imageViews;
 @property (strong) NSArray *images; // @synthesize images=_images;
+@property (getter=isPaddingDisabled) BOOL paddingDisabled; // @synthesize paddingDisabled=_paddingDisabled;
 @property (strong) NUIContainerStackView *stackView; // @synthesize stackView=_stackView;
 @property (readonly) Class superclass;
 
++ (struct UIEdgeInsets)defaultInsets;
 - (void).cxx_destruct;
 - (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
 - (id)init;
 - (id)observableProperties;
 - (void)observedPropertiesChanged;
 - (void)styleDidChange:(unsigned long long)arg1;
+- (void)updateForPaddingDisabled:(BOOL)arg1;
 - (void)updateWithImages:(id)arg1;
 
 @end

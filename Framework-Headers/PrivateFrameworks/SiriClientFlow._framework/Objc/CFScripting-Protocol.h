@@ -9,8 +9,8 @@
 @protocol CFScripting
 - (id)initWithConnectionName:(NSString *)arg1;
 - (void)performCommandExecutionForCommand:(SACFAbstractClientCommand *)arg1 completion:(void (^)(SABaseCommand *))arg2;
-- (void)performWarmup;
-- (void)performWarmupAndEvaluateScriptWithScriptHint:(NSString *)arg1;
+- (void)performWarmupAndEvaluateScriptWithScriptHint:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
+- (void)performWarmupWithCompletion:(void (^)(BOOL))arg1;
 - (void)removeScripts:(NSArray *)arg1 completion:(void (^)(BOOL))arg2;
 - (void)updateScriptCacheForFlowScript:(SACFClientFlowScript *)arg1 completion:(void (^)(BOOL))arg2;
 @end

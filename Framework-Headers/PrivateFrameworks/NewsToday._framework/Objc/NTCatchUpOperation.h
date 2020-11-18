@@ -6,13 +6,14 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class FCCachePolicy, NSArray, NSDate, NSDictionary, NSMutableArray, NTCatchUpOperationForYouRequest, NTCatchUpOperationResults;
-@protocol FCContentContext, FCFeedPersonalizing;
+@class FCCachePolicy, NSDate, NSDictionary, NSMutableArray, NTCatchUpOperationForYouFetchInfo, NTCatchUpOperationForYouRequest, NTCatchUpOperationResults;
+@protocol FCAppConfiguration, FCContentContext, FCFeedPersonalizing;
 
 @interface NTCatchUpOperation : FCOperation
 {
     BOOL _forYouEnabled;
     BOOL _trendingByParsecEnabled;
+    id<FCAppConfiguration> _appConfiguration;
     id<FCContentContext> _contentContext;
     id<FCFeedPersonalizing> _feedPersonalizer;
     FCCachePolicy *_cachePolicyForArticleLists;
@@ -23,14 +24,15 @@
     NSDictionary *_resultsByArticleListID;
     NSDictionary *_resultsByArticleIDsRequestID;
     NTCatchUpOperationResults *_forYouResults;
+    NTCatchUpOperationForYouFetchInfo *_forYouFetchInfo;
     NTCatchUpOperationResults *_trendingByParsecResults;
     CDUnknownBlockType _catchUpCompletionHandler;
-    NSArray *_networkEvents;
     NSDate *_fetchDate;
     NSMutableArray *_articleListRequests;
     NSMutableArray *_articleIDsRequests;
 }
 
+@property (copy, nonatomic) id<FCAppConfiguration> appConfiguration; // @synthesize appConfiguration=_appConfiguration;
 @property (strong, nonatomic) NSMutableArray *articleIDsRequests; // @synthesize articleIDsRequests=_articleIDsRequests;
 @property (strong, nonatomic) NSMutableArray *articleListRequests; // @synthesize articleListRequests=_articleListRequests;
 @property (strong, nonatomic) FCCachePolicy *cachePolicyForArticleLists; // @synthesize cachePolicyForArticleLists=_cachePolicyForArticleLists;
@@ -39,11 +41,11 @@
 @property (strong, nonatomic) id<FCFeedPersonalizing> feedPersonalizer; // @synthesize feedPersonalizer=_feedPersonalizer;
 @property (copy, nonatomic) NSDate *fetchDate; // @synthesize fetchDate=_fetchDate;
 @property (nonatomic, getter=isForYouEnabled) BOOL forYouEnabled; // @synthesize forYouEnabled=_forYouEnabled;
+@property (copy, nonatomic) NTCatchUpOperationForYouFetchInfo *forYouFetchInfo; // @synthesize forYouFetchInfo=_forYouFetchInfo;
 @property (copy, nonatomic) NTCatchUpOperationForYouRequest *forYouRequest; // @synthesize forYouRequest=_forYouRequest;
 @property (copy, nonatomic) NTCatchUpOperationResults *forYouResults; // @synthesize forYouResults=_forYouResults;
 @property (nonatomic) unsigned long long maximumCachedAgeForForYou; // @synthesize maximumCachedAgeForForYou=_maximumCachedAgeForForYou;
 @property (nonatomic) unsigned long long maximumCachedAgeForTrendingByParsec; // @synthesize maximumCachedAgeForTrendingByParsec=_maximumCachedAgeForTrendingByParsec;
-@property (copy, nonatomic) NSArray *networkEvents; // @synthesize networkEvents=_networkEvents;
 @property (copy, nonatomic) NSDictionary *resultsByArticleIDsRequestID; // @synthesize resultsByArticleIDsRequestID=_resultsByArticleIDsRequestID;
 @property (copy, nonatomic) NSDictionary *resultsByArticleListID; // @synthesize resultsByArticleListID=_resultsByArticleListID;
 @property (copy, nonatomic) CDUnknownBlockType sessionProvider; // @synthesize sessionProvider=_sessionProvider;

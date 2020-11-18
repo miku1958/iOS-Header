@@ -13,7 +13,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (struct UIEdgeInsets)_accessibilityVisibleContentInset;
 - (BOOL)accessibilityShouldSpeakItemReorderEvents;
 
 @end

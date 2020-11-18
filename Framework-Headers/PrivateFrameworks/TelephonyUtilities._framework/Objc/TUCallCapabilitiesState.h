@@ -29,6 +29,7 @@
     BOOL _wiFiEmergencyCallingSupported;
     BOOL _voLTECallingCurrentlyAvailable;
     BOOL _accountsMatchForSecondaryCalling;
+    BOOL _accountsSupportSecondaryCalling;
     BOOL _supportsThumperCalling;
     BOOL _thumperCallingCurrentlyAvailable;
     BOOL _thumperCallingAllowedForCurrentDevice;
@@ -54,7 +55,7 @@
 }
 
 @property (nonatomic) BOOL accountsMatchForSecondaryCalling; // @synthesize accountsMatchForSecondaryCalling=_accountsMatchForSecondaryCalling;
-@property (readonly, nonatomic) BOOL accountsSupportSecondaryCalling;
+@property (nonatomic) BOOL accountsSupportSecondaryCalling; // @synthesize accountsSupportSecondaryCalling=_accountsSupportSecondaryCalling;
 @property (copy, nonatomic) NSArray *cloudCallingDevices; // @synthesize cloudCallingDevices=_cloudCallingDevices;
 @property (nonatomic, getter=isCSCallingCurrentlyAvailable) BOOL csCallingCurrentlyAvailable; // @synthesize csCallingCurrentlyAvailable=_csCallingCurrentlyAvailable;
 @property (nonatomic, getter=areCTCapabilitiesValid) BOOL ctCapabilitiesValid; // @synthesize ctCapabilitiesValid=_ctCapabilitiesValid;

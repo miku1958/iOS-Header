@@ -47,7 +47,7 @@
 - (BOOL)_pinShouldFloat;
 - (id)_uiColorFromSFColor:(id)arg1;
 - (double)desiredHeight;
-- (id)initWithCardSection:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)mapView:(id)arg1 regionDidChangeAnimated:(BOOL)arg2;

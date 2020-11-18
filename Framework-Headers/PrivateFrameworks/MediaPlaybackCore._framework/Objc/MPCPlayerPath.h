@@ -8,11 +8,10 @@
 
 #import <MediaPlaybackCore/NSCopying-Protocol.h>
 
-@class MPAVRoute, NSArray, NSString;
+@class MPAVRoute, NSString;
 
 @interface MPCPlayerPath : NSObject <NSCopying>
 {
-    NSArray *_defaultConstraints;
     NSString *_bundleID;
     NSString *_playerID;
     void *_mediaRemotePlayerPath;
@@ -30,6 +29,7 @@
 + (id)pathWithRoute:(id)arg1 mediaRemotePlayerPath:(void *)arg2;
 + (id)systemMusicPathWithRoute:(id)arg1 playerID:(id)arg2;
 - (void).cxx_destruct;
+- (void *)_createMediaRemotePlayerPathWithOrigin:(void *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
@@ -37,6 +37,7 @@
 - (id)initWithRoute:(id)arg1 bundleID:(id)arg2 playerID:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (void)resolveWithCompletion:(CDUnknownBlockType)arg1;
+- (void)resolveWithRouteResolvedHandler:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -6,13 +6,14 @@
 
 #import <Foundation/NSObject.h>
 
-@class AVAssetResourceLoadingContentInformationRequestInternal, NSDate, NSString;
+@class AVAssetResourceLoadingContentInformationRequestInternal, NSArray, NSDate, NSString;
 
 @interface AVAssetResourceLoadingContentInformationRequest : NSObject
 {
     AVAssetResourceLoadingContentInformationRequestInternal *_contentInformationRequest;
 }
 
+@property (readonly, nonatomic) NSArray *allowedContentTypes;
 @property (nonatomic, getter=isByteRangeAccessSupported) BOOL byteRangeAccessSupported;
 @property (nonatomic) long long contentLength;
 @property (copy, nonatomic) NSString *contentType;
@@ -22,7 +23,7 @@
 - (id)description;
 - (void)finalize;
 - (id)init;
-- (id)initWithLoadingRequest:(id)arg1;
+- (id)initWithLoadingRequest:(id)arg1 allowedContentTypes:(id)arg2;
 - (BOOL)isDiskCachingPermitted;
 - (id)propertyList;
 - (void)setDiskCachingPermitted:(BOOL)arg1;

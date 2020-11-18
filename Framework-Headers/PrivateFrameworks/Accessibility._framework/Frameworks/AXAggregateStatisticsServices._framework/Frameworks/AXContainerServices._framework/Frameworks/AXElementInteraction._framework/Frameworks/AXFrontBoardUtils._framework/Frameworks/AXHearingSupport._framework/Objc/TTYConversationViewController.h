@@ -57,9 +57,9 @@
 - (id)cellAtIndexPath:(id)arg1;
 - (void)dealloc;
 - (void)deviceDidReceiveCharacter:(unsigned short)arg1 forUtterance:(id)arg2;
-- (void)endCall:(id)arg1;
 - (void)gaButtonPressed:(id)arg1;
 - (id)init;
+- (id)inputTextView;
 - (void)processUtteranceQueue;
 - (void)realtimeTextDidChange;
 - (void)sendNewUtteranceString:(id)arg1;
@@ -72,6 +72,8 @@
 - (BOOL)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
 - (void)textViewDidChange:(id)arg1;
 - (id)textViewUtterance;
+- (void)toggleMute:(id)arg1;
+- (void)updateMuteButton;
 - (void)updateTableViewSizeAnimated:(BOOL)arg1;
 - (void)updateViewForKeyboard:(id)arg1;
 - (void)updateVoiceOverAnnouncement:(unsigned short)arg1;

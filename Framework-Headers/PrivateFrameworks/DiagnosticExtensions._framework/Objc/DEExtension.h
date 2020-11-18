@@ -14,8 +14,8 @@
     BOOL _allowUserAttachmentSelection;
     NSString *_attachmentsName;
     NSString *_identifier;
-    NSString *_loggingConsent;
     DEExtensionHostContext *_context;
+    NSString *_loggingConsent;
     NSExtension *_extension;
 }
 

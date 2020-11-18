@@ -26,9 +26,11 @@
     int _feedType;
     NSData *_feedViewExposureId;
     NSMutableArray *_fractionalCohortMemberships;
+    NSString *_galleryId;
     int _galleryImageCount;
     NSMutableArray *_galleryImageIds;
     int _galleryType;
+    NSData *_galleryViewingSessionId;
     NSString *_mediaId;
     int _mediaType;
     NSString *_metadata;
@@ -79,9 +81,11 @@
 @property (nonatomic) int feedType; // @synthesize feedType=_feedType;
 @property (strong, nonatomic) NSData *feedViewExposureId; // @synthesize feedViewExposureId=_feedViewExposureId;
 @property (strong, nonatomic) NSMutableArray *fractionalCohortMemberships; // @synthesize fractionalCohortMemberships=_fractionalCohortMemberships;
+@property (strong, nonatomic) NSString *galleryId; // @synthesize galleryId=_galleryId;
 @property (nonatomic) int galleryImageCount; // @synthesize galleryImageCount=_galleryImageCount;
 @property (strong, nonatomic) NSMutableArray *galleryImageIds; // @synthesize galleryImageIds=_galleryImageIds;
 @property (nonatomic) int galleryType; // @synthesize galleryType=_galleryType;
+@property (strong, nonatomic) NSData *galleryViewingSessionId; // @synthesize galleryViewingSessionId=_galleryViewingSessionId;
 @property (nonatomic) BOOL hasAdSupportedChannel;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (readonly, nonatomic) BOOL hasArticleSessionId;
@@ -93,8 +97,10 @@
 @property (readonly, nonatomic) BOOL hasFeedId;
 @property (nonatomic) BOOL hasFeedType;
 @property (readonly, nonatomic) BOOL hasFeedViewExposureId;
+@property (readonly, nonatomic) BOOL hasGalleryId;
 @property (nonatomic) BOOL hasGalleryImageCount;
 @property (nonatomic) BOOL hasGalleryType;
+@property (readonly, nonatomic) BOOL hasGalleryViewingSessionId;
 @property (nonatomic) BOOL hasIsDigitalReplicaAd;
 @property (nonatomic) BOOL hasIsNativeAd;
 @property (nonatomic) BOOL hasIsUserSubscribedToFeed;

@@ -22,9 +22,11 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<EKEventDetailNotesCellDelegate> noteDelegate; // @synthesize noteDelegate=_noteDelegate;
 
 - (void).cxx_destruct;
+- (double)_layoutForWidth:(double)arg1;
 - (id)_notesTitleView;
 - (id)_notesView;
 - (void)layoutForWidth:(double)arg1 position:(int)arg2;
+- (void)layoutSubviews;
 - (void)setIsTruncatingNotes:(BOOL)arg1;
 - (BOOL)update;
 

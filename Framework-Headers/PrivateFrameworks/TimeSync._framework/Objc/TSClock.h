@@ -24,6 +24,8 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *notificationQueue; // @dynamic notificationQueue;
 
 + (unsigned long long)_mach_absolute_time;
++ (id)clockNameForClockIdentifier:(unsigned long long)arg1;
++ (id)diagnosticInfoForClockIdentifier:(unsigned long long)arg1;
 - (void)addClient:(id)arg1;
 - (unsigned long long)convertFromDomainIntervalToMachAbsoluteInterval:(unsigned long long)arg1;
 - (BOOL)convertFromDomainTime:(unsigned long long *)arg1 toMachAbsoluteTime:(unsigned long long *)arg2 withCount:(unsigned int)arg3;

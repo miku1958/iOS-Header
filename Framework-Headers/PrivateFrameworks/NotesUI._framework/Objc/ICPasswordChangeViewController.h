@@ -38,6 +38,7 @@
     NSLayoutConstraint *_oldPasswordHeightConstraint;
     NSLayoutConstraint *_disclaimerHeightConstraint;
     NSLayoutConstraint *_biometricIDZeroHeightConstraint;
+    NSLayoutConstraint *_biometricIDTopConstraint;
     long long _incorrectPasswordAttempts;
     UIView *_biometricIDContainer;
     CDUnknownBlockType _completionHandler;
@@ -47,6 +48,7 @@
 
 @property (strong, nonatomic) NSArray *alternateConstraintsForAXLargerTextSizes; // @synthesize alternateConstraintsForAXLargerTextSizes=_alternateConstraintsForAXLargerTextSizes;
 @property (weak, nonatomic) UIView *biometricIDContainer; // @synthesize biometricIDContainer=_biometricIDContainer;
+@property (weak, nonatomic) NSLayoutConstraint *biometricIDTopConstraint; // @synthesize biometricIDTopConstraint=_biometricIDTopConstraint;
 @property (weak, nonatomic) NSLayoutConstraint *biometricIDZeroHeightConstraint; // @synthesize biometricIDZeroHeightConstraint=_biometricIDZeroHeightConstraint;
 @property (weak, nonatomic) UIBarButtonItem *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;

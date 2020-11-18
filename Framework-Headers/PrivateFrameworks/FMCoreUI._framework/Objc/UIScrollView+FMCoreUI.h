@@ -11,6 +11,7 @@
 @property (readonly, nonatomic, getter=isContentLargerThanBounds) BOOL contentLargerThanBounds;
 
 - (void)centerContent;
+- (void)centerContentIfNecessary;
 - (void)centerContentWithOffset:(struct CGPoint)arg1 animated:(BOOL)arg2;
 - (void)scrollSubviewToVisible:(id)arg1 animated:(BOOL)arg2;
 @end

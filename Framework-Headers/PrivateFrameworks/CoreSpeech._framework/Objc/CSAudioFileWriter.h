@@ -6,14 +6,20 @@
 
 #import <objc/NSObject.h>
 
+@class NSURL;
+
 @interface CSAudioFileWriter : NSObject
 {
     BOOL isWriting;
     struct OpaqueExtAudioFile *fFile;
     struct AudioStreamBasicDescription inASBD;
     struct AudioStreamBasicDescription outASBD;
+    NSURL *_fileURL;
 }
 
+@property (readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+
+- (void).cxx_destruct;
 - (short)addSamples:(const void *)arg1 len:(long long)arg2;
 - (void)close;
 - (void)dealloc;

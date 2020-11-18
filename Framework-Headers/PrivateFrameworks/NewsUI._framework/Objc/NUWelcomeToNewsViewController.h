@@ -6,12 +6,12 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <NewsUI/NUPagable-Protocol.h>
+#import <NewsUI/NUPageable-Protocol.h>
 
 @class NSString, NUCanvas, NUViewNode;
 @protocol NULoadingDelegate, NURouter;
 
-@interface NUWelcomeToNewsViewController : UIViewController <NUPagable>
+@interface NUWelcomeToNewsViewController : UIViewController <NUPageable>
 {
     id<NULoadingDelegate> _loadingDelegate;
     NUCanvas *_canvas;

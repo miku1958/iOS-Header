@@ -9,14 +9,17 @@
 #import <StoreKit/SKUIClientReviewViewController-Protocol.h>
 
 @class NSString, SKStoreReviewViewController;
+@protocol SKRemoteReviewViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SKRemoteReviewViewController : _UIRemoteViewController <SKUIClientReviewViewController>
 {
+    id<SKRemoteReviewViewControllerDelegate> _delegate;
     SKStoreReviewViewController *_reviewViewController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) id<SKRemoteReviewViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) SKStoreReviewViewController *reviewViewController; // @synthesize reviewViewController=_reviewViewController;
@@ -25,6 +28,7 @@ __attribute__((visibility("hidden")))
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
 - (void)didFinishWithResult:(id)arg1 error:(id)arg2;
+- (void)viewServiceDidTerminateWithError:(id)arg1;
 
 @end
 

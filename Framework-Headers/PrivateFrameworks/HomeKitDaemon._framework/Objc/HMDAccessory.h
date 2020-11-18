@@ -27,7 +27,6 @@
     BOOL _unblockPending;
     NSString *_identifier;
     HMDRoom *_room;
-    NSString *_name;
     NSString *_model;
     NSString *_manufacturer;
     HMDAccessoryVersion *_firmwareVersion;
@@ -38,6 +37,7 @@
     HMDHome *_home;
     NSString *_providedName;
     NSString *_configurationAppIdentifier;
+    NSString *_configuredName;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     HMFMessageDispatcher *_msgDispatcher;
@@ -55,6 +55,7 @@
 @property (strong, nonatomic) NSNumber *categoryIdentifier; // @synthesize categoryIdentifier=_categoryIdentifier;
 @property (nonatomic) unsigned long long configNumber; // @synthesize configNumber=_configNumber;
 @property (copy, nonatomic) NSString *configurationAppIdentifier; // @synthesize configurationAppIdentifier=_configurationAppIdentifier;
+@property (strong, nonatomic) NSString *configuredName; // @synthesize configuredName=_configuredName;
 @property (readonly, copy, nonatomic) NSString *contextID;
 @property (readonly, copy, nonatomic) NSUUID *contextSPIUniqueIdentifier;
 @property (readonly, getter=isCurrentAccessory) BOOL currentAccessory;
@@ -69,7 +70,7 @@
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly, copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
-@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, copy, nonatomic) NSString *name;
 @property (nonatomic, getter=isPrimary) BOOL primary; // @synthesize primary=_primary;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (copy, nonatomic) NSString *providedName; // @synthesize providedName=_providedName;
@@ -77,9 +78,11 @@
 @property (readonly, nonatomic) long long reachableTransports;
 @property (nonatomic, getter=isRemoteAccessEnabled) BOOL remoteAccessEnabled; // @synthesize remoteAccessEnabled=_remoteAccessEnabled;
 @property (nonatomic, getter=isRemotelyReachable) BOOL remotelyReachable; // @synthesize remotelyReachable=_remotelyReachable;
+@property (readonly) BOOL requiresHomeAppForManagement;
 @property (strong, nonatomic) HMDRoom *room; // @synthesize room=_room;
 @property (readonly, copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 @property (readonly) Class superclass;
+@property (readonly) BOOL supportsUserManagement;
 @property (strong, nonatomic) HMDAccessoryTransaction *transaction; // @synthesize transaction=_transaction;
 @property (nonatomic) BOOL unblockPending; // @synthesize unblockPending=_unblockPending;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
@@ -90,6 +93,8 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_createCameraProfiles:(id)arg1;
+- (void)_handleGetAccessoryAdvertisingParams:(id)arg1;
+- (void)_handleListPairings:(id)arg1;
 - (void)_handleRename:(id)arg1;
 - (void)_handleSetAppData:(id)arg1;
 - (void)_handleUpdateRoom:(id)arg1;
@@ -97,9 +102,7 @@
 - (void)_registerForMessages;
 - (void)_remoteAccessEnabled:(BOOL)arg1;
 - (void)_sendBlockedNotification:(BOOL)arg1 withError:(id)arg2 withIdentifier:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
-- (id)_updateAccessoryName:(id)arg1;
 - (id)_updateCategory:(id)arg1 notifyClients:(BOOL)arg2;
-- (id)_updateProvidedName:(id)arg1;
 - (id)_updateRoom:(id)arg1 message:(id *)arg2;
 - (void)addAccessoryProfile:(id)arg1;
 - (void)addAdvertisement:(id)arg1;
@@ -122,10 +125,12 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTransaction:(id)arg1 home:(id)arg2;
-- (BOOL)isRemoteReachable;
+- (BOOL)isReachableForXPCClients;
 - (void)logDuetRoomEvent;
 - (id)logIdentifier;
 - (id)messageDestination;
+- (void)notifyAccessoryNameChanged:(BOOL)arg1;
+- (void)pairingsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)populateModelObject:(id)arg1 version:(long long)arg2;
 - (void)registerForMessagesWithNewUUID:(id)arg1;
 - (void)remoteAccessEnabled:(BOOL)arg1;
@@ -147,7 +152,7 @@
 - (void)updateCategory:(id)arg1;
 - (void)updateManufacturer:(id)arg1 model:(id)arg2 firmwareVersion:(id)arg3 serialNumber:(id)arg4;
 - (void)updateMediaSession:(id)arg1;
-- (void)updateName:(id)arg1;
+- (void)updateProvidedName:(id)arg1;
 - (void)updateRoom:(id)arg1;
 - (void)updateRoom:(id)arg1 message:(id)arg2;
 - (id)url;

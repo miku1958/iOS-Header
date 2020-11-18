@@ -6,11 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
+#import <MediaPlayer/NSCopying-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface MPMediaControlsConfiguration : NSObject <NSSecureCoding>
+@interface MPMediaControlsConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
     long long _style;
     NSString *_routingContextUID;
@@ -23,9 +24,11 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

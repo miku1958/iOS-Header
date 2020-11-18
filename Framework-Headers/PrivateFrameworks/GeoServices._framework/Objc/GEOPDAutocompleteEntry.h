@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAutocompleteEntryAddress, GEOPDAutocompleteEntryBrandProfile, GEOPDAutocompleteEntryBusiness, GEOPDAutocompleteEntryCategory, GEOPDAutocompleteEntryHighlightLine, GEOPDAutocompleteEntryQuery, PBUnknownFields;
+@class GEOPDAutocompleteEntryAddress, GEOPDAutocompleteEntryBrandProfile, GEOPDAutocompleteEntryBusiness, GEOPDAutocompleteEntryCategory, GEOPDAutocompleteEntryClientResolved, GEOPDAutocompleteEntryHighlightLine, GEOPDAutocompleteEntryQuery, PBUnknownFields;
 
 @interface GEOPDAutocompleteEntry : PBCodable <NSCopying>
 {
@@ -17,6 +17,7 @@
     GEOPDAutocompleteEntryBrandProfile *_brandProfile;
     GEOPDAutocompleteEntryBusiness *_business;
     GEOPDAutocompleteEntryCategory *_category;
+    GEOPDAutocompleteEntryClientResolved *_clientResolved;
     GEOPDAutocompleteEntryHighlightLine *_highlightExtra;
     GEOPDAutocompleteEntryHighlightLine *_highlightMain;
     GEOPDAutocompleteEntryQuery *_query;
@@ -30,10 +31,12 @@
 @property (strong, nonatomic) GEOPDAutocompleteEntryBrandProfile *brandProfile; // @synthesize brandProfile=_brandProfile;
 @property (strong, nonatomic) GEOPDAutocompleteEntryBusiness *business; // @synthesize business=_business;
 @property (strong, nonatomic) GEOPDAutocompleteEntryCategory *category; // @synthesize category=_category;
+@property (strong, nonatomic) GEOPDAutocompleteEntryClientResolved *clientResolved; // @synthesize clientResolved=_clientResolved;
 @property (readonly, nonatomic) BOOL hasAddress;
 @property (readonly, nonatomic) BOOL hasBrandProfile;
 @property (readonly, nonatomic) BOOL hasBusiness;
 @property (readonly, nonatomic) BOOL hasCategory;
+@property (readonly, nonatomic) BOOL hasClientResolved;
 @property (readonly, nonatomic) BOOL hasHighlightExtra;
 @property (readonly, nonatomic) BOOL hasHighlightMain;
 @property (readonly, nonatomic) BOOL hasQuery;

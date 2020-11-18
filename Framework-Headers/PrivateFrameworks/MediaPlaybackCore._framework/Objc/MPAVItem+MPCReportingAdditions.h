@@ -12,7 +12,6 @@
 @interface MPAVItem (MPCReportingAdditions)
 
 @property (readonly, nonatomic) long long mpcReporting_equivalencySourceAdamID;
-@property (readonly, copy, nonatomic) NSString *mpcReporting_householdID;
 @property (readonly, nonatomic) id<MPCReportingIdentityPropertiesLoading> mpcReporting_identityPropertiesLoader;
 @property (readonly, nonatomic) BOOL mpcReporting_isValidReportingItem;
 @property (readonly, nonatomic) unsigned long long mpcReporting_itemType;

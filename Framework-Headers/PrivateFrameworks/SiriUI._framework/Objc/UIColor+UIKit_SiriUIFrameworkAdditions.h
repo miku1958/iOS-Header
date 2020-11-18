@@ -37,6 +37,8 @@
 + (id)siriui_sashOverlayBackgroundColor;
 + (id)siriui_semiTransparentTextColor;
 + (id)siriui_snippetBackgroundColor;
++ (id)siriui_tapToEditColor;
++ (id)siriui_tapToEditMaskingColor;
 + (id)siriui_textColor;
 + (id)siriui_textHighlightColor;
 @end

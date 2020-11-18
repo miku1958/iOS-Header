@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     struct unique_ptr<geo::DispatchTimer, std::__1::default_delete<geo::DispatchTimer>> _timer;
     NSObject<OS_dispatch_queue> *_loadQ;
     NSMutableSet *_openers;
+    NSObject<OS_dispatch_queue> *_openersIsolation;
     CDStruct_34734122 _sortPoint;
     GEOTileServerProxy *_proxy;
     _Atomic int _memoryHits;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
     struct list<_CacheRequester<void (^)(unsigned long long)>, std::__1::allocator<_CacheRequester<void (^)(unsigned long long)>>> _shrinkCacheRequesters;
     struct list<_CacheRequester<void (^)(unsigned long long)>, std::__1::allocator<_CacheRequester<void (^)(unsigned long long)>>> _freeableSizeRequesters;
     NSMutableArray *_tileDecoders;
+    NSObject<OS_dispatch_queue> *_tileDecodersIsolation;
     BOOL _networkActive;
     id<GEOTileLoaderInternalDelegate> _internalDelegate;
     NSObject<OS_dispatch_queue> *_internalDelegateQ;
@@ -58,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)_receivedMemoryWarningNotification;
 - (void)_removeUsageDataForKey:(const struct _GEOTileKey *)arg1;
 - (void)_requestOnlineTiles;
+- (id)_tileDecoderForTileKey:(const struct _GEOTileKey *)arg1 quickly:(BOOL *)arg2;
 - (void)_tileEditionChanged:(id)arg1;
 - (void)_timerFired;
 - (void)_updateNetworkActive;

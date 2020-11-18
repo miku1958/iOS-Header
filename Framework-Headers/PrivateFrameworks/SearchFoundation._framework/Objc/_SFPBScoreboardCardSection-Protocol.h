@@ -13,10 +13,12 @@
 @property (copy, nonatomic) NSString *accessibilityDescription;
 @property (strong, nonatomic) _SFPBColor *backgroundColor;
 @property (nonatomic) BOOL canBeHidden;
+@property (copy, nonatomic) NSString *eventStatus;
 @property (readonly, nonatomic) BOOL hasAccessibilityDescription;
 @property (readonly, nonatomic) BOOL hasBackgroundColor;
 @property (nonatomic) BOOL hasBottomPadding;
 @property (readonly, nonatomic) BOOL hasCanBeHidden;
+@property (readonly, nonatomic) BOOL hasEventStatus;
 @property (readonly, nonatomic) BOOL hasHasBottomPadding;
 @property (readonly, nonatomic) BOOL hasHasTopPadding;
 @property (readonly, nonatomic) BOOL hasPunchoutPickerDismissText;

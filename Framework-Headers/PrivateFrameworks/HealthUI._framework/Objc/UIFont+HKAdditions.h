@@ -10,7 +10,6 @@
 + (id)hk_chartAxisLabelFont;
 + (id)hk_defaultFontWithUIFontTextStyle:(id)arg1 symbolicTraits:(unsigned int)arg2 attributes:(id)arg3;
 + (double)hk_fittingScaleFactorForUILabels:(id)arg1 constrainingWidth:(double)arg2;
-+ (id)hk_largeNavigationControllerFont;
 + (id)hk_preferredFontForTextStyle:(id)arg1;
 + (id)hk_preferredFontForTextStyle:(id)arg1 symbolicTraits:(unsigned int)arg2;
 + (id)hk_preferredFontIgnoringAccessibilitySizeForTextStyle:(id)arg1;

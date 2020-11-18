@@ -6,8 +6,11 @@
 
 #import <MediaPlayer/NSObject-Protocol.h>
 
+@class MPAVRoute;
+
 @protocol MPMediaControlsClientController <NSObject>
 - (void)didReceiveInteraction;
+- (void)didSelectRoute:(MPAVRoute *)arg1;
 - (void)dismiss;
 @end
 

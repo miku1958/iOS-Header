@@ -104,9 +104,10 @@
 @property (strong, nonatomic) NSArray *currentVoices;
 @property (strong, nonatomic) NSArray *customPronunciationSubstitutions;
 @property (readonly, nonatomic) NSArray *deviceKeys;
-@property (nonatomic) BOOL didResetD22Reachability;
+@property (nonatomic) BOOL didResetD22Preferences;
 @property (nonatomic) BOOL didTriggerSOSToday;
 @property (nonatomic) double dockSize;
+@property (copy, nonatomic) NSSet *downloadedSiriVoices;
 @property (nonatomic) BOOL enableHearingAidReporter;
 @property (nonatomic) BOOL enableVoiceOverCaptions;
 @property BOOL enhanceBackgroundContrastEnabled;

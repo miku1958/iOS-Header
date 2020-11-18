@@ -21,3 +21,8 @@ struct CGSize {
     double _field2;
 };
 
+struct MPAddKeepLocalControlStatus {
+    long long _field1;
+    double _field2;
+};
+

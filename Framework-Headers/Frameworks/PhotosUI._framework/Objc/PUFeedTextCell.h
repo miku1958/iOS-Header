@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface PUFeedTextCell : PUFeedCell
 {
     BOOL _shouldUseOpaqueBackground;
+    BOOL _shouldUseAccessibilityLayout;
     NSAttributedString *_attributedText;
     long long _numberOfTextLines;
     double _textDetailTextSpacing;
@@ -30,7 +31,6 @@ __attribute__((visibility("hidden")))
     UIImageView *__iconImageView;
     UIButton *__button;
     struct UIOffset _iconOffset;
-    struct UIOffset _buttonOffset;
     struct UIEdgeInsets _contentInsets;
     struct UIEdgeInsets _iconPadding;
 }
@@ -42,7 +42,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSAttributedString *attributedDetailText; // @synthesize attributedDetailText=_attributedDetailText;
 @property (strong, nonatomic) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
 @property (nonatomic) long long buttonHorizontalAlignment; // @synthesize buttonHorizontalAlignment=_buttonHorizontalAlignment;
-@property (nonatomic) struct UIOffset buttonOffset; // @synthesize buttonOffset=_buttonOffset;
 @property (nonatomic) double buttonPadding; // @synthesize buttonPadding=_buttonPadding;
 @property (nonatomic) long long buttonSize; // @synthesize buttonSize=_buttonSize;
 @property (nonatomic) long long buttonType; // @synthesize buttonType=_buttonType;
@@ -53,6 +52,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct UIEdgeInsets iconPadding; // @synthesize iconPadding=_iconPadding;
 @property (nonatomic) long long numberOfDetailTextLines; // @synthesize numberOfDetailTextLines=_numberOfDetailTextLines;
 @property (nonatomic) long long numberOfTextLines; // @synthesize numberOfTextLines=_numberOfTextLines;
+@property (nonatomic) BOOL shouldUseAccessibilityLayout; // @synthesize shouldUseAccessibilityLayout=_shouldUseAccessibilityLayout;
 @property (nonatomic) BOOL shouldUseOpaqueBackground; // @synthesize shouldUseOpaqueBackground=_shouldUseOpaqueBackground;
 @property (nonatomic) long long tappableArea; // @synthesize tappableArea=_tappableArea;
 @property (nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
@@ -60,8 +60,11 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_configureButton:(id)arg1 withType:(long long)arg2 size:(long long)arg3 animated:(BOOL)arg4;
+- (void)_contentSizeCategoryDidChange:(id)arg1;
 - (id)_delegate;
 - (void)_handleButton:(id)arg1;
+- (struct CGSize)_iconSize;
+- (void)_invalidateCachedTextSizes;
 - (id)_labelBackgroundColor;
 - (struct CGSize)_maximumPossibleTextSizeForButtonWithType:(long long)arg1 size:(long long)arg2;
 - (struct CGSize)_textSizeForButtonWithType:(long long)arg1 size:(long long)arg2;
@@ -69,6 +72,8 @@ __attribute__((visibility("hidden")))
 - (void)_updateDetailLabel;
 - (void)_updateIconImageView;
 - (void)_updateLabelsBackgroundColor;
+- (void)_updateShouldUseAccessibilityLayout;
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setButtonType:(long long)arg1 animated:(BOOL)arg2;

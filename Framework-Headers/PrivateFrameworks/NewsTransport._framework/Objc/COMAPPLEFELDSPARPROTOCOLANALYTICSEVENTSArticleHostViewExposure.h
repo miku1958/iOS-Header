@@ -60,11 +60,17 @@
     int _groupType;
     NSString *_iadNativeAd;
     NSString *_iadNativeCampaign;
+    NSString *_iadNativeCampaignAd;
     NSString *_iadNativeLine;
     NSString *_language;
     int _loadFailureReason;
     int _maxActiveTimeSpent;
     float _maxVerticalScrollPositionEnding;
+    int _moduleEventType;
+    NSData *_moduleExposureId;
+    int _moduleItemCount;
+    int _moduleItemPosition;
+    int _moduleLocation;
     NSMutableArray *_namedEntities;
     NSString *_nativeCampaignData;
     int _nextArticleAffordanceType;
@@ -76,6 +82,8 @@
     int _previousArticleHostViewTypeIfSwipe;
     NSString *_previousArticleId;
     NSString *_previousArticleVersion;
+    NSString *_previousWebEmbedId;
+    int _previousWebEmbedLocation;
     int _publisherArticleVersion;
     NSString *_referencedArticleId;
     NSString *_referringSourceApplication;
@@ -86,6 +94,7 @@
     NSString *_storyType;
     NSString *_surfacedByChannelId;
     NSString *_surfacedBySectionId;
+    NSMutableArray *_surfacedByTagIds;
     NSString *_surfacedByTopicId;
     int _topStoryMandatoryArticleCount;
     int _topStoryOptionalArticleCount;
@@ -119,7 +128,7 @@
     BOOL _isVideoInFeed;
     BOOL _subscriptionOnlyArticle;
     BOOL _viewFromNotificationDirectOpen;
-    CDStruct_97bd45a4 _has;
+    CDStruct_5e5ef9bf _has;
 }
 
 @property (nonatomic) int activeTimeSpent; // @synthesize activeTimeSpent=_activeTimeSpent;
@@ -213,6 +222,7 @@
 @property (nonatomic) BOOL hasGroupType;
 @property (readonly, nonatomic) BOOL hasIadNativeAd;
 @property (readonly, nonatomic) BOOL hasIadNativeCampaign;
+@property (readonly, nonatomic) BOOL hasIadNativeCampaignAd;
 @property (readonly, nonatomic) BOOL hasIadNativeLine;
 @property (nonatomic) BOOL hasIsBreakingNewsArticle;
 @property (nonatomic) BOOL hasIsCoverArticle;
@@ -234,6 +244,11 @@
 @property (nonatomic) BOOL hasLoadFailureReason;
 @property (nonatomic) BOOL hasMaxActiveTimeSpent;
 @property (nonatomic) BOOL hasMaxVerticalScrollPositionEnding;
+@property (nonatomic) BOOL hasModuleEventType;
+@property (readonly, nonatomic) BOOL hasModuleExposureId;
+@property (nonatomic) BOOL hasModuleItemCount;
+@property (nonatomic) BOOL hasModuleItemPosition;
+@property (nonatomic) BOOL hasModuleLocation;
 @property (readonly, nonatomic) BOOL hasNativeCampaignData;
 @property (nonatomic) BOOL hasNextArticleAffordanceType;
 @property (readonly, nonatomic) BOOL hasNextArticleAffordanceTypeFeedId;
@@ -248,6 +263,8 @@
 @property (readonly, nonatomic) BOOL hasPreviousArticleId;
 @property (nonatomic) BOOL hasPreviousArticlePublisherArticleVersion;
 @property (readonly, nonatomic) BOOL hasPreviousArticleVersion;
+@property (readonly, nonatomic) BOOL hasPreviousWebEmbedId;
+@property (nonatomic) BOOL hasPreviousWebEmbedLocation;
 @property (nonatomic) BOOL hasPublisherArticleVersion;
 @property (nonatomic) BOOL hasPublisherArticleVersionInt64;
 @property (readonly, nonatomic) BOOL hasReferencedArticleId;
@@ -274,6 +291,7 @@
 @property (nonatomic) BOOL hasWidgetSectionArticleRank;
 @property (strong, nonatomic) NSString *iadNativeAd; // @synthesize iadNativeAd=_iadNativeAd;
 @property (strong, nonatomic) NSString *iadNativeCampaign; // @synthesize iadNativeCampaign=_iadNativeCampaign;
+@property (strong, nonatomic) NSString *iadNativeCampaignAd; // @synthesize iadNativeCampaignAd=_iadNativeCampaignAd;
 @property (strong, nonatomic) NSString *iadNativeLine; // @synthesize iadNativeLine=_iadNativeLine;
 @property (nonatomic) BOOL isBreakingNewsArticle; // @synthesize isBreakingNewsArticle=_isBreakingNewsArticle;
 @property (nonatomic) BOOL isCoverArticle; // @synthesize isCoverArticle=_isCoverArticle;
@@ -295,6 +313,11 @@
 @property (nonatomic) int loadFailureReason; // @synthesize loadFailureReason=_loadFailureReason;
 @property (nonatomic) int maxActiveTimeSpent; // @synthesize maxActiveTimeSpent=_maxActiveTimeSpent;
 @property (nonatomic) float maxVerticalScrollPositionEnding; // @synthesize maxVerticalScrollPositionEnding=_maxVerticalScrollPositionEnding;
+@property (nonatomic) int moduleEventType; // @synthesize moduleEventType=_moduleEventType;
+@property (strong, nonatomic) NSData *moduleExposureId; // @synthesize moduleExposureId=_moduleExposureId;
+@property (nonatomic) int moduleItemCount; // @synthesize moduleItemCount=_moduleItemCount;
+@property (nonatomic) int moduleItemPosition; // @synthesize moduleItemPosition=_moduleItemPosition;
+@property (nonatomic) int moduleLocation; // @synthesize moduleLocation=_moduleLocation;
 @property (strong, nonatomic) NSMutableArray *namedEntities; // @synthesize namedEntities=_namedEntities;
 @property (strong, nonatomic) NSString *nativeCampaignData; // @synthesize nativeCampaignData=_nativeCampaignData;
 @property (nonatomic) int nextArticleAffordanceType; // @synthesize nextArticleAffordanceType=_nextArticleAffordanceType;
@@ -310,6 +333,8 @@
 @property (strong, nonatomic) NSString *previousArticleId; // @synthesize previousArticleId=_previousArticleId;
 @property (nonatomic) long long previousArticlePublisherArticleVersion; // @synthesize previousArticlePublisherArticleVersion=_previousArticlePublisherArticleVersion;
 @property (strong, nonatomic) NSString *previousArticleVersion; // @synthesize previousArticleVersion=_previousArticleVersion;
+@property (strong, nonatomic) NSString *previousWebEmbedId; // @synthesize previousWebEmbedId=_previousWebEmbedId;
+@property (nonatomic) int previousWebEmbedLocation; // @synthesize previousWebEmbedLocation=_previousWebEmbedLocation;
 @property (nonatomic) int publisherArticleVersion; // @synthesize publisherArticleVersion=_publisherArticleVersion;
 @property (nonatomic) long long publisherArticleVersionInt64; // @synthesize publisherArticleVersionInt64=_publisherArticleVersionInt64;
 @property (strong, nonatomic) NSString *referencedArticleId; // @synthesize referencedArticleId=_referencedArticleId;
@@ -322,6 +347,7 @@
 @property (nonatomic) BOOL subscriptionOnlyArticle; // @synthesize subscriptionOnlyArticle=_subscriptionOnlyArticle;
 @property (strong, nonatomic) NSString *surfacedByChannelId; // @synthesize surfacedByChannelId=_surfacedByChannelId;
 @property (strong, nonatomic) NSString *surfacedBySectionId; // @synthesize surfacedBySectionId=_surfacedBySectionId;
+@property (strong, nonatomic) NSMutableArray *surfacedByTagIds; // @synthesize surfacedByTagIds=_surfacedByTagIds;
 @property (strong, nonatomic) NSString *surfacedByTopicId; // @synthesize surfacedByTopicId=_surfacedByTopicId;
 @property (nonatomic) int topStoryMandatoryArticleCount; // @synthesize topStoryMandatoryArticleCount=_topStoryMandatoryArticleCount;
 @property (nonatomic) int topStoryOptionalArticleCount; // @synthesize topStoryOptionalArticleCount=_topStoryOptionalArticleCount;
@@ -337,6 +363,7 @@
 
 + (Class)fractionalCohortMembershipType;
 + (Class)namedEntitiesType;
++ (Class)surfacedByTagIdsType;
 - (void).cxx_destruct;
 - (int)StringAsArticleHostViewType:(id)arg1;
 - (int)StringAsArticleType:(id)arg1;
@@ -350,19 +377,24 @@
 - (int)StringAsGroupPresentationReason:(id)arg1;
 - (int)StringAsGroupType:(id)arg1;
 - (int)StringAsLoadFailureReason:(id)arg1;
+- (int)StringAsModuleEventType:(id)arg1;
+- (int)StringAsModuleLocation:(id)arg1;
 - (int)StringAsNextArticleAffordanceType:(id)arg1;
 - (int)StringAsPaidSubscriberToFeedType:(id)arg1;
 - (int)StringAsParentFeedType:(id)arg1;
 - (int)StringAsPreviousArticleHostViewTypeIfSwipe:(id)arg1;
+- (int)StringAsPreviousWebEmbedLocation:(id)arg1;
 - (int)StringAsTopStoryType:(id)arg1;
 - (int)StringAsWidgetSection:(id)arg1;
 - (void)addFractionalCohortMembership:(id)arg1;
 - (void)addNamedEntities:(id)arg1;
+- (void)addSurfacedByTagIds:(id)arg1;
 - (id)articleHostViewTypeAsString:(int)arg1;
 - (id)articleTypeAsString:(int)arg1;
 - (id)articleViewPresentationReasonAsString:(int)arg1;
 - (void)clearFractionalCohortMemberships;
 - (void)clearNamedEntities;
+- (void)clearSurfacedByTagIds;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)coverArticleFeatureTypeAsString:(int)arg1;
@@ -381,13 +413,18 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)loadFailureReasonAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)moduleEventTypeAsString:(int)arg1;
+- (id)moduleLocationAsString:(int)arg1;
 - (id)namedEntitiesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)namedEntitiesCount;
 - (id)nextArticleAffordanceTypeAsString:(int)arg1;
 - (id)paidSubscriberToFeedTypeAsString:(int)arg1;
 - (id)parentFeedTypeAsString:(int)arg1;
 - (id)previousArticleHostViewTypeIfSwipeAsString:(int)arg1;
+- (id)previousWebEmbedLocationAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)surfacedByTagIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)surfacedByTagIdsCount;
 - (id)topStoryTypeAsString:(int)arg1;
 - (id)widgetSectionAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

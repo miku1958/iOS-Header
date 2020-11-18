@@ -13,6 +13,7 @@
 
 @interface VSIdentityProvider : NSObject <NSCopying, NSSecureCoding>
 {
+    NSString *_displayName;
     BOOL _prohibitedByStore;
     BOOL _developer;
     VSOptional *_uniqueID;
@@ -43,7 +44,6 @@
 @property (readonly, nonatomic) BOOL supportsTemplatesSufficientForSomeKnownPlatform;
 @property (strong, nonatomic) VSOptional *uniqueID; // @synthesize uniqueID=_uniqueID;
 
-+ (id)keyPathsForValuesAffectingDisplayName;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

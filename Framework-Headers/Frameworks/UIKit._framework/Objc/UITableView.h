@@ -228,6 +228,8 @@
         unsigned int delegateSwipeAccessoryPushed:1;
         unsigned int delegateShouldDrawTopSeparatorForSection:1;
         unsigned int delegateShouldDrawBottomSeparatorForSection:1;
+        unsigned int delegateShouldHaveFullLengthTopSeparatorForSection:1;
+        unsigned int delegateShouldHaveFullLengthBottomSeparatorForSection:1;
         unsigned int delegateWillBeginSwiping:1;
         unsigned int delegateDidEndSwiping:1;
         unsigned int delegateCanFocusRow_deprecated:1;
@@ -509,6 +511,7 @@
 - (void)_beginDisplayingCellContentStringCallout;
 - (void)_beginDragAndDropReorderingOfIndexPath:(id)arg1 cell:(id)arg2;
 - (BOOL)_beginReorderingForCell:(id)arg1 touch:(id)arg2;
+- (void)_beginSuspendingUpdates;
 - (BOOL)_beginTrackingWithEvent:(id)arg1;
 - (void)_boundingPathMayHaveChangedForView:(id)arg1 relativeToBoundsOriginOnly:(BOOL)arg2;
 - (struct CGRect)_boundsForIndexOverlay;
@@ -662,6 +665,7 @@
 - (void)_endDisplayingCellContentStringCallout;
 - (void)_endDragAndDropReordering;
 - (void)_endReorderingForCell:(id)arg1 wasCancelled:(BOOL)arg2 animated:(BOOL)arg3;
+- (void)_endSuspendingUpdates;
 - (void)_endSwipeToDeleteGesture:(BOOL)arg1;
 - (void)_endSwipeToDeleteRowDidDelete:(BOOL)arg1;
 - (void)_ensureRowDataIsLoaded;
@@ -804,6 +808,7 @@
 - (BOOL)_remembersPreviouslyFocusedItem;
 - (void)_removeDropTargetAndResetAppearance;
 - (void)_removeIndex;
+- (void)_removeOrphanedViews:(id)arg1;
 - (void)_removeSwipeDeletionShadowUpdates;
 - (void)_removeTableViewGestureRecognizers;
 - (void)_removeWasCanceledForCell:(id)arg1;
@@ -928,6 +933,8 @@
 - (BOOL)_shouldDrawSeparatorAtTopOfSection:(long long)arg1;
 - (BOOL)_shouldDrawThickSeparators;
 - (BOOL)_shouldHaveFooterViewForSection:(long long)arg1;
+- (BOOL)_shouldHaveFullLengthBottomSeparatorForCellAtIndexPath:(id)arg1;
+- (BOOL)_shouldHaveFullLengthTopSeparatorForCellAtIndexPath:(id)arg1;
 - (BOOL)_shouldHaveHeaderViewForSection:(long long)arg1;
 - (BOOL)_shouldHaveIndexOverlaySelectionView;
 - (BOOL)_shouldHighlightInsteadOfSelectRowAtIndexPath:(id)arg1;
@@ -997,7 +1004,7 @@
 - (void)_unhighlightSpringLoadedRow;
 - (void)_upArrowLongPress:(id)arg1;
 - (void)_upArrowTap:(id)arg1;
-- (void)_updateAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
+- (void)_updateAnimationDidStopWithOldVisibleViews:(id)arg1 finished:(BOOL)arg2 context:(id)arg3;
 - (void)_updateAppearanceOfVisibleRowsForDragState;
 - (void)_updateBackgroundView;
 - (void)_updateBackgroundViewFrame;
@@ -1045,8 +1052,6 @@
 - (void)_userSelectRowAtPendingSelectionIndexPath:(id)arg1;
 - (BOOL)_usingCustomBackgroundView;
 - (struct CGPoint)_validContentOffsetForProposedOffset:(struct CGPoint)arg1;
-- (void)_validateCells;
-- (void)_validateSectionHeadersAndFooters;
 - (id)_viewForFooterInSection:(long long)arg1;
 - (id)_viewForHeaderInSection:(long long)arg1;
 - (struct CGRect)_visibleBounds;
@@ -1168,6 +1173,7 @@
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setContentInset:(struct UIEdgeInsets)arg1;
 - (void)setContentOffset:(struct CGPoint)arg1;
+- (void)setContentSize:(struct CGSize)arg1;
 - (void)setCountString:(id)arg1;
 - (void)setCountStringInsignificantRowCount:(unsigned long long)arg1;
 - (void)setDelaysContentTouches:(BOOL)arg1;

@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <TextInput/TIKeyboardCandidate.h>
+#import <Foundation/NSObject.h>
 
 #import <UIKit/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, TIKeyboardCandidate;
 
-@interface UITextSuggestion : TIKeyboardCandidate <NSCopying>
+@interface UITextSuggestion : NSObject <NSCopying>
 {
     BOOL __shouldPersist;
     NSString *_inputText;
@@ -19,6 +19,7 @@
     NSString *_headerText;
 }
 
+@property (readonly, nonatomic) TIKeyboardCandidate *_keyboardCandidate;
 @property (readonly, nonatomic) BOOL _shouldPersist; // @synthesize _shouldPersist=__shouldPersist;
 @property (copy, nonatomic) NSString *displayText; // @synthesize displayText=_displayText;
 @property (copy, nonatomic) NSString *headerText; // @synthesize headerText=_headerText;
@@ -27,11 +28,9 @@
 
 + (id)textSuggestionWithInputText:(id)arg1;
 + (id)textSuggestionWithInputText:(id)arg1 searchText:(id)arg2;
-- (id)candidate;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)initWithInputText:(id)arg1 searchText:(id)arg2 displayText:(id)arg3 headerText:(id)arg4;
-- (id)input;
 
 @end
 

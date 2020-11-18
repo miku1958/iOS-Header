@@ -33,6 +33,7 @@
 - (void)assertInsideChangesBlock;
 - (id)debugDetailedDescription;
 - (void)didPerformChanges;
+- (void)didPublishChanges;
 - (id)init;
 - (id)newViewModelChange;
 - (void)performChanges:(CDUnknownBlockType)arg1;

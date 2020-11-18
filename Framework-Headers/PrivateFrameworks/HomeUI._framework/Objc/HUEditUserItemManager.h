@@ -8,7 +8,7 @@
 
 #import <HomeUI/HUUserItemManager-Protocol.h>
 
-@class HFItem, HFUserItem, HMHome, HMUser, NSString;
+@class HFItem, HFUserItem, HMHome, HMUser, HUPersonalRequestsDevicesItemModule, NSString;
 
 @interface HUEditUserItemManager : HFItemManager <HUUserItemManager>
 {
@@ -18,6 +18,7 @@
     HFItem *_allowEditingItem;
     HFItem *_allowEditingFooterItem;
     HFItem *_pendingAccessoriesItem;
+    HUPersonalRequestsDevicesItemModule *_personalRequestsDevicesModule;
     HMHome *_homeForUser;
     HFItem *_removeItem;
 }
@@ -32,6 +33,7 @@
 @property (strong, nonatomic) HMHome *homeForUser; // @synthesize homeForUser=_homeForUser;
 @property (strong, nonatomic) HFItem *localAccessItem; // @synthesize localAccessItem=_localAccessItem;
 @property (strong, nonatomic) HFItem *pendingAccessoriesItem; // @synthesize pendingAccessoriesItem=_pendingAccessoriesItem;
+@property (readonly, nonatomic) HUPersonalRequestsDevicesItemModule *personalRequestsDevicesModule; // @synthesize personalRequestsDevicesModule=_personalRequestsDevicesModule;
 @property (strong, nonatomic) HFItem *removeItem; // @synthesize removeItem=_removeItem;
 @property (strong, nonatomic) HFUserItem *sourceItem; // @dynamic sourceItem;
 @property (readonly) Class superclass;
@@ -40,10 +42,13 @@
 - (void).cxx_destruct;
 - (id)_buildItemProvidersForHome:(id)arg1;
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
+- (BOOL)_hasHomePod;
 - (BOOL)_hasPendingAccessories;
 - (BOOL)_hasResidentDevice;
 - (id)_homeFuture;
+- (BOOL)_isCurrentUser;
 - (BOOL)_isEditingAllowedForUser:(id)arg1;
+- (id)_isPersonalRequestsEnabledForUser;
 - (BOOL)_isRemoteAccessAllowedForUser:(id)arg1;
 - (BOOL)_isUserOwner:(id)arg1;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;

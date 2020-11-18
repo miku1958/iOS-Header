@@ -74,6 +74,7 @@
 + (void)resumeCoordinatorForAppWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (BOOL)resumeCoordinatorForAppWithBundleID:(id)arg1 error:(id *)arg2;
 + (void)setRemovability:(unsigned long long)arg1 forAppWithBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (BOOL)setTestModeForBundleWithPrefix:(id)arg1 testMode:(unsigned long long)arg2;
 + (BOOL)setTestingEnabled:(BOOL)arg1;
 + (BOOL)uninstallAppWithBundleID:(id)arg1 error:(id *)arg2;
 + (void)uninstallAppWithBundleID:(id)arg1 requestUserConfirmation:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;

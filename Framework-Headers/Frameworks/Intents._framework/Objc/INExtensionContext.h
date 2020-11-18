@@ -6,13 +6,12 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <Intents/INCacheableObjectManagerDelegate-Protocol.h>
 #import <Intents/INExtensionContextVending-Protocol.h>
 
 @class NSObject, NSString;
 @protocol INIntentHandlerProvidingPrivate, OS_dispatch_queue;
 
-@interface INExtensionContext : NSExtensionContext <INCacheableObjectManagerDelegate, INExtensionContextVending>
+@interface INExtensionContext : NSExtensionContext <INExtensionContextVending>
 {
     NSObject<OS_dispatch_queue> *_queue;
     id<INIntentHandlerProvidingPrivate> _extensionHandler;
@@ -37,10 +36,11 @@
 - (void)_getApplicationContextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_processIntentResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (CDUnknownBlockType)_processIntentResponseCompletionHandlerWithCompletion:(CDUnknownBlockType)arg1;
-- (CDUnknownBlockType)_processResolutionDataProviderForIntent:(id)arg1 intentSlotDescription:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)_remoteObjectProxy;
+- (CDUnknownBlockType)_processResolutionDataProviderForIntent:(id)arg1 intentSlotDescription:(id)arg2 updateIntent:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (oneway void)_resolveIntentSlot:(id)arg1 forIntent:(id)arg2 updateIntent:(BOOL)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)_startSendingUpdatesForIntent:(id)arg1 toObserver:(id)arg2;
 - (void)_stopSendingUpdatesForIntent:(id)arg1;
+- (BOOL)_updateIntent:(id)arg1 intentSlotDescription:(id)arg2 resolutionResultDataProvider:(id)arg3;
 - (void)_validateExtension;
 - (oneway void)beginTransactionWithIntentIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)cancelTransactionDueToTimeout;
@@ -50,12 +50,12 @@
 - (oneway void)confirmIntent:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (oneway void)confirmationResponseForIntent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)getApplicationContextWithCompletion:(CDUnknownBlockType)arg1;
-- (void)handleCacheableObject:(id)arg1 fromCacheableObjectManager:(id)arg2;
 - (oneway void)handleIntent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)handleIntent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)handleIntent:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)initWithInputItems:(id)arg1 listenerEndpoint:(id)arg2 contextUUID:(id)arg3;
 - (oneway void)resolveIntentSlot:(id)arg1 forIntent:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (oneway void)resolveIntentSlots:(id)arg1 forIntent:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (oneway void)startSendingUpdatesForIntent:(id)arg1 toObserver:(id)arg2;
 - (oneway void)stopSendingUpdatesForIntent:(id)arg1;
 

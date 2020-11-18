@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     BOOL _useEncryption;
     BOOL _isProxyOperation;
     BOOL _shouldPipelineFetchAllChangesRequests;
+    _Atomic int _pcsWaitCount;
     CKDURLRequest *_request;
     CKTimeLogger *_timeLogger;
     NSDate *_startDate;
@@ -78,6 +79,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKOperationInfo *operationInfo; // @synthesize operationInfo=_operationInfo;
 @property (readonly, nonatomic) CKOperationResult *operationResult;
 @property (weak, nonatomic) CKDOperation *parentOperation; // @synthesize parentOperation=_parentOperation;
+@property (nonatomic) _Atomic int pcsWaitCount; // @synthesize pcsWaitCount=_pcsWaitCount;
 @property (strong, nonatomic) id<NSObject> powerAssertion; // @synthesize powerAssertion=_powerAssertion;
 @property (readonly, nonatomic) BOOL preferAnonymousRequests;
 @property (weak, nonatomic) CKDClientProxy *proxy; // @synthesize proxy=_proxy;
@@ -86,6 +88,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *requestUUIDs; // @synthesize requestUUIDs=_requestUUIDs;
 @property (readonly, nonatomic) BOOL shouldCheckAppVersion;
 @property (nonatomic) BOOL shouldPipelineFetchAllChangesRequests; // @synthesize shouldPipelineFetchAllChangesRequests=_shouldPipelineFetchAllChangesRequests;
+@property (readonly, nonatomic) BOOL shouldSkipZonePCSUpdate;
 @property (readonly, nonatomic) NSString *sourceApplicationBundleIdentifier;
 @property (readonly, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
@@ -139,10 +142,13 @@ __attribute__((visibility("hidden")))
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (BOOL)isConcurrent;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isWaitingOnPCS;
 - (void)main;
 - (BOOL)makeStateTransition;
 - (void)makeStateTransition:(BOOL)arg1;
 - (id)nameForState:(unsigned long long)arg1;
+- (void)noteOperationDidFinishWaitingOnPCS;
+- (void)noteOperationWillWaitOnPCS;
 - (Class)operationResultClass;
 - (BOOL)operationShouldBeFlowControlled;
 - (void)request:(id)arg1 didFinishWithMetrics:(id)arg2 w3cNavigationTiming:(id)arg3;

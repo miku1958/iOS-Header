@@ -27,8 +27,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)requiresDeviceID;
 - (BOOL)requiresSignature;
 - (long long)serverType;
-- (id)sourceApplicationBundleIdentifier;
-- (id)sourceApplicationSecondaryIdentifier;
 - (id)url;
 
 @end

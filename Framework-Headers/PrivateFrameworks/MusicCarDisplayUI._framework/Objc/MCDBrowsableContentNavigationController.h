@@ -16,7 +16,6 @@
     BOOL _hasCarScreen;
     BOOL _didFinishInitialLoad;
     BOOL _visible;
-    BOOL _deferReload;
     UITabBarController *_tabBarController;
     UITabBarController *_hostTabBarController;
     AVExternalDevice *_externalDevice;
@@ -29,7 +28,6 @@
 @property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (strong, nonatomic) MCDPCContainer *container; // @synthesize container=_container;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) BOOL deferReload; // @synthesize deferReload=_deferReload;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didFinishInitialLoad; // @synthesize didFinishInitialLoad=_didFinishInitialLoad;
 @property (strong, nonatomic) AVExternalDevice *externalDevice; // @synthesize externalDevice=_externalDevice;

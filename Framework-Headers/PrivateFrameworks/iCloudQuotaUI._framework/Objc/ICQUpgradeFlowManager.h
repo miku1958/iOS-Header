@@ -9,7 +9,7 @@
 #import <iCloudQuotaUI/ICQPageDelegate-Protocol.h>
 #import <iCloudQuotaUI/UINavigationControllerDelegate-Protocol.h>
 
-@class ICQAlertController, ICQOffer, ICQUpgradeOfferViewController, NSDictionary, NSString, UINavigationController;
+@class ICQAlertController, ICQOffer, ICQUpgradeFlowOptions, ICQUpgradeOfferViewController, NSDictionary, NSString, UINavigationController;
 @protocol ICQUpgradeFlowManagerDelegate;
 
 @interface ICQUpgradeFlowManager : NSObject <UINavigationControllerDelegate, ICQPageDelegate>
@@ -19,6 +19,7 @@
     BOOL _completedFamilySetup;
     ICQOffer *_offer;
     NSDictionary *_bindings;
+    ICQUpgradeFlowOptions *_flowOptions;
     id<ICQUpgradeFlowManagerDelegate> _delegate;
     UINavigationController *_hostingNavigationController;
     ICQAlertController *_upgradeAlertController;
@@ -29,6 +30,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<ICQUpgradeFlowManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) ICQUpgradeFlowOptions *flowOptions; // @synthesize flowOptions=_flowOptions;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UINavigationController *hostingNavigationController; // @synthesize hostingNavigationController=_hostingNavigationController;
 @property (readonly, nonatomic) ICQOffer *offer; // @synthesize offer=_offer;
@@ -67,7 +69,6 @@
 - (BOOL)needsNetwork;
 - (void)presentFlowHostedInNavigationController:(id)arg1;
 - (void)sender:(id)arg1 action:(long long)arg2 parameters:(id)arg3;
-- (double)senderGetTopMargin:(id)arg1;
 
 @end
 

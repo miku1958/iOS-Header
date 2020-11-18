@@ -14,6 +14,7 @@
 @property (readonly, nonatomic) UIColor *vibrationPickerCellHighlightedTextColor;
 @property (readonly, nonatomic) UIColor *vibrationPickerCellTextColor;
 @property (readonly, nonatomic) UIFont *vibrationPickerCellTextFont;
+@property (readonly, nonatomic) UIColor *vibrationPickerCustomBackgroundColor;
 @property (readonly, nonatomic) long long vibrationPickerCustomTableSeparatorBackdropOverlayBlendMode;
 @property (readonly, nonatomic) UIColor *vibrationPickerCustomTableSeparatorColor;
 @property (readonly, nonatomic) UIColor *vibrationPickerHeaderTextColor;

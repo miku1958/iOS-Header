@@ -44,8 +44,6 @@
     NSString *_requestingBundleVersion;
     long long _equivalencySourceAdamID;
     unsigned long long _rentalID;
-    NSNumber *_privateListeningEnabled;
-    NSNumber *_siriInitiated;
 }
 
 @property (readonly, nonatomic) BOOL allowsStoreBagStreamingKeyURLsFallback;
@@ -58,7 +56,6 @@
 @property (nonatomic, getter=isIgnoringHLSOfflinePlaybackKeys) BOOL ignoreHLSOfflinePlaybackKeys; // @synthesize ignoreHLSOfflinePlaybackKeys=_ignoreHLSOfflinePlaybackKeys;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (readonly, nonatomic) MPMediaPlaybackItemMetadata *playbackItemMetadata; // @synthesize playbackItemMetadata=_playbackItemMetadata;
-@property (copy, nonatomic, getter=isPrivateListeningEnabled) NSNumber *privateListeningEnabled; // @synthesize privateListeningEnabled=_privateListeningEnabled;
 @property (readonly, nonatomic, getter=isRentalCheckoutRequired) BOOL rentalCheckoutRequired; // @synthesize rentalCheckoutRequired=_rentalCheckoutRequired;
 @property (readonly, nonatomic) unsigned long long rentalID; // @synthesize rentalID=_rentalID;
 @property (copy, nonatomic) NSString *requestingBundleIdentifier; // @synthesize requestingBundleIdentifier=_requestingBundleIdentifier;
@@ -67,7 +64,6 @@
 @property (readonly, nonatomic) id rtcReportingParentHierarchyToken;
 @property (readonly, copy, nonatomic) NSString *rtcReportingServiceIdentifier;
 @property (strong, nonatomic) NSData *serverPlaybackContextDataForStoppingLease; // @synthesize serverPlaybackContextDataForStoppingLease=_serverPlaybackContextDataForStoppingLease;
-@property (copy, nonatomic, getter=isSiriInitiated) NSNumber *siriInitiated; // @synthesize siriInitiated=_siriInitiated;
 @property (readonly, nonatomic) unsigned long long streamType;
 @property (readonly, copy, nonatomic) NSURL *streamingKeyCertificateURL;
 @property (readonly, copy, nonatomic) NSURL *streamingKeyServerURL;

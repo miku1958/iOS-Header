@@ -27,6 +27,7 @@
 @property (weak, nonatomic) id<SynchronizedDefaultsDelegate> syncDelegate; // @synthesize syncDelegate=_syncDelegate;
 
 - (void).cxx_destruct;
+- (void)_synchronize:(BOOL)arg1;
 - (BOOL)areCloudCities:(id)arg1 equalToLocalCities:(id)arg2;
 - (id)citiesByEnforcingSizeLimitOnResults:(id)arg1;
 - (void)cloudCitiesChangedExternally:(id)arg1;

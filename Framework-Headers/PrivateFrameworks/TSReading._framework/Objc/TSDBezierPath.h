@@ -6,10 +6,10 @@
 
 #import <Foundation/NSObject.h>
 
-#import <TSReading/NSCoding-Protocol.h>
 #import <TSReading/NSCopying-Protocol.h>
+#import <TSReading/NSSecureCoding-Protocol.h>
 
-@interface TSDBezierPath : NSObject <NSCopying, NSCoding>
+@interface TSDBezierPath : NSObject <NSCopying, NSSecureCoding>
 {
     long long sfr_elementCount;
     long long sfr_elementMax;
@@ -91,6 +91,7 @@
 + (void)strokeLineFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2;
 + (void)strokeRect:(struct CGRect)arg1;
 + (id)subtractBezierPaths:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)tracedPathForImage:(struct CGImage *)arg1 alphaThreshold:(double)arg2 pointSpacing:(double)arg3;
 + (id)tracedPathForInstantAlphaBinaryBitmap:(id)arg1 pointSpacing:(double)arg2;
 + (id)uniteBezierPaths:(id)arg1;

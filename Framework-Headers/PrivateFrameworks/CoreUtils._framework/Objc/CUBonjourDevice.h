@@ -32,6 +32,7 @@
 - (void)_updateTXTDictionary:(id)arg1;
 - (id)copyConnectionStringWithFlags:(unsigned long long)arg1 error:(id *)arg2;
 - (id)description;
+- (id)descriptionWithLevel:(int)arg1;
 - (id)shortDescription;
 - (unsigned int)updateWithBonjourDeviceInfo:(id)arg1;
 

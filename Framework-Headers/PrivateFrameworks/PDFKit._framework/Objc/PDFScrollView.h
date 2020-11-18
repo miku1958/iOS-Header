@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_centerAlign;
+- (void)centerAlign;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)pdfDocumentView;

@@ -12,6 +12,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilitySupportsActivateAction;
 - (void)_axSetRating:(long long)arg1;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;

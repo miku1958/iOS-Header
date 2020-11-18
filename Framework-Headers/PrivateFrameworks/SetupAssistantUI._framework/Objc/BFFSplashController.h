@@ -28,8 +28,10 @@
     long long _contentViewPosition;
     UIView *_buttonTray;
     UIColor *_bleedColor;
+    struct UIEdgeInsets _additionalInsets;
 }
 
+@property (nonatomic) struct UIEdgeInsets additionalInsets; // @synthesize additionalInsets=_additionalInsets;
 @property (strong, nonatomic) UIColor *bleedColor; // @synthesize bleedColor=_bleedColor;
 @property (readonly, nonatomic) UIView *buttonTray; // @synthesize buttonTray=_buttonTray;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;

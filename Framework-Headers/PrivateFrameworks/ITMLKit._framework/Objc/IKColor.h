@@ -8,7 +8,7 @@
 
 #import <ITMLKit/NSCopying-Protocol.h>
 
-@class NSArray, UIColor;
+@class NSArray, NSString, UIColor;
 
 @interface IKColor : NSObject <NSCopying>
 {
@@ -17,10 +17,12 @@
     long long _colorType;
     long long _gradientType;
     long long _gradientDirectionType;
+    NSString *_colorMapKey;
     NSArray *_gradientPoints;
 }
 
 @property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
+@property (copy, nonatomic) NSString *colorMapKey; // @synthesize colorMapKey=_colorMapKey;
 @property (nonatomic) long long colorType; // @synthesize colorType=_colorType;
 @property (copy, nonatomic) NSArray *gradientColors; // @synthesize gradientColors=_gradientColors;
 @property (nonatomic) long long gradientDirectionType; // @synthesize gradientDirectionType=_gradientDirectionType;
@@ -33,6 +35,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)initWithColor:(id)arg1;
+- (id)initWithColorMapKey:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)setGradientColors:(id)arg1 andPoints:(id)arg2;
 

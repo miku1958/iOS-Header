@@ -14,6 +14,7 @@
 + (id)_firstSourceWithPredicate:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)_insertSourceWithUUID:(id)arg1 bundleIdentifier:(id)arg2 name:(id)arg3 options:(unsigned long long)arg4 isCurrentDevice:(BOOL)arg5 productType:(id)arg6 deleted:(BOOL)arg7 modificationDate:(id)arg8 provenance:(long long)arg9 database:(id)arg10 error:(id *)arg11;
 + (id)_sourcesWithPredicate:(id)arg1 profile:(id)arg2 error:(id *)arg3;
++ (id)bundleIdentifiersForSourcesWithPredicate:(id)arg1 database:(id)arg2 error:(id *)arg3;
 + (id)columnsDefinition;
 + (id)databaseTable;
 + (id)entityEncoderForProfile:(id)arg1 database:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
@@ -37,7 +38,7 @@
 - (BOOL)setBundleIdentifier:(id)arg1 UUID:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 - (BOOL)setName:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 - (BOOL)setOptions:(unsigned long long)arg1 profile:(id)arg2 didUpdate:(BOOL *)arg3 error:(id *)arg4;
-- (id)sourceBundleIdentifierInHealthDatabase:(id)arg1 error:(id *)arg2;
+- (id)sourceBundleIdentifierInDatabase:(id)arg1 error:(id *)arg2;
 - (id)sourceUUIDWithHealthDatabase:(id)arg1 error:(id *)arg2;
 - (id)sourceUUIDWithProfile:(id)arg1 error:(id *)arg2;
 - (id)sourceWithProfile:(id)arg1 error:(id *)arg2;

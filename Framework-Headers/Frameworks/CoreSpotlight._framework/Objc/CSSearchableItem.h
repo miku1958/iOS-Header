@@ -38,6 +38,7 @@
 - (void)_populateMissingPeopleWithNames:(id)arg1 emailAddresses:(id)arg2 allItemPersons:(id)arg3 primaryItemPersons:(id)arg4 additionalItemPersons:(id)arg5 hiddenAdditionalItemPersons:(id)arg6 personDictionary:(id)arg7 contactProperties:(id)arg8 nameKey:(id)arg9 emailKey:(id)arg10 contactIdentifierKey:(id)arg11 personKey:(id)arg12 attributeSet:(id)arg13;
 - (id)_propertiesDescription;
 - (void)_standardizeDeprecatedProperties:(id)arg1;
+- (void)_standardizeFileProvider:(id)arg1;
 - (void)_standardizeHTML:(id)arg1;
 - (void)_standardizeMarkAs:(id)arg1;
 - (void)_standardizePeople:(id)arg1;

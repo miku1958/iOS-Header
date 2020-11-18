@@ -11,6 +11,7 @@
 
 @interface HUAlarmTableViewCell : UITableViewCell
 {
+    BOOL _disabled;
     BOOL _enabled;
     id<HUAlarmTableViewCellDelegate> _delegate;
     MTUIAlarmView *_alarmView;
@@ -19,6 +20,7 @@
 
 @property (strong, nonatomic) MTUIAlarmView *alarmView; // @synthesize alarmView=_alarmView;
 @property (weak, nonatomic) id<HUAlarmTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic, getter=isDisabled) BOOL disabled; // @synthesize disabled=_disabled;
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (strong, nonatomic) UISwitch *enabledSwitch; // @synthesize enabledSwitch=_enabledSwitch;
 
@@ -26,10 +28,8 @@
 - (void)_alarmActiveChanged:(id)arg1;
 - (id)init;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (void)internalSetBackgroundColor:(id)arg1;
 - (void)refreshUI:(id)arg1 animated:(BOOL)arg2;
 - (void)setAlarmActiveDelegate:(id)arg1;
-- (void)setBackgroundColor:(id)arg1;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;

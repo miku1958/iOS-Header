@@ -29,6 +29,7 @@
 - (id)_currentDelegates;
 - (void)_handleAssetProgress:(id)arg1 error:(id)arg2 voiceId:(id)arg3 diskSize:(long long)arg4 asset:(id)arg5;
 - (id)_mobileAssetDownloadOptions;
+- (void)_removeSiriVoiceUsage:(id)arg1;
 - (void)_requestVoiceAlternateVoiceDownloadProgress:(id)arg1;
 - (void)_setProgressHandlerIfNecessary:(id)arg1 voiceId:(id)arg2;
 - (id)_speechAssetUpdaterClient;

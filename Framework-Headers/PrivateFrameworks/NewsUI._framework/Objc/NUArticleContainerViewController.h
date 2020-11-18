@@ -67,7 +67,7 @@
 - (id)pageViewController:(id)arg1 viewControllerBeforeViewController:(id)arg2;
 - (void)styleNavigationForPage:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (id)viewControllerPagableForViewController:(id)arg1;
+- (id)viewControllerPageableForViewController:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 

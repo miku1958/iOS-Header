@@ -8,7 +8,7 @@
 
 #import <CoreDuet/_DKExecutableQuery-Protocol.h>
 
-@class NSDateInterval, _DKEventStream;
+@class NSDateInterval, NSPredicate, _DKEventStream;
 
 @interface _DKHistogramQuery : _DKQuery <_DKExecutableQuery>
 {
@@ -19,6 +19,7 @@
     NSDateInterval *_interval;
     CDUnknownBlockType _histogramHandler;
     unsigned long long _minimumOccurrencesForInclusion;
+    NSPredicate *_predicate;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType histogramHandler; // @synthesize histogramHandler=_histogramHandler;
@@ -27,9 +28,11 @@
 @property (strong, nonatomic) NSDateInterval *interval; // @synthesize interval=_interval;
 @property (nonatomic) BOOL isCategory; // @synthesize isCategory=_isCategory;
 @property (nonatomic) unsigned long long minimumOccurrencesForInclusion; // @synthesize minimumOccurrencesForInclusion=_minimumOccurrencesForInclusion;
+@property (strong, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property (strong, nonatomic) _DKEventStream *stream; // @synthesize stream=_stream;
 
 + (id)histogramQueryForStream:(id)arg1 interval:(id)arg2;
++ (id)histogramQueryForStream:(id)arg1 interval:(id)arg2 withPredicate:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_constructFetchRequestPredicate;

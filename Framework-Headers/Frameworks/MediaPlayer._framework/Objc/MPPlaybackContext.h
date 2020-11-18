@@ -21,6 +21,7 @@
     long long _repeatType;
     NSString *_playActivityFeatureName;
     NSData *_playActivityRecommendationData;
+    NSString *_siriAssetInfo;
     NSString *_siriReferenceIdentifier;
 }
 
@@ -32,6 +33,7 @@
 @property (nonatomic) BOOL shouldRestartPlayback; // @synthesize shouldRestartPlayback=_shouldRestartPlayback;
 @property (nonatomic) BOOL shouldStartPlayback; // @synthesize shouldStartPlayback=_shouldStartPlayback;
 @property (nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
+@property (copy, nonatomic) NSString *siriAssetInfo; // @synthesize siriAssetInfo=_siriAssetInfo;
 @property (copy, nonatomic) NSString *siriReferenceIdentifier; // @synthesize siriReferenceIdentifier=_siriReferenceIdentifier;
 @property (nonatomic) long long startIndex; // @synthesize startIndex=_startIndex;
 

@@ -21,14 +21,17 @@
     HFItemManager *_itemManager;
     HUCameraView *_cameraView;
     unsigned long long _visibilityState;
+    struct UIOffset _defaultCameraBadgeOffset;
 }
 
 @property (strong, nonatomic) HFCameraAudioManager *cameraAudioManager; // @synthesize cameraAudioManager=_cameraAudioManager;
+@property (nonatomic) struct UIOffset cameraBadgeOffset;
 @property (readonly, nonatomic) UIView *cameraOverlaySnapshot;
 @property (strong, nonatomic) HUCameraView *cameraView; // @synthesize cameraView=_cameraView;
 @property (readonly, nonatomic) struct CGRect cameraViewFrame;
 @property (readonly, nonatomic) UIView *cameraViewSnapshot;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) struct UIOffset defaultCameraBadgeOffset; // @synthesize defaultCameraBadgeOffset=_defaultCameraBadgeOffset;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isDisplayInterrupted) BOOL displayInterrupted; // @synthesize displayInterrupted=_displayInterrupted;
 @property (nonatomic) unsigned long long displayMode; // @synthesize displayMode=_displayMode;

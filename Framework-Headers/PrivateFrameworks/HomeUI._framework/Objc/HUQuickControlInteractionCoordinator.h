@@ -7,22 +7,22 @@
 #import <objc/NSObject.h>
 
 @class UIView;
-@protocol HUQuickControlControllableView, HUQuickControlInteractionCoordinatorDelegate, HUQuickControlInteractionHost;
+@protocol HUQuickControlControllableView, HUQuickControlInteractionCoordinatorDelegate;
 
 @interface HUQuickControlInteractionCoordinator : NSObject
 {
+    BOOL _viewVisible;
     BOOL _userInteractionEnabled;
     UIView<HUQuickControlControllableView> *_controlView;
     id<HUQuickControlInteractionCoordinatorDelegate> _delegate;
-    id<HUQuickControlInteractionHost> _interactionHost;
 }
 
 @property (readonly, nonatomic) UIView<HUQuickControlControllableView> *controlView; // @synthesize controlView=_controlView;
 @property (weak, nonatomic) id<HUQuickControlInteractionCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
-@property (weak, nonatomic) id<HUQuickControlInteractionHost> interactionHost; // @synthesize interactionHost=_interactionHost;
 @property (readonly, nonatomic, getter=isUserInteractionActive) BOOL userInteractionActive;
 @property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled; // @synthesize userInteractionEnabled=_userInteractionEnabled;
 @property (strong, nonatomic) id value; // @dynamic value;
+@property (nonatomic) BOOL viewVisible; // @synthesize viewVisible=_viewVisible;
 
 - (void).cxx_destruct;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;

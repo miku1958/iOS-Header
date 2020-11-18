@@ -55,6 +55,7 @@
 - (id)supportedRegionsForOSVersion:(id)arg1 deviceClass:(id)arg2 platform:(id)arg3;
 - (BOOL)suppressCardholderNameFieldForRegion:(id)arg1;
 - (id)unsupportedWebPaymentConfigurations;
+- (BOOL)userCanResetCloudStoreApplePayViewForRegion:(id)arg1;
 
 @end
 

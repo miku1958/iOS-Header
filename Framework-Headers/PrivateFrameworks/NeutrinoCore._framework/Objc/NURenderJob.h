@@ -20,6 +20,7 @@
     BOOL _isExecuting;
     BOOL _isCanceled;
     BOOL _isFinished;
+    int _rendererType;
     long long _currentStage;
     NURenderRequest *_request;
     unsigned long long _number;
@@ -65,6 +66,7 @@
 @property (strong, nonatomic) NURenderPipeline *renderPipeline; // @synthesize renderPipeline=_renderPipeline;
 @property (nonatomic) CDStruct_912cb5d2 renderScale; // @synthesize renderScale=_renderScale;
 @property (readonly, nonatomic) id<NURenderer> renderer;
+@property (readonly, nonatomic) int rendererType; // @synthesize rendererType=_rendererType;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *replyGroup; // @synthesize replyGroup=_replyGroup;
 @property (readonly) NURenderRequest *request; // @synthesize request=_request;
 @property (strong, nonatomic) NUGeometrySpaceMap *resolvedSpaceMap; // @synthesize resolvedSpaceMap=_resolvedSpaceMap;
@@ -121,6 +123,7 @@
 - (id)prepareNodeWithPipelineState:(id)arg1 error:(out id *)arg2;
 - (void)removeObserver:(id)arg1;
 - (BOOL)render:(out id *)arg1;
+- (id)renderImage:(id)arg1 into:(id)arg2 colorSpace:(id)arg3 roi:(id)arg4 imageSize:(CDStruct_912cb5d2)arg5 error:(out id *)arg6;
 - (id)renderNodeWithPipelineState:(id)arg1 error:(out id *)arg2;
 - (BOOL)renderVideoFrames:(id)arg1 intoPixelBuffer:(struct __CVBuffer *)arg2 time:(CDStruct_1b6d18a9)arg3 colorSpace:(id)arg4 error:(out id *)arg5;
 - (void)reply:(id)arg1;

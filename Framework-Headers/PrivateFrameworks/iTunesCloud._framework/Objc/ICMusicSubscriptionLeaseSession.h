@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ICMusicSubscriptionLeaseStatus, ICStoreRequestContext, NSDate, NSString;
+@class ICMusicSubscriptionLeaseStatus, ICStoreRequestContext, NSDate;
 @protocol ICMusicSubscriptionLeaseSessionDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface ICMusicSubscriptionLeaseSession : NSObject
@@ -21,14 +21,12 @@
     BOOL _delegatedLeaseSession;
     ICStoreRequestContext *_requestContext;
     id<ICMusicSubscriptionLeaseSessionDelegate> _delegate;
-    NSString *_lastRequestHouseholdID;
     NSDate *_leaseExpirationDate;
 }
 
 @property (readonly, nonatomic, getter=isAutomaticallyRefreshingLease) BOOL automaticallyRefreshingLease;
 @property (readonly, weak, nonatomic) id<ICMusicSubscriptionLeaseSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic, getter=isDelegatedLeaseSession) BOOL delegatedLeaseSession; // @synthesize delegatedLeaseSession=_delegatedLeaseSession;
-@property (readonly, copy, nonatomic) NSString *lastRequestHouseholdID; // @synthesize lastRequestHouseholdID=_lastRequestHouseholdID;
 @property (readonly, copy, nonatomic) NSDate *leaseExpirationDate; // @synthesize leaseExpirationDate=_leaseExpirationDate;
 @property (readonly, copy, nonatomic) ICMusicSubscriptionLeaseStatus *leaseStatus;
 @property (readonly, copy, nonatomic) ICStoreRequestContext *requestContext; // @synthesize requestContext=_requestContext;
@@ -47,6 +45,7 @@
 - (id)description;
 - (void)endAutomaticallyRefreshingLease;
 - (id)performPlaybackRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)reloadFairPlayKeyStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

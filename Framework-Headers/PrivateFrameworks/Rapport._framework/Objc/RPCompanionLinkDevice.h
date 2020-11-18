@@ -8,28 +8,59 @@
 
 #import <Rapport/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class CUBonjourDevice, NSString, NSUUID;
 
 @interface RPCompanionLinkDevice : NSObject <NSSecureCoding>
 {
+    BOOL _personal;
+    BOOL _personalDeviceConfigured;
+    BOOL _personalRequestsEnabled;
+    BOOL _changed;
+    unsigned int _flags;
+    int _personalRequestsState;
     NSString *_groupID;
     NSString *_identifier;
+    NSString *_idsDeviceIdentifier;
+    NSString *_idsPersonalDeviceIdentifier;
     NSString *_model;
     NSString *_name;
+    NSString *_publicIdentifier;
     NSString *_role;
+    NSString *_roomName;
+    NSString *_tightSyncGroupID;
+    CUBonjourDevice *_bonjourDevice;
+    NSUUID *_pairingIdentifier;
+    NSString *_password;
 }
 
+@property (strong, nonatomic) CUBonjourDevice *bonjourDevice; // @synthesize bonjourDevice=_bonjourDevice;
+@property (nonatomic) BOOL changed; // @synthesize changed=_changed;
+@property (readonly, copy, nonatomic) NSString *effectiveIdentifier;
+@property (nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property (readonly, copy, nonatomic) NSString *groupID; // @synthesize groupID=_groupID;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSString *idsDeviceIdentifier; // @synthesize idsDeviceIdentifier=_idsDeviceIdentifier;
+@property (copy, nonatomic) NSString *idsPersonalDeviceIdentifier; // @synthesize idsPersonalDeviceIdentifier=_idsPersonalDeviceIdentifier;
 @property (copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (copy, nonatomic) NSUUID *pairingIdentifier; // @synthesize pairingIdentifier=_pairingIdentifier;
+@property (copy, nonatomic) NSString *password; // @synthesize password=_password;
+@property (nonatomic, getter=isPersonal) BOOL personal; // @synthesize personal=_personal;
+@property (nonatomic) BOOL personalDeviceConfigured; // @synthesize personalDeviceConfigured=_personalDeviceConfigured;
+@property (nonatomic) BOOL personalRequestsEnabled; // @synthesize personalRequestsEnabled=_personalRequestsEnabled;
+@property (nonatomic) int personalRequestsState; // @synthesize personalRequestsState=_personalRequestsState;
+@property (copy, nonatomic) NSString *publicIdentifier; // @synthesize publicIdentifier=_publicIdentifier;
 @property (copy, nonatomic) NSString *role; // @synthesize role=_role;
+@property (copy, nonatomic) NSString *roomName; // @synthesize roomName=_roomName;
+@property (copy, nonatomic) NSString *tightSyncGroupID; // @synthesize tightSyncGroupID=_tightSyncGroupID;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
+- (id)descriptionWithLevel:(int)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (unsigned int)updateWithBonjourDevice:(id)arg1;
 
 @end
 

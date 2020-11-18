@@ -20,6 +20,7 @@
 @property (readonly) NSDictionary *entitlements;
 @property (readonly) NSString *identifier;
 @property (readonly) NSString *localizedContainingName;
+@property (readonly) NSDictionary *localizedFileProviderActionNames;
 @property (readonly) NSString *localizedName;
 @property (readonly) NSString *localizedShortName;
 @property (readonly) NSUUID *multipleInstanceUUID;

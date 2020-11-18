@@ -11,7 +11,7 @@
 #import <TelephonyUtilities/TUCallRequest-Protocol.h>
 #import <TelephonyUtilities/TUVideoRequest-Protocol.h>
 
-@class CNContactStore, NSArray, NSString, NSURL, NSUserActivity, TUCallProvider, TUCallProviderManager, TUHandle;
+@class CNContactStore, IDSDestination, NSArray, NSString, NSURL, NSUserActivity, TUCallProvider, TUCallProviderManager, TUHandle;
 
 @interface TUDialRequest : NSObject <TUCallRequest, TUVideoRequest, NSSecureCoding, NSCopying>
 {
@@ -35,6 +35,7 @@
     TUCallProviderManager *_providerManager;
     CDUnknownBlockType _isEmergencyNumberBlock;
     CDUnknownBlockType _isEmergencyNumberOrIsWhitelistedBlock;
+    NSString *_endpointIDSDestinationURI;
     long long _originatingUIType;
     struct CGSize _localPortraitAspectRatio;
     struct CGSize _localLandscapeAspectRatio;
@@ -50,6 +51,8 @@
 @property (copy, nonatomic) NSString *destinationID;
 @property (nonatomic, getter=isDialAssisted) BOOL dialAssisted; // @synthesize dialAssisted=_dialAssisted;
 @property (nonatomic) long long dialType; // @synthesize dialType=_dialType;
+@property (readonly, nonatomic) IDSDestination *endpointIDSDestination;
+@property (copy, nonatomic) NSString *endpointIDSDestinationURI; // @synthesize endpointIDSDestinationURI=_endpointIDSDestinationURI;
 @property (nonatomic) BOOL endpointOnCurrentDevice; // @synthesize endpointOnCurrentDevice=_endpointOnCurrentDevice;
 @property (strong, nonatomic) TUHandle *handle; // @synthesize handle=_handle;
 @property (readonly) unsigned long long hash;
@@ -111,6 +114,7 @@
 - (id)dialAssistedURLQueryItem;
 - (id)dialRequestByReplacingProvider:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)endpointIDSDestinationURIQueryItem;
 - (id)forceAssistURLQueryItem;
 - (id)handleFromURL:(id)arg1;
 - (id)handleTypeURLQueryItem;

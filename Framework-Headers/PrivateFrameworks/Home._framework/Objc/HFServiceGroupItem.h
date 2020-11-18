@@ -7,13 +7,14 @@
 #import <Home/HFItem.h>
 
 #import <Home/HFCharacteristicWriteActionBuilderFactory-Protocol.h>
+#import <Home/HFGroupableItemProtocol-Protocol.h>
 #import <Home/HFServiceLikeBuilderCreating-Protocol.h>
 #import <Home/HFServiceLikeItem-Protocol.h>
 
 @class HMServiceGroup, NSString;
 @protocol HFCharacteristicValueSource, HFHomeKitObject;
 
-@interface HFServiceGroupItem : HFItem <HFServiceLikeItem, HFCharacteristicWriteActionBuilderFactory, HFServiceLikeBuilderCreating>
+@interface HFServiceGroupItem : HFItem <HFServiceLikeItem, HFCharacteristicWriteActionBuilderFactory, HFServiceLikeBuilderCreating, HFGroupableItemProtocol>
 {
     id<HFCharacteristicValueSource> _valueSource;
     HMServiceGroup *_serviceGroup;
@@ -23,6 +24,9 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
+@property (readonly, nonatomic) BOOL isContainedWithinItemGroup;
+@property (readonly, nonatomic) BOOL isItemGroup;
+@property (readonly, nonatomic) unsigned long long numberOfItemsContainedWithinGroup;
 @property (readonly, nonatomic) HMServiceGroup *serviceGroup; // @synthesize serviceGroup=_serviceGroup;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;

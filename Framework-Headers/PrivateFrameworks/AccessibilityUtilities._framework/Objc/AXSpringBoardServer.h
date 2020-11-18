@@ -41,6 +41,7 @@
 - (BOOL)_isSystemAppFrontmostExcludingSiri:(BOOL)arg1;
 - (void)_isSystemAppFrontmostExcludingSiri:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_messageForMediaPlayingQueryForBundleID:(id)arg1;
+- (void)_sendRemoteViewIPCMessage:(long long)arg1 withRemoteViewType:(long long)arg2 withData:(id)arg3;
 - (id)_serviceName;
 - (BOOL)_shouldDispatchLocally;
 - (BOOL)_shouldValidateEntitlements;
@@ -70,6 +71,7 @@
 - (BOOL)hasActiveOrPendingCallOrFaceTime;
 - (void)hideAlert;
 - (void)hideNotificationCenter;
+- (void)hideRemoteView:(long long)arg1 withData:(id)arg2;
 - (id)init;
 - (id)installedApps;
 - (BOOL)isAppSwitcherVisible;
@@ -125,6 +127,7 @@
 - (int)purpleBuddyPID;
 - (void)purpleBuddyPID:(CDUnknownBlockType)arg1;
 - (double)reachabilityOffset;
+- (void)reactivateInCallService;
 - (void)rebootDevice;
 - (void)registerReachabilityHandler:(CDUnknownBlockType)arg1 withIdentifierCallback:(CDUnknownBlockType)arg2;
 - (void)registerSpringBoardActionHandler:(CDUnknownBlockType)arg1 withIdentifierCallback:(CDUnknownBlockType)arg2;
@@ -152,6 +155,7 @@
 - (void)showControlCenter:(BOOL)arg1;
 - (void)showNotificationCenter;
 - (BOOL)showNotificationCenter:(BOOL)arg1;
+- (void)showRemoteView:(long long)arg1 withData:(id)arg2;
 - (void)simulateEdgePressHaptics;
 - (void)startHearingAidServer;
 - (void)systemAppInfoWithQuery:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;

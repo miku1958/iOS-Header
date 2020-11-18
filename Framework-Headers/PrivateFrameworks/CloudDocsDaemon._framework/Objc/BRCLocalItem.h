@@ -137,6 +137,7 @@
 + (id)unsaltedBookmarkDataWithRelativePath:(id)arg1 serverZone:(id)arg2;
 - (void).cxx_destruct;
 - (void)_ascendItemHierarchyWithBlock:(CDUnknownBlockType)arg1;
+- (void)_cheapCheckSavingItem;
 - (BOOL)_checkForSharedToMeItemInTrashWithPath:(id)arg1;
 - (BOOL)_checkZoneUpdateFromFSAtPath:(id)arg1 parentGlobalID:(id)arg2;
 - (BOOL)_computedUserVisibleStatusAtPath:(id)arg1;
@@ -202,7 +203,7 @@
 - (void)markForceRejected;
 - (void)markFound;
 - (void)markItemForgottenByServer;
-- (void)markLatestRequestAcknowledgedInZone:(id)arg1;
+- (BOOL)markLatestRequestAcknowledgedInZone:(id)arg1;
 - (void)markLatestSyncRequestFailedInZone:(id)arg1;
 - (void)markLatestSyncRequestRejectedInZone:(id)arg1;
 - (void)markLiveFromStageWithPath:(id)arg1;

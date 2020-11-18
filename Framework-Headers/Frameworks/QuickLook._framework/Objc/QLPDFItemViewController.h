@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateThumbnailViewWithTraitCollection:(id)arg1;
 - (BOOL)automaticallyUpdateScrollViewContentInset;
 - (BOOL)automaticallyUpdateScrollViewContentOffset;
+- (BOOL)automaticallyUpdateScrollViewIndicatorInset;
 - (BOOL)canSwipeToDismiss;
 - (BOOL)controller:(id)arg1 shouldOpenLinkAtURL:(id)arg2;
 - (struct UIEdgeInsets)customEdgeInsets;

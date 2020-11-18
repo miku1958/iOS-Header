@@ -189,6 +189,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_accessibilityDidGetSpeakSelectionContent:(id)arg1;
+- (void)_accessibilityRetrieveRectsAtSelectionOffset:(long long)arg1 withText:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_accessibilityRetrieveSpeakSelectionContent;
 - (void)_accessibilitySettingsDidChange:(id)arg1;
 - (void)_addShortcut:(id)arg1;

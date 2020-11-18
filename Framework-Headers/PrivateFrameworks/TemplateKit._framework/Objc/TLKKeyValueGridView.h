@@ -21,9 +21,8 @@
 
 + (void)setStylesOnLabels:(id)arg1 withStyle:(unsigned long long)arg2;
 - (void).cxx_destruct;
-- (id)generateLabelForGridWithBold:(BOOL)arg1;
 - (id)init;
-- (void)updateWithTuples:(id)arg1 valueColumnIsTrailing:(BOOL)arg2;
+- (void)updateWithTuples:(id)arg1 valueColumnIsTrailing:(BOOL)arg2 truncateKey:(BOOL)arg3;
 
 @end
 

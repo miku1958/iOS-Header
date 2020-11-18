@@ -8,7 +8,7 @@
 
 #import <iTunesStore/SSXPCCoding-Protocol.h>
 
-@class NSArray, NSLock, NSMutableDictionary, NSNumber, NSString, SSAuthenticationContext, SSPaymentSheet;
+@class NSArray, NSLock, NSMutableDictionary, NSString, SSAuthenticationContext, SSPaymentSheet;
 
 @interface ISDialog : NSObject <SSXPCCoding>
 {
@@ -38,7 +38,6 @@
     NSMutableDictionary *_userInfo;
     struct __CFDictionary *_userNotificationValues;
     BOOL _displaysOnLockscreen;
-    NSNumber *_convertAccountDSID;
     SSPaymentSheet *_paymentSheet;
     NSString *_touchIDContinueToken;
 }
@@ -48,7 +47,6 @@
 @property (copy) SSAuthenticationContext *authenticationContext; // @synthesize authenticationContext=_authenticationContext;
 @property BOOL authorizationIsForced; // @synthesize authorizationIsForced=_authorizationIsForced;
 @property (strong) NSArray *buttons; // @synthesize buttons=_buttons;
-@property (copy, nonatomic) NSNumber *convertAccountDSID; // @synthesize convertAccountDSID=_convertAccountDSID;
 @property (readonly, copy) NSString *debugDescription;
 @property long long defaultButtonIndex; // @synthesize defaultButtonIndex=_defaultButtonIndex;
 @property (readonly, copy) NSString *description;

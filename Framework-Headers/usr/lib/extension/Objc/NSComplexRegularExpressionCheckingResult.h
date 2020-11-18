@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSRegularExpressionCheckingResult.h>
+#import <Foundation/NSRegularExpressionCheckingResult.h>
 
 @class NSArray, NSRegularExpression;
 

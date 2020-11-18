@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSSet *sizeIndexes; // @dynamic sizeIndexes;
 
 - (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;
+- (void)processRendition:(id)arg1 withBackstop:(id)arg2;
 
 @end
 

@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)_applicationWillDeactivate:(id)arg1;
 - (id)_clientDeferralProperties;
 - (id)_deferredPropertiesForClientContext:(unsigned int)arg1;
+- (BOOL)_formSheetObeysContentContainerSize;
 - (id)_hostDeferralProperties;
 - (void)_localAuthenticationUIDismissed;
 - (void)_localAuthenticationUIPresented;
@@ -50,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)presentSelfWithAnimation:(BOOL)arg1;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
 - (BOOL)shouldPresentAsPopover;
+- (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

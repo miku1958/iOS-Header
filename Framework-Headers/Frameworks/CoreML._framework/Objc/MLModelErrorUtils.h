@@ -11,6 +11,7 @@
 }
 
 + (id)IOErrorWithString:(id)arg1;
++ (id)customLayerErrorWithUnderlyingError:(id)arg1 withString:(id)arg2;
 + (id)errorWithCode:(long long)arg1 format:(id)arg2 args:(struct __va_list_tag [1])arg3;
 + (id)errorWithCode:(long long)arg1 string:(id)arg2;
 + (id)featureTypeErrorWithString:(id)arg1;

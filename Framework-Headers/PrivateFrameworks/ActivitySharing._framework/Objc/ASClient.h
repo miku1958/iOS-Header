@@ -31,6 +31,7 @@
 - (void)clearFriendListWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cloudKitAccountStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)connectionInvalidated;
+- (void)consolidateRelationshipEventsForFriendWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)exportedInterface;
 - (void)fetchAllDataIfTimeSinceLastFetchIsGreaterThan:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchAllDataWithCompletion:(CDUnknownBlockType)arg1;

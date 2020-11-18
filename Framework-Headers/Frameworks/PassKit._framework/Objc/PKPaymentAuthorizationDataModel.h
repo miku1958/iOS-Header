@@ -23,7 +23,7 @@
     NSMutableDictionary *_remoteDeviceToAcceptedInstruments;
     NSArray *_allRemoteDevices;
     NSMutableDictionary *_statusForPass;
-    PKPaymentPass *_paymentPassForErrors;
+    NSString *_paymentApplicationIdentifierForErrors;
     NSArray *_clientErrors;
     BOOL _shippingEditable;
     PKPaymentPass *_pass;
@@ -143,7 +143,7 @@
 - (void)setStatus:(long long)arg1 forItemWithType:(long long)arg2 notify:(BOOL)arg3;
 - (BOOL)shouldUpdateContactDataItem;
 - (id)unavailablePaymentApplicationsForPass:(id)arg1;
-- (void)updatePass:(id)arg1;
+- (void)updateBillingErrors;
 - (void)updateRemoteDevices:(id)arg1;
 - (void)updateRemoteDevices:(id)arg1 ignoreProximity:(BOOL)arg2;
 

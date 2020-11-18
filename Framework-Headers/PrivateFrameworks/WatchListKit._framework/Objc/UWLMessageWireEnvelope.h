@@ -13,6 +13,7 @@
 @interface UWLMessageWireEnvelope : PBCodable <NSCopying>
 {
     UWLMessageHeaders *_headers;
+    NSMutableArray *_liveActivityEvents;
     NSMutableArray *_optInEvents;
     NSMutableArray *_optOutEvents;
     NSMutableArray *_playEvents;
@@ -20,18 +21,22 @@
 }
 
 @property (strong, nonatomic) UWLMessageHeaders *headers; // @synthesize headers=_headers;
+@property (strong, nonatomic) NSMutableArray *liveActivityEvents; // @synthesize liveActivityEvents=_liveActivityEvents;
 @property (strong, nonatomic) NSMutableArray *optInEvents; // @synthesize optInEvents=_optInEvents;
 @property (strong, nonatomic) NSMutableArray *optOutEvents; // @synthesize optOutEvents=_optOutEvents;
 @property (strong, nonatomic) NSMutableArray *playEvents; // @synthesize playEvents=_playEvents;
 @property (nonatomic) int version; // @synthesize version=_version;
 
++ (Class)liveActivityEventsType;
 + (Class)optInEventsType;
 + (Class)optOutEventsType;
 + (Class)playEventsType;
 - (void).cxx_destruct;
+- (void)addLiveActivityEvents:(id)arg1;
 - (void)addOptInEvents:(id)arg1;
 - (void)addOptOutEvents:(id)arg1;
 - (void)addPlayEvents:(id)arg1;
+- (void)clearLiveActivityEvents;
 - (void)clearOptInEvents;
 - (void)clearOptOutEvents;
 - (void)clearPlayEvents;
@@ -41,6 +46,8 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)liveActivityEventsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)liveActivityEventsCount;
 - (void)mergeFrom:(id)arg1;
 - (id)optInEventsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)optInEventsCount;

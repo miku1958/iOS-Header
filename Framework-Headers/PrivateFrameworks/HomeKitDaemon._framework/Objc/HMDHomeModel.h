@@ -12,15 +12,12 @@
 {
 }
 
-@property (strong, nonatomic) NSNumber *automaticSoftwareUpdateEnabled; // @dynamic automaticSoftwareUpdateEnabled;
 @property (strong, nonatomic) NSString *defaultRoomUUID; // @dynamic defaultRoomUUID;
 @property (strong, nonatomic) NSData *homeLocationData; // @dynamic homeLocationData;
-@property (strong, nonatomic) NSString *mediaPassword; // @dynamic mediaPassword;
-@property (strong, nonatomic) NSNumber *mediaPeerToPeerEnabled; // @dynamic mediaPeerToPeerEnabled;
-@property (strong, nonatomic) NSNumber *minimumMediaUserPrivilege; // @dynamic minimumMediaUserPrivilege;
 @property (strong, nonatomic) NSString *name; // @dynamic name;
 @property (strong, nonatomic) NSString *ownerName; // @dynamic ownerName;
 @property (strong, nonatomic) NSData *ownerPublicKey; // @dynamic ownerPublicKey;
+@property (strong, nonatomic) NSString *ownerUUID; // @dynamic ownerUUID;
 @property (strong, nonatomic) NSString *ownerUserID; // @dynamic ownerUserID;
 @property (strong, nonatomic) NSNumber *presenceAuthorizationStatus; // @dynamic presenceAuthorizationStatus;
 @property (strong, nonatomic) NSNumber *presenceComputeStatus; // @dynamic presenceComputeStatus;

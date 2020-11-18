@@ -52,6 +52,7 @@
 @property struct CGRect contentsRect;
 @property double contentsScale;
 @property (copy) NSString *contentsScaling;
+@property (copy) NSString *contentsSwizzle;
 @property struct CGAffineTransform contentsTransform;
 @property BOOL continuousCorners;
 @property (strong) id cornerContents;
@@ -183,6 +184,7 @@
 - (void)dealloc;
 - (id)debugDescription;
 - (id)dependentStatesOfState:(id)arg1;
+- (unsigned int)disableUpdateMask;
 - (void)display;
 - (void)displayIfNeeded;
 - (BOOL)doubleSided;
@@ -237,6 +239,7 @@
 - (void)scrollRectToVisible:(struct CGRect)arg1;
 - (void)setAffineTransform:(struct CGAffineTransform)arg1;
 - (void)setContentsChanged;
+- (void)setDisableUpdateMask:(unsigned int)arg1;
 - (void)setFlipped:(BOOL)arg1;
 - (void)setLights:(id)arg1;
 - (void)setNeedsDisplay;

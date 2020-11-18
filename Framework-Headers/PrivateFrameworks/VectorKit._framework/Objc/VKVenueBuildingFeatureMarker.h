@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface VKVenueBuildingFeatureMarker : VKFeatureMarker
 {
+    BOOL _localize;
 }
 
 @property (readonly, nonatomic) unsigned long long buildingId;
@@ -19,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *floorOrdinals;
 @property (readonly, nonatomic) NSDictionary *shortFloorNames;
 
-- (id)initWithVenueBuilding:(const struct VenueBuilding *)arg1;
+- (id)initWithVenueBuilding:(const struct VenueBuilding *)arg1 localize:(BOOL)arg2;
 - (CDStruct_c3b9c2ee)nearestFramingPositionToLocation:(CDStruct_c3b9c2ee)arg1;
 - (const shared_ptr_ec62a932 *)venueBuildingFeatureMarker;
 

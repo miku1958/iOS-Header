@@ -27,8 +27,8 @@
 @property (readonly, copy) NURegion *validRegion;
 
 - (void).cxx_destruct;
-- (BOOL)copyBufferStorage:(id)arg1 region:(id)arg2 atPoint:(CDStruct_912cb5d2)arg3;
-- (BOOL)copySurfaceStorage:(id)arg1 device:(id)arg2 region:(id)arg3 atPoint:(CDStruct_912cb5d2)arg4;
+- (BOOL)copyBufferStorage:(id)arg1 fromRect:(CDStruct_996ac03c)arg2 toPoint:(CDStruct_912cb5d2)arg3;
+- (BOOL)copySurfaceStorage:(id)arg1 fromRect:(CDStruct_996ac03c)arg2 toPoint:(CDStruct_912cb5d2)arg3 device:(id)arg4;
 - (id)init;
 - (id)initWithBuffer:(id)arg1 colorSpace:(id)arg2 validRegion:(id)arg3;
 - (id)initWithMutableBuffer:(id)arg1 colorSpace:(id)arg2 validRegion:(id)arg3;

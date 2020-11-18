@@ -26,7 +26,7 @@
 - (BOOL)_accessibilityHasNativeFocus;
 - (BOOL)_accessibilityIgnoreDelegate;
 - (BOOL)_accessibilityInternalHandleStartStopToggle;
-- (BOOL)_accessibilityIsContainedByPreferredNativeFocusElement;
+- (BOOL)_accessibilityIsContainedByNativeFocusElement;
 - (BOOL)_accessibilityIsContainedByVideoElement;
 - (BOOL)_accessibilityIsFocusParcel;
 - (BOOL)_accessibilityMimicsTextInputResponder;
@@ -76,6 +76,7 @@
 - (void)_setAccessibilityHeaderElementsBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityHintBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityIdentifierBlock:(CDUnknownBlockType)arg1;
+- (void)_setAccessibilityIsRealtimeElementBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityLabelBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityLanguageBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityLinkedUIElementsBlock:(CDUnknownBlockType)arg1;

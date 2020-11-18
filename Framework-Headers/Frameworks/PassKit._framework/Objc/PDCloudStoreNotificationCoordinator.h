@@ -49,6 +49,7 @@
 - (void)applyPushNotificationToken:(id)arg1;
 - (BOOL)canSyncTransactionFromCloudKitForPassUniqueIdentifier:(id)arg1;
 - (BOOL)canSyncTransactionToCloudKitWithBackingData:(BOOL)arg1 passUniqueIdentifier:(id)arg2 serviceIdentifier:(id)arg3;
+- (void)checkTLKsMissingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cloudStoreManager:(id)arg1 createdZoneWithName:(id)arg2;
 - (void)cloudStoreManager:(id)arg1 didChangeContainerState:(unsigned long long)arg2;
 - (void)cloudStoreManagerShouldUnscheduleAllBackgroundActivities:(id)arg1;
@@ -61,13 +62,16 @@
 - (id)initWithPushNotificationManager:(id)arg1 dataSource:(id)arg2 transactionProcessor:(id)arg3;
 - (id)initWithPushNotificationManager:(id)arg1 dataSource:(id)arg2 transactionProcessor:(id)arg3 initalizeCloudStoreManager:(BOOL)arg4;
 - (void)initalizeCloudStoreIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)initalizeCloudStoreIfNecessaryWithHandler:(CDUnknownBlockType)arg1;
 - (void)invalidateCloudStore;
 - (void)performScheduledActivityWithIdentifier:(id)arg1 activityCriteria:(id)arg2 activityContext:(id)arg3;
 - (id)pushNotificationTopics;
 - (void)registerObserver:(id)arg1;
 - (void)removeItemsWithRecordNames:(id)arg1 itemClass:(Class)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)requestUpdatesForPassUniqueIdenitifer:(id)arg1;
+- (void)resetApplePayManateeViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resetContainerWithCompletion:(CDUnknownBlockType)arg1;
+- (void)resetContainerWithHandler:(CDUnknownBlockType)arg1;
 - (void)simulateCloudStorePushWithCompletion:(CDUnknownBlockType)arg1;
 - (void)unregisterObserver:(id)arg1;
 - (void)updateCloudStoreWithLocalItems:(id)arg1 recordSpecificKeys:(id)arg2 completion:(CDUnknownBlockType)arg3;

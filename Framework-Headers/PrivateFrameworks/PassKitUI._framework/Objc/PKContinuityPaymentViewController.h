@@ -85,6 +85,7 @@
 - (void)dismissPassphraseViewController;
 - (id)init;
 - (id)initWithRemotePaymentRequest:(id)arg1;
+- (void)invalidate;
 - (void)loadView;
 - (BOOL)paymentAuthorizationStateMachine:(id)arg1 didTransitionFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3 withParam:(id)arg4;
 - (BOOL)paymentPass:(id *)arg1 paymentApplication:(id *)arg2 fromAID:(id)arg3;

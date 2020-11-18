@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/_NSConcreteObservation.h>
+#import <Foundation/_NSConcreteObservation.h>
 
 @class NSObservableKeyPath;
 

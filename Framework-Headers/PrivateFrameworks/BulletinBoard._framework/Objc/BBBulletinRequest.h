@@ -85,6 +85,7 @@
 - (id)awakeAfterUsingCoder:(id)arg1;
 - (void)generateBulletinID;
 - (void)generateNewBulletinID;
+- (BOOL)hasAdditionalAttachmentsModificationsRelativeTo:(id)arg1;
 - (BOOL)hasContentModificationsRelativeTo:(id)arg1;
 - (void)publish;
 - (void)publish:(BOOL)arg1;

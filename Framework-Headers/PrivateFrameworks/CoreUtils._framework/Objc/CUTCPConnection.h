@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class CUBonjourDevice, CUReadRequest, CUWriteRequest, NSString;
+@class CUBonjourDevice, CUNetLinkEndpoint, CUNetLinkManager, CUReadRequest, CUWriteRequest, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CUTCPConnection : NSObject
@@ -23,6 +23,7 @@
     CDUnknownBlockType _activateCompletion;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
+    CUNetLinkEndpoint *_netLinkEndpoint;
     struct LogCategory *_ucat;
     unsigned long long _ifExtendedFlags;
     unsigned int _ifFlags;
@@ -35,6 +36,7 @@
     CDUnion_fab80606 _selfAddr;
     int _defaultPort;
     unsigned int _flags;
+    int _keepAliveSeconds;
     int _socketFD;
     double _connectTimeoutSecs;
     double _dataTimeoutSecs;
@@ -44,6 +46,7 @@
     CDUnknownBlockType _errorHandler;
     CDUnknownBlockType _invalidationHandler;
     NSString *_label;
+    CUNetLinkManager *_netLinkManager;
     CDUnknownBlockType _serverInvalidationHandler;
 }
 
@@ -56,7 +59,9 @@
 @property (copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
 @property (nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
+@property (nonatomic) int keepAliveSeconds; // @synthesize keepAliveSeconds=_keepAliveSeconds;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property (strong, nonatomic) CUNetLinkManager *netLinkManager; // @synthesize netLinkManager=_netLinkManager;
 @property (copy, nonatomic) CDUnknownBlockType serverInvalidationHandler; // @synthesize serverInvalidationHandler=_serverInvalidationHandler;
 @property (nonatomic) int socketFD; // @synthesize socketFD=_socketFD;
 
@@ -67,6 +72,7 @@
 - (void)_completeWriteRequest:(id)arg1 error:(id)arg2;
 - (void)_invalidate;
 - (void)_invalidated;
+- (void)_netLinkStateChanged;
 - (void)_prepareReadRequest:(id)arg1;
 - (BOOL)_prepareWriteRequest:(id)arg1 error:(id *)arg2;
 - (BOOL)_processReadStatus;

@@ -34,6 +34,7 @@
     NSString *_referrerURL;
     long long _purchaseID;
     NSArray *_requiredCapabilities;
+    NSNumber *_purchaserDSID;
 }
 
 @property (copy, nonatomic) NSNumber *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
@@ -51,6 +52,7 @@
 @property (copy, nonatomic) NSNumber *itemID; // @synthesize itemID=_itemID;
 @property (copy, nonatomic) NSString *itemName; // @synthesize itemName=_itemName;
 @property long long purchaseID; // @synthesize purchaseID=_purchaseID;
+@property (copy, nonatomic) NSNumber *purchaserDSID; // @synthesize purchaserDSID=_purchaserDSID;
 @property (copy, nonatomic) NSString *referrerName; // @synthesize referrerName=_referrerName;
 @property (copy, nonatomic) NSString *referrerURL; // @synthesize referrerURL=_referrerURL;
 @property (copy, nonatomic) NSArray *requiredCapabilities; // @synthesize requiredCapabilities=_requiredCapabilities;

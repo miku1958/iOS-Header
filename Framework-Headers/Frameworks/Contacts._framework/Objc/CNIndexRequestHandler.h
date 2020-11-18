@@ -44,7 +44,9 @@
 - (BOOL)endIndexBatchWithClientState;
 - (void)fetchAndCheckLastClientState;
 - (id)fetchChangeHistory;
+- (id)fetchChangeHistoryWithError:(id *)arg1;
 - (BOOL)fetchLastClientState;
+- (id)fetchSearchableItemsIndexedByContactIdentifierWithError:(id *)arg1;
 - (BOOL)fullSyncContacts;
 - (BOOL)indexSearchableItems:(id)arg1;
 - (id)init;
@@ -55,6 +57,7 @@
 - (void)reindexAllSearchableItems;
 - (void)reindexSearchableItemsWithIdentifiers:(id)arg1;
 - (id)searchableItemsForContactIdentifiers:(id)arg1;
+- (id)verifyIndexLoggingSummary:(BOOL)arg1 error:(id *)arg2;
 
 @end
 

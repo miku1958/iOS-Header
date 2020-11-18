@@ -35,6 +35,7 @@
 + (id)tupleForSettings:(id)arg1 setting:(id)arg2 observer:(id)arg3 owner:(id)arg4;
 - (void).cxx_destruct;
 - (void)_accessorySettingDidUpdate:(id)arg1;
+- (void)_accessorySettingReflectionStateDidUpdate:(id)arg1;
 - (id)initWithSettings:(id)arg1 setting:(id)arg2 observer:(id)arg3 owner:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (void)settingsDidUpdate:(id)arg1;

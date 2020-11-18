@@ -22,7 +22,7 @@
 
 @property (strong, nonatomic) IKViewElementStyle *composedSansDefaultStyle; // @synthesize composedSansDefaultStyle=_composedSansDefaultStyle;
 @property (strong, nonatomic) IKViewElementStyle *composedStyle; // @synthesize composedStyle=_composedStyle;
-@property (nonatomic, getter=isCompositionDone) BOOL compositionDone; // @synthesize compositionDone=_compositionDone;
+@property (readonly, nonatomic, getter=isCompositionDone) BOOL compositionDone; // @synthesize compositionDone=_compositionDone;
 @property (readonly, strong, nonatomic) IKViewElementStyleComposer *defaultStyleComposer; // @synthesize defaultStyleComposer=_defaultStyleComposer;
 @property (readonly, strong, nonatomic) IKViewElementStyle *elementStyleOverrides; // @synthesize elementStyleOverrides=_elementStyleOverrides;
 @property (readonly, strong, nonatomic) IKViewElementStyleComposer *parentStyleComposer; // @synthesize parentStyleComposer=_parentStyleComposer;

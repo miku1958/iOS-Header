@@ -8,31 +8,43 @@
 
 #import <HomeUI/HUQuickControlControllableView-Protocol.h>
 
-@class HUQuickControlSwitchViewProfile, NSString;
+@class HUDynamicFormattingLabel, HUIconView, HUQuickControlSwitchViewProfile, NSString;
 
 @interface HUQuickControlSwitchView : UIView <HUQuickControlControllableView>
 {
     HUQuickControlSwitchViewProfile *_profile;
     UIView *_wellView;
     UIView *_knobView;
+    HUDynamicFormattingLabel *_supplementaryValueLabel;
+    HUIconView *_decorationIconView;
     double _switchValue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) HUIconView *decorationIconView; // @synthesize decorationIconView=_decorationIconView;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *knobView; // @synthesize knobView=_knobView;
 @property (copy, nonatomic) HUQuickControlSwitchViewProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) id secondaryValue;
-@property (nonatomic) long long sizeSubclass;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) HUDynamicFormattingLabel *supplementaryValueLabel; // @synthesize supplementaryValueLabel=_supplementaryValueLabel;
 @property (nonatomic) double switchValue; // @synthesize switchValue=_switchValue;
 @property (strong, nonatomic) id value;
 @property (strong, nonatomic) UIView *wellView; // @synthesize wellView=_wellView;
 
++ (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
+- (BOOL)_createDecorationIconViewIfNecessary;
+- (void)_createSupplementaryValueLabelIfNecessary;
+- (struct CGPoint)_knobCenterForMetrics:(CDStruct_2418a849)arg1 switchValue:(double)arg2;
+- (struct CGRect)_knobFrameForMetrics:(CDStruct_2418a849)arg1 switchValue:(double)arg2;
+- (struct CGSize)_knobSizeForMetrics:(CDStruct_2418a849)arg1;
+- (void)_updateDecorationIconDescriptorAnimated:(BOOL)arg1;
+- (void)_updateSupplementaryValueLabelAnimated:(BOOL)arg1;
 - (id)initWithProfile:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;
 - (void)layoutSubviews;
 
 @end

@@ -46,5 +46,6 @@
 - (void)reset;
 - (void)setCurrentIndex:(long long)arg1 selectionDirection:(long long)arg2;
 - (void)updateForSoundCheckDefaultsChange;
+- (void)updateLocationDependentPropertiesForItem:(MPAVItem *)arg1;
 @end
 

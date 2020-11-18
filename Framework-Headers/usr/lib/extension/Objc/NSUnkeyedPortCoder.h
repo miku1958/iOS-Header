@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSConcretePortCoder.h>
+#import <Foundation/NSConcretePortCoder.h>
 
 @class NSDOStreamData, NSMutableArray;
 

@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @protocol RPDaemonXPCServerInterface
 - (void)activateAssertionWithIdentifier:(NSString *)arg1;
+- (void)diagnosticCommand:(NSString *)arg1 params:(NSDictionary *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)diagnosticLogControl:(NSString *)arg1 completion:(void (^)(NSString *))arg2;
 - (void)diagnosticShow:(NSString *)arg1 level:(int)arg2 completion:(void (^)(NSString *))arg3;
 @end

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSUnitConverter.h>
+#import <Foundation/NSUnitConverter.h>
 
-#import <extension/NSSecureCoding-Protocol.h>
+#import <Foundation/NSSecureCoding-Protocol.h>
 
 __attribute__((visibility("hidden")))
 @interface NSUnitConverterReciprocal : NSUnitConverter <NSSecureCoding>

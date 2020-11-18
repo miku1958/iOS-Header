@@ -11,17 +11,19 @@
 #import <Home/NSCopying-Protocol.h>
 #import <Home/NSMutableCopying-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSAttributedString, NSDictionary, NSString;
 
 @interface HFItemSection : NSObject <HFDiffableItemGroup, NSCopying, NSMutableCopying, NAIdentifiable>
 {
     NSString *_identifier;
     NSString *_headerTitle;
     NSString *_footerTitle;
+    NSAttributedString *_attributedFooterTitle;
     NSDictionary *_userInfo;
     NSArray *_items;
 }
 
+@property (copy, nonatomic) NSAttributedString *attributedFooterTitle; // @synthesize attributedFooterTitle=_attributedFooterTitle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSArray *diffableItems;

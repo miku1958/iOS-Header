@@ -6,47 +6,63 @@
 
 #import <Home/HFItem.h>
 
-#import <Home/HFAccessorySettings-Protocol.h>
-#import <Home/HFHomeKitItemProtocol-Protocol.h>
-#import <Home/HFItemBuilderItem-Protocol.h>
-#import <Home/HFServiceLikeBuilderCreating-Protocol.h>
-#import <Home/HFServiceLikeItem-Protocol.h>
+#import <Home/HFMediaAccessoryLikeItem-Protocol.h>
 
-@class HMAccessory, HMAccessorySettings, HMMediaProfile, NSString;
-@protocol HFCharacteristicValueSource, HFHomeKitObject;
+@class NSSet, NSString;
+@protocol HFCharacteristicValueSource, HFHomeKitObject, HFMediaProfileContainer;
 
-@interface HFMediaAccessoryItem : HFItem <HFHomeKitItemProtocol, HFServiceLikeItem, HFServiceLikeBuilderCreating, HFItemBuilderItem, HFAccessorySettings>
+@interface HFMediaAccessoryItem : HFItem <HFMediaAccessoryLikeItem>
 {
+    id<HFHomeKitObject> _homeKitObject;
+    id<HFMediaProfileContainer> _mediaProfileContainer;
     id<HFCharacteristicValueSource> _valueSource;
-    HMAccessory *_accessory;
 }
 
-@property (readonly, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
+@property (readonly, nonatomic) NSSet *accessoriesSupportingSoftwareUpdate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
-@property (readonly, nonatomic) HMMediaProfile *mediaProfile;
-@property (readonly, nonatomic) HMAccessorySettings *settings;
+@property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject; // @synthesize homeKitObject=_homeKitObject;
+@property (readonly, nonatomic) BOOL isContainedWithinItemGroup;
+@property (readonly, nonatomic) BOOL isItemGroup;
+@property (readonly, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
+@property (readonly, nonatomic) unsigned long long numberOfItemsContainedWithinGroup;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 
 - (void).cxx_destruct;
-- (void)_decorateOutcomeForPlaybackState:(id)arg1;
 - (void)_decorateOutcomeWithAccessorySpecificKeys:(id)arg1;
+- (void)_decorateServiceLikeItemKeys:(id)arg1;
+- (void)_decorateWithMediaSessionKeys:(id)arg1;
+- (void)_decorateWithMediaSystemSpecificKeys:(id)arg1;
+- (void)_decorateWithSoftwareUpdateStateKeys:(id)arg1;
+- (unsigned long long)_effectiveLoadingStateForSuggestedLoadingState:(unsigned long long)arg1;
+- (BOOL)_isInstallingSoftwareUpdate;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)accessories;
-- (id)allControlItems;
-- (id)controlPanelItems;
 - (id)copyWithValueSource:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)incrementalStateControlItem;
+- (id)createControlItems;
+- (id)iconDescriptor;
 - (id)init;
-- (id)initWithValueSource:(id)arg1 accessory:(id)arg2;
-- (id)primaryStateControlItem;
+- (id)initWithValueSource:(id)arg1 homeKitObject:(id)arg2;
+- (id)initWithValueSource:(id)arg1 mediaProfileContainer:(id)arg2;
+- (BOOL)isAirPort;
+- (BOOL)isAppleTV;
+- (BOOL)isContainedWithinMediaSystem;
+- (BOOL)isHomePod;
+- (BOOL)isHomePodAndIsInMediaSystem;
+- (BOOL)isHomePodMediaSystem;
+- (BOOL)isSiriDisabled;
+- (BOOL)isSpeaker;
+- (id)performStandardUpdateWithOptions:(id)arg1;
+- (id)room;
 - (id)serviceLikeBuilderInHome:(id)arg1;
+- (id)serviceNameComponents;
 - (id)services;
-- (id)togglePlayState;
+- (id)settings;
+- (BOOL)supportsAlarmQuickControls;
+- (BOOL)supportsMediaQuickControls;
 
 @end
 

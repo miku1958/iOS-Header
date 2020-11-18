@@ -46,7 +46,6 @@
 - (void)_notifyDelegatePasscodeCancelled;
 - (void)_notifyDelegatePasscodeEntered;
 - (id)_numberPad;
-- (double)_numberPadOffsetFromTopOfScreen;
 - (id)_numericEntryFieldIfExists;
 - (double)_offsetForCenteringTitleAndEntryFieldFrame:(struct CGRect)arg1 withTopYvalue:(double)arg2 bottomYvalue:(double)arg3;
 - (void)_setHasInput:(BOOL)arg1;

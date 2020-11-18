@@ -27,8 +27,8 @@
 @property (readonly) Class superclass;
 @property (readonly, copy) NURegion *validRegion;
 
-- (BOOL)copyBufferStorage:(id)arg1 region:(id)arg2 atPoint:(CDStruct_912cb5d2)arg3;
-- (BOOL)copySurfaceStorage:(id)arg1 device:(id)arg2 region:(id)arg3 atPoint:(CDStruct_912cb5d2)arg4;
+- (BOOL)copyBufferStorage:(id)arg1 fromRect:(CDStruct_996ac03c)arg2 toPoint:(CDStruct_912cb5d2)arg3;
+- (BOOL)copySurfaceStorage:(id)arg1 fromRect:(CDStruct_996ac03c)arg2 toPoint:(CDStruct_912cb5d2)arg3 device:(id)arg4;
 - (void)readSurfaceRegion:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)readTextureRegion:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)writeSurfaceRegion:(id)arg1 withBlock:(CDUnknownBlockType)arg2;

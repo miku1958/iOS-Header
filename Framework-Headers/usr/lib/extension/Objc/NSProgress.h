@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSProgressPublisher-Protocol.h>
+#import <Foundation/NSProgressPublisher-Protocol.h>
 
 @class NSDictionary, NSLock, NSMutableDictionary, NSMutableSet, NSNumber, NSString, NSURL;
 
@@ -80,22 +80,24 @@
 + (id)progressWithTotalUnitCount:(long long)arg1 parent:(id)arg2 pendingUnitCount:(long long)arg3;
 + (void)removeSubscriber:(id)arg1;
 - (void).cxx_destruct;
-- (void)__notifyRemoteObserversOfValueForKey:(id)arg1 inUserInfo:(BOOL)arg2;
 - (CDUnknownBlockType)_acknowledgementHandlerForAppBundleIdentifier:(id)arg1;
 - (void)_addCompletedUnitCount:(long long)arg1;
 - (void)_addImplicitChild:(id)arg1;
 - (BOOL)_adoptChildUserInfo;
 - (id)_indentedDescription:(unsigned long long)arg1;
 - (id)_initWithValues:(id)arg1;
-- (void)_notifyRemoteObserversOfValueForKey:(id)arg1 inUserInfo:(BOOL)arg2;
+- (void)_notifyRemoteObserversOfUserInfoValueForKey:(id)arg1;
+- (void)_notifyRemoteObserversOfValueForKeys:(id)arg1;
 - (id)_parent;
 - (void)_publish;
 - (id)_publishingAppBundleIdentifier;
 - (void)_receiveProgressMessage:(id)arg1 forSequence:(unsigned long long)arg2;
+- (double)_remoteFractionCompleted;
 - (void)_setAcknowledgementHandler:(CDUnknownBlockType)arg1 forAppBundleIdentifier:(id)arg2;
 - (void)_setCompletedUnitCount:(long long)arg1 totalUnitCount:(long long)arg2;
 - (void)_setParent:(id)arg1 portion:(long long)arg2;
-- (void)_setRemoteValue:(id)arg1 forKey:(id)arg2 inUserInfo:(BOOL)arg3;
+- (void)_setRemoteUserInfoValue:(id)arg1 forKey:(id)arg2;
+- (void)_setRemoteValues:(id)arg1 forKeys:(id)arg2;
 - (void)_setUserInfoValue:(id)arg1 forKey:(id)arg2 fromChild:(BOOL)arg3;
 - (id)_setValueForKeys:(CDUnknownBlockType)arg1 settingBlock:(CDUnknownBlockType)arg2;
 - (void)_unpublish;

@@ -17,6 +17,8 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
+- (void)setPrimaryStatusText:(id)arg1;
+- (void)setSecondaryStatusText:(id)arg1;
 
 @end
 

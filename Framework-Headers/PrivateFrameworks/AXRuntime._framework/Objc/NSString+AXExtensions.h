@@ -9,6 +9,7 @@
 @interface NSString (AXExtensions)
 - (struct _NSRange)_axUnit:(unsigned long long)arg1 fromPosition:(long long)arg2 inDirection:(unsigned long long)arg3;
 - (struct _NSRange)_ax_rangeOfNextUnitWithStartPosition:(long long)arg1 direction:(unsigned long long)arg2 withCharacterSet:(id)arg3;
+- (id)axAttributedStringWithAttributes:(id)arg1;
 - (struct _NSRange)ax_lineFromPosition:(long long)arg1 inDirection:(unsigned long long)arg2;
 - (struct _NSRange)ax_lineRangeForPosition:(long long)arg1;
 - (struct _NSRange)ax_paragraphFromPosition:(long long)arg1 inDirection:(unsigned long long)arg2;

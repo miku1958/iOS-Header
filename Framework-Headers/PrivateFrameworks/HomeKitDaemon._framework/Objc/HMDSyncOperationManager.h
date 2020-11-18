@@ -22,7 +22,6 @@
     HMDSyncOperationQueue *_cloudPushOperations;
     NSMutableArray *_cloudVerifyAccountOperations;
     HMDSyncOperationQueue *_cloudFetchOperations;
-    NSMutableArray *_idsMergeOperations;
     NSMutableArray *_cloudZonePushOperations;
     NSMutableDictionary *_cloudZonePushOperationsMap;
     NSMutableArray *_cloudZoneFetchOperations;
@@ -46,7 +45,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
-@property (strong, nonatomic) NSMutableArray *idsMergeOperations; // @synthesize idsMergeOperations=_idsMergeOperations;
 @property (nonatomic) long long pauseCloudPushLevel; // @synthesize pauseCloudPushLevel=_pauseCloudPushLevel;
 @property (nonatomic) BOOL pauseQueue; // @synthesize pauseQueue=_pauseQueue;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;

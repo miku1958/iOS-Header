@@ -8,21 +8,24 @@
 
 #import <HomeUI/UITextViewDelegate-Protocol.h>
 
-@class NSString, UIColor, UILabel, UITextView;
+@class NSArray, NSString, UIColor, UILabel, UITextView;
 @protocol HFStringGenerator, HUTextInteractionHandling;
 
 @interface HUItemTableSectionHeaderFooterView : UITableViewHeaderFooterView <UITextViewDelegate>
 {
+    id<HFStringGenerator> _message;
     unsigned long long _type;
     id<HUTextInteractionHandling> _textInteractionHandler;
     UITextView *_messageTextView;
+    NSArray *_constraints;
 }
 
+@property (strong, nonatomic) NSArray *constraints; // @synthesize constraints=_constraints;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) UILabel *detailTextLabel; // @dynamic detailTextLabel;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) id<HFStringGenerator> message;
+@property (copy, nonatomic) id<HFStringGenerator> message; // @synthesize message=_message;
 @property (strong, nonatomic) UITextView *messageTextView; // @synthesize messageTextView=_messageTextView;
 @property (readonly) Class superclass;
 @property (nonatomic) long long textAlignment;
@@ -32,11 +35,12 @@
 @property (nonatomic) struct UIEdgeInsets textViewEdgeInsets;
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
 
-+ (id)defaultAttributesFotType:(unsigned long long)arg1;
++ (id)defaultAttributesForType:(unsigned long long)arg1;
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 - (void)_updateDefaultValuesForType;
 - (id)initWithReuseIdentifier:(id)arg1;
+- (id)initWithReuseIdentifier:(id)arg1 type:(unsigned long long)arg2;
 - (struct CGSize)intrinsicContentSize;
 - (void)prepareForReuse;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

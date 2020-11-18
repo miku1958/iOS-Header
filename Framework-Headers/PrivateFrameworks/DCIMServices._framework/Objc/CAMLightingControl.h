@@ -147,6 +147,7 @@
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setNameBadgeHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setShowAllItemsWhenCollapsed:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)updateToContentSize:(id)arg1;
 
 @end
 

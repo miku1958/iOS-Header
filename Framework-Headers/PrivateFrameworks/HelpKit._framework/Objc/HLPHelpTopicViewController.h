@@ -61,7 +61,6 @@
 
 - (void).cxx_destruct;
 - (void)backButtonTapped;
-- (void)contentSizeCategoryDidChange:(id)arg1;
 - (void)dealloc;
 - (void)dismiss;
 - (void)dismissWelcomeHelpTopic;

@@ -10,8 +10,8 @@
 #import <iTunesStoreUI/SUScriptModalDialogDelegate-Protocol.h>
 #import <iTunesStoreUI/SUScriptXMLHTTPRequestDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSMutableSet, NSNumber, NSString, SFSafariViewController, SSAuthenticationContext, SUClientInterface, SUScriptAccount, SUScriptAccountManager, SUScriptAppleAccountStore, SUScriptApplication, SUScriptCarrierBundlingController, SUScriptDevice, SUScriptDictionary, SUScriptFairPlayContext, SUScriptKeyValueStore, SUScriptMediaLibrary, SUScriptMetricsController, SUScriptNavigationBar, SUScriptNotificationObserver, SUScriptOperationDelegate, SUScriptPassbookLibrary, SUScriptPreviewOverlay, SUScriptProtocol, SUScriptPurchaseManager, SUScriptSectionsController, SUScriptStoreBagLoader, SUScriptSubscriptionStatusCoordinator, SUScriptTelephony, SUScriptViewController, SUScriptWindow, SUScriptWindowContext, WebFrame;
-@protocol SUScriptInterfaceDelegate;
+@class NSArray, NSMutableDictionary, NSMutableSet, NSNumber, NSObject, NSString, SFSafariViewController, SSAuthenticationContext, SUClientInterface, SUScriptAccount, SUScriptAccountManager, SUScriptAppleAccountStore, SUScriptApplication, SUScriptCarrierBundlingController, SUScriptDevice, SUScriptDictionary, SUScriptFairPlayContext, SUScriptKeyValueStore, SUScriptMediaLibrary, SUScriptMetricsController, SUScriptNavigationBar, SUScriptNotificationObserver, SUScriptOperationDelegate, SUScriptPassbookLibrary, SUScriptPreviewOverlay, SUScriptProtocol, SUScriptPurchaseManager, SUScriptSectionsController, SUScriptStoreBagLoader, SUScriptSubscriptionStatusCoordinator, SUScriptTelephony, SUScriptViewController, SUScriptWindow, SUScriptWindowContext, WebFrame;
+@protocol OS_dispatch_queue, SUScriptInterfaceDelegate;
 
 @interface SUScriptInterface : SUScriptObject <SUScriptModalDialogDelegate, SUScriptXMLHTTPRequestDelegate, SFSafariViewControllerDelegate>
 {
@@ -35,7 +35,10 @@
     SUScriptWindowContext *_scriptWindowContext;
     SUScriptSubscriptionStatusCoordinator *_subscriptionStatusCoordinator;
     id _threadSafeDelegate;
+    NSObject<OS_dispatch_queue> *_hsaTokenQueue;
+    struct __CFString *_hsaCurrentIdentifier;
     NSString *_safariViewControllerIdentifier;
+    NSNumber *_safariDismissButtonStyle;
     SFSafariViewController *_safariViewController;
 }
 
@@ -62,6 +65,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) SUScriptDevice *device;
 @property (readonly) SUScriptKeyValueStore *deviceLocalStorage;
+@property (readonly) NSString *deviceSerialNumber;
 @property (readonly) id globalRootObject;
 @property (readonly) unsigned long long hash;
 @property (readonly) NSArray *installedSoftwareApplications;
@@ -78,6 +82,7 @@
 @property (readonly) SUScriptPurchaseManager *purchaseManager;
 @property (readonly) NSString *referrerURL;
 @property (readonly) NSString *referringUserAgent;
+@property (copy) NSNumber *safariDismissButtonStyle; // @synthesize safariDismissButtonStyle=_safariDismissButtonStyle;
 @property (strong, nonatomic) SFSafariViewController *safariViewController; // @synthesize safariViewController=_safariViewController;
 @property (strong, nonatomic) NSString *safariViewControllerIdentifier; // @synthesize safariViewControllerIdentifier=_safariViewControllerIdentifier;
 @property (readonly) NSString *safariViewControllerIdentifierQueryParameterName;
@@ -232,6 +237,7 @@
 - (void)retryAllRestoreDownloads;
 - (void)safariViewController:(id)arg1 didCompleteInitialLoad:(BOOL)arg2;
 - (void)safariViewControllerDidFinish:(id)arg1;
+- (id)safariViewControllerDismissButtonStyle;
 - (id)scriptAttributeKeys;
 - (BOOL)scriptXMLHTTPRequest:(id)arg1 requiresCellularForURL:(id)arg2;
 - (void)selectSectionWithIdentifier:(id)arg1;
@@ -251,6 +257,7 @@
 - (void)setOrientation:(id)arg1;
 - (void)setReferrerURL:(id)arg1;
 - (void)setReferringUserAgent:(id)arg1;
+- (void)setSafariViewControllerDismissButtonStyle:(id)arg1;
 - (void)setStoreFrontIdentifier:(id)arg1;
 - (void)setSubscriptionStatusCoordinator:(id)arg1;
 - (void)setWindow:(id)arg1;
@@ -265,7 +272,9 @@
 - (void)signOutPrimaryAccount;
 - (id)softwareApplicationWithAdamID:(id)arg1;
 - (id)softwareApplicationWithBundleID:(id)arg1;
+- (void)startListeningForAuthenticationTokenWithCallback:(id)arg1;
 - (void)startedTest:(id)arg1;
+- (void)stopListeningForAuthenticationToken;
 - (id)subscriptionStatusCoordinator;
 - (id)systemItemAction;
 - (id)systemItemAdd;

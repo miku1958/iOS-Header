@@ -70,7 +70,7 @@ __attribute__((visibility("hidden")))
 - (double)cellAspectRatioHint;
 - (BOOL)configureGridCell:(id)arg1 forIndexPath:(id)arg2;
 - (void)configureSectionHeaderView:(id)arg1 forVisualSection:(long long)arg2;
-- (BOOL)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3 animated:(BOOL)arg4;
+- (BOOL)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3;
 - (id)diagnosticsProviderForVisualSection:(long long)arg1;
 - (void)didFinishZoomLevelTransition;
 - (void)didTapHeaderView:(id)arg1;

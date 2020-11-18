@@ -8,12 +8,16 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDDevice, HMDRemoteLoginHandler, HMDSoftwareUpdate, HMFSoftwareVersion, NSString;
+@class HMDAccessorySettingGroup, HMDAccessorySymptomHandler, HMDDevice, HMDRemoteLoginHandler, HMDSoftwareUpdate, HMFPairingIdentity, HMFSoftwareVersion, NSString;
 
 @interface HMDAppleMediaAccessory : HMDMediaAccessory <HMFLogging>
 {
+    BOOL _deviceReachable;
     HMDDevice *_device;
+    HMFPairingIdentity *_pairingIdentity;
+    HMDAccessorySettingGroup *_rootSettings;
     HMDRemoteLoginHandler *_remoteLoginHandler;
+    HMDAccessorySymptomHandler *_symptomsHandler;
     HMFSoftwareVersion *_softwareVersion;
     HMDSoftwareUpdate *_softwareUpdate;
 }
@@ -21,26 +25,30 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) HMDDevice *device; // @synthesize device=_device;
+@property (nonatomic, getter=isDeviceReachable) BOOL deviceReachable; // @synthesize deviceReachable=_deviceReachable;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy) HMFPairingIdentity *pairingIdentity; // @synthesize pairingIdentity=_pairingIdentity;
 @property (readonly) HMDRemoteLoginHandler *remoteLoginHandler; // @synthesize remoteLoginHandler=_remoteLoginHandler;
+@property (readonly) HMDAccessorySettingGroup *rootSettings; // @synthesize rootSettings=_rootSettings;
 @property (readonly) HMDSoftwareUpdate *softwareUpdate; // @synthesize softwareUpdate=_softwareUpdate;
 @property (readonly) HMFSoftwareVersion *softwareVersion; // @synthesize softwareVersion=_softwareVersion;
 @property (readonly) Class superclass;
+@property (readonly) HMDAccessorySymptomHandler *symptomsHandler; // @synthesize symptomsHandler=_symptomsHandler;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)__updateDeviceWithDeviceIdentifier:(id)arg1;
 - (id)_decodeHashedRouteUID:(id)arg1;
 - (void)_fetchAvailableUpdate:(id)arg1;
-- (id)_hashRouteID:(id)arg1;
 - (void)_registerForMessages;
-- (void)_relayRequestMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_relayRequestMessage:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (void)_startUpdate:(id)arg1;
 - (void)_updateSoftwareVersion:(id)arg1;
 - (void)addRootSettings;
 - (id)assistantObject;
 - (id)backingStoreObjects:(long long)arg1;
 - (void)configure:(id)arg1 msgDispatcher:(id)arg2 accessoryConfigureGroup:(id)arg3;
+- (void)createPairingIdentity;
 - (void)dealloc;
 - (id)deviceMonitor;
 - (id)dumpSimpleState;
@@ -52,29 +60,37 @@
 - (void)handleCurrentDeviceUpdated:(id)arg1;
 - (void)handleDeviceIsNotReachable:(id)arg1;
 - (void)handleDeviceIsReachable:(id)arg1;
+- (void)handleDeviceReachabilityChange:(BOOL)arg1;
 - (void)handleDeviceUpdated:(id)arg1;
 - (void)handleRemovedSoftwareUpdateModel:(id)arg1 message:(id)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTransaction:(id)arg1 home:(id)arg2;
 - (BOOL)isCurrentAccessory;
+- (BOOL)isRemotelyReachable;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
+- (void)notifyClientsOfUpdatedRootSettings:(id)arg1;
 - (void)populateModelObject:(id)arg1 version:(long long)arg2;
+- (long long)reachableTransports;
 - (id)remoteMessageDestination;
+- (BOOL)requiresHomeAppForManagement;
 - (void)setDevice:(id)arg1;
+- (void)setPairingIdentity:(id)arg1;
 - (void)setRemotelyReachable:(BOOL)arg1;
+- (void)setRootSettings:(id)arg1;
 - (void)setSoftwareUpdate:(id)arg1;
 - (void)setSoftwareVersion:(id)arg1;
 - (BOOL)shouldUpdateWithDevice:(id)arg1;
 - (void)startMonitoringReachability;
 - (BOOL)supportsSettings;
 - (BOOL)supportsSoftwareUpdate;
+- (BOOL)supportsUserManagement;
+- (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)transactionWithObjectChangeType:(unsigned long long)arg1;
 - (void)updateRootGroup:(id)arg1;
 - (void)updateSoftwareUpdate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateWithDevice:(id)arg1;
-- (id)url;
 
 @end
 

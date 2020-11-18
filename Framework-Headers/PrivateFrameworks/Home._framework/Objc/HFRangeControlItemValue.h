@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber;
+@class HFNumberRange, NSNumber;
 
 @interface HFRangeControlItemValue : NSObject
 {
@@ -19,6 +19,7 @@
 @property (copy, nonatomic) NSNumber *maximumValue; // @synthesize maximumValue=_maximumValue;
 @property (copy, nonatomic) NSNumber *minimumValue; // @synthesize minimumValue=_minimumValue;
 @property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
+@property (readonly, nonatomic) HFNumberRange *numberRange;
 @property (copy, nonatomic) NSNumber *targetValue; // @synthesize targetValue=_targetValue;
 
 + (id)targetValueWithValue:(id)arg1;

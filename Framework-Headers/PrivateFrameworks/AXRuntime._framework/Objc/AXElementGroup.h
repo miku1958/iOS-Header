@@ -22,6 +22,7 @@
     AXElementGroup *_parentGroup;
     AXElement *_elementCommunity;
     NSString *_label;
+    NSString *_identifier;
 }
 
 @property (readonly, nonatomic) BOOL allowsChangingExistingGroupingOfContents;
@@ -36,7 +37,8 @@
 @property (strong, nonatomic) NSHashTable *groupObservers; // @synthesize groupObservers=_groupObservers;
 @property (nonatomic) unsigned long long groupTraits; // @synthesize groupTraits=_groupTraits;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *label; // @synthesize label=_label;
+@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (readonly, nonatomic) unsigned long long numberOfElements;
 @property (nonatomic) AXElementGroup *parentGroup; // @synthesize parentGroup=_parentGroup;
 @property (nonatomic, getter=isRootGroup) BOOL rootGroup; // @synthesize rootGroup=_rootGroup;
@@ -84,6 +86,7 @@
 - (id)highestAncestorGroup;
 - (id)initWithElements:(id)arg1 label:(id)arg2;
 - (id)initWithGenerator:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isGroup;
 - (BOOL)isKeyboardContainer;
 - (BOOL)isKeyboardRow;

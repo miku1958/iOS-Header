@@ -6,31 +6,30 @@
 
 #import <Home/HFItemProvider.h>
 
-@class HMAccessoryProfile, HMAccessorySettingGroup, NATreeNode, NSMutableDictionary, NSMutableSet;
-@protocol HFAccessorySettings;
+@class HMAccessorySettingGroup, NATreeNode, NSMutableDictionary, NSMutableSet;
+@protocol HFMediaProfileContainer;
 
 @interface HFAccessorySettingsItemProvider : HFItemProvider
 {
     HMAccessorySettingGroup *_settingGroup;
     CDUnknownBlockType _filter;
-    HMAccessoryProfile<HFAccessorySettings> *_accessoryProfile;
+    id<HFMediaProfileContainer> _mediaProfileContainer;
     NSMutableDictionary *_tupleCache;
     NSMutableSet *_settingItems;
     NATreeNode *_parentNode;
 }
 
-@property (readonly, nonatomic) HMAccessoryProfile<HFAccessorySettings> *accessoryProfile; // @synthesize accessoryProfile=_accessoryProfile;
 @property (copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
+@property (readonly, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
 @property (readonly, nonatomic) NATreeNode *parentNode; // @synthesize parentNode=_parentNode;
-@property (readonly, nonatomic) HMAccessorySettingGroup *settingGroup; // @synthesize settingGroup=_settingGroup;
+@property (strong, nonatomic) HMAccessorySettingGroup *settingGroup; // @synthesize settingGroup=_settingGroup;
 @property (strong, nonatomic) NSMutableSet *settingItems; // @synthesize settingItems=_settingItems;
 @property (strong, nonatomic) NSMutableDictionary *tupleCache; // @synthesize tupleCache=_tupleCache;
 
++ (id)buildSettingsObjectForMediaProfileContainer:(id)arg1 settingGroup:(id)arg2 underNode:(id)arg3 cache:(id)arg4;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithAccessoryProfile:(id)arg1;
-- (id)initWithAccessoryProfile:(id)arg1 settingGroup:(id)arg2;
-- (id)initWithSettingGroupItem:(id)arg1;
+- (id)initWithMediaProfileContainer:(id)arg1 settingGroup:(id)arg2;
 - (id)invalidationReasons;
 - (id)items;
 - (id)reloadItems;

@@ -15,6 +15,7 @@
 @interface _HMMediaSession : NSObject <HMFMessageReceiver, HMObjectMerge>
 {
     NSUUID *_uuid;
+    NSString *_routeUID;
     long long _playbackState;
     _HMContext *_context;
     NSUUID *_uniqueIdentifier;
@@ -33,22 +34,27 @@
 @property (strong, nonatomic) NSUUID *messageTargetUUID; // @synthesize messageTargetUUID=_messageTargetUUID;
 @property (readonly) long long playbackState; // @synthesize playbackState=_playbackState;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
+@property (readonly, nonatomic) NSString *routeUID; // @synthesize routeUID=_routeUID;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 - (void).cxx_destruct;
 - (void)_handleSessionPlaybackUpdated:(id)arg1;
+- (void)_handleSessionRouteUIDUpdated:(id)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_notifyDelegateOfUpdatedPlaybackState:(long long)arg1;
+- (void)_notifyDelegateOfUpdatedRouteUID:(id)arg1;
 - (void)_registerNotificationHandlers;
 - (void)_updatePlaybackState:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)delegateCaller;
-- (id)initWithUUID:(id)arg1 playbackState:(long long)arg2;
+- (id)initWithUUID:(id)arg1 routeUID:(id)arg2 playbackState:(long long)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (id)messageDestination;
+- (void)refreshPlaybackStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setPlaybackState:(long long)arg1;
 - (void)setPlaybackState:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setRouteUID:(id)arg1;
 - (void)setUuid:(id)arg1;
 - (void)updatePlaybackState:(id)arg1;
 

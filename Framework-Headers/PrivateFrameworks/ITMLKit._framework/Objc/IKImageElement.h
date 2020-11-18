@@ -14,10 +14,12 @@
     double _srcHeight;
     NSDictionary *_srcset;
     unsigned long long _imageType;
+    double _aspectRatio;
     NSURL *_resolvedURL;
     NSArray *_srcsetRules;
 }
 
+@property (readonly, nonatomic) double aspectRatio; // @synthesize aspectRatio=_aspectRatio;
 @property (readonly, nonatomic) UIColor *borderColor;
 @property (readonly, nonatomic) long long fill;
 @property (readonly, nonatomic) double height;

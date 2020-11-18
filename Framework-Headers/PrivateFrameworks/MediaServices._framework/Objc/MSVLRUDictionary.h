@@ -18,6 +18,7 @@
     NSMutableDictionary *_dictionary;
     MSVLRUDictionaryNode *_head;
     MSVLRUDictionaryNode *_tail;
+    long long _transactionCount;
 }
 
 @property (readonly, nonatomic) long long count;
@@ -26,21 +27,27 @@
 @property (strong, nonatomic) MSVLRUDictionaryNode *head; // @synthesize head=_head;
 @property (nonatomic) long long maximumCapacity; // @synthesize maximumCapacity=_maximumCapacity;
 @property (strong, nonatomic) MSVLRUDictionaryNode *tail; // @synthesize tail=_tail;
+@property (nonatomic) long long transactionCount; // @synthesize transactionCount=_transactionCount;
 
 - (void).cxx_destruct;
 - (void)_addNodeToFront:(id)arg1;
 - (void)_moveNodeToFront:(id)arg1;
 - (void)_removeNode:(id)arg1;
 - (void)_removeNodeFromLinkedList:(id)arg1;
+- (void)_shrinkToCapacity;
 - (id)allKeys;
 - (id)allValues;
+- (void)beginTransaction;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)endTransaction;
 - (unsigned long long)hash;
 - (id)initWithMaximumCapacity:(unsigned long long)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)objectForKey:(id)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
+- (id)peekObjectForKey:(id)arg1;
+- (void)performTransaction:(CDUnknownBlockType)arg1;
 - (void)removeAllObjects;
 - (void)removeObjectForKey:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;

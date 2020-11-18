@@ -6,22 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class MCDPCContainer, MCDPCItem, MPWeakTimer, NSIndexPath, UIViewController;
+@class MCDBrowsableContentTableViewController, MCDPCContainer, MCDPCItem, MPWeakTimer, NSIndexPath, UIAlertController;
 
 @interface _MCDBrowsableContentTableViewPreloader : NSObject
 {
     BOOL _cancelled;
     BOOL _isRootTableView;
     BOOL _isTabbedBrowsing;
-    UIViewController *_sourceViewController;
+    BOOL _pushToNowPlaying;
+    MCDBrowsableContentTableViewController *_sourceViewController;
     MCDPCContainer *_container;
     MCDPCItem *_item;
     long long _index;
     NSIndexPath *_indexPath;
     CDUnknownBlockType _cancelledBlock;
     MPWeakTimer *_loadingTimer;
+    UIAlertController *_alertController;
 }
 
+@property (strong, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;
 @property (nonatomic, getter=isCancelled) BOOL cancelled; // @synthesize cancelled=_cancelled;
 @property (readonly, copy, nonatomic) CDUnknownBlockType cancelledBlock; // @synthesize cancelledBlock=_cancelledBlock;
 @property (readonly, nonatomic) MCDPCContainer *container; // @synthesize container=_container;
@@ -31,17 +34,19 @@
 @property (nonatomic) BOOL isTabbedBrowsing; // @synthesize isTabbedBrowsing=_isTabbedBrowsing;
 @property (readonly, nonatomic) MCDPCItem *item; // @synthesize item=_item;
 @property (strong, nonatomic) MPWeakTimer *loadingTimer; // @synthesize loadingTimer=_loadingTimer;
-@property (readonly, weak, nonatomic) UIViewController *sourceViewController; // @synthesize sourceViewController=_sourceViewController;
+@property (nonatomic) BOOL pushToNowPlaying; // @synthesize pushToNowPlaying=_pushToNowPlaying;
+@property (readonly, weak, nonatomic) MCDBrowsableContentTableViewController *sourceViewController; // @synthesize sourceViewController=_sourceViewController;
 
 - (void).cxx_destruct;
 - (void)_deregister;
 - (void)_displayErrorAlertController:(id)arg1;
 - (void)_loadContainerAndPush:(id)arg1;
-- (void)_pushToPlayback:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)initWithContainer:(id)arg1 index:(long long)arg2 sourceViewController:(id)arg3 rootTableView:(BOOL)arg4 tabbedBrowsing:(BOOL)arg5 cancelledBlock:(CDUnknownBlockType)arg6;
 - (void)loadAndPush;
+- (void)pushToPlayback;
+- (void)viewDidDisappear;
 
 @end
 

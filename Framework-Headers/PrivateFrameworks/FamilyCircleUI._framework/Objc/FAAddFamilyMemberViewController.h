@@ -9,7 +9,7 @@
 #import <FamilyCircleUI/FAPickInviteeDelegate-Protocol.h>
 #import <FamilyCircleUI/RemoteUIControllerDelegate-Protocol.h>
 
-@class AAGrandSlamSigner, ACAccount, ACAccountStore, FAFamilyPickInviteeViewController, NSData, NSMutableURLRequest, NSOperationQueue, NSString, RUIObjectModel, RemoteUIController, SSAccount, UIActivityIndicatorView, UIBarButtonItem, UINavigationItem;
+@class AAGrandSlamSigner, AAUIRemoteUIController, ACAccount, ACAccountStore, FAFamilyPickInviteeViewController, NSData, NSMutableURLRequest, NSOperationQueue, NSString, RUIObjectModel, SSAccount, UIActivityIndicatorView, UIBarButtonItem, UINavigationItem;
 @protocol FAAddFamilyMemberDelegate><UINavigationControllerDelegate;
 
 @interface FAAddFamilyMemberViewController : UINavigationController <RemoteUIControllerDelegate, FAPickInviteeDelegate>
@@ -19,7 +19,7 @@
     SSAccount *_iTunesAccount;
     AAGrandSlamSigner *_grandSlamSigner;
     NSOperationQueue *_networkingQueue;
-    RemoteUIController *_remoteUIController;
+    AAUIRemoteUIController *_remoteUIController;
     RUIObjectModel *_lastObjectModel;
     NSMutableURLRequest *_startRemoteUIRequest;
     BOOL _isShowingSpinner;

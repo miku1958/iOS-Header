@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitUI/PKBlurredNavigationController.h>
+#import <PassKitUI/PKCompactNavigationContainedNavigationController.h>
 
-#import <PassKitUI/UINavigationControllerDelegate-Protocol.h>
-
-@class NSString, PKPaymentAuthorizationLayout, PKPaymentAuthorizationServiceViewController;
+@class PKPaymentAuthorizationLayout, PKPaymentAuthorizationServiceViewController;
 @protocol UIViewControllerTransitioningDelegate;
 
-@interface PKPaymentAuthorizationServiceNavigationController : PKBlurredNavigationController <UINavigationControllerDelegate>
+@interface PKPaymentAuthorizationServiceNavigationController : PKCompactNavigationContainedNavigationController
 {
     PKPaymentAuthorizationLayout *_layout;
     PKPaymentAuthorizationServiceViewController *_authorizationViewController;
@@ -19,13 +17,10 @@
 }
 
 @property (readonly, nonatomic) PKPaymentAuthorizationServiceViewController *authorizationViewController; // @synthesize authorizationViewController=_authorizationViewController;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<UIViewControllerTransitioningDelegate> paymentTransitioningDelegate; // @synthesize paymentTransitioningDelegate=_paymentTransitioningDelegate;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)init;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 

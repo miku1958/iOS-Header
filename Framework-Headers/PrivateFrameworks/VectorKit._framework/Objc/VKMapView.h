@@ -225,8 +225,8 @@
 - (void)map:(id)arg1 didUpdateVerticalYawTo:(double)arg2;
 - (void)map:(id)arg1 flyoverModeDidChange:(int)arg2;
 - (void)map:(id)arg1 flyoverModeWillChange:(int)arg2;
+- (void)map:(id)arg1 labelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg2;
 - (id)map:(id)arg1 presentationForAnnotation:(id)arg2;
-- (void)map:(id)arg1 selectedLabelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)map:(id)arg1 selectedLabelMarkerWillDisappear:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)map:(id)arg1 willChangeRegionAnimated:(BOOL)arg2;
 - (void)map:(id)arg1 willTransitionFrom:(long long)arg2 to:(long long)arg3 duration:(double)arg4;

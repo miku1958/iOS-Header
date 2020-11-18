@@ -8,7 +8,7 @@
 
 #import <TelephonyUtilities/TUCallContainer-Protocol.h>
 
-@class CNContactStore, NSArray, NSString, TUAudioDeviceController, TUCall, TUCallProviderManager, TUCallServicesInterface, TUConversationManager, TUVideoDeviceController;
+@class CNContactStore, NSArray, NSString, TUAudioDeviceController, TUCall, TUCallProviderManager, TUCallServicesInterface, TUConversationManager, TURouteController, TUVideoDeviceController;
 @protocol OS_dispatch_queue, TUCallContainerPrivate;
 
 @interface TUCallCenter : NSObject <TUCallContainer>
@@ -17,6 +17,7 @@
     TUCallServicesInterface *_callServicesInterface;
     TUAudioDeviceController *_audioDeviceController;
     TUVideoDeviceController *_videoDeviceController;
+    TURouteController *_routeController;
     CNContactStore *_contactStore;
     TUCallProviderManager *_providerManager;
     TUConversationManager *_conversationManager;
@@ -68,6 +69,7 @@
 @property (nonatomic) struct CGSize localPortraitAspectRatio; // @synthesize localPortraitAspectRatio=_localPortraitAspectRatio;
 @property (strong, nonatomic) TUCallProviderManager *providerManager; // @synthesize providerManager=_providerManager;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (strong, nonatomic) TURouteController *routeController; // @synthesize routeController=_routeController;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) TUVideoDeviceController *videoDeviceController; // @synthesize videoDeviceController=_videoDeviceController;
 
@@ -153,7 +155,7 @@
 - (void)pullCallFromClientUsingHandoffActivityUserInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)pullHostedCallsFromPairedHostDevice;
 - (void)pullRelayingCallsFromClient;
-- (void)pushHostedCallsToPairedClientDevice;
+- (void)pushHostedCallsToDestination:(id)arg1;
 - (void)pushRelayingCallsToHost;
 - (void)pushRelayingCallsToHostWithSourceIdentifier:(id)arg1;
 - (void)registerWithCompletionHandler:(CDUnknownBlockType)arg1;

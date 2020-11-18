@@ -33,6 +33,7 @@
 - (void)addOperation:(id)arg1;
 - (id)collectionForFolderItem:(id)arg1 fileTypes:(id)arg2;
 - (id)collectionWithIdentifier:(id)arg1 domainIdentifier:(id)arg2 providerIdentifier:(id)arg3 fileTypes:(id)arg4;
+- (id)collectionWithIdentifier:(id)arg1 providerIdentifier:(id)arg2 fileTypes:(id)arg3;
 - (id)eligibleActionsForDroppingItems:(id)arg1 underItem:(id)arg2;
 - (id)eligibleActionsForDroppingUTIs:(id)arg1 underItem:(id)arg2;
 - (id)eligibleActionsForItems:(id)arg1;
@@ -45,7 +46,6 @@
 - (void)fetchURLForItem:(id)arg1 creatingPlaceholderIfMissing:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchURLForItemID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
-- (id)newCollectionWithIdentifier:(id)arg1 providerIdentifier:(id)arg2;
 - (id)newRootCollectionForProviderIdentifier:(id)arg1;
 - (id)operationForAction:(id)arg1 items:(id)arg2;
 - (id)recursiveFolderCollectionForProvider:(id)arg1;

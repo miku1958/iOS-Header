@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_bandwidthSettings;
     NSString *_basebandCodec;
     unsigned int _basebandCodecSampleRate;
+    unsigned int _blobVersion;
     VCMediaNegotiationBlobCaptionsSettings *_captionsSettings;
     VCMediaNegotiationBlobMomentsSettings *_momentsSettings;
     NSMutableArray *_multiwayAudioStreams;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned int ntpTime:1;
         unsigned int basebandCodecSampleRate:1;
+        unsigned int blobVersion:1;
         unsigned int allowDynamicMaxBitrate:1;
         unsigned int allowsContentsChangeWithAspectPreservation:1;
     } _has;
@@ -40,12 +42,14 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *bandwidthSettings; // @synthesize bandwidthSettings=_bandwidthSettings;
 @property (strong, nonatomic) NSString *basebandCodec; // @synthesize basebandCodec=_basebandCodec;
 @property (nonatomic) unsigned int basebandCodecSampleRate; // @synthesize basebandCodecSampleRate=_basebandCodecSampleRate;
+@property (nonatomic) unsigned int blobVersion; // @synthesize blobVersion=_blobVersion;
 @property (strong, nonatomic) VCMediaNegotiationBlobCaptionsSettings *captionsSettings; // @synthesize captionsSettings=_captionsSettings;
 @property (nonatomic) BOOL hasAllowDynamicMaxBitrate;
 @property (nonatomic) BOOL hasAllowsContentsChangeWithAspectPreservation;
 @property (readonly, nonatomic) BOOL hasAudioSettings;
 @property (readonly, nonatomic) BOOL hasBasebandCodec;
 @property (nonatomic) BOOL hasBasebandCodecSampleRate;
+@property (nonatomic) BOOL hasBlobVersion;
 @property (readonly, nonatomic) BOOL hasCaptionsSettings;
 @property (readonly, nonatomic) BOOL hasMomentsSettings;
 @property (nonatomic) BOOL hasNtpTime;

@@ -38,14 +38,10 @@
 - (id)accessories;
 - (void)addAction:(id)arg1;
 - (void)addActionBuilder:(id)arg1;
-- (id)allControlItems;
-- (id)controlPanelItems;
 - (id)copyWithValueSource:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)incrementalStateControlItem;
 - (id)init;
 - (id)initWithHome:(id)arg1 containingItem:(id)arg2;
-- (id)primaryStateControlItem;
 - (id)serviceActionItemForChildServiceItem:(id)arg1;
 - (id)services;
 

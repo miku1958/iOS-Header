@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSFileAccessArbiter-Protocol.h>
+#import <Foundation/NSFileAccessArbiter-Protocol.h>
 
 @class NSFileAccessClaim, NSFileSubarbitrationClaim, NSObject, NSXPCListener;
 @protocol OS_dispatch_semaphore;

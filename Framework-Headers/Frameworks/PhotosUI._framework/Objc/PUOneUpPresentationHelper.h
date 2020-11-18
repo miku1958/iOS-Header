@@ -178,6 +178,7 @@
 - (long long)tilingViewControllerTransitionPreferredBarStyle:(id)arg1;
 - (id)tilingViewControllerTransitionTilingViewHostView:(id)arg1;
 - (BOOL)tilingViewControllerTransitionUsesTransientTilingView:(id)arg1;
+- (void)tilingViewControllerTransitionWasAborted:(id)arg1;
 - (void)tilingViewDidEndAnimatingTileControllers:(id)arg1;
 - (void)tilingViewDidUpdateTileControllers:(id)arg1;
 - (void)willPresentPreviewViewController:(id)arg1 forLocation:(struct CGPoint)arg2 inSourceView:(id)arg3;

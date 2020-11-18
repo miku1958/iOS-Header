@@ -20,10 +20,8 @@
 + (double)largestImageSizeForSection:(id)arg1;
 + (int)separatorStyleForCardSection:(id)arg1;
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;
-- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
-- (id)initWithCardSection:(id)arg1 gridData:(id)arg2 style:(unsigned long long)arg3 feedbackDelegate:(id)arg4;
 - (id)setupContentView;
-- (void)updateWithCardSection:(id)arg1 manager:(id)arg2;
+- (void)updateWithRowModel:(id)arg1;
 - (struct UIEdgeInsets)verticalBaselineInsetsForHeader:(BOOL)arg1 isCompactTable:(BOOL)arg2;
 - (struct UIEdgeInsets)verticalBaselineInsetsForRowsWithCompactTable:(BOOL)arg1;
 

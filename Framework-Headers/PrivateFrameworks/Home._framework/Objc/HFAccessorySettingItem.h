@@ -8,22 +8,22 @@
 
 #import <Home/HFAccessorySettingItemProtocol-Protocol.h>
 
-@class HFAccessorySettingsEntity, HMAccessoryProfile, HMAccessorySetting, NSString;
-@protocol HFAccessorySettings, HFHomeKitObject;
+@class HFAccessorySettingsEntity, HMAccessorySetting, NSString;
+@protocol HFHomeKitObject, HFMediaProfileContainer;
 
 @interface HFAccessorySettingItem : HFItem <HFAccessorySettingItemProtocol>
 {
-    HMAccessoryProfile<HFAccessorySettings> *_accessoryProfile;
+    id<HFMediaProfileContainer> _mediaProfileContainer;
     HMAccessorySetting *_setting;
     HFAccessorySettingsEntity *_entity;
 }
 
-@property (strong, nonatomic) HMAccessoryProfile<HFAccessorySettings> *accessoryProfile; // @synthesize accessoryProfile=_accessoryProfile;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) HFAccessorySettingsEntity *entity; // @synthesize entity=_entity;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
+@property (strong, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
 @property (strong, nonatomic) HMAccessorySetting *setting; // @synthesize setting=_setting;
 @property (readonly, nonatomic) NSString *settingKeyPath;
 @property (readonly) Class superclass;
@@ -36,7 +36,7 @@
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (BOOL)_validateKeyPathDependencies;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithAccessoryProfile:(id)arg1 setting:(id)arg2;
+- (id)initWithMediaProfileContainer:(id)arg1 setting:(id)arg2;
 - (id)updateValue:(id)arg1;
 - (id)value;
 

@@ -7,17 +7,17 @@
 #import <objc/NSObject.h>
 
 #import <HomeUI/HUPresentationDelegate-Protocol.h>
-#import <HomeUI/HUQuickControlViewControllerDelegate-Protocol.h>
+#import <HomeUI/HUQuickControlContainerViewControllerDelegate-Protocol.h>
 #import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <HomeUI/UITraitEnvironment-Protocol.h>
 
-@class HUForceInterpolatedPressGestureRecognizer, HUPressedItemContext, HUQuickControlPresentationContext, HUQuickControlViewController, NSMapTable, NSMutableSet, NSString, UITraitCollection, UIView, UIViewController;
+@class HUForceInterpolatedPressGestureRecognizer, HUPressedItemContext, HUQuickControlContainerViewController, HUQuickControlPresentationContext, NSMapTable, NSMutableSet, NSString, UITraitCollection, UIView, UIViewController;
 @protocol HUQuickControlPresentationCoordinatorDelegate, NACancelable;
 
-@interface HUQuickControlPresentationCoordinator : NSObject <HUQuickControlViewControllerDelegate, HUPresentationDelegate, UIGestureRecognizerDelegate, UITraitEnvironment>
+@interface HUQuickControlPresentationCoordinator : NSObject <HUQuickControlContainerViewControllerDelegate, HUPresentationDelegate, UIGestureRecognizerDelegate, UITraitEnvironment>
 {
     HUQuickControlPresentationContext *_presentationContext;
-    HUQuickControlViewController *_quickControlViewController;
+    HUQuickControlContainerViewController *_quickControlViewController;
     UIView *_targetView;
     id<HUQuickControlPresentationCoordinatorDelegate> _delegate;
     HUForceInterpolatedPressGestureRecognizer *_pressGestureRecognizer;
@@ -38,14 +38,14 @@
 @property (strong, nonatomic) HUForceInterpolatedPressGestureRecognizer *pressGestureRecognizer; // @synthesize pressGestureRecognizer=_pressGestureRecognizer;
 @property (readonly, nonatomic) NSMapTable *pressedItemContexts; // @synthesize pressedItemContexts=_pressedItemContexts;
 @property (readonly, nonatomic, getter=isQuickControlPresented) BOOL quickControlIsPresented;
-@property (strong, nonatomic) HUQuickControlViewController *quickControlViewController; // @synthesize quickControlViewController=_quickControlViewController;
+@property (strong, nonatomic) HUQuickControlContainerViewController *quickControlViewController; // @synthesize quickControlViewController=_quickControlViewController;
 @property (readonly) Class superclass;
 @property (readonly, weak, nonatomic) UIView *targetView; // @synthesize targetView=_targetView;
 @property (readonly, nonatomic) UITraitCollection *traitCollection;
 
 - (void).cxx_destruct;
 - (void)_actuateTapticFeedbackIfAvailable;
-- (void)_beginControlPresentation;
+- (id)_beginControlPresentationAnimated:(BOOL)arg1;
 - (void)_cleanupForQuickControlDismissal;
 - (void)_configureInitialStateForPressedItemContext:(id)arg1 userInitiated:(BOOL)arg2;
 - (id)_createPressedContextForItem:(id)arg1 userInitiated:(BOOL)arg2;
@@ -75,7 +75,7 @@
 - (BOOL)hasDetailsActionForQuickControlViewController:(id)arg1 item:(id)arg2;
 - (id)initWithTargetView:(id)arg1 delegate:(id)arg2;
 - (void)playBounceForItem:(id)arg1;
-- (void)presentQuickControlAnimatedWithContext:(id)arg1;
+- (id)presentQuickControlWithContext:(id)arg1 animated:(BOOL)arg2;
 - (id)quickControlViewController:(id)arg1 applierForSourceViewTransitionWithAnimationSettings:(id)arg2 presenting:(BOOL)arg3;
 - (double)quickControlViewController:(id)arg1 sourceViewInitialScaleForPresentation:(BOOL)arg2;
 - (void)quickControlViewControllerWillDismissDetailsViewController:(id)arg1 shouldDismissQuickControl:(BOOL)arg2;

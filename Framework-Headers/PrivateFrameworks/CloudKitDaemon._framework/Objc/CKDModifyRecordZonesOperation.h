@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     BOOL _markZonesAsUserPurged;
     BOOL _dontFetchFromServer;
     BOOL _didSynchronizeUserKeyRegistry;
-    BOOL _shouldSynchronizeUserKeyRegistry;
     int _numZoneSaveAttempts;
     CDUnknownBlockType _saveCompletionBlock;
     CDUnknownBlockType _deleteCompletionBlock;
@@ -24,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_recordZonesByZoneID;
     NSMutableDictionary *_retryableErrorsByZoneID;
     long long _maxZoneSaveAttempts;
+    NSMutableArray *_zonesWaitingOnKeyRegistrySync;
 }
 
 @property (nonatomic) BOOL allowDefaultZoneSave; // @synthesize allowDefaultZoneSave=_allowDefaultZoneSave;
@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *recordZonesToSave; // @synthesize recordZonesToSave=_recordZonesToSave;
 @property (strong, nonatomic) NSMutableDictionary *retryableErrorsByZoneID; // @synthesize retryableErrorsByZoneID=_retryableErrorsByZoneID;
 @property (copy, nonatomic) CDUnknownBlockType saveCompletionBlock; // @synthesize saveCompletionBlock=_saveCompletionBlock;
-@property (nonatomic) BOOL shouldSynchronizeUserKeyRegistry; // @synthesize shouldSynchronizeUserKeyRegistry=_shouldSynchronizeUserKeyRegistry;
+@property (strong, nonatomic) NSMutableArray *zonesWaitingOnKeyRegistrySync; // @synthesize zonesWaitingOnKeyRegistrySync=_zonesWaitingOnKeyRegistrySync;
 
 + (long long)isPredominatelyDownload;
 - (void).cxx_destruct;

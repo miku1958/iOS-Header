@@ -30,8 +30,8 @@
 - (long long)statusBarStyleForBackgroundColor:(id)arg1;
 - (void)styleTabBar:(id)arg1;
 - (void)styleToolbar:(id)arg1;
-- (void)unstyleTabBar:(id)arg1;
-- (void)unstyleToolbar:(id)arg1;
+- (void)unstyleTabBar:(id)arg1 overrideRestoreColor:(id)arg2;
+- (void)unstyleToolbar:(id)arg1 overrideRestoreColor:(id)arg2;
 
 @end
 

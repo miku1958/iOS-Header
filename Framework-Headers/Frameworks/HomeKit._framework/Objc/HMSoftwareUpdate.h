@@ -10,7 +10,7 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMAccessory, HMFSoftwareVersion, NSString, NSUUID, _HMContext;
+@class HMAccessory, HMFSoftwareVersion, HMSoftwareUpdateDocumentation, HMSoftwareUpdateDocumentationMetadata, NSString, NSUUID, _HMContext;
 @protocol HMSoftwareUpdateDelegate, OS_dispatch_queue;
 
 @interface HMSoftwareUpdate : NSObject <HMFMessageReceiver, HMObjectMerge, NSSecureCoding>
@@ -18,6 +18,8 @@
     NSUUID *_identifier;
     NSUUID *_uniqueIdentifier;
     long long _state;
+    HMSoftwareUpdateDocumentationMetadata *_documentationMetadata;
+    HMSoftwareUpdateDocumentation *_documentation;
     id<HMSoftwareUpdateDelegate> _delegate;
     HMFSoftwareVersion *_version;
     unsigned long long _downloadSize;
@@ -31,6 +33,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMSoftwareUpdateDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly) HMSoftwareUpdateDocumentation *documentation; // @synthesize documentation=_documentation;
+@property (readonly, getter=isDocumentationAvailable) BOOL documentationAvailable;
+@property (readonly) HMSoftwareUpdateDocumentationMetadata *documentationMetadata; // @synthesize documentationMetadata=_documentationMetadata;
 @property (readonly) unsigned long long downloadSize; // @synthesize downloadSize=_downloadSize;
 @property (readonly) unsigned long long hash;
 @property (copy) NSUUID *identifier; // @synthesize identifier=_identifier;
@@ -45,6 +50,8 @@
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_handleUpdatedDocumentation:(id)arg1;
+- (void)_handleUpdatedDocumentationMetadata:(id)arg1;
 - (void)_handleUpdatedState:(id)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_registerNotificationHandlers;
@@ -55,10 +62,15 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithVersion:(id)arg1 downloadSize:(unsigned long long)arg2;
 - (id)initWithVersion:(id)arg1 downloadSize:(unsigned long long)arg2 state:(long long)arg3;
+- (id)initWithVersion:(id)arg1 downloadSize:(unsigned long long)arg2 state:(long long)arg3 documentationMetadata:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (id)logIdentifier;
 - (id)messageDestination;
+- (void)requestDocumentation;
+- (void)setDocumentation:(id)arg1;
+- (void)setDocumentationMetadata:(id)arg1;
 - (void)setState:(long long)arg1;
+- (void)updateDocumentationMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateState:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

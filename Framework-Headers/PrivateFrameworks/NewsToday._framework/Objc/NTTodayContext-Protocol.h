@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NewsToday/NTHeadlineResultsSource-Protocol.h>
 #import <NewsToday/NTTodayEventTracker-Protocol.h>
+#import <NewsToday/NTTodayResultsSource-Protocol.h>
 
-@protocol NTTodayContext <NTHeadlineResultsSource, NTTodayEventTracker>
+@protocol NTTodayContext <NTTodayResultsSource, NTTodayEventTracker>
 
 @property (copy, nonatomic) CDUnknownBlockType newResultsHandler;
 

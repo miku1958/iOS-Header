@@ -22,11 +22,13 @@
 - (double)baselineOffsetFromBottom;
 - (double)desiredHeight;
 - (double)desiredHeightForWidth:(double)arg1;
+- (double)desiredPinnedTopPadding;
 - (double)desiredTopPaddingBelowController:(id<SiriUIViewController>)arg1;
 - (void)endEditingAndCorrect:(BOOL)arg1;
 - (void)endEditingAndCorrectByTouchPoint:(struct CGPoint)arg1;
 - (void)handleAceCommand:(AceObject *)arg1;
 - (NSString *)navigationTitle;
+- (BOOL)shouldHidePriorViews;
 - (void)siriDidScrollVisible:(BOOL)arg1;
 - (void)siriDidStartSpeakingWithIdentifier:(NSString *)arg1;
 - (void)siriDidStopSpeakingWithIdentifier:(NSString *)arg1 speechQueueIsEmpty:(BOOL)arg2;

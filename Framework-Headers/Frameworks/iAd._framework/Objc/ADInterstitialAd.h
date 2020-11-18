@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iAd/ADAdRecipient-Protocol.h>
 
@@ -66,6 +66,7 @@
 - (void)_dismissModalInterstitial;
 - (void)_notifyDelegateOfBannerLoad;
 - (void)_presentFromViewController:(id)arg1;
+- (BOOL)_shouldClampPresentedFrame;
 - (void)bannerTappedAtPoint:(struct CGPoint)arg1;
 - (void)bannerTappedAtPoint:(struct CGPoint)arg1 withMRAIDAction:(id)arg2;
 - (void)cancelAction;

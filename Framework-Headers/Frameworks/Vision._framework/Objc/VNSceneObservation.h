@@ -18,9 +18,6 @@
 @property (copy, nonatomic) NSArray *sceneprints; // @synthesize sceneprints=_sceneprints;
 
 + (id)observationWithSceneprints:(id)arg1;
-+ (BOOL)p_isMajorVersion:(id)arg1 equalToMajorVersion:(id)arg2;
-+ (BOOL)p_isMinorVersion:(id)arg1 equalToMinorVersion:(id)arg2;
-+ (BOOL)p_isSeparatedString:(id)arg1 equalToString:(id)arg2 atIndex:(unsigned long long)arg3 usingSeparator:(id)arg4;
 + (id)sceneprintCurrentVersion;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

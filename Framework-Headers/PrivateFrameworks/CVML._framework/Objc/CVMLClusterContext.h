@@ -26,6 +26,7 @@
 @property (strong) CVMLSimilarityMatrix *matrix; // @synthesize matrix=_matrix;
 @property (readonly) BOOL useClusterObservation; // @synthesize useClusterObservation=_useClusterObservation;
 
++ (id)clustererModelFileNamesFromState:(id)arg1 storedInPath:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (BOOL)addFaces:(id)arg1 error:(id *)arg2;
 - (BOOL)cancelClustering:(id *)arg1;

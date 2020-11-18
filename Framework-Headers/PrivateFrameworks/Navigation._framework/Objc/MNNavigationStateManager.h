@@ -37,17 +37,18 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isStarted; // @synthesize isStarted=_isStarted;
 @property (weak, nonatomic) id<MNNavigationSessionManagerDelegate> navigationDelegate; // @synthesize navigationDelegate=_navigationDelegate;
+@property (readonly, nonatomic) MNResourceManager *resourceManager;
 @property (readonly, nonatomic) MNSuggestionsManager *suggestionsManager; // @synthesize suggestionsManager=_suggestionsManager;
 @property (readonly) Class superclass;
 
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)_changeToDesiredLocationProviderType;
-- (void)_changeToDesiredResourcePolicy;
 - (id)_initialState;
 - (void)_replayStateForNewObserver:(id)arg1;
 - (unsigned long long)_stateTypeForState:(id)arg1;
 - (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlertDetails:(id)arg2;
+- (void)acquireDesiredResourcePolicy;
 - (void)addObserver:(id)arg1;
 - (void)changeSettings:(id)arg1;
 - (void)commuteSession:(id)arg1 didUpdateDestinations:(id)arg2;

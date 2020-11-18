@@ -13,7 +13,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityLoadAccessibilityInformation;
 - (void)showWithFlags:(unsigned int)arg1 throttleSeconds:(int)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 

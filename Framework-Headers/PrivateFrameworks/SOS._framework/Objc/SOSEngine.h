@@ -49,16 +49,17 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)SOSSendingLocationUpdateChanged:(id)arg1;
-- (BOOL)_locationIsValidToSend:(id)arg1;
 - (void)contactStoreDidChange;
 - (id)contactsManager;
 - (long long)currentSOSInitiationState;
 - (void)dealloc;
+- (void)didDismissSOSBeforeSOSCall:(long long)arg1;
 - (void)dismissSOSWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (BOOL)isSendingLocationUpdate;
 - (void)isSendingLocationUpdate:(CDUnknownBlockType)arg1;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (BOOL)locationIsValidToSend:(id)arg1;
 - (void)mostRecentLocationSentWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)notificationEnabledAndContactsExist;
 - (void)sosPersistentTimerLocationMangerTimerFired:(id)arg1 location:(id)arg2;

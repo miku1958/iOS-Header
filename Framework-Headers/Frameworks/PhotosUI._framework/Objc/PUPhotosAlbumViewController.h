@@ -62,7 +62,7 @@
 - (long long)cellFillMode;
 - (void)configureGlobalFooterView:(id)arg1;
 - (void)configureGlobalHeaderView:(id)arg1;
-- (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3 animated:(BOOL)arg4;
+- (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3;
 - (struct CGPoint)contentOffsetForPreheating;
 - (void)didTapHeaderView:(id)arg1;
 - (void)dropInteraction:(id)arg1 performDrop:(id)arg2;

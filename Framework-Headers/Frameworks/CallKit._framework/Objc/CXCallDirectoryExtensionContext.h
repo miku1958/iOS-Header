@@ -20,6 +20,7 @@
     long long _pendingBlockingEntryChangeType;
     CXCallDirectoryMutableLabeledPhoneNumberEntryData *_pendingIdentificationEntryDataForAddition;
     CXCallDirectoryMutablePhoneNumberEntryData *_pendingIdentificationEntryDataForRemoval;
+    long long _pendingIdentificationEntryChangeType;
     CDUnknownBlockType _remoteObjectProxyGenerator;
 }
 
@@ -31,6 +32,7 @@
 @property (readonly, nonatomic, getter=isIncremental) BOOL incremental; // @synthesize incremental=_incremental;
 @property (nonatomic) long long pendingBlockingEntryChangeType; // @synthesize pendingBlockingEntryChangeType=_pendingBlockingEntryChangeType;
 @property (strong, nonatomic) CXCallDirectoryMutablePhoneNumberEntryData *pendingBlockingEntryData; // @synthesize pendingBlockingEntryData=_pendingBlockingEntryData;
+@property (nonatomic) long long pendingIdentificationEntryChangeType; // @synthesize pendingIdentificationEntryChangeType=_pendingIdentificationEntryChangeType;
 @property (strong, nonatomic) CXCallDirectoryMutableLabeledPhoneNumberEntryData *pendingIdentificationEntryDataForAddition; // @synthesize pendingIdentificationEntryDataForAddition=_pendingIdentificationEntryDataForAddition;
 @property (strong, nonatomic) CXCallDirectoryMutablePhoneNumberEntryData *pendingIdentificationEntryDataForRemoval; // @synthesize pendingIdentificationEntryDataForRemoval=_pendingIdentificationEntryDataForRemoval;
 @property (copy, nonatomic) CDUnknownBlockType remoteObjectProxyGenerator; // @synthesize remoteObjectProxyGenerator=_remoteObjectProxyGenerator;
@@ -40,8 +42,7 @@
 + (id)_extensionAuxiliaryVendorProtocol;
 - (void).cxx_destruct;
 - (void)_flushPendingBlockingEntryData;
-- (void)_flushPendingIdentificationEntryDataForAddition;
-- (void)_flushPendingIdentificationEntryDataForRemoval;
+- (void)_flushPendingIdentificationEntryData;
 - (void)_performBlockIfIncremental:(CDUnknownBlockType)arg1 usingSelectorForExceptionMessage:(SEL)arg2;
 - (id)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1 synchronous:(BOOL)arg2;
 - (void)addBlockingEntryWithNextSequentialPhoneNumber:(long long)arg1;

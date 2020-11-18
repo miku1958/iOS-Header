@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) NSArray *results; // @synthesize results=_results;
 @property (readonly, nonatomic) long long returnTypes; // @synthesize returnTypes=_returnTypes;
 
+- (long long)addKeyValueArray:(id)arg1 with:(id)arg2;
 - (long long)addKeyValuePair:(id)arg1 with:(id)arg2;
 - (void)augmentResultsWithState:(BOOL)arg1;
 - (void)dealloc;

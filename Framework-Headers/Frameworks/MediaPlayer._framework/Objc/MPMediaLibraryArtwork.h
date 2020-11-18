@@ -28,6 +28,7 @@
 + (id)availableArtworkWithRequest:(id)arg1;
 + (void)cancelFetchingArtworkForRequest:(id)arg1;
 + (void)fetchArtworkForRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (void)fetchArtworkInfoForRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (BOOL)needsToFetchArtworkForRequest:(id)arg1;
 - (void).cxx_destruct;
 - (unsigned long long)hash;

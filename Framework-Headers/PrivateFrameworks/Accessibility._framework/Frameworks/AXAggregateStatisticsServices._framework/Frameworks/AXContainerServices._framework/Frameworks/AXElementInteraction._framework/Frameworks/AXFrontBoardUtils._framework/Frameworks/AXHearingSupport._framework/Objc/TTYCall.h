@@ -15,9 +15,9 @@
 {
     NSObject<OS_dispatch_queue> *_callQueue;
     id<TTYCallDelegate> _delegate;
+    TTYConversation *_conversation;
     TUCall *_call;
     AVCVirtualTTYDevice *_ttyDevice;
-    TTYConversation *_conversation;
 }
 
 @property (strong, nonatomic) TUCall *call; // @synthesize call=_call;

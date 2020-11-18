@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
             unsigned int startDownload:1;
             unsigned int wantsThumbnail:1;
             unsigned int userInitiated:1;
+            unsigned int wantsContentForThumbnail:1;
         } ;
     } _flags;
     NSError *_downloadError;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL userInitiated;
 @property (readonly, nonatomic) BOOL wantsContent;
+@property (readonly, nonatomic) BOOL wantsContentForThumbnail;
 @property (readonly, nonatomic) BOOL wantsThumbnail;
 
 + (id)newFromSqliteValue:(struct sqlite3_value *)arg1;

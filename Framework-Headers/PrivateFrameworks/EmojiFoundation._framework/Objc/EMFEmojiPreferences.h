@@ -43,6 +43,7 @@
 + (id)defaultsDomain;
 - (void).cxx_destruct;
 - (void)_checkForDingbatDuplicates;
+- (void)_checkForMalformationEmoji;
 - (void)_cleanUpOldFlagsCaches;
 - (void)_readPreferencesFromDefaults;
 - (void)_setRecentStrings:(id)arg1;
@@ -53,6 +54,7 @@
 - (void)didViewEmojiIndex:(long long)arg1 forCategory:(id)arg2;
 - (BOOL)hasLastUsedVariantForEmoji:(id)arg1;
 - (id)init;
+- (BOOL)isMalformationEmoji:(id)arg1;
 - (id)lastUsedVariantEmojiForEmoji:(id)arg1;
 - (void)loadDefaultsIfNecessary;
 - (void)migrateFromMajorOSVersion:(long long)arg1;

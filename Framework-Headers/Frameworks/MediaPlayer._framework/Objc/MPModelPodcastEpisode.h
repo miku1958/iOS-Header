@@ -16,13 +16,13 @@
     NSDateComponents *_releaseDateComponents;
     double _duration;
     NSString *_descriptionText;
-    NSString *_commentText;
     NSDate *_datePlayed;
-    NSURL *_feedURL;
+    NSURL *_shareURL;
     MPModelPodcastAuthor *_author;
     MPModelFileAsset *_localFileAsset;
     MPModelPodcast *_podcast;
     MPModelPlaybackPosition *_playbackPosition;
+    NSString *_commentText;
     CDUnknownBlockType _artworkCatalogBlock;
 }
 
@@ -33,22 +33,21 @@
 @property (copy, nonatomic) NSString *descriptionText; // @synthesize descriptionText=_descriptionText;
 @property (nonatomic) double duration; // @synthesize duration=_duration;
 @property (nonatomic, getter=isExplicitEpisode) BOOL explicitEpisode; // @synthesize explicitEpisode=_explicitEpisode;
-@property (copy, nonatomic) NSURL *feedURL; // @synthesize feedURL=_feedURL;
 @property (strong, nonatomic) MPModelFileAsset *localFileAsset; // @synthesize localFileAsset=_localFileAsset;
 @property (strong, nonatomic) MPModelPlaybackPosition *playbackPosition; // @synthesize playbackPosition=_playbackPosition;
 @property (strong, nonatomic) MPModelPodcast *podcast; // @synthesize podcast=_podcast;
 @property (copy, nonatomic) NSDateComponents *releaseDateComponents; // @synthesize releaseDateComponents=_releaseDateComponents;
+@property (copy, nonatomic) NSURL *shareURL; // @synthesize shareURL=_shareURL;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) float userRating; // @synthesize userRating=_userRating;
 
 + (id)__MPModelPropertyPodcastEpisodeArtwork__PROPERTY;
-+ (id)__MPModelPropertyPodcastEpisodeCommentText__PROPERTY;
 + (id)__MPModelPropertyPodcastEpisodeDatePlayed__PROPERTY;
 + (id)__MPModelPropertyPodcastEpisodeDescriptionText__PROPERTY;
 + (id)__MPModelPropertyPodcastEpisodeDuration__PROPERTY;
 + (id)__MPModelPropertyPodcastEpisodeExplicit__PROPERTY;
-+ (id)__MPModelPropertyPodcastEpisodeFeedURL__PROPERTY;
 + (id)__MPModelPropertyPodcastEpisodeReleaseDateComponents__PROPERTY;
++ (id)__MPModelPropertyPodcastEpisodeShareURL__PROPERTY;
 + (id)__MPModelPropertyPodcastEpisodeTitle__PROPERTY;
 + (id)__MPModelPropertyPodcastEpisodeUserRating__PROPERTY;
 + (id)__MPModelRelationshipPodcastEpisodeAuthor__PROPERTY;
@@ -57,16 +56,15 @@
 + (id)__MPModelRelationshipPodcastEpisodePodcast__PROPERTY;
 + (id)__artworkCatalogBlock__KEY;
 + (id)__author__KEY;
-+ (id)__commentText__KEY;
 + (id)__datePlayed__KEY;
 + (id)__descriptionText__KEY;
 + (id)__duration__KEY;
 + (id)__explicitEpisode__KEY;
-+ (id)__feedURL__KEY;
 + (id)__localFileAsset__KEY;
 + (id)__playbackPosition__KEY;
 + (id)__podcast__KEY;
 + (id)__releaseDateComponents__KEY;
++ (id)__shareURL__KEY;
 + (id)__title__KEY;
 + (id)__userRating__KEY;
 + (id)kindWithVariants:(unsigned long long)arg1;

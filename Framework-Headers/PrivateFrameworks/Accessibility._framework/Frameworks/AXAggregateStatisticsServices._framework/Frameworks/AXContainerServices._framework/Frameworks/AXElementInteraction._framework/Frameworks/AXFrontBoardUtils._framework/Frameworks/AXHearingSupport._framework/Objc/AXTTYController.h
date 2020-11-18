@@ -14,6 +14,7 @@
 @interface AXTTYController : NSObject <AXUIClientDelegate, TTYCallDelegate>
 {
     AXUIClient *_actionUIClient;
+    BOOL _shouldSuppressIncomingNotification;
     NSMutableArray *_ttyCalls;
     CDUnknownBlockType _actionCompletionBlock;
 }
@@ -22,6 +23,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL shouldSuppressIncomingNotification; // @synthesize shouldSuppressIncomingNotification=_shouldSuppressIncomingNotification;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableArray *ttyCalls; // @synthesize ttyCalls=_ttyCalls;
 
@@ -31,10 +33,14 @@
 - (void)callDidConnect:(id)arg1;
 - (id)callForUUID:(id)arg1;
 - (void)dealloc;
+- (void)dismissRTTFirstUseAlert;
 - (id)displayCallPrompt:(id)arg1;
+- (void)displayRTTFirstUseAlert;
 - (id)handleDatabaseRequest:(id)arg1;
 - (id)handleDictionaryRequest:(id)arg1;
+- (id)handleIncomingNotificationSuppressionChange:(id)arg1;
 - (id)handleSettingsRequest:(id)arg1;
+- (void)handleUpdatedCalls:(id)arg1;
 - (id)init;
 - (void)ttyCall:(id)arg1 didReceiveCharacter:(unsigned short)arg2 forUtterance:(id)arg3;
 - (void)updateRelayNumber;

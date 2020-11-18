@@ -25,6 +25,7 @@
     PKPaymentApplication *_primaryPaymentApplication;
     NSDate *_ingestedDate;
     PKCurrencyAmount *_peerPaymentAccountBalance;
+    unsigned long long _peerPaymentAccountState;
     NSArray *_associatedWebDomains;
 }
 
@@ -37,6 +38,7 @@
 @property (copy, nonatomic) NSString *passIdentifier; // @synthesize passIdentifier=_passIdentifier;
 @property (strong, nonatomic) NSArray *paymentApplications; // @synthesize paymentApplications=_paymentApplications;
 @property (strong, nonatomic) PKCurrencyAmount *peerPaymentAccountBalance; // @synthesize peerPaymentAccountBalance=_peerPaymentAccountBalance;
+@property (nonatomic) unsigned long long peerPaymentAccountState; // @synthesize peerPaymentAccountState=_peerPaymentAccountState;
 @property (copy, nonatomic) NSString *primaryAccountIdentifier; // @synthesize primaryAccountIdentifier=_primaryAccountIdentifier;
 @property (copy, nonatomic) NSString *primaryAccountNumberSuffix; // @synthesize primaryAccountNumberSuffix=_primaryAccountNumberSuffix;
 @property (strong, nonatomic) PKPaymentApplication *primaryPaymentApplication; // @synthesize primaryPaymentApplication=_primaryPaymentApplication;

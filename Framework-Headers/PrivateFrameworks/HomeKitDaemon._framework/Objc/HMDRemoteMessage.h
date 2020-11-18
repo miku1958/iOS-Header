@@ -39,6 +39,7 @@
 - (id)initWithName:(id)arg1 qualityOfService:(long long)arg2 destination:(id)arg3 payload:(id)arg4 type:(long long)arg5 timeout:(double)arg6 secure:(BOOL)arg7 restriction:(unsigned long long)arg8;
 - (id)initWithName:(id)arg1 qualityOfService:(long long)arg2 destination:(id)arg3 userInfo:(id)arg4 headers:(id)arg5 payload:(id)arg6;
 - (BOOL)isRemote;
+- (BOOL)isSecureRemote;
 - (void)setInternalResponseHandler:(CDUnknownBlockType)arg1;
 - (void)setResponseHandler:(CDUnknownBlockType)arg1;
 

@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
+- (id)_rowTitles;
 - (void)addText:(id)arg1 detail:(id)arg2;
 - (id)cellForIndex:(unsigned long long)arg1 tableView:(id)arg2;
 - (id)initWithTitle:(id)arg1;

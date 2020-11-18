@@ -8,7 +8,8 @@
 
 #import <WatchListKitUI/WLKUIOnboardingInterface-Protocol.h>
 
-@class NSArray, NSNumber, WLKUIOnboardingController;
+@class NSArray, NSNumber, NSObject, WLKUIOnboardingController;
+@protocol OS_dispatch_queue;
 
 @interface WLKUIOnboardingInterface : IKJSObject <WLKUIOnboardingInterface>
 {
@@ -16,19 +17,20 @@
     BOOL _hasSynced;
     NSNumber *_lastReportedOptedInValue;
     BOOL _isShowing;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (readonly, nonatomic) NSArray *eligibleBids;
 @property (readonly, nonatomic) BOOL isShowing;
 @property (readonly, nonatomic, getter=isOptedIn) BOOL optedIn;
 @property (readonly, nonatomic, getter=isOptedInCached) NSNumber *optedInCached;
-@property (readonly, nonatomic, getter=isTvosMigrated) BOOL tvosMigrated;
 
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)dismiss;
+- (void)fetchEligibleBids:(id)arg1;
+- (void)fetchOptedIn:(id)arg1;
 - (id)initWithAppContext:(id)arg1;
-- (void)migrateTvos:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setOptedIn:(BOOL)arg1:(id)arg2;
 - (void)show:(id)arg1;

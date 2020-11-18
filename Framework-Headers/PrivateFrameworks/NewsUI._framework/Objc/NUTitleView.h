@@ -38,6 +38,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithStyler:(id)arg1;
 - (void)layoutSubviews;
+- (void)relayoutWithAnimation:(BOOL)arg1;
 - (void)titleViewHandleTapGuesture;
 
 @end

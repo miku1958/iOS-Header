@@ -45,6 +45,7 @@
     NSArray *_excludedDocumentTypes;
     NSArray *_urls;
     NSString *_hostIdentifier;
+    NSString *_hostBundleTitle;
     NSArray *_hiddenSourcesIdentifiers;
     unsigned long long _maximumNumberOfItemsToFetch;
     unsigned long long _maximumNumberOfRows;
@@ -65,9 +66,11 @@
 @property BOOL forPickingDocuments; // @synthesize forPickingDocuments=_forPickingDocuments;
 @property (strong) NSArray *forbiddenActionIdentifiers; // @synthesize forbiddenActionIdentifiers=_forbiddenActionIdentifiers;
 @property (copy, nonatomic) NSArray *hiddenSourcesIdentifiers; // @synthesize hiddenSourcesIdentifiers=_hiddenSourcesIdentifiers;
+@property (copy, nonatomic) NSString *hostBundleTitle; // @synthesize hostBundleTitle=_hostBundleTitle;
 @property (copy, nonatomic) NSString *hostIdentifier; // @synthesize hostIdentifier=_hostIdentifier;
 @property BOOL inProcess; // @synthesize inProcess=_inProcess;
 @property unsigned long long interactionMode; // @synthesize interactionMode=_interactionMode;
+@property (readonly) BOOL isFilesApp;
 @property unsigned long long maximumNumberOfItemsToFetch; // @synthesize maximumNumberOfItemsToFetch=_maximumNumberOfItemsToFetch;
 @property unsigned long long maximumNumberOfRows; // @synthesize maximumNumberOfRows=_maximumNumberOfRows;
 @property BOOL neverCreateBookmarkForOpenInPlace; // @synthesize neverCreateBookmarkForOpenInPlace=_neverCreateBookmarkForOpenInPlace;
@@ -88,7 +91,7 @@
 @property BOOL showSearchInNavBar; // @synthesize showSearchInNavBar=_showSearchInNavBar;
 @property BOOL singleSourceMode; // @synthesize singleSourceMode=_singleSourceMode;
 @property BOOL skipDownload; // @synthesize skipDownload=_skipDownload;
-@property BOOL sourceIsManaged; // @synthesize sourceIsManaged=_sourceIsManaged;
+@property (nonatomic) BOOL sourceIsManaged; // @synthesize sourceIsManaged=_sourceIsManaged;
 @property BOOL sourceIsWritableFileProvider; // @synthesize sourceIsWritableFileProvider=_sourceIsWritableFileProvider;
 @property BOOL suppressBlackCallout; // @synthesize suppressBlackCallout=_suppressBlackCallout;
 @property double thumbnailFetchingTimeOut; // @synthesize thumbnailFetchingTimeOut=_thumbnailFetchingTimeOut;

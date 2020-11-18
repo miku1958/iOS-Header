@@ -15,6 +15,7 @@
     NSMutableArray *_addingOutputDeviceUIDs;
     int _outputContextType;
     NSMutableArray *_removingOutputDeviceUIDs;
+    NSMutableArray *_settingOutputDeviceUIDs;
     struct {
         unsigned int outputContextType:1;
     } _has;
@@ -24,16 +25,20 @@
 @property (nonatomic) BOOL hasOutputContextType;
 @property (nonatomic) int outputContextType; // @synthesize outputContextType=_outputContextType;
 @property (strong, nonatomic) NSMutableArray *removingOutputDeviceUIDs; // @synthesize removingOutputDeviceUIDs=_removingOutputDeviceUIDs;
+@property (strong, nonatomic) NSMutableArray *settingOutputDeviceUIDs; // @synthesize settingOutputDeviceUIDs=_settingOutputDeviceUIDs;
 
-+ (Class)addingOutputDeviceUIDsType;
-+ (Class)removingOutputDeviceUIDsType;
++ (Class)addingOutputDeviceUIDType;
++ (Class)removingOutputDeviceUIDType;
++ (Class)settingOutputDeviceUIDType;
 - (int)StringAsOutputContextType:(id)arg1;
-- (void)addAddingOutputDeviceUIDs:(id)arg1;
-- (void)addRemovingOutputDeviceUIDs:(id)arg1;
-- (id)addingOutputDeviceUIDsAtIndex:(unsigned long long)arg1;
+- (void)addAddingOutputDeviceUID:(id)arg1;
+- (void)addRemovingOutputDeviceUID:(id)arg1;
+- (void)addSettingOutputDeviceUID:(id)arg1;
+- (id)addingOutputDeviceUIDAtIndex:(unsigned long long)arg1;
 - (unsigned long long)addingOutputDeviceUIDsCount;
 - (void)clearAddingOutputDeviceUIDs;
 - (void)clearRemovingOutputDeviceUIDs;
+- (void)clearSettingOutputDeviceUIDs;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -44,8 +49,10 @@
 - (void)mergeFrom:(id)arg1;
 - (id)outputContextTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)removingOutputDeviceUIDsAtIndex:(unsigned long long)arg1;
+- (id)removingOutputDeviceUIDAtIndex:(unsigned long long)arg1;
 - (unsigned long long)removingOutputDeviceUIDsCount;
+- (id)settingOutputDeviceUIDAtIndex:(unsigned long long)arg1;
+- (unsigned long long)settingOutputDeviceUIDsCount;
 - (void)writeTo:(id)arg1;
 
 @end

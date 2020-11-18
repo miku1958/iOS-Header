@@ -17,6 +17,7 @@
     NSDictionary *_downloadMetadataDictionary;
     NSDate *_expirationDate;
     BOOL _hasOverrideChildStorePlatformDictionaries;
+    NSNumber *_hasSubscriptionOffer;
     NSArray *_overrideChildStorePlatformDictionaries;
     NSDictionary *_storePlatformDictionary;
     MPStoreItemMetadata *_parentStoreItemMetadata;
@@ -32,6 +33,8 @@
 @property (readonly, copy, nonatomic) NSString *cacheableItemIdentifier;
 @property (readonly, copy, nonatomic) NSArray *childStoreItemMetadatas;
 @property (readonly, copy, nonatomic) NSArray *childrenStoreIDs;
+@property (readonly, copy, nonatomic) NSString *cloudAlbumID;
+@property (readonly, nonatomic) unsigned long long cloudID;
 @property (readonly, copy, nonatomic) NSString *cloudUniversalLibraryID;
 @property (readonly, copy, nonatomic) NSString *collectionName;
 @property (readonly, copy, nonatomic) id collectionStoreID;
@@ -56,6 +59,7 @@
 @property (readonly, nonatomic) BOOL hasArtistBiography;
 @property (readonly, nonatomic) BOOL hasLyrics;
 @property (readonly, nonatomic) BOOL hasSocialPosts;
+@property (readonly, nonatomic) BOOL hasSubscriptionOffer;
 @property (readonly, copy, nonatomic) NSString *iTunesBrandType;
 @property (readonly, nonatomic) BOOL isPreorder;
 @property (readonly, copy, nonatomic) NSString *itemKind;
@@ -74,15 +78,20 @@
 @property (readonly, copy, nonatomic) NSString *playlistType;
 @property (readonly, copy, nonatomic) NSNumber *popularity;
 @property (readonly, nonatomic, getter=isPrivatePerson) BOOL privatePerson;
+@property (readonly, nonatomic) long long purchasedAdamID;
+@property (readonly, nonatomic) long long radioStationTypeID;
 @property (readonly, copy, nonatomic) NSDate *releaseDate;
 @property (readonly, nonatomic) long long seasonNumber;
 @property (readonly, copy, nonatomic) NSString *shortEditorNotes;
 @property (readonly, copy, nonatomic) NSString *shortName;
 @property (readonly, copy, nonatomic) NSURL *shortURL;
 @property (readonly, copy, nonatomic) NSNumber *shouldBookmarkPlayPosition;
+@property (readonly, nonatomic) BOOL shouldReportPlayEvents;
 @property (readonly, nonatomic) BOOL showComposer;
 @property (readonly, copy, nonatomic) id socialProfileID;
 @property (readonly, copy, nonatomic) id storeID;
+@property (readonly, nonatomic, getter=isStoreRedownloadable) BOOL storeRedownloadable;
+@property (readonly, nonatomic) long long subscriptionAdamID;
 @property (readonly, nonatomic) long long trackCount;
 @property (readonly, nonatomic) long long trackNumber;
 @property (readonly, nonatomic, getter=isVerifiedPerson) BOOL verifiedPerson;

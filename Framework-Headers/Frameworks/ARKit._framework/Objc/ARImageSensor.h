@@ -52,6 +52,7 @@
 
 + (id)bestFormatForDevice:(id)arg1 withResolution:(CDStruct_79c71658)arg2 pixelFormatType:(unsigned int)arg3 frameRate:(double)arg4;
 + (double)closestFrameRateIn:(id)arg1 target:(double)arg2 preferHigher:(BOOL)arg3;
++ (float)defaultLensPosition;
 - (void).cxx_destruct;
 - (void)_adjustForPowerUsage;
 - (void)_configureCameraExposureForDevice:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iAd/NSCopying-Protocol.h>
 #import <iAd/NSSecureCoding-Protocol.h>
@@ -27,6 +27,7 @@
 
 + (id)descriptionForActionType:(long long)arg1;
 + (BOOL)doesURLOpenNews:(id)arg1;
++ (id)errorDescriptionForActionType:(long long)arg1 errorType:(long long)arg2;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

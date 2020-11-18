@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSLayoutRule-Protocol.h>
+#import <Foundation/NSLayoutRule-Protocol.h>
 
 @class NSArray, NSString;
 

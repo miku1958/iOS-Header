@@ -25,8 +25,6 @@
 @property (copy) NSString *userAgent; // @synthesize userAgent=_userAgent;
 
 - (void).cxx_destruct;
-- (id)_clientIDForMetrics;
-- (id)_clientIDForUserID:(id)arg1;
 - (void)_loadURLBag;
 - (id)_newSourceByStartingTimeoutTimer;
 - (void)_performOptInDialogMetricsWithResult:(BOOL)arg1 error:(id)arg2;

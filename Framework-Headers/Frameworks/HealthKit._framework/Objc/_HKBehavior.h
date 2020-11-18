@@ -53,6 +53,7 @@
 @property (nonatomic) BOOL isAppleInternalInstall; // @synthesize isAppleInternalInstall=_isAppleInternalInstall;
 @property (nonatomic) BOOL isAppleWatch; // @synthesize isAppleWatch=_isAppleWatch;
 @property (nonatomic) BOOL isCompanionCapable; // @synthesize isCompanionCapable=_isCompanionCapable;
+@property (readonly, nonatomic) BOOL isCurrentDeviceN2XA;
 @property (nonatomic) BOOL isDeviceSupported; // @synthesize isDeviceSupported=_isDeviceSupported;
 @property (readonly, nonatomic) BOOL isRunningStoreDemoMode; // @synthesize isRunningStoreDemoMode=_isRunningStoreDemoMode;
 @property (nonatomic) BOOL isTestingDevice; // @synthesize isTestingDevice=_isTestingDevice;

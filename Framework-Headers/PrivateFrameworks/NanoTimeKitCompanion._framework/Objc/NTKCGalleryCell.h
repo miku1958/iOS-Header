@@ -9,7 +9,7 @@
 #import <NanoTimeKitCompanion/UICollectionViewDataSource-Protocol.h>
 #import <NanoTimeKitCompanion/UICollectionViewDelegateFlowLayout-Protocol.h>
 
-@class NSLayoutConstraint, NSString, NTKCGalleryCollection, UIButton, UICollectionView, UICollectionViewFlowLayout, UILabel, UIStackView, _NTKCAddNewFace;
+@class NSLayoutConstraint, NSString, NTKCGalleryCollection, UICollectionView, UICollectionViewFlowLayout, UILabel, UIStackView, _NTKCAddNewFace;
 @protocol NTKCGalleryCellDelegate;
 
 @interface NTKCGalleryCell : UITableViewCell <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
@@ -20,7 +20,6 @@
     id<NTKCGalleryCellDelegate> _delegate;
     long long _selectedIndex;
     UILabel *_title;
-    UIButton *_seeAll;
     UICollectionView *_collectionView;
     UICollectionViewFlowLayout *_layout;
     NSLayoutConstraint *_titleBaselineConstraint;
@@ -51,7 +50,6 @@
 @property (nonatomic) struct CGSize itemSize; // @synthesize itemSize=_itemSize;
 @property (strong, nonatomic) UICollectionViewFlowLayout *layout; // @synthesize layout=_layout;
 @property (strong, nonatomic) NSLayoutConstraint *leadingInsetConstraint; // @synthesize leadingInsetConstraint=_leadingInsetConstraint;
-@property (strong, nonatomic) UIButton *seeAll; // @synthesize seeAll=_seeAll;
 @property (nonatomic) long long selectedIndex; // @synthesize selectedIndex=_selectedIndex;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UILabel *title; // @synthesize title=_title;
@@ -63,7 +61,6 @@
 - (void).cxx_destruct;
 - (struct CGPoint)_contentInsetPoint;
 - (void)_fontSizeDidChange;
-- (void)_seeAllTapped;
 - (BOOL)_shouldShowAddNewFace;
 - (void)calculateHeightForCollection;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;

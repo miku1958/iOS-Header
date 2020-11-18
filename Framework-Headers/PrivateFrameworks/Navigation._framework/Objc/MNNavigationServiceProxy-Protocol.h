@@ -10,6 +10,7 @@
 
 @protocol MNNavigationServiceProxy <NSObject>
 - (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlertDetails:(MNTrafficIncidentAlertDetails *)arg2;
+- (void)acquireDesiredResourcePolicy;
 - (void)changeSettings:(MNSettings *)arg1;
 - (void)interfaceHashesWithHandler:(void (^)(unsigned long long, unsigned long long))arg1;
 - (void)prepareNavigationWithRouteDetails:(MNRoutePlanningDetails *)arg1;

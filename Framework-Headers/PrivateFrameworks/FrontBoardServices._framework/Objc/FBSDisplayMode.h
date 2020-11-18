@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <FrontBoardServices/BSXPCCoding-Protocol.h>
 #import <FrontBoardServices/NSCopying-Protocol.h>
@@ -20,6 +20,7 @@
     double _scaleOverride;
     double _refreshRate;
     long long _gamut;
+    long long _hdr;
     long long _rotation;
 }
 
@@ -27,6 +28,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) long long hdrMode; // @synthesize hdrMode=_hdr;
 @property (readonly, nonatomic) struct CGSize pixelSize;
 @property (readonly, nonatomic) double refreshRate; // @synthesize refreshRate=_refreshRate;
 @property (readonly, nonatomic) double scale;
@@ -36,13 +38,15 @@
 + (id)_emptyMode;
 + (BOOL)supportsSecureCoding;
 - (id)_caColorGamut;
+- (id)_caHDRMode;
 - (unsigned long long)_caHeight;
 - (unsigned long long)_caPreferredScale;
 - (double)_caRefreshRate;
 - (unsigned long long)_caWidth;
 - (unsigned long long)_height;
 - (id)_initWithCADisplayMode:(id)arg1 scale:(double)arg2 rotation:(long long)arg3;
-- (id)_initWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 preferredScale:(unsigned long long)arg3 scaleOverride:(double)arg4 refreshRate:(double)arg5 gamut:(long long)arg6 rotation:(long long)arg7 validityCheck:(long long)arg8;
+- (id)_initWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 preferredScale:(unsigned long long)arg3 scaleOverride:(double)arg4 refreshRate:(double)arg5 gamut:(long long)arg6 hdr:(long long)arg7 rotation:(long long)arg8 validityCheck:(long long)arg9;
+- (id)_initWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 scale:(unsigned long long)arg3 refreshRate:(double)arg4 gamut:(long long)arg5 hdr:(long long)arg6;
 - (id)_referenceSizeDescription;
 - (long long)_rotation;
 - (unsigned long long)_width;

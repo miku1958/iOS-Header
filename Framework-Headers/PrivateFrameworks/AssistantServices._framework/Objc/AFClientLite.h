@@ -17,7 +17,8 @@
 }
 
 - (void).cxx_destruct;
-- (void)_handleCommand:(id)arg1 isOneWay:(BOOL)arg2 commandHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_handleCommand:(id)arg1 afterCurrentRequest:(BOOL)arg2 isOneWay:(BOOL)arg3 commandHandler:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)handleCommand:(id)arg1 afterCurrentRequest:(BOOL)arg2 commandHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)handleCommand:(id)arg1 commandHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (oneway void)handleCommand:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleOneWayCommand:(id)arg1 commandHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;

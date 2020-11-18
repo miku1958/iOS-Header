@@ -60,6 +60,7 @@
 - (id)clientToken;
 - (void)clientTokenRequestedByServer;
 - (struct __CFURLStorageSession *)copyStorageSession;
+- (id)getAppleIDSession;
 - (BOOL)handleAuthenticateAgainstProtectionSpace:(id)arg1;
 - (BOOL)handleAuthenticateAgainstProtectionSpace:(id)arg1 withConnection:(id)arg2;
 - (BOOL)handleCertificateError:(id)arg1;

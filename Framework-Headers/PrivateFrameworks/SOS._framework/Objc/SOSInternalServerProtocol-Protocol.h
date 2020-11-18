@@ -7,6 +7,7 @@
 #import <SOS/SOSServerProtocol-Protocol.h>
 
 @protocol SOSInternalServerProtocol <SOSServerProtocol>
+- (void)didDismissSOSBeforeSOSCall:(long long)arg1;
 - (void)dismissSOSWithCompletion:(void (^)(BOOL))arg1;
 - (void)updateCurrentSOSInitiationState:(long long)arg1;
 - (void)updateCurrentSOSInteractiveState:(long long)arg1;

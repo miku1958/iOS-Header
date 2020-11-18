@@ -16,12 +16,16 @@
 @property (readonly, nonatomic) NSString *deviceID;
 @property (readonly, nonatomic) long long deviceSubType;
 @property (readonly, nonatomic) long long deviceType;
+@property (readonly, nonatomic) NSString *firmwareVersion;
 @property (readonly, nonatomic) NSData *identifyingMACAddress;
+@property (readonly, nonatomic) NSString *manufacturer;
 @property (readonly, nonatomic) NSString *modelID;
 @property (readonly, nonatomic) NSString *name;
+@property (readonly, nonatomic) NSString *serialNumber;
 
 + (void)initialize;
 + (id)outputDeviceWithFigEndpoint:(struct OpaqueFigEndpoint *)arg1;
++ (id)outputDeviceWithFigEndpoint:(struct OpaqueFigEndpoint *)arg1 routingContextFactory:(id)arg2;
 + (id)sharedLocalDevice;
 - (id)ID;
 - (float)batteryLevel;
@@ -29,6 +33,7 @@
 - (BOOL)canBeGroupLeader;
 - (BOOL)canBeGrouped;
 - (BOOL)canSetVolume;
+- (void)configureUsingBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)connectedPairedDevices;
 - (void)dealloc;
 - (id)description;
@@ -45,11 +50,11 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isGroupLeader;
 - (BOOL)isInUseByPairedDevice;
+- (id)logicalDeviceID;
 - (id)modelSpecificInformation;
 - (void)outputDeviceImplDidChangeCanChangeVolume:(id)arg1;
 - (void)outputDeviceImplDidChangeVolume:(id)arg1;
 - (BOOL)requiresAuthorization;
-- (void)setAdministrativeConfiguration:(id)arg1 administrationPassword:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setSecondDisplayEnabled:(BOOL)arg1;
 - (void)setVolume:(float)arg1;
 - (void)updateFrecencyScore;

@@ -99,10 +99,10 @@
 - (void)_addAuthToRequest:(id)arg1;
 - (id)_applyAuthenticationChain:(id)arg1 toRequest:(id)arg2;
 - (void)_assignConnectionProperties:(id)arg1 toSessionConfiguration:(id)arg2;
+- (BOOL)_canAuthenticateAgainstProtectionSpace:(id)arg1;
 - (void)_continuePerformTask;
 - (id)_easVersion;
 - (void)_failImmediately;
-- (void)_handleAuthenticationChallenge:(id)arg1;
 - (void)_handleAuthenticationChallenge:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleBadPasswordResponse;
 - (BOOL)_handleCertificateError:(id)arg1;

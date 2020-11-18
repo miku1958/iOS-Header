@@ -18,10 +18,10 @@ __attribute__((visibility("hidden")))
 + (void)drawArrowFrom:(struct CGPoint)arg1 to:(struct CGPoint)arg2 open:(BOOL)arg3 inContext:(struct CGContext *)arg4 withBorder:(id)arg5;
 + (void)drawBulletAtPoint:(struct CGPoint)arg1 shape:(int)arg2 inContext:(struct CGContext *)arg3 withBorder:(id)arg4;
 + (void)drawCheckBox:(id)arg1 inContext:(struct CGContext *)arg2 withState:(long long)arg3 withBackgroundColor:(id)arg4 withBorderColor:(id)arg5 withFontColor:(id)arg6 isHighlighted:(BOOL)arg7;
-+ (void)drawComboBox:(struct CGRect)arg1 inContext:(struct CGContext *)arg2 withAnnotation:(id)arg3 withStringValue:(id)arg4 withFont:(id)arg5 withFontColor:(id)arg6 withRotation:(long long)arg7;
++ (void)drawComboBox:(struct CGRect)arg1 inContext:(struct CGContext *)arg2 withAnnotation:(id)arg3 withStringValue:(id)arg4 withFont:(id)arg5 withFontColor:(id)arg6;
 + (void)drawDisclosureBox:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 + (void)drawInContext:(struct CGContext *)arg1 withBounds:(struct CGRect)arg2 withPopupAnnotation:(id)arg3;
-+ (void)drawListBox:(struct CGRect)arg1 inContext:(struct CGContext *)arg2 withAnnotation:(id)arg3 withOptions:(id)arg4 withStringValue:(id)arg5 withFont:(id)arg6 withFontColor:(id)arg7 withRotation:(long long)arg8;
++ (void)drawListBox:(struct CGRect)arg1 inContext:(struct CGContext *)arg2 withAnnotation:(id)arg3 withOptions:(id)arg4 withStringValue:(id)arg5 withFont:(id)arg6 withFontColor:(id)arg7;
 + (void)drawPushButton:(id)arg1 inContext:(struct CGContext *)arg2 withBackgroundColor:(id)arg3 withCaption:(id)arg4 withFont:(id)arg5 withFontColor:(id)arg6 isHighlighted:(BOOL)arg7;
 + (void)drawRadioButton:(id)arg1 inContext:(struct CGContext *)arg2 withState:(long long)arg3 withBackgroundColor:(id)arg4 withBorderColor:(id)arg5 withFontColor:(id)arg6 isHighlighted:(BOOL)arg7;
 + (void)drawWithBox:(long long)arg1 inContext:(struct CGContext *)arg2 withAKAnnotation:(id)arg3 forAnnotation:(id)arg4;

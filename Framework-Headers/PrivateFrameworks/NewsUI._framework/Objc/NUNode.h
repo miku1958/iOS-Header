@@ -14,7 +14,7 @@
 @interface NUNode : NSObject <NUNode>
 {
     NSMutableArray *_subnodes;
-    id<NUNode> _supernode;
+    NSObject<NUNode> *_supernode;
     struct CGRect _frame;
     struct CGRect _bounds;
 }
@@ -26,7 +26,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableArray *subnodes; // @synthesize subnodes=_subnodes;
 @property (readonly) Class superclass;
-@property (weak, nonatomic) id<NUNode> supernode; // @synthesize supernode=_supernode;
+@property (weak, nonatomic) NSObject<NUNode> *supernode; // @synthesize supernode=_supernode;
 
 - (void).cxx_destruct;
 - (void)addSubnode:(id)arg1;

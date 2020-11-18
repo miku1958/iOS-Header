@@ -8,20 +8,22 @@
 
 #import <CardKit/CRKCardSectionViewControllerDataSource-Protocol.h>
 #import <CardKit/CRKCardSectionViewControllerDelegate-Protocol.h>
+#import <CardKit/CRKCardSectionViewProviderHelping-Protocol.h>
+#import <CardKit/CRKFeedbackDelegate-Protocol.h>
 #import <CardKit/SearchUIFeedbackDelegate-Protocol.h>
 
 @class CRKComposedStackView, NSMapTable, NSMutableArray, NSString;
-@protocol CRCard, CRKCardViewControllerDelegate;
+@protocol CRCard, CRKCardSectionViewProviderManaging, CRKCardViewControllerDelegate;
 
-@interface CRKCardViewController : UIViewController <CRKCardSectionViewControllerDelegate, CRKCardSectionViewControllerDataSource, SearchUIFeedbackDelegate>
+@interface CRKCardViewController : UIViewController <CRKCardSectionViewControllerDelegate, CRKCardSectionViewControllerDataSource, SearchUIFeedbackDelegate, CRKCardSectionViewProviderHelping, CRKFeedbackDelegate>
 {
+    id<CRKCardSectionViewProviderManaging> _cardSectionViewProviderManager;
     NSMutableArray *_cardSectionViewControllers;
     NSMapTable *_cardSectionsToCardSectionViewControllersMapTable;
     NSMapTable *_handledParametersForInteraction;
     NSMutableArray *_pendingDismissalCommands;
     BOOL _loaded;
     NSMutableArray *_loadingCardSections;
-    NSMutableArray *_tableCardSections;
     BOOL _indicatingActivity;
     id<CRCard> _card;
     id<CRKCardViewControllerDelegate> _delegate;
@@ -47,7 +49,6 @@
 - (void)_cancelTouchesIfNecessary;
 - (id)_cardSectionViewControllerForCardSection:(id)arg1;
 - (void)_configureCardSectionViewController:(id)arg1 forCardSection:(id)arg2;
-- (void)_configureTableRowCardSections:(id)arg1;
 - (long long)_convertSFSeparatorStyleToCRKKeylineStyle:(int)arg1;
 - (long long)_defaultKeylineStyleBetweenLeadingCardSection:(id)arg1 andTrailingCardSection:(id)arg2;
 - (void)_finishLoading;
@@ -73,7 +74,9 @@
 - (void)cardSectionViewControllerShouldBeRemoved:(id)arg1;
 - (void)cardSectionViewDidAppearForCardSection:(id)arg1 withAppearanceFeedback:(id)arg2;
 - (void)cardSectionViewDidDisappearForCardSection:(id)arg1 withDisappearanceFeedback:(id)arg2;
+- (void)cardSectionViewDidSelectPreferredPunchoutIndex:(long long)arg1;
 - (void)cardSectionViewWillAppearForCardSection:(id)arg1 withAppearanceFeedback:(id)arg2;
+- (id)defaultFeedbackDelegate;
 - (void)didEngageCardSection:(id)arg1;
 - (void)didMoveToParentViewController:(id)arg1;
 - (void)eventDidOccur:(unsigned long long)arg1 withIdentifier:(id)arg2 userInfo:(id)arg3;
@@ -84,6 +87,7 @@
 - (void)loadView;
 - (BOOL)performCommand:(id)arg1 forCardSectionViewController:(id)arg2;
 - (long long)preferredPunchoutIndexForCardSectionViewController:(id)arg1;
+- (void)presentViewController:(id)arg1;
 - (void)presentViewController:(id)arg1 forCardSectionViewController:(id)arg2;
 - (void)userDidEngageCardSection:(id)arg1 withEngagementFeedback:(id)arg2;
 - (void)viewDidAppear:(BOOL)arg1;

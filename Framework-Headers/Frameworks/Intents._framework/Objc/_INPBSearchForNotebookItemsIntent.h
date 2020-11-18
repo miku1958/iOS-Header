@@ -20,6 +20,7 @@
     int _itemType;
     _INPBLocation *_location;
     int _locationSearchType;
+    NSString *_notebookItemIdentifier;
     int _status;
     _INPBDataString *_title;
     struct {
@@ -40,12 +41,14 @@
 @property (nonatomic) BOOL hasItemType;
 @property (readonly, nonatomic) BOOL hasLocation;
 @property (nonatomic) BOOL hasLocationSearchType;
+@property (readonly, nonatomic) BOOL hasNotebookItemIdentifier;
 @property (nonatomic) BOOL hasStatus;
 @property (readonly, nonatomic) BOOL hasTitle;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (nonatomic) int itemType; // @synthesize itemType=_itemType;
 @property (strong, nonatomic) _INPBLocation *location; // @synthesize location=_location;
 @property (nonatomic) int locationSearchType; // @synthesize locationSearchType=_locationSearchType;
+@property (strong, nonatomic) NSString *notebookItemIdentifier; // @synthesize notebookItemIdentifier=_notebookItemIdentifier;
 @property (nonatomic) int status; // @synthesize status=_status;
 @property (strong, nonatomic) _INPBDataString *title; // @synthesize title=_title;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;

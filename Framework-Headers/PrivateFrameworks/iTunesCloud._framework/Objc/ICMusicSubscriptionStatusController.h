@@ -6,23 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class ICMusicSubscriptionStatus, NSOperationQueue;
+@class NSOperationQueue;
 @protocol OS_dispatch_queue;
 
 @interface ICMusicSubscriptionStatusController : NSObject
 {
-    ICMusicSubscriptionStatus *_cachedActiveUserSubscriptionStatus;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     NSOperationQueue *_operationQueue;
 }
 
 + (id)sharedStatusController;
 - (void).cxx_destruct;
-- (void)_getSubscriptionStatusForUserIdentity:(id)arg1 bypassingCache:(BOOL)arg2 reauthenticateOnInvalidTokenResponse:(BOOL)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
-- (void)_handleSubscriptionStatusChangedDistributedNotification:(id)arg1;
-- (void)_loadCachedStatus;
-- (void)clearCachedSubscriptionStatusForUserIdentiy:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)clearCachedSubscriptionStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_subscriptionStatusCacheDidChangeNotification:(id)arg1;
 - (void)dealloc;
 - (void)disableSubscriptionForUserIdentity:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)disableSubscriptionWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -33,7 +28,9 @@
 - (void)getSubscriptionStatusForUserIdentity:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)getSubscriptionStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
-- (void)invalidateCachedSubscriptionStatus;
+- (void)invalidateCachedSubscriptionStatusForUserIdentity:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)invalidateCachedSubscriptionStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)performSubscriptionStatusRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)refreshSubscriptionForUserIdentity:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)refreshSubscriptionUsingRequestContext:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)refreshSubscriptionWithCompletionHandler:(CDUnknownBlockType)arg1;

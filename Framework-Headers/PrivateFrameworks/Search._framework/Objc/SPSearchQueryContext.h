@@ -24,6 +24,7 @@
     NSArray *_searchDomains;
     NSArray *_disabledDomains;
     NSArray *_disabledBundles;
+    NSArray *_disabledApps;
     unsigned long long _whyQuery;
     unsigned long long _whyClear;
     unsigned long long _queryIdent;
@@ -31,6 +32,7 @@
 }
 
 @property (nonatomic) BOOL allowInternet; // @synthesize allowInternet=_allowInternet;
+@property (strong, nonatomic) NSArray *disabledApps; // @synthesize disabledApps=_disabledApps;
 @property (strong, nonatomic) NSArray *disabledBundles; // @synthesize disabledBundles=_disabledBundles;
 @property (strong, nonatomic) NSArray *disabledDomains; // @synthesize disabledDomains=_disabledDomains;
 @property (readonly, nonatomic) NSString *displayedText;

@@ -7,10 +7,11 @@
 #import <Home/HFControlItem.h>
 
 @interface HFControlItem (HUQuickControlsAdditions)
-+ (id)_hu_prioritizedControlControllers;
-+ (id)_hu_quickControlControllerForControlItemWithPreferredPurposes:(unsigned long long)arg1 inControlItems:(id)arg2 valueSource:(id)arg3 home:(id)arg4;
-+ (id)_hu_quickControlControllerOfClass:(Class)arg1 controlItem:(id)arg2 valueSource:(id)arg3 home:(id)arg4;
-+ (id)hu_preferredQuickControlControllerGroupForControlItems:(id)arg1 valueSource:(id)arg2 home:(id)arg3;
++ (CDUnknownBlockType)_hf_controlItemComparator;
++ (id)_hu_prioritizedViewControllerClasses;
++ (id)_hu_quickControlViewControllerForControlItemWithPreferredPurposes:(unsigned long long)arg1 inControlItems:(id)arg2 configuration:(id)arg3;
++ (id)_hu_quickControlViewControllerOfClass:(Class)arg1 controlItems:(id)arg2 configuration:(id)arg3;
++ (id)hu_preferredQuickControlViewControllerGroupForControlItems:(id)arg1 configuration:(id)arg2;
 + (id)hu_preferredTogglableControlItemInControlItems:(id)arg1;
 @end
 

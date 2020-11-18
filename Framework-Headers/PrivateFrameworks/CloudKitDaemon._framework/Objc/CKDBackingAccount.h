@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) NSURL *privateCloudDBURL;
 @property (readonly, nonatomic) NSURL *privateCodeServiceURL;
 @property (readonly, nonatomic) NSURL *privateDeviceServiceURL;
+@property (readonly, nonatomic) NSURL *privateMetricsServiceURL;
 @property (readonly, nonatomic) NSURL *privateShareServiceURL;
 @property (readonly, nonatomic) NSString *serverPreferredPushEnvironment;
 @property (readonly, nonatomic) NSString *username;

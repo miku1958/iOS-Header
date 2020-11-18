@@ -6,27 +6,25 @@
 
 #import <UIKit/UIView.h>
 
-@class CAGradientLayer, CAMStageLightOverlayCircleView, UIImageView;
+@class CAGradientLayer, CAMStageLightAnimator, CAMStageLightOverlayCircleView, UIImageView;
 
 @interface CAMStageLightOverlayView : UIView
 {
     BOOL _active;
     BOOL _visible;
-    BOOL __displayedActive;
     long long _orientation;
     double _bottomContentInset;
-    UIView *__backgroundContainerView;
     UIView *__tintView;
     UIImageView *__vignetteView;
     CAMStageLightOverlayCircleView *__circleView;
     unsigned long long __activeTimerID;
     CAGradientLayer *__gradientLayer;
+    CAMStageLightAnimator *__animator;
 }
 
 @property (nonatomic, setter=_setActiveTimerID:) unsigned long long _activeTimerID; // @synthesize _activeTimerID=__activeTimerID;
-@property (readonly, nonatomic) UIView *_backgroundContainerView; // @synthesize _backgroundContainerView=__backgroundContainerView;
+@property (strong, nonatomic, setter=_setAnimator:) CAMStageLightAnimator *_animator; // @synthesize _animator=__animator;
 @property (readonly, nonatomic) CAMStageLightOverlayCircleView *_circleView; // @synthesize _circleView=__circleView;
-@property (nonatomic, getter=_isDisplayedActive, setter=_setDisplayedActive:) BOOL _displayedActive; // @synthesize _displayedActive=__displayedActive;
 @property (readonly, nonatomic) CAGradientLayer *_gradientLayer; // @synthesize _gradientLayer=__gradientLayer;
 @property (readonly, nonatomic) UIView *_tintView; // @synthesize _tintView=__tintView;
 @property (readonly, nonatomic) UIImageView *_vignetteView; // @synthesize _vignetteView=__vignetteView;
@@ -36,16 +34,10 @@
 @property (nonatomic, getter=isVisible) BOOL visible; // @synthesize visible=_visible;
 
 - (void).cxx_destruct;
-- (void)_cancelActiveTimer;
 - (double)_circleDiameterForOrientation:(long long)arg1;
 - (struct CGRect)_circleFrameForOrientation:(long long)arg1;
-- (double)_durationForCutoutAnimation;
-- (void)_setDisplayedActive:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)_startTimerForActive:(BOOL)arg1 animated:(BOOL)arg2;
-- (id)_timingFunctionForCutoutAnimation;
-- (void)_updateCircleViewAnimated:(BOOL)arg1;
-- (void)_updateGradientAnimated:(BOOL)arg1;
-- (void)_updateViewsAnimated:(BOOL)arg1;
+- (void)_updateAnimatorState;
+- (void)_updateShadowViewsAnimated:(BOOL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setActive:(BOOL)arg1 animated:(BOOL)arg2;

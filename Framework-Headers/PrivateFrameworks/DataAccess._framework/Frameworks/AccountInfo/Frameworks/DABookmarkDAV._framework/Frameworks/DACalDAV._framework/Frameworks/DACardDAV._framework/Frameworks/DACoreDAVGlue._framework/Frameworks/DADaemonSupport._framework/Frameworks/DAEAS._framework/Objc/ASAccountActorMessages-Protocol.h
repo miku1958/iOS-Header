@@ -32,7 +32,9 @@
 - (int)performFetchAttachmentRequest:(DAMessageFetchAttachmentRequest *)arg1 consumer:(id<DAMessageFetchAttachmentConsumer>)arg2;
 - (int)performFetchMessageSearchResultRequests:(NSArray *)arg1 consumer:(id<DAMailboxFetchSearchResultConsumer>)arg2;
 - (void)performFolderChange:(DAFolderChange *)arg1 isUserRequested:(BOOL)arg2;
+- (int)performMailboxRequest:(DAMailboxRequest *)arg1 mailbox:(NSString *)arg2 previousTag:(NSString *)arg3 clientWinsOnSyncConflict:(BOOL)arg4 isUserRequested:(BOOL)arg5 consumer:(id<DAMailboxRequestConsumer>)arg6;
 - (int)performMailboxRequest:(DAMailboxRequest *)arg1 mailbox:(NSString *)arg2 previousTag:(NSString *)arg3 isUserRequested:(BOOL)arg4 consumer:(id<DAMailboxRequestConsumer>)arg5;
+- (int)performMailboxRequests:(NSArray *)arg1 mailbox:(NSString *)arg2 previousTag:(NSString *)arg3 clientWinsOnSyncConflict:(BOOL)arg4 isUserRequested:(BOOL)arg5 consumer:(id<DAMailboxRequestConsumer>)arg6;
 - (int)performMailboxRequests:(NSArray *)arg1 mailbox:(NSString *)arg2 previousTag:(NSString *)arg3 isUserRequested:(BOOL)arg4 consumer:(id<DAMailboxRequestConsumer>)arg5;
 - (int)performMoveRequests:(NSArray *)arg1 consumer:(id<DAMessageMoveRequestConsumer>)arg2;
 - (int)performResolveRecipientsRequest:(DAResolveRecipientsRequest *)arg1 consumer:(id<DAResolveRecipientsConsumer>)arg2;

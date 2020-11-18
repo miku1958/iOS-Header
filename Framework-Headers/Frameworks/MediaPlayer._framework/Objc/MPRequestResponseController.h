@@ -11,6 +11,7 @@
 @interface MPRequestResponseController : NSObject
 {
     long long _numberOfObservers;
+    long long _requestRevision;
     BOOL _shouldAutomaticallyLoad;
     BOOL _needsReload;
     id<MPRequestCancellationToken> _cancelToken;
@@ -38,6 +39,7 @@
 - (id)init;
 - (void)reloadIfNeeded;
 - (void)setNeedsReload;
+- (void)setNeedsReloadForSignificantRequestChange;
 
 @end
 

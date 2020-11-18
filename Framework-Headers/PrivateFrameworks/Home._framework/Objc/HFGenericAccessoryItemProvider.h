@@ -20,7 +20,7 @@
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 
 - (void).cxx_destruct;
-- (BOOL)_supportsCreatingAccessoryItemForAccessory:(id)arg1;
+- (BOOL)_isAccessorySupported:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithHome:(id)arg1;

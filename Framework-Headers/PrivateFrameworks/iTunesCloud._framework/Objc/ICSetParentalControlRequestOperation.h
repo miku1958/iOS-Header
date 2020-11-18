@@ -23,6 +23,7 @@
 
 - (void).cxx_destruct;
 - (void)_buildAndSendRequestForURL:(id)arg1;
+- (void)_getURLFromBagAndSendRequest;
 - (void)cancel;
 - (void)execute;
 - (id)initWithRequestContext:(id)arg1 allowsExplicitContent:(BOOL)arg2 isAutomatic:(BOOL)arg3;

@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityB238TitleLabel;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)handleStartButton:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;

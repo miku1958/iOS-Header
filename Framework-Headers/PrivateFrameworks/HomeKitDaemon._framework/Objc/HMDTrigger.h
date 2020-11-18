@@ -64,6 +64,7 @@
 - (void).cxx_destruct;
 - (void)_actionSetsUpdated:(id)arg1 message:(id)arg2;
 - (void)_activate:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_activateTriggerRequest:(id)arg1;
 - (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_executeActionSets:(id)arg1 captureCurrentState:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_executeActionSetsWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -79,8 +80,10 @@
 - (BOOL)_isTriggerFiredNotificationEntitled;
 - (void)_recentFireDateUpdated:(id)arg1;
 - (void)_registerForMessages;
+- (void)_renameRequest:(id)arg1;
 - (void)_transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)_transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (void)_updateActionSetRequest:(id)arg1 postUpdate:(BOOL)arg2;
 - (void)activateAfterResidentChangeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)backingStoreObjects:(long long)arg1;
@@ -115,6 +118,7 @@
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (void)triggerFired;
+- (id)updateEventTriggerMessage:(int)arg1 message:(id)arg2 relay:(BOOL)arg3;
 - (void)userDidConfirmExecute:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

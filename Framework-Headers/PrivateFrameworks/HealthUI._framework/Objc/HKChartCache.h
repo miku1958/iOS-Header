@@ -15,7 +15,7 @@
     NSMutableDictionary *_cachedResultsByIdentifier;
     _HKChartCachePendingFetchOperationManager *_pendingFetchOperationsManager;
     NSMutableDictionary *_resultsLoadedByIdentifier;
-    NSArray *_pendingIdentifiers;
+    NSArray *_bufferedIdentifiers;
     BOOL _shouldBufferFetchOperations;
     id<HKChartCacheDataSource> _dataSource;
     HKOutstandingFetchOperationManager *_operationManager;

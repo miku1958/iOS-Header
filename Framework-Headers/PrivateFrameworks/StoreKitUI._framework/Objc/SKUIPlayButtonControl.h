@@ -33,6 +33,8 @@
     BOOL _showingProgress;
     UIColor *_progressIndicatorColor;
     id _progressIndicatorCompositingFilter;
+    UIColor *_selectionColor;
+    id _selectionCompositingFilter;
     BOOL _usesBlurredBackground;
     BOOL _showingPlayIndicator;
     BOOL _showBorder;
@@ -117,6 +119,7 @@
 - (void)setProgress:(float)arg1 animated:(BOOL)arg2;
 - (void)setProgressIndicatorColor:(id)arg1 withCompositingFilter:(id)arg2;
 - (void)setSelected:(BOOL)arg1;
+- (void)setSelectionColor:(id)arg1 withCompositingFilter:(id)arg2;
 - (void)setShowBorder:(BOOL)arg1;
 - (void)showPlayIndicator:(BOOL)arg1;
 - (void)showPlayIndicator:(BOOL)arg1 force:(BOOL)arg2;

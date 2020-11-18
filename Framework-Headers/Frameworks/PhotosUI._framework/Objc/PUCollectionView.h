@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     UIView *_draggedView;
     struct CGPoint _draggedViewCenterOffset;
     PXUIAutoScroller *_autoScroller;
+    BOOL _shouldWorkaround34630932;
     id<PUCollectionViewReorderDelegate> _reorderDelegate;
     id<PUCollectionViewSelectionDelegate> _selectionDelegate;
     _UIDragSnappingFeedbackGenerator *__feedbackDragBehavior;
@@ -35,12 +36,14 @@ __attribute__((visibility("hidden")))
 
 + (id)_reuseKeyForSupplementaryViewOfKind:(id)arg1 withReuseIdentifier:(id)arg2;
 - (void).cxx_destruct;
+- (void)_applyAutomaticAdjustedContentOffset:(struct CGPoint)arg1;
 - (void)_handleDrag:(id)arg1;
 - (id)_reorderableLayout;
 - (void)_updateDragUsingIndexPathUpdateBlock:(CDUnknownBlockType)arg1;
 - (void)adjustedContentInsetDidChange;
 - (void)dealloc;
 - (void)deleteItemsAtIndexPaths:(id)arg1;
+- (void)didScrollToInitialPosition;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)indexPathsForSelectedItems;
 - (id)initWithFrame:(struct CGRect)arg1 collectionViewLayout:(id)arg2;

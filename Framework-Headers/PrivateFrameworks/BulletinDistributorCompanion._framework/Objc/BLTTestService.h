@@ -16,7 +16,6 @@
 + (id)sharedTestService;
 - (void).cxx_destruct;
 - (void)_connectIfNecessary;
-- (void)_disconnect;
 - (void)addBulletin:(id)arg1 forFeed:(unsigned long long)arg2 playLightsAndSirens:(BOOL)arg3 attachment:(id)arg4 attachmentType:(long long)arg5 alwaysSend:(BOOL)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)addBulletin:(id)arg1 forFeed:(unsigned long long)arg2 playLightsAndSirens:(BOOL)arg3 attachment:(id)arg4 attachmentType:(long long)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)clearSectionInfoSentCacheWithCompletion:(CDUnknownBlockType)arg1;

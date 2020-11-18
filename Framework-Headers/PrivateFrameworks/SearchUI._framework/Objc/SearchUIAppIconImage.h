@@ -17,12 +17,14 @@
 }
 
 @property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property (readonly) BOOL isValid;
 @property (nonatomic) unsigned long long variant; // @synthesize variant=_variant;
 
 + (double)cornerRadiusForHomeScreenIcons;
 + (double)cornerRadiusForSmallSpotlightIcons;
 + (struct CGSize)homeScreenIconSize;
 + (double)iconCornerRadiusForFormat:(int)arg1;
++ (struct CGSize)tinyIconSize;
 + (struct CGRect)visibleFrameForHomeScreenIcons;
 + (struct CGRect)visibleFrameForSmallSpotlightIcons;
 + (struct CGRect)visibleFrameForTinyIcons;

@@ -48,9 +48,9 @@
 - (id)_storageManagementFollowupItem;
 - (id)_storageManagementFollowupNotification;
 - (void)_teardownCachedBuddyOffer;
-- (void)_teardownCachedOffer;
-- (void)_teardownCachedOffers;
-- (void)_updateOffer:(id)arg1 buttonId:(id)arg2 account:(id)arg3 accountStore:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_teardownCachedOfferAndNotify:(BOOL)arg1;
+- (void)_teardownCachedOffersAndNotify:(BOOL)arg1;
+- (void)_updateOffer:(id)arg1 buttonId:(id)arg2 info:(id)arg3 account:(id)arg4 accountStore:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (BOOL)_useFetchOffersDataDirectly;
 - (void)clearFollowupsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)daemonBuddyOfferDictionaryForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -69,7 +69,7 @@
 - (void)teardownCachedOffer;
 - (void)teardownCachedOffers;
 - (void)teardownOffersForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)updateOfferForAccount:(id)arg1 offerId:(id)arg2 buttonId:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)updateOfferForAccount:(id)arg1 offerId:(id)arg2 buttonId:(id)arg3 info:(id)arg4 completion:(CDUnknownBlockType)arg5;
 
 @end
 

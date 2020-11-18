@@ -16,6 +16,8 @@
     IDSSockAddrWrapper *_destination;
     NSString *_name;
     unsigned int _index;
+    NSString *_delegatedName;
+    unsigned int _delegatedIndex;
     NSData *_bssid;
     BOOL _AWDL;
     BOOL _Cellular;
@@ -27,6 +29,8 @@
 @property (readonly) unsigned long long IPVersion;
 @property (readonly) IDSSockAddrWrapper *address; // @synthesize address=_address;
 @property (readonly) NSData *bssid; // @synthesize bssid=_bssid;
+@property (readonly) unsigned int delegatedIndex; // @synthesize delegatedIndex=_delegatedIndex;
+@property (readonly) NSString *delegatedName; // @synthesize delegatedName=_delegatedName;
 @property (readonly) IDSSockAddrWrapper *destination; // @synthesize destination=_destination;
 @property (copy) IDSSockAddrWrapper *external; // @synthesize external=_external;
 @property (readonly) unsigned int index; // @synthesize index=_index;

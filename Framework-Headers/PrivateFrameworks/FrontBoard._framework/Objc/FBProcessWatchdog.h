@@ -6,14 +6,19 @@
 
 #import <FrontBoardServices/FBSProcessWatchdog.h>
 
+@class FBProcessWatchdogEventContext;
+
 @interface FBProcessWatchdog : FBSProcessWatchdog
 {
     long long _event;
+    FBProcessWatchdogEventContext *_eventContext;
 }
 
 @property (readonly, nonatomic) long long event; // @synthesize event=_event;
+@property (readonly, strong, nonatomic) FBProcessWatchdogEventContext *eventContext; // @synthesize eventContext=_eventContext;
 
-- (id)initWithProcess:(id)arg1 event:(long long)arg2 policy:(id)arg3;
+- (void)dealloc;
+- (id)initWithProcess:(id)arg1 context:(id)arg2 policy:(id)arg3;
 
 @end
 

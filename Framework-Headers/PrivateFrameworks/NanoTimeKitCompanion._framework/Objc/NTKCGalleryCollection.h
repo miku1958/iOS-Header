@@ -8,7 +8,7 @@
 
 #import <NanoTimeKitCompanion/NTKEnumeratableFaceCollection-Protocol.h>
 
-@class NSString, NTKCompanionApp;
+@class NSString;
 @protocol NTKCGalleryCollectionDelegate;
 
 @interface NTKCGalleryCollection : NSObject <NTKEnumeratableFaceCollection>
@@ -16,11 +16,9 @@
     NSString *_title;
     CDUnknownBlockType _calloutName;
     NSString *_descriptionText;
-    NTKCompanionApp *_app;
     id<NTKCGalleryCollectionDelegate> _delegate;
 }
 
-@property (strong, nonatomic) NTKCompanionApp *app; // @synthesize app=_app;
 @property (copy, nonatomic) CDUnknownBlockType calloutName; // @synthesize calloutName=_calloutName;
 @property (readonly, nonatomic) BOOL canAddNewFaces;
 @property (readonly, copy) NSString *debugDescription;
@@ -35,7 +33,6 @@
 + (id)_astronomyFaces;
 + (id)_chronographFaces;
 + (id)_colorFaces;
-+ (id)_complicationFaces;
 + (id)_explorerFaces;
 + (id)_extraLargeFaces;
 + (id)_galleryCollectionWithCollectionIdentifier:(id)arg1 title:(id)arg2 calloutName:(CDUnknownBlockType)arg3;
@@ -54,8 +51,6 @@
 + (id)_victoryDigitalFaces;
 + (id)_zeusFaces;
 + (id)galleryCollections;
-+ (id)sampleFacesWithApp:(id)arg1;
-+ (id)sampleFacesWithApp:(id)arg1 notIncludingFaceStyle:(long long)arg2;
 - (void).cxx_destruct;
 - (void)enumerateFaceNamesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)faceAtIndex:(unsigned long long)arg1;

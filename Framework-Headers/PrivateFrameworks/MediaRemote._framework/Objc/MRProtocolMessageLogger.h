@@ -8,14 +8,12 @@
 
 @interface MRProtocolMessageLogger : NSObject
 {
-    int _token;
     BOOL _shouldLog;
 }
 
 @property (nonatomic) BOOL shouldLog; // @synthesize shouldLog=_shouldLog;
 
 + (id)sharedLogger;
-- (void)dealloc;
 - (id)init;
 - (void)logMessage:(id)arg1 protocolMessage:(id)arg2;
 

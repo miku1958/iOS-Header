@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (unsigned long long)_serviceStateForStateType:(unsigned long long)arg1;
 - (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlertDetails:(id)arg2;
+- (void)acquireDesiredResourcePolicy;
 - (void)changeSettings:(id)arg1;
 - (void)dealloc;
 - (id)init;

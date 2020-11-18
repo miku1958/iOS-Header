@@ -10,7 +10,7 @@
 #import <UIKit/_UINavigationBarTitleViewDataSource-Protocol.h>
 #import <UIKit/_UINavigationBarTransitionContextParticipant-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, UIBarButtonItem, UIColor, UIImage, UIView, _UINavigationBarContentViewLayout, _UINavigationBarTransitionContext;
+@class NSArray, NSDictionary, NSMutableArray, NSString, UIBarButtonItem, UIColor, UIImage, UIView, _UINavigationBarContentViewLayout, _UINavigationBarTransitionContext;
 @protocol _UINavigationBarContentViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -25,6 +25,11 @@ __attribute__((visibility("hidden")))
     double _backButtonMargin;
     double _backButtonMaximumWidth;
     BOOL _hitTestingExtensionsAreValid;
+    BOOL _isHidingBackButton;
+    BOOL _isShowingBackButton;
+    BOOL _isHidingLeadingBar;
+    NSMutableArray *_currentAnimations;
+    NSMutableArray *_currentCompletions;
     BOOL _backButtonHidden;
     BOOL _leadingItemsSupplementBackItem;
     long long _barMetrics;
@@ -70,11 +75,14 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)__backButtonAction:(id)arg1;
+- (BOOL)__setupTitleViewCanSkipUpdates;
 - (id)_accessibility_HUDItemForPoint:(struct CGPoint)arg1;
 - (id)_accessibility_barButtonItemAtPoint:(struct CGPoint)arg1;
 - (id)_accessibility_controlToActivateForHUDGestureLiftAtPoint:(struct CGPoint)arg1;
+- (void)_addCoordinatedAnimation:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_appearanceChanged;
 - (void)_applyTitleAttributesToLabel:(id)arg1 withString:(id)arg2;
+- (void)_clearAllAnimations;
 - (long long)_currentContentSize;
 - (id)_defaultInlineTitleAttributes;
 - (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
@@ -86,9 +94,10 @@ __attribute__((visibility("hidden")))
 - (void)_itemStandardViewNeedsUpdate:(id)arg1;
 - (id)_newLayout;
 - (struct CGRect)_overlayRectForView:(id)arg1 inTargetView:(id)arg2;
+- (void)_runAllScheduledAnimations;
 - (void)_setupBackButtonAnimated:(BOOL)arg1;
 - (void)_setupLeadingButtonBarAnimated:(BOOL)arg1;
-- (void)_setupTitleView;
+- (void)_setupTitleViewAnimated:(BOOL)arg1;
 - (void)_setupTrailingButtonBarAnimated:(BOOL)arg1;
 - (void)_updateLayoutMarginsForLayout:(id)arg1;
 - (void)adoptFinalStateFromTransition:(id)arg1 transitionCompleted:(BOOL)arg2;

@@ -30,12 +30,12 @@
     FBSSceneDefinition *_definition;
     NSHashTable *_geometryObservers;
     unsigned long long _transactionID;
-    BOOL _lockedForMutation;
+    BOOL _inTransaction;
     id<BSInvalidatable> _stateCaptureAssertion;
     unsigned long long _lastForegroundingTransitionID;
 }
 
-@property (nonatomic, setter=_setLockedForMutation:) BOOL _lockedForMutation; // @synthesize _lockedForMutation;
+@property (readonly, nonatomic, getter=_isInTransaction) BOOL _inTransaction; // @synthesize _inTransaction;
 @property (readonly, nonatomic) unsigned long long _transactionID; // @synthesize _transactionID;
 @property (readonly, strong, nonatomic) id<FBSceneClient> client; // @synthesize client=_client;
 @property (readonly, strong, nonatomic) FBProcess *clientProcess; // @synthesize clientProcess=_clientProcess;
@@ -50,7 +50,7 @@
 @property (readonly, strong, nonatomic) FBSceneHostManager *hostManager; // @synthesize hostManager=_hostManager;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, strong, nonatomic) FBSceneLayerManager *layerManager; // @synthesize layerManager=_layerManager;
-@property (readonly, strong, nonatomic) FBSMutableSceneSettings *mutableSettings; // @synthesize mutableSettings=_mutableSettings;
+@property (strong, nonatomic) FBSMutableSceneSettings *mutableSettings; // @synthesize mutableSettings=_mutableSettings;
 @property (readonly, copy, nonatomic) FBSSceneParameters *parameters;
 @property (readonly, strong, nonatomic) FBSSceneSettings *settings; // @synthesize settings=_settings;
 @property (readonly, copy, nonatomic) FBSSceneSpecification *specification;
@@ -59,8 +59,10 @@
 @property (readonly, copy, nonatomic) NSString *workspaceIdentifier; // @synthesize workspaceIdentifier=_workspaceIdentifier;
 
 - (void)_addSceneGeometryObserver:(id)arg1;
-- (unsigned long long)_applyMutableSettings:(id)arg1 withTransitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_applyUpdateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)_beginTransaction;
 - (void)_dispatchClientMessageWithBlock:(CDUnknownBlockType)arg1;
+- (void)_endTransaction:(unsigned long long)arg1;
 - (void)_invalidateWithTransitionContext:(id)arg1;
 - (void)_removeSceneGeometryObserver:(id)arg1;
 - (void)client:(id)arg1 attachLayer:(id)arg2;

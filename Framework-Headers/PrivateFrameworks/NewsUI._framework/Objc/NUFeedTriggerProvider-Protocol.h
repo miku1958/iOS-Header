@@ -6,10 +6,10 @@
 
 #import <NewsUI/NSObject-Protocol.h>
 
-@class FCPromise, NUFeedSettings;
+@class NFPromise, NUFeedSettings;
 
 @protocol NUFeedTriggerProvider <NSObject>
-- (FCPromise *)feedTriggerInitialLoadForFeedSettings:(NUFeedSettings *)arg1;
-- (FCPromise *)feedTriggerResetForFeedSettings:(NUFeedSettings *)arg1;
+- (NFPromise *)feedTriggerInitialLoadForFeedSettings:(NUFeedSettings *)arg1;
+- (NFPromise *)feedTriggerResetForFeedSettings:(NUFeedSettings *)arg1;
 @end
 

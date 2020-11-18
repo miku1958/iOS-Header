@@ -31,7 +31,7 @@
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSIndexPath, NSIndexSet, NSMutableDictionary, NSString, PHAsset, PHAssetCollection, PHCachingImageManager, PHFetchResult, PLDateRangeFormatter, PUAlbumListTransitionContext, PUAlbumPickerViewController, PUDeletePhotosActionController, PUDuplicateActionController, PUOneUpPresentationHelper, PUPhotoBrowserOneUpPresentationAdaptor, PUPhotoPinchGestureRecognizer, PUPhotoSelectionManager, PUPhotosGlobalFooterView, PUPhotosGridBarsHelper, PUPhotosGridViewControllerSpec, PUPhotosSharingViewController, PUScrollViewSpeedometer, PUSearchButtonItem, PUSessionInfo, PUSlideshowViewController, PUSwipeSelectionManager, PXAssetBadgeManager, PXPhotosDataSource, UIAlertController, UIBarButtonItem, UICollectionViewLayout, UILongPressGestureRecognizer, UINavigationButton, UIPanGestureRecognizer, UIPopoverPresentationController, UIView, UIViewController;
+@class NSIndexPath, NSIndexSet, NSMutableDictionary, NSString, PHAsset, PHAssetCollection, PHCachingImageManager, PHFetchResult, PLDateRangeFormatter, PUAlbumListTransitionContext, PUAlbumPickerViewController, PUDeletePhotosActionController, PUDuplicateActionController, PUOneUpPresentationHelper, PUPhotoBrowserOneUpPresentationAdaptor, PUPhotoPinchGestureRecognizer, PUPhotoSelectionManager, PUPhotosGlobalFooterView, PUPhotosGridBarsHelper, PUPhotosGridViewControllerSpec, PUPhotosSharingViewController, PUScrollViewSpeedometer, PUSessionInfo, PUSlideshowViewController, PUSwipeSelectionManager, PXAssetBadgeManager, PXPhotosDataSource, UIAlertController, UIBarButtonItem, UICollectionViewLayout, UILongPressGestureRecognizer, UINavigationButton, UIPanGestureRecognizer, UIPopoverPresentationController, UIView, UIViewController;
 @protocol PUGridLayoutProtocol, UIViewControllerPreviewing;
 
 @interface PUPhotosGridViewController : UICollectionViewController <UIPopoverPresentationControllerDelegate, PUCollectionViewSelectionDelegate, PUSessionInfoObserver, PHAssetCollectionDataSource, PXSettingsKeyObserver, PXPhotosDataSourceChangeObserver, PUDeletePhotosActionControllerDelegate, PUPhotosSharingViewControllerDelegate, PUSlideshowViewControllerDelegate, PUSwipeSelectionManagerDelegate, PUSwipeSelectionManagerDataSource, PXAutoScrollerDelegate, PUOneUpPresentationHelperDelegate, PUPhotosGlobalFooterViewDelegate, PUPhotosGlobalFooterViewLayoutDelegate, PUPhotosGridBarsHelperDelegate, UICollectionViewDragSource, UICollectionViewDragDestination, UIDropInteractionDelegate, UIGestureRecognizerDelegate, PLNavigableAssetContainerViewController, PLDismissableViewController, PUStackedAlbumControllerTransition, PUScrollViewSpeedometerDelegate>
@@ -59,13 +59,14 @@
     UIBarButtonItem *_restoreToolbarButton;
     UIBarButtonItem *_slideshowButtonSpacer;
     UIBarButtonItem *_slideshowButton;
-    PUSearchButtonItem *_searchButton;
+    UIBarButtonItem *_searchButton;
     UILongPressGestureRecognizer *_longPressGestureRecognizer;
     NSMutableDictionary *_progressInfosByIdentifier;
     NSMutableDictionary *_progressInfosByCachedIndexPath;
     CDUnknownBlockType _pendingNavigationBlock;
     unsigned long long _suppressesColorSettingsCount;
     PUPhotosGlobalFooterView *_measuringGlobalFooterView;
+    double _lastUserScrollTime;
     BOOL _initiallyScrolledToBottom;
     BOOL _alwaysHideTabBar;
     BOOL __needsNewEmptyPlaceholderView;
@@ -288,6 +289,7 @@
 - (void)_updateSubviewsOrderingAndVisibility;
 - (void)_updateToolbarContentsAnimated:(BOOL)arg1;
 - (BOOL)_updateTransitionWidthOnAppearance;
+- (void)_userDidStartScrolling;
 - (BOOL)allowSelectAllButton;
 - (BOOL)allowSlideshowButton;
 - (BOOL)allowsPeeking;
@@ -325,7 +327,7 @@
 - (void)configureGlobalHeaderView:(id)arg1;
 - (void)configureGridCell:(id)arg1 forItemAtIndexPath:(id)arg2;
 - (void)configureGridCell:(id)arg1 forItemAtIndexPath:(id)arg2 assetMayHaveChanged:(BOOL)arg3;
-- (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3 animated:(BOOL)arg4;
+- (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3;
 - (struct CGPoint)contentOffsetForPreheating;
 - (id)contentScrollView;
 - (struct CGSize)contentSizeForPreheating;
@@ -334,6 +336,7 @@
 - (void)dealloc;
 - (void)deletePhotosActionController:(id)arg1 presentConfirmationViewController:(id)arg2;
 - (void)didDismissPreviewViewController:(id)arg1 committing:(BOOL)arg2;
+- (void)didEndDisplayingEmptyPlaceholderView;
 - (void)didSelectAddPlaceholderInSection:(long long)arg1;
 - (id)displayTitleInfoForDetailsOfAssetCollection:(id)arg1 withTitleCategory:(long long)arg2 preferredAttributesPromise:(CDUnknownBlockType)arg3;
 - (BOOL)dropInteraction:(id)arg1 canHandleSession:(id)arg2;
@@ -343,7 +346,7 @@
 - (void)endSuppressingColorSettingsUpdate;
 - (void)forceDataSourceIfNeeded;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
-- (void)getEmptyPlaceholderViewTitle:(id *)arg1 message:(id *)arg2;
+- (void)getEmptyPlaceholderViewTitle:(id *)arg1 message:(id *)arg2 buttonTitle:(id *)arg3 buttonAction:(CDUnknownBlockType *)arg4;
 - (void)getTitle:(out id *)arg1 prompt:(out id *)arg2 shouldHideBackButton:(out BOOL *)arg3 leftBarButtonItems:(out id *)arg4 rightBarButtonItems:(out id *)arg5;
 - (double)globalHeaderHeight;
 - (id)gridLayout;
@@ -379,6 +382,7 @@
 - (BOOL)isTrashBinViewController;
 - (id)itemIndexPathAtPoint:(struct CGPoint)arg1 outClosestMatch:(id *)arg2;
 - (id)itemIndexPathAtPoint:(struct CGPoint)arg1 outClosestMatch:(id *)arg2 outLeftClosestMatch:(id *)arg3 outAboveClosestMatch:(id *)arg4;
+- (double)lastUserScrollTime;
 - (void)loadView;
 - (id)localizedSelectionTitle;
 - (id)localizedTitleForAssetCollection:(id)arg1;
@@ -487,7 +491,7 @@
 - (BOOL)updateSpec;
 - (void)updateTitle;
 - (void)updateVisibleSectionHeadersAtIndexes:(id)arg1;
-- (void)updateVisibleSupplementaryViewsOfKind:(id)arg1 animated:(BOOL)arg2;
+- (void)updateVisibleSupplementaryViewsOfKind:(id)arg1;
 - (unsigned long long)userEventSourceType;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
@@ -500,6 +504,8 @@
 - (BOOL)wantsAddContentInToolbar;
 - (BOOL)wantsAddPlaceholderAtEndOfSection:(long long)arg1;
 - (BOOL)wantsGlobalFooter;
+- (BOOL)wantsPlaceholderView;
+- (void)willDisplayEmptyPlaceholderView;
 - (void)willPresentPreviewViewController:(id)arg1 forLocation:(struct CGPoint)arg2 inSourceView:(id)arg3;
 - (void)zoomTransition:(id)arg1 didFinishForOperation:(long long)arg2 animated:(BOOL)arg3 interactive:(BOOL)arg4;
 - (BOOL)zoomTransition:(id)arg1 getFrame:(struct CGRect *)arg2 contentMode:(long long *)arg3 cropInsets:(struct UIEdgeInsets *)arg4 forPhotoToken:(id)arg5 operation:(long long)arg6;

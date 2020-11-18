@@ -37,12 +37,12 @@
 - (void).cxx_destruct;
 - (id)_clientIDForMetrics;
 - (id)_clientIDForUserID:(id)arg1;
-- (id)_dialogIDForMetrics;
 - (void)_findSelectedButtonForButtons:(id)arg1;
 - (void)_loadURLBag;
 - (void)_performMetricsWithBiometricMatch:(unsigned long long)arg1 didBiometricsFail:(BOOL)arg2;
 - (BOOL)_runAuthkitOperationWithError:(id)arg1 returningError:(id *)arg2;
 - (BOOL)_runSignatureOperationReturningError:(id *)arg1;
+- (BOOL)_shouldFallbackToAuthKitForError:(id)arg1;
 - (id)initWithTouchIDDialog:(id)arg1 fallbackDialog:(id)arg2;
 - (void)run;
 

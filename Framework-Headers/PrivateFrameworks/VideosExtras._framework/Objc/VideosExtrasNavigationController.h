@@ -32,7 +32,6 @@
 - (void)_installDoneButtonOnNavigationItem:(id)arg1;
 - (void)_popViewControllerFromBackButton;
 - (void)_presentDialogTemplate:(id)arg1;
-- (void)_setContentOverlayInsets:(struct UIEdgeInsets)arg1;
 - (id)_viewControllerForDocument:(id)arg1 index:(long long *)arg2;
 - (void)applyMainTemplateOffset:(struct CGPoint)arg1 animated:(BOOL)arg2;
 - (id)childViewControllerForHomeIndicatorAutoHidden;

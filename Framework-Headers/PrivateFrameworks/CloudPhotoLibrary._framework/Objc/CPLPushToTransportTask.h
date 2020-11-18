@@ -43,6 +43,7 @@
     BOOL _shouldResetExceedingQuotaOnSuccess;
     BOOL _isUsingOverQuotaStrategy;
     BOOL _resetStrategy;
+    double _latestApproximativeUploadRate;
 }
 
 @property (strong) id<CPLPushToTransportTaskDelegate> delegate; // @dynamic delegate;

@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_alternateContentsURLDictionary;
     NSMutableDictionary *_contextByDomainID;
     NSMutableDictionary *_domainContextByURL;
+    BOOL _isBeingDeallocated;
     FPXDomainContext *_defaultDomainContext;
     NSString *_providerIdentifier;
 }
@@ -44,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)_startObservingCollectionWithProperties:(id)arg1 observer:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addListenerDelegate:(id)arg1;
 - (id)alternateContentsURLForItemID:(id)arg1;
+- (void)dealloc;
 - (id)defaultInstance;
 - (void)deleteSearchableItemsWithDomainIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)didChangeItemID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -84,7 +86,7 @@ __attribute__((visibility("hidden")))
 - (void)startOperation:(id)arg1 toDeleteItems:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)startOperation:(id)arg1 toFetchDefaultContainerForBundleIdentifier:(id)arg2 englishName:(id)arg3 inDomainIdentifier:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)startOperation:(id)arg1 toFetchItemID:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)startOperation:(id)arg1 toFetchParentForItem:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)startOperation:(id)arg1 toFetchParentForItem:(id)arg2 recursively:(BOOL)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)startOperation:(id)arg1 toFetchThumbnailsForItemIdentifiers:(id)arg2 size:(struct CGSize)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)startOperation:(id)arg1 toImportDocumentsAtURLs:(id)arg2 withSandboxExtensions:(id)arg3 lastUsedDates:(id)arg4 intoFolderWithIdentifier:(id)arg5 bounceOnCollision:(BOOL)arg6 reply:(CDUnknownBlockType)arg7;
 - (void)startOperation:(id)arg1 toRenameItem:(id)arg2 toNewName:(id)arg3 reply:(CDUnknownBlockType)arg4;

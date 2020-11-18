@@ -10,6 +10,7 @@
 
 @interface CPShape : CPGraphicObject <CPDisposable>
 {
+    long long mcid;
     unsigned int pdfObjectID;
     struct CGPath *path;
     BOOL isUprightRectangle;
@@ -51,6 +52,7 @@
 - (int)lineJoin;
 - (double)lineWidth;
 - (void)makeLineFromVertex:(struct CGPoint)arg1 toVertex:(struct CGPoint)arg2;
+- (long long)mcid;
 - (double)miterLimit;
 - (struct CGAffineTransform)paintTransform;
 - (struct CGPath *)path;

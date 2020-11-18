@@ -214,6 +214,7 @@
 - (id)newObjectForEntity:(id)arg1;
 - (id)objectsForEntity:(id)arg1 withPredicate:(id)arg2 sortDescriptors:(id)arg3;
 - (id)objectsForEntity:(id)arg1 withPredicate:(id)arg2 sortDescriptors:(id)arg3 error:(id *)arg4;
+- (id)objectsForEntity:(id)arg1 withPredicate:(id)arg2 sortDescriptors:(id)arg3 withContext:(id)arg4 error:(id *)arg5;
 - (void)packRenditionsError:(id *)arg1;
 - (id)partWithIdentifier:(long long)arg1;
 - (id)pathToAsset:(id)arg1;

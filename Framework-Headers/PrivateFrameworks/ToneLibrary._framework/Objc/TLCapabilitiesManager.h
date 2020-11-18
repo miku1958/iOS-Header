@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) BOOL hasSynchronizedVibrationsCapability;
 @property (readonly, nonatomic) BOOL hasUserGeneratedVibrationsCapability;
 @property (readonly, nonatomic) BOOL hasVibratorCapability;
+@property (readonly, nonatomic, getter=isHomePod) BOOL homePod;
 @property (readonly, nonatomic, getter=isRingtoneStoreAvailable) BOOL ringtoneStoreAvailable;
 @property (readonly, nonatomic) NSString *simplifiedDeviceCodeName;
 @property (readonly, nonatomic) BOOL wantsModernDefaultRingtone;

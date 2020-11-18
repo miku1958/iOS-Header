@@ -69,7 +69,9 @@
 @property (nonatomic) BOOL useThickInks; // @synthesize useThickInks=_useThickInks;
 
 + (id)redoButtonImage;
++ (id)redoButtonImageWithStyle:(unsigned long long)arg1;
 + (id)undoButtonImage;
++ (id)undoButtonImageWithStyle:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_annotationSelectionNotification:(id)arg1;
 - (void)_cleanupAfterUndoAlert;

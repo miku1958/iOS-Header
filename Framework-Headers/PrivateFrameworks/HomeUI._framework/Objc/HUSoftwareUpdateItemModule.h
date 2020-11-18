@@ -6,24 +6,28 @@
 
 #import <Home/HFItemModule.h>
 
-@class HFItem, HMAccessory, HMHome, HUSoftwareUpdateActionAndProgressItem, HUSoftwareUpdateInfoItemProvider, NSSet;
-@protocol HFAccessoryVendor;
+@class HFItem, HFStaticItem, HMHome, HUSoftwareUpdateActionAndProgressItem, HUSoftwareUpdateInfoItemProvider, NSSet;
+@protocol HFSoftwareUpdatableItemProtocol;
 
 @interface HUSoftwareUpdateItemModule : HFItemModule
 {
+    BOOL _unifyDownloadAndDescriptionSections;
     NSSet *_itemProviders;
     HMHome *_home;
-    HFItem<HFAccessoryVendor> *_sourceItem;
-    HMAccessory *_accessory;
+    HFItem<HFSoftwareUpdatableItemProtocol> *_sourceItem;
+    NSSet *_accessories;
     HUSoftwareUpdateActionAndProgressItem *_actionAndProgressItem;
+    HFStaticItem *_learnMoreItem;
     HUSoftwareUpdateInfoItemProvider *_softwareUpdateInfoItemProvider;
 }
 
-@property (readonly, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
+@property (readonly, nonatomic) NSSet *accessories; // @synthesize accessories=_accessories;
 @property (strong, nonatomic) HUSoftwareUpdateActionAndProgressItem *actionAndProgressItem; // @synthesize actionAndProgressItem=_actionAndProgressItem;
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
+@property (strong, nonatomic) HFStaticItem *learnMoreItem; // @synthesize learnMoreItem=_learnMoreItem;
 @property (strong, nonatomic) HUSoftwareUpdateInfoItemProvider *softwareUpdateInfoItemProvider; // @synthesize softwareUpdateInfoItemProvider=_softwareUpdateInfoItemProvider;
-@property (readonly, nonatomic) HFItem<HFAccessoryVendor> *sourceItem; // @synthesize sourceItem=_sourceItem;
+@property (readonly, nonatomic) HFItem<HFSoftwareUpdatableItemProtocol> *sourceItem; // @synthesize sourceItem=_sourceItem;
+@property (nonatomic) BOOL unifyDownloadAndDescriptionSections; // @synthesize unifyDownloadAndDescriptionSections=_unifyDownloadAndDescriptionSections;
 
 - (void).cxx_destruct;
 - (id)buildSectionsWithDisplayedItems:(id)arg1;

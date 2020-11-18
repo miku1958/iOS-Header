@@ -10,7 +10,7 @@
 #import <HomeUI/UIPickerViewDataSource-Protocol.h>
 #import <HomeUI/UIPickerViewDelegate-Protocol.h>
 
-@class NSFormatter, NSNumber, NSString, UIPickerView;
+@class NSArray, NSFormatter, NSNumber, NSSet, NSString, UIPickerView;
 @protocol HUControlViewDelegate, HUWheelControlViewDelegate;
 
 @interface HUWheelControlView : UIView <UIPickerViewDataSource, UIPickerViewDelegate, HUControlView>
@@ -23,10 +23,13 @@
     NSNumber *_stepValue;
     id<HUWheelControlViewDelegate> _wheelDelegate;
     NSFormatter *_valueFormatter;
+    NSSet *_customValues;
     UIPickerView *_pickerView;
+    NSArray *_wheelValues;
 }
 
 @property (nonatomic) BOOL canBeHighlighted; // @synthesize canBeHighlighted=_canBeHighlighted;
+@property (strong, nonatomic) NSSet *customValues; // @synthesize customValues=_customValues;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUControlViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -41,6 +44,7 @@
 @property (strong, nonatomic) id value;
 @property (strong, nonatomic) NSFormatter *valueFormatter; // @synthesize valueFormatter=_valueFormatter;
 @property (weak, nonatomic) id<HUWheelControlViewDelegate> wheelDelegate; // @synthesize wheelDelegate=_wheelDelegate;
+@property (strong, nonatomic) NSArray *wheelValues; // @synthesize wheelValues=_wheelValues;
 
 + (Class)valueClass;
 - (void).cxx_destruct;
@@ -49,9 +53,8 @@
 - (id)_defaultStepValue;
 - (id)_defaultValueFormatter;
 - (id)_formatValue:(id)arg1;
+- (void)_generateWheelValues;
 - (void)_setupConstraints;
-- (long long)_wheelRowForValue:(id)arg1;
-- (id)_wheelValueForRow:(long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (long long)numberOfComponentsInPickerView:(id)arg1;
 - (void)pickerView:(id)arg1 didSelectRow:(long long)arg2 inComponent:(long long)arg3;

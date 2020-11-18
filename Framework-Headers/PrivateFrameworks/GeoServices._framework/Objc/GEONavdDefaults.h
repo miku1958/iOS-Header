@@ -30,6 +30,7 @@
 @property (readonly, nonatomic) double locationUpdatesDesiredAccuracyForWalking;
 @property (readonly, nonatomic) double locationUpdatesDesiredAccuracyWhileStationaryForDriving;
 @property (readonly, nonatomic) double locationUpdatesDesiredAccuracyWhileStationaryForWalking;
+@property (readonly, nonatomic) double maxDistanceFromOriginToSuppressReroute;
 @property (readonly, nonatomic) unsigned long long maxRandomJitterForHypothesisWakeup;
 @property (readonly, nonatomic) long long maximumNumberOfDestinationsToMonitor;
 @property (readonly, nonatomic) unsigned long long maximumNumberOfEntriesInTheCacheUnderMemoryPressure;

@@ -27,7 +27,7 @@
 - (void).cxx_destruct;
 - (void)_playButtonPressed:(id)arg1;
 - (void)_updateStateFromCardSection:(id)arg1 animated:(BOOL)arg2;
-- (id)initWithCardSection:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
 - (void)selectableTextView:(id)arg1 presentViewController:(id)arg2;
 - (id)setupContentView;
 - (void)updateStateFromCardSection:(id)arg1;

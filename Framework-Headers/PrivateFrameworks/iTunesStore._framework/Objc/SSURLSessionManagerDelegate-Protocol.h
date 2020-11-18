@@ -17,6 +17,7 @@
 @property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentage;
 @property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentageCachedResponses;
 @property (readonly, nonatomic) NSNumber *metricsLoadURLSessionDuration;
+@property (readonly, nonatomic) NSData *rawResponseData;
 @property (readonly, nonatomic) SSURLRequestProperties *requestProperties;
 @property (readonly, nonatomic) BOOL shouldDisableCellular;
 @property (readonly, nonatomic) BOOL shouldRequireCellular;

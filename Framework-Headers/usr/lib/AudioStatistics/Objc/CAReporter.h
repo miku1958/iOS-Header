@@ -6,18 +6,23 @@
 
 #import <Foundation/NSObject.h>
 
+@class NSDate;
+
 @interface CAReporter : NSObject
 {
     BOOL _removedByClient;
     unsigned short _serviceType;
     long long _reporterID;
+    NSDate *_startDate;
 }
 
 @property BOOL removedByClient; // @synthesize removedByClient=_removedByClient;
 @property (readonly) long long reporterID; // @synthesize reporterID=_reporterID;
 @property (nonatomic) unsigned short serviceType; // @synthesize serviceType=_serviceType;
+@property (strong) NSDate *startDate; // @synthesize startDate=_startDate;
 
 + (void)sendSingleMessage:(id)arg1 category:(unsigned short)arg2 type:(unsigned short)arg3;
+- (void).cxx_destruct;
 - (void)cacheServiceType:(unsigned short)arg1;
 - (void)dealloc;
 - (id)init;

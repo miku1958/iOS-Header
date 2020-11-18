@@ -15,8 +15,6 @@
     NSData *_data;
     NSString *_identifier;
     NSDate *_nextCheckDate;
-    NSDate *_startDate;
-    double _suggestedValidInterval;
     NSNumber *_version;
 }
 
@@ -24,8 +22,6 @@
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL needsUpdate;
 @property (strong, nonatomic) NSDate *nextCheckDate; // @synthesize nextCheckDate=_nextCheckDate;
-@property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
-@property (nonatomic) double suggestedValidInterval; // @synthesize suggestedValidInterval=_suggestedValidInterval;
 @property (strong, nonatomic) NSNumber *version; // @synthesize version=_version;
 
 + (BOOL)supportsSecureCoding;

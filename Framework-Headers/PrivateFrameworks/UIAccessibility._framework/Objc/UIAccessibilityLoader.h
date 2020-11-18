@@ -24,7 +24,6 @@
 + (void)_accessibilityStartServer;
 + (void)_accessibilityStopServer;
 + (BOOL)_accessibilityUIKitBundleLoaded;
-+ (void)_applicationAccessibilityListener:(id)arg1;
 + (id)_axBundleForBundle:(id)arg1;
 + (void)_loadAXBundleForBundle:(id)arg1 didLoadCallback:(CDUnknownBlockType)arg2;
 + (void)_loadAXBundleForBundle:(id)arg1 didLoadCallback:(CDUnknownBlockType)arg2 forceLoad:(BOOL)arg3 loadSubbundles:(BOOL)arg4 loadAllAccessibilityInfo:(BOOL)arg5;

@@ -8,13 +8,14 @@
 
 #import <ARKit/ARPassiveSensor-Protocol.h>
 
-@class ARDeviceOrientationData, CMMotionManager, NSString;
+@class ARDeviceOrientationData, CMMotionManager, NSOperationQueue, NSString;
 @protocol ARSensorDelegate;
 
 @interface ARDeviceOrientationSensor : NSObject <ARPassiveSensor>
 {
     CMMotionManager *_motionManager;
     ARDeviceOrientationData *_currentOrientationData;
+    NSOperationQueue *_updateQueueDeviceMotion;
     id<ARSensorDelegate> _delegate;
     long long _worldAlignment;
 }

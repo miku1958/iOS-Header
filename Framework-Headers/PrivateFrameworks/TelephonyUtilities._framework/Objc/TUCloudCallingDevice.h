@@ -14,6 +14,7 @@
 @interface TUCloudCallingDevice : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _defaultPairedDevice;
+    BOOL _supportsRestrictingSecondaryCalling;
     NSString *_name;
     NSString *_modelIdentifier;
     NSString *_uniqueID;
@@ -24,6 +25,7 @@
 @property (copy, nonatomic) NSString *modelIdentifier; // @synthesize modelIdentifier=_modelIdentifier;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSString *phoneNumberURI; // @synthesize phoneNumberURI=_phoneNumberURI;
+@property (nonatomic) BOOL supportsRestrictingSecondaryCalling; // @synthesize supportsRestrictingSecondaryCalling=_supportsRestrictingSecondaryCalling;
 @property (copy, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
 
 + (BOOL)supportsSecureCoding;

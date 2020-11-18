@@ -15,6 +15,7 @@
     double _playbackPosition;
     long long _radioStationID;
     unsigned long long _trackID;
+    NSString *_commandID;
     NSString *_contentItemID;
     NSString *_contextID;
     NSString *_destinationAppDisplayID;
@@ -32,6 +33,7 @@
     int _repeatMode;
     int _replaceIntent;
     unsigned int _sendOptions;
+    NSString *_senderID;
     int _shuffleMode;
     float _skipInterval;
     NSString *_sourceID;
@@ -64,10 +66,12 @@
     } _has;
 }
 
+@property (strong, nonatomic) NSString *commandID; // @synthesize commandID=_commandID;
 @property (strong, nonatomic) NSString *contentItemID; // @synthesize contentItemID=_contentItemID;
 @property (strong, nonatomic) NSString *contextID; // @synthesize contextID=_contextID;
 @property (strong, nonatomic) NSString *destinationAppDisplayID; // @synthesize destinationAppDisplayID=_destinationAppDisplayID;
 @property (nonatomic) BOOL externalPlayerCommand; // @synthesize externalPlayerCommand=_externalPlayerCommand;
+@property (readonly, nonatomic) BOOL hasCommandID;
 @property (readonly, nonatomic) BOOL hasContentItemID;
 @property (readonly, nonatomic) BOOL hasContextID;
 @property (readonly, nonatomic) BOOL hasDestinationAppDisplayID;
@@ -90,6 +94,7 @@
 @property (nonatomic) BOOL hasReplaceIntent;
 @property (nonatomic) BOOL hasRequestDefermentToPlaybackQueuePosition;
 @property (nonatomic) BOOL hasSendOptions;
+@property (readonly, nonatomic) BOOL hasSenderID;
 @property (nonatomic) BOOL hasShouldBeginRadioPlayback;
 @property (nonatomic) BOOL hasShouldOverrideManuallyCuratedQueue;
 @property (nonatomic) BOOL hasShuffleMode;
@@ -116,6 +121,7 @@
 @property (nonatomic) int replaceIntent; // @synthesize replaceIntent=_replaceIntent;
 @property (nonatomic) BOOL requestDefermentToPlaybackQueuePosition; // @synthesize requestDefermentToPlaybackQueuePosition=_requestDefermentToPlaybackQueuePosition;
 @property (nonatomic) unsigned int sendOptions; // @synthesize sendOptions=_sendOptions;
+@property (strong, nonatomic) NSString *senderID; // @synthesize senderID=_senderID;
 @property (nonatomic) BOOL shouldBeginRadioPlayback; // @synthesize shouldBeginRadioPlayback=_shouldBeginRadioPlayback;
 @property (nonatomic) BOOL shouldOverrideManuallyCuratedQueue; // @synthesize shouldOverrideManuallyCuratedQueue=_shouldOverrideManuallyCuratedQueue;
 @property (nonatomic) int shuffleMode; // @synthesize shuffleMode=_shuffleMode;

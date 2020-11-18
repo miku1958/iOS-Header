@@ -45,11 +45,15 @@
     unsigned long long _lastVoicemailRoutesScheduleTime;
 }
 
+@property (nonatomic) float activeCategoryVolume;
+@property (readonly, copy, nonatomic) NSArray *bestGuessPickableRoutesForAnyCall;
 @property (nonatomic, getter=isDownlinkMuted) BOOL downlinkMuted;
+@property (readonly, copy, nonatomic) NSArray *pickableRoutesForTTY;
 @property (readonly, copy, nonatomic) NSDictionary *pickedRouteAttribute;
 @property (readonly, nonatomic, getter=isTTY) BOOL tty;
 @property (nonatomic, getter=isUplinkMuted) BOOL uplinkMuted;
 
++ (id)filteredPickableRoutesFromPickableRoutes:(id)arg1;
 + (id)sharedAudioSystemController;
 + (id)sharedSystemController;
 + (id)sourceIdentifierForRouteID:(id)arg1;
@@ -58,6 +62,7 @@
 - (void)_handleDownlinkMuteDidChangeNotification:(id)arg1;
 - (void)_handlePickableRoutesDidChangeNotification:(id)arg1;
 - (void)_handleUplinkMuteDidChangeNotification:(id)arg1;
+- (void)_handleVolumeDidChangeNotification:(id)arg1;
 - (void)_loadCurrentPickableRoutesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_mediaServicesWereReset:(id)arg1;
 - (id)_pickableRoutesForPhoneCallWithForceNewRequest:(BOOL)arg1;
@@ -67,7 +72,6 @@
 - (id)_pickableRoutesForTTYWithForceNewRequest:(BOOL)arg1;
 - (id)_pickableRoutesForVoiceMailWithForceNewRequest:(BOOL)arg1;
 - (void)_updateCachedState;
-- (id)bestGuessPickableRoutesForAnyCall;
 - (id)currentlyPickedRouteIdForCategory:(id)arg1 andMode:(id)arg2;
 - (void)dealloc;
 - (void)getPickableRoutesForCategory:(id)arg1 mode:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -75,7 +79,6 @@
 - (BOOL)pickRoute:(id)arg1 error:(id *)arg2;
 - (id)pickableRouteWithUniqueIdentifier:(id)arg1;
 - (id)pickableRoutesForCategory:(id)arg1 andMode:(id)arg2;
-- (id)pickableRoutesForTTY;
 - (BOOL)shouldSuppressCallUsingRoute:(id)arg1;
 
 @end

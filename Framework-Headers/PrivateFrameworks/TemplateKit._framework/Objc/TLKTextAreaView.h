@@ -35,7 +35,6 @@
 
 + (id)footNoteLabelFont;
 - (void).cxx_destruct;
-- (struct UIEdgeInsets)containerStackView:(id)arg1 minimumSpacingAdjecentToArrangedSubview:(id)arg2;
 - (void)disableObserversOnLabels:(BOOL)arg1;
 - (void)disableUnbatchedUpdates;
 - (id)footnoteLabelString;

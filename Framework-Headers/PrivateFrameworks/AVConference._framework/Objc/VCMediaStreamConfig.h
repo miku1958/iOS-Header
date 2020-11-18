@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSDictionary, NSMutableDictionary, NSString, VCNetworkAddress;
 
@@ -57,10 +57,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSData *sendMasterKey; // @synthesize sendMasterKey=_sendMasterKey;
 @property (readonly, nonatomic) NSDictionary *txPayloadMap; // @synthesize txPayloadMap=_txPayloadMap;
 
-- (void)addRxCodecType:(long long)arg1;
-- (void)addRxCodecType:(long long)arg1 networkPayload:(unsigned int)arg2;
-- (void)addTxCodecType:(long long)arg1;
-- (void)addTxCodecType:(long long)arg1 networkPayload:(unsigned int)arg2;
+- (void)addRxPayloadType:(int)arg1;
+- (void)addRxPayloadType:(int)arg1 networkPayload:(unsigned int)arg2;
+- (void)addTxPayloadType:(int)arg1;
+- (void)addTxPayloadType:(int)arg1 networkPayload:(unsigned int)arg2;
 - (void)applyMediaStreamClientDictionary:(id)arg1;
 - (void)dealloc;
 - (id)description;

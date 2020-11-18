@@ -2235,15 +2235,7 @@ struct RetainPtr<CGPDFDocument *> {
     void *m_ptr;
 };
 
-struct RetainPtr<MPAVRoutingController> {
-    void *m_ptr;
-};
-
-struct RetainPtr<MPAVRoutingSheet> {
-    void *m_ptr;
-};
-
-struct RetainPtr<MPAudioVideoRoutingPopoverController> {
+struct RetainPtr<MPMediaControlsViewController> {
     void *m_ptr;
 };
 

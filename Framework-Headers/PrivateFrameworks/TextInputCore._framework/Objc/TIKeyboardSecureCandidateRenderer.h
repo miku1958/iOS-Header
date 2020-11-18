@@ -34,6 +34,7 @@
 - (struct __CFArray *)imagesFromContexts:(struct __CFArray *)arg1;
 - (struct __CFArray *)imagesFromSecureCandidates:(id)arg1 withRenderTraits:(id)arg2 outAccessibilityLabels:(id *)arg3;
 - (id)init;
+- (id)initForLocalizedStrings;
 - (id)initWithLocaleIdentifier:(id)arg1;
 - (id)localizedApplicationNameWithBundleIdentifier:(id)arg1;
 - (id)localizedStringForKey:(id)arg1;

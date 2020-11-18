@@ -20,7 +20,6 @@
     long long _defaultAlarmOffset;
 }
 
-+ (id)_dateFromBirthdayComponents:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_areNormalizedBirthdaysTheSame:(id)arg1 birthday2:(id)arg2;
 - (id)_birthdayCalendarForCalendarScale:(id)arg1;

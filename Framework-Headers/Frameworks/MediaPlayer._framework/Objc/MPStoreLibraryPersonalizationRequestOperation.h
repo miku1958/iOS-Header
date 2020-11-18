@@ -20,6 +20,7 @@
 
 + (id)personalizedResponseForContentDescriptor:(id)arg1 requestedProperties:(id)arg2;
 - (void).cxx_destruct;
+- (void)cancel;
 - (void)execute;
 
 @end

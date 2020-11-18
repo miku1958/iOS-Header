@@ -7,6 +7,6 @@
 #import <NewsDaemon/NSObject-Protocol.h>
 
 @protocol NDNewsServiceClient <NSObject>
-- (void)serviceHasNewHeadlineResults;
+- (void)serviceHasNewTodayResults;
 @end
 

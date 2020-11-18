@@ -75,6 +75,7 @@
 - (id)initWithEnvironment:(id)arg1 options:(unsigned long long)arg2;
 - (id)labeledValueFromMultiValueIdentifier:(int)arg1 contact:(id)arg2 key:(id)arg3;
 - (id)labeledValueFromPublicMultiValueIdentifier:(int)arg1 contact:(id)arg2 key:(id)arg3;
+- (id)mainContactStore;
 - (id)matchingDictionaryForContact:(id)arg1;
 - (id)meContactIdentifiers:(id *)arg1;
 - (id)membersOfGroupWithIdentifier:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
@@ -105,6 +106,7 @@
 - (BOOL)unregisterChangeHistoryClientIdentifier:(id)arg1 error:(id *)arg2;
 - (id)usedLabelsForPropertyWithKey:(id)arg1 error:(id *)arg2;
 - (id)userActivityUserInfoForContact:(id)arg1;
+- (id)verifyIndexWithError:(id *)arg1;
 
 @end
 

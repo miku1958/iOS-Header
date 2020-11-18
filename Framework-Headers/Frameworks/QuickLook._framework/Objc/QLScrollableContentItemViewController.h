@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)previewDidDisappear:(BOOL)arg1;
 - (void)previewScrollView:(id)arg1 didEndZoomingAtScale:(double)arg2;
 - (double)previewScrollView:(id)arg1 extraMinimumZoomForMinimumZoomScale:(double)arg2 maximumZoomScale:(double)arg3;
+- (BOOL)previewScrollViewShouldResizeContentBasedOnPeripheryInsets:(id)arg1;
 - (void)previewScrollViewWillBeginZooming:(id)arg1;
 - (void)previewWillAppear:(BOOL)arg1;
 - (id)registeredKeyCommands;

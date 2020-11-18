@@ -24,22 +24,27 @@
     MCDPlayableContentPlaybackManager *_queueManager;
     MCDNowPlayingViewController *_nowPlayingViewController;
     UIBarButtonItem *_backButton;
+    long long _globalIndex;
+    long long _totalItemCount;
 }
 
 @property (strong, nonatomic) UIBarButtonItem *backButton; // @synthesize backButton=_backButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *expectedPlaybackBundleIdentifier; // @synthesize expectedPlaybackBundleIdentifier=_expectedPlaybackBundleIdentifier;
+@property (nonatomic) long long globalIndex; // @synthesize globalIndex=_globalIndex;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSDictionary *nowPlayingInfo; // @synthesize nowPlayingInfo=_nowPlayingInfo;
 @property (strong, nonatomic) MCDNowPlayingViewController *nowPlayingViewController; // @synthesize nowPlayingViewController=_nowPlayingViewController;
 @property (strong, nonatomic) MCDPlayableContentPlaybackManager *queueManager; // @synthesize queueManager=_queueManager;
 @property (nonatomic) BOOL showNavigationBar; // @synthesize showNavigationBar=_showNavigationBar;
 @property (readonly) Class superclass;
+@property (nonatomic) long long totalItemCount; // @synthesize totalItemCount=_totalItemCount;
 
 - (void).cxx_destruct;
 - (void)_adjustRightTitleLabelToFit;
 - (void)_handleWillAppear;
+- (void)_localeDidChange:(id)arg1;
 - (void)_popViewControllerAnimated;
 - (void)_updateBackButton;
 - (void)contentManager:(id)arg1 displayItemIndex:(long long)arg2 totalItemCount:(long long)arg3;

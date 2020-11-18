@@ -9,7 +9,7 @@
 #import <TextInput/NSCopying-Protocol.h>
 #import <TextInput/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, NSUUID, TIDocumentState, TIInputContextHistory, TIKeyboardCandidate, TIKeyboardLayout, TIKeyboardLayoutState, TIKeyboardSecureCandidateRenderTraits, TITextInputTraits;
+@class NSArray, NSDictionary, NSString, NSUUID, TIDocumentState, TIInputContextHistory, TIKeyboardCandidate, TIKeyboardLayout, TIKeyboardLayoutState, TIKeyboardSecureCandidateRenderTraits, TITextInputTraits;
 
 @interface TIKeyboardState : NSObject <NSCopying, NSSecureCoding>
 {
@@ -56,6 +56,7 @@
     TIKeyboardCandidate *_currentCandidate;
     TITextInputTraits *_textInputTraits;
     NSString *_responseContext;
+    NSDictionary *_autofillContext;
     NSArray *_supportedPayloadIds;
 }
 
@@ -64,6 +65,7 @@
 @property (nonatomic) BOOL autocorrectionEnabled;
 @property (nonatomic) BOOL autocorrectionListUIAutoDisplayMode;
 @property (nonatomic) BOOL autocorrectionListUIDisplayed;
+@property (strong, nonatomic) NSDictionary *autofillContext; // @synthesize autofillContext=_autofillContext;
 @property (nonatomic) BOOL canSendCurrentLocation;
 @property (nonatomic) BOOL candidateSelectionPredictionEnabled;
 @property (copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;

@@ -29,19 +29,25 @@
     SFAirport *_divertedAirport;
     NSString *_title;
     NSString *_baggageClaim;
+    NSDate *_departureGateClosedTime;
+    NSDate *_departureRunwayTime;
+    NSDate *_arrivalRunwayTime;
 }
 
 @property (copy, nonatomic) NSDate *arrivalActualTime; // @synthesize arrivalActualTime=_arrivalActualTime;
 @property (strong, nonatomic) SFAirport *arrivalAirport; // @synthesize arrivalAirport=_arrivalAirport;
 @property (copy, nonatomic) NSString *arrivalGate; // @synthesize arrivalGate=_arrivalGate;
 @property (copy, nonatomic) NSDate *arrivalPublishedTime; // @synthesize arrivalPublishedTime=_arrivalPublishedTime;
+@property (copy, nonatomic) NSDate *arrivalRunwayTime; // @synthesize arrivalRunwayTime=_arrivalRunwayTime;
 @property (copy, nonatomic) NSString *arrivalTerminal; // @synthesize arrivalTerminal=_arrivalTerminal;
 @property (copy, nonatomic) NSString *baggageClaim; // @synthesize baggageClaim=_baggageClaim;
 @property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) NSDate *departureActualTime; // @synthesize departureActualTime=_departureActualTime;
 @property (strong, nonatomic) SFAirport *departureAirport; // @synthesize departureAirport=_departureAirport;
 @property (copy, nonatomic) NSString *departureGate; // @synthesize departureGate=_departureGate;
+@property (copy, nonatomic) NSDate *departureGateClosedTime; // @synthesize departureGateClosedTime=_departureGateClosedTime;
 @property (copy, nonatomic) NSDate *departurePublishedTime; // @synthesize departurePublishedTime=_departurePublishedTime;
+@property (copy, nonatomic) NSDate *departureRunwayTime; // @synthesize departureRunwayTime=_departureRunwayTime;
 @property (copy, nonatomic) NSString *departureTerminal; // @synthesize departureTerminal=_departureTerminal;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;

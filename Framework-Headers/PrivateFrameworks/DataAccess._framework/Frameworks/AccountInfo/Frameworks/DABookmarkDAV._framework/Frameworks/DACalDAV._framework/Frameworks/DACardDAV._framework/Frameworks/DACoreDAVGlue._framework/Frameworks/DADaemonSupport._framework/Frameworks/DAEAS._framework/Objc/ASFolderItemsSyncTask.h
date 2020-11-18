@@ -16,6 +16,7 @@
     BOOL _isInitialBootstrapSync;
     BOOL _willUpdate;
     BOOL _moreAvailable;
+    BOOL _clientWinsOnSyncConflict;
     BOOL _isResyncAfterConnectionFailed;
     BOOL _moreLocalChangesAvailable;
     BOOL _deletesAsMoves;
@@ -39,6 +40,7 @@
 
 @property (strong, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property (nonatomic) int bodyTruncationBytes; // @synthesize bodyTruncationBytes=_bodyTruncationBytes;
+@property (nonatomic) BOOL clientWinsOnSyncConflict; // @synthesize clientWinsOnSyncConflict=_clientWinsOnSyncConflict;
 @property (nonatomic) long long dataclass; // @synthesize dataclass=_dataclass;
 @property (nonatomic) BOOL deletesAsMoves; // @synthesize deletesAsMoves=_deletesAsMoves;
 @property (nonatomic) int filterDays; // @synthesize filterDays=_filterDays;

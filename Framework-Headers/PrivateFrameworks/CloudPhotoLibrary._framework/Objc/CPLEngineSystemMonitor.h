@@ -22,18 +22,19 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long diskPressureState;
 @property (readonly, weak, nonatomic) CPLEngineLibrary *engineLibrary; // @synthesize engineLibrary=_engineLibrary;
+@property (readonly, nonatomic) unsigned long long freeDiskSpaceSize;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isNetworkConnected;
+@property (readonly, nonatomic) BOOL isOnCellularOrUnknown;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)closeAndDeactivate:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)componentName;
-- (unsigned long long)diskPressureState;
-- (unsigned long long)freeDiskSpaceSize;
 - (void)getStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithEngineLibrary:(id)arg1;
-- (BOOL)isNetworkConnected;
 - (void)networkStateDidChangeForNetworkWatched:(id)arg1;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
 

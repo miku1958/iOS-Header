@@ -18,6 +18,9 @@
 + (void)_postGroupedValue:(float)arg1 key:(id)arg2;
 + (void)_postRawValue:(long long)arg1 key:(id)arg2;
 + (BOOL)_reportingEnabled;
++ (void)reportAppBackgroundRefreshed;
++ (void)reportAppLaunched;
++ (void)reportAppResumed;
 + (void)reportCellRighSwipeActionChanged:(id)arg1;
 + (void)reportCellRighSwipeActionIgnored;
 + (void)reportCellSwipeActionTypeExecuted:(id)arg1;
@@ -25,6 +28,8 @@
 + (void)reportComposedMessageSizeInBytes:(unsigned long long)arg1;
 + (void)reportContentDisplayedForMessageWithId:(id)arg1 hasMainAlternative:(BOOL)arg2 hasTextAlternative:(BOOL)arg3;
 + (void)reportContentReceivedForMessageWithId:(id)arg1 sizeInBytes:(unsigned long long)arg2 fullSyncVersion:(unsigned long long)arg3 dateSynced:(id)arg4;
++ (void)reportFetchForBatchResponseLatency:(double)arg1;
++ (void)reportFetchForBatchedResponse:(BOOL)arg1;
 + (void)reportFetchOlderMessages;
 + (void)reportFullSyncRequestedFromWatch:(BOOL)arg1 corruptionDetected:(BOOL)arg2 migrationRelated:(BOOL)arg3 idsFailureRelated:(BOOL)arg4 fullSyncVersionMatchRelated:(BOOL)arg5;
 + (void)reportHaltSyncRequestedFromWatch:(BOOL)arg1;
@@ -34,13 +39,17 @@
 + (void)reportMailLinkHandoffAdvertisedByNotification:(BOOL)arg1;
 + (void)reportMailLinkHandoffContinuedByNotification:(BOOL)arg1;
 + (void)reportMailboxSelectionChanged:(id)arg1 fromWatch:(BOOL)arg2;
++ (void)reportMessageDeletionCountFetchedOverCloudMessaging:(unsigned long long)arg1;
 + (void)reportMessageDeletionReceivedForMessageWithId:(id)arg1 fullSyncVersion:(unsigned long long)arg2 dateSynced:(id)arg3;
 + (void)reportMessageReceivedWithId:(id)arg1 willGenerateNotification:(BOOL)arg2 fullSyncVersion:(unsigned long long)arg3 dateSynced:(id)arg4;
 + (void)reportMessageRepliedFromApp:(BOOL)arg1;
++ (void)reportMessageUpdateCountFetchedOverCloudMessaging:(unsigned long long)arg1;
 + (void)reportMessageUpdateReceivedForMessageWithId:(id)arg1 fullSyncVersion:(unsigned long long)arg2 dateSynced:(id)arg3;
 + (void)reportMoreMessagesReceivedConversationSpecific:(BOOL)arg1 fullSyncVersion:(unsigned long long)arg2 dateSynced:(id)arg3;
 + (void)reportNewMessageComposedFromApp:(BOOL)arg1 mailto:(BOOL)arg2;
++ (void)reportNewMessageCountFetchedOverCloudMessaging:(unsigned long long)arg1;
 + (void)reportNotificationAction:(unsigned long long)arg1;
++ (void)reportNotificationReceivedOverCloudMessaging;
 + (void)reportRenderedNotificationUsingLocalContent:(BOOL)arg1 mailboxSynced:(BOOL)arg2 messageSynced:(BOOL)arg3 contentDownloaded:(BOOL)arg4;
 
 @end

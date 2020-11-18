@@ -39,9 +39,12 @@
     NSPurgeableData *_purgeableDataRepresentation;
     NSObject<OS_dispatch_queue> *_observationSetupQueueForDefaultConnection;
     NSObject<OS_dispatch_queue> *_observationSetupQueueForSecondaryConnection;
+    NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
 @property (readonly, copy, nonatomic) NSSet *bundleIdentifiers;
+@property (readonly) unsigned int currentStatus;
+@property unsigned int currentStatus;
 @property (readonly, nonatomic) NSSet *documentsTypes;
 @property (readonly, nonatomic) NSURL *documentsURL;
 @property (readonly, nonatomic) NSSet *exportedTypes;
@@ -51,9 +54,11 @@
 @property (readonly, nonatomic) BOOL isDocumentScopePublic;
 @property (nonatomic) BOOL isInCloudDocsZone; // @synthesize isInCloudDocsZone=_isInCloudDocsZone;
 @property (nonatomic) BOOL isInInitialState; // @synthesize isInInitialState=_isInInitialState;
+@property (readonly) NSDate *lastServerUpdate;
+@property (strong) NSDate *lastServerUpdate;
 @property (readonly, nonatomic) NSString *localizedName;
-@property (readonly, nonatomic, getter=isOverQuota) BOOL overQuota;
-@property (nonatomic, getter=isOverQuota) BOOL overQuota;
+@property (readonly, getter=isOverQuota) BOOL overQuota;
+@property (getter=isOverQuota) BOOL overQuota;
 @property (readonly, nonatomic) NSString *supportedFolderLevels;
 @property (readonly, nonatomic) NSURL *trashURL;
 @property (readonly, nonatomic) NSURL *url;
@@ -116,7 +121,6 @@
 - (id)computedProperties;
 - (BOOL)containsExcludedDocumentsOnTheFSWithExcludedButPreservedFilename:(id)arg1 excludedButPreservedExtensions:(id)arg2 andStampUploadedAppWithXattr:(BOOL)arg3;
 - (id)copyDataRepresentation;
-- (unsigned int)currentStatus;
 - (BOOL)deleteAllContentsOnClientAndServer:(id *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -133,11 +137,8 @@
 - (id)initWithDocsOrDesktopContainerID:(id)arg1;
 - (id)initWithMangledID:(id)arg1;
 - (id)initWithMangledID:(id)arg1 dataRepresentation:(id)arg2;
-- (id)lastServerUpdate;
 - (id)localizedNameWithPreferredLanguages:(id)arg1;
 - (BOOL)registerCurrentProcessAsPriorityHintWithError:(id *)arg1;
-- (void)setCurrentStatus:(unsigned int)arg1;
-- (void)setLastServerUpdate:(id)arg1;
 - (id)shortDescription;
 - (id)trashRestoreStringForURL:(id)arg1;
 - (BOOL)updateMetadataWithExtractorProperties:(id)arg1 iconPaths:(id)arg2 bundleID:(id)arg3;

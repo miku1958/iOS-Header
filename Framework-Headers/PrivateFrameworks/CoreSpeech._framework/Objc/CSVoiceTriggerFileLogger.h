@@ -27,6 +27,7 @@
 - (void).cxx_destruct;
 - (id)_audioLogDirectory;
 - (id)_metaFilenameWithPrefix:(id)arg1;
+- (void)_removeOldLoggingFilesIfNeededWithPattern:(id)arg1;
 - (id)_timeStampString;
 - (void)_writeDictionary:(id)arg1 toPath:(id)arg2;
 - (id)initWithAudioBuffer:(id)arg1;

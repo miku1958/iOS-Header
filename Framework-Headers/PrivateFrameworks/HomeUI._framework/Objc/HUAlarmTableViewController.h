@@ -4,76 +4,74 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <HomeUI/HUItemTableViewController.h>
 
-#import <HomeUI/HUAlarmDataDelegate-Protocol.h>
+#import <HomeUI/HFAccessoryObserver-Protocol.h>
+#import <HomeUI/HFMediaObjectObserver-Protocol.h>
 #import <HomeUI/HUAlarmEditViewControllerDelegate-Protocol.h>
-#import <HomeUI/HUAlarmTableViewCellDelegate-Protocol.h>
+#import <HomeUI/HUHomePodAlarmItemModuleControllerDelegate-Protocol.h>
+#import <HomeUI/HUPresentationDelegateHost-Protocol.h>
 
-@class MTAlarm, NSArray, NSString, UIBarButtonItem, _UIContentUnavailableView;
-@protocol HUAlarmDataSource;
+@class HUHomePodAlarmItemModuleController, MTAlarm, NSString, UIBarButtonItem, _UIContentUnavailableView;
+@protocol HFMediaProfileContainer, HUPresentationDelegate;
 
-@interface HUAlarmTableViewController : UITableViewController <HUAlarmTableViewCellDelegate, HUAlarmEditViewControllerDelegate, HUAlarmDataDelegate>
+@interface HUAlarmTableViewController : HUItemTableViewController <HUAlarmEditViewControllerDelegate, HUHomePodAlarmItemModuleControllerDelegate, HFAccessoryObserver, HFMediaObjectObserver, HUPresentationDelegateHost>
 {
-    BOOL _viewVisible;
-    BOOL _didScrollToCurrentTime;
-    id<HUAlarmDataSource> _dataSource;
+    BOOL _isAccessoryControllable;
+    id<HUPresentationDelegate> _presentationDelegate;
     UIBarButtonItem *_doneButtonItem;
-    NSArray *_alarms;
+    HUHomePodAlarmItemModuleController *_alarmModuleController;
     MTAlarm *_alarmToEdit;
     _UIContentUnavailableView *_noItemsView;
     UIBarButtonItem *_addButtonItem;
     UIBarButtonItem *_editDoneButtonItem;
+    id<HFMediaProfileContainer> _mediaProfileContainer;
 }
 
 @property (strong, nonatomic) UIBarButtonItem *addButtonItem; // @synthesize addButtonItem=_addButtonItem;
+@property (strong, nonatomic) HUHomePodAlarmItemModuleController *alarmModuleController; // @synthesize alarmModuleController=_alarmModuleController;
 @property (strong, nonatomic) MTAlarm *alarmToEdit; // @synthesize alarmToEdit=_alarmToEdit;
-@property (strong, nonatomic) NSArray *alarms; // @synthesize alarms=_alarms;
-@property (strong, nonatomic) id<HUAlarmDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL didScrollToCurrentTime; // @synthesize didScrollToCurrentTime=_didScrollToCurrentTime;
 @property (strong, nonatomic) UIBarButtonItem *doneButtonItem; // @synthesize doneButtonItem=_doneButtonItem;
 @property (strong, nonatomic) UIBarButtonItem *editDoneButtonItem; // @synthesize editDoneButtonItem=_editDoneButtonItem;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isAccessoryControllable; // @synthesize isAccessoryControllable=_isAccessoryControllable;
+@property (readonly, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
 @property (strong, nonatomic) _UIContentUnavailableView *noItemsView; // @synthesize noItemsView=_noItemsView;
+@property (weak, nonatomic) id<HUPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property (readonly) Class superclass;
-@property (nonatomic) BOOL viewVisible; // @synthesize viewVisible=_viewVisible;
 
 - (void).cxx_destruct;
-- (void)_dismissAddViewController:(id)arg1;
+- (void)_discernReachabilityForAccessory:(id)arg1;
+- (void)_doneAction:(id)arg1;
 - (void)_editDoneAction:(id)arg1;
 - (void)_layoutNoItemsLabel;
 - (void)_numberOfItemsDidChangeAnimated:(BOOL)arg1;
 - (void)_showAddView:(id)arg1;
-- (void)_showEditViewForRow:(long long)arg1;
-- (void)_submitDataModelChange:(id)arg1 editController:(id)arg2 operationType:(id)arg3 retryBlock:(CDUnknownBlockType)arg4 cancelBlock:(CDUnknownBlockType)arg5;
 - (id)_tableView:(id)arg1 templateLayoutCellForCellsWithReuseIdentifier:(id)arg2;
 - (void)_updateNavigationItems:(BOOL)arg1;
-- (void)adapter:(id)arg1 didUpdateAlarms:(id)arg2;
+- (void)accessoryDidUpdateControllable:(id)arg1;
+- (void)accessoryDidUpdateReachability:(id)arg1;
 - (void)alarmEditController:(id)arg1 didAddAlarm:(id)arg2;
 - (void)alarmEditController:(id)arg1 didDeleteAlarm:(id)arg2;
 - (void)alarmEditController:(id)arg1 didEditAlarm:(id)arg2;
 - (void)alarmEditControllerDidCancel:(id)arg1;
+- (id)alarmItemManager;
+- (void)alarmItemModuleController:(id)arg1 didSelectAlarm:(id)arg2;
 - (id)backgroundView;
-- (id)contentScrollView;
+- (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)editViewControllerForAlarm:(id)arg1;
-- (id)initWithDataSource:(id)arg1;
-- (void)loadView;
+- (id)initWithMediaProfileContainer:(id)arg1;
+- (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
+- (id)itemModuleControllers;
+- (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)reloadData;
-- (void)reloadDataAnimated:(BOOL)arg1;
-- (void)reloadDataWithAlarms:(id)arg1;
-- (void)reloadDataWithAlarms:(id)arg1 animated:(BOOL)arg2;
-- (void)setAlarmEnabled:(BOOL)arg1 forCell:(id)arg2;
-- (void)setDataSource:(id)arg1 reloadData:(BOOL)arg2;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (BOOL)shouldHideHeaderAboveSection:(long long)arg1;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
-- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

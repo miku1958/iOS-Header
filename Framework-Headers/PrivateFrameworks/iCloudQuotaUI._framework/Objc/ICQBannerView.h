@@ -9,7 +9,7 @@
 #import <iCloudQuotaUI/ICQUpgradeFlowManagerDelegate-Protocol.h>
 #import <iCloudQuotaUI/UITextViewDelegate-Protocol.h>
 
-@class ICQOffer, ICQUpgradeFlowManager, NSArray, NSString, UIColor, UIFont, _ICQTextView;
+@class ICQOffer, ICQUpgradeFlowManager, ICQUpgradeFlowOptions, NSArray, NSString, UIColor, UIFont, _ICQTextView;
 @protocol ICQBannerViewDelegate;
 
 @interface ICQBannerView : UIView <UITextViewDelegate, ICQUpgradeFlowManagerDelegate>
@@ -22,6 +22,7 @@
     double _textLineSpacing;
     UIFont *_linkTextFont;
     UIColor *_linkTextColor;
+    ICQUpgradeFlowOptions *_flowOptions;
     _ICQTextView *_textView;
     NSArray *_activeConstraints;
     ICQUpgradeFlowManager *_upgradeFlowManager;
@@ -32,6 +33,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<ICQBannerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) ICQUpgradeFlowOptions *flowOptions; // @synthesize flowOptions=_flowOptions;
 @property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) UIColor *linkTextColor; // @synthesize linkTextColor=_linkTextColor;

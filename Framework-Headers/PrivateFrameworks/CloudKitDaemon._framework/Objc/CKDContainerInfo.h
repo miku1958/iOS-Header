@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSURL *_publicShareServiceURL;
     NSURL *_publicDeviceServiceURL;
     NSURL *_publicCodeServiceURL;
+    NSURL *_publicMetricsServiceURL;
     NSString *_containerScopedUserID;
     long long _environment;
 }
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSURL *publicCloudDBURL; // @synthesize publicCloudDBURL=_publicCloudDBURL;
 @property (copy, nonatomic) NSURL *publicCodeServiceURL; // @synthesize publicCodeServiceURL=_publicCodeServiceURL;
 @property (copy, nonatomic) NSURL *publicDeviceServiceURL; // @synthesize publicDeviceServiceURL=_publicDeviceServiceURL;
+@property (copy, nonatomic) NSURL *publicMetricsServiceURL; // @synthesize publicMetricsServiceURL=_publicMetricsServiceURL;
 @property (copy, nonatomic) NSURL *publicShareServiceURL; // @synthesize publicShareServiceURL=_publicShareServiceURL;
 
 + (BOOL)supportsSecureCoding;

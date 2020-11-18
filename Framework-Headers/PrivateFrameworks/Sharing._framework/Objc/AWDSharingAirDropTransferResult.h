@@ -18,12 +18,14 @@
     int _errorCode;
     NSString *_errorDomain;
     NSString *_model;
+    BOOL _legacy;
     BOOL _sender;
     BOOL _success;
     struct {
         unsigned int bytesPerSec:1;
         unsigned int timestamp:1;
         unsigned int errorCode:1;
+        unsigned int legacy:1;
         unsigned int sender:1;
         unsigned int success:1;
     } _has;
@@ -37,10 +39,12 @@
 @property (nonatomic) BOOL hasBytesPerSec;
 @property (nonatomic) BOOL hasErrorCode;
 @property (readonly, nonatomic) BOOL hasErrorDomain;
+@property (nonatomic) BOOL hasLegacy;
 @property (readonly, nonatomic) BOOL hasModel;
 @property (nonatomic) BOOL hasSender;
 @property (nonatomic) BOOL hasSuccess;
 @property (nonatomic) BOOL hasTimestamp;
+@property (nonatomic) BOOL legacy; // @synthesize legacy=_legacy;
 @property (strong, nonatomic) NSString *model; // @synthesize model=_model;
 @property (nonatomic) BOOL sender; // @synthesize sender=_sender;
 @property (nonatomic) BOOL success; // @synthesize success=_success;

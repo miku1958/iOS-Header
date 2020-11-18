@@ -6,17 +6,23 @@
 
 #import <Preferences/PSListController.h>
 
-@class UIViewController;
+#import <CoreFollowUpUI/FLSpecifierTapHandlerDelegate-Protocol.h>
+
+@class FLSpecifierTapHandler, NSString, UIViewController;
 @protocol FLViewModel;
 
-@interface FLPreferencesFollowUpItemListViewController : PSListController
+@interface FLPreferencesFollowUpItemListViewController : PSListController <FLSpecifierTapHandlerDelegate>
 {
     id<FLViewModel> _topViewModel;
-    BOOL _extensionActive;
+    FLSpecifierTapHandler *_actionHandler;
     UIViewController *_presentationContext;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIViewController *presentationContext; // @synthesize presentationContext=_presentationContext;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_dismissFlowWithError:(id)arg1;
@@ -25,12 +31,11 @@
 - (void)actionTapped:(id)arg1;
 - (id)detailSpecifiersForFollowUpItem:(id)arg1;
 - (id)followUpItemSpecifiers;
-- (void)handleActionForItem:(id)arg1 fromSpecifier:(id)arg2;
 - (void)handleURL:(id)arg1;
+- (void)preflightNetworkConnectivityForHandler:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)setSpecifier:(id)arg1;
 - (id)specifiers;
-- (void)startSpinnerForSpecifier:(id)arg1;
-- (void)stopSpinnerForSpecifier:(id)arg1;
+- (void)startPresentingForHandler:(id)arg1 withRemoteController:(id)arg2;
 
 @end
 

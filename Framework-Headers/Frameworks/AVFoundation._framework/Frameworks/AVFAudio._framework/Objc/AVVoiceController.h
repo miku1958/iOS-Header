@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class AVAudioFormat, NSDictionary, NSString, NSXPCConnection;
 @protocol AVVoiceControllerPlaybackDelegate, AVVoiceControllerRecordDelegate, AVVoiceControllerVoiceTriggerDelegate, Endpointer;
@@ -23,6 +23,7 @@
 @property (readonly) unsigned long long lastRecordStartTime;
 @property (getter=isMeteringEnabled) BOOL meteringEnabled;
 @property (readonly) NSDictionary *metrics;
+@property (readonly) unsigned long long numberOfChannels;
 @property (readonly) AVAudioFormat *pcmRecordBufferFormat;
 @property id<AVVoiceControllerPlaybackDelegate> playbackDelegate; // @dynamic playbackDelegate;
 @property (readonly, copy) NSString *playbackRoute;
@@ -46,6 +47,7 @@
 @property (readonly, strong) NSXPCConnection *voiceTriggerServerConnection; // @dynamic voiceTriggerServerConnection;
 
 - (BOOL)IsDeviceAvailableInLocalRoute:(id)arg1 error:(id *)arg2;
+- (void)avAudioPCMRecordBufferListReceived:(struct AudioBufferList *)arg1 atTime:(unsigned long long)arg2;
 - (void)avAudioPCMRecordBufferReceived:(id)arg1 atTime:(unsigned long long)arg2;
 - (float)averagePowerForChannel:(unsigned long long)arg1;
 - (void)beganPlaying;

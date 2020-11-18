@@ -105,7 +105,7 @@
 - (void)_enableBroadcastNotifications:(BOOL)arg1 hapAccessory:(id)arg2 forCharacteristics:(id)arg3;
 - (void)_enableNotification:(BOOL)arg1 forCharacteristics:(id)arg2 hapAccessory:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_enableNotification:(BOOL)arg1 forCharacteristics:(id)arg2 message:(id)arg3 clientIdentifier:(id)arg4;
-- (void)_enableNotification:(BOOL)arg1 matchingHAPAccessory:(id)arg2 unconditionallyDeregister:(BOOL)arg3 ignoreDeviceUnlockRequirement:(BOOL)arg4 clientIdentifier:(id)arg5 forCharacteristics:(id)arg6;
+- (void)_enableNotification:(BOOL)arg1 matchingHAPAccessory:(id)arg2 ignoreDeviceUnlockRequirement:(BOOL)arg3 clientIdentifier:(id)arg4 forCharacteristics:(id)arg5;
 - (BOOL)_enableNotificationOnResident:(BOOL)arg1 characteristic:(id)arg2 clientIdentifier:(id)arg3 ignoreDeviceUnlockRequirement:(BOOL)arg4;
 - (void)_handleAddServiceTransaction:(id)arg1 message:(id)arg2;
 - (void)_handleCharacteristicError:(id)arg1 characteristic:(id)arg2 message:(id)arg3 read:(BOOL)arg4;
@@ -113,10 +113,8 @@
 - (void)_handleCharacteristicWrite:(id)arg1;
 - (void)_handleCharacteristicsChangedNotification:(id)arg1;
 - (void)_handleDiscoveryBackoffTimerFired;
-- (void)_handleGetAccessoryAdvertisingParams:(id)arg1;
 - (void)_handleIdentify:(id)arg1;
 - (void)_handleKeyRefreshTimerFired;
-- (void)_handleListPairings:(id)arg1;
 - (void)_handleMultipleCharacteristicsUpdated:(id)arg1 message:(id)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_handleRenameService:(id)arg1;
 - (void)_handleServiceRemovedTransaction:(id)arg1 message:(id)arg2;
@@ -196,12 +194,13 @@
 - (id)dumpState;
 - (void)enableNotification:(BOOL)arg1 forCharacteristicIDs:(id)arg2 message:(id)arg3 clientIdentifier:(id)arg4;
 - (void)enableNotification:(BOOL)arg1 forCharacteristics:(id)arg2 message:(id)arg3 clientIdentifier:(id)arg4;
-- (void)enableNotification:(BOOL)arg1 unconditionallyDeregister:(BOOL)arg2 ignoreDeviceUnlockRequirement:(BOOL)arg3 clientIdentifier:(id)arg4 forCharacteristics:(id)arg5;
+- (void)enableNotification:(BOOL)arg1 ignoreDeviceUnlockRequirement:(BOOL)arg2 clientIdentifier:(id)arg3 forCharacteristics:(id)arg4;
 - (void)encodeWithCoder:(id)arg1;
 - (id)findCharacteristic:(id)arg1;
 - (id)findCharacteristic:(id)arg1 forService:(id)arg2;
 - (id)findCharacteristicType:(id)arg1 forServiceType:(id)arg2;
 - (id)findService:(id)arg1;
+- (id)getOrCreateServiceUpdateTransactionForKey:(id)arg1 fromDictionary:(id)arg2;
 - (id)getPrimaryHAPAccessories;
 - (id)getTransportInformationArray;
 - (void)handleMultipleCharacteristicsUpdated:(id)arg1 message:(id)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -209,6 +208,7 @@
 - (void)handleRemoteGatewayNotificationRegistration:(id)arg1 enable:(BOOL)arg2 enableTime:(id)arg3;
 - (id)hapCharacteristicWriteRequests:(id)arg1 hapAccessory:(id)arg2 hmdResponses:(id *)arg3 mapping:(id *)arg4;
 - (BOOL)hasBTLELink;
+- (BOOL)hasIPLink;
 - (id)hmdCharacteristicForInstanceId:(id)arg1;
 - (id)hmdCharacteristicFromHapCharacteristic:(id)arg1;
 - (id)init;
@@ -219,7 +219,7 @@
 - (BOOL)isNotificationEnabled;
 - (BOOL)isNotificationEnabledForClientIdentifier:(id)arg1;
 - (BOOL)isPrimary;
-- (BOOL)isReadingRequiredAccessoryInformationCharacteristic:(id)arg1 providedName:(id)arg2 forceReadFWVersion:(BOOL)arg3;
+- (BOOL)isReadingRequiredForBTLEAccessoryCharacteristic:(id)arg1 forceReadFWVersion:(BOOL)arg2;
 - (BOOL)isSecuritySessionOpen;
 - (long long)linkSpeed;
 - (void)logDuetEventIfNeeded:(id)arg1 clientName:(id)arg2;
@@ -237,6 +237,7 @@
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (id)namesOfServicesShowingTilesInHomeApp;
 - (void)notifyValue:(id)arg1 previousValue:(id)arg2 error:(id)arg3 forCharacteristic:(id)arg4 requestMessage:(id)arg5;
+- (void)pairingsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)performOperation:(long long)arg1 linkType:(long long)arg2 operationBlock:(CDUnknownBlockType)arg3 errorBlock:(CDUnknownBlockType)arg4;
 - (void)populateHMDCharacteristicResponses:(id)arg1 hapResponses:(id)arg2 mapping:(id)arg3 overallError:(id)arg4 requests:(id)arg5;
 - (void)populateModelObject:(id)arg1 version:(long long)arg2;
@@ -261,12 +262,12 @@
 - (void)setDayOfTheWeekCharacteristic:(id)arg1;
 - (void)setPairingUsername:(id)arg1 publicKey:(id)arg2;
 - (void)setReachability:(BOOL)arg1 serverIdentifier:(id)arg2 linkType:(long long)arg3;
-- (void)setRemotelyReachable:(BOOL)arg1;
 - (void)setTimeInformationServiceExists:(BOOL)arg1;
 - (void)setTimeUpdateCharacteristic:(id)arg1;
 - (BOOL)shouldEnableDaemonRelaunch;
 - (void)startRelayActivationWithActivationClient:(id)arg1;
 - (void)startRelayPairingWithPairingClient:(id)arg1;
+- (BOOL)supportsUserManagement;
 - (void)takeOwnershipOfAppData:(id)arg1;
 - (void)timeInformationMonitorDidChangeTime;
 - (void)timerDidFire:(id)arg1;
@@ -281,7 +282,6 @@
 - (id)updateAccessoryFlagsAndNotifyClients:(id)arg1;
 - (BOOL)updateAccessoryInformation:(id)arg1;
 - (void)updateNotificationEnabled:(BOOL)arg1 forCharacteristics:(id)arg2 onBehalfOf:(id)arg3;
-- (void)updateReachability;
 - (BOOL)updateTimeInformationCharacteristicsForAccessory:(id)arg1;
 - (BOOL)updateTransportInformation:(id)arg1;
 - (void)verifyPairingWithCompletionHandler:(CDUnknownBlockType)arg1;

@@ -171,6 +171,7 @@
 - (void)_messagesSwitchChanged:(id)arg1;
 - (id)_moreTransactionsCellForTableView:(id)arg1;
 - (unsigned long long)_numberOfPeerPaymentBalanceActionsEnabled;
+- (double)_offscreenHeaderHeight;
 - (void)_openIssuerWebsite;
 - (void)_openPaymentSetup;
 - (unsigned long long)_passOperationsCellWithOutput:(id *)arg1 forRowIndex:(long long)arg2 tableView:(id)arg3;
@@ -195,7 +196,7 @@
 - (unsigned long long)_privacyTermsSectionGenerateCellWithOutput:(id *)arg1 forRowIndex:(long long)arg2 tableView:(id)arg3;
 - (void)_refreshPaymentApplicationsSelection;
 - (void)_reloadPassAndView;
-- (void)_reloadTransactionSections;
+- (void)_reloadTransactionSectionsAnimated:(BOOL)arg1;
 - (void)_reloadTransactionsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_reloadView;
 - (id)_remindersConfigurationCellForIndexPath:(id)arg1 tableView:(id)arg2;
@@ -265,6 +266,7 @@
 - (void)performActionViewControllerDidCancel:(id)arg1;
 - (void)performActionViewControllerDidPerformAction:(id)arg1;
 - (BOOL)pkui_prefersNavigationBarShadowHidden;
+- (void)presentTermsAndConditions;
 - (void)presentTransactionDetailsForTransaction:(id)arg1 animated:(BOOL)arg2;
 - (void)presentVerificationViewController:(id)arg1 animated:(BOOL)arg2;
 - (id)presentingViewControllerForAvatarView:(id)arg1;
@@ -274,6 +276,7 @@
 - (long long)rowAnimationForInsertingSection:(unsigned long long)arg1;
 - (long long)rowAnimationForReloadingSection:(unsigned long long)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (BOOL)shouldMapSection:(unsigned long long)arg1;
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -290,6 +293,7 @@
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)updateActivationFooterViewContents;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;

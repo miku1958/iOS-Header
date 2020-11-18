@@ -35,6 +35,7 @@
 - (BOOL)isDeviceLockedWithPasscode;
 - (BOOL)isTimeoutSuspended;
 - (BOOL)openSensitiveURL:(id)arg1;
+- (id)peerInfoForCurrentCommand;
 
 @end
 

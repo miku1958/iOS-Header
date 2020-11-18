@@ -18,11 +18,14 @@
 
 + (id)sharedLogger;
 - (void).cxx_destruct;
+- (void)_didSelectFavoritesGridItemOfSection:(int)arg1 type:(int)arg2 atIndex:(unsigned long long)arg3 itemsPerRow:(unsigned long long)arg4 isNewTabPage:(BOOL)arg5;
 - (void)ckBookmarkSyncFinishedWithResult:(long long)arg1 error:(id)arg2;
 - (void)didAutoFillCustomContactSetShowingMeCard:(BOOL)arg1;
 - (void)didFailToMigrateToCKBookmarksAsPrimaryMigrator:(BOOL)arg1 error:(id)arg2;
 - (void)didReceiveInvalidMessageFromWebProcess:(id)arg1;
 - (void)didSelectContactAutoFillSet:(int)arg1 hasPreviouslyCustomizedSet:(BOOL)arg2;
+- (void)didSelectFavoritesGridFrequentlyVisitedItemAtIndex:(unsigned long long)arg1 itemsPerRow:(unsigned long long)arg2 isNewTabPage:(BOOL)arg3;
+- (void)didSelectFavoritesGridItemOfType:(int)arg1 atIndex:(unsigned long long)arg2 itemsPerRow:(unsigned long long)arg3 isNewTabPage:(BOOL)arg4;
 - (void)didShowContactAutoFillSetsWithMeCardSets:(BOOL)arg1 showingPreviouslyCustomizedSet:(BOOL)arg2;
 - (void)didStartMigratingToCKBookmarksAsPrimaryMigrator:(BOOL)arg1 localState:(long long)arg2 remoteState:(long long)arg3;
 - (void)didSuccessfullyMigrateToCKBookmarksAsPrimaryMigrator:(BOOL)arg1;

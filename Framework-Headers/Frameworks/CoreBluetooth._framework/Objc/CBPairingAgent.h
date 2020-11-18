@@ -30,6 +30,7 @@
 - (BOOL)isPeerPaired:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pairPeer:(id)arg1;
+- (void)pairPeer:(id)arg1 options:(id)arg2;
 - (void)pairPeer:(id)arg1 useMITM:(BOOL)arg2;
 - (void)respondToPairingRequest:(id)arg1 type:(long long)arg2 accept:(BOOL)arg3 data:(id)arg4;
 - (id)retrieveOOBDataForPeer:(id)arg1;

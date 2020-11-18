@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSOrthography.h>
+#import <Foundation/NSOrthography.h>
 
 @interface NSSimpleOrthography : NSOrthography
 {

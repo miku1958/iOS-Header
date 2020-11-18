@@ -85,6 +85,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_dragInteraction:(id)arg1 competingGestureRecognizerShouldDelayLift:(id)arg2;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
+- (BOOL)_dragInteractionShouldBecomeDraggingSourceDelegate:(id)arg1;
 - (long long)_dropInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (id)_dropRangeForPosition:(id)arg1;
 - (id)_dropRequestWithPosition:(id)arg1 inSession:(id)arg2;
@@ -112,6 +113,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateDropCaretToPosition:(id)arg1;
 - (void)_updateDropProposalForPosition:(id)arg1 inSession:(id)arg2 allowCancel:(BOOL)arg3;
 - (void)_viewBecomeFirstResponderIfNeededAfterDrop;
+- (BOOL)_viewHasOtherDragInteraction;
 - (BOOL)accessibilityCanDrag;
 - (void)dragInteraction:(id)arg1 item:(id)arg2 willAnimateCancelWithAnimator:(id)arg3;
 - (id)dragInteraction:(id)arg1 itemsForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;

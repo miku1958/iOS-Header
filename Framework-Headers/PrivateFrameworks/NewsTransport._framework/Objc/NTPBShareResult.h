@@ -35,6 +35,7 @@
     int _groupType;
     NSString *_iadNativeAd;
     NSString *_iadNativeCampaign;
+    NSString *_iadNativeCampaignAd;
     NSString *_iadNativeLine;
     NSString *_iosActivityType;
     NSString *_language;
@@ -140,6 +141,7 @@
 @property (nonatomic) BOOL hasGroupType;
 @property (readonly, nonatomic) BOOL hasIadNativeAd;
 @property (readonly, nonatomic) BOOL hasIadNativeCampaign;
+@property (readonly, nonatomic) BOOL hasIadNativeCampaignAd;
 @property (readonly, nonatomic) BOOL hasIadNativeLine;
 @property (readonly, nonatomic) BOOL hasIosActivityType;
 @property (nonatomic) BOOL hasIsBreakingNewsArticle;
@@ -177,6 +179,7 @@
 @property (readonly, nonatomic) BOOL hasWidgetEngagement;
 @property (strong, nonatomic) NSString *iadNativeAd; // @synthesize iadNativeAd=_iadNativeAd;
 @property (strong, nonatomic) NSString *iadNativeCampaign; // @synthesize iadNativeCampaign=_iadNativeCampaign;
+@property (strong, nonatomic) NSString *iadNativeCampaignAd; // @synthesize iadNativeCampaignAd=_iadNativeCampaignAd;
 @property (strong, nonatomic) NSString *iadNativeLine; // @synthesize iadNativeLine=_iadNativeLine;
 @property (strong, nonatomic) NSString *iosActivityType; // @synthesize iosActivityType=_iosActivityType;
 @property (nonatomic) BOOL isBreakingNewsArticle; // @synthesize isBreakingNewsArticle=_isBreakingNewsArticle;

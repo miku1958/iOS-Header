@@ -12,11 +12,15 @@
 
 @interface AFRequestInfo : NSObject <NSSecureCoding>
 {
+    BOOL _handoffRequiresUserInteraction;
+    BOOL _suppressAlert;
     NSNumber *_notifyState;
     NSString *_text;
     NSString *_directAction;
+    NSString *_handoffOriginDeviceName;
     NSData *_handoffRequestData;
     NSString *_handoffURLString;
+    NSString *_handoffNotification;
     NSString *_correctedSpeech;
     NSDictionary *_correctedSpeechContext;
     SAStartRequest *_startRequest;
@@ -39,7 +43,10 @@
 @property (copy, nonatomic) NSString *correctedSpeech; // @synthesize correctedSpeech=_correctedSpeech;
 @property (copy, nonatomic) NSDictionary *correctedSpeechContext; // @synthesize correctedSpeechContext=_correctedSpeechContext;
 @property (copy, nonatomic) NSString *directAction; // @synthesize directAction=_directAction;
+@property (copy, nonatomic) NSString *handoffNotification; // @synthesize handoffNotification=_handoffNotification;
+@property (copy, nonatomic) NSString *handoffOriginDeviceName; // @synthesize handoffOriginDeviceName=_handoffOriginDeviceName;
 @property (copy, nonatomic) NSData *handoffRequestData; // @synthesize handoffRequestData=_handoffRequestData;
+@property (nonatomic) BOOL handoffRequiresUserInteraction; // @synthesize handoffRequiresUserInteraction=_handoffRequiresUserInteraction;
 @property (copy, nonatomic) NSString *handoffURLString; // @synthesize handoffURLString=_handoffURLString;
 @property (copy, nonatomic) NSString *interactionId; // @synthesize interactionId=_interactionId;
 @property (copy, nonatomic) NSNumber *notifyState; // @synthesize notifyState=_notifyState;
@@ -50,6 +57,7 @@
 @property (copy, nonatomic) NSString *sessionId; // @synthesize sessionId=_sessionId;
 @property (copy, nonatomic) SAStartLocalRequest *startLocalRequest; // @synthesize startLocalRequest=_startLocalRequest;
 @property (copy, nonatomic) SAStartRequest *startRequest; // @synthesize startRequest=_startRequest;
+@property (nonatomic) BOOL suppressAlert; // @synthesize suppressAlert=_suppressAlert;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property (copy, nonatomic) NSString *utteranceSource; // @synthesize utteranceSource=_utteranceSource;
 
@@ -58,6 +66,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)requiresUserInteraction;
 
 @end
 

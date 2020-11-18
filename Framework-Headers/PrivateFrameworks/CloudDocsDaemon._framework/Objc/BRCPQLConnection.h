@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)brc_close;
 - (void)disableProfilingForQueriesInBlock:(CDUnknownBlockType)arg1;
 - (BOOL)executeWithErrorHandler:(CDUnknownBlockType)arg1 sql:(id)arg2;
+- (BOOL)executeWithExpectedIndex:(id)arg1 sql:(id)arg2;
 - (BOOL)executeWithSlowStatementRadar:(id)arg1 sql:(id)arg2;
 - (id)fetchWithSlowStatementRadar:(id)arg1 objectOfClass:(Class)arg2 sql:(id)arg3;
 - (id)fetchWithSlowStatementRadar:(id)arg1 sql:(id)arg2;

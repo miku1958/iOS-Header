@@ -6,14 +6,20 @@
 
 #import <ITMLKit/IKJSObject.h>
 
+#import <WatchListKitUI/WLKNotificationCenterDelegate-Protocol.h>
 #import <WatchListKitUI/WLKUINotificationCenter-Protocol.h>
 
-@protocol WLKUINotificationsImpl;
+@class NSString, WLKNotificationCenter;
 
-@interface WLKUINotificationCenter : IKJSObject <WLKUINotificationCenter>
+@interface WLKUINotificationCenter : IKJSObject <WLKNotificationCenterDelegate, WLKUINotificationCenter>
 {
-    id<WLKUINotificationsImpl> _impl;
+    WLKNotificationCenter *_center;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)handleAction:(id)arg1;

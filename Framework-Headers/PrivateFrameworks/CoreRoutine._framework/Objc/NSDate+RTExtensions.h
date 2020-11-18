@@ -8,6 +8,7 @@
 
 @interface NSDate (RTExtensions)
 + (id)dateFormatter;
++ (id)dateWithHour:(long long)arg1 minute:(long long)arg2 second:(long long)arg3;
 + (id)dateWithResolution:(unsigned long long)arg1;
 + (id)dateWithResolution:(unsigned long long)arg1 calendar:(id)arg2;
 + (id)endOfDay;
@@ -22,6 +23,7 @@
 - (id)dateReducedToResolution:(unsigned long long)arg1 calendar:(id)arg2;
 - (id)endOfDay;
 - (unsigned long long)hour;
+- (unsigned long long)minute;
 - (id)startOfDay;
 - (id)stringFromDate;
 - (long long)weekday;

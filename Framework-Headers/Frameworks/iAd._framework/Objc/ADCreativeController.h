@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iAd/ADWebProcessDelegate-Protocol.h>
 #import <iAd/WKNavigationDelegate-Protocol.h>
@@ -47,6 +47,7 @@
 - (id)_customUserAgentString;
 - (id)_incrementCreativeIdentifier;
 - (void)_requestOpenURL:(id)arg1;
+- (void)_tapGestureTimerDidExpireForRequestedActionType:(long long)arg1;
 - (void)_updateWebProcessProxyVisibility;
 - (id)_userAgentForUserAgentString:(id)arg1;
 - (BOOL)_webView:(id)arg1 focusShouldStartInputSession:(id)arg2;

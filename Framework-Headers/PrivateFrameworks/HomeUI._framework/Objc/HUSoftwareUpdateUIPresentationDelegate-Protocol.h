@@ -7,9 +7,10 @@
 #import <HomeUI/NSObject-Protocol.h>
 
 @class HUSoftwareUpdateUIManager, NAFuture, UIViewController;
+@protocol HUPreloadableViewController;
 
 @protocol HUSoftwareUpdateUIPresentationDelegate <NSObject>
-- (NAFuture *)softwareUpdateUIManager:(HUSoftwareUpdateUIManager *)arg1 dismissViewController:(UIViewController *)arg2;
-- (NAFuture *)softwareUpdateUIManager:(HUSoftwareUpdateUIManager *)arg1 presentViewController:(UIViewController *)arg2;
+- (NAFuture *)softwareUpdateUIManager:(HUSoftwareUpdateUIManager *)arg1 dismissViewController:(UIViewController<HUPreloadableViewController> *)arg2;
+- (NAFuture *)softwareUpdateUIManager:(HUSoftwareUpdateUIManager *)arg1 presentViewController:(UIViewController<HUPreloadableViewController> *)arg2;
 @end
 

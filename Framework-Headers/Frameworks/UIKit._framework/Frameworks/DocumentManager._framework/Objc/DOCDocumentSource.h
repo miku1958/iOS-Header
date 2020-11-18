@@ -9,7 +9,7 @@
 #import <DocumentManager/NSCopying-Protocol.h>
 #import <DocumentManager/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, UIImage;
+@class FPProvider, NSArray, NSString, UIImage;
 
 @interface DOCDocumentSource : NSObject <NSSecureCoding, NSCopying>
 {
@@ -20,6 +20,7 @@
     NSString *_promptText;
     NSString *_identifier;
     NSArray *_documentTypes;
+    FPProvider *_searching_fileProvider;
 }
 
 @property (copy) NSString *displayName; // @synthesize displayName=_displayName;
@@ -29,10 +30,11 @@
 @property (strong) UIImage *icon; // @synthesize icon=_icon;
 @property (copy) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy) NSString *promptText; // @synthesize promptText=_promptText;
+@property FPProvider *searching_fileProvider; // @synthesize searching_fileProvider=_searching_fileProvider;
 
 + (void)defaultSourceForBundleIdentifier:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
++ (id)defaultSourceForBundleIdentifier:(id)arg1 defaultSourceIdentifier:(id)arg2 sources:(id)arg3;
 + (void)defaultSourceForBundleIdentifier:(id)arg1 selectedSourceIdentifier:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-+ (id)defaultSourceForSourceIdentifier:(id)arg1 sources:(id)arg2;
 + (id)defaultSourceIdentifierForBundleIdentifier:(id)arg1;
 + (void)endSearchingSources:(id)arg1;
 + (BOOL)isICloudFileProviderEnabled;

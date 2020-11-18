@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCMediaStreamDelegate-Protocol.h>
 
@@ -36,6 +36,7 @@
 - (oneway void)release;
 - (id)retain;
 - (unsigned long long)retainCount;
+- (id)textStreamWithStreamToken:(long long)arg1;
 - (void)vcMediaStream:(id)arg1 didPauseStream:(BOOL)arg2 error:(id)arg3;
 - (void)vcMediaStream:(id)arg1 didReceiveDTMFEventWithDigit:(BOOL)arg2;
 - (void)vcMediaStream:(id)arg1 didReceiveRTCPPackets:(id)arg2;

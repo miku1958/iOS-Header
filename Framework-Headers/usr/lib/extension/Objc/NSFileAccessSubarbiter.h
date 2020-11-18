@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSFileAccessClientLocalArbiterInterface-Protocol.h>
-#import <extension/NSXPCListenerDelegate-Protocol.h>
+#import <Foundation/NSFileAccessClientLocalArbiterInterface-Protocol.h>
+#import <Foundation/NSXPCListenerDelegate-Protocol.h>
 
 @class NSFileAccessArbiter, NSString;
 @protocol OS_dispatch_queue;

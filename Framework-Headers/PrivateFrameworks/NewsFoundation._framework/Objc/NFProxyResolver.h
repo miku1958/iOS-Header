@@ -29,12 +29,14 @@
 
 - (void).cxx_destruct;
 - (id)createProxyResolverForDefinition:(id)arg1;
+- (id)currentObjectGraphResolver:(unsigned long long)arg1;
 - (void)ensure:(id)arg1 name:(id)arg2;
 - (void)ensureClass:(Class)arg1;
 - (void)ensureClass:(Class)arg1 name:(id)arg2;
 - (void)ensureProtocol:(id)arg1;
 - (void)ensureProtocol:(id)arg1 name:(id)arg2;
 - (id)initWithPublicContainer:(id)arg1 privateContainer:(id)arg2 inPool:(id)arg3;
+- (void)linkResolverWithLinkBlock:(CDUnknownBlockType)arg1;
 - (id)resolve:(id)arg1 name:(id)arg2 validateBlock:(CDUnknownBlockType)arg3;
 - (id)resolveClass:(Class)arg1;
 - (id)resolveClass:(Class)arg1 name:(id)arg2;

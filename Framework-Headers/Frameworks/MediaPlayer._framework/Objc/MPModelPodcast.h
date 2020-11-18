@@ -6,24 +6,36 @@
 
 #import <MediaPlayer/MPModelObject.h>
 
-@class MPModelPodcastAuthor, NSString;
+@class MPModelPodcastAuthor, NSString, NSURL;
 
 @interface MPModelPodcast : MPModelObject
 {
+    BOOL _supportsSubscription;
     NSString *_title;
+    NSURL *_feedURL;
+    NSURL *_shareURL;
     MPModelPodcastAuthor *_author;
     CDUnknownBlockType _artworkCatalogBlock;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType artworkCatalogBlock; // @synthesize artworkCatalogBlock=_artworkCatalogBlock;
 @property (strong, nonatomic) MPModelPodcastAuthor *author; // @synthesize author=_author;
+@property (copy, nonatomic) NSURL *feedURL; // @synthesize feedURL=_feedURL;
+@property (copy, nonatomic) NSURL *shareURL; // @synthesize shareURL=_shareURL;
+@property (nonatomic) BOOL supportsSubscription; // @synthesize supportsSubscription=_supportsSubscription;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (id)__MPModelPropertyPodcastArtwork__PROPERTY;
++ (id)__MPModelPropertyPodcastFeedURL__PROPERTY;
++ (id)__MPModelPropertyPodcastShareURL__PROPERTY;
++ (id)__MPModelPropertyPodcastSupportsSubscription__PROPERTY;
 + (id)__MPModelPropertyPodcastTitle__PROPERTY;
 + (id)__MPModelRelationshipPodcastAuthor__PROPERTY;
 + (id)__artworkCatalogBlock__KEY;
 + (id)__author__KEY;
++ (id)__feedURL__KEY;
++ (id)__shareURL__KEY;
++ (id)__supportsSubscription__KEY;
 + (id)__title__KEY;
 + (id)kindWithEpisodeKind:(id)arg1;
 - (void).cxx_destruct;

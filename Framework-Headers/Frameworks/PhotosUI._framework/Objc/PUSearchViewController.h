@@ -80,7 +80,6 @@ __attribute__((visibility("hidden")))
 - (void)_resetPreheating;
 - (double)_rowHeightForCurrentFont;
 - (void)_scheduleUpdateTableFooterView;
-- (struct CGRect)_searchBar:(id)arg1 proposedSearchFieldFrame:(struct CGRect)arg2;
 - (void)_searchFieldTextDidChange:(id)arg1;
 - (id)_searchResultsTableView;
 - (void)_selectSearchResultAtIndexPath:(id)arg1;

@@ -6,21 +6,17 @@
 
 #import <Foundation/NSObject.h>
 
-@class CUCoalescer, NSMutableDictionary;
+@class NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface CUPowerSourceMonitor : NSObject
 {
+    BOOL _activateCalled;
     NSMutableDictionary *_powerSources;
     int _psNotifyTokenAccessoryAttach;
     int _psNotifyTokenAccessoryPowerSource;
     int _psNotifyTokenAccessoryTimeRemaining;
     int _psNotifyTokenAnyPowerSource;
-    int _psNotifyTokenAttach;
-    int _psNotifyTokenPercentChange;
-    int _psNotifyTokenPowerSource;
-    int _psNotifyTokenTimeRemaining;
-    CUCoalescer *_updateCoaleser;
     unsigned int _changeFlags;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _invalidationHandler;
@@ -37,11 +33,11 @@
 @property (copy, nonatomic) CDUnknownBlockType powerSourceLostHandler; // @synthesize powerSourceLostHandler=_powerSourceLostHandler;
 
 - (void).cxx_destruct;
-- (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_cleanup;
 - (void)_handlePowerSourceFound:(id)arg1 desc:(id)arg2 adapterDesc:(id)arg3;
 - (void)_handlePowerSourceLost:(id)arg1 sourceID:(id)arg2;
 - (void)_handlePowerSourceUpdate:(id)arg1 desc:(id)arg2 adapterDesc:(id)arg3;
+- (void)_update;
 - (void)_updatePowerSources;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;

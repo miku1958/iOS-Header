@@ -13,13 +13,15 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityGetLastAnnouncement;
+- (id)_accessibilityFindIconIntersectingDraggedIconForDropSession:(id)arg1;
+- (id)_accessibilityGetLastAnnouncedIcon;
 - (void)_accessibilityIconMovedToPosition;
-- (void)_accessibilitySetLastAnnouncement:(id)arg1;
+- (Class)_accessibilityIconViewclass;
+- (void)_accessibilitySetLastAnnouncedIcon:(id)arg1;
 - (id)_axCurrentIconListView;
 - (void)_dragPauseTimerFired:(id)arg1;
-- (void)_resetDragPauseTimerForPoint:(struct CGPoint)arg1 dropSession:(id)arg2;
 - (void)_updateDragPauseForDropSession:(id)arg1;
+- (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
 - (void)dropInteraction:(id)arg1 sessionDidEnd:(id)arg2;
 - (void)handleSpringLoadOnIconView:(id)arg1;
 

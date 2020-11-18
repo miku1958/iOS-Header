@@ -6,8 +6,11 @@
 
 #import <Foundation/NSData.h>
 
+@class NSString;
+
 @interface NSData (HMFoundation)
 
+@property (readonly) NSString *hmf_hexidecimalRepresentation;
 @property (readonly, getter=hmf_isZeroed) BOOL hmf_zeroed;
 
 @end

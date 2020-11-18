@@ -12,6 +12,7 @@
 - (void)enabledValueAddedServicePassesWithHandler:(void (^)(NSArray *))arg1;
 - (void)fetchCurrentRelevantPassInfo:(void (^)(NSArray *))arg1;
 - (void)fetchHasCandidatePasses:(void (^)(BOOL))arg1;
+- (void)forceImmediateRevocationCheck;
 - (void)getArchivedObjectWithUniqueID:(NSString *)arg1 handler:(void (^)(NSData *))arg2;
 - (void)getDiffForPassUpdateUserNotificationWithIdentifier:(NSString *)arg1 handler:(void (^)(PKDiff *))arg2;
 - (void)getImageSetContainerForUniqueID:(NSString *)arg1 ofType:(long long)arg2 displayProfile:(PKDisplayProfile *)arg3 handler:(void (^)(PKImageSetXPCContainer *))arg4;

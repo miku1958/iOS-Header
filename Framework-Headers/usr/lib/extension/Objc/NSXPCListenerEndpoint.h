@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSSecureCoding-Protocol.h>
+#import <Foundation/NSSecureCoding-Protocol.h>
 
 @interface NSXPCListenerEndpoint : NSObject <NSSecureCoding>
 {

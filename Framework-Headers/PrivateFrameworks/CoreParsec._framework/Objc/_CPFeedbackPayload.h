@@ -9,7 +9,7 @@
 #import <CoreParsec/NSSecureCoding-Protocol.h>
 #import <CoreParsec/_CPFeedbackPayload-Protocol.h>
 
-@class NSData, NSString, _CPCacheHitFeedback, _CPCardSectionEngagementFeedback, _CPCardSectionFeedback, _CPCardViewAppearFeedback, _CPCardViewDisappearFeedback, _CPClearInputFeedback, _CPConnectionInvalidatedFeedback, _CPCustomFeedback, _CPDidGoToSearchFeedback, _CPDidGoToSiteFeedback, _CPEndLocalSearchFeedback, _CPEndNetworkSearchFeedback, _CPEndSearchFeedback, _CPErrorFeedback, _CPFeedback, _CPLateSectionsAppendedFeedback, _CPLookupHintRelevancyFeedback, _CPMapsCardSectionEngagementFeedback, _CPRankingFeedback, _CPResultEngagementFeedback, _CPResultFeedback, _CPResultGradingFeedback, _CPResultRankingFeedback, _CPResultsReceivedAfterTimeoutFeedback, _CPSearchViewAppearFeedback, _CPSearchViewDisappearFeedback, _CPSectionEngagementFeedback, _CPSectionRankingFeedback, _CPSessionEndFeedback, _CPSessionMissingResultsFeedback, _CPSessionMissingSuggestionsFeedback, _CPSkipSearchFeedback, _CPStartLocalSearchFeedback, _CPStartNetworkSearchFeedback, _CPStartSearchFeedback, _CPStoreCardSectionEngagementFeedback, _CPSuggestionEngagementFeedback, _CPVisibleResultsFeedback, _CPVisibleSectionHeaderFeedback, _CPVisibleSuggestionsFeedback;
+@class NSData, NSString, _CPCBAEngagementFeedback, _CPCacheHitFeedback, _CPCardSectionEngagementFeedback, _CPCardSectionFeedback, _CPCardViewAppearFeedback, _CPCardViewDisappearFeedback, _CPClearInputFeedback, _CPClientTimingFeedback, _CPConnectionInvalidatedFeedback, _CPCustomFeedback, _CPDidGoToSearchFeedback, _CPDidGoToSiteFeedback, _CPEndLocalSearchFeedback, _CPEndNetworkSearchFeedback, _CPEndSearchFeedback, _CPErrorFeedback, _CPFeedback, _CPLateSectionsAppendedFeedback, _CPLookupHintRelevancyFeedback, _CPMapsCardSectionEngagementFeedback, _CPRankingFeedback, _CPResultEngagementFeedback, _CPResultFeedback, _CPResultGradingFeedback, _CPResultRankingFeedback, _CPResultsReceivedAfterTimeoutFeedback, _CPSearchViewAppearFeedback, _CPSearchViewDisappearFeedback, _CPSectionEngagementFeedback, _CPSectionRankingFeedback, _CPSessionEndFeedback, _CPSessionMissingResultsFeedback, _CPSessionMissingSuggestionsFeedback, _CPSkipSearchFeedback, _CPStartLocalSearchFeedback, _CPStartNetworkSearchFeedback, _CPStartSearchFeedback, _CPStoreCardSectionEngagementFeedback, _CPSuggestionEngagementFeedback, _CPVisibleResultsFeedback, _CPVisibleSectionHeaderFeedback, _CPVisibleSuggestionsFeedback;
 @protocol _CPProcessableFeedback;
 
 @interface _CPFeedbackPayload : PBCodable <_CPFeedbackPayload, NSSecureCoding>
@@ -54,6 +54,8 @@
     _CPCardViewAppearFeedback *_cardViewAppearFeedback;
     _CPSkipSearchFeedback *_skipSearchFeedback;
     _CPCacheHitFeedback *_cacheHitFeedback;
+    _CPCBAEngagementFeedback *_cbaEngagementFeedback;
+    _CPClientTimingFeedback *_clientTimingFeedback;
     unsigned long long _whichContained_Feedback;
 }
 
@@ -62,7 +64,9 @@
 @property (strong, nonatomic) _CPCardSectionFeedback *cardSectionFeedback; // @synthesize cardSectionFeedback=_cardSectionFeedback;
 @property (strong, nonatomic) _CPCardViewAppearFeedback *cardViewAppearFeedback; // @synthesize cardViewAppearFeedback=_cardViewAppearFeedback;
 @property (strong, nonatomic) _CPCardViewDisappearFeedback *cardViewDisappearFeedback; // @synthesize cardViewDisappearFeedback=_cardViewDisappearFeedback;
+@property (strong, nonatomic) _CPCBAEngagementFeedback *cbaEngagementFeedback; // @synthesize cbaEngagementFeedback=_cbaEngagementFeedback;
 @property (strong, nonatomic) _CPClearInputFeedback *clearInputFeedback; // @synthesize clearInputFeedback=_clearInputFeedback;
+@property (strong, nonatomic) _CPClientTimingFeedback *clientTimingFeedback; // @synthesize clientTimingFeedback=_clientTimingFeedback;
 @property (readonly, nonatomic) PBCodable<_CPProcessableFeedback> *codable;
 @property (strong, nonatomic) _CPConnectionInvalidatedFeedback *connectionInvalidatedFeedback; // @synthesize connectionInvalidatedFeedback=_connectionInvalidatedFeedback;
 @property (strong, nonatomic) _CPCustomFeedback *customFeedback; // @synthesize customFeedback=_customFeedback;
@@ -80,7 +84,9 @@
 @property (readonly, nonatomic) BOOL hasCardSectionFeedback;
 @property (readonly, nonatomic) BOOL hasCardViewAppearFeedback;
 @property (readonly, nonatomic) BOOL hasCardViewDisappearFeedback;
+@property (readonly, nonatomic) BOOL hasCbaEngagementFeedback;
 @property (readonly, nonatomic) BOOL hasClearInputFeedback;
+@property (readonly, nonatomic) BOOL hasClientTimingFeedback;
 @property (readonly, nonatomic) BOOL hasConnectionInvalidatedFeedback;
 @property (readonly, nonatomic) BOOL hasCustomFeedback;
 @property (readonly, nonatomic) BOOL hasDidGoToSearchFeedback;

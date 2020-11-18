@@ -10,21 +10,32 @@
 
 @interface NFContainerPool : NSObject
 {
+    BOOL _objectGraphDrainingEnabled;
     struct NSMutableDictionary *_singletons;
     struct NSMutableDictionary *_graph;
     unsigned long long _depth;
+    unsigned long long _drainDepth;
     NSMutableArray *_onDrainBlocks;
+    NSMutableArray *_onDrainCopyPoolObjectGraphBlocks;
 }
 
 @property (nonatomic) unsigned long long depth; // @synthesize depth=_depth;
+@property (nonatomic) unsigned long long drainDepth; // @synthesize drainDepth=_drainDepth;
 @property (strong, nonatomic) NSMutableDictionary *graph; // @synthesize graph=_graph;
+@property (nonatomic, getter=isObjectGraphDrainingEnabled) BOOL objectGraphDrainingEnabled; // @synthesize objectGraphDrainingEnabled=_objectGraphDrainingEnabled;
 @property (strong, nonatomic) NSMutableArray *onDrainBlocks; // @synthesize onDrainBlocks=_onDrainBlocks;
+@property (strong, nonatomic) NSMutableArray *onDrainCopyPoolObjectGraphBlocks; // @synthesize onDrainCopyPoolObjectGraphBlocks=_onDrainCopyPoolObjectGraphBlocks;
+@property (readonly, nonatomic, getter=isPoolPreparedForLockingGraph) BOOL poolPreparedForLockingGraph;
 @property (strong, nonatomic) NSMutableDictionary *singletons; // @synthesize singletons=_singletons;
 
 - (void).cxx_destruct;
+- (id)copyWithObjectGraphDrainingDisabled;
+- (void)drain;
 - (id)enter:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)linkDepth:(CDUnknownBlockType)arg1;
 - (void)onDrain:(CDUnknownBlockType)arg1;
+- (void)onDrainCopyPoolObjectGraph:(CDUnknownBlockType)arg1;
 
 @end
 

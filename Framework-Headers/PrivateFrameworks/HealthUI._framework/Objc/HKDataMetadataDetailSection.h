@@ -21,7 +21,6 @@
 @property (readonly, nonatomic) HKUnitPreferenceController *unitController; // @synthesize unitController=_unitController;
 
 - (void).cxx_destruct;
-- (void)_addPrivateMetadataIfAppropriateKey:(id)arg1 value:(id)arg2;
 - (void)_loadMetadataValues;
 - (id)initWithSample:(id)arg1 displayTypeController:(id)arg2 unitController:(id)arg3;
 - (id)initWithWorkoutEvent:(id)arg1;

@@ -32,6 +32,7 @@
 - (void)configureWithHome:(id)arg1;
 - (id)dictionaryEncoding;
 - (void)encodeWithCoder:(id)arg1;
+- (void)fixupUserIdentifier;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithAccessToken:(id)arg1 consentToken:(id)arg2;

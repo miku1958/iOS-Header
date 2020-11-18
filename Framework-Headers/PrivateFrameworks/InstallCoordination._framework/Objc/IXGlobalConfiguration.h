@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) NSURL *rootPath; // @synthesize rootPath=_rootPath;
 @property (readonly, nonatomic) NSURL *systemContainerPath; // @synthesize systemContainerPath=_systemContainerPath;
 @property (readonly, nonatomic) unsigned int uid; // @synthesize uid=_uid;
+@property (readonly, nonatomic) NSURL *userVolumeURL;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;

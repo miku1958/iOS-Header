@@ -238,6 +238,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isRoadClassDisabled:(int)arg1;
 - (BOOL)isShowingNoDataPlaceholders;
 - (id)labelMapTileForTile:(id)arg1 layer:(unsigned char)arg2;
+- (void)labelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg1;
 - (struct LabelSettings *)labelSettings;
 - (void)layoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2;
 - (void)layoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(RenderQueue_70f64fd3 *)arg3;
@@ -269,7 +270,6 @@ __attribute__((visibility("hidden")))
 - (void)resourceManifestManagerWillChangeActiveTileGroup:(id)arg1;
 - (id)roadTileForTile:(id)arg1;
 - (void)selectTransitLineMarker:(id)arg1;
-- (void)selectedLabelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg1;
 - (void)selectedLabelMarkerWillDisappear:(const shared_ptr_2d33c5e4 *)arg1;
 - (id)selectedTransitLineIDs;
 - (void)setApplicationState:(unsigned char)arg1;

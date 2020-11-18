@@ -11,6 +11,7 @@
 
 @interface MPCPlaybackEngine : NSObject
 {
+    BOOL _isPreparingForImminentPlaybackIntent;
     BOOL _pictureInPictureSupported;
     BOOL _videoSupported;
     BOOL _stateRestorationSupported;
@@ -50,6 +51,7 @@
 - (void)addSupportedSpecializedQueueIdentifier:(id)arg1 localizedName:(id)arg2 queueType:(long long)arg3 queueParameters:(id)arg4;
 - (void)becomeActive;
 - (id)initWithPlayerID:(id)arg1;
+- (void)prepareForImminentPlaybackIntent;
 - (void)removeEngineObserver:(id)arg1;
 - (void)removeSupportedSpecializedQueueIdentifier:(id)arg1;
 - (void)reportUserSeekFromTime:(double)arg1 toTime:(double)arg2;

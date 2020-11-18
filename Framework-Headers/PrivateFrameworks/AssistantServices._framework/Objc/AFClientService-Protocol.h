@@ -32,8 +32,9 @@
 - (oneway void)endSession;
 - (oneway void)endUpdateOutputAudioPower;
 - (oneway void)forceAudioSessionActive;
-- (oneway void)forceAudioSessionActiveWithCompletion:(void (^)(unsigned int, NSError *))arg1;
+- (oneway void)forceAudioSessionActiveWithOptions:(unsigned long long)arg1 completion:(void (^)(unsigned int, NSError *))arg2;
 - (oneway void)forceAudioSessionInactive;
+- (oneway void)forceAudioSessionInactiveWithCompletion:(void (^)(void))arg1;
 - (oneway void)getDeferredObjectsWithIdentifiers:(NSArray *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (oneway void)getSerializedCachedObjectsWithIdentifiers:(NSSet *)arg1 completion:(void (^)(NSDictionary *))arg2;
 - (oneway void)performGenericAceCommand:(NSDictionary *)arg1 interruptOutstandingRequest:(BOOL)arg2 reply:(void (^)(BOOL))arg3;
@@ -55,9 +56,11 @@
 - (oneway void)setConfiguration:(AFClientConfiguration *)arg1;
 - (oneway void)setIsStark:(BOOL)arg1;
 - (oneway void)setLockState:(BOOL)arg1 showingLockScreen:(BOOL)arg2;
+- (oneway void)setMyriadDecisionResult:(BOOL)arg1;
 - (oneway void)setOverriddenApplicationContext:(NSString *)arg1 withContext:(id)arg2;
+- (oneway void)setShouldWaitForMyriad:(BOOL)arg1;
 - (oneway void)startAcousticIDRequestWithOptions:(AFSpeechRequestOptions *)arg1 context:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
-- (oneway void)startAudioPlaybackRequest:(AFAudioPlaybackRequest *)arg1 reply:(void (^)(NSError *))arg2;
+- (oneway void)startAudioPlaybackRequest:(AFAudioPlaybackRequest *)arg1 options:(unsigned long long)arg2 reply:(void (^)(NSError *))arg3;
 - (oneway void)startRecordingForPendingSpeechRequestWithOptions:(AFSpeechRequestOptions *)arg1 requestId:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)startRequestWithInfo:(AFRequestInfo *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)startSpeechPronunciationRequestWithOptions:(AFSpeechRequestOptions *)arg1 context:(SASPronunciationContext *)arg2 completion:(void (^)(NSError *))arg3;

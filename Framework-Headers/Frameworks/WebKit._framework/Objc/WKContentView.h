@@ -209,6 +209,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_accessibilityRegisterUIProcessTokens;
 - (void)_accessibilityRetrieveRectsAtSelectionOffset:(long long)arg1 withText:(id)arg2;
+- (void)_accessibilityRetrieveRectsAtSelectionOffset:(long long)arg1 withText:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_accessibilityRetrieveRectsEnclosingSelectionOffset:(long long)arg1 withGranularity:(long long)arg2;
 - (SEL)_actionForLongPress;
 - (SEL)_actionForLongPressFromPositionInformation:(const struct InteractionInformationAtPosition *)arg1;

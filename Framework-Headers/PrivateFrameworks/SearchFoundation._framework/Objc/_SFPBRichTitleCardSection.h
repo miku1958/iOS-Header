@@ -65,6 +65,7 @@
     _SFPBImage *_imageOverlay;
     _SFPBActionItem *_playAction;
     NSArray *_offers;
+    NSString *_footnote;
 }
 
 @property (nonatomic) int auxiliaryAlignment; // @synthesize auxiliaryAlignment=_auxiliaryAlignment;
@@ -78,6 +79,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *descriptionText; // @synthesize descriptionText=_descriptionText;
+@property (copy, nonatomic) NSString *footnote; // @synthesize footnote=_footnote;
 @property (readonly, nonatomic) BOOL hasAuxiliaryAlignment;
 @property (readonly, nonatomic) BOOL hasAuxiliaryBottomText;
 @property (readonly, nonatomic) BOOL hasAuxiliaryBottomTextColor;
@@ -88,6 +90,7 @@
 @property (readonly, nonatomic) BOOL hasCanBeHidden;
 @property (readonly, nonatomic) BOOL hasContentAdvisory;
 @property (readonly, nonatomic) BOOL hasDescriptionText;
+@property (readonly, nonatomic) BOOL hasFootnote;
 @property (readonly, nonatomic) BOOL hasHasBottomPadding;
 @property (readonly, nonatomic) BOOL hasHasTopPadding;
 @property (readonly, nonatomic) BOOL hasHideVerticalDivider;

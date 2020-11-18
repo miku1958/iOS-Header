@@ -18,6 +18,7 @@
     NSDictionary *_rawPlist;
     HAPMetadata *_hapMetadata;
     NSSet *_hmRequiresDeviceUnlockTuples;
+    NSDictionary *_hmAllowableSecuringWrites;
     NSDictionary *_hmAccessoryCategories;
     NSSet *_hmBlacklistedServices;
     NSSet *_hmBlacklistedCharacteristics;
@@ -43,6 +44,7 @@
 @property (strong, nonatomic) HAPMetadata *hapMetadata; // @synthesize hapMetadata=_hapMetadata;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSDictionary *hmAccessoryCategories; // @synthesize hmAccessoryCategories=_hmAccessoryCategories;
+@property (strong, nonatomic) NSDictionary *hmAllowableSecuringWrites; // @synthesize hmAllowableSecuringWrites=_hmAllowableSecuringWrites;
 @property (strong, nonatomic) NSSet *hmBlacklistedCharacteristics; // @synthesize hmBlacklistedCharacteristics=_hmBlacklistedCharacteristics;
 @property (strong, nonatomic) NSSet *hmBlacklistedCharacteristicsFromApp; // @synthesize hmBlacklistedCharacteristicsFromApp=_hmBlacklistedCharacteristicsFromApp;
 @property (strong, nonatomic) NSSet *hmBlacklistedServices; // @synthesize hmBlacklistedServices=_hmBlacklistedServices;
@@ -72,6 +74,7 @@
 - (void).cxx_destruct;
 - (id)aliasedHAPCharacteristicTypes;
 - (id)aliasedHAPServiceTypes;
+- (BOOL)allowsSecuringWriteFor:(id)arg1 withValue:(id)arg2;
 - (id)audioAccessoryCategory;
 - (id)categoryForIdentifier:(id)arg1;
 - (id)categoryForOther;
@@ -86,7 +89,7 @@
 - (id)getAliasedServiceType:(id)arg1;
 - (id)getCharacteristicTypeAlias:(id)arg1;
 - (id)getServiceTypeAlias:(id)arg1;
-- (id)getStatusCharacteristicTypes:(id)arg1;
+- (id)getStatusCharacteristicTypes:(id)arg1 forServiceType:(id)arg2;
 - (id)initWithDictionary:(id)arg1 hapMetadata:(id)arg2 error:(id *)arg3;
 - (BOOL)isStandardCharacteristicType:(id)arg1;
 - (BOOL)isStandardServiceType:(id)arg1;
@@ -98,8 +101,10 @@
 - (id)mapToAssistantCharacteristicName:(id)arg1;
 - (id)mapToAssistantCharacteristicValue:(id)arg1 name:(id)arg2 getActionType:(BOOL)arg3;
 - (id)mapToAssistantServiceName:(id)arg1;
+- (id)mapToAssistantServiceSubtypeName:(id)arg1;
 - (id)mapToAssistantUnitName:(id)arg1;
 - (id)mapWriteCharacteristicFromAssistantName:(id)arg1;
+- (void)parseAndSetAllowableSecuringWrites:(id)arg1;
 - (BOOL)parseAndSetAssistantCharacteristics:(id)arg1;
 - (BOOL)parseAndSetAssistantMetadataWithAssistantPlist:(id)arg1;
 - (BOOL)parseAndSetAssistantServices:(id)arg1;
@@ -114,6 +119,7 @@
 - (BOOL)requiresDeviceUnlock:(id)arg1 forService:(id)arg2;
 - (BOOL)requiresTimedWrite:(id)arg1 forService:(id)arg2;
 - (id)serviceNameFromType:(id)arg1;
+- (id)serviceSubtypeForValue:(id)arg1 forServiceType:(id)arg2;
 - (id)serviceTypeFromName:(id)arg1;
 - (BOOL)shouldAllowHomeNotificationForCharacteristicType:(id)arg1 serviceType:(id)arg2;
 - (BOOL)shouldAutoEnableNotificationForCharacteristic:(id)arg1 ofService:(id)arg2;
@@ -124,7 +130,7 @@
 - (BOOL)shouldFilterServiceOfTypeFromApp:(id)arg1;
 - (BOOL)shouldHomeAppShowTileForServiceType:(id)arg1;
 - (BOOL)shouldNotCacheCharacteristicOfType:(id)arg1;
-- (id)statusHAPCharacteristicTypes;
+- (id)statusHAPCharacteristicTypesForServiceType;
 - (BOOL)supportsAuthorizationData:(id)arg1 forService:(id)arg2;
 - (BOOL)supportsLocalization:(id)arg1;
 - (id)validateAssociatedServiceType:(id)arg1 forService:(id)arg2;

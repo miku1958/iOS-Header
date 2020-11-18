@@ -12,11 +12,13 @@
 {
     BOOL _backgroundRadioRequest;
     NSNumber *_privateListeningEnabled;
+    NSNumber *_delegatedPrivateListeningEnabled;
     long long _protocolVersion;
     CDUnknownBlockType _radioContentDictionaryCreationBlock;
 }
 
 @property (nonatomic, getter=isBackgroundRadioRequest) BOOL backgroundRadioRequest; // @synthesize backgroundRadioRequest=_backgroundRadioRequest;
+@property (copy, nonatomic, getter=isDelegatedPrivateListeningEnabled) NSNumber *delegatedPrivateListeningEnabled; // @synthesize delegatedPrivateListeningEnabled=_delegatedPrivateListeningEnabled;
 @property (copy, nonatomic, getter=isPrivateListeningEnabled) NSNumber *privateListeningEnabled; // @synthesize privateListeningEnabled=_privateListeningEnabled;
 @property (nonatomic) long long protocolVersion; // @synthesize protocolVersion=_protocolVersion;
 @property (copy, nonatomic) CDUnknownBlockType radioContentDictionaryCreationBlock; // @synthesize radioContentDictionaryCreationBlock=_radioContentDictionaryCreationBlock;

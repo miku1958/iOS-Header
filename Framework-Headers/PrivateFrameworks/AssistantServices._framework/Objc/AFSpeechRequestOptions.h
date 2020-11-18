@@ -21,6 +21,7 @@
     BOOL _usePrelisteningMode;
     BOOL _pendCallbacksUntilAfterContinuation;
     BOOL _useBorealisBuffer;
+    BOOL _updateSiriOutputVolume;
     BOOL _suppressStopAlert;
     long long _activationEvent;
     NSString *_activationDeviceIdentifier;
@@ -64,6 +65,7 @@
 @property (copy, nonatomic) NSString *serverCommandId; // @synthesize serverCommandId=_serverCommandId;
 @property (strong, nonatomic) NSXPCListenerEndpoint *speechRecordingEventListeningEndpoint; // @synthesize speechRecordingEventListeningEndpoint=_speechRecordingEventListeningEndpoint;
 @property (nonatomic) BOOL suppressStopAlert; // @synthesize suppressStopAlert=_suppressStopAlert;
+@property (nonatomic) BOOL updateSiriOutputVolume; // @synthesize updateSiriOutputVolume=_updateSiriOutputVolume;
 @property (nonatomic) BOOL useAutomaticEndpointing; // @synthesize useAutomaticEndpointing=_useAutomaticEndpointing;
 @property (nonatomic) BOOL useBorealisBuffer; // @synthesize useBorealisBuffer=_useBorealisBuffer;
 @property (nonatomic) BOOL usePrelisteningMode; // @synthesize usePrelisteningMode=_usePrelisteningMode;

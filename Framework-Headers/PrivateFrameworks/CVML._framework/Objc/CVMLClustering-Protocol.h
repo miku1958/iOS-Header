@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CVMLSimilarityMatrix, NSArray, NSData, NSDictionary, NSNumber, NSSet;
+@class CVMLSimilarityMatrix, NSArray, NSData, NSDictionary, NSNumber, NSSet, NSString;
 
 @protocol CVMLClustering
++ (NSArray *)clustererModelFileNamesFromState:(NSData *)arg1 storedInPath:(NSString *)arg2 error:(id *)arg3;
 - (BOOL)addDescriptorIds:(NSArray *)arg1 withSimilarityMatrix:(CVMLSimilarityMatrix *)arg2 error:(id *)arg3;
 - (NSArray *)getClustersWithOptions:(NSDictionary *)arg1 error:(id *)arg2;
 - (NSArray *)suggestionsForClusterIds:(NSArray *)arg1 affinityThreshold:(float)arg2 error:(id *)arg3;

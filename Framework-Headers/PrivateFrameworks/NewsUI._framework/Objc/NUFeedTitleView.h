@@ -39,6 +39,7 @@
 - (void)popApplyFeedTitleViewUpdateWithAnimation:(unsigned long long)arg1 force:(BOOL)arg2;
 - (void)pushApplyFeedTitleViewUpdate:(id)arg1 animation:(unsigned long long)arg2;
 - (void)pushApplyFeedTitleViewUpdate:(id)arg1 animation:(unsigned long long)arg2 force:(BOOL)arg3;
+- (void)relayoutWithAnimation:(BOOL)arg1;
 - (unsigned long long)titleViewAnimationForAnimation:(unsigned long long)arg1;
 - (void)titleViewDidTapOnTitleView:(id)arg1;
 - (id)titleViewUpdateForFeedTitleViewUpdate:(id)arg1 force:(BOOL)arg2;

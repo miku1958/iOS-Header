@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/_NSExtensionContextHosting-Protocol.h>
+#import <Foundation/_NSExtensionContextHosting-Protocol.h>
 
 @class BKSProcessAssertion, NSArray, NSBundle, NSDictionary, NSMutableDictionary, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue, PKPlugIn;

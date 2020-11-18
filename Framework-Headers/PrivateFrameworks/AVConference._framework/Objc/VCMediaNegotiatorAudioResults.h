@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSMutableArray;
 
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     int _dtxPayload;
     int _redPayload;
     NSMutableArray *_secondaryPayloads;
+    BOOL _useSBR;
 }
 
 @property (nonatomic) BOOL allowRecording; // @synthesize allowRecording=_allowRecording;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int redPayload; // @synthesize redPayload=_redPayload;
 @property (nonatomic) unsigned int remoteSSRC; // @synthesize remoteSSRC=_remoteSSRC;
 @property (readonly, nonatomic) NSArray *secondaryPayloads; // @synthesize secondaryPayloads=_secondaryPayloads;
+@property (nonatomic) BOOL useSBR; // @synthesize useSBR=_useSBR;
 
 - (void)addSecondaryPayload:(int)arg1;
 - (void)dealloc;

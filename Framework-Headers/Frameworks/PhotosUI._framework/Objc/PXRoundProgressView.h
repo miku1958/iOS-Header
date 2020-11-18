@@ -46,7 +46,9 @@
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (void)increaseUIProgress:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
 - (void)layoutSubviews;
 - (void)removeFromSuperview;
 - (void)resetProgress;

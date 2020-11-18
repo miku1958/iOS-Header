@@ -8,7 +8,6 @@
 
 @class UIColor;
 
-__attribute__((visibility("hidden")))
 @interface PUPhotoEditSnapStripViewIndicatorInfo : NSObject
 {
     BOOL _disabled;

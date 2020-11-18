@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSFileCoordinationDebugInfoXPCInteface-Protocol.h>
+#import <Foundation/NSFileCoordinationDebugInfoXPCInteface-Protocol.h>
 
 @class NSSet, NSString, NSURLPromisePair;
 

@@ -10,17 +10,15 @@
 
 @interface PCSCKKSCreateIdentityOperation : PCSCKKSOperation
 {
-    BOOL _roll;
     PCSCKKSItemModifyContext *_context;
 }
 
 @property (strong) PCSCKKSItemModifyContext *context; // @synthesize context=_context;
-@property BOOL roll; // @synthesize roll=_roll;
 
 - (void).cxx_destruct;
 - (int)addAndNotifyOnSync:(struct _PCSIdentityData *)arg1 attributes:(struct __CFDictionary *)arg2 returnAttributes:(const struct __CFDictionary **)arg3 complete:(CDUnknownBlockType)arg4;
 - (void)createManateePCSIdentity;
-- (id)initWithItemModifyContext:(id)arg1 roll:(BOOL)arg2;
+- (id)initWithItemModifyContext:(id)arg1;
 - (void)itemStored:(id)arg1;
 - (void)setIdentityToCurrent;
 - (void)start;

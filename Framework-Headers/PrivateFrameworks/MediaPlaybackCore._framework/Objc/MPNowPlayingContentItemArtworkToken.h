@@ -12,7 +12,6 @@
 
 @interface MPNowPlayingContentItemArtworkToken : NSObject <MPArtworkDataSourceVisualIdenticality>
 {
-    BOOL _hasArtwork;
     NSString *_identifier;
     NSString *_artworkIdentifier;
 }
@@ -20,14 +19,13 @@
 @property (copy, nonatomic) NSString *artworkIdentifier; // @synthesize artworkIdentifier=_artworkIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL hasArtwork; // @synthesize hasArtwork=_hasArtwork;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithIdentifier:(id)arg1 artworkIdentifier:(id)arg2 artwork:(BOOL)arg3;
+- (id)initWithIdentifier:(id)arg1 artworkIdentifier:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)stringRepresentation;
 

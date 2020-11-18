@@ -24,7 +24,7 @@
 
 + (id)solverWithWeights:(id)arg1;
 + (id)solverWithWeights:(id)arg1 andIntercept:(BOOL)arg2;
-+ (id)solverWithWeights:(id)arg1 andIntercept:(BOOL)arg2 learningRate:(float)arg3;
++ (id)solverWithWeights:(id)arg1 andIntercept:(BOOL)arg2 learningRate:(float)arg3 minIterations:(unsigned long long)arg4 stoppingThreshold:(float)arg5;
 + (id)withWeights:(id)arg1;
 + (id)withWeights:(id)arg1 andIntercept:(BOOL)arg2;
 - (void).cxx_destruct;

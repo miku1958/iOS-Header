@@ -36,6 +36,7 @@
 
 - (void).cxx_destruct;
 - (id)_descriptionForStatus:(unsigned long long)arg1;
+- (id)identify;
 - (id)init;
 - (id)initWithAccessory:(id)arg1;
 - (id)initWithAccessoryUUID:(id)arg1 accessoryName:(id)arg2;

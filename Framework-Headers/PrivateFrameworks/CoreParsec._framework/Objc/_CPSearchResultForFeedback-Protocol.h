@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) BOOL hasFbr;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasIntendedQuery;
+@property (readonly, nonatomic) BOOL hasIsFuzzyMatch;
 @property (readonly, nonatomic) BOOL hasIsLocalApplicationResult;
 @property (readonly, nonatomic) BOOL hasIsStaticCorrection;
 @property (readonly, nonatomic) BOOL hasLocalFeatures;
@@ -38,6 +39,7 @@
 @property (readonly, nonatomic) BOOL hasUserInput;
 @property (copy, nonatomic) NSString *identifier;
 @property (copy, nonatomic) NSString *intendedQuery;
+@property (nonatomic) BOOL isFuzzyMatch;
 @property (nonatomic) BOOL isLocalApplicationResult;
 @property (nonatomic) BOOL isStaticCorrection;
 @property (readonly, nonatomic) NSData *jsonData;

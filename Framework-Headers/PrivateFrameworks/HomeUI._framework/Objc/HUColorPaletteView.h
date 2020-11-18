@@ -44,7 +44,6 @@
 @property (strong, nonatomic) id secondaryValue;
 @property (strong, nonatomic) HFColorPaletteColor *selectedColor; // @synthesize selectedColor=_selectedColor;
 @property (strong, nonatomic) NSNumber *selectedColorBiasIndex; // @synthesize selectedColorBiasIndex=_selectedColorBiasIndex;
-@property (nonatomic) long long sizeSubclass;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSNumber *trackingColorIndex; // @synthesize trackingColorIndex=_trackingColorIndex;
 @property (nonatomic, getter=isUserInteractionActive) BOOL userInteractionActive; // @synthesize userInteractionActive=_userInteractionActive;
@@ -66,8 +65,11 @@
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)initWithProfile:(id)arg1;
 - (id)initWithProfile:(id)arg1 colorPalette:(id)arg2;
+- (struct CGSize)intrinsicContentSize;
+- (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;
 - (void)layoutSubviews;
 - (double)radiusFittingSize:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

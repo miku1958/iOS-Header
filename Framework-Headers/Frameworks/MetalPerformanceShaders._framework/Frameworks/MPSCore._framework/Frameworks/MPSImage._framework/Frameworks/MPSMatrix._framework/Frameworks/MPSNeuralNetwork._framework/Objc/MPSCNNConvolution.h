@@ -40,6 +40,7 @@
 @property (readonly, nonatomic) MPSCNNNeuron *neuron; // @synthesize neuron=_neuron_deprecated;
 @property (readonly, nonatomic) float neuronParameterA;
 @property (readonly, nonatomic) float neuronParameterB;
+@property (readonly, nonatomic) float neuronParameterC;
 @property (readonly, nonatomic) int neuronType;
 @property (readonly, nonatomic) unsigned long long outputFeatureChannels; // @synthesize outputFeatureChannels=_outputFeatureChannels;
 @property (readonly, nonatomic) unsigned long long subPixelScaleFactor; // @synthesize subPixelScaleFactor=_scaleFactor;

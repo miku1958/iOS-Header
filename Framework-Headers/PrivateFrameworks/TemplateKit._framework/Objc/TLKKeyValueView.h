@@ -12,6 +12,7 @@
 
 @interface TLKKeyValueView : TLKView <NUIContainerStackViewDelegate>
 {
+    BOOL _isInMeasurementPass;
     NSArray *_leadingTuples;
     NSArray *_trailingTuples;
     TLKImage *_image;
@@ -27,6 +28,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong) TLKImage *image; // @synthesize image=_image;
 @property (strong) TLKImageView *imageView; // @synthesize imageView=_imageView;
+@property BOOL isInMeasurementPass; // @synthesize isInMeasurementPass=_isInMeasurementPass;
 @property (strong) TLKKeyValueGridView *leadingGrid; // @synthesize leadingGrid=_leadingGrid;
 @property (strong) NSArray *leadingTuples; // @synthesize leadingTuples=_leadingTuples;
 @property (readonly) Class superclass;
@@ -36,8 +38,10 @@
 + (unsigned long long)visibleRowsInGrid:(id)arg1;
 - (void).cxx_destruct;
 - (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
+- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
 - (long long)currentStackViewDistribution;
 - (id)init;
+- (BOOL)isLayoutSizeDependentOnPerpendicularAxis;
 - (BOOL)leadingGridIsHidden;
 - (id)leadingTextKeyLabels;
 - (unsigned long long)numberOfVisibleRowsForLeadingGrid;

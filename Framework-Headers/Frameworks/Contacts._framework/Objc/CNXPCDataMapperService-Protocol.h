@@ -37,6 +37,7 @@
 - (void)unifiedContactCountWithReply:(void (^)(NSNumber *, NSError *))arg1;
 - (void)unregisterChangeHistoryClientIdentifier:(NSString *)arg1 withReply:(void (^)(NSNumber *, NSError *))arg2;
 - (void)userActivityForContact:(CNContact *)arg1 withReply:(void (^)(NSDictionary *))arg2;
+- (void)verifyIndexWithReply:(void (^)(NSString *, NSError *))arg1;
 - (void)writeFavoritesPropertyListData:(NSData *)arg1 toPath:(NSString *)arg2 withReply:(void (^)(BOOL, NSError *))arg3;
 @end
 

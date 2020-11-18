@@ -18,6 +18,7 @@
     NSObject<OS_dispatch_queue> *_queue;
     NSProgress *_progress;
     int _invalidated;
+    long long _cancellationAllowed;
     long long _state;
     double _percentComplete;
     unsigned long long _installPhase;
@@ -46,6 +47,7 @@
 - (void)invalidate;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (BOOL)queue_canPerformAction:(unsigned long long)arg1;
+- (BOOL)queue_isCancellationAllowed;
 - (BOOL)queue_isValid;
 - (unsigned long long)queue_supportedActions;
 - (BOOL)queue_updateProxy:(id)arg1;

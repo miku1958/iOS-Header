@@ -22,6 +22,7 @@
     UIStackView *_stackView;
     NSMutableDictionary *_cancelTouchesAssertionsByWidgetID;
     NSMutableDictionary *_widgetIDsToItemVCs;
+    struct CGSize _maxVisibleContentSize;
     BOOL _shouldBlurContent;
     id<WGWidgetListViewControllerDelegate> _delegate;
     NSArray *_previouslyVisibleWidgetIDs;
@@ -55,6 +56,7 @@
 - (void)_invokeBlockWithPlatterViewsVisibleInBounds:(CDUnknownBlockType)arg1;
 - (void)_invokeBlockWithPlatterViewsVisibleInRect:(struct CGRect)arg1 block:(CDUnknownBlockType)arg2;
 - (id)_listItemViewControllerForWidgetWithIdentifier:(id)arg1 creatingIfNecessary:(BOOL)arg2;
+- (struct CGSize)_maxVisibleContentSize;
 - (id)_platterViewAtLocation:(struct CGPoint)arg1;
 - (id)_platterViewForWidgetWithIdentifier:(id)arg1 creatingIfNecessary:(BOOL)arg2;
 - (void)_repopulateStackView;
@@ -63,7 +65,7 @@
 - (id)_scrollViewLoadingIfNecessary:(BOOL)arg1;
 - (void)_updateBackgroundViewForPlatter:(id)arg1;
 - (void)_updateWidgetViewStateWithPreviouslyVisibleWidgetIdentifiers:(id)arg1;
-- (struct CGRect)_visibleContentFrame;
+- (struct CGRect)_visibleContentFrameForBounds:(struct CGRect)arg1 withContentOccludingInsets:(struct UIEdgeInsets)arg2;
 - (id)_widgetIdentifiersForPlatterViewsVisibleInBounds;
 - (void)brokenViewDidAppearForWidget:(id)arg1;
 - (void)dealloc;

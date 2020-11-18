@@ -40,6 +40,7 @@
 + (id)_localizedString:(id)arg1;
 + (BOOL)decodeResponse:(id)arg1 sw:(unsigned short *)arg2 appendTo:(id)arg3 error:(id *)arg4;
 - (void).cxx_destruct;
+- (BOOL)beginSessionWithError:(id *)arg1;
 - (void)beginSessionWithReply:(CDUnknownBlockType)arg1;
 - (id)buildIns:(unsigned char)arg1 p1:(unsigned char)arg2 p2:(unsigned char)arg3 data:(id)arg4 range:(struct _NSRange)arg5 le:(id)arg6 protocol:(unsigned long long)arg7 chained:(BOOL)arg8 extended:(BOOL *)arg9 realLe:(unsigned long long *)arg10;
 - (BOOL)checkAPDUResponse:(id)arg1 error:(id *)arg2;
@@ -53,6 +54,7 @@
 - (BOOL)inSessionWithError:(id *)arg1 executeBlock:(CDUnknownBlockType)arg2;
 - (id)initWithSlot:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)querySessionWithReply:(CDUnknownBlockType)arg1;
 - (void)releaseSessionWithReply:(CDUnknownBlockType)arg1;
 - (id)remoteSessionWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)reserveExclusive:(BOOL)arg1 reply:(CDUnknownBlockType)arg2;

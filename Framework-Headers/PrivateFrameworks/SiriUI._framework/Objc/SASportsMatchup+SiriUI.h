@@ -7,6 +7,7 @@
 #import <SAObjects/SASportsMatchup.h>
 
 @interface SASportsMatchup (SiriUI)
+- (id)siriui_channelsString;
 - (id)siriui_firstEntity;
 - (id)siriui_firstLineScores;
 - (id)siriui_firstScore;
@@ -16,6 +17,7 @@
 - (id)siriui_secondEntity;
 - (id)siriui_secondLineScores;
 - (id)siriui_secondScore;
+- (id)siriui_teamVsTeam;
 - (id)siriui_venueLocation;
 @end
 

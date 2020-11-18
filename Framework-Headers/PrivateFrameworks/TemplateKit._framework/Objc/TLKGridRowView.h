@@ -33,6 +33,7 @@
 - (void)generateLabelsAndImagesIfNecessary;
 - (id)init;
 - (struct CGSize)intrinsicContentSize;
+- (BOOL)isLayoutSizeDependentOnPerpendicularAxis;
 - (void)layoutSubviews;
 - (id)observableProperties;
 - (void)observedPropertiesChanged;

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int contentMode; // @synthesize contentMode=_contentMode;
 @property (strong, nonatomic) NSString *iconName; // @synthesize iconName=_iconName;
 @property (strong, nonatomic) NSString *labelKey; // @synthesize labelKey=_labelKey;
+@property (readonly, nonatomic) NSString *landscapeIconName;
 
 + (id)_existingTabInfoForContentMode:(int)arg1;
 + (id)tabInfoWithLabelKey:(id)arg1 iconName:(id)arg2 contentMode:(int)arg3;

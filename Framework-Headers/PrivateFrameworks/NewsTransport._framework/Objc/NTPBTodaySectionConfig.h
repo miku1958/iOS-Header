@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSString, NTPBArticleIDsTodaySectionSpecificConfig, NTPBArticleListTodaySectionSpecificConfig, NTPBForYouTodaySectionSpecificConfig, NTPBPersonalizedSectionPresenceConfig, NTPBPersonalizedTodaySectionSpecificConfig;
+@class NSString, NTPBArticleIDsTodaySectionSpecificConfig, NTPBArticleListTodaySectionSpecificConfig, NTPBForYouTodaySectionSpecificConfig, NTPBItemsTodaySectionSpecificConfig, NTPBPersonalizedSectionPresenceConfig, NTPBPersonalizedTodaySectionSpecificConfig;
 
 @interface NTPBTodaySectionConfig : PBCodable <NSCopying>
 {
@@ -34,7 +34,10 @@
     NSString *_discoverMoreVideosTitle;
     NSString *_discoverMoreVideosUrl;
     NTPBForYouTodaySectionSpecificConfig *_forYouTodaySectionConfig;
+    NSString *_groupActionTitle;
+    NSString *_groupActionUrl;
     NSString *_identifier;
+    NTPBItemsTodaySectionSpecificConfig *_itemsTodaySectionConfig;
     int _leadingCellPromotionPolicy;
     NSString *_name;
     NSString *_nameColor;
@@ -50,6 +53,7 @@
     BOOL _glanceable;
     BOOL _presenceDeterminedByPersonalization;
     BOOL _shownInFavoritesOnlyMode;
+    BOOL _useNameColorInWidget;
     BOOL _videoPlaysMutedByDefault;
     struct {
         unsigned int cachedResultCutoffTime:1;
@@ -69,6 +73,7 @@
         unsigned int glanceable:1;
         unsigned int presenceDeterminedByPersonalization:1;
         unsigned int shownInFavoritesOnlyMode:1;
+        unsigned int useNameColorInWidget:1;
         unsigned int videoPlaysMutedByDefault:1;
     } _has;
 }
@@ -85,6 +90,8 @@
 @property (nonatomic) unsigned long long fallbackOrder; // @synthesize fallbackOrder=_fallbackOrder;
 @property (strong, nonatomic) NTPBForYouTodaySectionSpecificConfig *forYouTodaySectionConfig; // @synthesize forYouTodaySectionConfig=_forYouTodaySectionConfig;
 @property (nonatomic) BOOL glanceable; // @synthesize glanceable=_glanceable;
+@property (strong, nonatomic) NSString *groupActionTitle; // @synthesize groupActionTitle=_groupActionTitle;
+@property (strong, nonatomic) NSString *groupActionUrl; // @synthesize groupActionUrl=_groupActionUrl;
 @property (readonly, nonatomic) BOOL hasArticleIDsTodaySectionConfig;
 @property (readonly, nonatomic) BOOL hasArticleListTodaySectionConfig;
 @property (readonly, nonatomic) BOOL hasBackgroundGradientColor;
@@ -97,9 +104,12 @@
 @property (nonatomic) BOOL hasFallbackOrder;
 @property (readonly, nonatomic) BOOL hasForYouTodaySectionConfig;
 @property (nonatomic) BOOL hasGlanceable;
+@property (readonly, nonatomic) BOOL hasGroupActionTitle;
+@property (readonly, nonatomic) BOOL hasGroupActionUrl;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (nonatomic) BOOL hasInterSectionFilteringOptions;
 @property (nonatomic) BOOL hasIntraSectionFilteringOptions;
+@property (readonly, nonatomic) BOOL hasItemsTodaySectionConfig;
 @property (nonatomic) BOOL hasLeadingCellPromotionPolicy;
 @property (nonatomic) BOOL hasMaximumStoriesAllocation;
 @property (nonatomic) BOOL hasMinimumStoriesAllocation;
@@ -118,10 +128,12 @@
 @property (nonatomic) BOOL hasSeenArticlesFilterMethod;
 @property (nonatomic) BOOL hasSeenArticlesMinimumTimeSinceFirstSeenToFilter;
 @property (nonatomic) BOOL hasShownInFavoritesOnlyMode;
+@property (nonatomic) BOOL hasUseNameColorInWidget;
 @property (nonatomic) BOOL hasVideoPlaysMutedByDefault;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) unsigned long long interSectionFilteringOptions; // @synthesize interSectionFilteringOptions=_interSectionFilteringOptions;
 @property (nonatomic) unsigned long long intraSectionFilteringOptions; // @synthesize intraSectionFilteringOptions=_intraSectionFilteringOptions;
+@property (strong, nonatomic) NTPBItemsTodaySectionSpecificConfig *itemsTodaySectionConfig; // @synthesize itemsTodaySectionConfig=_itemsTodaySectionConfig;
 @property (nonatomic) int leadingCellPromotionPolicy; // @synthesize leadingCellPromotionPolicy=_leadingCellPromotionPolicy;
 @property (nonatomic) unsigned long long maximumStoriesAllocation; // @synthesize maximumStoriesAllocation=_maximumStoriesAllocation;
 @property (nonatomic) unsigned long long minimumStoriesAllocation; // @synthesize minimumStoriesAllocation=_minimumStoriesAllocation;
@@ -142,6 +154,7 @@
 @property (nonatomic) int seenArticlesFilterMethod; // @synthesize seenArticlesFilterMethod=_seenArticlesFilterMethod;
 @property (nonatomic) unsigned long long seenArticlesMinimumTimeSinceFirstSeenToFilter; // @synthesize seenArticlesMinimumTimeSinceFirstSeenToFilter=_seenArticlesMinimumTimeSinceFirstSeenToFilter;
 @property (nonatomic) BOOL shownInFavoritesOnlyMode; // @synthesize shownInFavoritesOnlyMode=_shownInFavoritesOnlyMode;
+@property (nonatomic) BOOL useNameColorInWidget; // @synthesize useNameColorInWidget=_useNameColorInWidget;
 @property (nonatomic) BOOL videoPlaysMutedByDefault; // @synthesize videoPlaysMutedByDefault=_videoPlaysMutedByDefault;
 
 - (void)addQueueMembership:(unsigned long long)arg1;

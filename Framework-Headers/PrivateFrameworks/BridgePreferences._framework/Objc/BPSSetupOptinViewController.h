@@ -69,6 +69,7 @@
 - (BOOL)wantsAlternateChoicePillButton;
 - (BOOL)wantsAlternateChoiceSystemButton;
 - (BOOL)wantsLearnMoreButton;
+- (BOOL)wantsLightenBlendedScreen;
 - (BOOL)wantsOkayPillButton;
 - (BOOL)wantsSuggestedChoicePillButton;
 - (BOOL)wantsToShowWatchHW;

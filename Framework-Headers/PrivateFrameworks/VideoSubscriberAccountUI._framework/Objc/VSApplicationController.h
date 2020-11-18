@@ -79,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)initWithIdentityProvider:(id)arg1;
 - (id)launchParamsForApplication:(id)arg1;
+- (oneway void)release;
 - (void)showAuthenticationUserInterfaceWithAuthenticationToken:(id)arg1;
 - (void)start;
 - (void)stop;

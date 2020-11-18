@@ -9,7 +9,7 @@
 #import <NewsUI/NUActivityProvider-Protocol.h>
 
 @class FCReadingHistory, FCReadingList, FCSubscriptionList, NSString;
-@protocol FCHeadlineProviding, NUURLHandler;
+@protocol FCHeadlineProviding, NUReportConcernViewPresenter, NUURLHandling;
 
 @interface NUArticleActivityManager : NSObject <NUActivityProvider>
 {
@@ -17,16 +17,18 @@
     FCReadingHistory *_readingHistory;
     FCReadingList *_readingList;
     FCSubscriptionList *_subscriptionList;
-    id<NUURLHandler> _URLHandler;
+    id<NUURLHandling> _URLHandler;
+    id<NUReportConcernViewPresenter> _reportConcernViewPresenter;
 }
 
-@property (readonly, nonatomic) id<NUURLHandler> URLHandler; // @synthesize URLHandler=_URLHandler;
+@property (readonly, nonatomic) id<NUURLHandling> URLHandler; // @synthesize URLHandler=_URLHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<FCHeadlineProviding> headline; // @synthesize headline=_headline;
 @property (readonly, nonatomic) FCReadingHistory *readingHistory; // @synthesize readingHistory=_readingHistory;
 @property (readonly, nonatomic) FCReadingList *readingList; // @synthesize readingList=_readingList;
+@property (readonly, nonatomic) id<NUReportConcernViewPresenter> reportConcernViewPresenter; // @synthesize reportConcernViewPresenter=_reportConcernViewPresenter;
 @property (readonly, nonatomic) FCSubscriptionList *subscriptionList; // @synthesize subscriptionList=_subscriptionList;
 @property (readonly) Class superclass;
 
@@ -40,7 +42,7 @@
 - (BOOL)articleLikedForHeadline:(id)arg1;
 - (BOOL)articleSavedForHeadline:(id)arg1;
 - (BOOL)channelMutedForHeadline:(id)arg1;
-- (id)initWithHeadline:(id)arg1 readingHistory:(id)arg2 readingList:(id)arg3 subscriptionList:(id)arg4 URLHandler:(id)arg5;
+- (id)initWithHeadline:(id)arg1 readingHistory:(id)arg2 readingList:(id)arg3 subscriptionList:(id)arg4 URLHandler:(id)arg5 reportConcernViewPresenter:(id)arg6;
 - (CDUnknownBlockType)performBlockForHeadline:(id)arg1 withType:(unsigned long long)arg2;
 - (id)supportedActivities;
 - (void)toggleArticleDislikeStatusForHeadline:(id)arg1;

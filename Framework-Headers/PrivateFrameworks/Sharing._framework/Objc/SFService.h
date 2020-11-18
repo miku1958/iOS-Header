@@ -35,6 +35,7 @@
     NSXPCConnection *_xpcCnx;
     unsigned char _deviceActionType;
     BOOL _needsSetup;
+    BOOL _overrideScreenOff;
     BOOL _pairSetupDisabled;
     BOOL _tlsEnabled;
     BOOL _hasProblem;
@@ -76,6 +77,7 @@
     CDUnknownBlockType _requestMessageHandler;
     CDUnknownBlockType _pairSetupCompletionHandler;
     CDUnknownBlockType _peerDisconnectedHandler;
+    unsigned long long _problemFlags;
     CDUnknownBlockType _receivedFramePeerHandler;
     NSString *_requestSSID;
     CDUnknownBlockType _responseMessageInternalHandler;
@@ -105,6 +107,7 @@
 @property (strong, nonatomic) CUAppleIDClient *myAppleIDInfoClient; // @synthesize myAppleIDInfoClient=_myAppleIDInfoClient;
 @property (nonatomic) BOOL needsKeyboard; // @synthesize needsKeyboard=_needsKeyboard;
 @property (nonatomic) BOOL needsSetup; // @synthesize needsSetup=_needsSetup;
+@property (nonatomic) BOOL overrideScreenOff; // @synthesize overrideScreenOff=_overrideScreenOff;
 @property (copy, nonatomic) NSDictionary *pairSetupACL; // @synthesize pairSetupACL=_pairSetupACL;
 @property (copy, nonatomic) CDUnknownBlockType pairSetupCompletionHandler; // @synthesize pairSetupCompletionHandler=_pairSetupCompletionHandler;
 @property (nonatomic) BOOL pairSetupDisabled; // @synthesize pairSetupDisabled=_pairSetupDisabled;
@@ -112,6 +115,7 @@
 @property (copy, nonatomic) NSString *peerAppleID; // @synthesize peerAppleID=_peerAppleID;
 @property (copy, nonatomic) CDUnknownBlockType peerDisconnectedHandler; // @synthesize peerDisconnectedHandler=_peerDisconnectedHandler;
 @property (nonatomic) unsigned int pinType; // @synthesize pinType=_pinType;
+@property (nonatomic) unsigned long long problemFlags; // @synthesize problemFlags=_problemFlags;
 @property (copy, nonatomic) CDUnknownBlockType receivedFramePeerHandler; // @synthesize receivedFramePeerHandler=_receivedFramePeerHandler;
 @property (copy, nonatomic) CDUnknownBlockType receivedObjectHandler; // @synthesize receivedObjectHandler=_receivedObjectHandler;
 @property (copy, nonatomic) CDUnknownBlockType receivedRequestHandler; // @synthesize receivedRequestHandler=_receivedRequestHandler;

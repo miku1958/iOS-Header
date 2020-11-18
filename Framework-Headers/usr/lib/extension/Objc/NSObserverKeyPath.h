@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSBoundKeyPath.h>
+#import <Foundation/NSBoundKeyPath.h>
 
-#import <extension/NSObserver-Protocol.h>
-#import <extension/NSOwningObserver-Protocol.h>
+#import <Foundation/NSObserver-Protocol.h>
+#import <Foundation/NSOwningObserver-Protocol.h>
 
 @class NSString;
 

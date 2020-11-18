@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) ACAccount *aa_fmipAccount;
 @property (readonly, nonatomic) NSString *aa_fmipToken;
 @property (readonly, nonatomic) NSString *aa_formattedUsername;
+@property (readonly, nonatomic) BOOL aa_hasOptionalTerms;
 @property (readonly, nonatomic) NSString *aa_hsaToken;
 @property (nonatomic, setter=aa_setCloudDocsMigrationComplete:) BOOL aa_isCloudDocsMigrationComplete;
 @property (readonly, nonatomic) BOOL aa_isManagedAppleID;

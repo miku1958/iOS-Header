@@ -6,23 +6,39 @@
 
 #import <MediaPlayer/MPAVRoute.h>
 
+@class NSArray;
+
 @interface MPAVOutputDeviceRoute : MPAVRoute
 {
-    void *_outputDevice;
+    void *_logicalLeaderOutputDevice;
+    NSArray *_outputDevices;
 }
 
-@property (readonly, nonatomic) void *outputDevice; // @synthesize outputDevice=_outputDevice;
+@property (readonly, nonatomic, getter=isGroupLeader) BOOL groupLeader;
+@property (readonly, nonatomic) void *logicalLeaderOutputDevice; // @synthesize logicalLeaderOutputDevice=_logicalLeaderOutputDevice;
+@property (readonly, nonatomic) NSArray *outputDevices; // @synthesize outputDevices=_outputDevices;
 
++ (id)localOutputDeviceLocalizedName;
++ (void *)logicalLeaderFromOutputDevices:(id)arg1;
++ (long long)pickableRouteTypeForOutputDevice:(void *)arg1;
+- (void).cxx_destruct;
 - (BOOL)canAccessRemoteAssets;
-- (void)dealloc;
 - (id)description;
-- (id)initWithOutputDevice:(void *)arg1;
+- (id)groupUID;
+- (id)initWithOutputDevices:(id)arg1;
 - (BOOL)isAppleTVRoute;
-- (BOOL)isB238Route;
+- (BOOL)isCarplayRoute;
 - (BOOL)isDeviceRoute;
+- (BOOL)isDeviceSpeakerRoute;
+- (BOOL)isHomePodRoute;
+- (BOOL)isPickedOnPairedDevice;
+- (BOOL)isStereoPair;
+- (BOOL)isVolumeControlAvailable;
 - (long long)pickableRouteType;
+- (id)playingPairedDeviceName;
 - (id)productIdentifier;
 - (BOOL)requiresPassword;
+- (id)routeName;
 - (long long)routeSubtype;
 - (long long)routeType;
 - (id)routeUID;

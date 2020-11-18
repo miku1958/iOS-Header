@@ -9,7 +9,7 @@
 #import <DiagnosticExtensionsDaemon/DEDPairingProtocol-Protocol.h>
 #import <DiagnosticExtensionsDaemon/DEDXPCProtocol-Protocol.h>
 
-@class DEDBugSession, DEDIDSConnection, DEDSharingConnection, DEDXPCConnector, DEDXPCInbound, NSMutableDictionary, NSString, NSXPCConnection;
+@class DEDIDSConnection, DEDSharingConnection, DEDXPCConnector, DEDXPCInbound, NSMutableDictionary, NSString, NSXPCConnection;
 @protocol DEDClientProtocol, DEDPairingProtocol, DEDWorkerProtocol, OS_dispatch_queue, OS_os_log;
 
 @interface DEDController : NSObject <DEDXPCProtocol, DEDPairingProtocol>
@@ -37,7 +37,7 @@
     NSObject<OS_dispatch_queue> *_replyQueue;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_os_log> *_log;
-    DEDBugSession *_lastCancelledSession;
+    CDUnknownBlockType _didCancelCompletion;
 }
 
 @property (strong) DEDIDSConnection *_idsConnection; // @synthesize _idsConnection=__idsConnection;
@@ -47,10 +47,10 @@
 @property (readonly, copy) NSString *description;
 @property (strong) NSMutableDictionary *devices; // @synthesize devices=_devices;
 @property (copy) CDUnknownBlockType devicesCompletion; // @synthesize devicesCompletion=_devicesCompletion;
+@property (copy) CDUnknownBlockType didCancelCompletion; // @synthesize didCancelCompletion=_didCancelCompletion;
 @property BOOL embeddedInApp; // @synthesize embeddedInApp=_embeddedInApp;
 @property (readonly) unsigned long long hash;
 @property BOOL isDaemon; // @synthesize isDaemon=_isDaemon;
-@property (strong) DEDBugSession *lastCancelledSession; // @synthesize lastCancelledSession=_lastCancelledSession;
 @property (strong) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property (weak) id<DEDPairingProtocol> pairingDelegate; // @synthesize pairingDelegate=_pairingDelegate;
 @property (copy) CDUnknownBlockType pongBlock; // @synthesize pongBlock=_pongBlock;
@@ -73,6 +73,7 @@
 - (void)_didAbortSessionWithID:(id)arg1;
 - (void)_timeOutSessionStartBlockWithIdentifier:(id)arg1 timeout:(double)arg2;
 - (void)abortSession:(id)arg1;
+- (void)abortSession:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)addDevice:(id)arg1;
 - (void)addDidStartSessionCompletion:(CDUnknownBlockType)arg1 withIdentifier:(id)arg2;
 - (void)addSessionStartCompletion:(CDUnknownBlockType)arg1 withIdentifier:(id)arg2;

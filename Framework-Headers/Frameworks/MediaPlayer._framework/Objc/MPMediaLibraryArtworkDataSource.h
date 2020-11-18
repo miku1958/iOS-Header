@@ -38,6 +38,7 @@
 - (void)cancelLoadingRepresentationForArtworkCatalog:(id)arg1;
 - (id)existingArtworkEffectResultForEffectType:(long long)arg1 catalog:(id)arg2 options:(id)arg3;
 - (id)existingRepresentationForArtworkCatalog:(id)arg1;
+- (void)getExportableArtworkPropertiesForCatalog:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)hasExistingRepresentationOnDiskForArtworkCatalog:(id)arg1;
 - (id)init;
 - (BOOL)isRepresentation:(id)arg1 bestRepresentationForArtworkCatalog:(id)arg2;

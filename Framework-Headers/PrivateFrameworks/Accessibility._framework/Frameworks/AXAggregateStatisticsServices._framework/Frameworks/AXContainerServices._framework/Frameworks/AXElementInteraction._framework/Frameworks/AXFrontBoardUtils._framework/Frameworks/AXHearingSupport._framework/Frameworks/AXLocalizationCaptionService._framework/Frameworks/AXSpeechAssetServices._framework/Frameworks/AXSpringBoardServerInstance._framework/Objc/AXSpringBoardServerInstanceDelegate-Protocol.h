@@ -61,12 +61,14 @@
 - (void)openVoiceControlWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (int)purpleBuddyPIDWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (double)reachabilityOffsetWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (void)reactivateInCallServiceWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)rebootDeviceWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)resetDimTimerWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)revealSpotlightWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (NSArray *)runningAppPIDsWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (NSArray *)runningAppProcessesWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (id)serverInstance:(_AXSpringBoardServerInstance *)arg1 appWithIdentifier:(NSString *)arg2;
+- (void)serverInstance:(_AXSpringBoardServerInstance *)arg1 hideRemoteViewType:(long long)arg2 withData:(id)arg3;
 - (void)serverInstance:(_AXSpringBoardServerInstance *)arg1 pauseMedia:(BOOL)arg2 forBundleId:(NSString *)arg3;
 - (BOOL)serverInstance:(_AXSpringBoardServerInstance *)arg1 performMedusaGesture:(unsigned long long)arg2;
 - (void)serverInstance:(_AXSpringBoardServerInstance *)arg1 setOrientationLocked:(BOOL)arg2;
@@ -74,6 +76,7 @@
 - (void)serverInstance:(_AXSpringBoardServerInstance *)arg1 showAlertType:(long long)arg2 withHandler:(void (^)(long long))arg3 withData:(id)arg4;
 - (void)serverInstance:(_AXSpringBoardServerInstance *)arg1 showControlCenter:(BOOL)arg2;
 - (BOOL)serverInstance:(_AXSpringBoardServerInstance *)arg1 showNotificationCenter:(BOOL)arg2;
+- (void)serverInstance:(_AXSpringBoardServerInstance *)arg1 showRemoteViewType:(long long)arg2 withData:(id)arg3;
 - (void)serverInstance:(_AXSpringBoardServerInstance *)arg1 showSpeechPlaybackControls:(BOOL)arg2;
 - (NSDictionary *)serverInstance:(_AXSpringBoardServerInstance *)arg1 springBoardSystemInfoQuery:(unsigned long long)arg2;
 - (void)setDashBoardSystemGesturesEnabled:(BOOL)arg1 withServerInstance:(_AXSpringBoardServerInstance *)arg2;

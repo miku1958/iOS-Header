@@ -6,16 +6,19 @@
 
 #import <AppleAccount/AAResponse.h>
 
-@class NSArray, NSDictionary, NSNumber, NSURL;
+@class NSArray, NSDictionary, NSNumber, NSString, NSURL;
 
 @interface AAUIQuotaResponse : AAResponse
 {
     NSDictionary *_quotaInfo;
     NSArray *_usage;
     NSDictionary *_endPoints;
+    NSDictionary *_storageInfo;
+    NSDictionary *_storageMeterLabel;
 }
 
 @property (readonly, nonatomic) NSNumber *availableStorageInBytes;
+@property (readonly, nonatomic) NSString *displayLabel;
 @property (readonly, nonatomic) BOOL hasMaxTier;
 @property (readonly, nonatomic) NSArray *iCloudMediaUsage;
 @property (readonly, nonatomic) NSURL *manageStorageURL;

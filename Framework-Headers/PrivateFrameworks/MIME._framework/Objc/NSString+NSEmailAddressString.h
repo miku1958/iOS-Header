@@ -16,6 +16,7 @@
 - (id)mf_addressDomain;
 - (BOOL)mf_appearsToBeAnInitial;
 - (id)mf_copyAddressComment;
+- (id)mf_copyDisplayEmailAddress;
 - (id)mf_copyIDNADecodedEmailAddress;
 - (id)mf_copyIDNAEncodedEmailAddress;
 - (id)mf_copyUncommentedAddress;

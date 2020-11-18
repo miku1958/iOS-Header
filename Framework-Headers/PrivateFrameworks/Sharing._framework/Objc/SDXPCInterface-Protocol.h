@@ -36,6 +36,7 @@
 - (void)nfcTagReaderUIActivateWithEndpoint:(NSXPCListenerEndpoint *)arg1 params:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)openSetupURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)pairTLSClient:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
+- (void)personInfoWithEmailOrPhone:(NSString *)arg1 completion:(void (^)(SFAppleIDPersonInfo *, NSError *))arg2;
 - (void)preventExitForLocaleReason:(NSString *)arg1;
 - (void)reenableProxCardType:(unsigned char)arg1 completion:(void (^)(NSError *))arg2;
 - (void)remoteInteractionSessionActivate:(SFRemoteInteractionSession *)arg1 completion:(void (^)(NSError *))arg2;
@@ -44,6 +45,7 @@
 - (void)remoteInteractionSessionDeleteTextBackward;
 - (void)remoteInteractionSessionInsertText:(NSString *)arg1;
 - (void)remoteInteractionSessionSetText:(NSString *)arg1;
+- (void)repairDevice:(SFDevice *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)requestWithInfo:(NSDictionary *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)retriggerProximityPairing:(void (^)(NSError *))arg1;
 - (void)retriggerProximitySetup:(void (^)(NSError *))arg1;

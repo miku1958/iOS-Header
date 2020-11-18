@@ -13,20 +13,22 @@
 
 @interface PRSL2FeatureVector : NSObject <NSSecureCoding, NSCopying>
 {
-    double _features[968];
-    double *_expanded_floating_point_features;
+    float _features[1144];
+    float *_expanded_floating_point_features;
     unsigned long long _expanded_floating_point_features_count;
-    double _originalL2Score;
-    double _experimentalScore;
+    float _originalL2Score;
+    float _experimentalScore;
     NSString *_bundleID;
     NSString *_device_type;
     NSDictionary *_searchThroughCEPData;
+    struct ranking_index_score_t _indexScore;
 }
 
 @property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (strong, nonatomic) NSString *device_type; // @synthesize device_type=_device_type;
-@property (nonatomic) double experimentalScore; // @synthesize experimentalScore=_experimentalScore;
-@property (nonatomic) double originalL2Score; // @synthesize originalL2Score=_originalL2Score;
+@property (nonatomic) float experimentalScore; // @synthesize experimentalScore=_experimentalScore;
+@property (nonatomic) struct ranking_index_score_t indexScore; // @synthesize indexScore=_indexScore;
+@property (nonatomic) float originalL2Score; // @synthesize originalL2Score=_originalL2Score;
 @property (strong, nonatomic) NSDictionary *searchThroughCEPData; // @synthesize searchThroughCEPData=_searchThroughCEPData;
 
 + (id)contextWithFeatureOrder:(id)arg1 withInflation:(unsigned long long)arg2 withInflatedIndexToSize:(id)arg3;
@@ -45,12 +47,12 @@
 - (id)expandedArrayRepresentation;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (void)setDouble:(double)arg1 forFeature:(unsigned long long)arg2;
-- (void)setExpandedSet:(double *)arg1 expandedCount:(unsigned long long)arg2;
-- (void)setFeatureName:(id)arg1 value:(double)arg2;
+- (void)setExpandedSet:(float *)arg1 expandedCount:(unsigned long long)arg2;
+- (void)setFeatureName:(id)arg1 value:(float)arg2;
+- (void)setFloat:(float)arg1 forFeature:(unsigned long long)arg2;
 - (void)setValue:(id)arg1 forFeature:(unsigned long long)arg2;
-- (double)valueForFeature:(unsigned long long)arg1;
-- (double)valueForFeatureName:(id)arg1;
+- (float)valueForFeature:(unsigned long long)arg1;
+- (float)valueForFeatureName:(id)arg1;
 
 @end
 

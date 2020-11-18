@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <FrontBoardServices/BSDescriptionProviding-Protocol.h>
 #import <FrontBoardServices/BSXPCCoding-Protocol.h>
 #import <FrontBoardServices/NSCopying-Protocol.h>
 #import <FrontBoardServices/NSMutableCopying-Protocol.h>
 
-@class BKSAnimationFenceHandle, BSAnimationSettings, BSMutableSettings, BSProcessHandle, NSSet, NSString;
+@class BKSAnimationFenceHandle, BSAnimationSettings, BSMutableSettings, BSProcessHandle, FBSceneUpdateContext, NSSet, NSString;
 
 @interface FBSSceneTransitionContext : NSObject <BSXPCCoding, BSDescriptionProviding, NSCopying, NSMutableCopying>
 {
@@ -21,6 +21,7 @@
     BSProcessHandle *_originatingProcess;
     BSMutableSettings *_otherSettings;
     BSMutableSettings *_transientLocalClientSettings;
+    FBSceneUpdateContext *_updateContext;
 }
 
 @property (copy, nonatomic) NSSet *actions; // @synthesize actions=_actions;
@@ -31,6 +32,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) BSProcessHandle *originatingProcess; // @synthesize originatingProcess=_originatingProcess;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) FBSceneUpdateContext *updateContext; // @synthesize updateContext=_updateContext;
 
 + (id)transitionContext;
 - (id)copyWithZone:(struct _NSZone *)arg1;

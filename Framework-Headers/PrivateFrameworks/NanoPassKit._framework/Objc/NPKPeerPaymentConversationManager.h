@@ -7,19 +7,16 @@
 #import <objc/NSObject.h>
 
 @class MSConversation, NPKPeerPaymentConversationContext, NSString, PKPeerPaymentRecipient;
-@protocol OS_dispatch_queue;
 
 @interface NPKPeerPaymentConversationManager : NSObject
 {
-    NSObject<OS_dispatch_queue> *_lookupQueue;
-    NSObject<OS_dispatch_queue> *_activeConversationQueue;
     MSConversation *_activeConversation;
     PKPeerPaymentRecipient *_recipient;
     NPKPeerPaymentConversationContext *_conversationContext;
     NSString *_currentRecipientAddressLookup;
 }
 
-@property (strong) MSConversation *activeConversation; // @synthesize activeConversation=_activeConversation;
+@property (strong, nonatomic) MSConversation *activeConversation; // @synthesize activeConversation=_activeConversation;
 @property (strong, nonatomic) NPKPeerPaymentConversationContext *conversationContext; // @synthesize conversationContext=_conversationContext;
 @property (strong) NSString *currentRecipientAddressLookup; // @synthesize currentRecipientAddressLookup=_currentRecipientAddressLookup;
 @property (strong) PKPeerPaymentRecipient *recipient; // @synthesize recipient=_recipient;

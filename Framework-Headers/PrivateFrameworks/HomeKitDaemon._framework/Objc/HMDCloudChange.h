@@ -31,6 +31,7 @@
 @property (readonly, nonatomic) NSSet *dependentUUIDs;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isDropAfterApply) BOOL dropAfterApply;
+@property (readonly, nonatomic, getter=isDropAndDoNotApply) BOOL dropAndDoNotApply;
 @property (readonly, nonatomic, getter=isDropStagedAfterApply) BOOL dropStagedAfterApply;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInvalid) BOOL invalidChange;
@@ -53,6 +54,7 @@
 - (id)initWithCloudObjectRecord:(id)arg1;
 - (id)initWithObjectChange:(id)arg1;
 - (void)replayChange:(id)arg1 stagedChange:(id)arg2;
+- (void)resetRecord;
 - (id)shortDescription;
 - (void)updateChangeWithRecord:(id)arg1;
 - (void)updateCloudRecord:(id)arg1;

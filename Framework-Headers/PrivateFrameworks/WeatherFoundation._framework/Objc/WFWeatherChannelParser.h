@@ -8,11 +8,13 @@
 
 #import <WeatherFoundation/WFAirQualityDataParser-Protocol.h>
 
-@class NSCalendar, NSString;
+@class NSCalendar, NSString, WFTemperature;
 
 @interface WFWeatherChannelParser : WFForecastDataParser <WFAirQualityDataParser>
 {
     NSCalendar *_calendar;
+    WFTemperature *_todayHighTemperature;
+    WFTemperature *_todayLowTemperature;
 }
 
 @property (strong, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
@@ -20,6 +22,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) WFTemperature *todayHighTemperature; // @synthesize todayHighTemperature=_todayHighTemperature;
+@property (strong, nonatomic) WFTemperature *todayLowTemperature; // @synthesize todayLowTemperature=_todayLowTemperature;
 
 + (id)componentsForCurrentForecast;
 + (id)componentsForDailyForecasts;
@@ -33,7 +37,7 @@
 - (id)dateComponentsForEpochDateNumber:(id)arg1 toUnitGranularity:(unsigned long long)arg2;
 - (id)init;
 - (void)parseCommonComponents:(id)arg1 data:(id)arg2;
-- (id)parseCurrentCondition:(id)arg1 high:(id)arg2 low:(id)arg3;
+- (id)parseCurrentCondition:(id)arg1;
 - (id)parseDailyForecasts:(id)arg1 date:(id)arg2;
 - (id)parseForecastData:(id)arg1 date:(id)arg2 error:(id *)arg3;
 - (id)parseHourlyForecasts:(id)arg1 date:(id)arg2;

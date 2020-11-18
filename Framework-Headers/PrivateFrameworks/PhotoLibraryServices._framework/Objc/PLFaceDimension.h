@@ -17,6 +17,7 @@
     double _size;
 }
 
+- (id)description;
 - (id)initWithSourceWidth:(long long)arg1 sourceHeight:(long long)arg2 centerX:(double)arg3 centerY:(double)arg4 size:(double)arg5;
 - (double)photosFaceRepresentationBlurScore;
 - (double)photosFaceRepresentationCenterX;

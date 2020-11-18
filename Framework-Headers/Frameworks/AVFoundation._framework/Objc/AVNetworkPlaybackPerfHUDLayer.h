@@ -6,13 +6,14 @@
 
 #import <QuartzCore/CATextLayer.h>
 
-@class AVPlayer, NSMutableDictionary, NSObject;
+@class AVPlayer, AVPlayerLayer, NSMutableDictionary, NSObject;
 @protocol OS_dispatch_source;
 
 @interface AVNetworkPlaybackPerfHUDLayer : CATextLayer
 {
     NSObject<OS_dispatch_source> *_hudTimer;
     AVPlayer *_player;
+    AVPlayerLayer *_playerLayer;
     BOOL _showHud;
     int _colorId;
     double _opacity;
@@ -28,8 +29,12 @@
     NSMutableDictionary *_loadingStatusCache;
 }
 
+@property (weak) AVPlayer *player; // @synthesize player=_player;
+@property (weak) AVPlayerLayer *playerLayer; // @synthesize playerLayer=_playerLayer;
+
 + (id)convertBitrate:(double)arg1;
 + (BOOL)runningAnInternalBuild;
+- (void).cxx_destruct;
 - (void)_hudUpdate;
 - (void)currentItemChanged;
 - (void)currentItemTracksChanged;
@@ -42,7 +47,6 @@
 - (id)init;
 - (void)readHudSettingsAndCallCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setColor:(int)arg1;
-- (void)setPlayer:(id)arg1;
 - (void)startDispatchTimer;
 - (void)updateBounds:(struct CGRect)arg1;
 - (BOOL)valueLoadedForKey:(id)arg1 onObject:(id)arg2;

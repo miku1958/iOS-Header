@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iAd/ADCreativeControllerDelegate-Protocol.h>
 #import <iAd/ADPrivacyViewControllerInternalDelegate-Protocol.h>
@@ -116,6 +116,7 @@
 - (BOOL)canReuseForContext:(id)arg1;
 - (void)cancelBannerViewAction;
 - (void)close;
+- (void)creativeControllerTapGestureTimerDidExpireBeforePrimaryActionWasInvoked;
 - (void)creativeControllerViewDidRequestCloseWithTapLocation:(struct CGPoint)arg1;
 - (void)creativeControllerViewDidRequestCreateCalendarEvent:(id)arg1 withTapLocation:(struct CGPoint)arg2;
 - (void)creativeControllerViewDidRequestExpandURL:(id)arg1 withMaximumSize:(struct CGSize)arg2 withTapLocation:(struct CGPoint)arg3;

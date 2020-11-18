@@ -7,8 +7,5 @@
 #import <Foundation/NSProcessInfo.h>
 
 @interface NSProcessInfo (SafariCoreExtras)
-
-@property (readonly, nonatomic) BOOL safari_systemSupportsCloudKitBookmarks;
-
 @end
 

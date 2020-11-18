@@ -33,6 +33,7 @@
     int _skipFrequency;
     int _skipInterval;
     NSMutableArray *_supportedCustomQueueIdentifiers;
+    int _upNextItemCount;
     BOOL _active;
     BOOL _enabled;
     BOOL _supportsSharedQueue;
@@ -47,6 +48,7 @@
         unsigned int shuffleMode:1;
         unsigned int skipFrequency:1;
         unsigned int skipInterval:1;
+        unsigned int upNextItemCount:1;
         unsigned int active:1;
         unsigned int enabled:1;
         unsigned int supportsSharedQueue:1;
@@ -72,6 +74,7 @@
 @property (nonatomic) BOOL hasSkipFrequency;
 @property (nonatomic) BOOL hasSkipInterval;
 @property (nonatomic) BOOL hasSupportsSharedQueue;
+@property (nonatomic) BOOL hasUpNextItemCount;
 @property (strong, nonatomic) NSString *localizedShortTitle; // @synthesize localizedShortTitle=_localizedShortTitle;
 @property (strong, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 @property (nonatomic) float maximumRating; // @synthesize maximumRating=_maximumRating;
@@ -92,6 +95,7 @@
 @property (readonly, nonatomic) float *supportedRates;
 @property (readonly, nonatomic) unsigned long long supportedRatesCount;
 @property (nonatomic) BOOL supportsSharedQueue; // @synthesize supportsSharedQueue=_supportsSharedQueue;
+@property (nonatomic) int upNextItemCount; // @synthesize upNextItemCount=_upNextItemCount;
 
 + (Class)supportedCustomQueueIdentifierType;
 - (int)StringAsCommand:(id)arg1;

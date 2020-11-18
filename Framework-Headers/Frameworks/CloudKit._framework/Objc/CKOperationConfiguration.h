@@ -17,6 +17,7 @@
     BOOL _longLived;
     BOOL _preferAnonymousRequests;
     BOOL _allowsBackgroundNetworking;
+    BOOL _shouldSkipZonePCSUpdate;
     BOOL _hasContainer;
     BOOL _hasAllowsCellularAccess;
     BOOL _hasLongLived;
@@ -27,6 +28,7 @@
     BOOL _hasSourceApplicationBundleIdentifier;
     BOOL _hasSourceApplicationSecondaryIdentifier;
     BOOL _hasAdditionalRequestHTTPHeaders;
+    BOOL _hasShouldSkipZonePCSUpdate;
     BOOL _hasQualityOfService;
     CKContainer *_container;
     long long _qualityOfService;
@@ -48,6 +50,7 @@
 @property (nonatomic) BOOL hasLongLived; // @synthesize hasLongLived=_hasLongLived;
 @property (nonatomic) BOOL hasPreferAnonymousRequests; // @synthesize hasPreferAnonymousRequests=_hasPreferAnonymousRequests;
 @property (nonatomic) BOOL hasQualityOfService; // @synthesize hasQualityOfService=_hasQualityOfService;
+@property (nonatomic) BOOL hasShouldSkipZonePCSUpdate; // @synthesize hasShouldSkipZonePCSUpdate=_hasShouldSkipZonePCSUpdate;
 @property (nonatomic) BOOL hasSourceApplicationBundleIdentifier; // @synthesize hasSourceApplicationBundleIdentifier=_hasSourceApplicationBundleIdentifier;
 @property (nonatomic) BOOL hasSourceApplicationSecondaryIdentifier; // @synthesize hasSourceApplicationSecondaryIdentifier=_hasSourceApplicationSecondaryIdentifier;
 @property (nonatomic) BOOL hasTimeoutIntervalForRequest; // @synthesize hasTimeoutIntervalForRequest=_hasTimeoutIntervalForRequest;
@@ -55,6 +58,7 @@
 @property (nonatomic, getter=isLongLived) BOOL longLived; // @synthesize longLived=_longLived;
 @property (nonatomic) BOOL preferAnonymousRequests; // @synthesize preferAnonymousRequests=_preferAnonymousRequests;
 @property (nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
+@property (nonatomic) BOOL shouldSkipZonePCSUpdate; // @synthesize shouldSkipZonePCSUpdate=_shouldSkipZonePCSUpdate;
 @property (strong, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
 @property (strong, nonatomic) NSString *sourceApplicationSecondaryIdentifier; // @synthesize sourceApplicationSecondaryIdentifier=_sourceApplicationSecondaryIdentifier;
 @property (nonatomic) double timeoutIntervalForRequest; // @synthesize timeoutIntervalForRequest=_timeoutIntervalForRequest;

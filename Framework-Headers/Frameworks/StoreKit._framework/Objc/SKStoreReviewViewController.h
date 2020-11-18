@@ -6,10 +6,12 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <StoreKit/SKRemoteReviewViewControllerDelegate-Protocol.h>
+
 @class NSString, SKInvocationQueueProxy, SKRemoteReviewViewController, _UIAsyncInvocation;
 @protocol SKUIServiceReviewViewController;
 
-@interface SKStoreReviewViewController : UIViewController
+@interface SKStoreReviewViewController : UIViewController <SKRemoteReviewViewControllerDelegate>
 {
     SKInvocationQueueProxy<SKUIServiceReviewViewController> *_serviceProxy;
     _UIAsyncInvocation *_cancelRequest;
@@ -18,17 +20,21 @@
 }
 
 @property (strong, nonatomic) _UIAsyncInvocation *cancelRequest; // @synthesize cancelRequest=_cancelRequest;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SKRemoteReviewViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
 @property (strong, nonatomic) NSString *reviewRequestToken; // @synthesize reviewRequestToken=_reviewRequestToken;
 @property (strong, nonatomic) SKInvocationQueueProxy<SKUIServiceReviewViewController> *serviceProxy; // @synthesize serviceProxy=_serviceProxy;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_addRemoteView;
 - (void)_didFinishWithResult:(unsigned long long)arg1 error:(id)arg2;
 - (void)_requestRemoteViewController;
-- (void)_viewTapped:(id)arg1;
 - (void)dealloc;
 - (id)initWithReviewRequestToken:(id)arg1;
+- (void)remoteReviewViewControllerTerminatedWithError:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;
 

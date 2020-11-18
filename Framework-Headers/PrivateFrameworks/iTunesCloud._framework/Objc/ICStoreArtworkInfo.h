@@ -8,24 +8,30 @@
 
 #import <iTunesCloud/NSCopying-Protocol.h>
 
-@class NSArray, NSDictionary, NSURL;
+@class ICStoreArtworkSizeInfo, NSArray, NSDictionary, NSURL;
 
 @interface ICStoreArtworkInfo : NSObject <NSCopying>
 {
+    ICStoreArtworkSizeInfo *_sizeInfo;
     NSArray *_sortedResponseArray;
+    NSArray *_sortedSupportedSizesArray;
     NSURL *_artworkURL;
     NSArray *_responseArray;
     NSDictionary *_responseDictionary;
 }
 
 @property (readonly, copy, nonatomic) NSURL *artworkURL; // @synthesize artworkURL=_artworkURL;
-@property (readonly, nonatomic) BOOL hasOriginalSize;
-@property (readonly, nonatomic) struct CGSize originalSize;
 @property (readonly, copy, nonatomic) NSArray *responseArray; // @synthesize responseArray=_responseArray;
 @property (readonly, copy, nonatomic) NSDictionary *responseDictionary; // @synthesize responseDictionary=_responseDictionary;
+@property (readonly, nonatomic) ICStoreArtworkSizeInfo *sizeInfo; // @synthesize sizeInfo=_sizeInfo;
+@property (copy, nonatomic) NSArray *sortedResponseArray; // @synthesize sortedResponseArray=_sortedResponseArray;
+@property (copy, nonatomic) NSArray *sortedSupportedSizesArray; // @synthesize sortedSupportedSizesArray=_sortedSupportedSizesArray;
 
 - (void).cxx_destruct;
-- (id)_sortedResponseArray;
+- (BOOL)_hasOriginalSize;
+- (struct CGSize)_originalSize;
+- (void)_sortResponseArray;
+- (void)_sortSupportedSizesArray;
 - (id)artworkURLWithSize:(struct CGSize)arg1 cropStyle:(id)arg2 format:(id)arg3;
 - (id)artworkURLWithSize:(struct CGSize)arg1 cropStyle:(id)arg2 format:(id)arg3 preferP3ColorSpace:(BOOL)arg4;
 - (struct CGColor *)copyColorWithKind:(id)arg1;

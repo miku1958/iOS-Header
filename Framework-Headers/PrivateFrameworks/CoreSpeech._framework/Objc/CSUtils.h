@@ -19,9 +19,12 @@
 + (id)getFixedHighPrioritySerialQueueWithLabel:(id)arg1;
 + (id)getFixedPrioritySerialQueueWithLabel:(id)arg1 fixedPriority:(int)arg2;
 + (double)getHostClockFrequency;
++ (unsigned int)getNumElementInBitset:(unsigned long long)arg1;
 + (id)getSiriLanguageWithFallback:(id)arg1;
 + (BOOL)hasRemoteCoreSpeech;
 + (unsigned long long)hostTimeFromSampleCount:(unsigned long long)arg1 anchorHostTime:(unsigned long long)arg2 anchorSampleCount:(unsigned long long)arg3;
++ (float)hostTimeToSeconds:(unsigned long long)arg1;
++ (double)hostTimeToTimeInterval:(unsigned long long)arg1;
 + (BOOL)isRecordContextVoiceTrigger:(id)arg1;
 + (void)iterateBitset:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 + (struct AudioStreamBasicDescription)lpcmASBD;
@@ -39,14 +42,19 @@
 + (unsigned long long)sampleCountFromHostTime:(unsigned long long)arg1 anchorHostTime:(unsigned long long)arg2 anchorSampleCount:(unsigned long long)arg3;
 + (unsigned long long)secondsToHostTime:(float)arg1;
 + (BOOL)shouldRunVTOnCS;
++ (BOOL)supportAlwaysListening;
 + (BOOL)supportCSTwoShotDecision;
 + (BOOL)supportContinuousVoiceTrigger;
++ (BOOL)supportHybridEndpointer;
 + (BOOL)supportKeywordDetector;
 + (BOOL)supportOpportunisticZLL;
 + (BOOL)supportPremiumAssets;
 + (BOOL)supportSelfTriggerSuppression;
 + (struct AudioStreamBasicDescription)utteranceFileASBD;
 + (id)voiceTriggerRecordContext;
+- (void)_URLsInDirectory:(id)arg1 matchingPattern:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_contentsOfDirectoryAtURL:(id)arg1 matchingPattern:(id)arg2 includingPropertiesForKeys:(id)arg3 error:(id *)arg4;
+- (void)removeLogFilesInDirectory:(id)arg1 matchingPattern:(id)arg2 beforeDays:(float)arg3;
 
 @end
 

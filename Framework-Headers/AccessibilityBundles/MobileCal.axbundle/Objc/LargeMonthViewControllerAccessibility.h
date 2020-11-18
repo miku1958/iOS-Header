@@ -18,7 +18,7 @@
 - (id)_axTopWeekViewWithTopPoint:(struct CGPoint)arg1;
 - (void)_updateDraggingOffsetTimesForPoint:(struct CGPoint)arg1;
 - (void)eventGestureController:(id)arg1 commitToPoint:(struct CGPoint)arg2;
-- (id)eventGestureController:(id)arg1 setUpAtPoint:(struct CGPoint)arg2 withOccurrence:(id)arg3;
+- (id)eventGestureController:(id)arg1 setUpAtPoint:(struct CGPoint)arg2 withOccurrence:(id)arg3 forceNewEvent:(BOOL)arg4;
 - (void)showDate:(id)arg1 animated:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
 
 @end

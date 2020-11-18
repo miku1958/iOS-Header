@@ -10,7 +10,7 @@
 #import <DACalDAV/CoreDAVAccountInfoProvider-Protocol.h>
 #import <DACalDAV/CoreDAVOAuthInfoProvider-Protocol.h>
 
-@class CalDAVRefreshContext, MobileCalDAVAccount, NSDateComponents, NSDictionary, NSMutableDictionary, NSMutableSet, NSNumber, NSSet, NSString, NSURL;
+@class AKAppleIDSession, CalDAVRefreshContext, MobileCalDAVAccount, NSDateComponents, NSDictionary, NSMutableDictionary, NSMutableSet, NSNumber, NSSet, NSString, NSURL;
 @protocol CalDAVAccount, CoreDAVTaskManager;
 
 @interface MobileCalDAVPrincipal : NSObject <CoreDAVAccountInfoProvider, CoreDAVOAuthInfoProvider, CalDAVPrincipal>
@@ -56,6 +56,7 @@
     NSMutableSet *_modifiedCalendars;
     CalDAVRefreshContext *_refreshContext;
     NSURL *_legacy_principalURL;
+    AKAppleIDSession *_appleIDSession;
 }
 
 @property (readonly, nonatomic) NSString *APSEnv;
@@ -63,6 +64,7 @@
 @property (readonly, nonatomic) NSString *APSTopic;
 @property (nonatomic) id<CalDAVAccount> account; // @synthesize account=_account;
 @property (strong, nonatomic) NSMutableSet *addedCalendars; // @synthesize addedCalendars=_addedCalendars;
+@property (strong, nonatomic) AKAppleIDSession *appleIDSession; // @synthesize appleIDSession=_appleIDSession;
 @property (nonatomic) int calendarChangeIndex; // @synthesize calendarChangeIndex=_calendarChangeIndex;
 @property (strong, nonatomic) NSString *calendarHomePushKey; // @synthesize calendarHomePushKey=_calendarHomePushKey;
 @property (strong, nonatomic) NSString *calendarHomeSyncToken;
@@ -139,6 +141,7 @@
 - (id)customConnectionProperties;
 - (id)defaultEventCalendarTitle;
 - (id)defaultTodoCalendarTitle;
+- (id)getAppleIDSession;
 - (BOOL)handleCertificateError:(id)arg1;
 - (BOOL)handleTrustChallenge:(id)arg1;
 - (BOOL)hasCalendarUserAddress:(id)arg1;

@@ -23,6 +23,8 @@
 @property (readonly, nonatomic) long long storeItemID; // @synthesize storeItemID=_storeItemID;
 @property long long storeSagaID; // @synthesize storeSagaID=_storeSagaID;
 
++ (id)MPMediaDownloadsFromATAssets:(id)arg1;
++ (id)MPMediaDownloadsFromMPStoreDownloads:(id)arg1;
 - (id)init;
 - (id)initWithATAsset:(id)arg1;
 - (id)initWithMPStoreDownload:(id)arg1;

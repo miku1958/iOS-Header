@@ -6,13 +6,13 @@
 
 #import <MediaPlaybackCore/MPCPlayer.h>
 
-#import <MediaPlaybackCore/MPNowPlayingPlaybackQueueDataSource_Private-Protocol.h>
+#import <MediaPlaybackCore/MPNowPlayingPlaybackQueueDataSource-Protocol.h>
 #import <MediaPlaybackCore/MPRemoteCommandDelegate_Private-Protocol.h>
 
 @class MPAVController, MPAVItem, MPCMediaPlayerLegacyAVController, MPCMediaPlayerLegacyItem, MPCMediaPlayerLegacyItemContainer, MPCMediaPlayerLegacyNowPlayingObserver, MPCMediaPlayerLegacyReportingController, MPCPlaybackIntent, MPLibraryAddStatusObserver, NSMapTable, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface MPCMediaPlayerLegacyPlayer : MPCPlayer <MPNowPlayingPlaybackQueueDataSource_Private, MPRemoteCommandDelegate_Private>
+@interface MPCMediaPlayerLegacyPlayer : MPCPlayer <MPNowPlayingPlaybackQueueDataSource, MPRemoteCommandDelegate_Private>
 {
     NSMapTable *_avItemToPlayerItemWeakMap;
     MPCMediaPlayerLegacyItemContainer *_currentContainer;
@@ -81,8 +81,10 @@
 - (id)initWithOptions:(unsigned long long)arg1;
 - (BOOL)isRestoringPlaybackState;
 - (BOOL)isSyncingNowPlayingInfo;
-- (id)nowPlayingContentItemForIdentifier:(id)arg1;
-- (id)nowPlayingContentItemsForRequest:(void *)arg1 range:(CDStruct_339ad95e *)arg2;
+- (id)nowPlayingInfoCenter:(id)arg1 artworkCatalogForContentItem:(id)arg2;
+- (id)nowPlayingInfoCenter:(id)arg1 artworkForContentItem:(id)arg2 size:(struct CGSize)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)nowPlayingInfoCenter:(id)arg1 contentItemForID:(id)arg2;
+- (id)nowPlayingInfoCenter:(id)arg1 contentItemIDForOffset:(long long)arg2;
 - (void)performCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)preservePlaybackStateImmediately;
 - (void)recordLyricsViewEvent:(id)arg1;

@@ -10,6 +10,7 @@
 
 @protocol FCFeedPersonalizing <FCTagRanking>
 - (NSArray *)diversifyArticles:(NSArray *)arg1 limit:(unsigned long long)arg2;
+- (NSArray *)diversifyArticles:(NSArray *)arg1 limit:(unsigned long long)arg2 preselectedArticles:(NSArray *)arg3;
 - (NSArray *)limitArticlesByFlowRate:(NSArray *)arg1 timeInterval:(double)arg2 publisherCount:(unsigned long long)arg3;
 - (NSArray *)limitArticlesByMinimumArticleQuality:(NSArray *)arg1;
 - (void)prepareAutoFavoritesWithCompletionHandler:(void (^)(void))arg1;

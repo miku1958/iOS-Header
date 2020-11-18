@@ -17,7 +17,7 @@
 + (double)fiui_weightedAverageHeartRateWithSamples:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 - (id)_fiui_averagePaceQty;
 - (id)fiui_activityType;
-- (long long)fiui_averageCadence;
+- (double)fiui_averageCadence;
 - (double)fiui_averagePace;
 - (double)fiui_averagePower;
 - (double)fiui_averageTimePerLap;

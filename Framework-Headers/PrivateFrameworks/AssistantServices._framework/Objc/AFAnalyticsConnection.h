@@ -10,7 +10,7 @@
 #import <AssistantServices/AFAnalyticsServiceDelegate-Protocol.h>
 
 @class NSString, NSXPCConnection;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source;
 
 @interface AFAnalyticsConnection : NSObject <AFAnalyticsServiceDelegate, AFAnalyticsService>
 {
@@ -18,6 +18,7 @@
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_source> *_idleTimer;
     unsigned long long _numberOfEventsBeingSent;
+    NSObject<OS_dispatch_group> *_group;
     BOOL _needsCleanUpConnection;
 }
 
@@ -41,7 +42,9 @@
 - (void)_startIdleTimer;
 - (void)_stopIdleTimer;
 - (void)_willStartSendingEvents:(id)arg1;
+- (oneway void)beginEventsGrouping;
 - (void)dealloc;
+- (oneway void)endEventsGrouping;
 - (oneway void)flushStagedEventsWithReply:(CDUnknownBlockType)arg1;
 - (id)init;
 - (oneway void)stageEvent:(id)arg1;

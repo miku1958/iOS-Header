@@ -10,5 +10,6 @@
 
 @property (readonly, getter=hmf_isEmpty) BOOL hmf_empty;
 
+- (BOOL)hmf_objectsAreKindOfClass:(Class)arg1;
 @end
 

@@ -28,6 +28,9 @@
 @property (strong, nonatomic) MPVolumeSlider *volumeSlider; // @synthesize volumeSlider=_volumeSlider;
 
 - (void).cxx_destruct;
+- (void)_updateVolumeStyle;
+- (void)didMoveToSuperview;
+- (void)didMoveToWindow;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

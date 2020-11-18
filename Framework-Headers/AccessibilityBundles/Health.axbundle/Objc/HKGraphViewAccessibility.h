@@ -13,7 +13,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityChartElements;
+- (void)_accessibilityClearElements;
+- (unsigned long long)_accessibilityNumberOfSegmentsFrom:(id)arg1 toDate:(id)arg2;
+- (void)_accessibilitySetChartElements:(id)arg1;
 - (id)_accessibilityStringForCurrentZoomAndDate:(id)arg1;
+- (void)_renderSeriesWithContext:(struct CGContext *)arg1 secondaryRenderContext:(id)arg2;
 - (void)_updateGraphViewConfigurationIfNecessary;
 - (id)accessibilityElements;
 

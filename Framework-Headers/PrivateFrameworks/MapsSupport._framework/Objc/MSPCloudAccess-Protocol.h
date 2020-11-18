@@ -14,7 +14,7 @@
 @property (copy, nonatomic) CDUnknownBlockType availabilityDidChangeHandler;
 @property (copy, nonatomic) CDUnknownBlockType contentsDidChangeHandler;
 
-- (void)checkForAvailabilityWithCallbackQueue:(NSObject<OS_dispatch_queue> *)arg1 schedulePreAvailabilityOperationHandler:(void (^)(NSOperation *))arg2 completion:(void (^)(id<NSObject><NSCopying><NSCoding>, NSError *))arg3;
+- (void)checkForAvailabilityWithCallbackQueue:(NSObject<OS_dispatch_queue> *)arg1 schedulePreAvailabilityOperationHandler:(void (^)(NSOperation *))arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (NSDate *)minimumStartDate;
 - (void)networkReachabilityChanged:(BOOL)arg1;
 - (NSOperation<MSPCloudRequest> *)newCombinedCachingFetchRequestWithGroup:(id<MSPCloudRequestGroup>)arg1 forTask:(MSPCloudRepeatableTask *)arg2 successHandler:(void (^)(id<MSPCloudCachingFetchResult>, id<MSPCloudCachingFetchResult>, id<MSPCloudRecord>))arg3;

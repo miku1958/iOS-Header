@@ -114,7 +114,6 @@
 - (void)_stopControllerKeyPollTimer;
 - (void)_stopFetchPollTimer;
 - (void)_stopFetchRetryTimer;
-- (void)_updateCloudDataSyncFilterState:(BOOL)arg1;
 - (void)_updateServerTokenStatusOnCloudFilter;
 - (void)_uploadLegacyTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_uploadTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -145,6 +144,7 @@
 - (void)setDataAvailableFromCloudCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)setDataDecryptionFailedCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)updateAccountStatusChanged:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateCloudDataSyncFilterState:(BOOL)arg1;
 - (void)updateServerTokenStatusOnCloudFilter;
 - (void)uploadLegacyTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)uploadTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

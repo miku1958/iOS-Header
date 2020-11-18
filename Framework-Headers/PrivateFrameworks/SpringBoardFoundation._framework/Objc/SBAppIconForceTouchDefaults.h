@@ -12,6 +12,7 @@
 
 @property (nonatomic) float animationDurationMultiplier; // @dynamic animationDurationMultiplier;
 @property (nonatomic) BOOL enableUIPreviewInteractionAnimations; // @dynamic enableUIPreviewInteractionAnimations;
+@property (nonatomic) float quickActionAnimationDuration; // @dynamic quickActionAnimationDuration;
 
 - (void)_bindAndRegisterDefaults;
 

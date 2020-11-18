@@ -30,7 +30,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_addBeatsPerMinute:(double)arg1 date:(id)arg2 toSessionStatistics:(id)arg3;
+- (void)_addBeatsPerMinute:(double)arg1 time:(double)arg2 toSessionStatistics:(id)arg3;
 - (void)_addHeartRateSamples:(const vector_4f6645df *)arg1 toStatistics:(id)arg2;
 - (void)_addHeartRateSamplesToAllStatistics:(const vector_4f6645df *)arg1;
 - (void)_addHeartRateStatisticsForNewWorkouts:(const vector_53e1d725 *)arg1;

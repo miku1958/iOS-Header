@@ -7,21 +7,25 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
+#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDHomeManager, HMDUnassociatedMediaAccessory, HMFMessageDispatcher, NSArray, NSMutableSet, NSObject, NSString;
+@class HMDHomeManager, HMDUnassociatedMediaAccessory, HMFMessageDispatcher, HMFTimer, NSArray, NSMutableSet, NSObject, NSString;
 @protocol HMDMediaBrowserDelegate, OS_dispatch_queue;
 
-@interface HMDMediaBrowser : HMFObject <HMFLogging>
+@interface HMDMediaBrowser : HMFObject <HMFLogging, HMFTimerDelegate>
 {
     NSMutableSet *_accessoryAdvertisements;
     BOOL _discoverUnassociatedAccessories;
     BOOL _discoverAssociatedAccessories;
+    BOOL _updateAvailableEndpoints;
     id<HMDMediaBrowserDelegate> _delegate;
     HMDHomeManager *_homeManager;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     void *_discoverySession;
     void *_discoverySessionCallbackToken;
+    HMFTimer *_discoveryPollTimer;
+    NSMutableSet *_identifiersOfAssociatedMediaAccessories;
 }
 
 @property (readonly, copy) NSArray *accessoryAdvertisements;
@@ -30,39 +34,44 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMDMediaBrowserDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) HMFTimer *discoveryPollTimer; // @synthesize discoveryPollTimer=_discoveryPollTimer;
 @property (readonly, nonatomic) void *discoverySession; // @synthesize discoverySession=_discoverySession;
 @property (nonatomic) void *discoverySessionCallbackToken; // @synthesize discoverySessionCallbackToken=_discoverySessionCallbackToken;
 @property (readonly) unsigned long long hash;
 @property (weak) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
+@property (strong, nonatomic) NSMutableSet *identifiersOfAssociatedMediaAccessories; // @synthesize identifiersOfAssociatedMediaAccessories=_identifiersOfAssociatedMediaAccessories;
 @property (readonly) HMFMessageDispatcher *messageDispatcher;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL updateAvailableEndpoints; // @synthesize updateAvailableEndpoints=_updateAvailableEndpoints;
 
 + (id)logCategory;
 + (id)shortDescription;
-+ (BOOL)shouldEnableForcedWHABrowse;
 - (void).cxx_destruct;
+- (void)_addAdvertisements:(id)arg1;
 - (void)_handleAvailableEndpoints:(struct __CFArray *)arg1;
+- (void)_notifyDelegateOfAddedAdvertisements:(id)arg1;
+- (void)_notifyDelegateOfRemovedAdvertisements:(id)arg1;
+- (void)_notifyDelegateOfRemovedSessions:(id)arg1;
 - (void)_notifyDelegateOfUpdatedEndpoints:(id)arg1;
+- (void)_removeAdvertisements:(id)arg1;
+- (void)_removeSessions:(id)arg1;
 - (void)_startDiscoveringAccessories;
 - (void)_stopDiscoveringAccessories;
-- (void)addAdvertisements:(id)arg1;
-- (id)currentAccessoryAdvertisement;
+- (void)checkForUpdatedAvailableEndpoints:(struct __CFArray *)arg1;
 - (void)dealloc;
+- (void)deregisterAccessories:(id)arg1;
 - (id)descriptionWithPointer:(BOOL)arg1 additionalDescription:(id)arg2;
 - (id)dumpDescription;
-- (void)handleAvailableEndpoints:(struct __CFArray *)arg1;
 - (id)initWithHomeManager:(id)arg1;
-- (void)notifyDelegateOfAddedAdvertisements:(id)arg1;
-- (void)notifyDelegateOfRemovedAdvertisements:(id)arg1;
-- (void)removeAdvertisements:(id)arg1;
 - (id)shortDescription;
 - (void)startDiscoveringAssociatedAccessories;
 - (void)startDiscoveringUnassociatedAccessories;
 - (void)stopDiscoveringAssociatedAccessories;
 - (void)stopDiscoveringUnassociatedAccessories;
+- (void)timerDidFire:(id)arg1;
 - (id)unassociatedAccessoryFromAdvertisementData:(id)arg1;
-- (void)updateAccessory:(id)arg1;
+- (void)updateAccessories:(id)arg1;
 
 @end
 

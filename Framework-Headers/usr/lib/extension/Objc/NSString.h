@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSCopying-Protocol.h>
-#import <extension/NSItemProviderReading-Protocol.h>
-#import <extension/NSItemProviderWriting-Protocol.h>
-#import <extension/NSMutableCopying-Protocol.h>
-#import <extension/NSSecureCoding-Protocol.h>
+#import <Foundation/NSCopying-Protocol.h>
+#import <Foundation/NSItemProviderReading-Protocol.h>
+#import <Foundation/NSItemProviderWriting-Protocol.h>
+#import <Foundation/NSMutableCopying-Protocol.h>
+#import <Foundation/NSSecureCoding-Protocol.h>
 
 @class NSArray;
 

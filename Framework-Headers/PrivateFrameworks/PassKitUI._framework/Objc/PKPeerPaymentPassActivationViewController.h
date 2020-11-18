@@ -40,13 +40,17 @@
 - (void)_handleError:(id)arg1;
 - (void)_handleNextStep;
 - (BOOL)_hasDebitCard;
+- (void)_initalizeCloudStoreWithTargetDevice:(id)arg1 ifNecessaryWithCompletion:(CDUnknownBlockType)arg2;
 - (void)_presentActivationFailedErrorAlert;
 - (void)_presentAlertControllerForError:(id)arg1;
 - (void)_presentDeviceToDeviceEncryptionFlow;
 - (void)_presentIdentityVerificationWithError:(id)arg1;
+- (void)_presentMissingTLKsAlert;
 - (void)_presentSetupWillCompleteLaterAlertController;
 - (void)_presentTermsAndConditionsWithError:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_processCloudStorePCSErrorWithTargetDevice:(id)arg1;
 - (void)_provisionPeerPaymentPass;
+- (void)_resetApplyPayManateeView;
 - (void)_setShowCheckmark:(BOOL)arg1;
 - (void)_setShowSpinner:(BOOL)arg1;
 - (void)_setState:(unsigned long long)arg1;

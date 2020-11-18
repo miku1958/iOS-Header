@@ -101,6 +101,7 @@ __attribute__((visibility("hidden")))
 - (struct CGColor *)_wellColorOn:(BOOL)arg1;
 - (BOOL)displayedOn;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)interactiveChangeToDisplayedOn:(BOOL)arg1;
 - (void)performStateChangeFeedback;

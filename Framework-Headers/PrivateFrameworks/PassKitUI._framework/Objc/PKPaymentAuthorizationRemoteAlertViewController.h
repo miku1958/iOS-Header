@@ -84,6 +84,7 @@
 - (void)authorizationDidSelectPaymentMethod:(id)arg1;
 - (void)authorizationDidSelectShippingAddress:(id)arg1;
 - (void)authorizationDidSelectShippingMethod:(id)arg1;
+- (void)authorizationViewController:(id)arg1 didEncounterAuthorizationEvent:(unsigned long long)arg2;
 - (void)authorizationViewControllerDidChangeUserIntentRequirement:(id)arg1;
 - (void)authorizationWillStart;
 - (void)compactNavigationContainerControllerReceivedExternalTap:(id)arg1;

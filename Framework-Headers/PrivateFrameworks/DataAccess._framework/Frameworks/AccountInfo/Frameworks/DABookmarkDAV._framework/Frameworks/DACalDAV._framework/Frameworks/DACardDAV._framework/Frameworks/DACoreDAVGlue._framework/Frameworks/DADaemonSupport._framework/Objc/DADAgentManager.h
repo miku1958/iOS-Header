@@ -33,6 +33,7 @@
 - (id)_accountInfoPath;
 - (void)_addAccountAggdEntries;
 - (void)_calDaysToSyncDidChange;
+- (void)_clearOrphanedStores;
 - (BOOL)_clearOrphanedSubscribedCalendars:(void *)arg1 eventAccountIds:(id)arg2 toDoAccountIds:(id)arg3;
 - (id)_configFileForAgent:(id)arg1;
 - (void)_deviceDidWake;
@@ -56,7 +57,6 @@
 - (void)agentHasStoppedMonitoring:(id)arg1;
 - (id)agentWithAccountID:(id)arg1;
 - (void)cleanupLaunchdSemaphore;
-- (void)clearOrphanedStores;
 - (BOOL)clearPersistMonitoringAccountID:(id)arg1 clientID:(id)arg2;
 - (id)currentPolicyKeyForAccount:(id)arg1;
 - (BOOL)dadRemoveStoresForAccountWithID:(id)arg1;

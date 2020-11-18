@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MediaRemote/MRExternalDevice.h>
+#import <MediaRemote/MRTransportExternalDevice.h>
 
 @class NSObject;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MRTelevisionDevice : MRExternalDevice
+@interface MRTelevisionDevice : MRTransportExternalDevice
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
     BOOL _hiliteMode;

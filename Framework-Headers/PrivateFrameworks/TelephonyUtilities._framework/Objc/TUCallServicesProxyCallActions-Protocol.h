@@ -6,7 +6,7 @@
 
 #import <TelephonyUtilities/NSObject-Protocol.h>
 
-@class NSString, TUAnswerRequest, TUDialRequest, TUProxyCall;
+@class IDSDestination, NSString, TUAnswerRequest, TUDialRequest, TUProxyCall;
 
 @protocol TUCallServicesProxyCallActions <NSObject>
 - (oneway void)answerCallWithRequest:(TUAnswerRequest *)arg1;
@@ -20,7 +20,7 @@
 - (oneway void)playDTMFToneForCallWithUniqueProxyIdentifier:(NSString *)arg1 key:(unsigned char)arg2;
 - (oneway void)pullHostedCallsFromPairedHostDevice;
 - (oneway void)pullRelayingCallsFromClient;
-- (oneway void)pushHostedCallsToPairedClientDevice;
+- (oneway void)pushHostedCallsToDestination:(IDSDestination *)arg1;
 - (oneway void)pushRelayingCallsToHostWithSourceIdentifier:(NSString *)arg1;
 - (oneway void)sendHardPauseDigitsForCallWithUniqueProxyIdentifier:(NSString *)arg1;
 - (oneway void)sendMMIOrUSSDCodeWithRequest:(TUDialRequest *)arg1;

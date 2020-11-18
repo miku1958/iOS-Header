@@ -6,13 +6,13 @@
 
 #import <MediaControls/NSObject-Protocol.h>
 
-@class MPAVRoutingViewController, MPCPlayerPath, MediaControlsStyleCoordinator, UIView;
+@class MediaControlsStyleCoordinator, UIView;
 
 @protocol MediaControlsCollectionItemViewController <NSObject>
 
 @property (strong, nonatomic) UIView *backgroundView;
-@property (copy, nonatomic) MPCPlayerPath *playerPath;
-@property (strong, nonatomic) MPAVRoutingViewController *routingViewController;
+@property (readonly, nonatomic) UIView *contentView;
+@property (nonatomic, getter=isSelected) BOOL selected;
 
 - (void)willTransitionToSize:(struct CGSize)arg1 withCoordinator:(MediaControlsStyleCoordinator *)arg2;
 @end

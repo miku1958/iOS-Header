@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSMatchingPredicateOperator.h>
+#import <Foundation/NSMatchingPredicateOperator.h>
 
 __attribute__((visibility("hidden")))
 @interface NSLikePredicateOperator : NSMatchingPredicateOperator

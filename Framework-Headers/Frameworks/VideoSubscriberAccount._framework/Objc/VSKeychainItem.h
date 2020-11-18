@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isUpdated) BOOL updated; // @synthesize updated=_updated;
 
 - (void).cxx_destruct;
+- (void)_setCommittedValues:(id)arg1 registeringUndo:(BOOL)arg2;
 - (id)changedValues;
 - (id)committedValueForKey:(id)arg1;
 - (id)committedValuesForKeys:(id)arg1;

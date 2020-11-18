@@ -6,17 +6,18 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
 @class BKSApplicationStateMonitor, HMDApplicationRegistry, HMFTimer, NSMutableSet, NSObject, NSSet, NSString;
 @protocol HMDApplicationMonitorDelegate, OS_dispatch_queue;
 
-@interface HMDApplicationMonitor : HMFObject <HMFTimerDelegate>
+@interface HMDApplicationMonitor : HMFObject <HMFTimerDelegate, HMFLogging>
 {
     id<HMDApplicationMonitorDelegate> _delegate;
-    NSObject<OS_dispatch_queue> *_workQueue;
+    NSObject<OS_dispatch_queue> *_xpcQueue;
     NSMutableSet *_processes;
-    BKSApplicationStateMonitor *_monitor;
+    BKSApplicationStateMonitor *_bksMonitor;
     HMDApplicationRegistry *_appRegistry;
     HMFTimer *_spiClientTerminationDelayTimer;
     NSMutableSet *_pendingTerminatedApplications;
@@ -25,20 +26,21 @@
 @property (readonly, nonatomic) BOOL activeHomeKitApps;
 @property (weak, nonatomic) HMDApplicationRegistry *appRegistry; // @synthesize appRegistry=_appRegistry;
 @property (readonly, nonatomic) NSSet *backgroundApps;
+@property (readonly, nonatomic) BKSApplicationStateMonitor *bksMonitor; // @synthesize bksMonitor=_bksMonitor;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HMDApplicationMonitorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSSet *foregroundApps;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BKSApplicationStateMonitor *monitor; // @synthesize monitor=_monitor;
 @property (readonly, nonatomic) NSMutableSet *pendingTerminatedApplications; // @synthesize pendingTerminatedApplications=_pendingTerminatedApplications;
 @property (readonly, nonatomic) NSMutableSet *processes; // @synthesize processes=_processes;
 @property (strong, nonatomic) HMFTimer *spiClientTerminationDelayTimer; // @synthesize spiClientTerminationDelayTimer=_spiClientTerminationDelayTimer;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *xpcQueue; // @synthesize xpcQueue=_xpcQueue;
 
-+ (id)applicationStateDescription:(unsigned long long)arg1;
++ (id)logCategory;
 - (void).cxx_destruct;
+- (id)_activeRequests;
 - (void)_callActiveHomeKitAppDelegate:(BOOL)arg1;
 - (void)_callAppStateChangeDelegate:(id)arg1;
 - (BOOL)_delegateConformsAndRespondsToSelector:(SEL)arg1;
@@ -53,9 +55,11 @@
 - (id)backgroundToForegroundApps;
 - (void)dealloc;
 - (id)foregroundAppIdentifiers;
+- (void)handleAppStateChangedInfo:(id)arg1;
 - (BOOL)infoIsForViewService:(id)arg1;
-- (id)init;
+- (id)initWithXpcQueue:(id)arg1;
 - (id)processInfoForPID:(int)arg1;
+- (void)removeFromPendingTerminated:(id)arg1;
 - (void)removeProcess:(id)arg1;
 - (void)start;
 - (void)timerDidFire:(id)arg1;

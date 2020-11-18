@@ -15,7 +15,7 @@
 }
 
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
-@property (readonly, nonatomic) NAFuture *softwareUpdateFetchFuture; // @synthesize softwareUpdateFetchFuture=_softwareUpdateFetchFuture;
+@property (strong, nonatomic) NAFuture *softwareUpdateFetchFuture; // @synthesize softwareUpdateFetchFuture=_softwareUpdateFetchFuture;
 
 - (void).cxx_destruct;
 - (id)_subclass_updateWithOptions:(id)arg1;

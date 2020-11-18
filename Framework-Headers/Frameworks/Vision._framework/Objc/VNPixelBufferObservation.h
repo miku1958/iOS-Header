@@ -15,6 +15,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCVPixelBuffer:(struct __CVBuffer *)arg1;

@@ -14,11 +14,14 @@
 @interface _CPCardForFeedback : PBCodable <_CPCardForFeedback, NSSecureCoding>
 {
     NSArray *_cardSections;
+    NSString *_fbr;
 }
 
 @property (copy, nonatomic) NSArray *cardSections; // @synthesize cardSections=_cardSections;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *fbr; // @synthesize fbr=_fbr;
+@property (readonly, nonatomic) BOOL hasFbr;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (readonly) Class superclass;

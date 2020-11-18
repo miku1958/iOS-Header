@@ -6,10 +6,16 @@
 
 #import <Foundation/NSCoder.h>
 
+@class HMFMessage;
+
 @interface NSCoder (XPCTransport)
+
+@property (readonly) unsigned long long hmd_homeManagerOptions;
+@property (readonly) HMFMessage *hmd_message;
+@property (readonly, getter=isXPCTransport) BOOL xpcTransport;
+
 - (id)applicationBundleIdentifier;
 - (BOOL)isAuthorizedForLocationAccess;
 - (BOOL)isEntitledForSPIAccess;
-- (BOOL)isXPCTransport;
 @end
 

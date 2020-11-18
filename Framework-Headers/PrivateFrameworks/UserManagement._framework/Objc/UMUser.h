@@ -38,6 +38,7 @@
     unsigned long long _dataQuota;
     unsigned long long _dataUsed;
     NSError *_errorCausingLogout;
+    NSError *_debugErrorCausingLogout;
     NSDate *_firstLoginStartDate;
     NSDate *_firstLoginEndDate;
     NSDate *_lastCachedLoginStartDate;
@@ -51,6 +52,7 @@
 @property (copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (nonatomic) unsigned long long dataQuota; // @synthesize dataQuota=_dataQuota;
 @property (nonatomic) unsigned long long dataUsed; // @synthesize dataUsed=_dataUsed;
+@property (copy, nonatomic) NSError *debugErrorCausingLogout; // @synthesize debugErrorCausingLogout=_debugErrorCausingLogout;
 @property (copy, nonatomic) NSString *displayName;
 @property (strong, nonatomic) NSError *errorCausingLogout; // @synthesize errorCausingLogout=_errorCausingLogout;
 @property (copy, nonatomic) NSString *familyName; // @synthesize familyName=_familyName;

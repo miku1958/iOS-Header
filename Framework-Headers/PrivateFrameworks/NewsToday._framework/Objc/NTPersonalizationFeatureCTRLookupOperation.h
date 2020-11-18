@@ -6,19 +6,19 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class FCPersonalizationTreatment, NSArray, NSDictionary, NSObject;
+@class FCPersonalizationTreatment, NSArray, NSDictionary;
 @protocol FRReadonlyPersonalizationAggregateStore;
 
 @interface NTPersonalizationFeatureCTRLookupOperation : FCOperation
 {
-    NSObject<FRReadonlyPersonalizationAggregateStore> *_aggregateStore;
+    id<FRReadonlyPersonalizationAggregateStore> _aggregateStore;
     FCPersonalizationTreatment *_personalizationTreatment;
     NSArray *_lookupRequests;
     CDUnknownBlockType _lookupCompletion;
     NSDictionary *_result;
 }
 
-@property (strong, nonatomic) NSObject<FRReadonlyPersonalizationAggregateStore> *aggregateStore; // @synthesize aggregateStore=_aggregateStore;
+@property (strong, nonatomic) id<FRReadonlyPersonalizationAggregateStore> aggregateStore; // @synthesize aggregateStore=_aggregateStore;
 @property (copy, nonatomic) CDUnknownBlockType lookupCompletion; // @synthesize lookupCompletion=_lookupCompletion;
 @property (copy, nonatomic) NSArray *lookupRequests; // @synthesize lookupRequests=_lookupRequests;
 @property (copy, nonatomic) FCPersonalizationTreatment *personalizationTreatment; // @synthesize personalizationTreatment=_personalizationTreatment;

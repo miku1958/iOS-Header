@@ -9,7 +9,7 @@
 #import <PhotosUICore/PXPhotosDataSourceChangeObserver-Protocol.h>
 #import <PhotosUICore/PXUIWidget-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, PHAsset, PXOneUpPresentation, PXPhotosDetailsContext, PXPlacesMapFetchResultViewController, PXPlacesMapViewPort, PXPlacesSnapshotFactory, PXSectionedSelectionManager, PXTilingController, PXUIImageView, PXWidgetSpec, UIButton, UIFont, UIView;
+@class NSMutableArray, NSMutableDictionary, NSString, PHAsset, PXImageUIView, PXOneUpPresentation, PXPhotosDetailsContext, PXPlacesMapFetchResultViewController, PXPlacesMapViewPort, PXPlacesSnapshotFactory, PXSectionedSelectionManager, PXTilingController, PXWidgetSpec, UIButton, UIFont, UIView;
 @protocol PXAnonymousView, PXWidgetDelegate, PXWidgetUnlockDelegate;
 
 @interface PXUIMapWidget : NSObject <PXPhotosDataSourceChangeObserver, PXUIWidget>
@@ -29,7 +29,7 @@
     PXWidgetSpec *_spec;
     UIView *__containerView;
     UIView *__contentView;
-    PXUIImageView *__imageView;
+    PXImageUIView *__imageView;
     PXPlacesMapFetchResultViewController *__mapViewController;
     NSString *__cachedLocalizedTitle;
     NSString *__cachedDisclosureTitle;
@@ -47,7 +47,7 @@
 @property (readonly, nonatomic) UIView *_containerView; // @synthesize _containerView=__containerView;
 @property (readonly, nonatomic) UIView *_contentView; // @synthesize _contentView=__contentView;
 @property (strong, nonatomic) PXPlacesSnapshotFactory *_factory; // @synthesize _factory=__factory;
-@property (readonly, nonatomic) PXUIImageView *_imageView; // @synthesize _imageView=__imageView;
+@property (readonly, nonatomic) PXImageUIView *_imageView; // @synthesize _imageView=__imageView;
 @property (readonly, nonatomic) PXPlacesMapFetchResultViewController *_mapViewController; // @synthesize _mapViewController=__mapViewController;
 @property (strong, nonatomic) NSMutableArray *_nearbyCountCompletionBlocks; // @synthesize _nearbyCountCompletionBlocks=__nearbyCountCompletionBlocks;
 @property (readonly, nonatomic) BOOL allowUserInteractionWithSubtitle;

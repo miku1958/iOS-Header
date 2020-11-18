@@ -105,6 +105,7 @@
 - (void)moveTopic:(id)arg1 fromList:(unsigned long long)arg2 toList:(unsigned long long)arg3;
 - (id)opportunisticTopics;
 - (void)removeFromRunLoop;
+- (void)requestKeepAlive;
 - (void)requestTokenForTopic:(id)arg1 identifier:(id)arg2;
 - (void)scheduleInRunLoop:(id)arg1;
 - (void)sendFakeMessage:(id)arg1;

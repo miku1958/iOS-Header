@@ -37,6 +37,7 @@
     NCNotificationListStalenessEventTracker *_notificationListStalenessEventTracker;
     NSMutableSet *_notificationRequestsRemovedFromNotificationCenterDestination;
     _UILegibilitySettings *_legibilitySettings;
+    double _revealPercentage;
 }
 
 @property (nonatomic, getter=isCollectionViewRectExpanded) BOOL collectionViewRectExpanded; // @synthesize collectionViewRectExpanded=_collectionViewRectExpanded;
@@ -61,6 +62,7 @@
 @property (strong, nonatomic) _UIStatesFeedbackGenerator *revealFeedbackGenerator; // @synthesize revealFeedbackGenerator=_revealFeedbackGenerator;
 @property (strong, nonatomic) NCNotificationListSectionRevealHintView *revealHintView; // @synthesize revealHintView=_revealHintView;
 @property (nonatomic) int revealListTriggerState; // @synthesize revealListTriggerState=_revealListTriggerState;
+@property (nonatomic) double revealPercentage; // @synthesize revealPercentage=_revealPercentage;
 @property (nonatomic) BOOL shouldAllowNotificationsHistoryReveal; // @synthesize shouldAllowNotificationsHistoryReveal=_shouldAllowNotificationsHistoryReveal;
 @property (nonatomic) BOOL shouldLimitTargetContentOffsetForNotificationListReveal; // @synthesize shouldLimitTargetContentOffsetForNotificationListReveal=_shouldLimitTargetContentOffsetForNotificationListReveal;
 @property (nonatomic) BOOL shouldPerformReloadForBatchedOperations; // @synthesize shouldPerformReloadForBatchedOperations=_shouldPerformReloadForBatchedOperations;
@@ -148,6 +150,7 @@
 - (BOOL)hasVisibleContent;
 - (void)hideNotificationsFromIncomingSectionListForSectionIdentifier:(id)arg1 subSectionIdentifer:(id)arg2;
 - (void)hideRequestsForNotificationSectionIdentifier:(id)arg1 subSectionIdentifier:(id)arg2;
+- (void)hideRequestsForNotificationSectionSettings:(id)arg1;
 - (id)indexPathForNotificationRequest:(id)arg1;
 - (id)init;
 - (BOOL)insertNotificationRequest:(id)arg1 forCoalescedNotification:(id)arg2;
@@ -191,8 +194,10 @@
 - (void)sectionHeaderViewDidTransitionToClearState:(id)arg1;
 - (BOOL)shouldReceiveTouch:(id)arg1 forGestureRecognizer:(id)arg2;
 - (void)showRequestsForNotificationSectionIdentifier:(id)arg1 subSectionIdentifier:(id)arg2;
+- (void)showRequestsForNotificationSectionSettings:(id)arg1;
 - (void)updateForLegibilitySettings:(id)arg1;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 
 @end

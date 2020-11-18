@@ -21,6 +21,7 @@
     NSString *_passID;
     NSMutableArray *_paymentApplications;
     NSString *_peerPaymentAccountCurrency;
+    unsigned int _peerPaymentAccountState;
     NSString *_primaryAccountIdentifier;
     NSString *_primaryAccountNumberSuffix;
     BOOL _hasAssociatedPeerPaymentAccount;
@@ -28,6 +29,7 @@
     struct {
         unsigned int ingestedDate:1;
         unsigned int peerPaymentAccountBalance:1;
+        unsigned int peerPaymentAccountState:1;
         unsigned int hasAssociatedPeerPaymentAccount:1;
         unsigned int supportsAutomaticSelection:1;
     } _has;
@@ -44,6 +46,7 @@
 @property (readonly, nonatomic) BOOL hasPassID;
 @property (nonatomic) BOOL hasPeerPaymentAccountBalance;
 @property (readonly, nonatomic) BOOL hasPeerPaymentAccountCurrency;
+@property (nonatomic) BOOL hasPeerPaymentAccountState;
 @property (readonly, nonatomic) BOOL hasPrimaryAccountIdentifier;
 @property (readonly, nonatomic) BOOL hasPrimaryAccountNumberSuffix;
 @property (nonatomic) BOOL hasSupportsAutomaticSelection;
@@ -54,6 +57,7 @@
 @property (strong, nonatomic) NSMutableArray *paymentApplications; // @synthesize paymentApplications=_paymentApplications;
 @property (nonatomic) long long peerPaymentAccountBalance; // @synthesize peerPaymentAccountBalance=_peerPaymentAccountBalance;
 @property (strong, nonatomic) NSString *peerPaymentAccountCurrency; // @synthesize peerPaymentAccountCurrency=_peerPaymentAccountCurrency;
+@property (nonatomic) unsigned int peerPaymentAccountState; // @synthesize peerPaymentAccountState=_peerPaymentAccountState;
 @property (strong, nonatomic) NSString *primaryAccountIdentifier; // @synthesize primaryAccountIdentifier=_primaryAccountIdentifier;
 @property (strong, nonatomic) NSString *primaryAccountNumberSuffix; // @synthesize primaryAccountNumberSuffix=_primaryAccountNumberSuffix;
 @property (nonatomic) BOOL supportsAutomaticSelection; // @synthesize supportsAutomaticSelection=_supportsAutomaticSelection;

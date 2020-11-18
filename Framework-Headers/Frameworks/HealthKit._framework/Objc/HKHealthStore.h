@@ -33,6 +33,7 @@
     NSHashTable *_fitnessMachineConnectionInitiators;
     NSMutableDictionary *_workoutSessionsByUUID;
     NSMutableSet *_deepBreathingSessions;
+    NSMutableDictionary *_waitForSyncStartHandlersByUUID;
     unsigned int _applicationSDKVersion;
     NSObject<OS_dispatch_queue> *_clientQueue;
 }
@@ -54,7 +55,8 @@
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_actionCompletionOnClientQueue:(CDUnknownBlockType)arg1;
 - (void)_activeWorkoutApplicationIdentifierWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_addWorkoutSession:(id)arg1;
+- (void)_addWaitForSyncStartHandlerWithUUID:(id)arg1 waitForSyncSyncStartHandler:(CDUnknownBlockType)arg2;
+- (BOOL)_addWorkoutSession:(id)arg1;
 - (void)_applicationDidBecomeActive:(id)arg1;
 - (void)_applicationWillResignActive:(id)arg1;
 - (void)_beginWorkoutWithActivityType:(unsigned long long)arg1 startDate:(id)arg2 goalType:(unsigned long long)arg3 goal:(id)arg4 metadata:(id)arg5 lapLength:(id)arg6 shouldUseDeviceData:(BOOL)arg7 completion:(CDUnknownBlockType)arg8;
@@ -71,7 +73,7 @@
 - (void)_currentValueForQuantityTypeCode:(long long)arg1 characteristicTypeCode:(long long)arg2 beforeDate:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_currentWorkoutSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_deleteObjects:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_endWorkoutSession:(id)arg1;
+- (void)_endWorkoutSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchBoolDaemonPreferenceForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchDaemonPreferenceForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchDevicesMatchingProperty:(id)arg1 values:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -88,18 +90,19 @@
 - (CDUnknownBlockType)_objectCompletionOnClientQueue:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)_objectHandlerOnClientQueue:(CDUnknownBlockType)arg1;
 - (void)_pauseAllActiveWorkoutsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_pauseWorkoutSession:(id)arg1;
+- (void)_pauseWorkoutSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_profileServerProxyWithCompletion:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)_queryControlServerProxyWithCompletion:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)_reattachWorkout:(id)arg1 fitnessMachineConnection:(id)arg2 fitnessMachineSessionConfiguration:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_reattachWorkout:(id)arg1 fitnessMachineConnection:(id)arg2 fitnessMachineSessionConfiguration:(id)arg3 willReactivate:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_removeWaitForSyncStartHandlerWithUUID:(id)arg1;
 - (void)_removeWorkoutSession:(id)arg1;
 - (void)_replaceWorkout:(id)arg1 withWorkout:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_resourceQueue_addFitnessMachineConnection:(id)arg1;
 - (void)_resourceQueue_addFitnessMachineConnectionInitiator:(id)arg1;
 - (id)_resourceQueue_fitnessMachineConnectionForUUID:(id)arg1;
 - (void)_resourceQueue_setUpWithEndpoint:(id)arg1;
-- (void)_resumeWorkoutSession:(id)arg1;
+- (void)_resumeWorkoutSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_safeFetchDaemonPreferenceForKey:(id)arg1 expectedReturnClass:(Class)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_saveActiveWorkout:(id)arg1 isMachineWorkout:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_saveObjects:(id)arg1 atomically:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
@@ -119,7 +122,7 @@
 - (void)_setPreferredUnit:(id)arg1 forType:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_setWheelchairUse:(long long)arg1 error:(id *)arg2;
 - (void)_shouldGenerateDemoDataPreferenceIsSet:(CDUnknownBlockType)arg1;
-- (void)_startWorkoutSession:(id)arg1;
+- (void)_startWorkoutSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_subserverProxyForSelector:(SEL)arg1 completion:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (void)_throwIfAuthorizationDisallowedForSharing:(BOOL)arg1 types:(id)arg2;
 - (void)_throwIfParentTypeNotRequestedForSharing:(BOOL)arg1 types:(id)arg2;
@@ -144,6 +147,7 @@
 - (void)clientRemote_presentAuthorizationWithRequestRecord:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)clientRemote_presentAuthorizationWithSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)clientRemote_unitPreferencesDidUpdate;
+- (void)clientRemote_waitOnHealthCloudSyncWithProgressDidStartWithUUID:(id)arg1;
 - (void)closeTransactionForType:(id)arg1 anchor:(id)arg2 ackTime:(id)arg3 query:(id)arg4;
 - (void)connectionInterrupted;
 - (void)connectionInvalidated;

@@ -65,6 +65,8 @@
 - (BOOL)isDateInToday:(id)arg1;
 - (BOOL)isDateInTomorrow:(id)arg1;
 - (BOOL)isDateInYesterday:(id)arg1;
+- (BOOL)isDateWithinLastRollingMonth:(id)arg1;
+- (BOOL)isDateWithinLastRollingYear:(id)arg1;
 - (BOOL)isDayOfWeekNumberOnWeekend:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (id)startOfRollingDay:(CDUnknownBlockType)arg1;

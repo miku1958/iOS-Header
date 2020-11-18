@@ -20,8 +20,12 @@
 
 + (id)_sharedOpenAppService;
 + (id)_sharedOpenApplicationOptions;
++ (BOOL)areAnimationsPermitted;
 + (void)initialize;
++ (void)performWithoutAnimationWhileHidden:(CDUnknownBlockType)arg1;
++ (void)setAnimationsPermitted:(BOOL)arg1;
 - (void).cxx_destruct;
+- (void)dismissControlCenter;
 - (void)dismissModule;
 - (void)enqueueStatusUpdate:(id)arg1;
 - (id)initWithModuleIdentifier:(id)arg1;

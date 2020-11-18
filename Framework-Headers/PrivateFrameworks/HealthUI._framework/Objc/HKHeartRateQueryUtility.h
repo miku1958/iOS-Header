@@ -6,53 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class HKHealthStore, HKQuery, NSDateInterval, NSMutableDictionary;
-@protocol OS_dispatch_queue;
+@class NSDateInterval, NSMutableDictionary;
+@protocol HKHeartRateQueryHandler, OS_dispatch_queue;
 
 @interface HKHeartRateQueryUtility : NSObject
 {
-    HKHealthStore *_healthStore;
+    id<HKHeartRateQueryHandler> _queryHandler;
     NSDateInterval *_dateInterval;
     long long _timeScope;
-    HKQuery *_heartRateQuery;
-    HKQuery *_restingHeartRateQuery;
-    HKQuery *_walkingHeartRateQuery;
-    HKQuery *_workoutQuery;
-    HKQuery *_breatheQuery;
-    HKQuery *_stationaryDiscordanceQuery;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_resourceQueue;
     NSMutableDictionary *_sampleResults;
     CDUnknownBlockType _resultsHandler;
 }
 
-@property (strong, nonatomic) HKQuery *breatheQuery; // @synthesize breatheQuery=_breatheQuery;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (strong, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
-@property (weak, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
-@property (strong, nonatomic) HKQuery *heartRateQuery; // @synthesize heartRateQuery=_heartRateQuery;
+@property (weak, nonatomic) id<HKHeartRateQueryHandler> queryHandler; // @synthesize queryHandler=_queryHandler;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *resourceQueue; // @synthesize resourceQueue=_resourceQueue;
-@property (strong, nonatomic) HKQuery *restingHeartRateQuery; // @synthesize restingHeartRateQuery=_restingHeartRateQuery;
 @property (copy, nonatomic) CDUnknownBlockType resultsHandler; // @synthesize resultsHandler=_resultsHandler;
 @property (strong, nonatomic) NSMutableDictionary *sampleResults; // @synthesize sampleResults=_sampleResults;
-@property (strong, nonatomic) HKQuery *stationaryDiscordanceQuery; // @synthesize stationaryDiscordanceQuery=_stationaryDiscordanceQuery;
 @property (nonatomic) long long timeScope; // @synthesize timeScope=_timeScope;
-@property (strong, nonatomic) HKQuery *walkingHeartRateQuery; // @synthesize walkingHeartRateQuery=_walkingHeartRateQuery;
-@property (strong, nonatomic) HKQuery *workoutQuery; // @synthesize workoutQuery=_workoutQuery;
 
-+ (long long)_contextStyleForDisplayTypeContext:(long long)arg1;
-+ (id)_displayTypeQueryForContext:(long long)arg1 dateInterval:(id)arg2 timeScope:(long long)arg3 completion:(CDUnknownBlockType)arg4;
-+ (id)_histogramQueryForContext:(long long)arg1 dateInterval:(id)arg2 timeScope:(long long)arg3 completion:(CDUnknownBlockType)arg4;
-+ (id)_quantityTypeForDisplayTypeContext:(long long)arg1;
-+ (id)_queryForContext:(long long)arg1 dateInterval:(id)arg2 timeScope:(long long)arg3 completion:(CDUnknownBlockType)arg4;
-+ (id)_statisticsDateComponentsForTimeScope:(long long)arg1;
-+ (id)orderedDisplayTypeContextResults:(id)arg1;
++ (id)_minMaxStatisticsFromChartPoints:(id)arg1 dateInterval:(id)arg2;
++ (id)_orderedDisplayTypeContextResults:(id)arg1;
 - (void).cxx_destruct;
-- (id)contextResultForContext:(long long)arg1 statistics:(id)arg2;
-- (void)execute;
-- (id)initWithHealthStore:(id)arg1 dateInterval:(id)arg2 timeScope:(long long)arg3 resultsHandler:(CDUnknownBlockType)arg4;
+- (id)initWithQueryHandler:(id)arg1 dateInterval:(id)arg2 timeScope:(long long)arg3 resultsHandler:(CDUnknownBlockType)arg4;
 - (void)setupQueries;
-- (void)stop;
 
 @end
 

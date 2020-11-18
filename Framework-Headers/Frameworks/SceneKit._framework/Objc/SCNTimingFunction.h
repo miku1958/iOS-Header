@@ -16,6 +16,7 @@
 + (id)functionWithCAMediaTimingFunction:(id)arg1;
 + (id)functionWithTimingMode:(long long)arg1;
 + (BOOL)supportsSecureCoding;
+- (struct __C3DTimingFunction *)c3dTimingFunction;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

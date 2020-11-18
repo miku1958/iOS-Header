@@ -183,6 +183,13 @@ struct ObjectTrackerOptions {
     int _field3;
 };
 
+struct Options {
+    BOOL _field1;
+    unsigned long long _field2;
+    struct shared_ptr<Espresso::abstract_context> _field3;
+    id _field4;
+};
+
 struct Projections_meanStdTable {
     float *sumTable;
     float *sumSqTable;
@@ -367,6 +374,8 @@ struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
     struct __tree_node_base<void *> *_field1;
 };
 
+struct abstract_context;
+
 struct adaBoostApply {
     struct vector<vision::hum::DTreeApply, std::__1::allocator<vision::hum::DTreeApply>> _field1;
 };
@@ -436,6 +445,11 @@ struct os_unfair_lock_s {
 };
 
 struct pair<long long, long long>;
+
+struct shared_ptr<Espresso::abstract_context> {
+    struct abstract_context *_field1;
+    struct __shared_weak_count *_field2;
+};
 
 struct shared_ptr<const vision::mod::GreedyClustererFaces> {
     struct GreedyClustererFaces *__ptr_;
@@ -699,6 +713,11 @@ typedef struct shared_ptr<vision::mod::FaceIDModel> {
     struct __shared_weak_count *__cntrl_;
 } shared_ptr_8c39738b;
 
+typedef struct shared_ptr<vision::mod::ImageClassifierAbstract> {
+    struct ImageClassifierAbstract *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+} shared_ptr_047f28ed;
+
 typedef struct shared_ptr<vision::mod::ImageDescriptorBufferAbstract> {
     struct ImageDescriptorBufferAbstract *_field1;
     struct __shared_weak_count *_field2;
@@ -708,6 +727,11 @@ typedef struct shared_ptr<vision::mod::ImageDescriptorBufferFloat32> {
     struct ImageDescriptorBufferFloat32 *_field1;
     struct __shared_weak_count *_field2;
 } shared_ptr_099ccdd3;
+
+typedef struct shared_ptr<vision::mod::ImageDescriptorProcessorAbstract> {
+    struct ImageDescriptorProcessorAbstract *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+} shared_ptr_b26ea6de;
 
 typedef struct vector<MPClusteringTreeNode *, std::__1::allocator<MPClusteringTreeNode *>> {
     struct MPClusteringTreeNode **_field1;

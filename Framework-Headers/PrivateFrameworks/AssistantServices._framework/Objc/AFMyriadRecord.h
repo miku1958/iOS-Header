@@ -33,6 +33,7 @@
 - (void)adjustByMultiplier:(float)arg1 adding:(int)arg2;
 - (id)asAdvertisementData;
 - (id)description;
+- (void)generateRandomConfidence;
 - (void)generateTiebreaker;
 - (id)init;
 - (id)initWithAudioData:(id)arg1;
@@ -41,6 +42,7 @@
 - (BOOL)isATrump;
 - (BOOL)isAnEmergency;
 - (BOOL)isAnEmergencyHandled;
+- (BOOL)isSane;
 
 @end
 

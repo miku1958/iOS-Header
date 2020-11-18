@@ -14,6 +14,8 @@
 @interface ASDIAPInfo : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned char _type;
+    BOOL _hasUsedFreeOffer;
+    BOOL _hasUsedIntroPricingOffer;
     NSNumber *_adamId;
     NSNumber *_appAdamId;
     NSNumber *_expirationTimestamp;
@@ -26,6 +28,8 @@
 @property (strong, nonatomic) NSNumber *adamId; // @synthesize adamId=_adamId;
 @property (strong, nonatomic) NSNumber *appAdamId; // @synthesize appAdamId=_appAdamId;
 @property (strong, nonatomic) NSNumber *expirationTimestamp; // @synthesize expirationTimestamp=_expirationTimestamp;
+@property (nonatomic) BOOL hasUsedFreeOffer; // @synthesize hasUsedFreeOffer=_hasUsedFreeOffer;
+@property (nonatomic) BOOL hasUsedIntroPricingOffer; // @synthesize hasUsedIntroPricingOffer=_hasUsedIntroPricingOffer;
 @property (strong, nonatomic) NSNumber *lastModifiedTimestamp; // @synthesize lastModifiedTimestamp=_lastModifiedTimestamp;
 @property (strong, nonatomic) NSNumber *purchaseTimestamp; // @synthesize purchaseTimestamp=_purchaseTimestamp;
 @property (nonatomic) unsigned char type; // @synthesize type=_type;

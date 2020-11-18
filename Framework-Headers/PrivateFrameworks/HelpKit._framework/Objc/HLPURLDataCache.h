@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <HelpKit/NSCoding-Protocol.h>
 #import <HelpKit/NSCopying-Protocol.h>
+#import <HelpKit/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSString;
 
-@interface HLPURLDataCache : NSObject <NSCopying, NSCoding>
+@interface HLPURLDataCache : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned long long _cacheType;
     long long _maxAge;
@@ -31,6 +31,7 @@
 @property (nonatomic) long long maxAge; // @synthesize maxAge=_maxAge;
 @property (strong, nonatomic) NSDate *updatedDate; // @synthesize updatedDate=_updatedDate;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;

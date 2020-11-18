@@ -7,6 +7,7 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (HKAdditions)
++ (struct NSDirectionalEdgeInsets)wd_defaultDirectionalLayoutMargins;
 - (void)_updateForCurrentSizeCategory;
 - (id)hk_addConstraintsWithFormat:(id)arg1 options:(unsigned long long)arg2 metrics:(id)arg3 views:(id)arg4;
 - (id)hk_addConstraintsWithFormat:(id)arg1 options:(unsigned long long)arg2 views:(id)arg3;

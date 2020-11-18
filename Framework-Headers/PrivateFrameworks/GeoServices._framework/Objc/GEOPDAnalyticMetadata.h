@@ -14,6 +14,7 @@
 {
     PBUnknownFields *_unknownFields;
     struct GEOSessionID _sessionId;
+    double _relativeTimestamp;
     GEOAbAssignInfo *_abAssignInfo;
     NSString *_appIdentifier;
     NSString *_appMajorVersion;
@@ -31,6 +32,7 @@
     BOOL _isInternalTool;
     struct {
         unsigned int sessionId:1;
+        unsigned int relativeTimestamp:1;
         unsigned int requestSource:1;
         unsigned int sequenceNumber:1;
         unsigned int isFromApi:1;
@@ -55,6 +57,7 @@
 @property (readonly, nonatomic) BOOL hasLoggedAbExperiment;
 @property (readonly, nonatomic) BOOL hasOsVersion;
 @property (readonly, nonatomic) BOOL hasProductName;
+@property (nonatomic) BOOL hasRelativeTimestamp;
 @property (nonatomic) BOOL hasRequestSource;
 @property (readonly, nonatomic) BOOL hasRequestTime;
 @property (nonatomic) BOOL hasSequenceNumber;
@@ -65,6 +68,7 @@
 @property (strong, nonatomic) NSString *loggedAbExperiment; // @synthesize loggedAbExperiment=_loggedAbExperiment;
 @property (strong, nonatomic) NSString *osVersion; // @synthesize osVersion=_osVersion;
 @property (strong, nonatomic) NSString *productName; // @synthesize productName=_productName;
+@property (nonatomic) double relativeTimestamp; // @synthesize relativeTimestamp=_relativeTimestamp;
 @property (nonatomic) int requestSource; // @synthesize requestSource=_requestSource;
 @property (strong, nonatomic) GEOLocalTime *requestTime; // @synthesize requestTime=_requestTime;
 @property (nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;

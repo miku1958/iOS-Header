@@ -6,7 +6,7 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, _SFPBActivityIndicatorCardSection, _SFPBAppLinkCardSection, _SFPBAudioPlaybackCardSection, _SFPBDescriptionCardSection, _SFPBDetailedRowCardSection, _SFPBFlightCardSection, _SFPBImagesCardSection, _SFPBKeyValueDataCardSection, _SFPBMapCardSection, _SFPBMediaInfoCardSection, _SFPBMediaPlayerCardSection, _SFPBMessageCardSection, _SFPBMetaInfoCardSection, _SFPBNowPlayingCardSection, _SFPBRichTitleCardSection, _SFPBRowCardSection, _SFPBScoreboardCardSection, _SFPBSectionHeaderCardSection, _SFPBSelectableGridCardSection, _SFPBSocialMediaPostCardSection, _SFPBStockChartCardSection, _SFPBSuggestionCardSection, _SFPBTableHeaderRowCardSection, _SFPBTableRowCardSection, _SFPBTextColumnsCardSection, _SFPBTitleCardSection, _SFPBTrackListCardSection, _SFPBWebCardSection;
+@class NSData, NSDictionary, _SFPBActivityIndicatorCardSection, _SFPBAppLinkCardSection, _SFPBAudioPlaybackCardSection, _SFPBDescriptionCardSection, _SFPBDetailedRowCardSection, _SFPBFlightCardSection, _SFPBImagesCardSection, _SFPBKeyValueDataCardSection, _SFPBMapCardSection, _SFPBMediaInfoCardSection, _SFPBMediaPlayerCardSection, _SFPBMessageCardSection, _SFPBMetaInfoCardSection, _SFPBNowPlayingCardSection, _SFPBRichTitleCardSection, _SFPBRowCardSection, _SFPBScoreboardCardSection, _SFPBSectionHeaderCardSection, _SFPBSelectableGridCardSection, _SFPBSocialMediaPostCardSection, _SFPBStockChartCardSection, _SFPBSuggestionCardSection, _SFPBTableHeaderRowCardSection, _SFPBTableRowCardSection, _SFPBTextColumnsCardSection, _SFPBTitleCardSection, _SFPBTrackListCardSection, _SFPBWatchListCardSection, _SFPBWebCardSection;
 
 @protocol _SFPBCardSectionValue <NSObject>
 
@@ -43,6 +43,7 @@
 @property (readonly, nonatomic) BOOL hasTextColumnsCardSection;
 @property (readonly, nonatomic) BOOL hasTitleCardSection;
 @property (readonly, nonatomic) BOOL hasTrackListCardSection;
+@property (readonly, nonatomic) BOOL hasWatchListCardSection;
 @property (readonly, nonatomic) BOOL hasWebCardSection;
 @property (strong, nonatomic) _SFPBImagesCardSection *imagesCardSection;
 @property (readonly, nonatomic) NSData *jsonData;
@@ -66,6 +67,7 @@
 @property (strong, nonatomic) _SFPBTextColumnsCardSection *textColumnsCardSection;
 @property (strong, nonatomic) _SFPBTitleCardSection *titleCardSection;
 @property (strong, nonatomic) _SFPBTrackListCardSection *trackListCardSection;
+@property (strong, nonatomic) _SFPBWatchListCardSection *watchListCardSection;
 @property (strong, nonatomic) _SFPBWebCardSection *webCardSection;
 
 - (id)initWithDictionary:(NSDictionary *)arg1;

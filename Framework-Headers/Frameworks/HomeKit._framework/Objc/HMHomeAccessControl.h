@@ -4,32 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HomeKit/HMAccessControl.h>
 
-@class HMUser, HMUserPresenceAuthorization, HMUserPresenceCompute;
-@protocol OS_dispatch_queue;
+@class HMUserPresenceAuthorization, HMUserPresenceCompute;
 
-@interface HMHomeAccessControl : NSObject
+@interface HMHomeAccessControl : HMAccessControl
 {
     BOOL _owner;
     BOOL _administrator;
     BOOL _remoteAccessAllowed;
-    HMUser *_user;
     HMUserPresenceAuthorization *_presenceAuthStatus;
     HMUserPresenceCompute *_presenceComputeStatus;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
 @property (nonatomic, getter=isAdministrator) BOOL administrator; // @synthesize administrator=_administrator;
 @property (getter=isOwner) BOOL owner; // @synthesize owner=_owner;
 @property (strong, nonatomic) HMUserPresenceAuthorization *presenceAuthStatus; // @synthesize presenceAuthStatus=_presenceAuthStatus;
 @property (strong, nonatomic) HMUserPresenceCompute *presenceComputeStatus; // @synthesize presenceComputeStatus=_presenceComputeStatus;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (getter=isRemoteAccessAllowed) BOOL remoteAccessAllowed; // @synthesize remoteAccessAllowed=_remoteAccessAllowed;
-@property (weak) HMUser *user; // @synthesize user=_user;
 
 - (void).cxx_destruct;
 - (id)initWithUser:(id)arg1 owner:(BOOL)arg2 administratorPrivilege:(BOOL)arg3 remoteAccess:(BOOL)arg4 presenceAuthStatus:(id)arg5 presenceComputeStatus:(id)arg6;
+- (BOOL)isEqual:(id)arg1;
 - (unsigned long long)presenceAuthorizationStatus;
 - (unsigned long long)presenceComputationStatus;
 - (void)updateAdministratorAccess:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;

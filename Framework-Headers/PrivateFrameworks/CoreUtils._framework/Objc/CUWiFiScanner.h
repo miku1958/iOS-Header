@@ -17,6 +17,7 @@
     BOOL _invalidateDone;
     BOOL _scanning;
     NSObject<OS_dispatch_source> *_scanTimer;
+    BOOL _suspended;
     struct LogCategory *_ucat;
     unsigned int _changeFlags;
     unsigned int _scanFlags;
@@ -51,6 +52,8 @@
 - (void)dealloc;
 - (id)init;
 - (void)invalidate;
+- (void)resume;
+- (void)suspend;
 
 @end
 

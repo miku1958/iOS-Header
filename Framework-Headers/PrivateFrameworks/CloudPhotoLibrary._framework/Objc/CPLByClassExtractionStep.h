@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSString *queryDescription; // @synthesize queryDescription=_queryDescription;
 
 - (void).cxx_destruct;
-- (BOOL)extractToBatch:(id)arg1 maximumCount:(unsigned long long)arg2 error:(id *)arg3;
+- (BOOL)extractToBatch:(id)arg1 maximumCount:(unsigned long long)arg2 maximumResourceSize:(unsigned long long)arg3 error:(id *)arg4;
 - (id)initWithStorage:(id)arg1 description:(id)arg2 class:(Class)arg3 maximumCount:(unsigned long long)arg4 query:(CDUnknownFunctionPointerType)arg5;
 - (void)reset;
 - (id)shortDescription;

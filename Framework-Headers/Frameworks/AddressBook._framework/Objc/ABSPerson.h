@@ -12,7 +12,6 @@
 
 @interface ABSPerson : NSObject <ABSRecord>
 {
-    unsigned int _type;
     ABSAddressBook *_addressBook;
     ABSSource *_source;
     CNMutableContact *_cnImpl;
@@ -32,7 +31,7 @@
 @property (strong, nonatomic) NSString *revertedRecordIdentifier; // @synthesize revertedRecordIdentifier=_revertedRecordIdentifier;
 @property (weak, nonatomic) ABSSource *source; // @synthesize source=_source;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) unsigned int type; // @synthesize type=_type;
+@property (readonly, nonatomic) unsigned int type;
 
 + (unsigned int)compositeNameFormat;
 + (unsigned int)compositeNameFormatForPerson:(id)arg1;
@@ -55,7 +54,6 @@
 - (id)copyImageData;
 - (id)copyImageDataWithFormat:(int)arg1;
 - (const void *)copyValueForProperty:(int)arg1;
-- (unsigned int)getType;
 - (BOOL)hasImageData;
 - (id)init;
 - (id)initWithMutableContact:(id)arg1;

@@ -17,6 +17,7 @@
 @property (nonatomic) long long itemType;
 @property (copy, nonatomic) CLPlacemark *location;
 @property (nonatomic) long long locationSearchType;
+@property (copy, nonatomic) NSString *notebookItemIdentifier;
 @property (nonatomic) long long status;
 @property (copy, nonatomic) INSpeakableString *title;
 

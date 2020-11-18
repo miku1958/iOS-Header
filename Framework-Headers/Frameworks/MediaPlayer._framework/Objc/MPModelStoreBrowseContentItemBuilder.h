@@ -54,7 +54,7 @@
 - (long long)contentItemTypeForRawResponseKindIdentifiers:(id)arg1;
 - (long long)contentItemTypeForStoreItemMetadata:(id)arg1;
 - (id)initWithRequestedPropertySet:(id)arg1;
-- (id)modelObjectWithStoreItemMetadata:(id)arg1;
+- (id)modelObjectWithStoreItemMetadata:(id)arg1 sourceModelObject:(id)arg2;
 
 @end
 

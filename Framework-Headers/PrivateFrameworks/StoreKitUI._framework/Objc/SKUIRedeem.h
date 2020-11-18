@@ -19,6 +19,7 @@
     NSString *_inAppPurchase;
     NSString *_credit;
     NSString *_balance;
+    NSString *_creditDisplay;
     NSDictionary *_thankYouDictionary;
     NSURL *_redirectURL;
     NSURL *_customizedThankyouURL;
@@ -33,6 +34,7 @@
 @property (nonatomic) double ITunesPassLearnMoreAlertInterval; // @synthesize ITunesPassLearnMoreAlertInterval=_ITunesPassLearnMoreAlertInterval;
 @property (copy, nonatomic) NSString *balance; // @synthesize balance=_balance;
 @property (copy, nonatomic) NSString *credit; // @synthesize credit=_credit;
+@property (copy, nonatomic) NSString *creditDisplay; // @synthesize creditDisplay=_creditDisplay;
 @property (strong, nonatomic) NSURL *customizedThankyouURL; // @synthesize customizedThankyouURL=_customizedThankyouURL;
 @property (strong, nonatomic) NSArray *downloads; // @synthesize downloads=_downloads;
 @property (strong, nonatomic) id<SKUIArtworkProviding> headerArtworkProvider; // @synthesize headerArtworkProvider=_headerArtworkProvider;

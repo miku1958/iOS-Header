@@ -15,13 +15,18 @@ struct CGSize {
     double _field2;
 };
 
-struct MPModelStorePlaybackItemEligibility {
+struct MPCModelStorePlaybackItemsRequestAccumulatorResult {
     BOOL _field1;
-    long long _field2;
+    BOOL _field2;
 };
 
 struct NSMapTable {
     Class _field1;
+};
+
+struct _MPCModelStorePlaybackItemEligibility {
+    BOOL _field1;
+    long long _field2;
 };
 
 struct _MSVSignedRange {

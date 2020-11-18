@@ -25,13 +25,17 @@
     CDUnknownBlockType _finalTracklistLoadingCompletionHandler;
     BOOL _hasFoundStartItem;
     BOOL _hasLoadedFinalResponse;
+    BOOL _hasShuffledInitialResult;
+    NSObject<OS_dispatch_queue> *_itemListChangeDetectionQueue;
     NSOperationQueue *_operationQueue;
     MPPlaceholderAVItem *_placeholderAVItem;
     MPPlaybackPlaceholderMediaItem *_placeholderMediaItem;
     MPModelRequest *_request;
+    BOOL _requireFinalTracklist;
     MPModelResponse *_response;
     NSString *_rtcReportingPlayQueueSourceIdentifier;
     MPShuffleController *_shuffleController;
+    NSString *_siriAssetInfo;
     BOOL _isSiriInitiated;
     MPIdentifierSet *_startItemIdentifiers;
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;
@@ -61,7 +65,7 @@
 - (void)_endBackgroundTaskAssertion;
 - (id)_equivalencySourceAdamIDForIdentifierSet:(id)arg1;
 - (id)_genericObjectForModelObject:(id)arg1;
-- (void)_handleFinalResponseWithPreferredStartIndex:(unsigned long long)arg1;
+- (BOOL)_handleFinalResponseWithPreferredStartIndex:(unsigned long long)arg1;
 - (BOOL)_hasPlaceholderItemAtIndex:(unsigned long long)arg1;
 - (id)_identifierSetAtIndex:(unsigned long long)arg1;
 - (unsigned long long)_indexOfItemWithIdentifier:(id)arg1 shouldIgnoreShuffle:(BOOL)arg2;
@@ -74,6 +78,8 @@
 - (void)_reloadModelRequestForInvalidation;
 - (void)_reloadModelRequestWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_responseDidInvalidateNotification:(id)arg1;
+- (id)_resultsForShuffleController;
+- (BOOL)_shouldRecordReturnedItemIDs;
 - (unsigned long long)_songShuffledIndexForIndex:(unsigned long long)arg1;
 - (void)_unregisterNotificationsForResponse:(id)arg1;
 - (void)applyVolumeNormalizationForItem:(id)arg1;

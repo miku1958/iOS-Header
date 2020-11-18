@@ -245,6 +245,7 @@
 - (id)interactionControllerForPresentation:(id)arg1;
 - (BOOL)itemStore:(id)arg1 canEditItem:(id)arg2;
 - (BOOL)itemStore:(id)arg1 canShareItem:(id)arg2;
+- (unsigned long long)itemStore:(id)arg1 editedFileBehaviorForItem:(id)arg2;
 - (id)keyCommands;
 - (void)loadView;
 - (int)mode;

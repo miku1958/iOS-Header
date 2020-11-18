@@ -6,14 +6,16 @@
 
 #import <HomeUI/HMHomeDelegate-Protocol.h>
 
-@class CLLocation, HMActionSet, HMHome, HMResidentDevice, HMRoom, HMServiceGroup, HMUser, NSArray, NSSet, NSString;
+@class CLLocation, HMActionSet, HMHome, HMMediaSystem, HMResidentDevice, HMRoom, HMServiceGroup, HMUser, NSArray, NSSet, NSString;
 
 @protocol HFHomeObserver <HMHomeDelegate>
 
 @optional
+- (void)home:(HMHome *)arg1 didAddMediaSystem:(HMMediaSystem *)arg2;
 - (void)home:(HMHome *)arg1 didAddResidentDevice:(HMResidentDevice *)arg2;
 - (void)home:(HMHome *)arg1 didExecuteActionSets:(NSSet *)arg2 failedActionSets:(NSSet *)arg3;
 - (void)home:(HMHome *)arg1 didReadValuesForCharacteristics:(NSSet *)arg2 failedCharacteristics:(NSSet *)arg3;
+- (void)home:(HMHome *)arg1 didRemoveMediaSystem:(HMMediaSystem *)arg2;
 - (void)home:(HMHome *)arg1 didRemoveResidentDevice:(HMResidentDevice *)arg2;
 - (void)home:(HMHome *)arg1 didUpdateAccesoryInvitationsForUser:(HMUser *)arg2;
 - (void)home:(HMHome *)arg1 didUpdateAccessControlForUser:(HMUser *)arg2;
@@ -24,6 +26,7 @@
 - (void)home:(HMHome *)arg1 didUpdateLocation:(CLLocation *)arg2;
 - (void)home:(HMHome *)arg1 didUpdateMediaPassword:(NSString *)arg2;
 - (void)home:(HMHome *)arg1 didUpdateMediaPeerToPeerEnabled:(BOOL)arg2;
+- (void)home:(HMHome *)arg1 didUpdateMediaSystem:(HMMediaSystem *)arg2;
 - (void)home:(HMHome *)arg1 didUpdateMinimumMediaUserPrivilege:(long long)arg2;
 - (void)home:(HMHome *)arg1 didUpdateStateForOutgoingInvitations:(NSArray *)arg2;
 - (void)home:(HMHome *)arg1 didUpdateWallpaperForRoom:(HMRoom *)arg2;

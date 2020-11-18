@@ -7,22 +7,34 @@
 #import <Foundation/NSObject.h>
 
 #import <CFNetwork/NSURLSessionDelegate-Protocol.h>
+#import <CFNetwork/NSURLSessionTaskDelegate-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface StrictSecurityURLSessionDelegate : NSObject <NSURLSessionDelegate>
+@interface StrictSecurityURLSessionDelegate : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegate>
 {
     CDUnknownBlockType _xctAssert;
+    BOOL _redirected;
+    BOOL _challengedForServerTrust;
+    BOOL _cancelTrustChallenge;
+    BOOL _expectSchemeUpgradeDueToDynamicHSTS;
+    BOOL _setIgnoreHSTSInRedirect;
 }
 
+@property BOOL cancelTrustChallenge; // @synthesize cancelTrustChallenge=_cancelTrustChallenge;
+@property BOOL challengedForServerTrust; // @synthesize challengedForServerTrust=_challengedForServerTrust;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property BOOL expectSchemeUpgradeDueToDynamicHSTS; // @synthesize expectSchemeUpgradeDueToDynamicHSTS=_expectSchemeUpgradeDueToDynamicHSTS;
 @property (readonly) unsigned long long hash;
+@property BOOL redirected; // @synthesize redirected=_redirected;
+@property BOOL setIgnoreHSTSInRedirect; // @synthesize setIgnoreHSTSInRedirect=_setIgnoreHSTSInRedirect;
 @property (readonly) Class superclass;
 @property (copy) CDUnknownBlockType xctAssert; // @synthesize xctAssert=_xctAssert;
 
 - (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)dealloc;
 - (id)initWithXCTAssertBlock:(CDUnknownBlockType)arg1;
 

@@ -23,7 +23,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)serviceHasNewHeadlineResults;
+- (void)serviceHasNewTodayResults;
 
 @end
 

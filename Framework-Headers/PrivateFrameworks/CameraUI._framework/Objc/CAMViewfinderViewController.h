@@ -19,6 +19,7 @@
 #import <CameraUI/CAMConfigurationDelegate-Protocol.h>
 #import <CameraUI/CAMControlVisibilityDelegate-Protocol.h>
 #import <CameraUI/CAMControlVisibilityUpdateDelegate-Protocol.h>
+#import <CameraUI/CAMDisabledPreviewControllerDelegate-Protocol.h>
 #import <CameraUI/CAMFacesDelegate-Protocol.h>
 #import <CameraUI/CAMFilterScrubberViewDelegate-Protocol.h>
 #import <CameraUI/CAMLightingControlDelegate-Protocol.h>
@@ -42,10 +43,10 @@
 #import <CameraUI/CAMZoomSliderDelegate-Protocol.h>
 #import <CameraUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class BCSAVParsingSession, CAMAnimationDelegate, CAMBarsAccessibilityHUDManager, CAMBottomBar, CAMBurstIndicatorView, CAMCallStatusMonitor, CAMCameraRollController, CAMCaptureGraphConfiguration, CAMClosedViewfinderController, CAMDisabledModeOverlayView, CAMElapsedTimeView, CAMFilterButton, CAMFilterNameBadge, CAMFilterScrubberView, CAMFlashBadge, CAMFlashButton, CAMFlipButton, CAMFocusLockBadge, CAMFramerateIndicatorView, CAMGridView, CAMHDRBadge, CAMHDRButton, CAMIdleController, CAMImageWell, CAMIrisButton, CAMKeepAliveController, CAMLevelIndicatorView, CAMLevelViewModel, CAMLightingControl, CAMLightingNameBadge, CAMLivePhotoBadge, CAMLocationController, CAMMachineReadableCodeLoggingController, CAMModeDial, CAMMotionController, CAMPanoramaViewController, CAMPhysicalCaptureNotifier, CAMPhysicalCaptureRecognizer, CAMPortraitModeDescriptionOverlayView, CAMPortraitModeInstructionLabel, CAMPowerController, CAMPreciseTimer, CAMPreviewViewController, CAMRemoteShutterController, CAMShallowDepthOfFieldBadge, CAMShutterIndicatorView, CAMTimelapseController, CAMTimerButton, CAMTimerIndicatorView, CAMTopBar, CAMTorchPatternController, CAMUtilityBar, CAMZoomControl, CAMZoomSlider, CUCaptureController, CUShutterButton, NSDate, NSMutableSet, NSSet, NSString, UIAlertController, UIButton, UIGestureRecognizer, UIPanGestureRecognizer, UIPinchGestureRecognizer, UISelectionFeedbackGenerator, UISwipeGestureRecognizer, UIView, _UIButtonFeedbackGenerator;
+@class BCSAVParsingSession, CAMAnimationDelegate, CAMBarsAccessibilityHUDManager, CAMBottomBar, CAMBurstIndicatorView, CAMCallStatusMonitor, CAMCameraRollController, CAMCaptureGraphConfiguration, CAMClosedViewfinderController, CAMDisabledModeOverlayView, CAMDisabledPreviewController, CAMElapsedTimeView, CAMFilterButton, CAMFilterNameBadge, CAMFilterScrubberView, CAMFlashBadge, CAMFlashButton, CAMFlipButton, CAMFocusLockBadge, CAMFramerateIndicatorView, CAMGridView, CAMHDRBadge, CAMHDRButton, CAMIdleController, CAMImageWell, CAMIrisButton, CAMKeepAliveController, CAMLevelIndicatorView, CAMLevelViewModel, CAMLightingControl, CAMLightingNameBadge, CAMLivePhotoBadge, CAMLocationController, CAMMachineReadableCodeLoggingController, CAMModeDial, CAMMotionController, CAMPanoramaViewController, CAMPhysicalCaptureNotifier, CAMPhysicalCaptureRecognizer, CAMPortraitModeDescriptionOverlayView, CAMPortraitModeInstructionLabel, CAMPowerController, CAMPreciseTimer, CAMPreviewViewController, CAMRemoteShutterController, CAMShallowDepthOfFieldBadge, CAMShutterIndicatorView, CAMTimelapseController, CAMTimerButton, CAMTimerIndicatorView, CAMTopBar, CAMTorchPatternController, CAMUtilityBar, CAMZoomControl, CAMZoomSlider, CUCaptureController, CUShutterButton, NSDate, NSMutableSet, NSSet, NSString, UIAlertController, UIButton, UIGestureRecognizer, UIPanGestureRecognizer, UIPinchGestureRecognizer, UISelectionFeedbackGenerator, UISwipeGestureRecognizer, UIView, _UIButtonFeedbackGenerator;
 @protocol CAMCameraConfigurationDelegate, CAMViewfinderReviewButtonSource, UIViewControllerPreviewing;
 
-@interface CAMViewfinderViewController : UIViewController <UIGestureRecognizerDelegate, CAMModeDialDataSource, CAMStillImageCaptureRequestDelegate, CAMVideoCaptureRequestDelegate, CAMPanoramaCaptureRequestDelegate, CAMFacesDelegate, CAMMachineReadableCodeDelegate, CAMConfigurationDelegate, CAMSuggestionDelegate, CAMAvailabilityDelegate, CAMBurstDelegate, CAMTimerButtonDelegate, CAMControlVisibilityDelegate, CAMControlVisibilityUpdateDelegate, CAMPreviewViewControllerDelegate, CAMCaptureRecoveryDelegate, CAMCaptureInterruptionDelegate, CAMCaptureRunningDelegate, CAMZoomDelegate, CAMZoomSliderDelegate, CAMTimelapseControllerDelegate, CAMCameraRollControllerImageWellDelegate, CAMCameraRollControllerSessionDelegate, CAMCameraRollControllerPresentationDelegate, CAMClosedViewfinderControllerDelegate, CAMStillImageCapturingVideoDelegate, CAMZoomControlDelegate, CAMShallowDepthOfFieldStatusDelegate, CAMPhysicalCaptureNotifierDelegate, CAMFilterScrubberViewDelegate, CAMVideoThumbnailContentsDelegate, CAMBarsAccessibilityHUDManagerDelegate, CAMPortraitModeDescriptionOverlayViewDelegate, CAMLightingControlDelegate, CAMRemoteShutterDelegate>
+@interface CAMViewfinderViewController : UIViewController <UIGestureRecognizerDelegate, CAMModeDialDataSource, CAMStillImageCaptureRequestDelegate, CAMVideoCaptureRequestDelegate, CAMPanoramaCaptureRequestDelegate, CAMFacesDelegate, CAMMachineReadableCodeDelegate, CAMConfigurationDelegate, CAMSuggestionDelegate, CAMAvailabilityDelegate, CAMBurstDelegate, CAMTimerButtonDelegate, CAMControlVisibilityDelegate, CAMControlVisibilityUpdateDelegate, CAMPreviewViewControllerDelegate, CAMCaptureRecoveryDelegate, CAMCaptureInterruptionDelegate, CAMCaptureRunningDelegate, CAMZoomDelegate, CAMZoomSliderDelegate, CAMTimelapseControllerDelegate, CAMCameraRollControllerImageWellDelegate, CAMCameraRollControllerSessionDelegate, CAMCameraRollControllerPresentationDelegate, CAMClosedViewfinderControllerDelegate, CAMDisabledPreviewControllerDelegate, CAMStillImageCapturingVideoDelegate, CAMZoomControlDelegate, CAMShallowDepthOfFieldStatusDelegate, CAMPhysicalCaptureNotifierDelegate, CAMFilterScrubberViewDelegate, CAMVideoThumbnailContentsDelegate, CAMBarsAccessibilityHUDManagerDelegate, CAMPortraitModeDescriptionOverlayViewDelegate, CAMLightingControlDelegate, CAMRemoteShutterDelegate>
 {
     struct {
         BOOL respondsToWillBeginConfiguration;
@@ -86,6 +87,7 @@
     CAMCameraRollController *__cameraRollController;
     CAMIdleController *__idleController;
     CAMClosedViewfinderController *__closedViewfinderController;
+    CAMDisabledPreviewController *__disabledPreviewController;
     BCSAVParsingSession *__barcodeParsingSession;
     CAMMachineReadableCodeLoggingController *__machineReadableCodeLoggingController;
     CAMCallStatusMonitor *__callStatusMonitor;
@@ -223,6 +225,7 @@
 @property (nonatomic, setter=_setDesiredLivePhotoMode:) long long _desiredLivePhotoMode; // @synthesize _desiredLivePhotoMode=__desiredLivePhotoMode;
 @property (nonatomic, setter=_setDesiredTorchMode:) long long _desiredTorchMode; // @synthesize _desiredTorchMode=__desiredTorchMode;
 @property (strong, nonatomic, setter=_setDisabledModeOverlayView:) CAMDisabledModeOverlayView *_disabledModeOverlayView; // @synthesize _disabledModeOverlayView=__disabledModeOverlayView;
+@property (readonly, nonatomic) CAMDisabledPreviewController *_disabledPreviewController; // @synthesize _disabledPreviewController=__disabledPreviewController;
 @property (strong, nonatomic, setter=_setDiskSpaceAlertController:) UIAlertController *_diskSpaceAlertController; // @synthesize _diskSpaceAlertController=__diskSpaceAlertController;
 @property (readonly, nonatomic) CAMElapsedTimeView *_elapsedTimeView; // @synthesize _elapsedTimeView=__elapsedTimeView;
 @property (readonly, nonatomic) CAMFilterButton *_filterButton; // @synthesize _filterButton=__filterButton;
@@ -743,6 +746,7 @@
 - (void)_updateFramerateIndicatorTextAndVisibility;
 - (void)_updateFramerateIndicatorTextForGraphConfiguration:(id)arg1;
 - (void)_updateHDRSuggestionMonitoringForGraphConfiguration:(id)arg1;
+- (void)_updateHomeIndicatorBehaviorsForCaptureOrientation;
 - (void)_updateImageWellWithImage:(id)arg1 forUUID:(id)arg2 animated:(BOOL)arg3;
 - (void)_updateImageWellWithStillImageResponse:(id)arg1 forRequest:(id)arg2 error:(id)arg3;
 - (void)_updateLayoutStyleForSize:(struct CGSize)arg1;
@@ -838,6 +842,8 @@
 - (id)currentContentSize;
 - (void)dealloc;
 - (void)didCompleteCapturingVideoForStillImageRequests;
+- (void)disabledPreviewController:(id)arg1 wantsPreviewDisabledForReason:(long long)arg2;
+- (void)disabledPreviewController:(id)arg1 wantsPreviewEnabledForReason:(long long)arg2;
 - (void)dismissAccessibilityHUDViewForAccessibilityHUDManager:(id)arg1;
 - (void)filterScrubberViewDidChangeSelectedFilterType:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;

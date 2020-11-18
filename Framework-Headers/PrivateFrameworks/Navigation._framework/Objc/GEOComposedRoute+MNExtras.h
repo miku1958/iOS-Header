@@ -10,6 +10,7 @@
 + (void)_addPointsToArray:(id)arg1 forMapPoints:(CDStruct_2c43369c *)arg2 pointCount:(unsigned long long)arg3 isPolylineA:(BOOL)arg4;
 + (void)_findDivergenceAndConvergence:(CDStruct_2c43369c *)arg1 pointCount:(unsigned long long)arg2 otherPoints:(CDStruct_2c43369c *)arg3 pointCount:(unsigned long long)arg4 divergenceTolerance:(double)arg5 convergenceTolerance:(double)arg6 outDivergenceCoordinateA:(out struct PolylineCoordinate *)arg7 outDivergenceCoordinateB:(out struct PolylineCoordinate *)arg8 outConvergenceCoordinateA:(out struct PolylineCoordinate *)arg9 outConvergenceCoordinateB:(out struct PolylineCoordinate *)arg10;
 + (BOOL)_pointsConverge:(CDStruct_2c43369c *)arg1 pointCount:(unsigned long long)arg2 otherPoints:(CDStruct_2c43369c *)arg3 pointCount:(unsigned long long)arg4 tolerance:(double)arg5 outCoordinateA:(out struct PolylineCoordinate *)arg6 outCoordinateB:(out struct PolylineCoordinate *)arg7;
++ (BOOL)_pointsConverge:(CDStruct_2c43369c *)arg1 pointCount:(unsigned long long)arg2 otherPoints:(CDStruct_2c43369c *)arg3 pointCount:(unsigned long long)arg4 tolerance:(double)arg5 outCoordinatesA:(out id *)arg6 outCoordinatesB:(out id *)arg7;
 + (BOOL)_pointsDiverge:(CDStruct_2c43369c *)arg1 pointCount:(unsigned long long)arg2 otherPoints:(CDStruct_2c43369c *)arg3 pointCount:(unsigned long long)arg4 tolerance:(double)arg5 outCoordinateA:(out struct PolylineCoordinate *)arg6 outCoordinateB:(out struct PolylineCoordinate *)arg7;
 + (unsigned long long)_startIndexForPoints:(Matrix_2bdd42a3)arg1 withPoints:(Matrix_2bdd42a3 *)arg2 pointCount:(unsigned long long)arg3 toleranceSquared:(double)arg4;
 + (void)findDivergenceAndConvergence:(CDStruct_2c43369c *)arg1 pointCount:(unsigned long long)arg2 otherCoordinates:(CDStruct_2c43369c *)arg3 pointCount:(unsigned long long)arg4 distanceInMeters:(double)arg5 outDivergenceCoordinateA:(out struct PolylineCoordinate *)arg6 outDivergenceCoordinateB:(out struct PolylineCoordinate *)arg7 outConvergenceCoordinateA:(out struct PolylineCoordinate *)arg8 outConvergenceCoordinateB:(out struct PolylineCoordinate *)arg9;
@@ -20,6 +21,7 @@
 - (id)_mapPoints;
 - (double)_remainingTimeFromRouteMatch:(id)arg1 etaRoute:(id)arg2 outRemainingDistance:(out double *)arg3 outDistanceToManeuverStart:(out double *)arg4 outDistanceToManeuverEnd:(out double *)arg5;
 - (id)divergenceAndConvergenceWithRoute:(id)arg1;
+- (id)divergenceAndConvergenceWithRoute:(id)arg1 outOtherRoutePoints:(out id *)arg2;
 - (void)findDivergenceAndConvergenceWithRoute:(id)arg1 distanceInMeters:(double)arg2 outDivergenceCoordinate:(out struct PolylineCoordinate *)arg3 outConvergenceCoordinate:(out struct PolylineCoordinate *)arg4;
 - (void)findDivergenceAndConvergenceWithRoute:(id)arg1 outDivergenceCoordinate:(out struct PolylineCoordinate *)arg2 outConvergenceCoordinate:(out struct PolylineCoordinate *)arg3;
 - (double)remainingTimeFromLocation:(id)arg1;

@@ -64,6 +64,9 @@ __attribute__((visibility("hidden")))
     BOOL isUsingPageViewController;
     NSDictionary *pageViewControllerOptions;
     UIDragInteraction *dragInteraction;
+    double horizontalScaleFactorBeforeRotation;
+    struct CGPoint documentViewCenterBeforeRotation;
+    struct UIEdgeInsets lastSafeAreaInsets;
 }
 
 - (void).cxx_destruct;

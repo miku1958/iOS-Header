@@ -8,52 +8,62 @@
 
 #import <MediaPlayer/MPAVRoutingThemeableCellView-Protocol.h>
 
-@class MPAVBatteryLevel, NSString, UIActivityIndicatorView, UIImageView, UILabel;
+@class MPAVBatteryLevel, MPAVRoutingTableViewCellSubtitleTextState, MPVolumeSlider, NSString, NSTimer, UIActivityIndicatorView, UIImageView, UILabel, UIStackView;
 @protocol MPAVRoutingTableViewCellDelegate;
 
 @interface MPAVRoutingTableViewCell : UITableViewCell <MPAVRoutingThemeableCellView>
 {
     UIImageView *_iconImageView;
+    UIStackView *_detailStackView;
     UILabel *_routeNameLabel;
     UILabel *_subtitleTextLabel;
+    NSTimer *_subtitleTextUpdateTimer;
     UIActivityIndicatorView *_spinnerView;
     UIImageView *_smartAudioImageView;
+    MPVolumeSlider *_volumeSlider;
     BOOL _mirroringSwitchVisible;
-    BOOL _debugCell;
     BOOL _pendingSelection;
-    BOOL _displayIsPicked;
+    BOOL _isDisplayedAsPicked;
     BOOL _useSmartAudioCheckmarkStyle;
     BOOL _provideOwnSeparator;
     id<MPAVRoutingTableViewCellDelegate> _delegate;
     unsigned long long _mirroringStyle;
     unsigned long long _iconStyle;
     MPAVBatteryLevel *_batteryLevel;
+    double _subtitleViewAlpha;
+    MPAVRoutingTableViewCellSubtitleTextState *_subtitleTextState;
 }
 
 @property (strong, nonatomic) MPAVBatteryLevel *batteryLevel; // @synthesize batteryLevel=_batteryLevel;
-@property (nonatomic, getter=isDebugCell) BOOL debugCell; // @synthesize debugCell=_debugCell;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MPAVRoutingTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL displayIsPicked; // @synthesize displayIsPicked=_displayIsPicked;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long iconStyle; // @synthesize iconStyle=_iconStyle;
+@property (nonatomic) BOOL isDisplayedAsPicked; // @synthesize isDisplayedAsPicked=_isDisplayedAsPicked;
 @property (nonatomic) unsigned long long mirroringStyle; // @synthesize mirroringStyle=_mirroringStyle;
 @property (nonatomic) BOOL mirroringSwitchVisible; // @synthesize mirroringSwitchVisible=_mirroringSwitchVisible;
 @property (nonatomic, getter=isPendingSelection) BOOL pendingSelection; // @synthesize pendingSelection=_pendingSelection;
 @property (nonatomic) BOOL provideOwnSeparator; // @synthesize provideOwnSeparator=_provideOwnSeparator;
+@property (strong, nonatomic) MPAVRoutingTableViewCellSubtitleTextState *subtitleTextState; // @synthesize subtitleTextState=_subtitleTextState;
+@property (nonatomic) double subtitleViewAlpha; // @synthesize subtitleViewAlpha=_subtitleViewAlpha;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL useSmartAudioCheckmarkStyle; // @synthesize useSmartAudioCheckmarkStyle=_useSmartAudioCheckmarkStyle;
 
 - (void).cxx_destruct;
+- (void)_animateSubtitleLabelToNextAvailableText;
+- (id)_batteryTextForRoute:(id)arg1;
 - (id)_checkmarkImageForSmartAudio;
 - (void)_configureDetailLabel:(id)arg1;
 - (void)_configureLabel:(id)arg1;
-- (id)_detailTextForRoute:(id)arg1;
 - (id)_iconImageForRoute:(id)arg1;
+- (id)_pairedDeviceTextForRoute:(id)arg1;
 - (BOOL)_shouldShowSeparateBatteryPercentagesForBatteryLevel:(id)arg1;
+- (void)_updateDetailStackViewForEndpoint:(id)arg1 route:(id)arg2;
 - (void)_updateSmartAudioAccessory;
 - (void)_updateSpinnerStyle;
+- (void)_updateSubtitleTextLabelForRoute:(id)arg1;
+- (void)dealloc;
 - (id)iconView;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
@@ -62,7 +72,8 @@
 - (void)setTintColor:(id)arg1;
 - (id)subtitleView;
 - (id)titleView;
-- (void)updateForRoute:(id)arg1 inferLocalizedModelName:(BOOL)arg2;
+- (void)updateForEndpoint:(id)arg1 route:(id)arg2 inferLocalizedModelName:(BOOL)arg3;
+- (id)volumeView;
 
 @end
 

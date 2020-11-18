@@ -12,6 +12,7 @@
 {
     NSDictionary *_serverDict;
     BOOL _forAccountGroup;
+    BOOL _zeroAction;
     NSString *_title;
     NSString *_message;
     NSString *_altMessage;
@@ -36,6 +37,7 @@
 @property (strong, nonatomic) NSString *noteTitle; // @synthesize noteTitle=_noteTitle;
 @property (strong, nonatomic) NSDictionary *serverDict;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
+@property (nonatomic, getter=isZeroAction) BOOL zeroAction; // @synthesize zeroAction=_zeroAction;
 
 + (void)clearFollowupWithController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;

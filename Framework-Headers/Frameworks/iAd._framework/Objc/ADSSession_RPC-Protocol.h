@@ -16,6 +16,7 @@
 - (void)_remote_bannerCancelActionForAdSpaceWithIdentifier:(NSString *)arg1;
 - (void)_remote_bannerRefuseActionForAdSpaceWithIdentifier:(NSString *)arg1;
 - (void)_remote_closeAdSpaceWithIdentifier:(NSString *)arg1;
+- (void)_remote_creativeControllerTapGestureTimerDidExpireBeforePrimaryActionWasInvokedForAdSpaceWithIdentifier:(NSString *)arg1;
 - (void)_remote_determineActionForAdSpaceWithIdentifier:(NSString *)arg1 ForTapAtLocation:(NSValue *)arg2 inFrame:(NSValue *)arg3 withMRAIDAction:(ADMRAIDAction *)arg4 completeHandler:(void (^)(ADAdActionPublicAttributes *))arg5;
 - (void)_remote_determineAppInstallAttributionWithCompletionHandler:(void (^)(BOOL))arg1;
 - (void)_remote_disablePolicyEngine;

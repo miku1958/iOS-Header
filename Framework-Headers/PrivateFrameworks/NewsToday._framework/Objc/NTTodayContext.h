@@ -10,18 +10,17 @@
 #import <NewsToday/NTTodayContext-Protocol.h>
 
 @class NSString, NTSourceAvailabilityManager;
-@protocol FCContentContext, NTHeadlineResultsSource, NTNetworkEventTracker, NTReadablePrivateDataStorage, NTWritablePrivateDataStorage, OS_dispatch_queue;
+@protocol FCContentContext, NTReadablePrivateDataStorage, NTTodayResultsSource, NTWritablePrivateDataStorage, OS_dispatch_queue;
 
 @interface NTTodayContext : NSObject <FCNetworkReachabilityObserving, NTTodayContext>
 {
     CDUnknownBlockType _newResultsHandler;
     id<FCContentContext> _contentContext;
-    id<NTNetworkEventTracker> _networkEventTracker;
     CDUnknownBlockType _sessionProvider;
     id<NTReadablePrivateDataStorage> _readablePrivateDataStorage;
     id<NTWritablePrivateDataStorage> _writablePrivateDataStorage;
     NTSourceAvailabilityManager *_sourceAvailabilityManager;
-    id<NTHeadlineResultsSource> _headlineResultsSource;
+    id<NTTodayResultsSource> _todayResultsSource;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
@@ -29,19 +28,18 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) id<NTHeadlineResultsSource> headlineResultsSource; // @synthesize headlineResultsSource=_headlineResultsSource;
-@property (strong, nonatomic) id<NTNetworkEventTracker> networkEventTracker; // @synthesize networkEventTracker=_networkEventTracker;
 @property (copy, nonatomic) CDUnknownBlockType newResultsHandler; // @synthesize newResultsHandler=_newResultsHandler;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) id<NTReadablePrivateDataStorage> readablePrivateDataStorage; // @synthesize readablePrivateDataStorage=_readablePrivateDataStorage;
 @property (copy, nonatomic) CDUnknownBlockType sessionProvider; // @synthesize sessionProvider=_sessionProvider;
 @property (strong, nonatomic) NTSourceAvailabilityManager *sourceAvailabilityManager; // @synthesize sourceAvailabilityManager=_sourceAvailabilityManager;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) id<NTTodayResultsSource> todayResultsSource; // @synthesize todayResultsSource=_todayResultsSource;
 @property (strong, nonatomic) id<NTWritablePrivateDataStorage> writablePrivateDataStorage; // @synthesize writablePrivateDataStorage=_writablePrivateDataStorage;
 
 - (void).cxx_destruct;
-- (void)_setupHeadlineResultsSource;
-- (void)fetchLatestHeadlinesWithOperationInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_setupTodayResultsSource;
+- (void)fetchLatestResultsWithOperationInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithContentContext:(id)arg1 processVariant:(unsigned long long)arg2 queue:(id)arg3 sessionProvider:(CDUnknownBlockType)arg4;
 - (id)initWithContentHostDirectory:(id)arg1 processVariant:(unsigned long long)arg2 queue:(id)arg3 sessionProvider:(CDUnknownBlockType)arg4;

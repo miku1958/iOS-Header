@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, NSString, _MTLDevice;
 @protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_semaphore, OS_dispatch_source;
@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
     BOOL _executionEnabled;
     BOOL _skipRender;
     BOOL _openGLQueue;
+    NSObject<OS_dispatch_semaphore> *_presentScheduledSemaphore;
 }
 
 @property (nonatomic, getter=isStatEnabled) BOOL StatEnabled; // @synthesize StatEnabled=_StatEnabled;

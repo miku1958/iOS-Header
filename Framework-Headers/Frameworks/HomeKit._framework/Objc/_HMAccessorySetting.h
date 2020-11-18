@@ -47,6 +47,7 @@
 @property (copy) id<NSCopying><NSSecureCoding> value; // @synthesize value=_value;
 
 + (id)logCategory;
++ (id)shortDescription;
 + (id)supportedConstraintClasses;
 + (id)supportedValueClasses;
 + (BOOL)supportsSecureCoding;
@@ -60,6 +61,7 @@
 - (void)configureWithAccessorySettings:(id)arg1 context:(id)arg2;
 - (id)constraintWithType:(long long)arg1;
 - (void)dealloc;
+- (id)descriptionWithPointer:(BOOL)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithType:(long long)arg1 properties:(unsigned long long)arg2 name:(id)arg3 constraints:(id)arg4;
@@ -72,6 +74,10 @@
 - (void)notifyDelegateOfRemovedConstraint:(id)arg1;
 - (void)removeConstraint:(id)arg1;
 - (void)removeConstraint:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)replaceConstraints:(id)arg1 withConstraints:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)setConstraints:(id)arg1;
+- (id)shortDescription;
+- (void)updateConstraints:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateValue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

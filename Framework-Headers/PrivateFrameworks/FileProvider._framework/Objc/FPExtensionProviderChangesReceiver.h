@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     FPItemCollection *_localStorageCollection;
     int _notifyToken;
     int _settingsChangedToken;
+    BOOL _invalidated;
     CDUnknownBlockType _changesHandler;
     NSString *_identifier;
 }
@@ -39,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)invalidate;
 - (void)providersInfoHasChanged:(id)arg1 error:(id)arg2;
-- (void)updateProviderInfo;
+- (void)updateProviderInfoWithAttemptCount:(unsigned long long)arg1;
 
 @end
 

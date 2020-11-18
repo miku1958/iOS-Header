@@ -6,99 +6,58 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <HomeUI/HUItemPresentationContainer-Protocol.h>
-#import <HomeUI/HUPresentationDelegate-Protocol.h>
-#import <HomeUI/HUPresentationDelegateHost-Protocol.h>
-#import <HomeUI/HUQuickControlContainerViewDelegate-Protocol.h>
-#import <HomeUI/HUQuickControlControllerCoordinatorDelegate-Protocol.h>
-#import <HomeUI/HUQuickControlInteractionHost-Protocol.h>
-#import <HomeUI/HUViewControllerCustomDissmissing-Protocol.h>
+#import <HomeUI/HUPreloadableViewController-Protocol.h>
+#import <HomeUI/HUQuickControlContentCharacteristicWriting-Protocol.h>
+#import <HomeUI/HUQuickControlInteractiveContentContaining-Protocol.h>
+#import <HomeUI/HUQuickControlItemHosting-Protocol.h>
 
-@class HFItem, HMHome, HUAnimationApplier, HUQuickControlContainerView, HUQuickControlController, HUQuickControlControllerCoordinator, HUQuickControlInteractionCoordinator, NSString, UITapGestureRecognizer, UIView;
-@protocol HUPresentationDelegate, HUQuickControlPresentableView, HUQuickControlViewControllerDelegate, NSCopying;
+@class HMHome, NSSet, NSString;
+@protocol HULayoutAnchorProviding, HUQuickControlContentCharacteristicWritingDelegate, HUQuickControlContentHosting, HUQuickControlItemUpdating, HUQuickControlViewControllerDelegate;
 
-@interface HUQuickControlViewController : UIViewController <HUPresentationDelegate, HUQuickControlContainerViewDelegate, HUQuickControlControllerCoordinatorDelegate, HUQuickControlInteractionHost, HUItemPresentationContainer, HUPresentationDelegateHost, HUViewControllerCustomDissmissing>
+@interface HUQuickControlViewController : UIViewController <HUQuickControlInteractiveContentContaining, HUQuickControlContentCharacteristicWriting, HUQuickControlItemHosting, HUPreloadableViewController>
 {
-    BOOL _presentedDetailView;
-    id<HUPresentationDelegate> presentationDelegate;
-    HFItem<NSCopying> *_item;
+    BOOL _userInteractionEnabled;
+    id<HUQuickControlContentCharacteristicWritingDelegate> _characteristicWritingDelegate;
+    id<HUQuickControlContentHosting> _quickControlHost;
+    id<HULayoutAnchorProviding> _preferredFrameLayoutGuide;
     HMHome *_home;
+    NSSet *_controlItems;
+    id<HUQuickControlItemUpdating> _itemUpdater;
     id<HUQuickControlViewControllerDelegate> _delegate;
-    UITapGestureRecognizer *_dismissGestureRecognizer;
-    HUAnimationApplier *_presentationApplier;
-    unsigned long long _presentationState;
-    HUQuickControlControllerCoordinator *_controlControllerCoordinator;
-    HUQuickControlContainerView *_controlContainerView;
-    UIView<HUQuickControlPresentableView> *_controlView;
-    struct CGRect _sourceRect;
+    unsigned long long _controlSize;
 }
 
-@property (readonly, nonatomic) HUQuickControlController *activeControlController;
-@property (readonly, nonatomic) HUQuickControlInteractionCoordinator *activeInteractionCoordinator;
-@property (strong, nonatomic) HUQuickControlContainerView *controlContainerView; // @synthesize controlContainerView=_controlContainerView;
-@property (strong, nonatomic) HUQuickControlControllerCoordinator *controlControllerCoordinator; // @synthesize controlControllerCoordinator=_controlControllerCoordinator;
-@property (strong, nonatomic) UIView<HUQuickControlPresentableView> *controlView; // @synthesize controlView=_controlView;
+@property (readonly, copy, nonatomic) NSSet *affectedCharacteristics;
+@property (weak, nonatomic) id<HUQuickControlContentCharacteristicWritingDelegate> characteristicWritingDelegate; // @synthesize characteristicWritingDelegate=_characteristicWritingDelegate;
+@property (readonly, copy, nonatomic) NSSet *controlItems; // @synthesize controlItems=_controlItems;
+@property (nonatomic) unsigned long long controlSize; // @synthesize controlSize=_controlSize;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUQuickControlViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) UITapGestureRecognizer *dismissGestureRecognizer; // @synthesize dismissGestureRecognizer=_dismissGestureRecognizer;
+@property (readonly, nonatomic) BOOL hasSingleControlView;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
-@property (readonly, nonatomic) HFItem *hu_presentedItem;
-@property (readonly, nonatomic) HFItem<NSCopying> *item; // @synthesize item=_item;
-@property (strong, nonatomic) HUAnimationApplier *presentationApplier; // @synthesize presentationApplier=_presentationApplier;
-@property (weak, nonatomic) id<HUPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate;
-@property (nonatomic) unsigned long long presentationState; // @synthesize presentationState=_presentationState;
-@property (nonatomic) BOOL presentedDetailView; // @synthesize presentedDetailView=_presentedDetailView;
-@property (nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;
+@property (readonly, nonatomic) id<HUQuickControlItemUpdating> itemUpdater; // @synthesize itemUpdater=_itemUpdater;
+@property (readonly, copy, nonatomic) NSString *overrideSecondaryStatusText;
+@property (readonly, copy, nonatomic) NSString *overrideStatusText;
+@property (strong, nonatomic) id<HULayoutAnchorProviding> preferredFrameLayoutGuide; // @synthesize preferredFrameLayoutGuide=_preferredFrameLayoutGuide;
+@property (weak, nonatomic) id<HUQuickControlContentHosting> quickControlHost; // @synthesize quickControlHost=_quickControlHost;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled; // @synthesize userInteractionEnabled=_userInteractionEnabled;
 
-+ (id)_blurAnimationSettingsForPresenting:(BOOL)arg1;
-+ (id)_controlAlphaAnimationSettingsForPresenting:(BOOL)arg1;
-+ (id)_controlScaleAnimationSettingsForPresenting:(BOOL)arg1;
-+ (id)_detailChromeAnimationSettingsForPresenting:(BOOL)arg1;
-+ (id)_easeOutTimingFunction;
-+ (id)_sourceViewTransitionAnimationSettingsForPresenting:(BOOL)arg1;
-+ (id)_statusBarHidingAnimationSettingsForPresenting:(BOOL)arg1;
++ (id)controlItemPredicate;
 - (void).cxx_destruct;
-- (id)_controlControllerOfType:(unsigned long long)arg1;
-- (void)_controlDidDismiss;
-- (void)_createControlContainerViewWithSourceRect:(struct CGRect)arg1;
-- (id)_dismissDetailViewControllerAnimated:(BOOL)arg1 dismissControl:(BOOL)arg2;
-- (void)_displayMobileTimerUI;
-- (void)_handleDismissGesture:(id)arg1;
-- (void)_performTransitionToPresentationState:(unsigned long long)arg1 animated:(BOOL)arg2 initialProgress:(double)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)_prepareDetailViewController;
-- (void)_presentDetailViewController;
-- (BOOL)_shouldDisplayMobileTimerUIForControlType:(unsigned long long)arg1;
-- (void)_tearDownMobileTimerUI:(id)arg1;
-- (void)_updateControlReachability;
-- (void)_updateControlStatusText;
-- (void)_updateIconDescriptorAnimated:(BOOL)arg1;
-- (void)_updateUserInteractionEnabledForActiveInteractionCoordinator;
-- (void)beginReceivingTouchesWithGestureRecognizer:(id)arg1;
-- (id)containerView:(id)arg1 createControlViewForControlType:(unsigned long long)arg2;
-- (void)containerView:(id)arg1 didSelectControlType:(unsigned long long)arg2;
-- (BOOL)containerView:(id)arg1 hasControlOfType:(unsigned long long)arg2;
-- (id)containerView:(id)arg1 titleForControlType:(unsigned long long)arg2;
-- (void)controllerCoordinator:(id)arg1 didUpdateIconDescriptor:(id)arg2 showOffState:(BOOL)arg3;
-- (void)controllerCoordinator:(id)arg1 didUpdateReachability:(BOOL)arg2;
-- (void)controllerCoordinator:(id)arg1 didUpdateStatusWithPrimaryText:(id)arg2 secondaryText:(id)arg3;
-- (void)detailsButtonPressedInContainerView:(id)arg1;
-- (id)dismissControlAnimated:(BOOL)arg1;
-- (id)finishPresentation:(id)arg1 animated:(BOOL)arg2;
-- (void)hideAuxiliaryViewForInteractionCoordinator:(id)arg1;
-- (id)hu_prepareForDismissalAnimated:(BOOL)arg1;
-- (id)initWithItem:(id)arg1 controlItems:(id)arg2 home:(id)arg3;
-- (void)interactionCoordinator:(id)arg1 showAuxiliaryView:(id)arg2;
-- (void)interactionCoordinator:(id)arg1 updateControlHorizontalCompressionFactor:(double)arg2;
-- (void)interactionCoordinator:(id)arg1 updateControlVerticalStretchFactor:(double)arg2;
-- (void)interactionCoordinatorWantsDismissal:(id)arg1;
-- (BOOL)isControlDismissedOrDismissing;
-- (BOOL)isControlPresentedOrPresenting;
-- (void)presentControlAnimatedFromSourceRect:(struct CGRect)arg1;
-- (struct CGAffineTransform)sourceViewTransformForPresentationProgress:(double)arg1;
-- (void)viewDidLoad;
+- (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
+- (id)childQuickControlContentViewControllers;
+- (id)hu_preloadContent;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithControlItems:(id)arg1 home:(id)arg2 itemUpdater:(id)arg3;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;
+- (id)overrideValueForCharacteristic:(id)arg1;
+- (void)quickControlItemUpdater:(id)arg1 didUpdateResultsForControlItems:(id)arg2;
+- (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

@@ -12,7 +12,6 @@
 @interface MediaControlsTransportStackView : UIView
 {
     BOOL _empty;
-    long long _mediaControlsPlayerState;
     long long _style;
     MPCPlayerResponse *_response;
     MediaControlsTransportButton *_leftButton;
@@ -26,7 +25,6 @@
 @property (nonatomic, getter=isEmpty) BOOL empty; // @synthesize empty=_empty;
 @property (strong, nonatomic) MediaControlsTransportButton *leftButton; // @synthesize leftButton=_leftButton;
 @property (strong, nonatomic) NSBundle *mediaControlsBundle; // @synthesize mediaControlsBundle=_mediaControlsBundle;
-@property (nonatomic) long long mediaControlsPlayerState; // @synthesize mediaControlsPlayerState=_mediaControlsPlayerState;
 @property (strong, nonatomic) MediaControlsTransportButton *middleButton; // @synthesize middleButton=_middleButton;
 @property (weak, nonatomic) id<MediaControlsRatingActionSheet> ratingActionSheetDelegate; // @synthesize ratingActionSheetDelegate=_ratingActionSheetDelegate;
 @property (strong, nonatomic) MPCPlayerResponse *response; // @synthesize response=_response;

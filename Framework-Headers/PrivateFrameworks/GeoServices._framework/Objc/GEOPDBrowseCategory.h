@@ -22,10 +22,12 @@
     int _subCategoryType;
     NSMutableArray *_subCategorys;
     NSData *_suggestionEntryMetadata;
+    BOOL _isSubCategorySameAsTopLevel;
     struct {
         unsigned int displayMode:1;
         unsigned int sortOrder:1;
         unsigned int subCategoryType:1;
+        unsigned int isSubCategorySameAsTopLevel:1;
     } _has;
 }
 
@@ -33,12 +35,14 @@
 @property (strong, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
 @property (nonatomic) BOOL hasDisplayMode;
 @property (readonly, nonatomic) BOOL hasDisplayString;
+@property (nonatomic) BOOL hasIsSubCategorySameAsTopLevel;
 @property (readonly, nonatomic) BOOL hasPopularDisplayToken;
 @property (readonly, nonatomic) BOOL hasShortDisplayString;
 @property (nonatomic) BOOL hasSortOrder;
 @property (readonly, nonatomic) BOOL hasStyleAttributes;
 @property (nonatomic) BOOL hasSubCategoryType;
 @property (readonly, nonatomic) BOOL hasSuggestionEntryMetadata;
+@property (nonatomic) BOOL isSubCategorySameAsTopLevel; // @synthesize isSubCategorySameAsTopLevel=_isSubCategorySameAsTopLevel;
 @property (strong, nonatomic) NSString *popularDisplayToken; // @synthesize popularDisplayToken=_popularDisplayToken;
 @property (strong, nonatomic) NSString *shortDisplayString; // @synthesize shortDisplayString=_shortDisplayString;
 @property (nonatomic) int sortOrder; // @synthesize sortOrder=_sortOrder;

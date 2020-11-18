@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)locationTracker:(id)arg1 didUpdateETAForRoute:(id)arg2;
 - (void)locationTracker:(id)arg1 didUpdateMatchedLocation:(id)arg2;
 - (void)locationTrackerDidArrive:(id)arg1;
+- (void)locationTrackerDidCancelReroute:(id)arg1;
 - (void)locationTrackerWillReroute:(id)arg1;
 - (id)route;
 - (void)start;

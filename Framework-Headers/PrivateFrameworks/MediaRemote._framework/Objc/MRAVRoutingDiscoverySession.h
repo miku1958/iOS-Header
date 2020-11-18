@@ -6,37 +6,32 @@
 
 #import <Foundation/NSObject.h>
 
-@class AVOutputDeviceDiscoverySession, NSArray;
+@class NSArray;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface MRAVRoutingDiscoverySession : NSObject
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
-    AVOutputDeviceDiscoverySession *_avDiscoverySession;
     struct NSMutableDictionary *_endpointsChangedCallbacks;
     struct NSMutableDictionary *_outputDevicesChangedCallbacks;
-    struct NSMapTable *_groupIDsToWeakEndpointsTable;
-    struct NSMapTable *_deviceIDsToWeakOutputDevicesTable;
-    unsigned int _endpointFeatures;
-    unsigned int _discoveryMode;
-    NSArray *_availableEndpoints;
+    BOOL _alwaysAllowUpdates;
 }
 
-@property (copy, nonatomic) NSArray *availableEndpoints; // @synthesize availableEndpoints=_availableEndpoints;
-@property (readonly, nonatomic) NSArray *availableOutputDevices;
-@property (nonatomic) unsigned int discoveryMode; // @synthesize discoveryMode=_discoveryMode;
-@property (readonly, nonatomic) unsigned int endpointFeatures; // @synthesize endpointFeatures=_endpointFeatures;
-@property (readonly, nonatomic) BOOL hasAvailableEndpoints;
+@property (nonatomic) BOOL alwaysAllowUpdates; // @synthesize alwaysAllowUpdates=_alwaysAllowUpdates;
+@property (readonly, nonatomic) NSArray *availableEndpoints; // @dynamic availableEndpoints;
+@property (readonly, nonatomic) NSArray *availableOutputDevices; // @dynamic availableOutputDevices;
+@property (nonatomic) unsigned int discoveryMode; // @dynamic discoveryMode;
+@property (readonly, nonatomic) unsigned int endpointFeatures; // @dynamic endpointFeatures;
+@property (readonly, nonatomic) NSArray *endpointsChangedCallbacks;
+@property (readonly, nonatomic) BOOL hasAvailableEndpoints; // @dynamic hasAvailableEndpoints;
+@property (readonly, nonatomic) NSArray *outputDevicesChangedCallbacks;
+@property (nonatomic) unsigned int targetAudioSessionID; // @dynamic targetAudioSessionID;
 
-- (void)_availableOutputDevicesDidChangeNotification:(id)arg1;
-- (void)_registerNotifications;
-- (void)_reloadAvailableEndpoints;
-- (void)_unregisterNotifications;
++ (id)discoverySessionWithEndpointFeatures:(unsigned int)arg1;
+- (id)_init;
 - (id)addEndpointsChangedCallback:(CDUnknownBlockType)arg1;
 - (id)addOutputDevicesChangedCallback:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (id)initWithEndpointFeatures:(unsigned int)arg1;
 - (void)removeEndpointsChangedCallback:(id)arg1;
 - (void)removeOutputDevicesChangedCallback:(id)arg1;
 

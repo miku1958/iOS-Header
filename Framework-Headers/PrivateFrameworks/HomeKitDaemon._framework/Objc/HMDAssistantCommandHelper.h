@@ -52,7 +52,9 @@
 - (void)_register;
 - (void)_reportResponses;
 - (void)_resetActionTimer;
-- (void)_startActionTimer;
+- (void)_startActionSetTimer;
+- (void)_startActionTimerWithTimeInterval:(double)arg1;
+- (void)_startReadWriteActionTimer;
 - (void)addActionSetRequest:(id)arg1 actionSet:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addReadRequests:(id)arg1 home:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addWriteRequests:(id)arg1 home:(id)arg2 completion:(CDUnknownBlockType)arg3;

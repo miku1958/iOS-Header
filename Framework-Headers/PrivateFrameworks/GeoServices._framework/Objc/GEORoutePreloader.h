@@ -29,6 +29,7 @@
     CDUnknownBlockType _tileKeyIsDownloadedPredicate;
     double _stepSizeInMeters;
     GEOApplicationAuditToken *_token;
+    struct GEOOnce_s _didTearDown;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType batteryHandler; // @synthesize batteryHandler=_batteryHandler;
@@ -58,6 +59,7 @@
 - (BOOL)isSufficientlyLoaded;
 - (BOOL)loggingEnabled;
 - (BOOL)minimalDebuggingEnabled;
+- (void)performTearDown;
 - (int)preloadStateForTile:(const struct _GEOTileKey *)arg1;
 - (void)reachabilityChanged:(id)arg1;
 - (void)resourceManifestManagerDidChangeActiveTileGroup:(id)arg1;
@@ -66,6 +68,7 @@
 - (void)start;
 - (void)stop;
 - (void)stopLoading;
+- (void)tearDown;
 - (void)tilesChanged;
 - (void)updateWithRouteMatch:(id)arg1;
 

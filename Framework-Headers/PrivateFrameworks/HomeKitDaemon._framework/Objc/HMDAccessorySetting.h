@@ -16,8 +16,8 @@
 
 @interface HMDAccessorySetting : HMFObject <HMFLogging, HMDBackingStoreObjectProtocol, HMFMessageReceiver, NSSecureCoding>
 {
-    NSMutableArray *_constraints;
     long long _type;
+    NSMutableArray *_constraints;
     id _value;
     unsigned long long _configurationVersion;
     NSUUID *_identifier;
@@ -30,7 +30,7 @@
     HMFMessageDispatcher *_messageDispatcher;
 }
 
-@property (strong, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
+@property (weak, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (nonatomic) unsigned long long configurationVersion; // @synthesize configurationVersion=_configurationVersion;
 @property (readonly, copy) NSArray *constraints;
@@ -39,15 +39,17 @@
 @property (weak) HMDAccessorySettingGroup *group; // @synthesize group=_group;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly) NSString *keyPath;
 @property (strong, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly) HMDAccessorySettingModel *model;
+@property (readonly, copy) NSArray *models;
 @property (readonly, copy) NSString *name; // @synthesize name=_name;
 @property (readonly) unsigned long long properties; // @synthesize properties=_properties;
 @property (readonly) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
-@property (readonly) long long type; // @synthesize type=_type;
+@property (readonly) long long type;
 @property (copy) id value; // @synthesize value=_value;
 
 + (id)logCategory;
@@ -58,23 +60,27 @@
 - (id)__init;
 - (void)_handleAddConstraint:(id)arg1;
 - (void)_handleRemoveConstraint:(id)arg1;
+- (void)_handleReplaceConstraints:(id)arg1;
 - (void)_handleUpdateValue:(id)arg1;
+- (void)_handleUpdatedConstraints:(id)arg1;
 - (void)_relayRequestMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_relayUpdateValue:(id)arg1 message:(id)arg2;
 - (BOOL)_shouldAcceptMessage:(id)arg1;
 - (void)addConstraint:(id)arg1;
 - (void)configureWithAccessory:(id)arg1 messageDispatcher:(id)arg2;
+- (id)constraintWithIdentifier:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModel:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isValidValue:(id)arg1;
+- (BOOL)isValid:(id *)arg1;
 - (id)logIdentifier;
 - (id)messageDestination;
 - (void)registerForMessages;
 - (id)remoteMessageDestination;
 - (void)removeConstraint:(id)arg1;
+- (void)setConstraints:(id)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)transactionWithObjectChangeType:(unsigned long long)arg1;

@@ -9,45 +9,49 @@
 #import <Home/NAIdentifiable-Protocol.h>
 #import <Home/NSCopying-Protocol.h>
 
-@class NSDictionary, NSSet, NSString;
+@class HFControlItemCharacteristicOptions, NSDictionary, NSSet, NSString;
 @protocol HFAggregatedCharacteristicValueSource;
 
 @interface HFControlItem : HFItem <NAIdentifiable, NSCopying>
 {
     id<HFAggregatedCharacteristicValueSource> _valueSource;
-    NSSet *_characteristicTypes;
+    HFControlItemCharacteristicOptions *_characteristicOptions;
     NSDictionary *_displayResults;
 }
 
-@property (readonly, nonatomic) NSSet *allCharacteristicTypes;
-@property (readonly, nonatomic) NSSet *characteristicTypes; // @synthesize characteristicTypes=_characteristicTypes;
+@property (readonly, nonatomic) HFControlItemCharacteristicOptions *characteristicOptions; // @synthesize characteristicOptions=_characteristicOptions;
+@property (readonly, nonatomic) NSSet *characteristicTypes;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSDictionary *displayResults; // @synthesize displayResults=_displayResults;
+@property (readonly, copy, nonatomic) NSDictionary *displayResults; // @synthesize displayResults=_displayResults;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) long long sortPriority;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<HFAggregatedCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 
 + (id)na_identity;
 + (Class)valueClass;
 - (void).cxx_destruct;
+- (id)_characteristicValuesByTypeForBatchReadResponse:(id)arg1;
+- (id)_descriptionWithCharacteristicOptions:(BOOL)arg1;
 - (id)_standardResultsForResultValue:(id)arg1 characteristicValuesByType:(id)arg2;
 - (id)_subclass_updateWithOptions:(id)arg1;
-- (BOOL)canCopyWithCharacteristicTypeSubset:(id)arg1;
+- (BOOL)canCopyWithCharacteristicOptions:(id)arg1;
 - (id)characteristicValuesForValue:(id)arg1;
-- (id)copyWithCharacteristicTypes:(id)arg1 valueSource:(id)arg2;
+- (id)copyWithCharacteristicOptions:(id)arg1 valueSource:(id)arg2;
 - (id)copyWithValueSource:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
+- (id)initWithValueSource:(id)arg1 characteristicOptions:(id)arg2 displayResults:(id)arg3;
 - (id)initWithValueSource:(id)arg1 characteristicTypes:(id)arg2 displayResults:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (id)metadataForCharacteristicType:(id)arg1;
 - (id)normalizedCharacteristicValuesForValues:(id)arg1;
 - (id)normalizedValueForCharacteristicValue:(id)arg1 ofType:(id)arg2;
 - (id)normalizedValueForValue:(id)arg1;
-- (id)readOnlyCharacteristicTypes;
 - (id)readValueAndPopulateStandardResults;
-- (long long)sortPriority;
+- (id)resultsForBatchReadResponse:(id)arg1;
+- (id)servicePredicateForCharacteristicType:(id)arg1 withUsage:(unsigned long long)arg2;
 - (BOOL)supportsItemRepresentingServices:(id)arg1;
 - (id)valueForCharacteristicType:(id)arg1 inBatchReadResponse:(id)arg2;
 - (id)valueForCharacteristicValues:(id)arg1;

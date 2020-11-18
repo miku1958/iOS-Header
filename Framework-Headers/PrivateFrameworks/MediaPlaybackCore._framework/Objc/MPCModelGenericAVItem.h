@@ -94,6 +94,7 @@
 + (BOOL)_prefersHighQualityAudioContentForNetworkType:(long long)arg1;
 + (BOOL)_prefersHighQualityVideoContentForNetworkType:(long long)arg1;
 - (void).cxx_destruct;
+- (BOOL)_allowsAssetCaching;
 - (void)_allowsHighQualityMusicStreamingOnCellularDidChangeNotification:(id)arg1;
 - (BOOL)_allowsStreamingPlayback;
 - (void)_applyLoudnessInfo;
@@ -105,7 +106,6 @@
 - (void)_getUnverifiedSubscriptionLeaseSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_handlePlaybackFinishedTime:(double)arg1 didFinishByHittingEnd:(BOOL)arg2;
 - (void)_handleUpdatedLikedState:(long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_householdID;
 - (void)_invalidateContentItem;
 - (id)_isPrivateListeningEnabled;
 - (id)_modelPlaybackPosition;
@@ -144,6 +144,7 @@
 - (long long)artistStoreID;
 - (CDUnknownBlockType)artworkCatalogBlock;
 - (id)artworkTimeMarkers;
+- (id)bookmarkTime;
 - (id)chapterTimeMarkers;
 - (id)cloudAlbumID;
 - (unsigned long long)cloudID;
@@ -174,7 +175,6 @@
 - (void)metadataOutput:(id)arg1 didOutputTimedMetadataGroups:(id)arg2 fromPlayerItemTrack:(id)arg3;
 - (id)modelGenericObject;
 - (long long)mpcReporting_equivalencySourceAdamID;
-- (id)mpcReporting_householdID;
 - (id)mpcReporting_identityPropertiesLoader;
 - (unsigned long long)mpcReporting_itemType;
 - (id)mpcReporting_jingleTimedMetadata;

@@ -9,13 +9,17 @@
 #import <CloudPhotoLibrary/CPLAbstractObject-Protocol.h>
 #import <CloudPhotoLibrary/CPLBatchExtractionStrategyStorage-Protocol.h>
 
-@class CPLBatchExtractionStrategy, CPLPlatformObject, NSMutableDictionary, NSString;
+@class CPLBatchExtractionStrategy, CPLPlatformObject, NSDate, NSMutableDictionary, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
 @interface CPLEnginePushRepository : CPLEngineStorage <CPLAbstractObject, CPLBatchExtractionStrategyStorage>
 {
     NSMutableDictionary *_propertiesPerClass;
     CPLBatchExtractionStrategy *_extractionStrategy;
     NSString *_lastStrategyName;
+    NSObject<OS_dispatch_queue> *_uploadRateQueue;
+    NSDate *_lastUploadRateUpdateDate;
+    double _lastApproximativeUploadRate;
 }
 
 @property (readonly, nonatomic) unsigned long long countOfChanges;
@@ -24,6 +28,7 @@
 @property (strong, nonatomic) CPLBatchExtractionStrategy *extractionStrategy;
 @property (readonly, nonatomic) BOOL hasChanges;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) unsigned long long maximumResourceSizePerBatch;
 @property (readonly, nonatomic) CPLPlatformObject *platformObject;
 @property (readonly) Class superclass;
 
@@ -48,6 +53,7 @@
 - (BOOL)storeChange:(id)arg1 uploadIdentifier:(id)arg2 error:(id *)arg3;
 - (BOOL)storeExtractedBatch:(id)arg1 error:(id *)arg2;
 - (id)storedExtractedBatch;
+- (void)updateApproximativeUploadRate:(double)arg1;
 
 @end
 

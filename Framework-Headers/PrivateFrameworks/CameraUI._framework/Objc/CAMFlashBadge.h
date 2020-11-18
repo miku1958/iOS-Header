@@ -6,14 +6,16 @@
 
 #import <DCIMServices/CAMBadgeView.h>
 
-@class UIImage;
+@class NSString, UIImage;
 
 @interface CAMFlashBadge : CAMBadgeView
 {
     UIImage *__contentImage;
+    NSString *__contentSizeCategory;
 }
 
 @property (strong, nonatomic) UIImage *_contentImage; // @synthesize _contentImage=__contentImage;
+@property (copy, nonatomic) NSString *_contentSizeCategory; // @synthesize _contentSizeCategory=__contentSizeCategory;
 
 - (void).cxx_destruct;
 - (struct UIEdgeInsets)_imageInsets;
@@ -21,6 +23,7 @@
 - (id)_maskImage;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)updateToContentSize:(id)arg1;
 
 @end
 

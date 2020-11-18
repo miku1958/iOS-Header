@@ -84,7 +84,8 @@
 - (void)iCloudSignOut;
 - (void)iCloudSignOutHack;
 - (void)iCloudUpdateForUserName:(NSString *)arg1 accountInfo:(NSDictionary *)arg2;
-- (void)idsiCloudSignInDataMigratorForID:(NSString *)arg1;
+- (void)iTunesSignInWithUserName:(NSString *)arg1 authToken:(NSString *)arg2 password:(NSString *)arg3 accountInfo:(NSDictionary *)arg4 accountStatus:(NSNumber *)arg5 handles:(NSArray *)arg6;
+- (void)iTunesSignOut;
 - (void)incomingAccountSyncMessage:(NSDictionary *)arg1;
 - (void)initialLocalSyncCompletedForServices:(NSArray *)arg1;
 - (void)initialLocalSyncStartedForServices:(NSArray *)arg1;

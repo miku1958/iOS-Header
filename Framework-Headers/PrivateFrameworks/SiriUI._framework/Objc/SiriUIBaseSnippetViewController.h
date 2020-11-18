@@ -9,19 +9,19 @@
 #import <SiriUI/SiriUIViewController-Protocol.h>
 
 @class AceObject, NSString, SAUISnippet, SiriUISashItem;
-@protocol SiriUIAceObjectViewControllerDelegate;
+@protocol SiriUIBaseAceObjectViewControllerDelegate;
 
 @interface SiriUIBaseSnippetViewController : UIViewController <SiriUIViewController>
 {
     BOOL _utteranceUserInteractionEnabled;
     AceObject *aceObject;
     SiriUISashItem *_sashItem;
-    id<SiriUIAceObjectViewControllerDelegate> _delegate;
+    id<SiriUIBaseAceObjectViewControllerDelegate> _delegate;
 }
 
 @property (strong, nonatomic) AceObject *aceObject; // @synthesize aceObject;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<SiriUIAceObjectViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<SiriUIBaseAceObjectViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) SiriUISashItem *sashItem; // @synthesize sashItem=_sashItem;

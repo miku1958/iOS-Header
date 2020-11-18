@@ -12,6 +12,7 @@
 {
     float _a;
     float _b;
+    float _c;
     id<MTLBuffer> _aBuf;
     unsigned long long _count;
     int _type;
@@ -24,10 +25,10 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;
-- (id)initWithDevice:(id)arg1 a:(float)arg2 b:(float)arg3 type:(int)arg4;
+- (id)initWithDevice:(id)arg1 a:(float)arg2 b:(float)arg3 c:(float)arg4 type:(int)arg5;
 - (id)initWithDevice:(id)arg1 a:(const float *)arg2 count:(unsigned long long)arg3 type:(int)arg4;
 - (void)initializeWithNeuronType:(int)arg1 neuronParameterA:(const float *)arg2 count:(unsigned long long)arg3;
-- (void)initializeWithNeuronType:(int)arg1 neuronParameterA:(float)arg2 neuronParameterB:(float)arg3;
+- (void)initializeWithNeuronType:(int)arg1 neuronParameterA:(float)arg2 neuronParameterB:(float)arg3 neuronParameterC:(float)arg4;
 
 @end
 

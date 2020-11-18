@@ -138,7 +138,6 @@
 - (void)_setValue:(id)arg1 withClass:(Class)arg2 forKey:(id)arg3;
 - (void)_setValue:(id)arg1 withClass:(Class)arg2 forKey:(id)arg3 copy:(BOOL)arg4;
 - (void)_standardizeMarkAs;
-- (void)_updateDocumentInfoForContentURL:(id)arg1;
 - (id)accountHandles;
 - (id)accountIdentifier;
 - (id)acquisitionMake;

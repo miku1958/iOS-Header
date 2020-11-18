@@ -23,6 +23,7 @@
 - (id)_indexKeyForBugSessionIdentifier:(id)arg1;
 - (id)init;
 - (id)loadSavedBugSessions;
+- (id)loadSavedSessionsFromPlist:(id)arg1;
 - (void)removeBugSession:(id)arg1;
 - (void)updateBugSession:(id)arg1;
 

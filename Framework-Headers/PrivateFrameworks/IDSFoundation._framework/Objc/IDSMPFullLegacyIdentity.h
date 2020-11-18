@@ -13,11 +13,13 @@
 }
 
 + (id)identityWithData:(id)arg1 error:(id *)arg2;
++ (id)identityWithError:(id *)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)dataRepresentationWithError:(id *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)publicIdentityWithError:(id *)arg1;
+- (BOOL)purgeFromKeychain:(id *)arg1;
 - (id)verifyAndExposeData:(id)arg1 withSigner:(id)arg2 error:(id *)arg3;
 
 @end

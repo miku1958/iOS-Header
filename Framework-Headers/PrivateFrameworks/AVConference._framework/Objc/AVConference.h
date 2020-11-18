@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVConferenceXPCClient, CALayer, NSDictionary, NSMutableDictionary, NSTimer;
 @protocol AVConferenceDelegate, OS_dispatch_queue;
@@ -116,6 +116,7 @@
 - (BOOL)setPauseVideo:(BOOL)arg1 callID:(long long)arg2 error:(id *)arg3;
 - (void)setPeerCN:(id)arg1 callID:(long long)arg2;
 - (void)setPeerProtocolVersion:(unsigned int)arg1 forCallID:(long long)arg2;
+- (void)setPeerReportingIdentifier:(id)arg1 sessionIdentifier:(id)arg2 forCallID:(long long)arg3;
 - (void)setRemoteVideoBackLayer:(void *)arg1;
 - (void)setRemoteVideoLayer:(void *)arg1;
 - (BOOL)setServerInfo:(id)arg1;

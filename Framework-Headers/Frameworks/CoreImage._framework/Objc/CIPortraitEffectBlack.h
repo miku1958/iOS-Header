@@ -86,6 +86,8 @@ __attribute__((visibility("hidden")))
 - (id)_CIPrepareBlackDisparity;
 - (id)_CIRefineBlackDepth;
 - (id)_applyVignette;
+- (id)_faceAndBodyFill_orient1;
+- (id)_faceAndBodyFill_orient6;
 - (id)_faceProtect;
 - (id)_faceVignette;
 - (id)_getFocusRect:(id)arg1;
@@ -95,6 +97,7 @@ __attribute__((visibility("hidden")))
 - (id)adaptiveNormalizationAbsolute;
 - (id)adaptiveNormalizationGPU;
 - (id)backgroundPreviewCubeName;
+- (id)blendDepth;
 - (id)invertRed;
 - (id)outputImage;
 - (id)previewCubeName;

@@ -61,6 +61,8 @@
 @property (readonly, nonatomic) unsigned int timeToConnectionStartMsecs;
 @property (readonly, nonatomic) unsigned int timeToDnsResolvedMsecs;
 @property (readonly, nonatomic) unsigned int timeToDnsStartMsecs;
+@property (readonly, nonatomic) BOOL tls13Configured;
+@property (readonly, nonatomic) BOOL tlsSucceeded;
 @property (readonly, nonatomic) unsigned int trafficClass;
 
 - (void).cxx_destruct;

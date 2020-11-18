@@ -6,7 +6,7 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
-@class HFControlItem, HFControlPanelItem, HFValueTransformer, HUControlPanelCell;
+@class HFControlItem, HFControlPanelItem, HFServiceItem, HFValueTransformer, HUControlPanelCell, NSString;
 @protocol HUControlPanelRule;
 
 @protocol HUControlPanelConfiguration <NSObject>
@@ -17,6 +17,9 @@
 - (void)setupControlsForCell:(HUControlPanelCell *)arg1 item:(HFControlPanelItem *)arg2;
 
 @optional
+- (NSString *)sectionFooterForItem:(HFControlPanelItem *)arg1 forSourceItem:(HFServiceItem *)arg2;
+- (NSString *)sectionTitleForItem:(HFControlPanelItem *)arg1 forSourceItem:(HFServiceItem *)arg2;
+- (BOOL)shouldShowSectionFooterForItem:(HFControlPanelItem *)arg1;
 - (BOOL)shouldShowSectionTitleForItem:(HFControlPanelItem *)arg1;
 - (HFValueTransformer *)valueTransformerForControlItem:(HFControlItem *)arg1;
 @end

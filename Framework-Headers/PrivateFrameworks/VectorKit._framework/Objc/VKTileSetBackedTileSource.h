@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (long long)defaultMaximumZoomLevel;
 - (long long)defaultMinimumZoomLevel;
+- (void)didFailToLoadTileKey:(const struct _GEOTileKey *)arg1 error:(id)arg2;
 - (struct _GEOTileKey)downloadKeyAtX:(unsigned int)arg1 y:(unsigned int)arg2 z:(unsigned int)arg3;
 - (void)expireTiles;
 - (BOOL)expires;

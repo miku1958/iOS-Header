@@ -7,12 +7,12 @@
 #import <UIKit/UIViewController.h>
 
 #import <NewsUI/NULoadingDelegate-Protocol.h>
-#import <NewsUI/NUPagable-Protocol.h>
+#import <NewsUI/NUPageable-Protocol.h>
 
 @class FCArticle, NSString, NUMultiDelegate, UIView;
 @protocol NUArticleViewControllerFactory, NUErrorMessageFactory, NULoadingDelegate, NULoadingViewProviding, NUSettings;
 
-@interface NUArticleHostViewController : UIViewController <NULoadingDelegate, NUPagable>
+@interface NUArticleHostViewController : UIViewController <NULoadingDelegate, NUPageable>
 {
     NSString *_pageIdentifier;
     id<NULoadingDelegate> _loadingDelegate;

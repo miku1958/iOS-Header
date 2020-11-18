@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
     NSString *_ledBellyServiceIdentifier;
     NSURL *_ledBellyFallbackURL;
     NSData *__TCPConnectionMetadata;
+    unsigned short _TLSNegotiatedCipherSuite;
     float _priorityHint;
     long long _priorityValue;
     double _loadingPriorityValue;
@@ -94,6 +95,8 @@ __attribute__((visibility("hidden")))
     BOOL _allowsQUIC;
     id<SZExtractor> _extractor;
     BOOL _extractorFinishedDecoding;
+    BOOL _hasSZExtractor;
+    BOOL _doesSZExtractorConsumeExtractedData;
     id<NSURLSessionAppleIDContext> _appleIDContext;
     BOOL _authenticatorConfiguredViaTaskProperty;
     NSProgress *_progress;
@@ -113,6 +116,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)supportsSecureCoding;
 - (id)_DuetActivityProperties;
 - (id)_TCPConnectionMetadata;
+- (unsigned short)_TLSNegotiatedCipherSuite;
 - (unsigned long long)_allowedProtocolTypes;
 - (BOOL)_allowsCellular;
 - (BOOL)_allowsQUIC;
@@ -149,6 +153,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)_darkWakePowerAssertion;
 - (id)_dependencyInfo;
 - (BOOL)_disallowCellular;
+- (BOOL)_doesSZExtractorConsumeExtractedData;
 - (long long)_expectedWorkload;
 - (id)_extractor;
 - (BOOL)_extractorFinishedDecoding;
@@ -156,6 +161,7 @@ __attribute__((visibility("hidden")))
 - (void)_finishProgressReporting;
 - (void)_getAuthenticationHeadersForResponse:(struct _CFURLResponse *)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (struct __CFSet *)_getAuthenticatorStatusCodes;
+- (BOOL)_hasSZExtractor;
 - (id)_incompleteTaskMetrics;
 - (void)_initializeTimingDataWithSessionConfiguration:(id)arg1;
 - (id)_ledBellyFallbackURL;
@@ -227,8 +233,6 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)earliestBeginDate;
 - (id)error;
-- (id)getExtractor;
-- (BOOL)hasExtractor;
 - (id)initWithOriginalRequest:(id)arg1 updatedRequest:(id)arg2 ident:(unsigned long long)arg3 session:(id)arg4;
 - (id)initWithTask:(id)arg1;
 - (void)initializeHTTPAuthenticatorWithAppleIDContext:(id)arg1 statusCodes:(id)arg2;
@@ -261,6 +265,7 @@ __attribute__((visibility("hidden")))
 - (void)setTaskIdentifier:(unsigned long long)arg1;
 - (void)set_DuetActivityProperties:(id)arg1;
 - (void)set_TCPConnectionMetadata:(id)arg1;
+- (void)set_TLSNegotiatedCipherSuite:(unsigned short)arg1;
 - (void)set_allowedProtocolTypes:(unsigned long long)arg1;
 - (void)set_allowsCellular:(BOOL)arg1;
 - (void)set_allowsQUIC:(BOOL)arg1;
@@ -283,10 +288,12 @@ __attribute__((visibility("hidden")))
 - (void)set_darkWakePowerAssertion:(unsigned int)arg1;
 - (void)set_dependencyInfo:(id)arg1;
 - (void)set_disallowCellular:(BOOL)arg1;
+- (void)set_doesSZExtractorConsumeExtractedData:(BOOL)arg1;
 - (void)set_expectedWorkload:(long long)arg1;
 - (void)set_extractor:(id)arg1;
 - (void)set_extractorFinishedDecoding:(BOOL)arg1;
 - (void)set_extractorPreparedForExtraction:(BOOL)arg1;
+- (void)set_hasSZExtractor:(BOOL)arg1;
 - (void)set_incompleteTaskMetrics:(id)arg1;
 - (void)set_ledBellyFallbackURL:(id)arg1;
 - (void)set_ledBellyServiceIdentifier:(id)arg1;

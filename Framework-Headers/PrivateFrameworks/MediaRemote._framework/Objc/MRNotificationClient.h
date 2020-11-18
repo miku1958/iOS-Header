@@ -33,6 +33,7 @@
 }
 
 @property (copy, nonatomic) CDUnknownBlockType notificationCallback;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *nowPlayingNotificationQueue;
 @property (nonatomic) BOOL receivesExternalScreenTypeChangedNotifications; // @synthesize receivesExternalScreenTypeChangedNotifications=_receivesExternalScreenTypeChangedNotifications;
 @property (nonatomic) BOOL receivesOriginChangedNotifications; // @synthesize receivesOriginChangedNotifications=_receivesOriginChangedNotifications;
 @property (nonatomic) BOOL receivesPlaybackErrorNotifications; // @synthesize receivesPlaybackErrorNotifications=_receivesPlaybackErrorNotifications;

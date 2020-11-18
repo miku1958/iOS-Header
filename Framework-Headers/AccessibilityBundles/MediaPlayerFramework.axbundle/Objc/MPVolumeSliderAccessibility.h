@@ -15,7 +15,8 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_layoutVolumeWarningView;
-- (void)_setValue:(float)arg1 andSendAction:(BOOL)arg2;
+- (void)accessibilityDecrement;
+- (void)accessibilityIncrement;
 - (id)accessibilityLabel;
 
 @end

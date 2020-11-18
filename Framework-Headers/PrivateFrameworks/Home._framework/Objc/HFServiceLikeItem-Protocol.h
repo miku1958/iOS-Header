@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Home/HFControlItemVendor-Protocol.h>
 #import <Home/HFHomeKitItemProtocol-Protocol.h>
 #import <Home/HFServiceVendor-Protocol.h>
 #import <Home/NSCopying-Protocol.h>
 
 @protocol HFCharacteristicValueSource;
 
-@protocol HFServiceLikeItem <HFControlItemVendor, HFHomeKitItemProtocol, HFServiceVendor, NSCopying>
+@protocol HFServiceLikeItem <HFHomeKitItemProtocol, HFServiceVendor, NSCopying>
 
 @property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource;
 

@@ -8,13 +8,11 @@
 
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSDateInterval, NSMutableArray, NSUUID;
+@class NSArray, NSDateInterval, NSMutableArray, NSUUID;
 
 @interface HKHeartRateSummaryStatistics : NSObject <NSSecureCoding>
 {
     NSMutableArray *_sortedBuckets;
-    NSDate *_earliestReadingDate;
-    NSDate *_latestReadingDate;
     NSDateInterval *_dateInterval;
     long long _numberOfBuckets;
     long long _numberOfReadings;
@@ -26,7 +24,6 @@
 @property (strong, nonatomic, setter=_setHighlightedReadings:) NSArray *highlightedReadings; // @synthesize highlightedReadings=_highlightedReadings;
 @property (readonly, nonatomic) long long numberOfBuckets; // @synthesize numberOfBuckets=_numberOfBuckets;
 @property (readonly, nonatomic) long long numberOfReadings; // @synthesize numberOfReadings=_numberOfReadings;
-@property (readonly, nonatomic) NSDateInterval *readingsDateInterval;
 @property (readonly, nonatomic) NSUUID *sessionUUID; // @synthesize sessionUUID=_sessionUUID;
 
 + (BOOL)supportsSecureCoding;
@@ -34,7 +31,7 @@
 - (id)_bucketAtIndex:(long long)arg1 createdIfNeeded:(BOOL)arg2;
 - (id)_bucketsDescription;
 - (id)_dictionaryRepresentation;
-- (void)addHeartRateInBeatsPerMinute:(double)arg1 forDate:(id)arg2;
+- (void)addHeartRateInBeatsPerMinute:(double)arg1 forTime:(double)arg2;
 - (id)bucketAtIndex:(long long)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

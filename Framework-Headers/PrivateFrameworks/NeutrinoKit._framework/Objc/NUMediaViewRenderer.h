@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class AVComposition, NSArray, NUAVPlayerController, NUCoalescer, NUColorSpace, NULivePhotoRenderClient, NUMediaView, NUPixelFormat, NUPriority, NURenderClient, NUResponse, NUSurfaceRenderClient, NUVideoRenderClient, UIView;
-@protocol NURegionPolicy, NUScalePolicy, OS_dispatch_group, OS_dispatch_queue;
+@class AVComposition, NSArray, NUAVPlayerController, NUCoalescer, NUColorSpace, NUComposition, NULivePhotoRenderClient, NUMediaView, NUPixelFormat, NUResponse, NUSurfaceRenderClient, NUVideoRenderClient, UIView;
+@protocol NURenderStatistics, OS_dispatch_group, OS_dispatch_queue;
 
 @interface NUMediaViewRenderer : NSObject
 {
@@ -24,12 +24,17 @@
     NSObject<OS_dispatch_queue> *_renderQueue;
     NUResponse *_zoomRenderResponse;
     NUResponse *_backfillRenderResponse;
+    struct CGRect _lastZoomRect;
+    double _lastZoomScale;
+    double _lastZoomRenderTime;
+    id<NURenderStatistics> _lastZoomRenderStatistics;
+    id<NURenderStatistics> _lastBackfillRenderStatictics;
+    BOOL _isPanning;
+    BOOL _isZooming;
     BOOL __videoEnabled;
-    id<NUScalePolicy> _scalePolicy;
-    id<NURegionPolicy> _regionPolicy;
+    NUComposition *_composition;
     NUColorSpace *_colorSpace;
     NUPixelFormat *_pixelFormat;
-    NUPriority *_renderPriority;
     NUMediaView *_mediaView;
     double _backingScale;
     NSArray *_pipelineFilters;
@@ -43,6 +48,7 @@
 @property (nonatomic, getter=_isVideoEnabled, setter=_setVideoEnabled:) BOOL _videoEnabled; // @synthesize _videoEnabled=__videoEnabled;
 @property (nonatomic) double backingScale; // @synthesize backingScale=_backingScale;
 @property (strong, nonatomic) NUColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
+@property (copy, nonatomic) NUComposition *composition; // @synthesize composition=_composition;
 @property (readonly, nonatomic) unsigned long long computedDisplayType; // @synthesize computedDisplayType=_computedDisplayType;
 @property (nonatomic) unsigned long long displayType; // @synthesize displayType=_displayType;
 @property (readonly) BOOL isReady;
@@ -52,10 +58,6 @@
 @property (copy, nonatomic) NSArray *pipelineFilters; // @synthesize pipelineFilters=_pipelineFilters;
 @property (strong, nonatomic) NUPixelFormat *pixelFormat; // @synthesize pixelFormat=_pixelFormat;
 @property (strong, nonatomic) AVComposition *previousVideo; // @synthesize previousVideo=_previousVideo;
-@property (strong, nonatomic) id<NURegionPolicy> regionPolicy; // @synthesize regionPolicy=_regionPolicy;
-@property (readonly, nonatomic) NURenderClient *renderClient;
-@property (readonly, nonatomic) NUPriority *renderPriority; // @synthesize renderPriority=_renderPriority;
-@property (strong, nonatomic) id<NUScalePolicy> scalePolicy; // @synthesize scalePolicy=_scalePolicy;
 @property (nonatomic, getter=isVideoEnabled) BOOL videoEnabled;
 @property (readonly, nonatomic, getter=isZoomedToFit) BOOL zoomedToFit;
 
@@ -64,17 +66,21 @@
 - (void)_addFullExtentConstraintsForView:(id)arg1;
 - (id)_backfillRenderRequestForComposition:(id)arg1;
 - (CDUnknownBlockType)_backfillRenderResponseHandler;
+- (void)_beginAnimating;
 - (void)_coalesceUpdateLivePhotoComposition:(id)arg1;
 - (void)_coalesceUpdateVideoComposition:(id)arg1;
+- (void)_endAnimating;
+- (double)_lastRenderDuration;
 - (id)_livePhotoFromResponse:(id)arg1;
-- (id)_regionPolicyForZoom;
+- (id)_regionPolicyForZoomTargetRect:(struct CGRect)arg1;
 - (void)_renderFinishedWithGeometry:(id)arg1 layer:(id)arg2;
 - (struct CGRect)_scrollBounds;
 - (void)_setDisplayType:(unsigned long long)arg1;
+- (double)_targetZoomScale;
 - (void)_updateBackfillLayerWithLatestRenderResponse;
 - (void)_updateBackfillLayerWithRenderResponse:(id)arg1;
 - (void)_updateDisplayForMediaType:(long long)arg1;
-- (void)_updateImageLayer:(id)arg1 withRenderResponse:(id)arg2;
+- (id)_updateImageLayer:(id)arg1 withRenderResponse:(id)arg2;
 - (void)_updateImageRenderForComposition:(id)arg1;
 - (void)_updateLivePhotoComposition:(id)arg1;
 - (void)_updateLivePhotoWithResponse:(id)arg1;
@@ -87,10 +93,16 @@
 - (void)_withComposition:(id)arg1 visitRenderClient:(CDUnknownBlockType)arg2;
 - (id)_zoomRenderRequestForComposition:(id)arg1;
 - (CDUnknownBlockType)_zoomRenderResponseHandler;
+- (struct CGRect)_zoomTargetRect;
+- (void)beginPanning;
+- (void)beginZooming;
 - (id)cacheVideoRenderFilter;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromImageToView:(id)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toImageFromView:(id)arg2;
+- (struct CGRect)convertRect:(struct CGRect)arg1 fromImageToView:(id)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 toImageFromView:(id)arg2;
+- (void)endPanning;
+- (void)endZooming;
 - (id)init;
 - (id)initWithMediaView:(id)arg1;
 - (void)livePhotoView:(id)arg1 didEndPlaybackWithStyle:(long long)arg2;
@@ -98,6 +110,7 @@
 - (void)livePhotoViewDidBeginScrubbing:(id)arg1;
 - (void)livePhotoViewDidEndScrubbing:(id)arg1;
 - (id)newRenderRequestForComposition:(id)arg1 scalePolicy:(id)arg2 regionPolicy:(id)arg3;
+- (id)renderClient;
 - (struct CGSize)targetSize;
 - (void)updateComposition:(id)arg1;
 - (void)wait;

@@ -19,8 +19,8 @@
 - (id)auxiliaryDevices;
 - (id)batteryLevel;
 - (id)initWithRouteDescriptor:(id)arg1;
-- (BOOL)isB238Route;
 - (BOOL)isCarplayRoute;
+- (BOOL)isHomePodRoute;
 - (BOOL)isPicked;
 - (BOOL)isPickedOnPairedDevice;
 - (long long)passwordType;

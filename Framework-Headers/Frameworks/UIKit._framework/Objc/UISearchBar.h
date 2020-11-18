@@ -140,6 +140,7 @@
 @property (nonatomic) BOOL learnsCorrections;
 @property (nonatomic) BOOL loadKeyboardsForSiriLanguage;
 @property (copy, nonatomic) NSString *placeholder;
+@property (readonly, nonatomic) int preferredAlignment;
 @property (copy, nonatomic) NSString *prompt;
 @property (copy, nonatomic) NSString *recentInputIdentifier;
 @property (copy, nonatomic) NSString *responseContext;
@@ -211,6 +212,7 @@
 - (id)_currentSeparatorImage;
 - (double)_defaultAutolayoutSpacing;
 - (double)_defaultHeight;
+- (double)_defaultHeightForOrientation:(long long)arg1;
 - (id)_defaultPromptString;
 - (double)_defaultWidth;
 - (void)_destroyCancelButton;
@@ -307,7 +309,9 @@
 - (void)_updateScopeBarBackground;
 - (void)_updateScopeBarFrame;
 - (void)_updateSearchFieldArt;
+- (BOOL)_useRelaxedScopeLayout;
 - (id)_viewForChildViews;
+- (BOOL)_wantsTwoPartTransition;
 - (BOOL)_wouldCombineLandscapeBarsForSize:(struct CGSize)arg1;
 - (id)backgroundImageForBarPosition:(long long)arg1 barMetrics:(long long)arg2;
 - (BOOL)becomeFirstResponder;
@@ -337,6 +341,7 @@
 - (BOOL)isFirstResponder;
 - (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
+- (void)layoutSubviewsInBounds:(struct CGRect)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (struct UIOffset)positionAdjustmentForSearchBarIcon:(long long)arg1;
 - (id)preferredFocusedView;

@@ -42,7 +42,7 @@
 + (id)iTunesAudioContext;
 + (void)initialize;
 + (BOOL)outputContextExistsWithRemoteOutputDevice;
-+ (id)outputContextForControllingOutputDeviceGroupWithID:(id)arg1;
++ (id)outputContextImplForControllingOutputDeviceGroupWithID:(id)arg1 options:(id)arg2;
 + (id)outputContextImplForID:(id)arg1;
 + (id)platformDependentScreenOrVideoContext;
 + (void)resetOutputDeviceForAllOutputContexts;
@@ -55,7 +55,7 @@
 - (int)_configureFigEndpointPickerWithFeature:(unsigned long long)arg1 options:(id)arg2;
 - (void)_handlePickerServerConnectionDiedNotification;
 - (void)_removeFigEndpointPickerNotifications;
-- (void)addOutputDevice:(id)arg1;
+- (void)addOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)endpointPickerUUID;
@@ -64,9 +64,12 @@
 - (id)initWithContextUUID:(id)arg1;
 - (id)initWithFeature:(unsigned long long)arg1 options:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (void)muteAllOutputDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)openCommunicationChannelWithOptions:(id)arg1 error:(id *)arg2;
 - (void)outputContextDidChangeApplicationProcessID:(id)arg1;
+- (void)pausePlaybackOnAllOutputDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeOutputDevice:(id)arg1;
-- (BOOL)setOutputDevice:(id)arg1 options:(id)arg2;
+- (void)setOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setOutputDevices:(id)arg1;
 - (void)setVolume:(float)arg1;
 

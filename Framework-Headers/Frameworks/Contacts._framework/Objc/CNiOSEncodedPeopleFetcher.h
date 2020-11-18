@@ -8,10 +8,9 @@
 
 #import <Contacts/CNEncodedFetchCursor-Protocol.h>
 
-@class CNContactFetchRequest, CNContactsEnvironment;
+@class CNContactFetchRequest, CNContactsEnvironment, NSString;
 @protocol CNContactsLogger, CNEncodedFetchCursor;
 
-__attribute__((visibility("hidden")))
 @interface CNiOSEncodedPeopleFetcher : NSObject <CNEncodedFetchCursor>
 {
     void *_addressBook;
@@ -26,8 +25,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (readonly, nonatomic) CNContactFetchRequest *contactFetchRequest; // @synthesize contactFetchRequest=_contactFetchRequest;
 @property (readonly, nonatomic) id<CNEncodedFetchCursor> cursor; // @synthesize cursor=_cursor;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) CNContactsEnvironment *environment; // @synthesize environment=_environment;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<CNContactsLogger> logger; // @synthesize logger=_logger;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)cursorWithError:(id *)arg1;

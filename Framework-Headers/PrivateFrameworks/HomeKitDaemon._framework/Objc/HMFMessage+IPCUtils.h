@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFMessage.h>
 
-@class NSString;
+@class HMDConnectionProxy, NSString;
 
 @interface HMFMessage (IPCUtils)
 
@@ -15,17 +15,20 @@
 @property (readonly, nonatomic, getter=isAuthorizedForLocationAccess) BOOL authorizedForLocationAccess;
 @property (readonly, nonatomic, getter=isAuthorizedForMicrophoneAccess) BOOL authorizedForMicrophoneAccess;
 @property (readonly, nonatomic, getter=isBackground) BOOL background;
+@property (readonly) NSString *clientName;
 @property (readonly, copy, nonatomic) NSString *companionAppBundleIdentifier;
 @property (readonly, copy, nonatomic) NSString *effectiveLocationBundleIdentifier;
 @property (readonly, nonatomic, getter=isEntitledForAPIAccess) BOOL entitledForAPIAccess;
 @property (readonly, nonatomic, getter=isEntitledForBackgroundMode) BOOL entitledForBackgroundMode;
 @property (readonly, nonatomic, getter=isEntitledForSPIAccess) BOOL entitledForSPIAccess;
+@property (readonly) HMDConnectionProxy *proxyConnection;
+@property (readonly, nonatomic) BOOL requiresNoSPIEntitlement;
 @property (readonly, nonatomic) BOOL requiresSPIEntitlement;
 @property (readonly, nonatomic) int sourcePid;
 @property (readonly, copy, nonatomic) NSString *teamIdentifier;
 
 + (id)entitledMessageWithName:(id)arg1 identifier:(id)arg2 messagePayload:(id)arg3;
 + (id)entitledMessageWithName:(id)arg1 messagePayload:(id)arg2;
-- (id)proxyConnection;
++ (id)nonSPIEntitledMessageWithName:(id)arg1 messagePayload:(id)arg2;
 @end
 

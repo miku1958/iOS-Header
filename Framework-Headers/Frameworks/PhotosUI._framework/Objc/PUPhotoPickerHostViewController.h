@@ -17,12 +17,14 @@ __attribute__((visibility("hidden")))
 @interface PUPhotoPickerHostViewController : _UIRemoteViewController <PUPhotoPickerHostExtensionProvider, PUPhotoPickerActionHandler, PUPhotoPickerTestSupportHandler>
 {
     BOOL __invalidated;
+    BOOL _didUpdateAppearance;
     NSExtensionContext *_hostExtensionContext;
     long long _actionType;
     NSString *_actionTypeDescription;
     long long _secondaryActionType;
     id<PUPhotoPickerHostViewControllerDelegate> _delegate;
     PUPhotoPickerAppearance *_photoPickerAppearance;
+    PUPhotoPickerAppearance *_previousPhotoPickerAppearance;
 }
 
 @property (nonatomic, getter=_isInvalidated) BOOL _invalidated; // @synthesize _invalidated=__invalidated;
@@ -31,10 +33,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUPhotoPickerHostViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL didUpdateAppearance; // @synthesize didUpdateAppearance=_didUpdateAppearance;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSExtensionContext *hostExtensionContext; // @synthesize hostExtensionContext=_hostExtensionContext;
 @property (readonly, nonatomic) id<PUPhotoPickerHostService> hostProxy;
 @property (strong, nonatomic) PUPhotoPickerAppearance *photoPickerAppearance; // @synthesize photoPickerAppearance=_photoPickerAppearance;
+@property (strong, nonatomic) PUPhotoPickerAppearance *previousPhotoPickerAppearance; // @synthesize previousPhotoPickerAppearance=_previousPhotoPickerAppearance;
 @property (nonatomic) long long secondaryActionType; // @synthesize secondaryActionType=_secondaryActionType;
 @property (readonly) Class superclass;
 
@@ -58,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)tapDone:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)willMoveToParentViewController:(id)arg1;
 
 @end
 

@@ -13,10 +13,14 @@
 
 @interface AFClientConfiguration : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _isDeviceInSetupFlow;
+    BOOL _isDeviceInCarDNDMode;
     AFAudioPlaybackRequest *_tapToSiriAudioPlaybackRequest;
     AFAudioPlaybackRequest *_twoShotAudioPlaybackRequest;
 }
 
+@property (readonly, nonatomic) BOOL isDeviceInCarDNDMode; // @synthesize isDeviceInCarDNDMode=_isDeviceInCarDNDMode;
+@property (readonly, nonatomic) BOOL isDeviceInSetupFlow; // @synthesize isDeviceInSetupFlow=_isDeviceInSetupFlow;
 @property (readonly, copy, nonatomic) AFAudioPlaybackRequest *tapToSiriAudioPlaybackRequest; // @synthesize tapToSiriAudioPlaybackRequest=_tapToSiriAudioPlaybackRequest;
 @property (readonly, copy, nonatomic) AFAudioPlaybackRequest *twoShotAudioPlaybackRequest; // @synthesize twoShotAudioPlaybackRequest=_twoShotAudioPlaybackRequest;
 
@@ -29,7 +33,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithTapToSiriAudioPlaybackRequest:(id)arg1 twoShotAudioPlaybackRequest:(id)arg2;
+- (id)initWithIsDeviceInSetupFlow:(BOOL)arg1 isDeviceInCarDNDMode:(BOOL)arg2 tapToSiriAudioPlaybackRequest:(id)arg3 twoShotAudioPlaybackRequest:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 
 @end

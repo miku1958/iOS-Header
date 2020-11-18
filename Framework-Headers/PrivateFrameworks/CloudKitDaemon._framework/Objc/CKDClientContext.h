@@ -30,6 +30,7 @@
     NSURL *_publicShareServiceURL;
     NSURL *_publicDeviceServiceURL;
     NSURL *_publicCodeServiceURL;
+    NSURL *_publicMetricsServiceURL;
     NSString *_containerScopedUserID;
     NSHashTable *_proxies;
     long long _cachedEnvironment;
@@ -103,6 +104,8 @@
 @property (strong, nonatomic) CKDPublicIdentityLookupService *backgroundPublicIdentityLookupService; // @synthesize backgroundPublicIdentityLookupService=_backgroundPublicIdentityLookupService;
 @property (strong, nonatomic) CKDZoneGatekeeper *backgroundZoneGatekeeper; // @synthesize backgroundZoneGatekeeper=_backgroundZoneGatekeeper;
 @property (nonatomic) BOOL bypassPCSEncryption; // @synthesize bypassPCSEncryption=_bypassPCSEncryption;
+@property (readonly, nonatomic) unsigned long long c2MetricsReportFrequency;
+@property (readonly, nonatomic) unsigned long long c2MetricsReportFrequencyBase;
 @property (strong, nonatomic) CKDCachePurger *cachePurger; // @synthesize cachePurger=_cachePurger;
 @property long long cachedEnvironment; // @synthesize cachedEnvironment=_cachedEnvironment;
 @property (readonly, nonatomic) BOOL canAccessAccount;
@@ -149,6 +152,7 @@
 @property (strong, nonatomic) NSURL *publicCodeServiceURL; // @synthesize publicCodeServiceURL=_publicCodeServiceURL;
 @property (strong, nonatomic) NSURL *publicDeviceServiceURL; // @synthesize publicDeviceServiceURL=_publicDeviceServiceURL;
 @property (strong, nonatomic) CKDKeyValueDiskCache *publicIdentitiesDiskCache; // @synthesize publicIdentitiesDiskCache=_publicIdentitiesDiskCache;
+@property (strong, nonatomic) NSURL *publicMetricsServiceURL; // @synthesize publicMetricsServiceURL=_publicMetricsServiceURL;
 @property (strong, nonatomic) NSURL *publicShareServiceURL; // @synthesize publicShareServiceURL=_publicShareServiceURL;
 @property (nonatomic) BOOL returnPCSMetadata; // @synthesize returnPCSMetadata=_returnPCSMetadata;
 @property (nonatomic, getter=isSandboxed) BOOL sandboxed; // @synthesize sandboxed=_sandboxed;

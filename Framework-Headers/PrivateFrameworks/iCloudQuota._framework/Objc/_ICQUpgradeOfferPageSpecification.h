@@ -14,25 +14,31 @@
     NSString *_iconBundleIdentifier;
     NSString *_title;
     NSString *_message;
+    NSArray *_messageLinks;
     NSString *_altMessage;
-    NSArray *_services;
+    NSArray *_altMessageLinks;
     ICQLink *_purchaseLink;
+    ICQLink *_purchase2Link;
     ICQLink *_bottomLink;
-    NSString *_finePrintFormat;
-    NSArray *_finePrintLinks;
+    NSString *_fineprintFormat;
+    NSArray *_fineprintLinks;
+    NSString *_purchase2LinkVisibleKey;
     NSString *_bottomLinkVisibleKey;
 }
 
 @property (strong, nonatomic) NSString *altMessage; // @synthesize altMessage=_altMessage;
+@property (strong, nonatomic) NSArray *altMessageLinks; // @synthesize altMessageLinks=_altMessageLinks;
 @property (strong, nonatomic) ICQLink *bottomLink; // @synthesize bottomLink=_bottomLink;
 @property (strong, nonatomic) NSString *bottomLinkVisibleKey; // @synthesize bottomLinkVisibleKey=_bottomLinkVisibleKey;
-@property (strong, nonatomic) NSString *finePrintFormat; // @synthesize finePrintFormat=_finePrintFormat;
-@property (strong, nonatomic) NSArray *finePrintLinks; // @synthesize finePrintLinks=_finePrintLinks;
+@property (strong, nonatomic) NSString *fineprintFormat; // @synthesize fineprintFormat=_fineprintFormat;
+@property (strong, nonatomic) NSArray *fineprintLinks; // @synthesize fineprintLinks=_fineprintLinks;
 @property (strong, nonatomic) NSString *iconBundleIdentifier; // @synthesize iconBundleIdentifier=_iconBundleIdentifier;
 @property (strong, nonatomic) NSString *message; // @synthesize message=_message;
+@property (strong, nonatomic) NSArray *messageLinks; // @synthesize messageLinks=_messageLinks;
+@property (strong, nonatomic) ICQLink *purchase2Link; // @synthesize purchase2Link=_purchase2Link;
+@property (strong, nonatomic) NSString *purchase2LinkVisibleKey; // @synthesize purchase2LinkVisibleKey=_purchase2LinkVisibleKey;
 @property (strong, nonatomic) ICQLink *purchaseLink; // @synthesize purchaseLink=_purchaseLink;
 @property (readonly, nonatomic) NSDictionary *serverDict; // @synthesize serverDict=_serverDict;
-@property (strong, nonatomic) NSArray *services; // @synthesize services=_services;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (id)upgradeOfferPageSpecificationSampleForLevel:(long long)arg1;

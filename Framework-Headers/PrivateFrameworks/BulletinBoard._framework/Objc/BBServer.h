@@ -161,7 +161,6 @@
 - (id)_defaultSectionOrderForTopLevelCollection:(id)arg1;
 - (id)_defaultSectionOrders;
 - (BOOL)_deviceSupportsFavorites;
-- (void)_didEffectiveSettingsChange:(id)arg1;
 - (BOOL)_didNotificationCenterSettingsChangeWithSectionInfo:(id)arg1 replacingSectionInfo:(id)arg2;
 - (void)_didReceiveResponseForBulletin:(id)arg1;
 - (BOOL)_doesAddressBookContainDestinationID:(id)arg1;
@@ -218,6 +217,7 @@
 - (void)_publishBulletinRequest:(id)arg1 forSectionID:(id)arg2 forDestinations:(unsigned long long)arg3;
 - (void)_publishBulletinRequest:(id)arg1 forSectionID:(id)arg2 forDestinations:(unsigned long long)arg3 alwaysToLockScreen:(BOOL)arg4;
 - (void)_publishBulletinsForAllDataProviders;
+- (void)_queue_managedUserNotificationsSetttingsDidChange;
 - (void)_queue_setPrivilegedSenderTypes:(unsigned long long)arg1 source:(unsigned long long)arg2;
 - (void)_reloadReloadSectionInfoForSectionID:(id)arg1;
 - (void)_reloadSectionParametersForSectionID:(id)arg1;

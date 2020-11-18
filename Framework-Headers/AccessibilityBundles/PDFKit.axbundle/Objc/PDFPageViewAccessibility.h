@@ -22,6 +22,7 @@
 - (struct CGPDFSelection *)_lineSelectionForSelection:(struct CGPDFSelection *)arg1;
 - (id)accessibilityElements;
 - (BOOL)isAccessibilityElement;
+- (void)removeActiveWidgetAnnotation;
 
 @end
 

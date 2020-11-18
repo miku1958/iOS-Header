@@ -75,6 +75,7 @@
 - (void).cxx_destruct;
 - (void)_unmaskPlatterView;
 - (void)didMoveToSuperview;
+- (void)didMoveToWindow;
 - (id)initWithDUIPreview:(id)arg1;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (double)scaleFactor;

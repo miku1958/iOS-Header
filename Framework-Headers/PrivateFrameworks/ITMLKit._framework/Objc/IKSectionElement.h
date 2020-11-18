@@ -6,13 +6,14 @@
 
 #import <ITMLKit/IKDataSourceElement.h>
 
-@class IKHeaderElement, NSArray;
+@class IKHeaderElement, IKViewElement, NSArray;
 
 @interface IKSectionElement : IKDataSourceElement
 {
     NSArray *_items;
 }
 
+@property (readonly, strong, nonatomic) IKViewElement *footer;
 @property (readonly, strong, nonatomic) IKHeaderElement *header;
 @property (readonly, strong, nonatomic) NSArray *items;
 

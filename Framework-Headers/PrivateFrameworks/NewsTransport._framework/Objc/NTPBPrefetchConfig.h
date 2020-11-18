@@ -12,24 +12,32 @@
 {
     double _backgroundFetchMinimumInterval;
     long long _feedPrefetchFavoritesLimit;
+    long long _prefetchedForYouExpiration;
     BOOL _backgroundFetchEnabled;
+    BOOL _backgroundFetchEnabled2;
     BOOL _feedPrefetchForYou;
     struct {
         unsigned int backgroundFetchMinimumInterval:1;
         unsigned int feedPrefetchFavoritesLimit:1;
+        unsigned int prefetchedForYouExpiration:1;
         unsigned int backgroundFetchEnabled:1;
+        unsigned int backgroundFetchEnabled2:1;
         unsigned int feedPrefetchForYou:1;
     } _has;
 }
 
 @property (nonatomic) BOOL backgroundFetchEnabled; // @synthesize backgroundFetchEnabled=_backgroundFetchEnabled;
+@property (nonatomic) BOOL backgroundFetchEnabled2; // @synthesize backgroundFetchEnabled2=_backgroundFetchEnabled2;
 @property (nonatomic) double backgroundFetchMinimumInterval; // @synthesize backgroundFetchMinimumInterval=_backgroundFetchMinimumInterval;
 @property (nonatomic) long long feedPrefetchFavoritesLimit; // @synthesize feedPrefetchFavoritesLimit=_feedPrefetchFavoritesLimit;
 @property (nonatomic) BOOL feedPrefetchForYou; // @synthesize feedPrefetchForYou=_feedPrefetchForYou;
 @property (nonatomic) BOOL hasBackgroundFetchEnabled;
+@property (nonatomic) BOOL hasBackgroundFetchEnabled2;
 @property (nonatomic) BOOL hasBackgroundFetchMinimumInterval;
 @property (nonatomic) BOOL hasFeedPrefetchFavoritesLimit;
 @property (nonatomic) BOOL hasFeedPrefetchForYou;
+@property (nonatomic) BOOL hasPrefetchedForYouExpiration;
+@property (nonatomic) long long prefetchedForYouExpiration; // @synthesize prefetchedForYouExpiration=_prefetchedForYouExpiration;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

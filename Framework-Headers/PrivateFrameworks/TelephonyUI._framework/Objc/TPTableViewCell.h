@@ -29,8 +29,10 @@
 @property (nonatomic, getter=isForegroundViewLoaded) BOOL foregroundViewLoaded; // @synthesize foregroundViewLoaded=_foregroundViewLoaded;
 @property (readonly, nonatomic) NSLayoutConstraint *foregroundViewTopAnchorLayoutConstraint; // @synthesize foregroundViewTopAnchorLayoutConstraint=_foregroundViewTopAnchorLayoutConstraint;
 @property (readonly, nonatomic) NSLayoutConstraint *foregroundViewTrailingAnchorLayoutConstraint; // @synthesize foregroundViewTrailingAnchorLayoutConstraint=_foregroundViewTrailingAnchorLayoutConstraint;
+@property (readonly, nonatomic) struct UIEdgeInsets intrinsicSeparatorInset;
 
 + (BOOL)requiresConstraintBasedLayout;
++ (struct UIEdgeInsets)separatorInsetForContentSizeCategory:(id)arg1;
 - (void).cxx_destruct;
 - (void)commonInit;
 - (id)init;

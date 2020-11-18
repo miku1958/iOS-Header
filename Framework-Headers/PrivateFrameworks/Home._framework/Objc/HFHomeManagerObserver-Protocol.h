@@ -16,6 +16,7 @@
 - (void)homeManager:(HMHomeManager *)arg1 didUpdateLocationSensingAvailability:(BOOL)arg2;
 - (void)homeManager:(HMHomeManager *)arg1 didUpdateResidentEnabledForThisDevice:(BOOL)arg2;
 - (void)homeManager:(HMHomeManager *)arg1 didUpdateStateForIncomingInvitations:(NSArray *)arg2;
+- (void)homeManager:(HMHomeManager *)arg1 didUpdateStatus:(unsigned long long)arg2;
 - (void)homeManager:(HMHomeManager *)arg1 residentProvisioningStatusChanged:(unsigned long long)arg2;
 - (void)homeManagerDidEndBatchNotifications:(HMHomeManager *)arg1;
 - (void)homeManagerDidFinishInitialDatabaseLoad:(HMHomeManager *)arg1;

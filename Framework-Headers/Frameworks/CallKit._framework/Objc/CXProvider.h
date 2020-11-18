@@ -67,6 +67,7 @@
 - (void)reportOutgoingCallWithUUID:(id)arg1 connectedAtDate:(id)arg2;
 - (void)reportOutgoingCallWithUUID:(id)arg1 sentInvitationAtDate:(id)arg2;
 - (void)reportOutgoingCallWithUUID:(id)arg1 startedConnectingAtDate:(id)arg2;
+- (void)requestTransaction:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sendProviderDidBegin;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 

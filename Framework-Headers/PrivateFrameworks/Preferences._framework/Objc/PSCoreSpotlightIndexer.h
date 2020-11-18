@@ -6,22 +6,47 @@
 
 #import <Foundation/NSObject.h>
 
+@class CSSearchableIndex, NSDate;
+@protocol OS_dispatch_queue;
+
 @interface PSCoreSpotlightIndexer : NSObject
 {
+    CSSearchableIndex *_prefsSearchableIndex;
+    NSObject<OS_dispatch_queue> *_spotlightIndexQueue;
 }
 
+@property (readonly, nonatomic) NSDate *lastIndexDate;
+@property (readonly, nonatomic) BOOL needsIndex;
+@property (strong, nonatomic) CSSearchableIndex *prefsSearchableIndex; // @synthesize prefsSearchableIndex=_prefsSearchableIndex;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *spotlightIndexQueue; // @synthesize spotlightIndexQueue=_spotlightIndexQueue;
+
 + (id)sharedInstance;
+- (void).cxx_destruct;
+- (id)_bundleForSpecifier:(id)arg1 parentBundle:(id)arg2;
+- (id)_childSpecifiersForSpecifier:(id)arg1 bundle:(id)arg2 childBundleToUpdate:(id *)arg3;
+- (void)_deleteSpecifiers:(id)arg1 bundle:(id)arg2 category:(id)arg3 pathURL:(id)arg4 withURLPrefix:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (id)_descriptionForSpecifierName:(id)arg1 withParentSpecifierNames:(id)arg2;
+- (id)_indexItemForSpecifier:(id)arg1 category:(id)arg2 keywords:(id)arg3 url:(id)arg4 description:(id)arg5;
+- (id)_indexItemsFromManifestForSpecifier:(id)arg1 bundle:(id)arg2;
+- (void)_indexSpecifierForURL:(id)arg1 specifiers:(id)arg2 bundle:(id)arg3 withURLPrefix:(id)arg4 waitForCompletion:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)_indexSpecifiers:(id)arg1 bundle:(id)arg2 category:(id)arg3 pathURL:(id)arg4 withURLPrefix:(id)arg5 parentSpecifierNames:(id)arg6 completion:(CDUnknownBlockType)arg7;
+- (id)_keyValueDictionaryForURL:(id)arg1;
+- (void)_reIndexNonRootSpecifier:(id)arg1 parentSpecifiers:(id)arg2 bundle:(id)arg3 category:(id)arg4 baseURL:(id)arg5 withURLPrefix:(id)arg6 waitForCompletion:(BOOL)arg7 completion:(CDUnknownBlockType)arg8;
+- (void)_reIndexRootSpecifier:(id)arg1 childSpecifiers:(id)arg2 parentSpecifierNames:(id)arg3 bundle:(id)arg4 childBundle:(id)arg5 category:(id)arg6 baseURL:(id)arg7 withURLPrefix:(id)arg8 waitForCompletion:(BOOL)arg9 completion:(CDUnknownBlockType)arg10;
+- (id)_specifiersForSpecifier:(id)arg1 bundle:(id)arg2 parentBundle:(id)arg3;
+- (id)_specifiersPlistPathForSpecifier:(id)arg1 bundle:(id)arg2 parentBundle:(id)arg3;
+- (id)_urlForSpecifier:(id)arg1 identifier:(id)arg2 category:(id)arg3 childCategory:(id *)arg4 prefix:(id)arg5 path:(id *)arg6 baseURL:(id)arg7 shouldLinkToRow:(BOOL)arg8;
+- (id)_urlsFromManifestForSpecifier:(id)arg1 bundle:(id)arg2;
 - (id)blacklistedControllers;
-- (id)bundleForSpecifier:(id)arg1 parentBundle:(id)arg2;
 - (BOOL)controllerIsBlacklisted:(id)arg1;
-- (void)deleteIndex;
-- (id)descriptionForSpecifierName:(id)arg1 withParentSpecifierNames:(id)arg2;
-- (id)indexItemForSpecifier:(id)arg1 category:(id)arg2 keywords:(id)arg3 url:(id)arg4 description:(id)arg5;
-- (id)indexItemsFromManifestForSpecifier:(id)arg1 bundle:(id)arg2;
-- (void)indexSpecifiers:(id)arg1 bundle:(id)arg2 category:(id)arg3 pathURL:(id)arg4 withURLPrefix:(id)arg5 parentSpecifierNames:(id)arg6;
-- (void)indexSpecifiers:(id)arg1 bundle:(id)arg2 withURLPrefix:(id)arg3;
-- (id)specifiersForSpecifier:(id)arg1 bundle:(id)arg2 parentBundle:(id)arg3;
-- (id)specifiersPlistPathForSpecifier:(id)arg1 bundle:(id)arg2 parentBundle:(id)arg3;
+- (void)deleteIndexWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)deleteSpecifiers:(id)arg1 bundle:(id)arg2 withURLPrefix:(id)arg3 waitForCompletion:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)indexSpecifiers:(id)arg1 bundle:(id)arg2 withURLPrefix:(id)arg3 waitForCompletion:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)indexSpecifiersWithURLs:(id)arg1 topLevelSpecifiers:(id)arg2 bundle:(id)arg3 withURLPrefix:(id)arg4 waitForCompletion:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)reindexSpecifiersIfNeeded:(id)arg1 bundle:(id)arg2 withURLPrefix:(id)arg3 waitForCompletion:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)setLastIndexDate:(id)arg1;
+- (void)setNeedsIndex;
+- (void)setNeedsIndex:(BOOL)arg1;
 
 @end
 

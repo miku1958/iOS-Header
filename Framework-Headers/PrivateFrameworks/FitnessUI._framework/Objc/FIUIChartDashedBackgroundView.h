@@ -11,6 +11,7 @@
 @interface FIUIChartDashedBackgroundView : FIUIChartBackgroundView
 {
     NSArray *_linePositions;
+    BOOL _shouldCenterLines;
     unsigned long long _numLines;
     UIColor *_color;
     long long _direction;
@@ -21,8 +22,10 @@
 @property (nonatomic) long long direction; // @synthesize direction=_direction;
 @property (nonatomic) long long lineType; // @synthesize lineType=_lineType;
 @property (nonatomic) unsigned long long numLines; // @synthesize numLines=_numLines;
+@property (nonatomic) BOOL shouldCenterLines; // @synthesize shouldCenterLines=_shouldCenterLines;
 
 - (void).cxx_destruct;
+- (void)_updateLinePositions;
 - (void)drawLine:(id)arg1 rect:(struct CGRect)arg2 context:(struct CGContext *)arg3;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

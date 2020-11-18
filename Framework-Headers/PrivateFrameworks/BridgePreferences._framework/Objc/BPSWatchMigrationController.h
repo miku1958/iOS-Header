@@ -28,6 +28,7 @@
 - (void)_notifyDelegateShouldMigrateWithData:(id)arg1;
 - (void)_saveMigrationPreference:(BOOL)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithSnapshot:(id)arg1;
 - (void)loadView;
 - (BOOL)shouldBeDisplayedGivenMigrationData:(id)arg1;
 

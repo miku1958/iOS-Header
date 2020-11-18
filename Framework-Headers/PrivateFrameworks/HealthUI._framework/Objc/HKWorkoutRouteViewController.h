@@ -31,7 +31,6 @@
 - (void).cxx_destruct;
 - (void)_internalDebuggingOnly_fetchUnsmoothedSeriesFromDatabase;
 - (void)_internalDebuggingOnly_toggleUnsmoothedLocations:(id)arg1;
-- (id)_routeImageForSharing;
 - (void)_shareButtonPressed:(id)arg1;
 - (void)_toggleRouteViewMapType:(id)arg1;
 - (id)initWithLocationReadings:(id)arg1 title:(id)arg2 sharingEnabled:(BOOL)arg3 shareText:(id)arg4 excludedActivityTypes:(id)arg5;

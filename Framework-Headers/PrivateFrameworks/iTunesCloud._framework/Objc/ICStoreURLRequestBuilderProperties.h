@@ -15,13 +15,17 @@
     NSNumber *_DSID;
     NSString *_storefrontIdentifier;
     NSNumber *_delegatedDSID;
+    NSString *_delegatedStorefrontIdentifier;
     ICDelegateToken *_delegateToken;
+    ICURLBag *_delegatedURLBag;
 }
 
 @property (copy, nonatomic) NSNumber *DSID; // @synthesize DSID=_DSID;
 @property (strong, nonatomic) ICURLBag *URLBag; // @synthesize URLBag=_URLBag;
 @property (copy, nonatomic) ICDelegateToken *delegateToken; // @synthesize delegateToken=_delegateToken;
 @property (copy, nonatomic) NSNumber *delegatedDSID; // @synthesize delegatedDSID=_delegatedDSID;
+@property (copy, nonatomic) NSString *delegatedStorefrontIdentifier; // @synthesize delegatedStorefrontIdentifier=_delegatedStorefrontIdentifier;
+@property (strong, nonatomic) ICURLBag *delegatedURLBag; // @synthesize delegatedURLBag=_delegatedURLBag;
 @property (copy, nonatomic) NSString *iCloudPersonID; // @synthesize iCloudPersonID=_iCloudPersonID;
 @property (copy, nonatomic) NSString *storefrontIdentifier; // @synthesize storefrontIdentifier=_storefrontIdentifier;
 

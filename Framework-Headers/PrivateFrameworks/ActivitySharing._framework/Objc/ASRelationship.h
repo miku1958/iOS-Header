@@ -94,6 +94,7 @@
 - (BOOL)isEqualToRelationship:(id)arg1;
 - (id)recordWithZoneID:(id)arg1;
 - (id)relationshipSnapshotForDate:(id)arg1;
+- (id)relationshipWithConsolidatedEvents;
 - (void)traverseRelationshipHistoryStartingAtEventWithAnchor:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 
 @end

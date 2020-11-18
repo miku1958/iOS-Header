@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) NSNumber *singlePercentage; // @synthesize singlePercentage=_singlePercentage;
 
 - (void).cxx_destruct;
+- (id)description;
 - (id)initWithOutputDevice:(void *)arg1;
 - (id)initWithRouteDescription:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

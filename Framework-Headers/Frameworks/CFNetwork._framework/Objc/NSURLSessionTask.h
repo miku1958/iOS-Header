@@ -23,6 +23,7 @@
 
 @property (copy) NSDictionary *_DuetActivityProperties; // @dynamic _DuetActivityProperties;
 @property (copy) NSData *_TCPConnectionMetadata; // @dynamic _TCPConnectionMetadata;
+@property (readonly) unsigned short _TLSNegotiatedCipherSuite; // @dynamic _TLSNegotiatedCipherSuite;
 @property unsigned long long _allowedProtocolTypes; // @dynamic _allowedProtocolTypes;
 @property BOOL _allowsCellular; // @dynamic _allowsCellular;
 @property (nonatomic) BOOL _allowsQUIC; // @dynamic _allowsQUIC;
@@ -47,10 +48,12 @@
 @property unsigned int _darkWakePowerAssertion; // @dynamic _darkWakePowerAssertion;
 @property (strong, nonatomic) NSDictionary *_dependencyInfo; // @dynamic _dependencyInfo;
 @property BOOL _disallowCellular; // @dynamic _disallowCellular;
+@property (nonatomic) BOOL _doesSZExtractorConsumeExtractedData; // @dynamic _doesSZExtractorConsumeExtractedData;
 @property long long _expectedWorkload; // @dynamic _expectedWorkload;
-@property (strong, nonatomic) id<SZExtractor> _extractor; // @dynamic _extractor;
+@property (strong, nonatomic, setter=set_extractor:) id<SZExtractor> _extractor; // @dynamic _extractor;
 @property BOOL _extractorFinishedDecoding; // @synthesize _extractorFinishedDecoding=__extractorFinishedDecoding;
 @property BOOL _extractorPreparedForExtraction; // @synthesize _extractorPreparedForExtraction=__extractorPreparedForExtraction;
+@property (nonatomic) BOOL _hasSZExtractor; // @dynamic _hasSZExtractor;
 @property (strong, nonatomic) NSURLSessionTaskMetrics *_incompleteTaskMetrics; // @dynamic _incompleteTaskMetrics;
 @property (readonly, nonatomic) BOOL _isAVAssetTask; // @dynamic _isAVAssetTask;
 @property (copy) NSURL *_ledBellyFallbackURL; // @dynamic _ledBellyFallbackURL;
@@ -148,6 +151,7 @@
 - (id)initWithTask:(id)arg1;
 - (void)initializeHTTPAuthenticatorWithAppleIDContext:(id)arg1 statusCodes:(id)arg2;
 - (void)resume;
+- (void)set_TLSNegotiatedCipherSuite:(unsigned short)arg1;
 - (BOOL)shouldHandleCookiesAndSchemeIsAppropriate;
 - (void)suspend;
 - (void)updateCurrentRequest:(id)arg1;

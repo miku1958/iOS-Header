@@ -65,7 +65,7 @@
 - (void)setSelectedProxy:(long long)arg1;
 - (void)setUserInPurchaseFlow:(BOOL)arg1;
 - (void)shouldShowAddNewRemotePlan:(void (^)(BOOL))arg1;
-- (void)shouldShowAddNewRemotePlanWithFlowType:(void (^)(BOOL, unsigned long long, NSError *))arg1;
+- (void)shouldShowAddNewRemotePlanWithFlowTypeAndTrialPlanType:(void (^)(BOOL, unsigned long long, NSString *, NSError *))arg1;
 - (void)shouldShowPlanList:(void (^)(BOOL))arg1;
 - (void)signIdMapForSessionId:(NSString *)arg1 locationRequired:(BOOL)arg2 withCompletion:(void (^)(NSString *, NSError *))arg3 latitude:(NSNumber *)arg4 longitude:(NSNumber *)arg5;
 - (void)startRemoteProvisioningWithCompletion:(void (^)(BOOL))arg1;

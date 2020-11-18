@@ -8,12 +8,14 @@
 
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
+#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HAPPairingIdentity, HMDAccount, HMDHome, HMUserPresenceAuthorization, NSMutableArray, NSObject, NSString, NSUUID;
+@class HAPPairingIdentity, HMDAccount, HMDAssistantAccessControl, HMDHome, HMUserPresenceAuthorization, NSMutableArray, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDUser : HMFObject <HMFDumpState, HMDBackingStoreObjectProtocol, NSSecureCoding>
+@interface HMDUser : HMFObject <HMFLogging, HMFMessageReceiver, HMFDumpState, HMDBackingStoreObjectProtocol, NSSecureCoding>
 {
     NSMutableArray *_relayAccessTokens;
     BOOL _remoteAccessAllowed;
@@ -25,11 +27,15 @@
     NSString *_relayIdentifier;
     HAPPairingIdentity *_pairingIdentity;
     NSString *_displayName;
+    HMDAssistantAccessControl *_assistantAccessControl;
     NSUUID *_uuid;
+    NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
 @property (readonly, copy) HMDAccount *account;
+@property (strong) HMDAssistantAccessControl *assistantAccessControl; // @synthesize assistantAccessControl=_assistantAccessControl;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, nonatomic, getter=isCurrentUser) BOOL currentUser;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -39,6 +45,8 @@
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) BOOL isAdministrator;
 @property (readonly, nonatomic) BOOL isOwner;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) HAPPairingIdentity *pairingIdentity; // @synthesize pairingIdentity=_pairingIdentity;
 @property (copy, nonatomic) HMUserPresenceAuthorization *presenceAuthStatus; // @synthesize presenceAuthStatus=_presenceAuthStatus;
 @property (nonatomic) unsigned long long privilege; // @synthesize privilege=_privilege;
@@ -53,16 +61,20 @@
 @property (readonly, getter=isValid) BOOL valid;
 
 + (id)UUIDWithUserID:(id)arg1 forHomeIdentifier:(id)arg2 uuid:(id)arg3 pairingIdentity:(id)arg4;
-+ (id)currentUserWithPrivilege:(unsigned long long)arg1 forHomeIdentifier:(id)arg2;
++ (id)currentUserWithPrivilege:(unsigned long long)arg1 forHomeIdentifier:(id)arg2 uuid:(id)arg3;
 + (id)destinationWithUserID:(id)arg1;
++ (id)logCategory;
 + (BOOL)supportsSecureCoding;
 + (id)userWithDictionary:(id)arg1 forHomeIdentifier:(id)arg2;
-+ (id)userWithName:(id)arg1 userID:(id)arg2 forHomeIdentifier:(id)arg3 publicKey:(id)arg4 homeManager:(id)arg5;
++ (id)userWithName:(id)arg1 userID:(id)arg2 uuid:(id)arg3 forHomeIdentifier:(id)arg4 publicKey:(id)arg5 homeManager:(id)arg6;
 - (void).cxx_destruct;
 - (unsigned long long)_compatiblePrivilege;
+- (void)_fixupRelayAccessTokens;
+- (void)_handleAssistantAccessControlUpdate:(id)arg1;
 - (void)_transactionUserUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (void)addRelayAccessToken:(id)arg1;
 - (void)addRelayAccessToken:(id)arg1 accessory:(id)arg2;
+- (id)backingStoreObjects:(long long)arg1;
 - (void)configureWithHome:(id)arg1;
 - (BOOL)containsRelayAccessToken:(id)arg1;
 - (id)dictionaryEncoding;
@@ -71,14 +83,19 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModelObject:(id)arg1;
 - (id)initWithUserID:(id)arg1 displayName:(id)arg2 forHomeIdentifier:(id)arg3 uuid:(id)arg4 pairingIdentity:(id)arg5 privilege:(unsigned long long)arg6;
-- (id)initWithUserID:(id)arg1 forHomeIdentifier:(id)arg2 pairingIdentity:(id)arg3 privilege:(unsigned long long)arg4;
+- (id)initWithUserID:(id)arg1 forHomeIdentifier:(id)arg2 uuid:(id)arg3 pairingIdentity:(id)arg4 privilege:(unsigned long long)arg5;
 - (BOOL)isEqual:(id)arg1;
+- (id)logIdentifier;
 - (BOOL)mergeFromUser:(id)arg1 dataVersion:(long long)arg2;
+- (id)messageDestination;
+- (id)messageDispatcher;
+- (void)migrateCloudZone:(id)arg1 migrationQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)pairingUsername;
 - (id)publicKey;
 - (BOOL)refreshDisplayName;
+- (void)registerForMessages;
 - (id)relayAccessTokenForAccessory:(id)arg1;
 - (id)relayAccessTokens;
 - (void)removeRelayAccessToken:(id)arg1;

@@ -19,6 +19,7 @@
 - (unsigned long long)hash;
 - (id)imageIdentifierForPrimaryState:(long long)arg1;
 - (id)initWithImageIdentifiersKeyedByPrimaryState:(id)arg1;
+- (id)initWithImageIdentifiersKeyedByPrimaryState:(id)arg1 defaultImageIdentifier:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

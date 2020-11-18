@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSString.h>
+#import <Foundation/NSString.h>
 
 @interface NSMutableString : NSString
 {

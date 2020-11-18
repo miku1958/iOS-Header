@@ -19,6 +19,7 @@
 - (void)_axApplyAssetToView;
 - (void)_axApplyCustomAction:(id)arg1;
 - (void)_axApplyLandmarkCustomAction;
+- (BOOL)_axConformsToFullScreenTileControllerDelegate;
 - (id)_axGetFaces;
 - (id)_axImageView;
 - (id)_axMainImageView;

@@ -26,9 +26,12 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)applyToSuggestionEntry:(id)arg1 withAutocompleteSearchResultIdentifier:(id)arg2;
 - (void)applyToSuggestionList:(id)arg1;
+- (BOOL)hasShouldDisplayNoResults;
 - (id)initWithRequest:(id)arg1 traits:(id)arg2 searchQuery:(id)arg3;
 - (BOOL)isRapEnabled;
 - (BOOL)matchesFragment:(id)arg1;
+- (double)retainSearchTime;
+- (BOOL)shouldDisplayNoResults;
 - (void)submitWithAutoCompletionHandler:(CDUnknownBlockType)arg1 auditToken:(id)arg2 networkActivity:(CDUnknownBlockType)arg3;
 - (void)submitWithAutoCompletionHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
 

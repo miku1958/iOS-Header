@@ -13,6 +13,7 @@
 + (BOOL)copyAllFilesFromDir:(id)arg1 toDir:(id)arg2;
 + (BOOL)copyAllFilesFromDir:(id)arg1 toDir:(id)arg2 keepSourceDir:(BOOL)arg3;
 + (id)copyAndReturn:(id)arg1 toDir:(id)arg2;
++ (id)copyAndReturn:(id)arg1 toDir:(id)arg2 withNewFileName:(id)arg3;
 + (BOOL)copyFile:(id)arg1 toDir:(id)arg2;
 + (id)copyItem:(id)arg1 toDestinationDir:(id)arg2 zipped:(BOOL)arg3;
 + (id)copyPath:(id)arg1 toDestinationDir:(id)arg2 zipped:(BOOL)arg3;

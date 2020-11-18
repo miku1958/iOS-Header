@@ -43,12 +43,14 @@ __attribute__((visibility("hidden")))
 - (id)_remoteObjectProxy;
 - (void)_updateConnection;
 - (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlertDetails:(id)arg2;
+- (void)acquireDesiredResourcePolicy;
 - (void)changeSettings:(id)arg1;
 - (void)closeForClient:(id)arg1;
 - (void)dealloc;
 - (void)forwardInvocation:(id)arg1;
 - (id)init;
 - (void)interfaceHashesWithHandler:(CDUnknownBlockType)arg1;
+- (BOOL)isOpenForClient:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)navigationServiceProxy:(id)arg1 didChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 - (void)navigationServiceProxy:(id)arg1 willChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;

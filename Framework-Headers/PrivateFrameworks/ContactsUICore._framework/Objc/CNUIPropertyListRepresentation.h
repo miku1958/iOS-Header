@@ -7,16 +7,15 @@
 #import <objc/NSObject.h>
 
 @class NSDictionary;
-@protocol NSCopying;
 
 @interface CNUIPropertyListRepresentation : NSObject
 {
-    id<NSCopying> _propertyList;
+    NSDictionary *_propertyList;
     NSDictionary *_attachments;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *attachments; // @synthesize attachments=_attachments;
-@property (readonly, copy, nonatomic) id<NSCopying> propertyList; // @synthesize propertyList=_propertyList;
+@property (readonly, copy, nonatomic) NSDictionary *propertyList; // @synthesize propertyList=_propertyList;
 
 + (id)propertyListWithContentsOfPackageURL:(id)arg1 dataProxy:(id)arg2;
 + (id)writePropertyList:(id)arg1 toURL:(id)arg2 dataProxy:(id)arg3 fileManager:(id)arg4;

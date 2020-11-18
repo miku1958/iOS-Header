@@ -16,6 +16,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_axApplyCustomAction:(id)arg1;
+- (BOOL)_axConformsToFullScreenTileControllerDelegate;
 - (id)_axMainImageView;
 - (void)_updateImage;
 - (void)setAssetViewModel:(id)arg1;

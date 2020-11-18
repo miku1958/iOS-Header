@@ -6,26 +6,38 @@
 
 #import <objc/NSObject.h>
 
+#import <iTunesCloud/ICDelegateAccountStoreServiceClient-Protocol.h>
 #import <iTunesCloud/ICDelegateAccountStoreWriter-Protocol.h>
 
-@class NSString, NSXPCConnection;
+@class ICDelegateAccountStoreOptions, NSString, NSXPCConnection;
+@protocol OS_dispatch_queue;
 
-@interface ICDelegateAccountStoreXPCWriter : NSObject <ICDelegateAccountStoreWriter>
+@interface ICDelegateAccountStoreXPCWriter : NSObject <ICDelegateAccountStoreServiceClient, ICDelegateAccountStoreWriter>
 {
+    NSObject<OS_dispatch_queue> *_accessQueue;
+    ICDelegateAccountStoreOptions *_accountStoreOptions;
+    NSObject<OS_dispatch_queue> *_callbackQueue;
     NSXPCConnection *_connection;
-    BOOL _isValid;
+    CDUnknownBlockType _externalChangeHandler;
+    BOOL _hasReceivedConnectionInvalidation;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) CDUnknownBlockType externalChangeHandler; // @synthesize externalChangeHandler=_externalChangeHandler;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_getXPCConnectionWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_onceWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)addDelegationUUIDs:(id)arg1 forUserIdentity:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)initWithSingleWriterConnection:(id)arg1;
+- (void)dealloc;
+- (void)delegateAccountStoreDidChange;
+- (id)initWithAccountStoreOptions:(id)arg1;
 - (void)invalidate;
+- (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)recreateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeAllTokensWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeDelegationUUIDs:(id)arg1 forUserIdentity:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)removeIdentityPropertiesForUserIdentity:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSFastEnumeration-Protocol.h>
-#import <extension/NSISRowBody-Protocol.h>
+#import <Foundation/NSFastEnumeration-Protocol.h>
+#import <Foundation/NSISRowBody-Protocol.h>
 
 @class NSString;
 

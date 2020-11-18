@@ -8,11 +8,11 @@
 
 #import <CoreSuggestionsInternals/PMLTransformerProtocol-Protocol.h>
 
-@class NSDataDetector, NSString;
+@class NSString;
 
 @interface SGEntityMatchingTransformer : NSObject <PMLTransformerProtocol>
 {
-    NSDataDetector *_dataDetector;
+    NSString *_targetMapping;
     NSString *_phoneMapping;
     NSString *_emailMapping;
     NSString *_addressMapping;
@@ -20,14 +20,14 @@
 }
 
 @property (strong) NSString *addressMapping; // @synthesize addressMapping=_addressMapping;
-@property (strong) NSDataDetector *dataDetector; // @synthesize dataDetector=_dataDetector;
 @property (strong) NSString *dateMapping; // @synthesize dateMapping=_dateMapping;
 @property (strong) NSString *emailMapping; // @synthesize emailMapping=_emailMapping;
 @property (strong) NSString *phoneMapping; // @synthesize phoneMapping=_phoneMapping;
+@property (strong) NSString *targetMapping; // @synthesize targetMapping=_targetMapping;
 
-+ (id)withPhoneMapping:(id)arg1 emailMapping:(id)arg2 addressMapping:(id)arg3 andDateMapping:(id)arg4;
++ (id)withTargetMapping:(id)arg1 phoneMapping:(id)arg2 emailMapping:(id)arg3 addressMapping:(id)arg4 andDateMapping:(id)arg5;
 - (void).cxx_destruct;
-- (id)initWithPhoneMapping:(id)arg1 emailMapping:(id)arg2 addressMapping:(id)arg3 andDateMapping:(id)arg4;
+- (id)initWithTargetMapping:(id)arg1 phoneMapping:(id)arg2 emailMapping:(id)arg3 addressMapping:(id)arg4 andDateMapping:(id)arg5;
 - (id)transform:(id)arg1;
 
 @end

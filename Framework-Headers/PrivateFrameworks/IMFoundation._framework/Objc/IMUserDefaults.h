@@ -19,12 +19,22 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (BOOL)isAbsintheV3V4Enabled;
++ (BOOL)isAbsintheV4Enabled;
++ (BOOL)isBAACertEnabled;
++ (BOOL)isDebugPiscoLoggingEnabled;
++ (BOOL)isDeviceScoringEnabled;
 + (BOOL)isEngramEnabled;
++ (BOOL)isLiveDeliveryWarmUpEnabled;
++ (BOOL)isPiscoEnabled;
 + (long long)phoneNumberValidationMode;
 + (id)phoneNumberValidationPreflightTestData;
-+ (void)setEnableAbsintheV3V4:(BOOL)arg1;
++ (void)setEnableAbsintheV4:(BOOL)arg1;
++ (void)setEnableBAACert:(BOOL)arg1;
++ (void)setEnableDebugPiscoLogging:(BOOL)arg1;
++ (void)setEnableDeviceScoring:(BOOL)arg1;
 + (void)setEnableEngram:(BOOL)arg1;
++ (void)setEnableLiveDeliveryWarmUp:(BOOL)arg1;
++ (void)setEnablePisco:(BOOL)arg1;
 + (void)setPhoneNumberValidationMode:(long long)arg1;
 + (void)setPhoneNumberValidationPreflightTestData:(id)arg1;
 + (id)sharedDefaults;

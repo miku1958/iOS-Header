@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSHashTable, UIFocusAnimationCoordinator;
+@class NSHashTable, NSNumber, UIFocusAnimationCoordinator;
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusAnimationCoordinatorManager : NSObject
@@ -15,17 +15,16 @@ __attribute__((visibility("hidden")))
     NSHashTable *_unfocusingItems;
     double _lastFocusUpdateTime;
     UIFocusAnimationCoordinator *_lastFocusingItemAnimationCoordinator;
-    long long _inheritedAnimationCoordinatorActiveAnimation;
+    NSNumber *_inheritedAnimationCoordinatorActiveAnimation;
 }
 
 @property (strong, nonatomic) UIFocusAnimationCoordinator *activeFocusAnimationCoordinator; // @synthesize activeFocusAnimationCoordinator=_activeFocusAnimationCoordinator;
-@property (nonatomic) long long inheritedAnimationCoordinatorActiveAnimation; // @synthesize inheritedAnimationCoordinatorActiveAnimation=_inheritedAnimationCoordinatorActiveAnimation;
+@property (strong, nonatomic) NSNumber *inheritedAnimationCoordinatorActiveAnimation; // @synthesize inheritedAnimationCoordinatorActiveAnimation=_inheritedAnimationCoordinatorActiveAnimation;
 @property (nonatomic) double lastFocusUpdateTime; // @synthesize lastFocusUpdateTime=_lastFocusUpdateTime;
 @property (strong, nonatomic) UIFocusAnimationCoordinator *lastFocusingItemAnimationCoordinator; // @synthesize lastFocusingItemAnimationCoordinator=_lastFocusingItemAnimationCoordinator;
 @property (readonly, nonatomic) NSHashTable *unfocusingItems; // @synthesize unfocusingItems=_unfocusingItems;
 
 - (void).cxx_destruct;
-- (void)_cancelDelayedFocusingAnimationIfNecessary;
 - (void)_performDelayedFocusingAnimationIfNecessary;
 - (void)didUpdateFocusInContext:(id)arg1 fromItem:(id)arg2;
 - (id)init;

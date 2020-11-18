@@ -27,12 +27,11 @@
     UILabel *_amountLabel;
     PKNumberPadInputView *_numberPad;
     NSNumberFormatter *_currentAmountFormatter;
-    NSString *_amountString;
+    NSString *_localizedAmountString;
 }
 
 @property (copy, nonatomic) UIFont *amountFont; // @synthesize amountFont=_amountFont;
 @property (strong, nonatomic) UILabel *amountLabel; // @synthesize amountLabel=_amountLabel;
-@property (strong, nonatomic) NSString *amountString; // @synthesize amountString=_amountString;
 @property (readonly, nonatomic) UITextField *amountTextField; // @synthesize amountTextField=_amountTextField;
 @property (strong, nonatomic) NSString *currency; // @synthesize currency=_currency;
 @property (copy, nonatomic) UIFont *currencySymbolFont; // @synthesize currencySymbolFont=_currencySymbolFont;
@@ -46,6 +45,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *inputAccessoryView;
 @property (copy, nonatomic) NSNumber *kerning; // @synthesize kerning=_kerning;
+@property (strong, nonatomic) NSString *localizedAmountString; // @synthesize localizedAmountString=_localizedAmountString;
 @property (strong, nonatomic) PKNumberPadInputView *numberPad; // @synthesize numberPad=_numberPad;
 @property (nonatomic) BOOL showsDecimalPointButton; // @synthesize showsDecimalPointButton=_showsDecimalPointButton;
 @property (readonly) Class superclass;
@@ -54,9 +54,8 @@
 - (void).cxx_destruct;
 - (void)_createAmountFormatter;
 - (void)_createSubviews;
-- (id)_decimalNumberFromPosixString:(id)arg1;
-- (id)_posixFormatter;
-- (id)_posixStringFromDecimalNumber:(id)arg1;
+- (id)_formatAmount:(id)arg1 alwaysShowDecimalSeparator:(BOOL)arg2 minimumFractionDigits:(unsigned long long)arg3 useGroupingSeparator:(BOOL)arg4;
+- (unsigned long long)_numberOfDecimalPlacesInString:(id)arg1 decimalSeperator:(id)arg2;
 - (double)_topPaddingForCurrencySymbol;
 - (void)_updateContent;
 - (void)dismissKeyboard;

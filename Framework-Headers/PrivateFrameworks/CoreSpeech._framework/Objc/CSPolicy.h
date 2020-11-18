@@ -24,6 +24,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)assetManagerEnabledPolicy;
++ (id)voiceTriggerEnabledPolicy;
 - (void).cxx_destruct;
 - (void)CSEventMonitorDidReceiveEvent:(id)arg1;
 - (BOOL)_checkAllConditionsEnabled;

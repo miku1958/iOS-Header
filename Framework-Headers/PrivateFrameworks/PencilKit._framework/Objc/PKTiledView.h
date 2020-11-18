@@ -14,7 +14,7 @@
 #import <PencilKit/_UIScrollViewLayoutObserver-Protocol.h>
 #import <PencilKit/_UIScrollViewScrollObserver-Protocol.h>
 
-@class NSArray, NSString, PKCanvasView, PKDrawing, PKInk, PKInlineInkPicker, PKLinedPaper, PKSelectionController, UIButton, UIDropInteraction, UIScrollView, UITouch, _UITextAttachmentDrawingView;
+@class NSArray, NSString, PKCanvasView, PKDrawing, PKInk, PKInlineInkPicker, PKLinedPaper, PKSelectionController, UIButton, UIDropInteraction, UIScrollView, UITapGestureRecognizer, UITouch, _UITextAttachmentDrawingView;
 
 @interface PKTiledView : UIView <UIScrollViewDelegate, PKCanvasViewDelegate, _UIScrollViewScrollObserver, _UIScrollViewLayoutObserver, PKSelectionDelegate, UIDropInteractionDelegate_Private, UIGestureRecognizerDelegate>
 {
@@ -26,6 +26,7 @@
     PKLinedPaper *_linedPaper;
     UIScrollView *_scrollView;
     PKCanvasView *_canvasView;
+    UITapGestureRecognizer *_clearSelectionGestureRecognizer;
     double _tileWidth;
     double _tileHeight;
     long long _tileLevel;
@@ -45,6 +46,7 @@
 
 @property (readonly, nonatomic) NSArray *additionalStrokes; // @synthesize additionalStrokes=_additionalStrokes;
 @property (strong, nonatomic) PKCanvasView *canvasView; // @synthesize canvasView=_canvasView;
+@property (readonly, nonatomic) UITapGestureRecognizer *clearSelectionGestureRecognizer; // @synthesize clearSelectionGestureRecognizer=_clearSelectionGestureRecognizer;
 @property (strong, nonatomic) PKDrawing *createdDrawingForTouchThatHitNothing; // @synthesize createdDrawingForTouchThatHitNothing=_createdDrawingForTouchThatHitNothing;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -74,6 +76,7 @@
 + (id)newInlineDrawing;
 + (BOOL)showDebugOutlines;
 - (void).cxx_destruct;
+- (void)_addGestureToClearSelection;
 - (id)_attachmentForSelectionRect:(struct CGRect)arg1;
 - (void)_canvasView:(id)arg1 didFinishRenderingStrokeOnRenderQueue:(id)arg2 inDrawing:(id)arg3;
 - (void)_clearSelectionIfNecessary;
@@ -122,6 +125,7 @@
 - (void)duplicate:(id)arg1;
 - (struct CGRect)frameOfEndAttachment;
 - (void)generateTile:(long long)arg1 inAttachment:(id)arg2 rendering:(BOOL)arg3;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)getDrawingTransform:(struct CGAffineTransform *)arg1 strokeTransform:(struct CGAffineTransform *)arg2 paperTransform:(struct CGAffineTransform *)arg3;
 - (BOOL)hasEndAttachment;
 - (id)hitAttachment:(struct CGPoint)arg1;

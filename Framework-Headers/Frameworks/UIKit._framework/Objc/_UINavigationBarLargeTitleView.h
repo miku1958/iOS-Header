@@ -9,17 +9,20 @@
 #import <UIKit/_UINavigationBarTitleViewDataSource-Protocol.h>
 #import <UIKit/_UINavigationBarTransitionContextParticipant-Protocol.h>
 
-@class NSDictionary, NSString, UIFontMetrics, _UINavigationBarLargeTitleViewLayout, _UINavigationBarTransitionContext, _UINavigationControllerRefreshControlHost;
+@class NSArray, NSDictionary, NSString, UIFontMetrics, _UINavigationBarLargeTitleViewLayout, _UINavigationBarTransitionContext, _UINavigationControllerRefreshControlHost;
 
 __attribute__((visibility("hidden")))
 @interface _UINavigationBarLargeTitleView : UIView <_UINavigationBarTitleViewDataSource, _UINavigationBarTransitionContextParticipant>
 {
     _UINavigationBarLargeTitleViewLayout *_layout;
     _UINavigationBarTransitionContext *_transitionContext;
+    NSArray *_titleCandidates;
+    NSString *__effectiveTitle;
     BOOL _supportsTwoLines;
     BOOL _alignAccessoryViewToTitleBaseline;
     long long _titleType;
     NSString *_title;
+    NSArray *_alternateTitles;
     NSDictionary *_titleAttributes;
     double _restingHeightOfTitleView;
     UIView *_accessoryView;
@@ -32,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
 @property (nonatomic) unsigned long long accessoryViewHorizontalAlignment; // @synthesize accessoryViewHorizontalAlignment=_accessoryViewHorizontalAlignment;
 @property (nonatomic) BOOL alignAccessoryViewToTitleBaseline; // @synthesize alignAccessoryViewToTitleBaseline=_alignAccessoryViewToTitleBaseline;
+@property (strong, nonatomic) NSArray *alternateTitles; // @synthesize alternateTitles=_alternateTitles;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) UIFontMetrics *fontMetrics; // @synthesize fontMetrics=_fontMetrics;
@@ -46,9 +50,12 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long titleType; // @synthesize titleType=_titleType;
 
 - (void).cxx_destruct;
+- (id)_effectiveTitle;
 - (id)_layoutForMeasurement;
 - (id)_newLayout;
 - (void)_setupTitle;
+- (id)_titleForCurrentWidth;
+- (void)_updateContentAndInvalidate:(BOOL)arg1;
 - (void)_updateFontMetrics;
 - (void)adoptFinalStateFromTransition:(id)arg1 transitionCompleted:(BOOL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;

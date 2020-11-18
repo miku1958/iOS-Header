@@ -10,11 +10,11 @@
 #import <MapsSupport/MSPJournaling-Protocol.h>
 
 @class CKContainer, CKDatabase, CKRecordZoneID, MSPCloudCoalescedOperationExecutor, MSPJournal, NSDate, NSString, NSUUID;
-@protocol NSObject><NSCopying><NSCoding, OS_dispatch_queue;
+@protocol OS_dispatch_queue;
 
 @interface MSPCloudKitAccountAccess : NSObject <MSPJournaling, MSPCloudAccess>
 {
-    id<NSObject><NSCopying><NSCoding> _latestAccountIdentity;
+    NSString *_latestAccountIdentity;
     CKContainer *_container;
     CKContainer *_containerForClientRegistrationRecords;
     CKDatabase *_database;

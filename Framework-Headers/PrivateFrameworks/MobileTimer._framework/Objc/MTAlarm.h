@@ -119,6 +119,7 @@
 - (BOOL)isEqualIgnoringLastModifiedDate:(id)arg1;
 - (BOOL)isEqualToAlarm:(id)arg1;
 - (id)keyForIdentifier;
+- (id)keysAffectingNotification;
 - (id)keysAffectingScheduling;
 - (id)keysAffectingSnooze;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

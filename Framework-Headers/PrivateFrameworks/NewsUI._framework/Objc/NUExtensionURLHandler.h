@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI/NUURLHandler-Protocol.h>
+#import <NewsUI/NUURLHandling-Protocol.h>
 
 @class NSExtensionContext, NSString;
 
-@interface NUExtensionURLHandler : NSObject <NUURLHandler>
+@interface NUExtensionURLHandler : NSObject <NUURLHandling>
 {
     NSExtensionContext *_extensionContext;
 }
@@ -23,7 +23,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithExtensionContext:(id)arg1;
-- (void)openURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)openURL:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

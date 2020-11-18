@@ -32,7 +32,6 @@
 - (long long)_onQueueEffectiveNetworkTypeForAverageBitrate:(double)arg1;
 - (void)_onQueueUpdateEffectiveNetworkTypesForPlayback;
 - (void)adjustEffectiveNetworkTypeUsingPreviouslyPlayedItem:(id)arg1;
-- (void)dealloc;
 - (void)environmentMonitorDidChangeNetworkType:(id)arg1;
 - (id)init;
 

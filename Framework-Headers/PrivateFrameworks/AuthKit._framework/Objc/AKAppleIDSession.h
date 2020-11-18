@@ -9,6 +9,7 @@
 #import <AuthKit/NSURLSessionAppleIDContext-Protocol.h>
 
 @class AKAnisetteData, AKAnisetteProvisioningController, AKDevice, NSLock, NSString;
+@protocol AKAnisetteServiceProtocol;
 
 @interface AKAppleIDSession : NSObject <NSURLSessionAppleIDContext>
 {
@@ -18,8 +19,10 @@
     AKAnisetteData *_proxiedAnisetteData;
     NSLock *_anisetteControllerLock;
     AKDevice *_pairedDevice;
+    id<AKAnisetteServiceProtocol> _anisetteDataProvider;
 }
 
+@property (strong, nonatomic) id<AKAnisetteServiceProtocol> anisetteDataProvider; // @synthesize anisetteDataProvider=_anisetteDataProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

@@ -17,15 +17,23 @@
 @property (readonly, nonatomic) void *endpoint; // @synthesize endpoint=_endpoint;
 
 + (void)getActiveEndpointRouteWithCompletion:(CDUnknownBlockType)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_endpointOutputDevicesDidChange:(id)arg1;
 - (BOOL)canAccessRemoteAssets;
 - (id)connection;
 - (void)dealloc;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)groupUID;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithEndpoint:(void *)arg1;
 - (BOOL)isAppleTVRoute;
-- (BOOL)isB238Route;
 - (BOOL)isDeviceRoute;
+- (BOOL)isDeviceSpeakerRoute;
+- (BOOL)isHomePodRoute;
+- (BOOL)isRoutingToWirelessDevice;
+- (id)routeName;
 - (long long)routeSubtype;
 - (long long)routeType;
 - (id)routeUID;

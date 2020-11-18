@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSFileReactorProxy.h>
+#import <Foundation/NSFileReactorProxy.h>
 
 @class NSFileAccessProcessManager, NSFilePresenterXPCMessenger, NSFileWatcher, NSMutableArray, NSObject, NSSet;
 @protocol OS_dispatch_queue;

@@ -25,12 +25,14 @@
 + (void)displayCallPromptForContact:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 + (BOOL)hardwareTTYIsSupported;
 + (BOOL)isAppleInternalBuild;
++ (BOOL)isRTTSupported;
 + (void)performCallCenterTask:(CDUnknownBlockType)arg1;
 + (id)phoneNumberStringFromString:(id)arg1;
 + (BOOL)relayIsSupported;
 + (id)relayPhoneNumber;
 + (id)sharedCallCenter;
 + (id)sharedUtilityProvider;
++ (BOOL)shouldUseRTT;
 + (BOOL)softwareTTYIsSupported;
 + (BOOL)ttyShouldBeRealtimeForCall:(id)arg1;
 - (void).cxx_destruct;

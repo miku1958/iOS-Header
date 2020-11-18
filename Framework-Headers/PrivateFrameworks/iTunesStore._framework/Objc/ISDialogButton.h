@@ -19,6 +19,7 @@
     NSString *_subtarget;
     NSDictionary *_dictionary;
     BOOL _tidContinue;
+    long long _tag;
 }
 
 @property int actionType; // @synthesize actionType=_actionType;
@@ -30,6 +31,7 @@
 @property (readonly) BOOL shouldContinueTouchIDSession; // @synthesize shouldContinueTouchIDSession=_tidContinue;
 @property (copy) NSString *subtarget; // @synthesize subtarget=_subtarget;
 @property (readonly) Class superclass;
+@property long long tag; // @synthesize tag=_tag;
 @property (strong) NSString *title; // @synthesize title=_title;
 @property long long urlType; // @synthesize urlType=_urlType;
 

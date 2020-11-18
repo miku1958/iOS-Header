@@ -8,7 +8,7 @@
 
 #import <SafariShared/WBSQuickWebsiteSearchProviderDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, NSURL;
+@class NSArray, NSMutableDictionary, NSString, NSURL, WBSCoalescedAsynchronousWriter;
 @protocol OS_dispatch_queue;
 
 @interface WBSQuickWebsiteSearchController : NSObject <WBSQuickWebsiteSearchProviderDelegate>
@@ -19,7 +19,7 @@
     NSMutableDictionary *_quickWebsiteSearchProvidersByHost;
     NSMutableDictionary *_openSearchDescriptionsByDescriptionDocumentURLString;
     NSMutableDictionary *_hostSetsByOpenSearchDescriptionDocumentURLString;
-    struct unique_ptr<SafariShared::CoalescedAsynchronousWriter, std::__1::default_delete<SafariShared::CoalescedAsynchronousWriter>> _writer;
+    WBSCoalescedAsynchronousWriter *_writer;
     BOOL _quickWebsiteSearchProvidersLoadedFromDisk;
 }
 
@@ -31,7 +31,6 @@
 @property (readonly) Class superclass;
 
 + (id)sharedController;
-- (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_addHost:(id)arg1 toOpenSearchDescriptionWithDocumentURL:(id)arg2;
 - (id)_dictionaryRepresentation;

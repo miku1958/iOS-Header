@@ -33,12 +33,14 @@ __attribute__((visibility("hidden")))
         unsigned int updatingContentInset:1;
     } _pickerTableFlags;
     BOOL _playsFeedback;
+    BOOL _generatorActivated;
 }
 
 @property (strong, nonatomic, getter=_textColor, setter=_setTextColor:) UIColor *_textColor;
 @property (getter=_usesModernStyle, setter=_setUsesModernStyle:) BOOL _usesModernStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL generatorActivated; // @synthesize generatorActivated=_generatorActivated;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long lastSelectedRow; // @synthesize lastSelectedRow=_lastSelectedRow;
 @property (getter=_playsFeedback, setter=_setPlaysFeedback:) BOOL playsFeedback; // @synthesize playsFeedback=_playsFeedback;
@@ -52,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (id)_checkedRows;
 - (id)_containerView;
 - (long long)_contentInsetAdjustmentBehavior;
+- (void)_deactivateFeedbackGeneratorIfNeeded;
 - (double)_distanceToCenterForY:(double)arg1;
 - (void)_notifyContentOffsetChange;
 - (id)_pickerView;

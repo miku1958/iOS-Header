@@ -13,7 +13,7 @@
 
 @interface NFLSingleComponentLayout : NSObject <NFLFeedComponentLayout>
 {
-    NSObject<NFLFeedTileInfo> *_tileInfo;
+    id<NFLFeedTileInfo> _tileInfo;
     NFLRankedLayout *_rankedLayout;
 }
 
@@ -26,7 +26,7 @@
 @property (strong, nonatomic) NFLRankedLayout *rankedLayout; // @synthesize rankedLayout=_rankedLayout;
 @property (readonly, nonatomic) unsigned long long rowSpan;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSObject<NFLFeedTileInfo> *tileInfo; // @synthesize tileInfo=_tileInfo;
+@property (copy, nonatomic) id<NFLFeedTileInfo> tileInfo; // @synthesize tileInfo=_tileInfo;
 @property (readonly, copy, nonatomic) NSArray *tileInfosUsed;
 
 + (id)singleComponentLayoutWithRankedLayout:(id)arg1 tileInfo:(id)arg2;

@@ -9,14 +9,13 @@
 #import <NeutrinoKit/NUAVPlayerControllerDelegate-Protocol.h>
 #import <NeutrinoKit/NUAVPlayerViewDelegate-Protocol.h>
 
-@class NSArray, NSString, NUAVPlayerController, NUAVPlayerView, NUComposition, NUMediaViewRenderer, NURenderView, NUScrollView;
+@class NSArray, NSString, NUAVPlayerController, NUAVPlayerView, NUCoalescer, NUComposition, NUMediaViewRenderer, NURenderView, NUScrollView;
 @protocol NUMediaViewDelegate;
 
 @interface NUMediaView : UIView <NUAVPlayerControllerDelegate, NUAVPlayerViewDelegate>
 {
     NURenderView *_renderView;
     NUScrollView *_scrollView;
-    NUComposition *_composition;
     NUMediaViewRenderer *_renderer;
     struct UIEdgeInsets _edgeInsets;
     NUAVPlayerController *_nuAVPlayerController;
@@ -35,6 +34,7 @@
     } _delegateFlags;
     BOOL _loopsVideo;
     BOOL _inTransition;
+    NUCoalescer *_renderCoalescer;
     BOOL _centerContent;
     BOOL _muted;
     BOOL _videoPlayerVisible;
@@ -47,7 +47,7 @@
 @property (nonatomic) struct CGSize _masterSizeWithoutGeometry; // @synthesize _masterSizeWithoutGeometry=__masterSizeWithoutGeometry;
 @property (nonatomic) double angle; // @synthesize angle=_angle;
 @property (nonatomic) BOOL centerContent; // @synthesize centerContent=_centerContent;
-@property (strong, nonatomic) NUComposition *composition; // @synthesize composition=_composition;
+@property (copy, nonatomic) NUComposition *composition;
 @property (nonatomic) struct CGRect cropRect; // @synthesize cropRect=_cropRect;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<NUMediaViewDelegate> delegate; // @synthesize delegate=_delegate;
@@ -72,7 +72,6 @@
 - (id)_imageLayer;
 - (struct CGSize)_imageSize;
 - (id)_livePhotoView;
-- (id)_renderClient;
 - (id)_renderView;
 - (id)_renderer;
 - (void)_rendererDidCreateAVPlayerController:(id)arg1;
@@ -89,6 +88,7 @@
 - (void)_transitionToInsets:(struct UIEdgeInsets)arg1;
 - (void)_updateContentInsets;
 - (void)_updateRenderContent;
+- (void)_updateRenderContentCoalesced:(BOOL)arg1;
 - (void)_updateVideoPlayerAlpha;
 - (id)_videoPlayerView;
 - (id)_videoPlayerViewWithoutControls;
@@ -109,7 +109,9 @@
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidEndZooming:(id)arg1 withView:(id)arg2 atScale:(double)arg3;
+- (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewDidZoom:(id)arg1;
+- (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillBeginZooming:(id)arg1 withView:(id)arg2;
 - (void)setZoomScaleToFit;
 - (id)viewForZoomingInScrollView:(id)arg1;

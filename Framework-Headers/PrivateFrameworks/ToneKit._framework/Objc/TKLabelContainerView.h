@@ -11,9 +11,11 @@
 @interface TKLabelContainerView : UIView
 {
     UILabel *_label;
+    double _labelDefaultLastBaselineOffsetFromBottom;
     struct UIEdgeInsets _labelPaddingInsets;
 }
 
+@property (nonatomic) double labelDefaultLastBaselineOffsetFromBottom; // @synthesize labelDefaultLastBaselineOffsetFromBottom=_labelDefaultLastBaselineOffsetFromBottom;
 @property (strong, nonatomic) UIFont *labelFont;
 @property (nonatomic) struct UIEdgeInsets labelPaddingInsets; // @synthesize labelPaddingInsets=_labelPaddingInsets;
 @property (strong, nonatomic) UIColor *labelShadowColor;

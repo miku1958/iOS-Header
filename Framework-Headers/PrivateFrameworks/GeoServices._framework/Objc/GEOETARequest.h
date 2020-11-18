@@ -14,6 +14,7 @@
 {
     struct GEOSessionID _sessionID;
     struct GEOTimepoint _timepoint;
+    double _sessionRelativeTimestamp;
     GEOPDABClientDatasetMetadata *_abClientMetadata;
     GEOAdditionalEnabledMarkets *_additionalEnabledMarkets;
     GEOAutomobileOptions *_automobileOptions;
@@ -47,6 +48,7 @@
     struct {
         unsigned int sessionID:1;
         unsigned int timepoint:1;
+        unsigned int sessionRelativeTimestamp:1;
         unsigned int transportType:1;
         unsigned int walkingLimitMeters:1;
         unsigned int allowPartialResults:1;
@@ -89,6 +91,7 @@
 @property (readonly, nonatomic) BOOL hasPhoneticLocaleIdentifier;
 @property (readonly, nonatomic) BOOL hasRequestingAppId;
 @property (nonatomic) BOOL hasSessionID;
+@property (nonatomic) BOOL hasSessionRelativeTimestamp;
 @property (readonly, nonatomic) BOOL hasSessionState;
 @property (nonatomic) BOOL hasTimepoint;
 @property (readonly, nonatomic) BOOL hasTrafficSnapshot;
@@ -112,6 +115,7 @@
 @property (strong, nonatomic) NSString *requestingAppId; // @synthesize requestingAppId=_requestingAppId;
 @property (strong, nonatomic) NSMutableArray *serviceTags; // @synthesize serviceTags=_serviceTags;
 @property (nonatomic) struct GEOSessionID sessionID; // @synthesize sessionID=_sessionID;
+@property (nonatomic) double sessionRelativeTimestamp; // @synthesize sessionRelativeTimestamp=_sessionRelativeTimestamp;
 @property (strong, nonatomic) NSData *sessionState; // @synthesize sessionState=_sessionState;
 @property (nonatomic) struct GEOTimepoint timepoint; // @synthesize timepoint=_timepoint;
 @property (strong, nonatomic) GEOTFTrafficSnapshot *trafficSnapshot;

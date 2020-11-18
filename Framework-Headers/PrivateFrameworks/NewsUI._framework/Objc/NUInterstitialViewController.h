@@ -6,12 +6,12 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <NewsUI/NUPagable-Protocol.h>
+#import <NewsUI/NUPageable-Protocol.h>
 
 @class ADInterstitialAd, NSString, UIView;
 @protocol NULoadingDelegate;
 
-@interface NUInterstitialViewController : UIViewController <NUPagable>
+@interface NUInterstitialViewController : UIViewController <NUPageable>
 {
     BOOL _hasPresentedInterstitial;
     NSString *_pageIdentifier;

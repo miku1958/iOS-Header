@@ -31,9 +31,10 @@
 - (void)_connectionStateDidChange:(unsigned int)arg1 error:(id)arg2;
 - (void)becomeActiveOriginWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)connectWithCompletion:(CDUnknownBlockType)arg1;
+- (void)connectWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)initWithExternalDevice:(void *)arg1;
-- (void)invalidate;
+- (void)reset;
 - (void)resignActiveOriginWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)sendCustomData:(id)arg1;
 - (void)sendMediaRemoteCommand:(unsigned int)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

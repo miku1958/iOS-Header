@@ -11,17 +11,21 @@
 #import <MediaPlayer/UITableViewDataSource-Protocol.h>
 #import <MediaPlayer/UITableViewDelegate-Protocol.h>
 
-@class MPAVRoute, MPAVRoutingController, MPAVRoutingEmptyStateView, MPAVRoutingTableHeaderView, MPWeakTimer, NSArray, NSNumber, NSString, UIColor, UITableView;
+@class MPAVEndpointRoute, MPAVRoutingController, MPAVRoutingEmptyStateView, MPAVRoutingTableHeaderView, MPAVRoutingViewControllerUpdate, MPWeakTimer, NSArray, NSNumber, NSString, UIColor, UITableView, UIView;
 @protocol MPAVRoutingViewControllerDelegate, MPAVRoutingViewControllerThemeDelegate;
 
 @interface MPAVRoutingViewController : UIViewController <MPAVRoutingControllerDelegate, MPAVRoutingTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     UITableView *_tableView;
+    UIView *_tableBackgroundView;
     MPAVRoutingTableHeaderView *_tableHeaderView;
     MPAVRoutingEmptyStateView *_emptyStateView;
+    MPAVRoutingViewControllerUpdate *_pendingUpdate;
+    BOOL _isAnimatingUpdate;
     NSArray *_cachedRoutes;
-    BOOL _cachedRoutesHasRoutePickedOnPairedDevice;
-    MPAVRoute *_lastPendingPickedRoute;
+    NSArray *_cachedPickedRoutes;
+    NSArray *_cachedPendingPickedRoutes;
+    NSArray *_cachedDisplayAsPickedRoutes;
     MPWeakTimer *_updateTimer;
     MPAVRoutingController *_routingController;
     long long _routeDiscoveryMode;
@@ -30,8 +34,6 @@
     int _airPlayPasswordAlertDidAppearToken;
     int _airPlayPasswordAlertDidCancelToken;
     BOOL _airPlayPasswordAlertDidAppearTokenIsValid;
-    BOOL _cachedShowAirPlayDebugButton;
-    BOOL _hasCachedAirPlayDebugButtonStatus;
     BOOL _needsDisplayedRoutesUpdate;
     BOOL _suspendedDiscoveryModeDueToApplicationState;
     BOOL _shouldAutomaticallyUpdateRoutesList;
@@ -46,6 +48,7 @@
     unsigned long long _iconStyle;
     NSNumber *_discoveryModeOverride;
     id<MPAVRoutingViewControllerThemeDelegate> _themeDelegate;
+    MPAVEndpointRoute *_endpointRoute;
 }
 
 @property (readonly, nonatomic) double _expandedCellHeight;
@@ -62,6 +65,7 @@
 @property (weak, nonatomic) id<MPAVRoutingViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSNumber *discoveryModeOverride; // @synthesize discoveryModeOverride=_discoveryModeOverride;
+@property (strong, nonatomic) MPAVEndpointRoute *endpointRoute; // @synthesize endpointRoute=_endpointRoute;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long iconStyle; // @synthesize iconStyle=_iconStyle;
 @property (nonatomic) unsigned long long mirroringStyle; // @synthesize mirroringStyle=_mirroringStyle;
@@ -70,13 +74,19 @@
 @property (weak, nonatomic) id<MPAVRoutingViewControllerThemeDelegate> themeDelegate; // @synthesize themeDelegate=_themeDelegate;
 
 - (void).cxx_destruct;
+- (id)_alertControllerForUpdateDisplayedRoutesCrashWithLogFileURL:(id)arg1 exception:(id)arg2;
 - (void)_applicationDidEnterBackgroundNotification:(id)arg1;
 - (void)_applicationWillEnterForegroundNotification:(id)arg1;
+- (void)_applyUpdate:(id)arg1;
 - (void)_beginRouteDiscovery;
+- (id)_crashLogDateFormatter;
+- (id)_displayAsPickedRoutesInRoutes:(id)arg1;
 - (id)_displayableRoutesInRoutes:(id)arg1;
 - (id)_displayedRoutes;
 - (void)_endRouteDiscovery;
+- (id)_generatePropertyListFromUpdateDisplayedRoutesState:(id)arg1 exception:(id)arg2;
 - (void)_initWithStyle:(unsigned long long)arg1 routingController:(id)arg2;
+- (BOOL)_pickOrGroupRoute:(id)arg1;
 - (void)_pickRoute:(id)arg1;
 - (void)_registerNotifications;
 - (void)_reloadEmptyStateVisibility;
@@ -84,8 +94,7 @@
 - (void)_setNeedsRouteDiscoveryModeUpdate;
 - (void)_setRouteDiscoveryMode:(long long)arg1;
 - (void)_setupUpdateTimerIfNecessary;
-- (BOOL)_shouldShowAirPlayDebugButton;
-- (void)_showAirPlayDebug;
+- (BOOL)_shouldDisplayRouteAsPicked:(id)arg1;
 - (id)_tableHeaderView;
 - (double)_tableViewFooterViewHeight;
 - (double)_tableViewHeaderViewHeight;
@@ -93,6 +102,7 @@
 - (unsigned long long)_tableViewNumberOfRows;
 - (void)_unregisterNotifications;
 - (void)_updateDisplayedRoutes;
+- (id)_writeToDiskWithUpdateDisplayedRoutesStatePropertyList:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithStyle:(unsigned long long)arg1;
@@ -101,7 +111,7 @@
 - (struct CGSize)preferredContentSize;
 - (void)routingCell:(id)arg1 mirroringSwitchValueDidChange:(BOOL)arg2;
 - (void)routingController:(id)arg1 didFailToPickRouteWithError:(id)arg2;
-- (void)routingController:(id)arg1 pickedRouteDidChange:(id)arg2;
+- (void)routingController:(id)arg1 pickedRoutesDidChange:(id)arg2;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

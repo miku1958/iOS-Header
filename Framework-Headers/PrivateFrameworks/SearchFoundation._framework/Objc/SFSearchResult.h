@@ -23,6 +23,7 @@
     BOOL _isQuickGlance;
     BOOL _isStreaming;
     BOOL _isStaticCorrection;
+    BOOL _isFuzzyMatch;
     BOOL _publiclyIndexable;
     int _auxiliaryBottomTextColor;
     int _topHit;
@@ -132,6 +133,7 @@
 @property (strong, nonatomic) SFCard *inlineCard; // @synthesize inlineCard=_inlineCard;
 @property (copy, nonatomic) NSString *intendedQuery; // @synthesize intendedQuery=_intendedQuery;
 @property (nonatomic) BOOL isCentered; // @synthesize isCentered=_isCentered;
+@property (nonatomic) BOOL isFuzzyMatch; // @synthesize isFuzzyMatch=_isFuzzyMatch;
 @property (nonatomic) BOOL isLocalApplicationResult; // @synthesize isLocalApplicationResult=_isLocalApplicationResult;
 @property (nonatomic) BOOL isQuickGlance; // @synthesize isQuickGlance=_isQuickGlance;
 @property (nonatomic) BOOL isSecondaryTitleDetached; // @synthesize isSecondaryTitleDetached=_isSecondaryTitleDetached;

@@ -8,6 +8,7 @@
 
 @interface NSObject (AXScanner)
 - (long long)_accessibilityCollectionViewItemsPerRow;
+- (id)_accessibilityGroupIdentifier;
 - (BOOL)_accessibilityIsScannerElement;
 - (BOOL)_accessibilityIsScannerGroup;
 - (void)_accessibilityProcessScannerGroupElementPieces:(id)arg1;

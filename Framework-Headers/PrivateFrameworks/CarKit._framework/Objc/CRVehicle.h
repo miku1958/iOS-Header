@@ -19,6 +19,7 @@
     unsigned long long _pairingStatus;
     NSString *_bluetoothAddress;
     NSString *_carplayWiFiUUID;
+    NSString *_internalNotes;
 }
 
 @property (strong, nonatomic) NSSet *accessoryProtocols; // @synthesize accessoryProtocols=_accessoryProtocols;
@@ -26,6 +27,7 @@
 @property (strong, nonatomic) NSString *carplayWiFiUUID; // @synthesize carplayWiFiUUID=_carplayWiFiUUID;
 @property (strong, nonatomic) NSData *certificateSerialNumber; // @synthesize certificateSerialNumber=_certificateSerialNumber;
 @property (strong, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) NSString *internalNotes; // @synthesize internalNotes=_internalNotes;
 @property (readonly, nonatomic) BOOL isPaired;
 @property (nonatomic) unsigned long long pairingStatus; // @synthesize pairingStatus=_pairingStatus;
 @property (strong, nonatomic) NSString *vehicleName; // @synthesize vehicleName=_vehicleName;

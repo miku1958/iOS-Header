@@ -6,24 +6,32 @@
 
 #import <HomeKitDaemon/HMDUnassociatedAccessory.h>
 
-@class HMDAccessoryAdvertisement;
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@interface HMDUnassociatedMediaAccessory : HMDUnassociatedAccessory
+@class HMDAccessoryAdvertisement, NSString;
+
+@interface HMDUnassociatedMediaAccessory : HMDUnassociatedAccessory <HMFLogging>
 {
     HMDAccessoryAdvertisement *_advertisement;
 }
 
 @property (strong) HMDAccessoryAdvertisement *advertisement; // @synthesize advertisement=_advertisement;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
++ (id)logCategory;
 + (Class)modelClass;
 - (void).cxx_destruct;
 - (id)addTransactionForHome:(id)arg1 configurationAppIdentifier:(id)arg2;
 - (long long)associationOptions;
 - (id)dumpDescription;
-- (unsigned long long)hash;
 - (id)initWithAdvertisement:(id)arg1 messageDispatcher:(id)arg2;
 - (id)initWithIdentifier:(id)arg1 name:(id)arg2 category:(id)arg3 messageDispatcher:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
+- (id)logIdentifier;
+- (void)updateAdvertisementData:(id)arg1;
 
 @end
 

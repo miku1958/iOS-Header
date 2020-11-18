@@ -4,18 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCAudioIODelegate-Protocol.h>
 #import <AVConference/VCAudioIOSink-Protocol.h>
 #import <AVConference/VCAudioIOSource-Protocol.h>
 #import <AVConference/VCMediaStreamProtocol-Protocol.h>
+#import <AVConference/VCTextSender-Protocol.h>
 
 @class NSString, VCAudioIO, VCAudioPayload;
 @protocol OS_dispatch_queue, VCMediaStreamDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCVirtualTTYDevice : NSObject <VCMediaStreamProtocol, VCAudioIOSink, VCAudioIOSource, VCAudioIODelegate>
+@interface VCVirtualTTYDevice : NSObject <VCMediaStreamProtocol, VCTextSender, VCAudioIOSink, VCAudioIOSource, VCAudioIODelegate>
 {
     int _clientPid;
     struct AudioStreamBasicDescription vpioFormat;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
     struct SoundDec_t *_decoder;
     struct opaqueCMSimpleQueue *_charQueue;
     struct tagVCMemoryPool *_characterPool;
+    id _textStream;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -49,7 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)lock;
 - (void)pullAudioSamples:(struct opaqueVCAudioBufferList *)arg1;
 - (void)pushAudioSamples:(struct opaqueVCAudioBufferList *)arg1;
-- (void)sendCharater:(unsigned short)arg1;
+- (void)sendCharacter:(unsigned short)arg1;
 - (void)setCanProcessAudio:(BOOL)arg1;
 - (void)setPause:(BOOL)arg1;
 - (BOOL)setStreamConfig:(id)arg1 withError:(id *)arg2;

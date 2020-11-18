@@ -17,6 +17,7 @@
     CVMLSuggestionsLogger *suggestionsLogger;
 }
 
++ (id)clustererModelFileNamesFromState:(id)arg1 storedInPath:(id)arg2 error:(id *)arg3;
 + (BOOL)isLogEnabled;
 - (id).cxx_construct;
 - (void).cxx_destruct;

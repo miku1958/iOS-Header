@@ -8,10 +8,11 @@
 
 #import <TemplateKit/NUIContainerGridViewDelegate-Protocol.h>
 
-@class NSString, NUIContainerGridView, TLKImage, TLKImageView, TLKMultilineText, TLKVibrantLabel;
+@class NSString, NUIContainerGridView, TLKBadgedLabel, TLKImage, TLKImageView, TLKMultilineText, TLKVibrantLabel;
 
 @interface TLKSplitHeaderView : TLKView <NUIContainerGridViewDelegate>
 {
+    BOOL _shouldBadgeSubtitle;
     TLKMultilineText *_title;
     TLKMultilineText *_subtitle1;
     TLKMultilineText *_subtitle2;
@@ -30,13 +31,11 @@
     TLKVibrantLabel *_trailingSubtitleLabel;
     TLKVibrantLabel *_titleLabel;
     TLKVibrantLabel *_subtitle1Label;
-    TLKVibrantLabel *_subtitle2Label;
-    struct CGSize _fittingSize;
+    TLKBadgedLabel *_subtitle2Label;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property struct CGSize fittingSize; // @synthesize fittingSize=_fittingSize;
 @property (strong) NUIContainerGridView *gridView; // @synthesize gridView=_gridView;
 @property (readonly) unsigned long long hash;
 @property (strong) TLKImage *leadingImage; // @synthesize leadingImage=_leadingImage;
@@ -45,10 +44,11 @@
 @property (strong) TLKVibrantLabel *leadingSubtitleLabel; // @synthesize leadingSubtitleLabel=_leadingSubtitleLabel;
 @property (strong) TLKMultilineText *leadingTitle; // @synthesize leadingTitle=_leadingTitle;
 @property (strong) TLKVibrantLabel *leadingTitleLabel; // @synthesize leadingTitleLabel=_leadingTitleLabel;
+@property BOOL shouldBadgeSubtitle; // @synthesize shouldBadgeSubtitle=_shouldBadgeSubtitle;
 @property (strong) TLKMultilineText *subtitle1; // @synthesize subtitle1=_subtitle1;
 @property (strong) TLKVibrantLabel *subtitle1Label; // @synthesize subtitle1Label=_subtitle1Label;
 @property (strong) TLKMultilineText *subtitle2; // @synthesize subtitle2=_subtitle2;
-@property (strong) TLKVibrantLabel *subtitle2Label; // @synthesize subtitle2Label=_subtitle2Label;
+@property (strong) TLKBadgedLabel *subtitle2Label; // @synthesize subtitle2Label=_subtitle2Label;
 @property (readonly) Class superclass;
 @property (strong) TLKMultilineText *title; // @synthesize title=_title;
 @property (strong) TLKVibrantLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
@@ -61,12 +61,8 @@
 
 + (id)footnoteFont;
 - (void).cxx_destruct;
-- (void)centerWithView:(id)arg1 forColumn:(unsigned long long)arg2;
-- (long long)containerGridView:(id)arg1 horizontalAlignmentForArrangedSubview:(id)arg2;
-- (long long)containerGridView:(id)arg1 verticalAlignmentForArrangedSubview:(id)arg2;
 - (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
-- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
-- (void)containerViewDidLayoutArrangedSubviews:(id)arg1;
+- (struct UIEdgeInsets)effectiveAlignmentRectInsets;
 - (id)firstRowOfViews;
 - (id)grid;
 - (id)init;

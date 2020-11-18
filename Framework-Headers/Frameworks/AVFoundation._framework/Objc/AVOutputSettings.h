@@ -19,12 +19,13 @@
 @property (readonly, nonatomic) NSDictionary *outputSettingsDictionary; // @synthesize outputSettingsDictionary=_outputSettingsDictionary;
 @property (readonly, nonatomic) BOOL willYieldCompressedSamples;
 
-+ (id)_outputSettingsWithOutputSettingsDictionary:(id)arg1 exceptionReason:(id *)arg2;
++ (id)_outputSettingsWithOutputSettingsDictionary:(id)arg1 mediaType:(id)arg2 exceptionReason:(id *)arg3;
 + (unsigned long long)_validateOutputSettingsDictionary:(id)arg1 compatibilityDescription:(id *)arg2;
 + (id)defaultOutputSettingsForMediaType:(id)arg1;
 + (id)eligibleOutputSettingsDictionaryKeys;
-+ (id)outputSettingsWithOutputSettingsDictionary:(id)arg1;
++ (id)outputSettingsWithOutputSettingsDictionary:(id)arg1 mediaType:(id)arg2;
 + (id)registeredOutputSettingsClasses;
++ (BOOL)supportsEmptyOutputSettingsDictionary;
 + (unsigned long long)validateOutputSettingsDictionary:(id)arg1;
 - (BOOL)canFullySpecifyOutputFormatReturningReason:(id *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

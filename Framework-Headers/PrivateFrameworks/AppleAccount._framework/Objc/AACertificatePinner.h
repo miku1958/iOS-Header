@@ -20,9 +20,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (BOOL)_isValidCertificateTrust:(struct __SecTrust *)arg1 forPinningPolicy:(struct __SecPolicy *)arg2;
 + (BOOL)isSetupServiceHost:(id)arg1;
-+ (BOOL)isValidCertificateTrust:(struct __SecTrust *)arg1 forSetupServiceHost:(id)arg2;
++ (BOOL)isValidCertificateTrust:(struct __SecTrust *)arg1;
 + (id)sharedPinner;
 - (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 willSendRequestForAuthenticationChallenge:(id)arg2;

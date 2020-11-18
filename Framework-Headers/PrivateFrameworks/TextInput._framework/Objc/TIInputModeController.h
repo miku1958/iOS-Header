@@ -37,6 +37,7 @@
 - (id)keyboardLanguageForDictationLanguage:(id)arg1;
 - (void)setInputModeIdentifiersForTesting:(id)arg1;
 - (id)suggestedDictationLanguageForDeviceLanguage;
+- (id)suggestedDictationLanguagesForDeviceLanguage;
 
 @end
 

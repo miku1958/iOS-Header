@@ -11,8 +11,10 @@
 @protocol _SFPBImagesCardSection <NSObject>
 
 @property (strong, nonatomic) _SFPBColor *backgroundColor;
+@property (nonatomic) BOOL borderless;
 @property (nonatomic) BOOL canBeHidden;
 @property (readonly, nonatomic) BOOL hasBackgroundColor;
+@property (readonly, nonatomic) BOOL hasBorderless;
 @property (nonatomic) BOOL hasBottomPadding;
 @property (readonly, nonatomic) BOOL hasCanBeHidden;
 @property (readonly, nonatomic) BOOL hasHasBottomPadding;

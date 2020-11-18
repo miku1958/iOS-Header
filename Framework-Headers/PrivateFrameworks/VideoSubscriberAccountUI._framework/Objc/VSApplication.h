@@ -62,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (id)objectForMediaItem:(id)arg1;
 - (id)objectForPlayer:(id)arg1;
 - (id)objectForPlaylist:(id)arg1;
+- (oneway void)release;
 - (void)sendErrorWithMessage:(id)arg1;
 - (BOOL)shouldIgnoreJSValidation;
 - (id)sourceApplicationAuditTokenDataForContext:(id)arg1;

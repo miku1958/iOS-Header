@@ -19,7 +19,6 @@
     BOOL _prioritize;
     BOOL _cancelOnHTTPErrors;
     BOOL _extendedCertificateValidationRequired;
-    BOOL _shouldRetry;
     NSProgress *_progress;
     unsigned long long _maxRetryCount;
     ICRequestContext *_requestContext;
@@ -37,6 +36,7 @@
     NSURL *_responseDataURL;
     NSError *_error;
     NSDictionary *_avDownloadOptions;
+    long long _handlingType;
     double _lastUpdateTime;
     double _lastProgressUpdateTime;
     CDUnknownBlockType _completionHandler;
@@ -50,6 +50,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (nonatomic, getter=isExtendedCertificateValidationRequired) BOOL extendedCertificateValidationRequired; // @synthesize extendedCertificateValidationRequired=_extendedCertificateValidationRequired;
+@property (nonatomic) long long handlingType; // @synthesize handlingType=_handlingType;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double lastProgressUpdateTime; // @synthesize lastProgressUpdateTime=_lastProgressUpdateTime;
 @property (nonatomic) double lastUpdateTime; // @synthesize lastUpdateTime=_lastUpdateTime;
@@ -63,7 +64,6 @@
 @property (strong, nonatomic) NSURL *responseDataURL; // @synthesize responseDataURL=_responseDataURL;
 @property (nonatomic) unsigned long long retryCount; // @synthesize retryCount=_retryCount;
 @property (nonatomic) double retryDelay; // @synthesize retryDelay=_retryDelay;
-@property (nonatomic) BOOL shouldRetry; // @synthesize shouldRetry=_shouldRetry;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSURLSessionTask *task; // @synthesize task=_task;
 @property (nonatomic) long long type; // @synthesize type=_type;

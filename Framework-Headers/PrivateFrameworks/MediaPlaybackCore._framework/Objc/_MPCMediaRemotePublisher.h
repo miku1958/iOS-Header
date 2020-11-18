@@ -8,13 +8,14 @@
 
 #import <MediaPlaybackCore/MPCPlaybackEngineEventObserving-Protocol.h>
 #import <MediaPlaybackCore/MPNowPlayingInfoLyricsDelegate-Protocol.h>
-#import <MediaPlaybackCore/MPNowPlayingPlaybackQueueDataSource_Private-Protocol.h>
+#import <MediaPlaybackCore/MPNowPlayingPlaybackQueueDataSourcePrivate-Protocol.h>
 
 @class MPCPlaybackEngine, MPLibraryAddStatusObserver, MPNowPlayingInfoCenter, MPRemoteCommandCenter, NSString;
 
-@interface _MPCMediaRemotePublisher : NSObject <MPNowPlayingPlaybackQueueDataSource_Private, MPNowPlayingInfoLyricsDelegate, MPCPlaybackEngineEventObserving>
+@interface _MPCMediaRemotePublisher : NSObject <MPNowPlayingPlaybackQueueDataSourcePrivate, MPNowPlayingInfoLyricsDelegate, MPCPlaybackEngineEventObserving>
 {
     MPLibraryAddStatusObserver *_libraryAddStatusObserver;
+    NSString *_lastContextID;
     BOOL _initializedSupportedCommands;
     BOOL _engineRestoringState;
     MPCPlaybackEngine *_playbackEngine;
@@ -37,15 +38,14 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_contentItemForMPAVItem:(id)arg1;
 - (void)_disableQueueModificationsChangedNotification:(id)arg1;
 - (void)_durationAvailableNotification:(id)arg1;
 - (void)_likedStateChangedNotification:(id)arg1;
 - (void)_performCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateSupportedCommands;
+- (void)_updateUpNextItemCount;
 - (void)addSupportedSpecializedQueueIdentifier:(id)arg1 localizedName:(id)arg2 queueType:(long long)arg3 queueParameters:(id)arg4;
 - (void)becomeActive;
-- (id)contentItemForOffset:(long long)arg1;
 - (void)engine:(id)arg1 didChangeQueueWithReason:(id)arg2;
 - (void)engine:(id)arg1 didChangeRepeatType:(long long)arg2;
 - (void)engine:(id)arg1 didChangeShuffleType:(long long)arg2;
@@ -54,10 +54,13 @@
 - (void)engineDidEndStateRestoration:(id)arg1;
 - (void)engineWillBeginStateRestoration:(id)arg1;
 - (id)initWithPlaybackEngine:(id)arg1;
-- (id)nowPlayingContentItemForIdentifier:(id)arg1;
-- (id)nowPlayingContentItemsForRequest:(void *)arg1 range:(CDStruct_339ad95e *)arg2;
+- (id)nowPlayingInfoCenter:(id)arg1 artworkCatalogForContentItem:(id)arg2;
+- (id)nowPlayingInfoCenter:(id)arg1 artworkForContentItem:(id)arg2 size:(struct CGSize)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)nowPlayingInfoCenter:(id)arg1 contentItemForID:(id)arg2;
+- (id)nowPlayingInfoCenter:(id)arg1 contentItemIDForOffset:(long long)arg2;
 - (void)nowPlayingInfoCenter:(id)arg1 didBeginLyricsEvent:(id)arg2;
 - (void)nowPlayingInfoCenter:(id)arg1 didEndLyricsEvent:(id)arg2;
+- (id)nowPlayingInfoCenter:(id)arg1 lyricsForContentItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)publishIfNeeded;
 - (void)removeSupportedSpecializedQueueIdentifier:(id)arg1;
 

@@ -13,11 +13,13 @@
 
 @interface CRBasicCardSection : NSObject <CRCardSection>
 {
+    NSString *_cardSectionIdentifier;
     id<SFCardSection> _backingCardSection;
 }
 
 @property (readonly, nonatomic) NSArray *actionCommands;
 @property (strong, nonatomic) id<SFCardSection> backingCardSection; // @synthesize backingCardSection=_backingCardSection;
+@property (readonly, nonatomic) NSString *cardSectionIdentifier; // @synthesize cardSectionIdentifier=_cardSectionIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasNextCard;
@@ -29,6 +31,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 
 @end

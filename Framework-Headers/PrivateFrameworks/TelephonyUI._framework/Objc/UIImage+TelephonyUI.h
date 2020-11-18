@@ -22,8 +22,8 @@
 + (id)telephonyUIActionButtonGlyphImage;
 + (id)telephonyUIImageNamed:(id)arg1;
 + (id)telephonyUIUnreadIndicatorGlyphImage;
-+ (id)telephonyUI_AudioControlsGlyphForDeviceModelType:(long long)arg1;
-+ (id)telephonyUI_AudioRouteGlyphForDeviceModelType:(long long)arg1;
++ (id)telephonyUI_AudioControlsGlyphForDeviceType:(long long)arg1;
++ (id)telephonyUI_AudioRouteGlyphForDeviceType:(long long)arg1;
 + (id)telephonyUI_BluetoothAudioControlGlyphImage;
 + (id)telephonyUI_BluetoothAudioRouteGlyphImage;
 + (id)telephonyUI_CarPlayAudioRouteGlyphImage;

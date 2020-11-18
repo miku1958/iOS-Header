@@ -51,6 +51,7 @@
 - (void)loadCloudRecordsFromCache:(CDUnknownBlockType)arg1;
 - (BOOL)moreChangesToProcess;
 - (void)removeChangeWithObjectID:(id)arg1;
+- (void)resetRecordWithRecordID:(id)arg1;
 - (id)rootRecordModelObject;
 - (void)setDeleteAsProcessedWithRecordID:(id)arg1;
 - (void)setSaveAsProcessedWithRecord:(id)arg1;

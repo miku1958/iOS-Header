@@ -12,6 +12,7 @@
 - (void)remote_acceptInviteRequestFromFriendWithUUID:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_clearFriendListWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)remote_cloudKitAccountStatusWithCompletion:(void (^)(BOOL, BOOL, NSError *))arg1;
+- (void)remote_consolidateRelationshipEventsForFriendWithUUID:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_fetchAllDataIfTimeSinceLastFetchIsGreaterThan:(unsigned long long)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_fetchAllDataWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)remote_fetchAreMultipleDevicesSharingDataForSnapshotIndex:(NSNumber *)arg1 withCompletion:(void (^)(BOOL, BOOL, NSError *))arg2;

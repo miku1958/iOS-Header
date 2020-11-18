@@ -34,6 +34,7 @@
 - (void)_finalize;
 - (void)appendItemMoveFromIndexPath:(id)arg1 toIndexPath:(id)arg2 updated:(BOOL)arg3;
 - (void)appendSectionMoveFromIndex:(long long)arg1 toIndex:(long long)arg2 updated:(BOOL)arg3;
+- (id)debugDescription;
 - (id)description;
 - (void)enumerateItemMovesWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSectionMovesWithBlock:(CDUnknownBlockType)arg1;

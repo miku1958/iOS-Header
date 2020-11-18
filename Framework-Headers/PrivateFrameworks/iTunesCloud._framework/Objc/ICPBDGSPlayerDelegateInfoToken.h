@@ -8,12 +8,13 @@
 
 #import <iTunesCloud/NSCopying-Protocol.h>
 
-@class NSData;
+@class NSData, NSString;
 
 @interface ICPBDGSPlayerDelegateInfoToken : PBCodable <NSCopying>
 {
     double _expirationTimeInterval;
     unsigned long long _sessionID;
+    NSString *_storefrontIdentifier;
     NSData *_token;
     struct {
         unsigned int expirationTimeInterval:1;
@@ -24,8 +25,10 @@
 @property (nonatomic) double expirationTimeInterval; // @synthesize expirationTimeInterval=_expirationTimeInterval;
 @property (nonatomic) BOOL hasExpirationTimeInterval;
 @property (nonatomic) BOOL hasSessionID;
+@property (readonly, nonatomic) BOOL hasStorefrontIdentifier;
 @property (readonly, nonatomic) BOOL hasToken;
 @property (nonatomic) unsigned long long sessionID; // @synthesize sessionID=_sessionID;
+@property (strong, nonatomic) NSString *storefrontIdentifier; // @synthesize storefrontIdentifier=_storefrontIdentifier;
 @property (strong, nonatomic) NSData *token; // @synthesize token=_token;
 
 - (void).cxx_destruct;

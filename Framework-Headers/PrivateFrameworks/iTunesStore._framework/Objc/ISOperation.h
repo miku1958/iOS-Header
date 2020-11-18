@@ -51,6 +51,7 @@
 - (id)authenticatedAccountDSID;
 - (void)cancel;
 - (BOOL)copyAccountID:(id *)arg1 byAuthenticatingWithContext:(id)arg2 returningError:(id *)arg3;
+- (BOOL)copyAccountID:(id *)arg1 byHandlingAuthenticateResponse:(id)arg2 returningError:(id *)arg3;
 - (id)copyActivePowerAssertionIdentifiers;
 - (id)copySerializationLocks;
 - (void)delegateDispatch:(CDUnknownBlockType)arg1;

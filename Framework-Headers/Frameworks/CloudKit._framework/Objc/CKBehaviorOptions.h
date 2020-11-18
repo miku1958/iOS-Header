@@ -62,6 +62,7 @@
 - (id)customCloudDBBaseURL;
 - (id)customCodeServiceBaseURL;
 - (id)customDeviceServiceBaseURL;
+- (id)customMetricsServiceBaseURL;
 - (id)customShareServiceBaseURL;
 - (void)dealloc;
 - (double)defaultRequestTimeout;
@@ -89,6 +90,7 @@
 - (double)maximumQueuedFetchWaitTime;
 - (double)maximumThrottleSeconds;
 - (double)maximumWaitAfterFetchRequest;
+- (double)minTTRPromptInterval;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (double)operationTimeout;
 - (BOOL)optimisticPCS;
@@ -122,6 +124,7 @@
 - (void)setCustomCloudDBBaseURL:(id)arg1;
 - (void)setCustomCodeServiceBaseURL:(id)arg1;
 - (void)setCustomDeviceServiceBaseURL:(id)arg1;
+- (void)setCustomMetricsServiceBaseURL:(id)arg1;
 - (void)setCustomShareServiceBaseURL:(id)arg1;
 - (void)setDefaultRequestTimeout:(double)arg1;
 - (void)setDefaultResourceTimeout:(double)arg1;

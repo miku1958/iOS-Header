@@ -39,7 +39,6 @@
 @property (strong, nonatomic) NSArray *segmentViews; // @synthesize segmentViews=_segmentViews;
 @property (strong, nonatomic) NSNumber *selectedSegmentIndex; // @synthesize selectedSegmentIndex=_selectedSegmentIndex;
 @property (strong, nonatomic) NSArray *separatorViews; // @synthesize separatorViews=_separatorViews;
-@property (nonatomic) long long sizeSubclass;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSNumber *trackingSegmentIndex; // @synthesize trackingSegmentIndex=_trackingSegmentIndex;
 @property (nonatomic, getter=isUserInteractionActive) BOOL userInteractionActive; // @synthesize userInteractionActive=_userInteractionActive;
@@ -54,6 +53,7 @@
 - (void)_updateUserInteractionActive:(BOOL)arg1 forFirstTouch:(BOOL)arg2;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
 - (id)initWithProfile:(id)arg1;
+- (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;
 - (void)layoutSubviews;
 
 @end

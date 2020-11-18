@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI/NUURLHandler-Protocol.h>
+#import <NewsUI/NUURLHandling-Protocol.h>
 
 @class NSString;
 
-@interface NUApplicationURLHandler : NSObject <NUURLHandler>
+@interface NUApplicationURLHandler : NSObject <NUURLHandling>
 {
 }
 
@@ -19,7 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)openURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)openURL:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

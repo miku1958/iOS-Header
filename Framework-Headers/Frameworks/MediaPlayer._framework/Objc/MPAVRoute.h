@@ -6,9 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
+#import <MediaPlayer/NSSecureCoding-Protocol.h>
+
 @class MPAVBatteryLevel, MPAVRouteConnection, NSArray, NSDictionary, NSString;
 
-@interface MPAVRoute : NSObject
+@interface MPAVRoute : NSObject <NSSecureCoding>
 {
     NSString *_routeName;
     BOOL _picked;
@@ -21,13 +23,15 @@
     BOOL _playingOnPairedDevice;
     BOOL _requiresPassword;
     BOOL _carplayRoute;
-    BOOL _b238Route;
+    BOOL _homePodRoute;
     NSString *_routeUID;
     NSString *_productIdentifier;
+    NSString *_groupUID;
     long long _routeType;
     long long _pickableRouteType;
     long long _routeSubtype;
     NSArray *_auxiliaryDevices;
+    NSString *_playingPairedDeviceName;
     void *_externalDevice;
     MPAVRouteConnection *_connection;
 }
@@ -36,7 +40,7 @@
 @property (readonly, nonatomic, getter=isAppleTVRoute) BOOL appleTVRoute;
 @property (readonly, nonatomic) NSArray *auxiliaryDevices; // @synthesize auxiliaryDevices=_auxiliaryDevices;
 @property (readonly, nonatomic) NSDictionary *avRouteDescription;
-@property (readonly, nonatomic, getter=isB238Route) BOOL b238Route; // @synthesize b238Route=_b238Route;
+@property (readonly, nonatomic, getter=isB238Route) BOOL b238Route;
 @property (readonly, nonatomic) MPAVBatteryLevel *batteryLevel; // @synthesize batteryLevel=_batteryLevel;
 @property (readonly, nonatomic, getter=isBeatsSoloRoute) BOOL beatsSoloRoute;
 @property (readonly, nonatomic, getter=isBeatsStudioRoute) BOOL beatsStudioRoute;
@@ -44,15 +48,19 @@
 @property (readonly, nonatomic) BOOL canAccessRemoteAssets; // @synthesize canAccessRemoteAssets=_canAccessRemoteAssets;
 @property (readonly, nonatomic, getter=isCarplayRoute) BOOL carplayRoute; // @synthesize carplayRoute=_carplayRoute;
 @property (readonly, nonatomic) MPAVRouteConnection *connection; // @synthesize connection=_connection;
-@property (readonly, nonatomic) BOOL displayIsPicked;
+@property (readonly, nonatomic, getter=isDeviceSpeakerRoute) BOOL deviceSpeakerRoute;
+@property (readonly, nonatomic, getter=isDisplayedAsPicked) BOOL displayAsPicked;
 @property (nonatomic) long long displayRouteType;
 @property (readonly, nonatomic, getter=_externalDevice) void *externalDevice; // @synthesize externalDevice=_externalDevice;
+@property (readonly, nonatomic) NSString *groupUID; // @synthesize groupUID=_groupUID;
+@property (readonly, nonatomic, getter=isHomePodRoute) BOOL homePodRoute; // @synthesize homePodRoute=_homePodRoute;
 @property (readonly, nonatomic) BOOL isDeviceRoute;
 @property (readonly, nonatomic) long long passwordType;
 @property (readonly, nonatomic) long long pickableRouteType; // @synthesize pickableRouteType=_pickableRouteType;
 @property (nonatomic, getter=isPicked) BOOL picked;
 @property (readonly, nonatomic, getter=isPickedOnPairedDevice) BOOL pickedOnPairedDevice; // @synthesize pickedOnPairedDevice=_pickedOnPairedDevice;
 @property (readonly, nonatomic, getter=isPlayingOnPairedDevice) BOOL playingOnPairedDevice; // @synthesize playingOnPairedDevice=_playingOnPairedDevice;
+@property (readonly, nonatomic) NSString *playingPairedDeviceName; // @synthesize playingPairedDeviceName=_playingPairedDeviceName;
 @property (readonly, nonatomic, getter=isPowerbeatsRoute) BOOL powerbeatsRoute;
 @property (readonly, nonatomic) NSString *productIdentifier; // @synthesize productIdentifier=_productIdentifier;
 @property (readonly, nonatomic) BOOL requiresPassword; // @synthesize requiresPassword=_requiresPassword;
@@ -60,13 +68,21 @@
 @property (readonly, nonatomic) long long routeSubtype; // @synthesize routeSubtype=_routeSubtype;
 @property (readonly, nonatomic) long long routeType; // @synthesize routeType=_routeType;
 @property (readonly, nonatomic) NSString *routeUID; // @synthesize routeUID=_routeUID;
+@property (readonly, nonatomic, getter=isRoutingToWirelessDevice) BOOL routingToWirelessDevice;
+@property (readonly, nonatomic, getter=isSmartAudio) BOOL smartAudio;
+@property (readonly, nonatomic, getter=isStereoPair) BOOL stereoPair;
 @property (readonly, nonatomic) BOOL supportsWirelessDisplay;
+@property (readonly, nonatomic, getter=isVolumeControlAvailable) BOOL volumeControlAvailable;
+@property (readonly, nonatomic, getter=isW1Route) BOOL w1Route;
 @property (strong, nonatomic) MPAVRoute *wirelessDisplayRoute;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)debugDescription;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)setAVRouteDescription:(id)arg1;
 

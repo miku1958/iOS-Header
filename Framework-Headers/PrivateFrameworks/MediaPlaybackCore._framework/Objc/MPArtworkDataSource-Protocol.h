@@ -19,7 +19,7 @@
 
 @optional
 - (id)existingArtworkEffectResultForEffectType:(long long)arg1 catalog:(MPArtworkCatalog *)arg2 options:(NSDictionary *)arg3;
-- (void)getExportableArtworkURLForCatalog:(MPArtworkCatalog *)arg1 completionHandler:(void (^)(NSURL *, NSError *))arg2;
+- (void)getExportableArtworkPropertiesForCatalog:(MPArtworkCatalog *)arg1 completionHandler:(void (^)(MPExportableArtworkProperties *, NSError *))arg2;
 - (BOOL)hasExistingRepresentationOnDiskForArtworkCatalog:(MPArtworkCatalog *)arg1;
 - (void)loadArtworkEffectResultForEffectType:(long long)arg1 catalog:(MPArtworkCatalog *)arg2 options:(NSDictionary *)arg3 systemEffectHandler:(void (^)(void (^)(id, NSError *)))arg4 completionHandler:(void (^)(id, NSError *))arg5;
 @end

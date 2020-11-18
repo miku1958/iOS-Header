@@ -10,7 +10,7 @@
 #import <CoreSpeech/AVVoiceControllerRecordDelegate-Protocol.h>
 #import <CoreSpeech/CSBeepCancellerDelegate-Protocol.h>
 
-@class AVVoiceController, CSAudioSampleRateConverter, CSAudioZeroFilter, CSBeepCanceller, NSString;
+@class AVVoiceController, CSAudioSampleRateConverter, CSAudioZeroCounter, CSAudioZeroFilter, CSBeepCanceller, CSRemoteRecordClient, NSDictionary, NSString;
 @protocol CSAudioRecorderDelegate;
 
 @interface CSAudioRecorder : NSObject <AVVoiceControllerRecordDelegate, AVVoiceControllerPlaybackDelegate, CSBeepCancellerDelegate>
@@ -25,6 +25,10 @@
     struct AudioBufferList *_pNonInterleavedABL;
     CSAudioSampleRateConverter *_sampleRateConverter;
     BOOL _needSampleRateConversion;
+    CSRemoteRecordClient *_remoteRecordClient;
+    NSDictionary *_latestContext;
+    BOOL _shouldUseRemoteRecord;
+    CSAudioZeroCounter *_continuousZeroCounter;
     id<CSAudioRecorderDelegate> _delegate;
 }
 
@@ -36,16 +40,20 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_audioRecorderDidStartRecordingSuccessfully:(BOOL)arg1 error:(id)arg2;
+- (void)_audioRecorderDidStopRecordingForReason:(long long)arg1;
 - (id)_beepCanceller;
 - (void)_createDeInterleaverIfNeeded;
 - (void)_createSampleRateConverterIfNeeded;
 - (id)_deinterleaveBufferIfNeeded:(id)arg1;
+- (void)_destroyVoiceController;
 - (void)_processAudioChain:(id)arg1 atTime:(unsigned long long)arg2;
 - (void)_processAudioChainWithZeroFiltering:(id)arg1 atTime:(unsigned long long)arg2;
 - (float)_recordingSampleRate;
 - (void)_resetZeroFilter;
 - (id)_samplingRateConvertIfNeeded:(id)arg1;
 - (BOOL)_shouldRunZeroFilter;
+- (BOOL)_shouldUseRemoteRecordForContext:(id)arg1;
 - (id)_voiceControllerWithContext:(id)arg1 error:(id *)arg2;
 - (unsigned long long)alertStartTime;
 - (float)averagePowerForChannel:(unsigned long long)arg1;
@@ -89,6 +97,7 @@
 - (void)voiceControllerRecordHardwareConfigurationDidChange:(id)arg1 toConfiguration:(int)arg2;
 - (id)voiceTriggerInfo;
 - (void)voiceTriggerOccuredNotification:(id)arg1;
+- (void)willDestroy;
 
 @end
 

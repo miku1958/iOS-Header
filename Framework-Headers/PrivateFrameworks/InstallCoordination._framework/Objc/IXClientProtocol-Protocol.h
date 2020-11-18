@@ -45,6 +45,7 @@
 - (oneway void)_remote_IXSDataPromise:(NSUUID *)arg1 getErrorInfo:(void (^)(unsigned long long, NSError *))arg2;
 - (oneway void)_remote_IXSDataPromise:(NSUUID *)arg1 getIsComplete:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)_remote_IXSDataPromise:(NSUUID *)arg1 getPercentComplete:(void (^)(double, NSError *))arg2;
+- (oneway void)_remote_IXSDataPromise:(NSUUID *)arg1 preflightWithCompletion:(void (^)(NSError *))arg2;
 - (oneway void)_remote_IXSDataPromise:(NSUUID *)arg1 resetWithCompletion:(void (^)(NSError *))arg2;
 - (oneway void)_remote_IXSDataPromise:(NSUUID *)arg1 setIsComplete:(BOOL)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)_remote_IXSDataPromise:(NSUUID *)arg1 setPercentComplete:(double)arg2;
@@ -75,6 +76,7 @@
 - (oneway void)_remote_IXSPromisedStreamingZipTransfer:(NSUUID *)arg1 setArchiveBytesConsumed:(unsigned long long)arg2;
 - (oneway void)_remote_IXSPromisedTransferToPath:(NSUUID *)arg1 setShouldCopy:(BOOL)arg2;
 - (oneway void)_remote_IXSPromisedTransferToPath:(NSUUID *)arg1 setTransferPath:(NSURL *)arg2;
+- (oneway void)_remote_IXSPromisedTransferToPath:(NSUUID *)arg1 setTryDeltaCopy:(BOOL)arg2;
 - (void)_remote_addObserversForCoordinatorsWithUUIDs:(NSSet *)arg1 fireObserverMethods:(BOOL)arg2;
 - (void)_remote_addObserversForDataPromisesWithUUIDs:(NSSet *)arg1;
 - (void)_remote_cancelCoordinatorForAppWithBundleID:(NSString *)arg1 reason:(NSError *)arg2 client:(unsigned long long)arg3 completion:(void (^)(NSError *))arg4;
@@ -102,6 +104,7 @@
 - (void)_remote_removeObserverForDataPromiseWithUUID:(NSUUID *)arg1;
 - (void)_remote_setIsPaused:(BOOL)arg1 forCoordinatorForAppWithBundleID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)_remote_setRemovability:(unsigned long long)arg1 forAppWithBundleID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)_remote_setTestModeForBundleWithPrefix:(NSString *)arg1 testMode:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)_remote_setTestingEnabled:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (void)_remote_uninstallAppWithBundleID:(NSString *)arg1 requestUserConfirmation:(BOOL)arg2 completion:(void (^)(NSError *))arg3;
 @end

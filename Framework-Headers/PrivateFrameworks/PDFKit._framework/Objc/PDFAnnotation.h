@@ -40,6 +40,7 @@
 @property (readonly, nonatomic) BOOL hasAppearanceStream;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted;
 @property (nonatomic) long long iconType;
+@property (copy, nonatomic) UIColor *interiorColor;
 @property (readonly, nonatomic) BOOL isPasswordField;
 @property (nonatomic, getter=isListChoice) BOOL listChoice;
 @property (nonatomic) long long markupType;
@@ -55,6 +56,7 @@
 @property (nonatomic, getter=isReadOnly) BOOL readOnly;
 @property (nonatomic) BOOL shouldDisplay; // @dynamic shouldDisplay;
 @property (nonatomic) BOOL shouldPrint; // @dynamic shouldPrint;
+@property (copy, nonatomic) NSString *stampName;
 @property (nonatomic) long long startLineStyle;
 @property (nonatomic) struct CGPoint startPoint;
 @property (copy, nonatomic) NSString *type;
@@ -143,6 +145,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)createDefaultAppearanceStringWithFont:(id)arg1 fontColor:(id)arg2;
 - (void)dealloc;
+- (id)debugQuickLookObject;
 - (void)derotateContext:(struct CGContext *)arg1;
 - (id)description;
 - (struct __CFDictionary *)dictionaryRef;
@@ -170,7 +173,6 @@
 - (id)initWithBounds:(struct CGRect)arg1 forType:(id)arg2 withProperties:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1 forPage:(id)arg2;
-- (BOOL)isEditingTextWidget;
 - (BOOL)isFullyConstructed;
 - (BOOL)isHidden;
 - (BOOL)isInvisible;
@@ -182,6 +184,7 @@
 - (BOOL)isSignature;
 - (BOOL)isWidgetOrMarkupAnnotation;
 - (id)mouseDownAction;
+- (id)mouseHoverBackgroundColor;
 - (id)mouseUpAction;
 - (id)newUserControlWithFrame:(struct CGRect)arg1;
 - (id)parent;
@@ -210,7 +213,6 @@
 - (void)setContentsLocked:(BOOL)arg1;
 - (void)setControl:(id)arg1;
 - (void)setDictionaryRef:(struct __CFDictionary *)arg1;
-- (void)setEditingTextWidget:(BOOL)arg1;
 - (void)setForExport:(BOOL)arg1;
 - (void)setHidden:(BOOL)arg1;
 - (void)setInvisible:(BOOL)arg1;
@@ -219,6 +221,7 @@
 - (void)setIsSignature:(BOOL)arg1;
 - (void)setLocked:(BOOL)arg1;
 - (void)setMouseDownAction:(id)arg1;
+- (void)setMouseHoverBackgroundColor:(id)arg1;
 - (void)setMouseUpAction:(id)arg1;
 - (void)setPDFAnnotationDictionary:(id)arg1;
 - (void)setParent:(id)arg1;

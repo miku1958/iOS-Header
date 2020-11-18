@@ -13,10 +13,12 @@
 
 @interface SiriUILegacyCardSection : NSObject <CRCardSection>
 {
+    NSString *_cardSectionIdentifier;
 }
 
 @property (readonly, nonatomic) NSArray *actionCommands;
 @property (readonly, nonatomic) id<SFCardSection> backingCardSection;
+@property (copy, nonatomic) NSString *cardSectionIdentifier; // @synthesize cardSectionIdentifier=_cardSectionIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasNextCard;
@@ -24,8 +26,10 @@
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 
 @end

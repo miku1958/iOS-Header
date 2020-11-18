@@ -7,22 +7,29 @@
 #import <Home/HFItemProvider.h>
 
 @class HMHome, NSMutableSet;
+@protocol HFCharacteristicValueSource;
 
 @interface HFMediaAccessoryItemProvider : HFItemProvider
 {
+    BOOL _includeMediaSystems;
     CDUnknownBlockType _filter;
     HMHome *_home;
     NSMutableSet *_mediaAccessoryItems;
+    id<HFCharacteristicValueSource> _overrideValueSource;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
+@property (readonly, nonatomic) BOOL includeMediaSystems; // @synthesize includeMediaSystems=_includeMediaSystems;
 @property (strong, nonatomic) NSMutableSet *mediaAccessoryItems; // @synthesize mediaAccessoryItems=_mediaAccessoryItems;
+@property (strong, nonatomic) id<HFCharacteristicValueSource> overrideValueSource; // @synthesize overrideValueSource=_overrideValueSource;
+@property (strong, nonatomic) id<HFCharacteristicValueSource> valueSource;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithHome:(id)arg1;
+- (id)initWithHome:(id)arg1 includeMediaSystems:(BOOL)arg2;
 - (id)invalidationReasons;
 - (id)items;
 - (id)reloadItems;

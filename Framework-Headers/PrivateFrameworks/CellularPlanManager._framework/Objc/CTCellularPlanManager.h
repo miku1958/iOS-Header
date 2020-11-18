@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CellularPlanManager/CTCellularPlanClientDelegate-Protocol.h>
 
@@ -105,6 +105,7 @@
 - (void)setUserInPurchaseFlow:(BOOL)arg1;
 - (void)shouldShowAddNewRemotePlan:(CDUnknownBlockType)arg1;
 - (void)shouldShowAddNewRemotePlanWithFlowType:(CDUnknownBlockType)arg1;
+- (void)shouldShowAddNewRemotePlanWithFlowTypeAndTrialPlanType:(CDUnknownBlockType)arg1;
 - (void)shouldShowPlanList:(CDUnknownBlockType)arg1;
 - (void)startRemoteProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 - (void)subscriptionDetailsForCompletion:(id)arg1;

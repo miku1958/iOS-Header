@@ -6,24 +6,23 @@
 
 #import <UIKit/UIView.h>
 
-@class HUControlHostView, HUPillButton, HUQuickControlAuxiliaryHostView, HUQuickControlButtonRowView, HUQuickControlSummaryView, NSArray, NSLayoutConstraint, UILayoutGuide, _UIBackdropView, _UIBackdropViewSettings;
-@protocol HUQuickControlContainerViewDelegate, HUQuickControlPresentableView;
+@class HUControlHostView, HUPillButton, HUQuickControlAuxiliaryHostView, HUQuickControlButtonRowView, HUQuickControlSummaryView, NSArray, NSLayoutConstraint, NSString, UILayoutGuide, _UIBackdropView, _UIBackdropViewSettings;
+@protocol HUQuickControlContainerViewDelegate;
 
 @interface HUQuickControlContainerView : UIView
 {
     BOOL _shouldShowDetailsButton;
     BOOL _shouldShowControls;
-    BOOL _shouldShowAlternateControlButton;
-    UIView<HUQuickControlPresentableView> *_primaryControlView;
-    UIView<HUQuickControlPresentableView> *_secondaryControlView;
+    BOOL _controlViewSupportsTransformTransition;
+    BOOL _showAlternateControlButton;
     double _controlTransitionProgress;
     double _blurTransitionProgress;
     double _chromeTransitionProgress;
-    double _verticalDirectionalControlStretchFactor;
-    double _horizontalControlCompressionFactor;
     double _initialSourceViewScale;
     unsigned long long _edgesForExtendedLayout;
-    unsigned long long _activeControlType;
+    UIView *_activeControlView;
+    UILayoutGuide *_controlViewPreferredFrameLayoutGuide;
+    NSString *_alternateControlButtonTitle;
     HUQuickControlSummaryView *_summaryView;
     id<HUQuickControlContainerViewDelegate> _delegate;
     HUControlHostView *_controlHostView;
@@ -37,14 +36,14 @@
     HUQuickControlButtonRowView *_buttonRowView;
     HUPillButton *_detailsButton;
     HUPillButton *_alternateControlButton;
-    UILayoutGuide *_controlButtonSpacingLayoutGuide;
-    UILayoutGuide *_topSummarySpacingLayoutGuide;
+    UILayoutGuide *_contentToAuxiliarySpacingLayoutGuide;
+    UILayoutGuide *_topToSummarySpacingLayoutGuide;
     struct CGRect _sourceRect;
 }
 
-@property (nonatomic) unsigned long long activeControlType; // @synthesize activeControlType=_activeControlType;
-@property (readonly, nonatomic) UIView<HUQuickControlPresentableView> *activeControlView;
+@property (strong, nonatomic) UIView *activeControlView; // @synthesize activeControlView=_activeControlView;
 @property (strong, nonatomic) HUPillButton *alternateControlButton; // @synthesize alternateControlButton=_alternateControlButton;
+@property (copy, nonatomic) NSString *alternateControlButtonTitle; // @synthesize alternateControlButtonTitle=_alternateControlButtonTitle;
 @property (strong, nonatomic) HUQuickControlAuxiliaryHostView *auxiliaryHostView; // @synthesize auxiliaryHostView=_auxiliaryHostView;
 @property (strong, nonatomic) _UIBackdropViewSettings *blurSettings; // @synthesize blurSettings=_blurSettings;
 @property (strong, nonatomic) UIView *blurTintView; // @synthesize blurTintView=_blurTintView;
@@ -54,25 +53,23 @@
 @property (nonatomic) double chromeTransitionProgress; // @synthesize chromeTransitionProgress=_chromeTransitionProgress;
 @property (strong, nonatomic) NSLayoutConstraint *compactControlBottomConstraint; // @synthesize compactControlBottomConstraint=_compactControlBottomConstraint;
 @property (strong, nonatomic) NSArray *contentConstraints; // @synthesize contentConstraints=_contentConstraints;
-@property (strong, nonatomic) UILayoutGuide *controlButtonSpacingLayoutGuide; // @synthesize controlButtonSpacingLayoutGuide=_controlButtonSpacingLayoutGuide;
+@property (strong, nonatomic) UILayoutGuide *contentToAuxiliarySpacingLayoutGuide; // @synthesize contentToAuxiliarySpacingLayoutGuide=_contentToAuxiliarySpacingLayoutGuide;
 @property (strong, nonatomic) HUControlHostView *controlHostView; // @synthesize controlHostView=_controlHostView;
 @property (nonatomic) double controlTransitionProgress; // @synthesize controlTransitionProgress=_controlTransitionProgress;
 @property (strong, nonatomic) UILayoutGuide *controlViewLayoutGuide; // @synthesize controlViewLayoutGuide=_controlViewLayoutGuide;
+@property (strong, nonatomic) UILayoutGuide *controlViewPreferredFrameLayoutGuide; // @synthesize controlViewPreferredFrameLayoutGuide=_controlViewPreferredFrameLayoutGuide;
+@property (nonatomic) BOOL controlViewSupportsTransformTransition; // @synthesize controlViewSupportsTransformTransition=_controlViewSupportsTransformTransition;
 @property (readonly, weak, nonatomic) id<HUQuickControlContainerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) HUPillButton *detailsButton; // @synthesize detailsButton=_detailsButton;
 @property (nonatomic) unsigned long long edgesForExtendedLayout; // @synthesize edgesForExtendedLayout=_edgesForExtendedLayout;
-@property (nonatomic) double horizontalControlCompressionFactor; // @synthesize horizontalControlCompressionFactor=_horizontalControlCompressionFactor;
 @property (nonatomic) double initialSourceViewScale; // @synthesize initialSourceViewScale=_initialSourceViewScale;
 @property (readonly, nonatomic) struct CGRect presentedControlFrame;
-@property (readonly, nonatomic) UIView<HUQuickControlPresentableView> *primaryControlView; // @synthesize primaryControlView=_primaryControlView;
-@property (readonly, nonatomic) UIView<HUQuickControlPresentableView> *secondaryControlView; // @synthesize secondaryControlView=_secondaryControlView;
-@property (nonatomic) BOOL shouldShowAlternateControlButton; // @synthesize shouldShowAlternateControlButton=_shouldShowAlternateControlButton;
 @property (nonatomic) BOOL shouldShowControls; // @synthesize shouldShowControls=_shouldShowControls;
 @property (nonatomic) BOOL shouldShowDetailsButton; // @synthesize shouldShowDetailsButton=_shouldShowDetailsButton;
+@property (nonatomic) BOOL showAlternateControlButton; // @synthesize showAlternateControlButton=_showAlternateControlButton;
 @property (readonly, nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;
 @property (strong, nonatomic) HUQuickControlSummaryView *summaryView; // @synthesize summaryView=_summaryView;
-@property (strong, nonatomic) UILayoutGuide *topSummarySpacingLayoutGuide; // @synthesize topSummarySpacingLayoutGuide=_topSummarySpacingLayoutGuide;
-@property (nonatomic) double verticalDirectionalControlStretchFactor; // @synthesize verticalDirectionalControlStretchFactor=_verticalDirectionalControlStretchFactor;
+@property (strong, nonatomic) UILayoutGuide *topToSummarySpacingLayoutGuide; // @synthesize topToSummarySpacingLayoutGuide=_topToSummarySpacingLayoutGuide;
 
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
@@ -91,8 +88,8 @@
 - (BOOL)_shouldShowControlView;
 - (long long)_sizeSubclass;
 - (double)_summaryFirstBaselineToControlTopSpacing;
-- (struct CGPoint)_transformedPresentedControlHostCenterOffset;
-- (void)_updateAlternateControlButtonText;
+- (void)_updateAlternateControlButtonTitle;
+- (void)_updateAlternateControlButtonVisibility;
 - (void)_updateCompactControlBottomConstraint;
 - (void)_updateContentAlignment;
 - (void)_updateControlHostLayout;
@@ -100,6 +97,7 @@
 - (BOOL)_useCompactHeightLayout;
 - (void)hideAuxiliaryView;
 - (id)initWithFrame:(struct CGRect)arg1 delegate:(id)arg2 sourceRect:(struct CGRect)arg3;
+- (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 - (void)showAuxiliaryView:(id)arg1;
 - (struct CGAffineTransform)sourceViewTransformForPresentationProgress:(double)arg1;

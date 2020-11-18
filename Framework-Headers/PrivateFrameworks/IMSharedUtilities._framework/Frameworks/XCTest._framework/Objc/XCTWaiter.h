@@ -34,10 +34,12 @@
 + (void)handleStalledWaiter:(id)arg1;
 + (CDUnknownBlockType)installWatchdogForWaiter:(id)arg1 timeout:(double)arg2;
 + (void)setStallHandler:(CDUnknownBlockType)arg1;
++ (void)setWatchdogTimeoutSlop:(double)arg1;
 + (void)wait:(double)arg1;
 + (id)waitForActivity:(id)arg1 timeout:(double)arg2 block:(CDUnknownBlockType)arg3;
 + (long long)waitForExpectations:(id)arg1 timeout:(double)arg2;
 + (long long)waitForExpectations:(id)arg1 timeout:(double)arg2 enforceOrder:(BOOL)arg3;
++ (double)watchdogTimeoutSlop;
 - (void)_queue_computeInitiallyFulfilledExpectations;
 - (BOOL)_queue_enforceOrderingWithFulfilledExpectations:(id)arg1;
 - (void)_queue_setExpectations:(id)arg1;

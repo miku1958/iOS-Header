@@ -50,6 +50,7 @@
 @property (readonly, nonatomic) long long qualityOfService;
 @property (readonly, nonatomic) CKOperationConfiguration *resolvedConfiguration; // @synthesize resolvedConfiguration=_resolvedConfiguration;
 @property (strong, nonatomic) CKContainerSetupInfo *setupInfo; // @synthesize setupInfo=_setupInfo;
+@property (readonly, nonatomic) BOOL shouldSkipZonePCSUpdate;
 @property (readonly, nonatomic) NSString *sourceApplicationBundleIdentifier;
 @property (readonly, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
 @property (readonly, nonatomic) double timeoutIntervalForRequest;

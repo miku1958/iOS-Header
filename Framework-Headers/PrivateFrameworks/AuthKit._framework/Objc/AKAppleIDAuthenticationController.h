@@ -25,13 +25,13 @@
 + (id)sensitiveAuthenticationKeys;
 - (void).cxx_destruct;
 - (id)_authenticationServiceConnection;
+- (id)accountNamesForAltDSID:(id)arg1;
 - (id)activeLoginCode:(id *)arg1;
 - (void)authenticateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)checkInWithAuthenticationServerForAppleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)checkSecurityUpgradeEligibilityForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)configurationInfoWithIdentifiers:(id)arg1 forAltDSID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
-- (id)emailsForAltDSID:(id)arg1;
 - (void)fetchDeviceListWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)fetchDeviceListWithContext:(id)arg1 error:(id *)arg2;
 - (void)fetchURLBagWithCompletion:(CDUnknownBlockType)arg1;

@@ -19,6 +19,7 @@
 - (BOOL)_axIsCardFirstInPile;
 - (BOOL)_axIsOnlyCardInPile;
 - (struct CGRect)_axSuperAccessibilityFrame;
+- (struct CGPoint)accessibilityActivationPoint;
 - (BOOL)accessibilityElementsHidden;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityHint;

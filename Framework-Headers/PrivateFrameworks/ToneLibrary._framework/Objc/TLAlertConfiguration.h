@@ -19,6 +19,7 @@
     BOOL _forPreview;
     BOOL _shouldRepeat;
     BOOL _shouldIgnoreRingerSwitch;
+    BOOL _shouldForcePlayingAtUserSelectedAudioVolume;
     float _audioVolume;
     long long _type;
     NSString *_topic;
@@ -41,6 +42,7 @@
 @property (copy, nonatomic) NSURL *externalVibrationPatternFileURL; // @synthesize externalVibrationPatternFileURL=_externalVibrationPatternFileURL;
 @property (nonatomic, getter=isForPreview) BOOL forPreview; // @synthesize forPreview=_forPreview;
 @property (nonatomic) double maximumDuration; // @synthesize maximumDuration=_maximumDuration;
+@property (nonatomic) BOOL shouldForcePlayingAtUserSelectedAudioVolume; // @synthesize shouldForcePlayingAtUserSelectedAudioVolume=_shouldForcePlayingAtUserSelectedAudioVolume;
 @property (nonatomic) BOOL shouldIgnoreRingerSwitch; // @synthesize shouldIgnoreRingerSwitch=_shouldIgnoreRingerSwitch;
 @property (nonatomic) BOOL shouldRepeat; // @synthesize shouldRepeat=_shouldRepeat;
 @property (copy, nonatomic) NSString *toneIdentifier; // @synthesize toneIdentifier=_toneIdentifier;

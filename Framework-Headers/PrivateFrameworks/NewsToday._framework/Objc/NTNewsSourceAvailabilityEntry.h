@@ -25,9 +25,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) Class headlineResultsFetchDescriptorClass;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) Class todayResultsFetchDescriptorClass;
 
 - (void).cxx_destruct;
 - (void)_updateAvailability;

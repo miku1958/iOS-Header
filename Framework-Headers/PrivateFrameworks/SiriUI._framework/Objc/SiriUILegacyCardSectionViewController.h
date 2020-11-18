@@ -67,6 +67,7 @@
 - (BOOL)siriViewController:(id)arg1 openURL:(id)arg2;
 - (void)siriViewController:(id)arg1 openURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)siriViewController:(id)arg1 performAceCommands:(id)arg2;
+- (void)siriViewController:(id)arg1 performAceCommands:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)siriViewController:(id)arg1 sendGenericAceCommands:(id)arg2;
 - (void)siriViewController:(id)arg1 setContentOffset:(double)arg2;
 - (void)siriViewController:(id)arg1 setDomainObject:(id)arg2 forIdentifier:(id)arg3;

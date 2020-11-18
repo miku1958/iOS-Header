@@ -7,7 +7,7 @@
 #import <HomeUI/NSObject-Protocol.h>
 
 @class HFItem, HUControllableCollectionViewLayoutOverrideAttributes, HUQuickControlPresentationContext, HUQuickControlPresentationCoordinator, UITraitCollection, UIViewController;
-@protocol HUDetailsPresentationDelegateHost;
+@protocol HUDetailsPresentationDelegateHost, HUOpenURLHandling;
 
 @protocol HUQuickControlPresentationCoordinatorDelegate <NSObject>
 - (BOOL)hasDetailsActionForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 item:(HFItem *)arg2;
@@ -18,6 +18,7 @@
 - (UITraitCollection *)traitCollectionForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1;
 
 @optional
+- (id<HUOpenURLHandling>)detailViewURLHandlerForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1;
 - (UIViewController<HUDetailsPresentationDelegateHost> *)detailsViewControllerForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 item:(HFItem *)arg2;
 - (long long)preferredModalPresentationStyleForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1;
 - (void)presentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 didBeginPresentationWithContext:(HUQuickControlPresentationContext *)arg2;

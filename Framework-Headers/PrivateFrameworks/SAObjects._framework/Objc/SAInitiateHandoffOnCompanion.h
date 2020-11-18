@@ -6,13 +6,16 @@
 
 #import <SAObjects/SABaseClientBoundCommand.h>
 
+@class NSString;
 @protocol SAHandoffPayload;
 
 @interface SAInitiateHandoffOnCompanion : SABaseClientBoundCommand
 {
 }
 
+@property (copy, nonatomic) NSString *dialogIdentifier;
 @property (strong, nonatomic) id<SAHandoffPayload> handoffPayload;
+@property (copy, nonatomic) NSString *notificationText;
 
 + (id)initiateHandoffOnCompanion;
 + (id)initiateHandoffOnCompanionWithDictionary:(id)arg1 context:(id)arg2;

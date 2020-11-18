@@ -11,6 +11,7 @@
 @interface SGQPMutableUserSession : NSObject
 {
     BOOL _searchPerformed;
+    BOOL _resultEngaged;
     NSString *_conversationId;
     unsigned long long _searchAction;
     NSString *_engagedSuggestion;
@@ -22,6 +23,7 @@
 @property (strong) NSString *engagedSuggestion; // @synthesize engagedSuggestion=_engagedSuggestion;
 @property (strong) SGQPMutablePredictionsSession *queryPredictions; // @synthesize queryPredictions=_queryPredictions;
 @property (strong) SGQPMutablePredictionsSession *rankedCategories; // @synthesize rankedCategories=_rankedCategories;
+@property BOOL resultEngaged; // @synthesize resultEngaged=_resultEngaged;
 @property unsigned long long searchAction; // @synthesize searchAction=_searchAction;
 @property BOOL searchPerformed; // @synthesize searchPerformed=_searchPerformed;
 
@@ -31,6 +33,7 @@
 - (id)initWithConversationId:(id)arg1;
 - (void)setQueryPredictions:(id)arg1 messages:(id)arg2 language:(id)arg3 abGroup:(id)arg4;
 - (void)setRankedCategories:(id)arg1 messages:(id)arg2 language:(id)arg3 abGroup:(id)arg4;
+- (void)setResultEngaged;
 - (void)setSearchPerformed;
 
 @end

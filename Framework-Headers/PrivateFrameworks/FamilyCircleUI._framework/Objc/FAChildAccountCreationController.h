@@ -72,6 +72,7 @@
 - (void)objectModelPressedBack:(id)arg1;
 - (id)parentViewControllerForObjectModel:(id)arg1;
 - (void)prepareForDismiss;
+- (id)sessionConfigurationForLoader:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientationsForObjectModel:(id)arg1 page:(id)arg2;
 
 @end

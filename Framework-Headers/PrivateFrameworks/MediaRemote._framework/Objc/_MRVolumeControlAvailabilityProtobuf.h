@@ -10,13 +10,17 @@
 
 @interface _MRVolumeControlAvailabilityProtobuf : PBCodable <NSCopying>
 {
+    int _volumeCapabilities;
     BOOL _volumeControlAvailable;
     struct {
+        unsigned int volumeCapabilities:1;
         unsigned int volumeControlAvailable:1;
     } _has;
 }
 
+@property (nonatomic) BOOL hasVolumeCapabilities;
 @property (nonatomic) BOOL hasVolumeControlAvailable;
+@property (nonatomic) int volumeCapabilities; // @synthesize volumeCapabilities=_volumeCapabilities;
 @property (nonatomic) BOOL volumeControlAvailable; // @synthesize volumeControlAvailable=_volumeControlAvailable;
 
 - (void)copyTo:(id)arg1;

@@ -57,7 +57,7 @@
     NSString *_generationID;
 }
 
-@property (readonly, nonatomic) SYSession *currentSession;
+@property (readonly) SYSession *currentSession;
 @property (copy, nonatomic) NSDictionary *customIDSOptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) double defaultMessageTimeout; // @synthesize defaultMessageTimeout=_defaultMessageTimeout;

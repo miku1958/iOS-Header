@@ -48,6 +48,7 @@
 - (id)getNSStringForColumn:(int)arg1;
 - (id)init;
 - (id)initWithStatementPointer:(struct sqlite3_stmt *)arg1 owner:(id)arg2;
+- (BOOL)isColumnNull:(int)arg1;
 - (BOOL)isContentDiscarded;
 
 @end

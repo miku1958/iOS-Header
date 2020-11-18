@@ -14,6 +14,7 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_readWriteQueue;
     BOOL _privateModeEnabled;
+    BOOL _sportsScoreSpoilersAllowed;
     NSString *_pushToken;
     NSString *_accountID;
     NSNumber *_optedInVal;
@@ -39,6 +40,7 @@
 @property (strong, nonatomic) NSNumber *optedInVal; // @synthesize optedInVal=_optedInVal;
 @property (nonatomic) BOOL privateModeEnabled;
 @property (strong, nonatomic) NSString *pushToken;
+@property (nonatomic) BOOL sportsScoreSpoilersAllowed;
 
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 + (id)sharedSettings;
@@ -50,6 +52,7 @@
 - (id)_dictionaryOnDisk;
 - (void)_dictionaryOnDisk:(CDUnknownBlockType)arg1;
 - (id)_dictionaryRepresentation;
+- (id)_dictionaryRepresentationDataOnly;
 - (void)_readFromDisk;
 - (void)_removeWatchListApp:(id)arg1;
 - (id)_supportPath;

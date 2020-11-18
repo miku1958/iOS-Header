@@ -40,6 +40,7 @@
     int _targetDatabase;
     NSString *_userIDContainerID;
     NSString *_userToken;
+    BOOL _deviceSoftwareIsAppleInternal;
     struct {
         unsigned int applicationConfigVersion:1;
         unsigned int deviceFlowControlBudget:1;
@@ -51,6 +52,7 @@
         unsigned int deviceFlowControlRegeneration:1;
         unsigned int isolationLevel:1;
         unsigned int targetDatabase:1;
+        unsigned int deviceSoftwareIsAppleInternal:1;
     } _has;
 }
 
@@ -71,6 +73,7 @@
 @property (strong, nonatomic) NSString *deviceLibraryName; // @synthesize deviceLibraryName=_deviceLibraryName;
 @property (strong, nonatomic) NSString *deviceLibraryVersion; // @synthesize deviceLibraryVersion=_deviceLibraryVersion;
 @property (nonatomic) unsigned long long deviceProtocolVersion; // @synthesize deviceProtocolVersion=_deviceProtocolVersion;
+@property (nonatomic) BOOL deviceSoftwareIsAppleInternal; // @synthesize deviceSoftwareIsAppleInternal=_deviceSoftwareIsAppleInternal;
 @property (strong, nonatomic) NSString *deviceSoftwareVersion; // @synthesize deviceSoftwareVersion=_deviceSoftwareVersion;
 @property (nonatomic) unsigned long long globalConfigVersion; // @synthesize globalConfigVersion=_globalConfigVersion;
 @property (readonly, nonatomic) BOOL hasApplicationBundle;
@@ -90,6 +93,7 @@
 @property (readonly, nonatomic) BOOL hasDeviceLibraryName;
 @property (readonly, nonatomic) BOOL hasDeviceLibraryVersion;
 @property (nonatomic) BOOL hasDeviceProtocolVersion;
+@property (nonatomic) BOOL hasDeviceSoftwareIsAppleInternal;
 @property (readonly, nonatomic) BOOL hasDeviceSoftwareVersion;
 @property (nonatomic) BOOL hasGlobalConfigVersion;
 @property (nonatomic) BOOL hasIsolationLevel;

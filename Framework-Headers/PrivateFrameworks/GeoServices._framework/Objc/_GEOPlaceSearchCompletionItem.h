@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOCompletionItemPrivate-Protocol.h>
 
-@class GEOMapItemIdentifier, GEOMapServiceTraits, GEOPDAutocompleteEntry, GEOSearchCategory, NSArray, NSData, NSString;
+@class GEOMapItemIdentifier, GEOMapServiceTraits, GEOPDAutocompleteEntry, GEOResolvedItem, GEOSearchCategory, NSArray, NSData, NSString;
 @protocol GEOMapItem;
 
 __attribute__((visibility("hidden")))
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     GEOSearchCategory *_category;
 }
 
+@property (readonly, nonatomic) GEOResolvedItem *clientResolved;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *displayLines; // @synthesize displayLines=_displayLines;

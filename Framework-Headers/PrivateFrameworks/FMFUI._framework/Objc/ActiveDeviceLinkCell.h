@@ -14,16 +14,19 @@
     UILabel *_deviceNameLabel;
     UILabel *_detailsLabel;
     NSLayoutConstraint *_detailsHeightContraint;
+    NSLayoutConstraint *_fromLabelLeadingConstraint;
 }
 
 @property (strong, nonatomic) NSLayoutConstraint *detailsHeightContraint; // @synthesize detailsHeightContraint=_detailsHeightContraint;
 @property (strong, nonatomic) UILabel *detailsLabel; // @synthesize detailsLabel=_detailsLabel;
 @property (strong, nonatomic) UILabel *deviceNameLabel; // @synthesize deviceNameLabel=_deviceNameLabel;
 @property (strong, nonatomic) UILabel *fromLabel; // @synthesize fromLabel=_fromLabel;
+@property (strong, nonatomic) NSLayoutConstraint *fromLabelLeadingConstraint; // @synthesize fromLabelLeadingConstraint=_fromLabelLeadingConstraint;
 
 + (long long)cellStyle;
 - (void).cxx_destruct;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
+- (void)layoutSubviews;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
 - (void)setupConstraints;
 - (void)setupSubviews;

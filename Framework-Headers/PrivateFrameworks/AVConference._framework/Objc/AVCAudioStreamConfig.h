@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface AVCAudioStreamConfig : NSObject
 {
@@ -21,6 +21,9 @@
     BOOL _octetAligned;
     BOOL _dtxEnabled;
     BOOL _latencySensitiveMode;
+    unsigned long long _numRedundantPayloads;
+    unsigned long long _txRedPayloadType;
+    unsigned long long _rxRedPayloadType;
 }
 
 @property (nonatomic) long long audioStreamMode; // @synthesize audioStreamMode=_audioStreamMode;
@@ -33,9 +36,12 @@
 @property (nonatomic, getter=isDTXEnabled) BOOL dtxEnabled; // @synthesize dtxEnabled=_dtxEnabled;
 @property (nonatomic, getter=isLatencySensitiveMode) BOOL latencySensitiveMode; // @synthesize latencySensitiveMode=_latencySensitiveMode;
 @property (nonatomic) unsigned long long maxPtime; // @synthesize maxPtime=_maxPtime;
+@property (nonatomic) unsigned long long numRedundantPayloads; // @synthesize numRedundantPayloads=_numRedundantPayloads;
 @property (nonatomic, getter=isOctectAligned) BOOL octetAligned; // @synthesize octetAligned=_octetAligned;
 @property (nonatomic) long long preferredCodecRateMode; // @synthesize preferredCodecRateMode=_preferredCodecRateMode;
 @property (nonatomic) unsigned long long ptime; // @synthesize ptime=_ptime;
+@property (nonatomic) unsigned long long rxRedPayloadType; // @synthesize rxRedPayloadType=_rxRedPayloadType;
+@property (nonatomic) unsigned long long txRedPayloadType; // @synthesize txRedPayloadType=_txRedPayloadType;
 
 + (unsigned int)clientCodecRateMaskForCodecRateMode:(unsigned int)arg1;
 + (long long)clientCodecRateModeForCodecRateMode:(int)arg1;
@@ -49,6 +55,7 @@
 - (id)init;
 - (BOOL)isCNValid;
 - (BOOL)isDTMFValid;
+- (BOOL)isRedValid;
 - (BOOL)isValid;
 - (void)setUpWithDictionary:(id)arg1;
 

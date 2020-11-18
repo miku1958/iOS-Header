@@ -14,6 +14,7 @@
 + (id)OTRController;
 + (id)UTunConnection;
 + (id)accountIdentity;
++ (id)bonjourDeliveryController;
 + (id)cloudKit;
 + (id)delivery;
 + (id)deliveryController;
@@ -21,6 +22,7 @@
 + (id)groupCrypto;
 + (id)localDeliveryQueue;
 + (id)socketPairConnection;
++ (id)utilities;
 
 @end
 

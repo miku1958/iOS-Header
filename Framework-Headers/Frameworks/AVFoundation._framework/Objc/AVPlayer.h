@@ -46,6 +46,9 @@
 + (BOOL)automaticallyNotifiesObserversOfUsesAudioOnlyModeForExternalPlayback;
 + (BOOL)automaticallyNotifiesObserversOfUsesLegacyAutomaticWaitingBehavior;
 + (BOOL)automaticallyNotifiesObserversOfVibrationPattern;
++ (long long)availableHDRModes;
++ (void)checkForAvailableHDRModesChanges;
++ (void)fireAvailableHDRModesDidChangeNotification;
 + (void)initialize;
 + (BOOL)isIAPDExtendedModeActive;
 + (id)keyPathsForValuesAffectingActionAtItemEnd;
@@ -56,6 +59,7 @@
 + (id)playerWithPlayerItem:(id)arg1;
 + (id)playerWithURL:(id)arg1;
 + (long long)propertyStorageCachePolicy;
++ (void)registerForScreenConnectionChanges;
 - (BOOL)_CALayerDestinationIsTVOut;
 - (long long)_actionAtItemEnd;
 - (void)_addFPListeners;

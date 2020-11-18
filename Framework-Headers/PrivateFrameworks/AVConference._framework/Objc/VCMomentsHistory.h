@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCMomentsHistoryBufferDelegate-Protocol.h>
 
@@ -51,12 +51,13 @@ __attribute__((visibility("hidden")))
 - (struct __CVBuffer *)copyBuffer:(struct opaqueCMSampleBuffer *)arg1;
 - (void)dealloc;
 - (void)endVideoRecording:(id)arg1 timestamp:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)finishWritingWithWriter:(id)arg1 transactionID:(id)arg2;
 - (void)flushHistoryBuffers;
 - (id)getFilePathWithTransactionID:(id)arg1 type:(unsigned char)arg2;
 - (void)getLivePhotoWithTransactionID:(id)arg1 timestamp:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getPhotoWithTransactionID:(id)arg1 Timestamp:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)handlePendingRequests;
+- (void)handlePendingRequestSuccessWithSourceURL:(id)arg1;
+- (void)handlePendingRequestWithError:(id)arg1;
+- (void)handlePendingRequestsWithSourceURL:(id)arg1 error:(id)arg2;
 - (void)handleSinglePendingRequestWithTransactionID:(id)arg1 sourceURL:(id)arg2;
 - (void)historyBuffer:(id)arg1 didDequeueSample:(struct opaqueCMSampleBuffer *)arg2 timestamp:(unsigned int)arg3;
 - (id)init;

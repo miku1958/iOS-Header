@@ -14,7 +14,6 @@
 {
     unsigned long long _accountID;
     unsigned long long _delegatedAccountID;
-    NSString *_storefrontID;
     long long _requestType;
     NSString *_redownloadParameters;
     NSString *_cloudUniversalLibraryID;
@@ -33,7 +32,6 @@
 @property (nonatomic) long long storePurchasedAdamID; // @synthesize storePurchasedAdamID=_storePurchasedAdamID;
 @property (nonatomic) long long storeRadioAdamID; // @synthesize storeRadioAdamID=_storeRadioAdamID;
 @property (nonatomic) long long storeSubscriptionAdamID; // @synthesize storeSubscriptionAdamID=_storeSubscriptionAdamID;
-@property (copy, nonatomic) NSString *storefrontID; // @synthesize storefrontID=_storefrontID;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

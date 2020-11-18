@@ -14,7 +14,7 @@
 - (void)browserLocationsButtonWasTappedWithSourceRect:(struct CGRect)arg1;
 - (void)builtinActionsDidChange:(NSArray *)arg1;
 - (void)createNewFile;
-- (void)createNewFolder;
+- (void)createNewFolderWithMaxThumbnailSize:(struct CGSize)arg1;
 - (void)didCommitPreviewOfDocument:(DOCItem *)arg1;
 - (void)didPickItem:(DOCItem *)arg1;
 - (void)didPickLocation:(DOCConcreteLocation *)arg1 forceReplaceLocation:(BOOL)arg2;

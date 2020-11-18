@@ -35,7 +35,6 @@
 @property (copy, nonatomic) MPModelRequest *unpersonalizedRequest; // @synthesize unpersonalizedRequest=_unpersonalizedRequest;
 
 + (id)_completePersonalizedObjectWithLibraryObject:(id)arg1 personalizationProperties:(id)arg2 overrideLibraryAddedStatus:(long long)arg3;
-+ (void)_configureFallbackContentItemIDForIdentifierSet:(id)arg1;
 + (id)_identifiersByCombiningPersonalizedIdentifiers:(id)arg1 unpersonalizedIdentifiers:(id)arg2;
 + (id)_intersectingLightweightPersonalizationPropertiesForModelClass:(Class)arg1;
 + (id)_intersectingPlaybackPositionLightweightPersonalizationProperties;
@@ -49,6 +48,8 @@
 - (void).cxx_destruct;
 - (shared_ptr_1c86f238)_entityCacheForEntityClass:(struct EntityClass *)arg1 propertiesToFetch:(vector_90d4f7ff)arg2;
 - (id)_libraryObjectWithRelativeModelClass:(Class)arg1 identifierSet:(id)arg2 propertySet:(id)arg3;
+- (id)identifiersForItemAtIndexPath:(id)arg1;
+- (id)identifiersForSectionAtIndex:(long long)arg1;
 - (id)indexPathForItemWithIdentifiersIntersectingSet:(id)arg1;
 - (id)init;
 - (id)itemAtIndexPath:(id)arg1;

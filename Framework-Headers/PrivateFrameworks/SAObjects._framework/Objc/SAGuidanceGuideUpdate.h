@@ -16,12 +16,12 @@
 @property (copy, nonatomic) NSNumber *guideTag;
 @property (copy, nonatomic) NSString *languageCode;
 @property (strong, nonatomic) SAGuidanceSuggestedUtterances *suggestedUtterances;
-@property (copy, nonatomic) NSNumber *suggestedUtterancesTag;
 
 + (id)guideUpdate;
 + (id)guideUpdateWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (BOOL)mutatingCommand;
 - (BOOL)requiresResponse;
 
 @end

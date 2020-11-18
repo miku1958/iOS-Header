@@ -41,6 +41,7 @@
 - (void)authorizationDidSelectShippingMethod:(id)arg1;
 - (void)authorizationWillStart;
 - (void)dealloc;
+- (void)didEncounterAuthorizationEvent:(unsigned long long)arg1;
 - (id)init;
 - (id)initWithController:(id)arg1;
 

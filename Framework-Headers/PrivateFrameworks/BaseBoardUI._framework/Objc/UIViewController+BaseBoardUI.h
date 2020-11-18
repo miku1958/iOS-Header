@@ -17,6 +17,8 @@
 - (BOOL)bs_endAppearanceTransition:(BOOL)arg1;
 - (BOOL)bs_endAppearanceTransitionForChildViewController:(id)arg1;
 - (BOOL)bs_endAppearanceTransitionForChildViewController:(id)arg1 toVisible:(BOOL)arg2;
+- (BOOL)bs_isAppearingOrAppeared;
+- (BOOL)bs_isDisappearingOrDisappeared;
 - (id)bs_presentationContextDefiningViewController;
 - (id)bs_presentedViewControllerIncludingAncestors;
 - (BOOL)bs_removeChildViewController:(id)arg1;

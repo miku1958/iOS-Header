@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MAAsset, NSDictionary;
+@class MAAsset, NSDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface SFDeviceAssetManager : NSObject
@@ -16,11 +16,14 @@
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     MAAsset *_deviceAssetManagement;
-    NSDictionary *_productTypesMappingTable;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
+    NSString *_networkStatus;
+    NSDictionary *_productTypesMappingTable;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property (readonly, nonatomic) NSString *networkStatus; // @synthesize networkStatus=_networkStatus;
+@property (readonly, nonatomic) NSDictionary *productTypesMappingTable; // @synthesize productTypesMappingTable=_productTypesMappingTable;
 
 - (void).cxx_destruct;
 - (void)activate;
@@ -31,6 +34,7 @@
 - (id)init;
 - (void)invalidate;
 - (id)locallyCachedMappedProductTypeForProductType:(id)arg1;
+- (void)logNetworkStatus;
 - (void)onqueue_activate;
 - (void)onqueue_downloadAsset:(id)arg1 queryLogString:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)onqueue_findAssetBundleForAssetQuery:(id)arg1 queryLogString:(id)arg2 fallback:(BOOL)arg3 retryAttempt:(BOOL)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;

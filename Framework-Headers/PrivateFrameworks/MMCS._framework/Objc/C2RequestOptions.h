@@ -6,15 +6,18 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSDictionary, NSString;
+#import <MMCS/NSCopying-Protocol.h>
 
-@interface C2RequestOptions : NSObject
+@class NSDictionary, NSString, NSURL;
+
+@interface C2RequestOptions : NSObject <NSCopying>
 {
     unsigned char _outOfProcess;
     unsigned char _outOfProcessDiscretionary;
     unsigned char __allowsExpensiveAccess;
     unsigned char __allowsPowerNapScheduling;
     unsigned char _tlsPinning;
+    unsigned char _metricRequest;
     long long _qualityOfService;
     NSString *_outOfProcessPoolName;
     double __timeoutIntervalForRequest;
@@ -24,6 +27,9 @@
     NSString *__appleIDContextSessionIdentifier;
     NSString *_identifier;
     NSDictionary *_resolvedEndpointsWithHostname;
+    NSURL *_c2MetricsEndpoint;
+    unsigned long long _c2MetricsReportFrequency;
+    unsigned long long _c2MetricsReportFrequencyBase;
 }
 
 @property (nonatomic) unsigned char _allowsExpensiveAccess; // @synthesize _allowsExpensiveAccess=__allowsExpensiveAccess;
@@ -33,8 +39,12 @@
 @property (copy, nonatomic) NSString *_sourceApplicationSecondaryIdentifier; // @synthesize _sourceApplicationSecondaryIdentifier=__sourceApplicationSecondaryIdentifier;
 @property (nonatomic) double _timeoutIntervalForRequest; // @synthesize _timeoutIntervalForRequest=__timeoutIntervalForRequest;
 @property (nonatomic) double _timeoutIntervalForResource; // @synthesize _timeoutIntervalForResource=__timeoutIntervalForResource;
+@property (copy, nonatomic) NSURL *c2MetricsEndpoint; // @synthesize c2MetricsEndpoint=_c2MetricsEndpoint;
+@property (nonatomic) unsigned long long c2MetricsReportFrequency; // @synthesize c2MetricsReportFrequency=_c2MetricsReportFrequency;
+@property (nonatomic) unsigned long long c2MetricsReportFrequencyBase; // @synthesize c2MetricsReportFrequencyBase=_c2MetricsReportFrequencyBase;
 @property (readonly, nonatomic) double emptySessionExpiryInSeconds;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) unsigned char metricRequest; // @synthesize metricRequest=_metricRequest;
 @property (nonatomic) unsigned char outOfProcess; // @synthesize outOfProcess=_outOfProcess;
 @property (nonatomic) unsigned char outOfProcessDiscretionary; // @synthesize outOfProcessDiscretionary=_outOfProcessDiscretionary;
 @property (copy, nonatomic) NSString *outOfProcessPoolName; // @synthesize outOfProcessPoolName=_outOfProcessPoolName;
@@ -44,9 +54,10 @@
 
 + (double)defaultEmptySessionExpiryInSeconds;
 + (id)stringForQualityOfService:(long long)arg1;
++ (unsigned char)triesteMetricsEnabled;
 - (void).cxx_destruct;
-- (id)copy;
 - (id)copyAndDecorateRequest:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)decorateTask:(id)arg1;
 - (id)defaultSessionConfiguration;
 - (id)init;

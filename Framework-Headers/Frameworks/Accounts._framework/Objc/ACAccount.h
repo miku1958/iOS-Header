@@ -108,6 +108,7 @@
 - (void)_markPropertyDirty:(id)arg1;
 - (void)_setAccountStore:(id)arg1;
 - (void)_setObjectID:(id)arg1;
+- (void)_unsafe_markPropertyDirty:(id)arg1;
 - (BOOL)_useParentForCredentials;
 - (id)accountByCleaningThirdPartyTransformations;
 - (id)accountPropertyForKey:(id)arg1;
@@ -149,6 +150,7 @@
 - (void)setCreatingFromManagedObject:(BOOL)arg1;
 - (void)setCredentialType:(id)arg1;
 - (void)setDataclassProperties:(id)arg1;
+- (void)setDirty:(BOOL)arg1 forProperty:(id)arg2;
 - (void)setEnabled:(BOOL)arg1 forDataclass:(id)arg2;
 - (void)setIdentifier:(id)arg1;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;

@@ -13,7 +13,6 @@
 }
 
 @property (strong, nonatomic) NSNumber *configurationVersion; // @dynamic configurationVersion;
-@property (strong, nonatomic) NSData *constraints; // @dynamic constraints;
 @property (strong, nonatomic) NSString *name; // @dynamic name;
 @property (strong, nonatomic) NSNumber *properties; // @dynamic properties;
 @property (strong, nonatomic) NSNumber *type; // @dynamic type;

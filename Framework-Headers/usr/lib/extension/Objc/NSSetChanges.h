@@ -6,8 +6,8 @@
 
 #import <Foundation/NSMutableSet.h>
 
-#import <extension/NSCopying-Protocol.h>
-#import <extension/NSFastEnumeration-Protocol.h>
+#import <Foundation/NSCopying-Protocol.h>
+#import <Foundation/NSFastEnumeration-Protocol.h>
 
 @interface NSSetChanges : NSMutableSet <NSCopying, NSFastEnumeration>
 {

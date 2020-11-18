@@ -22,7 +22,6 @@
     NSObject<OS_dispatch_queue> *_callbackQueue;
     ICUserIdentityStoreCoding *_codingHelper;
     ICDelegateAccountStore *_delegateAccountStore;
-    _Atomic BOOL _delegateAccountStoreDidOpenOnce;
     NSError *_delegateAccountStoreError;
     ICDelegateAccountStoreOptions *_delegateAccountStoreOptions;
 }
@@ -40,20 +39,23 @@
 + (id)testingIdentityStoreWithSingleWriterService:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_allowsDelegationForUserIdentity:(id)arg1;
+- (void)_delegateAccountStoreDidChangeNotification:(id)arg1;
 - (id)_delegateAccountStorePath;
-- (void)_dispatchDidChange:(BOOL)arg1 result:(BOOL)arg2 error:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (void)_dispatchDidChange:(BOOL)arg1 didDelegateAccountStoreChange:(BOOL)arg2 result:(BOOL)arg3 error:(id)arg4 handler:(CDUnknownBlockType)arg5;
 - (id)_dsidForTimestamp:(unsigned long long)arg1 history:(id)arg2;
 - (id)_dsidForUserIdentity:(id)arg1;
 - (id)_existingIdentityPropertiesForUserIdentity:(id)arg1;
 - (void)_importValuesFromCodingHelper:(id)arg1;
 - (id)_initCommon;
 - (id)_initWithStyle:(long long)arg1 delegateAccountStoreOptions:(id)arg2;
-- (void)_openDelegateAccountStoreOnce;
-- (void)_openDelegateAccountStoreOnceIfNecessaryForUserIdentity:(id)arg1;
+- (void)_openDelegateAccountStoreIfNeeded;
+- (void)_openDelegateAccountStoreIfNeededIfNecessaryForUserIdentity:(id)arg1;
 - (void)_prepareDelegateAccountStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_registerForDelegateAccountStoreNotifications:(id)arg1;
 - (void)_reloadForExternalChange;
 - (void)_resetDelegateAccountStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_saveIdentityProperties:(id)arg1 forUserIdentity:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_unregisterForDelegateAccountStoreNotifications:(id)arg1;
 - (void)_unsafe_deleteDelegateAccountStore;
 - (void)_updateDelegateAccountStoreUsingBlock:(CDUnknownBlockType)arg1;
 - (void)addDelegationUUIDs:(id)arg1 forUserIdentity:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

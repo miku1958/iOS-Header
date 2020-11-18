@@ -20,6 +20,7 @@
     double _carHeadunitPixelHeight;
     double _carHeadunitPixelWidth;
     double _mapZoomLevel;
+    double _sessionRelativeTimestamp;
     int _action;
     NSString *_analyticsAppIdentifier;
     NSString *_appIdentifier;
@@ -68,6 +69,7 @@
         unsigned int carHeadunitPixelHeight:1;
         unsigned int carHeadunitPixelWidth:1;
         unsigned int mapZoomLevel:1;
+        unsigned int sessionRelativeTimestamp:1;
         unsigned int action:1;
         unsigned int carHeadunitConnectionType:1;
         unsigned int carHeadunitInteractionModel:1;
@@ -147,6 +149,7 @@
 @property (nonatomic) BOOL hasReviewUserPhotosCount;
 @property (nonatomic) BOOL hasSequenceNumber;
 @property (nonatomic) BOOL hasSessionId;
+@property (nonatomic) BOOL hasSessionRelativeTimestamp;
 @property (nonatomic) BOOL hasSource;
 @property (nonatomic) BOOL hasSupportDirectionIntentSearch;
 @property (nonatomic) BOOL hasSupportDymSuggestion;
@@ -176,6 +179,7 @@
 @property (nonatomic) unsigned int reviewUserPhotosCount; // @synthesize reviewUserPhotosCount=_reviewUserPhotosCount;
 @property (nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property (nonatomic) struct GEOSessionID sessionId; // @synthesize sessionId=_sessionId;
+@property (nonatomic) double sessionRelativeTimestamp; // @synthesize sessionRelativeTimestamp=_sessionRelativeTimestamp;
 @property (nonatomic) int source; // @synthesize source=_source;
 @property (nonatomic) BOOL supportDirectionIntentSearch; // @synthesize supportDirectionIntentSearch=_supportDirectionIntentSearch;
 @property (nonatomic) BOOL supportDymSuggestion; // @synthesize supportDymSuggestion=_supportDymSuggestion;

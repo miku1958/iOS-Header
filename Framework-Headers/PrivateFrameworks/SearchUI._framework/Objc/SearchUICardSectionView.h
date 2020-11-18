@@ -8,16 +8,16 @@
 
 #import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
 
-@class NSString, SFCardSection, UIView;
+@class NSString, SFCardSection, SearchUICardSectionRowModel, UIView;
 @protocol SearchUIFeedbackDelegate;
 
 @interface SearchUICardSectionView : NUIContainerStackView <NUIContainerStackViewDelegate>
 {
     BOOL _spansFullWidth;
     unsigned long long _style;
-    SFCardSection *_section;
     id<SearchUIFeedbackDelegate> _feedbackDelegate;
     UIView *_contentView;
+    SearchUICardSectionRowModel *_rowModel;
     UIView *_chevronView;
 }
 
@@ -27,7 +27,8 @@
 @property (readonly, copy) NSString *description;
 @property (weak) id<SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) SFCardSection *section; // @synthesize section=_section;
+@property (strong, nonatomic) SearchUICardSectionRowModel *rowModel; // @synthesize rowModel=_rowModel;
+@property (readonly, nonatomic) SFCardSection *section;
 @property (readonly) BOOL spansFullWidth; // @synthesize spansFullWidth=_spansFullWidth;
 @property unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
@@ -39,14 +40,15 @@
 + (int)separatorStyleForCardSection:(id)arg1;
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;
 - (void).cxx_destruct;
+- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
 - (void)didInvalidateSizeAnimate:(BOOL)arg1;
-- (id)initWithCardSection:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
 - (void)openPunchout:(id)arg1 triggerEvent:(unsigned long long)arg2;
 - (void)presentViewController:(id)arg1;
 - (id)sendFeedbackForPunchout:(id)arg1 triggerEvent:(unsigned long long)arg2;
 - (id)setupContentView;
 - (void)updateChevronVisible:(BOOL)arg1 leaveSpaceForChevron:(BOOL)arg2;
-- (void)updateWithCardSection:(id)arg1;
+- (void)updateWithRowModel:(id)arg1;
 
 @end
 

@@ -6,12 +6,13 @@
 
 #import <HomeKitDaemon/HMDBackingStoreModelObject.h>
 
-@class HMFSoftwareVersion, NSNumber;
+@class HMFSoftwareVersion, HMSoftwareUpdateDocumentationMetadata, NSNumber;
 
 @interface HMDSoftwareUpdateModel : HMDBackingStoreModelObject
 {
 }
 
+@property (strong, nonatomic) HMSoftwareUpdateDocumentationMetadata *documentationMetadata; // @dynamic documentationMetadata;
 @property (strong, nonatomic) NSNumber *downloadSize; // @dynamic downloadSize;
 @property (strong, nonatomic) HMFSoftwareVersion *softwareVersion; // @dynamic softwareVersion;
 @property (strong, nonatomic) NSNumber *state; // @dynamic state;

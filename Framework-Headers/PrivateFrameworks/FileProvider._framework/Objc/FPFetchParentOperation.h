@@ -13,9 +13,11 @@ __attribute__((visibility("hidden")))
 {
     FPItem *_item;
     CDUnknownBlockType _fetchCompletionBlock;
+    CDUnknownBlockType _fetchCompletionBlock_v2;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType fetchCompletionBlock; // @synthesize fetchCompletionBlock=_fetchCompletionBlock;
+@property (copy, nonatomic) CDUnknownBlockType fetchCompletionBlock_v2; // @synthesize fetchCompletionBlock_v2=_fetchCompletionBlock_v2;
 
 - (void).cxx_destruct;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;

@@ -6,6 +6,7 @@
 
 #import <BulletinDistributorCompanion/NSObject-Protocol.h>
 
+@class NSString;
 @protocol BLTSectionInfoListProviderDelegate;
 
 @protocol BLTSectionInfoListProvider <NSObject>
@@ -13,5 +14,8 @@
 @property (weak, nonatomic) id<BLTSectionInfoListProviderDelegate> delegate;
 
 - (void)reloadWithCompletion:(void (^)(NSDictionary *))arg1;
+
+@optional
+- (void)reloadSection:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
 @end
 

@@ -8,12 +8,14 @@
 
 #import <PassKitCore/NSURLSessionTaskDelegate-Protocol.h>
 
-@class NSString, NSURL, PKPeerPaymentService, PKPeerPaymentWebServiceContext, PKSecureElement;
-@protocol PKPeerPaymentWebServiceArchiver, PKPeerPaymentWebServiceTargetDeviceProtocol;
+@class NSMutableDictionary, NSObject, NSString, NSURL, PKPeerPaymentService, PKPeerPaymentWebServiceContext, PKSecureElement;
+@protocol OS_dispatch_queue, PKPeerPaymentWebServiceArchiver, PKPeerPaymentWebServiceTargetDeviceProtocol;
 
 @interface PKPeerPaymentWebService : PKWebService <NSURLSessionTaskDelegate>
 {
     PKSecureElement *_secureElement;
+    NSMutableDictionary *_prewarmedDeviceScorers;
+    NSObject<OS_dispatch_queue> *_prewarmedDeviceScorersQueue;
     BOOL _sharedService;
     PKPeerPaymentWebServiceContext *_context;
     id<PKPeerPaymentWebServiceArchiver> _archiver;
@@ -36,6 +38,7 @@
 + (id)sharedService;
 - (void).cxx_destruct;
 - (void)_archiveContext;
+- (id)_createDeviceScorerForEndpoint:(id)arg1 recipientAddress:(id)arg2;
 - (id)_deviceIdentifier;
 - (id)_deviceMetadata;
 - (void)_deviceRegistrationDataWithCompletion:(CDUnknownBlockType)arg1;
@@ -73,6 +76,8 @@
 - (unsigned long long)peerPaymentUnregisterWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)peerPaymentUpdatePreferencesWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performRequest:(id)arg1 taskIdentifier:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)prewarmDeviceScoreForEndpoint:(id)arg1;
+- (void)prewarmDeviceScoreForEndpoint:(id)arg1 recipientAddress:(id)arg2;
 - (void)sharedPeerPaymentServiceChanged:(id)arg1;
 - (unsigned long long)submitDeviceScoreIdentifiersWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 

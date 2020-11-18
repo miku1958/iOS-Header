@@ -13,7 +13,14 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityAllControlsAreHidden;
+- (id)_accessibilityFullScreenViewController;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)_accessibilityNextResponderOfClass:(Class)arg1;
+- (id)_accessibilityPlaybackControlsVisibilityController;
+- (id)_accessibilityPlayerViewController;
+- (BOOL)_accessibilityViewIsVisible;
+- (BOOL)accessibilityElementsHidden;
 - (void)setFullScreen:(BOOL)arg1;
 
 @end

@@ -6,22 +6,14 @@
 
 #import <Foundation/NSObject.h>
 
-#import <MediaPlayer/MPNowPlayingContentItemArtworkDataSource-Protocol.h>
-
-@class NSString;
-
-@interface MPMediaItemArtwork : NSObject <MPNowPlayingContentItemArtworkDataSource>
+@interface MPMediaItemArtwork : NSObject
 {
     struct CGSize _bounds;
     CDUnknownBlockType _requestHandler;
 }
 
 @property (readonly, nonatomic) struct CGRect bounds;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct CGRect imageCropRect;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)imageWithSize:(struct CGSize)arg1;
@@ -29,7 +21,6 @@
 - (id)initWithBoundsSize:(struct CGSize)arg1 requestHandler:(CDUnknownBlockType)arg2;
 - (id)initWithImage:(id)arg1;
 - (id)jpegDataWithSize:(struct CGSize)arg1;
-- (void)nowPlayingInfoCenter:(id)arg1 artworkForContentItem:(id)arg2 size:(struct CGSize)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)pngDataFromImage:(id)arg1;
 - (id)pngDataWithSize:(struct CGSize)arg1;
 

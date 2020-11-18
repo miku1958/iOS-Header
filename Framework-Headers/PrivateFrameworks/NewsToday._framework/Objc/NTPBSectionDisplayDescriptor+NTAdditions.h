@@ -10,6 +10,7 @@
 
 @interface NTPBSectionDisplayDescriptor (NTAdditions)
 
+@property (copy, nonatomic) NSURL *actionURL;
 @property (copy, nonatomic) NSURL *discoverMoreVideosURL;
 
 @end

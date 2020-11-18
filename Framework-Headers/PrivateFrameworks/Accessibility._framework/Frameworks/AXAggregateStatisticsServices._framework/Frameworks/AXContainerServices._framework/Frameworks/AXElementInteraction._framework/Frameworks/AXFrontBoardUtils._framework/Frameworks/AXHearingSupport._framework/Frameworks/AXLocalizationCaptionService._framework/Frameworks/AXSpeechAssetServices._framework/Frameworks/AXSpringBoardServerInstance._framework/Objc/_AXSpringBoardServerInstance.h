@@ -62,6 +62,7 @@
 - (id)_handleIsSystemAppShowingAnAlert:(id)arg1;
 - (id)_handleLaunchMagnifierApp:(id)arg1;
 - (id)_handleLoadGAXBundleForUnmanagedASAM:(id)arg1;
+- (id)_handleReactivateInCallService:(id)arg1;
 - (id)_handleRelinquishAssertion:(id)arg1;
 - (id)_handleRevealSpotlight:(id)arg1;
 - (id)_handleSetLockScreenDimTimerEnabled:(id)arg1;
@@ -75,6 +76,7 @@
 - (id)_hasActiveOrPendingCallOrFaceTime:(id)arg1;
 - (BOOL)_hasReachabilityHandlerForClientPort:(unsigned int)arg1;
 - (id)_hideAlert:(id)arg1;
+- (id)_hideRemoteView:(id)arg1;
 - (id)_initServer;
 - (void)_initializeHandlers;
 - (id)_isAppSwitcherVisible:(id)arg1;
@@ -128,6 +130,7 @@
 - (id)_showAlert:(id)arg1;
 - (id)_showControlCenter:(id)arg1;
 - (id)_showNotificationCenter:(id)arg1;
+- (id)_showRemoteView:(id)arg1;
 - (id)_simulateEdgePressHaptics:(id)arg1;
 - (void)_springBoardFinishedLaunching:(id)arg1;
 - (id)_startHearingAidServer:(id)arg1;

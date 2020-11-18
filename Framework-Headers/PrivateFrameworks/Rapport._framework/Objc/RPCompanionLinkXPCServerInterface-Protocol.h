@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSDictionary, NSString, RPCompanionLinkClient;
+@class NSDictionary, NSString, RPCompanionLinkAssertion, RPCompanionLinkClient;
 
 @protocol RPCompanionLinkXPCServerInterface
+- (void)companionLinkActivateAssertion:(RPCompanionLinkAssertion *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)companionLinkActivateClient:(RPCompanionLinkClient *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)companionLinkActivateTransactionID:(NSString *)arg1 label:(NSString *)arg2;
 - (void)companionLinkDeregisterEventID:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)companionLinkDeregisterRequestID:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)companionLinkInvalidateTransactionID:(NSString *)arg1;
+- (void)companionLinkInvalidateAssertion:(RPCompanionLinkAssertion *)arg1;
 - (void)companionLinkRegisterEventID:(NSString *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)companionLinkRegisterRequestID:(NSString *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)companionLinkSendEventID:(NSString *)arg1 event:(NSDictionary *)arg2 destinationID:(NSString *)arg3 options:(NSDictionary *)arg4 completion:(void (^)(NSError *))arg5;

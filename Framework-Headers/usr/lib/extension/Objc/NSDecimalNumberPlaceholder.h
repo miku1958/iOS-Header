@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSDecimalNumber.h>
+#import <Foundation/NSDecimalNumber.h>
 
 __attribute__((visibility("hidden")))
 @interface NSDecimalNumberPlaceholder : NSDecimalNumber

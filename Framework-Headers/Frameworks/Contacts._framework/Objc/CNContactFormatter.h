@@ -6,9 +6,11 @@
 
 #import <Foundation/NSFormatter.h>
 
+#import <Contacts/NSSecureCoding-Protocol.h>
+
 @class NSPersonNameComponentsFormatter;
 
-@interface CNContactFormatter : NSFormatter
+@interface CNContactFormatter : NSFormatter <NSSecureCoding>
 {
     BOOL _ignoresOrganization;
     BOOL _ignoresNickname;
@@ -35,6 +37,7 @@
 + (long long)nameOrderForContact:(id)arg1;
 + (id)stringFromContact:(id)arg1 style:(long long)arg2;
 + (BOOL)styleSupportsFallBackToFullNameStyle:(long long)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)abbreviatedNameForContact:(id)arg1 attributes:(id)arg2;
 - (void)appendValue:(id)arg1 derivedFromPropertyName:(id)arg2 toString:(id)arg3 delimiter:(id)arg4 attributes:(id)arg5;

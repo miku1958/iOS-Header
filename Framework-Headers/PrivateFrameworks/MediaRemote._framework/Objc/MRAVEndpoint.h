@@ -6,35 +6,44 @@
 
 #import <Foundation/NSObject.h>
 
-@class MRAVOutputDevice, MRExternalDevice, NSArray, NSString;
+@class MRAVOutputDevice, MRExternalDevice, NSArray, NSString, _MRAVEndpointDescriptorProtobuf;
 
 __attribute__((visibility("hidden")))
 @interface MRAVEndpoint : NSObject
 {
-    NSArray *_outputDevices;
-    MRExternalDevice *_externalDevice;
-    MRAVOutputDevice *_designatedGroupLeader;
     NSString *_localizedName;
     NSString *_uniqueIdentifier;
 }
 
-@property (strong, nonatomic) MRAVOutputDevice *designatedGroupLeader; // @synthesize designatedGroupLeader=_designatedGroupLeader;
-@property (strong, nonatomic) MRExternalDevice *externalDevice; // @synthesize externalDevice=_externalDevice;
+@property (readonly, nonatomic) _MRAVEndpointDescriptorProtobuf *descriptor;
+@property (readonly, nonatomic) MRAVOutputDevice *designatedGroupLeader;
+@property (readonly, nonatomic) MRExternalDevice *externalDevice;
+@property (readonly, nonatomic) NSString *instanceIdentifier;
 @property (readonly, nonatomic, getter=isLocalEndpoint) BOOL localEndpoint;
 @property (strong, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
-@property (copy, nonatomic) NSArray *outputDevices; // @synthesize outputDevices=_outputDevices;
+@property (readonly, nonatomic) NSArray *outputDevices;
+@property (readonly, nonatomic) NSString *shortDescription;
 @property (strong, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
++ (id)sharedLocalEndpointForRoutingContextWithUID:(id)arg1;
 - (void)_connectToExternalDeviceWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_initializeExternalDeviceIfPossible;
-- (void)_requestSharedAudioPresentationOutputContextModificationWithAddingDevices:(id)arg1 removingDevices:(id)arg2 replyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)_init;
+- (void)_requestSharedAudioPresentationOutputContextModificationWithAddingDevices:(id)arg1 removingDevices:(id)arg2 settingDevices:(id)arg3 replyQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (unsigned long long)_volumeControlMode;
 - (void)addOutputDevices:(id)arg1 withReplyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)containsOutputDevice:(id)arg1;
 - (void)dealloc;
 - (id)description;
-- (void)forceEnableRemoteControllability;
-- (id)initWithOutputDevices:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isVolumeControlAvailable;
+- (void)outputDeviceVolume:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeOutputDevices:(id)arg1 withReplyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setOutputDeviceVolume:(float)arg1 outputDevice:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)setOutputDevices:(id)arg1 withReplyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setVolume:(float)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)volumeControlCapabilitiesForOutputDevice:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)volumeControlCapabilitiesWithQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)volumeWithQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

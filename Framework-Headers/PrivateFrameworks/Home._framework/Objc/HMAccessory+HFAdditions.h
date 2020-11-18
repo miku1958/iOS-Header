@@ -6,20 +6,25 @@
 
 #import <HomeKit/HMAccessory.h>
 
-@class NSSet;
+@class HMResidentDevice, NSSet;
 
 @interface HMAccessory (HFAdditions)
 
 @property (readonly, nonatomic) long long hf_appPunchOutReason;
-@property (readonly, nonatomic) NSSet *hf_displayNamesForVisibleTiles;
+@property (readonly, copy, nonatomic) NSSet *hf_displayNamesForVisibleTiles;
 @property (readonly, nonatomic) BOOL hf_isBridge;
 @property (readonly, nonatomic) BOOL hf_isCamera;
 @property (readonly, nonatomic) BOOL hf_isProgrammableSwitch;
+@property (readonly, nonatomic) BOOL hf_isVisibleAsBridge;
+@property (readonly, nonatomic) HMResidentDevice *hf_linkedResidentDevice;
 @property (readonly, nonatomic) unsigned long long hf_numberOfProgrammableSwitches;
+@property (readonly, nonatomic) HMAccessory *hf_owningBridgeAccessory;
 @property (readonly, nonatomic) NSSet *hf_programmableSwitchNamespaceServices;
 @property (readonly, nonatomic) BOOL hf_requiresFirmwareUpdate;
 @property (readonly, nonatomic) NSSet *hf_servicesBehindBridge;
-@property (readonly, nonatomic) NSSet *hf_visibleServices;
+@property (readonly, copy, nonatomic) NSSet *hf_standardServices;
+@property (readonly, copy, nonatomic) NSSet *hf_subsumedServices;
+@property (readonly, copy, nonatomic) NSSet *hf_visibleServices;
 
 - (id)hf_serviceOfType:(id)arg1;
 @end

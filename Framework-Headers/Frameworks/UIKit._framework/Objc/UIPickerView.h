@@ -48,6 +48,7 @@
         unsigned int usesCheckedSelection:1;
         unsigned int skipsBackground:1;
         unsigned int isInLayoutSubviews:1;
+        unsigned int usesDynamicRowHeight:1;
     } _pickerViewFlags;
     BOOL _usesModernStyle;
     UIColor *_textColor;
@@ -74,6 +75,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic, getter=_textColor, setter=_setTextColor:) UIColor *textColor;
 @property (strong, nonatomic, getter=_textShadowColor, setter=_setTextShadowColor:) UIColor *textShadowColor;
+@property (getter=_usesDynamicRowHeight, setter=_setUsesDynamicRowHeight:) BOOL usesDynamicRowHeight;
 @property (getter=_usesModernStyle, setter=_setUsesModernStyle:) BOOL usesModernStyle;
 
 + (struct CGSize)defaultSizeForCurrentOrientation;
@@ -84,6 +86,7 @@
 + (struct CGSize)sizeThatFits:(struct CGSize)arg1 forTraits:(id)arg2;
 - (void).cxx_destruct;
 - (void)_addMagnifierLinesForRowHeight:(double)arg1;
+- (BOOL)_canHostViewControllerContentScrollView;
 - (void)_completeCurrentTest;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedHeight;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedWidth;
@@ -112,6 +115,7 @@
 - (id)_popoverSuffix;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (void)_resetSelectionOfTables;
+- (double)_rowHeightForDefaultFont;
 - (id)_scalarStatisticsForUserValueChangedEvent;
 - (void)_selectRow:(long long)arg1 inComponent:(long long)arg2 animated:(BOOL)arg3 notify:(BOOL)arg4;
 - (struct CGRect)_selectionBarRectForHeight:(double)arg1;

@@ -12,7 +12,6 @@
 
 @interface ABSGroup : NSObject <ABSRecord>
 {
-    unsigned int _type;
     int _revertedRecordID;
     ABSAddressBook *_addressBook;
     ABSSource *_source;
@@ -30,13 +29,12 @@
 @property (nonatomic) int revertedRecordID; // @synthesize revertedRecordID=_revertedRecordID;
 @property (weak, nonatomic) ABSSource *source; // @synthesize source=_source;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) unsigned int type; // @synthesize type=_type;
+@property (readonly, nonatomic) unsigned int type;
 
 + (id)propertyKeyForPropertyID:(int)arg1;
 - (void).cxx_destruct;
 - (unsigned long long)_cfTypeID;
 - (const void *)copyValueForProperty:(int)arg1;
-- (unsigned int)getType;
 - (id)init;
 - (id)initWithMutableGroup:(id)arg1;
 - (id)initWithSource:(id)arg1;

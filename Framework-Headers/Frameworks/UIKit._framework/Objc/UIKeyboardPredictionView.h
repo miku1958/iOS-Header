@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class LAContext, NSArray, NSDate, NSMutableArray, NSString, NSTimer, TIKeyboardCandidate, UIKBBackgroundView, UIKBKeyView, UIKeyboardPredictionBarGrabber, UIKeyboardPredictionCell, UILabel, UITextSuggestion, UITouch;
+@class LAContext, NSArray, NSDate, NSMutableArray, NSString, NSTimer, TIKeyboardCandidate, UIKBBackgroundView, UIKBKeyView, UIKeyboardPredictionBarGrabber, UIKeyboardPredictionCell, UILabel, UITouch;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardPredictionView : UIView
@@ -46,10 +46,11 @@ __attribute__((visibility("hidden")))
     UIKBKeyView *m_collapsedView;
     int _notifyBatterySaverToken;
     unsigned long long m_numberOfVisibleCells;
+    BOOL m_isSafariAutofill;
     LAContext *m_myContext;
     int _state;
     UITouch *_activeTouch;
-    UITextSuggestion *_currentFirstTextSuggestion;
+    TIKeyboardCandidate *_currentFirstTextSuggestion;
     NSTimer *_updateTimer;
     NSArray *_scheduledPredictions;
     TIKeyboardCandidate *_scheduledAutocorrection;
@@ -60,7 +61,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) UITouch *activeTouch; // @synthesize activeTouch=_activeTouch;
-@property (strong, nonatomic) UITextSuggestion *currentFirstTextSuggestion; // @synthesize currentFirstTextSuggestion=_currentFirstTextSuggestion;
+@property (strong, nonatomic) TIKeyboardCandidate *currentFirstTextSuggestion; // @synthesize currentFirstTextSuggestion=_currentFirstTextSuggestion;
 @property (strong, nonatomic) NSDate *lastTextSuggestionUpdateDate; // @synthesize lastTextSuggestionUpdateDate=_lastTextSuggestionUpdateDate;
 @property (nonatomic) long long lastTextSuggestionUpdateOrientation; // @synthesize lastTextSuggestionUpdateOrientation=_lastTextSuggestionUpdateOrientation;
 @property (strong, nonatomic) NSDate *lastUpdateDate; // @synthesize lastUpdateDate=_lastUpdateDate;
@@ -120,7 +121,6 @@ __attribute__((visibility("hidden")))
 - (void)setPredictionViewState:(int)arg1 animate:(BOOL)arg2 notify:(BOOL)arg3;
 - (void)setPredictions:(id)arg1 autocorrection:(id)arg2 emojiList:(id)arg3;
 - (void)setTouchedCellState:(int)arg1;
-- (BOOL)shouldAuthCommitPrediction;
 - (void)showMessageWithSize:(struct CGSize)arg1;
 - (int)stateForCurrentPreferences;
 - (void)suppressLayoutSubviewsForCellLabels:(BOOL)arg1;

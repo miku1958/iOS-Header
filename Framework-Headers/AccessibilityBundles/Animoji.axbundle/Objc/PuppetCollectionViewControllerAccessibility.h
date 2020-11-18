@@ -13,8 +13,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (void)_accessibilitySetItemsShouldBeAccessible:(BOOL)arg1;
 - (void)_accessibilitySetPuppetNames:(id)arg1;
+- (void)_accessibilityUpdateItemAccessibility;
+- (BOOL)_axItemsShouldBeAccessible;
 - (id)_axPuppetNames;
+- (void)_setAXItemsShouldBeAccessible:(BOOL)arg1;
 - (void)_setAXPuppetNames:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 

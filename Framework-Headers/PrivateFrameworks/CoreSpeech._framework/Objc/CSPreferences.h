@@ -30,9 +30,14 @@
 - (id)getUserVoiceProfileUpdateDirectory;
 - (id)getUserVoiceProfileUploadPath;
 - (id)getUserVoiceProfileUploadPathWithEnrolledLanguageList:(id *)arg1;
+- (id)interstitialAbsoluteDirForLevel:(long long)arg1;
+- (id)interstitialRelativeDirForLevel:(long long)arg1;
 - (BOOL)isCurrentDeviceCompatibleWithVoiceProfileAt:(id)arg1;
+- (BOOL)myriadFileLoggingEnabled;
 - (void)notifyUserVoiceProfileUpdateReady;
 - (void)notifyUserVoiceProfileUploadComplete;
+- (double)remoteVoiceTriggerDelayTime;
+- (double)remoteVoiceTriggerEndpointTimeoutWithDefault:(double)arg1;
 - (void)setFileLoggingIsEnabled:(BOOL)arg1;
 - (void)setFileLoggingLevel:(id)arg1;
 - (BOOL)twoShotNotificationEnabled;

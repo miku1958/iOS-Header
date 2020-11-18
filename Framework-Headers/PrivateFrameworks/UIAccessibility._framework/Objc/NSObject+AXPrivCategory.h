@@ -54,6 +54,7 @@
 - (BOOL)_accessibilityApplicationIsRTL;
 - (int)_accessibilityApplicationOrientation;
 - (id)_accessibilityApplicationSemanticContext;
+- (id)_accessibilityApplicationWindowContextIDs;
 - (id)_accessibilityAttributedValueForRange:(struct _NSRange *)arg1;
 - (id)_accessibilityAuditIssuesWithOptions:(id)arg1;
 - (id)_accessibilityAutomaticIdentifier;
@@ -194,6 +195,7 @@
 - (id)_accessibilityHeaderElement;
 - (id)_accessibilityHeaderElementsForColumn:(unsigned long long)arg1;
 - (id)_accessibilityHeaderElementsForRow:(unsigned long long)arg1;
+- (id)_accessibilityHeadingLevel;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_accessibilityHitTestReverseOrder;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
@@ -243,6 +245,7 @@
 - (BOOL)_accessibilityIsNotFirstElement;
 - (BOOL)_accessibilityIsPressed;
 - (BOOL)_accessibilityIsRTL;
+- (BOOL)_accessibilityIsRealtimeElement;
 - (BOOL)_accessibilityIsRemoteElement;
 - (BOOL)_accessibilityIsScrollAncestor;
 - (BOOL)_accessibilityIsScrollable;
@@ -359,6 +362,8 @@
 - (void)_accessibilityRawSetIsSpeakThisElement:(id)arg1;
 - (BOOL)_accessibilityReadAllContinuesWithScroll;
 - (BOOL)_accessibilityReadAllOnFocus;
+- (BOOL)_accessibilityRealtimeCompleted;
+- (BOOL)_accessibilityRealtimeHasUnread;
 - (id)_accessibilityRecentlyActivatedApplicationBundleIdentifiers;
 - (void)_accessibilityRegisterForDictationLifecycleNotifications;
 - (long long)_accessibilityReinterpretVoiceOverCommand:(long long)arg1;
@@ -634,7 +639,6 @@
 - (id)accessibilityInvalidStatus;
 - (BOOL)accessibilityIsAttachmentElement;
 - (BOOL)accessibilityIsComboBox;
-- (BOOL)accessibilityIsWindow;
 - (id)accessibilityLabelForRange:(struct _NSRange *)arg1;
 - (long long)accessibilityLineNumberForPoint:(struct CGPoint)arg1;
 - (id)accessibilityLinkedElement;
@@ -682,10 +686,8 @@
 - (CDUnknownFunctionPointerType)impOrNullForSelector:(SEL)arg1;
 - (BOOL)isAccessibilityOpaqueElementProvider;
 - (id)isAccessibilityUserDefinedScrollAncestor;
-- (id)isAccessibilityUserDefinedWindow;
 - (void)setAccessibilitySize:(struct CGSize)arg1;
 - (void)setIsAccessibilityOpaqueElementProvider:(BOOL)arg1;
 - (void)setIsAccessibilityScrollAncestor:(BOOL)arg1;
-- (void)setIsAccessibilityWindow:(BOOL)arg1;
 @end
 

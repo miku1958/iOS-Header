@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)_animateAsTwoPartsIfNecessaryPartOne:(CDUnknownBlockType)arg1 partTwo:(CDUnknownBlockType)arg2;
 - (void)_animateCanvasViews;
 - (void)_animateContentView;
 - (void)_animateLargeTitleView;

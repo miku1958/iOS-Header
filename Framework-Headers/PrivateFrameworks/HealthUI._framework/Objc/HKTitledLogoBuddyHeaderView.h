@@ -18,6 +18,7 @@
 
 - (void).cxx_destruct;
 - (void)_updateForCurrentSizeCategory;
+- (double)bottomPadding;
 - (id)initWithTopInset:(double)arg1 linkButtonTitle:(id)arg2;
 - (id)logoImageView;
 - (void)traitCollectionDidChange:(id)arg1;

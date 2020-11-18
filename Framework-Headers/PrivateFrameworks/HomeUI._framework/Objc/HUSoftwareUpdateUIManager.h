@@ -6,34 +6,36 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeUI/HFExecutionEnvironmentObserver-Protocol.h>
 #import <HomeUI/HFSoftwareUpdateObserver-Protocol.h>
 
-@class NSMutableArray, NSMutableSet, NSString;
+@class NSMapTable, NSString;
 
-@interface HUSoftwareUpdateUIManager : NSObject <HFSoftwareUpdateObserver>
+@interface HUSoftwareUpdateUIManager : NSObject <HFSoftwareUpdateObserver, HFExecutionEnvironmentObserver>
 {
-    NSMutableSet *_agreedLicenseURLs;
-    NSMutableArray *_requestedSoftwareUpdates;
+    NSMapTable *_homeBackgroundCheckMapTable;
 }
 
-@property (strong, nonatomic) NSMutableSet *agreedLicenseURLs; // @synthesize agreedLicenseURLs=_agreedLicenseURLs;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSMutableArray *requestedSoftwareUpdates; // @synthesize requestedSoftwareUpdates=_requestedSoftwareUpdates;
+@property (readonly, nonatomic) NSMapTable *homeBackgroundCheckMapTable; // @synthesize homeBackgroundCheckMapTable=_homeBackgroundCheckMapTable;
 @property (readonly) Class superclass;
 
 + (id)sharedManager;
 - (void).cxx_destruct;
-- (void)_markUpdate:(id)arg1 asRequested:(BOOL)arg2;
-- (id)_presentLicensesIfNeededForSoftwareUpdates:(id)arg1 presentationDelegate:(id)arg2;
+- (id)_markTermsAndConditionsAsReadForLicenseAgreementVersion:(id)arg1 inHome:(id)arg2;
+- (id)_presentLicensesIfNeededForSoftwareUpdate:(id)arg1 home:(id)arg2 presentationDelegate:(id)arg3;
+- (BOOL)_shouldPresentTermsAndConditionsForSoftwareLicenseAgreementVersion:(id)arg1 home:(id)arg2;
+- (void)executionEnvironmentDidEnterBackground:(id)arg1;
 - (id)fetchAvailableUpdatesForAccessory:(id)arg1;
 - (id)fetchAvailableUpdatesForHome:(id)arg1;
-- (BOOL)hasRequestedUpdate:(id)arg1;
 - (id)init;
+- (long long)numberOfAccessoriesWithAvailableUpdates:(id)arg1;
 - (long long)numberOfAccessoriesWithAvailableUpdatesInHome:(id)arg1;
-- (void)softwareUpdate:(id)arg1 didUpdateState:(long long)arg2;
+- (id)startSilentBackgroundCheckForHome:(id)arg1;
 - (id)startUpdateForAccessory:(id)arg1 update:(id)arg2 presentationDelegate:(id)arg3;
+- (id)startUpdatesForAccessories:(id)arg1 presentationDelegate:(id)arg2;
 - (id)startUpdatesForAllAccessoriesInHome:(id)arg1 presentationDelegate:(id)arg2;
 
 @end

@@ -21,6 +21,7 @@
 @property (nonatomic) BOOL paused;
 @property (readonly, nonatomic) double statusViewHeight;
 
+- (void)configureGlyphWithCompletion:(void (^)(void))arg1;
 - (void)fadeOutCurrentAura;
 - (void)forceMicVisible:(BOOL)arg1;
 @end

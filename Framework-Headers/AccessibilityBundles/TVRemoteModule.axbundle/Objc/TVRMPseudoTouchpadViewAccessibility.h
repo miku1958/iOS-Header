@@ -13,6 +13,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityFocusChanged:(id)arg1;
+- (BOOL)_accessibilityIsDirectTouching;
+- (void)_accessibilitySetIsDirectTouching:(BOOL)arg1;
+- (BOOL)_accessibilitySupportsActivateAction;
+- (BOOL)accessibilityActivate;
+- (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;

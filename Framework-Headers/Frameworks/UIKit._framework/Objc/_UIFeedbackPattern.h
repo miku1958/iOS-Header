@@ -36,6 +36,7 @@
 + (id)type;
 - (void).cxx_destruct;
 - (id)_allEventTypes;
+- (id)_allFeedbacks;
 - (id)_allSystemSoundIDs;
 - (id)_debugDictionary;
 - (unsigned long long)_effectivePlayableFeedbackTypes;

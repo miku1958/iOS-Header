@@ -23,6 +23,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (id)debugDescription;
 - (void)encodeToCommandBuffer:(id)arg1 copyDescriptor:(id)arg2;
+- (void)encodeToCommandBuffer:(id)arg1 copyDescriptor:(id)arg2 rowPermuteIndices:(id)arg3 rowPermuteOffset:(unsigned long long)arg4 columnPermuteIndices:(id)arg5 columnPermuteOffset:(unsigned long long)arg6;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1 copyRows:(unsigned long long)arg2 copyColumns:(unsigned long long)arg3 sourcesAreTransposed:(BOOL)arg4 destinationsAreTransposed:(BOOL)arg5;

@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityContainsSportsGrid;
-- (BOOL)_accessibilityHasButtonSubviews;
+- (BOOL)_accessibilityHasAccessibleSubviews;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (id)_accessibilityRetrieveTableViewCellText;
 - (BOOL)_accessibilityUsesOverrideContainerProtocol;

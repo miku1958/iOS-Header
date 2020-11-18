@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCAudioIOSink-Protocol.h>
 
@@ -66,6 +66,7 @@ __attribute__((visibility("hidden")))
     BOOL _isRemoteCellular_LowestConnectionQuality;
     BOOL _isConnectedOnIPv6_LowestConnectionQuality;
     BOOL _isRedEnabled;
+    BOOL _includeRedSequenceOffset;
     unsigned int _redNumPayloads;
     unsigned int _redMaxDelay20ms;
     BOOL _transmitROC;

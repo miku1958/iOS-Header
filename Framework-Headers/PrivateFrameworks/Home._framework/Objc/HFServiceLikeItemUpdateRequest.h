@@ -23,11 +23,11 @@
 @property (strong, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 
 - (void).cxx_destruct;
-- (id)_displayMetadataForReadRespnose:(id)arg1;
+- (id)_displayMetadataForReadResponse:(id)arg1;
 - (id)_standardResultsForReadResponse:(id)arg1 displayMetadata:(id)arg2 batteryLevelResults:(id)arg3 updateOptions:(id)arg4;
 - (id)init;
 - (id)initWithAccessory:(id)arg1 valueSource:(id)arg2 characteristics:(id)arg3;
-- (id)initWithService:(id)arg1 valueSource:(id)arg2 characteristicTypes:(id)arg3;
+- (id)initWithService:(id)arg1 valueSource:(id)arg2 characteristics:(id)arg3;
 - (id)updateWithOptions:(id)arg1;
 
 @end

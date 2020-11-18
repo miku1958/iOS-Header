@@ -43,6 +43,7 @@
 - (id)overriddenSectionInfoForSectionID:(id)arg1;
 - (id)overriddenSettings;
 - (id)overrides;
+- (void)reloadBBSection:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)reloadWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removedSectionWithSectionID:(id)arg1;
 - (id)sectionIDs;

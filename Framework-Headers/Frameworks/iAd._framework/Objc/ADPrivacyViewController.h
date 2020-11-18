@@ -33,6 +33,7 @@
 @property (strong, nonatomic) NSDictionary *transparencyDetailsDictionary; // @synthesize transparencyDetailsDictionary=_transparencyDetailsDictionary;
 
 - (void)_addRemoteView;
+- (void)_appDidChangeStatusBarFrameNotification;
 - (void)_clientApplicationDidEnterBackground;
 - (void)_commonInit;
 - (void)_connectionWithAdSheetWasLost;
@@ -48,13 +49,16 @@
 - (void)adPrivacyRemoteViewControllerDidLoad;
 - (void)adPrivacyRemoteViewControllerDidRenderTransparency;
 - (void)adPrivacyRemoteViewControllerDidTerminateWithError:(id)arg1;
+- (void)adjustRemoteViews;
 - (void)dealloc;
+- (void)didRotateFromInterfaceOrientation:(long long)arg1;
 - (id)init;
 - (id)initWithTransparencyDetails:(id)arg1;
 - (id)initWithTransparencyDetailsDictionary:(id)arg1;
 - (id)internalDelegate;
 - (void)loadView;
 - (void)setInternalDelegate:(id)arg1;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

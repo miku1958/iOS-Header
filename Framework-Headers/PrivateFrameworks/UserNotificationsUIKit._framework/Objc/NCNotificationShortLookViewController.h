@@ -93,7 +93,7 @@
 - (BOOL)shouldRestorePresentingShortLookOnDismiss;
 - (id)unhideHomeAffordanceAnimationSettingsForLongLookPresentationController:(id)arg1;
 - (void)viewWillLayoutSubviews;
-- (BOOL)wantsUseableContainerHeightForTransitionWithDelegate:(id)arg1;
+- (BOOL)wantsUseableContainerBoundsForTransitionWithDelegate:(id)arg1;
 
 @end
 

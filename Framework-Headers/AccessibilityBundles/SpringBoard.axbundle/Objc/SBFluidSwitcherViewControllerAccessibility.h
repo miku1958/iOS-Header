@@ -30,9 +30,9 @@
 - (BOOL)_axIsInSwitcher;
 - (unsigned long long)_axNumberOfPages;
 - (unsigned long long)_axPageForIndex:(unsigned long long)arg1;
-- (BOOL)_axPerformScrollToIndex:(unsigned long long)arg1;
+- (BOOL)_axPerformScrollToIndex:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_axScrollStatusForIndex:(unsigned long long)arg1;
-- (void)_axScrollToAppLayout:(id)arg1;
+- (void)_axScrollToAppLayout:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_axVisibleAppLayouts;
 - (BOOL)_removeVisibleItemContainerForAppLayout:(id)arg1;
 - (void)_setupContentAndTransientViews;

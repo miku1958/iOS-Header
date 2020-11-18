@@ -12,6 +12,7 @@
 {
     BOOL _labelsVisible;
     BOOL _toggleStateOnTap;
+    BOOL _useAlternateBackground;
     BOOL _enabled;
     BOOL _inoperative;
     BOOL _useLightStyle;
@@ -36,6 +37,7 @@
 @property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (copy, nonatomic) NSString *title; // @dynamic title;
 @property (nonatomic) BOOL toggleStateOnTap; // @synthesize toggleStateOnTap=_toggleStateOnTap;
+@property (nonatomic) BOOL useAlternateBackground; // @synthesize useAlternateBackground=_useAlternateBackground;
 @property (nonatomic) BOOL useLightStyle; // @synthesize useLightStyle=_useLightStyle;
 
 - (void).cxx_destruct;

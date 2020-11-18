@@ -53,6 +53,7 @@
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (double)baselineOffset;
 - (void)cancelFadeInTimerIfNecessary;
+- (void)didMoveToSuperview;
 - (void)fadeIn;
 - (void)fadeInImmediately:(BOOL)arg1;
 - (void)fadeInImmediately:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long resultIndex;
 
 - (void).cxx_destruct;
+- (id)initWithAutocompleteResolvedItem:(id)arg1;
 - (id)initWithResolvedItem:(id)arg1;
 
 @end

@@ -12,14 +12,12 @@
 
 @interface NTPBTagRecord : PBCodable <NSCopying>
 {
-    long long _allowedAdTypes;
+    long long _behaviorFlags;
     long long _contentProvider;
-    unsigned long long _forYouCutoffTime;
-    unsigned long long _forYouMaximumArticleCount;
     long long _minimumNewsVersion;
+    unsigned long long _nameImageBaselineShift;
+    double _nameImageScaleFactor;
     long long _score;
-    unsigned long long _tagNameImageBaselineShift;
-    double _tagNameImageScaleFactor;
     NSMutableArray *_allowedStorefrontIDs;
     NTPBRecordBase *_base;
     NSMutableArray *_blockedStorefrontIDs;
@@ -68,14 +66,12 @@
     BOOL _publisherPaidLeakyPaywallOptOut;
     BOOL _publisherPaidWebOptIn;
     struct {
-        unsigned int allowedAdTypes:1;
+        unsigned int behaviorFlags:1;
         unsigned int contentProvider:1;
-        unsigned int forYouCutoffTime:1;
-        unsigned int forYouMaximumArticleCount:1;
         unsigned int minimumNewsVersion:1;
+        unsigned int nameImageBaselineShift:1;
+        unsigned int nameImageScaleFactor:1;
         unsigned int score:1;
-        unsigned int tagNameImageBaselineShift:1;
-        unsigned int tagNameImageScaleFactor:1;
         unsigned int groupingAvailability:1;
         unsigned int type:1;
         unsigned int hideAccessoryText:1;
@@ -89,9 +85,9 @@
     } _has;
 }
 
-@property (nonatomic) long long allowedAdTypes; // @synthesize allowedAdTypes=_allowedAdTypes;
 @property (strong, nonatomic) NSMutableArray *allowedStorefrontIDs; // @synthesize allowedStorefrontIDs=_allowedStorefrontIDs;
 @property (strong, nonatomic) NTPBRecordBase *base; // @synthesize base=_base;
+@property (nonatomic) long long behaviorFlags; // @synthesize behaviorFlags=_behaviorFlags;
 @property (strong, nonatomic) NSMutableArray *blockedStorefrontIDs; // @synthesize blockedStorefrontIDs=_blockedStorefrontIDs;
 @property (strong, nonatomic) NSString *channelDefaultSectionID; // @synthesize channelDefaultSectionID=_channelDefaultSectionID;
 @property (strong, nonatomic) NSMutableArray *channelSectionFeedConfigurations; // @synthesize channelSectionFeedConfigurations=_channelSectionFeedConfigurations;
@@ -100,18 +96,14 @@
 @property (strong, nonatomic) NSString *coverArticleListID; // @synthesize coverArticleListID=_coverArticleListID;
 @property (strong, nonatomic) NSString *coverImageURL; // @synthesize coverImageURL=_coverImageURL;
 @property (strong, nonatomic) NTPBFeedConfiguration *feedConfiguration; // @synthesize feedConfiguration=_feedConfiguration;
-@property (nonatomic) unsigned long long forYouCutoffTime; // @synthesize forYouCutoffTime=_forYouCutoffTime;
-@property (nonatomic) unsigned long long forYouMaximumArticleCount; // @synthesize forYouMaximumArticleCount=_forYouMaximumArticleCount;
 @property (nonatomic) int groupingAvailability; // @synthesize groupingAvailability=_groupingAvailability;
-@property (nonatomic) BOOL hasAllowedAdTypes;
 @property (readonly, nonatomic) BOOL hasBase;
+@property (nonatomic) BOOL hasBehaviorFlags;
 @property (readonly, nonatomic) BOOL hasChannelDefaultSectionID;
 @property (nonatomic) BOOL hasContentProvider;
 @property (readonly, nonatomic) BOOL hasCoverArticleListID;
 @property (readonly, nonatomic) BOOL hasCoverImageURL;
 @property (readonly, nonatomic) BOOL hasFeedConfiguration;
-@property (nonatomic) BOOL hasForYouCutoffTime;
-@property (nonatomic) BOOL hasForYouMaximumArticleCount;
 @property (nonatomic) BOOL hasGroupingAvailability;
 @property (nonatomic) BOOL hasHideAccessoryText;
 @property (nonatomic) BOOL hasIsDeprecated;
@@ -123,6 +115,7 @@
 @property (nonatomic) BOOL hasMinimumNewsVersion;
 @property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasNameCompact;
+@property (nonatomic) BOOL hasNameImageBaselineShift;
 @property (readonly, nonatomic) BOOL hasNameImageCompactMetadata;
 @property (readonly, nonatomic) BOOL hasNameImageCompactURL;
 @property (readonly, nonatomic) BOOL hasNameImageForDarkBackgroundURL;
@@ -130,6 +123,7 @@
 @property (readonly, nonatomic) BOOL hasNameImageMaskWidgetHQURL;
 @property (readonly, nonatomic) BOOL hasNameImageMaskWidgetLQURL;
 @property (readonly, nonatomic) BOOL hasNameImageMetadata;
+@property (nonatomic) BOOL hasNameImageScaleFactor;
 @property (readonly, nonatomic) BOOL hasNameImageURL;
 @property (readonly, nonatomic) BOOL hasParentID;
 @property (readonly, nonatomic) BOOL hasPrimaryAudience;
@@ -141,8 +135,6 @@
 @property (readonly, nonatomic) BOOL hasPublisherPaidWebaccessURL;
 @property (readonly, nonatomic) BOOL hasReplacementID;
 @property (nonatomic) BOOL hasScore;
-@property (nonatomic) BOOL hasTagNameImageBaselineShift;
-@property (nonatomic) BOOL hasTagNameImageScaleFactor;
 @property (readonly, nonatomic) BOOL hasTemplateJson;
 @property (nonatomic) BOOL hasType;
 @property (nonatomic) BOOL hideAccessoryText; // @synthesize hideAccessoryText=_hideAccessoryText;
@@ -157,6 +149,7 @@
 @property (nonatomic) long long minimumNewsVersion; // @synthesize minimumNewsVersion=_minimumNewsVersion;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSString *nameCompact; // @synthesize nameCompact=_nameCompact;
+@property (nonatomic) unsigned long long nameImageBaselineShift; // @synthesize nameImageBaselineShift=_nameImageBaselineShift;
 @property (strong, nonatomic) NSData *nameImageCompactMetadata; // @synthesize nameImageCompactMetadata=_nameImageCompactMetadata;
 @property (strong, nonatomic) NSString *nameImageCompactURL; // @synthesize nameImageCompactURL=_nameImageCompactURL;
 @property (strong, nonatomic) NSString *nameImageForDarkBackgroundURL; // @synthesize nameImageForDarkBackgroundURL=_nameImageForDarkBackgroundURL;
@@ -164,6 +157,7 @@
 @property (strong, nonatomic) NSString *nameImageMaskWidgetHQURL; // @synthesize nameImageMaskWidgetHQURL=_nameImageMaskWidgetHQURL;
 @property (strong, nonatomic) NSString *nameImageMaskWidgetLQURL; // @synthesize nameImageMaskWidgetLQURL=_nameImageMaskWidgetLQURL;
 @property (strong, nonatomic) NSData *nameImageMetadata; // @synthesize nameImageMetadata=_nameImageMetadata;
+@property (nonatomic) double nameImageScaleFactor; // @synthesize nameImageScaleFactor=_nameImageScaleFactor;
 @property (strong, nonatomic) NSString *nameImageURL; // @synthesize nameImageURL=_nameImageURL;
 @property (strong, nonatomic) NSString *parentID; // @synthesize parentID=_parentID;
 @property (strong, nonatomic) NSMutableArray *pinnedArticleIDs; // @synthesize pinnedArticleIDs=_pinnedArticleIDs;
@@ -182,8 +176,6 @@
 @property (strong, nonatomic) NSMutableArray *relatedTopicIDsForOnboardings; // @synthesize relatedTopicIDsForOnboardings=_relatedTopicIDsForOnboardings;
 @property (strong, nonatomic) NSString *replacementID; // @synthesize replacementID=_replacementID;
 @property (nonatomic) long long score; // @synthesize score=_score;
-@property (nonatomic) unsigned long long tagNameImageBaselineShift; // @synthesize tagNameImageBaselineShift=_tagNameImageBaselineShift;
-@property (nonatomic) double tagNameImageScaleFactor; // @synthesize tagNameImageScaleFactor=_tagNameImageScaleFactor;
 @property (strong, nonatomic) NSString *templateJson; // @synthesize templateJson=_templateJson;
 @property (nonatomic) int type; // @synthesize type=_type;
 

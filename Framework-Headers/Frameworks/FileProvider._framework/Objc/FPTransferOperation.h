@@ -44,6 +44,7 @@
 - (id)initWithSourceURLsAndNames:(id)arg1 destinationFolder:(id)arg2 copyItems:(BOOL)arg3;
 - (void)mainWithExtensionProxy:(id)arg1;
 - (id)operationDescription;
+- (BOOL)preflightOperation;
 - (void)presendNotifications;
 
 @end

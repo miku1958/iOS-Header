@@ -12,17 +12,20 @@
 
 @interface CCUIRoundButton : UIControl <UIGestureRecognizerDelegate>
 {
+    BOOL _useAlternateBackground;
     CCUICAPackageDescription *_glyphPackageDescription;
     UIImage *_glyphImage;
     NSString *_glyphState;
     UIColor *_highlightColor;
     UIView *_normalStateBackgroundView;
     UIView *_selectedStateBackgroundView;
+    UIView *_alternateSelectedStateBackgroundView;
     UIImageView *_glyphImageView;
     UIImageView *_selectedGlyphView;
     CCUICAPackageView *_glyphPackageView;
 }
 
+@property (strong, nonatomic) UIView *alternateSelectedStateBackgroundView; // @synthesize alternateSelectedStateBackgroundView=_alternateSelectedStateBackgroundView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIImage *glyphImage; // @synthesize glyphImage=_glyphImage;
@@ -36,9 +39,11 @@
 @property (strong, nonatomic) UIImageView *selectedGlyphView; // @synthesize selectedGlyphView=_selectedGlyphView;
 @property (strong, nonatomic) UIView *selectedStateBackgroundView; // @synthesize selectedStateBackgroundView=_selectedStateBackgroundView;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL useAlternateBackground; // @synthesize useAlternateBackground=_useAlternateBackground;
 
 - (void).cxx_destruct;
 - (double)_cornerRadius;
+- (void)_deactivateReachability:(id)arg1;
 - (void)_handlePressGesture:(id)arg1;
 - (void)_primaryActionPerformed:(id)arg1;
 - (void)_setCornerRadius:(double)arg1;

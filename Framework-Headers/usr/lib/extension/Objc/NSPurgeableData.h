@@ -6,7 +6,7 @@
 
 #import <Foundation/NSMutableData.h>
 
-#import <extension/NSDiscardableContent-Protocol.h>
+#import <Foundation/NSDiscardableContent-Protocol.h>
 
 @interface NSPurgeableData : NSMutableData <NSDiscardableContent>
 {

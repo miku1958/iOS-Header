@@ -105,6 +105,7 @@
 - (BOOL)logContentsIfApplicable;
 - (BOOL)removedAfterDialogProgresses;
 - (void)setManageBackgroundColor:(BOOL)arg1;
+- (BOOL)shouldHidePriorViews;
 - (void)siriDidLayoutSnippetView;
 - (void)siriWillLayoutSnippetView;
 - (Class)transparentFooterViewClass;

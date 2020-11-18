@@ -10,7 +10,6 @@
 
 @protocol ICDelegateAccountStoreWriter <NSObject>
 - (void)addDelegationUUIDs:(NSArray *)arg1 forUserIdentity:(ICUserIdentity *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
-- (void)invalidate;
 - (void)removeAllTokensWithCompletionHandler:(void (^)(BOOL, NSError *))arg1;
 - (void)removeDelegationUUIDs:(NSArray *)arg1 forUserIdentity:(ICUserIdentity *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (void)removeIdentityPropertiesForUserIdentity:(ICUserIdentity *)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;

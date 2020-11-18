@@ -58,6 +58,7 @@
 - (BOOL)isArtworkVisuallyIdenticalToCatalog:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)requestColorAnalysisWithAlgorithm:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)requestExportableArtworkPropertiesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestExportableArtworkURLWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestFocusRegionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)requestImageWithCompletionHandler:(CDUnknownBlockType)arg1;

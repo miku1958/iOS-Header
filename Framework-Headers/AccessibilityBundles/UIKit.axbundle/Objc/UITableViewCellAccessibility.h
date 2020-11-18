@@ -77,6 +77,7 @@
 - (void)_accessibilityUpdateRemoveControl;
 - (id)_accessibilityUserTestingChildren;
 - (long long)_accessibilityUserTestingChildrenCount;
+- (id)_accessibilityUserTestingChildrenInAccessibilitySortedOrder:(BOOL)arg1;
 - (BOOL)_accessibilityUsesOverrideContainerProtocol;
 - (BOOL)_accessibilityViewHierarchyHasNativeFocus;
 - (id)_axCustomActionsForActions:(id)arg1;

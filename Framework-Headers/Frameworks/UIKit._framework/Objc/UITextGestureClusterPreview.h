@@ -12,10 +12,12 @@ __attribute__((visibility("hidden")))
 @interface UITextGestureClusterPreview : UITextGestureCluster
 {
     UIPreviewItemController *_previewItemController;
+    BOOL _detachOnDealloc;
 }
 
 - (void).cxx_destruct;
 - (void)_resetForLink;
+- (void)dealloc;
 - (void)detach;
 - (BOOL)doesControlDelegate;
 - (id)initWithView:(id)arg1;

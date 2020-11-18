@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_setupTitleView;
+- (void)_setupTitleViewAnimated:(BOOL)arg1;
 
 @end
 

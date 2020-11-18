@@ -25,6 +25,7 @@
     UIWindow *_presentationWindow;
     CDUnknownBlockType _containerSuperviewFactoryBlock;
     CDUnknownBlockType _containerViewConfigurationBlock;
+    CDUnknownBlockType _dismissalTransitionDidEndBlock;
 }
 
 @property (nonatomic) BOOL appliesVisualEffectsToPresentingView; // @synthesize appliesVisualEffectsToPresentingView=_appliesVisualEffectsToPresentingView;
@@ -34,6 +35,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UITapGestureRecognizer *dismissGestureRecognizer; // @synthesize dismissGestureRecognizer=_dismissGestureRecognizer;
+@property (copy, nonatomic) CDUnknownBlockType dismissalTransitionDidEndBlock; // @synthesize dismissalTransitionDidEndBlock=_dismissalTransitionDidEndBlock;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *keyboardSnapshotViews; // @synthesize keyboardSnapshotViews=_keyboardSnapshotViews;
 @property (copy, nonatomic) NSHashTable *keyboardWindows; // @synthesize keyboardWindows=_keyboardWindows;
@@ -69,6 +71,7 @@
 - (BOOL)_presentationPotentiallyUnderlapsStatusBar;
 - (void)_presentationTransitionWillBeginForContainerEffectView:(id)arg1;
 - (void)_previewTransitionDidEnd:(BOOL)arg1;
+- (BOOL)_shouldBlurStatusBar;
 - (BOOL)_shouldDisableInteractionDuringTransitions;
 - (BOOL)_shouldKeepCurrentFirstResponder;
 - (BOOL)_shouldSavePresentedViewControllerForStateRestoration;

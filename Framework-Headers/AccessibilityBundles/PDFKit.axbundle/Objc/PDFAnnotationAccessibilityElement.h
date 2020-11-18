@@ -6,15 +6,17 @@
 
 #import "AXPDFNodeElement.h"
 
-@class PDFAnnotation, PDFPage;
+@class NSMutableArray, PDFAnnotation, PDFPage;
 
 @interface PDFAnnotationAccessibilityElement : AXPDFNodeElement
 {
     PDFPage *_page;
     PDFAnnotation *_annotation;
+    NSMutableArray *_cachedAXElements;
 }
 
 @property (weak, nonatomic) PDFAnnotation *annotation; // @synthesize annotation=_annotation;
+@property (strong, nonatomic) NSMutableArray *cachedAXElements; // @synthesize cachedAXElements=_cachedAXElements;
 @property (weak, nonatomic) PDFPage *page; // @synthesize page=_page;
 
 - (void).cxx_destruct;
@@ -22,6 +24,8 @@
 - (id)_accessibilityAnnotationType;
 - (BOOL)_accessibilityIsButtonWidget;
 - (id)_accessibilityLineStyleStringForLineStyle:(long long)arg1;
+- (void)_axAnnotationHit:(id)arg1;
+- (void)_axRemovedFromSuperview:(id)arg1;
 - (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityHint;

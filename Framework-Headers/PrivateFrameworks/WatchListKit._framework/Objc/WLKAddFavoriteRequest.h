@@ -12,6 +12,7 @@
 {
     NSString *_channelID;
     NSString *_canonicalID;
+    NSString *_statsID;
     NSString *_bundleID;
     NSString *_externalID;
     WLKWatchListModificationResponse *_response;
@@ -21,10 +22,12 @@
 @property (readonly, copy, nonatomic) NSString *canonicalID; // @synthesize canonicalID=_canonicalID;
 @property (readonly, copy, nonatomic) NSString *externalID; // @synthesize externalID=_externalID;
 @property (readonly, nonatomic) WLKWatchListModificationResponse *response; // @synthesize response=_response;
+@property (readonly, copy, nonatomic) NSString *statsID; // @synthesize statsID=_statsID;
 
 - (void).cxx_destruct;
 - (id)initWithBundleID:(id)arg1 externalID:(id)arg2;
 - (id)initWithCanonicalID:(id)arg1;
+- (id)initWithStatsID:(id)arg1;
 - (void)makeRequestWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

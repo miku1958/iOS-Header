@@ -21,11 +21,10 @@
 @property (readonly) Class superclass;
 
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;
-- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
 - (id)convertSFTitleSubtitleData:(id)arg1;
 - (void)selectableGridView:(id)arg1 didChangeSelectedIndex:(long long)arg2;
 - (id)setupContentView;
-- (void)updateWithCardSection:(id)arg1;
+- (void)updateWithRowModel:(id)arg1;
 
 @end
 

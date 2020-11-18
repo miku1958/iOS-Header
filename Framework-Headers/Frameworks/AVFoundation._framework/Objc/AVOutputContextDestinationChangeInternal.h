@@ -6,12 +6,14 @@
 
 #import <Foundation/NSObject.h>
 
+@class NSString;
 @protocol OS_dispatch_queue;
 
 @interface AVOutputContextDestinationChangeInternal : NSObject
 {
-    long long status;
     NSObject<OS_dispatch_queue> *ivarAccessQueue;
+    long long status;
+    NSString *cancellationReason;
 }
 
 @end

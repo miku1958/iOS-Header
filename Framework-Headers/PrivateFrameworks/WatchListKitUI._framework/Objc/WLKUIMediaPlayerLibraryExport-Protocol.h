@@ -9,6 +9,7 @@
 @class JSValue, NSArray, NSDictionary, NSNumber, NSString;
 
 @protocol WLKUIMediaPlayerLibraryExport <JSExport>
+- (void)fetchMediaEntitiesWithOptions:(NSDictionary *)arg1:(JSValue *)arg2;
 - (NSDictionary *)findItemByPersistentIdentifier:(id)arg1:(NSArray *)arg2;
 - (NSDictionary *)findItemByStoreIdentifier:(NSNumber *)arg1:(NSArray *)arg2;
 - (void)getImageForItem:(NSString *)arg1:(NSDictionary *)arg2:(JSValue *)arg3;
@@ -20,6 +21,7 @@
 - (NSArray *)getItems;
 - (NSString *)getShowIdentifierForStoreIdentifier:(NSNumber *)arg1;
 - (void)getUpdateProgress:(JSValue *)arg1;
+- (BOOL)isHDRCapable;
 - (BOOL)libraryHasMedia;
 - (long long)queryHasItemCount:(NSString *)arg1;
 - (BOOL)setFilter:(NSDictionary *)arg1;

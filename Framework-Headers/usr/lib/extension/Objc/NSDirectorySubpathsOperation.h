@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSDirectoryTraversalOperation.h>
+#import <Foundation/NSDirectoryTraversalOperation.h>
 
 @class NSMutableArray;
 

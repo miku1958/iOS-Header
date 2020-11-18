@@ -29,6 +29,7 @@
     SFSportsTeam *_team1;
     SFSportsTeam *_team2;
     NSString *_accessibilityDescription;
+    NSString *_eventStatus;
 }
 
 @property (copy, nonatomic) NSString *accessibilityDescription; // @synthesize accessibilityDescription=_accessibilityDescription;
@@ -39,6 +40,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (copy, nonatomic) NSString *eventStatus; // @synthesize eventStatus=_eventStatus;
 @property (nonatomic) BOOL hasBottomPadding;
 @property (nonatomic) BOOL hasTopPadding;
 @property (readonly) unsigned long long hash;

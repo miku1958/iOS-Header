@@ -14,11 +14,14 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityAnnounceNewKeyboardCompletionWithPreviousIndexPath:(id)arg1;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (id)_axAnnounceTimer;
 - (void)_axSetAnnounceTimer:(id)arg1;
+- (void)_axUpdateAccessibilityElements;
 - (void)_unifiedFieldDownKey:(id)arg1;
 - (void)_unifiedFieldUpKey:(id)arg1;
 - (void)completionList:(id)arg1 topHitDidBecomeReadyForString:(id)arg2;
+- (void)viewDidAppear:(BOOL)arg1;
 
 @end
 

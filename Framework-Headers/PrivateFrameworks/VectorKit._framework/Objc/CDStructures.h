@@ -1016,36 +1016,37 @@ struct LabelManager {
     BOOL _field127;
     BOOL _field128;
     BOOL _field129;
-    struct atomic<bool> _field130;
+    BOOL _field130;
     struct atomic<bool> _field131;
     struct atomic<bool> _field132;
     struct atomic<bool> _field133;
-    int _field134;
+    struct atomic<bool> _field134;
     int _field135;
-    shared_ptr_2d33c5e4 _field136;
-    struct SelectedLabelState _field137;
+    int _field136;
+    shared_ptr_2d33c5e4 _field137;
+    struct SelectedLabelState _field138;
     struct _retain_ptr<VKLabelManagerCollisionTimer *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
         CDUnknownFunctionPointerType *_field1;
         id _field2;
         struct _retain_objc _field3;
         struct _release_objc _field4;
-    } _field138;
+    } _field139;
     struct _retain_ptr<VKClientLocalizedStrings *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
         CDUnknownFunctionPointerType *_field1;
         id _field2;
         struct _retain_objc _field3;
         struct _release_objc _field4;
-    } _field139;
+    } _field140;
     struct {
         shared_ptr_a3c46825 _field1;
         shared_ptr_2d33c5e4 _field2;
         BOOL _field3;
         BOOL _field4;
         BOOL _field5;
-    } _field140;
-    BOOL _field141;
-    float _field142;
-    vector_c899b68f _field143;
+    } _field141;
+    BOOL _field142;
+    float _field143;
+    vector_c899b68f _field144;
 };
 
 struct LabelMapTile;

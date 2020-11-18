@@ -8,7 +8,6 @@
 
 #import <LoggingSupport/NSSecureCoding-Protocol.h>
 
-__attribute__((visibility("hidden")))
 @interface OSLogEventStreamPosition : NSObject <NSSecureCoding>
 {
     unsigned char _source[16];

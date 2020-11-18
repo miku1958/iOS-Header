@@ -59,6 +59,7 @@
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 
++ (void)initialize;
 - (void).cxx_destruct;
 - (void)_addObserver:(id)arg1;
 - (void)_endInterruption;

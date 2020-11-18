@@ -20,9 +20,10 @@ __attribute__((visibility("hidden")))
     CFPrefsCloudSource *_cloudSetTarget;
     struct _opaque_pthread_mutex_t *_searchListLock;
     BOOL initialized;
-    _Atomic BOOL completedInitialLoad;
+    _Atomic BOOL _isRebuildingCache;
 }
 
+- (void)_deferredNotify:(id)arg1 ofChangesFromDictionary:(struct __CFDictionary *)arg2 toDictionary:(struct __CFDictionary *)arg3;
 - (void)addCloudSourceForIdentifier:(struct __CFString *)arg1 configurationPath:(struct __CFString *)arg2 storeName:(struct __CFString *)arg3 container:(struct __CFString *)arg4;
 - (void)addCompatibilitySource;
 - (void)addManagedSourceForIdentifier:(struct __CFString *)arg1 user:(struct __CFString *)arg2;
@@ -49,7 +50,8 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)createRequestNewContentMessageForDaemon:(int)arg1;
 - (void)dealloc;
-- (void)deferredNotifyOfChangesFromDictionary:(struct __CFDictionary *)arg1 toDictionary:(struct __CFDictionary *)arg2;
+- (void)deferredNotifyCausedByLoadingOfChangesFromDictionary:(struct __CFDictionary *)arg1 toDictionary:(struct __CFDictionary *)arg2;
+- (void)deferredNotifyCausedByLocalWriteOfChangesFromDictionary:(struct __CFDictionary *)arg1 toDictionary:(struct __CFDictionary *)arg2;
 - (id)description;
 - (struct __CFString *)domainIdentifier;
 - (void)freeze;

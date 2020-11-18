@@ -12,10 +12,14 @@
 {
 }
 
+- (void)_handleSettingsDidChange:(id)arg1;
 - (id)consentedBrands;
+- (void)dealloc;
 - (id)deniedBrands;
+- (id)initWithAppContext:(id)arg1;
 - (BOOL)privateModeEnabled;
 - (id)settings;
+- (BOOL)sportsScoreSpoilersAllowed;
 
 @end
 

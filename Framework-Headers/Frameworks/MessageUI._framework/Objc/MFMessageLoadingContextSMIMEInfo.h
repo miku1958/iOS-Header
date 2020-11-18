@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class MFMessageLoadingContext, MFMessageLoadingContextEvent, MFMessageSigner, NSArray;
+@class MFMessageLoadingContext, MFMessageLoadingContextEvent, MFMessageSigner;
 
 @interface MFMessageLoadingContextSMIMEInfo : NSObject
 {
@@ -18,17 +18,11 @@
 @property (readonly, nonatomic) MFMessageLoadingContextEvent *loadEvent; // @synthesize loadEvent=_loadEvent;
 @property (readonly, nonatomic, getter=isMessageEncrypted) BOOL messageEncrypted;
 @property (readonly, nonatomic, getter=isMessageSigned) BOOL messageSigned;
-@property (readonly, nonatomic) NSArray *signers;
 
 + (id)smimeInfoForLoadEvent:(id)arg1;
-- (id)_firstSender;
-- (struct __SecCertificate *)copySigningCertificate;
 - (void)dealloc;
 - (id)initWithLoadEvent:(id)arg1;
-- (BOOL)isCertificateStoredInKeychain;
-- (unsigned long long)keychainCertificateStatus;
-- (void)removeSavedEncryptionCertificate;
-- (void)saveEncryptionCertificate;
+- (id)signers;
 
 @end
 

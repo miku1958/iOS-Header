@@ -7,7 +7,9 @@
 @class BSAnimationSettings, NSString, SBUIRemoteAlertMaterialDescriptor;
 
 @protocol SBUIRemoteAlertHostInterface
+- (void)deactivate;
 - (void)dismiss;
+- (void)invalidate;
 - (void)setAllowsAlertItems:(BOOL)arg1;
 - (void)setAllowsAlertStacking:(BOOL)arg1;
 - (void)setAllowsBanners:(BOOL)arg1;

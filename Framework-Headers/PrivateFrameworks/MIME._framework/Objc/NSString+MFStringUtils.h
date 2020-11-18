@@ -11,6 +11,8 @@
 - (id)mf_MD5Digest;
 - (id)mf_SHA1Digest;
 - (long long)mf_caseInsensitiveCompareExcludingXDash:(id)arg1;
+- (id)mf_copyDisplayString;
+- (id)mf_copyDisplayStringInRange:(struct _NSRange)arg1;
 - (id)mf_copyStringByDecodingIDNA;
 - (id)mf_copyStringByDecodingIDNAInRange:(struct _NSRange)arg1;
 - (id)mf_copyStringByEncodingIDNA;

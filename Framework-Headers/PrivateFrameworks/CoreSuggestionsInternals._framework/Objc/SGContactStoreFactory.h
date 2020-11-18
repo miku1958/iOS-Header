@@ -11,6 +11,7 @@
 }
 
 + (id)contactStore;
++ (id)contactStoreWithDonatedAndSuggestedContacts;
 + (void)useMockContactStore:(id)arg1;
 
 @end

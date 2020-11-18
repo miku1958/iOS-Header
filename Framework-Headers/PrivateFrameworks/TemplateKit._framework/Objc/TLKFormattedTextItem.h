@@ -10,5 +10,7 @@
 {
 }
 
+- (BOOL)hasContent;
+
 @end
 

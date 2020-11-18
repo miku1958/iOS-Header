@@ -35,7 +35,6 @@
 @property (copy) NSString *color; // @synthesize color=_color;
 @property (copy) NSNumber *coverGlassColor; // @synthesize coverGlassColor=_coverGlassColor;
 @property (copy) NSString *enclosureColor; // @synthesize enclosureColor=_enclosureColor;
-@property BOOL hasBeenUnlockedSinceLastCheckIn;
 @property (copy) NSNumber *housingColor; // @synthesize housingColor=_housingColor;
 @property (readonly) NSString *integratedCircuitCardIdentifier;
 @property (readonly) NSString *internationalMobileEquipmentIdentity;

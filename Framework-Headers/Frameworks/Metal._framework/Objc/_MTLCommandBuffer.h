@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSError, NSMutableDictionary, NSString, _MTLCommandQueue;
 @protocol MTLCommandEncoder, MTLCommandQueue;
@@ -53,6 +53,7 @@
     unsigned long long _labelTraceID;
     BOOL _StatEnabled;
     CDUnknownBlockType _perfSampleHandlerBlock;
+    BOOL _hasPresent;
 }
 
 @property (readonly, nonatomic) double GPUEndTime;

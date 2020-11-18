@@ -14,12 +14,15 @@
 @property (strong, nonatomic) SFAirport *arrivalAirport;
 @property (copy, nonatomic) NSString *arrivalGate;
 @property (copy, nonatomic) NSDate *arrivalPublishedTime;
+@property (copy, nonatomic) NSDate *arrivalRunwayTime;
 @property (copy, nonatomic) NSString *arrivalTerminal;
 @property (copy, nonatomic) NSString *baggageClaim;
 @property (copy, nonatomic) NSDate *departureActualTime;
 @property (strong, nonatomic) SFAirport *departureAirport;
 @property (copy, nonatomic) NSString *departureGate;
+@property (copy, nonatomic) NSDate *departureGateClosedTime;
 @property (copy, nonatomic) NSDate *departurePublishedTime;
+@property (copy, nonatomic) NSDate *departureRunwayTime;
 @property (copy, nonatomic) NSString *departureTerminal;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (strong, nonatomic) SFAirport *divertedAirport;

@@ -21,11 +21,13 @@
     LPImage *_artwork;
     LPArtworkMetadata *_artworkMetadata;
     LPImage *_branding;
+    NSString *_brandingText;
 }
 
 @property (strong, nonatomic) LPImage *artwork; // @synthesize artwork=_artwork;
 @property (copy, nonatomic) LPArtworkMetadata *artworkMetadata; // @synthesize artworkMetadata=_artworkMetadata;
 @property (strong, nonatomic) LPImage *branding; // @synthesize branding=_branding;
+@property (strong, nonatomic) NSString *brandingText; // @synthesize brandingText=_brandingText;
 @property (copy, nonatomic) NSString *genre; // @synthesize genre=_genre;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSString *storeFrontIdentifier; // @synthesize storeFrontIdentifier=_storeFrontIdentifier;

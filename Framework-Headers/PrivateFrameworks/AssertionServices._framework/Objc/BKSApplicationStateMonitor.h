@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class BSSignal, NSArray;
 @protocol OS_dispatch_queue, OS_xpc_object;
@@ -31,7 +31,9 @@
 
 - (id)_connection;
 - (void)_setEndpoint:(id)arg1;
+- (id)applicationInfoForApplication:(id)arg1;
 - (void)applicationInfoForApplication:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)applicationInfoForPID:(int)arg1;
 - (void)applicationInfoForPID:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned int)applicationStateForApplication:(id)arg1;
 - (id)bundleInfoValueForKey:(id)arg1 PID:(int)arg2;

@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
     NSArray *_recipients;
     BOOL _shouldShowPost;
     NSString *_itemCountString;
-    BOOL _hasPushedTitleController;
     BOOL _shouldAllowAlbumPicking;
     BOOL _addToExistingWorkflow;
     id<PUPhotoStreamComposeServiceDelegate> _delegate;
@@ -70,7 +69,6 @@ __attribute__((visibility("hidden")))
 - (void)userDidCancel;
 - (void)userDidCancelWithoutAnimation;
 - (void)userDidPost;
-- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 
 @end

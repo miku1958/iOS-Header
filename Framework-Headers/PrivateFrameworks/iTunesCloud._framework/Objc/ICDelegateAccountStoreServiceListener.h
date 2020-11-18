@@ -9,11 +9,15 @@
 #import <iTunesCloud/ICDelegateAccountStoreService-Protocol.h>
 #import <iTunesCloud/NSXPCListenerDelegate-Protocol.h>
 
-@class ICUserIdentityStore, NSString, NSXPCListener, NSXPCListenerEndpoint;
+@class ICUserIdentityStore, NSMutableArray, NSString, NSXPCListener, NSXPCListenerEndpoint;
+@protocol OS_dispatch_queue;
 
 @interface ICDelegateAccountStoreServiceListener : NSObject <NSXPCListenerDelegate, ICDelegateAccountStoreService>
 {
+    NSObject<OS_dispatch_queue> *_accessQueue;
+    NSObject<OS_dispatch_queue> *_callbackQueue;
     BOOL _ignoresEntitlements;
+    NSMutableArray *_connections;
     NSXPCListener *_listener;
     ICUserIdentityStore *_testingIdentityStore;
 }
@@ -29,6 +33,7 @@
 - (void).cxx_destruct;
 - (id)_identityStore;
 - (id)_initWithXPCListener:(id)arg1;
+- (void)_userIdentityStoreDelegateAccountStoreDidChangeNotification:(id)arg1;
 - (void)addDelegationUUIDs:(id)arg1 forUserIdentity:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)invalidate;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

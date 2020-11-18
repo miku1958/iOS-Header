@@ -11,6 +11,7 @@
 }
 
 + (id)hardwarePlatform;
++ (BOOL)isAudioAccessory;
 + (id)legacyPlatforms;
 
 @end

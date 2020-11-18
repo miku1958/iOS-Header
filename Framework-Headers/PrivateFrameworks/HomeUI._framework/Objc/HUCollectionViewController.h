@@ -27,6 +27,7 @@
 - (void)didUpdateRequiredHeightForCell:(id)arg1;
 - (id)initWithCollectionViewLayout:(id)arg1;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)systemLayoutFittingSizeDidChangeForChildContentContainer:(id)arg1;
 
 @end
 

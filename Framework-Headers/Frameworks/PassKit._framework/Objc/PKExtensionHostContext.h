@@ -36,6 +36,7 @@
 - (void)authorizationDidSelectShippingMethod:(id)arg1;
 - (void)authorizationWillStart;
 - (void)beginDelayingCallbacks;
+- (void)didEncounterAuthorizationEvent:(unsigned long long)arg1;
 - (void)endDelayingCallbacks;
 - (id)initWithInputItems:(id)arg1 listenerEndpoint:(id)arg2 contextUUID:(id)arg3;
 - (id)vendorContext;

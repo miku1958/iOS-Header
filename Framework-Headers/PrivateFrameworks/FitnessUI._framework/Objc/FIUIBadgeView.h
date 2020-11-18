@@ -8,7 +8,7 @@
 
 #import <FitnessUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class FIUIBadge, GLKTextureInfo, NSAttributedString, NSDictionary, NSString, UIImage, UIPanGestureRecognizer, UITapGestureRecognizer;
+@class FIUIBadge, GLKTextureInfo, NSAttributedString, NSDictionary, NSString, UIImage, UILongPressGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer;
 @protocol FIUIBadgeViewDelegate;
 
 @interface FIUIBadgeView : HKGLView <UIGestureRecognizerDelegate>
@@ -39,6 +39,7 @@
     double _spinRate;
     UIPanGestureRecognizer *_spinRecognizer;
     UITapGestureRecognizer *_tapRecognizer;
+    UILongPressGestureRecognizer *_longPressRecognizer;
     BOOL _magnetsEngaged;
     union _GLKVector3 _modelBaseColor;
     union _GLKVector3 _modelEnamelColor;
@@ -74,9 +75,11 @@
 - (void)_engageMagnets;
 - (void)_forEachProgram:(CDUnknownBlockType)arg1;
 - (void)_generateBackTexture;
+- (void)_longPressInternalOnly:(id)arg1;
 - (float)_normalizeAngle:(float)arg1;
 - (void)_panned:(id)arg1;
 - (void)_setBackTextureNeedsRegeneration;
+- (void)_spin360Degrees;
 - (void)_tapped:(id)arg1;
 - (id)_valueForTweak:(id)arg1;
 - (void)configureForAchievement:(id)arg1 userName:(id)arg2 usingSmallVariant:(BOOL)arg3;

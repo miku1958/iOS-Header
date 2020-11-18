@@ -32,11 +32,11 @@
 - (void).cxx_destruct;
 - (void)_establishConnectionIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (void)fetchLatestHeadlinesWithParameters:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchLatestResultsWithParameters:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithClient:(id)arg1;
 - (void)markAnalyticsElement:(id)arg1 asReadAtDate:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)markAnalyticsElements:(id)arg1 asSeenAtDate:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (void)serviceHasNewHeadlineResults;
+- (void)serviceHasNewTodayResults;
 
 @end
 

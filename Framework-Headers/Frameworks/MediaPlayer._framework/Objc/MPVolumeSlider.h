@@ -6,14 +6,13 @@
 
 #import <UIKit/UISlider.h>
 
-#import <MediaPlayer/MPAVRoutingControllerDelegate-Protocol.h>
 #import <MediaPlayer/MPVolumeControllerDelegate-Protocol.h>
+#import <MediaPlayer/MPVolumeDisplaying-Protocol.h>
 
-@class MPAVController, MPAVRoutingController, MPVolumeController, NSString, NSTimer, UIImage, UIImageView, UILabel, UILayoutGuide, UIView;
+@class MPAVController, MPAVRoute, MPVolumeController, NSString, NSTimer, UIImage, UIImageView, UILabel, UILayoutGuide, UIView;
 
-@interface MPVolumeSlider : UISlider <MPAVRoutingControllerDelegate, MPVolumeControllerDelegate>
+@interface MPVolumeSlider : UISlider <MPVolumeControllerDelegate, MPVolumeDisplaying>
 {
-    MPVolumeController *_volumeController;
     NSTimer *_commitTimer;
     UILabel *_routeNameLabel;
     long long _style;
@@ -26,8 +25,11 @@
     BOOL _volumeWarningBlinking;
     UIImage *_volumeWarningTrackImage;
     BOOL _userWasBlocked;
-    MPAVRoutingController *_routingController;
+    double _originalMinTrackViewAlphaOverride;
+    double _originalMinValueViewAlphaOverride;
+    double _originalMaxValueViewAlphaOverride;
     UILayoutGuide *_trackLayoutGuide;
+    MPVolumeController *_volumeController;
     struct UIEdgeInsets _hitRectInsets;
 }
 
@@ -36,33 +38,32 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct UIEdgeInsets hitRectInsets; // @synthesize hitRectInsets=_hitRectInsets;
+@property (readonly, nonatomic, getter=isOnScreen) BOOL onScreen;
 @property (strong, nonatomic) MPAVController *player;
-@property (readonly, nonatomic) MPAVRoutingController *routingController;
+@property (strong, nonatomic) MPAVRoute *route;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (readonly, weak, nonatomic) UIView *thumbView;
 @property (readonly, nonatomic) UILayoutGuide *trackLayoutGuide; // @synthesize trackLayoutGuide=_trackLayoutGuide;
-@property (copy, nonatomic) NSString *volumeAudioCategory;
+@property (readonly, nonatomic) NSString *volumeAudioCategory;
+@property (readonly, copy, nonatomic) NSString *volumeControlLabel;
+@property (readonly, nonatomic) MPVolumeController *volumeController; // @synthesize volumeController=_volumeController;
 @property (strong, nonatomic) UIImage *volumeWarningTrackImage; // @synthesize volumeWarningTrackImage=_volumeWarningTrackImage;
-@property (readonly, nonatomic) UIView *volumeWarningView; // @synthesize volumeWarningView=_volumeWarningView;
 
 - (void).cxx_destruct;
 - (void)_applicationDidEnterBackgroundNotification:(id)arg1;
 - (void)_applicationWillEnterForegroundNotification:(id)arg1;
-- (void)_availableRoutesDidChangeNotification:(id)arg1;
 - (void)_beginBlinkingWarningView;
 - (void)_blinkWarningView;
 - (void)_commitVolumeChange;
 - (void)_endBlinkingWarningView;
 - (void)_endTracking;
-- (void)_isExternalPlaybackActiveDidChangeNotification:(id)arg1;
 - (void)_layoutForAvailableRoutes;
 - (void)_layoutVolumeWarningView;
 - (id)_maxTrackImageForStyle:(long long)arg1;
 - (id)_minTrackImageForStyle:(long long)arg1;
 - (id)_newVolumeWarningView;
 - (void)_resetThumbImageForState:(unsigned long long)arg1;
-- (void)_routeNameLabelAnimationDidEnd;
 - (id)_thumbImageForStyle:(long long)arg1;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)cancelTrackingWithEvent:(id)arg1;
@@ -79,17 +80,18 @@
 - (float)maximumValue;
 - (float)minimumValue;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)routingController:(id)arg1 pickedRouteDidChange:(id)arg2;
-- (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (void)setAlpha:(double)arg1;
 - (void)setHidden:(BOOL)arg1;
 - (void)setThumbImage:(id)arg1 forState:(unsigned long long)arg2;
 - (void)setUserInteractionEnabled:(BOOL)arg1;
 - (void)setValue:(float)arg1 animated:(BOOL)arg2;
+- (void)setVolumeDataSource:(id)arg1;
 - (struct CGRect)thumbRectForBounds:(struct CGRect)arg1 trackRect:(struct CGRect)arg2 value:(float)arg3;
 - (struct CGRect)trackRectForBounds:(struct CGRect)arg1;
 - (void)volumeController:(id)arg1 EUVolumeLimitDidChange:(float)arg2;
 - (void)volumeController:(id)arg1 EUVolumeLimitEnforcedDidChange:(BOOL)arg2;
+- (void)volumeController:(id)arg1 volumeControlAvailableDidChange:(BOOL)arg2;
+- (void)volumeController:(id)arg1 volumeControlLabelDidChange:(id)arg2;
 - (void)volumeController:(id)arg1 volumeValueDidChange:(float)arg2;
 
 @end

@@ -17,6 +17,7 @@
 - (BOOL)_accessibilityScrollingEnabled;
 - (BOOL)_accessibilityShouldAvoidScrollingCollectionViewCells;
 - (BOOL)_axDescendentOfVerticalScrollStackScrollViewIsNotShelfCollectionViewLayout;
+- (BOOL)accessibilityShouldSpeakItemReorderEvents;
 - (BOOL)isAccessibilityOpaqueElementProvider;
 
 @end

@@ -11,7 +11,7 @@
 #import <PBBridgeSupport/PBBridgeCompanionProtocol-Protocol.h>
 #import <PBBridgeSupport/RUILoaderDelegate-Protocol.h>
 
-@class NSMutableData, NSMutableDictionary, NSMutableURLRequest, NSString, NSTimer, NSURLConnection, RUILoader, RUIStyle;
+@class NSDictionary, NSMutableData, NSMutableDictionary, NSMutableURLRequest, NSString, NSTimer, NSURLConnection, RUILoader, RUIStyle;
 @protocol PBBridgeConnectionDelegate, RUILoaderDelegate;
 
 @interface PBBridgeCompanionController : PBBridgeIDSServiceDelegate <IDSServiceDelegate, NSURLConnectionDelegate, RUILoaderDelegate, PBBridgeCompanionProtocol>
@@ -36,6 +36,7 @@
     NSMutableData *_activationData;
     RUILoader *_ruiLoader;
     NSString *_contentType;
+    NSDictionary *_allHeaders;
     NSTimer *_activationTimeout;
     NSString *_internalLastSendMessageID;
     NSString *_remoteActivationUserAgent;
@@ -51,6 +52,7 @@
 @property (nonatomic) int activationRetries; // @synthesize activationRetries=_activationRetries;
 @property (nonatomic) int activationState; // @synthesize activationState=_activationState;
 @property (strong, nonatomic) NSTimer *activationTimeout; // @synthesize activationTimeout=_activationTimeout;
+@property (strong, nonatomic) NSDictionary *allHeaders; // @synthesize allHeaders=_allHeaders;
 @property (nonatomic) BOOL allowAnyHTTPSCertificate; // @synthesize allowAnyHTTPSCertificate=_allowAnyHTTPSCertificate;
 @property (nonatomic) BOOL awaitingCustomResponse; // @synthesize awaitingCustomResponse=_awaitingCustomResponse;
 @property (nonatomic) BOOL connectionFailed; // @synthesize connectionFailed=_connectionFailed;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <ContactsFoundation/CNScheduler-Protocol.h>
 
@@ -13,6 +13,7 @@
 @interface _CNOperationQueueScheduler : NSObject <CNScheduler>
 {
     NSOperationQueue *_queue;
+    BOOL _isQualityOfServiceSpecified;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,8 +23,10 @@
 
 + (id)operationWithQualityOfService:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+- (void)_enqueueBlock:(CDUnknownBlockType)arg1 qualityOfService:(unsigned long long)arg2;
 - (id)afterDelay:(double)arg1 performBlock:(CDUnknownBlockType)arg2;
 - (id)afterDelay:(double)arg1 performBlock:(CDUnknownBlockType)arg2 qualityOfService:(unsigned long long)arg3;
+- (CDUnknownBlockType)blockWithCurrentQualityOfServiceForBlock:(CDUnknownBlockType)arg1 ifAllowedForRequestedQualityOfService:(unsigned long long)arg2;
 - (id)init;
 - (id)initWithMaxConcurrentOperationCount:(long long)arg1;
 - (id)initWithMaxConcurrentOperationCount:(long long)arg1 qualityOfService:(unsigned long long)arg2;

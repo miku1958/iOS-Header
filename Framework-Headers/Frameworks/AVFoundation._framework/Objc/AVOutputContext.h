@@ -22,10 +22,10 @@
 + (Class)defaultOutputContextImplClass;
 + (id)iTunesAudioContext;
 + (void)initialize;
-+ (BOOL)isSystemContextAllowed;
 + (id)outputContext;
 + (BOOL)outputContextExistsWithRemoteOutputDevice;
 + (id)outputContextForControllingOutputDeviceGroupWithID:(id)arg1;
++ (id)outputContextForControllingOutputDeviceGroupWithID:(id)arg1 options:(id)arg2;
 + (id)outputContextForID:(id)arg1;
 + (void)resetOutputDeviceForAllOutputContexts;
 + (id)sharedAudioPresentationOutputContext;
@@ -34,6 +34,7 @@
 + (BOOL)supportsSecureCoding;
 - (id)ID;
 - (void)addOutputDevice:(id)arg1;
+- (void)addOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (int)applicationProcessID;
 - (id)associatedAudioDeviceID;
 - (BOOL)canSetVolume;
@@ -47,6 +48,8 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithOutputContextImpl:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (void)muteAllOutputDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)openCommunicationChannelWithOptions:(id)arg1 error:(id *)arg2;
 - (id)outgoingCommunicationChannel;
 - (void)outputContextImpl:(id)arg1 didCloseCommunicationChannel:(id)arg2;
 - (void)outputContextImpl:(id)arg1 didExpireWithReplacement:(id)arg2;
@@ -63,12 +66,14 @@
 - (id)outputDevice;
 - (unsigned long long)outputDeviceFeatures;
 - (id)outputDevices;
+- (void)pausePlaybackOnAllOutputDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)providesControlForAllVolumeFeatures;
 - (void)removeOutputDevice:(id)arg1;
 - (void)setApplicationProcessID:(int)arg1;
 - (void)setCommunicationChannelDelegate:(id)arg1;
 - (BOOL)setOutputDevice:(id)arg1 forFeatures:(unsigned long long)arg2;
 - (void)setOutputDevice:(id)arg1 options:(id)arg2;
+- (void)setOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setOutputDevices:(id)arg1;
 - (void)setVolume:(float)arg1;
 - (float)volume;

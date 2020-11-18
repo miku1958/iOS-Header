@@ -8,6 +8,7 @@
 
 @interface NSCalendar (CalClassAdditions)
 + (id)CalCalendarWithUnsanitizedCalendarIdentifier:(id)arg1;
++ (id)CalDateFromBirthdayComponents:(id)arg1;
 + (id)CalGregorianCalendarForTimeZone:(id)arg1;
 + (id)CalGregorianGMTCalendar;
 + (id)overlayCalendarForCalendarIdentifier:(id)arg1 timezone:(id)arg2;

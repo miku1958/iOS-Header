@@ -114,6 +114,7 @@
 - (void)_setActiveJournal:(id)arg1;
 - (BOOL)_setMessageData:(id)arg1 libraryID:(unsigned int)arg2 part:(id)arg3 partial:(BOOL)arg4 complete:(BOOL)arg5;
 - (void)_setMessageDataString:(id)arg1 forKey:(id)arg2 forMessage:(id)arg3;
+- (void)_setOrAdjust:(BOOL)arg1 lastSyncAndMostRecentStatusCountWithValue:(long long)arg2 forMailbox:(id)arg3;
 - (void)_setProtectedDataAvailabilityState:(unsigned long long)arg1;
 - (id)_stringsForIndexSet:(id)arg1;
 - (void)_tellMiddleWareDidIndexMessages:(id)arg1;
@@ -126,6 +127,7 @@
 - (void)addMiddleware:(id)arg1;
 - (long long)addReferenceForContext:(id)arg1 usingDatabase:(struct sqlite3 *)arg2 mergeHandler:(CDUnknownBlockType)arg3;
 - (void)addSpotlightTombstones:(id)arg1 type:(long long)arg2;
+- (void)adjustLastSyncStatusCountBy:(long long)arg1 forMailbox:(id)arg2;
 - (id)allMailboxURLStrings;
 - (unsigned int)allNonDeleteCountForMailbox:(id)arg1 includeServerSearchResults:(BOOL)arg2 includeThreadSearchResults:(BOOL)arg3;
 - (id)allUIDsInMailbox:(id)arg1;

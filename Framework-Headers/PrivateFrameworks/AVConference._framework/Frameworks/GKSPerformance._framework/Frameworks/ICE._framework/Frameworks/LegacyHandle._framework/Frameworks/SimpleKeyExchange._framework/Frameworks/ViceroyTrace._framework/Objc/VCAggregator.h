@@ -103,7 +103,7 @@ __attribute__((visibility("hidden")))
 - (void)updatePauseVideo:(BOOL)arg1;
 - (void)updateRTStats:(id)arg1;
 - (void)updateRedState:(id)arg1;
-- (void)updateRelayInfo:(id)arg1;
+- (void)updateRelayInfo:(id)arg1 isRelay:(BOOL)arg2;
 - (void)updateRoleModeTransport:(unsigned short)arg1 deviceRole:(unsigned short)arg2 transportType:(unsigned short)arg3;
 - (void)updateTargetBitrateForSegment:(id)arg1 newValue:(int)arg2;
 - (void)updateVideoFECStats:(id)arg1;

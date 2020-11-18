@@ -8,7 +8,7 @@
 
 #import <PhotosEditUI/PLDismissableViewController-Protocol.h>
 
-@class NSString, PUEditPlugin;
+@class NSNumber, NSString, PUEditPlugin;
 @protocol NSCopying, PUEditPluginHostViewControllerDataSource, PUEditPluginHostViewControllerDelegate;
 
 @interface PUEditPluginHostViewController : UIViewController <PLDismissableViewController>
@@ -22,8 +22,10 @@
     UIViewController *__remoteViewController;
     id<NSCopying> __request;
     id __disablingIdleTimerToken;
+    NSNumber *__allowsFullScreen;
 }
 
+@property (strong, nonatomic, setter=_setAllowsFullScreen:) NSNumber *_allowsFullScreen; // @synthesize _allowsFullScreen=__allowsFullScreen;
 @property (nonatomic, setter=_setDidHandleCancel:) BOOL _didHandleCancel; // @synthesize _didHandleCancel=__didHandleCancel;
 @property (nonatomic, setter=_setDidHandleDone:) BOOL _didHandleDone; // @synthesize _didHandleDone=__didHandleDone;
 @property (strong, nonatomic, setter=_setDisablingIdleTimerToken:) id _disablingIdleTimerToken; // @synthesize _disablingIdleTimerToken=__disablingIdleTimerToken;
@@ -39,7 +41,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_addRemoteViewControllerIfNeeded;
+- (void)_addRemoteViewControllerIfNeededAllowingFullscreen:(BOOL)arg1;
 - (void)_beginContentEditingWithCompletionHandler:(CDUnknownBlockType)arg1 timeout:(double)arg2;
 - (void)_beginDisablingIdleTimer;
 - (void)_dismiss;
@@ -48,7 +50,9 @@
 - (void)_handleCancel;
 - (void)_handleCancelButton:(id)arg1;
 - (void)_handleDoneButton:(id)arg1;
+- (void)_handleVendorVersion:(unsigned int)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_hostContext;
+- (void)_queryAllowsFullScreen:(CDUnknownBlockType)arg1;
 - (void)_queryShouldShowCancelConfirmationWithResponseHandler:(CDUnknownBlockType)arg1 timeout:(double)arg2;
 - (void)dealloc;
 - (id)initWithPlugin:(id)arg1;

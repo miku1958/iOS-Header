@@ -12,6 +12,7 @@
 
 @interface CSMyriadPHash : NSObject <CSVoiceTriggerDelegate>
 {
+    unsigned char _signalFractional;
     short _signalEstimate;
 }
 
@@ -19,9 +20,12 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) short signalEstimate; // @synthesize signalEstimate=_signalEstimate;
+@property (nonatomic) unsigned char signalFractional; // @synthesize signalFractional=_signalFractional;
 @property (readonly) Class superclass;
 
-- (id)_generateMyriadInfo:(unsigned long long)arg1 score:(float)arg2;
++ (id)lastHash;
+- (id)_audioLogDirectory;
+- (id)_generateMyriadInfo:(unsigned long long)arg1 score:(float)arg2 channel:(unsigned long long)arg3 absoluteTime:(unsigned long long)arg4;
 - (id)initWithAudioBuffer:(id)arg1;
 - (unsigned short)pHash:(float *)arg1 length:(int)arg2;
 - (void)voiceTriggerDidDetectKeyword:(id)arg1;

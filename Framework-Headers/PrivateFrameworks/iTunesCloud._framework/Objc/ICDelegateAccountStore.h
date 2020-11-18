@@ -9,7 +9,7 @@
 #import <iTunesCloud/ICDelegateAccountStoreWriter-Protocol.h>
 #import <iTunesCloud/ICSQLiteConnectionDelegate-Protocol.h>
 
-@class ICDelegateAccountStoreOptions, NSMutableArray, NSString, NSXPCConnection;
+@class ICDelegateAccountStoreOptions, ICDelegateAccountStoreXPCWriter, NSMutableArray, NSString;
 
 @interface ICDelegateAccountStore : NSObject <ICSQLiteConnectionDelegate, ICDelegateAccountStoreWriter>
 {
@@ -17,8 +17,8 @@
     BOOL _isOpen;
     struct os_unfair_lock_s _lock;
     ICDelegateAccountStoreOptions *_options;
-    NSXPCConnection *_singleWriterConnection;
     ICDelegateAccountStore *_strongSelf;
+    ICDelegateAccountStoreXPCWriter *_xpcWriter;
 }
 
 @property (readonly, copy, nonatomic) NSString *databasePath;
@@ -30,13 +30,12 @@
 + (void)openWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (id)_initWithValidatedOptions:(id)arg1;
-- (void)_openWithSingleWriterConnection:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_openWithXPCWriter:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_popConnection;
+- (void)_postDidChangeNotification;
 - (void)_recycleConnection:(id)arg1;
 - (BOOL)_resetCorruptionUsingSQL;
 - (void)_resetCorruptionUsingXPC;
-- (id)_singleWriterXPCConnection;
-- (void)_singleWriterXPCConnectionDidInvalidate:(id)arg1;
 - (void)_writeSQLUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_writeUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_writeXPCUsingBlock:(CDUnknownBlockType)arg1;
@@ -44,7 +43,6 @@
 - (void)close;
 - (BOOL)connectionNeedsResetForCorruption:(id)arg1;
 - (id)initSingleWriterWithOptions:(id)arg1 error:(id *)arg2;
-- (void)invalidate;
 - (void)readUsingBlock:(CDUnknownBlockType)arg1;
 - (void)removeAllTokensWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeDelegationUUIDs:(id)arg1 forUserIdentity:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

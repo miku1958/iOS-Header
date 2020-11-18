@@ -6,20 +6,34 @@
 
 #import <Foundation/NSObject.h>
 
-@class FBSSceneSettings, FBSSceneTransitionContext;
+#import <FrontBoard/BSDescriptionProviding-Protocol.h>
 
-@interface FBProcessWatchdogEventContext : NSObject
+@class FBSSceneSettings, FBSSceneTransitionContext, FBSceneUpdateContext, NSString;
+
+@interface FBProcessWatchdogEventContext : NSObject <BSDescriptionProviding>
 {
     long long _event;
     FBSSceneSettings *_sceneSettings;
     FBSSceneTransitionContext *_sceneTransitionContext;
+    FBSceneUpdateContext *_sceneUpdateContext;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long event; // @synthesize event=_event;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) FBSSceneSettings *sceneSettings; // @synthesize sceneSettings=_sceneSettings;
-@property (readonly, nonatomic) FBSSceneTransitionContext *sceneTransitionContext; // @synthesize sceneTransitionContext=_sceneTransitionContext;
+@property (readonly, weak, nonatomic) FBSSceneTransitionContext *sceneTransitionContext; // @synthesize sceneTransitionContext=_sceneTransitionContext;
+@property (readonly, nonatomic) FBSceneUpdateContext *sceneUpdateContext; // @synthesize sceneUpdateContext=_sceneUpdateContext;
+@property (readonly) Class superclass;
 
 + (id)contextForEvent:(long long)arg1 settings:(id)arg2 transitionContext:(id)arg3;
+- (void).cxx_destruct;
+- (void)dealloc;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)succinctDescription;
+- (id)succinctDescriptionBuilder;
 
 @end
 

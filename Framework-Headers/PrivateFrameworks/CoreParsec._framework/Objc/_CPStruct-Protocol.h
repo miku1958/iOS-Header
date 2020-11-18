@@ -10,12 +10,15 @@
 
 @protocol _CPStruct <NSObject>
 
-@property (copy, nonatomic) NSDictionary *fields;
+@property (copy, nonatomic) NSDictionary *intKeyFields;
 @property (readonly, nonatomic) NSData *jsonData;
+@property (copy, nonatomic) NSDictionary *stringKeyFields;
 
-- (BOOL)getFields:(id *)arg1 forKey:(NSString *)arg2;
+- (BOOL)getIntKeyFields:(id *)arg1 forKey:(int)arg2;
+- (BOOL)getStringKeyFields:(id *)arg1 forKey:(NSString *)arg2;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
-- (void)setFields:(_CPValue *)arg1 forKey:(NSString *)arg2;
+- (void)setIntKeyFields:(_CPValue *)arg1 forKey:(int)arg2;
+- (void)setStringKeyFields:(_CPValue *)arg1 forKey:(NSString *)arg2;
 @end
 

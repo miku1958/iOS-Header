@@ -14,12 +14,18 @@
 {
     NSMutableArray *_accountInfos;
     NSMutableArray *_containers;
+    int _shuffleMode;
     _MPCProtoTracklistIndexPath *_startingItemIndexPath;
+    struct {
+        unsigned int shuffleMode:1;
+    } _has;
 }
 
 @property (strong, nonatomic) NSMutableArray *accountInfos; // @synthesize accountInfos=_accountInfos;
 @property (strong, nonatomic) NSMutableArray *containers; // @synthesize containers=_containers;
+@property (nonatomic) BOOL hasShuffleMode;
 @property (readonly, nonatomic) BOOL hasStartingItemIndexPath;
+@property (nonatomic) int shuffleMode; // @synthesize shuffleMode=_shuffleMode;
 @property (strong, nonatomic) _MPCProtoTracklistIndexPath *startingItemIndexPath; // @synthesize startingItemIndexPath=_startingItemIndexPath;
 
 + (Class)accountInfoType;

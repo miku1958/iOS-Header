@@ -7,10 +7,10 @@
 #import <NewsDaemon/NSObject-Protocol.h>
 
 @class NSArray, NSDate;
-@protocol NTHeadlineAnalyticsElementProviding, NTHeadlineResultOperationInfoProviding;
+@protocol NTHeadlineAnalyticsElementProviding, NTTodayResultOperationInfoProviding;
 
 @protocol NDNewsService <NSObject>
-- (void)fetchLatestHeadlinesWithParameters:(id<NTHeadlineResultOperationInfoProviding>)arg1 completion:(void (^)(NTHeadlineResults *, NSDictionary *, NSObject<NTHeadlineResultOperationFetchInfoProviding> *, NSError *, BOOL))arg2;
+- (void)fetchLatestResultsWithParameters:(id<NTTodayResultOperationInfoProviding>)arg1 completion:(void (^)(NTTodayResults *, NSDictionary *, NSObject<NTTodayResultOperationFetchInfoProviding> *, NSError *, BOOL))arg2;
 - (void)markAnalyticsElement:(id<NTHeadlineAnalyticsElementProviding>)arg1 asReadAtDate:(NSDate *)arg2 withCompletion:(void (^)(NSError *))arg3;
 - (void)markAnalyticsElements:(NSArray *)arg1 asSeenAtDate:(NSDate *)arg2 withCompletion:(void (^)(NSError *))arg3;
 @end

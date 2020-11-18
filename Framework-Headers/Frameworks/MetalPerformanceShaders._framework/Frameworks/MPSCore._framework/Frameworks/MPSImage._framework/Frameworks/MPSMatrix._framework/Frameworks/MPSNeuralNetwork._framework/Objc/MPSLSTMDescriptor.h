@@ -15,6 +15,7 @@
     int _cellToOutputNeuronType;
     float _cellToOutputNeuronParamA;
     float _cellToOutputNeuronParamB;
+    float _cellToOutputNeuronParamC;
     float _cellClipThreshold;
     id<MPSCNNConvolutionDataSource> _inputGateInputWeights;
     id<MPSCNNConvolutionDataSource> _inputGateRecurrentWeights;
@@ -36,6 +37,7 @@
 @property (strong, nonatomic) id<MPSCNNConvolutionDataSource> cellGateRecurrentWeights; // @synthesize cellGateRecurrentWeights=_cellGateRecurrentWeights;
 @property (nonatomic) float cellToOutputNeuronParamA; // @synthesize cellToOutputNeuronParamA=_cellToOutputNeuronParamA;
 @property (nonatomic) float cellToOutputNeuronParamB; // @synthesize cellToOutputNeuronParamB=_cellToOutputNeuronParamB;
+@property (nonatomic) float cellToOutputNeuronParamC; // @synthesize cellToOutputNeuronParamC=_cellToOutputNeuronParamC;
 @property (nonatomic) int cellToOutputNeuronType; // @synthesize cellToOutputNeuronType=_cellToOutputNeuronType;
 @property (nonatomic) BOOL coupleForgetGateToInputGate; // @synthesize coupleForgetGateToInputGate=_coupleForgetGateToInputGate;
 @property (strong, nonatomic) id<MPSCNNConvolutionDataSource> forgetGateInputWeights; // @synthesize forgetGateInputWeights=_forgetGateInputWeights;

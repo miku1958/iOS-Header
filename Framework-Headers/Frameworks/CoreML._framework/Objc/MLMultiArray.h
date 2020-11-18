@@ -47,6 +47,7 @@
 - (id)initWithShape:(id)arg1 dataType:(long long)arg2 error:(id *)arg3;
 - (id)initWithShape:(id)arg1 dataType:(long long)arg2 storageOrder:(long long)arg3 error:(id *)arg4;
 - (BOOL)isContiguousInOrder:(long long)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToMultiArray:(id)arg1;
 - (id)numberArray;
 - (id)numberAtOffset:(unsigned long long)arg1;

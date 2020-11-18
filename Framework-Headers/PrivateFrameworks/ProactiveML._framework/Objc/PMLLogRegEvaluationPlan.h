@@ -17,7 +17,9 @@
     id<PMLEvaluationTrackerProtocol> _tracker;
     PMLSessionDescriptor *_sessionDescriptor;
     unsigned long long _maxSessionsLimit;
+    unsigned long long _sessionsInBatch;
     PMLModelWeights *_currentModelWeights;
+    BOOL _intercept;
     double _skew;
     BOOL _isMultiLabel;
     unsigned long long _positiveLabel;
@@ -42,7 +44,7 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
-- (id)initWithStore:(id)arg1 tracker:(id)arg2 planId:(struct NSString *)arg3 isSynchronous:(BOOL)arg4 sessionDescriptor:(id)arg5 maxSessionsLimit:(unsigned long long)arg6 currentModelWeights:(id)arg7 skew:(double)arg8 threshold:(double)arg9 isMultiLabel:(BOOL)arg10 positiveLabel:(unsigned long long)arg11 evaluationLevel:(unsigned long long)arg12;
+- (id)initWithStore:(id)arg1 tracker:(id)arg2 planId:(struct NSString *)arg3 isSynchronous:(BOOL)arg4 sessionDescriptor:(id)arg5 maxSessionsLimit:(unsigned long long)arg6 sessionsInBatch:(unsigned long long)arg7 currentModelWeights:(id)arg8 intercept:(BOOL)arg9 skew:(double)arg10 threshold:(double)arg11 isMultiLabel:(BOOL)arg12 positiveLabel:(unsigned long long)arg13 evaluationLevel:(unsigned long long)arg14;
 - (void)loadSessionsSince:(double)arg1 block:(CDUnknownBlockType)arg2;
 - (id)normalizeRegressor:(id)arg1;
 - (id)run;

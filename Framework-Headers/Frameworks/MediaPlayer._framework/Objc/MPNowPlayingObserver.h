@@ -8,13 +8,12 @@
 
 #import <MediaPlayer/MPStoreDownloadManagerObserver-Protocol.h>
 
-@class MPAVController, MPArtworkCatalog, MPStoreDownload, NSData, NSMutableDictionary, NSString, UIImage;
+@class MPAVController, MPArtworkCatalog, NSData, NSMutableDictionary, NSString, UIImage;
 @protocol OS_dispatch_queue;
 
 @interface MPNowPlayingObserver : NSObject <MPStoreDownloadManagerObserver>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
-    MPStoreDownload *_activeDownload;
     MPArtworkCatalog *_currentArtworkCatalog;
     UIImage *_currentArtworkImage;
     NSData *_currentArtworkData;
@@ -34,8 +33,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (long long)_MPNowPlayingDownloadStateForDownload:(id)arg1;
-- (id)_activeDownloadForItemWithStoreID:(long long)arg1;
 - (id)_additionalKeysForNowPlayingItem:(id)arg1;
 - (void)_avItemArtworkDidChangeNotification:(id)arg1;
 - (void)_avItemDurationDidChangeNotification:(id)arg1;
@@ -61,16 +58,10 @@
 - (void)_repeatTypeDidChangeNotification:(id)arg1;
 - (void)_setNeedsNowPlayingInfoUpdate;
 - (void)_setNowPlayingInfo:(id)arg1 forItem:(id)arg2;
-- (id)_storeDownloadForNowPlayingItemInArray:(id)arg1;
 - (void)_timeDidJumpNotification:(id)arg1;
 - (void)_unregisterForNotificationsForPlayer:(id)arg1;
-- (void)_updateProgressForDownload:(id)arg1;
 - (void)configureArtworkCatalog:(id)arg1;
 - (void)dealloc;
-- (void)downloadManager:(id)arg1 didAddDownloads:(id)arg2 removeDownloads:(id)arg3;
-- (void)downloadManager:(id)arg1 downloadDidFinish:(id)arg2;
-- (void)downloadManager:(id)arg1 downloadDidProgress:(id)arg2;
-- (void)downloadManager:(id)arg1 downloadPurchaseDidFinish:(id)arg2;
 - (id)init;
 - (id)initWithPlayer:(id)arg1;
 

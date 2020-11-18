@@ -66,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_endPointUsesTransientTilingView:(id)arg1;
 - (void)_getTransitionProgress:(double *)arg1 backgroundProgress:(double *)arg2 chromeProgress:(double *)arg3;
 - (void)_transferView:(id)arg1 toSuperview:(id)arg2;
+- (BOOL)_validateTransitionFromEndPoint:(id)arg1 toEndPoint:(id)arg2;
 - (void)animateTransitionWithOperation:(long long)arg1 startedInteractively:(BOOL)arg2;
 - (id)init;
 - (id)initWithPresentationDuration:(double)arg1 dismissalDuration:(double)arg2;

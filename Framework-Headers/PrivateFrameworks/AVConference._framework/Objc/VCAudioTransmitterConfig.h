@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVCStatisticsCollector, NSMutableArray, VCAudioPayload, VCTransportSession;
 
@@ -20,14 +20,17 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_audioPayloads;
     VCAudioPayload *_chosenAudioPayload;
     VCAudioPayload *_chosenDTXPayload;
-    int _chosenRedPayloadType;
     unsigned char _packetsPerBundle;
     BOOL _useAFRC;
     int _bundlingScheme;
     BOOL _isUseCaseWatchContinuity;
     BOOL _allowAudioSwitching;
     BOOL _supportsAdaptation;
+    int _chosenRedPayloadType;
     BOOL _redEnabled;
+    BOOL _includeRedSequenceOffset;
+    unsigned int _redNumPayloads;
+    unsigned int _redMaxDelay20ms;
     BOOL _transmitROC;
     BOOL _needsPacketThread;
     int _operatingMode;
@@ -46,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int chosenRedPayloadType; // @synthesize chosenRedPayloadType=_chosenRedPayloadType;
 @property (nonatomic) void *controlInfoGenerator; // @synthesize controlInfoGenerator=_controlInfoGenerator;
 @property (nonatomic) BOOL ignoreSilence; // @synthesize ignoreSilence=_ignoreSilence;
+@property (nonatomic) BOOL includeRedSequenceOffset; // @synthesize includeRedSequenceOffset=_includeRedSequenceOffset;
 @property (nonatomic) struct AudioStreamBasicDescription inputFormat; // @synthesize inputFormat=_inputFormat;
 @property (nonatomic) BOOL isUseCaseWatchContinuity; // @synthesize isUseCaseWatchContinuity=_isUseCaseWatchContinuity;
 @property (nonatomic) struct tagHANDLE *mediaQueue; // @synthesize mediaQueue=_mediaQueue;
@@ -53,6 +57,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int operatingMode; // @synthesize operatingMode=_operatingMode;
 @property (nonatomic) unsigned char packetsPerBundle; // @synthesize packetsPerBundle=_packetsPerBundle;
 @property (nonatomic, getter=isRedEnabled) BOOL redEnabled; // @synthesize redEnabled=_redEnabled;
+@property (nonatomic) unsigned int redMaxDelay20ms; // @synthesize redMaxDelay20ms=_redMaxDelay20ms;
+@property (nonatomic) unsigned int redNumPayloads; // @synthesize redNumPayloads=_redNumPayloads;
 @property (nonatomic) struct opaqueRTCReporting *reportingAgent; // @synthesize reportingAgent=_reportingAgent;
 @property (nonatomic) struct tagHANDLE *rtpHandle; // @synthesize rtpHandle=_rtpHandle;
 @property (nonatomic) struct tagHANDLE *rtpVideo; // @synthesize rtpVideo=_rtpVideo;

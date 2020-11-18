@@ -20,15 +20,17 @@
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
     UIImageView *_atvImageView;
-    UILabel *_atvTextLabel;
+    UIImageView *_homePodImageView;
+    UILabel *_homeHubTextLabel;
     UIImageView *_iPadImageView;
     UILabel *_iPadTextLabel;
 }
 
 @property (strong, nonatomic) UIImageView *atvImageView; // @synthesize atvImageView=_atvImageView;
-@property (strong, nonatomic) UILabel *atvTextLabel; // @synthesize atvTextLabel=_atvTextLabel;
 @property (strong, nonatomic) NSArray *constraints; // @synthesize constraints=_constraints;
 @property (weak, nonatomic) id<HUAboutResidentDeviceViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) UILabel *homeHubTextLabel; // @synthesize homeHubTextLabel=_homeHubTextLabel;
+@property (strong, nonatomic) UIImageView *homePodImageView; // @synthesize homePodImageView=_homePodImageView;
 @property (strong, nonatomic) UIImageView *iPadImageView; // @synthesize iPadImageView=_iPadImageView;
 @property (strong, nonatomic) UILabel *iPadTextLabel; // @synthesize iPadTextLabel=_iPadTextLabel;
 @property (strong, nonatomic) HUGridLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;

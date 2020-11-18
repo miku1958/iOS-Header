@@ -38,6 +38,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)initWithRepresentedObject:(id)arg1;
+- (id)initWithRepresentedObject:(id)arg1 childNodes:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 

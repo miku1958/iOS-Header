@@ -11,12 +11,15 @@
 @interface WLKCanonicalPlayablesRequest : WLKRequest
 {
     NSString *_canonicalID;
+    NSString *_statsID;
 }
 
 @property (readonly, copy, nonatomic) NSString *canonicalID; // @synthesize canonicalID=_canonicalID;
+@property (readonly, copy, nonatomic) NSString *statsID; // @synthesize statsID=_statsID;
 
 - (void).cxx_destruct;
 - (id)initWithCanonicalID:(id)arg1;
+- (id)initWithStatsID:(id)arg1;
 - (void)makeRequestWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

@@ -9,7 +9,7 @@
 #import <CoreSpeech/CSAudioConverterDelegate-Protocol.h>
 #import <CoreSpeech/CSSpeechManagerDelegate-Protocol.h>
 
-@class CSAudioConverter, CSAudioFileWriter, CSAudioSampleRateConverter, CSEndpointerProxy, CSSpeechManager, NSDictionary, NSString;
+@class CSAudioConverter, CSAudioFileWriter, CSAudioSampleRateConverter, CSAudioZeroCounter, CSEndpointerProxy, CSSpeechManager, NSDictionary, NSString;
 @protocol CSEndpointAnalyzer, CSSpeechControllerDelegate, OS_dispatch_queue;
 
 @interface CSSpeechController : NSObject <CSSpeechManagerDelegate, CSAudioConverterDelegate>
@@ -21,6 +21,7 @@
     CSAudioSampleRateConverter *_downsampler;
     NSDictionary *_requestedRecordSettings;
     NSDictionary *_lastVoiceTriggerInfo;
+    CSAudioZeroCounter *_continuousZeroCounter;
     BOOL _isOpus;
     BOOL _isActivated;
     BOOL _isNarrowBand;
@@ -54,7 +55,9 @@
 - (void).cxx_destruct;
 - (id)_contextToString:(id)arg1;
 - (long long)_currentAudioRecorderSampleRate;
+- (void)_deviceAudioLogging;
 - (id)_getRecordSettings;
+- (id)_getSpeechIdentifier;
 - (BOOL)_isVoiceTriggered;
 - (BOOL)_setupAudioConverter:(BOOL)arg1;
 - (void)_setupDownsamplerIfNeeded;
@@ -65,6 +68,7 @@
 - (id)endpointerModelVersion;
 - (struct AudioStreamBasicDescription)getLPCMAudioStreamBasicDescription;
 - (double)getRecordBufferDuration;
+- (float)getSmartSiriVolume;
 - (id)initWithManager:(id)arg1;
 - (BOOL)initializeRecordSessionWithContext:(id)arg1;
 - (BOOL)isRecording;
@@ -97,6 +101,7 @@
 - (void)shouldAcceptEagerResultForDuration:(double)arg1 resultsCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)speechManagerBeginRecordInterruption:(id)arg1;
 - (void)speechManagerBeginRecordInterruption:(id)arg1 withContext:(id)arg2;
+- (void)speechManagerDetectedSystemVolumeChange:(id)arg1 withVolume:(float)arg2;
 - (void)speechManagerDidStartForwarding:(id)arg1 successfully:(BOOL)arg2 error:(id)arg3;
 - (void)speechManagerDidStopForwarding:(id)arg1 forReason:(long long)arg2;
 - (void)speechManagerEndRecordInterruption:(id)arg1;
@@ -104,6 +109,7 @@
 - (void)speechManagerRecordBufferAvailable:(id)arg1 buffer:(id)arg2;
 - (void)speechManagerRecordHardwareConfigurationDidChange:(id)arg1 toConfiguration:(long long)arg2;
 - (id)speechManagerRecordingContext;
+- (void)startController;
 - (BOOL)startRecording:(id *)arg1;
 - (BOOL)startRecordingWithSettings:(id)arg1 error:(id *)arg2;
 - (void)stopRecording;

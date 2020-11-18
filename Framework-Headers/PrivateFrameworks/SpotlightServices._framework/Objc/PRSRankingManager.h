@@ -25,8 +25,6 @@
 
 + (void)addToGlanceCategories:(id)arg1;
 + (void)fetchDuetValues;
-+ (id)getAppWhiteListReader;
-+ (void)loadAppWhiteList;
 + (id)quickGlanceBundleIds;
 - (void).cxx_destruct;
 - (void)adjustScoresUsingCategoryEngagement:(id)arg1 forTopScores:(id)arg2 forBottomScores:(id)arg3 query:(id)arg4 logInfo:(id)arg5 usingRankingKnobs:(id)arg6;

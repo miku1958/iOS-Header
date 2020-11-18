@@ -70,9 +70,7 @@
 - (BOOL)PDFView:(id)arg1 shouldHandleLink:(id)arg2;
 - (struct CGAffineTransform)_compensatingAffineTransformForPage:(id)arg1;
 - (void)_createPDFView;
-- (struct CGPoint)_maximumContentOffset;
 - (struct CGSize)_medianSizeForCurrentDocumentInPDFViewWithGetter:(CDUnknownBlockType)arg1;
-- (struct CGPoint)_minimumContentOffset;
 - (void)_prepareToRotate;
 - (void)_recoverFromRotation;
 - (void)_teardownPDFViewIfNecessary;

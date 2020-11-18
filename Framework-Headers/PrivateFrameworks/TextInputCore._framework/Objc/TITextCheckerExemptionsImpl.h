@@ -18,8 +18,8 @@
     NSUUID *_userDictionaryUUID;
 }
 
-@property (strong) NSSet *addressBookTokens; // @synthesize addressBookTokens=_addressBookTokens;
-@property (strong) NSSet *userDictionaryTokens; // @synthesize userDictionaryTokens=_userDictionaryTokens;
+@property (strong, nonatomic) NSSet *addressBookTokens; // @synthesize addressBookTokens=_addressBookTokens;
+@property (strong, nonatomic) NSSet *userDictionaryTokens; // @synthesize userDictionaryTokens=_userDictionaryTokens;
 @property (copy, nonatomic) NSUUID *userDictionaryUUID; // @synthesize userDictionaryUUID=_userDictionaryUUID;
 
 + (id)sharedTextCheckerExemptionsImpl;

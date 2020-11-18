@@ -17,6 +17,7 @@
     BOOL _wantsHTML;
     BOOL _wantsText;
     BOOL _setupComplete;
+    BOOL _skipFileProviderItems;
     int _supportedJobs;
     _Atomic unsigned int _requestCount;
     NSSet *_bundleIDs;
@@ -24,17 +25,20 @@
     NSSet *_INIntentClassNames;
     NSString *_serviceName;
     NSObject<OS_dispatch_queue> *_senderQueue;
+    double _minDate;
     NSObject<OS_dispatch_semaphore> *_setupSemaphore;
 }
 
 @property (readonly, nonatomic) NSSet *INIntentClassNames; // @synthesize INIntentClassNames=_INIntentClassNames;
 @property (readonly, nonatomic) NSSet *bundleIDs; // @synthesize bundleIDs=_bundleIDs;
 @property (readonly, nonatomic) NSArray *contentTypes; // @synthesize contentTypes=_contentTypes;
+@property (nonatomic) double minDate; // @synthesize minDate=_minDate;
 @property (readonly, nonatomic) _Atomic unsigned int requestCount; // @synthesize requestCount=_requestCount;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *senderQueue; // @synthesize senderQueue=_senderQueue;
 @property (readonly, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property (nonatomic) BOOL setupComplete; // @synthesize setupComplete=_setupComplete;
 @property (strong) NSObject<OS_dispatch_semaphore> *setupSemaphore; // @synthesize setupSemaphore=_setupSemaphore;
+@property (nonatomic) BOOL skipFileProviderItems; // @synthesize skipFileProviderItems=_skipFileProviderItems;
 @property (readonly, nonatomic) int supportedJobs; // @synthesize supportedJobs=_supportedJobs;
 @property (readonly, nonatomic) BOOL unresponsive;
 @property (nonatomic) BOOL wantsHTML; // @synthesize wantsHTML=_wantsHTML;

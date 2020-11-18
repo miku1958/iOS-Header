@@ -34,6 +34,7 @@
 
 - (void).cxx_destruct;
 - (void)dealloc;
+- (unsigned long long)evaluateAttribute:(id)arg1 ignoreSubtokens:(BOOL)arg2 withFuzzyHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)evaluateAttribute:(id)arg1 ignoreSubtokens:(BOOL)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (id)initWithQuery:(id)arg1 language:(id)arg2 fuzzyThreshold:(unsigned char)arg3 options:(unsigned long long)arg4;
 

@@ -56,7 +56,7 @@
 - (void)deregisterReceiver:(id)arg1;
 - (void)dispatchMessage:(id)arg1 target:(id)arg2;
 - (id)endPoint;
-- (id)initWithQueue:(id)arg1 receiveDispatcher:(id)arg2 messageFilterChain:(id)arg3 registerAsMachService:(BOOL)arg4;
+- (id)initWithReceiveDispatcher:(id)arg1 messageFilterChain:(id)arg2 registerAsMachService:(BOOL)arg3;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)registerForMessage:(id)arg1 receiver:(id)arg2 messageHandler:(CDUnknownBlockType)arg3;
 - (void)reset;

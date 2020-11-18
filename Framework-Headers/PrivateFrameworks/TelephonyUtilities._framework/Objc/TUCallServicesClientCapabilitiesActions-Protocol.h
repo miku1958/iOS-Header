@@ -4,11 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <TelephonyUtilities/NSObject-Protocol.h>
+#import <TelephonyUtilities/TUCallServicesClientCapabilitiesXPCServer-Protocol.h>
 
-@class TUCallServicesClientCapabilities;
-
-@protocol TUCallServicesClientCapabilitiesActions <NSObject>
-- (oneway void)setClientCapabilities:(TUCallServicesClientCapabilities *)arg1;
+@protocol TUCallServicesClientCapabilitiesActions <TUCallServicesClientCapabilitiesXPCServer>
 @end
 

@@ -6,9 +6,12 @@
 
 #import <HomeKit/HMServiceGroup.h>
 
+@class HFServiceDescriptor;
+
 @interface HMServiceGroup (HFAdditions)
 
 @property (readonly, nonatomic) BOOL hf_isSupported;
+@property (readonly, nonatomic) HFServiceDescriptor *hf_serviceDescriptor;
 
 @end
 

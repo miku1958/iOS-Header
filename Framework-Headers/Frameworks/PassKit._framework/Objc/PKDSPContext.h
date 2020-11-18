@@ -8,13 +8,11 @@
 
 #import <PassKitCore/NSCopying-Protocol.h>
 
-@class NSData, NSString;
+@class NSString;
 
 @interface PKDSPContext : NSObject <NSCopying>
 {
     NSString *_secureElementID;
-    NSData *_cryptogram;
-    NSData *_challengeResponse;
     NSString *_serverEndpointIdentifier;
     NSString *_cardholderName;
     NSString *_phoneNumber;
@@ -25,8 +23,6 @@
 }
 
 @property (copy, nonatomic) NSString *cardholderName; // @synthesize cardholderName=_cardholderName;
-@property (copy, nonatomic) NSData *challengeResponse; // @synthesize challengeResponse=_challengeResponse;
-@property (copy, nonatomic) NSData *cryptogram; // @synthesize cryptogram=_cryptogram;
 @property (nonatomic) unsigned long long eventFrequency; // @synthesize eventFrequency=_eventFrequency;
 @property (copy, nonatomic) NSString *peerPaymentRecipientAddress; // @synthesize peerPaymentRecipientAddress=_peerPaymentRecipientAddress;
 @property (copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;

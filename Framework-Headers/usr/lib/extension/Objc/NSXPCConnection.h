@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSXPCProxyCreating-Protocol.h>
+#import <Foundation/NSXPCProxyCreating-Protocol.h>
 
 @class NSString, NSXPCInterface, NSXPCListenerEndpoint;
 @protocol NSObject, OS_dispatch_queue;
@@ -67,6 +67,7 @@
 - (void)_killConnection:(int)arg1;
 - (void)_pauseProgress:(unsigned long long)arg1;
 - (id)_queue;
+- (Class)_remoteObjectInterfaceClass;
 - (void)_removeImportedProxy:(id)arg1;
 - (void)_resumeProgress:(unsigned long long)arg1;
 - (void)_sendDesistForProxy:(id)arg1;

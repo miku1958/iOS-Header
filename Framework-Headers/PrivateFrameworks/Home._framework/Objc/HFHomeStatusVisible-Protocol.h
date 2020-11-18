@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic) BOOL hf_hasSetVisibleInHomeStatus;
 @property (readonly, nonatomic) BOOL hf_isVisibleInHomeStatus;
+@property (readonly, nonatomic) BOOL hf_supportsHomeStatus;
 
 - (NAFuture *)hf_updateIsVisibleInHomeStatus:(BOOL)arg1;
 @end

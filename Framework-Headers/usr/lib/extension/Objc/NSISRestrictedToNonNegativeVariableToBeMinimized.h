@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSISVariable.h>
+#import <Foundation/NSISVariable.h>
 
 __attribute__((visibility("hidden")))
 @interface NSISRestrictedToNonNegativeVariableToBeMinimized : NSISVariable

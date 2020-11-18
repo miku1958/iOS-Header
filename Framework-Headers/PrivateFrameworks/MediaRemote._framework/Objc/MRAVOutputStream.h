@@ -12,11 +12,13 @@ __attribute__((visibility("hidden")))
 @interface MRAVOutputStream : MRAVBufferedOutputStream
 {
     AVOutputContextCommunicationChannel *_communicationChannel;
+    BOOL _channelIsOpen;
     AVOutputContext *_outputContext;
 }
 
 @property (readonly, nonatomic) AVOutputContext *outputContext; // @synthesize outputContext=_outputContext;
 
+- (void)_outputContextDidCloseCommunicationChannelNotification:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (BOOL)hasSpaceAvailable;

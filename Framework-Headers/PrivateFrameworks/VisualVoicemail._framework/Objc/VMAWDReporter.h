@@ -22,7 +22,14 @@
 - (void).cxx_destruct;
 - (void)_reportMetricWithID:(unsigned int)arg1 metric:(id)arg2;
 - (id)init;
+- (void)reportCustomGreetingFailedWithReason:(unsigned long long)arg1;
+- (void)reportCustomGreetingSaved;
+- (void)reportServiceAccountStateChanged:(int)arg1;
+- (void)reportServiceBeaconMaxedOut;
 - (void)reportVoicemailDownloadedWithDuration:(int)arg1;
+- (void)reportVoicemailTranscriptionAttempted;
+- (void)reportVoicemailTranscriptionCompleted;
+- (void)reportVoicemailTranscriptionFailedWithReason:(unsigned long long)arg1;
 - (void)reportVoicemailTranscriptionRatedAccurate:(BOOL)arg1;
 
 @end

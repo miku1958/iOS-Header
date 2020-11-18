@@ -22,6 +22,7 @@
     long long _yesterdayActivityCacheIndex;
     long long _tomorrowActivityCacheIndex;
     BOOL _cacheIndicesAreSet;
+    NSTimeZone *_currentTimeZone;
     NSDateInterval *_todayDateInterval;
     NSDateInterval *_yesterdayDateInterval;
     BOOL _existingActivityCachesAreSet;
@@ -43,6 +44,7 @@
     long long _wheelchairUse;
     CMPedometer *_pedometer;
     CMPedometerData *_lastPedometerData;
+    int _rebuildCacheNotificationToken;
     NSDate *_dateOverride;
     NSTimeZone *_timeZoneOverride;
 }
@@ -64,6 +66,7 @@
 - (void)_queue_alertObservers:(id)arg1 heartRateSummaryChanged:(id)arg2;
 - (void)_queue_alertObserversTodayActivityCacheChanged:(id)arg1;
 - (void)_queue_alertObserversYesterdayActivityCacheChanged:(id)arg1;
+- (id)_queue_currentDate;
 - (id)_queue_currentTimeZone;
 - (void)_queue_deleteActivityCaches:(id)arg1;
 - (BOOL)_queue_goalsSet;
@@ -76,6 +79,7 @@
 - (BOOL)_queue_readyToPrimeDataSource;
 - (BOOL)_queue_readyToSaveCaches;
 - (void)_queue_rebuildActivityCaches;
+- (void)_queue_rebuildCachesIfNeededForTimeChange;
 - (void)_queue_registerForSignificantTimeChangeNotification;
 - (void)_queue_resetCacheIndices;
 - (void)_queue_resetDailyGoals;
@@ -87,14 +91,12 @@
 - (BOOL)_queue_saveTodayCache;
 - (BOOL)_queue_saveYesterdayCache;
 - (void)_queue_streamSamplesAdded;
-- (id)_queue_today;
 - (void)_queue_updateCaches;
 - (void)_queue_updateDailyGoalsWithGoalSample:(id)arg1;
 - (void)_queue_updateDailyGoalsWithSamples:(id)arg1;
 - (void)_queue_updateDateIntervalsWithExistingActivityCaches;
 - (void)_queue_updateHeartRateSummaries;
 - (void)_queue_updateWheelchairUse;
-- (void)_significantTimeChangeOccurred:(id)arg1;
 - (void)_userCharacteristicsDidChangeNotification:(id)arg1;
 - (void)accessStatisticsBuilderWithCacheIndex:(long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)addActivityCacheObserver:(id)arg1;

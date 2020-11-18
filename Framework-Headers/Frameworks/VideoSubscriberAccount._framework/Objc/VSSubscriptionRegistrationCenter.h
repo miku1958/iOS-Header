@@ -29,10 +29,10 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) VSDelayOperation *expirationOperation; // @synthesize expirationOperation=_expirationOperation;
-@property (strong, nonatomic) VSSubscriptionFetchOptionsValidator *fetchOptionsValidator; // @synthesize fetchOptionsValidator=_fetchOptionsValidator;
+@property (strong) VSSubscriptionFetchOptionsValidator *fetchOptionsValidator; // @synthesize fetchOptionsValidator=_fetchOptionsValidator;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) VSLinkedOnOrAfterChecker *linkedOnOrAfterChecker; // @synthesize linkedOnOrAfterChecker=_linkedOnOrAfterChecker;
-@property (strong, nonatomic) VSSubscriptionPredicateFactory *predicateFactory; // @synthesize predicateFactory=_predicateFactory;
+@property (strong) VSSubscriptionPredicateFactory *predicateFactory; // @synthesize predicateFactory=_predicateFactory;
 @property (strong, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property (strong, nonatomic) VSRemoteNotifier *remoteNotifier; // @synthesize remoteNotifier=_remoteNotifier;
 @property (strong, nonatomic) NSMutableDictionary *subscriptionsByOptions; // @synthesize subscriptionsByOptions=_subscriptionsByOptions;

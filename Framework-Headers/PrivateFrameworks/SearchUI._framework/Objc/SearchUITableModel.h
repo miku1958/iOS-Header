@@ -17,6 +17,7 @@
 @property (strong) NSArray *sections; // @synthesize sections=_sections;
 @property (strong) NSArray *tableRowModel; // @synthesize tableRowModel=_tableRowModel;
 
++ (id)asyncRowManagersForCardSections:(id)arg1;
 + (id)gridLayoutsForCardSections:(id)arg1;
 + (id)resultsForMultiResultRowInSection:(id)arg1 startingAtIndex:(unsigned long long)arg2;
 + (id)rowModelsForCardSections:(id)arg1 result:(id)arg2;

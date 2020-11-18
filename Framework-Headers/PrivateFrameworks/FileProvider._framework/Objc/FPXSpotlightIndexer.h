@@ -40,8 +40,11 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_indexOneBatchWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_invalidate;
 - (void)_learnNewIndexState:(id)arg1;
+- (void)dealloc;
 - (void)deleteSearchableItemsWithDomainIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)dropIndexAndInvalidateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dropIndexWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dumpStateTo:(id)arg1;
 - (void)indexOneBatchWithCompletionHandler:(CDUnknownBlockType)arg1;

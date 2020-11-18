@@ -16,6 +16,7 @@
 {
     float _keywordThreshold;
     float _twoShotThreshold;
+    float _lastScore;
     id<CSVoiceTriggerDelegate> _delegate;
     CSSpeechManager *_speechManager;
     NSObject<OS_dispatch_queue> *_queue;
@@ -25,8 +26,10 @@
     unsigned long long _analyzedSampleCount;
     unsigned long long _triggerEndSampleCount;
     unsigned long long _twoShotDecisionWaitSamples;
+    unsigned long long _activeChannel;
 }
 
+@property (nonatomic) unsigned long long activeChannel; // @synthesize activeChannel=_activeChannel;
 @property (nonatomic) unsigned long long analyzedSampleCount; // @synthesize analyzedSampleCount=_analyzedSampleCount;
 @property (strong, nonatomic) CSAsset *currentAsset; // @synthesize currentAsset=_currentAsset;
 @property (readonly, copy) NSString *debugDescription;
@@ -35,6 +38,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CSKeywordAnalyzerNDAPI *keywordAnalyzer; // @synthesize keywordAnalyzer=_keywordAnalyzer;
 @property (nonatomic) float keywordThreshold; // @synthesize keywordThreshold=_keywordThreshold;
+@property (nonatomic) float lastScore; // @synthesize lastScore=_lastScore;
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (weak, nonatomic) CSSpeechManager *speechManager; // @synthesize speechManager=_speechManager;
@@ -56,6 +60,7 @@
 - (void)speechManagerDidStopForwarding:(id)arg1 forReason:(long long)arg2;
 - (void)speechManagerLPCMRecordBufferAvailable:(id)arg1 chunk:(id)arg2;
 - (void)speechManagerRecordBufferAvailable:(id)arg1 buffer:(id)arg2;
+- (void)start;
 - (void)startDetectTwoShot:(id)arg1;
 
 @end

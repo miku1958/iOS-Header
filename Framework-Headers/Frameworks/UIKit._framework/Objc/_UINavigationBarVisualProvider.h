@@ -29,9 +29,11 @@ __attribute__((visibility("hidden")))
 - (id)_accessibility_HUDItemForPoint:(struct CGPoint)arg1;
 - (id)_accessibility_controlToActivateForHUDGestureLiftAtPoint:(struct CGPoint)arg1;
 - (void)_shim_30244716;
+- (BOOL)_shim_34415965;
 - (id)_shim_backIndicatorView;
 - (id)_shim_backdropGroupName;
 - (long long)_shim_backdropStyle;
+- (double)_shim_backgroundAlpha;
 - (double)_shim_backgroundHeight;
 - (id)_shim_compatibilityBackgroundView;
 - (id)_shim_contentView;

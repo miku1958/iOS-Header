@@ -8,18 +8,19 @@
 
 #import <VoiceServices/VSSpeechServiceDelegate-Protocol.h>
 
-@class NSString, VSPresynthesizedAudioRequest, VSSpeechConnection, VSSpeechRequest;
+@class NSMutableDictionary, NSString, VSPresynthesizedAudioRequest, VSSpeechConnection, VSSpeechRequest;
 @protocol VSSpeechConnectionDelegate;
 
 @interface VSSpeechConnectionDelegateWrapper : NSObject <VSSpeechServiceDelegate>
 {
     id<VSSpeechConnectionDelegate> _delegate;
     VSSpeechRequest *_request;
-    VSSpeechRequest *_synthesisRequest;
+    NSMutableDictionary *_concurrentSynthesisRequests;
     VSPresynthesizedAudioRequest *_presynthesizedAudioRequest;
     VSSpeechConnection *_connection;
 }
 
+@property (strong, nonatomic) NSMutableDictionary *concurrentSynthesisRequests; // @synthesize concurrentSynthesisRequests=_concurrentSynthesisRequests;
 @property (weak, nonatomic) VSSpeechConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VSSpeechConnectionDelegate> delegate; // @synthesize delegate=_delegate;
@@ -28,7 +29,6 @@
 @property (strong, nonatomic) VSPresynthesizedAudioRequest *presynthesizedAudioRequest; // @synthesize presynthesizedAudioRequest=_presynthesizedAudioRequest;
 @property (strong, nonatomic) VSSpeechRequest *request; // @synthesize request=_request;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) VSSpeechRequest *synthesisRequest; // @synthesize synthesisRequest=_synthesisRequest;
 
 - (void).cxx_destruct;
 - (oneway void)presynthesizedAudioRequestDidStart;
@@ -41,7 +41,8 @@
 - (oneway void)speechRequestDidStopWithSuccess:(BOOL)arg1 phonemesSpoken:(id)arg2 error:(id)arg3;
 - (oneway void)speechRequestMark:(long long)arg1 didStartForRange:(struct _NSRange)arg2;
 - (oneway void)speechRequestSuccessWithInstrumentMetrics:(id)arg1;
-- (oneway void)synthesisRequestDidFinishWithInstrumentMetrics:(id)arg1 error:(id)arg2;
+- (oneway void)synthesisRequest:(id)arg1 didFinishWithInstrumentMetrics:(id)arg2 error:(id)arg3;
+- (oneway void)synthesisRequest:(id)arg1 didReceiveTimingInfo:(id)arg2;
 
 @end
 

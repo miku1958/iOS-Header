@@ -8,12 +8,21 @@
 
 #import <HomeUI/NSCopying-Protocol.h>
 
+@protocol HFDynamicFormattingValue, HFIconDescriptor;
+
 @interface HUQuickControlViewProfile : NSObject <NSCopying>
 {
+    unsigned long long _controlSize;
+    id<HFDynamicFormattingValue> _supplementaryFormattedValue;
+    id<HFIconDescriptor> _decorationIconDescriptor;
 }
 
+@property (nonatomic) unsigned long long controlSize; // @synthesize controlSize=_controlSize;
+@property (strong, nonatomic) id<HFIconDescriptor> decorationIconDescriptor; // @synthesize decorationIconDescriptor=_decorationIconDescriptor;
 @property (readonly, nonatomic) double gestureDragCoefficient;
+@property (strong, nonatomic) id<HFDynamicFormattingValue> supplementaryFormattedValue; // @synthesize supplementaryFormattedValue=_supplementaryFormattedValue;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

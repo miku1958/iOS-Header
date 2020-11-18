@@ -20,15 +20,17 @@
 @property struct _PCSIdentitySetData *set; // @synthesize set=_set;
 
 - (void).cxx_destruct;
-- (id)createIdentityOperation:(id)arg1 roll:(BOOL)arg2;
+- (id)createIdentityOperation:(id)arg1;
 - (void)createNewIdentity:(id)arg1 roll:(BOOL)arg2 complete:(CDUnknownBlockType)arg3;
+- (void)createNewIdentity:(id)arg1 roll:(BOOL)arg2 sync:(BOOL)arg3 complete:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (id)ensurePCSFieldsOperation:(id)arg1;
 - (id)fetchCurrentOperation:(id)arg1;
 - (id)initWithIdentitySet:(struct _PCSIdentitySetData *)arg1 dsid:(id)arg2;
+- (BOOL)shouldRetryWithSync:(id)arg1;
 - (id)stripOperationErrorIfPCSError:(id)arg1;
+- (void)submitRequest:(id)arg1 complete:(CDUnknownBlockType)arg2;
 - (id)syncViewOperation:(id)arg1;
-- (void)syncWithServer:(id)arg1 complete:(CDUnknownBlockType)arg2;
 
 @end
 

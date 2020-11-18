@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class HUIconView, NSArray, UILabel;
+@class HUIconView, NSArray, UILabel, UILayoutGuide;
 @protocol HFStringGenerator;
 
 @interface HUQuickControlSummaryView : UIView
@@ -20,12 +20,14 @@
     UILabel *_primaryStatusLabel;
     UILabel *_secondaryStatusLabel;
     NSArray *_contentConstraints;
+    UILayoutGuide *_lastBaselineLayoutGuide;
 }
 
 @property (nonatomic) unsigned long long contentAlignment; // @synthesize contentAlignment=_contentAlignment;
 @property (strong, nonatomic) NSArray *contentConstraints; // @synthesize contentConstraints=_contentConstraints;
 @property (nonatomic) unsigned long long iconSize; // @synthesize iconSize=_iconSize;
 @property (readonly, nonatomic) HUIconView *iconView; // @synthesize iconView=_iconView;
+@property (strong, nonatomic) UILayoutGuide *lastBaselineLayoutGuide; // @synthesize lastBaselineLayoutGuide=_lastBaselineLayoutGuide;
 @property (readonly, nonatomic) UILabel *primaryStatusLabel; // @synthesize primaryStatusLabel=_primaryStatusLabel;
 @property (copy, nonatomic) id<HFStringGenerator> primaryStatusText; // @synthesize primaryStatusText=_primaryStatusText;
 @property (readonly, nonatomic) UILabel *secondaryStatusLabel; // @synthesize secondaryStatusLabel=_secondaryStatusLabel;
@@ -37,13 +39,15 @@
 - (double)_iconHeight;
 - (void)_invalidateContentAndConstraints;
 - (id)_primaryFont;
-- (id)_primaryFontMetrics;
+- (id)_primaryFontTextStyle;
 - (id)_secondaryFont;
-- (id)_secondaryFontMetrics;
+- (id)_secondaryFontTextStyle;
+- (double)_secondaryStatusLineHeight;
 - (id)_statusParagraphStyleWithLineHeight:(double)arg1;
 - (void)_updatePrimaryStatusContent;
 - (void)_updateSecondaryStatusContent;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)lastBaselineAnchor;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;
 - (id)viewForFirstBaselineLayout;

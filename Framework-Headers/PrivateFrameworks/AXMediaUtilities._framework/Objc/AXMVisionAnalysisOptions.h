@@ -8,7 +8,7 @@
 
 #import <AXMediaUtilities/NSSecureCoding-Protocol.h>
 
-@class AXMLanguage, NSSet;
+@class AXMLanguage, NSArray, NSSet;
 
 @interface AXMVisionAnalysisOptions : NSObject <NSSecureCoding>
 {
@@ -25,6 +25,7 @@
     long long _clientID;
     AXMLanguage *_textDetectionLanguage;
     NSSet *_spellCheckingLanguages;
+    NSArray *_ignoredLayerContextIDs;
 }
 
 @property (nonatomic) long long clientID; // @synthesize clientID=_clientID;
@@ -37,6 +38,7 @@
 @property (nonatomic) BOOL detectScenes; // @synthesize detectScenes=_detectScenes;
 @property (nonatomic) BOOL detectText; // @synthesize detectText=_detectText;
 @property (nonatomic) BOOL detectTraits; // @synthesize detectTraits=_detectTraits;
+@property (strong, nonatomic) NSArray *ignoredLayerContextIDs; // @synthesize ignoredLayerContextIDs=_ignoredLayerContextIDs;
 @property (nonatomic) BOOL includeImageInResult; // @synthesize includeImageInResult=_includeImageInResult;
 @property (strong, nonatomic) NSSet *spellCheckingLanguages; // @synthesize spellCheckingLanguages=_spellCheckingLanguages;
 @property (strong, nonatomic) AXMLanguage *textDetectionLanguage; // @synthesize textDetectionLanguage=_textDetectionLanguage;

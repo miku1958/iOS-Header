@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) unsigned long long category; // @synthesize category=_category;
 
 - (void).cxx_destruct;
+- (void)_returnKeyPressed:(id)arg1;
 - (void)addNewReply:(id)arg1;
 - (id)cannedReplies;
 - (id)cannedRepliesFromSpecifiers;

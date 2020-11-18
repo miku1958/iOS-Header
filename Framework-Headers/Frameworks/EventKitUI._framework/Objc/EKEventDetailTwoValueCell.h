@@ -21,8 +21,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned int visibleItems;
 
 - (void).cxx_destruct;
+- (double)_layoutForWidth:(double)arg1;
 - (id)initWithEvent:(id)arg1 editable:(BOOL)arg2 platformStyle:(int)arg3;
 - (void)layoutForWidth:(double)arg1 position:(int)arg2;
+- (void)layoutSubviews;
 - (id)titleView;
 - (int)twoValueCellStyle;
 - (BOOL)update;

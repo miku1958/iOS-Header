@@ -255,6 +255,7 @@
 + (int)currentModelVersion;
 + (BOOL)debug_resetThumbnailsAndInitiateRebuildRequest;
 + (BOOL)deleteAllAssetAnalysisStatesInStore:(id)arg1;
++ (BOOL)deleteAnalysisStatesInStore:(id)arg1 forWorkerType:(short)arg2;
 + (id)descriptionForForceMigrationType:(int)arg1;
 + (BOOL)didCreateSqliteErrorFileForLightweightMigration;
 + (BOOL)didImportFileSystemAssets;

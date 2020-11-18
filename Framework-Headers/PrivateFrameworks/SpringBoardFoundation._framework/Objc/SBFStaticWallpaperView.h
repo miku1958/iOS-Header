@@ -15,10 +15,12 @@
     double _overallContrast;
     SBFColorBoxes *_colorBoxes;
     NSString *_cacheGroup;
+    UIImage *_sampleImage;
 }
 
 @property (strong, nonatomic) SBFColorBoxes *colorBoxes;
 @property (strong, nonatomic, getter=_displayedImage, setter=_setDisplayedImage:) UIImage *displayedImage; // @synthesize displayedImage=_displayedImage;
+@property (strong, nonatomic, getter=_sampleImage, setter=_setSampleImage:) UIImage *sampleImage; // @synthesize sampleImage=_sampleImage;
 
 + (BOOL)_allowsParallax;
 + (BOOL)_allowsRasterization;
@@ -29,12 +31,11 @@
 - (id)_computeAverageColor;
 - (double)_contrastInContentViewRect:(struct CGRect)arg1 contrastWithinBoxes:(double *)arg2 contrastBetweenBoxes:(double *)arg3;
 - (id)_createColorBoxes;
+- (void)_displayImage:(id)arg1;
 - (id)_imageByDarkeningHighlightsInImage:(id)arg1;
 - (struct CGSize)_imageSize;
 - (id)_repeatingGradientImageWithSize:(struct CGSize)arg1 scale:(double)arg2;
 - (void)_resetColorBoxes;
-- (void)_setImage:(id)arg1;
-- (void)_setSampleImage:(id)arg1;
 - (void)_setUpStaticImageContentView:(id)arg1;
 - (void)_setupContentView;
 - (void)_setupWallpaperImage:(id)arg1 options:(unsigned long long)arg2;

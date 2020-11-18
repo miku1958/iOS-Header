@@ -8,20 +8,23 @@
 
 #import <iTunesCloud/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray;
+@class NSData, NSMutableArray, NSString;
 
 @interface ICPBDGSStartDelegationResponse : PBCodable <NSCopying>
 {
     NSData *_playerAnisetteMID;
     NSData *_playerDeviceGUID;
     NSMutableArray *_playerInfoContextTokens;
+    NSString *_playerUserAgent;
 }
 
 @property (readonly, nonatomic) BOOL hasPlayerAnisetteMID;
 @property (readonly, nonatomic) BOOL hasPlayerDeviceGUID;
+@property (readonly, nonatomic) BOOL hasPlayerUserAgent;
 @property (strong, nonatomic) NSData *playerAnisetteMID; // @synthesize playerAnisetteMID=_playerAnisetteMID;
 @property (strong, nonatomic) NSData *playerDeviceGUID; // @synthesize playerDeviceGUID=_playerDeviceGUID;
 @property (strong, nonatomic) NSMutableArray *playerInfoContextTokens; // @synthesize playerInfoContextTokens=_playerInfoContextTokens;
+@property (strong, nonatomic) NSString *playerUserAgent; // @synthesize playerUserAgent=_playerUserAgent;
 
 + (Class)playerInfoContextTokenType;
 - (void).cxx_destruct;

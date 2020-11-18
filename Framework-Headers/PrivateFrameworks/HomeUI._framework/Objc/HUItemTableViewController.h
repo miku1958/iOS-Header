@@ -24,8 +24,7 @@
     NSMutableArray *_foregroundUpdateFutures;
     NSMutableSet *_registeredCellClasses;
     id<NACancelable> _deferredVisibilityUpdate;
-    NSMapTable *_textFieldToIndexPathMap;
-    NSMapTable *_indexPathToTextFieldMap;
+    NSMapTable *_textFieldToCellMap;
     HUGridLayoutOptions *_gridLayoutOptions;
 }
 
@@ -37,11 +36,10 @@
 @property (nonatomic) BOOL hasFinishedInitialLoad; // @synthesize hasFinishedInitialLoad=_hasFinishedInitialLoad;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HFItem *hu_presentedItem;
-@property (readonly, nonatomic) NSMapTable *indexPathToTextFieldMap; // @synthesize indexPathToTextFieldMap=_indexPathToTextFieldMap;
 @property (strong, nonatomic) HFItemManager *itemManager; // @synthesize itemManager=_itemManager;
 @property (readonly, nonatomic) NSMutableSet *registeredCellClasses; // @synthesize registeredCellClasses=_registeredCellClasses;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSMapTable *textFieldToIndexPathMap; // @synthesize textFieldToIndexPathMap=_textFieldToIndexPathMap;
+@property (readonly, nonatomic) NSMapTable *textFieldToCellMap; // @synthesize textFieldToCellMap=_textFieldToCellMap;
 @property (nonatomic) BOOL visibilityUpdatesEnabled; // @synthesize visibilityUpdatesEnabled=_visibilityUpdatesEnabled;
 @property (nonatomic) BOOL wantsPreferredContentSize; // @synthesize wantsPreferredContentSize=_wantsPreferredContentSize;
 
@@ -60,6 +58,7 @@
 - (id)_visibleCellForItem:(id)arg1;
 - (unsigned long long)automaticDisablingReasonsForItem:(id)arg1;
 - (BOOL)automaticallyUpdatesViewControllerTitle;
+- (BOOL)bypassInitialItemUpdateReload;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)childViewControllersToPreload;
 - (id)currentTextForTextField:(id)arg1 item:(id)arg2;
@@ -96,7 +95,6 @@
 - (BOOL)shouldHideHeaderAboveSection:(long long)arg1;
 - (BOOL)shouldHideSeparatorsForCell:(id)arg1 indexPath:(id)arg2;
 - (BOOL)shouldManageTextFieldForItem:(id)arg1;
-- (id)subclass_preloadContent;
 - (void)tableView:(id)arg1 accessoryButtonTappedForRowWithIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;

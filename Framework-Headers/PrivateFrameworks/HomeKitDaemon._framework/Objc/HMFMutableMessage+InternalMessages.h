@@ -7,6 +7,9 @@
 #import <HMFoundation/HMFMutableMessage.h>
 
 @interface HMFMutableMessage (InternalMessages)
+
+@property (nonatomic, getter=isInternal) BOOL internal;
+
 + (id)internalMessageWithName:(id)arg1 destination:(id)arg2 messagePayload:(id)arg3;
 + (id)internalMessageWithName:(id)arg1 messagePayload:(id)arg2;
 + (id)internalMessageWithName:(id)arg1 messagePayload:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;

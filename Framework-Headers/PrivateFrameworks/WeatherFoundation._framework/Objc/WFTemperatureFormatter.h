@@ -13,6 +13,7 @@
     BOOL _includeDegreeSymbol;
     int _inputUnit;
     int _outputUnit;
+    int _symbolType;
     struct UAMeasureFormat *_measureFormatter;
     NSLocale *_locale;
     NSString *_fallbackTemperatureString;
@@ -28,6 +29,7 @@
 @property (nonatomic) struct UAMeasureFormat *measureFormatter; // @synthesize measureFormatter=_measureFormatter;
 @property (nonatomic) int outputUnit; // @synthesize outputUnit=_outputUnit;
 @property (nonatomic) unsigned long long roundingMode; // @synthesize roundingMode=_roundingMode;
+@property (nonatomic) int symbolType; // @synthesize symbolType=_symbolType;
 
 + (id)temperatureFormatterWithInputUnit:(int)arg1 outputUnit:(int)arg2;
 - (void).cxx_destruct;

@@ -14,12 +14,22 @@
 {
     NSString *_deviceHwIdentifier;
     NSString *_deviceOsVersion;
+    BOOL _isInternalInstall;
+    BOOL _isInternalTool;
+    struct {
+        unsigned int isInternalInstall:1;
+        unsigned int isInternalTool:1;
+    } _has;
 }
 
 @property (strong, nonatomic) NSString *deviceHwIdentifier; // @synthesize deviceHwIdentifier=_deviceHwIdentifier;
 @property (strong, nonatomic) NSString *deviceOsVersion; // @synthesize deviceOsVersion=_deviceOsVersion;
 @property (readonly, nonatomic) BOOL hasDeviceHwIdentifier;
 @property (readonly, nonatomic) BOOL hasDeviceOsVersion;
+@property (nonatomic) BOOL hasIsInternalInstall;
+@property (nonatomic) BOOL hasIsInternalTool;
+@property (nonatomic) BOOL isInternalInstall; // @synthesize isInternalInstall=_isInternalInstall;
+@property (nonatomic) BOOL isInternalTool; // @synthesize isInternalTool=_isInternalTool;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

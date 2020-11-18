@@ -31,7 +31,6 @@
 - (void)showErrorWithTitle:(id)arg1 message:(id)arg2;
 - (void)showHelpBookInfo;
 - (void)showNoConnectionErrorMessage;
-- (void)updateFonts;
 
 @end
 

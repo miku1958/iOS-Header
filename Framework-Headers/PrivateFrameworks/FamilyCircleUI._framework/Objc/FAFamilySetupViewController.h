@@ -9,7 +9,7 @@
 #import <FamilyCircleUI/FAFamilySetupPageDelegate-Protocol.h>
 #import <FamilyCircleUI/RemoteUIControllerDelegate-Protocol.h>
 
-@class AAGrandSlamSigner, ACAccount, ACAccountStore, NSArray, NSMutableURLRequest, NSString, RemoteUIController, UIActivityIndicatorView, UINavigationItem;
+@class AAGrandSlamSigner, AAUIRemoteUIController, ACAccount, ACAccountStore, NSArray, NSMutableURLRequest, NSString, UIActivityIndicatorView, UINavigationItem;
 @protocol FASetupDelegate;
 
 @interface FAFamilySetupViewController : AAUIBleachedNavigationController <FAFamilySetupPageDelegate, RemoteUIControllerDelegate>
@@ -17,7 +17,7 @@
     ACAccount *_account;
     ACAccountStore *_accountStore;
     AAGrandSlamSigner *_grandSlamSigner;
-    RemoteUIController *_remoteUIController;
+    AAUIRemoteUIController *_remoteUIController;
     NSMutableURLRequest *_startRemoteUIRequest;
     NSMutableURLRequest *_currentRemoteUIRequest;
     BOOL _isShowingSpinner;

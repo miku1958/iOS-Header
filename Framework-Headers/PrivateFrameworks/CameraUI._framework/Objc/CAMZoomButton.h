@@ -6,7 +6,7 @@
 
 #import <UIKit/UIControl.h>
 
-@class UIImageView, UILabel, UIView;
+@class NSString, UIImageView, UILabel, UIView;
 @protocol CAMZoomButtonDelegate;
 
 @interface CAMZoomButton : UIControl
@@ -14,7 +14,7 @@
     id<CAMZoomButtonDelegate> _delegate;
     double _zoomFactor;
     long long _orientation;
-    long long __buttonSize;
+    NSString *_contentSizeCategory;
     UIView *__contentContainerView;
     UILabel *__zoomFactorLabel;
     UIImageView *__circleImageView;
@@ -24,30 +24,30 @@
 }
 
 @property (readonly, nonatomic) UIImageView *_backgroundImageView; // @synthesize _backgroundImageView=__backgroundImageView;
-@property (nonatomic, setter=_setButtonSize:) long long _buttonSize; // @synthesize _buttonSize=__buttonSize;
 @property (readonly, nonatomic) UIImageView *_circleImageView; // @synthesize _circleImageView=__circleImageView;
 @property (readonly, nonatomic) UIView *_contentContainerView; // @synthesize _contentContainerView=__contentContainerView;
 @property (readonly, nonatomic) UILabel *_zoomFactorLabel; // @synthesize _zoomFactorLabel=__zoomFactorLabel;
+@property (copy, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
 @property (weak, nonatomic) id<CAMZoomButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic, setter=_setHighlightingTransform:) struct CGAffineTransform highlightingTransform; // @synthesize highlightingTransform=_highlightingTransform;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (nonatomic) struct UIEdgeInsets tappableEdgeInsets; // @synthesize tappableEdgeInsets=_tappableEdgeInsets;
 @property (nonatomic) double zoomFactor; // @synthesize zoomFactor=_zoomFactor;
 
++ (BOOL)_shouldUseLargeButtonSizeForContentSize:(id)arg1;
++ (double)circleDiameterForContentSize:(id)arg1;
++ (double)fontSizeForContentSize:(id)arg1;
 + (id)textForZoomFactor:(double)arg1;
 - (void).cxx_destruct;
-- (double)_backgroundImageDiameterForButtonSize:(long long)arg1;
-- (long long)_buttonSizeForContentSize:(id)arg1;
-- (double)_circleImageDiameterForButtonSize:(long long)arg1;
-- (double)_circleLineWidthForButtonSize:(long long)arg1;
+- (double)_backgroundImageDiameterForContentSize:(id)arg1;
+- (double)_circleLineWidthForContentSize:(id)arg1;
 - (void)_commonCAMZoomButtonInitialization;
-- (id)_createBackgroundImageForButtonSize:(long long)arg1;
-- (id)_createCircleImageForButtonSize:(long long)arg1;
-- (double)_fontSizeForButtonSize:(long long)arg1;
+- (id)_createBackgroundImageForContentSize:(id)arg1;
+- (id)_createCircleImageForContentSize:(id)arg1;
 - (struct CGAffineTransform)_highlightingTransformForHighlighted:(BOOL)arg1;
 - (void)_performHighlightAnimation;
 - (struct CGAffineTransform)_targetTransformForHighlighted:(BOOL)arg1 orientation:(long long)arg2;
-- (void)_updateForButtonSize;
+- (void)_updateForContentSize;
 - (void)_updateZoomFactorLabel;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (id)initWithCoder:(id)arg1;
@@ -57,7 +57,6 @@
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setOrientation:(long long)arg1 animated:(BOOL)arg2;
 - (void)tintColorDidChange;
-- (void)updateToContentSize:(id)arg1;
 
 @end
 

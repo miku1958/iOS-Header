@@ -53,7 +53,6 @@
     double _linkConnectTime;
     double _firstClientPacketTime;
     struct IDSNAT64PrefixCache_ *_nat64PrefixCache;
-    NSMutableArray *_nat64Blocks;
     NSMutableDictionary *_tokenToCandidatePairs;
     NSMutableDictionary *_linkIDToCandidatePairs;
     NSMutableDictionary *_channelToCandidatePairs;
@@ -104,6 +103,7 @@
     unsigned long long _headerOverhead;
     unsigned long long _state;
     unsigned char _clientUUID[16];
+    NSString *_idsSessionID;
     unsigned long long _totalBytesSent;
     unsigned long long _totalPacketsSent;
     unsigned long long _totalBytesReceived;
@@ -149,7 +149,7 @@
 - (float)_getCommNATTimeoutValue;
 - (id)_getLink:(int)arg1 stunTransport:(long long)arg2;
 - (unsigned int)_getLinkInformation:(long long)arg1 linkOK:(BOOL *)arg2;
-- (void)_getNAT64PrefixForInterface:(int)arg1 interfaceName:(id)arg2;
+- (void)_getNAT64PrefixForInterface:(int)arg1 interfaceName:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_handleActivityTimer;
 - (void)_handleDisconnectTimer;
 - (void)_handleSelfAllocationTimeout:(id)arg1;

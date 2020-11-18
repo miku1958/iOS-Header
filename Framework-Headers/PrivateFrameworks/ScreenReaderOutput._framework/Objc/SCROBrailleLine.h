@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSData, NSDictionary, NSMutableAttributedString, SCROBrailleChunk, SCROBrailleLineVirtualStatus;
+@class NSArray, NSData, NSDictionary, NSMutableArray, NSMutableAttributedString, SCROBrailleChunk, SCROBrailleLineVirtualStatus;
 @protocol SCROBrailleDriverProtocol;
 
 @interface SCROBrailleLine : NSObject
@@ -52,7 +52,7 @@
     SCROBrailleChunk *_chunkPendingTranslation;
     NSArray *_chunkArray;
     NSDictionary *_chunkDictionary;
-    NSDictionary *_pendingBrailleStringDictionary;
+    NSMutableArray *_pendingBrailleStringDictionaries;
 }
 
 @property (strong, nonatomic) NSArray *chunkArray; // @synthesize chunkArray=_chunkArray;
@@ -65,7 +65,7 @@
 @property (nonatomic) BOOL isKeyboardHelpOn; // @synthesize isKeyboardHelpOn=_isKeyboardHelpOn;
 @property (nonatomic) long long lineOffset; // @synthesize lineOffset=_lineOffset;
 @property (readonly, nonatomic) BOOL needsDisplayFlush; // @synthesize needsDisplayFlush=_needsDisplayFlush;
-@property (strong, nonatomic) NSDictionary *pendingBrailleStringDictionary; // @synthesize pendingBrailleStringDictionary=_pendingBrailleStringDictionary;
+@property (strong, nonatomic) NSMutableArray *pendingBrailleStringDictionaries; // @synthesize pendingBrailleStringDictionaries=_pendingBrailleStringDictionaries;
 @property (readonly, nonatomic) BOOL shouldTranslateNow;
 @property (readonly, nonatomic) BOOL wantsEdits;
 @property (nonatomic) BOOL wordWrapEnabled; // @synthesize wordWrapEnabled=_wordWrapEnabled;

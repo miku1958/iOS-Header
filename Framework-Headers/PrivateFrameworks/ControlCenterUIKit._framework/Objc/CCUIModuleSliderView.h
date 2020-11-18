@@ -12,7 +12,7 @@
 #import <ControlCenterUIKit/CCUIGroupRendering-Protocol.h>
 #import <ControlCenterUIKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CALayer, CCUICAPackageDescription, CCUICAPackageView, NSArray, NSString, NSTimer, UIImage, UIImageView, UILongPressGestureRecognizer, UISelectionFeedbackGenerator, _UIEdgeFeedbackGenerator;
+@class CALayer, CCUICAPackageDescription, CCUICAPackageView, NSArray, NSString, NSTimer, UIImage, UIImageView, UIPanGestureRecognizer, UISelectionFeedbackGenerator, _UIEdgeFeedbackGenerator;
 
 @interface CCUIModuleSliderView : UIControl <UIGestureRecognizerDelegate, CCUIContentModuleTopLevelGestureProvider, CCUIContentModuleExpandedStateListener, CCUIContentClipping, CCUIGroupRendering>
 {
@@ -22,11 +22,10 @@
     NSArray *_stepBackgroundViews;
     NSArray *_separatorViews;
     double _startingHeight;
-    struct CGPoint _startingLocation;
     float _startingValue;
     NSTimer *_updatesCommitTimer;
     float _previousValue;
-    UILongPressGestureRecognizer *_valueChangeGestureRecognizer;
+    UIPanGestureRecognizer *_valueChangeGestureRecognizer;
     UISelectionFeedbackGenerator *_selectionFeedbackGenerator;
     _UIEdgeFeedbackGenerator *_edgeFeedbackGenerator;
     BOOL _glyphVisible;
@@ -88,8 +87,8 @@
 - (double)_sliderHeightForValue:(float)arg1;
 - (unsigned long long)_stepFromValue:(float)arg1;
 - (void)_updateStepFromValue:(float)arg1 playHaptic:(BOOL)arg2;
-- (void)_updateValueForTouchLocation:(struct CGPoint)arg1 withAbsoluteReference:(BOOL)arg2 forContinuedGesture:(BOOL)arg3;
-- (float)_valueForTouchLocation:(struct CGPoint)arg1 withAbsoluteReference:(BOOL)arg2;
+- (void)_updateValueForPanGestureRecognizer:(id)arg1 withAbsoluteReference:(BOOL)arg2 forContinuedGesture:(BOOL)arg3;
+- (float)_valueForPanGestureRecognizer:(id)arg1 withAbsoluteReference:(BOOL)arg2;
 - (float)_valueFromStep:(unsigned long long)arg1;
 - (void)contentModuleWillTransitionToExpandedContentMode:(BOOL)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;

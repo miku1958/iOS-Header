@@ -7,6 +7,5 @@
 #import <iCloudQuotaUI/ICQDelegate-Protocol.h>
 
 @protocol ICQPageDelegate <ICQDelegate>
-- (double)senderGetTopMargin:(id)arg1;
 @end
 

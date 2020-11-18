@@ -6,19 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class CSAsset, NSArray, NSString;
+@class NSArray, NSString;
 
 @interface CSSpeakerModel : NSObject
 {
-    CSAsset *_asset;
+    NSString *_modelFileName;
     NSString *_languageCode;
     NSString *_modelPath;
     NSString *_utteranceDirectory;
-    BOOL _isValid;
 }
 
 @property (readonly, nonatomic) NSArray *enrollmentUtterance;
-@property (readonly, nonatomic) BOOL isValid; // @synthesize isValid=_isValid;
+@property (readonly, nonatomic) BOOL isValid;
 @property (readonly, nonatomic) NSString *modelPath;
 @property (readonly, nonatomic) BOOL needsRetrain;
 @property (readonly, nonatomic) NSString *utteranceDirectory;
@@ -27,7 +26,8 @@
 - (void)_createDirectoryIfNotExist:(id)arg1;
 - (BOOL)_isDirectoryEmpty:(id)arg1;
 - (id)_satPath;
-- (id)initWithAsset:(id)arg1 languageCode:(id)arg2;
+- (void)discard;
+- (id)initWithSpeakerModelFileName:(id)arg1 languageCode:(id)arg2;
 - (id)modelDirectory;
 
 @end

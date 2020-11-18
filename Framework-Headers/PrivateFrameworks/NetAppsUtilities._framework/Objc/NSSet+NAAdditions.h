@@ -10,6 +10,8 @@
 + (id)na_setWithSafeObject:(id)arg1;
 - (BOOL)na_all:(CDUnknownBlockType)arg1;
 - (BOOL)na_any:(CDUnknownBlockType)arg1;
+- (id)na_dictionaryByBucketingObjectsUsingKeyGenerator:(CDUnknownBlockType)arg1;
+- (id)na_dictionaryWithKeyGenerator:(CDUnknownBlockType)arg1;
 - (void)na_each:(CDUnknownBlockType)arg1;
 - (id)na_filter:(CDUnknownBlockType)arg1;
 - (id)na_firstObjectPassingTest:(CDUnknownBlockType)arg1;

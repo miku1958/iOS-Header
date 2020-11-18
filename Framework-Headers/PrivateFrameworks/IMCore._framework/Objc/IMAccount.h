@@ -132,6 +132,7 @@
 @property (readonly, nonatomic) unsigned long long loginStatus; // @synthesize loginStatus=_loginStatus;
 @property (readonly, nonatomic) NSString *loginStatusMessage;
 @property (readonly, nonatomic) BOOL makingChanges;
+@property (readonly, nonatomic, getter=isMakoAccount) BOOL makoAccount;
 @property (readonly, nonatomic) NSDate *myIdleSince; // @synthesize myIdleSince=_myIdleSince;
 @property (readonly, nonatomic) NSString *myNowPlayingString;
 @property (readonly, nonatomic) NSData *myPictureData; // @synthesize myPictureData=_myPictureData;

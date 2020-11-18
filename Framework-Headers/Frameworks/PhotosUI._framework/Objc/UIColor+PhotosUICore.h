@@ -11,5 +11,6 @@
 @property (readonly, nonatomic, getter=px_isTransparent) BOOL px_transparent;
 
 + (id)alternateSelectedControlColor;
++ (id)px_systemMidGray;
 @end
 

@@ -8,18 +8,24 @@
 
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
+@class NSError;
+
 @interface CKAccountInfo : NSObject <NSSecureCoding>
 {
     BOOL _supportsDeviceToDeviceEncryption;
     long long _accountStatus;
     long long _accountPartition;
+    NSError *_manateeError;
 }
 
 @property (nonatomic) long long accountPartition; // @synthesize accountPartition=_accountPartition;
 @property (nonatomic) long long accountStatus; // @synthesize accountStatus=_accountStatus;
+@property (strong, nonatomic) NSError *manateeAvailabilityError;
+@property (strong, nonatomic) NSError *manateeError; // @synthesize manateeError=_manateeError;
 @property (nonatomic) BOOL supportsDeviceToDeviceEncryption; // @synthesize supportsDeviceToDeviceEncryption=_supportsDeviceToDeviceEncryption;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)CKPropertiesDescription;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

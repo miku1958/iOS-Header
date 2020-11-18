@@ -16,25 +16,30 @@
 {
     NSString *_identifier;
     NSString *_personalizationFeatureID;
-    NSOrderedSet *_headlines;
+    NSOrderedSet *_items;
     SFRankingFeedback *_rankingFeedback;
     NSString *_referralBarName;
+    NSString *_actionTitle;
+    NSURL *_actionURL;
     NTPBSectionDisplayDescriptor *_displayDescriptor;
 }
 
+@property (copy, nonatomic) NSString *actionTitle; // @synthesize actionTitle=_actionTitle;
+@property (copy, nonatomic) NSURL *actionURL; // @synthesize actionURL=_actionURL;
 @property (readonly, copy, nonatomic) NSString *backgroundGradientColor;
 @property (readonly, copy, nonatomic) NSString *discoverMoreVideosSubtitle;
 @property (readonly, copy, nonatomic) NSString *discoverMoreVideosTitle;
 @property (readonly, copy, nonatomic) NSURL *discoverMoreVideosURL;
 @property (copy, nonatomic) NTPBSectionDisplayDescriptor *displayDescriptor; // @synthesize displayDescriptor=_displayDescriptor;
 @property (readonly, nonatomic) BOOL displaysAsVideoPlaylist;
-@property (copy, nonatomic) NSOrderedSet *headlines; // @synthesize headlines=_headlines;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSOrderedSet *items; // @synthesize items=_items;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, copy, nonatomic) NSString *nameColor;
 @property (readonly, copy, nonatomic) NSString *personalizationFeatureID; // @synthesize personalizationFeatureID=_personalizationFeatureID;
 @property (copy, nonatomic) SFRankingFeedback *rankingFeedback; // @synthesize rankingFeedback=_rankingFeedback;
 @property (copy, nonatomic) NSString *referralBarName; // @synthesize referralBarName=_referralBarName;
+@property (readonly, nonatomic) BOOL useNameColorInWidget;
 @property (readonly, nonatomic) BOOL videoPlaysMutedByDefault;
 
 + (BOOL)supportsSecureCoding;
@@ -45,7 +50,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 personalizationFeatureID:(id)arg2 headlines:(id)arg3 rankingFeedback:(id)arg4 displayDescriptor:(id)arg5 referralBarName:(id)arg6;
+- (id)initWithIdentifier:(id)arg1 actionTitle:(id)arg2 actionURL:(id)arg3 personalizationFeatureID:(id)arg4 items:(id)arg5 rankingFeedback:(id)arg6 displayDescriptor:(id)arg7 referralBarName:(id)arg8;
 - (BOOL)isEqual:(id)arg1;
 
 @end

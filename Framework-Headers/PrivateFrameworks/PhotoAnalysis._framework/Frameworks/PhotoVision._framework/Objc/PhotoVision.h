@@ -44,10 +44,11 @@
 - (void)performFaceClusteringWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)reclusterFacesWithThreshold:(id)arg1 shouldRecluster:(BOOL)arg2 withContext:(id)arg3 error:(id *)arg4;
 - (id)requestSuggestionsForFaceClusterSequenceNumbers:(id)arg1 withClusteringFlags:(id)arg2 updateHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
+- (void)resetClusterer;
 - (BOOL)resetFaceClusteringStateWithContext:(id)arg1 error:(id *)arg2;
 - (void)scheduleClusteringOfFacesWithLocalIdentifiers:(id)arg1;
 - (void)scheduleUnclusteringOfFacesWithClusterSequenceNumbers:(id)arg1;
-- (void)start:(CDUnknownBlockType)arg1;
+- (void)startAndSyncClusterCacheWithLibrary:(BOOL)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)stop;
 - (id)suggestedPersonLocalIdentifierForFaceLocalIdentifier:(id)arg1 error:(id *)arg2;
 - (id)suggestedPersonLocalIdentifierForPersonLocalIdentifier:(id)arg1 error:(id *)arg2;

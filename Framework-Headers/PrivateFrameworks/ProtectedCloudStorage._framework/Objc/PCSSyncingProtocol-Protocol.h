@@ -7,7 +7,7 @@
 @class NSDictionary, NSString;
 
 @protocol PCSSyncingProtocol
-- (void)createIdentity:(NSString *)arg1 roll:(BOOL)arg2 complete:(void (^)(NSData *, NSError *))arg3;
+- (void)createIdentity:(NSString *)arg1 roll:(BOOL)arg2 sync:(BOOL)arg3 complete:(void (^)(NSData *, PCSMTT *, NSError *))arg4;
 - (void)deleteThisDevice:(NSDictionary *)arg1 withReply:(void (^)(NSError *))arg2;
 - (void)escrowRecordIDs:(NSDictionary *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
 - (void)fetchAllDeviceKeys:(NSDictionary *)arg1 withReply:(void (^)(NSString *, NSData *, NSData *, NSArray *, NSError *))arg2;

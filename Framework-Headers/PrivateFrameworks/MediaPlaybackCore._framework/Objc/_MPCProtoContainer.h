@@ -8,13 +8,14 @@
 
 #import <MediaPlaybackCore/NSCopying-Protocol.h>
 
-@class NSMutableArray, _MPCProtoContainerIdentifierSet;
+@class NSMutableArray, NSString, _MPCProtoContainerIdentifierSet;
 
 @interface _MPCProtoContainer : PBCodable <NSCopying>
 {
     int _containerType;
     _MPCProtoContainerIdentifierSet *_identifierSet;
     NSMutableArray *_items;
+    NSString *_playActivityFeatureName;
     struct {
         unsigned int containerType:1;
     } _has;
@@ -23,8 +24,10 @@
 @property (nonatomic) int containerType; // @synthesize containerType=_containerType;
 @property (nonatomic) BOOL hasContainerType;
 @property (readonly, nonatomic) BOOL hasIdentifierSet;
+@property (readonly, nonatomic) BOOL hasPlayActivityFeatureName;
 @property (strong, nonatomic) _MPCProtoContainerIdentifierSet *identifierSet; // @synthesize identifierSet=_identifierSet;
 @property (strong, nonatomic) NSMutableArray *items; // @synthesize items=_items;
+@property (strong, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
 
 + (Class)itemType;
 - (void).cxx_destruct;

@@ -39,6 +39,7 @@
 - (id)initWithPredicate:(id)arg1;
 - (void)mainStoreDidFetchContacts:(id)arg1 unifiedFetch:(BOOL)arg2;
 - (id)predicateFormat;
+- (id)shortDebugDescription;
 - (id)suggestedContactsWithSortOrder:(long long)arg1 keysToFetch:(id)arg2 mutableObjects:(BOOL)arg3 service:(id)arg4 error:(id *)arg5;
 
 @end

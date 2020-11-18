@@ -6,36 +6,39 @@
 
 #import <iCloudQuotaUI/ICQPageView.h>
 
+#import <iCloudQuotaUI/UIScrollViewDelegate-Protocol.h>
 #import <iCloudQuotaUI/UITextViewDelegate-Protocol.h>
 
-@class ICQLink, NSArray, NSLayoutConstraint, NSString, UIActivityIndicatorView, UIButton, UIImageView, UILabel, UILayoutGuide, _ICQTextView, _ICQUpgradeOfferPageSpecification;
+@class ICQLink, NSArray, NSString, UIActivityIndicatorView, UIButton, UIColor, UIFont, UIImageView, UILabel, UILayoutGuide, UIScrollView, UIView, _ICQTextView, _ICQUpgradeOfferPageSpecification, _UIBackdropView;
 @protocol ICQPageDelegate;
 
-@interface ICQUpgradeOfferView : ICQPageView <UITextViewDelegate>
+@interface ICQUpgradeOfferView : ICQPageView <UITextViewDelegate, UIScrollViewDelegate>
 {
     _ICQUpgradeOfferPageSpecification *_upgradeOfferPageSpecification;
     long long _upgradeMode;
-    BOOL _layoutGuideProblem;
-    BOOL _suppressResizingFonts;
-    BOOL _isResizingFonts;
+    UIColor *_buttonTintColor;
     id<ICQPageDelegate> _delegate;
     UIImageView *_iconView;
     UILabel *_titleLabel;
-    UILabel *_messageLabel;
-    NSArray *_serviceViews;
-    UIActivityIndicatorView *_spinner;
+    _ICQTextView *_messageView;
+    _ICQTextView *_fineprintView;
     UIButton *_purchaseButton;
+    UIButton *_purchase2Button;
     UIButton *_bottomButton;
-    _ICQTextView *_finePrintView;
+    UIActivityIndicatorView *_spinner;
     ICQLink *_purchaseLink;
+    ICQLink *_purchase2Link;
     ICQLink *_bottomLink;
-    UILayoutGuide *_navigationBarLayoutGuide;
+    UIScrollView *_scrollView;
+    UIView *_contentView;
+    UIView *_headerView;
+    UIView *_footerView;
+    UIView *_trayView;
+    _UIBackdropView *_lightTrayBackdrop;
+    _UIBackdropView *_ultraLightTrayBackdrop;
+    UILayoutGuide *_scrollVisibleLayoutGuide;
     UILayoutGuide *_aboveSpinnerLayoutGuide;
     UILayoutGuide *_belowSpinnerLayoutGuide;
-    NSLayoutConstraint *_iconTopMarginConstraint;
-    NSLayoutConstraint *_titleTopMarginConstraint;
-    double _tippyTopMargin;
-    double _iconTitleSpacing;
     NSArray *_activeConstraints;
 }
 
@@ -44,42 +47,67 @@
 @property (readonly, nonatomic) UILayoutGuide *belowSpinnerLayoutGuide; // @synthesize belowSpinnerLayoutGuide=_belowSpinnerLayoutGuide;
 @property (strong, nonatomic) UIButton *bottomButton; // @synthesize bottomButton=_bottomButton;
 @property (readonly, nonatomic) ICQLink *bottomLink; // @synthesize bottomLink=_bottomLink;
+@property (copy, nonatomic) UIColor *buttonTintColor; // @synthesize buttonTintColor=_buttonTintColor;
+@property (readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<ICQPageDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) _ICQTextView *finePrintView; // @synthesize finePrintView=_finePrintView;
+@property (readonly, nonatomic) UIColor *fineprintColor;
+@property (readonly, nonatomic) UIFont *fineprintFont;
+@property (strong, nonatomic) _ICQTextView *fineprintView; // @synthesize fineprintView=_fineprintView;
+@property (readonly, nonatomic) UIView *footerView; // @synthesize footerView=_footerView;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) double iconTitleSpacing; // @synthesize iconTitleSpacing=_iconTitleSpacing;
-@property (readonly, nonatomic) NSLayoutConstraint *iconTopMarginConstraint; // @synthesize iconTopMarginConstraint=_iconTopMarginConstraint;
+@property (readonly, nonatomic) UIView *headerView; // @synthesize headerView=_headerView;
 @property (strong, nonatomic) UIImageView *iconView; // @synthesize iconView=_iconView;
-@property (strong, nonatomic) UILabel *messageLabel; // @synthesize messageLabel=_messageLabel;
-@property (readonly, nonatomic) UILayoutGuide *navigationBarLayoutGuide; // @synthesize navigationBarLayoutGuide=_navigationBarLayoutGuide;
+@property (readonly, nonatomic) _UIBackdropView *lightTrayBackdrop; // @synthesize lightTrayBackdrop=_lightTrayBackdrop;
+@property (readonly, nonatomic) UIFont *linkButtonFont;
+@property (readonly, nonatomic) UIFont *messageFont;
+@property (strong, nonatomic) _ICQTextView *messageView; // @synthesize messageView=_messageView;
+@property (strong, nonatomic) UIButton *purchase2Button; // @synthesize purchase2Button=_purchase2Button;
+@property (readonly, nonatomic) ICQLink *purchase2Link; // @synthesize purchase2Link=_purchase2Link;
 @property (strong, nonatomic) UIButton *purchaseButton; // @synthesize purchaseButton=_purchaseButton;
+@property (readonly, nonatomic) UIFont *purchaseButtonFont;
 @property (readonly, nonatomic) ICQLink *purchaseLink; // @synthesize purchaseLink=_purchaseLink;
-@property (strong, nonatomic) NSArray *serviceViews; // @synthesize serviceViews=_serviceViews;
+@property (readonly, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
+@property (readonly, nonatomic) UILayoutGuide *scrollVisibleLayoutGuide; // @synthesize scrollVisibleLayoutGuide=_scrollVisibleLayoutGuide;
 @property (strong, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
 @property (readonly) Class superclass;
-@property (nonatomic) double tippyTopMargin; // @synthesize tippyTopMargin=_tippyTopMargin;
+@property (readonly, nonatomic) UIFont *titleFont;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property (readonly, nonatomic) NSLayoutConstraint *titleTopMarginConstraint; // @synthesize titleTopMarginConstraint=_titleTopMarginConstraint;
+@property (readonly, nonatomic) UIView *trayView; // @synthesize trayView=_trayView;
+@property (readonly, nonatomic) _UIBackdropView *ultraLightTrayBackdrop; // @synthesize ultraLightTrayBackdrop=_ultraLightTrayBackdrop;
 @property (nonatomic) long long upgradeMode; // @synthesize upgradeMode=_upgradeMode;
 @property (strong, nonatomic) _ICQUpgradeOfferPageSpecification *upgradeOfferPageSpecification;
 
 - (void).cxx_destruct;
+- (id)_anchorForLowerView:(id)arg1;
+- (id)_anchorForUpperView:(id)arg1;
+- (id)_buttons;
+- (id)_constraintsForView:(id)arg1 equalToView:(id)arg2;
 - (id)_imageForBundleIdentifier:(id)arg1;
 - (id)_imageForGenericCloud;
-- (void)_resetAdjustableItems;
-- (BOOL)_shrinkFontOfLabel:(id)arg1;
-- (void)_shrinkTopMargin;
-- (double)_superGetTopMargin;
+- (id)_makeLinkButton;
+- (id)_makePurchaseButton;
+- (double)_marginForButton:(id)arg1;
+- (void)_setButton:(id)arg1 backgroundColor:(id)arg2;
+- (void)_setButtonTintColor:(id)arg1;
+- (void)_setLinkTextColor:(id)arg1;
+- (double)_spacingFromUpperView:(id)arg1 toLowerView:(id)arg2;
+- (long long)_styleOfView:(id)arg1;
+- (void)_updateTrayVisibility;
 - (void)bottomButtonTapped:(id)arg1;
-- (id)finePrintAttributes;
-- (id)finePrintParagraphStyle;
-- (id)finePrintParagraphStyleAttributes;
-- (id)finePrintViewAttributedText;
+- (id)defaultButtonColor;
+- (id)fineprintAttributes;
+- (id)fineprintParagraphStyle;
+- (void)flashScrollIndicatorsIfNeeded;
+- (id)horizontalConstraintsForView:(id)arg1 margin:(double)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (id)messageAttributes;
+- (id)messageParagraphStyle;
+- (void)purchase2ButtonTapped:(id)arg1;
 - (void)purchaseButtonTapped:(id)arg1;
+- (void)scrollViewDidScroll:(id)arg1;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3;
 - (void)updateConstraints;
 

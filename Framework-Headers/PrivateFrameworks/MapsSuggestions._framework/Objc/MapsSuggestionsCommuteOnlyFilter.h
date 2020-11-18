@@ -35,7 +35,7 @@
 - (void)_setEstimatedExitTime:(id)arg1;
 - (id)init;
 - (BOOL)shouldKeepEntry:(id)arg1;
-- (void)updateExitTimeEstimationForLocation:(id)arg1;
+- (void)updateExitTimeEstimationForLocation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

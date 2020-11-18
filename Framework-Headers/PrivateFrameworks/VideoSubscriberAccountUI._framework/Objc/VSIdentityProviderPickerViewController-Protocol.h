@@ -6,7 +6,7 @@
 
 #import <VideoSubscriberAccountUI/NSObject-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, UISearchController;
 @protocol VSIdentityProviderPickerViewControllerDelegate;
 
 @protocol VSIdentityProviderPickerViewController <NSObject>
@@ -17,7 +17,10 @@
 @property (copy, nonatomic) NSArray *identityProviders;
 @property (copy, nonatomic) NSString *requestingAppDisplayName;
 @property (copy, nonatomic) NSString *resourceTitle;
+@property (readonly, nonatomic) UISearchController *searchController;
 
 - (void)deselectSelectedProviderAnimated:(BOOL)arg1;
+
+@optional
 @end
 

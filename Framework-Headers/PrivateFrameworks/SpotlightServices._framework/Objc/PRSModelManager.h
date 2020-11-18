@@ -35,10 +35,10 @@
 - (void).cxx_destruct;
 - (void)activate;
 - (id)computeFeedbackScoresForVectors:(id)arg1 withBundleFeatures:(id)arg2;
-- (double *)computeL2ScoresForVectors:(id)arg1 secondVector:(id)arg2 withQualityScores:(double *)arg3 withServerFeatures:(id)arg4 withBundleFeatures:(id)arg5 experimentalWeight1:(double)arg6 experimentalWeight2:(double)arg7 forShadow:(BOOL)arg8;
-- (double *)computeL3ScoresForFeatures:(id)arg1 didGetServerFeatures:(BOOL)arg2;
-- (void)computeQualityScores:(double *)arg1 forScores:(double *)arg2 forFeatureCount:(unsigned long long)arg3 withContext:(id)arg4;
-- (double *)computeScoresForFeatures:(id)arg1 withBundleFeatures:(id)arg2 serverBundleFeatures:(id)arg3 usingModelContext:(id)arg4 qos:(unsigned int)arg5;
+- (float *)computeL2ScoresForVectors:(id)arg1 secondVector:(id)arg2 withQualityScores:(float *)arg3 withServerFeatures:(id)arg4 withBundleFeatures:(id)arg5 experimentalWeight1:(double)arg6 experimentalWeight2:(double)arg7 forShadow:(BOOL)arg8;
+- (float *)computeL3ScoresForFeatures:(id)arg1 didGetServerFeatures:(BOOL)arg2;
+- (void)computeQualityScores:(float *)arg1 forScores:(float *)arg2 forFeatureCount:(unsigned long long)arg3 withContext:(id)arg4;
+- (float *)computeScoresForFeatures:(id)arg1 withBundleFeatures:(id)arg2 serverBundleFeatures:(id)arg3 usingModelContext:(id)arg4 qos:(unsigned int)arg5;
 - (void)deactivate;
 - (void)dealloc;
 - (id)getL2ModelVersion;
@@ -50,7 +50,7 @@
 - (double)testL2WithData:(id)arg1 experimental:(BOOL)arg2;
 - (void)triggerUpdate;
 - (void)updateModelsAccordingToHierarchy;
-- (void)updateModelsAccordingToHierarchy:(id)arg1 updateEnabled:(BOOL)arg2;
+- (void)updateModelsAccordingToHierarchy:(id)arg1 updateEnabled:(BOOL)arg2 disablePendingUpdates:(BOOL)arg3;
 
 @end
 

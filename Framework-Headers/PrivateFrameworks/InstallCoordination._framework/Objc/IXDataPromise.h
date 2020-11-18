@@ -43,6 +43,7 @@
 - (void)cancelForReason:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)cancelForReason:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;

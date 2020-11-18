@@ -48,12 +48,12 @@
 - (void)_resetErrorCounts;
 - (void)_retryFailuresWithErrorsReset:(BOOL)arg1;
 - (void)beginLoading;
-- (void)dealloc;
 - (BOOL)fullDebuggingEnabled;
 - (void)getPreloadSetCoordinates:(CDStruct_c3b9c2ee *)arg1 maxLength:(unsigned long long)arg2 actualLength:(unsigned long long *)arg3;
 - (id)initWithRoute:(id)arg1 loggingEnabled:(BOOL)arg2 minimalDebugging:(BOOL)arg3 fullDebugging:(BOOL)arg4 batteryHandler:(CDUnknownBlockType)arg5;
 - (BOOL)isSufficientlyLoaded;
 - (BOOL)minimalDebuggingEnabled;
+- (void)performTearDown;
 - (int)preloadStateForTile:(const struct _GEOTileKey *)arg1;
 - (id)route;
 - (void)setShouldPreloadEntireRoute:(BOOL)arg1;

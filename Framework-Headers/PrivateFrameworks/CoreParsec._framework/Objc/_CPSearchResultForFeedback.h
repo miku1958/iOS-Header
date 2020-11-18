@@ -21,10 +21,12 @@
         unsigned int queryId:1;
         unsigned int isLocalApplicationResult:1;
         unsigned int publiclyIndexable:1;
+        unsigned int isFuzzyMatch:1;
     } _has;
     BOOL _isStaticCorrection;
     BOOL _isLocalApplicationResult;
     BOOL _publiclyIndexable;
+    BOOL _isFuzzyMatch;
     int _topHit;
     int _type;
     NSString *_identifier;
@@ -59,6 +61,7 @@
 @property (readonly, nonatomic) BOOL hasFbr;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasIntendedQuery;
+@property (readonly, nonatomic) BOOL hasIsFuzzyMatch;
 @property (readonly, nonatomic) BOOL hasIsLocalApplicationResult;
 @property (readonly, nonatomic) BOOL hasIsStaticCorrection;
 @property (readonly, nonatomic) BOOL hasLocalFeatures;
@@ -76,6 +79,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *intendedQuery; // @synthesize intendedQuery=_intendedQuery;
+@property (nonatomic) BOOL isFuzzyMatch; // @synthesize isFuzzyMatch=_isFuzzyMatch;
 @property (nonatomic) BOOL isLocalApplicationResult; // @synthesize isLocalApplicationResult=_isLocalApplicationResult;
 @property (nonatomic) BOOL isStaticCorrection; // @synthesize isStaticCorrection=_isStaticCorrection;
 @property (readonly, nonatomic) NSData *jsonData;

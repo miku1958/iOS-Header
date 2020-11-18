@@ -29,6 +29,7 @@
 - (void)dealloc;
 - (void)finishContentEditing;
 - (void)queryHandlingCapabilityForAdjustmentData:(id)arg1 withResponseHandler:(CDUnknownBlockType)arg2;
+- (void)querySDKVersionWithResponseHandler:(CDUnknownBlockType)arg1;
 - (void)queryShouldShowCancelConfirmationWithResponseHandler:(CDUnknownBlockType)arg1;
 
 @end

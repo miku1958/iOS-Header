@@ -8,20 +8,19 @@
 
 #import <MapsSupport/NSSecureCoding-Protocol.h>
 
-@class CKServerChangeToken, NSMutableDictionary, NSString;
-@protocol NSObject><NSCopying><NSCoding;
+@class CKServerChangeToken, NSMutableDictionary, NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface MSPCloudZoneCache : NSObject <NSSecureCoding>
 {
     NSString *_zoneName;
-    id<NSObject><NSCopying><NSCoding> _accountIdentity;
+    NSUUID *_accountIdentity;
     CKServerChangeToken *_token;
     NSMutableDictionary *_records;
     NSMutableDictionary *_deletedRecordIdentifiersByRecordType;
 }
 
-@property (readonly, nonatomic) id<NSObject><NSCopying><NSCoding> accountIdentity; // @synthesize accountIdentity=_accountIdentity;
+@property (readonly, nonatomic) NSUUID *accountIdentity; // @synthesize accountIdentity=_accountIdentity;
 @property (readonly, nonatomic) NSMutableDictionary *deletedRecordIdentifiersByRecordType; // @synthesize deletedRecordIdentifiersByRecordType=_deletedRecordIdentifiersByRecordType;
 @property (readonly, nonatomic) NSMutableDictionary *records; // @synthesize records=_records;
 @property (copy, nonatomic) CKServerChangeToken *token; // @synthesize token=_token;

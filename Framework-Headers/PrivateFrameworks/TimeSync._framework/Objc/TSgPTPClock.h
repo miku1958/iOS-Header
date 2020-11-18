@@ -23,7 +23,9 @@
 
 + (id)availablegPTPClockIdentifiers;
 + (unsigned long long)clockIdentifierForInterfaceName:(id)arg1;
++ (id)clockNameForClockIdentifier:(unsigned long long)arg1;
 + (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
++ (id)diagnosticInfoForService:(unsigned int)arg1;
 + (id)iokitInterfaceMatchingDictionaryForInterfaceName:(id)arg1;
 + (id)iokitMatchingDictionaryForClockIdentifier:(unsigned long long)arg1;
 + (id)iokitMatchingDictionaryForInterfaceName:(id)arg1;
@@ -39,10 +41,12 @@
 - (BOOL)addUnicastUDPv6EtEPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
 - (BOOL)addUnicastUDPv6PtPPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
 - (id)clockName;
+- (unsigned long long)convertFrom128BitgPTPTimeToMachAbsoluteTime:(CDStruct_4bcfbbae)arg1 grandmasterUsed:(unsigned long long *)arg2;
 - (BOOL)convertFrom32BitASTime:(unsigned int *)arg1 toMachAbsoluteTime:(unsigned long long *)arg2 withCount:(unsigned int)arg3;
 - (unsigned long long)convertFrom32BitASToMachAbsoluteTime:(unsigned int)arg1;
 - (unsigned long long)convertFrom32BitASToMachAbsoluteTime:(unsigned int)arg1 withFlags:(unsigned int *)arg2;
 - (unsigned long long)convertFromDomainToMachAbsoluteTime:(unsigned long long)arg1 grandmasterUsed:(unsigned long long *)arg2;
+- (CDStruct_4bcfbbae)convertFromMachAbsoluteTo128BitgPTPTime:(unsigned long long)arg1 grandmasterUsed:(unsigned long long *)arg2;
 - (unsigned long long)convertFromMachAbsoluteToDomainTime:(unsigned long long)arg1 grandmasterUsed:(unsigned long long *)arg2;
 - (void)dealloc;
 - (id)gPTPTimeFromMachAbsoluteTime:(unsigned long long)arg1;

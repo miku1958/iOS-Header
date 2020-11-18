@@ -11,6 +11,7 @@
 @interface CCUILabeledRoundButton : UIView
 {
     BOOL _labelsVisible;
+    BOOL _useAlternateBackground;
     NSString *_title;
     NSString *_subtitle;
     UIImage *_glyphImage;
@@ -32,6 +33,7 @@
 @property (strong, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (nonatomic) BOOL useAlternateBackground; // @synthesize useAlternateBackground=_useAlternateBackground;
 
 - (void).cxx_destruct;
 - (void)_contentSizeCategoryDidChange;

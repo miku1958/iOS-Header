@@ -6,7 +6,7 @@
 
 #import <VisualVoicemail/NSObject-Protocol.h>
 
-@class NSArray, NSString, VMVoicemailGreeting;
+@class NSArray, NSProgress, NSString, VMVoicemailGreeting;
 
 @protocol VMServerXPCProtocol <NSObject>
 - (void)allVoicemails:(void (^)(NSOrderedSet *))arg1;
@@ -15,7 +15,8 @@
 - (void)removeVoicemailFromTrashWithIdentifier:(long long)arg1;
 - (void)reportTranscriptionProblemForIdentifier:(long long)arg1;
 - (void)reportTranscriptionRatedAccurate:(BOOL)arg1 forIdentifier:(long long)arg2;
-- (void)requestInitialState:(void (^)(VMVoicemailCapabilities *, NSOrderedSet *, BOOL, BOOL, BOOL))arg1;
+- (void)requestInitialState:(void (^)(VMVoicemailCapabilities *, NSOrderedSet *, BOOL, BOOL, BOOL, BOOL))arg1;
+- (NSProgress *)requestTranscriptionProgress:(void (^)(BOOL))arg1;
 - (void)retrieveDataForIdentifier:(long long)arg1;
 - (void)retrieveVoicemailGreeting:(void (^)(VMVoicemailGreeting *, NSError *))arg1;
 - (void)setDeletedForIdentifier:(long long)arg1;

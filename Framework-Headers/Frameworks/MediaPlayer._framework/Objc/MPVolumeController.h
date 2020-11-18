@@ -6,55 +6,53 @@
 
 #import <Foundation/NSObject.h>
 
-@class MPAVController, NSString, UIImage;
-@protocol MPVolumeControllerDelegate;
+#import <MediaPlayer/MPVolumeControllerDataSourceDelegate-Protocol.h>
 
-@interface MPVolumeController : NSObject
+@class MPAVController, NSString;
+@protocol MPVolumeControllerDataSource, MPVolumeControllerDelegate;
+
+@interface MPVolumeController : NSObject <MPVolumeControllerDataSourceDelegate>
 {
-    MPAVController *_player;
-    NSString *_volumeAudioCategory;
-    BOOL _volumeWarningBlinking;
-    UIImage *_volumeWarningTrackImage;
-    BOOL _debugVolumeWarning;
-    BOOL _volumeWarningEnabled;
-    float _volumeValue;
-    float _EUVolumeLimit;
+    id<MPVolumeControllerDataSource> _dataSource;
+    BOOL _shouldForceVolumeControlDisabled;
+    BOOL _dataSourceVolumeControlAvailable;
+    BOOL _volumeControlAvailable;
     id<MPVolumeControllerDelegate> _delegate;
-    long long _volumeWarningState;
+    MPAVController *_player;
 }
 
-@property (readonly, nonatomic) float EUVolumeLimit; // @synthesize EUVolumeLimit=_EUVolumeLimit;
+@property (readonly, nonatomic) float EUVolumeLimit;
+@property (strong, nonatomic) id<MPVolumeControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MPVolumeControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) BOOL muted;
-@property (strong, nonatomic) MPAVController *player;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isMuted) BOOL muted;
+@property (strong, nonatomic) MPAVController *player; // @synthesize player=_player;
+@property (nonatomic) BOOL shouldForceVolumeControlDisabled; // @synthesize shouldForceVolumeControlDisabled=_shouldForceVolumeControlDisabled;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *volumeAudioCategory;
-@property (readonly, nonatomic) float volumeValue; // @synthesize volumeValue=_volumeValue;
-@property (readonly, nonatomic) BOOL volumeWarningEnabled; // @synthesize volumeWarningEnabled=_volumeWarningEnabled;
-@property (readonly, nonatomic) long long volumeWarningState; // @synthesize volumeWarningState=_volumeWarningState;
+@property (readonly, nonatomic, getter=isVolumeControlAvailable) BOOL volumeControlAvailable;
+@property (readonly, copy, nonatomic) NSString *volumeControlLabel;
+@property (nonatomic) float volumeValue;
+@property (readonly, nonatomic) BOOL volumeWarningEnabled;
+@property (readonly, nonatomic) long long volumeWarningState;
 
 - (void).cxx_destruct;
-- (void)_EUVolumeLimitDidChange:(id)arg1;
-- (void)_EUVolumeLimitEnforcedDidChange:(id)arg1;
-- (void)_applicationDidEnterBackgroundNotification:(id)arg1;
-- (void)_applicationWillEnterForegroundNotification:(id)arg1;
-- (void)_availableRoutesDidChangeNotification:(id)arg1;
-- (void)_forcefullySetVolumeValue:(float)arg1;
-- (void)_internalSetVolumeValue:(float)arg1;
-- (void)_isExternalPlaybackActiveDidChangeNotification:(id)arg1;
-- (BOOL)_isPlayerInValidState;
-- (void)_mediaServerDiedNotification:(id)arg1;
-- (void)_setVolumeWarningState:(long long)arg1;
-- (void)_setupNotifications;
-- (void)_systemMuteDidChange:(id)arg1;
-- (void)_systemVolumeDidChange:(id)arg1;
-- (void)_tearDownNotifications;
-- (void)_volumeDidChange:(id)arg1;
-- (float)_volumeFromAVController;
-- (void)dealloc;
+- (void)_updateVolumeControlAvailability;
 - (id)init;
-- (float)setVolumeValue:(float)arg1;
+- (id)initWithDataSource:(id)arg1;
+- (BOOL)muted;
 - (void)updateVolumeValue;
 - (void)updateVolumeWarningState;
+- (void)volumeControllerDataSource:(id)arg1 didChangeEUVolumeLimit:(float)arg2;
+- (void)volumeControllerDataSource:(id)arg1 didChangeEUVolumeLimitEnforced:(BOOL)arg2;
+- (void)volumeControllerDataSource:(id)arg1 didChangeMuted:(BOOL)arg2;
+- (void)volumeControllerDataSource:(id)arg1 didChangeVolume:(float)arg2;
+- (void)volumeControllerDataSource:(id)arg1 didChangeVolumeAudioCategory:(id)arg2;
+- (void)volumeControllerDataSource:(id)arg1 didChangeVolumeControlAvailability:(BOOL)arg2;
+- (void)volumeControllerDataSource:(id)arg1 didChangeVolumeLabel:(id)arg2;
+- (void)volumeControllerDataSource:(id)arg1 didChangeVolumeWarning:(long long)arg2;
 
 @end
 

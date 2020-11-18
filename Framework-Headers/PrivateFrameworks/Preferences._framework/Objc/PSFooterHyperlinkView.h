@@ -36,6 +36,7 @@
 - (void).cxx_destruct;
 - (void)_linkify;
 - (id)initWithSpecifier:(id)arg1;
+- (BOOL)isValidLinkRange;
 - (void)layoutSubviews;
 - (double)preferredHeightForWidth:(double)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

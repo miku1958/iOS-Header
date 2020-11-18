@@ -61,6 +61,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) NSString *identifier;
 @property (readonly) NSString *localizedContainingName;
+@property (readonly) NSDictionary *localizedFileProviderActionNames;
 @property (readonly) NSString *localizedName;
 @property (readonly) NSString *localizedShortName;
 @property (strong) NSUUID *multipleInstanceUUID; // @synthesize multipleInstanceUUID=_multipleInstanceUUID;

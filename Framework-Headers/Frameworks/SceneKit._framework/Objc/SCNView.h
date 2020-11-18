@@ -165,6 +165,7 @@
 - (struct SCNVector3)projectPoint:(struct SCNVector3)arg1;
 - (id)renderer;
 - (void)resumeDisplayLink;
+- (void)safeAreaInsetsDidChange;
 - (id)scn_backingLayer;
 - (BOOL)scn_inLiveResize;
 - (void)scn_setBackingLayer:(id)arg1;

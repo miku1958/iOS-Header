@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <VectorKit/VKLabelNavFeature-Protocol.h>
 
@@ -50,7 +50,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *shieldDisplayGroup;
 
 + (id)artworkForEtaDescription:(id)arg1 navContext:(const struct NavContext *)arg2 styleQuery:(shared_ptr_c5d816ee)arg3 orientation:(unsigned char)arg4 artworkCache:(struct VKLabelNavArtworkCache *)arg5 selected:(BOOL)arg6;
-+ (shared_ptr_c5d816ee)styleQueryForNavContext:(const struct NavContext *)arg1 selected:(BOOL)arg2 etaComparison:(unsigned char)arg3;
++ (shared_ptr_c5d816ee)styleQueryForNavContext:(const struct NavContext *)arg1 selected:(BOOL)arg2 etaComparison:(unsigned char)arg3 transportType:(unsigned char)arg4;
 - (id).cxx_construct;
 - (void)_clearLabel;
 - (void)createLabelWithNavContext:(const struct NavContext *)arg1 orientation:(unsigned char)arg2 etaDescription:(id)arg3 selected:(BOOL)arg4 artworkCache:(struct VKLabelNavArtworkCache *)arg5;

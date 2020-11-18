@@ -42,17 +42,13 @@
 + (void)start;
 - (void).cxx_destruct;
 - (id)__fetchWithGroup:(id)arg1 uuids:(id)arg2 error:(id *)arg3;
-- (void)_fetchObjects:(BOOL)arg1 migration:(BOOL)arg2 result:(CDUnknownBlockType)arg3;
 - (void)commit:(id)arg1 run:(BOOL)arg2 save:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)dumpState;
-- (void)fetchAllObjects:(CDUnknownBlockType)arg1;
-- (void)fetchMigratedObjects:(CDUnknownBlockType)arg1;
 - (id)initWithUUID:(id)arg1;
 - (id)initWithUUID:(id)arg1 home:(id)arg2;
 - (id)initWithUUID:(id)arg1 homeManager:(id)arg2;
 - (id)initWithUUID:(id)arg1 homeManager:(id)arg2 home:(id)arg3;
 - (id)logIdentifier;
-- (void)markAsMigrated:(CDUnknownBlockType)arg1;
 - (void)registerObject:(id)arg1 forUUID:(id)arg2;
 - (void)saveToPersistentStoreWithReason:(id)arg1 incrementGeneration:(BOOL)arg2;
 - (void)submit:(id)arg1;

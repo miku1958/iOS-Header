@@ -21,7 +21,6 @@
 - (void).cxx_destruct;
 - (void)_continuePressed:(id)arg1;
 - (void)viewDidLoad;
-- (void)willMoveToParentViewController:(id)arg1;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

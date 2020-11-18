@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@protocol CNEncodedFetchCursor
+#import <Contacts/NSObject-Protocol.h>
+
+@protocol CNEncodedFetchCursor <NSObject>
 - (void)fetchNextBatchWithReply:(void (^)(NSData *, BOOL, NSError *))arg1;
 @end
 

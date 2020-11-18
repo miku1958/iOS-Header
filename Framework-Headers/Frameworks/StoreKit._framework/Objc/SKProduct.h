@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSDecimalNumber, NSLocale, NSString;
+@class NSArray, NSDecimalNumber, NSLocale, NSString, SKProductDiscount, SKProductSubscriptionPeriod;
 
 @interface SKProduct : NSObject
 {
@@ -17,20 +17,24 @@
 @property (readonly, nonatomic) NSArray *downloadContentLengths;
 @property (readonly, nonatomic) NSString *downloadContentVersion;
 @property (readonly, nonatomic, getter=isDownloadable) BOOL downloadable;
+@property (readonly, nonatomic) SKProductDiscount *introductoryPrice;
 @property (readonly, nonatomic) NSString *localizedDescription;
 @property (readonly, nonatomic) NSString *localizedTitle;
 @property (readonly, nonatomic) NSDecimalNumber *price;
 @property (readonly, nonatomic) NSLocale *priceLocale;
 @property (readonly, nonatomic) NSString *productIdentifier;
+@property (readonly, nonatomic) SKProductSubscriptionPeriod *subscriptionPeriod;
 
 - (void)_setContentVersion:(id)arg1;
 - (void)_setDownloadContentLengths:(id)arg1;
 - (void)_setDownloadable:(BOOL)arg1;
+- (void)_setIntroductoryPrice:(id)arg1;
 - (void)_setLocalizedDescription:(id)arg1;
 - (void)_setLocalizedTitle:(id)arg1;
 - (void)_setPrice:(id)arg1;
 - (void)_setPriceLocale:(id)arg1;
 - (void)_setProductIdentifier:(id)arg1;
+- (void)_setSubscriptionPeriod:(id)arg1;
 - (id)copyXPCEncoding;
 - (void)dealloc;
 - (id)init;

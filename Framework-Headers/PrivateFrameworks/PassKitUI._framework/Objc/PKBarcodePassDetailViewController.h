@@ -86,6 +86,7 @@
 - (BOOL)_linkedAppAvailable;
 - (id)_locationHelpViewForTableView:(id)arg1;
 - (id)_locationRelevancyHelpText;
+- (double)_offscreenHeaderHeight;
 - (void)_passSettingsChanged:(id)arg1;
 - (BOOL)_personalizeAvailable;
 - (id)_personalizePassCell;
@@ -116,6 +117,7 @@
 - (void)pushSettingsFromViewToModel;
 - (void)refreshControlValueChanged:(id)arg1;
 - (void)reloadData;
+- (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)setShowsLinks:(BOOL)arg1;
 - (BOOL)shouldAllowRefresh;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

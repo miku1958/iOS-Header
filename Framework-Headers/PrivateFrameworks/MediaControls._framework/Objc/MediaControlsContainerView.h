@@ -11,7 +11,6 @@
 @interface MediaControlsContainerView : UIView
 {
     BOOL _empty;
-    long long _mediaControlsPlayerState;
     long long _style;
     MediaControlsTransportStackView *_mediaControlsTransportStackView;
     MediaControlsTimeControl *_mediaControlsTimeControl;
@@ -19,7 +18,6 @@
 }
 
 @property (nonatomic, getter=isEmpty) BOOL empty; // @synthesize empty=_empty;
-@property (nonatomic) long long mediaControlsPlayerState; // @synthesize mediaControlsPlayerState=_mediaControlsPlayerState;
 @property (strong, nonatomic) MediaControlsTimeControl *mediaControlsTimeControl; // @synthesize mediaControlsTimeControl=_mediaControlsTimeControl;
 @property (strong, nonatomic) MediaControlsTransportStackView *mediaControlsTransportStackView; // @synthesize mediaControlsTransportStackView=_mediaControlsTransportStackView;
 @property (strong, nonatomic) UIVisualEffectView *primaryVisualEffectView; // @synthesize primaryVisualEffectView=_primaryVisualEffectView;
@@ -28,6 +26,7 @@
 @property (nonatomic, getter=isTimeControlOnScreen) BOOL timeControlOnScreen;
 
 - (void).cxx_destruct;
+- (void)_updateStyle;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setRatingActionSheetDelegate:(id)arg1;

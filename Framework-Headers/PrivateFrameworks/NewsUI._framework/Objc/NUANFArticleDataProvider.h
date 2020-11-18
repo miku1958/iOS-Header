@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <NewsUI/NUArticleDataProvider-Protocol.h>
-#import <NewsUI/SXEmbedDataSource-Protocol.h>
 
-@class FCArticle, NSString, NUANFAssetLoader, NUANFContextLoader, NUANFEmbedConfigurationLoader, NUANFFontLoader, SXHost;
-@protocol FCContentContext, NUFontRegistration;
+@class FCArticle, NSString, NUANFAssetLoader, NUANFContextLoader, NUANFFontLoader, SXHost;
+@protocol FCContentContext, NUEmbedDataManager, NUFontRegistration;
 
-@interface NUANFArticleDataProvider : NSObject <SXEmbedDataSource, NUArticleDataProvider>
+@interface NUANFArticleDataProvider : NSObject <NUArticleDataProvider>
 {
     NSString *_articleID;
     id<FCContentContext> _contentContext;
@@ -22,7 +21,7 @@
     NUANFFontLoader *_fontLoader;
     NUANFContextLoader *_contextLoader;
     NUANFAssetLoader *_assetLoader;
-    NUANFEmbedConfigurationLoader *_embedConfigurationLoader;
+    id<NUEmbedDataManager> _embedDataManger;
 }
 
 @property (readonly, nonatomic) FCArticle *article; // @synthesize article=_article;
@@ -32,7 +31,7 @@
 @property (strong, nonatomic) NUANFContextLoader *contextLoader; // @synthesize contextLoader=_contextLoader;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NUANFEmbedConfigurationLoader *embedConfigurationLoader; // @synthesize embedConfigurationLoader=_embedConfigurationLoader;
+@property (strong, nonatomic) id<NUEmbedDataManager> embedDataManger; // @synthesize embedDataManger=_embedDataManger;
 @property (strong, nonatomic) NUANFFontLoader *fontLoader; // @synthesize fontLoader=_fontLoader;
 @property (readonly, nonatomic) id<NUFontRegistration> fontRegistration; // @synthesize fontRegistration=_fontRegistration;
 @property (readonly) unsigned long long hash;
@@ -41,8 +40,7 @@
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)embedForType:(id)arg1;
-- (id)initWithArticle:(id)arg1 contentContext:(id)arg2 fontRegistration:(id)arg3 host:(id)arg4;
+- (id)initWithArticle:(id)arg1 contentContext:(id)arg2 fontRegistration:(id)arg3 host:(id)arg4 embedDataManager:(id)arg5;
 - (void)loadArticleWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)loadContextWithCompletionBlock:(CDUnknownBlockType)arg1;
 

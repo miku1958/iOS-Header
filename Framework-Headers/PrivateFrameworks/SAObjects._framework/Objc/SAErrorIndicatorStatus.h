@@ -16,6 +16,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL deviceFixingProblems;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSArray *values;

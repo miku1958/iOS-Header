@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSCoder.h>
+#import <Foundation/NSCoder.h>
 
 @protocol NSKeyedUnarchiverDelegate;
 
@@ -48,6 +48,7 @@
 - (unsigned int)_currentUniqueIdentifier;
 - (id)_decodeArrayOfObjectsForKey:(id)arg1;
 - (id)_decodePropertyListForKey:(id)arg1;
+- (id)_initForReadingFromData:(id)arg1 error:(id *)arg2 throwLegacyExceptions:(BOOL)arg3;
 - (id)_initWithStream:(struct __CFReadStream *)arg1 data:(id)arg2 topDict:(struct __CFDictionary *)arg3;
 - (void)_replaceObject:(id)arg1 withObject:(id)arg2;
 - (void)_setAllowedClassNames:(id)arg1;

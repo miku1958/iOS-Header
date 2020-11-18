@@ -10,9 +10,10 @@
 
 @protocol CHPhoneBookManagerProtocol <NSObject>
 + (id)get;
+- (CNContact *)fetchFullCNContactForContactIdentifier:(NSString *)arg1 isEmail:(BOOL)arg2;
 - (NSString *)getLocalizedCallerIdLabelForContact:(CNContact *)arg1 forCallerId:(NSString *)arg2 withCallerIdIsEmail:(BOOL)arg3;
 - (NSString *)getPersonsNameForContact:(CNContact *)arg1;
-- (NSDictionary *)getRecordId:(NSString *)arg1 isEmail:(BOOL)arg2;
+- (NSDictionary *)getRecordId:(NSString *)arg1 countryCode:(NSString *)arg2 isEmail:(BOOL)arg3;
 - (BOOL)isABContactASuggestion;
 @end
 

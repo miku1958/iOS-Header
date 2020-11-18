@@ -12,7 +12,7 @@
 #import <Sharing/SFWirelessSettingsControllerDelegate-Protocol.h>
 #import <Sharing/UICollectionViewDataSource-Protocol.h>
 
-@class NSArray, NSCache, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSOperationQueue, NSString, SFAirDropActiveIconView, SFAirDropBrowser, SFAirDropIconView, SFCollectionViewLayout, SFPersonCollectionViewCell, SFWirelessSettingsController, UIButton, UICollectionView, UIFocusContainerGuide, UILabel, UITextView, UIVisualEffectView;
+@class NSArray, NSCache, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSObject, NSOperationQueue, NSString, SFAirDropActiveIconView, SFAirDropBrowser, SFAirDropIconView, SFCollectionViewLayout, SFPersonCollectionViewCell, SFWirelessSettingsController, UIButton, UICollectionView, UIFocusContainerGuide, UILabel, UITextView, UIVisualEffectView;
 @protocol SFAirDropActivityViewControllerDelegate;
 
 @interface SFAirDropActivityViewController : UIViewController <UICollectionViewDataSource, SFCollectionViewDelegateLayout, SFAirDropBrowserDelegate, SFPersonCollectionViewCellDelegate, SFWirelessSettingsControllerDelegate>
@@ -56,7 +56,7 @@
     NSMutableDictionary *_personToSharedItemsRequestID;
     NSMutableDictionary *_sharedItemsRequestIDToPreviewPhoto;
     SFWirelessSettingsController *_wirelessSettings;
-    NSMutableSet *_cachedSharedItems;
+    NSMutableOrderedSet *_cachedSharedItems;
     BOOL _itemsRequested;
     BOOL _itemsReady;
     NSOperationQueue *_operationQueue;

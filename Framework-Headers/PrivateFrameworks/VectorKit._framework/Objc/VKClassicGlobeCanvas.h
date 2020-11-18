@@ -147,8 +147,8 @@ __attribute__((visibility("hidden")))
 - (void)insertRasterOverlay:(id)arg1 belowOverlay:(id)arg2;
 - (BOOL)isPointValidForGesturing:(struct CGPoint)arg1;
 - (BOOL)isShowingNoDataPlaceholders;
+- (void)labelManager:(struct LabelManager *)arg1 labelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)labelManager:(struct LabelManager *)arg1 pendingArtworkIsReady:(BOOL)arg2;
-- (void)labelManager:(struct LabelManager *)arg1 selectedLabelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)labelManager:(struct LabelManager *)arg1 selectedLabelMarkerWillDisappear:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)labelManager:(struct LabelManager *)arg1 setNeedsDisplay:(BOOL)arg2;
 - (void)labelManager:(struct LabelManager *)arg1 setNeedsLayout:(BOOL)arg2;

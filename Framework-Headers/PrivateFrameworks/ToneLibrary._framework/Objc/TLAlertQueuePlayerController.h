@@ -22,6 +22,7 @@
     CDUnknownBlockType _playingAlertCompletionHandler;
     id<TLAlertPlaybackObserver> _playbackObserver;
     AVAsset *_toneAssetForPendingPlayingAlert;
+    BOOL _hasToneAssetForPendingPlayingAlert;
     BOOL _isAudioEnvironmentSetup;
     BOOL _isAlertActivationAssertionAcquired;
     TLAlert *_alertForAudioEnvironmentSetup;

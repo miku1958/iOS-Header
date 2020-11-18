@@ -29,6 +29,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_broadcastFamilyDidChangeNotification;
 - (void)_handleObjectModelChangeForController:(id)arg1 objectModel:(id)arg2 isModal:(BOOL)arg3;
 - (void)_notifyDelegateOfCompletionWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (void)_reportRequestFailureWithResponse:(id)arg1;

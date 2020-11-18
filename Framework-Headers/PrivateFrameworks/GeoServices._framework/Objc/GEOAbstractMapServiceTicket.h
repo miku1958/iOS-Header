@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOMapServiceTicket-Protocol.h>
 
-@class GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEORelatedSearchSuggestion, NSArray, NSDictionary, NSString;
+@class GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEORelatedSearchSuggestion, GEOResolvedItem, NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface GEOAbstractMapServiceTicket : GEOAbstractTicket <GEOMapServiceTicket>
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSString *_resultDisplayHeader;
     NSArray *_displayHeaderSubstitutes;
     BOOL _shouldEnableRedoSearch;
+    GEOResolvedItem *_clientResolvedResult;
     GEODirectionIntent *_directionIntent;
     unsigned int _dymSuggestionVisibleTime;
     BOOL _showDymSuggestionCloseButton;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long cachePolicy;
 @property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
 @property (readonly, nonatomic, getter=isChainResultSet) BOOL chainResultSet; // @synthesize chainResultSet=_chainResultSet;
+@property (readonly, nonatomic) GEOResolvedItem *clientResolvedResult; // @synthesize clientResolvedResult=_clientResolvedResult;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) GEORelatedSearchSuggestion *defaultRelatedSuggestion; // @synthesize defaultRelatedSuggestion=_defaultRelatedSuggestion;
 @property (readonly, copy) NSString *description;

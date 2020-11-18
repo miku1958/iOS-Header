@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ICStoreDialogResponse, ICURLBag, NSArray, NSData, NSDate, NSDictionary, NSError;
+@class ICStoreDialogResponse, ICURLBag, NSArray, NSData, NSDate, NSDictionary, NSError, NSString;
 
 @interface ICMusicSubscriptionPlaybackResponse : NSObject
 {
@@ -16,6 +16,7 @@
 }
 
 @property (readonly, copy, nonatomic) ICStoreDialogResponse *dialog;
+@property (readonly, copy, nonatomic) NSString *householdID;
 @property (readonly, copy, nonatomic) NSArray *items;
 @property (readonly, copy, nonatomic) NSDate *leaseExpirationDate;
 @property (readonly, copy, nonatomic) NSData *leaseInfoData;

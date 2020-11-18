@@ -6,14 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class PDFAnnotation;
+@class CALayer, NSMutableDictionary, NSUUID, PDFAnnotation, PDFSelection, PDFTimer;
 @protocol PDFPageLayerInterface;
 
 __attribute__((visibility("hidden")))
 @interface PDFPageLayerEffectPrivate : NSObject
 {
     id<PDFPageLayerInterface> pageLayer;
+    NSUUID *uuid;
+    struct CGRect pageFrame;
+    BOOL shouldRotateContent;
     PDFAnnotation *annotation;
+    NSMutableDictionary *markupEffectLayers;
+    PDFSelection *selection;
+    NSMutableDictionary *selectionEffectLayers;
+    BOOL showTextSelectionHandle;
+    struct {
+        BOOL isOnFirstPage;
+        BOOL isOnLastPage;
+        struct CGRect firstPageRect;
+        struct CGRect lastPageRect;
+    } pageInfo;
+    CALayer *rootSelectionLayer;
+    CALayer *selectionStartHandle;
+    CALayer *selectionEndHandle;
+    PDFTimer *zoomTimer;
+    CALayer *textMagnifierLayer;
+    struct CGImage *magnifierImageMask;
+    struct CGSize magnifierSize;
+    CALayer *lollipopMagnifierLayer;
+    struct CGImage *lollipopImageMask;
+    struct CGSize lollipopSize;
 }
 
 - (void).cxx_destruct;

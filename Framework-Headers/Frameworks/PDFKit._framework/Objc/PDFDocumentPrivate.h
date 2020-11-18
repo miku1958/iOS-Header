@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 {
     struct CGPDFDocument *document;
     NSURL *documentURL;
-    int documentId;
     NSMutableArray *pages;
     NSMutableDictionary *pageIndices;
     NSMutableDictionary *pageDictionaryIndices;
@@ -68,6 +67,7 @@ __attribute__((visibility("hidden")))
     id<PDFDocumentPageChangeDelegate> pageChangeDelegate;
     struct __DDScanner *dataDetector;
     BOOL documentChanged;
+    BOOL documentHasBurnInAnnotations;
     BOOL pagesChanged;
     NSIndexSet *initialBookmarkedPageIndices;
     NSMutableIndexSet *bookmarkedPages;

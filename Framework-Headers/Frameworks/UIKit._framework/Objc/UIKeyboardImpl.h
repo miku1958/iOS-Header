@@ -276,6 +276,7 @@
 + (id)sharedInstance;
 + (BOOL)shouldMergeAssistantBarWithKeyboardLayout;
 + (BOOL)showsGlobeAndDictationKeysExternallyForInterfaceOrientation:(long long)arg1;
++ (BOOL)showsGlobeAndDictationKeysExternallyForInterfaceOrientation:(long long)arg1 inputMode:(id)arg2;
 + (struct CGSize)sizeForInterfaceOrientation:(long long)arg1;
 + (struct CGSize)sizeForInterfaceOrientation:(long long)arg1 ignoreInputView:(BOOL)arg2;
 + (double)splitProgress;
@@ -286,6 +287,8 @@
 + (id)uniqueNumberPadInputModesFromInputModes:(id)arg1 forKeyboardType:(long long)arg2;
 - (id)UILanguagePreference;
 - (BOOL)_activeCandidateViewNeedsBackdrop;
+- (id)_autofillContext;
+- (id)_autofillContextForInputDelegate:(id)arg1;
 - (void)_clearAutofillGroup;
 - (int)_clipCornersOfView:(id)arg1;
 - (void)_completePerformInputViewControllerOutput:(id)arg1 executionContext:(id)arg2;
@@ -588,6 +591,7 @@
 - (BOOL)keyboardDrawsOpaque;
 - (BOOL)keyboardIsKeyPad;
 - (BOOL)keyboardsExpandedPreference;
+- (double)lastTouchDownTimestamp;
 - (void)layoutHasChanged;
 - (id)layoutState;
 - (void)logHandwritingData;
@@ -818,7 +822,7 @@
 - (id)updateKeyBehaviors:(id)arg1 withBehaviors:(id)arg2 forState:(id)arg3;
 - (void)updateKeyboardConfigurations;
 - (void)updateKeyboardEventsLagging:(id)arg1;
-- (void)updateKeyboardOutput:(id)arg1 withInputForSmartPunctuation:(id)arg2;
+- (void)updateKeyboardOutput:(id)arg1 withInputForSmartPunctuation:(id)arg2 keyboardConfiguration:(id)arg3;
 - (void)updateKeyboardStateForDeletion;
 - (void)updateKeyboardStateForInsertion:(id)arg1;
 - (void)updateLayout;

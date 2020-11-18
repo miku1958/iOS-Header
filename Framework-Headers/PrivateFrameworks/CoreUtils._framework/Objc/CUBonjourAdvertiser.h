@@ -15,6 +15,7 @@
     BOOL _activated;
     struct BonjourAdvertiserPrivate *_bonjourAdvertiser;
     BOOL _invalidateCalled;
+    BOOL _started;
     struct LogCategory *_ucat;
     BOOL _updating;
     BOOL _advertiseFlagsChanged;
@@ -51,12 +52,13 @@
 - (void).cxx_destruct;
 - (void)_activate;
 - (void)_activateSafeInvokeBlock:(CDUnknownBlockType)arg1;
-- (void)_update:(BOOL)arg1;
-- (void)_updateLocked:(BOOL)arg1;
+- (void)_update;
+- (void)_updateLocked;
 - (void)_updateTXTDictionary;
 - (void)activate;
 - (void)dealloc;
 - (id)description;
+- (id)descriptionWithLevel:(int)arg1;
 - (id)init;
 - (void)invalidate;
 - (void)performUpdate:(CDUnknownBlockType)arg1;

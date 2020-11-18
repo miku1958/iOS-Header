@@ -34,6 +34,7 @@
 - (void)_linkButtonTapped:(id)arg1;
 - (void)_updateForCurrentSizeCategory;
 - (id)bodyTextView;
+- (double)bottomPadding;
 - (void)deactivateDefaultTitleLabelBaselineConstraint;
 - (id)initWithTopInset:(double)arg1 linkButtonTitle:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;

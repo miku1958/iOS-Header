@@ -26,6 +26,7 @@
 - (void)layoutSubviews;
 - (void)setShallowDepthOfFieldStatus:(long long)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)updateToContentSize:(id)arg1;
 
 @end
 

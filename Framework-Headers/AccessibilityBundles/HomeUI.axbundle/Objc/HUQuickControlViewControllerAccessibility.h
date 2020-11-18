@@ -13,13 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityControlsContainerView;
 - (void)_accessibilityMoveToActiveControl;
-- (void)_controlDidDismiss;
 - (id)accessibilityControlServiceName;
-- (void)containerView:(id)arg1 didSelectControlType:(unsigned long long)arg2;
-- (void)hideAuxiliaryViewForInteractionCoordinator:(id)arg1;
-- (void)interactionCoordinator:(id)arg1 showAuxiliaryView:(id)arg2;
-- (void)presentControlAnimatedFromSourceRect:(struct CGRect)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 
 @end
 

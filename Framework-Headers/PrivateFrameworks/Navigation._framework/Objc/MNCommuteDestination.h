@@ -15,6 +15,7 @@
 {
     GEOComposedRoute *_nonRecommendedRoute;
     BOOL _invalid;
+    BOOL _rerouting;
     MNCommuteDestinationSuggestion *_suggestion;
     GEOComposedRoute *_route;
     GEORouteSet *_routeSet;
@@ -44,6 +45,7 @@
 @property (strong) MNObserverHashTable *observers; // @synthesize observers=_observers;
 @property (nonatomic) double remainingDistance; // @synthesize remainingDistance=_remainingDistance;
 @property (nonatomic) double remainingTime; // @synthesize remainingTime=_remainingTime;
+@property (nonatomic) BOOL rerouting; // @synthesize rerouting=_rerouting;
 @property (strong, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
 @property (strong, nonatomic) GEORouteSet *routeSet; // @synthesize routeSet=_routeSet;
 @property (nonatomic) long long score; // @synthesize score=_score;

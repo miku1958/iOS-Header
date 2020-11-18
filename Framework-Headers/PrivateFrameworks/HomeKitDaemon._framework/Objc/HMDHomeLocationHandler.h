@@ -66,7 +66,7 @@
 - (void)didDetermineLocation:(id)arg1;
 - (void)didDetermineState:(long long)arg1 forRegion:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
-- (void)getReachableIPAccessory:(unsigned long long *)arg1 btleAccessory:(unsigned long long *)arg2;
+- (void)getReachableIPAccessory:(unsigned long long *)arg1 btleAccessory:(unsigned long long *)arg2 mediaAccessory:(unsigned long long *)arg3;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isDate:(id)arg1 laterThanDate:(id)arg2;

@@ -23,6 +23,7 @@
     NSMutableArray *_relatedSearchSuggestions;
     NSMutableArray *_resultDetourInfos;
     NSString *_resultDisplayHeader;
+    unsigned int _retainSearchTime;
     GEOPDSearchClientBehavior *_searchClientBehavior;
     int _searchResultType;
     BOOL _enablePartialClientization;
@@ -30,6 +31,7 @@
     BOOL _showDymSuggestionCloseButton;
     struct {
         unsigned int dymSuggestionVisibleTime:1;
+        unsigned int retainSearchTime:1;
         unsigned int searchResultType:1;
         unsigned int enablePartialClientization:1;
         unsigned int isChainResultSet:1;
@@ -53,6 +55,7 @@
 @property (nonatomic) BOOL hasEnablePartialClientization;
 @property (nonatomic) BOOL hasIsChainResultSet;
 @property (readonly, nonatomic) BOOL hasResultDisplayHeader;
+@property (nonatomic) BOOL hasRetainSearchTime;
 @property (readonly, nonatomic) BOOL hasSearchClientBehavior;
 @property (nonatomic) BOOL hasSearchResultType;
 @property (nonatomic) BOOL hasShowDymSuggestionCloseButton;
@@ -60,6 +63,7 @@
 @property (strong, nonatomic) NSMutableArray *relatedSearchSuggestions; // @synthesize relatedSearchSuggestions=_relatedSearchSuggestions;
 @property (strong, nonatomic) NSMutableArray *resultDetourInfos; // @synthesize resultDetourInfos=_resultDetourInfos;
 @property (strong, nonatomic) NSString *resultDisplayHeader; // @synthesize resultDisplayHeader=_resultDisplayHeader;
+@property (nonatomic) unsigned int retainSearchTime; // @synthesize retainSearchTime=_retainSearchTime;
 @property (strong, nonatomic) GEOPDSearchClientBehavior *searchClientBehavior; // @synthesize searchClientBehavior=_searchClientBehavior;
 @property (nonatomic) int searchResultType; // @synthesize searchResultType=_searchResultType;
 @property (nonatomic) BOOL showDymSuggestionCloseButton; // @synthesize showDymSuggestionCloseButton=_showDymSuggestionCloseButton;

@@ -6,17 +6,20 @@
 
 #import <SAObjects/SAUITemplateBaseItem.h>
 
-@class NSArray, NSString;
+@class NSArray, NSNumber, NSString;
 @protocol SAUITemplateItem;
 
 @interface SAUITemplateTabularData : SAUITemplateBaseItem
 {
 }
 
+@property (nonatomic) BOOL allowContentScrolling;
 @property (copy, nonatomic) NSArray *columns;
 @property (strong, nonatomic) id<SAUITemplateItem> footerItem;
 @property (strong, nonatomic) id<SAUITemplateItem> headerItem;
 @property (copy, nonatomic) NSString *layoutStyle;
+@property (copy, nonatomic) NSNumber *minimumRowHeight;
+@property (copy, nonatomic) NSArray *rowStyleRules;
 @property (nonatomic) BOOL showHeaderDivider;
 
 + (id)tabularData;

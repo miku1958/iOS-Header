@@ -12,6 +12,7 @@
 {
     unsigned long long _authenticationIdentifier;
     NSObject<OS_dispatch_queue> *_contextMutationQueue;
+    BOOL _invalidated;
     BOOL _acquiringHintSupressionAssertion;
     id<BSInvalidatable> _hintSupressionAssertion;
     id<PKAuthenticatorDelegate> _delegate;
@@ -50,6 +51,7 @@
 - (void)fallbackToSystemPasscodeUI;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
+- (void)invalidate;
 - (void)restartEvaluation;
 - (void)setFingerPresentTimeout:(double)arg1 preventRestart:(BOOL)arg2;
 

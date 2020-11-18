@@ -8,7 +8,7 @@
 
 @protocol BYDaemonGeneralProtocol <NSObject>
 - (void)backupMetadata:(void (^)(NSData *))arg1;
-- (void)observeFinishSetupTriggers;
+- (void)observeFinishSetupTriggers:(void (^)(void))arg1;
 - (void)setupAssistantNeedsToRun:(void (^)(BOOL))arg1;
 @end
 

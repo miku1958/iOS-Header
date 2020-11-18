@@ -51,6 +51,7 @@
     struct __C3DEngineContext *_engineContext;
     unsigned long long _renderingAPI;
     struct SCNVector4 __viewport;
+    MISSING_TYPE *__drawableSafeAreaInsets;
     EAGLContext *_glContext;
     id<SCNRenderContext> _renderContext;
     unsigned int _jitteringEnabled:1;
@@ -136,6 +137,7 @@
 - (BOOL)_drawSceneWithLegacyRenderer:(struct __C3DScene *)arg1;
 - (BOOL)_drawSceneWithNewRenderer:(struct __C3DScene *)arg1;
 - (void)_drawWithJitteringPresentationMode;
+- (MISSING_TYPE *)_drawableSafeAreaInsets;
 - (BOOL)_enablesDeferredShading;
 - (void)_endFrame;
 - (struct __C3DEngineContext *)_engineContext;
@@ -243,6 +245,7 @@
 - (void)set_collectCompilationErrors:(BOOL)arg1;
 - (void)set_deltaTime:(double)arg1;
 - (void)set_disableLinearRendering:(BOOL)arg1;
+- (void)set_drawableSafeAreaInsets: /* Error: Ran out of types for this method. */;
 - (void)set_enablesDeferredShading:(BOOL)arg1;
 - (void)set_nextFrameTime:(double)arg1;
 - (void)set_privateRendererShouldForwardSceneRendererDelegationMessagesToOwner:(BOOL)arg1;

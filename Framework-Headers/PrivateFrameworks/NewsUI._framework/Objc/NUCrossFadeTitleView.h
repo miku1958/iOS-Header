@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NUCrossFadeViewAnimator, NUTextAndGlyphView, UIImageView, UILabel;
+@class NUCrossFadeViewAnimator, NUTextAndGlyphView, NUTitleViewUpdate, UIImageView, UILabel;
 @protocol NUTitleViewStyler;
 
 @interface NUCrossFadeTitleView : UIView
@@ -17,6 +17,7 @@
     NUTextAndGlyphView *_textAndGlyphView;
     unsigned long long _displayValueType;
     NUCrossFadeViewAnimator *_animator;
+    NUTitleViewUpdate *_update;
 }
 
 @property (readonly, nonatomic) NUCrossFadeViewAnimator *animator; // @synthesize animator=_animator;
@@ -25,6 +26,7 @@
 @property (readonly, nonatomic) NUTextAndGlyphView *textAndGlyphView; // @synthesize textAndGlyphView=_textAndGlyphView;
 @property (readonly, nonatomic) UIImageView *titleImageView; // @synthesize titleImageView=_titleImageView;
 @property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (strong, nonatomic) NUTitleViewUpdate *update; // @synthesize update=_update;
 @property (readonly, nonatomic) struct CGRect visibleFrame;
 
 - (void).cxx_destruct;
@@ -35,6 +37,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithStyler:(id)arg1;
 - (void)layoutSubviews;
+- (void)relayoutWithAnimation:(BOOL)arg1;
 - (void)updateTitleViewWithUpdate:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)viewForValueType:(unsigned long long)arg1;
 

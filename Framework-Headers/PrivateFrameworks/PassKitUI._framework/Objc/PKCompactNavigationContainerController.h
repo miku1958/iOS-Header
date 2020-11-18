@@ -11,26 +11,26 @@
 #import <PassKitUI/UINavigationControllerDelegate-Protocol.h>
 #import <PassKitUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class NSString, UINavigationController, UITapGestureRecognizer;
-@protocol PKCompactNavigationContainerControllerDelegate, PKObservableContentContainer, UICoordinateSpace;
+@class NSString, PKCompactNavigationContainedNavigationController, UITapGestureRecognizer;
+@protocol PKCompactNavigationContainerControllerDelegate, UICoordinateSpace;
 
 @interface PKCompactNavigationContainerController : UIViewController <UIViewControllerTransitioningDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate, PKContentContainerObserver>
 {
     UIViewController *_presentationContextVC;
-    BOOL _isRoot;
-    struct CGSize _childViewControllerPreferredContentSize;
-    double _minimumNavigationControllerHeight;
+    CDStruct_47050b7f _topVCInfo;
     struct CGRect _statusBarFrame;
+    UIViewController *_topVC;
+    UIViewController *_pendingTopVC;
+    unsigned long long _pendingTopVCIdentifier;
     UITapGestureRecognizer *_tapGestureRecognizer;
-    BOOL _transitioning;
     BOOL _presentingNavigationController;
-    UINavigationController<PKObservableContentContainer> *_containedNavigationController;
+    PKCompactNavigationContainedNavigationController *_containedNavigationController;
     id<UICoordinateSpace> _exclusionCoordinateSpace;
     id<PKCompactNavigationContainerControllerDelegate> _delegate;
     struct CGRect _exclusionRect;
 }
 
-@property (readonly, nonatomic) UINavigationController<PKObservableContentContainer> *containedNavigationController; // @synthesize containedNavigationController=_containedNavigationController;
+@property (readonly, nonatomic) PKCompactNavigationContainedNavigationController *containedNavigationController; // @synthesize containedNavigationController=_containedNavigationController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKCompactNavigationContainerControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -43,6 +43,11 @@
 + (id)dimmingColor;
 - (void).cxx_destruct;
 - (id)_backgroundColor;
+- (CDStruct_47050b7f)_infoForViewController:(id)arg1;
+- (struct CGSize)_navigationControllerSizeForChildViewControllerInfo:(CDStruct_47050b7f)arg1 withCurrentInfo:(CDStruct_47050b7f)arg2;
+- (struct CGRect)_targetNavigationControllerFrameForInfo:(CDStruct_47050b7f)arg1;
+- (void)_updateTopViewController:(id)arg1 animated:(BOOL)arg2;
+- (void)_updateTopViewControllerAsync:(id)arg1 animated:(BOOL)arg2;
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (id)childViewControllerForHomeIndicatorAutoHidden;
@@ -67,7 +72,7 @@
 - (void)setExclusionRect:(struct CGRect)arg1 withCoordinateSpace:(id)arg2;
 - (void)statusBarFrameWillChange:(id)arg1;
 - (void)tapGestureRecognized:(id)arg1;
-- (void)updateChildViewControllerSizeWithTopViewController:(id)arg1 animated:(BOOL)arg2;
+- (BOOL)updateChildViewControllerSizeAnimated:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 

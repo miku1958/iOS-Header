@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateConstraintConstants:(BOOL)arg1;
 - (BOOL)automaticallyUpdateScrollViewContentInset;
 - (BOOL)automaticallyUpdateScrollViewContentOffset;
+- (BOOL)automaticallyUpdateScrollViewIndicatorInset;
 - (BOOL)canEnterFullScreen;
 - (void)dealloc;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleAccountUI/RUILoaderDelegate-Protocol.h>
 #import <AppleAccountUI/RUIObjectModelDelegate-Protocol.h>
 
 @class ACAccount, ACAccountStore, NSMutableArray, NSString, RUILoader, UINavigationController, UIViewController;
 @protocol AAUIGenericTermsRemoteUIDelegate;
 
-@interface AAUIGenericTermsRemoteUI : NSObject <RUIObjectModelDelegate>
+@interface AAUIGenericTermsRemoteUI : NSObject <RUILoaderDelegate, RUIObjectModelDelegate>
 {
     UINavigationController *_parentNavController;
     UIViewController *_originatingViewController;
@@ -21,7 +22,6 @@
     ACAccount *_account;
     ACAccountStore *_accountStore;
     BOOL _isModal;
-    NSString *_agreeURL;
     BOOL _isPreferringPassword;
     id<AAUIGenericTermsRemoteUIDelegate> _delegate;
 }
@@ -37,7 +37,7 @@
 - (void).cxx_destruct;
 - (void)_addHeadersToRequest:(id)arg1;
 - (void)_cancelButtonTapped:(id)arg1;
-- (void)_cleanUpAndDismissWithSuccess:(BOOL)arg1;
+- (void)_cleanUpAndDismissWithSuccess:(BOOL)arg1 agreeURL:(id)arg2;
 - (void)_cleanupRUILoader;
 - (void)_displayConnectionErrorAndDismiss;
 - (void)_loadRequestPreferingPassword:(BOOL)arg1;
@@ -50,6 +50,7 @@
 - (void)objectModelPressedBack:(id)arg1;
 - (id)parentViewControllerForObjectModel:(id)arg1;
 - (void)presentFromViewController:(id)arg1 modal:(BOOL)arg2;
+- (id)sessionConfigurationForLoader:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientationsForObjectModel:(id)arg1 page:(id)arg2;
 
 @end

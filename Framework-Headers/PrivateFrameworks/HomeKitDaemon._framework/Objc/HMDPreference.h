@@ -7,11 +7,13 @@
 #import <HMFoundation/HMFObject.h>
 
 @class NSData, NSNumber, NSString;
+@protocol NSObject;
 
 @interface HMDPreference : HMFObject
 {
     NSString *_key;
     unsigned long long _options;
+    id<NSObject> _value;
 }
 
 @property (readonly, nonatomic) BOOL boolValue;
@@ -20,11 +22,12 @@
 @property (readonly, copy, nonatomic) NSNumber *numberValue;
 @property (readonly) unsigned long long options; // @synthesize options=_options;
 @property (readonly, copy, nonatomic) NSString *stringValue;
+@property (copy) id<NSObject> value; // @synthesize value=_value;
 
 + (id)shortDescription;
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithKey:(id)arg1 options:(unsigned long long)arg2;
+- (id)initWithKey:(id)arg1 options:(unsigned long long)arg2 defaultValue:(id)arg3;
 - (id)shortDescription;
 
 @end

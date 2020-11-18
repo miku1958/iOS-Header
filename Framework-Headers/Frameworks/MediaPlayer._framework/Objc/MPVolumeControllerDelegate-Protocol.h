@@ -6,7 +6,7 @@
 
 #import <MediaPlayer/NSObject-Protocol.h>
 
-@class MPVolumeController;
+@class MPVolumeController, NSString;
 
 @protocol MPVolumeControllerDelegate <NSObject>
 
@@ -14,6 +14,8 @@
 - (void)volumeController:(MPVolumeController *)arg1 EUVolumeLimitDidChange:(float)arg2;
 - (void)volumeController:(MPVolumeController *)arg1 EUVolumeLimitEnforcedDidChange:(BOOL)arg2;
 - (void)volumeController:(MPVolumeController *)arg1 mutedStateDidChange:(BOOL)arg2;
+- (void)volumeController:(MPVolumeController *)arg1 volumeControlAvailableDidChange:(BOOL)arg2;
+- (void)volumeController:(MPVolumeController *)arg1 volumeControlLabelDidChange:(NSString *)arg2;
 - (void)volumeController:(MPVolumeController *)arg1 volumeValueDidChange:(float)arg2;
 - (void)volumeController:(MPVolumeController *)arg1 volumeWarningStateDidChange:(long long)arg2;
 @end

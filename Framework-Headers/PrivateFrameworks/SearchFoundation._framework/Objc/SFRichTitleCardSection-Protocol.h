@@ -20,6 +20,7 @@
 @property (copy, nonatomic) NSString *contentAdvisory;
 @property (copy, nonatomic) NSString *descriptionText;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (copy, nonatomic) NSString *footnote;
 @property (nonatomic) BOOL hasBottomPadding;
 @property (nonatomic) BOOL hasTopPadding;
 @property (nonatomic) BOOL hideVerticalDivider;

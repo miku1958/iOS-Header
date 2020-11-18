@@ -13,14 +13,13 @@
     BOOL _isRoot;
     NSString *_mountPoint;
     unsigned long long _initialFreespace;
-    NSDictionary *_thresholds;
 }
 
 @property (readonly) unsigned long long initialFreespace; // @synthesize initialFreespace=_initialFreespace;
 @property (readonly) BOOL isRoot; // @synthesize isRoot=_isRoot;
 @property (readonly, nonatomic) NSString *mountPoint; // @synthesize mountPoint=_mountPoint;
 @property (readonly, nonatomic) long long state; // @dynamic state;
-@property (readonly, nonatomic) NSDictionary *thresholds; // @synthesize thresholds=_thresholds;
+@property (readonly, nonatomic) NSDictionary *thresholds;
 
 + (id)rootVolume;
 + (long long)stateForPath:(id)arg1;

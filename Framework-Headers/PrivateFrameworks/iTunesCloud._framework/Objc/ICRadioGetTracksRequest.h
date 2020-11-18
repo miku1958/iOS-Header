@@ -19,6 +19,7 @@
     NSArray *_playActivityEvents;
     ICRadioPlaybackHistory *_playbackContext;
     NSNumber *_privateListeningEnabled;
+    NSNumber *_delegatedPrivateListeningEnabled;
     long long _reasonType;
     ICStoreRequestContext *_requestContext;
     NSString *_stationHash;
@@ -31,6 +32,7 @@
 
 @property (copy, nonatomic) NSDictionary *additionalRequestParameters; // @synthesize additionalRequestParameters=_additionalRequestParameters;
 @property (nonatomic) BOOL allowsExplicitContent; // @synthesize allowsExplicitContent=_allowsExplicitContent;
+@property (copy, nonatomic, getter=isDelegatedPrivateListeningEnabled) NSNumber *delegatedPrivateListeningEnabled; // @synthesize delegatedPrivateListeningEnabled=_delegatedPrivateListeningEnabled;
 @property (copy, nonatomic) ICRadioContentReference *nowPlayingContentReference; // @synthesize nowPlayingContentReference=_nowPlayingContentReference;
 @property (copy, nonatomic) NSArray *playActivityEvents; // @synthesize playActivityEvents=_playActivityEvents;
 @property (copy, nonatomic) ICRadioPlaybackHistory *playbackContext; // @synthesize playbackContext=_playbackContext;

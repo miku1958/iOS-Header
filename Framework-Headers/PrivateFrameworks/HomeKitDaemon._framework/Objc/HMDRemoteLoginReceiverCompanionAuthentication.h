@@ -18,7 +18,7 @@
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)_authenticate;
-- (void)_authenticateAccount:(id)arg1 withCompanionDevice:(id)arg2;
+- (void)_authenticateAccount:(id)arg1 alreadyExists:(BOOL)arg2 withCompanionDevice:(id)arg3;
 - (void)authenticate;
 - (void)dealloc;
 - (id)description;

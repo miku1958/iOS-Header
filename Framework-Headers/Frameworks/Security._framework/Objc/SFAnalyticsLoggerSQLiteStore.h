@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (long long)softFailureCountForEventType:(id)arg1;
 - (long long)successCountForEventType:(id)arg1;
 - (id)summaryCounts;
+- (BOOL)tryToOpenDatabase;
 
 @end
 

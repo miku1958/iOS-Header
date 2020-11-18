@@ -14,6 +14,7 @@
 @property (strong, nonatomic) SFColor *backgroundColor;
 @property (nonatomic) BOOL canBeHidden;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (copy, nonatomic) NSString *eventStatus;
 @property (nonatomic) BOOL hasBottomPadding;
 @property (nonatomic) BOOL hasTopPadding;
 @property (readonly, nonatomic) NSData *jsonData;

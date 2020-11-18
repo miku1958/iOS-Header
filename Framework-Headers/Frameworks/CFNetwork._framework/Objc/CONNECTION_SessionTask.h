@@ -25,10 +25,12 @@ __attribute__((visibility("hidden")))
     BOOL __shouldSkipPreferredClientCertificateLookup;
     struct __CFDictionary *__atsContext;
     NSMutableArray *_transactionMetrics;
+    struct os_unfair_lock_s _unfair_lock;
 }
 
 - (const struct __CFDictionary **)_DuetActivityProperties;
 - (const struct __CFData **)_TCPConnectionMetadata;
+- (unsigned short)_TLSNegotiatedCipherSuite;
 - (unsigned long long)_allowedProtocolTypes;
 - (id)_allowsCellular;
 - (BOOL)_allowsQUIC;
@@ -111,6 +113,7 @@ __attribute__((visibility("hidden")))
 - (float)priority;
 - (id)session;
 - (void)set_TCPConnectionMetadata:(id)arg1;
+- (void)set_TLSNegotiatedCipherSuite:(unsigned short)arg1;
 - (void)set_allowsQUIC:(BOOL)arg1;
 - (void)set_incompleteTaskMetrics:(id)arg1;
 - (void)set_preconnect:(BOOL)arg1;

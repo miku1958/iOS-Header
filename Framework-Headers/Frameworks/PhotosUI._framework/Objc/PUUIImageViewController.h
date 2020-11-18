@@ -11,7 +11,7 @@
 #import <PhotosUI/PUVideoPlayerViewDelegate-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class ISAnimatedImageView, NSString, NSURL, PHAsset, PHLivePhotoView, PUBrowsingIrisPlayer, PUPhotoPickerAppearance, PUVideoPlayerView;
+@class ISAnimatedImageView, NSString, NSURL, PHAsset, PHLivePhotoView, PUBrowsingIrisPlayer, PUVideoPlayerView;
 @protocol PUPhotoPicker;
 
 __attribute__((visibility("hidden")))
@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
     ISAnimatedImageView *__animatedImageView;
     NSURL *__videoAssetURL;
     NSURL *__assetURL;
-    PUPhotoPickerAppearance *_previousPhotoPickerAppearance;
 }
 
 @property (setter=_setAnimatedImageRequestID:) int _animatedImageRequestID; // @synthesize _animatedImageRequestID=__animatedImageRequestID;
@@ -47,7 +46,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<PUPhotoPicker> photoPicker; // @synthesize photoPicker=_photoPicker;
-@property (strong, nonatomic) PUPhotoPickerAppearance *previousPhotoPickerAppearance; // @synthesize previousPhotoPickerAppearance=_previousPhotoPickerAppearance;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -68,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (void)_loadLivePhoto;
 - (id)chooseButtonTitle;
 - (void)cropOverlayWasOKed:(id)arg1;
+- (void)didUpdateNavigationBarAppearance;
 - (BOOL)disableVideoTrimMessage;
 - (BOOL)doNotTranscode;
 - (id)exportPreset;
@@ -95,7 +94,6 @@ __attribute__((visibility("hidden")))
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (BOOL)viewImageBeforeSelecting;
-- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (BOOL)wantsAutoloopUI;
 - (BOOL)wantsLegacyImageUI;

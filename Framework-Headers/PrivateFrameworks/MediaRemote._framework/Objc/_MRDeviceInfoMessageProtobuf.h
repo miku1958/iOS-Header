@@ -17,6 +17,7 @@
     NSString *_applicationBundleVersion;
     NSData *_bluetoothAddress;
     unsigned int _lastSupportedMessageType;
+    NSString *_localReceiverPairingIdentity;
     NSString *_localizedModelName;
     NSString *_name;
     unsigned int _sharedQueueVersion;
@@ -53,6 +54,7 @@
 @property (readonly, nonatomic) BOOL hasBluetoothAddress;
 @property (nonatomic) BOOL hasConnected;
 @property (nonatomic) BOOL hasLastSupportedMessageType;
+@property (readonly, nonatomic) BOOL hasLocalReceiverPairingIdentity;
 @property (readonly, nonatomic) BOOL hasLocalizedModelName;
 @property (readonly, nonatomic) BOOL hasName;
 @property (nonatomic) BOOL hasProtocolVersion;
@@ -65,6 +67,7 @@
 @property (readonly, nonatomic) BOOL hasSystemMediaApplication;
 @property (readonly, nonatomic) BOOL hasUniqueIdentifier;
 @property (nonatomic) unsigned int lastSupportedMessageType; // @synthesize lastSupportedMessageType=_lastSupportedMessageType;
+@property (strong, nonatomic) NSString *localReceiverPairingIdentity; // @synthesize localReceiverPairingIdentity=_localReceiverPairingIdentity;
 @property (strong, nonatomic) NSString *localizedModelName; // @synthesize localizedModelName=_localizedModelName;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) unsigned long long protocolVersion; // @synthesize protocolVersion=_protocolVersion;

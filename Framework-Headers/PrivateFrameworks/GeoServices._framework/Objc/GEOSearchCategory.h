@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) NSString *shortDisplayString;
 @property (readonly, nonatomic) int sortOrder;
 @property (readonly, nonatomic) GEOFeatureStyleAttributes *styleAttributes;
+@property (readonly, nonatomic, getter=isSubCategorySameAsTopLevel) BOOL subCategorySameAsTopLevel;
 @property (readonly, nonatomic) int subCategoryType;
 @property (readonly, nonatomic) NSArray *subcategories; // @synthesize subcategories=_subcategories;
 @property (readonly, nonatomic, getter=_suggestionEntryMetadata) NSData *suggestionEntryMetadata;

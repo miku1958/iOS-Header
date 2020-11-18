@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDictionary, NSString, _EARFormatter, _EARSpeechModelInfo, _EARSpeechRecognitionAudioBuffer;
+@class NSArray, NSData, NSDictionary, NSString, _EARFormatter, _EARSpeechModelInfo, _EARSpeechRecognitionAudioBuffer;
 @protocol OS_dispatch_queue;
 
 @interface _EARSpeechRecognizer : NSObject
@@ -26,12 +26,16 @@
     double _maximumRecognitionDuration;
     NSDictionary *_recognitionReplacements;
     NSDictionary *_recognitionConfidenceSubtraction;
+    NSArray *_leftContext;
+    NSString *_inputOrigin;
 }
 
 @property (nonatomic) BOOL concatenateUtterances; // @synthesize concatenateUtterances=_concatenateUtterances;
 @property (nonatomic) BOOL detectUtterances; // @synthesize detectUtterances=_detectUtterances;
 @property (nonatomic) double endpointStart; // @synthesize endpointStart=_endpointStart;
 @property (nonatomic) BOOL farField; // @synthesize farField=_farField;
+@property (copy, nonatomic) NSString *inputOrigin; // @synthesize inputOrigin=_inputOrigin;
+@property (copy, nonatomic) NSArray *leftContext; // @synthesize leftContext=_leftContext;
 @property (nonatomic) double maximumRecognitionDuration; // @synthesize maximumRecognitionDuration=_maximumRecognitionDuration;
 @property (readonly, nonatomic) _EARSpeechModelInfo *modelInfo;
 @property (copy, nonatomic) NSDictionary *recognitionConfidenceSubtraction; // @synthesize recognitionConfidenceSubtraction=_recognitionConfidenceSubtraction;

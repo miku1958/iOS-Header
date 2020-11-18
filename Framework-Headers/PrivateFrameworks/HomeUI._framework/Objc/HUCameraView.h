@@ -14,7 +14,6 @@
 {
     BOOL _allowDigitalZoom;
     unsigned long long _maskedCameraCorners;
-    double _badgeInset;
     NSLayoutYAxisAnchor *_badgeTopAnchor;
     HUCameraErrorContent *_errorContent;
     HURemoteContextHostingView *_cameraContainerView;
@@ -28,15 +27,18 @@
     UITapGestureRecognizer *_doubleTapRecognizer;
     NSArray *_staticConstraints;
     NSLayoutConstraint *_cameraAspectRatioConstraint;
-    NSArray *_badgeInsetConstraints;
+    NSLayoutConstraint *_badgeTopConstraint;
+    NSLayoutConstraint *_badgeLeadingConstraint;
+    struct UIOffset _badgeOffset;
 }
 
 @property (nonatomic) BOOL allowDigitalZoom; // @synthesize allowDigitalZoom=_allowDigitalZoom;
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (nonatomic, getter=isBadgeHidden) BOOL badgeHidden;
-@property (nonatomic) double badgeInset; // @synthesize badgeInset=_badgeInset;
-@property (strong, nonatomic) NSArray *badgeInsetConstraints; // @synthesize badgeInsetConstraints=_badgeInsetConstraints;
+@property (strong, nonatomic) NSLayoutConstraint *badgeLeadingConstraint; // @synthesize badgeLeadingConstraint=_badgeLeadingConstraint;
+@property (nonatomic) struct UIOffset badgeOffset; // @synthesize badgeOffset=_badgeOffset;
 @property (strong, nonatomic) NSLayoutYAxisAnchor *badgeTopAnchor; // @synthesize badgeTopAnchor=_badgeTopAnchor;
+@property (strong, nonatomic) NSLayoutConstraint *badgeTopConstraint; // @synthesize badgeTopConstraint=_badgeTopConstraint;
 @property (readonly, nonatomic) HUCameraBadgeView *badgeView; // @synthesize badgeView=_badgeView;
 @property (strong, nonatomic) NSLayoutConstraint *cameraAspectRatioConstraint; // @synthesize cameraAspectRatioConstraint=_cameraAspectRatioConstraint;
 @property (readonly, nonatomic) HURemoteContextHostingView *cameraContainerView; // @synthesize cameraContainerView=_cameraContainerView;

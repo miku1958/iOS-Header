@@ -31,6 +31,8 @@
     BOOL _enableFigPhotoTiledLayer;
     BOOL _useURLForLargePhotosWithFigPhotoTiledLayer;
     BOOL _forceURLWithFigPhotoTiledLayer;
+    BOOL _enableFigPhotoBackgroundSizeBasedDisplay;
+    BOOL _simulateWorstCaseFigPhotoBackgroundSize;
     BOOL _allowPlayButtonInBars;
     BOOL _playVideoInScrubber;
     BOOL _lockScrollDuringLivePhotoPlayback;
@@ -131,6 +133,7 @@
 @property (nonatomic) BOOL doubleTapZoomAreaExcludesBackground; // @synthesize doubleTapZoomAreaExcludesBackground=_doubleTapZoomAreaExcludesBackground;
 @property (nonatomic) BOOL doubleTapZoomAreaExcludesBars; // @synthesize doubleTapZoomAreaExcludesBars=_doubleTapZoomAreaExcludesBars;
 @property (nonatomic) double doubleTapZoomFactor; // @synthesize doubleTapZoomFactor=_doubleTapZoomFactor;
+@property (nonatomic) BOOL enableFigPhotoBackgroundSizeBasedDisplay; // @synthesize enableFigPhotoBackgroundSizeBasedDisplay=_enableFigPhotoBackgroundSizeBasedDisplay;
 @property (nonatomic) BOOL enableFigPhotoTiledLayer; // @synthesize enableFigPhotoTiledLayer=_enableFigPhotoTiledLayer;
 @property (nonatomic) BOOL enableSuggestionsAnalysis; // @synthesize enableSuggestionsAnalysis=_enableSuggestionsAnalysis;
 @property (nonatomic) BOOL forceURLWithFigPhotoTiledLayer; // @synthesize forceURLWithFigPhotoTiledLayer=_forceURLWithFigPhotoTiledLayer;
@@ -166,6 +169,7 @@
 @property (nonatomic) BOOL showLoadingIndicatorDuringDownload; // @synthesize showLoadingIndicatorDuringDownload=_showLoadingIndicatorDuringDownload;
 @property (nonatomic) BOOL simulateAssetContentDownload; // @synthesize simulateAssetContentDownload=_simulateAssetContentDownload;
 @property (nonatomic) BOOL simulateAssetContentDownloadFailure; // @synthesize simulateAssetContentDownloadFailure=_simulateAssetContentDownloadFailure;
+@property (nonatomic) BOOL simulateWorstCaseFigPhotoBackgroundSize; // @synthesize simulateWorstCaseFigPhotoBackgroundSize=_simulateWorstCaseFigPhotoBackgroundSize;
 @property (nonatomic) long long simulatedAssetVariationSuggestion; // @synthesize simulatedAssetVariationSuggestion=_simulatedAssetVariationSuggestion;
 @property (nonatomic) long long suggestionMinimumAssetAgeInDays; // @synthesize suggestionMinimumAssetAgeInDays=_suggestionMinimumAssetAgeInDays;
 @property (nonatomic) long long suggestionsStyle; // @synthesize suggestionsStyle=_suggestionsStyle;

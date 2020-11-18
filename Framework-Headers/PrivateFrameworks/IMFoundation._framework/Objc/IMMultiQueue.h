@@ -7,10 +7,12 @@
 #import <Foundation/NSObject.h>
 
 @class NSMutableDictionary;
+@protocol OS_dispatch_queue;
 
 @interface IMMultiQueue : NSObject
 {
     NSMutableDictionary *_queueMap;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 - (void)_addBlock:(CDUnknownBlockType)arg1 withGUID:(id)arg2 forKey:(id)arg3 description:(id)arg4;
@@ -18,6 +20,8 @@
 - (void)addBlock:(CDUnknownBlockType)arg1 forKey:(id)arg2 description:(id)arg3;
 - (void)addBlock:(CDUnknownBlockType)arg1 withTimeout:(double)arg2 forKey:(id)arg3 description:(id)arg4;
 - (void)dealloc;
+- (id)init;
+- (id)initWithQueue:(id)arg1;
 
 @end
 

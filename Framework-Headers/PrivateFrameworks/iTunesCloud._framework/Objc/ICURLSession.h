@@ -17,18 +17,19 @@
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_operationQueue;
-    unsigned long long _maxConcurrentRequests;
     NSMutableOrderedSet *_pendingRequests;
     NSMutableSet *_activeRequests;
     NSMutableDictionary *_completionHandlers;
     BOOL _paused;
     NSObject<OS_dispatch_source> *_requestTimeoutTimer;
+    unsigned long long _maxConcurrentRequests;
     NSURLSession *_urlSession;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) unsigned long long maxConcurrentRequests; // @synthesize maxConcurrentRequests=_maxConcurrentRequests;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSURLSession *urlSession; // @synthesize urlSession=_urlSession;
 

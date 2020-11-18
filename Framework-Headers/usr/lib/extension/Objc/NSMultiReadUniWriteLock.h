@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSLocking-Protocol.h>
+#import <Foundation/NSLocking-Protocol.h>
 
 @interface NSMultiReadUniWriteLock : NSObject <NSLocking>
 {

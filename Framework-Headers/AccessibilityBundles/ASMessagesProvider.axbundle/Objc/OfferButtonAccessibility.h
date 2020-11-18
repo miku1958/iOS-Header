@@ -16,10 +16,10 @@
 - (unsigned long long)accessibilityTraits;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isAccessibilityElement;
-- (void)showLoadingWithAligned:(long long)arg1 theme:(long long)arg2;
-- (void)showRedownloadWithAligned:(long long)arg1 theme:(long long)arg2;
-- (void)showWithProgress:(double)arg1 aligned:(long long)arg2 theme:(long long)arg3;
-- (void)showWithText:(id)arg1 theme:(long long)arg2;
+- (void)showLoadingWithAligned:(long long)arg1 theme:(id)arg2;
+- (void)showRedownloadWithAligned:(long long)arg1 theme:(id)arg2;
+- (void)showWithProgress:(double)arg1 aligned:(long long)arg2 theme:(id)arg3;
+- (void)showWithText:(id)arg1 theme:(id)arg2;
 
 @end
 

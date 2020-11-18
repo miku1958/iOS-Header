@@ -25,6 +25,7 @@
 @property (weak) HMAccessory *accessory; // @synthesize accessory=_accessory;
 @property (strong) HMSoftwareUpdate *availableUpdate; // @synthesize availableUpdate=_availableUpdate;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
+@property (readonly, getter=isControllable) BOOL controllable;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMSoftwareUpdateControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

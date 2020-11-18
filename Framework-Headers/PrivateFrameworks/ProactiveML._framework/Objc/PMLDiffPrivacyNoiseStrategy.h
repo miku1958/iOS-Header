@@ -29,6 +29,7 @@
 @property float scaleFactor; // @synthesize scaleFactor=_scaleFactor;
 @property (readonly) Class superclass;
 
++ (id)gaussianNoiseWithScaleFactor:(float)arg1 minimumMagnitude:(float)arg2 seed:(int)arg3;
 - (void).cxx_destruct;
 - (void)addNoiseToDenseVector:(id)arg1;
 - (void)addNoiseToFeatureMatrix:(id)arg1;

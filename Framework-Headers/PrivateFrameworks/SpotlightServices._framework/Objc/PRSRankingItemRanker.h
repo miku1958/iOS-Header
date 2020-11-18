@@ -13,9 +13,10 @@
     BOOL _isInternalDevice;
     BOOL _policyDisabled;
     NSString *_searchString;
+    CSAttributeEvaluator *_fuzzyEvaluator;
     CSAttributeEvaluator *_evaluator;
     NSMapTable *_bundleFeatures;
-    double *_bundleFeaturesScratchBuf;
+    float *_bundleFeaturesScratchBuf;
     double _experimentalWeight1;
     double _experimentalWeight2;
     NSString *_meContactIdentifier;
@@ -23,10 +24,11 @@
 }
 
 @property (strong, nonatomic) NSMapTable *bundleFeatures; // @synthesize bundleFeatures=_bundleFeatures;
-@property (nonatomic) double *bundleFeaturesScratchBuf; // @synthesize bundleFeaturesScratchBuf=_bundleFeaturesScratchBuf;
+@property (nonatomic) float *bundleFeaturesScratchBuf; // @synthesize bundleFeaturesScratchBuf=_bundleFeaturesScratchBuf;
 @property (strong, nonatomic) CSAttributeEvaluator *evaluator; // @synthesize evaluator=_evaluator;
 @property (nonatomic) double experimentalWeight1; // @synthesize experimentalWeight1=_experimentalWeight1;
 @property (nonatomic) double experimentalWeight2; // @synthesize experimentalWeight2=_experimentalWeight2;
+@property (strong, nonatomic) CSAttributeEvaluator *fuzzyEvaluator; // @synthesize fuzzyEvaluator=_fuzzyEvaluator;
 @property BOOL isInternalDevice; // @synthesize isInternalDevice=_isInternalDevice;
 @property (nonatomic) double lastIsSpaceFeature; // @synthesize lastIsSpaceFeature=_lastIsSpaceFeature;
 @property (strong, nonatomic) NSString *meContactIdentifier; // @synthesize meContactIdentifier=_meContactIdentifier;
@@ -50,7 +52,7 @@
 - (CDUnknownBlockType)comparatorByJoiningComparator:(CDUnknownBlockType)arg1 withPredicate:(id)arg2;
 - (void)computeRelativeFeatureForContext:(id)arg1 items:(id)arg2;
 - (void)computeResultSetDependantFeatures:(id)arg1 allItems:(id)arg2;
-- (double *)computeScoresForVectors:(id)arg1 withBundleFeatures:(id)arg2;
+- (float *)computeScoresForVectors:(id)arg1 withBundleFeatures:(id)arg2;
 - (void)deactivate;
 - (void)dealloc;
 - (id)getDateInGMT:(id)arg1;

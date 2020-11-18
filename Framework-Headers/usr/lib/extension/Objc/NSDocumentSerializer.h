@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSAKSerializer.h>
+#import <Foundation/NSAKSerializer.h>
 
 @interface NSDocumentSerializer : NSAKSerializer
 {

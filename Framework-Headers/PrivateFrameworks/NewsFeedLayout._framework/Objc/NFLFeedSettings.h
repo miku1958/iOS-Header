@@ -8,7 +8,7 @@
 
 #import <NewsFeedLayout/NSCopying-Protocol.h>
 
-@class FCHeadlineTemplate, NFLCellGeneratorManager, NFLFontCache, NSString, UIColor;
+@class FCHeadlineTemplate, NFLCellGeneratorManager, NFLFontCache, NSString, UIColor, UITraitCollection;
 @protocol FCFeedTheming, NFLFeedLayoutSearchConfiguration;
 
 @interface NFLFeedSettings : NSObject <NSCopying>
@@ -32,9 +32,10 @@
     double _articleSelectionInset;
     double _scaleValue;
     NFLCellGeneratorManager *_cellGeneratorManager;
-    NSObject<NFLFeedLayoutSearchConfiguration> *_defaultFeedLayoutSearchConfiguration;
+    id<NFLFeedLayoutSearchConfiguration> _defaultFeedLayoutSearchConfiguration;
     NFLFontCache *_fontCache;
     id<FCFeedTheming> _feedTheme;
+    UITraitCollection *_traitCollection;
     struct CGSize _viewportSize;
 }
 
@@ -47,7 +48,7 @@
 @property (readonly, nonatomic) NFLCellGeneratorManager *cellGeneratorManager; // @synthesize cellGeneratorManager=_cellGeneratorManager;
 @property (readonly, nonatomic) long long columnCount; // @synthesize columnCount=_columnCount;
 @property (readonly, nonatomic) double columnWidth; // @synthesize columnWidth=_columnWidth;
-@property (copy, nonatomic) NSObject<NFLFeedLayoutSearchConfiguration> *defaultFeedLayoutSearchConfiguration; // @synthesize defaultFeedLayoutSearchConfiguration=_defaultFeedLayoutSearchConfiguration;
+@property (copy, nonatomic) id<NFLFeedLayoutSearchConfiguration> defaultFeedLayoutSearchConfiguration; // @synthesize defaultFeedLayoutSearchConfiguration=_defaultFeedLayoutSearchConfiguration;
 @property (strong, nonatomic) FCHeadlineTemplate *defaultHeadlineTemplate; // @synthesize defaultHeadlineTemplate=_defaultHeadlineTemplate;
 @property (readonly, copy, nonatomic) UIColor *feedBackgroundColor;
 @property (readonly, nonatomic) double feedGutter; // @synthesize feedGutter=_feedGutter;
@@ -60,6 +61,7 @@
 @property (readonly, nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;
 @property (readonly, nonatomic) double scaleValue; // @synthesize scaleValue=_scaleValue;
 @property (readonly, nonatomic) BOOL showingPrefetchedPurchase; // @synthesize showingPrefetchedPurchase=_showingPrefetchedPurchase;
+@property (strong, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property (readonly, nonatomic) double verticalMarginInRows; // @synthesize verticalMarginInRows=_verticalMarginInRows;
 @property (readonly, nonatomic) struct CGSize viewportSize; // @synthesize viewportSize=_viewportSize;
 
@@ -67,11 +69,13 @@
 - (double)cellHeightForRowSpan:(long long)arg1;
 - (double)cellWidthForColumnSpan:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)init;
 - (id)initWithViewportSize:(struct CGSize)arg1 defaultFeedLayoutSearchConfiguration:(id)arg2 columnCount:(long long)arg3 feedGutter:(double)arg4 verticalMarginInRows:(double)arg5 preferredContentSizeCategory:(id)arg6 maximumContentInset:(double)arg7 selectionCornerRadius:(double)arg8 selectionInset:(double)arg9 showAccessoryText:(BOOL)arg10 layoutOptions:(unsigned long long)arg11;
 - (id)initWithViewportSize:(struct CGSize)arg1 viewportInsets:(struct UIEdgeInsets)arg2 preferredContentSizeCategory:(id)arg3 showAccessoryText:(BOOL)arg4;
 - (id)initWithViewportSize:(struct CGSize)arg1 viewportInsets:(struct UIEdgeInsets)arg2 preferredContentSizeCategory:(id)arg3 showAccessoryText:(BOOL)arg4 layoutType:(long long)arg5 layoutOptions:(unsigned long long)arg6;
 - (BOOL)preservesLayoutMargins:(struct UIEdgeInsets)arg1;
+- (BOOL)preservesTraitCollection:(id)arg1;
 
 @end
 

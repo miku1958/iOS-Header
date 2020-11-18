@@ -21,6 +21,7 @@
     struct NSMutableArray *_requests;
     VSSpeechSynthesizer *_speechSynthesizer;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
+    CDUnknownBlockType _invalidationHandler;
     CDUnknownBlockType _siriDialogHandler;
 }
 
@@ -28,6 +29,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (copy, nonatomic) CDUnknownBlockType siriDialogHandler; // @synthesize siriDialogHandler=_siriDialogHandler;
 @property (readonly) Class superclass;
 
@@ -42,9 +44,12 @@
 - (void)activate;
 - (void)deviceSetupBegin;
 - (void)deviceSetupEnd;
+- (void)deviceSetupPlayGreetingID:(int)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)deviceSetupPrepareGreeting:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)invalidate;
 - (void)invalidateWithFlags:(unsigned int)arg1;
+- (void)preWarmDeviceSetupWelcomePhaseWithCompletion:(CDUnknownBlockType)arg1;
 - (void)speakDeviceSetupWelcomePhaseWithCompletion:(CDUnknownBlockType)arg1;
 - (void)speakText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)speakText:(id)arg1 flags:(unsigned int)arg2 rate:(double)arg3 delay:(double)arg4 startHandler:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;

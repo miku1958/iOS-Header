@@ -23,8 +23,8 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 - (void).cxx_destruct;
-- (void)_recomputePreferredAvailableHeadlineResultsSource;
-- (void)_setPreferredAvailableHeadlineResultsSource:(Class)arg1;
+- (void)_recomputePreferredAvailableTodayResultsSource;
+- (void)_setPreferredAvailableTodayResultsSource:(Class)arg1;
 - (id)init;
 - (id)initWithAvailabilityEntriesInPreferredOrder:(id)arg1 queue:(id)arg2;
 

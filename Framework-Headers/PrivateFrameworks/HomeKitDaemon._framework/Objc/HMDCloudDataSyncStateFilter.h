@@ -78,7 +78,7 @@
 - (void)_clearResetConfigDisplayTimer;
 - (BOOL)_cloudSyncinProgressCheck:(id)arg1 supressPopup:(BOOL)arg2 sendCanceledError:(BOOL *)arg3 dataSyncState:(unsigned long long *)arg4;
 - (void)_handleAccountStatusChanged:(id)arg1;
-- (void)_postNotificationForDataSyncInProgress:(BOOL)arg1 dataSyncState:(unsigned long long)arg2;
+- (void)_postNotificationForDataSyncInProgress:(BOOL)arg1 dataSyncState:(unsigned long long)arg2 forcePost:(BOOL)arg3;
 - (void)_registerForMessages;
 - (void)_resetCloudDataSyncTimer;
 - (void)_stallCloudDataSyncTimer;
@@ -100,7 +100,7 @@
 - (BOOL)dataSyncInProgressWithState:(unsigned long long *)arg1;
 - (void)dealloc;
 - (void)handleKeychainSyncStateChangedNotification:(id)arg1;
-- (id)initWithName:(id)arg1 homeManager:(id)arg2 messageDispatcher:(id)arg3 serverTokenAvailable:(BOOL)arg4 homeDataHasBeenDecrypted:(BOOL)arg5 localDataDecryptionFailed:(BOOL)arg6 totalHomes:(long long)arg7 currentAccount:(id)arg8;
+- (id)initWithName:(id)arg1 homeManager:(id)arg2 messageDispatcher:(id)arg3 serverTokenAvailable:(BOOL)arg4 homeDataHasBeenDecrypted:(BOOL)arg5 homeManagerServerTokenAvailable:(BOOL)arg6 localDataDecryptionFailed:(BOOL)arg7 totalHomes:(long long)arg8 currentAccount:(id)arg9;
 - (BOOL)isLocalDataDecryptionFailed;
 - (BOOL)isiCloudSwitchEnabled;
 - (void)resetConfiguration;

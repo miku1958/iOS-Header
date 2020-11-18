@@ -12,5 +12,6 @@
 
 @optional
 - (BOOL)_dragInteractionDynamicallyUpdatesPrefersFullSizePreviews:(UIDragInteraction *)arg1;
+- (BOOL)_dragInteractionShouldBecomeDraggingSourceDelegate:(UIDragInteraction *)arg1;
 @end
 

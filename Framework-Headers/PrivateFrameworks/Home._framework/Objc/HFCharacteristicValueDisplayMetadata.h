@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HFCharacteristicValueDisplayError, NSString;
+@class HFCharacteristicValueDisplayError, HFServiceState, NSString;
 
 @interface HFCharacteristicValueDisplayMetadata : NSObject
 {
@@ -15,17 +15,21 @@
     NSString *_sortKey;
     long long _transitioningPrimaryState;
     HFCharacteristicValueDisplayError *_error;
+    HFServiceState *_serviceState;
 }
 
 @property (strong, nonatomic) HFCharacteristicValueDisplayError *error; // @synthesize error=_error;
 @property (nonatomic) long long primaryState; // @synthesize primaryState=_primaryState;
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
+@property (strong, nonatomic) HFServiceState *serviceState; // @synthesize serviceState=_serviceState;
 @property (copy, nonatomic) NSString *sortKey; // @synthesize sortKey=_sortKey;
 @property (nonatomic) long long transitioningPrimaryState; // @synthesize transitioningPrimaryState=_transitioningPrimaryState;
 
++ (id)_errorForSymptomHandler:(id)arg1 isFixingCurrently:(BOOL)arg2 withContextProvider:(id)arg3;
 + (long long)_unknownStatePriorityForServiceType:(id)arg1;
 + (id)displayMetadataForAccessory:(id)arg1 withContextProvider:(id)arg2;
-+ (id)displayMetadataForServiceType:(id)arg1 characteristicReadResponse:(id)arg2;
++ (id)displayMetadataForMediaProfile:(id)arg1 withContextProvider:(id)arg2;
++ (id)displayMetadataForServiceDescriptor:(id)arg1 characteristicReadResponse:(id)arg2;
 - (void).cxx_destruct;
 - (void)parseActiveStateForServiceType:(id)arg1 response:(id)arg2;
 - (void)parseAirPurifierResponse:(id)arg1;

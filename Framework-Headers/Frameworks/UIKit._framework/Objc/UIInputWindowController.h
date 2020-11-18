@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     BOOL _isChangingPlacement;
     BOOL _isChangingInputViews;
     BOOL _requiresConstraintUpdate;
+    BOOL _isSnapshotting;
     int _hiddenCount;
     BOOL _inhibitingHiding;
     unsigned long long _rotationState;

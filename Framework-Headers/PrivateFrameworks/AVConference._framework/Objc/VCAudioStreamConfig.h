@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_codecConfigurations;
     VCAudioStreamMultiwayConfig *_multiwayConfig;
     BOOL _redEnabled;
+    unsigned char _numRedundantPayloads;
 }
 
 @property (nonatomic) long long audioStreamMode; // @synthesize audioStreamMode=_audioStreamMode;
@@ -25,8 +26,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isLatencySensitiveMode) BOOL latencySensitiveMode; // @synthesize latencySensitiveMode=_latencySensitiveMode;
 @property (nonatomic) unsigned long long maxPtime; // @synthesize maxPtime=_maxPtime;
 @property (strong, nonatomic) VCAudioStreamMultiwayConfig *multiwayConfig; // @synthesize multiwayConfig=_multiwayConfig;
+@property (nonatomic) unsigned char numRedundantPayloads; // @synthesize numRedundantPayloads=_numRedundantPayloads;
 @property (nonatomic) unsigned long long ptime; // @synthesize ptime=_ptime;
-@property (nonatomic, getter=isRedEnabled) BOOL redEnabled; // @synthesize redEnabled=_redEnabled;
+@property (readonly, nonatomic, getter=isRedEnabled) BOOL redEnabled; // @synthesize redEnabled=_redEnabled;
 
 - (void)addCodecConfiguration:(id)arg1;
 - (void)dealloc;
@@ -35,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)setupCNCodecWithClientDictionary:(id)arg1;
 - (BOOL)setupCodecWithClientDictionary:(id)arg1;
 - (BOOL)setupDTMFCodecWithClientDictionary:(id)arg1;
+- (void)setupRedWithRxPayload:(unsigned int)arg1 txPayload:(unsigned int)arg2;
 
 @end
 

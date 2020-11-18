@@ -6,10 +6,11 @@
 
 #import <MediaPlayer/MPAsyncOperation.h>
 
-@class MPCModelStorePlaybackItemsRequest, NSOperationQueue;
+@class MPCModelStorePlaybackItemsRequest, NSOperationQueue, NSProgress;
 
 @interface MPCModelStorePlaybackItemsRequestOperation : MPAsyncOperation
 {
+    NSProgress *_activeProgress;
     NSOperationQueue *_operationQueue;
     MPCModelStorePlaybackItemsRequest *_request;
     CDUnknownBlockType _responseHandler;
@@ -20,6 +21,7 @@
 
 - (void).cxx_destruct;
 - (void)_getShouldLibraryPersonalizeRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)cancel;
 - (void)execute;
 - (id)initWithRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 

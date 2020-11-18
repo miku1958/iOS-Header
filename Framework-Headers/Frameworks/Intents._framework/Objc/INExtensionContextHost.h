@@ -6,28 +6,18 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <Intents/INExtensionContextHosting-Protocol.h>
+@class NSBundle;
 
-@class NSBundle, NSString;
-@protocol INExtensionContextHostDelegate;
-
-@interface INExtensionContextHost : NSExtensionContext <INExtensionContextHosting>
+@interface INExtensionContextHost : NSExtensionContext
 {
-    id<INExtensionContextHostDelegate> _delegate;
     NSBundle *_extensionBundle;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<INExtensionContextHostDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSBundle *extensionBundle; // @synthesize extensionBundle=_extensionBundle;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
 - (void).cxx_destruct;
-- (void)extensionContextVendorWantsToCacheImage:(id)arg1;
 
 @end
 

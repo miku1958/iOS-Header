@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <extension/NSCoding-Protocol.h>
+#import <Foundation/NSCoding-Protocol.h>
 
 @class NSISEngine, NSMutableSet;
 @protocol NSISVariableDelegate;

@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithEmailAddress:(id)arg1 returnMultipleResults:(BOOL)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)sgContactMatchesWithSortOrder:(long long)arg1 mutableObjects:(BOOL)arg2 service:(id)arg3 error:(id *)arg4;
+- (id)shortDebugDescription;
 
 @end
 

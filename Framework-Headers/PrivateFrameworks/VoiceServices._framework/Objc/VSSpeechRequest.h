@@ -37,6 +37,7 @@
     unsigned long long _requestCreatedTimestamp;
     CDUnknownBlockType _stopHandler;
     CDUnknownBlockType _pauseHandler;
+    long long _pointer;
 }
 
 @property (copy, nonatomic) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
@@ -53,6 +54,7 @@
 @property (copy, nonatomic) NSURL *outputPath; // @synthesize outputPath=_outputPath;
 @property (copy, nonatomic) CDUnknownBlockType pauseHandler; // @synthesize pauseHandler=_pauseHandler;
 @property (nonatomic) double pitch; // @synthesize pitch=_pitch;
+@property (nonatomic) long long pointer; // @synthesize pointer=_pointer;
 @property (nonatomic) double rate; // @synthesize rate=_rate;
 @property (nonatomic) unsigned long long requestCreatedTimestamp; // @synthesize requestCreatedTimestamp=_requestCreatedTimestamp;
 @property (copy, nonatomic) NSURL *resourceListURL; // @synthesize resourceListURL=_resourceListURL;

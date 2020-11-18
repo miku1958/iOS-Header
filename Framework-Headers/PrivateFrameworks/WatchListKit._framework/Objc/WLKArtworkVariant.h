@@ -14,6 +14,7 @@
     BOOL _supportsLayeredImage;
     BOOL _alpha;
     NSURL *_artworkURL;
+    NSString *_artworkURLString;
     long long _artworkType;
     NSString *_format;
     struct CGSize _artworkSize;
@@ -23,6 +24,7 @@
 @property (readonly, nonatomic) struct CGSize artworkSize; // @synthesize artworkSize=_artworkSize;
 @property (readonly, nonatomic) long long artworkType; // @synthesize artworkType=_artworkType;
 @property (readonly, copy, nonatomic) NSURL *artworkURL; // @synthesize artworkURL=_artworkURL;
+@property (readonly, copy, nonatomic) NSString *artworkURLString; // @synthesize artworkURLString=_artworkURLString;
 @property (readonly, copy, nonatomic) NSString *format; // @synthesize format=_format;
 @property (nonatomic) BOOL supportsLayeredImage; // @synthesize supportsLayeredImage=_supportsLayeredImage;
 

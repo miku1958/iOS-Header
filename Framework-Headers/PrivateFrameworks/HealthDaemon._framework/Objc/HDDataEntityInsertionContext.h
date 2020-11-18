@@ -6,20 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class HDDataOriginProvenance, HDProfile, NSNumber;
+@class HDDataOriginProvenance, HDProfile;
 
 @interface HDDataEntityInsertionContext : NSObject
 {
     HDProfile *_profile;
     double _defaultCreationDate;
-    NSNumber *_localSourceID;
     BOOL _skipInsertionFilter;
     HDDataOriginProvenance *_provenance;
     double _creationDate;
 }
 
 @property (readonly, nonatomic) double creationDate; // @synthesize creationDate=_creationDate;
-@property (readonly, copy, nonatomic) NSNumber *localSourceID;
 @property (readonly, nonatomic) HDDataOriginProvenance *provenance; // @synthesize provenance=_provenance;
 @property (readonly, nonatomic) BOOL skipInsertionFilter; // @synthesize skipInsertionFilter=_skipInsertionFilter;
 

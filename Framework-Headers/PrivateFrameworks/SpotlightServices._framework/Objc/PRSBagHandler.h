@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOUserSessionEntity, NSArray, NSMutableArray, NSSet, NSString, PARBag, PRSRankingServerKnobs, SSPlistDataReader;
+@class GEOUserSessionEntity, NSArray, NSMutableArray, NSMutableDictionary, NSSet, NSString, PARBag, PRSRankingServerKnobs, SSPlistDataReader;
 @protocol OS_dispatch_group, OS_dispatch_queue, PRSSessionController;
 
 @interface PRSBagHandler : NSObject
@@ -22,6 +22,7 @@
     BOOL _collectAnonymousData;
     BOOL _collectScores;
     BOOL _use2LayerRanking;
+    BOOL _resourceMetadataNeedsWrite;
     id<PRSSessionController> _client;
     long long _status;
     double _searchRenderTimeout;
@@ -38,6 +39,9 @@
     NSString *_lookupFirstUseDescription2;
     NSString *_lookupFirstUseLearnMore;
     GEOUserSessionEntity *_geoUserSessionEntity;
+    NSMutableDictionary *_resourceMetadata;
+    NSString *_resourceMetadataPath;
+    NSObject<OS_dispatch_queue> *_resourceFetchQueue;
 }
 
 @property (nonatomic) BOOL active; // @synthesize active=_active;
@@ -57,6 +61,10 @@
 @property (readonly, nonatomic) NSString *lookupFirstUseDescription2; // @synthesize lookupFirstUseDescription2=_lookupFirstUseDescription2;
 @property (readonly, nonatomic) NSString *lookupFirstUseLearnMore; // @synthesize lookupFirstUseLearnMore=_lookupFirstUseLearnMore;
 @property (strong) PRSRankingServerKnobs *ranking_server_knobs; // @synthesize ranking_server_knobs=_ranking_server_knobs;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *resourceFetchQueue; // @synthesize resourceFetchQueue=_resourceFetchQueue;
+@property (strong, nonatomic) NSMutableDictionary *resourceMetadata; // @synthesize resourceMetadata=_resourceMetadata;
+@property (nonatomic) BOOL resourceMetadataNeedsWrite; // @synthesize resourceMetadataNeedsWrite=_resourceMetadataNeedsWrite;
+@property (strong, nonatomic) NSString *resourceMetadataPath; // @synthesize resourceMetadataPath=_resourceMetadataPath;
 @property (readonly) double searchRenderTimeout; // @synthesize searchRenderTimeout=_searchRenderTimeout;
 @property (nonatomic) long long status; // @synthesize status=_status;
 @property (strong, nonatomic) NSArray *suggestionRankerModelParams; // @synthesize suggestionRankerModelParams=_suggestionRankerModelParams;
@@ -71,6 +79,7 @@
 - (id)applicationNameForUserAgent;
 - (void)deactivate;
 - (id)excludedDomainIdentifiers;
+- (void)fetchModifiedResourceFromSession:(id)arg1 resource:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getFTEStringsWithReply:(CDUnknownBlockType)arg1;
 - (id)init;
 - (BOOL)isEnabled;

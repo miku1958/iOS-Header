@@ -44,6 +44,7 @@
 @property (readonly) Class superclass;
 
 + (id)logCategory;
++ (id)shortDescription;
 + (id)supportedGroupsClasses;
 + (id)supportedSettingsClasses;
 + (BOOL)supportsSecureCoding;
@@ -59,6 +60,7 @@
 - (void)addSetting:(id)arg1 toGroup:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)configureWithAccessorySettings:(id)arg1 context:(id)arg2;
 - (void)dealloc;
+- (id)descriptionWithPointer:(BOOL)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)groupWithIdentifier:(id)arg1;
 - (id)init;
@@ -79,6 +81,7 @@
 - (void)removeSetting:(id)arg1;
 - (void)removeSetting:(id)arg1 fromGroup:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)settingWithIdentifier:(id)arg1;
+- (id)shortDescription;
 
 @end
 

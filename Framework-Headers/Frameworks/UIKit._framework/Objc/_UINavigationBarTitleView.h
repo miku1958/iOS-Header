@@ -45,6 +45,7 @@
 @property (nonatomic) BOOL hideStandardTitle; // @synthesize hideStandardTitle=_hideStandardTitle;
 @property (nonatomic) BOOL hideTrailingBarButtons; // @synthesize hideTrailingBarButtons=_hideTrailingBarButtons;
 @property (readonly, weak, nonatomic) UINavigationItem *navigationItem; // @synthesize navigationItem=_navigationItem;
+@property (readonly, nonatomic) int preferredAlignment;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long titleLocation; // @synthesize titleLocation=_titleLocation;
 @property (nonatomic) BOOL underlayBarContent; // @synthesize underlayBarContent=_underlayBarContent;
@@ -56,6 +57,7 @@
 - (void)_setDataSource:(id)arg1 navigationItem:(id)arg2 titleLocation:(long long)arg3;
 - (void)_transitionCompleted:(long long)arg1 willBeDisplayed:(BOOL)arg2;
 - (void)_transitionWillBegin:(long long)arg1 willBeDisplayed:(BOOL)arg2;
+- (BOOL)_wantsTwoPartTransition;
 - (void)contentDidChange;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

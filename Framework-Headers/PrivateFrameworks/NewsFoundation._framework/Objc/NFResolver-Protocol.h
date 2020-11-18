@@ -7,8 +7,11 @@
 #import <NewsFoundation/NSObject-Protocol.h>
 
 @class NSString, Protocol;
+@protocol NFResolver;
 
 @protocol NFResolver <NSObject>
+- (id<NFResolver>)currentObjectGraphResolver:(unsigned long long)arg1;
+- (void)linkResolverWithLinkBlock:(void (^)(void (^)(void)))arg1;
 - (id)resolveClass:(Class)arg1;
 - (id)resolveClass:(Class)arg1 name:(NSString *)arg2;
 - (id)resolveProtocol:(Protocol *)arg1;

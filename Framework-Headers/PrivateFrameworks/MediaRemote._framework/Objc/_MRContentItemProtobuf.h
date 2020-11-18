@@ -14,6 +14,8 @@
 {
     NSString *_ancestorIdentifier;
     NSData *_artworkData;
+    int _artworkDataHeight;
+    int _artworkDataWidth;
     NSMutableArray *_availableLanguageOptions;
     NSMutableArray *_currentLanguageOptions;
     NSString *_identifier;
@@ -24,14 +26,22 @@
     NSString *_queueIdentifier;
     NSString *_requestIdentifier;
     NSMutableArray *_sections;
+    struct {
+        unsigned int artworkDataHeight:1;
+        unsigned int artworkDataWidth:1;
+    } _has;
 }
 
 @property (strong, nonatomic) NSString *ancestorIdentifier; // @synthesize ancestorIdentifier=_ancestorIdentifier;
 @property (strong, nonatomic) NSData *artworkData; // @synthesize artworkData=_artworkData;
+@property (nonatomic) int artworkDataHeight; // @synthesize artworkDataHeight=_artworkDataHeight;
+@property (nonatomic) int artworkDataWidth; // @synthesize artworkDataWidth=_artworkDataWidth;
 @property (strong, nonatomic) NSMutableArray *availableLanguageOptions; // @synthesize availableLanguageOptions=_availableLanguageOptions;
 @property (strong, nonatomic) NSMutableArray *currentLanguageOptions; // @synthesize currentLanguageOptions=_currentLanguageOptions;
 @property (readonly, nonatomic) BOOL hasAncestorIdentifier;
 @property (readonly, nonatomic) BOOL hasArtworkData;
+@property (nonatomic) BOOL hasArtworkDataHeight;
+@property (nonatomic) BOOL hasArtworkDataWidth;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasInfo;
 @property (readonly, nonatomic) BOOL hasLyrics;

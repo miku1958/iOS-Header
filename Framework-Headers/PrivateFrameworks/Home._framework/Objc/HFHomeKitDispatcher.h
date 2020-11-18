@@ -8,6 +8,8 @@
 
 #import <Home/HFHomeAppInstallStateArbiterObserver-Protocol.h>
 #import <Home/HFLocationSensingCoordinatorDelegate-Protocol.h>
+#import <Home/HFMediaObjectObserver-Protocol.h>
+#import <Home/HFMediaSessionObserver-Protocol.h>
 #import <Home/HMAccessoryDelegatePrivate-Protocol.h>
 #import <Home/HMAccessorySettingsDelegate-Protocol.h>
 #import <Home/HMCameraSnapshotControlDelegate-Protocol.h>
@@ -15,22 +17,21 @@
 #import <Home/HMHomeDelegatePrivate-Protocol.h>
 #import <Home/HMHomeManagerDelegatePrivate-Protocol.h>
 #import <Home/HMMediaProfileDelegate-Protocol.h>
-#import <Home/HMMediaSessionDelegate-Protocol.h>
 #import <Home/HMResidentDeviceDelegate-Protocol.h>
 #import <Home/HMSoftwareUpdateControllerDelegate-Protocol.h>
 #import <Home/HMSoftwareUpdateDelegate-Protocol.h>
+#import <Home/HMSymptomsHandlerDelegate-Protocol.h>
+#import <Home/HMUserDelegatePrivate-Protocol.h>
 #import <Home/_HFSettingsObserverTupleOwning-Protocol.h>
 
-@class ACAccountStore, HFLocationSensingCoordinator, HMHome, HMHomeManager, NAFuture, NSArray, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, NSTimer;
+@class HFLocationSensingCoordinator, HMHome, HMHomeManager, NAFuture, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, NSTimer;
 
-@interface HFHomeKitDispatcher : NSObject <HMResidentDeviceDelegate, HMCameraSnapshotControlDelegate, HMCameraStreamControlDelegate, HFLocationSensingCoordinatorDelegate, HFHomeAppInstallStateArbiterObserver, HMSoftwareUpdateControllerDelegate, HMAccessorySettingsDelegate, HMSoftwareUpdateDelegate, _HFSettingsObserverTupleOwning, HMHomeManagerDelegatePrivate, HMHomeDelegatePrivate, HMAccessoryDelegatePrivate, HMMediaProfileDelegate, HMMediaSessionDelegate>
+@interface HFHomeKitDispatcher : NSObject <HMResidentDeviceDelegate, HMCameraSnapshotControlDelegate, HMCameraStreamControlDelegate, HMMediaProfileDelegate, HFLocationSensingCoordinatorDelegate, HFHomeAppInstallStateArbiterObserver, HMSoftwareUpdateControllerDelegate, HMAccessorySettingsDelegate, HMSoftwareUpdateDelegate, _HFSettingsObserverTupleOwning, HMSymptomsHandlerDelegate, HMUserDelegatePrivate, HMHomeManagerDelegatePrivate, HMHomeDelegatePrivate, HMAccessoryDelegatePrivate, HFMediaObjectObserver, HFMediaSessionObserver>
 {
     BOOL _hasLoadedHomes;
     int _homeKitPreferencesChangedNotifyToken;
-    ACAccountStore *_appleMusicAccountStore;
     HMHomeManager *_homeManager;
     HMHome *_home;
-    NSArray *_appleMusicMagicAuthCapableAccounts;
     HMHome *_overrideHome;
     HMHome *_selectedHome;
     HFLocationSensingCoordinator *_locationCoordinator;
@@ -41,12 +42,14 @@
     NSHashTable *_accessoryObservers;
     NSHashTable *_residentDeviceObservers;
     NSHashTable *_cameraObservers;
-    NSHashTable *_mediaProfileObservers;
+    NSHashTable *_mediaObjectObservers;
     NSHashTable *_mediaSessionObservers;
     NSHashTable *_softwareUpdateControllerObservers;
     NSHashTable *_softwareUpdateObservers;
+    NSHashTable *_userObservers;
+    NSHashTable *_symptomsHandlerObservers;
     NSMutableArray *_settingsObservers;
-    NSHashTable *_appleMusicAccountObservers;
+    NSMutableArray *_requestedSoftwareUpdates;
     NSMutableArray *_homePromises;
     NSMutableArray *_firstHomeAddedPromises;
     NSMutableArray *_allHomesPromises;
@@ -56,9 +59,6 @@
 @property (strong, nonatomic) NSHashTable *accessoryObservers; // @synthesize accessoryObservers=_accessoryObservers;
 @property (readonly, nonatomic) NAFuture *allHomesFuture;
 @property (strong, nonatomic) NSMutableArray *allHomesPromises; // @synthesize allHomesPromises=_allHomesPromises;
-@property (strong, nonatomic) NSHashTable *appleMusicAccountObservers; // @synthesize appleMusicAccountObservers=_appleMusicAccountObservers;
-@property (readonly, nonatomic) ACAccountStore *appleMusicAccountStore; // @synthesize appleMusicAccountStore=_appleMusicAccountStore;
-@property (copy, nonatomic) NSArray *appleMusicMagicAuthCapableAccounts; // @synthesize appleMusicMagicAuthCapableAccounts=_appleMusicMagicAuthCapableAccounts;
 @property (strong, nonatomic) NSHashTable *cameraObservers; // @synthesize cameraObservers=_cameraObservers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -77,10 +77,11 @@
 @property (strong, nonatomic) HFLocationSensingCoordinator *locationCoordinator; // @synthesize locationCoordinator=_locationCoordinator;
 @property (strong, nonatomic) NAFuture *locationCoordinatorSetupFuture; // @synthesize locationCoordinatorSetupFuture=_locationCoordinatorSetupFuture;
 @property (readonly, nonatomic) NAFuture *locationSensingAvailableFuture;
-@property (strong, nonatomic) NSHashTable *mediaProfileObservers; // @synthesize mediaProfileObservers=_mediaProfileObservers;
+@property (strong, nonatomic) NSHashTable *mediaObjectObservers; // @synthesize mediaObjectObservers=_mediaObjectObservers;
 @property (strong, nonatomic) NSHashTable *mediaSessionObservers; // @synthesize mediaSessionObservers=_mediaSessionObservers;
 @property (strong, nonatomic) HMHome *overrideHome; // @synthesize overrideHome=_overrideHome;
 @property (strong, nonatomic) NSMutableDictionary *remoteAccessStateByHomeID; // @synthesize remoteAccessStateByHomeID=_remoteAccessStateByHomeID;
+@property (readonly, nonatomic) NSMutableArray *requestedSoftwareUpdates; // @synthesize requestedSoftwareUpdates=_requestedSoftwareUpdates;
 @property (strong, nonatomic) NSHashTable *residentDeviceObservers; // @synthesize residentDeviceObservers=_residentDeviceObservers;
 @property (strong, nonatomic) HMHome *selectedHome; // @synthesize selectedHome=_selectedHome;
 @property (nonatomic) BOOL selectedHomeFollowsLocation;
@@ -88,50 +89,62 @@
 @property (strong, nonatomic) NSHashTable *softwareUpdateControllerObservers; // @synthesize softwareUpdateControllerObservers=_softwareUpdateControllerObservers;
 @property (strong, nonatomic) NSHashTable *softwareUpdateObservers; // @synthesize softwareUpdateObservers=_softwareUpdateObservers;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSHashTable *symptomsHandlerObservers; // @synthesize symptomsHandlerObservers=_symptomsHandlerObservers;
+@property (strong, nonatomic) NSHashTable *userObservers; // @synthesize userObservers=_userObservers;
 
 + (unsigned long long)_homeManagerCreationPolicy;
 + (id)sharedDispatcher;
 - (void).cxx_destruct;
-- (void)_accountsStoreWasUpdated:(id)arg1;
 - (void)_createHomeManagerIfNecessary;
 - (void)_finishAllHomesPromises:(id)arg1;
 - (void)_finishFirstHomeAddedPromises:(id)arg1;
 - (void)_finishHomePromises:(id)arg1;
 - (id)_primaryHome;
-- (BOOL)_reloadAppleMusicMagicAuthCapableAccounts;
+- (void)_requestSelectedHome:(id)arg1 notifyAndSaveIfNecessary:(BOOL)arg2;
 - (void)_setDelegate:(id)arg1 forAccessoryHierarchy:(id)arg2;
+- (void)_setDelegate:(id)arg1 forMediaProfileContainer:(id)arg2 session:(id)arg3;
 - (void)_setDelegateForObjectsInCurrentHome:(id)arg1;
-- (void)_setSelectedHome:(id)arg1 notifyAndSaveIfNecessary:(BOOL)arg2;
 - (id)_setupLocationSensingCoordinator;
+- (BOOL)_shouldPersistSelectedHomeToDefaults;
 - (void)_updateRemoteAccessStateForHome:(id)arg1 notifyingObservers:(BOOL)arg2;
 - (void)accessory:(id)arg1 didAddProfile:(id)arg2;
 - (void)accessory:(id)arg1 didRemoveProfile:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateApplicationDataForService:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateAssociatedServiceTypeForService:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateBundleID:(id)arg2;
+- (void)accessory:(id)arg1 didUpdateConfigurationStateForService:(id)arg2;
+- (void)accessory:(id)arg1 didUpdateConfiguredNameForService:(id)arg2;
+- (void)accessory:(id)arg1 didUpdateDefaultNameForService:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateFirmwareUpdateAvailable:(BOOL)arg2;
 - (void)accessory:(id)arg1 didUpdateFirmwareVersion:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateHasAuthorizationDataForCharacteristic:(id)arg2;
+- (void)accessory:(id)arg1 didUpdateLoggedInAccount:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateNameForService:(id)arg2;
+- (void)accessory:(id)arg1 didUpdateServiceSubtypeForService:(id)arg2;
+- (void)accessory:(id)arg1 didUpdateSoftwareVersion:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateStoreID:(id)arg2;
 - (void)accessory:(id)arg1 service:(id)arg2 didUpdateValueForCharacteristic:(id)arg3;
 - (void)accessoryDidUpdateAdditionalSetupRequired:(id)arg1;
 - (void)accessoryDidUpdateApplicationData:(id)arg1;
+- (void)accessoryDidUpdateControllable:(id)arg1;
 - (void)accessoryDidUpdateName:(id)arg1;
 - (void)accessoryDidUpdateReachability:(id)arg1;
 - (void)accessoryDidUpdateServices:(id)arg1;
 - (void)addAccessoryObserver:(id)arg1;
-- (void)addAppleMusicAccountObserver:(id)arg1;
 - (void)addCameraObserver:(id)arg1;
 - (void)addHomeManagerObserver:(id)arg1;
 - (void)addHomeObserver:(id)arg1;
+- (void)addMediaObjectObserver:(id)arg1;
 - (void)addMediaProfileObserver:(id)arg1;
 - (void)addMediaSessionObserver:(id)arg1;
 - (void)addResidentDeviceObserver:(id)arg1;
+- (void)addSettingObserver:(id)arg1;
 - (void)addSettingObserver:(id)arg1 forSettings:(id)arg2;
 - (void)addSettingObserver:(id)arg1 forSettings:(id)arg2 setting:(id)arg3;
 - (void)addSoftwareUpdateControllerObserver:(id)arg1;
 - (void)addSoftwareUpdateObserver:(id)arg1;
+- (void)addSymptomsHandlerObserver:(id)arg1;
+- (void)addUserObserver:(id)arg1;
 - (void)cameraSnapshotControl:(id)arg1 didTakeSnapshot:(id)arg2 error:(id)arg3;
 - (void)cameraSnapshotControlDidUpdateMostRecentSnapshot:(id)arg1;
 - (void)cameraStreamControl:(id)arg1 didStopStreamWithError:(id)arg2;
@@ -144,11 +157,16 @@
 - (void)dispatchCameraObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchHomeManagerObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchHomeObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
+- (void)dispatchMediaObjectObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchMediaSessionObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchSoftwareUpdateControllerMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchSoftwareUpdateMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
+- (void)dispatchSymptomsHandlerMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
+- (void)dispatchUserObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
+- (BOOL)hasRequestedUpdate:(id)arg1;
 - (void)home:(id)arg1 didAddAccessory:(id)arg2;
 - (void)home:(id)arg1 didAddActionSet:(id)arg2;
+- (void)home:(id)arg1 didAddMediaSystem:(id)arg2;
 - (void)home:(id)arg1 didAddResidentDevice:(id)arg2;
 - (void)home:(id)arg1 didAddRoom:(id)arg2;
 - (void)home:(id)arg1 didAddRoom:(id)arg2 toZone:(id)arg3;
@@ -160,6 +178,7 @@
 - (void)home:(id)arg1 didEncounterError:(id)arg2 forAccessory:(id)arg3;
 - (void)home:(id)arg1 didRemoveAccessory:(id)arg2;
 - (void)home:(id)arg1 didRemoveActionSet:(id)arg2;
+- (void)home:(id)arg1 didRemoveMediaSystem:(id)arg2;
 - (void)home:(id)arg1 didRemoveResidentDevice:(id)arg2;
 - (void)home:(id)arg1 didRemoveRoom:(id)arg2;
 - (void)home:(id)arg1 didRemoveRoom:(id)arg2 fromZone:(id)arg3;
@@ -195,6 +214,7 @@
 - (void)homeManager:(id)arg1 didUpdateAccessAllowedWhenLocked:(BOOL)arg2;
 - (void)homeManager:(id)arg1 didUpdateResidentEnabledForThisDevice:(BOOL)arg2;
 - (void)homeManager:(id)arg1 didUpdateStateForIncomingInvitations:(id)arg2;
+- (void)homeManager:(id)arg1 didUpdateStatus:(unsigned long long)arg2;
 - (void)homeManager:(id)arg1 residentProvisioningStatusChanged:(unsigned long long)arg2;
 - (void)homeManagerDidEndBatchNotifications:(id)arg1;
 - (void)homeManagerDidUpdateApplicationData:(id)arg1;
@@ -206,14 +226,19 @@
 - (id)homeSensingActiveFuture;
 - (id)init;
 - (void)installStateArbiter:(id)arg1 installStateDidChange:(BOOL)arg2;
-- (void)mediaProfile:(id)arg1 didUpdateMediaSession:(id)arg2;
-- (void)mediaProfile:(id)arg1 didUpdateSettings:(id)arg2;
+- (void)markUpdate:(id)arg1 asRequested:(BOOL)arg2;
+- (void)mediaObject:(id)arg1 didUpdateMediaSession:(id)arg2;
+- (void)mediaObject:(id)arg1 didUpdateSettings:(id)arg2;
 - (void)mediaSession:(id)arg1 didUpdatePlaybackState:(long long)arg2;
+- (void)mediaSession:(id)arg1 failedToUpdatePlaybackStateWithError:(id)arg2;
+- (void)mediaSession:(id)arg1 willUpdatePlaybackState:(long long)arg2;
+- (void)mediaSystem:(id)arg1 didUpdateComponents:(id)arg2;
+- (void)mediaSystem:(id)arg1 didUpdateName:(id)arg2;
 - (void)removeAccessoryObserver:(id)arg1;
-- (void)removeAppleMusicAccountObserver:(id)arg1;
 - (void)removeCameraObserver:(id)arg1;
 - (void)removeHomeManagerObserver:(id)arg1;
 - (void)removeHomeObserver:(id)arg1;
+- (void)removeMediaObjectObserver:(id)arg1;
 - (void)removeMediaProfileObserver:(id)arg1;
 - (void)removeMediaSessionObserver:(id)arg1;
 - (void)removeResidentDeviceObserver:(id)arg1;
@@ -222,6 +247,8 @@
 - (void)removeSettingObserver:(id)arg1 forSettings:(id)arg2 setting:(id)arg3;
 - (void)removeSoftwareUpdateControllerObserver:(id)arg1;
 - (void)removeSoftwareUpdateObserver:(id)arg1;
+- (void)removeSymptomsHandlerObserver:(id)arg1;
+- (void)removeUserObserver:(id)arg1;
 - (void)residentDevice:(id)arg1 didUpdateCapabilities:(unsigned long long)arg2;
 - (void)residentDevice:(id)arg1 didUpdateEnabled:(BOOL)arg2;
 - (void)residentDevice:(id)arg1 didUpdateName:(id)arg2;
@@ -229,12 +256,18 @@
 - (void)settingsDidUpdate:(id)arg1;
 - (void)settingsObserverTupleWasInvalidated:(id)arg1;
 - (void)settingsWillUpdate:(id)arg1;
+- (void)softwareUpdate:(id)arg1 didUpdateDocumentation:(id)arg2;
+- (void)softwareUpdate:(id)arg1 didUpdateDocumentationAvailable:(BOOL)arg2;
 - (void)softwareUpdate:(id)arg1 didUpdateState:(long long)arg2;
 - (void)softwareUpdateController:(id)arg1 didUpdateAvailableUpdate:(id)arg2;
 - (void)startHomeSensingIdleTimer;
+- (void)symptomsHandler:(id)arg1 didUpdateCanInitiateFix:(BOOL)arg2;
+- (void)symptomsHandler:(id)arg1 didUpdateFixState:(long long)arg2;
+- (void)symptomsHandler:(id)arg1 didUpdateSymptoms:(id)arg2;
 - (void)updateHome;
 - (void)updateSelectedHome;
 - (void)updateStopHomeSensingIdleTimerState;
+- (void)user:(id)arg1 didUpdateAssistantAccessControl:(id)arg2 forHome:(id)arg3;
 - (void)warmup;
 
 @end

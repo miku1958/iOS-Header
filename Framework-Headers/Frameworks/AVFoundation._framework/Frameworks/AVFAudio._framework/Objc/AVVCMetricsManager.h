@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSMutableDictionary;
 
@@ -13,15 +13,17 @@
     unsigned long long _voiceTriggerStartHostTime;
     unsigned long long _callToStartRecordHostTime;
     NSMutableDictionary *_publicMetrics;
-    NSMutableDictionary *_privateMetrics;
 }
 
 @property (nonatomic) unsigned long long callToStartRecordHostTime; // @synthesize callToStartRecordHostTime=_callToStartRecordHostTime;
-@property (strong) NSMutableDictionary *privateMetrics; // @synthesize privateMetrics=_privateMetrics;
 @property (strong) NSMutableDictionary *publicMetrics; // @synthesize publicMetrics=_publicMetrics;
 @property (nonatomic) unsigned long long voiceTriggerStartHostTime; // @synthesize voiceTriggerStartHostTime=_voiceTriggerStartHostTime;
 
++ (void)createSharedManager;
++ (void)destroySharedManager;
++ (struct CAMutex *)getLock;
 + (id)sharedManager;
+- (void).cxx_destruct;
 - (int)audioIssueDetectorAnalyzeBuffer:(struct AudioBufferList)arg1 numFrames:(unsigned int)arg2 timeStamp:(const struct AudioTimeStamp *)arg3;
 - (void)dealloc;
 - (id)init;

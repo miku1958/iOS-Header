@@ -6,15 +6,13 @@
 
 #import <NewsUI/NSObject-Protocol.h>
 
-@class SXAction, SXScrollViewController, UIViewController;
+@class SXAction, SXScrollViewController;
 
 @protocol SXScrollViewControllerDelegate <NSObject>
 
 @optional
 - (double)navigationBarHeightForScrollViewController:(SXScrollViewController *)arg1;
-- (void)scrollViewController:(SXScrollViewController *)arg1 commitPreviewController:(UIViewController *)arg2 forAction:(SXAction *)arg3;
 - (void)scrollViewController:(SXScrollViewController *)arg1 enableNavigation:(BOOL)arg2;
-- (UIViewController *)scrollViewController:(SXScrollViewController *)arg1 previewViewControllerForAction:(SXAction *)arg2;
 - (void)scrollViewController:(SXScrollViewController *)arg1 triggerAction:(SXAction *)arg2;
 - (void)scrollViewControllerDidLayoutContent:(SXScrollViewController *)arg1;
 - (void)scrollViewControllerDidScroll:(SXScrollViewController *)arg1;

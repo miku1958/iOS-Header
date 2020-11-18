@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) HMRoom *room; // @synthesize room=_room;
 
 + (id)_statusItemClasses;
++ (BOOL)hasStatusItemForServiceType:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithHome:(id)arg1 room:(id)arg2;

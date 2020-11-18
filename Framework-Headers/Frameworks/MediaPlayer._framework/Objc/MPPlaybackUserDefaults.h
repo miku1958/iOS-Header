@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSNumber;
+@class NSMutableDictionary, NSNumber;
 @protocol OS_dispatch_queue;
 
 @interface MPPlaybackUserDefaults : NSObject
@@ -18,6 +18,7 @@
     long long _musicRepeatType;
     long long _musicShuffleType;
     BOOL _soundCheckEnabled;
+    NSMutableDictionary *_lastSiriPlaybackContextIDs;
     struct vector<int, std::__1::allocator<int>> _notifyTokens;
     NSObject<OS_dispatch_queue> *_userDefaultsMutationQueue;
 }
@@ -43,6 +44,8 @@
 - (void)_postRepeatShuffleTypeGlobalNotification;
 - (void)dealloc;
 - (id)init;
+- (id)lastSiriPlaybackContextIDForPlayerID:(id)arg1;
+- (void)setLastSiriPlaybackContextID:(id)arg1 forPlayerID:(id)arg2;
 
 @end
 

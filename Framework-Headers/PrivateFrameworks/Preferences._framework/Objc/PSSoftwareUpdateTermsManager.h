@@ -16,6 +16,7 @@
     CDUnknownBlockType _termsCompletion;
     SUDescriptor *_update;
     BOOL _overrideNextRUIAction;
+    BOOL _agreeToCombinedTOSInProgress;
     UINavigationController *_showProgressViewController;
     UIViewController *_hostController;
     UIViewController *_presentedViewController;

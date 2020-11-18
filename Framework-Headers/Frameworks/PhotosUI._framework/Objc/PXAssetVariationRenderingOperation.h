@@ -50,6 +50,7 @@
 @property (readonly, nonatomic) long long variationType; // @synthesize variationType=_variationType;
 
 - (void).cxx_destruct;
+- (void)_incrementProgressWithStartDate:(id)arg1;
 - (void)_timeout;
 - (void)cancel;
 - (id)init;

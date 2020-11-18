@@ -14,6 +14,7 @@
 + (id)hk_gregorianCalendarWithUTCTimeZone;
 - (double)_hk_cachedLengthOfUnitForUnitStartDate:(id)arg1 calendarUnit:(unsigned long long)arg2;
 - (long long)_hk_cachedValueSinceTimeZoneDependentReferenceDateForUnitStartDate:(id)arg1 calendarUnit:(unsigned long long)arg2;
+- (id)hk_dateByAddingDays:(unsigned long long)arg1 toDate:(id)arg2;
 - (id)hk_dateByShiftingFromGregorianCalendarWithUTCTimeZone:(id)arg1;
 - (id)hk_dateByShiftingToGregorianCalendarWithUTCTimeZone:(id)arg1;
 - (id)hk_dateBySubtractingDays:(unsigned long long)arg1 fromDate:(id)arg2;
@@ -25,6 +26,7 @@
 - (double)hk_durationSinceReferenceDateForDate:(id)arg1 calendarUnit:(unsigned long long)arg2;
 - (void)hk_enumerateDateInterval:(id)arg1 byDateComponents:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (id)hk_firstDateWithHour:(long long)arg1 minute:(long long)arg2 afterDate:(id)arg3;
+- (BOOL)hk_isDate:(id)arg1 withinNumberOfCalendarDays:(unsigned long long)arg2 ofDate:(id)arg3;
 - (double)hk_lengthOfDayForDate:(id)arg1;
 - (id)hk_nearestNoonBeforeDateOrEqualToDate:(id)arg1;
 - (id)hk_nearestStartOfDayForDate:(id)arg1;

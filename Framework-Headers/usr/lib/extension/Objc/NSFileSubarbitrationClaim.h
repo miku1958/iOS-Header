@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSFileAccessClaim.h>
+#import <Foundation/NSFileAccessClaim.h>
 
 @class NSArray, NSFileAccessNode, NSMutableDictionary, NSMutableSet, NSXPCConnection;
 

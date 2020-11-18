@@ -18,10 +18,12 @@
     HFRoomBuilder *room;
     id<HFIconDescriptor> _iconDescriptor;
     NSString *_associatedServiceType;
+    long long _configurationState;
 }
 
 @property (copy, nonatomic) NSString *associatedServiceType; // @synthesize associatedServiceType=_associatedServiceType;
 @property (readonly, nonatomic) NSArray *availableIconDescriptors;
+@property (nonatomic) long long configurationState; // @synthesize configurationState=_configurationState;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -37,6 +39,7 @@
 + (Class)homeKitRepresentationClass;
 - (void).cxx_destruct;
 - (id)_lazilyUpdateAssociatedServiceType;
+- (id)_lazilyUpdateConfigurationState;
 - (id)_lazilyUpdateDateAdded;
 - (id)_lazilyUpdateFavorite;
 - (id)_lazilyUpdateIcon;

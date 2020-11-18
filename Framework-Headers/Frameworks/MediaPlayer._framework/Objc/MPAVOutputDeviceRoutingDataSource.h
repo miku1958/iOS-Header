@@ -6,36 +6,48 @@
 
 #import <MediaPlayer/MPAVRoutingDataSource.h>
 
-@class NSObject, NSString;
+@class MPAVEndpointRoute, NSArray, NSError, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MPAVOutputDeviceRoutingDataSource : MPAVRoutingDataSource
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
     void *_applicationOutputContext;
+    NSError *_applicationOutputContextCreationError;
     BOOL _attemptedToInitializeAppOutputContext;
     void *_discoverySession;
     void *_callbackToken;
+    BOOL _supportsMultipleSelection;
+    NSArray *_outputDeviceRoutes;
+    MPAVEndpointRoute *_endpointRoute;
 }
 
+@property (strong, nonatomic) MPAVEndpointRoute *endpointRoute; // @synthesize endpointRoute=_endpointRoute;
 @property (copy, nonatomic) NSString *routingContextUID;
 
 + (id)_globalAudioSessionLock;
 - (void).cxx_destruct;
-- (void *)_copyApplicationOutputContext;
-- (void *)_createDefaultApplicationOutputContext;
+- (void *)_copyApplicationOutputContext:(id *)arg1;
+- (void *)_createDefaultApplicationOutputContext:(id *)arg1 outAudioSessionID:(unsigned int *)arg2;
 - (void)_endpointsDidChangeNotification:(id)arg1;
+- (id)_outputDeviceRouteWithUID:(id)arg1;
+- (void)_outputDeviceVolumeDidChangeNotification:(id)arg1;
 - (void)_outputDevicesDidChange:(id)arg1;
 - (void)_outputDevicesDidChangeNotification:(id)arg1;
 - (void)_registerNotifications;
+- (void)_routeStatusDidChangeNotification:(id)arg1;
 - (void)_unregisterNotifications;
+- (void)addRouteToGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (BOOL)devicePresenceDetected;
 - (long long)discoveryMode;
 - (void)getRoutesForCategory:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)init;
+- (void)removeRouteFromGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)routeIsLeaderOfEndpoint:(id)arg1;
 - (void)setDiscoveryMode:(long long)arg1;
 - (void)setPickedRoute:(id)arg1 withPassword:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)supportsMultipleSelection;
 
 @end
 

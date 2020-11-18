@@ -7,20 +7,23 @@
 #import <objc/NSObject.h>
 
 #import <NewsUI/NUAdContextProvider-Protocol.h>
-#import <NewsUI/SXAdControllerDataSource-Protocol.h>
 #import <NewsUI/SXAdControllerDelegate-Protocol.h>
+#import <NewsUI/SXAdControllerFactory-Protocol.h>
+#import <NewsUI/SXAdProvider-Protocol.h>
 
 @class FCArticle, NSString;
-@protocol NUAdProvider, NUAdSettings, NUDevice;
+@protocol NUAdMetadataFactory, NUAdProvider, NUAdSettings, NUDevice;
 
-@interface NUArticleAdManager : NSObject <NUAdContextProvider, SXAdControllerDelegate, SXAdControllerDataSource>
+@interface NUArticleAdManager : NSObject <NUAdContextProvider, SXAdControllerDelegate, SXAdProvider, SXAdControllerFactory>
 {
     FCArticle *_article;
     id<NUAdProvider> _adProvider;
+    id<NUAdMetadataFactory> _adMetadataFactory;
     id<NUAdSettings> _settings;
     id<NUDevice> _device;
 }
 
+@property (readonly, nonatomic) id<NUAdMetadataFactory> adMetadataFactory; // @synthesize adMetadataFactory=_adMetadataFactory;
 @property (readonly, nonatomic) id<NUAdProvider> adProvider; // @synthesize adProvider=_adProvider;
 @property (readonly, nonatomic) FCArticle *article; // @synthesize article=_article;
 @property (readonly, copy) NSString *debugDescription;
@@ -35,9 +38,10 @@
 - (void)adController:(id)arg1 componentWithIdentifier:(id)arg2 didLoadBannerView:(id)arg3;
 - (void)adController:(id)arg1 componentWithIdentifier:(id)arg2 didUnloadBannerView:(id)arg3 withError:(id)arg4;
 - (void)adController:(id)arg1 componentWithIdentifier:(id)arg2 failedToLoadBannerView:(id)arg3 error:(id)arg4;
-- (CDUnknownBlockType)adController:(id)arg1 requiresAdForRequest:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (id)adControllerForDocument:(id)arg1 viewport:(id)arg2;
+- (CDUnknownBlockType)adForRequest:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)contextProvidersForKeyPath:(id)arg1;
-- (id)initWithArticle:(id)arg1 adProvider:(id)arg2 settings:(id)arg3 device:(id)arg4;
+- (id)initWithArticle:(id)arg1 adProvider:(id)arg2 adMetadataFactory:(id)arg3 settings:(id)arg4 device:(id)arg5;
 
 @end
 

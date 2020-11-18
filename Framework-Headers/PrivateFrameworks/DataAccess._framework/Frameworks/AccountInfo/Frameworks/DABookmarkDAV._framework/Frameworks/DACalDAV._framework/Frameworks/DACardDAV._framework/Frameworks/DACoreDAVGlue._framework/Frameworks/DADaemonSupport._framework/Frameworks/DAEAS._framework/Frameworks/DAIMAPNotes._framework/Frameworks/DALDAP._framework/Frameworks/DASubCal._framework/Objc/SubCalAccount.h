@@ -30,6 +30,7 @@
 @property (nonatomic) BOOL isManagedCalendar; // @synthesize isManagedCalendar=_isManagedCalendar;
 @property (nonatomic) BOOL shouldRemoveAlarms;
 @property (nonatomic) int subCalAccountVersion; // @synthesize subCalAccountVersion=_subCalAccountVersion;
+@property (nonatomic) BOOL subscribedURLSanitized;
 @property (readonly, nonatomic) NSURL *subscriptionURL;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *syncId;
@@ -60,6 +61,7 @@
 - (void)setAccountDescription:(id)arg1;
 - (void)setHost:(id)arg1;
 - (void)subCalValidationTask:(id)arg1 finishedWithError:(id)arg2 calendarName:(id)arg3 calendarData:(id)arg4;
+- (BOOL)upgradeAccount;
 - (void)upgradeAccountSpecificPropertiesOnAccount:(id)arg1 inStore:(id)arg2 parentAccount:(id)arg3;
 
 @end

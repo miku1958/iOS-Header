@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSObject-Protocol.h>
-#import <extension/NSSecureCoding-Protocol.h>
+#import <Foundation/NSObject-Protocol.h>
+#import <Foundation/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSString;
 

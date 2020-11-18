@@ -46,17 +46,24 @@
 - (void)_initializeSubscription:(id)arg1;
 - (void)addCloudRecord:(id)arg1 ownerID:(id)arg2;
 - (id)cloudRecordWithName:(id)arg1;
+- (void)cloudRecordWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)cloudRecordWithNames:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)cloudRecordWithObjectID:(id)arg1;
+- (void)cloudRecordWithObjectID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)cloudRecordWithObjectIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)cloudRecordsForParentID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)createCloudRecordWithFetchResult:(id)arg1;
 - (id)createCloudRecordWithObjectID:(id)arg1 recordName:(id)arg2;
 - (id)createCloudZoneChangeTemporaryCache:(BOOL)arg1;
 - (void)deleteCloudRecord:(id)arg1;
 - (void)deleteZone;
 - (id)description;
+- (void)fetchMigratedObjects:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithBackingStoreCacheZone:(id)arg1 cloudCache:(id)arg2;
 - (BOOL)isRootCloudRecord:(id)arg1;
 - (BOOL)isRootRecord:(id)arg1;
+- (void)markMigratedObjectsAsMigrated;
 - (id)shortDescription;
 - (void)updateCloudRecord:(id)arg1;
 

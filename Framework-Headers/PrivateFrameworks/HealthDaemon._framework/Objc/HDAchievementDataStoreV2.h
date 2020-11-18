@@ -88,7 +88,7 @@
 - (void)_setCommitsForIntegrationTesting;
 - (void)_setDoubleValue:(double)arg1 forProperty:(id)arg2 monthOffset:(long long)arg3;
 - (void)_setKeyValueDomain:(id)arg1;
-- (void)_setLocalValue:(id)arg1 forKey:(id)arg2;
+- (BOOL)_setLocalValue:(id)arg1 forKey:(id)arg2;
 - (void)_setMockCommittedAchievements:(id)arg1;
 - (void)_setUnsignedIntegerValue:(unsigned long long)arg1 forProperty:(id)arg2 monthOffset:(long long)arg3;
 - (void)_setValue:(id)arg1 forKey:(id)arg2;

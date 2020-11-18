@@ -8,11 +8,12 @@
 
 #import <SpringBoardUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, SBUIIconForceTouchControllerDataProvider, SBUIIconForceTouchIconViewWrapperView, SBUIIconForceTouchVisualEffectView, SBUIIconForceTouchWrapperViewController, UIView;
+@class NSArray, NSMutableArray, NSString, SBAppIconForceTouchDefaults, SBUIIconForceTouchControllerDataProvider, SBUIIconForceTouchIconViewWrapperView, SBUIIconForceTouchVisualEffectView, SBUIIconForceTouchWrapperViewController, UIView;
 @protocol SBUIIconForceTouchViewControllerDelegate;
 
 @interface SBUIIconForceTouchViewController : UIViewController <UIGestureRecognizerDelegate>
 {
+    SBAppIconForceTouchDefaults *_defaults;
     SBUIIconForceTouchVisualEffectView *_visualEffectView;
     UIView *_parallaxView;
     SBUIIconForceTouchIconViewWrapperView *_iconViewWrapperViewBelow;
@@ -25,6 +26,7 @@
     NSMutableArray *_dismissCompletionHandlers;
     double _smoothedValue;
     double _currentPeekProgress;
+    unsigned long long _tapticEngineFeedbackMask;
     SBUIIconForceTouchControllerDataProvider *_dataProvider;
     long long _state;
     long long _layout;
@@ -41,6 +43,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_defaults;
 - (void)_dismissAnimated:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleTapGestureRecognizer:(id)arg1;
 - (long long)_layoutForDataProvider:(id)arg1;

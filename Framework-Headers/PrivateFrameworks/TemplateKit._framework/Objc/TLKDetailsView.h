@@ -35,10 +35,10 @@
 @property (strong) TLKTextAreaView *textAreaView; // @synthesize textAreaView=_textAreaView;
 @property (strong) TLKRichText *title; // @synthesize title=_title;
 
-+ (id)detailsFont;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)disableUnbatchedUpdates;
+- (struct UIEdgeInsets)effectiveAlignmentRectInsets;
 - (id)footnoteLabelString;
 - (id)init;
 - (id)observableProperties;

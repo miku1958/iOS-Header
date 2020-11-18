@@ -16,7 +16,7 @@
 
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;
 - (id)setupContentView;
-- (void)updateWithCardSection:(id)arg1;
+- (void)updateWithRowModel:(id)arg1;
 
 @end
 

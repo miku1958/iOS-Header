@@ -61,6 +61,8 @@
 @property (readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (readonly, nonatomic) double remainingSessionTime;
+@property (readonly, nonatomic) unsigned long long sentChangeByteCount;
+@property (readonly, nonatomic) unsigned long long sentChangeCount;
 @property (strong, nonatomic) id<SYChangeSerializer> serializer; // @synthesize serializer=_serializer;
 @property (readonly, weak, nonatomic) SYService *service; // @synthesize service=_service;
 @property (copy, nonatomic) NSDictionary *sessionMetadata; // @synthesize sessionMetadata=_sessionMetadata;

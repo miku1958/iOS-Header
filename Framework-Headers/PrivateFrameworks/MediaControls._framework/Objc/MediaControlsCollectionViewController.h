@@ -6,81 +6,127 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MediaControls/MediaControlsPanelViewControllerDelegate-Protocol.h>
 #import <MediaControls/UIGestureRecognizerDelegate-Protocol.h>
 #import <MediaControls/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSMutableSet, NSString, UIScrollView, UITapGestureRecognizer;
-@protocol MediaControlsCollectionItemViewController, MediaControlsCollectionViewDataSource;
+@class MediaControlsCollectionViewCountData, NSArray, NSIndexSet, NSMutableDictionary, NSMutableSet, NSString, UIScrollView, _MediaControlsTapHoldGestureRecognizer;
+@protocol MediaControlsCollectionItemViewController, MediaControlsCollectionViewDataSource, MediaControlsCollectionViewDelegate;
 
-@interface MediaControlsCollectionViewController : UIViewController <UIScrollViewDelegate, MediaControlsPanelViewControllerDelegate, UIGestureRecognizerDelegate>
+@interface MediaControlsCollectionViewController : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 {
     NSMutableDictionary *_activeViewControllers;
+    UIViewController<MediaControlsCollectionItemViewController> *_inactiveSelectedViewController;
     NSMutableSet *_inactiveViewControllers;
-    NSMutableDictionary *_activeBackgroundViews;
-    NSMutableSet *_inactiveBackgroundViews;
-    BOOL _displayMultipleDestinations;
+    CDUnknownBlockType _pendingUpdates;
+    struct UIEdgeInsets _controlCenterEdgeInsets;
+    struct CGSize _lastKnownEnvironmentSize;
+    long long _animatedSelectionCount;
+    long long _appearanceTransitionCount;
+    BOOL _shouldDisableAutoReaping;
+    BOOL _shouldIgnoreScrollNotifications;
+    BOOL _isAnimatingSelection;
+    BOOL _isPerformingBatchUpdates;
+    BOOL _needsReloadData;
+    MediaControlsCollectionViewCountData *_countData;
     id<MediaControlsCollectionViewDataSource> _dataSource;
+    id<MediaControlsCollectionViewDelegate> _delegate;
     CDUnknownBlockType _dismissalBlock;
-    long long _expandedDestinationIndex;
-    long long _routeViewControllerIndex;
-    UIViewController *_routingViewController;
-    UITapGestureRecognizer *_tapGestureRecognizer;
+    long long _selectedItemIndex;
+    _MediaControlsTapHoldGestureRecognizer *_tapGestureRecognizer;
     UIScrollView *_scrollView;
+    long long _displayMode;
     struct UIEdgeInsets _scrollViewInsets;
 }
 
 @property (weak, nonatomic) id<MediaControlsCollectionViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<MediaControlsCollectionViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType dismissalBlock; // @synthesize dismissalBlock=_dismissalBlock;
-@property (nonatomic) BOOL displayMultipleDestinations; // @synthesize displayMultipleDestinations=_displayMultipleDestinations;
-@property (nonatomic) long long expandedDestinationIndex; // @synthesize expandedDestinationIndex=_expandedDestinationIndex;
+@property (nonatomic) long long displayMode; // @synthesize displayMode=_displayMode;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) long long routeViewControllerIndex; // @synthesize routeViewControllerIndex=_routeViewControllerIndex;
-@property (strong, nonatomic) UIViewController *routingViewController; // @synthesize routingViewController=_routingViewController;
 @property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (nonatomic) struct UIEdgeInsets scrollViewInsets; // @synthesize scrollViewInsets=_scrollViewInsets;
-@property (readonly, nonatomic) UIViewController<MediaControlsCollectionItemViewController> *selectedViewController;
+@property (nonatomic) long long selectedItemIndex; // @synthesize selectedItemIndex=_selectedItemIndex;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
+@property (strong, nonatomic) _MediaControlsTapHoldGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 @property (readonly, nonatomic) NSArray *visibleBottomViewControllers;
+@property (readonly, nonatomic) NSIndexSet *visibleIndexes;
 @property (readonly, nonatomic) NSArray *visibleTopViewControllers;
+@property (readonly, nonatomic) NSArray *visibleViewControllers;
 
++ (id)alphaAnimatorWithAnimations:(CDUnknownBlockType)arg1;
++ (id)frameAnimator;
 - (void).cxx_destruct;
-- (id)_addViewControllerForIndex:(long long)arg1;
+- (void)_adjustForEnvironmentChangeIfNeededWithSize:(struct CGSize)arg1 transitionCoordinator:(id)arg2;
 - (void)_adjustForEnvironmentChangeWithSize:(struct CGSize)arg1 transitionCoordinator:(id)arg2;
-- (void)_assignRouteViewToExpandedView;
 - (double)_backgroundCornerRadius;
-- (id)_createOrReuseBackgroundView;
-- (id)_createOrReuseViewController;
-- (void)_didSelectRoute;
+- (long long)_closestItemAtPoint:(struct CGPoint)arg1;
+- (void)_commonInit;
+- (void)_dequeueAndPerformBatchUpdatesIfNeeded;
+- (void)_enumerateActiveViewControllers:(CDUnknownBlockType)arg1;
+- (struct CGRect)_frameForViewAtIndex:(long long)arg1;
+- (struct CGRect)_frameForViewAtIndex:(long long)arg1 displayMode:(long long)arg2 size:(struct CGSize)arg3;
+- (struct CGRect)_frameForViewAtIndex:(long long)arg1 size:(struct CGSize)arg2;
 - (void)_handleScrollViewTap:(id)arg1;
-- (double)_heightForCompact;
-- (double)_heightForExpandedInSize:(struct CGSize)arg1;
-- (long long)_indexAtPoint:(struct CGPoint)arg1;
-- (void)_moveViewForViewController:(id)arg1 withBackgroundView:(id)arg2;
+- (id)_indexesOfItemsInRect:(struct CGRect)arg1;
+- (id)_insertViewControllerForIndex:(long long)arg1;
+- (BOOL)_isScrollViewAnimatingScroll;
 - (void)_populateViewsInFrame:(struct CGRect)arg1;
-- (struct CGSize)_preferredExpandedFittingSize;
-- (void)_reapViews;
-- (struct CGRect)_rectForViewAtIndex:(long long)arg1;
-- (struct CGRect)_rectForViewAtIndex:(long long)arg1 multi:(BOOL)arg2 size:(struct CGSize)arg3;
-- (void)_reflectMode;
-- (void)_removeActiveViewControllerAtIndex:(long long)arg1;
+- (double)_preferredSelectedItemHeight;
+- (struct _NSRange)_rangeOfItemsInRect:(struct CGRect)arg1;
+- (void)_reapActiveViews;
+- (void)_reapViewAtIndex:(long long)arg1;
+- (double)_regularItemHeight;
+- (void)_reloadDataIfNeeded;
+- (void)_removeInactiveViewControllersFromHierarchy;
+- (void)_removeViewController:(id)arg1;
+- (void)_scrollToSelectedItemAnimated:(BOOL)arg1;
+- (double)_selectedItemHeightInSize:(struct CGSize)arg1;
+- (double)_selectedItemHeightInSize:(struct CGSize)arg1 shouldIgnoreInsets:(BOOL)arg2;
 - (void)_setFrame:(struct CGRect)arg1 forVisibleViewAtIndex:(long long)arg2;
+- (void)_setHighlighted:(BOOL)arg1 forViewControllerAtIndex:(long long)arg2;
+- (void)_setSelectedItemIndex:(long long)arg1 animated:(BOOL)arg2 shouldScroll:(BOOL)arg3 shouldNotifyDelegate:(BOOL)arg4;
 - (void)_tileViews;
 - (double)_totalHeight;
+- (void)_transitionToDisplayMode:(long long)arg1 usingTransitionCoordinator:(id)arg2 assumingSize:(struct CGSize)arg3;
+- (void)_transitionToVisible:(BOOL)arg1;
+- (void)_transitionTopAndBottomViewControllersToVisible:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_updateContentInsets;
+- (void)_updateContentSize;
+- (void)_updateFrameForViewController:(id)arg1 atIndex:(long long)arg2 withCoordinator:(id)arg3 assumingSize:(struct CGSize)arg4;
 - (void)_updateFramesForActiveViewControllersWithCoordinator:(id)arg1 assumingSize:(struct CGSize)arg2;
 - (double)_verticalSpacing;
-- (void)didDismissMediaControlsPanelViewController:(id)arg1;
+- (id)_visibleBottomViewControllers;
+- (id)_visibleTopViewControllers;
+- (BOOL)_wantsTapGestureRecognizer;
+- (void)deleteItemAtIndex:(long long)arg1;
+- (void)deleteItemsAtIndexes:(id)arg1;
+- (id)dequeueReusableViewControllerForItemAtIndex:(long long)arg1;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
-- (long long)numberOfDestinations;
+- (id)init;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)insertItemAtIndex:(long long)arg1;
+- (void)insertItemsAtIndexes:(id)arg1;
+- (long long)itemAtPoint:(struct CGPoint)arg1;
+- (void)moveItemAtIndex:(long long)arg1 toIndex:(long long)arg2;
+- (void)performBatchUpdates:(CDUnknownBlockType)arg1;
 - (void)reloadData;
+- (void)reloadItemAtIndex:(long long)arg1;
+- (void)reloadItemsAtIndexes:(id)arg1;
+- (void)scrollToSelectedItemAnimated:(BOOL)arg1;
+- (void)scrollViewDidEndDecelerating:(id)arg1;
+- (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)setSelectedItemIndex:(long long)arg1 animated:(BOOL)arg2 shouldScroll:(BOOL)arg3;
+- (id)viewControllerForItemAtIndex:(long long)arg1;
+- (id)viewControllerForItemAtPoint:(struct CGPoint)arg1;
+- (id)viewControllerForSelectedItem;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

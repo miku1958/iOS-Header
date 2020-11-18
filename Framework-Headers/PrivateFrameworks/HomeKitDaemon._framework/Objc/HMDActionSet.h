@@ -53,7 +53,7 @@
 - (void)_execute:(id)arg1 captureCurrentState:(BOOL)arg2 writeRequestTuples:(id)arg3;
 - (void)_executeWriteAction:(id)arg1 captureCurrentState:(BOOL)arg2 writeRequestTuples:(id)arg3;
 - (BOOL)_fixupActions;
-- (id)_generateOverallError:(id)arg1;
+- (id)_generateOverallError:(id)arg1 forSource:(unsigned long long)arg2;
 - (void)_handleAddActionRequest:(id)arg1;
 - (void)_handleAddActionTransaction:(id)arg1 message:(id)arg2;
 - (void)_handleRemoveAction:(id)arg1 message:(id)arg2;
@@ -78,6 +78,7 @@
 - (id)backingStoreObjects:(long long)arg1;
 - (BOOL)configure:(id)arg1 messageDispatcher:(id)arg2 queue:(id)arg3;
 - (BOOL)containsSecureCharacteristic;
+- (BOOL)containsUnsecuringAction;
 - (void)dealloc;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;

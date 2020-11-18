@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) NSString *version; // @synthesize version=_version;
 
 + (id)extensionPointForIdentifier:(id)arg1;
++ (id)identifierForCurrentProcess;
 + (BOOL)supportsSecureCoding;
 - (id)_initWithIdentifier:(id)arg1 andData:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;

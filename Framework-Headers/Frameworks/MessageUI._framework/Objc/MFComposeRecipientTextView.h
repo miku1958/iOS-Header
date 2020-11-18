@@ -86,6 +86,7 @@
 - (BOOL)_delegateRespondsToSizeChange;
 - (void)_didRemoveRecipient:(id)arg1;
 - (void)_ensureAddButton;
+- (void)_ensureInactiveTextView;
 - (BOOL)_hasUnsafeRecipients;
 - (void)_insertAtomAttachment:(id)arg1 andReplaceCharactersInRange:(struct _NSRange)arg2;
 - (void)_insertAtomAttachment:(id)arg1 atCharacterIndex:(unsigned long long)arg2;

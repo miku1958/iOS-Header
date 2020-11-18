@@ -14,12 +14,12 @@
     id<UIViewControllerTransitionCoordinator> _activeTransitionCoordinator;
     long long _transitionState;
     struct CGSize _childPreferredContentSize;
-    BOOL _wantsUseableContainerHeight;
+    BOOL _wantsUseableContainerBounds;
     NSArray *_additionalBackgroundViews;
 }
 
 @property (strong, nonatomic) NSArray *additionalBackgroundViews; // @synthesize additionalBackgroundViews=_additionalBackgroundViews;
-@property (nonatomic) BOOL wantsUseableContainerHeight; // @synthesize wantsUseableContainerHeight=_wantsUseableContainerHeight;
+@property (nonatomic) BOOL wantsUseableContainerBounds; // @synthesize wantsUseableContainerBounds=_wantsUseableContainerBounds;
 
 + (struct CGRect)_presentedFrameForVisiblePortion:(BOOL)arg1 ofView:(id)arg2 inPresentationFrame:(struct CGRect)arg3;
 + (struct CGRect)useableContainerViewFrameInContainerViewWithBounds:(struct CGRect)arg1;

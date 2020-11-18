@@ -24,8 +24,6 @@
     double _scale;
     NSString *_imageStackContentsGravity;
     double _radiosityRequestTime;
-    double _animationDelay;
-    double _animationDelayReference;
     double _rotationAmount;
     struct CGPoint _translationOffset;
     double _maximumParallaxDepth;

@@ -10,11 +10,12 @@
 
 @protocol CNSpotlightIndexingLogger <NSObject>
 - (void)deferringReindexAsFailedToPrepareForReindexing;
-- (void)didNotFinishIndexingForDeltaSync:(NSError *)arg1;
-- (void)didNotFinishIndexingForFullSync:(NSError *)arg1;
+- (void)didNotFinishIndexingForDeltaSyncWithError:(NSError *)arg1;
+- (void)didNotFinishIndexingForFullSyncWithError:(NSError *)arg1;
 - (void)failedToBeginIndexBatchWithSpotlight:(NSException *)arg1;
 - (void)failedToClearChangeHistory:(NSString *)arg1 toChangeAnchor:(CNChangeHistoryAnchor *)arg2 error:(NSError *)arg3;
 - (void)failedToCreateSearchableItemForContactIdentifier:(NSString *)arg1;
+- (void)failedToCreateUnarchiverForClientStateWithError:(NSError *)arg1;
 - (void)failedToDeleteAllSearchableItemsWithSpotlight:(NSError *)arg1 willRetry:(BOOL)arg2;
 - (void)failedToEndIndexBatchWithSpotlight:(NSError *)arg1 willRetry:(BOOL)arg2;
 - (void)failedToFetchClientStateFromSpotlight:(NSError *)arg1 willRetry:(BOOL)arg2;
@@ -23,12 +24,15 @@
 - (void)failedToJournalItemIdentifiersForDeletionWithSpotlight:(NSError *)arg1 identifiers:(NSArray *)arg2 willRetry:(BOOL)arg3;
 - (void)failedToJournalSearchableItemsForIndexingWithSpotlight:(NSError *)arg1 identifiers:(NSArray *)arg2 willRetry:(BOOL)arg3;
 - (void)failedToUnarchiveClientStateData:(NSException *)arg1;
+- (void)finishedBatchIndexWithUpdateIdentifiers:(NSArray *)arg1 deleteIdentifiers:(NSArray *)arg2;
 - (void)finishedIndexingForDeltaSyncWithUpdateCount:(unsigned long long)arg1 deleteCount:(unsigned long long)arg2;
-- (void)finishedIndexingForFullSync;
+- (void)finishedIndexingForFullSyncWithCount:(unsigned long long)arg1;
 - (void)indexingContacts:(void (^)(void (^)(void)))arg1;
 - (void)noContactChangesToIndex;
 - (void)reindexingAllSearchableItems:(void (^)(void (^)(void)))arg1;
 - (void)reindexingSearchableItemsWithIdentifiers:(void (^)(void (^)(void)))arg1;
+- (void)verifiedIndexWithSummmary:(NSString *)arg1;
+- (void)verifyingIndex:(void (^)(void (^)(void)))arg1;
 - (void)willBatchIndexForDeltaSyncWithUpdateCount:(unsigned long long)arg1 deleteCount:(unsigned long long)arg2;
 - (void)willBatchIndexForFullSyncWithCount:(unsigned long long)arg1 lastOffset:(long long)arg2 doneFullSync:(BOOL)arg3;
 - (void)willClearChangeHistory:(NSString *)arg1 toChangeAnchor:(CNChangeHistoryAnchor *)arg2;

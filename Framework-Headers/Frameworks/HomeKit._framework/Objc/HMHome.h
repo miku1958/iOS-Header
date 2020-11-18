@@ -118,6 +118,7 @@
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (readonly, copy, nonatomic) NSArray *zones;
 
++ (id)generateMediaPasswordWithError:(id *)arg1;
 + (BOOL)isValidMediaPassword:(id)arg1 error:(id *)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -158,10 +159,10 @@
 - (void)_handleAddedResidentDevice:(id)arg1;
 - (void)_handleAppDataUpdatedNotification:(id)arg1;
 - (void)_handleBlockedStateNotification:(id)arg1;
-- (void)_handleCacheMissUpdatesNotification:(id)arg1;
 - (void)_handleEventTriggerAddedNotification:(id)arg1;
 - (void)_handleEventTriggerOwnerDeviceNotification:(id)arg1;
 - (void)_handleEventTriggerOwnerUserNotification:(id)arg1;
+- (void)_handleHomeHubStateUpdatedNotification:(id)arg1;
 - (void)_handleHomeLocationUpdateNotificaton:(id)arg1;
 - (void)_handleHomeRenamedNotification:(id)arg1;
 - (void)_handleMultipleCharacteristicValuesUpdated:(id)arg1;
@@ -171,6 +172,7 @@
 - (void)_handleRequestAccessorySetupCodeRequestKey:(id)arg1;
 - (void)_handleRoomAddedNotification:(id)arg1;
 - (void)_handleRoomRemovedNotification:(id)arg1;
+- (void)_handleRuntimeStateUpdate:(id)arg1;
 - (void)_handleServiceGroupAddedNotification:(id)arg1;
 - (void)_handleServiceGroupRemovedNotification:(id)arg1;
 - (void)_handleTimerTriggerAddedNotification:(id)arg1;
@@ -206,6 +208,7 @@
 - (void)_notifyDelegateOfAppDataUpdateForActionSet:(id)arg1;
 - (void)_notifyDelegateOfAppDataUpdateForRoom:(id)arg1;
 - (void)_notifyDelegateOfAppDataUpdateForServiceGroup:(id)arg1;
+- (void)_notifyDelegateOfHomeHubStateUpdate;
 - (void)_notifyDelegateOfTriggerAdded:(id)arg1;
 - (void)_notifyDelegateOfTriggerRemoved:(id)arg1;
 - (void)_notifyDelegateOfTriggerUpdated:(id)arg1;
@@ -217,6 +220,7 @@
 - (void)_removeActionSet:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_removeIdentifier:(id)arg1 bridgeUUID:(id)arg2;
 - (void)_removeIncompatibleTrigger:(id)arg1;
+- (void)_removeMediaSystem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_removeRoom:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_removeServiceGroup:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_removeServices:(id)arg1;
@@ -272,6 +276,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)executeActionSet:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleDaemonInterruptedNotification:(id)arg1;
+- (void)handleRuntimeStateUpdate:(id)arg1;
 - (void)handleUIApplicationWillResignActiveNotification:(id)arg1;
 - (id)homeAccessControlForUser:(id)arg1;
 - (id)init;
@@ -283,6 +288,7 @@
 - (void)inviteUsersWithInviteInformation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)location;
 - (void)manageUsersWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)mediaSystems;
 - (void)mergeWithNewObjectNoMergeCount:(id)arg1;
 - (id)messageDestination;
 - (void)notifyDelegateOfAccesoryInvitationsUpdateForUser:(id)arg1;
@@ -292,12 +298,13 @@
 - (void)notifyDelegateOfAppDataUpdateForServiceGroup:(id)arg1;
 - (void)notifyDelegatesOfExecution:(id)arg1 actionSet:(id)arg2;
 - (id)outgoingInvitations;
+- (id)owner;
 - (void)performBatchCharacteristicRequest:(id)arg1;
 - (void)queryRemoteAccessWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)reEnableNotifications;
-- (void)reEvaluateHomeHubState;
 - (void)removeAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeActionSet:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)removeMediaSystem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeRoom:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeServiceGroup:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeServices:(id)arg1;

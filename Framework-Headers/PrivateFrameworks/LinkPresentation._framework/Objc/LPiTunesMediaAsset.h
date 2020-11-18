@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSURL *_URL;
     NSDictionary *_colors;
     NSString *_name;
+    NSString *_string;
     Class _customResolverClass;
 }
 
@@ -21,9 +22,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSDictionary *colors; // @synthesize colors=_colors;
 @property (readonly, strong, nonatomic) Class customResolverClass; // @synthesize customResolverClass=_customResolverClass;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, copy, nonatomic) NSString *string; // @synthesize string=_string;
 
 - (void).cxx_destruct;
-- (id)initWithName:(id)arg1 customResolverClass:(Class)arg2;
+- (id)initWithName:(id)arg1 customStringResolverClass:(Class)arg2;
+- (id)initWithString:(id)arg1 forName:(id)arg2;
 - (id)initWithURL:(id)arg1 colors:(id)arg2 name:(id)arg3;
 - (id)metadata;
 

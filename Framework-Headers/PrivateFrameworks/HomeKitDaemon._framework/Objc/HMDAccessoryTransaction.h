@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSNumber *accessoryCategory; // @dynamic accessoryCategory;
 @property (strong, nonatomic) NSNumber *blocked; // @dynamic blocked;
 @property (strong, nonatomic) NSString *configurationAppIdentifier; // @dynamic configurationAppIdentifier;
+@property (strong, nonatomic) NSString *configuredName; // @dynamic configuredName;
 @property (strong, nonatomic) NSString *firmwareVersion; // @dynamic firmwareVersion;
 @property (strong, nonatomic) NSString *identifier; // @dynamic identifier;
 @property (strong, nonatomic) NSString *manufacturer; // @dynamic manufacturer;

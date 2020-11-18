@@ -113,6 +113,7 @@
 - (void)setLastSentMessageDate:(id)arg1;
 - (void)setOriginalGroupID:(id)arg1;
 - (void)storeAndBroadcastChatChanges;
+- (void)tearDownToneNotificationSessionIfNeeded;
 - (void)updateCKRecordSystemPropertiesBlob:(id)arg1;
 - (void)updateCloudKitSyncState:(long long)arg1;
 - (void)updateDisplayName:(id)arg1;

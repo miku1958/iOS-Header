@@ -13,6 +13,7 @@
     CLLocation *_location;
     unsigned long long _numberOfReachableIPAccessory;
     unsigned long long _numberOfReachableBTLEAccessory;
+    unsigned long long _numberOfreachableMediaAccessory;
     NSDate *_date;
 }
 
@@ -20,8 +21,9 @@
 @property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (nonatomic) unsigned long long numberOfReachableBTLEAccessory; // @synthesize numberOfReachableBTLEAccessory=_numberOfReachableBTLEAccessory;
 @property (nonatomic) unsigned long long numberOfReachableIPAccessory; // @synthesize numberOfReachableIPAccessory=_numberOfReachableIPAccessory;
+@property (nonatomic) unsigned long long numberOfreachableMediaAccessory; // @synthesize numberOfreachableMediaAccessory=_numberOfreachableMediaAccessory;
 
-+ (id)tupleWithLocation:(id)arg1 reachableIPAccessory:(unsigned long long)arg2 reachableBTLEAccessory:(unsigned long long)arg3 date:(id)arg4;
++ (id)tupleWithLocation:(id)arg1 reachableIPAccessory:(unsigned long long)arg2 reachableBTLEAccessory:(unsigned long long)arg3 reachableMediaAccessory:(unsigned long long)arg4 date:(id)arg5;
 - (void).cxx_destruct;
 - (id)description;
 

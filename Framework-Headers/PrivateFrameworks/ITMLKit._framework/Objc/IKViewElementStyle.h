@@ -70,6 +70,8 @@
 @property (readonly, nonatomic) NSNumber *transitionInterval;
 @property (readonly, nonatomic) NSString *visibility;
 
++ (id)_clonedCSSDeclarationEdgeInsetsFromDeclaration:(id)arg1;
++ (id)_updatedEdgeInsetsDeclaration:(id)arg1 withValue:(double)arg2 forIndex:(unsigned long long)arg3;
 + (void)addBlockedStyle:(id)arg1;
 + (unsigned long long)alignmentFromString:(id)arg1;
 + (void)clearBlockedStyles;
@@ -83,6 +85,7 @@
 + (BOOL)isHiddenStyleRegistered;
 + (id)normalizeClassSelectorString:(id)arg1;
 + (unsigned long long)positionFromString:(id)arg1;
++ (void)registerEdgeInsetStyle:(id)arg1 aliasName:(id)arg2 withPositionStyleNames:(id)arg3 inherited:(BOOL)arg4;
 + (void)registerHiddenStyle:(id)arg1;
 + (void)registerStyle:(id)arg1 aliasName:(id)arg2 withType:(unsigned long long)arg3 inherited:(BOOL)arg4;
 + (void)registerStyle:(id)arg1 withType:(unsigned long long)arg2 inherited:(BOOL)arg3;
@@ -91,18 +94,19 @@
 + (unsigned long long)transitionFromString:(id)arg1;
 + (void)unregisterStyles;
 - (void).cxx_destruct;
+- (void)_addDeclaration:(id)arg1;
 - (void)_addElementStyle:(id)arg1;
 - (void)_addParentStyle:(id)arg1;
 - (struct UIEdgeInsets)_edgeInsetsForStyleKey:(id)arg1;
 - (id)_gradientFromString:(id)arg1;
 - (id)_newColorFromString:(id)arg1;
-- (void)_setDeclaration:(id)arg1 forKey:(id)arg2;
 - (id)_styleNameForAlias:(id)arg1;
 - (id)debugDescription;
 - (id)description;
 - (id)initWithCSSRule:(id)arg1 filterBlockedStyles:(BOOL)arg2 selStr:(id)arg3;
 - (id)initWithClassSelector:(id)arg1;
 - (id)initWithStyle:(id)arg1 classSelector:(id)arg2;
+- (BOOL)requiresDynamicEvaluation;
 - (unsigned long long)typeForStyle:(id)arg1;
 - (id)valueForStyle:(id)arg1;
 

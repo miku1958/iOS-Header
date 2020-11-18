@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleAccountUI/RUILoaderDelegate-Protocol.h>
 #import <AppleAccountUI/RUIObjectModelDelegate-Protocol.h>
 
 @class ACAccount, ACAccountStore, NSDictionary, NSMutableArray, NSString, RUILoader, UIAlertView, UINavigationController, UIViewController;
 @protocol AAUIAccountRepairRemoteUIDelegate;
 
-@interface AAUIAccountRepairRemoteUI : NSObject <RUIObjectModelDelegate>
+@interface AAUIAccountRepairRemoteUI : NSObject <RUILoaderDelegate, RUIObjectModelDelegate>
 {
     UINavigationController *_parentNavController;
     UIViewController *_originatingViewController;
@@ -50,6 +51,7 @@
 - (void)objectModelPressedBack:(id)arg1;
 - (id)parentViewControllerForObjectModel:(id)arg1;
 - (void)presentFromViewController:(id)arg1 modal:(BOOL)arg2;
+- (id)sessionConfigurationForLoader:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientationsForObjectModel:(id)arg1 page:(id)arg2;
 - (void)useCookieHeadersForInitialRequest:(id)arg1;
 

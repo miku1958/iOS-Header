@@ -22,6 +22,7 @@
     NSString *_localizedName;
     NSString *_localizedShortName;
     NSString *_localizedContainingName;
+    NSDictionary *_localizedFileProviderActionNames;
     NSDictionary *_annotations;
     long long _lastModified;
     NSUUID *_uuid;
@@ -47,6 +48,7 @@
 @property (readonly) BOOL isMultiplexed;
 @property long long lastModified; // @synthesize lastModified=_lastModified;
 @property (strong) NSString *localizedContainingName; // @synthesize localizedContainingName=_localizedContainingName;
+@property (strong) NSDictionary *localizedFileProviderActionNames; // @synthesize localizedFileProviderActionNames=_localizedFileProviderActionNames;
 @property (strong) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property (strong) NSString *localizedShortName; // @synthesize localizedShortName=_localizedShortName;
 @property (readonly) BOOL oldStyle;

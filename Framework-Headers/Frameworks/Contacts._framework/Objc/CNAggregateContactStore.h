@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)groupsMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (id)iOSMapper;
 - (id)initWithContactStores:(id)arg1;
+- (id)mainContactStore;
 - (id)meContactIdentifiers:(id *)arg1;
 - (id)membersOfGroupWithIdentifier:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
 - (id)originForSuggestion:(id)arg1 error:(id *)arg2;

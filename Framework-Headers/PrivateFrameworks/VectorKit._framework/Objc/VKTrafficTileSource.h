@@ -31,7 +31,9 @@ __attribute__((visibility("hidden")))
 - (void)_acceptPendingTilesIfCompletedWithTile:(id)arg1;
 - (void)_acceptTileIfComplete:(id)arg1 forKey:(const struct VKTileKey *)arg2;
 - (void)_constructTile:(id)arg1 forKey:(struct VKTileKey)arg2;
+- (void)_failTilesForFailedDynamicTile:(const struct VKTileKey *)arg1;
 - (void)_fetchedTile:(id)arg1;
+- (void)_notifyRoadsTileSourceOfErrorForSourceKey:(const struct VKTileKey *)arg1;
 - (BOOL)_shouldDecodeTile:(const struct VKTileKey *)arg1;
 - (BOOL)canFetchTrafficTileForKey:(const struct VKTileKey *)arg1;
 - (void)clearCaches;

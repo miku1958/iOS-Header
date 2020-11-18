@@ -6,17 +6,18 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMAccessoryCategory, HMFMessageDispatcher, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDUnassociatedAccessory : HMFObject <HMFMessageReceiver, NSSecureCoding>
+@interface HMDUnassociatedAccessory : HMFObject <HMFLogging, HMFMessageReceiver, NSSecureCoding>
 {
+    NSUUID *_uuid;
     NSString *_name;
     HMAccessoryCategory *_category;
-    NSUUID *_uuid;
     NSString *_identifier;
     long long _associationOptions;
     NSObject<OS_dispatch_queue> *_clientQueue;
@@ -40,6 +41,7 @@
 @property (readonly) Class superclass;
 @property (readonly, copy) NSUUID *uuid; // @synthesize uuid=_uuid;
 
++ (id)logCategory;
 + (id)otherAccessoryCategory;
 + (id)shortDescription;
 + (BOOL)supportsSecureCoding;
@@ -55,6 +57,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 name:(id)arg2 category:(id)arg3 messageDispatcher:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
+- (id)logIdentifier;
 - (id)messageDestination;
 - (void)notifyClientOfUpdatedCategory:(id)arg1;
 - (void)notifyClientOfUpdatedName:(id)arg1;

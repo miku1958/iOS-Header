@@ -18,6 +18,7 @@
     NSString *_coverArticlesArticleListID;
     NSMutableArray *_editorialArticleListIDs;
     NSMutableArray *_editorialSectionTagIDs;
+    NSMutableArray *_specialEventArticleIDs;
     NSMutableArray *_topStoriesCombinedArticleIDs;
     NSString *_trendingArticleListID;
 }
@@ -32,22 +33,26 @@
 @property (readonly, nonatomic) BOOL hasConfiguration;
 @property (readonly, nonatomic) BOOL hasCoverArticlesArticleListID;
 @property (readonly, nonatomic) BOOL hasTrendingArticleListID;
+@property (strong, nonatomic) NSMutableArray *specialEventArticleIDs; // @synthesize specialEventArticleIDs=_specialEventArticleIDs;
 @property (strong, nonatomic) NSMutableArray *topStoriesCombinedArticleIDs; // @synthesize topStoriesCombinedArticleIDs=_topStoriesCombinedArticleIDs;
 @property (strong, nonatomic) NSString *trendingArticleListID; // @synthesize trendingArticleListID=_trendingArticleListID;
 
 + (Class)breakingNewsArticleIDsType;
 + (Class)editorialArticleListIDsType;
 + (Class)editorialSectionTagIDsType;
++ (Class)specialEventArticleIDsType;
 + (Class)topStoriesCombinedArticleIDsType;
 - (void)addBreakingNewsArticleIDs:(id)arg1;
 - (void)addEditorialArticleListIDs:(id)arg1;
 - (void)addEditorialSectionTagIDs:(id)arg1;
+- (void)addSpecialEventArticleIDs:(id)arg1;
 - (void)addTopStoriesCombinedArticleIDs:(id)arg1;
 - (id)breakingNewsArticleIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)breakingNewsArticleIDsCount;
 - (void)clearBreakingNewsArticleIDs;
 - (void)clearEditorialArticleListIDs;
 - (void)clearEditorialSectionTagIDs;
+- (void)clearSpecialEventArticleIDs;
 - (void)clearTopStoriesCombinedArticleIDs;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -61,6 +66,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)specialEventArticleIDsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)specialEventArticleIDsCount;
 - (id)topStoriesCombinedArticleIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)topStoriesCombinedArticleIDsCount;
 - (void)writeTo:(id)arg1;

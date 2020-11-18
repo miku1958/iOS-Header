@@ -10,8 +10,8 @@
 #import <SiriUI/SiriUISiriStatusViewProtocol-Protocol.h>
 #import <SiriUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class AVPlayerItem, AVPlayerLayer, AVPlayerLooper, AVQueuePlayer, NSString, SUICFlamesView, SiriUIConfiguration, UIButton, UILongPressGestureRecognizer, UIScreen;
-@protocol SiriUISiriStatusViewAnimationDelegate, SiriUISiriStatusViewDelegate;
+@class AVAudioSession, AVPlayerItem, AVPlayerLayer, AVPlayerLooper, AVQueuePlayer, NSObject, NSString, SUICFlamesView, SiriUIConfiguration, UIButton, UILongPressGestureRecognizer, UIScreen;
+@protocol OS_dispatch_group, SiriUISiriStatusViewAnimationDelegate, SiriUISiriStatusViewDelegate;
 
 @interface SiriUISiriStatusView : UIView <SUICFlamesViewDelegate, UIGestureRecognizerDelegate, SiriUISiriStatusViewProtocol>
 {
@@ -20,10 +20,12 @@
     UIView *_flamesContainerView;
     SUICFlamesView *_flamesView;
     UIView *_glyphView;
-    AVPlayerItem *_itemToLoop;
     AVPlayerLayer *_glyphLayer;
     AVPlayerLooper *_glyphPlayerLooper;
     AVQueuePlayer *_glyphQueuePlayer;
+    AVPlayerItem *_glyphPlayerItem;
+    NSObject<OS_dispatch_group> *_glyphConfigurationGroup;
+    AVAudioSession *_glyphAuxiliaryAudioSession;
     double _lastStateChangeTime;
     UIScreen *_screen;
     int _deferredFlamesViewState;
@@ -57,6 +59,7 @@
 - (struct CGRect)_adjustedInsetRectForRect:(struct CGRect)arg1;
 - (void)_animateSiriGlyphHidden:(BOOL)arg1;
 - (void)_attachFlamesViewIfNeeded;
+- (void)_configureGlyph;
 - (void)_createLooperIfNeeded;
 - (struct CGRect)_flamesFrame;
 - (id)_flamesView;
@@ -69,6 +72,7 @@
 - (void)_setFlamesViewState:(int)arg1;
 - (struct CGRect)_siriGlyphTappableRect;
 - (float)audioLevelForFlamesView:(id)arg1;
+- (void)configureGlyphWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)fadeOutCurrentAura;
 - (void)forceMicVisible:(BOOL)arg1;

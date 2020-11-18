@@ -6,12 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-#import <DataDetectorsCore/NSCoding-Protocol.h>
+#import <DataDetectorsCore/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface DDLocation : NSObject <NSCoding>
+@interface DDLocation : NSObject <NSSecureCoding>
 {
     NSString *_fileName;
     int _firstLine;
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) int lastColumn; // @synthesize lastColumn=_lastColumn;
 @property (readonly) int lastLine; // @synthesize lastLine=_lastLine;
 
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

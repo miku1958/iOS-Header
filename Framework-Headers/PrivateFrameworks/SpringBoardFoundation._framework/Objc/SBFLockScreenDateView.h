@@ -7,10 +7,11 @@
 #import <UIKit/UIView.h>
 
 #import <SpringBoardFoundation/SBFScreenFadeReplicatable-Protocol.h>
+#import <SpringBoardFoundation/SFChargingVisualInformationProvider-Protocol.h>
 
 @class NSDate, NSHashTable, NSString, SBFLockScreenDateSubtitleDateView, SBFLockScreenDateSubtitleView, SBUILegibilityLabel, UIColor, _UILegibilitySettings;
 
-@interface SBFLockScreenDateView : UIView <SBFScreenFadeReplicatable>
+@interface SBFLockScreenDateView : UIView <SBFScreenFadeReplicatable, SFChargingVisualInformationProvider>
 {
     SBUILegibilityLabel *_timeLabel;
     double _timeAlpha;
@@ -29,6 +30,8 @@
 }
 
 @property (nonatomic) double alignmentPercent; // @synthesize alignmentPercent=_alignmentPercent;
+@property (readonly, nonatomic) struct CGRect chargingVisualInformationTimeFrame;
+@property (readonly, nonatomic) struct CGRect chargingVisualInformationTimeSubtitleFrame;
 @property (readonly, nonatomic) double contentAlpha;
 @property (strong, nonatomic) SBFLockScreenDateSubtitleView *customSubtitleView; // @synthesize customSubtitleView=_customSubtitleView;
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;

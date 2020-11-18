@@ -50,6 +50,7 @@
     MPAdvanceRepeatModeCommand *_advanceRepeatModeCommand;
     MPRemoteCommand *_createRadioStationCommand;
     MPSetPlaybackQueueCommand *_setPlaybackQueueCommand;
+    MPRemoteCommand *_prepareForSetPlaybackQueueCommand;
     MPInsertIntoPlaybackQueueCommand *_insertIntoPlaybackQueueCommand;
     MPRemoteCommand *_removeFromPlaybackQueueCommand;
     MPReorderQueueCommand *_reorderQueueCommand;
@@ -89,6 +90,7 @@
 @property (readonly, nonatomic) MPRemoteCommand *playItemInQueueCommand; // @synthesize playItemInQueueCommand=_playItemInQueueCommand;
 @property (readonly, copy, nonatomic) NSString *playerID; // @synthesize playerID=_playerID;
 @property (readonly, nonatomic) MPPurchaseCommand *preOrderAlbumCommand; // @synthesize preOrderAlbumCommand=_preOrderAlbumCommand;
+@property (readonly, nonatomic) MPRemoteCommand *prepareForSetPlaybackQueueCommand; // @synthesize prepareForSetPlaybackQueueCommand=_prepareForSetPlaybackQueueCommand;
 @property (readonly, nonatomic) MPRemoteCommand *previousTrackCommand; // @synthesize previousTrackCommand=_previousTrackCommand;
 @property (readonly, nonatomic) MPRatingCommand *ratingCommand; // @synthesize ratingCommand=_ratingCommand;
 @property (readonly, nonatomic) MPRemoteCommand *removeFromPlaybackQueueCommand; // @synthesize removeFromPlaybackQueueCommand=_removeFromPlaybackQueueCommand;
@@ -104,16 +106,13 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) MPRemoteCommand *togglePlayPauseCommand; // @synthesize togglePlayPauseCommand=_togglePlayPauseCommand;
 
++ (long long)_numberOfCommandCentersWithTargets;
 + (id)commandCenterForPlayerID:(id)arg1;
 + (id)sharedCommandCenter;
 - (void).cxx_destruct;
 - (void)_commandTargetsDidChangeNotification:(id)arg1;
 - (const struct __CFArray *)_copySupportedCommands;
 - (id)_createRemoteCommandWithConcreteClass:(Class)arg1 mediaRemoteType:(unsigned int)arg2;
-- (long long)_handlePlayItemCommand:(id)arg1;
-- (long long)_handleRemoveCommand:(id)arg1;
-- (long long)_handleReorderCommand:(id)arg1;
-- (void)_playbackQueueDelegateDidChangeNotification:(id)arg1;
 - (id)_pushMediaRemoteCommand:(unsigned int)arg1 withOptions:(struct __CFDictionary *)arg2;
 - (void)_pushMediaRemoteCommand:(unsigned int)arg1 withOptions:(struct __CFDictionary *)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_scheduleSupportedCommandsChanged;

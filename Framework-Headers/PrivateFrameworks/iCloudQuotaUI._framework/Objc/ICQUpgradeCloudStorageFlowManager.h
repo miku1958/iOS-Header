@@ -30,15 +30,11 @@
 + (BOOL)_canDoTokenPurchaseWithOffer:(id)arg1;
 + (BOOL)shouldSubclassShowForOffer:(id)arg1;
 - (void).cxx_destruct;
-- (void)_adoptRemoteUI;
 - (void)_adoptRemoteUIWithPurchaseToken:(id)arg1 buyParameters:(id)arg2 requestHeaders:(id)arg3;
 - (id)_buyProductQueryDictionary;
-- (id)_buyProductQueryFragment;
-- (id)_buyProductQueryItems;
 - (id)_buyProductQueryKeySet;
-- (id)_buyProductRequestWithAccount:(id)arg1 token:(id)arg2;
 - (void)_buyProductShouldUseToken:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)_buyProductURL;
+- (id)_dummyRequestWithAccount:(id)arg1 token:(id)arg2;
 - (void)_performPageButtonActionWithParameters:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_performPurchase;
 - (void)_performPurchaseUsingSettingsUI;

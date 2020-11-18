@@ -6,7 +6,7 @@
 
 #import <Foundation/NSOperation.h>
 
-@class NSDictionary, NSError, NSString, NSURL, SSURLConnectionResponse;
+@class NSDictionary, NSError, NSString, NSURL, NSXPCConnection, SSURLConnectionResponse;
 @protocol WLKNetworkRequestOperationDelegate;
 
 @interface WLKNetworkRequestOperation : NSOperation
@@ -14,9 +14,11 @@
     NSError *_error;
     id _response;
     unsigned long long _numRetries;
+    NSXPCConnection *_connection;
     BOOL _allowAuthentication;
     BOOL _requiresMescal;
     BOOL _encodeQueryParams;
+    BOOL _runsInDaemon;
     id<WLKNetworkRequestOperationDelegate> _delegate;
     NSDictionary *_additionalHeaderFields;
     NSString *_serverRouteKey;
@@ -48,13 +50,17 @@
 @property (copy, nonatomic) CDUnknownBlockType requestCompletionBlock; // @synthesize requestCompletionBlock=_requestCompletionBlock;
 @property (nonatomic) BOOL requiresMescal; // @synthesize requiresMescal=_requiresMescal;
 @property (readonly, nonatomic) id response; // @synthesize response=_response;
+@property (nonatomic) BOOL runsInDaemon; // @synthesize runsInDaemon=_runsInDaemon;
 @property (readonly, copy, nonatomic) NSString *serverRouteKey; // @synthesize serverRouteKey=_serverRouteKey;
 @property (readonly, copy, nonatomic) NSDictionary *serverRouteReplacements; // @synthesize serverRouteReplacements=_serverRouteReplacements;
 @property (readonly, nonatomic) double timeout; // @synthesize timeout=_timeout;
 
 + (id)_defaultBaseURL;
++ (void)_networkRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)logNetworkHeaders:(id)arg1 identifier:(id)arg2;
 + (unsigned long long)preferredCachePolicy;
 - (void).cxx_destruct;
+- (id)_connection;
 - (void)_didFailWithError:(id)arg1;
 - (void)_didFinishWithResponse:(id)arg1;
 - (void)_failWithError:(id)arg1;

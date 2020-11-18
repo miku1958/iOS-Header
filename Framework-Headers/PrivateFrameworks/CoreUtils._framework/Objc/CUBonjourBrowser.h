@@ -50,7 +50,7 @@
 - (void)activate;
 - (void)dealloc;
 - (id)description;
-- (id)detailedDescription;
+- (id)descriptionWithLevel:(int)arg1;
 - (id)init;
 - (void)invalidate;
 

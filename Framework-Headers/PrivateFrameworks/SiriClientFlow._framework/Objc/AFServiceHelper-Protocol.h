@@ -6,7 +6,7 @@
 
 #import <SiriClientFlow/NSObject-Protocol.h>
 
-@class NSBundle, NSString, NSURL, SABaseCommand;
+@class AFPeerInfo, NSBundle, NSString, NSURL, SABaseCommand;
 
 @protocol AFServiceHelper <NSObject>
 - (NSString *)assistantLocalizedStringForKey:(NSString *)arg1 table:(NSString *)arg2 bundle:(NSBundle *)arg3;
@@ -15,5 +15,6 @@
 - (BOOL)isDeviceLockedWithPasscode;
 - (BOOL)isTimeoutSuspended;
 - (BOOL)openSensitiveURL:(NSURL *)arg1;
+- (AFPeerInfo *)peerInfoForCurrentCommand;
 @end
 

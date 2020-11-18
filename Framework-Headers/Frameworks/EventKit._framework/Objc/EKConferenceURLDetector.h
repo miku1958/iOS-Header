@@ -11,11 +11,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (BOOL)_url:(id)arg1 hasDomain:(id)arg2;
-+ (id)conferenceURLFromConferenceSources:(id)arg1;
-+ (BOOL)isPreferredURL:(id)arg1;
++ (id)_dataDetector;
++ (BOOL)_isPreferredURL:(id)arg1;
++ (BOOL)_isValidTelURL:(id)arg1;
++ (id)_linksInSource:(id)arg1;
++ (id)_preferredHostSuffixes;
++ (id)conferenceURLFromSources:(id)arg1;
 + (id)logHandle;
-+ (id)preferredDomainList;
 
 @end
 

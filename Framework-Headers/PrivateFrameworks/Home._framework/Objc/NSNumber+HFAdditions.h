@@ -11,5 +11,7 @@
 @property (readonly, copy, nonatomic) NSNumber *hf_absoluteValue;
 
 - (long long)hf_compareAbsoluteValue:(id)arg1;
+- (id)hf_largerNumber:(id)arg1;
+- (id)hf_smallerNumber:(id)arg1;
 @end
 

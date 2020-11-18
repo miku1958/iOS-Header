@@ -13,18 +13,17 @@
 @interface SFAppleIDIdentity : NSObject <NSSecureCoding>
 {
     NSString *_encDSID;
-    BOOL _dirty;
+    BOOL _linkedToCurrentUser;
     NSString *_altDSID;
     NSString *_appleID;
     NSDate *_certificateExpirationDate;
     NSData *_certificatePersistentReference;
-    long long _certificateStatus;
+    NSData *_intermediateCertificatePersistentReference;
     NSDate *_lastValidationAttemptDate;
     NSDate *_lastValidationDate;
     NSDate *_modificationDate;
     NSData *_privateKeyPersistentReference;
     NSString *_serialNumber;
-    NSData *_intermediateCertificatePersistentReference;
 }
 
 @property (readonly, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
@@ -32,12 +31,10 @@
 @property (strong, nonatomic) NSDate *certificateExpirationDate; // @synthesize certificateExpirationDate=_certificateExpirationDate;
 @property (readonly, nonatomic) BOOL certificateExpired;
 @property (strong, nonatomic) NSData *certificatePersistentReference; // @synthesize certificatePersistentReference=_certificatePersistentReference;
-@property (readonly, nonatomic) long long certificateState;
-@property (nonatomic) long long certificateStatus; // @synthesize certificateStatus=_certificateStatus;
-@property (nonatomic, getter=isDirty) BOOL dirty; // @synthesize dirty=_dirty;
-@property (readonly, nonatomic) NSData *intermediateCertificatePersistentReference; // @synthesize intermediateCertificatePersistentReference=_intermediateCertificatePersistentReference;
+@property (strong, nonatomic) NSData *intermediateCertificatePersistentReference; // @synthesize intermediateCertificatePersistentReference=_intermediateCertificatePersistentReference;
 @property (strong, nonatomic) NSDate *lastValidationAttemptDate; // @synthesize lastValidationAttemptDate=_lastValidationAttemptDate;
 @property (strong, nonatomic) NSDate *lastValidationDate; // @synthesize lastValidationDate=_lastValidationDate;
+@property (nonatomic) BOOL linkedToCurrentUser; // @synthesize linkedToCurrentUser=_linkedToCurrentUser;
 @property (strong, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (readonly, nonatomic) BOOL needsRenewal;
 @property (strong, nonatomic) NSData *privateKeyPersistentReference; // @synthesize privateKeyPersistentReference=_privateKeyPersistentReference;
@@ -46,7 +43,9 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (struct __SecCertificate *)copyCertificate;
+- (struct __SecCertificate *)copyCertificateWithType:(long long)arg1;
 - (struct __SecIdentity *)copyIdentity;
+- (struct __SecCertificate *)copyIntermediateCertificate;
 - (struct __SecKey *)copyPrivateKey;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -56,6 +55,7 @@
 - (id)initWithDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToIdentity:(id)arg1;
+- (void)removeFromKeychain;
 
 @end
 

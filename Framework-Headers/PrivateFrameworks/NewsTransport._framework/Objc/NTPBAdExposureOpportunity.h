@@ -14,8 +14,10 @@
 {
     long long _adErrorCode;
     NSString *_adCreativeId;
+    int _adCreativeType;
     NSString *_adOpportunityId;
     NSString *_adSlotId;
+    int _adType;
     NSData *_articleViewingSessionId;
     int _durationInFeed;
     int _errorCode;
@@ -31,6 +33,8 @@
     BOOL _isViewable;
     struct {
         unsigned int adErrorCode:1;
+        unsigned int adCreativeType:1;
+        unsigned int adType:1;
         unsigned int durationInFeed:1;
         unsigned int errorCode:1;
         unsigned int exposureLocationType:1;
@@ -44,9 +48,11 @@
 }
 
 @property (strong, nonatomic) NSString *adCreativeId; // @synthesize adCreativeId=_adCreativeId;
+@property (nonatomic) int adCreativeType; // @synthesize adCreativeType=_adCreativeType;
 @property (nonatomic) long long adErrorCode; // @synthesize adErrorCode=_adErrorCode;
 @property (strong, nonatomic) NSString *adOpportunityId; // @synthesize adOpportunityId=_adOpportunityId;
 @property (strong, nonatomic) NSString *adSlotId; // @synthesize adSlotId=_adSlotId;
+@property (nonatomic) int adType; // @synthesize adType=_adType;
 @property (strong, nonatomic) NSData *articleViewingSessionId; // @synthesize articleViewingSessionId=_articleViewingSessionId;
 @property (nonatomic) int durationInFeed; // @synthesize durationInFeed=_durationInFeed;
 @property (nonatomic) int errorCode; // @synthesize errorCode=_errorCode;
@@ -56,9 +62,11 @@
 @property (nonatomic) int feedType; // @synthesize feedType=_feedType;
 @property (strong, nonatomic) NSData *feedViewExposureId; // @synthesize feedViewExposureId=_feedViewExposureId;
 @property (readonly, nonatomic) BOOL hasAdCreativeId;
+@property (nonatomic) BOOL hasAdCreativeType;
 @property (nonatomic) BOOL hasAdErrorCode;
 @property (readonly, nonatomic) BOOL hasAdOpportunityId;
 @property (readonly, nonatomic) BOOL hasAdSlotId;
+@property (nonatomic) BOOL hasAdType;
 @property (readonly, nonatomic) BOOL hasArticleViewingSessionId;
 @property (nonatomic) BOOL hasDurationInFeed;
 @property (nonatomic) BOOL hasErrorCode;
@@ -79,7 +87,11 @@
 @property (nonatomic) int screenfulsFromTop; // @synthesize screenfulsFromTop=_screenfulsFromTop;
 
 - (void).cxx_destruct;
+- (int)StringAsAdCreativeType:(id)arg1;
+- (int)StringAsAdType:(id)arg1;
 - (int)StringAsFeedType:(id)arg1;
+- (id)adCreativeTypeAsString:(int)arg1;
+- (id)adTypeAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;

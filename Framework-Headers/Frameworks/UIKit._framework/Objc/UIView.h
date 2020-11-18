@@ -344,7 +344,6 @@
 @property (readonly, nonatomic) NSLayoutXAxisAnchor *rightAnchor;
 @property (readonly, nonatomic) NSLayoutXAxisAnchor *rightAnchor;
 @property (nonatomic) struct UIEdgeInsets safeAreaInsets; // @synthesize safeAreaInsets=_safeAreaInsets;
-@property (nonatomic, getter=_safeAreaInsetsFrozen, setter=_setSafeAreaInsetsFrozen:) BOOL safeAreaInsetsFrozen;
 @property (readonly, nonatomic) UILayoutGuide *safeAreaLayoutGuide; // @synthesize safeAreaLayoutGuide=_safeAreaLayoutGuide;
 @property (readonly, nonatomic, getter=_safeAreaWidthExceedsReadableWidth) BOOL safeAreaWidthExceedsReadableWidth;
 @property (nonatomic) long long semanticContentAttribute; // @synthesize semanticContentAttribute=_semanticContentAttribute;
@@ -376,6 +375,7 @@
 
 + (void)__animateUsingSpringWithDampingRatio:(double)arg1 response:(double)arg2 interactive:(BOOL)arg3 initialDampingRatio:(id)arg4 initialResponse:(id)arg5 dampingRatioSmoothing:(double)arg6 responseSmoothing:(double)arg7 targetSmoothing:(double)arg8 projectionDeceleration:(double)arg9 retargetImpulse:(double)arg10 animations:(CDUnknownBlockType)arg11 completion:(CDUnknownBlockType)arg12;
 + (BOOL)_addCompletion:(CDUnknownBlockType)arg1;
++ (BOOL)_addCompletionWithPosition:(CDUnknownBlockType)arg1;
 + (void)_addHierarchyTrackingVisitor:(id)arg1;
 + (BOOL)_addPendingKeyframeValue:(id)arg1 forKey:(id)arg2 view:(id)arg3;
 + (CDUnknownBlockType)_alongsideAnimations;
@@ -645,6 +645,7 @@
 - (BOOL)_canBecomeLayoutEngineDelegate;
 - (BOOL)_canDrawContent;
 - (BOOL)_canHandleStatusBarTouchAtLocation:(struct CGPoint)arg1;
+- (BOOL)_canHostViewControllerContentScrollView;
 - (BOOL)_canSkipTraitsAndOverlayUpdatesForViewControllerToNotifyOnLayoutResetState:(BOOL)arg1;
 - (id)_centerExpressionInContainer:(id)arg1 vertical:(BOOL)arg2 contentInsetScale:(double)arg3;
 - (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
@@ -771,6 +772,7 @@
 - (struct CGRect)_engineFrameAtScreenScaleForItem:(id)arg1 inEngine:(id)arg2;
 - (void)_engineHostConstraints_frameDidChange;
 - (id)_engineHostingWidthConstraint;
+- (void)_ensureViewsAreInstalledInRelativeOrder:(id *)arg1 viewCount:(long long)arg2 insertionStartIndex:(long long)arg3;
 - (void)_enumerateDescendentViews:(CDUnknownBlockType)arg1;
 - (void)_evaluateContentsFormat;
 - (BOOL)_fakeShouldAnimatePropertyWithKey:(id)arg1;
@@ -1048,6 +1050,7 @@
 - (id)_rootView;
 - (void)_safeAreaInsetsDidChangeFromOldInsets:(struct UIEdgeInsets)arg1;
 - (struct UIEdgeInsets)_safeAreaInsetsForFrame:(struct CGRect)arg1 inSuperview:(id)arg2;
+- (BOOL)_safeAreaInsetsFrozen;
 - (struct UIEdgeInsets)_safeAreaInsetsInSuperview:(id)arg1;
 - (id)_safeAreaLayoutGuideIfExists;
 - (id)_screen;
@@ -1109,6 +1112,7 @@
 - (void)_setPrimitiveContentCompressionResistancePrioritiesValue:(id)arg1;
 - (void)_setPrimitiveContentHuggingPrioritiesValue:(id)arg1;
 - (void)_setRenderConfig:(id)arg1;
+- (void)_setSafeAreaInsetsFrozen:(BOOL)arg1;
 - (void)_setShouldRasterize:(BOOL)arg1;
 - (void)_setSpeedBumpEdges:(unsigned long long)arg1;
 - (void)_setSpringLoaded:(BOOL)arg1 interactionInitializer:(CDUnknownBlockType)arg2;

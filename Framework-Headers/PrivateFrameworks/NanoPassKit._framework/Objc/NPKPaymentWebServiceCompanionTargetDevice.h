@@ -55,6 +55,8 @@
 - (void)cancelOutstandingEnableServiceModeRequests;
 - (void)cancelOutstandingSetDefaultExpressPassRequestsWithExpressMode:(id)arg1;
 - (void)checkCompanionPeerPaymentRegistrationState:(id)arg1;
+- (void)checkTLKsMissingResponse:(id)arg1;
+- (void)checkTLKsMissingWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)claimSecureElementForCurrentUser;
 - (void)cloudStoreStatusResponse:(id)arg1;
 - (void)cloudStoreStatusWithCompletion:(CDUnknownBlockType)arg1;
@@ -90,6 +92,8 @@
 - (id)initWithContext:(unsigned long long)arg1 responseQueue:(id)arg2;
 - (void)initializeCloudStoreIfNecessaryResponse:(id)arg1;
 - (void)initializeCloudStoreIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)initializeCloudStoreIfNecessaryWithHandler:(CDUnknownBlockType)arg1;
+- (void)initializeCloudStoreIfNecessaryWithHandlerResponse:(id)arg1;
 - (unsigned long long)maximumPaymentCards;
 - (void)noteProvisioningDidBegin;
 - (void)noteProvisioningDidEnd;
@@ -119,7 +123,7 @@
 - (void)paymentWebServiceDidUpdateConfiguration:(id)arg1;
 - (BOOL)paymentWebServiceSupportsPeerPaymentRegistration:(id)arg1;
 - (void)peerPaymentRegisterResponse:(id)arg1;
-- (void)peerPaymentRegisterWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)peerPaymentRegisterWithURL:(id)arg1 forceReRegistration:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)peerPaymentUnregisterResponse:(id)arg1;
 - (void)peerPaymentUnregisterWithCompletion:(CDUnknownBlockType)arg1;
 - (void)pendingRemovalResponse:(id)arg1;
@@ -132,6 +136,8 @@
 - (void)queueTSMConnectionResponse:(id)arg1;
 - (void)registrationDataResponse:(id)arg1;
 - (void)removeAIDsFromSecureElement:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)resetApplePayManateeViewResponse:(id)arg1;
+- (void)resetApplePayManateeViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)retrieveTransactionsForPassWithUniqueID:(id)arg1;
 - (void)secureElementCardsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)secureElementGetAppletsResponse:(id)arg1;

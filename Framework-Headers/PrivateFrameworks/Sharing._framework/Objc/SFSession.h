@@ -88,6 +88,7 @@
     CDUnknownBlockType _promptForPINHandler;
     CDUnknownBlockType _receivedObjectHandler;
     CDUnknownBlockType _receivedRequestHandler;
+    CDUnknownBlockType _sessionStartedHandler;
     CDUnknownBlockType _timeoutHandler;
     CDUnknownBlockType _eventMessageHandler;
     CDUnknownBlockType _requestMessageHandler;
@@ -131,6 +132,7 @@
 @property (copy, nonatomic) NSUUID *serviceUUID; // @synthesize serviceUUID=_serviceUUID;
 @property (nonatomic) unsigned int sessionFlags; // @synthesize sessionFlags=_sessionFlags;
 @property (nonatomic) unsigned int sessionID; // @synthesize sessionID=_sessionID;
+@property (copy, nonatomic) CDUnknownBlockType sessionStartedHandler; // @synthesize sessionStartedHandler=_sessionStartedHandler;
 @property (nonatomic) unsigned int sharingSourceVersion; // @synthesize sharingSourceVersion=_sharingSourceVersion;
 @property (strong, nonatomic) NSXPCListenerEndpoint *testListenerEndpoint; // @synthesize testListenerEndpoint=_testListenerEndpoint;
 @property (nonatomic) double timeout; // @synthesize timeout=_timeout;

@@ -89,6 +89,7 @@
 - (unsigned long long)displayRemainingMinutesForRoute:(id)arg1;
 - (id)etaRouteForRoute:(id)arg1;
 - (id)init;
+- (BOOL)isOpenForClient:(id)arg1;
 - (void)navigationServiceProxy:(id)arg1 didActivateAudioSession:(BOOL)arg2;
 - (void)navigationServiceProxy:(id)arg1 didChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 - (void)navigationServiceProxy:(id)arg1 didChangeNavigationState:(int)arg2;

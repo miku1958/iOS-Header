@@ -30,6 +30,7 @@
     int _topicSubscriptionCount;
     BOOL _breakingNewsAvailableDuringSession;
     BOOL _breakingNewsDismissedDuringSession;
+    BOOL _syncedOtherUserIdDuringSession;
     struct {
         unsigned int appSessionDuration:1;
         unsigned int appsAutoSubscribeFeedCount:1;
@@ -43,6 +44,7 @@
         unsigned int topicSubscriptionCount:1;
         unsigned int breakingNewsAvailableDuringSession:1;
         unsigned int breakingNewsDismissedDuringSession:1;
+        unsigned int syncedOtherUserIdDuringSession:1;
     } _has;
 }
 
@@ -64,6 +66,7 @@
 @property (nonatomic) BOOL hasPortraitAutoSubscribeFeedCount;
 @property (nonatomic) BOOL hasSafariAutoSubscribeFeedCount;
 @property (nonatomic) BOOL hasSessionEndReason;
+@property (nonatomic) BOOL hasSyncedOtherUserIdDuringSession;
 @property (nonatomic) BOOL hasTopicSubscriptionCount;
 @property (nonatomic) int internalAutoSubscribeFeedCount; // @synthesize internalAutoSubscribeFeedCount=_internalAutoSubscribeFeedCount;
 @property (strong, nonatomic) NSMutableArray *lastVisibleViews; // @synthesize lastVisibleViews=_lastVisibleViews;
@@ -75,6 +78,7 @@
 @property (nonatomic) int safariAutoSubscribeFeedCount; // @synthesize safariAutoSubscribeFeedCount=_safariAutoSubscribeFeedCount;
 @property (nonatomic) int sessionEndReason; // @synthesize sessionEndReason=_sessionEndReason;
 @property (strong, nonatomic) NSMutableArray *subscribedFeedIds; // @synthesize subscribedFeedIds=_subscribedFeedIds;
+@property (nonatomic) BOOL syncedOtherUserIdDuringSession; // @synthesize syncedOtherUserIdDuringSession=_syncedOtherUserIdDuringSession;
 @property (nonatomic) int topicSubscriptionCount; // @synthesize topicSubscriptionCount=_topicSubscriptionCount;
 
 + (Class)autoSubscribedFeedIdsType;

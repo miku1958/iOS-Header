@@ -6,7 +6,7 @@
 
 #import <CallKit/NSObject-Protocol.h>
 
-@class CXCallFailureContext, CXCallSource, CXCallUpdate, CXProviderConfiguration, NSData, NSDate, NSString, NSUUID;
+@class CXCallFailureContext, CXCallSource, CXCallUpdate, CXProviderConfiguration, CXTransaction, NSData, NSDate, NSString, NSUUID;
 
 @protocol CXCallSourceUpdates <NSObject>
 - (void)callSource:(CXCallSource *)arg1 registeredWithConfiguration:(CXProviderConfiguration *)arg2;
@@ -19,5 +19,6 @@
 - (void)callSource:(CXCallSource *)arg1 reportedOutgoingCallWithUUID:(NSUUID *)arg2 connectedAtDate:(NSDate *)arg3;
 - (void)callSource:(CXCallSource *)arg1 reportedOutgoingCallWithUUID:(NSUUID *)arg2 sentInvitationAtDate:(NSDate *)arg3;
 - (void)callSource:(CXCallSource *)arg1 reportedOutgoingCallWithUUID:(NSUUID *)arg2 startedConnectingAtDate:(NSDate *)arg3;
+- (void)callSource:(CXCallSource *)arg1 requestedTransaction:(CXTransaction *)arg2 completion:(void (^)(NSError *))arg3;
 @end
 

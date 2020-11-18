@@ -30,6 +30,7 @@
     BOOL _isHandlingTextCheckingResults;
     BOOL _isTypingOrMarkingText;
     BOOL _isSelectingText;
+    BOOL _hasEditedCharactersAfterTextSelection;
     BOOL _isDragging;
     BOOL _isResettingBaseWritingDirection;
     BOOL _isReadingSelectionFromPasteboard;
@@ -70,6 +71,7 @@
 @property (nonatomic) BOOL filterPastedAttributes; // @synthesize filterPastedAttributes=_filterPastedAttributes;
 @property (nonatomic) BOOL filterSubstringAttributes; // @synthesize filterSubstringAttributes=_filterSubstringAttributes;
 @property (nonatomic) BOOL filterSubstringAttributesForPlainText; // @synthesize filterSubstringAttributesForPlainText=_filterSubstringAttributesForPlainText;
+@property (nonatomic) BOOL hasEditedCharactersAfterTextSelection; // @synthesize hasEditedCharactersAfterTextSelection=_hasEditedCharactersAfterTextSelection;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isApplyingUndoCommand; // @synthesize isApplyingUndoCommand=_isApplyingUndoCommand;
 @property (nonatomic) BOOL isChangingSelectionByGestures; // @synthesize isChangingSelectionByGestures=_isChangingSelectionByGestures;
@@ -126,6 +128,7 @@
 - (void)coordinateEditing:(CDUnknownBlockType)arg1;
 - (void)coordinateReading:(CDUnknownBlockType)arg1;
 - (id)copyDataForUTI:(id)arg1 range:(struct _NSRange)arg2 persistenceHelper:(id)arg3;
+- (id)correctParagraphStyleReuseForRange:(struct _NSRange)arg1 withNewAttributedString:(id)arg2;
 - (id)customPasteboardDataFromRange:(struct _NSRange)arg1 persistenceHelper:(id)arg2;
 - (id)dataFromRange:(struct _NSRange)arg1 documentAttributes:(id)arg2 error:(id *)arg3;
 - (void)dd_makeLinksForResultsInAttributesOfType:(unsigned long long)arg1 context:(id)arg2;

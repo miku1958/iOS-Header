@@ -20,6 +20,7 @@
     NSString *_bookId;
     NSString *_topicPathFormat;
     NSString *_remoteSearchPath;
+    NSString *_iconBasePath;
     HLPHelpLocale *_locale;
     NSString *_welcomeTopicIdentifier;
     NSURL *_helpBookURL;
@@ -35,6 +36,7 @@
 @property (nonatomic) BOOL hasSectionIcon; // @synthesize hasSectionIcon=_hasSectionIcon;
 @property (strong, nonatomic) NSURL *helpBookURL; // @synthesize helpBookURL=_helpBookURL;
 @property (strong, nonatomic) NSMutableDictionary *helpItemMap; // @synthesize helpItemMap=_helpItemMap;
+@property (strong, nonatomic) NSString *iconBasePath; // @synthesize iconBasePath=_iconBasePath;
 @property (strong, nonatomic) HLPURLImageCacheController *imageCacheController; // @synthesize imageCacheController=_imageCacheController;
 @property (strong, nonatomic) HLPHelpLocale *locale; // @synthesize locale=_locale;
 @property (strong, nonatomic) NSString *remoteSearchPath; // @synthesize remoteSearchPath=_remoteSearchPath;

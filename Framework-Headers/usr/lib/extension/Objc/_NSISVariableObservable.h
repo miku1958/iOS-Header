@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/NSObservationSource.h>
+#import <Foundation/NSObservationSource.h>
 
 @class NSISEngine, NSISVariable;
 

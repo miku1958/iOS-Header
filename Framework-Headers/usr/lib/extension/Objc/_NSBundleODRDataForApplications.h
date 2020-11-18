@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/_NSBundleODRDataCommon.h>
+#import <Foundation/_NSBundleODRDataCommon.h>
 
 @class NSDictionary, NSMutableSet, NSObject, NSString;
 @protocol OS_dispatch_group;

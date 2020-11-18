@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSString, UIImage, UIKeyboardDockItemButton, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIView;
+@class NSString, UIImage, UIKeyboardDockItemButton, UILongPressGestureRecognizer, UIPanGestureRecognizer;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardDockItem : NSObject
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UILongPressGestureRecognizer *longPressGestureRecognizer; // @synthesize longPressGestureRecognizer=_longPressGestureRecognizer;
 @property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer; // @synthesize panGestureRecognizer=_panGestureRecognizer;
 @property (nonatomic) struct CGPoint touchDownPoint; // @synthesize touchDownPoint=_touchDownPoint;
-@property (readonly, nonatomic) UIView *view;
+@property (readonly, nonatomic) UIKeyboardDockItemButton *view;
 
 + (id)_darkStyleGlyphColor;
 + (id)_standardGlyphColor;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <extension/_NSPersonNameComponentsStyleFormatterShort.h>
+#import <Foundation/_NSPersonNameComponentsStyleFormatterShort.h>
 
 __attribute__((visibility("hidden")))
 @interface _NSPersonNameComponentsStyleFormatterAvatar : _NSPersonNameComponentsStyleFormatterShort

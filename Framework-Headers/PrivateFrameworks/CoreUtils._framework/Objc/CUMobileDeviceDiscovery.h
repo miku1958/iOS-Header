@@ -15,6 +15,7 @@
     BOOL _invalidateCalled;
     CURunLoopThread *_mdRunLoopThread;
     unsigned int _changeFlags;
+    unsigned int _discoveryFlags;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _invalidationHandler;
     CDUnknownBlockType _deviceFoundHandler;
@@ -26,6 +27,7 @@
 @property (copy, nonatomic) CDUnknownBlockType deviceChangedHandler; // @synthesize deviceChangedHandler=_deviceChangedHandler;
 @property (copy, nonatomic) CDUnknownBlockType deviceFoundHandler; // @synthesize deviceFoundHandler=_deviceFoundHandler;
 @property (copy, nonatomic) CDUnknownBlockType deviceLostHandler; // @synthesize deviceLostHandler=_deviceLostHandler;
+@property (nonatomic) unsigned int discoveryFlags; // @synthesize discoveryFlags=_discoveryFlags;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 

@@ -8,7 +8,7 @@
 
 #import <VideoSubscriberAccountUI/VSCredentialEntryViewController-Protocol.h>
 
-@class NSArray, NSString, UIButton, VSCredentialEntryViewModel, VSIdentityProviderLogoView, VSViewModel;
+@class NSString, PSTextFieldSpecifier, UIButton, VSCredentialEntryViewModel, VSIdentityProviderLogoView, VSViewModel;
 @protocol VSAuthenticationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,7 +19,8 @@ __attribute__((visibility("hidden")))
     id<VSAuthenticationViewControllerDelegate> _delegate;
     VSIdentityProviderLogoView *_logoView;
     UIButton *_linkButton;
-    NSArray *_credentialEntryFieldSpecifiers;
+    PSTextFieldSpecifier *_usernameFieldSpecifier;
+    PSTextFieldSpecifier *_passwordFieldSpecifier;
     double _keyboardHeight;
     id _textFieldTextDidChangeObserver;
     id _keyboardWillShowObserver;
@@ -28,7 +29,6 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic, getter=isCancellationAllowed) BOOL cancellationAllowed; // @synthesize cancellationAllowed=_cancellationAllowed;
-@property (strong, nonatomic) NSArray *credentialEntryFieldSpecifiers; // @synthesize credentialEntryFieldSpecifiers=_credentialEntryFieldSpecifiers;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VSAuthenticationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -38,13 +38,16 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id keyboardWillShowObserver; // @synthesize keyboardWillShowObserver=_keyboardWillShowObserver;
 @property (strong, nonatomic) UIButton *linkButton; // @synthesize linkButton=_linkButton;
 @property (strong, nonatomic) VSIdentityProviderLogoView *logoView; // @synthesize logoView=_logoView;
+@property (strong, nonatomic) PSTextFieldSpecifier *passwordFieldSpecifier; // @synthesize passwordFieldSpecifier=_passwordFieldSpecifier;
 @property (readonly, nonatomic) struct CGSize preferredLogoSize;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id textFieldTextDidChangeObserver; // @synthesize textFieldTextDidChangeObserver=_textFieldTextDidChangeObserver;
+@property (strong, nonatomic) PSTextFieldSpecifier *usernameFieldSpecifier; // @synthesize usernameFieldSpecifier=_usernameFieldSpecifier;
 @property (readonly, nonatomic) VSViewModel *viewModel;
 @property (strong, nonatomic) id weakTarget; // @synthesize weakTarget=_weakTarget;
 
 - (void).cxx_destruct;
+- (id)_createSpecifierForField:(id)arg1;
 - (id)_credentialEntryFieldForSpecifier:(id)arg1;
 - (void)_linkButtonTapped:(id)arg1;
 - (id)_linkURL;

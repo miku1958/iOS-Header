@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     double _timeoutTime;
     NSError *_recvdError;
     BOOL _hasBeenCalledBack;
+    BOOL _timerStarted;
 }
 
 - (const char *)_static_description;

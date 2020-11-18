@@ -19,6 +19,7 @@
 }
 
 @property (readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy) NSString *keyPath;
 @property (readonly, copy) NSString *localizedTitle;
 @property (weak) HMAccessorySelectionSetting *setting; // @synthesize setting=_setting;
 @property (readonly, copy) NSString *title; // @synthesize title=_title;
@@ -33,7 +34,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTitle:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)keyPath;
 
 @end
 

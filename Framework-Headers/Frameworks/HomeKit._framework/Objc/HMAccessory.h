@@ -6,26 +6,31 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKit/HMAccessorySettingsContainer-Protocol.h>
+#import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 #import <HomeKit/HMMutableApplicationData-Protocol.h>
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMAccessoryCategory, HMApplicationData, HMDelegateCaller, HMFMessageDispatcher, HMFSoftwareVersion, HMHome, HMRemoteLoginHandler, HMRoom, HMSoftwareUpdateController, HMThreadSafeMutableArrayCollection, NSArray, NSNumber, NSString, NSUUID;
+@class HMAccessoryCategory, HMAccessorySettings, HMApplicationData, HMDelegateCaller, HMDevice, HMFMessageDispatcher, HMFPairingIdentity, HMFSoftwareVersion, HMHome, HMRemoteLoginHandler, HMRoom, HMSoftwareUpdateController, HMSymptomsHandler, HMThreadSafeMutableArrayCollection, NSArray, NSNumber, NSString, NSUUID;
 @protocol HMAccessoryDelegate, OS_dispatch_queue;
 
-@interface HMAccessory : NSObject <NSSecureCoding, HMFMessageReceiver, HMObjectMerge, HMMutableApplicationData>
+@interface HMAccessory : NSObject <HMFLogging, NSSecureCoding, HMFMessageReceiver, HMObjectMerge, HMMutableApplicationData, HMAccessorySettingsContainer>
 {
     BOOL _currentAccessory;
+    HMDevice *_device;
     HMSoftwareUpdateController *_softwareUpdateController;
     BOOL _firmwareUpdateAvailable;
     BOOL _reachable;
     BOOL _bridgedAccessory;
     BOOL _blocked;
+    BOOL _controllable;
     BOOL _paired;
     NSUUID *_uniqueIdentifier;
     id<HMAccessoryDelegate> _delegate;
     NSString *_name;
+    NSString *_configuredName;
     HMHome *_home;
     HMRoom *_room;
     NSString *_model;
@@ -43,6 +48,9 @@
     NSNumber *_accessoryFlags;
     long long _certificationStatus;
     long long _associationOptions;
+    NSUUID *_accountIdentifier;
+    HMAccessorySettings *_settings;
+    HMFPairingIdentity *_pairingIdentity;
     HMFMessageDispatcher *_msgDispatcher;
     long long _reachableTransports;
     HMThreadSafeMutableArrayCollection *_currentServices;
@@ -50,12 +58,14 @@
     NSObject<OS_dispatch_queue> *_propertyQueue;
     NSUUID *_uuid;
     HMRemoteLoginHandler *_remoteLoginHandler;
+    HMSymptomsHandler *_symptomsHandler;
     HMDelegateCaller *_delegateCaller;
     HMThreadSafeMutableArrayCollection *_accessoryProfiles;
 }
 
 @property (strong, nonatomic) NSNumber *accessoryFlags; // @synthesize accessoryFlags=_accessoryFlags;
 @property (strong, nonatomic) HMThreadSafeMutableArrayCollection *accessoryProfiles; // @synthesize accessoryProfiles=_accessoryProfiles;
+@property (copy) NSUUID *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property (nonatomic) unsigned long long additionalSetupStatus; // @synthesize additionalSetupStatus=_additionalSetupStatus;
 @property (readonly, nonatomic) HMApplicationData *applicationData; // @synthesize applicationData=_applicationData;
 @property (nonatomic) long long associationOptions; // @synthesize associationOptions=_associationOptions;
@@ -67,6 +77,9 @@
 @property (strong, nonatomic) HMAccessoryCategory *category; // @synthesize category=_category;
 @property (nonatomic) long long certificationStatus; // @synthesize certificationStatus=_certificationStatus;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property (copy, nonatomic) NSString *configuredName; // @synthesize configuredName=_configuredName;
+@property (readonly, weak) HMHome *containerHome;
+@property (readonly, nonatomic, getter=isControllable) BOOL controllable; // @synthesize controllable=_controllable;
 @property (copy, nonatomic) HMThreadSafeMutableArrayCollection *currentServices; // @synthesize currentServices=_currentServices;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HMAccessoryDelegate> delegate; // @synthesize delegate=_delegate;
@@ -85,17 +98,20 @@
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) BOOL paired; // @synthesize paired=_paired;
+@property (copy) HMFPairingIdentity *pairingIdentity; // @synthesize pairingIdentity=_pairingIdentity;
 @property (readonly, copy) NSArray *profiles;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (nonatomic, getter=isReachable) BOOL reachable; // @synthesize reachable=_reachable;
 @property (nonatomic) long long reachableTransports; // @synthesize reachableTransports=_reachableTransports;
-@property (copy) HMRemoteLoginHandler *remoteLoginHandler; // @synthesize remoteLoginHandler=_remoteLoginHandler;
+@property (strong) HMRemoteLoginHandler *remoteLoginHandler; // @synthesize remoteLoginHandler=_remoteLoginHandler;
 @property (weak, nonatomic) HMRoom *room; // @synthesize room=_room;
 @property (copy) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 @property (readonly, copy, nonatomic) NSArray *services;
+@property (readonly) HMAccessorySettings *settings; // @synthesize settings=_settings;
 @property (copy) HMFSoftwareVersion *softwareVersion; // @synthesize softwareVersion=_softwareVersion;
 @property (copy) NSString *storeID; // @synthesize storeID=_storeID;
 @property (readonly) Class superclass;
+@property (copy) HMSymptomsHandler *symptomsHandler; // @synthesize symptomsHandler=_symptomsHandler;
 @property (nonatomic) unsigned long long transportTypes; // @synthesize transportTypes=_transportTypes;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (copy, nonatomic) NSArray *uniqueIdentifiersForBridgedAccessories; // @synthesize uniqueIdentifiersForBridgedAccessories=_uniqueIdentifiersForBridgedAccessories;
@@ -103,8 +119,10 @@
 
 + (id)_cameraProfilesForAccessoryProfiles:(id)arg1;
 + (id)_mediaProfilesForAccessoryProfiles:(id)arg1;
++ (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)__handleConnectivityChanged:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_accessoryInformationService;
 - (void)_configure:(id)arg1 messageDispatcher:(id)arg2 clientQueue:(id)arg3 delegateCaller:(id)arg4 configCompletionQueue:(id)arg5 configCompletion:(CDUnknownBlockType)arg6;
 - (void)_configureClientQueue:(id)arg1;
@@ -114,15 +132,22 @@
 - (id)_findCharacteristic:(id)arg1 forService:(id)arg2;
 - (id)_findService:(id)arg1;
 - (void)_handleAccessoryCategoryChanged:(id)arg1;
+- (void)_handleAccessoryControllableChanged:(id)arg1;
 - (void)_handleAccessoryFlagsChanged:(id)arg1;
 - (void)_handleAccessoryNotificationsUpdated:(id)arg1;
 - (void)_handleAppDataUpdatedNotification:(id)arg1;
 - (void)_handleCharacteristicValueUpdated:(id)arg1;
 - (void)_handleCharacteristicsUpdated:(id)arg1;
+- (void)_handleConfiguredNameChanged:(id)arg1;
 - (void)_handleConnectivityChanged:(id)arg1;
 - (id)_handleMultipleCharacteristicsUpdated:(id)arg1 informDelegate:(BOOL)arg2;
 - (void)_handleRenamed:(id)arg1;
+- (void)_handleRootSettingsUpdated:(id)arg1;
+- (void)_handleServiceConfigurationState:(id)arg1;
+- (void)_handleServiceConfiguredNameUpdate:(id)arg1;
+- (void)_handleServiceDefaultNameUpdate:(id)arg1;
 - (void)_handleServiceRenamed:(id)arg1;
+- (void)_handleServiceSubtype:(id)arg1;
 - (void)_handleServiceTypeAssociated:(id)arg1;
 - (void)_handleServicesUpdated:(id)arg1;
 - (void)_handleUpdateRoom:(id)arg1;
@@ -131,7 +156,9 @@
 - (void)_mergeProfileObjects:(id)arg1 currentOperations:(id)arg2;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_notifyDelegateOfAppDataUpdateForService:(id)arg1;
+- (void)_notifyDelegateOfUpdatedSettings:(id)arg1;
 - (void)_notifyDelegatesOfAdditionalSetupRequiredChange;
+- (void)_notifyDelegatesOfUpdatedControllable;
 - (id)_privateDelegate;
 - (void)_readValueForCharacteristic:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_registerNotificationHandlers;
@@ -147,21 +174,28 @@
 - (id)_valueForCharacteristic:(id)arg1 ofService:(id)arg2;
 - (void)_writeValue:(id)arg1 forCharacteristic:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
+- (id)device;
 - (void)encodeWithCoder:(id)arg1;
+- (void)handleConnectivityChanged:(id)arg1;
 - (void)identifyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isAdditionalSetupRequired;
 - (BOOL)isCurrentAccessory;
 - (BOOL)isFirmwareUpdateAvailable;
+- (id)logIdentifier;
 - (id)mediaProfile;
 - (void)notifyDelegateOfAppDataUpdateForService:(id)arg1;
 - (void)queryAdvertisementInformationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setApplicationData:(id)arg1;
+- (void)setControllable:(BOOL)arg1;
 - (void)setCurrentAccessory:(BOOL)arg1;
+- (void)setDevice:(id)arg1;
+- (void)setSettings:(id)arg1;
 - (void)setSoftwareUpdateController:(id)arg1;
 - (id)softwareUpdateController;
 - (void)updateAccessoryInfo:(id)arg1;
+- (void)updateAccessoryName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateApplicationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateApplicationData:(id)arg1 forService:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

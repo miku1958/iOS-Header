@@ -27,9 +27,9 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_getDataForVisualSection:(long long)arg1 hasActionButton:(BOOL *)arg2 actionButtonTitle:(id *)arg3 hasDisclosure:(BOOL *)arg4 locations:(id *)arg5 title:(id *)arg6 startDate:(id *)arg7 endDate:(id *)arg8;
-- (void)_reloadVisibleMomentHeadersAnimated:(BOOL)arg1;
+- (void)_reloadVisibleMomentHeaders;
 - (BOOL)allowSlideshowButton;
-- (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3 animated:(BOOL)arg4;
+- (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3;
 - (void)didTapHeaderView:(id)arg1;
 - (void)filteredMomentsDataSourceHasPendingChanges:(id)arg1;
 - (void)headerView:(id)arg1 actionButtonPressed:(id)arg2;

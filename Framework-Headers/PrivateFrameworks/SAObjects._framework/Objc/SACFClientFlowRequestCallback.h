@@ -15,6 +15,7 @@
 }
 
 @property (copy, nonatomic) NSArray *applicationContextObjects;
+@property (copy, nonatomic) NSArray *conversationStateAttachments;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *dictationPromptAbortValues;
@@ -24,6 +25,7 @@
 @property (copy, nonatomic) NSNumber *disambiguationPromptAmbiguityId;
 @property (copy, nonatomic) NSArray *disambiguationPromptResponseTargets;
 @property (copy, nonatomic) NSString *disambiguationPromptTargetDomain;
+@property (copy, nonatomic) NSArray *displayHintsAsJson;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *nlInput;
 @property (readonly) Class superclass;
