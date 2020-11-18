@@ -16,11 +16,6 @@ __attribute__((visibility("hidden")))
     UIColor *_multiplyColor;
 }
 
-@property (readonly, nonatomic) struct CGImage *CGImage; // @synthesize CGImage=_CGImage;
-@property (readonly, nonatomic) UIColor *multiplyColor; // @synthesize multiplyColor=_multiplyColor;
-@property (readonly, nonatomic) BOOL requiresMasking; // @synthesize requiresMasking=_requiresMasking;
-
-+ (id)renditionWithCGImage:(struct CGImage *)arg1 color:(id)arg2 requiresMasking:(BOOL)arg3;
 - (void).cxx_destruct;
 - (void)dealloc;
 

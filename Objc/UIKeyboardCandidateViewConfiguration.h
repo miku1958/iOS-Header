@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 + (id)configuration;
 - (double)candidateDefaultFontSize;
 - (id)candidateFontWithSize:(double)arg1;
+- (id)candidateFontWithSize:(double)arg1 language:(id)arg2;
 - (id)extendedScrolledState;
 - (id)extendedState;
 - (id)initialState;

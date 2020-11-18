@@ -6,10 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UINavigationBar, UINavigationItem, _UINavigationBarItemStack, _UINavigationControllerRefreshControlHost;
+@class NSString, UIBarButtonItem, UINavigationBar, UINavigationItem, _UINavigationBarItemStack, _UINavigationControllerRefreshControlHost;
 @protocol _UIBarAppearanceChangeObserver;
 
-__attribute__((visibility("hidden")))
 @interface _UINavigationBarVisualProvider : NSObject
 {
     UINavigationBar *_navigationBar;
@@ -18,15 +17,21 @@ __attribute__((visibility("hidden")))
     UINavigationItem *_itemForMeasuring;
 }
 
+@property (readonly, nonatomic, getter=isAnimatingNavItemContentLayoutGuideForStaticButtonVisibilityChange) BOOL animatingNavItemContentLayoutGuideForStaticButtonVisibilityChange;
 @property (nonatomic) long long appearanceAPIVersion;
 @property (readonly, nonatomic) id<_UIBarAppearanceChangeObserver> appearanceObserver;
 @property (copy, nonatomic) NSString *backdropGroupName; // @synthesize backdropGroupName=_backdropGroupName;
 @property (nonatomic) double backgroundAlpha;
+@property (readonly, nonatomic, getter=isContentViewHidden) BOOL contentViewHidden;
 @property (readonly, nonatomic) long long currentContentSize;
 @property (nonatomic) BOOL forceScrollEdgeAppearance;
+@property (readonly, nonatomic) double navItemContentLayoutGuideAnimationDistance;
 @property (readonly, nonatomic) UINavigationBar *navigationBar; // @synthesize navigationBar=_navigationBar;
 @property (strong, nonatomic) _UINavigationControllerRefreshControlHost *refreshControlHost;
+@property (nonatomic) BOOL shouldFadeStaticNavBarButton;
 @property (strong, nonatomic) _UINavigationBarItemStack *stack; // @synthesize stack=_stack;
+@property (strong, nonatomic) UIBarButtonItem *staticNavBarButtonItem;
+@property (nonatomic) BOOL staticNavBarButtonLingers;
 @property (nonatomic) double titleAlpha;
 @property (nonatomic) BOOL useInlineBackgroundHeightWhenLarge;
 @property (readonly, nonatomic) BOOL wantsLargeTitleDisplayed;
@@ -35,6 +40,8 @@ __attribute__((visibility("hidden")))
 - (id)_accessibility_HUDItemForPoint:(struct CGPoint)arg1;
 - (id)_accessibility_controlToActivateForHUDGestureLiftAtPoint:(struct CGPoint)arg1;
 - (BOOL)_accessibility_shouldBeginHUDGestureAtPoint:(struct CGPoint)arg1;
+- (void)_installContentClippingView:(id)arg1;
+- (void)_removeContentClippingView;
 - (void)_shim_30244716;
 - (BOOL)_shim_34415965;
 - (id)_shim_backIndicatorView;
@@ -67,13 +74,18 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shim_wantsCustomTouchHandlingForTouches:(id)arg1;
 - (void)animateForSearchPresentation:(BOOL)arg1;
 - (void)appendToDescription:(id)arg1;
+- (void)barDidAddSubview:(id)arg1;
+- (void)barDidMoveToWindow;
 - (void)barSizeChanged;
+- (void)beginAnimatingNavItemContentLayoutGuideForStaticButtonVisibilityChange;
 - (BOOL)canHandleStatusBarTouchAtPoint:(struct CGPoint)arg1;
 - (void)changeAppearance;
 - (void)changeLayout;
 - (id)description;
 - (void)dismissHostedSearchWithTransitionCoordinator:(id)arg1;
+- (void)endAnimatingNavItemContentLayoutGuideForStaticButtonVisibilityChange;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1 defaultAnswer:(CDUnknownBlockType)arg2;
+- (double)heightForRestoringFromCancelledTransition;
 - (id)initWithNavigationBar:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)intrinsicContentSizeInvalidatedForChildView:(id)arg1;
@@ -92,13 +104,14 @@ __attribute__((visibility("hidden")))
 - (void)pushAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)recordBarSize:(struct CGSize)arg1;
 - (struct NSDirectionalEdgeInsets)resolvedLargeTitleMargins;
+- (struct NSDirectionalEdgeInsets)resolvedSearchBarMargins;
 - (id)restingHeights;
 - (void)safeAreaInsetsDidChange;
 - (void)setBackButtonVisible:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setNeedsStaticNavBarButtonUpdate;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (void)setupTopNavigationItem;
 - (BOOL)shouldUseHeightRangeFittingWidth;
-- (struct CGSize)sizeForRestoringFromCancelledTransition;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)stackDidChangeFrom:(id)arg1;
 - (long long)statusBarStyle;
@@ -111,6 +124,7 @@ __attribute__((visibility("hidden")))
 - (void)updateArchivedSubviews:(id)arg1;
 - (void)updateBackgroundGroupName;
 - (void)updateConstraints;
+- (BOOL)updateNavItemContentLayoutGuideAnimationConstraintConstant:(double)arg1;
 - (void)updateTopNavigationItemAnimated:(BOOL)arg1;
 - (void)updateTopNavigationItemTitleView;
 

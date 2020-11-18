@@ -6,11 +6,9 @@
 
 #import <UIKitCore/UIView.h>
 
-#import <UIKitCore/_UILabelContentAttributesProvider-Protocol.h>
-
 @class NSAttributedString, NSMutableDictionary, NSString, UIColor, UIFont, _UILabelContent, _UIVectorTextLayout;
 
-@interface UIVectorLabel : UIView <_UILabelContentAttributesProvider>
+@interface UIVectorLabel : UIView
 {
     _UILabelContent *_content;
     NSMutableDictionary *_defaultAttributes;
@@ -27,13 +25,9 @@
 
 @property (copy, nonatomic, setter=_setAttributedText:) NSAttributedString *_attributedText;
 @property (strong, nonatomic, getter=_content, setter=_setContent:) _UILabelContent *_content;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIFont *font;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long numberOfLines; // @synthesize numberOfLines=_numberOfLines;
 @property (nonatomic) double preferredMaxLayoutWidth; // @synthesize preferredMaxLayoutWidth=_preferredMaxLayoutWidth;
-@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *text;
 @property (strong, nonatomic) UIColor *textColor;
 
@@ -44,7 +38,6 @@
 - (id)_attributedTextCompatibleForSizing;
 - (double)_baselineOffsetFromBottom;
 - (id)_defaultAttributes;
-- (id)_defaultAttributesForUpgradingString:(id)arg1;
 - (void)_ensureSizingLayout;
 - (void)_ensureVisualLayout;
 - (double)_firstBaselineOffsetFromTop;

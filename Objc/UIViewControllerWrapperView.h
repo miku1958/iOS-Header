@@ -12,15 +12,8 @@ __attribute__((visibility("hidden")))
     BOOL _tightWrappingDisabled;
 }
 
-@property (nonatomic) BOOL tightWrappingDisabled; // @synthesize tightWrappingDisabled=_tightWrappingDisabled;
-
-+ (id)existingWrapperViewForView:(id)arg1;
-+ (id)wrapperViewForView:(id)arg1 frame:(struct CGRect)arg2;
-+ (id)wrapperViewForView:(id)arg1 wrapperFrame:(struct CGRect)arg2 viewFrame:(struct CGRect)arg3;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
-- (void)unwrapView;
-- (void)unwrapView:(id)arg1;
 
 @end
 

@@ -80,11 +80,11 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_cancelGrabberTransitionOutAnimations:(id)arg1;
-- (struct CGRect)_endEdgeHitRect:(BOOL)arg1;
+- (struct CGRect)_endEdgeHitRectWithPrecision:(unsigned long long)arg1;
 - (BOOL)_endIsHorizontal;
 - (BOOL)_gestureRecognizerShouldReceiveTouch:(id)arg1;
 - (struct CGRect)_selectionClipRect;
-- (struct CGRect)_startEdgeHitRect:(BOOL)arg1;
+- (struct CGRect)_startEdgeHitRectWithPrecision:(unsigned long long)arg1;
 - (BOOL)_startIsHorizontal;
 - (void)animateHighlighterDelayedFadeInOnLayer:(id)arg1;
 - (void)animateHighlighterExpanderAnimation;
@@ -111,6 +111,8 @@ __attribute__((visibility("hidden")))
 - (void)scaleDidChange;
 - (void)scaleWillChange;
 - (void)setMagnifierOrientation;
+- (BOOL)shouldHitTestGrabbers;
+- (BOOL)shouldShowGrabbers;
 - (void)startAnimating;
 - (void)stopAnimating;
 - (void)textRangeAdjustmentInteraction:(id)arg1 didBeginAtPoint:(struct CGPoint)arg2;

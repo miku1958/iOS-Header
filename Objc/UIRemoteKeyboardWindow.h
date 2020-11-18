@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_perScreenOptions;
     UIScreen *_intendedScreen;
     BOOL _arePlaceholdersInitialised;
-    FBSSceneLayer *_externalSceneLayer;
+    FBSSceneLayer *_keyboardSceneLayer;
     FBSScene *_activeScene;
     BOOL _resetRequired;
 }

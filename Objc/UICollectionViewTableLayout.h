@@ -58,7 +58,7 @@
 }
 
 @property (readonly, nonatomic, getter=_contentInset) struct UIEdgeInsets _contentInset;
-@property (readonly, nonatomic, getter=_accessoryBaseColor) UIColor *accessoryBaseColor;
+@property (readonly, nonatomic, getter=_accessoryBaseColor) UIColor *accessoryBaseColor; // @synthesize accessoryBaseColor=_accessoryBaseColor;
 @property (readonly, nonatomic) BOOL allowsMultipleSelection;
 @property (readonly, nonatomic) BOOL allowsMultipleSelectionDuringEditing;
 @property (copy, nonatomic) UIColor *backgroundColor;
@@ -95,7 +95,7 @@
 @property (strong, nonatomic) NSMutableArray *insertIndexPaths; // @synthesize insertIndexPaths=_insertIndexPaths;
 @property (nonatomic) BOOL insetsContentViewsToSafeArea; // @synthesize insetsContentViewsToSafeArea=_insetsContentViewsToSafeArea;
 @property (readonly, nonatomic, getter=_isTableHeaderAutohiding) BOOL isTableHeaderAutohiding;
-@property (readonly, nonatomic, getter=_multiselectCheckmarkColor) UIColor *multiselectCheckmarkColor;
+@property (readonly, nonatomic, getter=_multiselectCheckmarkColor) UIColor *multiselectCheckmarkColor; // @synthesize multiselectCheckmarkColor=_multiselectCheckmarkColor;
 @property (readonly, nonatomic, getter=_numberOfSections) long long numberOfSections;
 @property (readonly, nonatomic) BOOL overlapsSectionHeaderViews; // @synthesize overlapsSectionHeaderViews=_overlapsSectionHeaderViews;
 @property (readonly, nonatomic, getter=_providesRowHeights) BOOL providesRowHeights;
@@ -109,7 +109,9 @@
 @property (readonly, nonatomic, getter=_sectionContentInsetFollowsLayoutMargins) BOOL sectionContentInsetFollowsLayoutMargins;
 @property (readonly, nonatomic, getter=_sectionCornerRadius) double sectionCornerRadius;
 @property (nonatomic) double sectionFooterHeight; // @synthesize sectionFooterHeight=_sectionFooterHeight;
+@property (readonly, nonatomic, getter=_sectionFooterPadding) double sectionFooterPadding;
 @property (nonatomic) double sectionHeaderHeight; // @synthesize sectionHeaderHeight=_sectionHeaderHeight;
+@property (readonly, nonatomic, getter=_sectionHeaderPadding) double sectionHeaderPadding;
 @property (copy, nonatomic) UIColor *separatorColor;
 @property (strong, nonatomic) UIVisualEffect *separatorEffect; // @synthesize separatorEffect=_separatorEffect;
 @property (nonatomic) struct UIEdgeInsets separatorInset; // @synthesize separatorInset=_separatorInset;
@@ -172,6 +174,7 @@
 - (BOOL)_needsRecomputeOfPreferredAttributesForVisibleEstimatedItemsDuringUpdate;
 - (long long)_numberOfRowsInSection:(long long)arg1;
 - (struct UIEdgeInsets)_preferredLayoutMargins;
+- (void)_prepareForRowDataHeaderFooterSizing;
 - (struct _NSRange)_sectionRangeForBounds:(struct CGRect)arg1;
 - (void)_separatorColorChanged;
 - (BOOL)_separatorInsetIsRelativeToCellEdges;
@@ -195,8 +198,6 @@
 - (long long)_titleAlignmentForHeaderInSection:(long long)arg1;
 - (id)_titleForFooterInSection:(long long)arg1;
 - (id)_titleForHeaderInSection:(long long)arg1;
-- (id)_viewForFooterInSection:(long long)arg1;
-- (id)_viewForHeaderInSection:(long long)arg1;
 - (struct CGRect)_visibleRect;
 - (BOOL)_wantsSwipes;
 - (struct CGSize)collectionViewContentSize;
@@ -225,8 +226,8 @@
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
 - (BOOL)shouldInvalidateLayoutForPreferredLayoutAttributes:(id)arg1 withOriginalAttributes:(id)arg2;
 - (void)swipeActionController:(id)arg1 animateView:(id)arg2 actionsView:(id)arg3 forDestructiveAction:(id)arg4 atIndexPath:(id)arg5 withSwipeInfo:(CDStruct_9b6dff2a)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)swipeActionController:(id)arg1 didCompleteAction:(id)arg2 cancelled:(BOOL)arg3 atIndexPath:(id)arg4;
 - (void)swipeActionController:(id)arg1 didEndSwipeForItemAtIndexPath:(id)arg2;
-- (void)swipeActionController:(id)arg1 didPerformAction:(id)arg2 canceled:(BOOL)arg3 atIndexPath:(id)arg4;
 - (id)swipeActionController:(id)arg1 indexPathForTouchLocation:(struct CGPoint)arg2;
 - (id)swipeActionController:(id)arg1 leadingSwipeConfigurationForItemAtIndexPath:(id)arg2;
 - (BOOL)swipeActionController:(id)arg1 mayBeginSwipeForItemAtIndexPath:(id)arg2;

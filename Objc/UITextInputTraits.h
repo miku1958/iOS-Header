@@ -48,6 +48,7 @@
     BOOL forceEnableDictation;
     BOOL forceDisableDictation;
     BOOL forceDefaultDictationInfo;
+    BOOL preferOnlineDictation;
     BOOL returnKeyGoesToNextResponder;
     BOOL acceptsFloatingKeyboard;
     BOOL forceFloatingKeyboard;
@@ -73,6 +74,7 @@
     BOOL manageRecentInputs;
     BOOL hasDefaultContents;
     BOOL acceptsPayloads;
+    BOOL acceptsInitialEmojiKeyboard;
     BOOL displaySecureEditsUsingPlainText;
     BOOL hidePrediction;
     BOOL loadKeyboardsForSiriLanguage;
@@ -84,6 +86,7 @@
 @property (nonatomic) BOOL acceptsDictationSearchResults; // @synthesize acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji; // @synthesize acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard; // @synthesize acceptsFloatingKeyboard;
+@property (nonatomic) BOOL acceptsInitialEmojiKeyboard; // @synthesize acceptsInitialEmojiKeyboard;
 @property (nonatomic) BOOL acceptsPayloads; // @synthesize acceptsPayloads;
 @property (nonatomic) BOOL acceptsSplitKeyboard; // @synthesize acceptsSplitKeyboard;
 @property (nonatomic) long long autocapitalizationType; // @synthesize autocapitalizationType;
@@ -123,6 +126,7 @@
 @property (nonatomic) BOOL loadKeyboardsForSiriLanguage; // @synthesize loadKeyboardsForSiriLanguage;
 @property (nonatomic) BOOL manageRecentInputs; // @synthesize manageRecentInputs;
 @property (copy, nonatomic) UITextInputPasswordRules *passwordRules; // @synthesize passwordRules;
+@property (nonatomic) BOOL preferOnlineDictation; // @synthesize preferOnlineDictation;
 @property (copy, nonatomic) NSString *recentInputIdentifier; // @synthesize recentInputIdentifier;
 @property (copy, nonatomic) NSString *responseContext; // @synthesize responseContext;
 @property (nonatomic) BOOL returnKeyGoesToNextResponder; // @synthesize returnKeyGoesToNextResponder;
@@ -176,6 +180,7 @@
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
 - (void)overlayWithTITextInputTraits:(id)arg1;
+- (void)overrideWithTraits:(id)arg1;
 - (BOOL)publicTraitsMatchTraits:(id)arg1;
 - (void)setToDefaultValues;
 - (void)setToSecureValues;

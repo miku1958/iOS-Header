@@ -9,10 +9,11 @@
 @class UIColor, UIView, UIVisualEffectView, _UITextFieldCanvasView;
 
 @protocol _UITextFieldVisualStyleSubject <NSObject>
-- (_UITextFieldCanvasView *)_canvasView;
+
+@property (readonly, nonatomic) UIView *_contentView;
+
 - (UIVisualEffectView *)_contentBackdropView;
 - (UIColor *)_currentTextColor;
-- (UIView *)_effectiveContentView;
 - (BOOL)_fieldEditorAttached;
 - (double)_fieldEditorHeight;
 - (BOOL)_hasFloatingFieldEditor;
@@ -20,6 +21,8 @@
 - (BOOL)_isFocused;
 - (long long)_keyboardAppearance;
 - (BOOL)_shouldDetermineInterfaceStyleTextColor;
+- (BOOL)_shouldOverrideEditingFont;
+- (_UITextFieldCanvasView *)_textCanvasView;
 - (BOOL)_textShouldFillFieldEditorHeight;
 - (BOOL)_textShouldUseVibrancy;
 - (long long)_userInterfaceStyle;

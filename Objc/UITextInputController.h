@@ -12,7 +12,7 @@
 #import <UIKitCore/UITextInputPrivate-Protocol.h>
 #import <UIKitCore/UITextInput_Internal-Protocol.h>
 
-@class NSArray, NSDictionary, NSHashTable, NSIndexSet, NSLayoutManager, NSSet, NSString, RTIInputSystemSourceSession, UIColor, UIImage, UIInputContextHistory, UIResponder, UITextChecker, UITextInputPasswordRules, UITextInputTraits, UITextInteractionAssistant, UITextPlaceholder, UITextPosition, UITextRange, UIView, _UITextInputControllerTokenizer, _UITextKitTextRange, _UITextServiceSession, _UITextUndoManager, _UITextUndoOperationTyping;
+@class NSArray, NSAttributedString, NSDictionary, NSHashTable, NSIndexSet, NSLayoutManager, NSSet, NSString, RTIInputSystemSourceSession, UIColor, UIImage, UIInputContextHistory, UIResponder, UITextChecker, UITextCheckingController, UITextInputPasswordRules, UITextInputTraits, UITextInteractionAssistant, UITextPlaceholder, UITextPosition, UITextRange, UIView, _UITextInputControllerTokenizer, _UITextKitTextRange, _UITextServiceSession, _UITextUndoManager, _UITextUndoOperationTyping;
 @protocol UITextInput, UITextInputControllerDelegate, UITextInputDelegate, UITextInputPrivate, UITextInputSuggestionDelegate, UITextInputTokenizer;
 
 @interface UITextInputController : NSObject <UITextInput_Internal, UITextInput, UITextInputAdditions, UIResponderStandardEditActions, UITextInputPrivate>
@@ -29,6 +29,7 @@
     struct _NSRange _markedTextRange;
     struct _NSRange _markedTextSelection;
     NSDictionary *_markedTextStyle;
+    NSAttributedString *_markedText;
     struct {
         unsigned int delegateRespondsToTextInputShouldBeginEditing:1;
         unsigned int delegateRespondsToTextInputShouldChangeCharactersInRangeReplacementText:1;
@@ -37,6 +38,7 @@
         unsigned int delegateRespondsToTextInputWillChangeSelectionFromCharacterRangeToCharacterRange:1;
         unsigned int delegateRespondsToTextInputEditorDidChangeSelection:1;
         unsigned int delegateRespondsToTextInputPrepareAttributedTextForInsertion:1;
+        unsigned int delegateRespondsToTextInputShouldExtendCaretHeight:1;
         unsigned int delegateRespondsToIsSingleLine:1;
         unsigned int textOrSelectionChangeOriginatesWithKeyboard:1;
         unsigned int showingTextStyleOptions:1;
@@ -52,6 +54,7 @@
     _UITextUndoManager *_undoManager;
     _UITextUndoOperationTyping *_undoOperationForCoalescing;
     UITextChecker *_textChecker;
+    UITextCheckingController *_textCheckingController;
     NSSet *_whitelistedTypingAttributes;
     UITextPlaceholder *_textPlaceholder;
     BOOL _allowsEditingTextAttributes;
@@ -73,6 +76,7 @@
 @property (nonatomic) BOOL acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
+@property (nonatomic) BOOL acceptsInitialEmojiKeyboard;
 @property (nonatomic) BOOL acceptsPayloads;
 @property (nonatomic) BOOL acceptsSplitKeyboard;
 @property (nonatomic) BOOL allowsEditingTextAttributes; // @synthesize allowsEditingTextAttributes=_allowsEditingTextAttributes;
@@ -127,6 +131,7 @@
 @property (readonly, nonatomic) UITextRange *markedTextRange;
 @property (copy, nonatomic) NSDictionary *markedTextStyle;
 @property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
+@property (nonatomic) BOOL preferOnlineDictation;
 @property (nonatomic) struct _NSRange previousSelectedRange; // @synthesize previousSelectedRange=_previousSelectedRange;
 @property (copy, nonatomic) NSString *recentInputIdentifier;
 @property (copy, nonatomic) NSString *responseContext;
@@ -166,7 +171,7 @@
 @property (nonatomic) BOOL useInterfaceLanguageForLocalization;
 @property (nonatomic) struct _NSRange validTextRange;
 
-+ (BOOL)_pasteboardHasStrings;
++ (BOOL)_shouldUseStandardTextScaling:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addShortcut:(id)arg1;
 - (void)_addToTypingAttributes:(id)arg1 value:(id)arg2;
@@ -183,6 +188,7 @@
 - (unsigned int)_characterInRelationToRangedSelection:(int)arg1;
 - (id)_characterPositionForPoint:(struct CGPoint)arg1;
 - (id)_clampedpositionFromPosition:(id)arg1 offset:(int)arg2;
+- (void)_clearMarkedText;
 - (void)_clearSelectionUI;
 - (void)_coordinateSelectionChange:(CDUnknownBlockType)arg1;
 - (void)_copySelectionToClipboard;
@@ -192,6 +198,7 @@
 - (void)_deleteBackwardAndNotify:(BOOL)arg1;
 - (void)_deleteByWord;
 - (void)_deleteForwardAndNotify:(BOOL)arg1;
+- (void)_deleteForwardByWord;
 - (void)_deleteToEndOfLine;
 - (void)_deleteToEndOfParagraph;
 - (void)_deleteToStartOfLine;
@@ -228,9 +235,11 @@
 - (BOOL)_isDisplayingShortcutViewController;
 - (BOOL)_isEmptySelection;
 - (BOOL)_isSecureTextEntry;
+- (BOOL)_isSystemAttachment:(id)arg1;
 - (id)_itemProviderForCopyingRange:(struct _NSRange)arg1;
 - (id)_keyInput;
 - (id)_layoutManager;
+- (void)_layoutManagerDidCompleteLayout;
 - (BOOL)_mightHaveSelection;
 - (void)_moveCurrentSelection:(int)arg1;
 - (id)_moveDown:(BOOL)arg1 withHistory:(id)arg2;
@@ -339,6 +348,7 @@
 - (void)_updateEmptyStringAttributes;
 - (void)_updateFirstTextView;
 - (void)_updateRangeForSmartDelete;
+- (void)_updateRectsForPlaceholder;
 - (void)_updateSelectionWithTextRange:(id)arg1 withAffinityDownstream:(BOOL)arg2;
 - (BOOL)_usesAsynchronousProtocol;
 - (unsigned long long)_validCaretPositionFromCharacterIndex:(unsigned long long)arg1 downstream:(BOOL)arg2;
@@ -349,8 +359,8 @@
 - (void)alignJustified:(id)arg1;
 - (void)alignLeft:(id)arg1;
 - (void)alignRight:(id)arg1;
+- (id)annotatedSubstringForRange:(id)arg1;
 - (void)appendUndoOperation:(id)arg1 newGroup:(BOOL)arg2;
-- (int)atomStyle;
 - (id)attributedSubstringForMarkedRange;
 - (id)attributedTextInRange:(id)arg1;
 - (long long)baseWritingDirectionForPosition:(id)arg1 inDirection:(long long)arg2;
@@ -373,7 +383,6 @@
 - (void)decreaseSize:(id)arg1;
 - (void)deleteBackward;
 - (void)didEndEditing;
-- (BOOL)drawsAsAtom;
 - (void)endSelectionChange;
 - (struct CGRect)firstRectForRange:(id)arg1;
 - (void)forwardInvocation:(id)arg1;
@@ -392,6 +401,7 @@
 - (struct _NSRange)markedRange;
 - (id)metadataDictionariesForDictationResults;
 - (id)methodSignatureForSelector:(SEL)arg1;
+- (void)notifyTextCheckingControllerForSelectionChange;
 - (struct _NSRange)nsRangeForTextRange:(id)arg1;
 - (long long)offsetFromPosition:(id)arg1 toPosition:(id)arg2;
 - (void)paste:(id)arg1;
@@ -405,6 +415,7 @@
 - (id)rangeWithTextAlternatives:(id *)arg1 atPosition:(id)arg2;
 - (void)registerUndoOperationForType:(int)arg1 actionName:(id)arg2 affectedRange:(struct _NSRange)arg3 replacementText:(id)arg4;
 - (void)removeAlternativesForCurrentWord;
+- (void)removeAnnotation:(id)arg1 forRange:(id)arg2;
 - (void)removeDictationResultPlaceholder:(id)arg1 willInsertResult:(BOOL)arg2;
 - (void)removeSpellingMarkersForCurrentWord;
 - (void)removeSpellingMarkersFromWordInRange:(id)arg1;
@@ -412,6 +423,7 @@
 - (void)removeTextPlaceholder:(id)arg1 notifyInputDelegate:(BOOL)arg2;
 - (void)removeTextStylingFromString:(id)arg1;
 - (void)replace:(id)arg1;
+- (void)replaceRange:(id)arg1 withAnnotatedString:(id)arg2 relativeReplacementRange:(struct _NSRange)arg3;
 - (void)replaceRange:(id)arg1 withAttributedText:(id)arg2;
 - (void)replaceRange:(id)arg1 withText:(id)arg2;
 - (void)replaceRangeWithTextWithoutClosingTyping:(id)arg1 replacementText:(id)arg2;
@@ -443,6 +455,7 @@
 - (void)unmarkText;
 - (void)updateSelection;
 - (void)updateTextAttributesWithConversionHandler:(CDUnknownBlockType)arg1;
+- (id)validAnnotations;
 - (void)validateCommand:(id)arg1;
 
 @end

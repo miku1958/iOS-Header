@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UIView.h>
 
-@class NSArray, _UICutoutShadowView, _UIGrabber;
+@class NSArray, _UIGrabber, _UIRoundedRectShadowView;
 
 __attribute__((visibility("hidden")))
 @interface UIDropShadowView : UIView
@@ -16,21 +16,25 @@ __attribute__((visibility("hidden")))
     UIView *_contentView;
     UIView *_overlayView;
     _UIGrabber *_grabber;
+    double _grabberTopSpacing;
     long long _independentCorners;
     UIView *_firstCornerClippingDescendant;
     NSArray *_cornerClippingDescendants;
-    _UICutoutShadowView *_magicShadowView;
+    _UIRoundedRectShadowView *_magicShadowView;
     struct UIRectCornerRadii _environmentMatchingCornerRadii;
+    struct UIEdgeInsets _contentTouchInsets;
 }
 
+@property (nonatomic) struct UIEdgeInsets contentTouchInsets; // @synthesize contentTouchInsets=_contentTouchInsets;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, nonatomic) NSArray *cornerClippingDescendants; // @synthesize cornerClippingDescendants=_cornerClippingDescendants;
 @property (readonly, nonatomic) UIView *deepestClippingView;
 @property (nonatomic) struct UIRectCornerRadii environmentMatchingCornerRadii; // @synthesize environmentMatchingCornerRadii=_environmentMatchingCornerRadii;
 @property (readonly, weak, nonatomic) UIView *firstCornerClippingDescendant; // @synthesize firstCornerClippingDescendant=_firstCornerClippingDescendant;
 @property (readonly, nonatomic) _UIGrabber *grabber; // @synthesize grabber=_grabber;
+@property (nonatomic) double grabberTopSpacing; // @synthesize grabberTopSpacing=_grabberTopSpacing;
 @property (readonly, nonatomic) long long independentCorners; // @synthesize independentCorners=_independentCorners;
-@property (readonly, nonatomic) _UICutoutShadowView *magicShadowView; // @synthesize magicShadowView=_magicShadowView;
+@property (readonly, nonatomic) _UIRoundedRectShadowView *magicShadowView; // @synthesize magicShadowView=_magicShadowView;
 @property (nonatomic) BOOL masksTopCornersOnly; // @synthesize masksTopCornersOnly=_masksTopCornersOnly;
 @property (strong, nonatomic) UIView *overlayView; // @synthesize overlayView=_overlayView;
 @property (readonly, nonatomic) BOOL supportsShadowAndGrabber; // @synthesize supportsShadowAndGrabber=_supportsShadowAndGrabber;
@@ -39,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)didFinishRotation;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 independentCorners:(long long)arg2 supportsShadowAndGrabber:(BOOL)arg3 stylesSheetsAsCards:(BOOL)arg4;
-- (void)setGrabberAlpha:(double)arg1;
+- (void)layoutSubviews;
 - (void)setMagicShadowAlpha:(double)arg1;
 - (void)willBeginRotationWithOriginalBounds:(struct CGRect)arg1 newBounds:(struct CGRect)arg2;
 

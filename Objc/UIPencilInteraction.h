@@ -27,7 +27,10 @@
 @property (readonly) Class superclass;
 @property (weak, nonatomic) UIView *view; // @synthesize view=_view;
 
++ (void)_setPrefersPencilOnlyDrawing:(BOOL)arg1;
++ (BOOL)hasSeenPencilPairingUI;
 + (long long)preferredTapAction;
++ (BOOL)prefersPencilOnlyDrawing;
 - (void).cxx_destruct;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)dealloc;

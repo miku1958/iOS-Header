@@ -6,9 +6,12 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSDictionary, UIView;
+@class UIView;
 
 @protocol _UIGeometryChangeObserver <NSObject>
-- (void)_geometryChanges:(NSDictionary *)arg1 forAncestor:(UIView *)arg2;
+- (void)_geometryChanged:(const CDStruct_ac6e8047 *)arg1 forAncestor:(UIView *)arg2;
+
+@optional
+- (BOOL)_geometryObserverNeedsAncestorOnly;
 @end
 

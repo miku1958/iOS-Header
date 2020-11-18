@@ -19,9 +19,11 @@
 - (void)_prepareForContainerTransition:(id)arg1;
 - (void)_presentSearchControllerIfNecessary;
 - (BOOL)_transitionsChildViewControllers;
+- (void)commonInit;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSearchController:(id)arg1;
+- (void)setTabBarObservedScrollView:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 

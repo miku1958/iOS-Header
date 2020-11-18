@@ -31,6 +31,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=_isEligibleForFocusInteraction) BOOL eligibleForFocusInteraction;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
+@property (readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
 @property (readonly, nonatomic) id<UIFocusItem> focusItemForSorting;
 @property (readonly, nonatomic) struct CGRect frame;
@@ -54,6 +55,7 @@
 - (id)_fulfillPromisedFocusRegion;
 - (BOOL)_isPromiseFocusRegion;
 - (BOOL)_isTransparentFocusRegion;
+- (BOOL)_isUnoccludable;
 - (BOOL)_legacy_isEligibleForFocusInteraction;
 - (id)_preferredFocusRegionCoordinateSpace;
 - (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;

@@ -14,7 +14,9 @@
 + (unsigned long long)translateToTextInputKeyboardType:(long long)arg1;
 + (id)translateToTextInputRecentInputIdentifier:(id)arg1;
 + (unsigned long long)translateToTextInputReturnKeyType:(long long)arg1;
++ (BOOL)translateToTextInputSmartDashesEnabled:(long long)arg1;
 + (BOOL)translateToTextInputSmartInsertDeleteEnabled:(long long)arg1;
++ (BOOL)translateToTextInputSmartQuotesEnabled:(long long)arg1;
 + (unsigned long long)translateToTextInputSpellCheckingType:(long long)arg1;
 + (unsigned long long)translateToTextScriptType:(long long)arg1;
 @end

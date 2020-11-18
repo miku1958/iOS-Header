@@ -9,31 +9,40 @@
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKitCore/UIInteraction-Protocol.h>
 
-@class NSString, UIView, _UIGestureStudyPressDurationGestureRecognizer;
+@class NSMutableDictionary, NSString, UIView, _UIGestureStudyClickInteraction, _UIGestureStudyMetricsGestureRecognizer;
+@protocol _UIGestureStudyInteractionDelegate;
 
 @interface _UIGestureStudyInteraction : NSObject <UIGestureRecognizerDelegate, UIInteraction>
 {
     UIView *_view;
-    _UIGestureStudyPressDurationGestureRecognizer *_pressDurationRecognizer;
-    double _durationWhenMovementExceeded;
+    id<_UIGestureStudyInteractionDelegate> _delegate;
+    _UIGestureStudyClickInteraction *_forceClickInteraction;
+    _UIGestureStudyClickInteraction *_longPressClickInteraction;
+    _UIGestureStudyMetricsGestureRecognizer *_metricsGestureRecognizer;
+    NSMutableDictionary *_eventMetadata;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<_UIGestureStudyInteractionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) double durationWhenMovementExceeded; // @synthesize durationWhenMovementExceeded=_durationWhenMovementExceeded;
+@property (strong, nonatomic) NSMutableDictionary *eventMetadata; // @synthesize eventMetadata=_eventMetadata;
+@property (strong, nonatomic) _UIGestureStudyClickInteraction *forceClickInteraction; // @synthesize forceClickInteraction=_forceClickInteraction;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) _UIGestureStudyPressDurationGestureRecognizer *pressDurationRecognizer; // @synthesize pressDurationRecognizer=_pressDurationRecognizer;
+@property (strong, nonatomic) _UIGestureStudyClickInteraction *longPressClickInteraction; // @synthesize longPressClickInteraction=_longPressClickInteraction;
+@property (strong, nonatomic) _UIGestureStudyMetricsGestureRecognizer *metricsGestureRecognizer; // @synthesize metricsGestureRecognizer=_metricsGestureRecognizer;
 @property (readonly) Class superclass;
 @property (readonly, weak, nonatomic) UIView *view; // @synthesize view=_view;
 
 - (void).cxx_destruct;
-- (id)_eventDataForTriggeredRecognizer:(id)arg1;
-- (void)_handlePressRecognizer:(id)arg1;
-- (id)_locationForTriggeredRecognizer:(id)arg1;
-- (void)_reportEventForTriggeredRecognizer:(id)arg1;
-- (id)_viewDescription;
+- (id)_baseMetadataForTriggeredParticipant:(id)arg1;
+- (void)_handleMetricsEvent:(id)arg1;
+- (void)_interactionDidTrigger:(id)arg1;
+- (id)_numberOfActiveTouches;
+- (void)_reportEventForTriggeredParticipant:(id)arg1;
+- (id)_viewRegionForTriggeredParticipant:(id)arg1;
 - (void)didMoveToView:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (id)initWithDelegate:(id)arg1;
 - (struct CGPoint)locationInCoordinateSpace:(id)arg1;
 - (void)willMoveToView:(id)arg1;
 

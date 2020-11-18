@@ -6,15 +6,18 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class _UIFeedbackParameters;
+@class NSURL, _UIFeedbackParameters;
 
 @protocol _UIFeedbackData <NSObject>
 
 @property (readonly, nonatomic) _UIFeedbackParameters *audioParameters;
 @property (readonly, nonatomic) double effectiveDelay;
+@property (readonly, nonatomic) double effectiveDuration;
 @property (readonly, nonatomic) unsigned long long effectiveEnabledFeedbackTypes;
 @property (readonly, nonatomic) unsigned long long effectiveEventType;
 @property (readonly, nonatomic) unsigned int effectiveSystemSoundID;
+@property (readonly, nonatomic) unsigned long long fileFeedbackType;
+@property (readonly, nonatomic) NSURL *fileURL;
 @property (readonly, nonatomic) _UIFeedbackParameters *hapticParameters;
 
 @end

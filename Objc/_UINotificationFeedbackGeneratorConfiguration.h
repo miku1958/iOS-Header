@@ -19,6 +19,7 @@
 
 + (id)defaultConfiguration;
 + (id)privateConfiguration;
++ (id)privateConfigurationForTypes:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)defaultEnabled;

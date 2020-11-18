@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 + (id)sharedLoader;
 - (void).cxx_destruct;
 - (void)_startPreloadInitialDisplayContext;
-- (id)initialDisplayConfiguration;
 
 @end
 

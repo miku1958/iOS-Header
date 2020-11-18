@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) id<UIKBFocusGuideDelegate> keyboardDelegate; // @synthesize keyboardDelegate=_keyboardDelegate;
 
 - (void)_didUpdateFocusToPreferredFocusedView;
+- (BOOL)_isUnoccludable;
 
 @end
 

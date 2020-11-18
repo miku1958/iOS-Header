@@ -6,20 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIInteractionEffect-Protocol.h>
+#import <UIKitCore/_UIClickHighlightEffect-Protocol.h>
 
 @class NSString, UITargetedPreview, _UIAnchoredClickHighlightPlatterView;
 
 __attribute__((visibility("hidden")))
-@interface _UIClickHighlightInteractionEffect : NSObject <UIInteractionEffect>
+@interface _UIClickHighlightInteractionEffect : NSObject <_UIClickHighlightEffect>
 {
     long long _phase;
     long long _inflightAnimationCount;
     BOOL _isActive;
     UITargetedPreview *_targetedPreview;
+    CDUnknownBlockType _completionBlock;
     _UIAnchoredClickHighlightPlatterView *_highlightPlatter;
     UITargetedPreview *_continuationPreview;
-    CDUnknownBlockType _completionBlock;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
@@ -29,13 +29,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _UIAnchoredClickHighlightPlatterView *highlightPlatter; // @synthesize highlightPlatter=_highlightPlatter;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UITargetedPreview *targetedPreview; // @synthesize targetedPreview=_targetedPreview;
+@property (readonly, nonatomic) UITargetedPreview *targetedPreview; // @synthesize targetedPreview=_targetedPreview;
 @property (readonly, nonatomic) UITargetedPreview *targetedPreviewForEffectContinuation;
 
++ (id)effectWithPreview:(id)arg1 continuingFromPreview:(id)arg2;
 - (void).cxx_destruct;
 - (void)_completeHighlightEffect;
 - (void)_createHighlightPlatter;
-- (id)initWithTargetedPreview:(id)arg1 continuingFromPreview:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)initWithTargetedPreview:(id)arg1 continuingFromPreview:(id)arg2;
 - (void)interaction:(id)arg1 didChangeWithContext:(id)arg2;
 
 @end

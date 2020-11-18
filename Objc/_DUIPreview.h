@@ -21,6 +21,7 @@
     unsigned int _coordinateSpaceSourceContextID;
     UIColor *_backgroundColor;
     UIBezierPath *_outline;
+    UIBezierPath *_shadowPath;
     unsigned long long _coordinateSpaceSourceLayerRenderID;
     double _originalRotation;
     long long _previewMode;
@@ -43,6 +44,7 @@
 @property (nonatomic) unsigned long long coordinateSpaceSourceLayerRenderID; // @synthesize coordinateSpaceSourceLayerRenderID=_coordinateSpaceSourceLayerRenderID;
 @property (readonly, nonatomic) struct CGPoint croppedScaledAnchorPoint;
 @property (readonly, nonatomic) struct CGSize croppedScaledSize;
+@property (readonly, nonatomic) UIBezierPath *effectiveShadowPath;
 @property (nonatomic) BOOL fadesHorizontally; // @synthesize fadesHorizontally=_fadesHorizontally;
 @property (nonatomic) BOOL fadesVertically; // @synthesize fadesVertically=_fadesVertically;
 @property (nonatomic) BOOL hidesSourceView; // @synthesize hidesSourceView=_hidesSourceView;
@@ -58,6 +60,7 @@
 @property (nonatomic) long long previewMode; // @synthesize previewMode=_previewMode;
 @property (readonly, nonatomic) double scaleFactor;
 @property (readonly, nonatomic) struct CGSize scaledSize;
+@property (copy, nonatomic) UIBezierPath *shadowPath; // @synthesize shadowPath=_shadowPath;
 @property (readonly, nonatomic) double stackAlpha;
 @property (nonatomic) BOOL textMode;
 @property (readonly, nonatomic) double topAlpha;

@@ -83,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (void)_unregisterForScrollViewNotifications;
 - (void)beginTrackingSessionByTakingOverForSystemProvidedGestureRecognizer:(id)arg1;
 - (void)dealloc;
+- (void)deselectAllActions;
 - (id)focusedInterfaceAction;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (void)handlePressedFocusedInterfaceAction:(id)arg1;

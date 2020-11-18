@@ -25,6 +25,7 @@
     long long _requestedStatusBarStyle;
     long long _backgroundStyle;
     NSString *_launchImageFile;
+    NSString *_keyColorAssetName;
     long long _supportedUserInterfaceStyle;
     unsigned long long _viewControllerBasedStatusBarAppearance;
     long long _whitePointAdaptivityStyle;
@@ -36,6 +37,7 @@
 @property (readonly, nonatomic) NSString *fallbackFolderName;
 @property (readonly, nonatomic) NSArray *folderNames;
 @property (readonly, nonatomic) int ignoredOverrides; // @synthesize ignoredOverrides=_ignoredOverrides;
+@property (readonly, copy, nonatomic) NSString *keyColorAssetName; // @synthesize keyColorAssetName=_keyColorAssetName;
 @property (readonly, copy, nonatomic) NSString *launchImageFile; // @synthesize launchImageFile=_launchImageFile;
 @property (readonly, nonatomic) BOOL optOutOfRTL; // @synthesize optOutOfRTL=_optOutOfRTL;
 @property (readonly, nonatomic) long long requestedStatusBarStyle; // @synthesize requestedStatusBarStyle=_requestedStatusBarStyle;

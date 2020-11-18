@@ -37,6 +37,7 @@
 - (void)getInPlaceFileRepresentationForTypeIdentifier:(id)arg1 options:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)getInPlaceFileRepresentationForTypeIdentifier:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)initWithPBItem:(id)arg1;
+- (id)initWithPBItem:(id)arg1 secureRetryHandler:(CDUnknownBlockType)arg2;
 - (void)instantiateObjectOfClass:(Class)arg1 options:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)instantiateObjectOfClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)loadObjectOfClass:(Class)arg1 completionHandler:(CDUnknownBlockType)arg2;

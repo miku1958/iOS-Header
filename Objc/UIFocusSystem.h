@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <UIKitCore/_UIFocusCastingControllerDelegate-Protocol.h>
 #import <UIKitCore/_UIFocusEnvironmentInternal-Protocol.h>
 #import <UIKitCore/_UIFocusEnvironmentPrivate-Protocol.h>
 
-@class NSArray, NSString, UIFocusAnimationCoordinator, UIResponder, UIView, _UIFocusAnimationCoordinatorManager, _UIFocusGroupHistory, _UIFocusSoundGenerator, _UIFocusUpdateRequest;
+@class NSArray, NSString, UIFocusAnimationCoordinator, UIFocusMovementAction, UIResponder, UIView, _UIFocusAnimationCoordinatorManager, _UIFocusCastingController, _UIFocusGroupHistory, _UIFocusItemFrameReporter, _UIFocusSoundGenerator, _UIFocusUpdateRequest;
 @protocol UIFocusEnvironment, UIFocusItem, UIFocusItemContainer, _UIFocusHapticFeedbackGenerator, _UIFocusRegionContainer, _UIFocusSystemDelegate;
 
-@interface UIFocusSystem : NSObject <_UIFocusEnvironmentInternal, _UIFocusEnvironmentPrivate>
+@interface UIFocusSystem : NSObject <_UIFocusEnvironmentInternal, _UIFocusCastingControllerDelegate, _UIFocusEnvironmentPrivate>
 {
     _UIFocusUpdateRequest *_pendingFocusUpdateRequest;
     struct {
@@ -25,13 +26,17 @@
         unsigned int delegateRespondsToFocusMapContainer:1;
         unsigned int delegateRespondsToFocusItemContainer:1;
     } _flags;
+    BOOL _waitingForFocusMovementAction;
     BOOL _enabled;
     id<UIFocusItem> _focusedItem;
     _UIFocusGroupHistory *_focusGroupHistory;
     _UIFocusAnimationCoordinatorManager *_focusAnimationCoordinatorManager;
+    UIFocusMovementAction *_pendingFocusMovementAction;
     id<_UIFocusSystemDelegate> _delegate;
     id<UIFocusItem> _previousFocusedItem;
     _UIFocusSoundGenerator *_focusSoundGenerator;
+    _UIFocusItemFrameReporter *_focusItemFrameReporter;
+    _UIFocusCastingController *_focusCastingController;
     id<_UIFocusHapticFeedbackGenerator> _focusHapticFeedbackGenerator;
 }
 
@@ -43,9 +48,12 @@
 @property (readonly, nonatomic, getter=_isEligibleForFocusInteraction) BOOL eligibleForFocusInteraction;
 @property (nonatomic, getter=_isEnabled, setter=_setEnabled:) BOOL enabled; // @synthesize enabled=_enabled;
 @property (strong, nonatomic, getter=_focusAnimationCoordinatorManager, setter=_setFocusAnimationCoordinatorManager:) _UIFocusAnimationCoordinatorManager *focusAnimationCoordinatorManager; // @synthesize focusAnimationCoordinatorManager=_focusAnimationCoordinatorManager;
+@property (strong, nonatomic, getter=_focusCastingController, setter=_setFocusCastingController:) _UIFocusCastingController *focusCastingController; // @synthesize focusCastingController=_focusCastingController;
 @property (readonly, nonatomic, getter=_focusGroupHistory) _UIFocusGroupHistory *focusGroupHistory; // @synthesize focusGroupHistory=_focusGroupHistory;
+@property (readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property (strong, nonatomic, getter=_focusHapticFeedbackGenerator, setter=_setFocusHapticFeedbackGenerator:) id<_UIFocusHapticFeedbackGenerator> focusHapticFeedbackGenerator; // @synthesize focusHapticFeedbackGenerator=_focusHapticFeedbackGenerator;
 @property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
+@property (strong, nonatomic, getter=_focusItemFrameReporter, setter=_setFocusItemFrameReporter:) _UIFocusItemFrameReporter *focusItemFrameReporter; // @synthesize focusItemFrameReporter=_focusItemFrameReporter;
 @property (readonly, weak, nonatomic, getter=_focusMapContainer) id<_UIFocusRegionContainer> focusMapContainer;
 @property (strong, nonatomic, getter=_focusSoundGenerator, setter=_setFocusSoundGenerator:) _UIFocusSoundGenerator *focusSoundGenerator; // @synthesize focusSoundGenerator=_focusSoundGenerator;
 @property (readonly, weak, nonatomic) id<UIFocusItem> focusedItem; // @synthesize focusedItem=_focusedItem;
@@ -54,6 +62,7 @@
 @property (readonly, weak, nonatomic, getter=_hostFocusSystem) UIFocusSystem *hostFocusSystem;
 @property (readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
 @property (readonly, weak, nonatomic) id<UIFocusEnvironment> parentFocusEnvironment;
+@property (strong, nonatomic) UIFocusMovementAction *pendingFocusMovementAction; // @synthesize pendingFocusMovementAction=_pendingFocusMovementAction;
 @property (readonly, weak, nonatomic, getter=_preferredFirstResponder) UIResponder *preferredFirstResponder;
 @property (readonly, weak, nonatomic, getter=_preferredFirstResponderFocusSystem) UIFocusSystem *preferredFirstResponderFocusSystem;
 @property (readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
@@ -61,6 +70,7 @@
 @property (readonly, weak, nonatomic) UIView *preferredFocusedView;
 @property (readonly, weak, nonatomic, getter=_previousFocusedItem) id<UIFocusItem> previousFocusedItem; // @synthesize previousFocusedItem=_previousFocusedItem;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL waitingForFocusMovementAction; // @synthesize waitingForFocusMovementAction=_waitingForFocusMovementAction;
 
 + (id)_allFocusSystems;
 + (BOOL)environment:(id)arg1 containsEnvironment:(id)arg2;
@@ -69,10 +79,12 @@
 - (void).cxx_destruct;
 - (void)_cancelPendingFocusRestoration;
 - (id)_contextForUpdateToEnvironment:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (id)_contextForUpdateToEnvironment:(id)arg1 withAnimationCoordinator:(id)arg2 allowsFocusRestoration:(BOOL)arg3;
 - (BOOL)_debug_isEnvironmentEligibleForFocusUpdate:(id)arg1 debugReport:(id)arg2;
 - (void)_didFinishUpdatingFocusInContext:(id)arg1;
 - (void)_enableWithoutFocusRestoration;
 - (void)_focusEnvironmentWillDisappear:(id)arg1;
+- (void)_handleFocusMovementAction:(id)arg1;
 - (id)_init;
 - (id)_initWithFocusEnabled:(BOOL)arg1;
 - (BOOL)_isEnvironmentEligibleForFocusUpdate:(id)arg1 shouldResetFocus:(BOOL *)arg2 debugReport:(id)arg3;
@@ -97,6 +109,7 @@
 - (BOOL)_updateFocusWithContext:(id)arg1 report:(id)arg2;
 - (id)_validatedPendingFocusUpdateRequest;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (id)focusedWindowForFocusCastingController:(id)arg1;
 - (id)init;
 - (void)requestFocusUpdateToEnvironment:(id)arg1;
 - (void)setNeedsFocusUpdate;

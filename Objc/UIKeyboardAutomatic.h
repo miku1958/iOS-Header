@@ -6,22 +6,25 @@
 
 #import <UIKitCore/UIKeyboard.h>
 
+@protocol UITextCursorAssertion;
+
 __attribute__((visibility("hidden")))
 @interface UIKeyboardAutomatic : UIKeyboard
 {
     BOOL showsCandidateBar;
     BOOL showsCandidateInline;
     BOOL receivedCandidatesInCurrentInputMode;
-    BOOL caretBlinks;
+    id<UITextCursorAssertion> _blinkAssertion;
 }
 
-@property (nonatomic) BOOL caretBlinks; // @synthesize caretBlinks;
+@property (strong, nonatomic) id<UITextCursorAssertion> blinkAssertion; // @synthesize blinkAssertion=_blinkAssertion;
 @property (nonatomic) BOOL receivedCandidatesInCurrentInputMode; // @synthesize receivedCandidatesInCurrentInputMode;
 @property (nonatomic) BOOL showsCandidateBar; // @synthesize showsCandidateBar;
 @property (nonatomic) BOOL showsCandidateInline; // @synthesize showsCandidateInline;
 
 + (id)activeInstance;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (BOOL)_isAutomaticKeyboard;
 - (void)activate;
 - (void)dealloc;

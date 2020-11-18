@@ -29,6 +29,7 @@
 @property (nonatomic) double defaultCornerRadius; // @synthesize defaultCornerRadius=_defaultCornerRadius;
 @property (readonly, nonatomic) double effectiveCornerRadius;
 @property (nonatomic) struct CGPoint inherentConstrainedSlip; // @synthesize inherentConstrainedSlip=_inherentConstrainedSlip;
+@property (readonly, nonatomic) BOOL isCircle;
 @property (readonly, nonatomic) BOOL isEmpty;
 @property (nonatomic) unsigned long long materialUsage; // @synthesize materialUsage=_materialUsage;
 @property (copy, nonatomic) UIBezierPath *path; // @synthesize path=_path;
@@ -42,6 +43,7 @@
 + (id)shapeWithRoundedRect:(struct CGRect)arg1 cornerRadius:(double)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (unsigned long long)hash;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;

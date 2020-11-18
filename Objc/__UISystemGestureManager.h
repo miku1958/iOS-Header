@@ -10,6 +10,7 @@
 #import <UIKitCore/_UIExclusiveTouchGestureRecognizerDelegate-Protocol.h>
 
 @class BKSTouchStream, FBSDisplayIdentity, NSMutableSet, NSSet, NSString, UIGestureRecognizer, _UISystemGestureWindow;
+@protocol BSInvalidatable;
 
 __attribute__((visibility("hidden")))
 @interface __UISystemGestureManager : NSObject <UIGestureRecognizerDelegate, _UIExclusiveTouchGestureRecognizerDelegate>
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_externalEdgeSwipeGestures;
     NSMutableSet *_internalGestures;
     NSMutableSet *_externalGestures;
+    id<BSInvalidatable> _stateCaptureToken;
     BOOL _achievedMaximumMovement;
     BOOL _didSeeExclusiveTouchBegan;
     BOOL _didProcessPendingSwipeBegan;

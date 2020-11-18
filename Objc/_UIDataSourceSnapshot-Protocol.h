@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@protocol _UIDataSourceSnapshot
+#import <UIKitCore/NSObject-Protocol.h>
+
+@protocol _UIDataSourceSnapshot <NSObject>
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSections;
 @end

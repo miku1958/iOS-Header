@@ -27,10 +27,10 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL telephonyActivity; // @synthesize telephonyActivity=_telephonyActivity;
 
+- (void).cxx_destruct;
 - (void)_backgroundInit;
 - (void)_backgroundReset;
 - (void)callObserver:(id)arg1 callChanged:(id)arg2;
-- (void)dealloc;
 - (id)init;
 - (void)start;
 

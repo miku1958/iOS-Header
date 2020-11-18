@@ -64,6 +64,7 @@
 @property (nonatomic) BOOL acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
+@property (nonatomic) BOOL acceptsInitialEmojiKeyboard;
 @property (nonatomic) BOOL acceptsPayloads;
 @property (nonatomic) BOOL acceptsSplitKeyboard;
 @property (nonatomic) BOOL allowsAttachments; // @synthesize allowsAttachments=_allowsAttachments;
@@ -116,6 +117,7 @@
 @property (nonatomic) long long nonEditingLinebreakMode;
 @property (nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
 @property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
+@property (nonatomic) BOOL preferOnlineDictation;
 @property (copy, nonatomic) NSString *recentInputIdentifier;
 @property (copy, nonatomic) NSString *responseContext;
 @property (nonatomic) BOOL returnKeyGoesToNextResponder;
@@ -163,7 +165,6 @@
 - (void)_applyCorrectTextContainerSize;
 - (void)_applyCorrectTextContainerSize:(id)arg1;
 - (void)_cancelObscureAllTextTimer;
-- (id)_canvasView;
 - (BOOL)_clearOnEditIfNeeded;
 - (struct UIEdgeInsets)_contentInsetsFromFonts;
 - (void)_deactivateSelectionView;
@@ -192,6 +193,7 @@
 - (void)_setValue:(id)arg1 forTextAttribute:(id)arg2;
 - (BOOL)_shouldIgnoreAutofillSave;
 - (BOOL)_shouldObscureInput;
+- (id)_textCanvasView;
 - (id)_textContainer;
 - (id)_textInputController;
 - (id)_textInputTraits;
@@ -205,7 +207,6 @@
 - (void)_updateLayoutManagerStyleEffectConfiguration;
 - (void)activateEditor;
 - (void)addTextAlternativesDisplayStyle:(long long)arg1 toRange:(struct _NSRange)arg2;
-- (int)atomStyle;
 - (id)attributedSubstringForMarkedRange;
 - (id)attributedText;
 - (id)attributedTextInRange:(id)arg1;
@@ -213,7 +214,6 @@
 - (void)beginSelectionChange;
 - (void)cancelAutoscroll;
 - (struct CGRect)caretRectForPosition:(id)arg1;
-- (unsigned long long)characterOffsetAtPoint:(struct CGPoint)arg1;
 - (id)characterRangeAtPoint:(struct CGPoint)arg1;
 - (id)characterRangeByExtendingPosition:(id)arg1 inDirection:(long long)arg2;
 - (void)clearText;
@@ -225,7 +225,6 @@
 - (void)dealloc;
 - (void)deleteBackward;
 - (void)drawRect:(struct CGRect)arg1;
-- (BOOL)drawsAsAtom;
 - (void)endSelectionChange;
 - (struct CGRect)firstRectForRange:(id)arg1;
 - (id)font;
@@ -305,6 +304,7 @@
 - (id)textColorForCaretSelection;
 - (struct UIEdgeInsets)textContainerInset;
 - (struct CGPoint)textContainerOrigin;
+- (struct CGPoint)textContainerOriginForTextAlignment:(long long)arg1;
 - (id)textField;
 - (id)textInRange:(id)arg1;
 - (void)textInput:(id)arg1 prepareAttributedTextForInsertion:(id)arg2;
@@ -313,6 +313,7 @@
 - (void)textInputDidAnimatePaste:(id)arg1;
 - (void)textInputDidChange:(id)arg1;
 - (void)textInputDidChangeSelection:(id)arg1;
+- (BOOL)textInputShouldExtendCaretHeight:(id)arg1;
 - (id)textInputTraits;
 - (void)textInputWillAnimatePaste:(id)arg1;
 - (id)textRangeFromPosition:(id)arg1 toPosition:(id)arg2;

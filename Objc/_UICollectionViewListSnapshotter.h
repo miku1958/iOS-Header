@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) BOOL displaysAdditionalSeparators; // @synthesize displaysAdditionalSeparators=_displaysAdditionalSeparators;
 
-+ (id)snapshotWithSectionCountsProvider:(CDUnknownBlockType)arg1 topBottomSeparatorProvider:(CDUnknownBlockType)arg2 displaysAdditionalSeparators:(BOOL)arg3;
++ (id)snapshotterForSectionCountsProvider:(CDUnknownBlockType)arg1 topBottomSeparatorProvider:(CDUnknownBlockType)arg2 displaysAdditionalSeparators:(BOOL)arg3;
 - (void).cxx_destruct;
 - (BOOL)hasBottomSeparatorInSection:(long long)arg1;
 - (BOOL)hasTopSeparatorInSection:(long long)arg1;

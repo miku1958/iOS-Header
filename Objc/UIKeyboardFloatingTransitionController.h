@@ -61,6 +61,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL withinDockingRegion; // @synthesize withinDockingRegion=_withinDockingRegion;
 
++ (struct CGRect)dockingRegion;
 + (BOOL)isPointWithinDockingRegion:(struct CGPoint)arg1;
 + (double)magneticEdgeMargin;
 + (id)snapshotOfKeyplaneView:(id)arg1;

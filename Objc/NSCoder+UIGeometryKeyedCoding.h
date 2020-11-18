@@ -16,8 +16,12 @@
 - (id)_decodeObjectsAndTrackChildViewControllerIndexWithParent:(id)arg1 forKey:(id)arg2;
 - (id)_decodeObjectsWithSourceSegueTemplate:(id)arg1 creator:(CDUnknownBlockType)arg2 sender:(id)arg3 forKey:(id)arg4;
 - (void)_initializeClassSwapperWithCurrentDecodingViewControllerIfNeeded:(id)arg1;
+- (CDUnknownBlockType)_ui_decodeNSUIntegerVectorForKey:(id)arg1 returnedCount:(unsigned long long *)arg2;
 - (id)_ui_decodeTextAttributesForKey:(id)arg1;
+- (CDUnknownBlockType)_ui_decodeVectorForKey:(id)arg1 returnedCount:(unsigned long long *)arg2;
+- (void)_ui_encodeNSUIntegerVector:(const unsigned long long *)arg1 count:(unsigned long long)arg2 forKey:(id)arg3;
 - (void)_ui_encodeTextAttributes:(id)arg1 forKey:(id)arg2;
+- (void)_ui_encodeVector:(const double *)arg1 count:(unsigned long long)arg2 forKey:(id)arg3;
 - (BOOL)_ui_isInterprocess;
 - (struct CGAffineTransform)decodeCGAffineTransformForKey:(id)arg1;
 - (struct CGPoint)decodeCGPointForKey:(id)arg1;

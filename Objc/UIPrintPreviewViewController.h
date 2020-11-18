@@ -15,8 +15,7 @@
 #import <UIKitCore/UIScrollViewDelegate-Protocol.h>
 #import <UIKitCore/UIViewControllerPreviewingDelegate_Private-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSMutableArray, NSObject, NSString, NSURL, UICollectionViewCell, UIDocumentInteractionController, UIImageView, UILabel, UIPrintPanelViewController, UIPrintPaper, UIView;
-@protocol OS_dispatch_queue;
+@class NSArray, NSLayoutConstraint, NSMutableArray, NSOperationQueue, NSString, NSURL, UIDocumentInteractionController, UIImageView, UILabel, UIPrintPanelViewController, UIPrintPaper, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIPrintPreviewViewController : UICollectionViewController <UIGestureRecognizerDelegate, UIViewControllerPreviewingDelegate_Private, UIDocumentInteractionControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSourcePrefetching, UIScrollViewDelegate, PageRangeDelegate, UINavigationControllerDelegate>
@@ -33,11 +32,11 @@ __attribute__((visibility("hidden")))
     long long _pageIndexOnPageLabel;
     NSURL *_pdfURL;
     struct CGPDFDocument *_pdfDocRef;
-    NSObject<OS_dispatch_queue> *_pageRendererQueue;
+    NSOperationQueue *_pageRendererQueue;
     NSLayoutConstraint *_pageLabelBadgeVerticalPositionConstraint;
     UIDocumentInteractionController *_documentInteractionController;
     NSURL *_sharePDFFileURL;
-    UICollectionViewCell *_pinchGestureBeginningCell;
+    UIImageView *_pinchGestureBeginningPageImageView;
     UIImageView *_pinchAnimationView;
     UIView *_pinchAnimationWhiteBackgroundView;
     struct CGPoint _pinchGestureLastPoint;
@@ -72,6 +71,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (long long)_adjustScrollDirectionForLayout:(long long)arg1;
+- (void)_mainQueue_UpdateLayout;
+- (void)_mainQueue_reloadItemAtIndex:(id)arg1;
 - (id)_newTempURLForPreviewing;
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (void)addAllPages:(id)arg1;
@@ -86,11 +87,15 @@ __attribute__((visibility("hidden")))
 - (BOOL)canShowMenuBar;
 - (BOOL)collectionView:(id)arg1 canPerformAction:(SEL)arg2 forItemAtIndexPath:(id)arg3 withSender:(id)arg4;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
+- (id)collectionView:(id)arg1 contextMenuConfigurationForItemAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (void)collectionView:(id)arg1 prefetchItemsAtIndexPaths:(id)arg2;
+- (id)collectionView:(id)arg1 previewForDismissingContextMenuWithConfiguration:(id)arg2;
+- (id)collectionView:(id)arg1 previewForHighlightingContextMenuWithConfiguration:(id)arg2;
 - (BOOL)collectionView:(id)arg1 shouldShowMenuForItemAtIndexPath:(id)arg2;
+- (void)collectionView:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
 - (void)configureCell:(id)arg1 atIndexPath:(id)arg2;
 - (void)dealloc;
 - (void)didReceiveMemoryWarning;
@@ -107,7 +112,7 @@ __attribute__((visibility("hidden")))
 - (void)handlePinch:(id)arg1;
 - (void)handleTap:(id)arg1;
 - (id)indexPathNearestToPointInCollectionView:(struct CGPoint)arg1;
-- (id)initWithPageSize:(struct CGSize)arg1 numberOfPages:(long long)arg2 viewSize:(struct CGSize)arg3 printPanelViewController:(id)arg4;
+- (id)initWithViewSize:(struct CGSize)arg1 printPanelViewController:(id)arg2;
 - (BOOL)locationInTapTargetOfPageLabelBadge:(struct CGPoint)arg1;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)pageBadgeTapped:(id)arg1;
@@ -116,12 +121,11 @@ __attribute__((visibility("hidden")))
 - (void)pageRangeUpdated;
 - (id)pathOfCenterMostCell;
 - (void)previewPDF;
-- (id)previewViewControllerForItemAtIndexPath:(id)arg1;
-- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
+- (id)printPagePreviewActionItemsWithPageIndex:(long long)arg1;
+- (id)printPagePreviewViewControllerForItemAtPageIndex:(long long)arg1;
 - (void)removePage:(id)arg1 forPageIndex:(long long)arg2;
 - (void)resetAllPageImages;
-- (void)resetCellSizesArray;
+- (void)resetCellSizesArrayCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;

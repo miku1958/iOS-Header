@@ -6,7 +6,6 @@
 
 #import <UIKitCore/UIAlertControllerVisualStyle.h>
 
-__attribute__((visibility("hidden")))
 @interface UIAlertControllerVisualStyleAlert : UIAlertControllerVisualStyle
 {
 }

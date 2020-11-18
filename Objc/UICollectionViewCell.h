@@ -8,10 +8,12 @@
 
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKitCore/_UILayoutEngineSuspending-Protocol.h>
+#import <UIKitCore/_UISystemBackgroundViewContainer-Protocol.h>
 
-@class NSString, UILongPressGestureRecognizer, UIView, _UIFloatingContentView;
+@class NSString, UIBackgroundConfiguration, UICellConfigurationState, UILongPressGestureRecognizer, UIView, _UIFloatingContentView, _UISystemBackgroundView;
+@protocol UIContentConfiguration, _UIBackgroundConfigurationInternal, _UIContentViewInternal;
 
-@interface UICollectionViewCell : UICollectionReusableView <UIGestureRecognizerDelegate, _UILayoutEngineSuspending>
+@interface UICollectionViewCell : UICollectionReusableView <UIGestureRecognizerDelegate, _UILayoutEngineSuspending, _UISystemBackgroundViewContainer>
 {
     UIView *_contentView;
     UIView *_backgroundView;
@@ -19,13 +21,31 @@
     UILongPressGestureRecognizer *_menuGesture;
     id _selectionSegueTemplate;
     id _highlightingSupport;
+    NSString *_contentViewConfigurationIdentifier;
+    id<_UIContentViewInternal> _viewForContentConfiguration;
+    CDUnknownBlockType _contentViewConfigurationProvider;
+    _UISystemBackgroundView *_systemBackgroundView;
+    CDUnknownBlockType _backgroundViewConfigurationProvider;
+    id<_UIBackgroundConfigurationInternal> _lastNormalBackgroundViewConfiguration;
     struct {
         unsigned int selected:1;
         unsigned int highlighted:1;
+        unsigned int editing:1;
+        unsigned int swiped:1;
+        unsigned int reordering:1;
+        unsigned int needsConfigurationStateUpdate:1;
+        unsigned int hasCustomBackgroundColor:1;
+        unsigned int hasCustomBackgroundView:1;
+        unsigned int hasCustomSelectedBackgroundView:1;
+        unsigned int hasCustomBackgroundViewConfigurationProvider:1;
+        unsigned int hasCustomBackgroundViewConfiguration:1;
+        unsigned int automaticallyUpdatesBackgroundViewConfiguration:1;
+        unsigned int automaticallyUpdatesContentViewConfiguration:1;
         unsigned int showingMenu:1;
         unsigned int clearSelectionWhenMenuDisappears:1;
         unsigned int waitingForSelectionAnimationHalfwayPoint:1;
         unsigned int contentViewWantsSystemLayoutSizeFittingSize:1;
+        unsigned int selectionOrHighlightStateChangedSinceBackgroundUpdate:1;
     } _collectionCellFlags;
     long long _dragState;
     BOOL _selected;
@@ -33,12 +53,24 @@
     BOOL _isLayoutEngineSuspended;
     BOOL _dragging;
     _UIFloatingContentView *_focusedFloatingContentView;
+    long long __dropState;
     long long _focusStyle;
 }
 
+@property (readonly, nonatomic, getter=_backgroundFillIsCustomizedForSelectionOrHighlight) BOOL _backgroundFillIsCustomizedForSelectionOrHighlight;
+@property (readonly, nonatomic, getter=_backgroundIsVerticallyInset) BOOL _backgroundIsVerticallyInset;
 @property (nonatomic, getter=_dragState, setter=_setDragState:) long long _dragState;
+@property (nonatomic, getter=_dropState, setter=_setDropState:) long long _dropState; // @synthesize _dropState=__dropState;
+@property (nonatomic, getter=_isDropTarget, setter=_setDropTarget:) BOOL _dropTarget;
 @property (nonatomic, getter=_isLayoutEngineSuspended, setter=_setLayoutEngineSuspended:) BOOL _layoutEngineSuspended; // @synthesize _layoutEngineSuspended=_isLayoutEngineSuspended;
+@property (nonatomic, getter=_isReordering, setter=_setReordering:) BOOL _reordering;
+@property (nonatomic, getter=_isSwiped, setter=_setSwiped:) BOOL _swiped;
+@property (nonatomic) BOOL automaticallyUpdatesBackgroundConfiguration;
+@property (nonatomic) BOOL automaticallyUpdatesContentConfiguration;
+@property (copy, nonatomic) UIBackgroundConfiguration *backgroundConfiguration;
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property (readonly, nonatomic) UICellConfigurationState *configurationState;
+@property (copy, nonatomic) id<UIContentConfiguration> contentConfiguration;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, nonatomic, getter=_contentViewInset) struct UIEdgeInsets contentViewInset;
 @property (readonly, copy) NSString *debugDescription;
@@ -54,38 +86,84 @@
 @property (readonly) Class superclass;
 
 + (Class)_contentViewClass;
++ (id)_createDefaultContentViewWithFrame:(struct CGRect)arg1;
++ (BOOL)_isInternalCell;
++ (BOOL)_subclassOverridesContentViewClass;
 - (void).cxx_destruct;
+- (BOOL)_appliesLayoutAttributesMaskingToReusableView;
+- (void)_applyBackgroundViewConfiguration:(id)arg1 withState:(id)arg2;
+- (void)_applyContentViewConfiguration:(id)arg1 withState:(id)arg2 usingSPI:(BOOL)arg3;
+- (BOOL)_automaticallyUpdatesBackgroundViewConfiguration;
+- (BOOL)_automaticallyUpdatesContentViewConfiguration;
+- (id)_backgroundViewConfiguration;
+- (CDUnknownBlockType)_backgroundViewConfigurationProvider;
 - (BOOL)_canFocusProgrammatically;
+- (id)_configurationState;
 - (void)_configureFocusedFloatingContentView:(id)arg1;
+- (struct CGSize)_contentTargetSizeForTargetSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3 forUseWithSizeThatFits:(BOOL)arg4;
+- (id)_contentViewConfiguration;
+- (CDUnknownBlockType)_contentViewConfigurationProvider;
+- (id)_defaultBackgroundConfiguration;
+- (id)_defaultBackgroundView;
+- (id)_defaultSelectedBackgroundView;
 - (BOOL)_descendantsShouldHighlight;
 - (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (unsigned long long)_effectiveMaskedCornersForSystemBackgroundView;
 - (id)_encodableSubviews;
 - (void)_ensureFocusedFloatingContentView;
 - (BOOL)_forwardsSystemLayoutFittingSizeToContentView:(id)arg1;
 - (BOOL)_gestureRecognizerShouldBegin:(id)arg1;
 - (void)_handleMenuGesture:(id)arg1;
+- (BOOL)_hasCustomSelectionAction;
 - (BOOL)_highlightDescendantsWhenSelected;
 - (BOOL)_isUsingOldStyleMultiselection;
+- (void)_layoutContentView;
+- (void)_layoutSystemBackgroundView;
+- (unsigned long long)_maskedCornersForSystemBackgroundView;
 - (void)_monitoredView:(id)arg1 didMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
 - (void)_monitoredView:(id)arg1 willMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
 - (void)_performAction:(SEL)arg1 sender:(id)arg2;
+- (void)_performConfigurationStateUpdate;
+- (BOOL)_performCustomSelectionAction;
+- (void)_populateArchivedSubviews:(id)arg1;
 - (id)_preferredConfigurationForFocusAnimation:(long long)arg1 inContext:(id)arg2;
+- (BOOL)_removesHighlightedAndSelectedStatesForBackground;
+- (void)_resetBackgroundViewConfiguration;
+- (void)_resetBackgroundViewsAndColor;
 - (id)_selectionSegueTemplate;
+- (void)_setAutomaticallyUpdatesBackgroundViewConfiguration:(BOOL)arg1;
+- (void)_setAutomaticallyUpdatesContentViewConfiguration:(BOOL)arg1;
+- (void)_setBackgroundViewConfiguration:(id)arg1;
+- (void)_setBackgroundViewConfigurationProvider:(CDUnknownBlockType)arg1;
 - (void)_setContentView:(id)arg1 addToHierarchy:(BOOL)arg2;
+- (void)_setContentViewConfiguration:(id)arg1;
+- (void)_setContentViewConfigurationProvider:(CDUnknownBlockType)arg1;
 - (void)_setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_setLayoutAttributes:(id)arg1;
+- (void)_setNeedsConfigurationStateUpdate;
 - (void)_setOpaque:(BOOL)arg1 forSubview:(id)arg2;
 - (void)_setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_setSelectionSegueTemplate:(id)arg1;
 - (void)_setupHighlightingSupport;
 - (BOOL)_shouldSaveOpaqueStateForView:(id)arg1;
+- (id)_stateForUpdatingBackgroundConfigurationWithState:(id)arg1;
+- (id)_systemBackgroundView;
 - (void)_teardownHighlightingSupportIfReady;
 - (void)_updateBackgroundView;
+- (void)_updateBackgroundViewConfigurationForState:(id)arg1;
+- (void)_updateConfigurationUsingState:(id)arg1;
+- (void)_updateContentViewConfigurationForState:(id)arg1;
+- (void)_updateDefaultBackgroundAppearance;
 - (void)_updateFocusedFloatingContentControlStateAnimated:(BOOL)arg1;
 - (void)_updateFocusedFloatingContentControlStateInContext:(id)arg1 withAnimationCoordinator:(id)arg2 animated:(BOOL)arg3;
 - (void)_updateGhostedAppearance;
 - (void)_updateHighlightColorsForAnimationHalfwayPoint;
 - (void)_updateHighlightColorsForView:(id)arg1 highlight:(BOOL)arg2;
+- (void)_updateViewConfigurationsWithState:(unsigned long long)arg1;
+- (BOOL)_usingBackgroundViewConfiguration;
+- (BOOL)_usingContentViewConfiguration;
+- (unsigned long long)_viewConfigurationState;
+- (id)_visiblePathForBackgroundConfiguration;
 - (BOOL)canBecomeFocused;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)copy:(id)arg1;
@@ -99,10 +177,15 @@
 - (void)layoutSubviews;
 - (void)paste:(id)arg1;
 - (void)prepareForReuse;
+- (void)setBackgroundColor:(id)arg1;
 - (void)setEditing:(BOOL)arg1;
+- (void)setNeedsUpdateConfiguration;
 - (void)setSemanticContentAttribute:(long long)arg1;
+- (void)setUserInteractionEnabled:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateConfigurationUsingState:(id)arg1;
 
 @end
 

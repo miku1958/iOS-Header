@@ -10,10 +10,13 @@
 
 @interface UIKBScreenTraits : NSObject
 {
+    BOOL _isEmulatingIdiom;
+    long long _idiomToEmulate;
     BOOL _knobInput;
     BOOL _touchInput;
     BOOL _touchpadInput;
     BOOL _isKeyboardMinorEdgeWidth;
+    BOOL _isInPopover;
     UIScreen *_screen;
     long long _orientation;
     double _keyboardWidth;
@@ -23,6 +26,7 @@
 
 @property (nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
 @property (readonly, nonatomic) long long idiom;
+@property (readonly, nonatomic) BOOL isInPopover; // @synthesize isInPopover=_isInPopover;
 @property (readonly, nonatomic) BOOL isKeyboardMinorEdgeWidth; // @synthesize isKeyboardMinorEdgeWidth=_isKeyboardMinorEdgeWidth;
 @property (nonatomic) double keyboardBarHeight; // @synthesize keyboardBarHeight=_keyboardBarHeight;
 @property (nonatomic) double keyboardWidth; // @synthesize keyboardWidth=_keyboardWidth;
@@ -33,10 +37,14 @@
 @property (readonly, nonatomic) BOOL touchpadInput; // @synthesize touchpadInput=_touchpadInput;
 
 + (id)fullScreenTraitsWithScreen:(id)arg1 orientation:(long long)arg2;
++ (void)setMockIdiom:(long long)arg1;
++ (id)traitsForInputModeWithScreen:(id)arg1;
++ (id)traitsForPopoverEmulatingWidth:(double)arg1 minorEdge:(BOOL)arg2 orientation:(long long)arg3 idiom:(long long)arg4;
 + (id)traitsWithScreen:(id)arg1 orientation:(long long)arg2;
 + (id)traitsWithScreen:(id)arg1 orientation:(long long)arg2 ignoreRemoteKeyboard:(BOOL)arg3;
 - (void).cxx_destruct;
 - (id)description;
+- (id)initForInputModeWithScreen:(id)arg1;
 - (id)initWithScreen:(id)arg1 orientation:(long long)arg2 allowFloating:(BOOL)arg3 ignoreRemoteKeyboard:(BOOL)arg4;
 - (void)updateForTextInputTraits:(id)arg1 supportedInteractionModel:(unsigned long long)arg2;
 

@@ -33,19 +33,23 @@ __attribute__((visibility("hidden")))
     long long _whitePointAdaptivityStyle;
     unsigned long long _viewControllerBasedStatusBarAppearance;
     NSString *_launchImageFile;
+    NSString *_keyColorAssetName;
     NSArray *_canvasDefinitions;
     NSDictionary *_sceneConfigurations;
     long long _supportedUserInterfaceStyle;
+    NSArray *_deviceFamilies;
 }
 
 @property (readonly, nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property (readonly, nonatomic) BOOL canChangeBackgroundStyle; // @synthesize canChangeBackgroundStyle=_canChangeBackgroundStyle;
 @property (readonly, copy, nonatomic) NSArray *canvasDefinitions; // @synthesize canvasDefinitions=_canvasDefinitions;
+@property (readonly, copy, nonatomic) NSArray *deviceFamilies; // @synthesize deviceFamilies=_deviceFamilies;
 @property (readonly, nonatomic) BOOL disableLayoutAwareShortcuts; // @synthesize disableLayoutAwareShortcuts=_disableLayoutAwareShortcuts;
 @property (readonly, nonatomic) BOOL fakingRequiresHighResolution; // @synthesize fakingRequiresHighResolution=_fakingRequiresHighResolution;
 @property (readonly, nonatomic) int ignoredOverrides; // @synthesize ignoredOverrides=_ignoredOverrides;
 @property (readonly, nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property (readonly, nonatomic) BOOL isExitsOnSuspend; // @synthesize isExitsOnSuspend=_isExitsOnSuspend;
+@property (readonly, copy, nonatomic) NSString *keyColorAssetName; // @synthesize keyColorAssetName=_keyColorAssetName;
 @property (readonly, copy, nonatomic) NSString *launchImageFile; // @synthesize launchImageFile=_launchImageFile;
 @property (readonly, nonatomic) long long launchingInterfaceOrientationForSpringBoard; // @synthesize launchingInterfaceOrientationForSpringBoard=_launchingInterfaceOrientationForSpringBoard;
 @property (readonly, nonatomic) BOOL optOutOfRTL; // @synthesize optOutOfRTL=_optOutOfRTL;
@@ -63,13 +67,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long viewControllerBasedStatusBarAppearance; // @synthesize viewControllerBasedStatusBarAppearance=_viewControllerBasedStatusBarAppearance;
 @property (readonly, nonatomic) long long whitePointAdaptivityStyle; // @synthesize whitePointAdaptivityStyle=_whitePointAdaptivityStyle;
 
++ (id)mainBundleInfoParser;
 - (void).cxx_destruct;
 - (void)_computeSupportedInterfaceOrientationsWithInfo:(id)arg1;
 - (void)_computeSupportedUserInterfaceStyleFromInfo:(id)arg1;
 - (id)_initWithApplicationPlistData:(id)arg1;
+- (id)_initWithBundle:(id)arg1;
 - (BOOL)_isLinkedOnOrAfterYukon;
 - (id)initWithApplicationProxy:(id)arg1;
-- (id)initWithbundle:(id)arg1;
 
 @end
 

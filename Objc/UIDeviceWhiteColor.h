@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
     double whiteComponent;
     double alphaComponent;
-    struct CGColor *_cachedColor;
+    _Atomic struct CGColor *_cachedColor;
 }
 
 - (struct CGColor *)CGColor;

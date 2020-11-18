@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIVisualEffect *separatorEffect; // @synthesize separatorEffect=_separatorEffect;
 
 - (void).cxx_destruct;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 
 @end

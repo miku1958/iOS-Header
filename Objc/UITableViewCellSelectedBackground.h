@@ -11,15 +11,15 @@
 __attribute__((visibility("hidden")))
 @interface UITableViewCellSelectedBackground : UIView
 {
+    UIVisualEffectView *_selectionEffectsView;
+    BOOL _multiselect;
     long long _selectionStyle;
     UIColor *_multiselectBackgroundColor;
     UIColor *_selectionTintColor;
     UIColor *_noneStyleBackgroundColor;
-    UIVisualEffectView *_selectionEffectsView;
-    BOOL _multiselect;
 }
 
-@property (nonatomic, getter=isMultiselect) BOOL multiselect;
+@property (nonatomic, getter=isMultiselect) BOOL multiselect; // @synthesize multiselect=_multiselect;
 @property (strong, nonatomic) UIColor *multiselectBackgroundColor; // @synthesize multiselectBackgroundColor=_multiselectBackgroundColor;
 @property (strong, nonatomic) UIColor *noneStyleBackgroundColor; // @synthesize noneStyleBackgroundColor=_noneStyleBackgroundColor;
 @property (copy, nonatomic) NSArray *selectionEffects;
@@ -27,9 +27,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIColor *selectionTintColor; // @synthesize selectionTintColor=_selectionTintColor;
 
 - (void).cxx_destruct;
-- (BOOL)_canDrawContent;
-- (void)drawRect:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)tintColorDidChange;
+- (void)updateBackgroundColor;
 
 @end
 

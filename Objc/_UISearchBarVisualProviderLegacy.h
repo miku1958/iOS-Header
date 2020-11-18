@@ -8,7 +8,7 @@
 
 #import <UIKitCore/_UISearchBarVisualProviding-Protocol.h>
 
-@class NSArray, NSString, UIBarButtonItem, UIButton, UIColor, UIImage, UIImageView, UILabel, UINavigationButton, UINavigationItem, UISearchBarBackground, UISearchBarTextField, UISegmentedControl, UIView, UIVisualEffectView, _UIBackdropView, _UINavigationBarTitleViewOverlayRects, _UISearchBarAppearanceStorage, _UISearchBarScopeBarBackground;
+@class NSArray, NSString, UIBarButtonItem, UIButton, UIColor, UIImage, UIImageView, UILabel, UINavigationButton, UINavigationItem, UISearchBarBackground, UISearchBarTextField, UISegmentedControl, UITextField, UIView, UIVisualEffectView, _UIBackdropView, _UINavigationBarTitleViewOverlayRects, _UISearchBarAppearanceStorage, _UISearchBarScopeBarBackground;
 @protocol _UINavigationBarTitleViewDataSource, _UISearchBarVisualProvidingDelegate><_UINavigationBarAugmentedTitleView><UITextInputTraits_Private;
 
 __attribute__((visibility("hidden")))
@@ -132,6 +132,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UISearchBarTextField *searchField; // @synthesize searchField=_searchField;
 @property (nonatomic) struct UIOffset searchFieldBackgroundPositionAdjustment;
 @property (readonly, nonatomic) double searchFieldHeight;
+@property (readonly, nonatomic) UITextField *searchFieldIfExists;
 @property (nonatomic) long long searchFieldLeftViewMode;
 @property (readonly, nonatomic) UINavigationItem *searchNavigationItem;
 @property (nonatomic, getter=isSearchResultsButtonSelected) BOOL searchResultsButtonSelected;
@@ -215,6 +216,9 @@ __attribute__((visibility("hidden")))
 - (void)setClippingViewBounds:(struct CGRect)arg1;
 - (void)setDisableDictationButton:(BOOL)arg1;
 - (void)setEnabled:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setHelperPlaceholder:(id)arg1;
+- (void)setHelperPlaceholderHidden:(BOOL)arg1;
+- (void)setHelperPlaceholderOverride:(id)arg1;
 - (void)setImage:(id)arg1 forSearchBarIcon:(long long)arg2 state:(unsigned long long)arg3;
 - (void)setOverrideContentInsets:(struct UIEdgeInsets)arg1 forRectEdges:(unsigned long long)arg2;
 - (void)setSearchDisplayControllerShowsCancelButton:(BOOL)arg1;
@@ -239,6 +243,8 @@ __attribute__((visibility("hidden")))
 - (void)updateDictationButton;
 - (void)updateEffectiveContentInset;
 - (void)updateForDrawsBackgroundInPalette;
+- (void)updateForDynamicType;
+- (void)updateForSemanticContext;
 - (void)updateIfNecessaryForOldSize:(struct CGSize)arg1;
 - (void)updateMagnifyingGlassView;
 - (void)updateNavigationBarLayoutInsertDataForSearchBar:(id)arg1 collapsibleScopeBar:(id)arg2 forLayoutState:(long long)arg3;
@@ -251,6 +257,7 @@ __attribute__((visibility("hidden")))
 - (void)updateSearchBarOpacity;
 - (void)updateSearchFieldArt;
 - (BOOL)useRelaxedScopeLayout;
+- (BOOL)wantsDictationButton;
 - (BOOL)wouldCombineLandscapeBarsForSize:(struct CGSize)arg1;
 
 @end

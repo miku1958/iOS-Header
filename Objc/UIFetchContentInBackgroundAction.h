@@ -4,16 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <BaseBoard/BSAction.h>
+#import <UIKitServices/UISFetchContentInBackgroundAction.h>
 
-@interface UIFetchContentInBackgroundAction : BSAction
+@interface UIFetchContentInBackgroundAction : UISFetchContentInBackgroundAction
 {
 }
-
-- (long long)UIActionType;
-- (id)initWithHandler:(CDUnknownBlockType)arg1;
-- (id)initWithInfo:(id)arg1 timeout:(double)arg2 forResponseOnQueue:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
-- (void)sendResponse:(id)arg1;
 
 @end
 

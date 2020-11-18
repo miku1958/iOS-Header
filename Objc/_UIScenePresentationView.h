@@ -12,7 +12,7 @@
 #import <UIKitCore/UIScenePresentation-Protocol.h>
 #import <UIKitCore/_UISceneLayerHostContainerViewDataSource-Protocol.h>
 
-@class FBSSceneSettings, FBSSceneSettingsDiffInspector, FBScene, NSString, UIScenePresentationContext, _UISceneLayerHostContainerView, _UIScenePresenter;
+@class FBSSceneSettings, FBSSceneSettingsDiffInspector, FBScene, NSHashTable, NSString, UIScenePresentationContext, _UISceneLayerHostContainerView, _UIScenePresenter;
 @protocol UIScenePresenter;
 
 __attribute__((visibility("hidden")))
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     UIScenePresentationContext *_currentPresentationContext;
     _UISceneLayerHostContainerView *_hostContainerView;
     FBSSceneSettingsDiffInspector *_geometrySettingsDiffInspector;
+    NSHashTable *_observers;
     BOOL _invalidated;
 }
 
@@ -41,12 +42,15 @@ __attribute__((visibility("hidden")))
 - (void)_updateBackgroundColor;
 - (void)_updateFrameAndTransform;
 - (void)_updatePresentationContextFrom:(id)arg1 toContext:(id)arg2;
+- (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (void)didMoveToWindow;
 - (id)initWithPresenter:(id)arg1;
 - (void)invalidate;
 - (id)presentationContextForSceneLayerHostContainerView;
+- (void)removeObserver:(id)arg1;
 - (void)scene:(id)arg1 didPrepareUpdateWithContext:(id)arg2;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

@@ -12,9 +12,11 @@
 {
     NSArray *_rects;
     _UITextPlaceholderAttachment *_attachment;
+    struct CGRect _caretRectBeforeInsertion;
 }
 
 @property (strong, nonatomic) _UITextPlaceholderAttachment *attachment; // @synthesize attachment=_attachment;
+@property (nonatomic) struct CGRect caretRectBeforeInsertion; // @synthesize caretRectBeforeInsertion=_caretRectBeforeInsertion;
 @property (copy, nonatomic) NSArray *rects; // @synthesize rects=_rects;
 
 - (void).cxx_destruct;

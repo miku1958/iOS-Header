@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) OBPrivacyPresenter *privacyPresenter; // @synthesize privacyPresenter=_privacyPresenter;
 @property (nonatomic) long long sheetType; // @synthesize sheetType=_sheetType;
 
+- (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
-- (void)dealloc;
 - (void)dismiss;
 - (id)initWithType:(long long)arg1;
 

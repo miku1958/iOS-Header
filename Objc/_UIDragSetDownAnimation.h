@@ -28,6 +28,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIWindow *window;
 
++ (BOOL)canAnimateItems:(id)arg1 forSource:(BOOL)arg2 policyDriven:(BOOL)arg3;
 + (CDUnknownBlockType)defaultDropAnimationForPlatterView:(id)arg1;
 + (CDUnknownBlockType)defaultMultiItemAnimationForPlatterView:(id)arg1;
 + (id)defaultSetDownPropertyAnimator;
@@ -35,7 +36,7 @@
 - (void).cxx_destruct;
 - (void)_allItemAnimationsCompleted;
 - (void)begin;
-- (id)initWithVisibleDroppedItems:(id)arg1 items:(id)arg2 forSource:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)initWithVisibleDroppedItems:(id)arg1 items:(id)arg2 forSource:(BOOL)arg3 policyDriven:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)itemAnimationCompleted:(id)arg1;
 - (void)itemAnimationReachedTarget:(id)arg1;
 - (void)updateInFlightAnimationTick:(id)arg1;

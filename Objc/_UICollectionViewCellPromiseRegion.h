@@ -9,13 +9,14 @@
 #import <UIKitCore/_UIFocusRegionContainer-Protocol.h>
 #import <UIKitCore/_UILegacyFocusRegion-Protocol.h>
 
-@class NSArray, NSString, UICollectionView, UICollectionViewLayoutAttributes, UIView;
+@class NSArray, NSString, UICollectionView, UICollectionViewLayoutAttributes, UIScrollView, UIView;
 @protocol UIFocusEnvironment, UIFocusItemContainer;
 
 __attribute__((visibility("hidden")))
 @interface _UICollectionViewCellPromiseRegion : NSObject <_UILegacyFocusRegion, _UIFocusRegionContainer>
 {
     UICollectionView *_collectionView;
+    UIScrollView *_parentScrollView;
     UICollectionViewLayoutAttributes *_layoutAttributes;
 }
 
@@ -24,11 +25,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=_isEligibleForFocusInteraction) BOOL eligibleForFocusInteraction;
+@property (readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UICollectionViewLayoutAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
 @property (readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
 @property (readonly, weak, nonatomic) id<UIFocusEnvironment> parentFocusEnvironment;
+@property (weak, nonatomic) UIScrollView *parentScrollView; // @synthesize parentScrollView=_parentScrollView;
 @property (readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
 @property (readonly, nonatomic, getter=_preferredFocusMovementStyle) long long preferredFocusMovementStyle;
 @property (readonly, weak, nonatomic) UIView *preferredFocusedView;

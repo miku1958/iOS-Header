@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) CUINamedVectorGlyph *vectorGlyph;
 @property (readonly, nonatomic) double vectorScale;
 
-+ (BOOL)content:(id)arg1 isEqualToContent:(id)arg2;
 + (id)empty;
 - (struct CGSize)CGPDFPageSize;
 - (struct CGSize)CGSVGDocumentSize;
@@ -37,7 +36,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_drawInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2 effect:(id)arg3;
 - (void)_drawWithoutEffectInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
 - (void)_prepareforDrawingInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
-- (struct CGAffineTransform)_transformForCGContextWithSize:(struct CGSize)arg1 scale:(double)arg2;
 - (BOOL)canProvideCGImage;
 - (BOOL)canProvideFullResCGImage;
 - (id)contentWithCGImage:(struct CGImage *)arg1;

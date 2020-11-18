@@ -6,17 +6,19 @@
 
 #import <BaseBoard/BSAction.h>
 
-@class NSURL;
+@class BSProcessHandle, NSURL;
 
 @interface UIOpenURLAction : BSAction
 {
 }
 
 @property (readonly, copy, nonatomic) NSURL *url;
+@property (readonly, nonatomic) BSProcessHandle *workspaceOriginatingProcess;
 
 - (long long)UIActionType;
 - (id)initWithInfo:(id)arg1 timeout:(double)arg2 forResponseOnQueue:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (id)initWithURL:(id)arg1;
+- (id)initWithURL:(id)arg1 workspaceOriginatingProcess:(id)arg2;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 
 @end

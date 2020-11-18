@@ -11,11 +11,12 @@
 #import <UIKitCore/_UIImageContentEffect-Protocol.h>
 #import <UIKitCore/_UIImageContentLayoutTarget-Protocol.h>
 
-@class NSArray, NSString, UIColor, UIImage, UIImageSymbolConfiguration, UILayoutGuide, UITraitCollection, _UIStackedImageContainerView;
+@class NSArray, NSString, UIColor, UIImage, UIImageSymbolConfiguration, UILayoutGuide, UITraitCollection, _UIImageContentLayout, _UIImageLoader, _UIStackedImageContainerView;
 
 @interface UIImageView : UIView <UIAccessibilityContentSizeCategoryImageAdjusting, UIAccessibilityContentSizeCategoryImageAdjustingInternal, _UIImageContentLayoutTarget, _UIImageContentEffect>
 {
     id _storage;
+    _UIImageContentLayout *_pendingImageContentLayout;
     struct UIEdgeInsets _cachedEdgeInsetsForEffects;
     UITraitCollection *_lastResolvedTraitCollection;
     long long _lastResolvedLayoutDirectionTrait;
@@ -27,6 +28,7 @@
         unsigned int suppressPixelAlignment:1;
         unsigned int previousPixelAlignment:1;
         unsigned int previousEdgeAntialiasing:1;
+        unsigned int actionForLayerForKeyOverridden:1;
     } _imageViewFlags;
     BOOL _templateSettingsAreInvalid;
     BOOL _edgeInsetsForEffectsAreValid;
@@ -42,11 +44,13 @@
 @property (readonly, nonatomic) struct UIEdgeInsets _edgeInsetsForEffects;
 @property (nonatomic, setter=_setEdgeInsetsForEffectsAreValid:) BOOL _edgeInsetsForEffectsAreValid; // @synthesize _edgeInsetsForEffectsAreValid;
 @property (readonly, nonatomic) BOOL _hasContentGravity;
+@property (readonly, nonatomic) _UIImageLoader *_imageLoader;
 @property (readonly, nonatomic) _UIStackedImageContainerView *_layeredImageContainer;
 @property (nonatomic, setter=_setLayeredImageCornerRadius:) double _layeredImageCornerRadius;
 @property (readonly, nonatomic) BOOL _layoutShouldFlipHorizontalOrientations;
 @property (nonatomic, setter=_setMasksTemplateImages:) BOOL _masksTemplateImages;
 @property (strong, nonatomic, setter=_setOverridingSymbolConfiguration:) UIImageSymbolConfiguration *_overridingSymbolConfiguration;
+@property (strong, nonatomic, setter=_setPlaceholderView:) UIView *_placeholderView;
 @property (nonatomic, setter=_setSuppressPixelAlignment:) BOOL _suppressPixelAlignment;
 @property (nonatomic, setter=_setSymbolImagesIgnoreAccessibilitySizes:) BOOL _symbolImagesIgnoreAccessibilitySizes; // @synthesize _symbolImagesIgnoreAccessibilitySizes=__symbolImagesIgnoreAccessibilitySizes;
 @property (nonatomic, setter=_setTemplateImageRenderingEffects:) unsigned long long _templateImageRenderingEffects;
@@ -87,6 +91,7 @@
 @property (strong, nonatomic) UIColor *tintColor; // @dynamic tintColor;
 @property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled; // @dynamic userInteractionEnabled;
 
++ (id)_sharedDecodingQueue;
 - (void).cxx_destruct;
 - (id)_activeImage;
 - (id)_adaptiveImageForImage:(id)arg1 assignedImage:(id)arg2 currentImage:(id)arg3 hasAdapted:(BOOL *)arg4;
@@ -106,6 +111,7 @@
 - (id)_currentAnimationKeyframeImage;
 - (id)_currentHighlightedImage;
 - (id)_currentImage;
+- (void)_decodeQ_imageLoader:(id)arg1 decodeImage:(id)arg2 layout:(id)arg3;
 - (id)_decompressingImageForType:(unsigned long long)arg1;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (BOOL)_displayImageAsLayered:(id)arg1;
@@ -124,13 +130,19 @@
 - (void)_invalidateImageLayouts;
 - (void)_invalidateTemplateSettings;
 - (BOOL)_isHasBaselinePropertyChangeable;
+- (void)_kickoffQ_beginLoadingWithImageLoader:(id)arg1;
 - (id)_layoutForImage:(id)arg1 inSize:(struct CGSize)arg2;
 - (id)_layoutForImage:(id)arg1 inSize:(struct CGSize)arg2 cachePerSize:(BOOL)arg3 forBaselineOffset:(BOOL)arg4;
+- (void)_loadImage:(id)arg1 delegate:(id)arg2;
+- (void)_loadImageWithURL:(id)arg1;
+- (void)_mainQ_beginLoadingIfApplicable;
+- (void)_mainQ_imageLoader:(id)arg1 finishedOrSkippedDecodingImage:(id)arg2 layout:(id)arg3;
+- (void)_mainQ_imageLoader:(id)arg1 finishedWithImage:(id)arg2 error:(id)arg3;
+- (void)_mainQ_resetForLoader:(id)arg1 delegate:(id)arg2;
 - (BOOL)_needsImageEffectsForImage:(id)arg1;
 - (BOOL)_needsImageEffectsForImage:(id)arg1 suppressColorizing:(BOOL)arg2;
 - (BOOL)_recomputePretilingState;
 - (id)_renditionForSource:(id)arg1 size:(struct CGSize)arg2 withCGImageProvider:(CDUnknownBlockType)arg3 lazy:(BOOL)arg4;
-- (BOOL)_resolveImageForTrait:(id)arg1;
 - (BOOL)_resolveImageForTrait:(id)arg1 previouslyDisplayedImage:(id)arg2;
 - (id)_resolvedImageFromImage:(id)arg1;
 - (id)_resolvedImageFromImage:(id)arg1 forTrait:(id)arg2;
@@ -144,6 +156,7 @@
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (BOOL)_shouldInvalidateBaselineConstraintsForSize:(struct CGSize)arg1 oldSize:(struct CGSize)arg2;
 - (BOOL)_shouldTreatImageAsTemplate:(id)arg1;
+- (void)_stopLoading;
 - (id)_symbolConfigurationForImage:(id)arg1;
 - (void)_teardownLayeredImage;
 - (void)_templateSettingsDidChange;
@@ -152,12 +165,15 @@
 - (void)_updateLayeredImageIsFocusedWithFocusedView:(id)arg1 focusAnimationCoordinator:(id)arg2;
 - (void)_updateMasking;
 - (void)_updatePretiledImageCacheForImage:(id)arg1;
+- (void)_updateResolvedImage;
 - (void)_updateState;
 - (void)_updateTemplateProperties;
+- (void)_updateVisibilityAndFrameOfPlaceholderView;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (void)dealloc;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (unsigned long long)defaultAccessibilityTraits;
+- (void)displayLayer:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)encodeRestorableStateWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -180,6 +196,7 @@
 - (void)setContentMode:(long long)arg1;
 - (void)setContentScaleFactor:(double)arg1;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)setHidden:(BOOL)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (void)setTranslatesAutoresizingMaskIntoConstraints:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

@@ -14,11 +14,13 @@
 {
     NSMutableDictionary *_propertiesAsDictionary;
     unsigned long long _style;
+    NSDictionary *_managedConfigurationSettings;
 }
 
 @property (nonatomic) BOOL allowsAutoLock;
 @property (nonatomic) BOOL allowsLockButton;
 @property (nonatomic) BOOL automaticallyRelaunchesAfterAppCrash;
+@property (strong, nonatomic) NSDictionary *managedConfigurationSettings; // @synthesize managedConfigurationSettings=_managedConfigurationSettings;
 @property (readonly, nonatomic) NSDictionary *propertiesAsDictionary;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 

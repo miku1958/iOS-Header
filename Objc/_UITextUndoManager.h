@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) UITextInputController *inputController; // @synthesize inputController=_inputController;
 
 - (void).cxx_destruct;
+- (BOOL)canRedo;
+- (BOOL)canUndo;
 - (void)removeAllActions;
 
 @end

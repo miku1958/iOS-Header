@@ -29,8 +29,8 @@
 + (id)writableTypeIdentifiersForItemProvider;
 - (id)_loadFileRepresentationOfTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;
 - (long long)_preferredRepresentationForItemProviderWritableTypeIdentifier:(id)arg1;
+- (id)_ui_attributedStringAdjustedToTraitCollection:(id)arg1;
 - (id)_ui_attributedStringWithOriginalFontAttributes;
-- (id)_ui_fontsInRange:(struct _NSRange)arg1 usingDefaultFont:(id)arg2;
 - (id)_ui_glyphImageViewsScale:(double)arg1 outImageRect:(struct CGRect *)arg2 outLineRect:(struct CGRect *)arg3 outBaselineOffset:(double *)arg4;
 - (long long)_ui_resolvedTextAlignment;
 - (long long)_ui_resolvedTextAlignmentForUserInterfaceLayoutDirection:(long long)arg1;
@@ -38,7 +38,6 @@
 - (long long)_ui_resolvedWritingDirectionForUserInterfaceLayoutDirection:(long long)arg1;
 - (id)_ui_rtfDataError:(id *)arg1;
 - (id)_ui_rtfdFileWrapperError:(id *)arg1;
-- (id)_ui_synthesizeAttributedSubstringFromRange:(struct _NSRange)arg1 usingDefaultAttributes:(id)arg2;
 - (id)initWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
 - (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;
 @end

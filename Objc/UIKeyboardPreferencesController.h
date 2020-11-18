@@ -15,6 +15,7 @@
 @property BOOL enableProKeyboard;
 @property long long handBias;
 @property (readonly, nonatomic) UIKeyboardPreferencesController<TIPreferencesControllerActions> *preferencesActions;
+@property long long visceral;
 
 + (id)sharedPreferencesController;
 + (id)valueForPreferenceKey:(id)arg1 domain:(id)arg2;
@@ -23,6 +24,7 @@
 - (BOOL)boolForKey:(int)arg1;
 - (BOOL)boolForPreferenceKey:(id)arg1;
 - (void)dealloc;
+- (BOOL)defaultGlobeAsEmojiKeySetting;
 - (void)forwardInvocation:(id)arg1;
 - (id)init;
 - (BOOL)isFirstReachableKeyboardInteraction;
@@ -42,6 +44,7 @@
 - (BOOL)spaceConfirmationEnabled;
 - (void)synchronizePreferences;
 - (void)touchSynchronizePreferencesTimer;
+- (BOOL)useHardwareGlobeKeyAsEmojiKey;
 - (id)valueForKey:(int)arg1;
 - (id)valueForPreferenceKey:(id)arg1;
 

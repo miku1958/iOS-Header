@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSIndexPath *dragFromIndexPath;
 @property (readonly, nonatomic) NSArray *dragFromIndexPaths;
 @property (weak, nonatomic) UIDragInteraction *dragInteraction; // @synthesize dragInteraction=_dragInteraction;
+@property (readonly, nonatomic) BOOL dragItemsCreatedForReordering;
 @property (readonly, nonatomic) id<UIDragSession> dragSession;
 @property (strong, nonatomic) _UICollectionViewDragSourceControllerDragState *dragState; // @synthesize dragState=_dragState;
 @property (readonly) unsigned long long hash;
@@ -56,11 +57,11 @@ __attribute__((visibility("hidden")))
 - (id)_dragSourceDelegateActual;
 - (id)_dragSourceDelegateProxy;
 - (id)_filterCandidateIndexPaths:(id)arg1 forUserSelectedIndexPath:(id)arg2 session:(id)arg3;
-- (BOOL)_isCompatibilityMode;
 - (id)_previewParametersForItemAtIndexPath:(id)arg1;
 - (id)_queryForItemsFromClientForSession:(id)arg1 dataSourceIndexPath:(id)arg2 location:(struct CGPoint)arg3 isInitialQuery:(BOOL)arg4;
 - (void)_sessionWillBegin:(id)arg1 forDragInteraction:(id)arg2;
 - (void)applyingRebasingUpdatesWithUpdateMap:(id)arg1;
+- (void)deactivate;
 - (void)dealloc;
 - (void)dragInteraction:(id)arg1 item:(id)arg2 willAnimateCancelWithAnimator:(id)arg3;
 - (id)dragInteraction:(id)arg1 itemsForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;

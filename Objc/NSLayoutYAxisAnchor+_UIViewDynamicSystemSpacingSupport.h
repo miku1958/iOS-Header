@@ -4,15 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSLayoutYAxisAnchor.h>
+#import <CoreAutoLayout/NSLayoutYAxisAnchor.h>
 
 @interface NSLayoutYAxisAnchor (_UIViewDynamicSystemSpacingSupport)
-- (id)_constraintBelowAnchor:(id)arg1 relation:(long long)arg2 multiplier:(double)arg3;
 - (id)constraintEqualToSystemSpacingBelowAnchor:(id)arg1;
-- (id)constraintEqualToSystemSpacingBelowAnchor:(id)arg1 multiplier:(double)arg2;
 - (id)constraintGreaterThanOrEqualToSystemSpacingBelowAnchor:(id)arg1;
-- (id)constraintGreaterThanOrEqualToSystemSpacingBelowAnchor:(id)arg1 multiplier:(double)arg2;
 - (id)constraintLessThanOrEqualToSystemSpacingBelowAnchor:(id)arg1;
-- (id)constraintLessThanOrEqualToSystemSpacingBelowAnchor:(id)arg1 multiplier:(double)arg2;
 @end
 

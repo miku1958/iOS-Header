@@ -6,10 +6,12 @@
 
 #import <UIKitCore/UIDictationView.h>
 
+#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
+
 @class NSString, UIButton, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface UIDictationLayoutView : UIDictationView
+@interface UIDictationLayoutView : UIDictationView <UIPointerInteractionDelegate>
 {
     BOOL _hideSwitcher;
     UIButton *_globeButton;
@@ -20,6 +22,11 @@ __attribute__((visibility("hidden")))
     BOOL _blackTextColor;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 - (id)darkGrayColor;
 - (void)dealloc;
 - (void)finishReturnToKeyboard;
@@ -29,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isShowing;
 - (void)keyboardButtonPressed:(id)arg1;
 - (void)layoutSubviews;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)returnToKeyboard;
 - (void)setRenderConfig:(id)arg1;
 - (void)setState:(int)arg1;

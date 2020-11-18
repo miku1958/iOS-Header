@@ -30,7 +30,9 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_addCoalescedTouch:(id)arg1 forIndex:(long long)arg2 hidEvent:(struct __IOHIDEvent *)arg3;
+- (void)_addGestureRecognizersForTouchContinuationInView:(id)arg1 toTouch:(id)arg2;
 - (void)_addGestureRecognizersForView:(id)arg1 toTouch:(id)arg2;
+- (void)_addGestureRecognizersForView:(id)arg1 toTouch:(id)arg2 forContinuation:(BOOL)arg3;
 - (void)_addTouch:(id)arg1 forDelayedDelivery:(BOOL)arg2;
 - (void)_addWindowAwaitingLatentSystemGestureNotification:(id)arg1 deliveredToEventWindow:(id)arg2;
 - (id)_allTouches;
@@ -48,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (id)_init;
 - (id)_initWithEvent:(struct __GSEvent *)arg1 touches:(id)arg2;
 - (double)_initialTouchTimestampForWindow:(id)arg1;
+- (unsigned long long)_inputPrecision;
 - (void)_invalidateGestureRecognizerForWindowCache;
 - (id)_lastPendingCoalescedTouchForIndex:(long long)arg1 hidEvent:(struct __IOHIDEvent *)arg2;
 - (void)_moveCoalescedTouchesFromHidEvent:(struct __IOHIDEvent *)arg1 toHidEvent:(struct __IOHIDEvent *)arg2;

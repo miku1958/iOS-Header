@@ -28,6 +28,8 @@ __attribute__((visibility("hidden")))
     BOOL _preferLandscapeOrientations;
     BOOL _updatesEnabled;
     NSMutableArray *_candidates;
+    BOOL _isRTL;
+    long long _preferredHorizontalAlignment;
 }
 
 @property (readonly, nonatomic) unsigned long long arrowDirection; // @synthesize arrowDirection=_arrowDirection;
@@ -38,10 +40,12 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct UIEdgeInsets containingFrameInsets; // @synthesize containingFrameInsets=_containingFrameInsets;
 @property (nonatomic) struct UIEdgeInsets contentInset; // @synthesize contentInset=_contentInset;
 @property (readonly, nonatomic) struct CGRect frame; // @synthesize frame=_frame;
+@property (nonatomic) BOOL isRTL; // @synthesize isRTL=_isRTL;
 @property (readonly, nonatomic) double offset; // @synthesize offset=_offset;
 @property (nonatomic) BOOL preferLandscapeOrientations; // @synthesize preferLandscapeOrientations=_preferLandscapeOrientations;
 @property (nonatomic) unsigned long long preferredArrowDirections; // @synthesize preferredArrowDirections=_preferredArrowDirections;
 @property (nonatomic) struct CGSize preferredContentSize; // @synthesize preferredContentSize=_preferredContentSize;
+@property (nonatomic) long long preferredHorizontalAlignment; // @synthesize preferredHorizontalAlignment=_preferredHorizontalAlignment;
 @property (nonatomic) struct CGRect sourceViewRect; // @synthesize sourceViewRect=_sourceViewRect;
 @property (nonatomic, getter=_updatesEnabled, setter=_setUpdatesEnabled:) BOOL updatesEnabled; // @synthesize updatesEnabled=_updatesEnabled;
 

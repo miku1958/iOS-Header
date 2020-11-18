@@ -16,6 +16,7 @@
 @property (nonatomic) BOOL acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
+@property (nonatomic) BOOL acceptsInitialEmojiKeyboard;
 @property (nonatomic) BOOL acceptsPayloads;
 @property (nonatomic) BOOL acceptsSplitKeyboard;
 @property (copy, nonatomic) NSString *autocorrectionContext;
@@ -43,6 +44,7 @@
 @property (nonatomic) BOOL isSingleLineDocument;
 @property (nonatomic) BOOL learnsCorrections;
 @property (nonatomic) BOOL loadKeyboardsForSiriLanguage;
+@property (nonatomic) BOOL preferOnlineDictation;
 @property (copy, nonatomic) NSString *recentInputIdentifier;
 @property (copy, nonatomic) NSString *responseContext;
 @property (nonatomic) BOOL returnKeyGoesToNextResponder;

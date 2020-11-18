@@ -11,9 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)_contextualMenuGestureRecognizerChanged:(id)arg1;
-- (void)finishSetup;
-- (id)init;
++ (id)alloc;
++ (void)setShouldUseContextMenuInteraction:(BOOL)arg1;
++ (BOOL)shouldUseContextMenuInteraction;
 
 @end
 

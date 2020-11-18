@@ -10,6 +10,8 @@
 
 @protocol TUICandidateViewStyle <NSObject>
 
+@property (readonly, nonatomic) BOOL allowCandidateGridExpanding;
+@property (readonly, nonatomic) long long alternativeTextAlignment;
 @property (readonly, nonatomic) UIColor *alternativeTextColor;
 @property (readonly, nonatomic) UIFont *alternativeTextFont;
 @property (readonly, nonatomic) UIFont *annotationTextFont;
@@ -60,6 +62,7 @@
 @property (readonly, nonatomic) UIImage *rightEdgeSeparatorImage;
 @property (readonly, nonatomic) double rowHeight;
 @property (readonly, nonatomic) BOOL scrollDisabled;
+@property (readonly, nonatomic) BOOL showExtraLineBeforeFirstRow;
 @property (readonly, nonatomic) BOOL showOneMoreCandidate;
 @property (readonly, nonatomic) BOOL showsIndex;
 @property (readonly, nonatomic) double singleSlottedCellMargin;

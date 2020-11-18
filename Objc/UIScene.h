@@ -8,7 +8,7 @@
 
 #import <UIKitCore/FBSSceneDelegate-Protocol.h>
 
-@class BKSAnimationFenceHandle, FBSScene, FBSSceneSettings, NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSPointerArray, NSString, UIApplicationSceneClientSettings, UIApplicationSceneSettings, UISceneActivationConditions, UISceneSession, _UISceneLifecycleMonitor;
+@class BKSAnimationFenceHandle, FBSScene, FBSSceneSettings, NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSPointerArray, NSString, UIApplicationSceneClientSettings, UIApplicationSceneSettings, UIPointerLockState, UISceneActivationConditions, UISceneSession, _UIFocusSystemSceneComponent, _UISceneLifecycleMonitor;
 @protocol UISceneDelegate;
 
 @interface UIScene : UIResponder <FBSSceneDelegate>
@@ -33,7 +33,8 @@
     NSMutableDictionary *_postSettingsUpdateResponseBlocks;
     UIScene *_settingsScene;
     NSPointerArray *_inheritingScenes;
-    NSString *_identifier;
+    NSString *_sceneIdentifier;
+    NSString *_persistenceIdentifier;
     FBSSceneSettings *_oldSettings;
     struct {
         unsigned int delegateIsResponder:1;
@@ -45,6 +46,7 @@
         unsigned int delegateSupportsDidEnterBackground:1;
         unsigned int isUIKitManaged:1;
         unsigned int isInternal:1;
+        unsigned int affectsAppLifecycleIfInternal:1;
         unsigned int hostsWindows:1;
         unsigned int hasInvalidated:1;
         unsigned int allowOverrideSettings:1;
@@ -59,12 +61,14 @@
 @property (readonly, nonatomic, getter=_FBSScene) FBSScene *_FBSScene;
 @property (strong, nonatomic, setter=_setActivationConditions:) UISceneActivationConditions *_activationConditions;
 @property (readonly, nonatomic, getter=_isActive) BOOL _active;
+@property (readonly, nonatomic) BOOL _affectsAppLifecycleIfInternal;
 @property (readonly, nonatomic) NSArray *_allWindows;
 @property (strong, nonatomic, getter=_cachedInterfaceOrientation, setter=_setCachedInterfaceOrientation:) NSNumber *_cachedInterfaceOrientation; // @synthesize _cachedInterfaceOrientation=__cachedInterfaceOrientation;
 @property (readonly, nonatomic) FBSSceneSettings *_effectiveSettings;
 @property (readonly, nonatomic) UIApplicationSceneClientSettings *_effectiveUIClientSettings;
 @property (readonly, nonatomic) UIApplicationSceneSettings *_effectiveUISettings;
 @property (readonly, nonatomic) BOOL _eligableForSuspend;
+@property (readonly, nonatomic) _UIFocusSystemSceneComponent *_focusSystemSceneComponent;
 @property (readonly, nonatomic) BOOL _hasInvaidated;
 @property (readonly, nonatomic) BOOL _hasLifecycle;
 @property (readonly, nonatomic) BOOL _hostsWindows;
@@ -75,11 +79,13 @@
 @property (readonly, nonatomic, getter=_isUIKitManaged) BOOL _isUIKitManaged;
 @property (readonly, nonatomic) _UISceneLifecycleMonitor *_lifecycleMonitor;
 @property (readonly, nonatomic) FBSSceneSettings *_oldSettings; // @synthesize _oldSettings;
+@property (readonly, nonatomic) NSString *_persistenceIdentifier;
 @property (readonly, nonatomic) BOOL _readyForSuspend;
 @property (nonatomic, setter=_setIsRespondingToLifecycleEvent:) BOOL _respondingToLifecycleEvent; // @synthesize _respondingToLifecycleEvent;
 @property (readonly, nonatomic, getter=_runningInTaskSwitcher) BOOL _runningInTaskSwitcher;
 @property (readonly, nonatomic) NSArray *_sceneBSActionHandlers;
 @property (readonly, nonatomic) NSArray *_sceneComponents;
+@property (readonly, nonatomic) NSString *_sceneIdentifier;
 @property (readonly, nonatomic) NSArray *_settingsDiffActions;
 @property (weak, nonatomic, setter=_setSettingsScene:) UIScene *_settingsScene;
 @property (readonly, nonatomic, getter=_suspendedEventsOnly) BOOL _suspendedEventsOnly;
@@ -95,25 +101,28 @@
 @property (strong, nonatomic) id<UISceneDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) UIPointerLockState *pointerLockState;
 @property (readonly, nonatomic) UISceneSession *session;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title;
 
 + (long long)_activationStateFromSceneSettings:(id)arg1;
-+ (BOOL)_activeSettingsTransaction;
 + (id)_connectionOptionsForScene:(id)arg1 withSpecification:(id)arg2 transitionContext:(id)arg3 actions:(id)arg4 sceneSession:(id)arg5;
-+ (void)_enqueuePostSettingUpdateTransactionBlock:(CDUnknownBlockType)arg1;
 + (void)_enumerateAllWindowsIncludingInternalWindows:(BOOL)arg1 onlyVisibleWindows:(BOOL)arg2 asCopy:(BOOL)arg3 withBlock:(CDUnknownBlockType)arg4;
 + (BOOL)_hostsWindows;
 + (Class)_implicitSceneFilterClass;
 + (id)_mostActiveScene;
 + (id)_persistenceIdentifierForScene:(id)arg1;
++ (void)_registerInternalSceneIdentifier:(id)arg1 withInitializationBlock:(CDUnknownBlockType)arg2;
 + (void)_registerSceneComponentClass:(Class)arg1 withKey:(id)arg2 predicate:(id)arg3;
 + (id)_sceneForFBSScene:(id)arg1;
 + (id)_sceneForFBSScene:(id)arg1 create:(BOOL)arg2 withSession:(id)arg3 connectionOptions:(id)arg4;
 + (id)_sceneForFBSScene:(id)arg1 usingPredicate:(id)arg2;
 + (id)_scenesIncludingInternal:(BOOL)arg1;
-+ (void)_setActiveSettingsTransaction:(BOOL)arg1;
++ (id)_scenesIncludingInternalForPK:(BOOL)arg1;
++ (void)_synchronizeDrawing;
++ (id)_synchronizeDrawingAndReturnFence;
++ (void)_synchronizeDrawingUsingFence:(id)arg1;
 + (void)_synchronizeDrawingWithFence:(id)arg1;
 + (id)_synchronizedDrawingFence;
 + (void *)_unsafeScenesIncludingInternal;
@@ -125,6 +134,7 @@
 - (struct CGRect)_boundsForInterfaceOrientation:(long long)arg1;
 - (void)_calculateFlattenedActionsHandlers;
 - (void)_calculateFlattenedDiffActions;
+- (id)_carPlaySceneComponent;
 - (void)_compatibilityModeZoomDidChange;
 - (void)_computeMetrics:(BOOL)arg1;
 - (void)_computeMetricsForWindows:(id)arg1 animated:(BOOL)arg2;
@@ -142,6 +152,7 @@
 - (void)_invalidate;
 - (void)_makeKeyAndVisibleIfNeeded;
 - (BOOL)_needsMakeKeyAndVisible;
+- (void)_noteDisplayIdentityDidChangeWithConfiguration:(id)arg1;
 - (void)_openURL:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_performSystemSnapshotWithActions:(CDUnknownBlockType)arg1;
 - (void)_prepareForResume;
@@ -157,6 +168,9 @@
 - (id)_sceneComponentForKey:(id)arg1;
 - (id)_shortDescription;
 - (BOOL)_shouldAllowFencing;
+- (void)_synchronizeDrawing;
+- (id)_synchronizeDrawingAndReturnFence;
+- (void)_synchronizeDrawingUsingFence:(id)arg1;
 - (void)_synchronizeDrawingWithFence:(id)arg1;
 - (id)_topVisibleWindowPassingTest:(CDUnknownBlockType)arg1;
 - (void)_unregisterSceneActionsHandlerArray:(id)arg1;

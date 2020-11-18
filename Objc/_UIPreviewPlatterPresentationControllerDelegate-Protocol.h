@@ -6,14 +6,18 @@
 
 #import <UIKitCore/UIAdaptivePresentationControllerDelegate-Protocol.h>
 
-@class NSArray, UITouch, UIView, _UIPreviewPlatterPresentationController;
+@class NSArray, UIMenu, UITouch, UIView, _UIPreviewPlatterPresentationController;
+@protocol _UIMenuLeaf;
 
 @protocol _UIPreviewPlatterPresentationControllerDelegate <UIAdaptivePresentationControllerDelegate>
 - (NSArray *)_accessoryViewsForPreviewPlatterPresentationController:(_UIPreviewPlatterPresentationController *)arg1;
 - (void)_previewPlatterPresentationController:(_UIPreviewPlatterPresentationController *)arg1 beginDragWithTouch:(UITouch *)arg2;
+- (void)_previewPlatterPresentationController:(_UIPreviewPlatterPresentationController *)arg1 didSelectMenuLeaf:(id<_UIMenuLeaf>)arg2;
+- (UIMenu *)_previewPlatterPresentationController:(_UIPreviewPlatterPresentationController *)arg1 willDisplayMenu:(UIMenu *)arg2;
 - (void)_previewPlatterPresentationControllerDidBeginPanInteraction:(_UIPreviewPlatterPresentationController *)arg1;
 - (void)_previewPlatterPresentationControllerDidEndPanInteraction:(_UIPreviewPlatterPresentationController *)arg1;
 - (void)_previewPlatterPresentationControllerDidTapPreview:(_UIPreviewPlatterPresentationController *)arg1;
+- (BOOL)_previewPlatterPresentationControllerShouldHandlePreviewAction:(_UIPreviewPlatterPresentationController *)arg1;
 - (void)_previewPlatterPresentationControllerWantsToBeDismissed:(_UIPreviewPlatterPresentationController *)arg1 withReason:(unsigned long long)arg2 alongsideActions:(void (^)(void))arg3 completion:(void (^)(void))arg4;
 - (UIView *)actualPlatterContainerViewForPresentationController:(_UIPreviewPlatterPresentationController *)arg1;
 @end

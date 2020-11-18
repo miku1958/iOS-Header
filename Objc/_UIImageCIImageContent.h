@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)CIImage;
-- (id)_context;
 - (void)_drawWithoutEffectInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
 - (void)_prepareforDrawingInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
 - (BOOL)canProvideFullResCGImage;

@@ -82,7 +82,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (long long)dropLocationForPoint:(struct CGPoint)arg1 atIndexPath:(id)arg2 withInsets:(struct UIEdgeInsets)arg3;
 - (void)ensureAllSectionsAreValid;
-- (BOOL)ensureHeightsFaultedInForScrollToIndexPath:(id)arg1 withScrollPosition:(long long)arg2 boundsHeight:(double)arg3;
+- (BOOL)ensureHeightsFaultedInForScrollToIndexPath:(id)arg1 boundsHeight:(double)arg2;
 - (struct CGRect)floatingRectForFooterInSection:(long long)arg1 visibleRect:(struct CGRect)arg2 heightCanBeGuessed:(BOOL)arg3;
 - (struct CGRect)floatingRectForHeaderInSection:(long long)arg1 visibleRect:(struct CGRect)arg2 heightCanBeGuessed:(BOOL)arg3;
 - (long long)footerAlignmentForSection:(long long)arg1;

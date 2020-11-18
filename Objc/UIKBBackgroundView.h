@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     UIKBRenderConfig *_renderConfig;
 }
 
+@property (readonly, nonatomic) long long assetIdiom;
 @property (readonly, nonatomic) long long cacheDeferPriority;
 @property (readonly, nonatomic) BOOL cacheDeferable;
 @property (readonly, nonatomic) NSString *cacheKey;

@@ -17,13 +17,9 @@ __attribute__((visibility("hidden")))
     UIColor *_tintColor;
 }
 
-@property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
-
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
-- (id)initWithType:(id)arg1 tintColor:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

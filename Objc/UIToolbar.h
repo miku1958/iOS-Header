@@ -12,11 +12,11 @@
 #import <UIKitCore/_UIBarPositioningInternal-Protocol.h>
 
 @class NSArray, NSString, UIAccessibilityHUDGestureManager, UIBarButtonItem, UIColor, UIToolbarAppearance, _UIToolbarVisualProvider;
-@protocol UIToolbarDelegate;
+@protocol UIToolbarDelegate, _UIToolbarDelegateInternal;
 
 @interface UIToolbar : UIView <UIAccessibilityHUDGestureDelegate, _UIBarPositioningInternal, UIGestureRecognizerDelegatePrivate, UIBarPositioning>
 {
-    id<UIToolbarDelegate> _delegate;
+    id<_UIToolbarDelegateInternal> _delegate;
     NSArray *_items;
     UIColor *_barTintColor;
     struct {
@@ -25,6 +25,7 @@
         unsigned int isLocked:1;
         unsigned int linkedBeforeWhitetailAndInitializedFromCoder:1;
         unsigned int disableBlurTinting:1;
+        unsigned int delegateRespondsToInterfaceOrientationWindowSelector:1;
     } _toolbarFlags;
     id __appearanceStorage;
     _UIToolbarVisualProvider *_visualProvider;
@@ -90,12 +91,14 @@
 - (void)_doCommonToolbarInit;
 - (id)_effectiveBarTintColor;
 - (void)_effectiveBarTintColorDidChangeWithPreviousColor:(id)arg1;
+- (long long)_expectedInterfaceOrientation;
 - (struct CGRect)_frameOfBarButtonItem:(id)arg1;
 - (void)_frameOrBoundsChangedWithVisibleSizeChange:(BOOL)arg1 wasMinibar:(BOOL)arg2;
 - (BOOL)_hasCustomAutolayoutNeighborSpacingForAttribute:(long long *)arg1;
 - (BOOL)_hostsLayoutEngineAllowsTAMIC_NO;
 - (void)_installDefaultAppearance;
 - (id)_itemAtPoint:(struct CGPoint)arg1;
+- (void)_largeContentViewerEnabledStatusDidChange:(id)arg1;
 - (BOOL)_linkedBeforeWhitetailAndInitializedFromCoder;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (void)_positionToolbarButtonsAndResetFontScaleAdjustment:(BOOL)arg1;

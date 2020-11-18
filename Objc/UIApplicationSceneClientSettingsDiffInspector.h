@@ -30,6 +30,7 @@
 - (void)observeInterfaceOrientationChangesDisabledWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeInterfaceOrientationWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeNotificationCenterRevealModeWithBlock:(CDUnknownBlockType)arg1;
+- (void)observePreferredPointerLockStateWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeProximityDetectionModesWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeReachabilitySupportedWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeSceneActivationBiasWithBlock:(CDUnknownBlockType)arg1;
@@ -45,6 +46,7 @@
 - (void)observeVisibleMiniAlertCountWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeWantsExclusiveForegroundWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeWhitePointAdaptivityStyleWithBlock:(CDUnknownBlockType)arg1;
+- (void)observeWindowFocusedFrameWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeWindowOverlayInsetsWithBlock:(CDUnknownBlockType)arg1;
 
 @end

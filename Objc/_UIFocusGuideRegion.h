@@ -10,12 +10,15 @@
 
 @interface _UIFocusGuideRegion : _UIFocusRegion
 {
+    BOOL __isFocusGuideUnoccludable;
     id<_UIFocusGuideRegionDelegate> _delegate;
 }
 
+@property (nonatomic, setter=_setIsFocusGuideUnoccludable:) BOOL _isFocusGuideUnoccludable; // @synthesize _isFocusGuideUnoccludable=__isFocusGuideUnoccludable;
 @property (weak, nonatomic) id<_UIFocusGuideRegionDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
+- (BOOL)_canBeOccludedByRegionsAbove;
 - (BOOL)_canOccludeRegionsBelow;
 - (id)_debugAssociatedObject;
 - (id)_delegatePreferredFocusEnvironmentsForMovementRequest:(id)arg1;

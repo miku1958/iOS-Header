@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     NSString *_markedText;
     long long _inputModeListTouchPhase;
     double _inputModeListTouchBegan;
+    long long _source;
     struct _NSRange _selectedRange;
     struct CGPoint _inputModeListFromLocation;
     struct CGPoint _inputModeListUpdatePoint;
@@ -49,6 +50,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL shouldAdvanceResponder; // @synthesize shouldAdvanceResponder=_shouldAdvanceResponder;
 @property (nonatomic) BOOL shouldDismiss; // @synthesize shouldDismiss=_shouldDismiss;
 @property (nonatomic) BOOL shouldPostReturnKeyNotification; // @synthesize shouldPostReturnKeyNotification=_shouldPostReturnKeyNotification;
+@property (nonatomic) long long source; // @synthesize source=_source;
 @property (nonatomic) BOOL unmarkText; // @synthesize unmarkText=_unmarkText;
 
 + (BOOL)supportsSecureCoding;

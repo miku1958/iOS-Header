@@ -9,12 +9,13 @@
 #import <UIKitCore/UIGestureRecognizerDelegatePrivate-Protocol.h>
 #import <UIKitCore/_UIClickInteractionDriving-Protocol.h>
 
-@class NSString, UIGestureRecognizer, UIView, _UIStateMachine, _UITouchDurationObservingGestureRecognizer;
+@class NSString, UIGestureRecognizer, UIView, _UITouchDurationObservingGestureRecognizer;
 @protocol _UIClickInteractionDriverDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UILongPressClickInteractionDriver : NSObject <UIGestureRecognizerDelegatePrivate, _UIClickInteractionDriving>
 {
+    unsigned long long _currentState;
     struct {
         BOOL didUpdateHighlightProgress;
         BOOL shouldDelayGesture;
@@ -24,7 +25,6 @@ __attribute__((visibility("hidden")))
     BOOL _reachedClickDownThreshold;
     id<_UIClickInteractionDriverDelegate> _delegate;
     UIView *_view;
-    _UIStateMachine *_stateMachine;
     _UITouchDurationObservingGestureRecognizer *_gestureRecognizer;
     double _clickDownDuration;
     double _forceMultiplier;
@@ -48,7 +48,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double maximumEffectProgress;
 @property (readonly, nonatomic) UIGestureRecognizer *primaryGestureRecognizer;
 @property (nonatomic) BOOL reachedClickDownThreshold; // @synthesize reachedClickDownThreshold=_reachedClickDownThreshold;
-@property (strong, nonatomic) _UIStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double touchDuration;
 @property (weak, nonatomic) UIView *view; // @synthesize view=_view;
@@ -60,7 +59,6 @@ __attribute__((visibility("hidden")))
 - (void)_gestureRecognizerFailed:(id)arg1;
 - (void)_handleGestureRecognizer:(id)arg1;
 - (void)_notifyDelegateOfUpdatedClickDownProgress:(double)arg1 forceAdjustedClickDownDuration:(double)arg2;
-- (void)_prepareStateMachine;
 - (void)_updateForActiveGestureRecognizer;
 - (void)cancelInteraction;
 - (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;

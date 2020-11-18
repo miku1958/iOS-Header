@@ -21,6 +21,7 @@
     BOOL _prefersListSolver;
     BOOL _supplementariesFollowContentInsets;
     double _interGroupSpacing;
+    long long _contentInsetsReference;
     long long _orthogonalScrollingBehavior;
     NSArray *_boundarySupplementaryItems;
     CDUnknownBlockType _visibleItemsInvalidationHandler;
@@ -37,6 +38,7 @@
 @property (copy, nonatomic) NSArray *boundarySupplementaryItems; // @synthesize boundarySupplementaryItems=_boundarySupplementaryItems;
 @property (readonly, nonatomic, getter=_callback) id<_UICollectionLayoutSectionCallback> callback; // @synthesize callback=_callback;
 @property (nonatomic) struct NSDirectionalEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
+@property (nonatomic) long long contentInsetsReference; // @synthesize contentInsetsReference=_contentInsetsReference;
 @property (nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property (copy, nonatomic) NSArray *decorationItems; // @synthesize decorationItems=_decorationItems;
 @property (readonly, nonatomic) NSDictionary *decorationItemssDict; // @synthesize decorationItemssDict=_decorationItemssDict;
@@ -52,22 +54,31 @@
 
 + (id)_emptySection;
 + (id)sectionWithGroup:(id)arg1;
++ (id)sectionWithListConfiguration:(id)arg1 layoutEnvironment:(id)arg2;
 - (void).cxx_destruct;
+- (double)_alignedContentMarginGivenMargin:(double)arg1;
 - (id)_auxillaryItemForElementKind:(id)arg1 category:(unsigned long long)arg2;
+- (id)_backgroundDecorationViewsRequiringCustomViewClassRegistration;
 - (void)_checkForDuplicateSupplementaryItemKindsAndThrowIfFound;
 - (BOOL)_containsBackgroundDecorationItem:(id)arg1;
 - (BOOL)_containsEstimatedSizeElement;
+- (void)_didEndSwiping;
 - (BOOL)_hasBackgroundDecorationItem;
 - (BOOL)_hasVisibleItemsHandler;
 - (BOOL)_isEmptySection;
 - (BOOL)_isListSolverCompatibleForLayoutAxis:(unsigned long long)arg1;
+- (id)_leadingSwipeActionsConfigurationForIndexPath:(id)arg1;
+- (id)_trailingSwipeActionsConfigurationForIndexPath:(id)arg1;
+- (BOOL)_wantsSwipeActions;
+- (void)_willBeginSwiping;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)decorationItemsDict;
-- (id)initWithGroup:(id)arg1 contentInsets:(struct NSDirectionalEdgeInsets)arg2 supplementaryItems:(id)arg3 boundarySupplementartItems:(id)arg4 pinnedSupplementaryItemIndexes:(id)arg5 interGroupSpacing:(double)arg6 visibleItemsInvalidationHandler:(CDUnknownBlockType)arg7 supplementariesFollowInsets:(BOOL)arg8 decorationItems:(id)arg9 orthogonalScrollingBehavior:(long long)arg10 isEmptySection:(BOOL)arg11 prefersListSolver:(BOOL)arg12;
+- (id)initWithGroup:(id)arg1 contentInsets:(struct NSDirectionalEdgeInsets)arg2 contentInsetsReference:(long long)arg3 supplementaryItems:(id)arg4 boundarySupplementartItems:(id)arg5 pinnedSupplementaryItemIndexes:(id)arg6 interGroupSpacing:(double)arg7 visibleItemsInvalidationHandler:(CDUnknownBlockType)arg8 supplementariesFollowInsets:(BOOL)arg9 decorationItems:(id)arg10 orthogonalScrollingBehavior:(long long)arg11 isEmptySection:(BOOL)arg12 prefersListSolver:(BOOL)arg13;
 - (id)initWithLayoutGroup:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)pinnedBoundarySupplementaryItemIndexes;
 - (BOOL)scrollsOrthogonally;
+- (BOOL)shouldRestrictOrthogonalAxisDuringInteractiveMovement;
 
 @end
 

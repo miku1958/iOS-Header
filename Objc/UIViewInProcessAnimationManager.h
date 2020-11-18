@@ -43,6 +43,8 @@
     BOOL _screenIsOff;
     unsigned long long _presentationModifierRequestCount;
     NSHashTable *_presentationGroups;
+    BOOL _appSuspended;
+    NSMutableArray *_observedWindowScenes;
     BOOL _usesMainThreadExecution;
     BOOL _advancingOnCommitDisabled;
     unsigned long long _executionMode;
@@ -72,6 +74,7 @@
 - (void).cxx_destruct;
 - (void)_advanceWithTime:(double)arg1;
 - (void)_applicationBecameActive;
+- (void)_applicationDidEnterBackground;
 - (void)_applicationResignedActive;
 - (void)_cancelAllAnimationsImmediately;
 - (void)_cancelPresentationModifierGroupRequest:(id)arg1;
@@ -90,9 +93,13 @@
 - (void)_registerBacklightChangedNotification;
 - (id)_requestPresentationModifierGroup:(CDUnknownBlockType)arg1;
 - (unsigned long long)_runPreCommitBlocks;
+- (void)_screenBasedSceneDidDisconnect:(id)arg1;
+- (void)_screenBasedSceneWillAttachWindow:(id)arg1;
 - (void)_setAnimationExecutionParameters;
+- (void)_setAnimationsSuspended:(BOOL)arg1;
 - (void)_setCurrentMediaTime:(double)arg1;
 - (BOOL)_shouldKeepAnimationThreadAlive;
+- (void)_updateAnimationSuspensionForAppStateChange;
 - (void)addEntry:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)finishAdvancingAnimationManager;

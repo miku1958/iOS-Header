@@ -13,6 +13,7 @@
 + (void)popNibPath;
 + (void)pushNibLoadingBundle:(id)arg1;
 + (void)pushNibPath:(id)arg1;
+- (id)_preferredEnglishLocalizationBundle;
 - (id)dataForResourceName:(id)arg1;
 - (id)loadNibNamed:(id)arg1 owner:(id)arg2 options:(id)arg3;
 @end

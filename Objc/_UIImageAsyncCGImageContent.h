@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     _UICGImageDecompressor *_decompressor;
 }
 
-@property (strong, setter=_setDecompressor:) _UICGImageDecompressor *_decompressor; // @synthesize _decompressor;
 @property BOOL finishedDecompressing; // @synthesize finishedDecompressing=_finishedDecompressing;
 @property (readonly) long long orientation;
 

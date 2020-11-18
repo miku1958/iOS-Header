@@ -15,6 +15,7 @@
 - (void)_didScroll;
 - (void)_observeScrollView:(UIScrollView *)arg1 didBeginTransitionToDeferredContentOffset:(struct CGPoint)arg2;
 - (void)_observeScrollView:(UIScrollView *)arg1 willEndDraggingWithVelocity:(struct CGPoint)arg2 targetContentOffset:(struct CGPoint *)arg3 unclampedOriginalTarget:(struct CGPoint)arg4;
+- (void)_observeScrollViewAlignedContentMarginDidChange:(UIScrollView *)arg1;
 - (void)_observeScrollViewDidEndDecelerating:(UIScrollView *)arg1;
 - (void)_observeScrollViewDidEndDragging:(UIScrollView *)arg1 willDecelerate:(BOOL)arg2;
 - (void)_observeScrollViewWillBeginDragging:(UIScrollView *)arg1;

@@ -18,13 +18,13 @@
     UITraitCollection *_traitCollection;
 }
 
+@property (readonly, nonatomic) BOOL _ignoresDynamicType; // @synthesize _ignoresDynamicType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 
-+ (id)_completeConfiguration:(id)arg1 fromConfiguration:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_applyConfigurationValuesTo:(id)arg1;

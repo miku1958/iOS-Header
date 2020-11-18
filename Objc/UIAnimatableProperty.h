@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType invalidationCallback; // @synthesize invalidationCallback=_invalidationCallback;
 @property (nonatomic) int ownershipCount; // @synthesize ownershipCount=_ownershipCount;
 @property (strong) id presentationValue; // @synthesize presentationValue=_presentationValue;
-@property (strong, nonatomic) id value; // @synthesize value=_value;
+@property (strong) id value; // @synthesize value=_value;
 @property (nonatomic) id velocity;
 
 - (void).cxx_destruct;

@@ -14,6 +14,7 @@
 }
 
 @property (readonly, nonatomic) NSSet *recipientIdentifiers;
+@property (readonly, nonatomic) NSSet *recipientNames;
 @property (readonly, nonatomic) NSString *senderIdentifier;
 @property (readonly, nonatomic) NSSet *senderIdentifiers;
 @property (readonly, nonatomic) TIInputContextHistory *tiInputContextHistory; // @synthesize tiInputContextHistory=_tiInputContextHistory;
@@ -26,6 +27,7 @@
 - (id)initWithRecipientIdentifiers:(id)arg1 senderIdentifiers:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)mostRecentTextEntries:(unsigned long long)arg1;
+- (void)updateRecipientNames:(id)arg1;
 
 @end
 

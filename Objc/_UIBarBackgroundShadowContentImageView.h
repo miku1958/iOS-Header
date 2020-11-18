@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL applyTintColorToBackgroundColor; // @synthesize applyTintColorToBackgroundColor=_applyTintColorToBackgroundColor;
 
 - (void)_applyTintColorToBackgroundIfNecessary;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)tintColorDidChange;
 
 @end

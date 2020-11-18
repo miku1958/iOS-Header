@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSAttributedString, NSMutableDictionary, NSString;
+@class NSAttributedString, NSMutableData, NSString;
 
 @interface UIWKDocumentContext : NSObject
 {
-    NSMutableDictionary *_selectionRects;
+    BOOL _rectsAreInCharacterOrder;
+    struct _NSRange _lastRectRange;
+    NSMutableData *_selectionRects;
     NSObject *_contextBefore;
     NSObject *_selectedText;
     NSObject *_contextAfter;
@@ -23,7 +25,7 @@
 @property (readonly, nonatomic) NSString *_contextBeforeString;
 @property (readonly, nonatomic) NSString *_markedTextString;
 @property (readonly, nonatomic) NSString *_selectedTextString;
-@property (strong, nonatomic) NSMutableDictionary *_selectionRects; // @synthesize _selectionRects;
+@property (strong, nonatomic) NSMutableData *_selectionRects; // @synthesize _selectionRects;
 @property (copy, nonatomic) NSAttributedString *annotatedText; // @synthesize annotatedText=_annotatedText;
 @property (copy, nonatomic) NSObject *contextAfter; // @synthesize contextAfter=_contextAfter;
 @property (copy, nonatomic) NSObject *contextBefore; // @synthesize contextBefore=_contextBefore;
@@ -39,9 +41,11 @@
 - (void)dealloc;
 - (struct _NSRange)deltaForSelectionRange:(struct _NSRange)arg1;
 - (void)enumerateLayoutRects:(CDUnknownBlockType)arg1;
+- (void)enumerateLayoutRectsWithOptions:(unsigned long long)arg1 characterRange:(struct _NSRange)arg2 block:(CDUnknownBlockType)arg3;
 - (id)init;
 - (struct _NSRange)rangeContainedWithinRect:(struct CGRect)arg1;
 - (void)resetTextRects;
+- (void)sortTextRectsByCharacterRange;
 - (id)stringContainedWithinRect:(struct CGRect)arg1;
 
 @end

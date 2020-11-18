@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)animateOffsetOfScrollableContainer:(id)arg1 toShowFocusItem:(id)arg2;
 - (void)cancelScrollingForScrollableContainer:(id)arg1;
 - (struct CGPoint)contentOffsetForScrollableContainer:(id)arg1 toShowFocusItem:(id)arg2 targetOffset:(struct CGPoint)arg3 targetBounds:(struct CGRect)arg4;
+- (struct CGPoint)contentOffsetForScrollableContainer:(id)arg1 toShowFocusItemWithInfo:(id)arg2;
 - (struct CGPoint)contentOffsetForScrollableContainer:(id)arg1 toShowRect:(struct CGRect)arg2 targetOffset:(struct CGPoint)arg3 targetBounds:(struct CGRect)arg4;
 - (struct CGPoint)currentVelocityForScrollableContainer:(id)arg1;
 - (id)initWithScreen:(id)arg1;

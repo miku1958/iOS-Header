@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)detachFromView:(id)arg1;
 - (void)didTransitionToBeginState;
 - (void)didTransitionToCancelState;
+- (void)didTransitionToDeferred;
 - (void)didTransitionToInactiveState;
 - (void)didTransitionToInflightState;
 - (void)didTransitionToPreparing;

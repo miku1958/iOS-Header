@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (struct CGRect)_TEST_validLayoutRect;
+- (long long)_extantNumberOfItems;
 - (id)_layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (void)_loadEverything;
 - (void)_prepareToLoadData;
@@ -74,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (id)knownSupplementaryElementKinds;
 - (id)layoutAttributesForCellsInRect:(struct CGRect)arg1 validateLayout:(BOOL)arg2;
 - (id)layoutAttributesForDecorationViewOfKind:(id)arg1 atIndexPath:(id)arg2;
+- (id)layoutAttributesForDecorationViewOfKind:(id)arg1 atIndexPath:(id)arg2 nilAttributesArePermitted:(BOOL)arg3;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (id)layoutAttributesForElementsInSection:(long long)arg1;
 - (id)layoutAttributesForGlobalItemIndex:(long long)arg1;

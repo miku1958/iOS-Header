@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) _UIVisualEffectConfig *effectConfig;
 @property (readonly, nonatomic) _UIBackdropViewSettings *effectSettings;
 
++ (id)_effectCopyingFromCaptureGroup:(id)arg1;
 + (id)effectCombiningEffects:(id)arg1;
 + (id)effectCompositingColor:(id)arg1;
 + (id)effectCompositingColor:(id)arg1 withMode:(long long)arg2 alpha:(double)arg3;

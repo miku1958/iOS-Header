@@ -8,26 +8,36 @@
 
 #import <UIKitCore/NSCopying-Protocol.h>
 
-@class UIView, _UIButtonBarButton;
+@class UIBarButtonItem, UIView, _UIButtonBarButton;
 
 @interface _UIButtonBarButtonVisualProvider : NSObject <NSCopying>
 {
     _UIButtonBarButton *_button;
+    UIBarButtonItem *_barButtonItem;
 }
 
+@property (readonly, nonatomic) UIView *alignmentViewForStaticNavBarButtonLeading;
+@property (readonly, nonatomic) UIView *alignmentViewForStaticNavBarButtonTrailing;
 @property (nonatomic) BOOL backButtonConstraintsActive;
+@property (nonatomic) BOOL backButtonMaskEnabled;
 @property (readonly, nonatomic) UIView *backIndicatorView;
 @property (readonly, nonatomic) UIView *contentView;
 
-- (void)button:(id)arg1 traitCollectionDidChange:(id)arg2;
+- (void).cxx_destruct;
 - (struct UIEdgeInsets)buttonAlignmentRectInsets:(id)arg1;
+- (id)buttonContextMenuInteractionConfiguration;
+- (id)buttonContextMenuStyleFromDefaultStyle:(id)arg1;
+- (id)buttonContextMenuTargetedPreview;
 - (BOOL)buttonEnabledState:(id)arg1 forRequestedState:(BOOL)arg2;
 - (BOOL)buttonHighlitedState:(id)arg1 forRequestedState:(BOOL)arg2;
 - (struct CGSize)buttonIntrinsicContentSize:(id)arg1;
 - (void)buttonLayoutSubviews:(id)arg1 baseImplementation:(CDUnknownBlockType)arg2;
 - (BOOL)buttonSelectionState:(id)arg1 forRequestedState:(BOOL)arg2;
+- (id)buttonSpringLoadedInteractionBehavior;
+- (id)buttonSpringLoadedInteractionEffect;
 - (void)buttonWillMoveToSuperview:(id)arg1;
 - (void)buttonWillMoveToWindow:(id)arg1;
+- (BOOL)canUpdateMenuInPlace;
 - (void)configureButton:(id)arg1 withAppearanceDelegate:(id)arg2 fromBarItem:(id)arg3;
 - (id)contentCursorInContainer:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -36,19 +46,23 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (id)matchingPointerShapeForView:(id)arg1 rect:(struct CGRect)arg2 inContainer:(id)arg3;
+- (struct CGPoint)menuAnchorPoint;
 - (id)pointerPreviewParameters;
 - (id)pointerShapeInContainer:(id)arg1;
 - (void)pointerWillEnter:(id)arg1;
 - (void)pointerWillExit:(id)arg1;
 - (void)resetButtonHasHighlighted;
+- (BOOL)shouldButtonAdjustToTraitCollection:(id)arg1;
 - (BOOL)shouldLift;
 - (BOOL)supportsBackButtons;
+- (void)traitCollectionChangedInSubtreeFrom:(id)arg1 to:(id)arg2;
 - (void)updateButton:(id)arg1 appearance:(id)arg2;
 - (void)updateButton:(id)arg1 forEnabledState:(BOOL)arg2;
 - (void)updateButton:(id)arg1 forFocusedState:(BOOL)arg2;
 - (void)updateButton:(id)arg1 forHighlightedState:(BOOL)arg2;
 - (void)updateButton:(id)arg1 forSelectedState:(BOOL)arg2;
 - (void)updateButton:(id)arg1 toUseButtonShapes:(BOOL)arg2;
+- (void)updateMenu;
 - (BOOL)useLocalPointerInteraction;
 
 @end

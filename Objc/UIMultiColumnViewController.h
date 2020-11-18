@@ -73,6 +73,7 @@
 - (void)_willShowColumnCount:(unsigned long long)arg1;
 - (id)childViewControllerForStatusBarStyle;
 - (void)dealloc;
+- (id)description;
 - (id)initWithNavController:(id)arg1 viewControllers:(id)arg2;
 - (id)initWithNavController:(id)arg1 viewControllers:(id)arg2 columnWidths:(id)arg3;
 - (void)requestColumnCount:(unsigned long long)arg1 animated:(BOOL)arg2;

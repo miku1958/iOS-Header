@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     struct {
         BOOL invalid;
         BOOL receivedUpdateWhilePointerDisabled;
+        BOOL observing;
     } _flags;
     UIView *_view;
 }

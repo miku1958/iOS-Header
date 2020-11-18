@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 + (unsigned long long)maxLoggableLengthOfInsertionWithoutDeletion:(id)arg1;
 + (id)metadataDictionaryForCorrectionIdentifier:(id)arg1;
 + (BOOL)needsLeadingSpaceForPhrases:(id)arg1 secureInput:(BOOL)arg2;
++ (BOOL)needsLeadingSpaceForText:(id)arg1 secureInput:(BOOL)arg2;
 + (BOOL)needsTrailingSpaceForPhrases:(id)arg1 secureInput:(BOOL)arg2;
 + (id)phraseFromAFPhrase:(id)arg1;
 + (id)tokenFromAFToken:(id)arg1;

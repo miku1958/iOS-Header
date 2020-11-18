@@ -61,7 +61,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_anchorPlatterView:(id)arg1 toPreview:(id)arg2 updateBounds:(BOOL)arg3;
 - (void)_cleanUpObservation;
-- (void)_clearArbiterPointerStyleWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_commitPointerStyleToArbiterWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_createAndInstallPlatterView;
 - (void)_ensureRelativeEffectViewOrderInContainer;
@@ -76,7 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)_updatePlatterView:(id)arg1 forStyle:(id)arg2;
 - (void)begin;
 - (void)dealloc;
-- (void)end;
+- (void)end:(BOOL)arg1;
 - (id)initWithStyle:(id)arg1 region:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

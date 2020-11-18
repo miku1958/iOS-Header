@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (void)reset;
 - (void)resetDisplayOffsetAccumulationFactor;
 - (void)startRollbackAnimation;
-- (void)startRollbackAnimationFasterConvergence;
 - (void)updateCurrentOffset:(struct CGPoint)arg1;
 - (void)updateCurrentOffset:(struct CGPoint)arg1 overrideDisplayOffset:(id)arg2;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSAutoresizingMaskLayoutConstraint.h>
+#import <CoreAutoLayout/NSAutoresizingMaskLayoutConstraint.h>
 
 @interface NSAutoresizingMaskLayoutConstraint (_UIOldConstraintBasedLayoutSupport)
 + (id)oldUIConstraintsWithAutoresizingMask:(unsigned long long)arg1 subitem:(id)arg2 frame:(struct CGRect)arg3 superitem:(id)arg4 bounds:(struct CGRect)arg5;

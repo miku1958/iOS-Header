@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UIView *view; // @synthesize view=_view;
 @property (readonly, nonatomic) UIWindow *window; // @synthesize window=_window;
 
-- (id)initWithView:(id)arg1 window:(id)arg2;
 
 @end
 

@@ -6,13 +6,13 @@
 
 #import <UIKitCore/UIView.h>
 
-@class UIImpactFeedbackGenerator;
+@class NSString, UIImpactFeedbackGenerator;
 @protocol UISwitchControl;
 
-__attribute__((visibility("hidden")))
 @interface UISwitchVisualElement : UIView
 {
     BOOL _enabled;
+    NSString *_title;
     id<UISwitchControl> _switchControl;
     UIImpactFeedbackGenerator *_impactFeedbackGenerator;
     double _enabledAlpha;
@@ -22,9 +22,13 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double enabledAlpha; // @synthesize enabledAlpha=_enabledAlpha;
 @property (strong, nonatomic) UIImpactFeedbackGenerator *impactFeedbackGenerator; // @synthesize impactFeedbackGenerator=_impactFeedbackGenerator;
 @property (weak, nonatomic) id<UISwitchControl> switchControl; // @synthesize switchControl=_switchControl;
+@property (copy) NSString *title; // @synthesize title=_title;
 
++ (BOOL)isFixedSize;
++ (struct UIEdgeInsets)preferredAlignmentRectInsets;
 + (struct CGSize)preferredContentSize;
 - (void).cxx_destruct;
+- (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)preferredContentSize;
 - (void)setOffImage:(id)arg1;

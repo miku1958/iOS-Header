@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     UIView *_dimmingView;
     id<PageRangeDelegate> _delegate;
     long long _pageIndex;
+    struct CGSize _imageSize;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIView *dimmingView; // @synthesize dimmingView=_dimmingView;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic) long long pageIndex; // @synthesize pageIndex=_pageIndex;
 @property (readonly) Class superclass;
@@ -49,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)handleLongPress:(id)arg1;
 - (void)handleTap:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)removePage:(id)arg1;
 - (void)setEndPage:(id)arg1;

@@ -8,7 +8,8 @@
 
 #import <UIKitCore/UIKBCacheableView-Protocol.h>
 
-@class NSMutableDictionary, NSString, NSTimer, UIKBCacheToken, UIKBKeyView, UIKBKeyViewAnimator, UIKBRenderConfig, UIKBRenderFactory, UIKBRenderingContext, UIKBTree, UIKeyboardEmojiKeyDisplayController, UIView;
+@class NSMutableDictionary, NSString, UIKBCacheToken, UIKBKeyView, UIKBKeyViewAnimator, UIKBRenderConfig, UIKBRenderFactory, UIKBRenderingContext, UIKBScreenTraits, UIKBTree, UIKeyboardEmojiKeyDisplayController, UIView;
+@protocol UIKBKeyplaneViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface UIKBKeyplaneView : UIKBSplitImageView <UIKBCacheableView>
@@ -24,8 +25,6 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_activeViewIndex;
     NSMutableDictionary *_renderedKeyViews;
     NSMutableDictionary *_delayedDeactivationKeys;
-    NSTimer *_activatedTimer;
-    BOOL _performingDeactivation;
     BOOL _shouldDrawRect;
     UIKBRenderConfig *_renderConfig;
     UIKBRenderingContext *_renderingContext;
@@ -34,8 +33,12 @@ __attribute__((visibility("hidden")))
     UIKBSplitImageView *_keyBackgrounds;
     UIKBSplitImageView *_keyCaps;
     UIView *_keyplaneMaskView;
+    BOOL _suppressDrawing;
+    UIKBScreenTraits *_overrideScreenTraits;
+    id<UIKBKeyplaneViewDelegate> _delegate;
 }
 
+@property (readonly, nonatomic) long long assetIdiom;
 @property (readonly, nonatomic) long long cacheDeferPriority;
 @property (readonly, nonatomic) BOOL cacheDeferable;
 @property (readonly, nonatomic) NSString *cacheKey;
@@ -44,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) UIKBTree *defaultKeyplane; // @synthesize defaultKeyplane=_defaultKeyplane;
 @property (strong, nonatomic) UIKBCacheToken *defaultKeyplaneCacheToken; // @synthesize defaultKeyplaneCacheToken=_defaultKeyplaneCacheToken;
+@property (nonatomic) id<UIKBKeyplaneViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIKeyboardEmojiKeyDisplayController *emojiKeyManager; // @synthesize emojiKeyManager=_emojiKeyManager;
 @property (strong, nonatomic) UIKBRenderFactory *factory; // @synthesize factory=_factory;
@@ -52,14 +56,17 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIKBKeyViewAnimator *keyViewAnimator; // @synthesize keyViewAnimator=_keyViewAnimator;
 @property (strong, nonatomic) UIKBTree *keyplane; // @synthesize keyplane=_keyplane;
 @property (readonly, nonatomic) UIView *keyplaneMaskView; // @synthesize keyplaneMaskView=_keyplaneMaskView;
+@property (strong, nonatomic) UIKBScreenTraits *overrideScreenTraits; // @synthesize overrideScreenTraits=_overrideScreenTraits;
 @property (strong, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
 @property (strong, nonatomic) UIKBRenderingContext *renderingContext; // @synthesize renderingContext=_renderingContext;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL suppressDrawing; // @synthesize suppressDrawing=_suppressDrawing;
 
 - (BOOL)_canDrawContent;
 - (id)_existingVariantsKeyViewForKey:(id)arg1;
 - (void)_generateFactoryIfNeeded;
 - (void)_generateRenderingContextIfNeeded;
+- (struct CGRect)_safeFrameForKeyViewFrame:(struct CGRect)arg1 inContainer:(id)arg2 forKey:(id)arg3;
 - (BOOL)_shouldAllowKey:(id)arg1;
 - (BOOL)_shouldInheritScreenScaleAsContentScaleFactor;
 - (void)_updateKeyplaneMaskView;
@@ -84,7 +91,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2;
 - (BOOL)isPasscodeStyle;
 - (void)layoutSubviews;
-- (void)performDelayedDeactivation:(id)arg1;
 - (void)prepareForDisplay;
 - (void)purgeActiveKeyViews;
 - (void)purgeFactory;
@@ -95,7 +101,6 @@ __attribute__((visibility("hidden")))
 - (void)removeKeyFromDelayedDeactivationSet:(id)arg1;
 - (void)retestForTouchUpSelectedVariantIndexForKey:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)retestSelectedVariantIndexForKey:(id)arg1 atPoint:(struct CGPoint)arg2;
-- (void)scheduleDelayedDeactivation;
 - (void)setContentScaleFactor:(double)arg1;
 - (void)setState:(int)arg1 forKey:(id)arg2;
 - (BOOL)shouldAnimateInKeyView:(id)arg1;

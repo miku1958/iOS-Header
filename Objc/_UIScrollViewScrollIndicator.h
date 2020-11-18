@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)_colorForStyle:(long long)arg1;
 - (void)_layoutFillViewAnimated:(BOOL)arg1;
 - (struct CGRect)_offsetFillViewRectForExpandedState:(struct CGRect)arg1;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;

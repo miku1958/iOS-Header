@@ -21,13 +21,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) _UIInternalDraggingSessionDestination *sessionDestination;
 
 - (void).cxx_destruct;
-- (BOOL)_shouldReceiveDragEvent:(id)arg1;
 - (BOOL)_shouldReceivePress:(id)arg1;
 - (BOOL)_shouldReceiveTouch:(id)arg1 forEvent:(id)arg2 recognizerView:(id)arg3;
 - (BOOL)canBePreventedByGestureRecognizer:(id)arg1;
 - (BOOL)canPreventGestureRecognizer:(id)arg1;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 - (struct CGPoint)locationInView:(id)arg1;
+- (BOOL)shouldReceiveEvent:(id)arg1;
 
 @end
 

@@ -23,6 +23,7 @@
     struct UIEdgeInsets _contentInsets;
     struct CGSize _sizeInPixels;
     double _baselineOffsetFromBottom;
+    double _capHeight;
     struct {
         unsigned int named:1;
         unsigned int asksContentForImageOrientation:1;
@@ -38,6 +39,7 @@
         unsigned int areContentInsetsExplicit:1;
         unsigned int areAlignmentRectInsetsExplicit:1;
         unsigned int flipsForRightToLeftLayoutDirection:1;
+        unsigned int hasCapHeight:1;
     } _imageFlags;
     UIImageAsset *_imageAsset;
     _UIImageContent *_content;
@@ -48,6 +50,7 @@
 @property (readonly, nonatomic, getter=_CGPDFPage) struct CGPDFPage *CGPDFPage;
 @property (readonly, nonatomic, getter=_CGSVGDocument) struct CGSVGDocument *CGSVGDocument;
 @property (readonly, nonatomic) CIImage *CIImage;
+@property (readonly, nonatomic) double _capHeight;
 @property (readonly, nonatomic) struct UIEdgeInsets _contentInsets;
 @property (readonly, nonatomic) BOOL _hasContentInsets;
 @property (readonly, nonatomic) struct UIEdgeInsets alignmentRectInsets; // @synthesize alignmentRectInsets=_alignmentRectInsets;
@@ -247,6 +250,7 @@
 - (id)_imageWithImageAsset:(id)arg1 configuration:(id)arg2;
 - (id)_imageWithSize:(struct CGSize)arg1;
 - (id)_imageWithStylePresets:(id)arg1 tintColor:(id)arg2 traitCollection:(id)arg3;
+- (id)_imageWithSymbolMetricsFromNamedVectorGlyph:(id)arg1;
 - (id)_initWithCGPDFPage:(struct CGPDFPage *)arg1;
 - (id)_initWithCGPDFPage:(struct CGPDFPage *)arg1 scale:(double)arg2 orientation:(long long)arg3;
 - (id)_initWithCGSVGDocument:(struct CGSVGDocument *)arg1;
@@ -299,6 +303,7 @@
 - (void)_setBaselineOffsetFromBottom:(double)arg1;
 - (void)_setBaselineOffsetFromBottomExplicitly:(double)arg1;
 - (void)_setCached:(BOOL)arg1;
+- (void)_setCapHeight:(double)arg1;
 - (void)_setColorForFlattening:(id)arg1;
 - (void)_setConfiguration:(id)arg1;
 - (void)_setContentInsets:(struct UIEdgeInsets)arg1;
@@ -308,6 +313,7 @@
 - (void)_setNamed:(BOOL)arg1;
 - (void)_setRenderingMode:(long long)arg1;
 - (void)_setSuppressesAccessibilityHairlineThickening:(BOOL)arg1;
+- (void)_setSymbolMetricsFromNamedVectorGlyph:(id)arg1;
 - (struct CGSize)_sizeInPixels;
 - (struct CGSize)_sizeInPixelsFromPDF;
 - (struct CGSize)_sizeWithHairlineThickening:(BOOL)arg1 renderingEffects:(unsigned long long)arg2 forTraitCollection:(id)arg3;

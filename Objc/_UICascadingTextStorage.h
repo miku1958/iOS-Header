@@ -7,13 +7,16 @@
 #import <UIFoundation/NSConcreteTextStorage.h>
 
 @class NSDictionary, NSMutableDictionary, UIColor, UIFont;
+@protocol _UITextAttributeDefaults;
 
 __attribute__((visibility("hidden")))
 @interface _UICascadingTextStorage : NSConcreteTextStorage
 {
     NSMutableDictionary *_defaultAttributes;
+    id<_UITextAttributeDefaults> _defaults;
 }
 
+@property (strong, nonatomic, setter=_setDefaults:) id<_UITextAttributeDefaults> _defaults; // @synthesize _defaults;
 @property (copy, nonatomic) NSDictionary *defaultAttributes;
 @property (strong, nonatomic) UIFont *font;
 @property (nonatomic) long long lineBreakMode;
@@ -35,6 +38,8 @@ __attribute__((visibility("hidden")))
 - (id)attribute:(id)arg1 atIndex:(unsigned long long)arg2 longestEffectiveRange:(struct _NSRange *)arg3 inRange:(struct _NSRange)arg4;
 - (id)attributesAtIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (id)attributesAtIndex:(unsigned long long)arg1 longestEffectiveRange:(struct _NSRange *)arg2 inRange:(struct _NSRange)arg3;
+- (id)init;
+- (id)initWithDefaults:(id)arg1;
 
 @end
 

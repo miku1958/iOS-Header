@@ -7,7 +7,6 @@
 #import <Foundation/NSMutableArray.h>
 
 @interface NSMutableArray (UIKitQueueAdditions)
-- (void)_addObjectsFromArray:(id)arg1 range:(struct _NSRange)arg2;
 - (void)_kb_reverse;
 - (BOOL)_listContainsOrderedItems;
 - (void)_set_listContainsOrderedItems:(BOOL)arg1;

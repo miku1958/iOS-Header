@@ -10,6 +10,7 @@
 
 @interface FBSSceneSpecification (UIKitSceneSpecification)
 
+@property (readonly, nonatomic) BOOL affectsAppLifecycleIfInternal;
 @property (readonly, nonatomic) NSDictionary *baseSceneComponentClassDictionary;
 @property (readonly, nonatomic) NSArray *finalActionHandlers;
 @property (readonly, nonatomic) NSArray *finalSettingsDiffActions;

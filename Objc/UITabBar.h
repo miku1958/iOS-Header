@@ -8,14 +8,15 @@
 
 #import <UIKitCore/UIBarPositioning-Protocol.h>
 #import <UIKitCore/_UIShadowedView-Protocol.h>
+#import <UIKitCore/_UITabBarDelegateInternal-Protocol.h>
 
 @class NSArray, NSString, UIColor, UIImage, UITabBarAppearance, UITabBarCustomizeView, UITabBarItem, _UITabBarAccessoryView, _UITabBarAppearanceStorage, _UITabBarVisualProvider;
-@protocol UITabBarDelegate;
+@protocol UITabBarDelegate, _UITabBarDelegateInternal;
 
-@interface UITabBar : UIView <_UIShadowedView, UIBarPositioning>
+@interface UITabBar : UIView <_UIShadowedView, UIBarPositioning, _UITabBarDelegateInternal>
 {
     UITabBarCustomizeView *_customizeView;
-    id<UITabBarDelegate> _delegate;
+    id<_UITabBarDelegateInternal> _delegate;
     NSArray *_items;
     UITabBarItem *_selectedItem;
     NSArray *_customizationItems;
@@ -34,6 +35,7 @@
         unsigned int disableBlurTinting:1;
         unsigned int pendingFocusAction:1;
         unsigned int springLoaded:1;
+        unsigned int delegateRespondsToInterfaceOrientationWindowSelector:1;
     } _tabBarFlags;
     _UITabBarAppearanceStorage *_appearanceStorage;
     _UITabBarVisualProvider *_visualProvider;
@@ -63,6 +65,7 @@
 @property (nonatomic, setter=_setBarOrientation:) long long _barOrientation;
 @property (nonatomic, setter=_setBlurEnabled:) BOOL _blurEnabled;
 @property (nonatomic, setter=_setDisableBlurTinting:) BOOL _disableBlurTinting;
+@property (readonly, nonatomic) long long _expectedInterfaceOrientation;
 @property (strong, nonatomic) UIView *_expectedSuperviewFollowingAnimation; // @synthesize _expectedSuperviewFollowingAnimation=__expectedSuperviewFollowingAnimation;
 @property (readonly, nonatomic) UIView *_externalViewForSafeAreaInsets;
 @property (nonatomic, setter=_setHidesShadow:) BOOL _hidesShadow; // @synthesize _hidesShadow;

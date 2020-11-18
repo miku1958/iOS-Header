@@ -13,6 +13,7 @@
 @interface UIPointerStyle : NSObject <NSCopying>
 {
     BOOL _determineScaleAutomatically;
+    BOOL _suppressesMirroring;
     long long _type;
     unsigned long long _options;
     unsigned long long _constrainedAxes;
@@ -20,6 +21,7 @@
     UIPointerShape *_pointerShape;
 }
 
+@property (nonatomic) BOOL _suppressesMirroring; // @synthesize _suppressesMirroring;
 @property (nonatomic) unsigned long long constrainedAxes; // @synthesize constrainedAxes=_constrainedAxes;
 @property (readonly, nonatomic) double contentScale;
 @property (strong, nonatomic) UIPointerEffect *effect; // @synthesize effect=_effect;
@@ -29,6 +31,7 @@
 @property (readonly, nonatomic) UITargetedPreview *targetedPreview;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
++ (id)_systemPointerStyle;
 + (id)hiddenPointerStyle;
 + (id)styleWithEffect:(id)arg1 shape:(id)arg2;
 + (id)styleWithShape:(id)arg1 constrainedAxes:(unsigned long long)arg2;

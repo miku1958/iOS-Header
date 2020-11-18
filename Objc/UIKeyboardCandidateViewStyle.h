@@ -17,7 +17,9 @@ __attribute__((visibility("hidden")))
     BOOL _doNotClipToBounds;
     BOOL _darkBackdrop;
     BOOL _scrollDisabled;
+    BOOL _allowCandidateGridExpanding;
     BOOL _showsIndex;
+    BOOL _showExtraLineBeforeFirstRow;
     BOOL _fillGridWithLines;
     BOOL _dontSelectLastItemByBackwardMoving;
     BOOL _showOneMoreCandidate;
@@ -69,6 +71,7 @@ __attribute__((visibility("hidden")))
     double _minimumCellWidth;
     double _singleSlottedCellMargin;
     long long _cellTextAlignment;
+    long long _alternativeTextAlignment;
     long long _minimumNumberOfCandidates;
     struct CGPoint _gridLineOffset;
     struct UIEdgeInsets _extraCellPadding;
@@ -78,6 +81,8 @@ __attribute__((visibility("hidden")))
     struct UIEdgeInsets _sortControlPadding;
 }
 
+@property (nonatomic) BOOL allowCandidateGridExpanding; // @synthesize allowCandidateGridExpanding=_allowCandidateGridExpanding;
+@property (nonatomic) long long alternativeTextAlignment; // @synthesize alternativeTextAlignment=_alternativeTextAlignment;
 @property (strong, nonatomic) UIColor *alternativeTextColor; // @synthesize alternativeTextColor=_alternativeTextColor;
 @property (strong, nonatomic) UIFont *alternativeTextFont; // @synthesize alternativeTextFont=_alternativeTextFont;
 @property (strong, nonatomic) UIFont *annotationTextFont; // @synthesize annotationTextFont=_annotationTextFont;
@@ -131,6 +136,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIImage *rightEdgeSeparatorImage; // @synthesize rightEdgeSeparatorImage=_rightEdgeSeparatorImage;
 @property (nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;
 @property (nonatomic) BOOL scrollDisabled; // @synthesize scrollDisabled=_scrollDisabled;
+@property (nonatomic) BOOL showExtraLineBeforeFirstRow; // @synthesize showExtraLineBeforeFirstRow=_showExtraLineBeforeFirstRow;
 @property (nonatomic) BOOL showOneMoreCandidate; // @synthesize showOneMoreCandidate=_showOneMoreCandidate;
 @property (nonatomic) BOOL showsIndex; // @synthesize showsIndex=_showsIndex;
 @property (nonatomic) double singleSlottedCellMargin; // @synthesize singleSlottedCellMargin=_singleSlottedCellMargin;

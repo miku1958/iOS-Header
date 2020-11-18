@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)_bestCandidateForHierarchicalFocusMovement:(id)arg1;
 - (id)_bestCandidateForLinearFocusMovement:(id)arg1;
 - (id)_bestCandidateForNonLinearFocusMovement:(id)arg1;
-- (id)_fakeFocusedViewForFocusMovement:(id)arg1 searchArea:(struct CGRect)arg2;
+- (id)_fakeFocusedViewForFocusMovement:(id)arg1 searchArea:(struct CGRect)arg2 window:(id)arg3;
 - (id)_findFocusCandidateByExhaustivelySearchingScrollableContainer:(id)arg1 forRequest:(id)arg2;
 - (id)_findFocusCandidateBySearchingLinearFocusMovementSequencesForRequest:(id)arg1;
 - (id)_findFocusCandidateWithoutLoadingScrollableContent:(id)arg1 forRequest:(id)arg2 minimumSearchArea:(struct CGRect)arg3;

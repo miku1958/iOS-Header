@@ -30,13 +30,16 @@
 @property (readonly, nonatomic) BOOL idleTimerDisabled;
 @property (readonly, nonatomic) long long interfaceOrientation;
 @property (readonly, nonatomic) BOOL interfaceOrientationChangesDisabled;
+@property (readonly, nonatomic) NSArray *multitaskingDragExclusionRects;
 @property (readonly, nonatomic) long long notificationCenterRevealMode;
+@property (readonly, nonatomic) long long preferredPointerLockStatus;
 @property (readonly, nonatomic) struct UIEdgeInsets primaryWindowOverlayInsets;
 @property (readonly, nonatomic) unsigned long long proximityDetectionModes;
 @property (readonly, nonatomic, getter=isReachabilitySupported) BOOL reachabilitySupported;
 @property (readonly, copy, nonatomic) FBSDisplayMode *requestedDisplayMode;
 @property (readonly, nonatomic) long long sceneActivationBias;
 @property (readonly, nonatomic) unsigned long long screenEdgesDeferringSystemGestures;
+@property (readonly, nonatomic) struct CGRect screenFocusedFrame;
 @property (readonly, nonatomic) double statusBarAlpha;
 @property (readonly, nonatomic) unsigned int statusBarContextID;
 @property (readonly, nonatomic, getter=isStatusBarForegroundTransparent) BOOL statusBarForegroundTransparent;

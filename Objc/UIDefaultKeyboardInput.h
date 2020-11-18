@@ -23,6 +23,7 @@
 @property (nonatomic) BOOL acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji; // @dynamic acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
+@property (nonatomic) BOOL acceptsInitialEmojiKeyboard;
 @property (nonatomic) BOOL acceptsPayloads;
 @property (nonatomic) BOOL acceptsSplitKeyboard;
 @property (nonatomic) long long autocapitalizationType; // @dynamic autocapitalizationType;
@@ -68,6 +69,7 @@
 @property (readonly, nonatomic) UITextRange *markedTextRange;
 @property (copy, nonatomic) NSDictionary *markedTextStyle;
 @property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
+@property (nonatomic) BOOL preferOnlineDictation;
 @property (copy, nonatomic) NSString *recentInputIdentifier;
 @property (copy, nonatomic) NSString *responseContext;
 @property (nonatomic) BOOL returnKeyGoesToNextResponder;
@@ -134,7 +136,6 @@
 - (BOOL)isSecure;
 - (BOOL)isShowingPlaceholder;
 - (id)methodSignatureForSelector:(SEL)arg1;
-- (id)nextUnperturbedDictationResultBoundaryFromPosition:(id)arg1;
 - (long long)offsetFromPosition:(id)arg1 toPosition:(id)arg2;
 - (id)positionFromPosition:(id)arg1 inDirection:(long long)arg2 offset:(long long)arg3;
 - (id)positionFromPosition:(id)arg1 offset:(long long)arg2;

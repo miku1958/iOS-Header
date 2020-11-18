@@ -9,16 +9,20 @@
 __attribute__((visibility("hidden")))
 @interface _UINavigationBarTitleViewOverlayRects : NSObject
 {
+    struct CGRect _leadingStaticItemRect;
     struct CGRect _backButtonRect;
     struct CGRect _leadingItemsRect;
     struct CGRect _titleRect;
     struct CGRect _trailingItemsRect;
+    struct CGRect _trailingStaticItemRect;
 }
 
 @property (nonatomic) struct CGRect backButtonRect; // @synthesize backButtonRect=_backButtonRect;
 @property (nonatomic) struct CGRect leadingItemsRect; // @synthesize leadingItemsRect=_leadingItemsRect;
+@property (nonatomic) struct CGRect leadingStaticItemRect; // @synthesize leadingStaticItemRect=_leadingStaticItemRect;
 @property (nonatomic) struct CGRect titleRect; // @synthesize titleRect=_titleRect;
 @property (nonatomic) struct CGRect trailingItemsRect; // @synthesize trailingItemsRect=_trailingItemsRect;
+@property (nonatomic) struct CGRect trailingStaticItemRect; // @synthesize trailingStaticItemRect=_trailingStaticItemRect;
 
 - (id)asArray;
 - (id)description;

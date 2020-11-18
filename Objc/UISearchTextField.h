@@ -8,7 +8,7 @@
 
 #import <UIKitCore/_UISearchBarTextFieldOrMailReplacement-Protocol.h>
 
-@class NSArray, NSHashTable, NSMutableDictionary, NSString, NSValue, UIColor, UIHoverGestureRecognizer, UIImageView, UISearchBar, UITapGestureRecognizer, UITextRange, _UISearchBarSearchFieldBackgroundView, _UISearchBarTextFieldTokenCounter;
+@class NSArray, NSHashTable, NSMutableDictionary, NSString, NSValue, UIColor, UIHoverGestureRecognizer, UIImage, UIImageView, UISearchBar, UITapGestureRecognizer, UITextRange, _UISearchBarSearchFieldBackgroundView, _UISearchBarTextFieldTokenCounter;
 
 @interface UISearchTextField : UITextField <_UISearchBarTextFieldOrMailReplacement>
 {
@@ -26,22 +26,25 @@
         unsigned int delegateImplementsUnderscoredItemProviderForCopyingTokens;
         unsigned int allowsCopyingTokens:1;
         unsigned int allowsDeletingTokens:1;
+        unsigned int alwaysHidesMagnifyingGlassForAccessibilityContentSizeCategory:1;
     } _searchBarTextFieldFlags;
     NSHashTable *_knownTokenLayoutViews;
     _UISearchBarTextFieldTokenCounter *_tokenCounter;
     UITapGestureRecognizer *_tokenTapGestureRecognizer;
     UIHoverGestureRecognizer *_hoverGestureRecognizer;
+    UIImage *_magnifyingGlassImage;
     BOOL __preventSelectionViewActivation;
+    BOOL __alwaysShowsClearButtonWhenEmpty;
     UISearchBar *_searchBar;
     UIColor *_tokenBackgroundColor;
-    long long __textInputSource;
 }
 
+@property (nonatomic, setter=_setAlwaysHidesMagnifyingGlassForAccessibilityContentSizeCategory:) BOOL _alwaysHidesMagnifyingGlassForAccessibilityContentSizeCategory;
+@property (nonatomic, setter=_setAlwaysShowsClearButtonWhenEmpty:) BOOL _alwaysShowsClearButtonWhenEmpty; // @synthesize _alwaysShowsClearButtonWhenEmpty=__alwaysShowsClearButtonWhenEmpty;
 @property (nonatomic, setter=_setIgnoresDynamicType:) BOOL _ignoresDynamicType;
 @property (nonatomic, setter=_setPreventSelectionViewActivation:) BOOL _preventSelectionViewActivation; // @synthesize _preventSelectionViewActivation=__preventSelectionViewActivation;
 @property (weak, nonatomic, setter=_setSearchBar:) UISearchBar *_searchBar; // @synthesize _searchBar;
 @property (strong, nonatomic, setter=_setSearchTextOffetValue:) NSValue *_searchTextOffsetValue;
-@property (nonatomic) long long _textInputSource; // @synthesize _textInputSource=__textInputSource;
 @property (nonatomic) BOOL allowsCopyingTokens;
 @property (nonatomic) BOOL allowsDeletingTokens;
 @property (readonly, copy) NSString *debugDescription;
@@ -57,9 +60,12 @@
 + (Class)_textPasteItemClass;
 + (BOOL)_wantsFadedEdges;
 - (void).cxx_destruct;
+- (void)__highlightedDidChangeAnimated:(BOOL)arg1;
 - (void)_activateSelectionView;
 - (struct CGRect)_adjustedTextOrEditingRect:(struct CGRect)arg1 forBounds:(struct CGRect)arg2;
 - (struct CGRect)_adjustmentsForSearchIconViewRectForBounds:(struct CGRect)arg1;
+- (void)_animateForFirstResponderChangeWithAnimations:(CDUnknownBlockType)arg1;
+- (void)_animateForFirstResponderChangeWithAnimations:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_applyHighlightedAnimated:(BOOL)arg1;
 - (struct CGRect)_availableTextRectForBounds:(struct CGRect)arg1 forEditing:(BOOL)arg2;
 - (void)_becomeFirstResponder;
@@ -69,6 +75,7 @@
 - (unsigned long long)_characterIndexForTokenTapGestureRecognizer;
 - (void)_clearBackgroundViews;
 - (id)_clearButtonImageForState:(unsigned long long)arg1;
+- (double)_clearButtonMarginX;
 - (struct CGSize)_clearButtonSize;
 - (void)_copySelectionPopulatingActuallyCopiedTokenCharacterIndexes:(id)arg1;
 - (id)_createEffectsBackgroundViewWithStyle:(unsigned long long)arg1 applyFilter:(id)arg2;
@@ -81,18 +88,24 @@
 - (BOOL)_delegateShouldScrollToVisibleWhenBecomingFirstResponder;
 - (void)_didRemoveTokenLayoutView:(id)arg1;
 - (void)_didSetFont:(id)arg1;
+- (BOOL)_displaysHelpMessageLabel;
 - (BOOL)_hasContent;
 - (BOOL)_hasCustomClearButtonImage;
+- (void)_highlightedDidChangeAnimated:(BOOL)arg1;
 - (void)_hoverGestureChanged:(id)arg1;
+- (BOOL)_isEditingOrHasContent;
+- (double)_maximumAlphaForLeadingView;
 - (id)_newAttributedStringWithToken:(id)arg1;
 - (id)_offsetValueForIcon:(long long)arg1;
 - (void)_pasteSessionDidFinish:(id)arg1;
 - (id)_placeholderColor;
 - (Class)_placeholderLabelClass;
+- (struct _NSRange)_rangeForClearButton;
 - (struct _NSRange)_rangeForSetText;
 - (id)_rangeOfCustomDraggableObjectsInRange:(id)arg1;
 - (void)_redirectSelectionToAvoidClobberingTokens;
 - (void)_removeEffectsBackgroundViews;
+- (BOOL)_scalesMagnifyingGlassForDynamicTypeWithFont:(id)arg1;
 - (struct CGRect)_searchIconViewRectForBounds:(struct CGRect)arg1;
 - (void)_setAnimatesBackgroundCornerRadius:(BOOL)arg1;
 - (void)_setBackgroundViewsAlpha:(double)arg1;
@@ -103,18 +116,25 @@
 - (void)_setOffsetValue:(id)arg1 forIcon:(long long)arg2;
 - (BOOL)_shouldCenterPlaceholder;
 - (BOOL)_shouldDetermineInterfaceStyleTextColor;
+- (BOOL)_shouldHideMagnifyingGlassWhenEditingOrHasContent;
+- (BOOL)_shouldOverrideEditingFont;
 - (BOOL)_shouldResignOnEditingDidEndOnExit;
 - (BOOL)_shouldSendContentChangedNotificationsIfOnlyMarkedTextChanged;
 - (BOOL)_shouldSuppressSelectionHandles;
 - (struct CGRect)_suffixFrame;
 - (long long)_suffixLabelTextAlignment;
+- (BOOL)_supportsDynamicType;
 - (Class)_systemBackgroundViewClass;
 - (struct _NSRange)_textRangeForTextStorageRange:(struct _NSRange)arg1;
 - (BOOL)_textShouldFillFieldEditorHeight;
 - (void)_tokenTapGestureRecognized;
+- (void)_updateAlphaForMagnifyingGlass;
 - (void)_updateAtomViewSelection:(BOOL)arg1;
 - (void)_updateBackgroundView:(id)arg1 withStyle:(unsigned long long)arg2 filter:(id)arg3;
 - (void)_updateBackgroundViewsAnimated:(BOOL)arg1;
+- (void)_updateDefaultLeftViewForFont:(id)arg1;
+- (void)_updateHelpMessageOverrideWithMessage:(id)arg1;
+- (void)_updateLeftViewForMagnifyingGlassImage;
 - (void)_willAddTokenLayoutView:(id)arg1;
 - (BOOL)allowsDraggingAttachments;
 - (id)attributedText;
@@ -139,6 +159,7 @@
 - (void)insertTextSuggestion:(id)arg1;
 - (void)insertToken:(id)arg1 atIndex:(long long)arg2;
 - (struct CGSize)intrinsicContentSize;
+- (void)layoutSubviews;
 - (struct CGRect)leftViewRectForBounds:(struct CGRect)arg1;
 - (void)paste:(id)arg1;
 - (struct CGRect)placeholderRectForBounds:(struct CGRect)arg1;

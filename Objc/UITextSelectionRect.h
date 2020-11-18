@@ -26,6 +26,8 @@
 + (struct CGRect)startEdgeFromRects:(id)arg1;
 + (BOOL)startIsHorizontal:(id)arg1;
 + (id)startRectFromRects:(id)arg1;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
 - (id)range;
 
 @end

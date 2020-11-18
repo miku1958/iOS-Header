@@ -15,6 +15,7 @@
 - (id)_contextBeforePosition:(id)arg1 inDocument:(id)arg2 toBoundary:(long long)arg3;
 - (id)_positionFromPosition:(id)arg1 toPreviousWordBoundaryInDocument:(id)arg2 tokenAccumulator:(CDUnknownBlockType)arg3;
 - (id)_positionFromPosition:(id)arg1 toPreviousWordStartInDocument:(id)arg2 tokenAccumulator:(CDUnknownBlockType)arg3;
+- (struct _NSRange)_selectedTextRange;
 - (id)copyTextInRange:(id)arg1 fromDocument:(id)arg2;
 - (id)fullString;
 - (id)initWithDocument:(id)arg1;

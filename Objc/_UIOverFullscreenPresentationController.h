@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (BOOL)_shouldPresentedViewControllerControlStatusBarAppearance;
 - (long long)presentationStyle;
 - (BOOL)shouldRemovePresentersView;
 

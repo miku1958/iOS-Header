@@ -8,7 +8,7 @@
 
 #import <UIKitCore/_UISearchBarContainerSublayoutDelegate-Protocol.h>
 
-@class NSString, UISearchBarTextField, UIView, _UISearchBarPromptContainerView, _UISearchBarScopeContainerLayout, _UISearchBarScopeContainerView, _UISearchBarSearchContainerLayout, _UISearchBarSearchContainerView;
+@class NSString, UIFont, UISearchBarTextField, UIView, _UISearchBarPromptContainerView, _UISearchBarScopeContainerLayout, _UISearchBarScopeContainerView, _UISearchBarSearchContainerLayout, _UISearchBarSearchContainerView;
 
 __attribute__((visibility("hidden")))
 @interface _UISearchBarLayout : _UISearchBarLayoutBase <_UISearchBarContainerSublayoutDelegate>
@@ -24,9 +24,12 @@ __attribute__((visibility("hidden")))
         unsigned int hasSeparator:1;
         unsigned int allowSearchFieldShrinkage:1;
         unsigned int searchFieldUsesCustomBackgroundImage:1;
+        unsigned int searchFieldEffectivelySupportsDynamicType:1;
         unsigned int isProspective:1;
         unsigned int isHostingNavBarTransitionActive:1;
     } _searchBarLayoutFlags;
+    double _cachedFontValueBeforeScaling;
+    double _cachedFontValueAfterScaling;
     UIView *_searchBarBackground;
     UIView *_searchBarBackdrop;
     UIView *_separator;
@@ -36,6 +39,7 @@ __attribute__((visibility("hidden")))
     double _backgroundExtension;
     double _searchBarReadableWidth;
     unsigned long long _numberOfScopeTitles;
+    UIFont *_searchFieldFont;
     long long _representedLayoutState;
     _UISearchBarScopeContainerLayout *_scopeContainerLayout;
     _UISearchBarSearchContainerLayout *_searchContainerLayout;
@@ -48,6 +52,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _separatorLayoutFrame;
 }
 
+@property (nonatomic) double additionalPaddingForCancelButtonAtLeadingEdge;
 @property (nonatomic) BOOL allowSearchFieldShrinkage;
 @property (nonatomic) double backgroundExtension; // @synthesize backgroundExtension=_backgroundExtension;
 @property (strong, nonatomic) UIView *cancelButton;
@@ -90,6 +95,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct UIOffset searchFieldBackgroundPositionAdjustment; // @synthesize searchFieldBackgroundPositionAdjustment=_searchFieldBackgroundPositionAdjustment;
 @property (strong, nonatomic) _UISearchBarSearchContainerView *searchFieldContainer; // @synthesize searchFieldContainer=_searchFieldContainer;
 @property (readonly, nonatomic) struct CGRect searchFieldContainerLayoutFrame; // @synthesize searchFieldContainerLayoutFrame=_searchFieldContainerLayoutFrame;
+@property (nonatomic) BOOL searchFieldEffectivelySupportsDynamicType;
+@property (strong, nonatomic) UIFont *searchFieldFont; // @synthesize searchFieldFont=_searchFieldFont;
 @property (nonatomic) BOOL searchFieldUsesCustomBackgroundImage;
 @property (strong, nonatomic) UIView *separator; // @synthesize separator=_separator;
 @property (readonly, nonatomic) struct CGRect separatorLayoutFrame; // @synthesize separatorLayoutFrame=_separatorLayoutFrame;
@@ -102,12 +109,14 @@ __attribute__((visibility("hidden")))
 - (void)containerLayoutWillUpdateLayout:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)ensureCorrectContainerViewOrdering;
+- (double)layout:(id)arg1 fontScaledValueForValue:(double)arg2;
 - (double)minimumLayoutWidth;
 - (void)prepareBaseConfigurationForSublayout:(id)arg1;
 - (void)prepareScopeContainerLayout;
 - (void)prepareSearchContainerLayout;
 - (void)prepareSublayouts;
 - (void)setDelegateSearchFieldFrameManipulationBlock:(CDUnknownBlockType)arg1;
+- (void)setLayoutCustomizationDelegateSearchFieldContainerWillLayoutSubviewsCallback:(CDUnknownBlockType)arg1;
 - (void)setUpScopeContainerLayout;
 - (void)setUpSearchContainerLayout;
 - (void)updateLayout;

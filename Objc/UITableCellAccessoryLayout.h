@@ -16,7 +16,8 @@ __attribute__((visibility("hidden")))
     UICellAccessoryManager *_manager;
     unsigned long long _edge;
     double _safeAreaInset;
-    double _minimumCompressionLayoutWidth;
+    CDUnknownBlockType _standardLayoutWidthProvider;
+    CDUnknownBlockType _disclosureLayoutWidthProvider;
     CDUnknownBlockType _spacingBlock;
     NSDictionary *_initialFrames;
     NSDictionary *_finalFrames;
@@ -25,8 +26,11 @@ __attribute__((visibility("hidden")))
     struct CGRect _totalFrame;
 }
 
+@property (readonly, nonatomic) double _disclosureLayoutWidth;
+@property (readonly, nonatomic) double _standardLayoutWidth;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) CDUnknownBlockType disclosureLayoutWidthProvider; // @synthesize disclosureLayoutWidthProvider=_disclosureLayoutWidthProvider;
 @property (nonatomic) unsigned long long edge; // @synthesize edge=_edge;
 @property (strong, nonatomic) NSMutableDictionary *finalAlphas; // @synthesize finalAlphas=_finalAlphas;
 @property (strong, nonatomic) NSDictionary *finalFrames; // @synthesize finalFrames=_finalFrames;
@@ -34,15 +38,16 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableDictionary *initialAlphas; // @synthesize initialAlphas=_initialAlphas;
 @property (strong, nonatomic) NSDictionary *initialFrames; // @synthesize initialFrames=_initialFrames;
 @property (weak, nonatomic) UICellAccessoryManager *manager; // @synthesize manager=_manager;
-@property (nonatomic) double minimumCompressionLayoutWidth; // @synthesize minimumCompressionLayoutWidth=_minimumCompressionLayoutWidth;
 @property (nonatomic) double safeAreaInset; // @synthesize safeAreaInset=_safeAreaInset;
 @property (copy, nonatomic) CDUnknownBlockType spacingBlock; // @synthesize spacingBlock=_spacingBlock;
+@property (copy, nonatomic) CDUnknownBlockType standardLayoutWidthProvider; // @synthesize standardLayoutWidthProvider=_standardLayoutWidthProvider;
 @property (readonly) Class superclass;
 @property (nonatomic) struct CGRect totalFrame; // @synthesize totalFrame=_totalFrame;
 
 - (void).cxx_destruct;
 - (struct CGRect)_frameForAccessoryAtIndex:(unsigned long long)arg1 inAccessories:(id)arg2 containerSize:(struct CGSize)arg3 withXOrigin:(double *)arg4;
 - (id)_framesForAccessories:(id)arg1 withContainerSize:(struct CGSize)arg2 outTotalFrame:(struct CGRect *)arg3;
+- (double)_layoutWidthForAccessory:(id)arg1 withItemWidth:(double)arg2;
 - (double)_totalWidthForAccessories:(id)arg1 withContainerSize:(struct CGSize)arg2;
 - (struct CGRect)endLayout;
 - (double)finalAlphaForAccessory:(id)arg1;

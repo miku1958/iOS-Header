@@ -26,9 +26,13 @@ __attribute__((visibility("hidden")))
     UIImage *_renderedImage;
     long long _contentColorFormat;
     long long _assetIdiom;
+    double __layerRoundRectRadius;
     struct CGSize _size;
+    struct CGRect __layerPaddedFrame;
 }
 
+@property (nonatomic) struct CGRect _layerPaddedFrame; // @synthesize _layerPaddedFrame=__layerPaddedFrame;
+@property (nonatomic) double _layerRoundRectRadius; // @synthesize _layerRoundRectRadius=__layerRoundRectRadius;
 @property (readonly, nonatomic) long long assetIdiom; // @synthesize assetIdiom=_assetIdiom;
 @property (strong, nonatomic) NSString *cacheKey; // @synthesize cacheKey=_cacheKey;
 @property (nonatomic) BOOL colorDetectMode; // @synthesize colorDetectMode=_colorDetectMode;

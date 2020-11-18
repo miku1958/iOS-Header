@@ -12,11 +12,12 @@
 #import <UIKitCore/UITabBarDelegate-Protocol.h>
 #import <UIKitCore/_UIScrollViewScrollObserver-Protocol.h>
 #import <UIKitCore/_UITVScrollViewManagerDelegate-Protocol.h>
+#import <UIKitCore/_UITabBarDelegateInternal-Protocol.h>
 
 @class NSArray, NSMapTable, NSMutableArray, NSString, UIFocusContainerGuide, UIFocusGuide, UIGestureRecognizer, UILayoutContainerView, UILongPressGestureRecognizer, UIMoreNavigationController, UINavigationController, UIScrollView, UITabBar, UITapGestureRecognizer, UIView, _UITVScrollViewManager;
 @protocol UITabBarControllerDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning;
 
-@interface UITabBarController : UIViewController <UIGestureRecognizerDelegate, UILayoutContainerViewDelegate, _UIScrollViewScrollObserver, _UITVScrollViewManagerDelegate, UITabBarDelegate, NSCoding>
+@interface UITabBarController : UIViewController <UIGestureRecognizerDelegate, UILayoutContainerViewDelegate, _UIScrollViewScrollObserver, _UITVScrollViewManagerDelegate, _UITabBarDelegateInternal, UITabBarDelegate, NSCoding>
 {
     UITabBar *_tabBar;
     UILayoutContainerView *_containerView;
@@ -51,6 +52,7 @@
         unsigned int delegateSupportedInterfaceOrientations:1;
         unsigned int delegatePreferredInterfaceOrientationForPresentation:1;
         unsigned int preferTabBarFocused:1;
+        unsigned int notifySplitViewControllerForSelectionChange:1;
         unsigned int offscreen:1;
         unsigned int hidNavBar:1;
     } _tabBarControllerFlags;
@@ -104,6 +106,8 @@
 - (id)_backdropBarGroupName;
 - (BOOL)_canRestoreFocusAfterTransitionToRecalledItem:(id)arg1 inViewController:(id)arg2;
 - (void)_childViewController:(id)arg1 updatedObservedScrollView:(id)arg2;
+- (id)_childViewControllerForMultitaskingDragExclusionRects;
+- (double)_childViewControllerModernTVTabBarTopInset;
 - (void)_configureTargetActionForTabBarItem:(id)arg1;
 - (id)_customAnimatorForFromViewController:(id)arg1 toViewController:(id)arg2;
 - (id)_customInteractionControllerForAnimator:(id)arg1;
@@ -131,9 +135,13 @@
 - (BOOL)_isPresentationContextByDefault;
 - (BOOL)_isSupportedInterfaceOrientation:(long long)arg1;
 - (BOOL)_isTabBarFocused;
+- (void)_largeContentViewerEnabledStatusDidChange:(id)arg1;
 - (void)_layoutContainerView;
 - (void)_layoutViewController:(id)arg1;
+- (BOOL)_notifySplitViewControllerForSelectionChange;
 - (void)_observeScrollViewDidScroll:(id)arg1;
+- (struct UIEdgeInsets)_overlayInsetsAdjustment;
+- (id)_overrideTraitCollectionToPassDuringTraitChangeToChildViewController:(id)arg1;
 - (id)_overridingPreferredFocusEnvironment;
 - (void)_performBackGesture:(id)arg1;
 - (void)_performFocusGesture:(unsigned long long)arg1;
@@ -157,6 +165,7 @@
 - (void)_setBadgeValue:(id)arg1 forTabBarItem:(id)arg2;
 - (void)_setMaximumNumberOfItems:(unsigned long long)arg1;
 - (void)_setMoreNavigationControllerRestorationIdentifier;
+- (void)_setNotifySplitViewControllerForSelectionChange:(BOOL)arg1;
 - (void)_setSelectedTabBarItem:(id)arg1;
 - (void)_setSelectedViewController:(id)arg1;
 - (void)_setSelectedViewControllerNeedsLayout;
@@ -171,6 +180,9 @@
 - (long long)_subclassPreferredFocusedViewPrioritizationType;
 - (void)_tabBarItemClicked:(id)arg1;
 - (long long)_tabBarPosition;
+- (id)_tabBarWindowForInterfaceOrientation:(id)arg1;
+- (void)_toggleAccessibilityHUDLongPressRecognizerIfNecessary;
+- (id)_traitCollectionForChildEnvironment:(id)arg1;
 - (id)_transitionView;
 - (BOOL)_transitionsChildViewControllers;
 - (void)_updateGestureRecognizersForTraitCollection:(id)arg1;
@@ -186,11 +198,13 @@
 - (id)_viewsWithDisabledInteractionGivenTransitionContext:(id)arg1;
 - (void)_willChangeToIdiom:(long long)arg1 onScreen:(id)arg2;
 - (id)_wrapperViewForViewController:(id)arg1;
+- (BOOL)_wrapsNavigationController:(id *)arg1;
 - (id)allViewControllers;
 - (void)animationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (BOOL)becomeFirstResponder;
 - (void)beginCustomizingTabBar:(id)arg1;
 - (id)childViewControllerForHomeIndicatorAutoHidden;
+- (id)childViewControllerForPointerLock;
 - (id)childViewControllerForScreenEdgesDeferringSystemGestures;
 - (id)childViewControllerForStatusBarHidden;
 - (id)childViewControllerForStatusBarStyle;

@@ -9,8 +9,7 @@
 #import <UIKitCore/_UICollectionLayoutAuxillaryHosting-Protocol.h>
 #import <UIKitCore/_UIDynamicReferenceSystem-Protocol.h>
 
-@class NSArray, NSIndexSet, NSMutableDictionary, NSString, UITraitCollection, _UICollectionCompositionalLayoutDynamicAnimator, _UICollectionCompositionalLayoutSolverOptions, _UICollectionLayoutAuxillaryItemSolver, _UICollectionLayoutDynamicsConfiguration, _UICollectionLayoutSectionGeometryTranslator, _UICollectionPreferredSizes, _UIDataSourceSnapshotter, _UIRTree;
-@protocol NSCollectionLayoutContainer;
+@class NSArray, NSIndexSet, NSMutableDictionary, NSString, UITraitCollection, _UICollectionCompositionalLayoutDynamicAnimator, _UICollectionCompositionalLayoutSolverOptions, _UICollectionLayoutAuxillaryItemSolver, _UICollectionLayoutContainer, _UICollectionLayoutDynamicsConfiguration, _UICollectionLayoutSectionGeometryTranslator, _UICollectionPreferredSizes, _UIDataSourceSnapshotter, _UIRTree;
 
 __attribute__((visibility("hidden")))
 @interface _UICollectionCompositionalLayoutSolver : NSObject <_UICollectionLayoutAuxillaryHosting, _UIDynamicReferenceSystem>
@@ -20,7 +19,10 @@ __attribute__((visibility("hidden")))
     BOOL _shouldPerformPhysicalRTLTransforms;
     BOOL _roundsToScreenScale;
     BOOL _layoutRTL;
-    id<NSCollectionLayoutContainer> _container;
+    CDUnknownBlockType _cellLayoutAttributesTransformer;
+    CDUnknownBlockType _sectionDecorationLayoutAttributesTransformer;
+    CDUnknownBlockType _sectionSupplementaryLayoutAttributesTransformer;
+    _UICollectionLayoutContainer *_container;
     UITraitCollection *_traitCollection;
     unsigned long long _layoutAxis;
     _UIDataSourceSnapshotter *_dataSourceSnapshot;
@@ -50,10 +52,12 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) struct CGSize actualContentSize; // @synthesize actualContentSize=_actualContentSize;
+@property (readonly, nonatomic) struct CGRect bounds;
 @property (strong, nonatomic) NSMutableDictionary *cachedDecorationAttributes; // @synthesize cachedDecorationAttributes=_cachedDecorationAttributes;
 @property (strong, nonatomic) NSMutableDictionary *cachedItemAttributes; // @synthesize cachedItemAttributes=_cachedItemAttributes;
 @property (strong, nonatomic) NSMutableDictionary *cachedSupplementaryAttributes; // @synthesize cachedSupplementaryAttributes=_cachedSupplementaryAttributes;
-@property (strong, nonatomic) id<NSCollectionLayoutContainer> container; // @synthesize container=_container;
+@property (copy, nonatomic) CDUnknownBlockType cellLayoutAttributesTransformer; // @synthesize cellLayoutAttributesTransformer=_cellLayoutAttributesTransformer;
+@property (strong, nonatomic) _UICollectionLayoutContainer *container; // @synthesize container=_container;
 @property (readonly, nonatomic) struct CGSize contentSize;
 @property (strong, nonatomic) _UIDataSourceSnapshotter *dataSourceSnapshot; // @synthesize dataSourceSnapshot=_dataSourceSnapshot;
 @property (readonly, copy) NSString *debugDescription;
@@ -80,9 +84,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UICollectionCompositionalLayoutSolverOptions *options; // @synthesize options=_options;
 @property (strong, nonatomic) NSIndexSet *orthogonalScrollingSectionIndexes; // @synthesize orthogonalScrollingSectionIndexes=_orthogonalScrollingSectionIndexes;
 @property (nonatomic) BOOL roundsToScreenScale; // @synthesize roundsToScreenScale=_roundsToScreenScale;
+@property (copy, nonatomic) CDUnknownBlockType sectionDecorationLayoutAttributesTransformer; // @synthesize sectionDecorationLayoutAttributesTransformer=_sectionDecorationLayoutAttributesTransformer;
 @property (strong, nonatomic) _UICollectionLayoutSectionGeometryTranslator *sectionGeometryTranslator; // @synthesize sectionGeometryTranslator=_sectionGeometryTranslator;
 @property (strong, nonatomic) _UIRTree *sectionIndexer; // @synthesize sectionIndexer=_sectionIndexer;
 @property (copy, nonatomic) CDUnknownBlockType sectionProvider; // @synthesize sectionProvider=_sectionProvider;
+@property (copy, nonatomic) CDUnknownBlockType sectionSupplementaryLayoutAttributesTransformer; // @synthesize sectionSupplementaryLayoutAttributesTransformer=_sectionSupplementaryLayoutAttributesTransformer;
 @property (nonatomic) BOOL shouldPerformPhysicalRTLTransforms; // @synthesize shouldPerformPhysicalRTLTransforms=_shouldPerformPhysicalRTLTransforms;
 @property (readonly, nonatomic) BOOL shouldTransformVisibleItemsDuringContentOffsetChanges;
 @property (readonly, nonatomic) BOOL shouldUpdateVisibleBoundsForDynamicAnimator;
@@ -93,6 +99,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (struct CGSize)_adjustedContentSizeIncludingContainerInsetsForSize:(struct CGSize)arg1;
+- (void)_applyPreferredSizingCustomizationsToLayoutAttributes:(id)arg1 atIndexPath:(id)arg2;
 - (struct CGPoint)_attributesOffsetFromContainer;
 - (struct CGRect)_attributesQueryRectForRect:(struct CGRect)arg1;
 - (id)_attributesQueryRectsForQueryRect:(struct CGRect)arg1;
@@ -100,38 +107,44 @@ __attribute__((visibility("hidden")))
 - (id)_cachedSupplementaryAttributesForElementKind:(id)arg1 indexPath:(id)arg2;
 - (BOOL)_canResolveWithoutQueryingSectionDefintionsForContainerChange;
 - (struct CGSize)_clampedSolutionSizeForSolution:(id)arg1 layoutAxis:(unsigned long long)arg2 scrollsOrthogonally:(BOOL)arg3;
-- (void)_computeDeletedItemsAffectingSupplementariesForUpdate:(id)arg1 resolveResult:(id)arg2;
-- (id)_computeInitialSupplementaryKeysSectionDictForUpdate:(id)arg1;
 - (void)_configureLayoutForSections:(id)arg1;
 - (id)_createAndCacheLayoutAttributesForDecorationItemAtIndexPath:(id)arg1 elementKind:(id)arg2 frame:(struct CGRect)arg3 additionalContentInset:(struct NSDirectionalEdgeInsets)arg4 zIndex:(long long)arg5;
 - (id)_createAndCacheLayoutAttributesForItemAtIndexPath:(id)arg1 frame:(struct CGRect)arg2 zIndex:(long long)arg3;
 - (id)_createAndCacheLayoutAttributesForSupplementaryItemAtIndexPath:(id)arg1 elementKind:(id)arg2 frame:(struct CGRect)arg3 zIndex:(long long)arg4;
-- (void)_diffNonItemSupplementariesForUpdate:(id)arg1 resolveResult:(id)arg2 initialSupplementaryKeysSectionDict:(id)arg3;
+- (void)_didEndSwiping;
 - (struct CGRect)_dynamicReferenceBounds;
-- (void)_enrichLayoutAttributes:(id)arg1 inSection:(id)arg2;
+- (id)_existingSectionDefinitionForSectionIndex:(unsigned long long)arg1;
 - (struct CGPoint)_firstBookmarkOffset;
 - (struct CGRect)_globalFrameForSolutionFrame:(struct CGRect)arg1 bookmark:(id)arg2;
 - (struct CGPoint)_globalSupplementaryFrameOffset;
 - (void)_invalidateAllAttributes;
 - (void)_invalidateAttributes:(id)arg1;
 - (void)_layoutAttributesForElementsInRect:(struct CGRect)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)_leadingSwipeActionsConfigurationForIndexPath:(id)arg1;
 - (id)_queryClientForSectionDefintionForSectionIndex:(long long)arg1;
-- (id)_rebasedPreferredSizesWithDataSourceTranslator:(id)arg1;
+- (id)_rebasedPreferredSizesWithUpdate:(id)arg1;
 - (id)_rebasedSectionLayoutsWithDataSourceTranslator:(id)arg1;
 - (void)_recomputeSolutionBookmarksAndContentSize;
 - (void)_registerDecorationItemsIfNeeded:(id)arg1;
 - (id)_resolveOptionallyQueryingForSectionDefintions:(BOOL)arg1;
 - (id)_resolveOptionallyQueryingForSectionDefintions:(BOOL)arg1 retainPreferredSizing:(BOOL)arg2;
 - (void)_restoreStateFromBookmarkSnapshots:(id)arg1 bookmarks:(id)arg2 update:(id)arg3;
+- (double)_rootGroupDimensionForOrthogonalSection:(long long)arg1;
 - (BOOL)_sectionHasBackgroundDecorationView:(long long)arg1;
 - (void)_setCachedDecorationAttributesForElementKind:(id)arg1 indexPath:(id)arg2 attributes:(id)arg3;
 - (void)_setCachedSupplementaryAttributesForElementKind:(id)arg1 indexPath:(id)arg2 attributes:(id)arg3;
 - (id)_snapshotBookmarks:(id)arg1;
 - (void)_solve;
 - (void)_solveWithSectionLayouts:(id)arg1 preferredSizesDict:(id)arg2 dataSourceSnapshot:(id)arg3 update:(id)arg4;
+- (BOOL)_supportsSwipeActionsForIndexPath:(id)arg1;
+- (id)_trailingSwipeActionsConfigurationForIndexPath:(id)arg1;
 - (void)_updateBookmarkOffsetsForGlobalSupplementariesIfNeeded;
 - (void)_updateGeometryTranslator;
+- (void)_updateResultNotingInsertedItemAndSectionAuxillaries:(id)arg1 forVisibleGroupAuxillaryAttributesBeforeResolve:(id)arg2 withUpdate:(id)arg3;
+- (id)_updateResultsNotingDeletedItemAndSectionAuxillaries:(id)arg1 returningStartingGroupAuxillariesForUpdate:(id)arg2;
 - (void)_updateSectionIndexer:(id)arg1 frame:(struct CGRect)arg2 solution:(id)arg3 section:(long long)arg4;
+- (BOOL)_wantsSwipeActions;
+- (void)_willBeginSwiping;
 - (id)auxillaryHostAuxillaryItems;
 - (long long)auxillaryHostAuxillaryKind;
 - (id)auxillaryHostContainer;
@@ -141,7 +154,6 @@ __attribute__((visibility("hidden")))
 - (id)auxillaryHostPreferredSizes;
 - (BOOL)auxillaryHostShouldLayoutRTL;
 - (id)auxillaryHostSupplementaryEnroller;
-- (struct CGRect)bounds;
 - (struct NSDirectionalEdgeInsets)contentInsetsForSection:(long long)arg1;
 - (struct CGSize)effectiveContentSizeForSection:(long long)arg1;
 - (BOOL)elementShouldAppearAbove:(id)arg1;
@@ -155,6 +167,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidateCachedSupplementaryAttributesForElementKind:(id)arg1 atIndexPaths:(id)arg2;
 - (id)layoutAttributesForDecorationViewOfKind:(id)arg1 withIndexPath:(id)arg2;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
+- (id)layoutAttributesForInteractivelyMovingItemAtIndexPath:(id)arg1 withTargetPosition:(struct CGPoint)arg2;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;
 - (id)layoutAttributesForSupplementaryViewOfKind:(id)arg1 withIndexPath:(id)arg2;
 - (struct CGRect)layoutRectForSection:(long long)arg1;
@@ -168,12 +181,15 @@ __attribute__((visibility("hidden")))
 - (BOOL)orthogonalScrollingSectionDecorationShouldScrollWithContentForIndexPath:(id)arg1 elementKind:(id)arg2;
 - (BOOL)orthogonalScrollingSectionSupplementaryShouldScrollWithContentForIndexPath:(id)arg1 elementKind:(id)arg2;
 - (BOOL)orthogonalScrollingUsesCustomContentOffsetForSection:(long long)arg1;
+- (id)orthogonalSectionStateForSection:(long long)arg1;
 - (void)prepareForPreferredAttributesQueryForView:(id)arg1 withLayoutAttributes:(id)arg2;
 - (id)resolveForContainerChange:(id)arg1;
-- (id)resolveForInvalidatedPreferredAttributes:(id)arg1;
+- (id)resolveForEndInteractiveReorderingForTargetIndexPaths:(id)arg1;
+- (id)resolveForInvalidatedPreferredAttributes:(id)arg1 scrollOffset:(struct CGPoint)arg2 visibleRect:(struct CGRect)arg3;
 - (id)resolveForMarginsChange:(id)arg1;
 - (id)resolveForUpdatedGlobalSupplementaries:(id)arg1;
 - (id)resolveSolutionForUpdate:(id)arg1;
+- (id)restorableState;
 - (struct CGVector)scrollingUnitVectorForOrthogonalScrollingSection:(long long)arg1;
 - (void)setOrthogonalOffset:(struct CGPoint)arg1 forSection:(long long)arg2;
 - (BOOL)shouldCenterOrthogonalScrollingPageForSection:(long long)arg1;

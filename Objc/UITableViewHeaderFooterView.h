@@ -9,8 +9,8 @@
 #import <UIKitCore/UITableConstantsHeaderFooterProviding-Protocol.h>
 #import <UIKitCore/UITableViewSubviewReusing-Protocol.h>
 
-@class NSString, UIImage, UILabel, UITableView, _UITableViewHeaderFooterViewLabel;
-@protocol UITable, UITableConstants;
+@class NSString, UIBackgroundConfiguration, UIImage, UILabel, UITableView, UIViewConfigurationState, _UIBackgroundViewConfiguration, _UISystemBackgroundView, _UITableViewHeaderFooterViewLabel;
+@protocol UIContentConfiguration, UITable, UITableConstants, _UIContentViewConfiguration, _UIContentViewInternal;
 
 @interface UITableViewHeaderFooterView : UIView <UITableConstantsHeaderFooterProviding, UITableViewSubviewReusing>
 {
@@ -26,6 +26,11 @@
     UIView *_contentView;
     double _leadingMarginWidth;
     double _trailingMarginWidth;
+    NSString *_contentViewConfigurationIdentifier;
+    id<_UIContentViewInternal> _viewForContentConfiguration;
+    CDUnknownBlockType _contentViewConfigurationProvider;
+    _UISystemBackgroundView *_systemBackgroundView;
+    CDUnknownBlockType _backgroundViewConfigurationProvider;
     id<UITableConstants> _constants;
     struct {
         unsigned int isHeader:1;
@@ -38,13 +43,31 @@
         unsigned int didSetupDefaults:1;
         unsigned int insetsContentViewsToSafeArea:1;
         unsigned int tableViewHasBeenExplicitlySet:1;
+        unsigned int hasCustomBackgroundView:1;
+        unsigned int hasCustomBackgroundViewConfigurationProvider:1;
+        unsigned int hasCustomBackgroundViewConfiguration:1;
+        unsigned int needsConfigurationStateUpdate:1;
+        unsigned int automaticallyUpdatesContentViewConfiguration:1;
+        unsigned int automaticallyUpdatesBackgroundViewConfiguration:1;
     } _headerFooterFlags;
     id<UITable> _table;
 }
 
+@property (nonatomic, getter=_automaticallyUpdatesBackgroundViewConfiguration, setter=_setAutomaticallyUpdatesBackgroundViewConfiguration:) BOOL _automaticallyUpdatesBackgroundViewConfiguration;
+@property (nonatomic, getter=_automaticallyUpdatesContentViewConfiguration, setter=_setAutomaticallyUpdatesContentViewConfiguration:) BOOL _automaticallyUpdatesContentViewConfiguration;
+@property (copy, nonatomic, getter=_backgroundViewConfiguration, setter=_setBackgroundViewConfiguration:) _UIBackgroundViewConfiguration *_backgroundViewConfiguration;
+@property (copy, nonatomic, getter=_backgroundViewConfigurationProvider, setter=_setBackgroundViewConfigurationProvider:) CDUnknownBlockType _backgroundViewConfigurationProvider;
+@property (copy, nonatomic, getter=_contentViewConfiguration, setter=_setContentViewConfiguration:) id<_UIContentViewConfiguration> _contentViewConfiguration;
+@property (copy, nonatomic, getter=_contentViewConfigurationProvider, setter=_setContentViewConfigurationProvider:) CDUnknownBlockType _contentViewConfigurationProvider;
+@property (readonly, nonatomic) unsigned long long _viewConfigurationState;
+@property (nonatomic) BOOL automaticallyUpdatesBackgroundConfiguration;
+@property (nonatomic) BOOL automaticallyUpdatesContentConfiguration;
+@property (copy, nonatomic) UIBackgroundConfiguration *backgroundConfiguration;
 @property (strong, nonatomic) UIImage *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
 @property (strong, nonatomic) UIView *backgroundView;
+@property (readonly, nonatomic) UIViewConfigurationState *configurationState;
 @property (strong, nonatomic, getter=_constants, setter=_setConstants:) id<UITableConstants> constants;
+@property (copy, nonatomic) id<UIContentConfiguration> contentConfiguration;
 @property (readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -75,13 +98,19 @@
 + (double)defaultFooterHeightForStyle:(long long)arg1;
 + (double)defaultHeaderHeightForStyle:(long long)arg1;
 - (void).cxx_destruct;
+- (void)_applyBackgroundViewConfiguration:(id)arg1 withState:(id)arg2;
+- (void)_applyContentViewConfiguration:(id)arg1 withState:(id)arg2 usingSPI:(BOOL)arg3;
 - (struct CGRect)_backgroundRect;
 - (struct CGRect)_backgroundRectForWidth:(double)arg1;
+- (id)_configurationState;
 - (struct CGRect)_contentRect;
 - (struct CGRect)_contentRectForWidth:(double)arg1;
+- (id)_customViewForDefaultBackgroundAppearance;
+- (id)_defaultBackgroundConfiguration;
 - (id)_defaultTextColor;
 - (struct CGRect)_detailLabelFrame;
 - (struct CGSize)_detailTextSizeForWidth:(double)arg1;
+- (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (BOOL)_forwardsSystemLayoutFittingSizeToContentView:(id)arg1;
 - (BOOL)_hostsLayoutEngineAllowsTAMIC_NO;
 - (struct UIEdgeInsets)_insetsToBounds;
@@ -89,10 +118,19 @@
 - (void)_invalidateDetailLabelBackgroundColor;
 - (void)_invalidateLabelBackgroundColor;
 - (BOOL)_isFloating;
+- (BOOL)_isSourceListOrMacIdiom;
 - (BOOL)_isTransparentFocusRegion;
 - (id)_label:(BOOL)arg1;
 - (struct CGRect)_labelFrame;
+- (void)_layoutSystemBackgroundView;
+- (void)_performConfigurationStateUpdate;
+- (void)_populateArchivedSubviews:(id)arg1;
+- (void)_resetBackgroundViewConfiguration;
+- (void)_resetBackgroundViewsAndColor;
+- (void)_resetContentViews;
 - (void)_safeAreaInsetsDidChangeFromOldInsets:(struct UIEdgeInsets)arg1;
+- (void)_setContentView:(id)arg1 insertAtBack:(BOOL)arg2;
+- (void)_setNeedsConfigurationStateUpdate;
 - (void)_setTableViewStyle:(long long)arg1 updateFrame:(BOOL)arg2;
 - (void)_setupBackgroundView;
 - (void)_setupDefaultsIfNecessary;
@@ -102,13 +140,21 @@
 - (id)_table;
 - (void)_tableViewDidUpdateMarginWidth;
 - (struct CGSize)_textSizeForWidth:(double)arg1;
+- (BOOL)_tintColorAffectsBackgroundColor;
 - (void)_updateBackgroundImage;
 - (void)_updateBackgroundView;
+- (void)_updateBackgroundViewConfigurationForState:(id)arg1;
 - (void)_updateContentAndBackgroundView;
+- (void)_updateContentViewConfigurationForState:(id)arg1;
+- (void)_updateDefaultBackgroundAppearance;
 - (void)_updateDetailLabelBackgroundColor;
 - (void)_updateDetailLabelBackgroundColorIfNeeded;
+- (void)_updateViewConfigurationsWithState:(unsigned long long)arg1;
 - (struct CGRect)_updatedContentViewFrameForTargetWidth:(double)arg1;
 - (BOOL)_useDetailText;
+- (BOOL)_usingBackgroundConfigurationOrDefaultBackgroundConfiguration;
+- (BOOL)_usingBackgroundViewConfiguration;
+- (id)defaultContentConfiguration;
 - (void)didMoveToSuperview;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -118,12 +164,15 @@
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)setBackgroundColor:(id)arg1;
-- (void)setContentView:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)setNeedsUpdateConfiguration;
 - (void)setNeedsUpdateConstraints;
 - (void)setTintColor:(id)arg1;
+- (void)setUserInteractionEnabled:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateConfigurationUsingState:(id)arg1;
 
 @end
 

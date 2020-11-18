@@ -68,6 +68,7 @@
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setIgnoresInteractionEvents:(BOOL)arg1;
 - (void)setRasterizesOnTransition:(BOOL)arg1;
+- (int)textEffectsVisibilityLevel;
 - (id)toView;
 - (void)traitCollectionDidChange:(id)arg1;
 - (BOOL)transition:(int)arg1 fromView:(id)arg2 toView:(id)arg3;

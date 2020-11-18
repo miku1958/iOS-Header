@@ -32,10 +32,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIKBUndoStyling *style; // @synthesize style=_style;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
-+ (id)controlLableTextByType:(long long)arg1 available:(BOOL)arg2;
-+ (id)undoInteractiveControlLabelFont;
-+ (id)undoStateControlLabelFont;
-+ (id)undoStateControlUnavailableLabelFont;
++ (id)controlLableTextByType:(long long)arg1 style:(id)arg2 available:(BOOL)arg3;
 - (void).cxx_destruct;
 - (id)controlImageByType:(long long)arg1;
 - (id)controlLabelImageNameByType:(long long)arg1 isRTL:(BOOL)arg2;
@@ -46,6 +43,8 @@ __attribute__((visibility("hidden")))
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateCoverWithTavelProcess:(double)arg1 isRTL:(BOOL)arg2;
 - (void)updateUndoControlStyleForState:(unsigned long long)arg1;
+- (id)viewForFirstBaselineLayout;
+- (id)viewForLastBaselineLayout;
 
 @end
 

@@ -13,6 +13,7 @@
     double _minimumInteritemSpacing;
     double _columnOffset;
     double _sectionOffset;
+    double _bottomPadding;
     double _categoryHeaderHeight;
     double _categoryHeaderLeftPadding;
     double _categorySelectedCirWidth;
@@ -28,6 +29,7 @@
 }
 
 @property (readonly, nonatomic) double alertTextWidth; // @synthesize alertTextWidth=_alertTextWidth;
+@property (readonly, nonatomic) double bottomPadding; // @synthesize bottomPadding=_bottomPadding;
 @property (readonly, nonatomic) double categoryHeaderFontSize; // @synthesize categoryHeaderFontSize=_categoryHeaderFontSize;
 @property (readonly, nonatomic) double categoryHeaderHeight; // @synthesize categoryHeaderHeight=_categoryHeaderHeight;
 @property (readonly, nonatomic) double categoryHeaderLeftPadding; // @synthesize categoryHeaderLeftPadding=_categoryHeaderLeftPadding;

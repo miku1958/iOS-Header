@@ -14,9 +14,11 @@
 @property (nonatomic) unsigned long long attributes;
 @property (copy, nonatomic) NSString *discoverabilityTitle;
 @property (copy, nonatomic) UIImage *image;
+@property (readonly, nonatomic) BOOL requiresAuthenticatedInput;
 @property (nonatomic) long long state;
 @property (copy, nonatomic) NSString *title;
 
+- (BOOL)_isDefaultCommand;
 - (NSArray *)_leafAlternates;
 - (NSString *)_leafKeyInput;
 - (long long)_leafKeyModifierFlags;

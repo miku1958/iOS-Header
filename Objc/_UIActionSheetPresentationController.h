@@ -43,7 +43,7 @@
 - (BOOL)actionSheetCompactPresentationControllerShouldPresentInCurrentContext:(id)arg1;
 - (void)beginPseudoAlertPresentationMode;
 - (void)dealloc;
-- (void)dimmingViewWasTapped:(id)arg1;
+- (BOOL)dimmingViewWasTapped:(id)arg1 withDismissCompletion:(CDUnknownBlockType)arg2;
 - (void)endPseudoAlertPresentationMode;
 
 @end

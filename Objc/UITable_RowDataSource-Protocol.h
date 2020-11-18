@@ -26,6 +26,8 @@
 @property (readonly, nonatomic, getter=_isTableHeaderAutohiding) BOOL isTableHeaderAutohiding;
 @property (readonly, nonatomic, getter=_providesRowHeights) BOOL providesRowHeights;
 @property (readonly, nonatomic, getter=_rowSpacing) double rowSpacing;
+@property (readonly, nonatomic, getter=_sectionFooterPadding) double sectionFooterPadding;
+@property (readonly, nonatomic, getter=_sectionHeaderPadding) double sectionHeaderPadding;
 @property (readonly, nonatomic, getter=_shouldUseNewHeaderFooterBehavior) BOOL shouldUseNewHeaderFooterBehavior;
 @property (readonly, nonatomic, getter=_shouldUseSearchBarHeaderBehavior) BOOL shouldUseSearchBarHeaderBehavior;
 @property (readonly, nonatomic, getter=_sidePadding) double sidePadding;
@@ -47,13 +49,12 @@
 - (double)_heightForRowAtIndexPath:(NSIndexPath *)arg1;
 - (double)_maxTitleWidthForFooterInSection:(long long)arg1;
 - (double)_maxTitleWidthForHeaderInSection:(long long)arg1;
+- (void)_prepareForRowDataHeaderFooterSizing;
 - (void)_setHeight:(double)arg1 forRowAtIndexPath:(NSIndexPath *)arg2 usingPresentationValues:(BOOL)arg3;
 - (BOOL)_shouldStripHeaderTopPaddingForSection:(long long)arg1;
 - (long long)_titleAlignmentForFooterInSection:(long long)arg1;
 - (long long)_titleAlignmentForHeaderInSection:(long long)arg1;
 - (NSString *)_titleForFooterInSection:(long long)arg1;
 - (NSString *)_titleForHeaderInSection:(long long)arg1;
-- (UIView *)_viewForFooterInSection:(long long)arg1;
-- (UIView *)_viewForHeaderInSection:(long long)arg1;
 @end
 

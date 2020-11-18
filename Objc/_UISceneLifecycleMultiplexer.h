@@ -27,6 +27,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL suspendedEventsOnly;
 @property (readonly, nonatomic) BOOL suspendedUnderLock;
 
++ (long long)_compareLifecycleStateOfScene:(id)arg1 toScene:(id)arg2;
++ (id)_mostActiveSceneForApplicationState;
++ (id)_mostActiveSceneIncludingInternal:(BOOL)arg1 withTest:(CDUnknownBlockType)arg2;
 + (void)configureInitialDeactivationReasons:(unsigned long long)arg1;
 + (id)mostActiveScene;
 + (id)mostActiveSceneWithTest:(CDUnknownBlockType)arg1;

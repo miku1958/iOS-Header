@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
     UIFocusGuide *_horizontalIndexTitleBarFocusGuide;
     id<_UIHorizontalIndexTitleBarDelegate> _delegate;
     struct UIEdgeInsets _sectionInset;
-    struct UIEdgeInsets _parentSafeAreaInsets;
+    struct UIEdgeInsets _parentContentInset;
 }
 
 @property (strong, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) _UIHorizontalIndexTitleBarCell *focusedCell; // @synthesize focusedCell=_focusedCell;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIFocusGuide *horizontalIndexTitleBarFocusGuide; // @synthesize horizontalIndexTitleBarFocusGuide=_horizontalIndexTitleBarFocusGuide;
-@property (nonatomic, getter=_parentSafeAreaInsets, setter=_setParentSafeAreaInsets:) struct UIEdgeInsets parentSafeAreaInsets; // @synthesize parentSafeAreaInsets=_parentSafeAreaInsets;
+@property (nonatomic, getter=_parentContentInset, setter=_setParentContentInset:) struct UIEdgeInsets parentContentInset; // @synthesize parentContentInset=_parentContentInset;
 @property (nonatomic) struct UIEdgeInsets sectionInset; // @synthesize sectionInset=_sectionInset;
 @property (weak, nonatomic) _UIHorizontalIndexTitleBarCell *selectedCell; // @synthesize selectedCell=_selectedCell;
 @property (readonly) Class superclass;

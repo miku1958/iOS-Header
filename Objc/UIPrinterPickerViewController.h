@@ -50,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)popoverControllerDidDismissPopover:(id)arg1;
-- (void)presentPrinterPickerPanelAnimated:(BOOL)arg1;
+- (void)presentPrinterPickerPanelAnimated:(BOOL)arg1 hostingScene:(id)arg2;
 - (void)presentPrinterPickerPanelFromBarButtonItem:(id)arg1 animated:(BOOL)arg2;
 - (void)presentPrinterPickerPanelFromRect:(struct CGRect)arg1 inView:(id)arg2 animated:(BOOL)arg3;
 - (void)printerBrowserViewDidDisappear;

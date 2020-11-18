@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_setTypingStyleEstimation:(unsigned long long)arg1;
 - (void)beganContinuousPath;
+- (void)cancelContinuousPath;
 - (unsigned long long)currentTypingStyleEstimation;
 - (void)endedContinuousPath;
 - (void)tapTypedKey;

@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _UIFocusInputDeviceInfo *inputDeviceInfo; // @synthesize inputDeviceInfo=_inputDeviceInfo;
 @property (strong, nonatomic) _UIFocusMovementInfo *movementInfo; // @synthesize movementInfo=_movementInfo;
+@property (readonly, nonatomic, getter=isMovementRequest) BOOL movementRequest;
 @property (readonly, nonatomic) BOOL requiresEnvironmentValidation;
 @property (readonly, nonatomic) BOOL requiresNextFocusedItem;
 @property (strong, nonatomic) _UIFocusSearchInfo *searchInfo; // @synthesize searchInfo=_searchInfo;

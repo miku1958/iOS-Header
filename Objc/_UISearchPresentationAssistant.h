@@ -8,7 +8,7 @@
 
 #import <UIKitCore/UIDimmingViewDelegate-Protocol.h>
 
-@class UIDimmingView, UIPresentationController, UIView;
+@class NSString, UIDimmingView, UIPresentationController, UIView;
 @protocol UIViewControllerTransitionCoordinator, _UISearchControllerPresenting;
 
 __attribute__((visibility("hidden")))
@@ -24,7 +24,11 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) UIPresentationController<_UISearchControllerPresenting> *adaptivePresentationController; // @synthesize adaptivePresentationController=_adaptivePresentationController;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL presentationWasAnimated; // @synthesize presentationWasAnimated=_presentationWasAnimated;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) id<UIViewControllerTransitionCoordinator> transitioningToSizeCoordinator; // @synthesize transitioningToSizeCoordinator=_transitioningToSizeCoordinator;
 
 - (struct CGRect)_containerFrame;

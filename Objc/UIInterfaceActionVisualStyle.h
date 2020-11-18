@@ -70,7 +70,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (struct CGSize)maximumActionGroupContentSize;
 - (struct CGSize)minimumActionContentSize;
-- (double)minimumImageGapWidth;
 - (id)newActionBackgroundViewForViewState:(id)arg1;
 - (id)newActionSeparatorViewForGroupViewState:(id)arg1;
 - (id)newGroupBackgroundViewWithGroupViewState:(id)arg1;

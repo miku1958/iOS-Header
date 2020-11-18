@@ -6,11 +6,12 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, _UIDataSourceSnapshotter;
+@class NSArray, UIViewPropertyAnimator;
+@protocol _UIDataSourceSnapshotTranslating;
 
 @protocol _UICollectionViewUpdateItemApplying <NSObject>
 - (void)_deleteAllItems;
-- (void)_performUpdateWithCollectionViewUpdateItems:(NSArray *)arg1 dataSourceSnapshotter:(_UIDataSourceSnapshotter *)arg2 updateHandler:(void (^)(void))arg3 completion:(void (^)(void))arg4;
+- (void)_performUpdateWithCollectionViewUpdateItems:(NSArray *)arg1 dataSourceSnapshot:(id<_UIDataSourceSnapshotTranslating>)arg2 updateHandler:(void (^)(void))arg3 completion:(void (^)(void))arg4 viewPropertyAnimator:(UIViewPropertyAnimator *)arg5 customAnimationsProvider:(void (^)(id<_UICollectionViewAnimationContext>))arg6;
 - (void)_reloadData;
 - (void)_willPerformDiff:(BOOL)arg1;
 @end

@@ -6,32 +6,24 @@
 
 #import <UIKitCore/UIView.h>
 
-@class NSLayoutConstraint, UIDelayedAction, UIKBUndoControl, UIKBUndoStyling, UIStackView, UIVisualEffectView;
+@class UIKBUndoControl, UIKBUndoStyling, UILabel, UIVisualEffectView;
 @protocol UIInteractiveUndoHUDActionDelegate;
 
 __attribute__((visibility("hidden")))
 @interface UIKBUndoInteractionHUD : UIView
 {
+    id<UIInteractiveUndoHUDActionDelegate> _actionDelegate;
+    long long _mode;
     UIKBUndoControl *_leftButtonView;
     UIKBUndoControl *_rightButtonView;
     UIKBUndoControl *_aCutButtonView;
     UIKBUndoControl *_aCopyButtonView;
     UIKBUndoControl *_aPasteButtonView;
-    double _optimizedHUDWidth;
-    id<UIInteractiveUndoHUDActionDelegate> _actionDelegate;
-    long long _mode;
     UIVisualEffectView *_backgroundEffectView;
-    UIStackView *_undoItems;
     UIVisualEffectView *_shadowView;
     UIView *_containerView;
-    UIView *_centerView;
-    UIView *_grabber;
-    NSLayoutConstraint *_grabberPositionConstraint;
-    UIDelayedAction *_dismissGrabberTimer;
-    long long _currentUndoElementIndex;
     UIKBUndoStyling *_style;
-    double _grabberStartXLocation;
-    long long _currentCheckpointCovered;
+    UILabel *_instructionalLabel;
 }
 
 @property (strong, nonatomic) UIKBUndoControl *aCopyButtonView; // @synthesize aCopyButtonView=_aCopyButtonView;
@@ -39,21 +31,13 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIKBUndoControl *aPasteButtonView; // @synthesize aPasteButtonView=_aPasteButtonView;
 @property (weak, nonatomic) id<UIInteractiveUndoHUDActionDelegate> actionDelegate; // @synthesize actionDelegate=_actionDelegate;
 @property (strong, nonatomic) UIVisualEffectView *backgroundEffectView; // @synthesize backgroundEffectView=_backgroundEffectView;
-@property (strong, nonatomic) UIView *centerView; // @synthesize centerView=_centerView;
 @property (strong, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
-@property (nonatomic) long long currentCheckpointCovered; // @synthesize currentCheckpointCovered=_currentCheckpointCovered;
-@property (nonatomic) long long currentUndoElementIndex; // @synthesize currentUndoElementIndex=_currentUndoElementIndex;
-@property (strong, nonatomic) UIDelayedAction *dismissGrabberTimer; // @synthesize dismissGrabberTimer=_dismissGrabberTimer;
-@property (strong, nonatomic) UIView *grabber; // @synthesize grabber=_grabber;
-@property (strong, nonatomic) NSLayoutConstraint *grabberPositionConstraint; // @synthesize grabberPositionConstraint=_grabberPositionConstraint;
-@property (nonatomic) double grabberStartXLocation; // @synthesize grabberStartXLocation=_grabberStartXLocation;
+@property (strong, nonatomic) UILabel *instructionalLabel; // @synthesize instructionalLabel=_instructionalLabel;
 @property (strong, nonatomic) UIKBUndoControl *leftButtonView; // @synthesize leftButtonView=_leftButtonView;
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
-@property (nonatomic) double optimizedHUDWidth; // @synthesize optimizedHUDWidth=_optimizedHUDWidth;
 @property (strong, nonatomic) UIKBUndoControl *rightButtonView; // @synthesize rightButtonView=_rightButtonView;
 @property (strong, nonatomic) UIVisualEffectView *shadowView; // @synthesize shadowView=_shadowView;
 @property (strong, nonatomic) UIKBUndoStyling *style; // @synthesize style=_style;
-@property (strong, nonatomic) UIStackView *undoItems; // @synthesize undoItems=_undoItems;
 
 - (void).cxx_destruct;
 - (BOOL)availableOfControl:(id)arg1;
@@ -62,7 +46,6 @@ __attribute__((visibility("hidden")))
 - (void)controlActionUpOutside:(id)arg1;
 - (id)createSeparatorView;
 - (id)initWithKeyboardAppearance:(long long)arg1 isRTL:(BOOL)arg2 mode:(long long)arg3 sceneBounds:(struct CGRect)arg4;
-- (void)layoutSubviews;
 - (void)performDelegateRedoAndUpdateHUDIfNeeded;
 - (void)performDelegateUndoAndUpdateHUDIfNeeded;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;

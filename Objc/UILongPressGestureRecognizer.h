@@ -23,6 +23,8 @@
     UIDelayedAction *_tooMuchTimeElapsed;
     UIDelayedAction *_multitouchTimer;
     UITapRecognizer *_imp;
+    UILongPressGestureVelocitySample *_velocitySample;
+    UILongPressGestureVelocitySample *_previousVelocitySample;
     NSObservation *_touchForceObservation;
     long long _impulseObservations;
     double _currentImpulse;
@@ -38,8 +40,6 @@
     BOOL __prefersToBeExclusiveWithCompetingLongPressGestureRecognizers;
     BOOL __shouldAlwaysEnableMultitouchTimerAtTouchesBegin;
     long long _buttonType;
-    UILongPressGestureVelocitySample *_velocitySample;
-    UILongPressGestureVelocitySample *_previousVelocitySample;
     double _allowableElapsedTimeForAllRequiredTouches;
     double _lastTouchTime;
     struct CGPoint _lastSceneReferenceLocation;
@@ -50,11 +50,8 @@
 @property (nonatomic, setter=_setButtonType:) long long _buttonType; // @synthesize _buttonType;
 @property (readonly, nonatomic) struct CGPoint _centroidScreen;
 @property (nonatomic) BOOL _prefersToBeExclusiveWithCompetingLongPressGestureRecognizers; // @synthesize _prefersToBeExclusiveWithCompetingLongPressGestureRecognizers=__prefersToBeExclusiveWithCompetingLongPressGestureRecognizers;
-@property (readonly, getter=_previousVelocitySample) UILongPressGestureVelocitySample *_previousVelocitySample; // @synthesize _previousVelocitySample;
 @property (nonatomic, setter=_setRequiresQuietImpulse:) BOOL _requiresQuietImpulse; // @synthesize _requiresQuietImpulse;
-@property (nonatomic, setter=_setRequiresQuietImpulseForCurrentTouchSequence:) BOOL _requiresQuietImpulseForCurrentTouchSequence; // @synthesize _requiresQuietImpulseForCurrentTouchSequence;
 @property (nonatomic, setter=_setShouldAlwaysEnableMultitouchTimerAtTouchesBegin:) BOOL _shouldAlwaysEnableMultitouchTimerAtTouchesBegin; // @synthesize _shouldAlwaysEnableMultitouchTimerAtTouchesBegin=__shouldAlwaysEnableMultitouchTimerAtTouchesBegin;
-@property (readonly, getter=_velocitySample) UILongPressGestureVelocitySample *_velocitySample; // @synthesize _velocitySample;
 @property (nonatomic) double allowableMovement; // @synthesize allowableMovement=_allowableMovement;
 @property (nonatomic) BOOL cancelPastAllowableMovement;
 @property (readonly, nonatomic) struct CGPoint centroid;
@@ -89,6 +86,7 @@
 - (BOOL)_impulseQuietEnough;
 - (void)_incorporateTouchForceMessageIntoImpulseQuietness:(id)arg1;
 - (void)_interactionsEndedWithValidTouches:(BOOL)arg1;
+- (BOOL)_isGestureType:(long long)arg1;
 - (struct CGPoint)_locationOfTouches:(id)arg1;
 - (struct UIOffset)_offsetInViewFromSceneReferenceLocation:(struct CGPoint)arg1 toSceneReferenceLocation:(struct CGPoint)arg2;
 - (void)_resetGestureRecognizer;

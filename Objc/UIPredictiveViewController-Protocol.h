@@ -6,7 +6,7 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, UIInputViewSet;
+@class NSArray, UIInputViewSet, UITraitCollection;
 @protocol UIKeyInput;
 
 @protocol UIPredictiveViewController <NSObject>
@@ -15,5 +15,6 @@
 
 - (BOOL)hidesExpandableButton;
 - (BOOL)isVisibleForInputDelegate:(id<UIKeyInput>)arg1 inputViews:(UIInputViewSet *)arg2;
+- (double)preferredHeightForTraitCollection:(UITraitCollection *)arg1;
 @end
 

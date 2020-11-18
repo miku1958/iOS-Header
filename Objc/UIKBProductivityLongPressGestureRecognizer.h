@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)productivityLongPressGestureRecognizerWithTarget:(id)arg1 action:(SEL)arg2 delegate:(id)arg3;
+- (BOOL)_isGestureType:(long long)arg1;
 
 @end
 

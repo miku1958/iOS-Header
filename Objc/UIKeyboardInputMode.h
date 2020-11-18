@@ -38,6 +38,7 @@
 @property (readonly, nonatomic) NSString *identifierWithLayouts;
 @property (readonly, nonatomic) BOOL isDefaultRightToLeft;
 @property (nonatomic) BOOL isDisplayed; // @synthesize isDisplayed;
+@property (readonly, nonatomic) BOOL isEmojiInputMode;
 @property (readonly, nonatomic) BOOL isExtensionInputMode;
 @property (readonly, nonatomic) BOOL isSpecializedInputMode;
 @property (readonly, nonatomic) BOOL isStalledExtensionInputMode;
@@ -47,6 +48,7 @@
 @property (readonly, strong, nonatomic) NSArray *normalizedIdentifierLevels;
 @property (strong, nonatomic) NSString *primaryLanguage; // @synthesize primaryLanguage=_primaryLanguage;
 @property (strong, nonatomic) NSString *softwareLayout; // @synthesize softwareLayout;
+@property (readonly, nonatomic) BOOL supportsEmojiSearch;
 
 + (id)autofillSignupInputMode;
 + (id)canonicalLanguageIdentifierFromIdentifier:(id)arg1;

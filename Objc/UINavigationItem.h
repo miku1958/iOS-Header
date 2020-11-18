@@ -37,6 +37,7 @@
     NSArray *_abbreviatedBackButtonTitles;
     NSMutableDictionary *_minimumDesiredHeights;
     BOOL _manualScrollEdgeAppearanceEnabled;
+    BOOL _alwaysUseManualScrollEdgeAppearance;
     BOOL __alignLargeTitleAccessoryViewToBaseline;
     BOOL __backgroundHidden;
     BOOL _useRelativeLargeTitleInsets;
@@ -50,6 +51,7 @@
     NSArray *_rightItemSpaceList;
     unsigned long long _leftFlexibleSpaceCount;
     unsigned long long _rightFlexibleSpaceCount;
+    long long _backButtonDisplayMode;
     long long _largeTitleDisplayMode;
     UINavigationBarAppearance *_standardAppearance;
     UINavigationBarAppearance *_compactAppearance;
@@ -71,7 +73,9 @@
 @property (copy, nonatomic, setter=_setAbbreviatedBackButtonTitles:) NSArray *_abbreviatedBackButtonTitles;
 @property (readonly, nonatomic) BOOL _alignLargeTitleAccessoryViewToBaseline; // @synthesize _alignLargeTitleAccessoryViewToBaseline=__alignLargeTitleAccessoryViewToBaseline;
 @property (strong, nonatomic) NSArray *_alternateLargeTitles; // @synthesize _alternateLargeTitles=__alternateLargeTitles;
+@property (nonatomic, setter=_setAlwaysUseManualScrollEdgeAppearance:) BOOL _alwaysUseManualScrollEdgeAppearance; // @synthesize _alwaysUseManualScrollEdgeAppearance;
 @property (nonatomic, setter=_setAutoScrollEdgeTransitionDistance:) double _autoScrollEdgeTransitionDistance; // @synthesize _autoScrollEdgeTransitionDistance;
+@property (nonatomic, setter=_setBackButtonDisplayMode:) unsigned long long _backButtonDisplayMode;
 @property (nonatomic, setter=_setBackgroundHidden:) BOOL _backgroundHidden; // @synthesize _backgroundHidden=__backgroundHidden;
 @property (strong, nonatomic, setter=_setBottomPalette:) _UINavigationBarPalette *_bottomPalette; // @synthesize _bottomPalette;
 @property (strong, nonatomic, setter=_setCanvasView:) UIView *_canvasView; // @synthesize _canvasView=__canvasView;
@@ -98,6 +102,7 @@
 @property (nonatomic) double _titleViewWidthForAnimations; // @synthesize _titleViewWidthForAnimations=__titleViewWidthForAnimations;
 @property (copy, nonatomic, setter=_setWeeTitle:) NSString *_weeTitle; // @synthesize _weeTitle=__weeTitle;
 @property (strong, nonatomic) UIBarButtonItem *backBarButtonItem;
+@property (nonatomic) long long backButtonDisplayMode; // @synthesize backButtonDisplayMode=_backButtonDisplayMode;
 @property (copy, nonatomic) NSString *backButtonTitle;
 @property (copy, nonatomic) UINavigationBarAppearance *compactAppearance; // @synthesize compactAppearance=_compactAppearance;
 @property (strong, nonatomic) id context; // @synthesize context=_context;
@@ -133,6 +138,7 @@
 - (void).cxx_destruct;
 - (BOOL)_accumulateViewsFromItems:(id)arg1 isLeft:(BOOL)arg2 refreshViews:(BOOL)arg3;
 - (id)_addDefaultTitleViewToNavigationBarIfNecessary:(id)arg1;
+- (id)_backButtonTitleAllowingGenericTitles:(BOOL)arg1;
 - (id)_barButtonForBackButtonIndicator;
 - (id)_buttonForBackButtonIndicator;
 - (void)_cleanupFrozenTitleView;
@@ -217,6 +223,7 @@
 - (void)setObject:(id)arg1 forLeftRightKeyPath:(id)arg2 animated:(BOOL)arg3;
 - (void)setRightBarButtonItem:(id)arg1 animated:(BOOL)arg2;
 - (void)setRightBarButtonItems:(id)arg1 animated:(BOOL)arg2;
+- (void)set_alwaysUseManualScrollEdgeAppearance:(BOOL)arg1;
 - (void)set_customLeftView:(id)arg1;
 - (void)set_customLeftViews:(id)arg1;
 - (void)set_customRightView:(id)arg1;

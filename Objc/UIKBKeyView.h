@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
     double _endingTransitionDuration;
 }
 
+@property (readonly, nonatomic) long long assetIdiom;
 @property (readonly, nonatomic) long long cacheDeferPriority;
 @property (readonly, nonatomic) BOOL cacheDeferable;
 @property (readonly, nonatomic) NSString *cacheKey;
@@ -63,6 +64,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) struct CGRect variantFrame;
 
++ (BOOL)wantsScreenTraits;
 - (void)_applyAppearanceInvocations;
 - (BOOL)_canDrawContent;
 - (id)_generateBackdropMaskImage;
@@ -83,6 +85,7 @@ __attribute__((visibility("hidden")))
 - (void)hideKeyCap:(BOOL)arg1;
 - (long long)imageOrientationForLayer:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3 screenTraits:(id)arg4;
 - (id)layerForRenderFlags:(long long)arg1;
 - (void)prepareForDisplay;
 - (void)removeFromSuperview;

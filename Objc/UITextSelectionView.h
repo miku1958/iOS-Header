@@ -6,20 +6,21 @@
 
 #import <UIKitCore/UIView.h>
 
-@class NSArray, NSTimer, UITextInteractionAssistant, UITextRangeView, UITextSelection;
+@class CAKeyframeAnimation, NSArray, UITextInteractionAssistant, UITextRangeView, UITextSelection;
 
 __attribute__((visibility("hidden")))
 @interface UITextSelectionView : UIView
 {
     UITextInteractionAssistant *m_interactionAssistant;
     UITextSelection *m_selection;
-    NSTimer *m_caretTimer;
     UIView *m_caretView;
     UIView *m_floatingCaretView;
     UITextRangeView *m_rangeView;
     BOOL m_caretBlinks;
     BOOL m_caretShowingNow;
     BOOL m_caretAnimating;
+    BOOL m_ghostApperarance;
+    BOOL m_caretVisible;
     BOOL m_visible;
     BOOL m_activated;
     BOOL m_wasShowingCommands;
@@ -34,6 +35,8 @@ __attribute__((visibility("hidden")))
     BOOL m_isSuspended;
     int m_showingCommandsCounterForRotate;
     unsigned long long _activeGrabberSuppressionAssertions;
+    CAKeyframeAnimation *_caretBlinkAnimation;
+    id _floatingCaretBlinkAssertion;
     BOOL m_forceRangeView;
     BOOL m_isInstalledInSelectionContainerView;
     BOOL _isIndirectFloatingCaret;
@@ -43,8 +46,10 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) BOOL caretBlinks; // @synthesize caretBlinks=m_caretBlinks;
 @property (readonly, nonatomic) UIView *caretView; // @synthesize caretView=m_caretView;
+@property (nonatomic) BOOL caretVisible;
 @property (readonly, nonatomic) UIView *floatingCaretView; // @synthesize floatingCaretView=m_floatingCaretView;
 @property (nonatomic) BOOL forceRangeView; // @synthesize forceRangeView=m_forceRangeView;
+@property (nonatomic) BOOL ghostAppearance;
 @property (readonly, weak, nonatomic) UITextInteractionAssistant *interactionAssistant; // @synthesize interactionAssistant=m_interactionAssistant;
 @property (nonatomic) BOOL isIndirectFloatingCaret; // @synthesize isIndirectFloatingCaret=_isIndirectFloatingCaret;
 @property (readonly, nonatomic) BOOL isInstalledInSelectionContainerView; // @synthesize isInstalledInSelectionContainerView=m_isInstalledInSelectionContainerView;
@@ -60,12 +65,14 @@ __attribute__((visibility("hidden")))
 - (id)_actingParentViewForGestureRecognizers;
 - (id)_customSelectionContainerView;
 - (void)_hideCaret:(int)arg1;
+- (void)_setCaretBlinkAnimationEnabled:(BOOL)arg1;
 - (BOOL)_shouldUseIndirectFloatingCaret;
 - (void)_showCaret:(int)arg1;
 - (void)_showCommandsWithReplacements:(id)arg1 forDictation:(BOOL)arg2 afterDelay:(double)arg3;
 - (void)_showCommandsWithReplacements:(id)arg1 isForContextMenu:(BOOL)arg2 forDictation:(BOOL)arg3 rectsToEvade:(id)arg4;
 - (void)_showSelectionCommandsForContextMenu:(BOOL)arg1;
 - (void)activate;
+- (BOOL)activeCaret;
 - (BOOL)affectedByScrollerNotification:(id)arg1;
 - (void)animateBoxShrinkOn:(id)arg1;
 - (void)animateCaret:(id)arg1 toPosition:(struct CGPoint)arg2 withSize:(struct CGSize)arg3;
@@ -77,13 +84,13 @@ __attribute__((visibility("hidden")))
 - (void)beginFloatingCursorAtPoint:(struct CGPoint)arg1;
 - (void)calculateReplacementsWithGenerator:(id)arg1 andShowAfterDelay:(double)arg2;
 - (void)cancelDelayedCommandRequests;
-- (void)caretBlinkTimerFired:(id)arg1;
 - (id)caretViewColor;
 - (void)clearCaret;
-- (void)clearCaretBlinkTimer;
 - (void)clearRangeAnimated:(BOOL)arg1;
 - (struct CGRect)clippedTargetRect:(struct CGRect)arg1;
 - (void)configureForHighlightMode;
+- (void)configureForPencilDeletionPreviewMode;
+- (void)configureForPencilHighlightMode;
 - (void)configureForReplacementMode;
 - (void)configureForSelectionMode;
 - (void)deactivate;
@@ -101,6 +108,7 @@ __attribute__((visibility("hidden")))
 - (void)endFloatingCursor;
 - (id)floatingCaretViewColor;
 - (struct CGPoint)floatingCursorPositionForPoint:(struct CGPoint)arg1;
+- (id)ghostCaretViewColor;
 - (void)hideCaret:(int)arg1;
 - (void)hideSelectionCommands;
 - (void)hideSelectionCommandsAfterDelay:(double)arg1;
@@ -141,10 +149,8 @@ __attribute__((visibility("hidden")))
 - (void)showReplacementsWithGenerator:(id)arg1 forDictation:(BOOL)arg2 afterDelay:(double)arg3;
 - (void)showSelectionCommands;
 - (void)showSelectionCommandsAfterDelay:(double)arg1;
-- (void)startCaretBlinkIfNeeded;
 - (void)textSelectionViewActivated:(id)arg1;
 - (void)tintColorDidChange;
-- (void)touchCaretBlinkTimer;
 - (void)updateBaseIsStartWithDocumentPoint:(struct CGPoint)arg1;
 - (BOOL)updateCalloutBarRects:(id)arg1 effectsWindow:(id)arg2 rectsToEvade:(id)arg3;
 - (void)updateDocumentHasContent:(BOOL)arg1;

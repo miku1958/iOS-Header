@@ -22,15 +22,15 @@ __attribute__((visibility("hidden")))
 + (double)leadingItemSpacing;
 + (double)leadingSmallPillSpacing;
 + (double)lowerExpandedBaselineOffset;
++ (double)nativeDisplayWidth;
 + (id)normalFont;
 + (struct CGSize)notchSize;
 + (double)pillCenteringEdgeInset;
 + (id)pillFont;
 + (struct CGSize)pillSize;
 + (id)pillSmallFont;
-+ (double)referenceWidth;
-+ (id)smallFont;
 + (struct CGSize)smallPillSize;
++ (id)systemUpdateFont;
 - (id)stringForCellularType:(long long)arg1 condensed:(BOOL)arg2;
 
 @end

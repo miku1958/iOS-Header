@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/_UIGestureDelaying-Protocol.h>
 
-@class UIPress, UIPressesEvent;
+@class NSString, UIPress, UIPressesEvent;
 
 __attribute__((visibility("hidden")))
-@interface UIGestureDelayedPress : NSObject <NSCopying>
+@interface UIGestureDelayedPress : NSObject <NSCopying, _UIGestureDelaying>
 {
     long long _delayCount;
     BOOL _cloneForSecondDelivery;
@@ -21,21 +22,15 @@ __attribute__((visibility("hidden")))
     UIPressesEvent *_event;
 }
 
-@property BOOL cloneForSecondDelivery; // @synthesize cloneForSecondDelivery=_cloneForSecondDelivery;
-@property (strong, nonatomic) UIPressesEvent *event; // @synthesize event=_event;
-@property (strong, nonatomic) UIPress *press; // @synthesize press=_press;
-@property (strong, nonatomic) UIPress *stateWhenDelayed; // @synthesize stateWhenDelayed=_stateWhenDelayed;
-@property (strong, nonatomic) UIPress *stateWhenDelivered; // @synthesize stateWhenDelivered=_stateWhenDelivered;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (long long)decrementDelayCount;
-- (long long)delayCount;
-- (id)description;
-- (void)incrementDelayCount;
 - (id)init;
 - (long long)phaseForDelivery;
-- (void)saveCurrentPressState;
 - (double)timestampForDelivery;
 
 @end

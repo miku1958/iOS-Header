@@ -69,8 +69,6 @@
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (void)_applicationWillEnterForeground:(id)arg1;
 - (id)_artCacheKeyWithStyle:(long long)arg1 color:(id)arg2;
-- (BOOL)_canCustomize;
-- (BOOL)_canCustomizeStyle:(long long)arg1;
 - (BOOL)_colorRequiresDynamicTinting;
 - (void)_commonInit;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedHeight;
@@ -106,6 +104,7 @@
 - (void)_updateLayoutInfo;
 - (void)_updateMessageForStyle:(long long)arg1;
 - (void)_updateSubviewFramesWithBounds:(struct CGRect)arg1;
+- (BOOL)_useCustomStyleForLegacyStyles;
 - (double)_widthForGearWidth:(double)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

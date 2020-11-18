@@ -58,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (double)textKeyFontWeight;
 - (double)tldKeyFontSize;
 - (double)tldKeyFontWeight;
+- (id)variantKeyBackgroundColor;
 - (id)variantKeyColor;
 
 @end

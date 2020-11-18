@@ -46,13 +46,11 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSArray *withImageConstraints; // @synthesize withImageConstraints=_withImageConstraints;
 @property (copy, nonatomic) NSArray *withoutImageConstraints; // @synthesize withoutImageConstraints=_withoutImageConstraints;
 
-+ (id)defaultAtomBackgroundColor;
++ (id)_defaultFont;
++ (id)defaultAtomBackgroundColorForTraitCollection:(id)arg1;
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
-- (double)_bottomMargin;
 - (void)_dynamicUserInterfaceTraitDidChange;
-- (id)_font;
-- (double)_topToBaselineDelta;
 - (void)_updateColors;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setEnabled:(BOOL)arg1 animated:(BOOL)arg2;

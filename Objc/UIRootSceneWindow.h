@@ -8,15 +8,13 @@
 
 #import <UIKitCore/UIMutableTransformerDelegate-Protocol.h>
 
-@class CALayer, FBSDisplayConfiguration, NSString, UIMutableTransformer, UIView;
+@class FBSDisplayConfiguration, NSString, UIMutableTransformer, UIView;
 
 @interface UIRootSceneWindow : _UIRootWindow <UIMutableTransformerDelegate>
 {
     FBSDisplayConfiguration *_displayConfiguration;
     UIView *_sceneContainerView;
     UIMutableTransformer *_sceneTransformer;
-    CALayer *_bezelLayer;
-    CALayer *_maskLayer;
 }
 
 @property (readonly, nonatomic) UIView *_sceneContainerView; // @synthesize _sceneContainerView;

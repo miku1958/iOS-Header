@@ -17,6 +17,7 @@
     BOOL _locked;
     BOOL _sendActionsBeforeDismiss;
     BOOL _hidden;
+    BOOL _shouldAlwaysCollapse;
     float _priority;
     UIBarButtonItem *_representativeItem;
     id<_UIBarButtonItemGroupOwner> _owner;
@@ -39,6 +40,8 @@
 @property (strong, nonatomic) UIBarButtonItem *representativeItem; // @synthesize representativeItem=_representativeItem;
 @property (strong, nonatomic, getter=_representativeUI, setter=_setRepresentativeUI:) _UIButtonGroupViewController *representativeUI; // @synthesize representativeUI=_representativeUI;
 @property (nonatomic, getter=_sendActionsBeforeDismiss, setter=_setSendActionsBeforeDismiss:) BOOL sendActionsBeforeDismiss; // @synthesize sendActionsBeforeDismiss=_sendActionsBeforeDismiss;
+@property (nonatomic, getter=_shouldAlwaysCollapse, setter=_setShouldAlwaysCollapse:) BOOL shouldAlwaysCollapse; // @synthesize shouldAlwaysCollapse=_shouldAlwaysCollapse;
+@property (readonly, nonatomic, getter=_isSystemGroup) BOOL systemGroup;
 
 - (void).cxx_destruct;
 - (void)_removeBarButtonItem:(id)arg1;

@@ -13,12 +13,14 @@
 
 @interface _UIStatusBarStyleAttributes : NSObject <NSSecureCoding, NSCopying>
 {
+    BOOL _scaledFixedWidthBar;
     long long _style;
     long long _mode;
     UITraitCollection *_traitCollection;
     long long _effectiveLayoutDirection;
     double _iconScale;
     long long _symbolScale;
+    long long _iconSize;
     UIFont *_font;
     UIFont *_emphasizedFont;
     UIFont *_smallFont;
@@ -32,10 +34,12 @@
 @property (copy, nonatomic) UIFont *emphasizedFont; // @synthesize emphasizedFont=_emphasizedFont;
 @property (copy, nonatomic) UIFont *font; // @synthesize font=_font;
 @property (nonatomic) double iconScale; // @synthesize iconScale=_iconScale;
+@property (nonatomic) long long iconSize; // @synthesize iconSize=_iconSize;
 @property (copy, nonatomic) UIColor *imageDimmedTintColor; // @synthesize imageDimmedTintColor=_imageDimmedTintColor;
 @property (copy, nonatomic) NSArray *imageNamePrefixes; // @synthesize imageNamePrefixes=_imageNamePrefixes;
 @property (copy, nonatomic) UIColor *imageTintColor; // @synthesize imageTintColor=_imageTintColor;
 @property (readonly, nonatomic) long long mode; // @synthesize mode=_mode;
+@property (nonatomic, getter=isScaledFixedWidthBar) BOOL scaledFixedWidthBar; // @synthesize scaledFixedWidthBar=_scaledFixedWidthBar;
 @property (copy, nonatomic) UIFont *smallFont; // @synthesize smallFont=_smallFont;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
 @property (nonatomic) long long symbolScale; // @synthesize symbolScale=_symbolScale;

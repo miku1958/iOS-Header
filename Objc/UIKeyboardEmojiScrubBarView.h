@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)willMoveToSuperview:(id)arg1;
+- (void)didMoveToWindow;
 
 @end
 

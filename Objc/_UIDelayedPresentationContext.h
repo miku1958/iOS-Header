@@ -24,11 +24,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSInvocation *presentInvocation; // @synthesize presentInvocation=_presentInvocation;
 
 - (void).cxx_destruct;
-- (void)beginDelayedPresentation;
-- (void)cancelDelayedPresentation:(BOOL)arg1;
 - (long long)decrementRequestCount;
 - (id)delayingController;
-- (void)finishDelayedPresentation:(id)arg1;
 - (long long)incrementRequestCount;
 - (id)initWithTimeout:(double)arg1 cancellationHandler:(CDUnknownBlockType)arg2;
 - (id)invocationTarget;

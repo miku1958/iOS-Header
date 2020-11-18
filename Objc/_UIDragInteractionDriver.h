@@ -8,12 +8,13 @@
 
 #import <UIKitCore/_UIDragInteractionDriving-Protocol.h>
 
-@class NSArray, NSString, UIView, _UIDragInteractionDriverStateMachine;
+@class NSArray, NSString, UIView;
 @protocol _UIDragInteractionDriverDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UIDragInteractionDriver : NSObject <_UIDragInteractionDriving>
 {
+    struct _UIDragInteractionDriverStateMachine _stateMachine;
     BOOL _enabled;
     BOOL _additionalTouchesCancelLift;
     BOOL _allowsSimultaneousRecognitionDuringLift;
@@ -28,7 +29,6 @@ __attribute__((visibility("hidden")))
     double _competingLongPressDelay;
     double _liftMoveHysteresis;
     NSArray *_allowedTouchTypes;
-    _UIDragInteractionDriverStateMachine *_stateMachine;
     struct CGPoint _initialLocationInWindow;
 }
 
@@ -50,7 +50,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double liftDelay; // @synthesize liftDelay=_liftDelay;
 @property (nonatomic) double liftMoveHysteresis; // @synthesize liftMoveHysteresis=_liftMoveHysteresis;
 @property (nonatomic) BOOL shouldAnimateLift; // @synthesize shouldAnimateLift=_shouldAnimateLift;
-@property (readonly, nonatomic) _UIDragInteractionDriverStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) UIView *view; // @synthesize view=_view;
 
@@ -60,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)detachFromView:(id)arg1;
 - (void)didTransitionToBeginState;
 - (void)didTransitionToCancelState;
+- (void)didTransitionToDeferred;
 - (void)didTransitionToInactiveState;
 - (void)didTransitionToInflightState;
 - (void)didTransitionToPreparing;

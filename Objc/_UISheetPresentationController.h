@@ -6,6 +6,7 @@
 
 #import <UIKitCore/UIPresentationController.h>
 
+#import <UIKitCore/UIDimmingViewDelegate-Protocol.h>
 #import <UIKitCore/UIDragInteractionDelegate-Protocol.h>
 #import <UIKitCore/_UISheetInteractionDelegate-Protocol.h>
 #import <UIKitCore/_UISheetLayoutInfoDelegate-Protocol.h>
@@ -13,7 +14,7 @@
 @class NSArray, NSString, NSUserActivity, UIDimmingView, UIDragInteraction, UIDropShadowView, UIPercentDrivenInteractiveTransition, UIView, UIViewPropertyAnimator, _UIRemoteViewController, _UISheetAnimationController, _UISheetInteraction, _UISheetLayoutInfo, _UISheetPresentationControllerConfiguration;
 @protocol _UISheetPresentationControllerDelegate;
 
-@interface _UISheetPresentationController : UIPresentationController <_UISheetLayoutInfoDelegate, _UISheetInteractionDelegate, UIDragInteractionDelegate>
+@interface _UISheetPresentationController : UIPresentationController <UIDimmingViewDelegate, _UISheetLayoutInfoDelegate, _UISheetInteractionDelegate, UIDragInteractionDelegate>
 {
     BOOL __shouldPresentedViewControllerControlStatusBarAppearance;
     BOOL __didAttemptToStartDismiss;
@@ -24,9 +25,10 @@
     BOOL __isRemote;
     BOOL __presentsAtStandardHalfHeight;
     BOOL __allowsTearOff;
+    _UISheetInteraction *__sheetInteraction;
+    double __preferredRecessedCornerRadius;
     _UISheetLayoutInfo *__layoutInfo;
     UIDimmingView *__confinedDimmingView;
-    _UISheetInteraction *__sheetInteraction;
     _UISheetAnimationController *__animationController;
     UIPercentDrivenInteractiveTransition *__interactionController;
     UIDragInteraction *__tearOffInteraction;
@@ -39,18 +41,21 @@
     struct CGRect _frameOfPresentedViewInContainerView;
 }
 
+@property (nonatomic, setter=_setAdditionalMinimumTopInset:) double _additionalMinimumTopInset;
+@property (nonatomic, setter=_setAllowsInteractiveDismissWhenFullScreen:) BOOL _allowsInteractiveDismissWhenFullScreen;
 @property (nonatomic, setter=_setAllowsTearOff:) BOOL _allowsTearOff; // @synthesize _allowsTearOff=__allowsTearOff;
 @property (strong, nonatomic, setter=_setAnimatedTransition:) _UISheetAnimationController *_animationController; // @synthesize _animationController=__animationController;
 @property (readonly, nonatomic) _UISheetPresentationController *_childSheetPresentationController;
 @property (strong, nonatomic, setter=_setConfiguration:) _UISheetPresentationControllerConfiguration *_configuration;
 @property (readonly, nonatomic) UIDimmingView *_confinedDimmingView; // @synthesize _confinedDimmingView=__confinedDimmingView;
 @property (readonly, nonatomic) _UIRemoteViewController *_connectedRemoteViewController; // @synthesize _connectedRemoteViewController=__connectedRemoteViewController;
-@property (nonatomic) double _cornerRadiusForPresentationAndDismissal;
+@property (nonatomic, setter=_setCornerRadiusForPresentationAndDismissal:) double _cornerRadiusForPresentationAndDismissal;
 @property (copy, nonatomic, setter=_setDetents:) NSArray *_detents;
 @property (nonatomic, setter=_setDidAttemptToStartDismiss:) BOOL _didAttemptToStartDismiss; // @synthesize _didAttemptToStartDismiss=__didAttemptToStartDismiss;
 @property (nonatomic, setter=_setDidTearOff:) BOOL _didTearOff; // @synthesize _didTearOff=__didTearOff;
 @property (nonatomic, getter=_isDimmingViewTapDismissing, setter=_setDimmingViewTapDismissing:) BOOL _dimmingViewTapDismissing; // @synthesize _dimmingViewTapDismissing=__dimmingViewTapDismissing;
 @property (readonly, nonatomic) _UIRemoteViewController *_expectedRemoteViewController;
+@property (nonatomic, setter=_setGrabberTopSpacing:) double _grabberTopSpacing;
 @property (readonly, nonatomic, getter=_isHosting) BOOL _hosting;
 @property (nonatomic, setter=_setIndexOfCurrentDetent:) long long _indexOfCurrentDetent;
 @property (nonatomic, setter=_setIndexOfLastUndimmedDetent:) long long _indexOfLastUndimmedDetent;
@@ -63,10 +68,14 @@
 @property (nonatomic, setter=_setMode:) long long _mode;
 @property (readonly, nonatomic) _UISheetPresentationController *_parentSheetPresentationController;
 @property (copy, nonatomic, setter=_setPassthroughViews:) NSArray *_passthroughViews;
+@property (nonatomic, setter=_setPreferredCornerRadius:) double _preferredCornerRadius;
+@property (nonatomic, setter=_setPreferredRecessedCornerRadius:) double _preferredRecessedCornerRadius; // @synthesize _preferredRecessedCornerRadius=__preferredRecessedCornerRadius;
+@property (nonatomic, setter=_setPrefersScrollingExpandsToLargerDetentWhenScrolledToEdge:) BOOL _prefersScrollingExpandsToLargerDetentWhenScrolledToEdge;
 @property (nonatomic, setter=_setPresentsAtStandardHalfHeight:) BOOL _presentsAtStandardHalfHeight; // @synthesize _presentsAtStandardHalfHeight=__presentsAtStandardHalfHeight;
 @property (strong, nonatomic) UIViewPropertyAnimator *_remoteDismissalPropertyAnimator; // @synthesize _remoteDismissalPropertyAnimator=__remoteDismissalPropertyAnimator;
 @property (nonatomic, getter=_isRemoteDismissing, setter=_setRemoteDismissing:) BOOL _remoteDismissing; // @synthesize _remoteDismissing=__remoteDismissing;
 @property (readonly, nonatomic) _UISheetInteraction *_sheetInteraction; // @synthesize _sheetInteraction=__sheetInteraction;
+@property (readonly, nonatomic) _UISheetInteraction *_sheetInteractionIfLoaded;
 @property (nonatomic, setter=_setShouldPresentedViewControllerControlStatusBarAppearance:) BOOL _shouldPresentedViewControllerControlStatusBarAppearance; // @synthesize _shouldPresentedViewControllerControlStatusBarAppearance=__shouldPresentedViewControllerControlStatusBarAppearance;
 @property (nonatomic, setter=_setShouldScaleDownBehindDescendantSheets:) BOOL _shouldScaleDownBehindDescendantSheets;
 @property (strong, nonatomic, setter=_setSourceView:) UIView *_sourceView;
@@ -91,7 +100,6 @@
 - (void).cxx_destruct;
 - (void)_accessibilityReduceMotionStatusDidChange;
 - (void)_completeInteractiveTransition:(BOOL)arg1 duration:(double)arg2 timingCurve:(id)arg3;
-- (void)_completeInteractiveTransitionFromRemote:(BOOL)arg1 offset:(double)arg2 duration:(double)arg3 timingCurve:(id)arg4;
 - (void)_containerViewBoundsDidChange;
 - (void)_containerViewLayoutSubviews;
 - (void)_containerViewSafeAreaInsetsDidChange;
@@ -105,17 +113,17 @@
 - (id)_preferredAnimationControllerForDismissal;
 - (id)_preferredInteractionControllerForDismissal:(id)arg1;
 - (void)_realSourceViewGeometryDidChange;
+- (void)_remoteSheetInteractionDidChangeOffset:(struct CGPoint)arg1 dragging:(BOOL)arg2 dismissible:(BOOL)arg3 indexOfCurrentDetent:(unsigned long long)arg4 duration:(double)arg5 timingCurve:(id)arg6;
 - (void)_resetRemoteDismissing;
+- (void)_sheetInteractionDidChangeOffset:(struct CGPoint)arg1 dragging:(BOOL)arg2 deferredDismissible:(CDUnknownBlockType)arg3 indexOfCurrentDetent:(unsigned long long)arg4 duration:(double)arg5 timingCurve:(id)arg6;
 - (void)_sheetLayoutInfoDidInvalidateOutput:(id)arg1;
 - (void)_sheetLayoutInfoLayout:(id)arg1;
 - (void)_sheetLayoutInfoPrelayout:(id)arg1;
 - (BOOL)_shouldOccludeDuringPresentation;
 - (BOOL)_shouldPreserveFirstResponder;
-- (void)_startInteractiveTransitionFromRemoteWithProgress:(double)arg1 offset:(double)arg2;
 - (void)_startInteractiveTransitionWithProgress:(double)arg1;
 - (void)_tryToConnectToRemoteViewController:(id)arg1;
 - (void)_updateAnimationController;
-- (void)_updateInteractiveTransitionFromRemoteWithProgress:(double)arg1 offset:(double)arg2;
 - (void)_updateInteractiveTransitionWithProgress:(double)arg1;
 - (void)_updateLayoutInfoContainerSafeAreaInsets;
 - (void)_updateLayoutInfoContainerTraitCollection;

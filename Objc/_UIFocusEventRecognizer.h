@@ -10,7 +10,7 @@
 #import <UIKitCore/_UIFocusEnginePanGestureRecognizerDelegate-Protocol.h>
 #import <UIKitCore/_UIFocusFastScrollingRecognizerDelegate-Protocol.h>
 
-@class CADisplayLink, CARInputDeviceTouchpad, CARSessionStatus, NSArray, NSObservation, NSString, NSTimer, NSUserDefaults, UIMoveEvent, UIScrollView, UITapGestureRecognizer, UIView, _UIFocusEffectsController, _UIFocusEngineJoystickGestureRecognizer, _UIFocusEnginePanGestureRecognizer, _UIFocusFastScrollingRecognizer, _UIFocusLinearMovementDebugGestureRecognizer, _UIFocusLinearMovementDebugView, _UIFocusMovementInfo, _UIFocusPressGestureRecognizer;
+@class CADisplayLink, CARInputDeviceTouchpad, NSArray, NSString, NSTimer, UIMoveEvent, UIScrollView, UITapGestureRecognizer, UIView, _UIFocusEffectsController, _UIFocusEngineJoystickGestureRecognizer, _UIFocusEnginePanGestureRecognizer, _UIFocusFastScrollingRecognizer, _UIFocusLinearMovementDebugGestureRecognizer, _UIFocusLinearMovementDebugView, _UIFocusMovementInfo, _UIFocusPressGestureRecognizer;
 @protocol _UIFocusEventRecognizerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     int _numFrames;
     struct CGVector _progressAccumulator;
     struct CGVector _unlockedAccumulator;
+    unsigned long long _failedPanGestureHeading;
     _UIFocusFastScrollingRecognizer *_fastScrollingRecognizer;
     struct CGPoint _firstMomentumTouchPoint;
     struct CGPoint _lastMomentumTouchPoint;
@@ -47,10 +48,6 @@ __attribute__((visibility("hidden")))
     UIScrollView *_lastScrolledScroll;
     double _lastEdgeScrollEdgeValue;
     unsigned long long _inputType;
-    BOOL _isShippingSettings;
-    NSUserDefaults *_trackingUserDefaults;
-    NSObservation *_trackingModeObserveration;
-    CARSessionStatus *_sessionStatus;
     CARInputDeviceTouchpad *_currentCarTouchpad;
     struct {
         unsigned int isEligibleToCrossSpeedBump:1;
@@ -95,8 +92,9 @@ __attribute__((visibility("hidden")))
 - (id)_focusMovementForJoystickPosition:(struct CGPoint)arg1 usingMinimumRadius:(double)arg2 focusMovementStyle:(long long)arg3;
 - (id)_focusMovementSystem;
 - (void)_focusSystemEnabledStateDidChange:(id)arg1;
-- (double)_frictionInterpolationForMomentumSpeed:(double)arg1 totalDistance:(double)arg2 slope:(double)arg3 shortDistance:(double)arg4 longDistance:(double)arg5;
+- (id)_focusSystemSceneComponent;
 - (void)_gestureRecognizerFailed:(id)arg1;
+- (id)_globalCoordinateSpace;
 - (void)_handleButtonGesture:(id)arg1;
 - (void)_handleJoystickGesture:(id)arg1;
 - (void)_handleJoystickRepeatMode:(id)arg1;
@@ -107,7 +105,6 @@ __attribute__((visibility("hidden")))
 - (void)_handleTapGesture:(id)arg1;
 - (unsigned long long)_headingForJoystickPosition:(struct CGPoint)arg1 usingMinimumRadius:(double)arg2;
 - (BOOL)_hideLinearGroupDebugOverlayIfNecessary:(BOOL)arg1;
-- (double)_horizontalFrictionInterpolationForMomentumSpeed:(double)arg1 totalDistance:(double)arg2;
 - (BOOL)_joystickAttemptFocusMovementWithRequest:(id)arg1;
 - (void)_joystickDisplayLinkHeartbeat:(id)arg1;
 - (BOOL)_joystickFocusMovement:(id)arg1 shouldBeConsideredEqualToFocusMovement:(id)arg2;
@@ -118,6 +115,7 @@ __attribute__((visibility("hidden")))
 - (double)_joystickRepeatDurationForTimeInMovementZone:(double)arg1;
 - (struct CGVector)_joystickVelocityForHeading:(unsigned long long)arg1;
 - (void)_momentumHeartbeat:(id)arg1;
+- (struct CGSize)_momentumReferenceSize;
 - (void)_moveFocusContainerWithHeading:(unsigned long long)arg1;
 - (BOOL)_moveInDirection:(unsigned long long)arg1;
 - (BOOL)_moveInDirection:(unsigned long long)arg1 withEvaluator:(CDUnknownBlockType)arg2;
@@ -129,10 +127,12 @@ __attribute__((visibility("hidden")))
 - (void)_previousFocusContainer:(id)arg1;
 - (void)_recordMomentumForPoint:(struct CGPoint)arg1;
 - (void)_removeGestureRecognizers;
+- (void)_resetFailedMovementHeading;
 - (void)_resetJoystick;
 - (void)_resetMomentum;
 - (void)_resetMotionEffects;
 - (void)_resetPanGestureState;
+- (void)_resetProgressAccumulator;
 - (void)_resetProgressAccumulatorWithRequest:(id)arg1;
 - (void)_sendGestureBeginNotification;
 - (void)_sendMomentumEndNotificationsAndAnimateRollback:(BOOL)arg1;
@@ -147,8 +147,6 @@ __attribute__((visibility("hidden")))
 - (id)_uiktest_panGestureRecognizer;
 - (void)_uiktest_setPanGestureRecognizer:(id)arg1;
 - (void)_updatePanLocation:(struct CGPoint)arg1 reportedVelocity:(struct CGVector)arg2;
-- (void)_updateTrackingMode;
-- (double)_verticalFrictionInterpolationForMomentumSpeed:(double)arg1 totalDistance:(double)arg2;
 - (void)dealloc;
 - (void)fastScrollingRecognizer:(id)arg1 didRecognizeFastScrollingRequest:(id)arg2;
 - (BOOL)focusEnginePanGestureRecognizerShouldRecognizeImmediately:(id)arg1;

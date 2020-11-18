@@ -8,7 +8,7 @@
 
 #import <UIKitCore/_UILayoutEngineSuspending-Protocol.h>
 
-@class CALayer, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface UITableViewCellContentView : UIView <_UILayoutEngineSuspending>
@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
         unsigned int edgesForOverridingDefaultLayoutMargins:4;
     } _contentViewFlags;
     BOOL _isLayoutEngineSuspended;
-    CALayer *_mask;
     struct NSDirectionalEdgeInsets _overriddenDefaultLayoutMargins;
 }
 
@@ -25,20 +24,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) CALayer *mask; // @synthesize mask=_mask;
 @property (nonatomic, getter=_overriddenDefaultLayoutMargins, setter=_setOverriddenDefaultLayoutMargins:) struct NSDirectionalEdgeInsets overriddenDefaultLayoutMargins; // @synthesize overriddenDefaultLayoutMargins=_overriddenDefaultLayoutMargins;
 @property (readonly) Class superclass;
 
 + (id)classFallbacksForKeyedArchiver;
-- (void).cxx_destruct;
-- (id)_cell;
 - (struct UIEdgeInsets)_concreteDefaultLayoutMargins;
 - (void)_tableViewCellContentViewCommonSetup;
-- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)setBounds:(struct CGRect)arg1;
-- (void)setFrame:(struct CGRect)arg1;
 - (void)setTranslatesAutoresizingMaskIntoConstraints:(BOOL)arg1;
 
 @end

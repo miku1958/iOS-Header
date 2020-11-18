@@ -6,27 +6,41 @@
 
 #import <UIKitCore/UIView.h>
 
+#import <UIKitCore/UIEditable-Protocol.h>
+
 @class NSString, UICollectionView, UICollectionViewLayoutAttributes;
 
-@interface UICollectionReusableView : UIView
+@interface UICollectionReusableView : UIView <UIEditable>
 {
     UICollectionViewLayoutAttributes *_layoutAttributes;
     UICollectionView *_collectionView;
     long long _updateAnimationCount;
-    BOOL _shouldConstrainWidth;
-    BOOL _shouldConstrainHeight;
+    struct UIEdgeInsets _defaultLayoutMargins;
     struct {
         unsigned int wasDequeued:1;
         unsigned int preferredAttributesValid:1;
         unsigned int generatingPreferredAttributes:1;
+        unsigned int didSetMasksToBounds:1;
         unsigned int didSetMaskedCorners:1;
+        unsigned int didSetCornerRadius:1;
+        unsigned int didSetMaskView:1;
+        unsigned int hasBlocksToPerformWhenReused:1;
         unsigned int isBeingReused:1;
+        unsigned int collectionViewHasBeenExplicitlySet:1;
+        unsigned int shouldConstrainWidth:1;
+        unsigned int shouldConstrainHeight:1;
+        unsigned int hasDefaultLayoutMargins:1;
     } _reusableViewFlags;
     BOOL _preferredAttributesValid;
     NSString *_reuseIdentifier;
 }
 
+@property (readonly, nonatomic) BOOL canBeEdited;
 @property (weak, nonatomic, getter=_collectionView, setter=_setCollectionView:) UICollectionView *collectionView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isEditing) BOOL editing;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=_isInUpdateAnimation) BOOL inUpdateAnimation;
 @property (nonatomic, getter=_isBeingReused, setter=_setIsBeingReused:) BOOL isBeingReused;
 @property (copy, nonatomic, getter=_layoutAttributes, setter=_setLayoutAttributes:) UICollectionViewLayoutAttributes *layoutAttributes;
@@ -34,27 +48,34 @@
 @property (copy, nonatomic, setter=_setReuseIdentifier:) NSString *reuseIdentifier; // @synthesize reuseIdentifier=_reuseIdentifier;
 @property (nonatomic, getter=_shouldConstrainHeight, setter=_setShouldConstrainHeight:) BOOL shouldConstrainHeight;
 @property (nonatomic, getter=_shouldConstrainWidth, setter=_setShouldConstrainWidth:) BOOL shouldConstrainWidth;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_addUpdateAnimation;
+- (BOOL)_appliesLayoutAttributesMaskingToReusableView;
 - (void)_clearUpdateAnimation;
 - (struct UIEdgeInsets)_concreteDefaultLayoutMargins;
 - (BOOL)_disableRasterizeInAnimations;
 - (void)_invalidatePreferredAttributes;
+- (BOOL)_isFocusableWhenStyledAsHeader;
+- (BOOL)_isStyledAsHeaderFromLayoutAttributes:(id)arg1;
 - (void)_markAsDequeued;
+- (void)_performBlockWhenReused:(CDUnknownBlockType)arg1;
+- (void)_performBlocksForReuse;
 - (id)_preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (void)_setBaseLayoutAttributes:(id)arg1;
+- (void)_updateDefaultLayoutMarginsUsingAttributes:(id)arg1;
+- (void)_updateMaskViewUsingAttributes:(id)arg1 previousRemoveMaskAfterAnimation:(BOOL)arg2;
+- (void)_updateMaskingUsingAttributes:(id)arg1;
 - (BOOL)_wasDequeued;
 - (void)applyLayoutAttributes:(id)arg1;
-- (BOOL)canBeEdited;
+- (void)didMoveToSuperview;
 - (void)didTransitionFromLayout:(id)arg1 toLayout:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (BOOL)isEditing;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (void)prepareForReuse;
-- (void)setEditing:(BOOL)arg1;
 - (void)willTransitionFromLayout:(id)arg1 toLayout:(id)arg2;
 
 @end

@@ -17,6 +17,7 @@
     UIView *_largeTitleView;
     UIView *_promptView;
     UIBarButtonItem *_backBarButtonItem;
+    UIBarButtonItem *_staticBarButtonItem;
     NSArray *_cancelBarButtonItems;
     NSArray *_otherBarButtonItems;
     NSArray *_viewsRepresentingContentBackground;
@@ -28,6 +29,7 @@
 @property (strong, nonatomic) UIView *largeTitleView; // @synthesize largeTitleView=_largeTitleView;
 @property (copy, nonatomic) NSArray *otherBarButtonItems; // @synthesize otherBarButtonItems=_otherBarButtonItems;
 @property (strong, nonatomic) UIView *promptView; // @synthesize promptView=_promptView;
+@property (strong, nonatomic) UIBarButtonItem *staticBarButtonItem; // @synthesize staticBarButtonItem=_staticBarButtonItem;
 @property (strong, nonatomic) UIView *titleView; // @synthesize titleView=_titleView;
 @property (strong, nonatomic) UINavigationItem *topItem; // @synthesize topItem=_topItem;
 @property (copy, nonatomic) NSArray *viewsRepresentingBackButton; // @synthesize viewsRepresentingBackButton=_viewsRepresentingBackButton;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CUICatalog, CUIMutableCatalog, NSBundle, NSDictionary, NSMapTable, NSString, UITraitCollection, _UICache;
+@class CUICatalog, CUIMutableCatalog, NSBundle, NSMapTable, NSString, UITraitCollection, _UICache;
 
 @interface _UIAssetManager : NSObject
 {
@@ -20,7 +20,6 @@
     long long _preferredLayoutDirectionTrait;
     NSBundle *_bundle;
     NSMapTable *_assetMap;
-    NSDictionary *_systemSymbolNameAliases;
     CUIMutableCatalog *_runtimeCatalog;
     struct os_unfair_lock_s _runtimeCatalogCreationLock;
     UITraitCollection *_preferredTraitCollection;
@@ -79,7 +78,6 @@
 - (id)_lookUpObjectForTraitCollection:(id)arg1 withAccessorWithAppearanceName:(CDUnknownBlockType)arg2;
 - (void)_performBlockWithAssetLock:(CDUnknownBlockType)arg1;
 - (id)_starkAssetManager;
-- (id)_symbolNameAliasForName:(id)arg1;
 - (id)_translateAppearanceNameToNative:(id)arg1;
 - (id)colorNamed:(id)arg1 withTraitCollection:(id)arg2;
 - (id)dataNamed:(id)arg1;

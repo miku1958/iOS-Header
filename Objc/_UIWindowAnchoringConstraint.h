@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSAutoresizingMaskLayoutConstraint.h>
+#import <CoreAutoLayout/NSAutoresizingMaskLayoutConstraint.h>
 
 @class UIWindow;
 

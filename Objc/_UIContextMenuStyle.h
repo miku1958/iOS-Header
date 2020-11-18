@@ -15,6 +15,11 @@
     BOOL _hasInteractivePreview;
     BOOL _preventPreviewRasterization;
     BOOL _reversesActionOrderWhenAttachedToTop;
+    BOOL _previewOverlapsMenu;
+    BOOL __allowsImmediateSelection;
+    BOOL __shouldAvoidInputViews;
+    BOOL __inheritTraitsFromPresentingViewController;
+    BOOL __prefersActualContentSize;
     UIWindow *_containerWindow;
     UIView *_containerView;
     unsigned long long _preferredLayout;
@@ -22,8 +27,16 @@
     NSArray *_preferredBackgroundEffects;
     struct UIEdgeInsets _preferredEdgeInsets;
     struct UIEdgeInsets _preferredBackgroundInsets;
+    CDStruct_a36705e8 __preferredAnchor;
 }
 
+@property (nonatomic, getter=_allowsImmediateSelection) BOOL _allowsImmediateSelection; // @synthesize _allowsImmediateSelection=__allowsImmediateSelection;
+@property (nonatomic, getter=_inheritTraitsFromPresentingViewController) BOOL _inheritTraitsFromPresentingViewController; // @synthesize _inheritTraitsFromPresentingViewController=__inheritTraitsFromPresentingViewController;
+@property (readonly, nonatomic, getter=_layoutAllowsMenu) BOOL _layoutAllowsMenu;
+@property (readonly, nonatomic, getter=_layoutAllowsPreview) BOOL _layoutAllowsPreview;
+@property (nonatomic, getter=_preferredAnchor) CDStruct_a36705e8 _preferredAnchor; // @synthesize _preferredAnchor=__preferredAnchor;
+@property (nonatomic, setter=_setPrefersActualContentSize:) BOOL _prefersActualContentSize; // @synthesize _prefersActualContentSize=__prefersActualContentSize;
+@property (nonatomic, getter=_shouldAvoidInputViews) BOOL _shouldAvoidInputViews; // @synthesize _shouldAvoidInputViews=__shouldAvoidInputViews;
 @property (strong, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property (strong, nonatomic) UIWindow *containerWindow; // @synthesize containerWindow=_containerWindow;
 @property (nonatomic) BOOL hasInteractivePreview; // @synthesize hasInteractivePreview=_hasInteractivePreview;
@@ -33,6 +46,7 @@
 @property (nonatomic) unsigned long long preferredLayout; // @synthesize preferredLayout=_preferredLayout;
 @property (strong, nonatomic) UITraitCollection *preferredTraitCollection; // @synthesize preferredTraitCollection=_preferredTraitCollection;
 @property (nonatomic) BOOL preventPreviewRasterization; // @synthesize preventPreviewRasterization=_preventPreviewRasterization;
+@property (nonatomic) BOOL previewOverlapsMenu; // @synthesize previewOverlapsMenu=_previewOverlapsMenu;
 @property (nonatomic) BOOL reversesActionOrderWhenAttachedToTop; // @synthesize reversesActionOrderWhenAttachedToTop=_reversesActionOrderWhenAttachedToTop;
 
 + (id)defaultStyle;

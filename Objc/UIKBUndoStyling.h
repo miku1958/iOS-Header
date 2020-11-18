@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class UIBlurEffect, UIColor, UIVibrancyEffect;
+@class UIBlurEffect, UIColor, UIFont, UIVibrancyEffect;
 
 __attribute__((visibility("hidden")))
 @interface UIKBUndoStyling : NSObject
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     BOOL _undoRedoIconOnly;
     BOOL _isRTL;
     BOOL _cutCopyPasteIconOnly;
+    BOOL _tooSmallForInstructionalText;
     UIBlurEffect *_backgroundBlurEffect;
     UIVibrancyEffect *_backgroundVibrancyEffect;
     UIColor *_HUDbackgroundColor;
@@ -38,7 +39,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIColor *elementBackgroundColor; // @synthesize elementBackgroundColor=_elementBackgroundColor;
 @property (strong, nonatomic) UIColor *elementCoverColor; // @synthesize elementCoverColor=_elementCoverColor;
 @property (nonatomic) BOOL isRTL; // @synthesize isRTL=_isRTL;
+@property (nonatomic) BOOL tooSmallForInstructionalText; // @synthesize tooSmallForInstructionalText=_tooSmallForInstructionalText;
+@property (readonly, nonatomic) UIFont *undoInteractiveControlLabelFont;
 @property (nonatomic) BOOL undoRedoIconOnly; // @synthesize undoRedoIconOnly=_undoRedoIconOnly;
+@property (readonly, nonatomic) UIFont *undoStateControlLabelFont;
+@property (readonly, nonatomic) UIFont *undoStateControlUnavailableLabelFont;
 
 - (void).cxx_destruct;
 - (void)createDynamicColors;

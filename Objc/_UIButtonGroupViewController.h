@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_canShowWhileLocked;
 - (void)_cleanupForDismissal;
 - (void)dismissIfNecessary;
-- (id)initWithBarButtonItemGroups:(id)arg1 fromButtonBar:(id)arg2;
+- (id)initWithBarButtonItemGroups:(id)arg1 fromButtonBar:(id)arg2 createsPopoverLayoutGuides:(BOOL)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;

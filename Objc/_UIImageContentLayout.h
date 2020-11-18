@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) double baselineOffsetFromBottom; // @synthesize baselineOffsetFromBottom=_baselineOffsetFromBottom;
-@property (readonly, nonatomic) double baselineOffsetFromTop; // @synthesize baselineOffsetFromTop=_baselineOffsetFromTop;
 @property (readonly, nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
 @property (readonly, nonatomic) id contents;
 @property (readonly, nonatomic) UIColor *contentsMultiplyColor;
@@ -35,14 +34,8 @@ __attribute__((visibility("hidden")))
 
 + (id)layoutForSource:(id)arg1 inTarget:(id)arg2 withSize:(struct CGSize)arg3;
 - (void).cxx_destruct;
-- (struct CGImage *)CGImageContents;
-- (void)_materializeContentsIfNeeded;
-- (void)_prepareContentOfSize:(struct CGSize)arg1 source:(id)arg2 target:(id)arg3;
 - (id)description;
-- (BOOL)hasCGImageContents;
 - (BOOL)hasContents;
-- (id)initWithSource:(id)arg1 target:(id)arg2 withSize:(struct CGSize)arg3;
-- (BOOL)rendersContentsAtNaturalSize;
 
 @end
 

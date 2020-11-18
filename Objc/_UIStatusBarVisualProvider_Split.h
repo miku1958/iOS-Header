@@ -7,10 +7,11 @@
 #import <UIKitCore/_UIStatusBarVisualProvider_Phone.h>
 
 #import <UIKitCore/_UIStatusBarCellularItemTypeStringProvider-Protocol.h>
+#import <UIKitCore/_UIStatusBarFixedWidthVisualProvider-Protocol.h>
 
-@class NSDictionary, NSLayoutConstraint, NSString, NSTimer, UILayoutGuide, _UIStatusBarDisplayItemPlacement, _UIStatusBarDisplayItemPlacementGroup;
+@class NSDictionary, NSLayoutConstraint, NSString, NSTimer, UILayoutGuide, _UIStatusBar, _UIStatusBarDisplayItemPlacement, _UIStatusBarDisplayItemPlacementGroup;
 
-@interface _UIStatusBarVisualProvider_Split : _UIStatusBarVisualProvider_Phone <_UIStatusBarCellularItemTypeStringProvider>
+@interface _UIStatusBarVisualProvider_Split : _UIStatusBarVisualProvider_Phone <_UIStatusBarCellularItemTypeStringProvider, _UIStatusBarFixedWidthVisualProvider>
 {
     BOOL _delayedSystemUpdateData;
     NSDictionary *_orderedDisplayItemPlacements;
@@ -31,6 +32,7 @@
 @property (strong, nonatomic) NSTimer *airplaneModeIgnoreChangesTimer; // @synthesize airplaneModeIgnoreChangesTimer=_airplaneModeIgnoreChangesTimer;
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *batteryChargingPlacement; // @synthesize batteryChargingPlacement=_batteryChargingPlacement;
 @property (strong, nonatomic) NSTimer *batteryExpansionTimer; // @synthesize batteryExpansionTimer=_batteryExpansionTimer;
+@property (readonly, nonatomic) BOOL canFixupDisplayItemAttributes;
 @property (strong, nonatomic) UILayoutGuide *cutoutLayoutGuide; // @synthesize cutoutLayoutGuide=_cutoutLayoutGuide;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL delayedSystemUpdateData; // @synthesize delayedSystemUpdateData=_delayedSystemUpdateData;
@@ -44,19 +46,25 @@
 @property (strong, nonatomic) UILayoutGuide *mainRegionsLayoutGuide; // @synthesize mainRegionsLayoutGuide=_mainRegionsLayoutGuide;
 @property (strong, nonatomic) NSDictionary *orderedDisplayItemPlacements; // @synthesize orderedDisplayItemPlacements=_orderedDisplayItemPlacements;
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *serviceNamePlacement; // @synthesize serviceNamePlacement=_serviceNamePlacement;
+@property (weak, nonatomic) _UIStatusBar *statusBar;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsIndirectPointerTouchActions;
 @property (strong, nonatomic) NSTimer *systemUpdatesTimer; // @synthesize systemUpdatesTimer=_systemUpdatesTimer;
 
 + (struct NSDirectionalEdgeInsets)_edgeInsetsFromCenteringEdgeInset:(double)arg1 trailing:(BOOL)arg2;
-+ (double)baseIconScale;
 + (double)baselineBottomInset;
++ (double)bottomLeadingBaseline;
++ (double)bottomLeadingSpace;
 + (double)bottomLeadingTopOffset;
 + (double)bottomLeadingWidth;
 + (double)condensedPointSizeForCellularType:(long long)arg1 defaultPointSize:(double)arg2 baselineOffset:(double *)arg3;
 + (double)cornerRadius;
++ (Class)defaultFallbackVisualProviderSubclass;
 + (id)emphasizedFont;
 + (struct NSDirectionalEdgeInsets)expandedEdgeInsets;
 + (id)expandedFont;
++ (double)expandedIconScale;
++ (long long)expandedIconSize;
 + (double)height;
 + (struct CGSize)intrinsicContentSizeForOrientation:(long long)arg1;
 + (double)leadingCenteringEdgeInset;
@@ -66,7 +74,10 @@
 + (double)leadingPillSpacing;
 + (double)leadingSmallPillSpacing;
 + (double)lowerExpandedBaselineOffset;
++ (double)nativeDisplayWidth;
 + (id)normalFont;
++ (double)normalIconScale;
++ (long long)normalIconSize;
 + (double)notchBottomCornerRadius;
 + (struct CGSize)notchSize;
 + (double)notchTopCornerRadius;
@@ -78,9 +89,10 @@
 + (double)referenceWidth;
 + (id)smallFont;
 + (struct CGSize)smallPillSize;
++ (id)systemUpdateFont;
 + (double)trailingCenteringEdgeInset;
 + (struct NSDirectionalEdgeInsets)trailingEdgeInsets;
-+ (Class)visualProviderSubclassForScreen:(id)arg1;
++ (Class)visualProviderSubclassForScreen:(id)arg1 visualProviderInfo:(id)arg2;
 - (void).cxx_destruct;
 - (id)_additionAnimationForBatteryCharging;
 - (void)_collapseBattery;
@@ -107,7 +119,6 @@
 - (double)airplaneTravelOffsetInProposedPartWithIdentifier:(id *)arg1 animationType:(long long)arg2;
 - (id)animationForAirplaneMode;
 - (id)animationForBackgroundActivityPillWithDuration:(double)arg1 scale:(double)arg2;
-- (BOOL)canFixupDisplayItemAttributes;
 - (id)condensedFontForCellularType:(long long)arg1 defaultFont:(id)arg2 baselineOffset:(double *)arg3;
 - (void)dataUpdated:(id)arg1;
 - (void)dealloc;

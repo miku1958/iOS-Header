@@ -10,6 +10,7 @@
 {
 }
 
+- (BOOL)affectsAppLifecycleIfInternal;
 - (id)baseSceneComponentClassDictionary;
 - (Class)clientAgentClass;
 - (Class)clientSettingsClass;

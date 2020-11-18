@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UIGestureRecognizer.h>
 
-@class UITouch;
+@class UITouch, _UIGestureRecognizerTransformAnalyzer;
 
 @interface UIRotationGestureRecognizer : UIGestureRecognizer
 {
@@ -18,7 +18,7 @@
     double _velocity;
     double _previousVelocity;
     struct CGPoint _anchorSceneReferencePoint;
-    id _transformAnalyzer;
+    _UIGestureRecognizerTransformAnalyzer *_transformAnalyzer;
     UITouch *_touches[2];
     float _preRecognitionWeight;
     float _postRecognitionWeight;
@@ -37,7 +37,6 @@
 - (void)_resetGestureRecognizer;
 - (void)_setPostRecognitionWeight:(double)arg1;
 - (void)_setPreRecognitionWeight:(double)arg1;
-- (BOOL)_shouldReceiveTransformEvent:(id)arg1;
 - (void)_transformChangedWithEvent:(id)arg1;
 - (void)_updateTransformAnalyzerWeights;
 - (struct CGPoint)anchorPoint;

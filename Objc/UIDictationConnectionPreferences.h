@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)dictationSLSEnabledLanguages;
 - (BOOL)ignoreServerManualEndpointingThreshold;
 - (id)initSingleton;
+- (BOOL)isSmartLanguageSelectionEnabled;
 - (id)languageCode;
 - (id)manualEndpointingThreshold;
 - (BOOL)suppressDataSharingOptIn;

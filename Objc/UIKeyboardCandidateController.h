@@ -10,7 +10,7 @@
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKitCore/UIKeyboardCandidateList-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSString, TIKeyboardCandidate, TIKeyboardCandidateResultSet, TUICandidateView, UIKBScreenTraits, UIKeyboardCandidateInlineFloatingView, UIKeyboardCandidateViewConfiguration, UIKeyboardCandidateViewState, UIPanGestureRecognizer, UIView, UIViewPropertyAnimator;
+@class NSArray, NSDictionary, NSMutableArray, NSString, TIKeyboardCandidate, TIKeyboardCandidateResultSet, TUICandidateView, UIKBRenderConfig, UIKBScreenTraits, UIKeyboardCandidateInlineFloatingView, UIKeyboardCandidateViewConfiguration, UIKeyboardCandidateViewState, UIPanGestureRecognizer, UIView, UIViewPropertyAnimator;
 @protocol UIKeyboardCandidateControllerDelegate, UIKeyboardCandidateListDelegate;
 
 __attribute__((visibility("hidden")))
@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_opacities;
     UIPanGestureRecognizer *_panGestureRecognizer;
     UIViewPropertyAnimator *_animator;
+    UIKBRenderConfig *_renderConfig;
     struct CGRect _inlineRect;
 }
 
@@ -87,6 +88,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIKeyboardCandidateViewConfiguration *keyConfiguration; // @synthesize keyConfiguration=_keyConfiguration;
 @property (strong, nonatomic) NSDictionary *opacities; // @synthesize opacities=_opacities;
 @property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer; // @synthesize panGestureRecognizer=_panGestureRecognizer;
+@property (strong, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
 @property (nonatomic) BOOL reuseArrowButtonToExpandAssistantBarItems; // @synthesize reuseArrowButtonToExpandAssistantBarItems=_reuseArrowButtonToExpandAssistantBarItems;
 @property (strong, nonatomic) UIKBScreenTraits *screenTraits; // @synthesize screenTraits=_screenTraits;
 @property (nonatomic) double splitGap; // @synthesize splitGap=_splitGap;
@@ -130,6 +132,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isExtendedList;
 - (BOOL)isFloatingList;
 - (id)keyboardBehaviors;
+- (long long)layoutDirectionForCurrentInputMode;
 - (id)loadCandidateBar;
 - (void)loadDefaultStates;
 - (id)loadInlineCandidateView;

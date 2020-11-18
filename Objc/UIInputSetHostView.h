@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)requiresConstraintBasedLayout;
 - (unsigned long long)_clipCornersOfView:(id)arg1;
 - (void)_didChangeKeyplaneWithContext:(id)arg1;
+- (void)_updateSafeAreaInsets;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)layoutIfNeeded;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;

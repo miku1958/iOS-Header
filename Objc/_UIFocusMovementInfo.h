@@ -23,10 +23,12 @@
     unsigned long long _secondaryHeading;
     unsigned long long _linearHeading;
     struct CGVector _velocity;
+    struct CGRect _fallbackMovementOriginatingFrame;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=_fallbackMovementOriginatingFrame, setter=_setFallbackMovementOriginatingFrame:) struct CGRect fallbackMovementOriginatingFrame; // @synthesize fallbackMovementOriginatingFrame=_fallbackMovementOriginatingFrame;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, setter=_setHeading:) unsigned long long heading; // @synthesize heading=_heading;
 @property (nonatomic, getter=_isInitialMovement, setter=_setIsInitialMovement:) BOOL isInitialMovement; // @synthesize isInitialMovement=_isInitialMovement;
@@ -41,6 +43,7 @@
 @property (nonatomic, getter=_velocity, setter=_setVelocity:) struct CGVector velocity; // @synthesize velocity=_velocity;
 
 + (id)_movementWithHeading:(unsigned long long)arg1 isInitial:(BOOL)arg2;
++ (id)_movementWithHeading:(unsigned long long)arg1 isInitial:(BOOL)arg2 fallbackMovementOriginatingFrame:(struct CGRect)arg3;
 + (id)_movementWithHeading:(unsigned long long)arg1 linearHeading:(unsigned long long)arg2 isInitial:(BOOL)arg3;
 + (id)_movementWithHeading:(unsigned long long)arg1 linearHeading:(unsigned long long)arg2 shouldLoadScrollableContainer:(BOOL)arg3 isInitial:(BOOL)arg4;
 + (id)_movementWithHeading:(unsigned long long)arg1 linearHeading:(unsigned long long)arg2 shouldLoadScrollableContainer:(BOOL)arg3 isInitial:(BOOL)arg4 looping:(BOOL)arg5;

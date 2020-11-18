@@ -12,21 +12,23 @@
 
 @interface _UIStaticScrollBar : UIView <UIScrollAccessory>
 {
-    UIButton *_upButton;
-    UIButton *_downButton;
     UIView *_dividerLine;
     NSInvocation *_invocation;
     NSArray *_constraints;
     BOOL _shouldInsetButtonsForIndex;
     UIScrollView *_scrollView;
     long long _edge;
+    UIButton *_upButton;
+    UIButton *_downButton;
 }
 
 @property (readonly, nonatomic) long long desiredAccessoryEdge;
+@property (readonly, nonatomic) UIButton *downButton; // @synthesize downButton=_downButton;
 @property (nonatomic) long long edge; // @synthesize edge=_edge;
 @property (readonly, nonatomic) BOOL overlay;
 @property (weak, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (nonatomic) BOOL shouldInsetButtonsForIndex; // @synthesize shouldInsetButtonsForIndex=_shouldInsetButtonsForIndex;
+@property (readonly, nonatomic) UIButton *upButton; // @synthesize upButton=_upButton;
 
 - (void).cxx_destruct;
 - (unsigned long long)_axis;

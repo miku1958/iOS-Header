@@ -9,18 +9,18 @@
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKitCore/_UIClickInteractionDriving-Protocol.h>
 
-@class NSString, UIGestureRecognizer, UIView, _UISecondaryClickDriverGestureRecognizer, _UIStateMachine;
+@class NSString, UIGestureRecognizer, UIView, _UISecondaryClickDriverGestureRecognizer;
 @protocol _UIClickInteractionDriverDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UISecondaryClickClickInteractionDriver : NSObject <UIGestureRecognizerDelegate, _UIClickInteractionDriving>
 {
+    unsigned long long _currentState;
     BOOL _cancelsTouchesInView;
     BOOL _clicksUpAutomaticallyAfterTimeout;
     id<_UIClickInteractionDriverDelegate> _delegate;
     UIView *_view;
     double _allowableMovement;
-    _UIStateMachine *_stateMachine;
     _UISecondaryClickDriverGestureRecognizer *_gestureRecognizer;
 }
 
@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isCurrentlyAcceleratedByForce;
 @property (readonly, nonatomic) double maximumEffectProgress;
 @property (readonly, nonatomic) UIGestureRecognizer *primaryGestureRecognizer;
-@property (strong, nonatomic) _UIStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double touchDuration;
 @property (weak, nonatomic) UIView *view; // @synthesize view=_view;
@@ -49,7 +48,6 @@ __attribute__((visibility("hidden")))
 - (void)_attemptSecondaryClick;
 - (void)_gestureRecognizerFailed:(id)arg1;
 - (void)_handleGestureRecognizer:(id)arg1;
-- (void)_prepareStateMachine;
 - (void)cancelInteraction;
 - (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;

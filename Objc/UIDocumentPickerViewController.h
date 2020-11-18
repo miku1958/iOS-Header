@@ -7,17 +7,19 @@
 #import <UIKitCore/UIViewController.h>
 
 #import <UIKitCore/UIDocumentBrowserViewControllerPrivateDelegate-Protocol.h>
+#import <UIKitCore/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class DOCConfiguration, NSArray, NSMutableArray, NSString, NSURL;
+@class DOCConfiguration, NSArray, NSMutableArray, NSString, NSURL, _UIRemoteViewController;
 @protocol UIDocumentPickerDelegate;
 
-@interface UIDocumentPickerViewController : UIViewController <UIDocumentBrowserViewControllerPrivateDelegate>
+@interface UIDocumentPickerViewController : UIViewController <UIDocumentBrowserViewControllerPrivateDelegate, _UIRemoteViewControllerContaining>
 {
     id<UIDocumentPickerDelegate> _weak_delegate;
     NSMutableArray *_securityScopedURLs;
     BOOL _ignoreApplicationEntitlementForImport;
     BOOL _allowsMultipleSelection;
     BOOL _isContentManaged;
+    BOOL _automaticallyDismissesAfterCompletion;
     id<UIDocumentPickerDelegate> _delegate;
     unsigned long long _documentPickerMode;
     NSURL *_directoryURL;
@@ -27,9 +29,11 @@
     DOCConfiguration *_configuration;
 }
 
+@property (readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 @property (nonatomic, getter=_ignoreApplicationEntitlementForImport, setter=_setIgnoreApplicationEntitlementForImport:) BOOL _ignoreApplicationEntitlementForImport; // @synthesize _ignoreApplicationEntitlementForImport;
 @property (strong, nonatomic) NSMutableArray *_securityScopedURLs; // @synthesize _securityScopedURLs;
 @property (nonatomic) BOOL allowsMultipleSelection; // @synthesize allowsMultipleSelection=_allowsMultipleSelection;
+@property (nonatomic, getter=_automaticallyDismissesAfterCompletion, setter=_setAutomaticallyDismissesAfterCompletion:) BOOL automaticallyDismissesAfterCompletion; // @synthesize automaticallyDismissesAfterCompletion=_automaticallyDismissesAfterCompletion;
 @property (strong, nonatomic, getter=_childViewController, setter=_setChildViewController:) UIViewController *childViewController; // @synthesize childViewController=_childViewController;
 @property (strong, nonatomic) DOCConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy) NSString *debugDescription;
@@ -53,12 +57,15 @@
 - (void)_consumeSandboxExtensionForURL:(id)arg1;
 - (void)_didTapCancel;
 - (id)_initIgnoringApplicationEntitlementForImportOfTypes:(id)arg1;
-- (id)_initWithViewController:(id)arg1 inMode:(unsigned long long)arg2 uploadURLOrNil:(id)arg3;
 - (void)_tellDelegateDocumentPickerWasCancelled;
 - (void)dealloc;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)documentBrowser:(id)arg1 didPickDocumentURLs:(id)arg2;
 - (void)documentManagerWasCancelled:(id)arg1;
+- (id)initForExportingURLs:(id)arg1;
+- (id)initForExportingURLs:(id)arg1 asCopy:(BOOL)arg2;
+- (id)initForOpeningContentTypes:(id)arg1;
+- (id)initForOpeningContentTypes:(id)arg1 asCopy:(BOOL)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDocumentTypes:(id)arg1 inMode:(unsigned long long)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

@@ -12,12 +12,13 @@
 #import <UIKitCore/_UIClickInteractionDelegate-Protocol.h>
 #import <UIKitCore/_UIPreviewInteractionImpl-Protocol.h>
 
-@class NSString, UIDragInteraction, UIPreviewInteraction, UIView, _UIClickInteraction, _UIPreviewInteractionHighlighter, _UIPreviewInteractionPresentationAssistant, _UIRelationshipGestureRecognizer, _UIStateMachine;
+@class NSString, UIDragInteraction, UIPreviewInteraction, UIView, _UIClickInteraction, _UIPreviewInteractionHighlighter, _UIPreviewInteractionPresentationAssistant, _UIRelationshipGestureRecognizer;
 @protocol UIInteractionEffect, UIPreviewInteractionDelegate, UIPreviewInteractionDelegatePrivate, _UIPreviewInteractionTouchForceProviding;
 
 __attribute__((visibility("hidden")))
 @interface _UIPreviewInteractionClickImpl : NSObject <_UIClickInteractionDelegate, UIInteraction_Private, UIGestureRecognizerDelegate, _UIPreviewInteractionImpl, UIInteraction>
 {
+    unsigned long long _currentState;
     struct {
         BOOL shouldBegin;
         BOOL didUpdateCommitTransition;
@@ -33,7 +34,6 @@ __attribute__((visibility("hidden")))
     id<_UIPreviewInteractionTouchForceProviding> _touchForceProvider;
     UIPreviewInteraction *_previewInteraction;
     id<UIInteractionEffect> _interactionEffect;
-    _UIStateMachine *_stateMachine;
     _UIClickInteraction *_previewClickInteraction;
     _UIClickInteraction *_commitClickInteraction;
     _UIRelationshipGestureRecognizer *_exclusionRelationshipGestureRecognizer;
@@ -44,7 +44,6 @@ __attribute__((visibility("hidden")))
 
 @property (weak, nonatomic) UIDragInteraction *associatedDragInteraction; // @synthesize associatedDragInteraction=_associatedDragInteraction;
 @property (strong, nonatomic) _UIClickInteraction *commitClickInteraction; // @synthesize commitClickInteraction=_commitClickInteraction;
-@property (readonly, nonatomic) unsigned long long currentState;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UIPreviewInteractionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -56,31 +55,17 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIClickInteraction *previewClickInteraction; // @synthesize previewClickInteraction=_previewClickInteraction;
 @property (weak, nonatomic) UIPreviewInteraction *previewInteraction; // @synthesize previewInteraction=_previewInteraction;
 @property (readonly, weak, nonatomic) id<UIPreviewInteractionDelegatePrivate> privateDelegate; // @synthesize privateDelegate=_privateDelegate;
-@property (strong, nonatomic) _UIStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) id<_UIPreviewInteractionTouchForceProviding> touchForceProvider; // @synthesize touchForceProvider=_touchForceProvider;
 @property (readonly, weak, nonatomic) UIView *view; // @synthesize view=_view;
 
 - (void).cxx_destruct;
 - (BOOL)_canPerformPresentation;
-- (void)_delegateUpdateCommitTransitionWithProgress:(double)arg1 ended:(BOOL)arg2;
-- (void)_delegateUpdatePreviewTransitionWithProgress:(double)arg1 ended:(BOOL)arg2;
-- (void)_endInteractionDidComplete:(BOOL)arg1 wasCancelledByClient:(BOOL)arg2;
 - (void)_endInteractionEffectIfNeeded;
 - (id)_gestureRecognizerForExclusionRelationship;
-- (void)_handleDidTransitionToPreview;
-- (unsigned long long)_handleTransitionToActive;
-- (unsigned long long)_handleTransitionToHighlight;
-- (unsigned long long)_handleTransitionToPossibleByCommitting;
-- (unsigned long long)_handleTransitionToPossibleByEndingWithContext:(id)arg1;
-- (unsigned long long)_handleTransitionToPreview;
-- (BOOL)_isPaused;
 - (BOOL)_performPresentationIfPossible;
 - (void)_prepareInteractionEffect;
-- (void)_prepareStateMachine;
 - (void)_startPreviewAtLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
-- (void)_toBeRemoved_CallHighlighterCompletion;
-- (void)_toBeRemoved_CreateHighlighterIfPossible;
 - (void)cancelInteraction;
 - (void)clickInteractionDidClickDown:(id)arg1;
 - (void)clickInteractionDidClickUp:(id)arg1;

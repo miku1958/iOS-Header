@@ -64,7 +64,9 @@ __attribute__((visibility("hidden")))
     BOOL _springLoaded;
     BOOL _actionsReversed;
     BOOL _presentationContextPrefersCancelActionShown;
+    BOOL _actionScrubbingEnabled;
     _UIAlertControllerActionViewMetrics *_actionViewMetrics;
+    double _offset;
     NSLayoutConstraint *_foregroundViewWidthConstraint;
     NSLayoutConstraint *_contentViewTopConstraint;
     NSLayoutConstraint *_contentViewBottomConstraint;
@@ -112,6 +114,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) UIView *_dimmingView; // @synthesize _dimmingView;
 @property (strong, nonatomic, setter=_setVisualStyle:) UIAlertControllerVisualStyle *_visualStyle;
 @property (strong) NSLayoutConstraint *actionGroupEqualsContentViewWidthConstraint; // @synthesize actionGroupEqualsContentViewWidthConstraint=_actionGroupEqualsContentViewWidthConstraint;
+@property (nonatomic) BOOL actionScrubbingEnabled; // @synthesize actionScrubbingEnabled=_actionScrubbingEnabled;
 @property (strong, nonatomic) _UIAlertControllerActionViewMetrics *actionViewMetrics; // @synthesize actionViewMetrics=_actionViewMetrics;
 @property (nonatomic, getter=_actionsReversed, setter=_setActionsReversed:) BOOL actionsReversed; // @synthesize actionsReversed=_actionsReversed;
 @property (weak) UIAlertController *alertController;
@@ -150,6 +153,7 @@ __attribute__((visibility("hidden")))
 @property (strong) NSLayoutConstraint *mainActionButtonSequenceViewHorizontalAlignmentConstraint; // @synthesize mainActionButtonSequenceViewHorizontalAlignmentConstraint=_mainActionButtonSequenceViewHorizontalAlignmentConstraint;
 @property (strong) NSLayoutConstraint *mainActionButtonSequenceViewWidthConstraint; // @synthesize mainActionButtonSequenceViewWidthConstraint=_mainActionButtonSequenceViewWidthConstraint;
 @property (strong) _UIFlexibleConstantConstraintSet *messageLabelTopAlignmentConstraints; // @synthesize messageLabelTopAlignmentConstraints=_messageLabelTopAlignmentConstraints;
+@property (nonatomic) double offset; // @synthesize offset=_offset;
 @property (nonatomic) BOOL presentationContextPrefersCancelActionShown; // @synthesize presentationContextPrefersCancelActionShown=_presentationContextPrefersCancelActionShown;
 @property BOOL presentedAsPopover;
 @property (strong) NSLayoutConstraint *separatedHeaderContentViewControllerContainerViewBottomConstraint; // @synthesize separatedHeaderContentViewControllerContainerViewBottomConstraint=_separatedHeaderContentViewControllerContainerViewBottomConstraint;
@@ -176,9 +180,9 @@ __attribute__((visibility("hidden")))
 - (void)_actionLayoutDirectionChanged;
 - (BOOL)_actionLayoutIsVertical;
 - (void)_actionsChanged;
-- (void)_addContentViewControllerToViewHierarchy;
-- (void)_addHeaderContentViewControllerToViewHierarchy;
-- (void)_addSeparatedHeaderContentViewControllerToViewHierarchy;
+- (void)_addContentViewControllerToViewHierarchyIfNecessary;
+- (void)_addHeaderContentViewControllerToViewHierarchyIfNecessary;
+- (void)_addSeparatedHeaderContentViewControllerToViewHierarchyIfNecessary;
 - (void)_applyContentViewControllerContainerViewConstraints;
 - (void)_applyDetailMessageConstraints;
 - (void)_applyHeaderContentViewControllerContainerViewConstraints;
@@ -281,6 +285,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateActionsGroupPresentationStyles;
 - (void)_updateCancelActionBeingDiscrete;
 - (void)_updateConstraintConstants;
+- (void)_updateConstraintSpacingForExternalOffset;
 - (void)_updateContentView;
 - (void)_updateDetailLabelContents;
 - (void)_updateDetailLabelFontSize;
@@ -306,6 +311,7 @@ __attribute__((visibility("hidden")))
 - (void)configureForPresentAlongsideTransitionCoordinator:(id)arg1;
 - (id)contentViewController;
 - (void)dealloc;
+- (void)deselectAllActions;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;
 - (BOOL)hasDiscreteHorizontalCancelAction;

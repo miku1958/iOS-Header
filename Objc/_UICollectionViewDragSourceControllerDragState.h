@@ -11,12 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface _UICollectionViewDragSourceControllerDragState : NSObject
 {
+    BOOL _dragItemsCreatedForReordering;
     NSMutableOrderedSet *_dataSourceIndexPathsOfDraggingItems;
     NSPointerArray *_dragItemsWithRebasableIndexPaths;
 }
 
 @property (strong, nonatomic) NSMutableOrderedSet *dataSourceIndexPathsOfDraggingItems; // @synthesize dataSourceIndexPathsOfDraggingItems=_dataSourceIndexPathsOfDraggingItems;
 @property (readonly, nonatomic) NSIndexPath *dragFromDataSourceIndexPath;
+@property (nonatomic) BOOL dragItemsCreatedForReordering; // @synthesize dragItemsCreatedForReordering=_dragItemsCreatedForReordering;
 @property (strong, nonatomic) NSPointerArray *dragItemsWithRebasableIndexPaths; // @synthesize dragItemsWithRebasableIndexPaths=_dragItemsWithRebasableIndexPaths;
 @property (readonly, nonatomic) NSArray *draggingDataSourceIndexPaths;
 

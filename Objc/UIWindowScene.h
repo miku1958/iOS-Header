@@ -27,6 +27,7 @@
     BOOL _didMakeKeyAndVisible;
     id<_UISceneMetricsCalculating> _metricsCalculator;
     BOOL __isKeyWindowScene;
+    BOOL _excludedFromWindowsMenu;
     long long _screenRequestedOverscanCompensation;
     long long _avkitRequestedOverscanCompensation;
 }
@@ -49,6 +50,7 @@
 @property (readonly, nonatomic) UIScreen *_screen;
 @property (nonatomic, getter=_screenRequestedDisplayNativePixelSize, setter=_setScreenRequestedDisplayNativePixelSize:) struct CGSize _screenRequestedDisplayNativePixelSize; // @dynamic _screenRequestedDisplayNativePixelSize;
 @property (nonatomic, getter=_screenRequestedOverscanCompensation, setter=_setScreenRequestedOverscanCompensation:) long long _screenRequestedOverscanCompensation; // @synthesize _screenRequestedOverscanCompensation;
+@property (readonly, nonatomic) UIStatusBarManager *_statusBarManager;
 @property (readonly, nonatomic) _UISystemAppearanceManager *_systemAppearanceManager;
 @property (readonly, nonatomic) UITraitCollection *_traitCollection;
 @property (readonly, nonatomic) id<UICoordinateSpace> coordinateSpace;
@@ -56,6 +58,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isExcludedFromWindowsMenu) BOOL excludedFromWindowsMenu; // @synthesize excludedFromWindowsMenu=_excludedFromWindowsMenu;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIInputResponderController *inputResponderController;
@@ -101,10 +104,10 @@
 - (id)_fbsSceneLayerForWindow:(id)arg1;
 - (id)_inheritingWindowsIncludingInvisible:(BOOL)arg1;
 - (void)_invalidate;
-- (void)_invalidateScreen;
 - (void)_loadWindowWithStoryboardIfNeeded:(id)arg1;
 - (void)_makeKeyAndVisibleIfNeeded;
 - (BOOL)_needsMakeKeyAndVisible;
+- (void)_noteDisplayIdentityDidChangeWithConfiguration:(id)arg1;
 - (BOOL)_permitContextCreationForBindingDescription:(CDStruct_a002d41c)arg1;
 - (void)_prepareForResume;
 - (void)_prepareForSuspend;
@@ -117,11 +120,13 @@
 - (void)_registerSettingsDiffActions:(id)arg1 forKey:(id)arg2;
 - (long long)_resolvedOverscanCompensation;
 - (struct UIEdgeInsets)_safeAreaInsetsForInterfaceOrientation:(long long)arg1;
+- (void)_screenDidChangeFromScreen:(id)arg1 toScreen:(id)arg2;
 - (id)_screenshotServiceIfPresent;
 - (void)_setAVKitRequestedRefreshRate:(double)arg1 HDRMode:(long long)arg2 overscanCompensation:(long long)arg3;
 - (void)_setShouldDisableTouchCancellationOnRotation:(BOOL)arg1;
 - (void)_setSystemVolumeHUDEnabled:(BOOL)arg1;
 - (void)_setSystemVolumeHUDEnabled:(BOOL)arg1 forAudioCategory:(id)arg2;
+- (BOOL)_shouldLoadStoryboard;
 - (void)_showProgressWhenFetchingUserActivityForTypes:(id)arg1;
 - (double)_systemMinimumMargin;
 - (id)_topVisibleWindowPassingTest:(CDUnknownBlockType)arg1;

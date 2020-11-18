@@ -6,10 +6,12 @@
 
 #import <UIKitCore/UICollectionViewLayout.h>
 
-@class NSArray, NSMutableDictionary, NSSet, UIColor, UIVisualEffect, _UICollectionCompositionalLayoutSolver, _UICollectionCompositionalLayoutSolverUpdate, _UICollectionViewListLayoutVisualProvider, _UICollectionViewListSeparatorDiff, _UICollectionViewListSnapshotter, _UIUpdateVisibleCellsContext;
+#import <UIKitCore/_UICollectionViewLayoutInteractionStateModuleHost-Protocol.h>
+
+@class NSArray, NSMutableDictionary, NSSet, NSString, UIColor, UIVisualEffect, _UICollectionCompositionalLayoutSolver, _UICollectionCompositionalLayoutSolverUpdate, _UICollectionViewLayoutInteractionStateModule, _UICollectionViewListLayoutVisualProvider, _UICollectionViewListSeparatorDiff, _UICollectionViewListSnapshotter, _UIUpdateVisibleCellsContext;
 @protocol UICollectionViewDataSource, UITableConstants, _UICollectionCompositionalLayoutSolverResolveResult, _UICollectionViewDelegateListLayout;
 
-@interface _UICollectionViewListLayout : UICollectionViewLayout
+@interface _UICollectionViewListLayout : UICollectionViewLayout <_UICollectionViewLayoutInteractionStateModuleHost>
 {
     struct {
         unsigned int prepareSnapshotNeeded:1;
@@ -28,8 +30,8 @@
     _UICollectionViewListSeparatorDiff *_currentUpdateDiff;
     _UICollectionCompositionalLayoutSolverUpdate *_currentUpdate;
     id<_UICollectionCompositionalLayoutSolverResolveResult> _currentResolveResult;
+    _UICollectionViewLayoutInteractionStateModule *_interactionStateModule;
     _UIUpdateVisibleCellsContext *_updateVisibleCellsContext;
-    BOOL _shouldDrawAdditionalSeparators;
     BOOL _cellLayoutMarginsFollowReadableWidth;
     BOOL _insetsContentViewsToSafeArea;
     BOOL _separatorInsetIsRelativeToCellEdges;
@@ -58,8 +60,10 @@
 @property (strong, nonatomic, getter=_constants) id<UITableConstants> constants; // @synthesize constants=_constants;
 @property (readonly, nonatomic, getter=_dataSourceActual) id<UICollectionViewDataSource> dataSourceActual;
 @property (readonly, nonatomic, getter=_dataSourceProxy) id<UICollectionViewDataSource> dataSourceProxy;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic, getter=_delegateActual) id<_UICollectionViewDelegateListLayout> delegateActual;
 @property (readonly, nonatomic, getter=_delegateProxy) id<_UICollectionViewDelegateListLayout> delegateProxy;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) double estimatedGlobalFooterHeight; // @synthesize estimatedGlobalFooterHeight=_estimatedGlobalFooterHeight;
 @property (nonatomic) double estimatedGlobalHeaderHeight; // @synthesize estimatedGlobalHeaderHeight=_estimatedGlobalHeaderHeight;
 @property (nonatomic) double estimatedRowHeight; // @synthesize estimatedRowHeight=_estimatedRowHeight;
@@ -68,6 +72,7 @@
 @property (strong, nonatomic, getter=_floatingElementKinds, setter=_setFloatingElementKinds:) NSArray *floatingElementKinds;
 @property (nonatomic) double globalFooterHeight; // @synthesize globalFooterHeight=_globalFooterHeight;
 @property (nonatomic) double globalHeaderHeight; // @synthesize globalHeaderHeight=_globalHeaderHeight;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=_insetTopAndBottomSeparator) BOOL insetTopAndBottomSeparator; // @synthesize insetTopAndBottomSeparator=_insetTopAndBottomSeparator;
 @property (nonatomic) BOOL insetsContentViewsToSafeArea; // @synthesize insetsContentViewsToSafeArea=_insetsContentViewsToSafeArea;
 @property (readonly, nonatomic, getter=_layoutSections) NSMutableDictionary *layoutSections; // @synthesize layoutSections=_layoutSections;
@@ -79,8 +84,8 @@
 @property (nonatomic) struct UIEdgeInsets separatorInset; // @synthesize separatorInset=_separatorInset;
 @property (nonatomic) BOOL separatorInsetIsRelativeToCellEdges; // @synthesize separatorInsetIsRelativeToCellEdges=_separatorInsetIsRelativeToCellEdges;
 @property (nonatomic) long long separatorStyle; // @synthesize separatorStyle=_separatorStyle;
-@property (nonatomic, getter=_shouldDrawAdditionalSeparators, setter=_setShouldDrawAdditionalSeparators:) BOOL shouldDrawAdditionalSeparators; // @synthesize shouldDrawAdditionalSeparators=_shouldDrawAdditionalSeparators;
 @property (strong, nonatomic, getter=_solver, setter=_setSolver:) _UICollectionCompositionalLayoutSolver *solver; // @synthesize solver=_solver;
+@property (readonly) Class superclass;
 
 + (Class)invalidationContextClass;
 + (Class)layoutAttributesClass;
@@ -96,7 +101,7 @@
 - (void)_darkenedColorsChanged:(id)arg1;
 - (double)_defaultGlobalFooterHeight;
 - (double)_defaultGlobalHeaderHeight;
-- (void)_didPerformUpdateVisibleCellsPass;
+- (void)_didPerformUpdateVisibleCellsPassWithLayoutOffset:(struct CGPoint)arg1;
 - (double)_effectiveEstimatedGlobalFooterHeight;
 - (double)_effectiveEstimatedGlobalHeaderHeight;
 - (void)_enrichCellLayoutAttributes:(id)arg1;
@@ -105,12 +110,15 @@
 - (BOOL)_estimatesSupplementaryItems;
 - (struct UIEdgeInsets)_globalInsetsForAppearanceStyle;
 - (id)_globalSupplementaryItems;
+- (id)_interactionStateModule:(id)arg1 layoutSectionForIndex:(long long)arg2;
+- (double)_interactionStateModule:(id)arg1 spacingAfterLayoutSection:(long long)arg2;
 - (id)_invalidationContextForUpdatedLayoutMargins:(struct UIEdgeInsets)arg1;
 - (id)_layoutContainer;
 - (id)_layoutSectionAtIndex:(long long)arg1;
 - (id)_multiselectCheckmarkColor;
 - (long long)_numberOfRowsInSection:(long long)arg1;
 - (long long)_numberOfSections;
+- (void)_postProcessPreferredAttributes:(id)arg1 forView:(id)arg2;
 - (struct UIEdgeInsets)_preferredLayoutMargins;
 - (id)_preferredLayoutSectionForLayoutSection:(id)arg1 atIndex:(long long)arg2;
 - (void)_prepareForCollectionViewUpdates:(id)arg1 withDataSourceTranslator:(id)arg2;
@@ -130,6 +138,9 @@
 - (BOOL)_shouldInvalidateLayoutForBoundsSizeChange:(struct CGRect)arg1;
 - (long long)_tableStyle;
 - (void)_traitCollectionDidChangeFromPreviousCollection:(id)arg1 newTraitCollection:(id)arg2;
+- (void)_transformCellLayoutAttributes:(id)arg1;
+- (void)_transformDecorationLayoutAttributes:(id)arg1;
+- (void)_transformSupplementaryLayoutAttributes:(id)arg1;
 - (void)_updateConstants;
 - (id)_updatePinnedSectionSupplementaryItemsForCurrentVisibleBounds;
 - (void)_updateSolver;

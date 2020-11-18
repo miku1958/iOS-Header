@@ -6,11 +6,17 @@
 
 #import <UIKitCore/UINavigationController.h>
 
+@protocol UIPrintPanelAppearanceDelegate;
+
 __attribute__((visibility("hidden")))
 @interface UIPrintPanelNavigationController : UINavigationController
 {
+    id<UIPrintPanelAppearanceDelegate> _appearanceDelegate;
 }
 
+@property (weak, nonatomic) id<UIPrintPanelAppearanceDelegate> appearanceDelegate; // @synthesize appearanceDelegate=_appearanceDelegate;
+
+- (void).cxx_destruct;
 - (void)__viewWillLayoutSubviews;
 - (void)_presentationControllerDidDismiss:(id)arg1;
 

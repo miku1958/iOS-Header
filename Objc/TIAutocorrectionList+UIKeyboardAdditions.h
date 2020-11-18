@@ -10,7 +10,9 @@
 
 @property (readonly, nonatomic) BOOL containsAutofillCandidates;
 @property (readonly, nonatomic) BOOL containsContinuousPathConversions;
+@property (readonly, nonatomic) BOOL notEmpty;
 
+- (long long)sourceForAutocorrection;
 - (void)updateLabelsWithSmartPunctuation:(id)arg1;
 @end
 

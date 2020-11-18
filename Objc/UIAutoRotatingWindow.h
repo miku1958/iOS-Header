@@ -12,7 +12,6 @@
     BOOL _unknownOrientation;
 }
 
-+ (id)sharedPopoverHostingWindow;
 - (void)_didRemoveSubview:(id)arg1;
 - (id)_initWithFrame:(struct CGRect)arg1 attached:(BOOL)arg2;
 - (id)_initWithFrame:(struct CGRect)arg1 debugName:(id)arg2 windowScene:(id)arg3;

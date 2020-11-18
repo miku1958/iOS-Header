@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithToolbar:(id)arg1;
 - (void)layoutSubviews;
 - (void)positionToolbarButtonsAndResetFontScaleAdjustment:(BOOL)arg1;
+- (void)prepare;
 - (id)traitCollectionForChild:(id)arg1 baseTraitCollection:(id)arg2;
 - (void)updateAppearance;
 - (void)updateArchivedSubviews:(id)arg1;

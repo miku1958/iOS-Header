@@ -34,13 +34,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) _UIFocusSearchInfo *searchInfo; // @synthesize searchInfo=_searchInfo;
 
 - (void).cxx_destruct;
+- (unsigned long long)_adjustedIndexPreventingScrollingForLinearMovementFromIndex:(unsigned long long)arg1 toProposedIndex:(unsigned long long)arg2 inItems:(id)arg3 groupBoundaries:(id)arg4 linearHeading:(unsigned long long)arg5;
 - (id)_allDefaultFocusableRegionsInContainer:(id)arg1 intersectingRegion:(id)arg2;
 - (id)_allFocusableItemsInEnvironment:(id)arg1;
 - (void)_beginTrackingDefaultItemSearchInfoIfNecessary;
 - (void)_beginTrackingFocusMovementSearchInfoIfNecessary;
 - (void)_beginTrackingSearches;
 - (id)_closestFocusableItemToPoint:(struct CGPoint)arg1 inRect:(struct CGRect)arg2 excludingItems:(id)arg3;
-- (id)_defaultFocusItemInEnvironment:(id)arg1;
 - (id)_defaultFocusItemInEnvironment:(id)arg1 limitScopeUsingFocusPreferences:(BOOL)arg2;
 - (id)_defaultMapSnapshotter;
 - (id)_findAllDefaultFocusableRegionsWithSnapshotter:(id)arg1;
@@ -48,12 +48,13 @@ __attribute__((visibility("hidden")))
 - (id)_groupBoundariesForItems:(id)arg1;
 - (id)_linearlySortedFocusItemsForItems:(id)arg1 grouping:(BOOL)arg2;
 - (id)_nextFocusedItemForFocusMovementRequest:(id)arg1;
-- (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 focusedRegion:(id)arg2;
 - (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 inRegions:(id)arg2;
+- (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 startingFromRegion:(id)arg2;
 - (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 startingFromRegion:(id)arg2 inRegions:(id)arg3;
 - (id)_nextFocusedItemForLinearFocusMovementRequest:(id)arg1 startingFromRegion:(id)arg2 inRegions:(id)arg3;
 - (id)_nextFocusedItemForNonLinearFocusMovementRequest:(id)arg1 startingFromRegion:(id)arg2 inRegions:(id)arg3;
 - (id)_stopTrackingSearches;
+- (id)_tests_defaultFocusItemInEnvironment:(id)arg1;
 - (void)_trackExternalSnapshot:(id)arg1;
 - (void)diagnoseFocusabilityForItem:(id)arg1 report:(id)arg2;
 - (id)init;

@@ -9,7 +9,6 @@
 @class NSArray, NSMutableArray, UINavigationItem, _UINavigationBarItemStackEntry, _UINavigationBarTransitionAssistant;
 @protocol _UINavigationItemChangeObserver;
 
-__attribute__((visibility("hidden")))
 @interface _UINavigationBarItemStack : NSObject
 {
     NSArray *_previousItems;
@@ -57,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)iterateItems:(CDUnknownBlockType)arg1;
 - (void)popItemWithTransitionAssistant:(id)arg1;
 - (void)pushItem:(id)arg1 withTransitionAssistant:(id)arg2;
+- (void)reverseIterateEntries:(CDUnknownBlockType)arg1;
 - (void)setItems:(id)arg1 withTransitionAssistant:(id)arg2;
 - (BOOL)stackItemsAreEqualTo:(id)arg1;
 

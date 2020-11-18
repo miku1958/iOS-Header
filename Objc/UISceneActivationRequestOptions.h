@@ -13,9 +13,12 @@
     BOOL _preserveLayout;
     BOOL __requestFullscreen;
     UIScene *_requestingScene;
+    long long _collectionJoinBehavior;
 }
 
+@property (nonatomic) long long _collectionJoinBehavior;
 @property (nonatomic, setter=_setRequestFullscreen:) BOOL _requestFullscreen; // @synthesize _requestFullscreen=__requestFullscreen;
+@property (nonatomic) long long collectionJoinBehavior; // @synthesize collectionJoinBehavior=_collectionJoinBehavior;
 @property (nonatomic) BOOL preserveLayout; // @synthesize preserveLayout=_preserveLayout;
 @property (strong, nonatomic) UIScene *requestingScene; // @synthesize requestingScene=_requestingScene;
 

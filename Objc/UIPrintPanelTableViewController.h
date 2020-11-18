@@ -8,7 +8,7 @@
 
 #import <UIKitCore/UITextFieldDelegate-Protocol.h>
 
-@class NSString, UIPrintPanelViewController, UIPrintPreviewViewController, UIPrinterBrowserViewController, _UIPrintMessageAndSpinnerView;
+@class NSString, UIPrintPanelViewController, UIPrintPreviewViewController, UIPrinterAttributesService, UIPrinterBrowserViewController, _UIPrintMessageAndSpinnerView;
 
 __attribute__((visibility("hidden")))
 @interface UIPrintPanelTableViewController : UITableViewController <UITextFieldDelegate>
@@ -23,12 +23,14 @@ __attribute__((visibility("hidden")))
     long long _punchRow;
     long long _paperRow;
     long long _jobAccountIDRow;
+    long long _annotationsRow;
     long long _settingsSection;
     BOOL _contactingPrinter;
-    BOOL _printerWarningWasShown;
+    NSString *_printerWarning;
+    UIPrinterAttributesService *_printerAttributesService;
     BOOL _settingsExpanded;
+    struct CGRect _savedViewFrame;
     UIPrintPreviewViewController *_printPreviewViewController;
-    long long _previousPageIndexInCenterOfPreview;
     UIPrinterBrowserViewController *_browserController;
     _UIPrintMessageAndSpinnerView *_messageAndSpinner;
 }
@@ -39,8 +41,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_update:(BOOL)arg1;
-- (void)_updateSize;
+- (void)_updatePrintTableView;
+- (void)_updateTableFooterViewSize;
 - (BOOL)accessibilityPerformMagicTap;
 - (void)cancelButtonPressed:(id)arg1;
 - (void)clearPrintPanelViewController;
@@ -63,6 +65,8 @@ __attribute__((visibility("hidden")))
 - (void)showCancelButton;
 - (void)showContacting;
 - (void)showPreviewGenerating;
+- (void)startPrinterWarningPoll;
+- (void)stopPrinterWarningPolling;
 - (unsigned long long)supportedInterfaceOrientations;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
@@ -70,6 +74,8 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (BOOL)textFieldShouldReturn:(id)arg1;
 - (id)textForSettings;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateAnnotations:(id)arg1;
 - (void)updateCopies:(id)arg1;
 - (void)updateDuplex:(id)arg1;
 - (void)updateGrayscale:(id)arg1;
@@ -79,6 +85,7 @@ __attribute__((visibility("hidden")))
 - (void)updatePunch:(id)arg1;
 - (void)updateSettingsSummaryText;
 - (void)updateStaple:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

@@ -4,39 +4,45 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/UIView.h>
+#import <UIKitCore/UIControl.h>
 
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, UIImageView, UILongPressGestureRecognizer;
-@protocol _UICollectionViewListCellReorderControlDelegate;
+@class NSString, UIColor, UIImageView, UILongPressGestureRecognizer;
+@protocol UITableConstants, _UICollectionViewListCellReorderControlDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionViewListCellReorderControl : UIView <UIGestureRecognizerDelegate>
+@interface _UICollectionViewListCellReorderControl : UIControl <UIGestureRecognizerDelegate>
 {
     UIImageView *_imageView;
     UILongPressGestureRecognizer *_reorderRecognizer;
     BOOL _tracking;
+    BOOL _needsImageViewUpdate;
     id<_UICollectionViewListCellReorderControlDelegate> _delegate;
-    CDUnknownBlockType _grabberImageProvider;
+    id<UITableConstants> _constants;
+    UIColor *_accessoryTintColor;
 }
 
+@property (strong, nonatomic) UIColor *accessoryTintColor; // @synthesize accessoryTintColor=_accessoryTintColor;
+@property (strong, nonatomic) id<UITableConstants> constants; // @synthesize constants=_constants;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_UICollectionViewListCellReorderControlDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (copy, nonatomic) CDUnknownBlockType grabberImageProvider; // @synthesize grabberImageProvider=_grabberImageProvider;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_dynamicUserInterfaceTraitDidChange;
+- (void)_setNeedsImageViewUpdate;
+- (void)_updateImageViewIfNeeded;
 - (void)beginReordering;
 - (void)endReordering:(BOOL)arg1;
+- (void)gestureMovedToPoint:(struct CGPoint)arg1;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 grabberImageProvider:(CDUnknownBlockType)arg2;
+- (id)initWithDelegate:(id)arg1 constants:(id)arg2;
 - (void)layoutSubviews;
-- (void)moveToPoint:(struct CGPoint)arg1;
 - (void)pan:(id)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

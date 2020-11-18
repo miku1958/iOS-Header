@@ -99,7 +99,9 @@
 - (struct CGRect)actualSceneBoundsForLandscape:(BOOL)arg1;
 - (struct CGRect)actualSceneFrame;
 - (struct CGRect)actualSceneFrameForOrientation:(long long)arg1;
+- (long long)actualSceneOrientation;
 - (void)addBottomPadding:(double)arg1;
+- (void)becomeKeyWindow;
 - (void)bringSubviewToFront:(id)arg1;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromView:(id)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromWindow:(id)arg2;
@@ -120,6 +122,7 @@
 - (void)resetTransform;
 - (void)sendSubviewToBack:(id)arg1;
 - (void)setEnableRemoteHosting:(BOOL)arg1;
+- (double)slideOverWindowVerticalOffset;
 - (void)sortSubviews;
 - (void)updateEditingOverlayContainer;
 - (void)updateForOrientation:(long long)arg1;

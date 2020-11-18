@@ -60,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (id)_fontForIdiom:(long long)arg1;
 - (long long)_idiom;
 - (long long)_indexForEntryAtPoint:(struct CGPoint)arg1;
+- (void)_largeContentViewerEnabledStatusDidChange:(id)arg1;
 - (double)_minLineSpacingForIdiom:(long long)arg1;
 - (void)_setIdiom:(long long)arg1;
 - (void)_setupAXHUDGestureIfNecessary;

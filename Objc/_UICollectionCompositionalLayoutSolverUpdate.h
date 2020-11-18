@@ -15,15 +15,17 @@ __attribute__((visibility("hidden")))
     NSArray *_updateItems;
     id<_UICollectionViewUpdateTranslating> _updateTranslator;
     _UIDataSourceSnapshotter *_finalDataSourceSnapshot;
+    struct CGRect _visibleBounds;
 }
 
 @property (readonly, nonatomic) _UIDataSourceSnapshotter *finalDataSourceSnapshot; // @synthesize finalDataSourceSnapshot=_finalDataSourceSnapshot;
 @property (readonly, nonatomic) NSArray *updateItems; // @synthesize updateItems=_updateItems;
 @property (readonly, nonatomic) id<_UICollectionViewUpdateTranslating> updateTranslator; // @synthesize updateTranslator=_updateTranslator;
+@property (readonly, nonatomic) struct CGRect visibleBounds; // @synthesize visibleBounds=_visibleBounds;
 
-+ (id)solverUpdateWithUpdateItems:(id)arg1 updateTranslator:(id)arg2 finalDataSourceSnapshot:(id)arg3;
++ (id)solverUpdateForVisibleBounds:(struct CGRect)arg1 updateItems:(id)arg2 updateTranslator:(id)arg3 finalDataSourceSnapshot:(id)arg4;
 - (void).cxx_destruct;
-- (id)initWithUpdateItems:(id)arg1 updateTranslator:(id)arg2 finalDataSourceSnapshot:(id)arg3;
+- (id)initWithVisibleBounds:(struct CGRect)arg1 updateItems:(id)arg2 updateTranslator:(id)arg3 finalDataSourceSnapshot:(id)arg4;
 
 @end
 

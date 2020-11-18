@@ -6,7 +6,7 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSNumber, NSString;
 
 @protocol TIPreferencesControllerActions <NSObject>
 
@@ -30,5 +30,6 @@
 - (void)updateLastUsedInputMode:(NSString *)arg1;
 - (void)updateLastUsedKeyboards:(NSDictionary *)arg1;
 - (void)updateLastUsedLayout:(NSString *)arg1;
+- (void)updateVisceral:(NSNumber *)arg1;
 @end
 

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL didBeginOutput; // @synthesize didBeginOutput=_didBeginOutput;
 @property (nonatomic) long long positionOffset; // @synthesize positionOffset=_positionOffset;
 
++ (id)outputWithKeyboardOutput:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

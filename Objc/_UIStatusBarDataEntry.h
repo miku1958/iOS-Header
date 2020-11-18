@@ -25,7 +25,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initFromData:(const CDStruct_0942cde0 *)arg1 type:(int)arg2;
+- (id)initFromData:(const CDStruct_3fd7985f *)arg1 type:(int)arg2;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

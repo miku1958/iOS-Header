@@ -15,6 +15,7 @@
 - (void)cancelPrinting;
 - (void)dismissAnimated:(BOOL)arg1;
 - (BOOL)filtersPrinters;
+- (void)printerBrowserViewDidDisappear;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 

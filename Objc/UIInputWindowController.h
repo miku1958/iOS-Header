@@ -11,7 +11,7 @@
 #import <UIKitCore/_UIInputHostController-Protocol.h>
 #import <UIKitCore/_UITextEffectsSceneObserver-Protocol.h>
 
-@class NSDate, NSLayoutConstraint, NSMutableArray, NSString, UIInputViewController, UIInputViewPlacementTransition, UIInputViewSet, UIInputViewSetNotificationInfo, UIInputViewSetPlacement, UIInputWindowControllerHosting, UIKeyboardFloatingTransitionController, UIKeyboardPathEffectView, UIView;
+@class NSDate, NSLayoutConstraint, NSMutableArray, NSString, UIInputViewController, UIInputViewPlacementTransition, UIInputViewSet, UIInputViewSetNotificationInfo, UIInputViewSetPlacement, UIInputWindowControllerHosting, UIKeyboardFloatingTransitionController, UIKeyboardPathEffectView, UIView, _UIKeyboardPasscodeObscuringInteraction;
 
 __attribute__((visibility("hidden")))
 @interface UIInputWindowController : UIApplicationRotationFollowingControllerNoTouches <UIInputViewAnimationHost, _UITextEffectsSceneObserver, UIKeyboardFloatingTransitionControllerDelegate, _UIInputHostController>
@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
     NSDate *_keyboardShowTimestamp;
     BOOL _supportsDockViewController;
     UIKeyboardFloatingTransitionController *_floatingTransitionController;
+    _UIKeyboardPasscodeObscuringInteraction *_passcodeObscuringInteraction;
     BOOL _shouldNotifyRemoteKeyboards;
     BOOL _forceAccessoryViewToBottomOfHostView;
     BOOL _dontDismissKeyboardOnScrolling;
@@ -57,6 +58,7 @@ __attribute__((visibility("hidden")))
     UIInputViewController *_inputAccessoryViewController;
     UIInputViewSetPlacement *_postRotationPlacement;
     UIInputViewSet *_postRotationInputViewSet;
+    CDUnknownBlockType _postRotationPendingBlock;
     UIInputViewSetNotificationInfo *_postRotationInputViewNotificationInfo;
     UIInputViewSetNotificationInfo *_templateNotificationInfo;
     UIInputViewPlacementTransition *_currentTransition;
@@ -100,12 +102,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, strong, nonatomic) UIInputViewSetPlacement *placementIgnoringRotation;
 @property (strong, nonatomic) UIInputViewSetNotificationInfo *postRotationInputViewNotificationInfo; // @synthesize postRotationInputViewNotificationInfo=_postRotationInputViewNotificationInfo;
 @property (strong, nonatomic) UIInputViewSet *postRotationInputViewSet; // @synthesize postRotationInputViewSet=_postRotationInputViewSet;
+@property (copy, nonatomic) CDUnknownBlockType postRotationPendingBlock; // @synthesize postRotationPendingBlock=_postRotationPendingBlock;
 @property (strong, nonatomic) UIInputViewSetPlacement *postRotationPlacement; // @synthesize postRotationPlacement=_postRotationPlacement;
 @property (nonatomic) BOOL shouldNotifyRemoteKeyboards; // @synthesize shouldNotifyRemoteKeyboards=_shouldNotifyRemoteKeyboards;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIInputViewSetNotificationInfo *templateNotificationInfo; // @synthesize templateNotificationInfo=_templateNotificationInfo;
 @property (strong, nonatomic) UIInputViewSet *transientInputViewSet; // @synthesize transientInputViewSet=_transientInputViewSet;
 
+- (BOOL)_allowsSkippingLayout;
 - (struct CGRect)_boundsForOrientation:(long long)arg1;
 - (BOOL)_canShowWhileLocked;
 - (struct CGPoint)_centerForOrientation:(long long)arg1;
@@ -129,6 +133,7 @@ __attribute__((visibility("hidden")))
 - (int)appearStateForChild:(unsigned long long)arg1 placement:(id)arg2 start:(BOOL)arg3;
 - (void)beginFloatingTransitionFromPanGestureRecognizer:(id)arg1;
 - (void)candidateBarWillChangeHeight:(double)arg1 withDuration:(double)arg2;
+- (void)chainPlacementsIfNecessaryFrom:(id)arg1 toPlacement:(id)arg2 transition:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)changeChild:(unsigned long long)arg1 toAppearState:(int)arg2 animated:(BOOL)arg3;
 - (unsigned long long)changeToInputViewSet:(id)arg1;
 - (void)checkPlaceholdersForRemoteKeyboardsAndForceConstraintsUpdate:(BOOL)arg1 layoutSubviews:(BOOL)arg2;
@@ -145,7 +150,9 @@ __attribute__((visibility("hidden")))
 - (void)finishSplitTransition;
 - (void)flushPendingActivities;
 - (void)generateNotificationsForStart:(BOOL)arg1;
+- (BOOL)hasInputOrAssistantViewsOnScreen;
 - (void)hostAppSceneBoundsChanged;
+- (void)hostViewWillDisappear;
 - (void)ignoreLayoutNotifications:(CDUnknownBlockType)arg1;
 - (BOOL)inhibitRotationAnimation;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
@@ -223,6 +230,7 @@ __attribute__((visibility("hidden")))
 - (void)updateViewConstraints;
 - (void)updateViewSizingConstraints;
 - (void)updateVisibilityConstraintsForPlacement:(id)arg1;
+- (void)validateInputView;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (id)viewForTransitionScreenSnapshot;
@@ -235,7 +243,6 @@ __attribute__((visibility("hidden")))
 - (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)willSnapshot;
 - (void)window:(id)arg1 statusBarWillChangeFromHeight:(double)arg2 toHeight:(double)arg3;
-- (void)window:(id)arg1 willAnimateRotationToInterfaceOrientation:(long long)arg2 duration:(double)arg3 newSize:(struct CGSize)arg4;
 
 @end
 

@@ -6,13 +6,11 @@
 
 #import <UIKitCore/UIView.h>
 
-@class UIImage, UIImageView, UIInputSwitcherTableCellBackgroundView, UILabel;
+@class UIImageView, UIInputSwitcherTableCellBackgroundView, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface UIInputSwitcherTableCellSegmentView : UIView
 {
-    UIImage *_invertedImage;
-    UIImage *_originalImage;
     BOOL _selected;
     BOOL _usesDarkTheme;
     UILabel *_label;

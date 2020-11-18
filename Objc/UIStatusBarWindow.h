@@ -15,7 +15,6 @@
 }
 
 + (struct CGRect)_convertRect:(struct CGRect)arg1 fromSceneReferenceSpaceToSceneSpaceWithOrientation:(long long)arg2;
-+ (struct CGRect)_defaultStatusBarSceneBounds;
 + (struct CGRect)_defaultStatusBarSceneReferenceBounds;
 + (struct CGRect)_defaultStatusBarSceneReferenceBoundsForOrientation:(long long)arg1;
 + (BOOL)_isSystemWindow;

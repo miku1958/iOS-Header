@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface _UIFocusEnvironmentPreferenceEnumerator : NSObject <_UIFocusEnvironmentPreferenceEnumerationContextDelegate>
 {
     BOOL _allowsInferringPreferences;
+    long long _enumerationMode;
     CDUnknownBlockType _didVisitAllPreferencesForEnvironmentHandler;
     CDUnknownBlockType _shouldInferPreferenceForEnvironmentHandler;
     _UIDebugLogReport *_debugReport;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIDebugLogReport *debugReport; // @synthesize debugReport=_debugReport;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType didVisitAllPreferencesForEnvironmentHandler; // @synthesize didVisitAllPreferencesForEnvironmentHandler=_didVisitAllPreferencesForEnvironmentHandler;
+@property (readonly, nonatomic) long long enumerationMode; // @synthesize enumerationMode=_enumerationMode;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType shouldInferPreferenceForEnvironmentHandler; // @synthesize shouldInferPreferenceForEnvironmentHandler=_shouldInferPreferenceForEnvironmentHandler;
 @property (readonly) Class superclass;
@@ -32,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldInferDefaultPreferenceForEnvironmentInContext:(id)arg1;
 - (void)enumeratePreferencesForEnvironment:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)init;
+- (id)initWithEnumerationMode:(long long)arg1;
 
 @end
 

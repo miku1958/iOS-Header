@@ -8,7 +8,8 @@
 
 #import <UIKitCore/_UIKBDelegateAwareInputController-Protocol.h>
 
-@class NSArray, NSString, UIKeyboard, UIKeyboardInputMode, UIViewController;
+@class NSArray, NSString, UIKeyboard, UIKeyboardInputMode, UILayoutGuide, UIViewController;
+@protocol UITextCursorAssertion;
 
 __attribute__((visibility("hidden")))
 @interface UICompatibilityInputViewController : UIInputViewController <_UIKBDelegateAwareInputController>
@@ -24,12 +25,16 @@ __attribute__((visibility("hidden")))
     BOOL _tearingDownInputController;
     double _resetInputModeTime;
     unsigned long long _latestDelayTime;
+    UILayoutGuide *_focusSafeAreaLayoutGuide;
     UIViewController *_inputController;
     NSArray *_internalEdgeMatchConstraints;
+    id<UITextCursorAssertion> _blinkAssertion;
 }
 
+@property (strong, nonatomic) id<UITextCursorAssertion> blinkAssertion; // @synthesize blinkAssertion=_blinkAssertion;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) UILayoutGuide *focusSafeAreaLayoutGuide;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIViewController *inputController; // @synthesize inputController=_inputController;
 @property (strong, nonatomic) NSArray *internalEdgeMatchConstraints; // @synthesize internalEdgeMatchConstraints=_internalEdgeMatchConstraints;
@@ -58,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)didSuspend:(id)arg1;
 - (void)finishSplitTransition:(BOOL)arg1;
 - (void)generateCompatibleSizeConstraintsIfNecessary;
+- (void)isHosted:(id)arg1;
 - (void)keyboardWillChangeFromDelegate:(id)arg1 toDelegate:(id)arg2;
 - (void)killIncomingExtension;
 - (void)loadView;
@@ -74,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (void)shouldUpdateInputMode:(id)arg1;
 - (void)takeSnapshotView;
 - (void)tearDownInputController;
+- (void)validateInputModeIsDisplayed;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

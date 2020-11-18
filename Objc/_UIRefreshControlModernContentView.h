@@ -17,14 +17,15 @@ __attribute__((visibility("hidden")))
     UIView *_seed;
     BOOL _hasFinishedRevealing;
     UILabel *_textLabel;
-    BOOL _scrollViewVerticalFeedbackGeneratorEnabled;
     BOOL _areAnimationsValid;
+    BOOL _horizontallyCenteredFramesNeedUpdate;
     double _currentPopStiffness;
     double _impactIntensity;
 }
 
 @property (nonatomic) BOOL areAnimationsValid; // @synthesize areAnimationsValid=_areAnimationsValid;
 @property (nonatomic) double currentPopStiffness; // @synthesize currentPopStiffness=_currentPopStiffness;
+@property (nonatomic) BOOL horizontallyCenteredFramesNeedUpdate; // @synthesize horizontallyCenteredFramesNeedUpdate=_horizontallyCenteredFramesNeedUpdate;
 @property (nonatomic) double impactIntensity; // @synthesize impactIntensity=_impactIntensity;
 @property (readonly, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)_removeAllAnimations;
 - (void)_resetToRevealingState;
 - (void)_reveal;
+- (void)_safeAreaInsetsDidChangeFromOldInsets:(struct UIEdgeInsets)arg1;
 - (void)_setBloomedAppearance;
 - (void)_setSpunAppearance;
 - (void)_setUnbloomedAppearance;

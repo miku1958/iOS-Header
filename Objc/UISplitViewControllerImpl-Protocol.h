@@ -16,6 +16,8 @@
 @property (weak, nonatomic) id<UISplitViewControllerDelegate> delegate;
 @property (nonatomic) float gutterWidth;
 @property (nonatomic) BOOL hidesMasterViewInPortrait;
+@property (readonly, nonatomic) BOOL inCollapsingToProposedTopColumnCallback;
+@property (readonly, nonatomic) BOOL lockedForDelegateCallback;
 @property (nonatomic) double maximumPrimaryColumnWidth;
 @property (nonatomic) double minimumPrimaryColumnWidth;
 @property (nonatomic) long long preferredDisplayMode;
@@ -24,6 +26,7 @@
 @property (nonatomic) BOOL presentsWithGesture;
 @property (nonatomic) long long primaryBackgroundStyle;
 @property (nonatomic) long long primaryEdge;
+@property (readonly, nonatomic) long long style;
 @property (nonatomic) BOOL usesDeviceOverlayPreferences;
 @property (nonatomic, getter=_usesExtraWidePrimaryColumn, setter=_setUsesExtraWidePrimaryColumn:) BOOL usesExtraWidePrimaryColumn;
 @property (copy, nonatomic) NSArray *viewControllers;
@@ -34,6 +37,7 @@
 - (void)_commonInit;
 - (double)_contentMarginForChildViewController:(UIViewController *)arg1;
 - (struct CGSize)_contentSizeForChildViewController:(UIViewController *)arg1 inPopoverController:(UIPopoverController *)arg2;
+- (UIResponder *)_deepestUnambiguousResponder;
 - (void)_descendantWillPresentViewController:(UIViewController *)arg1 modalSourceViewController:(UIViewController *)arg2 presentationController:(UIPresentationController *)arg3 animated:(BOOL)arg4;
 - (void)_didChangeToFirstResponder:(UIResponder *)arg1;
 - (void)_didEndSnapshotSession;
@@ -47,16 +51,20 @@
 - (BOOL)_hasPreferredInterfaceOrientationForPresentation;
 - (BOOL)_iPhoneShouldUseOverlayInCurrentEnvironment;
 - (void)_initWithCoder:(NSCoder *)arg1;
+- (BOOL)_isAnimating;
 - (BOOL)_isCollapsed;
 - (BOOL)_isRotating;
 - (BOOL)_layoutPrimaryOnRight;
 - (void)_marginInfoForChild:(UIViewController *)arg1 leftMargin:(double *)arg2 rightMargin:(double *)arg3;
+- (NSArray *)_multitaskingDragExclusionRects;
 - (BOOL)_optsOutOfPopoverControllerHierarchyCheck;
 - (void)_popoverController:(UIPopoverController *)arg1 didChangeFromVisible:(BOOL)arg2;
 - (void)_popoverController:(UIPopoverController *)arg1 willChangeToVisible:(BOOL)arg2;
 - (UIResponder *)_primaryContentResponder;
 - (UIDimmingView *)_primaryDimmingView;
+- (double)_primaryDividerPosition;
 - (BOOL)_shouldPersistViewWhenCoding;
+- (double)_supplementaryDividerPosition;
 - (UITraitCollection *)_traitCollectionForChildEnvironment:(id<UITraitEnvironment>)arg1;
 - (void)_updateChildContentMargins;
 - (void)_updateLayoutForStatusBarAndInterfaceOrientation;

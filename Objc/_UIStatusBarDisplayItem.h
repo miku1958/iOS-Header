@@ -27,6 +27,7 @@
     double _alpha;
     double _viewAlpha;
     double _baselineOffset;
+    double _centerOffset;
     _UIStatusBarStyleAttributes *_overriddenStyleAttributes;
     long long _overriddenVerticalAlignment;
     _UIStatusBarRegion *_region;
@@ -34,6 +35,7 @@
     id<UILayoutItem> _layoutItem;
     _UIStatusBarDisplayItemPlacement *_placement;
     struct UIEdgeInsets _actionInsets;
+    struct NSDirectionalEdgeInsets _extendedHoverInsets;
     struct CGAffineTransform _transform;
     struct CGAffineTransform _viewTransform;
 }
@@ -45,12 +47,13 @@
 @property (nonatomic) double alpha; // @synthesize alpha=_alpha;
 @property (nonatomic, getter=isBackground) BOOL background; // @synthesize background=_background;
 @property (nonatomic) double baselineOffset; // @synthesize baselineOffset=_baselineOffset;
+@property (nonatomic) double centerOffset; // @synthesize centerOffset=_centerOffset;
 @property (weak, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) id<_UIStatusBarDisplayable> displayable;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
-@property (nonatomic) struct NSDirectionalEdgeInsets extendedHoverInsets;
+@property (nonatomic) struct NSDirectionalEdgeInsets extendedHoverInsets; // @synthesize extendedHoverInsets=_extendedHoverInsets;
 @property (nonatomic) BOOL floating; // @synthesize floating=_floating;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *highlightView; // @synthesize highlightView=_highlightView;

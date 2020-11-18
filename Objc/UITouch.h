@@ -6,18 +6,20 @@
 
 #import <objc/NSObject.h>
 
+#import <UIKitCore/_UIEventComponent-Protocol.h>
 #import <UIKitCore/_UIResponderForwardable-Protocol.h>
 
 @class NSArray, NSMutableArray, NSNumber, NSString, UIResponder, UIView, UIWindow, _UITouchPredictor;
 @protocol _UITouchPhaseChangeDelegate;
 
-@interface UITouch : NSObject <_UIResponderForwardable>
+@interface UITouch : NSObject <_UIResponderForwardable, _UIEventComponent>
 {
     double _movementMagnitudeSquared;
     long long _phase;
     unsigned long long _tapCount;
     long long _edgeType;
     unsigned long long _edgeAim;
+    unsigned long long _precision;
     unsigned int _touchIdentifier;
     UIWindow *_window;
     UIView *_view;
@@ -71,36 +73,21 @@
     struct CGSize _displacement;
 }
 
-@property (nonatomic, setter=_setDisplacement:) struct CGSize _displacement; // @synthesize _displacement;
-@property (nonatomic, getter=_isEaten, setter=_setEaten:) BOOL _eaten; // @synthesize _eaten;
 @property (nonatomic, setter=_setEdgeAim:) unsigned long long _edgeAim; // @synthesize _edgeAim;
 @property (nonatomic, setter=_setEdgeType:) long long _edgeType; // @synthesize _edgeType;
-@property (nonatomic, getter=_expectedToBecomeDrag, setter=_setExpectedToBecomeDrag:) BOOL _expectedToBecomeDrag; // @synthesize _expectedToBecomeDrag=__expectedToBecomeDrag;
-@property (nonatomic, setter=_setForceCorrelationToken:) long long _forceCorrelationToken; // @synthesize _forceCorrelationToken;
 @property (nonatomic, setter=_setForceStage:) unsigned char _forceStage; // @synthesize _forceStage;
 @property (nonatomic, setter=_setForwardablePhase:) long long _forwardablePhase;
-@property (nonatomic, setter=_setHasForceUpdate:) BOOL _hasForceUpdate; // @synthesize _hasForceUpdate;
 @property (nonatomic, setter=_setHidEvent:) struct __IOHIDEvent *_hidEvent; // @synthesize _hidEvent;
 @property (nonatomic, setter=_setIsPointerTouch:) BOOL _isPointerTouch;
-@property (nonatomic, setter=_setIsPredictedTouch:) BOOL _isPredictedTouch;
 @property (nonatomic, setter=_setIsRestingTouch:) BOOL _isRestingTouch;
 @property (nonatomic, setter=_setIsTapToClick:) BOOL _isTapToClick;
-@property (nonatomic, setter=_setMaximumPossiblePressure:) double _maximumPossiblePressure; // @synthesize _maximumPossiblePressure;
-@property (nonatomic, setter=_setNeedsForceUpdate:) BOOL _needsForceUpdate; // @synthesize _needsForceUpdate;
 @property (nonatomic, setter=_setPathIdentity:) unsigned char _pathIdentity; // @synthesize _pathIdentity;
 @property (nonatomic, setter=_setPathIndex:) long long _pathIndex; // @synthesize _pathIndex;
-@property (strong, nonatomic, setter=_setPhaseChangeDelegate:) id<_UITouchPhaseChangeDelegate> _phaseChangeDelegate; // @synthesize _phaseChangeDelegate=__phaseChangeDelegate;
 @property (readonly, nonatomic) double _pressure; // @synthesize _pressure;
-@property (readonly, nonatomic) BOOL _respectsCharge;
 @property (strong, nonatomic, setter=_setResponder:) UIResponder *_responder;
 @property (nonatomic, setter=_setSenderID:) unsigned long long _senderID; // @synthesize _senderID;
-@property (readonly, nonatomic) double _unclampedForce;
-@property (strong, nonatomic, setter=_setWindowServerHitTestWindow:) UIWindow *_windowServerHitTestWindow; // @synthesize _windowServerHitTestWindow=__windowServerHitTestWindow;
 @property (nonatomic, setter=_setZGradient:) float _zGradient; // @synthesize _zGradient;
-@property (nonatomic, setter=_setAltitudeAngle:) double altitudeAngle; // @synthesize altitudeAngle=_altitudeAngle;
-@property (readonly, nonatomic) double azimuthAngle;
-@property (nonatomic, setter=_setAzimuthAngleInCADisplay:) double azimuthAngleInCADisplay; // @synthesize azimuthAngleInCADisplay=_azimuthAngleInCADisplay;
-@property (readonly, nonatomic) double azimuthAngleInWindow; // @synthesize azimuthAngleInWindow=_azimuthAngleInWindow;
+@property (readonly, nonatomic) double altitudeAngle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long estimatedProperties;
@@ -110,69 +97,42 @@
 @property (readonly, copy, nonatomic) NSArray *gestureRecognizers;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double initialTouchTimestamp; // @synthesize initialTouchTimestamp=_initialTouchTimestamp;
-@property (nonatomic) BOOL isTap;
-@property (nonatomic) double majorRadius; // @synthesize majorRadius=_pathMajorRadius;
-@property (nonatomic) double majorRadiusTolerance; // @synthesize majorRadiusTolerance=_majorRadiusTolerance;
+@property (readonly, nonatomic) double majorRadius;
+@property (readonly, nonatomic) double majorRadiusTolerance;
 @property (readonly, nonatomic) double maximumPossibleForce;
 @property (nonatomic) long long phase;
-@property (nonatomic) BOOL sentTouchesEnded;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long tapCount;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic, setter=_setType:) long long type; // @synthesize type=_type;
 @property (strong, nonatomic) UIView *view;
-@property (strong, nonatomic) UIView *warpedIntoView;
 @property (strong, nonatomic) UIWindow *window;
 
 + (id)_createTouchesWithGSEvent:(struct __GSEvent *)arg1 phase:(long long)arg2 view:(id)arg3;
 - (void).cxx_destruct;
 - (void)_abandonForwardingRecord;
-- (void)_addGestureRecognizer:(id)arg1;
 - (void)_clearForReenteringHoverInWindow:(id)arg1;
 - (void)_clearGestureRecognizers;
 - (id)_clone;
 - (void)_clonePropertiesToTouch:(id)arg1;
 - (long long)_compareIndex:(id)arg1;
-- (void)_computeAzimuthAngleInWindow;
-- (BOOL)_currentlyPredictingTouches;
 - (BOOL)_edgeForceActive;
 - (BOOL)_edgeForcePending;
 - (id)_forwardingRecord;
 - (id)_gestureRecognizers;
 - (BOOL)_isAbandoningForwardingRecord;
-- (BOOL)_isFirstTouchForView;
-- (BOOL)_isStationaryRelativeToTouches:(id)arg1;
 - (void)_loadStateFromTouch:(id)arg1;
 - (struct CGPoint)_locationInSceneReferenceSpace;
-- (struct CGPoint)_locationInWindow:(id)arg1;
-- (BOOL)_mightBeConsideredForForceSystemGesture;
 - (id)_mutableForwardingRecord;
 - (float)_pathMajorRadius;
 - (id)_phaseDescription;
-- (id)_predictedTouchesWithEvent:(id)arg1;
 - (struct CGPoint)_previousLocationInSceneReferenceSpace;
-- (struct CGPoint)_previousLocationInWindow:(id)arg1;
-- (id)_rehitTest;
-- (id)_rehitTestWithEvent:(id)arg1 constrainingToCurrentWindow:(BOOL)arg2;
-- (void)_removeGestureRecognizer:(id)arg1;
+- (long long)_responderForwardableType;
 - (SEL)_responderSelectorForPhase:(long long)arg1;
-- (void)_setIsFirstTouchForView:(BOOL)arg1;
-- (void)_setLocation:(struct CGPoint)arg1 preciseLocation:(struct CGPoint)arg2 inWindowResetPreviousLocation:(BOOL)arg3;
 - (void)_setLocationInWindow:(struct CGPoint)arg1 resetPrevious:(BOOL)arg2;
-- (void)_setPressure:(double)arg1 resetPrevious:(BOOL)arg2;
 - (void)_setPreviousTouch:(id)arg1;
-- (void)_setTouchIdentifier:(unsigned int)arg1;
-- (BOOL)_shouldDeliverTouchForTouchesMoved;
-- (double)_standardForceAmount;
-- (BOOL)_supportsForce;
 - (unsigned int)_touchIdentifier;
-- (id)_touchPredictor;
-- (void)_updateMovementMagnitudeForLocation:(struct CGPoint)arg1;
-- (void)_updateMovementMagnitudeFromLocation:(struct CGPoint)arg1 toLocation:(struct CGPoint)arg2;
-- (void)_updatePredictionsWithCoalescedTouches:(id)arg1;
-- (void)_updateWithChildEvent:(struct __IOHIDEvent *)arg1;
 - (BOOL)_wantsForwardingFromResponder:(id)arg1 toNextResponder:(id)arg2 withEvent:(id)arg3;
-- (void)_willBeDispatchedAsEnded;
 - (double)azimuthAngleInView:(id)arg1;
 - (struct CGVector)azimuthUnitVectorInView:(id)arg1;
 - (void)dealloc;

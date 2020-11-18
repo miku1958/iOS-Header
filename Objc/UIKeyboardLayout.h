@@ -28,6 +28,7 @@
     UIKeyboardTypingStyleEstimator *_typingStyleEstimator;
     UIEvent *_currentTouchDownEvent;
     BOOL hideKeysUnderIndicator;
+    BOOL _ignoringKeyplaneChange;
     BOOL _hasPreferredHeight;
     BOOL _isExecutingDeferredTouchTasks;
     BOOL _listeningForWillChange;
@@ -67,6 +68,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideKeysUnderIndicator; // @synthesize hideKeysUnderIndicator;
 @property (readonly, nonatomic) long long idiom;
+@property (nonatomic) BOOL ignoringKeyplaneChange; // @synthesize ignoringKeyplaneChange=_ignoringKeyplaneChange;
 @property (nonatomic) BOOL isExecutingDeferredTouchTasks; // @synthesize isExecutingDeferredTouchTasks=_isExecutingDeferredTouchTasks;
 @property (nonatomic) double lastTouchUpTime; // @synthesize lastTouchUpTime;
 @property (strong, nonatomic) NSString *layoutTag;
@@ -167,6 +169,7 @@
 - (BOOL)isGeometricShiftOrMoreKeyForTouch:(id)arg1;
 - (BOOL)isHandwritingPlane;
 - (BOOL)isKanaPlane;
+- (BOOL)isPossibleToTypeFast;
 - (BOOL)isReachableDevice;
 - (BOOL)isResized;
 - (BOOL)isResizing;

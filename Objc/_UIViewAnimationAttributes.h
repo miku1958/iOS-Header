@@ -18,12 +18,12 @@
     double _springVelocity;
     double _springMass;
     double _springStiffness;
-    long long _curve;
 }
 
-@property (readonly, nonatomic, getter=_curve) long long curve; // @synthesize curve=_curve;
+@property (readonly, nonatomic, getter=_curve) long long curve;
 @property (readonly, nonatomic, getter=_delay) double delay; // @synthesize delay=_delay;
 @property (readonly, nonatomic, getter=_duration) double duration; // @synthesize duration=_duration;
+@property (readonly, nonatomic, getter=_frameInterval) double frameInterval;
 @property (readonly, nonatomic, getter=_hasSpringAttributes) BOOL hasSpringAttributes; // @synthesize hasSpringAttributes=_hasSpringAttributes;
 @property (readonly, nonatomic, getter=_springDamping) double springDamping; // @synthesize springDamping=_springDamping;
 @property (readonly, nonatomic, getter=_springMass) double springMass; // @synthesize springMass=_springMass;
@@ -31,7 +31,6 @@
 @property (readonly, nonatomic, getter=_springVelocity) double springVelocity; // @synthesize springVelocity=_springVelocity;
 
 + (BOOL)supportsSecureCoding;
-- (long long)curve;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

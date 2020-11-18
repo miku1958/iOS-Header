@@ -6,11 +6,14 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
+@class UIKBTree;
+
 @protocol UIKBEmojiHitTestResponder <NSObject>
 - (void)deactivateActiveKey;
 - (void)finishSliderBehaviorFeedback;
 - (BOOL)isTrackpadMode;
 - (void)prepareSliderBehaviorFeedback;
 - (void)provideSliderBehaviorFeedback;
+- (void)updateState:(int)arg1 forKey:(UIKBTree *)arg2;
 @end
 

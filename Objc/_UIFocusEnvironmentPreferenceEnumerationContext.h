@@ -8,19 +8,22 @@
 
 #import <UIKitCore/_UIFocusEnvironmentPreferenceEnumerationContext-Protocol.h>
 
-@class NSArray, NSHashTable, NSMutableArray, NSString, UIFocusSystem, _UIDebugLogReport;
+@class NSArray, NSHashTable, NSMapTable, NSMutableArray, NSString, UIFocusSystem, _UIDebugLogReport;
 @protocol UIFocusEnvironment, _UIFocusEnvironmentPreferenceEnumerationContextDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusEnvironmentPreferenceEnumerationContext : NSObject <_UIFocusEnvironmentPreferenceEnumerationContext>
 {
     UIFocusSystem *_focusSystem;
+    id<UIFocusEnvironment> _preferredSubtree;
     NSMutableArray *_visitedEnvironmentStack;
     id<UIFocusEnvironment> _lastPrimaryPreferredEnvironment;
     NSArray *_cachedPreferredEnvironments;
     NSHashTable *_allVisitedEnvironments;
     BOOL _hasResolvedPreferredFocusEnvironments;
-    BOOL _hasNeverPopped;
+    BOOL _hasNeverPoppedInPreferredSubtree;
+    id<UIFocusEnvironment> _preferredSubtreeEntryPoint;
+    NSMapTable *_preferredEnvironmentsMap;
     BOOL _cachedPrefersNothingFocused;
     id<UIFocusEnvironment> _environment;
     id<_UIFocusEnvironmentPreferenceEnumerationContextDelegate> _delegate;
@@ -33,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) id<UIFocusEnvironment> environment; // @synthesize environment=_environment;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isInPreferredSubtree) BOOL inPreferredSubtree;
 @property (readonly, nonatomic) BOOL isLeafPreference;
 @property (readonly, nonatomic) BOOL isPrimaryPreference;
 @property (readonly, nonatomic, getter=isPreferredByItself) BOOL preferredByItself;
@@ -48,7 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)_reportInferredPreferredFocusEnvironment:(id)arg1;
 - (void)_resolvePreferredFocusEnvironments;
 - (id)init;
-- (id)initWithInitialFocusEnvironment:(id)arg1;
+- (id)initWithFocusEnvironment:(id)arg1 enumerationMode:(long long)arg2;
 - (void)popEnvironment;
 - (void)pushEnvironment:(id)arg1;
 

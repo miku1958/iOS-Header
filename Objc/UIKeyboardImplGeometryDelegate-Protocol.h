@@ -14,5 +14,6 @@
 - (BOOL)isAutomatic;
 - (void)prepareForImplBoundsHeightChange:(double)arg1 suppressNotification:(BOOL)arg2;
 - (BOOL)shouldSaveMinimizationState;
+- (void)syncMinimizedStateToHardwareKeyboardAttachedState;
 @end
 

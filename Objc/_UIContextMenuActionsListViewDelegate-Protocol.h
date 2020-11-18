@@ -6,9 +6,10 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIMenuElement, _UIContextMenuActionsListView;
+@class UIMenu, UIMenuElement, _UIContextMenuActionsListView;
 
 @protocol _UIContextMenuActionsListViewDelegate <NSObject>
-- (void)previewActionsView:(_UIContextMenuActionsListView *)arg1 didSelectAction:(UIMenuElement *)arg2;
+- (void)contextMenuListView:(_UIContextMenuActionsListView *)arg1 didSelectElement:(UIMenuElement *)arg2;
+- (UIMenu *)contextMenuListView:(_UIContextMenuActionsListView *)arg1 willDisplayMenu:(UIMenu *)arg2;
 @end
 

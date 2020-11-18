@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <UIKitCore/_UIEventComponent-Protocol.h>
 #import <UIKitCore/_UIResponderForwardable-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString, UIKey, UIResponder, UIWindow;
 
-@interface UIPress : NSObject <_UIResponderForwardable>
+@interface UIPress : NSObject <_UIResponderForwardable, _UIEventComponent>
 {
     NSMutableArray *_gestureRecognizers;
     NSMutableArray *_forwardingRecord;
@@ -64,6 +65,7 @@
 - (id)_mutableForwardingRecord;
 - (id)_phaseDescription;
 - (void)_removeGestureRecognizer:(id)arg1;
+- (long long)_responderForwardableType;
 - (SEL)_responderSelectorForPhase:(long long)arg1;
 - (BOOL)_wantsForwardingFromResponder:(id)arg1 toNextResponder:(id)arg2 withEvent:(id)arg3;
 

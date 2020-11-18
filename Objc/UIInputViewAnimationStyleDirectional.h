@@ -18,9 +18,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)canDismissWithScrollView;
 - (id)controllerForStartPlacement:(id)arg1 endPlacement:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)endPlacementForInputViewSet:(id)arg1;
+- (id)endPlacementForInputViewSet:(id)arg1 windowScene:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
-- (id)startPlacementForInputViewSet:(id)arg1 currentPlacement:(id)arg2;
+- (id)startPlacementForInputViewSet:(id)arg1 currentPlacement:(id)arg2 windowScene:(id)arg3;
 
 @end
 

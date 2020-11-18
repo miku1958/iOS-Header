@@ -88,6 +88,19 @@ struct CGVector {
     double dy;
 };
 
+struct InteractionContext {
+    id _field1;
+};
+
+struct InteractionEndingContext {
+    struct InteractionContext _field1;
+    BOOL _field2;
+    unsigned long long _field3;
+    id _field4;
+    CDUnknownBlockType _field5;
+    CDUnknownBlockType _field6;
+};
+
 struct NSDirectionalEdgeInsets {
     double top;
     double leading;
@@ -134,6 +147,8 @@ struct _PDFHistoryItem {
     struct CGPoint contentOffset;
 };
 
+struct _UIAuxillarySolveResult;
+
 struct _UIBoundingPathBitmapData {
     unsigned long long width;
     unsigned long long height;
@@ -155,6 +170,11 @@ struct _UIBoundingPathBitmapDataCorner {
 struct _UIBoundingPathBitmapDataSkipRegion {
     unsigned long long y;
     unsigned long long height;
+};
+
+struct _UIDragInteractionDriverStateMachine {
+    unsigned long long state;
+    unsigned long long *eventsQueueEnd;
 };
 
 struct _UIIntegralCornerRadii {
@@ -179,9 +199,29 @@ struct _UIIntegralSize {
     long long _field2;
 };
 
+struct _UIItemSolveResult {
+    struct CGRect _field1;
+    struct CGRect _field2;
+    struct vector<_UIAuxillarySolveResult, std::__1::allocator<_UIAuxillarySolveResult>> _field3;
+    struct vector<_UIAuxillarySolveResult, std::__1::allocator<_UIAuxillarySolveResult>> _field4;
+    id _field5;
+};
+
 struct _UIOrderedRangeIndexerImpl;
 
+struct _UIOutlineNode {
+    struct _NSRange _field1;
+    long long _field2;
+};
+
 struct _UIRTreeContainerNode;
+
+struct _UIRegionSolveResult {
+    struct _NSRange _field1;
+    double _field2;
+    double _field3;
+    struct _UIItemSolveResult _field4;
+};
 
 struct _UIRenderingSurface {
     struct CGRect _field1;
@@ -198,6 +238,30 @@ struct _UISEGestureFeatureSample {
     double _field7;
 };
 
+struct _UIStateMachineDebugging;
+
+struct _UIStateMachineMeta {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+};
+
+struct _UIStateTransition {
+    CDUnknownBlockType _field1;
+    CDUnknownBlockType _field2;
+    unsigned int :16;
+    unsigned int :8;
+    unsigned int :8;
+};
+
+struct _UITableConstantsBackgroundProperties {
+    BOOL _field1;
+    id _field2;
+    id _field3;
+    BOOL _field4;
+    long long _field5;
+};
+
 struct _UITraitCollectionChangeDescription {
     id _field1;
     id _field2;
@@ -209,7 +273,6 @@ struct _UITraitCollectionChangeDescription {
     BOOL _field8;
     BOOL _field9;
     BOOL _field10;
-    BOOL _field11;
 };
 
 struct _UIWebTouchEvent {
@@ -237,7 +300,20 @@ struct _UIWebViewportConfiguration {
     BOOL avoidsUnsafeArea;
 };
 
+struct __UISignedRange {
+    long long _field1;
+    unsigned long long _field2;
+};
+
+struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*> *__next_;
+};
+
 struct __shared_weak_count;
+
+struct atomic_flag {
+    _Atomic BOOL _Value;
+};
 
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
@@ -261,12 +337,36 @@ struct ui_size_cache {
     } __end_cap_;
 };
 
-struct vector<CGRect, std::__1::allocator<CGRect>> {
-    struct CGRect *__begin_;
-    struct CGRect *__end_;
-    struct __compressed_pair<CGRect *, std::__1::allocator<CGRect>> {
-        struct CGRect *__value_;
-    } __end_cap_;
+struct unique_ptr<_UIItemSolveResult, std::__1::default_delete<_UIItemSolveResult>> {
+    struct __compressed_pair<_UIItemSolveResult *, std::__1::default_delete<_UIItemSolveResult>> {
+        struct _UIItemSolveResult *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*> **__value_;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
+struct unordered_map<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>>> {
+    struct __hash_table<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, std::__1::hash<std::__1::basic_string<char>>, true>, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, std::__1::equal_to<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*> __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, std::__1::hash<std::__1::basic_string<char>>, true>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, std::__1::equal_to<std::__1::basic_string<char>>, true>> {
+            float __value_;
+        } __p3_;
+    } __table_;
 };
 
 struct vector<UICollectionViewLayoutAttributes *, std::__1::allocator<UICollectionViewLayoutAttributes *>> {
@@ -285,6 +385,30 @@ struct vector<_NSRange, std::__1::allocator<_NSRange>> {
     } __end_cap_;
 };
 
+struct vector<_UIAuxillarySolveResult, std::__1::allocator<_UIAuxillarySolveResult>> {
+    struct _UIAuxillarySolveResult *_field1;
+    struct _UIAuxillarySolveResult *_field2;
+    struct __compressed_pair<_UIAuxillarySolveResult *, std::__1::allocator<_UIAuxillarySolveResult>> {
+        struct _UIAuxillarySolveResult *_field1;
+    } _field3;
+};
+
+struct vector<_UIOutlineNode, std::__1::allocator<_UIOutlineNode>> {
+    struct _UIOutlineNode *__begin_;
+    struct _UIOutlineNode *__end_;
+    struct __compressed_pair<_UIOutlineNode *, std::__1::allocator<_UIOutlineNode>> {
+        struct _UIOutlineNode *__value_;
+    } __end_cap_;
+};
+
+struct vector<_UIRegionSolveResult, std::__1::allocator<_UIRegionSolveResult>> {
+    struct _UIRegionSolveResult *__begin_;
+    struct _UIRegionSolveResult *__end_;
+    struct __compressed_pair<_UIRegionSolveResult *, std::__1::allocator<_UIRegionSolveResult>> {
+        struct _UIRegionSolveResult *__value_;
+    } __end_cap_;
+};
+
 struct vector<long, std::__1::allocator<long>> {
     long long *__begin_;
     long long *__end_;
@@ -297,12 +421,12 @@ struct vector<long, std::__1::allocator<long>> {
 
 typedef struct {
     NSMutableSet *keyCommands;
-    NSMutableSet *menus;
+    NSMutableDictionary *menus;
     NSMutableDictionary *actions;
     _UICommandIdentifierDictionary *commands;
     NSMutableDictionary *parentMenuIdentifiers;
     _UICommandIdentifierDictionary *commandParentMenuIdentifiers;
-} CDStruct_5ddd6656;
+} CDStruct_de35aa0b;
 
 typedef struct {
     UIWebPDFView *view;
@@ -359,7 +483,9 @@ typedef struct {
 typedef struct {
     unsigned long long attachment;
     unsigned long long alignment;
-} CDStruct_6f807b77;
+    double attachmentOffset;
+    double alignmentOffset;
+} CDStruct_a36705e8;
 
 typedef struct {
     unsigned long long senderID;
@@ -370,7 +496,7 @@ typedef struct {
 } CDStruct_a7a14e3b;
 
 typedef struct {
-    BOOL itemIsEnabled[42];
+    BOOL itemIsEnabled[43];
     char timeString[64];
     char shortTimeString[64];
     char dateString[256];
@@ -424,7 +550,7 @@ typedef struct {
     unsigned int secondaryCellularConfigured:1;
     char primaryServiceBadgeString[100];
     char secondaryServiceBadgeString[100];
-} CDStruct_0942cde0;
+} CDStruct_3fd7985f;
 
 typedef struct {
     unsigned int val[8];
@@ -495,30 +621,6 @@ typedef struct {
     int rowVerticalAlignment;
 } CDStruct_2f5e8405;
 
-typedef struct {
-    long long userInterfaceIdiom;
-    double displayScale;
-    long long displayGamut;
-    long long touchLevel;
-    unsigned long long interactionModel;
-    unsigned long long primaryInteractionModel;
-    long long artworkSubtype;
-    long long horizontalSizeClass;
-    long long verticalSizeClass;
-    long long userInterfaceStyle;
-    long long layoutDirection;
-    long long forceTouchCapability;
-    long long preferredContentSizeCategory;
-    double displayCornerRadius;
-    long long legibilityWeight;
-    long long semanticContext;
-    long long presentationSemanticContext;
-    long long accessibilityContrast;
-    long long userInterfaceLevel;
-    long long vibrancy;
-    long long debugHighlight;
-} CDStruct_9b1704d8;
-
 typedef struct CDStruct_183601bc;
 
 typedef struct {
@@ -532,13 +634,13 @@ typedef struct {
 
 typedef struct {
     unsigned long long _field1;
-    CDStruct_6f807b77 _field2;
+    CDStruct_a36705e8 _field2;
     struct CGPoint _field3;
     unsigned long long _field4;
-} CDStruct_debd374d;
+} CDStruct_d394d979;
 
 typedef struct {
-    BOOL overrideItemIsEnabled[42];
+    BOOL overrideItemIsEnabled[43];
     unsigned int overrideTimeString:1;
     unsigned int overrideDateString:1;
     unsigned int overrideGsmSignalStrengthRaw:1;
@@ -573,12 +675,23 @@ typedef struct {
     unsigned int overrideSecondaryCellularConfigured:1;
     unsigned int overridePrimaryServiceBadgeString:1;
     unsigned int overrideSecondaryServiceBadgeString:1;
-    CDStruct_0942cde0 values;
-} CDStruct_f9a79af9;
+    CDStruct_3fd7985f values;
+} CDStruct_e922dd9d;
 
 typedef struct {
     CDStruct_73524d89 _field1[4];
 } CDStruct_bd7e7c01;
+
+typedef struct {
+    int _field1;
+    struct CGPoint _field2;
+    struct CGPoint _field3;
+    struct CGSize _field4;
+    id _field5;
+    id _field6;
+    id _field7;
+    id _field8;
+} CDStruct_ac6e8047;
 
 typedef struct {
     struct {
@@ -640,6 +753,11 @@ typedef struct {
 } CDStruct_912d1c89;
 
 typedef struct {
+    struct UIEdgeInsets _field1;
+    struct UIEdgeInsets _field2;
+} CDStruct_77fbeba1;
+
+typedef struct {
     id _field1;
     double _field2;
     double _field3;
@@ -699,6 +817,11 @@ typedef struct {
 } CDStruct_c7d8fe75;
 
 // Ambiguous groups
+typedef struct {
+    BOOL _field1;
+    BOOL _field2;
+} CDStruct_3d581f42;
+
 typedef struct {
     unsigned int visible:1;
     unsigned int isCleaningUp:1;
@@ -773,18 +896,26 @@ typedef struct {
     double force;
 } CDStruct_23d8ee2f;
 
+typedef struct vector<_UIOutlineNode, std::__1::allocator<_UIOutlineNode>> {
+    struct _UIOutlineNode *__begin_;
+    struct _UIOutlineNode *__end_;
+    struct __compressed_pair<_UIOutlineNode *, std::__1::allocator<_UIOutlineNode>> {
+        struct _UIOutlineNode *__value_;
+    } __end_cap_;
+} vector_8b07facb;
+
 #pragma mark Named Unions
 
 union _GLKQuaternion {
-    struct {
-        union _GLKVector3 v;
-        float s;
-    } ;
     struct {
         float x;
         float y;
         float z;
         float w;
+    } ;
+    struct {
+        union _GLKVector3 v;
+        float s;
     } ;
     float q[4];
 };
@@ -806,6 +937,12 @@ union _GLKVector3 {
         float p;
     } ;
     float v[3];
+};
+
+union _UIStateContext {
+    id _field1;
+    void *_field2;
+    void *_field3;
 };
 
 #pragma mark Typedef'd Unions

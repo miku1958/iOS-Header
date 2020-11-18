@@ -28,20 +28,13 @@
 
 @property (nonatomic) unsigned long long direction; // @synthesize direction=_direction;
 @property (nonatomic) double maximumDuration; // @synthesize maximumDuration=_maximumDuration;
-@property (nonatomic) double maximumPrimaryMovement; // @synthesize maximumPrimaryMovement=_maximumPrimaryMovement;
-@property (nonatomic) double maximumSecondaryMovement; // @synthesize maximumSecondaryMovement=_maximumSecondaryMovement;
-@property (nonatomic) double minimumPrimaryMovement; // @synthesize minimumPrimaryMovement=_minimumPrimaryMovement;
-@property (nonatomic) double minimumSecondaryMovement; // @synthesize minimumSecondaryMovement=_minimumSecondaryMovement;
 @property (nonatomic) unsigned long long numberOfTouchesRequired; // @synthesize numberOfTouchesRequired=_numberOfTouchesRequired;
-@property (nonatomic) double rateOfMaximumMovementDecay; // @synthesize rateOfMaximumMovementDecay=_rateOfMaximumMovementDecay;
-@property (nonatomic) double rateOfMinimumMovementDecay; // @synthesize rateOfMinimumMovementDecay=_rateOfMinimumMovementDecay;
-@property (readonly, nonatomic) struct CGPoint startPoint;
 
 + (BOOL)_shouldDefaultToTouches;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_appendSubclassDescription:(id)arg1;
-- (BOOL)_checkForSwipeWithDelta:(struct CGPoint)arg1 time:(double)arg2;
+- (BOOL)_isGestureType:(long long)arg1;
 - (void)_resetGestureRecognizer;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

@@ -25,23 +25,22 @@
 }
 
 @property (readonly, nonatomic) double _initialTouchTimestamp; // @synthesize _initialTouchTimestamp=__initialTouchTimestamp;
+@property (readonly, nonatomic) unsigned long long _inputPrecision;
 @property (readonly, nonatomic) NSSet *allTouches;
 @property (readonly, nonatomic) long long buttonMask;
-@property (weak, nonatomic) UIEventEnvironment *eventEnvironment; // @synthesize eventEnvironment=_eventEnvironment;
 @property (readonly, nonatomic) long long modifierFlags;
 @property (readonly, nonatomic) long long subtype;
 @property (nonatomic, setter=_setTimestamp:) double timestamp; // @synthesize timestamp=_timestamp;
 @property (readonly, nonatomic, getter=_trackpadFingerDownCount) long long trackpadFingerDownCount; // @synthesize trackpadFingerDownCount=_trackpadFingerDownCount;
 @property (readonly, nonatomic) long long type;
 
++ (unsigned long long)_inputPrecisionForTouches:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addEventObserver:(id)arg1;
 - (long long)_buttonMask;
 - (void)_cleanupAfterDispatch;
 - (unsigned long long)_clickCount;
 - (id)_cloneEvent;
 - (struct CGPoint)_digitizerLocation;
-- (id)_eventObservers;
 - (unsigned long long)_focusHeading;
 - (void)_gestureRecognizerNoLongerNeedsSendEvent:(id)arg1;
 - (id)_gestureRecognizersForWindow:(id)arg1;
@@ -57,7 +56,6 @@
 - (id)_modifiedInput;
 - (long long)_modifierFlags;
 - (long long)_moveDirection;
-- (void)_removeEventObserver:(id)arg1;
 - (id)_screen;
 - (BOOL)_sendEventToGestureRecognizer:(id)arg1;
 - (void)_sendEventToResponder:(id)arg1;
@@ -72,7 +70,6 @@
 - (id)_windows;
 - (id)coalescedTouchesForTouch:(id)arg1;
 - (void)dealloc;
-- (BOOL)isKeyDown;
 - (id)predictedTouchesForTouch:(id)arg1;
 - (id)touchesForGestureRecognizer:(id)arg1;
 - (id)touchesForView:(id)arg1;

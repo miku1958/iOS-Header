@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (BOOL)_isGestureType:(long long)arg1;
 - (void)setDelegate:(id)arg1;
 
 @end

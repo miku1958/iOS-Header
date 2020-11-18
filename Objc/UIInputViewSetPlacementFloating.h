@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 + (id)placementWithUndockedOffset:(struct CGPoint)arg1 chromeBuffer:(struct UIEdgeInsets)arg2 floatingWidth:(double)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_geometryChanges:(id)arg1 forAncestor:(id)arg2;
+- (void)_geometryChanged:(const CDStruct_ac6e8047 *)arg1 forAncestor:(id)arg2;
 - (struct CGRect)adjustBoundsForNotificationsWithOwner:(id)arg1;
 - (Class)applicatorClassForKeyboard:(BOOL)arg1;
 - (id)applicatorInfoForOwner:(id)arg1;

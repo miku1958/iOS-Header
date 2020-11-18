@@ -8,7 +8,6 @@
 
 @class NSMapTable;
 
-__attribute__((visibility("hidden")))
 @interface UITransformEvent : UIEvent
 {
     NSMapTable *_gestureRecognizersByWindow;
@@ -40,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)_reset;
 - (BOOL)_sendEventToGestureRecognizer:(id)arg1;
 - (void)_setHIDEvent:(struct __IOHIDEvent *)arg1;
+- (id)_windowServerHitTestWindow;
 - (id)_windows;
 - (struct CGPoint)locationInView:(id)arg1;
 - (long long)subtype;

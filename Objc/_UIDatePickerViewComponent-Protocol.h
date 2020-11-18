@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSDate, NSDateComponents, UIColor, UIDatePicker, _UIDatePickerDataModel;
+@class NSDate, NSDateComponents, UIColor, UIDatePicker, UIResponder, _UIDatePickerDataModel;
 
 @protocol _UIDatePickerViewComponent
 
@@ -33,13 +33,19 @@
 - (void)didChangeMinuteInterval;
 - (void)didChangeMode;
 - (void)didChangeTimeZone;
+- (void)didChangeToday;
+- (void)didReset;
 - (BOOL)hasDefaultSize;
 
 @optional
 - (void)_updateDateOrTime;
+- (void)_workaround66574039_datePickerDidUpdateLayoutMargins;
 - (NSDateComponents *)dateComponents;
+- (void)didChangeCustomFontDesign;
+- (UIResponder *)primaryFirstResponder;
 - (void)setDateComponents:(NSDateComponents *)arg1;
 - (void)setHighlightsToday:(BOOL)arg1;
 - (void)setStaggerTimeIntervals:(BOOL)arg1;
+- (BOOL)usesAutoLayout;
 @end
 

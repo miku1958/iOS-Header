@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (double)inputAssistantViewHeightForInputViewSet:(id)arg1;
 - (BOOL)inputViewWillAppear;
 - (struct CGRect)remoteIntrinsicContentSizeForInputViewInSet:(id)arg1 includingIAV:(BOOL)arg2;
+- (BOOL)showsInputOrAssistantViews;
 - (BOOL)showsInputViews;
 - (id)verticalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 

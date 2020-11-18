@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UIView.h>
 
-@class NSString, UILabel;
+@class NSString, UIColor, UIFont, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface _UITableViewCellBadge : UIView
@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) UILabel *badgeTextLabel; // @synthesize badgeTextLabel=_badgeTextLabel;
+@property (strong, nonatomic) UIColor *color;
+@property (strong, nonatomic) UIFont *font;
 @property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
 @property (copy, nonatomic) NSString *text;
 
@@ -23,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)_sizeToFit;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isHighlighted;
+- (void)layoutSubviews;
 - (double)minHeight;
 - (void)setHighlighted:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

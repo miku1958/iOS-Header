@@ -14,7 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIMenuBuilder : NSObject <NSCopying, UIMenuBuilder>
 {
-    CDStruct_5ddd6656 _analysis;
+    CDStruct_de35aa0b _analysis;
     NSArray *_keyCommandsCache;
     UIMenuSystem *_system;
     unsigned long long __changeCount;
@@ -31,7 +31,6 @@ __attribute__((visibility("hidden")))
 - (void)_insertMenu:(id)arg1 intoParentMenu:(id)arg2 newParentMenu:(CDUnknownBlockType)arg3;
 - (id)_internalDiffForDiffv1:(id)arg1;
 - (BOOL)_isInternallyConsistent;
-- (id)_menuForMenu:(id)arg1;
 - (id)_parentOfMenuForIdentifier:(id)arg1 commandForIdentifier:(id)arg2;
 - (void)_patch:(id)arg1;
 - (void)_patchInternalDiff:(id)arg1;
@@ -42,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (id)commandForAction:(SEL)arg1 propertyList:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithRootMenu:(id)arg1;
-- (id)initWithSystem:(id)arg1 analysis:(CDStruct_5ddd6656)arg2;
+- (id)initWithSystem:(id)arg1 analysis:(CDStruct_de35aa0b)arg2;
 - (void)insertChildMenu:(id)arg1 atEndOfMenuForIdentifier:(id)arg2;
 - (void)insertChildMenu:(id)arg1 atStartOfMenuForIdentifier:(id)arg2;
 - (void)insertSiblingMenu:(id)arg1 afterMenuForIdentifier:(id)arg2;

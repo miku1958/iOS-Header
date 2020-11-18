@@ -6,28 +6,42 @@
 
 #import <UIKitCore/_UIStatusBarIndicatorItem.h>
 
-@class _UIStatusBarPillView;
+@class _UIStatusBarActivityIconView, _UIStatusBarPillView;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarBackgroundActivityItem : _UIStatusBarIndicatorItem
 {
     _UIStatusBarPillView *_backgroundView;
+    _UIStatusBarActivityIconView *_iconView;
 }
 
 @property (strong, nonatomic) _UIStatusBarPillView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property (strong, nonatomic) _UIStatusBarActivityIconView *iconView; // @synthesize iconView=_iconView;
 
++ (double)_fontSizeAdjustmentForActivityType:(long long)arg1;
++ (BOOL)_identifierContainsItemImage:(id)arg1;
++ (double)_verticalOffsetForActivityType:(long long)arg1;
 + (id)backgroundDisplayIdentifier;
 - (void).cxx_destruct;
 - (id)_backgroundActivityViewForIdentifier:(id)arg1;
 - (id)_backgroundColorForActivityType:(long long)arg1;
 - (void)_create_backgroundView;
+- (void)_create_iconView;
 - (id)_imageNameForActivityType:(long long)arg1;
 - (BOOL)_shouldPulseForActivityType:(long long)arg1 traitCollection:(id)arg2;
+- (BOOL)_shouldRingForActivityType:(long long)arg1 traitCollection:(id)arg2;
 - (id)_systemImageNameForActivityType:(long long)arg1;
+- (id)_textLabelForActivityType:(long long)arg1;
+- (id)_visualEffectForActivityType:(long long)arg1 traitCollection:(id)arg2;
+- (id)additionAnimationForDisplayItemWithIdentifier:(id)arg1;
+- (void)applyStyleAttributes:(id)arg1 toDisplayItem:(id)arg2;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (id)createDisplayItemForIdentifier:(id)arg1;
+- (id)imageForUpdate:(id)arg1;
 - (id)imageNameForUpdate:(id)arg1;
+- (id)imageView;
 - (id)indicatorEntryKey;
+- (id)removalAnimationForDisplayItemWithIdentifier:(id)arg1;
 - (id)systemImageNameForUpdate:(id)arg1;
 - (id)viewForIdentifier:(id)arg1;
 

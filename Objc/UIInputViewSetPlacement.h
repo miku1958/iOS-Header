@@ -24,14 +24,17 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) id<UIInputViewSetPlacementDelegate> delegate; // @synthesize delegate;
 @property (nonatomic) double extendedHeight; // @synthesize extendedHeight=_extendedHeight;
 @property (readonly, nonatomic) BOOL isFloating;
+@property (readonly, nonatomic) BOOL isHiddenForFloatingTransition;
 @property (readonly, nonatomic) BOOL isInteractive;
-@property (readonly, nonatomic) BOOL isInvisible;
 @property (readonly, nonatomic) BOOL isUndocked;
+@property (readonly, nonatomic) BOOL isVisible;
 @property (readonly, nonatomic) BOOL requiresWindowBasedSafeAreaInsets;
+@property (readonly, nonatomic) BOOL showsInputOrAssistantViews;
 @property (readonly, nonatomic) BOOL showsInputViews;
 @property (readonly, nonatomic) BOOL showsKeyboard;
 @property (strong, nonatomic) NSArray *subPlacements; // @synthesize subPlacements=_subPlacements;
 
++ (id)deactivatedKeyboardPlacementWithCurrentPlacement:(CDUnknownBlockType)arg1;
 + (id)encodablePlacementsForXPC;
 + (id)placement;
 + (BOOL)supportsSecureCoding;
@@ -41,6 +44,8 @@ __attribute__((visibility("hidden")))
 - (Class)applicatorClassForKeyboard:(BOOL)arg1;
 - (id)applicatorInfoForOwner:(id)arg1;
 - (void)checkSizeForOwner:(id)arg1;
+- (unsigned long long)computeComparisonMask;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)expiringPlacement;
 - (id)horizontalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
@@ -52,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)notificationsForTransitionToPlacement:(id)arg1;
 - (struct CGRect)remoteIntrinsicContentSizeForInputViewInSet:(id)arg1 includingIAV:(BOOL)arg2;
 - (void)setDirty;
+- (void)setOtherPlacement:(id)arg1;
 - (struct CGAffineTransform)transform;
 - (id)verticalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 - (id)widthConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;

@@ -27,11 +27,13 @@
         unsigned int _trackingSessionRequest:1;
         unsigned int _configurationIsDirty:1;
         unsigned int _userInfoIsDirty:1;
+        unsigned int _isInternal:1;
     } _sessionFlags;
 }
 
 @property (nonatomic, setter=_setConfigurationIsDirty:) BOOL _configurationIsDirty;
 @property (readonly, nonatomic) BOOL _configurationNeedsReevalulation;
+@property (readonly, nonatomic, getter=_isInternal) BOOL _internal;
 @property (nonatomic, setter=_setStateRestorationActivityIsDirty:) BOOL _stateRestorationActivityIsDirty;
 @property (nonatomic, setter=_setTrackingRefreshRequest:) BOOL _trackingRefreshRequest;
 @property (nonatomic, setter=_setUserInfoIsDirty:) BOOL _userInfoIsDirty;

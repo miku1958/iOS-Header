@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)_create_dualSingleLineNameAndTypeView;
 - (void)_create_dualSingleLineNameView;
 - (id)_fontForEntry:(id)arg1 styleAttributes:(id)arg2 baselineOffset:(double *)arg3;
+- (struct _NSRange)_nonCondensedFontRangeForEntry:(id)arg1;
 - (BOOL)_showCallFowardingForEntry:(id)arg1;
 - (id)_singleCellularEntryMatching:(CDUnknownBlockType)arg1;
 - (id)_stringForCellularType:(long long)arg1;

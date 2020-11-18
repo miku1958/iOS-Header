@@ -8,7 +8,7 @@
 
 #import <UIKitCore/_UINavigationBarAugmentedTitleView-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSString, UINavigationItem, _UINavigationBarTitleViewOverlayRects;
+@class NSArray, NSLayoutConstraint, NSString, UIMenu, UINavigationItem, _UINavigationBarTitleViewOverlayRects;
 @protocol _UINavigationBarTitleViewDataSource;
 
 @interface _UINavigationBarTitleView : UIView <_UINavigationBarAugmentedTitleView>
@@ -44,6 +44,7 @@
 @property (readonly, nonatomic) BOOL _underlayNavigationBarContent;
 @property (nonatomic) double backButtonAlpha; // @synthesize backButtonAlpha=_backButtonAlpha;
 @property (nonatomic) double backButtonMaximumWidth; // @synthesize backButtonMaximumWidth=_backButtonMaximumWidth;
+@property (readonly, copy, nonatomic) UIMenu *backButtonMenu;
 @property (readonly, nonatomic) double contentBaseHeight;
 @property (readonly, nonatomic) double contentBaselineOffsetFromTop;
 @property (readonly, copy, nonatomic) NSArray *contentOverlayRects;
@@ -58,11 +59,13 @@
 @property (readonly, nonatomic) double largeTitleHeight;
 @property (readonly, nonatomic) CDStruct_c3b9c2ee largeTitleHeightRange;
 @property (nonatomic) double leadingBarAlpha; // @synthesize leadingBarAlpha=_leadingBarAlpha;
+@property (readonly, nonatomic) long long leadingOverlayCount;
 @property (readonly, weak, nonatomic) UINavigationItem *navigationItem; // @synthesize navigationItem=_navigationItem;
 @property (nonatomic) long long preferredContentAlignment; // @synthesize preferredContentAlignment=_preferredContentAlignment;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long titleLocation; // @synthesize titleLocation=_titleLocation;
 @property (nonatomic) double trailingBarAlpha; // @synthesize trailingBarAlpha=_trailingBarAlpha;
+@property (readonly, nonatomic) long long trailingOverlayCount;
 @property (nonatomic) BOOL underlayBarContent; // @synthesize underlayBarContent=_underlayBarContent;
 
 - (void).cxx_destruct;
@@ -73,6 +76,7 @@
 - (void)_performNavigationBarTransition:(long long)arg1 willBeDisplayed:(BOOL)arg2;
 - (long long)_preferredContentSizeForSize:(long long)arg1;
 - (void)_setDataSource:(id)arg1 navigationItem:(id)arg2 titleLocation:(long long)arg3;
+- (id)_traitCollectionOverridesForNavigationBarTraitCollection:(id)arg1;
 - (BOOL)_wantsTwoPartTransition;
 - (void)contentDidChange;
 - (id)initWithCoder:(id)arg1;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _isSectionOperation;
     BOOL _destinationIdentifierIsSectionIdentifier;
+    BOOL _isDeleteAll;
     NSOrderedSet *_identifiers;
     long long _action;
     long long _relativePosition;
@@ -28,10 +29,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL destinationIdentifierIsSectionIdentifier; // @synthesize destinationIdentifierIsSectionIdentifier=_destinationIdentifierIsSectionIdentifier;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSOrderedSet *identifiers; // @synthesize identifiers=_identifiers;
+@property (readonly, nonatomic) BOOL isDeleteAll; // @synthesize isDeleteAll=_isDeleteAll;
 @property (readonly, nonatomic) BOOL isSectionOperation; // @synthesize isSectionOperation=_isSectionOperation;
 @property (readonly, nonatomic) long long relativePosition; // @synthesize relativePosition=_relativePosition;
 @property (readonly) Class superclass;
 
++ (id)updateDeleteAll;
 - (void).cxx_destruct;
 - (void)_throwIfInvalid;
 - (id)initWithIdentifiers:(id)arg1 sectionIdentifiers:(id)arg2 action:(long long)arg3 desinationIdentifier:(id)arg4 relativePosition:(long long)arg5 destinationIsSection:(BOOL)arg6;

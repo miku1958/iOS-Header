@@ -12,7 +12,7 @@
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKitCore/_UIBarPositioningInternal-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, UIAccessibilityHUDGestureManager, UIColor, UIImage, UILayoutGuide, UINavigationBarAppearance, UINavigationItem, _UINavigationBarItemStack, _UINavigationBarVisualProvider, _UINavigationBarVisualStyle, _UINavigationControllerRefreshControlHost, _UINavigationItemButtonView, _UIViewControllerTransitionContext;
+@class NSArray, NSDictionary, NSString, UIAccessibilityHUDGestureManager, UIBarButtonItem, UIColor, UIImage, UILayoutGuide, UINavigationBarAppearance, UINavigationItem, _UINavigationBarItemStack, _UINavigationBarVisualProvider, _UINavigationBarVisualStyle, _UINavigationControllerRefreshControlHost, _UINavigationItemButtonView, _UIViewControllerTransitionContext;
 @protocol UINavigationBarDelegate, _UINavigationBarDelegatePrivate;
 
 @interface UINavigationBar : UIView <UIGestureRecognizerDelegate, UIAccessibilityHUDGestureDelegate, _UIBarPositioningInternal, NSCoding, UIBarPositioning>
@@ -36,6 +36,7 @@
         unsigned int isIgnoringLock:1;
         unsigned int layoutInProgress:1;
         unsigned int delegateRespondsToFreezeLayoutForDismissalSelector:1;
+        unsigned int delegateRespondsToInterfaceOrientationWindowSelector:1;
     } _navbarFlags;
     BOOL _wantsLetterpressContent;
     BOOL _prefersLargeTitles;
@@ -54,25 +55,31 @@
 }
 
 @property (strong, nonatomic, setter=_setAccessibilityButtonBackgroundTintColor:) UIColor *_accessibilityButtonBackgroundTintColor; // @synthesize _accessibilityButtonBackgroundTintColor;
+@property (readonly, nonatomic, getter=_isAnimatingNavItemContentLayoutGuideForStaticButtonVisibilityChange) BOOL _animatingNavItemContentLayoutGuideForStaticButtonVisibilityChange;
 @property (readonly, nonatomic) NSArray *_animationIds;
 @property (nonatomic, setter=_setBackIndicatorLeftMargin:) double _backIndicatorLeftMargin;
 @property (readonly, strong, nonatomic) NSString *_backdropViewLayerGroupName;
 @property (nonatomic, setter=_setBackgroundOpacity:) double _backgroundOpacity;
 @property (strong, nonatomic, setter=_setBackgroundView:) UIView *_backgroundView;
 @property (readonly, nonatomic) long long _barTranslucence;
+@property (readonly, nonatomic, getter=_isContentViewHidden) BOOL _contentViewHidden;
 @property (nonatomic, setter=_setDeferShadowToSearchBar:) BOOL _deferShadowToSearchBar;
 @property (nonatomic, setter=_setDisableBlurTinting:) BOOL _disableBlurTinting;
 @property (nonatomic, setter=_setForceScrollEdgeAppearance:) BOOL _forceScrollEdgeAppearance;
 @property (readonly, nonatomic) BOOL _hasFixedMaximumHeight;
 @property (readonly, nonatomic) BOOL _hasVariableHeight;
+@property (readonly, nonatomic) double _heightForRestoringFromCancelledTransition;
 @property (readonly, nonatomic) double _heightIncludingBackground;
 @property (nonatomic, setter=_setHidesShadow:) BOOL _hidesShadow;
+@property (readonly, nonatomic) double _navItemContentLayoutGuideAnimationDistance;
 @property (nonatomic, setter=_setOverrideBackgroundExtension:) double _overrideBackgroundExtension; // @synthesize _overrideBackgroundExtension=__overrideBackgroundExtension;
 @property (nonatomic, setter=_setRequestedMaxBackButtonWidth:) double _requestedMaxBackButtonWidth; // @synthesize _requestedMaxBackButtonWidth;
 @property (nonatomic, setter=_setShadowAlpha:) double _shadowAlpha;
-@property (readonly, nonatomic) struct CGSize _sizeForRestoringFromCancelledTransition;
+@property (nonatomic, getter=_shouldFadeStaticNavBarButton, setter=_setShouldFadeStaticNavBarButton:) BOOL _shouldFadeStaticNavBarButton;
 @property (readonly, nonatomic) _UINavigationBarItemStack *_stack;
 @property (readonly, nonatomic) BOOL _startedAnimationTracking; // @synthesize _startedAnimationTracking=__startedAnimationTracking;
+@property (strong, nonatomic, setter=_setStaticNavBarButtonItem:) UIBarButtonItem *_staticNavBarButtonItem;
+@property (nonatomic, getter=_staticNavBarButtonLingers, setter=_setStaticNavBarButtonLingers:) BOOL _staticNavBarButtonLingers;
 @property (nonatomic, setter=_setTitleOpacity:) double _titleOpacity;
 @property (nonatomic, setter=_setUseInlineBackgroundHeightWhenLarge:) BOOL _useInlineBackgroundHeightWhenLarge;
 @property (readonly, nonatomic) UILayoutGuide *_userContentGuide;
@@ -155,6 +162,7 @@
 - (long long)_barPosition;
 - (void)_barSizeDidChange:(struct CGSize)arg1;
 - (long long)_barStyle;
+- (void)_beginAnimatingNavItemContentLayoutGuideForStaticButtonVisibilityChange;
 - (void)_beginInteractiveTransition;
 - (BOOL)_canHandleStatusBarTouchAtLocation:(struct CGPoint)arg1;
 - (BOOL)_canShowBackgroundEffects;
@@ -190,6 +198,7 @@
 - (id)_effectiveDelegate;
 - (long long)_effectiveMetricsForMetrics:(long long)arg1;
 - (void)_enableAnimation;
+- (void)_endAnimatingNavItemContentLayoutGuideForStaticButtonVisibilityChange;
 - (void)_evaluateBackIndicatorForHilightedState:(BOOL)arg1 ofBarButtonItem:(id)arg2 inNavigationItem:(id)arg3;
 - (void)_fadeAllViewsIn;
 - (void)_fadeAllViewsOut;
@@ -201,11 +210,13 @@
 - (BOOL)_heightDependentOnOrientation;
 - (BOOL)_hostsLayoutEngineAllowsTAMIC_NO;
 - (struct CGRect)_incomingNavigationBarFrame;
+- (void)_installContentClippingView:(id)arg1;
 - (void)_installDefaultAppearance;
 - (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
 - (BOOL)_isAlwaysHidden;
 - (BOOL)_isAnimationEnabled;
 - (long long)_itemStackCount;
+- (void)_largeContentViewerEnabledStatusDidChange:(id)arg1;
 - (CDStruct_39925896)_layoutHeightsForNavigationItem:(id)arg1 fittingWidth:(double)arg2;
 - (void)_palette:(id)arg1 isAttaching:(BOOL)arg2 didComplete:(BOOL)arg3;
 - (void)_performUpdatesIgnoringLock:(CDUnknownBlockType)arg1;
@@ -222,9 +233,12 @@
 - (void)_redisplayItems;
 - (void)_reenableUserInteraction;
 - (void)_reenableUserInteractionWhenReadyWithContext:(id)arg1;
+- (void)_removeContentClippingView;
 - (struct NSDirectionalEdgeInsets)_resolvedLargeTitleMargins;
 - (struct NSDirectionalEdgeInsets)_resolvedLayoutMargins;
+- (struct NSDirectionalEdgeInsets)_resolvedSearchBarMargins;
 - (id)_restingHeights;
+- (long long)_sceneDraggingBehaviorOnPan;
 - (void)_sendNavigationBarAnimateTransition;
 - (void)_sendNavigationBarDidChangeStyle;
 - (void)_sendNavigationBarResize;
@@ -247,6 +261,7 @@
 - (void)_setItems:(id)arg1 transition:(int)arg2 reset:(BOOL)arg3 resetOwningRelationship:(BOOL)arg4;
 - (void)_setItemsUpToItem:(id)arg1 transition:(int)arg2;
 - (void)_setNeedsBackgroundViewUpdate;
+- (void)_setNeedsStaticNavBarButtonUpdate;
 - (void)_setPressedButtonItemTextColor:(id)arg1 shadowColor:(id)arg2;
 - (void)_setPrompt:(id)arg1;
 - (void)_setReversesButtonTextShadowOffsetWhenPressed:(BOOL)arg1;
@@ -267,6 +282,7 @@
 - (void)_updateBackIndicatorImage;
 - (void)_updateContentIfTopItem:(id)arg1 animated:(BOOL)arg2;
 - (void)_updateInteractiveTransition:(double)arg1;
+- (BOOL)_updateNavItemContentLayoutGuideAnimationConstraintConstant:(double)arg1;
 - (void)_updateNavigationBarItem:(id)arg1 forStyle:(long long)arg2 previousTintColor:(id)arg3;
 - (void)_updateNavigationBarItemsForStyle:(long long)arg1;
 - (void)_updateNavigationBarItemsForStyle:(long long)arg1 previousTintColor:(id)arg2;
@@ -292,6 +308,7 @@
 - (double)defaultHeightForMetrics:(long long)arg1;
 - (struct CGSize)defaultSizeForOrientation:(long long)arg1;
 - (void)didAddSubview:(id)arg1;
+- (void)didMoveToWindow;
 - (void)disableAnimation;
 - (void)drawBackButtonBackgroundInRect:(struct CGRect)arg1 withStyle:(long long)arg2 pressed:(BOOL)arg3;
 - (void)drawBackgroundInRect:(struct CGRect)arg1 withStyle:(long long)arg2;

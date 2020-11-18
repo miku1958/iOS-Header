@@ -40,6 +40,7 @@
 @property (nonatomic, getter=_delay, setter=_setDelay:) double delay; // @synthesize delay=_delay;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, nonatomic, getter=_effectiveDelay) double effectiveDelay;
+@property (readonly, nonatomic, getter=_effectiveDuration) double effectiveDuration;
 @property (readonly, nonatomic, getter=_effectiveEnabledFeedbackTypes) unsigned long long effectiveEnabledFeedbackTypes;
 @property (readonly, nonatomic, getter=_effectiveEventType) unsigned long long effectiveEventType;
 @property (readonly, nonatomic, getter=_effectiveFeedbackData) NSArray *effectiveFeedbackData;

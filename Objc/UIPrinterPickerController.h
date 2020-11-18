@@ -23,15 +23,15 @@
 + (id)printerPickerControllerWithInitiallySelectedPrinter:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_delegateFiltersPrinters;
-- (id)_init;
 - (void)_printerPickerDidDismiss;
 - (void)_printerPickerDidPresent;
 - (void)_printerPickerWillDismiss;
 - (BOOL)_setupPickerPanel:(CDUnknownBlockType)arg1;
 - (BOOL)_shouldShowPrinter:(id)arg1;
 - (void)dismissAnimated:(BOOL)arg1;
-- (id)init;
+- (id)initWithInitiallySelectedPrinter:(id)arg1;
 - (BOOL)presentAnimated:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)presentAnimated:(BOOL)arg1 hostingScene:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)presentFromBarButtonItem:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)presentFromRect:(struct CGRect)arg1 inView:(id)arg2 animated:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 

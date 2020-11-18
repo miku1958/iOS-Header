@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) UIResponder *accessoryViewNextResponder; // @synthesize accessoryViewNextResponder=_accessoryViewNextResponder;
 @property (strong, nonatomic) UIInputViewController *assistantViewController; // @synthesize assistantViewController=_assistantViewController;
 @property (readonly, nonatomic, getter=isEmpty) BOOL empty;
+@property (readonly, nonatomic) BOOL hasNonPlaceholderViews;
 @property (strong, nonatomic) UIView *inputAccessoryView; // @synthesize inputAccessoryView=_inputAccessoryView;
 @property (readonly, nonatomic) struct CGRect inputAccessoryViewBounds;
 @property (strong, nonatomic) UIView *inputAssistantView; // @synthesize inputAssistantView=_inputAssistantView;

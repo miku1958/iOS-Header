@@ -9,12 +9,13 @@
 #import <UIKitCore/UIKBFocusGuideDelegate-Protocol.h>
 #import <UIKitCore/UIKeyboardImplGeometryDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, UITextInputTraits;
+@class NSMutableDictionary, NSString, UITextCursorAssertionController, UITextInputTraits, _UIKeyboardPasscodeObscuringInteraction;
 
 @interface UIKeyboard : UIView <UIKBFocusGuideDelegate, UIKeyboardImplGeometryDelegate>
 {
     UIView *m_snapshot;
     UITextInputTraits *m_defaultTraits;
+    UITextInputTraits *m_overrideTraits;
     BOOL m_typingDisabled;
     BOOL m_minimized;
     BOOL m_respondingToImplGeometryChange;
@@ -25,11 +26,14 @@
     BOOL m_useRecentsAlert;
     NSMutableDictionary *m_focusGuides;
     struct UIEdgeInsets m_unfocusedFocusGuideOutsets;
+    _UIKeyboardPasscodeObscuringInteraction *_passcodeObscuringInteraction;
+    struct CGRect _forcedFrame;
     BOOL _hasImpendingCursorLocation;
     unsigned long long _impendingCursorLocation;
     unsigned long long _requestedInteractionModel;
 }
 
+@property (readonly, nonatomic) UITextCursorAssertionController *_activeAssertionController;
 @property (nonatomic) BOOL caretBlinks;
 @property (nonatomic) BOOL caretVisible;
 @property (readonly, copy) NSString *debugDescription;
@@ -45,6 +49,7 @@
 @property (nonatomic) BOOL typingEnabled;
 
 + (void)_clearActiveKeyboard;
++ (struct UIEdgeInsets)_keyboardFocusGuideMargins;
 + (id)activeKeyboard;
 + (id)activeKeyboardForScreen:(id)arg1;
 + (BOOL)candidateDisplayIsExtended;
@@ -52,6 +57,7 @@
 + (struct CGRect)defaultFrameForInterfaceOrientation:(long long)arg1;
 + (struct CGSize)defaultSize;
 + (struct CGSize)defaultSizeForInterfaceOrientation:(long long)arg1;
++ (BOOL)hasInputOrAssistantViewsOnScreen;
 + (id)homeGestureExclusionZones;
 + (void)initImplementationNow;
 + (BOOL)isInHardwareKeyboardMode;
@@ -66,6 +72,7 @@
 + (void)setPredictionViewPrewarmsPredictiveCandidates:(BOOL)arg1;
 + (void)setSuppressionPolicyDelegate:(id)arg1;
 + (BOOL)shouldMinimizeForHardwareKeyboard;
++ (BOOL)shouldSuppressSoftwareKeyboardForResponder:(id)arg1;
 + (struct CGSize)sizeForInterfaceOrientation:(long long)arg1;
 + (struct CGSize)sizeForInterfaceOrientation:(long long)arg1 ignoreInputView:(BOOL)arg2;
 + (id)snapshotViewForPredictionViewTransition;
@@ -76,6 +83,7 @@
 - (void)_changeToKeyplane:(id)arg1;
 - (void)_deactivateForBackgrounding;
 - (void)_didChangeCandidateList;
+- (void)_didChangeCursorLocation;
 - (void)_didChangeKeyplaneWithContext:(id)arg1;
 - (BOOL)_disableTouchInput;
 - (struct CGRect)_floatingKeyboardDraggableRect;
@@ -85,15 +93,18 @@
 - (id)_getCurrentKeyboardName;
 - (id)_getCurrentKeyplaneName;
 - (id)_getLocalizedInputMode;
+- (struct CGRect)_globalFocusCastingFrameForHeading:(unsigned long long)arg1;
 - (BOOL)_hasCandidates;
 - (id)_initWithFrame:(struct CGRect)arg1 lazily:(BOOL)arg2;
 - (BOOL)_isAutomaticKeyboard;
 - (id)_keyplaneForKey:(id)arg1;
 - (id)_keyplaneNamed:(id)arg1;
 - (BOOL)_mayRemainFocused;
+- (id)_overrideTextInputTraits;
 - (long long)_positionInCandidateList:(id)arg1;
 - (void)_setAutocorrects:(BOOL)arg1;
 - (void)_setDisableTouchInput:(BOOL)arg1;
+- (void)_setDisableUpdateMaskForSecureTextEntry:(BOOL)arg1;
 - (void)_setInputMode:(id)arg1;
 - (void)_setPasscodeOutlineAlpha:(double)arg1;
 - (void)_setPreferredHeight:(double)arg1;
@@ -143,6 +154,7 @@
 - (BOOL)isActivePerScreen;
 - (BOOL)isAutomatic;
 - (void)keyboardMinMaximized:(BOOL)arg1;
+- (void)layoutSubviews;
 - (void)manualKeyboardWasOrderedIn;
 - (void)manualKeyboardWasOrderedOut;
 - (void)manualKeyboardWillBeOrderedIn;
@@ -172,6 +184,7 @@
 - (void)setReturnKeyEnabled:(BOOL)arg1;
 - (void)setUnfocusedFocusGuideOutsets:(struct UIEdgeInsets)arg1;
 - (void)setUnfocusedFocusGuideOutsets:(struct UIEdgeInsets)arg1 fromView:(id)arg2;
+- (void)set_overrideTextInputTraits:(id)arg1;
 - (void)setupKeyFocusGuides;
 - (BOOL)shouldSaveMinimizationState;
 - (BOOL)shouldUpdateFocusInContext:(id)arg1;

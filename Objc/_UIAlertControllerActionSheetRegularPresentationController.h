@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 - (id)_compactPresentationController;
 - (id)_exceptionStringForNilSourceViewOrBarButtonItem;
 - (id)_presentationControllerForTraitCollection:(id)arg1;
-- (void)dimmingViewWasTapped:(id)arg1;
+- (BOOL)dimmingViewWasTapped:(id)arg1 withDismissCompletion:(CDUnknownBlockType)arg2;
 
 @end
 

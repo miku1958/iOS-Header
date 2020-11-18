@@ -10,6 +10,7 @@
 @protocol _UIRemoteViewController_ViewControllerOperatorInterface
 - (void)__dismissTextServiceSessionAnimated:(BOOL)arg1;
 - (void)__handleFocusMovementAction:(UIFocusMovementAction *)arg1;
+- (void)__setServiceMaxFrameSize:(struct CGSize)arg1;
 - (void)__setSupportedInterfaceOrientations:(NSArray *)arg1;
 - (void)__setViewServiceIsDisplayingPopover:(BOOL)arg1;
 - (void)__showEditAlertViewWithToken:(long long)arg1 canUndo:(BOOL)arg2 canRedo:(BOOL)arg3;
@@ -17,21 +18,21 @@
 - (void)__showServiceForText:(NSString *)arg1 type:(long long)arg2 fromRectValue:(NSValue *)arg3 replyHandler:(void (^)(id, NSError *))arg4;
 - (void)__showServiceForType:(long long)arg1 withContext:(_UITextServiceSessionContext *)arg2 replyHandler:(void (^)(id, NSError *))arg3;
 - (void)__trampolineButtonPressData:(NSData *)arg1 canceled:(BOOL)arg2;
-- (void)__viewServiceCompleteInteractiveSheetTransitionInHost:(BOOL)arg1 offset:(double)arg2 duration:(double)arg3 timingCurve:(id<UITimingCurveProvider>)arg4;
 - (void)__viewServiceDidChangeKeyWindow:(BOOL)arg1;
 - (void)__viewServiceDidPromoteFirstResponder;
 - (void)__viewServiceDidRegisterScrollToTopView;
 - (void)__viewServiceDidUnregisterScrollToTopView;
-- (void)__viewServiceDidUpdatePreferredScreenEdgesDeferringSystemGestures:(long long)arg1;
+- (void)__viewServiceDidUpdateMultitaskingDragExclusionRects:(NSArray *)arg1;
+- (void)__viewServiceDidUpdatePreferredScreenEdgesDeferringSystemGestures:(unsigned long long)arg1;
 - (void)__viewServiceDidUpdatePreferredStatusBarStyle:(long long)arg1 preferredStatusBarVisibility:(int)arg2 updateAnimation:(long long)arg3 currentAnimationSettings:(BSAnimationSettings *)arg4;
 - (void)__viewServiceDidUpdatePreferredUserInterfaceStyle:(long long)arg1;
 - (void)__viewServiceDidUpdatePreferredWhitePointAdaptationStyle:(long long)arg1 animationSettings:(BSAnimationSettings *)arg2;
 - (void)__viewServiceDidUpdatePrefersHomeIndicatorAutoHidden:(BOOL)arg1;
+- (void)__viewServiceDidUpdatePrefersPointerLocked:(BOOL)arg1;
 - (void)__viewServiceInstrinsicContentSizeDidChange:(struct CGSize)arg1 fence:(BKSAnimationFenceHandle *)arg2;
 - (void)__viewServicePopoverDidChangeContentSize:(struct CGSize)arg1 animated:(BOOL)arg2 fence:(BKSAnimationFenceHandle *)arg3 withReplyHandler:(void (^)(struct CGSize))arg4;
 - (void)__viewServicePopoverDidSetUseToolbarShine:(BOOL)arg1;
 - (void)__viewServicePreferredContentSizeDidChange:(struct CGSize)arg1 fence:(BKSAnimationFenceHandle *)arg2;
-- (void)__viewServiceStartInteractiveSheetTransitionInHostWithProgress:(double)arg1 offset:(double)arg2;
-- (void)__viewServiceUpdateInteractiveSheetTransitionInHostWithProgress:(double)arg1 offset:(double)arg2;
+- (void)__viewServiceSheetInteractionDidChangeOffset:(struct CGPoint)arg1 dragging:(BOOL)arg2 dismissible:(BOOL)arg3 indexOfCurrentDetent:(unsigned long long)arg4 duration:(double)arg5 timingCurve:(id<UITimingCurveProvider>)arg6;
 @end
 

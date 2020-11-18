@@ -12,6 +12,7 @@
 
 @interface _UIAction : NSObject <_UIActionGroupable>
 {
+    BOOL _requiresAuthenticatedInput;
     unsigned long long _options;
     long long _type;
     NSString *_title;
@@ -26,6 +27,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (nonatomic) unsigned long long options; // @synthesize options=_options;
+@property (nonatomic) BOOL requiresAuthenticatedInput; // @synthesize requiresAuthenticatedInput=_requiresAuthenticatedInput;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;

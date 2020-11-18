@@ -7,12 +7,11 @@
 #import <UIKitCore/_UIViewServiceDeputy_UIViewServiceInterface-Protocol.h>
 #import <UIKitCore/_UIViewServiceUIBehaviorInterface-Protocol.h>
 
-@class BKSAnimationFenceHandle, BSMachPortSendRight, FBSDisplayConfiguration, FBSDisplayIdentity, NSArray, NSString, NSUUID, UIColor, UITraitCollection, _UIBoundingPath, _UISheetPresentationControllerConfiguration, _UIViewControllerTransitionCoordinatorContextDescription;
+@class BKSAnimationFenceHandle, BSMachPortSendRight, FBSDisplayConfiguration, FBSDisplayIdentity, NSArray, NSString, UIColor, UITraitCollection, _UIBoundingPath, _UISheetPresentationControllerConfiguration, _UIViewControllerTransitionCoordinatorContextDescription, _UIViewServiceViewControllerOperatorCreateOptions;
 
 @protocol _UIViewServiceViewControllerOperator_RemoteViewControllerInterface <_UIViewServiceDeputy_UIViewServiceInterface, _UIViewServiceUIBehaviorInterface>
 - (void)__cancelAlertActionWithToken:(long long)arg1;
-- (void)__createViewController:(NSString *)arg1 withAppearanceSerializedRepresentations:(NSArray *)arg2 hostAccessibilityServerPort:(BSMachPortSendRight *)arg3 canShowTextServices:(BOOL)arg4 replyHandler:(void (^)(_UIHostedWindowHostingHandle *, NSArray *, long long, int, BSMachPortSendRight *, NSError *))arg5;
-- (void)__createViewController:(NSString *)arg1 withContextToken:(NSUUID *)arg2 fbsDisplays:(NSArray *)arg3 appearanceSerializedRepresentations:(NSArray *)arg4 traitCollection:(UITraitCollection *)arg5 initialInterfaceOrientation:(long long)arg6 hostAccessibilityServerPort:(BSMachPortSendRight *)arg7 canShowTextServices:(BOOL)arg8 replyHandler:(void (^)(_UIHostedWindowHostingHandle *, NSArray *, long long, int, BSMachPortSendRight *, NSError *))arg9;
+- (void)__createViewControllerWithOptions:(_UIViewServiceViewControllerOperatorCreateOptions *)arg1 completionBlock:(void (^)(_UIViewServiceControllerOperatorCreateResult *, NSError *))arg2;
 - (void)__dimmingViewWasTapped;
 - (void)__exchangeAccessibilityPortInformation:(BSMachPortSendRight *)arg1 replyHandler:(void (^)(BSMachPortSendRight *, NSError *))arg2;
 - (void)__hostDidAttachDisplay:(FBSDisplayConfiguration *)arg1;
@@ -52,6 +51,7 @@
 - (void)__setHostTintColor:(UIColor *)arg1 tintAdjustmentMode:(long long)arg2;
 - (void)__setHostTraitCollection:(UITraitCollection *)arg1 deferIfAnimated:(BOOL)arg2;
 - (void)__setHostViewUnderlapsStatusBar:(BOOL)arg1;
+- (void)__setMediaOverridePID:(int)arg1;
 - (void)__setServiceInPopover:(BOOL)arg1;
 - (void)__setSheetConfiguration:(_UISheetPresentationControllerConfiguration *)arg1;
 - (void)__textServiceDidDismiss;
